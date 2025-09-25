@@ -1703,7 +1703,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	force = 1
 	throwforce = 1
 	unacidable = TRUE
-	var/obj/structure/machinery/computer/cameras/yautja/internal_camera
+	var/obj/structure/machinery/computer/cameras/internal/yautja/internal_camera
 
 /obj/item/device/houndcam/Initialize()
 	. = ..()

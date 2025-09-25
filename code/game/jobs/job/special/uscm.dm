@@ -15,5 +15,8 @@
 /datum/job/special/uscm/riot/chief
 	title = JOB_RIOT_CHIEF
 
+/datum/job/special/uscm/hgmp
+	title = JOB_POLICE_HG
+
 /datum/job/special/uscm/tech
 	title = JOB_FORECON_SUPPORT

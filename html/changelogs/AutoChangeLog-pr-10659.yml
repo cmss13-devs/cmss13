@@ -1,0 +1,4 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - rscadd: "Smokes spread up and down a z level"

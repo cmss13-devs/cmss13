@@ -113,6 +113,40 @@
 	user.update_minimap_icon()
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
 
+/obj/item/pamphlet/skill/honorguard
+	name = "Honor Guard instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one details the responsibilities of an Honor Guard."
+	icon_state = "pamphlet_written"
+	trait = null
+	bypass_pamphlet_limit = TRUE
+
+/obj/item/pamphlet/skill/honorguard/can_use(mob/living/carbon/human/user)
+	if(user.job != JOB_POLICE)
+		to_chat(user, SPAN_WARNING("Only Military Police can use this."))
+		return
+
+	var/obj/item/card/id/id_card = user.get_idcard()
+	if(!id_card || !id_card.check_biometrics(user)) //not wearing an ID
+		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		return FALSE
+
+	if(user.rank_fallback == "hgmp"|| (id_card.minimap_icon_override == "honorguard"))
+		to_chat(user, SPAN_WARNING("You are already an honor guard!"))
+		return FALSE
+
+	return ..()
+
+/obj/item/pamphlet/skill/honorguard/on_use(mob/living/carbon/human/user)
+	. = ..()
+	user.rank_fallback = "hgmp"
+	user.hud_set_squad()
+
+	var/obj/item/card/id/id_card = user.get_idcard()
+	id_card.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + JOB_POLICE_HG)
+	id_card.minimap_icon_override = "honorguard"//Different to Whiskey Honor Guard
+	user.update_minimap_icon()
+	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), JOB_POLICE_HG)
+
 /obj/item/pamphlet/skill/cosmartgun
 	name = "Cavalier instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a smartgun on it."

@@ -230,6 +230,8 @@
 
 	if(!ishuman(target))
 		return
+	if(!action_cooldown_check())
+		return
 
 	var/mob/living/carbon/human/target_human = target
 

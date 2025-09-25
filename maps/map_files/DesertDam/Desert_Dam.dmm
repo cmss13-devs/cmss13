@@ -12345,6 +12345,12 @@
 /obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/desert_dam/building/medical/stairwell/upper)
+"aMJ" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/turf/open/floor/whiteblue,
+/area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "aMK" = (
 /obj/structure/grille,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -15061,6 +15067,35 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_corner2/west,
 /area/desert_dam/exterior/river/riverside_east)
+"aWc" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = -2;
+	pixel_y = 7
+	},
+/turf/open/floor/whiteblue,
+/area/desert_dam/interior/lab_northeast/east_lab_lobby)
+"aWd" = (
+/obj/structure/largecrate/random{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/whitepurple/north,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
+"aWe" = (
+/obj/structure/largecrate/random/case/small{
+	pixel_y = 5
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -5;
+	pixel_y = 13
+	},
+/turf/open/floor/prison/whitepurple/north,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
+"aWf" = (
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/prison/whitepurple,
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aWg" = (
 /obj/structure/machinery/sentry_holder/colony{
 	dir = 1;
@@ -15068,6 +15103,14 @@
 	},
 /turf/open/asphalt/cement/cement15,
 /area/desert_dam/interior/dam_interior/south_tunnel_research)
+"aWh" = (
+/obj/structure/cargo_container/hybrisa/containersextended/greywyleft,
+/turf/open/floor/prison/whitepurple,
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
+"aWi" = (
+/obj/structure/cargo_container/hybrisa/containersextended/greywyright,
+/turf/open/floor/prison/whitepurple,
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aWs" = (
 /obj/effect/blocker/toxic_water/Group_1,
 /obj/item/stack/sheet/wood/medium_stack,
@@ -35684,7 +35727,7 @@
 /turf/open/floor/prison/red/west,
 /area/desert_dam/building/water_treatment_two/lobby)
 "iSP" = (
-/obj/structure/bed/chair{
+/obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
 /turf/open/floor/whiteblue/west,
@@ -40008,11 +40051,11 @@
 /turf/closed/wall/r_wall/bunker/floodgate,
 /area/desert_dam/exterior/river/riverside_central_north)
 "kEt" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
 	},
 /turf/open/floor/whiteblue/west,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
@@ -53077,6 +53120,12 @@
 /turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/stairwell)
 "pIQ" = (
+/obj/structure/surface/table,
+/obj/item/folder/black{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/folder/blue,
 /turf/open/floor/whiteblue/west,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "pIV" = (
@@ -54513,9 +54562,8 @@
 /turf/open/floor/dark2,
 /area/desert_dam/building/administration/archives)
 "qlz" = (
-/obj/structure/bed/chair{
-	dir = 1
-	},
+/obj/structure/surface/table,
+/obj/item/storage/secure/briefcase,
 /turf/open/floor/whiteblue,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "qlA" = (
@@ -168277,7 +168325,7 @@ vmC
 dIY
 kjv
 lsw
-wkU
+aWf
 fvW
 qaR
 qaR
@@ -168511,7 +168559,7 @@ qWL
 wXF
 tvI
 lsw
-wkU
+aWh
 fvW
 qaR
 qaR
@@ -168745,7 +168793,7 @@ qWL
 lmW
 aXN
 lsw
-wkU
+aWi
 fvW
 qaR
 qaR
@@ -177174,7 +177222,7 @@ xBs
 kKQ
 duj
 iNY
-lCL
+icg
 vrS
 gtt
 gtt
@@ -177408,7 +177456,7 @@ pdr
 sWf
 vgt
 iNY
-lCL
+aWd
 wrb
 gtt
 gtt
@@ -177642,7 +177690,7 @@ iNY
 iNY
 iNY
 iNY
-lCL
+aWe
 wrb
 nMi
 pvA
@@ -180461,7 +180509,7 @@ ctG
 uhZ
 ebO
 wdY
-qlz
+aMJ
 sse
 btD
 aAV
@@ -180695,7 +180743,7 @@ seP
 aKD
 wdY
 nSk
-qlz
+aMJ
 sse
 jDl
 aAV
@@ -180929,7 +180977,7 @@ giD
 mrq
 wdY
 xxk
-qlz
+aMJ
 sse
 jDl
 aAV
@@ -181163,7 +181211,7 @@ ctG
 wdY
 pSA
 wdY
-qlz
+aMJ
 sse
 jDl
 aAV
@@ -181397,7 +181445,7 @@ ctG
 xxk
 wdY
 wdY
-qlz
+aWc
 sse
 jDl
 aAV

@@ -18571,10 +18571,6 @@
 "bcN" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/navalis/indoors/charon/upper_deck/front)
-"bcO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
-/turf/open/floor/corsat/marked,
-/area/navalis/indoors/charon/upper_deck/front)
 "bcP" = (
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/charon/upper_deck/front)
@@ -166894,7 +166890,7 @@ atX
 xDC
 aHQ
 bic
-tAA
+aSj
 etI
 ara
 vEh
@@ -193445,7 +193441,7 @@ bcN
 bcN
 bda
 bcS
-bcO
+bcP
 bcG
 bbI
 bbm
@@ -195413,7 +195409,7 @@ bcN
 bdf
 bdb
 bcT
-bcO
+bcP
 bcH
 bcC
 bco

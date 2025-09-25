@@ -15,6 +15,14 @@
 	var/junction = 0 //Because everything is terrible, I'm making this a fence-level var
 	var/basestate = "fence"
 	var/forms_junctions = TRUE
+	var/form_junctions_to = TRUE
+
+	var/door = FALSE
+	var/open = FALSE
+	var/operating = FALSE
+	var/opening_time = 1 SECONDS
+
+
 
 /obj/structure/fence/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -31,10 +39,10 @@
 	if(health <= 0)
 		if(user)
 			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
-		playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
+		playsound(loc, 'sound/effects/fencehit.ogg', 25, 1)
 		cut_grille()
 	if(make_hit_sound)
-		playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
+		playsound(loc, 'sound/effects/fencehit.ogg', 25, 1)
 
 /obj/structure/fence/bullet_act(obj/projectile/Proj)
 	//Tasers and the like should not damage windows.
@@ -72,6 +80,21 @@
 		var/mob/living/carbon/human/human = user
 		if(human.species.can_shred(human))
 			attack_generic(human, 25)
+
+	if(!door || operating || cut)
+		return
+	operating = TRUE
+	playsound(loc, 'sound/effects/fenceopen.ogg', 25, 1)
+	update_icon()
+	addtimer(CALLBACK(src, PROC_REF(open)), opening_time)
+
+/obj/structure/fence/proc/open()
+	operating = FALSE
+	if(cut)
+		return
+	open = !open
+	density = !density
+	update_icon()
 
 //Used by attack_animal
 /obj/structure/fence/proc/attack_generic(mob/living/user, damage = 0)
@@ -204,6 +227,8 @@
 
 /obj/structure/fence/Initialize(mapload, start_dir = null, constructed = 0)
 	. = ..()
+	if(door)
+		basestate = "door"
 
 	if(start_dir)
 		setDir(start_dir)
@@ -238,14 +263,32 @@
 		if(!src)
 			return
 		for(var/obj/structure/fence/fence in orange(src, 1))
-			if(!fence.forms_junctions)
+			if(!fence.form_junctions_to)
 				continue
 			if(abs(x - fence.x) - abs(y - fence.y)) //Doesn't count grilles, placed diagonally to src
 				junction |= get_dir(src, fence)
 		if(cut)
 			icon_state = "broken[basestate][junction]"
+			if (!forms_junctions)
+				icon_state = "broken[basestate]"
 		else
 			icon_state = "[basestate][junction]"
+
+		if(cut || !door)
+			return
+
+		if(!operating)
+			if(open)
+				icon_state = "[basestate]_open"
+			else
+				icon_state = "[basestate]_closed"
+			return
+
+		if(open)
+			icon_state = "[basestate]_closing"
+
+		else
+			icon_state = "[basestate]_opening"
 
 /obj/structure/fence/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C + 800)
@@ -268,6 +311,7 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	health = 150
 	health_max = 200
 	forms_junctions = FALSE
+	form_junctions_to = FALSE
 	var/electrified = FALSE
 	var/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/breaker_switch = null
 
@@ -318,12 +362,83 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	health -= severity/2
 	healthcheck(make_hit_sound = FALSE, create_debris = TRUE)
 
+// Classic Style Fences
+
+/obj/structure/fence/overgrown
+	name = "overgrown fence"
+	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
+	icon = 'icons/obj/structures/props/fences/overgrown_fence.dmi'
+
 /obj/structure/fence/dark
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fences/dark_fence.dmi'
 
+/obj/structure/fence/dark/overgrown
+	name = "overgrown fence"
+	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
+	icon = 'icons/obj/structures/props/fences/overgrown_dark_fence.dmi'
+
 /obj/structure/fence/dark/warning
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fences/electric_fence.dmi'
+
+/obj/structure/fence/dark/warning/overgrown
+	name = "overgrown fence"
+	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
+	icon = 'icons/obj/structures/props/fences/overgrown_electric_fence.dmi'
+
+// Alternative Fences - New Design
+
+/obj/structure/fence/slim
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/fence_alt.dmi'
+
+/obj/structure/fence/slim/door
+	name = "fence door"
+	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	icon_state = "door_closed"
+	door = TRUE
+	forms_junctions = FALSE
+	icon = 'icons/obj/structures/props/fences/fence_alt_door.dmi'
+
+/obj/structure/fence/slim/dark
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/dark_fence_alt.dmi'
+
+/obj/structure/fence/slim/dark/door
+	name = "fence door"
+	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	icon_state = "door_closed"
+	door = TRUE
+	forms_junctions = FALSE
+	icon = 'icons/obj/structures/props/fences/dark_fence_alt_door.dmi'
+
+/obj/structure/fence/slim/warning
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/electric_fence_alt.dmi'
+
+/obj/structure/fence/slim/warning/door
+	name = "fence door"
+	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	icon_state = "door_closed"
+	door = TRUE
+	forms_junctions = FALSE
+	icon = 'icons/obj/structures/props/fences/electric_fence_alt_door.dmi'
+
+/obj/structure/fence/slim/upp
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/upp_fence.dmi'
+
+/obj/structure/fence/slim/upp/door
+	name = "fence door"
+	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	icon_state = "door_closed"
+	door = TRUE
+	forms_junctions = FALSE
+	icon = 'icons/obj/structures/props/fences/upp_fence_door.dmi'

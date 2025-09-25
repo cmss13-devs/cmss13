@@ -1,0 +1,4 @@
+author: "stanalbatross"
+delete-after: True
+changes:
+  - qol: "simplified, reduced the length of, and in some cases removed unnecessary balloon alerts."

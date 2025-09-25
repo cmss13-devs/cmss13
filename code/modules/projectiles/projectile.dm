@@ -948,7 +948,7 @@
 	. = TRUE
 	bullet_message(bullet, damaging = damage)
 	if(damage)
-		apply_damage(damage, bullet.ammo.damage_type, bullet.def_zone, 0, 0, bullet)
+		apply_damage(damage, bullet.ammo.damage_type, bullet.def_zone, 0, 0, bullet, enviro=bullet.ammo.damage_enviro)
 		bullet.play_hit_effect(src)
 
 	SEND_SIGNAL(bullet, COMSIG_BULLET_ACT_LIVING, src, damage, damage)
@@ -1040,7 +1040,7 @@
 		handle_blood_splatter(splatter_dir)
 
 		. = TRUE
-		apply_damage(damage_result, bullet.ammo.damage_type, bullet.def_zone, firer = bullet.firer)
+		apply_damage(damage_result, bullet.ammo.damage_type, bullet.def_zone, firer=bullet.firer, enviro=bullet.ammo.damage_enviro)
 
 		if(bullet.ammo.shrapnel_chance > 0 && prob(bullet.ammo.shrapnel_chance + floor(damage / 10)))
 			if(ammo_flags & AMMO_SPECIAL_EMBED)
@@ -1112,6 +1112,7 @@
 			"armor_integrity" = armor_integrity,
 			"direction" = bullet.dir,
 			"armour_type" = GLOB.xeno_ranged,
+			"enviro" = P.ammo.damage_enviro,
 		)
 		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, damagedata)
 		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damagedata["damage"],
@@ -1139,7 +1140,7 @@
 		//only apply the blood splatter if we do damage
 		handle_blood_splatter(get_dir(bullet.starting, loc))
 
-		apply_damage(damage_result,bullet.ammo.damage_type, bullet.def_zone) //Deal the damage.
+		apply_damage(damage_result,bullet.ammo.damage_type, bullet.def_zone, enviro=bullet.ammo.damage_enviro) //Deal the damage.
 		if(length(xeno_shields))
 			bullet.play_shielded_hit_effect(src)
 		else

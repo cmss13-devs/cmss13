@@ -1112,7 +1112,7 @@
 			"armor_integrity" = armor_integrity,
 			"direction" = bullet.dir,
 			"armour_type" = GLOB.xeno_ranged,
-			"enviro" = P.ammo.damage_enviro,
+			"enviro" = bullet.ammo.damage_enviro,
 		)
 		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, damagedata)
 		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damagedata["damage"],

@@ -869,11 +869,11 @@
 
 /datum/admins/var/create_humans_html = null
 /datum/admins/proc/create_humans(mob/user)
-	if(!GLOB.gear_name_presets_list)
+	if(!GLOB.equipment_presets.categories["All"])
 		return
 
 	if(!create_humans_html)
-		var/equipment_presets = jointext(GLOB.gear_name_presets_list, ";")
+		var/equipment_presets = jointext(GLOB.equipment_presets.categories["All"], ";")
 		create_humans_html = file2text('html/create_humans.html')
 		create_humans_html = replacetext(create_humans_html, "null /* object types */", "\"[equipment_presets]\"")
 		create_humans_html = replacetext(create_humans_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))

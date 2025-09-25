@@ -34,6 +34,8 @@ export const CrewManifest = (props, context) => {
     'Bravo',
     'Charlie',
     'Delta',
+    'Kilo',
+    'Oscar',
     'Echo',
     'Foxtrot',
     'Intel',

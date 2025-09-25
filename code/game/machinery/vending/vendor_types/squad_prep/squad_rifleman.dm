@@ -146,23 +146,3 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 
 /obj/structure/machinery/cm_vending/clothing/marine/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_marine
-
-/obj/structure/machinery/cm_vending/clothing/marine/alpha
-	squad_tag = SQUAD_MARINE_1
-	req_access = list(ACCESS_MARINE_ALPHA)
-	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha
-
-/obj/structure/machinery/cm_vending/clothing/marine/bravo
-	squad_tag = SQUAD_MARINE_2
-	req_access = list(ACCESS_MARINE_BRAVO)
-	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo
-
-/obj/structure/machinery/cm_vending/clothing/marine/charlie
-	squad_tag = SQUAD_MARINE_3
-	req_access = list(ACCESS_MARINE_CHARLIE)
-	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie
-
-/obj/structure/machinery/cm_vending/clothing/marine/delta
-	squad_tag = SQUAD_MARINE_4
-	req_access = list(ACCESS_MARINE_DELTA)
-	headset_type = /obj/item/device/radio/headset/almayer/marine/delta

@@ -806,8 +806,8 @@
 	icon_state = "bravo"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/squads/charlie
-	name = "\improper Squad Charlie Preparation"
+/area/almayer/squads/support
+	name = "\improper Support Squad Preparation"
 	icon_state = "charlie"
 	fake_zlevel = 2 // lowerdeck
 
@@ -816,14 +816,14 @@
 	icon_state = "delta"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/squads/alpha_bravo_shared
-	name = "\improper Alpha Bravo Equipment Preparation"
-	icon_state = "ab_shared"
+/area/almayer/squads/platoon1_shared
+	name = "\improper 1st Platoon Equipment Preparation"
+	icon_state = "p1_shared"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/squads/charlie_delta_shared
-	name = "\improper Charlie Delta Equipment Preparation"
-	icon_state = "cd_shared"
+/area/almayer/squads/platoon2_shared
+	name = "\improper 2nd Platoon Equipment Preparation"
+	icon_state = "p2_shared"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/squads/req

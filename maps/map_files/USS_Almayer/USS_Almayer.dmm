@@ -71569,27 +71569,14 @@
 	req_access_txt = "23";
 	dir = 1
 	},
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "Operations Lockdown";
 	name = "\improper Operations Lockdown Blast Door"
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer{
-	name = "\improper Saferoom Entrance"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 2;
-	id = "safe_shutters";
-	name = "\improper Saferoom Shutters"
-	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/operations)
 "pPv" = (

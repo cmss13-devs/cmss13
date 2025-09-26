@@ -719,6 +719,15 @@
 		/obj/item/tool/surgery/surgical_line,
 		/obj/item/tool/surgery/synthgraft,
 	)
+	var/mode = 1 // Mode for pills taking from bottles
+
+/obj/item/storage/pouch/medical/verb/toggle_mode() //A verb that can (should) only be used if in hand/equipped
+	set category = "Object"
+	set name = "Toggle pouch mode"
+	set src in usr
+	if(src && ishuman(usr))
+		mode = !mode
+		to_chat(usr, SPAN_NOTICE("You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
 
 /obj/item/storage/pouch/medical/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -844,6 +853,15 @@
 		/obj/item/roller,
 		/obj/item/bodybag,
 	)
+	var/mode = 1 // Mode for pills taking from bottles
+
+/obj/item/storage/pouch/first_responder/verb/toggle_mode() //A verb that can (should) only be used if in hand/equipped
+	set category = "Object"
+	set name = "Toggle pouch mode"
+	set src in usr
+	if(src && ishuman(usr))
+		mode = !mode
+		to_chat(usr, SPAN_NOTICE("You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
 
 /obj/item/storage/pouch/first_responder/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -962,6 +980,14 @@
 		/obj/item/tool/surgery/FixOVein = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
 	)
 	can_hold_skill_only = TRUE
+	var/mode = 1 // Mode for pills taking from bottles
+/obj/item/storage/pouch/medkit/verb/toggle_mode() //A verb that can (should) only be used if in hand/equipped
+	set category = "Object"
+	set name = "Toggle pouch mode"
+	set src in usr
+	if(src && ishuman(usr))
+		mode = !mode
+		to_chat(usr, SPAN_NOTICE("You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)

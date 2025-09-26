@@ -8639,6 +8639,9 @@
 "atR" = (
 /turf/open/floor/almayer/black2,
 /area/white_antre/indoors/main_level/west_corridor)
+"atS" = (
+/turf/closed/wall/hybrisa/research/reinforced/hull,
+/area/white_antre/indoors/main_level/west_corridor)
 "atT" = (
 /turf/closed/wall/hybrisa/colony/engineering/reinforced,
 /area/white_antre/indoors/main_level/engineering)
@@ -11124,6 +11127,9 @@
 "aAb" = (
 /turf/open/floor/almayer/silver/south,
 /area/white_antre/indoors/main_level/east_containment_hive)
+"aAc" = (
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
+/area/white_antre/indoors/main_level/east_corridor)
 "aAd" = (
 /obj/structure/prop/invuln/dense/excavator/gray,
 /obj/structure/blocker/invisible_wall,
@@ -103223,8 +103229,8 @@ kui
 iTa
 iTa
 rBH
-asM
-asM
+atS
+atS
 oAY
 aeB
 oAY
@@ -103254,8 +103260,8 @@ oAY
 oAY
 oAY
 oAY
-asM
-asM
+atS
+atS
 kui
 iTa
 iTa
@@ -103386,12 +103392,12 @@ aQi
 aQi
 aQi
 aQi
-asM
+atS
 aQi
 aQi
 aQi
 aQi
-asM
+atS
 all
 akL
 akY
@@ -103423,12 +103429,12 @@ aoU
 aoU
 aoU
 aoQ
-asM
+atS
 aQi
 aQi
 aQi
 aQi
-asM
+atS
 aQi
 aQi
 aQi
@@ -106428,13 +106434,13 @@ azz
 atp
 arf
 aqV
-atp
+bZm
 aqM
 aqH
 rGs
 qwh
 rGs
-atp
+bZm
 cTO
 apT
 apO
@@ -106596,13 +106602,13 @@ dkf
 atp
 omd
 aqW
-atp
-atp
+bZm
+bZm
 pyk
 pyk
 pyk
-atp
-atp
+bZm
+bZm
 cTO
 apU
 apP
@@ -106776,14 +106782,14 @@ att
 apQ
 nZu
 awk
-atp
-atp
+bZm
+bZm
 asg
 bSh
 aKh
 arP
 bZj
-asL
+bZj
 dGb
 rHC
 uqO
@@ -106926,7 +106932,7 @@ aKh
 bSh
 atP
 akJ
-atp
+bZm
 dYZ
 dkf
 atq
@@ -106944,7 +106950,7 @@ att
 cIf
 vkP
 awl
-atp
+bZm
 apl
 ash
 arY
@@ -107279,7 +107285,7 @@ atp
 apW
 bzD
 rrj
-atp
+bZm
 bZm
 ask
 ato
@@ -107430,10 +107436,10 @@ aIS
 bUp
 akW
 akz
-atp
-atp
-atp
-atp
+bZm
+bZm
+bZm
+bZm
 atp
 atp
 ava
@@ -107446,8 +107452,8 @@ asz
 atp
 atp
 atp
-atp
-atp
+bZm
+bZm
 asp
 asl
 asi
@@ -110127,7 +110133,7 @@ vbZ
 aMX
 aKs
 bSp
-aKn
+aAc
 bSp
 aKs
 avw
@@ -110295,7 +110301,7 @@ bUb
 bTV
 bSc
 bTS
-aKn
+aAc
 aHM
 bSc
 bTy
@@ -110463,7 +110469,7 @@ vbZ
 aMX
 aKs
 aHY
-aKn
+aAc
 aHN
 aKs
 avw

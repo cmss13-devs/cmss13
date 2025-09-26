@@ -75,7 +75,7 @@
 		if(new_xeno.ckey)
 			GLOB.deevolved_ckeys += new_xeno.ckey
 
-/datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/A)
+/datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/X = owner
 	if(!X.check_state())
 		return
@@ -100,7 +100,7 @@
 	X.dismount_ovipositor()
 	return ..()
 
-/datum/action/xeno_action/onclick/grow_ovipositor/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/grow_ovipositor/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
 	if(!xeno.check_state())
 		return
@@ -155,7 +155,7 @@
 	xeno.mount_ovipositor()
 	return ..()
 
-/datum/action/xeno_action/onclick/set_xeno_lead/use_ability(atom/A)
+/datum/action/xeno_action/onclick/set_xeno_lead/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
 	if(!xeno.check_state())
 		return
@@ -164,7 +164,7 @@
 		return
 	var/datum/hive_status/hive = xeno.hive
 	if(xeno.observed_xeno)
-		if(!length(hive.open_xeno_leader_positions) && xeno.observed_xeno.hive_pos == NORMAL_XENO)
+		if(!length(hive.open_xeno_leader_positions) && IS_NORMAL_XENO(xeno.observed_xeno))
 			to_chat(xeno, SPAN_XENOWARNING("You currently have [length(hive.xeno_leader_list)] promoted leaders. You may not maintain additional leaders until your power grows."))
 			return
 		var/mob/living/carbon/xenomorph/targeted_xeno = xeno.observed_xeno
@@ -172,7 +172,7 @@
 			to_chat(xeno, SPAN_XENOWARNING("You cannot add yourself as a leader!"))
 			return
 		apply_cooldown()
-		if(targeted_xeno.hive_pos == NORMAL_XENO)
+		if(IS_NORMAL_XENO(targeted_xeno))
 			if(!hive.add_hive_leader(targeted_xeno))
 				to_chat(xeno, SPAN_XENOWARNING("Unable to add the leader."))
 				return
@@ -192,7 +192,7 @@
 
 		if(length(possible_xenos) > 1)
 			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(xeno, "Target", "Watch which leader?", possible_xenos, theme="hive_status")
-			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == xeno.observed_xeno || selected_xeno.stat == DEAD || !xeno.check_state())
+			if(!selected_xeno || IS_NORMAL_XENO(selected_xeno) || selected_xeno == xeno.observed_xeno || selected_xeno.stat == DEAD || !xeno.check_state())
 				return
 			xeno.overwatch(selected_xeno)
 		else if(length(possible_xenos))
@@ -201,49 +201,49 @@
 			to_chat(xeno, SPAN_XENOWARNING("There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader."))
 	return ..()
 
-/datum/action/xeno_action/activable/queen_heal/use_ability(atom/A, verbose)
-	var/mob/living/carbon/xenomorph/queen/X = owner
-	if(!X.check_state())
+/datum/action/xeno_action/activable/queen_heal/use_ability(atom/target, verbose)
+	var/mob/living/carbon/xenomorph/queen/queen = owner
+	if(!queen.check_state())
 		return
 
 	if(!action_cooldown_check())
 		return
 
-	var/turf/T = get_turf(A)
-	if(!T)
-		to_chat(X, SPAN_WARNING("You must select a valid turf to heal around."))
+	var/turf/target_turf = get_turf(target)
+	if(!target_turf)
+		to_chat(queen, SPAN_WARNING("You must select a valid turf to heal around."))
 		return
 
-	if(!SSmapping.same_z_map(X.loc.z, T.loc.z))
-		to_chat(X, SPAN_XENOWARNING("You are too far away to do this here."))
+	if(!SSmapping.same_z_map(queen.loc.z, target_turf.loc.z))
+		to_chat(queen, SPAN_XENOWARNING("You are too far away to do this here."))
 		return
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	for(var/mob/living/carbon/xenomorph/Xa in range(4, T))
-		if(!X.can_not_harm(Xa))
+	for(var/mob/living/carbon/xenomorph/current_xeno in range(4, target_turf))
+		if(!queen.can_not_harm(current_xeno))
 			continue
 
-		if(SEND_SIGNAL(Xa, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		if(SEND_SIGNAL(current_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 			if(verbose)
-				to_chat(X, SPAN_XENOMINORWARNING("You cannot heal [Xa]!"))
+				to_chat(queen, SPAN_XENOMINORWARNING("You cannot heal [current_xeno]!"))
 			continue
 
-		if(Xa == X)
+		if(current_xeno == queen)
 			continue
 
-		if(Xa.stat == DEAD || QDELETED(Xa))
+		if(current_xeno.stat == DEAD || QDELETED(current_xeno))
 			continue
 
-		if(!Xa.caste.can_be_queen_healed)
+		if(!current_xeno.caste.can_be_queen_healed)
 			continue
 
-		new /datum/effects/heal_over_time(Xa, Xa.maxHealth * 0.3, 2 SECONDS, 2)
-		Xa.flick_heal_overlay(3 SECONDS, "#D9F500") //it's already hard enough to gauge health without hp overlays!
+		new /datum/effects/heal_over_time(current_xeno, current_xeno.maxHealth * 0.3, 2 SECONDS, 2)
+		current_xeno.flick_heal_overlay(3 SECONDS, "#D9F500") //it's already hard enough to gauge health without hp overlays!
 
 	apply_cooldown()
-	to_chat(X, SPAN_XENONOTICE("You channel your plasma to heal your sisters' wounds around this area."))
+	to_chat(queen, SPAN_XENONOTICE("You channel your plasma to heal your sisters' wounds around this area."))
 	return ..()
 
 /datum/action/xeno_action/onclick/manage_hive/proc/give_evo_points()
@@ -324,7 +324,7 @@
 		xeno.use_plasma(plasma_cost_jelly)
 		return
 
-/datum/action/xeno_action/onclick/send_thoughts/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/send_thoughts/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/thought_sender = owner
 	var/static/list/options = list(
 		"Psychic Radiance (100)" = icon(/datum/action/xeno_action::icon_file, "psychic_radiance"),
@@ -351,10 +351,10 @@
 			queen_order()
 	return ..()
 
-/datum/action/xeno_action/onclick/manage_hive/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/manage_hive/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/queen_manager = owner
 	plasma_cost = 0
-	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)", "Purchase Buffs")
+	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)", "Permissions", "Purchase Buffs")
 	if(queen_manager.hive.hivenumber == XENO_HIVE_CORRUPTED)
 		var/datum/hive_status/corrupted/hive = queen_manager.hive
 		options += "Add Personal Ally"
@@ -362,7 +362,7 @@
 			options += "Remove Personal Ally"
 			options += "Clear Personal Allies"
 
-	var/choice = tgui_input_list(queen_manager, "Manage The Hive", "Hive Management",  options, theme="hive_status")
+	var/choice = tgui_input_list(queen_manager, "Manage The Hive", "Hive Management", options, theme="hive_status")
 	switch(choice)
 		if("Banish (500)")
 			banish()
@@ -380,9 +380,24 @@
 			remove_personal_ally()
 		if("Clear Personal Allies")
 			clear_personal_allies()
+		if("Permissions")
+			permissions()
 		if("Purchase Buffs")
 			purchase_buffs()
 	return ..()
+
+/datum/action/xeno_action/onclick/manage_hive/proc/permissions()
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	var/choice = tgui_input_list(xeno, "Choose what hive permissions to change.", "Hive Permissions", list("Harming", "Construction", "Deconstruction", "Unnesting"), theme="hive_status")
+	switch(choice)
+		if("Harming")
+			xeno.claw_toggle()
+		if("Construction")
+			xeno.construction_toggle()
+		if("Deconstruction")
+			xeno.destruction_toggle()
+		if("Unnesting")
+			xeno.unnesting_toggle()
 
 /datum/action/xeno_action/onclick/manage_hive/proc/purchase_buffs()
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
@@ -680,7 +695,7 @@
 	action_icon_state = "queen_eye"
 	plasma_cost = 0
 
-/datum/action/xeno_action/onclick/eye/use_ability(atom/A)
+/datum/action/xeno_action/onclick/eye/use_ability(atom/target)
 	. = ..()
 	if(!owner)
 		return
@@ -699,7 +714,7 @@
 	recently_built_turfs = null
 	return ..()
 
-/datum/action/xeno_action/activable/expand_weeds/use_ability(atom/atom)
+/datum/action/xeno_action/activable/expand_weeds/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
 
 	if(!xeno.check_state())
@@ -708,7 +723,7 @@
 	if(!action_cooldown_check())
 		return
 
-	var/turf/turf_to_get = get_turf(atom)
+	var/turf/turf_to_get = get_turf(target)
 
 	if(!turf_to_get || turf_to_get.is_weedable < FULLY_WEEDABLE || turf_to_get.density || !SSmapping.same_z_map(turf_to_get.z, xeno.z))
 		to_chat(xeno, SPAN_XENOWARNING("You can't do that here."))
@@ -918,42 +933,42 @@
 			ghost.show_message(rendered_message, SHOW_MESSAGE_AUDIBLE)
 	return
 
-/datum/action/xeno_action/activable/queen_give_plasma/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/queen/X = owner
-	if(!X.check_state())
+/datum/action/xeno_action/activable/queen_give_plasma/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/queen/queen = owner
+	if(!queen.check_state())
 		return
 
 	if(!action_cooldown_check())
 		return
 
-	var/mob/living/carbon/xenomorph/target = A
-	if(!istype(target) || target.stat == DEAD)
-		to_chat(X, SPAN_WARNING("You must target the xeno you want to give plasma to."))
+	var/mob/living/carbon/xenomorph/target_xeno = target
+	if(!istype(target_xeno) || target_xeno.stat == DEAD)
+		to_chat(queen, SPAN_WARNING("You must target_xeno the xeno you want to give plasma to."))
 		return
 
-	if(target == X)
-		to_chat(X, SPAN_XENOWARNING("We cannot give plasma to yourself!"))
+	if(target_xeno == queen)
+		to_chat(queen, SPAN_XENOWARNING("We cannot give plasma to yourself!"))
 		return
 
-	if(!X.can_not_harm(target))
-		to_chat(X, SPAN_WARNING("You can only target xenos part of your hive!"))
+	if(!queen.can_not_harm(target_xeno))
+		to_chat(queen, SPAN_WARNING("You can only target_xeno xenos part of your hive!"))
 		return
 
-	if(!target.caste.can_be_queen_healed)
-		to_chat(X, SPAN_XENOWARNING("This caste cannot be given plasma!"))
+	if(!target_xeno.caste.can_be_queen_healed)
+		to_chat(queen, SPAN_XENOWARNING("This caste cannot be given plasma!"))
 		return
 
-	if(SEND_SIGNAL(target, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
-		to_chat(X, SPAN_XENOWARNING("This xeno cannot be given plasma!"))
+	if(SEND_SIGNAL(target_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		to_chat(queen, SPAN_XENOWARNING("This xeno cannot be given plasma!"))
 		return
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	target.gain_plasma(target.plasma_max * 0.75)
-	target.flick_heal_overlay(3 SECONDS, COLOR_CYAN)
+	target_xeno.gain_plasma(target_xeno.plasma_max * 0.75)
+	target_xeno.flick_heal_overlay(3 SECONDS, COLOR_CYAN)
 	apply_cooldown()
-	to_chat(X, SPAN_XENONOTICE("You transfer some plasma to [target]."))
+	to_chat(queen, SPAN_XENONOTICE("You transfer some plasma to [target_xeno]."))
 	return ..()
 
 /datum/action/xeno_action/onclick/send_thoughts/proc/queen_order()

@@ -207,7 +207,7 @@ CLIENT_VERB(toggle_adminpm_flash)
 CLIENT_VERB(toggle_be_special)
 	set name = "Toggle SpecialRole Candidacy"
 	set category = "Preferences"
-	set desc = "Toggles which special roles you would like to be a candidate for, during events."
+	set desc = "Toggles which special roles you would like to be a candidate for."
 
 	var/role = tgui_input_list(usr, "Toggle which candidacy?", "Select role", GLOB.be_special_flags)
 	if(!role)

@@ -4258,7 +4258,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/med)
 "alR" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/asphalt/cement/cement14,
 /area/strata/exterior/outpost_platform)
 "alS" = (
@@ -5879,7 +5879,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/mining_outpost)
 "aqh" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/mining_outpost)
 "aqi" = (
@@ -6246,7 +6246,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/strata/interior/mining_outpost)
 "ari" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/prison/floor_plate,
 /area/strata/interior/mining_outpost)
 "arj" = (
@@ -25458,7 +25458,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/lz_caves)
 "buN" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /obj/structure/sign/poster/upp{
 	pixel_y = 33
 	},
@@ -25603,7 +25603,7 @@
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/lz_caves)
 "bvn" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -32341,7 +32341,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/research)
 "bPj" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/restricted)
 "bPk" = (
@@ -33748,7 +33748,7 @@
 /turf/open/floor/carpet,
 /area/strata/exterior/restricted)
 "bSP" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/strata/yellow3/west,
 /area/strata/interior/secure_checkpoint)
@@ -33958,7 +33958,7 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/exterior/restricted)
 "bTu" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/strata/yellow3/west,
 /area/strata/interior/secure_checkpoint)
 "bTv" = (
@@ -39894,7 +39894,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "dCb" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "dCq" = (
@@ -40275,7 +40275,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/underground_dorms/admin3)
 "ebu" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/bball_cave)
 "eco" = (
@@ -41361,7 +41361,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/far_north_outpost)
 "fwi" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/prison/floor_plate,
 /area/strata/interior/mining_outpost)
 "fwq" = (
@@ -42054,7 +42054,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/outpost/med)
 "glG" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/bball)
 "glN" = (
@@ -42423,7 +42423,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/interior/bball_cave)
 "gOC" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/generator_substation)
 "gOF" = (
@@ -43860,7 +43860,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/underground_dorms/med1)
 "iGp" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/generator_substation)
@@ -44542,7 +44542,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/exterior/parts_storage_cave)
 "jBp" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/admin)
 "jBG" = (
@@ -49859,7 +49859,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/strata/exterior/outpost_platform)
 "qDI" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/checkpoints/south)
 "qDM" = (
@@ -50317,7 +50317,7 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/marsh/water)
 "rfB" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/generator_substation)
@@ -50385,7 +50385,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/underground_dorms/admin2)
 "rjn" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/vanyard)
 "rkb" = (
@@ -55763,7 +55763,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/tcomms_engineering_parts_storage)
 "xTU" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/landing_zones/near_lz2)
 "xTZ" = (

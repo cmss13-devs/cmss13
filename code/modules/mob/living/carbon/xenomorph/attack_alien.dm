@@ -377,7 +377,7 @@
 	if(is_wired)
 		M.visible_message(SPAN_DANGER("The barbed wire slices into [M]!"),
 		SPAN_DANGER("The barbed wire slices into us!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		M.apply_damage(10)
+		M.apply_damage(10, enviro=TRUE)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/barricade/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
@@ -390,7 +390,7 @@
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes \the [src] with its tail!"), SPAN_DANGER("We strike \the [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	if(is_wired)
 		xeno.visible_message(SPAN_DANGER("The barbed wire slices into \the [xeno]'s tail!"), SPAN_DANGER("The barbed wire slices into our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		xeno.apply_damage(5)
+		xeno.apply_damage(5, enviro=TRUE)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/surface/rack/attack_alien(mob/living/carbon/xenomorph/M)
@@ -969,7 +969,7 @@
 			if(welded)
 				difficulty = 30 // if its welded shut it should be harder to smash open
 			if(prob(difficulty))
-				break_open()
+				break_open(M)
 				M.visible_message(SPAN_DANGER("[M] smashes \the [src] open!"),
 				SPAN_DANGER("We smash \the [src] open!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		else

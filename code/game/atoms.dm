@@ -276,7 +276,7 @@ directive is properly returned.
 	for(var/atom/A in contents)
 		A.ex_act(severity)
 
-/atom/proc/ex_act(severity)
+/atom/proc/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	if(explo_proof)
 		return
 

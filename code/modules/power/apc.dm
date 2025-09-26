@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 #define APC_UPDATE_ICON_COOLDOWN 100 //10 seconds
 
+#define MAXIMUM_GIVEN_POWER_TO_LOCAL_APC 20000 //20,000W ~ one pacman at maximum output
 
 //The Area Power Controller (APC), formerly Power Distribution Unit (PDU)
 //One per area, needs wire conection to power network
@@ -129,6 +130,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	appearance_flags = TILE_BOUND
 
+	var/list/connected_power_sources = list() //list with all powersources that may power this APC
+
 /obj/structure/machinery/power/apc/Initialize(mapload, ndir, building=0)
 	. = ..()
 
@@ -171,6 +174,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	area.power_equip = 0
 	area.power_environ = 0
 	area.power_change()
+
+	for(var/obj/structure/machinery/power/power_generator/power_system in connected_power_sources)
+		power_system.apc_in_area = null
 
 	if(terminal)
 		terminal.master = null
@@ -1117,14 +1123,46 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 		//Calculate how much power the APC will try to get from the grid.
 		var/target_draw = lastused_total
+
 		if(attempt_charging())
 			target_draw += min((cell_maxcharge - cell.charge), (cell_maxcharge * CHARGELEVEL))/CELLRATE
 		target_draw = min(target_draw, perapc) //Limit power draw by perapc
 
 		//Try to draw power from the grid
 		var/power_drawn = 0
+
+		//Try to draw from local grid
+		var/got_power_from_local_grid = FALSE
+		if(length(connected_power_sources) > 0)
+			var/total_power_generated = 0
+
+			for(var/power_system in connected_power_sources)
+				if(istype(power_system, /obj/structure/machinery/power/power_generator))
+					var/obj/structure/machinery/power/power_generator/generator = power_system
+					if(!generator)
+						LAZYREMOVE(connected_power_sources, power_system)
+						continue
+					if(generator.current_area != current_area)
+						generator.apc_in_area = null
+						LAZYREMOVE(connected_power_sources, power_system)
+						continue
+					if(generator.is_on)
+						total_power_generated += (generator.power_gen_percent / 100) * generator.power_gen
+				else
+					LAZYREMOVE(connected_power_sources, power_system)
+
+			if(total_power_generated > 0)
+				power_drawn = min(total_power_generated, max(target_draw, MAXIMUM_GIVEN_POWER_TO_LOCAL_APC))
+				target_draw = max(target_draw - power_drawn, 0)
+				total_power_generated -= power_drawn
+				add_avail(total_power_generated)
+
+				got_power_from_local_grid = target_draw <= 0
+				charging = APC_CHARGING
+
+		//Try to draw from powernet
 		if(avail())
-			power_drawn = add_load(target_draw) //Get some power from the powernet
+			power_drawn += add_load(target_draw) //Get some power from the powernet
 
 		//Figure out how much power is left over after meeting demand
 		power_excess = power_drawn - lastused_total
@@ -1152,6 +1190,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			main_status = 1
 		else
 			main_status = 2
+
+		if (got_power_from_local_grid)
+			main_status = 3
 
 		//Set channels depending on how much charge we have left
 		// Allow the APC to operate as normal if the cell can charge
@@ -1195,13 +1236,15 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		//Now trickle-charge the cell
 		if(attempt_charging())
 			if(power_excess > 0) //Check to make sure we have enough to charge
-				cell.give(power_excess * CELLRATE) //Actually recharge the cell
+				var/surplus = max(power_excess - cell.give(power_excess * CELLRATE) / CELLRATE, 0) //Actually recharge the cell
+				//Giving surplus to the powernet
+				add_avail(surplus)
 			else
 				charging = APC_NOT_CHARGING //Stop charging
 				chargecount = 0
 
 		//Show cell as fully charged if so
-		if(cell.charge >= cell_maxcharge)
+		if(cell.percent() >= 98)
 			charging = APC_FULLY_CHARGED
 
 		//If we have excess power for long enough, think about re-enable charging.

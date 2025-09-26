@@ -1130,7 +1130,7 @@
 		stored_larva++
 
 /datum/hive_status/corrupted
-	name = FACTION_XENOMORPH_CORRPUTED
+	name = FACTION_XENOMORPH_CORRUPTED
 	reporting_id = "corrupted"
 	hivenumber = XENO_HIVE_CORRUPTED
 	prefix = "Corrupted "

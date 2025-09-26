@@ -21382,6 +21382,7 @@
 	pixel_y = 3;
 	pixel_x = -8
 	},
+/obj/item/tool/crowbar,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "bci" = (
@@ -34757,6 +34758,10 @@
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_1,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
+"bFS" = (
+/obj/structure/closet/wardrobe/medic_white,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/middeck/medical)
 "bFX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -36907,22 +36912,22 @@
 	pixel_x = -8;
 	pixel_y = 0
 	},
-/obj/item/roller/surgical,
-/obj/item/roller/surgical,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/roller/surgical,
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
-	},
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
-	},
 /obj/item/storage/box/bodybags{
 	pixel_y = 12;
 	pixel_x = -8
 	},
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/effect/decal/cleanable/dirt,
 /obj/item/reagent_container/glass/minitank{
 	pixel_x = -16;
 	pixel_y = 5
@@ -57781,14 +57786,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/item/clothing/head/surgery/blue,
-/obj/item/clothing/head/surgery/green,
-/obj/item/clothing/head/surgery/lightblue,
-/obj/item/clothing/under/rank/medical/blue,
-/obj/item/clothing/under/rank/medical/green,
-/obj/item/clothing/under/rank/medical/lightblue,
-/obj/item/storage/belt/medical/full,
-/obj/item/storage/belt/medical/lifesaver/full,
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/lower_medical_medbay)
 "klT" = (
@@ -168212,7 +168209,7 @@ aOj
 avN
 buh
 bnv
-aTF
+bFS
 avN
 avN
 avN

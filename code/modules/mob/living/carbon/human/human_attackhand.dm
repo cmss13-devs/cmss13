@@ -65,7 +65,7 @@
 					else
 						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> fails to perform CPR on <b>[src]</b>."),
 							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))
-						balloon_alert(attacking_mob, "incorrect rhythm. do it slower")
+						balloon_alert(attacking_mob, "incorrect rhythm, do it slower")
 					cpr_cooldown = world.time + 7 SECONDS
 			cpr_attempt_timer = 0
 			return 1
@@ -202,6 +202,8 @@
 		t_him = "him"
 	else if (gender == FEMALE)
 		t_him = "her"
+	else if (gender == PLURAL)
+		t_him = "them"
 	if (w_uniform)
 		w_uniform.add_fingerprint(M)
 

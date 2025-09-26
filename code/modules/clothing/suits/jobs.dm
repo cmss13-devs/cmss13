@@ -301,6 +301,7 @@
 		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST
+	flags_bodypart_hidden = BODY_FLAG_CHEST
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
 	)
@@ -404,6 +405,7 @@
 		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	var/zip_unzip = FALSE
 	actions_types = list(/datum/action/item_action/toggle)
 	item_icons = list(

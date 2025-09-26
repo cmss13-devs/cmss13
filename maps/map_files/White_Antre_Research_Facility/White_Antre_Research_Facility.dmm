@@ -1371,9 +1371,6 @@
 "adp" = (
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/white_antre/indoors/upper_level/records)
-"adq" = (
-/turf/open/slippery,
-/area/white_antre/oob)
 "adr" = (
 /obj/effect/decal/hybrisa/road/lines4{
 	pixel_x = 1;
@@ -16074,6 +16071,14 @@
 	},
 /turf/open/floor/strata/orange_edge/north,
 /area/white_antre/indoors/main_level/weapons)
+"aMp" = (
+/obj/structure/stairs/perspective{
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/almayer_smooth/north,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/landing_zone)
 "aMq" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -19529,6 +19534,14 @@
 	},
 /turf/open/floor/prison/ramptop/north,
 /area/white_antre/indoors/main_level/south_containment)
+"aXa" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/landing_zone)
 "aXb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_smooth_red"
@@ -29660,14 +29673,6 @@
 /obj/effect/mist/steam,
 /turf/open_space,
 /area/white_antre/oob)
-"bzg" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8;
-	layer = 3;
-	pixel_x = 6
-	},
-/turf/open/asphalt/cement/cement2,
-/area/white_antre/landing_zone)
 "bzh" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/platform/stone/strata/north,
@@ -37385,31 +37390,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/weapons)
-"bSA" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8;
-	layer = 3;
-	pixel_x = 6
-	},
-/turf/open/auto_turf/shale/layer2/weedable,
-/area/white_antre/landing_zone)
-"bSB" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8;
-	layer = 3;
-	pixel_x = 6
-	},
-/obj/structure/barricade/handrail/strata{
-	pixel_x = 9
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/white_antre/landing_zone)
 "bSC" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8;
-	layer = 3;
-	pixel_x = 6
-	},
 /obj/structure/stairs/perspective{
 	dir = 10;
 	icon_state = "p_stair_full"
@@ -38067,22 +38048,9 @@
 /turf/open/floor/prison,
 /area/white_antre/outdoors/facility_exterior)
 "bUu" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8;
-	layer = 3;
-	pixel_x = 6
-	},
 /obj/structure/stairs/perspective{
 	dir = 9;
 	icon_state = "p_stair_full"
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/white_antre/landing_zone)
-"bUv" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8;
-	layer = 3;
-	pixel_x = 6
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/landing_zone)
@@ -38755,14 +38723,6 @@
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Brown_Cargo_Barrels,
 /turf/open/asphalt/brown,
 /area/white_antre/outdoors/facility_exterior)
-"bWq" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8;
-	layer = 3;
-	pixel_x = 6
-	},
-/turf/open/asphalt/cement/cement14,
-/area/white_antre/landing_zone)
 "bWr" = (
 /obj/structure/flora/tree/tyrargo/tree_3,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -40827,16 +40787,13 @@
 	dir = 8
 	},
 /obj/item/lightstick/planted,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "ccA" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 10
-	},
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "ccB" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -41851,15 +41808,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/south_field)
-"cfg" = (
-/obj/structure/machinery/door/poddoor/almayer/open{
-	name = "\improper Lockdown";
-	id = "white_entrance";
-	vehicle_resistant = 1;
-	dir = 8
-	},
-/turf/open/floor/corsat/marked,
-/area/white_antre/landing_zone)
 "cfh" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3"
@@ -41974,7 +41922,7 @@
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/grate,
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "cfz" = (
 /obj/item/device/flashlight/lamp/tripod/grey{
@@ -41989,15 +41937,6 @@
 	pixel_x = -2
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/white_antre/outdoors/north_field)
-"cfB" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 10
-	},
-/obj/effect/decal/hybrisa/grate{
-	dir = 1
-	},
-/turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/north_field)
 "cfC" = (
 /obj/item/trash/cigbutt{
@@ -42053,7 +41992,6 @@
 /turf/open/floor/prison,
 /area/white_antre/landing_zone)
 "cfK" = (
-/obj/effect/decal/strata_decals/mud_corner,
 /obj/effect/decal/hybrisa/grate{
 	dir = 4
 	},
@@ -42062,7 +42000,7 @@
 	pixel_x = 5;
 	pixel_y = 22
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "cfL" = (
 /obj/effect/decal/hybrisa/grate{
@@ -52199,7 +52137,7 @@ iKa
 iKa
 iKa
 aKG
-adq
+aKG
 aKG
 aKG
 rIc
@@ -92471,11 +92409,11 @@ kuQ
 kuQ
 kuQ
 iFy
-bzg
-bWq
-bSA
-bUv
-bUv
+pWw
+aKD
+aKF
+aKC
+aKC
 bUu
 bYb
 cfI
@@ -92508,7 +92446,7 @@ ceY
 bWW
 aYD
 bSC
-bSB
+aKC
 bzh
 bzf
 jkE
@@ -92677,8 +92615,8 @@ aYL
 aYD
 bYx
 aKC
-bSA
-bzg
+aKF
+pWw
 iFy
 iFy
 aXQ
@@ -94000,14 +93938,14 @@ atZ
 odB
 oSf
 bbz
-ban
+aXa
 ban
 ban
 bAg
 ban
 ban
 ban
-bae
+aMp
 oSf
 oSf
 nQp
@@ -95346,10 +95284,10 @@ aKC
 aKB
 aLQ
 cfl
-cfg
-cfg
-cfg
-cfg
+cfl
+cfl
+cfl
+cfl
 aLQ
 aKC
 aKC
@@ -100040,7 +99978,7 @@ cbv
 cbs
 baw
 cfG
-cfB
+cfx
 ccz
 ccn
 ccn

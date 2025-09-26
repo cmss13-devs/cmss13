@@ -1254,7 +1254,6 @@
 		XENO_STRUCTURE_EGGMORPH = 999,
 		XENO_STRUCTURE_RECOVERY = 999,
 	)
-	banned_allies = list("All")
 
 /datum/hive_status/tutorial/setup_banned_allies()
 	banned_allies = list("All")

@@ -750,12 +750,24 @@
 			error_idlock(usr)
 			return
 
+var/list/allowed_storage_types = list(
+	/obj/item/storage/belt/medical,
+	/obj/item/storage/pouch/medical,
+	/obj/item/storage/pouch/first_responder,
+	/obj/item/storage/pouch/medkit
+)
+
 /obj/item/storage/pill_bottle/clicked(mob/user, list/mods)
 	if(..())
 		return TRUE
-	if(!istype(loc, /obj/item/storage/belt/medical))
+	var/is_allowed = FALSE
+	for(var/type in allowed_storage_types)
+		if(istype(loc, type))
+			is_allowed = TRUE
+			break
+	if(!is_allowed)
 		return FALSE
-	var/obj/item/storage/belt/medical/M = loc
+	var/obj/item/storage/arbitary_medical_storage/M = loc //Several items have the same mode variable and logic now... Arbitrary object to help ensure we don't do anything dumb
 	if(!M.mode)
 		return FALSE
 	if(!can_storage_interact(user))

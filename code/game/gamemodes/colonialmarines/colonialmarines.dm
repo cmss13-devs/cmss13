@@ -92,7 +92,7 @@
 	qdel(src)
 
 /obj/effect/landmark/lv624/door_blocker/xeno
-	time_to_dispel = 205 SECONDS
+	time_to_dispel = 185 SECONDS
 
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"

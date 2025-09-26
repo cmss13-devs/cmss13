@@ -25,7 +25,7 @@
 	icon_state = "S";
 	dir = 1
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	dir = 1;
 	name = "\improper External Airlock";
 	closeOtherId = "east_barge";
@@ -392,7 +392,7 @@
 /turf/open/floor/almayer/plate,
 /area/shuttle/grs_barge)
 "uO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+/obj/structure/machinery/door/airlock/multi_tile/almayer{
 	dir = 1;
 	id = "starboard_door";
 	closeOtherId = "east_barge";
@@ -560,7 +560,7 @@
 	icon_state = "S";
 	dir = 1
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	dir = 1;
 	name = "\improper External Airlock";
 	closeOtherId = "west_barge";
@@ -755,7 +755,7 @@
 /turf/open/floor/almayer/plate,
 /area/shuttle/grs_barge)
 "Ro" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+/obj/structure/machinery/door/airlock/multi_tile/almayer{
 	dir = 1;
 	id = "port_door";
 	closeOtherId = "west_barge";

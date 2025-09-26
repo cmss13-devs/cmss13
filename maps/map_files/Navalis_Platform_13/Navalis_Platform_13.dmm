@@ -15857,7 +15857,7 @@
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/xeno_growth/residential)
 "aTJ" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_x = 6;
 	pixel_y = -24
@@ -15865,7 +15865,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/navalis/indoors/industrial/power)
 "aTK" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_x = -6;
 	pixel_y = -24
@@ -15873,7 +15873,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/navalis/indoors/industrial/power)
 "aTM" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_y = 32;
 	pixel_x = 8
@@ -15881,7 +15881,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/navalis/indoors/industrial/power)
 "aTN" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_x = -6;
 	pixel_y = 32
@@ -21809,7 +21809,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/navalis/indoors/logistic/mech_bay)
 "cyl" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/south,
 /area/navalis/indoors/command/tertiary_comms)
 "cyp" = (
@@ -21825,7 +21825,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/navalis/indoors/command/upper_deck/starboard)
 "cyG" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/kutjevo,
 /area/navalis/indoors/industrial/power)
 "czB" = (
@@ -22529,7 +22529,7 @@
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
 "dca" = (
-/obj/structure/machinery/power/port_gen/pacman/mrs,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/mrs,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_16";
 	pixel_y = 32
@@ -32239,7 +32239,7 @@
 /turf/open/floor/prison,
 /area/navalis/indoors/command/upper_deck/port)
 "kwC" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/south,
 /area/navalis/indoors/command/tertiary_comms)
 "kwF" = (

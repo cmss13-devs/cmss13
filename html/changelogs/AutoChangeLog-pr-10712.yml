@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Adding a duplicate instanced component in COMPONENT_DUPE_UNIQUE_PASSARGS mode will now qdel the new component"

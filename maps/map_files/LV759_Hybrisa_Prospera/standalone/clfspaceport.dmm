@@ -2665,7 +2665,7 @@
 /area/lv759/indoors/spaceport/cargo)
 "LU" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/power/port_gen,
+/obj/structure/machinery/power/power_generator/port_gen,
 /obj/structure/cable{
 	icon_state = "11-6";
 	color = "#550d0d";
@@ -3351,7 +3351,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 4
 	},
-/obj/structure/machinery/power/port_gen,
+/obj/structure/machinery/power/power_generator/port_gen,
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Xl" = (

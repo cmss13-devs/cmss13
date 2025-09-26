@@ -46,26 +46,26 @@
 	grow = 0.02
 
 /particles/smoke_wave
-	icon = 'icons/effects/96x96.dmi'
-	icon_state = "smoke3_pix"
+	icon = 'icons/effects/particles/generic_particles.dmi'
+	icon_state = list("impact", "impact_2", "impact_3")
 	width = 750
 	height = 750
-	count = 100
-	spawning = 100
+	count = 70
+	spawning = 70
 	lifespan = 15
 	fade = 70
-	gradient = list("#BA9F6D", "#808080", "#FFFFFF")
+	gradient = list("#808080")
 	color = generator(GEN_NUM, 0, 0.25)
 	color_change = generator(GEN_NUM, 0.08, 0.07)
 	velocity = generator(GEN_CIRCLE, 25, 25)
 	rotation = generator(GEN_NUM, -45, 45)
-	scale = 0.25
-	grow = 0.05
+	scale = 2.2
+	grow = 0.1
 	friction = 0.05
 
 /particles/smoke_wave/small
-	count = 45
-	spawning = 45
+	count = 30
+	spawning = 30
 	scale = 0.1
 
 /particles/wave_water
@@ -191,7 +191,7 @@
 	icon_state = "shrapnel_bright2"
 	width = 750
 	height = 750
-	count = 40
+	count = 10
 	spawning = 5
 	lifespan = 0.6 SECONDS
 	fadein = 0.2 SECONDS
@@ -245,25 +245,13 @@
 
 ///Generate the particles
 /obj/effect/temp_visual/explosion/proc/generate_particles(radius, power)
-	var/turf/turf_type = get_turf(src)
-	if(!turf_type.can_bloody)
-		smoke_wave = new(src, /particles/wave_water)
-		dirt_kickup = new(src, /particles/water_splash)
-		sparks = new(src, /particles/sparks_outwards)
-		large_kickup = new(src, /particles/water_splash_large)
+	if(power <= EXPLOSION_THRESHOLD_LOW)
+		smoke_wave = new(src, /particles/smoke_wave/small)
 	else
-		if(power <= EXPLOSION_THRESHOLD_LOW)
-			smoke_wave = new(src, /particles/smoke_wave/small)
-		else
-			smoke_wave = new(src, /particles/smoke_wave)
+		smoke_wave = new(src, /particles/smoke_wave)
 
-		dirt_kickup = new(src, /particles/dirt_kickup)
-		sparks = new(src, /particles/sparks_outwards)
-
-		if(power > EXPLOSION_THRESHOLD_HIGH)
-			large_kickup = new(src, /particles/dirt_kickup_large/deva)
-		else
-			large_kickup = new(src, /particles/dirt_kickup_large)
+	dirt_kickup = new(src, /particles/dirt_kickup)
+	sparks = new(src, /particles/sparks_outwards)
 
 	if(power > EXPLOSION_THRESHOLD_HIGH)
 		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 6 * radius, 6 * radius)
@@ -279,7 +267,6 @@
 	smoke_wave.particles.count = 0
 	sparks.particles.count = 0
 	sparks.particles.spawning = 0
-	large_kickup.particles.count = 0
 
 /obj/effect/temp_visual/explosion/proc/set_count_long()
 	dirt_kickup.particles.count = 0

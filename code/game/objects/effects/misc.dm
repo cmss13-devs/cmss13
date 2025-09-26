@@ -73,8 +73,8 @@
 	icon_state = "smoke"
 	width = 500
 	height = 500
-	count = 45
-	spawning = 45
+	count = 20
+	spawning = 20
 	lifespan = 0.7 SECONDS
 	fade = 0.9 SECONDS
 	grow = 0.1
@@ -89,8 +89,8 @@
 	icon_state = list("mgibbl3" = 1, "mgibbl5" = 1)
 	width = 500
 	height = 500
-	count = 22
-	spawning = 22
+	count = 20
+	spawning = 20
 	lifespan = 1 SECONDS
 	fade = 1.7 SECONDS
 	grow = 0.05

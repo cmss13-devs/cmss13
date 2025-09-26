@@ -1368,6 +1368,11 @@
 "adp" = (
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/white_antre/indoors/upper_level/records)
+"adq" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
+/obj/structure/lz_sign/antre_sign,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/landing_zone)
 "adr" = (
 /obj/effect/decal/hybrisa/road/lines4{
 	pixel_x = 1;
@@ -13087,6 +13092,7 @@
 	pixel_x = -8;
 	pixel_y = 4
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/almayer/silvercorner/west,
 /area/white_antre/indoors/main_level/research)
 "aEU" = (
@@ -14857,6 +14863,7 @@
 /obj/item/tool/kitchen/tray{
 	pixel_y = 8
 	},
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/main_level/research)
 "aIE" = (
@@ -37807,6 +37814,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/lz_sign/antre_sign/facility,
 /turf/open/auto_turf/shale/layer2/weedable,
 /area/white_antre/outdoors/facility_exterior)
 "bTI" = (
@@ -42754,6 +42762,29 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer/blackfull/west,
 /area/white_antre/indoors/main_level/east_containment_hive)
+"chB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
+/turf/open/floor/prison,
+/area/white_antre/outdoors/facility_exterior)
+"chC" = (
+/obj/effect/alien/weeds/kseries,
+/obj/structure/lz_sign/antre_sign/town,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/north_field)
+"chD" = (
+/obj/effect/alien/weeds/kseries,
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -16;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/white_antre/outdoors/north_field)
 "cks" = (
 /turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "zwing2";
@@ -94451,7 +94482,7 @@ ban
 aMp
 oSf
 oSf
-nQp
+adq
 aKC
 aKC
 aKC
@@ -100778,7 +100809,7 @@ kIT
 kIT
 kIT
 kIT
-bfX
+chC
 bfX
 bkr
 bfX
@@ -101114,7 +101145,7 @@ iKa
 ewE
 ewE
 aMH
-bfW
+chD
 bfX
 bfX
 aMS
@@ -105533,7 +105564,7 @@ ajE
 ajE
 ajE
 bTF
-ajE
+chB
 ajE
 ajE
 ajE
@@ -111227,7 +111258,7 @@ aNn
 aNn
 aNn
 aNn
-bZn
+aNn
 asJ
 avt
 avs
@@ -111236,7 +111267,7 @@ atM
 avm
 avl
 asE
-bZn
+aNn
 aNn
 aNn
 aNb
@@ -111395,16 +111426,16 @@ aNn
 aEC
 aEH
 aEC
-bZn
-bZn
 aNn
 aNn
 aNn
 aNn
 aNn
 aNn
-bZn
-bZn
+aNn
+aNn
+aNn
+aNn
 aEg
 aDZ
 aDQ

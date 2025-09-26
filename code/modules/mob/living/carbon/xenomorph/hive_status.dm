@@ -1,5 +1,5 @@
 /datum/hive_status
-	var/name = FACTION_XENOMORPH
+	var/name = "Normal Hive"
 
 	// Used for the faction of the xenomorph. Not recommended to modify.
 	var/internal_faction
@@ -105,10 +105,6 @@
 	var/list/tunnels = list()
 
 	var/list/allies = list()
-	/// The list of factions this hive is forbidden to ally with.
-	var/list/banned_allies
-	/// Admin override var.
-	var/allow_banned_allies = FALSE
 
 	var/list/resin_marks = list()
 
@@ -195,8 +191,6 @@
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
 
-	setup_banned_allies()
-
 ///Generate the image()'s requried for the evolution radial menu.
 /datum/hive_status/proc/generate_evo_menu_images()
 	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
@@ -245,10 +239,6 @@
 
 		if(issynth(current_mob))
 			to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're informing others to change form. You begin to analyze and decrypt the strange vocalization."))
-
-/datum/hive_status/proc/setup_banned_allies()
-	banned_allies = DEFAULT_ALLY_BAN_LIST
-	banned_allies -= name
 
 /// Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(mob/living/carbon/xenomorph/X)
@@ -1125,7 +1115,7 @@
 		stored_larva++
 
 /datum/hive_status/corrupted
-	name = FACTION_XENOMORPH_CORRUPTED
+	name = "Corrupted Hive"
 	reporting_id = "corrupted"
 	hivenumber = XENO_HIVE_CORRUPTED
 	prefix = "Corrupted "
@@ -1151,11 +1141,8 @@
 		return TRUE
 	return FALSE
 
-/datum/hive_status/corrupted/setup_banned_allies()
-	banned_allies = list(FACTION_XENOMORPH_TUTORIAL, FACTION_XENOMORPH_HELLHOUNDS)
-
 /datum/hive_status/alpha
-	name = FACTION_XENOMORPH_ALPHA
+	name = "Alpha Hive"
 	reporting_id = "alpha"
 	hivenumber = XENO_HIVE_ALPHA
 	prefix = "Alpha "
@@ -1166,7 +1153,7 @@
 	dynamic_evolution = FALSE
 
 /datum/hive_status/bravo
-	name = FACTION_XENOMORPH_BRAVO
+	name = "Bravo Hive"
 	reporting_id = "bravo"
 	hivenumber = XENO_HIVE_BRAVO
 	prefix = "Bravo "
@@ -1177,7 +1164,7 @@
 	dynamic_evolution = FALSE
 
 /datum/hive_status/charlie
-	name = FACTION_XENOMORPH_CHARLIE
+	name = "Charlie Hive"
 	reporting_id = "charlie"
 	hivenumber = XENO_HIVE_CHARLIE
 	prefix = "Charlie "
@@ -1188,7 +1175,7 @@
 	dynamic_evolution = FALSE
 
 /datum/hive_status/delta
-	name = FACTION_XENOMORPH_DELTA
+	name = "Delta Hive"
 	reporting_id = "delta"
 	hivenumber = XENO_HIVE_DELTA
 	prefix = "Delta "
@@ -1199,7 +1186,7 @@
 	dynamic_evolution = FALSE
 
 /datum/hive_status/feral
-	name = FACTION_XENOMORPH_FERAL
+	name = "Feral Hive"
 	reporting_id = "feral"
 	hivenumber = XENO_HIVE_FERAL
 	prefix = "Feral "
@@ -1215,7 +1202,7 @@
 	tacmap_requires_queen_ovi = FALSE
 
 /datum/hive_status/forsaken
-	name = FACTION_XENOMORPH_FORSAKEN
+	name = "Forsaken Hive"
 	reporting_id = "forsaken"
 	hivenumber = XENO_HIVE_FORSAKEN
 	prefix = "Forsaken "
@@ -1236,7 +1223,7 @@
 	return FALSE
 
 /datum/hive_status/tutorial
-	name = FACTION_XENOMORPH_TUTORIAL
+	name = "Tutorial Hive"
 	reporting_id = "tutorial"
 	hivenumber = XENO_HIVE_TUTORIAL
 	prefix = "Inquisitive "
@@ -1255,14 +1242,11 @@
 		XENO_STRUCTURE_RECOVERY = 999,
 	)
 
-/datum/hive_status/tutorial/setup_banned_allies()
-	banned_allies = list("All")
-
 /datum/hive_status/tutorial/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE
 
 /datum/hive_status/yautja
-	name = FACTION_XENOMORPH_HELLHOUNDS
+	name = "Hellhound Pack"
 	reporting_id = "hellhounds"
 	hivenumber = XENO_HIVE_YAUTJA
 	internal_faction = FACTION_YAUTJA
@@ -1281,7 +1265,7 @@
 	return FALSE
 
 /datum/hive_status/mutated
-	name = FACTION_XENOMORPH_MUTATED
+	name = "Mutated Hive"
 	reporting_id = "mutated"
 	hivenumber = XENO_HIVE_MUTATED
 	prefix = "Mutated "
@@ -1292,7 +1276,7 @@
 	latejoin_burrowed = FALSE
 
 /datum/hive_status/corrupted/tamed
-	name = FACTION_XENOMORPH_TAMED
+	name = "Tamed Hive"
 	reporting_id = "tamed"
 	hivenumber = XENO_HIVE_TAMED
 	prefix = "Tamed "
@@ -1307,10 +1291,6 @@
 
 	var/mob/living/carbon/human/leader
 	var/list/allied_factions
-
-// Tamed allies are handled differently.
-/datum/hive_status/corrupted/tamed/setup_banned_allies()
-	banned_allies = list("All")
 
 /datum/hive_status/corrupted/tamed/New()
 	. = ..()
@@ -1360,7 +1340,7 @@
 	return ..()
 
 /datum/hive_status/corrupted/renegade
-	name = FACTION_XENOMORPH_RENEGADE
+	name = "Renegade Hive"
 	reporting_id = "renegade"
 	hivenumber = XENO_HIVE_RENEGADE
 	prefix = "Renegade "
@@ -1377,9 +1357,6 @@
 	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
 	for(var/faction in FACTION_LIST_HUMANOID) //renegades allied to all humanoids, but it mostly affects structures. Their ability to attack humanoids and other xenos (including of the same hive) depends on iff settings
 		allies[faction] = TRUE
-
-/datum/hive_status/corrupted/renegade/setup_banned_allies()
-	banned_allies = FACTION_LIST_XENOMORPH
 
 /datum/hive_status/corrupted/renegade/can_spawn_as_hugger(mob/dead/observer/user)
 	to_chat(user, SPAN_WARNING("The [name] cannot support facehuggers."))
@@ -1422,8 +1399,6 @@
 
 /datum/hive_status/proc/change_stance(faction, should_ally)
 	if(faction == name)
-		return
-	if(!allow_banned_allies && should_ally && (("All" in banned_allies) || (faction in banned_allies)))
 		return
 	if(allies[faction] == should_ally)
 		return

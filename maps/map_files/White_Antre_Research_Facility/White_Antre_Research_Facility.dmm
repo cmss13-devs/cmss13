@@ -11155,6 +11155,10 @@
 /obj/structure/machinery/light/double,
 /turf/open/floor/prison/ramptop/east,
 /area/white_antre/indoors/main_level/north_containment)
+"aAi" = (
+/obj/structure/barricade/handrail,
+/turf/open/floor/prison/green,
+/area/white_antre/indoors/upper_level/east_corridor)
 "aAk" = (
 /obj/structure/stairs/multiz/up{
 	dir = 4
@@ -26493,10 +26497,16 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brH" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brI" = (
@@ -26632,6 +26642,7 @@
 	dir = 8;
 	pixel_y = -5
 	},
+/obj/structure/barricade/handrail,
 /turf/open/floor/prison/green,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brY" = (
@@ -153838,7 +153849,7 @@ bsc
 bsc
 bqN
 bqN
-bhy
+aAi
 bhs
 bhs
 bhs

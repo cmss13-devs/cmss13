@@ -205,12 +205,13 @@
 	name = "White Antre - Prime Hive Containment Holding Bay - Ground"
 	icon_state = "tumor1"
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/white_antre/indoors/main_level/east_containment_hive
 	name = "White Antre - Prime Hive Containment Zone - Ground"
 	icon_state = "tumor2"
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
-	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 	ceiling_muffle = FALSE
 

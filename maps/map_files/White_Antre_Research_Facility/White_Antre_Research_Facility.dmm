@@ -5094,11 +5094,11 @@
 /turf/open/asphalt/brown,
 /area/white_antre/outdoors/path_north)
 "alO" = (
-/obj/structure/machinery/power/reactor/colony,
 /obj/structure/sign/safety/high_voltage{
 	pixel_x = 16;
 	pixel_y = -31
 	},
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/prison/bright_clean,
 /area/white_antre/indoors/main_level/engineering)
 "alP" = (
@@ -5601,7 +5601,6 @@
 	layer = 2.9;
 	pixel_y = 9
 	},
-/obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/prison/bright_clean,
 /area/white_antre/indoors/main_level/engineering)
 "amR" = (
@@ -8722,7 +8721,7 @@
 /turf/open/floor/almayer_hull,
 /area/white_antre/indoors/main_level/engineering)
 "aug" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/almayer/blackfull/west,
 /area/white_antre/indoors/main_level/east_containment)
 "auh" = (
@@ -25904,10 +25903,10 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/white_antre/indoors/pmc_dropship)
 "bpz" = (
-/obj/structure/machinery/power/reactor/colony,
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_y = -32
 	},
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/prison/bright_clean,
 /area/white_antre/indoors/main_level/engineering)
 "bpA" = (
@@ -40748,10 +40747,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/north_field)
-"cch" = (
-/obj/structure/machinery/power/port_gen/pacman,
-/turf/open/auto_turf/sand_white/layer0,
-/area/white_antre/outdoors/north_field)
 "cci" = (
 /obj/structure/prop/invuln/ice_prefab,
 /turf/open/auto_turf/sand_white/layer0,
@@ -40953,6 +40948,11 @@
 /obj/structure/fence/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/white_antre/outdoors/north_field)
+"ccG" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/weldingtool/largetank,
+/turf/open/floor/prison/bright_clean,
+/area/white_antre/indoors/main_level/engineering)
 "ccH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -41887,7 +41887,6 @@
 /turf/open/floor/hybrisa/carpet/blue_grey,
 /area/white_antre/indoors/main_level/dorms)
 "dJV" = (
-/obj/structure/machinery/power/reactor/colony,
 /obj/structure/sign/safety/high_voltage{
 	pixel_x = 16;
 	pixel_y = -31
@@ -44955,7 +44954,7 @@
 /turf/open/floor/almayer/black2/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "odb" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/prison/bright_clean,
 /area/white_antre/indoors/main_level/engineering)
 "odm" = (
@@ -99762,7 +99761,7 @@ aMJ
 ccy
 ccq
 ccl
-cch
+aMI
 ccf
 iKa
 iKa
@@ -108652,7 +108651,7 @@ aoC
 auo
 xYp
 atT
-odb
+ccG
 odb
 odb
 bZo

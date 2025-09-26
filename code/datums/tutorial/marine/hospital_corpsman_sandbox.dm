@@ -441,7 +441,7 @@
 	agent.updatehealth()
 	if(!bypass)
 		if(agent.undefibbable == TRUE)
-			agent.balloon_alert_to_viewers("[agent.name] permanently dead!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+			agent.balloon_alert_to_viewers("[agent.name] is permanently dead!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
 			playsound(agent.loc, 'sound/items/defib_failed.ogg', 20)
 		else
 			agent.balloon_alert_to_viewers("[agent.name] fully treated!")

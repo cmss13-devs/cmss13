@@ -135,7 +135,12 @@
 				marine_rk = "cmp"
 				border_rk = "command"
 			if(JOB_POLICE)
-				marine_rk = "mp"
+				if(current_human.rank_fallback == "hgmp")
+					marine_rk = "hgmp"
+				else
+					marine_rk = "mp"
+			if(JOB_POLICE_HG)
+				marine_rk = "hgmp"
 			if(JOB_TANK_CREW)
 				marine_rk = "tc"
 			if(JOB_WARDEN)

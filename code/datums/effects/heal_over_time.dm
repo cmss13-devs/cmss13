@@ -38,6 +38,6 @@
 	if(affected_atom)
 		var/mob/living/carbon/xenomorph/xeno = affected_atom
 		if(istype(xeno) && show_baloon_alert)
-			xeno.balloon_alert(xeno, "our regeneration speed returns to normal.", text_color = "#17991b80")
+			xeno.balloon_alert(xeno, "our regen speed returns to normal", text_color = "#17991b80")
 			playsound(xeno, 'sound/effects/squish_and_exhaust.ogg', 25, 1)
 	return ..()

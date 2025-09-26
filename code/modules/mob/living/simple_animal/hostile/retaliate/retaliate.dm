@@ -40,7 +40,7 @@
 			buddy.enemies |= enemies
 	return 0
 
-/mob/living/simple_animal/hostile/retaliate/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force)
+/mob/living/simple_animal/hostile/retaliate/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force, enviro)
 	Retaliate()
 	return ..()
 

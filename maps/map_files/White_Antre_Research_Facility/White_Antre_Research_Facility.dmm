@@ -257,11 +257,6 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/weapon/gun/flamer/m240{
-	current_mag = null;
-	layer = 3.1;
-	pixel_y = 4
-	},
 /obj/item/ammo_magazine/flamer_tank{
 	pixel_x = -6
 	},
@@ -370,13 +365,6 @@
 /area/white_antre/indoors/main_level/east_containment)
 "abp" = (
 /obj/item/prop{
-	desc = "Something tore this apart.";
-	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
-	icon_state = "defense_base_off";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
-/obj/item/prop{
 	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
@@ -389,6 +377,11 @@
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /obj/item/ammo_casing/bullet,
+/obj/structure/machinery/defenses/sentry/premade/antre_wy/random{
+	omni_directional = 1;
+	sentry_range = 6;
+	dir = 4
+	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/east_containment)
 "abq" = (
@@ -1336,14 +1329,6 @@
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/white_antre/indoors/upper_level/records)
 "adk" = (
-/obj/structure/filingcabinet{
-	pixel_x = 8;
-	pixel_y = -3
-	},
-/obj/structure/filingcabinet{
-	pixel_x = -8;
-	pixel_y = -3
-	},
 /obj/effect/decal/hybrisa/road/lines2{
 	pixel_y = 1;
 	color = "#AFE1AF"
@@ -1352,17 +1337,9 @@
 	pixel_x = -1;
 	color = "#AFE1AF"
 	},
-/turf/open/floor/hybrisa/carpet/carpetgreen,
+/turf/closed/wall/hybrisa/research,
 /area/white_antre/indoors/upper_level/records)
 "adl" = (
-/obj/structure/filingcabinet{
-	pixel_x = 8;
-	pixel_y = -3
-	},
-/obj/structure/filingcabinet{
-	pixel_x = -8;
-	pixel_y = -3
-	},
 /obj/effect/decal/hybrisa/road/lines2{
 	pixel_y = 1;
 	color = "#AFE1AF"
@@ -1371,7 +1348,7 @@
 	pixel_x = 1;
 	color = "#AFE1AF"
 	},
-/turf/open/floor/hybrisa/carpet/carpetgreen,
+/turf/closed/wall/hybrisa/research,
 /area/white_antre/indoors/upper_level/records)
 "adm" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -1381,14 +1358,6 @@
 /turf/open/auto_turf/snow/layer4,
 /area/white_antre/oob)
 "ado" = (
-/obj/structure/filingcabinet{
-	pixel_x = 8;
-	pixel_y = -3
-	},
-/obj/structure/filingcabinet{
-	pixel_x = -8;
-	pixel_y = -3
-	},
 /obj/effect/decal/hybrisa/road/lines1{
 	pixel_x = -1;
 	color = "#AFE1AF"
@@ -1397,31 +1366,12 @@
 	pixel_y = 1;
 	color = "#AFE1AF"
 	},
-/turf/open/floor/hybrisa/carpet/carpetgreen,
+/turf/closed/wall/hybrisa/research,
 /area/white_antre/indoors/upper_level/records)
 "adp" = (
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/white_antre/indoors/upper_level/records)
-"adq" = (
-/obj/structure/filingcabinet{
-	pixel_x = 8;
-	pixel_y = -3
-	},
-/obj/structure/filingcabinet{
-	pixel_x = -8;
-	pixel_y = -3
-	},
-/turf/open/floor/hybrisa/carpet/carpetgreen,
-/area/white_antre/indoors/upper_level/records)
 "adr" = (
-/obj/structure/filingcabinet{
-	pixel_x = 8;
-	pixel_y = -3
-	},
-/obj/structure/filingcabinet{
-	pixel_x = -8;
-	pixel_y = -3
-	},
 /obj/effect/decal/hybrisa/road/lines4{
 	pixel_x = 1;
 	color = "#AFE1AF"
@@ -1430,7 +1380,7 @@
 	pixel_y = 1;
 	color = "#AFE1AF"
 	},
-/turf/open/floor/hybrisa/carpet/carpetgreen,
+/turf/closed/wall/hybrisa/research,
 /area/white_antre/indoors/upper_level/records)
 "ads" = (
 /obj/structure/filingcabinet{
@@ -7580,16 +7530,6 @@
 	},
 /turf/open/floor/strata,
 /area/white_antre/indoors/main_level/dorms)
-"aqW" = (
-/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
-	dir = 8
-	},
-/obj/structure/machinery/space_heater/radiator/red,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/strata,
-/area/white_antre/indoors/main_level/dorms)
 "aqX" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_8";
@@ -7603,6 +7543,10 @@
 "aqY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/double,
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
 /turf/open/floor/prison/bluefull,
 /area/white_antre/indoors/main_level/dorms)
 "aqZ" = (
@@ -7969,20 +7913,6 @@
 /turf/open/floor/almayer/green2/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "arR" = (
-/obj/item/prop{
-	desc = "Something tore this apart.";
-	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
-	icon_state = "defense_base_off";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
-/obj/item/prop{
-	desc = "The turret is hanging on by a thread. Something tore this apart.";
-	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
-	icon_state = "Normal wy_sentry_destroyed";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_red"
 	},
@@ -7995,6 +7925,11 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/structure/machinery/defenses/sentry/premade/antre_wy/random{
+	omni_directional = 1;
+	sentry_range = 6;
+	dir = 4
+	},
 /turf/open/floor/almayer/green2/northeast,
 /area/white_antre/indoors/main_level/west_corridor)
 "arS" = (
@@ -9026,20 +8961,6 @@
 /turf/open/floor/almayer/blue2,
 /area/white_antre/indoors/main_level/east_corridor)
 "auW" = (
-/obj/item/prop{
-	desc = "Something tore this apart.";
-	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
-	icon_state = "defense_base_off";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
-/obj/item/prop{
-	desc = "The turret is hanging on by a thread. Something tore this apart.";
-	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
-	icon_state = "Normal wy_sentry_destroyed";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_red"
 	},
@@ -9051,6 +8972,11 @@
 	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/structure/machinery/defenses/sentry/premade/antre_wy/random{
+	omni_directional = 1;
+	sentry_range = 6;
+	dir = 4
+	},
 /turf/open/floor/almayer/blue2/southeast,
 /area/white_antre/indoors/main_level/east_corridor)
 "auX" = (
@@ -14272,20 +14198,6 @@
 /turf/open/floor/almayer/orange,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHl" = (
-/obj/item/prop{
-	desc = "Something tore this apart.";
-	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
-	icon_state = "defense_base_off";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
-/obj/item/prop{
-	desc = "The turret is hanging on by a thread. Something tore this apart.";
-	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
-	icon_state = "Normal wy_sentry_destroyed";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_red"
 	},
@@ -14297,6 +14209,11 @@
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /obj/effect/decal/remains/robot{
 	pixel_x = -10
+	},
+/obj/structure/machinery/defenses/sentry/premade/antre_wy/random{
+	omni_directional = 1;
+	sentry_range = 6;
+	dir = 4
 	},
 /turf/open/floor/almayer/orange/southeast,
 /area/white_antre/indoors/upper_level/east_corridor)
@@ -21664,13 +21581,6 @@
 /area/white_antre/indoors/exterior/checkpoint)
 "bcj" = (
 /obj/item/prop{
-	desc = "Something tore this apart.";
-	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
-	icon_state = "defense_base_off";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
-/obj/item/prop{
 	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
@@ -21689,6 +21599,11 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/structure/machinery/defenses/sentry/premade/antre_wy/random{
+	omni_directional = 1;
+	sentry_range = 6;
+	dir = 4
+	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/east_containment)
 "bck" = (
@@ -33781,7 +33696,7 @@
 	light_range = 5;
 	pixel_y = 32
 	},
-/turf/open/floor/hybrisa/carpet/carpetgreen,
+/turf/closed/wall/hybrisa/research,
 /area/white_antre/indoors/upper_level/records)
 "bJe" = (
 /obj/effect/decal/hybrisa/road/lines2{
@@ -39820,10 +39735,6 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/white_antre/indoors/main_level/south_containment)
-"bZB" = (
-/obj/structure/machinery/defenses/sentry/premade/deployable/colony,
-/turf/open/floor/prison/darkbrown2/west,
-/area/white_antre/indoors/main_level/east_containment)
 "bZC" = (
 /obj/effect/mist/steam{
 	pixel_x = 10;
@@ -40238,6 +40149,10 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/white_antre/outdoors/north_field)
+"caL" = (
+/obj/effect/landmark/lv624/door_blocker/xeno,
+/turf/closed/wall/r_wall/biodome,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "caM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -41219,7 +41134,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/exterior/prefab_4)
 "cdk" = (
-/obj/structure/machinery/door/airlock/hybrisa/generic_solid,
+/obj/structure/machinery/door/airlock/hybrisa/generic_solid/autoname,
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/exterior/prefab_4)
 "cdl" = (
@@ -41362,6 +41277,35 @@
 "cdH" = (
 /turf/open/slippery/roof/dir/north,
 /area/white_antre/outdoors/north_field)
+"cdI" = (
+/obj/effect/landmark/lv624/door_blocker/xeno,
+/turf/closed/wall/hybrisa/research/reinforced,
+/area/white_antre/indoors/main_level/east_containment)
+"cdJ" = (
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/white_antre/indoors/main_level/west_corridor)
+"cdK" = (
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 1;
+	color = "#AFE1AF"
+	},
+/turf/closed/wall/hybrisa/research,
+/area/white_antre/indoors/upper_level/records)
+"cdL" = (
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = -3
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = -3
+	},
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 1;
+	color = "#AFE1AF"
+	},
+/turf/closed/wall/hybrisa/research,
+/area/white_antre/indoors/upper_level/records)
 "cdP" = (
 /obj/structure/prop/hybrisa/airport/refuelinghose{
 	pixel_x = -13;
@@ -45155,7 +45099,17 @@
 /turf/open/floor/almayer/silver,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "oxi" = (
-/obj/structure/largecrate/supply/weapons/flamers,
+/obj/item/weapon/gun/flamer/m240{
+	current_mag = null;
+	layer = 3.1;
+	pixel_y = 4
+	},
+/obj/structure/surface/rack,
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank,
 /turf/open/floor/strata/red4/west,
 /area/white_antre/indoors/main_level/security)
 "oyK" = (
@@ -105664,7 +105618,7 @@ atp
 atp
 atp
 atp
-bZm
+atp
 akt
 akq
 atA
@@ -105672,7 +105626,7 @@ mrA
 akk
 atB
 aRI
-bZm
+atp
 atp
 atp
 atp
@@ -105832,15 +105786,15 @@ atp
 pOm
 arj
 dJK
-bZm
-bZk
+atp
+cdJ
 iSx
 ako
 akm
 hrX
 aki
-bZm
-bZm
+atp
+atp
 aDT
 apJ
 iMb
@@ -108017,13 +107971,13 @@ azz
 atp
 arf
 aqV
-bZm
+atp
 aqM
 aqH
 rGs
 qwh
 rGs
-bZm
+atp
 cTO
 apT
 apO
@@ -108184,7 +108138,7 @@ ffs
 dkf
 atp
 omd
-aqW
+aqV
 bZm
 bZm
 pyk
@@ -108365,8 +108319,8 @@ att
 apQ
 nZu
 awk
-bZm
-bZm
+atp
+atp
 asg
 bSh
 aKh
@@ -108515,7 +108469,7 @@ aKh
 bSh
 atP
 akJ
-bZm
+atp
 dYZ
 dkf
 atq
@@ -108533,7 +108487,7 @@ att
 cIf
 vkP
 awl
-bZm
+atp
 apl
 ash
 arY
@@ -108682,7 +108636,7 @@ alj
 aIQ
 bSh
 akV
-bZm
+atp
 bZm
 btB
 btB
@@ -108702,7 +108656,7 @@ cIf
 qHM
 apx
 bZm
-bZm
+atp
 aoj
 bSh
 aKh
@@ -110370,11 +110324,11 @@ aEb
 cbM
 tMw
 bZn
-bZn
+aNn
 auU
 bSp
 aKs
-bZi
+aJW
 bZi
 vMy
 aLv
@@ -110538,11 +110492,11 @@ aEc
 bUd
 aDG
 bZn
-bZn
+aNn
 aHW
 awn
 aHK
-bZi
+aJW
 bZi
 aVb
 aLv
@@ -110710,7 +110664,7 @@ bZn
 aHX
 bTP
 aMC
-bZi
+aJW
 bZi
 aVc
 aLv
@@ -113226,11 +113180,11 @@ uaZ
 uaZ
 aDN
 bZn
-bZn
+aNn
 aKs
 bTQ
 aHP
-bZi
+aJW
 bZi
 lNR
 aLp
@@ -113394,11 +113348,11 @@ mRU
 aDW
 aDO
 bZn
-bZn
+aNn
 aIb
 aFC
 aHQ
-bZi
+aJW
 bZi
 aMo
 fnq
@@ -113562,11 +113516,11 @@ aEf
 aDX
 aDP
 bZn
-bZn
+aNn
 aMC
 bTP
 aMC
-bZi
+aJW
 bZi
 aVB
 fnq
@@ -115914,7 +115868,7 @@ bcm
 aLB
 aZv
 aLB
-bZB
+aLB
 aLx
 aKI
 abA
@@ -118246,17 +118200,17 @@ iKa
 iKa
 euM
 ozb
-ayM
+caL
 azm
 azb
 azb
 azb
 ayP
-ayM
+caL
 ozb
 ozb
-ayM
-aPV
+caL
+cdI
 uJj
 uJj
 uJj
@@ -118267,9 +118221,9 @@ uJj
 uJj
 uJj
 uJj
-aPV
-aPV
-aPV
+cdI
+cdI
+cdI
 uJj
 uJj
 uJj
@@ -118280,17 +118234,17 @@ uJj
 uJj
 uJj
 uJj
-aPV
-ayM
+cdI
+caL
 ozb
 ozb
-ayM
+caL
 azm
 azb
 azb
 azb
 ayP
-ayM
+caL
 ozb
 euM
 iKa
@@ -146972,11 +146926,11 @@ bjx
 bjx
 bJA
 bjt
-acV
+cdK
 bIQ
 bRJ
 bjf
-acV
+cdK
 acQ
 bjj
 bjj
@@ -147140,11 +147094,11 @@ bju
 bju
 bjt
 bjt
-acV
+cdK
 acQ
 bRJ
 bjf
-acV
+cdK
 bVR
 bjj
 bjj
@@ -147644,15 +147598,15 @@ bjD
 bJM
 bjt
 adu
-adq
-acQ
+adp
+acR
 bRJ
 bjf
-acV
+cdK
 acQ
 bjj
 bjj
-acV
+cdK
 acQ
 bjt
 bHm
@@ -147816,11 +147770,11 @@ bJd
 bHx
 bRJ
 bjf
-acV
+cdK
 bVS
 bjj
 bjj
-acV
+cdK
 bHx
 bjt
 bHn
@@ -147980,15 +147934,15 @@ bKu
 bJZ
 bJB
 bjt
-acV
+cdL
 acQ
 bRJ
 bjf
-acV
+cdK
 acQ
 bjj
 bjj
-acV
+cdK
 acQ
 bjt
 bHn
@@ -148484,11 +148438,11 @@ bKw
 bKb
 bJE
 bjt
-acV
+cdK
 bVS
 bRJ
 bjf
-acV
+cdK
 acQ
 bjj
 bHO
@@ -148652,11 +148606,11 @@ bKx
 bKb
 bJE
 bjt
-acV
+cdK
 acQ
 bRJ
 bjf
-acV
+cdK
 bHx
 bjj
 add
@@ -154862,8 +154816,8 @@ spC
 spC
 spC
 spC
-spC
-spC
+iKa
+iKa
 iKa
 iKa
 iKa

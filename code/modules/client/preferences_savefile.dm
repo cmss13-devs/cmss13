@@ -387,6 +387,8 @@
 
 	S["show_cooldown_messages"] >> show_cooldown_messages
 
+	S["chem_presets"] >> chem_presets
+
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
@@ -480,6 +482,8 @@
 	loadout_slot_names = sanitize_islist(loadout_slot_names, list())
 
 	show_cooldown_messages = sanitize_integer(show_cooldown_messages, FALSE, TRUE, FALSE)
+
+	chem_presets = sanitize_islist(chem_presets, list())
 
 	check_keybindings()
 	S["key_bindings"] << key_bindings
@@ -636,6 +640,8 @@
 
 	S["show_cooldown_messages"] << show_cooldown_messages
 
+	S["chem_presets"] << chem_presets
+
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
@@ -708,6 +714,9 @@
 	S["flavor_texts_hands"] >> flavor_texts["hands"]
 	S["flavor_texts_legs"] >> flavor_texts["legs"]
 	S["flavor_texts_feet"] >> flavor_texts["feet"]
+	S["flavor_texts_helmet"] >> flavor_texts["helmet"]
+	S["flavor_texts_armor"] >> flavor_texts["armor"]
+
 
 	//Miscellaneous
 	S["med_record"] >> med_record
@@ -871,6 +880,8 @@
 	S["flavor_texts_hands"] << flavor_texts["hands"]
 	S["flavor_texts_legs"] << flavor_texts["legs"]
 	S["flavor_texts_feet"] << flavor_texts["feet"]
+	S["flavor_texts_helmet"] << flavor_texts["helmet"]
+	S["flavor_texts_armor"] << flavor_texts["armor"]
 
 	//Miscellaneous
 	S["med_record"] << med_record

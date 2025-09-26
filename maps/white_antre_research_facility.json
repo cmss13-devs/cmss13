@@ -11,6 +11,9 @@
         "/datum/equipment_preset/survivor_antre/doctor",
         "/datum/equipment_preset/survivor_antre/maint_engineer"
     ],
+	"CO_survivor_types": [
+        "/datum/equipment_preset/survivor_antre/director_kadinsky"
+    ],
     "survivor_message": "You are currently within the White Antre Research Facility, as an employee. Today is the big day, a new round of tests and a visit by corporate and government agents. Just another day at the office.",
     "announce_text": "USS Almayer, this is Director Kadinsky of the White Antre Research Facility, welcome. I have been informed by my superiors that you have been dispatched to collect a classified cargo shipment for transport to Chinook station and to observe the on-going live-fire xenomorph testing being conducted at this site.\n\nYou’ll be joined by Azure-15, of the Whiteguard PMC. Further information will be sent after your arrival.\n\nPlease inform your corporate liaison that I look forward to seeing them again. Kadinsky out.",
     "map_item_type": "/obj/item/map/white_antre_map",

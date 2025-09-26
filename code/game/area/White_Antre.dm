@@ -213,7 +213,8 @@
 	name = "White Antre - Prime Hive Containment Holding Bay - Ground"
 	icon_state = "tumor1"
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
-	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	ceiling_muffle = FALSE
 
 /area/white_antre/indoors/main_level/east_containment_hive
 	name = "White Antre - Prime Hive Containment Zone - Ground"
@@ -237,6 +238,18 @@
 /area/white_antre/indoors/underground_level/east_maint
 	name = "White Antre Research Facility - East Maintenance - Underground"
 	icon_state = "maints"
+
+/area/white_antre/indoors/underground_level/gonzo
+	name = "Gonzo's hide-out"
+	icon_state = "cliff_blocked"
+	ceiling = CEILING_MAX
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+	minimap_color = MINIMAP_AREA_OOB
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	requires_power = FALSE
+	ceiling_muffle = FALSE
 
 //White Antre Facility - Above Ground
 

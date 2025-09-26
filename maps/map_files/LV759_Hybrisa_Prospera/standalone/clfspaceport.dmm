@@ -3,6 +3,16 @@
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
 /turf/open/floor/almayer/cargo,
 /area/lv759/indoors/spaceport/cargo)
+"ab" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = -5
+	},
+/obj/item/flag/plantable/clf,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo)
 "ai" = (
 /turf/closed/shuttle/dropship5/CLF/Fire{
 	icon_state = "36_alt"
@@ -1821,7 +1831,7 @@
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
 "yH" = (
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4,
+/obj/structure/prop/hybrisa/supermart/freezer/freezer4,
 /turf/closed/wall/hybrisa/spaceport/reinforced,
 /area/lv759/indoors/spaceport/kitchen)
 "yN" = (
@@ -2451,6 +2461,7 @@
 /area/lv759/indoors/spaceport/clf_dropship)
 "IS" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/floor/almayer/cargo,
 /area/lv759/indoors/spaceport/cargo)
 "Jp" = (
@@ -2654,7 +2665,7 @@
 /area/lv759/indoors/spaceport/cargo)
 "LU" = (
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/power/port_gen,
+/obj/structure/machinery/power/power_generator/port_gen,
 /obj/structure/cable{
 	icon_state = "11-6";
 	color = "#550d0d";
@@ -3340,7 +3351,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 4
 	},
-/obj/structure/machinery/power/port_gen,
+/obj/structure/machinery/power/power_generator/port_gen,
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Xl" = (
@@ -4195,7 +4206,7 @@ jq
 Mr
 Ie
 fT
-Na
+ab
 Kf
 UX
 uu

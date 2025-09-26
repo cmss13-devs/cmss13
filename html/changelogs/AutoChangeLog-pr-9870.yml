@@ -1,6 +1,0 @@
-author: "Zenith00000"
-delete-after: True
-changes:
-  - bugfix: "fixes sand & mud_corners & edges, stops them from being deleted from explosions."
-  - maptweak: "various very minor tweaks to Hybrisa & Soro, with lot's of decal tidying up on Hybrisa specifically."
-  - imageadd: "added stain & goo icons, which were previously only var edits, now should work as originally intended."

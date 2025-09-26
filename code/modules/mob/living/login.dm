@@ -12,3 +12,5 @@
 			remove_ventcrawl()
 			update_pipe_icons(A)
 
+	if(client?.prefs.main_cursor)
+		update_cursor()

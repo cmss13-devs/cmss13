@@ -367,8 +367,7 @@
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
-	minimap_type = get_minimap_flag_for_faction(hivenumber)
-	tacmap = new/datum/tacmap/drawing/xeno(src, minimap_type)
+
 
 	//putting the organ in for research
 	if(organ_value != 0)
@@ -524,6 +523,10 @@
 		hive.hive_ui.update_all_xeno_data()
 
 	creation_time = world.time
+
+	minimap_type = get_minimap_flag_for_faction(hivenumber)
+	QDEL_NULL(tacmap)
+	tacmap = new/datum/tacmap/drawing/xeno(src, minimap_type)
 
 	Decorate()
 

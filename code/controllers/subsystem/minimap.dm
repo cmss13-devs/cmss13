@@ -945,7 +945,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = TRUE
 	data["canChangeZ"] = TRUE
-	data["canViewCanvas"] = TRUE
+	data["canViewCanvas"] = FALSE
 	data["isxeno"] = FALSE
 	data["zlevel"] = 0
 

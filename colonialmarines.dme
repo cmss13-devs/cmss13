@@ -1632,6 +1632,7 @@
 #include "code\modules\asset_cache\assets\lobby.dm"
 #include "code\modules\asset_cache\assets\medals.dm"
 #include "code\modules\asset_cache\assets\sevastopol.dm"
+#include "code\modules\asset_cache\assets\stack_receipts.dm"
 #include "code\modules\asset_cache\assets\tgfont.dm"
 #include "code\modules\asset_cache\assets\tgui.dm"
 #include "code\modules\asset_cache\assets\vending.dm"

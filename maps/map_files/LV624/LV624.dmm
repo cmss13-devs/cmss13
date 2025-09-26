@@ -10370,7 +10370,6 @@
 /obj/item/weapon/gun/revolver/cmb/normalpoint{
 	pixel_y = 7
 	},
-/obj/effect/spawner/random/gun/special/lowchance,
 /turf/open/floor/dark,
 /area/lv624/lazarus/armory)
 "aNN" = (
@@ -23465,7 +23464,8 @@
 /obj/structure/machinery/big_computers/computerbrown/computer5,
 /obj/structure/machinery/door_control/colony_lockdown/lv624{
 	pixel_y = -4;
-	id = "phiresearchlockdown"
+	id = "phiresearchlockdown";
+	needs_power = 0
 	},
 /turf/open/floor/corsat/red,
 /area/lv624/ground/colony/phi_lab)

@@ -174,6 +174,34 @@
 	icon_state = "grass1"
 	is_weedable = NOT_WEEDABLE
 
+/turf/open/slippery/rooftop
+	icon = 'icons/turf/almayer.dmi'
+	icon state = 'outerhull'
+
+/turf/open/slippery/rooftop/edge
+	icon state = 'outerhull_dir'
+	dir = SOUTH
+
+/turf/open/slippery/rooftop/edge/north
+	dir = NORTH
+
+/turf/open/slippery/rooftop/edge/east
+	dir = EAST
+
+/turf/open/slippery/rooftop/edge/west
+	dir = WEST
+
+/turf/open/slippery/rooftop/edge/southeast
+	dir = SOUTHEAST
+
+/turf/open/slippery/rooftop/edge/southwest
+	dir = SOUTHWEST
+
+/turf/open/slippery/rooftop/edge/northeast
+	dir = NORTHEAST
+
+/turf/open/slippery/rooftop/edge/northwest
+	dir = NORTHWEST
 
 /turf/open/slippery/Entered(atom/movable/crosser)
 	. = ..()

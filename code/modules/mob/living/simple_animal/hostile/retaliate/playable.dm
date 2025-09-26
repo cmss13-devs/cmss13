@@ -61,6 +61,7 @@
 
 	var/sound_growl
 	var/sound_hiss
+	var/sound_death
 
 /mob/living/simple_animal/hostile/retaliate/playable/Initialize()
 	. = ..()
@@ -78,6 +79,8 @@
 	pounce_callbacks[/mob] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/playable/proc/pounced_mob_wrapper)
 	pounce_callbacks[/turf] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/playable/proc/pounced_turf_wrapper)
 	pounce_callbacks[/obj] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/playable/proc/pounced_obj_wrapper)
+
+	GLOB.giant_fauna_alive += src
 
 //Immediately retaliate after being attacked.
 /mob/living/simple_animal/hostile/retaliate/playable/Retaliate(pack_attack = FALSE)
@@ -683,3 +686,19 @@
 		//if the food is next to us AND not in the hands of a mob, start eating
 		else if(!check_food_loc(food_target) && Adjacent(food_target))
 			INVOKE_ASYNC(src, PROC_REF(handle_food), food_target)
+
+
+/mob/living/simple_animal/hostile/retaliate/playable/rejuvenate()
+	//if the mob was dead beforehand, it's now alive and therefore it's an extra lizard to the count
+	if(stat == DEAD)
+		GLOB.giant_fauna_alive += src
+	return ..()
+
+/mob/living/simple_animal/hostile/retaliate/playable/death(datum/cause_data/cause_data, gibbed = FALSE, deathmessage = "lets out a waning growl....")
+	playsound(loc, sound_death, 70)
+	GLOB.giant_fauna_alive -= src
+	return ..()
+
+/mob/living/simple_animal/hostile/retaliate/playable/Destroy()
+	GLOB.giant_fauna_alive -= src
+	return ..()

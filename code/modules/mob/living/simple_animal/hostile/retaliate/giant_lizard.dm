@@ -36,6 +36,7 @@
 
 	sound_growl = "giant_lizard_growl"
 	sound_hiss = "giant_lizard_hiss"
+	sound_death = 'sound/effects/giant_lizard_death.ogg'
 
 	///Reference to the ZZzzz sleep overlay when resting.
 	var/sleep_overlay
@@ -101,8 +102,6 @@
 	vis_contents += tongue_icon_holder
 
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(change_tongue_offset))
-
-	GLOB.giant_lizards_alive += src
 
 /mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()
@@ -186,20 +185,7 @@
 		RemoveSleepingIcon()
 	update_transform()
 
-/mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/rejuvenate()
-	//if the mob was dead beforehand, it's now alive and therefore it's an extra lizard to the count
-	if(stat == DEAD)
-		GLOB.giant_lizards_alive += src
-	return ..()
 
-/mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/death(datum/cause_data/cause_data, gibbed = FALSE, deathmessage = "lets out a waning growl....")
-	playsound(loc, 'sound/effects/giant_lizard_death.ogg', 70)
-	GLOB.giant_lizards_alive -= src
-	return ..()
-
-/mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/Destroy()
-	GLOB.giant_lizards_alive -= src
-	return ..()
 
 ///Proc for handling attacking the lizard with a hand for BOTH XENOS AND HUMANS.
 /mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/process_attack_hand(mob/living/carbon/attacking_mob)
@@ -351,7 +337,7 @@
 
 
 /mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/alert_others()
-	for(var/mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/pack_member as anything in GLOB.giant_lizards_alive)
+	for(var/mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/pack_member in GLOB.giant_fauna_alive)
 		if(pack_member == src || pack_member.target_mob_ref?.resolve() || get_dist(src, pack_member) > 7)
 			continue
 		pack_member.Retaliate(pack_attack = TRUE)

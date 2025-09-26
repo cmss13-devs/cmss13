@@ -92,6 +92,8 @@
 
 /datum/equipment_preset/cia_global_response/standard/weak
 	strength_type = STRENGTH_WEAK
+	suit_type = /obj/item/clothing/suit/storage/marine/sof/grs/damaged
+	helmet_type = /obj/item/clothing/head/helmet/marine/sof/grs/damaged
 
 /datum/equipment_preset/cia_global_response/standard/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
@@ -187,6 +189,8 @@
 
 /datum/equipment_preset/cia_global_response/heavy/weak
 	strength_type = STRENGTH_WEAK
+	suit_type = /obj/item/clothing/suit/storage/marine/smartgunner/veteran/sof/grs/damaged
+	helmet_type = /obj/item/clothing/head/helmet/marine/sof/grs/damaged
 
 /datum/equipment_preset/cia_global_response/heavy/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
@@ -256,6 +260,7 @@
 
 /datum/equipment_preset/cia_global_response/sniper/weak
 	strength_type = STRENGTH_WEAK
+	suit_type = /obj/item/clothing/suit/storage/marine/ghillie/grs/damaged
 
 /datum/equipment_preset/cia_global_response/sniper/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
@@ -344,6 +349,8 @@
 
 /datum/equipment_preset/cia_global_response/engineer/weak
 	strength_type = STRENGTH_WEAK
+	suit_type = /obj/item/clothing/suit/storage/marine/sof/grs/damaged
+	helmet_type = /obj/item/clothing/head/helmet/marine/sof/grs/damaged
 
 /datum/equipment_preset/cia_global_response/engineer/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
@@ -421,6 +428,8 @@
 
 /datum/equipment_preset/cia_global_response/medic/weak
 	strength_type = STRENGTH_WEAK
+	suit_type = /obj/item/clothing/suit/storage/marine/sof/grs/damaged
+	helmet_type = /obj/item/clothing/head/helmet/marine/sof/grs/damaged
 
 /datum/equipment_preset/cia_global_response/medic/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
@@ -504,6 +513,8 @@
 
 /datum/equipment_preset/cia_global_response/leader/weak
 	strength_type = STRENGTH_WEAK
+	suit_type = /obj/item/clothing/suit/storage/marine/sof/grs/damaged
+	helmet_type = /obj/item/clothing/head/helmet/marine/sof/grs/damaged
 
 /datum/equipment_preset/cia_global_response/leader/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
@@ -599,6 +610,8 @@
 
 /datum/equipment_preset/cia_global_response/commander/weak
 	strength_type = STRENGTH_WEAK
+	suit_type = /obj/item/clothing/suit/storage/marine/sof/grs/damaged
+	helmet_type = /obj/item/clothing/head/helmet/marine/sof/grs/damaged
 
 /datum/equipment_preset/cia_global_response/commander/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
@@ -688,6 +701,8 @@
 
 /datum/equipment_preset/cia_global_response/commander/deputy/weak
 	strength_type = STRENGTH_WEAK
+	suit_type = /obj/item/clothing/suit/storage/marine/sof/grs/damaged
+	helmet_type = /obj/item/clothing/head/helmet/marine/sof/grs/damaged
 
 /datum/equipment_preset/cia_global_response/commander/deputy/weak/survivor
 	strength_type = STRENGTH_SURVIVOR

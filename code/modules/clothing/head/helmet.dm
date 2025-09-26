@@ -1303,7 +1303,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	start_down_visor_type = /obj/item/device/helmet_visor/night_vision/marine_raider
 
 /obj/item/clothing/head/helmet/marine/sof/grs
-	name = "GRS Operator Helmet"
+	name = "\improper GRS Operator Helmet"
 	desc = "A GRS variant of the standard M10 pattern. The front plate is reinforced, fits tighter and also protects from flashbangs."
 	icon_state = "cia_helmet"
 	armor_energy = CLOTHING_ARMOR_HIGH
@@ -1318,8 +1318,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor/night_vision/marine_raider)
 	start_down_visor_type = null
 
+/obj/item/clothing/head/helmet/marine/sof/grs/damaged
+	name = "\improper damaged GRS Operator Helmet"
+	desc = "A GRS variant of the standard M10 pattern. The front plate is reinforced, fits tighter and also protects from flashbangs. This one has been compromised and is not as protective."
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+
 /obj/item/clothing/head/helmet/marine/sof/grs/sniper
-	name = "GRS Marksman Hood"
+	name = "\improper GRS Marksman Hood"
 	desc = "A hood used by GRS Advanced Marksmen. Whilst not quite as protective as a combat helmet it keeps the operator warm and provides effective camoflauge."
 	icon_state = "cia_hood"
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH

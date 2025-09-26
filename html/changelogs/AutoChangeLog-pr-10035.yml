@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - code_imp: "Changed each xeno hive name into a define."
+  - rscadd: "Added restriction variables on what factions each Xeno hive can ally with."

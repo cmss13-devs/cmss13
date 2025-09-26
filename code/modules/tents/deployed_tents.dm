@@ -54,9 +54,17 @@
 	SIGNAL_HANDLER
 	if(!ismob(subject))
 		return
+
 	var/mob/subject_mob = subject
+
+
 	RegisterSignal(subject_mob, list(COMSIG_MOVABLE_TURF_ENTERED, COMSIG_GHOST_MOVED), PROC_REF(mob_moved), override = TRUE) // Must override because we can't know if mob was already inside tent without keeping an awful ref list
 	subject_mob.RegisterSignal(src, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, tent_deletion_clean_up), override = TRUE)
+
+	if(istype(subject_mob, /mob/hologram))
+		var/mob/hologram/hologram_mob = subject_mob
+		subject_mob = hologram_mob.linked_mob
+
 	var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = INVISIBILITY_MAXIMUM
 	if(ishuman(subject))
@@ -68,12 +76,18 @@
 
 /obj/structure/tent/proc/mob_moved(mob/subject, turf/target_turf)
 	SIGNAL_HANDLER
+
 	if(!(target_turf in locs)) // Exited the tent
 		mob_exited_tent(subject)
 
 /obj/structure/tent/proc/mob_exited_tent(mob/subject)
 	UnregisterSignal(subject, list(COMSIG_MOVABLE_TURF_ENTERED, COMSIG_GHOST_MOVED, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS))
 	subject.UnregisterSignal(src, COMSIG_PARENT_QDELETING)
+
+	if(istype(subject, /mob/hologram))
+		var/mob/hologram/hologram_mob = subject
+		subject = hologram_mob.linked_mob
+
 	var/atom/movable/screen/plane_master/roof/roof_plane = subject.hud_used.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = 0
 

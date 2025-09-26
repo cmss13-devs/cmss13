@@ -731,13 +731,13 @@
 	if(. == XENO_ATTACK_ACTION && turned_on)
 		M.visible_message(SPAN_DANGER("The sentry's steel tusks cut into [M]!"),
 		SPAN_DANGER("The sentry's steel tusks cut into you!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		M.apply_damage(20)
+		M.apply_damage(20, enviro=TRUE)
 
 /obj/structure/machinery/defenses/sentry/shotgun/hitby(atom/movable/AM)
 	if(AM.throwing && turned_on)
 		if(ismob(AM))
 			var/mob/living/L = AM
-			L.apply_damage(20)
+			L.apply_damage(20, enviro=TRUE)
 			playsound(L, "bonk", 75, FALSE)
 			L.visible_message(SPAN_DANGER("The sentry's steel tusks impale [L]!"),
 			SPAN_DANGER("The sentry's steel tusks impale you!"))

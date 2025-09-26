@@ -1889,7 +1889,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
 "blf" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/prison/bluecorner/north,
 /area/fiorina/station/power_ring/reactor)
 "blt" = (
@@ -2480,7 +2480,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "bHP" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "bHR" = (
@@ -2793,7 +2793,7 @@
 /turf/open/floor/prison/darkpurple2,
 /area/fiorina/tumor/servers)
 "bSm" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/fiorina/lz/near_lzI)
 "bSq" = (
@@ -7485,7 +7485,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
 "fDW" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring/reactor)
 "fEn" = (
@@ -29417,7 +29417,7 @@
 /turf/open/floor/prison/whitepurple/north,
 /area/fiorina/station/research_cells/west)
 "wyl" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "wyK" = (

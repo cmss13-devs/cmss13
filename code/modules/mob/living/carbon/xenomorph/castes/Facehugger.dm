@@ -100,6 +100,9 @@
 	if(stat == DEAD)
 		return
 
+	if(QDELETED(src))
+		return
+
 	if(!aghosted)
 		gib()
 

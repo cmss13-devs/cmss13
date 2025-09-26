@@ -619,6 +619,7 @@
 	new /obj/item/storage/pouch/general/large(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+	new /obj/item/pamphlet/skill/honorguard(src)
 
 /obj/item/storage/box/kit/spotter
 	name = "\improper Spotter Kit"

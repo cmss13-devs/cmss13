@@ -14,7 +14,7 @@
 	unacidable = TRUE
 	anchored = TRUE
 	block_range = 1
-
+	var/boosted_structure = FALSE
 	plane = FLOOR_PLANE
 
 	/// Tells the structure if they are being deleted because of hijack
@@ -61,3 +61,18 @@
 		return TRUE
 
 	return FALSE
+
+/obj/effect/alien/resin/special/proc/enable_boost(source, hive_purchaser)
+	SIGNAL_HANDLER
+	if(hive_purchaser != src.linked_hive.hivenumber)
+		return
+	else
+		boosted_structure = TRUE
+/obj/effect/alien/resin/special/proc/disable_boost(source, hive_purchaser)
+	SIGNAL_HANDLER
+	if(hive_purchaser != src.linked_hive.hivenumber)
+		return
+	else
+		boosted_structure = FALSE
+
+

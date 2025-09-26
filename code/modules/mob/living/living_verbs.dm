@@ -71,7 +71,7 @@
 			return
 		visible_message("[BB] begins to wiggle violently!")
 		if(do_after(src, 5 SECONDS, INTERRUPT_UNCONSCIOUS, BUSY_ICON_HOSTILE, BB))//5 second unzip from inside
-			BB.open()
+			BB.open(src)
 
 		///The medical machines below are listed separately to allow easier changes to each process
 
@@ -159,7 +159,7 @@
 			if(istype(SC.loc, /obj/structure/bigDelivery)) //Do this to prevent contents from being opened into nullspace (read: bluespace)
 				var/obj/structure/bigDelivery/BD = SC.loc
 				BD.attack_hand(src)
-			SC.open()
+			SC.open(src)
 			return
 		else
 			C.welded = 0
@@ -170,7 +170,7 @@
 			if(istype(C.loc, /obj/structure/bigDelivery)) //nullspace ect... read the comment above
 				var/obj/structure/bigDelivery/BD = C.loc
 				BD.attack_hand(src)
-			C.open()
+			C.open(src)
 			return
 
 	//breaking out of handcuffs & putting out fires

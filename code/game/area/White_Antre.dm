@@ -122,14 +122,22 @@
 /area/white_antre/indoors/exterior/prefab_1
 	name = "Exterior Storage Pod - West"
 	icon_state = "mining"
+	minimap_color = MINIMAP_DIRT
 
 /area/white_antre/indoors/exterior/prefab_2
 	name = "Exterior Storage Pod - North"
 	icon_state = "mining"
+	minimap_color = MINIMAP_DIRT
 
 /area/white_antre/indoors/exterior/prefab_3
 	name = "Exterior Storage Pod - South"
 	icon_state = "mining"
+	minimap_color = MINIMAP_DIRT
+
+/area/white_antre/indoors/exterior/prefab_4
+	name = "Exterior Storage Pod - North-West"
+	icon_state = "mining"
+	minimap_color = MINIMAP_DIRT
 
 //White Antre Facility - Ground
 

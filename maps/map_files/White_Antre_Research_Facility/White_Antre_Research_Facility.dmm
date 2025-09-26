@@ -23206,6 +23206,11 @@
 	pixel_y = 5
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1{
+	layer = 1.9;
+	explo_proof = 1;
+	unacidable = 1
+	},
 /turf/open/asphalt/brown,
 /area/white_antre/oob)
 "bgr" = (
@@ -23217,6 +23222,11 @@
 	dir = 1
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1{
+	layer = 1.9;
+	explo_proof = 1;
+	unacidable = 1
+	},
 /turf/open/asphalt/brown,
 /area/white_antre/oob)
 "bgs" = (
@@ -23255,6 +23265,11 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/effect/alien/weeds/kseries,
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1{
+	layer = 1.9;
+	explo_proof = 1;
+	unacidable = 1
+	},
 /turf/open/asphalt/brown,
 /area/white_antre/oob)
 "bgv" = (
@@ -23275,6 +23290,11 @@
 	pixel_y = -6
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1{
+	layer = 1.9;
+	explo_proof = 1;
+	unacidable = 1
+	},
 /turf/open/asphalt/brown,
 /area/white_antre/oob)
 "bgw" = (
@@ -23330,6 +23350,11 @@
 	pixel_y = -6
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1{
+	layer = 1.9;
+	explo_proof = 1;
+	unacidable = 1
+	},
 /turf/open/asphalt/brown,
 /area/white_antre/oob)
 "bgy" = (
@@ -40213,14 +40238,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/white_antre/outdoors/north_field)
-"caL" = (
-/obj/structure/window/framed/hybrisa/research/reinforced,
-/obj/structure/machinery/door/airlock/multi_tile/hybrisa/black_double/autoname{
-	dir = 1;
-	req_one_access = null
-	},
-/turf/open/floor/corsat/marked,
-/area/white_antre/indoors/exterior/checkpoint)
 "caM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -40746,6 +40763,10 @@
 	pixel_y = 25
 	},
 /turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"cch" = (
+/obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "cci" = (
 /obj/structure/prop/invuln/ice_prefab,
@@ -94198,7 +94219,7 @@ aMI
 iKa
 iKa
 iKa
-aMJ
+cch
 aMJ
 aMJ
 aMJ
@@ -102620,7 +102641,7 @@ aLR
 bch
 aMh
 bbF
-caL
+aMV
 jcK
 bbf
 aMF
@@ -102788,7 +102809,7 @@ aLR
 bci
 aMh
 bbG
-caL
+aMV
 bAy
 bAd
 jUa

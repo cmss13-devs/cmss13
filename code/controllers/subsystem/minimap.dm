@@ -802,6 +802,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/drawing/tgui_interact(mob/user, datum/tgui/ui)
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/is_xeno = istype(xeno)
+	var/is_yauta = isyautja(user)
 	var/faction = is_xeno ? xeno.hivenumber : user.faction
 
 	if(faction == FACTION_NEUTRAL && isobserver(user))
@@ -817,7 +818,7 @@ SUBSYSTEM_DEF(minimaps)
 	old_maps = get_tacmap_data_png(faction)
 	current_svg = get_tacmap_data_svg(faction)
 
-	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) || is_xeno
+	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) || is_xeno || is_yauta
 
 	if((!map_holders || length(map_holders) == 0))
 		map_holders = list()
@@ -944,7 +945,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = TRUE
 	data["canChangeZ"] = TRUE
-	data["canViewCanvas"] = FALSE
+	data["canViewCanvas"] = TRUE
 	data["isxeno"] = FALSE
 	data["zlevel"] = 0
 
@@ -965,7 +966,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	data["isxeno"] = is_xeno
 	data["canViewTacmap"] = is_xeno
-	data["canViewCanvas"] = faction == FACTION_MARINE || faction == XENO_HIVE_NORMAL
+	data["canViewCanvas"] = TRUE
 
 	if(can_draw(faction, user))
 		data["canDraw"] = TRUE

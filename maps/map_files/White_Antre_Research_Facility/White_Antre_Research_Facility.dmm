@@ -21955,8 +21955,8 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 1
 	},
-/obj/structure/flora/tree/tyrargo/tree_2{
-	pixel_y = 8
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_y = 16
 	},
 /turf/open/auto_turf/strata_grass/layer0,
 /area/white_antre/outdoors/north_field)
@@ -30419,12 +30419,6 @@
 /obj/structure/prop/ice_colony/ground_wire,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
-"bAH" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 4
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/white_antre/outdoors/north_field)
 "bAI" = (
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Brown,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -38775,6 +38769,7 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
+/obj/structure/prop/ice_colony/ground_wire,
 /turf/open/auto_turf/shale/layer2/weedable,
 /area/white_antre/outdoors/north_field)
 "bWk" = (
@@ -40238,12 +40233,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/north_field)
-"caO" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 9
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced,
-/area/white_antre/indoors/exterior/prefab_1)
 "caP" = (
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/white_antre/indoors/exterior/prefab_1)
@@ -40253,12 +40242,6 @@
 /area/white_antre/indoors/exterior/prefab_1)
 "caR" = (
 /turf/open/floor/corsat/marked,
-/area/white_antre/indoors/exterior/prefab_1)
-"caS" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 10
-	},
-/turf/closed/wall/shiva/prefabricated/reinforced,
 /area/white_antre/indoors/exterior/prefab_1)
 "caT" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -40458,6 +40441,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/structure/cargo_container/kelland/left,
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/north_field)
 "cbr" = (
@@ -40471,7 +40455,8 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/turf/open/auto_turf/shale/layer1/weedable,
+/obj/structure/largecrate/random,
+/turf/open/auto_turf/strata_grass/layer0_mud,
 /area/white_antre/outdoors/north_field)
 "cbt" = (
 /obj/effect/decal/warning_stripes{
@@ -40512,6 +40497,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
 /area/white_antre/indoors/exterior/prefab_2)
+"cbz" = (
+/obj/structure/fence/dark,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/white_antre/outdoors/north_field)
 "cbA" = (
 /obj/structure/machinery/light/double{
 	dir = 8
@@ -40684,13 +40673,15 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/structure/fence/dark,
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/white_antre/outdoors/north_field)
 "cbZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/auto_turf/shale/layer2/weedable,
+/obj/structure/largecrate/random/case,
+/turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/north_field)
 "cca" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -40725,6 +40716,261 @@
 	pixel_y = 1
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
+/area/white_antre/outdoors/north_field)
+"ccf" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccg" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -9;
+	pixel_y = 25
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"cch" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"cci" = (
+/obj/structure/prop/invuln/ice_prefab,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccj" = (
+/obj/structure/prop/invuln/ice_prefab{
+	icon_state = "fab_2"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"cck" = (
+/obj/structure/prop/invuln/ice_prefab{
+	dir = 1;
+	icon_state = "fab_2"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccl" = (
+/obj/structure/prop/invuln/ice_prefab{
+	dir = 1
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccm" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccn" = (
+/obj/structure/prop/invuln/ice_prefab{
+	dir = 5
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"cco" = (
+/obj/structure/prop/invuln/ice_prefab{
+	dir = 5
+	},
+/obj/structure/prop/invuln/ice_prefab{
+	dir = 9
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "solarpanel1";
+	pixel_x = 3
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccp" = (
+/obj/structure/prop/invuln/ice_prefab{
+	dir = 5
+	},
+/obj/structure/prop/invuln/ice_prefab{
+	dir = 9
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccq" = (
+/obj/structure/prop/invuln/ice_prefab{
+	dir = 10
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccr" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/north_field)
+"cct" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/cargo_container/kelland/right,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccu" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/north_field)
+"ccv" = (
+/obj/structure/prop/invuln/ice_prefab{
+	dir = 5
+	},
+/obj/structure/prop/invuln/ice_prefab{
+	dir = 9
+	},
+/obj/structure/prop/invuln/ice_prefab{
+	dir = 10
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "solarpanel1";
+	pixel_x = 3;
+	pixel_y = -11
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccw" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/structure/prop/invuln/ice_prefab/trim{
+	dir = 6
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/blueleft{
+	layer = 4.0
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccx" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/structure/prop/invuln/ice_prefab/trim{
+	dir = 4
+	},
+/obj/structure/prop/invuln/ice_prefab/trim{
+	dir = 6
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/blueright{
+	layer = 4.0
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccy" = (
+/obj/structure/prop/invuln/ice_prefab/trim{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccz" = (
+/obj/structure/prop/invuln/ice_prefab/trim{
+	dir = 8
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccA" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/structure/prop/invuln/ice_prefab/trim{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccB" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -29;
+	pixel_y = 7
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#5F5F70";
+	dir = 6;
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/white_antre/outdoors/north_field)
+"ccC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/structure/largecrate/random,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/white_antre/outdoors/north_field)
+"ccD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_y = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/white_antre/outdoors/north_field)
+"ccE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/turf/open/auto_turf/strata_grass/layer0,
+/area/white_antre/outdoors/north_field)
+"ccF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/fence/dark,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/white_antre/outdoors/north_field)
+"ccG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/structure/prop/invuln/ice_prefab{
+	dir = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/white_antre/outdoors/north_field)
+"ccH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/largecrate/random,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccJ" = (
+/obj/structure/fence/dark,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/white_antre/outdoors/north_field)
+"ccK" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"ccL" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -9;
+	pixel_y = 18
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "cds" = (
 /obj/structure/fence/dark,
@@ -43359,13 +43605,6 @@
 /obj/effect/decal/hybrisa/tiretrack,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
-"kKq" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 9
-	},
-/obj/effect/decal/strata_decals/mud_corner,
-/turf/open/auto_turf/strata_grass/layer0,
-/area/white_antre/outdoors/north_field)
 "kLw" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /obj/item/xeno_egg/kseries{
@@ -43994,13 +44233,6 @@
 	},
 /turf/open/asphalt/brown,
 /area/white_antre/outdoors/facility_exterior)
-"mPf" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 5
-	},
-/obj/effect/decal/strata_decals/mud_corner,
-/turf/open/auto_turf/strata_grass/layer0,
-/area/white_antre/outdoors/north_field)
 "mPP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
@@ -44875,12 +45107,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "pEZ" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 10
-	},
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 6
-	},
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/white_antre/outdoors/north_field)
 "pHD" = (
@@ -96820,7 +97047,7 @@ caP
 caP
 cba
 caP
-caO
+caP
 caG
 aLH
 aLm
@@ -97319,7 +97546,7 @@ iKa
 iKa
 aMJ
 aMS
-cbp
+ccs
 caP
 cbj
 cbe
@@ -97492,7 +97719,7 @@ caP
 cbk
 cbf
 caX
-caS
+caP
 bbt
 aLH
 aLm
@@ -97655,7 +97882,7 @@ iKa
 iKa
 aMJ
 aMI
-cbq
+cct
 caP
 caP
 cbg
@@ -98149,7 +98376,7 @@ aMJ
 cbV
 caZ
 cbO
-cbG
+ccG
 cbG
 cbG
 cbG
@@ -98167,7 +98394,7 @@ aMS
 aMS
 aMJ
 aMH
-aMH
+cbz
 aMH
 aMH
 aNg
@@ -98327,15 +98554,15 @@ aMJ
 aMJ
 aMJ
 aMJ
-aMJ
+ccu
 cca
 bWj
-bAH
-bAH
+aMI
+bAD
 aMI
 aMJ
 ewE
-aMJ
+aMU
 aNG
 aMH
 baw
@@ -98479,8 +98706,8 @@ aMS
 aMJ
 aMJ
 aMJ
-aMJ
-bYA
+ccJ
+ccJ
 cbY
 cbv
 cbv
@@ -98491,15 +98718,15 @@ cbA
 cbv
 cbv
 cbs
-aMH
+baw
 aMH
 aNg
+ccz
+ccn
+ccn
+cci
 aMI
-aMI
-aMI
-aMI
-aMI
-aMJ
+bAD
 iKa
 iKa
 ewE
@@ -98646,10 +98873,10 @@ aMJ
 aMJ
 aMJ
 aMJ
-aMJ
-aMJ
-aMJ
-cbY
+ccL
+bYA
+ccK
+ccH
 cbv
 cbS
 cbQ
@@ -98658,15 +98885,15 @@ cbI
 cbB
 cbw
 cbv
-cbs
+ccC
+naW
+aNG
 aMH
-mPf
-aMH
-aNg
-aMI
-aMI
-aMI
-aMJ
+ccA
+ccv
+cco
+ccj
+ccg
 iKa
 iKa
 iKa
@@ -98815,9 +99042,9 @@ aMJ
 aMJ
 aMJ
 aMJ
-aMJ
-aMJ
-cbp
+aMI
+aMI
+ccI
 cbv
 cbT
 cbQ
@@ -98826,14 +99053,14 @@ cbJ
 cbC
 cbx
 cbv
-caJ
+ccD
 pEZ
 bcQ
 aMH
-bbA
-aNg
-aMI
-aMI
+ccB
+ccw
+ccp
+cck
 iKa
 iKa
 iKa
@@ -98984,8 +99211,8 @@ aMJ
 aMJ
 aMJ
 aMS
-aMS
-cbZ
+aMI
+ccH
 cbv
 cbU
 cbQ
@@ -98994,14 +99221,14 @@ cbJ
 cbD
 cby
 cbv
-cbs
+ccE
+lGQ
+kvJ
 aMH
-kKq
 aMH
-aMH
-hVI
-aMI
-aMI
+ccx
+ccp
+cck
 iKa
 iKa
 iKa
@@ -99162,16 +99389,16 @@ cbI
 cbE
 cbv
 cbv
-cbs
-aMJ
+ccF
+cbz
 aMH
 bAW
 aMJ
-aMI
-aMI
-aMI
-aMI
-aMI
+ccy
+ccq
+ccl
+cch
+ccf
 iKa
 iKa
 iKa
@@ -99336,8 +99563,8 @@ aMJ
 bAU
 bAU
 bAU
-aMI
-aMI
+ccr
+ccm
 aMI
 bAN
 aMI

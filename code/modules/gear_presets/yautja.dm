@@ -57,7 +57,7 @@
 
 /datum/equipment_preset/yautja/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = capitalize(pick(GLOB.pred_names)) + " " + capitalize(pick(GLOB.pred_last_names))
-	new_human.gender = pick(80;MALE,20;FEMALE) // Female Hunters are rare
+	new_human.gender = pick_weight(list(MALE = 80, FEMALE = 20))// Female Hunters are rare
 	new_human.age = rand(100,150)
 	new_human.flavor_text = ""
 	new_human.flavor_texts["general"] = new_human.flavor_text

@@ -2731,10 +2731,6 @@
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/sewer_treatment/ground)
-"ahh" = (
-/obj/structure/machinery/power/port_gen,
-/turf/open/floor/prison/darkbrown2,
-/area/tyrargo/indoors/sewer_treatment/ground)
 "ahi" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_16";
@@ -3440,6 +3436,11 @@
 /obj/item/stack/rods,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/northwest,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"ajp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
+/turf/open/floor/prison/darkyellow2,
+/area/tyrargo/underground/engineering)
 "ajq" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/northeast,
@@ -4480,7 +4481,6 @@
 /area/tyrargo/indoors/engineering/upper)
 "ams" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/prison/yellowfull,
 /area/tyrargo/indoors/engineering/upper)
 "amt" = (
@@ -48976,6 +48976,7 @@
 /area/tyrargo/outdoors/colony_exterior/west)
 "clT" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/tyrargo/indoors/engineering/ground)
 "clU" = (
@@ -70952,7 +70953,7 @@
 /turf/open/shuttle/escapepod/north,
 /area/tyrargo/underground/engineering)
 "dwp" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/engineering)
 "dwq" = (
@@ -71565,11 +71566,11 @@
 /turf/open/floor/strata/floor3,
 /area/tyrargo/underground/engineering)
 "dxY" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/underground/apartment)
 "dxZ" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/apartment)
 "dya" = (
@@ -71809,7 +71810,6 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/tyrargo/underground/engineering)
 "dyH" = (
-/obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/prison/darkyellowfull2,
 /area/tyrargo/underground/engineering)
 "dyI" = (
@@ -79866,7 +79866,6 @@
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/mall)
 "dSl" = (
-/obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/corsat/spiralplate,
 /area/tyrargo/underground/mall)
 "dSm" = (
@@ -108161,7 +108160,6 @@
 	icon_state = "siding8"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/port_gen,
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "nWO" = (
@@ -111124,7 +111122,7 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "tqh" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/corsat,
 /area/tyrargo/indoors/engineering/ground)
 "tqO" = (
@@ -138297,7 +138295,7 @@ dDT
 dXG
 dDI
 eQo
-dPz
+ajp
 dQu
 dzH
 dzH
@@ -184913,7 +184911,7 @@ eZB
 ceJ
 ahA
 ceO
-ahh
+nJL
 ceJ
 ePg
 cfy

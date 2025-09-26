@@ -119,6 +119,18 @@
 	name = "White Antre Research Facility - Exterior Relay South"
 	icon_state = "power0"
 
+/area/white_antre/indoors/exterior/prefab_1
+	name = "Exterior Storage Pod - West"
+	icon_state = "mining"
+
+/area/white_antre/indoors/exterior/prefab_2
+	name = "Exterior Storage Pod - North"
+	icon_state = "mining"
+
+/area/white_antre/indoors/exterior/prefab_3
+	name = "Exterior Storage Pod - South"
+	icon_state = "mining"
+
 //White Antre Facility - Ground
 
 /area/white_antre/indoors/main_level

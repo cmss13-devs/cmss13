@@ -1076,7 +1076,7 @@
 	pixel_x = -7;
 	pixel_y = 13
 	},
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/engineering)
 "boq" = (
@@ -8176,7 +8176,7 @@
 	layer = 2.9
 	},
 /obj/structure/platform/metal/almayer,
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/warnplate/southwest,
 /area/lv624/lazarus/engineering)
 "jhs" = (
@@ -8514,7 +8514,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/warnplate,
 /area/lv624/lazarus/engineering)
 "jCn" = (
@@ -11441,7 +11441,7 @@
 	layer = 2.9
 	},
 /obj/structure/platform/metal/almayer,
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/warnplate/southeast,
 /area/lv624/lazarus/engineering)
 "mNA" = (
@@ -15711,7 +15711,7 @@
 /turf/open/floor/plating/warnplate,
 /area/lv624/ground/river/central_river)
 "rBj" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
@@ -17185,7 +17185,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/lazarus/engineering)
 "thl" = (
@@ -18872,7 +18872,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "vnl" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "vns" = (
@@ -20370,7 +20370,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/lazarus/engineering)
 "xeq" = (
@@ -20787,7 +20787,7 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/lazarus/engineering)
 "xAZ" = (

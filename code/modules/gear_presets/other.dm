@@ -18,15 +18,18 @@
 	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE) //ACCESS_COME_BACK_TO_ME
 
 /datum/equipment_preset/other/freelancer/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(60;MALE,40;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
-	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
-		new_human.f_style = "5 O'clock Shadow"
-	else
-		random_name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
+	switch(new_human.gender)
+		if(MALE)
+			random_name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
+			new_human.f_style = "5 O'clock Shadow"
+		if(FEMALE)
+			random_name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
+		if(PLURAL)
+			random_name = "[pick(pick(GLOB.first_names_male_colonist), pick(GLOB.first_names_female_colonist))] [pick(GLOB.last_names_colonist)]"
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(20,45)
 	new_human.r_hair = 25
@@ -281,15 +284,18 @@
 	access = get_access(ACCESS_LIST_EMERGENCY_RESPONSE)
 
 /datum/equipment_preset/other/elite_merc/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(70;MALE,30;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
-	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
-		new_human.f_style = "5 O'clock Shadow"
-	else
-		random_name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
+	switch(new_human.gender)
+		if(MALE)
+			random_name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
+			new_human.f_style = "5 O'clock Shadow"
+		if(FEMALE)
+			random_name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
+		if(PLURAL)
+			random_name = "[pick(pick(GLOB.first_names_male_colonist), pick(GLOB.first_names_female_colonist))] [pick(GLOB.last_names_colonist)]"
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(20,45)
 	new_human.r_hair = rand(15,35)
@@ -530,7 +536,7 @@
 	access = get_access(ACCESS_LIST_DELIVERY)
 
 /datum/equipment_preset/other/pizza/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(MALE,FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
@@ -627,7 +633,7 @@
 	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
-	var/random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
+	var/random_name = random_name(new_human.gender)
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(21,45)
 
@@ -666,7 +672,7 @@
 	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
-	var/random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male_gladiator : GLOB.first_names_female_gladiator))
+	var/random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male_gladiator : FEMALE ? GLOB.first_names_female_gladiator : pick(pick(GLOB.first_names_male_gladiator), pick(GLOB.first_names_female_gladiator))))
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(21,45)
 

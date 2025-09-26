@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "duration2text and duration2text_sec now support times greater than a day or hour respectively"
+  - code_imp: "GLOB.timezoneoffset now experimentally uses world.timezone instead of a time2text result"

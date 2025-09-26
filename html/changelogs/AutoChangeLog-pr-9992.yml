@@ -1,0 +1,8 @@
+author: "Sergeys"
+delete-after: True
+changes:
+  - qol: "Stack receipt list now supports entering a custom amount of produced items."
+  - ui: "Added icons for construction objects."
+  - ui: "DmIcon no longer displays the previously rendered image instead of the setted image."
+  - ui: "NumberInput can now be made focusable via Tab using a new variable."
+  - ui: "Glass construction now using proper UI instead of custom."

@@ -176,10 +176,10 @@
 
 /turf/open/slippery/rooftop
 	icon = 'icons/turf/almayer.dmi'
-	icon_state = 'outerhull'
+	icon_state = "outerhull"
 
 /turf/open/slippery/rooftop/edge
-	icon_state = 'outerhull_dir'
+	icon_state = "outerhull_dir"
 	dir = SOUTH
 
 /turf/open/slippery/rooftop/edge/north

@@ -750,14 +750,14 @@
 			error_idlock(usr)
 			return
 
-var/list/allowed_storage_types = list(
+
+
+/obj/item/storage/pill_bottle/clicked(mob/user, list/mods)
+	var/list/allowed_storage_types = list(
 	/obj/item/storage/belt/medical,
 	/obj/item/storage/pouch/medical,
 	/obj/item/storage/pouch/first_responder,
-	/obj/item/storage/pouch/medkit
-)
-
-/obj/item/storage/pill_bottle/clicked(mob/user, list/mods)
+	/obj/item/storage/pouch/medkit)
 	if(..())
 		return TRUE
 	var/is_allowed = FALSE

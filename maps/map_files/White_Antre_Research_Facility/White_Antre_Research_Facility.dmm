@@ -16281,6 +16281,7 @@
 /area/white_antre/indoors/main_level/research)
 "aMY" = (
 /obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "aMZ" = (
@@ -19269,6 +19270,7 @@
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aWp" = (
 /obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/almayer/floor,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aWq" = (
@@ -42523,6 +42525,7 @@
 /area/white_antre/indoors/exterior/ext_relay_north)
 "lkO" = (
 /obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/north_field)
 "lkT" = (
@@ -44139,6 +44142,7 @@
 /area/white_antre/indoors/main_level/research)
 "qsg" = (
 /obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "qsG" = (

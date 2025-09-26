@@ -1,0 +1,5 @@
+author: "Sergeys"
+delete-after: True
+changes:
+  - qol: "Power sources now prioritize supplying their local APC before sending power to the powernet."
+  - code_imp: "Power sources now inherit from the power_generator"

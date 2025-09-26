@@ -236,3 +236,98 @@
   - rscadd: Added a WY camera subtype.
   - bugfix: Fixes WY Director access to the Intranet Console.
   - rscadd: Added Document Printer.
+2025-09-23:
+  Venuska1117:
+  - bugfix: Fruit balloon alert now only trigger after consuming fruit, instead for
+      every not related Destroy() proc call.
+  Zenith, cuberound, dimdimich1996:
+  - rscadd: Added new fences fence types & fence doors.
+  - imageadd: Replaced existing fence sprites & added new fence types with doors.
+  - soundadd: Added new fence hit sounds & fence door opening sounds.
+  - maptweak: Added new fence types to LV & Soro.
+  - maptweak: Soro map tweaks to comms areas, cleaned them up to accommodate new fence
+      types.
+2025-09-24:
+  Git-Nivrak:
+  - qol: Queen eye can now look into tents
+  - bugfix: Fixes lighting sometimes appearing as blocky instead of fancy lighting
+  Googles-Hands:
+  - maptweak: Added lockdown doors to remapped areas of the Hangar that lacked them.
+  stanalbatross:
+  - balance: direction locking no longer slows down humans. Xenos etc unaffected.
+2025-09-26:
+  BertStein:
+  - rscadd: Added a preset system for ChemMaster.
+  - ui: Added a "Select All/Deselect All" button for ChemMaster.
+  - bugfix: Fixed delay between selecting a pill bottle in ChemMaster and the UI responding.
+  DarkLordCabbage:
+  - qol: locks the cargo tech job behind 10 hours of any human roles.
+  Drathek:
+  - balance: Ovipositor is now required 3 minutes into a round instead of 5 minutes
+  - balance: Queen temporary maturity now ends upon entry into a tunnel
+  - balance: Queen temporary maturity now only extends if damage taken is 5 or more
+      and is not considered environmental (e.g. dmg from electrocution, weather, water,
+      turrets, map deployed mine explosions, animals, barbed wire)
+  - ui: Added evolution progress requirement to hive status (much like the stat panel
+      to indicate when a queen or ovipositor is needed)
+  - code_imp: Added more autodoc comments and reworked several timer based defines
+      for xeno hives
+  - code_imp: Mines now set weak_cause in cause_data (though often not applicable
+      because they qdel)
+  - balance: Some crates are no longer riggable
+  - balance: Xenos can break open crates even if normally unopenable (e.g. secure
+      crates)
+  - balance: Rigged crate electrocution now has a 3s cooldown
+  - bugfix: Rigging crate overlays now applies when wired (not necessarily with an
+      electropack) and is properly retained when opened
+  - bugfix: Fixed edge cases where a rigged crate opening would electrocute usr even
+      if they weren't physically touching it
+  - code_imp: Various code cleanup including user arguments for open and breakopen
+  - bugfix: 'Fixed aggressive forsaken handling reverting some changes in a recent
+      pr: Now abandon on hijack occurs when the shuttle actually launches, and facehugger
+      masks on a person (e.g. hugging someone) will be converted'
+  - spellcheck: Fixed a typo in forsaken handling
+  - code_imp: Cleaned up some old forsaken handling code
+  - qol: Larva queue is now known as larva pool and its position message is cached
+      immediately for status panel if xeno candidacy is set
+  - ui: Tweaked some messaging/labels for xeno special role candidacy
+  - code_imp: Renamed larva queue variables and comments to pool and rearranged some
+      larva pool functionality
+  - rscdel: Removed the special role known as agent
+  - admin: Late joining as xeno from menu as a mod now immediately sets larva protection
+      false
+  Ediblebomb:
+  - rscadd: Adds Non-Binary as gender option in character creation and random generation
+  - ui: 'Adds a body presentation button to the PredPicker:tm:'
+  FloranOtten:
+  - bugfix: stasis bags and crates now properly destroy their contents when being
+      crushed by shuttles
+  - refactor: shuttle crush code is now a dedicated function
+  - refactor: migrates closet destruction to use deconstruct() instead of qdel() where
+      applicable
+  Git-Nivrak:
+  - bugfix: MP honor guard no longer shows up on the occupations preferences list
+  Sergeys:
+  - bugfix: The analyzer no longer forgets about surgery in the head.
+  - qol: Pill box can transfer its contents to the Chemmaster
+  - qol: Pill box can collect pill bottles from the floor
+  TheGamerdk:
+  - balance: Oxiding and Igniting now respects ignition immunity
+  - balance: CLF3 now does less burn damage, and doesn't strip xeno armor
+  cuberound:
+  - rscadd: Roofs that stuff can not stay on for multiz mapping
+  - rscadd: motion detector detects pings on higer and lower z level, uses arrows
+      to show their location
+  - bugfix: fences no longer connect to electric fences
+  - rscadd: Smokes spread up and down a z level
+  realforest2001:
+  - rscadd: Changed some ERT messages to be more related to what they are.
+  - rscadd: Added MP Honor Guard HUD and title pamphlet.
+  - rscadd: Added Visiting Lt Colonel and Colonel presets.
+  - rscdel: Removed an unused proc.
+  - bugfix: Fixed an error with ARES WY IFF
+  - rscadd: The USS Almayer Research Department are now civilians again. They do not
+      answer to the CL.
+  stanalbatross:
+  - qol: simplified, reduced the length of, and in some cases removed unnecessary
+      balloon alerts.

@@ -937,8 +937,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 		if (damage_modifier > 0)
 			var/total_damage = ((20 * height) ** 1.3) * damage_modifier
-			human_victim.apply_damage(total_damage / 2, BRUTE, "r_leg")
-			human_victim.apply_damage(total_damage / 2, BRUTE, "l_leg")
+			human_victim.apply_damage(total_damage / 2, BRUTE, "r_leg", enviro=TRUE)
+			human_victim.apply_damage(total_damage / 2, BRUTE, "l_leg", enviro=TRUE)
 
 		if (fracture_modifier > 0)
 			var/obj/limb/leg/found_rleg = locate(/obj/limb/leg/l_leg) in human_victim.limbs

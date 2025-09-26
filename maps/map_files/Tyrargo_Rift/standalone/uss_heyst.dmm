@@ -2405,6 +2405,7 @@
 /turf/open/floor/prison/cell_stripe/north,
 /area/tyrargo/indoors/bunker/central_south)
 "pZ" = (
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/plating_striped/east,
 /area/tyrargo/indoors/heyst)
 "qa" = (
@@ -3895,7 +3896,6 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "Dr" = (
-/obj/structure/machinery/power/port_gen/pacman,
 /obj/structure/machinery/light_construct{
 	dir = 8
 	},
@@ -4513,11 +4513,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
-"JH" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/port_gen/pacman/mrs,
-/turf/open/floor/almayer,
-/area/tyrargo/indoors/heyst)
 "JK" = (
 /turf/open/floor/almayer_hull/outerhull_dir/northwest,
 /area/tyrargo/outdoors/outskirts/central)
@@ -7767,7 +7762,7 @@ op
 gY
 op
 SF
-JH
+ze
 aN
 sx
 sx

@@ -818,7 +818,7 @@ SUBSYSTEM_DEF(minimaps)
 	old_maps = get_tacmap_data_png(faction)
 	current_svg = get_tacmap_data_svg(faction)
 
-	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) || is_xeno || is_yauta
+	var/use_live_map = (faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)) || is_xeno || is_yauta
 
 	if((!map_holders || length(map_holders) == 0))
 		map_holders = list()

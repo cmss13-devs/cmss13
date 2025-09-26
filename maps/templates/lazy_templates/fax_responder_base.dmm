@@ -1285,7 +1285,7 @@
 /turf/open/gm/grass/grass1,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "nd" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+/obj/structure/machinery/door/airlock/multi_tile/almayer{
 	name = "\improper CLF Communications Office";
 	locked = 1;
 	unacidable = 1;
@@ -2563,7 +2563,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/adminlevel/ert_station/fax_response_station)
 "Ax" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+/obj/structure/machinery/door/airlock/multi_tile/almayer{
 	name = "\improper UPP Communications Office";
 	locked = 1;
 	unacidable = 1;
@@ -3030,7 +3030,7 @@
 /turf/open/floor/almayer/blue/west,
 /area/adminlevel/ert_station/fax_response_station)
 "Es" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper CMB Office"
 	},
 /turf/open/floor/shiva/floor3,
@@ -3143,7 +3143,7 @@
 /turf/open/floor/darkgreen2/southwest,
 /area/adminlevel/ert_station/fax_response_station)
 "Gw" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+/obj/structure/machinery/door/airlock/multi_tile/almayer{
 	name = "\improper WY Communications Office";
 	locked = 1;
 	unacidable = 1;
@@ -3920,7 +3920,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "Of" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	dir = 1;
 	name = "\improper Office Entrance"
 	},

@@ -11,17 +11,13 @@
 	name = "droppod landing-zone"
 	icon_state = "techpod_lz_marker"
 
-/obj/effect/warning/droppod/smoke
-	///particle holder for smoke
-	var/obj/effect/abstract/particle_holder/particle_holder
-
 /obj/effect/warning/droppod/smoke/Initialize(mapload)
 	. = ..()
-	particle_holder = new(src, /particles/droppod_dust)
+	add_shared_particles(/particles/droppod_dust)
 
 /obj/effect/warning/droppod/smoke/Destroy(force)
 	. = ..()
-	QDEL_NULL(particle_holder)
+	remove_shared_particles(/particles/droppod_dust)
 
 /particles/droppod_dust
 	icon = 'icons/effects/effects.dmi'

@@ -1,6 +1,0 @@
-author: "FloranOtten"
-delete-after: True
-changes:
-  - bugfix: "stasis bags and crates now properly destroy their contents when being crushed by shuttles"
-  - refactor: "shuttle crush code is now a dedicated function"
-  - refactor: "migrates closet destruction to use deconstruct() instead of qdel() where applicable"

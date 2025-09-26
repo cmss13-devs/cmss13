@@ -3,8 +3,7 @@
 	set name = "Join as Event Mob"
 	set desc = "Select an event mob to play as."
 
-	var/mob/M = src
-	if(!M.stat || !M.mind)
+	if(!stat || !mind)
 		return FALSE
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)

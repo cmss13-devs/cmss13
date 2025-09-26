@@ -877,6 +877,9 @@
 
 	// Update the hive status UI
 	new_hive.hive_ui.update_all_xeno_data()
+	QDEL_NULL(tacmap)
+	minimap_type = get_minimap_flag_for_faction(hivenumber)
+	tacmap = new/datum/tacmap/drawing/xeno(src, minimap_type)
 
 	return TRUE
 

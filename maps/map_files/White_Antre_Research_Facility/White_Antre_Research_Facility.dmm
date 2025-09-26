@@ -1368,14 +1368,6 @@
 "adp" = (
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/white_antre/indoors/upper_level/records)
-"adq" = (
-/obj/structure/machinery/power/apc/power/east{
-	start_charge = 40;
-	pixel_x = 0
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer/blackfull/west,
-/area/white_antre/indoors/main_level/east_containment_hive)
 "adr" = (
 /obj/effect/decal/hybrisa/road/lines4{
 	pixel_x = 1;
@@ -42755,6 +42747,13 @@
 	},
 /turf/open/floor/prison/darkpurple2/northeast,
 /area/white_antre/indoors/underground_level/gonzo)
+"chA" = (
+/obj/structure/machinery/power/apc/power/east{
+	start_charge = 40
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/blackfull/west,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "cks" = (
 /turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "zwing2";
@@ -129792,7 +129791,7 @@ iKa
 iKa
 iKa
 iKa
-adq
+iKa
 iKa
 ylt
 byQ
@@ -129960,7 +129959,7 @@ iKa
 iKa
 iKa
 iKa
-iKa
+chA
 iKa
 ylt
 byQ

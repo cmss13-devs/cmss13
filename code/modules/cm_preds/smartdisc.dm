@@ -252,7 +252,7 @@
 /mob/living/simple_animal/hostile/smartdisc/AttackTarget()
 	stop_automated_movement = TRUE
 	var/mob/living/target_mob = target_mob_ref?.resolve()
-	if(!target_mob || SA_attackable(target_mob))
+	if(!target_mob || !SA_attackable(target_mob))
 		LoseTarget()
 		return FALSE
 	if(!(target_mob in ListTargets(5)) || prob(20) || target_mob.stat)

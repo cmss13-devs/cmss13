@@ -151,7 +151,7 @@
 /obj/effect/landmark/lizard_spawn/Initialize(mapload, ...)
 	. = ..()
 	if(prob(66))
-		new /mob/living/simple_animal/hostile/retaliate/giant_lizard(loc)
+		new /mob/living/simple_animal/hostile/retaliate/playable/giant_lizard(loc)
 		addtimer(CALLBACK(src, PROC_REF(latespawn_lizard)), rand(35 MINUTES, 50 MINUTES))
 
 /obj/effect/landmark/lizard_spawn/proc/latespawn_lizard()
@@ -165,7 +165,7 @@
 			continue
 		addtimer(CALLBACK(src, PROC_REF(latespawn_lizard)), 1 MINUTES)
 		return
-	new /mob/living/simple_animal/hostile/retaliate/giant_lizard(loc)
+	new /mob/living/simple_animal/hostile/retaliate/playable/giant_lizard(loc)
 
 #undef MAXIMUM_LIZARD_AMOUNT
 

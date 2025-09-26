@@ -1,0 +1,790 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/stairwell/upper)
+"ab" = (
+/obj/structure/machinery/door_control{
+	id = "panicroom";
+	name = "Panic Room";
+	pixel_x = 22;
+	pixel_y = 1
+	},
+/turf/open/floor/prison/blue,
+/area/desert_dam/building/administration/upper_hallway)
+"aO" = (
+/obj/item/shard,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"bf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 1
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"bA" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"ck" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29"
+	},
+/turf/open/floor/prison/blue/northeast,
+/area/desert_dam/building/administration/upper_hallway)
+"cS" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/administration/overseer_office)
+"dX" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"ea" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/stairwell/upper)
+"fD" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl1";
+	pixel_x = -2;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/building/administration/upper_hallway)
+"ge" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/corporate/highchance,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"gf" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/prison/blue,
+/area/desert_dam/building/administration/upper_hallway)
+"gw" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/maint)
+"gF" = (
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	dir = 1;
+	health = 45;
+	icon_state = "folding_3"
+	},
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/building/administration/upper_hallway)
+"iY" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/blue,
+/area/desert_dam/building/administration/upper_hallway)
+"jl" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/obj/item/weapon/gun/pistol/mod88{
+	current_mag = null
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"kl" = (
+/turf/open/floor/prison/bluecorner/north,
+/area/desert_dam/building/administration/upper_hallway)
+"lx" = (
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/building/administration/stairwell/upper)
+"lF" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/overseer_office)
+"mB" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/turf/open/floor/plating,
+/area/desert_dam/building/administration/maint)
+"mP" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"nU" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/upper_hallway)
+"ow" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl4";
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/item/device/radio,
+/turf/open/floor/prison/bluecorner,
+/area/desert_dam/building/administration/upper_hallway)
+"ph" = (
+/obj/item/shard,
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/building/administration/upper_hallway)
+"pZ" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/building/administration/upper_hallway)
+"qe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"qi" = (
+/turf/template_noop,
+/area/template_noop)
+"ry" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl1";
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/blue,
+/area/desert_dam/building/administration/upper_hallway)
+"rC" = (
+/obj/effect/landmark/corpsespawner/wysec,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/prop/hybrisa/misc/blood/blood1,
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/building/administration/upper_hallway)
+"sl" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/building/administration/stairwell/upper)
+"sO" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/obj/item/device/flashlight/on,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"sZ" = (
+/turf/open/floor/prison/blue/southeast,
+/area/desert_dam/building/administration/stairwell/upper)
+"tn" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"tL" = (
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 8;
+	health = 140;
+	icon_state = "folding_2"
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"tV" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/administration/stairwell/upper)
+"ur" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 8
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"uy" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 10
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"vR" = (
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/building/administration/upper_hallway)
+"xL" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/stairwell/upper)
+"yE" = (
+/obj/structure/machinery/vending/coffee{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/building/administration/upper_hallway)
+"yM" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 8;
+	icon_state = "gib6";
+	layer = 4;
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/bluecorner/east,
+/area/desert_dam/building/administration/upper_hallway)
+"Av" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/administration/upper_hallway)
+"Bg" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"By" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"Bz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/stairwell/upper)
+"BL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"Ct" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	dir = 1;
+	health = 45;
+	icon_state = "folding_3"
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"CE" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/building/administration/upper_hallway)
+"De" = (
+/turf/open/floor/prison/bluecorner/west,
+/area/desert_dam/building/administration/upper_hallway)
+"Es" = (
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/building/administration/upper_hallway)
+"EV" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/building/administration/upper_hallway)
+"Fb" = (
+/turf/open/floor/prison/bluecorner,
+/area/desert_dam/building/administration/upper_hallway)
+"Gb" = (
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	id = "panicroom";
+	needs_power = 0;
+	dir = 4;
+	name = "Panic Room"
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/administration/panic_room)
+"Gy" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/administration/panic_room)
+"GD" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -6;
+	pixel_y = 15
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"GW" = (
+/obj/structure/largecrate/random/case{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 4
+	},
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/building/administration/upper_hallway)
+"Hy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"Ik" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"Jv" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 9
+	},
+/obj/item/ammo_magazine/sentry/wy{
+	current_rounds = 0
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"Jy" = (
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"KQ" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/bluecorner/west,
+/area/desert_dam/building/administration/stairwell/upper)
+"KV" = (
+/obj/structure/machinery/vending/cola{
+	pixel_y = 16;
+	pixel_x = -8;
+	density = 0
+	},
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/building/administration/upper_hallway)
+"LY" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29"
+	},
+/turf/open/floor/prison/blue/southwest,
+/area/desert_dam/building/administration/stairwell/upper)
+"Mq" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"Mu" = (
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/building/administration/stairwell/upper)
+"NF" = (
+/obj/structure/machinery/power/apc/fully_broken/no_cell/west,
+/obj/item/storage/secure/briefcase{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/building/administration/upper_hallway)
+"Oc" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29"
+	},
+/turf/open/floor/prison/blue/southeast,
+/area/desert_dam/building/administration/upper_hallway)
+"OA" = (
+/turf/open/floor/prison/blue/southwest,
+/area/desert_dam/building/administration/upper_hallway)
+"OK" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/prison/bluecorner,
+/area/desert_dam/building/administration/stairwell/upper)
+"OX" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29"
+	},
+/turf/open/floor/prison/blue/southwest,
+/area/desert_dam/building/administration/upper_hallway)
+"Qz" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"QC" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"QL" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -9;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"Ra" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"RY" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"SH" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/building/administration/upper_hallway)
+"SL" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/command/colony{
+	dir = 1;
+	name = "\improper Colony Overseer's Office"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/overseer_office)
+"SM" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 1
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"TD" = (
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/building/administration/upper_hallway)
+"Uc" = (
+/turf/open/floor/prison/blue,
+/area/desert_dam/building/administration/upper_hallway)
+"UP" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/building/administration/upper_hallway)
+"Vo" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 1
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"VR" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"VX" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/desert_dam/building/administration/stairwell/upper)
+"Wd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"WU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/cable_coil,
+/obj/item/prop/alien/hugger,
+/turf/open/floor/plating,
+/area/desert_dam/building/administration/stairwell/upper)
+"XL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/upper_hallway)
+"Yx" = (
+/obj/structure/machinery/vending/snack{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/building/administration/upper_hallway)
+"YE" = (
+/obj/structure/largecrate/random/secure{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/blue/east,
+/area/desert_dam/building/administration/upper_hallway)
+
+(1,1,1) = {"
+nU
+nU
+nU
+nU
+nU
+Av
+Av
+nU
+lF
+qi
+qi
+qi
+qi
+"}
+(2,1,1) = {"
+CE
+SH
+SH
+NF
+pZ
+Es
+Es
+OX
+lF
+qi
+qi
+qi
+qi
+"}
+(3,1,1) = {"
+Jy
+Hy
+Hy
+Hy
+Jy
+Jy
+dX
+De
+cS
+qi
+qi
+qi
+qi
+"}
+(4,1,1) = {"
+bf
+bf
+SM
+SM
+Vo
+uy
+mP
+Bg
+SL
+qi
+qi
+qi
+qi
+"}
+(5,1,1) = {"
+GW
+YE
+TD
+kl
+Qz
+ur
+Jy
+Fb
+cS
+qi
+qi
+qi
+qi
+"}
+(6,1,1) = {"
+gw
+gw
+gw
+vR
+Jy
+ur
+tL
+gf
+lF
+qi
+qi
+qi
+qi
+"}
+(7,1,1) = {"
+qi
+qi
+gw
+EV
+tL
+qe
+Jy
+gf
+lF
+lF
+lF
+lF
+lF
+"}
+(8,1,1) = {"
+qi
+qi
+gw
+yE
+jl
+QC
+Hy
+De
+gF
+pZ
+Es
+OA
+nU
+"}
+(9,1,1) = {"
+qi
+qi
+gw
+Yx
+tn
+Mq
+ge
+RY
+bA
+QL
+BL
+ry
+Av
+"}
+(10,1,1) = {"
+mB
+gw
+gw
+KV
+By
+sO
+Ra
+Jv
+XL
+Wd
+Jy
+Uc
+Av
+"}
+(11,1,1) = {"
+lx
+LY
+ea
+rC
+VR
+Hy
+ow
+fD
+kl
+Jy
+Jy
+ab
+nU
+"}
+(12,1,1) = {"
+tV
+KQ
+ea
+yM
+GD
+Hy
+Uc
+Gy
+Gy
+Gb
+Gb
+Gy
+Gy
+"}
+(13,1,1) = {"
+xL
+Bz
+VX
+Jy
+Ct
+Ik
+iY
+Gy
+qi
+qi
+qi
+qi
+qi
+"}
+(14,1,1) = {"
+aa
+WU
+Mu
+aO
+Hy
+Jy
+Uc
+Gy
+qi
+qi
+qi
+qi
+qi
+"}
+(15,1,1) = {"
+Bz
+OK
+ea
+kl
+Jy
+Jy
+Uc
+Gy
+qi
+qi
+qi
+qi
+qi
+"}
+(16,1,1) = {"
+sl
+sZ
+ea
+ck
+ph
+TD
+Oc
+Gy
+qi
+qi
+qi
+qi
+qi
+"}
+(17,1,1) = {"
+ea
+ea
+ea
+nU
+Av
+UP
+nU
+Gy
+qi
+qi
+qi
+qi
+qi
+"}

@@ -26078,10 +26078,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/landing_zone)
-"bqA" = (
-/obj/effect/random_explosion,
-/turf/open/floor/prison,
-/area/white_antre/indoors/main_level/east_containment_hive)
 "bqB" = (
 /obj/item/ammo_magazine/pistol/vp78{
 	current_rounds = 13;
@@ -26119,10 +26115,6 @@
 /obj/effect/random_explosion/medium,
 /turf/open/floor/almayer/black2/west,
 /area/white_antre/indoors/main_level/west_corridor)
-"bqH" = (
-/obj/effect/random_explosion,
-/turf/open/floor/prison/floor_plate/southwest,
-/area/white_antre/indoors/main_level/east_containment_hive)
 "bqI" = (
 /obj/effect/alien/weeds/kseries,
 /obj/item/ammo_magazine/smg/p90{
@@ -115664,7 +115656,7 @@ ayS
 ayV
 bpi
 ayV
-bqH
+ayS
 aAb
 azw
 dRJ
@@ -115695,7 +115687,7 @@ dRJ
 azu
 azk
 ayS
-bqA
+ayV
 bpi
 ayV
 ayS
@@ -116203,7 +116195,7 @@ azj
 ayU
 ayV
 ayV
-bqA
+ayV
 ayO
 ayM
 ayM
@@ -116332,7 +116324,7 @@ ozb
 ayM
 azk
 ayV
-bqA
+ayV
 ayV
 ayT
 ayP

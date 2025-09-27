@@ -41157,10 +41157,10 @@
 "cjC" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical/autoname,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/space/basic,
+/turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/simian_storage)
 "cjD" = (
-/turf/open/space/basic,
+/turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/simian_storage)
 "cjE" = (
 /turf/closed/wall/hybrisa/research,
@@ -153028,7 +153028,7 @@ agu
 agu
 agu
 bHG
-bji
+bjm
 bwQ
 bwI
 bPG
@@ -153196,7 +153196,7 @@ agB
 bHQ
 agB
 ago
-bji
+bjm
 reI
 bhB
 bPG

@@ -25,7 +25,19 @@
 	processing_tray.yield_mod += 0.1*volume
 	processing_tray.nutrilevel += 1*volume
 
-
+/datum/reagent/nutriment/process_non_property_effects(mob/living/M, list/mods, delta_time)
+	var/first_collective_volume = 0
+	for(var/datum/reagent/nutriment/nutri in M.reagents.reagent_list)
+		first_collective_volume += nutri.volume
+	if(first_collective_volume >= HIGH_REAGENTS_OVERDOSE)
+		var/second_collective_volume = 0
+		for(var/datum/reagent/nutriment/nutri in M.reagents.reagent_list)
+			holder.remove_reagent(nutri.id, max(first_collective_volume / 10, 5) * delta_time, TRUE)
+			second_collective_volume += nutri.volume
+		var/mob/living/carbon/human/subject = M
+		if(ishuman(M) && subject.lastpuke == FALSE && second_collective_volume >= HIGH_REAGENTS_OVERDOSE)
+			subject.Superslow(20)
+			subject.vomit()
 
 /datum/reagent/nutriment/egg
 	name = "Egg"

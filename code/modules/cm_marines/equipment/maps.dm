@@ -145,7 +145,7 @@
 /obj/item/map/white_antre_map
 	name = "\improper White Antre Research Facility map"
 	desc = "An overview of the White Antre facility schematics."
-	html_link = "images/b/bb/C_claim.png"
+	html_link = "images/d/da/White_Antre_Research_Facility.png"
 	color = "cyan"
 
 GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())

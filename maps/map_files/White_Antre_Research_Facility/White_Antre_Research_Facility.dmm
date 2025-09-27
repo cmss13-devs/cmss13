@@ -26022,13 +26022,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/main_level/west_corridor)
-"bqC" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "test_warning_smooth_red"
-	},
-/obj/effect/random_explosion,
-/turf/open/floor/corsat/marked,
-/area/white_antre/indoors/main_level/east_containment)
 "bqD" = (
 /obj/item/weapon/gun/pistol/vp78{
 	current_mag = null;
@@ -118473,7 +118466,7 @@ aPV
 aes
 aGP
 rEa
-bqC
+rEa
 rEa
 rEa
 rEa

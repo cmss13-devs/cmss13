@@ -43,7 +43,7 @@
 			else if(screen == 2)
 				event_triggered_by = usr
 				if((event == "toggle_ob_safety") && !(ACCESS_MARINE_SENIOR in ID.access))	// need to be senior CIC staff to toggle ob safety
-					balloon_alert_to_viewers("Error! Insufficient clearence!")
+					balloon_alert_to_viewers("insufficient clearance!")
 					playsound(loc, 'sound/items/defib_failed.ogg')
 					COOLDOWN_START(src, id_scan_cooldown, 1 SECONDS)
 					return

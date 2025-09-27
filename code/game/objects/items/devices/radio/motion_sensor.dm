@@ -218,7 +218,7 @@
 	if(transceiver)
 		transceiver.set_frequency(assigned_frequency)
 		transceiver.config(list("[assigned_channel]" = TRUE))
-		balloon_alert_to_viewers("network settings updated.")
+		balloon_alert_to_viewers("network settings updated")
 	return TRUE
 
 

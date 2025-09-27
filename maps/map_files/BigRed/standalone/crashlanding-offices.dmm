@@ -552,8 +552,9 @@
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/office_complex)
 "ip" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
@@ -985,7 +986,9 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/c)
 "FZ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/table,
 /turf/open/floor/platingdmg1,
@@ -1333,7 +1336,9 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "WU" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/office_complex)

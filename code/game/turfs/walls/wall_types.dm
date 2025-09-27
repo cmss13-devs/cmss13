@@ -496,6 +496,9 @@
 	walltype = WALL_BONE_RESIN
 	turf_flags = TURF_HULL
 
+/turf/closed/wall/mineral/bone_resin/k_series //mineral wall because, reasons bro.
+	desc = "A wall made of molted resin. Seems these yellow xenomorphs are fast builders."
+	color = "#ffff80"
 
 /turf/closed/wall/mineral/bone
 	is_weedable = NOT_WEEDABLE

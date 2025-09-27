@@ -45,7 +45,7 @@
  * If the object is completely solid, returns all directions
  */
 /atom/proc/BlockedExitDirs(atom/movable/mover, target_dir)
-	if(!mover || !mover.pass_flags)
+	if(!mover || !mover.pass_flags || !pass_flags)
 		return NO_BLOCKED_MOVEMENT
 
 	var/flags_can_pass = pass_flags?.flags_can_pass_all|flags_can_pass_all_temp|pass_flags?.flags_can_pass_behind|flags_can_pass_behind_temp

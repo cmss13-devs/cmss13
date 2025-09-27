@@ -6032,6 +6032,7 @@
 /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa,
+/obj/item/attachable/bayonet/wy,
 /turf/open/floor/prison/darkred2/west,
 /area/white_antre/indoors/main_level/security)
 "aoc" = (
@@ -6071,6 +6072,7 @@
 /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa,
+/obj/item/attachable/bayonet/wy,
 /turf/open/floor/prison/darkred2/west,
 /area/white_antre/indoors/main_level/security)
 "aog" = (
@@ -6840,6 +6842,7 @@
 "apD" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/snacks/eat_bar,
+/obj/effect/landmark/map_item,
 /turf/open/floor/prison/blue_plate/north,
 /area/white_antre/indoors/main_level/dorms)
 "apE" = (
@@ -11720,6 +11723,7 @@
 	color = "#b7b8b2"
 	},
 /obj/structure/prop/server_equipment/laptop/on,
+/obj/effect/landmark/map_item,
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aBX" = (
@@ -11933,6 +11937,7 @@
 	pixel_x = -4;
 	pixel_y = 3
 	},
+/obj/effect/landmark/map_item,
 /turf/open/floor/prison/blue_plate/west,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aCA" = (
@@ -12335,6 +12340,7 @@
 	pixel_x = -4;
 	pixel_y = 3
 	},
+/obj/effect/landmark/map_item,
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aDv" = (
@@ -12359,6 +12365,10 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/white_antre/indoors/upper_level/east_overwatch)
+"aDw" = (
+/obj/item/attachable/bayonet,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/west_corridor)
 "aDx" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
@@ -14712,6 +14722,18 @@
 	},
 /turf/open/floor/almayer/emerald2smooth/northwest,
 /area/white_antre/indoors/main_level/research)
+"aIt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = 6
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = 13
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall/kseries,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/east_containment)
 "aIu" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -14775,6 +14797,11 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/main_level/research)
+"aIA" = (
+/obj/structure/closet,
+/obj/effect/landmark/map_item,
+/turf/open/floor/prison/blue_plate/north,
+/area/white_antre/indoors/main_level/dorms)
 "aIB" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/warning_stripes{
@@ -14782,6 +14809,10 @@
 	},
 /turf/open/floor/shiva,
 /area/white_antre/indoors/main_level/research)
+"aIC" = (
+/obj/item/tool/surgery/scalpel,
+/turf/open/floor/strata/white_cyan3,
+/area/white_antre/indoors/upper_level/medical)
 "aID" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -17250,6 +17281,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/item/attachable/bayonet,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aRj" = (
@@ -21929,6 +21961,11 @@
 	},
 /turf/open/floor/prison/darkbrown3/east,
 /area/white_antre/indoors/exterior/ext_relay_north)
+"bdk" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/tool/surgery/scalpel,
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
 "bdl" = (
 /obj/item/paper_bin{
 	pixel_x = 7;
@@ -22939,6 +22976,15 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/white_antre/outdoors/north_field)
+"bge" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/obj/item/attachable/bayonet,
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/white_antre/indoors/upper_level/xenobio)
 "bgf" = (
 /obj/effect/hybrisa/misc/fake/wire/red{
 	dir = 4
@@ -27177,6 +27223,7 @@
 	pixel_x = 6;
 	pixel_y = 5
 	},
+/obj/effect/landmark/map_item,
 /turf/open/floor/almayer/blue2,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bsW" = (
@@ -27410,6 +27457,7 @@
 /obj/item/device/flashlight/combat{
 	pixel_y = -5
 	},
+/obj/item/attachable/bayonet,
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/central_command)
 "btz" = (
@@ -27789,6 +27837,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat,
 /area/white_antre/indoors/upper_level/east_overwatch)
+"buy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/attachable/bayonet,
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
 "buz" = (
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 35
@@ -32329,6 +32382,13 @@
 /obj/effect/landmark/lv624/door_blocker/xeno,
 /turf/closed/wall/hybrisa/research,
 /area/white_antre/indoors/upper_level/east_overwatch)
+"bFY" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/effect/landmark/map_item,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/white_antre/indoors/upper_level/canteen)
 "bFZ" = (
 /obj/effect/landmark/lv624/door_blocker/xeno,
 /turf/open/floor/prison,
@@ -32509,6 +32569,23 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/silver/west,
 /area/white_antre/indoors/upper_level/canteen)
+"bGC" = (
+/obj/item/attachable/bayonet,
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/indoors/upper_level/records)
+"bGD" = (
+/obj/item/attachable/bayonet,
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/white_antre/indoors/upper_level/simian_storage)
+"bGE" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/attachable/bayonet,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/north_overwatch)
+"bGF" = (
+/obj/item/attachable/bayonet,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/north_overwatch)
 "bGG" = (
 /obj/item/stool{
 	pixel_y = 8
@@ -35930,6 +36007,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 1
 	},
+/obj/effect/landmark/map_item,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
 "bQC" = (
@@ -47360,6 +47438,7 @@
 /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa,
+/obj/item/attachable/bayonet/wy,
 /turf/open/floor/prison/darkred2/west,
 /area/white_antre/indoors/main_level/security)
 "tpc" = (
@@ -48108,6 +48187,7 @@
 	pixel_x = 7;
 	pixel_y = 7
 	},
+/obj/effect/landmark/map_item,
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/central_command)
 "wmp" = (
@@ -107756,7 +107836,7 @@ aox
 bSh
 akO
 apk
-jbE
+aIA
 lqu
 apw
 fFV
@@ -110477,7 +110557,7 @@ aKh
 aKh
 bSh
 anr
-aKh
+aDw
 aKh
 abL
 cDM
@@ -116305,7 +116385,7 @@ aPV
 bhI
 bvt
 bfE
-aes
+aKK
 aes
 aes
 aPW
@@ -118184,7 +118264,7 @@ gFJ
 baV
 baM
 aKV
-aKI
+aes
 aes
 aes
 lvO
@@ -118348,10 +118428,10 @@ aes
 aes
 aes
 aes
-aes
+lvO
 baW
 baN
-aKV
+aes
 aes
 aes
 aes
@@ -118519,8 +118599,8 @@ aes
 xOW
 vcM
 fSq
-aKV
-sQd
+afm
+aIt
 aes
 xOW
 aZR
@@ -118675,7 +118755,7 @@ acU
 aut
 aes
 aes
-aGP
+xTl
 rEa
 aKV
 aKV
@@ -119179,7 +119259,7 @@ ozb
 aut
 aPV
 uJj
-uJj
+aes
 aes
 aes
 acM
@@ -148278,7 +148358,7 @@ adL
 adL
 adL
 bOU
-adI
+aIC
 bsW
 adv
 bgZ
@@ -148440,7 +148520,7 @@ ciD
 adE
 byw
 bxC
-bxJ
+buy
 bxJ
 bxz
 adP
@@ -149244,7 +149324,7 @@ bjf
 acW
 bIa
 bjj
-bjj
+bGC
 cjH
 cjE
 ciL
@@ -149257,7 +149337,7 @@ bhN
 aeK
 aeH
 aeG
-afa
+bFY
 aev
 bGH
 aRa
@@ -149282,7 +149362,7 @@ aQo
 aem
 byb
 bxK
-bxC
+bdk
 adQ
 bxa
 bOU
@@ -150913,7 +150993,7 @@ bjK
 bKb
 bKo
 bYf
-bKD
+bGE
 bKb
 bJI
 bJs
@@ -153097,7 +153177,7 @@ bjD
 bjD
 bjD
 bjD
-bjD
+bGF
 bKn
 bJQ
 bJu
@@ -153146,7 +153226,7 @@ aik
 ahZ
 ahP
 bxS
-bxI
+bge
 bhf
 bxk
 bhm
@@ -154283,7 +154363,7 @@ bRB
 agN
 bIp
 agB
-agB
+bGD
 bHQ
 agB
 ago

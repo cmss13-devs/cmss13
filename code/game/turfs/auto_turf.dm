@@ -357,7 +357,13 @@
 	bleed_layer = 1
 	is_weedable = SEMI_WEEDABLE
 
+/turf/open/auto_turf/shale/layer1/weedable
+	is_weedable = FULLY_WEEDABLE
+
 /turf/open/auto_turf/shale/layer2
 	icon_state = "shale_2"
 	bleed_layer = 2
 	is_weedable = SEMI_WEEDABLE
+
+/turf/open/auto_turf/shale/layer2/weedable
+	is_weedable = FULLY_WEEDABLE

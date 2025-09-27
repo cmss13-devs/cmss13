@@ -1063,7 +1063,7 @@
 /area/white_antre/indoors/main_level/east_containment_hive)
 "acU" = (
 /turf/closed/wall/mineral/bone_resin/k_series,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
+/area/white_antre/indoors/main_level/east_containment_hive)
 "acV" = (
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/filingcabinet{
@@ -1233,7 +1233,7 @@
 	dir = 4
 	},
 /turf/closed/wall/mineral/bone_resin/k_series,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
+/area/white_antre/indoors/main_level/east_containment_hive)
 "adi" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -11064,7 +11064,7 @@
 /area/white_antre/indoors/main_level/east_containment_hive)
 "aAb" = (
 /turf/open/floor/almayer/silver/south,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
+/area/white_antre/indoors/main_level/east_containment_hive)
 "aAc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown2/west,
@@ -25745,7 +25745,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
+/area/white_antre/indoors/main_level/east_containment_hive)
 "bpj" = (
 /obj/item/reagent_container/food/drinks/coffeecup/wy{
 	pixel_x = -4;
@@ -32610,9 +32610,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall/kseries,
 /turf/open/floor/prison/cell_stripe,
 /area/white_antre/indoors/main_level/south_containment)
-"bGQ" = (
-/turf/closed/wall/r_wall/biodome,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
 "bGR" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2";
@@ -32620,16 +32617,6 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/white_antre/indoors/upper_level/canteen)
-"bGS" = (
-/turf/open/floor/almayer/silver/southwest,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bGT" = (
-/turf/open/floor/almayer/silver,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bGU" = (
-/obj/structure/machinery/colony_floodlight/venir_wall_light,
-/turf/open/floor/almayer/silver,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
 "bGV" = (
 /obj/structure/safe/floor{
 	spawnkey = 0
@@ -32660,12 +32647,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
-"bGY" = (
-/turf/open/floor/almayer/silver/southeast,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bGZ" = (
-/turf/open/floor/almayer/silvercorner/west,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
 "bHa" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/double{
@@ -32674,67 +32655,15 @@
 	},
 /turf/open/floor/almayer/silver/west,
 /area/white_antre/indoors/upper_level/canteen)
-"bHb" = (
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bHc" = (
-/turf/open/floor/almayer/silvercorner/south,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bHd" = (
-/turf/open/floor/almayer/silver/west,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bHe" = (
-/turf/open/floor/prison/floor_plate/southwest,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bHf" = (
-/turf/open/floor/prison,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bHg" = (
-/turf/open/floor/almayer/silver/east,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bHh" = (
-/obj/structure/machinery/colony_floodlight/venir_wall_light{
-	dir = 8
-	},
-/turf/open/floor/almayer/silver/west,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bHi" = (
-/turf/open/floor/almayer/silver/northwest,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bHj" = (
-/turf/open/floor/almayer/silvercorner/north,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bHk" = (
-/turf/open/floor/almayer/silvercorner/east,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bHl" = (
-/turf/open/floor/almayer/silver/north,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
 "bHm" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
 /turf/open/floor/almayer_hull/outerhull_dir,
 /area/white_antre/indoors/upper_level/west_corridor)
-"bHn" = (
-/turf/open/floor/almayer/silver/northeast,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
 "bHo" = (
 /turf/closed/wall/mineral/bone_resin/k_series,
 /area/white_antre/oob)
-"bHp" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2"
-	},
-/turf/open/floor/prison/cell_stripe/north,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
-"bHq" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2";
-	dir = 1
-	},
-/turf/open/floor/prison/cell_stripe,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
 "bHr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/red{
@@ -32744,12 +32673,6 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat,
 /area/white_antre/indoors/upper_level/east_overwatch)
-"bHs" = (
-/obj/structure/machinery/colony_floodlight/venir_wall_light{
-	dir = 1
-	},
-/turf/open/floor/almayer/silver/north,
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob)
 "bHt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_smooth"
@@ -114948,13 +114871,13 @@ bhT
 bhT
 byv
 bhT
-aQi
+bZr
 ozb
 ozb
 ozb
 ozb
 ozb
-ozb
+aKn
 aKn
 beh
 bqK
@@ -115290,7 +115213,7 @@ buA
 aPV
 aPV
 iKa
-aQi
+aKn
 aKn
 bei
 aMB
@@ -116466,11 +116389,11 @@ bfE
 aKK
 bHo
 bHo
-aPW
-aKn
-aPW
-aPW
-aPW
+aPV
+aPV
+aPV
+aPV
+aPV
 aPV
 ack
 acf
@@ -117812,13 +117735,13 @@ but
 aPV
 euM
 ozb
-bGQ
-bGQ
-bHi
-bHd
-bHh
-bHd
-bGS
+ayM
+ayM
+azn
+ayX
+azo
+ayX
+ayN
 euM
 euM
 bHo
@@ -117852,13 +117775,13 @@ euM
 euM
 euM
 euM
-bHi
-bHd
-bHh
-bHd
-bGS
-bGQ
-bGQ
+azn
+ayX
+azo
+ayX
+ayN
+ayM
+ayM
 ozb
 euM
 aPV
@@ -117980,15 +117903,15 @@ bFj
 aPV
 aPV
 euM
-bGQ
-bHi
-bHj
-bHb
-bHb
-bHb
-bGZ
-bHd
-bHd
+ayM
+azn
+azl
+ayU
+ayU
+ayU
+ayR
+ayX
+ayX
 bHo
 aIL
 agk
@@ -118016,17 +117939,17 @@ rEa
 aLD
 lqX
 agk
-bHp
-bHi
-bHd
-bHd
-bHj
-bHb
-bHb
-bHb
-bGZ
-bGS
-bGQ
+azu
+azn
+ayX
+ayX
+azl
+ayU
+ayU
+ayU
+ayR
+ayN
+ayM
 euM
 aPV
 aPV
@@ -118149,14 +118072,14 @@ aXc
 aPV
 aPV
 euM
-bHl
-bHb
-bHb
-bHe
-bHe
-bHf
-bHf
-bHe
+azk
+ayU
+ayU
+ayS
+ayS
+ayV
+ayV
+ayS
 aAb
 aIL
 agk
@@ -118184,17 +118107,17 @@ rEa
 aLD
 lqX
 agk
-bHp
-bHl
-bHe
-bHf
-bHf
-bHe
-bHe
-bHb
-bHb
-bGT
-bGQ
+azu
+azk
+ayS
+ayV
+ayV
+ayS
+ayS
+ayU
+ayU
+ayO
+ayM
 aQi
 aPV
 aXc
@@ -118317,16 +118240,16 @@ aKK
 aXj
 aQi
 euM
-bHs
-bHb
-bHe
-bHe
-bHf
+aAa
+ayU
+ayS
+ayS
+ayV
 bpi
-bHf
-bHe
+ayV
+ayS
 aAb
-bHq
+azw
 agk
 oRZ
 xTl
@@ -118352,17 +118275,17 @@ rEa
 aLD
 lqX
 agk
-bHp
-bHl
-bHe
-bHf
+azu
+azk
+ayS
+ayV
 bpi
 acU
 acU
-bHe
-bHb
-bGU
-bGQ
+ayS
+ayU
+azq
+ayM
 aQi
 aXh
 aKK
@@ -118485,16 +118408,16 @@ aKK
 aXj
 aQi
 euM
-bHl
-bHb
-bHe
-bHf
+azk
+ayU
+ayS
+ayV
 bpi
-bHf
-bHf
-bHe
+ayV
+ayV
+ayS
 aAb
-bHq
+azw
 agk
 oRZ
 rVC
@@ -118520,17 +118443,17 @@ rEa
 aLE
 lqX
 agk
-bHp
+azu
 bHo
-bHe
-bHf
-bHf
+ayS
+ayV
+ayV
 adh
 acU
-bHe
-bHb
-bGT
-bGQ
+ayS
+ayU
+ayO
+ayM
 aQi
 aXh
 aKK
@@ -118653,16 +118576,16 @@ aKK
 aXj
 aQi
 euM
-bHn
-bHk
-bHf
+azm
+azj
+ayV
 bpi
 acU
 acU
 bHo
 bHo
-bGY
-bHq
+ayP
+azw
 agk
 oRZ
 xTl
@@ -118690,15 +118613,15 @@ lqX
 aey
 aeq
 bHo
-bHk
-bHb
-bHb
+azj
+ayU
+ayU
 acU
 adh
-bHf
-bHc
-bGY
-bGQ
+ayV
+ayT
+ayP
+ayM
 aQi
 aXh
 aKK
@@ -118822,10 +118745,10 @@ aPV
 aPV
 euM
 euM
-bHl
-bHf
-bHf
-bHf
+azk
+ayV
+ayV
+ayV
 acU
 bHo
 bHo
@@ -118858,13 +118781,13 @@ bHo
 bHo
 bHo
 euM
-bHn
-bHk
-bHb
-bHf
-bHf
-bHf
-bGT
+azm
+azj
+ayU
+ayV
+ayV
+ayV
+ayO
 euM
 euM
 aQi
@@ -118990,12 +118913,12 @@ aPV
 euM
 ozb
 euM
-bHl
-bHf
-bHf
-bHf
-bHc
-bGY
+azk
+ayV
+ayV
+ayV
+ayT
+ayP
 euM
 bHo
 euM
@@ -119027,12 +118950,12 @@ bHo
 euM
 euM
 euM
-bHn
-bHk
-bHf
-bHf
-bHf
-bGT
+azm
+azj
+ayV
+ayV
+ayV
+ayO
 euM
 ozb
 euM
@@ -119158,10 +119081,10 @@ iKa
 euM
 ozb
 euM
-bHl
-bHe
-bHe
-bHe
+azk
+ayS
+ayS
+ayS
 aAb
 euM
 euM
@@ -119196,11 +119119,11 @@ euM
 ozb
 euM
 euM
-bHl
-bHe
-bHe
-bHe
-bGT
+azk
+ayS
+ayS
+ayS
+ayO
 euM
 ozb
 euM
@@ -119326,11 +119249,11 @@ iKa
 euM
 ozb
 euM
-bHn
-bHg
-bHg
-bHg
-bGY
+azm
+azb
+azb
+azb
+ayP
 euM
 ozb
 ozb
@@ -119364,11 +119287,11 @@ euM
 ozb
 ozb
 euM
-bHn
-bHg
-bHg
-bHg
-bGY
+azm
+azb
+azb
+azb
+ayP
 euM
 ozb
 euM

@@ -230,9 +230,6 @@
 	base_muffle = MUFFLE_MEDIUM
 	ceiling_muffle = FALSE
 
-/area/white_antre/indoors/main_level/east_containment_hive/allow_ob
-	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
-
 //White Antre Facility - Underground
 
 /area/white_antre/indoors/underground_level

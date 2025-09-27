@@ -41199,12 +41199,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/records)
-"cjP" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/closed/wall/hybrisa/research/reinforced,
-/area/white_antre/indoors/upper_level/simian_storage)
 "cjQ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
@@ -153816,7 +153810,7 @@ bRB
 bIq
 bIh
 bjn
-cjP
+bjn
 bjn
 bjn
 acx

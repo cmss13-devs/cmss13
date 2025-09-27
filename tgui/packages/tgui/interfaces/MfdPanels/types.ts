@@ -103,7 +103,9 @@ export type CasFiremission = {
 };
 
 export type MapProps = {
-  tactical_map_ref: string;
+  tactical_map_ref: Array<string>;
+  zlevel: number;
+  zlevelMax: number;
 };
 
 export const dirMap = (dir) => {

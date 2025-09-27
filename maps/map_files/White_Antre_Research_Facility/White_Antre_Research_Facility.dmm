@@ -1707,6 +1707,13 @@
 /obj/structure/platform/metal/almayer,
 /turf/closed/wall/mineral/bone_resin/k_series,
 /area/white_antre/oob)
+"aes" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/white_antre/indoors/main_level/east_containment)
 "aet" = (
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/white_antre/indoors/upper_level/east_corridor)
@@ -1734,13 +1741,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
-"aey" = (
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
-	dir = 2;
-	icon_state = "udoor0"
-	},
-/turf/closed/wall/mineral/bone_resin/k_series,
-/area/white_antre/oob)
 "aez" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -2633,6 +2633,10 @@
 "agN" = (
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/white_antre/indoors/upper_level/simian_storage)
+"agO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrownfull2,
+/area/white_antre/indoors/main_level/east_containment)
 "agP" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/almayer/research/containment/floor2/north,
@@ -8580,6 +8584,13 @@
 /obj/structure/platform/metal/almayer/east,
 /turf/open_space,
 /area/white_antre/indoors/main_level/engineering)
+"atY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper/crumpled{
+	pixel_x = 20
+	},
+/turf/open/floor/prison/darkbrown2/north,
+/area/white_antre/indoors/main_level/east_containment)
 "atZ" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 8
@@ -8640,6 +8651,13 @@
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/south_containment_hive)
+"aul" = (
+/obj/item/paper/crumpled{
+	pixel_x = 15;
+	pixel_y = -9
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/white_antre/indoors/main_level/east_containment)
 "aum" = (
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/engineering)
@@ -9559,7 +9577,8 @@
 "awj" = (
 /obj/effect/landmark/lv624/door_blocker/xeno,
 /obj/effect/random_explosion/medium{
-	max_time = 3000
+	max_time = 2000;
+	min_time = 2000
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_overwatch)
@@ -21681,10 +21700,6 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/main_level/east_corridor)
 "bcy" = (
-/obj/effect/decal/cleanable/dirt{
-	icon_state = "thermite";
-	name = "impact"
-	},
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
 	pixel_y = -7;
 	layer = 2.52
@@ -21728,6 +21743,7 @@
 /area/white_antre/indoors/main_level/east_corridor)
 "bcE" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/item/frame/table/almayer,
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/white_antre/indoors/main_level/east_containment)
 "bcF" = (
@@ -27809,6 +27825,10 @@
 "buw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/paper/crumpled{
+	pixel_x = 6;
+	pixel_y = 24
+	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/main_level/east_containment)
 "bux" = (
@@ -32096,6 +32116,7 @@
 /area/white_antre/indoors/upper_level/east_overwatch)
 "bFi" = (
 /obj/structure/machinery/light/double,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/indoors/main_level/east_containment)
 "bFj" = (
@@ -32128,6 +32149,7 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
 "bFq" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/white_antre/indoors/main_level/east_containment)
 "bFr" = (
@@ -32428,7 +32450,8 @@
 	pixel_y = 1
 	},
 /obj/effect/random_explosion/medium{
-	max_time = 3000
+	max_time = 2000;
+	min_time = 2000
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_overwatch)
@@ -115374,7 +115397,7 @@ aPV
 bwA
 bha
 biz
-aIU
+aul
 bwj
 aZp
 bfu
@@ -116049,7 +116072,7 @@ aPV
 aPV
 bhI
 bvs
-aKK
+aYH
 bHo
 bHo
 bHo
@@ -116068,7 +116091,7 @@ bdm
 bdd
 abM
 aLT
-abm
+aZt
 bTi
 bcz
 aMx
@@ -116383,7 +116406,7 @@ byG
 bpJ
 bja
 aPV
-bhI
+atY
 bvt
 bfE
 aKK
@@ -117070,7 +117093,7 @@ kje
 piB
 ach
 wmp
-wmp
+aes
 abW
 abU
 abR
@@ -117561,7 +117584,7 @@ aPV
 aPV
 aLw
 aKK
-aKK
+aYH
 bdb
 bcl
 bbh
@@ -117602,7 +117625,7 @@ bHo
 bHo
 bHo
 bHo
-aPV
+aQi
 euM
 ozb
 ozb
@@ -118404,7 +118427,7 @@ aKK
 aKK
 aLT
 bFm
-aKK
+aYH
 aXj
 aQi
 euM
@@ -118572,7 +118595,7 @@ bfE
 bfE
 aLT
 bFm
-aKK
+aZp
 aXj
 aQi
 euM
@@ -118580,8 +118603,8 @@ azm
 azj
 ayV
 bpi
-acU
-acU
+bHo
+bHo
 bHo
 bHo
 ayP
@@ -118610,7 +118633,7 @@ aKV
 rEa
 aLD
 lqX
-aey
+bHo
 aeq
 bHo
 azj
@@ -118749,7 +118772,7 @@ azk
 ayV
 ayV
 ayV
-acU
+bHo
 bHo
 bHo
 bHo
@@ -118907,7 +118930,7 @@ bwA
 bha
 bgf
 beJ
-aWZ
+agO
 aPV
 aPV
 euM
@@ -118922,7 +118945,7 @@ ayP
 euM
 bHo
 euM
-aPV
+aQi
 bHo
 aGP
 rEa
@@ -119090,7 +119113,7 @@ euM
 euM
 ozb
 euM
-aPV
+aQi
 bHo
 qFv
 afl
@@ -119114,7 +119137,7 @@ afJ
 afl
 aLF
 bHo
-aPV
+aQi
 euM
 ozb
 euM
@@ -119258,7 +119281,7 @@ euM
 ozb
 ozb
 euM
-aPV
+aQi
 uJj
 bHo
 bHo
@@ -119282,7 +119305,7 @@ bHo
 bHo
 uJj
 uJj
-aPV
+aQi
 euM
 ozb
 ozb

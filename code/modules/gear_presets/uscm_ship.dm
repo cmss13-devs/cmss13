@@ -386,6 +386,10 @@
 	access = get_access(ACCESS_LIST_MARINE_MAIN)
 	access |= ACCESS_MARINE_DATABASE_ADMIN
 
+/datum/equipment_preset/uscm_ship/xo/load_status(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	give_action(new_human, /datum/action/innate/message_squad)
+
 /datum/equipment_preset/uscm_ship/xo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))

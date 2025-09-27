@@ -32,26 +32,83 @@
 	if(owner.stat != CONSCIOUS)
 		return FALSE
 	if(TIMER_COOLDOWN_CHECK(owner, COOLDOWN_HUD_ORDER))
-		to_chat(owner, SPAN_WARNING("You have [S_TIMER_COOLDOWN_TIMELEFT(owner, COOLDOWN_HUD_ORDER)] seconds left before you can send a HUD message!"))
+		to_chat(owner, SPAN_WARNING("You have to wait untill you can send another HUD announcement!"))
 		return FALSE
 	if(!(HAS_TRAIT(owner, TRAIT_LEADERSHIP)))
 		return FALSE
 
-GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_XO, JOB_CO, JOB_XO, JOB_SYNTH))
+
+/datum/action/innate/message_squad/New(Target, override_icon_state)
+	. = ..()
+	INVOKE_NEXT_TICK(src, TYPE_PROC_REF(/datum/action/innate/message_squad, update_button_icon))
+
+
+GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_XO, JOB_CO, JOB_XO))
+
+/datum/action/innate/message_squad/update_button_icon()
+	. = ..()
+	button.overlays.Cut()
+	button.overlays += image(icon_file, button, action_icon_state)
+	var/image/colour_blend = image(button.icon, src, "template_overlay")
+	var/color_mix = mix_color_from_overwatched_squads(owner)
+	colour_blend.color = color_mix
+	if(color_mix == null)
+		if(owner.job in GLOB.ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION)
+			button.overlays += colour_blend //special roles get it regardless of overwatching a squad
+	else
+		button.overlays += colour_blend
+
+
+/proc/mix_color_from_overwatched_squads(mob/living/carbon/human/owner)
+	var/list/squad_colors = list()
+
+	for(var/datum/squad/marine/overwatched_squad in GLOB.RoleAuthority.squads)
+		if(overwatched_squad.overwatch_officer == owner)
+			if(overwatched_squad.minimap_color)
+				squad_colors += overwatched_squad.minimap_color
+
+	// just gives white
+	if(!length(squad_colors))
+		return null
+
+	var/contents = length(squad_colors)
+	var/list/redcolor = new /list(contents)
+	var/list/greencolor = new /list(contents)
+	var/list/bluecolor = new /list(contents)
+	var/list/weight = new /list(contents)
+
+	// fill colours/weights
+	for(var/i = 1; i <= contents; i++)
+		var/color = squad_colors[i]
+		if(length(color) != 7)
+			continue
+
+		redcolor[i] = hex2num(copytext(color,2,4))
+		greencolor[i] = hex2num(copytext(color,4,6))
+		bluecolor[i] = hex2num(copytext(color,6,8))
+		weight[i] = 1
+
+	// mix
+	var/red = mixOneColor(weight, redcolor)
+	var/green = mixOneColor(weight, greencolor)
+	var/blue = mixOneColor(weight, bluecolor)
+
+	return rgb(red, green, blue)
+
 
 /datum/action/innate/message_squad/action_activate()
 	. = ..()
 	if(!can_use_action())
 		return
 	var/mob/living/carbon/human/human_owner = owner
-	//if(istype(human_owner.wear_l_ear, /obj/item/device/radio/headset) || istype(human_owner.wear_r_ear, /obj/item/device/radio/headset))
-	//	to_chat(human_owner, SPAN_NOTICE("You need a headset to send a HUD message!"))
 	update_button_icon()
 	var/override_color
 	var/list/alert_receivers = list()
 	var/sound_alert	= 'sound/effects/radiostatic.ogg'
 	var/announcement_title
 
+	var/list/squads_being_overwatched_by_me = list()
+	var/choice
 	if(human_owner.assigned_squad)
 		if(human_owner.assigned_fireteam)
 			var/list/current_squad = human_owner.assigned_squad.marines_list
@@ -65,7 +122,6 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 			override_color = human_owner.assigned_squad.minimap_color
 		sound_alert = 'sound/misc/notice2.ogg'
 	else
-		var/list/squads_being_overwatched_by_me = list()
 		for(var/datum/squad/marine/overwatched_squad in GLOB.RoleAuthority.squads)
 			if(overwatched_squad.overwatch_officer == human_owner)
 				squads_being_overwatched_by_me.Add(overwatched_squad.name)
@@ -74,7 +130,6 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 		if(!squads_being_overwatched_by_me.len)
 			return
 		else
-			var/choice
 			if(squads_being_overwatched_by_me.len == 1)
 				choice = squads_being_overwatched_by_me[1]
 			else
@@ -94,12 +149,14 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 				return
 		sound_alert = 'sound/effects/sos-morse-code.ogg'
 		announcement_title = "[human_owner.job]'s Announcement"
-	var/text = tgui_input_text(human_owner, "Maximum message length [MAX_COMMAND_MESSAGE_LEN]", "Send message to squad",  max_length = MAX_COMMAND_MESSAGE_LEN, multiline = TRUE)
+	var/text = tgui_input_text(human_owner, "Maximum message length [MAX_COMMAND_MESSAGE_LEN]", "Send message to [choice ? choice : squads_being_overwatched_by_me[0]]",  max_length = MAX_COMMAND_MESSAGE_LEN, multiline = TRUE)
 	if(!text)
+		return
+	if(TIMER_COOLDOWN_CHECK(owner, COOLDOWN_HUD_ORDER))
 		return
 	log_game("[key_name(human_owner)] has broadcasted the hud message [text] at [AREACOORD(human_owner)]")
 	TIMER_COOLDOWN_START(owner, COOLDOWN_HUD_ORDER, 30 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), 30 SECONDS + 1)
+	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), 30 SECONDS + 1, TIMER_STOPPABLE)
 	alert_receivers += GLOB.observer_list
 
 	//if(GLOB.radio_communication_clarity < 100)

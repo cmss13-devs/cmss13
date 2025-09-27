@@ -1,6 +1,6 @@
 /client/proc/screen_alert_menu()
 	set name = "Send Screen Alert"
-	set category = "Game Master.Extras"
+	set category = "Admin.Factions"
 
 	if(!check_rights(R_ADMIN))
 		return

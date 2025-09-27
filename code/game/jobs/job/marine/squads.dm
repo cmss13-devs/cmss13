@@ -377,6 +377,10 @@
 		overwatch_officer = null
 		clear_ref_tracking(previous)
 	overwatch_officer = target_mob
+	//Update the HUD message overlay to have a squad colour
+	var/datum/action/innate/message_squad/act = locate(/datum/action/innate/message_squad) in target_mob.actions
+	if(act)
+		act.update_button_icon()
 	RegisterSignal(overwatch_officer, COMSIG_PARENT_QDELETING, PROC_REF(personnel_deleted), override = TRUE)
 	return TRUE
 
@@ -386,6 +390,10 @@
 		return FALSE
 	var/mob/operator = overwatch_officer
 	overwatch_officer = null
+	//Update the HUD message overlay to have a squad colour
+	var/datum/action/innate/message_squad/act = locate(/datum/action/innate/message_squad) in operator.actions
+	if(act)
+		act.update_button_icon()
 	clear_ref_tracking(operator)
 	return TRUE
 

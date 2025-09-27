@@ -93,6 +93,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							"Security HUD" = FALSE,
 							"Squad HUD" = FALSE,
 							"Xeno Status HUD" = FALSE,
+							"Hunter HUD"= FALSE,
 							HUD_MENTOR_SIGHT = FALSE
 							)
 	var/ghost_vision_pref = GHOST_VISION_LEVEL_MID_NVG

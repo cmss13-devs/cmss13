@@ -117,6 +117,14 @@
 /obj/item/flag/plantable/clf,
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
+"av" = (
+/obj/effect/landmark/survivor_spawner/clf_coordinator/shivas,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"aw" = (
+/obj/effect/landmark/survivor_spawner/clf_synth/shivas,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
 "aC" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -2332,7 +2340,7 @@ an
 ad
 Kf
 JM
-DH
+av
 DH
 Ms
 DH
@@ -2471,7 +2479,7 @@ Co
 pM
 DH
 Gz
-EM
+aw
 DH
 DH
 DH

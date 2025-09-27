@@ -221,6 +221,7 @@
 	var/pounce_pass_flags // Pounce flags to customize what pounce can go over/through
 	var/throw_speed = SPEED_FAST // Throw speed
 	var/tracks_target = TRUE // Does it track the target atom?
+	var/kick_up_smoke = TRUE // Dash abilities create a second of "dust" this doesnt do anything other then add some vfx, this is an option incase you dont want this for your ability
 
 	var/list/pounce_callbacks = null // Specific callbacks to invoke when a pounce lands on an atom of a specific type
 										// (note that if a collided atom does not match any of the key types, defaults to the appropriate X_launch_collision proc)
@@ -251,6 +252,9 @@
  * Effects to apply *inmediately* before pouncing.
  */
 /datum/action/xeno_action/activable/pounce/proc/pre_pounce_effects()
+	var/mob/living/carbon/xenomorph/X = owner
+	if(kick_up_smoke)
+		X.do_dash_smoke()
 	return
 
 /datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()

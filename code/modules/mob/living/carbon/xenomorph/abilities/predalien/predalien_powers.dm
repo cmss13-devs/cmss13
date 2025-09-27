@@ -236,6 +236,7 @@
 	apply_cooldown()
 
 	predalien_smash.throw_atom(get_step_towards(affected_atom, predalien_smash), grab_range, SPEED_FAST, predalien_smash, tracking=TRUE)
+	predalien_smash.do_dash_smoke()
 
 	if(predalien_smash.Adjacent(carbon) && predalien_smash.start_pulling(carbon, TRUE))
 		playsound(carbon.pulledby, 'sound/voice/predalien_growl.ogg', 75, 0, status = 0) // bang and roar for dramatic effect

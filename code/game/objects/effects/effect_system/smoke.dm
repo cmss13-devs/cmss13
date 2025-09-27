@@ -844,3 +844,19 @@
 		smoke.time_to_live = lifetime
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
+
+/obj/effect/particle_effect/smoke/dash_dust
+	name = "kicked up dust"
+	smokeranking = SMOKE_RANK_HARMLESS
+	color = "#a7a9aa"
+	opacity = FALSE
+	alpha = 50
+
+/obj/effect/particle_effect/smoke/dash_dust/Initialize(mapload, ...)
+	. = ..()
+	dir = pick(GLOB.alldirs)
+	animate(src, 5, alpha = 0, easing = CUBIC_EASING)
+	QDEL_IN(src, 2)
+
+/datum/effect_system/smoke_spread/dash_dust
+	smoke_type = /obj/effect/particle_effect/smoke/dash_dust

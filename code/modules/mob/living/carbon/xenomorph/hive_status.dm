@@ -1681,12 +1681,9 @@
 	allow_queen_evolve = FALSE
 	allow_no_queen_evo = TRUE
 
-	destruction_allowed = NORMAL_XENO
+	hive_flags = XENO_SLASH_ALLOW_ALL|XENO_CONSTRUCTION_ALLOW_ALL|XENO_DECONSTRUCTION_ALLOW_ALL
 
 	larva_gestation_multiplier = 1.2
-
-	// Pathogen cannot ally with xenos, and really shouldn't ally with anyone
-	banned_allies = list(FACTION_XENOMORPH, FACTION_XENOMORPH_ALPHA, FACTION_XENOMORPH_BRAVO, FACTION_XENOMORPH_CHARLIE, FACTION_XENOMORPH_DELTA, FACTION_XENOMORPH_FERAL, FACTION_XENOMORPH_FORSAKEN, FACTION_XENOMORPH_TUTORIAL, FACTION_XENOMORPH_HELLHOUNDS, FACTION_XENOMORPH_MUTATED, FACTION_XENOMORPH_TAMED, FACTION_XENOMORPH_CORRPUTED)
 
 	hive_orders = "Kill everyone and everything."
 
@@ -1708,6 +1705,9 @@
 
 	tacmap_requires_queen_ovi = FALSE
 	var/max_poppers = 8
+
+/datum/hive_status/pathogen/setup_banned_allies()
+	banned_allies = list("All")
 
 /datum/hive_status/pathogen/get_xeno_counts()
 	// Every caste is manually defined here so you get

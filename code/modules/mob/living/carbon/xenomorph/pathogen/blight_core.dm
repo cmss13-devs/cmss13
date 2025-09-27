@@ -21,9 +21,21 @@
 		return FALSE
 
 	//Make sure construction is unrestricted
-	if(hive && hive.construction_allowed == XENO_NOBODY)
-		to_chat(creature, SPAN_WARNING("The hive is too weak and fragile to have the strength to design constructions."))
-		return FALSE
+	if(IS_NORMAL_XENO(creature))
+		if(!HAS_FLAG(creature.hive.hive_flags, XENO_CONSTRUCTION_NORMAL))
+			to_chat(creature, SPAN_WARNING("Construction by normal creatures is currently restricted!"))
+			return FALSE
+	else if(IS_XENO_LEADER(creature))
+		if(!HAS_FLAG(creature.hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
+			to_chat(creature, SPAN_WARNING("Construction by leaders is currently restricted!"))
+			return FALSE
+	else if(is_pathogen_overmind(creature))
+		if(!HAS_FLAG(creature.hive.hive_flags, XENO_CONSTRUCTION_QUEEN))
+			to_chat(creature, SPAN_WARNING("We are currently not allowed to designate construction!"))
+			return FALSE
+	else
+		to_chat(creature, SPAN_DANGER("Something went wrong!"))
+		CRASH("Something went wrong determining hive_pos during place_construction!")
 
 	var/turf/target_turf = get_turf(A)
 

@@ -362,8 +362,8 @@
 		to_chat(user, SPAN_WARNING("You cannot become a Popper until you are no longer alive in a nest."))
 		return FALSE
 
-	if(world.time - user.client?.player_details.larva_queue_time < XENO_JOIN_DEAD_TIME)
-		var/time_left = floor((user.client.player_details.larva_queue_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
+	if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
+		var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a Popper until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
 		return FALSE
 

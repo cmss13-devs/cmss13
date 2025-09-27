@@ -65,7 +65,7 @@
 		var/mob/hologram/hologram_mob = subject_mob
 		subject_mob = hologram_mob.linked_mob
 
-	var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used.plane_masters["[ROOF_PLANE]"]
+	var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used?.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = INVISIBILITY_MAXIMUM
 	if(ishuman(subject))
 		RegisterSignal(subject, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS, PROC_REF(cold_protection), override = TRUE)
@@ -88,7 +88,7 @@
 		var/mob/hologram/hologram_mob = subject
 		subject = hologram_mob.linked_mob
 
-	var/atom/movable/screen/plane_master/roof/roof_plane = subject.hud_used.plane_masters["[ROOF_PLANE]"]
+	var/atom/movable/screen/plane_master/roof/roof_plane = subject.hud_used?.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = 0
 
 /mob/proc/tent_deletion_clean_up(obj/structure/tent/deleting_tent)

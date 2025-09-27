@@ -138,7 +138,6 @@
 	throw_range = 3
 	w_class = SIZE_LARGE
 	flags_atom = FPRINT|CONDUCT
-	flags_item = NOSHIELD
 	flags_equip_slot = SLOT_BACK
 
 	attack_verb = list("chopped", "sliced", "cut", "reaped")

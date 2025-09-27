@@ -1698,11 +1698,15 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 
 		if(current.real_name && current.real_name != current.name)
 			name += " \[[current.real_name]\]"
-		if(current.stat == DEAD && specify_dead_role)
-			if(isobserver(current))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"
+		if(current.stat == DEAD)
+			var/isobserver = isobserver(current)
+			if(isobserver && current.mind?.original?.aghosted)
+				continue
+			if(specify_dead_role)
+				if(isobserver)
+					name += " \[ghost\]"
+				else
+					name += " \[dead\]"
 		pois[name] = current
 
 	if(!mobs_only)

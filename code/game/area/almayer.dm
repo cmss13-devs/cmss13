@@ -1,4 +1,4 @@
-//ALMAYER AREAS--------------------------------------//
+﻿//ALMAYER AREAS--------------------------------------//
 // Fore = West  | Aft = East //
 // Port = South | Starboard = North //
 // Bow = Western|Stern = Eastern //(those are the front and back small sections)
@@ -15,6 +15,7 @@
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
 	flags_area = AREA_NOSECURECADES
+	sound_isolated = TRUE
 	weather_enabled = FALSE
 
 	///Whether this area is used for hijack evacuation progress

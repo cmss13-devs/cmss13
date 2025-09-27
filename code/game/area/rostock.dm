@@ -19,6 +19,7 @@
 	// soundscape_playlist = list('sound/effects/xylophone1.ogg', 'sound/effects/xylophone2.ogg', 'sound/effects/xylophone3.ogg')
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
+	sound_isolated = TRUE
 
 // Upper Deck Misc
 /area/rostock/upper_deck
@@ -423,4 +424,5 @@
 	name = "SSV Rostock - Lifeboat Docking Port"
 	icon_state = "selfdestruct"
 	fake_zlevel = 2 // lowerdeck
+
 

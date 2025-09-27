@@ -1,0 +1,7 @@
+﻿author: PGrayCS
+
+delete-after: True
+
+changes:
+  - bugfix: "Stopped multiz weed planting sounds from reaching ship decks by honoring a new sound isolation flag."
+

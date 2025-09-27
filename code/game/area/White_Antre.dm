@@ -79,6 +79,8 @@
 	icon_state = "caves_south"
 	minimap_color = MINIMAP_SNOW
 
+/area/white_antre/outdoors/south_field/under_cover
+	ceiling = CEILING_SANDSTONE_ALLOW_CAS
 
 /area/white_antre/outdoors/road_west
 	name = "Snow Fields - Road West"
@@ -227,6 +229,9 @@
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 	base_muffle = MUFFLE_MEDIUM
 	ceiling_muffle = FALSE
+
+/area/white_antre/indoors/main_level/east_containment_hive/allow_ob
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 //White Antre Facility - Underground
 

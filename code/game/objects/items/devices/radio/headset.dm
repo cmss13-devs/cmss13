@@ -647,7 +647,19 @@
 
 /obj/item/device/radio/headset/almayer/mcl/Initialize()
 	. = ..()
-	spy_bug.nametag = "CL Radio"
+	if(spy_bug)
+		spy_bug.nametag = "CL Radio"
+
+/obj/item/device/radio/headset/almayer/mcl/sec
+	name = "corporate security radio headset"
+	spy_bug_type = null
+	desc = "Issued to Corporate Security personnel. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :y for WY."
+
+	misc_tracking = TRUE
+	locate_setting = TRACKER_CL
+	inbuilt_tracking_options = list(
+		"Corporate Liaison" = TRACKER_CL
+	)
 
 /obj/item/device/radio/headset/almayer/reporter
 	name = "reporter radio headset"

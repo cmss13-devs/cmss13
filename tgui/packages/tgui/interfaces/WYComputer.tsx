@@ -204,10 +204,10 @@ const MainMenu = (props) => {
           </Stack>
         )}
 
-        {access_level >= 4 && (
+        {access_level >= 5 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Intranet Tier 4</h3>
+              <h3>Intranet Tier 5</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -225,7 +225,7 @@ const MainMenu = (props) => {
           </Stack>
         )}
       </Section>
-      {(access_level === 3 || access_level >= 5) && (
+      {(access_level === 3 || access_level === 4 || access_level >= 6) && (
         <Section>
           <h1 style={{ textAlign: 'center' }}>Security Protocols</h1>
           {!!has_room_divider && !has_hidden_cell && (
@@ -258,7 +258,7 @@ const MainMenu = (props) => {
           >
             Security Flash
           </Button.Confirm>
-          {(access_level === 3 || access_level >= 6) && (
+          {(access_level === 3 || access_level >= 7) && (
             <Button
               align="center"
               tooltip="Release stored CN20-X nerve gas from security vents."
@@ -290,84 +290,85 @@ const MainMenu = (props) => {
           )}
         </Section>
       )}
-      {(access_level === 3 || access_level >= 5) && !!has_hidden_cell && (
-        <Section>
-          <h1 style={{ textAlign: 'center' }}>Hidden Cell Controls</h1>
-          {!!has_room_divider && (
+      {(access_level === 3 || access_level === 4 || access_level >= 6) &&
+        !!has_hidden_cell && (
+          <Section>
+            <h1 style={{ textAlign: 'center' }}>Hidden Cell Controls</h1>
+            {!!has_room_divider && (
+              <Button.Confirm
+                align="center"
+                tooltip="Activate/Deactivate the concealed Room Divider."
+                icon="fingerprint"
+                color={open_divider ? 'green' : 'red'}
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('unlock_divider')}
+                disabled={!has_room_divider}
+              >
+                Room Divider
+              </Button.Confirm>
+            )}
             <Button.Confirm
               align="center"
-              tooltip="Activate/Deactivate the concealed Room Divider."
-              icon="fingerprint"
-              color={open_divider ? 'green' : 'red'}
+              tooltip="Open/Close the cell security shutters."
+              icon={open_cell_shutters ? 'lock-open' : 'lock'}
+              color={open_cell_shutters ? 'green' : 'red'}
               ml="auto"
               px="2rem"
               width="100%"
               bold
-              onClick={() => act('unlock_divider')}
-              disabled={!has_room_divider}
+              onClick={() => act('cell_shutters')}
+              disabled={!has_hidden_cell}
             >
-              Room Divider
+              Door Shutters
             </Button.Confirm>
-          )}
-          <Button.Confirm
-            align="center"
-            tooltip="Open/Close the cell security shutters."
-            icon={open_cell_shutters ? 'lock-open' : 'lock'}
-            color={open_cell_shutters ? 'green' : 'red'}
-            ml="auto"
-            px="2rem"
-            width="100%"
-            bold
-            onClick={() => act('cell_shutters')}
-            disabled={!has_hidden_cell}
-          >
-            Door Shutters
-          </Button.Confirm>
-          <Button.Confirm
-            align="center"
-            tooltip="Open/Close the cell door."
-            icon={open_cell_door ? 'door-open' : 'door-closed'}
-            color={open_cell_door ? 'green' : 'red'}
-            ml="auto"
-            px="2rem"
-            width="100%"
-            bold
-            onClick={() => act('cell_door')}
-            disabled={!has_hidden_cell}
-          >
-            Door Control
-          </Button.Confirm>
-          <Button.Confirm
-            align="center"
-            tooltip="Activate the cell's flashbulb."
-            icon="lightbulb"
-            color="yellow"
-            ml="auto"
-            px="2rem"
-            width="100%"
-            bold
-            onClick={() => act('cell_flash')}
-            disabled={cell_flash_cooldown}
-          >
-            Cell Flash
-          </Button.Confirm>
-          {!!restricted_camera && (
-            <Button
+            <Button.Confirm
               align="center"
-              tooltip="Open the available intranet camera feeds."
-              icon="camera"
+              tooltip="Open/Close the cell door."
+              icon={open_cell_door ? 'door-open' : 'door-closed'}
+              color={open_cell_door ? 'green' : 'red'}
+              ml="auto"
+              px="2rem"
+              width="100%"
+              bold
+              onClick={() => act('cell_door')}
+              disabled={!has_hidden_cell}
+            >
+              Door Control
+            </Button.Confirm>
+            <Button.Confirm
+              align="center"
+              tooltip="Activate the cell's flashbulb."
+              icon="lightbulb"
               color="yellow"
               ml="auto"
               px="2rem"
               width="100%"
               bold
-              onClick={() => act('open_cameras')}
+              onClick={() => act('cell_flash')}
+              disabled={cell_flash_cooldown}
             >
-              Access Camera Feed
-            </Button>
-          )}
-        </Section>
-      )}
+              Cell Flash
+            </Button.Confirm>
+            {!!restricted_camera && (
+              <Button
+                align="center"
+                tooltip="Open the available intranet camera feeds."
+                icon="camera"
+                color="yellow"
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('open_cameras')}
+              >
+                Access Camera Feed
+              </Button>
+            )}
+          </Section>
+        )}
     </>
   );
 };
@@ -435,7 +436,7 @@ const SecVents = (props) => {
               tooltip="Release Gas"
               width="100%"
               disabled={
-                (access_level < 6 && access_level !== 3) || !vent.available
+                (access_level < 7 && access_level !== 3) || !vent.available
               }
               onClick={() => act('trigger_vent', { vent: vent.ref })}
             >

@@ -419,6 +419,10 @@
 	minimap_icon = "so"
 	minimap_background = "background_command"
 
+/datum/equipment_preset/uscm_ship/so/load_status(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	give_action(new_human, /datum/action/innate/message_squad)
+
 /datum/equipment_preset/uscm_ship/so/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))

@@ -4,6 +4,7 @@
 #define COOLDOWN_HIJACK_GROUND_CHECK "gamemode_ground_check"
 #define COOLDOWN_ITEM_HOOD_SOUND "item_hood_sound"
 #define COOLDOWN_LIGHT "cooldown_light"
+#define COOLDOWN_HUD_ORDER "hud_order"
 
 #define COOLDOWN_PRINTER_ERROR "cooldown_printer_error"
 

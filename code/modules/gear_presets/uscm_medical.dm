@@ -164,9 +164,13 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_RESEARCHER
 	job_title = JOB_RESEARCHER
-	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0, PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "Rsr"
 	skills = /datum/skills/researcher
+
+	faction = FACTION_WY
+	faction_group =	FACTION_LIST_MARINE_WY
+	origin_override = ORIGIN_CIVILIAN
 
 	minimap_icon = "researcher"
 	minimap_background = "background_medical"

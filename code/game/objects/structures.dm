@@ -112,7 +112,7 @@
 	if(!can_climb(user))
 		return FALSE
 
-	if(istype(loc, /turf/open_space) && user.a_intent != INTENT_HARM)
+	if(istype(loc, /turf/open_space))
 		var/turf/open_space/open = loc
 		open.climb_down(user)
 		return FALSE

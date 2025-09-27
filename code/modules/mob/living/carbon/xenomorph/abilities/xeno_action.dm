@@ -156,11 +156,8 @@
 	return
 
 // Activable actions - most abilities in the game. Require Shift/Middle click to do their 'main' effects.
-// The action_activate code of these actions does NOT call use_ability.
+// The action_activate code of these actions does (NOW) call use_ability.
 /datum/action/xeno_action/activable
-
-/datum/action/xeno_action/activable/can_use_action()
-	return TRUE
 
 // Called when the action is clicked on.
 // For non-activable Xeno actions, this is used to

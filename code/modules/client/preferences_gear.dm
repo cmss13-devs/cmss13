@@ -804,6 +804,12 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/weapon/gun/pistol/m4a3/custom
 	allowed_origins = USCM_ORIGINS
 
+/datum/gear/weapon/m4a4
+	display_name = "M4A4 Service Pistol"
+	path = /obj/item/weapon/gun/pistol/m4a3/m4a4
+	allowed_origins = USCM_ORIGINS
+	fluff_cost = 2
+
 /datum/gear/weapon/m44_custom_revolver
 	display_name = "M44 Custom Revolver"
 	path = /obj/item/weapon/gun/revolver/m44/custom
@@ -1160,6 +1166,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/misc/brown_gloves
 	display_name = "brown combat gloves"
 	path = /obj/item/clothing/gloves/marine/brown
+	fluff_cost = 2
+
+/datum/gear/misc/fingerless_gloves
+	display_name = "fingerless combat gloves"
+	path = /obj/item/clothing/gloves/marine/fingerless
 	fluff_cost = 2
 
 /datum/gear/misc/grey_boots

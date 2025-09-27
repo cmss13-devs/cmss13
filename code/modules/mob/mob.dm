@@ -104,7 +104,7 @@
 			if(HUNTER_CLAN,HUNTER_HUD)
 				I = image('icons/mob/hud/hud_yautja.dmi', src, "")
 			if(HOLOCARD_HUD)
-				I = image('icons/mob/hud/marine_hud.dmi', src, "")
+				I = image('icons/mob/hud/human_status.dmi', src, "")
 		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 
@@ -209,8 +209,8 @@
 	var/hear_dist = 7
 	if(max_distance)
 		hear_dist = max_distance
-	for(var/mob/M as anything in hearers(hear_dist, src.loc))
-		M.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
+	for(var/mob/current in hearers(hear_dist, loc))
+		current.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
 
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7
@@ -425,10 +425,10 @@
 /mob/proc/print_flavor_text()
 	if (flavor_text && flavor_text != "")
 		var/msg = replacetext(flavor_text, "\n", " ")
-		if(length(msg) <= 40)
+		if(length(msg) <= 70)
 			return SPAN_NOTICE("[msg]")
 		else
-			return SPAN_NOTICE("[copytext(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a>")
+			return SPAN_NOTICE("[copytext(msg, 1, 67)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a>")
 
 /mob/Topic(href, href_list)
 	. = ..()
@@ -1074,3 +1074,10 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/update_cursor()
 
 	client?.mouse_pointer_icon = client?.prefs.chosen_pointer
+
+/// To be used when displaying a mobs "username" to players
+/mob/proc/username()
+	if(client)
+		return client.username()
+
+	return key

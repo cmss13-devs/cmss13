@@ -628,7 +628,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 			if(higher_power > 48)
 				alert_overlay.pixel_y = -(iheight * 0.5) * diff
 				alert_overlay.pixel_x = -(iwidth * 0.5) * diff
-
+			if(higher_power > 80)
+				center_image(alert_overlay, -20, -10)
 
 	alert_overlay.layer = FLOAT_LAYER
 	alert_overlay.plane = FLOAT_PLANE

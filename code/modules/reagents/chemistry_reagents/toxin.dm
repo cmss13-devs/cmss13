@@ -36,7 +36,7 @@
 	description = "A powerful poison derived from certain species of mushroom."
 	reagent_state = LIQUID
 	color = "#792300" // rgb: 121, 35, 0
-	chemclass = CHEM_CLASS_RARE
+	chemclass = CHEM_CLASS_HYDRO
 
 /datum/reagent/toxin/mutagen
 	name = "Unstable mutagen"
@@ -79,7 +79,7 @@
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
-	chemclass = CHEM_CLASS_RARE
+	chemclass = CHEM_CLASS_HYDRO
 	properties = list(PROPERTY_HYPOXEMIC = 4, PROPERTY_SEDATIVE = 1)
 
 /datum/reagent/toxin/minttoxin
@@ -147,19 +147,46 @@
 	description = "Industrial grade inorganic plant fertilizer."
 	reagent_state = LIQUID
 	color = "#664330" // rgb: 102, 67, 48
-	properties = list(PROPERTY_TOXIC = 0.5)
 
 /datum/reagent/toxin/fertilizer/eznutrient
 	name = "EZ Nutrient"
+	description = "A fertilizer that is proficient in every aspect by a mild amount."
 	id = "eznutrient"
+	properties = list(PROPERTY_TOXIC = 0.5)
+
+/datum/reagent/toxin/fertilizer/eznutrient/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health += 0.05*volume
+	processing_tray.yield_mod += 0.01*volume
+	processing_tray.nutrilevel += 1*volume
 
 /datum/reagent/toxin/fertilizer/left4zed
 	name = "Left-4-Zed"
+	description = "A fertilizer that sacrifices most of nutrients in its contents to boost health and to prolong the life expectancy"
 	id = "left4zed"
+
+/datum/reagent/toxin/fertilizer/left4zed/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.seed.lifespan += 0.2*volume
+	processing_tray.plant_health += 0.1*volume
+	processing_tray.nutrilevel += 0.25*volume
 
 /datum/reagent/toxin/fertilizer/robustharvest
 	name = "Robust Harvest"
+	description = "A fertilizer that sacrifices most of nutrients in its contents to boost product yield the plant gives at the cost of plant health."
 	id = "robustharvest"
+
+/datum/reagent/toxin/fertilizer/robustharvest/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health -= 0.01*volume
+	processing_tray.yield_mod += 0.1*volume
+	processing_tray.nutrilevel += 0.5*volume
 
 /datum/reagent/toxin/dinitroaniline
 	name = "Dinitroaniline"
@@ -167,13 +194,27 @@
 	description = "Dinitroanilines are a class of chemical compounds used industrially in the production of pesticides and herbicides."
 	chemclass = CHEM_CLASS_UNCOMMON
 
+
+/datum/reagent/toxin/fertilizer/dinitroaniline/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.yield_mod += 0.05*volume
+	processing_tray.nutrilevel += 2*volume
+
 /datum/reagent/toxin/plantbgone
 	name = "Plant-B-Gone"
 	id = "plantbgone"
 	description = "A harmful toxic mixture used to kill plantlife. Very toxic to animals."
 	reagent_state = LIQUID
 	color = "#49002E" // rgb: 73, 0, 46
-	properties = list(PROPERTY_TOXIC = 2)
+	properties = list(PROPERTY_TOXIC = 4)
+
+/datum/reagent/toxin/plantbgone/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health -= 4*volume
 
 /datum/reagent/toxin/stoxin
 	name = "Soporific"
@@ -224,6 +265,17 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_RELAXING = 8, PROPERTY_HYPOXEMIC = 4, PROPERTY_TOXIC = 2)
 
+/datum/reagent/toxin/potassium_phorosulfate
+	name = "Potassium Phorosulfate"
+	id = "potassium_phorosulfate"
+	description = "A chemical made from a violent reaction using sulphuric acid. Has specific industrial uses in sterelizing surfaces from biological contamination in non human accessible ares. Not used in other areas due to its long lasting corrosive effects unless treated."
+	reagent_state = SOLID
+	color = COLOR_WHITE
+	overdose = 10
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_RELAXING = 10, PROPERTY_HYPOXEMIC = 4, PROPERTY_BIOCIDIC = 5)
+
+
 /datum/reagent/toxin/beer2 //disguised as normal beer for use by emagged brobots
 	name = "Beer"
 	id = "beer2"
@@ -246,6 +298,34 @@
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CORROSIVE = 3)
 
+/datum/reagent/toxin/iron_sulfate
+	name = "Iron Sulfate"
+	id = "iron_sulfate"
+	description = "A reactive sulfide material often used as an intermediate or starting component in various chemical processes"
+	reagent_state = LIQUID
+	color = "#303030"
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_TOXIC = 1)
+
+/datum/reagent/toxin/iron_phoride_sulfate
+	name = "Iron Phoride Sulfate"
+	id = "iron_phoride_sulfate"
+	description = "Iron Sulfate combined with Phoron to form a robust and durable substance, usually proposed as an additive to armor plates. Saw little actual use due to its flammability."
+	reagent_state = LIQUID
+	color = "#4b1f5e"
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_CORROSIVE = 5, PROPERTY_OXIDIZING = 3, )
+
+/datum/reagent/toxin/copper_sulfate
+	name = "Copper Sulfate"
+	id = "copper_sulfate"
+	description = "A common fungicide that is widely used to treat wood and other organic materials to prevent rot, decay, and fungal growth."
+	reagent_state = LIQUID
+	spray_warning = TRUE
+	color = "#1d39db"
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_CORROSIVE = 5)
+
 /datum/reagent/toxin/acid/polyacid
 	name = "Polytrinic acid"
 	id = "pacid"
@@ -263,8 +343,18 @@
 	description = "Formaldehyde is a toxic organic gas that is mostly used in making resins, polymers and explosives. It is known to be a natural carcinogen."
 	color = COLOR_GRAY
 	reagent_state = GAS
-	chemclass = CHEM_CLASS_UNCOMMON
+	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CARCINOGENIC = 1)
+
+
+/datum/reagent/toxin/phenolformaldehyde_resin
+	name = "Phenol-Formaldehyde Resin"
+	id = "phenol_formaldehyde"
+	description = "Phenol-Formaldehyde Resin is a common molding polymer used in production of many small parts. It has great stress capacity and proven itself over many decades."
+	reagent_state = SOLID
+	chemclass = CHEM_CLASS_RARE
+	color = "#909648"
+	properties = list(PROPERTY_TOXIC = 3)
 
 /datum/reagent/toxin/paraformaldehyde
 	name = "Paraformaldehyde"
@@ -272,7 +362,7 @@
 	description = "A polymerized form of formaldehyde, that is slowly formed in a cold aqueous solution."
 	color = "#E0E0E0"
 	reagent_state = SOLID
-	chemclass = CHEM_CLASS_UNCOMMON
+	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_TOXIC = 1)
 
 /datum/reagent/toxin/molecular_acid

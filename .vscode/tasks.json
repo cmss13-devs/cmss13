@@ -3,7 +3,7 @@
     "tasks": [
         {
             "type": "process",
-            "command": "tools/build/build",
+            "command": "tools/build/build.sh",
             "windows": {
                 "command": ".\\tools\\build\\build.bat"
             },
@@ -63,32 +63,6 @@
             ],
             "group": "build",
             "label": "tgui: dev server"
-        },
-        {
-            "type": "shell",
-            "command": "bin/tgui-bench",
-            "windows": {
-                "command": ".\\bin\\tgui-bench.cmd"
-            },
-            "problemMatcher": [
-                "$tsc",
-                "$eslint-stylish"
-            ],
-            "group": "build",
-            "label": "tgui: bench"
-        },
-        {
-            "type": "shell",
-            "command": "bin/tgui-sonar",
-            "windows": {
-                "command": ".\\bin\\tgui-sonar.cmd"
-            },
-            "problemMatcher": [
-                "$tsc",
-                "$eslint-stylish"
-            ],
-            "group": "build",
-            "label": "tgui: sonar"
         },
         {
             "type": "shell",

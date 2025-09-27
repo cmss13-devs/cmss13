@@ -25905,9 +25905,7 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/east_containment)
 "bqj" = (
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/plating,
 /area/white_antre/indoors/main_level/east_containment)
 "bqk" = (
@@ -25943,9 +25941,7 @@
 /turf/closed/wall/strata_ice,
 /area/white_antre/indoors/main_level/east_containment)
 "bqr" = (
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/east_containment)
 "bqs" = (

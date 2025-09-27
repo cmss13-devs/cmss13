@@ -15566,8 +15566,7 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/medical)
 "aOE" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
+/obj/structure/machinery/light{
 	dir = 8
 	},
 /obj/effect/decal/warning_stripes{
@@ -15723,8 +15722,7 @@
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aOZ" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -15738,16 +15736,12 @@
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "aPb" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F"
-	},
+/obj/structure/machinery/light,
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aPc" = (
 /obj/structure/platform/metal/almayer_smooth/east,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F"
-	},
+/obj/structure/machinery/light,
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aPd" = (
@@ -15815,8 +15809,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha)
 "aPm" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
@@ -16105,16 +16098,14 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/saft)
 "aPX" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aPY" = (
 /obj/structure/platform/metal/almayer_smooth/east,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
+/obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open_space,
@@ -21402,8 +21393,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "bci" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
+/obj/structure/machinery/light{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -29405,8 +29395,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "btF" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
@@ -29679,8 +29668,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "bui" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
+/obj/structure/machinery/light{
 	dir = 8
 	},
 /obj/effect/decal/warning_stripes{

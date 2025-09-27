@@ -13,7 +13,6 @@
 	block_range = 1
 
 	var/datum/construction_template/xenomorph/template //What we're building
-	var/datum/hive_status/linked_hive //Who gets what we build
 
 /obj/effect/alien/resin/construction/Initialize(mapload, hive_ref)
 	. = ..()

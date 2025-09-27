@@ -1,7 +1,14 @@
 import { classes } from 'common/react';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { useBackend } from 'tgui/backend';
-import { Box, Button, NumberInput, Section, Stack } from 'tgui/components';
+import {
+  Box,
+  Button,
+  Input,
+  NumberInput,
+  Section,
+  Stack,
+} from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
 type Receipt = {
@@ -36,12 +43,18 @@ export const StackReceipts = () => {
   ]);
   const [cycleIndex, setCycleIndex] = useState(0);
 
-  const currentReceipts = receiptStack[receiptStack.length - 1];
-
   const pluralize = (count: number, singular: string) =>
     count === 1 ? singular : `${singular}s`;
 
   const getNotOne = (count: number) => (count === 1 ? '' : `${count} `);
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const searchFilter = (x: Receipt) =>
+    x.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+
+  const currentReceipts =
+    receiptStack[receiptStack.length - 1].filter(searchFilter);
 
   const handleBuildClick = (receipt: Receipt, multiplier: number) => {
     act('make', {
@@ -208,7 +221,7 @@ export const StackReceipts = () => {
   };
 
   return (
-    <Window width={440} height={500}>
+    <Window height={600} width={450}>
       <Window.Content className="StackReceipts">
         <Section
           ref={scrollRef}
@@ -220,6 +233,22 @@ export const StackReceipts = () => {
               <small style={{ fontWeight: 'normal' }}>
                 Amount left: {stack_amount}
               </small>
+              <Stack
+                align="center"
+                justify="space-between"
+                align-items="stretch"
+              >
+                <Stack.Item>
+                  <small style={{ fontWeight: 'normal' }}>Search</small>
+                </Stack.Item>
+                <Stack.Item>
+                  <Input
+                    value={searchTerm}
+                    onInput={(_, value) => setSearchTerm(value)}
+                    width="160px"
+                  />
+                </Stack.Item>
+              </Stack>
             </>
           }
         >

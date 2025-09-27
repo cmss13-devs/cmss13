@@ -23,21 +23,18 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 
-	var/random_name
 	var/first_name
 	var/last_name
-	//gender checks
 	switch(new_human.gender)
-		if(MALE)
-			first_name = "[pick(GLOB.first_names_male_pmc)]"
-			new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 		if(FEMALE)
-			first_name = "[pick(GLOB.first_names_female_pmc)]"
-		if(PLURAL)
-			first_name = "[pick(pick(GLOB.first_names_male_pmc), pick(GLOB.first_names_female_pmc))]"
-	last_name = "[pick(GLOB.last_names_pmc)]"
-	random_name = "[first_name] [last_name]"
-	new_human.change_real_name(new_human, random_name)
+			first_name = capitalize(pick(GLOB.first_names_female_pmc))
+		if(PLURAL, NEUTER) // Not currently possible
+			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_pmc) : pick(GLOB.first_names_female_pmc))
+		else // MALE
+			first_name = capitalize(pick(GLOB.first_names_male_pmc))
+			new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+	last_name = capitalize(pick(GLOB.last_names_pmc))
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
 
 	new_human.age = rand(17,35)
 

@@ -30,11 +30,11 @@
 /datum/origin/uscm/aw/generate_human_name(gender = MALE)
 	switch(gender)
 		if(FEMALE)
-			return capitalize(pick(GLOB.first_names_female)) + " A.W. " + capitalize(pick(GLOB.weapon_surnames))
-		if(MALE)
-			return capitalize(pick(GLOB.first_names_male)) + " A.W. " + capitalize(pick(GLOB.weapon_surnames))
-		if(PLURAL)
-			return capitalize(pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))) + " A.W. " + capitalize(pick(GLOB.weapon_surnames))
+			return "[capitalize(pick(GLOB.first_names_female))] A.W. [capitalize(pick(GLOB.weapon_surnames))]"
+		if(PLURAL, NEUTER)
+			return "[capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male) : pick(GLOB.first_names_female))] A.W. [capitalize(pick(GLOB.weapon_surnames))]"
+		else // MALE
+			return "[capitalize(pick(GLOB.first_names_male))] A.W. [capitalize(pick(GLOB.weapon_surnames))]"
 
 /datum/origin/uscm/aw/validate_name(name_to_check)
 	if(!findtext(name_to_check, "A.W. "))

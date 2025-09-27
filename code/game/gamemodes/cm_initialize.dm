@@ -1002,7 +1002,7 @@ Additional game mode variables.
 			current_survivors -= survivor
 			continue //Not a mind? How did this happen?
 
-		random_name = pick(random_name(FEMALE),random_name(MALE))
+		random_name = random_name(pick(FEMALE, MALE))
 
 		if(istype(survivor.current, /mob/living) && survivor.current.first_xeno)
 			current_survivors -= survivor

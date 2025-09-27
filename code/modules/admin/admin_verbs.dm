@@ -521,12 +521,12 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 
 	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female", "Non-Binary")
 	if(new_gender)
-		if(new_gender == "Male")
-			M.gender = MALE
-		else if(new_gender == "Female")
+		if(new_gender == "Female")
 			M.gender = FEMALE
 		else if(new_gender == "Non-Binary")
 			M.gender = PLURAL
+		else
+			M.gender = MALE
 	M.update_hair()
 	M.update_body()
 

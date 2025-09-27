@@ -1758,7 +1758,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						gender = FEMALE
 					else if(gender == FEMALE)
 						gender = PLURAL
-					else if(gender == PLURAL)
+					else
 						gender = MALE
 					underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 					undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))

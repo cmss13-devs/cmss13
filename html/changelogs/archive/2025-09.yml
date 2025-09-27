@@ -331,3 +331,24 @@
   stanalbatross:
   - qol: simplified, reduced the length of, and in some cases removed unnecessary
       balloon alerts.
+2025-09-27:
+  Drathek:
+  - bugfix: duration2text and duration2text_sec now support times greater than a day
+      or hour respectively
+  - code_imp: GLOB.timezoneoffset now experimentally uses world.timezone instead of
+      a time2text result
+  - code_imp: Adding a duplicate instanced component in COMPONENT_DUPE_UNIQUE_PASSARGS
+      mode will now qdel the new component
+  Sergeys:
+  - qol: Stack receipt list now supports entering a custom amount of produced items.
+  - ui: Added icons for construction objects.
+  - ui: DmIcon no longer displays the previously rendered image instead of the setted
+      image.
+  - ui: NumberInput can now be made focusable via Tab using a new variable.
+  - ui: Glass construction now using proper UI instead of custom.
+  - qol: Power sources now prioritize supplying their local APC before sending power
+      to the powernet.
+  - code_imp: Power sources now inherit from the power_generator
+  realforest2001:
+  - code_imp: Changed each xeno hive name into a define.
+  - rscadd: Added restriction variables on what factions each Xeno hive can ally with.

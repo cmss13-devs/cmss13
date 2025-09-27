@@ -137,6 +137,9 @@
 /// For WEATHER
 #define WEATHER_LAYER 4.14
 
+/// For mobs riding atop a tank
+#define TANK_RIDER_LAYER 4.51
+
 //#define FLY_LAYER 5
 
 #define RIPPLE_LAYER 5.1

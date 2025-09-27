@@ -233,11 +233,24 @@
 		return
 	. = ..()
 
+// this proc only serves to fix a visual bug where hauled mobs get layered below the tank.
+// this is a rare edge case, because xenos won't usually be hauling mobs atop the tank, but just for completeness...
+/mob/living/carbon/xenomorph/proc/check_on_tank_hauled_mob(mob/victim)
+	var/obj/vehicle/multitile/tank/T = null
+	if(src.is_on_tank_hull())
+		T = src.tank_on_top_of
+		T._apply_rider_visuals(victim)
+	else
+		victim.layer   = initial(victim.layer)
+		victim.plane   = initial(victim.plane)
+		victim.pixel_y = initial(victim.pixel_y)
+
 /mob/living/carbon/xenomorph/Move(NewLoc, direct)
 	. = ..()
 	var/mob/user = hauled_mob?.resolve()
 	if(user)
 		user.forceMove(loc)
+		check_on_tank_hauled_mob(user)
 
 /mob/living/carbon/xenomorph/forceMove(atom/destination)
 	. = ..()
@@ -245,8 +258,10 @@
 	if(user)
 		if(!isturf(destination))
 			user.forceMove(src)
+			check_on_tank_hauled_mob(user)
 		else
 			user.forceMove(loc)
+			check_on_tank_hauled_mob(user)
 
 /mob/living/carbon/xenomorph/relaymove(mob/user, direction)
 	. = ..()
@@ -380,6 +395,17 @@
 	if(!check_state() || (!throwing && !pounceAction.action_cooldown_check()))
 		obj_launch_collision(O)
 		return
+
+	// Castes that can pounce can use this ability to instantly climb ontop or down a tank with no delay.
+	var/obj/vehicle/multitile/tank/T = null
+	if(istype(O, /obj/vehicle/multitile/tank))
+		T = O
+	if(T)
+		var/turf/current = get_turf(src)
+		var/turf/facing = get_step(current, dir)
+		if(facing && (facing in T.locs))
+			forceMove(facing)
+			T.mark_on_top(src)
 
 	if (pounceAction.should_destroy_objects)
 		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))

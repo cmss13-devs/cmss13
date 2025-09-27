@@ -1000,6 +1000,13 @@
 	},
 /turf/open/floor/prison/greencorner/north,
 /area/white_antre/indoors/upper_level/west_corridor)
+"acJ" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/barricade/handrail,
+/turf/open/floor/almayer/orange/west,
+/area/white_antre/indoors/upper_level/east_corridor)
 "acL" = (
 /obj/structure/stairs/multiz/down{
 	dir = 4
@@ -16854,6 +16861,11 @@
 	dir = 4;
 	layer = 3.1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2
+	},
 /turf/open/floor/almayer/blue2,
 /area/white_antre/indoors/upper_level/central_corridor)
 "aQC" = (
@@ -23238,12 +23250,6 @@
 "bhE" = (
 /turf/open/floor/prison/green/west,
 /area/white_antre/indoors/upper_level/east_corridor)
-"bhF" = (
-/obj/structure/machinery/power/apc/power/west{
-	start_charge = 20
-	},
-/turf/closed/wall/hybrisa/colony/hospital,
-/area/white_antre/indoors/upper_level/medical)
 "bhG" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southeast,
 /area/white_antre/outdoors/facility_exterior)
@@ -26382,10 +26388,19 @@
 	dir = 4;
 	layer = 3.1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2
+	},
 /turf/open/floor/almayer/blue2/north,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bsL" = (
 /obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
 	dir = 8
 	},
 /turf/open/floor/almayer/blue2/west,
@@ -27532,6 +27547,10 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 8
+	},
 /turf/open/floor/almayer/blue2,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bwt" = (
@@ -28237,6 +28256,9 @@
 /obj/item/frame/table/almayer,
 /obj/structure/machinery/meter{
 	pixel_y = 32
+	},
+/obj/structure/machinery/power/apc/power/west{
+	start_charge = 20
 	},
 /turf/open/floor/strata/white_cyan2,
 /area/white_antre/indoors/upper_level/medical)
@@ -40918,6 +40940,9 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
 /turf/open/floor/almayer/orange/west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "ciY" = (
@@ -40942,6 +40967,10 @@
 /area/white_antre/indoors/upper_level/central_corridor)
 "cjc" = (
 /obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
 	dir = 8
 	},
 /turf/open/floor/almayer/blue2/north,
@@ -40973,6 +41002,11 @@
 	dir = 4;
 	layer = 3.1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2
+	},
 /turf/open/floor/almayer/blue/east,
 /area/white_antre/indoors/upper_level/central_corridor)
 "cji" = (
@@ -40990,6 +41024,10 @@
 	dir = 8
 	},
 /obj/structure/pipes/vents/pump,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 8
+	},
 /turf/open/floor/almayer/blue2/west,
 /area/white_antre/indoors/upper_level/central_corridor)
 "cjl" = (
@@ -40999,12 +41037,22 @@
 	layer = 3.1
 	},
 /obj/structure/pipes/vents/pump,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2
+	},
 /turf/open/floor/almayer/blue/east,
 /area/white_antre/indoors/upper_level/central_corridor)
 "cjm" = (
 /obj/structure/barricade/handrail{
 	dir = 4;
 	layer = 3.1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2
 	},
 /turf/open/floor/almayer/blue/east,
 /area/white_antre/indoors/upper_level/central_corridor)
@@ -146453,7 +146501,7 @@ bpF
 bpF
 ciD
 cix
-bhF
+aQo
 cit
 bhh
 adY
@@ -154830,7 +154878,7 @@ aet
 bhi
 bhi
 cjg
-ciX
+acJ
 aaU
 aaU
 ciX
@@ -154839,7 +154887,7 @@ bhi
 bhi
 bhi
 cjg
-ciX
+acJ
 aaU
 aaU
 ciX

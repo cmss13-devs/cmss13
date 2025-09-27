@@ -98,7 +98,10 @@
 	if(practice_health <= 0)
 		. += SPAN_WARNING("[src] is currently rebooting!")
 	if(!is_on_carriage)
-		. += SPAN_HELPFUL("The target first needs to be placed on a target carriage. Place the target on the carriage by dragging and clicking on the carriage.")
+		if(anchored)
+			. += SPAN_HELPFUL("To convert [src] into a moving target, first unanchor it with a wrench.")
+		else
+			. += SPAN_HELPFUL("Grab the target, and place it on a carriage.")
 	else
 		. += SPAN_HELPFUL("With the target on carriage, place it onto the tracks. [src] will immediatly spring into motion upon installing.")
 

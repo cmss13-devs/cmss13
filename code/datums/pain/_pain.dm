@@ -296,7 +296,7 @@
 
 /datum/pain/proc/handle_haul(mob/living/source, mob/living/carbon/xenomorph/hauler)
 	SIGNAL_HANDLER
-	if(source.chestburst)
+	if(source.is_xeno_grabbable())
 		return
 	if(source.ally_of_hivenumber(hauler.hivenumber))
 		return

@@ -40,7 +40,7 @@
 		if(BRAIN)
 			adjustBrainLoss(damage)
 			damage = damage * PAIN_ORGAN_DAMAGE_MULTIPLIER
-	pain?.apply_pain(damage, damagetype)
+	pain?.recalculate_pain()
 	if(damagetype != HALLOSS && damage > 0)
 		life_damage_taken_total += damage
 	updatehealth()

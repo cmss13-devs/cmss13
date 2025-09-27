@@ -104,6 +104,9 @@
 /obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
+/obj/structure/machinery/camera/autoname/almayer/containment/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/machinery/camera/autoname/almayer/containment/ares
 	name = "ares core camera"
 	network = list(CAMERA_NET_ARES)
@@ -197,6 +200,9 @@
 
 /obj/structure/machinery/camera/wey_yu/unbreakable/attack_alien(mob/living/carbon/xenomorph/M)
 	return
+
+/obj/structure/machinery/camera/wey_yu/unbreakable/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/camera/wey_yu/unbreakable/liaison_cell
 	network = list(CAMERA_NET_CONTAINMENT_HIDDEN)

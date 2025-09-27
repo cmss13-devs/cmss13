@@ -9565,6 +9565,13 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/main_level/west_corridor)
+"awj" = (
+/obj/effect/landmark/lv624/door_blocker/xeno,
+/obj/effect/random_explosion/medium{
+	max_time = 3000
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_overwatch)
 "awk" = (
 /obj/effect/decal/hybrisa/road/lines3{
 	pixel_y = -1;
@@ -11618,6 +11625,16 @@
 	},
 /obj/item/prop/almayer/box,
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
+/area/white_antre/indoors/upper_level/east_overwatch)
+"aBH" = (
+/obj/effect/landmark/lv624/door_blocker/xeno,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aBI" = (
 /turf/open/floor/prison,
@@ -32312,10 +32329,6 @@
 /obj/effect/landmark/lv624/door_blocker/xeno,
 /turf/closed/wall/hybrisa/research,
 /area/white_antre/indoors/upper_level/east_overwatch)
-"bFY" = (
-/obj/effect/landmark/lv624/door_blocker/xeno,
-/turf/open/floor/almayer_hull/outerhull_dir/east,
-/area/white_antre/indoors/upper_level/east_overwatch)
 "bFZ" = (
 /obj/effect/landmark/lv624/door_blocker/xeno,
 /turf/open/floor/prison,
@@ -32341,7 +32354,7 @@
 /area/white_antre/indoors/upper_level/west_corridor)
 "bGd" = (
 /obj/effect/landmark/lv624/door_blocker/xeno,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/almayer_hull/outerhull_dir/west,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "bGe" = (
@@ -32374,6 +32387,9 @@
 	icon_state = "door_warning2";
 	dir = 1;
 	pixel_y = 1
+	},
+/obj/effect/random_explosion/medium{
+	max_time = 3000
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_overwatch)
@@ -158509,7 +158525,7 @@ aBO
 aBQ
 aBG
 bFt
-bFY
+bGf
 bFQ
 bFu
 bFs
@@ -158677,7 +158693,7 @@ aFA
 aBS
 aBC
 bFt
-bFZ
+bGa
 bFR
 bFs
 bFs
@@ -158845,7 +158861,7 @@ bWy
 aBI
 aBD
 bFt
-bFZ
+awj
 bFR
 bFs
 bFs
@@ -158967,7 +158983,7 @@ bFs
 bFs
 bFs
 bGo
-bGh
+aBH
 bFt
 aDE
 aCt
@@ -159013,7 +159029,7 @@ bWy
 aBJ
 aBE
 bFt
-bGa
+bFZ
 bFR
 bFs
 bFs
@@ -159469,7 +159485,7 @@ bFs
 bFs
 aQi
 aQi
-iKa
+euM
 euM
 euM
 euM
@@ -159519,7 +159535,7 @@ aBB
 euM
 euM
 euM
-iKa
+euM
 aQi
 aQi
 bFs
@@ -159636,9 +159652,9 @@ aQi
 aQi
 aQi
 aQi
-iKa
-iKa
 euM
+euM
+ozb
 ozb
 euM
 bFt
@@ -159686,9 +159702,9 @@ ahz
 aBB
 euM
 ozb
+ozb
 euM
-iKa
-iKa
+euM
 aQi
 aQi
 aQi

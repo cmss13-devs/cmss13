@@ -26,6 +26,9 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
+
+	///How much explosive power is needed to breach, null is unbreachable
+	var/breach_threshold
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE
 	///Can blood spawn on this turf?
@@ -214,7 +217,30 @@
 	. = ..()
 
 /turf/ex_act(severity)
-	return 0
+	. = ..()
+	var/turf/above = SSmapping.get_turf_above(src)
+	if(above && above.explodable(severity))
+		addtimer(CALLBACK(above,PROC_REF(breach_floor), severity), 1)
+	if(!explodable(severity))
+		return FALSE
+	addtimer(CALLBACK(src,PROC_REF(breach_floor), severity), 1)
+	return TRUE
+
+/turf/proc/explodable(severity)
+	var/turf/turf_below = SSmapping.get_turf_below(src)
+	if(!turf_below) //so we do not make hole into space
+		return FALSE
+	if((turf_below.turf_flags & TURF_HULL) && turf_below.density) //so we do not make hole into unbreachable wall on bottom layer
+		return FALSE
+	//if(!breach_threshold || severity < breach_threshold)
+	//	return FALSE
+
+	return TRUE
+
+/turf/proc/breach_floor(severity)
+	if(!explodable(severity)) // incase something fucks up from the moment of explosion
+		return
+	ChangeTurf(/turf/open_space)
 
 /turf/proc/update_icon() //Base parent. - Abby
 	return

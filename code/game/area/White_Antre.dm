@@ -194,6 +194,7 @@
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_DERELICT
+	base_muffle = MUFFLE_MEDIUM
 	ceiling_muffle = FALSE
 
 /area/white_antre/indoors/main_level/south_containment
@@ -207,6 +208,7 @@
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_RESEARCH
+	base_muffle = MUFFLE_MEDIUM
 	ceiling_muffle = FALSE
 
 /area/white_antre/indoors/main_level/east_containment
@@ -214,6 +216,7 @@
 	icon_state = "tumor1"
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	base_muffle = MUFFLE_MEDIUM
 	ceiling_muffle = FALSE
 
 /area/white_antre/indoors/main_level/east_containment_hive
@@ -222,6 +225,7 @@
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
+	base_muffle = MUFFLE_MEDIUM
 	ceiling_muffle = FALSE
 
 //White Antre Facility - Underground

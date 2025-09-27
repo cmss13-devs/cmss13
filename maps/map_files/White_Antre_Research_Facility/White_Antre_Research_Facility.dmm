@@ -354,6 +354,11 @@
 	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/main_level/east_containment)
+"abo" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/cargo_container/kelland/left,
+/turf/open/floor/shiva/radiator_tile2,
+/area/white_antre/indoors/main_level/south_containment)
 "abp" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -5813,6 +5818,11 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/main_level/west_corridor)
+"anD" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/cargo_container/kelland/right,
+/turf/open/floor/shiva/radiator_tile2,
+/area/white_antre/indoors/main_level/south_containment)
 "anE" = (
 /obj/item/tool/weldingtool{
 	pixel_x = -7
@@ -8504,6 +8514,18 @@
 "atN" = (
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/white_antre/outdoors/facility_exterior)
+"atO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow2";
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "atP" = (
 /turf/open/floor/almayer/black2/north,
 /area/white_antre/indoors/main_level/west_corridor)
@@ -9574,6 +9596,13 @@
 /obj/effect/alien/weeds/kseries,
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
 /area/white_antre/indoors/main_level/dorms)
+"awm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/floor,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "awn" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -9593,6 +9622,18 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/main_level/west_corridor)
+"awq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow2";
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "awr" = (
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
@@ -9648,6 +9689,17 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/main_level/west_corridor)
+"awx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "awy" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -9780,6 +9832,24 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/main_level/north_containment)
+"awN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/floor,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"awO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "awP" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
 	pixel_y = -7
@@ -9857,6 +9927,10 @@
 	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/main_level/north_containment)
+"awV" = (
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison/darkbrowncorners2/east,
+/area/white_antre/indoors/main_level/east_containment)
 "awW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/safety/firingrange{
@@ -9877,6 +9951,19 @@
 	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/main_level/north_containment)
+"awY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "awZ" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/ramptop/north,
@@ -10567,6 +10654,17 @@
 	},
 /turf/open/floor/platingdmg3,
 /area/white_antre/indoors/main_level/north_containment)
+"ayC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "ayD" = (
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
@@ -10574,6 +10672,25 @@
 	},
 /turf/open/floor/almayer/silver/south,
 /area/white_antre/indoors/main_level/north_containment_hive)
+"ayE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow2";
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"ayF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/silver,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "ayG" = (
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
@@ -10581,6 +10698,36 @@
 	},
 /turf/open/floor/platingdmg1,
 /area/white_antre/indoors/main_level/north_containment_hive)
+"ayH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/silver,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"ayI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"ayJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "ayK" = (
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
@@ -10915,7 +11062,8 @@
 /obj/structure/machinery/colony_floodlight_switch/containment{
 	pixel_x = -28;
 	name = "backup containment light switch";
-	desc = "This switch controls the containment zone floodlights. This appears to be a backup switch kept within the containment zone. This needs to be powered elsewhere."
+	desc = "This switch controls the containment zone floodlights. This appears to be a backup switch kept within the containment zone. This needs to be powered elsewhere.";
+	explo_proof = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/east_containment_hive)
@@ -11077,6 +11225,14 @@
 /obj/structure/barricade/handrail,
 /turf/open/floor/prison/ramptop/north,
 /area/white_antre/indoors/main_level/north_containment)
+"aAy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "aAz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/ramptop/east,
@@ -11104,6 +11260,12 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/north_containment)
+"aAD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "aAE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall/kseries,
@@ -13306,6 +13468,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/orange/north,
 /area/white_antre/indoors/upper_level/east_corridor)
+"aFL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "aFM" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/alien/weeds/kseries,
@@ -16331,6 +16501,13 @@
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/main_level/north_containment)
+"aOc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "aOd" = (
 /turf/open/floor/prison/ramptop/east,
 /area/white_antre/indoors/main_level/north_containment)
@@ -17893,6 +18070,25 @@
 	},
 /turf/open/floor/prison/darkbrown2/east,
 /area/white_antre/indoors/main_level/south_containment_hive)
+"aTo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 2
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"aTp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "aTq" = (
 /obj/structure/machinery/light/double{
 	dir = 1
@@ -18200,6 +18396,17 @@
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/floor/strata/green3/southeast,
 /area/white_antre/indoors/main_level/weapons)
+"aUf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "aUg" = (
 /obj/item/shard{
 	icon_state = "medium";
@@ -18776,6 +18983,15 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/strata/red2,
 /area/white_antre/indoors/main_level/weapons)
+"aVt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "aVu" = (
 /obj/structure/machinery/light/double{
 	dir = 4
@@ -19264,30 +19480,12 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/prison/ramptop/east,
 /area/white_antre/indoors/main_level/south_containment)
-"aWR" = (
-/obj/structure/surface/table/almayer,
-/turf/open/floor/prison/ramptop/north,
-/area/white_antre/indoors/main_level/south_containment)
-"aWS" = (
-/obj/structure/surface/table/almayer,
-/obj/item/trash/plate{
-	pixel_x = -13;
-	pixel_y = 12
-	},
-/turf/open/floor/prison/ramptop/north,
-/area/white_antre/indoors/main_level/south_containment)
 "aWT" = (
 /obj/effect/decal/strata_decals/grime/grime3{
 	pixel_y = 12
 	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/white_antre/indoors/main_level/dorms)
-"aWU" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/turf/open/floor/prison/ramptop/north,
-/area/white_antre/indoors/main_level/south_containment)
 "aWV" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassall_1"
@@ -19310,21 +19508,6 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/south_containment)
-"aWY" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/open/floor/prison/ramptop/north,
-/area/white_antre/indoors/main_level/south_containment)
-"aWZ" = (
-/obj/structure/surface/table/almayer,
-/obj/item/ashtray/bronze{
-	icon_state = "ashtray_full_bl";
-	pixel_x = 8;
-	pixel_y = -3
-	},
-/turf/open/floor/prison/ramptop/north,
-/area/white_antre/indoors/main_level/south_containment)
 "aXa" = (
 /obj/structure/stairs/perspective{
 	dir = 4;
@@ -19338,10 +19521,6 @@
 	icon_state = "test_warning_smooth_red"
 	},
 /turf/open/floor/corsat/squares,
-/area/white_antre/indoors/main_level/south_containment)
-"aXc" = (
-/obj/structure/bed/chair,
-/turf/open/floor/prison/ramptop/north,
 /area/white_antre/indoors/main_level/south_containment)
 "aXd" = (
 /obj/structure/flora/bush/snow{
@@ -19366,10 +19545,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/south_containment)
-"aXh" = (
-/obj/structure/cargo_container/kelland/left,
-/turf/open/floor/prison/ramptop/north,
-/area/white_antre/indoors/main_level/south_containment)
 "aXi" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/closet/secure_closet{
@@ -19378,10 +19553,6 @@
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/security)
-"aXj" = (
-/obj/structure/cargo_container/kelland/right,
-/turf/open/floor/prison/ramptop/north,
-/area/white_antre/indoors/main_level/south_containment)
 "aXk" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/strata/green3/west,
@@ -19701,6 +19872,18 @@
 	},
 /turf/open/floor/prison/bluefull,
 /area/white_antre/landing_zone/roof)
+"aYh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "aYi" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall/kseries,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -20269,6 +20452,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkred2,
 /area/white_antre/indoors/exterior/checkpoint)
+"aZP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 2
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "aZQ" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -20315,6 +20506,13 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/indoors/main_level/east_containment)
+"aZW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "aZX" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison/darkbrown2/east,
@@ -20447,6 +20645,14 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/asphalt/brown,
 /area/white_antre/outdoors/road_east)
+"baq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "bar" = (
 /obj/item/prop{
 	desc = "Something tore this apart.";
@@ -20674,7 +20880,6 @@
 	icon_state = "test_warning_smooth_red"
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/east_containment)
 "baQ" = (
@@ -21128,6 +21333,17 @@
 	},
 /turf/open/floor/prison/darkred2/southeast,
 /area/white_antre/indoors/exterior/checkpoint)
+"bbI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "bbJ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
@@ -21221,6 +21437,20 @@
 	},
 /turf/open/floor/prison/darkred2/east,
 /area/white_antre/indoors/exterior/checkpoint)
+"bbX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/floor,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "bbY" = (
 /obj/structure/sign/safety/firingrange{
 	name = "live fire zone";
@@ -25423,6 +25653,18 @@
 /obj/effect/alien/weeds/node/kseries,
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/main_level/south_containment)
+"boU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "boV" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_3";
@@ -25430,6 +25672,18 @@
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/white_antre/outdoors/facility_exterior)
+"boW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/almayer/floor,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "boX" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3,
 /turf/open/auto_turf/snow/layer2,
@@ -26018,6 +26272,14 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/main_level/west_corridor)
+"bqC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/floor,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "bqD" = (
 /obj/item/weapon/gun/pistol/vp78{
 	current_mag = null;
@@ -27999,6 +28261,12 @@
 	},
 /turf/open/floor/almayer/blue2,
 /area/white_antre/indoors/upper_level/central_corridor)
+"bvL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/floor,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "bvM" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer/blue2,
@@ -29269,6 +29537,51 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/east_containment)
+"byJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/floor,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"byK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"byL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/floor,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"byM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "byN" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/blue2/northeast,
@@ -31731,6 +32044,19 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/south_overwatch)
+"bEY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/silver/north,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"bEZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/turf/open/floor/almayer/silver/north,
+/area/white_antre/indoors/main_level/east_containment_hive)
 "bFa" = (
 /obj/structure/machinery/light/double,
 /obj/effect/landmark/objective_landmark/close,
@@ -113800,8 +114126,8 @@ bZz
 aXr
 aaB
 aaB
-aWY
-aWR
+aaB
+aaB
 aSB
 aJz
 rdC
@@ -113966,11 +114292,11 @@ aJz
 aJz
 aJz
 aTi
-aXh
-aXc
-aWZ
-aWS
-aSC
+aaB
+aaB
+aaB
+aaB
+abo
 aJz
 rdC
 ozb
@@ -114134,11 +114460,11 @@ ozb
 ozb
 aJz
 aJz
-aXj
 aaB
-aWU
-aWU
-aSC
+aaB
+aaB
+aaB
+anD
 aJz
 rdC
 euM
@@ -116453,7 +116779,7 @@ aLB
 aZv
 aLB
 aLB
-aLx
+awV
 aKI
 abA
 aLB
@@ -119446,24 +119772,24 @@ ayM
 ayM
 azn
 azl
-ayU
-ayV
-ayV
-ayV
-ayV
-ayU
-ayU
+baq
+aAy
+aAy
+aAy
+aAy
+aAy
+aFL
 ayS
 aQx
 ayS
-ayU
-ayU
+baq
+aAy
+aAy
+aAy
+aAy
+aAy
+aFL
 ayV
-ayV
-ayV
-ayV
-ayU
-ayU
 aut
 ayO
 azu
@@ -119614,24 +119940,24 @@ ayM
 azn
 azl
 ayU
-ayU
+aTp
 aut
 aut
 aut
 aut
 aut
-ayU
+aOc
 ayS
 ayW
 ayS
-ayU
+aTp
 aut
 aut
 aut
 aut
 aut
-ayU
-ayU
+aOc
+ayV
 ayS
 ayO
 azu
@@ -119781,24 +120107,24 @@ iKa
 ayM
 azk
 ayS
-ayV
-ayV
+ayU
+aTp
 aut
-ayS
-ayS
-ayS
+ayJ
+azr
+nVc
 aut
-ayV
+aOc
 ayS
 ayW
 ayS
-ayV
+aTp
 aut
-ayS
-ayS
-ayS
+ayJ
+azr
+nVc
 aut
-ayV
+aOc
 ayV
 ayS
 ayO
@@ -119948,27 +120274,27 @@ iKa
 iKa
 ayM
 azk
-ayS
-ayV
-ayV
-ayS
-ayS
+azg
+aAy
+aYh
+azr
+aza
 acO
-ayS
-ayV
-ayV
+azi
+aAD
+aZP
 ayS
 ayW
 ayS
-ayV
-ayV
-ayS
+aZW
+aAD
+aza
 acO
-ayS
-ayS
-ayV
-ayV
-ayS
+azi
+azr
+aTo
+aAy
+ayY
 ayO
 azu
 azk
@@ -120115,29 +120441,29 @@ iKa
 iKa
 iKa
 ayM
-azk
-ayS
+pvJ
+bbI
 aut
-ayV
+boU
+ayY
+ayS
+ayU
+ayU
+baq
+aAy
+aAy
+bqC
+azc
+aAy
+aFL
+ayU
+ayU
 ayS
 ayS
-ayS
-ayS
-ayV
-ayV
-ayV
-ayW
-ayS
-ayV
-ayV
-ayS
-ayS
-ayS
-ayS
-ayV
+aTp
 aut
-ayS
-ayO
+ayI
+hoW
 azu
 azk
 azR
@@ -120283,29 +120609,29 @@ iKa
 iKa
 iKa
 ayM
-azk
+bEY
 aut
 aut
 aut
+ayZ
 ayS
-ayS
-ayS
-ayS
-ayV
+ayU
+ayU
+aTp
 aut
 aut
 aut
 aut
 aut
-ayV
+aOc
+ayU
+ayU
 ayS
-ayS
-ayS
-ayS
-ayV
+azg
+aUf
 aut
 aut
-ayO
+ayF
 azu
 azk
 azR
@@ -120451,29 +120777,29 @@ iKa
 iKa
 iKa
 ayM
-azk
+bEY
 aut
 aut
-ayU
-ayV
+byM
+aZP
 ayV
 bzd
 ayV
-ayU
-ayU
-ayS
-ayW
-ayS
-ayU
-ayU
+aZW
+aAD
+azr
+bvL
+azr
+aAD
+aZP
 ayV
 ayV
 ayV
-ayV
+aTp
 aut
 aut
 aut
-ayO
+ayF
 azu
 azk
 azS
@@ -120619,37 +120945,37 @@ iKa
 iKa
 iKa
 ayM
-azk
-ayS
+bEZ
+azr
+aAD
+ayV
+ayV
+baq
+aAy
+aAy
+aFL
 ayU
-ayU
-ayV
-ayV
-ayV
-ayV
-ayU
-ayS
 ayT
 azp
 azj
-ayS
 ayU
-ayV
-ayV
-ayV
-ayV
-ayU
-ayV
-ayS
-ayO
+baq
+aAy
+aAy
+aFL
+aZW
+aAD
+aAD
+azr
+ayH
 azu
 azk
 ayS
 ayS
-xFj
-ayS
-xFj
-ayS
+ayE
+azc
+awq
+ayY
 xFj
 ayS
 ayT
@@ -120659,10 +120985,10 @@ azp
 azj
 ayS
 xFj
-ayS
-xFj
-ayS
-xFj
+azg
+awq
+azc
+atO
 ayS
 ayS
 ayO
@@ -120792,19 +121118,19 @@ azj
 ayS
 ayS
 ayS
-ayS
+azh
 aut
 aut
-ayS
+ayZ
 ayT
 ayP
 aut
 aQv
 azj
-ayS
+azh
 aut
 aut
-ayS
+ayZ
 ayS
 ayS
 ayS
@@ -120814,10 +121140,10 @@ aut
 azm
 azj
 ayS
-ayS
+azh
 aut
 aut
-ayS
+ayZ
 ayS
 ayT
 bki
@@ -120827,10 +121153,10 @@ aut
 bkf
 azj
 ayS
-ayS
+azh
 aut
 aut
-ayS
+ayZ
 ayS
 ayT
 ayP
@@ -120960,19 +121286,19 @@ azk
 ayW
 ayW
 ayW
-ayW
+awN
 aut
-ayW
-ayW
+byL
+byJ
 bjX
 aut
 aut
 aut
 bjW
-ayW
-ayW
+boW
+bbX
 aut
-ayW
+awm
 ayW
 ayW
 ayW
@@ -120982,10 +121308,10 @@ aut
 aut
 aAa
 ayW
-ayW
+awN
 aut
 aut
-ayW
+awm
 ayW
 ayO
 aut
@@ -120995,10 +121321,10 @@ aut
 aut
 azk
 ayW
-ayW
+awN
 aut
 aut
-ayS
+awm
 ayW
 azq
 aut
@@ -121128,9 +121454,21 @@ azl
 ayV
 ayS
 ayS
+azh
+aut
+aut
+byK
+ayR
+ayN
+aut
+azn
+azl
+azh
+aut
+aut
+aOc
+ayV
 ayS
-aut
-aut
 ayS
 ayR
 ayN
@@ -121138,22 +121476,10 @@ aut
 azn
 azl
 ayS
+azh
 aut
 aut
-ayV
-ayV
-ayS
-ayS
-ayR
-ayN
-aut
-azn
-azl
-ayS
-ayS
-aut
-aut
-ayS
+ayZ
 ayS
 ayR
 ayN
@@ -121163,10 +121489,10 @@ aut
 azn
 azl
 ayS
-ayS
+azh
 aut
 aut
-ayS
+ayZ
 ayS
 ayR
 ayN
@@ -121291,37 +121617,37 @@ iKa
 iKa
 iKa
 ayM
-azk
-ayS
+pvJ
+azc
+aAy
+aAy
+aFL
+aZW
+aAD
+aAD
+aZP
 ayU
-ayU
-ayV
-ayV
-ayV
-ayV
-ayU
-ayS
 ayR
 azo
 azl
-ayS
 ayU
-ayV
-ayV
-ayV
-ayV
-ayU
-ayV
-ayS
-ayO
+aZW
+aAD
+aAD
+aZP
+baq
+aAy
+aAy
+azc
+hoW
 azu
 azk
 azL
 azJ
-azC
-ayS
-azg
-azc
+dAg
+azr
+ayC
+awY
 azc
 ayY
 ayR
@@ -121331,10 +121657,10 @@ azo
 azl
 azg
 azc
-azc
-ayY
-ayS
-azL
+awO
+awx
+azr
+veX
 azJ
 azC
 ayO
@@ -121459,29 +121785,29 @@ iKa
 iKa
 iKa
 ayM
-azk
+bEY
 aut
 aut
 aut
-ayV
+aOc
 ayV
 ayV
 bzd
-ayU
-ayU
-ayS
-ayW
-ayS
-ayU
-ayU
+baq
+aAy
+azc
+bqC
+azc
+aAy
+aFL
 ayV
 ayV
 ayV
-ayV
+aTp
 aut
 aut
 aut
-ayO
+ayF
 azu
 azk
 azT
@@ -121627,29 +121953,29 @@ iKa
 iKa
 iKa
 ayM
-azk
+bEY
 aut
 aut
-ayV
+byM
+aza
 ayS
-ayS
-ayS
-ayS
-ayV
+ayU
+ayU
+aTp
 aut
 aut
 aut
 aut
 aut
-ayV
+aOc
+ayU
+ayU
 ayS
-ayS
-ayS
-ayS
-ayV
+azi
+aVt
 aut
 aut
-ayO
+ayF
 azu
 azk
 azT
@@ -121795,29 +122121,29 @@ iKa
 iKa
 iKa
 ayM
-azk
-ayS
+bEZ
+nVc
 aut
-ayV
+aOc
 ayS
 ayS
+ayU
+ayU
+aZW
+aAD
+azr
+bvL
+azr
+aAD
+aZP
+ayU
+ayU
 ayS
 ayS
-ayV
-ayV
-ayS
-ayW
-ayS
-ayV
-ayV
-ayS
-ayS
-ayS
-ayS
-ayV
+aTp
 aut
-ayS
-ayO
+ayJ
+ayH
 azu
 azk
 azT
@@ -121964,27 +122290,27 @@ iKa
 iKa
 ayM
 azk
-ayS
-ayV
-ayV
-ayS
-ayS
+azi
+aAD
+aTo
+azc
+ayY
 acO
 ayS
-ayV
-ayV
+aAy
+aFL
 ayS
 ayW
 ayS
-ayV
-ayV
-ayS
+baq
+aAy
+ayY
 acO
-ayS
-ayS
-ayV
-ayS
-ayS
+azg
+azc
+aYh
+azr
+aza
 ayO
 azu
 azk
@@ -122133,24 +122459,24 @@ iKa
 ayM
 azk
 ayS
-ayV
-ayV
+ayU
+aTp
 aut
-ayS
-ayS
-ayS
+ayI
+azc
+bbI
 aut
-ayV
+aOc
 ayS
 ayW
 ayS
-ayV
+aTp
 aut
-ayS
-ayS
-ayS
+boU
+azc
+bbI
 aut
-ayV
+aOc
 ayV
 ayS
 ayO
@@ -122302,24 +122628,24 @@ ayM
 azm
 azj
 ayU
-ayU
+aTp
 aut
 aut
 aut
 aut
 aut
-ayU
+aOc
 ayS
 ayW
 ayS
-ayU
+aTp
 aut
 aut
 aut
 aut
 aut
-ayU
-ayU
+aOc
+ayV
 ayS
 ayO
 azu
@@ -122470,24 +122796,24 @@ ayM
 ayM
 azm
 azj
-ayU
-ayV
-ayV
-ayV
-ayV
-ayU
-ayU
+aZW
+aAD
+aAD
+aAD
+aAD
+aAD
+aZP
 ayS
 aQL
 ayS
-ayU
-ayU
+aZW
+aAD
+aAD
+aAD
+aAD
+aAD
+aZP
 ayV
-ayV
-ayV
-ayV
-ayU
-ayU
 ayS
 ayO
 azu
@@ -155227,10 +155553,10 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
 iKa
 iKa
 aQi
@@ -155296,10 +155622,10 @@ iKa
 iKa
 iKa
 iKa
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -155395,11 +155721,11 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 iKa
 iKa
@@ -155457,17 +155783,17 @@ bhs
 bhs
 bhi
 iKa
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -155563,17 +155889,17 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 bhi
 bhs
@@ -155625,16 +155951,16 @@ bhs
 bhs
 bhi
 iKa
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -155731,16 +156057,16 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 iKa
 bhi
@@ -155794,15 +156120,15 @@ bhs
 bhi
 iKa
 iKa
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -155899,15 +156225,15 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 iKa
 aQi
@@ -155962,15 +156288,15 @@ bhs
 bhi
 aQi
 iKa
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -156067,15 +156393,15 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 aQi
 ozb
@@ -156130,15 +156456,15 @@ aaU
 bhi
 ozb
 aQi
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -156235,15 +156561,15 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 aQi
 ozb
@@ -156298,16 +156624,16 @@ brT
 bhi
 ozb
 aQi
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -156403,15 +156729,15 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 iKa
 aQi
@@ -156466,16 +156792,16 @@ brU
 bhi
 aQi
 iKa
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -156571,16 +156897,16 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 bhi
 bhi
@@ -156634,16 +156960,16 @@ bht
 bhi
 iKa
 iKa
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -156739,16 +157065,16 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 bhi
 bhi
@@ -156801,17 +157127,17 @@ bht
 bhi
 bhi
 iKa
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -156907,17 +157233,17 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 bhi
 bhi
@@ -156969,18 +157295,18 @@ bhi
 bhi
 iKa
 iKa
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -157075,17 +157401,17 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 iKa
 bhi
@@ -157136,19 +157462,19 @@ bhi
 bhi
 iKa
 iKa
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -157243,17 +157569,17 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 iKa
 euM
@@ -157303,20 +157629,20 @@ bhi
 bhi
 euM
 euM
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -157411,17 +157737,17 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 euM
 ozb
@@ -157472,19 +157798,19 @@ euM
 ozb
 ozb
 euM
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -157579,17 +157905,17 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 euM
 ozb
 ozb
@@ -157641,19 +157967,19 @@ euM
 ozb
 ozb
 euM
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -157747,17 +158073,17 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 euM
 ozb
 euM
@@ -157809,19 +158135,19 @@ euM
 euM
 ozb
 euM
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -157915,18 +158241,18 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 euM
 euM
 aBB
@@ -157976,20 +158302,20 @@ aBB
 aBB
 euM
 euM
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -158083,18 +158409,18 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 euM
 aBB
@@ -158143,21 +158469,21 @@ aBG
 aBB
 aBB
 euM
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -158251,18 +158577,18 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 euM
 aBB
@@ -158311,21 +158637,21 @@ aBH
 aBC
 aBB
 euM
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -158422,15 +158748,15 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 euM
 aBB
@@ -158479,21 +158805,21 @@ aBI
 aBD
 aBB
 euM
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -158591,14 +158917,14 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 euM
 aBB
@@ -158647,20 +158973,20 @@ aBJ
 aBE
 aBB
 euM
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
 spC
 spC
 spC
@@ -158759,14 +159085,14 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 euM
 aBB
@@ -158815,15 +159141,15 @@ aBK
 aBB
 aBB
 euM
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -158927,13 +159253,13 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 euM
 ozb
@@ -158984,14 +159310,14 @@ aBB
 euM
 ozb
 euM
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -159095,13 +159421,13 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 euM
 ozb
@@ -159152,14 +159478,14 @@ aBB
 euM
 ozb
 euM
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 spC
 spC
@@ -159263,13 +159589,13 @@ spC
 euM
 euM
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 iKa
 euM
 ozb
@@ -159320,14 +159646,14 @@ aBB
 euM
 ozb
 euM
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
+iKa
 spC
 euM
 euM

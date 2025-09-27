@@ -347,6 +347,9 @@
 	icon_state = "silver"
 	item_state = "silver_id"
 
+/obj/item/card/id/adaptive/cia
+	icon_state = "cia"
+
 /obj/item/card/id/adaptive/gold
 	icon_state = "gold"
 	item_state = "gold_id"

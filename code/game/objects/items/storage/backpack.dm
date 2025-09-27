@@ -1309,6 +1309,17 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "A small, lightweight pack for expeditions and short-range operations."
 	icon_state = "ERT_satchel_black"
 
+/obj/item/storage/backpack/lightpack/black/grs_sniper
+	name = "\improper GRS Marksman Cloak"
+	desc = "A specially-designed claok with pockets for all your marksman needs."
+	icon_state = "cia_cloak"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi',
+	)
+
 /obj/item/storage/backpack/lightpack/black/five_slot
 	max_storage_space = 15
 

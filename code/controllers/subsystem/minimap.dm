@@ -539,8 +539,8 @@ SUBSYSTEM_DEF(minimaps)
 		qdel(svg_store_overlay)
 		debug_log("SVG coordinates for [faction] are not implemented!")
 
-#define can_draw(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
-#define can_change_view(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)))
+#define can_draw(faction, user) ((ishuman(user) && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)) || (faction == XENO_HIVE_NORMAL && isqueen(user)) || (isyautja(user)))
+#define can_change_view(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)) || (isyautja(user)))
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"

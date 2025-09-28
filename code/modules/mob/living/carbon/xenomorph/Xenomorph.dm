@@ -324,6 +324,7 @@
 	var/front_plates
 	var/side_plates
 	var/enclosed_plates = FALSE
+	var/plate_slam = FALSE
 	var/mob/living/carbon/plasma_channel_target = null
 	var/plasma_channel_elapsed = 0
 	var/plasma_channel_hardcap = 12 SECONDS

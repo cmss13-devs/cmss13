@@ -1,6 +1,6 @@
 /datum/xeno_strain/shielder
 	name = WARRIOR_SHIELDER
-	description = "You give up all of your normal abilities, some damage, speed, and tackle reliability in exchange for plasma, slightly stronger explosive resistance, and directional defenses. You take 50% less damage from wired cades, have a 75% chance to strike enemies behind wired cades, and gain bonus directional armor. Encasing Plates lets you enter a defensive stance that slows your movement but increases directional armor, makes you immune to knockbacks, and allows you to tear openings in walls. Plate Bash dashes up to 3 tiles and strikes a target; while encased, it instead launches the target 3 tiles away and knocks them down, but the cooldown is doubled. Tail Swing knocks down enemies around you, and if used on a grenade, reflects it up to 3 tiles away with a reduced cooldown. Plate Slam has a 5-second windup and then pins a prone enemy, draining 20 plasma per second to extend knockdown up to 12 seconds; being interrupted during windup causes a heavy cooldown penalty. Reflective Shield locks your plates into a stance for 13 seconds, reflecting bullets based on your facing: high from the front, medium from the sides, and low from behind."
+	description = "You give up all of your normal abilities, some damage, speed, and tackle reliability in exchange for plasma, slightly stronger explosive resistance, and directional defenses. You take 50% less damage from wired cades, have a 75% chance to strike enemies behind wired cades, and gain bonus directional armor. Encasing Plates lets you enter a defensive stance that slows your movement but increases directional armor, makes you immune to knockbacks, and allows you to tear openings in walls. Plate Bash dashes up to 3 tiles and strikes a target; while encased, it instead launches the target 3 tiles away and knocks them down, but the cooldown is doubled. Tail Swing knocks down enemies around you, and if used on a grenade, reflects it up to 3 tiles away with a reduced cooldown. Plate Slam has a 5-second windup and then pins a prone enemy, draining 30 plasma per second to extend knockdown up to 12 seconds; being interrupted during windup causes a heavy cooldown penalty. Reflective Shield locks your plates into a stance for 13 seconds, reflecting bullets based on your facing: high from the front, medium from the sides, and low from behind."
 	flavor_description = "Where there's a sword, there's a shield."
 	icon_state_prefix = "Shielder"
 
@@ -160,6 +160,10 @@
 	if(!check_and_use_plasma_owner())
 		return
 
+	if(!xeno_player.plate_slam)
+		xeno_player.balloon_alert(xeno_player, "we need to stop pinning down target!", text_color = "#7d32bb", delay = 1 SECONDS)
+		return
+
 	var/mob/living/carbon/carbon_target = target_atom
 	if(carbon_target.stat == DEAD)
 		return
@@ -287,11 +291,6 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	xeno_cooldown = 20 SECONDS
 
-	var/action_types_to_cd = list(
-		/datum/action/xeno_action/activable/plate_bash,
-	)
-	var/cooldown_duration = 15 SECONDS
-
 /datum/action/xeno_action/activable/plate_slam/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno_player = owner
 
@@ -352,14 +351,10 @@
 			var/mob/living/carbon/human/human = carbon_target
 			INVOKE_ASYNC(carbon_target, TYPE_PROC_REF(/mob, emote), "scream")
 			human.update_xeno_hostile_hud()
-		for(var/action_type in action_types_to_cd)
-			var/datum/action/xeno_action/xeno_action = get_action(xeno_player, action_type)
-			if(!istype(xeno_action))
-				continue
-			xeno_action.apply_cooldown_override(cooldown_duration)
 		xeno_player.emote("roar")
 		carbon_target.anchored = TRUE
 		xeno_player.anchored = TRUE
+		xeno_player.plate_slam = TRUE
 		ADD_TRAIT(xeno_player, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Plate Slam"))
 		start_plasma_channel(carbon_target)
 		to_chat(carbon_target, SPAN_DANGER("You are slammed to the ground and pinned by armored plate!"))
@@ -411,6 +406,7 @@
 		end_plasma_channel(target)
 		target.anchored = FALSE
 		xeno_player.anchored = FALSE
+		xeno_player.plate_slam = FALSE
 		REMOVE_TRAIT(xeno_player, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Plate Slam"))
 		return
 
@@ -439,6 +435,7 @@
 	xeno_player.plasma_channel_elapsed = 0
 	target.anchored = FALSE
 	xeno_player.anchored = FALSE
+	xeno_player.plate_slam = FALSE
 	REMOVE_TRAIT(xeno_player, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Plate Slam"))
 
 
@@ -516,6 +513,9 @@
 /mob/living/carbon/xenomorph/proc/get_reflection_chance(obj/projectile/bullet)
 	if(!reflective_shield_active)
 		return 0
+
+	if((bullet.ammo.flags_ammo_behavior & ARMOR_PENETRATION_TIER_10) || (bullet.ammo.flags_ammo_behavior & AMMO_ROCKET))
+		return //we don't want to reflect wall penetrating bullets or rockets.
 
 	var/base_chance = reflective_shield_chance
 	var/projectile_dir = 0

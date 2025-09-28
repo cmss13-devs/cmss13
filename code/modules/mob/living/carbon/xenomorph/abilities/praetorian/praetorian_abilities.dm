@@ -155,7 +155,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 10 SECONDS
 	plasma_cost = 100
-	var/fling_damage = 50
+	var/fling_damage = 40
 
 ////////// Dancer Abilities
 

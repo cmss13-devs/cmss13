@@ -266,7 +266,7 @@ Remember that the list is not exhaustive. And you can freely contribute an PR wi
 Do not add any of the following in a Pull Request or risk getting the PR closed:
 * Any content that adds a specific character played by or reference to a single player, contributor, staff member, or maintainer.
 For example, a PR that adds a blue crab named after a staff member’s username is not permitted, as it directly references a specific individual.
-* Code which violates GitHub's [terms of service](https://github.com/site/terms).
+* Code which violates GitHub's [terms of service](https://github.com/site/terms) or [acceptable use policies](https://docs.github.com/en/site-policy/acceptable-use-policies/github-acceptable-use-policies).
 
 ### Generative AI
 

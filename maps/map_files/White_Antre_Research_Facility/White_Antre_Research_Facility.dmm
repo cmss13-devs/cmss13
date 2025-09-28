@@ -1086,9 +1086,6 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/white_antre/indoors/upper_level/records)
-"acS" = (
-/turf/closed/wall/r_wall/biodome,
-/area/white_antre/oob)
 "acT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -1326,7 +1323,7 @@
 	pixel_x = -1;
 	color = "#AFE1AF"
 	},
-/turf/closed/wall/hybrisa/research,
+/turf/closed/wall/hybrisa/research/reinforced,
 /area/white_antre/indoors/upper_level/records)
 "adl" = (
 /obj/effect/decal/hybrisa/road/lines2{
@@ -1337,7 +1334,7 @@
 	pixel_x = 1;
 	color = "#AFE1AF"
 	},
-/turf/closed/wall/hybrisa/research,
+/turf/closed/wall/hybrisa/research/reinforced,
 /area/white_antre/indoors/upper_level/records)
 "adm" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -3804,6 +3801,7 @@
 	dir = 8;
 	pixel_y = -5
 	},
+/obj/item/storage/pouch/survival/full/black,
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "ajb" = (
@@ -4952,7 +4950,6 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/obj/effect/random_explosion/uber,
 /obj/effect/antre/border{
 	dir = 4
 	},
@@ -6735,7 +6732,7 @@
 	pixel_x = 5;
 	pixel_y = -1
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "aoS" = (
 /obj/structure/surface/table/almayer,
@@ -6743,7 +6740,7 @@
 	pixel_y = 2;
 	pixel_x = -3
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "aoT" = (
 /obj/structure/machinery/light/double,
@@ -6907,11 +6904,11 @@
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "apj" = (
 /obj/structure/closet/firecloset,
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "apk" = (
 /obj/structure/window/framed/hybrisa/colony,
@@ -6954,7 +6951,7 @@
 /area/white_antre/indoors/main_level/west_corridor)
 "app" = (
 /obj/structure/closet/emcloset,
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "apq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -8010,9 +8007,18 @@
 /turf/open/floor/plating,
 /area/white_antre/indoors/main_level/dorms)
 "arw" = (
-/obj/structure/closet/hydrant{
+/obj/structure/closet/medical_wall{
 	pixel_y = 32
 	},
+/obj/item/stack/medical/bruise_pack,
+/obj/item/stack/medical/bruise_pack,
+/obj/item/stack/medical/ointment,
+/obj/item/stack/medical/splint,
+/obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/obj/item/storage/pouch/survival/full/black,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -12156,6 +12162,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aBV" = (
@@ -14688,6 +14695,7 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
+/obj/item/storage/pouch/survival/full/black,
 /turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHl" = (
@@ -15204,6 +15212,7 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
+/obj/item/storage/pouch/survival/full/black,
 /turf/open/floor/prison/blue,
 /area/white_antre/indoors/main_level/east_corridor)
 "aIj" = (
@@ -18261,9 +18270,7 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aSc" = (
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -6
 	},
@@ -19425,6 +19432,9 @@
 /obj/item/reagent_container/food/drinks/coffeecup/wy{
 	pixel_x = 6;
 	pixel_y = -2
+	},
+/obj/item/tool/weldpack/minitank{
+	pixel_x = -4
 	},
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
@@ -20709,6 +20719,7 @@
 /obj/item/ammo_magazine/flamer_tank{
 	pixel_x = -6
 	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/east_containment)
 "aYC" = (
@@ -21260,6 +21271,9 @@
 /area/white_antre/outdoors/south_field)
 "bag" = (
 /obj/structure/flora/tree/tyrargo,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
 /turf/open/auto_turf/snow/layer2,
 /area/white_antre/outdoors/south_field)
 "bah" = (
@@ -24392,12 +24406,14 @@
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/white_antre/indoors/main_level/east_containment)
 "big" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/ancillery_storage)
 "bih" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/payroll)
 "bii" = (
@@ -24410,6 +24426,10 @@
 /area/white_antre/indoors/main_level/east_containment)
 "bik" = (
 /obj/effect/antre/border,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_y = 12
+	},
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bil" = (
@@ -24461,7 +24481,7 @@
 /turf/open/floor/prison/green/southeast,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bit" = (
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/hybrisa/colony,
 /area/white_antre/indoors/upper_level/west_corridor)
 "biu" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24492,6 +24512,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/east_containment)
 "biA" = (
@@ -24967,10 +24988,6 @@
 /obj/effect/alien/weeds/kseries,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/white_antre/outdoors/path_north)
-"bkn" = (
-/obj/structure/machinery/colony_floodlight/industrial,
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/white_antre/outdoors/north_field)
 "bko" = (
 /obj/structure/machinery/colony_floodlight/industrial,
 /turf/open/auto_turf/sand_white/layer0,
@@ -26675,9 +26692,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/underground_level/east_maint)
 "boO" = (
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "boP" = (
@@ -26686,15 +26701,11 @@
 	layer = 2.5;
 	pixel_y = 2
 	},
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "boQ" = (
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "boR" = (
@@ -27433,6 +27444,11 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "bqN" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -8
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bqO" = (
@@ -27579,6 +27595,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brg" = (
@@ -28539,6 +28556,7 @@
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = -4
 	},
+/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/central_command)
 "btv" = (
@@ -28879,7 +28897,7 @@
 "bul" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/antre/plating/west_corner_dir,
+/turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bum" = (
 /obj/effect/decal/cleanable/generic{
@@ -29310,7 +29328,8 @@
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 4
 	},
-/turf/open/antre/plating/direction_west/west_south,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/antre/plating/west_corner_dir,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bvv" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
@@ -29367,20 +29386,8 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/east_containment)
-"bvE" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp/on{
-	pixel_x = 2;
-	pixel_y = -2
-	},
-/obj/effect/antre/border{
-	dir = 8
-	},
-/turf/open/floor/hybrisa/metal,
-/area/white_antre/indoors/upper_level/central_corridor)
 "bvF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/bed/sofa/south/grey/left,
 /obj/structure/sign/poster/propaganda{
 	pixel_x = -6;
 	pixel_y = 34
@@ -29388,11 +29395,15 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp/on{
+	pixel_x = 2;
+	pixel_y = -2
+	},
 /turf/open/floor/hybrisa/metal,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bvG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/bed/sofa/south/grey,
 /obj/structure/sign/poster/wylogo{
 	pixel_y = 32;
 	layer = 2.9
@@ -29400,17 +29411,18 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
+/obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/hybrisa/metal,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bvH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/bed/sofa/south/grey/right,
 /obj/structure/machinery/meter{
 	pixel_y = 32
 	},
 /obj/effect/antre/border{
 	dir = 8
 	},
+/obj/structure/bed/sofa/south/grey,
 /turf/open/floor/hybrisa/metal,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bvI" = (
@@ -29425,6 +29437,7 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
+/obj/structure/bed/sofa/south/grey/right,
 /turf/open/floor/hybrisa/metal,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bvJ" = (
@@ -29607,6 +29620,7 @@
 	pixel_x = -4;
 	pixel_y = -10
 	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/payroll)
 "bwh" = (
@@ -30623,6 +30637,7 @@
 	light_range = 5;
 	pixel_y = 32
 	},
+/obj/structure/largecrate/supply/medicine/blood,
 /turf/open/floor/strata/white_cyan3/west,
 /area/white_antre/indoors/upper_level/medical)
 "byv" = (
@@ -32290,9 +32305,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bCq" = (
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bCr" = (
@@ -32578,9 +32591,7 @@
 /turf/open/floor/corsat/plate,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bDh" = (
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/plating,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bDi" = (
@@ -33483,7 +33494,7 @@
 /area/white_antre/indoors/upper_level/canteen)
 "bFC" = (
 /obj/effect/decal/cleanable/blood,
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/hybrisa/colony,
 /area/white_antre/indoors/upper_level/canteen)
 "bFD" = (
 /obj/effect/decal/hybrisa/trash{
@@ -33832,7 +33843,10 @@
 /area/white_antre/indoors/upper_level/canteen)
 "bGC" = (
 /obj/item/attachable/bayonet,
-/turf/open/floor/prison/floor_plate,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/records)
 "bGD" = (
 /obj/item/attachable/bayonet,
@@ -33840,7 +33854,7 @@
 /area/white_antre/indoors/upper_level/simian_storage)
 "bGE" = (
 /obj/item/ammo_casing/bullet,
-/obj/item/attachable/bayonet,
+/obj/item/attachable/bayonet/wy,
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bGF" = (
@@ -38673,10 +38687,6 @@
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/oob)
-"bPV" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/antre/plating/west_corner_dir,
-/area/white_antre/indoors/upper_level/central_corridor)
 "bPW" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/antre/plating/direction_west,
@@ -38908,6 +38918,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/item/roller,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/white_antre/indoors/upper_level/ancillery_storage)
 "bQu" = (
@@ -40858,6 +40869,10 @@
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/white_antre/oob)
+"bUT" = (
+/obj/structure/largecrate/supply/medicine/optable,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/white_antre/indoors/underground_level/west_maint)
 "bUU" = (
 /obj/effect/mist/steam{
 	pixel_x = 6;
@@ -41607,6 +41622,8 @@
 /obj/structure/closet/crate/internals{
 	pixel_x = 3
 	},
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/o2,
 /turf/open/floor/prison/red/west,
 /area/white_antre/landing_zone)
 "bWS" = (
@@ -42181,15 +42198,6 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/white_antre/outdoors/south_field)
-"bYw" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#5F5F70";
-	dir = 5;
-	pixel_x = 6;
-	pixel_y = 5
-	},
-/turf/open/auto_turf/hybrisa_auto_turf/layer1,
-/area/white_antre/outdoors/south_field)
 "bYx" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -42551,9 +42559,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bZK" = (
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
@@ -42734,12 +42740,6 @@
 	pixel_y = 7
 	},
 /turf/open/auto_turf/shale/layer2/weedable,
-/area/white_antre/outdoors/south_field)
-"cap" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 1
-	},
-/turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/south_field)
 "caq" = (
 /obj/effect/decal/warning_stripes{
@@ -43854,7 +43854,17 @@
 /area/white_antre/indoors/exterior/prefab_4)
 "cdd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/largecrate/supply/weapons/pistols,
+/obj/structure/closet/crate/ammo,
+/obj/item/weapon/gun/pistol/vp78,
+/obj/item/weapon/gun/pistol/vp78,
+/obj/item/ammo_magazine/pistol/vp78,
+/obj/item/ammo_magazine/pistol/vp78,
+/obj/item/ammo_magazine/pistol/vp78,
+/obj/item/ammo_magazine/pistol/vp78,
+/obj/item/ammo_magazine/pistol/vp78,
+/obj/item/ammo_magazine/pistol/vp78,
+/obj/item/ammo_magazine/pistol/vp78,
+/obj/item/ammo_magazine/pistol/vp78,
 /turf/open/floor/prison/green,
 /area/white_antre/indoors/exterior/prefab_4)
 "cde" = (
@@ -43939,6 +43949,9 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/medical,
+/obj/item/storage/firstaid/adv,
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/exterior/prefab_4)
 "cdp" = (
@@ -44108,9 +44121,7 @@
 /turf/open/floor/strata/orange_tile,
 /area/white_antre/indoors/main_level/weapons)
 "cdQ" = (
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/shale/layer2,
 /area/white_antre/outdoors/south_field/under_cover)
 "cdR" = (
@@ -44124,9 +44135,7 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field/under_cover)
 "cdT" = (
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/plating,
 /area/white_antre/outdoors/south_field/under_cover)
 "cdU" = (
@@ -44251,7 +44260,7 @@
 /turf/open/floor/plating,
 /area/white_antre/outdoors/south_field)
 "cem" = (
-/obj/item/tool/shovel,
+/obj/item/tool/shovel/snow,
 /turf/open/auto_turf/snow/layer2,
 /area/white_antre/outdoors/south_field)
 "cen" = (
@@ -44333,9 +44342,7 @@
 	dir = 9;
 	pixel_x = 2
 	},
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "cew" = (
@@ -44532,9 +44539,7 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "ceR" = (
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/landing_zone)
 "ceS" = (
@@ -44848,9 +44853,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 8
 	},
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/landing_zone)
 "cfN" = (
@@ -45549,6 +45552,7 @@
 	rapid = 1;
 	desc = "Is trapped behind the lockdown....."
 	},
+/obj/item/stool,
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/gonzo)
 "chv" = (
@@ -45579,6 +45583,11 @@
 	pixel_y = 16
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/big_computers/computerbrown/computer2{
+	pixel_x = 9;
+	desc = "Controls a secondary exit-control to the K-Series containment area, generally best left untouched.";
+	name = "Containment Control"
+	},
 /turf/open/floor/prison/darkpurple2/northwest,
 /area/white_antre/indoors/underground_level/gonzo)
 "chy" = (
@@ -45592,6 +45601,10 @@
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
+	},
+/obj/structure/machinery/big_computers/computerbrown/computer4{
+	name = "Elevator Control";
+	desc = "Controls the elevator to the prime hive testing chamber"
 	},
 /turf/open/floor/prison/darkpurple2/north,
 /area/white_antre/indoors/underground_level/gonzo)
@@ -45623,9 +45636,7 @@
 	icon_state = "W"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/device/flashlight/lamp/tripod{
-	on = 0
-	},
+/obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison,
 /area/white_antre/outdoors/facility_exterior)
 "chC" = (
@@ -45921,6 +45932,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/east_corridor)
 "ciq" = (
@@ -46063,11 +46075,7 @@
 /area/white_antre/indoors/upper_level/xenobio)
 "ciH" = (
 /obj/structure/machinery/light/double,
-/obj/structure/pipes/vents/pump,
-/obj/effect/antre/border{
-	dir = 1
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/central_corridor)
 "ciI" = (
 /obj/structure/stairs/multiz/down{
@@ -48986,12 +48994,12 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/turf/open/antre/plating/direction_west/west_south,
+/turf/open/antre/plating/west_corner_dir,
 /area/white_antre/indoors/upper_level/central_corridor)
 "cnB" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/antre/plating/direction_west/east_north,
+/turf/open/antre/plating/west_corner_dir/north_west,
 /area/white_antre/indoors/upper_level/central_corridor)
 "cnC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -49222,6 +49230,7 @@
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
+/obj/item/storage/pouch/survival/full/black,
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "cod" = (
@@ -49804,6 +49813,7 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
+/obj/item/storage/pouch/survival/full/black,
 /turf/open/floor/hybrisa/metal,
 /area/white_antre/indoors/upper_level/central_corridor)
 "cqn" = (
@@ -49978,6 +49988,11 @@
 	},
 /obj/structure/machinery/power/apc/power/south{
 	start_charge = 80
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/white_antre/indoors/upper_level/central_corridor)
@@ -50628,10 +50643,768 @@
 /obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
 /area/white_antre/indoors/main_level/north_containment_hive)
+"ctm" = (
+/obj/item/ore/coal,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/south_field/under_cover)
+"ctn" = (
+/obj/item/ore/silver,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/south_field/under_cover)
+"cto" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/south_field/under_cover)
+"ctp" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/turf/open/auto_turf/shale/layer2,
+/area/white_antre/outdoors/south_field/under_cover)
+"ctq" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/turf/open/auto_turf/snow/layer0,
+/area/white_antre/outdoors/south_field)
+"ctr" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/south_field/under_cover)
+"cts" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/white_antre/outdoors/south_field)
+"ctt" = (
+/obj/structure/prop/ice_colony/surveying_device,
+/turf/open/auto_turf/snow/layer0,
+/area/white_antre/outdoors/south_field)
+"ctu" = (
+/obj/item/tool/shovel/snow,
+/turf/open/auto_turf/snow/layer0,
+/area/white_antre/outdoors/south_field)
+"ctv" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/turf/open/auto_turf/snow/layer0,
+/area/white_antre/outdoors/south_field)
+"ctw" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/obj/item/device/demo_scanner,
+/turf/open/auto_turf/snow/layer0,
+/area/white_antre/outdoors/south_field)
+"ctx" = (
+/obj/structure/closet/crate/construction,
+/obj/item/explosive/plastic,
+/obj/item/tool/pickaxe/jackhammer,
+/turf/open/auto_turf/snow/layer0,
+/area/white_antre/outdoors/south_field)
+"cty" = (
+/obj/structure/ore_box{
+	layer = 4
+	},
+/obj/item/ore/silver,
+/obj/item/ore/silver,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/obj/item/ore/coal,
+/turf/open/auto_turf/snow/layer2,
+/area/white_antre/outdoors/south_field)
+"ctz" = (
+/obj/item/lightstick/planted,
+/turf/open/auto_turf/snow/layer1,
+/area/white_antre/outdoors/south_field)
+"ctA" = (
+/obj/structure/prop/ice_colony/surveying_device/measuring_device,
+/turf/open/auto_turf/snow/layer0,
+/area/white_antre/outdoors/south_field)
+"ctB" = (
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/Mining,
+/turf/open/auto_turf/snow/layer1,
+/area/white_antre/outdoors/south_field)
+"ctC" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8;
+	pixel_x = 2
+	},
+/turf/open/auto_turf/snow/layer1,
+/area/white_antre/outdoors/south_field)
+"ctD" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8;
+	pixel_x = 2
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8;
+	pixel_x = 2
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8;
+	pixel_x = 2
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/white_antre/outdoors/south_field)
+"ctE" = (
+/obj/item/lightstick/red/spoke/planted{
+	layer = 3.1;
+	pixel_x = 5;
+	pixel_y = 24
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8;
+	pixel_x = 2
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8;
+	pixel_x = 2
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8;
+	pixel_x = 2
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/white_antre/outdoors/south_field)
+"ctF" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8;
+	pixel_x = 2
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 8;
+	pixel_x = 2
+	},
+/turf/open/auto_turf/snow/layer1,
+/area/white_antre/outdoors/south_field)
+"ctG" = (
+/obj/item/lightstick/planted,
+/turf/open/auto_turf/snow/layer4,
+/area/white_antre/outdoors/south_field)
+"ctH" = (
+/obj/item/lightstick/red/spoke/planted{
+	layer = 3.1;
+	pixel_x = -7;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/snow/layer1,
+/area/white_antre/outdoors/south_field)
+"ctI" = (
+/obj/item/device/demo_scanner,
+/turf/open/auto_turf/shale/layer2,
+/area/white_antre/outdoors/south_field/under_cover)
+"ctJ" = (
+/obj/item/lightstick/red/spoke/planted{
+	layer = 3.1;
+	pixel_x = -7;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/shale/layer2/weedable,
+/area/white_antre/outdoors/south_field)
+"ctK" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/white_antre/outdoors/south_field)
+"ctL" = (
+/obj/structure/fence/slim/dark,
+/turf/open/auto_turf/snow/layer1,
+/area/white_antre/outdoors/south_field)
+"ctM" = (
+/obj/structure/fence/slim/dark,
+/turf/open/auto_turf/snow/layer2,
+/area/white_antre/outdoors/south_field)
+"ctN" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/south_field)
+"ctO" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/south_field)
+"ctP" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/south_field)
+"ctQ" = (
+/obj/item/lightstick/red/spoke/planted{
+	layer = 3.1;
+	pixel_x = -7;
+	pixel_y = 11
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/south_field)
+"ctR" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/white_antre/landing_zone/roof)
+"ctS" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/south_field)
+"ctT" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/south_field)
+"ctU" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/south_field)
+"ctV" = (
+/obj/item/stool{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/clothing/mask/cigarette{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/south_field)
+"ctW" = (
+/obj/structure/prop/hybrisa/misc/firebarreloff{
+	pixel_y = -1
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/south_field)
+"ctX" = (
+/obj/item/stool{
+	pixel_x = -5;
+	pixel_y = 15;
+	layer = 4.2
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/south_field)
+"ctY" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/white_antre/outdoors/south_field)
+"ctZ" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/turf/open/auto_turf/shale/layer2/weedable,
+/area/white_antre/outdoors/south_field)
+"cua" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/east_containment)
+"cub" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/east_containment)
+"cuc" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	pixel_y = 12
+	},
+/turf/open/antre/plating/direction_west/west_south,
+/area/white_antre/indoors/main_level/west_corridor)
+"cud" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/white_antre/outdoors/south_field)
+"cue" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#5F5F70";
+	dir = 9
+	},
+/obj/structure/fence/slim/dark,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/white_antre/outdoors/south_field)
+"cuf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/white_antre/outdoors/south_field)
+"cug" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/auto_turf/shale/layer2/weedable,
+/area/white_antre/outdoors/south_field)
+"cuh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/auto_turf/shale/layer2/weedable,
+/area/white_antre/outdoors/south_field)
+"cui" = (
+/obj/item/lightstick/red/spoke/planted{
+	layer = 3.1;
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/south_field)
+"cuj" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/east_containment)
+"cuk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7";
+	pixel_y = -2
+	},
+/obj/item/tool/weldingtool/largetank,
+/obj/item/tool/weldingtool/largetank,
+/turf/open/floor/antre/metal/black/southwest,
+/area/white_antre/indoors/exterior/prefab_1)
 "cul" = (
 /obj/structure/prop/hybrisa/airport/dropshipvent2right,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/white_antre/outdoors/north_field)
+"cum" = (
+/obj/structure/machinery/space_heater/radiator/red,
+/turf/open/floor/antre/metal/black,
+/area/white_antre/indoors/exterior/prefab_1)
+"cun" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/south_field)
+"cuo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/south_field)
+"cup" = (
+/obj/structure/machinery/light/double{
+	dir = 8
+	},
+/turf/open/floor/antre/metal/black/west,
+/area/white_antre/indoors/exterior/prefab_1)
+"cuq" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic_solid/autoname,
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/exterior/prefab_1)
+"cur" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7";
+	pixel_y = -2
+	},
+/obj/item/storage/pouch/sling,
+/obj/item/storage/pouch/medkit/full,
+/turf/open/floor/antre/metal/black/northwest,
+/area/white_antre/indoors/exterior/prefab_1)
+"cus" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/telecomms/server{
+	pixel_y = 22
+	},
+/turf/open/floor/antre/metal/black/north,
+/area/white_antre/indoors/exterior/prefab_1)
+"cut" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_y = 9
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/south_field)
+"cuu" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -10;
+	pixel_y = 5
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/south_field)
+"cuv" = (
+/obj/structure/machinery/colony_floodlight/industrial,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/south_field)
+"cuw" = (
+/obj/structure/fence/slim/dark,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/auto_turf/snow/layer1,
+/area/white_antre/outdoors/south_field)
+"cux" = (
+/obj/structure/fence/slim/dark,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/south_field)
+"cuy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/auto_turf/snow/layer1,
+/area/white_antre/outdoors/south_field)
+"cuz" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/white_antre/outdoors/south_field)
+"cuA" = (
+/obj/structure/fence/slim/dark,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/south_field)
+"cuB" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowbush_3";
+	pixel_y = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/auto_turf/snow/layer1,
+/area/white_antre/outdoors/south_field)
+"cuC" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/east_containment)
+"cuD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/east_containment)
+"cuE" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/east_containment)
+"cuF" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/east_containment)
+"cuG" = (
+/obj/structure/machinery/colony_floodlight/industrial,
+/turf/open/auto_turf/shale/layer2/weedable,
+/area/white_antre/outdoors/north_field)
+"cuH" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/turf/closed/wall/strata_ice/dirty,
+/area/white_antre/oob)
+"cuI" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/east_containment)
+"cuJ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/east_containment)
+"cuK" = (
+/obj/effect/decal/heavy_cable/node_north,
+/obj/effect/decal/heavy_cable/node_east,
+/turf/open/floor/plating/plating_catwalk/aicore/white,
+/area/white_antre/indoors/upper_level/medical)
+"cuL" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating/plating_catwalk/aicore/white,
+/area/white_antre/indoors/upper_level/medical)
+"cuM" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk/aicore/white,
+/area/white_antre/indoors/upper_level/medical)
+"cuN" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"cuO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/obj/structure/pipes/vents/pump,
+/obj/structure/machinery/light/double,
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/white_antre/indoors/upper_level/central_corridor)
+"cuP" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"cuQ" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"cuR" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating,
+/area/white_antre/indoors/upper_level/west_corridor)
+"cuS" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"cuT" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"cuU" = (
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"cuV" = (
+/turf/closed/wall/hybrisa/colony,
+/area/white_antre/indoors/upper_level/canteen)
+"cuW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/hybrisa/colony,
+/area/white_antre/indoors/upper_level/canteen)
+"cuX" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating,
+/area/white_antre/indoors/upper_level/west_corridor)
+"cuY" = (
+/obj/structure/platform_decoration/metal/almayer_smooth,
+/turf/open_space,
+/area/white_antre/indoors/upper_level/west_corridor)
+"cuZ" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/west,
+/turf/open_space,
+/area/white_antre/indoors/upper_level/west_corridor)
+"cva" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/central_command)
+"cvb" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/antre/border/edge,
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 12
+	},
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/upper_level/central_corridor)
+"cvc" = (
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -8
+	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"cvd" = (
+/obj/structure/pipes/vents/pump,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal,
+/area/white_antre/indoors/upper_level/central_corridor)
+"cve" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/records)
+"cvf" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/records)
+"cvg" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/records)
+"cvh" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/records)
+"cvi" = (
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 1;
+	color = "#AFE1AF"
+	},
+/turf/closed/wall/hybrisa/research/reinforced,
+/area/white_antre/indoors/upper_level/records)
+"cvj" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/records)
+"cvk" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/records)
+"cvl" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/records)
+"cvm" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/records)
 "cvG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -53768,7 +54541,7 @@
 	dir = 4;
 	pixel_y = -5
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "mIN" = (
 /turf/open/floor/almayer/emerald2smooth/southeast,
@@ -77771,7 +78544,7 @@ crc
 bnv
 avF
 aVG
-bmj
+bUT
 bmM
 bma
 bOl
@@ -100764,7 +101537,7 @@ bOC
 bBi
 aOh
 aNP
-iFy
+ctR
 kuQ
 kuQ
 kuQ
@@ -100816,7 +101589,7 @@ kuQ
 kuQ
 kuQ
 kuQ
-iFy
+ctR
 bmz
 seJ
 bOb
@@ -100931,8 +101704,8 @@ bOD
 bBi
 aMS
 aNA
-iFy
-iFy
+ctR
+ctR
 beu
 bek
 aNI
@@ -100984,8 +101757,8 @@ aXQ
 aXN
 boZ
 aXF
-iFy
-iFy
+ctR
+ctR
 lQg
 bzc
 bOk
@@ -101099,7 +101872,7 @@ aMS
 aMJ
 aMI
 aNA
-iFy
+ctR
 aNM
 aNJ
 bel
@@ -101153,7 +101926,7 @@ iDL
 aXG
 aXG
 wZd
-iFy
+ctR
 hjW
 xEt
 acs
@@ -102107,7 +102880,7 @@ bee
 aMJ
 aMJ
 aNA
-iFy
+ctR
 aNO
 bev
 aNK
@@ -102161,7 +102934,7 @@ bpf
 kpp
 kpp
 dlI
-iFy
+ctR
 gKr
 aJy
 aJx
@@ -102275,8 +103048,8 @@ beP
 aMJ
 aMJ
 aNA
-iFy
-iFy
+ctR
+ctR
 bew
 beq
 bed
@@ -102328,8 +103101,8 @@ bph
 bpg
 caA
 aXI
-iFy
-iFy
+ctR
+ctR
 gKr
 aJy
 aXp
@@ -102444,7 +103217,7 @@ aMI
 aMJ
 aNy
 aNl
-iFy
+ctR
 ceJ
 rMO
 ceJ
@@ -102496,7 +103269,7 @@ ceJ
 ceJ
 rMO
 ceJ
-iFy
+ctR
 wxm
 knT
 aJy
@@ -103448,7 +104221,7 @@ aMJ
 aMJ
 aMJ
 aMJ
-aMI
+aMJ
 aMI
 iKa
 iKa
@@ -103617,7 +104390,7 @@ aMJ
 aMJ
 aMJ
 aMJ
-aMI
+aMJ
 iKa
 iKa
 iKa
@@ -103784,8 +104557,8 @@ aMJ
 aMJ
 aMJ
 aMJ
-aMJ
-iKa
+aMH
+ewE
 iKa
 iKa
 iKa
@@ -103807,7 +104580,7 @@ akw
 aNi
 aKB
 aKB
-aLQ
+aKC
 aKC
 aKC
 aKC
@@ -103821,7 +104594,7 @@ aLQ
 aKC
 aKC
 aKC
-aLQ
+aKC
 aKB
 aKB
 dea
@@ -103951,9 +104724,9 @@ aMI
 aMJ
 aMJ
 aMJ
-aMJ
-aMJ
-iKa
+aMH
+aMH
+ewE
 iKa
 iKa
 iKa
@@ -103974,9 +104747,9 @@ bcP
 akw
 lEW
 aKt
-aKt
 aLQ
-ceM
+aLQ
+aLQ
 ceM
 ceM
 aLQ
@@ -103988,9 +104761,9 @@ cfh
 aLQ
 ceM
 ceM
-ceM
 aLQ
-aKt
+aLQ
+aLQ
 aKt
 cds
 akw
@@ -104119,9 +104892,9 @@ aMI
 aMJ
 aMJ
 aMJ
-iKa
-iKa
-iKa
+ewE
+ewE
+ewE
 iKa
 iKa
 iKa
@@ -104131,15 +104904,15 @@ iKa
 aMJ
 aMJ
 aNA
-iFy
-iFy
+ctR
+ctR
 dal
 pwm
 bpw
 bdg
 cvN
-iFy
-iFy
+ctR
+ctR
 aNj
 aMJ
 aMJ
@@ -104161,15 +104934,15 @@ aLQ
 aJy
 aJy
 aLz
-iFy
-iFy
+ctR
+ctR
 aLf
 bpn
 bpl
 aKS
 aKN
-iFy
-iFy
+ctR
+ctR
 gKr
 aJy
 aJy
@@ -104286,9 +105059,9 @@ aMI
 aMI
 aMI
 aMJ
-iKa
-iKa
-iKa
+ewE
+ewE
+ewE
 iKa
 iKa
 iKa
@@ -104300,13 +105073,13 @@ aMJ
 aMJ
 aNy
 aNl
-iFy
+ctR
 ceJ
 ceJ
-iFy
+ctR
 ceJ
 ceJ
-iFy
+ctR
 aNl
 aNk
 aMJ
@@ -104330,13 +105103,13 @@ aJy
 aJy
 aLs
 wxm
-iFy
+ctR
 ceJ
 ceJ
-iFy
+ctR
 ceJ
 ceJ
-iFy
+ctR
 wxm
 knT
 aJy
@@ -105307,8 +106080,8 @@ bbT
 aMH
 aMH
 aMH
-hVI
-aMI
+cuH
+aJq
 aMI
 aMI
 aMI
@@ -105476,8 +106249,8 @@ aMH
 aMH
 hVI
 aMI
-aMI
-aMI
+aJq
+aJq
 aMI
 aMI
 aMI
@@ -105529,7 +106302,7 @@ acs
 acs
 aJx
 aXC
-aJx
+aZe
 aJq
 aJq
 aJq
@@ -105667,7 +106440,7 @@ aLm
 uJW
 aJy
 bzm
-aJy
+aJq
 aJq
 aJq
 aJq
@@ -105688,7 +106461,7 @@ acs
 acs
 pzq
 pzq
-aJy
+ceL
 aJy
 aJy
 aJy
@@ -105835,17 +106608,17 @@ aLm
 uJW
 aJy
 bzm
-aJy
 aJq
-aJq
-acs
-aJq
-aJq
+caP
+caP
+caP
+caP
+caP
 aJq
 aJx
 aJx
 aJq
-acs
+aYx
 aJy
 aJy
 aJy
@@ -105854,16 +106627,16 @@ pzq
 pzq
 aJx
 acs
-pzq
-pzq
+cfe
+cfe
 aJy
-aJy
-bYt
-aJy
+bzr
+ctK
+bzr
 acs
-acs
-aJx
-acs
+ctL
+ctM
+ctL
 aJq
 aJq
 aJq
@@ -106003,12 +106776,12 @@ aLm
 uJW
 aJy
 baf
-aJy
-aJq
-acs
-acs
-acs
-aJq
+caz
+caP
+cur
+cup
+cuk
+caP
 aJq
 aZe
 aJx
@@ -106022,9 +106795,9 @@ acs
 aXV
 aXC
 aJx
-pzq
-pzq
-aJy
+cfe
+ctV
+ctS
 bYt
 bYt
 aJy
@@ -106169,30 +106942,30 @@ aLm
 hUY
 aLm
 uJW
-aJy
-aJy
-aJy
-aJy
-aJy
-aJy
-aJy
-aJy
-aJx
-aJx
+ceT
+cuA
+cux
+caP
+cus
+cbd
+cum
+caP
+cuf
+cud
 aYX
 acs
 aJy
 aJy
 aJy
-aJy
-aJy
+aJq
+aJq
 aJx
 aJx
 aWu
 lvY
-pzq
-pzq
-aJy
+cfe
+ctW
+ctT
 bYt
 bYt
 xEt
@@ -106338,29 +107111,29 @@ hUY
 bzx
 uJW
 acs
-aZL
-aJy
-aJy
-aJy
-aJy
-aJy
-aJy
-acs
-aWC
-aJx
-aJy
-aJy
-aJy
-aJy
-xEt
-aJy
+cuB
+caP
+caP
+caP
+cuq
+caP
+caP
+caP
+cue
+ctM
+ceT
+bzq
+bzq
+aJq
+aJq
+aJq
 aJx
 lvY
 aJx
 aJx
-pzq
-aJy
-aJy
+ctQ
+ctX
+ctU
 aJy
 aJy
 xEt
@@ -106507,21 +107280,21 @@ bzx
 uJW
 acs
 bag
-acs
-aJy
-aJy
-aJy
-aJy
-aJy
-xEt
-aJy
+cuy
+caP
+cut
+bEQ
+cun
+caP
+cug
+aMR
 aJy
 aJy
 aJy
 bYt
-bYw
-aJy
-aJy
+aJq
+aJx
+aJx
 acs
 aXR
 aJx
@@ -106675,19 +107448,19 @@ bzx
 uJW
 aJx
 aJx
-aWu
-aZL
-bzk
-aJy
-aJy
-aJy
+cuz
+cuw
+cuu
+pzq
+cuo
+cui
+cuh
 xEt
-xEt
-bzq
-bzq
+aJy
+aJy
 aJy
 bYt
-bYt
+ctY
 bYt
 aJy
 pzq
@@ -106843,7 +107616,11 @@ bzx
 uJW
 bao
 aXC
-acs
+aZL
+ceT
+aJy
+aJy
+pzq
 aJy
 aJy
 aJy
@@ -106851,11 +107628,7 @@ aJy
 aJy
 aJy
 aJy
-aJy
-aJy
-bzm
-aJy
-bYt
+ctY
 bYv
 aJy
 pzq
@@ -106970,9 +107743,9 @@ bBt
 aMI
 aMI
 aMI
-iKa
-iKa
-iKa
+ewE
+ewE
+ewE
 iKa
 cdf
 cdb
@@ -107021,9 +107794,9 @@ aLl
 aLl
 aLg
 aJy
-bzm
 aJy
-xEt
+aJy
+ctZ
 aJy
 aJy
 aJy
@@ -107138,8 +107911,8 @@ bBu
 aMI
 aMI
 aMI
-iKa
-iKa
+ewE
+ewE
 iKa
 iKa
 iKa
@@ -107306,7 +108079,7 @@ bBv
 yaj
 aMI
 aMI
-iKa
+ewE
 iKa
 iKa
 iKa
@@ -107545,7 +108318,7 @@ bGO
 bGL
 bGL
 bGL
-bGI
+ctI
 bGL
 bGI
 aJq
@@ -107861,7 +108634,7 @@ hUY
 aLm
 uJW
 pzq
-cap
+pzq
 pzq
 pzq
 aJy
@@ -108029,7 +108802,7 @@ hUY
 aLm
 uJW
 aJx
-cap
+pzq
 pzq
 pzq
 aJy
@@ -108526,7 +109299,7 @@ aJq
 aJq
 aZM
 pzq
-aOn
+aJy
 aLH
 bzx
 hUY
@@ -108693,7 +109466,7 @@ aJq
 aJq
 aJq
 fGb
-pzq
+cuv
 aJy
 aLI
 bzy
@@ -108716,7 +109489,7 @@ pzq
 pzq
 ceB
 pzq
-pzq
+ctO
 cef
 cea
 cdW
@@ -109027,7 +109800,7 @@ bWn
 caC
 caC
 aJq
-aMe
+pzq
 pzq
 aJy
 aJy
@@ -109219,7 +109992,7 @@ aJx
 lvY
 aJx
 acs
-pzq
+ctQ
 pzq
 pzq
 pzq
@@ -109556,14 +110329,14 @@ aJq
 aJq
 lvY
 boX
-pzq
+ctP
+ceO
+ctN
 aJy
-aJy
-aJy
-xEt
+ctJ
 aJy
 acs
-acs
+ctz
 acs
 aJx
 aWz
@@ -109725,9 +110498,9 @@ aJq
 aJq
 aJq
 aJq
-aJy
-xEt
-xEt
+ceT
+ceS
+ceS
 aJy
 aJy
 acs
@@ -109896,8 +110669,8 @@ aJq
 aJy
 xEt
 aJy
-aJy
-aJy
+ctK
+bzr
 aJy
 acs
 acs
@@ -110063,7 +110836,7 @@ aJq
 aJy
 aJy
 aJy
-aJy
+bYt
 bYt
 aJy
 aJy
@@ -110230,12 +111003,12 @@ aJy
 aJy
 aJy
 aJy
-aJy
 bYt
 bYt
 aJy
+aJy
 xEt
-xEt
+ctz
 aJx
 aWA
 aJx
@@ -110372,12 +111145,12 @@ aLh
 ceT
 aJy
 bzz
-aJy
-pzq
-pzq
-pzq
-pzq
-pzq
+aJq
+aJq
+aJq
+aJq
+aJq
+aJq
 aJy
 aJy
 aJy
@@ -110400,9 +111173,9 @@ aJy
 aJy
 xEt
 aJy
-bYt
 aJy
-aJy
+acs
+acs
 aJx
 aJx
 aWB
@@ -110540,13 +111313,13 @@ bzU
 ceT
 aJy
 xEt
-aJy
-aJy
 pzq
+aJq
+aJq
+aJq
 pzq
+aJq
 pzq
-pzq
-aJy
 aJy
 bzr
 pzq
@@ -110569,9 +111342,9 @@ pzq
 aJy
 aJy
 aJy
-aJy
-acs
-aJx
+aJq
+aJq
+aJq
 aJx
 aJx
 aJx
@@ -110709,8 +111482,8 @@ ceT
 aJy
 xEt
 xEt
-aJy
-aJy
+pzq
+pzq
 pzq
 pzq
 pzq
@@ -110736,18 +111509,18 @@ pzq
 pzq
 aJy
 aJy
-aJy
-aJy
-aJx
-aJx
+aJq
+aJq
+aJq
+aJq
 aWr
-lvY
+ctG
 acs
 aJx
 aJx
 aJq
 aJq
-aJq
+cto
 aJq
 aJq
 aJq
@@ -110843,13 +111616,13 @@ aMJ
 aMJ
 aMI
 aMI
-iKa
-iKa
+ewE
+ewE
 iKa
 aMS
 aMH
 aMH
-bkn
+aMH
 bdT
 aMJ
 aMJ
@@ -110878,45 +111651,45 @@ aJy
 aJy
 aJy
 aJy
-aOn
-pzq
-pzq
-pzq
-pzq
-aJy
-aJy
-aJy
-aJy
-aJy
-aJy
-aJy
-aJy
-aJy
-aJy
-aJy
-aJy
-aJy
 aJy
 pzq
 pzq
 pzq
 pzq
+aJy
+aJy
+aJy
+aJy
+aJy
+aJy
+aJy
+aJy
+aJy
+aJy
+aJy
+aJy
+aJy
+aJy
+pzq
+aJq
+aJq
 pzq
 pzq
+pzq
 aJy
-aJy
-aJy
-aJy
+aJq
+aJq
+acs
 acs
 aJx
 aWC
 acs
 aJx
-aJx
+cty
 aJq
-aJq
-aJq
-aJq
+ctr
+ctp
+ctn
 aJq
 aJq
 aJq
@@ -111011,7 +111784,7 @@ bYA
 bkh
 aMI
 aMI
-iKa
+ewE
 aMI
 iKa
 aMS
@@ -111020,7 +111793,7 @@ aMH
 aMJ
 aMJ
 aMJ
-aMS
+cuG
 aKH
 aNp
 aNp
@@ -111061,31 +111834,31 @@ aJy
 aJy
 aJy
 aJy
+aJy
+aJy
 aOn
-aJy
-aJy
+aJq
+aJq
+aJq
+aJq
 pzq
 pzq
 pzq
-pzq
-pzq
-pzq
-pzq
 aJy
 aJy
+xEt
 aJy
-aJy
-aJy
+xEt
 acs
 acs
 acs
 aJx
-aJx
-aJx
-aJq
-aJq
-aJq
-aJq
+ctz
+ctu
+cdR
+bGI
+bGI
+ctm
 aJq
 aJq
 aJq
@@ -111245,15 +112018,15 @@ aJy
 aJy
 aJy
 acs
+ctH
 acs
 acs
-aJx
-acs
-aJx
-aJq
-aJq
-aJq
-aJq
+ctA
+ctv
+bGI
+bGI
+ctm
+bGI
 aJq
 aJq
 aJq
@@ -111411,14 +112184,14 @@ aJy
 aJy
 aJy
 aJy
-aJy
+xEt
 pzq
 acs
 acs
 aJx
-aJx
-aJx
-aJx
+ctB
+ctw
+cts
 aJq
 aJq
 aJq
@@ -111584,10 +112357,10 @@ pzq
 acs
 acs
 aJx
-aJx
-aJx
-aJx
-acs
+ctC
+ctx
+ctt
+ctq
 aJq
 aJq
 aJq
@@ -111752,9 +112525,9 @@ pzq
 pzq
 acs
 acs
-aJx
-aWC
-aJx
+ctD
+aWG
+acs
 acs
 aJq
 aJq
@@ -111920,7 +112693,7 @@ aJy
 pzq
 acs
 acs
-aJx
+ctE
 aJx
 aJx
 aJx
@@ -112088,7 +112861,7 @@ aJy
 aJy
 acs
 acs
-acs
+ctF
 aJx
 aJx
 aWu
@@ -112256,7 +113029,7 @@ aJy
 xEt
 aJy
 acs
-acs
+ctC
 acs
 aJx
 aJx
@@ -114105,7 +114878,7 @@ aJy
 aJy
 acs
 acs
-acs
+aYx
 aJq
 aJq
 aJq
@@ -116763,7 +117536,7 @@ iAT
 atp
 asd
 coz
-cow
+cuc
 asL
 bzJ
 bzJ
@@ -123604,7 +124377,7 @@ iKa
 iKa
 aPV
 bwA
-bha
+cuJ
 biz
 aul
 bwj
@@ -124325,8 +125098,8 @@ bHo
 aer
 abe
 aLa
-aKV
-aKV
+cua
+cua
 aaT
 aaO
 aaI
@@ -124997,7 +125770,7 @@ aZm
 aZh
 abe
 aLa
-aKV
+cub
 aYB
 aKK
 aYp
@@ -125140,7 +125913,7 @@ btV
 kIo
 abM
 aKI
-aKV
+cua
 aKI
 cph
 coI
@@ -125160,7 +125933,7 @@ bpq
 aCS
 aLx
 aKI
-aKV
+cuj
 aZn
 abi
 abd
@@ -125309,25 +126082,25 @@ abR
 aPV
 bcN
 aZn
-aKV
+cuF
 aKK
 abK
 abw
 abG
 aKK
-aKV
+cub
 aKK
 abD
 abC
 abB
 aKK
-aKV
+cuC
 aKK
 abw
 abs
 aZG
 aKK
-aKV
+cub
 bHo
 aZo
 aPV
@@ -125483,13 +126256,13 @@ abC
 aXB
 aZG
 aKK
-aKV
+cuE
 aKK
 abE
 brR
 bpr
 aZp
-aKV
+cuD
 aKK
 abx
 abt
@@ -126291,7 +127064,7 @@ iKa
 iKa
 iKa
 aPV
-bjk
+aPV
 bpP
 bkb
 bij
@@ -126458,7 +127231,7 @@ iKa
 iKa
 iKa
 iKa
-aPV
+iKa
 aPV
 bHo
 bHo
@@ -126968,8 +127741,8 @@ iKa
 iKa
 aPV
 aLw
-bha
-bgf
+cuJ
+cuI
 aLT
 bFq
 bFi
@@ -128547,7 +129320,7 @@ ayS
 ayS
 ayO
 ayM
-acS
+ayM
 iKa
 iKa
 iKa
@@ -128715,7 +129488,7 @@ aAy
 ayY
 ayR
 ayN
-acS
+ayM
 iKa
 iKa
 iKa
@@ -128883,7 +129656,7 @@ euM
 ayI
 ayY
 ayO
-acS
+ayM
 iKa
 iKa
 iKa
@@ -129051,7 +129824,7 @@ euM
 euM
 ayZ
 ayO
-acS
+ayM
 iKa
 iKa
 iKa
@@ -129219,7 +129992,7 @@ euM
 azN
 aza
 ayO
-acS
+ayM
 iKa
 iKa
 iKa
@@ -129387,7 +130160,7 @@ aAD
 aza
 ayT
 ayP
-acS
+ayM
 iKa
 iKa
 iKa
@@ -129555,7 +130328,7 @@ ayS
 ayT
 ayP
 ayM
-acS
+ayM
 iKa
 iKa
 iKa
@@ -129817,7 +130590,7 @@ iKa
 iKa
 iKa
 iKa
-acS
+ayM
 ayM
 azn
 azl
@@ -129891,7 +130664,7 @@ ayS
 ayR
 ayN
 ayM
-acS
+ayM
 iKa
 iKa
 iKa
@@ -129985,7 +130758,7 @@ iKa
 iKa
 iKa
 iKa
-acS
+ayM
 azn
 azl
 azg
@@ -130059,7 +130832,7 @@ aAy
 ayY
 ayR
 ayN
-acS
+ayM
 iKa
 iKa
 iKa
@@ -130153,7 +130926,7 @@ iKa
 iKa
 iKa
 iKa
-acS
+ayM
 azk
 azg
 cnK
@@ -130227,7 +131000,7 @@ euM
 ayI
 ayY
 ayO
-acS
+ayM
 iKa
 iKa
 iKa
@@ -130321,7 +131094,7 @@ iKa
 iKa
 iKa
 iKa
-acS
+ayM
 azk
 azh
 euM
@@ -130395,7 +131168,7 @@ euM
 euM
 ayZ
 ayO
-acS
+ayM
 iKa
 iKa
 iKa
@@ -130489,7 +131262,7 @@ iKa
 iKa
 iKa
 iKa
-acS
+ayM
 azk
 azi
 nVc
@@ -130563,7 +131336,7 @@ euM
 ayJ
 aza
 ayO
-acS
+ayM
 iKa
 iKa
 iKa
@@ -130657,7 +131430,7 @@ iKa
 iKa
 iKa
 iKa
-acS
+ayM
 azm
 azj
 azi
@@ -130731,7 +131504,7 @@ azr
 aza
 ayT
 ayP
-acS
+ayM
 iKa
 iKa
 iKa
@@ -130825,7 +131598,7 @@ iKa
 iKa
 iKa
 iKa
-acS
+ayM
 ayM
 azk
 ayS
@@ -130899,7 +131672,7 @@ ayS
 ayS
 ayO
 ayM
-acS
+ayM
 iKa
 iKa
 iKa
@@ -141821,7 +142594,7 @@ aJq
 aJq
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -141986,9 +142759,9 @@ cmK
 aJq
 aJq
 aJq
-spC
-spC
-spC
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -142153,8 +142926,8 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -142320,9 +143093,9 @@ cmK
 cmK
 cmK
 aJq
-spC
-spC
-spC
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -142488,8 +143261,8 @@ cmK
 cmK
 cmK
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -142656,8 +143429,8 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -142824,8 +143597,8 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -142992,8 +143765,8 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -143160,8 +143933,8 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -143328,9 +144101,9 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
-spC
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -143496,9 +144269,9 @@ cmK
 cmK
 cmK
 aJq
-spC
-spC
-spC
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -143664,10 +144437,10 @@ cmK
 cmK
 cmK
 aJq
-spC
-spC
-spC
-spC
+aJq
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -143832,11 +144605,11 @@ cmK
 cmK
 cmK
 aJq
-spC
-spC
-spC
-spC
-spC
+aJq
+aJq
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -144001,10 +144774,10 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
-spC
-spC
+aJq
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -144169,10 +144942,10 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
-spC
-spC
+aJq
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -144337,10 +145110,10 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
-spC
-spC
+aJq
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -144506,9 +145279,9 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
-spC
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -144674,9 +145447,9 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
-spC
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -144842,9 +145615,9 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
-spC
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -145011,8 +145784,8 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -145179,8 +145952,8 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -145348,7 +146121,7 @@ cmK
 aJq
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -145516,8 +146289,8 @@ cmK
 cmK
 cmK
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -145684,8 +146457,8 @@ cmK
 cmK
 cmK
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -145852,8 +146625,8 @@ cmK
 cmK
 cmK
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -146020,8 +146793,8 @@ cmK
 cmK
 cmK
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -146188,8 +146961,8 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -146325,11 +147098,11 @@ cmZ
 cmK
 cmK
 cmK
-cmK
-cmK
-cmK
-cmK
-cmK
+cmW
+cmU
+cmU
+cmU
+cmP
 cmK
 cmK
 cmK
@@ -146357,7 +147130,7 @@ aJq
 aJq
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -146493,11 +147266,11 @@ cmZ
 cmK
 cmK
 cmK
-cmK
-cmK
-cmK
-cmK
-cmK
+cmY
+cmT
+cmT
+cmT
+cmQ
 cmK
 cmK
 cmK
@@ -146525,7 +147298,7 @@ aJq
 aJq
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -146661,11 +147434,11 @@ cmZ
 cmK
 cmK
 cmK
-cmK
-cmK
-cmK
-cmK
-cmK
+cmY
+cmT
+cmT
+cmT
+cmQ
 cmK
 cmK
 cmK
@@ -146828,13 +147601,13 @@ cmZ
 cmZ
 cmK
 cmK
-cmK
-cmK
-cmK
-cmK
-cmK
-cmK
-cmK
+cmY
+cmX
+cmV
+cmV
+cmV
+cmR
+cmQ
 cmK
 cmK
 cmK
@@ -146997,11 +147770,11 @@ cmZ
 cmK
 cmK
 cmK
+cmV
 cmK
 cmK
 cmK
-cmK
-cmK
+cmV
 cmK
 cmK
 cmK
@@ -148541,7 +149314,7 @@ aJq
 aJq
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -148877,7 +149650,7 @@ aJq
 aJq
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -149045,7 +149818,7 @@ aJq
 aJq
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -150731,7 +151504,7 @@ cmK
 cmK
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -150899,10 +151672,10 @@ cmK
 cmK
 aJq
 aJq
+aJq
+aJq
 spC
-spC
-spC
-spC
+aJq
 spC
 spC
 spC
@@ -151068,9 +151841,9 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
-spC
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -151236,10 +152009,10 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
-spC
-spC
+aJq
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -151405,9 +152178,9 @@ cmK
 aJq
 aJq
 aJq
-spC
-spC
-spC
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -151573,9 +152346,9 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
-spC
+aJq
+aJq
+aJq
 spC
 spC
 spC
@@ -151742,8 +152515,8 @@ cmK
 aJq
 aJq
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -151910,8 +152683,8 @@ cmK
 cmK
 aJq
 aJq
-spC
-spC
+aJq
+aJq
 spC
 spC
 spC
@@ -152079,7 +152852,7 @@ cmK
 cmK
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -152247,7 +153020,7 @@ cmK
 cmK
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -152416,7 +153189,7 @@ cmK
 aJq
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -152584,7 +153357,7 @@ cmK
 cmK
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -152752,7 +153525,7 @@ cmK
 cmK
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -152920,7 +153693,7 @@ cmK
 cmK
 cmK
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -153088,7 +153861,7 @@ cmK
 cmK
 cmK
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -153256,7 +154029,7 @@ cmK
 cmK
 cmK
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -153424,7 +154197,7 @@ cmK
 cmK
 cmK
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -153592,7 +154365,7 @@ cmK
 cmK
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -153760,7 +154533,7 @@ cmK
 cmK
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -153928,7 +154701,7 @@ aJq
 aJq
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -154096,7 +154869,7 @@ aJq
 aJq
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -154264,7 +155037,7 @@ aJq
 aJq
 aJq
 aJq
-spC
+aJq
 spC
 spC
 spC
@@ -155723,15 +156496,15 @@ bhL
 bhL
 bhN
 cjq
-bhL
-bhL
+cuV
+cuV
 aOg
 acF
 bGt
 bpV
 bpR
 bit
-bhL
+cuV
 ciZ
 ciW
 bhL
@@ -155892,13 +156665,13 @@ bFv
 bFB
 bQK
 aQU
-bhL
-bhL
-bhL
-bhL
-bhL
-bhL
-bhL
+cuV
+cuV
+cuV
+cuV
+cuV
+cuV
+cuV
 aRa
 bQK
 bia
@@ -156066,7 +156839,7 @@ biC
 aeV
 aeT
 aeQ
-bhL
+cuV
 aRa
 bQK
 aQT
@@ -156210,7 +156983,7 @@ cdK
 bIQ
 bRJ
 bjf
-cdK
+cvi
 acQ
 bjj
 bjj
@@ -156228,13 +157001,13 @@ bqa
 aRa
 bQK
 aQU
-bhL
+cuV
 bix
 bix
 bix
 bGn
 aeR
-bhL
+cuV
 aRa
 bQK
 bZS
@@ -156255,8 +157028,8 @@ adB
 adB
 cie
 aVX
-adB
-adB
+cuM
+cuK
 bgZ
 bEz
 ajy
@@ -156378,17 +157151,17 @@ cdK
 acQ
 bRJ
 bjf
-cdK
+cvi
 bVR
-bjj
-bjj
+cvg
+cve
 acV
 cjF
 ciL
-bpF
-bpF
-bpF
-bpF
+cuY
+bGj
+bGj
+bGj
 ciD
 bhM
 bhS
@@ -156396,13 +157169,13 @@ bhS
 cab
 bQK
 aQU
-bhL
+cuV
 bix
 bZW
 bix
 bix
 bix
-bhL
+cuV
 aRa
 bQK
 bZT
@@ -156410,9 +157183,9 @@ bZR
 bhS
 bhM
 ciL
-bpF
-bpF
-bpF
+bGj
+bGj
+bGj
 adX
 cix
 aQo
@@ -156424,7 +157197,7 @@ bxq
 adG
 bBc
 adH
-adB
+cuL
 bgZ
 bgZ
 bgV
@@ -156548,15 +157321,15 @@ bRJ
 bjf
 bIi
 acR
-bjj
-bjj
+cvh
+cvf
 cjI
 cjF
 ciL
 iDy
-bpF
-bpF
-bpF
+cuR
+cuR
+cuR
 ciD
 bhM
 bhS
@@ -156578,9 +157351,9 @@ bZR
 bhS
 bhM
 ciL
-bpF
-bpF
-bpF
+cuR
+cuR
+cuR
 ciD
 aQo
 aQo
@@ -156721,10 +157494,10 @@ bjj
 acX
 bHz
 ciM
-bpF
-bpF
-bpF
-bpF
+ctf
+cte
+cte
+cte
 ciD
 bhM
 bhS
@@ -156746,9 +157519,9 @@ bZR
 bhS
 bhM
 ciL
-bpF
-bpF
-bpF
+cte
+cte
+cte
 ciD
 adE
 byw
@@ -156880,9 +157653,9 @@ bjt
 adu
 adp
 acR
-bRJ
-bjf
-cdK
+cvl
+cvj
+cvi
 acQ
 bjj
 bjj
@@ -156894,7 +157667,7 @@ bpF
 bpF
 bpF
 ciD
-bhL
+cuV
 bHa
 aQF
 aRb
@@ -156912,7 +157685,7 @@ bQK
 aQV
 aQF
 aQF
-bhL
+cuV
 ciL
 bpF
 bpF
@@ -157048,9 +157821,9 @@ bjt
 bjt
 bJd
 bHx
-bRJ
-bjf
-cdK
+cvm
+cvk
+cvi
 bVS
 bjj
 bHO
@@ -157062,7 +157835,7 @@ bpF
 bpF
 bpF
 ciD
-bhL
+cuV
 bFn
 aQE
 bGR
@@ -157080,7 +157853,7 @@ bQL
 bZU
 aQE
 bFo
-bhL
+cuV
 ciL
 bpF
 bpF
@@ -157218,7 +157991,7 @@ cdL
 acQ
 bRJ
 bjf
-cdK
+cvi
 acQ
 bjj
 bjj
@@ -157388,8 +158161,8 @@ cjX
 cjV
 cjU
 cjR
-bjj
-bjj
+cvg
+cve
 acW
 cjE
 ciL
@@ -157556,7 +158329,7 @@ bRJ
 bjf
 acW
 bIa
-bjj
+cvg
 bGC
 cjH
 cjE
@@ -157722,7 +158495,7 @@ cdK
 bVS
 bRJ
 bjf
-cdK
+cvi
 acQ
 add
 acY
@@ -157890,7 +158663,7 @@ cdK
 acQ
 bRJ
 bjf
-cdK
+cvi
 bHx
 ade
 acZ
@@ -157902,7 +158675,7 @@ bpF
 bpF
 bpF
 ciD
-bhL
+cuV
 aeM
 aeJ
 aev
@@ -158070,7 +158843,7 @@ bpF
 bpF
 bpF
 ciD
-bhL
+cuV
 aeN
 bGX
 aev
@@ -158088,7 +158861,7 @@ afa
 bFE
 bFp
 bFz
-bhL
+cuV
 ciL
 bpF
 bpF
@@ -158238,25 +159011,25 @@ bpF
 bpF
 bpF
 ciD
-bhL
-bhL
+cuV
+cuV
 aev
 cjs
 aeD
-bhL
-bhL
+cuV
+cuV
 bhM
 bhM
 bhM
 bhM
 bhM
-ciO
-ciO
+cuW
+cuW
 bFM
 bFF
 bFN
-bhL
-bhL
+cuV
+cuV
 ciL
 bpF
 bpF
@@ -158407,11 +159180,11 @@ bpF
 bpF
 nCG
 cix
-ciO
+cuW
 cjv
 bFp
-ciO
-ciO
+cuW
+cuW
 cix
 bpL
 bpL
@@ -158419,11 +159192,11 @@ bpL
 bpL
 bpL
 cix
-ciO
-bhL
+cuW
+cuV
 bFH
 bFC
-bhL
+cuV
 cix
 ciM
 bpF
@@ -158575,10 +159348,10 @@ bpF
 bpF
 bpF
 ciD
-bhL
-ciO
-ciO
-ciO
+cuV
+cuW
+cuW
+cuW
 cix
 ciM
 bpF
@@ -158588,9 +159361,9 @@ bpF
 bpF
 nCG
 cix
-bhL
-bhL
-bhL
+cuV
+cuV
+cuV
 cix
 ciM
 bpF
@@ -158748,13 +159521,13 @@ bpL
 bpL
 bpL
 ciM
+cuZ
 bpF
 bpF
 bpF
 bpF
 bpF
-bpF
-bpF
+cuY
 nCG
 bpL
 bpL
@@ -158914,17 +159687,17 @@ bpF
 bpF
 bpF
 bpF
+bxr
+cuX
+bIc
 bpF
 bpF
 bpF
 bpF
 bpF
-bpF
-bpF
-bpF
-bpF
-bpF
-bpF
+bxr
+cuX
+bIc
 bpF
 bpF
 bpF
@@ -159082,17 +159855,17 @@ bpF
 bpF
 bpF
 bpF
+bxr
+cuX
+bIc
 bpF
 bpF
 bpF
 bpF
 bpF
-bpF
-bpF
-bpF
-bpF
-bpF
-bpF
+bxr
+cuX
+bIc
 bpF
 bpF
 bpF
@@ -159250,17 +160023,17 @@ bpF
 bpF
 bpF
 bpF
+bxr
+cuX
+bIc
 bpF
 bpF
 bpF
 bpF
 bpF
-bpF
-bpF
-bpF
-bpF
-bpF
-bpF
+bxr
+cuX
+bIc
 bpF
 bpF
 bpF
@@ -159418,17 +160191,17 @@ bpF
 bpF
 bpF
 bpF
+bxr
+cuX
+bIc
 bpF
 bpF
 bpF
 bpF
 bpF
-bpF
-bpF
-bpF
-bpF
-bpF
-bpF
+bxr
+cuX
+bIc
 bpF
 bpF
 bpF
@@ -159588,13 +160361,13 @@ ciP
 ciP
 ciP
 ciR
+ctg
 bpF
 bpF
 bpF
 bpF
 bpF
-bpF
-bpF
+ctf
 acP
 ciP
 ciP
@@ -160081,10 +160854,10 @@ bHW
 agw
 bjn
 bjn
-bwJ
-cqx
+bhJ
+bhJ
 bul
-aQw
+bhJ
 biH
 agd
 biT
@@ -160106,9 +160879,9 @@ bQi
 aQJ
 afc
 bhO
-bvE
-ciK
-bPV
+bhJ
+bhJ
+bhJ
 ciH
 ahI
 aie
@@ -160249,14 +161022,14 @@ agE
 agx
 agl
 bjn
-bvM
+cvd
 cnB
 cnA
 aQw
 biH
 age
 btK
-biQ
+cva
 biQ
 btl
 biI
@@ -160275,9 +161048,9 @@ cnx
 cnw
 bhO
 bvF
-bPG
+ciK
 bvu
-bvi
+cuO
 ahI
 aif
 ahX
@@ -161427,7 +162200,7 @@ agp
 bjn
 cqm
 cqy
-cqt
+cvb
 bue
 btX
 btS
@@ -164644,8 +165417,8 @@ aFF
 aet
 coc
 bhC
-bqN
-bqN
+cuS
+cuP
 bhC
 bsc
 bsc
@@ -164781,12 +165554,12 @@ aaU
 aaU
 brI
 cip
-bqN
+cuP
 brt
 brn
 brk
 brf
-bqY
+cvc
 bqV
 csP
 bhQ
@@ -164812,12 +165585,12 @@ acz
 bhQ
 cst
 bqP
-bry
+cuT
 bry
 brt
 brn
 brk
-bry
+cuN
 ciq
 bhy
 aaU
@@ -165652,8 +166425,8 @@ acA
 bhQ
 csv
 bjr
-bqN
-bqN
+cuU
+cuQ
 bhC
 bhC
 bhC

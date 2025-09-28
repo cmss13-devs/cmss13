@@ -1,0 +1,8 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Orbit menu should no longer be finding null named mobs to crash on (also has fallback behavior to name them as Unknown)"
+  - bugfix: "New players (or atleast one that has never saved preferences before) now have their preferences sanitized immediately: For example this makes it so fax responder names are randomized to begin with"
+  - bugfix: "A few equipment presents (cmb, contractor, and royal marine) now will have different hair colors"
+  - code_imp: "Various code standardization related to names and gender"
+  - admin: "Aghost observers are now hidden in Orbit menu"

@@ -43,7 +43,6 @@
 	icon_state = "lz"
 	soundscape_playlist = SCAPE_PL_LV759_OUTDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_CAVES
-	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 	ceiling = CEILING_NONE

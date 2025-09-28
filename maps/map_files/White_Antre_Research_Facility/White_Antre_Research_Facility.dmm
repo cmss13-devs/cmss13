@@ -14634,6 +14634,10 @@
 	},
 /turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/east_corridor)
+"aHg" = (
+/obj/structure/platform/metal/almayer_smooth/north,
+/turf/open_space,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "aHh" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 2;
@@ -38871,6 +38875,10 @@
 	},
 /turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
+"bQp" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
+/turf/open_space,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "bQq" = (
 /obj/effect/mist/steam{
 	pixel_x = 6;
@@ -40850,18 +40858,6 @@
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/white_antre/oob)
-"bUT" = (
-/obj/structure/stairs/multiz/down{
-	dir = 4;
-	layer = 1.5
-	},
-/obj/effect/decal/hybrisa/bloodtrail{
-	dir = 4;
-	pixel_y = 8;
-	layer = 3.1
-	},
-/turf/open/floor/almayer_hull,
-/area/white_antre/outdoors/facility_exterior)
 "bUU" = (
 /obj/effect/mist/steam{
 	pixel_x = 6;
@@ -45245,6 +45241,10 @@
 	},
 /turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/underground_level/gonzo)
+"cgN" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/west,
+/turf/open_space,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "cgO" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	color = "#a6aeab";
@@ -50592,6 +50592,42 @@
 "ctc" = (
 /turf/open/antre/plating/direction_west/west_west,
 /area/white_antre/indoors/upper_level/west_corridor)
+"ctd" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
+/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/area/white_antre/indoors/upper_level/west_corridor)
+"cte" = (
+/obj/structure/platform/metal/almayer_smooth/west,
+/turf/open_space,
+/area/white_antre/indoors/upper_level/west_corridor)
+"ctf" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/north,
+/turf/open_space,
+/area/white_antre/indoors/upper_level/west_corridor)
+"ctg" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
+/turf/open_space,
+/area/white_antre/indoors/upper_level/west_corridor)
+"cth" = (
+/obj/structure/platform/metal/almayer_smooth/west,
+/turf/open_space,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"cti" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/north,
+/turf/open_space,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"ctj" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
+/turf/open_space,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"ctk" = (
+/obj/structure/platform_decoration/metal/almayer_smooth/north,
+/turf/open/floor/almayer_hull/outerhull_dir,
+/area/white_antre/indoors/upper_level/west_corridor)
+"ctl" = (
+/obj/structure/platform/metal/almayer_smooth,
+/turf/open_space,
+/area/white_antre/indoors/main_level/north_containment_hive)
 "cul" = (
 /obj/structure/prop/hybrisa/airport/dropshipvent2right,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -56519,13 +56555,6 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/north_containment_hive)
-"wOF" = (
-/obj/structure/stairs/multiz/down{
-	dir = 4;
-	layer = 1.5
-	},
-/turf/open/floor/almayer_hull,
-/area/white_antre/outdoors/facility_exterior)
 "wOL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_smooth"
@@ -154707,15 +154736,15 @@ aQr
 bhK
 bhK
 bhG
-wOF
-wOF
-wOF
-wOF
 bgS
-wOF
-bUT
-wOF
-wOF
+bgS
+bgS
+bgS
+bgS
+bgS
+bgS
+bgS
+bgS
 bgX
 bgR
 cmM
@@ -155002,15 +155031,15 @@ cne
 cne
 bhK
 cnD
-ciL
+ctk
+cte
+ctg
 bpF
-bpF
-bpF
-bpF
-bpF
-bpF
-bpF
-bpF
+ctf
+cte
+cte
+cte
+ctg
 bpF
 bpF
 bpF
@@ -155042,15 +155071,15 @@ bpF
 bpF
 bpF
 bpF
+ctf
+cte
+cte
+cte
+ctg
 bpF
-bpF
-bpF
-bpF
-bpF
-bpF
-bpF
-bpF
-adX
+ctf
+cte
+ctd
 acN
 bgV
 cmN
@@ -157172,7 +157201,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMa
 bjO
@@ -157248,7 +157277,7 @@ ajq
 aiu
 diq
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -157340,7 +157369,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMb
 bjP
@@ -157416,7 +157445,7 @@ ajq
 aiu
 bBP
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -157508,7 +157537,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMc
 bjP
@@ -157584,7 +157613,7 @@ ajq
 aiu
 bBQ
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -157676,7 +157705,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bjS
 bjP
@@ -157752,7 +157781,7 @@ ajq
 aiu
 ajo
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -157844,7 +157873,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bjS
 bjP
@@ -157920,7 +157949,7 @@ ajq
 aiu
 ajo
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -158012,7 +158041,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMd
 bjP
@@ -158088,7 +158117,7 @@ ajr
 aiu
 ajo
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -158180,7 +158209,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMd
 bLP
@@ -158256,7 +158285,7 @@ ajr
 aiu
 bBR
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -158348,7 +158377,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMd
 bjP
@@ -158424,7 +158453,7 @@ ajq
 bCl
 bBS
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -158516,7 +158545,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMd
 bjP
@@ -158592,7 +158621,7 @@ ajq
 bCm
 bBS
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -158684,7 +158713,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMe
 bjP
@@ -158760,7 +158789,7 @@ ajq
 bCl
 bBT
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -158928,7 +158957,7 @@ bCy
 bCn
 bBU
 bgU
-cmJ
+bQp
 cmJ
 cmJ
 cmJ
@@ -159264,7 +159293,7 @@ bCA
 bCn
 bBV
 bgU
-cmJ
+cgN
 cmJ
 cmJ
 cmJ
@@ -159356,7 +159385,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMd
 bLP
@@ -159432,7 +159461,7 @@ ajq
 aiu
 bBP
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -159524,7 +159553,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bjS
 bjP
@@ -159600,7 +159629,7 @@ ajq
 aiu
 ajo
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -159692,7 +159721,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bjS
 bjP
@@ -159768,7 +159797,7 @@ ajq
 aiu
 ajo
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -159860,7 +159889,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMe
 bjP
@@ -159936,7 +159965,7 @@ ajr
 aiu
 ajo
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -160028,7 +160057,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMh
 bjP
@@ -160104,7 +160133,7 @@ ajr
 aiu
 bBW
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -160196,7 +160225,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMi
 bjP
@@ -160272,7 +160301,7 @@ ajq
 aiu
 bBW
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -160364,7 +160393,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bjS
 bjP
@@ -160440,7 +160469,7 @@ ajq
 aiu
 ajo
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -160532,7 +160561,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMd
 bjP
@@ -160608,7 +160637,7 @@ ajq
 aiu
 ajo
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -160700,7 +160729,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMd
 bLP
@@ -160776,7 +160805,7 @@ ajq
 aiu
 ajo
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -160868,7 +160897,7 @@ cnf
 cnf
 cnf
 cnf
-cnf
+ctl
 bjU
 bMf
 bLR
@@ -160944,7 +160973,7 @@ aju
 bCo
 ajp
 aMc
-cmJ
+aHg
 cmJ
 cmJ
 cmJ
@@ -163610,8 +163639,8 @@ ciB
 ciB
 ciB
 ciB
-ciB
-ciB
+cjp
+aQy
 wcO
 aDa
 bhc
@@ -164084,9 +164113,9 @@ aet
 aet
 aet
 aet
-ciB
-ciB
-ciB
+ciU
+ciU
+ciS
 ciB
 ciB
 ciB
@@ -164110,9 +164139,9 @@ ciS
 ciB
 ciB
 ciB
-ciB
-ciB
-ciB
+aQY
+ciU
+ciU
 aet
 aet
 aet
@@ -168277,48 +168306,48 @@ euM
 euM
 euM
 cmL
-cmL
-cmL
-cmL
-cmL
-cmL
-cmL
-cmL
+cti
+cth
+cth
+cth
+cth
+cth
+ctj
 euM
 euM
 euM
-cmL
-cmL
-cmL
-cmL
-cmL
+cth
+cth
+cth
+cth
+cth
+euM
+cth
+cth
+cth
+cth
+ctj
+euM
+cti
+cth
+cth
+cth
+cth
+euM
+cth
+cth
+cth
+cth
+cth
 euM
 cmL
 cmL
-cmL
-cmL
-cmL
-euM
-cmL
-cmL
-cmL
-cmL
-cmL
-euM
-cmL
-cmL
-cmL
-cmL
-cmL
-euM
-cmL
-cmL
-cmL
-cmL
-cmL
-cmL
-cmL
-cmL
+cti
+cth
+cth
+cth
+cth
+cth
 cmL
 cmL
 euM

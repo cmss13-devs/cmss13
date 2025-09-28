@@ -41,20 +41,31 @@
 
 /obj/item/clothing/proc/change_style(mob/user)
 	var/next_style = style + 1
-	var/desired_icon_state = icon_state + "_style_" + num2text(next_style)
+	// essentially, we retrieve the name of the icon_state as a base, then append _style_X to it for a more dynamic icon change
+	var/desired_item_state = icon_state + "_style_" + num2text(next_style)
 	var/list/available_states = list()
+
 	if(icon)
 		available_states |= icon_states(icon)
+	if(islist(item_icons))
+		for(var/_iconfile in item_icons)
+			if(_iconfile)
+				available_states |= icon_states(_iconfile)
 
 	for(var/obj/item/clothing/accessory/accessory_style in accessories)
-		if(islist(accessory_style.accessory_icons))
-			for(var/icon_file in accessory_style.accessory_icons)
-				if(icon_file)
-					available_states |= icon_states(icon_file)
+		if(accessory_style)
+			if(accessory_style.icon)
+				available_states |= icon_states(accessory_style.icon)
+			if(islist(accessory_style.accessory_icons))
+				for(var/_iconfile in accessory_style.accessory_icons)
+					if(_iconfile)
+						available_states |= icon_states(_iconfile)
 
-	if(next_style >= 1 && (desired_icon_state in available_states))
+	to_chat(user, SPAN_DEBUG("change_style debug: style=[style] next=[next_style] desired=[desired_item_state] available=[available_states]"))
+
+	if(style >= 1 && (desired_item_state in available_states))
 		style = next_style
-		item_state = desired_icon_state
+		item_state = desired_item_state
 		update_clothing_icon()
 		to_chat(user, SPAN_NOTICE("You change the style of [src]."))
 	else

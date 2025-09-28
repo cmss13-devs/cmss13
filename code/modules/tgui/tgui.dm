@@ -120,6 +120,17 @@
 			))
 	else
 		window.send_message("ping")
+	send_assets()
+	window.send_message("update", get_payload(
+		with_data = TRUE,
+		with_static_data = TRUE))
+	if(mouse_hooked)
+		window.set_mouse_macro()
+	SStgui.on_open(src)
+
+	return TRUE
+
+/datum/tgui/proc/send_assets()
 	var/flush_queue = window.send_asset(get_asset_datum(
 		/datum/asset/simple/namespaced/fontawesome))
 	flush_queue |= window.send_asset(get_asset_datum(
@@ -130,14 +141,6 @@
 		flush_queue |= window.send_asset(asset)
 	if (flush_queue)
 		user.client.browse_queue_flush()
-	window.send_message("update", get_payload(
-		with_data = TRUE,
-		with_static_data = TRUE))
-	if(mouse_hooked)
-		window.set_mouse_macro()
-	SStgui.on_open(src)
-
-	return TRUE
 
 /**
  * public

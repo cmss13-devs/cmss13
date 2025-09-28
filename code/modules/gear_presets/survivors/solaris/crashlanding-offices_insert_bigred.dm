@@ -245,13 +245,11 @@
 		add_ice_colony_survivor_equipment(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/command/hvh(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/grant, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress, WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/manager(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
 	add_pmc_survivor_weapon(new_human)
@@ -334,3 +332,51 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/multitool(new_human), WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank(new_human), WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire/wy(new_human), WEAR_R_STORE)
+
+// only used on the spawner of all of those above...
+/datum/equipment_preset/survivor/pmc/pmc_commander
+	name = "Survivor - PMC Field Operations Leader"
+	assignment = JOB_PMC_FIELD_OP_LEADER
+	job_title = JOB_PMC_FIELD_OP_LEADER
+	paygrades = list(PAY_SHORT_PMC_FOL = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "FOL"
+	skills = /datum/skills/civilian/survivor/pmc/co_survivor
+	minimap_icon = "pmc_fol"
+
+/datum/equipment_preset/survivor/pmc/pmc_commander/load_gear(mob/living/carbon/human/new_human)
+	//uniform
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/leader(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/wy_faction(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/vp78(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78(new_human), WEAR_IN_ACCESSORY)
+	//boots
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife(new_human), WEAR_FEET)
+	//gloves
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc(new_human), WEAR_HANDS)
+	//mask
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/leader(new_human), WEAR_FACE)
+	//radio
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/pmc/command/hvh(new_human), WEAR_L_EAR)
+	//helmet
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/fieldleader(new_human), WEAR_HEAD)
+	//suit
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/leader(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/pmc(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_JACKET)
+	//backpack
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/pmc/backpack/rto_broken(new_human), WEAR_BACK)
+	//storage items
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/med_small_stack(new_human), WEAR_IN_BACK) // There is a chance PMC CO replaces PMC Engi during spawn.
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/flashlight/grip(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/reflex(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m39/corporate/no_lock/full/extended(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/wy/full_advanced(new_human), WEAR_R_STORE) //In case a medic doesn't spawn.
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact(new_human), WEAR_IN_BACK) //In case a medic doesn't spawn.
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crew_monitor(new_human), WEAR_IN_BACK)
+	//eyewear
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor(new_human), WEAR_EYES)
+	add_random_survivor_equipment(new_human) //No random PMC gun for them. Overwatch esque role, so SMG.

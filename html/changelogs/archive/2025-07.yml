@@ -236,3 +236,67 @@
   - code_imp: Changed Hivelord resin walker ability from behavior_delegate to be ability
       only, now it consumes correctly 30 plasma every 2 seconds instead of 10 plasma
       every 2 seconds.
+2025-07-25:
+  Willzadl:
+  - bugfix: requisition line tutorial now uses the brute warhead and m37a1 instead
+      of the XM51 mag and m37a2
+  thevandie:
+  - rscadd: Added two new pistols, the Action and Whisper
+  - rscdel: Removed the old holdout pistol and replaced it with the Action and Whisper
+  - soundadd: Added a new firing sound for the Action pistol
+  - imageadd: Added new sprites for the Whisper and Action pistols, including Inhands
+  - imageadd: Added a new sprite for the Action pistols magazines
+  - imagedel: Deleted the old Holdout Pistol sprite
+2025-07-26:
+  Drathek:
+  - bugfix: Fixed pheros helping banished xenos
+  - balance: Banishment damage now ignores armor
+  - code_imp: Cleaned up some of handle_pheromones
+  FishyFlaps2024:
+  - rscadd: Adds research access to ASO
+  - rscadd: Adds research skill to ASO
+  MistChristmas:
+  - bugfix: Nightmare disposal pipes no longer end up with null icon_states on load.
+  Red-byte3D:
+  - rscadd: You can now use a custom "glove" cursor from preferences by clicking the
+      "use custom cursors" in preferences tab. Theres a cursor for each faction
+  - bugfix: You can no longer paradrop to outside of the map.
+  Unknownity:
+  - rscadd: Adds an upgraded autodoc to the Yautja ship and upgrades their sleepers.
+  Venuska1117:
+  - bugfix: Swap Designer macros of Place Design and Change Design ability.
+  Willzadl:
+  - rscadd: Nested predators will now be stabilized
+  cuberound:
+  - bugfix: reduces AP GAU ammo spread to 3 tile from 4 as intended
+  jupyterkat:
+  - bugfix: look up is a toggle again
+  rattybag:
+  - rscadd: adds alt click to sinks and hydro trays
+2025-07-28:
+  ghostsheet:
+  - bugfix: Throwing guns no longer breaks their sprites.
+  jupyterkat:
+  - bugfix: fixed look up
+  - qol: made it clear that you can throw nades and drag click to look into ladders
+      on the examine text
+  - qol: unlit flares thrown up/down ladders are now lit
+  - qol: you now instantly stop looking at ladders when you move
+  private-tristan:
+  - balance: The last living xeno is now fully healed, but is unable to heal/rest
+      at all. FIGHT AND DIE.
+  realforest2001:
+  - bugfix: Fixes duplicate entries in infected follow menu.
+  yackemflam:
+  - qol: You can make sausages with raw ingredients now. Why on earth would you make
+      sausage with cooked casings and fillings?
+2025-07-29:
+  TheGamerdk:
+  - rscdel: Removed an outdated first name
+  kiVts:
+  - bugfix: You can unrest as the last xeno
+2025-07-31:
+  SRG3124, Geeves, Frans_Feiffer:
+  - rscadd: Added a Riot Visor for MP's
+  Stakeyng:
+  - balance: the pistol toolbelt can hold anything its pistolless sister can.

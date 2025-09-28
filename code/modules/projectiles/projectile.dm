@@ -601,7 +601,7 @@
 
 /obj/projectile/proc/check_canhit(turf/current_turf, turf/next_turf, list/ignore_list)
 	var/proj_dir = get_dir(current_turf, next_turf)
-	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf, ignore_list = ignore_list))
+	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf, ignore_list = ignore_list) && current_turf.z == next_turf.z)
 		ammo.on_hit_turf(current_turf, src)
 		current_turf.bullet_act(src)
 		return TRUE
@@ -940,7 +940,7 @@
 	. = TRUE
 	bullet_message(P, damaging = damage)
 	if(damage)
-		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P)
+		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P, enviro=P.ammo.damage_enviro)
 		P.play_hit_effect(src)
 
 	SEND_SIGNAL(P, COMSIG_BULLET_ACT_LIVING, src, damage, damage)
@@ -1032,7 +1032,7 @@
 		handle_blood_splatter(splatter_dir)
 
 		. = TRUE
-		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer = P.firer)
+		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer=P.firer, enviro=P.ammo.damage_enviro)
 
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + floor(damage / 10)))
 			if(ammo_flags & AMMO_SPECIAL_EMBED)
@@ -1104,6 +1104,7 @@
 			"armor_integrity" = armor_integrity,
 			"direction" = P.dir,
 			"armour_type" = GLOB.xeno_ranged,
+			"enviro" = P.ammo.damage_enviro,
 		)
 		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, damagedata)
 		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damagedata["damage"],
@@ -1131,7 +1132,7 @@
 		//only apply the blood splatter if we do damage
 		handle_blood_splatter(get_dir(P.starting, loc))
 
-		apply_damage(damage_result,P.ammo.damage_type, P.def_zone) //Deal the damage.
+		apply_damage(damage_result,P.ammo.damage_type, P.def_zone, enviro=P.ammo.damage_enviro) //Deal the damage.
 		if(length(xeno_shields))
 			P.play_shielded_hit_effect(src)
 		else

@@ -58,6 +58,7 @@
 	max_w_class = SIZE_MEDIUM
 	cant_hold = list( //Prevent inventory bloat
 		/obj/item/storage/firstaid,
+		/obj/item/storage/toolkit,
 		/obj/item/storage/bible,
 		/obj/item/storage/box,
 	)
@@ -147,7 +148,7 @@
 	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
-		/obj/item/device/flashlight,
+		/obj/item/device/flashlight/lantern,
 		/obj/item/tool/crowbar,
 		/obj/item/storage/pill_bottle/packet,
 		/obj/item/stack/medical/bruise_pack,
@@ -157,7 +158,7 @@
 	)
 
 /obj/item/storage/pouch/survival/full/fill_preset_inventory()
-	new /obj/item/device/flashlight(src)
+	new /obj/item/device/flashlight/lantern(src)
 	new /obj/item/tool/crowbar/red(src)
 	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
 	new /obj/item/stack/medical/bruise_pack(src)
@@ -583,9 +584,20 @@
 		/obj/item/ammo_magazine/smartgun,
 	)
 
-/obj/item/storage/pouch/magazine/large/pmc_sg/fill_preset_inventory()
+/obj/item/storage/pouch/magazine/large/pmc_sg/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun/dirty(src)
+
+/obj/item/storage/pouch/magazine/large/pmc_sg/marsoc
+	icon_state = "socdrums"
+
+/obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/full/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smartgun/heap(src)
+
+/obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/full_low_threat/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smartgun(src)
 
 /obj/item/storage/pouch/magazine/large/m16/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -594,6 +606,9 @@
 /obj/item/storage/pouch/magazine/large/m16/ap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap(src)
+
+/obj/item/storage/pouch/magazine/large/m16/ap/black
+	icon_state = "wy_ammo_mag"
 
 /obj/item/storage/pouch/magazine/large/rifle_heap
 	icon_state = "wy_ammo_mag"
@@ -1013,6 +1028,17 @@
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
 
+/obj/item/storage/pouch/medkit/full/toxin/cbrn
+	can_hold_skill_only = FALSE // Given to non-medically trained personnel.
+
+/obj/item/storage/pouch/medkit/full/toxin/cbrn/fill_preset_inventory()
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/storage/pill_bottle/antitox/skillless(src)
+	new /obj/item/storage/pill_bottle/antitox/skillless(src)
+	new /obj/item/roller(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
 /obj/item/storage/pouch/medkit/wy
 	icon_state = "wy_medkit"
 

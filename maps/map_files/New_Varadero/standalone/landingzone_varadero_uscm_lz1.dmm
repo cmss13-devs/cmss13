@@ -907,7 +907,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
 "gT" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "gY" = (
@@ -1003,7 +1003,7 @@
 /turf/open/gm/dirt/desert_dug,
 /area/varadero/exterior/lz1_near)
 "hG" = (
-/obj/structure/machinery/power/port_gen/pacman/mrs,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/mrs,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "hI" = (
@@ -5067,7 +5067,7 @@
 /area/varadero/interior/hall_N)
 "PO" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "PP" = (

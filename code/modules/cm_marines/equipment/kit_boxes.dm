@@ -33,7 +33,7 @@
 	new /obj/item/clothing/suit/storage/marine/M3T(src)
 	new /obj/item/clothing/head/helmet/marine/M3T(src)
 	new /obj/item/storage/backpack/marine/rocketpack(src)
-	new /obj/item/weapon/gun/launcher/rocket(src)
+	new /obj/item/weapon/gun/launcher/rocket/m5(src)
 	new /obj/item/ammo_magazine/rocket(src)
 	new /obj/item/ammo_magazine/rocket(src)
 	new /obj/item/ammo_magazine/rocket/ap(src)
@@ -135,7 +135,7 @@
 
 /obj/item/storage/box/spec/scout/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M3S(src)
-	new /obj/item/clothing/head/helmet/marine/scout(src)
+	new /obj/item/clothing/head/helmet/marine/radio_helmet/scout(src)
 	new /obj/item/clothing/glasses/night/M4RA(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
@@ -619,6 +619,7 @@
 	new /obj/item/storage/pouch/general/large(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+	new /obj/item/pamphlet/skill/honorguard(src)
 
 /obj/item/storage/box/kit/spotter
 	name = "\improper Spotter Kit"

@@ -512,6 +512,7 @@
 	desc = "A headset used by medbay's skilled researchers. Channels are as follows: :m - medical, :t - intel."
 	icon_state = "med_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/medres)
+	additional_hud_types = list(MOB_HUD_FACTION_WY)
 
 /obj/item/device/radio/headset/almayer/ct
 	name = "supply radio headset"
@@ -1289,6 +1290,17 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/royal_marine)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_TWE
+	volume = RADIO_VOLUME_IMPORTANT
+
+/obj/item/device/radio/headset/distress/iasf
+	name = "IASF Headset"
+	desc = "A sleek headset used by the IASF. Low profile enough to fit under any headgear."
+	frequency = RMC_FREQ
+	icon_state = "vai_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/royal_marine)
+	has_hud = TRUE
+	hud_type = MOB_HUD_FACTION_IASF
+	additional_hud_types = list(MOB_HUD_FACTION_TWE, MOB_HUD_FACTION_IASF, MOB_HUD_FACTION_MARINE)
 	volume = RADIO_VOLUME_IMPORTANT
 
 //CMB Headsets

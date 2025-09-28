@@ -6,6 +6,7 @@
 	job_title = FACTION_WY
 	idtype = /obj/item/card/id/silver
 	faction_group = FACTION_LIST_WY
+	origin_override = ORIGIN_WY
 	skills = /datum/skills/civilian
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/headset_type = /obj/item/device/radio/headset/distress/WY

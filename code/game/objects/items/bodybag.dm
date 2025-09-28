@@ -135,7 +135,7 @@
 		return
 
 	else if(istype(W, /obj/item/weapon/zombie_claws))
-		open()
+		open(user)
 
 /obj/structure/closet/bodybag/store_mobs(stored_units) // overriding this
 	var/list/dead_mobs = list()
@@ -172,14 +172,14 @@
 	. = ..()
 
 
-/obj/structure/closet/bodybag/close()
+/obj/structure/closet/bodybag/close(mob/user)
 	if(..())
 		density = FALSE
 		update_name()
 		return 1
 	return 0
 
-/obj/structure/closet/bodybag/open()
+/obj/structure/closet/bodybag/open(mob/user, force)
 	. = ..()
 	update_name()
 
@@ -269,33 +269,43 @@
 /obj/structure/closet/bodybag/cryobag/update_icon()
 	. = ..()
 	// Bump up a living player in the bag to layer of an actual corpse and not just an accidentally coverable prop
-	if(stasis_mob)
-		layer = LYING_BETWEEN_MOB_LAYER
-	else
-		layer = initial(layer)
 
-/obj/structure/closet/bodybag/cryobag/open()
-	var/mob/living/L = locate() in contents
-	if(L)
-		L.in_stasis = FALSE
-		stasis_mob = null
-		STOP_PROCESSING(SSobj, src)
+	overlays.Cut()	// makes sure any previous triage cards are removed
+
+	if(!stasis_mob)
+		layer = initial(layer)
+		return
+
+	layer = LYING_BETWEEN_MOB_LAYER
+
+	if(stasis_mob.holo_card_color && !opened)
+		var/image/holo_card_icon = image('icons/obj/bodybag.dmi', src, "cryocard_[stasis_mob.holo_card_color]")
+
+		if(!holo_card_icon) // makes sure an icon was actually located
+			return
+
+		overlays |= holo_card_icon
+
+/obj/structure/closet/bodybag/cryobag/open(mob/user, force)
 	. = ..()
+	if(stasis_mob)
+		stasis_mob.in_stasis = FALSE
+		UnregisterSignal(stasis_mob, COMSIG_HUMAN_TRIAGE_CARD_UPDATED)
+		stasis_mob = null
+	STOP_PROCESSING(SSobj, src)
 	if(used > max_uses)
 		new /obj/item/trash/used_stasis_bag(loc)
 		qdel(src)
 
-/obj/structure/closet/bodybag/cryobag/store_mobs(stored_units) // overriding this
+/obj/structure/closet/bodybag/cryobag/store_mobs(stored_units)
+	. = ..()
 	var/list/mobs_can_store = list()
-	for(var/mob/living/carbon/human/H in loc)
-		if(H.buckled)
+	for(var/mob/living/carbon/human/human in loc)
+		if(human.buckled || (human.stat == DEAD))
 			continue
-		if(H.stat == DEAD) // dead, nope
-			continue
-		mobs_can_store += H
-	var/mob/living/carbon/human/mob_to_store
+		mobs_can_store += human
 	if(length(mobs_can_store))
-		mob_to_store = pick(mobs_can_store)
+		var/mob/living/carbon/human/mob_to_store = pick(mobs_can_store)
 		mob_to_store.forceMove(src)
 		stored_units += mob_size
 	return stored_units
@@ -303,11 +313,13 @@
 /obj/structure/closet/bodybag/cryobag/close()
 	. = ..()
 	last_use = used + 1
-	var/mob/living/carbon/human/H = locate() in contents
-	if(H)
-		stasis_mob = H
+	for(var/mob/living/carbon/human/human in contents)
+		stasis_mob = human
+		// Uses RegisterSignal with an override, just in case the human escaped the last bag without calling open() somehow
+		RegisterSignal(human, COMSIG_HUMAN_TRIAGE_CARD_UPDATED, PROC_REF(update_icon), TRUE)
 		START_PROCESSING(SSobj, src)
 		update_icon()
+		return
 
 /obj/structure/closet/bodybag/cryobag/process()
 	used++

@@ -4,6 +4,7 @@
 	job_title = FACTION_WY
 	idtype = /obj/item/card/id/silver/cl
 	faction_group = list(FACTION_WY)
+	origin_override = ORIGIN_WY_SEC
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_background = "background_goon"
 	var/uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate
@@ -26,11 +27,14 @@
 	var/first_name
 	var/last_name
 	//gender checks
-	if(new_human.gender == MALE)
-		first_name = "[pick(GLOB.first_names_male_pmc)]"
-		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
-	else
-		first_name = "[pick(GLOB.first_names_female_pmc)]"
+	switch(new_human.gender)
+		if(MALE)
+			first_name = "[pick(GLOB.first_names_male_pmc)]"
+			new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+		if(FEMALE)
+			first_name = "[pick(GLOB.first_names_female_pmc)]"
+		if(PLURAL)
+			first_name = "[pick(pick(GLOB.first_names_male_pmc), pick(GLOB.first_names_female_pmc))]"
 	last_name = "[pick(GLOB.last_names_pmc)]"
 	random_name = "[first_name] [last_name]"
 	new_human.change_real_name(new_human, random_name)

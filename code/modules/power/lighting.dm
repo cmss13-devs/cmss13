@@ -400,10 +400,10 @@
 			to_chat(user, "There is a [fitting] already inserted.")
 			return
 		else
-			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			src.add_fingerprint(user)
 			var/obj/item/light_bulb/L = W
 			if(istype(L, light_type))
+				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				status = L.status
 				to_chat(user, "You insert the [L.name].")
 				switchcount = L.switchcount
@@ -425,11 +425,7 @@
 		return
 
 	// attempt to remove light via screwdriver
-	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
-		if(status == LIGHT_EMPTY)
-			to_chat(user, "There is no [fitting] in this light.")
-			return
-
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && status != LIGHT_EMPTY)
 		to_chat(user, "You remove the light [fitting].")
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		// create a light tube/bulb item and put it in the user's hand

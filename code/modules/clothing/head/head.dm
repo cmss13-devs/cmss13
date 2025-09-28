@@ -2,6 +2,7 @@
 	name = "head"
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	flags_armor_protection = BODY_FLAG_HEAD
+	flags_bodypart_hidden = BODY_FLAG_HEAD
 	flags_equip_slot = SLOT_HEAD
 	w_class = SIZE_SMALL
 	blood_overlay_type = "helmet"
@@ -307,6 +308,10 @@
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CLF.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
+	)
+	item_state_slots = list(
+		WEAR_AS_GARB = "headbandrebel", // will be prefixed with either hat_ or helmet_
 	)
 	item_state_slots = null
 	flags_atom = NO_GAMEMODE_SKIN
@@ -1017,6 +1022,31 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	desc = "This metal bucket appears to have been modified with padding and chin-straps, plus an eye-slit carved into the \"front\". Presumably, it is intended to be worn on the head, possibly for protection."
 	icon_state = "bucket"
 
+/obj/item/clothing/head/militia/brown
+	name = "\improper armored militia hood"
+	desc = "A large hood in service with some militias, modified for full obscurity on the frontier. Offers some head protection due to the study fibers utilized in production."
+	icon_state = "coordinator_hood"
+
+/obj/item/clothing/head/beret/clf
+	name = "\improper Colonial Liberation Front beret"
+	desc = "A repurposed captured police beret, with a CLF insignia mounted on place where police cockade would usually sit."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CLF.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi'
+	)
+	icon_state = "CLF_beret"
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
+
 /obj/item/clothing/head/general
 	name = "\improper USCM officer peaked service cap"
 	desc = "A standard issue officer service cap, worn by USCM commissioned officers on official visits."
@@ -1142,3 +1172,13 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 /obj/item/clothing/head/beret/royal_marine/team_leader
 	icon_state = "rmc_beret_tl"
 	item_state = "rmc_beret_tl"
+
+/obj/item/clothing/head/beret/iasf_commander_cap
+	name = "IASF officer's service cap"
+	desc = "A distinguished service cap worn by officers of the Imperial Armed Space Force. Featuring a crimson band, gold IASF emblem, and a black patent peak, it reflects the discipline and authority of the Empire’s airborne command."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi'
+	)
+	icon_state = "iasf_co_cap"
+	item_state = "iasf_co_cap"

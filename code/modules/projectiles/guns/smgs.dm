@@ -520,7 +520,7 @@
 	)
 
 /obj/item/weapon/gun/smg/pps43/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 20,"rail_x" = 20, "rail_y" = 24, "under_x" = 25, "under_y" = 17, "stock_x" = 26, "stock_y" = 15)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 20, "rail_x" = 10, "rail_y" = 21, "under_x" = 25, "under_y" = 17, "stock_x" = 26, "stock_y" = 15)
 
 /obj/item/weapon/gun/smg/pps43/set_gun_config_values()
 	..()
@@ -917,7 +917,7 @@
 
 /obj/item/weapon/gun/smg/p90/twe
 	name = "\improper FN-TWE P90 submachinegun"
-	desc = "A variation of the FN P90 submachine gun. Used by mercenaries and royal marines commandos. This weapon only accepts the AP variation of the 5.7×28mm rounds."
+	desc = "A variation of the FN P90 submachine gun. Used by mercenaries and royal marines commandos. This weapon only accepts 5.7×28mm rounds."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/smgs.dmi'
 	icon_state = "p90_twe"
 	item_state = "p90_twe"

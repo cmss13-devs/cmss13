@@ -7,7 +7,12 @@ import { dragStartHandler } from 'tgui/drag';
 
 import { type Channel, ChannelIterator } from './ChannelIterator';
 import { ChatHistory } from './ChatHistory';
-import { LineLength, RADIO_PREFIXES, WindowSize } from './constants';
+import {
+  LANGUAGE_PREFIXES,
+  LineLength,
+  RADIO_PREFIXES,
+  WindowSize,
+} from './constants';
 import { getPrefix, windowClose, windowOpen, windowSet } from './helpers';
 import { byondMessages } from './timers';
 
@@ -22,6 +27,7 @@ type ByondProps = {
   lightMode: BooleanLike;
   scale: BooleanLike;
   extraChannels: Array<Channel>;
+  languages: Array<string>;
 };
 
 export function TguiSay() {
@@ -35,13 +41,14 @@ export function TguiSay() {
   // You lose the granulatity and add a lot of boilerplate.
   const [buttonContent, setButtonContent] = useState('');
   const [currentPrefix, setCurrentPrefix] = useState<
-    keyof typeof RADIO_PREFIXES | null
+    keyof typeof RADIO_PREFIXES | keyof typeof LANGUAGE_PREFIXES | null
   >(null);
   const [maxLength, setMaxLength] = useState(1024);
   const [size, setSize] = useState(WindowSize.Small);
   const [lightMode, setLightMode] = useState(false);
   const [value, setValue] = useState('');
   const [extraChannels, setExtraChennels] = useState<Array<Channel>>([]);
+  const [languages, setLanguages] = useState<Array<string>>([]);
 
   const position = useRef([window.screenX, window.screenY]);
   const isDragging = useRef(false);
@@ -168,8 +175,12 @@ export function TguiSay() {
 
     const newPrefix = getPrefix(newValue) || currentPrefix;
     // Handles switching prefixes
-    if (newPrefix && newPrefix !== currentPrefix) {
-      setButtonContent(RADIO_PREFIXES[newPrefix]?.label);
+    if (canChangePrefix(newPrefix)) {
+      if (RADIO_PREFIXES[newPrefix!]) {
+        setButtonContent(RADIO_PREFIXES[newPrefix!]?.label);
+      } else if (LANGUAGE_PREFIXES[newPrefix!]) {
+        setButtonContent(LANGUAGE_PREFIXES[newPrefix!]?.label);
+      }
       setCurrentPrefix(newPrefix);
       newValue = newValue.slice(3);
       iterator.set('Say');
@@ -185,6 +196,34 @@ export function TguiSay() {
     }
 
     setValue(newValue);
+  }
+
+  function canChangePrefix(newPrefix: string | null) {
+    if (!newPrefix || newPrefix === currentPrefix) {
+      return false;
+    }
+
+    if (RADIO_PREFIXES[newPrefix]) {
+      return true;
+    }
+
+    const newLanguage = LANGUAGE_PREFIXES[newPrefix];
+    if (newLanguage) {
+      // Do we know this language?
+      if (!languages.includes(newLanguage.id)) {
+        return false;
+      }
+
+      // Are we on the default channel with no prefix?
+      if (
+        !channelIterator.current.isSay() ||
+        (currentPrefix && RADIO_PREFIXES[currentPrefix])
+      ) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   function handleKeyDown(
@@ -243,6 +282,7 @@ export function TguiSay() {
     setMaxLength(data.maxLength);
     setLightMode(!!data.lightMode);
     setExtraChennels(data.extraChannels);
+    setLanguages(data.languages);
     scale.current = !!data.scale;
   }
 

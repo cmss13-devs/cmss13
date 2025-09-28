@@ -130,23 +130,41 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	if(viewer)
 		UnregisterSignal(viewer, COMSIG_CLIENT_MOB_MOVE)
 		RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
+		RegisterSignal(viewer, COMSIG_MOB_GHOSTIZE, PROC_REF(end_lookup))
 
 /mob/hologram/look_up/Destroy()
 	if(linked_mob)
 		UnregisterSignal(linked_mob, COMSIG_MOVABLE_MOVED)
+		if(istype(linked_mob, /mob/living))
+			var/mob/living/linked_living = linked_mob
+			linked_living.observed_atom = null
 
 	. = ..()
 
 /mob/hologram/look_up/handle_move(mob/M, oldLoc, direct)
+
+	if(!isturf(M.loc) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		qdel(src)
+		return
+
+	if(isturf(M.loc) && isturf(oldLoc))
+		var/turf/mob_turf = M.loc
+		var/turf/old_mob_turf = oldLoc
+		if(!direct)
+			direct = get_dir(old_mob_turf, mob_turf)
+		if(mob_turf.z != old_mob_turf.z)
+			qdel(src)
+			return
+
 	var/turf/new_turf = get_step(loc, direct)
 	forceMove(new_turf)
-	
+
 	if(!istype(new_turf, /turf/open_space))
 		UnregisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW)
 		view_registered = FALSE
 		linked_mob.reset_view()
 	else if (!view_registered)
-		RegisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW, PROC_REF(handle_view))
+		RegisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW, PROC_REF(end_lookup))
 		view_registered = TRUE
 		linked_mob.reset_view()
 
@@ -156,9 +174,16 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 
 	return -2
 
-/mob/hologram/look_up/handle_view(mob/M, atom/target)	
+/mob/hologram/look_up/handle_view(mob/M, atom/target)
 	if(M.client)
 		M.client.perspective = EYE_PERSPECTIVE
 		M.client.eye = src
 
 	return COMPONENT_OVERRIDE_VIEW
+
+/mob/hologram/look_up/take_damage(mob/M, damage, damagetype)
+	return //no cancelation of looking up by taking damage
+
+/mob/hologram/look_up/proc/end_lookup()
+	SIGNAL_HANDLER
+	qdel(src)

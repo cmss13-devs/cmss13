@@ -72,8 +72,7 @@
 	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, firing_projectile.weapon_cause_data?.cause_name)
 
 	var/area/execution_area = get_area(execution_target)
-
-	msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(execution_target)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
+	msg_admin_ff("[key_name(user)] [ADMIN_JMP_USER(user)] [ADMIN_PM(user)] has <b>battlefield executed</b> [key_name(execution_target)] [ADMIN_JMP(execution_target)] [ADMIN_PM(execution_target)] at [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]) using [fired_from].")
 	log_attack("[key_name(usr)] battlefield executed [key_name(execution_target)] at [execution_area.name].")
 
 	if(flags_ammo_behavior & AMMO_EXPLOSIVE)

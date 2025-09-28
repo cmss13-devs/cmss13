@@ -16,6 +16,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),
 	MOB_HUD_FACTION_HC = new /datum/mob_hud/faction/hyperdyne(),
 	MOB_HUD_FACTION_TWE = new /datum/mob_hud/faction/twe(),
+	MOB_HUD_FACTION_IASF = new /datum/mob_hud/faction/iasf(),
 	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
 	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
 	MOB_HUD_FACTION_CMB = new /datum/mob_hud/faction/cmb(),
@@ -215,6 +216,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 /datum/mob_hud/faction/twe
 	faction_to_check = FACTION_TWE
+
+/datum/mob_hud/faction/iasf
+	faction_to_check = FACTION_IASF
 
 /datum/mob_hud/faction/clf
 	faction_to_check = FACTION_CLF
@@ -541,6 +545,13 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	for(var/obj/effect/alien/resin/marker/i in hive.resin_marks)
 		client.images |= i.seenMeaning
 
+/mob/living/carbon/xenomorph/proc/hud_set_design_marks()
+	if(!client)
+		return
+	for(var/obj/effect/alien/resin/design/des in hive.designer_marks)
+		if(des.choosenMark)
+			client.images |= des.choosenMark
+
 /mob/living/carbon/xenomorph/proc/hud_set_plasma()
 	var/image/holder = hud_list[PLASMA_HUD]
 	if(stat == DEAD || plasma_max == 0)
@@ -695,11 +706,11 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	holder.overlays.Cut()
 
 	if(mob_flags & MUTINY_MUTINEER)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudmutineer", pixel_y = 12)
+		holder.overlays += image('icons/mob/hud/human_status.dmi', src, "hudmutineer", pixel_y = 12)
 	else if(mob_flags & MUTINY_LOYALIST)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudloyalist", pixel_y = 12)
+		holder.overlays += image('icons/mob/hud/human_status.dmi', src, "hudloyalist", pixel_y = 12)
 	else if(mob_flags & MUTINY_NONCOMBAT)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudnoncombat", pixel_y = 9)
+		holder.overlays += image('icons/mob/hud/human_status.dmi', src, "hudnoncombat", pixel_y = 9)
 
 	hud_set_new_player()
 	F.modify_hud_holder(holder, src)
@@ -708,8 +719,13 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	set waitfor = FALSE
 
 	var/image/holder = hud_list[HUNTER_CLAN]
+	var/new_icon_state = "predhud"
+	if(client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
+		new_icon_state = "leaderhud"
+	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
+		new_icon_state = "councilhud"
 
-	holder.icon_state = "predhud"
+	holder.icon_state = new_icon_state
 
 	if(client && client.clan_info && client.clan_info.clan_id)
 		var/datum/entity/clan/player_clan = GET_CLAN(client.clan_info.clan_id)
@@ -730,7 +746,7 @@ GLOBAL_DATUM_INIT(hud_icon_hunter_hunted, /image, image('icons/mob/hud/hud_yautj
 GLOBAL_DATUM_INIT(hud_icon_hunter_dishonored, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_dishonored"))
 GLOBAL_DATUM_INIT(hud_icon_hunter_honored, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_honored"))
 GLOBAL_DATUM_INIT(hud_icon_hunter_thralled, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_thralled"))
-
+GLOBAL_DATUM_INIT(hud_icon_hunter_blooded, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_thrall_blooded"))
 
 /mob/living/carbon/hud_set_hunter()
 	var/image/holder = hud_list[HUNTER_HUD]
@@ -748,6 +764,9 @@ GLOBAL_DATUM_INIT(hud_icon_hunter_thralled, /image, image('icons/mob/hud/hud_yau
 		holder.overlays += GLOB.hud_icon_hunter_thralled
 	else if(hunter_data.gear)
 		holder.overlays += GLOB.hud_icon_hunter_gear
+
+	if(hunter_data.blooded)
+		holder.overlays += GLOB.hud_icon_hunter_blooded
 
 	hud_list[HUNTER_HUD] = holder
 
@@ -770,9 +789,9 @@ GLOBAL_DATUM_INIT(hud_icon_hunter_thralled, /image, image('icons/mob/hud/hud_yau
 /mob/proc/hud_set_order()
 	return
 
-GLOBAL_DATUM_INIT(hud_icon_hudmove, /image, image('icons/mob/hud/marine_hud.dmi', src, "hudmove"))
-GLOBAL_DATUM_INIT(hud_icon_hudhold, /image, image('icons/mob/hud/marine_hud.dmi', src, "hudhold"))
-GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi', src, "hudfocus"))
+GLOBAL_DATUM_INIT(hud_icon_hudmove, /image, image('icons/mob/hud/human_status.dmi', src, "hudmove"))
+GLOBAL_DATUM_INIT(hud_icon_hudhold, /image, image('icons/mob/hud/human_status.dmi', src, "hudhold"))
+GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/human_status.dmi', src, "hudfocus"))
 // ORDER HUD
 /mob/living/carbon/human/hud_set_order()
 	var/image/holder = hud_list[ORDER_HUD]
@@ -793,6 +812,7 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi
 /mob/living/carbon/human/hud_set_holocard()
 	var/image/holder = hud_list[HOLOCARD_HUD]
 	holder.icon_state = holo_card_color ? "holo_card_[holo_card_color]" : "hudblank"
+	SEND_SIGNAL(src, COMSIG_HUMAN_TRIAGE_CARD_UPDATED)
 
 // Vampire Execute HUD
 /mob/living/carbon/human/proc/update_execute_hud()

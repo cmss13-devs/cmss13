@@ -209,6 +209,9 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	/// Tower has been taken over by xenos, is not usable
 	var/corrupted = FALSE
+	/// Tower has been taken before, this gives xenos an extra resin point on capture for the first time.
+	var/captured_before = FALSE
+
 	/// minesweeper game for changing the frequency
 	var/obj/structure/machinery/computer/arcade/minesweeper/frequency_change_minesweeper
 
@@ -389,6 +392,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	flick_overlay(src, corruption_image, (2 SECONDS))
 	addtimer(CALLBACK(src, PROC_REF(switch_to_idle_corruption)), (2 SECONDS))
+
+	if(!captured_before)
+		captured_before = TRUE
+		new_pylon.linked_hive.buff_points += 1
 
 	new_pylon.comms_relay_connection()
 

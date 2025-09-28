@@ -352,3 +352,6 @@
   realforest2001:
   - code_imp: Changed each xeno hive name into a define.
   - rscadd: Added restriction variables on what factions each Xeno hive can ally with.
+2025-09-28:
+  byondsucks:
+  - bugfix: All CLF survs now spawn with bayonets.

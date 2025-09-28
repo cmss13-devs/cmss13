@@ -145,7 +145,7 @@
 
 			turfs_get += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turfs, windup)
 
-		to_chat(abduct_user, SPAN_XENODANGER("We launch our tail towards [targetted_atom]"))
+		to_chat(abduct_user, SPAN_XENODANGER("We launch our tail towards [targetted_atom]!"))
 		abduct_user.emote("roar")
 		addtimer(CALLBACK(src, PROC_REF(reset_ability)), 2 SECONDS)
 		to_chat(targets_added, SPAN_DANGER("We are rooted by [abduct_user]'s tail!"))

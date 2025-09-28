@@ -14,7 +14,7 @@
 
 /obj/item/clothing/accessory/proc/get_inv_overlay()
     if(!inv_overlay)
-        // Prefer overlay_state, then item_state (worn/dynamic state), then fall back to icon_state
+        // priority goes from overlay_state, then item_state (worn/dynamic state), then fall back to icon_state
         var/tmp_icon_state = overlay_state ? overlay_state : (item_state ? item_state : icon_state)
         if(icon_override && ("[tmp_icon_state]_tie" in icon_states(icon_override)))
             inv_overlay = image(icon = icon_override, icon_state = "[tmp_icon_state]_tie", dir = SOUTH)

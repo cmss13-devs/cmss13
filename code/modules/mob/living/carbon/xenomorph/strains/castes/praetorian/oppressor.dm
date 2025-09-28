@@ -200,6 +200,8 @@
 	qdel(tail_beam)
 	apply_cooldown()
 	owner.emote("roar")
+	to_chat(owner, SPAN_XENONOTICE("Our tail returns!"))
+
 
 	reset_ability()
 
@@ -210,7 +212,6 @@
 		target.overlays -= tail_image
 	targets_added.len = 0
 	targets_collided.len = 0
-	owner.balloon_alert(owner, "you waited too long!")
 
 	ability_used_once = FALSE
 	apply_cooldown()

@@ -135,6 +135,7 @@
 	var/throw_turf
 	var/obj/effect/beam/tail_beam
 	var/hit_obstacle = FALSE
+	var/affected_count = 0
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"

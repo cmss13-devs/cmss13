@@ -179,7 +179,6 @@
 	if(++throw_count < length(targets_added))
 		return // Still other throws processing - we want the last
 
-	var/affected_count = 0
 	for(var/mob/living/target as anything in targets_added)
 		if(!(target in targets_collided))
 			target.Stun(0.7)

@@ -287,12 +287,13 @@
 
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if(target_living.stat == DEAD)
-		return
-
 	var/mob/living/target_living = target_atom
 
 	if(xeno.can_not_harm(target_living))
+		return
+
+
+	if(target_living.stat == DEAD)
 		return
 
 	if(!xeno.Adjacent(target_living))

@@ -84,7 +84,7 @@
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa
 
 /datum/equipment_preset/goon/standard/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY/security, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new uniform_type, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
@@ -113,7 +113,7 @@
 	name = "Weyland-Yutani Corporate Security Goon (CL Bodyguard)"
 
 /datum/equipment_preset/goon/standard/bodyguard/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY/security, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new uniform_type, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
@@ -168,7 +168,7 @@
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa
 
 /datum/equipment_preset/goon/engineer/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY/security, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new uniform_type, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
@@ -215,7 +215,7 @@
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/medic
 
 /datum/equipment_preset/goon/medic/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY/security, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new uniform_type, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/medic, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
@@ -277,7 +277,7 @@
 	access = get_access(ACCESS_LIST_WY_GOON) + list(ACCESS_WY_LEADERSHIP)
 
 /datum/equipment_preset/goon/lead/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY/security, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new uniform_type, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
@@ -303,7 +303,7 @@
 	name = "Weyland-Yutani Corporate Security Lead (CL Bodyguard)"
 
 /datum/equipment_preset/goon/lead/bodyguard/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY/security, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new uniform_type, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
@@ -344,7 +344,7 @@
 	minimap_icon = "goon_sci"
 
 /datum/equipment_preset/goon/researcher/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY/security, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular/hippie, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/detective/grey, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/wy, WEAR_JACKET)

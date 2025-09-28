@@ -653,13 +653,14 @@
 /obj/item/device/radio/headset/almayer/mcl/sec
 	name = "corporate security radio headset"
 	spy_bug_type = null
-	desc = "Issued to Corporate Security personnel. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :y for WY."
+	desc = "Issued to Corporate Security personnel. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :y for WY and #y for WY Security."
 
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CL
 	inbuilt_tracking_options = list(
 		"Corporate Liaison" = TRACKER_CL
 	)
+	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl, /obj/item/device/encryptionkey/wy_sec)
 
 /obj/item/device/radio/headset/almayer/reporter
 	name = "reporter radio headset"
@@ -1087,11 +1088,16 @@
 	desc = "A headset commonly worn by WY corporate personnel."
 	icon_state = "wy_headset"
 	frequency = WY_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/WY)
+	initial_keys = list(/obj/item/device/encryptionkey/colony)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_WY
 
-/obj/item/device/radio/headset/distress/WY/guard
+/obj/item/device/radio/headset/distress/WY/security
+	name = "WY corporate security headset"
+	desc = "A headset commonly worn by WY corporate security personnel."
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/wy_sec)
+
+/obj/item/device/radio/headset/distress/WY/security/guard
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CL
 	inbuilt_tracking_options = list(

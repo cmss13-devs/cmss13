@@ -3,7 +3,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_security, list(
 	list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 	list("Headset", 0, /obj/item/device/radio/headset/almayer/mcl/sec, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 	list("Corporate Boots", 0, /obj/item/clothing/shoes/veteran/pmc/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
-	list("Tactical SWAT HUD", 0, /obj/item/clothing/glasses/sunglasses/sechud/tactical, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+	list("SecHUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud/blue, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+	list("Prescription SecHUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud/blue/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 
 	list("SHIRT (MAX 5)", 0, null, null, null),
 	list("Black Suit Pants", 0, /obj/item/clothing/under/liaison_suit/black, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
@@ -25,8 +26,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_security, list(
 	list("Black Leather Satchel", 0, /obj/item/storage/backpack/satchel/black, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
 	list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
-	list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
 	list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+	list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
 	list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),

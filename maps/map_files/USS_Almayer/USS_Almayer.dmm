@@ -43559,7 +43559,7 @@
 	dir = 4;
 	layer = 2.9
 	},
-/obj/vehicle/multitile/blackfoot,
+/obj/effect/vehicle_spawner/blackfoot/doorgun,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/operations)
 "eqm" = (

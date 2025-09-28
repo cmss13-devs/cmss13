@@ -23,20 +23,6 @@
 
 	origins = list(0, 2)
 
-	var/interior_type = /datum/map_template/interior/blackfoot_doorgun
-
-/obj/item/hardpoint/secondary/doorgun/on_install(obj/vehicle/multitile/vehicle)
-	if(!istype(vehicle, /obj/vehicle/multitile/blackfoot))
-		return
-
-	var/obj/vehicle/multitile/blackfoot/blackfoot = vehicle
-
-	QDEL_NULL(blackfoot.interior)
-	blackfoot.interior = new(blackfoot)
-	blackfoot.interior_map = interior_type
-	INVOKE_ASYNC(blackfoot, TYPE_PROC_REF(/obj/vehicle/multitile, do_create_interior))
-	blackfoot.update_icon()
-
 /obj/item/hardpoint/secondary/doorgun/reset_rotation()
 	rotate(turning_angle(dir, NORTH))
 

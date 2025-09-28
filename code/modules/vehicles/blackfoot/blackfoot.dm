@@ -46,7 +46,6 @@
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/blackfoot_thrusters,
 		/obj/item/hardpoint/primary/blackfoot_launchers,
-		/obj/item/hardpoint/secondary/doorgun,
 	)
 
 	entrances = list(
@@ -110,6 +109,72 @@
 
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
+
+/obj/effect/vehicle_spawner/blackfoot
+	name = "Plain AD-71E Blackfoot Spawner"
+	icon = 'icons/obj/vehicles/blackfoot.dmi'
+	icon_state = "stowed"
+	pixel_x = -64
+	pixel_y = -32
+
+	var/obj/vehicle/multitile/blackfoot/vehicle_type = /obj/vehicle/multitile/blackfoot
+
+/obj/effect/vehicle_spawner/blackfoot/Initialize()
+	. = ..()
+	spawn_vehicle()
+	qdel(src)
+
+/obj/effect/vehicle_spawner/blackfoot/spawn_vehicle()
+	var/obj/vehicle/multitile/blackfoot/blackfoot = new vehicle_type(loc)
+
+	load_misc(blackfoot)
+	load_hardpoints(blackfoot)
+	handle_direction(blackfoot)
+	blackfoot.update_icon()
+
+/obj/effect/vehicle_spawner/blackfoot/doorgun
+	name = "Doorgun AD-71E Blackfoot Spawner"
+	icon = 'icons/obj/vehicles/blackfoot.dmi'
+	icon_state = "doorgun_stowed"
+
+	vehicle_type = /obj/vehicle/multitile/blackfoot/doorgun
+
+/obj/effect/vehicle_spawner/blackfoot/doorgun/load_hardpoints(obj/vehicle/multitile/blackfoot/doorgun/blackfoot)
+	blackfoot.add_hardpoint(new /obj/item/hardpoint/secondary/doorgun)
+
+/obj/effect/vehicle_spawner/blackfoot/recon
+	name = "Recon AD-71E Blackfoot Spawner"
+	icon = 'icons/obj/vehicles/blackfoot.dmi'
+	icon_state = "recon_stowed"
+
+	vehicle_type = /obj/vehicle/multitile/blackfoot/recon
+
+/obj/effect/vehicle_spawner/blackfoot/recon/load_hardpoints(obj/vehicle/multitile/blackfoot/recon/blackfoot)
+	blackfoot.add_hardpoint(new /obj/item/hardpoint/secondary/doorgun)
+	blackfoot.add_hardpoint(new /obj/item/hardpoint/support/recon_system)
+
+/obj/vehicle/multitile/blackfoot/doorgun
+	icon_state = "doorgun_stowed"
+
+	hardpoints_allowed = list(
+		/obj/item/hardpoint/locomotion/blackfoot_thrusters,
+		/obj/item/hardpoint/primary/blackfoot_launchers,
+		/obj/item/hardpoint/secondary/doorgun,
+	)
+
+	interior_map = /datum/map_template/interior/blackfoot_doorgun
+
+/obj/vehicle/multitile/blackfoot/recon
+	icon_state = "recon_stowed"
+
+	hardpoints_allowed = list(
+		/obj/item/hardpoint/locomotion/blackfoot_thrusters,
+		/obj/item/hardpoint/primary/blackfoot_launchers,
+		/obj/item/hardpoint/secondary/doorgun,
+		/obj/item/hardpoint/support/recon_system,
+	)
+	// change this when/if updated map is ready
+	interior_map = /datum/map_template/interior/blackfoot_doorgun
 
 /datum/tacmap/drawing/blackfoot/ui_status(mob/user)
 	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner

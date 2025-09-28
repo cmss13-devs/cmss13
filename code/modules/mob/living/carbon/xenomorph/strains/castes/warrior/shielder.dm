@@ -339,7 +339,7 @@
 			check_xeno_cooldown()
 			return
 		if(!xeno_player.enclosed_plates)
-			xeno_player.balloon_alert(xeno_player, "We need to keep our plate in position!", text_color = "#7d32bb", delay = 1 SECONDS)
+			xeno_player.balloon_alert(xeno_player, "we need to keep our plates in position!", text_color = "#7d32bb", delay = 1 SECONDS)
 			return
 		if(carbon_target.body_position != LYING_DOWN) //We are making sure they are down before and after cast.
 			to_chat(xeno_player, SPAN_DANGER("We miss our target!"))

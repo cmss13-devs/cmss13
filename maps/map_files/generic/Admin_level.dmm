@@ -1467,7 +1467,7 @@
 /turf/open/floor/almayer/floor,
 /area/adminlevel/ert_station)
 "Qz" = (
-/obj/item/prop/helmetgarb/rosary,
+/obj/item/clothing/accessory/rosary,
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
 "QA" = (

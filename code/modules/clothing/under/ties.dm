@@ -1388,3 +1388,17 @@ Wrist Accessories
 	. = ..()
 
 	. += " It reads: [SPAN_NOTICE("[worldtime2text()]")]"
+
+/obj/item/clothing/accessory/rosary
+	name = "rosary"
+	desc = "Jesus Saves Lives!"
+	icon_state = "rosary"
+	item_state = "rosary_style_1"
+	icon = 'icons/obj/items/clothing/accessory/misc.dmi'
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
+	)
+	item_state_slots = list(WEAR_AS_GARB = "rosary")
+	stylish = TRUE
+	worn_accessory_slot = ACCESSORY_SLOT_TIE

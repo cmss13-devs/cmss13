@@ -525,7 +525,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 /datum/gear/helmet_garb/rosary
 	display_name = "Rosary"
-	path = /obj/item/prop/helmetgarb/rosary
+	path = /obj/item/clothing/accessory/rosary
 
 /datum/gear/helmet_garb/spent_buck
 	display_name = "Spent buckshot"

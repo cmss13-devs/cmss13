@@ -247,7 +247,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "kZ" = (
-/obj/item/prop/helmetgarb/rosary,
+/obj/item/clothing/accessory/rosary,
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station)
 "lp" = (

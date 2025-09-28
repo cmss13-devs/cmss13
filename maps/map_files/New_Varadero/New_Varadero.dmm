@@ -24457,7 +24457,7 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/obj/item/prop/helmetgarb/rosary{
+/obj/item/clothing/accessory/rosary{
 	layer = 3.6;
 	pixel_x = -12
 	},

@@ -13,43 +13,44 @@
 
 
 /obj/item/clothing/accessory/proc/get_inv_overlay()
-	if(!inv_overlay)
-		var/tmp_icon_state = overlay_state? overlay_state : icon_state
-		if(icon_override && ("[tmp_icon_state]_tie" in icon_states(icon_override)))
-			inv_overlay = image(icon = icon_override, icon_state = "[tmp_icon_state]_tie", dir = SOUTH)
-		else if("[tmp_icon_state]_tie" in icon_states(GLOB.default_onmob_icons[WEAR_ACCESSORY]))
-			inv_overlay = image(icon = GLOB.default_onmob_icons[WEAR_ACCESSORY], icon_state = "[tmp_icon_state]_tie", dir = SOUTH)
-		else
-			inv_overlay = image(icon = GLOB.default_onmob_icons[WEAR_ACCESSORY], icon_state = tmp_icon_state, dir = SOUTH)
-	inv_overlay.color = color
-	return inv_overlay
+    if(!inv_overlay)
+        // Prefer overlay_state, then item_state (worn/dynamic state), then fall back to icon_state
+        var/tmp_icon_state = overlay_state ? overlay_state : (item_state ? item_state : icon_state)
+        if(icon_override && ("[tmp_icon_state]_tie" in icon_states(icon_override)))
+            inv_overlay = image(icon = icon_override, icon_state = "[tmp_icon_state]_tie", dir = SOUTH)
+        else if("[tmp_icon_state]_tie" in icon_states(GLOB.default_onmob_icons[WEAR_ACCESSORY]))
+            inv_overlay = image(icon = GLOB.default_onmob_icons[WEAR_ACCESSORY], icon_state = "[tmp_icon_state]_tie", dir = SOUTH)
+        else
+            inv_overlay = image(icon = GLOB.default_onmob_icons[WEAR_ACCESSORY], icon_state = tmp_icon_state, dir = SOUTH)
+    inv_overlay.color = color
+    return inv_overlay
 
 /obj/item/clothing/accessory/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
-	if(!istype(loc,/obj/item/clothing)) //don't need special handling if it's worn as normal item.
-		return ..()
-	var/bodytype = default_bodytype
-	if(ishuman(user_mob))
-		var/mob/living/carbon/human/user_human = user_mob
-		var/user_bodytype = user_human.species.get_bodytype(user_human)
-		if(LAZYISIN(sprite_sheets, user_bodytype))
-			bodytype = user_bodytype
+    if(!istype(loc,/obj/item/clothing)) //don't need special handling if it's worn as normal item.
+        return ..()
+    var/bodytype = default_bodytype
+    if(ishuman(user_mob))
+        var/mob/living/carbon/human/user_human = user_mob
+        var/user_bodytype = user_human.species.get_bodytype(user_human)
+        if(LAZYISIN(sprite_sheets, user_bodytype))
+            bodytype = user_bodytype
 
-		var/tmp_icon_state = overlay_state? overlay_state : icon_state
+        var/tmp_icon_state = overlay_state ? overlay_state : (item_state ? item_state : icon_state)
 
-		if(istype(loc,/obj/item/clothing/under))
-			var/obj/item/clothing/under/C = loc
-			if(C.flags_jumpsuit & jumpsuit_hide_states && !(C.flags_jumpsuit & UNIFORM_DO_NOT_HIDE_ACCESSORIES))
-				return
+        if(istype(loc,/obj/item/clothing/under))
+            var/obj/item/clothing/under/C = loc
+            if(C.flags_jumpsuit & jumpsuit_hide_states && !(C.flags_jumpsuit & UNIFORM_DO_NOT_HIDE_ACCESSORIES))
+                return
 
-		var/use_sprite_sheet = accessory_icons[slot]
-		var/sprite_sheet_bodytype = LAZYACCESS(sprite_sheets, bodytype)
-		if(sprite_sheet_bodytype)
-			use_sprite_sheet = sprite_sheet_bodytype
+        var/use_sprite_sheet = accessory_icons[slot]
+        var/sprite_sheet_bodytype = LAZYACCESS(sprite_sheets, bodytype)
+        if(sprite_sheet_bodytype)
+            use_sprite_sheet = sprite_sheet_bodytype
 
-		if(icon_override && ("[tmp_icon_state]_mob" in icon_states(icon_override)))
-			return overlay_image(icon_override, "[tmp_icon_state]_mob", color, RESET_COLOR)
-		else
-			return overlay_image(use_sprite_sheet, tmp_icon_state, color, RESET_COLOR)
+        if(icon_override && ("[tmp_icon_state]_mob" in icon_states(icon_override)))
+            return overlay_image(icon_override, "[tmp_icon_state]_mob", color, RESET_COLOR)
+        else
+            return overlay_image(use_sprite_sheet, tmp_icon_state, color, RESET_COLOR)
 
 /obj/item/clothing/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/clothing/accessory))
@@ -78,11 +79,6 @@
 		return
 
 	..()
-
-/obj/item/clothing/get_examine_text(mob/user)
-	. = ..()
-	for(var/obj/item/clothing/accessory/A in accessories)
-		. += "[icon2html(A, user)] \A [A] is [A.additional_examine_text()]" //The spacing of the examine text proc is deliberate. By default it returns ".".
 
 /**
  *  Attach accessory A to src

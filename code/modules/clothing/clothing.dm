@@ -17,6 +17,9 @@
 	var/list/clothing_traits // Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
 	var/clothing_traits_active = TRUE //are the clothing traits that are applied to the item active (acting on the mob) or not?
 
+	var/stylish = FALSE // if the clothing is considered for the style system
+	var/style = 1 // current icon appearance style of the clothing, default should be 1
+
 	// accessory stuff
 	var/list/accessories
 	var/list/valid_accessory_slots = list()
@@ -28,6 +31,37 @@
 	var/accessory_path = /obj/item/clothing/accessory
 	/// default limit for attaching accessories, should only be 1 for most accessories, you don't want multiple storage accessories after all
 	var/worn_accessory_limit = 1
+
+/obj/item/clothing/get_examine_text(mob/user)
+	. = ..()
+	for(var/obj/item/clothing/accessory/A in accessories)
+		. += "[icon2html(A, user)] \A [A] is [A.additional_examine_text()]" //The spacing of the examine text proc is deliberate. By default it returns ".".
+	if(stylish)
+		.+= " This object is considered stylish. <a href='byond://?src=\ref[src];change_style=1'>\[Change style\]</a>"
+
+/obj/item/clothing/proc/change_style(mob/user)
+	var/next_style = style + 1
+	var/desired_icon_state = icon_state + "_style_" + num2text(next_style)
+	var/list/available_states = list()
+	if(icon)
+		available_states |= icon_states(icon)
+
+	for(var/obj/item/clothing/accessory/accessory_style in accessories)
+		if(islist(accessory_style.accessory_icons))
+			for(var/icon_file in accessory_style.accessory_icons)
+				if(icon_file)
+					available_states |= icon_states(icon_file)
+
+	if(next_style >= 1 && (desired_icon_state in available_states))
+		style = next_style
+		item_state = desired_icon_state
+		update_clothing_icon()
+		to_chat(user, SPAN_NOTICE("You change the style of [src]."))
+	else
+		style = 1
+		item_state = icon_state + "_style_1"
+		update_clothing_icon()
+		to_chat(user, SPAN_NOTICE("You change the style of [src] (reverted to default)."))
 
 /obj/item/clothing/proc/convert_to_accessory(mob/user)
 	if(!can_become_accessory)
@@ -107,6 +141,9 @@
 				ties += "[icon2html(accessory)] \a [accessory]"
 			to_chat(usr, "Attached to \the [src] are [english_list(ties)].")
 		return
+	if(href_list["change_style"])
+		if(usr == src.loc)
+			change_style(usr)
 
 /obj/item/clothing/attack_hand(mob/user as mob)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)

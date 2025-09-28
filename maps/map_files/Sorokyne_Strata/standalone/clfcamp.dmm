@@ -29,9 +29,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
-"ae" = (
-/turf/closed/wall/r_wall/strata_outpost,
-/area/strata/interior/outpost/clf_dorms)
 "af" = (
 /obj/effect/landmark/survivor_spawner/clf/soro,
 /obj/item/ammo_casing,
@@ -1390,6 +1387,9 @@
 /obj/structure/sign/safety/security,
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/checkpoints/clf)
+"nN" = (
+/turf/closed/wall/r_wall/strata_outpost,
+/area/strata/interior/outpost/clf_dorms)
 "oa" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -3169,10 +3169,10 @@ pb
 cH
 cH
 cH
-ae
-ae
-ae
-ae
+nN
+nN
+nN
+nN
 YU
 zq
 zq
@@ -3367,10 +3367,10 @@ fR
 cH
 cH
 cH
-ae
-ae
-ae
-ae
+nN
+nN
+nN
+nN
 zq
 zq
 zq

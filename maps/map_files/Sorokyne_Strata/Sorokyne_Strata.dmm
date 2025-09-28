@@ -9243,8 +9243,9 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/landing_zones/near_lz2)
 "azh" = (
+/obj/structure/fence/slim/upp,
 /turf/closed/wall/r_wall/strata_outpost,
-/area/strata/interior/parts_storage)
+/area/strata/exterior/parts_storage_exterior)
 "azi" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/strata,
@@ -12232,11 +12233,9 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "aHQ" = (
-/obj/structure/machinery/weather_siren{
-	pixel_y = -8
-	},
+/obj/structure/fence/slim/upp,
 /turf/closed/wall/r_wall/strata_outpost,
-/area/strata/interior/parts_storage)
+/area/strata/exterior/tcomms_geosprings)
 "aHR" = (
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/outpost/maint)
@@ -13107,16 +13106,8 @@
 /turf/open/gm/dirt/brown/variant_5/south,
 /area/strata/exterior/marsh/spring_marshes)
 "aKs" = (
-/obj/structure/fence/slim/upp,
 /turf/closed/wall/r_wall/strata_outpost,
-/area/strata/exterior/parts_storage_exterior)
-"aKt" = (
-/obj/structure/fence/slim/upp,
-/turf/closed/wall/r_wall/strata_outpost,
-/area/strata/exterior/tcomms_geosprings)
-"aKu" = (
-/turf/closed/wall/r_wall/strata_outpost,
-/area/strata/interior/vanyard)
+/area/strata/exterior/tcomms_crashed_dropship)
 "aKv" = (
 /obj/item/ammo_casing,
 /turf/open/gm/dirt/brown/variant_5/south,
@@ -13681,9 +13672,6 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/admin)
-"aLV" = (
-/turf/closed/wall/r_wall/strata_outpost,
-/area/strata/exterior/tcomms_crashed_dropship)
 "aLW" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -13705,9 +13693,6 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/admin)
-"aLX" = (
-/turf/closed/wall/r_wall/strata_outpost,
-/area/strata/interior/checkpoints/north)
 "aLY" = (
 /turf/open/floor/strata/orange_edge/northeast,
 /area/strata/exterior/tcomms_engineering_parts_storage)
@@ -40077,6 +40062,9 @@
 /obj/effect/blocker/sorokyne_hot_water,
 /turf/open/gm/river/soro,
 /area/strata/exterior/far_north_outpost)
+"dOO" = (
+/turf/closed/wall/r_wall/strata_outpost,
+/area/strata/interior/vanyard)
 "dOR" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 4
@@ -43326,6 +43314,9 @@
 	},
 /turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/strata/exterior/carplake_center)
+"hYc" = (
+/turf/closed/wall/r_wall/strata_outpost,
+/area/strata/interior/parts_storage)
 "hYl" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/recharge_station,
@@ -46719,6 +46710,9 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/marsh/relay_marshes)
+"mvm" = (
+/turf/closed/wall/r_wall/strata_outpost,
+/area/strata/interior/checkpoints/north)
 "mvE" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 6
@@ -54953,6 +54947,12 @@
 /obj/effect/decal/cleanable/cobweb2,
 /turf/open/floor/carpet,
 /area/strata/exterior/restricted)
+"wYL" = (
+/obj/structure/machinery/weather_siren{
+	pixel_y = -8
+	},
+/turf/closed/wall/r_wall/strata_outpost,
+/area/strata/interior/parts_storage)
 "wZj" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -59522,8 +59522,8 @@ biG
 bgS
 bgS
 bgf
-aLV
-aLV
+aKs
+aKs
 bgf
 bgS
 bgS
@@ -59872,7 +59872,7 @@ biG
 bgS
 bgS
 bgT
-aLV
+aKs
 bjz
 bgT
 beO
@@ -63886,11 +63886,11 @@ hOX
 bai
 boS
 boS
-aLX
-aLX
+mvm
+mvm
 cow
 cow
-aLX
+mvm
 beW
 rni
 tFA
@@ -64061,7 +64061,7 @@ bMd
 cbi
 cbi
 bpc
-aLX
+mvm
 bnK
 eNz
 ioM
@@ -64236,7 +64236,7 @@ cbi
 cbi
 cbi
 bpd
-aLX
+mvm
 bnO
 eOK
 iry
@@ -64409,13 +64409,13 @@ usP
 aWp
 bqH
 bRf
-aLX
-aLX
-aLX
+mvm
+mvm
+mvm
 cuz
 eOK
 isa
-aLX
+mvm
 ryw
 eYE
 bkT
@@ -64932,9 +64932,9 @@ bga
 bga
 bgN
 brL
-aLX
-aLX
-aLX
+mvm
+mvm
+mvm
 ciH
 cmn
 cuB
@@ -65109,14 +65109,14 @@ bga
 bgN
 bgN
 bnL
-aLX
-aLX
-aLX
-aLX
+mvm
+mvm
+mvm
+mvm
 eYE
 xPg
-aLX
-aLX
+mvm
+mvm
 eYE
 fYk
 blf
@@ -65287,7 +65287,7 @@ bgN
 aTg
 bzI
 bzI
-aLX
+mvm
 eSR
 cwF
 lNr
@@ -65812,11 +65812,11 @@ bga
 bsE
 rYa
 aTg
-aLX
+mvm
 eYE
 cow
 lQT
-aLX
+mvm
 bUX
 knu
 beQ
@@ -65833,7 +65833,7 @@ aac
 aac
 acc
 acc
-aKt
+aHQ
 gSz
 aRd
 aKa
@@ -66031,7 +66031,7 @@ wez
 ads
 nWv
 lTG
-azh
+hYc
 bvE
 bvE
 dca
@@ -66206,7 +66206,7 @@ tRC
 npX
 tRC
 qfC
-azh
+hYc
 aac
 xTU
 gsQ
@@ -66381,7 +66381,7 @@ tRC
 odd
 tRC
 qfC
-azh
+hYc
 aac
 xTU
 bvE
@@ -66556,7 +66556,7 @@ tRC
 oPz
 xKr
 iNe
-azh
+hYc
 acc
 aac
 aac
@@ -66731,7 +66731,7 @@ gFf
 odd
 vgb
 vxd
-azh
+hYc
 acc
 acc
 aac
@@ -66906,7 +66906,7 @@ gFf
 odd
 tRC
 aDb
-azh
+hYc
 acc
 acc
 cwT
@@ -67051,11 +67051,11 @@ iQb
 bjR
 bkh
 hsq
-aKu
+dOO
 bbT
 bbT
 bbT
-aKu
+dOO
 knu
 tFA
 wSb
@@ -67081,7 +67081,7 @@ gFf
 odd
 tRC
 qfC
-azh
+hYc
 acc
 acc
 cwT
@@ -67250,13 +67250,13 @@ aac
 aac
 acc
 acc
-azh
-azh
+hYc
+hYc
 wrv
 odd
 tRC
-azh
-azh
+hYc
+hYc
 acc
 acc
 cwT
@@ -67425,13 +67425,13 @@ acc
 acc
 acc
 acc
-azh
+hYc
 aFU
 tRC
 odd
 tRC
 rXy
-azh
+hYc
 acc
 cwT
 cwT
@@ -67580,7 +67580,7 @@ bix
 ssE
 ssE
 bjd
-aKu
+dOO
 knu
 tFA
 wSb
@@ -67600,13 +67600,13 @@ aac
 acc
 aac
 acc
-azh
+hYc
 aFW
 aFq
 odd
 gFf
 qfC
-azh
+hYc
 acc
 cwT
 qDI
@@ -67743,19 +67743,19 @@ bga
 bgN
 bgN
 bmK
-aKu
-aKu
-aKu
-aKu
+dOO
+dOO
+dOO
+dOO
 bbE
 iQi
 bhU
 jmy
-aKu
+dOO
 eMZ
 unE
-aKu
-aKu
+dOO
+dOO
 bba
 aVo
 blJ
@@ -67775,13 +67775,13 @@ buF
 aac
 aac
 aac
-azh
+hYc
 nmS
 mrp
 odd
 tRC
 rXy
-azh
+hYc
 acc
 cwT
 psE
@@ -67921,12 +67921,12 @@ bmW
 aac
 acc
 acc
-aKu
+dOO
 bbH
 oeT
 bic
 eBr
-aKu
+dOO
 qTV
 bFv
 ibE
@@ -67943,21 +67943,21 @@ acc
 acc
 acc
 aac
-aHQ
+wYL
 btq
 btq
 afW
 btq
 btq
 lTG
-azh
-azh
+hYc
+hYc
 aFr
 npX
 vgb
-azh
-azh
-azh
+hYc
+hYc
+hYc
 xDu
 nQk
 ubN
@@ -68096,7 +68096,7 @@ aXW
 aac
 acc
 acc
-aKu
+dOO
 bkG
 baU
 biy
@@ -68105,7 +68105,7 @@ jvl
 ajl
 opg
 xJb
-aKu
+dOO
 fbq
 aNP
 aNP
@@ -68132,12 +68132,12 @@ xbT
 tRC
 sGR
 pLE
-azh
-azh
+hYc
+hYc
 vxd
 hOw
 vxd
-azh
+hYc
 acc
 acc
 avt
@@ -68271,16 +68271,16 @@ rYa
 bgG
 aac
 acc
-aKu
-aKu
-aKu
-aKu
-aKu
-aKu
+dOO
+dOO
+dOO
+dOO
+dOO
+dOO
 rjn
 khh
 vtl
-aKu
+dOO
 boI
 bpw
 blJ
@@ -68312,7 +68312,7 @@ qvJ
 tBw
 qfC
 vye
-azh
+hYc
 aac
 awj
 bhb
@@ -68451,11 +68451,11 @@ acc
 acc
 acc
 acc
-aKu
-aKu
-aKu
-aKu
-aKu
+dOO
+dOO
+dOO
+dOO
+dOO
 boM
 bpf
 aNP
@@ -68639,7 +68639,7 @@ brZ
 bqy
 aac
 aac
-azh
+hYc
 ayr
 avg
 btv
@@ -68650,12 +68650,12 @@ acc
 acc
 acc
 lTG
-azh
+hYc
 kOr
 gFf
 odd
 tRC
-azh
+hYc
 mQE
 hUJ
 vrH
@@ -68814,13 +68814,13 @@ bre
 aKY
 acc
 acc
-azh
+hYc
 ays
 btu
 btv
 aiI
 aiK
-azh
+hYc
 acc
 acc
 acc
@@ -68987,19 +68987,19 @@ bnD
 blJ
 aNP
 aLL
-azh
-azh
+hYc
+hYc
 aCl
-aKs
+azh
 arp
 arp
 akB
 akB
-azh
-azh
+hYc
+hYc
 xyz
-azh
-azh
+hYc
+hYc
 vxd
 oeH
 dyZ
@@ -69162,7 +69162,7 @@ aUk
 blJ
 aNP
 aSb
-aHQ
+wYL
 aEN
 aCu
 xre
@@ -69170,7 +69170,7 @@ arq
 arq
 xre
 akG
-azh
+hYc
 vmm
 aft
 aGT
@@ -69355,14 +69355,14 @@ oIi
 yhJ
 odd
 hTU
-azh
+hYc
 iAA
 qfC
 riY
 qfC
 qfC
 ayJ
-aHQ
+wYL
 apH
 apH
 apH
@@ -69520,7 +69520,7 @@ avv
 aLY
 aqq
 akV
-azh
+hYc
 aHS
 vxd
 vxd
@@ -69537,7 +69537,7 @@ qfC
 qTp
 azi
 ayL
-azh
+hYc
 aac
 aac
 aac
@@ -69695,7 +69695,7 @@ kwu
 arw
 apP
 alj
-azh
+hYc
 xZk
 xKr
 xKr
@@ -69710,9 +69710,9 @@ vxd
 hOw
 hOw
 vxd
-azh
-azh
-azh
+hYc
+hYc
+hYc
 acc
 acc
 acc
@@ -69885,7 +69885,7 @@ iMP
 tRC
 tRC
 gvR
-azh
+hYc
 acc
 acc
 acc
@@ -70060,7 +70060,7 @@ tRC
 vlG
 vlG
 vth
-azh
+hYc
 acc
 acc
 acc
@@ -70220,7 +70220,7 @@ apP
 hLf
 uad
 alH
-azh
+hYc
 bfQ
 vlG
 aez
@@ -70235,7 +70235,7 @@ tRC
 vlG
 vlG
 jXD
-azh
+hYc
 aac
 acc
 aac
@@ -70394,8 +70394,8 @@ ayC
 fhl
 fhW
 fhl
-azh
-azh
+hYc
+hYc
 vrH
 fNH
 iWi
@@ -70410,7 +70410,7 @@ vlG
 vlG
 vlG
 dbv
-azh
+hYc
 aac
 aac
 aac
@@ -70569,8 +70569,8 @@ asd
 vxd
 vxd
 vxd
-azh
-azh
+hYc
+hYc
 uzj
 sly
 uLK
@@ -70585,7 +70585,7 @@ vlG
 vlG
 vlG
 jsW
-azh
+hYc
 aac
 aac
 aac
@@ -70760,7 +70760,7 @@ tTP
 uWP
 sZP
 ihd
-azh
+hYc
 aac
 aac
 acc
@@ -70935,7 +70935,7 @@ uGp
 mms
 mms
 pwn
-azh
+hYc
 aac
 acc
 acc
@@ -71110,7 +71110,7 @@ xcZ
 rWB
 efR
 ngc
-azh
+hYc
 acc
 acc
 acc
@@ -71285,7 +71285,7 @@ gfd
 lty
 erq
 aLD
-azh
+hYc
 aac
 acc
 acc
@@ -71460,7 +71460,7 @@ pnE
 ykM
 xLH
 dGW
-azh
+hYc
 aac
 aac
 acc
@@ -71624,18 +71624,18 @@ vxd
 vxd
 tEf
 tEf
-azh
-azh
-azh
-azh
-azh
+hYc
+hYc
+hYc
+hYc
+hYc
 dOT
 bYG
 rzY
-azh
-azh
-azh
-azh
+hYc
+hYc
+hYc
+hYc
 aac
 aac
 aac
@@ -71803,11 +71803,11 @@ aac
 aac
 acc
 acc
-azh
+hYc
 hOw
 hOw
 hOw
-azh
+hYc
 acc
 acc
 aac

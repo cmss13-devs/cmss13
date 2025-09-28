@@ -363,6 +363,23 @@
 	for(var/turf/blocked_turf in range(1, src))
 		blockers += new /obj/effect/build_blocker(blocked_turf, src)
 		new /obj/structure/blocker/anti_cade(blocked_turf)
+	return INITIALIZE_HINT_LATELOAD
+
+
+/obj/structure/stairs/multiz/LateInitialize()
+	. = ..()
+	if(!dir || direction == DOWN)
+		return
+	var/turf/adjacent = get_step(src, dir)
+	if(!istype(adjacent))
+		return
+	var/turf/above_adjacent = SSmapping.get_turf_above(adjacent)
+	if(!istype(above_adjacent))
+		return
+	new /obj/vis_contents_holder(adjacent,above_adjacent, 0, FALSE)
+	adjacent.plane = OPEN_SPACE_PLANE_START
+	adjacent.update_icon()
+
 
 /obj/structure/stairs/multiz/Destroy()
 	QDEL_LIST(blockers)

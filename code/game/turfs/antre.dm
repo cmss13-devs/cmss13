@@ -1,9 +1,9 @@
 // ------ Antre tiles ------ //
 
 /turf/open/antre
-	name = "antre"
+	name = "floor"
 	icon = 'icons/turf/floors/antre_floors.dmi'
-	icon_state = "shipfloor1"
+	icon_state = "antre"
 
 /turf/open/antre/plating
 	icon_state = "plating_catwalk"

@@ -220,7 +220,7 @@ The following list is non-exhaustive, but should give you a good idea of what we
 - New maps*
 - Bug fixes and inconsistency fixes
 
-**A note on new maps.**
+#### A note on new maps:
 Entirely new maps are generally considered to be stepping stones into the maintainers’ mapping dept. proper. However, making a new map is a months long process that requires dedication and constant communication and oversight from mappers on the Maintainer team. Mapping, like spriting and coding, is an acquired skill and it is highly likely your first map is going to suck. Maps are fluid entities that are never absolutely complete, don’t wed yourself to your initial layout, always be prepared to remap half the project when going in.
 
 ### Coding

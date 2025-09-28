@@ -93,6 +93,9 @@
 	icon = 'icons/turf/floors/antre_floors.dmi'
 	icon_state = "antre"
 
+/turf/open/floor/antre/is_plasteel_floor()
+	return FALSE
+
 // Black Tile Directional
 
 /turf/open/floor/antre/metal/black

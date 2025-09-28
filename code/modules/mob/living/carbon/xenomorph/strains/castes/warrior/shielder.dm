@@ -160,7 +160,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(!xeno_player.plate_slam)
+	if(xeno_player.plate_slam)
 		xeno_player.balloon_alert(xeno_player, "we need to stop pinning down target!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 

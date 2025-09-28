@@ -1390,9 +1390,6 @@
 /obj/structure/sign/safety/security,
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/checkpoints/clf)
-"nN" = (
-/turf/closed/wall/strata_outpost/reinforced,
-/area/strata/interior/outpost/clf_dorms)
 "oa" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -3175,7 +3172,7 @@ cH
 ae
 ae
 ae
-nN
+ae
 YU
 zq
 zq
@@ -3373,7 +3370,7 @@ cH
 ae
 ae
 ae
-nN
+ae
 zq
 zq
 zq

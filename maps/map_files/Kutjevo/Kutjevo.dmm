@@ -406,7 +406,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2/south)
 "abO" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -1147,7 +1147,7 @@
 "aeo" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/sheet/metal/small_stack,
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/kutjevo/tan/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
 "aep" = (
@@ -1308,7 +1308,7 @@
 /obj/structure/barricade/handrail/kutjevo{
 	layer = 3.1
 	},
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/kutjevo/multi_tiles/southwest,
 /area/kutjevo/interior/colony_south/power2)
 "aiJ" = (
@@ -2000,7 +2000,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/complex/med)
 "bkn" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power)
 "bkR" = (
@@ -6301,7 +6301,7 @@
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/kutjevo/exterior/runoff_bridge)
 "hMi" = (
-/obj/structure/machinery/power/port_gen/pacman{
+/obj/structure/machinery/power/power_generator/port_gen/pacman{
 	desc = "A portable generator for emergency backup power. A set of numbers have been crudely etched into the side. The sequence reads --2-."
 	},
 /obj/structure/blocker/invisible_wall,
@@ -7095,7 +7095,7 @@
 /turf/open/gm/river/darkred,
 /area/kutjevo/interior/power)
 "jmP" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "jng" = (
@@ -7577,7 +7577,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/power)
 "kbL" = (
@@ -10173,7 +10173,7 @@
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/med)
 "nRY" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/complex_border/med_rec)
 "nSP" = (
@@ -12228,7 +12228,7 @@
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/colony_northeast)
 "rgv" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/complex_border/med_rec)
 "rgQ" = (
@@ -13610,7 +13610,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_central/mine_elevator)
 "tlK" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/kutjevo/interior/power/comms)
 "tlN" = (

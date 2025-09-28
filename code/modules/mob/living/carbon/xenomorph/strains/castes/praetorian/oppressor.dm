@@ -1,7 +1,7 @@
 /datum/xeno_strain/oppressor
 	// Dread it, run from it, destiny still arrives... or should I say, I do
 	name = PRAETORIAN_OPPRESSOR
-	description = "You abandon all of your acid-based abilities, your dash, some speed, and a bit of your slash damage for some resistance against small explosives, slashes that deal extra damage to prone targets, and a powerful hook ability that pulls up to three enemies towards you, slows them, and has varying effects depending on how many enemies you pull. You also gain a powerful punch that reduces your other abilities' cooldowns, pierces through armor, and does double damage in addition to rooting slowed targets. You can also knock enemies back and slow them with your new Tail Lash and quickly grab a tall, slow it, and pull it towards you with your unique Tail Stab."
+	description = "You lose all previous abilities, gaining a tail that can be used to swing people around or inot eachother, a punch that roots them in place if they have some sort of crowd control applied to them, and a fling back ability that throws the target you clicked on opposite direction of where you are facing."
 	flavor_description = "My reach is endless, this one will pull down the heavens."
 	icon_state_prefix = "Oppressor"
 
@@ -88,7 +88,7 @@
 	if(!abduct_user.check_state())
 		return
 
-	if(!check_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	if(!tail_image)
@@ -111,9 +111,10 @@
 			var/blocked = FALSE
 			for(var/obj/structure/structure in turfs)
 
-				if(structure.opacity || ((istype(structure, /obj/structure/barricade) || istype(structure, /obj/structure/girder) && structure.density || istype(structure, /obj/structure/machinery/door)) && structure.density))
+				if(structure.density)
 					blocked = TRUE
 					break
+					to_chat(abduct_user, SPAN_XENONOTICE("Our tail breaks because something was in the way!"))
 
 			if(blocked)
 				break
@@ -144,7 +145,7 @@
 
 			turfs_get += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turfs, windup)
 
-		to_chat(abduct_user, SPAN_NOTICE("We launch our tail towards [targetted_atom]"))
+		to_chat(abduct_user, SPAN_XENODANGER("We launch our tail towards [targetted_atom]"))
 		abduct_user.emote("roar")
 		addtimer(CALLBACK(src, PROC_REF(reset_ability)), 2 SECONDS)
 		to_chat(targets_added, SPAN_DANGER("We are rooted by [abduct_user]'s tail!"))
@@ -191,7 +192,7 @@
 		affected_count++
 
 	if(length(targets_collided))
-		to_chat(owner, SPAN_XENODANGER("We use our tail to slam [affected_count] of them together!"))
+		to_chat(owner, SPAN_XENODANGER("We use our tail to slam our targets together!"))
 
 	else
 		to_chat(owner, SPAN_XENODANGER("We spring our tail and throw them around!"))
@@ -209,6 +210,7 @@
 		target.overlays -= tail_image
 	targets_added.len = 0
 	targets_collided.len = 0
+	owner.balloon_alert(owner, "you waited too long!")
 
 	ability_used_once = FALSE
 	apply_cooldown()
@@ -322,6 +324,7 @@
 	xeno.Root(1)
 
 	target_living.apply_armoured_damage(fling_damage)
+	playsound(target_living, 'sound/weapons/alien_claw_block.ogg', 75, 1)
 
 	var/old_layer = target_living.layer
 	var/old_pixel_x = target_living.pixel_x
@@ -342,6 +345,10 @@
 			target_living.pixel_x = -32 * turfs_travelled
 			animate(target_living, 0.3 SECONDS, pixel_y = 44, pixel_x = (-16 * turfs_travelled))
 			animate(0.3 SECONDS, pixel_y = old_pixel_y, pixel_x = old_pixel_x)
+
+
+	if(!check_and_use_plasma_owner())
+		return
 
 	addtimer(CALLBACK(src, PROC_REF(end_fling), target_living, old_layer, old_pixel_x, old_pixel_y), 0.6 SECONDS)
 	apply_cooldown()

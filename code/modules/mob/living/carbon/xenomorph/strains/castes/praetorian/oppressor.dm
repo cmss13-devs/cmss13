@@ -114,9 +114,9 @@
 				if(structure.density)
 					blocked = TRUE
 					break
-					to_chat(abduct_user, SPAN_XENONOTICE("Our tail breaks because something was in the way!"))
 
 			if(blocked)
+				to_chat(abduct_user, SPAN_XENONOTICE("Our tail recoils back to us because something was in the way!"))
 				break
 
 			for (var/mob/living/carbon/target in turfs)

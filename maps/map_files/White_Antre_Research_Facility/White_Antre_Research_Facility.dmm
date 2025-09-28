@@ -24366,9 +24366,6 @@
 /turf/closed/wall/hybrisa/research/reinforced,
 /area/white_antre/indoors/upper_level/central_corridor)
 "biB" = (
-/obj/structure/machinery/power/apc/power/west{
-	start_charge = 20
-	},
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
 	},
@@ -49411,6 +49408,15 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/antre/plating/west_corner_dir/north_west,
+/area/white_antre/indoors/upper_level/central_corridor)
+"cqO" = (
+/obj/effect/antre/border{
+	dir = 1
+	},
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 80
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/white_antre/indoors/upper_level/central_corridor)
 "crT" = (
 /obj/structure/machinery/landinglight/ds1,
@@ -160793,7 +160799,7 @@ cqm
 cqy
 cqw
 bhB
-aQw
+cqO
 bhP
 aRc
 bsG

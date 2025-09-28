@@ -10,7 +10,7 @@
 
 	fire_immunity = FIRE_IMMUNITY_NO_IGNITE
 
-	minimap_icon = "overmind"
+	minimap_icon = "matriarch"
 
 	aura_strength = 0
 

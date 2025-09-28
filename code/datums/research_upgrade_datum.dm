@@ -1,6 +1,6 @@
 /datum/research_upgrades
 	///unique to every upgrade. not the name of the item. name of the upgrade
-	var/name = "Upgrade."
+	var/name = "upgrade."
 	///name of upgrades, not items. Items are at research_upgrades.dm somewhere in item folder.
 	var/desc = "something is broken. yippee!!"
 	///which behavior should this type follow. Should this be completely excluded from the buy menu? should it be one of the dropdown options? or a normal item?
@@ -27,16 +27,16 @@
 	new item_reference(machine_loc)
 
 /datum/research_upgrades/machinery
-	name = "Machinery"
+	name = "machinery"
 	behavior = RESEARCH_UPGRADE_CATEGORY // one on the dropdown choices you get
 
 /datum/research_upgrades/machinery/autodoc
-	name = "AutoDoc Upgrade"
+	name = "autodoc upgrade"
 	behavior = RESEARCH_UPGRADE_EXCLUDE_BUY
 	upgrade_type = ITEM_MACHINERY_UPGRADE
 
 /datum/research_upgrades/machinery/autodoc/internal_bleed
-	name = "AutoDoc Internal Bleeding Repair"
+	name = "autodoc internal bleeding repair"
 	desc = "A data and instruction set for the AutoDoc, making it capable of fixing internal bleeding nearly instantaneously."
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 100
@@ -46,7 +46,7 @@
 	new /obj/item/research_upgrades/autodoc(machine_loc, RESEARCH_UPGRADE_TIER_1)
 
 /datum/research_upgrades/machinery/autodoc/broken_bone
-	name = "AutoDoc Bone Fracture Repair"
+	name = "autodoc bone fracture repair"
 	desc = "A data and instruction set for the AutoDoc, making it capable of setting fractures and applying bonegel."
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 1500
@@ -56,7 +56,7 @@
 	new /obj/item/research_upgrades/autodoc(machine_loc, RESEARCH_UPGRADE_TIER_2)
 
 /datum/research_upgrades/machinery/autodoc/organ_damage
-	name = "AutoDoc Broken Organ Repair"
+	name = "autodoc broken organ repair"
 	desc = "A data and instruction set for the AutoDoc, making it capable of fixing organ damage."
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 1500
@@ -66,7 +66,7 @@
 	new /obj/item/research_upgrades/autodoc(machine_loc, RESEARCH_UPGRADE_TIER_3)
 
 /datum/research_upgrades/machinery/autodoc/larva_removal
-	name = "AutoDoc Embryo Removal"
+	name = "autodoc embryo removal"
 	desc = "Data and instruction set for AutoDoc making it mildly proficient in removing parasites left by unknown organism."
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 4000
@@ -76,7 +76,7 @@
 	new /obj/item/research_upgrades/autodoc(machine_loc, RESEARCH_UPGRADE_TIER_4)
 
 /datum/research_upgrades/machinery/grinderspeed
-	name = "Reagent-Grinder Upgrade"
+	name = "reagent-grinder upgrade"
 	desc = "Research upgrade for Reagent grinder, technology on this disk makes storing and grinding procedures more effective, increasing both speed and product capacity of the grinder."
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 500
@@ -86,7 +86,7 @@
 
 
 /datum/research_upgrades/machinery/sleeper
-	name = "Sleeper Upgrade"
+	name = "sleeper upgrade"
 	desc = "Research upgrade for Sleeper system, technology on this disk is used on a sleeper to allow wider spectrum of chemicals to be administered, as well as upgrading dialysis software."
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 500
@@ -95,7 +95,7 @@
 	clearance_req = 1
 
 /datum/research_upgrades/machinery/autoharvest
-	name = "Auto-Harvest Botany Upgrade"
+	name = "auto-harvest botany ugrade"
 	desc = "Research upgrade for hydroponics system, technology on this disk automatically shakes the plant once it is ready to be harvested."
 	behavior = RESEARCH_UPGRADE_ITEM
 	value_upgrade = 250
@@ -104,11 +104,11 @@
 	clearance_req = 2
 
 /datum/research_upgrades/item
-	name = "Items"
+	name = "items"
 	behavior = RESEARCH_UPGRADE_CATEGORY
 
 /datum/research_upgrades/item/research_credits
-	name = "Research Contract Reroll"
+	name = "research contract reroll"
 	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team to request new contract chemicals."
 	value_upgrade = 1000
 	behavior = RESEARCH_UPGRADE_ITEM
@@ -119,7 +119,7 @@
 	clearance_req = 4
 
 /datum/research_upgrades/item/laser_scalpel
-	name = "Laser Scalpel"
+	name = "laser scalpel"
 	desc = "An advanced, robust version of the normal scalpel, allowing it to pierce through thick skin and chitin alike with extreme ease."
 	value_upgrade = 3000
 	behavior = RESEARCH_UPGRADE_ITEM
@@ -128,7 +128,7 @@
 	clearance_req = 3
 
 /datum/research_upgrades/item/incision_management
-	name = "Incision Management System"
+	name = "incision management system"
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision, allowing for the immediate commencement of therapeutic steps."
 	value_upgrade = 1500
 	behavior = RESEARCH_UPGRADE_ITEM
@@ -138,7 +138,7 @@
 
 
 /datum/research_upgrades/item/nanosplints
-	name = "Reinforced Fiber Splints"
+	name = "reinforced fiber splints"
 	desc = "A set of splints made from durable carbon fiber sheets reinforced with flexible titanium lattice, comes in a stack of five."
 	value_upgrade = 800
 	clearance_req = 3
@@ -151,7 +151,7 @@
 	new /obj/item/stack/medical/splint/nano/research(machine_loc, 5)//adjust this to change amount of nanosplints in a stack, cant be higher than five, go change max_amount in the nanosplint itself, then change it.
 
 /datum/research_upgrades/item/flamer_tank
-	name = "Upgraded Incinerator Tank"
+	name = "upgraded incinerator tank"
 	desc = "An upgraded incinerator tank, with larger capacity and able to handle stronger fuels."
 	value_upgrade = 300
 	clearance_req = 1
@@ -163,7 +163,7 @@
 	item_reference = /obj/item/ammo_magazine/flamer_tank/custom/upgraded
 
 /datum/research_upgrades/item/flamer_tank/smoke
-	name = "Upgraded Incinerator Smoke Tank"
+	name = "upgraded incinerator smoke tank"
 	desc = "An upgraded incinerator smoke tank with a larger capacity."
 	value_upgrade = 100 //not useful enough to be expensive
 	clearance_req = 1
@@ -173,8 +173,8 @@
 	item_reference = /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
 
 /datum/research_upgrades/item/matrix_frame
-	name = "Matrix Frame"
-	desc = "A matrix of a complex arrange of lenses that allow the upgrade of optical devices."
+	name = "matrix frame"
+	desc = "A complex arrangement of lenses that allow the upgrade of optical devices."
 	value_upgrade = 200 // relatively cheap because it doesnt do nothing by itself
 	clearance_req = 1
 	change_purchase = 100
@@ -184,11 +184,11 @@
 	item_reference = /obj/item/frame/matrix_frame
 
 /datum/research_upgrades/armor
-	name = "Armor"
+	name = "armor"
 	behavior = RESEARCH_UPGRADE_CATEGORY
 
 /datum/research_upgrades/armor/translator
-	name = "Universal Translator Plate"
+	name = "universal translator plate"
 	desc = "A uniform-attachable plate capable of translating any unknown language heard by the wearer."
 	value_upgrade = 2000
 	behavior = RESEARCH_UPGRADE_ITEM
@@ -197,7 +197,7 @@
 	item_reference = /obj/item/clothing/accessory/health/research_plate/translator
 
 /datum/research_upgrades/armor/coagulator
-	name = "Active Blood Coagulator Plate"
+	name = "active blood coagulator plate"
 	desc = "A uniform-attachable plate capable of coagulating any bleeding wounds the user possesses."
 	value_upgrade = 1200
 	behavior = RESEARCH_UPGRADE_ITEM
@@ -209,7 +209,7 @@
 
 
 /datum/research_upgrades/armor/emergency_injector
-	name = "Medical Emergency Injector"
+	name = "medical emergency injector"
 	desc = "A medical plate with two buttons on the sides and a hefty chemical tank. Attached to a uniform and on a simultaneous press, it injects an emergency dose of medical chemicals much larger than a normal emergency autoinjector. Single time use and is recycled in biomass printer. Features overdose protection."
 	value_upgrade = 250
 	clearance_req = 1
@@ -220,7 +220,7 @@
 	item_reference = /obj/item/clothing/accessory/health/research_plate/emergency_injector
 
 /datum/research_upgrades/armor/ceramic
-	name = "Ceramic Armor Plate"
+	name = "ceramic armor plate"
 	desc = "A strong trauma plate, able to protect the user from a large amount of bullets. Completely useless against sharp objects."
 	value_upgrade = 500
 	clearance_req = 2
@@ -231,7 +231,7 @@
 	item_reference = /obj/item/clothing/accessory/health/ceramic_plate
 
 /datum/research_upgrades/armor/preservation
-	name = "Death Preservation Plate"
+	name = "death preservation plate"
 	desc = "Preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead, due to small tank of preservatives, it needs to be replaced on each death. Extends time to permadeath by around four minutes."
 	value_upgrade = 500
 	clearance_req = 4

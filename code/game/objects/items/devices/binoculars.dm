@@ -24,9 +24,12 @@
 	var/viewsize = 12
 	var/hvh_tile_offset = 6 //same as miniscopes
 	var/hvh_zoom_viewsize = 7
-	var/upgrade // do we have an upgrade ?
-	var/lighting_alpha = 100 // how good the NV is
-	var/matrix_color = NV_COLOR_GREEN // default NV
+	/// Defines the current upgrade if any
+	var/upgrade
+	/// How good the NV is at hiding shadows (lower the better)
+	var/lighting_alpha = 100
+	/// Default color , overriden by user preffs.
+	var/matrix_color = NV_COLOR_GREEN
 
 /obj/item/device/binoculars/Initialize()
 	. = ..()
@@ -51,9 +54,8 @@
 /obj/item/device/binoculars/zoom(mob/living/user, tileoffset, viewsize, keep_zoom)
 	. = ..()
 
-	if(zoom) // we only want to proc this if we did succesfully zoom
-		if(upgrade == MATRIX_NVG)
-			enable_nvgs(user)
+	if(zoom && upgrade == MATRIX_NVG) // we only want to proc this if we did succesfully zoom
+		enable_nvgs(user)
 
 /obj/item/device/binoculars/unzoom(mob/living/user)
 	. = ..()
@@ -78,8 +80,8 @@
 	user.update_sight()
 
 /obj/item/device/binoculars/proc/disable_nvgs(mob/living/carbon/human/user)
-
 	UnregisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT)
+
 	user.remove_client_color_matrix("nvg_visor", 1 SECONDS)
 	user.clear_fullscreen("nvg_binos", 0.5 SECONDS)
 	user.clear_fullscreen("nvg_binos_blur", 0.5 SECONDS)

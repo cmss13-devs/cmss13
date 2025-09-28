@@ -287,7 +287,7 @@
 
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if(!isliving(target_atom))
+	if(target_living.stat == DEAD)
 		return
 
 	var/mob/living/target_living = target_atom

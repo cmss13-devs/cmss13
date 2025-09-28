@@ -1,7 +1,7 @@
 /datum/xeno_strain/oppressor
 	// Dread it, run from it, destiny still arrives... or should I say, I do
 	name = PRAETORIAN_OPPRESSOR
-	description = "You lose all previous abilities, gaining a tail that can be used to swing people around or inot eachother, a punch that roots them in place if they have some sort of crowd control applied to them, and a fling back ability that throws the target you clicked on opposite direction of where you are facing."
+	description = "You lose all previous abilities, gaining a tail that can be used to swing people around or into eachother, a punch that roots them in place if they have some sort of crowd control applied to them, and a fling back ability that throws the target you clicked on opposite direction of where you are facing."
 	flavor_description = "My reach is endless, this one will pull down the heavens."
 	icon_state_prefix = "Oppressor"
 
@@ -215,6 +215,7 @@
 
 	ability_used_once = FALSE
 	apply_cooldown()
+
 
 /datum/action/xeno_action/activable/oppressor_punch/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/oppressor_user = owner

@@ -1,5 +1,7 @@
 // ------ Antre tiles ------ //
 
+// Plating
+
 /turf/open/antre
 	name = "floor"
 	icon = 'icons/turf/floors/antre_floors.dmi'
@@ -84,3 +86,57 @@
 /obj/effect/antre/border/edge
 	icon_state = "bridge_border_edge"
 
+// Black Metal Floor
+
+/turf/open/floor/antre
+	name = "floor"
+	icon = 'icons/turf/floors/antre_floors.dmi'
+	icon_state = "antre"
+
+// Black Tile Directional
+
+/turf/open/floor/antre/metal/black
+	icon_state = "black"
+
+/turf/open/floor/antre/metal/black/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/antre/metal/black/north
+	dir = NORTH
+
+/turf/open/floor/antre/metal/black/east
+	dir = EAST
+
+/turf/open/floor/antre/metal/black/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/antre/metal/black/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/antre/metal/black/west
+	dir = WEST
+
+/turf/open/floor/antre/metal/black/northwest
+	dir = NORTHWEST
+
+// Black Tile Corners
+
+/turf/open/floor/antre/metal/blackcorner
+	icon_state = "blackcorner"
+
+/turf/open/floor/antre/metal/blackcorner/north
+	dir = NORTH
+
+/turf/open/floor/antre/metal/blackcorner/east
+	dir = EAST
+
+/turf/open/floor/antre/metal/blackcorner/west
+	dir = WEST
+
+// Black Tile Full
+
+/turf/open/floor/antre/metal/blackfull
+	icon_state = "blackfull"
+
+/turf/open/floor/antre/metal/blackfull/north
+	dir = NORTH

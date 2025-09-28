@@ -12,11 +12,11 @@
 /obj/structure/machinery/gear{
 	id = "supply_elevator_gear"
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/oob)
 "aae" = (
 /obj/structure/machinery/door/poddoor/railing,
-/turf/open/floor/almayer,
+/turf/open/floor/prison,
 /area/white_antre/oob)
 "aaf" = (
 /obj/structure/machinery/door/poddoor/railing,
@@ -29,7 +29,7 @@
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 4
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/prison,
 /area/white_antre/oob)
 "aai" = (
 /turf/open/floor/almayer/empty/requisitions,
@@ -38,7 +38,7 @@
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/prison,
 /area/white_antre/oob)
 "aak" = (
 /obj/structure/machinery/door/poddoor/railing{
@@ -56,14 +56,14 @@
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 2
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/prison,
 /area/white_antre/oob)
 "aan" = (
 /obj/structure/machinery/door/poddoor/railing,
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 2
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/prison,
 /area/white_antre/oob)
 "aao" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
@@ -726,7 +726,7 @@
 	pixel_x = 36;
 	pixel_y = 6
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment)
 "ace" = (
 /obj/structure/barricade/handrail/strata,
@@ -762,7 +762,7 @@
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = 29
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment)
 "acj" = (
 /obj/effect/decal/strata_decals/grime/grime3{
@@ -780,7 +780,7 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 60
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment)
 "acl" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
@@ -820,6 +820,9 @@
 /area/white_antre/indoors/underground_level/east_maint)
 "acq" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkpurple2/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "acr" = (
@@ -872,7 +875,10 @@
 /turf/open/floor/almayer_hull/outerhull_dir,
 /area/white_antre/indoors/upper_level/central_corridor)
 "acy" = (
-/turf/open/floor/almayer/orange/north,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "acz" = (
 /obj/item/prop{
@@ -899,7 +905,10 @@
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/turf/open/floor/almayer/orange/northeast,
+/obj/effect/antre/border/corner{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/northeast,
 /area/white_antre/indoors/upper_level/east_corridor)
 "acA" = (
 /obj/item/prop{
@@ -924,13 +933,17 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/turf/open/floor/almayer/orange/northwest,
+/obj/effect/antre/border/corner,
+/turf/open/floor/prison/darkyellow2/northwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "acB" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
-/turf/open/floor/almayer/orange/southwest,
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2/southwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "acC" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal/autoname,
@@ -1018,7 +1031,7 @@
 	dir = 8
 	},
 /obj/structure/barricade/handrail,
-/turf/open/floor/almayer/orange/west,
+/turf/open/floor/prison/darkyellow2/west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "acK" = (
 /obj/structure/barricade/handrail,
@@ -1032,13 +1045,13 @@
 /obj/structure/prop/hybrisa/misc/metergreen{
 	pixel_y = 32
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment)
 "acM" = (
 /turf/closed/wall/hybrisa/research,
 /area/white_antre/indoors/main_level/east_containment)
 "acN" = (
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/upper_level/west_corridor)
 "acO" = (
 /obj/effect/alien/weeds/node,
@@ -1935,7 +1948,7 @@
 	pixel_x = 1;
 	pixel_y = 3
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/upper_level/canteen)
 "aeR" = (
 /obj/structure/surface/table/almayer,
@@ -1970,7 +1983,7 @@
 /obj/structure/machinery/vending/dinnerware,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/upper_level/canteen)
 "aeU" = (
 /obj/structure/surface/table/almayer,
@@ -1990,7 +2003,7 @@
 "aeV" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/upper_level/canteen)
 "aeW" = (
 /obj/structure/surface/table/almayer,
@@ -3223,7 +3236,7 @@
 	pixel_x = 7;
 	pixel_y = 6
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/upper_level/xenobio)
 "ahX" = (
 /obj/structure/machinery/iv_drip{
@@ -4372,7 +4385,7 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "akw" = (
 /obj/structure/window/framed/strata/reinforced,
@@ -4391,14 +4404,14 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "akA" = (
 /obj/structure/largecrate/empty/secure,
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "akB" = (
 /obj/structure/machinery/light/small{
@@ -4410,7 +4423,7 @@
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
 /obj/effect/antre/border,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "akC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4436,7 +4449,7 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "akE" = (
 /obj/structure/largecrate/empty/case,
@@ -4444,7 +4457,7 @@
 	pixel_x = 5;
 	pixel_y = 8
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "akF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4457,12 +4470,12 @@
 	pixel_y = 5;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/main_level/west_corridor)
 "akG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/antre/border,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "akH" = (
 /obj/structure/largecrate/random/mini/wooden{
@@ -4480,7 +4493,7 @@
 	pixel_x = -3;
 	pixel_y = 13
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "akI" = (
 /obj/structure/largecrate/random/barrel/black,
@@ -4491,12 +4504,12 @@
 /obj/effect/hybrisa/misc/fake/wire/red{
 	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "akJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/vending/coffee,
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/main_level/west_corridor)
 "akK" = (
 /obj/structure/flora/pottedplant{
@@ -4505,7 +4518,7 @@
 	pixel_x = -5;
 	layer = 4
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/main_level/west_corridor)
 "akL" = (
 /obj/structure/bed/chair/comfy/black{
@@ -4513,7 +4526,7 @@
 	pixel_x = -4;
 	buckling_x = -4
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/main_level/west_corridor)
 "akM" = (
 /obj/structure/machinery/light/double,
@@ -4528,7 +4541,7 @@
 /obj/effect/antre/border/corner{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/northeast,
+/turf/open/floor/antre/metal/black/northeast,
 /area/white_antre/indoors/main_level/west_corridor)
 "akN" = (
 /obj/structure/bed/chair{
@@ -4554,14 +4567,14 @@
 /obj/effect/antre/border{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "akO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/antre/border{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "akP" = (
 /obj/structure/sign/safety/reception{
@@ -4573,7 +4586,7 @@
 /obj/effect/antre/border{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "akQ" = (
 /obj/structure/machinery/light/small{
@@ -4591,7 +4604,7 @@
 /obj/effect/antre/border{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "akR" = (
 /obj/structure/largecrate/empty/case/double,
@@ -4602,11 +4615,11 @@
 /obj/effect/antre/border/corner{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "akS" = (
 /obj/structure/stairs/multiz/up,
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "akT" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -4623,14 +4636,14 @@
 /obj/effect/antre/border{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "akV" = (
 /obj/structure/machinery/light/double,
 /obj/effect/antre/border{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "akW" = (
 /obj/effect/decal/cleanable/generic{
@@ -4641,7 +4654,7 @@
 /obj/effect/antre/border/corner{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/northeast,
+/turf/open/floor/antre/metal/black/northeast,
 /area/white_antre/indoors/main_level/west_corridor)
 "akX" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -4655,7 +4668,7 @@
 	pixel_x = 5;
 	pixel_y = -11
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/main_level/west_corridor)
 "akZ" = (
 /obj/effect/decal/cleanable/generic{
@@ -4665,14 +4678,14 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "ala" = (
 /obj/structure/largecrate/empty/secure,
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "alb" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
@@ -4688,7 +4701,7 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "alc" = (
 /obj/effect/decal/cleanable/blood,
@@ -4724,32 +4737,32 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "ald" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "ale" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "alf" = (
 /obj/structure/largecrate/random/case/small,
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "alg" = (
 /obj/vehicle/train/cargo/trolley,
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "alh" = (
 /obj/vehicle/train/cargo/trolley,
@@ -4760,14 +4773,14 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "ali" = (
 /obj/vehicle/train/cargo/engine,
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "alj" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank{
@@ -4784,7 +4797,7 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "alk" = (
 /obj/effect/decal/hybrisa/trash{
@@ -4795,7 +4808,7 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "all" = (
 /obj/structure/machinery/light/double{
@@ -4807,20 +4820,20 @@
 	pixel_y = 9;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/main_level/west_corridor)
 "alm" = (
 /obj/structure/cargo_container/hybrisa/containersextended/greywyleft{
 	layer = 4.2
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "aln" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cargo_container/hybrisa/containersextended/greywyright{
 	layer = 4.2
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "alo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4829,7 +4842,7 @@
 	alpha = 155
 	},
 /obj/structure/machinery/disposal/delivery,
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/main_level/west_corridor)
 "alp" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4839,7 +4852,7 @@
 	pixel_x = -5;
 	layer = 4
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "alq" = (
 /obj/structure/machinery/light/small{
@@ -4853,14 +4866,14 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "alr" = (
 /obj/structure/largecrate/empty/case/double,
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "als" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4871,11 +4884,11 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "alt" = (
 /obj/effect/antre/border/corner,
-/turf/open/floor/almayer/black2/northwest,
+/turf/open/floor/antre/metal/black/northwest,
 /area/white_antre/indoors/main_level/west_corridor)
 "alu" = (
 /obj/structure/surface/rack,
@@ -4885,7 +4898,7 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "alv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4897,14 +4910,14 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "alw" = (
 /obj/structure/pipes/vents/pump_hybrisa,
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "alx" = (
 /obj/effect/decal/hybrisa/bloodtrail,
@@ -4914,6 +4927,9 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
+	},
+/obj/effect/antre/border{
+	dir = 4
 	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
@@ -4929,7 +4945,7 @@
 /obj/effect/antre/border/corner{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2/southwest,
+/turf/open/floor/antre/metal/black/southwest,
 /area/white_antre/indoors/main_level/west_corridor)
 "alz" = (
 /obj/effect/decal/cleanable/generic{
@@ -4940,10 +4956,13 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "alA" = (
 /obj/effect/decal/hybrisa/bloodtrail,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
 "alB" = (
@@ -4961,7 +4980,7 @@
 	pixel_y = 4
 	},
 /obj/effect/antre/border/corner,
-/turf/open/floor/almayer/black2/northwest,
+/turf/open/floor/antre/metal/black/northwest,
 /area/white_antre/indoors/main_level/west_corridor)
 "alC" = (
 /obj/effect/decal/hybrisa/WY/WY1{
@@ -4992,7 +5011,7 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "alE" = (
 /obj/effect/decal/hybrisa/bloodtrail,
@@ -5000,6 +5019,9 @@
 /obj/effect/decal/cleanable/blood{
 	pixel_x = -3;
 	pixel_y = 6
+	},
+/obj/effect/antre/border{
+	dir = 4
 	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
@@ -5057,6 +5079,9 @@
 	},
 /obj/item/shard/shrapnel,
 /obj/effect/spawner/gibspawner/human,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
 "alH" = (
@@ -5302,7 +5327,7 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "amh" = (
 /obj/effect/decal/hybrisa/bloodtrail,
@@ -5388,7 +5413,7 @@
 /obj/effect/antre/border/corner{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/northeast,
+/turf/open/floor/antre/metal/black/northeast,
 /area/white_antre/indoors/main_level/west_corridor)
 "amq" = (
 /obj/structure/surface/rack{
@@ -6488,7 +6513,7 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "aou" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
@@ -6633,7 +6658,7 @@
 	pixel_y = 8;
 	layer = 3.1
 	},
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/underground_level/east_maint)
 "aoK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6701,7 +6726,7 @@
 	dir = 8;
 	pixel_y = -5
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/main_level/west_corridor)
 "aoR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6734,7 +6759,7 @@
 /obj/structure/bed/chair/comfy/lime{
 	dir = 4
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/main_level/west_corridor)
 "aoV" = (
 /obj/effect/decal/cleanable/generic{
@@ -6872,7 +6897,7 @@
 	dir = 8;
 	pixel_y = -5
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/main_level/west_corridor)
 "api" = (
 /obj/structure/barricade/handrail{
@@ -6917,6 +6942,9 @@
 	pixel_y = 6
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
 "apo" = (
@@ -6964,6 +6992,9 @@
 	pixel_y = 22
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
 "apu" = (
@@ -7036,6 +7067,9 @@
 	pixel_y = 6
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
 "apA" = (
@@ -7098,6 +7132,9 @@
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
 "apI" = (
@@ -7190,6 +7227,9 @@
 	pixel_y = -9
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
 "apS" = (
@@ -7352,7 +7392,11 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/white_antre/indoors/underground_level/gonzo)
 "aqh" = (
-/turf/open/floor/shiva/multi_tiles/southeast,
+/obj/effect/antre/border,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/underground_level/gonzo)
 "aqi" = (
 /obj/effect/decal/cleanable/dirt,
@@ -7831,7 +7875,7 @@
 	pixel_x = 46
 	},
 /obj/effect/antre/border,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "arj" = (
 /obj/structure/machinery/light/small{
@@ -7981,7 +8025,7 @@
 	pixel_y = -11
 	},
 /obj/effect/antre/border/corner,
-/turf/open/floor/almayer/black2/northwest,
+/turf/open/floor/antre/metal/black/northwest,
 /area/white_antre/indoors/main_level/west_corridor)
 "ary" = (
 /obj/effect/decal/cleanable/dirt,
@@ -8186,7 +8230,7 @@
 	pixel_y = 8;
 	layer = 3.1
 	},
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/underground_level/east_maint)
 "arX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -8547,7 +8591,7 @@
 /obj/effect/antre/border/edge{
 	dir = 1
 	},
-/turf/open/floor/almayer/blackcorner/north,
+/turf/open/floor/antre/metal/blackcorner/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "asF" = (
 /obj/structure/machinery/space_heater/radiator/red{
@@ -8555,7 +8599,7 @@
 	pixel_x = 1
 	},
 /obj/effect/antre/border,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "asG" = (
 /obj/structure/machinery/light/double{
@@ -8594,7 +8638,7 @@
 	layer = 2.9;
 	pixel_y = 32
 	},
-/turf/open/floor/almayer/blackcorner/west,
+/turf/open/floor/antre/metal/blackcorner/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "asK" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble10{
@@ -8615,6 +8659,9 @@
 /area/white_antre/indoors/exterior/ext_relay_south)
 "asO" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/antre/plating/corner_dir,
 /area/white_antre/indoors/main_level/west_corridor)
 "asP" = (
@@ -8845,7 +8892,7 @@
 	pixel_y = -5
 	},
 /obj/effect/antre/border,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "atL" = (
 /obj/structure/prop/ice_colony/ground_wire,
@@ -8853,7 +8900,7 @@
 /area/white_antre/indoors/main_level/south_containment_hive)
 "atM" = (
 /obj/effect/antre/border,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "atN" = (
 /turf/closed/wall/hybrisa/colony/reinforced,
@@ -8865,19 +8912,19 @@
 /obj/effect/antre/border{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "atQ" = (
 /obj/effect/antre/border/corner{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2/southwest,
+/turf/open/floor/antre/metal/black/southwest,
 /area/white_antre/indoors/main_level/west_corridor)
 "atR" = (
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "atS" = (
 /obj/structure/machinery/camera/autoname/almayer/containment{
@@ -8918,7 +8965,7 @@
 /obj/effect/antre/border/corner{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/southeast,
+/turf/open/floor/antre/metal/black/southeast,
 /area/white_antre/indoors/main_level/west_corridor)
 "atV" = (
 /obj/structure/platform/metal/almayer/west,
@@ -8976,7 +9023,7 @@
 /area/white_antre/indoors/main_level/engineering)
 "aug" = (
 /obj/structure/machinery/power/power_generator/reactor/colony,
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment)
 "auh" = (
 /obj/structure/largecrate/random/barrel/yellow,
@@ -9419,7 +9466,7 @@
 	pixel_y = 11
 	},
 /obj/effect/antre/border,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "avh" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -9441,7 +9488,7 @@
 	pixel_y = 5
 	},
 /obj/effect/antre/border,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "avj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -9451,7 +9498,7 @@
 	},
 /obj/effect/spawner/random/toolbox,
 /obj/effect/antre/border/corner,
-/turf/open/floor/almayer/black2/northwest,
+/turf/open/floor/antre/metal/black/northwest,
 /area/white_antre/indoors/main_level/west_corridor)
 "avk" = (
 /obj/effect/decal/strata_decals/grime/grime3{
@@ -9473,7 +9520,7 @@
 	dir = 1
 	},
 /obj/effect/antre/border/corner,
-/turf/open/floor/almayer/black2/northwest,
+/turf/open/floor/antre/metal/black/northwest,
 /area/white_antre/indoors/main_level/west_corridor)
 "avm" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall/kseries,
@@ -9550,14 +9597,14 @@
 /obj/effect/antre/border/corner{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2/southwest,
+/turf/open/floor/antre/metal/black/southwest,
 /area/white_antre/indoors/main_level/west_corridor)
 "avu" = (
 /obj/structure/cargo_container/hybrisa/containersextended/emptymedicalleft,
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "avv" = (
 /obj/structure/cargo_container/hybrisa/containersextended/emptymedicalright{
@@ -9598,7 +9645,7 @@
 /obj/effect/antre/border/corner{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2/southwest,
+/turf/open/floor/antre/metal/black/southwest,
 /area/white_antre/indoors/main_level/west_corridor)
 "avA" = (
 /obj/structure/surface/table/almayer,
@@ -9613,7 +9660,7 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "avB" = (
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
@@ -9631,7 +9678,7 @@
 	pixel_y = 12
 	},
 /obj/effect/antre/border,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "avE" = (
 /obj/structure/bed/chair/comfy/black{
@@ -9642,7 +9689,7 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "avF" = (
 /turf/closed/wall/hybrisa/colony/engineering/reinforced,
@@ -9653,7 +9700,7 @@
 	pixel_y = -4
 	},
 /obj/effect/antre/border,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "avH" = (
 /obj/structure/bed/chair/comfy/black{
@@ -9669,7 +9716,7 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "avI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -9683,7 +9730,7 @@
 	pixel_y = 5
 	},
 /obj/effect/antre/border,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "avK" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail,
@@ -9697,7 +9744,7 @@
 	pixel_y = 3
 	},
 /obj/effect/antre/border,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "avM" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail,
@@ -9710,7 +9757,7 @@
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/antre/border/corner,
-/turf/open/floor/almayer/black2/northwest,
+/turf/open/floor/antre/metal/black/northwest,
 /area/white_antre/indoors/main_level/west_corridor)
 "avO" = (
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa{
@@ -9865,7 +9912,7 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "avZ" = (
 /obj/effect/decal/cleanable/blood,
@@ -9897,7 +9944,7 @@
 /obj/effect/antre/border/corner{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/southeast,
+/turf/open/floor/antre/metal/black/southeast,
 /area/white_antre/indoors/main_level/west_corridor)
 "awa" = (
 /obj/item/weapon/gun/smg/p90{
@@ -9917,7 +9964,7 @@
 /obj/effect/antre/border/corner{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2/southwest,
+/turf/open/floor/antre/metal/black/southwest,
 /area/white_antre/indoors/main_level/west_corridor)
 "awc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -9928,7 +9975,7 @@
 /obj/effect/antre/border{
 	dir = 8
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "awd" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
@@ -11518,6 +11565,9 @@
 	},
 /obj/item/stack/sandbags/large_stack,
 /obj/item/stack/sandbags/large_stack,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/darkpurple2/east,
 /area/white_antre/indoors/underground_level/east_maint)
 "aAk" = (
@@ -12434,6 +12484,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aCL" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/yellow/east,
 /area/white_antre/indoors/underground_level/east_maint)
 "aCM" = (
@@ -13060,18 +13113,18 @@
 	dir = 8;
 	layer = 4.12
 	},
-/turf/open/floor/almayer/black2/southwest,
+/turf/open/floor/antre/metal/black/southwest,
 /area/white_antre/indoors/main_level/research)
 "aEd" = (
 /obj/structure/barricade/handrail/strata,
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/research)
 "aEe" = (
 /obj/structure/barricade/handrail/strata,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/southeast,
+/turf/open/floor/antre/metal/black/southeast,
 /area/white_antre/indoors/main_level/research)
 "aEf" = (
 /obj/structure/bed/chair/comfy/charlie{
@@ -13106,7 +13159,7 @@
 	dir = 8;
 	layer = 4.12
 	},
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/research)
 "aEj" = (
 /obj/structure/window/reinforced{
@@ -13130,7 +13183,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/research)
 "aEm" = (
 /obj/structure/machinery/space_heater/radiator/red{
@@ -13140,7 +13193,7 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "aEn" = (
 /obj/effect/decal/warning_stripes{
@@ -13163,7 +13216,7 @@
 /obj/effect/antre/border/corner{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/northeast,
+/turf/open/floor/antre/metal/black/northeast,
 /area/white_antre/indoors/main_level/west_corridor)
 "aEq" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
@@ -13300,6 +13353,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/east_containment)
 "aEE" = (
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkred2/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "aEF" = (
@@ -13519,6 +13573,9 @@
 /area/white_antre/indoors/main_level/research)
 "aEW" = (
 /obj/item/stack/sheet/metal,
+/obj/effect/antre/border/corner{
+	dir = 4
+	},
 /turf/open/floor/prison/darkpurple2/southeast,
 /area/white_antre/indoors/underground_level/east_maint)
 "aEX" = (
@@ -13567,7 +13624,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/northwest,
+/turf/open/floor/antre/metal/black/northwest,
 /area/white_antre/indoors/main_level/research)
 "aFa" = (
 /obj/structure/barricade/handrail/strata{
@@ -13578,7 +13635,7 @@
 	layer = 4;
 	pixel_x = -2
 	},
-/turf/open/floor/almayer/black2/northeast,
+/turf/open/floor/antre/metal/black/northeast,
 /area/white_antre/indoors/main_level/research)
 "aFb" = (
 /obj/effect/decal/medical_decals{
@@ -13615,7 +13672,7 @@
 	dir = 8;
 	layer = 4.12
 	},
-/turf/open/floor/almayer/black2/northwest,
+/turf/open/floor/antre/metal/black/northwest,
 /area/white_antre/indoors/main_level/research)
 "aFf" = (
 /obj/structure/barricade/handrail/strata{
@@ -13624,7 +13681,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/northeast,
+/turf/open/floor/antre/metal/black/northeast,
 /area/white_antre/indoors/main_level/research)
 "aFg" = (
 /obj/item/paper/crumpled{
@@ -13789,7 +13846,7 @@
 	name = "impact"
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -13813,58 +13870,57 @@
 	pixel_y = -32
 	},
 /obj/structure/pipes/vents/pump_hybrisa,
-/turf/open/floor/almayer/orange/north,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFF" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/alien/weeds/kseries,
 /obj/structure/machinery/light/double,
-/turf/open/floor/almayer/orange/north,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFG" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2_red";
-	dir = 8;
-	pixel_x = -2
-	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/hybrisa/WY/WY1{
-	dir = 8
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/corner_dir,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFI" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail,
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2_red";
-	dir = 4;
-	pixel_x = 2
-	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFJ" = (
 /obj/structure/prop/hybrisa/misc/blood/blood3{
 	pixel_y = -29
 	},
 /obj/structure/machinery/light/double,
-/turf/open/floor/almayer/orange/north,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFK" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/orange/north,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFL" = (
 /obj/effect/decal/warning_stripes{
@@ -13877,7 +13933,7 @@
 "aFM" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/alien/weeds/kseries,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFN" = (
 /obj/item/ammo_casing/bullet,
@@ -13887,26 +13943,22 @@
 	icon_state = "acid_weak";
 	name = "weak acid"
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFO" = (
 /obj/effect/decal/remains/robot{
 	pixel_x = -13;
 	pixel_y = -11
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/east_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFP" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 8;
 	pixel_x = 7
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2_red";
-	pixel_y = -2
-	},
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFQ" = (
 /obj/effect/decal{
@@ -13914,7 +13966,7 @@
 	icon_state = "acid_weak";
 	name = "weak acid"
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFR" = (
 /obj/effect/decal/cleanable/blood,
@@ -13936,11 +13988,11 @@
 /obj/item/shard/shrapnel,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/west_corner_dir/south_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFS" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFT" = (
 /obj/structure/prop/hybrisa/misc/blood/blood2{
@@ -13948,13 +14000,13 @@
 	pixel_x = -14
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/platingdmg2,
+/turf/open/floor/plating/platingdmg1,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFU" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = -3
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/east_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFV" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
@@ -13964,7 +14016,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2"
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/west_corner_dir/north_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFW" = (
 /obj/structure/flora/pottedplant{
@@ -13972,7 +14024,10 @@
 	pixel_x = 7;
 	layer = 2.9
 	},
-/turf/open/floor/almayer/orange/east,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFX" = (
 /obj/structure/prop/invuln{
@@ -13990,14 +14045,14 @@
 	},
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFY" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
 	dir = 4;
 	pixel_x = -11
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aFZ" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
@@ -14005,20 +14060,29 @@
 	pixel_x = 7
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/orange,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGa" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 4
 	},
-/turf/open/floor/almayer/orange,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGb" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 1;
 	pixel_y = 6
 	},
-/turf/open/floor/almayer/orange,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGc" = (
 /obj/effect/decal/warning_stripes{
@@ -14034,7 +14098,7 @@
 /area/white_antre/indoors/main_level/research)
 "aGd" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGe" = (
 /obj/structure/largecrate/empty/case{
@@ -14046,21 +14110,25 @@
 	icon_state = "acid_weak";
 	name = "weak acid"
 	},
-/turf/open/floor/almayer/orange/east,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGf" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 8;
 	pixel_x = 7
 	},
-/turf/open/floor/almayer/orange/west,
+/obj/effect/antre/border,
+/turf/open/floor/prison/darkyellow2/west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGg" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGh" = (
 /obj/effect/decal/cleanable/blood,
@@ -14082,7 +14150,7 @@
 /obj/item/shard/shrapnel,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGi" = (
 /obj/effect/decal/cleanable/blood,
@@ -14099,7 +14167,7 @@
 	pixel_y = -8;
 	pixel_x = -4
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGj" = (
 /obj/effect/decal/warning_stripes{
@@ -14122,17 +14190,21 @@
 	alpha = 155
 	},
 /obj/structure/largecrate/empty/secure,
-/turf/open/floor/almayer/orange/east,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGl" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor/almayer/orange/west,
+/obj/effect/antre/border,
+/turf/open/floor/prison/darkyellow2/west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGm" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = -3
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGn" = (
 /obj/effect/decal/cleanable/blood,
@@ -14143,7 +14215,7 @@
 	dir = 4;
 	pixel_y = -5
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGo" = (
 /obj/structure/flora/pottedplant{
@@ -14151,7 +14223,10 @@
 	pixel_y = 5;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/orange/northeast,
+/obj/effect/antre/border/corner{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/northeast,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGp" = (
 /obj/effect/alien/weeds/node/kseries,
@@ -14187,20 +14262,27 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/turf/open/floor/almayer/orange/northwest,
+/obj/effect/antre/border/corner,
+/turf/open/floor/prison/darkyellow2/northwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGs" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 12;
 	pixel_y = -9
 	},
-/turf/open/floor/almayer/orange/north,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGt" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 4
 	},
-/turf/open/floor/almayer/orange/north,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGu" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -14212,13 +14294,13 @@
 	pixel_y = -9
 	},
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGw" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 4
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGx" = (
 /obj/effect/decal/cleanable/dirt,
@@ -14227,7 +14309,7 @@
 	pixel_x = -7;
 	pixel_y = 7
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/east_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGy" = (
 /obj/item/ammo_casing/bullet,
@@ -14235,13 +14317,13 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGz" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGA" = (
 /obj/effect/decal/hybrisa/trash{
@@ -14249,20 +14331,20 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/west_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGB" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = 4
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGC" = (
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa{
 	pixel_x = 7;
 	pixel_y = 10
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/east_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGD" = (
 /obj/effect/decal/cleanable/blood,
@@ -14293,7 +14375,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGE" = (
 /obj/item/ammo_casing/bullet,
@@ -14301,7 +14383,7 @@
 	dir = 4;
 	pixel_x = -9
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGF" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -14317,13 +14399,16 @@
 	icon_state = "acid_weak";
 	name = "weak acid"
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/west_corner_dir/north_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGG" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/turf/open/floor/almayer/orange/southeast,
+/obj/effect/antre/border/corner{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/southeast,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGH" = (
 /obj/effect/decal/cleanable/dirt{
@@ -14334,7 +14419,7 @@
 	pixel_y = 9
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGI" = (
 /obj/structure/flora/pottedplant{
@@ -14342,13 +14427,19 @@
 	pixel_x = -5;
 	layer = 2.9
 	},
-/turf/open/floor/almayer/orange/southwest,
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2/southwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGJ" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = -3
 	},
-/turf/open/floor/almayer/orange,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGK" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -14374,11 +14465,14 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGN" = (
 /obj/effect/alien/weeds/kseries,
-/turf/open/floor/almayer/orange/east,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGO" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -14386,7 +14480,7 @@
 	pixel_y = 17
 	},
 /obj/effect/decal/cleanable/blood/gibs/down,
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGP" = (
 /obj/effect/decal/warning_stripes{
@@ -14402,7 +14496,7 @@
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGR" = (
 /obj/effect/alien/weeds/kseries,
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGS" = (
 /turf/open/floor/plating/platingdmg3/west,
@@ -14415,7 +14509,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGU" = (
 /obj/effect/decal/cleanable/blood,
@@ -14431,7 +14525,7 @@
 /obj/item/stack/sheet/metal{
 	pixel_x = 5
 	},
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGV" = (
 /turf/closed/wall/hybrisa/research/reinforced/hull,
@@ -14441,7 +14535,10 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10"
 	},
-/turf/open/floor/almayer/orange/east,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGX" = (
 /obj/structure/flora/pottedplant{
@@ -14449,13 +14546,17 @@
 	pixel_y = 5;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/orange/northwest,
+/obj/effect/antre/border/corner,
+/turf/open/floor/prison/darkyellow2/northwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGY" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_y = -3
 	},
-/turf/open/floor/almayer/orange/north,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGZ" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -14465,18 +14566,24 @@
 /obj/effect/decal/hybrisa/trash{
 	pixel_y = 12
 	},
-/turf/open/floor/almayer/orange/north,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHa" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail,
-/turf/open/floor/almayer/orange/north,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHb" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -6;
 	pixel_y = 10
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHc" = (
 /obj/structure/prop/invuln{
@@ -14496,7 +14603,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/turf/open/floor/almayer/orange/north,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHd" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
@@ -14505,33 +14615,31 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/almayer/orange/north,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHe" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 8;
 	pixel_x = 7
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/west_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHf" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 1;
 	pixel_y = 5
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/white_antre/indoors/upper_level/east_corridor)
-"aHg" = (
-/obj/effect/decal/hybrisa/WY/WY1,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHh" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 2;
 	pixel_y = -6
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHi" = (
 /obj/effect/decal/cleanable/blood{
@@ -14543,7 +14651,7 @@
 	icon_state = "acid_weak";
 	name = "weak acid"
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/west_corner_dir/north_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -14559,7 +14667,10 @@
 	pixel_y = 32
 	},
 /obj/structure/pipes/vents/pump_hybrisa,
-/turf/open/floor/almayer/orange,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHk" = (
 /obj/structure/closet/medical_wall{
@@ -14570,7 +14681,10 @@
 /obj/item/stack/medical/ointment,
 /obj/item/stack/medical/splint,
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
-/turf/open/floor/almayer/orange,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHl" = (
 /obj/effect/decal/warning_stripes{
@@ -14590,7 +14704,10 @@
 	sentry_range = 6;
 	dir = 4
 	},
-/turf/open/floor/almayer/orange/southeast,
+/obj/effect/antre/border/corner{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/southeast,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHm" = (
 /obj/item/ammo_casing/bullet,
@@ -14605,19 +14722,14 @@
 	alpha = 155
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/corner_dir/north_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHo" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2_red";
-	dir = 4;
-	pixel_x = 2
-	},
 /obj/effect/decal/remains/robot{
 	pixel_x = 1;
 	pixel_y = -1
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHp" = (
 /obj/item/prop{
@@ -14647,7 +14759,10 @@
 	icon_state = "acid_weak";
 	name = "weak acid"
 	},
-/turf/open/floor/almayer/orange/southwest,
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2/southwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHq" = (
 /obj/item/ammo_casing/bullet,
@@ -14658,7 +14773,10 @@
 	layer = 2.9;
 	pixel_y = 9
 	},
-/turf/open/floor/almayer/orange,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHr" = (
 /obj/effect/decal/cleanable/blood,
@@ -14671,7 +14789,10 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
 	},
-/turf/open/floor/almayer/orange,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aHs" = (
 /obj/structure/bed/chair{
@@ -16819,7 +16940,7 @@
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/landing_zone/roof)
 "aND" = (
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/upper_level/director_office)
 "aNE" = (
 /turf/open/floor/prison/darkbrown2/southeast,
@@ -17571,7 +17692,7 @@
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/upper_level/west_corridor)
 "aQr" = (
 /obj/structure/window/framed/hybrisa/research/reinforced,
@@ -17668,7 +17789,7 @@
 /area/white_antre/indoors/upper_level/payroll)
 "aQI" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/corner_dir/south_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aQJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -17690,14 +17811,14 @@
 /area/white_antre/indoors/main_level/weapons)
 "aQN" = (
 /obj/effect/alien/weeds/kseries,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aQO" = (
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/west_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aQP" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/west_corner_dir,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aQQ" = (
 /obj/structure/machinery/power/apc/power/west{
@@ -17718,14 +17839,14 @@
 	icon_state = "thermite";
 	name = "impact"
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aQS" = (
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
 	name = "impact"
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/west_corner_dir/north_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aQT" = (
 /turf/open/floor/almayer/silvercorner/south,
@@ -17746,14 +17867,20 @@
 /area/white_antre/indoors/pmc_dropship)
 "aQX" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/almayer/orange/east,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aQY" = (
 /obj/structure/platform_decoration/metal/almayer_smooth,
 /turf/open_space,
 /area/white_antre/indoors/upper_level/central_corridor)
 "aQZ" = (
-/turf/open/floor/almayer/orange,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aRa" = (
 /turf/open/floor/almayer/silver/north,
@@ -17789,36 +17916,27 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/attachable/bayonet,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aRj" = (
-/turf/open/floor/almayer/orange/west,
+/obj/effect/antre/border,
+/turf/open/floor/prison/darkyellow2/west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aRk" = (
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/upper_level/west_corridor)
 "aRl" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2_red";
-	pixel_y = 2;
-	dir = 1
-	},
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aRm" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west/east_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aRn" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2_red";
-	dir = 8;
-	pixel_x = -2
-	},
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aRo" = (
 /obj/structure/blocker/invisible_wall,
@@ -19572,10 +19690,10 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "aVH" = (
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/underground_level/west_maint)
 "aVI" = (
-/turf/open/floor/shiva/multi_tiles/southeast,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/underground_level/west_maint)
 "aVJ" = (
 /obj/effect/decal/warning_stripes{
@@ -19588,7 +19706,7 @@
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "aVK" = (
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/west_corner_dir/north_east,
 /area/white_antre/indoors/underground_level/west_maint)
 "aVL" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -20072,7 +20190,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/prison,
 /area/white_antre/indoors/main_level/east_containment)
 "aXi" = (
 /obj/structure/platform/metal/almayer/east,
@@ -20084,7 +20202,7 @@
 /area/white_antre/indoors/main_level/security)
 "aXj" = (
 /obj/structure/stairs/multiz/up,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/prison,
 /area/white_antre/indoors/main_level/east_containment)
 "aXk" = (
 /obj/item/stack/sheet/metal,
@@ -22351,7 +22469,7 @@
 /obj/effect/antre/border{
 	dir = 1
 	},
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "bcK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -22798,7 +22916,7 @@
 "bdP" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer,
+/turf/open/floor/prison,
 /area/white_antre/indoors/main_level/east_corridor)
 "bdQ" = (
 /obj/structure/girder/displaced,
@@ -24093,7 +24211,7 @@
 /turf/open_space,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bht" = (
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/corner_dir/south_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bhu" = (
 /obj/effect/decal/warning_stripes{
@@ -24112,6 +24230,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/white_antre/indoors/upper_level/xenobio)
 "bhw" = (
+/obj/effect/antre/border,
 /turf/open/floor/prison/green/southwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bhx" = (
@@ -24129,9 +24248,13 @@
 /turf/open/floor/prison/green,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bhz" = (
+/obj/effect/antre/border/corner{
+	dir = 4
+	},
 /turf/open/floor/prison/green/southeast,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bhA" = (
+/obj/effect/antre/border/edge,
 /turf/open/floor/prison/greencorner/west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bhB" = (
@@ -24141,9 +24264,13 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bhD" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/green/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bhE" = (
+/obj/effect/antre/border,
 /turf/open/floor/prison/green/west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bhF" = (
@@ -24278,6 +24405,7 @@
 /turf/open/floor/prison/blue,
 /area/white_antre/indoors/main_level/east_containment)
 "bik" = (
+/obj/effect/antre/border,
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bil" = (
@@ -24308,7 +24436,7 @@
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/white_antre/indoors/upper_level/ancillery_storage)
 "bip" = (
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "biq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24443,10 +24571,10 @@
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/central_command)
 "biO" = (
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/upper_level/director_office)
 "biP" = (
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/upper_level/director_office)
 "biQ" = (
 /obj/structure/disposalpipe/segment,
@@ -24511,7 +24639,7 @@
 	pixel_x = 7;
 	pixel_y = -4
 	},
-/turf/open/floor/almayer/black2/northeast,
+/turf/open/floor/antre/metal/black/northeast,
 /area/white_antre/indoors/upper_level/director_office)
 "biX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24522,7 +24650,10 @@
 /turf/open/floor/prison/green/southwest,
 /area/white_antre/indoors/main_level/east_containment)
 "biZ" = (
-/turf/open/floor/almayer/black2,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bja" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24589,12 +24720,19 @@
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bjp" = (
+/obj/effect/antre/border/corner{
+	dir = 1
+	},
 /turf/open/floor/prison/green/northeast,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bjq" = (
+/obj/effect/antre/border/corner,
 /turf/open/floor/prison/green/northwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bjr" = (
+/obj/effect/antre/border/edge{
+	dir = 1
+	},
 /turf/open/floor/prison/greencorner/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bjs" = (
@@ -24855,11 +24993,17 @@
 "bkt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkpurple2/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bku" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random,
+/obj/effect/antre/border/edge{
+	dir = 1
+	},
 /turf/open/floor/prison/darkpurplecorners2/east,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkv" = (
@@ -24873,6 +25017,9 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bkx" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/darkred2/east,
 /area/white_antre/indoors/underground_level/west_maint)
 "bky" = (
@@ -24886,7 +25033,7 @@
 	pixel_y = -18
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/underground_level/west_maint)
 "bkz" = (
 /obj/structure/machinery/light/red,
@@ -24894,15 +25041,17 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bkA" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/west_corner_dir/south_east,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkB" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/antre/border/corner,
 /turf/open/floor/prison/darkpurple2/northwest,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkpurple2/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkD" = (
@@ -24917,7 +25066,7 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bkF" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/underground_level/west_maint)
 "bkG" = (
 /obj/effect/decal/cleanable/blood,
@@ -24940,10 +25089,11 @@
 /obj/structure/prop/hybrisa/misc/blood{
 	pixel_y = -5
 	},
-/turf/open/floor/prison,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkH" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkpurple2/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkI" = (
@@ -24953,11 +25103,11 @@
 /area/white_antre/indoors/underground_level/east_maint)
 "bkJ" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkK" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24965,6 +25115,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkpurple2/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkM" = (
@@ -24973,6 +25124,9 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bkN" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
 /turf/open/floor/prison/darkred2/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "bkO" = (
@@ -24985,10 +25139,14 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkred2/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "bkQ" = (
 /obj/structure/largecrate/random/barrel/yellow,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkpurple2,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkR" = (
@@ -25005,11 +25163,13 @@
 	light_color = "#BB3F3F";
 	dir = 4
 	},
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkpurple2/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/secure,
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkred2/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "bkU" = (
@@ -25024,14 +25184,18 @@
 /area/white_antre/indoors/underground_level/east_maint)
 "bkW" = (
 /obj/vehicle/train/cargo/trolley,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/darkpurple2/east,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkX" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles/southeast,
+/turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/underground_level/west_maint)
 "bkY" = (
 /obj/structure/largecrate/random/case/double,
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkred2/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "bkZ" = (
@@ -25050,16 +25214,23 @@
 /area/white_antre/indoors/underground_level/east_maint)
 "blc" = (
 /obj/structure/largecrate/random/case/small,
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkred2/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "bld" = (
 /obj/vehicle/train/cargo/engine,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/darkpurple2/east,
 /area/white_antre/indoors/underground_level/east_maint)
 "ble" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 8
+	},
+/obj/effect/antre/border{
+	dir = 4
 	},
 /turf/open/floor/prison/darkred2/east,
 /area/white_antre/indoors/underground_level/west_maint)
@@ -25097,6 +25268,7 @@
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkpurple2/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bll" = (
@@ -25112,20 +25284,30 @@
 	light_color = "#BB3F3F";
 	dir = 8
 	},
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/darkpurple2/east,
 /area/white_antre/indoors/underground_level/east_maint)
 "blo" = (
 /obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/antre/border/corner,
 /turf/open/floor/prison/darkred2/northwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "blp" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkred2/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "blq" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkred2/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "blr" = (
@@ -25134,10 +25316,16 @@
 	pixel_y = -6
 	},
 /obj/structure/largecrate/random/secure,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkred2/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bls" = (
 /obj/structure/largecrate/empty,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkred2/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "blt" = (
@@ -25146,28 +25334,46 @@
 	alpha = 155
 	},
 /obj/structure/largecrate/supply,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkpurple2/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "blu" = (
 /obj/structure/largecrate/supply,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkpurple2/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "blv" = (
 /obj/structure/largecrate/random/case/double,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkpurple2/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "blw" = (
 /obj/structure/largecrate/random/case,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkpurple2/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "blx" = (
 /obj/structure/largecrate/random/secure,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkpurple2/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bly" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
+	},
+/obj/effect/antre/border{
+	dir = 1
 	},
 /turf/open/floor/prison/darkpurple2/north,
 /area/white_antre/indoors/underground_level/east_maint)
@@ -25177,11 +25383,14 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/darkred2/east,
 /area/white_antre/indoors/underground_level/west_maint)
 "blA" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/west_maint)
 "blB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -25191,7 +25400,7 @@
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/underground_level/west_maint)
 "blC" = (
 /obj/effect/decal/cleanable/generic{
@@ -25201,30 +25410,31 @@
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/corner_dir/south_east,
 /area/white_antre/indoors/underground_level/west_maint)
 "blD" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_y = -6
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/west_maint)
 "blE" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/west_corner_dir/north_east,
 /area/white_antre/indoors/underground_level/west_maint)
 "blF" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/west_corner_dir,
 /area/white_antre/indoors/underground_level/east_maint)
 "blG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/metal,
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkpurple2/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "blH" = (
@@ -25244,12 +25454,18 @@
 /area/white_antre/outdoors/path_north)
 "blI" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkred2,
 /area/white_antre/indoors/underground_level/west_maint)
 "blJ" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
+	},
+/obj/effect/antre/border{
+	dir = 8
 	},
 /turf/open/floor/prison/darkred2,
 /area/white_antre/indoors/underground_level/west_maint)
@@ -25259,6 +25475,9 @@
 	},
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_y = -6
+	},
+/obj/effect/antre/border{
+	dir = 8
 	},
 /turf/open/floor/prison/darkred2,
 /area/white_antre/indoors/underground_level/west_maint)
@@ -25270,11 +25489,17 @@
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble6{
 	pixel_y = 12
 	},
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkred2,
 /area/white_antre/indoors/underground_level/west_maint)
 "blM" = (
 /obj/structure/largecrate/random/case,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkpurple2,
 /area/white_antre/indoors/underground_level/east_maint)
 "blN" = (
@@ -25284,12 +25509,18 @@
 	alpha = 155
 	},
 /mob/living/simple_animal/mouse/rat/brown,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkpurple2,
 /area/white_antre/indoors/underground_level/east_maint)
 "blO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/chair{
 	pixel_y = 13
+	},
+/obj/effect/antre/border{
+	dir = 8
 	},
 /turf/open/floor/prison/darkpurple2,
 /area/white_antre/indoors/underground_level/east_maint)
@@ -25303,20 +25534,32 @@
 	pixel_y = 21;
 	pixel_x = 6
 	},
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkpurple2,
 /area/white_antre/indoors/underground_level/east_maint)
 "blQ" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkpurple2,
 /area/white_antre/indoors/underground_level/east_maint)
 "blR" = (
 /obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/antre/border/corner{
+	dir = 4
+	},
 /turf/open/floor/prison/darkpurple2/southeast,
 /area/white_antre/indoors/underground_level/east_maint)
 "blS" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 8
+	},
+/obj/effect/antre/border{
+	dir = 4
 	},
 /turf/open/floor/prison/darkred2/northeast,
 /area/white_antre/indoors/underground_level/west_maint)
@@ -25404,6 +25647,7 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bmc" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border,
 /turf/open/floor/prison/blue/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "bmd" = (
@@ -25427,6 +25671,9 @@
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
+	},
+/obj/effect/antre/border{
+	dir = 4
 	},
 /turf/open/floor/prison/blue/southeast,
 /area/white_antre/indoors/underground_level/west_maint)
@@ -25464,10 +25711,14 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bmn" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/corner,
 /turf/open/floor/prison/blue/northwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "bmo" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/blue/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bmp" = (
@@ -25477,11 +25728,17 @@
 	alpha = 155
 	},
 /obj/structure/ore_box,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/blue/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bmq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/ore_box,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/blue/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bmr" = (
@@ -25489,12 +25746,18 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/yellow/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bms" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
 /obj/item/maintenance_jack,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/yellow/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmt" = (
@@ -25504,28 +25767,46 @@
 	pixel_x = -1;
 	pixel_y = 7
 	},
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/yellow/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmu" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/yellow/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/small_stack,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/yellow/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmw" = (
 /obj/structure/largecrate/random,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/yellow/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmx" = (
 /obj/structure/largecrate/random/secure,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/yellow/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmy" = (
 /obj/structure/largecrate/random/case/double,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/yellow/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmz" = (
@@ -25540,6 +25821,9 @@
 /obj/structure/largecrate/random/case,
 /obj/item/stack/sheet/metal/med_small_stack,
 /obj/item/stack/sheet/metal/med_small_stack,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/yellow/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmB" = (
@@ -25552,6 +25836,9 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bmD" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/blue/east,
 /area/white_antre/indoors/underground_level/west_maint)
 "bmE" = (
@@ -25568,7 +25855,7 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_y = -6
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmH" = (
 /obj/effect/decal/cleanable/generic{
@@ -25579,6 +25866,9 @@
 /area/white_antre/indoors/underground_level/east_maint)
 "bmI" = (
 /obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/blue/east,
 /area/white_antre/indoors/underground_level/west_maint)
 "bmJ" = (
@@ -25591,7 +25881,7 @@
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmK" = (
 /obj/structure/surface/table/almayer,
@@ -25633,11 +25923,11 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/west_corner_dir/north_west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmS" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmT" = (
 /obj/effect/decal/cleanable/dirt,
@@ -25645,13 +25935,13 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmU" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_y = 10
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmV" = (
 /obj/effect/decal/cleanable/generic{
@@ -25671,10 +25961,16 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bmX" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
 /turf/open/floor/prison/blue/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "bmY" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/blue,
 /area/white_antre/indoors/underground_level/west_maint)
 "bmZ" = (
@@ -25687,16 +25983,25 @@
 /obj/structure/machinery/meter{
 	pixel_y = 32
 	},
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/blue,
 /area/white_antre/indoors/underground_level/west_maint)
 "bna" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cargo_container/kelland/left,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/blue,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cargo_container/kelland/right,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/blue,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnc" = (
@@ -25704,6 +26009,9 @@
 /obj/structure/closet,
 /obj/item/storage/box/lights/bulbs,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/yellow,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnd" = (
@@ -25712,16 +26020,25 @@
 /obj/item/storage/box/lights/tubes,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/item/storage/box/kit/m41a_kit,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/yellow,
 /area/white_antre/indoors/underground_level/east_maint)
 "bne" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/empty,
 /obj/item/weapon/twohanded/folded_metal_chair,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/yellow,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnf" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/yellow,
 /area/white_antre/indoors/underground_level/east_maint)
 "bng" = (
@@ -25730,18 +26047,30 @@
 	alpha = 155
 	},
 /obj/structure/largecrate/random/barrel/green,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/yellow,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnh" = (
 /obj/structure/largecrate/random/barrel/brown,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/yellow,
 /area/white_antre/indoors/underground_level/east_maint)
 "bni" = (
 /obj/structure/largecrate/random/barrel/blue,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/yellow,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnj" = (
 /obj/structure/largecrate/random/barrel/yellow,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/yellow,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnk" = (
@@ -25771,7 +26100,7 @@
 "bnn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles/southeast,
+/turf/open/antre/plating/corner_dir/south_east,
 /area/white_antre/indoors/underground_level/west_maint)
 "bno" = (
 /obj/effect/decal/cleanable/dirt,
@@ -25780,16 +26109,25 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bnp" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/darkbrown2/east,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnq" = (
 /obj/item/weapon/twohanded/folded_metal_chair,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnr" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/weldpack,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bns" = (
@@ -25798,32 +26136,50 @@
 	},
 /obj/structure/surface/table/almayer,
 /obj/item/stack/folding_barricade/three,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnt" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/plasteel/small_stack,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnu" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnv" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnw" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnx" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles/southeast,
+/turf/open/antre/plating/corner_dir/south_east,
 /area/white_antre/indoors/underground_level/east_maint)
 "bny" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
 /turf/open/floor/prison/green/southwest,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnz" = (
@@ -25831,20 +26187,21 @@
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnA" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/west_corner_dir/south_east,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnB" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnC" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border,
 /turf/open/floor/prison/green/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnD" = (
@@ -25856,14 +26213,14 @@
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnF" = (
 /obj/structure/cargo_container/hybrisa/containersextended/tanwywingsright,
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -25871,7 +26228,7 @@
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 6
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnH" = (
 /obj/structure/largecrate/random/secure,
@@ -25880,6 +26237,9 @@
 "bnI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnJ" = (
@@ -25887,10 +26247,16 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnK" = (
 /obj/structure/closet/crate,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnL" = (
@@ -25903,15 +26269,24 @@
 	},
 /obj/structure/closet/crate,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnN" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnO" = (
@@ -25920,29 +26295,47 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnP" = (
 /obj/structure/cargo_container/hybrisa/containersextended/whitewyleft,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnQ" = (
 /obj/structure/cargo_container/hybrisa/containersextended/whitewyright{
 	layer = 4.09
 	},
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnR" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /obj/item/storage/pouch/flare/full,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnS" = (
 /obj/structure/largecrate/random/barrel/red,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnT" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/corner{
+	dir = 4
+	},
 /turf/open/floor/prison/darkbrown2/southeast,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnU" = (
@@ -25956,21 +26349,33 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/green,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnW" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/green,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/black,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/green,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/brown,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/green,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnZ" = (
@@ -25979,6 +26384,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkbrown2/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "boa" = (
@@ -26024,6 +26430,7 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
+/obj/effect/antre/border,
 /turf/open/floor/prison/green/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bof" = (
@@ -26036,10 +26443,14 @@
 	light_color = "#BB3F3F";
 	dir = 8
 	},
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/green/east,
 /area/white_antre/indoors/underground_level/east_maint)
 "boh" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkbrown2/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "boi" = (
@@ -26057,6 +26468,9 @@
 /area/white_antre/indoors/underground_level/east_maint)
 "bok" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/green/east,
 /area/white_antre/indoors/underground_level/east_maint)
 "bol" = (
@@ -26068,6 +26482,9 @@
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 8
+	},
+/obj/effect/antre/border{
+	dir = 4
 	},
 /turf/open/floor/prison/darkbrown2/east,
 /area/white_antre/indoors/underground_level/west_maint)
@@ -26084,6 +26501,7 @@
 "boo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkbrown2/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "bop" = (
@@ -26099,10 +26517,14 @@
 	light_color = "#BB3F3F";
 	dir = 4
 	},
+/obj/effect/antre/border,
 /turf/open/floor/prison/green/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bor" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/corner{
+	dir = 1
+	},
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/white_antre/indoors/underground_level/west_maint)
 "bos" = (
@@ -26122,15 +26544,22 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bou" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/corner{
+	dir = 1
+	},
 /turf/open/floor/prison/green/northeast,
 /area/white_antre/indoors/underground_level/east_maint)
 "bov" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/red,
+/obj/effect/antre/border,
 /turf/open/floor/prison/green/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bow" = (
@@ -26160,6 +26589,7 @@
 /obj/structure/prop/almayer/computers/mission_planning_system{
 	pixel_x = 9
 	},
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkbrown2/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "boC" = (
@@ -26192,14 +26622,21 @@
 /area/white_antre/indoors/underground_level/east_maint)
 "boG" = (
 /obj/structure/largecrate/random/barrel/white,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/green,
 /area/white_antre/indoors/underground_level/east_maint)
 "boH" = (
 /obj/structure/largecrate/random/case/double,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/green,
 /area/white_antre/indoors/underground_level/east_maint)
 "boI" = (
 /obj/structure/largecrate/random/case/small,
+/obj/effect/antre/border/edge,
 /turf/open/floor/prison/greencorner/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "boJ" = (
@@ -26522,6 +26959,9 @@
 /area/white_antre/indoors/upper_level/central_corridor)
 "bpE" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bpF" = (
@@ -26646,7 +27086,7 @@
 /area/white_antre/indoors/upper_level/west_corridor)
 "bpW" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bpX" = (
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
@@ -26996,11 +27436,14 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bqP" = (
+/obj/effect/antre/border/edge{
+	dir = 4
+	},
 /turf/open/floor/prison/greencorner/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bqQ" = (
 /obj/effect/random_explosion,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bqR" = (
 /obj/item/weapon/gun/smg/p90{
@@ -27013,7 +27456,7 @@
 	pixel_y = 15;
 	current_rounds = 0
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bqS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -27040,6 +27483,9 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bqV" = (
+/obj/effect/antre/border/edge{
+	dir = 8
+	},
 /turf/open/floor/prison/greencorner,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bqW" = (
@@ -27080,13 +27526,14 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bra" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 1;
 	pixel_y = 5
 	},
+/obj/effect/antre/border,
 /turf/open/floor/prison/green/west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brb" = (
@@ -27133,6 +27580,9 @@
 "brg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/gibspawner/xeno,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/green/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brh" = (
@@ -27167,6 +27617,9 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/green/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brm" = (
@@ -27182,6 +27635,9 @@
 /area/white_antre/indoors/upper_level/east_corridor)
 "bro" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/green/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brp" = (
@@ -27191,10 +27647,11 @@
 	current_rounds = 24
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brq" = (
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/antre/border,
 /turf/open/floor/prison/green/west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brr" = (
@@ -27220,7 +27677,7 @@
 	pixel_y = 5
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brv" = (
 /obj/item/ammo_magazine/smg/p90{
@@ -27231,7 +27688,7 @@
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
 	pixel_y = -7
 	},
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brw" = (
 /obj/effect/decal/cleanable/dirt,
@@ -27250,14 +27707,14 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brA" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -27286,11 +27743,11 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brE" = (
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brF" = (
 /obj/structure/surface/table/almayer,
@@ -27325,6 +27782,9 @@
 "brI" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
+/obj/effect/antre/border/edge{
+	dir = 4
+	},
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brJ" = (
@@ -27333,10 +27793,11 @@
 	pixel_y = -7
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brK" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/edge,
 /turf/open/floor/prison/greencorner/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brL" = (
@@ -27366,11 +27827,12 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brN" = (
 /obj/structure/pipes/vents/pump_hybrisa,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border,
 /turf/open/floor/prison/green/northwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brO" = (
@@ -27386,7 +27848,7 @@
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/corner_dir/north_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brQ" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
@@ -27397,7 +27859,7 @@
 	pixel_y = 32;
 	pixel_x = 17
 	},
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/north_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brR" = (
 /obj/effect/decal{
@@ -27420,7 +27882,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/corner_dir,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brU" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
@@ -27431,11 +27893,11 @@
 	pixel_y = -32;
 	pixel_x = 17
 	},
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/south_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brV" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brW" = (
 /obj/structure/machinery/light/small{
@@ -27448,6 +27910,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/antre/border,
 /turf/open/floor/prison/green/southwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brX" = (
@@ -27460,6 +27923,9 @@
 /area/white_antre/indoors/upper_level/east_corridor)
 "brY" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
 /turf/open/floor/prison/green/southwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "brZ" = (
@@ -27467,10 +27933,12 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/edge,
 /turf/open/floor/prison/greencorner/west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bsa" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border,
 /turf/open/floor/prison/green/west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bsb" = (
@@ -27521,7 +27989,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bsj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -27556,7 +28024,7 @@
 	current_rounds = 39
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bsn" = (
 /obj/structure/surface/table/almayer,
@@ -27590,7 +28058,7 @@
 "bsq" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/east_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bsr" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
@@ -27643,7 +28111,7 @@
 	pixel_y = 6
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bsx" = (
 /obj/effect/decal/cleanable/dirt,
@@ -27954,16 +28422,27 @@
 	pixel_y = -12
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/antre/border,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bth" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bti" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/upper_level/director_office)
 "btj" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -28071,7 +28550,7 @@
 	},
 /obj/effect/landmark/objective_landmark/far,
 /obj/effect/decal/hybrisa/trash,
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/upper_level/director_office)
 "btw" = (
 /obj/effect/decal/cleanable/dirt,
@@ -28159,7 +28638,7 @@
 	dir = 8;
 	pixel_y = -5
 	},
-/turf/open/floor/almayer/black2/southeast,
+/turf/open/floor/antre/metal/black/southeast,
 /area/white_antre/indoors/upper_level/director_office)
 "btH" = (
 /obj/effect/decal/hybrisa/trash{
@@ -28213,7 +28692,7 @@
 /area/white_antre/indoors/upper_level/central_corridor)
 "btO" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/upper_level/director_office)
 "btP" = (
 /obj/effect/decal/cleanable/dirt,
@@ -28566,14 +29045,21 @@
 	pixel_x = 7;
 	pixel_y = 10
 	},
+/obj/effect/antre/border/corner{
+	dir = 1
+	},
 /turf/open/floor/prison/green/northeast,
 /area/white_antre/indoors/upper_level/west_corridor)
 "buJ" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/corner,
 /turf/open/floor/prison/green/northwest,
 /area/white_antre/indoors/upper_level/west_corridor)
 "buK" = (
 /obj/structure/largecrate/empty/secure,
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/upper_level/west_corridor)
 "buL" = (
@@ -28664,7 +29150,7 @@
 /area/white_antre/indoors/upper_level/medical)
 "buZ" = (
 /obj/item/ammo_casing/bullet,
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bva" = (
 /obj/effect/decal/cleanable/dirt,
@@ -29504,7 +29990,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west/west_west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bwV" = (
 /obj/effect/decal/warning_stripes{
@@ -29624,21 +30110,21 @@
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/west_corner_dir/north_west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bxh" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bxi" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bxj" = (
 /obj/effect/decal/warning_stripes{
@@ -31578,6 +32064,9 @@
 /area/white_antre/outdoors/path_north)
 "bBF" = (
 /obj/item/trash/wy_mre,
+/obj/item/stack/sheet/metal/large_stack{
+	pixel_x = -5
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/white_antre/outdoors/path_north)
 "bBG" = (
@@ -31913,7 +32402,7 @@
 /turf/open/floor/hybrisa/metal/bluemetalcorner,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bCJ" = (
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/west_corner_dir/south_east,
 /area/white_antre/indoors/underground_level/east_maint)
 "bCK" = (
 /obj/item/tool/crowbar/red,
@@ -33112,7 +33601,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "bFS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -33251,7 +33740,7 @@
 /area/white_antre/indoors/upper_level/canteen)
 "bGo" = (
 /obj/structure/stairs/multiz/down,
-/turf/open/floor/almayer_hull,
+/turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "bGp" = (
 /turf/open/floor/almayer_hull/outerhull_dir/northeast,
@@ -34081,7 +34570,7 @@
 	layer = 2.51;
 	pixel_x = 6
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bHW" = (
 /obj/structure/machinery/light/double/blue{
@@ -34252,7 +34741,7 @@
 /area/white_antre/indoors/upper_level/records)
 "bIj" = (
 /obj/structure/barricade/handrail,
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/west_corner_dir,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bIk" = (
 /obj/effect/mist/steam{
@@ -34403,7 +34892,7 @@
 	pixel_x = -10;
 	pixel_y = -8
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bIx" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -34414,18 +34903,18 @@
 	pixel_y = -6;
 	pixel_x = -2
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bIy" = (
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
 	name = "impact"
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bIz" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/west_corner_dir/south_east,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bIA" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -34498,7 +34987,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bIK" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -34522,7 +35011,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
+/obj/effect/antre/border/edge{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bIL" = (
 /obj/item/stool{
@@ -34662,7 +35154,10 @@
 	dir = 1;
 	layer = 2.51
 	},
-/turf/open/floor/almayer/black2/southeast,
+/obj/effect/antre/border/corner{
+	dir = 4
+	},
+/turf/open/floor/antre/metal/black/southeast,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bIU" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
@@ -34671,7 +35166,7 @@
 	pixel_y = -6;
 	pixel_x = -2
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bIV" = (
 /obj/item/ammo_casing/bullet,
@@ -34681,7 +35176,7 @@
 	pixel_x = 2;
 	pixel_y = -9
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west/east_east,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bIW" = (
 /obj/effect/decal/warning_stripes{
@@ -34694,7 +35189,10 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/almayer/black2/southwest,
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
+/turf/open/floor/antre/metal/black/southwest,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bIX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -34797,7 +35295,7 @@
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bJi" = (
 /obj/item/prop{
@@ -34830,14 +35328,12 @@
 	dir = 1;
 	layer = 2.51
 	},
-/turf/open/floor/almayer/black2/east,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bJj" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2_red";
-	dir = 8;
-	pixel_x = -2
-	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -34850,7 +35346,7 @@
 	icon_state = "thermite";
 	name = "impact"
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/west_corner_dir/north_west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bJk" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -34860,14 +35356,9 @@
 	pixel_y = -6;
 	pixel_x = -2
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bJl" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning2_red";
-	dir = 4;
-	pixel_x = 2
-	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -34884,7 +35375,7 @@
 	pixel_x = 2;
 	pixel_y = -9
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/west_corner_dir/north_east,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bJm" = (
 /obj/item/prop{
@@ -34913,7 +35404,8 @@
 /obj/effect/decal/remains/robot{
 	pixel_x = -10
 	},
-/turf/open/floor/almayer/black2/west,
+/obj/effect/antre/border,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bJn" = (
 /obj/item/ammo_casing/bullet,
@@ -34925,7 +35417,7 @@
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bJo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -37408,13 +37900,13 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bOY" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bOZ" = (
 /obj/effect/mist/steam{
@@ -37431,13 +37923,13 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bPb" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/corner_dir/north_east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bPc" = (
 /obj/effect/mist/steam{
@@ -37456,7 +37948,7 @@
 /area/white_antre/oob)
 "bPd" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bPe" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -37771,7 +38263,7 @@
 	name = "impact"
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bPx" = (
 /obj/effect/mist/steam{
@@ -38310,11 +38802,11 @@
 "bQg" = (
 /obj/effect/alien/weeds/kseries,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bQh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/corner_dir/north_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bQi" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -38337,7 +38829,10 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
-/turf/open/floor/almayer/orange/southwest,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2/southwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bQm" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -38349,13 +38844,19 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
-/turf/open/floor/almayer/orange,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bQn" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/almayer/orange,
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bQo" = (
 /obj/effect/decal/cleanable/dirt{
@@ -38365,13 +38866,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/almayer/orange,
-/area/white_antre/indoors/upper_level/east_corridor)
-"bQp" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 4
+/obj/effect/antre/border{
+	dir = 8
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/prison/darkyellow2,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bQq" = (
 /obj/effect/mist/steam{
@@ -38471,7 +38969,7 @@
 "bQC" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bQD" = (
 /obj/structure/pipes/vents/pump_hybrisa,
@@ -38631,7 +39129,7 @@
 	dir = 8;
 	pixel_y = -5
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bQU" = (
 /obj/effect/mist/steam{
@@ -38713,7 +39211,7 @@
 "bRc" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bRd" = (
 /obj/effect/mist/steam{
@@ -38738,7 +39236,7 @@
 	name = "impact"
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bRf" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -38753,6 +39251,7 @@
 	name = "impact"
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/antre/border,
 /turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bRh" = (
@@ -38794,7 +39293,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bRm" = (
 /obj/structure/blocker/invisible_wall,
@@ -38831,7 +39330,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bRp" = (
 /obj/effect/mist/steam{
@@ -39113,7 +39612,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bRN" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
@@ -39124,7 +39623,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
+/obj/effect/antre/border/edge{
+	dir = 1
+	},
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bRO" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -39221,6 +39723,9 @@
 "bSd" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
+	},
+/obj/effect/antre/border{
+	dir = 4
 	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
@@ -39320,6 +39825,9 @@
 "bSr" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
+	},
+/obj/effect/antre/border{
+	dir = 4
 	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
@@ -40454,24 +40962,24 @@
 /obj/structure/pipes/standard/manifold/hidden/purple{
 	dir = 8
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVb" = (
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVd" = (
 /obj/structure/pipes/standard/manifold/hidden/purple,
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/corner_dir,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVe" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -40484,25 +40992,25 @@
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/west_corner_dir,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVg" = (
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 9
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVh" = (
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 5
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVi" = (
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 9
 	},
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -40511,17 +41019,17 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bVk" = (
 /obj/structure/pipes/standard/simple/hidden/purple,
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVl" = (
 /obj/structure/pipes/standard/simple/hidden/purple,
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVm" = (
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 6
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVn" = (
 /obj/structure/machinery/light/red{
@@ -40530,31 +41038,34 @@
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVo" = (
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 10
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVp" = (
 /obj/structure/pipes/standard/simple/hidden/purple,
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVq" = (
 /obj/structure/pipes/standard/simple/hidden/purple,
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
 /turf/open/floor/prison/darkred2/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVr" = (
 /obj/structure/pipes/standard/simple/hidden/purple,
-/turf/open/floor/shiva/multi_tiles/southeast,
+/turf/open/antre/plating/corner_dir/north_west,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVs" = (
 /obj/structure/pipes/standard/manifold/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/southeast,
+/turf/open/antre/plating/corner_dir/north_west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVt" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -40572,28 +41083,28 @@
 /area/white_antre/indoors/underground_level/east_maint)
 "bVv" = (
 /obj/structure/pipes/standard/simple/hidden/purple,
-/turf/open/floor/shiva/multi_tiles/southeast,
+/turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVw" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/purple,
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_west/west_west,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVx" = (
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVy" = (
 /obj/structure/pipes/standard/manifold/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/purple,
-/turf/open/floor/shiva/multi_tiles/southeast,
+/turf/open/antre/plating/corner_dir,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -40602,6 +41113,7 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bVB" = (
 /obj/structure/pipes/standard/simple/hidden/purple,
+/obj/effect/antre/border/corner,
 /turf/open/floor/prison/darkbrown2/northwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVC" = (
@@ -40609,7 +41121,7 @@
 /obj/structure/pipes/standard/manifold/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/southeast,
+/turf/open/antre/plating/corner_dir,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVD" = (
 /obj/structure/machinery/light/red{
@@ -40619,12 +41131,12 @@
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/purple,
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVF" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -40633,28 +41145,28 @@
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/purple{
 	dir = 1
 	},
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/corner_dir/north_west,
 /area/white_antre/indoors/underground_level/west_maint)
 "bVH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 4
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/turf/open/antre/plating/direction_west/east_north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/purple{
 	dir = 10
 	},
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -40663,6 +41175,9 @@
 	alpha = 155
 	},
 /mob/living/simple_animal/mouse/rat/black,
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/green,
 /area/white_antre/indoors/underground_level/east_maint)
 "bVK" = (
@@ -44711,14 +45226,24 @@
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "cgL" = (
-/turf/open/floor/shiva/multi_tiles/west,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/obj/effect/antre/border{
+	dir = 8
+	},
+/obj/effect/antre/border,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/underground_level/gonzo)
 "cgM" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles/west,
-/area/white_antre/indoors/underground_level/gonzo)
-"cgN" = (
-/turf/open/floor/shiva/multi_tiles,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/underground_level/gonzo)
 "cgO" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -44726,7 +45251,13 @@
 	pixel_y = -12;
 	layer = 5
 	},
-/turf/open/floor/shiva/multi_tiles/west,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/underground_level/gonzo)
 "cgP" = (
 /obj/effect/decal/cleanable/blood,
@@ -44764,7 +45295,11 @@
 /area/white_antre/indoors/underground_level/gonzo)
 "cgW" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/multi_tiles/southeast,
+/obj/effect/antre/border,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/underground_level/gonzo)
 "cgX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -44792,7 +45327,7 @@
 	dir = 9;
 	layer = 5.12
 	},
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/open/floor/prison/darkbrown2/east,
 /area/white_antre/indoors/underground_level/gonzo)
 "cha" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -44805,7 +45340,7 @@
 	pixel_y = -12;
 	layer = 5
 	},
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/open/floor/prison/darkbrown2/west,
 /area/white_antre/indoors/underground_level/gonzo)
 "chb" = (
 /obj/effect/decal/cleanable/dirt,
@@ -44825,7 +45360,11 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/turf/open/floor/shiva/multi_tiles/southeast,
+/obj/effect/antre/border,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/underground_level/gonzo)
 "chd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -44886,7 +45425,11 @@
 	pixel_x = -14;
 	layer = 5
 	},
-/turf/open/floor/shiva/multi_tiles/southeast,
+/obj/effect/antre/border,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/underground_level/gonzo)
 "chi" = (
 /obj/effect/decal/cleanable/dirt,
@@ -45073,7 +45616,7 @@
 	start_charge = 40
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "chB" = (
 /obj/effect/decal/warning_stripes{
@@ -45103,6 +45646,9 @@
 /obj/item/tool/crowbar/red{
 	pixel_y = -8;
 	pixel_x = -3
+	},
+/obj/effect/antre/border{
+	dir = 4
 	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/main_level/west_corridor)
@@ -45202,7 +45748,7 @@
 	},
 /obj/structure/machinery/light/double,
 /obj/effect/antre/border/corner,
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/main_level/west_corridor)
 "chR" = (
 /obj/structure/barricade/handrail{
@@ -45232,7 +45778,7 @@
 	buckling_y = 7
 	},
 /obj/effect/antre/border,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/west_corridor)
 "chU" = (
 /obj/structure/machinery/light/double{
@@ -45242,7 +45788,7 @@
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "chV" = (
 /obj/structure/largecrate/empty/case/double,
@@ -45268,7 +45814,7 @@
 /turf/open/antre/plating/west_corner_dir/south_east,
 /area/white_antre/indoors/main_level/west_corridor)
 "chY" = (
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/west_corner_dir,
 /area/white_antre/indoors/upper_level/west_corridor)
 "chZ" = (
 /obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
@@ -45276,7 +45822,7 @@
 /area/white_antre/indoors/upper_level/medical)
 "cia" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/upper_level/west_corridor)
 "cib" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -45388,13 +45934,16 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/green/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "cis" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/hybrisa/tile/tilebeige,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/east_corridor)
 "cit" = (
 /obj/structure/surface/table/almayer{
@@ -45600,7 +46149,7 @@
 	dir = 8;
 	pixel_y = -5
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "ciU" = (
 /obj/structure/platform/metal/almayer_smooth/east,
@@ -45610,7 +46159,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/almayer/orange/southeast,
+/obj/effect/antre/border/corner{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/southeast,
 /area/white_antre/indoors/upper_level/east_corridor)
 "ciW" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
@@ -45625,11 +46177,11 @@
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
-/turf/open/floor/almayer/orange/west,
+/turf/open/floor/prison/darkyellow2/west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "ciY" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "ciZ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -45688,7 +46240,10 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
-/turf/open/floor/almayer/orange/northwest,
+/obj/effect/antre/border{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/northwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "cjh" = (
 /obj/structure/blocker/invisible_wall,
@@ -45702,7 +46257,7 @@
 /obj/item/stack/sheet/metal{
 	pixel_x = 5
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "cjj" = (
 /obj/structure/pipes/vents/pump_hybrisa,
@@ -45753,7 +46308,7 @@
 /obj/structure/bed/chair/comfy/orange{
 	dir = 4
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "cjo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -45803,7 +46358,7 @@
 /area/white_antre/indoors/upper_level/central_command)
 "cju" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/almayer/mono,
+/turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_corridor)
 "cjv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -45817,7 +46372,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/almayer/orange/northeast,
+/obj/effect/antre/border/corner{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/northeast,
 /area/white_antre/indoors/upper_level/east_corridor)
 "cjx" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -45825,7 +46383,7 @@
 	dir = 8;
 	pixel_y = -5
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/antre/plating/direction_west,
 /area/white_antre/indoors/upper_level/east_corridor)
 "cjy" = (
 /obj/structure/stairs/multiz/down,
@@ -48324,6 +48882,7 @@
 /area/white_antre/indoors/main_level/east_containment)
 "cnk" = (
 /obj/structure/closet/crate/explosives,
+/obj/item/pamphlet/engineer,
 /obj/item/explosive/plastic/breaching_charge{
 	unacidable = 1
 	},
@@ -48448,11 +49007,11 @@
 	pixel_y = 32;
 	pixel_x = 17
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/upper_level/west_corridor)
 "cnE" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/upper_level/west_corridor)
 "cnF" = (
 /obj/structure/prop/hybrisa/misc/redmeter{
@@ -48463,13 +49022,13 @@
 	pixel_y = 33;
 	pixel_x = 7
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/upper_level/west_corridor)
 "cnG" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
-/turf/open/floor/almayer/black2,
+/turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/upper_level/west_corridor)
 "cnH" = (
 /obj/effect/decal/warning_stripes{
@@ -49249,6 +49808,10 @@
 /area/white_antre/indoors/upper_level/central_corridor)
 "cqn" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/obj/effect/antre/border,
 /turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/upper_level/central_corridor)
 "cqo" = (
@@ -49418,13 +49981,617 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/white_antre/indoors/upper_level/central_corridor)
+"cqP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow4";
+	dir = 1;
+	pixel_y = -18
+	},
+/turf/open/antre/plating/direction_north/east_edge,
+/area/white_antre/indoors/underground_level/west_maint)
+"cqQ" = (
+/turf/open/antre/plating/corner_dir/south_east,
+/area/white_antre/indoors/underground_level/east_maint)
+"cqR" = (
+/turf/open/antre/plating/direction_north/east_edge,
+/area/white_antre/indoors/underground_level/west_maint)
+"cqS" = (
+/turf/open/antre/plating/direction_north/west_edge,
+/area/white_antre/indoors/underground_level/east_maint)
+"cqT" = (
+/turf/open/antre/plating/direction_north/east_edge,
+/area/white_antre/indoors/underground_level/east_maint)
+"cqU" = (
+/turf/open/antre/plating/corner_dir/north_west,
+/area/white_antre/indoors/underground_level/west_maint)
+"cqV" = (
+/turf/open/antre/plating/corner_dir/north_east,
+/area/white_antre/indoors/underground_level/west_maint)
+"cqW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow4";
+	dir = 4;
+	pixel_x = -16
+	},
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/underground_level/east_maint)
+"cqX" = (
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/underground_level/east_maint)
+"cqY" = (
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/underground_level/east_maint)
+"cqZ" = (
+/turf/open/antre/plating/west_corner_dir/north_east,
+/area/white_antre/indoors/underground_level/east_maint)
+"cra" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow4";
+	dir = 4;
+	pixel_x = -16
+	},
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/underground_level/east_maint)
+"crb" = (
+/turf/open/antre/plating/west_corner_dir,
+/area/white_antre/indoors/underground_level/west_maint)
+"crc" = (
+/turf/open/antre/plating/direction_west/west_south,
+/area/white_antre/indoors/underground_level/west_maint)
+"crd" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/west_corner_dir/south_east,
+/area/white_antre/indoors/underground_level/west_maint)
+"cre" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/west_corner_dir,
+/area/white_antre/indoors/underground_level/west_maint)
+"crf" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_west/west_south,
+/area/white_antre/indoors/underground_level/east_maint)
+"crg" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/west_corner_dir/south_east,
+/area/white_antre/indoors/underground_level/east_maint)
+"crh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/antre/plating/west_corner_dir/north_west,
+/area/white_antre/indoors/underground_level/west_maint)
+"cri" = (
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/underground_level/west_maint)
+"crj" = (
+/turf/open/antre/plating/west_corner_dir/north_west,
+/area/white_antre/indoors/underground_level/west_maint)
+"crk" = (
+/turf/open/antre/plating/west_corner_dir/north_west,
+/area/white_antre/indoors/underground_level/east_maint)
+"crl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/antre/plating/corner_dir,
+/area/white_antre/indoors/underground_level/west_maint)
+"crm" = (
+/turf/open/antre/plating/corner_dir/south_east,
+/area/white_antre/indoors/underground_level/west_maint)
+"crn" = (
+/turf/open/antre/plating/corner_dir/north_east,
+/area/white_antre/indoors/underground_level/east_maint)
+"cro" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/antre/plating/corner_dir/north_west,
+/area/white_antre/indoors/underground_level/west_maint)
+"crp" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/antre/plating/corner_dir,
+/area/white_antre/indoors/underground_level/west_maint)
+"crq" = (
+/turf/open/antre/plating/direction_north,
+/area/white_antre/indoors/underground_level/east_maint)
+"crr" = (
+/turf/open/floor/prison/darkbrown2/west,
+/area/white_antre/indoors/underground_level/gonzo)
+"crs" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/antre/plating/west_corner_dir,
+/area/white_antre/indoors/underground_level/west_maint)
+"crt" = (
+/turf/open/antre/plating/west_corner_dir/south_east,
+/area/white_antre/indoors/underground_level/west_maint)
+"cru" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/antre/plating/direction_west/west_south,
+/area/white_antre/indoors/underground_level/east_maint)
+"crv" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_west/east_east,
+/area/white_antre/indoors/underground_level/west_maint)
+"crw" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_west/west_west,
+/area/white_antre/indoors/underground_level/east_maint)
+"crx" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/underground_level/east_maint)
+"cry" = (
+/turf/open/antre/plating/direction_west/east_east,
+/area/white_antre/indoors/underground_level/east_maint)
+"crz" = (
+/obj/effect/antre/border{
+	dir = 1
+	},
+/obj/effect/antre/border{
+	dir = 8
+	},
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/underground_level/gonzo)
+"crA" = (
+/obj/effect/antre/border{
+	dir = 1
+	},
+/obj/effect/antre/border{
+	dir = 8
+	},
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/underground_level/gonzo)
+"crB" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/antre/plating/west_corner_dir/north_west,
+/area/white_antre/indoors/underground_level/west_maint)
+"crC" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/underground_level/east_maint)
+"crD" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/underground_level/east_maint)
+"crE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/antre/plating/corner_dir/south_east,
+/area/white_antre/indoors/underground_level/west_maint)
+"crF" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/antre/plating/corner_dir,
+/area/white_antre/indoors/underground_level/east_maint)
+"crG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/antre/plating/corner_dir/north_east,
+/area/white_antre/indoors/underground_level/west_maint)
+"crH" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/antre/plating/corner_dir/north_west,
+/area/white_antre/indoors/underground_level/east_maint)
+"crI" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/antre/plating/direction_west/west_south,
+/area/white_antre/indoors/underground_level/west_maint)
+"crJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/antre/plating/direction_west/west_south,
+/area/white_antre/indoors/underground_level/west_maint)
+"crK" = (
+/turf/open/antre/plating/west_corner_dir,
+/area/white_antre/indoors/underground_level/east_maint)
+"crL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/antre/plating/direction_west/west_south,
+/area/white_antre/indoors/underground_level/east_maint)
+"crM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/antre/plating/west_corner_dir/south_east,
+/area/white_antre/indoors/underground_level/east_maint)
+"crN" = (
+/obj/structure/pipes/standard/manifold/hidden/purple{
+	dir = 8
+	},
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/underground_level/west_maint)
+"crO" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/underground_level/west_maint)
+"crP" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/west_corner_dir/north_east,
+/area/white_antre/indoors/underground_level/west_maint)
+"crQ" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/corner_dir/north_east,
+/area/white_antre/indoors/underground_level/west_maint)
+"crR" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/west_corner_dir/north_west,
+/area/white_antre/indoors/underground_level/west_maint)
+"crS" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/west_corner_dir/north_west,
+/area/white_antre/indoors/underground_level/east_maint)
 "crT" = (
 /obj/structure/machinery/landinglight/ds1,
 /turf/open/floor/prison/floor_plate,
 /area/white_antre/landing_zone)
+"crU" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/underground_level/east_maint)
+"crV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/antre/plating/west_corner_dir/north_east,
+/area/white_antre/indoors/underground_level/east_maint)
+"crW" = (
+/turf/open/antre/plating/corner_dir,
+/area/white_antre/indoors/underground_level/west_maint)
+"crX" = (
+/obj/effect/antre/border/edge,
+/turf/open/antre/plating/direction_north,
+/area/white_antre/indoors/underground_level/west_maint)
+"crY" = (
+/obj/effect/antre/border/edge{
+	dir = 8
+	},
+/turf/open/antre/plating/direction_north,
+/area/white_antre/indoors/underground_level/west_maint)
+"crZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow4";
+	pixel_y = 15
+	},
+/turf/open/antre/plating/direction_north,
+/area/white_antre/indoors/underground_level/west_maint)
+"csa" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow4";
+	pixel_y = 15
+	},
+/turf/open/antre/plating/direction_north/east_edge,
+/area/white_antre/indoors/underground_level/west_maint)
+"csb" = (
+/turf/open/antre/plating/corner_dir/north_west,
+/area/white_antre/indoors/underground_level/east_maint)
+"csc" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_north/west_edge,
+/area/white_antre/indoors/main_level/west_corridor)
+"csd" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_north/west_edge,
+/area/white_antre/indoors/main_level/west_corridor)
+"cse" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/antre/plating/west_corner_dir,
+/area/white_antre/indoors/main_level/west_corridor)
+"csf" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_west/west_west,
+/area/white_antre/indoors/main_level/west_corridor)
+"csg" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/antre/plating/west_corner_dir/north_west,
+/area/white_antre/indoors/main_level/west_corridor)
+"csh" = (
+/turf/open/antre/plating/direction_west/west_south,
+/area/white_antre/indoors/upper_level/west_corridor)
+"csi" = (
+/turf/open/antre/plating/west_corner_dir/south_east,
+/area/white_antre/indoors/upper_level/west_corridor)
+"csj" = (
+/obj/effect/antre/border/edge,
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/upper_level/west_corridor)
+"csk" = (
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/upper_level/west_corridor)
+"csl" = (
+/obj/effect/antre/border/edge{
+	dir = 8
+	},
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/upper_level/west_corridor)
+"csm" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_west/east_east,
+/area/white_antre/indoors/upper_level/west_corridor)
+"csn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/antre/plating/west_corner_dir/north_east,
+/area/white_antre/indoors/upper_level/west_corridor)
+"cso" = (
+/obj/structure/stairs/multiz/down{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_north/west_edge,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csp" = (
+/turf/open/antre/plating/direction_north/west_edge,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csq" = (
+/turf/open/antre/plating/direction_north,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csr" = (
+/turf/open/antre/plating/corner_dir/north_west,
+/area/white_antre/indoors/upper_level/east_corridor)
+"css" = (
+/turf/open/antre/plating/direction_north/east_edge,
+/area/white_antre/indoors/upper_level/east_corridor)
+"cst" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/floor/prison/green/northeast,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csu" = (
+/turf/open/antre/plating/corner_dir,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csv" = (
+/obj/effect/antre/border,
+/turf/open/floor/prison/green/northwest,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csw" = (
+/turf/open/antre/plating/west_corner_dir/north_west,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csx" = (
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csz" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/antre/border,
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_north,
+/area/white_antre/indoors/upper_level/central_corridor)
+"csA" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csB" = (
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csC" = (
+/turf/open/antre/plating/direction_west/east_east,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csD" = (
+/turf/open/antre/plating/west_corner_dir,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csF" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csG" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/obj/item/shard/shrapnel,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/shard/shrapnel,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 4
+	},
+/turf/open/floor/plating/platingdmg1,
+/area/white_antre/indoors/upper_level/east_corridor)
 "csI" = (
+/obj/effect/antre/border/corner{
+	dir = 4
+	},
 /turf/open/floor/prison/green/southeast,
 /area/white_antre/indoors/underground_level/east_maint)
+"csJ" = (
+/turf/open/antre/plating/direction_west/west_south,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csK" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_y = 4
+	},
+/turf/open/antre/plating/west_corner_dir/south_east,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csL" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 8;
+	pixel_x = 7
+	},
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csM" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/obj/item/shard/shrapnel,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/shard/shrapnel,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/antre/plating/direction_west/east_east,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csN" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/antre/plating/direction_west,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csO" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csP" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
+/turf/open/floor/prison/green/southeast,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csQ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/antre/plating/direction_north,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csR" = (
+/turf/open/antre/plating/corner_dir/north_east,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csS" = (
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
+/turf/open/floor/prison/green/southwest,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csT" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/white_antre/indoors/upper_level/west_corridor)
+"csU" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/almayer_hull/outerhull_dir/west,
+/area/white_antre/indoors/upper_level/central_corridor)
+"csV" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/white_antre/indoors/upper_level/west_corridor)
+"csW" = (
+/obj/structure/barricade/handrail,
+/turf/open/antre/plating/direction_west/west_south,
+/area/white_antre/indoors/upper_level/west_corridor)
+"csX" = (
+/obj/structure/barricade/handrail,
+/turf/open/antre/plating/west_corner_dir/south_east,
+/area/white_antre/indoors/upper_level/west_corridor)
+"csY" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/antre/plating/corner_dir/south_east,
+/area/white_antre/indoors/upper_level/east_corridor)
+"csZ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/antre/plating/west_corner_dir/north_west,
+/area/white_antre/indoors/upper_level/west_corridor)
+"cta" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/antre/plating/direction_west/east_north,
+/area/white_antre/indoors/upper_level/west_corridor)
+"ctb" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/antre/plating/west_corner_dir/north_east,
+/area/white_antre/indoors/upper_level/west_corridor)
+"ctc" = (
+/turf/open/antre/plating/direction_west/west_west,
+/area/white_antre/indoors/upper_level/west_corridor)
 "cul" = (
 /obj/structure/prop/hybrisa/airport/dropshipvent2right,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -49460,6 +50627,9 @@
 /turf/open/floor/hybrisa/metal/zbrownfloor1/southeast,
 /area/white_antre/landing_zone/roof)
 "cvP" = (
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/yellow,
 /area/white_antre/indoors/underground_level/east_maint)
 "cxK" = (
@@ -49586,6 +50756,9 @@
 /turf/open/floor/almayer/silver/west,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "cMt" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/blue/east,
 /area/white_antre/indoors/underground_level/west_maint)
 "cNe" = (
@@ -49631,7 +50804,9 @@
 	dir = 4;
 	pixel_y = -5
 	},
-/obj/structure/largecrate/supply/supplies/metal,
+/obj/item/stack/sheet/metal/large_stack{
+	pixel_x = -5
+	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/white_antre/indoors/pmc_dropship)
 "cSV" = (
@@ -49687,6 +50862,9 @@
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "cYs" = (
+/obj/effect/antre/border/corner{
+	dir = 1
+	},
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/white_antre/indoors/underground_level/west_maint)
 "dal" = (
@@ -49814,10 +50992,11 @@
 	alpha = 155
 	},
 /obj/structure/pipes/standard/simple/hidden/purple,
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "dtC" = (
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/underground_level/east_maint)
 "dwB" = (
 /obj/structure/platform/metal/almayer_smooth,
@@ -50163,7 +51342,7 @@
 	dir = 1;
 	pixel_y = 1
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "etU" = (
 /obj/structure/window/reinforced,
@@ -50206,10 +51385,14 @@
 /area/white_antre/oob)
 "exf" = (
 /obj/structure/largecrate/random/case,
+/obj/effect/antre/border/edge{
+	dir = 4
+	},
 /turf/open/floor/prison/darkpurplecorners2/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "eyo" = (
 /obj/structure/pipes/standard/simple/hidden/purple,
+/obj/effect/antre/border,
 /turf/open/floor/prison/blue/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "ezs" = (
@@ -50292,7 +51475,7 @@
 "eVw" = (
 /obj/effect/landmark/queen_spawn,
 /obj/effect/alien/weeds/node,
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "eYg" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -50384,7 +51567,7 @@
 	pixel_y = 7;
 	layer = 3.01
 	},
-/turf/open/floor/almayer/black2/southeast,
+/turf/open/floor/antre/metal/black/southeast,
 /area/white_antre/indoors/upper_level/director_office)
 "fjW" = (
 /obj/structure/platform/metal/almayer/west,
@@ -50480,6 +51663,9 @@
 /area/white_antre/indoors/pmc_dropship)
 "fED" = (
 /obj/structure/largecrate/random/barrel/medical,
+/obj/effect/antre/border/edge{
+	dir = 8
+	},
 /turf/open/floor/prison/darkredcorners2,
 /area/white_antre/indoors/underground_level/west_maint)
 "fFk" = (
@@ -50538,6 +51724,7 @@
 /area/white_antre/indoors/main_level/south_containment)
 "fPX" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/edge,
 /turf/open/floor/prison/greencorner/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "fQm" = (
@@ -50688,6 +51875,9 @@
 /area/white_antre/outdoors/facility_exterior)
 "grs" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/edge{
+	dir = 1
+	},
 /turf/open/floor/prison/greencorner/east,
 /area/white_antre/indoors/underground_level/east_maint)
 "grL" = (
@@ -51118,7 +52308,7 @@
 /obj/structure/machinery/gear{
 	pixel_y = -1
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "hGv" = (
 /obj/effect/decal/medical_decals{
@@ -51175,7 +52365,7 @@
 	},
 /area/white_antre/indoors/pmc_dropship)
 "hQK" = (
-/turf/open/floor/shiva/multi_tiles/southeast,
+/turf/open/antre/plating/corner_dir,
 /area/white_antre/indoors/underground_level/east_maint)
 "hSc" = (
 /obj/effect/decal/warning_stripes{
@@ -51321,6 +52511,9 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "iqP" = (
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/underground_level/west_maint)
 "iqZ" = (
@@ -51336,6 +52529,9 @@
 /turf/open/floor/almayer/silver/north,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "itJ" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/darkbrown2/east,
 /area/white_antre/indoors/underground_level/west_maint)
 "iuN" = (
@@ -51473,6 +52669,9 @@
 /turf/open/floor/almayer/silvercorner/north,
 /area/white_antre/indoors/main_level/research)
 "iJq" = (
+/obj/effect/antre/border/corner{
+	dir = 4
+	},
 /turf/open/floor/prison/yellow/southeast,
 /area/white_antre/indoors/underground_level/east_maint)
 "iJu" = (
@@ -51515,6 +52714,9 @@
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
 /area/white_antre/indoors/main_level/dorms)
 "iPn" = (
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/green,
 /area/white_antre/indoors/underground_level/east_maint)
 "iSx" = (
@@ -51561,6 +52763,7 @@
 /turf/open/floor/prison,
 /area/white_antre/outdoors/facility_exterior)
 "iYr" = (
+/obj/effect/antre/border,
 /turf/open/floor/prison/yellow/northwest,
 /area/white_antre/indoors/underground_level/east_maint)
 "iYG" = (
@@ -51804,9 +53007,12 @@
 	dir = 1;
 	pixel_y = 1
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "jXs" = (
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
 /turf/open/floor/prison/green/southwest,
 /area/white_antre/indoors/underground_level/east_maint)
 "kaj" = (
@@ -51873,6 +53079,9 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/white_antre/landing_zone/roof)
 "krp" = (
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkred2,
 /area/white_antre/indoors/underground_level/west_maint)
 "ktc" = (
@@ -51981,6 +53190,7 @@
 /turf/open/floor/prison/blue/northwest,
 /area/white_antre/indoors/main_level/east_corridor)
 "kUL" = (
+/obj/effect/antre/border/corner,
 /turf/open/floor/prison/darkpurple2/northwest,
 /area/white_antre/indoors/underground_level/east_maint)
 "kXf" = (
@@ -52142,6 +53352,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/landing_zone)
 "lBM" = (
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
 /turf/open/floor/prison/darkpurple2/southwest,
 /area/white_antre/indoors/underground_level/east_maint)
 "lBV" = (
@@ -52302,7 +53515,7 @@
 /turf/open/floor/prison/blue,
 /area/white_antre/indoors/underground_level/west_maint)
 "lXU" = (
-/turf/open/floor/almayer/black2/northwest,
+/turf/open/floor/antre/metal/black/northwest,
 /area/white_antre/indoors/upper_level/director_office)
 "lYA" = (
 /turf/closed/shuttle/dropship4/WY/StarGlider{
@@ -52351,6 +53564,9 @@
 	},
 /area/white_antre/indoors/pmc_dropship)
 "mib" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/blue/southeast,
 /area/white_antre/indoors/underground_level/west_maint)
 "miE" = (
@@ -52430,6 +53646,7 @@
 /turf/open/asphalt/brown,
 /area/white_antre/outdoors/road_east)
 "mye" = (
+/obj/effect/antre/border/corner,
 /turf/open/floor/prison/green/northwest,
 /area/white_antre/indoors/underground_level/east_maint)
 "myO" = (
@@ -52470,7 +53687,7 @@
 	pixel_x = 9;
 	pixel_y = 8
 	},
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/antre/metal/black/north,
 /area/white_antre/indoors/upper_level/director_office)
 "mFB" = (
 /obj/structure/surface/table/almayer,
@@ -52699,7 +53916,7 @@
 	dir = 4;
 	pixel_x = -16
 	},
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_west/west_south,
 /area/white_antre/indoors/underground_level/east_maint)
 "noG" = (
 /obj/effect/decal/warning_stripes{
@@ -52787,6 +54004,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/weapons)
 "nEQ" = (
+/obj/effect/antre/border,
 /turf/open/floor/prison/green/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "nGR" = (
@@ -52808,11 +54026,14 @@
 /obj/structure/machinery/gear{
 	pixel_y = 1
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "nKQ" = (
 /obj/structure/largecrate/random/case,
 /obj/item/storage/belt/utility/full,
+/obj/effect/antre/border/edge{
+	dir = 8
+	},
 /turf/open/floor/prison/greencorner,
 /area/white_antre/indoors/underground_level/east_maint)
 "nLk" = (
@@ -52929,13 +54150,16 @@
 /obj/effect/antre/border{
 	dir = 4
 	},
-/turf/open/floor/almayer/black2/east,
+/turf/open/floor/antre/metal/black/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "odb" = (
 /obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/prison/bright_clean,
 /area/white_antre/indoors/main_level/engineering)
 "odm" = (
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkbrown2/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "odB" = (
@@ -52985,7 +54209,7 @@
 	icon_state = "cargo_arrow4";
 	pixel_y = 15
 	},
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/underground_level/west_maint)
 "oji" = (
 /obj/effect/hybrisa/misc/fake/wire/blue{
@@ -53176,7 +54400,7 @@
 	icon_state = "door_warning2";
 	pixel_y = -1
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "oHy" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
@@ -53416,6 +54640,9 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/south_field)
 "pAI" = (
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkred2/north,
 /area/white_antre/indoors/underground_level/west_maint)
 "pBA" = (
@@ -53479,12 +54706,18 @@
 /turf/open/floor/prison/cell_stripe,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "pKB" = (
+/obj/effect/antre/border/corner{
+	dir = 8
+	},
 /turf/open/floor/prison/darkred2/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "pLS" = (
 /turf/open/asphalt/cement/cement9,
 /area/white_antre/landing_zone)
 "pMG" = (
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/yellow/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "pMU" = (
@@ -53494,6 +54727,9 @@
 /turf/open/asphalt/brown,
 /area/white_antre/outdoors/road_west)
 "pOh" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/blue/northeast,
 /area/white_antre/indoors/underground_level/west_maint)
 "pOm" = (
@@ -53697,9 +54933,15 @@
 /turf/open/floor/almayer/test_floor4,
 /area/white_antre/indoors/main_level/security)
 "qsH" = (
+/obj/effect/antre/border/corner{
+	dir = 4
+	},
 /turf/open/floor/prison/darkred2/southeast,
 /area/white_antre/indoors/underground_level/west_maint)
 "quF" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/darkred2/east,
 /area/white_antre/indoors/underground_level/west_maint)
 "qwh" = (
@@ -53745,10 +54987,11 @@
 	icon_state = "door_warning2";
 	dir = 8
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "qEM" = (
 /obj/structure/pipes/standard/simple/hidden/purple,
+/obj/effect/antre/border,
 /turf/open/floor/prison/blue/northwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "qFd" = (
@@ -53812,7 +55055,7 @@
 /area/white_antre/indoors/main_level/weapons)
 "qPl" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
-/turf/open/floor/almayer/black2/west,
+/turf/open/floor/antre/metal/black/west,
 /area/white_antre/indoors/main_level/research)
 "qPQ" = (
 /turf/open/floor/hybrisa/metal/zbrownfloor1/southwest,
@@ -53859,7 +55102,7 @@
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "qYq" = (
-/turf/open/floor/almayer/black2/northeast,
+/turf/open/floor/antre/metal/black/northeast,
 /area/white_antre/indoors/upper_level/director_office)
 "rbv" = (
 /obj/structure/surface/table/almayer{
@@ -54014,7 +55257,7 @@
 	dir = 4;
 	pixel_x = 2
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "rBT" = (
 /obj/structure/bed/chair/comfy{
@@ -54034,6 +55277,9 @@
 /area/white_antre/indoors/main_level/east_containment)
 "rFY" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/edge{
+	dir = 1
+	},
 /turf/open/floor/prison/darkpurplecorners2/east,
 /area/white_antre/indoors/underground_level/east_maint)
 "rGs" = (
@@ -54152,7 +55398,7 @@
 	dir = 1;
 	pixel_y = -18
 	},
-/turf/open/floor/shiva/multi_tiles,
+/turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/underground_level/west_maint)
 "sdQ" = (
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -54169,6 +55415,9 @@
 /turf/open/floor/hybrisa/metal/stripe_red/east,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "sfO" = (
+/obj/effect/antre/border/corner{
+	dir = 1
+	},
 /turf/open/floor/prison/darkred2/northeast,
 /area/white_antre/indoors/underground_level/west_maint)
 "siB" = (
@@ -54203,6 +55452,7 @@
 /turf/open/floor/almayer/emeraldcornersmooth/south,
 /area/white_antre/indoors/main_level/research)
 "sAB" = (
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkbrown2/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "sAO" = (
@@ -54295,6 +55545,9 @@
 "sVf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/antre/border/corner{
+	dir = 1
+	},
 /turf/open/floor/prison/green/northeast,
 /area/white_antre/indoors/underground_level/east_maint)
 "sVo" = (
@@ -54487,6 +55740,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/white_antre/outdoors/path_north)
 "ubA" = (
+/obj/effect/antre/border,
 /turf/open/floor/prison/yellow/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "uci" = (
@@ -54587,6 +55841,9 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "uDv" = (
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/green/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "uEw" = (
@@ -54601,7 +55858,7 @@
 	pixel_x = -6;
 	layer = 4
 	},
-/turf/open/floor/almayer/black2/southwest,
+/turf/open/floor/antre/metal/black/southwest,
 /area/white_antre/indoors/upper_level/director_office)
 "uGQ" = (
 /obj/effect/decal/warning_stripes{
@@ -54730,6 +55987,7 @@
 /turf/open/floor/shiva,
 /area/white_antre/indoors/main_level/research)
 "vcw" = (
+/obj/effect/antre/border,
 /turf/open/floor/prison/yellow/southwest,
 /area/white_antre/indoors/underground_level/east_maint)
 "vcM" = (
@@ -54895,6 +56153,9 @@
 	light_color = "#BB3F3F";
 	dir = 8
 	},
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/darkbrown2/southeast,
 /area/white_antre/indoors/underground_level/west_maint)
 "vGy" = (
@@ -54931,6 +56192,9 @@
 /area/white_antre/indoors/main_level/research)
 "vIq" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/darkpurple2/east,
 /area/white_antre/indoors/underground_level/east_maint)
 "vIM" = (
@@ -54978,6 +56242,7 @@
 /area/white_antre/outdoors/facility_exterior)
 "vPs" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/edge,
 /turf/open/floor/prison/darkredcorners2/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "vPV" = (
@@ -55027,6 +56292,9 @@
 /turf/open/floor/prison/darkpurple2,
 /area/white_antre/indoors/main_level/east_corridor)
 "vYw" = (
+/obj/effect/antre/border/corner{
+	dir = 1
+	},
 /turf/open/floor/prison/yellow/northeast,
 /area/white_antre/indoors/underground_level/east_maint)
 "vZz" = (
@@ -55050,15 +56318,25 @@
 /turf/open/floor/almayer/silverfull,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "wde" = (
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkpurple2/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "wfs" = (
+/obj/effect/antre/border{
+	dir = 1
+	},
 /turf/open/floor/prison/darkpurple2/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "wfC" = (
+/obj/effect/antre/border/corner{
+	dir = 1
+	},
 /turf/open/floor/prison/darkpurple2/northeast,
 /area/white_antre/indoors/underground_level/east_maint)
 "wfX" = (
+/obj/effect/antre/border{
+	dir = 4
+	},
 /turf/open/floor/prison/green/east,
 /area/white_antre/indoors/underground_level/east_maint)
 "wgh" = (
@@ -55191,7 +56469,7 @@
 	pixel_y = -1;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/antre/metal/blackfull,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "wAJ" = (
 /obj/effect/decal/warning_stripes{
@@ -55317,6 +56595,7 @@
 /area/white_antre/outdoors/north_field)
 "wYy" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/antre/border/edge,
 /turf/open/floor/prison/darkpurplecorners2/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "wZd" = (
@@ -55388,6 +56667,9 @@
 /turf/open/floor/prison/darkpurple2/southwest,
 /area/white_antre/indoors/main_level/east_corridor)
 "xpu" = (
+/obj/effect/antre/border{
+	dir = 8
+	},
 /turf/open/floor/prison/darkpurple2,
 /area/white_antre/indoors/underground_level/east_maint)
 "xqd" = (
@@ -55445,6 +56727,7 @@
 /area/white_antre/oob)
 "xws" = (
 /obj/structure/pipes/standard/simple/hidden/purple,
+/obj/effect/antre/border,
 /turf/open/floor/prison/darkred2/northwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "xwx" = (
@@ -55506,6 +56789,7 @@
 /area/white_antre/indoors/main_level/north_containment_hive)
 "xEI" = (
 /obj/structure/pipes/standard/simple/hidden/purple,
+/obj/effect/antre/border,
 /turf/open/floor/prison/blue/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "xFj" = (
@@ -55527,6 +56811,7 @@
 	},
 /area/white_antre/indoors/pmc_dropship)
 "xGl" = (
+/obj/effect/antre/border/corner,
 /turf/open/floor/prison/darkbrown2/northwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "xIx" = (
@@ -74256,7 +75541,7 @@ iKa
 iKa
 iKa
 iKa
-avF
+xwf
 avF
 itJ
 itJ
@@ -74294,7 +75579,7 @@ bkx
 bkx
 bkx
 avF
-avF
+xwf
 iKa
 iKa
 iKa
@@ -74427,8 +75712,8 @@ iKa
 xwf
 oSg
 ohZ
-aVH
-aVH
+aVI
+crW
 bor
 bnp
 bol
@@ -74458,7 +75743,7 @@ quF
 quF
 quF
 qsH
-aVH
+cqU
 bkF
 bky
 psX
@@ -74594,32 +75879,32 @@ iKa
 iKa
 xwf
 oSg
-ohZ
+crZ
 aVH
-aVH
+crX
 aVI
 aVI
 aVI
 aVI
 aVI
 aVI
-aVI
-aVH
-aVH
-aVI
-bkX
+crW
+crj
+crb
+cqU
+crl
 dKt
+cqU
 aVI
 aVI
 aVI
-aVI
-bkX
+crl
 blU
-bkX
-bkX
-bkF
-aVH
-aVI
+cro
+crl
+crh
+crb
+cqU
 aVI
 aVI
 aVI
@@ -74762,38 +76047,38 @@ iKa
 iKa
 xwf
 oSg
-ohZ
+crZ
 aVH
-aVH
-aVI
-aVI
-aVI
-aVI
-aVI
-aVI
-aVI
-aVH
-aVH
-aVI
+crY
+cqR
+cqR
+cqR
+cqR
+cqR
+cqR
+crm
+cri
+crc
+cqV
 bnn
 dKt
-aVI
-aVI
-aVI
-aVI
-aVI
+cqV
+cqR
+cqR
+cqR
+crm
 dKt
-aVI
-aVI
-aVH
-aVH
-aVI
+cqV
+crm
+cri
+crc
+cqV
 bkX
 bkX
 bkX
-aVI
-aVI
-aVI
+cqR
+cqR
+cqR
 aVH
 aVH
 sdf
@@ -74930,9 +76215,9 @@ iKa
 iKa
 xwf
 oSg
-ohZ
-aVH
-aVH
+csa
+cqR
+crm
 xGl
 boo
 boh
@@ -74940,8 +76225,8 @@ boh
 boh
 bnZ
 bnI
-bVa
-bVk
+crN
+crI
 bVB
 drC
 bVt
@@ -74962,9 +76247,9 @@ bkY
 bkT
 bkP
 bkN
-aVH
-aVH
-sdf
+cqV
+cqR
+cqP
 psX
 xwf
 iKa
@@ -75096,7 +76381,7 @@ iKa
 iKa
 iKa
 iKa
-avF
+xwf
 avF
 boB
 sAB
@@ -75108,8 +76393,8 @@ avF
 avF
 avF
 iqP
-bVb
-aVK
+crO
+crc
 odm
 avF
 avF
@@ -75121,7 +76406,7 @@ bmh
 avF
 avF
 krp
-aVK
+cri
 bVb
 pAI
 avF
@@ -75134,7 +76419,7 @@ aEE
 aEE
 aEE
 avF
-avF
+xwf
 iKa
 iKa
 iKa
@@ -75276,8 +76561,8 @@ avF
 avF
 avF
 bnJ
-bVb
-aVK
+crO
+crc
 odm
 avF
 avF
@@ -75444,8 +76729,8 @@ iKa
 iKa
 avF
 iqP
-bVb
-aVK
+crO
+crc
 bnq
 avF
 avF
@@ -75457,7 +76742,7 @@ avF
 avF
 avF
 blI
-aVK
+cri
 bVc
 blq
 avF
@@ -75612,8 +76897,8 @@ iKa
 iKa
 avF
 bnK
-bVb
-blA
+crO
+crJ
 bnr
 avF
 avF
@@ -75948,8 +77233,8 @@ iKa
 iKa
 avF
 bnM
-bVb
-aVK
+crO
+crc
 bnt
 avF
 bma
@@ -75961,7 +77246,7 @@ bmi
 bma
 avF
 blI
-aVK
+cri
 bVb
 pAI
 avF
@@ -76116,8 +77401,8 @@ iKa
 iKa
 avF
 bnN
-bVb
-aVK
+crO
+crc
 bnu
 avF
 bVA
@@ -76129,7 +77414,7 @@ bmj
 bma
 avF
 blI
-aVK
+cri
 bVb
 pAI
 avF
@@ -76284,8 +77569,8 @@ iKa
 iKa
 avF
 bnO
-bVb
-aVK
+crO
+crc
 bnv
 pkd
 aVG
@@ -76297,7 +77582,7 @@ aVG
 aVG
 blT
 blI
-aVK
+cri
 bVb
 pAI
 avF
@@ -76452,8 +77737,8 @@ iKa
 iKa
 avF
 iqP
-bVb
-aVK
+crO
+crc
 bnv
 avF
 aVG
@@ -76465,7 +77750,7 @@ bmk
 aVG
 avF
 blI
-aVK
+cri
 bVb
 pAI
 avF
@@ -76620,8 +77905,8 @@ iKa
 iKa
 avF
 iqP
-bVb
-aVK
+crO
+crc
 bnv
 avF
 aVG
@@ -76633,7 +77918,7 @@ bml
 aVG
 avF
 blJ
-aVK
+cri
 bVb
 pAI
 avF
@@ -76788,8 +78073,8 @@ iKa
 iKa
 avF
 bnJ
-bVb
-aVK
+crO
+crc
 bnv
 avF
 bnk
@@ -76801,7 +78086,7 @@ bma
 bmb
 avF
 krp
-aVK
+cri
 bVb
 blp
 avF
@@ -76956,8 +78241,8 @@ iKa
 iKa
 avF
 iqP
-bVb
-aVK
+crO
+crc
 odm
 avF
 avF
@@ -76969,7 +78254,7 @@ bma
 avF
 avF
 krp
-aVK
+cri
 bVb
 pAI
 avF
@@ -77124,8 +78409,8 @@ iKa
 iKa
 avF
 bnP
-bVb
-aVK
+crO
+crc
 odm
 avF
 avF
@@ -77293,7 +78578,7 @@ iKa
 avF
 bnQ
 bnE
-aVK
+crc
 odm
 avF
 avF
@@ -77461,7 +78746,7 @@ avF
 avF
 bnR
 bnF
-aVK
+crc
 odm
 avF
 avF
@@ -77628,8 +78913,8 @@ iKa
 avF
 boa
 bnS
-bVb
-aVK
+crP
+crt
 cYs
 dKt
 pOh
@@ -77642,7 +78927,7 @@ mib
 dKt
 qsH
 aVK
-bVb
+crd
 blq
 blf
 avF
@@ -77798,15 +79083,15 @@ bob
 bnN
 bVG
 bVl
-bVr
+crp
 bVt
 bVr
 bVz
-bVl
+crB
 bVw
-bVl
+crs
 bVr
-bVr
+crp
 bVt
 bVr
 bVl
@@ -77964,20 +79249,20 @@ iKa
 avF
 boc
 bnN
-bVx
-aVH
-aVI
+crQ
+cqR
+crm
 dKt
-bkX
-bkX
-aVH
+crG
+crE
+cri
 bVx
-aVH
-aVI
-aVI
+crc
+cqV
+crm
 dKt
-aVI
-aVH
+cqV
+cqR
 blC
 pAI
 bli
@@ -78132,21 +79417,21 @@ iKa
 avF
 bkE
 bnO
-bVb
-aVK
+crR
+crb
 xGl
 dKt
 bmc
 bmX
-aVK
-bVb
-aVK
+cri
+bVx
+crc
 bmn
 bmc
 blU
 pKB
-aVK
-bVb
+crj
+cre
 bls
 blj
 avF
@@ -78300,20 +79585,20 @@ iKa
 avF
 avF
 bnN
-bVb
-aVK
+crO
+crc
 odm
 avF
 bnl
 bmY
-aVK
-bVb
-aVK
+cri
+bVx
+crc
 bmo
 bmd
 avF
 krp
-aVK
+cri
 bVb
 blp
 avF
@@ -78468,20 +79753,20 @@ iKa
 iKa
 avF
 iqP
-bVb
-aVK
+crO
+crc
 odm
 avF
 avF
 bmZ
-aVK
-bVb
-aVK
+cri
+bVx
+crc
 bmo
 avF
 avF
 krp
-aVK
+cri
 bVb
 pAI
 avF
@@ -78636,20 +79921,20 @@ iKa
 avF
 avF
 iqP
-bVb
-aVK
+crO
+crc
 odm
 avF
 avF
 bna
-aVK
-bVb
-aVK
+cri
+bVx
+crc
 bmp
 avF
 avF
 blL
-aVK
+cri
 bVb
 pAI
 avF
@@ -78804,20 +80089,20 @@ iKa
 avF
 bod
 iqP
-bVb
-aVK
+crO
+crc
 odm
 avF
 avF
 bnb
-aVK
-bVb
-aVK
+cri
+bVx
+crc
 bmq
 avF
 avF
 krp
-aVK
+cri
 bVb
 pAI
 aKm
@@ -78972,21 +80257,21 @@ aPR
 avF
 bnp
 bnT
-bVb
+crP
 bnA
 aPR
 aPR
 aPR
 aPR
 aVK
-bVb
-aVK
+crv
+crt
 aPR
 aPR
 aPR
 avF
 blE
-bVb
+crd
 sfO
 quF
 avF
@@ -79308,20 +80593,20 @@ aPR
 aPR
 boe
 jXs
-bVf
-bCJ
+crS
+crK
 aPR
 aPR
 aPR
 aPR
 bmR
-bVf
+crw
 blF
 aPR
 aPR
 aPR
 aPR
-bCJ
+crk
 bVf
 kUL
 blk
@@ -79476,21 +80761,21 @@ aVZ
 aPR
 bof
 iPn
-bVf
-bCJ
+crU
+dtC
 uDv
 aPR
 aPR
 bnc
-bCJ
-bVf
-bCJ
+cqY
+crx
+dtC
 bmr
 aPR
 aPR
 blM
-bCJ
-bVf
+cqY
+crf
 wfs
 bll
 aPR
@@ -79644,21 +80929,21 @@ iKa
 aPR
 aPR
 bnV
-bVf
-bCJ
+crU
+dtC
 uDv
 aPR
 aPR
 bnd
-bCJ
-bVf
-bCJ
+cqY
+crx
+dtC
 bms
 aPR
 aPR
 blN
-bCJ
-bVf
+cqY
+crf
 blt
 aPR
 aPR
@@ -79812,21 +81097,21 @@ iKa
 aPR
 aPR
 bnW
-bVf
-bCJ
+crU
+dtC
 uDv
 aPR
 aPR
 bne
 bmS
-bVf
-bCJ
+crx
+dtC
 bmt
 aPR
 aPR
 xpu
-bCJ
-bVf
+cqY
+crf
 blu
 aPR
 aPR
@@ -79980,21 +81265,21 @@ iKa
 aPR
 aPR
 bnW
-bVf
-bCJ
+crU
+dtC
 uDv
 aPR
 aPR
 cvP
 bmT
-bVf
-bCJ
+crx
+dtC
 bmu
 aPR
 aPR
 xpu
-bCJ
-bVf
+cqY
+crf
 blv
 aPR
 aPR
@@ -80148,21 +81433,21 @@ iKa
 aPR
 aPR
 bnW
-bVf
-bCJ
+crU
+dtC
 uDv
 aPR
 aPR
 bnf
 bmS
-bVf
-bCJ
+crx
+dtC
 bmu
 aPR
 aPR
 xpu
-bCJ
-bVf
+cqY
+crf
 blw
 aPR
 aPR
@@ -80316,21 +81601,21 @@ iKa
 aPR
 aPR
 bnW
-bVf
-bCJ
+crU
+dtC
 uDv
 blX
 aPR
 cvP
-bCJ
-bVf
-bCJ
+cqY
+crx
+dtC
 bmv
 aPR
 blV
 blO
-bCJ
-bVf
+cqY
+crf
 wfs
 aPR
 aPR
@@ -80658,9 +81943,9 @@ uDv
 acp
 vRW
 aPR
-bmR
-bVf
-bCJ
+crC
+crx
+dtC
 aPR
 bme
 blX
@@ -80810,9 +82095,9 @@ aPR
 boL
 blX
 iPn
-nnL
-nnL
-nnL
+cra
+cqW
+cqW
 nnL
 uDv
 bom
@@ -80826,9 +82111,9 @@ uDv
 acp
 aPR
 aPR
-bCJ
-bVf
-bCJ
+cqY
+crx
+dtC
 aPR
 aPR
 acp
@@ -80841,8 +82126,8 @@ aPR
 bkZ
 bkU
 bkQ
-nnL
-nnL
+cra
+cqW
 aoJ
 nnL
 wfs
@@ -80978,9 +82263,9 @@ aPR
 boM
 boJ
 bnW
-dtC
-dtC
-dtC
+cqY
+cqX
+cqX
 dtC
 uDv
 acp
@@ -80989,28 +82274,28 @@ aPR
 aPR
 bnX
 bVH
-bCJ
+dtC
 uDv
 acp
 aPR
 bng
-bCJ
-bVf
-bCJ
+cqY
+crx
+dtC
 bmw
 aPR
 acp
 blQ
-bCJ
-bVf
+cqY
+crf
 blx
 aPR
 aPR
 bla
 bkV
 xpu
-dtC
-dtC
+cqY
+cqX
 arW
 dtC
 acq
@@ -81146,10 +82431,10 @@ aPR
 boN
 acp
 bnW
-dtC
-dtC
-dtC
-dtC
+cqZ
+cqX
+cqX
+bCJ
 uDv
 acp
 boj
@@ -81157,27 +82442,27 @@ aPR
 aPR
 bnY
 bVH
-bCJ
+dtC
 uDv
 aPR
 aPR
 bnh
-bCJ
-bVf
-bCJ
+cqY
+crx
+dtC
 bmx
 aPR
 aPR
 xpu
-bCJ
-bVf
+cqY
+crf
 blx
 aPR
 aPR
 blb
 acp
 xpu
-dtC
+cqZ
 bkJ
 bkG
 bkA
@@ -81315,8 +82600,8 @@ aPR
 boK
 fPX
 jXs
-bCJ
-bCJ
+cqY
+dtC
 mye
 grs
 bon
@@ -81324,21 +82609,21 @@ aPR
 aPR
 aPR
 bVJ
-bVf
-bCJ
+crU
+dtC
 uDv
 aPR
 aPR
 bni
-bCJ
-bVf
-bCJ
+cqY
+crx
+dtC
 bmy
 aPR
 aPR
 xpu
-bCJ
-bVf
+cqY
+crf
 bly
 aPR
 aPR
@@ -81347,7 +82632,7 @@ acp
 wYy
 lBM
 bkK
-bCJ
+dtC
 bkB
 rFY
 acp
@@ -81483,8 +82768,8 @@ aPR
 aPR
 boF
 iPn
-bCJ
-bCJ
+cqY
+dtC
 uDv
 bop
 aPR
@@ -81492,21 +82777,21 @@ aPR
 aPR
 aPR
 bnW
-bVf
-bCJ
+crU
+dtC
 uDv
 aPR
 aPR
 bnj
-bCJ
-bVf
-bCJ
+cqY
+crx
+dtC
 bmA
 aPR
 aPR
 xpu
-bCJ
-bVf
+cqY
+crf
 wfs
 aPR
 aPR
@@ -81514,8 +82799,8 @@ aPR
 aPR
 bkR
 xpu
-bCJ
-bCJ
+cqY
+dtC
 wfs
 bks
 aPR
@@ -81651,8 +82936,8 @@ iKa
 aPR
 aPR
 iPn
-bCJ
-bCJ
+cqY
+dtC
 bot
 aPR
 aPR
@@ -81661,20 +82946,20 @@ aPR
 aPR
 iPn
 bVH
-bmS
+crL
 bnw
 aPR
 hAa
 cvP
-bCJ
-bVf
-bCJ
+cqY
+crx
+dtC
 pMG
 hAa
 aPR
 xpu
-bCJ
-bVf
+cqY
+crf
 wfs
 aPR
 aPR
@@ -81682,8 +82967,8 @@ aPR
 aPR
 aPR
 xpu
-bCJ
-bCJ
+cqY
+dtC
 wfs
 aPR
 aPR
@@ -81819,7 +83104,7 @@ iKa
 aPR
 nKQ
 csI
-bCJ
+cqZ
 bCJ
 bou
 bok
@@ -81828,21 +83113,21 @@ bok
 wfX
 bog
 csI
-bVH
-bmS
+crV
+crM
 sVf
 aVL
 aCL
 iJq
-bCJ
-bVf
-bCJ
+cqY
+crx
+dtC
 vYw
 aCL
 aVL
 blR
-bCJ
-bVf
+cqZ
+crg
 wfC
 bln
 bld
@@ -81850,7 +83135,7 @@ aAj
 bkW
 vIq
 aEW
-bCJ
+cqZ
 bCJ
 wfC
 exf
@@ -81986,40 +83271,40 @@ iKa
 iKa
 aPR
 boG
-hQK
-dtC
-dtC
-hQK
-hQK
-hQK
-hQK
-hQK
-hQK
-hQK
+csb
+cqS
+cqS
+cqS
+cqS
+cqS
+cqS
+cqS
+cqS
+cqS
 bVI
 bVE
 bVC
 bVu
-bVv
-bVv
-bVp
+crH
+crF
+crD
 bVy
-bVp
+cru
 bVv
 bVv
 bVu
 bVs
 bVp
 bVi
-hQK
-hQK
-hQK
-hQK
-hQK
-hQK
-hQK
-dtC
-dtC
+cqS
+cqS
+cqS
+cqS
+cqS
+cqS
+cqS
+cqS
+cqS
 hQK
 wfs
 aPR
@@ -82154,41 +83439,41 @@ iKa
 iKa
 aPR
 boH
-hQK
-dtC
-dtC
-hQK
-hQK
-hQK
-hQK
-hQK
-hQK
-hQK
-dtC
+crn
+cqT
+cqT
+cqT
+cqT
+cqT
+cqT
+cqT
+cqT
+cqT
+cqT
 bnB
 bnx
 aVL
-hQK
-hQK
-dtC
-dtC
-dtC
-hQK
-hQK
+crn
+cqQ
+cqZ
+cry
+bCJ
+crq
+crq
 blY
-hQK
-dtC
-dtC
-hQK
-hQK
-hQK
-hQK
-hQK
-hQK
-hQK
-dtC
-dtC
-hQK
+crn
+cqT
+cqT
+cqT
+cqT
+cqT
+cqT
+cqT
+cqT
+cqT
+cqT
+cqT
+cqQ
 bkt
 aPR
 iKa
@@ -83515,7 +84800,7 @@ iKa
 iKa
 xwf
 cgR
-cgL
+crz
 cgD
 xwf
 iKa
@@ -83683,7 +84968,7 @@ iKa
 xwf
 xwf
 cgS
-cgL
+crz
 cgE
 xwf
 xwf
@@ -83851,7 +85136,7 @@ iKa
 xwf
 xwf
 cgT
-cgL
+crz
 cgF
 xwf
 xwf
@@ -84019,7 +85304,7 @@ iKa
 iKa
 xwf
 cgT
-cgL
+crz
 cgF
 xwf
 iKa
@@ -84186,9 +85471,9 @@ xwf
 xwf
 xwf
 xwf
-cgy
-cgy
-cgy
+cgT
+crz
+cgD
 xwf
 xwf
 xwf
@@ -84358,7 +85643,7 @@ cgV
 cgM
 cgG
 cgz
-cgy
+aqg
 aqg
 cgw
 aqg
@@ -84520,17 +85805,17 @@ cgz
 chh
 cgW
 chc
-cgy
+aqh
 cgz
 cgW
-cgN
+crz
 aqh
 cgz
-cgy
 aqh
 aqh
 aqh
-xwf
+aqh
+bYj
 iKa
 iKa
 iKa
@@ -84694,7 +85979,7 @@ cgX
 cgO
 cgH
 cgA
-cgy
+crr
 auc
 cgx
 auc
@@ -84858,9 +86143,9 @@ xwf
 xwf
 xwf
 xwf
-cgy
-cgy
-cgy
+cgT
+crz
+cgD
 xwf
 xwf
 xwf
@@ -85027,7 +86312,7 @@ iKa
 iKa
 xwf
 cgT
-cgL
+crz
 cgD
 xwf
 iKa
@@ -85195,7 +86480,7 @@ iKa
 xwf
 xwf
 cgT
-cgL
+crz
 cgF
 xwf
 xwf
@@ -85363,7 +86648,7 @@ iKa
 xwf
 xwf
 cgS
-cgL
+crz
 cgE
 xwf
 xwf
@@ -85531,7 +86816,7 @@ iKa
 iKa
 xwf
 cgR
-cgL
+crz
 cgD
 xwf
 iKa
@@ -85699,7 +86984,7 @@ iKa
 iKa
 xwf
 cgR
-cgL
+crA
 cgD
 xwf
 iKa
@@ -113232,22 +114517,22 @@ alE
 alA
 alx
 bSr
-coh
-coh
-coh
-coh
-coh
-coh
-coh
-coh
+csd
+csd
+csd
+csd
+csd
+csd
+csd
+csd
 bSr
-coh
-coh
-coh
-coh
-coh
-coh
-coh
+csd
+csd
+csd
+csd
+csd
+csd
+csd
 atw
 aks
 bTz
@@ -113262,21 +114547,21 @@ apH
 apz
 apt
 apn
-coh
-coh
+csd
+csd
 bSr
-coh
-coh
-coh
-coh
+csd
+csd
+csd
+csd
 chE
-coh
-coh
-coh
+csd
+csd
+csd
 bSr
 bSd
-bsk
-bsk
+csc
+csc
 asO
 asM
 cml
@@ -117774,10 +119059,10 @@ aNn
 aNn
 asJ
 avt
-btr
-coj
-coj
-cou
+csg
+csf
+csf
+cse
 avl
 asE
 aNn
@@ -117799,10 +119084,10 @@ aPW
 aJW
 ass
 asn
-btr
-coj
-coj
-cou
+csg
+csf
+csf
+cse
 auh
 arJ
 aJW
@@ -157078,7 +158363,7 @@ bjt
 bjt
 bpL
 ciM
-bOY
+csZ
 chY
 ciD
 cjE
@@ -157249,8 +158534,8 @@ biZ
 bRo
 bIw
 nCG
-bpL
-bpL
+csV
+csT
 bpL
 bpL
 ciM
@@ -157415,7 +158700,7 @@ bJr
 bJi
 bIT
 bRM
-chY
+csk
 bIj
 bIc
 bpF
@@ -157581,10 +158866,10 @@ bKb
 bjz
 bJs
 bJj
-chY
+ctc
 bRN
 bHV
-bIj
+csW
 bIc
 bpF
 bpF
@@ -157629,7 +158914,7 @@ bpF
 bxr
 bxh
 bOX
-chY
+csj
 chY
 bER
 aQg
@@ -157752,7 +159037,7 @@ bJk
 bIU
 bIJ
 bIx
-bIj
+csW
 bIc
 bpF
 bpF
@@ -157797,8 +159082,8 @@ bpF
 bxr
 bxi
 bOY
-chY
-chY
+csk
+csh
 bES
 bEI
 bEf
@@ -157919,8 +159204,8 @@ bJs
 bJl
 bIV
 bIK
-chY
-bIj
+csk
+csW
 bIc
 bpF
 bpF
@@ -157965,8 +159250,8 @@ bpF
 bxr
 aQq
 bOY
-chY
-chY
+csl
+csi
 bER
 bEc
 bEk
@@ -158086,9 +159371,9 @@ bJJ
 bJt
 bJm
 bIW
-bOY
+cta
 bIy
-bIj
+csX
 bIc
 bpF
 bpF
@@ -158254,11 +159539,11 @@ bjA
 bjn
 bJn
 biZ
-bOY
+ctb
 bIz
 acP
 ciP
-ciP
+csU
 ciP
 ciR
 bpF
@@ -158299,9 +159584,9 @@ bhg
 bxP
 bhg
 bhg
-cia
-bOY
-chY
+csn
+csm
+csi
 buK
 bhb
 aQh
@@ -160297,8 +161582,8 @@ biA
 bQI
 akX
 bQa
-cqn
-cqn
+csz
+csz
 bQw
 byO
 cqn
@@ -163309,20 +164594,20 @@ bhC
 bqT
 aet
 aHk
-aQP
+csN
 aHd
 bip
 bip
-aGQ
+csH
 aGM
 aQZ
-aQI
-aQI
-aQO
+csE
+csE
+csB
 acy
 aGd
 bip
-bip
+csA
 ciY
 bQn
 aFM
@@ -163474,7 +164759,7 @@ brk
 brf
 bqY
 bqV
-bhz
+csP
 bhQ
 aHl
 aRl
@@ -163484,8 +164769,8 @@ aGR
 aGR
 aGd
 aQZ
-aQR
-aQO
+csF
+csB
 bqR
 acy
 aGd
@@ -163496,7 +164781,7 @@ bQo
 aFN
 acz
 bhQ
-bjp
+cst
 bqP
 bry
 bry
@@ -163507,7 +164792,7 @@ bry
 ciq
 bhy
 aaU
-aaU
+cso
 aaU
 bhi
 ozb
@@ -163630,9 +164915,9 @@ iKa
 aQi
 ozb
 bhi
-bht
-bht
-bht
+csr
+csp
+csu
 bjp
 cir
 bhD
@@ -163642,7 +164927,7 @@ brl
 brg
 bhD
 bhz
-bht
+csr
 bhR
 aRn
 aRm
@@ -163654,7 +164939,7 @@ aGN
 aGG
 aGC
 aGx
-aQO
+csC
 aGo
 aGk
 aGe
@@ -163664,7 +164949,7 @@ ciV
 aFO
 aFG
 bhR
-bht
+csu
 bjp
 bhD
 bhD
@@ -163674,8 +164959,8 @@ bhD
 bhD
 cir
 bhz
-bht
-bht
+csr
+csp
 brT
 bhi
 ozb
@@ -163799,7 +165084,7 @@ iKa
 aQi
 bhi
 brQ
-bht
+csq
 brM
 brJ
 brD
@@ -163810,26 +165095,26 @@ bPd
 bPd
 bPw
 bPd
-bPd
+csQ
 bQc
 bQh
-aHg
+bPd
 bRl
-bQh
+bPd
 bQg
 bRe
 bRc
 aGH
 aGD
 aGy
-bQh
-bQh
-bQh
+bPd
+bPd
+bPd
 bQC
 aFX
-bQh
-bQp
-bQh
+bPd
+cis
+bPd
 aFH
 bQc
 aFB
@@ -163966,52 +165251,52 @@ iKa
 iKa
 bhi
 bhi
-bht
-bht
+csR
+csq
 bqZ
-bht
+css
 brE
 brA
 brv
-bht
-bht
-bht
-bht
-bht
-bht
+css
+css
+css
+css
+css
+csq
 bhR
 aHn
-aQO
+css
 bqQ
-aQO
+css
 aQN
-aQO
-aQO
+css
+css
 aRi
 aGE
 aGz
-aQO
-aQO
-aQO
+css
+css
+css
 bqQ
 aFY
-aQO
+css
 aQR
-aQO
+css
 aQI
 aQD
-bht
-bht
-bht
-bht
+csq
+css
+css
+css
 bsq
-bht
+css
 brE
-bht
-bht
-bht
+css
+css
+css
 bqZ
-bht
+csq
 bht
 bhi
 iKa
@@ -164136,7 +165421,7 @@ bhi
 bhi
 bhi
 brP
-bPb
+csY
 bjq
 bhE
 bhE
@@ -164145,25 +165430,25 @@ brq
 bhE
 bhE
 bra
-bhw
-bht
+csS
+csR
 aHs
 aHo
 aQS
 aHe
-aQO
+csD
 aGX
 aGS
 aRj
 aGI
-aQO
+csw
 aGA
-aQO
+csD
 aGr
 aGl
 aGf
 acB
-aQO
+csw
 aQO
 aQP
 aFI
@@ -164317,26 +165602,26 @@ bhA
 bhw
 bhQ
 aHp
-aRl
-aHe
-aQO
+csO
+csL
+csJ
 aGY
 aGh
 bip
 aQZ
-aQO
-aQO
+csx
+csB
 aGv
 acy
 bip
 aGg
 aFZ
-aQO
+csx
 aFS
 aFP
 acA
 bhQ
-bjq
+csv
 bjr
 bqN
 bqN
@@ -164492,14 +165777,14 @@ aGZ
 aGT
 aGO
 aGJ
-aFR
+csG
 aGB
 aGw
 aGs
 aGm
 aGh
 aGa
-aQI
+csy
 aFT
 aFQ
 aFJ
@@ -164654,8 +165939,8 @@ bqT
 aet
 aHr
 aHi
-aFR
-aGB
+csM
+csK
 aHa
 aGU
 aGn

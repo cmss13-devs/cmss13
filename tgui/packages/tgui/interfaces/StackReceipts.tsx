@@ -114,10 +114,14 @@ export const StackReceipts = () => {
     );
 
   const renderReceipt = (receipt: Receipt, index: number) => {
-    let materialAmount = receipt.req_amount ?? 1;
+    let materialAmount = Math.floor(
+      (receipt.req_amount ?? 1) / (receipt.res_amount ?? 1),
+    );
 
     if (receipt.is_multi) {
-      materialAmount = (receipt.amount_to_build ?? 1) * materialAmount;
+      materialAmount = Math.floor(
+        (receipt.amount_to_build ?? 1) / (receipt.res_amount ?? 1),
+      );
     }
 
     return (
@@ -169,7 +173,13 @@ export const StackReceipts = () => {
                     )
                   }
                   onClick={() => {
-                    handleBuildClick(receipt, receipt.amount_to_build ?? 1);
+                    handleBuildClick(
+                      receipt,
+                      Math.floor(
+                        (receipt.amount_to_build ?? 1) /
+                          (receipt.res_amount ?? 1),
+                      ),
+                    );
                   }}
                 >
                   {pluralize(receipt.res_amount ?? 1, receipt.title)}
@@ -185,13 +195,19 @@ export const StackReceipts = () => {
                     <NumberInput
                       tabbed
                       className="StackNumberInput"
-                      value={receipt.amount_to_build ?? 1}
+                      value={
+                        Math.round(
+                          (receipt.amount_to_build ?? 1) /
+                            (receipt.res_amount ?? 1),
+                        ) * (receipt.res_amount ?? 1)
+                      }
                       maxValue={Math.min(
-                        20,
-                        Math.floor(stack_amount / (receipt.req_amount ?? 1)),
+                        20 * (receipt.res_amount ?? 1),
+                        Math.floor(stack_amount / (receipt.req_amount ?? 1)) *
+                          (receipt.res_amount ?? 1),
                       )}
-                      minValue={1}
-                      step={1}
+                      minValue={receipt.res_amount ?? 1}
+                      step={receipt.res_amount ?? 1}
                       stepPixelSize={3}
                       width="30px"
                       height="24px"

@@ -17779,6 +17779,15 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
 /area/white_antre/indoors/upper_level/central_corridor)
+"aQB" = (
+/obj/effect/antre/border{
+	dir = 8
+	},
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
+/turf/open/floor/hybrisa/metal,
+/area/white_antre/indoors/upper_level/central_corridor)
 "aQC" = (
 /turf/open/floor/almayer_hull/outerhull_dir/northeast,
 /area/white_antre/indoors/upper_level/central_corridor)
@@ -162403,7 +162412,7 @@ agz
 agA
 agr
 bjn
-aQz
+aQB
 cqy
 bRt
 cqD

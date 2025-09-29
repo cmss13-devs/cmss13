@@ -289,9 +289,11 @@
 
 	var/mob/living/target_living = target_atom
 
-	if(xeno.can_not_harm(target_living))
+	if(!iscarbon(target_living))
 		return
 
+	if(xeno.can_not_harm(target_living))
+		return
 
 	if(target_living.stat == DEAD)
 		return
@@ -308,51 +310,52 @@
 	var/dir_to_fling = get_dir(target_living, xeno)
 	var/turfs_travelled = 1
 	var/turf/open/turf_to_fling_to = get_turf(xeno)
-	move_loop:
-		for(var/i in 1 to 2)
-			var/turf/maybe_viable = get_step(turf_to_fling_to, dir_to_fling)
-			if(!istype(maybe_viable, /turf/open))
-				break
+	if(xeno.Adjacent(target_living) && xeno.start_pulling(target_living, TRUE))
+		move_loop:
+			for(var/i in 1 to 2)
+				var/turf/maybe_viable = get_step(turf_to_fling_to, dir_to_fling)
+				if(!istype(maybe_viable, /turf/open))
+					break
 
-			for(var/obj/thing in maybe_viable.contents)
-				if(thing.density)
-					break move_loop
+				for(var/obj/thing in maybe_viable.contents)
+					if(thing.density)
+						break move_loop
 
-			turf_to_fling_to = maybe_viable
-			turfs_travelled++
+				turf_to_fling_to = maybe_viable
+				turfs_travelled++
 
-	target_living.forceMove(turf_to_fling_to)
-	target_living.Stun(1)
-	xeno.Root(1)
+		target_living.forceMove(turf_to_fling_to)
+		target_living.Stun(1)
+		xeno.Root(1)
 
-	target_living.apply_armoured_damage(fling_damage)
-	playsound(target_living, 'sound/weapons/alien_claw_block.ogg', 75, 1)
+		target_living.apply_armoured_damage(fling_damage)
+		playsound(target_living, 'sound/weapons/alien_claw_block.ogg', 75, 1)
 
-	var/old_layer = target_living.layer
-	var/old_pixel_x = target_living.pixel_x
-	var/old_pixel_y = target_living.pixel_y
-	target_living.layer = ABOVE_XENO_LAYER
-	switch(xeno.dir)
-		if(NORTH)
-			target_living.pixel_y = 32 * turfs_travelled
-			animate(target_living, 0.6 SECONDS, pixel_y = old_pixel_y)
-		if(EAST)
-			target_living.pixel_x = 32 * turfs_travelled
-			animate(target_living, 0.3 SECONDS, pixel_y = 44, pixel_x = (16 * turfs_travelled))
-			animate(0.3 SECONDS, pixel_y = old_pixel_y, pixel_x = old_pixel_x)
-		if(SOUTH)
-			target_living.pixel_y = -32 * turfs_travelled
-			animate(target_living, 0.6 SECONDS, pixel_y = old_pixel_y)
-		if(WEST)
-			target_living.pixel_x = -32 * turfs_travelled
-			animate(target_living, 0.3 SECONDS, pixel_y = 44, pixel_x = (-16 * turfs_travelled))
-			animate(0.3 SECONDS, pixel_y = old_pixel_y, pixel_x = old_pixel_x)
+		var/old_layer = target_living.layer
+		var/old_pixel_x = target_living.pixel_x
+		var/old_pixel_y = target_living.pixel_y
+		target_living.layer = ABOVE_XENO_LAYER
+		switch(xeno.dir)
+			if(NORTH)
+				target_living.pixel_y = 32 * turfs_travelled
+				animate(target_living, 0.6 SECONDS, pixel_y = old_pixel_y)
+			if(EAST)
+				target_living.pixel_x = 32 * turfs_travelled
+				animate(target_living, 0.3 SECONDS, pixel_y = 44, pixel_x = (16 * turfs_travelled))
+				animate(0.3 SECONDS, pixel_y = old_pixel_y, pixel_x = old_pixel_x)
+			if(SOUTH)
+				target_living.pixel_y = -32 * turfs_travelled
+				animate(target_living, 0.6 SECONDS, pixel_y = old_pixel_y)
+			if(WEST)
+				target_living.pixel_x = -32 * turfs_travelled
+				animate(target_living, 0.3 SECONDS, pixel_y = 44, pixel_x = (-16 * turfs_travelled))
+				animate(0.3 SECONDS, pixel_y = old_pixel_y, pixel_x = old_pixel_x)
 
 
-	if(!check_and_use_plasma_owner())
-		return
+		if(!check_and_use_plasma_owner())
+			return
 
-	addtimer(CALLBACK(src, PROC_REF(end_fling), target_living, old_layer, old_pixel_x, old_pixel_y), 0.6 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(end_fling), target_living, old_layer, old_pixel_x, old_pixel_y), 0.6 SECONDS)
 	apply_cooldown()
 	return ..()
 

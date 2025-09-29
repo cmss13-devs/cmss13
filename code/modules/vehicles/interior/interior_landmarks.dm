@@ -25,26 +25,25 @@
 	var/offset_x = 0
 	var/offset_y = 0
 
-/obj/effect/landmark/interior/spawn/entrance/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/entrance/on_load(datum/interior/interior)
 	var/exit_path = exit_type
 	if(!exit_path)
 		return
-	var/obj/structure/interior_exit/E = new exit_path(get_turf(src))
+	var/obj/structure/interior_exit/interior_exit = new exit_path(get_turf(src))
 
 	if(name != initial(name))
-		E.name = name
+		interior_exit.name = name
 	if(desc != initial(desc))
-		E.desc = desc
-	E.interior = I
-	E.entrance_id = tag
-	E.setDir(dir)
-	E.alpha = alpha
-	E.update_icon()
-	E.pixel_x = pixel_x
-	E.pixel_y = pixel_y
-
-	return E
-	// Don't qdel this because it's used for entering as well
+		interior_exit.desc = desc
+	interior_exit.interior = interior
+	interior_exit.entrance_id = tag
+	interior_exit.setDir(dir)
+	interior_exit.alpha = alpha
+	interior_exit.update_icon()
+	interior_exit.pixel_x = pixel_x
+	interior_exit.pixel_y = pixel_y
+	// let it be known that this proc is hereby cursed for all time
+	return interior_exit
 
 /obj/effect/landmark/interior/spawn/entrance/step_toward/on_load(datum/interior/I)
 	var/exit_path = exit_type

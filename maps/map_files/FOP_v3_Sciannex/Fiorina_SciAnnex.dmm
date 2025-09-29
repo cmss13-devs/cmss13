@@ -15918,7 +15918,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
 "mbz" = (
-/obj/item/ammo_box/magazine/M16,
+/obj/item/ammo_box/magazine/m16,
 /turf/open/floor/prison/darkyellow2/north,
 /area/fiorina/lz/near_lzI)
 "mbC" = (
@@ -20388,7 +20388,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz1_cargo)
 "pvi" = (
-/obj/item/ammo_box/magazine/M16,
+/obj/item/ammo_box/magazine/m16,
 /obj/item/stack/sheet/metal{
 	amount = 5
 	},

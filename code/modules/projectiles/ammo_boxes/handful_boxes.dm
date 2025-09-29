@@ -2,7 +2,7 @@
 //-----------------------SHOTGUN SHELL BOXES-----------------------
 
 /obj/item/ammo_box/magazine/shotgun
-	name = "\improper shotgun shell box (Slugs x 100)"
+	name = "\improper shotgun shell box (Slug x 100)"
 	icon_state = "base_slug"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -40,7 +40,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/shotgun/incendiary
-	name = "\improper shotgun shell box (Incendiary slug x 100)"
+	name = "\improper shotgun shell box (Incendiary Slug x 100)"
 	icon_state = "base_inc"
 	overlay_content = "_incen"
 	magazine_type = /obj/item/ammo_magazine/shotgun/incendiary
@@ -49,7 +49,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/shotgun/incendiarybuck
-	name = "\improper shotgun shell box (Incendiary buckshot x 100)"
+	name = "\improper shotgun shell box (Incendiary Buckshot x 100)"
 	icon_state = "base_incbuck"
 	overlay_content = "_incenbuck"
 	magazine_type = /obj/item/ammo_magazine/shotgun/incendiarybuck
@@ -70,7 +70,7 @@
 //-----------------------TYPE 23 SHELL BOXES-----------------------
 
 /obj/item/ammo_box/magazine/shotgun/upp
-	name = "\improper Type 23 shotgun shell box (Slugs 8g x 100)"
+	name = "\improper Type 23 shotgun shell box (Slug 8g x 100)"
 	icon_state = "base_slug_upp"
 	overlay_gun_type = "_type23"
 	overlay_content = "_upp_slug"
@@ -98,7 +98,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/shotgun/upp/incendiary
-	name = "\improper Type 23 shotgun shell box (Dragon's breath 8g x 100)"
+	name = "\improper Type 23 shotgun shell box (Dragon's Breath 8g x 100)"
 	icon_state = "base_inc_upp"
 	overlay_content = "_upp_incen"
 	magazine_type = /obj/item/ammo_magazine/shotgun/heavy/incendiary
@@ -144,6 +144,17 @@
 	handful = "rounds"
 
 /obj/item/ammo_box/magazine/lever_action/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/lever_action/xm88
+	name = "\improper .458 bullets box (.458 x 300)"
+	icon_state = "base_458"
+	overlay_ammo_type = "_blank"
+	overlay_gun_type = "_458"
+	overlay_content = "_458"
+	magazine_type = /obj/item/ammo_magazine/lever_action/xm88
+
+/obj/item/ammo_box/magazine/lever_action/xm88/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/lever_action/training

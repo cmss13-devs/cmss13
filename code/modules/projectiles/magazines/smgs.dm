@@ -159,7 +159,7 @@
 //Type-19, based on the PPS-43
 
 /obj/item/ammo_magazine/smg/pps43
-	name = "\improper Type-19 stick magazine (7.62x25mm)"
+	name = "\improper Type 19 stick magazine (7.62x25mm)"
 	desc = "A stick magazine for the Type-19 submachinegun."
 	caliber = "7.62x25mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/smgs.dmi'

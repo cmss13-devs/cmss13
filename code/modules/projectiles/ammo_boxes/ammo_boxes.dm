@@ -159,7 +159,10 @@
 	if(burning)
 		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
 		return
-
+	for(var/obj/structure/machinery/machine in T.contents)
+		if(machine.density)
+			to_chat(user, SPAN_WARNING("You can't deploy any boxes here!"))
+			return
 	var/box_on_tile = 0
 	for(var/obj/structure/magazine_box/found_MB in T.contents)
 		if(limit_per_tile != found_MB.limit_per_tile)
@@ -292,7 +295,10 @@
 /obj/item/ammo_box/rounds/update_icon()
 	if(overlays)
 		overlays.Cut()
-	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding base color stripes
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adds type text
+
+	if(overlay_content)
+		overlays += image(text_markings_icon, icon_state = "base_type[overlay_content]") //adds the fancy stripe marking what kind it is
 
 	if(bullet_amount == max_bullet_amount)
 		overlays += image(handfuls_icon, icon_state = "rounds[overlay_content]")

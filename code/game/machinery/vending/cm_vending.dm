@@ -1240,8 +1240,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		/obj/item/ammo_box/rounds/incen/empty = /obj/item/ammo_box/rounds/incen,
 		/obj/item/ammo_box/rounds/le/empty = /obj/item/ammo_box/rounds/le,
 
-		/obj/item/ammo_box/magazine/M16/empty = /obj/item/ammo_box/magazine/M16,
-		/obj/item/ammo_box/magazine/M16/ap/empty = /obj/item/ammo_box/magazine/M16/ap,
+		/obj/item/ammo_box/magazine/m16/empty = /obj/item/ammo_box/magazine/m16,
+		/obj/item/ammo_box/magazine/m16/ap/empty = /obj/item/ammo_box/magazine/m16/ap,
 
 		/obj/item/ammo_box/magazine/misc/mre/empty = /obj/item/ammo_box/magazine/misc/mre,
 		/obj/item/ammo_box/magazine/misc/flares/empty = /obj/item/ammo_box/magazine/misc/flares,

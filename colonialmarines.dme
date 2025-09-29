@@ -964,6 +964,8 @@
 #include "code\game\machinery\teleporter.dm"
 #include "code\game\machinery\washing_machine.dm"
 #include "code\game\machinery\weather_siren.dm"
+#include "code\game\machinery\ammo_packer\ammo_packer.dm"
+#include "code\game\machinery\ammo_packer\ammo_packer_recipes.dm"
 #include "code\game\machinery\ARES\apollo_pda.dm"
 #include "code\game\machinery\ARES\ARES.dm"
 #include "code\game\machinery\ARES\ARES_interface.dm"

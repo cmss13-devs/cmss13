@@ -45,9 +45,6 @@
 	var/fire_immunity = FIRE_IMMUNITY_NONE
 	var/fire_intensity_resistance = 0
 
-	///Delay timer for spitting
-	var/spit_delay = 60
-
 	/// Windup for spits
 	var/spit_windup = FALSE
 

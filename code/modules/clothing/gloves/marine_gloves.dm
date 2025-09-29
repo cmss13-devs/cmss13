@@ -68,6 +68,13 @@
 	item_state = "marine_grey"
 	adopts_squad_color = FALSE
 
+/obj/item/clothing/gloves/marine/fingerless
+	name = "marine fingerless combat gloves"
+	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'. These ones have have been modified by having the fingertips removed."
+	icon_state = "marine_fingerless"
+	item_state = "marine_fingerless"
+	adopts_squad_color = FALSE
+
 /obj/item/clothing/gloves/marine/medical
 	name = "marine medical combat gloves"
 	desc = "Standard issue marine sterile gloves, offers regular protection whilst offering the user a better grip when performing medical work."
@@ -270,3 +277,9 @@
 	item_state = "cbrn"
 	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
+
+/obj/item/clothing/gloves/marine/cbrn_non_armored
+	name = "\improper M2 MOPP gloves"
+	desc = "These older-generation M2 MOPP gloves are constructed from treated venlar and offer basic protection against contamination in CBRN environments. While they provide decent dexterity for operating small tools and weapons, they lack the advanced grip enhancements and durability of the newer models. Typically, these gloves remain effective for up to 12 hours of moderate exposure before they must be replaced."
+	icon_state = "cbrn"
+	item_state = "cbrn"

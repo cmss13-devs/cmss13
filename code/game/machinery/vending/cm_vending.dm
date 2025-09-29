@@ -324,17 +324,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
 			return FALSE
-	// repair item handling
-	else if(istype(item_to_stock, /obj/item/stack/repairable/gunkit))
-		var/obj/item/stack/repairable/stack = item_to_stock
-		if(stack.amount != 5)
-			to_chat(user, SPAN_WARNING("\The [stack] isn't full. You need to fill it before you can restock it."))
-			return
-	else if(istype(item_to_stock, /obj/item/stack/repairable/gunlube))
-		var/obj/item/stack/repairable/stack = item_to_stock
-		if(stack.amount != 10)
-			to_chat(user, SPAN_WARNING("The [stack] isn't full. You need to fill it before you can restock it."))
-			return
 	return TRUE //Item IS good to restock!
 
 //------------MAINTENANCE PROCS---------------
@@ -453,11 +442,18 @@ GLOBAL_LIST_EMPTY(vending_products)
 		return
 
 	var/has_access = can_access_to_vend(user)
-	if (!has_access)
+	if(!has_access)
 		return
+
+	// Try to automatically vend spec kit if it was already assigned automatically if needed
+	automatic_vend(user)
 
 	user.set_interaction(src)
 	tgui_interact(user)
+
+/// Handles any automatic vending
+/obj/structure/machinery/cm_vending/proc/automatic_vend(mob/user)
+	return
 
 /// Handles redeeming coin tokens.
 /obj/structure/machinery/cm_vending/proc/redeem_token(obj/item/coin/marine/token, mob/user)
@@ -531,13 +527,13 @@ GLOBAL_LIST_EMPTY(vending_products)
 	var/mob/living/carbon/user = ui.user
 
 	if(ishuman(user))
-		human_user = usr
+		human_user = ui.user
 
 	switch (action)
 		if ("vend")
 			if(stat & IN_USE)
 				return
-			var/has_access = can_access_to_vend(usr)
+			var/has_access = can_access_to_vend(user)
 			if (!has_access)
 				vend_fail()
 				return TRUE
@@ -549,12 +545,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 			var/turf/target_turf = get_appropriate_vend_turf(user)
 			if(vend_flags & VEND_CLUTTER_PROTECTION)
 				if(length(target_turf.contents) > 25)
-					to_chat(usr, SPAN_WARNING("The floor is too cluttered, make some space."))
+					to_chat(user, SPAN_WARNING("The floor is too cluttered, make some space."))
 					vend_fail()
 					return FALSE
 			if(HAS_TRAIT(user,TRAIT_OPPOSABLE_THUMBS)) // the big monster 7 ft with thumbs does not care for squads
-				vendor_successful_vend(itemspec, usr)
-				add_fingerprint(usr)
+				vendor_successful_vend(itemspec, user)
+				add_fingerprint(user)
 				return TRUE
 			if((!human_user.assigned_squad && squad_tag) || (!human_user.assigned_squad?.omni_squad_vendor && (squad_tag && human_user.assigned_squad.name != squad_tag)))
 				to_chat(user, SPAN_WARNING("This machine isn't for your squad."))
@@ -600,7 +596,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 								vend_fail()
 								return FALSE
 
-					if(!handle_vend(itemspec, user))
+					if(!handle_vend(itemspec, human_user))
 						to_chat(user, SPAN_WARNING("You can't buy things from this category anymore."))
 						vend_fail()
 						return FALSE
@@ -614,7 +610,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				// if vendor has no costs and is inventory limited
 				var/inventory_count = itemspec[2]
 				if(inventory_count <= 0) //to avoid dropping more than one product when there's
-					to_chat(usr, SPAN_WARNING("[itemspec[1]] is out of stock."))
+					to_chat(user, SPAN_WARNING("[itemspec[1]] is out of stock."))
 					vend_fail()
 					return TRUE // one left and the player spam click during a lagspike.
 
@@ -756,7 +752,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/obj/item/device/multitool/MT = W
 
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
-			to_chat(user, SPAN_WARNING("You do not understand how tweak access requirements in [src]."))
+			to_chat(user, SPAN_WARNING("You do not understand how to tweak access requirements in [src]."))
 			return FALSE
 		if(stat != WORKING)
 			to_chat(user, SPAN_WARNING("[src] must be in working condition and powered for you to hack it."))

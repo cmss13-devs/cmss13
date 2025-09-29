@@ -33,6 +33,8 @@
 	icon = 'icons/obj/items/disk.dmi'
 	w_class = SIZE_TINY
 	icon_state = "datadisk1" // doesnt HAVE to be a disk!
+	ground_offset_x = 8
+	ground_offset_y = 8
 	///technology stored on this disk, goes through one to whatever levels of upgrades there are.
 	var/value
 
@@ -61,12 +63,14 @@
 	name = "Research Upgrade (Sleeper)"
 	desc = "Research upgrade for a sleeper system. The technology on this disk is used on a sleeper to allow a wider spectrum of chemicals to be administered."
 
+/obj/item/research_upgrades/grinderspeed
+	name = "Research Upgrade (Grinder)"
+	desc = "Research upgrade for Reagent grinder, technology on this disk makes storing and grinding procedures more effective, increasing both speed and product capacity of the grinder."
 
-/obj/item/research_upgrades/credits
-	name =	"Research Market (Credits)"
-	var/credit_value = 8
+/obj/item/research_upgrades/autoharvest
+	name = "Research Upgrade (Botany)"
+	desc = "Research upgrade for a hydroponics system. The technology on this disk is used on a hydroponics tray to automatically shake the plant once the product is ready to harvest."
 
-/obj/item/research_upgrades/credits/Initialize(mapload, ...)
-	. = ..()
-	credit_value = rand(8, 9)
-	desc = "Research disk containing all the bits of data the analyzer could salvage, insert this into a research computer in order to sell the data and acquire [credit_value] points."
+/obj/item/research_upgrades/reroll
+	name = "Research Market (Reroll)"
+	desc = "Research disk containing all the bits of data the analyzer could salvage, insert this into a research computer in order to sell the data and immediately reroll contracts."

@@ -269,7 +269,7 @@
 	if(client || stat)
 		return //Lets not force players or dead/incap parrots to move
 
-	if(!isturf(src.loc) || !(mobility_flags & MOBILITY_MOVE) || buckled)
+	if(!isturf(loc) || !(mobility_flags & MOBILITY_MOVE) || buckled)
 		return //If it can't move, dont let it move. (The buckled check probably isn't necessary thanks to canmove)
 
 
@@ -469,11 +469,11 @@
 				var/mob/living/carbon/human/H = parrot_interest
 				var/obj/limb/affecting = H.get_limb(rand_zone(pick(parrot_dam_zone)))
 
-				H.apply_damage(damage, BRUTE, affecting, sharp=1)
+				H.apply_damage(damage, BRUTE, affecting, sharp=TRUE, enviro=TRUE)
 				INVOKE_ASYNC(src, PROC_REF(emote), pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons"))
 
 			else
-				L.apply_damage(damage, BRUTE)
+				L.apply_damage(damage, BRUTE, enviro=TRUE)
 				INVOKE_ASYNC(src, PROC_REF(emote), pick("pecks at [L]", "claws [L]"))
 			return
 
@@ -697,7 +697,7 @@
 		message = copytext(message,2)
 
 	if(length(message) >= 2)
-		var/channel_prefix = copytext(message, 1 ,3)
+		var/channel_prefix = lowertext(copytext(message, 1, 3))
 		message_mode = GLOB.department_radio_keys[channel_prefix]
 
 	if(copytext(message,1,2) == ":")

@@ -27,7 +27,7 @@
 	var/broken = FALSE
 	var/contraband = FALSE
 	var/covert = FALSE //covert = no light, no sound
-	var/delay = 3 //fabricating time, in seconds
+	var/delay = 3 SECONDS //fabricating time, in seconds
 
 	var/list/purchase_log = list()
 
@@ -197,7 +197,7 @@
 	fabricating = TRUE
 	update_overlays()
 
-	addtimer(CALLBACK(src, PROC_REF(spawn_product), product[3], user), delay SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(spawn_product), product[3], user), delay)
 
 /obj/item/device/portable_vendor/proc/spawn_product(typepath, mob/user)
 	var/obj/new_item = new typepath(get_turf(src))
@@ -298,7 +298,7 @@
 		list("Drinking Glass", 1, /obj/item/reagent_container/food/drinks/drinkingglass, "white", "A Drinking Glass, because you have class."),
 		list("Weyland-Yutani Coffee Mug", 1, /obj/item/reagent_container/food/drinks/coffeecup/wy, "white", "A Weyland-Yutani coffee mug, for any Marines who want a Company souvenir."),
 
-		list("STATIONARY", 0, null, null, null),
+		list("STATIONERY", 0, null, null, null),
 		list("WY pen, black", 1, /obj/item/tool/pen/clicky, "white", "A WY pen, for writing formally on the go."),
 		list("WY pen, blue", 1, /obj/item/tool/pen/blue/clicky, "white", "A WY pen, for writing with a flourish on the go."),
 		list("WY pen, red", 1, /obj/item/tool/pen/red/clicky, "white", "A WY pen, for writing angrily on the go."),

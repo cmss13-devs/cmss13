@@ -105,10 +105,11 @@
 	return
 
 /obj/item/weapon/telebaton/proc/stun(mob/living/carbon/human/target, mob/living/user)
+	var/stun_sound = pick('sound/weapons/baton.ogg', 'sound/effects/woodstave.ogg')
 	if(target.check_shields(src, 0, "[user]'s [name]"))
 		return FALSE
 	// Visuals and sound
-	playsound(target, 'sound/weapons/baton.ogg', 50, TRUE, 7)
+	playsound(target, stun_sound, 50, TRUE, 7)
 	user.animation_attack_on(target)
 	user.flick_attack_overlay(target, "punch")
 	log_interact(user, target, "[key_name(user)] stunned [key_name(target)] with \the [src]")

@@ -1285,7 +1285,9 @@ SUBSYSTEM_DEF(minimaps)
 
 	owner.move_tacmap_up()
 
-	return TRUE
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(!xeno.hive?.living_xeno_queen?.ovipositor && xeno.hive?.tacmap_requires_queen_ovi)
+		return UI_CLOSE
 
 /atom/movable/screen/minimap_tool/down
 	icon_state = "down"

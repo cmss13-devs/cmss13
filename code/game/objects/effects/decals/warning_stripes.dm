@@ -83,6 +83,7 @@
 	unacidable = TRUE
 	icon = 'icons/turf/overlays.dmi'
 	layer = TURF_LAYER
+	keep_as_object = TRUE
 
 /obj/effect/decal/sand_overlay/sand1
 	icon_state = "sand1_s"

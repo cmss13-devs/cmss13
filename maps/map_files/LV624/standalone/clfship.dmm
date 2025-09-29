@@ -102,6 +102,10 @@
 /obj/structure/largecrate/supply,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
+"at" = (
+/obj/item/flag/plantable/clf,
+/turf/open/floor/almayer/bluecorner/east,
+/area/lv624/lazarus/crashed_ship)
 "au" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -145,6 +149,18 @@
 	dir = 4;
 	faction_group = list("CLF");
 	selected_categories = list("IFF STATUS" = "CLF")
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 4
 	},
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -307,6 +323,14 @@
 	dir = 4;
 	faction_group = list("CLF");
 	selected_categories = list("IFF STATUS" = "CLF")
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 4
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
@@ -497,6 +521,7 @@
 /obj/item/ammo_magazine/rifle/m16{
 	pixel_x = -4
 	},
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "gF" = (
@@ -701,6 +726,22 @@
 	dir = 4;
 	faction_group = list("CLF");
 	selected_categories = list("IFF STATUS" = "CLF")
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 4
 	},
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -957,6 +998,22 @@
 	dir = 8;
 	faction_group = list("CLF");
 	selected_categories = list("IFF STATUS" = "CLF")
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 8
 	},
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -1513,6 +1570,22 @@
 	dir = 4;
 	faction_group = list("CLF");
 	selected_categories = list("IFF STATUS" = "CLF")
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 4
 	},
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -2882,7 +2955,7 @@ lr
 xF
 lr
 lr
-bL
+at
 QQ
 VB
 Qf

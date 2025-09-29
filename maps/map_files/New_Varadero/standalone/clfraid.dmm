@@ -1,10 +1,18 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/defenses/handheld/planted_flag/clf,
+/turf/open/floor/shiva/purplefull/west,
+/area/varadero/interior/research)
 "ab" = (
 /obj/structure/barricade/sandbags/wired,
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
 /turf/open/floor/shiva/purplefull/west,
+/area/varadero/interior/research)
+"ac" = (
+/obj/item/flag/plantable/clf,
+/turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "af" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -203,7 +211,7 @@
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/varadero/interior/maintenance/research)
 "fp" = (
-/obj/item/paper/research_notes/good{
+/obj/item/paper/research_notes/unique/tier_three{
 	pixel_x = -15;
 	pixel_y = 2
 	},
@@ -1142,6 +1150,14 @@
 	faction_group = list("CLF");
 	selected_categories = list("IFF STATUS" = "CLF")
 	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 4
+	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/research)
 "Aw" = (
@@ -1153,6 +1169,18 @@
 	dir = 1;
 	faction_group = list("CLF");
 	selected_categories = list("IFF STATUS" = "CLF")
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/maintenance/research)
@@ -1215,6 +1243,17 @@
 	dir = 8;
 	faction_group = list("CLF");
 	selected_categories = list("IFF STATUS" = "CLF")
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/research)
@@ -1548,6 +1587,19 @@
 	dir = 4;
 	faction_group = list("CLF");
 	selected_categories = list("IFF STATUS" = "CLF")
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 24
+	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 4
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
@@ -2629,7 +2681,7 @@ XU
 fG
 NS
 Cu
-Nw
+ac
 eQ
 sD
 tZ
@@ -2724,7 +2776,7 @@ Gp
 Sn
 Nw
 qf
-hG
+aa
 ll
 Sq
 FN

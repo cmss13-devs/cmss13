@@ -1,4 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/gm/grass/grass2,
+/area/lv624/ground/jungle/north_jungle)
 "ab" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
@@ -8,7 +11,6 @@
 /turf/open/floor/plating/warnplate/northwest,
 /area/lv624/ground/barrens/central_barrens)
 "ad" = (
-/obj/effect/landmark/lv624/fog_blocker,
 /turf/open/floor/plating/asteroidwarning/north,
 /area/lv624/ground/barrens/central_barrens)
 "ae" = (
@@ -29,6 +31,10 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
+"ai" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
+/area/lv624/ground/jungle/north_jungle)
 "aj" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
@@ -46,13 +52,25 @@
 "am" = (
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
+"an" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
+/area/lv624/ground/jungle/north_jungle)
 "ao" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/west,
 /area/lv624/ground/river/central_river)
+"ap" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/south,
+/area/lv624/ground/river/central_river)
 "aq" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner2/north_east,
+/area/lv624/ground/river/central_river)
+"ar" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/river/central_river)
 "as" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -72,12 +90,22 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
+"aw" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/lv624/fog_blocker,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/river,
+/area/lv624/ground/river/central_river)
 "ax" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/east,
 /area/lv624/ground/river/central_river)
 "ay" = (
 /obj/effect/landmark/crap_item,
+/turf/open/gm/river,
+/area/lv624/ground/river/central_river)
+"az" = (
+/obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "aA" = (
@@ -88,12 +116,21 @@
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/central_river)
+"aC" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/lv624/ground/river/central_river)
 "aD" = (
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/central_river)
 "aE" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/coast/south,
+/area/lv624/ground/river/central_river)
+"aF" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "aG" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -102,12 +139,21 @@
 "aH" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/river/central_river)
+"aI" = (
+/obj/structure/flora/jungle/alienplant1,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/river,
+/area/lv624/ground/river/central_river)
 "aJ" = (
 /turf/open/gm/coast/west,
 /area/lv624/ground/river/central_river)
 "aK" = (
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
+"aL" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/central_barrens)
 "aO" = (
 /obj/structure/fence,
 /turf/open/floor/plating/warnplate/southwest,
@@ -266,6 +312,7 @@
 /area/lv624/ground/river/central_river)
 "Ow" = (
 /obj/structure/flora/jungle/planttop1,
+/obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_jungle)
 "Rp" = (
@@ -374,18 +421,18 @@ Ex
 (6,1,1) = {"
 ab
 ah
-aK
-ay
-aK
-aK
-aH
-aJ
-ba
-bf
-bf
-bt
+az
+aF
+az
+az
+aC
+ao
+ar
+Jl
+Jl
+ai
 aT
-bK
+bN
 "}
 (7,1,1) = {"
 ac
@@ -401,7 +448,7 @@ YL
 aO
 Rp
 Hi
-bK
+bN
 "}
 (8,1,1) = {"
 ad
@@ -417,7 +464,7 @@ GU
 aW
 oa
 by
-bK
+bN
 "}
 (9,1,1) = {"
 ad
@@ -433,7 +480,7 @@ am
 aW
 oa
 by
-bH
+aa
 "}
 (10,1,1) = {"
 ad
@@ -449,7 +496,7 @@ am
 aW
 oa
 by
-bK
+bN
 "}
 (11,1,1) = {"
 ae
@@ -465,23 +512,23 @@ XY
 aX
 oa
 by
-bK
+bN
 "}
 (12,1,1) = {"
 ab
-ab
+aL
 av
-wu
-aK
-aK
-aK
-aK
-aQ
-be
-bf
-bu
+aI
+az
+az
+az
+az
+aw
+ap
+Jl
+an
 gh
-bK
+bN
 "}
 (13,1,1) = {"
 ab
@@ -497,7 +544,7 @@ aZ
 bf
 Ow
 px
-bK
+bN
 "}
 (14,1,1) = {"
 ab
@@ -513,7 +560,7 @@ aJ
 ba
 by
 bK
-bK
+bN
 "}
 (15,1,1) = {"
 af

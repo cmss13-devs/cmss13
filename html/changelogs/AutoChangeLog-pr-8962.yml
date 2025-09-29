@@ -1,5 +1,0 @@
-author: "Unknownity"
-delete-after: True
-changes:
-  - rscadd: "Added a portable Hellhound camera console used to overwatch Hellhounds from greater distances. You can find the Houndpads in the Houndmaster's quarters."
-  - imageadd: "Added a unique sprite for the Houndpad."

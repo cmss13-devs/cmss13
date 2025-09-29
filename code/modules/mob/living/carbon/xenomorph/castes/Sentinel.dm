@@ -242,10 +242,7 @@
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We can only drain bite an adjacent target!"))
 		return
 
-	if(xeno.stat == UNCONSCIOUS)
-		return
-
-	if(xeno.stat == DEAD)
+	if(xeno.check_state())
 		return
 
 	if(xeno.action_busy)

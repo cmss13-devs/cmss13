@@ -1,0 +1,4 @@
+author: "Killfish"
+delete-after: True
+changes:
+  - balance: "Eating too much Nutriment will make you sick and slow you down until you barf. Current threshold is 60u."

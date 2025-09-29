@@ -320,15 +320,22 @@
 	var/max_design_nodes = 0
 	var/selected_design_mark
 
-	/// Shielder related
+	///Shielder related vars.
 	var/front_plates
 	var/side_plates
+	/// Check if plates are closed or not.
 	var/enclosed_plates = FALSE
+	/// Check if plate slam is active.
 	var/plate_slam = FALSE
+	/// Chain xeno player to target under plate slam ability.
 	var/mob/living/carbon/plasma_channel_target = null
+	/// Time spent channeling plasma.
 	var/plasma_channel_elapsed = 0
+	/// Maximum time channeling plasma can be active.
 	var/plasma_channel_hardcap = 12 SECONDS
+	/// check if reflective shield is active.
 	var/reflective_shield_active = FALSE
+	/// Chance to reflect projectile when hit while reflective shield is active.
 	var/reflective_shield_chance = 0
 
 	var/icon_xeno

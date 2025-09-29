@@ -161,7 +161,7 @@
 		return
 
 	if(xeno_player.plate_slam)
-		xeno_player.balloon_alert(xeno_player, "we need to stop pinning down target!", text_color = "#7d32bb", delay = 1 SECONDS)
+		xeno_player.balloon_alert(xeno_player, "we need to stop pinning down the target!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
 	var/mob/living/carbon/carbon_target = target_atom
@@ -233,7 +233,7 @@
 		xeno_player.balloon_alert(xeno_player, "we need to lower our plate!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
-	xeno_player.visible_message(SPAN_XENOWARNING("[xeno_player] swing its tail in a wide circle!"),
+	xeno_player.visible_message(SPAN_XENOWARNING("[xeno_player] swings its tail in a wide circle!"),
 	SPAN_XENOWARNING("We swing our tail in a wide circle!"))
 
 	if(!check_and_use_plasma_owner())
@@ -329,8 +329,8 @@
 		if(carbon_target.body_position != LYING_DOWN)
 			to_chat(xeno_player, SPAN_DANGER("They need to be lying down!"))
 			return
-		to_chat(xeno_player, SPAN_DANGER("We press our plate together, preparing to pin the target!"))
-		to_chat(carbon_target, SPAN_DANGER("You see plate closing in above you, ready to strike!"))
+		to_chat(xeno_player, SPAN_DANGER("We press our plates together, preparing to pin the target!"))
+		to_chat(carbon_target, SPAN_DANGER("You see the plates tightening together above you, ready to strike!"))
 		if(!do_after(xeno_player, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(xeno_player, SPAN_DANGER("We lose our balance!"))
 			to_chat(carbon_target, SPAN_DANGER("You notice the enemy lose their balance!"))
@@ -495,8 +495,8 @@
 	reflective_shield_chance = chance
 
 	src.add_filter("reflective_shield", 1, list("type" = "outline", "color" = "#2b8080", "size" = 1))
-	to_chat(src, SPAN_XENOWARNING("We adjust plate and stance to get ready for incomming attacks!"))
-	visible_message(SPAN_XENOWARNING("[src]'s changes stance and adjusting its plate!"))
+	to_chat(src, SPAN_XENOWARNING("We adjust our plates and get ready for incoming attacks!"))
+	visible_message(SPAN_XENOWARNING("[src] shifts its stance, its reflexive defense faltering."))
 
 	addtimer(CALLBACK(src, PROC_REF(remove_reflective_shield)), duration)
 

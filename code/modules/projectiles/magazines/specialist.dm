@@ -287,13 +287,6 @@
 	gun_type = /obj/item/weapon/gun/launcher/rocket/brute
 	desc = "The M5510 rockets are high-explosive anti-structure munitions designed to rapidly accelerate to nearly 1,000 miles per hour in any atmospheric conditions. The warhead itself uses an inflection stabilized shaped-charge to generate a low-frequency pressure wave that can flatten nearly any fortification in an ellipical radius of several meters. These rockets are known to have reduced lethality to personel, but will put just about any ol' backwater mud-hut right into orbit."
 
-/obj/item/ammo_magazine/rocket/brute
-	name = "\improper M5510 Laser-Guided Rocket"
-	icon_state = "brute_rocket"
-	default_ammo = /datum/ammo/rocket/brute
-	gun_type = /obj/item/weapon/gun/launcher/rocket/brute
-	desc = "The M5510 rockets are high-explosive anti-structure munitions designed to rapidly accelerate to nearly 1,000 miles per hour in any atmospheric conditions. The warhead itself uses an inflection stabilized shaped-charge to generate a low-frequency pressure wave that can flatten nearly any fortification in an ellipical radius of several meters. These rockets are known to have reduced lethality to personel, but will put just about any ol' backwater mud-hut right into orbit."
-
 /obj/item/ammo_magazine/rocket/custom
 	name = "\improper 84mm custom rocket"
 	desc = "A rocket tube loaded with a custom warhead."

@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
-import { Button, Input, Section, Stack, Tabs } from 'tgui/components';
+import { Button, Icon, Input, Section, Stack, Tabs } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
 import { replaceRegexChars } from './helpers';
 
 type Data = {
   availability: number;
+  can_change_name: boolean;
+  current_name: string;
   last_caller: string | null;
   available_transmitters: string[];
   transmitters: {
@@ -30,7 +32,7 @@ export const PhoneMenu = (props) => {
 
 const GeneralPanel = (props) => {
   const { act, data } = useBackend<Data>();
-  const { availability, last_caller } = data;
+  const { availability, last_caller, current_name } = data;
   const available_transmitters = Object.keys(data.available_transmitters);
   const transmitters = data.transmitters.filter((val1) =>
     available_transmitters.includes(val1.phone_id),
@@ -152,6 +154,21 @@ const GeneralPanel = (props) => {
             Do Not Disturb
           </Button>
         </Stack.Item>
+        {data.can_change_name ? (
+          <Stack.Item>
+            <Button.Input
+              fluid
+              textAlign="center"
+              onCommit={(_, value) => act('rename_phone', { new_name: value })}
+              defaultValue={current_name}
+              currentValue={current_name}
+            >
+              <Icon name={'tag'} /> {current_name}
+            </Button.Input>
+          </Stack.Item>
+        ) : (
+          ''
+        )}
       </Stack>
     </Section>
   );

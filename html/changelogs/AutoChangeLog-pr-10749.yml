@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "RMC Marksman now spawns with the proper ammo"

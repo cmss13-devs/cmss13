@@ -30,7 +30,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_sea, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Drill Hat", 0, /obj/item/clothing/head/drillhat, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
 		list("Officer Uniform", 0, /obj/item/clothing/under/marine/dress, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("Officer Skirt Uniform", 0, /obj/item/clothing/under/marine/dress/skirt, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("USCM Service Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/service, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/sea, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),

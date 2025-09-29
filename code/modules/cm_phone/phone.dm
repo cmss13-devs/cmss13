@@ -142,7 +142,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		if("call_phone")
 			call_phone(user, params["phone_id"])
 			. = TRUE
-			SStgui.close_uis(ui)
+			SStgui.close_uis(src)
 		if("toggle_dnd")
 			toggle_dnd(user)
 		if("rename_phone")

@@ -369,15 +369,6 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "dw" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -947,16 +938,6 @@
 /area/bigredv2/caves/mining)
 "nW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
@@ -1893,16 +1874,6 @@
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves/mining)
 "DI" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
@@ -1915,16 +1886,6 @@
 "DN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/burger,
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/burger,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
@@ -2380,16 +2341,6 @@
 	},
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 6
-	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
 	},
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -8;
@@ -3004,16 +2955,6 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Tw" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
 	},

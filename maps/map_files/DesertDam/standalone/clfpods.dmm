@@ -589,16 +589,6 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 1;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
@@ -610,16 +600,6 @@
 "lA" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
-	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
 	},
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -940,16 +920,6 @@
 "uU" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
-	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
 	},
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -1474,16 +1444,6 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 1;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
@@ -1676,16 +1636,6 @@
 	icon_state = "road_edge_decal2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
@@ -1879,16 +1829,6 @@
 "TK" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
-	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
 	},
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"

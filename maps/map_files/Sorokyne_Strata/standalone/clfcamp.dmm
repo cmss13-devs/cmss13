@@ -1364,16 +1364,6 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/far_north_outpost)
 "mz" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
 	},
@@ -1954,15 +1944,6 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/far_north_outpost)
 "Ho" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	faction_group = list("CLF");
-	selected_categories = list("IFF STATUS" = "CLF")
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
 /turf/open/floor/strata/floor3,
 /area/strata/exterior/far_north_outpost)

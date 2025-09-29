@@ -139,7 +139,8 @@
 	return TRUE
 
 /datum/buildmode/proc/InterceptClickOn(mob/user, params, atom/object)
-	mode.when_clicked(user.client, params, object)
+	if(mode.when_clicked(user.client, params, object))
+		return FALSE //cancel the intercept
 	return TRUE // no doing underlying actions
 
 /proc/togglebuildmode(mob/M as mob in GLOB.player_list)

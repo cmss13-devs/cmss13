@@ -21,7 +21,7 @@
 	var/random_name = random_name(new_human.gender)
 	new_human.change_real_name(new_human, random_name)
 	new_human.name = new_human.real_name
-	new_human.age = rand(22,45)
+	new_human.age = rand(20,45)
 
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
 	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
@@ -41,11 +41,6 @@
 		new_human.f_style = pick("5 O'clock Shadow", "Shaved", "Full Beard", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache", "7 O'clock Shadow", "7 O'clock Moustache",)
 	else
 		new_human.h_style = pick("Ponytail 1", "Ponytail 2", "Ponytail 3", "Ponytail 4", "Pvt. Redding", "Pvt. Clarison", "Cpl. Dietrich", "Pvt. Vasquez", "Marine Bun", "Marine Bun 2", "Marine Flat Top",)
-	new_human.change_real_name(new_human, random_name)
-	new_human.age = rand(20,45)
-	new_human.r_hair = rand(15,35)
-	new_human.g_hair = rand(15,35)
-	new_human.b_hair = rand(25,45)
 
 /datum/equipment_preset/cmb/load_id(mob/living/carbon/human/new_human, client/mob_client)
 	if(human_versus_human)
@@ -542,20 +537,19 @@
 
 /datum/equipment_preset/cmb/synth/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
+
 	var/random_name
 	switch(new_human.gender)
-		if(MALE)
-			random_name = "[pick(GLOB.first_names_male)]"
 		if(FEMALE)
-			random_name = "[pick(GLOB.first_names_female)]"
-		if(PLURAL)
-			random_name = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))]"
-
-	if(new_human.gender == MALE)
-		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
-
+			random_name = capitalize(pick(GLOB.first_names_female))
+		if(PLURAL, NEUTER) // Currently not possible
+			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male) : pick(GLOB.first_names_female))
+		else // MALE
+			random_name = capitalize(pick(GLOB.first_names_male))
+			new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")

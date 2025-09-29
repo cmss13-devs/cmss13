@@ -9,6 +9,8 @@
 	health = 250
 
 	var/active = FALSE
+	/// stores the blackfoot interior areas default name
+	var/blackfoot_area_default_name = "blackfoot interior"
 
 /datum/action/human_action/blackfoot/recon_mode
 	name = "Toggle Recon Mode"
@@ -83,6 +85,13 @@
 	if(blackfoot_owner.lighting_holder)
 		blackfoot_owner.lighting_holder.set_light_power(4)
 
+	if(blackfoot_owner.interior_area && blackfoot_area_default_name)
+		blackfoot_owner.interior_area.name = blackfoot_area_default_name
+
+	var/turf/gotten_turf = get_turf(blackfoot_owner)
+	if(gotten_turf?.z)
+		SSminimaps.add_marker(blackfoot_owner, gotten_turf.z, MINIMAP_FLAG_USCM, "vtol", 'icons/ui_icons/map_blips_large.dmi')
+
 	active = FALSE
 	blackfoot_owner.stealth_mode = FALSE
 
@@ -106,6 +115,13 @@
 
 	if(blackfoot_owner.lighting_holder)
 		blackfoot_owner.lighting_holder.set_light_power(0)
+
+	if(blackfoot_owner.interior_area?.name)
+		// stores the default name, so we know what to set it back to
+		blackfoot_area_default_name = blackfoot_owner.interior_area.name
+		blackfoot_owner.interior_area.name = "Unknown"
+
+	SSminimaps.remove_marker(blackfoot_owner)
 
 	active = TRUE
 	blackfoot_owner.stealth_mode = TRUE

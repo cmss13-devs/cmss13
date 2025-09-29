@@ -206,6 +206,11 @@
 /obj/vehicle/multitile/blackfoot/Initialize(mapload, ...)
 	. = ..()
 	tacmap = new /datum/tacmap/drawing/blackfoot(src, minimap_type)
+
+	var/turf/gotten_turf = get_turf(src)
+	if(gotten_turf?.z)
+		SSminimaps.add_marker(src, gotten_turf.z, MINIMAP_FLAG_USCM, "vtol", 'icons/ui_icons/map_blips_large.dmi')
+
 	load_hardpoints()
 	load_role_reserved_slots()
 	update_icon()

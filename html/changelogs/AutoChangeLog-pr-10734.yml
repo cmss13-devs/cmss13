@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - spellcheck: "Fixed a typo of clearence and reworked various balloon alerts to satisfy new lints"
-  - code_imp: "Expanded balloon alert testing and changed the as anything optimization check from o?range and o?hearers to o?range and o?view"

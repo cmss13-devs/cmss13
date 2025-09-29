@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Ctrl clicking a xeno now can give a timer how long until the afk xeno can be taken over if its within the next 30s"
-  - admin: "Ctrl clicking a xeno no longer gives a message just because they're aghosted"

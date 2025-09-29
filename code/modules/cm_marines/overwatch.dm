@@ -95,7 +95,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	for(var/datum/squad/root_squad in GLOB.RoleAuthority.squads)
 		root_squad.release_overwatch()
 		break
-	QDEL_NULL(tacmap)
+
 	GLOB.active_overwatch_consoles -= src
 	current_orbital_cannon = null
 	concurrent_users = null
@@ -591,7 +591,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		return
 
 	var/mob/user = usr
-	switch(action)			
+	switch(action)
 		if("pick_squad")
 			if(current_squad)
 				return

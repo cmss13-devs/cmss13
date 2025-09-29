@@ -325,7 +325,6 @@
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
-		/datum/action/xeno_action/onclick/tacmap,
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 	)
 

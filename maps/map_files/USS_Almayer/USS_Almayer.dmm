@@ -789,6 +789,11 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
 /turf/open/floor/plating,
 /area/almayer/medical/lockerroom)
 "aca" = (
@@ -1228,6 +1233,11 @@
 	id = "MedicalDistriShu";
 	name = "\improper Medical Equipment Distribution Shutters";
 	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/lockerroom)
@@ -2762,7 +2772,7 @@
 /turf/open/floor/almayer/silver/southeast,
 /area/almayer/living/officer_study)
 "agv" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	access_modified = 1;
 	dir = 2;
 	name = "\improper Requisitions Break Room";
@@ -3203,6 +3213,11 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
 /turf/open/floor/plating,
 /area/almayer/medical/chemistry)
 "ahm" = (
@@ -5728,6 +5743,10 @@
 	req_one_access_txt = "3;22;2;19"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/offices/flight)
 "anV" = (
@@ -6068,17 +6087,17 @@
 /area/almayer/shipboard/stern_point_defense)
 "aoR" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
-	name = "\improper Flight Crew Quarters";
-	dir = 1;
-	req_one_access = list(19,22);
-	req_access = list()
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer{
+	dir = 1;
+	req_one_access_txt = "19;22";
+	name = "\improper Flight Crew Quarters";
+	access_modified = 1
 	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	id = "Hangar Lockdown";
@@ -7622,7 +7641,7 @@
 /turf/closed/wall/almayer,
 /area/almayer/living/offices/cryo)
 "asC" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+/obj/structure/machinery/door/airlock/multi_tile/almayer{
 	name = "\improper Support Crew Cryobay"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -15609,7 +15628,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "aOM" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "aON" = (
@@ -16062,7 +16081,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "aPS" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/engine_core)
 "aPT" = (
@@ -16359,7 +16378,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2{
+/obj/structure/machinery/door/airlock/multi_tile/almayer{
 	name = "\improper Support Crew Cryobay"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -18923,7 +18942,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper Conference and Office Area"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -26436,7 +26455,7 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bnh" = (
@@ -29259,11 +29278,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "btp" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/engineer)
 "btq" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/structure/machinery/portable_atmospherics/powered/scrubber{
 	pixel_y = 20
 	},
@@ -29465,6 +29484,11 @@
 	name = "\improper Astronavigational Deck";
 	req_access = null;
 	req_one_access_txt = "3;19"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
@@ -32615,7 +32639,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper Cryogenics Bay"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -33282,7 +33306,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper Briefing Room"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -35911,11 +35935,11 @@
 /turf/open/floor/almayer/orange/north,
 /area/almayer/squads/bravo)
 "bOJ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Briefing Room"
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
+	name = "\improper Briefing Room";
+	dir = 1
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/briefing)
 "bOK" = (
@@ -38087,7 +38111,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -41091,7 +41115,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper Conference and Office Area"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -42370,6 +42394,10 @@
 	req_access = null;
 	req_one_access_txt = "3;22;2;19"
 	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/offices/flight)
 "dRP" = (
@@ -42980,14 +43008,14 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/upper/midship_hallway)
 "egt" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Chapel"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
+	name = "\improper Chapel"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/chapel)
@@ -43753,7 +43781,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper Starboard Railguns and Viewing Room"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -44523,9 +44551,9 @@
 /turf/open/floor/almayer/green/west,
 /area/almayer/living/offices)
 "eKZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Port Viewing Room"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
+	name = "\improper Port Viewing Room";
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_f_p)
@@ -46807,7 +46835,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
 "fIX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+/obj/structure/machinery/door/airlock/multi_tile/almayer{
 	access_modified = 1;
 	name = "\improper Requisitions Auxiliary Storage Room";
 	req_one_access_txt = "19;21"
@@ -50086,7 +50114,7 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -50576,7 +50604,7 @@
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/lifeboat_pumps/north1)
 "hmv" = (
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -51968,9 +51996,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Starboard Viewing Room"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
+	name = "\improper Starboard Viewing Room";
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_f_s)
@@ -53708,10 +53736,10 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper Port Railguns and Viewing Room"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_f_p)
 "iFC" = (
@@ -59382,7 +59410,7 @@
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
 "kSi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	req_access = list(19);
 	name = "\improper Intel Storage"
 	},
@@ -60841,7 +60869,7 @@
 /turf/open/floor/almayer/emeraldfull,
 /area/almayer/squads/charlie)
 "lwY" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper Port Viewing Room"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -65083,7 +65111,7 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -65146,6 +65174,11 @@
 	name = "\improper Astronavigational Deck";
 	req_access = null;
 	req_one_access_txt = "3;19"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
@@ -69370,8 +69403,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck)
 "oRm" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Port Viewing Room"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
+	name = "\improper Starboard Viewing Room"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_f_s)
@@ -70690,7 +70723,7 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -71444,7 +71477,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "pPd" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+/obj/structure/machinery/door/airlock/multi_tile/almayer{
 	name = "\improper Saferoom Entrance"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -84686,11 +84719,11 @@
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/engineering/lower/workshop/hangar)
 "uZZ" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Basketball Court"
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
+	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
+	name = "\improper Basketball Court"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/basketball)
@@ -85807,11 +85840,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/vehiclehangar)
 "vuF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	access_modified = 1;
-	dir = 1;
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper Kitchen Hydroponics";
-	req_one_access_txt = "30;19"
+	req_one_access_txt = "30;19";
+	access_modified = 1;
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/grunt_rnr)
@@ -86122,9 +86155,9 @@
 /turf/open/floor/almayer/redcorner/west,
 /area/almayer/shipboard/brig/starboard_hallway)
 "vzz" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Hydroponics Garden"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
+	name = "\improper Hydroponics Garden";
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/cells)
@@ -87576,16 +87609,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck)
-"wby" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Starboard Viewing Room"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/maint/hull/upper/u_f_s)
 "wbC" = (
 /obj/structure/machinery/atm{
 	pixel_y = 32
@@ -90649,10 +90672,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_a_p)
 "xjb" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	access_modified = 1;
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper Main Kitchen";
-	req_one_access_txt = "30;19"
+	req_one_access_txt = "30;19";
+	access_modified = 1
 	},
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
@@ -93258,7 +93281,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	name = "\improper Rest and Relaxation Area"
 	},
 /turf/open/floor/almayer/test_floor4,
@@ -197365,7 +197388,7 @@ abs
 abs
 cZe
 aMf
-wby
+hSv
 gpY
 mto
 acW

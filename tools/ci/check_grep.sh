@@ -192,22 +192,28 @@ do
 done
 
 part "balloon_alert sanity"
-if $grep 'balloon_alert\(".*"\)' $code_files; then
+if $grep 'balloon_alert\(".*"' $code_files; then
 	echo
 	echo -e "${RED}ERROR: Found a balloon alert with improper arguments.${NC}"
 	st=1
 fi;
 
-if $grep 'balloon_alert(.*span_)' $code_files; then
+if $grep 'balloon_alert(_to_viewers)?\(.*[Ss][Pp][Aa][Nn]' $code_files; then
 	echo
 	echo -e "${RED}ERROR: Balloon alerts should never contain spans.${NC}"
 	st=1
 fi;
 
 part "balloon_alert idiomatic usage"
-if $grep 'balloon_alert\(.*?, ?"[A-Z]' $code_files; then
+if $grep '(balloon_alert\(.*?,|balloon_alert_to_viewers\()\s*"[\sA-Z]' $code_files; then
 	echo
-	echo -e "${RED}ERROR: Balloon alerts should not start with capital letters. This includes text like 'AI'. If this is a false positive, wrap the text in UNLINT().${NC}"
+	echo -e "${RED}ERROR: Balloon alerts should not start with capital letters or whitespace. This includes text like 'AI'. If this is a false positive, wrap the text in UNLINT().${NC}"
+	st=1
+fi;
+
+if $grep '(balloon_alert\(.*?,|balloon_alert_to_viewers\()\s*"[^"]*\."' $code_files; then
+	echo
+	echo -e "${RED}ERROR: Balloon alerts should not end with a period. If this is a false positive, wrap the text in UNLINT().${NC}"
 	st=1
 fi;
 
@@ -215,13 +221,6 @@ part "to_chat without user"
 if $grep 'to_chat\(("|SPAN)' $code_files; then
 	echo
 	echo -e "${RED}ERROR: to_chat() requires a target as its first argument.${NC}"
-	st=1
-fi;
-
-part "deoptimization of range/hearers with as anything"
-if $grep 'as anything in o?(range|hearers)\(' $code_files; then
-	echo
-	echo -e "${RED}ERROR: range(), orange(), hearers(), and ohearers() perform significantly worse with as anything.${NC}"
 	st=1
 fi;
 
@@ -244,6 +243,12 @@ fi;
 
 if [ "$pcre2_support" -eq 1 ]; then
 	section "regexes requiring PCRE2"
+	part "deoptimization of range/view with as anything"
+	if $grep -PU 'var\/(?!atom).* as anything in o?(range|view)\(' $code_files; then
+		echo
+		echo -e "${RED}ERROR: range(), orange(), view(), and oview() perform significantly worse with as anything.${NC}"
+		st=1
+	fi;
 	part "long list formatting"
 	if $grep -PU '^(\t)[\w_]+ = list\(\n\1\t{2,}' code/**/*.dm; then
 		echo -e "${RED}ERROR: Long list overindented, should be two tabs.${NC}"

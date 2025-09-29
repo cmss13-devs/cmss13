@@ -75,7 +75,7 @@
 		if(general_record.fields["id"] != general_record_id)
 			continue
 		if((general_record.fields["name"] != target.real_name) && (general_record.fields["name"] != "New Record"))
-			balloon_alert_to_viewers("ERROR! Medical record bioscan does not match general record ID.")
+			balloon_alert_to_viewers("medical record bioscan does not match general record")
 			playsound(src, 'sound/machines/terminal_error.ogg', 15, FALSE)
 			return
 		general_record.fields["name"] = target.real_name
@@ -115,7 +115,7 @@
 
 	if(!record_id)
 		// for whatever reason, the computer is asking for a record with a null ID
-		balloon_alert_to_viewers("Critical systems fault! Unable to process request.")
+		balloon_alert_to_viewers("critical systems fault!")
 		to_chat(user, SPAN_NOTICE("Critical systems fault! Unable to process request."))
 		playsound(loc, 'sound/machines/terminal_shutdown.ogg', 15, FALSE)
 		return
@@ -127,7 +127,7 @@
 	var/datum/data/record/medical_record = find_record("medical", record_id)
 
 	if (!general_record)
-		balloon_alert_to_viewers("Unable to process request. Record not found!")
+		balloon_alert_to_viewers("record not found!")
 		to_chat(user, SPAN_NOTICE("Unable to process request. Record not found!"))
 		playsound(loc, 'sound/machines/terminal_shutdown.ogg', 15, FALSE)
 		return
@@ -142,7 +142,7 @@
 		biometric_scan_timer = null
 
 	bio_link_target_record_id = null
-	balloon_alert_to_viewers("Aborting biometric scan! No user detected in time.")
+	balloon_alert_to_viewers("aborting biometric scan!")
 	to_chat(user, SPAN_NOTICE("Aborting biometric scan! No user detected in time."))
 	playsound(loc, 'sound/machines/terminal_shutdown.ogg', 15, FALSE)
 
@@ -437,8 +437,8 @@
 			var/name = params["name"]
 
 			if (name && id)
-				balloon_alert_to_viewers("Place a hand on the biometric reader to create a new medical record.")
-				to_chat(user, SPAN_WARNING("Place a hand on the biometric reader to create a new medical record."))
+				balloon_alert_to_viewers("place a hand on biometric reader to complete new medical record")
+				to_chat(user, SPAN_WARNING("Place a hand on biometric reader to complete new medical record."))
 				playsound(src, 'sound/machines/ping.ogg', 15, FALSE)
 				bio_link_target_record_id = id
 				biometric_scan_timer = addtimer(CALLBACK(src, PROC_REF(handle_biometric_scan_timeout), user), 10 SECONDS, TIMER_STOPPABLE)
@@ -485,12 +485,12 @@
 		if ("print_medical_record")
 			var/target_record_id = params["id"]
 			if (!COOLDOWN_FINISHED(src, record_printing_cooldown))
-				to_chat(user, SPAN_WARNING("Woah there buddy! Let the printer catch its breath before ordering the next document."))
+				to_chat(user, SPAN_WARNING("Woah there buddy! You wouldn't want it to jam would you?"))
 				return
 
 			COOLDOWN_START(src, record_printing_cooldown, 7 SECONDS)
 
-			balloon_alert_to_viewers("Printing record!")
+			balloon_alert_to_viewers("printing record!")
 			to_chat(user, SPAN_NOTICE("Printing record!"))
 			playsound(loc, 'sound/machines/fax.ogg', 15, TRUE)
 

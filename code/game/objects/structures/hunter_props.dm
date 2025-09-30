@@ -463,3 +463,55 @@
 /obj/structure/prop/hunter/ancient_temple/small_statue/base
 
 	icon_state = "small_statue_base"
+
+// Breakable Ancient-Temple Walls
+
+/obj/structure/prop/hunter/ancient_temple/collapsed_wall
+	name = "damaged sandstone temple wall"
+	desc = "A damaged heavy wall of sandstone."
+	icon = 'icons/turf/walls/temple/hunter_temple.dmi'
+	icon_state = "ancient_stone_breach"
+	density = TRUE
+	health = 600
+	anchored = TRUE
+
+/obj/structure/prop/hunter/ancient_temple/collapsed_wall/bullet_act(obj/projectile/P)
+	health -= P.damage
+	playsound(src, 'sound/effects/thud.ogg', 35, 1)
+	..()
+	healthcheck()
+	return TRUE
+
+/obj/structure/prop/hunter/ancient_temple/collapsed_wall/proc/explode()
+	visible_message(SPAN_DANGER("[src] crumbles!"), max_distance = 1)
+	deconstruct(FALSE)
+	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
+	var/turf/Tsec = get_turf(src)
+	new /obj/item/stack/sheet/mineral/sandstone/runed(Tsec)
+	new /obj/item/stack/sheet/mineral/sandstone/runed(Tsec)
+	new /obj/item/stack/sheet/mineral/sandstone/runed(Tsec)
+	new /obj/effect/hunter/ancient_temple/rubble/rubble(Tsec)
+	new /obj/effect/hunter/ancient_temple/rubble/rubble_1(Tsec)
+	deconstruct(FALSE)
+
+/obj/structure/prop/hunter/ancient_temple/collapsed_wall/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hunter/ancient_temple/collapsed_wall/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hunter/ancient_temple/collapsed_wall/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metal_close.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION

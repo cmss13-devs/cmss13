@@ -613,6 +613,18 @@
 /turf/open/floor/ancient_temple/deco/deco_2/west
 	dir = WEST
 
+/turf/open/floor/ancient_temple/deco/deco_alt
+	icon_state = "floor_deco_alt"
+
+/turf/open/floor/ancient_temple/deco/deco_alt/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/deco/deco_alt/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/deco/deco_alt/west
+	dir = WEST
+
 //
 
 /turf/open/floor/ancient_temple/deco/dark
@@ -643,6 +655,18 @@
 	dir = EAST
 
 /turf/open/floor/ancient_temple/deco/dark/deco_2/west
+	dir = WEST
+
+/turf/open/floor/ancient_temple/deco/dark/deco_alt
+	icon_state = "floor_deco_alt_dark"
+
+/turf/open/floor/ancient_temple/deco/dark/deco_alt/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/deco/dark/deco_alt/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/deco/dark/deco_alt/west
 	dir = WEST
 
 //

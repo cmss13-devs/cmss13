@@ -480,7 +480,7 @@
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
 				return
-		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
+		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name, width = 700, height = 900) // Update the window
 		//openhelp(user)
 		return
 

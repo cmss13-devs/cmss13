@@ -260,6 +260,7 @@
 	paper_text = replacetext(paper_text, "\[job\]", "<font face=\"[signfont]\"><i>[user ? user.job : "None"]</i></font>")
 	paper_text = replacetext(paper_text, "\[op\]", "<font face=\"[signfont]\"><i>[GLOB.round_statistics.round_name]</i></font>")
 	paper_text = replacetext(paper_text, "\[colony\]", "<font face=\"[signfont]\"><i>[SSmapping.configs[GROUND_MAP].map_name]</i></font>")
+	paper_text = replacetext(paper_text, "\[ship\]", "<font face=\"[signfont]\"><i>[MAIN_SHIP_NAME]</i></font>")
 
 
 	paper_text = replacetext(paper_text, "\[h1\]", "<H1>")

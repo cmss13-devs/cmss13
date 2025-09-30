@@ -122,12 +122,19 @@ export const Minesweeper = () => {
                     >
                       {cell.state === 'open' ? (
                         cell.cell_type === -1 ? (
-                          <Icon ml={1} size={2} name="bug" />
-                        ) : cell.cell_type === -2 ? null : (
+                          <Icon ml={1} size={1.5} mt={1} name="bug" />
+                        ) : cell.cell_type === -2 ||
+                          cell.cell_type === -3 ? null : (
                           <h1 style={{ fontSize: '30px' }}>{cell.cell_type}</h1>
                         )
                       ) : !!cell.flagged === true ? (
-                        <Icon ml={1} size={2} name="flag" color="#db0000ff" />
+                        <Icon
+                          ml={1}
+                          mt={1}
+                          size={1.5}
+                          name="flag"
+                          color="#db0000ff"
+                        />
                       ) : null}
                     </Box>
                   </Button>

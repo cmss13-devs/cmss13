@@ -4,6 +4,8 @@
 #define LANDMINE -1
 /// if an individual cell is CLEAR (No numbers either)
 #define	CLEAR -2
+/// if a cell is protected from gaining any numbers. Only one is possible.
+#define PROTECTED -3
 /// if an individual cell is closed
 #define CELL_CLOSED "closed"
 /// if an individual cell is open
@@ -226,6 +228,8 @@
 	var/difficulty = 10
 	///whether you can lose with first click. technically if this is on we generate the mines AFTER the click was made. if not we generate it immediatly.
 	var/first_click_safety = TRUE
+	///If we guarantee opening cell is a 0 cell
+	var/zero_cell_gurantee = TRUE
 	///if the first click was made
 	var/first_click_made = FALSE
 	var/list/field_boundaries = FIELD_SMALL
@@ -322,8 +326,9 @@
 		field[columns][rows]["state"] = CELL_OPEN
 	if(field[columns][rows]["cell_type"] == CLEAR && !first_click_made)//field is not generated, fake open it.
 		field[columns][rows]["state"] = CELL_OPEN
+		field[columns][rows]["cell_type"] = PROTECTED
 		return
-	if(field[columns][rows]["cell_type"] == CLEAR)
+	if(field[columns][rows]["cell_type"] == CLEAR || field[columns][rows]["cell_type"] == PROTECTED)
 		var/cell_id = field[columns][rows]["unique_cell_id"]
 		field[columns][rows]["state"] = CELL_OPEN
 		//opening adjacent NUMBER cells
@@ -372,32 +377,45 @@
 
 
 /obj/structure/machinery/computer/arcade/minesweeper/proc/populate_field_with_mines()
+	var/failed_placements = 0
 	for(var/i in 1 to difficulty)
 		var/picked_column = rand(1, field_boundaries[1])
 		var/picked_row = rand(1, field_boundaries[2])
 		var/list/picked_cell = field[picked_column][picked_row]
+		var/cancel_landmine_placement = FALSE //If we tried to place the landmine, but failed for whatever reason.
 		//cell picked is already a mine or is open - 5 attempts at relocating
-		if(picked_cell["cell_type"] == LANDMINE || picked_cell["state"] == CELL_OPEN)
+		if(picked_cell["cell_type"] == LANDMINE || picked_cell["state"] == CELL_OPEN || !increment_neighbour_cells(picked_cell["unique_cell_id"], picked_row, TRUE))
 			for(var/reassign_loop in 1 to 5)
 				picked_row = rand(1, field_boundaries[2])
 				picked_cell = field[rand(1, field_boundaries[1])][picked_row]
-				if(picked_cell["cell_type"] != LANDMINE)
+				if(picked_cell["cell_type"] != LANDMINE && picked_cell["state"] != CELL_OPEN && increment_neighbour_cells(picked_cell["unique_cell_id"], picked_row, TRUE))
 					break
-		picked_cell["cell_type"] = LANDMINE
-		increment_neighbour_cells(picked_cell["unique_cell_id"], picked_row)
+			if(picked_cell["cell_type"] == LANDMINE || picked_cell["state"] == CELL_OPEN || !increment_neighbour_cells(picked_cell["unique_cell_id"], picked_row, TRUE)) //we're still trying to occupy the wrong cell, remove the landmine from the pool completely.
+				cancel_landmine_placement = TRUE
+		if(!cancel_landmine_placement)
+			picked_cell["cell_type"] = LANDMINE
+			increment_neighbour_cells(picked_cell["unique_cell_id"], picked_row)
+		else
+			failed_placements++
+	difficulty -= failed_placements
 
-/obj/structure/machinery/computer/arcade/minesweeper/proc/increment_neighbour_cells(cell_id, origin_row)
+
+/obj/structure/machinery/computer/arcade/minesweeper/proc/increment_neighbour_cells(cell_id, origin_row, check = FALSE)
 	var/list/cells_to_increment = list(cell_id-diagonal_spot, cell_id-diagonal_spot+1, cell_id-diagonal_spot+2, cell_id-1, cell_id+1, cell_id+diagonal_spot-1, cell_id+diagonal_spot-2, cell_id+diagonal_spot)
 	for(var/columns in 1 to field_boundaries[1])
 		for(var/rows in 1 to field_boundaries[2])
 			if(field[columns][rows]["unique_cell_id"] in cells_to_increment)
-				if(origin_row - rows > 1 ||origin_row  - rows < -1)
+				if(origin_row - rows > 1 || origin_row  - rows < -1)
 					continue
-				if(field[columns][rows]["cell_type"] == CLEAR)
+				if(field[columns][rows]["cell_type"] == PROTECTED) //cell we're trying to increment is protected, cancel the landmine placement completely.
+					return FALSE
+				if(field[columns][rows]["cell_type"] == CLEAR && !check)
 					field[columns][rows]["cell_type"] = 0
 				if(field[columns][rows]["cell_type"] == LANDMINE)
 					continue
-				field[columns][rows]["cell_type"]++
+				if(!check)
+					field[columns][rows]["cell_type"]++
+	return TRUE
 
 /obj/structure/machinery/computer/arcade/minesweeper/proc/initiate_list()
 	if(new_width)

@@ -114,7 +114,7 @@
 	var/paper_info = info
 	if(scramble)
 		paper_info = stars_decode_html(info)
-	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width = 650, height = 700)
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width = 700, height = 900)
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -245,6 +245,8 @@
 	paper_text = replacetext(paper_text, "\[/i\]", "</I>")
 	paper_text = replacetext(paper_text, "\[u\]", "<U>")
 	paper_text = replacetext(paper_text, "\[/u\]", "</U>")
+	paper_text = replacetext(paper_text, "\[s\]", "<S>")
+	paper_text = replacetext(paper_text, "\[/s\]", "</S>")
 	paper_text = replacetext(paper_text, "\[large\]", "<font size=\"4\">")
 	paper_text = replacetext(paper_text, "\[/large\]", "</font>")
 	paper_text = replacetext(paper_text, "\[sign\]", "<font face=\"[signfont]\"><i>[user ? user.real_name : "Anonymous"]</i></font>")
@@ -253,6 +255,12 @@
 	paper_text = replacetext(paper_text, "\[time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")]</i></font>")
 	paper_text = replacetext(paper_text, "\[date+time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")], [time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>")
 	paper_text = replacetext(paper_text, "\[field\]", "<span class=\"paper_field\"></span>")
+	paper_text = replacetext(paper_text, "\[name\]", "[user ? user.name : "Anonymous"]")
+	paper_text = replacetext(paper_text, "\[rank\]", "<font face=\"[signfont]\"><i>[user ? user.get_paygrade(0) : "None"]</i></font>")
+	paper_text = replacetext(paper_text, "\[job\]", "<font face=\"[signfont]\"><i>[user ? user.job : "None"]</i></font>")
+	paper_text = replacetext(paper_text, "\[op\]", "<font face=\"[signfont]\"><i>[GLOB.round_statistics.round_name]</i></font>")
+	paper_text = replacetext(paper_text, "\[colony\]", "<font face=\"[signfont]\"><i>[SSmapping.configs[GROUND_MAP].map_name]</i></font>")
+
 
 	paper_text = replacetext(paper_text, "\[h1\]", "<H1>")
 	paper_text = replacetext(paper_text, "\[/h1\]", "</H1>")

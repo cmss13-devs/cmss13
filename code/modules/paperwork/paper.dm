@@ -343,6 +343,13 @@
 		\[sign\] : Inserts a signature of your name in a foolproof way.<br>
 		\[field\] : Inserts an invisible field which lets you start type from there. Useful for forms.<br>
 		<br>
+		\[name\] : Your name, but not in signature font!<br>
+		\[s\] - \[/s\] | strikethrough!<br>
+		\[job\] : Your job noted on your ID.<br>
+		\[rank\] : Your rank/paygrade.<br>
+		\[op\] : The name of the Operation.<br>
+		\[colony\] : The name of the Map.<br>
+		\[ship\] : The name of the main Ship.<br>
 		<b><center>Pen exclusive commands</center></b><br>
 		\[small\] - \[/small\] : Decreases the <font size = \"1\">size</font> of the text.<br>
 		\[list\] - \[/list\] : A list.<br>

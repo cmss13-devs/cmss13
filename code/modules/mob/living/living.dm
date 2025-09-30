@@ -214,10 +214,6 @@
 	// Check if we're still pulling something
 	if(pulling)
 		SEND_SIGNAL(pulling, COMSIG_MOB_DRAGGED, src)
-		var/mob/living/pmob = pulling
-		pmob.adjust_effect(-0.5, PARALYZE)
-		pmob.adjust_effect(-0.5, STUN)
-		pmob.adjust_effect(-0.5, WEAKEN)
 
 	if(back && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
 		update_inv_back()

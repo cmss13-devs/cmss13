@@ -344,7 +344,6 @@
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 15
-	item_state_slots = list(WEAR_BACK = "satchel")
 	var/mode = TRUE
 
 /obj/item/storage/backpack/satchel/post_skin_selection()

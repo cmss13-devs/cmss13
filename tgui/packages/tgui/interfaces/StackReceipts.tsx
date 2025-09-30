@@ -56,6 +56,17 @@ export const StackReceipts = () => {
   const currentReceipts =
     receiptStack[receiptStack.length - 1].filter(searchFilter);
 
+  const flattenReceipts = (receipts: Receipt[]): Receipt[] => {
+    return receipts.flatMap((r) =>
+      r.stack_sub_receipts
+        ? [r, ...flattenReceipts(r.stack_sub_receipts)]
+        : [r],
+    );
+  };
+
+  const filteredAllReceipts =
+    flattenReceipts(currentReceipts).filter(searchFilter);
+
   const handleBuildClick = (receipt: Receipt, multiplier: number) => {
     act('make', {
       multiplier,
@@ -271,9 +282,10 @@ export const StackReceipts = () => {
           <Stack fill vertical>
             <Box width="100%">
               {currentReceipts.length > 0 &&
-                currentReceipts.map((receipt, index) =>
-                  renderReceipt(receipt, index),
-                )}
+                (searchTerm.length > 0
+                  ? filteredAllReceipts
+                  : currentReceipts
+                ).map((receipt, index) => renderReceipt(receipt, index))}
 
               {receiptStack.length > 1 && (
                 <Box width="100%" style={{ marginTop: '10px' }}>

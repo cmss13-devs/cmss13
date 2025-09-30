@@ -148,6 +148,8 @@
 	var/hit_obstacle = FALSE
 	/// How many were affected by the hooks
 	var/affected_count = 0
+	/// Telegraphed turfs
+	var/list/telegraph_atom_list = list()
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"

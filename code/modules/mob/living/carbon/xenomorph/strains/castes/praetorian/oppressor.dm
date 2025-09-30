@@ -108,16 +108,12 @@
 			if(turfs.density)
 				break
 
-			var/blocked = FALSE
 			for(var/obj/structure/structure in turfs)
 
 				if(structure.density)
-					blocked = TRUE
 					break
 
-			if(blocked)
-				to_chat(abduct_user, SPAN_XENONOTICE("Our tail recoils back to us because something was in the way!"))
-				break
+			telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turfs, windup)
 
 			for (var/mob/living/carbon/target in turfs)
 
@@ -130,7 +126,7 @@
 				if(target.mob_size > MOB_SIZE_BIG)
 					continue
 
-				if(!isxeno_human(target))
+				if(!iscarbon(target))
 					continue
 
 				if(HAS_TRAIT(target, TRAIT_NESTED))
@@ -138,18 +134,16 @@
 
 				targets_added += target
 
+		if(do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
+			for(var/mob/living/target as anything in targets_added)
 				ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-
 				tail_beam = abduct_user.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 2 SECONDS, 8)
 				target.overlays += tail_image
-
-			turfs_get += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turfs, windup)
 
 		to_chat(abduct_user, SPAN_XENODANGER("We launch our tail towards [targetted_atom]!"))
 		abduct_user.emote("roar")
 		addtimer(CALLBACK(src, PROC_REF(reset_ability)), 2 SECONDS)
 		to_chat(targets_added, SPAN_DANGER("We are rooted by [abduct_user]'s tail!"))
-
 
 		return ..()
 	else

@@ -59,6 +59,42 @@
 	base_muffle = MUFFLE_HIGH
 	soundscape_interval = 30
 
+/area/yautja_grounds/caves/central
+	name = "\improper Yautja Hunting Grounds Central Caves"
+	icon_state = "cave"
+
+/area/yautja_grounds/caves/north
+	name = "\improper Yautja Hunting Grounds North Caves"
+	icon_state = "caves_north"
+
+/area/yautja_grounds/caves/north_west
+	name = "\improper Yautja Hunting Grounds North West Caves"
+	icon_state = "caves_north"
+
+/area/yautja_grounds/caves/north_east
+	name = "\improper Yautja Hunting Grounds North East Caves"
+	icon_state = "caves_north"
+
+/area/yautja_grounds/caves/west
+	name = "\improper Yautja Hunting Grounds West Caves"
+	icon_state = "caves_virology"
+
+/area/yautja_grounds/caves/east
+	name = "\improper Yautja Hunting Grounds East Caves"
+	icon_state = "caves_east"
+
+/area/yautja_grounds/caves/south
+	name = "\improper Yautja Hunting Grounds South Caves"
+	icon_state = "caves_research"
+
+/area/yautja_grounds/caves/south_west
+	name = "\improper Yautja Hunting Grounds South West Caves"
+	icon_state = "caves_sw"
+
+/area/yautja_grounds/caves/south_east
+	name = "\improper Yautja Hunting Grounds South East Caves"
+	icon_state = "caves_se"
+
 /area/yautja_grounds/temple/entrance
 	name = "\improper Yautja Hunting Grounds Temple"
 	icon_state = "bluenew"
@@ -69,47 +105,40 @@
 	name = "\improper Yautja Hunting Grounds Desert central"
 	icon_state = "central"
 	ambience_exterior = AMBIENCE_BIGRED
-	base_lighting_alpha = 10
+	soundscape_playlist = SCAPE_PL_WIND
+	soundscape_interval = 30
 
 /area/yautja_grounds/desert/north
 	name = "\improper Yautja Hunting Grounds Desert north"
 	icon_state = "north"
-	ambience_exterior = AMBIENCE_BIGRED
 
 /area/yautja_grounds/desert/north_east
 	name = "\improper Yautja Hunting Grounds Desert north east"
 	icon_state = "northeast"
-	ambience_exterior = AMBIENCE_BIGRED
 
 /area/yautja_grounds/desert/north_west
 	name = "\improper Yautja Hunting Grounds Desert north west"
 	icon_state = "northwest"
-	ambience_exterior = AMBIENCE_BIGRED
 
 /area/yautja_grounds/desert/east
 	name = "\improper Yautja Hunting Grounds Desert east"
 	icon_state = "east"
-	ambience_exterior = AMBIENCE_BIGRED
 
 /area/yautja_grounds/desert/south
 	name = "\improper Yautja Hunting Grounds Desert south"
 	icon_state = "south"
-	ambience_exterior = AMBIENCE_BIGRED
 
 /area/yautja_grounds/desert/south_east
 	name = "\improper Yautja Hunting Grounds Desert south east"
 	icon_state = "southeast"
-	ambience_exterior = AMBIENCE_BIGRED
 
 /area/yautja_grounds/desert/south_west
 	name = "\improper Yautja Hunting Grounds Desert south west"
 	icon_state = "southwest"
-	ambience_exterior = AMBIENCE_BIGRED
 
 /area/yautja_grounds/desert/west
 	name = "\improper Yautja Hunting Grounds Desert west"
 	icon_state = "west"
-	ambience_exterior = AMBIENCE_BIGRED
 
 /area/yautja_grounds/temple
 	name = "\improper Yautja Hunting Grounds Temple"
@@ -122,8 +151,9 @@
 	name = "\improper Yautja Hunting Grounds Temple"
 	icon_state = "bluenew"
 	ambience_exterior = AMBIENCE_BIGRED
+	soundscape_playlist = SCAPE_PL_WIND
+	soundscape_interval = 30
 	ceiling = CEILING_NONE
-	base_lighting_alpha = 10
 
 ///TP Areas/Prep Areas
 
@@ -139,13 +169,13 @@
 /area/yautja_grounds/prep_room/desert
 	name = "\improper Desert Moon Campsite"
 	ambience_exterior = AMBIENCE_BIGRED
+	soundscape_playlist = SCAPE_PL_WIND
+	soundscape_interval = 30
 	sound_environment = SOUND_ENVIRONMENT_GENERIC
 	ceiling_muffle = TRUE
-	base_lighting_alpha = 10
 	ceiling = CEILING_NONE
 
 /area/yautja_grounds/prep_room/desert/interior
 	name ="\improper Desert Moon Campsite Interior"
-	base_lighting_alpha = 0
 	ceiling_muffle = FALSE
 	ceiling = CEILING_SANDSTONE_ALLOW_CAS

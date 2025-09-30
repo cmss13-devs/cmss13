@@ -125,9 +125,7 @@ export const StackReceipts = () => {
     );
 
   const renderReceipt = (receipt: Receipt, index: number) => {
-    let materialAmount = Math.floor(
-      (receipt.req_amount ?? 1) / (receipt.res_amount ?? 1),
-    );
+    let materialAmount = receipt.req_amount ?? 1;
 
     if (receipt.is_multi) {
       materialAmount = Math.floor(

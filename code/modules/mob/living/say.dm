@@ -62,15 +62,29 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	return TRUE
 
 ///Shows custom speech bubbles for screaming, *warcry etc.
-/mob/living/proc/show_speech_bubble(bubble_name, bubble_type = bubble_icon)
+/mob/living/proc/show_speech_bubble(list/viewers, bubble_image, looping_bubble = FALSE, bubble_prefix = FALSE, animated = TRUE, image/speech_bubble)
+	var/list/speech_bubble_recipients = list()
+	for(var/mob/listener in viewers)
+		if(listener.client)
+			speech_bubble_recipients.Add(listener.client)
+	if(!speech_bubble)
+		if(bubble_prefix)
+			speech_bubble = image('icons/mob/effects/talk.dmi', src, "[bubble_icon][bubble_image]", TYPING_LAYER)
+		else
+			speech_bubble = image('icons/mob/effects/talk.dmi', src, "[bubble_image]", TYPING_LAYER)
 
-	var/mutable_appearance/speech_bubble = mutable_appearance('icons/mob/effects/talk.dmi', "[bubble_icon][bubble_name]", TYPING_LAYER)
 	speech_bubble.pixel_x = bubble_icon_x_offset
 	speech_bubble.pixel_y = bubble_icon_y_offset
+	speech_bubble.appearance_flags = RESET_TRANSFORM
+	speech_bubble.plane = ABOVE_GAME_PLANE
 
-	overlays += speech_bubble
+	if(animated)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flick_overlay_to_clients), speech_bubble, speech_bubble_recipients, 3 SECONDS)
+	else
+		overlays += speech_bubble
 
-	addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
+	if(!looping_bubble)
+		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
 /mob/living/proc/remove_speech_bubble(mutable_appearance/speech_bubble, list_of_mobs)
 	overlays -= speech_bubble
@@ -151,16 +165,13 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 					listening |= M
 
 		var/speech_bubble_test = say_test(message)
-		var/image/speech_bubble = image('icons/mob/effects/talk.dmi', src, "[bubble_type][speech_bubble_test]", FLY_LAYER)
+		show_speech_bubble(listening, speech_bubble_test, bubble_prefix = TRUE)
 
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)
 			langchat_speech(message, listening, speaking)
 		for(var/mob/M as anything in listening)
 			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
-		overlays += speech_bubble
-
-		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
 		for(var/obj/hearing_obj as anything in listening_obj)
 			if(hearing_obj) //It's possible that it could be deleted in the meantime.

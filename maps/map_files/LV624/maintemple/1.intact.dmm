@@ -497,7 +497,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/xeno_restraints,
+/obj/item/restraint/legcuffs/xeno_restraints,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)

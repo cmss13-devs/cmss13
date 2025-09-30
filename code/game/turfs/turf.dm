@@ -134,6 +134,7 @@
 	plane = OPEN_SPACE_PLANE_START
 	vis_flags = VIS_HIDE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	anchored = TRUE
 
 /obj/vis_contents_holder/Initialize(mapload, vis, offset)
 	. = ..()
@@ -926,6 +927,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 /turf/proc/z_impact(mob/living/victim, height, stun_modifier = 1, damage_modifier = 1, fracture_modifier = 0)
 	if(ishuman_strict(victim))
 		var/mob/living/carbon/human/human_victim = victim
+		if(HAS_TRAIT(human_victim, TRAIT_HAULED))
+			return
+
 		if (stun_modifier > 0)
 			human_victim.KnockDown(3 * height * stun_modifier)
 			human_victim.Stun(3 * height * stun_modifier)
@@ -933,8 +937,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 		if (damage_modifier > 0)
 			var/total_damage = ((20 * height) ** 1.3) * damage_modifier
-			human_victim.apply_damage(total_damage / 2, BRUTE, "r_leg")
-			human_victim.apply_damage(total_damage / 2, BRUTE, "l_leg")
+			human_victim.apply_damage(total_damage / 2, BRUTE, "r_leg", enviro=TRUE)
+			human_victim.apply_damage(total_damage / 2, BRUTE, "l_leg", enviro=TRUE)
 
 		if (fracture_modifier > 0)
 			var/obj/limb/leg/found_rleg = locate(/obj/limb/leg/l_leg) in human_victim.limbs

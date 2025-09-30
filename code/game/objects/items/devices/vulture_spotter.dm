@@ -41,7 +41,7 @@
 
 /obj/item/device/vulture_spotter_tripod/attack_self(mob/user)
 	. = ..()
-	user.balloon_alert(user, "setting up tripod...")
+	user.balloon_alert(user, "setting up tripod")
 	if(!do_after(user, 1.5 SECONDS, target = user))
 		return
 

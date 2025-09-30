@@ -357,9 +357,10 @@
 	var/list/unconscious_targets = list()
 
 	for(var/atom/movable/A in targets) // orange allows sentry to fire through gas and darkness
+		var/turf/target_turf = get_turf(A)
 		if(isliving(A))
 			var/mob/living/M = A
-			if(M.stat & DEAD)
+			if(M.stat & DEAD || isbrain(M))
 				if(A == target)
 					target = null
 				targets.Remove(A)
@@ -382,17 +383,17 @@
 			var/adj
 			switch(dir)
 				if(NORTH)
-					opp = x-A.x
-					adj = A.y-y
+					opp = x-target_turf.x
+					adj = target_turf.y-y
 				if(SOUTH)
-					opp = x-A.x
-					adj = y-A.y
+					opp = x-target_turf.x
+					adj = y-target_turf.y
 				if(EAST)
-					opp = y-A.y
-					adj = A.x-x
+					opp = y-target_turf.y
+					adj = target_turf.x-x
 				if(WEST)
-					opp = y-A.y
-					adj = x-A.x
+					opp = y-target_turf.y
+					adj = x-target_turf.x
 
 			var/r = 9999
 			if(adj != 0)
@@ -404,8 +405,8 @@
 				targets.Remove(A)
 				continue
 
-		var/list/turf/path = get_line(src, A, include_start_atom = FALSE)
-		if(!length(path) || get_dist(src, A) > sentry_range)
+		var/list/turf/path = get_line(src, target_turf, include_start_atom = FALSE)
+		if(!length(path) || get_dist(src, target_turf) > sentry_range)
 			if(A == target)
 				target = null
 			targets.Remove(A)
@@ -730,13 +731,13 @@
 	if(. == XENO_ATTACK_ACTION && turned_on)
 		M.visible_message(SPAN_DANGER("The sentry's steel tusks cut into [M]!"),
 		SPAN_DANGER("The sentry's steel tusks cut into you!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		M.apply_damage(20)
+		M.apply_damage(20, enviro=TRUE)
 
 /obj/structure/machinery/defenses/sentry/shotgun/hitby(atom/movable/AM)
 	if(AM.throwing && turned_on)
 		if(ismob(AM))
 			var/mob/living/L = AM
-			L.apply_damage(20)
+			L.apply_damage(20, enviro=TRUE)
 			playsound(L, "bonk", 75, FALSE)
 			L.visible_message(SPAN_DANGER("The sentry's steel tusks impale [L]!"),
 			SPAN_DANGER("The sentry's steel tusks impale you!"))

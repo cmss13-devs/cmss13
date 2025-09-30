@@ -233,15 +233,25 @@
 	var/diagonal_spot = 7
 	///if the game should not send any to_chats to user
 	var/quiet_game = FALSE
+	///if user can modify the game difficulty at will.
+	var/settings_unlocked = FALSE
 	///the 2D assosiate list with number, state and ID for each cell
 	var/list/field
 	var/game_state = PLAYING
+	///Height that will be applied the next time field is generated.
+	var/new_height = null
+	///width that will be applied the next time field is generated.
+	var/new_width = null
+	///amount of mines that will be applied the next time field is generated.
+	var/new_difficulty = null
 	// cooldown to prevent from spam-generating a bunch of fields.
 	COOLDOWN_DECLARE(field_generation)
 
-/obj/structure/machinery/computer/arcade/minesweeper/Initialize(mapload, list/field_boundaries = FIELD_SMALL)
+/obj/structure/machinery/computer/arcade/minesweeper/Initialize(mapload, list/field_boundaries = FIELD_SMALL, difficulty = 10, settings_unlocked = FALSE)
 	. = ..()
 	src.field_boundaries = field_boundaries
+	src.difficulty = difficulty
+	src.settings_unlocked = settings_unlocked
 	initiate_list()
 
 /obj/structure/machinery/computer/arcade/minesweeper/attack_hand(mob/user)
@@ -273,6 +283,7 @@
 							populate_field_with_mines()
 							first_click_made = TRUE
 							open_cell(columns, rows)
+						return
 		if("restart")
 			if(COOLDOWN_FINISHED(src, field_generation) && game_state == PLAYING)
 				lose_game()
@@ -288,6 +299,12 @@
 				for(var/rows in 1 to field_boundaries[2])
 					if(field[columns][rows]["unique_cell_id"] == params["id"] && game_state == PLAYING)
 						field[columns][rows]["flagged"] = !field[columns][rows]["flagged"]
+		if("change_difficulty")
+			if(settings_unlocked)
+				new_width = tgui_input_number(ui.user, "Width for a new field. Must be within 4-20 range. using unequal width and height is not advised.","Width for new field", 8, 20, 4, 20 SECONDS)
+				new_height = tgui_input_number(ui.user, "Height for a new field. Must be within 4-20 range. using unequal width and height is not advised.","Height for new field", 8, 20, 4, 20 SECONDS)
+				new_difficulty = tgui_input_number(ui.user, "Amount of landmines for a new field. Must be within 5-80 range. A low number on a big board might cause internal CPU to throttle.","Amount of landmines", 8, 80, 5, 20 SECONDS)
+
 	playsound(ui.user, get_sfx("keyboard"), 10, 1)
 
 /obj/structure/machinery/computer/arcade/minesweeper/ui_data(mob/user)
@@ -296,6 +313,7 @@
 	data["boundaries"] = field_boundaries
 	data["difficulty"] = difficulty
 	data["field"] = field
+	data["unlocked"] = settings_unlocked
 	data["game_state"] = game_state
 	return data
 
@@ -382,6 +400,16 @@
 				field[columns][rows]["cell_type"]++
 
 /obj/structure/machinery/computer/arcade/minesweeper/proc/initiate_list()
+	if(new_width)
+		field_boundaries[1] = new_width
+		new_width = null
+	if(new_height)
+		field_boundaries[2] = new_height
+		new_height = null
+	if(new_difficulty)
+		difficulty = new_difficulty
+		new_difficulty = null
+
 	var/list/temp_field = new/list(field_boundaries[1],field_boundaries[2])
 	game_state = PLAYING
 	diagonal_spot = field_boundaries[2] + 1

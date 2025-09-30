@@ -275,7 +275,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		if(inoperable() || (health <= initial(health) * 0.5))
 			to_chat(user, SPAN_WARNING("\The [src.name] needs repairs to have frequencies added to its software!"))
 			return
-		frequency_change_minesweeper.tgui_interact(user)
+		frequency_change_minesweeper.attack_hand(user)
 		to_chat(user, SPAN_NOTICE("You flip [src] maintenance panel open and start to work on the frequency values..."))
 		if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && frequency_change_minesweeper.difficulty == 10)
 			to_chat(user, SPAN_NOTICE("A few values were obviously standing out - you quickly tweak them, and the rest of the process should be easier."))

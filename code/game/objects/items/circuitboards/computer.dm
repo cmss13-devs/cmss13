@@ -174,7 +174,7 @@
 	lockout_minesweeper.difficulty = 6
 	lockout_minesweeper.quiet_game = TRUE
 	lockout_minesweeper.name = "[src] Debug menu"
-	black_market_minesweeper = new(src, list(9,9))
+	black_market_minesweeper = new(src, list(11,11))
 	black_market_minesweeper.difficulty = 13
 	black_market_minesweeper.quiet_game = TRUE
 	black_market_minesweeper.name = "[src] Debug menu"
@@ -235,7 +235,7 @@
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what you're doing."))
 			return
-		black_market_minesweeper.tgui_interact(user)
+		black_market_minesweeper.attack_hand(user)
 
 
 	else if(HAS_TRAIT(tool, TRAIT_TOOL_TRADEBAND))

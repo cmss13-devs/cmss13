@@ -9,6 +9,7 @@ type Data = {
   difficulty: number;
   field: Cell[][];
   game_state: number;
+  settings_unlocked: BooleanLike;
 };
 
 type Cell = {
@@ -33,13 +34,33 @@ export const Minesweeper = () => {
     '#2e2d2dff',
   ];
   return (
-    <Window width={350} height={420} theme="weyland">
+    <Window
+      width={350 + 11 * boundaries[0]}
+      height={420 + 11.5 * boundaries[1]}
+      theme="weyland"
+    >
       <Window.Content scrollable>
         <Button>Total landmines: {difficulty}</Button>
         <Button
           style={{
             position: 'relative',
-            left: '21%',
+            left: '1%',
+          }}
+          tooltip={
+            'Change the difficulty of the field. Doesnt apply until next field is made. Current boundaries are ' +
+            boundaries[0] +
+            ':' +
+            boundaries[1]
+          }
+          onClick={() => act('change_difficulty')}
+          tooltipPosition="bottom"
+        >
+          X
+        </Button>
+        <Button
+          style={{
+            position: 'relative',
+            left: '15%',
           }}
           onClick={() => act('restart')}
         >
@@ -48,7 +69,7 @@ export const Minesweeper = () => {
         <Button
           style={{
             position: 'relative',
-            left: '21%',
+            left: '15%',
           }}
           tooltip={
             'Uncover all clear tiles to win. A number on the tile means there is a landmine somewhere next to it, including diagonally. Flagging is provided with right click. '

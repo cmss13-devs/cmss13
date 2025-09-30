@@ -659,6 +659,7 @@
 		/obj/item/storage/fancy/cigarettes/trading_card = 20,
 		/obj/item/storage/fancy/trading_card = 20,
 		/obj/item/toy/trading_card = 50,
+		/obj/item/toy/minesweeper_handheld = 3,
 
 	)
 
@@ -690,6 +691,7 @@
 		/obj/item/storage/fancy/cigarettes/trading_card = 30,
 		/obj/item/storage/fancy/trading_card = 20,
 		/obj/item/toy/trading_card = 5,
+		/obj/item/toy/minesweeper_handheld = 20,
 
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL

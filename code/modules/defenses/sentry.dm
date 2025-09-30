@@ -69,6 +69,7 @@
 	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(unset_range))
 
 /obj/structure/machinery/defenses/sentry/Destroy() //Clear these for safety's sake.
+	SSminimaps.remove_marker(src)
 	targets = null
 	other_targets = null
 	target = null

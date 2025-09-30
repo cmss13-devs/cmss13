@@ -1207,8 +1207,9 @@ SUBSYSTEM_DEF(minimaps)
 	COOLDOWN_START(src, update_cooldown, CANVAS_COOLDOWN_TIME)
 	addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), CANVAS_COOLDOWN_TIME)
 
-	if(location.client)
-		playsound_client(location.client, "sound/effects/data-transmission.ogg")
+	var/mob/user = location
+	if(istype(user) && user.client)
+		playsound_client(user.client, "sound/effects/data-transmission.ogg")
 	icon_state = "update_cooldown"
 	//Forgive me
 	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)

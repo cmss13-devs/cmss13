@@ -222,7 +222,11 @@
 	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -20)
 
 /atom/movable/screen/plane_master/seethrough
-	name = "Seethrough"
+	name = "seethrough plane"
 	plane = SEETHROUGH_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	plane = SEETHROUGH_PLANE
+
+/atom/movable/screen/plane_master/minimap
+	name = "minimap plane"
+	plane = TACMAP_PLANE
+	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR|PIXEL_SCALE

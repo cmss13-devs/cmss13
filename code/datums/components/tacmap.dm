@@ -16,8 +16,6 @@
 	var/atom/movable/screen/minimap/map
 	///List of currently interacting mobs
 	var/list/mob/interactees = list()
-	///Toggle for scrolling map
-	var/scroll_toggle
 	///Button for closing map
 	var/close_button
 	///Map holder
@@ -78,7 +76,6 @@
 		return
 
 	user.client.remove_from_screen(map)
-	user.client.remove_from_screen(scroll_toggle)
 	user.client.remove_from_screen(drawing_actions)
 	user.client.remove_from_screen(close_button)
 	user.client.mouse_pointer_icon = null
@@ -87,7 +84,6 @@
 	if(!map)
 		map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE, drawing=drawing)
 		map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
-		scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
 		close_button = new /atom/movable/screen/exit_map(null, src)
 		var/list/atom/movable/screen/actions = list()
 		for(var/path in drawing_tools)
@@ -97,7 +93,6 @@
 
 	user.client.add_to_screen(drawing_actions)
 	user.client.add_to_screen(close_button)
-	user.client.add_to_screen(scroll_toggle)
 	user.client.add_to_screen(map)
 	interactees += user
 

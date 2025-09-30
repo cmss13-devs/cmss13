@@ -405,13 +405,13 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, shifting = FALSE, live=TRUE, popup=FALSE, drawing = TRUE)
-	var/hash = "[zlevel]-[flags]-[shifting]-[live]-[popup]"
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live=TRUE, popup=FALSE, drawing = TRUE)
+	var/hash = "[zlevel]-[flags]-[live]-[popup]"
 	if(hashed_minimaps[hash])
 		return hashed_minimaps[hash]
-	var/atom/movable/screen/minimap/map = new(null, null, zlevel, flags, shifting, live, popup, drawing)
+	var/atom/movable/screen/minimap/map = new(null, null, zlevel, flags, live, popup, drawing)
 	if (!map.icon) //Don't wanna save an unusable minimap for a z-level.
-		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[shifting]-[live]-[popup]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
+		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[live]-[popup]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
 	hashed_minimaps[hash] = map
 	return map
 
@@ -438,8 +438,8 @@ SUBSYSTEM_DEF(minimaps)
 	layer = TACMAP_LAYER
 	plane = TACMAP_PLANE
 	screen_loc = "1,1"
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	appearance_flags = TILE_BOUND
+	appearance_flags = TILE_BOUND|PIXEL_SCALE
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	///assoc list of mob choices by clicking on coords. only exists fleetingly for the wait loop in [/proc/get_coords_from_click]
 	var/list/mob/choices_by_mob
 	///assoc list to determine if get_coords_from_click should stop waiting for an input for that specific mob
@@ -458,7 +458,6 @@ SUBSYSTEM_DEF(minimaps)
 	var/west_x_shift = TRUE
 	/// Whether the vertical shift is currently pushing the map southward
 	var/south_y_shift = TRUE
-	var/stop_shifting = FALSE
 	/// Is the minimap live
 	var/live
 	/// Minimap flags
@@ -468,7 +467,31 @@ SUBSYSTEM_DEF(minimaps)
 	/// Is drawing enbabled
 	var/drawing
 
-/atom/movable/screen/minimap/Initialize(mapload, datum/hud/hud_owner, target, flags, shifting = FALSE, live = TRUE, popup = FALSE, drawing = TRUE)
+/atom/movable/screen/minimap/MouseWheel(delta_x, delta_y, location, control, params)
+	var/mob/user = usr
+	var/list/mods = params2list(params)
+
+	if(!user)
+		return
+
+	var/atom/movable/screen/plane_master/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
+
+	if(!plane_master)
+		return
+
+	var/matrix/transform = plane_master.transform
+
+	if(!transform)
+		plane_master.transform = matrix()
+
+	if(mods[SHIFT_CLICK])
+		transform.Translate(delta_y / 32, delta_x / 32)
+	else
+		transform.Translate(delta_x / 32, delta_y / 32)
+
+	plane_master.transform = transform
+
+/atom/movable/screen/minimap/Initialize(mapload, datum/hud/hud_owner, target, flags, live = TRUE, popup = FALSE, drawing = TRUE)
 	. = ..()
 	if(!SSminimaps.minimaps_by_z["[target]"])
 		return
@@ -485,10 +508,6 @@ SUBSYSTEM_DEF(minimaps)
 	x_max = SSminimaps.minimaps_by_z["[target]"].x_max
 	y_max = SSminimaps.minimaps_by_z["[target]"].y_max
 
-	if(shifting && (x_max > SCREEN_PIXEL_SIZE || y_max > SCREEN_PIXEL_SIZE))
-		START_PROCESSING(SSobj, src)
-		if(findtext(screen_loc, "1") != 1) // We're detecting the first position matching, not the 1 there
-			CRASH("Shifting a minimap screen_loc of '[screen_loc]' is not currently implemented!") // Just need to do string manip in process to support it
 	add_filter("border_outline", 1, outline_filter(2, COLOR_BLACK))
 	add_filter("map_glow", 2, drop_shadow_filter(x = 0, y = 0, size = 3, offset = 1, color = "#c0f7ff"))
 	add_filter("overlay", 3, layering_filter(x = 0, y = 0, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
@@ -498,30 +517,6 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	SSminimaps.add_to_updaters(src, flags, target, drawing)
-
-/atom/movable/screen/minimap/process()
-	if(stop_shifting)
-		return
-	if(x_max > SCREEN_PIXEL_SIZE)
-		if(west_x_shift)
-			cur_x_shift = min(cur_x_shift + shift_size, x_max - SCREEN_PIXEL_SIZE)
-			if(cur_x_shift == x_max - SCREEN_PIXEL_SIZE)
-				west_x_shift = !west_x_shift
-		else
-			cur_x_shift = max(cur_x_shift - shift_size, 0)
-			if(cur_x_shift == 0)
-				west_x_shift = !west_x_shift
-	if(y_max > SCREEN_PIXEL_SIZE)
-		if(south_y_shift)
-			cur_y_shift = min(cur_y_shift + shift_size, y_max - SCREEN_PIXEL_SIZE)
-			if(cur_y_shift == y_max - SCREEN_PIXEL_SIZE)
-				south_y_shift = !south_y_shift
-		else
-			cur_y_shift = max(cur_y_shift - shift_size, 0)
-			if(cur_y_shift == 0)
-				south_y_shift = !south_y_shift
-	screen_loc = "1:-[cur_x_shift],1:-[cur_y_shift]" // Pixel shift the map
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MINIMAP_SHIFTED)
 
 /atom/movable/screen/minimap/Destroy()
 	SSminimaps.hashed_minimaps -= src
@@ -629,12 +624,6 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/movable/screen/minimap_locator/locator
 	///Sets a fixed z level to be tracked by this minimap action instead of being influenced by the owner's / locator override's z level.
 	var/default_overwatch_level = 0
-	///Whether this minimap should shift or not
-	var/shifting = TRUE
-	///Toggle for scrolling map
-	var/atom/movable/screen/stop_scroll/scroll_toggle
-	///Does this minimap action get scroll toggle
-	var/has_scroll = TRUE
 	/// Is it live
 	var/live = FALSE
 
@@ -678,8 +667,6 @@ SUBSYSTEM_DEF(minimaps)
 			return FALSE
 		owner.client.add_to_screen(map)
 		owner.client.add_to_screen(locator)
-		if(scroll_toggle)
-			owner.client.add_to_screen(scroll_toggle)
 		locator.link_locator(map, owner)
 		locator.update(tracking, null, null)
 		locator.RegisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
@@ -687,8 +674,6 @@ SUBSYSTEM_DEF(minimaps)
 	else
 		owner.client.remove_from_screen(map)
 		owner.client.remove_from_screen(locator)
-		if(scroll_toggle)
-			owner.client.remove_from_screen(scroll_toggle)
 		map.stop_polling -= owner
 		locator.UnregisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED)
 		locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
@@ -765,13 +750,11 @@ SUBSYSTEM_DEF(minimaps)
 	if(default_overwatch_level)
 		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"] || !SSminimaps.minimaps_by_z["[default_overwatch_level]"].hud_image)
 			return
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, shifting, live)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live)
 		return
 	if(!SSminimaps.minimaps_by_z["[tracking.z]"] || !SSminimaps.minimaps_by_z["[tracking.z]"].hud_image)
 		return
-	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, shifting, live)
-	if(has_scroll || scroll_toggle)
-		scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
+	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, live)
 
 /datum/action/minimap/remove_from(mob/mob)
 	toggle_minimap(FALSE)
@@ -795,7 +778,7 @@ SUBSYSTEM_DEF(minimaps)
 				locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 				minimap_displayed = FALSE
 			return
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, shifting, live)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live)
 		if(minimap_displayed)
 			if(owner.client)
 				owner.client.screen += map
@@ -809,9 +792,7 @@ SUBSYSTEM_DEF(minimaps)
 			locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 			minimap_displayed = FALSE
 		return
-	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, shifting, live)
-	if(scroll_toggle)
-		scroll_toggle.linked_map = map
+	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, live)
 	if(minimap_displayed)
 		if(owner.client)
 			owner.client.screen += map
@@ -860,7 +841,6 @@ SUBSYSTEM_DEF(minimaps)
 /datum/action/minimap/observer
 	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM|MINIMAP_FLAG_UPP|MINIMAP_FLAG_PMC
 	marker_flags = NONE
-	has_scroll = FALSE
 	live = TRUE
 
 /datum/action/minimap/observer/action_activate()
@@ -911,42 +891,6 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/exit_map/clicked(location, list/modifiers)
 	linked_map.on_unset_interaction(usr)
-	return TRUE
-
-/atom/movable/screen/stop_scroll
-	name = "Stop Scrolling"
-	desc = "Stop the scrolling of the minimap"
-	icon = 'icons/ui_icons/minimap_buttons.dmi'
-	icon_state = "scroll"
-	screen_loc = "CENTER,TOP"
-	plane = TACMAP_PLANE
-	layer = INTRO_LAYER
-	/// what minimap screen is linked to this button
-	var/atom/movable/screen/minimap/linked_map
-
-/atom/movable/screen/stop_scroll/Initialize(mapload, linked_map)
-	. = ..()
-	src.linked_map = linked_map
-
-/atom/movable/screen/stop_scroll/MouseEntered(location, control, params)
-	. = ..()
-	add_filter("mouseover", 1, outline_filter(1, COLOR_LIME))
-	if(desc)
-		openToolTip(usr, src, params, title = name, content = desc)
-
-/atom/movable/screen/stop_scroll/MouseExited(location, control, params)
-	. = ..()
-	remove_filter("mouseover")
-	if(desc)
-		closeToolTip(usr)
-
-/atom/movable/screen/stop_scroll/clicked(location, list/modifiers)
-	if(linked_map.stop_shifting)
-		linked_map.stop_shifting = FALSE
-		icon_state = "scroll"
-	else
-		linked_map.stop_shifting = TRUE
-		icon_state = "scroll_stop"
 	return TRUE
 
 /atom/movable/screen/minimap_tool

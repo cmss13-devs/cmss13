@@ -81,7 +81,7 @@
 
 /obj/structure/machinery/prop/almayer/CICmap/Initialize(mapload, ...)
 	. = ..()
-	AddComponent(/datum/component/tacmap, has_drawing_tools=FALSE, minimap_flag=minimap_flag, has_update=FALSE, drawing=drawing)
+	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE, drawing=drawing)
 
 /obj/structure/machinery/prop/almayer/CICmap/Destroy()
 	return ..()
@@ -92,6 +92,10 @@
 		return
 	if(interact_checks(user))
 		return TRUE
+
+	if(locate(/atom/movable/screen/minimap) in user.client.screen) //This seems like the most effective way to do this without some wacky code
+		to_chat(user, SPAN_WARNING("You already have a minimap open!"))
+		return
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.show_tacmap(user)
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(on_move), user)

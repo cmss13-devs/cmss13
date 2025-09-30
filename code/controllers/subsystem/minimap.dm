@@ -768,7 +768,7 @@ SUBSYSTEM_DEF(minimaps)
 	SIGNAL_HANDLER
 	var/atom/movable/tracking = locator_override ? locator_override : owner
 	if(minimap_displayed)
-		owner.client?.screen -= map
+		toggle_minimap(force_state=FALSE)
 	map = null
 	if(default_overwatch_level)
 		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"] || !SSminimaps.minimaps_by_z["[default_overwatch_level]"].hud_image)

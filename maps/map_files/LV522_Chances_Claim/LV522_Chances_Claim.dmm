@@ -25492,10 +25492,6 @@
 	pixel_x = 1;
 	pixel_y = 4
 	},
-/obj/item/defenses/handheld/sentry/mini{
-	pixel_y = -4;
-	pixel_x = -5
-	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "nBo" = (
@@ -34822,8 +34818,6 @@
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
 "sjS" = (
 /obj/structure/closet/crate/green,
-/obj/item/device/sentry_computer,
-/obj/item/defenses/handheld/sentry,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "sjY" = (

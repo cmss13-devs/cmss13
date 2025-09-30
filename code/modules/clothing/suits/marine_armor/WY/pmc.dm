@@ -14,26 +14,6 @@
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
-	allowed = list(
-		/obj/item/weapon/gun,
-		/obj/item/tank/emergency_oxygen,
-		/obj/item/device/flashlight,
-		/obj/item/ammo_magazine/,
-		/obj/item/weapon/baton,
-		/obj/item/restraint/handcuffs,
-		/obj/item/storage/fancy/cigarettes,
-		/obj/item/tool/lighter,
-		/obj/item/explosive/grenade,
-		/obj/item/storage/bible,
-		/obj/item/tool/crowbar,
-		/obj/item/storage/large_holster/katana,
-		/obj/item/storage/large_holster/machete,
-		/obj/item/weapon/sword/machete,
-		/obj/item/attachable/bayonet,
-		/obj/item/device/motiondetector,
-		/obj/item/tool/crew_monitor,
-		/obj/item/device/walkman,
-	)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc)
 	item_state_slots = list(WEAR_JACKET = "pmc_armor")
 	lamp_icon = "pmc_lamp"

@@ -53,8 +53,7 @@ export const StackReceipts = () => {
   const searchFilter = (x: Receipt) =>
     x.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
 
-  const currentReceipts =
-    receiptStack[receiptStack.length - 1].filter(searchFilter);
+  const currentReceipts = receiptStack[receiptStack.length - 1]
 
   const flattenReceipts = (receipts: Receipt[]): Receipt[] => {
     return receipts.flatMap((r) =>

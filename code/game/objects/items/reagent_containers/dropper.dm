@@ -2,7 +2,7 @@
 /// Droppers.
 ////////////////////////////////////////////////////////////////////////////////
 /obj/item/reagent_container/dropper
-	name = "Dropper"
+	name = "dropper"
 	desc = "A dropper. Transfers 5 units."
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_icons = list(
@@ -18,7 +18,7 @@
 	transparent = TRUE
 	var/filled = 0
 
-/obj/item/reagent_container/dropper/update_icon()
+/obj/item/reagent_container/dropper/update_icon() //droppers now have fill icon states for each unit inside the dropper
 	overlays.Cut()
 
 	if(reagents.total_volume)

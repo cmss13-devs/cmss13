@@ -308,8 +308,8 @@
 	unpacking_sound = 'sound/effects/metalhit.ogg'
 
 /obj/structure/largecrate/supply/medicine/medkits
-	name = "first aid supply crate (x20)"
-	desc = "A medical supply crate containing six advanced, three standard, three burn, two toxin, two oxygen, and two radiation first aid kits."
+	name = "first-aid supply crate (x20)"
+	desc = "A medical supply crate containing six advanced, three standard, three burn, two toxin, two oxygen, and two radiation first-aid kits."
 	supplies = list(
 		/obj/item/storage/firstaid/regular = 3,
 		/obj/item/storage/firstaid/fire = 3,

@@ -6,7 +6,7 @@
  * Radiation Closet
  * Bombsuit Closet
  * Hydrant
- * First Aid
+ * First-Aid
  */
 
 /*
@@ -223,11 +223,11 @@
 	spawn_empty = TRUE
 
 /*
- * First Aid
+ * First-Aid
  */
 /obj/structure/closet/medical_wall //wall mounted medical closet
-	name = "first aid closet"
-	desc = "It's wall-mounted storage unit for first aid supplies."
+	name = "first-aid closet"
+	desc = "It's wall-mounted storage unit for first-aid supplies."
 	icon_state = "medical_wall"
 	icon_closed = "medical_wall"
 	icon_opened = "medical_wall_open"

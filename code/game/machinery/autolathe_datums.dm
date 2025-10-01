@@ -439,32 +439,32 @@
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_regular
-	name = "first aid kit (reg)"
+	name = "first-aid kit (reg)"
 	path = /obj/item/storage/firstaid/regular/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_fire
-	name = "first aid kit (fire)"
+	name = "first-aid kit (fire)"
 	path = /obj/item/storage/firstaid/fire/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_toxin
-	name = "first aid kit (tox)"
+	name = "first-aid kit (tox)"
 	path = /obj/item/storage/firstaid/toxin/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_oxy
-	name = "first aid kit (oxy)"
+	name = "first-aid kit (oxy)"
 	path = /obj/item/storage/firstaid/o2/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_adv
-	name = "first aid kit (adv)"
+	name = "first-aid kit (adv)"
 	path = /obj/item/storage/firstaid/adv/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_rad
-	name = "first aid kit (rad)"
+	name = "first-aid kit (rad)"
 	path = /obj/item/storage/firstaid/rad/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 

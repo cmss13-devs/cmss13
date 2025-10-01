@@ -1,7 +1,7 @@
 /obj/item/reagent_container/hypospray/autoinjector
 	name = "inaprovaline autoinjector"
 	var/chemname = "inaprovaline"
-	var/autoinjector_type = "autoinjector"
+	var/autoinjector_type = "autoinjector" //referencing the icon state name in syringe.dmi
 	//desc = "A rapid and safe way to administer small amounts of drugs by untrained or trained personnel."
 	desc = "An autoinjector containing Inaprovaline.  Useful for saving lives."
 	icon_state = "empty"
@@ -59,7 +59,7 @@
 	else
 		maptext = ""
 
-	if(reagents.total_volume)
+	if(uses_left)
 		var/image/filling = image('icons/obj/items/syringe.dmi', src, "[autoinjector_type]_[uses_left]")
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -215,7 +215,7 @@
 	maptext_label = "Dy"
 
 /obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless
-	name = "bicaridine EZ autoinjector"
+	name = "dylovene EZ autoinjector"
 	desc = "An EZ autoinjector loaded with 3 uses of Dylovene, a common toxin damage medicine.  Doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -352,7 +352,7 @@
 	qdel(src)
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless
-	name = "first aid autoinjector"
+	name = "first-aid autoinjector"
 	chemname = "tricordrazine"
 	desc = "An autoinjector loaded with a small dose of medicine for marines to treat themselves with."
 	icon_state = "tricord"

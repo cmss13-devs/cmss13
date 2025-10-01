@@ -11,12 +11,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("Blood Bag (O-)", 4, /obj/item/reagent_container/blood/OMinus, null, VENDOR_ITEM_REGULAR),
 
 		list("FIRSTAID KITS", 0, null, null, null),
-		list("Advanced First Aid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
-		list("First Aid Kit", 5, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
-		list("Fire First Aid Kit", 6, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
-		list("Toxin First Aid Kit", 6, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
-		list("Oxygen First Aid Kit", 6, /obj/item/storage/firstaid/o2, null, VENDOR_ITEM_REGULAR),
-		list("Radiation First Aid Kit", 6, /obj/item/storage/firstaid/rad, null, VENDOR_ITEM_REGULAR),
+		list("Advanced First-Aid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
+		list("First-Aid Kit", 5, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
+		list("Fire First-Aid Kit", 6, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
+		list("Toxin First-Aid Kit", 6, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
+		list("Oxygen First-Aid Kit", 6, /obj/item/storage/firstaid/o2, null, VENDOR_ITEM_REGULAR),
+		list("Radiation First-Aid Kit", 6, /obj/item/storage/firstaid/rad, null, VENDOR_ITEM_REGULAR),
 
 		list("PILL BOTTLES", 0, null, null, null),
 		list("Pill Bottle (Bicaridine)", 5, /obj/item/storage/pill_bottle/bicaridine, null, VENDOR_ITEM_RECOMMENDED),

@@ -2,7 +2,7 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 8
-//IF YOU ADD A NEW LEGENADRY INTENDED FOR RESEARCH NORMAL LOOP, MAKE SURE TO ADD TO LEGENDARY PROPERTY LIST DEFINE
+//IF YOU ADD A NEW LEGENDARY INTENDED FOR RESEARCH NORMAL LOOP, MAKE SURE TO ADD TO LEGENDARY PROPERTY LIST DEFINE
 /datum/chem_property/special/boosting
 	name = PROPERTY_BOOSTING
 	code = "BST"
@@ -16,7 +16,7 @@
 /datum/chem_property/special/optimized
 	name = PROPERTY_OPTIMIZED
 	code = "OPM"
-	description = "Chemical molecule is structured diffrently, resulting in more efficient and easy synthesis process."
+	description = "Chemical molecule is structured differently, resulting in more efficient and easy synthesis process."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
 
@@ -320,7 +320,7 @@
 /datum/chem_property/special/radius
 	name = PROPERTY_RADIUS
 	code = "RAD"
-	description = "Controls the radius of a fire, using unknown means"
+	description = "Controls the radius of a fire, using unknown means."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 666
@@ -344,7 +344,7 @@
 /datum/chem_property/special/intensity
 	name = PROPERTY_INTENSITY
 	code = "INT"
-	description = "Controls the intensity of a fire, using unknown means"
+	description = "Controls the intensity of a fire, using unknown means."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 666

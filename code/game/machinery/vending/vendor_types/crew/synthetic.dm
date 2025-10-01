@@ -24,12 +24,12 @@
 		list("Tactical Prybar", 5, /obj/item/tool/crowbar/tactical, null, VENDOR_ITEM_REGULAR),
 
 		list("FIRSTAID KITS", 0, null, null, null),
-		list("Advanced First Aid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_REGULAR),
-		list("First Aid Kit", 5, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
-		list("Fire First Aid Kit", 6, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
-		list("Toxin First Aid Kit", 6, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
-		list("Oxygen First Aid Kit", 6, /obj/item/storage/firstaid/o2, null, VENDOR_ITEM_REGULAR),
-		list("Radiation First Aid Kit", 6, /obj/item/storage/firstaid/rad, null, VENDOR_ITEM_REGULAR),
+		list("Advanced First-Aid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_REGULAR),
+		list("First-Aid Kit", 5, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
+		list("Fire First-Aid Kit", 6, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),
+		list("Toxin First-Aid Kit", 6, /obj/item/storage/firstaid/toxin, null, VENDOR_ITEM_REGULAR),
+		list("Oxygen First-Aid Kit", 6, /obj/item/storage/firstaid/o2, null, VENDOR_ITEM_REGULAR),
+		list("Radiation First-Aid Kit", 6, /obj/item/storage/firstaid/rad, null, VENDOR_ITEM_REGULAR),
 
 		list("MEDICAL SUPPLIES", 0, null, null, null),
 		list("Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_REGULAR),

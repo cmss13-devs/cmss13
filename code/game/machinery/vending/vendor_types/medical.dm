@@ -510,8 +510,8 @@
 		list("Pill Bottle (Dylovene)", floor(scale * 4), /obj/item/storage/pill_bottle/antitox, VENDOR_ITEM_REGULAR),
 		list("Pill Bottle (Inaprovaline)", floor(scale * 4), /obj/item/storage/pill_bottle/inaprovaline, VENDOR_ITEM_REGULAR),
 		list("Pill Bottle (Kelotane)", floor(scale * 4), /obj/item/storage/pill_bottle/kelotane, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Oxycodone)", floor(scale * 4), /obj/item/storage/pill_bottle/oxycodone, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Peridaxon)", floor(scale * 4), /obj/item/storage/pill_bottle/peridaxon, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Oxycodone)", floor(scale * 3), /obj/item/storage/pill_bottle/oxycodone, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Peridaxon)", floor(scale * 3), /obj/item/storage/pill_bottle/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Pill Bottle (Tramadol)", floor(scale * 4), /obj/item/storage/pill_bottle/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("MEDICAL UTILITIES", -1, null, null),
@@ -855,7 +855,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/souto
 	name = "\improper SoutoMed"
-	desc = "In Soutoland (Trademark pending), one is never more than 6ft away from canned Havana goodness. Drink a Souto today! For a full selection of Souto products please visit a licensed retailer or vending machine. Also doubles as basic first aid station."
+	desc = "In Soutoland (Trademark pending), one is never more than 6ft away from canned Havana goodness. Drink a Souto today! For a full selection of Souto products please visit a licensed retailer or vending machine. Also doubles as basic first-aid station."
 	icon = 'icons/obj/structures/souto_land.dmi'
 	icon_state = "soutomed"
 

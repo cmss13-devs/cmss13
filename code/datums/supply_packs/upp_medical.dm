@@ -68,7 +68,7 @@
 	group = "UPP Medical"
 
 /datum/supply_packs/upp/firstaid
-	name = "UPP first aid kit crate (x2 each)"
+	name = "UPP first-aid kit crate (x2 each)"
 	contains = list(
 		/obj/item/storage/firstaid/regular,
 		/obj/item/storage/firstaid/regular,

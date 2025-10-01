@@ -20,6 +20,7 @@
 
 #define ABOVE_TURF_LAYER 2.01
 #define WALL_LAYER 2.02
+#define ABOVE_WALL_LAYER 2.03
 
 #define LATTICE_LAYER 2.15
 

@@ -366,20 +366,6 @@
 	return INITIALIZE_HINT_LATELOAD
 
 
-/obj/structure/stairs/multiz/LateInitialize()
-	. = ..()
-	if(!dir || direction == DOWN)
-		return
-	var/turf/adjacent = get_step(src, dir)
-	if(!istype(adjacent))
-		return
-	var/turf/above_adjacent = SSmapping.get_turf_above(adjacent)
-	if(!istype(above_adjacent))
-		return
-	new /obj/vis_contents_holder(adjacent,above_adjacent, 0, FALSE)
-	adjacent.plane = OPEN_SPACE_PLANE_START
-	adjacent.update_icon()
-
 
 /obj/structure/stairs/multiz/Destroy()
 	QDEL_LIST(blockers)
@@ -425,6 +411,168 @@
 
 /obj/structure/stairs/multiz/up
 	direction = UP
+
+	var/datum/staircase/staircase
+
+/obj/structure/stairs/multiz/up/LateInitialize()
+	. = ..()
+
+	if(staircase)
+		return
+
+	var/stairs = list(src)
+
+	for(var/direction in list(turn(dir, 90), turn(dir, -90)))
+		var/adjacent_turf = get_step(src, direction)
+		while(adjacent_turf)
+			var/obj/structure/stairs/multiz/up/up_ladder = locate() in adjacent_turf
+			if(!up_ladder || up_ladder.staircase || up_ladder.dir != dir)
+				break
+
+			stairs += up_ladder
+			adjacent_turf = get_step(adjacent_turf, direction)
+
+	staircase = new(stairs, dir)
+
+/datum/staircase
+	var/dir
+
+	var/from_turf_to_images = list()
+
+	var/from_turfs = list()
+
+	var/in_range_mob = list()
+
+	var/from_turf_to_mask = list()
+
+	var/from_turf_to_coords = list()
+
+/datum/staircase/New(list/obj/structure/stairs/multiz/up/stairs, dir)
+	src.dir = dir
+
+	var/to_turfs = list()
+
+	for(var/obj/structure/stairs/multiz/up/stair as anything in stairs)
+		stair.staircase = src
+
+		for(var/turf/turf in view(get_turf(stair)))
+			if(turf in from_turfs)
+				continue
+			from_turfs += turf
+
+		for(var/turf/turf in view(SSmapping.get_turf_above(get_step(stair, stair.dir))))
+			if(turf in to_turfs)
+				continue
+			to_turfs += turf
+
+	var/destination_turf_images = list()
+	var/filtered_to_turfs = list()
+
+	/// Always guaranteed to be on the same axis as the others, so
+	var/obj/structure/stairs/multiz/up/test_stairs = stairs[1]
+	for(var/turf/turf as anything in to_turfs)
+		if(dir == NORTH && turf.y < test_stairs.y)
+			continue
+		if(dir == EAST && turf.x >= test_stairs.x)
+			continue
+		if(dir == SOUTH && turf.y <= test_stairs.y)
+			continue
+		if(dir == WEST && turf.x < test_stairs.x)
+			continue
+
+		destination_turf_images["\ref[turf]"] = create_vis_contents_screen(SSmapping.get_turf_below(turf), turf)
+		filtered_to_turfs += turf
+
+	for(var/turf/turf as anything in from_turfs)
+		for(var/obj/structure/stairs/multiz/up/stair as anything in stairs)
+
+			var/vector/turf_to_stair = vector(stair.x - turf.x, stair.y - turf.y)
+			var/distance_to_stair = sqrt(turf_to_stair.x * turf_to_stair.x + turf_to_stair.y * turf_to_stair.y)
+
+			for(var/turf/to_turf as anything in filtered_to_turfs)
+				var/vector/turf_to_target = vector(to_turf.x - turf.x, to_turf.y - turf.y)
+				var/cross_product = turf_to_stair.x * turf_to_target.y - turf_to_stair.y * turf_to_target.x
+
+				var/distance_to_target = sqrt(turf_to_target.x * turf_to_target.x + turf_to_target.y * turf_to_target.y)
+				if(distance_to_target && distance_to_stair && distance_to_target < distance_to_stair)
+//					to_chat(world, "distance_to_target: [distance_to_target], distance_to_stair: [distance_to_stair]")
+					continue
+
+				if(cross_product && abs(cross_product) / (distance_to_stair * distance_to_target) > 0.5)
+	//				to_chat(world, "[cross_product]:[distance_to_stair]:[distance_to_target]")
+					continue
+
+				var/coords = from_turf_to_coords["\ref[turf]"]
+				if(!islist(coords))
+					coords = new /list(15, 15)
+
+				var/floor_x = floor(turf_to_target.x) + ceil(15)
+				var/floor_y = floor(turf_to_target.y) + ceil(15)
+
+				if(floor_x <= 15 && floor_y <= 15)
+					coords[floor_x][floor_y] = TRUE
+
+				from_turf_to_coords["\ref[turf]"] = coords
+
+				LAZYADD(from_turf_to_images["\ref[turf]"], destination_turf_images["\ref[to_turf]"])
+				RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered), TRUE)
+
+
+	for(var/turf in from_turf_to_coords)
+		var/array = from_turf_to_coords[turf]
+		var/icon/icon = icon('icons/ui_icons/drawing.dmi')
+
+		for(var/x in 1 to length(array))
+			for(var/y in 1 to length(array[x]))
+				if(array[x][y])
+					to_chat(world, "drawing a box!")
+					icon.DrawBox(null, 1 + (32 * x - 1), 1 + (32 * y - 1), 1 + (32 * x), 1 + (32 * y))
+
+		from_turf_to_mask[turf] = icon
+		to_chat(world, "Produced [icon2html(icon, world)]")
+
+/datum/staircase/proc/handle_entered(turf/originator, atom/what_did_it)
+	SIGNAL_HANDLER
+
+	var/mob/mover = what_did_it
+	if(!istype(mover))
+		return
+
+	if(mover in in_range_mob)
+		return
+
+	RegisterSignal(mover, COMSIG_MOVABLE_MOVED, PROC_REF(handle_movement))
+	handle_movement(mover, originator)
+
+	in_range_mob += mover
+
+
+/datum/staircase/proc/handle_movement(mob/mover, old_loc, direction)
+	SIGNAL_HANDLER
+
+	var/where_from = get_turf(old_loc)
+	if(where_from in from_turfs)
+		mover.hud_used.plane_masters["[BLACKNESS_PLANE]"].filters -= "stairfilter"
+
+		for(var/image in from_turf_to_images["\ref[where_from]"])
+			mover.client?.images -= image
+
+	var/where_to = get_turf(mover)
+	if(where_to in from_turfs)
+		mover.hud_used.plane_masters["[BLACKNESS_PLANE]"].filters = filter(type = "alpha", icon = from_turf_to_mask["\ref[where_to]"], name = "stairfilter")
+
+		for(var/image in from_turf_to_images["\ref[where_to]"])
+			mover.client?.images += image
+
+
+/proc/create_vis_contents_screen(turf/appear_where, turf/clone_what)
+	var/image/clone = image('icons/turf/floors/floors.dmi', appear_where, "transparent", ABOVE_WALL_LAYER)
+	clone.vis_contents += clone_what
+	clone.plane = GAME_PLANE
+
+	clone_what.vis_flags |= VIS_INHERIT_LAYER
+
+	return clone
 
 /obj/structure/stairs/multiz/down
 	direction = DOWN

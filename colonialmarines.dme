@@ -1507,6 +1507,7 @@
 #include "code\game\turfs\snow.dm"
 #include "code\game\turfs\soro.dm"
 #include "code\game\turfs\space.dm"
+#include "code\game\turfs\spacestation.dm"
 #include "code\game\turfs\strata.dm"
 #include "code\game\turfs\transit.dm"
 #include "code\game\turfs\turf.dm"

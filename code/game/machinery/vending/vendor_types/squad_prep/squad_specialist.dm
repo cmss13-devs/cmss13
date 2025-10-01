@@ -110,6 +110,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
 	if(!handle_vend(itemspec, human_user))
 		return
 	vendor_successful_vend(itemspec, user)
+	var/obj/item/card/id/idcard = human_user.get_idcard()
+	GLOB.data_core.manifest_modify(human_user.real_name, WEAKREF(human_user), idcard.assignment)
 
 //------------CLOTHING VENDOR---------------
 

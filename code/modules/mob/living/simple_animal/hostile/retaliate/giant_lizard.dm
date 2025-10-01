@@ -237,7 +237,7 @@
 			return
 		//decimate mobs that are on the ground
 		if(target.body_position == LYING_DOWN)
-			ravagingattack(target)
+			special_attack(target)
 			return target
 
 		face_atom(target)
@@ -343,11 +343,8 @@
 		pack_member.Retaliate(pack_attack = TRUE)
 
 
-/mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/special_attack(mob/living/target)
-	ravagingattack(target)
-
 ///Ravaging attack, used for when a mob gets pounced or is on the ground.
-/mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/proc/ravagingattack(mob/living/target)
+/mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/special_attack(mob/living/target)
 	if(is_ravaging || !isliving(target))
 		return
 	is_ravaging = TRUE

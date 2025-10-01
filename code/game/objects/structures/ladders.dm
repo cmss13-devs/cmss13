@@ -15,7 +15,10 @@
 	var/obj/structure/machinery/camera/cam
 	var/busy = FALSE //Ladders are wonderful creatures, only one person can use it at a time
 
+	/// The list of available directions to the image used to represent it, for the radial menu
 	var/list/direction_selection
+	/// The list of available directions to the directions the player will move
+	var/list/selection_to_queue
 
 
 /obj/structure/ladder/Initialize(mapload, ...)
@@ -90,7 +93,6 @@
 
 	if(length(direction_selection) > 1)
 		var/selected_ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
-		var/static/regex/ladder_regex = regex(@"(up|down) \(x([0-9])+\)")
 
 		if(!selected_ladder_dest)
 			return
@@ -99,22 +101,16 @@
 			ladder_dir_name = selected_ladder_dest
 
 		if(!ladder_dir_name)
-			ladder_regex.Find(selected_ladder_dest)
+			var/to_follow = selection_to_queue[selected_ladder_dest]
 
-			var/direction = ladder_regex.group[1]
-			var/total = ladder_regex.group[2]
-			if(!direction || !total)
-				return
-
-			var/list/obj/structure/ladder/ladders = get_ladders_recursive(direction)
-
-			move_to(user, direction)
-
-			for(var/i in 1 to text2num(total) - 1)
-				if(!ladders[i].move_to(user, direction))
+			var/obj/structure/ladder/moving_ladder = src
+			for(var/dir in to_follow)
+				if(!moving_ladder.move_to(user, dir))
 					break
 
-		return
+				moving_ladder = locate(/obj/structure/ladder) in get_turf(user)
+
+			return
 
 	else if(up)
 		ladder_dir_name = "up"
@@ -357,6 +353,8 @@
 /obj/structure/ladder/proc/get_ladder_images()
 	var/list/selection = list()
 
+	selection_to_queue = list()
+
 	for(var/direction in list("up", "down"))
 		var/list/obj/structure/ladder/ladder_list = get_ladders_recursive(direction)
 
@@ -378,6 +376,12 @@
 					direction_icon.overlays += new_icon
 
 			selection[direction_name] = direction_icon
+
+			var/list/queued_ladders = list()
+			for(var/queue in 1 to i)
+				queued_ladders += direction
+
+			selection_to_queue[direction_name] = queued_ladders
 
 	return selection
 

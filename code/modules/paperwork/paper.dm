@@ -256,11 +256,11 @@
 	paper_text = replacetext(paper_text, "\[date+time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")], [time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>")
 	paper_text = replacetext(paper_text, "\[field\]", "<span class=\"paper_field\"></span>")
 	paper_text = replacetext(paper_text, "\[name\]", "[user ? user.name : "Anonymous"]")
-	paper_text = replacetext(paper_text, "\[rank\]", "<font face=\"[signfont]\"><i>[user ? user.get_paygrade(0) : "None"]</i></font>")
-	paper_text = replacetext(paper_text, "\[job\]", "<font face=\"[signfont]\"><i>[user ? user.job : "None"]</i></font>")
-	paper_text = replacetext(paper_text, "\[op\]", "<font face=\"[signfont]\"><i>[GLOB.round_statistics ? GLOB.round_statistics.round_name : "None"]</i></font>")
-	paper_text = replacetext(paper_text, "\[colony\]", "<font face=\"[signfont]\"><i>[SSmapping.configs[GROUND_MAP].map_name]</i></font>")
-	paper_text = replacetext(paper_text, "\[ship\]", "<font face=\"[signfont]\"><i>[MAIN_SHIP_NAME]</i></font>")
+	paper_text = replacetext(paper_text, "\[rank\]", "[user ? user.get_paygrade(0) : "None"]")
+	paper_text = replacetext(paper_text, "\[job\]", "[user ? user.job : "None"]")
+	paper_text = replacetext(paper_text, "\[op\]", "[GLOB.round_statistics ? GLOB.round_statistics.round_name : "None"]")
+	paper_text = replacetext(paper_text, "\[colony\]", "[SSmapping.configs[GROUND_MAP].map_name]")
+	paper_text = replacetext(paper_text, "\[ship\]", "[MAIN_SHIP_NAME]")
 
 
 	paper_text = replacetext(paper_text, "\[h1\]", "<H1>")

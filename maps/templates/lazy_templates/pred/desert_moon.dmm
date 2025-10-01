@@ -58,7 +58,8 @@
 /obj/structure/machinery/door_control/yautja{
 	id = "cavedesertmoonexit";
 	pixel_y = 23;
-	name = "Temple Cave Shutters"
+	name = "Temple Cave Shutters";
+	req_one_access_txt = "390"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/temple)
@@ -66,7 +67,8 @@
 /obj/structure/machinery/door_control/yautja{
 	id = "cavedesertmoonexit";
 	pixel_y = -18;
-	name = "Temple Cave Shutters"
+	name = "Temple Cave Shutters";
+	req_one_access_txt = "390"
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/yautja_grounds/caves)
@@ -405,7 +407,8 @@
 /obj/structure/machinery/door_control/yautja{
 	id = "southwestdesertmoonexit";
 	pixel_y = 21;
-	name = "Desert Campsite West Shutters"
+	name = "Desert Campsite West Shutters";
+	req_one_access_txt = "390"
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/desert/south)
@@ -454,7 +457,8 @@
 	id = "southwestdesertmoonexit";
 	pixel_y = 1;
 	name = "Desert Campsite West Shutters";
-	pixel_x = -21
+	pixel_x = -21;
+	req_one_access_txt = "390"
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/prep_room/desert)
@@ -570,7 +574,8 @@
 	id = "westdesertmoonexit";
 	pixel_y = 1;
 	name = "Desert Campsite West Shutters";
-	pixel_x = 22
+	pixel_x = 22;
+	req_one_access_txt = "390"
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/desert)
@@ -579,7 +584,8 @@
 	id = "westdesertmoonexit";
 	pixel_y = 1;
 	name = "Desert Campsite West Shutters";
-	pixel_x = -21
+	pixel_x = -21;
+	req_one_access_txt = "390"
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/prep_room/desert)
@@ -647,7 +653,8 @@
 	id = "northwestdesertmoonexit";
 	pixel_y = 9;
 	name = "Desert Campsite Northwest Shutters";
-	pixel_x = -21
+	pixel_x = -21;
+	req_one_access_txt = "390"
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/prep_room/desert)
@@ -660,7 +667,8 @@
 	id = "northwestdesertmoonexit";
 	pixel_y = -18;
 	name = "Desert Campsite Northwest Shutters";
-	pixel_x = 1
+	pixel_x = 1;
+	req_one_access_txt = "390"
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/desert)
@@ -687,7 +695,8 @@
 /obj/structure/machinery/door_control/yautja{
 	id = "northdesertmoonexit";
 	pixel_y = 23;
-	name = "Desert Campsite North Shutters"
+	name = "Desert Campsite North Shutters";
+	req_one_access_txt = "390"
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/prep_room/desert)
@@ -734,7 +743,8 @@
 /obj/structure/machinery/door_control/yautja{
 	id = "northdesertmoonexit";
 	pixel_y = -20;
-	name = "Desert Campsite North Shutters"
+	name = "Desert Campsite North Shutters";
+	req_one_access_txt = "390"
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/desert/east)

@@ -1400,5 +1400,17 @@ Wrist Accessories
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
 	)
 	item_state_slots = list(WEAR_AS_GARB = "rosary")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)
 	stylish = TRUE
-	worn_accessory_slot = ACCESSORY_SLOT_TIE
+	max_styles = 3
+	worn_accessory_slot = ACCESSORY_SLOT_DECOR
+	worn_accessory_limit = 2
+
+/obj/item/clothing/accessory/rosary/gold
+	name = "golden rosary"
+	desc = "Truly, one can be closest to God when adorned in gold, jewels, and riches whilst flaunting it about."
+	icon_state = "grosary"
+	item_state = "grosary_style_1"
+	item_state_slots = list(WEAR_AS_GARB = "grosary")

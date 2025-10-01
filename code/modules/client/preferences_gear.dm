@@ -527,6 +527,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Rosary"
 	path = /obj/item/clothing/accessory/rosary
 
+/datum/gear/helmet_garb/rosary/gold
+	display_name = "Golden rosary"
+	path = /obj/item/clothing/accessory/rosary/gold
+
 /datum/gear/helmet_garb/spent_buck
 	display_name = "Spent buckshot"
 	path = /obj/item/prop/helmetgarb/spent_buckshot

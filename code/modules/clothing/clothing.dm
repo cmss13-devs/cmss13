@@ -19,6 +19,7 @@
 
 	var/stylish = FALSE // if the clothing is considered for the style system
 	var/style = 1 // current icon appearance style of the clothing, default should be 1
+	var/max_styles = 1 // max styles available for the clothing, used to loop back to 1
 
 	// accessory stuff
 	var/list/accessories
@@ -37,23 +38,24 @@
 	for(var/obj/item/clothing/accessory/A in accessories)
 		. += "[icon2html(A, user)] \A [A] is [A.additional_examine_text()]" //The spacing of the examine text proc is deliberate. By default it returns ".".
 	if(stylish)
-		.+= " This object is considered stylish. <a href='byond://?src=\ref[src];change_style=1'>\[Change style\]</a>"
+		.+= "This object is considered stylish. <a href='byond://?src=\ref[src];change_style=1'>\[Change style\]</a>"
 
 /obj/item/clothing/proc/change_style(mob/user)
 	var/next_style = style + 1
 	// essentially, we retrieve the name of the icon_state as a base, then append _style_X to it for a more dynamic icon change
 	var/desired_item_state = icon_state + "_style_" + num2text(next_style)
 
-	if(item_state == null)
+	// max styles are used here since my attempts to dynamically check for item_state (not icon_states) specifically were not working out - nihi
+	if(style <= max_styles)
+		style = next_style
+		item_state = desired_item_state
+		update_clothing_icon()
+		to_chat(user, SPAN_NOTICE("You change the style of [src] into style [style]."))
+	else
 		style = 1
 		item_state = icon_state + "_style_1"
 		update_clothing_icon()
 		to_chat(user, SPAN_NOTICE("You change the style of [src] (reverted to default)."))
-	if(style >= 1)
-		style = next_style
-		item_state = desired_item_state
-		update_clothing_icon()
-		to_chat(user, SPAN_NOTICE("You change the style of [src]."))
 
 /obj/item/clothing/proc/convert_to_accessory(mob/user)
 	if(!can_become_accessory)

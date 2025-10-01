@@ -1979,7 +1979,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					save_preferences()
 					save_character()
 					save_cooldown = world.time + 50
-					to_chat(user, SPAN_WARNING("<b>Successfuly saved preferences.</b>"))
+					to_chat(user, SPAN_WARNING(SPAN_BOLD("Successfully saved preferences.")))
 
 				if("reload")
 					if(reload_cooldown > world.time)

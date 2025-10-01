@@ -2804,11 +2804,11 @@
 /turf/open/floor/darkyellow2,
 /area/ice_colony/surface/engineering)
 "akk" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/warnplate/northwest,
 /area/ice_colony/surface/engineering)
 "akl" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/warnplate/north,
 /area/ice_colony/surface/engineering)
 "akm" = (
@@ -7781,7 +7781,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/ice_colony/exterior/surface/valley/south/excavation)
 "aBK" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/darkyellow2/northwest,
 /area/ice_colony/surface/garage/repair)
 "aBL" = (
@@ -10293,7 +10293,7 @@
 	},
 /area/ice_colony/exterior/surface/valley/southeast)
 "aLv" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aLw" = (
@@ -10364,7 +10364,7 @@
 /turf/open/floor/vault2/west,
 /area/ice_colony/surface/storage_unit/research)
 "aLP" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -13795,7 +13795,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "bab" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "bac" = (
@@ -16732,7 +16732,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/darkyellow2/north,
 /area/ice_colony/underground/engineering)
 "bnN" = (
@@ -26428,7 +26428,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "cNY" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -26450,7 +26450,7 @@
 /turf/open/floor/darkyellow2/northeast,
 /area/ice_colony/surface/tcomms)
 "doO" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/platebot,
 /area/ice_colony/surface/engineering/generator)
 "drG" = (
@@ -26497,7 +26497,7 @@
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "etX" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering/substation)
 "ezC" = (
@@ -26592,7 +26592,7 @@
 	},
 /area/ice_colony/exterior/surface/valley/south)
 "hrs" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering/substation)
@@ -26862,7 +26862,7 @@
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "poh" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "pyn" = (
@@ -26902,7 +26902,7 @@
 /turf/open/shuttle/can_surgery/red,
 /area/ice_colony/surface/hangar/beta)
 "qKs" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating,
 /area/ice_colony/exterior/underground/caves)
 "qPo" = (
@@ -27056,7 +27056,7 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "uAe" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/darkyellow2,
 /area/ice_colony/surface/tcomms)
 "uBE" = (
@@ -27138,7 +27138,7 @@
 /turf/open/floor/darkyellow2/southwest,
 /area/ice_colony/surface/tcomms)
 "xyz" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},

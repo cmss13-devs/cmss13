@@ -1,5 +1,5 @@
-import { Channel } from './ChannelIterator';
-import { RADIO_PREFIXES, WindowSize } from './constants';
+import type { Channel } from './ChannelIterator';
+import { LANGUAGE_PREFIXES, RADIO_PREFIXES, WindowSize } from './constants';
 
 /**
  * Once byond signals this via keystroke, it
@@ -28,14 +28,11 @@ export function windowClose(scale: boolean): void {
 export function windowSet(size = WindowSize.Small, scale: boolean): void {
   const pixelRatio = scale ? window.devicePixelRatio : 1;
 
-  let sizeStr = `${WindowSize.Width * pixelRatio}x${size * pixelRatio}`;
+  const sizeStr = `${WindowSize.Width * pixelRatio}x${size * pixelRatio}`;
 
-  Byond.winset('tgui_say', {
-    size: sizeStr,
-  });
-
-  Byond.winset('tgui_say.browser', {
-    size: sizeStr,
+  Byond.winset(null, {
+    'tgui_say.size': sizeStr,
+    'tgui_say.browser.size': sizeStr,
   });
 }
 
@@ -43,34 +40,35 @@ export function windowSet(size = WindowSize.Small, scale: boolean): void {
 function setWindowVisibility(visible: boolean, scale: boolean): void {
   const pixelRatio = scale ? window.devicePixelRatio : 1;
 
-  const sizeString = `${WindowSize.Width * pixelRatio}x${WindowSize.Small * pixelRatio}`;
+  const sizeStr = `${WindowSize.Width * pixelRatio}x${WindowSize.Small * pixelRatio}`;
 
-  Byond.winset('tgui_say', {
-    'is-visible': visible,
-    size: sizeString,
-  });
-
-  Byond.winset('tgui_say.browser', {
-    size: sizeString,
+  Byond.winset(null, {
+    'tgui_say.is-visible': visible,
+    'tgui_say.size': sizeStr,
+    'tgui_say.browser.size': sizeStr,
   });
 }
 
-const CHANNEL_REGEX = /^[:.#]\w\s/;
+const CHANNEL_REGEX = /^[!:.#]\w\s/;
 
 /** Tests for a channel prefix, returning it or none */
 export function getPrefix(
   value: string,
-): keyof typeof RADIO_PREFIXES | undefined {
+): keyof typeof RADIO_PREFIXES | keyof typeof LANGUAGE_PREFIXES | undefined {
   if (!value || value.length < 3 || !CHANNEL_REGEX.test(value)) {
     return;
   }
+  let adjusted;
+  let languagePrefixCheck = value.charAt(0);
+  if ((languagePrefixCheck = '!')) {
+    adjusted = value
+      .slice(0, 3)
+      ?.toLowerCase() as keyof typeof LANGUAGE_PREFIXES;
+  } else {
+    adjusted = value.slice(0, 3)?.toLowerCase() as keyof typeof RADIO_PREFIXES;
+  }
 
-  let adjusted = value
-    .slice(0, 3)
-    ?.toLowerCase()
-    ?.replace('.', ':') as keyof typeof RADIO_PREFIXES;
-
-  if (!RADIO_PREFIXES[adjusted]) {
+  if (!RADIO_PREFIXES[adjusted] && !LANGUAGE_PREFIXES[adjusted]) {
     return;
   }
 

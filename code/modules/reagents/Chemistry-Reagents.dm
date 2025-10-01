@@ -49,6 +49,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/burn_sprite = "dynamic"
 	var/burncolor = "#f88818"
 	var/burncolormod = 1
+	/// Cant be used in chemical synthesis in ANY way.
+	var/lockdown_chem = FALSE
 	var/fire_type = FIRE_VARIANT_DEFAULT //Unique types of fire not modeled by chemfire (1 = Armor Shredding Greenfire). Effects in flamer.dm
 	// Chem generator and research stuff
 	var/chemclass = CHEM_CLASS_NONE //Decides how rare the chem in the generation process
@@ -56,7 +58,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/objective_value // How valuable it is to identify the chemical. (Only works on chemclass SPECIAL or ULTRA)
 	var/list/datum/chem_property/properties = list() //Decides properties
 	var/original_id //For tracing back
+	///all the variations of the chemical that was ever created from this exact base.
+	var/list/modified_chemicals_list = list()
 	var/flags = 0 // Flags for misc. stuff
+	var/credit_reward = 2 //credit reward for scanning
 	/// How much to adjust the temperature up until target_temp (positive is heating) when in a mob
 	var/adj_temp = 0
 	/// When adj_temp is used, this is the cap to the temperature
@@ -124,6 +129,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	// O.reagents.add_reagent(id,volume/3)
 	return
 
+/datum/reagent/proc/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume = 1)
+	return
+
 /datum/reagent/proc/reaction_turf(turf/T, volume)
 	for(var/datum/chem_property/P in properties)
 		var/potency = P.level * LEVEL_TO_POTENCY_MULTIPLIER
@@ -143,6 +151,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		return
 
 	handle_processing(M, mods, delta_time)
+	if(QDELETED(src)) //proc above could have deleted us
+		return
 	holder.remove_reagent(id, custom_metabolism * delta_time)
 
 	if(adj_temp && M.bodytemperature != target_temp)
@@ -183,17 +193,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		if(potency <= 0)
 			continue
 		P.process(M, potency, delta_time)
+		if(flags & REAGENT_CANNOT_OVERDOSE)
+			continue
 		if(overdose && volume > overdose)
-			if(flags & REAGENT_CANNOT_OVERDOSE)
-				var/ammount_overdosed = volume - overdose
-				holder.remove_reagent(id, ammount_overdosed)
-				holder.add_reagent("sugar", ammount_overdosed)
-			else
-				P.process_overdose(M, potency, delta_time)
-				if(overdose_critical && volume > overdose_critical)
-					P.process_critical(M, potency, delta_time)
-				var/overdose_message = "[istype(src, /datum/reagent/generated) ? "custom chemical" : initial(name)] overdose"
-				M.last_damage_data = create_cause_data(overdose_message, last_source_mob?.resolve())
+			P.process_overdose(M, potency, delta_time)
+			if(overdose_critical && volume > overdose_critical)
+				P.process_critical(M, potency, delta_time)
+			var/overdose_message = "[istype(src, /datum/reagent/generated) ? "custom chemical" : initial(name)] overdose"
+			M.last_damage_data = create_cause_data(overdose_message, last_source_mob?.resolve())
 
 	if(mods[REAGENT_PURGE])
 		holder.remove_all_type(/datum/reagent,mods[REAGENT_PURGE] * delta_time)
@@ -257,6 +264,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	power = C.power
 	falloff_modifier =  C.falloff_modifier
 	flags = C.flags
+	lockdown_chem = C.lockdown_chem
+	credit_reward = C.credit_reward
 
 /datum/chemical_reaction/proc/make_alike(datum/chemical_reaction/C)
 	if(!C)
@@ -285,6 +294,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				GLOB.chemical_data.add_chemical_objective(src)
 			if(CHEM_CLASS_ULTRA)
 				GLOB.chemical_gen_classes_list["C6"] += id
+				GLOB.chemical_data.add_chemical_objective(src)
+			if(CHEM_CLASS_HYDRO)
+				GLOB.chemical_gen_classes_list["H1"] += id
 				GLOB.chemical_data.add_chemical_objective(src)
 		GLOB.chemical_gen_classes_list["C"] += id
 	if(gen_tier)

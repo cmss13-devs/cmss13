@@ -81,7 +81,7 @@
 	// Cooperate!
 	idtype = /obj/item/card/id/gold
 	assignment = "Shrapnelsworn"
-	rank = "Brother of the Order"
+	job_title = "Brother of the Order"
 	paygrades = list("Ser" = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "OHEFA"
 
@@ -294,7 +294,7 @@
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/everything
 	assignment = "UPP Armsmaster"
-	rank = "UPP Armsmaster"
+	job_title = "UPP Armsmaster"
 	role_comm_title = null
 
 /datum/equipment_preset/upp/ivan/load_name(mob/living/carbon/human/new_human, randomise)
@@ -346,7 +346,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything
 	assignment = "Huntsman"
-	rank = "Huntsman"
+	job_title = "Huntsman"
 	idtype = /obj/item/card/id/gold
 
 /datum/equipment_preset/fun/van_bandolier/New()
@@ -423,14 +423,14 @@
 	skills = /datum/skills/pfc/crafty // about equivalent to a marine
 
 	assignment = "Monkey"
-	rank = "Monkey"
+	job_title = "Monkey"
 	idtype = /obj/item/card/id/dogtag
 
 /datum/equipment_preset/fun/monkey/load_race(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.set_species(SPECIES_MONKEY)
 
 /datum/equipment_preset/fun/monkey/load_name(mob/living/carbon/human/new_human, randomise, client/mob_client)
-	new_human.gender = pick(60;MALE,40;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
 	var/random_name = get_random_name(new_human)
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(1, 40)
@@ -442,7 +442,7 @@
 	name = "Fun - Monkey Marine"
 
 	assignment = "Monkey Marine"
-	rank = "Monkey Marine"
+	job_title = "Monkey Marine"
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/fun/monkey/marine/load_gear(mob/living/carbon/human/new_human)
@@ -459,7 +459,7 @@
 	name = "Fun - Monkey Soldier"
 
 	assignment = "Monkey Soldier"
-	rank = "Monkey Soldier"
+	job_title = "Monkey Soldier"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/fun/monkey/soldier/get_random_name(mob/living/carbon/human/new_human)

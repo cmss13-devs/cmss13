@@ -43,14 +43,6 @@
 /datum/language/proc/check_special_condition(mob/other)
 	return 1
 
-/datum/language/proc/get_spoken_verb(msg_end)
-	switch(msg_end)
-		if("!")
-			return exclaim_verb
-		if("?")
-			return ask_verb
-	return speech_verb
-
 /datum/language/proc/check_cache(input)
 	var/lookup = scramble_cache[input]
 	if(lookup)

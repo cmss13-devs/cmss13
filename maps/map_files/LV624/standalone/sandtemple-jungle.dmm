@@ -55,7 +55,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_west_jungle)
 "lR" = (
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/yautja/duelknife{
 	desc = "A curved blade made of a strange material. It looks both old and very sharp.";
 	force = 30;
 	name = "\improper alien blade";

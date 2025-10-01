@@ -416,14 +416,12 @@
 	data = 0
 	properties = list(PROPERTY_CURING = 2)
 
-/datum/reagent/medical/unga
-	name = "Disgusting Mixture"
-	id = "unga"
-	description = " Some sort of... disgusting mixture of medicine. Probably something that shouldn't be consumed but apparently this mixture is considered a delicacy to some for its cornish taste, earning it the nickname of 'unga juice'."
+/datum/reagent/medical/host_stabilizer
+	name = "Embryo secretion"
+	id = "host_stabilizer"
+	description = "An unknown substance secreted by an embryo."
 	reagent_state = LIQUID
-	color = "#964B00" // rgb: 150, 75, 0
-	overdose = LOW_REAGENTS_OVERDOSE
-	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_NUTRITIOUS = 1)
-	flags = REAGENT_TYPE_MEDICAL | REAGENT_SCANNABLE | REAGENT_NO_GENERATION
+	color = BLOOD_COLOR_XENO
+	chemclass = CHEM_CLASS_NONE
+	properties = list(PROPERTY_CRITICALSTABILIZE = 1, PROPERTY_CROSSMETABOLIZING = 2)
+	flags = REAGENT_TYPE_MEDICAL | REAGENT_NO_GENERATION

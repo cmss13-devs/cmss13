@@ -13,6 +13,8 @@
 #define MINUTES_TO_DECISECOND *600
 #define MINUTES_TO_HOURS /60
 
+#define DECISECONDS_TO_SECONDS /10
+#define DECISECONDS_TO_MINUTES /600
 #define DECISECONDS_TO_HOURS /36000
 
 GLOBAL_VAR_INIT(midnight_rollovers, 0)
@@ -41,11 +43,27 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 /proc/time_stamp() // Shows current GMT time
 	return time2text(world.timeofday, "hh:mm:ss")
 
-/proc/duration2text(time = world.time) // Shows current time starting at 0:00
-	return gameTimestamp("hh:mm", time)
+/// Duration in hh:mm with rollover into hours
+/proc/duration2text(time = world.time)
+	if(time < 24 HOURS)
+		return gameTimestamp("hh:mm", time)
 
-/proc/duration2text_sec(time = world.time) // shows minutes:seconds
-	return gameTimestamp("mm:ss", time)
+	var/hours = floor(time DECISECONDS_TO_HOURS)
+	var/minutes = floor((time - hours HOURS) DECISECONDS_TO_MINUTES)
+	if(minutes < 10)
+		minutes = "0[minutes]"
+	return "[hours]:[minutes]"
+
+/// Duration in mm:ss with rollover into minutes
+/proc/duration2text_sec(time = world.time)
+	if(time < 60 MINUTES)
+		return gameTimestamp("mm:ss", time)
+
+	var/minutes = floor(time DECISECONDS_TO_MINUTES)
+	var/seconds = floor((time - minutes MINUTES) DECISECONDS_TO_SECONDS)
+	if(seconds < 10)
+		seconds = "0[seconds]"
+	return "[minutes]:[seconds]"
 
 /proc/time_left_until(target_time, current_time, time_unit)
 	return ceil(target_time - current_time) / time_unit
@@ -97,3 +115,140 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 	if(hour)
 		hourT = " and [hour] hour[(hour != 1)? "s":""]"
 	return "[day] day[(day != 1)? "s":""][hourT][minuteT][secondT]"
+
+/*
+
+Days of the week to make it easier to reference them.
+
+When using time2text(), please use "DDD" to find the weekday. Refrain from using "Day"
+
+*/
+#define MONDAY "Mon"
+#define TUESDAY "Tue"
+#define WEDNESDAY "Wed"
+#define THURSDAY "Thu"
+#define FRIDAY "Fri"
+#define SATURDAY "Sat"
+#define SUNDAY "Sun"
+
+//Months
+
+#define JANUARY 1
+#define FEBRUARY 2
+#define MARCH 3
+#define APRIL 4
+#define MAY 5
+#define JUNE 6
+#define JULY 7
+#define AUGUST 8
+#define SEPTEMBER 9
+#define OCTOBER 10
+#define NOVEMBER 11
+#define DECEMBER 12
+
+//Select holiday names -- If you test for a holiday in the code, make the holiday's name a define and test for that instead
+#define NEW_YEAR "New Year"
+#define VALENTINES "Valentine's Day"
+#define APRIL_FOOLS "April Fool's Day"
+#define ST_PATRICK "Saint Patrick's Day"
+
+#define EASTER "Easter"
+#define HALLOWEEN "Halloween"
+#define CHRISTMAS "Christmas"
+#define FESTIVE_SEASON "Festive Season"
+#define HOTDOG_DAY "National Hot Dog Day"
+
+/*Timezones*/
+
+/// Line Islands Time
+#define TIMEZONE_LINT 14
+
+// Chatham Daylight Time
+#define TIMEZONE_CHADT 13.75
+
+/// Tokelau Time
+#define TIMEZONE_TKT 13
+
+/// Tonga Time
+#define TIMEZONE_TOT 13
+
+/// New Zealand Daylight Time
+#define TIMEZONE_NZDT 13
+
+/// New Zealand Standard Time
+#define TIMEZONE_NZST 12
+
+/// Norfolk Time
+#define TIMEZONE_NFT 11
+
+/// Lord Howe Standard Time
+#define TIMEZONE_LHST 10.5
+
+/// Australian Eastern Standard Time
+#define TIMEZONE_AEST 10
+
+/// Australian Central Standard Time
+#define TIMEZONE_ACST 9.5
+
+/// Australian Central Western Standard Time
+#define TIMEZONE_ACWST 8.75
+
+/// Australian Western Standard Time
+#define TIMEZONE_AWST 8
+
+/// Christmas Island Time
+#define TIMEZONE_CXT 7
+
+/// Cocos Islands Time
+#define TIMEZONE_CCT 6.5
+
+/// Central European Summer Time
+#define TIMEZONE_CEST 2
+
+/// Coordinated Universal Time
+#define TIMEZONE_UTC 0
+
+/// Eastern Daylight Time
+#define TIMEZONE_EDT -4
+
+/// Eastern Standard Time
+#define TIMEZONE_EST -5
+
+/// Central Daylight Time
+#define TIMEZONE_CDT -5
+
+/// Central Standard Time
+#define TIMEZONE_CST -6
+
+/// Mountain Daylight Time
+#define TIMEZONE_MDT -6
+
+/// Mountain Standard Time
+#define TIMEZONE_MST -7
+
+/// Pacific Daylight Time
+#define TIMEZONE_PDT -7
+
+/// Pacific Standard Time
+#define TIMEZONE_PST -8
+
+/// Alaska Daylight Time
+#define TIMEZONE_AKDT -8
+
+/// Alaska Standard Time
+#define TIMEZONE_AKST -9
+
+/// Hawaii-Aleutian Daylight Time
+#define TIMEZONE_HDT -9
+
+/// Hawaii Standard Time
+#define TIMEZONE_HST -10
+
+/// Cook Island Time
+#define TIMEZONE_CKT -10
+
+/// Niue Time
+#define TIMEZONE_NUT -11
+
+/// Anywhere on Earth
+#define TIMEZONE_ANYWHERE_ON_EARTH -12

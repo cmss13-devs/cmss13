@@ -283,6 +283,9 @@
 		for(var/obj/item/clothing/head/hardhat/headlamp in contents)
 			if(headlamp.turn_light(src, toggle_on = FALSE))
 				light_off++
+		for(var/obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/headlight in contents)
+			if(headlight.turn_light(src, toggle_on = FALSE))
+				light_off++
 	if(guns)
 		for(var/obj/item/weapon/gun/G in contents)
 			if(G.turn_off_light(src))

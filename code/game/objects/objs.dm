@@ -320,7 +320,7 @@
 				return
 		if(M.stat != DEAD)
 			return
-		do_buckle(M, user)
+	do_buckle(M, user)
 
 // the actual buckling proc
 // Yes I know this is not style but its unreadable otherwise

@@ -64,8 +64,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	COOLDOWN_DECLARE(cooldown_message)
 	/// making a shipside announcement
 	COOLDOWN_DECLARE(cooldown_shipside_message)
-	/// 10 minute cooldown between calls for 'general quarters'
-	COOLDOWN_DECLARE(general_quarters)
 
 /obj/structure/machinery/computer/overwatch/groundside_operations
 	name = "Groundside Operations Console"
@@ -88,6 +86,19 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		tacmap = new(src, minimap_type) // Non-drawing version
 
 /obj/structure/machinery/computer/overwatch/Destroy()
+	QDEL_NULL(tacmap)
+	GLOB.active_overwatch_consoles -= src
+	current_orbital_cannon = null
+	concurrent_users = null
+	if(!camera_holder)
+		return ..()
+	disconnect_holder()
+	return ..()
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/Destroy()
+	for(var/datum/squad/root_squad in GLOB.RoleAuthority.squads)
+		root_squad.release_overwatch()
+		break
 	QDEL_NULL(tacmap)
 	GLOB.active_overwatch_consoles -= src
 	current_orbital_cannon = null
@@ -225,8 +236,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			continue //just to be safe
 		var/mob_name = "unknown"
 		var/mob_state = ""
-		var/has_helmet = TRUE
+		var/has_helmet = FALSE
 		var/role = "unknown"
+		var/rank = "unknown"
 		var/acting_sl = ""
 		var/fteam = ""
 		var/distance = "???"
@@ -260,6 +272,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				role = marine_human.job
 			else if(card?.rank) //decapitated marine is mindless,
 				role = card.rank
+			rank = card?.paygrade
 
 			if(current_squad.squad_leader)
 				if(marine_human == current_squad.squad_leader)
@@ -286,8 +299,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(DEAD)
 					mob_state = "Dead"
 
-			if(!marine_has_camera(marine_human))
-				has_helmet = FALSE
+			if(marine_has_camera(marine_human))
+				has_helmet = TRUE
 
 			if(!marine_human.key || !marine_human.client)
 				if(marine_human.stat != DEAD)
@@ -347,7 +360,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(mob_state != "Dead")
 					marines_alive++
 
-		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "acting_sl" = acting_sl, "fteam" = fteam, "distance" = distance, "area_name" = area_name,"ref" = REF(marine)))
+		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "acting_sl" = acting_sl, "fteam" = fteam, "distance" = distance, "area_name" = area_name,"ref" = REF(marine), "rank" = rank))
 		data["marines"] += marine_data
 		if(is_squad_leader)
 			if(!data["squad_leader"])
@@ -398,8 +411,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			continue //just to be safe
 		var/mob_name = "unknown"
 		var/mob_state = ""
-		var/has_helmet = TRUE
+		var/has_helmet = FALSE
 		var/role = "unknown"
+		var/rank = "unknown"
+
 		var/area_name = "???"
 		var/mob/living/carbon/human/marine_human
 
@@ -428,6 +443,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			role = marine_human.job
 		else if(card?.rank) //decapitated marine is mindless,
 			role = card.rank
+		rank = card?.paygrade
+
+
 
 		switch(marine_human.stat)
 			if(CONSCIOUS)
@@ -439,8 +457,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(DEAD)
 				mob_state = "Dead"
 
-		if(!marine_has_camera(marine_human))
-			has_helmet = FALSE
+		if(marine_has_camera(marine_human))
+			has_helmet = TRUE
 
 		switch(role)
 			if(JOB_CO)
@@ -458,7 +476,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(mob_state != "Dead")
 					so_alive++
 
-		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "area_name" = area_name, "ref" = REF(marine)))
+		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "area_name" = area_name, "ref" = REF(marine), "rank" = rank))
 		data["marines"] += marine_data
 
 	data["total_deployed"] = co_count + xo_count + so_count
@@ -566,14 +584,21 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/computer/overwatch/ui_status(mob/user)
-	if(!(isatom(src)))
+
+	if(inoperable())
+		return UI_CLOSE
+
+	if(!ishumansynth_strict(user) || (user.stat == DEAD))
+		return UI_CLOSE
+
+	if((user.stat == UNCONSCIOUS) || !allowed(user))
+		return UI_DISABLED
+
+	if(get_dist(src, user) <= tgui_interaction_distance)
 		return UI_INTERACTIVE
 
-	var/dist = get_dist(src, user)
-	if(dist <= tgui_interaction_distance)
-		return UI_INTERACTIVE
-	else
-		return UI_CLOSE
+	// if none of the above were true, something is very wrong
+	return UI_CLOSE
 
 /obj/structure/machinery/computer/overwatch/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -764,6 +789,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return
 			if(current_squad)
 				var/mob/living/carbon/human/cam_target = locate(params["target_ref"])
+
+				if(!istype(cam_target))
+					return
+
 				var/obj/item/new_holder = cam_target.get_camera_holder()
 				var/obj/structure/machinery/camera/new_cam
 				if(new_holder)
@@ -1012,17 +1041,21 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_ares_security("Cancel Evacuation", "Cancelled the emergency evacuation.", user)
 
 		if("general_quarters")
-			if(!COOLDOWN_FINISHED(src, general_quarters))
+			var/datum/ares_datacore/datacore = GLOB.ares_datacore
+			if(GLOB.security_level < SEC_LEVEL_RED)
+				log_game("[key_name(user)] set red alert via the groundside operations console.")
+				message_admins("[key_name_admin(user)] set red alert via the groundside operations console.")
+				log_ares_security("Manual Security Update", "Changed the security level to red.", user)
+				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
+			if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
 				to_chat(user, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			if(GLOB.security_level < SEC_LEVEL_RED)
-				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
+			COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
 			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 			log_game("[key_name(user)] has called for general quarters via the groundside operations console.")
 			message_admins("[key_name_admin(user)] has called for general quarters via the groundside operations console.")
 			log_ares_security("General Quarters", "Called for general quarters via the groundside operations console.", user)
-			COOLDOWN_START(src, general_quarters, 10 MINUTES)
 			. = TRUE
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
@@ -1155,7 +1188,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
 	..()
-	if(!isRemoteControlling(user))
+	if(!isRemoteControlling(user) && concurrent_users)
 		if(cam)
 			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 		user.reset_view(null)
@@ -1172,6 +1205,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		return TRUE
 	if(istype(marine.wear_l_ear, /obj/item/device/overwatch_camera) || istype(marine.wear_r_ear, /obj/item/device/overwatch_camera))
 		return TRUE
+	if(istype(marine.glasses, /obj/item/clothing/glasses/night/m56_goggles))
+		return TRUE
 	return FALSE
 /// returns the overwatch camera the human is wearing
 /obj/item/proc/get_camera()
@@ -1183,11 +1218,18 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/item/device/overwatch_camera/get_camera()
 	return camera
 
+/obj/item/clothing/glasses/night/m56_goggles/get_camera()
+	return camera
+
 ///returns camera holder
 /mob/living/carbon/human/proc/get_camera_holder()
 	if(istype(head, /obj/item/clothing/head/helmet/marine))
 		var/obj/item/clothing/head/helmet/marine/helm = head
 		return helm
+	var/obj/item/clothing/glasses/night/m56_goggles/goggles
+	if(istype(glasses, /obj/item/clothing/glasses/night/m56_goggles))
+		goggles = glasses
+		return goggles
 	var/obj/item/device/overwatch_camera/cam_gear
 	if(istype(wear_l_ear, /obj/item/device/overwatch_camera))
 		cam_gear = wear_l_ear

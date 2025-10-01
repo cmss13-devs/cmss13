@@ -1,9 +1,9 @@
 import type { BooleanLike } from 'common/react';
 import { useBackend } from 'tgui/backend';
-import { Box, Button, Flex, Section, Stack } from 'tgui/components';
+import { Box, Button, Dropdown, Flex, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import { DataCoreData } from './common/commonTypes';
+import type { DataCoreData } from './common/commonTypes';
 
 type Data = DataCoreData & {
   local_admin_login: string;
@@ -110,6 +110,8 @@ const MainMenu = (props) => {
     local_current_menu,
     ares_sudo,
     local_admin_login,
+    faction_options,
+    sentry_setting,
   } = data;
 
   return (
@@ -412,6 +414,17 @@ const MainMenu = (props) => {
             >
               Nerve Gas Control
             </Button>
+          </Stack.Item>
+          <Stack.Item ml="0" mr="0">
+            <Dropdown
+              options={faction_options}
+              selected={sentry_setting}
+              color="red"
+              onSelected={(value) =>
+                act('update_sentries', { chosen_iff: value })
+              }
+              width="90px"
+            />
           </Stack.Item>
         </Stack>
       </Section>

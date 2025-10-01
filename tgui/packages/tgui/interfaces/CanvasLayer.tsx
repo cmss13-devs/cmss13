@@ -1,4 +1,4 @@
-import { Component, createRef, RefObject } from 'react';
+import { Component, createRef, type RefObject } from 'react';
 import { Box, Icon, Tooltip } from 'tgui/components';
 
 // this file should probably not be in interfaces, should move it later.

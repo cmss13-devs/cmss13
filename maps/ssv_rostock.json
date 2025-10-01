@@ -1,0 +1,6 @@
+{
+    "map_name": "SSV Rostock",
+    "map_path": "templates/",
+    "map_file": "SSV_Rostock.dmm",
+	"traits": [{ "Station": true, "Admin": true, "Marine Main Ship": true}]
+}

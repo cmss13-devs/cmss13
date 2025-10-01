@@ -528,6 +528,8 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		add_verb(src, /client/proc/whitelist_panel)
 	if(isCouncil(src))
 		add_verb(src, /client/proc/other_records)
+	if(isYautjaCouncil(src))
+		add_verb(src, /client/proc/pred_council_message)
 
 	if(GLOB.RoleAuthority && check_whitelist_status(WHITELIST_PREDATOR))
 		clan_info = GET_CLAN_PLAYER(player.id)

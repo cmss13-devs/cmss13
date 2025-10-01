@@ -7,6 +7,51 @@
 			if(G.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
+/proc/elder_overseer_message(text = "", title_text = "Elder Overseer", elder_user = "AutomatedMessage") // you can override the title_text if you want.
+	for(var/mob/living/carbon/human/hunter as anything in GLOB.yautja_mob_list)
+		if(!hunter.client)
+			continue
+		if(hunter.stat == DEAD)
+			continue
+		text = "[SPAN_YAUTJABOLDBIG("<b>[text]<b>")]"
+		hunter.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order/yautja, override_color = "#af0614")
+		var/elder_picked = pick('sound/voice/pred_elder_overseer_1.ogg', 'sound/voice/pred_elder_overseer_2.ogg', 'sound/voice/pred_elder_overseer_3.ogg', 'sound/voice/pred_elder_overseer_4.ogg')
+		playsound_client(hunter.client, elder_picked, 25)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat_spaced), hunter, "[SPAN_YAUTJABOLDBIG("Overseer Message Log")]<br><br>[SPAN_YAUTJABOLDBIG("[title_text]")]<br><br>[SPAN_YAUTJABOLD(text)]", MESSAGE_TYPE_RADIO), 12 SECONDS)
+	if(elder_user != "AutomatedMessage")
+		message_admins("[elder_user] has created a Yautja Elder Overseer message")
+		log_admin("[elder_user] created a predator council message: [text]")
+
+/client/proc/pred_council_message()
+	set name = "Yautja Overseer Report"
+	set category = "OOC.Whitelist"
+
+	if(!check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
+		to_chat(src, SPAN_WARNING("Only the Yautja Council may use this command."))
+		return
+
+	var/is_living_yautja = FALSE
+	if(isyautja(mob) && !mob.stat)
+		is_living_yautja = TRUE
+
+	if(!(is_living_yautja || (isHellhound(mob) && !mob.stat) || isobserver(mob)))
+		to_chat(src, SPAN_WARNING("You must be a Yautja related mob (and conscious) or a ghost to use this command."))
+		return
+
+	var/message_personal = "Send a message to all living hunters."
+	var/message_impersonal = "This is a message from the Yautja Elder Overseer. They are not your character. Use this to direct big groups of Yautja when needed and to stop/prevent honor code breaches."
+	var/title_personal = "What will you say?"
+	var/title_impersonal = "What Will The Elder Say?"
+
+	var/input = tgui_input_text(src, is_living_yautja ? message_personal : message_impersonal, is_living_yautja ? title_personal : title_impersonal)
+	if(!input)
+		return FALSE
+	if(is_living_yautja)
+		elder_overseer_message(input, mob.real_name, "[key_name(src)]")
+		return TRUE
+	elder_overseer_message(input, elder_user = "[key_name(src)]")
+	return TRUE
+
 /mob/living/carbon/human/proc/message_thrall(msg)
 	if(!hunter_data.thrall)
 		return

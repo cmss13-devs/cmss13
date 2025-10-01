@@ -117,28 +117,41 @@
 		else if(!(caste_type == XENO_CASTE_QUEEN))
 			. += "Queen's Location: [hive.living_xeno_queen.loc.loc.name]"
 
-		if(hive.slashing_allowed == XENO_SLASH_ALLOWED)
+		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_SLASH_ALLOW_ALL))
 			. += "Slashing: PERMITTED"
+		else if (HAS_FLAG(hive.hive_flags, XENO_SLASH_NORMAL))
+			. += "Slashing: RESTRICTED AGAINST INFECTED"
 		else
 			. += "Slashing: FORBIDDEN"
 
-		if(hive.construction_allowed == XENO_LEADER)
-			. += "Construction Placement: LEADERS"
-		else if(hive.construction_allowed == NORMAL_XENO)
-			. += "Construction Placement: ANYONE"
-		else if(hive.construction_allowed == XENO_NOBODY)
-			. += "Construction Placement: NOBODY"
+		var/str_builder = "NOBODY"
+		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_CONSTRUCTION_ALLOW_ALL))
+			str_builder = "ANYONE"
 		else
-			. += "Construction Placement: QUEEN"
+			if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_QUEEN))
+				str_builder = "QUEEN"
+				if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
+					str_builder += " and "
+			if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
+				str_builder += "LEADERS"
+		. += "Special Structure Placement: [str_builder]"
 
-		if(hive.destruction_allowed == XENO_LEADER)
-			. += "Special Structure Destruction: LEADERS"
-		else if(hive.destruction_allowed == NORMAL_XENO)
-			. += "Special Structure Destruction: BUILDERS and LEADERS"
-		else if(hive.construction_allowed == XENO_NOBODY)
-			. += "Construction Placement: NOBODY"
+		str_builder = "NOBODY"
+		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_DECONSTRUCTION_ALLOW_ALL))
+			str_builder = "ANYONE"
 		else
-			. += "Special Structure Destruction: QUEEN"
+			if (HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_QUEEN))
+				str_builder = "QUEEN"
+				if (HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_LEADERS))
+					str_builder += " and "
+			if (HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_LEADERS))
+				str_builder += "LEADERS"
+		. += "Special Structure Destruction: [str_builder]"
+
+		if (HAS_FLAG(hive.hive_flags, XENO_UNNESTING_RESTRICTED))
+			. += "Unnesting: BUILDERS"
+		else
+			. += "Unnesting: ANYONE"
 
 		if(hive.hive_orders)
 			. += "Hive Orders: [hive.hive_orders]"
@@ -463,6 +476,8 @@
 /mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE, ignore_nest = FALSE)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
+		if(istype(O, /obj/effect/alien/resin/design/speed_node) || istype(O, /obj/effect/alien/resin/design/cost_node) || istype(O, /obj/effect/alien/resin/design/construct_node))
+			continue
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
 			var/obj/effect/build_blocker/bb = O
 			if(!silent)
@@ -633,6 +648,11 @@
 	if(M.status_flags & XENO_HOST)
 		return
 
+	// If they were not forcibly floored, don't reset
+	// Resting should not reset the counter
+	if(!HAS_TRAIT(M, TRAIT_FLOORED))
+		return
+
 	reset_tackle(M)
 
 /mob/living/carbon/xenomorph/proc/reset_tackle(mob/M)
@@ -786,7 +806,7 @@
  * * shake_camera - whether to shake the thrown mob camera on throw
  * * immobilize - if TRUE the mob will be immobilized during the throw, ensuring it doesn't move and break it
  */
-/mob/living/carbon/xenomorph/proc/throw_carbon(mob/living/carbon/target, direction, distance, speed = SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
+/mob/living/proc/throw_carbon(mob/living/carbon/target, direction, distance, speed = SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
 	if(!direction)
 		direction = get_dir(src, target)
 	var/turf/target_destination = get_ranged_target_turf(target, direction, distance)
@@ -801,7 +821,7 @@
 		shake_camera(target, 10, 1)
 
 /// Handler callback to reset immobilization status after a successful [/mob/living/carbon/xenomorph/proc/throw_carbon]
-/mob/living/carbon/xenomorph/proc/throw_carbon_end(mob/living/carbon/target)
+/mob/living/proc/throw_carbon_end(mob/living/carbon/target)
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 
 /// snowflake proc to clear effects from research warcrimes

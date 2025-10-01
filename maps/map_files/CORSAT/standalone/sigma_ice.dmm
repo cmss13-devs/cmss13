@@ -1199,7 +1199,7 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 1
 	},
-/obj/item/weapon/gun/flamer/M240T,
+/obj/item/weapon/gun/flamer/m240/spec,
 /turf/open/floor/asteroidplating,
 /area/corsat/sigma/biodome/gunrange)
 "Bv" = (

@@ -3,8 +3,11 @@ import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Box, Button, Divider, Icon, Input, Stack } from 'tgui/components';
 
-import { DropshipEquipment, DropshipProps } from '../DropshipWeaponsConsole';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import type {
+  DropshipEquipment,
+  DropshipProps,
+} from '../DropshipWeaponsConsole';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import {
   fmEditState,
   fmState,

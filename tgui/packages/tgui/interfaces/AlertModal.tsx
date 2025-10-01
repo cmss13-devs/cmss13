@@ -1,6 +1,6 @@
 import { KEY } from 'common/keys';
-import { BooleanLike } from 'common/react';
-import { KeyboardEvent, useState } from 'react';
+import type { BooleanLike } from 'common/react';
+import { type KeyboardEvent, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Autofocus, Box, Button, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';

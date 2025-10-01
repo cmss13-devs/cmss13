@@ -37247,15 +37247,14 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/charlie_delta_shared)
 "bMr" = (
-/obj/item/desk_bell{
-	anchored = 1;
-	pixel_y = 8;
-	pixel_x = -14
-	},
 /obj/structure/surface/table/reinforced/black,
 /obj/item/ashtray/glass{
 	pixel_x = 12;
 	pixel_y = 6
+	},
+/obj/item/desk_bell/corp_liaison{
+	pixel_y = 8;
+	pixel_x = -14
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)

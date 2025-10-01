@@ -390,6 +390,71 @@
 	)
 	flags_obj = OBJ_IS_HELMET_GARB
 
+	var/flags_marine_headset = HAT_GARB_OVERLAY
+	var/obj/item/storage/internal/headgear/pockets
+	var/storage_slots = 1
+	var/storage_slots_reserved_for_garb = 2
+	var/storage_max_w_class = SIZE_TINY
+	var/storage_max_storage_space = 4
+
+/obj/item/clothing/head/headset/Initialize(mapload, ...)
+	. = ..()
+
+	helmet_overlays = list() //To make things simple.
+
+	pockets = new(src)
+	pockets.storage_slots = storage_slots + storage_slots_reserved_for_garb
+	pockets.slots_reserved_for_garb = storage_slots_reserved_for_garb
+	pockets.max_w_class = storage_max_w_class
+	pockets.bypass_w_limit = GLOB.allowed_headset_items
+	pockets.max_storage_space = storage_max_storage_space
+
+/obj/item/clothing/head/headset/Destroy()
+	QDEL_NULL(pockets)
+	return ..()
+
+/obj/item/clothing/head/headset/attack_hand(mob/user)
+	if(loc != user)
+		..(user)
+		return
+	if(pockets.handle_attack_hand(user))
+		..()
+
+/obj/item/clothing/head/headset/MouseDrop(over_object, src_location, over_location)
+	if(pockets.handle_mousedrop(usr, over_object))
+		..()
+
+/obj/item/clothing/head/headset/attackby(obj/item/W, mob/user)
+	..()
+	return pockets.attackby(W, user)
+
+/obj/item/clothing/head/headset/on_pocket_insertion()
+	update_icon()
+
+/obj/item/clothing/head/headset/on_pocket_removal()
+	update_icon()
+
+/obj/item/clothing/head/headset/update_icon()
+	helmet_overlays = list() // Rebuild our list every time
+	if(length(pockets?.contents) && (flags_marine_headset & HAT_GARB_OVERLAY))
+		for(var/obj/item/garb_object in pockets.contents)
+			if(garb_object.type in GLOB.allowed_headset_items)
+				var/image/new_overlay = garb_object.get_garb_overlay(GLOB.allowed_headset_items[garb_object.type])
+				helmet_overlays += new_overlay
+
+	if(ismob(loc))
+		var/mob/moob = loc
+		moob.update_inv_head()
+
+/obj/item/clothing/head/headset/has_garb_overlay()
+	return flags_marine_headset & HAT_GARB_OVERLAY
+
+GLOBAL_LIST_INIT(allowed_headset_items, list(
+	/obj/item/prop/helmetgarb/helmet_gasmask = NO_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/attachable/flashlight = PREFIX_HAT_GARB_OVERRIDE,
+))
+
 GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/storage/fancy/cigarettes/emeraldgreen = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/storage/fancy/cigarettes/kpack = PREFIX_HAT_GARB_OVERRIDE,
@@ -426,6 +491,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/prop/helmetgarb/lucky_feather/blue = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/purple = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/lucky_feather/yellow = NO_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/helmet_gasmask = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/attachable/flashlight = PREFIX_HAT_GARB_OVERRIDE,
 ))
 
 /obj/item/clothing/head/cmcap

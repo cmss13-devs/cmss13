@@ -189,7 +189,7 @@
 	remove_attached_item()
 
 	var/obj/item/MO = S.master_object
-	if(!istype(MO, /obj/item/clothing/head/helmet/marine) && !istype(MO, /obj/item/clothing/head/cmcap)) // Do not bother if it's not a helmet or at least a hat
+	if(!istype(MO, /obj/item/clothing/head/helmet/marine) && !istype(MO, /obj/item/clothing/head/cmcap) && !istype(MO, /obj/item/clothing/head/headset)) // Do not bother if it's not a helmet or at least a hat
 		return
 
 	attached_item = MO
@@ -580,7 +580,7 @@
 	..()
 	if(!istype(helmet_internal_inventory))
 		return
-	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
+	var/obj/item/clothing/head/helmet_item = helmet_internal_inventory.master_object
 
 	if(!istype(helmet_item))
 		return
@@ -592,7 +592,7 @@
 	..()
 	if(!istype(helmet_internal_inventory))
 		return
-	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
+	var/obj/item/clothing/head/helmet_item = helmet_internal_inventory.master_object
 
 	if(!istype(helmet_item))
 		return

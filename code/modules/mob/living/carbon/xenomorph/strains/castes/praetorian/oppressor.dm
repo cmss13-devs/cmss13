@@ -299,6 +299,9 @@
 	if(!xeno.check_state())
 		return
 
+	if(!check_and_use_plasma_owner())
+		return
+
 	xeno.setDir(get_cardinal_dir(xeno, target_living))
 
 	var/dir_to_fling = get_dir(target_living, xeno)
@@ -344,10 +347,6 @@
 				target_living.pixel_x = -32 * turfs_travelled
 				animate(target_living, 0.3 SECONDS, pixel_y = 44, pixel_x = (-16 * turfs_travelled))
 				animate(0.3 SECONDS, pixel_y = old_pixel_y, pixel_x = old_pixel_x)
-
-
-		if(!check_and_use_plasma_owner())
-			return
 
 		addtimer(CALLBACK(src, PROC_REF(end_fling), target_living, old_layer, old_pixel_x, old_pixel_y), 0.6 SECONDS)
 	apply_cooldown()

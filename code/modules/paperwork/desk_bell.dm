@@ -98,6 +98,7 @@
 	name = "AI core reception bell"
 	desc = "The cornerstone of any customer service job. This one is linked to ARES and will notify any active Working Joes upon being rung."
 	ring_cooldown_length = 60 SECONDS // Prevents spam
+	anchored = TRUE
 
 /obj/item/desk_bell/ares/ring_bell(mob/living/user)
 	if(broken_ringer)
@@ -109,6 +110,7 @@
 	name = "corporate liaison reception bell"
 	desc = "The cornerstone of any customer service job. This one is linked to ARES and will notify the Corporate Liaison upon being rung."
 	ring_cooldown_length = 60 SECONDS // Prevents spam
+	anchored = TRUE
 
 /obj/item/desk_bell/corp_liaison/ring_bell(mob/living/user)
 	if(broken_ringer)

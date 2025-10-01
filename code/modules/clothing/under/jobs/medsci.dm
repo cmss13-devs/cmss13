@@ -217,7 +217,7 @@
 
 /obj/item/clothing/under/rank/medical/purple
 	name = "purple medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Fancy doctors like to wear these are wine-colored scrubs."
+	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Fancy doctors like to wear these wine-colored scrubs."
 	icon_state = "scrubspurple"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(

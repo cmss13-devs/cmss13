@@ -30,7 +30,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	/// The Phone_ID of the last person to call this telephone.
 	var/last_caller
 
-	var/can_change_name = FALSE
+	var/can_be_renamed = FALSE
 
 	var/base_icon_state
 
@@ -189,7 +189,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	. = list()
 
 	.["available_transmitters"] = get_transmitters() - list(phone_id)
-	.["can_change_name"] = can_change_name
+	.["can_be_renamed"] = can_be_renamed
 	var/list/transmitters = list()
 	for(var/i in GLOB.transmitters)
 		var/obj/structure/transmitter/T = i

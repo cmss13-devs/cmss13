@@ -534,8 +534,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		to_chat(usr, SPAN_DANGER("Your left hand is full."))
 		return
 
-	if(pickupify.type == /obj/structure/transmitter/rto_pack)
-		var/obj/structure/transmitter/rto_pack/pack = pickupify
+	if(pickupify.type == /obj/item/storage/backpack/marine/satchel/rto && ishuman(usr))
+		var/obj/item/storage/backpack/marine/satchel/rto/pack = pickupify
 		pack.disassemble(src)
 		return
 

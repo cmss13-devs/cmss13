@@ -7,7 +7,7 @@ import { replaceRegexChars } from './helpers';
 
 type Data = {
   availability: number;
-  can_change_name: boolean;
+  can_be_renamed: boolean;
   current_name: string;
   last_caller: string | null;
   available_transmitters: string[];
@@ -22,7 +22,7 @@ type Data = {
 export const PhoneMenu = (props) => {
   const { act, data } = useBackend();
   return (
-    <Window width={500} height={400}>
+    <Window width={650} height={400}>
       <Window.Content>
         <GeneralPanel />
       </Window.Content>
@@ -154,7 +154,7 @@ const GeneralPanel = (props) => {
             Do Not Disturb
           </Button>
         </Stack.Item>
-        {data.can_change_name ? (
+        {data.can_be_renamed ? (
           <Stack.Item>
             <Button.Input
               fluid

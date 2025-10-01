@@ -114,7 +114,7 @@
 	var/paper_info = info
 	if(scramble)
 		paper_info = stars_decode_html(info)
-	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width = 700, height = 900)
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -480,7 +480,7 @@
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
 				return
-		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name, width = 700, height = 900) // Update the window
+		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name, width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT) // Update the window
 		//openhelp(user)
 		return
 

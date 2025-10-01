@@ -48594,17 +48594,13 @@
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/indoors/main_level/east_containment)
-"cni" = (
-/obj/structure/girder/reinforced,
-/turf/open/auto_turf/sand_white/layer0,
-/area/white_antre/indoors/main_level/east_containment)
 "cnj" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/plating,
 /area/white_antre/indoors/main_level/east_containment)
 "cnk" = (
 /obj/structure/closet/crate/explosives,
-/obj/item/pamphlet/engineer,
+/obj/item/pamphlet/skill/engineer,
 /obj/item/explosive/plastic/breaching_charge{
 	unacidable = 1
 	},
@@ -48628,7 +48624,7 @@
 /obj/structure/closet/crate/explosives,
 /obj/item/explosive/plastic,
 /obj/item/explosive/plastic,
-/obj/item/pamphlet/engineer,
+/obj/item/pamphlet/skill/engineer,
 /turf/open/floor/strata,
 /area/white_antre/indoors/main_level/security)
 "cno" = (
@@ -124821,7 +124817,7 @@ aKn
 aQi
 iKa
 cnk
-cni
+btk
 bbh
 bqr
 iKa

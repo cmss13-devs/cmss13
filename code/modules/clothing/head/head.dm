@@ -451,7 +451,9 @@
 
 GLOBAL_LIST_INIT(allowed_headset_items, list(
 	/obj/item/prop/helmetgarb/helmet_gasmask = NO_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/helmet_nvg = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/helmet_nvg/cosmetic = PREFIX_HAT_GARB_OVERRIDE,
+	/obj/item/prop/helmetgarb/helmet_nvg/marsoc = PREFIX_HAT_GARB_OVERRIDE,
 	/obj/item/attachable/flashlight = PREFIX_HAT_GARB_OVERRIDE,
 ))
 

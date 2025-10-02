@@ -45,6 +45,10 @@
 	else
 		to_chat(user, SPAN_DANGER("Access denied."))
 
+/obj/item/device/cotablet/ui_close(mob/user)
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.on_unset_interaction(user)
+
 /obj/item/device/cotablet/ui_static_data(mob/user)
 	var/list/data = list()
 

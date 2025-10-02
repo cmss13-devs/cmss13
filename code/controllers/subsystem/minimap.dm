@@ -804,12 +804,15 @@ SUBSYSTEM_DEF(minimaps)
 	minimap_flags = MINIMAP_FLAG_XENO
 	live = TRUE
 
+/datum/action/minimap/xeno/see_humans
+	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP
+
 /datum/action/minimap/xeno/action_activate()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!istype(xeno))
 		return
 
-	if(!minimap_displayed && !xeno?.hive?.living_xeno_queen?.ovipositor && xeno != xeno?.hive?.living_xeno_queen)
+	if(!minimap_displayed && !xeno?.hive?.living_xeno_queen?.ovipositor && xeno != xeno?.hive?.living_xeno_queen && xeno?.hive?.tacmap_requires_queen_ovi)
 		to_chat(xeno, SPAN_WARNING("You cannot access that right now, The Queen has shed her ovipositor."))
 		return
 

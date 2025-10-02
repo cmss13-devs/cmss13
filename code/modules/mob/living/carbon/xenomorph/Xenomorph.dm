@@ -524,6 +524,7 @@
 	minimap_ref = WEAKREF(new minimap_type)
 	var/datum/action/minimap/ref = minimap_ref.resolve()
 	ref.give_to(src, ref)
+	RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
 
 	creation_time = world.time
 
@@ -531,6 +532,14 @@
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
+
+/mob/living/carbon/xenomorph/proc/update_minimap_see_humans()
+	var/datum/action/minimap/ref = minimap_ref.resolve()
+	ref.remove_from(src)
+
+	minimap_ref = WEAKREF(new /datum/action/minimap/xeno/see_humans)
+	ref = minimap_ref.resolve()
+	ref.give_to(src, ref)
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	SIGNAL_HANDLER
@@ -542,7 +551,7 @@
 /mob/living/carbon/xenomorph/proc/add_minimap_marker(flags)
 	if(!flags)
 		flags = get_minimap_flag_for_faction(hivenumber)
-	
+
 	var/image/background = image('icons/ui_icons/map_blips.dmi', null, caste.minimap_background)
 	var/image/xeno = image('icons/ui_icons/map_blips.dmi', null, caste.minimap_icon)
 	background.overlays += xeno

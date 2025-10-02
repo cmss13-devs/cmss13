@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("Medical Splints", 1, /obj/item/stack/medical/splint, null, VENDOR_ITEM_RECOMMENDED),
 		list("Blood Bag (O-)", 4, /obj/item/reagent_container/blood/OMinus, null, VENDOR_ITEM_REGULAR),
 
-		list("FIRSTAID KITS", 0, null, null, null),
+		list("FIRST-AID KITS", 0, null, null, null),
 		list("Advanced First-Aid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
 		list("First-Aid Kit", 5, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
 		list("Fire First-Aid Kit", 6, /obj/item/storage/firstaid/fire, null, VENDOR_ITEM_REGULAR),

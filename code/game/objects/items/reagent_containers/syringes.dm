@@ -156,9 +156,12 @@
 					to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
 					return
 
-				to_chat(user, SPAN_NOTICE(" You fill the syringe with [trans] units of the solution."))
+				to_chat(user, SPAN_NOTICE("You fill the syringe with [trans] units of the solution."))
+				user.update_inv_l_hand()
+				user.update_inv_r_hand()
 			if (reagents.total_volume >= reagents.maximum_volume)
 				mode=!mode
+				update_icon()
 
 		if(SYRINGE_INJECT)
 			if(!reagents.total_volume)

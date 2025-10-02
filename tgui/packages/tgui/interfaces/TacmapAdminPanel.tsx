@@ -109,7 +109,7 @@ export const TacmapAdminPanel = (props) => {
               />
               <DrawnMap
                 key={last_update_time + pageIndex}
-                flatImage={pageIndex === 0 ? uscm_svg : xeno_svg}
+                flatImage={(pageIndex === 0 ? uscm_svg : xeno_svg) || ''}
                 backupImage={map_fallback}
               />
             </div>

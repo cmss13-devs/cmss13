@@ -55,6 +55,29 @@
 	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
 
+/atom/movable/screen/plane_master/above_blackness
+	name = "above blackness plane master"
+	plane = ABOVE_BLACKNESS_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_OVERLAY
+
+/atom/movable/screen/plane_master/above_blackness/Initialize(mapload, ...)
+	. = ..()
+
+	add_filter("above_blur", 1, angular_blur_filter(0, 0, 0.3))
+
+/atom/movable/screen/plane_master/above_blackness_backdrop
+	name = "above blackness backdrop plane master"
+	plane = ABOVE_BLACKNESS_BACKDROP_PLANE
+	appearance_flags = PLANE_MASTER
+	blend_mode = BLEND_MULTIPLY
+	alpha = 125
+
+/atom/movable/screen/plane_master/above_blackness_backdrop/Initialize()
+	. = ..()
+
+	add_filter("inset_shadow", 1, drop_shadow_filter(color = "#04080FAA", size = -20))
+
 /atom/movable/screen/plane_master/ghost
 	name = "ghost plane master"
 	plane = GHOST_PLANE

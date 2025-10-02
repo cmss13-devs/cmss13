@@ -139,8 +139,7 @@
 /obj/vis_contents_holder/Initialize(mapload, vis, offset, backdrop = TRUE)
 	. = ..()
 	plane -= offset
-	if(backdrop)
-		vis_contents += GLOB.openspace_backdrop_one_for_all
+	vis_contents += GLOB.openspace_backdrop_one_for_all
 	vis_contents += vis
 	name = null // Makes it invisible on right click
 

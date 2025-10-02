@@ -435,17 +435,18 @@
 	staircase = new(stairs, dir)
 
 /datum/staircase
+
+	/// The direction that this staircase is going in
 	var/dir
 
+	/// The turf -> client images shown when stepped on
 	var/from_turf_to_images = list()
 
+	/// All the turfs that we are monitoring for changes
 	var/from_turfs = list()
 
+	/// Mobs that we are currently displaying images to
 	var/in_range_mob = list()
-
-	var/from_turf_to_mask = list()
-
-	var/from_turf_to_coords = list()
 
 /datum/staircase/New(list/obj/structure/stairs/multiz/up/stairs, dir)
 	src.dir = dir
@@ -474,8 +475,11 @@
 		for(var/turf/turf as anything in to_turfs)
 			if((dir == NORTH && turf.y <= stair.y) \
 			|| (dir == EAST && turf.x > stair.x) \
-			|| (dir == SOUTH && turf.y < stair.y) \
+			|| (dir == SOUTH && turf.y >= stair.y) \
 			|| (dir == WEST && turf.x <= stair.x))
+				continue
+
+			if(istransparentturf(turf))
 				continue
 
 			destination_turf_images["\ref[turf]"] = create_vis_contents_screen(SSmapping.get_turf_below(turf), turf)
@@ -493,41 +497,14 @@
 
 				var/distance_to_target = sqrt(turf_to_target.x * turf_to_target.x + turf_to_target.y * turf_to_target.y)
 				if(distance_to_target && distance_to_stair && distance_to_target < distance_to_stair)
-//					to_chat(world, "distance_to_target: [distance_to_target], distance_to_stair: [distance_to_stair]")
 					continue
 
-				if(cross_product && abs(cross_product) / (distance_to_stair * distance_to_target) > 0.25)
-	//				to_chat(world, "[cross_product]:[distance_to_stair]:[distance_to_target]")
+				if(cross_product && abs(cross_product) / (distance_to_stair * distance_to_target) > 0.40)
 					continue
-
-				var/coords = from_turf_to_coords["\ref[turf]"]
-				if(!islist(coords))
-					coords = new /list(15, 15)
-
-				var/floor_x = floor(turf_to_target.x) + ceil(15)
-				var/floor_y = floor(turf_to_target.y) + ceil(15)
-
-				if(floor_x <= 15 && floor_y <= 15)
-					coords[floor_x][floor_y] = TRUE
-
-				from_turf_to_coords["\ref[turf]"] = coords
 
 				LAZYADD(from_turf_to_images["\ref[turf]"], destination_turf_images["\ref[to_turf]"])
 				RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered), TRUE)
 
-
-	for(var/turf in from_turf_to_coords)
-		var/array = from_turf_to_coords[turf]
-		var/icon/icon = icon('icons/ui_icons/drawing.dmi')
-
-		for(var/x in 1 to length(array))
-			for(var/y in 1 to length(array[x]))
-				if(array[x][y])
-					to_chat(world, "drawing a box!")
-					icon.DrawBox(null, 1 + (32 * x - 1), 1 + (32 * y - 1), 1 + (32 * x), 1 + (32 * y))
-
-		from_turf_to_mask[turf] = icon
-		to_chat(world, "Produced [icon2html(icon, world)]")
 
 /datum/staircase/proc/handle_entered(turf/originator, atom/what_did_it)
 	SIGNAL_HANDLER
@@ -540,6 +517,7 @@
 		return
 
 	RegisterSignal(mover, COMSIG_MOVABLE_MOVED, PROC_REF(handle_movement))
+	RegisterSignal(mover, COMSIG_PARENT_QDELETING, PROC_REF(handle_deleted))
 	handle_movement(mover, originator)
 
 	in_range_mob += mover
@@ -548,31 +526,47 @@
 /datum/staircase/proc/handle_movement(mob/mover, old_loc, direction)
 	SIGNAL_HANDLER
 
-	var/where_from = get_turf(old_loc)
+	var/turf/where_from = get_turf(old_loc)
 	if(where_from in from_turfs)
-		mover.hud_used.plane_masters["[BLACKNESS_PLANE]"].filters -= "stairfilter"
-		mover.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 255
-
 		for(var/image in from_turf_to_images["\ref[where_from]"])
 			mover.client?.images -= image
 
-	var/where_to = get_turf(mover)
+	var/turf/where_to = get_turf(mover)
 	if(where_to in from_turfs)
-		mover.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 125
-		mover.hud_used.plane_masters["[BLACKNESS_PLANE]"].filters = filter(type = "alpha", icon = from_turf_to_mask["\ref[where_to]"], name = "stairfilter")
-
 		for(var/image in from_turf_to_images["\ref[where_to]"])
 			mover.client?.images += image
+
+		return
+
+	in_range_mob -= mover
+	UnregisterSignal(mover, COMSIG_MOVABLE_MOVED)
+
+/datum/staircase/proc/handle_deleted(atom/updater)
+	SIGNAL_HANDLER
+
+	in_range_mob -= updater
 
 
 /proc/create_vis_contents_screen(turf/appear_where, turf/clone_what)
 	var/image/clone = image('icons/turf/floors/floors.dmi', appear_where, "transparent", ABOVE_WALL_LAYER)
 	clone.vis_contents += clone_what
-	clone.plane = GAME_PLANE
+	clone.vis_contents += GLOB.above_blackness_backdrop
 
-	clone_what.vis_flags |= VIS_INHERIT_LAYER
+	clone.overlays += clone_what.static_lighting_object?.current_underlay
+
+	clone.plane = ABOVE_BLACKNESS_PLANE
 
 	return clone
+
+GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdrop, new)
+
+/atom/movable/above_blackness_backdrop
+	name = "above_blackness_backdrop"
+	anchored = TRUE
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "grey"
+	plane = ABOVE_BLACKNESS_BACKDROP_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/stairs/multiz/down
 	direction = DOWN

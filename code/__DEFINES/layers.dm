@@ -246,6 +246,10 @@
 /// To keep from conflicts with SEE_BLACKNESS internals
 #define BLACKNESS_PLANE 0
 
+/// For things we want to appear *over* blackness
+#define ABOVE_BLACKNESS_PLANE 2
+#define ABOVE_BLACKNESS_BACKDROP_PLANE 3
+
 #define GHOST_PLANE 80
 
 ///--------------- FULLSCREEN RUNECHAT BUBBLES ------------

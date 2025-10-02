@@ -27,13 +27,25 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/disassemble_time = 3;
 
 /obj/item/storage/backpack/marine/satchel/rto/attack_self(mob/user)
-	if(!(user.a_intent & INTENT_HELP))
+	if(!(user.a_intent & INTENT_HELP || user.a_intent &INTENT_HARM))
 		deploy_rto(user)
 		return
 	..()
 
+/obj/item/storage/backpack/marine/satchel/rto/verb/deploy_rto_verb()
+	set name = "Deploy"
+	set category = "Object"
+	set src in usr
+	var/mob/user_mob = usr
+
+
+	deploy_rto(user_mob)
+
 /obj/item/storage/backpack/marine/satchel/rto/proc/deploy_rto(mob/living/user)
 	if(user.action_busy)
+		return
+
+	if (user.get_active_hand() != src)
 		return
 
 	if(internal_transmitter.outbound_call != null || internal_transmitter.inbound_call != null)
@@ -75,18 +87,18 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 			phone.last_caller = new_name
 
 	internal_transmitter.can_be_renamed = TRUE
+	SStgui.close_uis(internal_transmitter)
 	anchored = TRUE
 	user.u_equip(src, turf_to_plant)
 	internal_transmitter.phone_id = new_name
 	internal_transmitter.phone_category = PHONE_DEPLOYED
 	internal_transmitter.enabled = TRUE
-
 	icon_state = "rto_backpack_deployed"
 	item_state = "rto_backpack_deployed"
 
 /obj/item/storage/backpack/marine/satchel/rto/attack_hand(mob/user)
 	if(anchored)
-		if(!(user.a_intent & INTENT_HELP))
+		if(!(user.a_intent & INTENT_HELP || user.a_intent & INTENT_HARM) && !internal_transmitter.inbound_call)
 			disassemble(user)
 		else
 			use_phone(user)
@@ -125,6 +137,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		return
 
 	playsound(loc, use_sound, 30)
+	SStgui.close_uis(internal_transmitter)
 	anchored = FALSE
 	user.visible_message(SPAN_NOTICE("[user] picked up the [src]"), SPAN_NOTICE("You picked up the [src]"))
 	internal_transmitter.can_be_renamed = FALSE

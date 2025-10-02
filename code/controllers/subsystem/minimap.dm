@@ -1220,7 +1220,67 @@ SUBSYSTEM_DEF(minimaps)
 
 		minimap_action.map?.update()
 
+	var/icon/flat_map = getFlatIcon(linked_map, appearance_flags = TRUE)
+	var/icon/flat_drawing = getFlatIcon(drawn_image, appearance_flags = TRUE)
+	if(!flat_map || !flat_drawing)
+		to_chat(usr, SPAN_WARNING("A critical error has occurred!! Contact a coder.")) // tf2heavy: "Oh, this is bad!"
+		return FALSE
+
+	var/list/faction_clients = list()
+	for(var/client/client as anything in GLOB.clients)
+		if(!client || !client.mob)
+			continue
+		var/mob/client_mob = client.mob
+		if(linked_map.flags & get_minimap_flag_for_faction(client_mob.faction))
+			faction_clients += client
+		else if(client_mob.faction == FACTION_NEUTRAL && isobserver(client_mob))
+			faction_clients += client
+		else if(isxeno(client_mob))
+			var/mob/living/carbon/xenomorph/xeno = client_mob
+			if(linked_map.flags & get_minimap_flag_for_faction(xeno.hivenumber))
+				faction_clients += client
+
+	// This may be unnecessary to do this way if the asset url is always the same as the lookup key
+	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
+	var/flat_drawing_key = icon2html(flat_drawing, faction_clients, keyonly = TRUE)
+	if(!flat_tacmap_key || !flat_drawing_key)
+		to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder."))
+		return FALSE
+	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
+	var/flat_drawing_png = SSassets.transport.get_asset_url(flat_drawing_key)
+	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
+	var/datum/drawing_data/draw_data = new(flat_drawing_png, user)
+
+	if(linked_map.flags & MINIMAP_FLAG_USCM)
+		GLOB.uscm_flat_tacmap_data += new_flat
+		GLOB.uscm_drawing_tacmap_data += draw_data
+	else
+		GLOB.xeno_flat_tacmap_data += new_flat
+		GLOB.xeno_drawing_tacmap_data += draw_data
+
 	return TRUE
+
+/datum/flattened_tacmap
+	var/flat_tacmap
+	var/asset_key
+	var/time
+
+/datum/flattened_tacmap/New(flat_tacmap, asset_key)
+	src.flat_tacmap = flat_tacmap
+	src.asset_key = asset_key
+	src.time = time_stamp()
+
+/datum/drawing_data
+	var/draw_data
+	var/ckey
+	var/name
+	var/time
+
+/datum/drawing_data/New(draw_data, mob/user)
+	src.draw_data = draw_data
+	src.ckey = user?.persistent_ckey
+	src.name = user?.real_name
+	src.time = time_stamp()
 
 /atom/movable/screen/minimap_tool/up
 	icon_state = "up"

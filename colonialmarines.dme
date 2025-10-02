@@ -1557,6 +1557,8 @@
 #include "code\modules\admin\tabs\round_tab.dm"
 #include "code\modules\admin\tabs\server_tab.dm"
 #include "code\modules\admin\tabs\thunderdome_tab.dm"
+#include "code\modules\admin\tacmap_panel\tacmap_admin_panel.dm"
+#include "code\modules\admin\tacmap_panel\tacmap_admin_panel_tgui.dm"
 #include "code\modules\admin\topic\topic.dm"
 #include "code\modules\admin\topic\topic_chems.dm"
 #include "code\modules\admin\topic\topic_events.dm"

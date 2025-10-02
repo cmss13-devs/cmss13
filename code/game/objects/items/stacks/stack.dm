@@ -208,6 +208,10 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(!do_after(user, max(recipe.time * time_mult, recipe.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return FALSE
 
+		//the user is no longer with us
+		if(!user)
+			return FALSE
+
 		//check again after some time has passed
 		if(amount < recipe.req_amount * multiplier)
 			return FALSE

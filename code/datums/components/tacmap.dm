@@ -5,9 +5,7 @@
  */
 /datum/component/tacmap
 	/// List of references to the tools we will be using to shape what the map looks like
-	var/list/atom/movable/screen/drawing_tools = list(
-		/atom/movable/screen/minimap_tool/popout
-	)
+	var/list/atom/movable/screen/drawing_tools = list()
 	var/list/atom/movable/screen/minimap_tool/drawing_actions = list()
 	var/minimap_flag = MINIMAP_FLAG_USCM
 	///by default Zlevel 2, groundside is targetted

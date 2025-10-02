@@ -28,9 +28,9 @@ type Data = {
   xeno_names: string[];
   xeno_times: string[];
   uscm_map: string | null;
-  uscm_svg: (string | number | CanvasGradient | CanvasPattern)[];
+  uscm_svg: string | null;
   xeno_map: string | null;
-  xeno_svg: (string | number | CanvasGradient | CanvasPattern)[];
+  xeno_svg: string | null;
   uscm_selection: number;
   xeno_selection: number;
   map_fallback: string;
@@ -87,7 +87,6 @@ export const TacmapAdminPanel = (props) => {
           </Stack.Item>
           <Stack.Item mx={0} basis="content">
             <PageComponent
-              svg={pageIndex === 0 ? uscm_svg : xeno_svg}
               ckeys={pageIndex === 0 ? uscm_ckeys : xeno_ckeys}
               names={pageIndex === 0 ? uscm_names : xeno_names}
               times={pageIndex === 0 ? uscm_times : xeno_times}
@@ -105,8 +104,12 @@ export const TacmapAdminPanel = (props) => {
             >
               <DrawnMap
                 key={last_update_time + pageIndex}
-                svgData={pageIndex === 0 ? uscm_svg : xeno_svg}
                 flatImage={(pageIndex === 0 ? uscm_map : xeno_map) || ''}
+                backupImage={map_fallback}
+              />
+              <DrawnMap
+                key={last_update_time + pageIndex}
+                flatImage={pageIndex === 0 ? uscm_svg : xeno_svg}
                 backupImage={map_fallback}
               />
             </div>

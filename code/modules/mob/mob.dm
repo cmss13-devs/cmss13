@@ -977,7 +977,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			end_of_conga = TRUE //Only mobs can continue the cycle.
 	var/area/new_area = get_area(destination)
 	for(var/atom/movable/AM in conga_line)
-		var/oldLoc
+		var/atom/oldLoc
 		if(AM.loc)
 			oldLoc = AM.loc
 			AM.loc.Exited(AM,destination)

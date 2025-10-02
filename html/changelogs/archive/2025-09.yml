@@ -375,3 +375,11 @@
   - admin: Ctrl clicking a xeno no longer gives a message just because they're aghosted
   sippykot:
   - balance: added IFF to P9 SHARP
+2025-09-30:
+  Killfish:
+  - balance: Eating too much Nutriment will make you sick and slow you down until
+      you barf. Current threshold is 60u.
+  Red-byte3D:
+  - bugfix: RMC Marksman now spawns with the proper ammo
+  - bugfix: Xenomorphs now properly unhaul people they're carrying on death, hopefully
+      no more people going to space afterwards

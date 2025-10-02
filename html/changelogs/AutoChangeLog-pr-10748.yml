@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Xenomorphs now properly unhaul people they're carrying on death, hopefully no more people going to space afterwards"

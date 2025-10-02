@@ -455,12 +455,14 @@
 	for(var/obj/structure/stairs/multiz/up/stair as anything in stairs)
 		stair.staircase = src
 
-		for(var/turf/turf in view(get_turf(stair)))
+		var/turf/under_the_stairs = get_step(stair, stair.dir)
+
+		for(var/turf/turf in view(under_the_stairs))
 			if(turf in from_turfs)
 				continue
 			from_turfs += turf
 
-		for(var/turf/turf in view(SSmapping.get_turf_above(get_step(stair, stair.dir))))
+		for(var/turf/turf in view(SSmapping.get_turf_above(under_the_stairs)))
 			if(turf in to_turfs)
 				continue
 			to_turfs += turf
@@ -468,20 +470,16 @@
 	var/destination_turf_images = list()
 	var/filtered_to_turfs = list()
 
-	/// Always guaranteed to be on the same axis as the others, so
-	var/obj/structure/stairs/multiz/up/test_stairs = stairs[1]
-	for(var/turf/turf as anything in to_turfs)
-		if(dir == NORTH && turf.y < test_stairs.y)
-			continue
-		if(dir == EAST && turf.x >= test_stairs.x)
-			continue
-		if(dir == SOUTH && turf.y <= test_stairs.y)
-			continue
-		if(dir == WEST && turf.x < test_stairs.x)
-			continue
+	for(var/obj/structure/stairs/multiz/up/stair as anything in stairs)
+		for(var/turf/turf as anything in to_turfs)
+			if((dir == NORTH && turf.y <= stair.y) \
+			|| (dir == EAST && turf.x > stair.x) \
+			|| (dir == SOUTH && turf.y < stair.y) \
+			|| (dir == WEST && turf.x <= stair.x))
+				continue
 
-		destination_turf_images["\ref[turf]"] = create_vis_contents_screen(SSmapping.get_turf_below(turf), turf)
-		filtered_to_turfs += turf
+			destination_turf_images["\ref[turf]"] = create_vis_contents_screen(SSmapping.get_turf_below(turf), turf)
+			filtered_to_turfs |= turf
 
 	for(var/turf/turf as anything in from_turfs)
 		for(var/obj/structure/stairs/multiz/up/stair as anything in stairs)
@@ -498,7 +496,7 @@
 //					to_chat(world, "distance_to_target: [distance_to_target], distance_to_stair: [distance_to_stair]")
 					continue
 
-				if(cross_product && abs(cross_product) / (distance_to_stair * distance_to_target) > 0.5)
+				if(cross_product && abs(cross_product) / (distance_to_stair * distance_to_target) > 0.25)
 	//				to_chat(world, "[cross_product]:[distance_to_stair]:[distance_to_target]")
 					continue
 
@@ -553,12 +551,14 @@
 	var/where_from = get_turf(old_loc)
 	if(where_from in from_turfs)
 		mover.hud_used.plane_masters["[BLACKNESS_PLANE]"].filters -= "stairfilter"
+		mover.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 255
 
 		for(var/image in from_turf_to_images["\ref[where_from]"])
 			mover.client?.images -= image
 
 	var/where_to = get_turf(mover)
 	if(where_to in from_turfs)
+		mover.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 125
 		mover.hud_used.plane_masters["[BLACKNESS_PLANE]"].filters = filter(type = "alpha", icon = from_turf_to_mask["\ref[where_to]"], name = "stairfilter")
 
 		for(var/image in from_turf_to_images["\ref[where_to]"])

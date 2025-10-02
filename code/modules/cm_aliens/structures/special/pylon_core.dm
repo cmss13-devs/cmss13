@@ -230,7 +230,7 @@
 	var/last_healed = 0
 	var/last_attempt = 0 // logs time of last attempt to prevent spam. if you want to destroy it, you must commit.
 	var/last_larva_time = 0
-	var/last_larva_queue_time = 0
+	var/last_larva_pool_time = 0
 	var/last_surge_time = 0
 	var/spawn_cooldown = 30 SECONDS
 	var/surge_cooldown = 90 SECONDS
@@ -275,8 +275,8 @@
 		var/spawning_larva = can_spawn_larva() && (last_larva_time + spawn_cooldown) < world.time
 		if(spawning_larva)
 			last_larva_time = world.time
-		if(spawning_larva || (last_larva_queue_time + spawn_cooldown * 4) < world.time)
-			last_larva_queue_time = world.time
+		if(spawning_larva || (last_larva_pool_time + spawn_cooldown * 4) < world.time)
+			last_larva_pool_time = world.time
 			var/list/players_with_xeno_pref = get_alien_candidates(linked_hive)
 			if(spawning_larva)
 				var/i = 0
@@ -291,7 +291,7 @@
 			last_surge_time = world.time
 			linked_hive.stored_larva++
 			linked_hive.hijack_burrowed_left--
-			if(GLOB.xeno_queue_candidate_count < 1 + count_spawned)
+			if(GLOB.larva_pool_candidate_count < 1 + count_spawned)
 				notify_ghosts(header = "Claim Xeno", message = "The Hive has gained another burrowed larva! Click to take it.", source = src, action = NOTIFY_JOIN_XENO, enter_link = "join_xeno=1")
 			if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
 				surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time

@@ -255,6 +255,7 @@
 	if(!path)
 		return 0
 	if(!fexists(path))
+		load_preferences_sanitize() // Ensure a new player gets same defaults as returning players
 		return 0
 	var/savefile/S = new /savefile(path)
 	if(!S)
@@ -379,6 +380,7 @@
 
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
+	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 
 	S["lastchangelog"] >> lastchangelog
 
@@ -387,7 +389,47 @@
 
 	S["show_cooldown_messages"] >> show_cooldown_messages
 
+	S["chem_presets"] >> chem_presets
+
 	//Sanitize
+	load_preferences_sanitize()
+
+	check_keybindings()
+	S["key_bindings"] << key_bindings
+
+	if(remembered_key_bindings)
+		for(var/i in GLOB.keybindings_by_name)
+			if(!(i in remembered_key_bindings))
+				var/datum/keybinding/instance = GLOB.keybindings_by_name[i]
+				// Classic
+				if(LAZYLEN(instance.classic_keys))
+					for(var/bound_key in instance.classic_keys)
+						LAZYADD(key_bindings[bound_key], list(instance.name))
+
+				// Hotkey
+				if(LAZYLEN(instance.hotkey_keys))
+					for(var/bound_key in instance.hotkey_keys)
+						LAZYADD(key_bindings[bound_key], list(instance.name))
+
+	S["remembered_key_bindings"] << GLOB.keybindings_by_name
+
+	if(toggles_chat & SHOW_TYPING)
+		owner.typing_indicators = FALSE
+	else
+		owner.typing_indicators = TRUE
+
+	// BANDAMARINES EDIT START
+	S["xeno_customization_visibility"] >> xeno_customization_visibility
+	xeno_customization_visibility = sanitize_inlist(xeno_customization_visibility, GLOB.xeno_customization_visibility_options, XENO_CUSTOMIZATION_SHOW_LORE_FRIENDLY)
+	S["quick_cast"] >> quick_cast
+	quick_cast = sanitize_integer(quick_cast, FALSE, TRUE, FALSE)
+	S["screentips"] >> screentips
+	screentips = sanitize_integer(screentips, FALSE, TRUE, TRUE)
+	// BANDAMARINES EDIT END
+
+	return 1
+
+/datum/preferences/proc/load_preferences_sanitize()
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
 	UI_style = sanitize_inlist(UI_style, list("white", "dark", "midnight", "orange", "old"), initial(UI_style))
@@ -470,7 +512,6 @@
 	fax_name_clf = fax_name_clf ? sanitize_text(fax_name_clf, initial(fax_name_clf)) : generate_name(FACTION_CLF)
 
 	key_bindings = sanitize_keybindings(key_bindings)
-	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
@@ -481,46 +522,13 @@
 
 	show_cooldown_messages = sanitize_integer(show_cooldown_messages, FALSE, TRUE, FALSE)
 
-	check_keybindings()
-	S["key_bindings"] << key_bindings
-
-	if(remembered_key_bindings)
-		for(var/i in GLOB.keybindings_by_name)
-			if(!(i in remembered_key_bindings))
-				var/datum/keybinding/instance = GLOB.keybindings_by_name[i]
-				// Classic
-				if(LAZYLEN(instance.classic_keys))
-					for(var/bound_key in instance.classic_keys)
-						LAZYADD(key_bindings[bound_key], list(instance.name))
-
-				// Hotkey
-				if(LAZYLEN(instance.hotkey_keys))
-					for(var/bound_key in instance.hotkey_keys)
-						LAZYADD(key_bindings[bound_key], list(instance.name))
-
-	S["remembered_key_bindings"] << GLOB.keybindings_by_name
-
-	if(toggles_chat & SHOW_TYPING)
-		owner.typing_indicators = FALSE
-	else
-		owner.typing_indicators = TRUE
+	chem_presets = sanitize_islist(chem_presets, list())
 
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, HUD_MENTOR_SIGHT = FALSE)
 
 	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6, // Game, music, admin midis, lobby music
 		1, 0.5, 0.5)) // Local, Radio,  Announces - SS220 TTS EDIT from "modular/text_to_speech/code/sound.dm"
-
-	// BANDAMARINES EDIT START
-	S["xeno_customization_visibility"] >> xeno_customization_visibility
-	xeno_customization_visibility = sanitize_inlist(xeno_customization_visibility, GLOB.xeno_customization_visibility_options, XENO_CUSTOMIZATION_SHOW_LORE_FRIENDLY)
-	S["quick_cast"] >> quick_cast
-	quick_cast = sanitize_integer(quick_cast, FALSE, TRUE, FALSE)
-	S["screentips"] >> screentips
-	screentips = sanitize_integer(screentips, FALSE, TRUE, TRUE)
-	// BANDAMARINES EDIT END
-
-	return 1
 
 /datum/preferences/proc/save_preferences()
 	if(!path)
@@ -646,6 +654,8 @@
 
 	S["show_cooldown_messages"] << show_cooldown_messages
 
+	S["chem_presets"] << chem_presets
+
 	// BANDAMARINES EDIT START
 	S["xeno_customization_visibility"] << xeno_customization_visibility
 	S["quick_cast"] << quick_cast
@@ -724,6 +734,9 @@
 	S["flavor_texts_hands"] >> flavor_texts["hands"]
 	S["flavor_texts_legs"] >> flavor_texts["legs"]
 	S["flavor_texts_feet"] >> flavor_texts["feet"]
+	S["flavor_texts_helmet"] >> flavor_texts["helmet"]
+	S["flavor_texts_armor"] >> flavor_texts["armor"]
+
 
 	//Miscellaneous
 	S["med_record"] >> med_record
@@ -893,6 +906,8 @@
 	S["flavor_texts_hands"] << flavor_texts["hands"]
 	S["flavor_texts_legs"] << flavor_texts["legs"]
 	S["flavor_texts_feet"] << flavor_texts["feet"]
+	S["flavor_texts_helmet"] << flavor_texts["helmet"]
+	S["flavor_texts_armor"] << flavor_texts["armor"]
 
 	//Miscellaneous
 	S["med_record"] << med_record

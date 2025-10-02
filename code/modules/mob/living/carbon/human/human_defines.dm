@@ -2,6 +2,7 @@
 	light_system = MOVABLE_LIGHT
 	rotate_on_lying = TRUE
 	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
+	dirlock_slowdown = FALSE
 	//Hair color and style
 	var/r_hair = 0
 	var/g_hair = 0

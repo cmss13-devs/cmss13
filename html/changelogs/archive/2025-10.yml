@@ -1,0 +1,13 @@
+2025-10-02:
+  FishyFlaps2024:
+  - qol: Added purple-crt style sheet and imported it with other crt color style sheets
+  - qol: Added purple as OW console color option
+  Red-byte3D:
+  - bugfix: Specialists now properly get updated on the manifest
+  - balance: Pred hunting traps now require TRAIT_YAUTJA_TECH
+  Teragen:
+  - rscadd: Marine Command Helmet variant with Basic Med Optic
+  - rscadd: Gave Chief Engineer actual armored insulated gloves in their deploy kit.
+  - qol: Removed the two extra boots the Chief Engineer got
+  - qol: Gave the basic Command variant to RO and CE
+  - balance: Gave Chief Engineer a level in vehicles

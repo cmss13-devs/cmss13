@@ -145,8 +145,8 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 										)
 										*/
 
-	var/random_name = pick(random_name(FEMALE), random_name(MALE))
-	var/temp_story = "<b>Ваша история на данный момент</b>: " + replacetext(pick(survivor_story), "{name}", "[random_name]")	// SS220 EDIT TRANSLATE
+	var/random_name = random_name(pick(FEMALE, MALE))
+	var/temp_story = "<b>Ваша история на данный момент</b>: " + replacetext(pick(survivor_story), "{name}", "[random_name]")
 	to_chat(H, temp_story)
 	H.mind.memory += temp_story
 

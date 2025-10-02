@@ -1604,14 +1604,14 @@
 /turf/open/floor/almayer/orangefull,
 /area/adminlevel/bunker01/engineering)
 "eB" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/almayer/orangefull,
 /area/adminlevel/bunker01/engineering)
 "eC" = (
 /obj/structure/machinery/light/small{
 	pixel_y = 0
 	},
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/almayer/orangefull,
 /area/adminlevel/bunker01/engineering)
 "eD" = (

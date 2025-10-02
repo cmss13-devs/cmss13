@@ -66,11 +66,11 @@
 
 	switch(message_mode)
 		if("headset")
-			message = copytext(message, 2)
+			message = copytext_char(message, 2) // SS220 EDIT - RU fix
 		if("broadcast")
 			message_mode = "headset"
 		else
-			message = copytext(message, 3)
+			message = copytext_char(message, 3) // SS220 EDIT - RU fix
 
 	ai_headset.talk_into(src, message, message_mode, "states", languages[1])
 	return TRUE
@@ -78,11 +78,11 @@
 /mob/living/silicon/decoy/parse_message_mode(message)
 	. = "broadcast"
 
-	if(length(message) >= 1 && copytext(message,1,2) == ";")
+	if(length(message) >= 1 && copytext_char(message,1,2) == ";") // SS220 EDIT - RU fix
 		return "headset"
 
 	if(length(message) >= 2)
-		var/channel_prefix = lowertext(copytext(message, 1, 3))
+		var/channel_prefix = lowertext(copytext_char(message, 1, 3)) // SS220 EDIT - RU fix
 		channel_prefix = GLOB.department_radio_keys[channel_prefix]
 		if(channel_prefix)
 			return channel_prefix

@@ -49,7 +49,7 @@ CLIENT_VERB(keyDown, _key as text)
 	if(!movement_locked)
 		var/movement = movement_keys[_key]
 		if(!(next_move_dir_sub & movement))
-			next_move_dir_add |= movement
+			next_move_dir_add = movement // BANDAMARINES EDIT
 
 	// Client-level keybindings are ones anyone should be able to do at any time
 	// Things like taking screenshots, hitting tab, and adminhelps.

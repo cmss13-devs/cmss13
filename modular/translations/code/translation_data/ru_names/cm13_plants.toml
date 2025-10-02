@@ -1,0 +1,20 @@
+# Uncategorized plants
+# plants, mushrooms, trees, grass, flowers.
+
+["glowshroom"]
+nominative = "светящийся гриб"
+genitive = "светящегося гриба"
+dative = "светящемуся грибу"
+accusative = "светящийся гриб"
+instrumental = "светящимся грибом"
+prepositional = "светящемся грибе"
+gender = "male"
+
+["synthetic potted plant"]
+nominative = "искусственное растение в горшке"
+genitive = "искусственного растения в горшке"
+dative = "искусственному растению в горшке"
+accusative = "искусственное растение в горшке"
+instrumental = "искусственным растением в горшке"
+prepositional = "искусственном растении в горшке"
+gender = "neuter"

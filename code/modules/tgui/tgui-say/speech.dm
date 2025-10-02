@@ -38,6 +38,11 @@
 		if(COMMS_CHANNEL)
 			client.mob.say_verb(";" + entry)
 			return TRUE
+		// SS220 START TGUI CHAT EADDICTION
+		if(WHISPER_CHANNEL)
+			client.mob.whisper(entry)
+			return TRUE
+		// SS220 END TGUI CHAT EADDICTION
 		if(ME_CHANNEL)
 			client.mob.me_verb(entry)
 			return TRUE

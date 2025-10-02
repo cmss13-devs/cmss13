@@ -1,0 +1,19 @@
+## Time required for the player to be dead for being eligible to respawning. Deciseconds
+# RESPAWN_TIME 18000
+
+## Panic Bunker
+# panic_bunker_enabled
+# panic_bunker_min_alive_playtime_hours 5
+
+## Is respawn allowed on the server
+# RESPAWN
+
+
+############### CENTRAL CONFIGURATION ##################
+CENTRAL_API_URL https://my_api_url.com/v1
+CENTRAL_API_TOKEN 12345678
+SERVER_TYPE default
+#FORCE_DISCORD_VERIFICATION
+
+## Enables diagonal movement
+# DIAGONAL_MOVE

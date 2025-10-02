@@ -3,8 +3,8 @@
 	icon_state = "budget_req"
 	desc = "Distributes resources to requisitions for spending."
 
-	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
-	announce_message = "Additional supply budget has been authorised for this operation."
+	announce_name = "РАЗРЕШЕНИЕ НА ИСПОЛЬЗОВАНИЕ СПЕЦИАЛЬНЫХ АКТИВОВ АЛМАЕРА"
+	announce_message = "На эту операцию был выделен дополнительный бюджет на снабжение."
 
 	required_points = 7
 	increase_per_purchase = 1
@@ -31,7 +31,7 @@
 	icon_state = "budget_ds"
 	desc = "Distributes resources to the dropship fabricator."
 
-	announce_message = "Additional dropship part fabricator points have been authorised for this operation."
+	announce_message = "Для этой операции были авторизованы дополнительные очки изготовления деталей дропшипа."
 
 	required_points = 6
 	increase_per_purchase = 1

@@ -1,0 +1,671 @@
+# Uncategorized decor
+# Any stuff that serves mostly to add atmosphere. Even if it can be interacted
+
+["hypersleep chamber"]
+nominative = "камера гиперсна"
+genitive = "камеры гиперсна"
+dative = "камере гиперсна"
+accusative = "камеру гиперсна"
+instrumental = "камерой гиперсна"
+prepositional = "камере гиперсна"
+gender = "female"
+
+["light fixture"]
+nominative = "лампа"
+genitive = "лампы"
+dative = "лампе"
+accusative = "лампу"
+instrumental = "лампой"
+prepositional = "лампе"
+gender = "female"
+
+["USCM Tray"]
+nominative = "поднос ККМП"
+genitive = "подноса ККМП"
+dative = "подносу ККМП"
+accusative = "поднос ККМП"
+instrumental = "подносом ККМП"
+prepositional = "подносе ККМП"
+gender = "male"
+
+["Air supply pipe"]
+nominative = "вентиляционная труба"
+genitive = "вентиляционной трубы"
+dative = "вентиляционной трубе"
+accusative = "вентиляционную трубу"
+instrumental = "вентиляционной трубой"
+prepositional = "вентиляционной трубе"
+gender = "female"
+
+["Air supply pipe manifold"]
+nominative = "вентиляционная труба"
+genitive = "вентиляционной трубы"
+dative = "вентиляционной трубе"
+accusative = "вентиляционную трубу"
+instrumental = "вентиляционной трубой"
+prepositional = "вентиляционной трубе"
+gender = "female"
+
+["disposal pipe"]
+nominative = "труба утилизации"
+genitive = "трубы утилизации"
+dative = "трубе утилизации"
+accusative = "трубу утилизации"
+instrumental = "трубой утилизации"
+prepositional = "трубе утилизации"
+gender = "female"
+
+["pipe"]
+nominative = "труба"
+genitive = "трубы"
+dative = "трубе"
+accusative = "трубу"
+instrumental = "трубой"
+prepositional = "трубе"
+gender = "female"
+
+["overhead pipe segment"]
+nominative = "участок подвесной трубы"
+genitive = "участка подвесной трубы"
+dative = "участку подвесной трубы"
+accusative = "участок подвесной трубы"
+instrumental = "участком подвесной трубы"
+prepositional = "участке подвесной трубы"
+gender = "male"
+
+["catwalk"]
+nominative = "решётка"
+genitive = "решётки"
+dative = "решётке"
+accusative = "решётку"
+instrumental = "решёткой"
+prepositional = "решётке"
+gender = "female"
+
+["catwalk mesh"]
+nominative = "решётка"
+genitive = "решётки"
+dative = "решётке"
+accusative = "решётку"
+instrumental = "решёткой"
+prepositional = "решётке"
+gender = "female"
+
+["Air Vent"]
+nominative = "вентиляция"
+genitive = "вентиляции"
+dative = "вентиляции"
+accusative = "вентиляцию"
+instrumental = "вентиляцией"
+prepositional = "вентиляции"
+gender = "female"
+
+["toilet"]
+nominative = "туалет"
+genitive = "туалета"
+dative = "туалету"
+accusative = "туалет"
+instrumental = "туалетом"
+prepositional = "туалете"
+gender = "male"
+
+["mirror"]
+nominative = "зеркало"
+genitive = "зеркала"
+dative = "зеркалу"
+accusative = "зеркало"
+instrumental = "зеркалом"
+prepositional = "зеркале"
+gender = "neuter"
+
+["broken mirror"]
+nominative = "разбитое зеркало"
+genitive = "разбитого зеркала"
+dative = "разбитому зеркалу"
+accusative = "разбитое зеркало"
+instrumental = "разбитым зеркалом"
+prepositional = "разбитом зеркале"
+gender = "neuter"
+
+["reinforced window"]
+nominative = "усиленное стекло"
+genitive = "усиленного стекла"
+dative = "усиленному стеклу"
+accusative = "усиленное стекло"
+instrumental = "усиленным стеклом"
+prepositional = "усиленном стекле"
+gender = "neuter"
+
+["Hot Coffee Machine"]
+nominative = "кофе-машина"
+genitive = "кофе-машины"
+dative = "кофе-машине"
+accusative = "кофе-машину"
+instrumental = "кофе-машиной"
+prepositional = "кофе-машине"
+gender = "female"
+
+["coffee machine"]
+nominative = "кофе-машина"
+genitive = "кофе-машины"
+dative = "кофе-машине"
+accusative = "кофе-машину"
+instrumental = "кофе-машиной"
+prepositional = "кофе-машине"
+gender = "female"
+
+["disposal unit"]
+nominative = "урна"
+genitive = "урны"
+dative = "урне"
+accusative = "урну"
+instrumental = "урной"
+prepositional = "урне"
+gender = "female"
+
+["water cooler"]
+nominative = "кулер для воды"
+genitive = "кулера для воды"
+dative = "кулеру для воды"
+accusative = "кулер для воды"
+instrumental = "кулером для воды"
+prepositional = "кулере для воды"
+gender = "male"
+
+["hull"]
+nominative = "корпус"
+genitive = "корпуса"
+dative = "корпусу"
+accusative = "корпус"
+instrumental = "корпусом"
+prepositional = "корпусе"
+gender = "male"
+
+["outer hull"]
+nominative = "внешний корпус"
+genitive = "внешнего корпуса"
+dative = "внешнему корпусу"
+accusative = "внешний корпус"
+instrumental = "внешним корпусом"
+prepositional = "внешнем корпусе"
+gender = "male"
+
+["Air Scrubber"]
+nominative = "очиститель воздуха"
+genitive = "очистителя воздуха"
+dative = "очистителю воздуха"
+accusative = "очиститель воздуха"
+instrumental = "очистителем воздуха"
+prepositional = "очистителе воздуха"
+gender = "male"
+
+["status display"]
+nominative = "информационный дисплей"
+genitive = "информационного дисплея"
+dative = "информационному дисплею"
+accusative = "информационный дисплей"
+instrumental = "информационным дисплеем"
+prepositional = "информационном дисплее"
+gender = "male"
+
+["table"]
+nominative = "стол"
+genitive = "стола"
+dative = "столу"
+accusative = "стол"
+instrumental = "столом"
+prepositional = "столе"
+gender = "male"
+
+["red barrel"]
+nominative = "красная бочка"
+genitive = "красной бочки"
+dative = "красной бочке"
+accusative = "красную бочку"
+instrumental = "красной бочкой"
+prepositional = "красной бочке"
+gender = "female"
+
+["green barrel"]
+nominative = "зелёная бочка"
+genitive = "зелёной бочки"
+dative = "зелёной бочке"
+accusative = "зелёную бочку"
+instrumental = "зелёной бочкой"
+prepositional = "зелёной бочке"
+gender = "female"
+
+["white barrel"]
+nominative = "белая бочка"
+genitive = "белой бочки"
+dative = "белой бочке"
+accusative = "белую бочку"
+instrumental = "белой бочкой"
+prepositional = "белой бочке"
+gender = "female"
+
+["yellow barrel"]
+nominative = "жёлтая бочка"
+genitive = "жёлтой бочки"
+dative = "жёлтой бочке"
+accusative = "жёлтую бочку"
+instrumental = "жёлтой бочкой"
+prepositional = "жёлтой бочке"
+gender = "female"
+
+["blue barrel"]
+nominative = "синяя бочка"
+genitive = "синей бочки"
+dative = "синей бочке"
+accusative = "синюю бочку"
+instrumental = "синей бочкой"
+prepositional = "синей бочке"
+gender = "female"
+
+["small cases"]
+nominative = "маленькие ящики"
+genitive = "маленьких ящиков"
+dative = "маленьким ящикам"
+accusative = "маленькие ящики"
+instrumental = "маленькими ящиками"
+prepositional = "маленьких ящиках"
+gender = "male"
+
+["cases"]
+nominative = "ящики"
+genitive = "ящиков"
+dative = "ящикам"
+accusative = "ящики"
+instrumental = "ящиками"
+prepositional = "ящиках"
+gender = "plural"
+
+["Maintenance Hatch"]
+nominative = "сервисный шлюз"
+genitive = "сервисного шлюза"
+dative = "сервисному шлюзу"
+accusative = "сервисный шлюз"
+instrumental = "сервисным шлюзом"
+prepositional = "сервисном шлюзе"
+gender = "male"
+
+["Exterior Airlock"]
+nominative = "внешний шлюз"
+genitive = "внешнего шлюза"
+dative = "внешнему шлюзу"
+accusative = "внешний шлюз"
+instrumental = "внешним шлюзом"
+prepositional = "внешнем шлюзе"
+gender = "male"
+
+["Evacuation Airlock SL-2"]
+nominative = "эвакуационный шлюз SL-2"
+genitive = "эвакуационного шлюза SL-2"
+dative = "эвакуационному шлюзу SL-2"
+accusative = "эвакуационный шлюз SL-2"
+instrumental = "эвакуационным шлюзом SL-2"
+prepositional = "эвакуационном шлюзе SL-2"
+gender = "male"
+
+["Evacuation Airlock PL-3"]
+nominative = "эвакуационный шлюз PL-3"
+genitive = "эвакуационного шлюза PL-3"
+dative = "эвакуационному шлюзу PL-3"
+accusative = "эвакуационный шлюз PL-3"
+instrumental = "эвакуационным шлюзом PL-3"
+prepositional = "эвакуационном шлюзе PL-3"
+gender = "male"
+
+["janitorial cart"]
+nominative = "тележка уборщика"
+genitive = "тележки уборщика"
+dative = "тележке уборщика"
+accusative = "тележку уборщика"
+instrumental = "тележкой уборщика"
+prepositional = "тележке уборщика"
+gender = "female"
+
+["emergency closet"]
+nominative = "аварийный шкафчик"
+genitive = "аварийного шкафчика"
+dative = "аварийному шкафчику"
+accusative = "аварийный шкафчик"
+instrumental = "аварийным шкафчиком"
+prepositional = "аварийном шкафчике"
+gender = "male"
+
+["fire-safety closet"]
+nominative = "противопожарный шкафчик"
+genitive = "противопожарного шкафчика"
+dative = "противопожарному шкафчику"
+accusative = "противопожарный шкафчик"
+instrumental = "противопожарным шкафчиком"
+prepositional = "противопожарном шкафчике"
+gender = "male"
+
+["anesthetic closet"]
+nominative = "шкафчик анестезиолога"
+genitive = "шкафчика анестезиолога"
+dative = "шкафчику анестезиолога"
+accusative = "шкафчик анестезиолога"
+instrumental = "шкафчиком анестезиолога"
+prepositional = "шкафчике анестезиолога"
+gender = "male"
+
+["documents cabinet"]
+nominative = "шкафчик для документов"
+genitive = "шкафчика для документов"
+dative = "шкафчику для документов"
+accusative = "шкафчик для документов"
+instrumental = "шкафчиком для документов"
+prepositional = "шкафчике для документов"
+gender = "male"
+
+["Cargo Technician's Locker"]
+nominative = "шкафчик грузового техника"
+genitive = "шкафчика грузового техника"
+dative = "шкафчику грузового техника"
+accusative = "шкафчик грузового техника"
+instrumental = "шкафчиком грузового техника"
+prepositional = "шкафчике грузового техника"
+gender = "male"
+
+["extinguisher cabinet"]
+nominative = "шкафчик для огнетушителя"
+genitive = "шкафчика для огнетушителя"
+dative = "шкафчику для огнетушителя"
+accusative = "шкафчик для огнетушителя"
+instrumental = "шкафчиком для огнетушителя"
+prepositional = "шкафчике для огнетушителя"
+gender = "male"
+
+["medical doctor's locker"]
+nominative = "шкафчик врача"
+genitive = "шкафчика врача"
+dative = "шкафчику врача"
+accusative = "шкафчик врача"
+instrumental = "шкафчиком врача"
+prepositional = "шкафчике врача"
+gender = "male"
+
+["Field Doctor's locker"]
+nominative = "шкафчик полевого врача"
+genitive = "шкафчика полевого врача"
+dative = "шкафчику полевого врача"
+accusative = "шкафчик полевого врача"
+instrumental = "шкафчиком полевого врача"
+prepositional = "шкафчике полевого врача"
+gender = "male"
+
+["Operating Table"]
+nominative = "операционный стол"
+genitive = "операционного стола"
+dative = "операционному столу"
+accusative = "операционный стол"
+instrumental = "операционным столом"
+prepositional = "операционном столе"
+gender = "male"
+
+["IV drip"]
+nominative = "капельница"
+genitive = "капельницы"
+dative = "капельнице"
+accusative = "капельницу"
+instrumental = "капельницей"
+prepositional = "капельнице"
+gender = "female"
+
+["reagent tank"]
+nominative = "бак для реагентов"
+genitive = "бака для реагентов"
+dative = "баку для реагентов"
+accusative = "бак для реагентов"
+instrumental = "баком для реагентов"
+prepositional = "баке для реагентов"
+gender = "male"
+
+["fuel tank crate (x1)"] # Unique Vendor Name
+nominative = "ящик для бака с топливом"
+
+["fueltank"]
+nominative = "бак для топлива"
+genitive = "бака для топлива"
+dative = "баку для топлива"
+accusative = "бак для топлива"
+instrumental = "баком для топлива"
+prepositional = "баке для топлива"
+gender = "male"
+
+["trash cart"]
+nominative = "тележка для мусора"
+genitive = "тележки для мусора"
+dative = "тележке для мусора"
+accusative = "тележку для мусора"
+instrumental = "тележкой для мусора"
+prepositional = "тележке для мусора"
+gender = "female"
+
+["punching bag"]
+nominative = "манекен"
+genitive = "манекена"
+dative = "манекену"
+accusative = "манекен"
+instrumental = "манекеном"
+prepositional = "манекене"
+gender = "male"
+
+["wheelchair"]
+nominative = "инвалидная коляска"
+genitive = "инвалидной коляски"
+dative = "инвалидной коляске"
+accusative = "инвалидную коляску"
+instrumental = "инвалидной коляской"
+prepositional = "инвалидной коляске"
+gender = "female"
+
+["Privacy Shutters"]
+nominative = "защитные экраны"
+genitive = "защитных экранов"
+dative = "защитным экранам"
+accusative = "защитные экраны"
+instrumental = "защитными экранами"
+prepositional = "защитных экранах"
+gender = "plural"
+
+["dilapidated storage shutters"]
+nominative = "старые складские экраны"
+genitive = "старых складских экранов"
+dative = "старым складским экранам"
+accusative = "старые складские экраны"
+instrumental = "старыми складскими экранами"
+prepositional = "старых складских экранах"
+gender = "male"
+
+["desk bell"]
+nominative = "настольный звонок"
+genitive = "настольного звонка"
+dative = "настольному звонку"
+accusative = "настольный звонок"
+instrumental = "настольным звонком"
+prepositional = "настольном звонке"
+gender = "male"
+
+["paper bin"]
+nominative = "органайзер"
+genitive = "органайзера"
+dative = "органайзеру"
+accusative = "органайзер"
+instrumental = "органайзером"
+prepositional = "органайзере"
+gender = "male"
+
+["ladder"]
+nominative = "лестница"
+genitive = "лестницы"
+dative = "лестнице"
+accusative = "лестницу"
+instrumental = "лестницей"
+prepositional = "лестнице"
+gender = "female"
+
+["Glass door"]
+nominative = "стеклянная заслонка"
+genitive = "стеклянной заслонки"
+dative = "стеклянной заслонке"
+accusative = "стеклянную заслонку"
+instrumental = "стеклянной заслонкой"
+prepositional = "стеклянной заслонке"
+gender = "female"
+
+["USCM Poster"]
+nominative = "плакат ККМП"
+genitive = "плаката ККМП"
+dative = "плакату ККМП"
+accusative = "плакат ККМП"
+instrumental = "плакатом ККМП"
+prepositional = "плакате ККМП"
+gender = "male"
+
+["Dirty Magazine"]
+nominative = "липкий журнал"
+genitive = "липкого журнала"
+dative = "липкому журналу"
+accusative = "липкий журнал"
+instrumental = "липким журналом"
+prepositional = "липком журнале"
+gender = "male"
+
+["Personal Computer"]
+nominative = "персональный компьютер"
+genitive = "персонального компьютера"
+dative = "персональному компьютеру"
+accusative = "персональный компьютер"
+instrumental = "персональным компьютером"
+prepositional = "персональном компьютере"
+gender = "male"
+
+["USCM Military Fax Machine"]
+nominative = "военный факс ККМП"
+genitive = "военного факса ККМП"
+dative = "военному факсу ККМП"
+accusative = "военный факс ККМП"
+instrumental = "военным факсом ККМП"
+prepositional = "военном факсе ККМП"
+gender = "male"
+
+["fake wooden floor"]
+nominative = "искусственный деревянный пол"
+genitive = "искусственного деревянного пола"
+dative = "искусственному деревянному полу"
+accusative = "искусственный деревянный пол"
+instrumental = "искусственным деревянным полом"
+prepositional = "искусственном деревянном поле"
+gender = "male"
+
+["chest drawer"]
+nominative = "комод"
+genitive = "комода"
+dative = "комоду"
+accusative = "комод"
+instrumental = "комодом"
+prepositional = "комоде"
+gender = "male"
+
+["metal folding chair"]
+nominative = "складной стул"
+genitive = "складного стула"
+dative = "складному стулу"
+accusative = "складной стул"
+instrumental = "складным стулом"
+prepositional = "складном стуле"
+gender = "male"
+
+["filing cabinet"]
+nominative = "картотека"
+genitive = "картотеки"
+dative = "картотеке"
+accusative = "картотеку"
+instrumental = "картотекой"
+prepositional = "картотеке"
+gender = "male"
+
+["wall calendar"]
+nominative = "календарь"
+genitive = "календаря"
+dative = "календарю"
+accusative = "календарь"
+instrumental = "календарём"
+prepositional = "календаре"
+gender = "male"
+
+["General Listening Channel"]
+nominative = "общий канал связи"
+genitive = "общего канала связи"
+dative = "общему каналу связи"
+accusative = "общий канал связи"
+instrumental = "общим каналом связи"
+prepositional = "общем канале связи"
+gender = "male"
+
+["red curtain"]
+nominative = "красный занавес"
+genitive = "красного занавеса"
+dative = "красному занавесу"
+accusative = "красный занавес"
+instrumental = "красным занавесом"
+prepositional = "красном занавесе"
+gender = "male"
+
+["medilink supply port"]
+nominative = "канал снабжения медицинского оборудования"
+genitive = "канала снабжения медицинского оборудования"
+dative = "каналу снабжения медицинского оборудования"
+accusative = "канал снабжения медицинского оборудования"
+instrumental = "каналом снабжения медицинского оборудования"
+prepositional = "канале снабжения медицинского оборудования"
+gender = "male"
+
+["ship-grade camera"]
+nominative = "поворотная камера"
+genitive = "поворотной камеры"
+dative = "поворотной камере"
+accusative = "поворотную камеру"
+instrumental = "поворотной камерой"
+prepositional = "поворотной камере"
+gender = "female"
+
+["autodoc emergency medical system"]
+nominative = "система экстренной медицинской помощи «АвтоДок»"
+genitive = "системы экстренной медицинской помощи «АвтоДок»"
+dative = "системе экстренной медицинской помощи «АвтоДок»"
+accusative = "систему экстренной медицинской помощи «АвтоДок»"
+instrumental = "системой экстренной медицинской помощи «АвтоДок»"
+prepositional = "системе экстренной медицинской помощи «АвтоДок»"
+gender = "female"
+
+["autodoc medical system control console"]
+nominative = "консоль системы экстренной медицинской помощи «АвтоДок»"
+genitive = "консоли системы экстренной медицинской помощи «АвтоДок»"
+dative = "консоли системы экстренной медицинской помощи «АвтоДок»"
+accusative = "консоль системы экстренной медицинской помощи «АвтоДок»"
+instrumental = "консолью системы экстренной медицинской помощи «АвтоДок»"
+prepositional = "консоли системы экстренной медицинской помощи «АвтоДок»"
+gender = "female"
+
+["body scanner"]
+nominative = "медицинский анализатор"
+genitive = "медицинского анализатора"
+dative = "медицинскому анализатору"
+accusative = "медицинский анализатор"
+instrumental = "медицинским анализатором"
+prepositional = "медицинском анализаторе"
+gender = "male"
+
+["body scanner console"]
+nominative = "консоль медицинского анализатора"
+genitive = "консоли медицинского анализатора"
+dative = "консоли медицинского анализатора"
+accusative = "консоль медицинского анализатора"
+instrumental = "консолью медицинского анализатора"
+prepositional = "консоли медицинского анализатора"
+gender = "female"

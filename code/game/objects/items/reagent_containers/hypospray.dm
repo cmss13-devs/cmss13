@@ -217,7 +217,7 @@
 	playsound(loc, injectSFX, injectVOL, 1)
 	SEND_SIGNAL(M, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)
 
-	reagents.reaction(M, INGEST)
+	reagents.reaction(M, CONTROLLED_INGESTION)
 	if(M.reagents)
 		var/list/injected = list()
 		for(var/datum/reagent/R in reagents.reagent_list)

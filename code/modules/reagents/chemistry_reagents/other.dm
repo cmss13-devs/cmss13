@@ -130,7 +130,7 @@
 		return
 	var/datum/reagent/vaccine/self = src
 	src = null
-	if(self.data_properties && method == INGEST)
+	if(self.data_properties && method == INGESTION)
 		for(var/datum/disease/D in M.viruses)
 			if(istype(D, /datum/disease/advance))
 				var/datum/disease/advance/A = D
@@ -639,7 +639,7 @@
 
 /datum/reagent/xenomicrobes/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	src = null
-	if((prob(10) && method==TOUCH) || method==INGEST)
+	if((prob(10) && method==TOUCH) || method==INGESTION)
 		M.contract_disease(new /datum/disease/xeno_transformation(0),1)
 
 /datum/reagent/fluorosurfactant//foam precursor

@@ -166,7 +166,7 @@
 		if(RG.flags & REAGENT_NOT_INGESTIBLE)
 			V.del_reagent(RG.id)
 
-	addtimer(CALLBACK(V, TYPE_PROC_REF(/datum/reagents/vessel, inject_vessel), target, INGEST, TRUE, 0.5 SECONDS), 9.5 SECONDS)
+	addtimer(CALLBACK(V, TYPE_PROC_REF(/datum/reagents/vessel, inject_vessel), target, INGESTION, TRUE, 0.5 SECONDS), 9.5 SECONDS)
 	return amount
 
 ///You can search for specific reagents using the specific reagents arg.
@@ -290,13 +290,6 @@
 					total_matching_catalysts++
 
 				if(isliving(my_atom) && !reaction.mob_react) //Makes it so some chemical reactions don't occur in mobs
-					continue
-				var/forbidden = FALSE
-				for(var/container_type in reaction.forbidden_container) //ditto but for specific containers
-					if(ispath(my_atom.type, container_type))
-						forbidden = TRUE
-						break
-				if(forbidden)
 					continue
 
 				if(!reaction.required_container)
@@ -467,30 +460,28 @@
 // Returns FALSE if the reagent is getting deleted
 /datum/reagents/proc/update_total()
 	total_volume = 0
-	for(var/datum/reagent/R in reagent_list)
-		if(R.volume < 0.1)
-			R.deleted = TRUE
-			del_reagent(R.id)
+	for(var/datum/reagent/reagent in reagent_list)
+		if(reagent.volume < 0.1)
+			reagent.deleted = TRUE
+			del_reagent(reagent.id)
 		else
-			total_volume += R.volume
+			total_volume += reagent.volume
 
 	return FALSE
 
 /datum/reagents/proc/clear_reagents()
-	for(var/datum/reagent/R in reagent_list)
-		del_reagent(R.id)
+	for(var/datum/reagent/reagent in reagent_list)
+		del_reagent(reagent.id)
 	return FALSE
 
 /datum/reagents/proc/reaction(atom/A, method=TOUCH, volume_modifier=0, permeable_in_mobs=TRUE)
-	if(method != TOUCH && method != INGEST)
-		return
-	for(var/datum/reagent/R in reagent_list)
+	for(var/datum/reagent/reagent in reagent_list)
 		if(ismob(A))
-			R.reaction_mob(A, method, R.volume + volume_modifier, permeable_in_mobs)
+			reagent.reaction_mob(A, method, reagent.volume + volume_modifier, permeable_in_mobs)
 		else if(isturf(A))
-			R.reaction_turf(A, R.volume + volume_modifier)
+			reagent.reaction_turf(A, reagent.volume + volume_modifier)
 		else if(isobj(A))
-			R.reaction_obj(A, R.volume + volume_modifier)
+			reagent.reaction_obj(A, reagent.volume + volume_modifier)
 
 /datum/reagents/proc/add_reagent(reagent, amount, list/data, safety = 0)
 	if(!reagent || !isnum(amount))

@@ -201,25 +201,3 @@
 	result = "paroxetine"
 	required_reagents = list("mindbreaker" = 1, "oxygen" = 1, "inaprovaline" = 1)
 	result_amount = 3
-
-/datum/chemical_reaction/unga
-	name = "Disgusting Mixture"
-	id = "unga"
-	result = "unga"
-	required_reagents = list("bicaridine" = 1, "kelotane" = 1)
-	result_amount = 0.1
-	mob_react = FALSE // as much as this would be funny, no its gonna break some balance
-	forbidden_container = list(/obj/item/reagent_container/hypospray/autoinjector/emergency, /obj/item/reagent_container/glass/pressurized_canister, /obj/item/reagent_container/hypospray/autoinjector/empty/medic)
-
-// until i figure out a better way, itll have to be a subtype
-/datum/chemical_reaction/unga/unga_recipe_1
-	required_reagents = list("dermaline" = 1, "bicaridine" = 1)
-	result_amount = 0.5
-
-/datum/chemical_reaction/unga/unga_recipe_2
-	required_reagents = list("kelotane" = 1, "meralyne" = 1)
-	result_amount = 0.5
-
-/datum/chemical_reaction/unga/unga_recipe_3
-	required_reagents = list("dermaline" = 1, "meralyne" = 1)
-	result_amount = 1

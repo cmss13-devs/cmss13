@@ -33,6 +33,21 @@
 #define HIGH_REAGENTS_OVERDOSE 60
 #define HIGH_REAGENTS_OVERDOSE_CRITICAL 100
 
+// Reagent Delivery types
+/// Medical Pill deliveries
+#define CONTROLLED_INGESTION (1<<0)
+/// Food/drink deliveries, or basically mouth ingestion
+#define INGESTION (1<<1)
+/// Inhalation deliveries
+#define INHALATION (1<<2)
+/// Delivery through surface-level touching
+#define TOUCH (1<<3)
+/// Delivery through absorption (e.g., skin contact, mucosal uptake, or non-vascular injection)
+#define ABSORPTION (1<<4)
+/// Delivery through intravenous injections
+#define INJECTION (1<<5)
+/// Delivery through implanted devices
+#define IMPLANTATION (1<<6)
 
 // How many units of reagent are consumed per tick, by default.
 #define REAGENTS_METABOLISM AMOUNT_PER_TIME(1, 10 SECONDS)

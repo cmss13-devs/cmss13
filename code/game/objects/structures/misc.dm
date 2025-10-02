@@ -539,7 +539,7 @@
 		return
 
 	in_range_mob -= mover
-	UnregisterSignal(mover, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(mover, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
 
 /datum/staircase/proc/handle_deleted(atom/updater)
 	SIGNAL_HANDLER
@@ -548,7 +548,7 @@
 
 
 /proc/create_vis_contents_screen(turf/appear_where, turf/clone_what)
-	var/image/clone = image('icons/turf/floors/floors.dmi', appear_where, "transparent", ABOVE_WALL_LAYER)
+	var/image/clone = image('icons/turf/floors/floors.dmi', appear_where, "transparent", 0)
 	clone.vis_contents += clone_what
 	clone.vis_contents += GLOB.above_blackness_backdrop
 

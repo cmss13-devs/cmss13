@@ -81,7 +81,7 @@
 
 /obj/structure/machinery/prop/almayer/CICmap/Initialize(mapload, ...)
 	. = ..()
-	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE, drawing=drawing)
+	AddComponent(/datum/component/tacmap, has_drawing_tools=drawing, minimap_flag=minimap_flag, has_update=drawing, drawing=drawing)
 
 /obj/structure/machinery/prop/almayer/CICmap/Destroy()
 	return ..()

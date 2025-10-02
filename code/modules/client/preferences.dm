@@ -333,6 +333,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	real_name = random_name(gender)
 	gear = list()
 
+	#ifdef QUICK_START
+	job_preference_list[JOB_CO] = HIGH_PRIORITY
+	#endif
 
 /datum/preferences/proc/client_reconnected(client/C)
 	owner = C

@@ -14,7 +14,7 @@
 	dresscode = null
 
 /datum/buildmode_mode/outfit/change_settings(client/c)
-	dresscode = tgui_input_list(c?.mob, "Pick a Preset", "Equipment", GLOB.gear_name_presets_list)
+	dresscode = tgui_input_list(c?.mob, "Pick a Preset", "Equipment", GLOB.equipment_presets.categories["All"])
 
 /datum/buildmode_mode/outfit/when_clicked(client/c, params, object)
 	var/list/modifiers = params2list(params)

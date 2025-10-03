@@ -305,6 +305,7 @@
 
 	for(var/mob/living/carbon/xenomorph/XX in X.hive.totalXenos)
 		XX.hud_set_marks() //this should be a hud thing, but that code is too confusing so I am doing it here
+		XX.refresh_xeno_telegraphs()
 
 	addtimer(CALLBACK(src, PROC_REF(check_for_weeds)), 30 SECONDS, TIMER_UNIQUE)
 

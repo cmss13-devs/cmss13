@@ -63,11 +63,8 @@
 	// See on_turf_entered
 	var/list/atom/exploded_atoms = list()
 
-	var/obj/effect/particle_effect/shockwave/shockwave = null
-
 // If we're on a fake z teleport, teleport over
 /datum/automata_cell/explosion/birth()
-	shockwave = new(in_turf)
 
 	var/obj/effect/step_trigger/teleporter_vector/V = locate() in in_turf
 	if(!V)
@@ -75,10 +72,6 @@
 
 	var/turf/new_turf = locate(in_turf.x + V.vector_x, in_turf.y + V.vector_y, in_turf.z)
 	transfer_turf(new_turf)
-
-/datum/automata_cell/explosion/death()
-	if(shockwave)
-		qdel(shockwave)
 
 // Compare directions. If the other explosion is traveling in the same direction,
 // the explosion is amplified. If not, it's weakened
@@ -135,8 +128,6 @@
 
 // If you need to set vars on the new cell other than the basic ones
 /datum/automata_cell/explosion/proc/setup_new_cell(datum/automata_cell/explosion/E)
-	if(E.shockwave)
-		E.shockwave.alpha = E.power
 	return
 
 /datum/automata_cell/explosion/update_state(list/turf/neighbors)
@@ -296,9 +287,10 @@ as having entered the turf.
 	E.explosion_cause_data = explosion_cause_data
 	E.enviro = enviro
 
-	if(power >= 100) // powerful explosions send out some special effects
-		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
-		new /obj/shrapnel_effect(epicenter)
+	var/explosion_range = ceil(power / falloff)
+	var/small = power < EXPLOSION_THRESHOLD_LOW
+	var/large = power >= EXPLOSION_THRESHOLD_HIGH
+	new /obj/effect/temp_visual/explosion(epicenter, explosion_range, LIGHT_COLOR_LAVA, small, large)
 
 /proc/log_explosion(atom/A, datum/automata_cell/explosion/E)
 	if(isliving(A))
@@ -346,11 +338,3 @@ as having entered the turf.
 				msg_admin_attack("[key_name(firing_mob)] blew up [key_name(M)] with \a [explosion_source] in [get_area(T)] ([T.x],[T.y],[T.z]).", T.x, T.y, T.z)
 		else
 			log_attack("[key_name(M)] was harmed by unknown explosion in [T.loc.name] at ([T.x],[T.y],[T.z])")
-
-/obj/effect/particle_effect/shockwave
-	name = "shockwave"
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "smoke"
-	anchored = TRUE
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	layer = FLY_LAYER

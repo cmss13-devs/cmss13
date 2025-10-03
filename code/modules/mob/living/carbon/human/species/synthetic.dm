@@ -12,7 +12,7 @@
 	insulated = TRUE
 	darksight = 20
 
-	bloodsplatter_type = /obj/effect/bloodsplatter/synthsplatter
+	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter
 
 	total_health = 150 //more health than regular humans
 
@@ -121,6 +121,6 @@
 	name_plural = "Infiltrator Synthetics"
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INFILTRATOR_SYNTH, TRAIT_IRON_TEETH)
 
-	bloodsplatter_type = /obj/effect/bloodsplatter/human
+	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/human
 
 	blood_color = BLOOD_COLOR_HUMAN

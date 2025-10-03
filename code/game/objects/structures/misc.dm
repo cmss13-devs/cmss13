@@ -398,7 +398,7 @@
 	else
 		actual_turf = SSmapping.get_turf_below(target_turf)
 		mover.plane = ABOVE_BLACKNESS_PLANE
-		addtimer(VARSET_CALLBACK(mover, plane, GAME_PLANE), 0.2 SECONDS)
+		addtimer(VARSET_CALLBACK(mover, plane, GAME_PLANE), 0.5 SECONDS)
 
 	if(actual_turf)
 		if(istype(mover, /mob))

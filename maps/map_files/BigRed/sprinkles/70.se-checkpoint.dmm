@@ -70,9 +70,9 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_cave_cas)
 "pI" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/double/blue{
 	dir = 1;
-	needs_power = 0
+	light_color = "#a7dbc7"
 	},
 /turf/open/asphalt/cement/cement2,
 /area/bigredv2/outside/filtration_cave_cas)
@@ -149,7 +149,8 @@
 /obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/item/device/flashlight,
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7";
 	dir = 4
 	},
 /turf/open/floor,
@@ -203,8 +204,9 @@
 /turf/open/asphalt/cement/cement9,
 /area/bigredv2/outside/filtration_cave_cas)
 "LX" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	light_color = "#a7dbc7"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
@@ -226,8 +228,9 @@
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "NU" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	light_color = "#a7dbc7"
 	},
 /obj/structure/machinery/vending/security,
 /turf/open/floor,
@@ -267,9 +270,9 @@
 /turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
 "RA" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/double/blue{
 	dir = 1;
-	needs_power = 0
+	light_color = "#a7dbc7"
 	},
 /turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)
@@ -332,7 +335,8 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "ZK" = (
 /obj/effect/landmark/crap_item,
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7";
 	dir = 4
 	},
 /turf/open/floor,

@@ -1390,7 +1390,7 @@
 		return
 
 	lighting_alpha = default_lighting_alpha
-	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_BLACKNESS|BLIND)
+	sight &= ~(SEE_MOBS|SEE_OBJS|BLIND)
 
 	see_in_dark = species.darksight
 	sight |= species.flags_sight

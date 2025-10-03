@@ -123,7 +123,7 @@
 		if(pulled.buckled)
 			to_chat(xeno, SPAN_WARNING("[pulled] is buckled to something."))
 			return 0
-		if(pulled.stat == DEAD && !pulled.chestburst)
+		if(!pulled.is_xeno_grabbable()) // Generally if they aren't grabbable they are dead, is_xeno_grabbable is used to check if they are dead or have a larva that is about to burst
 			to_chat(xeno, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
 			return 0
 		if(xeno.hauled_mob?.resolve()) // We can't carry more than one mob
@@ -151,7 +151,7 @@
 			if((isxeno(pulled.loc) && !xeno.hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
 				to_chat(xeno, SPAN_WARNING("Someone already took \the [pulled]."))
 				return 0
-			if(xeno.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !xeno.hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
+			if(xeno.pulling == pulled && !pulled.buckled && pulled.is_xeno_grabbable() && !xeno.hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
 				if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, xeno) & COMPONENT_CANCEL_HAUL)
 					return FALSE
 				xeno.haul(pulled)

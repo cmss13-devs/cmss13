@@ -55,6 +55,7 @@
 
 //WY Comms
 #define RADIO_CHANNEL_WY "WY"
+#define RADIO_CHANNEL_WY_SEC "WY SEC"
 #define RADIO_CHANNEL_PMC_GEN "WY PMC"
 #define RADIO_CHANNEL_PMC_CMD "PMC Command"
 #define RADIO_CHANNEL_PMC_MED "PMC Med"

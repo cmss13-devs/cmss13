@@ -123,28 +123,33 @@ export const RADIO_CHANNELS = [
     color: '#fe9b24',
   },
   {
-    name: 'PMC CMD',
+    name: 'WY Sec',
     freq: 1232,
-    color: '#4dc5ce',
+    color: '#fe9b24',
   },
   {
-    name: 'PMC',
+    name: 'PMC CMD',
     freq: 1233,
     color: '#4dc5ce',
   },
   {
-    name: 'PMC ENG',
+    name: 'PMC',
     freq: 1234,
     color: '#4dc5ce',
   },
   {
-    name: 'PMC MED',
+    name: 'PMC ENG',
     freq: 1235,
     color: '#4dc5ce',
   },
   {
-    name: 'PMC CCT',
+    name: 'PMC MED',
     freq: 1236,
+    color: '#4dc5ce',
+  },
+  {
+    name: 'PMC CCT',
+    freq: 1237,
     color: '#4dc5ce',
   },
   {

@@ -551,6 +551,7 @@
 	var/image/clone = image('icons/turf/floors/floors.dmi', appear_where, "transparent")
 	clone.vis_contents += clone_what
 	clone.vis_contents += GLOB.above_blackness_backdrop
+	clone.override = TRUE
 
 	clone.plane = ABOVE_BLACKNESS_PLANE
 

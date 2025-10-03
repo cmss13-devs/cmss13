@@ -146,7 +146,7 @@
 
 		for(var/turf/vis_turf in elevator_animation.vis_contents)
 			for(var/atom/movable/vis_content in vis_turf.contents)
-				vis_content.blocks_emissive = FALSE
+				vis_content.blocks_emissive = EMISSIVE_BLOCK_NONE
 				vis_content.update_emissive_block()
 
 		//If we are at the away_area then we are just pretending to move, otherwise actually do the move

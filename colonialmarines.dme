@@ -819,6 +819,7 @@
 #include "code\game\area\BigRed.dm"
 #include "code\game\area\ChigusaShipyard.dm"
 #include "code\game\area\chinook.dm"
+#include "code\game\area\ConAm_81_Abyssal.dm"
 #include "code\game\area\Corsat.dm"
 #include "code\game\area\DesertDam.dm"
 #include "code\game\area\hunting_preserve.dm"

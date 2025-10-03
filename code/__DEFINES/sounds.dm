@@ -135,3 +135,8 @@
 #define SCAPE_PL_LV759_DEEPCAVES list('sound/soundscape/lv759/outdoors/deepcave1.ogg','sound/soundscape/lv759/outdoors/deepcave2.ogg')
 #define SCAPE_PL_LV759_CAVES list('sound/soundscape/lv759/outdoors/windy_caverns_1.ogg','sound/soundscape/lv759/outdoors/windy_caverns_2.ogg','sound/soundscape/lv759/outdoors/windy_caverns_3.ogg',)
 #define SCAPE_PL_LV759_PLATEAU_OUTDOORS list('sound/soundscape/lv759/outdoors/derelict_plateau_1.ogg','sound/soundscape/lv759/outdoors/derelict_plateau_2.ogg',)
+
+// Abyssal Soundscapes
+
+#define SCAPE_ABYSSAL_INTERIOR list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg','sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
+#define SCAPE_ABYSSAL_EXTERIOR list('sound/ambience/ambispace.ogg')

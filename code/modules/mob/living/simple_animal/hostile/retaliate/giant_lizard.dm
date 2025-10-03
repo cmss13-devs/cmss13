@@ -367,7 +367,7 @@
 		handle_blood_splatter(get_dir(attacker.loc, loc))
 	return ..()
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force, enviro)
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force, enviro, chemical = FALSE)
 	Retaliate()
 	aggression_value = clamp(aggression_value + 5, 0, 30)
 	. = ..()

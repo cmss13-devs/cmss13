@@ -548,11 +548,9 @@
 
 
 /proc/create_vis_contents_screen(turf/appear_where, turf/clone_what)
-	var/image/clone = image('icons/turf/floors/floors.dmi', appear_where, "transparent", 0)
+	var/image/clone = image('icons/turf/floors/floors.dmi', appear_where, "transparent")
 	clone.vis_contents += clone_what
 	clone.vis_contents += GLOB.above_blackness_backdrop
-
-	clone.overlays += clone_what.static_lighting_object?.current_underlay
 
 	clone.plane = ABOVE_BLACKNESS_PLANE
 

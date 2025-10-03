@@ -1289,7 +1289,8 @@
 	zoomdevicename = "scope"
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_HUGE
-	base_pixel_x = -2
+	pixel_x = -2
+	hud_offset = -2
 	var/charge_time = 0
 	var/last_regen = 0
 	flags_gun_features = GUN_UNUSUAL_DESIGN

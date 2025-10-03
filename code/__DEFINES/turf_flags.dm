@@ -11,7 +11,6 @@
 #define TURF_BURNT (1<<6)
 #define TURF_BREAKABLE (1<<7)
 #define TURF_BROKEN (1<<8)
-#define TURF_STAIR_MIRRORED (1<<9)
 
 //ChangeTurf options to change its behavior
 #define CHANGETURF_DEFER_CHANGE (1<<0)

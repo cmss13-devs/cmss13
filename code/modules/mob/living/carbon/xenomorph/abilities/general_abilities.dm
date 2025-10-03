@@ -610,11 +610,11 @@
 
 /datum/action/xeno_action/active_toggle/toggle_meson_vision/enable_toggle()
 	. = ..()
-	owner.sight |= SEE_TURFS
+	owner.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 0
 
 /datum/action/xeno_action/active_toggle/toggle_meson_vision/disable_toggle()
 	. = ..()
-	owner.sight &= ~SEE_TURFS
+	owner.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 255
 
 /mob/living/carbon/xenomorph/proc/add_abilities()
 	if(!base_actions)

@@ -1840,18 +1840,12 @@
 
 /obj/item/storage/belt/gun/m10
 	name = "\improper M276 pattern M10 holster rig"
-	desc = "Special issue variant of the M276 - designed exclusively to securely hold a M10 Auto Pistol and eight spare magazines, allowing quick access in close-quarters situations. Ideal for defending against boarding threats, this belt supports rapid deployment of high-rate sidearms while maintaining stability in zero-G environments."
+	desc = "Special issue variant of the M276 - designed exclusively to securely hold a M10 Auto Pistol and seven spare magazines, allowing quick access in close-quarters situations. Ideal for defending against boarding threats, this belt supports rapid deployment of high-rate sidearms while maintaining stability in zero-G environments."
 	icon_state = "m10_armor"
-	item_state = "marinebelt"
-	icon = 'icons/obj/items/clothing/belts/belts.dmi'
-	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
-	)
-	gun_has_gamemode_skin = TRUE
-	storage_slots = 9
+	flags_atom = FPRINT // has gamemode skin
+	storage_slots = 8
 	max_w_class = 5
+	gun_has_gamemode_skin = TRUE
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/m10,
 		/obj/item/ammo_magazine/pistol,

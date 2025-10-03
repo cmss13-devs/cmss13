@@ -509,7 +509,7 @@
 
 /obj/item/device/radio/headset/almayer/research
 	name = "researcher radio headset"
-	desc = "A headset used by medbay's skilled researchers. Channels are as follows: :m - medical, :t - intel."
+	desc = "A headset used by medbay's skilled researchers. Channels are as follows: :m - medical, :t - intel, :y - W-Y ."
 	icon_state = "med_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/medres)
 	additional_hud_types = list(MOB_HUD_FACTION_WY)

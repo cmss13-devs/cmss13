@@ -297,7 +297,7 @@
 			limb.status &= ~LIMB_SPLINTED
 			playsound(user, 'sound/items/splintbreaks.ogg', 20)
 			to_chat(user, SPAN_DANGER("The splint on your [limb.display_name] comes apart under the recoil!"))
-			user.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
+			user.pain.recalculate_pain()
 			user.update_med_icon()
 
 

@@ -1649,7 +1649,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 
 //Vars that will not be copied when using /DuplicateObject
 GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
-	"tag", "datum_components", "area", "type", "loc", "locs", "vars", "parent", "parent_type", "verbs", "ckey", "key",
+	"tag", "datum_components", "area", "type", "loc", "pixloc", "locs", "vars", "parent", "parent_type", "verbs", "ckey", "key",
 	"power_supply", "contents", "reagents", "stat", "x", "y", "z", "group", "atmos_adjacent_turfs", "comp_lookup",
 	"client_mobs_in_contents", "bodyparts", "internal_organs", "hand_bodyparts", "overlays_standing", "hud_list",
 	"actions", "AIStatus", "appearance", "managed_overlays", "managed_vis_overlays", "computer_id", "lastKnownIP", "implants",

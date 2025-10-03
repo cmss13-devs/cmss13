@@ -115,7 +115,7 @@
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/caves/north_central_caves)
 "aaB" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aaC" = (
@@ -159,7 +159,7 @@
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aaM" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
@@ -228,7 +228,7 @@
 /turf/open/gm/coast/east,
 /area/lv624/ground/caves/north_central_caves)
 "abg" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "abh" = (
@@ -262,7 +262,7 @@
 /turf/open/floor/wood/wood_broken,
 /area/lv624/ground/caves/north_central_caves)
 "abo" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "abp" = (
@@ -397,7 +397,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
 "abO" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "abP" = (
@@ -436,7 +436,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "abW" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "abX" = (
@@ -528,7 +528,7 @@
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aco" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_east_caves)
@@ -693,7 +693,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "acS" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "acT" = (
@@ -724,7 +724,7 @@
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "acY" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 10
 	},
@@ -750,7 +750,7 @@
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "adc" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "add" = (
@@ -1003,7 +1003,7 @@
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adU" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
 "adV" = (
@@ -1229,7 +1229,7 @@
 /turf/open/floor/asteroidplating,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aeN" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aeO" = (
@@ -1258,7 +1258,7 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/lv624/ground/caves/sand_temple)
 "aeS" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/river,
 /area/lv624/ground/caves/west_caves)
 "aeT" = (
@@ -1466,7 +1466,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/lv624/ground/colony/north_tcomms_road)
 "afI" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "afJ" = (
@@ -1605,7 +1605,7 @@
 /area/lv624/ground/barrens/central_barrens)
 "agk" = (
 /obj/item/ammo_casing,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agl" = (
@@ -1830,7 +1830,7 @@
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/north_nexus_road)
 "ahe" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/coast/west,
 /area/lv624/ground/barrens/west_barrens)
 "ahh" = (
@@ -1949,7 +1949,7 @@
 /turf/open/floor/plating/warnplate/southeast,
 /area/lv624/ground/barrens/central_barrens)
 "ahV" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "ahW" = (
@@ -1961,7 +1961,7 @@
 /turf/open/floor/redyellowfull,
 /area/lv624/ground/barrens/west_barrens/ceiling)
 "aif" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/redyellowfull,
 /area/lv624/ground/barrens/west_barrens/ceiling)
 "aih" = (
@@ -2245,7 +2245,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "ajH" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "ajI" = (
@@ -2325,7 +2325,7 @@
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/ground/river/east_river)
 "akd" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
 "akh" = (
@@ -2539,7 +2539,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
 "alx" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
 "alz" = (
@@ -2640,7 +2640,7 @@
 /turf/open/floor/plating/asteroidwarning,
 /area/lv624/ground/river/central_river)
 "alZ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/river/central_river)
@@ -2750,7 +2750,7 @@
 /turf/open/floor/plating/warnplate/southeast,
 /area/lv624/ground/river/central_river)
 "amW" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_east_jungle)
 "amX" = (
@@ -2786,7 +2786,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "anl" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
 "ano" = (
@@ -2872,13 +2872,13 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
 "aop" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
 "aor" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
@@ -2927,7 +2927,7 @@
 /area/lv624/lazarus/hydroponics)
 "aoB" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -2947,7 +2947,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "aoI" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/medbay)
 "aoK" = (
@@ -2972,7 +2972,7 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
 "aoU" = (
@@ -3002,7 +3002,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "apo" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
 "app" = (
@@ -3105,7 +3105,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "aqs" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/central_river)
@@ -3119,7 +3119,7 @@
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/river/east_river)
 "aqz" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
 "aqA" = (
@@ -3139,7 +3139,8 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/lazarus/quartstorage/outdoors)
 "aqH" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
+/obj/structure/fence,
 /obj/structure/fence/overgrown,
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/lazarus/quartstorage/outdoors)
@@ -3188,7 +3189,7 @@
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/lazarus/quartstorage/outdoors)
 "arc" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/river,
 /area/lv624/ground/river/west_river)
 "arf" = (
@@ -3197,7 +3198,7 @@
 /turf/open/floor/whiteblue,
 /area/lv624/lazarus/medbay)
 "arg" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/whitebluecorner/west,
 /area/lv624/lazarus/medbay)
 "ari" = (
@@ -3676,7 +3677,7 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/west_jungle)
 "aua" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/quartstorage/outdoors)
 "aub" = (
@@ -3753,7 +3754,7 @@
 /area/lv624/lazarus/research)
 "auv" = (
 /obj/effect/decal/remains/human,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/research)
 "auw" = (
@@ -3899,7 +3900,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "avj" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "avm" = (
@@ -3955,7 +3956,7 @@
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
 "avx" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage/outdoors)
 "avy" = (
@@ -3988,7 +3989,7 @@
 	name = "Science Wing Lockdown";
 	pixel_x = 25
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/research)
 "avG" = (
@@ -4017,7 +4018,7 @@
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "avM" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "avN" = (
@@ -4466,7 +4467,7 @@
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "axQ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/warnwhite/east,
 /area/lv624/lazarus/fitness)
 "axR" = (
@@ -4601,7 +4602,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "ayD" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "ayE" = (
@@ -4679,7 +4680,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/main_hall)
 "ayS" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/barricade/wooden,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/quartstorage/outdoors)
@@ -4799,7 +4800,7 @@
 /area/lv624/lazarus/sleep_male)
 "azr" = (
 /obj/structure/machinery/vending/cigarette/wy,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "azs" = (
@@ -4931,7 +4932,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "azX" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_west_jungle)
 "azY" = (
@@ -5268,7 +5269,7 @@
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "aBx" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_tcomms_road)
 "aBy" = (
@@ -5398,7 +5399,7 @@
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aBY" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/bluecorner,
 /area/lv624/lazarus/sleep_male)
 "aBZ" = (
@@ -5418,7 +5419,7 @@
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aCc" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/purple/northwest,
 /area/lv624/lazarus/sleep_female)
 "aCd" = (
@@ -5804,7 +5805,7 @@
 	},
 /obj/structure/surface/table,
 /obj/item/trash/cheesie,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aDX" = (
@@ -5813,7 +5814,7 @@
 	},
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/cheeseburger,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aDY" = (
@@ -5830,7 +5831,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/jungle/west_jungle)
 "aEf" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/bot/north,
 /area/lv624/lazarus/quartstorage)
 "aEg" = (
@@ -5870,12 +5871,12 @@
 /turf/open/gm/grass/grassbeach/west,
 /area/lv624/lazarus/yggdrasil)
 "aEu" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
 "aEv" = (
 /obj/structure/flora/grass/tallgrass/jungle,
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "aEw" = (
@@ -5900,7 +5901,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aED" = (
@@ -6361,7 +6362,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGC" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGE" = (
@@ -6383,7 +6384,7 @@
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/toilet)
 "aGJ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
@@ -6429,7 +6430,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGU" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz1)
 "aGV" = (
@@ -6560,11 +6561,11 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
 /area/lv624/ground/colony/north_tcomms_road)
 "aHD" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/colony/west_nexus_road)
 "aHE" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aHF" = (
@@ -6635,7 +6636,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/jungle/south_west_jungle)
 "aIe" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aIg" = (
@@ -6655,7 +6656,7 @@
 /area/lv624/lazarus/main_hall)
 "aIh" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/white,
@@ -6682,7 +6683,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "aIp" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
@@ -6722,7 +6723,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aIv" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aIw" = (
@@ -6876,7 +6877,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aJl" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/loadingarea/west,
 /area/lv624/lazarus/landing_zones/lz1)
 "aJr" = (
@@ -7034,7 +7035,7 @@
 /turf/open/floor/warning/west,
 /area/lv624/lazarus/landing_zones/lz1)
 "aJS" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "aJZ" = (
@@ -7050,7 +7051,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "aKd" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -7171,7 +7172,7 @@
 /area/lv624/lazarus/yggdrasil)
 "aKJ" = (
 /obj/structure/machinery/light/small,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aKK" = (
@@ -7183,7 +7184,7 @@
 /area/lv624/lazarus/main_hall)
 "aKL" = (
 /obj/item/frame/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
@@ -7193,7 +7194,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/main_hall)
 "aKO" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "aKQ" = (
@@ -7355,8 +7356,8 @@
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
 /obj/structure/surface/rack,
 /obj/item/reagent_container/hypospray/autoinjector/tricord,
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/melee_weapon,
 /obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
@@ -7610,7 +7611,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/canteen)
 "aNp" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4
 	},
@@ -7670,8 +7671,8 @@
 /area/lv624/lazarus/armory)
 "aNM" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/melee_weapon,
 /obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
@@ -7796,7 +7797,7 @@
 /turf/open/gm/river,
 /area/lv624/lazarus/yggdrasil)
 "aOx" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_central_jungle)
 "aOy" = (
@@ -7806,8 +7807,8 @@
 "aOA" = (
 /obj/item/storage/toolbox/syndicate,
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
+/obj/effect/landmark/melee_weapon,
 /obj/item/clothing/suit/armor/vest/security,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
@@ -7896,7 +7897,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
@@ -7954,7 +7955,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "aPo" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/cult,
 /area/lv624/lazarus/armory)
 "aPp" = (
@@ -8004,7 +8005,7 @@
 /area/lv624/lazarus/security)
 "aPx" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
 "aPy" = (
@@ -8160,7 +8161,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aQn" = (
@@ -8299,7 +8300,7 @@
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aQX" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -8427,7 +8428,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/wood,
 /area/lv624/lazarus/hop)
 "aRF" = (
@@ -8625,7 +8626,7 @@
 	name = "General Listening Channel";
 	pixel_y = 30
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
 "aSH" = (
@@ -8915,7 +8916,7 @@
 /area/lv624/lazarus/main_hall)
 "aUa" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aUb" = (
@@ -8947,7 +8948,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/canteen)
 "aUi" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "aUj" = (
@@ -9073,7 +9074,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aUN" = (
@@ -9264,7 +9265,7 @@
 /area/lv624/lazarus/main_hall)
 "aVO" = (
 /obj/structure/barricade/wooden,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "aVP" = (
@@ -9627,7 +9628,7 @@
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
 "aXo" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
 "aXs" = (
@@ -9773,7 +9774,7 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aXV" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
 "aXW" = (
@@ -9979,7 +9980,7 @@
 /turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/river/west_river)
 "aYY" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast/north,
 /area/lv624/ground/river/west_river)
@@ -10256,7 +10257,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
 "bbC" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/west_jungle)
 "bbH" = (
@@ -10339,7 +10340,7 @@
 /area/lv624/lazarus/quartstorage)
 "bei" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "beB" = (
@@ -10350,7 +10351,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "bfc" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
 "bfe" = (
@@ -10446,7 +10447,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "boy" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "bqf" = (
@@ -10484,7 +10485,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "bte" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
@@ -10770,7 +10771,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "bSm" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_tcomms_road)
 "bTw" = (
@@ -10967,7 +10968,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "clO" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 4
 	},
@@ -11221,7 +11222,7 @@
 /turf/open/floor/whiteyellowcorner/east,
 /area/lv624/lazarus/corporate_dome)
 "cMj" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
 "cMD" = (
@@ -11558,7 +11559,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
 "dAu" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_central_caves)
 "dBS" = (
@@ -11755,7 +11756,7 @@
 /area/lv624/ground/caves/south_west_caves)
 "dOf" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "dOA" = (
@@ -12356,7 +12357,7 @@
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
 "ffC" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "fgS" = (
@@ -12397,7 +12398,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "fir" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
 "fiE" = (
@@ -12769,7 +12770,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_east_caves)
 "fXr" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_nexus_road)
 "fXD" = (
@@ -12832,7 +12833,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
 "gcI" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/shuttle/bright_red,
 /area/lv624/lazarus/crashed_ship_containers)
 "gcZ" = (
@@ -13050,10 +13051,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/north_east_caves)
-"gzW" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_west_barrens)
 "gAI" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grass1,
@@ -13457,7 +13454,7 @@
 /turf/open/gm/coast/east,
 /area/lv624/ground/river/central_river)
 "hxL" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 9
 	},
@@ -13475,7 +13472,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "hyK" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "hyU" = (
@@ -13510,7 +13507,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/west_tcomms_road)
 "hEe" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/barrens/north_east_barrens)
 "hEl" = (
@@ -13683,7 +13680,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_tcomms_road)
 "hSz" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "hSE" = (
@@ -13892,7 +13889,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/jungle/east_jungle)
 "isF" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "isJ" = (
@@ -14031,10 +14028,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/west_caves)
-"iGn" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_west_jungle)
 "iGx" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -14183,7 +14176,7 @@
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
 "iZG" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "iZZ" = (
@@ -14299,7 +14292,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "jow" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "joz" = (
@@ -14440,7 +14433,7 @@
 /turf/closed/wall/mineral/sandstone/runed/decor,
 /area/lv624/ground/caves/sand_temple)
 "jFF" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "jGo" = (
@@ -14883,7 +14876,7 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "kzd" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -15028,7 +15021,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "kNm" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
 "kPL" = (
@@ -15045,7 +15038,7 @@
 /turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/jungle/west_jungle)
 "kRg" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "kRr" = (
@@ -15146,7 +15139,7 @@
 /turf/open/gm/coast/beachcorner/north_west,
 /area/lv624/ground/barrens/west_barrens)
 "lbt" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 9
 	},
@@ -15210,7 +15203,7 @@
 /turf/open/gm/coast/beachcorner2/south_east,
 /area/lv624/ground/river/central_river)
 "lke" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "lkj" = (
@@ -15246,7 +15239,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_east_jungle)
 "lnV" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/jungle/south_east_jungle)
 "loA" = (
@@ -15410,10 +15403,6 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/east,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"lHL" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_east_jungle)
 "lIm" = (
 /obj/structure/fence,
 /turf/open/gm/dirt,
@@ -15518,7 +15507,7 @@
 /turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz1)
 "lRy" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
@@ -15740,7 +15729,7 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/south_nexus_road)
 "mkr" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/cult,
 /area/lv624/ground/caves/south_west_caves)
 "mku" = (
@@ -15916,7 +15905,7 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_jungle)
 "mFu" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_nexus_road)
 "mFZ" = (
@@ -16018,7 +16007,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "mPK" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/west_barrens)
 "mRh" = (
@@ -16155,7 +16144,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/north_west_jungle)
 "njC" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/west_tcomms_road)
 "njO" = (
@@ -16272,7 +16261,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
 "nuU" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_central_jungle)
 "nuW" = (
@@ -16354,7 +16343,7 @@
 "nEE" = (
 /obj/structure/surface/table,
 /obj/item/device/analyzer/plant_analyzer,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
 "nHj" = (
@@ -16648,7 +16637,7 @@
 /turf/open/gm/dirt/desert1,
 /area/lv624/ground/caves/west_caves)
 "ofv" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "ogJ" = (
@@ -16769,7 +16758,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
 "oua" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)
 "ovg" = (
@@ -16928,7 +16917,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/comms)
 "oJL" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_nexus_road)
 "oKP" = (
@@ -17319,7 +17308,7 @@
 /turf/open/floor/whiteyellowcorner,
 /area/lv624/lazarus/corporate_dome)
 "pyS" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
 "pzt" = (
@@ -17393,7 +17382,7 @@
 /turf/open/gm/dirt/desert0,
 /area/lv624/ground/caves/sand_temple)
 "pEl" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "pET" = (
@@ -17453,22 +17442,22 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_central_caves)
 "pIC" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "pJr" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
 "pJN" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/quartstorage/outdoors)
 "pKm" = (
 /turf/open/floor/asteroidwarning/west,
 /area/lv624/ground/colony/telecomm/sw_lz2)
 "pKp" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "pKC" = (
@@ -17498,7 +17487,7 @@
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/ground/jungle/east_jungle)
 "pMV" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/west_barrens)
 "pNa" = (
@@ -17652,7 +17641,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "qaE" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/landmark/queen_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
@@ -17833,7 +17822,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "qAP" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/west_nexus_road)
 "qAR" = (
@@ -18104,10 +18093,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/west,
 /area/lv624/ground/jungle/east_jungle)
-"rcR" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "rcY" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/redyellowfull,
@@ -18166,7 +18151,7 @@
 /turf/open/gm/coast/south,
 /area/lv624/ground/river/central_river)
 "rkq" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
 "rkZ" = (
@@ -18560,7 +18545,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "sau" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
@@ -18888,7 +18873,7 @@
 /turf/open/floor/whitebluecorner/east,
 /area/lv624/lazarus/corporate_dome)
 "sIr" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_west_barrens)
 "sIH" = (
@@ -18951,7 +18936,7 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "sPm" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "sPq" = (
@@ -19307,7 +19292,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/north_east_caves)
 "tuX" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/wood/wood_broken6,
 /area/lv624/ground/caves/north_central_caves)
 "tvC" = (
@@ -19346,7 +19331,7 @@
 /turf/open/gm/dirt/desert_dug,
 /area/lv624/ground/barrens/central_barrens)
 "tzK" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "tzP" = (
@@ -19482,7 +19467,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
 "tRu" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -19743,7 +19728,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
 "upM" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "upQ" = (
@@ -19791,11 +19776,11 @@
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
 "uuf" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/east_jungle)
 "uuV" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/east_jungle)
 "uve" = (
@@ -20253,7 +20238,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "vuy" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship_containers)
 "vvE" = (
@@ -20395,7 +20380,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/comms)
 "vKc" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "vKt" = (
@@ -20762,7 +20747,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
 /area/lv624/ground/jungle/north_jungle)
 "wzG" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
@@ -20818,7 +20803,7 @@
 /turf/open/floor/wood,
 /area/lv624/ground/jungle/west_jungle/ceiling)
 "wFR" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/wood/wood_broken3,
 /area/lv624/ground/caves/north_central_caves)
@@ -20949,7 +20934,7 @@
 /turf/open/gm/coast/east,
 /area/lv624/ground/barrens/west_barrens)
 "wSR" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/firstaid/fire{
 	pixel_x = 5
@@ -21027,7 +21012,7 @@
 /turf/open/floor/whiteblue/northeast,
 /area/lv624/lazarus/corporate_dome)
 "wWS" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "wXg" = (
@@ -21147,10 +21132,6 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
-"xov" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/central_barrens)
 "xoL" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -21299,7 +21280,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
 "xHa" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "xHW" = (
@@ -21582,7 +21563,7 @@
 /turf/open/floor/whiteyellow/southwest,
 /area/lv624/lazarus/corporate_dome)
 "ylL" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_tcomms_road)
 
@@ -26069,7 +26050,7 @@ ane
 ane
 oyx
 oyx
-gzW
+pJr
 oyx
 oyx
 aYQ
@@ -26582,7 +26563,7 @@ afe
 aKb
 hUs
 hUs
-iGn
+hSz
 aXh
 aXh
 aKb
@@ -27948,7 +27929,7 @@ aVK
 aXh
 aXh
 aXh
-iGn
+hSz
 aXh
 aXh
 ggl
@@ -27958,7 +27939,7 @@ sUm
 hSz
 aXh
 aXh
-iGn
+hSz
 aXh
 aKb
 aKb
@@ -29483,7 +29464,7 @@ ane
 ane
 ane
 oyx
-gzW
+pJr
 oyx
 oyx
 oyx
@@ -45420,7 +45401,7 @@ wVk
 wVk
 wVk
 csM
-xov
+aop
 wVk
 dIO
 wVk
@@ -51595,7 +51576,7 @@ cpY
 cpY
 fuY
 cwV
-lHL
+pIC
 fuY
 fuY
 fuY
@@ -60692,7 +60673,7 @@ xch
 xch
 xch
 xch
-rcR
+boy
 xch
 bEq
 dNj

@@ -11,3 +11,8 @@
   - qol: Removed the two extra boots the Chief Engineer got
   - qol: Gave the basic Command variant to RO and CE
   - balance: Gave Chief Engineer a level in vehicles
+2025-10-03:
+  PoltavskaPraca:
+  - qol: adds a little feedback text when you save your character prefs and it's successful
+  Sergeys:
+  - ui: Added search box to construction UI

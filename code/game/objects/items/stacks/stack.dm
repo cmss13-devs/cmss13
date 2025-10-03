@@ -197,7 +197,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		to_chat(ui.user, SPAN_WARNING("The [recipe.title] must be built on snow!"))
 		return FALSE
 
-	//hash the user, so when ui is closed, the construction continues
+	//cache the user, so when ui is closed, the construction continues
 	var/mob/user = ui.user;
 	if(recipe.time)
 		if(user.action_busy)

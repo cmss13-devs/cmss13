@@ -85,6 +85,10 @@
 	color = "#cc8ec4"
 	hivenumber = XENO_HIVE_FORSAKEN
 
+/obj/structure/bed/nest/kseries
+	color = "#ffff80"
+	hivenumber = XENO_HIVE_K_SERIES
+
 /obj/structure/bed/nest/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W

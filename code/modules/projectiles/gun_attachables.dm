@@ -731,7 +731,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(!istype(S, /obj/item/storage/internal))
 		return
 
-	if(!istype(S.master_object, /obj/item/clothing/head/helmet/marine))
+	if(!istype(S.master_object, /obj/item/clothing/head/helmet/marine) && !istype(S.master_object, /obj/item/clothing/head/headset) && !istype(S.master_object, /obj/item/clothing/head/cmcap))
 		return
 
 	remove_attached_item()
@@ -774,7 +774,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(. != CHECKS_PASSED)
 		return
 
-	if(istype(attached_item, /obj/item/clothing/head/helmet/marine))
+	if(istype(attached_item, /obj/item/clothing/head/helmet/marine) || istype(attached_item, /obj/item/clothing/head/headset) || istype(attached_item, /obj/item/clothing/head/cmcap))
 		if(!toggle_on || light_on)
 			if(light_on)
 				playsound(user, deactivation_sound, 15, 1)

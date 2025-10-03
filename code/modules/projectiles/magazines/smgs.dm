@@ -271,25 +271,23 @@
 //P90, a classic SMG.
 
 /obj/item/ammo_magazine/smg/p90
-	name = "\improper FN P90 magazine (5.7×28mm)"
-	desc = "A 5.7×28mm magazine for the FN P90."
+	name = "\improper FN P90 magazine (5.7x28mm)"
+	desc = "A 5.7x28mm magazine for the FN P90."
 	default_ammo = /datum/ammo/bullet/smg/p90
-	caliber = "5.7×28mm"
+	caliber = "5.7x28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
 	icon_state = "p90"
+	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
+	bonus_overlay = "p90_mag_overlay"
 	w_class = SIZE_MEDIUM
 	gun_type = /obj/item/weapon/gun/smg/p90
 	max_rounds = 50
-//-------------------------------------------------------
-//P90, a classic SMG.(TWE version)
 
-/obj/item/ammo_magazine/smg/p90/twe
-	name = "\improper FN P90 AP magazine (5.7×28mm)"
-	desc = "An armor-piercing 5.7×28mm magazine for the FN P90."
-	default_ammo = /datum/ammo/bullet/smg/p90/twe_ap
-	caliber = "5.7×28mm"
+/obj/item/ammo_magazine/smg/p90/ap
+	name = "\improper FN P90 AP magazine (5.7x28mm)"
+	desc = "An armor-piercing 5.7x28mm magazine for the FN P90."
+	default_ammo = /datum/ammo/bullet/smg/p90/ap
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/smgs.dmi'
-	icon_state = "p90_twe"
-	w_class = SIZE_MEDIUM
-	gun_type = /obj/item/weapon/gun/smg/p90/twe
-	max_rounds = 50
+	icon_state = "p90_ap"
+	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
+	bonus_overlay = "p90_ap_overlay"

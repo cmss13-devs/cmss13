@@ -21,6 +21,11 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
+	minimap_type = get_minimap_flag_for_faction(faction)
+	//QDEL_NULL(tacmap)
+	tacmap = new/datum/tacmap/drawing(src, minimap_type)
+	give_action(src, /datum/action/human_action/tacmap)
+
 /mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -117,9 +122,6 @@
 			. += "Primary Objective: [html_decode(assigned_squad.primary_objective)]"
 		if(assigned_squad.secondary_objective)
 			. += "Secondary Objective: [html_decode(assigned_squad.secondary_objective)]"
-	if(faction == FACTION_MARINE)
-		. += ""
-		. += "<a href='byond://?MapView=1'>View Tactical Map</a>"
 	if(mobility_aura)
 		. += "Active Order: MOVE"
 	if(protection_aura)

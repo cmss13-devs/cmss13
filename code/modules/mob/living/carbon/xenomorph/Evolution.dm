@@ -144,7 +144,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		qdel(organ)
 
 	//From there, the new xeno exists, hopefully
-	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
+	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src, hivenumber)
 	new_xeno.creation_time = creation_time
 
 	if(!istype(new_xeno))
@@ -414,7 +414,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	var/level_to_switch_to = get_vision_level()
 	var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(newcaste)
-	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
+	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src, hivenumber)
 	new_xeno.creation_time = creation_time
 
 	if(!istype(new_xeno))

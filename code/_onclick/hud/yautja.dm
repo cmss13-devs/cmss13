@@ -9,6 +9,7 @@
 /mob/living/carbon/human/yautja
 	skin_color = "tan"
 	body_type = "pred"
+	faction = FACTION_YAUTJA
 
 /mob/living/carbon/human/yautja/create_hud()
 	if(client && !hud_used)

@@ -143,3 +143,6 @@
 
 	// for multiz looking up
 	var/atom/observed_atom
+
+	var/datum/tacmap/drawing/tacmap
+	var/minimap_type

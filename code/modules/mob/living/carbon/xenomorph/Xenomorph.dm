@@ -360,11 +360,14 @@
 	/// The world.time when the xeno was created. Carries over between strains and evolving
 	var/creation_time = 0
 
+
+
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
+
 
 	//putting the organ in for research
 	if(organ_value != 0)
@@ -520,6 +523,10 @@
 		hive.hive_ui.update_all_xeno_data()
 
 	creation_time = world.time
+
+	minimap_type = get_minimap_flag_for_faction(hivenumber)
+	QDEL_NULL(tacmap)
+	tacmap = new/datum/tacmap/drawing/xeno(src, minimap_type)
 
 	Decorate()
 
@@ -873,6 +880,9 @@
 
 	// Update the hive status UI
 	new_hive.hive_ui.update_all_xeno_data()
+	QDEL_NULL(tacmap)
+	minimap_type = get_minimap_flag_for_faction(hivenumber)
+	tacmap = new/datum/tacmap/drawing/xeno(src, minimap_type)
 
 	return TRUE
 

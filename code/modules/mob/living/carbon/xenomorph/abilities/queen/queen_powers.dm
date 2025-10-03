@@ -787,11 +787,11 @@
 	recently_built_turfs -= T
 
 
-/mob/living/carbon/xenomorph/proc/xeno_tacmap()
-	set name = "View Xeno Tacmap"
-	set desc = "This opens a tactical map, where you can see where every xenomorph is."
+/mob/living/carbon/proc/tacmap()
+	set name = "View Tacmap"
+	set desc = "This opens a tactical map."
 	set category = "Alien"
-	hive.tacmap.tgui_interact(src)
+	tacmap.tgui_interact(src)
 
 /datum/action/xeno_action/onclick/screech/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner

@@ -171,3 +171,18 @@
 /area/abyssal/exterior/aft
 	name = "Abyssal - Exterior Aft"
 	icon_state = "maints"
+
+//// Gonzo \\\\
+
+/area/abyssal/gonzo
+	name = "Abyssal - Exterior Starboard"
+	icon_state = "maints"
+	ceiling = CEILING_MAX
+	is_resin_allowed = FALSE
+	temperature = T20C
+	flags_area = AREA_NOTUNNEL
+	minimap_color = MINIMAP_AREA_GLASS
+	ambience_exterior = SCAPE_ABYSSAL_EXTERIOR
+	requires_power = FALSE
+	base_lighting_alpha = 255
+	always_unpowered = 1

@@ -1346,6 +1346,9 @@
 "aez" = (
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/abyssal/interior/command)
+"aeA" = (
+/turf/open/floor/plating/catwalk/rusted,
+/area/abyssal/gonzo)
 "aeB" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
@@ -2315,19 +2318,6 @@
 	dir = 8
 	},
 /area/abyssal/interior/corridor_west)
-"ahz" = (
-/obj/structure/machinery/door/airlock/external/colony{
-	unslashable = 1;
-	unacidable = 1;
-	health = 100000;
-	locked = 1;
-	no_panel = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/open/floor/engine,
-/area/abyssal/interior/solar_control_north)
 "ahA" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/power/apc/power/west{
@@ -3037,7 +3027,14 @@
 	},
 /area/abyssal/interior/corridor_central)
 "ajZ" = (
-/turf/open/floor/delivery,
+/obj/structure/machinery/door/airlock/prison_hatch/autoname{
+	req_one_access = list(104,106)
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/floor/engine,
 /area/abyssal/interior/maintenance/north)
 "aka" = (
 /obj/structure/machinery/door/airlock/strata/autoname{
@@ -3342,7 +3339,7 @@
 	explo_proof = 1;
 	name = "launch bay door"
 	},
-/turf/open/floor/plating/prison,
+/turf/open/floor/engine,
 /area/abyssal/interior/landing_zone)
 "akZ" = (
 /turf/open/floor/station/metal/floor{
@@ -3436,6 +3433,7 @@
 	pixel_x = -28
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/southwest,
 /area/abyssal/interior/maintenance/north)
 "alo" = (
@@ -3483,6 +3481,16 @@
 /obj/effect/decal/hybrisa/lattice,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/north)
+"alw" = (
+/mob/living/simple_animal/hostile/retaliate/clown{
+	health = 10000;
+	move_to_delay = 2;
+	name = "Gonzo the Magnificent";
+	rapid = 1;
+	icon_state = "spaceclown"
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/abyssal/gonzo)
 "alz" = (
 /turf/open/floor/darkpurple2,
 /area/abyssal/interior/science)
@@ -3503,7 +3511,7 @@
 "alF" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/cable/yellow{
-	icon_state = "4-8"
+	icon_state = "2-8"
 	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/northeast,
 /area/abyssal/interior/solar_control_north)
@@ -8319,15 +8327,18 @@
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/northwest,
 /area/abyssal/interior/galley)
 "aPL" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/item/device/radio/intercom{
-	pixel_y = -30;
-	freerange = 1
+/obj/structure/machinery/door/airlock/external/colony{
+	unslashable = 1;
+	unacidable = 1;
+	health = 100000;
+	locked = 1;
+	no_panel = 1
 	},
 /obj/structure/cable/yellow{
-	icon_state = "1-4"
+	icon_state = "4-8"
 	},
-/turf/open/floor/prison/darkbrownfull2,
+/obj/effect/decal/hybrisa/lattice,
+/turf/open/floor/engine,
 /area/abyssal/interior/solar_control_north)
 "aPM" = (
 /obj/structure/pipes/vents/pump/siphon/on{
@@ -8864,6 +8875,9 @@
 /obj/item/stool{
 	pixel_x = 2;
 	pixel_y = 3
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
 	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
 /area/abyssal/interior/solar_control_north)
@@ -9433,7 +9447,7 @@
 /obj/structure/monorail{
 	name = "launch track"
 	},
-/turf/open/floor/plating/prison,
+/turf/open/floor/engine,
 /area/abyssal/interior/landing_zone)
 "aWG" = (
 /obj/effect/hybrisa/misc/fake/wire/blue{
@@ -12767,6 +12781,10 @@
 	name = "Main Power Grid Monitoring"
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/item/device/radio/intercom{
+	pixel_y = -30;
+	freerange = 1
+	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/southeast,
 /area/abyssal/interior/solar_control_north)
 "bha" = (
@@ -13047,13 +13065,6 @@
 	dir = 9
 	},
 /area/abyssal/interior/corridor_west)
-"bhw" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/open/floor/prison/darkbrownfull2,
-/area/abyssal/interior/solar_control_north)
 "bhy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -20091,7 +20102,7 @@ asf
 asf
 asf
 asf
-asf
+aPi
 asf
 asf
 asf
@@ -20242,8 +20253,8 @@ aPi
 asf
 asf
 asf
-asf
-asf
+aPi
+aPi
 asf
 asf
 asf
@@ -20394,7 +20405,7 @@ aPi
 asf
 asf
 asf
-asf
+aPi
 asf
 asf
 asf
@@ -20545,9 +20556,9 @@ asf
 aPi
 aPi
 asf
-asf
-asf
-asf
+aPi
+aPi
+aPi
 asf
 asf
 asf
@@ -28931,7 +28942,7 @@ asf
 asf
 asf
 asf
-asf
+aPi
 asf
 aPi
 asf
@@ -29083,8 +29094,8 @@ asf
 asf
 asf
 asf
-asf
-asf
+aPi
+aPi
 aPi
 aPi
 aoD
@@ -29235,7 +29246,7 @@ asf
 asf
 asf
 asf
-asf
+aPi
 asf
 aPi
 asf
@@ -29387,8 +29398,8 @@ asf
 asf
 asf
 asf
-asf
-asf
+aPi
+aPi
 aPi
 aPi
 aoD
@@ -29539,7 +29550,7 @@ asf
 asf
 asf
 asf
-asf
+aPi
 asf
 aPi
 asf
@@ -33913,7 +33924,7 @@ aPi
 adp
 ahe
 agP
-bhw
+ahH
 aPL
 agO
 agO
@@ -34064,9 +34075,9 @@ adp
 adD
 adD
 ahe
-agP
-ahH
-ahz
+abu
+abu
+ahe
 agP
 agP
 bgt
@@ -34368,7 +34379,7 @@ aiP
 aiB
 adD
 adD
-adD
+abu
 adD
 adD
 ahe
@@ -34520,7 +34531,7 @@ aiP
 aiB
 adD
 asf
-asf
+aPi
 asf
 adD
 ahe
@@ -34672,7 +34683,7 @@ aiP
 aiB
 adD
 asf
-asf
+aPi
 asf
 adD
 ahe
@@ -34824,7 +34835,7 @@ ahe
 aiB
 adp
 adD
-adD
+abu
 adD
 adp
 ahe
@@ -39385,12 +39396,12 @@ aLq
 aEt
 amI
 aAF
-asf
-asf
-asf
-aPi
-asf
-asf
+abu
+abu
+abu
+adp
+abu
+abu
 abk
 aHw
 acK
@@ -39537,12 +39548,12 @@ aTY
 aBr
 aAF
 aAF
-aPi
-aPi
-aPi
-aPi
-aPi
-aPi
+alw
+aeA
+aeA
+aeA
+aeA
+aeA
 abk
 ahC
 acK
@@ -39688,13 +39699,13 @@ asS
 asS
 aAF
 aAF
-asf
-asf
-asf
-aPi
-asf
-asf
-asf
+adD
+aeA
+adD
+adD
+abu
+abu
+abu
 abk
 asJ
 aqq
@@ -39837,16 +39848,16 @@ asf
 asf
 asf
 asf
+aPi
+abu
+aeA
+aeA
+aeA
+adD
+asf
 asf
 asf
 aPi
-asf
-asf
-asf
-aPi
-asf
-asf
-asf
 abk
 abk
 aHw
@@ -39990,12 +40001,12 @@ asf
 asf
 asf
 asf
+adD
+adp
+adp
+adp
+adp
 asf
-aPi
-aPi
-aPi
-aPi
-aPi
 aPi
 aPi
 aPi

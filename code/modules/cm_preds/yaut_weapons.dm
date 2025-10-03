@@ -1821,7 +1821,7 @@
 	storage_slots = 8
 	max_storage_space = 20
 	icon_state = "quiver"
-	item_state = "quiver"
+	item_state = "s_marinebelt"
 	flags_equip_slot = SLOT_WAIST|SLOT_SUIT_STORE
 	max_w_class = SIZE_LARGE
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -1835,23 +1835,11 @@
 	)
 	explo_proof = TRUE
 	unacidable = TRUE
-	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/gun/quiver/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/bow())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/arrow(src)
-
-/obj/item/storage/belt/gun/quiver/update_icon()
-	overlays.Cut()
-	if(content_watchers && flap)
-		icon_state = "quiver_open"
-		return
-	var/magazines = length(contents) - length(holstered_guns)
-	if(!magazines)
-		icon_state = "quiver_open"
-		return
-	icon_state = "quiver"
 
 #undef FLAY_STAGE_SCALP
 #undef FLAY_STAGE_STRIP

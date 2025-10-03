@@ -63,7 +63,7 @@ endmap
 map new_varadero
 endmap
 
-map spessmap
+map conam_81_abyssal
 endmap
 
 map whiskey_outpost_v2

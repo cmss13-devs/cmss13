@@ -26,6 +26,8 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
+	plane = TURF_PLANE
+
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE
 	///Can blood spawn on this turf?

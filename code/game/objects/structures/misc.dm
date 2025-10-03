@@ -397,6 +397,8 @@
 		actual_turf = SSmapping.get_turf_above(target_turf)
 	else
 		actual_turf = SSmapping.get_turf_below(target_turf)
+		mover.plane = ABOVE_BLACKNESS_PLANE
+		addtimer(VARSET_CALLBACK(mover, plane, GAME_PLANE), 0.2 SECONDS)
 
 	if(actual_turf)
 		if(istype(mover, /mob))
@@ -474,9 +476,9 @@
 	for(var/obj/structure/stairs/multiz/up/stair as anything in stairs)
 		for(var/turf/turf as anything in to_turfs)
 			if((dir == NORTH && turf.y <= stair.y) \
-			|| (dir == EAST && turf.x > stair.x) \
+			|| (dir == EAST && turf.x <= stair.x) \
 			|| (dir == SOUTH && turf.y >= stair.y) \
-			|| (dir == WEST && turf.x <= stair.x))
+			|| (dir == WEST && turf.x > stair.x))
 				continue
 
 			if(istransparentturf(turf))

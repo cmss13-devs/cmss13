@@ -1389,17 +1389,13 @@
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_UPDATE_SIGHT) & COMPONENT_OVERRIDE_UPDATE_SIGHT)
 		return
 
-	sight &= ~BLIND // Never have blind on by default
-
 	lighting_alpha = default_lighting_alpha
-	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_BLACKNESS)
+	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_BLACKNESS|BLIND)
+
 	see_in_dark = species.darksight
 	sight |= species.flags_sight
-	if(glasses)
-		process_glasses(glasses)
 
-//	if(!(sight & SEE_TURFS) && !(sight & SEE_MOBS) && !(sight & SEE_OBJS))
-//		sight |= SEE_BLACKNESS
+	process_glasses(glasses)
 
 	sight |= (SEE_BLACKNESS|SEE_TURFS)
 

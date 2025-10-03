@@ -1130,6 +1130,10 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_WO
 	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_PMC)
+	inbuilt_tracking_options = list(
+		"Squad Leader" = TRACKER_SL,
+		"Fireteam Leader" = TRACKER_FTL
+	)
 
 /obj/item/device/radio/headset/distress/pmc
 	name = "PMC headset"
@@ -1143,7 +1147,9 @@
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CL
 	inbuilt_tracking_options = list(
-		"Corporate Liaison" = TRACKER_CL
+		"Corporate Liaison" = TRACKER_CL,
+		"Squad Leader" = TRACKER_SL,
+		"Fireteam Leader" = TRACKER_FTL
 	)
 	additional_hud_types = list(MOB_HUD_FACTION_WY)
 

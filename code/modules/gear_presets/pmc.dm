@@ -12,6 +12,9 @@
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/pmc
 
+	var/auto_squad_name
+	var/always_squad = FALSE
+
 /datum/equipment_preset/pmc/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_WY_PMC)
@@ -57,6 +60,23 @@
 			uniform.has_sensor = UNIFORM_HAS_SENSORS
 	return ..()
 
+/datum/equipment_preset/pmc/load_preset(mob/living/carbon/human/new_human, randomise, count_participant)
+	. = ..()
+	if(!auto_squad_name || (should_block_game_interaction(new_human) && !always_squad))
+		return
+
+	var/obj/item/card/id/ID = new_human.get_idcard()
+	var/datum/money_account/acct = create_account(new_human, rand(30, 50), GLOB.paygrades[ID.paygrade])
+	ID.associated_account_number = acct.account_number
+
+	var/datum/squad/auto_squad = get_squad_by_name(auto_squad_name)
+	if(auto_squad)
+		transfer_marine_to_squad(new_human, auto_squad, new_human.assigned_squad, ID)
+	if(!always_squad && !auto_squad.active)
+		auto_squad.engage_squad(FALSE)
+
+	new_human.marine_buyable_categories[MARINE_CAN_BUY_EAR] = 0
+	new_human.hud_set_squad()
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_standard
@@ -68,6 +88,11 @@
 	minimap_icon = "pmc_gun"
 	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc
+
+/datum/equipment_preset/pmc/pmc_standard/auto_distress
+	name = "Weyland-Yutani PMC (Standard) (AS)"
+	auto_squad_name = "Team Upsilon"
+	always_squad = TRUE
 
 /datum/equipment_preset/pmc/pmc_standard/load_gear(mob/living/carbon/human/new_human)
 
@@ -251,6 +276,11 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrades = list(PAY_SHORT_PMC_EN = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc
 
+/datum/equipment_preset/pmc/pmc_detainer/chem_recovery
+	name = "Weyland-Yutani PMC (Detainer) (AS)"
+	auto_squad_name = "Team Gamma"
+	always_squad = TRUE
+
 /datum/equipment_preset/pmc/pmc_detainer/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -385,6 +415,11 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrades = list(PAY_SHORT_PMC_EN = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc
 
+/datum/equipment_preset/pmc/pmc_riot_control/chem_recovery
+	name = "Weyland-Yutani PMC (Crowd Control Specialist) (AS)"
+	auto_squad_name = "Team Gamma"
+	always_squad = TRUE
+
 /datum/equipment_preset/pmc/pmc_riot_control/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -444,6 +479,11 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	role_comm_title = "CM"
 	skills = /datum/skills/pmc/medic
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
+
+/datum/equipment_preset/pmc/pmc_medic/auto_distress
+	name = "Weyland-Yutani PMC (Corporate Medic) (AS)"
+	auto_squad_name = "Team Upsilon"
+	always_squad = TRUE
 
 /datum/equipment_preset/pmc/pmc_medic/load_gear(mob/living/carbon/human/new_human)
 
@@ -632,6 +672,11 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc/medic/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
+
+/datum/equipment_preset/pmc/pmc_med_investigator/chem_recovery
+	name = "Weyland-Yutani PMC (Medical Investigator) (AS)"
+	auto_squad_name = "Team Gamma"
+	always_squad = TRUE
 
 /datum/equipment_preset/pmc/pmc_med_investigator/load_gear(mob/living/carbon/human/new_human)
 
@@ -827,6 +872,11 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	skills = /datum/skills/pmc/SL
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
+/datum/equipment_preset/pmc/pmc_leader/auto_distress
+	name = "Weyland-Yutani PMC (Leader) (AS)"
+	auto_squad_name = "Team Upsilon"
+	always_squad = TRUE
+
 /datum/equipment_preset/pmc/pmc_leader/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_WY_PMC) + list(ACCESS_WY_LEADERSHIP, ACCESS_WY_PMC_TL)
@@ -985,6 +1035,11 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	skills = /datum/skills/pmc/SL/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
+/datum/equipment_preset/pmc/pmc_lead_investigator/chem_recovery
+	name = "Weyland-Yutani PMC (Lead Investigator) (AS)"
+	auto_squad_name = "Team Gamma"
+	always_squad = TRUE
+
 /datum/equipment_preset/pmc/pmc_lead_investigator/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_WY_PMC) + list(ACCESS_WY_LEADERSHIP, ACCESS_WY_PMC_TL)
@@ -1133,6 +1188,11 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	skills = /datum/skills/pmc/smartgunner
 
+/datum/equipment_preset/pmc/pmc_gunner/auto_distress
+	name = "Weyland-Yutani PMC (Gunner) (AS)"
+	auto_squad_name = "Team Upsilon"
+	always_squad = TRUE
+
 /datum/equipment_preset/pmc/pmc_gunner/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
@@ -1242,6 +1302,11 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	minimap_icon = "pmc_spec"
 	skills = /datum/skills/pmc/specialist
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
+
+/datum/equipment_preset/pmc/pmc_sniper/auto_distress
+	name = "Weyland-Yutani PMC (Sniper) (AS)"
+	auto_squad_name = "Team Upsilon"
+	always_squad = TRUE
 
 /datum/equipment_preset/pmc/pmc_sniper/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -1684,6 +1749,11 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	skills = /datum/skills/pmc/engineer
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
 
+/datum/equipment_preset/pmc/technician/auto_distress
+	name = "Weyland-Yutani PMC (Corporate Technician) (AS)"
+	auto_squad_name = "Team Upsilon"
+	always_squad = TRUE
+
 /datum/equipment_preset/pmc/technician/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/engineer, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc, WEAR_FACE)
@@ -1886,6 +1956,11 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "WY Syn"
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
+
+/datum/equipment_preset/pmc/synth/auto_distress
+	name = "Weyland-Yutani PMC (Support Synthetic) (AS)"
+	auto_squad_name = "Team Upsilon"
+	always_squad = TRUE
 
 
 /datum/equipment_preset/pmc/synth/load_name(mob/living/carbon/human/new_human, randomise)

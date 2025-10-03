@@ -116,7 +116,7 @@
 		occupantData["stat"] = occupant.stat
 		occupantData["health"] = occupant.health
 		occupantData["maxHealth"] = occupant.maxHealth
-		occupantData["minHealth"] = HEALTH_THRESHOLD_DEAD
+		occupantData["minHealth"] = occupant.health_threshold_dead
 		occupantData["bruteLoss"] = occupant.getBruteLoss()
 		occupantData["oxyLoss"] = occupant.getOxyLoss()
 		occupantData["toxLoss"] = occupant.getToxLoss()
@@ -430,5 +430,11 @@
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	available_chemicals = list("thwei", "inaprovaline", "oxycodone", "anti_toxin", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
 	emergency_chems = list("thwei", "inaprovaline", "oxycodone", "anti_toxin", "dexalinp", "tricordrazine", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
+	reagent_removed_per_second = AMOUNT_PER_TIME(8, 1 SECONDS)
+	upgraded = TRUE
+
+/obj/structure/machinery/medical_pod/sleeper/upgraded
+	available_chemicals = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
+	emergency_chems = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "oxycodone", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
 	reagent_removed_per_second = AMOUNT_PER_TIME(8, 1 SECONDS)
 	upgraded = TRUE

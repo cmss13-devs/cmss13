@@ -1821,7 +1821,7 @@
 	storage_slots = 8
 	max_storage_space = 20
 	icon_state = "quiver"
-	item_state = "s_marinebelt"
+	item_state = "quiver"
 	flags_equip_slot = SLOT_WAIST|SLOT_SUIT_STORE
 	max_w_class = SIZE_LARGE
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -1852,10 +1852,6 @@
 		icon_state = "quiver_open"
 		return
 	icon_state = "quiver"
-
-/obj/item/storage/belt/gun/quiver/New()
-	. = ..()
-	update_icon()
 
 #undef FLAY_STAGE_SCALP
 #undef FLAY_STAGE_STRIP

@@ -47,7 +47,7 @@
 	desc = "A 10x20mm ammunition box. Used to refill M39 HV and extended magazines. It comes with a leather strap allowing to wear it on the back."
 	caliber = "10x20mm"
 	icon_state = "base_m39"
-	overlay_content = "_hv"
+	overlay_content = "_reg"
 	default_ammo = /datum/ammo/bullet/smg/m39
 
 /obj/item/ammo_box/rounds/smg/empty
@@ -163,7 +163,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/rounds/pistol/incen
-	name = "\improper pistol ammunition box (9mm Incendiary)"
+	name = "\improper pistol ammunition box (9mm Incen)"
 	desc = "A 9mm incendiary ammunition box. Used to refill M4A3 magazines. It comes with a leather strap allowing to wear it on the back."
 	overlay_content = "_incen"
 	default_ammo = /datum/ammo/bullet/pistol/incendiary
@@ -202,13 +202,13 @@
 /obj/item/ammo_box/rounds/l23/heap/empty
 	empty = TRUE
 
-/obj/item/ammo_box/rounds/l23/incendiary
-	name = "\improper rifle ammunition box (8.88x51mm Incendiary)"
+/obj/item/ammo_box/rounds/l23/incen
+	name = "\improper rifle ammunition box (8.88x51mm Incen)"
 	desc = "A 8.88x51mm ammunition box. Used to refill L23 incendiary magazines. It comes with a leather strap allowing to wear it on the back."
 	overlay_content = "_l23_incen"
 	default_ammo = /datum/ammo/bullet/rifle/l23/incendiary
 	bullet_amount = 420 //Incen is OP
 	max_bullet_amount = 420
 
-/obj/item/ammo_box/rounds/l23/incendiary/empty
+/obj/item/ammo_box/rounds/l23/incen/empty
 	empty = TRUE

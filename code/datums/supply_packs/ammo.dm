@@ -312,7 +312,7 @@
 /datum/supply_packs/ammo_m10_pistol_mag_box_extended
 	name = "Magazine box (M10, 14x extended mags)"
 	contains = list(
-		/obj/item/ammo_box/magazine/m10/extended,
+		/obj/item/ammo_box/magazine/m10/ext,
 	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo

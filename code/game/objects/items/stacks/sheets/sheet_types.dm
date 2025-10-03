@@ -239,7 +239,7 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		new/datum/stack_recipe("empty speed loader box (M44 Marksman)", /obj/item/ammo_box/magazine/m44/marksman/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (M10)", /obj/item/ammo_box/magazine/m10/empty), \
-		new/datum/stack_recipe("empty magazine box (M10 Ext)", /obj/item/ammo_box/magazine/m10/extended/empty), \
+		new/datum/stack_recipe("empty magazine box (M10 Ext)", /obj/item/ammo_box/magazine/m10/ext/empty), \
 		new/datum/stack_recipe("empty magazine box (M10 Drum)", /obj/item/ammo_box/magazine/m10/drum/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (M39)", /obj/item/ammo_box/magazine/m39/empty), \
@@ -336,8 +336,8 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		new/datum/stack_recipe("empty magazine box (Spearhead HP)", /obj/item/ammo_box/magazine/spearhead/empty), \
 		new/datum/stack_recipe("empty magazine box (Spearhead)", /obj/item/ammo_box/magazine/spearhead/normalpoint/empty), \
 		null, \
-		new/datum/stack_recipe("empty magazine box (M16)", /obj/item/ammo_box/magazine/M16/empty), \
-		new/datum/stack_recipe("empty magazine box (M16 AP)", /obj/item/ammo_box/magazine/M16/ap/empty), \
+		new/datum/stack_recipe("empty magazine box (M16)", /obj/item/ammo_box/magazine/m16/empty), \
+		new/datum/stack_recipe("empty magazine box (M16 AP)", /obj/item/ammo_box/magazine/m16/ap/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (AR10)", /obj/item/ammo_box/magazine/ar10/empty), \
 		null, \
@@ -381,7 +381,7 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		null, \
 		new/datum/stack_recipe("empty magazine box (NSG 23)", /obj/item/ammo_box/magazine/nsg23/empty), \
 		new/datum/stack_recipe("empty magazine box (NSG 23 AP)", /obj/item/ammo_box/magazine/nsg23/ap/empty), \
-		new/datum/stack_recipe("empty magazine box (NSG 23 EX)", /obj/item/ammo_box/magazine/nsg23/ex/empty), \
+		new/datum/stack_recipe("empty magazine box (NSG 23 EX)", /obj/item/ammo_box/magazine/nsg23/ext/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (Type71)", /obj/item/ammo_box/magazine/type71/empty), \
 		new/datum/stack_recipe("empty magazine box (Type71 AP)", /obj/item/ammo_box/magazine/type71/ap/empty), \

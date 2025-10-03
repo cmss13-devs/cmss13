@@ -498,7 +498,7 @@
 //Type-19,
 
 /obj/item/weapon/gun/smg/pps43
-	name = "\improper Type-19 Submachinegun" //placeholder
+	name = "\improper Type 19 submachinegun" //placeholder
 	desc = "An outdated, but reliable and powerful, submachinegun originating in the Union of Progressive Peoples, it is still in limited service in the UPP but is most often used by paramilitary groups or corporate security forces. It is usually used with a 35 round stick magazine, or a 71 round drum."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/smgs.dmi'
 	icon_state = "insasu"
@@ -541,7 +541,7 @@
 //Type 64
 
 /obj/item/weapon/gun/smg/bizon
-	name = "\improper Type 64 Submachinegun"
+	name = "\improper Type 64 submachinegun"
 	desc = "The standard submachinegun of the UPP, sporting an unusual 64 round helical magazine, it has a high fire-rate, but is unusually accurate. This one has a faux-wood grip, denoting it as civilian use or as an export model."
 	desc_lore = "The Type 64 finds its way into the hands of more than just UPP soldiers, it has an active life with rebel groups, corporate security forces, mercenaries, less well-armed militaries, and just about everything or everyone in between."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/smgs.dmi'

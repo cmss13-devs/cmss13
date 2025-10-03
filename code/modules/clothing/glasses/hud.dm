@@ -32,9 +32,7 @@
 	name = "View Research Publications"
 	button.name = name
 	button.overlays.Cut()
-	var/image/IMG = image('icons/obj/structures/machinery/computer.dmi', button, "research")
-	IMG.pixel_x = 0
-	IMG.pixel_y = -5
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "research")
 	button.overlays += IMG
 
 /datum/action/item_action/view_publications/update_button_icon()

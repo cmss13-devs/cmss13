@@ -2318,6 +2318,11 @@
 	dir = 8
 	},
 /area/abyssal/interior/corridor_west)
+"ahz" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/dark,
+/area/abyssal/interior/science)
 "ahA" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/power/apc/power/west{
@@ -3470,15 +3475,14 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/abyssal/interior/maintenance/north)
 "alv" = (
+/obj/effect/decal/hybrisa/lattice,
 /obj/structure/machinery/door/airlock/external/colony{
 	unslashable = 1;
 	unacidable = 1;
 	health = 100000;
-	icon_state = "door_locked";
 	locked = 1;
 	no_panel = 1
 	},
-/obj/effect/decal/hybrisa/lattice,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/north)
 "alw" = (
@@ -3491,12 +3495,35 @@
 	},
 /turf/open/floor/plating/catwalk/rusted,
 /area/abyssal/gonzo)
+"alx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/abyssal/interior/science)
+"aly" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/engine,
+/area/abyssal/interior/maintenance/east)
 "alz" = (
 /turf/open/floor/darkpurple2,
 /area/abyssal/interior/science)
 "alA" = (
 /obj/item/stack/rods,
 /turf/open/floor/hybrisa/tile/green_bigtile/southwest,
+/area/abyssal/interior/command)
+"alB" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/hybrisa/tile/green_bigtile/north,
+/area/abyssal/interior/command)
+"alC" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/hybrisa/tile/green_bigtile/east,
 /area/abyssal/interior/command)
 "alD" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -3515,15 +3542,42 @@
 	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/northeast,
 /area/abyssal/interior/solar_control_north)
+"alG" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/abyssal/interior/command)
 "alH" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/abyssal/interior/command)
+"alI" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/hybrisa/tile/greencorner_bigtile/east,
 /area/abyssal/interior/command)
 "alJ" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/light/blue,
 /turf/open/floor/station/metal/floor,
 /area/abyssal/interior/corridor_west)
+"alK" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/hybrisa/tile/green_bigtile/west,
+/area/abyssal/interior/command)
+"alL" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/engine,
+/area/abyssal/interior/maintenance/east)
+"alM" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 29
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/engine,
+/area/abyssal/interior/maintenance/east)
 "alQ" = (
 /obj/structure/pipes/vents/scrubber,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -4939,6 +4993,7 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "atZ" = (
@@ -8152,10 +8207,6 @@
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/northeast,
 /area/abyssal/interior/galley)
-"aOw" = (
-/turf/open/space/basic,
-/turf/closed/wall/prison,
-/area/abyssal/interior/command)
 "aOA" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/light/blue{
@@ -8917,15 +8968,14 @@
 /turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/corridor_west)
 "aTq" = (
+/obj/effect/decal/hybrisa/lattice,
 /obj/structure/machinery/door/airlock/external/colony{
 	unslashable = 1;
 	unacidable = 1;
 	health = 100000;
-	icon_state = "door_locked";
 	locked = 1;
 	no_panel = 1
 	},
-/obj/effect/decal/hybrisa/lattice,
 /turf/open/floor/engine,
 /area/abyssal/interior/landing_zone)
 "aTt" = (
@@ -10553,6 +10603,7 @@
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/darkpurple2/north,
 /area/abyssal/interior/science)
 "bbJ" = (
@@ -11186,6 +11237,7 @@
 /obj/structure/prop/hybrisa/misc/redmeter{
 	pixel_y = 29
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "bdq" = (
@@ -12334,9 +12386,6 @@
 /obj/structure/surface/table/reinforced/black,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/trash/ceramic_plate,
-/obj/item/paper/flag{
-	pixel_y = 12
-	},
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/abyssal/interior/bunker)
 "bgj" = (
@@ -13297,6 +13346,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "drf" = (
@@ -35333,7 +35383,7 @@ bcv
 aaP
 bbt
 agF
-abZ
+ahz
 bbj
 aee
 baR
@@ -36509,7 +36559,7 @@ aLq
 aLq
 aTY
 aGX
-aTY
+alL
 aTY
 aTY
 aRT
@@ -36847,7 +36897,7 @@ ber
 beh
 bdQ
 bcM
-bbf
+alx
 bdb
 bcI
 bcn
@@ -37442,7 +37492,7 @@ arT
 ayl
 aqF
 aTt
-aXb
+alK
 aXb
 aXb
 aXb
@@ -37604,7 +37654,7 @@ aiM
 amg
 abx
 aqF
-abh
+arL
 aou
 aaY
 bdp
@@ -37751,7 +37801,7 @@ abq
 abq
 abq
 aiO
-aiO
+alC
 aiO
 aBn
 bew
@@ -38352,11 +38402,11 @@ alh
 alh
 aZh
 aLg
-abo
+alB
 abY
 acI
 abI
-abI
+alG
 acI
 aHN
 aRk
@@ -38513,11 +38563,11 @@ awr
 acI
 aRk
 aqC
-abo
+alB
 aRk
 aaY
 bek
-bdI
+aly
 bdI
 aab
 axE
@@ -38636,7 +38686,7 @@ aaY
 aEt
 aLq
 aRT
-aTY
+akV
 aTY
 aCq
 aTY
@@ -38929,7 +38979,7 @@ asf
 asf
 asf
 aAF
-bdH
+alM
 aaY
 apY
 apY
@@ -39272,7 +39322,7 @@ amd
 abp
 aAS
 aRk
-aOw
+abp
 abB
 abk
 asf
@@ -39572,7 +39622,7 @@ aaY
 afD
 aaY
 afa
-ajA
+alI
 acI
 acI
 acI

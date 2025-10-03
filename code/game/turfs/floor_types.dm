@@ -4805,6 +4805,15 @@
 /turf/open/floor/darkbluecorners2
 	icon_state = "darkbluecorners2"
 
+/turf/open/floor/darkbluecorners2/north
+	dir = NORTH
+
+/turf/open/floor/darkbluecorners2/east
+	dir = EAST
+
+/turf/open/floor/darkbluecorners2/west
+	dir = WEST
+
 /turf/open/floor/darkish
 	icon_state = "darkish"
 

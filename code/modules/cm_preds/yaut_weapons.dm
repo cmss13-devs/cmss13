@@ -1490,6 +1490,7 @@
 	icon_state = "plasma_ebony"
 	var/base_icon_state = "plasma"
 	var/base_item_state = "plasma_wear"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',

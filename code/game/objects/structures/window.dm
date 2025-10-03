@@ -379,6 +379,10 @@
 		healthcheck(0) //Don't make hit sounds, it's dumb with fire/heat
 	..()
 
+/obj/structure/window/colorable
+	icon_state = "colorable_window"
+	basestate = "colorable_window"
+
 /obj/structure/window/phoronbasic
 	name = "phoron window"
 	desc = "A phoron-glass alloy window. It looks insanely tough to break. It appears it's also insanely tough to burn through."
@@ -425,6 +429,10 @@
 	health = 40
 	reinf = 1
 
+/obj/structure/window/reinforced/colorable
+	icon_state = "colorable_rwindow"
+	basestate = "colorable_rwindow"
+
 /obj/structure/window/reinforced/toughened
 	name = "safety glass"
 	desc = "A very tough looking window reinforced with tempered glass and bracing rods, probably bullet proof."
@@ -433,7 +441,9 @@
 	health = 300
 	reinf = 1
 
-
+/obj/structure/window/reinforced/toughened/colorable
+	icon_state = "colorable_rwindow"
+	basestate = "colorable_rwindow"
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
@@ -442,12 +452,20 @@
 	basestate = "twindow"
 	opacity = TRUE
 
+/obj/structure/window/reinforced/tinted/colorable
+	icon_state = "colorable_twindow"
+	basestate = "colorable_twindow"
+
 /obj/structure/window/reinforced/tinted/frosted
 	name = "privacy window"
 	desc = "A glass privacy window. Looks like it might take a few less hits than a normal reinforced window."
 	icon_state = "fwindow"
 	basestate = "fwindow"
 	health = 30
+
+/obj/structure/window/reinforced/tinted/frosted/colorable
+	icon_state = "colorable_fwindow"
+	basestate = "colorable_fwindow"
 
 /obj/structure/window/reinforced/ultra
 	name = "ultra-reinforced window"
@@ -458,6 +476,10 @@
 	not_deconstructable = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/window/reinforced/ultra/colorable
+	icon_state = "colorable_fwindow"
+	basestate = "colorable_fwindow"
 
 /obj/structure/window/reinforced/ultra/initialize_pass_flags(datum/pass_flags_container/PF)
 	. = ..()

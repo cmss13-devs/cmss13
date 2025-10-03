@@ -134,6 +134,27 @@
 /obj/effect/hunter/ancient_temple/deco_border/deco_border7
 	icon_state = "deco_border7"
 
+/obj/effect/hunter/ancient_temple/deco_border/bronze
+	icon_state = "bronze_deco_border1"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border2
+	icon_state = "bronze_deco_border2"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border3
+	icon_state = "bronze_deco_border3"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border4
+	icon_state = "bronze_deco_border4"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border5
+	icon_state = "bronze_deco_border5"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border6
+	icon_state = "bronze_deco_border6"
+
+/obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border7
+	icon_state = "bronze_deco_border7"
+
 // Catwalks
 
 /obj/structure/prop/hunter/catwalk
@@ -463,6 +484,23 @@
 /obj/structure/prop/hunter/ancient_temple/small_statue/base
 
 	icon_state = "small_statue_base"
+
+/obj/structure/prop/hunter/ancient_temple/coffin_base
+	name = null
+	desc = null
+	icon = 'icons/obj/structures/props/hunter/sarcophagus.dmi'
+	icon_state = "ancient_coffin_base"
+	anchored = TRUE
+	layer = ABOVE_TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/hunter/ancient_temple/coffin_base/deco
+	icon_state = "ancient_coffin_base_deco"
 
 // Breakable Ancient-Temple Walls
 

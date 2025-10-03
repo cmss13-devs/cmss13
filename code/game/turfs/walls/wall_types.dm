@@ -679,6 +679,10 @@
 	color = "#826161"
 	baseturfs = /turf/open/gm/dirt
 
+/turf/closed/wall/rock/grey
+	color = "#645e5f"
+	baseturfs = /turf/open/gm/dirt
+
 /turf/closed/wall/rock/orange
 	color = "#994a16"
 	desc = "A rough wall of granite and sandstone."

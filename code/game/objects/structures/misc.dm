@@ -68,13 +68,13 @@
 			deconstruct(FALSE)
 
 /obj/structure/showcase/yautja/ancient
-	icon = 	'icons/obj/structures/machinery/yautja_machines.dmi'
-	icon_state = "ancient_sandstone"
+	icon = 'icons/obj/structures/props/hunter/ancientsmallstatue.dmi'
+	icon_state = "statue_ancient"
 
 /obj/structure/showcase/yautja
 	name = "alien warrior statue"
 	desc = "A statue of some armored alien humanoid."
-	icon = 	'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon = 'icons/obj/structures/props/hunter/ancientsmallstatue.dmi'
 	icon_state = "statue_sandstone"
 
 /obj/structure/showcase/yautja/alt

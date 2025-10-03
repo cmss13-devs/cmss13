@@ -45,10 +45,20 @@
 	open_sound = 'sound/effects/stonedoor_openclose.ogg'
 	close_sound = 'sound/effects/stonedoor_openclose.ogg'
 
+/obj/structure/closet/coffin/predator/ancient_stone/deco
+	icon_state = "ancient_coffin_deco"
+	icon_closed = "ancient_coffin_deco"
+	icon_opened = "ancient_coffin_deco_open"
+
 /obj/structure/closet/coffin/predator/ancient_stone/mummy
 	icon_state = "ancient_coffin"
 	icon_closed = "ancient_coffin"
 	icon_opened = "ancient_coffin_mumified_open"
+
+/obj/structure/closet/coffin/predator/ancient_stone/mummy/deco
+	icon_state = "ancient_coffin_deco"
+	icon_closed = "ancient_coffin_deco"
+	icon_opened = "ancient_coffin_mumified_deco_open"
 
 /obj/structure/closet/coffin/woodencrate //Subtyped here so Req doesn't sell them
 	name = "wooden crate"

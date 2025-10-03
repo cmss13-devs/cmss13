@@ -192,6 +192,7 @@ Defined in conflicts.dm of the #defines folder.
 			break
 
 	forceMove(get_turf(detaching_gun))
+	user.put_in_hands(src, TRUE)
 
 	if(sharp)
 		detaching_gun.sharp = 0

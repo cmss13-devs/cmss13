@@ -1814,7 +1814,6 @@
 	ammo_datum = /datum/ammo/arrow/expl
 	to_chat(user, SPAN_NOTICE("You activate [src]."))
 
-
 /obj/item/storage/belt/gun/quiver
 	name = "quiver strap"
 	desc = "A strap that can hold a bow with a quiver for arrows."
@@ -1853,6 +1852,9 @@
 		return
 	icon_state = "quiver"
 
+/obj/item/storage/belt/gun/quiver/New()
+	. = ..()
+	update_icon()
 
 #undef FLAY_STAGE_SCALP
 #undef FLAY_STAGE_STRIP

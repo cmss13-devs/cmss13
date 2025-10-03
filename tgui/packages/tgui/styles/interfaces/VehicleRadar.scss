@@ -1,0 +1,264 @@
+@use '../base.scss';
+
+@keyframes switch_in {
+  from {
+    visibility: hidden;
+    position: absolute;
+  }
+  to {
+    visibility: visible;
+  }
+}
+
+@keyframes switch_out {
+  from {
+    visibility: visible;
+  }
+  to {
+    visibility: collapse;
+  }
+}
+
+.Backdrop {
+  background-color: #040404;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px;
+}
+
+.LeftButtons {
+  border-top: 2px inset #242424;
+  position: absolute;
+  width: 40px;
+  height: 340px;
+  margin-top: 25px;
+  padding-right: 3px;
+  color: rgb(31, 230, 24);
+  .ButtonHolderL {
+    border: 2.3px inset #242424;
+    border-right: 2px solid #0e0e0e;
+    background-color: #0e0e0e;
+    width: 41px;
+    height: 55px;
+    font-family: monospace;
+    text-align: center;
+    padding-top: 10px;
+    padding-left: 1px;
+    z-index: 5;
+    .ButtonL {
+      border: 2px outset #757575bd;
+      border-radius: 2px;
+      width: 35px;
+      height: 30px;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 5px;
+    }
+  }
+}
+
+.RightButtons {
+  position: absolute;
+  width: 40px;
+  height: 340px;
+  margin-top: 25px;
+  padding-left: 3px;
+  left: 419px;
+  color: rgb(31, 230, 24);
+  .ButtonHolderR {
+    border: 2.3px inset #242424;
+    border-left: 2px solid #0e0e0e;
+    background-color: #0e0e0e;
+    width: 41px;
+    height: 55px;
+    font-family: monospace;
+    text-align: center;
+    padding-top: 10px;
+    padding-right: 1px;
+    .ButtonR {
+      border: 2px outset #757575bd;
+      border-radius: 2px;
+      width: 35px;
+      height: 30px;
+      font-family: monospace;
+      text-align: center;
+      padding-top: 5px;
+    }
+  }
+}
+
+.TopButtons {
+  border: 2.3px inset #242424;
+  border-bottom: 2px solid #36363657;
+  border-top: 2px solid #0e0e0e;
+  background-color: #0e0e0e;
+  width: 310px;
+  height: 37px;
+  margin-left: 25px;
+  padding-left: 4px;
+  z-index: 3;
+  position: absolute;
+}
+
+.BottomButtons {
+  width: 310px;
+  height: 37px;
+  margin-top: 7px;
+  padding-left: 250px;
+  position: absolute;
+  .ButtonB {
+    border: 2px outset #757575bd;
+    border-radius: 3px;
+    width: 35px;
+    height: 30px;
+    font-family: monospace;
+    text-align: center;
+    padding-top: 6px;
+    padding-left: 1px;
+    margin-top: 1px;
+    margin-right: 5px;
+    color: #6b6b6b;
+  }
+}
+
+.SwitchButtonHolder {
+  border: 2px outset #757575bd;
+  border-radius: 5px;
+  width: 60px;
+  height: 32px;
+  font-family: monospace;
+  text-align: center;
+  padding: 2px;
+  .SwitchButton {
+    width: 45%;
+    height: 100%;
+    font-family: monospace;
+    padding-left: 5%;
+    padding-right: 5%;
+    .Icon {
+      font-size: large;
+      padding-top: 3px;
+      color: #363636;
+    }
+  }
+  .SwitchButtonDivider {
+    width: 1px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    height: 100%;
+    font-family: monospace;
+    border: 1.5px inset #363636;
+    text-align: left;
+  }
+}
+
+.RadialSwitch {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: 2px outset #757575bd;
+  .RadialSwitchNotch {
+    width: 45%;
+    height: 1px;
+    margin-top: 11.5px;
+    border: 1px solid #636363bd;
+  }
+}
+
+.RadarPanel {
+  background-color: #131313;
+  width: 450px;
+  height: 450px;
+  outline: 4px solid #242424;
+
+  padding: 45px;
+  border-radius: 5px;
+  z-index: 1;
+  .RadarPanelBlank {
+    z-index: 2;
+    background: radial-gradient(ellipse at center, #042208, transparent);
+    background-color: rgb(0, 14, 3);
+    border: 1px ridge rgb(5, 160, 0);
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    overflow: hidden;
+    animation: switch_out 1.2s steps(1, end) forwards;
+    .ScreenDivider {
+      border-top: 1.5px solid rgba(0, 128, 0, 0.61);
+    }
+  }
+  .RadarPanelOutline {
+    width: 100%;
+    height: 100%;
+    outline: 3px inset #757575;
+    outline-offset: 2px;
+    border-radius: 15px;
+  }
+}
+
+.RadarMap {
+  z-index: 2;
+  background-color: rgb(0, 172, 37);
+  background-repeat: no-repeat;
+  border: 1px ridge rgb(0, 0, 0);
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+  background-size: 250%;
+  animation: switch_in 1.2s steps(1, end) forwards;
+}
+
+.RadarSector {
+  --s: 0deg; /* starting angle */
+  --p: 30deg; /* filling angle */
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid rgb(0, 0, 0);
+  /* switch #0000 and #000 to get the opposite shape */
+  mask: conic-gradient(
+    from var(--s),
+    #0000,
+    #000 1deg var(--p),
+    #0000 calc(var(--p) + 1deg)
+  );
+}
+
+.ContactBlip {
+  position: absolute;
+  z-index: 5;
+  animation: switch_in 1.2s steps(1, end) forwards;
+}
+
+.ScreenOff {
+  outline: 3px inset #3a3a3a;
+  outline-offset: 2px;
+  background: radial-gradient(
+    ellipse at center,
+    #000e0169,
+    rgba(0, 22, 0, 0.178)
+  );
+  background-color: rgb(0, 0, 0);
+  border: 1px ridge rgb(1, 43, 0);
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.UIHighlight {
+  background-color: rgba(236, 236, 236, 0.527);
+  overflow: hidden;
+}
+
+.UIElement {
+  text-align: left;
+  color: black;
+}

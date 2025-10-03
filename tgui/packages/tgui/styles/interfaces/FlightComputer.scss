@@ -1,0 +1,96 @@
+.FlightComputer__Background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+}
+
+.FlightComputer__Casing {
+  height: 100%;
+  border-radius: 5px;
+  border: 2px outset rgba(0, 0, 0, 0.685);
+  background-color: #111111;
+  padding: 6px;
+  max-width: 700px;
+  max-height: 410px;
+}
+
+.FlightComputer__Gradient {
+  background: radial-gradient(#042208, #000b02);
+}
+
+.FlightComputer__Static {
+  width: 100%;
+  height: 100%;
+  outline: 3px inset #111111;
+  outline-offset: 2px;
+  border-radius: 5px;
+  border: 2px ridge #00e94e;
+  background:
+    linear-gradient(hsla(0, 6%, 7%, 0) 50%, hsla(0, 0%, 0%, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      hsla(0, 100%, 50%, 0.06),
+      hsla(120, 100%, 50%, 0.02),
+      hsla(240, 100%, 50%, 0.06)
+    );
+  background-size:
+    100% 2px,
+    3px 100%;
+  .FlightComputer__Screen {
+    mix-blend-mode: color-dodge;
+    background: radial-gradient(#05a11ab7, #00250786);
+    width: 100%;
+    height: 100%;
+    padding-left: 1%;
+    padding-right: 2%;
+    color: #00e94e;
+    font-family: monospace;
+  }
+}
+
+.FlightComputer__TextConfirm {
+  color: #000b02;
+  background-color: #00e94e;
+}
+
+.FlightComputer__FuelButton {
+  border: 1px solid #00e94e;
+  color: #00e94e;
+  background-color: transparent;
+}
+
+.FlightComputer__Readout {
+  filter: brightness(1.5);
+}
+
+.FlightComputer__MainDivider {
+  border-right: 2px solid #00e94ed3;
+  margin-right: 6px;
+}
+
+.FlightComputer__HorizontalDivider {
+  width: 100%;
+  border-bottom: 2px solid #00e94ee3;
+}
+
+.FlightComputer__Fuel {
+  .FlightComputer__Divider {
+    border-right: 2px solid #00e94ed3;
+    padding-right: 6px;
+    margin-right: 6px;
+  }
+  .FlightComputer__Subdivider {
+    border-right: 2px solid #00e94ed3;
+    padding-right: 6px;
+    margin-right: 6px;
+  }
+  .FlightComputer__Fuelnotch {
+    width: 30px;
+    margin-bottom: 14px;
+  }
+  .FlightComputer__Energynotch {
+    width: 40px;
+    margin-bottom: 17px;
+  }
+}

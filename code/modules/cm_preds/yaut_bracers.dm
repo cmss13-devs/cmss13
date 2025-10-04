@@ -12,6 +12,7 @@
 
 	flags_item = ITEM_PREDATOR
 	flags_inventory = CANTSTRIP
+	flags_equip_slot = SLOT_NO_STORE
 	flags_cold_protection = BODY_FLAG_HANDS
 	flags_heat_protection = BODY_FLAG_HANDS
 	flags_armor_protection = BODY_FLAG_HANDS

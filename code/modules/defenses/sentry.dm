@@ -486,7 +486,9 @@
 	SSminimaps.remove_marker(src)
 	if(off)
 		return
-	var/minimap_flags = get_minimap_flag_for_faction(selected_categories[SENTRY_CATEGORY_IFF])
+	var/minimap_flags = NO_FLAGS
+	for(var/faction in faction_group)
+		minimap_flags |= get_minimap_flag_for_faction(faction)
 	if(!minimap_flags)
 		return
 	minimap_icon_state = initial(minimap_icon_state)

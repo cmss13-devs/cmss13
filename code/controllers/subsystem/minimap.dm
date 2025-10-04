@@ -848,7 +848,7 @@ SUBSYSTEM_DEF(minimaps)
 	marker_flags = MINIMAP_FLAG_PMC
 
 /datum/action/minimap/observer
-	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM|MINIMAP_FLAG_UPP|MINIMAP_FLAG_PMC
+	minimap_flags = MINIMAP_FLAG_ALL
 	marker_flags = NONE
 	live = TRUE
 
@@ -1050,7 +1050,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/first = TRUE
 
 	if(!last_coords)
-		last_coords = list(freedraw_queue[1].x + linked_map.cur_x_shift, freedraw_queue[1].y + linked_map.cur_x_shift)
+		var/vector/first_in_queue = freedraw_queue[1]
+		last_coords = list(first_in_queue.x + linked_map.cur_x_shift, first_in_queue.y + linked_map.cur_x_shift)
 	else
 		first = FALSE
 

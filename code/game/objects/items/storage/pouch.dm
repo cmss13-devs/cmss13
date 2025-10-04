@@ -277,9 +277,9 @@
 	storage_slots = 5
 
 /obj/item/storage/pouch/firstaid/ert/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/no_med_skill(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/no_med_skill(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/no_med_skill(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 
@@ -976,8 +976,8 @@
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/no_med_skill(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/no_med_skill/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/ointment(src)
@@ -1033,8 +1033,8 @@
 
 /obj/item/storage/pouch/medkit/full/toxin/cbrn/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/storage/pill_bottle/antitox/skillless(src)
-	new /obj/item/storage/pill_bottle/antitox/skillless(src)
+	new /obj/item/storage/pill_bottle/antitox/no_med_skill(src)
+	new /obj/item/storage/pill_bottle/antitox/no_med_skill(src)
 	new /obj/item/roller(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
@@ -1202,7 +1202,7 @@
 			to_chat(user, SPAN_WARNING("[cd] already has a container!"))
 		return
 
-	if(!istype(target, /obj/structure/reagent_dispensers/fueltank))
+	if(!istype(target, /obj/structure/reagent_dispensers/tank/fuel))
 		return ..()
 
 

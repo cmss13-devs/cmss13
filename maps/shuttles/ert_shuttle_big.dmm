@@ -559,7 +559,7 @@
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert)
 "Lk" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert)
 "LB" = (
@@ -801,7 +801,7 @@
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert)
 "Vw" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /obj/item/tool/extinguisher,

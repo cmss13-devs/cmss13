@@ -371,31 +371,31 @@
 
 /datum/autolathe/recipe/medilathe/autoinjector/s1x1
 	name = "EZ autoinjector (E-U) (1x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/unit
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/unit
 
 /datum/autolathe/recipe/medilathe/autoinjector/s5x1
 	name = "EZ autoinjector (E-VS) (5x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/verysmall
 
 /datum/autolathe/recipe/medilathe/autoinjector/s10x1
 	name = "EZ autoinjector (E-S) (10x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/small
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x1
 	name = "EZ autoinjector (E-T) (15x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill
 
 /datum/autolathe/recipe/medilathe/autoinjector/s30x1
 	name = "EZ autoinjector (E-M) (30x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/medium
 
 /datum/autolathe/recipe/medilathe/autoinjector/s45x1
 	name = "EZ autoinjector (E-L) (45x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/large
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/large
 
 /datum/autolathe/recipe/medilathe/autoinjector/s60x1
 	name = "EZ autoinjector (E-XL) (60x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/extralarge
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x6
 	name = "Medic autoinjector (M-M) (15x6)"

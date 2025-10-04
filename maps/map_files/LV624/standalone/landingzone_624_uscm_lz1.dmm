@@ -37,7 +37,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "ca" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
 "cm" = (

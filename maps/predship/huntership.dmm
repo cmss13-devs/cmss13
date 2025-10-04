@@ -4216,7 +4216,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja/lower_deck)
 "of" = (
-/obj/structure/reagent_dispensers/fueltank/yautja,
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "oj" = (
@@ -5970,7 +5970,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
 "up" = (
-/obj/structure/reagent_dispensers/fueltank/yautja,
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja/hangar)
 "uv" = (
@@ -9676,7 +9676,7 @@
 /obj/structure/window/reinforced/toughened{
 	color = "#912727"
 	},
-/obj/structure/reagent_dispensers/fueltank/yautja,
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
 /obj/effect/hunter/rune/stripes_arrow,
 /turf/open/floor/corsat,
 /area/yautja)
@@ -11300,7 +11300,7 @@
 /turf/open/floor/predship/hull/non_weedable_hull/southwest,
 /area/yautja/hangar)
 "MM" = (
-/obj/structure/reagent_dispensers/watertank/yautja{
+/obj/structure/reagent_dispensers/tank/water/yautja{
 	pixel_x = 1
 	},
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
@@ -14430,7 +14430,7 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "WW" = (
-/obj/structure/reagent_dispensers/fueltank/yautja,
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja/hangar)
 "WX" = (
@@ -14686,7 +14686,7 @@
 /turf/open/floor/predship/hull,
 /area/yautja)
 "XO" = (
-/obj/structure/reagent_dispensers/watertank/yautja,
+/obj/structure/reagent_dispensers/tank/water/yautja,
 /turf/open/floor/corsat/box,
 /area/yautja)
 "XQ" = (
@@ -14851,7 +14851,7 @@
 /obj/item/weapon/gun/energy/yautja/plasmarifle{
 	pixel_y = 8
 	},
-/obj/structure/reagent_dispensers/fueltank/yautja,
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
 "Yz" = (

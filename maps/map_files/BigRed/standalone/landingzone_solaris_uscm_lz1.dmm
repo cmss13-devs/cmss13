@@ -778,7 +778,7 @@
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/space_port)
 "rR" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
 "rW" = (

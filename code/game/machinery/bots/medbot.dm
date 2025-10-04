@@ -501,6 +501,6 @@
 
 	qdel(S)
 	user.put_in_hands(A)
-	to_chat(user, SPAN_NOTICE("You add the robot arm to the first aid kit."))
+	to_chat(user, SPAN_NOTICE("You add the robot arm to the first-aid kit."))
 	user.temp_drop_inv_item(src)
 	qdel(src)

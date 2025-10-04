@@ -36,7 +36,7 @@
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_ATTACKHAND_HUMAN)
 	message_to_player("Good. Now, you have taken some brute damage. <b>Bicaridine</b> is used to fix brute over time. Pick up the <b>bicaridine EZ autoinjector</b> and use it in-hand.")
 	update_objective("Inject yourself with the bicaridine injector.")
-	var/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use/brute_injector = new(loc_from_corner(0, 4))
+	var/obj/item/reagent_container/hypospray/autoinjector/bicaridine/no_med_skill/one_use/brute_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(brute_injector)
 	add_highlight(brute_injector)
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_brute_inject))
@@ -44,11 +44,11 @@
 /datum/tutorial/marine/medical_basic/proc/on_brute_inject(datum/source, obj/item/reagent_container/hypospray/injector)
 	SIGNAL_HANDLER
 
-	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use))
+	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/bicaridine/no_med_skill/one_use))
 		return
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use, brute_injector)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/bicaridine/no_med_skill/one_use, brute_injector)
 	remove_highlight(brute_injector)
 	message_to_player("All medicines take time to work after injection. Next is <b>Burn</b> damage. It is obtained from things like acid or being set on fire.")
 	update_objective("")
@@ -59,7 +59,7 @@
 /datum/tutorial/marine/medical_basic/proc/burn_tutorial()
 	message_to_player("<b>Kelotane</b> is used to fix burn over time. Inject yourself with the <b>kelotane EZ autoinjector</b>.")
 	update_objective("Inject yourself with the kelotane injector.")
-	var/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use/burn_injector = new(loc_from_corner(0, 4))
+	var/obj/item/reagent_container/hypospray/autoinjector/kelotane/no_med_skill/one_use/burn_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(burn_injector)
 	add_highlight(burn_injector)
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_burn_inject))
@@ -68,11 +68,11 @@
 /datum/tutorial/marine/medical_basic/proc/on_burn_inject(datum/source, obj/item/reagent_container/hypospray/injector)
 	SIGNAL_HANDLER
 
-	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use))
+	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/kelotane/no_med_skill/one_use))
 		return
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use, burn_injector)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/kelotane/no_med_skill/one_use, burn_injector)
 	remove_highlight(burn_injector)
 	message_to_player("Good. Now, when you normally take damage, you will also feel <b>pain</b>. Pain slows you down and can knock you out if left unchecked.")
 	update_objective("")
@@ -83,7 +83,7 @@
 /datum/tutorial/marine/medical_basic/proc/pain_tutorial()
 	message_to_player("<b>Tramadol</b> is used to reduce your pain. Inject yourself with the <b>tramadol EZ autoinjector</b>.")
 	update_objective("Inject yourself with the tramadol injector.")
-	var/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use/pain_injector = new(loc_from_corner(0, 4))
+	var/obj/item/reagent_container/hypospray/autoinjector/tramadol/no_med_skill/one_use/pain_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(pain_injector)
 	add_highlight(pain_injector)
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_pain_inject))
@@ -91,11 +91,11 @@
 /datum/tutorial/marine/medical_basic/proc/on_pain_inject(datum/source, obj/item/reagent_container/hypospray/injector)
 	SIGNAL_HANDLER
 
-	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use))
+	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/tramadol/no_med_skill/one_use))
 		return
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use, pain_injector)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/tramadol/no_med_skill/one_use, pain_injector)
 	remove_highlight(pain_injector)
 	message_to_player("Good. Keep in mind that you can overdose on chemicals, so don't inject yourself with the same chemical too much too often. In the field, injectors have 3 uses.")
 	update_objective("Don't overdose! Generally, 3 injections of a chemical will overdose you.")

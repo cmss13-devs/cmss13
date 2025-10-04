@@ -277,9 +277,9 @@
 	storage_slots = 5
 
 /obj/item/storage/pouch/firstaid/ert/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine/no_med_skill(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane/no_med_skill(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tramadol/no_med_skill(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 
@@ -896,8 +896,8 @@
 	new /obj/item/reagent_container/glass/beaker(src)
 
 /obj/item/storage/pouch/autoinjector
-	name = "auto-injector pouch"
-	desc = "A pouch specifically for auto-injectors."
+	name = "autoinjector pouch"
+	desc = "A pouch specifically for autoinjectors."
 	icon_state = "injectors"
 	storage_slots = 7
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector)
@@ -976,8 +976,8 @@
 
 /obj/item/storage/pouch/medkit/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/no_med_skill(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/no_med_skill/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/ointment(src)
@@ -1033,8 +1033,8 @@
 
 /obj/item/storage/pouch/medkit/full/toxin/cbrn/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/storage/pill_bottle/antitox/skillless(src)
-	new /obj/item/storage/pill_bottle/antitox/skillless(src)
+	new /obj/item/storage/pill_bottle/antitox/no_med_skill(src)
+	new /obj/item/storage/pill_bottle/antitox/no_med_skill(src)
 	new /obj/item/roller(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
@@ -1061,6 +1061,31 @@
 	var/obj/item/reagent_container/glass/pressurized_canister/inner
 	matter = list("plastic" = 2000, "glass" = 2000)
 	flags_item = NOBLUDGEON
+
+
+/obj/item/storage/pouch/pressurized_reagent_canister/bicaridine
+	name = "Pressurized Reagent Canister Pouch (Bicaridine)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable brute-mending Bicaridine."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/kelotane
+	name = "Pressurized Reagent Canister Pouch (Kelotane)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable burn-healing Kelotane."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine
+	name = "Pressurized Reagent Canister Pouch (Tricordrazine)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable medicine that slowly heals brute, burn, toxin, and oxy damage, Tricordrazine."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
+	name = "Pressurized Reagent Canister Pouch (Field Anesthetic)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the most robust painkiller available from your local chem dispenser, Oxycodone."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
+	name = "Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stablizing and minimizing damage to defibrillated patients."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
+	name = "Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stablize patients and stave off symptoms of post-defibrillation heart damage."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
@@ -1089,9 +1114,12 @@
 	fill_with("kelotane")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small/(src)
 	. = ..()
 	fill_with("oxycodone")
+
+/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine/Initialize()
+	. = ..()
+	fill_with("tricordrazine")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/Initialize()
 	. = ..()
@@ -1122,10 +1150,6 @@
 		A.update_uses_left()
 		A.update_icon()
 	update_icon()
-
-/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine/Initialize()
-	. = ..()
-	fill_with("tricordrazine")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister))
@@ -1178,7 +1202,7 @@
 			to_chat(user, SPAN_WARNING("[cd] already has a container!"))
 		return
 
-	if(!istype(target, /obj/structure/reagent_dispensers/fueltank))
+	if(!istype(target, /obj/structure/reagent_dispensers/tank/fuel))
 		return ..()
 
 
@@ -1218,14 +1242,29 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/update_icon()
 	overlays.Cut()
+
 	if(length(contents))
 		overlays += "+[icon_state]_full"
 	if(inner)
-		//tint the inner display based on what chemical is inside
-		var/image/I = image(icon, icon_state="+[icon_state]_loaded")
-		if(inner.reagents)
-			I.color = mix_color_from_reagents(inner.reagents.reagent_list)
-		overlays += I
+		overlays += "+[icon_state]_loaded"
+		if(inner.reagents?.total_volume)
+			var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "+[icon_state]-0")
+
+			var/percent = floor((inner.reagents.total_volume / inner.reagents.maximum_volume) * 100)
+			switch(percent)
+				if(0)
+					filling.icon_state = null
+				if(1 to 25)
+					filling.icon_state = "+[icon_state]-25"
+				if(26 to 50)
+					filling.icon_state = "+[icon_state]-50"
+				if(51 to 75)
+					filling.icon_state = "+[icon_state]-75"
+				if(76 to INFINITY)
+					filling.icon_state = "+[icon_state]-100"
+
+			filling.color = mix_color_from_reagents(inner.reagents.reagent_list)
+			overlays += filling
 
 
 /obj/item/storage/pouch/pressurized_reagent_canister/empty(mob/user)

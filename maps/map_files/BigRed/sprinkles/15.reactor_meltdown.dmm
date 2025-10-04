@@ -55,7 +55,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "aT" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "aU" = (
@@ -533,7 +533,7 @@
 /area/bigredv2/outside/engineering)
 "cF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "cG" = (

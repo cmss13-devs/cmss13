@@ -31,7 +31,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "af" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
@@ -797,7 +797,7 @@
 /turf/open/floor/almayer/sterile_green_side/northeast,
 /area/adminlevel/ert_station/uscm_station)
 "iW" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "iY" = (
@@ -1279,7 +1279,7 @@
 /turf/open/floor/plating/warnplate/west,
 /area/adminlevel/ert_station/uscm_station)
 "om" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "ot" = (
@@ -1410,7 +1410,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "qc" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "qi" = (
@@ -1879,7 +1879,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "wc" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating_striped/north,
 /area/adminlevel/ert_station/uscm_station)
@@ -3185,7 +3185,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "KS" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
@@ -4151,7 +4151,7 @@
 /turf/open/floor/engine,
 /area/adminlevel/ert_station/uscm_station)
 "YY" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/sign/safety/life_support{
 	pixel_x = 8;
 	pixel_y = -32

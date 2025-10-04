@@ -836,7 +836,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "Mi" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/main_hall)
 "Nk" = (

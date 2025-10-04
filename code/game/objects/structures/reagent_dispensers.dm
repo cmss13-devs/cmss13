@@ -203,7 +203,7 @@
 	icon_state = "ammoniatank"
 	chemical = "ammonia"
 
-/obj/structure/reagent_dispensers/acidtank
+/obj/structure/reagent_dispensers/tank/sacid
 	name = "sulphuric acid tank"
 	desc = "A tank for containing sulphuric acid."
 	icon_state = "sacidtank"

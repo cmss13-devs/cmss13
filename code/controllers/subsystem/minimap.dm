@@ -467,6 +467,8 @@ SUBSYSTEM_DEF(minimaps)
 	/// Is drawing enbabled
 	var/drawing
 
+	var/atom/movable/screen/minimap_tool/draw_tool/active_draw_tool
+
 /atom/movable/screen/minimap/MouseWheel(delta_x, delta_y, location, control, params)
 	var/mob/user = usr
 	var/list/mods = params2list(params)
@@ -486,8 +488,12 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(mods[SHIFT_CLICK])
 		transform.Translate(delta_y / 32, delta_x / 32)
+		cur_x_shift -= delta_y / 32
+		cur_y_shift -= delta_x / 32
 	else
 		transform.Translate(delta_x / 32, delta_y / 32)
+		cur_x_shift -= delta_x / 32
+		cur_y_shift -= delta_y / 32
 
 	plane_master.transform = transform
 
@@ -967,6 +973,7 @@ SUBSYSTEM_DEF(minimaps)
 		source.client.mouse_pointer_icon = null
 		return NONE
 	if(istype(object, /atom/movable/screen/minimap_tool))
+		linked_map.active_draw_tool = null
 		UnregisterSignal(usr, COMSIG_MOB_MOUSEDOWN)
 		usr.client.mouse_pointer_icon = null
 		return NONE
@@ -974,12 +981,15 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/draw_tool
 	icon_state = "draw"
-	desc = "Draw using a color. Drag to draw a line, middle click to place a dot. Middle click this button to unselect."
+	desc = "Draw using a color. Drag to draw a line, middle click to place a dot. Middle click this button to unselect. Hold SHIFT+B to draw freely."
 	// color that this draw tool will be drawing in
 	color = COLOR_PINK
 	var/list/last_drawn
 	///temporary existing list used to calculate a line between the start of a click and the end of a click
 	var/list/starting_coords
+
+	var/list/freedraw_queue = list()
+	var/list/last_coords
 
 /atom/movable/screen/minimap_tool/draw_tool/clicked(location, list/modifiers)
 	. = ..()
@@ -987,6 +997,78 @@ SUBSYSTEM_DEF(minimaps)
 		last_drawn += list(null)
 		draw_line(arglist(last_drawn))
 		last_drawn = null
+
+		usr.client.active_draw_tool = null
+		linked_map.active_draw_tool = null
+		return
+
+	winset(usr, "drawingtools", "parent=default;name=SHIFT+B+REP;command=\".mouse-draw \[\[mapwindow.map.mouse-pos.x]] \[\[mapwindow.map.mouse-pos.y]] \[\[mapwindow.map.size.x]] \[\[mapwindow.map.size.y]] \[\[mapwindow.map.view-size.x]] \[\[mapwindow.map.view-size.y]]\"")
+	add_verb(usr.client, /client/proc/handle_draw)
+	linked_map.active_draw_tool = src
+	usr.client.active_draw_tool = src
+
+/client/var/atom/movable/screen/minimap_tool/draw_tool/active_draw_tool
+/client/var/last_drawn
+/client/proc/handle_draw(mouse_x as num, mouse_y as num, size_x as num, size_y as num, view_size_x as num, view_size_y as num)
+	set instant = TRUE
+	set category = null
+	set hidden = TRUE
+	set name = ".mouse-draw"
+
+	mouse_y = size_y - mouse_y
+
+	var/horizontal_letterbox = size_x - view_size_x
+	var/vertical_letterbox = size_y - view_size_y
+
+	if(horizontal_letterbox)
+		mouse_x -= floor(horizontal_letterbox / 2)
+
+	if(vertical_letterbox)
+		mouse_y -= floor(vertical_letterbox / 2)
+
+	mouse_x = floor(mouse_x * (SCREEN_PIXEL_SIZE / view_size_x))
+	mouse_y = floor(mouse_y * (SCREEN_PIXEL_SIZE / view_size_y))
+
+	if(mouse_x < 0 || mouse_y < 0)
+		return
+
+	if(!active_draw_tool)
+		return
+
+	active_draw_tool.freedraw_queue += vector(mouse_x, mouse_y)
+
+	if(last_drawn == world.time)
+		return
+	last_drawn = world.time
+
+	sleep(0) // to reschedule us to the end of the tick
+	active_draw_tool.process_queue()
+
+
+/atom/movable/screen/minimap_tool/draw_tool/proc/process_queue()
+	var/icon/slate = icon(drawn_image.icon)
+	var/first = TRUE
+
+	if(!last_coords)
+		last_coords = list(freedraw_queue[1].x + linked_map.cur_x_shift, freedraw_queue[1].y + linked_map.cur_x_shift)
+	else
+		first = FALSE
+
+	for(var/vector/vector in freedraw_queue)
+		if(first)
+			first = FALSE
+			continue
+
+		var/px = vector.x + linked_map.cur_x_shift
+		var/py = vector.y + linked_map.cur_y_shift
+
+		draw_line(last_coords, list(px, py), slate)
+		last_coords = list(px, py)
+
+	addtimer(VARSET_CALLBACK(src, last_coords, null), 2, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(VARSET_CALLBACK(src, freedraw_queue, list()), 2, TIMER_UNIQUE|TIMER_OVERRIDE)
+	drawn_image.icon = slate
+	freedraw_queue = list()
 
 /atom/movable/screen/minimap_tool/draw_tool/on_mousedown(mob/source, atom/object, location, control, params)
 	. = ..()
@@ -1010,31 +1092,29 @@ SUBSYSTEM_DEF(minimaps)
 	UnregisterSignal(source, COMSIG_MOB_MOUSEUP)
 	var/list/modifiers = params2list(params)
 	var/list/end_coords = params2screenpixel(modifiers["screen-loc"])
+	var/icon/slate = icon(drawn_image.icon)
 	end_coords = list(end_coords[1] + linked_map.cur_x_shift, end_coords[2] + linked_map.cur_y_shift)
-	draw_line(starting_coords, end_coords, source)
+	draw_line(starting_coords, end_coords, slate)
+	drawn_image.icon = slate
 	last_drawn = list(starting_coords, end_coords)
 
 /// proc for drawing a line from list(startx, starty) to list(endx, endy) on the screen. yes this is aa ripoff of [/proc/getline]
-/atom/movable/screen/minimap_tool/draw_tool/proc/draw_line(list/start_coords, list/end_coords, mob/source, draw_color = color)
+/atom/movable/screen/minimap_tool/draw_tool/proc/draw_line(list/start_coords, list/end_coords, icon/slate, draw_color = color)
 	// converts these into the unscaled minimap version so we have to do less calculating
 	var/start_x = FLOOR(start_coords[1]/2, 1)
 	var/start_y = FLOOR(start_coords[2]/2, 1)
 	var/end_x = FLOOR(end_coords[1]/2, 1)
 	var/end_y = FLOOR(end_coords[2]/2, 1)
-	var/icon/mona_lisa = icon(drawn_image.icon)
-	msg_admin_niche("[key_name(source)] has drawn a line from ([start_x],[start_y]) to ([end_x],[end_y]) with color [draw_color].")
 
 	//special case 1, straight line
 	if(start_x == end_x)
-		mona_lisa.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, end_y*2 + 1)
-		drawn_image.icon = mona_lisa
-		return
+		slate.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, end_y*2 + 1)
+		return slate
 	if(start_y == end_y)
-		drawn_image.icon = mona_lisa
-		mona_lisa.DrawBox(draw_color, start_x*2, start_y*2, end_x*2 + 1, start_y*2 + 1)
-		return
+		slate.DrawBox(draw_color, start_x*2, start_y*2, end_x*2 + 1, start_y*2 + 1)
+		return slate
 
-	mona_lisa.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
+	slate.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
 
 	var/abs_dx = abs(end_x - start_x)
 	var/abs_dy = abs(end_y - start_y)
@@ -1046,9 +1126,8 @@ SUBSYSTEM_DEF(minimaps)
 		for(var/j = 1 to abs_dx)
 			start_x += sign_dx
 			start_y += sign_dy
-			mona_lisa.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
-		drawn_image.icon = mona_lisa
-		return
+			slate.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
+		return slate
 
 	/*x_error and y_error represents how far we are from the ideal line.
 	Initialized so that we will check these errors against 0, instead of 0.5 * abs_(dx/dy)*/
@@ -1062,7 +1141,7 @@ SUBSYSTEM_DEF(minimaps)
 				y_error -= abs_dx
 				start_y += sign_dy
 			start_x += sign_dx
-			mona_lisa.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
+			slate.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
 	else
 		var/x_error = -(abs_dy >> 1)
 		var/steps = abs_dy
@@ -1072,8 +1151,8 @@ SUBSYSTEM_DEF(minimaps)
 				x_error -= abs_dy
 				start_x += sign_dx
 			start_y += sign_dy
-			mona_lisa.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
-	drawn_image.icon = mona_lisa
+			slate.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
+	return slate
 
 /atom/movable/screen/minimap_tool/draw_tool/green
 	screen_loc = "14,14"

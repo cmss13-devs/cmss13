@@ -3402,7 +3402,7 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("\The [gun] doesn't have enough fuel to launch a projectile!"))
 		return
 
-	if(istype(flamer_reagent, /datum/reagent/foaming_agent/stabilized))
+	if(istype(flamer_reagent, /datum/reagent/compound/foaming_agent/stabilized))
 		to_chat(user, SPAN_WARNING("This chemical will clog the nozzle!"))
 		return
 

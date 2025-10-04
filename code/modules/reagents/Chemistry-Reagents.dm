@@ -66,8 +66,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/adj_temp = 0
 	/// When adj_temp is used, this is the cap to the temperature
 	var/target_temp = 310
-	/// The preferred reagent delivery of the chemical
-	var/reagent_delivery = TOUCH
+	/// The preferred reagent delivery of the chemical, can have multiple, such as INGESTION | INHALATION
+	var/preferred_delivery = NO_DELIVERY
 
 	var/deleted = FALSE //If the reagent was deleted
 

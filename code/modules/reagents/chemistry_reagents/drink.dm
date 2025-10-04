@@ -16,6 +16,7 @@
 	var/adj_dizzy = 0
 	var/adj_drowsy = 0
 	var/adj_sleepy = 0
+	preferred_delivery = INGESTION | CONTROLLED_INGESTION
 
 /datum/reagent/drink/on_mob_life(mob/living/M, alien, delta_time)
 	. = ..()

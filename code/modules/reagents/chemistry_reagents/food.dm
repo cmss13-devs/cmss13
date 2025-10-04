@@ -6,6 +6,29 @@
 // Part of the food code. Nutriment is used instead of the old "heal_amt" code. Also is where all the food
 // condiments, additives, and such go.
 
+
+// for all intents and purposes, sugar and virus_food goes here too
+/datum/reagent/sugar
+	name = "Sugar"
+	id = "sugar"
+	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste. The most simple form of sugar, glucose, is the only form of nutriment for red blood cells as they have no mitocondria. Sugar can therefore be used to improve blood regeneration as a nutriment, although ineffective."
+	reagent_state = SOLID
+	color = COLOR_WHITE
+	chemclass = CHEM_CLASS_BASIC
+	properties = list(PROPERTY_NUTRITIOUS = 1)
+	flags = REAGENT_TYPE_MEDICAL
+
+/datum/reagent/virus_food
+	name = "Virus Food"
+	id = "virusfood"
+	description = "A mixture of water, milk, and oxygen. Virus cells can use this mixture to reproduce."
+	reagent_state = LIQUID
+	nutriment_factor = 2 * REAGENTS_METABOLISM
+	color = "#899613" // rgb: 137, 150, 19
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+
+
 /datum/reagent/nutriment
 	name = "Nutriment"
 	id = "nutriment"
@@ -16,6 +39,7 @@
 	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_NUTRITIOUS = 2, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
+	preferred_delivery = INGESTION | CONTROLLED_INGESTION
 
 /datum/reagent/nutriment/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
 	. = ..()

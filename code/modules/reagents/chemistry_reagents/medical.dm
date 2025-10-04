@@ -2,6 +2,7 @@
 
 /datum/reagent/medical
 	flags = REAGENT_TYPE_MEDICAL | REAGENT_SCANNABLE
+	preferred_delivery = INJECTION | CONTROLLED_INGESTION | INHALATION
 
 /datum/reagent/medical/inaprovaline
 	name = "Inaprovaline"

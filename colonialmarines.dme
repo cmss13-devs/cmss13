@@ -1334,6 +1334,7 @@
 #include "code\game\objects\items\stacks\tiles\light.dm"
 #include "code\game\objects\items\stacks\tiles\tile_types.dm"
 #include "code\game\objects\items\storage\backpack.dm"
+#include "code\game\objects\items\storage\backpack_rto.dm"
 #include "code\game\objects\items\storage\bags.dm"
 #include "code\game\objects\items\storage\belt.dm"
 #include "code\game\objects\items\storage\bible.dm"

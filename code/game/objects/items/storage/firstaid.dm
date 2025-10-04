@@ -753,22 +753,15 @@
 
 
 /obj/item/storage/pill_bottle/clicked(mob/user, list/mods)
-	var/list/allowed_storage_types = list(
-	/obj/item/storage/belt/medical,
-	/obj/item/storage/pouch/medical,
-	/obj/item/storage/pouch/first_responder,
-	/obj/item/storage/pouch/medkit)
 	if(..())
 		return TRUE
-	var/is_allowed = FALSE
-	for(var/type in allowed_storage_types)
-		if(istype(loc, type))
-			is_allowed = TRUE
-			break
-	if(!is_allowed)
+	// Only proceed with instant pill grab if we're in a storage container
+	if(!isstorage(loc))
 		return FALSE
-	var/obj/item/storage/arbitary_medical_storage/M = loc //Several items have the same mode variable and logic now... Arbitrary object to help ensure we don't do anything dumb
-	if(!M.mode)
+	var/obj/item/storage/container_holding_pill = loc
+	if(!container_holding_pill.instant_pill_grabbable)
+		return FALSE
+	if(!container_holding_pill.instant_pill_grab_mode)
 		return FALSE
 	if(!can_storage_interact(user))
 		error_idlock(user)

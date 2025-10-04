@@ -191,6 +191,3 @@
 	new /obj/item/attachable/bayonet/co2(src)
 	new /obj/item/co2_cartridge(src)
 	new /obj/item/co2_cartridge(src)
-
-/obj/item/storage/arbitary_medical_storage
-	var/mode = 1 //A helper for the pill bottle interaction system to allow grabbing pills from various sources

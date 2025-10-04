@@ -664,7 +664,7 @@
 /area/template_noop)
 "Fl" = (
 /obj/structure/closet/crate/trashcart,
-/obj/item/storage/pill_bottle/kelotane/skillless,
+/obj/item/storage/pill_bottle/kelotane/no_med_skill,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/template_noop)

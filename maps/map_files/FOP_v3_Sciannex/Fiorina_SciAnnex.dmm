@@ -347,7 +347,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "adE" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/fiorina/tumor/aux_engi)
 "aeb" = (
@@ -985,7 +985,7 @@
 	desc = "Holy shit";
 	pixel_y = 18
 	},
-/obj/item/storage/pill_bottle/kelotane/skillless{
+/obj/item/storage/pill_bottle/kelotane/no_med_skill{
 	desc = "Don't touch -Dr. O";
 	pixel_x = 6;
 	pixel_y = 31
@@ -1692,7 +1692,7 @@
 /area/fiorina/oob)
 "bcf" = (
 /obj/structure/surface/rack,
-/obj/item/storage/pill_bottle/kelotane/skillless,
+/obj/item/storage/pill_bottle/kelotane/no_med_skill,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "bcp" = (
@@ -2001,7 +2001,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "boF" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/medbay)
 "boI" = (
@@ -2297,8 +2297,8 @@
 /area/fiorina/station/power_ring)
 "bAE" = (
 /obj/structure/surface/rack,
-/obj/item/storage/pill_bottle/bicaridine/skillless,
-/obj/item/storage/pill_bottle/bicaridine/skillless,
+/obj/item/storage/pill_bottle/bicaridine/no_med_skill,
+/obj/item/storage/pill_bottle/bicaridine/no_med_skill,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/medbay)
 "bAM" = (
@@ -2964,7 +2964,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/station/medbay)
 "cbd" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison,
 /area/fiorina/station/chapel)
 "cbA" = (
@@ -3517,7 +3517,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "czJ" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	layer = 2.6
 	},
 /obj/structure/machinery/light/double/blue,
@@ -4115,7 +4115,7 @@
 /area/fiorina/tumor/aux_engi)
 "cYP" = (
 /obj/structure/closet/crate/trashcart,
-/obj/item/storage/pill_bottle/dexalin/skillless,
+/obj/item/storage/pill_bottle/dexalin/no_med_skill,
 /obj/effect/spawner/random/gun/special/midchance,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/prison,
@@ -4562,7 +4562,7 @@
 /turf/open/floor/prison/yellow/southeast,
 /area/fiorina/station/lowsec)
 "dpH" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "dpZ" = (
@@ -4657,7 +4657,7 @@
 /turf/open/floor/prison/whitegreen/southwest,
 /area/fiorina/station/medbay)
 "duw" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -5327,7 +5327,7 @@
 /obj/item/storage/pill_bottle/russianRed{
 	pixel_y = 9
 	},
-/obj/item/storage/pill_bottle/kelotane/skillless,
+/obj/item/storage/pill_bottle/kelotane/no_med_skill,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "dWB" = (
@@ -6167,7 +6167,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "eCK" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/fiorina/lz/near_lzII)
 "eDp" = (
@@ -6489,7 +6489,7 @@
 /area/fiorina/station/medbay)
 "eOQ" = (
 /obj/structure/platform/metal/almayer,
-/obj/structure/reagent_dispensers/fueltank/oxygentank{
+/obj/structure/reagent_dispensers/tank/fuel/oxygentank{
 	layer = 2.6
 	},
 /turf/open/floor/prison,
@@ -6582,7 +6582,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "eSn" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/greenblue/southeast,
 /area/fiorina/station/botany)
 "eSF" = (
@@ -6895,7 +6895,7 @@
 "fdf" = (
 /obj/structure/closet,
 /obj/item/stack/cable_coil,
-/obj/item/storage/pill_bottle/peridaxon/skillless,
+/obj/item/storage/pill_bottle/peridaxon/no_med_skill,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
@@ -7018,7 +7018,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "fjr" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/park)
 "fjI" = (
@@ -7843,7 +7843,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "fUr" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "fUz" = (
@@ -8494,7 +8494,7 @@
 /area/fiorina/tumor/servers)
 "gvr" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/pill_bottle/inaprovaline/skillless,
+/obj/item/storage/pill_bottle/inaprovaline/no_med_skill,
 /turf/open/floor/prison/blue_plate/north,
 /area/fiorina/station/botany)
 "gvs" = (
@@ -9823,7 +9823,7 @@
 /turf/open/floor/prison/darkbrown2,
 /area/fiorina/station/park)
 "htT" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/bluecorner/east,
 /area/fiorina/station/power_ring/reactor)
 "htX" = (
@@ -9921,7 +9921,7 @@
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform_decoration/metal/almayer/southwest,
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.6
 	},
 /turf/open/floor/prison,
@@ -10585,7 +10585,7 @@
 "hWv" = (
 /obj/structure/surface/rack,
 /obj/item/tool/crowbar/red,
-/obj/item/storage/pill_bottle/inaprovaline/skillless,
+/obj/item/storage/pill_bottle/inaprovaline/no_med_skill,
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "hWF" = (
@@ -11814,7 +11814,7 @@
 /area/fiorina/station/civres_blue)
 "iTr" = (
 /obj/structure/closet/basketball,
-/obj/item/storage/pill_bottle/tramadol/skillless,
+/obj/item/storage/pill_bottle/tramadol/no_med_skill,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/west)
@@ -12170,7 +12170,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "jji" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "jjp" = (
@@ -12298,7 +12298,7 @@
 /turf/open/floor/prison/darkpurple2/north,
 /area/fiorina/tumor/servers)
 "jnX" = (
-/obj/item/storage/pill_bottle/spaceacillin/skillless,
+/obj/item/storage/pill_bottle/spaceacillin/no_med_skill,
 /turf/open/floor/prison/whitepurple/northeast,
 /area/fiorina/station/research_cells/west)
 "jor" = (
@@ -12412,7 +12412,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
 "jqM" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/blue_plate/east,
 /area/fiorina/station/botany)
 "jqN" = (
@@ -14518,7 +14518,7 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/civres_blue)
 "kZl" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/tumor/aux_engi)
 "kZu" = (
@@ -15550,7 +15550,7 @@
 /turf/open/floor/almayer_hull,
 /area/fiorina/oob)
 "lJf" = (
-/obj/structure/reagent_dispensers/fueltank/gas/hydrogen{
+/obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen{
 	layer = 2.6
 	},
 /obj/structure/machinery/light/double/blue,
@@ -16251,7 +16251,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "mpf" = (
-/obj/structure/reagent_dispensers/fueltank/gas/hydrogen{
+/obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen{
 	layer = 2.6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -16756,7 +16756,7 @@
 /area/fiorina/tumor/aux_engi)
 "mJg" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/obj/item/storage/pill_bottle/inaprovaline/skillless,
+/obj/item/storage/pill_bottle/inaprovaline/no_med_skill,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/tumor/aux_engi)
@@ -19858,7 +19858,7 @@
 /turf/open/ice/noweed,
 /area/fiorina/tumor/ice_lab)
 "oXS" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "oXT" = (
@@ -20482,7 +20482,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/station/central_ring)
 "pAl" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/blue_plate/west,
 /area/fiorina/station/botany)
 "pAr" = (
@@ -21984,7 +21984,7 @@
 /turf/open/floor/corsat/plate,
 /area/fiorina/station/telecomm/lz1_cargo)
 "qGy" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "qGB" = (
@@ -22919,7 +22919,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/station/medbay)
 "rur" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/station/park)
 "ruu" = (
@@ -24707,7 +24707,7 @@
 /area/fiorina/tumor/fiberbush)
 "sNg" = (
 /obj/structure/closet/firecloset/full,
-/obj/item/storage/pill_bottle/bicaridine/skillless,
+/obj/item/storage/pill_bottle/bicaridine/no_med_skill,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
 "sNi" = (
@@ -25156,7 +25156,7 @@
 /turf/open/floor/corsat/plate,
 /area/fiorina/station/telecomm/lz1_cargo)
 "teu" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "teE" = (
@@ -25872,7 +25872,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "tFo" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	layer = 2.6
 	},
 /turf/open/floor/prison/floor_plate,
@@ -25886,7 +25886,7 @@
 /area/fiorina/station/medbay)
 "tGU" = (
 /obj/structure/closet/crate/medical,
-/obj/item/storage/pill_bottle/tramadol/skillless,
+/obj/item/storage/pill_bottle/tramadol/no_med_skill,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "tGY" = (
@@ -26100,7 +26100,7 @@
 /area/fiorina/station/research_cells/west)
 "tOG" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/storage/pill_bottle/kelotane/skillless,
+/obj/item/storage/pill_bottle/kelotane/no_med_skill,
 /turf/open/floor/carpet,
 /area/fiorina/station/civres_blue)
 "tOM" = (
@@ -27032,7 +27032,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "uEj" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "uEl" = (
@@ -27413,7 +27413,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/station/transit_hub)
 "uSQ" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	layer = 2.6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -28415,7 +28415,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "vFn" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
@@ -28641,7 +28641,7 @@
 /area/fiorina/station/botany)
 "vQC" = (
 /obj/structure/closet/crate/trashcart,
-/obj/item/storage/pill_bottle/kelotane/skillless,
+/obj/item/storage/pill_bottle/kelotane/no_med_skill,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/fiorina/station/park)
@@ -28904,7 +28904,7 @@
 /area/fiorina/tumor/servers)
 "wcC" = (
 /obj/structure/closet/basketball,
-/obj/item/storage/pill_bottle/bicaridine/skillless,
+/obj/item/storage/pill_bottle/bicaridine/no_med_skill,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/west)
@@ -29669,7 +29669,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells/east)
 "wId" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "wIk" = (
@@ -30113,7 +30113,7 @@
 /area/fiorina/station/civres_blue)
 "xak" = (
 /obj/structure/closet/emcloset,
-/obj/item/storage/pill_bottle/kelotane/skillless,
+/obj/item/storage/pill_bottle/kelotane/no_med_skill,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
 "xat" = (
@@ -30121,7 +30121,7 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/civres_blue)
 "xaO" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/medbay)
 "xbc" = (
@@ -31495,7 +31495,7 @@
 "yhs" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/pill_bottle/dexalin/skillless,
+/obj/item/storage/pill_bottle/dexalin/no_med_skill,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/medbay)
 "yhu" = (

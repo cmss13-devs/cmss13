@@ -243,7 +243,7 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "uU" = (
-/obj/item/storage/pill_bottle/tramadol/skillless,
+/obj/item/storage/pill_bottle/tramadol/no_med_skill,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/template_noop)
 "vA" = (

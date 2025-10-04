@@ -65,7 +65,7 @@
 	},
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/explosive/grenade/custom/cleaner,
-/obj/item/storage/pill_bottle/kelotane/skillless,
+/obj/item/storage/pill_bottle/kelotane/no_med_skill,
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "lA" = (
@@ -96,7 +96,7 @@
 	},
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/explosive/grenade/custom/cleaner,
-/obj/item/storage/pill_bottle/bicaridine/skillless,
+/obj/item/storage/pill_bottle/bicaridine/no_med_skill,
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "nn" = (
@@ -212,7 +212,7 @@
 	},
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/explosive/grenade/custom/cleaner,
-/obj/item/storage/pill_bottle/inaprovaline/skillless,
+/obj/item/storage/pill_bottle/inaprovaline/no_med_skill,
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "yZ" = (
@@ -390,7 +390,7 @@
 	},
 /obj/item/explosive/grenade/custom/cleaner,
 /obj/item/explosive/grenade/custom/cleaner,
-/obj/item/storage/pill_bottle/dexalin/skillless,
+/obj/item/storage/pill_bottle/dexalin/no_med_skill,
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "Xo" = (

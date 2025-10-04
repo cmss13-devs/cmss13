@@ -151,7 +151,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
 "cX" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/sign/flag/upp{
 	pixel_y = 28;
 	layer = 2.7
@@ -841,7 +841,7 @@
 "Df" = (
 /obj/structure/surface/rack,
 /obj/item/tool/crowbar/red,
-/obj/item/storage/pill_bottle/inaprovaline/skillless,
+/obj/item/storage/pill_bottle/inaprovaline/no_med_skill,
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "Ds" = (
@@ -1208,7 +1208,7 @@
 /turf/open/floor/plating/prison,
 /area/event/metal/dynamic)
 "OB" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
 "Pm" = (

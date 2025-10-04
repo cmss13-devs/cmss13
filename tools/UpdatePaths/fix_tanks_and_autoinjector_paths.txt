@@ -1,0 +1,45 @@
+/obj/structure/reagent_dispensers/watertank/@SUBTYPES : /obj/structure/reagent_dispensers/tank/water/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/acidtank/@SUBTYPES : /obj/structure/reagent_dispensers/tank/sacid/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/pacidtank/@SUBTYPES : /obj/structure/reagent_dispensers/tank/pacid/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/ethanoltank/@SUBTYPES : /obj/structure/reagent_dispensers/tank/ethanol/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/ammoniatank/@SUBTYPES: /obj/structure/reagent_dispensers/tank/ammonia/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/yautja/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/yautja/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/spacecraft/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/spacecraft/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/gas/methane/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/gas/methane/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/gas/hydrogen/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/oxygentank/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/gas/oxygen/@SUBTYPES{@OLD}
+/obj/structure/reagent_dispensers/fueltank/custom/@SUBTYPES : /obj/structure/reagent_dispensers/tank/fuel/custom/@SUBTYPES{@OLD}
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/unit/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/unit/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/verysmall/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/small/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/medium/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/large/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/large/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/extralarge/@SUBTYPES{@OLD}
+
+/obj/item/reagent_container/hypospray/autoinjector/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/no_med_skill/tramadol/@SUBTYPES{@OLD}
+
+/obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/antitoxin/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/bicaridine/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/kelotane/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/tramadol/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/tricord/no_med_skill/@SUBTYPES{@OLD}
+
+/obj/item/storage/pill_bottle/kelotane/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/kelotane/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/storage/pill_bottle/antitox/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/antitox/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/storage/pill_bottle/inaprovaline/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/inaprovaline/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/storage/pill_bottle/tramadol/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/tramadol/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/storage/pill_bottle/spaceacillin/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/spaceacillin/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/storage/pill_bottle/bicaridine/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/bicaridine/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/storage/pill_bottle/dexalin/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/dexalin/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/storage/pill_bottle/alkysine/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/alkysine/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/storage/pill_bottle/imidazoline/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/imidazoline/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/storage/pill_bottle/peridaxon/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/peridaxon/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/storage/pill_bottle/russianRed/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/russianRed/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/storage/pill_bottle/ultrazine/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/ultrazine/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/storage/pill_bottle/mystery/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/mystery/no_med_skill/@SUBTYPES{@OLD}
+/obj/item/storage/pill_bottle/stimulant/skillless/@SUBTYPES : /obj/item/storage/pill_bottle/stimulant/no_med_skill/@SUBTYPES{@OLD}
+

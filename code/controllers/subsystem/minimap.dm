@@ -476,7 +476,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(!user)
 		return
 
-	var/atom/movable/screen/plane_master/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
+	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
 
 	if(!plane_master)
 		return
@@ -488,12 +488,12 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(mods[SHIFT_CLICK])
 		transform.Translate(delta_y / 32, delta_x / 32)
-		cur_x_shift -= delta_y / 32
-		cur_y_shift -= delta_x / 32
+		plane_master.cur_x_shift -= delta_y / 32
+		plane_master.cur_y_shift -= delta_x / 32
 	else
 		transform.Translate(delta_x / 32, delta_y / 32)
-		cur_x_shift -= delta_x / 32
-		cur_y_shift -= delta_y / 32
+		plane_master.cur_x_shift -= delta_x / 32
+		plane_master.cur_y_shift -= delta_y / 32
 
 	plane_master.transform = transform
 
@@ -1042,16 +1042,25 @@ SUBSYSTEM_DEF(minimaps)
 	last_drawn = world.time
 
 	sleep(0) // to reschedule us to the end of the tick
-	active_draw_tool.process_queue()
+	var/mob/user = usr
+
+	if(!user)
+		return
+	active_draw_tool.process_queue(user)
 
 
-/atom/movable/screen/minimap_tool/draw_tool/proc/process_queue()
+/atom/movable/screen/minimap_tool/draw_tool/proc/process_queue(mob/user)
 	var/icon/slate = icon(drawn_image.icon)
 	var/first = TRUE
+	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
+
+	if(!plane_master)
+		return
+
 
 	if(!last_coords)
 		var/vector/first_in_queue = freedraw_queue[1]
-		last_coords = list(first_in_queue.x + linked_map.cur_x_shift, first_in_queue.y + linked_map.cur_x_shift)
+		last_coords = list(first_in_queue.x + plane_master.cur_x_shift, first_in_queue.y + plane_master.cur_x_shift)
 	else
 		first = FALSE
 
@@ -1060,8 +1069,8 @@ SUBSYSTEM_DEF(minimaps)
 			first = FALSE
 			continue
 
-		var/px = vector.x + linked_map.cur_x_shift
-		var/py = vector.y + linked_map.cur_y_shift
+		var/px = vector.x + plane_master.cur_x_shift
+		var/py = vector.y + plane_master.cur_y_shift
 
 		draw_line(last_coords, list(px, py), slate)
 		last_coords = list(px, py)
@@ -1075,9 +1084,15 @@ SUBSYSTEM_DEF(minimaps)
 	. = ..()
 	if(!.)
 		return
+
+	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
+
+	if(!plane_master)
+		return
+
 	var/list/modifiers = params2list(params)
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
-	pixel_coords = list(pixel_coords[1] + linked_map.cur_x_shift, pixel_coords[2] + linked_map.cur_y_shift)
+	pixel_coords = list(pixel_coords[1] + plane_master.cur_x_shift, pixel_coords[2] + plane_master.cur_y_shift)
 	if(modifiers[BUTTON] == MIDDLE_CLICK)
 		var/icon/mona_lisa = icon(drawn_image.icon)
 		mona_lisa.DrawBox(color, pixel_coords[1], pixel_coords[2], ++pixel_coords[1], ++pixel_coords[2])
@@ -1094,7 +1109,13 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/modifiers = params2list(params)
 	var/list/end_coords = params2screenpixel(modifiers["screen-loc"])
 	var/icon/slate = icon(drawn_image.icon)
-	end_coords = list(end_coords[1] + linked_map.cur_x_shift, end_coords[2] + linked_map.cur_y_shift)
+
+	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
+
+	if(!plane_master)
+		return
+
+	end_coords = list(end_coords[1] + plane_master.cur_x_shift, end_coords[2] + plane_master.cur_y_shift)
 	draw_line(starting_coords, end_coords, slate)
 	drawn_image.icon = slate
 	last_drawn = list(starting_coords, end_coords)

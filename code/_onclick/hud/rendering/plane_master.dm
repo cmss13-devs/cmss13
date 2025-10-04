@@ -230,3 +230,5 @@
 	name = "minimap plane"
 	plane = TACMAP_PLANE
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR|PIXEL_SCALE
+	var/cur_x_shift = 0
+	var/cur_y_shift = 0

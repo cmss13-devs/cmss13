@@ -750,6 +750,15 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1)
+"acV" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been fried via acid damage, and it will open fire on any targets within range.";
+	name = "Damaged UA-577 Gauss Turret"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -25492,6 +25501,10 @@
 	pixel_x = 1;
 	pixel_y = 4
 	},
+/obj/item/defenses/handheld/sentry/mini{
+	pixel_y = -4;
+	pixel_x = -5
+	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "nBo" = (
@@ -34818,6 +34831,8 @@
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
 "sjS" = (
 /obj/structure/closet/crate/green,
+/obj/item/device/sentry_computer,
+/obj/item/defenses/handheld/sentry,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "sjY" = (
@@ -75300,7 +75315,7 @@ wGY
 hJG
 mEz
 iwt
-jUn
+acV
 jUn
 sPb
 sam

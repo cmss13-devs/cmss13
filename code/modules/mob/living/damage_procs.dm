@@ -15,11 +15,11 @@
 	Returns
 	standard 0 if fail
 */
-/mob/living/proc/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE)
+/mob/living/proc/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE, enviro = FALSE)
 	if(!damage)
 		return FALSE
 
-	var/list/damagedata = list("damage" = damage)
+	var/list/damagedata = list("damage" = damage, "enviro" = enviro)
 	if(SEND_SIGNAL(src, COMSIG_MOB_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE)
 		return
 	damage = damagedata["damage"]

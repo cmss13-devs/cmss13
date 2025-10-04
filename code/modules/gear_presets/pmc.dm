@@ -20,29 +20,30 @@
 	return
 
 /datum/equipment_preset/pmc/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(MALE,FEMALE)
-	var/random_name
-	var/first_name
-	var/last_name
+	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	if(new_human.gender == MALE)
-		if(prob(10))
-			first_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
-		else
-			first_name = "[pick(GLOB.first_names_male_pmc)]"
-		new_human.f_style = "5 O'clock Shadow"
+
+	var/first_name
+	var/last_name
+	if(prob(10))
+		first_name = capitalize(randomly_generate_japanese_word(rand(2, 3)))
 	else
-		if(prob(10))
-			first_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
-		else
-			first_name = "[pick(GLOB.first_names_female_pmc)]"
+		switch(new_human.gender)
+			if(FEMALE)
+				first_name = capitalize(pick(GLOB.first_names_female_pmc))
+			if(PLURAL, NEUTER) // Not currently possible
+				first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_pmc) : pick(GLOB.first_names_female_pmc))
+			else // MALE
+				first_name = capitalize(pick(GLOB.first_names_male_pmc))
+				new_human.f_style = "5 O'clock Shadow"
 	if(prob(25))
-		last_name = "[capitalize(randomly_generate_japanese_word(rand(2, 4)))]"
+		last_name = capitalize(randomly_generate_japanese_word(rand(2, 4)))
 	else
-		last_name = "[pick(GLOB.last_names_pmc)]"
-	random_name = "[first_name] [last_name]"
-	new_human.change_real_name(new_human, random_name)
+		last_name = pick(GLOB.last_names_pmc)
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
+
 	new_human.age = rand(25,35)
 	new_human.h_style = "Shaved Head"
 	new_human.r_hair = 25
@@ -1899,19 +1900,22 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 
 /datum/equipment_preset/pmc/synth/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(50;MALE,50;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
+
 	var/random_name
 	if(prob(10))
 		random_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
-	else if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male_pmc)]"
-	else
-		random_name = "[pick(GLOB.first_names_female_pmc)]"
-
-	if(new_human.gender == MALE)
-		new_human.f_style = "5 O'clock Shadow"
+	switch(new_human.gender)
+		if(FEMALE)
+			random_name = capitalize(pick(GLOB.first_names_female_pmc))
+		if(PLURAL, NEUTER) // Not currently possible
+			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_pmc) : pick(GLOB.first_names_female_pmc))
+		else // MALE
+			random_name = capitalize(pick(GLOB.first_names_male_pmc))
+			new_human.f_style = "5 O'clock Shadow"
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.r_hair = 15

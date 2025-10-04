@@ -10,6 +10,7 @@
 	ceiling = CEILING_GLASS
 	minimap_color = MINIMAP_AREA_COLONY
 	ceiling_muffle = FALSE
+	unoviable_timer = FALSE
 
 //parent types
 
@@ -64,39 +65,49 @@
 	name = "Abyssal - Emergency Radiation Bunker"
 	icon_state = "police_line"
 	flags_area = AREA_NOTUNNEL
+	minimap_color = MINIMAP_AREA_JUNGLE
 
 //Corridor
 /area/abyssal/interior/corridor_west
 	name = "Abyssal - Port - Main Corridor"
 	icon_state = "station0"
+	linked_lz = DROPSHIP_LZ1
+	minimap_color = MINIMAP_DIRT
 
 /area/abyssal/interior/corridor_central
 	name = "Abyssal - Central - Main Corridor"
 	icon_state = "station0"
+	minimap_color = MINIMAP_DIRT
 
 /area/abyssal/interior/corridor_east
 	name = "Abyssal - Starboard - Main Corridor"
 	icon_state = "station0"
+	minimap_color = MINIMAP_DIRT
 
 //Telecommunications
 /area/abyssal/interior/telecomms_1
 	name = "Abyssal - Secondary Telecommunications Hub"
 	icon_state = "power0"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/abyssal/interior/telecomms_2
 	name = "Abyssal - Primary Telecommunications Hub"
 	icon_state = "power0"
+	minimap_color = MINIMAP_AREA_ENGI
 
 //Maintenance
 /area/abyssal/interior/maintenance
 	name = "Abyssal - Maintenance"
 	icon_state = "maints"
+	minimap_color = MINIMAP_LAVA
 
 /area/abyssal/interior/maintenance/west
 	name = "Abyssal - Port - Maintenance"
+	linked_lz = DROPSHIP_LZ1
 
 /area/abyssal/interior/maintenance/south
 	name = "Abyssal - Aft - Maintenance"
+	linked_lz = DROPSHIP_LZ1
 
 /area/abyssal/interior/maintenance/north
 	name = "Abyssal - Fore - Maintenance"
@@ -111,56 +122,72 @@
 /area/abyssal/interior/solar_control_south
 	name = "Abyssal - Aft - Solar Interior Controlroom"
 	icon_state = "disco"
+	minimap_color = MINIMAP_AREA_GLASS
 
-//Solar Control
 /area/abyssal/interior/solar_control_north
 	name = "Abyssal - Fore - Solar Interior Controlroom"
 	icon_state = "disco"
+	minimap_color = MINIMAP_AREA_GLASS
 
 //Departments
 /area/abyssal/interior/arrivals
 	name = "Abyssal - Arrivals Wing"
 	icon_state = "station1"
+	linked_lz = DROPSHIP_LZ1
+	minimap_color = MINIMAP_AREA_CELL_MED
 
 /area/abyssal/interior/cargo
 	name = "Abyssal - Cargo Wing"
 	icon_state = "station1"
+	linked_lz = DROPSHIP_LZ1
+	minimap_color = MINIMAP_AREA_SHIP
 
 /area/abyssal/interior/atmo
 	name = "Abyssal - Atmospherics"
 	icon_state = "station1"
+	linked_lz = DROPSHIP_LZ1
+	minimap_color = MINIMAP_AREA_CELL_VIP
 
 /area/abyssal/interior/hydro
 	name = "Abyssal - Hydroponics"
 	icon_state = "botany"
+	minimap_color = MINIMAP_AREA_CELL_LOW
 
 /area/abyssal/interior/dormitory
 	name = "Abyssal - Dormitory"
 	icon_state = "station2"
+	minimap_color = MINIMAP_AREA_CELL_VIP
 
 /area/abyssal/interior/galley
 	name = "Abyssal - Galley Kitchen"
 	icon_state = "station2"
+	linked_lz = DROPSHIP_LZ1
+	minimap_color = MINIMAP_AREA_CELL_VIP
 
 /area/abyssal/interior/security
 	name = "Abyssal - Security Wing"
 	icon_state = "security_hub"
+	minimap_color = MINIMAP_AREA_COLONY_MARSHALLS
 
 /area/abyssal/interior/engineering
 	name = "Abyssal - Engineering Wing"
 	icon_state = "power0"
+	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
 
 /area/abyssal/interior/medical
 	name = "Abyssal - Medical Wing"
 	icon_state = "station3"
+	minimap_color = MINIMAP_AREA_COLONY_HOSPITAL
 
 /area/abyssal/interior/science
 	name = "Abyssal - Science Wing"
 	icon_state = "station4"
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/abyssal/interior/command
 	name = "Abyssal - Command Wing"
 	icon_state = "fiorina"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 //// Exterior Station \\\\
 
@@ -172,6 +199,18 @@
 	name = "Abyssal - Exterior Aft"
 	icon_state = "maints"
 
+//// Derelict Shuttle \\\\
+
+/area/abyssal/interior/derelict_shuttle
+	name = "Unidentified Space Craft (UFO-1)"
+	icon_state = "tumor0-deep"
+	ceiling = CEILING_REINFORCED_METAL
+	flags_area = AREA_NOTUNNEL
+	ambience_exterior = AMBIENCE_DERELICT
+	soundscape_playlist = SCAPE_PL_LV759_DERELICTSHIP
+	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	requires_power = FALSE
+
 //// Gonzo \\\\
 
 /area/abyssal/gonzo
@@ -179,7 +218,6 @@
 	icon_state = "maints"
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
-	temperature = T20C
 	flags_area = AREA_NOTUNNEL
 	minimap_color = MINIMAP_AREA_GLASS
 	ambience_exterior = SCAPE_ABYSSAL_EXTERIOR

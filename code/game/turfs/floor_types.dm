@@ -4817,6 +4817,9 @@
 /turf/open/floor/darkish
 	icon_state = "darkish"
 
+/turf/open/floor/darkish/unweedable
+	is_weedable = NOT_WEEDABLE
+
 /turf/open/floor/delivery
 	icon_state = "delivery"
 

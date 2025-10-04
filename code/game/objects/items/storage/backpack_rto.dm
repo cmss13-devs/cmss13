@@ -41,6 +41,14 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	deploy_rto(user_mob)
 
+/obj/item/storage/backpack/marine/satchel/rto/verb/use_phone_verb()
+	set name = "Use phone"
+	set category = "Object"
+	set src in usr
+	var/mob/user_mob = usr
+
+	use_phone(user_mob)
+
 /obj/item/storage/backpack/marine/satchel/rto/proc/deploy_rto(mob/living/user)
 	if(user.action_busy)
 		return

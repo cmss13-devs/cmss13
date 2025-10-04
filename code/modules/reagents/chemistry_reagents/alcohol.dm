@@ -15,7 +15,7 @@
 	description = "A well-known alcohol with a variety of applications."
 	reagent_state = LIQUID
 	nutriment_factor = 0 //So alcohol can fill you up! If they want to.
-	color = "#404030" // rgb: 64, 64, 48
+	color = "#a0a0a0" // rgb: 64, 64, 48 //Changed because it had the same hex as Ammonia
 	chemfiresupp = TRUE
 	burncolor = "#6897f7"
 	burncolormod = 2
@@ -171,7 +171,7 @@
 /datum/reagent/ethanol/rum
 	name = "Rum"
 	id = "rum"
-	description = "Yohoho and all that."
+	description = "Work all night on a drink o' rum! Xenos come and me wan' go home."
 	color = "#664300" // rgb: 102, 67, 0
 	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
@@ -179,7 +179,7 @@
 /datum/reagent/ethanol/tequila
 	name = "Tequila"
 	id = "tequila"
-	description = "A strong and mildly flavoured, mexican produced spirit. Feeling thirsty hombre?"
+	description = "A strong and mildly flavoured, Mexican-produced spirit. Feeling thirsty hombre?"
 	color = "#FFFF91" // rgb: 255, 255, 145
 	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
@@ -195,7 +195,7 @@
 /datum/reagent/ethanol/wine
 	name = "Wine"
 	id = "wine"
-	description = "A premium alcoholic beverage made from distilled grape juice."
+	description = "A premium alcoholic beverage made from fermented grape juice." //Wine is not distilled, the fuck?
 	color = "#7E4043" // rgb: 126, 64, 67
 	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
@@ -555,7 +555,7 @@
 /datum/reagent/ethanol/barefoot
 	name = "Barefoot"
 	id = "barefoot"
-	description = "Barefoot and pregnant"
+	description = "Barefoot and pregnant."
 	color = "#664300" // rgb: 102, 67, 0
 	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
@@ -563,7 +563,7 @@
 /datum/reagent/ethanol/snowwhite
 	name = "Snow White"
 	id = "snowwhite"
-	description = "A cold refreshment"
+	description = "A cold refreshment."
 	color = COLOR_WHITE
 	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1.5
@@ -705,7 +705,7 @@
 /datum/reagent/ethanol/alliescocktail
 	name = "Allies Cocktail"
 	id = "alliescocktail"
-	description = "A drink made from your allies, not as sweet as when made from your enemies."
+	description = "A drink made from your allies; not as sweet as when made from your enemies."
 	color = "#664300" // rgb: 102, 67, 0
 	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 2
@@ -713,7 +713,7 @@
 /datum/reagent/ethanol/acid_spit
 	name = "Acid Spit"
 	id = "acidspit"
-	description = "A drink for the daring, can be deadly if incorrectly prepared!"
+	description = "A drink for the daring; it can be deadly if incorrectly prepared!"
 	reagent_state = LIQUID
 	color = "#365000" // rgb: 54, 80, 0
 	properties = list(PROPERTY_ALCOHOLIC = 1.5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
@@ -755,7 +755,7 @@
 /datum/reagent/ethanol/spikedeggnog
 	name = "Spiked Eggnog"
 	id = "spikedeggnog"
-	description = "A rich and sweet alcoholic beverage traditionally consumed around Christmastime."
+	description = "A rich and sweet alcoholic beverage made with milk, cream, sugar, and eggs, traditionally consumed around Christmas time."
 	color = "#DFD7AF" // rgb: 223, 215, 175
 	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
@@ -780,7 +780,7 @@
 /datum/reagent/ethanol/bananahonk
 	name = "Banana Mama"
 	id = "bananahonk"
-	description = "A drink from Clown Heaven."
+	description = "A drink from Clown Heaven. Come, Mr. Tallyman, tally me banana!"
 	nutriment_factor = 1 * REAGENTS_METABOLISM
 	color = "#FFFF91" // rgb: 255, 255, 140
 	properties = list(PROPERTY_ALCOHOLIC = 4, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)

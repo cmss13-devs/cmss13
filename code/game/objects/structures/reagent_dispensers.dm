@@ -14,6 +14,7 @@
 	var/possible_transfer_amounts = list(5,10,20,30,40,50,60,100,200,300)
 	var/chemical = ""
 	var/dispensing = TRUE
+	var/tank = FALSE
 
 /obj/structure/reagent_dispensers/Initialize(mapload, reagent_amount = 1000)
 	. = ..()
@@ -25,6 +26,26 @@
 		reagents.add_reagent(chemical, reagent_amount)
 	if(!anchored && is_ground_level(z) && prob(70))
 		anchored = TRUE
+	if(tank == TRUE)
+		if(reagents && reagents.total_volume)
+			var/image/meter = image(icon, src, "t-25")
+
+			var/percent = floor((reagents.total_volume / reagents.maximum_volume * 100))
+			switch(percent)
+				if(0)
+					meter.icon_state = "t_0"
+				if(1 to 20)
+					meter.icon_state = "t_20"
+				if(21 to 40)
+					meter.icon_state = "t_40"
+				if(41 to 60)
+					meter.icon_state = "t_60"
+				if(61 to 80)
+					meter.icon_state = "t_80"
+				if(81 to INFINITY)
+					meter.icon_state = "t_100"
+
+			overlays += meter
 
 /obj/structure/reagent_dispensers/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -145,47 +166,71 @@
 		return
 	. = ..()
 
+/obj/structure/reagent_dispensers/update_icon(tank = TRUE)
+	overlays.Cut()
+
+	if(reagents && reagents.total_volume)
+		var/image/meter = image(icon, src, "t-25")
+
+		var/percent = floor((reagents.total_volume / reagents.maximum_volume * 100))
+		switch(percent)
+			if(0)
+				meter.icon_state = "t_0"
+			if(1 to 20)
+				meter.icon_state = "t_20"
+			if(21 to 40)
+				meter.icon_state = "t_40"
+			if(41 to 60)
+				meter.icon_state = "t_60"
+			if(61 to 80)
+				meter.icon_state = "t_80"
+			if(81 to INFINITY)
+				meter.icon_state = "t_100"
+
+		overlays += meter
 //Dispensers
 /obj/structure/reagent_dispensers/watertank
 	name = "watertank"
-	desc = "A water tank"
+	desc = "A water tank."
 	icon_state = "watertank"
 	chemical = "water"
-
+	tank = TRUE
 /obj/structure/reagent_dispensers/watertank/yautja
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/reagent_dispensers/ammoniatank
 	name = "ammoniatank"
-	desc = "An ammonia tank"
+	desc = "An ammonia tank."
 	icon_state = "ammoniatank"
 	chemical = "ammonia"
+	tank = TRUE
 
 /obj/structure/reagent_dispensers/acidtank
 	name = "sulfuric acid tank"
-	desc = "A sulfuric acid tank"
+	desc = "A sulfuric acid tank."
 	icon_state = "sacidtank"
 	chemical = "sulphuric acid"
-
+	tank = TRUE
 /obj/structure/reagent_dispensers/pacidtank
 	name = "polytrinic acid tank"
-	desc = "A polytrinic acid tank"
+	desc = "A polytrinic acid tank."
 	icon_state = "pacidtank"
 	chemical = "pacid"
-
+	tank = TRUE
 /obj/structure/reagent_dispensers/ethanoltank
 	name = "ethanol tank"
 	desc = "An ethanol tank."
 	icon_state = "ethanoltank"
 	chemical = "ethanol"
-
+	tank = TRUE
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
-	desc = "A fuel tank"
+	desc = "A fuel tank."
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
 	chemical = "fuel"
 	black_market_value = 25
+	tank = TRUE
 	var/modded = 0
 	var/obj/item/device/assembly_holder/rig = null
 	var/exploding = 0
@@ -218,7 +263,7 @@
 	src.add_fingerprint(user)
 
 	if(user.action_busy)
-		to_chat(user, SPAN_WARNING("You're already peforming an action!"))
+		to_chat(user, SPAN_WARNING("You're already performing an action!"))
 		return
 
 	if(istype(W,/obj/item/device/assembly_holder))
@@ -369,16 +414,14 @@
 
 /obj/structure/reagent_dispensers/fueltank/yautja
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
-
 /obj/structure/reagent_dispensers/fueltank/gas
-	name = "gastank"
-	desc = "A gas tank"
+	name = "gas tank"
+	desc = "A gas tank."
 
 /obj/structure/reagent_dispensers/fueltank/spacecraft
 	name = "spacecraft fuel-mix tank"
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible."
 	icon_state = "weldtank_alt"
-
 /obj/structure/reagent_dispensers/fueltank/gas/leak_fuel(amount)
 	if(reagents.total_volume == 0)
 		return
@@ -388,19 +431,19 @@
 
 /obj/structure/reagent_dispensers/fueltank/gas/methane
 	name = "methanetank"
-	desc = "A methane tank"
+	desc = "A methane tank."
 	icon_state = "methanetank"
 	chemical = "methane"
 
 /obj/structure/reagent_dispensers/fueltank/gas/hydrogen
 	name = "hydrogentank"
-	desc = "A hydrogen tank"
+	desc = "A hydrogen tank."
 	icon_state = "hydrogentank"
 	chemical = "hydrogen"
 
 /obj/structure/reagent_dispensers/fueltank/oxygentank
 	name = "oxygentank"
-	desc = "An oxygen tank"
+	desc = "An oxygen tank."
 	icon_state = "oxygentank"
 	chemical = "oxygen"
 

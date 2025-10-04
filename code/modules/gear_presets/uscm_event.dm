@@ -211,7 +211,7 @@
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
 	minimap_icon = "pve"
-
+	
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)

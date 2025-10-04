@@ -28,11 +28,16 @@
 
 	/// The type of wall decoration we use, to avoid the wall changing icon all the time
 	var/decoration_type
+	minimap_color = MINIMAP_BLACK
 
-/turf/closed/wall/almayer/Initialize(mapload, ...)
+/turf/closed/wall/almayer/Initialize(mapload)
 	if(!special_icon && prob(20))
 		decoration_type = rand(0,3)
-	return ..()
+	. = ..()
+	for(var/direction in GLOB.cardinals)
+		var/turf/turf_to_check = get_step(src, direction)
+		if(!isnull(turf_to_check) && !turf_to_check.density && !(istype(turf_to_check, /turf/open/space)))
+			minimap_color = MINIMAP_SOLID
 
 /turf/closed/wall/almayer/update_icon()
 	if(decoration_type == null)
@@ -573,6 +578,14 @@
 	walltype = WALL_CAVE
 	turf_flags = TURF_HULL
 	baseturfs = /turf/open/gm/dirt
+	minimap_color = MINIMAP_BLACK
+
+/turf/closed/wall/rock/Initialize(mapload)
+	. = ..()
+	for(var/direction in GLOB.cardinals)
+		var/turf/turf_to_check = get_step(src, direction)
+		if(!isnull(turf_to_check) && !turf_to_check.density && !(istype(turf_to_check, /turf/open/space)))
+			minimap_color = MINIMAP_SOLID
 
 /turf/closed/wall/rock/brown
 	color = "#826161"
@@ -601,6 +614,14 @@
 	desc = "An absolutely massive collection of columns made of ice. The longer you stare, the deeper the ice seems to go."
 	walltype = WALL_STRATA_ICE //Not a metal wall
 	turf_flags = TURF_HULL //Can't break this ice.
+	minimap_color = MINIMAP_BLACK
+
+/turf/closed/wall/strata_ice/Initialize(mapload)
+	. = ..()
+	for(var/direction in GLOB.cardinals)
+		var/turf/turf_to_check = get_step(src, direction)
+		if(!isnull(turf_to_check) && !turf_to_check.density && !(istype(turf_to_check, /turf/open/space)))
+			minimap_color = MINIMAP_SOLID
 
 /turf/closed/wall/strata_ice/dirty
 	icon_state = "strata_ice_dirty"
@@ -614,6 +635,14 @@
 	desc = "Exceptionally dense vegetation that you can't see through."
 	walltype = WALL_JUNGLE_UPDATED //Not a metal wall
 	turf_flags = TURF_HULL
+	minimap_color = MINIMAP_BLACK
+
+/turf/closed/wall/strata_ice/jungle/Initialize(mapload)
+	. = ..()
+	for(var/direction in GLOB.cardinals)
+		var/turf/turf_to_check = get_step(src, direction)
+		if(!isnull(turf_to_check) && !turf_to_check.density && !(istype(turf_to_check, /turf/open/space)))
+			minimap_color = MINIMAP_SOLID
 
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
 	name = "ribbed outpost walls"
@@ -704,6 +733,14 @@
 	icon_state = "rock"
 	walltype = WALL_KUTJEVO_ROCK
 	turf_flags = TURF_HULL
+	minimap_color = MINIMAP_BLACK
+
+/turf/closed/wall/kutjevo/rock/Initialize(mapload)
+	. = ..()
+	for(var/direction in GLOB.cardinals)
+		var/turf/turf_to_check = get_step(src, direction)
+		if(!isnull(turf_to_check) && !turf_to_check.density && !(istype(turf_to_check, /turf/open/space)))
+			minimap_color = MINIMAP_SOLID
 
 /turf/closed/wall/kutjevo/rock/border
 	icon_state = "rock_border"//no sandy edges

@@ -1098,7 +1098,8 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "aFp" = (
 /obj/structure/machinery/defenses/tesla_coil/premade/smart{
-	faction_group = list("CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/tumor/ship)

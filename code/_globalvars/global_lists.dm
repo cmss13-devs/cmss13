@@ -16,9 +16,9 @@ GLOBAL_LIST_EMPTY(bug_reports)
 GLOBAL_LIST_EMPTY(uscm_flat_tacmap_data)
 GLOBAL_LIST_EMPTY(xeno_flat_tacmap_data)
 
-//datum containing the svg overlay coords in array format.
-GLOBAL_LIST_EMPTY(uscm_svg_tacmap_data)
-GLOBAL_LIST_EMPTY(xeno_svg_tacmap_data)
+//datum containing the drawing overlay coords in array format.
+GLOBAL_LIST_EMPTY(uscm_drawing_tacmap_data)
+GLOBAL_LIST_EMPTY(xeno_drawing_tacmap_data)
 
 GLOBAL_LIST_EMPTY(failed_fultons) //A list of fultoned items which weren't collected and fell back down
 GLOBAL_LIST_EMPTY(larva_burst_by_hive)

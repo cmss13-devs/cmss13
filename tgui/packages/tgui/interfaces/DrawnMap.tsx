@@ -2,7 +2,13 @@ import { Component, createRef } from 'react';
 import { Box } from 'tgui/components';
 
 type DrawMapRrops = {
-  readonly svgData: (string | number | CanvasGradient | CanvasPattern)[];
+  readonly svgData?: (
+    | string
+    | number
+    | CanvasGradient
+    | CanvasPattern
+    | null
+  )[];
   readonly flatImage: string;
   readonly backupImage: string;
 };
@@ -12,7 +18,7 @@ export class DrawnMap extends Component<DrawMapRrops> {
   containerRef: React.RefObject<HTMLDivElement>;
   flatImgSrc: string;
   img: HTMLImageElement | null;
-  svg: (string | number | CanvasGradient | CanvasPattern)[];
+  svg?: (string | number | CanvasGradient | CanvasPattern | null)[];
   state: { mapLoad: boolean; loadingBackup: boolean };
   constructor(props) {
     super(props);

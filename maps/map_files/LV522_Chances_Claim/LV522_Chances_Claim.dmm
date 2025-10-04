@@ -750,15 +750,6 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1)
-"acV" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been fried via acid damage, and it will open fire on any targets within range.";
-	name = "Damaged UA-577 Gauss Turret"
-	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison,
-/area/lv522/indoors/a_block/admin)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -1151,6 +1142,15 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_west_street)
+"anM" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been fried via acid damage, and it will open fire on any targets within range.";
+	name = "Damaged UA-577 Gauss Turret"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
 "anP" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/prison,
@@ -75315,7 +75315,7 @@ wGY
 hJG
 mEz
 iwt
-acV
+anM
 jUn
 sPb
 sam

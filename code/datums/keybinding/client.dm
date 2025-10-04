@@ -63,3 +63,19 @@
 		return
 	user.mob.button_pressed_F12()
 	return TRUE
+/*
+/datum/keybinding/client/switch_to_chatbox
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Tab")
+	name = "switch_to_chatbox"
+	full_name = "Switch to chatbox entry field"
+	description = "Yuh yuh"
+	keybind_signal = COMSIG_KB_CLIENT_SWITCH_TO_CHATBOX
+
+/datum/keybinding/client/entry_field_switch/down(client/user)
+	. = ..()
+	if(.)
+		return
+	winset(user, null, "command= input.focus=true?map.focus=true:input.focus=true")
+	return TRUE
+*/

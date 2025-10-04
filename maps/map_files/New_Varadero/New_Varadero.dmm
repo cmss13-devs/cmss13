@@ -27341,6 +27341,14 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"vMc" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva/blue/north,
+/area/varadero/interior/administration)
 "vMe" = (
 /obj/structure/largecrate/random/mini/med{
 	layer = 3.01;
@@ -43376,7 +43384,7 @@ qqA
 qqA
 bYT
 xgG
-xUq
+vMc
 tkT
 rzg
 rzg

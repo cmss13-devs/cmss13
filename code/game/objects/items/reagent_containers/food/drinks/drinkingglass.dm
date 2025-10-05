@@ -680,7 +680,7 @@
 	if(reagents)
 		for(var/mob/O in viewers(user, null))
 			O.show_message(text(SPAN_NOTICE("<B>The contents of \the [src] splashes all over [target]!</B>")), SHOW_MESSAGE_VISIBLE)
-		reagents.reaction(target, TOUCH)
+		reagents.trans_to(target, reagents.total_volume, method = TOUCH)
 
 	smash(target, user)
 

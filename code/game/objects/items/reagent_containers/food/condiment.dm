@@ -45,7 +45,7 @@
 
 	if(reagents.total_volume)
 		reagents.set_source_mob(user)
-		reagents.trans_to_ingest(M, 10)
+		reagents.trans_to_ingest(M, 10, method = INGESTION)
 	playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 	return TRUE
 

@@ -3,6 +3,7 @@
 /datum/reagent/medical
 	flags = REAGENT_TYPE_MEDICAL | REAGENT_SCANNABLE
 	preferred_delivery = CONTROLLED_INGESTION | INJECTION
+	undesired_delivery = INGESTION // without this, people can still make unga, and we don't want that no more
 
 /datum/reagent/medical/inaprovaline
 	name = "Inaprovaline"
@@ -140,6 +141,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1, PROPERTY_OXYGENATING = 1)
 	preferred_delivery = CONTROLLED_INGESTION | INJECTION | ABSORPTION
+	undesired_delivery = NO_DELIVERY
 
 
 /datum/reagent/medical/anti_toxin

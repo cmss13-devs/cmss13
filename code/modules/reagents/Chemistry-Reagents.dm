@@ -68,6 +68,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/target_temp = 310
 	/// The preferred reagent delivery of the chemical, can have multiple, such as INGESTION | INHALATION
 	var/preferred_delivery = NO_DELIVERY
+	/// The undesired reagent delivery of the chemical, opposite of the preferred, obviously
+	var/undesired_delivery = NO_DELIVERY
 	/// How the reagent was delivered to the current holder.
 	var/delivery_method = NO_DELIVERY
 
@@ -294,6 +296,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	flags = C.flags
 	lockdown_chem = C.lockdown_chem
 	credit_reward = C.credit_reward
+	preferred_delivery = C.preferred_delivery
+	undesired_delivery = C.undesired_delivery
 	delivery_method = C.delivery_method
 
 /datum/chemical_reaction/proc/make_alike(datum/chemical_reaction/C)
@@ -412,6 +416,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 
 /datum/reagent/proc/calc_delivery_spectrum(method=TOUCH)
+	if(undesired_delivery & (ANY_DELIVERY|method)) // check the unpreferred first since we wanna fuck over any kind of bug abusers if they find a way to game this shit
+		return DELIVERY_NEGATIVE_EFFECT
 	if(preferred_delivery & (ANY_DELIVERY|method))
 		return DELIVERY_PREFERRED_EFFECT
 

@@ -1,0 +1,5 @@
+author: "BKryth"
+delete-after: True
+changes:
+  - balance: "lowers required neurotoxin plasma to turn shrapnel type of custom explosives from 30 to 10"
+  - bugfix: "replaces the chemical required to turn shrapnel into hornet shrapnel from sulphuric acid into polytrinic acid due to recipe conflicts"

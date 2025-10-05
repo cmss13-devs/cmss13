@@ -265,7 +265,6 @@
 #define RENDER_PLANE_GAME 990
 #define RENDER_PLANE_NON_GAME 995
 
-#define ESCAPE_MENU_PLANE 997
 
 #define RENDER_PLANE_MASTER 999
 
@@ -279,7 +278,7 @@
 #define TACMAP_PLANE 1149
 #define ABOVE_TACMAP_PLANE 1150
 #define CINEMATIC_PLANE 1200
-
+#define ESCAPE_MENU_PLANE 1300
 
 /// Plane master controller keys
 #define PLANE_MASTERS_GAME "plane_masters_game"

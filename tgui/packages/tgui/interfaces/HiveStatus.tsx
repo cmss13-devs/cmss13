@@ -141,6 +141,7 @@ type Data = {
   hive_location: string | null;
   burrowed_larva: number;
   evilution_level: number;
+  evilution_note: string;
   pylon_status: string;
   xeno_background: string;
   is_in_ovi: BooleanLike;
@@ -185,6 +186,7 @@ const GeneralInformation = (props) => {
     total_xenos,
     burrowed_larva,
     evilution_level,
+    evilution_note,
     pylon_status,
   } = data;
 
@@ -213,7 +215,10 @@ const GeneralInformation = (props) => {
         <i>Burrowed larvae: {burrowed_larva}</i>
       </Flex.Item>
       <Flex.Item>
-        <i>Evilution: {evilution_level}</i>
+        <i>
+          Evilution: {evilution_level}
+          {evilution_note}
+        </i>
       </Flex.Item>
       {pylon_status && (
         <Flex.Item>

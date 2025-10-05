@@ -109,6 +109,14 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg1,
 /area/shiva/interior/colony/s_admin)
+"at" = (
+/obj/item/defenses/handheld/planted_flag/clf,
+/turf/open/floor/corsat/cargo,
+/area/shiva/interior/colony/clf_shuttle)
+"au" = (
+/obj/item/flag/plantable/clf,
+/turf/open/floor/corsat/cargo,
+/area/shiva/interior/colony/clf_shuttle)
 "aC" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -1472,7 +1480,7 @@
 /turf/open/floor/shiva/green/northeast,
 /area/shiva/interior/colony/botany)
 "KS" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "KU" = (
@@ -3023,7 +3031,7 @@ vh
 Kx
 hZ
 hs
-hs
+au
 ai
 kI
 Kx
@@ -3080,7 +3088,7 @@ Kx
 hs
 hs
 fX
-hs
+at
 hs
 Kx
 GL

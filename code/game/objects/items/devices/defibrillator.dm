@@ -164,7 +164,7 @@
 		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You need a synthetic reset key for reboot!"))
 		return
 	if(!ready)
-		balloon_alert(user, "take out the [fluff_tool].")
+		balloon_alert(user, "take out the [fluff_tool]")
 		to_chat(user, SPAN_WARNING("Take [src]'s [fluff_tool] out first."))
 		return
 	if(dcell.charge < charge_cost)

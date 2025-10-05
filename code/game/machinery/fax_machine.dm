@@ -347,6 +347,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			. = TRUE
 
 		if("send")
+			if(!COOLDOWN_FINISHED(src, send_cooldown))
+				return
+
 			if(!original_fax)
 				to_chat(user, SPAN_NOTICE("No paper loaded."))
 				return
@@ -379,6 +382,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		if("ejectpaper")
 			if(!original_fax)
 				to_chat(user, SPAN_NOTICE("No paper loaded."))
+				return
+
 			if(!ishuman(user))
 				to_chat(user, SPAN_NOTICE("You can't do that."))
 				return
@@ -615,7 +620,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			return
 		if(!(receiver.inoperable()))
 
-			flick("[initial(icon_state)]receive", receiver)
+			flick("[initial(receiver.icon_state)]receive", receiver)
 
 			playsound(receiver.loc, "sound/machines/fax.ogg", 15)
 			// give the sprite some time to flick
@@ -791,14 +796,18 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	needs_power = FALSE
 	use_power = USE_POWER_NONE
 	health = 150
+	department = FAX_DEPARTMENT_ALMAYER
+	target_department = FAX_DEPARTMENT_PRESS
+	sub_name = "Correspondent (portable)"
 	var/obj/item/device/fax_backpack/faxbag
 
 /obj/structure/machinery/faxmachine/backpack/New(loc, portable_id_tag)
-	. = ..()
 	if(portable_id_tag)
 		machine_id_tag = portable_id_tag
+		identity_name = sub_name ? "[sub_name], [machine_id_tag]" : machine_id_tag
 		fixed_id_tag = TRUE
 		GLOB.fax_network.all_faxcodes[machine_id_tag] = src
+	return ..()
 
 ///The wearable and deployable part of the fax machine backpack
 /obj/item/device/fax_backpack

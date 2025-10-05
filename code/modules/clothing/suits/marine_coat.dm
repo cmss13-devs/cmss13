@@ -10,6 +10,7 @@
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -109,6 +110,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	flags_bodypart_hidden = BODY_FLAG_CHEST
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -396,6 +398,38 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi'
 	)
 
+/obj/item/clothing/suit/storage/jacket/marine/correspondent
+	name = "green jacket"
+	desc = "A green jacket."
+	icon_state = "correspondent_green"
+	item_state = "correspondent_green"
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/correspondent/blue
+	name = "blue jacket"
+	desc = "A blue jacket."
+	icon_state = "correspondent_blue"
+	item_state = "correspondent_blue"
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/correspondent/tan
+	name = "tan jacket"
+	desc = "A tan jacket."
+	icon_state = "correspondent_tan"
+	item_state = "correspondent_tan"
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/correspondent/brown
+	name = "brown jacket"
+	desc = "A brown jacket."
+	icon_state = "correspondent_brown"
+	item_state = "correspondent_brown"
+	has_buttons = FALSE
 
 //==================Corporate Liaison==================\\
 
@@ -408,6 +442,7 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi'
 	)
+	flags_bodypart_hidden = BODY_FLAG_CHEST
 	flags_atom = NO_GAMEMODE_SKIN
 	has_buttons = FALSE
 
@@ -490,6 +525,8 @@
 	icon_state = "jacket_grey"
 	item_state = "jacket_grey"
 	has_buttons = FALSE
+
+// TWE - RMC - Royal Marine Commandos
 
 /obj/item/clothing/suit/storage/jacket/marine/rmc/service
 	name = "\improper Royal Marine Commando service jacket"

@@ -77,7 +77,7 @@
 
 /turf/closed/wall/almayer/outer
 	name = "outer hull"
-	desc = "A metal wall used to separate space from the ship"
+	desc = "A metal wall used to separate space from the ship."
 	icon_state = "hull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
 	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
 	walltype = WALL_HULL
@@ -88,6 +88,11 @@
 
 /turf/closed/wall/almayer/outer/take_damage(dam, mob/M)
 	return
+
+/turf/closed/wall/almayer/outer/internal
+	name = "structural hull"
+	desc = "The core structure of the hull, it holds the ship together."
+	icon_state = "innerhull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
 
 /turf/closed/wall/almayer/white
 	walltype = WALL_WHITE
@@ -281,6 +286,16 @@
 	walltype = WALL_UPP_SHIP
 	icon = 'icons/turf/walls/upp_walls.dmi'
 	icon_state = "uppwall_interior"
+	tiles_with = list(
+		/turf/closed/wall,
+		/obj/structure/window/framed,
+		/obj/structure/window_frame,
+		/obj/structure/girder,
+		/obj/structure/machinery/door,
+		/obj/structure/machinery/cm_vending/sorted/attachments/upp_attachments/blend,
+		/obj/structure/machinery/cm_vending/sorted/cargo_ammo/upp_cargo_ammo/blend,
+		/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_cargo_guns/blend,
+	)
 
 /turf/closed/wall/upp_ship/reinforced
 	name = "reinforced hull"
@@ -796,8 +811,11 @@
 	repair_materials = list()
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/should_track_build = FALSE
+	var/upgrading_now = FALSE //flag to track upgrading/thickening process
 	var/datum/cause_data/construction_data
 	turf_flags = TURF_ORGANIC
+	var/boosted_regen = FALSE
+	COOLDOWN_DECLARE(automatic_heal)
 
 /turf/closed/wall/resin/Initialize(mapload)
 	. = ..()
@@ -807,7 +825,8 @@
 
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
-
+	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(enable_regeneration))
+	RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(disable_regeneration))
 	if(!(turf_flags & TURF_HULL))
 		var/area/area = get_area(src)
 		if(area)
@@ -821,6 +840,40 @@
 	if(!(turf_flags & TURF_HULL))
 		var/area/area = get_area(src)
 		area?.current_resin_count--
+
+
+/turf/closed/wall/resin/process()
+	. = ..()
+
+	if(!boosted_regen)
+		STOP_PROCESSING(SSobj, src)
+		return
+
+	if(!COOLDOWN_FINISHED(src, automatic_heal))
+		return
+
+	if(damage >= 0)
+		damage -= 75
+
+	COOLDOWN_START(src, automatic_heal, 10 SECONDS)
+
+/turf/closed/wall/resin/proc/enable_regeneration(source, hive_purchaser)
+	SIGNAL_HANDLER
+
+	if(hive_purchaser != src.hivenumber)
+		return
+	else
+		boosted_regen = TRUE
+		START_PROCESSING(SSobj, src)
+
+
+/turf/closed/wall/resin/proc/disable_regeneration(source, hive_purchaser)
+	SIGNAL_HANDLER
+
+	if(hive_purchaser != src.hivenumber)
+		return
+	else
+		boosted_regen = FALSE
 
 /turf/closed/wall/resin/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -857,6 +910,22 @@
 	damage_cap = HEALTH_WALL_XENO_THICK
 	icon_state = "thickresin"
 	walltype = WALL_THICKRESIN
+
+
+/turf/closed/wall/resin/thick/process()
+	. = ..()
+
+	if(!boosted_regen)
+		STOP_PROCESSING(SSobj, src)
+		return
+
+	if(!COOLDOWN_FINISHED(src, automatic_heal))
+		return
+
+	if(damage >= 0)
+		damage -= 100
+
+	COOLDOWN_START(src, automatic_heal, 10 SECONDS)
 
 /turf/closed/wall/resin/tutorial
 	name = "tutorial resin wall"
@@ -1368,7 +1437,6 @@
 	damage_cap = HEALTH_WALL_XENO_WEAK
 	var/duration = 5 SECONDS
 
-
 /turf/closed/wall/resin/weak/Initialize(mapload, ...)
 	. = ..()
 	if(mapload)
@@ -1376,6 +1444,18 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
+/turf/closed/wall/resin/reflective/weak
+	name = "weakened reflective wall"
+	desc = "Weird slime with strange hardened fragments solidified into a wall. It looks like it last for moment before it will collapse."
+	damage_cap = HEALTH_WALL_XENO_REFLECTIVE_WEAK
+	var/duration = 13 SECONDS
+
+/turf/closed/wall/resin/reflective/weak/Initialize(mapload, ...)
+	. = ..()
+	if(mapload)
+		ScrapeAway()
+		return
+	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
 /turf/closed/wall/resin/can_be_dissolved()
 	return FALSE

@@ -328,6 +328,8 @@
 				sound = pick('sound/weapons/gun_nsg23_1.ogg','sound/weapons/gun_nsg23_2.ogg')
 			if("gun_pkd")
 				sound = pick('sound/weapons/gun_pkd_fire01.ogg','sound/weapons/gun_pkd_fire02.ogg','sound/weapons/gun_pkd_fire03.ogg')
+			if("gun_l64")
+				sound = pick('sound/weapons/gun_l64_1.ogg','sound/weapons/gun_l64_2.ogg','sound/weapons/gun_l64_3.ogg')
 
 			// Xeno
 			if("acid_hit")
@@ -478,4 +480,4 @@
 	set category = "Debug"
 
 	for(var/sound/soundin in SoundQuery())
-		UNLINT(to_chat(src, "channel#[soundin.channel]: [soundin.status] - [soundin.file] - len=[length(soundin)], wait=[soundin.wait], offset=[soundin.offset], repeat=[soundin.repeat]")) // unlint until spacemandmm suite-1.7
+		to_chat(src, "channel#[soundin.channel]: [soundin.status] - [soundin.file] - len=[length(soundin)], wait=[soundin.wait], offset=[soundin.offset], repeat=[soundin.repeat]")

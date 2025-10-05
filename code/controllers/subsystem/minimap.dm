@@ -522,6 +522,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(live)
 		return
 
+	SSminimaps.remove_updator(src)
 	SSminimaps.add_to_updaters(src, flags, target, drawing)
 
 /atom/movable/screen/minimap/Destroy()

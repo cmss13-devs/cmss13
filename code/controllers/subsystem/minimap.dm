@@ -558,7 +558,7 @@ SUBSYSTEM_DEF(minimaps)
 	SIGNAL_HANDLER
 	var/list/modifiers = params2list(params)
 	// Only shift click because otherwise this conflicts with clicking on other stuff
-	if(!modifiers[SHIFT_CLICK])
+	if(!modifiers[CTRL_CLICK])
 		return
 	// we only care about absolute coords because the map is fixed to 1,1 so no client stuff
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])

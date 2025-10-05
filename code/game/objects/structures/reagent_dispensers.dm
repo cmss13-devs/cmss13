@@ -169,8 +169,8 @@
 		overlays += meter
 
 /obj/structure/reagent_dispensers/tank/Initialize(mapload, reagent_amount = 1000)
-    . = ..()
-    update_icon()
+	. = ..()
+	update_icon()
 
 //Dispensers
 /obj/structure/reagent_dispensers/tank/water
@@ -442,7 +442,6 @@
 		I.color = mix_color_from_reagents(reagents.reagent_list)
 
 	overlays += I
-
 
 /obj/structure/reagent_dispensers/peppertank
 	name = "pepper spray refiller"

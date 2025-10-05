@@ -214,15 +214,16 @@
 
 /datum/equipment_preset/pmc/commando/leader/load_name(mob/living/carbon/human/new_human, randomise) //reference to Theo Stern from A:DD
 	new_human.gender = MALE
+
 	var/datum/preferences/human = new()
 	human.randomize_appearance(new_human)
-	var/random_name
 
+	var/random_name
 	new_human.h_style = "Cpl. Dietrich"
 	new_human.f_style = "Soulful Selleck"
-	random_name = "[pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
-
+	random_name = random_name(new_human.gender)
 	new_human.change_real_name(new_human, random_name)
+
 	new_human.age = rand(30,40)
 	new_human.r_facial = 0
 	new_human.g_facial = 0

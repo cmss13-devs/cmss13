@@ -19,18 +19,22 @@
 
 /datum/equipment_preset/other/freelancer/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	var/random_name
+
+	var/first_name
+	var/last_name = capitalize(pick(GLOB.last_names_colonist))
 	switch(new_human.gender)
-		if(MALE)
-			random_name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
-			new_human.f_style = "5 O'clock Shadow"
 		if(FEMALE)
-			random_name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
-		if(PLURAL)
-			random_name = "[pick(pick(GLOB.first_names_male_colonist), pick(GLOB.first_names_female_colonist))] [pick(GLOB.last_names_colonist)]"
-	new_human.change_real_name(new_human, random_name)
+			first_name = capitalize(pick(GLOB.first_names_female_colonist))
+		if(PLURAL, NEUTER) // Not currently possible
+			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_colonist) : pick(GLOB.first_names_female_colonist))
+		else // MALE
+			first_name = capitalize(pick(GLOB.first_names_male_colonist))
+			new_human.f_style = "5 O'clock Shadow"
+
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
 	new_human.age = rand(20,45)
 	new_human.r_hair = 25
 	new_human.g_hair = 25
@@ -285,18 +289,22 @@
 
 /datum/equipment_preset/other/elite_merc/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	var/random_name
+
+	var/first_name
+	var/last_name = capitalize(pick(GLOB.last_names_colonist))
 	switch(new_human.gender)
-		if(MALE)
-			random_name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
-			new_human.f_style = "5 O'clock Shadow"
 		if(FEMALE)
-			random_name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
-		if(PLURAL)
-			random_name = "[pick(pick(GLOB.first_names_male_colonist), pick(GLOB.first_names_female_colonist))] [pick(GLOB.last_names_colonist)]"
-	new_human.change_real_name(new_human, random_name)
+			first_name = capitalize(pick(GLOB.first_names_female_colonist))
+		if(PLURAL, NEUTER) // Not currently possible
+			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_colonist) : pick(GLOB.first_names_female_colonist))
+		else // MALE
+			first_name = capitalize(pick(GLOB.first_names_male_colonist))
+			new_human.f_style = "5 O'clock Shadow"
+
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
 	new_human.age = rand(20,45)
 	new_human.r_hair = rand(15,35)
 	new_human.g_hair = rand(15,35)
@@ -539,11 +547,7 @@
 	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	var/random_name
-	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
-	else
-		random_name = "[pick(GLOB.first_names_female)] [pick(GLOB.last_names)]"
+	var/random_name = random_name(new_human.gender)
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(17,45)
 
@@ -670,9 +674,19 @@
 
 /datum/equipment_preset/other/gladiator/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
-	var/random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male_gladiator : FEMALE ? GLOB.first_names_female_gladiator : pick(pick(GLOB.first_names_male_gladiator), pick(GLOB.first_names_female_gladiator))))
+
+	var/random_name
+	switch(new_human.gender)
+		if(FEMALE)
+			random_name = capitalize(pick(GLOB.first_names_female_gladiator))
+		if(PLURAL, NEUTER) // Not currently possible
+			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_gladiator) : pick(GLOB.first_names_female_gladiator))
+		else // MALE
+			random_name = capitalize(pick(GLOB.first_names_male_gladiator))
+
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(21,45)
 
@@ -852,8 +866,7 @@
 
 /datum/equipment_preset/other/professor_dummy/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
-	new_human.real_name = "Alex the Medical Mannequin"
-	new_human.name = new_human.real_name
+	new_human.change_real_name(new_human, "Alex the Medical Mannequin")
 	new_human.age = rand(1,5)
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
@@ -983,7 +996,7 @@
 
 /datum/equipment_preset/uscm/tutorial_rifleman/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
-	var/mob_name = "[random_name(new_human.gender)]"
+	var/mob_name = random_name(new_human.gender)
 	new_human.change_real_name(new_human, mob_name)
 	var/datum/preferences/preferences = new
 	preferences.randomize_appearance(new_human)
@@ -1009,7 +1022,7 @@
 
 /datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
-	var/mob_name = "[random_name(new_human.gender)]"
+	var/mob_name = random_name(new_human.gender)
 	new_human.change_real_name(new_human, mob_name)
 	var/datum/preferences/preferences = new
 	preferences.randomize_appearance(new_human)

@@ -461,7 +461,7 @@ SUBSYSTEM_DEF(minimaps)
 	/// Is the minimap live
 	var/live
 	/// Minimap flags
-	var/flags
+	var/minimap_flags
 	/// Minimap target
 	var/target
 	/// Is drawing enbabled
@@ -497,7 +497,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	plane_master.transform = transform
 
-/atom/movable/screen/minimap/Initialize(mapload, datum/hud/hud_owner, target, flags, live = TRUE, popup = FALSE, drawing = TRUE)
+/atom/movable/screen/minimap/Initialize(mapload, datum/hud/hud_owner, target, minimap_flags, live = TRUE, popup = FALSE, drawing = TRUE)
 	. = ..()
 	if(!SSminimaps.minimaps_by_z["[target]"])
 		return
@@ -505,9 +505,9 @@ SUBSYSTEM_DEF(minimaps)
 	choices_by_mob = list()
 	stop_polling = list()
 	icon = SSminimaps.minimaps_by_z["[target]"].hud_image
-	SSminimaps.add_to_updaters(src, flags, target, drawing)
+	SSminimaps.add_to_updaters(src, minimap_flags, target, drawing)
 	src.drawing = drawing
-	src.flags = flags
+	src.minimap_flags = minimap_flags
 	src.target = target
 	src.live = live
 
@@ -523,7 +523,7 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	SSminimaps.remove_updator(src)
-	SSminimaps.add_to_updaters(src, flags, target, drawing)
+	SSminimaps.add_to_updaters(src, minimap_flags, target, drawing)
 
 /atom/movable/screen/minimap/Destroy()
 	SSminimaps.hashed_minimaps -= src
@@ -1336,13 +1336,13 @@ SUBSYSTEM_DEF(minimaps)
 		if(!client || !client.mob)
 			continue
 		var/mob/client_mob = client.mob
-		if(linked_map.flags & get_minimap_flag_for_faction(client_mob.faction))
+		if(linked_map.minimap_flags & get_minimap_flag_for_faction(client_mob.faction))
 			faction_clients += client
 		else if(client_mob.faction == FACTION_NEUTRAL && isobserver(client_mob))
 			faction_clients += client
 		else if(isxeno(client_mob))
 			var/mob/living/carbon/xenomorph/xeno = client_mob
-			if(linked_map.flags & get_minimap_flag_for_faction(xeno.hivenumber))
+			if(linked_map.minimap_flags & get_minimap_flag_for_faction(xeno.hivenumber))
 				faction_clients += client
 
 	// This may be unnecessary to do this way if the asset url is always the same as the lookup key
@@ -1356,7 +1356,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
 	var/datum/drawing_data/draw_data = new(flat_drawing_png, user)
 
-	if(linked_map.flags & MINIMAP_FLAG_USCM)
+	if(linked_map.minimap_flags & MINIMAP_FLAG_USCM)
 		GLOB.uscm_flat_tacmap_data += new_flat
 		GLOB.uscm_drawing_tacmap_data += draw_data
 	else

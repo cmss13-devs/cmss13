@@ -23,6 +23,7 @@
 #define NOTIFY_ATTACK "attack"
 #define NOTIFY_ORBIT "orbit"
 #define NOTIFY_JOIN_XENO "join_xeno"
+#define NOTIFY_USCM_TACMAP "uscm_tacmap"
 
 #define INHERENT_HUD_MEDICAL "med"
 #define INHERENT_HUD_SECURITY "sec"

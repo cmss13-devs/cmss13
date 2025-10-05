@@ -1362,6 +1362,14 @@ SUBSYSTEM_DEF(minimaps)
 		GLOB.xeno_flat_tacmap_data += new_flat
 		GLOB.xeno_drawing_tacmap_data += draw_data
 
+	for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
+		current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
+
+	var/atom/source = owner?.parent
+	if(!source)
+		source = user
+	notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = source)
+	message_admins("[key_name(user)] has updated the <a href='byond://?tacmaps_panel=1'>tactical map</a>.")
 	return TRUE
 
 /datum/flattened_tacmap

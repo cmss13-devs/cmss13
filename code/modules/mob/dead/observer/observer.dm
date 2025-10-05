@@ -377,6 +377,13 @@
 		handle_joining_as_freed_mob(locate(href_list["claim_freed"]))
 	if(href_list["join_xeno"])
 		join_as_alien()
+	if(href_list[NOTIFY_USCM_TACMAP])
+		var/datum/action/minimap/minimap_action = locate() in actions
+
+		if(!minimap_action)
+			return
+
+		minimap_action.toggle_minimap(force_state=TRUE)
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)

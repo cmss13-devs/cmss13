@@ -60,6 +60,26 @@
 	icon_closed = "ancient_coffin_deco"
 	icon_opened = "ancient_coffin_mumified_deco_open"
 
+/obj/structure/closet/coffin/predator/ancient_stone/mummy/deco/gas
+	var/gas_triggered = FALSE
+	var/radius = 4
+	var/datum/effect_system/smoke_spread/gas_holder
+
+/obj/structure/closet/coffin/predator/ancient_stone/mummy/deco/gas/attack_alien(mob/living/carbon/xenomorph/M)
+	if(!gas_triggered)
+		return //we do not want xenos to trigger it but also for it to not be place to hide for humans
+	. = .. ()
+
+/obj/structure/closet/coffin/predator/ancient_stone/mummy/deco/gas/toggle(mob/living/user)
+	. = ..()
+	if(gas_triggered)
+		return
+
+	gas_triggered = TRUE
+	gas_holder = new /datum/effect_system/smoke_spread/xeno_weaken/transparent
+	gas_holder.set_up(radius, 0, get_turf(src), null, 10)
+	gas_holder.start()
+
 /obj/structure/closet/coffin/woodencrate //Subtyped here so Req doesn't sell them
 	name = "wooden crate"
 	desc = "A wooden crate. Shoddily assembled, spacious and worthless on the ASRS"

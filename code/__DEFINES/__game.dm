@@ -588,6 +588,7 @@
 #define MAP_STYLESHEET "\
 .center { text-align: center; } \
 .maptext { font-family: 'Grand9K Pixel'; font-size: 6pt; -dm-text-outline: 1pt black; color: white; line-height: 1.0; } \
+.action_maptext { font-family: 'MS Serif'; font-size: 6px; -dm-text-outline: 1px black; color: white; line-height: 1.0; } \
 .langchat { font-family: 'Grand9K Pixel'; font-size: 6pt; -dm-text-outline: 1pt black; } \
 .langchat_small { font-family: 'Spess Font'; font-size: 6pt; } \
 .langchat_yell { font-size: 12pt; } \

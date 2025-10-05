@@ -18,6 +18,7 @@
     ],
     "survivor_message": "You are a survivor of the attack on Con-Am 81 ‘Abyssal’. You lived and worked onboard this remote outpost until now. You barely managed to reach this radiation bunker before the doors slammed shut. It has been three weeks now, your food supplies are running low, and you can hear the slithering of those aliens outside the bunker. You can only pray for rescue now",
     "map_item_type": "/obj/item/map/new_varadero",
+    "liaison_briefing": "maps/map_briefings/cl_brief_abyssal.html",
     "announce_text": "An automated distress signal has been received from Con-Am 81 'Abyssal', a deepspace transit station operated by the Com-Amagalation corporation. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
     "environment_traits": { "InSpace": true },
     "traits": [{ "Ground": true }],

@@ -11,6 +11,20 @@
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/field_doctor
 	entry_message_body = "You are a <a href='"+WIKI_PLACEHOLDER+"'>Field Doctor</a> tasked with keeping the marines healthy and strong in the field, usually in the form of surgery. You must stay onboard the Almayer medical bay if there are no other doctors present and until the FOB is secured. Your superiors may also delay your deployment to the field."
 
+	var/mob/living/carbon/human/active_field_doctor
+
+/datum/job/command/pilot/field_doctor/generate_entry_conditions(mob/living/field_doctor, whitelist_status)
+	. = ..()
+	active_field_doctor = field_doctor
+	RegisterSignal(field_doctor, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_active_field_doctor))
+
+/datum/job/command/pilot/field_doctor/proc/cleanup_active_field_doctor(mob/field_doctor)
+	SIGNAL_HANDLER
+	active_field_doctor = null
+
+/datum/job/command/pilot/field_doctor/get_active_player_on_job()
+	return active_field_doctor
+
 AddTimelock(/datum/job/civilian/field_doctor, list(
 	JOB_DOCTOR_ROLES = 5 HOURS
 ))

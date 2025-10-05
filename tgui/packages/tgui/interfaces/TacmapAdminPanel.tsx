@@ -108,9 +108,10 @@ export const TacmapAdminPanel = (props) => {
                 backupImage={map_fallback}
               />
               <DrawnMap
-                key={last_update_time + pageIndex}
+                key={last_update_time + pageIndex + 2} // +2 because the other page is +1
                 flatImage={(pageIndex === 0 ? uscm_svg : xeno_svg) || ''}
                 backupImage={map_fallback}
+                showLoading={false}
               />
             </div>
           </Stack.Item>

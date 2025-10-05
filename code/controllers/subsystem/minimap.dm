@@ -173,7 +173,7 @@ SUBSYSTEM_DEF(minimaps)
 		LAZYADD(update_targets["[flag]"], holder)
 		holder.raw_blips += minimaps_by_z["[ztarget]"].images_raw["[flag]"]
 		if(holder.drawing)
-			holder.raw_blips += minimaps_by_z["[ztarget]"].drawing_image
+			holder.raw_blips += drawn_images["[ztarget]-[flag]"]
 	updators_by_datum[target] = holder
 	update_targets_unsorted += holder
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_updator))

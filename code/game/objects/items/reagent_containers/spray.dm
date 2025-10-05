@@ -84,7 +84,7 @@
 
 	var/obj/effect/decal/chempuff/D = new /obj/effect/decal/chempuff(get_turf(src))
 	D.create_reagents(amount_per_transfer_from_this)
-	reagents.trans_to(D, amount_per_transfer_from_this, 1 / spray_size)
+	reagents.trans_to(D, amount_per_transfer_from_this, 1 / spray_size, method = TOUCH)
 	D.color = mix_color_from_reagents(D.reagents.reagent_list)
 	D.source_user = user
 	D.move_towards(A, 3, spray_size)
@@ -192,7 +192,7 @@
 	for(var/i=1, i<=3, i++) // intialize sprays
 		if(src.reagents.total_volume < 1)
 			break
-		var/obj/effect/decal/chempuff/D = new/obj/effect/decal/chempuff(get_turf(src))
+		var/obj/effect/decal/chempuff/D = new /obj/effect/decal/chempuff(get_turf(src))
 		D.create_reagents(amount_per_transfer_from_this)
 		src.reagents.trans_to(D, amount_per_transfer_from_this)
 
@@ -218,9 +218,9 @@
 
 			for(var/j=1, j<=rand(6,8), j++)
 				step_towards(D, my_target)
-				D.reagents.reaction(get_turf(D))
+				D.reagents.reaction(get_turf(D), TOUCH)
 				for(var/atom/t in get_turf(D))
-					D.reagents.reaction(t)
+					D.reagents.reaction(t, TOUCH)
 				sleep(2)
 			qdel(D)
 

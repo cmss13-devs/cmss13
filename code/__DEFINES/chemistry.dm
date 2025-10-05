@@ -53,6 +53,16 @@
 /// If any delivery method is acceptable
 #define ANY_DELIVERY (1<<8)
 
+// Delivery Spectrum Outcomes
+/// Reagent works as intended
+#define DELIVERY_PREFERRED_EFFECT (1<<0)
+/// Reagent has a reduced effect
+#define DELIVERY_LESSER_EFFECT (1<<1)
+/// Reagent has no effect
+#define DELIVERY_NO_EFFECT (1<<2)
+/// Reagent has a negative/harmful effect
+#define DELIVERY_NEGATIVE_EFFECT (1<<3)
+
 // How many units of reagent are consumed per tick, by default.
 #define REAGENTS_METABOLISM AMOUNT_PER_TIME(1, 10 SECONDS)
 // By defining the effect multiplier this way, it'll exactly adjust

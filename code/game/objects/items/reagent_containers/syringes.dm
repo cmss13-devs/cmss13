@@ -210,7 +210,7 @@
 			var/trans = amount_per_transfer_from_this
 			if(iscarbon(target) && locate(/datum/reagent/blood) in reagents.reagent_list)
 				var/mob/living/carbon/C = target
-				C.inject_blood(src, amount_per_transfer_from_this)
+				C.inject_blood(src, amount_per_transfer_from_this, INJECTION)
 			else
 
 				var/list/reagents_in_syringe = list()
@@ -220,8 +220,8 @@
 				user.attack_log += text("\[[time_stamp()]\] <font color='red'>[key_name(user)] injected [target] with a syringe (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))])</font>")
 				msg_admin_niche("[key_name(user)] injected [target] with a syringe (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
-				trans = reagents.trans_to(target, amount_per_transfer_from_this)
-				
+				trans = reagents.trans_to(target, amount_per_transfer_from_this, method = INJECTION)
+
 			user.update_inv_l_hand()
 			user.update_inv_r_hand()
 			to_chat(user, SPAN_NOTICE("You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units."))
@@ -296,7 +296,7 @@
 
 	src.reagents.reaction(target, ABSORPTION)
 	var/syringestab_amount_transferred = rand(0, (reagents.total_volume - 5)) //nerfed by popular demand
-	src.reagents.trans_to(target, syringestab_amount_transferred)
+	src.reagents.trans_to(target, syringestab_amount_transferred, method = ABSORPTION)
 	src.desc += " It is broken."
 	src.mode = SYRINGE_BROKEN
 	src.add_mob_blood(target)
@@ -399,7 +399,7 @@
 			if(ismob(target) && target == user)
 				src.reagents.reaction(target, INJECTION)
 			spawn(5)
-				var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
+				var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this, method = INJECTION)
 				to_chat(user, SPAN_NOTICE(" You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units."))
 				if (reagents.total_volume >= reagents.maximum_volume && mode==SYRINGE_INJECT)
 					mode = SYRINGE_DRAW

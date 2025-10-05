@@ -2,7 +2,7 @@
 
 /datum/reagent/medical
 	flags = REAGENT_TYPE_MEDICAL | REAGENT_SCANNABLE
-	preferred_delivery = INJECTION | CONTROLLED_INGESTION | INHALATION
+	preferred_delivery = CONTROLLED_INGESTION | INJECTION
 
 /datum/reagent/medical/inaprovaline
 	name = "Inaprovaline"
@@ -114,6 +114,8 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_OXYGENATING = 4)
+	preferred_delivery = CONTROLLED_INGESTION | INJECTION | INHALATION | ABSORPTION
+
 
 /datum/reagent/medical/dexalinp
 	name = "Dexalin Plus"
@@ -125,6 +127,7 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_OXYGENATING = 6)
+	preferred_delivery = CONTROLLED_INGESTION | INJECTION | INHALATION | ABSORPTION
 
 /datum/reagent/medical/tricordrazine
 	name = "Tricordrazine"
@@ -136,6 +139,8 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1, PROPERTY_OXYGENATING = 1)
+	preferred_delivery = CONTROLLED_INGESTION | INJECTION | ABSORPTION
+
 
 /datum/reagent/medical/anti_toxin
 	name = "Dylovene"

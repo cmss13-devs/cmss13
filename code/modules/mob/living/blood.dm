@@ -33,7 +33,7 @@
 				BLOOD TRANSFERS
 */
 //Transfers blood from container to mob
-/mob/living/carbon/proc/inject_blood(obj/item/reagent_container/container, amount)
+/mob/living/carbon/proc/inject_blood(obj/item/reagent_container/container, amount, method = IMPLANTATION)
 	var/b_id = get_blood_id()
 	if(!b_id)
 		return
@@ -41,11 +41,11 @@
 	for(var/datum/reagent/blood/B in container.reagents.reagent_list)
 		if(B.id == b_id)
 			if(b_id == "blood" && B.data_properties && !(B.data_properties["blood_type"] in get_safe_blood(blood_type)))
-				reagents.add_reagent("toxin", amount * 0.5)
+				reagents.add_reagent("toxin", amount * 0.5, method = method) // i dont know if this really matters actually
 			else
 				blood_volume = min(blood_volume + round(amount, 0.1), limit_blood)
 		else
-			reagents.add_reagent(B.id, amount, B.data_properties)
+			reagents.add_reagent(B.id, amount, B.data_properties, method = method)
 			reagents.update_total()
 
 		container.reagents.remove_reagent(B.id, amount)
@@ -53,11 +53,11 @@
 
 
 //Transfers blood from container to human, respecting blood types compatability.
-/mob/living/carbon/human/inject_blood(obj/item/reagent_container/container, amount)
+/mob/living/carbon/human/inject_blood(obj/item/reagent_container/container, amount, method = IMPLANTATION)
 	var/datum/reagent/blood/B = locate() in container.reagents.reagent_list
 
 	if(species && species.flags & NO_BLOOD)
-		reagents.add_reagent(B.id, amount, B.data_properties)
+		reagents.add_reagent(B.id, amount, B.data_properties, method = method)
 		reagents.update_total()
 		container.reagents.remove_reagent(B.id, amount)
 		return

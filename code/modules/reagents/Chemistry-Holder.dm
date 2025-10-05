@@ -126,13 +126,13 @@
 	return the_id
 
 /// Transfers to the reagents datum of an object
-/datum/reagents/proc/trans_to(atom/target, amount=1, multiplier=1, preserve_data=1, reaction = TRUE)
+/datum/reagents/proc/trans_to(atom/target, amount=1, multiplier=1, preserve_data=1, reaction = TRUE, method = NO_DELIVERY)
 	var/datum/reagents/R = target?.reagents
 	if(R && !locked && !R.locked && total_volume > 0)
-		return trans_to_datum(R, amount, multiplier, preserve_data, reaction)
+		return trans_to_datum(R, amount, multiplier, preserve_data, reaction, method)
 
 /// Transfers to a reagent datum
-/datum/reagents/proc/trans_to_datum(datum/reagents/target, amount=1, multiplier=1, preserve_data=1, reaction = TRUE)//if preserve_data=0, the reagents data will be lost. Usefull if you use data for some strange stuff and don't want it to be transferred.
+/datum/reagents/proc/trans_to_datum(datum/reagents/target, amount=1, multiplier=1, preserve_data=1, reaction = TRUE, method = NO_DELIVERY)//if preserve_data=0, the reagents data will be lost. Usefull if you use data for some strange stuff and don't want it to be transferred.
 	amount = min(min(amount, total_volume), target.maximum_volume-target.total_volume)
 	var/part = amount / total_volume
 	for(var/datum/reagent/current_reagent in reagent_list)
@@ -140,7 +140,7 @@
 		var/current_reagent_transfer = current_reagent.volume * part
 		if(preserve_data)
 			trans_data = copy_data(current_reagent)
-		target.add_reagent(current_reagent.id, (current_reagent_transfer * multiplier), trans_data, safety = 1) //safety checks on these so all chemicals are transferred
+		target.add_reagent(current_reagent.id, (current_reagent_transfer * multiplier), trans_data, safety = 1, method = method) //safety checks on these so all chemicals are transferred
 		remove_reagent(current_reagent.id, current_reagent_transfer, safety = 1) // to the target container before handling reactions
 	update_total()
 	target.update_total()
@@ -150,14 +150,14 @@
 	return amount
 
 /// Transfers to object as ingestion
-/datum/reagents/proc/trans_to_ingest(atom/movable/target, amount=1, multiplier=1, preserve_data=1) //For items ingested. A delay is added between ingestion and addition of the reagents
+/datum/reagents/proc/trans_to_ingest(atom/movable/target, amount=1, multiplier=1, preserve_data=1, method = INGESTION) //For items ingested. A delay is added between ingestion and addition of the reagents
 	if(!target?.reagents || total_volume <= 0)
 		return
 
 	var/datum/reagents/vessel/V = new(1000) //temporary holder
 	var/datum/reagents/R = target.reagents
 	amount = min(min(amount, total_volume), R.maximum_volume - R.total_volume)
-	trans_to_datum(V, amount, reaction = FALSE)
+	trans_to_datum(V, amount, reaction = FALSE, method = method)
 	if(issynth(target))
 		return
 	to_chat(target, SPAN_NOTICE("You taste [pick(V.reagent_list)]."))
@@ -166,7 +166,7 @@
 		if(RG.flags & REAGENT_NOT_INGESTIBLE)
 			V.del_reagent(RG.id)
 
-	addtimer(CALLBACK(V, TYPE_PROC_REF(/datum/reagents/vessel, inject_vessel), target, INGESTION, TRUE, 0.5 SECONDS), 9.5 SECONDS)
+	addtimer(CALLBACK(V, TYPE_PROC_REF(/datum/reagents/vessel, inject_vessel), target, method, TRUE, 0.5 SECONDS), 9.5 SECONDS)
 	return amount
 
 ///You can search for specific reagents using the specific reagents arg.
@@ -183,7 +183,7 @@
 		if(R.data_properties)
 			R.data_properties["last_source_mob"] = R.last_source_mob
 
-/datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, safety = 0)
+/datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, safety = 0, method = NO_DELIVERY)
 	if(!target)
 		return
 	if(!target.reagents || total_volume<=0)
@@ -196,7 +196,7 @@
 		var/current_reagent_transfer = current_reagent.volume * part
 		if(preserve_data)
 			trans_data = copy_data(current_reagent)
-		R.add_reagent(current_reagent.id, (current_reagent_transfer * multiplier), trans_data, safety = 1) //safety check so all chemicals are transferred before reacting
+		R.add_reagent(current_reagent.id, (current_reagent_transfer * multiplier), trans_data, safety = 1, method = method) //safety check so all chemicals are transferred before reacting
 
 	update_total()
 	R.update_total()
@@ -205,7 +205,7 @@
 		handle_reactions()
 	return amount
 
-/datum/reagents/proc/trans_id_to(obj/target, reagent, amount=1, preserve_data=1)//Not sure why this proc didn't exist before. It does now! /N
+/datum/reagents/proc/trans_id_to(obj/target, reagent, amount=1, preserve_data=1, method = NO_DELIVERY)//Not sure why this proc didn't exist before. It does now! /N
 	if(!target)
 		return
 	if(!target.reagents || total_volume<=0 || !get_reagent_amount(reagent))
@@ -220,7 +220,7 @@
 		if(current_reagent.id == reagent)
 			if(preserve_data)
 				trans_data = copy_data(current_reagent)
-			R.add_reagent(current_reagent.id, amount, trans_data)
+			R.add_reagent(current_reagent.id, amount, trans_data, method = method)
 			remove_reagent(current_reagent.id, amount, 1)
 			break
 
@@ -483,7 +483,7 @@
 		else if(isobj(A))
 			reagent.reaction_obj(A, reagent.volume + volume_modifier)
 
-/datum/reagents/proc/add_reagent(reagent, amount, list/data, safety = 0)
+/datum/reagents/proc/add_reagent(reagent, amount, list/data, safety = 0, method = NO_DELIVERY)
 	if(!reagent || !isnum(amount))
 		return TRUE
 
@@ -500,6 +500,7 @@
 		if(R.id == reagent)
 			R.volume += amount
 			R.last_source_mob = new_data["last_source_mob"]
+			R.delivery_method = method
 			update_total()
 
 			if(my_atom)
@@ -544,6 +545,7 @@
 			R.make_alike(D)
 		R.holder = src
 		R.volume = amount
+		R.delivery_method = method
 		SetViruses(R, new_data) // Includes setting data
 		reagent_list += R
 

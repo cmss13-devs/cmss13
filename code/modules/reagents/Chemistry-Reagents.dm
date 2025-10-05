@@ -68,6 +68,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/target_temp = 310
 	/// The preferred reagent delivery of the chemical, can have multiple, such as INGESTION | INHALATION
 	var/preferred_delivery = NO_DELIVERY
+	/// How the reagent was delivered to the current holder.
+	var/delivery_method = NO_DELIVERY
 
 	var/deleted = FALSE //If the reagent was deleted
 
@@ -112,8 +114,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 			chance = (100 - chance)
 
 			if(prob(chance))//This will need testing, I'm not confident I did it correctly.
-				if(M.reagents)
-					M.reagents.add_reagent(self.id, self.volume * 0.5)
+				if(M.reagents) // pass the method too
+					M.reagents.add_reagent(self.id, self.volume * 0.5, TOUCH)
 
 		for(var/datum/chem_property/property in self.properties)
 			var/potency = property.level * LEVEL_TO_POTENCY_MULTIPLIER
@@ -192,6 +194,30 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		//A level of 1 == 0.5 potency, which is equal to REM (0.2/0.4) in the old system
 		//That means the level of the property by default is the number of REMs the effect had in the old system
 		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * LEVEL_TO_POTENCY_MULTIPLIER)
+		var/delivery_outcome = calc_delivery_spectrum(delivery_method)
+
+#ifdef DEBUG
+		to_chat(M, "DEBUG: [name]: delivery_method=[delivery_method], preferred_delivery=[preferred_delivery], delivery_outcome=[delivery_outcome], initial_potency=[potency]")
+#endif
+
+		switch(delivery_outcome)
+			if(DELIVERY_LESSER_EFFECT)
+				potency *= 0.5 // or some other factor
+			if(DELIVERY_NO_EFFECT)
+				potency = 0
+			if(DELIVERY_NEGATIVE_EFFECT)
+				P.process_overdose(M, potency, delta_time)
+				// if you are overdosing an improper delivery, kill them further
+				if(overdose && volume > overdose)
+					P.process_critical(M, potency, delta_time)
+				var/overdose_message = "improper delivery of [istype(src, /datum/reagent/generated) ? "custom chemical" : initial(name)]"
+				M.last_damage_data = create_cause_data(overdose_message, last_source_mob?.resolve())
+				potency = 0 // Don't apply normal effects
+
+#ifdef DEBUG
+		to_chat(M, "DEBUG: [name]: final_potency=[potency]")
+#endif
+
 		if(potency <= 0)
 			continue
 		P.process(M, potency, delta_time)
@@ -268,6 +294,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	flags = C.flags
 	lockdown_chem = C.lockdown_chem
 	credit_reward = C.credit_reward
+	delivery_method = C.delivery_method
 
 /datum/chemical_reaction/proc/make_alike(datum/chemical_reaction/C)
 	if(!C)
@@ -382,3 +409,42 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	if(holder && holder.my_atom && ishuman(holder.my_atom))
 		var/mob/living/carbon/human/H = holder.my_atom
 		H.pain.reset_pain_reduction()
+
+
+/datum/reagent/proc/calc_delivery_spectrum(method=TOUCH)
+	if(preferred_delivery & (ANY_DELIVERY|method))
+		return DELIVERY_PREFERRED_EFFECT
+
+	var/list/delivery_spectrum = list(
+		CONTROLLED_INGESTION,
+		INGESTION,
+		INHALATION,
+		TOUCH,
+		ABSORPTION,
+		INJECTION,
+		IMPLANTATION
+	)
+
+	var/preferred_indices = list()
+	var/delivery_index = 0
+
+	for(var/index = 1 to delivery_spectrum.len)
+		if(method & delivery_spectrum[index])
+			delivery_index = index
+			break // just in case
+		if(preferred_delivery & delivery_spectrum[index])
+			preferred_indices += index
+
+	var/min_distance = 10 // just hardcode this, hardly matters anyway
+	for(var/preferred_index in preferred_indices)
+		min_distance = min(min_distance, abs(preferred_index - delivery_index))
+
+	switch(min_distance)
+		if(0)
+			return DELIVERY_PREFERRED_EFFECT
+		if(1) // one step away on the spectrum
+			return DELIVERY_LESSER_EFFECT
+		if(2) // two steps away
+			return DELIVERY_NO_EFFECT
+		else // three or more steps away
+			return DELIVERY_NEGATIVE_EFFECT

@@ -217,7 +217,7 @@
 	playsound(loc, injectSFX, injectVOL, 1)
 	SEND_SIGNAL(M, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)
 
-	reagents.reaction(M, CONTROLLED_INGESTION)
+	reagents.reaction(M, ABSORPTION)
 	if(M.reagents)
 		var/list/injected = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
@@ -228,7 +228,7 @@
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(M)]. Reagents: [contained]</font>")
 		msg_admin_attack("[key_name(user)] injected [key_name(M)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
-		var/trans = reagents.trans_to(M, amount_per_transfer_from_this)
+		var/trans = reagents.trans_to(M, amount_per_transfer_from_this, method = ABSORPTION)
 		if(mag)
 			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]'s [mag.name]."))
 		else

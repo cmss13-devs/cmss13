@@ -11,7 +11,7 @@
 	color = "#A10808"
 	data_properties = new/list("blood_type"=null,"blood_color"= "#A10808","viruses"=null,"resistances"=null)
 	chemclass = CHEM_CLASS_RARE
-	preferred_delivery = INJECTION
+	preferred_delivery = IMPLANTATION // for all intents and purposes, blood is considered implanted via IV drip or transfusion
 
 
 /datum/reagent/blood/reaction_mob(mob/M, method=TOUCH, volume, permeable)

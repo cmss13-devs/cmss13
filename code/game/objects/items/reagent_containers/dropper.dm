@@ -18,6 +18,15 @@
 	transparent = TRUE
 	var/filled = 0
 
+/obj/item/reagent_container/dropper/industrial // did you know this used to be its own DM file, and it was a literal copy of the parent??
+	name = "Industrial Dropper"
+	desc = "A larger dropper. Transfers 10 units."
+	icon = 'icons/obj/items/chemistry.dmi'
+	icon_state = "dropper0"
+	amount_per_transfer_from_this = 10
+	possible_transfer_amounts = list(1,2,3,4,5,6,7,8,9,10)
+	volume = 10
+
 /obj/item/reagent_container/dropper/afterattack(obj/target, mob/user , flag)
 	if(!target.reagents || !flag)
 		return
@@ -90,7 +99,7 @@
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to squirt [M.name] ([M.key]). Reagents: [contained]</font>")
 			msg_admin_attack("[user.name] ([user.ckey]) squirted [M.name] ([M.key]) with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 
-		trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
+		trans = src.reagents.trans_to(target, amount_per_transfer_from_this, method = TOUCH)
 		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution."))
 		if(src.reagents.total_volume<=0)
 			filled = 0

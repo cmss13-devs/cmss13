@@ -1,0 +1,4 @@
+author: "biologed"
+delete-after: True
+changes:
+  - rscadd: "отображение горячих клавиш над способностями"

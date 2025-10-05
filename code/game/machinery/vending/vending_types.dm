@@ -643,6 +643,7 @@
 		/obj/item/device/cassette_tape/hairmetal = 10,
 		/obj/item/device/cassette_tape/indie = 10,
 		/obj/item/device/walkman = 50,
+		/obj/item/toy/minesweeper_handheld = 4,
 		/obj/item/storage/pouch/cassette = 15,
 		/obj/item/toy/deck = 5,
 		/obj/item/toy/deck/uno = 5,
@@ -659,7 +660,6 @@
 		/obj/item/storage/fancy/cigarettes/trading_card = 20,
 		/obj/item/storage/fancy/trading_card = 20,
 		/obj/item/toy/trading_card = 50,
-		/obj/item/toy/minesweeper_handheld = 3,
 
 	)
 
@@ -677,6 +677,7 @@
 		/obj/item/device/cassette_tape/hairmetal = 5,
 		/obj/item/device/cassette_tape/indie = 5,
 		/obj/item/device/walkman = 15,
+		/obj/item/toy/minesweeper_handheld = 10,
 		/obj/item/storage/pouch/cassette = 10,
 		/obj/item/toy/deck = 20,
 		/obj/item/toy/deck/uno = 15,
@@ -691,7 +692,6 @@
 		/obj/item/storage/fancy/cigarettes/trading_card = 30,
 		/obj/item/storage/fancy/trading_card = 20,
 		/obj/item/toy/trading_card = 5,
-		/obj/item/toy/minesweeper_handheld = 20,
 
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL

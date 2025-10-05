@@ -462,7 +462,13 @@
 
 		for(var/turf/turf in view(under_the_stairs))
 			if(turf in from_turfs)
-				continue
+
+			if((dir == NORTH && turf.y > stair.y) \
+			|| (dir == EAST && turf.x > stair.x) \
+			|| (dir == SOUTH && turf.y < stair.y) \
+			|| (dir == WEST && turf.x < stair.x))
+				continue			
+
 			from_turfs += turf
 
 		for(var/turf/turf in view(SSmapping.get_turf_above(under_the_stairs)))
@@ -477,7 +483,7 @@
 		for(var/turf/turf as anything in to_turfs)
 			if((dir == NORTH && turf.y <= stair.y) \
 			|| (dir == EAST && turf.x <= stair.x) \
-			|| (dir == SOUTH && turf.y >= stair.y) \
+			|| (dir == SOUTH && turf.y > stair.y) \
 			|| (dir == WEST && turf.x > stair.x))
 				continue
 

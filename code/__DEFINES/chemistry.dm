@@ -38,7 +38,7 @@
 #define NO_DELIVERY (1<<0)
 /// Medical Pill deliveries
 #define CONTROLLED_INGESTION (1<<1)
-/// Food/drink deliveries, or basically mouth ingestion
+/// Food/drink deliveries, or basically mouth ingestion/digestion
 #define INGESTION (1<<2)
 /// Inhalation deliveries
 #define INHALATION (1<<3)

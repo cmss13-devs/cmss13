@@ -11,7 +11,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		if (length(initial(R.name)))
 			.[ckey(initial(R.name))] = t
 
-
 /datum/reagent
 	var/name = "Reagent"
 	var/id = ""
@@ -199,7 +198,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		var/delivery_outcome = calc_delivery_spectrum(delivery_method)
 
 #ifdef DEBUG
-		to_chat(M, "DEBUG: [name]: delivery_method=[delivery_method], preferred_delivery=[preferred_delivery], delivery_outcome=[delivery_outcome], initial_potency=[potency]")
+		to_chat(M, "DEBUG: [name]: delivery_method=[delivery_method], preferred_delivery=[preferred_delivery], undesired_delivery=[undesired_delivery], delivery_outcome=[delivery_outcome], initial_potency=[potency]")
 #endif
 
 		switch(delivery_outcome)
@@ -416,30 +415,21 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 
 /datum/reagent/proc/calc_delivery_spectrum(method=TOUCH)
-	if(undesired_delivery & (ANY_DELIVERY|method)) // check the unpreferred first since we wanna fuck over any kind of bug abusers if they find a way to game this shit
+	if(undesired_delivery == method) // check the unpreferred first since we wanna fuck over any kind of bug abusers if they find a way to game this shit
+		to_chat("DEBUG: UNDESIRED CHECK PASS")
 		return DELIVERY_NEGATIVE_EFFECT
-	if(preferred_delivery & (ANY_DELIVERY|method))
+	if(preferred_delivery == method)
+		to_chat("DEBUG: PREFERRED CHECK PASS")
 		return DELIVERY_PREFERRED_EFFECT
-
-	var/list/delivery_spectrum = list(
-		CONTROLLED_INGESTION,
-		INGESTION,
-		INHALATION,
-		TOUCH,
-		ABSORPTION,
-		INJECTION,
-		IMPLANTATION
-	)
 
 	var/preferred_indices = list()
 	var/delivery_index = 0
 
-	for(var/index = 1 to delivery_spectrum.len)
-		if(method & delivery_spectrum[index])
-			delivery_index = index
-			break // just in case
-		if(preferred_delivery & delivery_spectrum[index])
+	for(var/index = 1 to GLOB.delivery_spectrum.len)
+		if(preferred_delivery & GLOB.delivery_spectrum[index])
 			preferred_indices += index
+		if(method & GLOB.delivery_spectrum[index])
+			delivery_index = index
 
 	var/min_distance = 10 // just hardcode this, hardly matters anyway
 	for(var/preferred_index in preferred_indices)

@@ -26,6 +26,10 @@
 	if(!anchored && is_ground_level(z) && prob(70))
 		anchored = TRUE
 
+/obj/structure/reagent_dispensers/tank/Initialize(mapload)
+	. = ..()
+	update_icon()
+
 /obj/structure/reagent_dispensers/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -145,33 +149,6 @@
 		return
 	. = ..()
 
-/obj/structure/reagent_dispensers/tank/update_icon()
-	overlays.Cut()
-
-	if(reagents && reagents.total_volume)
-		var/image/meter = image(icon, src, "t-25")
-
-		var/percent = floor((reagents.total_volume / reagents.maximum_volume * 100))
-		switch(percent)
-			if(0)
-				meter.icon_state = "t_0"
-			if(1 to 20)
-				meter.icon_state = "t_20"
-			if(21 to 40)
-				meter.icon_state = "t_40"
-			if(41 to 60)
-				meter.icon_state = "t_60"
-			if(61 to 80)
-				meter.icon_state = "t_80"
-			if(81 to INFINITY)
-				meter.icon_state = "t_100"
-
-		overlays += meter
-
-/obj/structure/reagent_dispensers/tank/Initialize(mapload, reagent_amount = 1000)
-	. = ..()
-	update_icon()
-
 //Dispensers
 /obj/structure/reagent_dispensers/tank/water
 	name = "water tank"
@@ -219,6 +196,29 @@
 	var/exploding = 0
 	var/reinforced = FALSE
 	var/datum/weakref/source_mob
+
+/obj/structure/reagent_dispensers/tank/update_icon()
+	. = ..()
+	if(reagents && reagents.total_volume)
+		var/image/meter = image(icon, src, "t-25")
+
+		var/percent = floor((reagents.total_volume / reagents.maximum_volume * 100))
+		switch(percent)
+			if(0)
+				meter.icon_state = "t_0"
+			if(1 to 20)
+				meter.icon_state = "t_20"
+			if(21 to 40)
+				meter.icon_state = "t_40"
+			if(41 to 60)
+				meter.icon_state = "t_60"
+			if(61 to 80)
+				meter.icon_state = "t_80"
+			if(81 to INFINITY)
+				meter.icon_state = "t_100"
+
+		overlays += meter
+
 /obj/structure/reagent_dispensers/tank/fuel/get_examine_text(mob/user)
 	. = ..()
 	if(user != loc)
@@ -389,6 +389,7 @@
 /obj/structure/reagent_dispensers/tank/fuel/gas
 	name = "gas tank"
 	desc = "A gas tank."
+
 /obj/structure/reagent_dispensers/tank/fuel/spacecraft
 	name = "spacecraft fuel-mix tank"
 	desc = "A fuel tank mix with fuel designed for various spacecraft, very combustible."
@@ -400,21 +401,25 @@
 
 	amount = min(amount, reagents.total_volume)
 	reagents.remove_reagent(chemical,amount)
+
 /obj/structure/reagent_dispensers/tank/fuel/gas/methane
 	name = "methane tank"
 	desc = "A tank for containing methane gas. Does not smell like farts."
 	icon_state = "methanetank"
 	chemical = "methane"
+
 /obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen
 	name = "hydrogen tank"
 	desc = "A tank for containing hydrogen gas."
 	icon_state = "hydrogentank"
 	chemical = "hydrogen"
+
 /obj/structure/reagent_dispensers/tank/fuel/oxygentank
 	name = "oxygen tank"
 	desc = "A tank for containing sweet, sweet oxygen."
 	icon_state = "oxygentank"
 	chemical = "oxygen"
+
 /obj/structure/reagent_dispensers/tank/fuel/custom
 	name = "reagent tank"
 	desc = "A reagent tank, typically used to store large quantities of chemicals."
@@ -422,12 +427,15 @@
 	chemical = null
 	dispensing = FALSE //Empty fuel tanks start by accepting chemicals by default. Can't dispense nothing!
 	icon_state = "tank_normal"
+
 /obj/structure/reagent_dispensers/tank/fuel/custom/Initialize(mapload, volume)
 	. = ..()
 	update_icon()
+
 /obj/structure/reagent_dispensers/tank/fuel/custom/on_reagent_change()
 	. = ..()
 	update_icon()
+
 /obj/structure/reagent_dispensers/tank/fuel/custom/update_icon()
 	. = ..()
 

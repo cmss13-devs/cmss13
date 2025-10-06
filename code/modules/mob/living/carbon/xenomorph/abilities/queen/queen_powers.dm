@@ -354,7 +354,7 @@
 /datum/action/xeno_action/onclick/manage_hive/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/queen_manager = owner
 	plasma_cost = 0
-	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)", "Permissions", "Purchase Buffs")
+	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)", "Permissions", "Purchase Buffs", "Edit Tacmap")
 	if(queen_manager.hive.hivenumber == XENO_HIVE_CORRUPTED)
 		var/datum/hive_status/corrupted/hive = queen_manager.hive
 		options += "Add Personal Ally"
@@ -384,7 +384,18 @@
 			permissions()
 		if("Purchase Buffs")
 			purchase_buffs()
+		if("Edit Tacmap")
+			edit_tacmap()
 	return ..()
+
+/datum/action/xeno_action/onclick/manage_hive/proc/edit_tacmap()
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	var/datum/component/tacmap/tacmap_component = xeno.GetComponent(/datum/component/tacmap)
+
+	if(xeno in tacmap_component.interactees)
+		tacmap_component.on_unset_interaction(xeno)
+	else
+		tacmap_component.show_tacmap(xeno)
 
 /datum/action/xeno_action/onclick/manage_hive/proc/permissions()
 	var/mob/living/carbon/xenomorph/queen/xeno = owner

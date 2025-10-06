@@ -635,6 +635,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/default_overwatch_level = 0
 	/// Is it live
 	var/live = FALSE
+	/// Can it see tacmap drawings
+	var/drawing = TRUE
 
 /datum/action/minimap/New(Target, new_minimap_flags, new_marker_flags)
 	. = ..()
@@ -759,11 +761,11 @@ SUBSYSTEM_DEF(minimaps)
 	if(default_overwatch_level)
 		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"] || !SSminimaps.minimaps_by_z["[default_overwatch_level]"].hud_image)
 			return
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live, drawing=drawing)
 		return
 	if(!SSminimaps.minimaps_by_z["[tracking.z]"] || !SSminimaps.minimaps_by_z["[tracking.z]"].hud_image)
 		return
-	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, live)
+	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, live, drawing=drawing)
 
 /datum/action/minimap/remove_from(mob/mob)
 	toggle_minimap(FALSE)
@@ -787,7 +789,7 @@ SUBSYSTEM_DEF(minimaps)
 				locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 				minimap_displayed = FALSE
 			return
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, live, drawing=drawing)
 		if(minimap_displayed)
 			if(owner.client)
 				owner.client.screen += map
@@ -801,7 +803,7 @@ SUBSYSTEM_DEF(minimaps)
 			locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 			minimap_displayed = FALSE
 		return
-	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, live)
+	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, live, drawing=drawing)
 	if(minimap_displayed)
 		if(owner.client)
 			owner.client.screen += map
@@ -854,6 +856,7 @@ SUBSYSTEM_DEF(minimaps)
 	minimap_flags = MINIMAP_FLAG_ALL
 	marker_flags = NONE
 	live = TRUE
+	drawing = FALSE
 
 /datum/action/minimap/observer/action_activate()
 	. = ..()

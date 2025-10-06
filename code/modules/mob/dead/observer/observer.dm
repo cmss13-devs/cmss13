@@ -209,6 +209,7 @@
 		/atom/movable/screen/exit_map,
 		/atom/movable/screen/minimap,
 		/atom/movable/screen/exit_map,
+		/atom/movable/screen/minimap_locator,
 	))
 
 	if(!client)

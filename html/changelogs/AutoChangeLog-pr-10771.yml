@@ -1,0 +1,6 @@
+author: "matttheficus"
+delete-after: True
+changes:
+  - bugfix: "Clicking on paper with a pen now opens it at the same size as reading it."
+  - rscadd: "Added [s][/s], [name], [rank], [job], [op], [ship], and [colony] macros."
+  - ui: "increased the size of the default paper popup window and makes it a define."

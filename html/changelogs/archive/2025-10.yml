@@ -16,3 +16,9 @@
   - qol: adds a little feedback text when you save your character prefs and it's successful
   Sergeys:
   - ui: Added search box to construction UI
+2025-10-06:
+  BKryth:
+  - balance: lowers required neurotoxin plasma to turn shrapnel type of custom explosives
+      from 30 to 10
+  - bugfix: replaces the chemical required to turn shrapnel into hornet shrapnel from
+      sulphuric acid into polytrinic acid due to recipe conflicts

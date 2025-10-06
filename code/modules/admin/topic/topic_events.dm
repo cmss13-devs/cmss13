@@ -343,7 +343,7 @@
 				announce_receipt = TRUE
 
 			var/delete_midless_mobs = FALSE
-			var/del_prompt = tgui_alert(usr, "Would you like to delete mindless mobs? This will remove all mobs that did not get mind upon spawn. If not, the mobs will be offered to ghosts.", "Delete mindless mobs?", list("Yes", "No"), time_to_decide)
+			var/del_prompt = tgui_alert(usr, "Would you like to delete mindless mobs? This will remove all mobs that did not get a mind upon spawn. If not, the mobs will be offered to ghosts.", "Delete mindless mobs?", list("Yes", "No"), time_to_decide)
 			if(del_prompt == "Yes")
 				delete_midless_mobs = TRUE
 
@@ -446,7 +446,7 @@
 				announce_receipt = TRUE
 
 			var/delete_midless_mobs = FALSE
-			var/del_prompt = tgui_alert(usr, "Would you like to delete mindless mobs? This will remove all mobs that did not get mind upon spawn. If not, the mobs will be offered to ghosts.", "Delete mindless mobs?", list("Yes", "No"), time_to_decide)
+			var/del_prompt = tgui_alert(usr, "Would you like to delete mindless mobs? This will remove all mobs that did not get a mind upon spawn. If not, the mobs will be offered to ghosts.", "Delete mindless mobs?", list("Yes", "No"), time_to_decide)
 			if(del_prompt == "Yes")
 				delete_midless_mobs = TRUE
 

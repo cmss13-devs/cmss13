@@ -56,4 +56,4 @@
 		qdel(spawned_mob)
 		count_mob_deleted++
 
-	message_admins("After EPT spawn as [name], [count_mob_deleted] out of [mob_max] mindless mobs were removed.")
+	message_admins("After ERT spawn as [name], [count_mob_deleted] out of [mob_max] mindless mobs were removed.")

@@ -219,6 +219,10 @@
 
 		overlays += meter
 
+/obj/structure/reagent_dispensers/tank/on_reagent_change()
+	. = ..()
+	update_icon()
+
 /obj/structure/reagent_dispensers/tank/fuel/get_examine_text(mob/user)
 	. = ..()
 	if(user != loc)
@@ -429,10 +433,6 @@
 	icon_state = "tank_normal"
 
 /obj/structure/reagent_dispensers/tank/fuel/custom/Initialize(mapload, volume)
-	. = ..()
-	update_icon()
-
-/obj/structure/reagent_dispensers/tank/fuel/custom/on_reagent_change()
 	. = ..()
 	update_icon()
 

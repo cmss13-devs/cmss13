@@ -1405,7 +1405,7 @@
 	color = "#EBD9B7"
 	},
 /obj/structure/machinery/computer/objective,
-/turf/open/floor/prison/ramptop,
+/turf/open/floor/corsat,
 /area/abyssal/interior/telecomms_2)
 "aem" = (
 /obj/effect/decal/strata_decals/grime/grime4,
@@ -2249,6 +2249,13 @@
 /obj/effect/decal/hybrisa/lattice,
 /turf/open/floor/engine,
 /area/abyssal/interior/corridor_west)
+"agI" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/prop/server_equipment/yutani_server/broken{
+	density = 0
+	},
+/turf/open/floor/darkpurple2/north,
+/area/abyssal/interior/science)
 "agJ" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -2756,12 +2763,6 @@
 /area/abyssal/interior/atmo)
 "aim" = (
 /turf/open/floor/prison,
-/area/abyssal/interior/corridor_west)
-"ain" = (
-/obj/effect/decal/hybrisa/lattice,
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/airlock/strata/autoname,
-/turf/open/floor/engine,
 /area/abyssal/interior/corridor_west)
 "aio" = (
 /turf/open/floor/darkred2/west,
@@ -5675,9 +5676,6 @@
 	name = "\improper S-13 solar power collector";
 	desc = "Power-bank designed to hold and disperse solar energy collected from the externally mounted solar arrays."
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_x = -28
 	},
@@ -7209,9 +7207,6 @@
 	pixel_y = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/abyssal/interior/engineering)
 "atD" = (
@@ -10224,10 +10219,8 @@
 /area/abyssal/exterior/fore)
 "aAJ" = (
 /obj/structure/machinery/light/blue,
-/obj/structure/closet/secure_closet/engineering_materials{
-	req_one_access = null
-	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/prison/darkyellow2,
 /area/abyssal/interior/telecomms_2)
 "aAK" = (
@@ -11125,12 +11118,6 @@
 /area/abyssal/interior/engineering)
 "aCO" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/effect/hybrisa/misc/fake/wire/yellow{
-	dir = 4
-	},
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/abyssal/interior/engineering)
 "aCP" = (
@@ -11479,30 +11466,11 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/abyssal/interior/command)
-"aDH" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_y = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/effect/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	pixel_y = 6
-	},
-/turf/open/floor/plating/plating_catwalk/shiva,
-/area/abyssal/interior/engineering)
 "aDI" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	pixel_y = 6
-	},
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/abyssal/interior/engineering)
 "aDJ" = (
@@ -11530,10 +11498,6 @@
 "aDN" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
-	},
-/obj/effect/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	pixel_y = 6
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/plating/plating_catwalk/shiva,
@@ -11563,10 +11527,6 @@
 "aDR" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
-	},
-/obj/effect/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	pixel_y = 6
 	},
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/abyssal/interior/engineering)
@@ -11625,35 +11585,11 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/elevatorshaft,
 /area/abyssal/interior/bunker)
-"aDY" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/effect/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	pixel_y = 6
-	},
-/obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/plating/plating_catwalk/shiva,
-/area/abyssal/interior/engineering)
 "aDZ" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/bed/chair,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/abyssal/interior/galley)
-"aEa" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan,
-/obj/effect/hybrisa/misc/fake/wire/blue{
-	dir = 4;
-	pixel_y = 6
-	},
-/obj/effect/hybrisa/misc/fake/wire/red{
-	pixel_x = 4;
-	layer = 2.5
-	},
-/obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/plating/plating_catwalk/shiva,
-/area/abyssal/interior/engineering)
 "aEb" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -11681,20 +11617,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/closed/wall/r_wall/prison,
 /area/abyssal/interior/command)
-"aEf" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_y = 1
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
-/obj/effect/hybrisa/misc/fake/wire/yellow{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk/shiva,
-/area/abyssal/interior/engineering)
 "aEg" = (
 /turf/open/floor/hybrisa/tile/green_bigtile/northeast,
 /area/abyssal/interior/command)
@@ -11792,7 +11714,6 @@
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/largecrate/random/case/double,
-/obj/structure/largecrate/random/case/small,
 /turf/open/floor/dark,
 /area/abyssal/interior/engineering)
 "aEv" = (
@@ -12012,7 +11933,6 @@
 /obj/structure/safe{
 	spawnkey = 0
 	},
-/obj/item/weapon/gun/smg/nailgun/compact,
 /obj/item/engi_upgrade_kit,
 /obj/item/maintenance_jack{
 	layer = 3.04
@@ -12205,7 +12125,7 @@
 	pixel_x = -10;
 	pixel_y = -4
 	},
-/turf/open/floor/engine,
+/turf/open/floor/engine/vacuum,
 /area/abyssal/interior/maintenance/central)
 "aFu" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -12494,18 +12414,60 @@
 	dir = 1
 	},
 /obj/item/weapon/gun/rifle/ak4047,
-/obj/item/ammo_magazine/rifle/ak4047,
-/obj/item/ammo_magazine/rifle/ak4047,
-/obj/item/ammo_magazine/rifle/ak4047/ap,
-/obj/item/ammo_magazine/rifle/ak4047/ap,
 /obj/structure/safe{
 	spawnkey = 0
 	},
+/obj/item/ammo_magazine/rifle/ak4047/ap,
+/obj/item/ammo_magazine/rifle/ak4047/ap,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/abyssal/interior/security)
+"aGc" = (
+/obj/structure/closet/walllocker/emerglocker/north,
+/turf/open/floor/darkish,
+/area/abyssal/interior/corridor_east)
+"aGd" = (
+/obj/structure/closet/medical_wall{
+	pixel_y = 32
+	},
+/obj/item/stack/medical/splint,
+/obj/item/stack/medical/bruise_pack,
+/obj/item/stack/medical/ointment,
+/turf/open/floor/station/metal/floor{
+	dir = 1
+	},
+/area/abyssal/interior/corridor_central)
+"aGe" = (
+/turf/open/floor/prison/darkbrown2/southeast,
+/area/abyssal/interior/corridor_west)
+"aGf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_y = 1
+	},
+/turf/open/floor/darkish,
+/area/abyssal/interior/corridor_west)
 "aGg" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/station/metal/floor/alt2,
+/area/abyssal/interior/corridor_west)
+"aGh" = (
+/turf/open/floor/prison/darkbrown2/east,
+/area/abyssal/interior/corridor_west)
+"aGi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/turf/open/floor/darkish,
+/area/abyssal/interior/corridor_west)
+"aGj" = (
+/turf/open/floor/prison/darkbrowncorners2,
+/area/abyssal/interior/corridor_west)
+"aGk" = (
+/turf/open/floor/prison/darkbrown2/northeast,
 /area/abyssal/interior/corridor_west)
 "aGm" = (
 /obj/item/trash/cigbutt,
@@ -13339,16 +13301,13 @@
 	layer = 2.5
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/prop/static_tank/water{
-	pixel_x = 2;
-	pixel_y = -2
-	},
 /obj/structure/sign/safety/nonpress_0g{
 	pixel_x = -16
 	},
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
+/obj/structure/prop/static_tank/water,
 /turf/open/floor/elevatorshaft,
 /area/abyssal/interior/bunker)
 "aKG" = (
@@ -14502,9 +14461,6 @@
 /obj/structure/machinery/power/power_generator/reactor/colony{
 	name = "\improper S-13 solar power collector";
 	desc = "Power-bank designed to hold and disperse solar energy collected from the externally mounted solar arrays."
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
 	},
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_x = 27
@@ -15870,7 +15826,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "bas" = (
-/obj/structure/machinery/computer3/server/rack,
+/obj/structure/prop/server_equipment/broken,
 /turf/open/floor/darkpurple2/southwest,
 /area/abyssal/interior/science)
 "bat" = (
@@ -16016,7 +15972,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "baM" = (
-/obj/structure/machinery/computer3/server/rack,
+/obj/structure/prop/server_equipment/broken,
 /turf/open/floor/darkpurple2/west,
 /area/abyssal/interior/science)
 "baN" = (
@@ -19161,12 +19117,6 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
-/obj/structure/closet/medical_wall{
-	pixel_y = 32
-	},
-/obj/item/stack/medical/ointment,
-/obj/item/stack/medical/bruise_pack,
-/obj/item/stack/medical/splint,
 /obj/structure/disposalpipe/junction{
 	dir = 8;
 	icon_state = "pipe-j2"
@@ -19184,6 +19134,7 @@
 /turf/open/floor/darkgreen2/north,
 /area/abyssal/interior/hydro)
 "cPi" = (
+/obj/effect/decal/hybrisa/trash,
 /turf/open/floor/prison/darkyellow2/east,
 /area/abyssal/interior/engineering)
 "cPG" = (
@@ -20586,9 +20537,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/obj/effect/hybrisa/misc/fake/wire/blue{
-	pixel_x = -4
-	},
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/abyssal/interior/engineering)
 "tVP" = (
@@ -20895,7 +20843,6 @@
 /area/abyssal/interior/corridor_west)
 "wOo" = (
 /obj/structure/machinery/recharge_station,
-/obj/structure/closet/walllocker/emerglocker/north,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/northeast,
 /area/abyssal/interior/engineering)
 "wPd" = (
@@ -31633,11 +31580,11 @@ aZr
 ahI
 aRW
 aim
-aim
+aGj
 afV
-aim
-aim
-akq
+aGh
+aGh
+aGe
 afV
 aKB
 aGg
@@ -31788,8 +31735,8 @@ aim
 afV
 afV
 afV
-ain
-afV
+aGf
+aGf
 afV
 aHa
 aJQ
@@ -31937,7 +31884,7 @@ aEK
 ahI
 aRW
 aim
-aim
+akq
 afV
 ahX
 ahX
@@ -32087,10 +32034,10 @@ asf
 afY
 aWG
 ahI
-aRW
-aim
-aim
-ahL
+aGk
+aGh
+aGe
+aGi
 ahX
 ahX
 ahX
@@ -34242,7 +34189,7 @@ axK
 ajq
 ahQ
 acE
-azG
+aBi
 azH
 aAH
 aaH
@@ -35601,8 +35548,8 @@ azu
 acs
 afI
 aoh
-aEf
-aDH
+atC
+atC
 atC
 aUk
 aCZ
@@ -36656,7 +36603,7 @@ aNY
 azj
 aVq
 ahB
-ahn
+aGd
 bgX
 aFY
 aeD
@@ -37882,7 +37829,7 @@ aeD
 aEV
 aEI
 aEv
-aDY
+acN
 aDC
 act
 aDj
@@ -38034,7 +37981,7 @@ aeD
 aEW
 aEL
 aEw
-aEa
+aAx
 aDC
 act
 aCa
@@ -38645,7 +38592,7 @@ atv
 beG
 abv
 act
-aaA
+aGc
 aaA
 aaA
 aCw
@@ -44148,7 +44095,7 @@ aaa
 aaa
 aaa
 aaa
-agF
+agI
 abZ
 baw
 aaa

@@ -468,6 +468,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/drawing
 
 	var/atom/movable/screen/minimap_tool/draw_tool/active_draw_tool
+	/// List of turfs that have labels attached to them. kept around so it can be cleared
+	var/list/turf/labelled_turfs = list()
 
 /atom/movable/screen/minimap/MouseWheel(delta_x, delta_y, location, control, params)
 	var/mob/user = usr
@@ -1219,8 +1221,6 @@ SUBSYSTEM_DEF(minimaps)
 	desc = "Click to place a label. Middle click a label to remove it. Middle click this button to remove all labels."
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/label.dmi'
 	screen_loc = "15,9"
-	/// List of turfs that have labels attached to them. kept around so it can be cleared
-	var/list/turf/labelled_turfs = list()
 
 /atom/movable/screen/minimap_tool/label/clicked(location, list/modifiers)
 	. = ..()
@@ -1229,7 +1229,7 @@ SUBSYSTEM_DEF(minimaps)
 
 ///Clears all labels and logs who did it
 /atom/movable/screen/minimap_tool/label/proc/clear_labels(mob/user)
-	for(var/turf/label as anything in labelled_turfs)
+	for(var/turf/label as anything in linked_map.labelled_turfs)
 		SSminimaps.remove_marker(label)
 
 /atom/movable/screen/minimap_tool/label/on_mousedown(mob/source, atom/object, location, control, params)
@@ -1243,7 +1243,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/label/proc/async_mousedown(mob/source, atom/object, location, control, params)
 	// this is really [/atom/movable/screen/minimap/proc/get_coords_from_click] copypaste since we
 	// want to also cancel the click if they click src and I cant be bothered to make it even more generic rn
-	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
+	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
 
 	if(!plane_master)
 		return
@@ -1258,7 +1258,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(modifiers[BUTTON] == MIDDLE_CLICK)
 		var/curr_dist
 		var/turf/nearest
-		for(var/turf/label as anything in labelled_turfs)
+		for(var/turf/label as anything in linked_map.labelled_turfs)
 			var/dist = get_dist_euclidian(label, target)
 			if(dist > LABEL_REMOVE_RANGE)
 				continue
@@ -1281,7 +1281,7 @@ SUBSYSTEM_DEF(minimaps)
 	textbox.maptext_width = 64
 	textbox.maptext = label_text
 
-	labelled_turfs += target
+	linked_map.labelled_turfs += target
 	var/image/blip = image('icons/ui_icons/map_blips.dmi', null, "label", ABOVE_FLOAT_LAYER)
 	blip.overlays += textbox
 	msg_admin_niche("[key_name(source)] has crated a label at ([target.x],[target.y]) with text: [label_text].")

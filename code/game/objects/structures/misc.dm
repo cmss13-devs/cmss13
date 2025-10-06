@@ -462,12 +462,13 @@
 
 		for(var/turf/turf in view(under_the_stairs))
 			if(turf in from_turfs)
+				continue
 
 			if((dir == NORTH && turf.y > stair.y) \
 			|| (dir == EAST && turf.x > stair.x) \
 			|| (dir == SOUTH && turf.y < stair.y) \
 			|| (dir == WEST && turf.x < stair.x))
-				continue			
+				continue
 
 			from_turfs += turf
 

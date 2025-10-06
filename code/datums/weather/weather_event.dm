@@ -29,6 +29,8 @@
 	var/damage_per_tick = 200 // more likely to report the bug if it instantly kills them
 	var/damage_type = BURN
 
+	var/should_sound_weather_alarm = FALSE // Variable to check if weather alarm on loudspeakers (like soro) should be played.
+
 	var/ambience = 'sound/ambience/strata/strata_snow.ogg'
 
 	/// to be used with handle_weather_process()
@@ -60,5 +62,5 @@
 		to_chat(affected_mob, SPAN_WARNING(effect_message))
 	if(damage_per_tick)
 		var/calculated_damage = (isxeno(affected_mob) ? damage_per_tick * 3 : damage_per_tick) * delta_time
-		affected_mob.apply_damage(calculated_damage, damage_type)
+		affected_mob.apply_damage(calculated_damage, damage_type, enviro=TRUE)
 		affected_mob.last_damage_data = create_cause_data("Exposure")

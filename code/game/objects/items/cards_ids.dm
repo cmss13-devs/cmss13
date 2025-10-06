@@ -232,6 +232,11 @@
 	icon_state = "cl"
 	item_state = "cl_id"
 
+/obj/item/card/id/silver/cl/hyperdyne
+	name = "corporate holo-badge"
+	desc = "A corporate holo-badge. It's a unique Corporate orange and black."
+	icon_state = "hyperdyne"
+
 /obj/item/card/id/gold/council
 	name = "identification holo-badge"
 	desc = "A real bronze gold Colonel's holo-badge. Commands respect, authority, and it makes for an excellent paperweight."
@@ -306,6 +311,12 @@
 	item_state = "gold_id"
 	paygrade = PAY_SHORT_CINSP
 
+/obj/item/card/id/PaP
+	name = "PaP identification holo-badge"
+	desc = "A standard-issue holo-badge for personnel within the UPP's People's Armed Police. It displays the officer's rank and affiliation."
+	icon_state = "data"
+	paygrade = PAY_SHORT_PAP_MLTS
+
 /obj/item/card/id/general
 	name = "general officer holo-badge"
 	desc = "Top brass of the top brass. Issued to only the most dedicated."
@@ -331,6 +342,14 @@
 /obj/item/card/id/adaptive
 	name = "agent card"
 	access = list(ACCESS_ILLEGAL_PIRATE)
+
+/obj/item/card/id/adaptive/silver
+	icon_state = "silver"
+	item_state = "silver_id"
+
+/obj/item/card/id/adaptive/gold
+	icon_state = "gold"
+	item_state = "gold_id"
 
 /obj/item/card/id/adaptive/New(mob/user as mob)
 	..()

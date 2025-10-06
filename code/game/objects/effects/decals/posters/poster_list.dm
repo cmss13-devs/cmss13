@@ -446,3 +446,68 @@ Template
 	icon_state="poster87"
 	name = "NSPA poster"
 	desc = "A recruitment poster for the NSPA. One Law, One Duty, One Force—Join the NSPA."
+
+/datum/poster/poster_88
+	icon_state="poster88"
+	name = "The Stars Are Ours"
+	desc = "A giant man wearing an EVA suit holds fast with a waving flag of the UPP."
+
+/datum/poster/poster_89
+	icon_state="poster89"
+	name = "The Stars Are Ours"
+	desc = "A stylized depiction of the Solar System and the stars."
+
+/datum/poster/poster_90
+	icon_state="poster90"
+	name = "Trust In The Strength Of The Union"
+	desc = "A stylized depiction of the UPP star."
+
+/datum/poster/poster_91
+	icon_state="poster91"
+	name = "Through The Union Our Power Is Secured"
+	desc = "A stylized depiction of the UPP's flag and the words, 'Our Unity is the dream of all Peoples. Trust in the strength of ther Union.'"
+
+/datum/poster/poster_92
+	icon_state="poster92"
+	name = "We Forge A Path Into the Stars"
+	desc = "The head of a man in a UPPAC EVA suit smiles looking not at you, but up to the right of the poster."
+
+/datum/poster/poster_93
+	icon_state="poster93"
+	name = "Our Militaries Secures Our Future"
+	desc = "A UPPAC Ground Forces soldier stands, rifle at the ready with a defiant and steel-eyed look on his face. The UPP star is in the background."
+
+/datum/poster/poster_94
+	icon_state="poster94"
+	name = "The People's Armed Collective Is Our Backbone"
+	desc = "UPPAC Ground Forces soldiers, one of whom is a woman and none of whom have a clear race, stare forward stoically."
+
+/datum/poster/poster_95
+	icon_state="poster95"
+	name = "The People's Armed Collective Is Our Backbone"
+	desc = "UPPAC Ground Forces soldiers, one of whom is a woman and none of whom have a clear race, stare forward stoically. The poster reads, 'The People's Armed Collective represent us all in the sacred war of liberation and defense of the People's Union."
+
+/datum/poster/poster_96
+	icon_state="poster96"
+	name = "Ever Vigilant Against Capitalist Forces"
+	desc = "A decrepit and desiccated, near claw-like hand reaches towards a stylized solar star shaped into the UPP star. The poster reads, 'Even in its death throes, we must remain vigilant of the encroachment of capitalist forces."
+
+/datum/poster/poster_97
+	icon_state="poster97"
+	name = "Ever Vigilant Against The Stooges of Capitalism and Imperialism"
+	desc = "A warped screaming eagle made to look like a vulture bears its talons over Earth which has the UPP roundel super-imposed over it. The poster reads, 'The UA will not break the resolve of the people."
+
+/datum/poster/poster_98
+	icon_state="poster98"
+	name = "The Stars Are Ours"
+	desc = "A giant man wearing an EVA suit holds fast with a waving flag of the UPP."
+
+/datum/poster/poster_99
+	icon_state="poster99"
+	name = "The Stars Are Ours"
+	desc = "A stylized depiction of the Solar System and the stars."
+
+/datum/poster/poster_100
+	icon_state="poster100"
+	name = "We Forge A Path Into the Stars"
+	desc = "The head of a man in a UPPAC EVA suit smiles looking not at you, but up to the right of the poster."

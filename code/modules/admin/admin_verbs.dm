@@ -307,6 +307,7 @@ GLOBAL_LIST_INIT(admin_verbs_teleport, list(
 ))
 
 GLOBAL_LIST_INIT(mentor_verbs, list(
+	/client/proc/deadmin_self,
 	/client/proc/cmd_mentor_say,
 	/datum/admins/proc/imaginary_friend,
 	/client/proc/toggle_newplayer_ghost_hud,
@@ -518,12 +519,14 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	if(new_fstyle)
 		M.f_style = new_fstyle
 
-	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female")
-	if (new_gender)
-		if(new_gender == "Male")
-			M.gender = MALE
-		else
+	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female", "Non-Binary")
+	if(new_gender)
+		if(new_gender == "Female")
 			M.gender = FEMALE
+		else if(new_gender == "Non-Binary")
+			M.gender = PLURAL
+		else
+			M.gender = MALE
 	M.update_hair()
 	M.update_body()
 

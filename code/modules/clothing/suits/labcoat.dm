@@ -189,6 +189,7 @@
 	icon_state = "snowsuit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -363,3 +364,15 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
+
+/obj/item/clothing/suit/storage/labcoat/brown
+	icon_state = "labcoat_brown"
+	item_state = "labcoat_brown"
+
+/obj/item/clothing/suit/storage/labcoat/short
+	icon_state = "labcoat_short"
+	item_state = "labcoat_short"
+
+/obj/item/clothing/suit/storage/labcoat/long
+	icon_state = "labcoat_long"
+	item_state = "labcoat_long"

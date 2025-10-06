@@ -68,9 +68,9 @@
 	else
 		new /obj/item/storage/backpack/satchel/eng(src)
 // new /obj/item/device/radio/headset/almayer/ct(src)
-	new /obj/item/clothing/under/rank/miner(src)
+	new /obj/item/clothing/under/hybrisa/kelland_mining(src)
 	new /obj/item/clothing/gloves/black(src)
-	new /obj/item/clothing/shoes/black(src)
+	new /obj/item/clothing/shoes/jackboots(src)
 	new /obj/item/device/analyzer(src)
 	new /obj/item/storage/bag/ore(src)
 	new /obj/item/device/flashlight/lantern(src)

@@ -102,6 +102,10 @@
 /obj/structure/largecrate/supply,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
+"at" = (
+/obj/item/flag/plantable/clf,
+/turf/open/floor/almayer/bluecorner/east,
+/area/lv624/lazarus/crashed_ship)
 "au" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -142,7 +146,6 @@
 /area/lv624/ground/caves/south_west_caves)
 "aB" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 4
 	},
 /obj/item/ammo_casing,
@@ -303,7 +306,6 @@
 /area/lv624/ground/caves/south_west_caves)
 "aZ" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 4
 	},
 /turf/open/gm/dirt,
@@ -495,6 +497,7 @@
 /obj/item/ammo_magazine/rifle/m16{
 	pixel_x = -4
 	},
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "gF" = (
@@ -696,7 +699,6 @@
 /area/lv624/lazarus/crashed_ship)
 "mH" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 4
 	},
 /obj/item/ammo_casing,
@@ -951,7 +953,6 @@
 /area/lv624/lazarus/crashed_ship)
 "xk" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 8
 	},
 /obj/item/ammo_casing,
@@ -1506,7 +1507,6 @@
 /area/lv624/lazarus/crashed_ship)
 "OB" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 4
 	},
 /obj/item/ammo_casing,
@@ -2877,7 +2877,7 @@ lr
 xF
 lr
 lr
-bL
+at
 QQ
 VB
 Qf

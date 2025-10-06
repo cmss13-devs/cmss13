@@ -1,10 +1,15 @@
 //The mob should have a gender you want before running this proc. Will run fine without H
 /datum/preferences/proc/randomize_appearance(mob/living/carbon/human/H)
 	if(H)
-		if(H.gender == MALE)
-			gender = MALE
-		else
-			gender = FEMALE
+		switch(H.gender)
+			if(MALE)
+				gender = MALE
+			if(FEMALE)
+				gender = FEMALE
+			if(PLURAL)
+				gender = PLURAL
+			else
+				gender = pick(MALE, FEMALE)
 
 	skin_color = random_skin_color()
 	body_type = random_body_type()
@@ -373,6 +378,8 @@
 		if(JOB_CO_SURVIVOR)
 			if(length(SSmapping.configs[GROUND_MAP].CO_survivor_types))
 				return pick(SSmapping.configs[GROUND_MAP].CO_survivor_types)
+			else if(length(SSmapping.configs[GROUND_MAP].CO_insert_survivor_types))
+				return pick(SSmapping.configs[GROUND_MAP].CO_insert_survivor_types)
 			return /datum/equipment_preset/uscm_co
 		if(JOB_PREDATOR)
 			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]

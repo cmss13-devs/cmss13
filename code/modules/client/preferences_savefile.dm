@@ -255,6 +255,7 @@
 	if(!path)
 		return 0
 	if(!fexists(path))
+		load_preferences_sanitize() // Ensure a new player gets same defaults as returning players
 		return 0
 	var/savefile/S = new /savefile(path)
 	if(!S)
@@ -379,6 +380,7 @@
 
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
+	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 
 	S["lastchangelog"] >> lastchangelog
 
@@ -387,7 +389,38 @@
 
 	S["show_cooldown_messages"] >> show_cooldown_messages
 
+	S["chem_presets"] >> chem_presets
+
 	//Sanitize
+	load_preferences_sanitize()
+
+	check_keybindings()
+	S["key_bindings"] << key_bindings
+
+	if(remembered_key_bindings)
+		for(var/i in GLOB.keybindings_by_name)
+			if(!(i in remembered_key_bindings))
+				var/datum/keybinding/instance = GLOB.keybindings_by_name[i]
+				// Classic
+				if(LAZYLEN(instance.classic_keys))
+					for(var/bound_key in instance.classic_keys)
+						LAZYADD(key_bindings[bound_key], list(instance.name))
+
+				// Hotkey
+				if(LAZYLEN(instance.hotkey_keys))
+					for(var/bound_key in instance.hotkey_keys)
+						LAZYADD(key_bindings[bound_key], list(instance.name))
+
+	S["remembered_key_bindings"] << GLOB.keybindings_by_name
+
+	if(toggles_chat & SHOW_TYPING)
+		owner.typing_indicators = FALSE
+	else
+		owner.typing_indicators = TRUE
+
+	return 1
+
+/datum/preferences/proc/load_preferences_sanitize()
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
 	UI_style = sanitize_inlist(UI_style, list("white", "dark", "midnight", "orange", "old"), initial(UI_style))
@@ -470,7 +503,6 @@
 	fax_name_clf = fax_name_clf ? sanitize_text(fax_name_clf, initial(fax_name_clf)) : generate_name(FACTION_CLF)
 
 	key_bindings = sanitize_keybindings(key_bindings)
-	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
@@ -481,36 +513,12 @@
 
 	show_cooldown_messages = sanitize_integer(show_cooldown_messages, FALSE, TRUE, FALSE)
 
-	check_keybindings()
-	S["key_bindings"] << key_bindings
-
-	if(remembered_key_bindings)
-		for(var/i in GLOB.keybindings_by_name)
-			if(!(i in remembered_key_bindings))
-				var/datum/keybinding/instance = GLOB.keybindings_by_name[i]
-				// Classic
-				if(LAZYLEN(instance.classic_keys))
-					for(var/bound_key in instance.classic_keys)
-						LAZYADD(key_bindings[bound_key], list(instance.name))
-
-				// Hotkey
-				if(LAZYLEN(instance.hotkey_keys))
-					for(var/bound_key in instance.hotkey_keys)
-						LAZYADD(key_bindings[bound_key], list(instance.name))
-
-	S["remembered_key_bindings"] << GLOB.keybindings_by_name
-
-	if(toggles_chat & SHOW_TYPING)
-		owner.typing_indicators = FALSE
-	else
-		owner.typing_indicators = TRUE
+	chem_presets = sanitize_islist(chem_presets, list())
 
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, HUD_MENTOR_SIGHT = FALSE)
 
 	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6)) // Game, music, admin midis, lobby music
-
-	return 1
 
 /datum/preferences/proc/save_preferences()
 	if(!path)
@@ -636,6 +644,8 @@
 
 	S["show_cooldown_messages"] << show_cooldown_messages
 
+	S["chem_presets"] << chem_presets
+
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
@@ -692,7 +702,7 @@
 	S["underwear"] >> underwear
 	S["undershirt"] >> undershirt
 	S["backbag"] >> backbag
-	//S["b_type"] >> b_type
+	//S["blood_type"] >> blood_type
 
 	//Jobs
 	S["alternate_option"] >> alternate_option
@@ -708,6 +718,9 @@
 	S["flavor_texts_hands"] >> flavor_texts["hands"]
 	S["flavor_texts_legs"] >> flavor_texts["legs"]
 	S["flavor_texts_feet"] >> flavor_texts["feet"]
+	S["flavor_texts_helmet"] >> flavor_texts["helmet"]
+	S["flavor_texts_armor"] >> flavor_texts["armor"]
+
 
 	//Miscellaneous
 	S["med_record"] >> med_record
@@ -721,6 +734,7 @@
 	S["traits"] >> traits
 
 	S["preferred_squad"] >> preferred_squad
+	S["preferred_spec"] >> preferred_spec
 	S["preferred_armor"] >> preferred_armor
 	S["night_vision_preference"] >> night_vision_preference
 	S["weyland_yutani_relation"] >> weyland_yutani_relation
@@ -780,7 +794,7 @@
 	backbag = sanitize_integer(backbag, 1, length(GLOB.backbaglist), initial(backbag))
 	preferred_armor = sanitize_inlist(preferred_armor, GLOB.armor_style_list, "Random")
 	night_vision_preference = sanitize_inlist(night_vision_preference, GLOB.nvg_color_list, "Green")
-	//b_type = sanitize_text(b_type, initial(b_type))
+	//blood_type = sanitize_text(blood_type, initial(blood_type))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 3, initial(alternate_option))
 	if(!job_preference_list)
@@ -807,6 +821,7 @@
 		religion = RELIGION_AGNOSTICISM
 	if(!preferred_squad)
 		preferred_squad = "None"
+	preferred_spec = sanitize_list(preferred_spec, allow=GLOB.specialist_set_name_dict)
 
 	return 1
 
@@ -852,7 +867,7 @@
 	S["underwear"] << underwear
 	S["undershirt"] << undershirt
 	S["backbag"] << backbag
-	//S["b_type"] << b_type
+	//S["blood_type"] << blood_type
 	S["spawnpoint"] << spawnpoint
 
 	//Jobs
@@ -869,6 +884,8 @@
 	S["flavor_texts_hands"] << flavor_texts["hands"]
 	S["flavor_texts_legs"] << flavor_texts["legs"]
 	S["flavor_texts_feet"] << flavor_texts["feet"]
+	S["flavor_texts_helmet"] << flavor_texts["helmet"]
+	S["flavor_texts_armor"] << flavor_texts["armor"]
 
 	//Miscellaneous
 	S["med_record"] << med_record
@@ -884,6 +901,7 @@
 
 	S["weyland_yutani_relation"] << weyland_yutani_relation
 	S["preferred_squad"] << preferred_squad
+	S["preferred_spec"] << preferred_spec
 	S["preferred_armor"] << preferred_armor
 	S["night_vision_preference"] << night_vision_preference
 	//S["skin_style"] << skin_style

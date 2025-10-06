@@ -680,6 +680,61 @@ world
 
 	return FALSE
 
+/// Asks the user for an icon (either from file or as a path) and offers to customize it if possible (e.g. setting icon_state)
+/proc/pick_and_customize_icon(mob/user, pick_only=FALSE)
+	var/icon/icon_result = null
+	if(!user)
+		user = usr
+
+	var/icon_from_file = tgui_alert(user, "Do you wish to pick an icon from file?", "File picker icon", list("Yes", "No"))
+	if(isnull(icon_from_file))
+		return null
+	if(icon_from_file == "Yes")
+		icon_result = input(user, "Pick icon:", "Icon") as null|icon
+		if(!icon_result)
+			return null
+	else if(icon_from_file == "No")
+		var/new_icon = tgui_input_text(user, "Pick icon path", "icon path")
+		if(isnull(new_icon))
+			return null
+		var/regex/regex = regex(@"^.+icons/")
+		new_icon = regex.Replace(replacetext(new_icon, @"\", "/"), "icons/")
+		icon_result = fcopy_rsc(new_icon)
+		if(!icon_result)
+			to_chat(user, SPAN_WARNING("'[new_icon]' is an invalid icon path!"))
+			return null
+
+	var/dmi_path = get_icon_dmi_path(icon_result)
+	if(!dmi_path || pick_only)
+		return icon_result
+
+	var/custom = tgui_alert(user, "Do you wish to specify any arguments for the icon?", "Customize Icon", list("Yes", "No"))
+	if(isnull(custom))
+		return null
+	if(custom == "Yes")
+		var/new_icon_state = tgui_input_text(user, "Pick icon_state", "icon_state")
+		if(isnull(new_icon_state))
+			return null
+		var/new_icon_dir = tgui_input_list(user, "Pick icon dir", "dir", list("North", "East", "South", "West"), default="South")
+		if(isnull(new_icon_dir))
+			return null
+		var/new_icon_frame = tgui_input_number(user, "Pick icon frame", "frame", min_value=0, integer_only=TRUE)
+		if(isnull(new_icon_frame))
+			return null
+		var/new_icon_moving = tgui_input_list(user, "Pick icon moving", "moving", list("Both", "Movement only", "Non-Movement Only"), default="Both")
+		switch(new_icon_moving)
+			if("Both")
+				new_icon_moving = null
+			if("Movement only")
+				new_icon_moving = 1
+			if("Non-Movement Only")
+				new_icon_moving = 0
+			else
+				return null
+		icon_result = new(dmi_path, new_icon_state, text2dir(new_icon_dir), new_icon_frame, new_icon_moving)
+
+	return icon_result
+
 /**
  * generate an asset for the given icon or the icon of the given appearance for [thing], and send it to any clients in target.
  * Arguments:

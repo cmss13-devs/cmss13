@@ -57,6 +57,7 @@
 		/datum/action/xeno_action/activable/destroy,
 		/datum/action/xeno_action/onclick/king_shield,
 		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/king.dmi'
@@ -90,6 +91,9 @@
 
 /mob/living/carbon/xenomorph/king/proc/post_move(mob/king)
 	SIGNAL_HANDLER
+
+	if(stat == DEAD)
+		return
 
 	var/turf/new_loc = get_turf(src)
 
@@ -408,7 +412,7 @@
 			item.throw_atom(throwtarget, 2, SPEED_REALLY_FAST, owner, TRUE)
 
 	for(var/obj/structure/structure in orange(1, owner))
-		structure.ex_act(1000, get_dir(owner, structure))
+		INVOKE_ASYNC(structure, TYPE_PROC_REF(/atom, ex_act), 1000, get_dir(owner, structure))
 
 	for(var/mob/living in range(7, owner))
 		shake_camera(living, 15, 1)

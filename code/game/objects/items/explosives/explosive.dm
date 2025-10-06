@@ -290,6 +290,7 @@
 	/// list of linked explosives to handle
 	var/list/linked_charges = list()
 	var/pressed = FALSE
+	/// max number of charges that can be connected to one detonator
 	var/maximal_connected_charges = 5
 
 /obj/item/satchel_charge_detonator/proc/can_connect()
@@ -354,11 +355,15 @@
 							"max_fire_rad" = 6,		"max_fire_int" = 26,	"max_fire_dur" = 30,
 							"min_fire_rad" = 2,		"min_fire_int" = 4,		"min_fire_dur" = 5
 	)
-
-	var/prime_time  = 3 SECONDS
-	var/prime_timer  = null
+	/// how long it takes for a charge to arm itself for detonation after being thrown
+	var/arming_time  = 3 SECONDS
+	/// for storing the arming timer when thrown
+	var/arming_timer  = null
+	/// tracks linked detonator for the charge, if any
 	var/obj/item/satchel_charge_detonator/linked_detonator = null
+	/// if the charge is activated, but not armed
 	var/activated = FALSE
+	/// if the charge is armed and waiting for a detonator signal
 	var/armed = FALSE
 
 /obj/item/explosive/satchel_charge/attack_self(mob/user)	//activate the charge in hand after it has been linked to a detonator, can not be activated in a safe zone
@@ -420,7 +425,7 @@
 	dir = get_dir(src, thrower)
 	if(activated && linked_detonator)	//throwing a linked and activated charge will arm it after a short delay
 		icon_state = "satchel_primed"
-		prime_timer  = addtimer(CALLBACK(src, PROC_REF(arm)), prime_time, TIMER_UNIQUE)
+		arming_timer  = addtimer(CALLBACK(src, PROC_REF(arm)), arming_time, TIMER_UNIQUE)
 		beep()
 
 /obj/item/explosive/satchel_charge/proc/beep(beep_once)

@@ -1243,10 +1243,15 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/label/proc/async_mousedown(mob/source, atom/object, location, control, params)
 	// this is really [/atom/movable/screen/minimap/proc/get_coords_from_click] copypaste since we
 	// want to also cancel the click if they click src and I cant be bothered to make it even more generic rn
+	var/atom/movable/screen/plane_master/minimap/plane_master = user.hud_used.plane_masters["[TACMAP_PLANE]"]
+
+	if(!plane_master)
+		return
+
 	var/list/modifiers = params2list(params)
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
-	var/x = (pixel_coords[1] - x_offset + linked_map.cur_x_shift) / MINIMAP_SCALE
-	var/y = (pixel_coords[2] - y_offset + linked_map.cur_y_shift) / MINIMAP_SCALE
+	var/x = (pixel_coords[1] - x_offset + plane_master.cur_x_shift) / MINIMAP_SCALE
+	var/y = (pixel_coords[2] - y_offset + plane_master.cur_y_shift) / MINIMAP_SCALE
 	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)
 	var/c_y = clamp(CEILING(y, 1), 1, world.maxy)
 	var/turf/target = locate(c_x, c_y, zlevel)

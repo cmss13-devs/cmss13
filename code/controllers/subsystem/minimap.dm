@@ -1151,6 +1151,22 @@ SUBSYSTEM_DEF(minimaps)
 	drawn_image.icon = slate
 	last_drawn = list(starting_coords, end_coords)
 
+/atom/movable/screen/minimap_tool/draw_tool/proc/draw_line_width(list/start_coords, list/end_coords, icon/slate, width, draw_color = color)
+	var/half_width = floor(width / 2)
+	var/x1 = start_coords[1]
+	var/x2 = end_coords[1]
+	var/y1 = start_coords[2]
+	var/y2 = end_coords[2]
+
+	if(abs(x2 - x1) > abs(y2 - y1))
+		for(var/offset in -half_width to half_width)
+			draw_line(list(x1, y1+offset), list(x2, y2+offset), slate, draw_color)
+	else
+		for(var/offset in -half_width to half_width)
+			draw_line(list(x1+offset, y1), list(x2+offset, y2), slate, draw_color)
+
+	return slate
+
 /// proc for drawing a line from list(startx, starty) to list(endx, endy) on the screen. yes this is aa ripoff of [/proc/getline]
 /atom/movable/screen/minimap_tool/draw_tool/proc/draw_line(list/start_coords, list/end_coords, icon/slate, draw_color = color)
 	// converts these into the unscaled minimap version so we have to do less calculating
@@ -1243,6 +1259,23 @@ SUBSYSTEM_DEF(minimaps)
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_erase.dmi'
 	screen_loc = "15,10"
 	color = null
+
+/atom/movable/screen/minimap_tool/draw_tool/erase/on_mouseup(mob/living/source, atom/object, location, control, params)
+	SIGNAL_HANDLER
+	UnregisterSignal(source, COMSIG_MOB_MOUSEUP)
+	var/list/modifiers = params2list(params)
+	var/list/end_coords = params2screenpixel(modifiers["screen-loc"])
+	var/icon/slate = icon(drawn_image.icon)
+
+	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
+
+	if(!plane_master)
+		return
+
+	end_coords = list(end_coords[1] + plane_master.cur_x_shift, end_coords[2] + plane_master.cur_y_shift)
+	draw_line_width(starting_coords, end_coords, slate, 3)
+	drawn_image.icon = slate
+	last_drawn = list(starting_coords, end_coords)
 
 /atom/movable/screen/minimap_tool/label
 	icon_state = "label"

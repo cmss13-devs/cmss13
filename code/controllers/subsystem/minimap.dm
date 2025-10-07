@@ -518,7 +518,12 @@ SUBSYSTEM_DEF(minimaps)
 
 	add_filter("border_outline", 1, outline_filter(2, COLOR_BLACK))
 	add_filter("map_glow", 2, drop_shadow_filter(x = 0, y = 0, size = 3, offset = 1, color = "#c0f7ff"))
-	add_filter("overlay", 3, layering_filter(x = 0, y = 0, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
+	add_filter("overlay1", 3, layering_filter(x = -480, y = 0, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
+	add_filter("overlay2", 4, layering_filter(x = 0, y = 0, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
+	add_filter("overlay3", 5, layering_filter(x = -480, y = 480, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
+	add_filter("overlay4", 6, layering_filter(x = 0, y = 480, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
+	add_filter("overlay5", 7, layering_filter(x = 480, y = 0, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
+	add_filter("overlay6", 8, layering_filter(x = 480, y = 480, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
 
 /atom/movable/screen/minimap/proc/update()
 	if(live)

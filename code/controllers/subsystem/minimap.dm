@@ -324,6 +324,7 @@ SUBSYSTEM_DEF(minimaps)
 			continue
 		if(!blip)
 			blip = minimaps_by_z["[oldz]"].images_assoc["[flag]"][source]
+			blip.minimap_on_move(source, null)
 		// todo maybe make update_targets also sort by zlevel?
 		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]"])
 			if(updator.ztarget == oldz)
@@ -335,7 +336,6 @@ SUBSYSTEM_DEF(minimaps)
 
 		minimaps_by_z["[newz]"].images_raw["[flag]"] += blip
 		minimaps_by_z["[oldz]"].images_raw["[flag]"] -= blip
-
 /**
  * Simple proc, updates overlay position on the map when a atom moves
  */

@@ -1264,7 +1264,7 @@ SUBSYSTEM_DEF(minimaps)
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_erase.dmi'
 	screen_loc = "15,10"
 	color = null
-	wdith = 3
+	width = 3
 
 /atom/movable/screen/minimap_tool/label
 	icon_state = "label"

@@ -322,6 +322,7 @@
 				turfs_travelled++
 
 		target_living.forceMove(turf_to_fling_to)
+		target_living.throw_atom(get_step_towards(turf_to_fling_to, target_living), 1, SPEED_FAST, xeno, tracking=TRUE)
 		target_living.Stun(1)
 		xeno.Root(1)
 

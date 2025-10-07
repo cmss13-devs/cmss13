@@ -307,22 +307,10 @@
 	var/dir_to_fling = get_dir(target_living, xeno)
 	var/turfs_travelled = 1
 	var/turf/open/turf_to_fling_to = get_turf(xeno)
+	var/turf/maybe_viable = get_step(turf_to_fling_to, dir_to_fling)
 	if(xeno.Adjacent(target_living) && xeno.start_pulling(target_living, TRUE))
-		move_loop:
-			for(var/i in 1 to 2)
-				var/turf/maybe_viable = get_step(turf_to_fling_to, dir_to_fling)
-				if(!istype(maybe_viable, /turf/open))
-					break
-
-				for(var/obj/thing in maybe_viable.contents)
-					if(thing.density)
-						break move_loop
-
-				turf_to_fling_to = maybe_viable
-				turfs_travelled++
-
-		target_living.forceMove(turf_to_fling_to)
-		target_living.throw_atom(get_step_towards(turf_to_fling_to, target_living), 1, SPEED_FAST, xeno, tracking=TRUE)
+		target_living.KnockDown(1)
+		xeno.throw_carbon(target_living, dir_to_fling, 3, SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
 		target_living.Stun(1)
 		xeno.Root(1)
 

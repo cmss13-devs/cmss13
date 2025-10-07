@@ -752,7 +752,7 @@
 				shards += floor(reagent.volume)
 			else if(reagent.id == "phoron" && reagent.volume >= EXPLOSION_PHORON_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
-			else if(reagent.id == "sulphuric acid" && reagent.volume >= EXPLOSION_ACID_THRESHOLD)
+			else if(reagent.id == "pacid" && reagent.volume >= EXPLOSION_ACID_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/hornet_rounds
 			else if(reagent.id == "neurotoxinplasma" && reagent.volume >= EXPLOSION_NEURO_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/neuro

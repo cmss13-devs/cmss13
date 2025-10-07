@@ -1,0 +1,2911 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ac" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"af" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/colony/north_nexus_road)
+"ai" = (
+/obj/item/reagent_container/glass/bucket,
+/turf/open/floor/prison/green/east,
+/area/lv624/lazarus/hydroponics)
+"as" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/north_east_jungle)
+"aB" = (
+/obj/structure/window_frame/lv_colony,
+/obj/structure/flora/jungle/vines/dead/heavy,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"bn" = (
+/obj/item/stack/rods,
+/turf/open/floor/prison/greencorner/east,
+/area/lv624/lazarus/hydroponics)
+"bo" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"bu" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_sand/layer2_random_rocks,
+/area/lv624/ground/colony/north_nexus_road)
+"bK" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"cb" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"cS" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"dd" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 10
+	},
+/obj/structure/flora/jungle/vines/dead/heavy,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"dR" = (
+/obj/item/clothing/gloves/botanic_leather,
+/obj/item/tool/shovel,
+/turf/open/floor/prison/greencorner/west,
+/area/lv624/lazarus/hydroponics)
+"dW" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"en" = (
+/obj/structure/machinery/smartfridge,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"eT" = (
+/obj/structure/window/framed/lv_colony,
+/obj/structure/flora/jungle/vines/dead/heavy,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"fi" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"fs" = (
+/obj/structure/fence/dark/overgrown,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/north_nexus_road)
+"fx" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/lazarus/hydroponics)
+"fF" = (
+/obj/item/clothing/suit/apron,
+/turf/open/floor/prison/green/north,
+/area/lv624/lazarus/hydroponics)
+"fV" = (
+/obj/structure/flora/jungle/vines/dead/heavy,
+/turf/closed/wall/lv_outpost,
+/area/lv624/lazarus/hydroponics)
+"hh" = (
+/obj/item/tool/minihoe{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/structure/flora/jungle/vines/dead/heavy,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"hR" = (
+/obj/item/reagent_container/spray/plantbgone{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/structure/surface/table/almayer{
+	color = "#d4cfcd"
+	},
+/turf/open/floor/prison/green/east,
+/area/lv624/lazarus/hydroponics)
+"hS" = (
+/obj/structure/window_frame/lv_colony,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"ii" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"il" = (
+/obj/item/tool/crowbar,
+/obj/item/reagent_container/glass/bucket{
+	pixel_y = -3
+	},
+/obj/item/reagent_container/glass/bucket,
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/turf/open/floor/prison/green/southwest,
+/area/lv624/lazarus/hydroponics)
+"ir" = (
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/jungle/north_east_jungle)
+"jg" = (
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/lazarus/hydroponics)
+"jz" = (
+/turf/open/floor/prison/green/north,
+/area/lv624/lazarus/hydroponics)
+"kn" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/north_east_jungle)
+"kF" = (
+/turf/open/auto_turf/lv_sand/layer2_footsteps/south,
+/area/lv624/ground/colony/north_nexus_road)
+"kS" = (
+/obj/structure/machinery/door/airlock/multi_tile/lv_double{
+	name = "Hydroponics"
+	},
+/turf/open/floor/prison,
+/area/lv624/lazarus/hydroponics)
+"lc" = (
+/obj/structure/machinery/vending/hydroseeds,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/green/north,
+/area/lv624/lazarus/hydroponics)
+"lv" = (
+/obj/item/reagent_container/glass/watertank,
+/obj/structure/flora/jungle/vines/blue/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/obj/structure/surface/table/almayer{
+	color = "#d4cfcd"
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"lE" = (
+/obj/structure/flora/jungle/vines/dead/heavy,
+/obj/structure/machinery/door/airlock/multi_tile/lv_double{
+	name = "Hydroponics";
+	icon_state = "door_open";
+	no_panel = 1;
+	opacity = 1;
+	use_power = 0
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"lM" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/north_east_jungle)
+"lO" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/jungle/north_east_jungle)
+"mg" = (
+/obj/structure/machinery/power/apc/fully_broken/no_cell/west,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"mo" = (
+/obj/item/reagent_container/spray/plantbgone{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/obj/structure/surface/table/almayer{
+	color = "#d4cfcd"
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"mp" = (
+/obj/item/tool/extinguisher,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"mL" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"nf" = (
+/turf/open/auto_turf/lv_sand/layer2_random_rocks_alt{
+	dir = 4
+	},
+/area/lv624/ground/jungle/north_east_jungle)
+"nl" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"nP" = (
+/turf/open/floor/prison/green,
+/area/lv624/lazarus/hydroponics)
+"oa" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"og" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_x = -31
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"oN" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"pd" = (
+/turf/open/floor/prison/greencorner/east,
+/area/lv624/lazarus/hydroponics)
+"pm" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/lazarus/hydroponics)
+"pq" = (
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	color = "#aaaab5"
+	},
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"pI" = (
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	color = "#aaaab5"
+	},
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"qH" = (
+/obj/item/device/analyzer/plant_analyzer,
+/turf/open/floor/prison/green/east,
+/area/lv624/lazarus/hydroponics)
+"qN" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"qT" = (
+/obj/item/clothing/suit/apron,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"rn" = (
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	color = "#aaaab5"
+	},
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"rv" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"se" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/green,
+/area/lv624/lazarus/hydroponics)
+"sm" = (
+/obj/item/tool/hatchet{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/structure/flora/jungle/vines/blue/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"sv" = (
+/obj/structure/window_frame/lv_colony,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"sE" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"tr" = (
+/turf/open/floor/prison/greencorner/north,
+/area/lv624/lazarus/hydroponics)
+"tD" = (
+/obj/item/reagent_container/glass/bucket{
+	pixel_y = 10;
+	pixel_x = 9
+	},
+/obj/structure/surface/table/almayer{
+	color = "#d4cfcd"
+	},
+/obj/item/reagent_container/glass/fertilizer,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/green/east,
+/area/lv624/lazarus/hydroponics)
+"tI" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/green/west,
+/area/lv624/lazarus/hydroponics)
+"tQ" = (
+/turf/open/floor/prison/green/northeast,
+/area/lv624/lazarus/hydroponics)
+"uA" = (
+/turf/open/floor/prison/greencorner/west,
+/area/lv624/lazarus/hydroponics)
+"uD" = (
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_y = 30
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"uK" = (
+/turf/open/floor/prison,
+/area/lv624/lazarus/hydroponics)
+"vE" = (
+/obj/item/tool/extinguisher,
+/turf/open/floor/prison,
+/area/lv624/lazarus/hydroponics)
+"vR" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/lazarus/hydroponics)
+"wM" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"wO" = (
+/obj/item/tool/shovel/spade,
+/obj/item/tool/minihoe{
+	pixel_y = -2
+	},
+/obj/structure/machinery/light,
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"xd" = (
+/obj/structure/flora/jungle/vines/blue/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"xn" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"xt" = (
+/obj/structure/window_frame/lv_colony,
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"xy" = (
+/obj/item/reagent_container/glass/bucket{
+	layer = 7;
+	pixel_x = -10;
+	pixel_y = 9
+	},
+/turf/open/floor/prison,
+/area/lv624/lazarus/hydroponics)
+"yf" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"yJ" = (
+/obj/structure/fence/dark,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/north_nexus_road)
+"yX" = (
+/turf/open/floor/prison/green/northwest,
+/area/lv624/lazarus/hydroponics)
+"zc" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"zv" = (
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	color = "#aaaab5"
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"zW" = (
+/obj/item/reagent_container/glass/bucket{
+	layer = 7;
+	pixel_x = -10;
+	pixel_y = 9
+	},
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"zY" = (
+/obj/structure/fence/dark/overgrown,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/north_nexus_road)
+"Aa" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/floor/prison/greencorner/east,
+/area/lv624/lazarus/hydroponics)
+"At" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"AW" = (
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	color = "#aaaab5"
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"AX" = (
+/turf/open/floor/prison/green/west,
+/area/lv624/lazarus/hydroponics)
+"Bo" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"Br" = (
+/obj/item/tool/crowbar,
+/turf/open/floor/prison/green/west,
+/area/lv624/lazarus/hydroponics)
+"Bw" = (
+/obj/structure/flora/jungle/vines/blue/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/north_east_jungle)
+"BU" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/prison/green/west,
+/area/lv624/lazarus/hydroponics)
+"Cc" = (
+/obj/item/device/analyzer/plant_analyzer,
+/obj/structure/flora/jungle/vines/blue/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/obj/structure/surface/table/almayer{
+	color = "#d4cfcd"
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"Cm" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison,
+/area/lv624/lazarus/hydroponics)
+"Cu" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/green,
+/area/lv624/lazarus/hydroponics)
+"CG" = (
+/turf/open/auto_turf/lv_sand/layer2_footsteps/south,
+/area/lv624/ground/jungle/north_east_jungle)
+"CK" = (
+/obj/structure/machinery/smartfridge,
+/turf/open/floor/prison/green/north,
+/area/lv624/lazarus/hydroponics)
+"CL" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/north_east_jungle)
+"Dl" = (
+/turf/open/floor/prison/greencorner,
+/area/lv624/lazarus/hydroponics)
+"Dq" = (
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_x = -31
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"Dr" = (
+/obj/structure/flora/jungle/vines/blue/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"DE" = (
+/obj/structure/window/framed/lv_colony,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"DR" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/north_east_jungle)
+"Eo" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/north_east_jungle)
+"EA" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/closed/wall/lv_outpost,
+/area/lv624/lazarus/hydroponics)
+"EC" = (
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/north_nexus_road)
+"EI" = (
+/turf/open/floor/prison/green/southwest,
+/area/lv624/lazarus/hydroponics)
+"EX" = (
+/turf/open/floor/prison/green/southeast,
+/area/lv624/lazarus/hydroponics)
+"Fv" = (
+/obj/item/tool/shovel/spade,
+/obj/item/tool/hatchet{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/tool/hatchet{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/tool/minihoe{
+	pixel_y = -2
+	},
+/obj/structure/machinery/light,
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/turf/open/floor/prison/green,
+/area/lv624/lazarus/hydroponics)
+"FG" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"FM" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/north_east_jungle)
+"FQ" = (
+/obj/item/tool/hatchet{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/green/north,
+/area/lv624/lazarus/hydroponics)
+"Gk" = (
+/obj/structure/surface/table/almayer{
+	color = "#d4cfcd"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/green/west,
+/area/lv624/lazarus/hydroponics)
+"Gp" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/colony/north_nexus_road)
+"GA" = (
+/turf/open/space/basic,
+/area/space)
+"GH" = (
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	color = "#aaaab5"
+	},
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"GK" = (
+/obj/item/clothing/gloves/botanic_leather,
+/obj/structure/flora/jungle/vines/blue/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/obj/structure/surface/table/almayer{
+	color = "#d4cfcd"
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"HI" = (
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"HO" = (
+/obj/item/reagent_container/glass/watertank,
+/obj/structure/surface/table/almayer{
+	color = "#d4cfcd"
+	},
+/turf/open/floor/prison/green/north,
+/area/lv624/lazarus/hydroponics)
+"Is" = (
+/obj/structure/window_frame/lv_colony,
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"IT" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/green/east,
+/area/lv624/lazarus/hydroponics)
+"IY" = (
+/obj/structure/flora/jungle/vines/dead/heavy,
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	color = "#aaaab5"
+	},
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"Jv" = (
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/lazarus/hydroponics)
+"Kg" = (
+/turf/open/floor/prison/green/east,
+/area/lv624/lazarus/hydroponics)
+"Kh" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"Kp" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/surface/table/almayer{
+	color = "#d4cfcd"
+	},
+/turf/open/floor/prison/green/southeast,
+/area/lv624/lazarus/hydroponics)
+"Ks" = (
+/turf/open/auto_turf/lv_sand/layer2_footsteps,
+/area/lv624/ground/jungle/north_east_jungle)
+"Ls" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"Lx" = (
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/north_east_jungle)
+"Lz" = (
+/obj/item/clothing/suit/apron,
+/obj/item/tool/shovel,
+/obj/item/clothing/gloves/botanic_leather,
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/turf/open/floor/prison/green,
+/area/lv624/lazarus/hydroponics)
+"ML" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/tool/crowbar,
+/turf/open/floor/prison/green/east,
+/area/lv624/lazarus/hydroponics)
+"MM" = (
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	color = "#aaaab5"
+	},
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"MQ" = (
+/obj/structure/flora/jungle/vines/blue/heavy{
+	pixel_y = 30
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/north_east_jungle)
+"MT" = (
+/obj/item/reagent_container/glass/bucket{
+	pixel_y = -3
+	},
+/turf/open/floor/prison/green/east,
+/area/lv624/lazarus/hydroponics)
+"MY" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"ND" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"NI" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"Od" = (
+/obj/structure/prop/ice_colony/dense/planter_box/plated{
+	color = "#aaaab5"
+	},
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"ON" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"Pq" = (
+/turf/open/auto_turf/lv_sand/layer2_random_rocks_alt,
+/area/lv624/ground/jungle/north_east_jungle)
+"PB" = (
+/obj/structure/flora/jungle/vines/dead/heavy,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"PI" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/prison/green/northwest,
+/area/lv624/lazarus/hydroponics)
+"Qq" = (
+/obj/structure/window_frame/lv_colony,
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"QK" = (
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"RF" = (
+/turf/closed/wall/lv_outpost,
+/area/lv624/lazarus/hydroponics)
+"RK" = (
+/obj/item/reagent_container/spray/plantbgone{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/green/north,
+/area/lv624/lazarus/hydroponics)
+"SO" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/north_east_jungle)
+"Tb" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/lazarus/hydroponics)
+"Tl" = (
+/obj/item/reagent_container/glass/fertilizer{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/glass/fertilizer,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/surface/table/almayer{
+	color = "#d4cfcd"
+	},
+/turf/open/floor/prison/green,
+/area/lv624/lazarus/hydroponics)
+"Tx" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"Up" = (
+/obj/item/tool/minihoe{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/floor/prison/green/southwest,
+/area/lv624/lazarus/hydroponics)
+"Uq" = (
+/obj/item/device/analyzer/plant_analyzer,
+/obj/structure/surface/table/almayer{
+	color = "#d4cfcd"
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/green/north,
+/area/lv624/lazarus/hydroponics)
+"UD" = (
+/obj/item/tool/hatchet{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/hydroponics)
+"UW" = (
+/turf/open/auto_turf/lv_sand/layer2_random_rocks_alt{
+	dir = 4
+	},
+/area/lv624/ground/colony/north_nexus_road)
+"VY" = (
+/turf/open/auto_turf/lv_sand/layer2_random_rocks,
+/area/lv624/ground/colony/north_nexus_road)
+"WA" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/machinery/light,
+/obj/item/reagent_container/glass/fertilizer,
+/obj/structure/surface/table/almayer{
+	color = "#d4cfcd"
+	},
+/turf/open/floor/prison/green,
+/area/lv624/lazarus/hydroponics)
+"Xf" = (
+/obj/item/clothing/gloves/botanic_leather,
+/obj/structure/surface/table/almayer{
+	color = "#d4cfcd"
+	},
+/turf/open/floor/prison/green/northeast,
+/area/lv624/lazarus/hydroponics)
+"XI" = (
+/obj/structure/window_frame/lv_colony,
+/obj/structure/flora/jungle/vines/blue/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/hydroponics)
+"Ym" = (
+/obj/structure/machinery/colony_floodlight{
+	light_color = "#dae2ff"
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/north_east_jungle)
+"YL" = (
+/obj/structure/flora/jungle/vines/blue/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/north_east_jungle)
+"Zq" = (
+/obj/structure/flora/jungle/vines/blue/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/heavy,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/north_east_jungle)
+"ZU" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2,
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_x = -31
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/north_east_jungle)
+
+(1,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(2,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(3,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(4,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(5,1,1) = {"
+GA
+GA
+Eo
+Eo
+NI
+NI
+NI
+NI
+MY
+NI
+NI
+NI
+fi
+NI
+NI
+NI
+NI
+NI
+NI
+EC
+GA
+GA
+Eo
+kn
+ND
+NI
+ND
+NI
+MY
+NI
+NI
+NI
+fi
+NI
+NI
+NI
+NI
+NI
+NI
+EC
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(6,1,1) = {"
+GA
+GA
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+Lx
+NI
+NI
+NI
+NI
+NI
+nf
+yJ
+GA
+GA
+NI
+NI
+ND
+Tx
+kn
+ND
+NI
+NI
+NI
+At
+Lx
+NI
+ON
+Eo
+NI
+NI
+nf
+yJ
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(7,1,1) = {"
+GA
+GA
+NI
+Lx
+NI
+NI
+NI
+NI
+NI
+NI
+Lx
+Lx
+NI
+NI
+NI
+NI
+Lx
+ac
+NI
+yJ
+GA
+GA
+NI
+Lx
+ND
+FM
+YL
+kn
+kn
+Eo
+MQ
+Lx
+ON
+Eo
+FM
+Eo
+Bw
+ac
+NI
+yJ
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(8,1,1) = {"
+GA
+GA
+Lx
+Lx
+NI
+NI
+NI
+NI
+RF
+RF
+DE
+DE
+RF
+RF
+NI
+NI
+NI
+NI
+NI
+yJ
+GA
+GA
+Lx
+DR
+NI
+kn
+kn
+kn
+RF
+fV
+aB
+hS
+RF
+RF
+Eo
+FM
+kn
+zc
+NI
+yJ
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(9,1,1) = {"
+GA
+GA
+NI
+NI
+NI
+RF
+DE
+DE
+RF
+pq
+pq
+pq
+pq
+RF
+DE
+DE
+RF
+NI
+NI
+fs
+GA
+GA
+kn
+ND
+ND
+EA
+fx
+fx
+fV
+IY
+Od
+Od
+pI
+RF
+vR
+pm
+RF
+Dr
+zc
+fs
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(10,1,1) = {"
+GA
+GA
+NI
+NI
+NI
+DE
+PI
+AX
+BU
+AX
+AX
+AX
+AX
+tI
+Gk
+il
+DE
+Lx
+NI
+fs
+GA
+GA
+kn
+FM
+ND
+Is
+FG
+cb
+mg
+Br
+QK
+AX
+UD
+xn
+qT
+vR
+pm
+Bw
+zc
+zY
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(11,1,1) = {"
+GA
+GA
+Lx
+Lx
+NI
+DE
+CK
+uK
+Dl
+Kg
+tr
+Dl
+Kg
+tr
+uK
+Lz
+DE
+Lx
+NI
+fs
+GA
+GA
+Eo
+FM
+ND
+xt
+en
+Bo
+uK
+ai
+tr
+Dl
+Kg
+Bo
+dR
+HI
+pm
+Zq
+ON
+fs
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(12,1,1) = {"
+GA
+GA
+Lx
+NI
+RF
+RF
+lc
+Dl
+EX
+pq
+RK
+nP
+pq
+tQ
+tr
+Fv
+RF
+RF
+NI
+fs
+GA
+GA
+NI
+kn
+RF
+RF
+lc
+uK
+Bo
+pI
+jz
+nP
+AW
+tQ
+Bo
+wO
+fV
+fV
+zc
+zY
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(13,1,1) = {"
+GA
+GA
+NI
+NI
+DE
+yX
+pd
+nP
+pq
+pq
+fF
+nP
+pq
+pq
+jz
+uA
+Up
+DE
+NI
+VY
+GA
+GA
+Lx
+ND
+sv
+cS
+bn
+Bo
+pI
+GH
+QK
+se
+MM
+rn
+FQ
+Bo
+hh
+eT
+zc
+bu
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(14,1,1) = {"
+GA
+GA
+Pq
+ir
+kS
+vE
+uK
+uA
+AX
+AX
+pd
+uA
+AX
+AX
+pd
+uK
+uK
+kS
+CG
+kF
+GA
+GA
+ND
+ND
+wM
+mp
+Bo
+uK
+oa
+cb
+Aa
+uA
+AX
+AX
+pd
+QK
+QK
+lE
+lO
+Gp
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(15,1,1) = {"
+GA
+GA
+Ks
+Ks
+uK
+uK
+uK
+Dl
+Kg
+Kg
+tr
+Dl
+Kg
+qH
+tr
+uK
+uK
+uK
+ir
+EC
+GA
+GA
+ND
+kn
+Jv
+sE
+Bo
+oa
+Tb
+pm
+xd
+cS
+Kg
+qH
+QK
+uK
+Bo
+Bo
+NI
+UW
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(16,1,1) = {"
+GA
+GA
+NI
+NI
+DE
+tQ
+tr
+nP
+pq
+pq
+jz
+nP
+pq
+pq
+jz
+Dl
+EX
+DE
+NI
+Gp
+GA
+GA
+ND
+Eo
+pm
+xd
+Cm
+bK
+vR
+vR
+pm
+xd
+GH
+pI
+jz
+Bo
+QK
+eT
+NI
+af
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(17,1,1) = {"
+GA
+GA
+NI
+NI
+RF
+RF
+HO
+uA
+EI
+pq
+jz
+nP
+pq
+yX
+pd
+Cu
+RF
+RF
+mL
+yf
+GA
+GA
+ND
+ND
+pm
+pm
+lv
+oa
+jg
+pm
+sm
+nP
+AW
+yX
+pd
+WA
+RF
+fV
+mL
+yf
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(18,1,1) = {"
+GA
+GA
+Lx
+NI
+NI
+DE
+Uq
+xy
+uA
+AX
+pd
+uA
+AX
+pd
+uK
+Tl
+DE
+NI
+qN
+SO
+GA
+GA
+ND
+Eo
+YL
+pm
+Cc
+zW
+oa
+oa
+uK
+uA
+AX
+pd
+QK
+Tl
+eT
+PB
+qN
+SO
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(19,1,1) = {"
+GA
+GA
+NI
+Lx
+NI
+DE
+Xf
+hR
+ML
+Kg
+Kg
+Kg
+Kg
+IT
+tD
+Kp
+DE
+NI
+Eo
+qN
+GA
+GA
+NI
+YL
+YL
+pm
+GK
+mo
+nl
+Kg
+Kg
+QK
+Kg
+IT
+MT
+Kp
+DE
+NI
+Eo
+qN
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(20,1,1) = {"
+GA
+GA
+NI
+Lx
+NI
+RF
+DE
+DE
+RF
+pq
+pq
+pq
+pq
+RF
+DE
+DE
+RF
+NI
+Eo
+Eo
+GA
+GA
+NI
+Kh
+FM
+RF
+XI
+Qq
+RF
+Od
+zv
+AW
+zv
+RF
+DE
+DE
+RF
+uD
+Eo
+Eo
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(21,1,1) = {"
+GA
+GA
+Lx
+Lx
+NI
+NI
+NI
+NI
+RF
+RF
+DE
+DE
+RF
+RF
+NI
+NI
+NI
+NI
+NI
+NI
+GA
+GA
+Lx
+Lx
+Kh
+Kh
+oN
+PB
+fV
+fV
+DE
+aB
+RF
+RF
+Dq
+NI
+NI
+NI
+NI
+NI
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(22,1,1) = {"
+GA
+GA
+MY
+NI
+Lx
+NI
+NI
+NI
+NI
+qN
+dW
+dW
+SO
+dW
+ii
+NI
+Ym
+NI
+NI
+rv
+GA
+GA
+MY
+NI
+NI
+Lx
+NI
+ND
+NI
+dd
+og
+bo
+ZU
+dW
+ii
+NI
+Ym
+NI
+NI
+rv
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(23,1,1) = {"
+GA
+GA
+NI
+NI
+NI
+Lx
+Lx
+Lx
+NI
+NI
+lM
+SO
+SO
+dW
+Ls
+NI
+NI
+NI
+NI
+NI
+GA
+GA
+NI
+NI
+NI
+CL
+CL
+Lx
+NI
+At
+lM
+SO
+SO
+dW
+Ls
+NI
+NI
+At
+NI
+NI
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(24,1,1) = {"
+GA
+GA
+Eo
+NI
+Eo
+NI
+Lx
+Lx
+Lx
+Lx
+NI
+lM
+dW
+SO
+as
+Lx
+NI
+NI
+NI
+NI
+GA
+GA
+Eo
+NI
+kn
+ND
+CL
+CL
+Lx
+Lx
+NI
+lM
+dW
+SO
+as
+Lx
+NI
+NI
+NI
+NI
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(25,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(26,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(27,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(28,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(29,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(30,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(31,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(32,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(33,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(34,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}
+(35,1,1) = {"
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+GA
+"}

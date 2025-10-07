@@ -502,6 +502,38 @@
 /obj/structure/prop/hunter/ancient_temple/coffin_base/deco
 	icon_state = "ancient_coffin_base_deco"
 
+// Large Bars
+
+/obj/structure/prop/hunter/ancient_temple/large_bars
+	icon = 'icons/obj/structures/props/hunter/ancientsatuebase.dmi'
+	icon_state = "temple_large_bars"
+	name = "large bars"
+	desc = "large bars"
+	anchored = TRUE
+	layer = BIG_XENO_LAYER
+	density = TRUE
+	bound_width = 64
+	bound_height = 64
+
+/obj/structure/prop/hunter/ancient_temple/large_bars/water
+	icon_state = "temple_large_bars_water"
+
+/obj/structure/prop/hunter/ancient_temple/large_bars/alt
+	icon_state = "temple_large_bars_alt"
+
+/obj/structure/prop/hunter/ancient_temple/large_bars/alt/water
+	icon_state = "temple_large_bars_alt_water"
+
+/obj/structure/prop/hunter/ancient_temple/large_bars/colorable
+	icon_state = "colorable_large_bars"
+	name = "large bars"
+	desc = "large bars"
+	anchored = TRUE
+	layer = BIG_XENO_LAYER
+	density = TRUE
+	bound_width = 64
+	bound_height = 64
+
 // Breakable Ancient-Temple Walls
 
 /obj/structure/prop/hunter/ancient_temple/collapsed_wall

@@ -109,7 +109,7 @@
 			SEND_SIGNAL(user, COMSIG_MOB_DESTROY_WINDOW, src)
 			for(var/mob/living/carbon/viewer_in_range in orange(7, src))
 				if(AM)
-					to_chat(viewer_in_range, SPAN_WARNING("[user] smashes through [src][AM ? " with [AM]":""]!"))
+					to_chat(viewer_in_range, SPAN_WARNING("[user] smashes through [src] with [AM]!"))
 				else
 					to_chat(viewer_in_range, SPAN_WARNING("[src] breaks!"))
 			if(is_mainship_level(z))

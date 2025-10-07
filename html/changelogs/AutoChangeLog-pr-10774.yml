@@ -1,4 +1,0 @@
-author: "Detective-Google"
-delete-after: True
-changes:
-  - bugfix: "CE's no longer can vend infinite essentials kits."

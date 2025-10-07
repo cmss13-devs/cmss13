@@ -1021,6 +1021,8 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/list/freedraw_queue = list()
 	var/list/last_coords
+	/// Width of the lines this is goind to draw
+	var/width = 0
 
 /atom/movable/screen/minimap_tool/draw_tool/clicked(location, list/modifiers)
 	. = ..()
@@ -1147,7 +1149,10 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	end_coords = list(end_coords[1] + plane_master.cur_x_shift, end_coords[2] + plane_master.cur_y_shift)
-	draw_line(starting_coords, end_coords, slate)
+	if(width)
+		draw_line_width(starting_coords, end_coords, slate, width)
+	else
+		draw_line(starting_coords, end_coords, slate)
 	drawn_image.icon = slate
 	last_drawn = list(starting_coords, end_coords)
 
@@ -1259,23 +1264,7 @@ SUBSYSTEM_DEF(minimaps)
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_erase.dmi'
 	screen_loc = "15,10"
 	color = null
-
-/atom/movable/screen/minimap_tool/draw_tool/erase/on_mouseup(mob/living/source, atom/object, location, control, params)
-	SIGNAL_HANDLER
-	UnregisterSignal(source, COMSIG_MOB_MOUSEUP)
-	var/list/modifiers = params2list(params)
-	var/list/end_coords = params2screenpixel(modifiers["screen-loc"])
-	var/icon/slate = icon(drawn_image.icon)
-
-	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
-
-	if(!plane_master)
-		return
-
-	end_coords = list(end_coords[1] + plane_master.cur_x_shift, end_coords[2] + plane_master.cur_y_shift)
-	draw_line_width(starting_coords, end_coords, slate, 3)
-	drawn_image.icon = slate
-	last_drawn = list(starting_coords, end_coords)
+	wdith = 3
 
 /atom/movable/screen/minimap_tool/label
 	icon_state = "label"

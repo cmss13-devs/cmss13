@@ -229,9 +229,9 @@
 	properties = list(PROPERTY_SEDATIVE = 2, PROPERTY_PAINKILLING = 5)
 	flags = REAGENT_SCANNABLE
 
-/datum/reagent/toxin/chloralhydrate
+/datum/reagent/toxin/chloral_hydrate
 	name = "Chloral Hydrate"
-	id = "chloralhydrate"
+	id = "chloral_hydrate"
 	description = "Chloral hydrate was the first synthetically produced sedative-hypnotic drug. It is a powerful sedative which causes near instant sleepiness, but can be deadly in large quantities. Often used together with other anesthetics for surgical procedures."
 	reagent_state = SOLID
 	color = "#000067" // rgb: 0, 0, 103
@@ -268,7 +268,7 @@
 /datum/reagent/toxin/potassium_phorosulfate
 	name = "Potassium Phorosulfate"
 	id = "potassium_phorosulfate"
-	description = "A chemical made from a violent reaction using sulphuric acid. Has specific industrial uses in sterelizing surfaces from biological contamination in non human accessible ares. Not used in other areas due to its long lasting corrosive effects unless treated."
+	description = "A chemical made from a violent reaction using sulphuric acid. Has specific industrial uses in sterilizing surfaces from biological contamination in non human accessible ares. Not used in other areas due to its long lasting corrosive effects unless treated."
 	reagent_state = SOLID
 	color = COLOR_WHITE
 	overdose = 10
@@ -298,29 +298,39 @@
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CORROSIVE = 3)
 
-/datum/reagent/toxin/iron_sulfate
-	name = "Iron Sulfate"
-	id = "iron_sulfate"
-	description = "A reactive sulfide material often used as an intermediate or starting component in various chemical processes"
-	reagent_state = LIQUID
-	color = "#303030"
+/datum/reagent/toxin/ferrous_sulfate
+	name = "Ferrous Sulfate"
+	id = "ferrous_sulfate"
+	description = "This iron(II) sulfate is a heptahydrate, requiring 6 water molecules to synthesize. This sulfide material often used as an intermediate or starting component in various chemical processes"
+	reagent_state = SOLID
+	color = "#1c5c6a"
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_TOXIC = 1)
 
-/datum/reagent/toxin/iron_phoride_sulfate
-	name = "Iron Phoride Sulfate"
-	id = "iron_phoride_sulfate"
+/datum/reagent/toxin/ferrous_phoride_sulfate
+	name = "Ferrousphoride Sulfate"
+	id = "ferrous_phoride_sulfate"
 	description = "Iron Sulfate combined with Phoron to form a robust and durable substance, usually proposed as an additive to armor plates. Saw little actual use due to its flammability."
-	reagent_state = LIQUID
+	reagent_state = SOLID
 	color = "#4b1f5e"
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_CORROSIVE = 5, PROPERTY_OXIDIZING = 3, )
 
+/datum/reagent/toxin/nitric_acid
+	name = "Nitric Acid"
+	id = "nitric_acid"
+	description = "Nitric Acid is a highly corrosive and powerful oxidizing mineral acid used in manufacturing fertilizers, explosives, and plastics, and as a laboratory chemical"
+	reagent_state = SOLID
+	color = "#f0f5ca"
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_CORROSIVE = 4, PROPERTY_OXIDIZING = 3, )
+
+
 /datum/reagent/toxin/copper_sulfate
 	name = "Copper Sulfate"
 	id = "copper_sulfate"
-	description = "A common fungicide that is widely used to treat wood and other organic materials to prevent rot, decay, and fungal growth."
-	reagent_state = LIQUID
+	description = "Copper(II) sulfate, known as blue vitriol or bluestone, is a blue, crystalline salt. It is a common fungicide that is widely used to treat wood and other organic materials to prevent rot, decay, and fungal growth."
+	reagent_state = SOLID
 	spray_warning = TRUE
 	color = "#1d39db"
 	chemclass = CHEM_CLASS_RARE
@@ -348,9 +358,9 @@
 
 
 /datum/reagent/toxin/phenolformaldehyde_resin
-	name = "Phenol-Formaldehyde Resin"
-	id = "phenol_formaldehyde"
-	description = "Phenol-Formaldehyde Resin is a common molding polymer used in production of many small parts. It has great stress capacity and proven itself over many decades."
+	name = "Phenolformaldehyde Resin"
+	id = "phenolformaldehyde"
+	description = "Phenolformaldehyde Resin is a common molding polymer used in production of many small parts. It has great stress capacity and proven itself over many decades."
 	reagent_state = SOLID
 	chemclass = CHEM_CLASS_RARE
 	color = "#909648"

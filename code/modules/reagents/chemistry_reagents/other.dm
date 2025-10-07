@@ -304,7 +304,7 @@
 /datum/reagent/sulfur
 	name = "Sulfur"
 	id = "sulfur"
-	description = "Chemical element of atomic number 16. Sulfur is an essential element for all life, as a component in amino acids and vitamins. Industrial uses of sulfur include the production of gunpowder and sulfuric acid."
+	description = "Chemical element of atomic number 16. Sulfur is an essential element for all life, as a component in amino acids and vitamins. Industrial uses of sulfur include the production of gunpowder and sulphuric acid."
 	reagent_state = SOLID
 	color = "#BF8C00" // rgb: 191, 140, 0
 	chemclass = CHEM_CLASS_BASIC

@@ -367,7 +367,7 @@
 /obj/item/tool/pen/sleepypen/Initialize()
 	. = ..()
 	create_reagents(30)
-	reagents.add_reagent("chloralhydrate", 15)
+	reagents.add_reagent("chloral_hydrate", 15)
 
 /obj/item/tool/pen/sleepypen/attack(mob/M as mob, mob/user as mob)
 	if(!(istype(M,/mob)))

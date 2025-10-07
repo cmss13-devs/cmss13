@@ -128,13 +128,13 @@
 	reagents.add_reagent("stoxin", 60)
 	update_icon()
 
-/obj/item/reagent_container/glass/bottle/chloralhydrate
+/obj/item/reagent_container/glass/bottle/chloral_hydrate
 	name = "chloral hydrate bottle"
 	desc = "A small bottle of Choral Hydrate. Mickey's Favorite!"
 
-/obj/item/reagent_container/glass/bottle/chloralhydrate/Initialize()
+/obj/item/reagent_container/glass/bottle/chloral_hydrate/Initialize()
 	. = ..()
-	reagents.add_reagent("chloralhydrate", 30) //Intentionally low since it is so strong. Still enough to knock someone out.
+	reagents.add_reagent("chloral_hydrate", 30) //Intentionally low since it is so strong. Still enough to knock someone out.
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/antitoxin

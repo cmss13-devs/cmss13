@@ -427,7 +427,7 @@
 
 	current_colour_index = (current_colour_index % length(colour_list)) + 1
 	pen_color = colour_list[current_colour_index]
-	balloon_alert(user,"you twist the pen and change the ink color to [pen_color].")
+	balloon_alert(user,"you twist the pen and change the ink color to [pen_color]")
 	update_pen_state()
 
 /obj/item/tool/pen/syringe/uacqs_fountain/add_default_contents()

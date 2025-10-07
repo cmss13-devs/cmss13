@@ -377,7 +377,7 @@
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, hivenumber)
 	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, hivenumber)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	hive.abandon_on_hijack()
+	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME, TIMER_UNIQUE)
 	var/original_evilution = hive.evolution_bonus
 	hive.override_evilution(XENO_HIJACK_EVILUTION_BUFF, TRUE)
 	if(hive.living_xeno_queen)

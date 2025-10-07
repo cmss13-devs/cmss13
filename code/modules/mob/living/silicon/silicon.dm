@@ -175,21 +175,21 @@
 	..()
 	SSmob.living_misc_mobs += src
 
-/mob/living/silicon/ex_act(severity)
+/mob/living/silicon/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	flash_eyes()
 
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (stat != 2)
-				apply_damage(30, BRUTE)
+				apply_damage(30, BRUTE, enviro=enviro)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (stat != 2)
-				apply_damage(60, BRUTE)
-				apply_damage(60, BURN)
+				apply_damage(60, BRUTE, enviro=enviro)
+				apply_damage(60, BURN, enviro=enviro)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if (stat != 2)
-				apply_damage(100, BRUTE)
-				apply_damage(100, BURN)
+				apply_damage(100, BRUTE, enviro=enviro)
+				apply_damage(100, BURN, enviro=enviro)
 				if(!anchored)
 					gib()
 

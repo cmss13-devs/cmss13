@@ -417,9 +417,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 
 /datum/reagent/proc/calc_delivery_spectrum(method=TOUCH)
-	if(undesired_delivery & method) // check the unpreferred first since we wanna fuck over any kind of bug abusers if they find a way to game this shit
+	if(undesired_delivery & method || undesired_delivery == ANY_DELIVERY) // check the unpreferred first since we wanna fuck over any kind of bug abusers if they find a way to game this shit
 		return DELIVERY_NEGATIVE_EFFECT
-	if(preferred_delivery & method)
+	if(preferred_delivery == NO_DELIVERY || preferred_delivery & method || preferred_delivery == ANY_DELIVERY) // we deliver the preferred effect for no_delivery as it would be better to assume that a future contrib forgot to set it, than to not have it
 		return DELIVERY_PREFERRED_EFFECT
 
 	var/preferred_indices = list()
@@ -431,7 +431,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		if(method & GLOB.delivery_spectrum[index])
 			delivery_index = index
 
-	var/min_distance = 10 // just hardcode this, hardly matters anyway
+	var/min_distance = GLOB.delivery_spectrum.len
 	for(var/preferred_index in preferred_indices)
 		min_distance = min(min_distance, abs(preferred_index - delivery_index))
 

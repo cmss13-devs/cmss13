@@ -280,12 +280,7 @@
 		if(NOTIFY_JOIN_XENO)
 			ghost_user.join_as_alien()
 		if(NOTIFY_USCM_TACMAP)
-			var/datum/action/minimap/minimap_action = locate() in ghost_user.actions
-
-			if(!minimap_action)
-				return
-
-			minimap_action.toggle_minimap(force_state=TRUE)
+			ghost_user.view_tacmaps()
 
 /atom/movable/screen/alert/buckled
 	name = "Buckled"

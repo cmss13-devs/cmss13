@@ -306,7 +306,6 @@
 
 	var/dir_to_fling = get_dir(target_living, xeno)
 	var/turfs_travelled = 1
-	var/turf/open/turf_to_fling_to = get_turf(xeno)
 	if(xeno.Adjacent(target_living) && xeno.start_pulling(target_living, TRUE))
 		target_living.KnockDown(1)
 		xeno.throw_carbon(target_living, dir_to_fling, 3, SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)

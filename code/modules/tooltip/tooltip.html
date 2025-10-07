@@ -201,10 +201,6 @@
 					}
 				}
 
-				//Handle special cases (for fuck sake)
-				if (tooltip.special !== 'none') {
-					//Put yo special cases here
-				}
 
 				//Clamp values
 				left = (left < 0 ? 0 : (left > tilesShownX ? tilesShownX : left));
@@ -236,6 +232,12 @@
 
 				if (posY + docHeight > map.size.y) { //Is the bottom edge below the window? Snap it up if so
 					posY = (posY - docHeight) - realIconSizeY - tooltip.padding;
+				}
+
+
+				//Handle special cases (for fuck sake)
+				if (tooltip.special == 'offset_left') {
+					posX -= 128;
 				}
 
 				//Actually size, move and show the tooltip box

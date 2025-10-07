@@ -528,7 +528,7 @@
 	desc = "An empty brazier."
 	icon_state = "brazier_frame"
 	light_on = FALSE
-	frame_type = /obj/structure/prop/ancient_brazier/frame/full
+	frame_type = /obj/structure/prop/brazier/ancient/frame/full
 	state = STATE_FUEL
 
 /obj/structure/prop/brazier/ancient/alt/frame

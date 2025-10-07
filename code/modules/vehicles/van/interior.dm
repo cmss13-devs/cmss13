@@ -68,7 +68,7 @@
 
 /obj/structure/interior_exit/vehicle/van_white/right
 	name = "Van right door"
-	icon = 'icons/obj/vehicles/interiors/van_whiten.dmi'
+	icon = 'icons/obj/vehicles/interiors/van_white.dmi'
 	icon_state = "exterior_door_unique"
 	dir = SOUTH
 

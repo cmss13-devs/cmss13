@@ -560,7 +560,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap/proc/get_coords_from_click(mob/user)
 	//lord forgive my shitcode
 	var/signal_by_type = isobserver(user) ? COMSIG_OBSERVER_CLICKON : COMSIG_MOB_CLICKON
-	RegisterSignal(user, signal_by_type, PROC_REF(on_click))
+	RegisterSignal(user, signal_by_type, PROC_REF(on_click), override=TRUE)
 	while(!(choices_by_mob[user] || stop_polling[user]) && user.client && islist(stop_polling))
 		stoplag(1)
 	UnregisterSignal(user, signal_by_type)
@@ -577,17 +577,22 @@ SUBSYSTEM_DEF(minimaps)
  * x and y minimap centering is reverted, then the x2 scaling of the map is removed
  * round up to correct if an odd pixel was clicked and make sure its valid
  */
-/atom/movable/screen/minimap/proc/on_click(datum/source, atom/A, params)
+/atom/movable/screen/minimap/proc/on_click(mob/source, atom/A, params)
 	SIGNAL_HANDLER
 	var/list/modifiers = params2list(params)
 	// Only shift click because otherwise this conflicts with clicking on other stuff
 	if(!modifiers[CTRL_CLICK])
 		return
 	// we only care about absolute coords because the map is fixed to 1,1 so no client stuff
+	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
+
+	if(!plane_master)
+		return
+
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
 	var/zlevel = SSminimaps.updators_by_datum[src].ztarget
-	var/x = (pixel_coords[1] - SSminimaps.minimaps_by_z["[zlevel]"].x_offset + cur_x_shift)  / MINIMAP_SCALE
-	var/y = (pixel_coords[2] - SSminimaps.minimaps_by_z["[zlevel]"].y_offset + cur_y_shift)  / MINIMAP_SCALE
+	var/x = (pixel_coords[1] - SSminimaps.minimaps_by_z["[zlevel]"].x_offset + plane_master.cur_x_shift)  / MINIMAP_SCALE
+	var/y = (pixel_coords[2] - SSminimaps.minimaps_by_z["[zlevel]"].y_offset + plane_master.cur_y_shift)  / MINIMAP_SCALE
 	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)
 	var/c_y = clamp(CEILING(y, 1), 1, world.maxy)
 	choices_by_mob[source] = list(c_x, c_y)

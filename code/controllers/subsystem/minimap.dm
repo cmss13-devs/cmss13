@@ -884,7 +884,7 @@ SUBSYSTEM_DEF(minimaps)
 	icon = 'icons/ui_icons/minimap_buttons.dmi'
 	icon_state = "close"
 	screen_loc = "RIGHT,TOP"
-	plane = TACMAP_BUTTONS_PLANE
+	plane = ABOVE_TACMAP_PLANE
 	layer = INTRO_LAYER
 	var/datum/component/tacmap/linked_map
 
@@ -911,7 +911,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool
 	icon = 'icons/ui_icons/minimap_buttons.dmi'
 	layer = TACMAP_LAYER
-	plane = TACMAP_BUTTONS_PLANE
+	plane = ABOVE_TACMAP_PLANE
 	///x offset of the minimap icon for this zlevel. mostly used for shorthand
 	var/x_offset
 	///y offset of the minimap icon for this zlevel. mostly used for shorthand

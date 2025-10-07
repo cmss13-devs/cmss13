@@ -466,6 +466,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/target
 	/// Is drawing enbabled
 	var/drawing
+	/// Max ratio to x_max/y_max you can scroll the map to
+	var/max_scroll_ratio = 0.8
 
 	var/atom/movable/screen/minimap_tool/draw_tool/active_draw_tool
 	/// List of turfs that have labels attached to them. kept around so it can be cleared
@@ -488,7 +490,20 @@ SUBSYSTEM_DEF(minimaps)
 	if(!transform)
 		plane_master.transform = matrix()
 
-	if(mods[SHIFT_CLICK])
+	var/shift_click = mods[SHIFT_CLICK]
+	var/x_shift = plane_master.cur_x_shift
+	var/max_x_shift = x_max * max_scroll_ratio
+	var/y_shift = plane_master.cur_y_shift
+	var/max_y_shift = y_max * max_scroll_ratio
+
+	// Out of bounds checks
+	if(x_shift > max_x_shift && (shift_click ? delta_y < 0 : delta_x < 0) || x_shift < max_x_shift * -1 && (shift_click ? delta_y > 0 : delta_x > 0))
+		return
+
+	if(y_shift > max_y_shift && (shift_click ? delta_x < 0 : delta_y < 0) || y_shift < max_y_shift * -1 && (shift_click ? delta_x > 0 : delta_y > 0))
+		return
+
+	if(shift_click)
 		transform.Translate(delta_y / 32, delta_x / 32)
 		plane_master.cur_x_shift -= delta_y / 32
 		plane_master.cur_y_shift -= delta_x / 32

@@ -113,7 +113,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_pilot_officer, list(
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Black Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
-
 		list("GLASSES (CHOOSE 1)", 0, null, null, null),
 		list("Aviator Shades, Gold", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 		list("Aviator Shades, Silver", 0, /obj/item/clothing/glasses/sunglasses/aviator/silver, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),

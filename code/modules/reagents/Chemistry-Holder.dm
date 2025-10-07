@@ -150,14 +150,15 @@
 	return amount
 
 /// Transfers to object as ingestion
-/datum/reagents/proc/trans_to_ingest(atom/movable/target, amount=1, multiplier=1, preserve_data=1, method = INGESTION) //For items ingested. A delay is added between ingestion and addition of the reagents
+/datum/reagents/proc/trans_to_ingest(atom/movable/target, amount=1, multiplier=1, preserve_data=1, method = NO_DELIVERY) //For items ingested. A delay is added between ingestion and addition of the reagents
 	if(!target?.reagents || total_volume <= 0)
 		return
 
 	var/datum/reagents/vessel/V = new(1000) //temporary holder
 	var/datum/reagents/R = target.reagents
+	var/delivery_method = method
 	amount = min(min(amount, total_volume), R.maximum_volume - R.total_volume)
-	trans_to_datum(V, amount, reaction = FALSE, method = method)
+	trans_to_datum(V, amount, reaction = FALSE, method = delivery_method)
 	if(issynth(target))
 		return
 	to_chat(target, SPAN_NOTICE("You taste [pick(V.reagent_list)]."))
@@ -166,7 +167,7 @@
 		if(RG.flags & REAGENT_NOT_INGESTIBLE)
 			V.del_reagent(RG.id)
 
-	addtimer(CALLBACK(V, TYPE_PROC_REF(/datum/reagents/vessel, inject_vessel), target, method, TRUE, 0.5 SECONDS), 9.5 SECONDS)
+	addtimer(CALLBACK(V, TYPE_PROC_REF(/datum/reagents/vessel, inject_vessel), target, NONE, TRUE, 0.5 SECONDS, delivery_method), 9.5 SECONDS)
 	return amount
 
 ///You can search for specific reagents using the specific reagents arg.

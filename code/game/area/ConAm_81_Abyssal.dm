@@ -189,6 +189,11 @@
 	icon_state = "fiorina"
 	minimap_color = MINIMAP_AREA_COMMAND
 
+/area/abyssal/interior/liaison
+	name = "Abyssal - Executive Coordinators Office"
+	icon_state = "station4"
+	minimap_color = MINIMAP_AREA_COMMAND
+
 //// Exterior Station \\\\
 
 /area/abyssal/exterior/fore

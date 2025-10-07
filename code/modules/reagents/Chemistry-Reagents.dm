@@ -417,11 +417,9 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 
 /datum/reagent/proc/calc_delivery_spectrum(method=TOUCH)
-	if(undesired_delivery == method) // check the unpreferred first since we wanna fuck over any kind of bug abusers if they find a way to game this shit
-		to_chat("DEBUG: UNDESIRED CHECK PASS")
+	if(undesired_delivery & method) // check the unpreferred first since we wanna fuck over any kind of bug abusers if they find a way to game this shit
 		return DELIVERY_NEGATIVE_EFFECT
-	if(preferred_delivery == method)
-		to_chat("DEBUG: PREFERRED CHECK PASS")
+	if(preferred_delivery & method)
 		return DELIVERY_PREFERRED_EFFECT
 
 	var/preferred_indices = list()

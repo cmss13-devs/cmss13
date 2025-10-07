@@ -17,6 +17,7 @@
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_NUTRITIOUS = 1)
 	flags = REAGENT_TYPE_MEDICAL
+	preferred_delivery = INGESTION | CONTROLLED_INGESTION
 
 /datum/reagent/virus_food
 	name = "Virus Food"
@@ -27,6 +28,7 @@
 	color = "#899613" // rgb: 137, 150, 19
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_NUTRITIOUS = 2)
+	preferred_delivery = INGESTION | CONTROLLED_INGESTION
 
 
 /datum/reagent/nutriment

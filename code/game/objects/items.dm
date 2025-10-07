@@ -1159,3 +1159,7 @@
 ///Called by /mob/living/carbon/swap_hand() when hands are swapped
 /obj/item/proc/hands_swapped(mob/living/carbon/swapper_of_hands)
 	return
+
+// Formerly in gun_helpers.dm, moved here for more universal use
+/obj/item/proc/unique_action(mob/user)
+	return

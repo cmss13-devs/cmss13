@@ -21,3 +21,6 @@
 
 /// For prefab papers not intended to appear in document cabinets.
 #define PAPER_CATEGORY_INACCESSIBLE "INACCESSIBLE"
+
+#define DEFAULT_PAPER_WIDTH 700
+#define DEFAULT_PAPER_HEIGHT 900

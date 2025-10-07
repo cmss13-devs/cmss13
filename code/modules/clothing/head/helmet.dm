@@ -1267,6 +1267,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M10 pattern officer"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
+/obj/item/clothing/head/helmet/marine/MP/SO/basic
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical)
+
 /obj/item/clothing/head/helmet/marine/MP/provost/marshal
 	name = "\improper M10 pattern MP riot helmet"
 	desc = "A variant of the M10 for the Military Police deployed to deal with riots, often worn by MPs from the Provost Office."

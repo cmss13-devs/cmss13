@@ -95,6 +95,9 @@
 	return ..()
 
 /obj/effect/landmark/event_mob_spawn/attack_ghost(mob/dead/observer/user)
+	if(delay_setup)
+		return FALSE
+
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return FALSE

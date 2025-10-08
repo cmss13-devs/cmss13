@@ -33,9 +33,7 @@
 "aai" = (
 /obj/structure/pipes/vents/scrubber,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/arrivals)
 "aaj" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -141,17 +139,13 @@
 	icon_state = "pottedplant_21"
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "aay" = (
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aaz" = (
 /obj/structure/window/framed/prison/reinforced,
@@ -296,9 +290,7 @@
 	pixel_y = 32;
 	pixel_x = 2
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "aaT" = (
 /turf/closed/wall/prison,
@@ -318,9 +310,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_east)
 "aaW" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -363,9 +353,7 @@
 	pixel_x = -7;
 	pixel_y = -11
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/arrivals)
 "abc" = (
 /turf/closed/wall/r_wall/prison,
@@ -419,9 +407,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/abyssal/interior/corridor_east)
 "abm" = (
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/corridor_east)
 "abn" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -480,9 +466,7 @@
 /turf/open/floor/station/metal/floor,
 /area/abyssal/interior/corridor_east)
 "abw" = (
-/turf/open/floor/station/metal/floor{
-	dir = 6
-	},
+/turf/open/floor/station/metal/floor/southeast,
 /area/abyssal/interior/corridor_east)
 "abx" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -505,9 +489,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "abA" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
@@ -544,9 +526,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/corridor_east)
 "abH" = (
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_east)
 "abI" = (
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
@@ -596,9 +576,7 @@
 /turf/open/floor/darkblue2/west,
 /area/abyssal/interior/command)
 "abQ" = (
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/corridor_east)
 "abR" = (
 /obj/item/stack/cable_coil/blue,
@@ -606,9 +584,7 @@
 /turf/open/floor/prison,
 /area/abyssal/interior/command)
 "abS" = (
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/corridor_east)
 "abT" = (
 /obj/effect/decal/cleanable/generic{
@@ -621,9 +597,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "abU" = (
 /obj/item/tool/warning_cone{
@@ -648,9 +622,7 @@
 	color = "#6b675e"
 	},
 /obj/item/device/radio,
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/arrivals)
 "abW" = (
 /obj/structure/plasticflaps,
@@ -665,9 +637,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 6
-	},
+/turf/open/floor/station/metal/floor/southeast,
 /area/abyssal/interior/corridor_west)
 "abY" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -744,9 +714,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "acm" = (
 /turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
@@ -785,9 +753,7 @@
 /turf/closed/wall/prison,
 /area/abyssal/interior/engineering)
 "acu" = (
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/corridor_east)
 "acv" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -955,9 +921,7 @@
 	color = "#6b675e"
 	},
 /obj/effect/spawner/random/balaclavas,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "acS" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -978,9 +942,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/corridor_west)
 "acU" = (
 /turf/closed/wall/r_wall/prison,
@@ -1032,9 +994,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/arrivals)
 "acY" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -1245,9 +1205,7 @@
 	pixel_y = 32;
 	pixel_x = 8
 	},
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt1/north,
 /area/abyssal/interior/corridor_west)
 "adD" = (
 /obj/structure/blocker/invisible_wall,
@@ -1270,9 +1228,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "adG" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -1281,9 +1237,7 @@
 "adH" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/arrivals)
 "adI" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -1505,9 +1459,7 @@
 /obj/effect/spawner/random/toolbox{
 	layer = 4
 	},
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt1/east,
 /area/abyssal/interior/corridor_west)
 "aen" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -1724,9 +1676,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aeR" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -1767,15 +1717,11 @@
 /turf/open/floor/dark,
 /area/abyssal/interior/dormitory)
 "aeW" = (
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aeX" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "aeY" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -1894,9 +1840,7 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/abyssal/interior/science)
 "afn" = (
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "afo" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -1924,9 +1868,7 @@
 "afq" = (
 /obj/structure/pipes/vents/scrubber,
 /obj/effect/decal/floor_symbol/con_am/alt/top_4,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "afr" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -1934,9 +1876,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt1/west,
 /area/abyssal/interior/corridor_west)
 "afs" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -2111,9 +2051,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/north)
 "afP" = (
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/corridor_east)
 "afQ" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
@@ -2294,9 +2232,7 @@
 /turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/arrivals)
 "agn" = (
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/corridor_central)
 "ago" = (
 /turf/open/floor/darkred2/southwest,
@@ -2329,9 +2265,7 @@
 "agv" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "agw" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -2349,9 +2283,7 @@
 /turf/open/floor/darkbluecorners2/east,
 /area/abyssal/interior/command)
 "agz" = (
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/corridor_central)
 "agA" = (
 /obj/effect/hybrisa/misc/fake/wire/blue{
@@ -2419,9 +2351,7 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/west,
 /area/abyssal/interior/engineering)
 "agN" = (
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_central)
 "agO" = (
 /turf/closed/wall/prison,
@@ -2450,9 +2380,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "agU" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -2498,9 +2426,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "aha" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
@@ -2517,9 +2443,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/dormitory)
 "ahc" = (
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_central)
 "ahd" = (
 /obj/structure/cable/yellow{
@@ -2571,9 +2495,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_central)
 "ahk" = (
 /obj/structure/blackgoocontainer{
@@ -2595,17 +2517,13 @@
 	},
 /obj/structure/closet/firecloset,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_central)
 "ahm" = (
 /turf/closed/wall/prison,
 /area/abyssal/interior/security)
 "ahn" = (
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_central)
 "aho" = (
 /turf/open/floor/station/metal/floor/alt2,
@@ -2624,9 +2542,7 @@
 /turf/open/floor/darkish,
 /area/abyssal/interior/landing_zone)
 "ahq" = (
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "ahr" = (
 /obj/structure/window/framed/prison/reinforced/hull,
@@ -2678,16 +2594,12 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "ahy" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "ahz" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -2700,9 +2612,7 @@
 	start_charge = 20
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "ahB" = (
 /turf/closed/wall/r_wall/prison,
@@ -2756,9 +2666,7 @@
 /area/abyssal/interior/corridor_west)
 "ahJ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/corridor_west)
 "ahK" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -2820,9 +2728,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "ahS" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -2832,9 +2738,7 @@
 /area/abyssal/interior/maintenance/north)
 "ahT" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "ahU" = (
 /turf/open/floor/darkred2,
@@ -2848,9 +2752,7 @@
 	pixel_y = 6;
 	pixel_x = 2
 	},
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt1/east,
 /area/abyssal/interior/corridor_west)
 "ahW" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -2869,9 +2771,7 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/abyssal/interior/corridor_west)
 "aia" = (
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/corridor_central)
 "aib" = (
 /obj/structure/machinery/vending/coffee,
@@ -2902,9 +2802,7 @@
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/abyssal/interior/security)
 "aig" = (
-/turf/open/floor/station/metal/floor{
-	dir = 6
-	},
+/turf/open/floor/station/metal/floor/southeast,
 /area/abyssal/interior/corridor_central)
 "aih" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -2984,9 +2882,7 @@
 /area/abyssal/interior/atmo)
 "aiu" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "aiv" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -3201,9 +3097,7 @@
 "aje" = (
 /obj/structure/prop/misc/lit_cable,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/arrivals)
 "ajf" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
@@ -3348,9 +3242,7 @@
 	pixel_x = -2;
 	pixel_y = 1
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/corridor_west)
 "ajE" = (
 /obj/structure/cable/yellow{
@@ -3413,9 +3305,7 @@
 /turf/open/floor/darkish,
 /area/abyssal/interior/science)
 "ajO" = (
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "ajP" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
@@ -3467,9 +3357,7 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/abyssal/interior/galley)
 "ajY" = (
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/corridor_central)
 "ajZ" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
@@ -3624,9 +3512,7 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/arrivals)
 "akv" = (
 /obj/structure/machinery/landinglight/ds1{
@@ -3821,9 +3707,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/landing_zone)
 "akZ" = (
-/turf/open/floor/station/metal/floor{
-	dir = 6
-	},
+/turf/open/floor/station/metal/floor/southeast,
 /area/abyssal/interior/arrivals)
 "ala" = (
 /obj/item/stock_parts/smes_coil{
@@ -3902,9 +3786,7 @@
 	icon_state = "trash_8"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "all" = (
 /obj/structure/machinery/door/airlock/external/colony{
@@ -4127,9 +4009,7 @@
 /turf/open/floor/prison/red/north,
 /area/abyssal/interior/landing_zone)
 "alT" = (
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt1/east,
 /area/abyssal/interior/corridor_west)
 "alU" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -4300,9 +4180,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2"
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "amu" = (
 /turf/open/floor/darkblue2,
@@ -4341,9 +4219,7 @@
 	pixel_y = 32;
 	pixel_x = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "amy" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -4542,9 +4418,7 @@
 	layer = 2.9
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/arrivals)
 "amT" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -4590,9 +4464,7 @@
 	freerange = 1;
 	pixel_x = 30
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 6
-	},
+/turf/open/floor/station/metal/floor/southeast,
 /area/abyssal/interior/arrivals)
 "amZ" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -4613,9 +4485,7 @@
 "anb" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/corridor_west)
 "anc" = (
 /obj/effect/hybrisa/misc/fake/wire/yellow{
@@ -4642,9 +4512,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "anf" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -4654,15 +4522,11 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /obj/effect/decal/large_stain,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "anh" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "ani" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -4694,9 +4558,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/disposal,
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/corridor_west)
 "ann" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
@@ -4724,9 +4586,7 @@
 /area/abyssal/interior/maintenance/north)
 "anq" = (
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "anr" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -4734,9 +4594,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2"
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "ans" = (
 /obj/structure/machinery/light/blue{
@@ -4752,9 +4610,7 @@
 /obj/structure/sign/conam{
 	pixel_x = 32
 	},
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt1/east,
 /area/abyssal/interior/arrivals)
 "anu" = (
 /obj/structure/cable/yellow{
@@ -4848,18 +4704,14 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "anG" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "anH" = (
 /obj/structure/machinery/suit_storage_unit/compression_suit{
@@ -4874,9 +4726,7 @@
 	},
 /obj/effect/spawner/random/facepaint,
 /obj/effect/spawner/random/powercell,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/arrivals)
 "anJ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -4903,9 +4753,7 @@
 /obj/structure/prop/hybrisa/misc/metergreen{
 	pixel_y = 32
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/arrivals)
 "anM" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank{
@@ -5042,9 +4890,7 @@
 /area/abyssal/interior/arrivals)
 "aob" = (
 /obj/structure/pipes/vents/scrubber,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "aoc" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -5140,9 +4986,7 @@
 "aop" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 6
-	},
+/turf/open/floor/station/metal/floor/southeast,
 /area/abyssal/interior/arrivals)
 "aoq" = (
 /obj/effect/decal/warning_stripes{
@@ -5219,9 +5063,7 @@
 "aoB" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/arrivals)
 "aoC" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
@@ -5390,9 +5232,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "aoZ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -5562,9 +5402,7 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 6
-	},
+/turf/open/floor/station/metal/floor/southeast,
 /area/abyssal/interior/arrivals)
 "apv" = (
 /obj/effect/decal/strata_decals/grime/grime4,
@@ -5636,9 +5474,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "apD" = (
 /obj/structure/machinery/landinglight/ds1{
@@ -5651,9 +5487,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/arrivals)
 "apF" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
@@ -5706,18 +5540,14 @@
 /area/abyssal/interior/maintenance/south)
 "apL" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/arrivals)
 "apM" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "apN" = (
 /obj/structure/machinery/firealarm{
@@ -5728,9 +5558,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/arrivals)
 "apO" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -5835,9 +5663,7 @@
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/arrivals)
 "apY" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -5851,9 +5677,7 @@
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/arrivals)
 "aqa" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -5861,14 +5685,10 @@
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "aqb" = (
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_east)
 "aqc" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -5880,9 +5700,7 @@
 	pixel_x = 3;
 	pixel_y = 5
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/arrivals)
 "aqd" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite{
@@ -5948,9 +5766,7 @@
 	pixel_y = 32;
 	pixel_x = -6
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "aqm" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -5997,9 +5813,7 @@
 	level = 2
 	},
 /obj/structure/bed/chair/bolted,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "aqq" = (
 /turf/open/floor/darkbluecorners2/east,
@@ -6028,9 +5842,7 @@
 "aqt" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/closet/firecloset,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/arrivals)
 "aqu" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -6039,9 +5851,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "aqv" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -6068,9 +5878,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/arrivals)
 "aqy" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -6140,9 +5948,7 @@
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank{
 	pixel_y = 32
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "aqE" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -6231,9 +6037,7 @@
 	pixel_y = 24
 	},
 /obj/structure/closet/emcloset,
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/arrivals)
 "aqP" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -6241,9 +6045,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "aqQ" = (
 /obj/effect/decal/hybrisa/trash{
@@ -6259,9 +6061,7 @@
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "aqS" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -6430,9 +6230,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_central)
 "arn" = (
 /obj/effect/decal/warning_stripes{
@@ -6650,9 +6448,7 @@
 "arI" = (
 /obj/structure/closet/walllocker/emerglocker/west,
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/arrivals)
 "arJ" = (
 /obj/item/frame/table/almayer,
@@ -6671,9 +6467,7 @@
 /area/abyssal/interior/command)
 "arM" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/arrivals)
 "arN" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -6696,9 +6490,7 @@
 /area/abyssal/interior/arrivals)
 "arP" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 6
-	},
+/turf/open/floor/station/metal/floor/southeast,
 /area/abyssal/interior/arrivals)
 "arQ" = (
 /obj/structure/closet,
@@ -6762,9 +6554,7 @@
 "arX" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "arY" = (
 /obj/effect/decal/warning_stripes{
@@ -6782,9 +6572,7 @@
 /area/abyssal/interior/arrivals)
 "arZ" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "asa" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -6842,23 +6630,17 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/arrivals)
 "ash" = (
 /obj/structure/prop/misc/lit_cable,
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "asi" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/arrivals)
 "asj" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
@@ -7249,9 +7031,7 @@
 /area/abyssal/interior/science)
 "asQ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "asR" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -7261,9 +7041,7 @@
 	pixel_x = -8;
 	pixel_y = 10
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/arrivals)
 "asS" = (
 /obj/structure/window/framed/prison/reinforced/hull,
@@ -7271,9 +7049,7 @@
 /area/abyssal/interior/maintenance/east)
 "asT" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "asU" = (
 /obj/effect/decal/hybrisa/trash{
@@ -7298,18 +7074,14 @@
 	pixel_y = 6;
 	pixel_x = -6
 	},
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/arrivals)
 "asX" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/arrivals)
 "asY" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
@@ -7396,9 +7168,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "atk" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -7409,9 +7179,7 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/largecrate/random/mini/chest/c,
 /obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/arrivals)
 "atm" = (
 /obj/structure/pipes/vents/scrubber,
@@ -7440,15 +7208,11 @@
 	pixel_x = 8;
 	pixel_y = 12
 	},
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/arrivals)
 "atq" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/arrivals)
 "atr" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -7477,9 +7241,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/disposalpipe/segment,
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "atv" = (
 /turf/open/floor/station/metal/floor/alt3,
@@ -7568,9 +7330,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "atF" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -7586,9 +7346,7 @@
 /area/abyssal/interior/science)
 "atG" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt1/west,
 /area/abyssal/interior/corridor_west)
 "atH" = (
 /obj/structure/machinery/light{
@@ -7633,16 +7391,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt1/north,
 /area/abyssal/interior/corridor_west)
 "atL" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/stack/sheet/cardboard,
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/arrivals)
 "atM" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -7654,43 +7408,33 @@
 	dir = 5
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/arrivals)
 "atO" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/arrivals)
 "atP" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/arrivals)
 "atQ" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/arrivals)
 "atR" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/closet/emcloset,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "atS" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -7979,9 +7723,7 @@
 	icon_state = "cargo_arrow4";
 	pixel_y = 12
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/arrivals)
 "auz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -8021,9 +7763,7 @@
 /area/abyssal/interior/corridor_west)
 "auE" = (
 /obj/effect/decal/floor_symbol/con_am/alt/bottom_4,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "auF" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -8180,9 +7920,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/arrivals)
 "auX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -8498,9 +8236,7 @@
 /turf/open/floor/darkbrown2/west,
 /area/abyssal/interior/cargo)
 "avH" = (
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_east)
 "avI" = (
 /obj/effect/decal/warning_stripes{
@@ -8675,9 +8411,7 @@
 	pixel_x = -17;
 	pixel_y = -9
 	},
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/arrivals)
 "awi" = (
 /obj/structure/machinery/light/small{
@@ -8832,9 +8566,7 @@
 	icon_state = "trash_6";
 	pixel_y = 12
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/arrivals)
 "awC" = (
 /obj/structure/pipes/vents/pump,
@@ -8848,9 +8580,7 @@
 "awE" = (
 /obj/structure/prop/misc/lit_cable,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/arrivals)
 "awF" = (
 /obj/structure/machinery/alarm{
@@ -8929,9 +8659,7 @@
 /area/abyssal/interior/cargo)
 "awM" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/arrivals)
 "awN" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -8939,9 +8667,7 @@
 	icon_state = "pottedplant_2";
 	pixel_y = 6
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/arrivals)
 "awO" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -9168,9 +8894,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "axu" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
@@ -9270,9 +8994,7 @@
 "axH" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "axI" = (
 /obj/item/tool/warning_cone{
@@ -9346,9 +9068,7 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "axQ" = (
 /obj/effect/decal/warning_stripes{
@@ -9390,18 +9110,14 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt1/east,
 /area/abyssal/interior/corridor_west)
 "axW" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	pixel_x = -30
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "axX" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
@@ -9541,9 +9257,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/prop/misc/lit_cable,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "ayn" = (
 /obj/effect/decal/warning_stripes{
@@ -9574,9 +9288,7 @@
 /area/abyssal/interior/maintenance/east)
 "ayp" = (
 /obj/structure/prop/misc/lit_cable,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "ayq" = (
 /obj/item/shard,
@@ -9628,9 +9340,7 @@
 /area/abyssal/interior/corridor_central)
 "ayv" = (
 /obj/structure/closet/firecloset/full,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_central)
 "ayw" = (
 /obj/structure/sign/safety/nonpress_0g{
@@ -9692,15 +9402,11 @@
 /obj/structure/sign/conam{
 	pixel_y = 31
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_east)
 "ayC" = (
 /obj/structure/closet/emcloset,
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/corridor_central)
 "ayD" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -9771,9 +9477,7 @@
 	pixel_x = 4;
 	pixel_y = -7
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "ayL" = (
 /obj/structure/sign/safety/galley{
@@ -9967,9 +9671,7 @@
 	pixel_y = 32;
 	pixel_x = 16
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/arrivals)
 "azj" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -10008,9 +9710,7 @@
 	dir = 8;
 	pixel_y = -14
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/arrivals)
 "azo" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -10269,9 +9969,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_6"
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "azQ" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -10351,9 +10049,7 @@
 /obj/structure/sign/safety/maint{
 	pixel_x = -24
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_east)
 "aAb" = (
 /obj/structure/pipes/vents/pump,
@@ -10364,9 +10060,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aAc" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -10946,9 +10640,7 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/arrivals)
 "aBt" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -11255,9 +10947,7 @@
 	icon_state = "pipe-j2"
 	},
 /obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "aCd" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -11267,9 +10957,7 @@
 /obj/structure/prop/hybrisa/signs/high_voltage{
 	pixel_x = -30
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_east)
 "aCf" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -11285,9 +10973,7 @@
 /area/abyssal/interior/command)
 "aCh" = (
 /obj/item/trash/hotdog,
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/corridor_west)
 "aCi" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -11427,9 +11113,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/arrivals)
 "aCA" = (
 /obj/structure/window/framed/prison/reinforced,
@@ -11890,9 +11574,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/corridor_east)
 "aDG" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
@@ -11976,9 +11658,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/corridor_west)
 "aDT" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
@@ -12288,9 +11968,7 @@
 	pixel_y = 32;
 	pixel_x = 1
 	},
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt1/north,
 /area/abyssal/interior/corridor_west)
 "aEI" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -12466,9 +12144,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/corridor_east)
 "aFd" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
@@ -12556,16 +12232,12 @@
 	freerange = 1;
 	pixel_y = -32
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/corridor_west)
 "aFo" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "aFp" = (
 /obj/item/stack/sheet/metal,
@@ -12701,9 +12373,7 @@
 /obj/effect/decal/strata_decals/grime/grime4{
 	icon_state = "grime3"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "aFH" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -12748,9 +12418,7 @@
 	pixel_y = 8
 	},
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aFL" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -12911,9 +12579,7 @@
 /obj/item/stack/medical/splint,
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_central)
 "aGe" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -12984,9 +12650,7 @@
 /area/abyssal/interior/liaison)
 "aGm" = (
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aGn" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -13058,9 +12722,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt1/east,
 /area/abyssal/interior/corridor_west)
 "aGw" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -13172,9 +12834,7 @@
 /obj/structure/machinery/power/apc/power/east{
 	start_charge = 20
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "aGK" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -13312,9 +12972,7 @@
 	dir = 8;
 	icon_state = "pipe-j2"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "aHb" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -13548,9 +13206,7 @@
 	color = "#6b675e"
 	},
 /obj/effect/spawner/random/goggles/highchance,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aHC" = (
 /obj/effect/decal/floor_symbol/con_am/alt/top_3,
@@ -13592,18 +13248,14 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "aHG" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
 	layer = 2.5
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_east)
 "aHH" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -13732,9 +13384,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/corridor_west)
 "aHX" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -13802,9 +13452,7 @@
 	alpha = 155
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aIf" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -13850,9 +13498,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "aIl" = (
 /obj/structure/sign/safety/radio_rad{
@@ -13867,9 +13513,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "aIm" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -14283,9 +13927,7 @@
 /area/abyssal/interior/liaison)
 "aJo" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_east)
 "aJp" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -14297,9 +13939,7 @@
 /area/abyssal/interior/dormitory)
 "aJq" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_east)
 "aJr" = (
 /obj/effect/landmark/queen_spawn,
@@ -14477,9 +14117,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aJR" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -14819,9 +14457,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "aKC" = (
 /obj/effect/decal/warning_stripes{
@@ -15043,9 +14679,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "aLc" = (
 /obj/item/stack/cable_coil/yellow,
@@ -15172,9 +14806,7 @@
 /obj/structure/surface/rack,
 /obj/item/device/analyzer,
 /obj/item/device/binoculars/civ,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "aLu" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -15188,9 +14820,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "aLv" = (
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/arrivals)
 "aLw" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -15256,9 +14886,7 @@
 /turf/open/floor/green/southwest,
 /area/abyssal/interior/medical)
 "aLD" = (
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/arrivals)
 "aLE" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -15346,9 +14974,7 @@
 	dir = 2
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "aLS" = (
 /obj/structure/machinery/door/airlock/hybrisa/medical/autoname,
@@ -15580,9 +15206,7 @@
 "aMv" = (
 /obj/structure/pipes/vents/scrubber,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/corridor_west)
 "aMw" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -15815,9 +15439,7 @@
 	pixel_x = -17;
 	pixel_y = -8
 	},
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt1/west,
 /area/abyssal/interior/corridor_west)
 "aMY" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -15966,9 +15588,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_east)
 "aNw" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -16148,9 +15768,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_east)
 "aNS" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -16257,9 +15875,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "aOe" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -16272,9 +15888,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aOg" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -16329,9 +15943,7 @@
 /area/abyssal/interior/command)
 "aOo" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "aOp" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -16761,9 +16373,7 @@
 	color = "#6b675e"
 	},
 /obj/effect/spawner/random/powercell,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aPv" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -17079,9 +16689,7 @@
 /area/abyssal/interior/command)
 "aQm" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_central)
 "aQn" = (
 /obj/structure/disposalpipe/segment{
@@ -17100,9 +16708,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_central)
 "aQp" = (
 /obj/structure/cable/yellow{
@@ -17129,9 +16735,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_central)
 "aQt" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -17189,9 +16793,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "aQB" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -17207,9 +16809,7 @@
 	dir = 4;
 	pixel_y = 8
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aQD" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -17421,17 +17021,13 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/corridor_central)
 "aRg" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "aRh" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -17565,9 +17161,7 @@
 /area/abyssal/interior/dormitory)
 "aRw" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aRx" = (
 /obj/structure/bed/chair/wood/normal{
@@ -17584,9 +17178,7 @@
 /area/abyssal/interior/dormitory)
 "aRz" = (
 /obj/item/shard,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_east)
 "aRA" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -17696,9 +17288,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "aRP" = (
 /obj/structure/closet/crate,
@@ -18165,9 +17755,7 @@
 /area/abyssal/interior/landing_zone)
 "aSM" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/corridor_central)
 "aSN" = (
 /obj/item/trash/cigbutt,
@@ -18207,9 +17795,7 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "aST" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -18229,15 +17815,11 @@
 "aSV" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_central)
 "aSW" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_central)
 "aSX" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -18263,9 +17845,7 @@
 	pixel_y = 6;
 	pixel_x = 2
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "aSZ" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -18293,16 +17873,12 @@
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt1/west,
 /area/abyssal/interior/corridor_west)
 "aTc" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/arrivals)
 "aTd" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -18395,9 +17971,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt1/north,
 /area/abyssal/interior/corridor_west)
 "aTn" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -18417,9 +17991,7 @@
 /area/abyssal/interior/corridor_central)
 "aTp" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/corridor_central)
 "aTq" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -18655,9 +18227,7 @@
 /area/abyssal/interior/corridor_east)
 "aTT" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_central)
 "aTU" = (
 /obj/structure/lattice,
@@ -18669,9 +18239,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "aTW" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -18756,9 +18324,7 @@
 "aUi" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_central)
 "aUj" = (
 /obj/structure/disposalpipe/segment,
@@ -18929,17 +18495,13 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_central)
 "aUE" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "aUF" = (
 /obj/structure/disposalpipe/segment,
@@ -19018,9 +18580,7 @@
 /area/abyssal/interior/security)
 "aUO" = (
 /obj/structure/flora/pottedplant,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aUP" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -19193,9 +18753,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "aVi" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -19317,9 +18875,7 @@
 	dir = 2;
 	icon_state = "pipe-j2"
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "aVx" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -19333,9 +18889,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "aVy" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -19417,9 +18971,7 @@
 "aVI" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/vents/scrubber,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_central)
 "aVJ" = (
 /obj/structure/disposalpipe/segment,
@@ -19427,9 +18979,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "aVK" = (
 /obj/structure/pipes/standard/simple/visible,
@@ -19464,9 +19014,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt1/east,
 /area/abyssal/interior/corridor_central)
 "aVP" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -19506,17 +19054,13 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "aVV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_central)
 "aVW" = (
 /obj/structure/prop/misc/lit_cable,
@@ -19781,9 +19325,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "aWA" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -19950,9 +19492,7 @@
 /area/abyssal/interior/maintenance/east)
 "aWQ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "aWR" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -20094,9 +19634,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 1
 	},
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt1/north,
 /area/abyssal/interior/corridor_west)
 "aXi" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -20126,9 +19664,7 @@
 "aXl" = (
 /obj/structure/pipes/vents/scrubber,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/corridor_west)
 "aXm" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -20158,9 +19694,7 @@
 /area/abyssal/interior/maintenance/north)
 "aXq" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aXr" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -20330,18 +19864,14 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "aXK" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_central)
 "aXL" = (
 /obj/structure/machinery/portable_atmospherics/canister/oxygen,
@@ -20353,16 +19883,12 @@
 	},
 /obj/structure/closet/emcloset,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_central)
 "aXN" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "aXO" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -20411,9 +19937,7 @@
 "aXV" = (
 /obj/structure/prop/misc/lit_cable,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aXZ" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -20471,9 +19995,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/corridor_east)
 "aYw" = (
 /turf/open/floor/darkbluecorners2/north,
@@ -20555,9 +20077,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/disposal,
-/turf/open/floor/station/metal/floor{
-	dir = 6
-	},
+/turf/open/floor/station/metal/floor/southeast,
 /area/abyssal/interior/corridor_west)
 "aZh" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -20580,9 +20100,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt1/west,
 /area/abyssal/interior/corridor_west)
 "aZm" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt/goo/goo_alt,
@@ -20612,9 +20130,7 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt1/west,
 /area/abyssal/interior/corridor_west)
 "aZu" = (
 /obj/effect/decal/warning_stripes{
@@ -20635,9 +20151,7 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aZw" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
@@ -20719,9 +20233,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "baa" = (
 /turf/open/floor/prison/red/west,
@@ -20819,9 +20331,7 @@
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "bao" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -22268,9 +21778,7 @@
 /area/abyssal/interior/maintenance/east)
 "beb" = (
 /obj/item/stack/rods,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_east)
 "bec" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -22482,17 +21990,13 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_east)
 "beI" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_east)
 "beJ" = (
 /obj/structure/disposalpipe/segment{
@@ -22518,9 +22022,7 @@
 "beM" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/corridor_east)
 "beN" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -22570,9 +22072,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 10
-	},
+/turf/open/floor/station/metal/floor/southwest,
 /area/abyssal/interior/corridor_east)
 "beT" = (
 /obj/structure/disposalpipe/segment{
@@ -22636,9 +22136,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/corridor_east)
 "bfa" = (
 /obj/structure/disposalpipe/segment{
@@ -22648,18 +22146,14 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_east)
 "bfb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/corridor_east)
 "bfd" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -22689,9 +22183,7 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/corridor_east)
 "bfi" = (
 /obj/structure/disposalpipe/segment{
@@ -22711,15 +22203,11 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/corridor_east)
 "bfk" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/corridor_east)
 "bfl" = (
 /turf/open/floor/darkbrown2/west,
@@ -22761,9 +22249,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_east)
 "bfs" = (
 /obj/structure/disposalpipe/segment,
@@ -22777,17 +22263,13 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_east)
 "bfu" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/corridor_east)
 "bfv" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -22842,9 +22324,7 @@
 "bfy" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_east)
 "bfz" = (
 /obj/structure/disposalpipe/segment{
@@ -22858,9 +22338,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_east)
 "bfB" = (
 /obj/structure/sign/safety/rad_shield{
@@ -22871,9 +22349,7 @@
 "bfC" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/corridor_east)
 "bfE" = (
 /obj/effect/decal/warning_stripes{
@@ -22961,9 +22437,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_east)
 "bfO" = (
 /obj/structure/sign/safety/maint{
@@ -23137,25 +22611,19 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/corridor_central)
 "bga" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/corridor_central)
 "bgb" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/corridor_east)
 "bgc" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -23296,9 +22764,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 6
-	},
+/turf/open/floor/station/metal/floor/southeast,
 /area/abyssal/interior/corridor_central)
 "bgq" = (
 /obj/effect/decal/warning_stripes{
@@ -23315,34 +22781,26 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/corridor_east)
 "bgs" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/corridor_east)
 "bgt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_east)
 "bgu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/corridor_east)
 "bgv" = (
 /obj/effect/decal/warning_stripes{
@@ -23462,9 +22920,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 5
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "bgG" = (
 /obj/structure/disposalpipe/segment{
@@ -23482,9 +22938,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_central)
 "bgI" = (
 /obj/structure/disposalpipe/segment{
@@ -23644,17 +23098,13 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "bgV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "bgW" = (
 /obj/structure/disposalpipe/segment{
@@ -23664,9 +23114,7 @@
 	dir = 5
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "bgX" = (
 /obj/structure/disposalpipe/segment{
@@ -23675,9 +23123,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "bgY" = (
 /obj/structure/disposalpipe/segment{
@@ -23817,9 +23263,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "bhl" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -23980,9 +23424,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/corridor_west)
 "bhy" = (
 /obj/structure/disposalpipe/segment{
@@ -23991,9 +23433,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "bhz" = (
 /obj/structure/disposalpipe/segment{
@@ -24002,16 +23442,12 @@
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "bhA" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "bhB" = (
 /obj/structure/disposalpipe/segment,
@@ -24032,9 +23468,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_central)
 "bhE" = (
 /obj/structure/pipes/vents/pump/siphon/on{
@@ -24043,9 +23477,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "bhF" = (
 /obj/structure/cable/yellow{
@@ -24108,9 +23540,7 @@
 	icon_state = "trash_8"
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "bKE" = (
 /obj/structure/machinery/light/double/blue{
@@ -24148,9 +23578,7 @@
 "bUG" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "bVc" = (
 /obj/item/stack/sandbags_empty/half,
@@ -24159,9 +23587,7 @@
 "ceG" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "coi" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -24203,9 +23629,7 @@
 /obj/structure/sign/poster/conam{
 	pixel_y = 32
 	},
-/turf/open/floor/station/metal/floor/alt1{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/alt1/north,
 /area/abyssal/interior/corridor_central)
 "cJx" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -24278,9 +23702,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "dVs" = (
 /obj/structure/pipes/vents/pump,
@@ -24328,9 +23750,7 @@
 /obj/effect/spawner/random/toolbox{
 	layer = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "eEK" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -24449,9 +23869,7 @@
 	pixel_y = 12
 	},
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/corridor_west)
 "gep" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical/autoname,
@@ -24494,9 +23912,7 @@
 "gpD" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/closet/firecloset,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "gzH" = (
 /turf/open/floor/greencorner,
@@ -24506,9 +23922,7 @@
 /obj/structure/bed/chair/bolted{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "gFG" = (
 /obj/structure/surface/rack,
@@ -24779,9 +24193,7 @@
 "jRX" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/closet/walllocker/emerglocker/north,
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "jXg" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -24857,9 +24269,7 @@
 /area/abyssal/interior/hydro)
 "kHD" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "kHI" = (
 /obj/item/stack/rods,
@@ -24885,9 +24295,7 @@
 	pixel_y = 30;
 	freerange = 1
 	},
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "lhR" = (
 /obj/structure/machinery/landinglight/ds1{
@@ -25081,9 +24489,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "mTt" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -25120,9 +24526,7 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
-/turf/open/floor/station/metal/floor{
-	dir = 6
-	},
+/turf/open/floor/station/metal/floor/southeast,
 /area/abyssal/interior/corridor_west)
 "nnq" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -25133,9 +24537,7 @@
 	},
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor/alt2{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/alt2/west,
 /area/abyssal/interior/corridor_west)
 "nnw" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -25335,9 +24737,7 @@
 "pzb" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/trash/waffles,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "pBu" = (
 /obj/structure/machinery/optable,
@@ -25892,9 +25292,7 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "vGs" = (
 /obj/effect/decal/warning_stripes{
@@ -25952,9 +25350,7 @@
 "wke" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "wlT" = (
 /obj/structure/filingcabinet{
@@ -26005,9 +25401,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 1
-	},
+/turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "wvP" = (
 /obj/item/stack/rods,
@@ -26030,9 +25424,7 @@
 	dir = 4
 	},
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "wOo" = (
 /obj/structure/machinery/recharge_station,
@@ -26083,9 +25475,7 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "xfl" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -26095,9 +25485,7 @@
 	dir = 2;
 	icon_state = "pipe-y"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 5
-	},
+/turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/corridor_west)
 "xfF" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -26147,9 +25535,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_4"
 	},
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "xxL" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -26196,18 +25582,14 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 4
-	},
+/turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "xYB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/item/trash/cigbutt,
-/turf/open/floor/station/metal/floor{
-	dir = 9
-	},
+/turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/corridor_west)
 "xZn" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -26216,9 +25598,7 @@
 /area/abyssal/interior/landing_zone)
 "yca" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor{
-	dir = 8
-	},
+/turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
 "yhm" = (
 /obj/effect/decal/warning_stripes{

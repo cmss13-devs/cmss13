@@ -21,14 +21,62 @@
 /turf/open/floor/station/metal/floor
 	icon_state = "floor"
 
+/turf/open/floor/station/metal/floor/north
+	dir = NORTH
+
+/turf/open/floor/station/metal/floor/east
+	dir = EAST
+
+/turf/open/floor/station/metal/floor/west
+	dir = WEST
+
+/turf/open/floor/station/metal/floor/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/station/metal/floor/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/station/metal/floor/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/station/metal/floor/northwest
+	dir = NORTHWEST
+
 /turf/open/floor/station/metal/floor/alt1
 	icon_state = "floor_alt"
+
+/turf/open/floor/station/metal/floor/alt1/north
+	dir = NORTH
+
+/turf/open/floor/station/metal/floor/alt1/east
+	dir = EAST
+
+/turf/open/floor/station/metal/floor/alt1/west
+	dir = WEST
 
 /turf/open/floor/station/metal/floor/alt2
 	icon_state = "floor_alt_2"
 
+/turf/open/floor/station/metal/floor/alt2/north
+	dir = NORTH
+
+/turf/open/floor/station/metal/floor/alt2/east
+	dir = EAST
+
+/turf/open/floor/station/metal/floor/alt2/west
+	dir = WEST
+
 /turf/open/floor/station/metal/floor/alt3
 	icon_state = "floor_alt_3"
+
+/turf/open/floor/station/metal/floor/alt3/north
+	dir = NORTH
+
+/turf/open/floor/station/metal/floor/alt3/east
+	dir = EAST
+
+/turf/open/floor/station/metal/floor/alt3/west
+	dir = WEST
 
 /turf/open/floor/station/metal/floor_cyan
 	icon_state = "cyanfloor"

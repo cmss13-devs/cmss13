@@ -580,7 +580,6 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap/proc/on_click(mob/source, atom/A, params)
 	SIGNAL_HANDLER
 	var/list/modifiers = params2list(params)
-	// Only shift click because otherwise this conflicts with clicking on other stuff
 	if(!modifiers[CTRL_CLICK])
 		return
 	// we only care about absolute coords because the map is fixed to 1,1 so no client stuff

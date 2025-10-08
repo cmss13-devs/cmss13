@@ -6,12 +6,8 @@
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/fiorina",
         "/datum/equipment_preset/survivor/doctor/fiorina",
-        "/datum/equipment_preset/survivor/interstellar_human_rights_observer",
         "/datum/equipment_preset/survivor/security/fiorina",
         "/datum/equipment_preset/survivor/colonial_marshal/fiorina",
-        "/datum/equipment_preset/survivor/prisoner",
-        "/datum/equipment_preset/survivor/prisoner",
-        "/datum/equipment_preset/survivor/gangleader",
         "/datum/equipment_preset/survivor/engineer/fiorina",
         "/datum/equipment_preset/survivor/corporate/fiorina",
         "/datum/equipment_preset/survivor/civilian"

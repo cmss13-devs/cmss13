@@ -15707,12 +15707,6 @@
 	},
 /turf/open/floor/darkish,
 /area/abyssal/interior/dormitory)
-"aNM" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
-	},
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/abyssal/interior/command)
 "aNN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -49856,7 +49850,7 @@ acK
 aNK
 acK
 abk
-aNM
+abk
 abk
 adQ
 arT

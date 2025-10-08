@@ -1160,6 +1160,32 @@
 /obj/item/proc/hands_swapped(mob/living/carbon/swapper_of_hands)
 	return
 
-// Formerly in gun_helpers.dm, moved here for more universal use
+// formerly in gun_helpers.dm, moved here for universal usage
 /obj/item/proc/unique_action(mob/user)
 	return
+
+/obj/item/verb/use_unique_action()
+	set category = "Object"
+	set name = "Unique Action"
+	set desc = "Use anything unique your item is capable of."
+	set src = usr.contents
+
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
+		return
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		to_chat(usr, SPAN_WARNING("Not right now."))
+		return
+
+	var/obj/item/held_item = usr.get_active_hand()
+	if(!held_item)
+		to_chat(usr, SPAN_WARNING("You need to be holding something to do that!"))
+		return
+
+	src = held_item
+
+	// For guns, check if we should use the active attachable instead
+	var/obj/item/weapon/gun/gun = src
+	if(isgun(gun) && gun.active_attachable)
+		src = gun.active_attachable
+
+	unique_action(usr)

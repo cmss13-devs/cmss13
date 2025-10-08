@@ -16,3 +16,17 @@
   - qol: adds a little feedback text when you save your character prefs and it's successful
   Sergeys:
   - ui: Added search box to construction UI
+2025-10-06:
+  BKryth:
+  - balance: lowers required neurotoxin plasma to turn shrapnel type of custom explosives
+      from 30 to 10
+  - bugfix: replaces the chemical required to turn shrapnel into hornet shrapnel from
+      sulphuric acid into polytrinic acid due to recipe conflicts
+2025-10-07:
+  Detective-Google:
+  - bugfix: CE's no longer can vend infinite essentials kits.
+  matttheficus:
+  - bugfix: Clicking on paper with a pen now opens it at the same size as reading
+      it.
+  - rscadd: Added [s][/s], [name], [rank], [job], [op], [ship], and [colony] macros.
+  - ui: increased the size of the default paper popup window and makes it a define.

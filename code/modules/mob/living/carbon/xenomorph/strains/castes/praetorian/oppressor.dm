@@ -94,51 +94,43 @@
 	if(!tail_image)
 		tail_image = image('icons/effects/status_effects.dmi', "hooked")
 
-
 	if(!ability_used_once)
 		ability_used_once = TRUE
 
 		if(!targetted_atom || targetted_atom.layer >= FLY_LAYER || !isturf(abduct_user.loc))
 			return
-
 		var/turf/turfs_get = get_line(abduct_user, targetted_atom, FALSE)
-
 		for(var/turf/turfs in turfs_get)
-
 			if(turfs.density)
 				break
-
 			for(var/obj/structure/structure in turfs)
-
 				if(structure.density)
 					break
-
 			telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turfs, windup)
+			turf_list += turfs
 
-			for (var/mob/living/carbon/target in turfs)
+		if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
+			return
 
+		for(var/turf/target_turfs in turf_list)
+			for (var/mob/living/carbon/target in target_turfs)
 				if(target.stat == DEAD)
 					continue
-
 				if(abduct_user.can_not_harm(target))
 					continue
-
 				if(target.mob_size > MOB_SIZE_BIG)
 					continue
-
 				if(!iscarbon(target))
 					continue
 
 				if(HAS_TRAIT(target, TRAIT_NESTED))
 					continue
-
 				targets_added += target
 
-		if(do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
-			for(var/mob/living/target as anything in targets_added)
-				ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-				tail_beam = abduct_user.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 2 SECONDS, 8)
-				target.overlays += tail_image
+		for(var/mob/living/target as anything in targets_added)
+			ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+			tail_beam = abduct_user.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 2 SECONDS, 8)
+			target.overlays += tail_image
 
 		to_chat(abduct_user, SPAN_XENODANGER("We launch our tail towards [targetted_atom]!"))
 		abduct_user.emote("roar")

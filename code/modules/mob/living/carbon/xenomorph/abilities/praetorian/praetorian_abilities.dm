@@ -150,6 +150,7 @@
 	var/affected_count = 0
 	/// Telegraphed turfs
 	var/list/telegraph_atom_list = list()
+	var/list/turf_list = list()
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"

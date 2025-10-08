@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(ipcheck)
 		return
 
 	var/datum/ip_intel/intel = new
-	intel.result = data["is_vpn"]
+	intel.result = data["is_vpn"] || data["is_datacenter"]
 	if(isnull(intel.result))
 		return
 

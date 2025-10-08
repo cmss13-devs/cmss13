@@ -1347,24 +1347,30 @@ SUBSYSTEM_DEF(minimaps)
 
 	COOLDOWN_START(src, update_cooldown, CANVAS_COOLDOWN_TIME)
 	addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), CANVAS_COOLDOWN_TIME)
+	icon_state = "update_cooldown"
 
 	var/mob/user = location
-	if(istype(user) && user.client)
-		playsound_client(user.client, "sound/effects/data-transmission.ogg")
-	icon_state = "update_cooldown"
-	//Forgive me
-	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)
-		var/datum/action/minimap/minimap_action = locate() in player.actions
+	var/flavortext = "USCM"
 
-		if(!minimap_action)
-			continue
+	if(linked_map.minimap_flags & MINIMAP_FLAG_XENO)
+		flavortext = "xenomorph hive"
+		announce_xeno(user)
+	else
+		announce_human(user)
 
-		minimap_action.map?.update()
+	var/atom/source = owner?.parent
+	if(!source)
+		source = user
+	notify_ghosts(header = "Tactical Map", message = "The [flavortext] tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = source)
+	message_admins("[key_name(user)] has updated the <a href='byond://?tacmaps_panel=1'>tactical map</a>.")
+
+/atom/movable/screen/minimap_tool/update/proc/announce_xeno(mob/user)
+	playsound_client(user.client, get_sfx("queen"))
 
 	var/icon/flat_map = getFlatIcon(linked_map, appearance_flags = TRUE)
 	var/icon/flat_drawing = getFlatIcon(drawn_image, appearance_flags = TRUE)
 	if(!flat_map || !flat_drawing)
-		to_chat(usr, SPAN_WARNING("A critical error has occurred!! Contact a coder.")) // tf2heavy: "Oh, this is bad!"
+		to_chat(usr, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
 		return FALSE
 
 	var/list/faction_clients = list()
@@ -1381,7 +1387,6 @@ SUBSYSTEM_DEF(minimaps)
 			if(linked_map.minimap_flags & get_minimap_flag_for_faction(xeno.hivenumber))
 				faction_clients += client
 
-	// This may be unnecessary to do this way if the asset url is always the same as the lookup key
 	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
 	var/flat_drawing_key = icon2html(flat_drawing, faction_clients, keyonly = TRUE)
 	if(!flat_tacmap_key || !flat_drawing_key)
@@ -1392,21 +1397,58 @@ SUBSYSTEM_DEF(minimaps)
 	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
 	var/datum/drawing_data/draw_data = new(flat_drawing_png, user)
 
-	if(linked_map.minimap_flags & MINIMAP_FLAG_USCM)
-		GLOB.uscm_flat_tacmap_data += new_flat
-		GLOB.uscm_drawing_tacmap_data += draw_data
-	else
-		GLOB.xeno_flat_tacmap_data += new_flat
-		GLOB.xeno_drawing_tacmap_data += draw_data
+	GLOB.xeno_flat_tacmap_data += new_flat
+	GLOB.xeno_drawing_tacmap_data += draw_data
+
+	return TRUE
+
+/atom/movable/screen/minimap_tool/update/proc/announce_human(mob/user)
+	playsound_client(user.client, "sound/effects/data-transmission.ogg")
+
+	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)
+		var/datum/action/minimap/minimap_action = locate() in player.actions
+
+		if(!minimap_action)
+			continue
+
+		minimap_action.map?.update()
+
+	var/icon/flat_map = getFlatIcon(linked_map, appearance_flags = TRUE)
+	var/icon/flat_drawing = getFlatIcon(drawn_image, appearance_flags = TRUE)
+	if(!flat_map || !flat_drawing)
+		to_chat(usr, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
+		return FALSE
+
+	var/list/faction_clients = list()
+	for(var/client/client as anything in GLOB.clients)
+		if(!client || !client.mob)
+			continue
+		var/mob/client_mob = client.mob
+		if(linked_map.minimap_flags & get_minimap_flag_for_faction(client_mob.faction))
+			faction_clients += client
+		else if(client_mob.faction == FACTION_NEUTRAL && isobserver(client_mob))
+			faction_clients += client
+		else if(isxeno(client_mob))
+			var/mob/living/carbon/xenomorph/xeno = client_mob
+			if(linked_map.minimap_flags & get_minimap_flag_for_faction(xeno.hivenumber))
+				faction_clients += client
+
+	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
+	var/flat_drawing_key = icon2html(flat_drawing, faction_clients, keyonly = TRUE)
+	if(!flat_tacmap_key || !flat_drawing_key)
+		to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder."))
+		return FALSE
+	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
+	var/flat_drawing_png = SSassets.transport.get_asset_url(flat_drawing_key)
+	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
+	var/datum/drawing_data/draw_data = new(flat_drawing_png, user)
+
+	GLOB.uscm_flat_tacmap_data += new_flat
+	GLOB.uscm_drawing_tacmap_data += draw_data
 
 	for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
 		current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
 
-	var/atom/source = owner?.parent
-	if(!source)
-		source = user
-	notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = source)
-	message_admins("[key_name(user)] has updated the <a href='byond://?tacmaps_panel=1'>tactical map</a>.")
 	return TRUE
 
 /datum/flattened_tacmap

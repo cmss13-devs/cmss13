@@ -183,16 +183,20 @@
 	name = "Abyssal - Science Wing"
 	icon_state = "station4"
 	minimap_color = MINIMAP_AREA_RESEARCH
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
 
 /area/abyssal/interior/command
 	name = "Abyssal - Command Wing"
 	icon_state = "fiorina"
 	minimap_color = MINIMAP_AREA_COMMAND
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/abyssal/interior/liaison
 	name = "Abyssal - Executive Coordinators Office"
 	icon_state = "station4"
 	minimap_color = MINIMAP_AREA_COMMAND
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 //// Exterior Station \\\\
 

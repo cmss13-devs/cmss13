@@ -1022,7 +1022,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/list/freedraw_queue = list()
 	var/list/last_coords
-	/// Width of the lines this is goind to draw
+	/// Width of the lines this is going to draw
 	var/width = 0
 
 /atom/movable/screen/minimap_tool/draw_tool/clicked(location, list/modifiers)

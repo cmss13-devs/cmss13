@@ -21,10 +21,18 @@ GLOBAL_DATUM_INIT(tacmap_viewer, /datum/tacmap_viewer, new)
 		ui.open()
 
 /datum/tacmap_viewer/ui_state(mob/user)
-	return GLOB.observer_state
+	if(isliving(user))
+		return GLOB.conscious_state
+	else
+		return GLOB.observer_state
 
 /datum/tacmap_viewer/ui_data(mob/user)
 	var/list/data = list()
+
+	if(isliving(user))
+		data["can_see_marine_map"] = FALSE
+	else
+		data["can_see_marine_map"] = TRUE
 
 	var/uscm_length = length(GLOB.uscm_drawing_tacmap_data)
 	if(uscm_length == 0)

@@ -406,7 +406,7 @@ SUBSYSTEM_DEF(minimaps)
  * * flags: map flags to fetch from
  */
 /datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, live=TRUE, popup=FALSE, drawing = TRUE)
-	var/hash = "[zlevel]-[flags]-[live]-[popup]"
+	var/hash = "[zlevel]-[flags]-[live]-[popup]-[drawing]"
 	if(hashed_minimaps[hash])
 		return hashed_minimaps[hash]
 	var/atom/movable/screen/minimap/map = new(null, null, zlevel, flags, live, popup, drawing)
@@ -839,6 +839,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/action/minimap/xeno
 	minimap_flags = MINIMAP_FLAG_XENO
 	live = TRUE
+	drawing = FALSE
 
 /datum/action/minimap/xeno/see_humans
 	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP

@@ -95,8 +95,8 @@
 	return ..()
 
 /obj/effect/landmark/event_mob_spawn/attack_ghost(mob/dead/observer/user)
-	if(!spawner.being_spawned)
-		spawner.join_as_mob(user)
+	if(!being_spawned)
+		join_as_mob(user)
 		return TRUE
 
 	to_chat(user, SPAN_WARNING("This event mob is no longer available! Try another."))

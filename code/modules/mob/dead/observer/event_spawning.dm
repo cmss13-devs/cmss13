@@ -96,7 +96,7 @@
 
 /obj/effect/landmark/event_mob_spawn/proc/join_as_mob(mob/dead/observer/observer)
 	being_spawned = TRUE
-	observer.loc = get_turf(src)
+	observer.forceMove(get_turf(src))
 
 	addtimer(CALLBACK(src, PROC_REF(handle_mob_spawn), observer), 1 SECONDS)
 

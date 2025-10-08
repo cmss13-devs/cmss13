@@ -95,6 +95,17 @@
 	return ..()
 
 /obj/effect/landmark/event_mob_spawn/attack_ghost(mob/dead/observer/user)
+	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return FALSE
+
+	if(user.key in GLOB.event_mob_players)
+		to_chat(src, SPAN_WARNING("You have already played as an event mob this round! You cannot respawn!"))
+		return FALSE
+
+	if(!(tgui_alert(user, "Do you wish to spawn as this mob?", "Confirm Spawn", list("Yes","No")) == "Yes"))
+		return FALSE
+
 	if(!being_spawned)
 		join_as_mob(user)
 		return TRUE

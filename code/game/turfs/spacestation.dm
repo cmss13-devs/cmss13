@@ -19,7 +19,6 @@
 //
 
 /turf/open/floor/station/metal/floor
-	icon_state = "floor"
 
 /turf/open/floor/station/metal/floor/north
 	dir = NORTH

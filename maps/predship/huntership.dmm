@@ -11513,14 +11513,14 @@
 	pixel_y = 8;
 	layer = 2.4
 	},
-/obj/item/weapon/shield/riot/yautja/ancient{
-	pixel_x = -3;
-	pixel_y = 3
-	},
 /obj/item/clothing/accessory/limb/skeleton/head/spine{
 	pixel_x = 8;
 	pixel_y = 4;
 	anchored = 1
+	},
+/obj/item/weapon/shield/riot/yautja/ancient/temple{
+	pixel_x = -4;
+	pixel_y = 3
 	},
 /turf/open/floor/predship/hull,
 /area/yautja)

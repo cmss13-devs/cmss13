@@ -273,6 +273,14 @@
 	name = "ancient alien mask"
 	desc = "A beautifully designed metallic face mask, both ornate and functional. This one seems to be old and degraded."
 
+/obj/item/clothing/mask/gas/yautja/hunter/ancient
+	name = "ornate ancient alien mask"
+	desc = "An ornate ancient faceplate of an aged alloy, once worn by a revered hunter. Though tarnished by time, its craftsmanship remains exquisite - a fusion of artistry and deadly function."
+	icon_state = "pred_mask_ancient_redglow"
+	item_state = "helmet"
+	item_state_slots = list(WEAR_FACE = "pred_mask_ancient_redglow")
+	thrall = TRUE
+
 //flavor, not a subtype
 /obj/item/clothing/mask/yautja_flavor
 	name = "alien stone mask"

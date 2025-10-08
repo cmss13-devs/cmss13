@@ -665,8 +665,8 @@
 	return TRUE
 
 /obj/effect/particle_effect/smoke/xeno_weak/transparent
-	alpha = 120
-	color = "#cc3333"
+	alpha = 100
+	color = "#ad5f3f"
 
 /obj/effect/particle_effect/smoke/xeno_weak_fire
 	time_to_live = 16

@@ -61,6 +61,8 @@
 	icon_opened = "ancient_coffin_mumified_deco_open"
 
 /obj/structure/closet/coffin/predator/ancient_stone/mummy/deco/gas
+	name = "ornate ancient stone sarcophagus"
+	desc = "An ornate colossal stone sarcophagus, its surface scarred with the glyphs of the Hunt. Time and tradition have sealed whatever lies within..."
 	var/gas_triggered = FALSE
 	var/radius = 4
 	var/datum/effect_system/smoke_spread/gas_holder

@@ -43,7 +43,7 @@
 	INVOKE_NEXT_TICK(src, TYPE_PROC_REF(/datum/action/innate/message_squad, update_button_icon))
 
 
-GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_XO, JOB_CO, JOB_XO))
+GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_XO, JOB_CO, JOB_XO, JOB_UPP_KPT_OFFICER, JOB_UPP_CO_OFFICER, JOB_UPP_MAY_OFFICER, JOB_UPP_LTKOL_OFFICER))
 
 /datum/action/innate/message_squad/update_button_icon()
 	. = ..()
@@ -122,6 +122,14 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 			override_color = human_owner.assigned_squad.chat_color
 		sound_alert = 'sound/misc/notice2.ogg'
 	else
+		var/command_channel_found = FALSE
+		for(var/obj/item/device/radio/headset/headset_check in owner.contents)
+			for(var/channel in headset_check.channels)
+				if(findtext(channel, "command")) //it works
+					command_channel_found = TRUE
+		if(!command_channel_found)
+			to_chat(owner, SPAN_WARNING("You need to have a radio headset with the command frequency"))
+			return
 		for(var/datum/squad/marine/overwatched_squad in GLOB.RoleAuthority.squads)
 			if(overwatched_squad.overwatch_officer == human_owner)
 				squads_being_overwatched_by_me.Add(overwatched_squad.name)

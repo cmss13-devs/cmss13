@@ -119,7 +119,7 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 		else
 			alert_receivers = human_owner.assigned_squad.marines_list
 			announcement_title = "Squad [human_owner.assigned_squad.name] Announcement"
-			override_color = human_owner.assigned_squad.minimap_color
+			override_color = human_owner.assigned_squad.chat_color
 		sound_alert = 'sound/misc/notice2.ogg'
 	else
 		for(var/datum/squad/marine/overwatched_squad in GLOB.RoleAuthority.squads)
@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 						if(choice == alerted_squad.name)
 							alert_receivers += alerted_squad.marines_list
 							alert_receivers += human_owner
-							override_color = alerted_squad.minimap_color
+							override_color = alerted_squad.chat_color
 			else
 				return
 		sound_alert = 'sound/effects/sos-morse-code.ogg'

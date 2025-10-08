@@ -2,7 +2,8 @@
 	set name = "Send Screen Alert"
 	set category = "Admin.Factions"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_MOD))
+		to_chat(src, "Only moderators may use this command.")
 		return
 	var/icon_choice
 	var/icon_choice_state

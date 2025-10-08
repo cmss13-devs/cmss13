@@ -766,6 +766,7 @@
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.set_species(joe_type)
+	new_human.bubble_icon = "robot"
 	new_human.gender = MALE
 	new_human.flavor_text = ""
 	new_human.h_style = "Bald"
@@ -874,8 +875,12 @@
 	. = ..()
 	new_human.allow_gun_usage = TRUE
 
+/datum/equipment_preset/synth/working_joe/upp/load_race(mob/living/carbon/human/new_human)
+	. = ..()
+	new_human.bubble_icon = "syndibot"
+
 /datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/new_human, randomise)
-	if(src.faction == FACTION_UPP)
+	if(faction == FACTION_UPP)
 		new_human.change_real_name(new_human, "Dzho Automaton №[rand(9)][rand(9)][ascii2text(rand(65, 90))][ascii2text(rand(65, 90))]")
 	else
 		new_human.change_real_name(new_human, "Working Joe #[rand(100)][rand(100)]")
@@ -964,20 +969,24 @@
 	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/infiltrator/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(MALE,FEMALE)
-	var/random_name
-	var/first_name
-	var/last_name
+	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	if(new_human.gender == MALE)
-		first_name = "[pick(GLOB.first_names_male_colonist)]"
-	else
-		first_name ="[pick(GLOB.first_names_female_colonist)]"
 
-	last_name ="[pick(GLOB.last_names_colonist)]"
-	random_name = "[first_name] [last_name]"
-	new_human.change_real_name(new_human, random_name)
+	var/first_name
+	var/last_name
+	switch(new_human.gender)
+		if(FEMALE)
+			first_name = capitalize(pick(GLOB.first_names_female_colonist))
+		if(PLURAL, NEUTER) // Not currently possible
+			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_colonist) : pick(GLOB.first_names_female_colonist))
+		else // MALE
+			first_name = capitalize(pick(GLOB.first_names_male_colonist))
+
+	last_name = capitalize(pick(GLOB.last_names_colonist))
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
+
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
 	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
 	var/hair_color = pick(hair_colors)

@@ -57,9 +57,6 @@
 	if(istype(O,/obj/effect/glowshroom))
 		qdel(O)
 		return
-	if(istype(O,/obj/effect/plantsegment))
-		if(prob(50))
-			qdel(O)
 
 /datum/chem_property/negative/toxic/reaction_mob(mob/living/M, method=TOUCH, volume, potency = 1)
 	if(!iscarbon(M))
@@ -640,5 +637,5 @@
 	. = ..()
 
 	reacting_mob.adjust_fire_stacks(max(reacting_mob.fire_stacks, potency * 30))
-	reacting_mob.IgniteMob(TRUE)
-	to_chat(reacting_mob, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))
+	if(reacting_mob.IgniteMob() == IGNITE_IGNITED)
+		to_chat(reacting_mob, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))

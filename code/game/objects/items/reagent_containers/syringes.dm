@@ -89,68 +89,71 @@
 		syringestab(target, user)
 		return
 
-	var/injection_delay = 2 SECONDS
-	var/injection_time = (injection_delay*user.get_skill_duration_multiplier(SKILL_MEDICAL))
-	var/target_zone = user.zone_selected
-	var/mob/living/carbon/human/mob = target
-	var/obj/limb/injection_limb = mob.get_limb(target_zone)
+	var/injection_time = 2 SECONDS
 	if(user.skills)
 		if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			to_chat(user, SPAN_WARNING("You aren't trained to use syringes..."))
 			return
+		else
+			injection_time = (injection_time*user.get_skill_duration_multiplier(SKILL_MEDICAL))
 
-	switch(mode) //lots of questionable code here, good god, cleaned it up partially but definitely not all of it - nihi
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if(istype(H.wear_suit, /obj/item/clothing/suit))
+			injection_time = 30
+
+	switch(mode) //lots of questionable code here, good god
 
 		if(SYRINGE_DRAW)
+
 			if(reagents.total_volume >= reagents.maximum_volume)
 				to_chat(user, SPAN_DANGER("The syringe is full."))
 				return
 
-			if(mob)//Blood!
-				if(mob)//maybe just add a blood reagent to all mobs. Then you can suck them dry...With hundreds of syringes. Jolly good idea.
+			if(ismob(target))//Blood!
+				if(iscarbon(target))//maybe just add a blood reagent to all mobs. Then you can suck them dry...With hundreds of syringes. Jolly good idea.
 					var/amount = src.reagents.maximum_volume - src.reagents.total_volume
-					if(mob.get_blood_id() && reagents.has_reagent(mob.get_blood_id()))
+					var/mob/living/carbon/T = target
+					if(T.get_blood_id() && reagents.has_reagent(T.get_blood_id()))
 						to_chat(user, SPAN_DANGER("There is already a blood sample in this syringe"))
 						return
 
-					if(mob)
-						if(mob.species.flags & NO_BLOOD)
+					if(ishuman(T))
+						var/mob/living/carbon/human/H = T
+						if(H.species.flags & NO_BLOOD)
 							to_chat(user, SPAN_DANGER("You are unable to locate any blood."))
 							return
 
-						if(injection_limb)
-							var/obj/item/blocker = mob.get_sharp_obj_blocker(injection_limb)
-							if(blocker)
-								injection_delay = 5 SECONDS
-								user.visible_message(SPAN_DANGER("<B>[user] begins looking for a good spot to draw blood from [mob]'s \the [blocker]!</B>"))
-							else
-								user.visible_message(SPAN_DANGER("<B>[user] is trying to draw blood from [mob]!</B>"))
+						if(injection_time != 30) // questionable code but ok
+							user.visible_message(SPAN_DANGER("<B>[user] is trying to draw blood from [target]!</B>"))
+						else
+							user.visible_message(SPAN_DANGER("<B>[user] begins looking for a good spot to draw blood from [target]'s suit!</B>"))
 
-							if(!do_after(user, injection_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, mob, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-								return
+						if(!do_after(user, injection_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+							return
 
-						mob.take_blood(src,amount)
+						T.take_blood(src,amount)
 						on_reagent_change()
 						reagents.handle_reactions()
-						user.visible_message(SPAN_WARNING("[user] takes a blood sample from [mob]."),
-						SPAN_NOTICE("You take a blood sample from [mob]."), null, 4)
+						user.visible_message(SPAN_WARNING("[user] takes a blood sample from [target]."),
+						SPAN_NOTICE("You take a blood sample from [target]."), null, 4)
 						update_icon()
 						user.update_inv_l_hand()
 						user.update_inv_r_hand()
 
 			else //if not mob
-				if(!mob.reagents.total_volume)
-					to_chat(user, SPAN_DANGER("[mob] is empty."))
+				if(!target.reagents.total_volume)
+					to_chat(user, SPAN_DANGER("[target] is empty."))
 					return
 
-				if(!mob.is_open_container() && !mob.can_be_syringed())
+				if(!target.is_open_container() && !target.can_be_syringed())
 					to_chat(user, SPAN_DANGER("You cannot directly remove reagents from this object."))
 					return
 
-				var/trans = mob.reagents.trans_to(src, amount_per_transfer_from_this) // transfer from, transfer to - who cares?
+				var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this) // transfer from, transfer to - who cares?
 
 				if(!trans)
-					to_chat(user, SPAN_DANGER("You fail to remove reagents from [mob]."))
+					to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
 					return
 
 				to_chat(user, SPAN_NOTICE("You fill the syringe with [trans] units of the solution."))
@@ -164,44 +167,42 @@
 			if(!reagents.total_volume)
 				to_chat(user, SPAN_DANGER("The syringe is empty."))
 				return
-			if(istype(mob, /obj/item/implantcase/chem))
+			if(istype(target, /obj/item/implantcase/chem))
 				return
 
-			if(!mob.is_open_container() && !mob && !mob.can_be_syringed())
+			if(!target.is_open_container() && !ismob(target) && !target.can_be_syringed())
 				to_chat(user, SPAN_DANGER("You cannot directly fill this object."))
 				return
-			if(mob.reagents.total_volume >= mob.reagents.maximum_volume) // i dont know what the fuck this line is for but ok
-				to_chat(user, SPAN_DANGER("[mob] is full."))
+			if(target.reagents.total_volume >= target.reagents.maximum_volume)
+				to_chat(user, SPAN_DANGER("[target] is full."))
 				return
 
-			if(mob)
-				if(!mob)
+			if(ismob(target))
+				var/mob/living/M = target
+				if(!istype(M))
 					return
-				if(!mob.can_inject(user, TRUE))
+				if(!M.can_inject(user, TRUE))
 					return
-				if(mob != user)
+				if(target != user)
 
-					if(injection_limb)
-						var/obj/item/blocker = mob.get_sharp_obj_blocker(injection_limb)
-						if(blocker)
-							injection_delay = 5 SECONDS
-							user.visible_message(SPAN_DANGER("<B>[user] begins looking for a good spot to inject something into [mob]'s \the [blocker]!</B>"))
-						else
-							user.visible_message(SPAN_DANGER("<B>[user] is trying to inject something into [mob]!</B>"))
+					if(injection_time != 30) // questionable code but ok
+						user.visible_message(SPAN_DANGER("<B>[user] is trying to inject [target]!</B>"))
+					else
+						user.visible_message(SPAN_DANGER("<B>[user] begins looking for a good spot to inject [target] suit!</B>"))
 
-						if(!do_after(user, injection_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, mob, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-							return
+					if(!do_after(user, injection_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+						return
 
-					user.visible_message(SPAN_DANGER("[user] injects [mob] with the syringe!"))
+					user.visible_message(SPAN_DANGER("[user] injects [target] with the syringe!"))
 
 					var/list/injected = list()
 					for(var/datum/reagent/R in src.reagents.reagent_list)
 						injected += R.name
 						R.last_source_mob = WEAKREF(user)
 					var/contained = english_list(injected)
-					mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
-					user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(mob)]. Reagents: [contained]</font>")
-					msg_admin_attack("[key_name(user)] injected [key_name(mob)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+					M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
+					user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(M)]. Reagents: [contained]</font>")
+					msg_admin_attack("[key_name(user)] injected [key_name(M)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 				reagents.reaction(target, INJECTION)
 
@@ -262,7 +263,7 @@
 
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		var/target_zone = rand_zone(check_zone(user.zone_selected, target)) // why
+		var/target_zone = rand_zone(check_zone(user.zone_selected, target))
 		var/obj/limb/affecting = H.get_limb(target_zone)
 
 		if (!affecting)
@@ -275,7 +276,7 @@
 		if((user != target) && H.check_shields(7, "the [src.name]"))
 			return
 
-		if (target != user && target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50)) // it will probably be more intuitive to use get_sharp_obj_blocker here but whatever
+		if (target != user && target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50))
 			for(var/mob/O in viewers(GLOB.world_view_size, user))
 				O.show_message(text(SPAN_DANGER("<B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B>")), SHOW_MESSAGE_VISIBLE)
 			user.temp_drop_inv_item(src)
@@ -303,7 +304,7 @@
 	src.update_icon()
 
 
-/obj/item/reagent_container/ld50_syringe // make this a subtype
+/obj/item/reagent_container/ld50_syringe
 	name = "Lethal Injection Syringe"
 	desc = "A syringe used for lethal injections."
 	icon = 'icons/obj/items/syringe.dmi'

@@ -6529,6 +6529,10 @@
 /obj/item/frame/table/almayer,
 /turf/open/floor/engine,
 /area/abyssal/interior/command)
+"arK" = (
+/obj/structure/tunnel/maint_tunnel,
+/turf/open/floor/station/metal/floor/west,
+/area/abyssal/interior/corridor_central)
 "arL" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/pipes/standard/manifold/hidden/cyan,
@@ -12246,6 +12250,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
+/obj/structure/tunnel/maint_tunnel,
 /turf/open/floor/station/metal/floor/northwest,
 /area/abyssal/interior/corridor_east)
 "aFd" = (
@@ -16641,7 +16646,7 @@
 	layer = 2.9;
 	pixel_y = 32
 	},
-/obj/effect/landmark/objective_landmark/far,
+/obj/structure/tunnel/maint_tunnel,
 /turf/open/floor/green/northeast,
 /area/abyssal/interior/medical)
 "aPK" = (
@@ -18696,6 +18701,9 @@
 "aUG" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/disposalpipe/segment,
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
 /turf/open/floor/darkred2/west,
 /area/abyssal/interior/security)
 "aUH" = (
@@ -24995,6 +25003,24 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_west)
+"bjg" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/turf/open/floor/darkred2/east,
+/area/abyssal/interior/security)
+"bjh" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/abyssal/interior/security)
 "bqz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -26339,6 +26365,7 @@
 	pixel_x = 1;
 	layer = 2.96
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/carpet/carpet_colorable/twe_red,
 /area/abyssal/interior/medical)
 "qSz" = (
@@ -40406,7 +40433,7 @@ aUi
 aTT
 bcC
 ahc
-ahc
+arK
 agK
 ahh
 aSQ
@@ -41154,7 +41181,7 @@ aXd
 ahB
 ahB
 aWo
-akh
+bjh
 akh
 aVL
 aVC
@@ -42379,7 +42406,7 @@ aVf
 aUQ
 ahB
 aUx
-aTx
+bjg
 aTP
 aTx
 aTa

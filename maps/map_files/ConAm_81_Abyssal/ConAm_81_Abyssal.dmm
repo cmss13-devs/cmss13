@@ -9,7 +9,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/abyssal/interior/landing_zone)
 "aad" = (
-/obj/structure/lattice,
+/obj/effect/decal/hybrisa/lattice,
 /obj/structure/grille,
 /turf/open/space/basic,
 /area/abyssal/oob)
@@ -459,7 +459,7 @@
 /area/abyssal/interior/liaison)
 "abu" = (
 /obj/structure/blocker/invisible_wall,
-/obj/structure/lattice,
+/obj/effect/decal/hybrisa/lattice,
 /turf/open/space/basic,
 /area/abyssal/oob)
 "abv" = (
@@ -1115,7 +1115,7 @@
 /turf/closed/wall/prison,
 /area/abyssal/interior/galley)
 "adp" = (
-/obj/structure/lattice,
+/obj/effect/decal/hybrisa/lattice,
 /obj/structure/blocker/invisible_wall,
 /turf/open/space/basic,
 /area/abyssal/oob)
@@ -3077,9 +3077,7 @@
 	icon_state = "W";
 	pixel_y = 1
 	},
-/turf/open/floor/hybrisa/engineership/pillars/north/pillar4{
-	layer = 3
-	},
+/turf/open/floor/hybrisa/engineership/pillars/north/pillar4,
 /area/abyssal/interior/derelict_shuttle)
 "ajb" = (
 /obj/structure/window/framed/prison/reinforced/hull,
@@ -3206,9 +3204,7 @@
 	pixel_y = -61;
 	pixel_x = -37
 	},
-/turf/open/floor/hybrisa/engineership/pillars/north/pillar4{
-	layer = 3
-	},
+/turf/open/floor/hybrisa/engineership/pillars/north/pillar4,
 /area/abyssal/interior/derelict_shuttle)
 "ajy" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -3846,7 +3842,7 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/northeast,
 /area/abyssal/interior/maintenance/north)
 "alu" = (
-/obj/structure/lattice,
+/obj/effect/decal/hybrisa/lattice,
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/abyssal/interior/maintenance/north)
 "alv" = (
@@ -3971,7 +3967,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "alN" = (
-/obj/structure/lattice,
+/obj/effect/decal/hybrisa/lattice,
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/abyssal/interior/landing_zone)
 "alO" = (
@@ -4091,9 +4087,7 @@
 	icon_state = "W";
 	pixel_y = 1
 	},
-/turf/open/floor/hybrisa/engineership/pillars/north/pillar4{
-	layer = 3
-	},
+/turf/open/floor/hybrisa/engineership/pillars/north/pillar4,
 /area/abyssal/interior/derelict_shuttle)
 "ami" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -4300,9 +4294,7 @@
 	dir = 1;
 	layer = 4
 	},
-/turf/open/floor/hybrisa/engineership/pillars/north/pillar4{
-	layer = 3
-	},
+/turf/open/floor/hybrisa/engineership/pillars/north/pillar4,
 /area/abyssal/interior/derelict_shuttle)
 "amG" = (
 /obj/effect/hybrisa/misc/fake/wire/yellow{
@@ -5080,7 +5072,7 @@
 /area/abyssal/interior/arrivals)
 "aoD" = (
 /obj/structure/grille,
-/obj/structure/lattice,
+/obj/effect/decal/hybrisa/lattice,
 /turf/open/space/basic,
 /area/abyssal/oob)
 "aoE" = (
@@ -7460,7 +7452,7 @@
 /area/abyssal/interior/arrivals)
 "atV" = (
 /obj/structure/blocker/invisible_wall,
-/obj/structure/lattice,
+/obj/effect/decal/hybrisa/lattice,
 /obj/structure/grille,
 /turf/open/space/basic,
 /area/abyssal/oob)
@@ -16296,7 +16288,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/north)
 "aPi" = (
-/obj/structure/lattice,
+/obj/effect/decal/hybrisa/lattice,
 /turf/open/space/basic,
 /area/abyssal/oob)
 "aPj" = (
@@ -18230,7 +18222,7 @@
 /turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_central)
 "aTU" = (
-/obj/structure/lattice,
+/obj/effect/decal/hybrisa/lattice,
 /obj/structure/grille,
 /obj/structure/blocker/invisible_wall,
 /turf/open/space/basic,

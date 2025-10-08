@@ -80,6 +80,7 @@
 
 /datum/action/xeno_action/activable/prae_abduct/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/abduct_user = owner
+	var/blocked = FALSE
 	throw_turf = targetted_atom
 
 	if(!action_cooldown_check() || abduct_user.action_busy)
@@ -101,11 +102,22 @@
 			return
 		var/turf/turfs_get = get_line(abduct_user, targetted_atom, FALSE)
 		for(var/turf/turfs in turfs_get)
+
 			if(turfs.density)
 				break
+
 			for(var/obj/structure/structure in turfs)
 				if(structure.density)
+					blocked = TRUE
 					break
+
+				if(istype(structure, /obj/structure/barricade))
+					blocked = TRUE
+					break
+
+			if(blocked)
+				break
+
 			telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turfs, windup)
 			turf_list += turfs
 

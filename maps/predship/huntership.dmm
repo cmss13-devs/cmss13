@@ -10889,10 +10889,9 @@
 /turf/open/floor/corsat/squares,
 /area/yautja/hangar)
 "Li" = (
-/obj/structure/machinery/door/airlock/yautja/secure/elder{
-	name = "\improper Houndmasters Quarters";
-	dir = 1;
-	req_one_access = list(391,392,393)
+/obj/structure/machinery/door/airlock/yautja/secure{
+	dir = 3;
+	name = "\improper Houndmasters Quarters"
 	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja/lower_deck)

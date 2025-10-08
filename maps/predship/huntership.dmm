@@ -83,12 +83,6 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
-"ai" = (
-/obj/structure/bed/bedroll{
-	color = "#6b675e"
-	},
-/turf/closed/wall/huntership,
-/area/yautja/lower_deck)
 "aj" = (
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 1
@@ -27143,7 +27137,7 @@ hk
 iz
 LN
 mU
-ai
+rP
 nK
 QX
 yg

@@ -1350,18 +1350,12 @@ SUBSYSTEM_DEF(minimaps)
 	icon_state = "update_cooldown"
 
 	var/mob/user = location
-	var/flavortext = "USCM"
 
 	if(linked_map.minimap_flags & MINIMAP_FLAG_XENO)
-		flavortext = "xenomorph hive"
 		announce_xeno(user)
 	else
 		announce_human(user)
 
-	var/atom/source = owner?.parent
-	if(!source)
-		source = user
-	notify_ghosts(header = "Tactical Map", message = "The [flavortext] tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = source)
 	message_admins("[key_name(user)] has updated the <a href='byond://?tacmaps_panel=1'>tactical map</a>.")
 
 /atom/movable/screen/minimap_tool/update/proc/announce_xeno(mob/user)
@@ -1400,6 +1394,9 @@ SUBSYSTEM_DEF(minimaps)
 	GLOB.xeno_flat_tacmap_data += new_flat
 	GLOB.xeno_drawing_tacmap_data += draw_data
 
+	xeno_maptext("The Queen has updated our hive mind map", "We sense something unusual...", faction)
+	var/mutable_appearance/appearance = mutable_appearance(icon('icons/mob/hud/actions_xeno.dmi'), "toggle_queen_zoom")
+	notify_ghosts(header = "Tactical Map", message = "The Xenomorph tactical map has been updated.", ghost_sound = "sound/voice/alien_distantroar_3.ogg", notify_volume = 50, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = user, alert_overlay = appearance)
 	return TRUE
 
 /atom/movable/screen/minimap_tool/update/proc/announce_human(mob/user)
@@ -1449,6 +1446,10 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
 		current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
 
+	var/atom/source = owner?.parent
+	if(!source)
+		source = user
+	notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = source)
 	return TRUE
 
 /datum/flattened_tacmap

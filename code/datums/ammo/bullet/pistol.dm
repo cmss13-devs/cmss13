@@ -120,7 +120,7 @@
 
 /datum/ammo/bullet/pistol/heavy/highimpact
 	name = "high-impact pistol bullet"
-	debilitate = list(0,0.2,0,0,0,1,0,0)
+	debilitate = list(0,1,0,0,0,1,0,0)
 
 /datum/ammo/bullet/pistol/heavy/highimpact/ap
 	name = "high-impact armor-piercing pistol bullet"

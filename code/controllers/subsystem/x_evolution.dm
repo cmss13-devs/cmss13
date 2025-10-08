@@ -37,13 +37,10 @@ SUBSYSTEM_DEF(xevolution)
 			HS.hive_ui.update_burrowed_larva()
 			continue
 
-		var/boost_power_new
-		// Minimum of 5 evo until 10 minutes have passed.
-		if((world.time - SSticker.round_start_time) < XENO_ROUNDSTART_PROGRESS_TIME_2)
-			boost_power_new = max(boost_power_new, XENO_ROUNDSTART_PROGRESS_AMOUNT)
+		var/boost_power_new = 1
+		if(ROUND_TIME < XENO_ROUNDSTART_BOOSTED_EVO_TIME)
+			boost_power_new = XENO_ROUNDSTART_BOOSTED_EVO_AMOUNT
 		else
-			boost_power_new = 1
-
 			//Add on any bonuses from thie hivecore after applying upgrade progress
 			boost_power_new += (0.5 * HS.has_special_structure(XENO_STRUCTURE_CORE))
 

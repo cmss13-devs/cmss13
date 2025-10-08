@@ -1,0 +1,32 @@
+2025-10-02:
+  FishyFlaps2024:
+  - qol: Added purple-crt style sheet and imported it with other crt color style sheets
+  - qol: Added purple as OW console color option
+  Red-byte3D:
+  - bugfix: Specialists now properly get updated on the manifest
+  - balance: Pred hunting traps now require TRAIT_YAUTJA_TECH
+  Teragen:
+  - rscadd: Marine Command Helmet variant with Basic Med Optic
+  - rscadd: Gave Chief Engineer actual armored insulated gloves in their deploy kit.
+  - qol: Removed the two extra boots the Chief Engineer got
+  - qol: Gave the basic Command variant to RO and CE
+  - balance: Gave Chief Engineer a level in vehicles
+2025-10-03:
+  PoltavskaPraca:
+  - qol: adds a little feedback text when you save your character prefs and it's successful
+  Sergeys:
+  - ui: Added search box to construction UI
+2025-10-06:
+  BKryth:
+  - balance: lowers required neurotoxin plasma to turn shrapnel type of custom explosives
+      from 30 to 10
+  - bugfix: replaces the chemical required to turn shrapnel into hornet shrapnel from
+      sulphuric acid into polytrinic acid due to recipe conflicts
+2025-10-07:
+  Detective-Google:
+  - bugfix: CE's no longer can vend infinite essentials kits.
+  matttheficus:
+  - bugfix: Clicking on paper with a pen now opens it at the same size as reading
+      it.
+  - rscadd: Added [s][/s], [name], [rank], [job], [op], [ship], and [colony] macros.
+  - ui: increased the size of the default paper popup window and makes it a define.

@@ -197,6 +197,10 @@
 /obj/item/weapon/gun/pistol/m1911/custom/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 20, "rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 15, "stock_x" = 21, "stock_y" = 17)
 
+/obj/item/weapon/gun/pistol/m1911/custom/unique_action(mob/user)
+	if(fire_into_air(user))
+		return ..()
+
 //-------------------------------------------------------
 //Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.
 

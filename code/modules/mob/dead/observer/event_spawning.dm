@@ -94,6 +94,14 @@
 	GLOB.event_mob_landmarks_delayed -= src
 	return ..()
 
+/obj/effect/landmark/event_mob_spawn/attack_ghost(mob/dead/observer/user)
+	if(!spawner.being_spawned)
+		spawner.join_as_mob(user)
+		return TRUE
+
+	to_chat(user, SPAN_WARNING("This event mob is no longer available! Try another."))
+	return FALSE
+
 /obj/effect/landmark/event_mob_spawn/proc/join_as_mob(mob/dead/observer/observer)
 	being_spawned = TRUE
 	observer.forceMove(get_turf(src))

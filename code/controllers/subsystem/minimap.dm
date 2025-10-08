@@ -840,6 +840,14 @@ SUBSYSTEM_DEF(minimaps)
 	live = TRUE
 	drawing = FALSE
 
+/datum/action/minimap/xeno/New(target, new_minimap_flags, new_marker_flags, hive_number)
+	var/minimap_flag = get_minimap_flag_for_faction(hive_number)
+	if(minimap_flag != MINIMAP_FLAG_XENO)
+		minimap_flags &= ~MINIMAP_FLAG_XENO
+		minimap_flags |= minimap_flag
+
+	. = ..()
+
 /datum/action/minimap/xeno/see_humans
 	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP
 
@@ -1394,7 +1402,7 @@ SUBSYSTEM_DEF(minimaps)
 	GLOB.xeno_flat_tacmap_data += new_flat
 	GLOB.xeno_drawing_tacmap_data += draw_data
 
-	xeno_maptext("The Queen has updated our hive mind map", "We sense something unusual...", faction)
+	xeno_maptext("The Queen has updated our hive mind map", "We sense something unusual...", XENO_HIVE_NORMAL)
 	var/mutable_appearance/appearance = mutable_appearance(icon('icons/mob/hud/actions_xeno.dmi'), "toggle_queen_zoom")
 	notify_ghosts(header = "Tactical Map", message = "The Xenomorph tactical map has been updated.", ghost_sound = "sound/voice/alien_distantroar_3.ogg", notify_volume = 50, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = user, alert_overlay = appearance)
 	return TRUE

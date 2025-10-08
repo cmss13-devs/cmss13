@@ -454,7 +454,7 @@
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 	AddComponent(/datum/component/seethrough_mob)
-	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=MINIMAP_FLAG_XENO, has_update=TRUE, drawing=TRUE)
+	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=hive.hivenumber, has_update=TRUE, drawing=TRUE)
 	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))
 
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)

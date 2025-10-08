@@ -1035,7 +1035,7 @@ SUBSYSTEM_DEF(minimaps)
 		linked_map.active_draw_tool = null
 		return
 
-	winset(usr, "drawingtools", "parent=default;name=SHIFT+B+REP;command=\".mouse-draw \[\[mapwindow.map.mouse-pos.x]] \[\[mapwindow.map.mouse-pos.y]] \[\[mapwindow.map.size.x]] \[\[mapwindow.map.size.y]] \[\[mapwindow.map.view-size.x]] \[\[mapwindow.map.view-size.y]]\"")
+	winset(usr, "drawingtools", "parent=default;name=MouseDragMove;command=\".mouse-draw \[\[mapwindow.map.mouse-pos.x]] \[\[mapwindow.map.mouse-pos.y]] \[\[mapwindow.map.size.x]] \[\[mapwindow.map.size.y]] \[\[mapwindow.map.view-size.x]] \[\[mapwindow.map.view-size.y]]\"")
 	add_verb(usr.client, /client/proc/handle_draw)
 	linked_map.active_draw_tool = src
 	usr.client.active_draw_tool = src
@@ -1105,7 +1105,10 @@ SUBSYSTEM_DEF(minimaps)
 		var/px = vector.x + plane_master.cur_x_shift
 		var/py = vector.y + plane_master.cur_y_shift
 
-		draw_line(last_coords, list(px, py), slate)
+		if(width)
+			draw_line_width(last_coords, list(px, py), slate, width)
+		else
+			draw_line(last_coords, list(px, py), slate)
 		last_coords = list(px, py)
 
 	addtimer(VARSET_CALLBACK(src, last_coords, null), 2, TIMER_UNIQUE|TIMER_OVERRIDE)
@@ -1132,29 +1135,7 @@ SUBSYSTEM_DEF(minimaps)
 		drawn_image.icon = mona_lisa
 		return COMSIG_MOB_CLICK_CANCELED
 	starting_coords = pixel_coords
-	RegisterSignal(source, COMSIG_MOB_MOUSEUP, PROC_REF(on_mouseup))
 	return COMSIG_MOB_CLICK_CANCELED
-
-///Called when the mouse is released again to finish the drag-draw
-/atom/movable/screen/minimap_tool/draw_tool/proc/on_mouseup(mob/living/source, atom/object, location, control, params)
-	SIGNAL_HANDLER
-	UnregisterSignal(source, COMSIG_MOB_MOUSEUP)
-	var/list/modifiers = params2list(params)
-	var/list/end_coords = params2screenpixel(modifiers["screen-loc"])
-	var/icon/slate = icon(drawn_image.icon)
-
-	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
-
-	if(!plane_master)
-		return
-
-	end_coords = list(end_coords[1] + plane_master.cur_x_shift, end_coords[2] + plane_master.cur_y_shift)
-	if(width)
-		draw_line_width(starting_coords, end_coords, slate, width)
-	else
-		draw_line(starting_coords, end_coords, slate)
-	drawn_image.icon = slate
-	last_drawn = list(starting_coords, end_coords)
 
 /atom/movable/screen/minimap_tool/draw_tool/proc/draw_line_width(list/start_coords, list/end_coords, icon/slate, width, draw_color = color)
 	var/half_width = floor(width / 2)
@@ -1264,7 +1245,7 @@ SUBSYSTEM_DEF(minimaps)
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_erase.dmi'
 	screen_loc = "15,10"
 	color = null
-	width = 3
+	width = 5
 
 /atom/movable/screen/minimap_tool/label
 	icon_state = "label"

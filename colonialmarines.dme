@@ -1493,6 +1493,7 @@
 #include "code\game\objects\structures\stool_bed_chair_nest\wheelchair.dm"
 #include "code\game\objects\structures\stool_bed_chair_nest\xeno_nest.dm"
 #include "code\game\sim_manager\datums\simulator.dm"
+#include "code\game\turfs\abyssal.dm"
 #include "code\game\turfs\auto_turf.dm"
 #include "code\game\turfs\baseturf_skipover.dm"
 #include "code\game\turfs\closed.dm"

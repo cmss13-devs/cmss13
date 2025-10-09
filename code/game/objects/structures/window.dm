@@ -1326,3 +1326,121 @@
 	basestate = "prison_cellwindow"
 	desc = "A glass window with a special rod matrix inside a wall frame."
 	health = 100
+
+// Abyssal Windows \\
+
+// Standard
+
+/obj/structure/window/framed/abyssal/standard
+	name = "window"
+	icon = 'icons/turf/walls/abyssal_windows_blank.dmi'
+	icon_state = "prison_window0"
+	basestate = "prison_window"
+	desc = "A glass window inside a wall frame."
+	health = 15
+	window_frame = /obj/structure/window_frame/abyssal/standard
+
+/obj/structure/window/framed/abyssal/standard/reinforced
+	name = "reinforced window"
+	icon_state = "prison_rwindow0"
+	basestate = "prison_rwindow"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	health = 100
+	reinf = TRUE
+	window_frame = /obj/structure/window_frame/abyssal/standard/reinforced
+
+/obj/structure/window/framed/abyssal/standard/hull
+	name = "hull window"
+	icon_state = "prison_rwindow0"
+	basestate = "prison_rwindow"
+	desc = "A glass window with a special rod matrix inside a wall frame. This one has an automatic shutter system to prevent any atmospheric breach."
+	health = 200
+	var/triggered = FALSE
+
+/obj/structure/window/framed/abyssal/standard/hull/Destroy(force)
+	if(force)
+		return ..()
+	spawn_shutters()
+	. = ..()
+
+/obj/structure/window/framed/abyssal/standard/hull/proc/spawn_shutters(from_dir = 0)
+	if(triggered)
+		return
+
+	triggered = TRUE
+	for(var/direction in GLOB.cardinals)
+		if(direction == from_dir)
+			continue //doesn't check backwards
+		for(var/obj/structure/window/framed/abyssal/standard/hull/W in get_step(src,direction) )
+			W.spawn_shutters(turn(direction,180))
+	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/pressure_door = new(get_turf(src))
+	switch(junction)
+		if(4,5,8,9,12)
+			pressure_door.setDir(SOUTH)
+		else
+			pressure_door.setDir(EAST)
+	pressure_door.close()
+
+/obj/structure/window/framed/abyssal/standard/cell
+	name = "cell window"
+	icon_state = "prison_cellwindow0"
+	basestate = "prison_cellwindow"
+	desc = "A glass window with a special rod matrix inside a wall frame."
+
+// Blue
+
+/obj/structure/window/framed/abyssal/blue
+	name = "window"
+	icon = 'icons/turf/walls/abyssal_windows_blue.dmi'
+	icon_state = "prison_window0"
+	basestate = "prison_window"
+	desc = "A glass window inside a wall frame."
+	health = 15
+	window_frame = /obj/structure/window_frame/abyssal/blue
+
+/obj/structure/window/framed/abyssal/blue/reinforced
+	name = "reinforced window"
+	icon_state = "prison_rwindow0"
+	basestate = "prison_rwindow"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	health = 100
+	reinf = TRUE
+	window_frame = /obj/structure/window_frame/abyssal/blue/reinforced
+
+/obj/structure/window/framed/abyssal/blue/hull
+	name = "hull window"
+	icon_state = "prison_rwindow0"
+	basestate = "prison_rwindow"
+	desc = "A glass window with a special rod matrix inside a wall frame. This one has an automatic shutter system to prevent any atmospheric breach."
+	health = 200
+	var/triggered = FALSE
+
+/obj/structure/window/framed/abyssal/blue/hull/Destroy(force)
+	if(force)
+		return ..()
+	spawn_shutters()
+	. = ..()
+
+/obj/structure/window/framed/abyssal/blue/hull/proc/spawn_shutters(from_dir = 0)
+	if(triggered)
+		return
+
+	triggered = TRUE
+	for(var/direction in GLOB.cardinals)
+		if(direction == from_dir)
+			continue //doesn't check backwards
+		for(var/obj/structure/window/framed/abyssal/blue/hull/W in get_step(src,direction) )
+			W.spawn_shutters(turn(direction,180))
+	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/pressure_door = new(get_turf(src))
+	switch(junction)
+		if(4,5,8,9,12)
+			pressure_door.setDir(SOUTH)
+		else
+			pressure_door.setDir(EAST)
+	pressure_door.close()
+
+/obj/structure/window/framed/abyssal/blue/cell
+	name = "cell window"
+	icon_state = "prison_cellwindow0"
+	basestate = "prison_cellwindow"
+	desc = "A glass window with a special rod matrix inside a wall frame."

@@ -453,3 +453,24 @@
 	icon_state = "prison_rwindow0_frame"
 	basestate = "prison_rwindow"
 	reinforced = TRUE
+
+// Abyssal Frames
+/obj/structure/window_frame/abyssal/standard
+	icon = 'icons/turf/walls/abyssal_window_frames_blank.dmi'
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+
+/obj/structure/window_frame/abyssal/standard/reinforced
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+	reinforced = TRUE
+
+/obj/structure/window_frame/abyssal/blue
+	icon = 'icons/turf/walls/abyssal_window_frame_blue.dmi'
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+
+/obj/structure/window_frame/abyssal/blue/reinforced
+	icon_state = "prison_rwindow0_frame"
+	basestate = "prison_rwindow"
+	reinforced = TRUE

@@ -1,12 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/blue/unmeltable,
 /area/abyssal/interior/science)
 "aab" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/blue/reinforced,
 /area/abyssal/interior/science)
 "aac" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/landing_zone)
 "aad" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -14,11 +14,11 @@
 /turf/open/space/basic,
 /area/abyssal/oob)
 "aae" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/blue/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/science)
 "aaf" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/landing_zone)
 "aag" = (
@@ -59,14 +59,14 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "aal" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/blue,
 /area/abyssal/interior/maintenance/east)
 "aam" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/darkish,
 /area/abyssal/interior/landing_zone)
 "aan" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/corridor_east)
 "aao" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -88,11 +88,11 @@
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/abyssal/interior/galley)
 "aaq" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/corridor_east)
 "aar" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /obj/structure/pipes/standard/simple/visible/scrubbers,
 /turf/open/floor/engine,
 /area/abyssal/interior/corridor_east)
@@ -133,7 +133,7 @@
 /turf/open/floor/darkpurple2/southwest,
 /area/abyssal/interior/science)
 "aaw" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/blue,
 /area/abyssal/interior/science)
 "aax" = (
 /obj/structure/flora/pottedplant{
@@ -149,7 +149,7 @@
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "aaz" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/landing_zone)
 "aaA" = (
@@ -160,10 +160,10 @@
 /turf/open/floor/darkish,
 /area/abyssal/interior/corridor_east)
 "aaB" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/corridor_east)
 "aaC" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/south)
 "aaD" = (
@@ -184,7 +184,7 @@
 /turf/open/floor/darkpurple2/northwest,
 /area/abyssal/interior/science)
 "aaF" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /obj/structure/pipes/standard/simple/visible/scrubbers,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/south)
@@ -197,7 +197,7 @@
 /turf/open/floor/prison,
 /area/abyssal/interior/command)
 "aaH" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/maintenance/south)
 "aaI" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -234,7 +234,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/south)
 "aaL" = (
-/turf/closed/wall/r_wall/prison/temphull,
+/turf/closed/wall/abyssal/standard/temphull,
 /area/abyssal/interior/landing_zone)
 "aaM" = (
 /obj/structure/machinery/light/blue{
@@ -243,7 +243,7 @@
 /turf/open/floor/darkblue2/east,
 /area/abyssal/interior/command)
 "aaN" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/arrivals)
 "aaO" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
@@ -294,7 +294,7 @@
 /turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_west)
 "aaT" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/arrivals)
 "aaU" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -323,10 +323,10 @@
 /turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/corridor_west)
 "aaX" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/corridor_east)
 "aaY" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/blue/reinforced,
 /area/abyssal/interior/command)
 "aaZ" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
@@ -357,7 +357,7 @@
 /turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/arrivals)
 "abc" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/maintenance/south)
 "abd" = (
 /obj/structure/machinery/light/blue,
@@ -381,7 +381,7 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/west,
 /area/abyssal/interior/engineering)
 "abg" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/blue/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/science)
 "abh" = (
@@ -402,7 +402,7 @@
 /turf/open/floor/darkredcorners2/north,
 /area/abyssal/interior/security)
 "abk" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/blue/unmeltable,
 /area/abyssal/interior/command)
 "abl" = (
 /turf/open/auto_turf/sand/layer1,
@@ -437,7 +437,7 @@
 /turf/open/floor/wood/ship,
 /area/abyssal/interior/liaison)
 "abp" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/blue,
 /area/abyssal/interior/command)
 "abq" = (
 /turf/open/floor/hybrisa/tile/green_bigtile/east,
@@ -482,7 +482,7 @@
 /area/abyssal/interior/command)
 "aby" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/blue/unmeltable,
 /area/abyssal/interior/liaison)
 "abz" = (
 /obj/structure/disposalpipe/segment{
@@ -515,7 +515,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
 "abF" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/arrivals)
 "abG" = (
@@ -533,7 +533,7 @@
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/abyssal/interior/command)
 "abJ" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/blue/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/command)
 "abK" = (
@@ -548,7 +548,7 @@
 /turf/open/floor/prison/red/north,
 /area/abyssal/interior/landing_zone)
 "abL" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/medical)
 "abM" = (
 /obj/structure/sign/safety/food_storage{
@@ -569,7 +569,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/medical)
 "abO" = (
-/obj/structure/window/framed/prison,
+/obj/structure/window/framed/abyssal/standard,
 /turf/open/floor/engine,
 /area/abyssal/interior/medical)
 "abP" = (
@@ -658,10 +658,10 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/southwest,
 /area/abyssal/interior/solar_control_north)
 "acb" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/solar_control_south)
 "acc" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/solar_control_south)
 "acd" = (
@@ -702,12 +702,12 @@
 /turf/open/floor/darkred2/east,
 /area/abyssal/interior/arrivals)
 "acj" = (
-/obj/structure/window_frame/prison,
 /obj/item/shard,
+/obj/structure/window_frame/abyssal/blue,
 /turf/open/floor/engine,
 /area/abyssal/interior/command)
 "ack" = (
-/obj/structure/window/framed/prison,
+/obj/structure/window/framed/abyssal/blue,
 /turf/open/floor/engine,
 /area/abyssal/interior/command)
 "acl" = (
@@ -722,19 +722,20 @@
 /turf/open/floor/hybrisa/carpet/carpet_colorable/blue_grey,
 /area/abyssal/interior/command)
 "acn" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/galley)
 "aco" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/galley)
 "acp" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /obj/structure/pipes/standard/simple/visible/scrubbers,
 /turf/open/floor/engine,
 /area/abyssal/interior/galley)
 "acq" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/freezerfloor,
 /area/abyssal/interior/galley)
 "acr" = (
@@ -749,10 +750,10 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/arrivals)
 "acs" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/engineering)
 "act" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/engineering)
 "acu" = (
 /turf/open/floor/station/metal/floor/alt2/west,
@@ -832,7 +833,7 @@
 /turf/open/floor/darkred2/southeast,
 /area/abyssal/interior/command)
 "acE" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/galley)
 "acF" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -965,7 +966,7 @@
 /turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/corridor_west)
 "acU" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/maintenance/west)
 "acV" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
@@ -1025,7 +1026,7 @@
 /turf/open/floor/darkpurple2/southwest,
 /area/abyssal/interior/science)
 "ada" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/solar_control_south)
 "adb" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
@@ -1132,7 +1133,7 @@
 /turf/open/floor/darkgreen2/north,
 /area/abyssal/interior/hydro)
 "ado" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/galley)
 "adp" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -1140,14 +1141,14 @@
 /turf/open/space/basic,
 /area/abyssal/oob)
 "adq" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/galley)
 "adr" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/maintenance/south)
 "ads" = (
-/obj/structure/window/framed/prison,
+/obj/structure/window/framed/abyssal/standard,
 /turf/open/floor/engine,
 /area/abyssal/interior/engineering)
 "adt" = (
@@ -1204,7 +1205,7 @@
 /turf/open/floor/greencorner/west,
 /area/abyssal/interior/medical)
 "adA" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/telecomms_2)
 "adB" = (
 /obj/structure/prop/hybrisa/signs/high_voltage{
@@ -1349,7 +1350,7 @@
 /turf/open/floor/dark,
 /area/abyssal/interior/science)
 "adT" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
 "adU" = (
@@ -1379,7 +1380,7 @@
 /turf/open/floor/darkpurplecorners2/north,
 /area/abyssal/interior/science)
 "adY" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/engineering)
 "adZ" = (
@@ -1420,7 +1421,7 @@
 /turf/open/floor/dark,
 /area/abyssal/interior/science)
 "aef" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/telecomms_2)
 "aeg" = (
@@ -1450,10 +1451,10 @@
 /area/abyssal/interior/maintenance/north)
 "aei" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/blue,
 /area/abyssal/interior/command)
 "aej" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/maintenance/west)
 "aek" = (
 /obj/effect/decal/hybrisa/trash{
@@ -1547,14 +1548,14 @@
 /turf/open/floor/darkpurplecorners2,
 /area/abyssal/interior/science)
 "aeu" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/maintenance/west)
 "aev" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/darkpurple2/east,
 /area/abyssal/interior/science)
 "aew" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/cargo)
 "aex" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -1594,7 +1595,7 @@
 /turf/open/floor/darkish,
 /area/abyssal/interior/arrivals)
 "aeD" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/maintenance/central)
 "aeE" = (
 /turf/open/floor/solarpanel,
@@ -1763,7 +1764,7 @@
 /area/abyssal/interior/corridor_west)
 "aeY" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/blue/reinforced,
 /area/abyssal/interior/science)
 "aeZ" = (
 /turf/open/floor/darkpurple2/west,
@@ -1787,7 +1788,7 @@
 /turf/open/floor/plating/catwalk/rusted,
 /area/abyssal/exterior/aft)
 "afc" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
@@ -2093,7 +2094,7 @@
 /turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_east)
 "afM" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/maintenance/north)
 "afN" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -2124,7 +2125,7 @@
 /turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/corridor_east)
 "afQ" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/bunker)
 "afR" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -2174,7 +2175,7 @@
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/abyssal/interior/galley)
 "afV" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/corridor_west)
 "afW" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -2193,13 +2194,13 @@
 /turf/open/floor/darkblue2/northwest,
 /area/abyssal/interior/command)
 "afY" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/maintenance/north)
 "afZ" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/corridor_west)
 "aga" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/corridor_west)
 "agb" = (
@@ -2301,8 +2302,12 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/obj/structure/largecrate/random/barrel/yellow,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = 7;
+	pixel_y = 10
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/abyssal/interior/telecomms_2)
 "agl" = (
@@ -2336,16 +2341,16 @@
 /turf/open/floor/darkred2/southwest,
 /area/abyssal/interior/arrivals)
 "agp" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /obj/structure/pipes/standard/simple/visible/scrubbers,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/north)
 "agq" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/north)
 "agr" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/bunker)
 "ags" = (
@@ -2414,7 +2419,7 @@
 /turf/open/floor/plating/catwalk/rusted,
 /area/abyssal/exterior/fore)
 "agE" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/cargo)
 "agF" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -2442,7 +2447,7 @@
 /turf/open/floor/station/metal/floor,
 /area/abyssal/interior/corridor_central)
 "agK" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/corridor_central)
 "agL" = (
 /turf/open/floor/station/metal/alt_floor,
@@ -2455,10 +2460,10 @@
 /turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_central)
 "agO" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/solar_control_north)
 "agP" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/solar_control_north)
 "agQ" = (
 /turf/open/floor/plating/catwalk/rusted,
@@ -2530,7 +2535,7 @@
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "aha" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/corridor_central)
 "ahb" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -2619,7 +2624,7 @@
 /turf/open/floor/station/metal/floor/north,
 /area/abyssal/interior/corridor_central)
 "ahm" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/security)
 "ahn" = (
 /turf/open/floor/station/metal/floor/north,
@@ -2646,7 +2651,7 @@
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "ahr" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/corridor_central)
 "ahs" = (
@@ -2716,7 +2721,7 @@
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
 "ahB" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/security)
 "ahC" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -2762,11 +2767,11 @@
 /turf/open/floor/dark,
 /area/abyssal/interior/dormitory)
 "ahH" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/solar_control_north)
 "ahI" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/corridor_west)
 "ahJ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -2795,7 +2800,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/corridor_west)
 "ahM" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/telecomms_1)
 "ahN" = (
 /obj/structure/machinery/door/airlock/strata/autoname{
@@ -2812,7 +2817,7 @@
 /turf/open/floor/hybrisa/tile/green_bigtile/northwest,
 /area/abyssal/interior/command)
 "ahP" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/telecomms_1)
 "ahQ" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -2902,7 +2907,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
 "aie" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/security)
 "aif" = (
@@ -2931,10 +2936,10 @@
 /turf/open/floor/plating/catwalk/rusted,
 /area/abyssal/exterior/fore)
 "aik" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/atmo)
 "ail" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/atmo)
 "aim" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -3093,7 +3098,7 @@
 /turf/open/floor/darkblue2/east,
 /area/abyssal/interior/command)
 "aiK" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/maintenance/north)
 "aiL" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
@@ -3148,7 +3153,7 @@
 /turf/open/floor/plating/catwalk/rusted,
 /area/abyssal/exterior/fore)
 "aiR" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/atmo)
 "aiS" = (
@@ -3206,7 +3211,7 @@
 /turf/open/floor/hybrisa/engineership/pillars/north/pillar4,
 /area/abyssal/interior/derelict_shuttle)
 "ajb" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/atmo)
 "ajc" = (
@@ -3229,7 +3234,7 @@
 /area/abyssal/interior/maintenance/north)
 "ajg" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/security)
 "ajh" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -3257,7 +3262,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/north)
 "ajk" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/security)
 "ajl" = (
 /obj/item/trash/cigbutt,
@@ -3265,7 +3270,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
 "ajm" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/hydro)
 "ajn" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -3309,7 +3314,7 @@
 /turf/open/floor/dark,
 /area/abyssal/interior/dormitory)
 "aju" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/dormitory)
 "ajv" = (
 /turf/open/floor/darkredcorners2,
@@ -3337,7 +3342,7 @@
 /turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/arrivals)
 "ajz" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/security)
 "ajA" = (
@@ -3374,7 +3379,7 @@
 /turf/open/floor/plating/catwalk/rusted,
 /area/abyssal/exterior/fore)
 "ajF" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/hydro)
 "ajG" = (
 /obj/item/weapon/twohanded/folded_metal_chair,
@@ -3386,7 +3391,7 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/abyssal/interior/dormitory)
 "ajI" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/dormitory)
 "ajJ" = (
@@ -3431,7 +3436,7 @@
 /turf/open/floor/station/metal/floor/east,
 /area/abyssal/interior/corridor_west)
 "ajP" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/hydro)
 "ajQ" = (
 /turf/open/floor/plating/plating_catwalk/shiva,
@@ -3517,7 +3522,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "akc" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/hydro)
 "akd" = (
@@ -3525,7 +3530,7 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/abyssal/interior/hydro)
 "ake" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/dormitory)
 "akf" = (
 /obj/effect/decal/cleanable/generic{
@@ -3653,7 +3658,7 @@
 /turf/open/floor/plating/prison,
 /area/abyssal/interior/landing_zone)
 "akw" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/hydro)
 "akx" = (
@@ -3784,7 +3789,7 @@
 /turf/open/floor/dark,
 /area/abyssal/interior/dormitory)
 "akR" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /obj/structure/pipes/standard/simple/visible/scrubbers,
 /turf/open/floor/engine,
 /area/abyssal/interior/corridor_central)
@@ -3827,10 +3832,10 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "akW" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/dormitory)
 "akX" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/standard/hull,
 /obj/structure/pipes/standard/simple/visible/scrubbers,
 /turf/open/floor/engine,
 /area/abyssal/interior/corridor_west)
@@ -3906,7 +3911,7 @@
 /turf/open/floor/darkblue2/east,
 /area/abyssal/interior/command)
 "ali" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/north)
 "alj" = (
@@ -3982,7 +3987,7 @@
 /area/abyssal/interior/maintenance/north)
 "alu" = (
 /obj/effect/decal/hybrisa/lattice,
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/maintenance/north)
 "alv" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -4114,7 +4119,7 @@
 /area/abyssal/interior/maintenance/east)
 "alN" = (
 /obj/effect/decal/hybrisa/lattice,
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/landing_zone)
 "alO" = (
 /obj/structure/surface/rack,
@@ -4220,7 +4225,7 @@
 /area/abyssal/interior/liaison)
 "ame" = (
 /obj/structure/sign/poster,
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/dormitory)
 "amf" = (
 /obj/structure/pipes/vents/pump,
@@ -6523,6 +6528,7 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/darkish,
 /area/abyssal/interior/corridor_west)
 "arz" = (
@@ -7207,7 +7213,7 @@
 /turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/arrivals)
 "asS" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/blue/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "asT" = (
@@ -7220,7 +7226,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/arrivals)
 "asV" = (
 /obj/structure/cable/yellow{
@@ -8328,7 +8334,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
 "avy" = (
-/turf/closed/wall/r_wall/prison/temphull,
+/turf/closed/wall/abyssal/standard/temphull,
 /area/abyssal/interior/bunker)
 "avz" = (
 /obj/effect/decal/warning_stripes{
@@ -8472,6 +8478,7 @@
 	pixel_x = 4
 	},
 /obj/structure/prop/misc/lit_cable,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/hybrisa/tile/tileblue,
 /area/abyssal/interior/galley)
 "avS" = (
@@ -9055,7 +9062,7 @@
 /turf/open/floor/hybrisa/tile/green_bigtile/southwest,
 /area/abyssal/interior/command)
 "axs" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
@@ -10289,7 +10296,6 @@
 /turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_east)
 "aAb" = (
-/obj/structure/pipes/vents/pump,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/light/blue{
 	dir = 8
@@ -10394,7 +10400,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/south)
 "aAp" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/engine,
 /area/abyssal/interior/galley)
@@ -10537,7 +10543,7 @@
 /turf/open/floor/darkblue2/west,
 /area/abyssal/interior/command)
 "aAF" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/blue/unmeltable,
 /area/abyssal/interior/maintenance/east)
 "aAG" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -11378,7 +11384,7 @@
 /turf/open/floor/station/metal/floor/northeast,
 /area/abyssal/interior/arrivals)
 "aCA" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -12025,7 +12031,7 @@
 /area/abyssal/interior/security)
 "aEe" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/blue/reinforced,
 /area/abyssal/interior/command)
 "aEf" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -12206,7 +12212,7 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/northeast,
 /area/abyssal/interior/engineering)
 "aED" = (
-/obj/structure/window/framed/prison,
+/obj/structure/window/framed/abyssal/standard,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
@@ -12408,7 +12414,7 @@
 	id = "engi_lockdown";
 	name = "Engineering Exit"
 	},
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/engineering)
 "aFb" = (
 /obj/item/stack/cable_coil/blue,
@@ -12631,7 +12637,7 @@
 /turf/open/floor/hybrisa/tile/darkbrowncorner_bigtile/east,
 /area/abyssal/interior/engineering)
 "aFE" = (
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	explo_proof = 1;
 	id = "abyssallockdown";
@@ -12773,7 +12779,7 @@
 /area/abyssal/interior/maintenance/central)
 "aFT" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/maintenance/central)
 "aFU" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
@@ -12834,7 +12840,7 @@
 /turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/corridor_west)
 "aGa" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/atmo)
 "aGb" = (
 /obj/structure/surface/rack{
@@ -13296,6 +13302,7 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison,
 /area/abyssal/interior/corridor_west)
 "aHg" = (
@@ -13638,11 +13645,6 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/darkblue2/north,
 /area/abyssal/interior/command)
-"aHS" = (
-/obj/structure/pipes/vents/pump,
-/obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/station/metal/floor/alt3,
-/area/abyssal/interior/corridor_east)
 "aHT" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/reagent_dispensers/fueltank,
@@ -14075,13 +14077,13 @@
 /turf/open/floor/hybrisa/tile/green_bigtile/west,
 /area/abyssal/interior/command)
 "aIQ" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/blue/unmeltable,
 /area/abyssal/interior/liaison)
 "aIR" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/blue/reinforced,
 /area/abyssal/interior/liaison)
 "aIS" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/blue,
 /area/abyssal/interior/liaison)
 "aIT" = (
 /obj/effect/decal/hybrisa/lattice,
@@ -14293,7 +14295,7 @@
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/abyssal/interior/liaison)
 "aJu" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/blue/hull,
 /turf/open/floor/engine,
 /area/abyssal/interior/liaison)
 "aJv" = (
@@ -14637,7 +14639,7 @@
 /turf/open/floor/hybrisa/tile/green_bigtile/east,
 /area/abyssal/interior/command)
 "aKg" = (
-/obj/structure/window/framed/prison/reinforced/hull,
+/obj/structure/window/framed/abyssal/blue/hull,
 /obj/structure/pipes/standard/simple/visible/scrubbers,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
@@ -16062,7 +16064,7 @@
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 8
 	},
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/atmo)
 "aNI" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -16170,7 +16172,7 @@
 /turf/open/floor/darkred2/northeast,
 /area/abyssal/interior/security)
 "aNT" = (
-/obj/structure/window/framed/prison,
+/obj/structure/window/framed/abyssal/standard,
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
@@ -16499,6 +16501,7 @@
 "aOK" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison,
 /area/abyssal/interior/command)
 "aOL" = (
@@ -17036,7 +17039,7 @@
 /obj/structure/pipes/standard/simple/visible{
 	dir = 4
 	},
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/atmo)
 "aQd" = (
@@ -17395,9 +17398,9 @@
 /turf/open/floor/freezerfloor,
 /area/abyssal/interior/galley)
 "aQY" = (
-/obj/structure/window_frame/prison,
 /obj/item/shard,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/window_frame/abyssal/blue,
 /turf/open/floor/engine,
 /area/abyssal/interior/command)
 "aQZ" = (
@@ -17751,7 +17754,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/abyssal/interior/telecomms_1)
 "aRT" = (
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/blue/reinforced,
 /area/abyssal/interior/maintenance/east)
 "aRU" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -18728,7 +18731,7 @@
 	id = "engi_lockdown";
 	name = "Cell Emergency Exit"
 	},
-/turf/closed/wall/r_wall/prison,
+/turf/closed/wall/abyssal/standard/reinforced,
 /area/abyssal/interior/security)
 "aUg" = (
 /obj/structure/pipes/standard/simple/visible,
@@ -19645,7 +19648,7 @@
 	pixel_y = 1;
 	pixel_x = 1
 	},
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/corridor_central)
 "aWm" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -19871,6 +19874,7 @@
 "aWI" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison/red,
 /area/abyssal/interior/security)
 "aWJ" = (
@@ -20070,7 +20074,7 @@
 /area/abyssal/interior/corridor_central)
 "aXe" = (
 /obj/structure/pipes/standard/simple/visible,
-/obj/structure/window/framed/prison/reinforced,
+/obj/structure/window/framed/abyssal/standard/reinforced,
 /turf/open/floor/engine,
 /area/abyssal/interior/atmo)
 "aXf" = (
@@ -20315,11 +20319,11 @@
 /turf/open/floor/station/metal/floor,
 /area/abyssal/interior/corridor_central)
 "aXG" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/maintenance/central)
 "aXH" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/maintenance/central)
 "aXI" = (
 /obj/structure/machinery/portable_atmospherics/canister/nitrogen,
@@ -20448,6 +20452,7 @@
 "aYa" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/station/metal/floor/west,
 /area/abyssal/interior/corridor_east)
 "aYb" = (
@@ -20673,7 +20678,7 @@
 /area/abyssal/interior/corridor_west)
 "aYG" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/engineering)
 "aYH" = (
 /obj/structure/disposalpipe/segment,
@@ -20699,7 +20704,7 @@
 /turf/open/floor/hybrisa/tile/greencorner_bigtile,
 /area/abyssal/interior/liaison)
 "aYK" = (
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/landing_zone)
 "aYL" = (
 /obj/structure/disposalpipe/segment,
@@ -20716,7 +20721,7 @@
 /area/abyssal/interior/corridor_east)
 "aYN" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/blue,
 /area/abyssal/interior/corridor_east)
 "aYO" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -21293,7 +21298,7 @@
 /area/abyssal/interior/corridor_central)
 "bai" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/corridor_central)
 "baj" = (
 /turf/open/floor/prison/red,
@@ -21347,10 +21352,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/abyssal/interior/security)
 "ban" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 8
-	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_west)
 "bao" = (
@@ -21835,8 +21840,8 @@
 /turf/open/floor/darkpurple2/southeast,
 /area/abyssal/interior/science)
 "bbA" = (
-/obj/structure/window_frame/prison,
 /obj/item/shard,
+/obj/structure/window_frame/abyssal/blue,
 /turf/open/floor/engine,
 /area/abyssal/interior/science)
 "bbB" = (
@@ -21955,7 +21960,7 @@
 /turf/open/floor/station/metal/floor/alt3,
 /area/abyssal/interior/corridor_east)
 "bbR" = (
-/obj/structure/window_frame/prison,
+/obj/structure/window_frame/abyssal/blue,
 /turf/open/floor/engine,
 /area/abyssal/interior/science)
 "bbS" = (
@@ -22221,13 +22226,13 @@
 /turf/open/floor/darkish,
 /area/abyssal/interior/science)
 "bcA" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 8
-	},
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
 	},
 /turf/open/floor/station/metal/floor/alt3,
 /area/abyssal/interior/corridor_east)
@@ -22650,7 +22655,7 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "bdv" = (
-/obj/structure/window/framed/prison,
+/obj/structure/window/framed/abyssal/blue,
 /turf/open/floor/engine,
 /area/abyssal/interior/science)
 "bdw" = (
@@ -22932,7 +22937,7 @@
 /area/abyssal/interior/command)
 "bej" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/closed/wall/abyssal/standard/unmeltable,
 /area/abyssal/interior/corridor_central)
 "bek" = (
 /obj/effect/hybrisa/misc/fake/wire/blue{
@@ -23503,7 +23508,7 @@
 /obj/structure/sign/safety/rad_shield{
 	pixel_x = 8
 	},
-/turf/closed/wall/r_wall/prison/temphull,
+/turf/closed/wall/abyssal/standard/temphull,
 /area/abyssal/interior/bunker)
 "bfC" = (
 /obj/structure/disposalpipe/segment,
@@ -25594,6 +25599,55 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
+"bjz" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/darkish,
+/area/abyssal/interior/corridor_east)
+"bjA" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/dark,
+/area/abyssal/interior/science)
+"bjB" = (
+/obj/structure/window/framed/abyssal/blue/hull,
+/turf/open/floor/engine,
+/area/abyssal/interior/corridor_east)
+"bjC" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/ice,
+/area/abyssal/interior/medical)
+"bjD" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/dark,
+/area/abyssal/interior/cargo)
+"bjE" = (
+/obj/structure/window/framed/abyssal/standard/cell,
+/turf/open/floor/engine,
+/area/abyssal/interior/security)
+"bjF" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/station/metal/floor/west,
+/area/abyssal/interior/corridor_west)
+"bjG" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/station/metal/floor/alt3/west,
+/area/abyssal/interior/corridor_west)
+"bjH" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/plating/plating_catwalk/shiva,
+/area/abyssal/interior/hydro)
 "bqz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -26020,7 +26074,7 @@
 /area/abyssal/interior/hydro)
 "gGc" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/closed/wall/prison,
+/turf/closed/wall/abyssal/standard,
 /area/abyssal/interior/landing_zone)
 "gHR" = (
 /turf/open/floor/prison/floor_plate,
@@ -26099,7 +26153,7 @@
 /area/abyssal/interior/corridor_west)
 "hIV" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/obj/structure/window_frame/prison,
+/obj/structure/window_frame/abyssal/blue,
 /turf/open/floor/engine,
 /area/abyssal/interior/science)
 "hPd" = (
@@ -26860,11 +26914,13 @@
 /area/abyssal/interior/landing_zone)
 "pOR" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/prop/misc/lit_cable,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/station/metal/floor/alt3,
 /area/abyssal/interior/corridor_east)
 "pQN" = (
@@ -35695,7 +35751,7 @@ awq
 awa
 avJ
 aeK
-aut
+bjD
 auO
 aut
 atz
@@ -36280,7 +36336,7 @@ xYB
 bjf
 afV
 aOd
-yca
+bjF
 yca
 aZj
 afn
@@ -36432,7 +36488,7 @@ wtT
 bhE
 aAb
 ban
-asQ
+bjG
 xdk
 vDQ
 bUG
@@ -37799,7 +37855,7 @@ agq
 bqz
 ajm
 coi
-pyS
+bjH
 vIn
 akw
 asf
@@ -43741,7 +43797,7 @@ ahB
 aUz
 ahB
 aiv
-aie
+bjE
 ahB
 ahB
 aZT
@@ -46515,7 +46571,7 @@ azR
 aaX
 aaX
 aIr
-aHU
+bjz
 aHZ
 aHJ
 aaq
@@ -47277,7 +47333,7 @@ pOR
 aXX
 aXW
 bcA
-aHS
+aYf
 bbQ
 bbB
 aar
@@ -47410,7 +47466,7 @@ abO
 aNp
 aMf
 adL
-aLM
+bjC
 aLM
 aLj
 aqI
@@ -48487,7 +48543,7 @@ izv
 abv
 aaw
 beq
-aee
+bjA
 bdN
 bdA
 aab
@@ -49387,8 +49443,8 @@ aNw
 aAF
 aAF
 aAF
-aaq
-aaq
+bjB
+bjB
 abk
 ack
 ack

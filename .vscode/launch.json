@@ -121,6 +121,20 @@
             "preLaunchTask": "Build All (runtime map + quickstart + testing)",
             "dmb": "${workspaceFolder}/${command:CurrentDMB}",
             "dreamDaemon": true
+        },
+        {
+            "name": "TGUI Dev Server",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": ".\\bin\\tgui-dev.cmd",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "TGUI Build",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": ".\\bin\\tgui-build.cmd",
+            "cwd": "${workspaceFolder}"
         }
     ]
 }

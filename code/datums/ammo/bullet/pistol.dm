@@ -305,3 +305,23 @@
 
 /datum/ammo/bullet/pistol/l54_custom
 	penetration= ARMOR_PENETRATION_TIER_3
+
+// Used by M10 Auto-Pistol
+
+/datum/ammo/bullet/pistol/m10
+	name = "auto-pistol bullet"
+	damage = 32
+	accurate_range = 2
+	effective_range_max = 3
+	penetration = ARMOR_PENETRATION_TIER_1
+	shell_speed = AMMO_SPEED_TIER_7
+	damage_falloff = DAMAGE_FALLOFF_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_5
+	accuracy = HIT_ACCURACY_TIER_3
+
+/datum/ammo/bullet/pistol/m10/ap
+	name = "armor-piercing auto-pistol bullet"
+
+	damage = 24
+	penetration = ARMOR_PENETRATION_TIER_6
+	shell_speed = AMMO_SPEED_TIER_5

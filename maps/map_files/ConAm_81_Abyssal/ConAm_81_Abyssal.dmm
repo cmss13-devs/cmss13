@@ -824,6 +824,11 @@
 /area/abyssal/interior/science)
 "acD" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/prop/server_equipment/laptop/closed,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	pixel_x = 30
+	},
 /turf/open/floor/darkred2/southeast,
 /area/abyssal/interior/command)
 "acE" = (
@@ -906,14 +911,30 @@
 /turf/open/floor/darkred2/northwest,
 /area/abyssal/interior/command)
 "acQ" = (
-/obj/structure/prop/server_equipment/laptop/closed,
-/obj/item/device/radio/intercom{
-	pixel_y = 30;
-	freerange = 1
-	},
 /obj/structure/machinery/firealarm{
 	dir = 4;
 	pixel_x = 22
+	},
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "security";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#FF0000";
+	light_range = 2
 	},
 /turf/open/floor/darkred2/northeast,
 /area/abyssal/interior/command)
@@ -1631,6 +1652,27 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "solar";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#FFEA00";
+	light_range = 2
+	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/abyssal/interior/solar_control_north)
 "aeN" = (
@@ -1885,9 +1927,26 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/sign/poster/music{
-	pixel_x = -5;
-	pixel_y = 32
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "power";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#FFEA00";
+	light_range = 2
 	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/northwest,
 /area/abyssal/interior/engineering)
@@ -2154,9 +2213,26 @@
 /area/abyssal/interior/corridor_west)
 "agb" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/machinery/big_computers/computerblack/computer1{
-	pixel_y = 21;
-	density = 0
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "rdcomp-inuse";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#BF40BF";
+	light_range = 2
 	},
 /turf/open/floor/darkpurple2/northeast,
 /area/abyssal/interior/science)
@@ -2262,6 +2338,13 @@
 /turf/open/floor/station/metal/floor/alt2/north,
 /area/abyssal/interior/corridor_central)
 "ago" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 5;
+	pixel_y = 12
+	},
 /turf/open/floor/darkred2/southwest,
 /area/abyssal/interior/arrivals)
 "agp" = (
@@ -2885,8 +2968,26 @@
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/abyssal/interior/security)
 "aiq" = (
-/obj/structure/machinery/light/small/blue{
-	dir = 1
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "security";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#FF0000";
+	light_range = 2
 	},
 /turf/open/floor/darkred2/north,
 /area/abyssal/interior/security)
@@ -9033,9 +9134,26 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/abyssal/interior/corridor_west)
 "axA" = (
-/obj/structure/machinery/big_computers/computerblack/computer3{
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
 	density = 0;
-	pixel_y = 16
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "comm_monitor";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#008000";
+	light_range = 2
 	},
 /turf/open/floor/darkblue2/north,
 /area/abyssal/interior/command)
@@ -9579,6 +9697,27 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "generic";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#008000";
+	light_range = 2
+	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
 /area/abyssal/interior/galley)
 "ayM" = (
@@ -9606,6 +9745,10 @@
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/abyssal/interior/galley)
 "ayO" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/device/analyzer,
 /turf/open/floor/darkred2/southeast,
 /area/abyssal/interior/arrivals)
 "ayP" = (
@@ -10743,6 +10886,34 @@
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/station/metal/floor/east,
+/area/abyssal/interior/arrivals)
+"aBt" = (
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "security";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#FF0000";
+	light_range = 2
+	},
+/obj/structure/bed/chair/office/light{
+	dir = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/darkred2/west,
 /area/abyssal/interior/arrivals)
 "aBu" = (
 /turf/open/floor/darkblue2/northwest,
@@ -13694,9 +13865,30 @@
 /area/abyssal/interior/corridor_east)
 "aIs" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
 /obj/item/device/radio/intercom{
-	pixel_y = 30;
-	freerange = 1
+	freerange = 1;
+	pixel_x = -30
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "solar";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#FFEA00";
+	light_range = 2
 	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/northwest,
 /area/abyssal/interior/solar_control_south)
@@ -13827,9 +14019,26 @@
 /area/abyssal/interior/science)
 "aIK" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/machinery/big_computers/computerblack/computer4{
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
 	density = 0;
-	pixel_y = 16
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "power";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#FFEA00";
+	light_range = 2
 	},
 /turf/open/floor/darkblue2/north,
 /area/abyssal/interior/command)
@@ -14394,9 +14603,26 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/central)
 "aKb" = (
-/obj/structure/machinery/big_computers/computerblack/computer4{
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
 	density = 0;
-	pixel_y = 16
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "security";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#FF0000";
+	light_range = 2
 	},
 /turf/open/floor/darkblue2/north,
 /area/abyssal/interior/command)
@@ -16012,6 +16238,9 @@
 /obj/item/stack/sheet/glass/reinforced{
 	amount = 50
 	},
+/obj/structure/machinery/light/small/blue{
+	dir = 1
+	},
 /turf/open/floor/darkred2/northwest,
 /area/abyssal/interior/security)
 "aNZ" = (
@@ -16086,9 +16315,26 @@
 	icon_state = "trash_8"
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/machinery/big_computers/computerblack/computer3{
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
 	density = 0;
-	pixel_y = 16
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "generic";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#008000";
+	light_range = 2
 	},
 /turf/open/floor/darkblue2/north,
 /area/abyssal/interior/command)
@@ -19452,6 +19698,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
+/obj/structure/machinery/computer/cameras{
+	dir = 4;
+	pixel_y = 6
+	},
 /turf/open/floor/darkred2/west,
 /area/abyssal/interior/arrivals)
 "aWq" = (
@@ -19690,6 +19940,27 @@
 "aWO" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/trash/cigbutt,
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "security";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#FF0000";
+	light_range = 2
+	},
 /turf/open/floor/darkred2/northwest,
 /area/abyssal/interior/security)
 "aWP" = (
@@ -21845,9 +22116,26 @@
 	icon_state = "E";
 	pixel_x = 2
 	},
-/obj/structure/machinery/big_computers/computerblack/computer4{
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
 	density = 0;
-	pixel_y = 20
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "shuttle";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#00FFFF";
+	light_range = 1
 	},
 /turf/open/floor/darkish,
 /area/abyssal/interior/science)
@@ -22033,9 +22321,26 @@
 /area/abyssal/interior/science)
 "bcJ" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/machinery/big_computers/computerblack/computer3{
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
 	density = 0;
-	pixel_y = 16
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "rdcomp-inuse";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#BF40BF";
+	light_range = 2
 	},
 /turf/open/floor/darkpurple2/north,
 /area/abyssal/interior/science)
@@ -22045,9 +22350,26 @@
 /turf/open/floor/darkpurple2/northeast,
 /area/abyssal/interior/science)
 "bcL" = (
-/obj/structure/machinery/big_computers/computerblack/computer3{
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
 	density = 0;
-	pixel_y = 16
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "robot";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#BF40BF";
+	light_range = 2
 	},
 /turf/open/floor/darkpurple2/north,
 /area/abyssal/interior/science)
@@ -23158,6 +23480,7 @@
 	pixel_x = -17;
 	pixel_y = -8
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/darkbrown2/northwest,
 /area/abyssal/interior/cargo)
 "bfw" = (
@@ -23986,6 +24309,7 @@
 "bgS" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/item/tool/pen/blue,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/abyssal/interior/bunker)
 "bgT" = (
@@ -24135,6 +24459,10 @@
 /obj/item/trash/cigbutt,
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
+	},
+/obj/item/paper_bin/wy{
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/abyssal/interior/bunker)
@@ -24298,6 +24626,10 @@
 	pixel_x = 8
 	},
 /obj/effect/landmark/survivor_spawner,
+/obj/structure/sign/poster/conam{
+	pixel_y = 37;
+	pixel_x = -6
+	},
 /turf/open/floor/elevatorshaft,
 /area/abyssal/interior/bunker)
 "bhs" = (
@@ -24307,18 +24639,26 @@
 	pixel_y = 1
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/sign/poster/safety{
-	pixel_y = 31;
-	pixel_x = 7
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
 	},
-/obj/item/paper_bin/wy{
-	pixel_x = 6;
-	pixel_y = 3
-	},
-/obj/item/tool/pen/blue,
-/obj/structure/sign/poster/conam{
-	pixel_y = 37;
-	pixel_x = -6
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "crew";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#00FFFF";
+	light_range = 2
 	},
 /turf/open/floor/elevatorshaft,
 /area/abyssal/interior/bunker)
@@ -24356,6 +24696,10 @@
 /obj/structure/closet/firecloset,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/sign/poster/safety{
+	pixel_y = 31;
+	pixel_x = 15
+	},
 /turf/open/floor/elevatorshaft,
 /area/abyssal/interior/bunker)
 "bhv" = (
@@ -25134,6 +25478,172 @@
 /obj/effect/decal/large_stain,
 /turf/open/floor/station/metal/floor/alt3/west,
 /area/abyssal/interior/corridor_central)
+"bjs" = (
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "rdcomp-inuse";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#BF40BF";
+	light_range = 2
+	},
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "rdcomp-inuse";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#BF40BF";
+	light_range = 2
+	},
+/turf/open/floor/darkpurple2/north,
+/area/abyssal/interior/science)
+"bjt" = (
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "shuttle";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#00FFFF";
+	light_range = 1
+	},
+/obj/structure/bed/chair/office/light{
+	dir = 8;
+	pixel_x = -4
+	},
+/turf/open/floor/prison/red/east,
+/area/abyssal/interior/landing_zone)
+"bju" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "power";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#FFEA00";
+	light_range = 2
+	},
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
+/area/abyssal/interior/engineering)
+"bjv" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "crew";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#00FFFF";
+	light_range = 2
+	},
+/turf/open/floor/green/north,
+/area/abyssal/interior/medical)
+"bjw" = (
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "crew";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#00FFFF";
+	light_range = 2
+	},
+/turf/open/floor/darkblue2/north,
+/area/abyssal/interior/command)
+"bjx" = (
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/structure/machinery{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "comm";
+	explo_proof = 1;
+	name = "Console Screen";
+	pixel_y = 10;
+	unacidable = 1;
+	unslashable = 1;
+	use_power = 0;
+	needs_power = 0;
+	light_on = 1;
+	light_color = "#00FFFF";
+	light_range = 2
+	},
+/turf/open/floor/darkblue2/north,
+/area/abyssal/interior/command)
 "bqz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -35861,7 +36371,7 @@ iIK
 fFi
 aZC
 aZC
-aZC
+bjt
 gTx
 fzT
 lKb
@@ -37538,7 +38048,7 @@ aWp
 aLE
 aaT
 aoF
-aPA
+aBt
 aPA
 aPA
 ago
@@ -41771,7 +42281,7 @@ aeD
 azB
 azu
 acs
-afI
+bju
 aoh
 atC
 atC
@@ -44217,7 +44727,7 @@ aCa
 aBI
 adU
 act
-afI
+bju
 aAu
 aAj
 acs
@@ -47403,7 +47913,7 @@ abL
 abL
 abL
 abL
-aNs
+bjv
 gzH
 efd
 aMl
@@ -48330,7 +48840,7 @@ abS
 aYt
 aYm
 aaw
-bcL
+bjs
 beg
 acd
 bdC
@@ -50114,7 +50624,7 @@ adp
 aAF
 aTY
 acj
-aKb
+bjw
 aRl
 aHO
 aRd
@@ -50266,7 +50776,7 @@ aAF
 aAF
 adO
 ack
-axA
+bjx
 ajo
 aOP
 aFv

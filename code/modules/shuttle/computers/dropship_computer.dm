@@ -275,8 +275,7 @@
 			groundside_humans++
 			if(groundside_humans >= 12)
 				return TRUE
-
-    return FALSE
+	return FALSE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
 	// if the shuttleid is null or the shuttleid references a shuttle that has been removed from play, pick one

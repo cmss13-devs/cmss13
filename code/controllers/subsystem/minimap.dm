@@ -938,6 +938,9 @@ SUBSYSTEM_DEF(minimaps)
 		closeToolTip(usr)
 
 /atom/movable/screen/exit_map/clicked(location, list/modifiers)
+	usr.client.active_draw_tool = null
+	linked_map.map.active_draw_tool = null
+	winset(usr, "drawingtools", "reset=true")
 	linked_map.on_unset_interaction(usr)
 	return TRUE
 
@@ -1023,7 +1026,6 @@ SUBSYSTEM_DEF(minimaps)
 	desc = "Draw using a color. Drag to draw freely, middle click to place a dot. Middle click this button to unselect."
 	// color that this draw tool will be drawing in
 	color = COLOR_PINK
-	var/list/last_drawn
 	///temporary existing list used to calculate a line between the start of a click and the end of a click
 	var/list/starting_coords
 
@@ -1034,13 +1036,10 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/draw_tool/clicked(location, list/modifiers)
 	. = ..()
-	if(LAZYACCESS(modifiers, MIDDLE_CLICK) && last_drawn)
-		last_drawn += list(null)
-		draw_line(arglist(last_drawn))
-		last_drawn = null
-
+	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
 		usr.client.active_draw_tool = null
 		linked_map.active_draw_tool = null
+		winset(usr, "drawingtools", "reset=true")
 		return
 
 	winset(usr, "drawingtools", "parent=default;name=MouseDragMove;command=\".mouse-draw \[\[mapwindow.map.mouse-pos.x]] \[\[mapwindow.map.mouse-pos.y]] \[\[mapwindow.map.size.x]] \[\[mapwindow.map.size.y]] \[\[mapwindow.map.view-size.x]] \[\[mapwindow.map.view-size.y]]\"")

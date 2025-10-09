@@ -367,14 +367,12 @@
 
 	var/summon_hellhound = tgui_alert(user, "Do you want to wake the Hellhound?", "Summon Hellhound", list("Yes", "No"))
 
-	switch(summon_hellhound)
-		if("No")
-			to_chat(user, SPAN_NOTICE("You decide to leave it alone."))
-			return
-		if ("Yes")
-			to_chat(user, SPAN_NOTICE("The Hellhound begins to stir..."))
-			msg_admin_attack("[key_name(user)] summoned a Hellhound ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-			summon_hellhound(user)
+    if(!(summon_hellhound == "Yes")
+	    to_chat(user, SPAN_NOTICE("You decide to leave it alone."))
+	    return
+	to_chat(user, SPAN_NOTICE("The Hellhound begins to stir..."))
+	msg_admin_attack("[key_name(user)] summoned a Hellhound ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+	summon_hellhound(user)
 
 /obj/structure/prop/hunter/hellhound/proc/summon_hellhound(mob/user)
 	var/mob/living/carbon/xenomorph/hellhound/new_hellhound = new(loc, null, XENO_HIVE_YAUTJA)

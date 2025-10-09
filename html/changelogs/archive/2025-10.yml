@@ -30,3 +30,9 @@
       it.
   - rscadd: Added [s][/s], [name], [rank], [job], [op], [ship], and [colony] macros.
   - ui: increased the size of the default paper popup window and makes it a define.
+2025-10-09:
+  matttheficus:
+  - rscadd: added M1911C ammo to the CO vendor.
+  - balance: gave the M1911C a 1 second knockdown, up from 0.2 seconds.
+  - bugfix: added the "fire in the air" ability to the M1911C to match all other CO
+      guns.

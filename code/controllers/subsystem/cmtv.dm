@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(cmtv)
 	name = "CMTV"
 	wait = 1 SECONDS
+	flags = SS_NO_FIRE
 
 	var/client/camera_operator
 

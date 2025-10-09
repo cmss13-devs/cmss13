@@ -601,6 +601,7 @@
 #include "code\datums\entities\logs\player_times_log.dm"
 #include "code\datums\factions\clf.dm"
 #include "code\datums\factions\cmb.dm"
+#include "code\datums\factions\conam.dm"
 #include "code\datums\factions\contractor.dm"
 #include "code\datums\factions\faction.dm"
 #include "code\datums\factions\helpers.dm"

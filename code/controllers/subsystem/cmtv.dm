@@ -7,12 +7,12 @@ SUBSYSTEM_DEF(cmtv)
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = CONFIG_GET(string/cmtv_ckey)
 	if(!username)
-		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_new_client))
 		return SS_INIT_NO_NEED
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_new_client))
 
 	var/camera = GLOB.directory[username]
 	if(!camera)
-		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_new_client))
 		return SS_INIT_NO_NEED
 
 	handle_new_camera(camera)

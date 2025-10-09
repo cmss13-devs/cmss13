@@ -47,14 +47,14 @@ jobs:
       - name: "Compile"
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
-          python .github/ss13_genchangelog.py html/changelogs
+          python .github/ss13_genchangelog.py html/changelogs/bandamarines
       - name: Commit
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
           git config --local user.email "${{ secrets.APP_PUBLIC_ID }}+${{ secrets.APP_PUBLIC_NAME }}[bot]@users.noreply.github.com"
           git config --local user.name "${{ secrets.APP_PUBLIC_NAME }}[bot]"
           git pull origin master
-          git add html/changelogs/archive
+          git add html/changelogs/bandamarines/archive
           git commit -m "Automatic changelog compile [ci skip]" -a || true
       - name: "Push"
         if: steps.value_holder.outputs.ACTIONS_ENABLED

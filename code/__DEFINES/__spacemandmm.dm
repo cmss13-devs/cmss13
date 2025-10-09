@@ -41,6 +41,7 @@
 
 /world/Del()
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	rustg_close_async_http_client() // BANDSATION ADDITION - Rust Utils
 	if (debug_server)
 		call_ext(debug_server, "auxtools_shutdown")()
 	. = ..()

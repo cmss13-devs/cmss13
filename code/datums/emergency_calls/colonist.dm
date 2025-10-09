@@ -5,8 +5,8 @@
 	name = "Colonists"
 	mob_max = 8
 	mob_min = 1
-	arrival_message = "'This is the *static*. We are *static*.'"
-	objectives = "Follow the orders given to you."
+	arrival_message = "'Говор-*7%@\[НЕ РАСШИФРОВАНО\]то... ...#$#- с ко-\[НЕ РАСШИФРОВАНО\] Мы... ...\[НЕ РАСШИФРОВАНО\].'"
+	objectives = "Выполняйте отданные вам приказы."
 	probability = 0
 	var/preset = /datum/equipment_preset/colonist
 

@@ -108,10 +108,10 @@
 	user.hud_set_squad()
 
 	var/obj/item/card/id/ID = user.get_idcard()
-	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Spotter")
+	ID.set_assignment("Корректировщик" + " " + (user.assigned_squad ? (user.assigned_squad.get_name_ru()) : ""))	// SS220 EDIT TRANSLATE
 	ID.minimap_icon_override = "spotter"
 	user.update_minimap_icon()
-	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
+	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Корректировщик")	// SS220 EDIT TRANSLATE
 
 /obj/item/pamphlet/skill/honorguard
 	name = "Honor Guard instructional pamphlet"
@@ -196,10 +196,10 @@
 	user.hud_set_squad()
 
 	var/obj/item/card/id/ID = user.get_idcard()
-	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Loader")
+	ID.set_assignment("Заряжающий" + " " + (user.assigned_squad ? (user.assigned_squad.get_name_ru()) : ""))	// SS220 EDIT TRANSLATE
 	ID.minimap_icon_override = "loader"
 	user.update_minimap_icon()
-	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Loader")
+	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Заряжающий")	// SS220 EDIT TRANSLATE
 
 /obj/item/pamphlet/skill/mortar_operator
 	name = "Mortar Operator instructional pamphlet"
@@ -266,10 +266,10 @@
 	user.hud_set_squad()
 
 	var/obj/item/card/id/ID = user.get_idcard()
-	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "K9 Handler")
+	ID.set_assignment("Кинолог K9" + " " + (user.assigned_squad ? (user.assigned_squad.get_name_ru()) : ""))	// SS220 EDIT TRANSLATE
 	ID.minimap_icon_override = "medic_k9"
 	user.update_minimap_icon()
-	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "K9 Handler")
+	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Кинолог K9")	// SS220 EDIT TRANSLATE
 
 /obj/item/pamphlet/skill/machinegunner
 	name = "heavy machinegunner instructional pamphlet"

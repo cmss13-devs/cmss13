@@ -1,0 +1,1507 @@
+# Uncategorized equipment
+# Tools of any kind (hemostat, screwdriver), necessary equipment (zipties, handcuffs)
+
+["rangefinder"]
+nominative = "дальномер"
+genitive = "дальномера"
+dative = "дальномеру"
+accusative = "дальномер"
+instrumental = "дальномером"
+prepositional = "дальномере"
+gender = "male"
+
+["range finder"]
+nominative = "дальномер"
+genitive = "дальномера"
+dative = "дальномеру"
+accusative = "дальномер"
+instrumental = "дальномером"
+prepositional = "дальномере"
+gender = "male"
+
+["Mixed Binoculars Crate (x2 per, x6 total)"] # Unique Vendor Name
+nominative = "ящик для снаряжения (ЛЦУ x 2, дальномер x 2, бинокль x 2)"
+
+["laser designator"]
+nominative = "лазерный целеуказатель"
+genitive = "лазерного целеуказателя"
+dative = "лазерному целеуказателю"
+accusative = "лазерный целеуказатель"
+instrumental = "лазерным целеуказателем"
+prepositional = "лазерном целеуказателе"
+gender = "male"
+
+["USCM flask"]
+nominative = "металлическая фляга ККМП"
+genitive = "металлической фляги ККМП"
+dative = "металлической фляге ККМП"
+accusative = "металлическую флягу ККМП"
+instrumental = "металлической флягой ККМП"
+prepositional = "металлической фляге ККМП"
+gender = "female"
+
+["shortwave radio"]
+nominative = "коротковолновая рация"
+genitive = "коротковолновой рации"
+dative = "коротковолновой рации"
+accusative = "коротковолновую рацию"
+instrumental = "коротковолновой рацией"
+prepositional = "коротковолновой рации"
+gender = "female"
+
+["analyzer"]
+nominative = "анализатор"
+genitive = "анализатора"
+dative = "анализатору"
+accusative = "анализатор"
+instrumental = "анализатором"
+prepositional = "анализаторе"
+gender = "male"
+
+["blowtorch"]
+nominative = "паяльник"
+genitive = "паяльника"
+dative = "паяльнику"
+accusative = "паяльник"
+instrumental = "паяльником"
+prepositional = "паяльнике"
+gender = "male"
+
+["whistle"]
+nominative = "свисток"
+genitive = "свистка"
+dative = "свистку"
+accusative = "свисток"
+instrumental = "свистком"
+prepositional = "свистке"
+gender = "male"
+
+["E-Tool"] # Unique Vendor Name
+nominative = "малая пехотная лопата"
+
+["entrenching tool"]
+nominative = "малая пехотная лопата"
+genitive = "малой пехотной лопаты"
+dative = "малой пехотной лопате"
+accusative = "малую пехотную лопату"
+instrumental = "малой пехотной лопатой"
+prepositional = "малой пехотной лопате"
+gender = "female"
+
+["marine RPG glasses"]
+nominative = "очки для зрения"
+genitive = "очков для зрения"
+dative = "очкам для зрения"
+accusative = "очки для зрения"
+instrumental = "очками для зрения"
+prepositional = "очках для зрения"
+gender = "plural"
+
+["fulton recovery device crate (x4)"] # Unique Vendor Name
+nominative = "ящик для снаряжения (СВЭ «Фултон» x 80)"
+
+["JTAC Radio Kit crate (x1 full flare gun belt, x2 M89-S signal flare packs, 1x laser designator, 1x jtac radio key, 1x radiopack)"] # Unique Vendor Name
+nominative = "ящик для экипировки (набор связиста JTAC: сигнальная ракетница x 1, пояс с кобурой x 1, ключ шифрования x 1, ЛЦУ x 1, рюкзак связиста x 1, сигнальный огонь x 16)"
+
+["JTAC Radio Kit"]
+nominative = "набор связиста JTAC"
+genitive = "набора связиста JTAC"
+dative = "набору связиста JTAC"
+accusative = "набор связиста JTAC"
+instrumental = "набором связиста JTAC"
+prepositional = "наборе связиста JTAC"
+gender = "male"
+
+["Field Intelligence Support Kit crate (x1 fulton pack, x1 data detector, x1 intel pamphlet, x1 large document pouch, 1x intel radio key)"] # Unique Vendor Name
+nominative = "ящик для экипировки (набор полевого разведчика: СВЭ «Фултон» x 20, инструкция x 1, ключ шифрования x 1, сканер данных x 1, подсумок для документов x 1)"
+
+["Field Intelligence Support Kit"]
+nominative = "набор полевого разведчика"
+genitive = "набора полевого разведчика"
+dative = "набору полевого разведчика"
+accusative = "набор полевого разведчика"
+instrumental = "набором полевого разведчика"
+prepositional = "наборе полевого разведчика"
+gender = "male"
+
+["Fulton Device Stack"] # Unique Vendor Name
+nominative = "система воздушной эвакуации «Фултон»"
+
+["fulton recovery device"]
+nominative = "система воздушной эвакуации «Фултон»"
+genitive = "системы воздушной эвакуации «Фултон»"
+dative = "системе воздушной эвакуации «Фултон»"
+accusative = "систему воздушной эвакуации «Фултон»"
+instrumental = "системой воздушной эвакуации «Фултон»"
+prepositional = "системе воздушной эвакуации «Фултон»"
+gender = "female"
+
+["data detector"]
+nominative = "сканер данных"
+genitive = "сканера данных"
+dative = "сканеру данных"
+accusative = "сканер данных"
+instrumental = "сканером данных"
+prepositional = "сканере данных"
+gender = "male"
+
+["Headset"] # Unique Vendor Name
+nominative = "гарнитура"
+
+["marine radio headset"]
+nominative = "гарнитура морпеха"
+genitive = "гарнитуры морпеха"
+dative = "гарнитуре морпеха"
+accusative = "гарнитуру морпеха"
+instrumental = "гарнитурой морпеха"
+prepositional = "гарнитуре морпеха"
+
+["marine alpha radio headset"]
+nominative = "гарнитура морпеха отряда «Альфа»"
+genitive = "гарнитуры морпеха отряда «Альфа»"
+dative = "гарнитуре морпеха отряда «Альфа»"
+accusative = "гарнитуру морпеха отряда «Альфа»"
+instrumental = "гарнитурой морпеха отряда «Альфа»"
+prepositional = "гарнитуре морпеха отряда «Альфа»"
+gender = "female"
+
+["marine bravo radio headset"]
+nominative = "гарнитура морпеха отряда «Браво»"
+genitive = "гарнитуры морпеха отряда «Браво»"
+dative = "гарнитуре морпеха отряда «Браво»"
+accusative = "гарнитуру морпеха отряда «Браво»"
+instrumental = "гарнитурой морпеха отряда «Браво»"
+prepositional = "гарнитуре морпеха отряда «Браво»"
+gender = "female"
+
+["marine charlie radio headset"]
+nominative = "гарнитура морпеха отряда «Чарли»"
+genitive = "гарнитуры морпеха отряда «Чарли»"
+dative = "гарнитуре морпеха отряда «Чарли»"
+accusative = "гарнитуру морпеха отряда «Чарли»"
+instrumental = "гарнитурой морпеха отряда «Чарли»"
+prepositional = "гарнитуре морпеха отряда «Чарли»"
+gender = "female"
+
+["marine delta radio headset"]
+nominative = "гарнитура морпеха отряда «Дельта»"
+genitive = "гарнитуры морпеха отряда «Дельта»"
+dative = "гарнитуре морпеха отряда «Дельта»"
+accusative = "гарнитуру морпеха отряда «Дельта»"
+instrumental = "гарнитурой морпеха отряда «Дельта»"
+prepositional = "гарнитуре морпеха отряда «Дельта»"
+gender = "female"
+
+["marine echo radio headset"]
+nominative = "гарнитура морпеха отряда «Эхо»"
+genitive = "гарнитуры морпеха отряда «Эхо»"
+dative = "гарнитуре морпеха отряда «Эхо»"
+accusative = "гарнитуру морпеха отряда «Эхо»"
+instrumental = "гарнитурой морпеха отряда «Эхо»"
+prepositional = "гарнитуре морпеха отряда «Эхо»"
+gender = "female"
+
+["marine foxtrot radio headset"]
+nominative = "гарнитура морпеха отряда «Фокстрот»"
+genitive = "гарнитуры морпеха отряда «Фокстрот»"
+dative = "гарнитуре морпеха отряда «Фокстрот»"
+accusative = "гарнитуру морпеха отряда «Фокстрот»"
+instrumental = "гарнитурой морпеха отряда «Фокстрот»"
+prepositional = "гарнитуре морпеха отряда «Фокстрот»"
+gender = "female"
+
+["marine alpha engineer radio headset"]
+nominative = "гарнитура техника отряда «Альфа»"
+genitive = "гарнитуры техника отряда «Альфа»"
+dative = "гарнитуре техника отряда «Альфа»"
+accusative = "гарнитуру техника отряда «Альфа»"
+instrumental = "гарнитурой техника отряда «Альфа»"
+prepositional = "гарнитуре техника отряда «Альфа»"
+gender = "female"
+
+["marine bravo engineer radio headset"]
+nominative = "гарнитура техника отряда «Браво»"
+genitive = "гарнитуры техника отряда «Браво»"
+dative = "гарнитуре техника отряда «Браво»"
+accusative = "гарнитуру техника отряда «Браво»"
+instrumental = "гарнитурой техника отряда «Браво»"
+prepositional = "гарнитуре техника отряда «Браво»"
+gender = "female"
+
+["marine charlie engineer radio headset"]
+nominative = "гарнитура техника отряда «Чарли»"
+genitive = "гарнитуры техника отряда «Чарли»"
+dative = "гарнитуре техника отряда «Чарли»"
+accusative = "гарнитуру техника отряда «Чарли»"
+instrumental = "гарнитурой техника отряда «Чарли»"
+prepositional = "гарнитуре техника отряда «Чарли»"
+gender = "female"
+
+["marine delta engineer radio headset"]
+nominative = "гарнитура техника отряда «Дельта»"
+genitive = "гарнитуры техника отряда «Дельта»"
+dative = "гарнитуре техника отряда «Дельта»"
+accusative = "гарнитуру техника отряда «Дельта»"
+instrumental = "гарнитурой техника отряда «Дельта»"
+prepositional = "гарнитуре техника отряда «Дельта»"
+gender = "female"
+
+["marine echo engineer radio headset"]
+nominative = "гарнитура техника отряда «Эхо»"
+genitive = "гарнитуры техника отряда «Эхо»"
+dative = "гарнитуре техника отряда «Эхо»"
+accusative = "гарнитуру техника отряда «Эхо»"
+instrumental = "гарнитурой техника отряда «Эхо»"
+prepositional = "гарнитуре техника отряда «Эхо»"
+gender = "female"
+
+["marine foxtrot engineer radio headset"]
+nominative = "гарнитура техника отряда «Фокстрот»"
+genitive = "гарнитуры техника отряда «Фокстрот»"
+dative = "гарнитуре техника отряда «Фокстрот»"
+accusative = "гарнитуру техника отряда «Фокстрот»"
+instrumental = "гарнитурой техника отряда «Фокстрот»"
+prepositional = "гарнитуре техника отряда «Фокстрот»"
+gender = "female"
+
+["chief medical officer's headset"]
+nominative = "гарнитура главного врача"
+genitive = "гарнитуры главного врача"
+dative = "гарнитуре главного врача"
+accusative = "гарнитуру главного врача"
+instrumental = "гарнитурой главного врача"
+prepositional = "гарнитуре главного врача"
+gender = "female"
+
+["medical radio headset"]
+nominative = "медицинская гарнитура"
+genitive = "медицинской гарнитуры"
+dative = "медицинской гарнитуре"
+accusative = "медицинскую гарнитуру"
+instrumental = "медицинской гарнитурой"
+prepositional = "медицинской гарнитуре"
+gender = "female"
+
+["Researcher's Headset"] # Unique Vendor Name
+nominative = "гарнитура исследователя"
+
+["researcher radio headset"]
+nominative = "гарнитура исследователя"
+genitive = "гарнитуры исследователя"
+dative = "гарнитуре исследователя"
+accusative = "гарнитуру исследователя"
+instrumental = "гарнитурой исследователя"
+prepositional = "гарнитуре исследователя"
+gender = "female"
+
+["Alpha Squad"] # Unique Vendor Name
+nominative = "ключ шифрования связи - отряд «Альфа»"
+
+["Alpha Squad Radio Encryption Key"]
+nominative = "ключ шифрования связи - отряд «Альфа»"
+genitive = "ключа шифрования связи - отряд «Альфа»"
+dative = "ключу шифрования связи - отряд «Альфа»"
+accusative = "ключ шифрования связи - отряд «Альфа»"
+instrumental = "ключом шифрования связи - отряд «Альфа»"
+prepositional = "ключе шифрования связи - отряд «Альфа»"
+gender = "male"
+
+["Bravo Squad"] # Unique Vendor Name
+nominative = "ключ шифрования связи - отряд «Браво»"
+
+["Bravo Squad Radio Encryption Key"]
+nominative = "ключ шифрования связи - отряд «Браво»"
+genitive = "ключа шифрования связи - отряд «Браво»"
+dative = "ключу шифрования связи - отряд «Браво»"
+accusative = "ключ шифрования связи - отряд «Браво»"
+instrumental = "ключом шифрования связи - отряд «Браво»"
+prepositional = "ключе шифрования связи - отряд «Браво»"
+gender = "male"
+
+["Сharlie Squad"] # Unique Vendor Name
+nominative = "ключ шифрования связи - отряд «Чарли»"
+
+["Charlie Squad Radio Encryption Key"]
+nominative = "ключ шифрования связи - отряд «Чарли»"
+genitive = "ключа шифрования связи - отряд «Чарли»"
+dative = "ключу шифрования связи - отряд «Чарли»"
+accusative = "ключ шифрования связи - отряд «Чарли»"
+instrumental = "ключом шифрования связи - отряд «Чарли»"
+prepositional = "ключе шифрования связи - отряд «Чарли»"
+gender = "male"
+
+["Delta Squad"] # Unique Vendor Name
+nominative = "ключ шифрования связи - отряд «Дельта»"
+
+["Delta Squad Radio Encryption Key"]
+nominative = "ключ шифрования связи - отряд «Дельта»"
+genitive = "ключа шифрования связи - отряд «Дельта»"
+dative = "ключу шифрования связи - отряд «Дельта»"
+accusative = "ключ шифрования связи - отряд «Дельта»"
+instrumental = "ключом шифрования связи - отряд «Дельта»"
+prepositional = "ключе шифрования связи - отряд «Дельта»"
+gender = "male"
+
+["Echo Squad"] # Unique Vendor Name
+nominative = "ключ шифрования связи - отряд «Эхо»"
+
+["Echo Squad Radio Encryption Key"]
+nominative = "ключ шифрования связи - отряд «Эхо»"
+genitive = "ключа шифрования связи - отряд «Эхо»"
+dative = "ключу шифрования связи - отряд «Эхо»"
+accusative = "ключ шифрования связи - отряд «Эхо»"
+instrumental = "ключом шифрования связи - отряд «Эхо»"
+prepositional = "ключе шифрования связи - отряд «Эхо»"
+gender = "male"
+
+["Colony"] # Unique Vendor Name
+nominative = "ключ шифрования связи - выжившие"
+
+["Colony Radio Encryption Key"]
+nominative = "ключ шифрования связи - выжившие"
+genitive = "ключа шифрования связи - выжившие"
+dative = "ключу шифрования связи - выжившие"
+accusative = "ключ шифрования связи - выжившие"
+instrumental = "ключом шифрования связи - выжившие"
+prepositional = "ключе шифрования связи - выжившие"
+gender = "male"
+
+["Engineering Radio Encryption Key"]
+nominative = "ключ шифрования связи - инженерный"
+genitive = "ключа шифрования связи - инженерный"
+dative = "ключу шифрования связи - инженерный"
+accusative = "ключ шифрования связи - инженерный"
+instrumental = "ключом шифрования связи - инженерный"
+prepositional = "ключе шифрования связи - инженерный"
+gender = "male"
+
+["Intel Radio Encryption Key"]
+nominative = "ключ шифрования связи - разведка"
+genitive = "ключа шифрования связи - разведка"
+dative = "ключу шифрования связи - разведка"
+accusative = "ключ шифрования связи - разведка"
+instrumental = "ключом шифрования связи - разведка"
+prepositional = "ключе шифрования связи - разведка"
+gender = "male"
+
+["JTAC Radio Encryption Key"]
+nominative = "ключ шифрования связи - JTAC"
+genitive = "ключа шифрования связи - JTAC"
+dative = "ключу шифрования связи - JTAC"
+accusative = "ключ шифрования связи - JTAC"
+instrumental = "ключом шифрования связи - JTAC"
+prepositional = "ключе шифрования связи - JTAC"
+gender = "male"
+
+["Medical Radio Encryption Key"]
+nominative = "ключ шифрования связи - медицинский"
+genitive = "ключа шифрования связи - медицинский"
+dative = "ключу шифрования связи - медицинский"
+accusative = "ключ шифрования связи - медицинский"
+instrumental = "ключом шифрования связи - медицинский"
+prepositional = "ключе шифрования связи - медицинский"
+gender = "male"
+
+["Sentry Network Status Encryption Key"]
+nominative = "ключ шифрования связи - стационарная сеть"
+genitive = "ключа шифрования связи - стационарная сеть"
+dative = "ключу шифрования связи - стационарная сеть"
+accusative = "ключ шифрования связи - стационарная сеть"
+instrumental = "ключом шифрования связи - стационарная сеть"
+prepositional = "ключе шифрования связи - стационарная сеть"
+gender = "male"
+
+["Supply Radio Encryption Key"]
+nominative = "ключ шифрования связи - обеспечение"
+genitive = "ключа шифрования связи - обеспечение"
+dative = "ключу шифрования связи - обеспечение"
+accusative = "ключ шифрования связи - обеспечение"
+instrumental = "ключом шифрования связи - обеспечение"
+prepositional = "ключе шифрования связи - обеспечение"
+gender = "male"
+
+["parachute crate (x20)"] # Unique Vendor Name
+nominative = "ящик для снаряжения (парашют x 20)"
+
+["parachute"]
+nominative = "парашют"
+genitive = "парашюта"
+dative = "парашюту"
+accusative = "парашют"
+instrumental = "парашютом"
+prepositional = "парашюте"
+gender = "male"
+
+["bedroll"]
+nominative = "спальник"
+genitive = "спальника"
+dative = "спальнику"
+accusative = "спальник"
+instrumental = "спальником"
+prepositional = "спальнике"
+gender = "male"
+
+["folded bedroll"]
+nominative = "сложенный спальник"
+genitive = "сложенного спальника"
+dative = "сложенному спальнику"
+accusative = "сложенный спальник"
+instrumental = "сложенным спальником"
+prepositional = "сложенном спальнике"
+gender = "male"
+
+["unfolded bedroll"]
+nominative = "разложенный спальник"
+genitive = "разложенного спальника"
+dative = "разложенному спальнику"
+accusative = "разложенный спальник"
+instrumental = "разложенным спальником"
+prepositional = "разложенном спальнике"
+gender = "male"
+
+["M5 Camera Gear"]
+nominative = "наголовная камера M5"
+genitive = "наголовной камеры M5"
+dative = "наголовной камере M5"
+accusative = "наголовную камеру M5"
+instrumental = "наголовной камерой M5"
+prepositional = "наголовной камере M5"
+gender = "female"
+
+["janitorial bucket"]
+nominative = "ведро уборщика"
+genitive = "ведра уборщика"
+dative = "ведру уборщика"
+accusative = "ведро уборщика"
+instrumental = "ведром уборщика"
+prepositional = "ведре уборщика"
+gender = "neuter"
+
+["Security Access Tuner"]
+nominative = "настройщик доступа охраны"
+genitive = "настройщика доступа охраны"
+dative = "настройщику доступа охраны"
+accusative = "настройщика доступа охраны"
+instrumental = "настройщиком доступа охраны"
+prepositional = "настройщике доступа охраны"
+gender = "male"
+
+["M20 Claymore anti-personnel mine"]
+nominative = "противопехотная мина M20 Клеймор"
+genitive = "противопехотной мины M20 Клеймор"
+dative = "противопехотной мине M20 Клеймор"
+accusative = "противопехотную мину M20 Клеймор"
+instrumental = "противопехотной миной M20 Клеймор"
+prepositional = "противопехотной мине M20 Клеймор"
+gender = "female"
+
+["M11 throwing knife"]
+nominative = "метательный нож M11"
+genitive = "метательного ножа M11"
+dative = "метательному ножу M11"
+accusative = "метательный нож M11"
+instrumental = "метательным ножом M11"
+prepositional = "метательном ноже M11"
+gender = "male"
+
+["M5 'Night Raider' bayonet"]
+nominative = "штык-нож M5 «Ночной охотник»"
+genitive = "штык-ножа M5 «Ночной охотник»"
+dative = "штык-ножу M5 «Ночной охотник»"
+accusative = "штык-нож M5 «Ночной охотник»"
+instrumental = "штык-ножом M5 «Ночной охотник»"
+prepositional = "штык-ноже M5 «Ночной охотник»"
+gender = "male"
+
+["M2132 machete"]
+nominative = "мачете M2132"
+genitive = "мачете M2132"
+dative = "мачете M2132"
+accusative = "мачете M2132"
+instrumental = "мачете M2132"
+prepositional = "мачете M2132"
+gender = "neuter"
+
+["Motion Detector (x2)"] # Unique Vendor Name
+nominative = "ящик для снаряжения (детектор движения x 2)"
+
+["motion detector"]
+nominative = "детектор движения"
+genitive = "детектора движения"
+dative = "детектору движения"
+accusative = "детектор движения"
+instrumental = "детектором движения"
+prepositional = "детекторе движения"
+gender = "male"
+
+["map"]
+nominative = "карта"
+genitive = "карты"
+dative = "карте"
+accusative = "карту"
+instrumental = "картой"
+prepositional = "карте"
+gender = "female"
+
+["empty sandbags crate (x50)"] # Unique Vendor Name
+nominative = "ящик для инженерного оборудования (пустые мешки для песка x 50)"
+
+["sandbags construction kit (sandbags x50, etool x2)"] # Unique Vendor Name
+nominative = "ящик для инженерного оборудования (пустые мешки для песка x 50, лопата x 2)"
+
+["Sandbags (empty) x10"] # Unique Vendor Name
+nominative = "пустые мешки для песка x 10"
+
+["empty sandbags"]
+nominative = "пустые мешки для песка"
+genitive = "пустых мешков для песка"
+dative = "пустым мешкам для песка"
+accusative = "пустые мешки для песка"
+instrumental = "пустыми мешками для песка"
+prepositional = "пустых мешках для песка"
+gender = "male"
+
+["Sandbags (full) x5"] # Unique Vendor Name
+nominative = "мешки с песком x 5"
+
+["Sandbags x25"] # Unique Vendor Name
+nominative = "мешки с песком x 25"
+
+["sandbags"]
+nominative = "мешки с песком"
+genitive = "мешков с песком"
+dative = "мешкам с песком"
+accusative = "мешки с песком"
+instrumental = "мешками с песком"
+prepositional = "мешках с песком"
+gender = "male"
+
+["plastic explosives crate (x3)"] # Unique Vendor Name
+nominative = "ящик для взрывчатых веществ (С-4 x 3)"
+
+["Plastic Explosive"] # Unique Vendor Name
+nominative = "пластичная взрывчатка С-4"
+
+["plastic explosives"]
+nominative = "пластичная взрывчатка С-4"
+genitive = "пластичной взрывчатки С-4"
+dative = "пластичной взрывчатке С-4"
+accusative = "пластичную взрывчатку С-4"
+instrumental = "пластичной взрывчаткой С-4"
+prepositional = "пластичной взрывчатке С-4"
+gender = "female"
+
+["breaching charge crate (x4)"] # Unique Vendor Name
+nominative = "ящик для взрывчатых веществ (пробивной заряд x 4)"
+
+["breaching charge"]
+nominative = "пробивной заряд"
+genitive = "пробивного заряда"
+dative = "пробивному заряду"
+accusative = "пробивной заряд"
+instrumental = "пробивным зарядом"
+prepositional = "пробивном заряде"
+gender = "male"
+
+["firearms repair kit"]
+nominative = "набор для ремонта оружия"
+genitive = "набора для ремонта оружия"
+dative = "набору для ремонта оружия"
+accusative = "набор для ремонта оружия"
+instrumental = "набором для ремонта оружия"
+prepositional = "наборе для ремонта оружия"
+gender = "male"
+
+["Combat Lubricant"] # Unique Vendor Name
+nominative = "оружейная смазка"
+
+["Multi-purpose combat lubricant"]
+nominative = "универсальная оружейная смазка"
+genitive = "универсальной оружейной смазки"
+dative = "универсальной оружейной смазке"
+accusative = "универсальную оружейную смазку"
+instrumental = "универсальной оружейной смазкой"
+prepositional = "универсальной оружейной смазке"
+gender = "female"
+
+["combat flashlight"]
+nominative = "армейский фонарик"
+genitive = "армейского фонарика"
+dative = "армейскому фонарику"
+accusative = "армейский фонарик"
+instrumental = "армейским фонариком"
+prepositional = "армейском фонарике"
+gender = "male"
+
+["Flashlights (x8)"] # Unique Vendor Name
+nominative = "ящик для оборудования (фонарики x 8)"
+
+["Box of Flashlights"] # Unique Vendor Name
+nominative = "коробка с фонариками"
+
+["Box of Combat Flashlights"] # Unique Vendor Name
+nominative = "коробка с армейскими фонариками"
+
+["box of combat flashlights"]
+nominative = "коробка с армейскими фонариками"
+genitive = "коробки с армейскими фонариками"
+dative = "коробке с армейскими фонариками"
+accusative = "коробку с армейскими фонариками"
+instrumental = "коробкой с армейскими фонариками"
+prepositional = "коробке с армейскими фонариками"
+gender = "female"
+
+["signal flare packs crate (x4)"] # Unique Vendor Name
+nominative = "ящик для снаряжения (сигнальный огонь x 32)"
+
+["Box of M89 Signal Flare Packs"] # Unique Vendor Name
+nominative = "упаковка сигнальных огней M89-S"
+
+["M89-S signal flare pack"]
+nominative = "упаковка сигнальных огней M89-S"
+genitive = "упаковки сигнальных огней M89-S"
+dative = "упаковке сигнальных огней M89-S"
+accusative = "упаковку сигнальных огней M89-S"
+instrumental = "упаковкой сигнальных огней M89-S"
+prepositional = "упаковке сигнальных огней M89-S"
+gender = "female"
+
+["box of M89 signal flare packs"]
+nominative = "коробка сигнальных огней M89-S"
+genitive = "коробки сигнальных огней M89-S"
+dative = "коробке сигнальных огней M89-S"
+accusative = "коробку сигнальных огней M89-S"
+instrumental = "коробкой сигнальных огней M89-S"
+prepositional = "коробке сигнальных огней M89-S"
+gender = "female"
+
+["High-Capacity Power Cells (x8)"] # Unique Vendor Name
+nominative = "ящик для оборудования (батарея большой ёмкости x 8)"
+
+["Box of High-Capacity Power Cells"] # Unique Vendor Name
+nominative = "коробка батарей большой ёмкости"
+
+["box of High-Capacity Power Cells"]
+nominative = "коробка батарей большой ёмкости"
+genitive = "коробки батарей большой ёмкости"
+dative = "коробке батарей большой ёмкости"
+accusative = "коробку батарей большой ёмкости"
+instrumental = "коробкой батарей большой ёмкости"
+prepositional = "коробке батарей большой ёмкости"
+gender = "female"
+
+["M94 marking flare pack"]
+nominative = "упаковка осветительных огней M94"
+genitive = "упаковки осветительных огней M94"
+dative = "упаковке осветительных огней M94"
+accusative = "упаковку осветительных огней M94"
+instrumental = "упаковкой осветительных огней M94"
+prepositional = "упаковке осветительных огней M94"
+gender = "female"
+
+["flare packs crate (x20)"] # Unique Vendor Name
+nominative = "ящик для снаряжения (осветительный огонь x 160)"
+
+["Box of M94 Marking Flare Packs"] # Unique Vendor Name
+nominative = "коробка осветительных огней M94"
+
+["box of M94 marking flare packs"]
+nominative = "коробка осветительных огней M94"
+genitive = "коробки осветительных огней M94"
+dative = "коробке осветительных огней M94"
+accusative = "коробку осветительных огней M94"
+instrumental = "коробкой осветительных огней M94"
+prepositional = "коробке осветительных огней M94"
+gender = "female"
+
+["flare"]
+nominative = "осветительный огонь"
+genitive = "осветительного огня"
+dative = "осветительному огню"
+accusative = "осветительный огонь"
+instrumental = "осветительным огнём"
+prepositional = "осветительном огне"
+gender = "male"
+
+["signal flare"]
+nominative = "сигнальный огонь"
+genitive = "сигнального огня"
+dative = "сигнальному огню"
+accusative = "сигнальный огонь"
+instrumental = "сигнальным огнём"
+prepositional = "сигнальном огне"
+gender = "male"
+
+["Sentry Gun Network Laptop"]
+nominative = "ноутбук управления стационарными системами"
+genitive = "ноутбука управления стационарными системами"
+dative = "ноутбуку управления стационарными системами"
+accusative = "ноутбук управления стационарными системами"
+instrumental = "ноутбуком управления стационарными системами"
+prepositional = "ноутбуке управления стационарными системами"
+gender = "male"
+
+["Spare PDT/L Battle Buddy Kit"] # Unique Vendor Name
+nominative = "аварийный маячок морпеха «Напарник»"
+
+["Boots! PDT/L Battle Buddy kit"]
+nominative = "аварийный маячок морпеха «Напарник»"
+genitive = "аварийного маячка морпеха «Напарник»"
+dative = "аварийному маячку морпеха «Напарник»"
+accusative = "аварийный маячок морпеха «Напарник»"
+instrumental = "аварийным маячком морпеха «Напарник»"
+prepositional = "аварийном маячке морпеха «Напарник»"
+gender = "male"
+
+["Folding Barricades (x3)"] # Unique Vendor Name
+nominative = "ящик для инженерного оборудования (баррикада x 3)"
+
+["MB-6 Folding Barricade (x3)"] # Unique Vendor Name
+nominative = "сложенная баррикада MB-6 x 3"
+
+["MB-6 Folding Barricade"]
+nominative = "сложенная баррикада MB-6"
+genitive = "сложенной баррикады MB-6"
+dative = "сложенной баррикаде MB-6"
+accusative = "сложенную баррикаду MB-6"
+instrumental = "сложенной баррикадой MB-6"
+prepositional = "сложенной баррикаде MB-6"
+gender = "female"
+
+["portable composite barricade"]
+nominative = "незакреплённая баррикада MB-6"
+genitive = "незакреплённой баррикады MB-6"
+dative = "незакреплённой баррикаде MB-6"
+accusative = "незакреплённую баррикаду MB-6"
+instrumental = "незакреплённой баррикадой MB-6"
+prepositional = "незакреплённой баррикаде MB-6"
+gender = "female"
+
+["plasteel sheet"]
+nominative = "лист пластали"
+genitive = "листа пластали"
+dative = "листу пластали"
+accusative = "лист пластали"
+instrumental = "листом пластали"
+prepositional = "листе пластали"
+gender = "male"
+
+["electrical maintenance crate (toolbox x2, insulated x2, cell x2, hi-cap cell x2)"] # Unique Vendor Name
+nominative = "ящик для оборудования электрика (инструменты x 2, перчатки x 2, батарея x 2, батарея большой ёмкости x 2)"
+
+["mechanical maintenance crate (utility belt x3, hazard vest x3, welding helmet x2, hard hat x1)"] # Unique Vendor Name
+nominative = "ящик для оборудования (пояс для инструментов x 3, жилет x 3, сварочная маска x 2, каска x 1)"
+
+["oxygen internals crate (x3 masks, x3 tanks)"] # Unique Vendor Name
+nominative = "ящик для снабжения (противогаз x 3, воздушный баллон x 3)"
+
+["emergency equipment (x2 toolbox, x2 hazard vest, x5 oxygen tank, x5 masks)"] # Unique Vendor Name
+nominative = "ящик для снабжения (язик для инструментов x 2, сигнальный жилет x 2, кислородный баллон x 5, противогаз x 5)"
+
+["empty boxes (x10)"] # Unique Vendor Name
+nominative = "ящик для снабжения (пустая коробка x 10)"
+
+["assorted janitorial supplies"] # Unique Vendor Name
+nominative = "ящик для оборудования уборщика (обеспечение)"
+
+["posters"] # Unique Vendor Name
+nominative = "ящик для снабжения (плакат x 5)"
+
+["boxes of crayons"] # Unique Vendor Name
+nominative = "ящик для снабжения (цветные карандаши x 5)"
+
+["assorted presents"] # Unique Vendor Name
+nominative = "ящик для снабжения (подарок x 5)"
+
+["wrapping supplies"] # Unique Vendor Name
+nominative = "ящик для снабжения (обёрточная бумага x 4, кусачки x 2)"
+
+["welding helmet"]
+nominative = "сварочная маска"
+genitive = "сварочной маски"
+dative = "сварочной маске"
+accusative = "сварочную маску"
+instrumental = "сварочной маской"
+prepositional = "сварочной маске"
+gender = "female"
+
+["hard hat"]
+nominative = "защитная каска"
+genitive = "защитной каски"
+dative = "защитной каске"
+accusative = "защитную каску"
+instrumental = "защитной каской"
+prepositional = "защитной каске"
+gender = "female"
+
+["inflatable barriers (x9 doors, x12 walls)"] # Unique Vendor Name
+nominative = "ящик для оборудования (надувные двери x 9, надувные стены x 12)"
+
+["inflatable barrier box"]
+nominative = "коробка надувных укрытий"
+genitive = "коробки надувных укрытий"
+dative = "коробке надувных укрытий"
+accusative = "коробку надувных укрытий"
+instrumental = "коробкой надувных укрытий"
+prepositional = "коробке надувных укрытий"
+gender = "female"
+
+["inflatable door"]
+nominative = "надувная дверь"
+genitive = "надувной двери"
+dative = "надувной двери"
+accusative = "надувную дверь"
+instrumental = "надувной дверью"
+prepositional = "надувной двери"
+gender = "female"
+
+["popped inflatable door"]
+nominative = "лопнувшая надувная дверь"
+genitive = "лопнувшей надувной двери"
+dative = "лопнувшей надувной двери"
+accusative = "лопнувшую надувную дверь"
+instrumental = "лопнувшей надувной дверью"
+prepositional = "лопнувшей надувной двери"
+gender = "female"
+
+["inflatable wall"]
+nominative = "надувная стена"
+genitive = "защитной каски"
+dative = "защитной каске"
+accusative = "защитную каску"
+instrumental = "защитной каской"
+prepositional = "защитной каске"
+gender = "female"
+
+["popped inflatable wall"]
+nominative = "лопнувшая надувная стена"
+genitive = "лопнувшей надувной стены"
+dative = "лопнувшей надувной стене"
+accusative = "лопнувшую надувную стену"
+instrumental = "лопнувшей надувной стеной"
+prepositional = "лопнувшей надувной стене"
+gender = "female"
+
+["replacement lights (x42 tube, x21 bulb)"] # Unique Vendor Name
+nominative = "ящик для оборудования (трубчатая лампа x 42, лампочка x 21)"
+
+["box of replacement lights"]
+nominative = "коробка сменных ламп"
+genitive = "коробки сменных ламп"
+dative = "коробке сменных ламп"
+accusative = "коробку сменных ламп"
+instrumental = "коробкой сменных ламп"
+prepositional = "коробке сменных ламп"
+gender = "female"
+
+["large light tube"]
+nominative = "трубчатая лампа"
+genitive = "трубчатой лампы"
+dative = "трубчатой лампе"
+accusative = "трубчатую лампу"
+instrumental = "трубчатой лампой"
+prepositional = "трубчатой лампе"
+gender = "female"
+
+["light tube"]
+nominative = "трубчатая лампа"
+genitive = "трубчатой лампы"
+dative = "трубчатой лампе"
+accusative = "трубчатую лампу"
+instrumental = "трубчатой лампой"
+prepositional = "трубчатой лампе"
+gender = "female"
+
+["light bulb"]
+nominative = "лампочка"
+genitive = "лампочки"
+dative = "лампочке"
+accusative = "лампочку"
+instrumental = "лампочкой"
+prepositional = "лампочке"
+gender = "female"
+
+["capacitor"]
+nominative = "конденсатор"
+genitive = "конденсатора"
+dative = "конденсатору"
+accusative = "конденсатор"
+instrumental = "конденсатором"
+prepositional = "конденсаторе"
+gender = "male"
+
+["micro-laser"]
+nominative = "микролазер"
+genitive = "микролазера"
+dative = "микролазеру"
+accusative = "микролазер"
+instrumental = "микролазером"
+prepositional = "микролазере"
+gender = "male"
+
+["P.A.C.M.A.N. portable generator parts"] # Unique Vendor Name
+nominative = "ящик для оборудования (запчасти для генератора PACMAN)"
+
+["Circuit Board (PACMAN-type Generator)"]
+nominative = "печатная плата (генератор PACMAN)"
+genitive = "печатной платы (генератор PACMAN)"
+dative = "печатной плате (генератор PACMAN)"
+accusative = "печатную плату (генератор PACMAN)"
+instrumental = "печатной платой (генератор PACMAN)"
+prepositional = "печатной плате (генератор PACMAN)"
+gender = "female"
+
+["Super P.A.C.M.A.N. portable generator parts"] # Unique Vendor Name
+nominative = "ящик для оборудования (запчасти для генератора SUPERPACMAN)"
+
+["Circuit Board (SUPERPACMAN-type Generator)"]
+nominative = "печатная плата (генератор SUPERPACMAN)"
+genitive = "печатной платы (генератор SUPERPACMAN)"
+dative = "печатной плате (генератор SUPERPACMAN)"
+accusative = "печатную плату (генератор SUPERPACMAN)"
+instrumental = "печатной платой (генератор SUPERPACMAN)"
+prepositional = "печатной плате (генератор SUPERPACMAN)"
+gender = "female"
+
+["matter bin"]
+nominative = "ёмкость материи"
+genitive = "ёмкости материи"
+dative = "ёмкости материи"
+accusative = "ёмкость материи"
+instrumental = "ёмкостью материи"
+prepositional = "ёмкости материи"
+gender = "female"
+
+["high-capacity power cell"]
+nominative = "батарея большой ёмкости"
+genitive = "батареи большой ёмкости"
+dative = "батарее большой ёмкости"
+accusative = "батарею большой ёмкости"
+instrumental = "батареей большой ёмкости"
+prepositional = "батарее большой ёмкости"
+gender = "female"
+
+["superconducting magnetic coil crate (x1)"] # Unique Vendor Name
+nominative = "ящик для инженерного оборудования (СПМК x 1)"
+
+["Superconducting Magnetic Coil"]
+nominative = "сверхпроводящая магнитная катушка"
+genitive = "сверхпроводящей магнитной катушки"
+dative = "сверхпроводящей магнитной катушке"
+accusative = "сверхпроводящую магнитную катушку"
+instrumental = "сверхпроводящей магнитной катушкой"
+prepositional = "сверхпроводящей магнитной катушке"
+gender = "female"
+
+["assembly crate"] # Unique Vendor Name
+nominative = "ящик для оборудования пиротехника (запал x 5, датчик x 5, таймер x 5)"
+
+["pyrotechnics crate"] # Unique Vendor Name
+nominative = "ящик для оборудования пиротехника (мензурки x 15)"
+
+["phoron crate"] # Unique Vendor Name
+nominative = "ящик для исследовательского оборудования (Solid phoron x 2)"
+
+["precious metals crate"] # Unique Vendor Name
+nominative = "ящик для исследовательского оборудования (золото x 1, серебро x 1, уран x 1)"
+
+["plastic crate"] # Unique Vendor Name
+nominative = "ящик для исследовательского оборудования (пластик x 20)"
+
+["plastic"]
+nominative = "лист пластика"
+genitive = "листа пластика"
+dative = "листу пластика"
+accusative = "лист пластика"
+instrumental = "листом пластика"
+prepositional = "листе пластика"
+gender = "male"
+
+["Xenomorph IFF Tag Case (x7 tags)"] # Unique Vendor Name
+nominative = "ящик для исследовательского оборудования (метка ксеноморфа x 7)"
+
+["xenomorph tag case"]
+nominative = "кейс для меток ксеноморфов"
+genitive = "кейса для меток ксеноморфов"
+dative = "кейсу для меток ксеноморфов"
+accusative = "кейс для меток ксеноморфов"
+instrumental = "кейсом для меток ксеноморфов"
+prepositional = "кейсе для меток ксеноморфов"
+gender = "male"
+
+["xenomorph IFF tag"]
+nominative = "метка для ксеноморфа (система свой-чужой)"
+genitive = "метки для ксеноморфа (системы свой-чужой)"
+dative = "метке для ксеноморфа (системе свой-чужой)"
+accusative = "метку для ксеноморфа (систему свой-чужой)"
+instrumental = "меткой для ксеноморфа (системой свой-чужой)"
+prepositional = "метке для ксеноморфа (системе свой-чужой)"
+gender = "female"
+
+["explosives production crate"] # Unique Vendor Name
+nominative = "ящик для оборудования пиротехника (газовые баллоны x 10)"
+
+["hydrogen canister"]
+nominative = "газовый баллон (hydrogen)"
+genitive = "газового баллона (hydrogen)"
+dative = "газовому баллону (hydrogen)"
+accusative = "газовый баллон (hydrogen)"
+instrumental = "газовым баллоном (hydrogen)"
+prepositional = "газовом баллоне (hydrogen)"
+gender = "male"
+
+["ammonia canister"]
+nominative = "газовый баллон (ammonia)"
+genitive = "газового баллона (ammonia)"
+dative = "газовому баллону (ammonia)"
+accusative = "газовый баллон (ammonia)"
+instrumental = "газовым баллоном (ammonia)"
+prepositional = "газовом баллоне (ammonia)"
+gender = "male"
+
+["methane canister"]
+nominative = "газовый баллон (methane)"
+genitive = "газового баллона (methane)"
+dative = "газовому баллону (methane)"
+accusative = "газовый баллон (methane)"
+instrumental = "газовым баллоном (methane)"
+prepositional = "газовом баллоне (methane)"
+gender = "male"
+
+["Oxygen canister"]
+nominative = "газовый баллон (oxygen)"
+genitive = "газового баллона (oxygen)"
+dative = "газовому баллону (oxygen)"
+accusative = "газовый баллон (oxygen)"
+instrumental = "газовым баллоном (oxygen)"
+prepositional = "газовом баллоне (oxygen)"
+gender = "male"
+
+["Polytrinic acid canister"]
+nominative = "газовый баллон (polytrinic acid)"
+genitive = "газового баллона (polytrinic acid)"
+dative = "газовому баллону (polytrinic acid)"
+accusative = "газовый баллон (polytrinic acid)"
+instrumental = "газовым баллоном (polytrinic acid)"
+prepositional = "газовом баллоне (polytrinic acid)"
+gender = "male"
+
+["sulphuric acid beaker"]
+nominative = "мензурка (sulphuric acid)"
+genitive = "мензурки (sulphuric acid)"
+dative = "мензурке (sulphuric acid)"
+accusative = "мензурку (sulphuric acid)"
+instrumental = "мензуркой (sulphuric acid)"
+prepositional = "мензурке (sulphuric acid)"
+gender = "female"
+
+["ethanol beaker"]
+nominative = "мензурка (ethanol)"
+genitive = "мензурки (ethanol)"
+dative = "мензурке (ethanol)"
+accusative = "мензурку (ethanol)"
+instrumental = "мензуркой (ethanol)"
+prepositional = "мензурке (ethanol)"
+gender = "female"
+
+["phosphorus beaker"]
+nominative = "мензурка (phosphorus)"
+genitive = "мензурки (phosphorus)"
+dative = "мензурке (phosphorus)"
+accusative = "мензурку (phosphorus)"
+instrumental = "мензуркой (phosphorus)"
+prepositional = "мензурке (phosphorus)"
+gender = "female"
+
+["lithium beaker"]
+nominative = "мензурка (lithium)"
+genitive = "мензурки (lithium)"
+dative = "мензурке (lithium)"
+accusative = "мензурку (lithium)"
+instrumental = "мензуркой (lithium)"
+prepositional = "мензурке (lithium)"
+gender = "female"
+
+["sodium chloride beaker"]
+nominative = "мензурка (sodium chloride)"
+genitive = "мензурки (sodium chloride)"
+dative = "мензурке (sodium chloride)"
+accusative = "мензурку (sodium chloride)"
+instrumental = "мензуркой (sodium chloride)"
+prepositional = "мензурке (sodium chloride)"
+gender = "female"
+
+["potassium chloride beaker"]
+nominative = "мензурка (potassium chloride)"
+genitive = "мензурки (potassium chloride)"
+dative = "мензурке (potassium chloride)"
+accusative = "мензурку (potassium chloride)"
+instrumental = "мензуркой (potassium chloride)"
+prepositional = "мензурке (potassium chloride)"
+gender = "female"
+
+["timer"]
+nominative = "таймер"
+genitive = "таймера"
+dative = "таймеру"
+accusative = "таймер"
+instrumental = "таймером"
+prepositional = "таймере"
+gender = "male"
+
+["igniter"]
+nominative = "запал"
+genitive = "запала"
+dative = "запалу"
+accusative = "запал"
+instrumental = "запалом"
+prepositional = "запале"
+gender = "male"
+
+["proximity sensor"]
+nominative = "датчик движения"
+genitive = "датчика движения"
+dative = "датчику движения"
+accusative = "датчик движения"
+instrumental = "датчиком движения"
+prepositional = "датчике движения"
+gender = "male"
+
+["glass sheets (x50)"] # Unique Vendor Name
+nominative = "ящик для инженерного оборудования (стекло x 50)"
+
+["wooden planks (x50)"] # Unique Vendor Name
+nominative = "ящик для инженерного оборудования (деревянная доска x 50)"
+
+["metal sheets (x50)"] # Unique Vendor Name
+nominative = "ящик для инженерного оборудования (листы металла x 50)"
+
+["Metal x10"] # Unique Vendor Name
+nominative = "листы металла x 10"
+
+["metal sheets"]
+nominative = "лист металла"
+genitive = "листа металла"
+dative = "листу металла"
+accusative = "лист металла"
+instrumental = "листом металла"
+prepositional = "листе металла"
+gender = "male"
+
+["plasteel sheets (x40)"] # Unique Vendor Name
+nominative = "ящик для инженерного оборудования (листы пластали x 40)"
+
+["Plasteel x10"] # Unique Vendor Name
+nominative = "листы пластали x 10"
+
+[plasteel]
+nominative = "лист пластали"
+genitive = "листа пластали"
+dative = "листву пластали"
+accusative = "лист пластали"
+instrumental = "листом пластали"
+prepositional = "листе пластали"
+gender = "male"
+
+["21S Tesla Coil"] # Unique Vendor Name
+nominative = "катушка Тесла 21S"
+
+["21S tesla coil"]
+nominative = "катушка Тесла 21S"
+genitive = "катушки Тесла 21S"
+dative = "катушке Тесла 21S"
+accusative = "катушку Тесла 21S"
+instrumental = "катушкой Тесла 21S"
+prepositional = "катушке Тесла 21S"
+gender = "female"
+
+["handheld 21S tesla coil"]
+nominative = "катушка Тесла 21S (неустановленная)"
+genitive = "катушки Тесла 21S (неустановленная)"
+dative = "катушке Тесла 21S (неустановленная)"
+accusative = "катушку Тесла 21S (неустановленная)"
+instrumental = "катушкой Тесла 21S (неустановленная)"
+prepositional = "катушке Тесла 21S (неустановленная)"
+gender = "female"
+
+["JIMA Planted Flag"] # Unique Vendor Name
+nominative = "полевой флагшток JIMA"
+
+["handheld JIMA planted flag"]
+nominative = "полевой флагшток JIMA (неустановленный)"
+genitive = "полевого флагштока JIMA (неустановленный)"
+dative = "полевому флагштоку JIMA (неустановленный)"
+accusative = "полевой флагшток JIMA (неустановленный)"
+instrumental = "полевым флагштоком JIMA (неустановленный)"
+prepositional = "полевом флагштоке JIMA (неустановленный)"
+gender = "male"
+
+["JIMA planted flag"]
+nominative = "полевой флагшток JIMA"
+genitive = "полевого флагштока JIMA"
+dative = "полевому флагштоку JIMA"
+accusative = "полевой флагшток JIMA"
+instrumental = "полевым флагштоком JIMA"
+prepositional = "полевом флагштоке JIMA"
+gender = "male"
+
+["M402 mortar crate (Mortar x1, Mortar shell backpack x1)"] # Unique Vendor Name
+nominative = "ящик для вооружения (миномётный комплекс x 1, рюкзак ККМП для миномётных снарядов x 1)"
+
+["M402 mortar shells crate (x6 HE)"] # Unique Vendor Name
+nominative = "ящик для ракет к M402 (разрывная x 6)"
+
+["M402 mortar shells crate (x6 Incend)"] # Unique Vendor Name
+nominative = "ящик для ракет к M402 (зажигательная x 6)"
+
+["M402 mortar shells crate (x6 Flare/Camera)"] # Unique Vendor Name
+nominative = "ящик для ракет к M402 (камерная-осветительная x 6)"
+
+["M402 mortar shells crate (x6 Frag)"] # Unique Vendor Name
+nominative = "ящик для ракет к M402 (осколочная x 6)"
+
+["Mortar Kit"]
+nominative = "ящик для переносного миномётного комплекса M402"
+genitive = "ящика для переносного миномётного комплекса M402"
+dative = "ящику для переносного миномётного комплекса M402"
+accusative = "ящик для переносного миномётного комплекса M402"
+instrumental = "ящиком для переносного миномётного комплекса M402"
+prepositional = "ящике для переносного миномётного комплекса M402"
+gender = "male"
+
+["M402 mortar portable kit"]
+nominative = "переносной миномётный комплекс M402"
+genitive = "переносного миномётного комплекса M402"
+dative = "переносному миномётному комплексу M402"
+accusative = "переносной миномётный комплекс M402"
+instrumental = "переносным миномётным комплексом M402"
+prepositional = "переносном миномётном комплексе M402"
+gender = "male"
+
+["Replacement RE700 Rotary Cannon (x1)"] # Unique Vendor Name
+nominative = "ящик для вооружения (вращающаяся турель RE700 x 1)"
+
+["Vehicle - Motorbike (x1)"] # Unique Vendor Name
+nominative = "ящик для транспорта (мотоцикл x 1, руководство x 1)"
+
+["Vehicle - Motorbike stroller (x1)"] # Unique Vendor Name
+nominative = "ящик для транспорта (мотоциклетная коляска x 1)"
+
+["RE700 Rotary Cannon"]
+nominative = "вращающаяся турель RE700"
+genitive = "вращающейся турели RE700"
+dative = "вращающейся турели RE700"
+accusative = "вращающуюся турель RE700"
+instrumental = "вращающейся турелью RE700"
+prepositional = "вращающейся турели RE700"
+gender = "female"
+
+["UA 42-F Sentry Flamer"]
+nominative = "стационарный огнемёт СА 42-F"
+genitive = "стационарного огнемёта СА 42-F"
+dative = "стационарному огнемёту СА 42-F"
+accusative = "стационарный огнемёт СА 42-F"
+instrumental = "стационарным огнемётом СА 42-F"
+prepositional = "стационарном огнемёте СА 42-F"
+gender = "male"
+
+["handheld UA 42-F sentry flamer"]
+nominative = "стационарный огнемёт СА 42-F (неустановленный)"
+genitive = "стационарного огнемёта СА 42-F (неустановленный)"
+dative = "стационарному огнемёту СА 42-F (неустановленный)"
+accusative = "стационарный огнемёт СА 42-F (неустановленный)"
+instrumental = "стационарным огнемётом СА 42-F (неустановленный)"
+prepositional = "стационарном огнемёте СА 42-F (неустановленный)"
+gender = "male"
+
+["UA 571-C Sentry Gun"] # Unique Vendor Name
+nominative = "стационарный пулемёт СА 571-C"
+
+["UA 571-C sentry gun"]
+nominative = "стационарный пулемёт СА 571-C"
+genitive = "стационарного пулемёта СА 571-C"
+dative = "стационарному пулемёту СА 571-C"
+accusative = "стационарный пулемёт СА 571-C"
+instrumental = "стационарным пулемётом СА 571-C"
+prepositional = "стационарном пулемёте СА 571-C"
+gender = "male"
+
+["handheld UA 571-C sentry gun"]
+nominative = "стационарный пулемёт СА 571-C (неустановленный)"
+genitive = "стационарного пулемёта СА 571-C (неустановленный)"
+dative = "стационарному пулемёту СА 571-C (неустановленный)"
+accusative = "стационарный пулемёт СА 571-C (неустановленный)"
+instrumental = "стационарным пулемётом СА 571-C (неустановленный)"
+prepositional = "стационарном пулемёте СА 571-C (неустановленный)"
+gender = "male"
+
+["Sentry Upgrade kit"] # Unique Vendor Name
+nominative = "инженерный набор улучшений"
+
+["engineering upgrade kit"]
+nominative = "инженерный набор улучшений"
+genitive = "инженерного набора улучшений"
+dative = "инженерному набору улучшений"
+accusative = "инженерный набор улучшений"
+instrumental = "инженерным набором улучшений"
+prepositional = "инженерном наборе улучшений"
+gender = "male"
+
+["ES-11 Mobile Fuel Canister"] # Unique Vendor Name
+nominative = "баллон с топливом для сварки ES-11"
+
+["ES-11 fuel canister"]
+nominative = "баллон с топливом для сварки ES-11"
+genitive = "баллона с топливом для сварки ES-11"
+dative = "баллону с топливом для сварки ES-11"
+accusative = "баллон с топливом для сварки ES-11"
+instrumental = "баллоном с топливом для сварки ES-11"
+prepositional = "баллоне с топливом для сварки ES-11"
+gender = "male"
+
+["Synthetic Reset Key"] # Unique Vendor Name
+nominative = "ключ перезапуска синтетика «ВейЮ»"
+
+["W-Y synthetic reset key"]
+nominative = "ключ перезапуска синтетика «ВейЮ»"
+genitive = "ключа перезапуска синтетика «ВейЮ»"
+dative = "ключу перезапуска синтетика «ВейЮ»"
+accusative = "ключ перезапуска синтетика «ВейЮ»"
+instrumental = "ключом перезапуска синтетика «ВейЮ»"
+prepositional = "ключе перезапуска синтетика «ВейЮ»"
+gender = "male"
+
+["Medical Helmet Optic"] # Unique Vendor Name
+nominative = "простой медицинский ИЛС"
+
+["Advanced Medical Optic (CORPSMAN ONLY)"] # Unique Vendor Name
+nominative = "простой  медицинский ИЛС (ТОЛЬКО ДЛЯ САНИТАРА)"
+
+["basic medical optic"]
+nominative = "простой медицинский ИЛС"
+genitive = "простого медицинского ИЛС"
+dative = "простому медицинскому ИЛС"
+accusative = "простой медицинский ИЛС"
+instrumental = "простым медицинским ИЛС"
+prepositional = "простом медицинском ИЛС"
+gender = "male"
+
+["squad optic"]
+nominative = "ИЛС отрядов"
+genitive = "ИЛС отрядов"
+dative = "ИЛС отрядам"
+accusative = "ИЛС отрядов"
+instrumental = "ИЛС отрядами"
+prepositional = "ИЛС отрядах"
+gender = "plural"
+
+["Welding Visor"] # Unique Vendor Name
+nominative = "щиток сварщика для шлема"
+
+["welding visor"]
+nominative = "щиток сварщика для шлема"
+genitive = "щитка сварщика для шлема"
+dative = "щитку сварщика для шлема"
+accusative = "щиток сварщика для шлема"
+instrumental = "щитком сварщика для шлема"
+prepositional = "щитке сварщика для шлема"
+gender = "male"
+
+["ME3 Hand Welder"] # Unique Vendor Name
+nominative = "сварочный аппарат ME3"
+
+["ME3 hand welder"]
+nominative = "сварочный аппарат ME3"
+genitive = "сварочного аппарата ME3"
+dative = "сварочному аппарату ME3"
+accusative = "сварочный аппарат ME3"
+instrumental = "сварочным аппаратом ME3"
+prepositional = "сварочном аппарате ME3"
+gender = "male"
+
+["V3 reactive thermal tarp"]
+nominative = "камуфляжный мешок V3"
+genitive = "камуфляжного мешка V3"
+dative = "камуфляжному мешку V3"
+accusative = "камуфляжный мешок V3"
+instrumental = "камуфляжным мешком V3"
+prepositional = "камуфляжном мешке V3"
+gender = "male"
+
+["V3 reactive thermal tarp (folded)"]
+nominative = "камуфляжный мешок V3 (сложенный)"
+genitive = "камуфляжного мешка V3 (сложенный)"
+dative = "камуфляжному мешку V3 (сложенный)"
+accusative = "камуфляжный мешок V3 (сложенный)"
+instrumental = "камуфляжным мешком V3 (сложенный)"
+prepositional = "камуфляжном мешке V3 (сложенный)"
+gender = "male"
+
+["V3 reactive thermal tarp (empty)"]
+nominative = "пустой камуфляжный мешок V3"
+genitive = "пустого камуфляжного мешка V3"
+dative = "пустому камуфляжному мешку V3"
+accusative = "пустой камуфляжный мешок V3"
+instrumental = "пустым камуфляжным мешком V3"
+prepositional = "пустом камуфляжном мешке V3"
+gender = "male"
+
+["M4RA Battle sight"]
+nominative = "тактический визор для M4RA"
+genitive = "тактического визора для M4RA"
+dative = "тактическому визору для M4RA"
+accusative = "тактический визор для M4RA"
+instrumental = "тактическим визором для M4RA"
+prepositional = "тактическом визоре для M4RA"
+gender = "male"
+
+["M42 scout sight"]
+nominative = "тактический визор для M42"
+genitive = "тактического визора для M42"
+dative = "тактическому визору для M42"
+accusative = "тактический визор для M42"
+instrumental = "тактическим визором для M42"
+prepositional = "тактическом визоре для M42"
+gender = "male"
+
+["scout laser designator"]
+nominative = "лазерный целеуказатель разведчика"
+genitive = "лазерного целеуказателя разведчика"
+dative = "лазерному целеуказателю разведчика"
+accusative = "лазерный целеуказатель разведчика"
+instrumental = "лазерным целеуказателем разведчика"
+prepositional = "лазерном целеуказателе разведчика"
+gender = "male"
+
+["HealthMate HUD"]
+nominative = "ИЛС «ЗдравКом»"
+genitive = "ИЛС «ЗдравКом»"
+dative = "ИЛС «ЗдравКом»"
+accusative = "ИЛС «ЗдравКом»"
+instrumental = "ИЛС «ЗдравКом»"
+prepositional = "ИЛС «ЗдравКом»"
+gender = "male"
+
+["Combined Medical and Reagent Scanner HUD Glasses"] # Unique Vendor Name
+nominative = "ИЛС «ЗдравКом» (модифицированные)"
+
+["custom HealthMate HUD"]
+nominative = "ИЛС «ЗдравКом» (модифицированные)"
+genitive = "ИЛС «ЗдравКом» (модифицированные)"
+dative = "ИЛС «ЗдравКом» (модифицированные)"
+accusative = "ИЛС «ЗдравКом» (модифицированные)"
+instrumental = "ИЛС «ЗдравКом» (модифицированные)"
+prepositional = "ИЛС «ЗдравКом» (модифицированные)"
+gender = "male"
+
+["Prescription Combined Medical and Reagent Scanner HUD Glasses"] # Unique Vendor Name
+nominative = "ИЛС «ЗдравКом» с диоптриями (модифицированные)"
+
+["prescription custom HealthMate HUD"]
+nominative = "ИЛС «ЗдравКом» с диоптриями (модифицированные)"
+genitive = "ИЛС «ЗдравКом» с диоптриями (модифицированные)"
+dative = "ИЛС «ЗдравКом» с диоптриями (модифицированные)"
+accusative = "ИЛС «ЗдравКом» с диоптриями (модифицированные)"
+instrumental = "ИЛС «ЗдравКом» с диоптриями (модифицированные)"
+prepositional = "ИЛС «ЗдравКом» с диоптриями (модифицированные)"
+gender = "male"

@@ -12,8 +12,8 @@
 
 /datum/emergency_call/royal_marines/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is [pick_weight(list("HMS Patna"= 50, "HMS Thunderchild" = 50))]; we are responding to your distress call and boarding in accordance with the Military Aid Act of 2177, Authentication code Lima-18153. "
-	objectives = "Ensure the survival of the [MAIN_SHIP_NAME], eliminate any hostiles, and assist the crew in any way possible."
+	arrival_message = "[MAIN_SHIP_NAME], это [pick_weight(list("ККФ \"Патна\"" = 50, "ККФ \"Тандерчайлд\"" = 50))]; мы получили ваш сигнал бедствия и выдвигаемся к вам в соответствии с Законом о военной помощи от 2177 года, код аутентификации Лима-18153."
+	objectives = "Обеспечьте безопасность корабля [MAIN_SHIP_NAME], ликвидируйте всех неприятелей и окажите экипажу необходимую поддержку."
 
 
 /datum/emergency_call/royal_marines/create_member(datum/mind/spawning_mind, turf/override_spawn_loc)

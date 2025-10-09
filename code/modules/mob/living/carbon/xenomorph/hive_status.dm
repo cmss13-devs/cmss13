@@ -223,11 +223,11 @@
 
 	var/list/castes_available = list()
 	for(var/datum/caste_datum/current_caste as anything in available_castes)
-		castes_available += initial(current_caste.caste_type)
+		castes_available += declent_ru_initial(current_caste.caste_type, NOMINATIVE, current_caste.caste_type)
 
 	var/castes = castes_available.Join(", ")
-	xeno_message(SPAN_XENOANNOUNCE("The Hive is now strong enough to support: [castes]"))
-	xeno_maptext("The Hive can now support: [castes]", "Hive Strengthening")
+	xeno_message(SPAN_XENOANNOUNCE("Улей теперь достаточно силён, чтобы поддержать: [castes]"))
+	xeno_maptext("Улей теперь может поддерживать: [castes]", "Улей укрепляется")
 	evo_screech()
 
 /datum/hive_status/proc/evo_screech()
@@ -614,11 +614,11 @@
 			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		var/xeno_name = xeno.name
+		var/xeno_name = xeno.declent_ru(NOMINATIVE)
 		// goddamn fucking larvas with their weird ass maturing system
 		// its name updates with its icon, unlike other castes which only update the mature/elder, etc. prefix on evolve
 		if(istype(xeno, /mob/living/carbon/xenomorph/larva))
-			xeno_name = "Larva ([xeno.nicknumber])"
+			xeno_name = "[declent_ru_initial("Larva", NOMINATIVE, "Larva")] ([xeno.nicknumber])"
 		xenos["[xeno.nicknumber]"] = list(
 			"name" = xeno_name,
 			"strain" = xeno.get_strain_name(),
@@ -631,7 +631,7 @@
 	if(!C || C == hive_location)
 		return
 	var/area/A = get_area(C)
-	xeno_message(SPAN_XENOANNOUNCE("The Queen has set the hive location as \the [A]."), 3, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("Королева назначила новое местоположение улья в: [A]."), 3, hivenumber)
 	hive_location = C
 	hive_ui.update_hive_location()
 
@@ -798,14 +798,14 @@
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
 			if(isfacehugger(xeno) || islesserdrone(xeno))
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+				to_chat(xeno, SPAN_XENOANNOUNCE("Королева ушла без вас, и вы быстро находите укрытие, чтобы впасть в гибернацию, теряя связь с разумом улья."))
 				qdel(xeno)
 				continue
 			if(xeno.hunter_data.hunted && !isqueen(xeno))
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, separating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
+				to_chat(xeno, SPAN_XENOANNOUNCE("Королева ушла без вас, отделив вас от её улья! Вы должны защищить себя от охотников за головами, преждче чем сможете впасть в гибернацию..."))
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+				to_chat(xeno, SPAN_XENOANNOUNCE("Королева ушла без вас, и вы быстро находите укрытие, чтобы впасть в гибернацию, теряя связь с разумом улья."))
 				if(xeno.hauled_mob?.resolve())
 					xeno.release_haul(xeno.hauled_mob.resolve())
 				qdel(xeno)
@@ -1612,56 +1612,56 @@
 	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother"
 
 /datum/xeno_mark_define/fortify
-	name = "Fortify"
-	desc = "Fortify this area!"
+	name = "Укрепиться"
+	desc = "Укрепите эту область!"
 	icon_state = "fortify"
 
 /datum/xeno_mark_define/weeds
-	name = "Need Weeds"
-	desc = "Need weeds here!"
+	name = "Нужна трава"
+	desc = "Здесь нужна трава!"
 	icon_state = "weed"
 
 /datum/xeno_mark_define/nest
-	name = "Nest"
-	desc = "Nest enemies here!"
+	name = "Гнездо"
+	desc = "Разместите носителей здесь!"
 	icon_state = "nest"
 
 /datum/xeno_mark_define/hosts
-	name = "Hosts"
-	desc = "Hosts here!"
+	name = "Носители"
+	desc = "Здесь носители!"
 	icon_state = "hosts"
 
 /datum/xeno_mark_define/aide
-	name = "Aide"
-	desc = "Aide here!"
+	name = "Помощь"
+	desc = "Здесь нужна помощь!"
 	icon_state = "aide"
 
 /datum/xeno_mark_define/defend
-	name = "Defend"
-	desc = "Defend the hive here!"
+	name = "Защита"
+	desc = "Защитите улей!"
 	icon_state = "defend"
 
 /datum/xeno_mark_define/danger
-	name = "Danger Warning"
-	desc = "Caution, danger here!"
+	name = "Опасность"
+	desc = "Осторожно, здесь опасность!"
 	icon_state = "danger"
 
 /datum/xeno_mark_define/rally
-	name = "Rally"
-	desc = "Group up here!"
+	name = "Сбор"
+	desc = "Соберитесь здесь!"
 	icon_state = "rally"
 
 /datum/xeno_mark_define/hold
-	name = "Hold"
-	desc = "Hold this area!"
+	name = "Удерживать"
+	desc = "Удерживайте эту область!"
 	icon_state = "hold"
 
 /datum/xeno_mark_define/ambush
-	name = "Ambush"
-	desc = "Ambush the enemy here!"
+	name = "Засада"
+	desc = "Засада на врага здесь!"
 	icon_state = "ambush"
 /datum/xeno_mark_define/attack
-	name = "Attack"
-	desc = "Attack the enemy here!"
+	name = "Атака"
+	desc = "Атакуйте врага здесь!"
 	icon_state = "attack"
 

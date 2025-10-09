@@ -19,6 +19,7 @@
 	var/unique = TRUE
 	/// A signal on the mob that will cause the action to activate
 	var/listen_signal
+	var/hotkey_id // SS220 EDIT ADDICTION
 
 /datum/action/New(Target, override_icon_state)
 	target = Target
@@ -46,6 +47,7 @@
 		button.color = rgb(120,120,120,200)
 	else
 		button.color = rgb(255,255,255,255)
+	update_button_on_keybind_change() // SS220 EDIT ADDICTION
 
 /datum/action/proc/action_activate()
 	SHOULD_CALL_PARENT(TRUE)
@@ -60,6 +62,17 @@
 	SIGNAL_HANDLER
 	if(can_use_action())
 		INVOKE_ASYNC(src, PROC_REF(action_activate))
+
+// SS220 START EDIT ADDICTION
+/datum/action/proc/update_button_on_keybind_change()
+	SIGNAL_HANDLER
+	var/action_name_key = src.action_icon_state
+	if(!action_name_key && src.hotkey_id)
+		action_name_key = get_keybinding_name_by_signal(src.hotkey_id)
+	if(owner)
+		var/hotkey_label = owner.get_hotkey_label(action_name_key)
+		update_button_text(hotkey_label)
+// SS220 END EDIT ADDICTION
 
 /datum/action/proc/can_use_action()
 	if(hidden)
@@ -121,6 +134,10 @@
 	if(listen_signal)
 		RegisterSignal(L, listen_signal, PROC_REF(keybind_activation))
 	owner = L
+	// SS220 START EDIT ADDICTION
+	if(owner && owner.client)
+		RegisterSignal(owner.client, COMSIG_KB_CONFIG_UPDATED, PROC_REF(update_button_on_keybind_change))
+	// SS220 END EDIT ADDICTION
 
 /mob/proc/handle_add_action(datum/action/action)
 	LAZYADD(actions, action)
@@ -137,6 +154,10 @@
 
 /datum/action/proc/remove_from(mob/L)
 	SHOULD_CALL_PARENT(TRUE)
+	// SS220 START EDIT ADDICTION
+	if(owner && owner.client)
+		UnregisterSignal(owner.client, COMSIG_KB_CONFIG_UPDATED, PROC_REF(update_button_on_keybind_change))
+	// SS220 END EDIT ADDICTION
 	SEND_SIGNAL(src, COMSIG_ACTION_REMOVED, L)
 	if(listen_signal)
 		UnregisterSignal(L, listen_signal)
@@ -187,11 +208,19 @@
 		if(istype(action, action_path))
 			return action
 
+// SS220 START EDIT ADDICTION
+/proc/get_keybinding_name_by_signal(signal)
+	if(!signal || !GLOB.keybinding_signal_map[signal])
+		return null
+	return GLOB.keybinding_signal_map[signal]
+// SS220 END EDIT ADDICTION
+
 /datum/action/item_action
 	name = "Use item"
 	var/obj/item/holder_item //the item that has this action in its list of actions. Is not necessarily the target
 								//e.g. gun attachment action: target = attachment, holder = gun.
 	unique = FALSE
+	hotkey_id = "" // SS220 EDIT ADDICTION
 
 /datum/action/item_action/New(Target, obj/item/holder)
 	..()
@@ -223,11 +252,16 @@
 	for(var/overlay in target.overlays)
 		item_appearance.overlays += overlay
 	button.overlays += item_appearance
+	update_button_on_keybind_change() // SS220 EDIT ADDICTION
 
 /datum/action/item_action/toggle/New(Target)
 	..()
 	name = "Toggle [target]"
 	button.name = name
+	// SS220 START EDIT ADDICTION
+	if(istype(Target, /obj/item/attachable) && Target:hotkey_id)
+		hotkey_id = Target:hotkey_id
+	// SS220 END EDIT ADDICTION
 
 /datum/action/item_action/toggle/action_activate()
 	. = ..()
@@ -260,6 +294,13 @@
 				client.add_to_screen(A.button)
 	else
 		for(var/datum/action/A in actions)
+			// SS220 START EDIT ADDICTION
+			var/action_name_key = A.action_icon_state
+			if(!action_name_key && A.hotkey_id)
+				action_name_key = get_keybinding_name_by_signal(A.hotkey_id)
+			var/hotkey_label = get_hotkey_label(action_name_key)
+			A.update_button_text(hotkey_label)
+			// SS220 END EDIT ADDICTION
 			var/atom/movable/screen/action_button/B = A.button
 			if(reload_screen)
 				client.add_to_screen(B)
@@ -280,3 +321,31 @@
 	if(reload_screen)
 		client.add_to_screen(hud_used.hide_actions_toggle)
 
+// SS220 START EDIT ADDICTION
+/mob/proc/get_hotkey_label(action_name)
+	if(!action_name || !client || !client.prefs || !client.prefs.key_bindings)
+		return null
+
+	var/list/hotkeys = client.prefs.key_bindings
+	for(var/key in hotkeys)
+		if(key == "Unbound")
+			continue
+		if(action_name in hotkeys[key])
+			return replacetext(key, "+", "")
+	return null
+
+/datum/action/proc/update_button_text(new_text)
+	for(var/over in button.overlays)
+		if(over:maptext)
+			button.overlays -= over
+			qdel(over)
+
+	if(!new_text)
+		return
+
+	new_text = replacetext(new_text, "Space", "Spc")
+
+	var/mutable_appearance/text_overlay = mutable_appearance(null, null, FLOAT_LAYER, ABOVE_HUD_PLANE)
+	text_overlay.maptext = "<span class='action_maptext'>[new_text]</span>"
+	button.overlays += text_overlay
+// SS220 END EDIT ADDICTION

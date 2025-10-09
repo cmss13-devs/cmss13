@@ -19,6 +19,7 @@
 	magfed = FALSE
 	starting_vial = null
 	transparent = FALSE
+	skilllock = SKILL_MEDICAL_DEFAULT
 	var/uses_left = 3
 	var/mixed_chem = FALSE
 	var/display_maptext = FALSE
@@ -45,6 +46,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/attack(mob/M, mob/user)
 	if(uses_left <= 0)
+		to_chat(user, SPAN_DANGER("[src] is empty."))
 		return
 	. = ..()
 	if(!.)
@@ -110,6 +112,7 @@
 	volume = (LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Ep"
+	mode = INJECTOR_MODE_SKILLESS
 
 /obj/item/reagent_container/hypospray/autoinjector/dexalinp
 	name = "dexalin plus autoinjector"
@@ -119,6 +122,7 @@
 	volume = 3
 	display_maptext = TRUE
 	maptext_label = "D+"
+	mode = INJECTOR_MODE_SKILLESS
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate
 	name = "anesthetic autoinjector"
@@ -341,6 +345,7 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	uses_left = 1
 	display_maptext = TRUE
+	mode = INJECTOR_MODE_SKILLESS // Lock the mode to skilless
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/attack(mob/M as mob, mob/user as mob)
 	. = ..()

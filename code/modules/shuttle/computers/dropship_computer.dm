@@ -264,6 +264,19 @@
 			to_chat(xeno, "The shuttle is launching.")
 			return
 
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/check_danger()
+    var/groundside_humans = 0
+    for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+        if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+            continue
+
+        var/turf/turf = get_turf(current_human)
+        if(is_ground_level(turf?.z))
+            groundside_humans++
+            if(groundside_humans >= 12)
+                return TRUE
+
+    return FALSE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
 	// if the shuttleid is null or the shuttleid references a shuttle that has been removed from play, pick one
@@ -289,6 +302,11 @@
 	if(!is_ground_level(z))
 		// "you" rather than "we" for this one since non-queen castes will have returned above.
 		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
+		return XENO_NONCOMBAT_ACTION
+
+	if(check_danger())
+		to_chat(xeno, SPAN_XENONOTICE("Lights flash with warnings. There is still too much danger on this planet for us to leave!"))
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
 		return XENO_NONCOMBAT_ACTION
 

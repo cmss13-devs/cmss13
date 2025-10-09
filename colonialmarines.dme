@@ -271,6 +271,7 @@
 #include "code\controllers\subsystem\autofire.dm"
 #include "code\controllers\subsystem\cellauto.dm"
 #include "code\controllers\subsystem\chat.dm"
+#include "code\controllers\subsystem\cmtv.dm"
 #include "code\controllers\subsystem\communications.dm"
 #include "code\controllers\subsystem\dcs.dm"
 #include "code\controllers\subsystem\decorator.dm"

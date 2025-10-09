@@ -789,7 +789,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>TIMELOCKED</td></tr>"
 			for(var/r in missing_requirements)
 				var/datum/timelock/T = r
-				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='center'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
+				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='center'></td><td>[deciseconds_to_time_stamp(missing_requirements[r], FALSE)] Hours</td></tr>" // SS220 EDIT - TimeLock FIX by Biologded
 			continue
 
 		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='center'>"

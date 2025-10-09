@@ -66,6 +66,8 @@
 // SS220 START EDIT ADDICTION
 /datum/action/proc/update_button_on_keybind_change()
 	SIGNAL_HANDLER
+	if(!owner || !owner.client)
+		return
 	var/action_name_key = src.action_icon_state
 	if(!action_name_key && src.hotkey_id)
 		action_name_key = get_keybinding_name_by_signal(src.hotkey_id)

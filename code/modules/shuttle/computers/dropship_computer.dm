@@ -265,16 +265,16 @@
 			return
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/check_danger()
-    var/groundside_humans = 0
-    for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
-        if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
-            continue
+	var/groundside_humans = 0
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+			continue
 
-        var/turf/turf = get_turf(current_human)
-        if(is_ground_level(turf?.z))
-            groundside_humans++
-            if(groundside_humans >= 12)
-                return TRUE
+		var/turf/turf = get_turf(current_human)
+		if(is_ground_level(turf?.z))
+			groundside_humans++
+			if(groundside_humans >= 12)
+				return TRUE
 
     return FALSE
 

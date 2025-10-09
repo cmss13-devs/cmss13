@@ -8342,27 +8342,13 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/yautja/chain{
-	name = "Houndmaster's Discipline Whip";
-	pixel_y = 14
-	},
-/obj/item/weapon/chainofcommand{
-	name = "Houndmaster's Discipline Whip";
-	desc = "A segmented, lightweight whip used to discipline unruly hounds. Designed for control, not combat.";
-	pixel_x = -1;
-	pixel_y = 13
-	},
-/obj/item/device/flashlight/lantern/yautja{
-	pixel_x = -7;
-	pixel_y = 4
-	},
-/obj/item/device/houndcam{
-	pixel_x = 10
-	},
 /obj/item/device/houndcam{
 	pixel_x = 5
 	},
 /obj/item/device/houndcam,
+/obj/item/device/houndcam{
+	pixel_x = -5
+	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja/lower_deck)
 "Ck" = (
@@ -14968,6 +14954,25 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
+"YR" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/weapon/yautja/chain{
+	name = "Houndmaster's Discipline Whip";
+	pixel_x = 3
+	},
+/obj/item/weapon/yautja/chain{
+	name = "Houndmaster's Discipline Whip";
+	pixel_x = 5
+	},
+/obj/item/device/flashlight/lantern/yautja{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/area/yautja/lower_deck)
 "YS" = (
 /obj/structure/platform_decoration/metal/hunter/north,
 /obj/effect/hunter/bridge_border/brown{
@@ -26952,7 +26957,7 @@ IM
 rP
 Qn
 pI
-pt
+YR
 rP
 rP
 pC

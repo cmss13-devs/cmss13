@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(cmtv)
 	var/client/camera_operator
 
 /datum/controller/subsystem/cmtv/Initialize()
-	var/username = CONFIG_GET(string/cmtv_ckey)
+	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
 	if(!username)
 		return SS_INIT_NO_NEED
 
@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(cmtv)
 /datum/controller/subsystem/cmtv/proc/handle_new_client(SSdcs, client/new_client)
 	SIGNAL_HANDLER
 
-	if(new_client.ckey != CONFIG_GET(string/cmtv_ckey))
+	if(new_client.ckey != ckey(CONFIG_GET(string/cmtv_ckey)))
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(handle_new_camera), new_client)

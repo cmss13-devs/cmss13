@@ -1020,7 +1020,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/draw_tool
 	icon_state = "draw"
-	desc = "Draw using a color. Drag to draw a line, middle click to place a dot. Middle click this button to unselect. Hold SHIFT+B to draw freely."
+	desc = "Draw using a color. Drag to draw freely, middle click to place a dot. Middle click this button to unselect."
 	// color that this draw tool will be drawing in
 	color = COLOR_PINK
 	var/list/last_drawn
@@ -1249,7 +1249,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/draw_tool/erase
 	icon_state = "erase"
-	desc = "Drag to erase a line, middle click to erase a dot. Middle click this button to unselect."
+	desc = "Drag to erase freely, middle click to erase a dot. Middle click this button to unselect."
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_erase.dmi'
 	screen_loc = "15,10"
 	color = null

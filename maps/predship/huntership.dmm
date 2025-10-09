@@ -1615,9 +1615,11 @@
 	color = "#bccab4"
 	},
 /obj/item/reagent_container/food/snacks/meat{
-	pixel_y = 5
+	pixel_y = -10;
+	pixel_x = -10
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/structure/prop/hunter/hellhound,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja/lower_deck)
 "fl" = (
@@ -2293,18 +2295,6 @@
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja)
-"hx" = (
-/obj/structure/surface/rack{
-	color = "#6b675e";
-	layer = 2.79
-	},
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
-/area/yautja/lower_deck)
 "hA" = (
 /obj/effect/hunter/rune/corner{
 	dir = 8
@@ -2506,6 +2496,17 @@
 	},
 /turf/open/floor/light/red/darker,
 /area/yautja)
+"il" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/structure/prop/hunter/hellhound,
+/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/area/yautja/lower_deck)
 "in" = (
 /obj/structure/prop/hunter/fake_platform/hunter/east,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
@@ -3494,14 +3495,16 @@
 /turf/open/shuttle/bright_red/glow,
 /area/yautja)
 "lH" = (
-/obj/effect/hunter/bridge_border/brown/corner{
-	dir = 4
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
 	},
 /obj/item/reagent_container/food/snacks/meat{
-	pixel_y = 5
+	pixel_y = -10;
+	pixel_x = -10
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/obj/structure/prop/hunter/hellhound,
+/turf/open/floor/corsat,
 /area/yautja/lower_deck)
 "lJ" = (
 /obj/effect/hunter/bridge_border/brown{
@@ -10998,6 +11001,7 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
 	},
+/obj/structure/prop/hunter/hellhound,
 /turf/open/floor/corsat,
 /area/yautja/lower_deck)
 "LN" = (
@@ -11430,6 +11434,17 @@
 	},
 /turf/open/floor/light/red/darker,
 /area/yautja)
+"Ns" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/structure/prop/hunter/hellhound,
+/turf/open/floor/corsat,
+/area/yautja/lower_deck)
 "Nu" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/predship/hull/non_weedable_hull/north,
@@ -13856,6 +13871,7 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
+/obj/structure/prop/hunter/hellhound,
 /turf/open/floor/corsat,
 /area/yautja/lower_deck)
 "Vp" = (
@@ -26936,7 +26952,7 @@ IM
 rP
 Qn
 pI
-hx
+pt
 rP
 rP
 pC
@@ -27461,7 +27477,7 @@ uP
 kR
 tO
 yf
-if
+il
 ZX
 rP
 dI
@@ -27663,7 +27679,7 @@ rP
 uP
 uP
 eL
-tO
+Ns
 yf
 if
 ZX
@@ -27768,7 +27784,7 @@ AS
 zI
 Jl
 he
-ZX
+lH
 rP
 dI
 "}
@@ -27869,7 +27885,7 @@ uP
 zy
 mi
 nL
-lH
+Ss
 PO
 rP
 dI

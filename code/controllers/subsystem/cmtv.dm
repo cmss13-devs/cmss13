@@ -47,6 +47,19 @@ SUBSYSTEM_DEF(cmtv)
 
 	new_mob.do_observe(pick(GLOB.player_list))
 
+/datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_mob)
+	if(!camera_operator)
+		return
+
+	var/mob/dead/observer/observer_mob = camera_operator.mob
+	observer_mob.do_observe(new_mob)
+
+/client/proc/change_observed_player(mob/new_player in GLOB.player_list)
+	set name = "Change Observed Player"
+	set category = "Admin.CMTV"
+
+	SScmtv.change_observed_mob(new_player)
+
 /datum/controller/subsystem/cmtv/proc/handle_round_start(client/camera)
 	addtimer(CALLBACK(src, PROC_REF(handle_new_camera), camera, TRUE), 5 SECONDS)
 

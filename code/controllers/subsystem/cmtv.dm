@@ -33,6 +33,8 @@ SUBSYSTEM_DEF(cmtv)
         SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_new_camera), camera_operator, TRUE))
         return
 
+    src.camera_operator = camera_operator
+
     var/mob/dead/observer/new_mob = new(locate(1, 1, 1))
     new_mob.client = camera_operator
     new_mob.see_invisible = HIDE_INVISIBLE_OBSERVER
@@ -40,7 +42,8 @@ SUBSYSTEM_DEF(cmtv)
 
     camera_operator.view = "20x15"
     camera_operator.fit_viewport()
-    winset(camera_operator, "infowindow.info", "splitter=0")
+
+    winset(camera_operator, null, "infowindow.info.splitter=0;tgui_say.is-disabled=true;tooltip.is-disabled=true")
 
     new_mob.do_observe(pick(GLOB.player_list))
 

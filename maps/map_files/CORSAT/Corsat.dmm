@@ -24548,7 +24548,7 @@
 "bTW" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/clothing/head/helmet/augment,
-/obj/item/tool/pen/paralysis,
+/obj/item/tool/pen/syringe/paralysis,
 /turf/open/floor/corsat/retrosquareslight,
 /area/corsat/sigma/south/complex)
 "bTX" = (

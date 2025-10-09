@@ -19,6 +19,7 @@ export type OrbitData = {
   mercenary: Observable[];
   dutch: Observable[];
   marshal: Observable[];
+  united_americas: Observable[];
   synthetics: Observable[];
   predators: Observable[];
   hunted: Observable[];

@@ -54,6 +54,8 @@
 /area/abyssal/interior/landing_zone
 	name = "Con-Am 81 'Abyssal' - Hanger - Landing Zone"
 	icon_state = "lz1"
+	ceiling = CEILING_NONE
+	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
 	linked_lz = DROPSHIP_LZ1
@@ -71,7 +73,6 @@
 /area/abyssal/interior/corridor_west
 	name = "Abyssal - Port - Main Corridor"
 	icon_state = "station0"
-	linked_lz = DROPSHIP_LZ1
 	minimap_color = MINIMAP_DIRT
 
 /area/abyssal/interior/corridor_central
@@ -107,7 +108,6 @@
 
 /area/abyssal/interior/maintenance/south
 	name = "Abyssal - Aft - Maintenance"
-	linked_lz = DROPSHIP_LZ1
 
 /area/abyssal/interior/maintenance/north
 	name = "Abyssal - Fore - Maintenance"
@@ -145,7 +145,6 @@
 /area/abyssal/interior/atmo
 	name = "Abyssal - Atmospherics"
 	icon_state = "station1"
-	linked_lz = DROPSHIP_LZ1
 	minimap_color = MINIMAP_AREA_CELL_VIP
 
 /area/abyssal/interior/hydro
@@ -161,7 +160,6 @@
 /area/abyssal/interior/galley
 	name = "Abyssal - Galley Kitchen"
 	icon_state = "station2"
-	linked_lz = DROPSHIP_LZ1
 	minimap_color = MINIMAP_AREA_CELL_VIP
 
 /area/abyssal/interior/security
@@ -184,7 +182,6 @@
 	icon_state = "station4"
 	minimap_color = MINIMAP_AREA_RESEARCH
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
-
 
 /area/abyssal/interior/command
 	name = "Abyssal - Command Wing"

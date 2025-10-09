@@ -285,6 +285,25 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_HC_DEPUTY_DIRECTOR "HC Deputy Director"
 #define JOB_HC_DIRECTOR "HC Director"
 
+//-------- Con-Amalagated --------//
+
+#define JOB_CA_SEC "HC Security Guard"
+#define JOB_CA_SEC_SYNTH "HC Security Guard Synthetic"
+#define JOB_CA_TRAINEE "Corporate Trainee"
+#define JOB_CA_JUNIOR_EXECUTIVE "Corporate Junior Executive"
+#define JOB_CA_CORPORATE_LIAISON "Corporate Liaison"
+#define JOB_CA_EXECUTIVE "Corporate Executive"
+#define JOB_CA_SENIOR_EXECUTIVE "Corporate Senior Executive"
+#define JOB_CA_EXECUTIVE_SPECIALIST "Corporate Executive Specialist"
+#define JOB_CA_LEGAL_SPECIALIST "Corporate Legal Specialist"
+#define JOB_CA_EXECUTIVE_SUPERVISOR "Corporate Executive Supervisor"
+#define JOB_CA_LEGAL_SUPERVISOR "Corporate Legal Supervisor"
+#define JOB_CA_ASSISTANT_MANAGER "Corporate Assistant Manager"
+#define JOB_CA_DIVISION_MANAGER "Corporate Division Manager"
+#define JOB_CA_CHIEF_EXECUTIVE "Corporate Chief Executive"
+#define JOB_CA_DEPUTY_DIRECTOR "HC Deputy Director"
+#define JOB_CA_DIRECTOR "HC Director"
+
 //---- Contractors ----//
 #define JOB_CONTRACTOR "VAIPO Mercenary"
 #define JOB_CONTRACTOR_ST "VAIPO Mercenary"

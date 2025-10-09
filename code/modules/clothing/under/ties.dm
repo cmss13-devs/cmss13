@@ -671,6 +671,11 @@
 	desc = "A sleek corporate patch bearing the logo of the Hyperdyne Corporation—one of the most powerful conglomerates. Known for synthetic production, AI research, and deep-space logistics. Wearing this patch implies loyalty to profit over people."
 	icon_state = "hyperdynepatch"
 
+/obj/item/clothing/accessory/patch/conam_patch
+	name = "Con-Amalagated Corporation patch"
+	desc = "A colorful corporate patch bearing the logo of the Con-Amalagated Corporation. Once a powerful conglomerate within the Sol System, now relegated to a middle-power on the verge of financial collapse. This patch is popular amongst collectors due to its color scheme."
+	icon_state = "conampatch"
+
 // Misc
 
 /obj/item/clothing/accessory/dogtags

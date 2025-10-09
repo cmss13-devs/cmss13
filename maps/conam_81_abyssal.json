@@ -4,13 +4,15 @@
     "map_file": "ConAm_81_Abyssal.dmm",
     "webmap_url": "Abyssal",
     "survivor_types": [
-        "/datum/equipment_preset/survivor/scientist/fiorina",
-        "/datum/equipment_preset/survivor/doctor/fiorina",
-        "/datum/equipment_preset/survivor/security/fiorina",
-        "/datum/equipment_preset/survivor/colonial_marshal/fiorina",
-        "/datum/equipment_preset/survivor/engineer/fiorina",
-        "/datum/equipment_preset/survivor/corporate/fiorina",
-        "/datum/equipment_preset/survivor/civilian"
+        "/datum/equipment_preset/survivor/abyssal/doctor",
+        "/datum/equipment_preset/survivor/abyssal/scientist",
+        "/datum/equipment_preset/survivor/abyssal/colonial_marshal",
+        "/datum/equipment_preset/survivor/abyssal/engineer",
+        "/datum/equipment_preset/survivor/abyssal/civilian",
+        "/datum/equipment_preset/survivor/conam"
+    ],
+	"CO_survivor_types": [
+        "/datum/equipment_preset/survivor/abyssal/captain"
     ],
     "survivor_message": "You are a survivor of the attack on Con-Am 81 ‘Abyssal’. You lived and worked onboard this remote outpost until now. You barely managed to reach this radiation bunker before the doors slammed shut. It has been three weeks now, your food supplies are running low, and you can hear the slithering of those aliens outside the bunker. You can only pray for rescue now",
     "map_item_type": "/obj/item/map/new_varadero",

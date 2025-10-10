@@ -24,7 +24,7 @@
 
 	// Configurables
 	var/grab_range = 4
-	var/click_miss_cooldown = 15
+	var/click_miss_cooldown = 50
 	var/twitch_message_cooldown = 0 //apparently this is necessary for a tiny code that makes the lunge message on cooldown not be spammable, doesn't need to be big so 5 will do.
 
 /datum/action/xeno_action/activable/warrior_punch

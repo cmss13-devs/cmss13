@@ -24,9 +24,12 @@
 //STUN
 /datum/status_effect/incapacitating/stun
 	id = "stun"
+	/// Multiplier against amounts to handle optional stun resistance
+	var/multiplier = 1
 //	alert_type = /atom/movable/screen/alert/status_effect/stun
 
 /datum/status_effect/incapacitating/stun/on_apply()
+	multiplier = 1
 	. = ..()
 	if(!.)
 		return
@@ -35,6 +38,19 @@
 /datum/status_effect/incapacitating/stun/on_remove()
 	owner.remove_traits(list(TRAIT_INCAPACITATED, TRAIT_IMMOBILIZED /*, TRAIT_HANDS_BLOCKED*/), TRAIT_STATUS_EFFECT(id))
 	return ..()
+
+/datum/status_effect/incapacitating/stun/update_duration(amount, increment, include_resist=FALSE)
+	if(!include_resist || (amount == -1 && !duration_set && !increment))
+		return ..()
+	return ..(amount * multiplier, increment)
+
+/datum/status_effect/incapacitating/stun/adjust_duration(amount, include_resist=FALSE)
+	if(!include_resist)
+		return ..()
+	return ..(amount * multiplier)
+
+/datum/status_effect/incapacitating/stun/proc/accumulate_resist()
+	multiplier = max(multiplier - 0.07, 0)
 
 /atom/movable/screen/alert/status_effect/stun
 	name = "Stunned"

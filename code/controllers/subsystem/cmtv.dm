@@ -26,10 +26,6 @@ SUBSYSTEM_DEF(cmtv)
 	/// if there is someone more interesting to watch instead.
 	var/list/priority_list
 
-	/// The world.time when we should move over to our new watchee
-	var/swap_at
-
-
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
 	if(!username || !CONFIG_GET(string/cmtv_link))
@@ -45,10 +41,6 @@ SUBSYSTEM_DEF(cmtv)
 
 /datum/controller/subsystem/cmtv/fire(resumed)
 	priority_list = get_active_priority_player_list()
-
-	if(future_perspective && swap_at <= world.time)
-		do_change_observed_mob()
-		return
 
 	if(!current_perspective && !future_perspective)
 		reset_perspective()

@@ -1,5 +1,9 @@
 GLOBAL_LIST_EMPTY(ref_mob_to_last_cause_data_time)
 
+GLOBAL_LIST_INIT(exempted_cause_objects, typecacheof(list(
+	/obj/structure/machinery/defenses,
+)))
+
 /datum/cause_data
 	var/datum/weakref/weak_mob
 	var/ckey
@@ -26,6 +30,9 @@ GLOBAL_LIST_EMPTY(ref_mob_to_last_cause_data_time)
 		if(causing_mob.mind)
 			ckey = causing_mob.mind.ckey
 		
+		if(causing_object && is_type_in_typecache(causing_object, GLOB.exempted_cause_objects))
+			return
+
 		GLOB.ref_mob_to_last_cause_data_time[weak_mob.reference] = world.time
 
 

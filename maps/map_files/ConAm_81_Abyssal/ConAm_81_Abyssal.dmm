@@ -8303,6 +8303,9 @@
 	pixel_x = 4;
 	layer = 2.5
 	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "greenshift2"
+	},
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
 "avu" = (
@@ -25737,6 +25740,12 @@
 /obj/item/toy/syndicateballoon,
 /turf/open/floor/plating/catwalk/rusted,
 /area/abyssal/gonzo)
+"bjK" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "greenshift1"
+	},
+/turf/open/space/basic,
+/area/abyssal/oob)
 "bqz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -47589,7 +47598,7 @@ aoD
 asf
 asf
 asf
-asf
+bjK
 asf
 asf
 asf

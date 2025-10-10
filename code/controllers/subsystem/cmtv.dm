@@ -13,6 +13,9 @@ SUBSYSTEM_DEF(cmtv)
 	var/datum/weakref/future_perspective
 
 	var/list/priority_list
+	var/current_backoff = 0 SECONDS
+
+	COOLDOWN_DECLARE(check_after)
 
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
@@ -28,10 +31,15 @@ SUBSYSTEM_DEF(cmtv)
 	handle_new_camera(camera)
 
 /datum/controller/subsystem/cmtv/fire(resumed)
+	if(check_after && COOLDOWN_FINISHED(src, check_after))
+		return
+
 	priority_list = get_active_priority_player_list()
 
 	if(!current_perspective && !future_perspective)
-		reset_perspective()
+		if(!reset_perspective())
+			current_backoff += 20 SECONDS
+			COOLDOWN_START(src, check_after, current_backoff)
 		return
 
 	if(!length(priority_list[PRIORITY_FIRST]) || is_combatant(current_perspective, 40 SECONDS))
@@ -50,6 +58,11 @@ SUBSYSTEM_DEF(cmtv)
 
 	if(href_list["cancel_cmtv"] && usr == future_perspective.resolve())
 		reset_perspective()
+
+/// We don't do anything till the round starts. Even after the round starts, we might want to wait a little bit to make sure we have
+/// more interesting people to observe.
+/datum/controller/subsystem/cmtv/proc/handle_round_start(client/camera)
+	addtimer(CALLBACK(src, PROC_REF(handle_new_camera), camera, TRUE), 5 SECONDS)
 
 /// Signal handler for if the client disconnects/rejoins midround
 /datum/controller/subsystem/cmtv/proc/handle_new_client(SSdcs, client/new_client)
@@ -152,8 +165,12 @@ SUBSYSTEM_DEF(cmtv)
 		reset_perspective() // dull, either fleeing or going to med
 
 /// Generic signal handler for deaths, nestings, logouts, etc. Immediately queues up a new perspective to be switched to
-/datum/controller/subsystem/cmtv/proc/reset_perspective(mob/old_perspective)
+/datum/controller/subsystem/cmtv/proc/reset_perspective()
 	SIGNAL_HANDLER
+
+	var/mob/active_player = get_active_player()
+	if(!active_player)
+		return FALSE
 
 	change_observed_mob(get_active_player())
 
@@ -180,7 +197,11 @@ SUBSYSTEM_DEF(cmtv)
 
 	return new_priority_list
 
+/// From the cached priority list, pulls an active player in priority order
 /datum/controller/subsystem/cmtv/proc/get_active_player()
+	if(!length(priority_list))
+		return FALSE
+
 	for(var/priority, priority_mobs in priority_list)
 		var/list/priority_mobs_list = priority_mobs
 		if(length(priority_mobs))
@@ -190,11 +211,15 @@ SUBSYSTEM_DEF(cmtv)
 				var/datum/weakref/picked = pick_n_take(inner_priority_list)
 				var/found_mob = picked.resolve()
 
-				if(found_mob)
+				if(found_mob && is_active(found_mob))
 					return found_mob
 
+/// If a player has moved recently, also checks the inactivity var
 /datum/controller/subsystem/cmtv/proc/is_active(mob/possible_player, delay_time)
-	if(possible_player.client?.inactivity > delay_time)
+	if(!possible_player.client)
+		return FALSE
+	
+	if(possible_player.client.inactivity > delay_time)
 		return FALSE
 
 	if(world.time > possible_player.l_move_time + delay_time)
@@ -202,6 +227,7 @@ SUBSYSTEM_DEF(cmtv)
 
 	return TRUE
 
+/// Checks if the latest [/datum/cause_data] was generated within the given delay_time
 /datum/controller/subsystem/cmtv/proc/is_combatant(mob/possible_combatant, delay_time)
 	var/mob_ref = REF(possible_combatant)
 	if(!(mob_ref in GLOB.ref_mob_to_last_cause_data_time))
@@ -228,9 +254,6 @@ SUBSYSTEM_DEF(cmtv)
 		return
 
 	SScmtv.change_observed_mob(selected_mob)
-
-/datum/controller/subsystem/cmtv/proc/handle_round_start(client/camera)
-	addtimer(CALLBACK(src, PROC_REF(handle_new_camera), camera, TRUE), 5 SECONDS)
 
 /datum/config_entry/string/cmtv_ckey
 	protection = CONFIG_ENTRY_LOCKED

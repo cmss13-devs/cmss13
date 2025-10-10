@@ -48,7 +48,7 @@
 /turf/open/floor/prison/greencorner/west,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "r" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/prison/green,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "s" = (
@@ -84,7 +84,7 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "F" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/prison/green/southeast,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "G" = (

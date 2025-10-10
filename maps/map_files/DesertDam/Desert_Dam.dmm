@@ -15459,7 +15459,7 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "bcX" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/northeast)
 "bcY" = (
@@ -18658,7 +18658,7 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/upper_hallway)
 "csD" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/northwest)
 "csE" = (
@@ -19016,7 +19016,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/asteroidplating,
 /area/desert_dam/exterior/telecomm/lz2_tcomms)
 "cBb" = (
@@ -23904,7 +23904,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "etF" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/central)
 "etJ" = (
@@ -28856,7 +28856,7 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/warehouse/breakroom)
 "gnG" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "gnH" = (
@@ -30391,7 +30391,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "gQL" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "gQO" = (
@@ -30806,7 +30806,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "gYH" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "gYK" = (
@@ -30858,7 +30858,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/warehouse/warehouse)
 "had" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/west)
 "hag" = (
@@ -35800,7 +35800,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/loading)
 "iTr" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "iTF" = (
@@ -37343,7 +37343,7 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "jyj" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/lattice{
 	layer = 2.9
 	},
@@ -40997,7 +40997,7 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "kZR" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/prison/green/southeast,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "kZT" = (
@@ -45816,7 +45816,7 @@
 /turf/open/floor/prison/whitepurple/north,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "mUt" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/lattice{
 	layer = 2.9
 	},
@@ -50130,7 +50130,7 @@
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/upper_hallway)
 "oAP" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/prison/green,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "oBd" = (
@@ -64200,7 +64200,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/water_treatment_two/purification)
 "tSj" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/engine_room)
 "tSm" = (
@@ -64252,7 +64252,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/warehouse/warehouse)
 "tTz" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/engine_room)
 "tTH" = (
@@ -67885,7 +67885,7 @@
 /turf/open/floor/carpet,
 /area/desert_dam/building/administration/meetingrooom)
 "voZ" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "vpl" = (

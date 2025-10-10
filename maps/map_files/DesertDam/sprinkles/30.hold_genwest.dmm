@@ -206,7 +206,7 @@
 /turf/open/floor/prison/darkyellowcorners2/west,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "sf" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "st" = (

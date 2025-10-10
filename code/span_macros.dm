@@ -1,6 +1,11 @@
 // Style class macros
 
 // Fontsizes
+#define FONT_SIZE_TITANIC(X) "<span class='titanic'>[X]</span>"
+#define FONT_SIZE_COLLOSSAL(X) "<span class='collossal'>[X]</span>"
+#define FONT_SIZE_GARGANTUAN(X) "<span class='gargantuan'>[X]</span>"
+#define FONT_SIZE_ENOURMOUS(X) "<span class='enourmous'>[X]</span>"
+#define SPAN_CORP_LOGO(X) "<span class='corplogo'>[X]</span>"
 #define FONT_SIZE_HUGE(X) "<span class='huge'>[X]</span>"
 #define FONT_SIZE_XL(X) "<span class='extra_large'>[X]</span>"
 #define FONT_SIZE_LARGE(X) "<span class='large'>[X]</span>"

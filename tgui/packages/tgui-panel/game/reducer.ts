@@ -40,6 +40,16 @@ export const gameReducer = (state = initialState, action) => {
   if (type === tvMode.type) {
     chatRenderer.alwaysStayAtBottom = true;
 
+    Byond.winget('outputwindow', 'size').then(
+      (size: { x: number; y: number }) => {
+        Byond.winset(
+          'outputwindow.legacy_output_selector',
+          'size',
+          `${size.x}x${size.y}`,
+        );
+      },
+    );
+
     return {
       ...state,
       tvMode: true,

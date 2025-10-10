@@ -1261,11 +1261,6 @@
 		else
 			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King has hatched! We must bring it down!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
-	hive = GLOB.hive_datum[hive_number]
-	hive.banned_allies = list("All")
-	if(hive.break_all_alliances())
-		xeno_message(SPAN_XENOANNOUNCE("With the arrival of the King, all alliances have been broken."), 3, hive_number)
-
 /// Actually hatches the King transferring the candidate into the spawned mob and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/hatch_king()
 	icon_state = "hatched"

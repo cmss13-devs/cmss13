@@ -64,11 +64,6 @@ SUBSYSTEM_DEF(cmtv)
 	if(href_list["cancel_cmtv"] && usr == future_perspective.resolve())
 		reset_perspective()
 
-/// We don't do anything till the round starts. Even after the round starts, we might want to wait a little bit to make sure we have
-/// more interesting people to observe.
-/datum/controller/subsystem/cmtv/proc/handle_round_start(client/camera)
-	addtimer(CALLBACK(src, PROC_REF(handle_new_camera), camera, TRUE), 10 SECONDS)
-
 /// Signal handler for if the client disconnects/rejoins midround
 /datum/controller/subsystem/cmtv/proc/handle_new_client(SSdcs, client/new_client)
 	SIGNAL_HANDLER

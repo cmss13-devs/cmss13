@@ -46,6 +46,9 @@ SUBSYSTEM_DEF(cmtv)
 		reset_perspective()
 		return
 
+	if(future_perspective)
+		return
+
 	if(!length(priority_list[PRIORITY_FIRST]) || is_combatant(current_perspective, 40 SECONDS))
 		return
 

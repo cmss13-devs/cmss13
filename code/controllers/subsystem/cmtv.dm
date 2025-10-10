@@ -6,16 +6,26 @@ SUBSYSTEM_DEF(cmtv)
 	name = "CMTV"
 	wait = 5 SECONDS
 
+	/// Our perspective, based on a specific ckey, either found in init
+	/// or post-join via DCS
 	var/client/camera_operator
+
+	/// For convenience, a reference to their camera mob
 	var/mob/dead/observer/camera_mob
 
+	/// A hardref to the person we are currently watching,
+	/// with a bunch of signals subscribed.
 	var/mob/current_perspective
+
+	/// A weakref of who we will be switching to after the delay
+	/// to ensure they can cancel, if they want to.
 	var/datum/weakref/future_perspective
 
+	/// The cached list of priority groups for observing. This is
+	/// used so we can ensure we're only switching perspective
+	/// if there is someone more interesting to watch instead.
 	var/list/priority_list
-	var/current_backoff = 0 SECONDS
 
-	COOLDOWN_DECLARE(check_after)
 
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
@@ -31,15 +41,10 @@ SUBSYSTEM_DEF(cmtv)
 	handle_new_camera(camera)
 
 /datum/controller/subsystem/cmtv/fire(resumed)
-	if(check_after && COOLDOWN_FINISHED(src, check_after))
-		return
-
 	priority_list = get_active_priority_player_list()
 
 	if(!current_perspective && !future_perspective)
-		if(!reset_perspective())
-			current_backoff += 20 SECONDS
-			COOLDOWN_START(src, check_after, current_backoff)
+		reset_perspective()
 		return
 
 	if(!length(priority_list[PRIORITY_FIRST]) || is_combatant(current_perspective, 40 SECONDS))
@@ -170,7 +175,7 @@ SUBSYSTEM_DEF(cmtv)
 
 	var/mob/active_player = get_active_player()
 	if(!active_player)
-		return FALSE
+		return FALSE // start the blooper reel, we've got nothing
 
 	change_observed_mob(get_active_player())
 
@@ -206,13 +211,15 @@ SUBSYSTEM_DEF(cmtv)
 		var/list/priority_mobs_list = priority_mobs
 		if(length(priority_mobs))
 			var/list/inner_priority_list = priority_mobs_list.Copy()
-	
+
 			for(var/i in 1 to length(inner_priority_list))
 				var/datum/weakref/picked = pick_n_take(inner_priority_list)
 				var/found_mob = picked.resolve()
 
 				if(found_mob && is_active(found_mob))
 					return found_mob
+
+	return FALSE
 
 /// If a player has moved recently, also checks the inactivity var
 /datum/controller/subsystem/cmtv/proc/is_active(mob/possible_player, delay_time)

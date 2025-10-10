@@ -9,7 +9,6 @@ import {
   addChatPage,
   changeChatPage,
   changeScrollTracking,
-  disableChatScroll,
   loadChat,
   moveChatPageLeft,
   moveChatPageRight,
@@ -19,7 +18,6 @@ import {
   updateMessageCount,
 } from './actions';
 import { canPageAcceptType, createMainPage } from './model';
-import { chatRenderer } from './renderer';
 import type { Page } from './types';
 
 const mainPage = createMainPage();
@@ -260,11 +258,5 @@ export const chatReducer = (state = initialState, action) => {
     }
     return nextState;
   }
-
-  if (type === disableChatScroll.type) {
-    chatRenderer.alwaysStayAtBottom = true;
-    return state;
-  }
-
   return state;
 };

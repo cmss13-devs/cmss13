@@ -18,8 +18,9 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "f" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating,
@@ -77,8 +78,9 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "u" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
@@ -99,7 +101,9 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "z" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
@@ -109,7 +113,9 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "B" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "D" = (

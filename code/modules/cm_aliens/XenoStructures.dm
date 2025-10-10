@@ -30,8 +30,7 @@
 		construction_data = create_cause_data(initial(name), builder)
 	if(block_range)
 		for(var/turf/turf in range(block_range, src))
-			var/obj/effect/build_blocker/blocker = new(turf, src)
-			blockers.Add(blocker)
+			blockers += WEAKREF(new /obj/effect/build_blocker(turf, src))
 
 	var/area/current_area = get_area(src)
 	if(current_area.linked_lz)
@@ -942,8 +941,7 @@
 	for(var/x_offset in -1 to 1)
 		for(var/y_offset in -1 to 1)
 			var/turf/turf_to_block = locate(x + x_offset, y + y_offset, z)
-			var/obj/effect/build_blocker/blocker = new(turf_to_block, src)
-			blockers += blocker
+			blockers += WEAKREF(new /obj/effect/build_blocker(turf_to_block, src))
 
 	START_PROCESSING(SSobj, src)
 

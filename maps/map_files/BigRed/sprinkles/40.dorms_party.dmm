@@ -6,8 +6,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "ac" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
@@ -26,8 +27,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "ag" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -307,7 +309,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "bi" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue,
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -357,7 +359,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "bo" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},

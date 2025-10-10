@@ -50,6 +50,7 @@
 /area/bigredv2/outside/telecomm)
 "n" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/ladder/multiz,
 /turf/open/floor/damaged4/west,
 /area/bigredv2/outside/telecomm)
 "o" = (

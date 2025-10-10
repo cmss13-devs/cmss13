@@ -126,7 +126,8 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/virology)
 "ru" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7";
 	dir = 4
 	},
 /obj/structure/inflatable,
@@ -358,7 +359,8 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/bigredv2/outside/nw)
 "XR" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7";
 	dir = 4
 	},
 /obj/structure/inflatable,

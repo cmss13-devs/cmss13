@@ -284,6 +284,7 @@ SUBSYSTEM_DEF(cmtv)
 	if(!selected_mob)
 		return
 
+	message_admins("CMTV: [key_name(src)] swapped the perspective to [key_name_admin(selected_mob)].")
 	SScmtv.change_observed_mob(selected_mob)
 
 /datum/config_entry/string/cmtv_ckey

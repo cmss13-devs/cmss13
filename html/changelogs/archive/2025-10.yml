@@ -36,3 +36,18 @@
   - balance: gave the M1911C a 1 second knockdown, up from 0.2 seconds.
   - bugfix: added the "fire in the air" ability to the M1911C to match all other CO
       guns.
+2025-10-10:
+  Blundir:
+  - bugfix: removed unintended uranium drums from pmc sg
+  Zenith:
+  - rscadd: Added new M10 gun-case kit.
+  - rscadd: Added a few new M10-specific attachments, spiked CQB compensator/regular
+      one, solid & foldable stock, micro laser.
+  - rscadd: Added AP variants of all existing M10 magazine types.
+  - rscadd: Added two new universal attachments usable by pistols and SMGs, a compact
+      suppressor and the S5 Micro Dot Sight.
+  - rscadd: Added "extended-compensator" universal attachment for multiple gun types.
+  - balance: Increased the M10's base damage, improved accuracy, and reduced bullet
+      spread to make it more viable.
+  - soundadd: Added new firing sounds for the M10 and custom suppressor sounds.
+  - imageadd: Updated M10 belt sprites to change based on map type.

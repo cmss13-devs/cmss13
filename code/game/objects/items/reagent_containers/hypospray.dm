@@ -178,6 +178,8 @@
 		. += SPAN_INFO("It is set to precise injection mode.")
 	if(mode == INJECTOR_MODE_FAST)
 		. += SPAN_INFO("It is set to fast injection mode.")
+	if(mode == INJECTOR_MODE_SKILLESS)
+		. += SPAN_INFO("It is set to EZ-assisted injection mode.")
 
 /obj/item/reagent_container/hypospray/proc/hyposwitch(mob/user)
 	switch(mode)
@@ -191,8 +193,30 @@
 			to_chat(user, SPAN_WARNING("[src] beeps: The injection mode is locked and cannot be toggled."))
 			return
 
-/obj/item/reagent_container/hypospray/proc/hypoinject(obj/item, mob/living/M) // because do_afters are a pain in the ass
+/obj/item/reagent_container/hypospray/proc/hypoinject(mob/living/M, mob/living/user) // do_afters have been pissing me off
+	to_chat(user, SPAN_NOTICE("You inject [M] with [src]."))
+	to_chat(M, SPAN_WARNING("You feel a tiny, but focused prick!"))
+	playsound(loc, injectSFX, injectVOL, 1)
+	SEND_SIGNAL(M, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)
 
+	reagents.reaction(M, INJECTION)
+
+	if(M.reagents)
+		var/list/injected = list()
+		for(var/datum/reagent/R in reagents.reagent_list)
+			injected += R.name
+			R.last_source_mob = WEAKREF(user)
+		var/contained = english_list(injected)
+		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(M)]. Reagents: [contained]</font>")
+		msg_admin_attack("[key_name(user)] injected [key_name(M)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+
+		var/trans = reagents.trans_to(M, amount_per_transfer_from_this, method = INJECTION)
+		if(mag)
+			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]'s [mag.name]."))
+		else
+			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]."))
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 /obj/item/reagent_container/hypospray/attack(mob/living/M, mob/living/user)
 	// initial checks for both injection modes
@@ -240,9 +264,9 @@
 			playsound(loc, injectSFX, injectVOL, 1)
 			SEND_SIGNAL(M, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)
 
-			var/injection_method = INJECTION
+			var/injection_method = INJECTION // EZ injectors should be EZ after all :)
 			if(mode != INJECTOR_MODE_SKILLESS)
-				injection_method = ABSORPTION // EZ injectors should be EZ after all :)
+				injection_method = ABSORPTION // fast mode injection
 			reagents.reaction(M, injection_method)
 			if(M.reagents)
 				var/list/injected = list()
@@ -262,41 +286,18 @@
 			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 		if(INJECTOR_MODE_PRECISE)
-			var/injection_duration = 10 SECONDS // change this and rebalance the skills in the rebalancing PR
-			injection_duration = (injection_duration * user.get_skill_duration_multiplier(SKILL_MEDICAL))
+			var/injection_duration = 10 SECONDS // change this and rebalance the skills in the rebalancing PRR
+			injection_duration = (injection_duration * user.get_skill_duration_multiplier(SKILL_MEDICAL)) // for some reason, moving while injecting speeds up the duration
 
 			if(M == user) // spamming do_afters results in the null units injected bug which does nothing, but its really fucking annoying and ive got no fucking clue how to fix it, so try not to spam your injector more than the required amount - nihi
 				user.visible_message(SPAN_WARNING("[user] begins to carefully administer \the [src] to themselves..."), SPAN_WARNING("You begin to carefully administer \the [src] to yourself..."))
-				if(!do_after(user, injection_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_ALL, BUSY_ICON_MEDICAL, status_effect = SLOW))
-					return
+				if(do_after(user, injection_duration, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, M, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_MEDICAL, status_effect = SLOW)) // no interrupt_no_needhands here
+					return hypoinject(M, user)
 			else
 				user.visible_message(SPAN_WARNING("[user] begins to carefully administer \the [src] to [M]..."), SPAN_WARNING("You begin to carefully administer \the [src] to [M]..."))
-				if(!do_after(user, injection_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_CLICK & (~INTERRUPT_MOVED), BUSY_ICON_MEDICAL))
-					return
+				if(do_after(user, injection_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_ALL, BUSY_ICON_MEDICAL))
+					return hypoinject(M, user)
 
-			to_chat(user, SPAN_NOTICE("You inject [M] with [src]."))
-			to_chat(M, SPAN_WARNING("You feel a tiny prick!"))
-			playsound(loc, injectSFX, injectVOL, 1)
-			SEND_SIGNAL(M, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)
-
-			reagents.reaction(M, INJECTION)
-
-			if(M.reagents)
-				var/list/injected = list()
-				for(var/datum/reagent/R in reagents.reagent_list)
-					injected += R.name
-					R.last_source_mob = WEAKREF(user)
-				var/contained = english_list(injected)
-				M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
-				user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(M)]. Reagents: [contained]</font>")
-				msg_admin_attack("[key_name(user)] injected [key_name(M)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-
-				var/trans = reagents.trans_to(M, amount_per_transfer_from_this, method = INJECTION)
-				if(mag)
-					to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]'s [mag.name]."))
-				else
-					to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]."))
-			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 /obj/item/reagent_container/hypospray/Initialize()
 	. = ..()

@@ -252,8 +252,8 @@
 						break
 
 		if(can_administer)
-			beaker.reagents.trans_to(occupant, 5)
-			beaker.reagents.reaction(occupant, permeable_in_mobs = FALSE)
+			beaker.reagents.trans_to(occupant, 5, method = ABSORPTION)
+			beaker.reagents.reaction(occupant, method = ABSORPTION, permeable_in_mobs = FALSE)
 
 	if(autoeject)
 		//release the patient automatically when brute and burn are handled on non-robotic limbs and tox damage handled

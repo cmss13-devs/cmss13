@@ -24,7 +24,7 @@
 			if(D.spread_type == SPECIAL || D.spread_type == NON_CONTAGIOUS)
 				continue
 
-			if(method == TOUCH)
+			if(method == ANY_DELIVERY) // gee
 				M.contract_disease(D)
 			else //injected
 				M.contract_disease(D, 1, 0)
@@ -123,14 +123,14 @@
 	reagent_state = LIQUID
 	color = "#C81040" // rgb: 200, 16, 64
 	properties = list(PROPERTY_CURING = 4)
-	preferred_delivery = INJECTION // i dont know if touching this ruins anything, actually
+	preferred_delivery = INJECTION | CONTROLLED_INGESTION // i dont know if touching this ruins anything, actually
 
 /datum/reagent/vaccine/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	if(has_species(M,"Horror"))
 		return
 	var/datum/reagent/vaccine/self = src
 	src = null
-	if(self.data_properties && method == INGESTION)
+	if(self.data_properties && method == CONTROLLED_INGESTION | method == INJECTION)
 		for(var/datum/disease/D in M.viruses)
 			if(istype(D, /datum/disease/advance))
 				var/datum/disease/advance/A = D
@@ -151,10 +151,11 @@
 	description = "Microbes with an entirely alien cellular structure."
 	reagent_state = LIQUID
 	color = "#535E66" // rgb: 83, 94, 102
+	preferred_delivery = ANY_DELIVERY
 
 /datum/reagent/xenomicrobes/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	src = null
-	if((prob(10) && method==TOUCH) || method==INGESTION)
+	if(prob(10) && method==ANY_DELIVERY)
 		M.contract_disease(new /datum/disease/xeno_transformation(0),1)
 
 /datum/reagent/blackgoo
@@ -165,6 +166,7 @@
 	color = "#222222"
 	custom_metabolism = 100 //disappears immediately
 	properties = list(PROPERTY_RAVENING = 1)
+	preferred_delivery = ANY_DELIVERY
 
 /datum/reagent/blackgoo/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	if(ishuman(M))

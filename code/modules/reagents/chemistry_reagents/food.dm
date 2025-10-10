@@ -188,7 +188,7 @@
 	properties = list(PROPERTY_NUTRITIOUS = 3)
 	flags = REAGENT_NO_GENERATION
 
-/datum/reagent/vegemite/reaction_mob(mob/target_mob, method=TOUCH, volume, permeable)
+/datum/reagent/vegemite/reaction_mob(mob/target_mob, method=INGESTION, volume, permeable)
 	if(target_mob.faction != FACTION_TWE)
 		to_chat(target_mob, (SPAN_ALERTWARNING("God... it's disgusting... eating that was not a good idea.")))
 

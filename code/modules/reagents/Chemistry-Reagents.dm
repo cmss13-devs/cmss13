@@ -101,10 +101,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	if(!istype(M, /mob/living))
 		return FALSE
 	var/datum/reagent/self = src
-	src = null   //of the reagent to the mob on TOUCHING it.
+	src = null   //of the reagent to the mob on INHALATION of it.
 
 	if(self.holder) //for catching rare runtimes
-		if(method == TOUCH && permeable && !istype(self.holder.my_atom, /obj/effect/particle_effect/smoke/chem))
+		if(method == INHALATION && permeable && !istype(self.holder.my_atom, /obj/effect/particle_effect/smoke/chem))
 			// If the chemicals are in a smoke cloud, do not try to let the chemicals "penetrate" into the mob's system (balance station 13) -- Doohl
 			var/chance = 1
 

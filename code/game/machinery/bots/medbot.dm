@@ -419,10 +419,10 @@
 				if (!assess_patient(C))
 					visible_message(SPAN_DANGER("<B>[src] pulls the syringe away. Safety protocol engaged!</B>"))
 				else if (reagent_id == "internal_beaker" && reagent_glass && reagent_glass.reagents.total_volume)
-					src.reagent_glass.reagents.trans_to(src.patient,src.injection_amount) //Inject from beaker instead.
-					src.reagent_glass.reagents.reaction(src.patient, 2)
+					src.reagent_glass.reagents.trans_to(src.patient, src.injection_amount, method = INJECTION) //Inject from beaker instead.
+					src.reagent_glass.reagents.reaction(src.patient, method = INJECTION)
 				else
-					src.patient.reagents.add_reagent(reagent_id,src.injection_amount)
+					src.patient.reagents.add_reagent(reagent_id, src.injection_amount, method = INJECTION)
 				visible_message(SPAN_DANGER("<B>[src] injects [src.patient] with the syringe!</B>"))
 
 			src.icon_state = "medibot[src.on]"

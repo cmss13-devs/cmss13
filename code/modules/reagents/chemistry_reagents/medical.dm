@@ -328,6 +328,7 @@
 	color = "#4acaca" // rgb: 200, 165, 220
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CRYOMETABOLIZING = 2, PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1, PROPERTY_ANTICARCINOGENIC = 1)
+	preferred_delivery = ABSORPTION // look, dipping yourself in whats essentially medical liquid nitrogen is more akin to applying lotion
 
 /datum/reagent/medical/cryoxadone/on_mob_life(mob/living/M)
 	. = ..()
@@ -347,6 +348,7 @@
 	color = "#51b4db" // rgb: 200, 165, 220
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CRYOMETABOLIZING = 6, PROPERTY_NEOGENETIC = 3, PROPERTY_ANTICORROSIVE = 3, PROPERTY_ANTITOXIC = 3, PROPERTY_ANTICARCINOGENIC = 3)
+	preferred_delivery = ABSORPTION
 
 /datum/reagent/medical/rezadone
 	name = "Rezadone"

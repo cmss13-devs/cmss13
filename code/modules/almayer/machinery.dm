@@ -116,6 +116,7 @@
 	if(Adjacent(source))
 		return
 	on_unset_interaction(source)
+	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
 
 /obj/structure/machinery/prop/almayer/CICmap/computer
 	name = "map terminal"

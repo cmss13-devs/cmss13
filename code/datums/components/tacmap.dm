@@ -77,6 +77,9 @@
 	user.client.remove_from_screen(drawing_actions)
 	user.client.remove_from_screen(close_button)
 	user.client.mouse_pointer_icon = null
+	user.client.active_draw_tool = null
+	map.active_draw_tool = null
+	winset(user, "drawingtools", "reset=true")
 
 /datum/component/tacmap/proc/show_tacmap(mob/user)
 	if(!map)

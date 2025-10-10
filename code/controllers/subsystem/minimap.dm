@@ -938,9 +938,6 @@ SUBSYSTEM_DEF(minimaps)
 		closeToolTip(usr)
 
 /atom/movable/screen/exit_map/clicked(location, list/modifiers)
-	usr.client.active_draw_tool = null
-	linked_map.map.active_draw_tool = null
-	winset(usr, "drawingtools", "reset=true")
 	linked_map.on_unset_interaction(usr)
 	return TRUE
 

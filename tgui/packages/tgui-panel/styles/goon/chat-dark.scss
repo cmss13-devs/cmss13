@@ -1086,22 +1086,6 @@ em {
   font-size: 150%;
 }
 
-.enourmous {
-  font-size: 175%;
-}
-
-.gargantuan {
-  font-size: 200%;
-}
-
-.colossal {
-  font-size: 250%;
-}
-
-.titanic {
-  font-size: 300%;
-}
-
 .underline {
   text-decoration: underline;
 }
@@ -1605,7 +1589,7 @@ em {
   padding: 0;
 
   &.corplogo {
-    width: 300px !important;
-    height: 100px !important;
+    width: 100px !important;
+    height: 33px !important;
   }
 }

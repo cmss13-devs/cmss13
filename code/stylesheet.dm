@@ -73,10 +73,6 @@ em {font-style: normal; font-weight: bold;}
 .large { font-size: 3}
 .extra_large { font-size: 4}
 .huge { font-size: 5}
-.enourmous { font-size: 7}
-.gargantuan { font-size: 8}
-.collossal { font-size: 9}
-.titanic { font-size: 10}
 
 .bold {font-weight: bold;}
 .underline {text-decoration: underline;}

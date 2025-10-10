@@ -1117,22 +1117,6 @@ h2.alert {
   font-size: 150%;
 }
 
-.enourmous {
-  font-size: 175%;
-}
-
-.gargantuan {
-  font-size: 200%;
-}
-
-.colossal {
-  font-size: 250%;
-}
-
-.titanic {
-  font-size: 300%;
-}
-
 .underline {
   text-decoration: underline;
 }
@@ -1596,11 +1580,9 @@ h2.alert {
   height: 1.5em;
   margin: 0;
   padding: 0;
-}
 
-.boxed_message .icon .corplogo {
-  width: 300px !important;
-  height: 100px !important;
-  max-width: none;
-  display: block;
+  &.corplogo {
+    width: 100px !important;
+    height: 33px !important;
+  }
 }

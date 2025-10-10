@@ -98,12 +98,6 @@
 /obj/item/weapon/gun/rifle/m41a/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
-// /obj/item/weapon/gun/rifle/m41a/examine(mob/user)
-// 	. = ..()
-// 	var/logo = "[icon2html('icons/ui_icons/logos.dmi', viewers(src), "armat", non_standard_size = TRUE)]"
-// 	to_chat(user, boxed_message(SPAN_INFO("On [src] you can see a manufactuer logo, it reads: [(FONT_SIZE_TITANIC("[logo]"))]")))
-
-
 /obj/item/weapon/gun/rifle/m41a/Initialize(mapload, ...)
 	. = ..()
 	AddElement(/datum/element/corp_label/armat)

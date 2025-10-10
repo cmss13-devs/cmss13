@@ -118,7 +118,7 @@
 		if(nst_stim.get_property(PROPERTY_NERVESTIMULATING))
 			nst_stim.volume += max(min((-1*amount)/10, 0), -10)
 	if(S)
-		S.update_duration(amount, increment=TRUE, include_resist=TRUE)
+		S.update_duration(amount, increment=TRUE, include_resist=accumulate_resist)
 	else if(amount > 0)
 		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount)
 	if(accumulate_resist)

@@ -371,6 +371,14 @@
 					to_chat(src, SPAN_WARNING("[living_mob] is restraining [pulled_mob], you cannot push past."))
 				now_pushing = FALSE
 				return
+		if(!pulling)
+			// treat it as if we're also pulling just for move delay
+			pulling = living_mob.pulling
+			if(client)
+				client.recalculate_move_delay()
+			else
+				movement_delay()
+			pulling = null
 
 	if(ishuman(living_mob))
 		if(!(living_mob.status_flags & CANPUSH))

@@ -29,6 +29,7 @@
 /obj/structure/ladder/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("Drag-click to look up or down [src].")
+	. += SPAN_NOTICE("Ctrl-click to go up, Alt-click to go down.")
 	if(ishuman(user))
 		. += SPAN_NOTICE("Click [src] with unprimed grenades/flares to prime and toss it up or down.")
 
@@ -82,27 +83,50 @@
 		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 		return
 
+	var/direction
+	if(up && down)
+		var/choice = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
+		if(choice == "up")
+			direction = "up"
+		else if(choice == "down")
+			direction = "down"
+		else
+			return //User cancelled or invalid choice
+	else if(up)
+		direction = "up"
+	else if(down)
+		direction = "down"
+	else
+		return FALSE //No valid directions
+
+	climb_ladder(user, direction)
+
+//Helper function to handle climbing logic for both manual clicks and modifier clicks
+/obj/structure/ladder/proc/climb_ladder(mob/living/user, direction)
+	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored)
+		return FALSE
+	if(busy)
+		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
+		return FALSE
+
 	var/ladder_dir_name
 	var/obj/structure/ladder/ladder_dest
-	if(up && down)
-		ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
-		if(ladder_dest == "up")
-			ladder_dest = up
-			ladder_dir_name = ("up")
-		if(ladder_dest == "down")
-			ladder_dest = down
-			ladder_dir_name = ("down")
-	else if(up)
+
+	if(direction == "up")
+		if(!up)
+			return FALSE
 		ladder_dir_name = "up"
 		ladder_dest = up
-	else if(down)
+	else if(direction == "down")
+		if(!down)
+			return FALSE
 		ladder_dir_name = "down"
 		ladder_dest = down
 	else
-		return FALSE //just in case
+		return FALSE
 
 	if(!ladder_dest)
-		return
+		return FALSE
 
 	step(user, get_dir(user, src))
 	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),
@@ -117,6 +141,29 @@
 			user.trainteleport(ladder_dest.loc)
 	busy = FALSE
 	add_fingerprint(user)
+	return TRUE
+
+//Alt click to go down
+/obj/structure/ladder/proc/alt_click_action(mob/user)
+	if(!isliving(user))
+		return
+	climb_ladder(user, "down")
+
+//Ctrl click to go up
+/obj/structure/ladder/proc/ctrl_click_action(mob/user)
+	if(!isliving(user))
+		return
+	climb_ladder(user, "up")
+
+//Override clicked to handle modifier clicks
+/obj/structure/ladder/clicked(mob/user, list/mods)
+	if(mods[ALT_CLICK])
+		alt_click_action(user)
+		return TRUE
+	if(mods[CTRL_CLICK])
+		ctrl_click_action(user)
+		return TRUE
+	return ..()
 
 /obj/structure/ladder/check_eye(mob/living/user)
 	//Are we capable of looking?

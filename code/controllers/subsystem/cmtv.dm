@@ -247,7 +247,7 @@ SUBSYSTEM_DEF(cmtv)
 
 /// If a player has moved recently, also checks the inactivity var
 /datum/controller/subsystem/cmtv/proc/is_active(mob/possible_player, delay_time)
-	if(!possible_player.client)
+	if(!possible_player || !possible_player.client)
 		return FALSE
 	
 	if(possible_player.client.inactivity > delay_time)

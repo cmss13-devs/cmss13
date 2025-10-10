@@ -563,7 +563,7 @@ class ChatRenderer {
       } else {
         this.rootNode.appendChild(fragment);
       }
-      if (this.scrollTracking) {
+      if (this.scrollTracking || this.alwaysStayAtBottom) {
         setTimeout(() => this.scrollToBottom());
       }
     }

@@ -102,8 +102,8 @@ SUBSYSTEM_DEF(cmtv)
 
 	camera_mob = new_mob
 
-	camera_operator.nuke_chat()
-	addtimer(CALLBACK(src, PROC_REF(do_init_chat)), 2 SECONDS)
+	restart_chat()
+	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_roundstart)))
 
 	winset(camera_operator, null, {"
 		infowindow.info.splitter=0;
@@ -129,12 +129,24 @@ SUBSYSTEM_DEF(cmtv)
 	if(!QDELETED(current_perspective))
 		camera_mob.do_observe(current_perspective)
 
+/// For events we want to occur at the beginning of the round - eg, when the map becomes actually visible
+/datum/controller/subsystem/cmtv/proc/handle_roundstart()
+	addtimer(CALLBACK(src, PROC_REF(restart_chat), 5 SECONDS))
+
+/datum/controller/subsystem/cmtv/proc/restart_chat()
+	camera_operator.nuke_chat()
+	addtimer(CALLBACK(src, PROC_REF(do_init_chat)), 2 SECONDS)
+
 /// To ensure the chat is fully initialised after we nuke it, we wait a bit before sending it an action
 /datum/controller/subsystem/cmtv/proc/do_init_chat()
 	camera_operator.tgui_panel.window.send_message("chat/disableScroll")
 
 /// Takes a new mob to observe. If there is already a queued up mob, or a current perspective, they will be notified and dropped. This will become the new perspective in 10 seconds.
 /datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective)
+	if(new_perspective == current_perspective)
+		log_debug("CMTV: New perspective same as the old perspective, skipping change.")
+		return
+
 	log_debug("CMTV: Swapping to perspective [new_perspective].")
 
 	if(current_perspective)

@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(cmtv)
 
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
-	if(!username)
+	if(!username || !CONFIG_GET(string/cmtv_link))
 		return SS_INIT_NO_NEED
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_new_client))
@@ -150,8 +150,6 @@ SUBSYSTEM_DEF(cmtv)
 	SIGNAL_HANDLER
 
 	change_observed_mob(get_active_player())
-
-
 
 #define PERSPECTIVE_SELECTION_DELAY_TIME (20 SECONDS)
 

@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(ref_mob_to_last_cause_data_time)
 		if(causing_mob.mind)
 			ckey = causing_mob.mind.ckey
 		
-		GLOB.ref_mob_to_last_cause_data_time[weak_cause.reference] = world.time
+		GLOB.ref_mob_to_last_cause_data_time[weak_mob.reference] = world.time
 
 
 /datum/cause_data/proc/resolve_mob()

@@ -123,11 +123,11 @@ SUBSYSTEM_DEF(cmtv)
 
 /// For events we want to occur at the beginning of the round - eg, when the map becomes actually visible
 /datum/controller/subsystem/cmtv/proc/handle_roundstart()
-	addtimer(CALLBACK(src, PROC_REF(restart_chat), 5 SECONDS))
+	addtimer(CALLBACK(src, PROC_REF(restart_chat), 10 SECONDS))
 
 /datum/controller/subsystem/cmtv/proc/restart_chat()
 	camera_operator.nuke_chat()
-	addtimer(CALLBACK(src, PROC_REF(do_init_chat)), 2 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(do_init_chat)), 0.5 SECONDS)
 
 /// To ensure the chat is fully initialised after we nuke it, we wait a bit before sending it an action
 /datum/controller/subsystem/cmtv/proc/do_init_chat()

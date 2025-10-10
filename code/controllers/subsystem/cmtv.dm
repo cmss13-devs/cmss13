@@ -108,6 +108,10 @@ SUBSYSTEM_DEF(cmtv)
 	camera_operator.prefs.toggle_prefs |= TOGGLE_FULLSCREEN
 	camera_operator.update_fullscreen()
 
+	for(var/hud in list(MOB_HUD_MEDICAL_OBSERVER, MOB_HUD_XENO_STATUS))
+		var/datum/mob_hud/hud_datum = GLOB.huds[hud]
+		hud_datum.add_hud_to(camera_mob, camera_mob)
+
 	camera_operator.prefs.hide_statusbar = TRUE
 	camera_operator.prefs.toggles_chat &= ~(CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_LISTENINGBUG)
 

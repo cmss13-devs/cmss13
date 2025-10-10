@@ -942,7 +942,11 @@
 	dir = 8
 
 /turf/open/gm/mudcoast
+	name = "muddy coastline"
 	icon_state = "mudbeach_edge"
+	baseturfs = /turf/open/gm/mudcoast
+	supports_surgery = FALSE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/gm/mudcoast/north
 

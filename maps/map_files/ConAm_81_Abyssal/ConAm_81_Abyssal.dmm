@@ -4495,6 +4495,7 @@
 /obj/structure/surface/table/gamblingtable{
 	layer = 3
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/hybrisa/tile/tileblue,
 /area/abyssal/interior/galley)
 "amL" = (
@@ -13654,6 +13655,28 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/darkblue2/north,
 /area/abyssal/interior/command)
+"aHS" = (
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/item/prop{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "generic";
+	name = "Console Screen";
+	pixel_y = 10;
+	explo_proof = 1;
+	unacidable = 1;
+	light_range = 2;
+	light_color = "#008000";
+	light_on = 1;
+	anchored = 1
+	},
+/turf/open/floor/darkblue2/north,
+/area/abyssal/interior/command)
 "aHT" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/reagent_dispensers/fueltank,
@@ -19082,11 +19105,12 @@
 /area/abyssal/interior/maintenance/north)
 "aUT" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "Lower Nitrogen Control Console";
-	dir = 8
-	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/computer/emails{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 7
+	},
 /turf/open/floor/darkbrown2/southeast,
 /area/abyssal/interior/atmo)
 "aUU" = (
@@ -19603,9 +19627,10 @@
 /area/abyssal/interior/galley)
 "aWf" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "Lower Mixed Air Control";
-	dir = 8
+/obj/structure/machinery/computer/emails{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 7
 	},
 /turf/open/floor/darkbrown2/east,
 /area/abyssal/interior/atmo)
@@ -19793,11 +19818,12 @@
 "aWA" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/objective{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/machinery/computer/emails{
+	dir = 4;
+	pixel_y = 2
 	},
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/abyssal/interior/security)
@@ -19999,8 +20025,9 @@
 "aWT" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/objective{
-	dir = 4
+/obj/structure/machinery/computer/emails{
+	dir = 4;
+	pixel_y = 2
 	},
 /turf/open/floor/darkred2/north,
 /area/abyssal/interior/security)
@@ -20015,6 +20042,10 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/bed/chair/bolted{
 	dir = 8
+	},
+/obj/structure/sign/poster/conam{
+	pixel_y = 32;
+	pixel_x = -6
 	},
 /turf/open/floor/darkred2/northeast,
 /area/abyssal/interior/security)
@@ -21328,6 +21359,8 @@
 /obj/structure/sign/poster/marshalls{
 	pixel_x = 30
 	},
+/obj/item/clothing/under/rank/security,
+/obj/item/clothing/under/rank/security,
 /turf/open/floor/prison/redcorner/west,
 /area/abyssal/interior/security)
 "bal" = (
@@ -23916,6 +23949,13 @@
 	pixel_x = -5;
 	pixel_y = 4
 	},
+/obj/item/toy/dice{
+	pixel_x = 3
+	},
+/obj/item/toy/dice/d20{
+	pixel_x = -8;
+	pixel_y = 5
+	},
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/abyssal/interior/bunker)
 "bgk" = (
@@ -25671,6 +25711,32 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/abyssal/interior/hydro)
+"bjI" = (
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/item/prop{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "comm";
+	name = "Console Screen";
+	pixel_y = 10;
+	explo_proof = 1;
+	unacidable = 1;
+	light_range = 2;
+	light_color = "#00FFFF";
+	light_on = 1;
+	anchored = 1
+	},
+/turf/open/floor/darkblue2/northeast,
+/area/abyssal/interior/command)
+"bjJ" = (
+/obj/item/toy/syndicateballoon,
+/turf/open/floor/plating/catwalk/rusted,
+/area/abyssal/gonzo)
 "bqz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -52341,7 +52407,7 @@ aeA
 aeA
 awn
 abk
-aPW
+aHS
 acK
 adQ
 alD
@@ -52493,7 +52559,7 @@ abu
 abu
 abu
 abk
-asJ
+bjI
 aqq
 uMz
 adQ
@@ -52638,7 +52704,7 @@ aPi
 abu
 awn
 aeA
-aeA
+bjJ
 abu
 asf
 asf

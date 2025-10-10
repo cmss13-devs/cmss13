@@ -20,6 +20,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/conam_patch(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/spear(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 	add_survivor_rare_item(new_human)
 	add_survivor_weapon_civilian(new_human)
 	..()
@@ -282,4 +283,5 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/socom(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/sec/alt(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/conam_patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black_leather(new_human), WEAR_HANDS)
 	..()

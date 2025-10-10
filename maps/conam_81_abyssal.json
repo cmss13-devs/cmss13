@@ -6,7 +6,7 @@
     "survivor_types": [
         "/datum/equipment_preset/survivor/abyssal/doctor",
         "/datum/equipment_preset/survivor/abyssal/scientist",
-        "/datum/equipment_preset/survivor/abyssal/colonial_marshal",
+        "/datum/equipment_preset/survivor/abyssal/security_officer",
         "/datum/equipment_preset/survivor/abyssal/engineer",
         "/datum/equipment_preset/survivor/abyssal/civilian",
         "/datum/equipment_preset/survivor/conam"

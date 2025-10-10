@@ -1945,3 +1945,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "rmc_helm_medic"
 	built_in_visors = list(new /obj/item/device/helmet_visor/medical/advanced)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
+
+/obj/item/clothing/head/helmet/marine/veteran/abyssal_security
+	name = "security helmet"
+	desc = "Standard issue helmet issued to Con-Am security forces."
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+	)
+	armo
+	icon_state = "sec_helmet"
+	item_state = "sec_helmet"
+	flags_inv_hide = HIDETOPHAIR

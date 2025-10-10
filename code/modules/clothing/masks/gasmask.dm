@@ -155,3 +155,17 @@
 	vision_impair = VISION_IMPAIR_NONE
 	eye_protection = EYE_PROTECTION_FLAVOR
 	flags_inv_hide = HIDEEARS|HIDEFACE
+
+//= Security =\\
+
+/obj/item/clothing/mask/gas/sec_mask
+	name = "\improper Sec Mask"
+	desc = "Standard issue mask issued to Con-Am security forces. Typically locks in with the standard issue helmet Voice modulator appears to be disabled."
+	icon_state = "sec_mask"
+	item_state = "sec_mask"
+	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	flags_inv_hide = HIDEFACE

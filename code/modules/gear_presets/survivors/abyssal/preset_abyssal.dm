@@ -18,6 +18,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/conam_patch(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/spear(new_human), WEAR_R_HAND)
 	add_survivor_rare_item(new_human)
 	add_survivor_weapon_civilian(new_human)
 	..()
@@ -50,6 +52,47 @@
 	..()
 
 // Marshal/Security
+
+// Security Officer
+
+
+/datum/equipment_preset/survivor/abyssal/security_officer
+	name = "Survivor - Abyssal - Security Officer"
+	assignment = "Security"
+	skills = /datum/skills/civilian/survivor/marshal
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	job_title = JOB_CMB
+	role_comm_title = "SEC"
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
+
+	survivor_variant = SECURITY_SURVIVOR
+
+/datum/equipment_preset/survivor/abyssal/security_officer/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/abyssal_sec_uniform(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/abyssal_security(new_human), WEAR_HEAD)
+	if(new_human.disabilities & NEARSIGHTED)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/prescription(new_human), WEAR_EYES)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/sec_mask(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/swat(new_human), WEAR_HANDS)
+	add_survivor_weapon_security(new_human)
+	..()
+
+// Marshal
 
 /datum/equipment_preset/survivor/abyssal/colonial_marshal
 	name = "Survivor - Abyssal - Colonial Marshal Deputy"

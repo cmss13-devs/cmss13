@@ -304,10 +304,6 @@
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
 		return XENO_NONCOMBAT_ACTION
 
-	if(check_danger())
-		to_chat(xeno, SPAN_XENONOTICE("Lights flash with warnings. There is still too much danger on this planet for us to leave!"))
-		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
-		return XENO_NONCOMBAT_ACTION
 
 	if(is_remote)
 		groundside_alien_action(xeno)
@@ -334,6 +330,11 @@
 		message_admins("[key_name(xeno)] has locked the dropship '[dropship]'", xeno.x, xeno.y, xeno.z)
 		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
 		return
+
+	if(check_danger())
+		to_chat(xeno, SPAN_XENONOTICE("Lights flash with warnings. There is still too much danger on this planet for us to leave!"))
+		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
+		return XENO_NONCOMBAT_ACTION
 
 	if(dropship_control_lost)
 		//keyboard

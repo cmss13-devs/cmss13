@@ -615,7 +615,7 @@
 /obj/structure/transmitter/colony_net{
 	phone_category = "Lazarus Landing";
 	phone_color = "yellow";
-	phone_id = "Butcher";
+	phone_id = "Nexus Sushi";
 	pixel_y = 29;
 	pixel_x = 6
 	},
@@ -3233,9 +3233,9 @@
 	},
 /obj/structure/transmitter/colony_net{
 	dir = 4;
-	phone_category = "LV522 Chances Claim";
+	phone_category = "Lazarus Landing";
 	phone_color = "red";
-	phone_id = "Colony Cargo";
+	phone_id = "Colony Comms";
 	pixel_x = -16
 	},
 /turf/open/floor/wood/ship,
@@ -8848,6 +8848,12 @@
 /area/lv624/lazarus/sushi)
 "aHo" = (
 /obj/structure/machinery/power/apc/no_power/south,
+/obj/structure/transmitter/colony_net{
+	phone_category = "Lazarus Landing";
+	phone_id = "Quartermaster's Office";
+	dir = 8;
+	pixel_x = 14
+	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/lv624/lazarus/quart)
 "aHs" = (
@@ -12481,6 +12487,13 @@
 	dir = 4;
 	icon_state = "gib6"
 	},
+/obj/structure/transmitter/colony_net{
+	dir = 4;
+	phone_category = "Lazarus Landing";
+	phone_color = "red";
+	phone_id = "Nexus Administration";
+	pixel_x = -16
+	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv624/lazarus/nexus_admin)
 "aVp" = (
@@ -13452,6 +13465,7 @@
 /area/lv624/lazarus/nexus_admin)
 "aYH" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
 /turf/open/floor/prison/darkred2,
 /area/lv624/lazarus/security)
 "aYI" = (
@@ -31707,7 +31721,7 @@
 "cbK" = (
 /obj/structure/transmitter/colony_net{
 	phone_category = "Lazarus Landing";
-	phone_id = "Lakeside Bar";
+	phone_id = "Lakeside Cabin";
 	dir = 8;
 	pixel_x = 14
 	},
@@ -41103,7 +41117,7 @@
 /obj/structure/transmitter/colony_net{
 	phone_category = "Lazarus Landing";
 	phone_color = "red";
-	phone_id = "Research Marshall Office";
+	phone_id = "Research Security Office";
 	pixel_y = 29;
 	pixel_x = 5
 	},
@@ -44061,7 +44075,7 @@
 /obj/structure/transmitter/colony_net{
 	phone_category = "Lazarus Landing";
 	phone_color = "blue";
-	phone_id = "Corporate Office";
+	phone_id = "Customs Dome";
 	pixel_y = 24
 	},
 /obj/effect/decal/hybrisa/dirt,
@@ -47077,8 +47091,12 @@
 /turf/open/floor/wood/wood_broken2,
 /area/lv624/ground/caves/mining)
 "sGW" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/transmitter/colony_net{
+	dir = 4;
+	phone_category = "Lazarus Landing";
+	phone_color = "red";
+	phone_id = "Nexus Security";
+	pixel_x = -16
 	},
 /turf/open/floor/prison/darkred2/west,
 /area/lv624/lazarus/security)
@@ -48107,7 +48125,7 @@
 /obj/structure/transmitter/colony_net{
 	phone_category = "Lazarus Landing";
 	phone_color = "yellow";
-	phone_id = "Colonist Barracks.";
+	phone_id = "Colonist Barracks";
 	dir = 1;
 	pixel_y = -29
 	},
@@ -51573,7 +51591,7 @@
 /obj/structure/transmitter/colony_net{
 	phone_category = "Lazarus Landing";
 	phone_color = "red";
-	phone_id = "Secure Storage";
+	phone_id = "Secure Bunker";
 	pixel_y = 24
 	},
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{

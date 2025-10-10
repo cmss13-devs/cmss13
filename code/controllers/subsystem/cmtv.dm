@@ -121,6 +121,8 @@ SUBSYSTEM_DEF(cmtv)
 	camera_operator.prefs.hide_statusbar = TRUE
 	camera_operator.prefs.toggles_chat &= ~(CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_LISTENINGBUG)
 
+	camera_operator.screen += GLOB.escape_menu_details
+
 	if(!QDELETED(current_perspective))
 		camera_mob.do_observe(current_perspective)
 

@@ -155,17 +155,19 @@ SUBSYSTEM_DEF(cmtv)
 	to_chat(new_perspective, boxed_message("[SPAN_BIGNOTICE("You will be observed in 10 seconds.")]\n\n [SPAN_NOTICE("Your perspective will be shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to cancel this, press <a href='byond://?src=\ref[src];cancel_cmtv=1'>here</a>.")]"))
 
 	future_perspective = WEAKREF(new_perspective)
-	swap_at = world.time + 10 SECONDS
+	addtimer(CALLBACK(src, PROC_REF(do_change_observed_mob)), 10 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 /datum/controller/subsystem/cmtv/proc/do_change_observed_mob()
 	if(!istype(future_perspective))
-		log_debug("CMTV: Perspective changed while we were waiting, aborting and resetting.")
-		return reset_perspective()
+		log_debug("CMTV: Perspective changed while we were waiting, aborting.")
+		future_perspective = null
+		return
 
 	var/mob/future_perspective_mob = future_perspective.resolve()
 	if(!future_perspective_mob || !future_perspective_mob.client)
-		log_debug("CMTV: Perspective could not resolve, aborting and resetting.")
-		return reset_perspective()
+		log_debug("CMTV: Perspective could not resolve, aborting.")
+		future_perspective = null
+		return
 
 	RegisterSignal(future_perspective_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH), PROC_REF(reset_perspective))
 	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(handle_z_change))

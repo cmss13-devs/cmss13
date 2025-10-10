@@ -520,6 +520,7 @@
 	name = "\improper KMCC Mining Facility"
 	icon = 'icons/turf/hybrisareas.dmi'
 	icon_state = "mining"
+	always_unpowered = FALSE
 
 /area/lv624/gonzo
 	name = "Gonzo's hide-out"

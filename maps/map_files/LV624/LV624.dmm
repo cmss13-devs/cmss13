@@ -16676,7 +16676,6 @@
 	dir = 9
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/west_caves)
 "bjg" = (
@@ -27605,7 +27604,7 @@
 /obj/structure/platform_decoration/metal/almayer/northeast{
 	dir = 10
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRy" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
@@ -27623,7 +27622,7 @@
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRz" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -27646,7 +27645,7 @@
 /obj/structure/platform_decoration/metal/almayer/northeast{
 	dir = 6
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRA" = (
 /turf/open/floor/corsat/white/west,
@@ -27681,7 +27680,7 @@
 /obj/structure/platform_decoration/metal/almayer/northeast{
 	dir = 10
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRE" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
@@ -27699,7 +27698,7 @@
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRF" = (
 /obj/structure/lattice,
@@ -27729,7 +27728,7 @@
 /obj/structure/platform_decoration/metal/almayer/northeast{
 	dir = 6
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRG" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -27843,7 +27842,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRR" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3{
@@ -27855,7 +27854,7 @@
 	icon_state = "4-9"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRS" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -27869,7 +27868,7 @@
 /obj/structure/cable{
 	icon_state = "6-8"
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRT" = (
 /obj/structure/machinery/light/blue{
@@ -27919,7 +27918,7 @@
 	icon_state = "4-10"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRZ" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3{
@@ -27933,7 +27932,7 @@
 	icon_state = "5-8"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSa" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
@@ -27954,7 +27953,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSb" = (
 /turf/open/floor/corsat/purple/west,
@@ -28125,7 +28124,7 @@
 	dir = 8
 	},
 /obj/structure/platform_decoration/metal/almayer/northeast,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSv" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
@@ -28137,7 +28136,7 @@
 	icon_state = "4-9"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSw" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -28157,7 +28156,7 @@
 	icon_state = "5-8"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSz" = (
 /obj/structure/lattice,
@@ -28181,7 +28180,7 @@
 /obj/structure/platform_decoration/metal/almayer/northeast{
 	dir = 9
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSA" = (
 /obj/structure/machinery/light/blue{
@@ -29265,7 +29264,7 @@
 /obj/structure/platform_decoration/metal/almayer/northeast{
 	dir = 10
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUG" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
@@ -29275,7 +29274,7 @@
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUH" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -29295,7 +29294,7 @@
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUL" = (
 /obj/structure/lattice,
@@ -29317,7 +29316,7 @@
 /obj/structure/platform_decoration/metal/almayer/northeast{
 	dir = 6
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUM" = (
 /obj/structure/machinery/light/blue{
@@ -29368,7 +29367,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 8
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUS" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3{
@@ -29382,7 +29381,7 @@
 	icon_state = "4-10"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUT" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
@@ -29396,7 +29395,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUU" = (
 /obj/structure/machinery/light/small{
@@ -29433,7 +29432,7 @@
 	dir = 8;
 	pixel_y = -1
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVa" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy3,
@@ -29445,7 +29444,7 @@
 	icon_state = "6-8"
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVb" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
@@ -29466,7 +29465,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 4
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVc" = (
 /obj/effect/landmark/monkey_spawn,
@@ -29546,7 +29545,7 @@
 	dir = 8
 	},
 /obj/structure/platform_decoration/metal/almayer/northeast,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVk" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
@@ -29566,7 +29565,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 1
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVl" = (
 /obj/structure/lattice,
@@ -29591,7 +29590,7 @@
 /obj/structure/platform_decoration/metal/almayer/northeast{
 	dir = 9
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVm" = (
 /turf/open/floor/corsat/red/west,
@@ -29637,7 +29636,7 @@
 	pixel_y = -1
 	},
 /obj/structure/platform_decoration/metal/almayer/northeast,
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVs" = (
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
@@ -29657,7 +29656,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 1
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVt" = (
 /obj/structure/lattice,
@@ -29689,7 +29688,7 @@
 /obj/structure/platform_decoration/metal/almayer/northeast{
 	dir = 9
 	},
-/turf/open/floor/corsat,
+/turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVu" = (
 /obj/structure/surface/table/reinforced/prison{

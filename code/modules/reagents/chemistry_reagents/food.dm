@@ -233,7 +233,7 @@
 	if(!istype(M, /mob/living) || has_species(M,"Horror"))
 		return
 
-	if(method == TOUCH)
+	if(method == INHALATION || TOUCH)
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/victim = M
 			if(skillcheck(victim, SKILL_POLICE, SKILL_POLICE_SKILLED))

@@ -92,3 +92,14 @@
 	store_mobs = FALSE
 	climbable = TRUE
 	throwpass = 1
+
+/obj/structure/closet/coffin/woodencrate/old
+	desc = "An old wooden crate. Shoddily assembled, falling to pieces, spacious - but worthless on the ASRS."
+	icon_state = "closed_oldwoodcrate"
+	icon_opened = "open_oldwoodcrate"
+	icon_closed = "closed_oldwoodcrate"
+
+/obj/structure/closet/coffin/woodencrate/old/alt
+	icon_state = "closed_damagedoldwoodcrate"
+	icon_opened = "open_damagedoldwoodcrate"
+	icon_closed = "closed_damagedoldwoodcrate"

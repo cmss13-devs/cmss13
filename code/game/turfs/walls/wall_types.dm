@@ -470,7 +470,7 @@
 /turf/closed/wall/mineral/sandstone
 	name = "sandstone wall"
 	desc = "A wall with sandstone plating."
-	icon = 'icons/turf/walls/temple/stone.dmi'
+	icon = 'icons/turf/walls/hunter/stone.dmi'
 	color = "#c6a480"
 	icon_state = "stone"
 	mineral = "sandstone"
@@ -479,7 +479,7 @@
 /turf/closed/wall/mineral/sandstone/runed
 	name = "sandstone temple wall"
 	desc = "A heavy wall of sandstone."
-	icon = 'icons/turf/walls/temple/hunter_temple.dmi'
+	icon = 'icons/turf/walls/hunter/hunter_temple.dmi'
 	color = null
 	icon_state = "ancient_stone"
 	mineral = "runed sandstone"

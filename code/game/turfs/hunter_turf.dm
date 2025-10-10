@@ -304,7 +304,7 @@
 
 /turf/open/floor/ancient_temple
 	name = "floor"
-	icon = 'icons/turf/floors/temple/ancientfloor.dmi'
+	icon = 'icons/turf/floors/hunter/ancientfloor.dmi'
 	icon_state = "floor1"
 	supports_surgery = TRUE
 
@@ -682,3 +682,8 @@
 
 /turf/open/floor/ancient_temple/ruined/west
 	dir = WEST
+
+//
+
+/turf/open/floor/ancient_temple/fake_wall_dark
+	icon_state = "fake_wall_dark"

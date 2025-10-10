@@ -2727,6 +2727,125 @@
 /turf/open/floor/prison/brown
 	icon_state = "brown"
 
+/turf/open/floor/prison/brown/north
+	icon_state = "brown"
+	dir = NORTH
+
+/turf/open/floor/prison/brown/east
+	icon_state = "brown"
+	dir = EAST
+
+/turf/open/floor/prison/brown/west
+	icon_state = "brown"
+	dir = WEST
+
+/turf/open/floor/prison/brown/northeast
+	icon_state = "brown"
+	dir = NORTHEAST
+
+/turf/open/floor/prison/brown/northwest
+	icon_state = "brown"
+	dir = NORTHWEST
+
+/turf/open/floor/prison/brown/southeast
+	icon_state = "brown"
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/brown/southwest
+	icon_state = "brown"
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/brown/angled
+	icon_state = "brown_angled"
+
+/turf/open/floor/prison/brown/angled/north
+	icon_state = "brown_angled"
+	dir = NORTH
+
+/turf/open/floor/prison/brown/angled/east
+	icon_state = "brown_angled"
+	dir = EAST
+
+/turf/open/floor/prison/brown/angled/west
+	icon_state = "brown_angled"
+	dir = WEST
+
+/turf/open/floor/prison/brown/corner
+	icon_state = "brown_corner"
+
+/turf/open/floor/prison/brown/corner/north
+	icon_state = "brown_corner"
+	dir = NORTH
+
+/turf/open/floor/prison/brown/corner/east
+	icon_state = "brown_corner"
+	dir = EAST
+
+/turf/open/floor/prison/brown/corner/west
+	icon_state = "brown_corner"
+	dir = WEST
+
+/turf/open/floor/prison/brown_bright
+	icon_state = "brown_bright"
+
+/turf/open/floor/prison/brown_bright/north
+	icon_state = "brown_bright"
+	dir = NORTH
+
+/turf/open/floor/prison/brown_bright/east
+	icon_state = "brown_bright"
+	dir = EAST
+
+/turf/open/floor/prison/brown_bright/west
+	icon_state = "brown_bright"
+	dir = WEST
+
+/turf/open/floor/prison/brown_bright/northeast
+	icon_state = "brown_bright"
+	dir = NORTHEAST
+
+/turf/open/floor/prison/brown_bright/northwest
+	icon_state = "brown_bright"
+	dir = NORTHWEST
+
+/turf/open/floor/prison/brown_bright/southeast
+	icon_state = "brown_bright"
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/brown_bright/southwest
+	icon_state = "brown_bright"
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/brown_bright/angled
+	icon_state = "brown_bright_angled"
+
+/turf/open/floor/prison/brown_bright/angled/north
+	icon_state = "brown_bright_angled"
+	dir = NORTH
+
+/turf/open/floor/prison/brown_bright/angled/east
+	icon_state = "brown_bright_angled"
+	dir = EAST
+
+/turf/open/floor/prison/brown_bright/angled/west
+	icon_state = "brown_bright_angled"
+	dir = WEST
+
+/turf/open/floor/prison/brown_bright/corner
+	icon_state = "brown_bright_corner"
+
+/turf/open/floor/prison/brown_bright/corner/north
+	icon_state = "brown_bright_corner"
+	dir = NORTH
+
+/turf/open/floor/prison/brown_bright/corner/east
+	icon_state = "brown_bright_corner"
+	dir = EAST
+
+/turf/open/floor/prison/brown_bright/corner/west
+	icon_state = "brown_bright_corner"
+	dir = WEST
+
 /turf/open/floor/prison/whitegreen
 	icon_state = "whitegreen"
 

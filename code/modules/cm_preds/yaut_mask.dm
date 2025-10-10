@@ -281,6 +281,16 @@
 	item_state_slots = list(WEAR_FACE = "pred_mask_ancient_redglow")
 	thrall = TRUE
 
+/obj/item/clothing/mask/gas/yautja/hunter/ancient/hollow
+	icon_state = "pred_mask_ancient"
+	item_state = "helmet"
+	item_state_slots = list(WEAR_FACE = "pred_mask_ancient")
+
+/obj/item/clothing/mask/gas/yautja/hunter/ancient/no_glow
+	icon_state = "pred_mask_ancient_white"
+	item_state = "helmet"
+	item_state_slots = list(WEAR_FACE = "pred_mask_ancient_white")
+
 //flavor, not a subtype
 /obj/item/clothing/mask/yautja_flavor
 	name = "alien stone mask"

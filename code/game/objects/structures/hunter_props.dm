@@ -226,7 +226,7 @@
 	icon_state = "hunter_grate_alpha"
 
 /obj/effect/hunter/catwalk/ancient_temple_grille
-	icon = 'icons/turf/floors/temple/ancientfloor.dmi'
+	icon = 'icons/turf/floors/hunter/ancientfloor.dmi'
 	icon_state = "grille_transparent"
 
 // Misc
@@ -539,7 +539,7 @@
 /obj/structure/prop/hunter/ancient_temple/collapsed_wall
 	name = "damaged sandstone temple wall"
 	desc = "A damaged heavy wall of sandstone."
-	icon = 'icons/turf/walls/temple/hunter_temple.dmi'
+	icon = 'icons/turf/walls/hunter/hunter_temple.dmi'
 	icon_state = "ancient_stone_breach"
 	density = TRUE
 	health = 600

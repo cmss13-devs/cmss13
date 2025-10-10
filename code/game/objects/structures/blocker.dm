@@ -35,6 +35,9 @@
 	..()
 	icon_state = null
 
+/obj/structure/blocker/invisible_wall/no_coverage
+	projectile_coverage = PROJECTILE_COVERAGE_NONE
+
 /obj/structure/blocker/invisible_wall/water
 	desc = "You cannot wade out any further"
 	icon_state = "map_blocker"

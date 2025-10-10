@@ -1,4 +1,0 @@
-author: "PhantornRU"
-delete-after: True
-changes:
-  - bugfix: "Фиксим проверки спелов с нулевыми клиентами"

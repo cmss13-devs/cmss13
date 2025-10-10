@@ -274,6 +274,10 @@
 				grab_level_delay = 6
 			if(GRAB_CHOKE)
 				grab_level_delay = 9
+		if(ismob(pulling))
+			var/mob/pulled_mob = pulling
+			if(pulled_mob.pulling)
+				grab_level_delay = 9 // its a chain pull...
 
 		. += max(pull_speed + (pull_delay + reagent_move_delay_modifier) + grab_level_delay, 0) //harder grab makes you slower
 	move_delay = .

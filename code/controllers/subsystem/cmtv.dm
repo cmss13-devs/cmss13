@@ -62,6 +62,10 @@ SUBSYSTEM_DEF(cmtv)
 
 	reset_perspective()
 
+/datum/controller/subsystem/cmtv/stat_entry(msg)
+	. = ..()
+	return "[.] P: [current_perspective]"
+
 /datum/controller/subsystem/cmtv/Topic(href, href_list)
 	. = ..()
 	

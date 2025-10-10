@@ -89,20 +89,16 @@
 		syringestab(target, user)
 		return
 
-	var/injection_time = 2 SECONDS
+	var/injection_delay = 2 SECONDS
+	var/injection_time = (injection_delay*user.get_skill_duration_multiplier(SKILL_MEDICAL))
+	var/target_zone = user.zone_selected
+
 	if(user.skills)
 		if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 			to_chat(user, SPAN_WARNING("You aren't trained to use syringes..."))
 			return
-		else
-			injection_time = (injection_time*user.get_skill_duration_multiplier(SKILL_MEDICAL))
 
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		if(istype(H.wear_suit, /obj/item/clothing/suit))
-			injection_time = 30
-
-	switch(mode) //lots of questionable code here, good god
+	switch(mode) //lots of questionable code here, good god, cleaned it up partially but definitely not all of it, by god i am not cleaning all of this right now - nihi
 
 		if(SYRINGE_DRAW)
 
@@ -124,10 +120,14 @@
 							to_chat(user, SPAN_DANGER("You are unable to locate any blood."))
 							return
 
-						if(injection_time != 30) // questionable code but ok
-							user.visible_message(SPAN_DANGER("<B>[user] is trying to draw blood from [target]!</B>"))
-						else
-							user.visible_message(SPAN_DANGER("<B>[user] begins looking for a good spot to draw blood from [target]'s suit!</B>"))
+						var/obj/limb/injection_limb = H.get_limb(target_zone)
+						if(injection_limb)
+							var/obj/item/blocker = H.get_sharp_obj_blocker(injection_limb)
+							if(blocker)
+								injection_delay = 5 SECONDS
+								user.visible_message(SPAN_DANGER("<B>[user] begins looking for a good spot to draw blood from [H]'s \the [blocker]!</B>"))
+							else
+								user.visible_message(SPAN_DANGER("<B>[user] is trying to draw blood from [H]!</B>"))
 
 						if(!do_after(user, injection_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 							return
@@ -178,17 +178,21 @@
 				return
 
 			if(ismob(target))
-				var/mob/living/M = target
+				var/mob/living/carbon/human/M = target
 				if(!istype(M))
 					return
 				if(!M.can_inject(user, TRUE))
 					return
 				if(target != user)
 
-					if(injection_time != 30) // questionable code but ok
-						user.visible_message(SPAN_DANGER("<B>[user] is trying to inject [target]!</B>"))
-					else
-						user.visible_message(SPAN_DANGER("<B>[user] begins looking for a good spot to inject [target] suit!</B>"))
+					var/obj/limb/injection_limb = M.get_limb(target_zone)
+					if(injection_limb)
+						var/obj/item/blocker = M.get_sharp_obj_blocker(injection_limb)
+						if(blocker)
+							injection_delay = 5 SECONDS
+							user.visible_message(SPAN_DANGER("<B>[user] begins looking for a good spot to inject something into [M]'s \the [blocker]!</B>"))
+						else
+							user.visible_message(SPAN_DANGER("<B>[user] is trying to inject something into [M]!</B>"))
 
 					if(!do_after(user, injection_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 						return
@@ -263,7 +267,7 @@
 
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		var/target_zone = rand_zone(check_zone(user.zone_selected, target))
+		var/target_zone = rand_zone(check_zone(user.zone_selected, target)) // why
 		var/obj/limb/affecting = H.get_limb(target_zone)
 
 		if (!affecting)
@@ -276,7 +280,7 @@
 		if((user != target) && H.check_shields(7, "the [src.name]"))
 			return
 
-		if (target != user && target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50))
+		if (target != user && target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50)) // it will probably be more intuitive to use get_sharp_obj_blocker here but whatever
 			for(var/mob/O in viewers(GLOB.world_view_size, user))
 				O.show_message(text(SPAN_DANGER("<B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B>")), SHOW_MESSAGE_VISIBLE)
 			user.temp_drop_inv_item(src)
@@ -304,7 +308,7 @@
 	src.update_icon()
 
 
-/obj/item/reagent_container/ld50_syringe
+/obj/item/reagent_container/ld50_syringe // make this a subtype
 	name = "Lethal Injection Syringe"
 	desc = "A syringe used for lethal injections."
 	icon = 'icons/obj/items/syringe.dmi'

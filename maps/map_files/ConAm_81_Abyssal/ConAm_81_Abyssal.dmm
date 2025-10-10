@@ -8620,17 +8620,6 @@
 	},
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/north)
-"awj" = (
-/obj/item/stool{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/machinery/light/small/blue{
-	dir = 8
-	},
-/turf/open/floor/hybrisa/tile/darkbrown_bigtile/west,
-/area/abyssal/interior/solar_control_south)
 "awk" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -10175,16 +10164,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/south)
-"azI" = (
-/obj/structure/machinery/power/monitor{
-	name = "Main Power Grid Monitoring"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
-/obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/hybrisa/tile/darkbrown_bigtile/southwest,
-/area/abyssal/interior/solar_control_south)
 "azJ" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/prison/floor_marked/southwest,
@@ -25763,10 +25742,6 @@
 	},
 /turf/open/space/basic,
 /area/abyssal/oob)
-"bjL" = (
-/obj/structure/blocker/invisible_wall,
-/turf/closed/wall/abyssal/standard/unmeltable,
-/area/abyssal/interior/solar_control_south)
 "bjM" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
@@ -25938,6 +25913,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plating/catwalk/rusted,
 /area/abyssal/interior/maintenance/west)
 "bke" = (
@@ -25946,6 +25924,9 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
 	},
 /turf/open/floor/plating/catwalk/rusted,
 /area/abyssal/exterior/fore)
@@ -36922,11 +36903,11 @@ asf
 asf
 asf
 asf
-ada
-acb
-acb
-acb
-acb
+asf
+asf
+asf
+asf
+asf
 asf
 asf
 asf
@@ -37074,11 +37055,11 @@ asf
 asf
 asf
 asf
-ada
-aIs
-awj
-azI
-acc
+asf
+asf
+asf
+asf
+asf
 asf
 asf
 asf
@@ -37226,11 +37207,11 @@ asf
 asf
 asf
 asf
-adb
-aTe
-aeI
-aQp
-asc
+asf
+asf
+asf
+asf
+asf
 asf
 asf
 asf
@@ -37378,11 +37359,11 @@ asf
 asf
 asf
 asf
-ada
-aSc
-aih
-aNB
-acc
+asf
+asf
+asf
+asf
+asf
 asf
 asf
 asf
@@ -37530,11 +37511,11 @@ asf
 asf
 asf
 asf
-ada
-acb
-acb
-acb
-acb
+asf
+asf
+asf
+asf
+asf
 asf
 asf
 asf
@@ -41389,7 +41370,7 @@ azH
 aaH
 aaH
 acb
-bjL
+acb
 adp
 aEh
 adD

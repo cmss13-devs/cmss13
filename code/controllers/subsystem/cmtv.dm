@@ -129,6 +129,7 @@ SUBSYSTEM_DEF(cmtv)
 /datum/controller/subsystem/cmtv/proc/get_active_player()
 	var/priority_list = list(PRIORITY_FIRST = list(), PRIORITY_SECOND = list(), PRIORITY_THIRD = list())
 
+
 	for(var/mob/mob in GLOB.living_player_list)
 		if(mob.client?.inactivity > 30 SECONDS)
 			continue
@@ -140,11 +141,25 @@ SUBSYSTEM_DEF(cmtv)
 			priority_list[PRIORITY_THIRD] += mob
 			continue
 
-		priority_list[PRIORITY_SECOND] += mob
+		if(!is_combatant(mob))
+			priority_list[PRIORITY_SECOND] += mob
+			continue
+
+		priority_list[PRIORITY_FIRST] += mob
 
 	for(var/priority, priority_mobs in priority_list)
 		if(length(priority_mobs))
 			return pick(priority_mobs)
+
+/datum/controller/subsystem/cmtv/proc/is_combatant(mob/possible_combatant)
+	var/mob_ref = REF(possible_combatant)
+	if(!(mob_ref in GLOB.ref_mob_to_last_cause_data_time))
+		return FALSE
+
+	if(GLOB.ref_mob_to_last_cause_data_time[mob_ref] + 20 SECONDS <= world.time)
+		return FALSE
+
+	return TRUE
 
 /client/proc/handoff_cmtv()
 	set name = "Handoff CMTV"

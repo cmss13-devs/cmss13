@@ -24,6 +24,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/abyssal/interior/science)
+"ad" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/surface/table/almayer,
+/turf/open/floor/darkpurple2/west,
+/area/abyssal/interior/science)
 "ai" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/vents/scrubber,
@@ -750,14 +755,6 @@
 	},
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
-"iG" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/item/stack/sheet/metal,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/darkpurplecorners2/east,
-/area/abyssal/interior/science)
 "iP" = (
 /obj/effect/decal/hybrisa/lattice,
 /turf/open/floor/engine,
@@ -1426,11 +1423,6 @@
 	},
 /turf/open/floor/hybrisa/engineership/pillars/north/pillar4,
 /area/abyssal/interior/derelict_shuttle)
-"oB" = (
-/obj/item/frame/table/almayer,
-/obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/dark,
-/area/abyssal/interior/science)
 "oC" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/darkpurple2/northeast,
@@ -1499,8 +1491,10 @@
 /turf/open/floor/hybrisa/tile/greencorner_bigtile/north,
 /area/abyssal/interior/liaison)
 "pw" = (
-/obj/item/trash/cigbutt,
-/obj/item/frame/table/wood/fancy,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/lighter/zippo/gold{
+	pixel_x = 2
+	},
 /turf/open/floor/hybrisa/carpet/carpet_colorable/twe_blue,
 /area/abyssal/interior/liaison)
 "px" = (
@@ -1542,7 +1536,6 @@
 	pixel_x = 2
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/item/stack/cable_coil/cyan,
 /turf/open/floor/darkpurple2/southeast,
 /area/abyssal/interior/science)
 "pR" = (
@@ -1737,8 +1730,7 @@
 /area/abyssal/interior/command)
 "rK" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/item/trash/cigbutt,
-/obj/item/frame/table/wood/fancy,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/hybrisa/carpet/carpet_colorable/twe_blue,
 /area/abyssal/interior/liaison)
 "rL" = (
@@ -2429,7 +2421,8 @@
 /area/abyssal/interior/liaison)
 "xr" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/item/frame/table/wood/fancy,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/pen/red,
 /turf/open/floor/hybrisa/carpet/carpet_colorable/twe_blue,
 /area/abyssal/interior/liaison)
 "xu" = (
@@ -2443,7 +2436,9 @@
 /area/abyssal/interior/command)
 "xx" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_25"
+	icon_state = "pottedplant_17";
+	pixel_y = 10;
+	pixel_x = -4
 	},
 /turf/open/floor/darkblue2/northeast,
 /area/abyssal/interior/command)
@@ -2563,9 +2558,6 @@
 /turf/open/floor/station/metal/floor/alt2,
 /area/abyssal/interior/corridor_east)
 "yS" = (
-/obj/item/tool/lighter/zippo/gold{
-	pixel_x = 2
-	},
 /turf/open/floor/hybrisa/carpet/carpet_colorable/twe_blue,
 /area/abyssal/interior/liaison)
 "yW" = (
@@ -3461,17 +3453,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/hybrisa/tile/green_bigtile/east,
 /area/abyssal/interior/command)
-"Gn" = (
-/obj/item/tool/crowbar/red{
-	pixel_y = -22;
-	pixel_x = -8
-	},
-/obj/item/hybrisa/engineer_helmet{
-	pixel_x = 6;
-	pixel_y = 8
-	},
-/turf/open/floor/darkish,
-/area/abyssal/interior/science)
 "Gq" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/hybrisa/misc/fake/wire/red{
@@ -3483,11 +3464,6 @@
 	},
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
-"Gr" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/item/stack/cable_coil/cyan,
-/turf/open/floor/darkpurple2/southwest,
-/area/abyssal/interior/science)
 "Gs" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
@@ -3694,6 +3670,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table/almayer,
+/obj/item/tool/crowbar/red,
 /turf/open/floor/darkish,
 /area/abyssal/interior/science)
 "Ik" = (
@@ -3748,11 +3725,6 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/command)
 "IU" = (
-/obj/item/stack/sheet/metal{
-	amount = 5;
-	pixel_x = 4;
-	pixel_y = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/hybrisa/tile/green_bigtile/southwest,
 /area/abyssal/interior/command)
@@ -4081,7 +4053,6 @@
 /area/abyssal/interior/command)
 "Mk" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/item/trash/cigbutt,
 /turf/open/floor/hybrisa/tile/greencorner_bigtile,
 /area/abyssal/interior/liaison)
 "Mm" = (
@@ -4164,6 +4135,15 @@
 /turf/open/floor/engine,
 /area/abyssal/interior/command)
 "MI" = (
+/obj/structure/blackgoocontainer{
+	pixel_x = -6;
+	pixel_y = 4;
+	density = 0
+	},
+/obj/item/hybrisa/engineer_helmet{
+	pixel_x = 6;
+	pixel_y = 8
+	},
 /turf/open/floor/hybrisa/engineership/engineer_floor9,
 /area/abyssal/interior/derelict_shuttle)
 "MK" = (
@@ -4258,20 +4238,6 @@
 "NJ" = (
 /turf/open/floor/hybrisa/tile/green_bigtile/northwest,
 /area/abyssal/interior/command)
-"NQ" = (
-/obj/structure/blackgoocontainer{
-	icon_state = "blackgoocontainer2";
-	dir = 1;
-	layer = 4;
-	pixel_y = -4;
-	pixel_x = 1
-	},
-/obj/effect/decal/cleanable/dirt/alt_dirt/goo{
-	pixel_y = -2;
-	color = "#6E260E"
-	},
-/turf/open/floor/darkish,
-/area/abyssal/interior/science)
 "NX" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/abyssal/interior/command)
@@ -5297,10 +5263,6 @@
 	},
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
-"WZ" = (
-/obj/item/stack/sheet/metal,
-/turf/open/floor/darkblue2/east,
-/area/abyssal/interior/command)
 "Xa" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_5";
@@ -5311,11 +5273,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison,
 /area/abyssal/interior/command)
-"Xc" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/item/trash/cigbutt,
-/turf/open/floor/hybrisa/carpet/carpet_colorable/twe_blue,
-/area/abyssal/interior/liaison)
 "Xh" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
@@ -5502,6 +5459,8 @@
 "Zn" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/surface/table/almayer,
+/obj/item/stack/cable_coil/cyan,
+/obj/item/stack/cable_coil/cyan,
 /turf/open/floor/darkpurple2/northeast,
 /area/abyssal/interior/science)
 "Zo" = (
@@ -5772,7 +5731,7 @@ LM
 Tb
 sq
 mR
-Gr
+hL
 tS
 HK
 an
@@ -6126,7 +6085,7 @@ SV
 rL
 DM
 TS
-an
+ad
 hL
 tS
 En
@@ -6197,7 +6156,7 @@ vz
 rL
 DM
 hU
-oB
+OB
 dC
 Dx
 Qr
@@ -6989,7 +6948,7 @@ AP
 Ia
 ac
 aC
-Gr
+hL
 Mr
 Tc
 to
@@ -7311,7 +7270,7 @@ JP
 JP
 xx
 ev
-WZ
+ev
 lL
 LQ
 zM
@@ -7486,7 +7445,7 @@ Dj
 Dj
 Rt
 tP
-iG
+FQ
 tz
 Dj
 fb
@@ -7909,7 +7868,7 @@ dR
 dR
 dR
 uv
-NQ
+Th
 vQ
 KL
 DM
@@ -7980,7 +7939,7 @@ dR
 uh
 MI
 ja
-Gn
+Th
 TV
 qY
 DM
@@ -8173,9 +8132,9 @@ ey
 Zj
 Zj
 Un
-Xc
 dh
-Xc
+dh
+dh
 dh
 uO
 Zj

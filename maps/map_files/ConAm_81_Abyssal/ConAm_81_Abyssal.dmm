@@ -6892,6 +6892,13 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/sign/safety/nonpress_0g{
+	pixel_x = 14;
+	pixel_y = 32
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_y = 32
+	},
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
 "asr" = (
@@ -8047,7 +8054,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark,
 /area/abyssal/interior/cargo)
 "auR" = (
@@ -8802,6 +8808,7 @@
 	pixel_y = 18;
 	pixel_x = 8
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/darkbrown2,
 /area/abyssal/interior/cargo)
 "awI" = (
@@ -9380,8 +9387,18 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/sign/safety/maint{
 	pixel_y = 32;
+	pixel_x = 16
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 18
+	},
+/obj/structure/filingcabinet/chestdrawer{
+	pixel_y = 18;
 	pixel_x = 8
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/abyssal/interior/corridor_west)
 "ayd" = (
@@ -10425,6 +10442,9 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 29
+	},
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
 "aAr" = (
@@ -11467,16 +11487,11 @@
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
 /area/abyssal/interior/engineering)
 "aCK" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/redmeter{
-	pixel_y = 29
-	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
 "aCL" = (
@@ -11627,12 +11642,10 @@
 	pixel_y = 1
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/item/toy/deck{
-	pixel_x = -8
-	},
 /obj/structure/sign/poster/conam{
 	pixel_y = 31
 	},
+/obj/structure/machinery/computer/arcade,
 /turf/open/floor/elevatorshaft,
 /area/abyssal/interior/bunker)
 "aDg" = (
@@ -23990,6 +24003,7 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
+/obj/item/storage/toolbox/mechanical,
 /turf/open/floor/elevatorshaft,
 /area/abyssal/interior/bunker)
 "bgn" = (
@@ -24080,6 +24094,9 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/vents/scrubber{
 	welded = 1
+	},
+/obj/item/toy/deck{
+	pixel_x = -8
 	},
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/abyssal/interior/bunker)
@@ -25746,6 +25763,192 @@
 	},
 /turf/open/space/basic,
 /area/abyssal/oob)
+"bjL" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/wall/abyssal/standard/unmeltable,
+/area/abyssal/interior/solar_control_south)
+"bjM" = (
+/obj/structure/machinery/power/monitor{
+	name = "Main Power Grid Monitoring"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/light/small/blue{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/southwest,
+/area/abyssal/interior/solar_control_south)
+"bjN" = (
+/obj/structure/machinery/power/smes/buildable,
+/turf/open/floor/elevatorshaft,
+/area/abyssal/interior/solar_control_south)
+"bjO" = (
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/power/terminal{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/west,
+/area/abyssal/interior/solar_control_south)
+"bjP" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/sign/poster/music{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/turf/open/floor/station/metal/floor/north,
+/area/abyssal/interior/corridor_central)
+"bjQ" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
+/turf/open/floor/station/metal/floor/west,
+/area/abyssal/interior/corridor_central)
+"bjR" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/station/metal/floor/west,
+/area/abyssal/interior/corridor_central)
+"bjS" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/station/metal/floor/west,
+/area/abyssal/interior/corridor_central)
+"bjT" = (
+/obj/structure/machinery/door/airlock/prison_hatch/autoname{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/lattice,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/engine,
+/area/abyssal/interior/maintenance/west)
+"bjU" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/power/power_generator/reactor/colony{
+	name = "\improper S-13 solar power collector";
+	desc = "Power-bank designed to hold and disperse solar energy collected from the externally mounted solar arrays."
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/elevatorshaft,
+/area/abyssal/interior/maintenance/west)
+"bjV" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile,
+/area/abyssal/interior/maintenance/west)
+"bjW" = (
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	pixel_x = 27
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/power/smes/buildable,
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/southeast,
+/area/abyssal/interior/maintenance/west)
+"bjX" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	pixel_x = -30
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/west,
+/area/abyssal/interior/maintenance/west)
+"bjY" = (
+/obj/effect/decal/large_stain{
+	pixel_x = -10;
+	pixel_y = -4
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/vents/pump,
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/abyssal/interior/maintenance/west)
+"bjZ" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/computer3{
+	pixel_y = 11;
+	density = 0;
+	unacidable = 1;
+	explo_proof = 1;
+	layer = 2.99
+	},
+/obj/item/prop{
+	icon = 'icons/obj/structures/machinery/computer3.dmi';
+	icon_state = "solar";
+	name = "Console Screen";
+	pixel_y = 10;
+	explo_proof = 1;
+	unacidable = 1;
+	light_range = 2;
+	light_color = "#FFEA00";
+	light_on = 1;
+	anchored = 1
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/power/terminal,
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
+/area/abyssal/interior/maintenance/west)
+"bka" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/obj/structure/machinery/light/small/blue{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/northwest,
+/area/abyssal/interior/maintenance/west)
+"bkb" = (
+/obj/structure/machinery/power/monitor{
+	name = "Main Power Grid Monitoring"
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
+/area/abyssal/interior/maintenance/west)
+"bkc" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/wall/abyssal/standard/unmeltable,
+/area/abyssal/interior/maintenance/west)
+"bkd" = (
+/obj/structure/machinery/door/airlock/external/colony{
+	unslashable = 1;
+	unacidable = 1;
+	health = 100000;
+	locked = 1;
+	no_panel = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/abyssal/interior/maintenance/west)
+"bke" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/abyssal/exterior/fore)
 "bqz" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -35671,10 +35874,10 @@ adD
 adD
 adD
 ahe
-adD
-adD
-adD
-adD
+bkc
+aej
+aej
+aej
 aej
 aej
 aej
@@ -35822,11 +36025,11 @@ adD
 alf
 ahw
 ahw
-aDd
-agQ
-agQ
-adD
-asf
+bke
+bkd
+bka
+bjX
+bjU
 aej
 aAq
 aKO
@@ -35975,11 +36178,11 @@ ahe
 adD
 adD
 adp
-adp
-agQ
-adD
-asf
-aej
+adT
+bkb
+bjY
+bjV
+bjT
 aCK
 ahI
 ahI
@@ -36127,10 +36330,10 @@ ahe
 adp
 afZ
 aga
-aga
 afZ
-adD
-asf
+afV
+bjZ
+bjW
 aej
 asq
 ahI
@@ -36280,9 +36483,9 @@ adD
 afZ
 avc
 aDB
-afZ
-afZ
-afZ
+afV
+afV
+afV
 aej
 pdL
 ahI
@@ -36719,11 +36922,11 @@ asf
 asf
 asf
 asf
-asf
-asf
-asf
-asf
-asf
+ada
+acb
+acb
+acb
+acb
 asf
 asf
 asf
@@ -36871,11 +37074,11 @@ asf
 asf
 asf
 asf
-asf
-asf
-asf
-asf
-asf
+ada
+aIs
+awj
+azI
+acc
 asf
 asf
 asf
@@ -37023,11 +37226,11 @@ asf
 asf
 asf
 asf
-asf
-asf
-asf
-asf
-asf
+adb
+aTe
+aeI
+aQp
+asc
 asf
 asf
 asf
@@ -37175,11 +37378,11 @@ asf
 asf
 asf
 asf
-asf
-asf
-asf
-asf
-asf
+ada
+aSc
+aih
+aNB
+acc
 asf
 asf
 asf
@@ -37327,11 +37530,11 @@ asf
 asf
 asf
 asf
-asf
-asf
-asf
-asf
-asf
+ada
+acb
+acb
+acb
+acb
 asf
 asf
 asf
@@ -41151,11 +41354,11 @@ ahc
 ahc
 aTT
 aVI
-aTT
-ahc
+bjS
+bjR
 agK
 agK
-aTT
+bjQ
 aUi
 aTT
 bcC
@@ -41185,8 +41388,8 @@ aAX
 azH
 aaH
 aaH
-asf
-adD
+acb
+bjL
 adp
 aEh
 adD
@@ -41337,7 +41540,7 @@ azH
 azH
 ada
 acb
-acb
+bjN
 acb
 acb
 aEh
@@ -41489,8 +41692,8 @@ aLz
 aAL
 ada
 aIs
-awj
-azI
+bjO
+bjM
 acc
 aEh
 adD
@@ -43898,7 +44101,7 @@ aiv
 bjE
 ahB
 ahB
-aZT
+bjP
 biG
 biD
 aeD

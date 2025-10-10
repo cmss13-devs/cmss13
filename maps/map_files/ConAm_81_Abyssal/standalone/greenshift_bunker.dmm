@@ -560,7 +560,6 @@
 	pixel_y = 32;
 	pixel_x = 8
 	},
-/obj/effect/landmark/survivor_spawner,
 /obj/structure/sign/poster/conam{
 	pixel_y = 37;
 	pixel_x = -6

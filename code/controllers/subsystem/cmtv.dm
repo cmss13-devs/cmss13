@@ -51,6 +51,7 @@ SUBSYSTEM_DEF(cmtv)
 	if(href_list["cancel_cmtv"] && usr == future_perspective.resolve())
 		reset_perspective()
 
+/// Signal handler for if the client disconnects/rejoins midround
 /datum/controller/subsystem/cmtv/proc/handle_new_client(SSdcs, client/new_client)
 	SIGNAL_HANDLER
 
@@ -59,6 +60,7 @@ SUBSYSTEM_DEF(cmtv)
 
 	INVOKE_ASYNC(src, PROC_REF(handle_new_camera), new_client)
 
+/// Sets up the camera client, including assigning a new mob, making it widescreen, winsetting() for clarity
 /datum/controller/subsystem/cmtv/proc/handle_new_camera(client/camera_operator, round_start = FALSE)
 	if(!istype(camera_operator))
 		CRASH("Not a client ([camera_operator]) passed to [__PROC__]")
@@ -93,9 +95,11 @@ SUBSYSTEM_DEF(cmtv)
 	if(!QDELETED(current_perspective))
 		camera_mob.do_observe(current_perspective)
 
+/// To ensure the chat is fully initialised after we nuke it, we wait a bit before sending it an action
 /datum/controller/subsystem/cmtv/proc/do_init_chat()
 	camera_operator.tgui_panel.window.send_message("chat/disableScroll")
 
+/// Takes a new mob to observe. If there is already a queued up mob, or a current perspective, they will be notified and dropped. This will become the new perspective in 10 seconds.
 /datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective)
 	if(current_perspective)
 		to_chat(current_perspective, boxed_message("[SPAN_BIGNOTICE("You are no longer being observed.")]\n\n [SPAN_NOTICE("You have opted out or are no longer eligible to be displayed on CMTV.")]"))
@@ -134,6 +138,7 @@ SUBSYSTEM_DEF(cmtv)
 
 	camera_mob.do_observe(current_perspective)
 
+/// Signal handler - it might be dull if a player wanders off to medical on the ship.
 /datum/controller/subsystem/cmtv/proc/handle_z_change(atom/movable/moving, old_z, new_z)
 	SIGNAL_HANDLER
 
@@ -146,6 +151,7 @@ SUBSYSTEM_DEF(cmtv)
 	if(is_ground_level(old_z) && is_mainship_level(new_z))
 		reset_perspective() // dull, either fleeing or going to med
 
+/// Generic signal handler for deaths, nestings, logouts, etc. Immediately queues up a new perspective to be switched to
 /datum/controller/subsystem/cmtv/proc/reset_perspective(mob/old_perspective)
 	SIGNAL_HANDLER
 
@@ -153,6 +159,8 @@ SUBSYSTEM_DEF(cmtv)
 
 #define PERSPECTIVE_SELECTION_DELAY_TIME (20 SECONDS)
 
+/// Returns a list of weakrefs of mobs in certain priority groups. Priority 1 are active combatants, Priority 2 are mobs that are active and on the
+/// groundmap (except in hijack, where they must just be active) and Priority 3 are mobs that are, at least, active.
 /datum/controller/subsystem/cmtv/proc/get_active_priority_player_list()
 	var/new_priority_list = list(PRIORITY_FIRST = list(), PRIORITY_SECOND = list(), PRIORITY_THIRD = list())
 
@@ -211,11 +219,15 @@ SUBSYSTEM_DEF(cmtv)
 	if(SScmtv.current_perspective == mob)
 		SScmtv.reset_perspective()
 
-/client/proc/change_observed_player(mob/new_player in GLOB.player_list)
+/client/proc/change_observed_player()
 	set name = "Change Observed Player"
 	set category = "Admin.CMTV"
 
-	SScmtv.change_observed_mob(new_player)
+	var/mob/selected_mob = tgui_input_list(src, "Who should be selected for observation?", "CMTV Target", GLOB.player_list)
+	if(!selected_mob)
+		return
+
+	SScmtv.change_observed_mob(selected_mob)
 
 /datum/controller/subsystem/cmtv/proc/handle_round_start(client/camera)
 	addtimer(CALLBACK(src, PROC_REF(handle_new_camera), camera, TRUE), 5 SECONDS)

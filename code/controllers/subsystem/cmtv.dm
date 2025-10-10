@@ -67,7 +67,7 @@ SUBSYSTEM_DEF(cmtv)
 /// We don't do anything till the round starts. Even after the round starts, we might want to wait a little bit to make sure we have
 /// more interesting people to observe.
 /datum/controller/subsystem/cmtv/proc/handle_round_start(client/camera)
-	addtimer(CALLBACK(src, PROC_REF(handle_new_camera), camera, TRUE), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(handle_new_camera), camera, TRUE), 10 SECONDS)
 
 /// Signal handler for if the client disconnects/rejoins midround
 /datum/controller/subsystem/cmtv/proc/handle_new_client(SSdcs, client/new_client)
@@ -94,21 +94,27 @@ SUBSYSTEM_DEF(cmtv)
 	new_mob.see_invisible = HIDE_INVISIBLE_OBSERVER
 	new_mob.alpha = 0
 
+	camera_mob = new_mob
+
+	camera_operator.nuke_chat()
+	addtimer(CALLBACK(src, PROC_REF(do_init_chat)), 2 SECONDS)
+
+	winset(camera_operator, null, {"
+		infowindow.info.splitter=0;
+		tgui_say.is-disabled=true;
+		tooltip.is-disabled=true;
+		mapwindow.status_bar.is-visible=false;
+		mainwindow.size=1920x1080;
+		mainwindow.pos=0,0;
+		"})
+
 	camera_operator.view = "20x15"
 	camera_operator.prefs.auto_fit_viewport = TRUE
 	camera_operator.prefs.toggle_prefs |= TOGGLE_FULLSCREEN
 	camera_operator.update_fullscreen()
 
 	camera_operator.prefs.hide_statusbar = TRUE
-
 	camera_operator.prefs.toggles_chat &= ~(CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_LISTENINGBUG)
-
-	camera_operator.nuke_chat()
-	addtimer(CALLBACK(src, PROC_REF(do_init_chat)), 2 SECONDS)
-
-	winset(camera_operator, null, "infowindow.info.splitter=0;tgui_say.is-disabled=true;tooltip.is-disabled=true;mapwindow.status_bar.is-visible=false")
-
-	camera_mob = new_mob
 
 	if(!QDELETED(current_perspective))
 		camera_mob.do_observe(current_perspective)
@@ -190,15 +196,15 @@ SUBSYSTEM_DEF(cmtv)
 		if(!is_active(mob, PERSPECTIVE_SELECTION_DELAY_TIME))
 			continue
 
+		if(is_combatant(mob, PERSPECTIVE_SELECTION_DELAY_TIME))
+			new_priority_list[PRIORITY_FIRST] += WEAKREF(mob)
+			continue
+
 		if(!is_ground_level(mob.z) && !SSticker.mode?.is_in_endgame)
 			new_priority_list[PRIORITY_THIRD] += WEAKREF(mob)
 			continue
 
-		if(!is_combatant(mob, PERSPECTIVE_SELECTION_DELAY_TIME))
-			new_priority_list[PRIORITY_SECOND] += WEAKREF(mob)
-			continue
-
-		new_priority_list[PRIORITY_FIRST] += WEAKREF(mob)
+		new_priority_list[PRIORITY_SECOND] += WEAKREF(mob)
 
 	return new_priority_list
 

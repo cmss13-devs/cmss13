@@ -235,17 +235,19 @@ SUBSYSTEM_DEF(cmtv)
 	if(!length(priority_list))
 		return FALSE
 
-	for(var/priority, priority_mobs in priority_list)
-		var/list/priority_mobs_list = priority_mobs
-		if(length(priority_mobs))
-			var/list/inner_priority_list = priority_mobs_list.Copy()
+	for(var/priority in priority_list)
+		var/list/priority_mobs_list = priority_list[priority]
+		
+		if(!length(priority_mobs_list))
+			continue
 
-			for(var/i in 1 to length(inner_priority_list))
-				var/datum/weakref/picked = pick_n_take(inner_priority_list)
-				var/found_mob = picked.resolve()
+		var/list/cloned_mob_list = priority_mobs_list.Copy()
+		for(var/i in 1 to length(cloned_mob_list))
+			var/datum/weakref/picked = pick_n_take(cloned_mob_list)
+			var/mob/resolved = picked.resolve()
 
-				if(found_mob && is_active(found_mob))
-					return found_mob
+			if(resolved && is_active(resolved, PERSPECTIVE_SELECTION_DELAY_TIME))
+				return resolved
 
 	return FALSE
 

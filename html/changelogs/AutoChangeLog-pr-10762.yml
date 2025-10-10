@@ -1,0 +1,4 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - bugfix: "removed unintended uranium drums from pmc sg"

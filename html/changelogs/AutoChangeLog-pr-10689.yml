@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed aggressive forsaken handling reverting some changes in a recent pr: Now abandon on hijack occurs when the shuttle actually launches, and facehugger masks on a person (e.g. hugging someone) will be converted"
-  - spellcheck: "Fixed a typo in forsaken handling"
-  - code_imp: "Cleaned up some old forsaken handling code"

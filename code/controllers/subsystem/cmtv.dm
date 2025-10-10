@@ -1,12 +1,13 @@
 SUBSYSTEM_DEF(cmtv)
 	name = "CMTV"
-	wait = 1 SECONDS
+	wait = 5 SECONDS
 	flags = SS_NO_FIRE
 
 	var/client/camera_operator
 	var/mob/dead/observer/camera_mob
 
 	var/mob/current_perspective
+	var/datum/weakref/future_perspective
 
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
@@ -20,6 +21,15 @@ SUBSYSTEM_DEF(cmtv)
 		return SS_INIT_NO_NEED
 
 	handle_new_camera(camera)
+
+/datum/controller/subsystem/cmtv/Topic(href, href_list)
+	. = ..()
+	
+	if(href_list["abandon_cmtv"] && usr == current_perspective)
+		reset_perspective()
+
+	if(href_list["cancel_cmtv"] && usr == future_perspective.resolve())
+		reset_perspective()
 
 /datum/controller/subsystem/cmtv/proc/handle_new_client(SSdcs, client/new_client)
 	SIGNAL_HANDLER
@@ -65,15 +75,35 @@ SUBSYSTEM_DEF(cmtv)
 /datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective)
 	if(current_perspective)
 		UnregisterSignal(current_perspective, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH, COMSIG_MOVABLE_Z_CHANGED))
+		remove_verb(current_perspective, /client/proc/handoff_cmtv)
+		current_perspective = null
 
-	if(!istype(new_perspective))
-		return
+	if(!istype(new_perspective) || !new_perspective.client)
+		return reset_perspective()
 
-	RegisterSignal(new_perspective, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH), PROC_REF(reset_perspective))
-	RegisterSignal(new_perspective, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(handle_z_change))
-	current_perspective = new_perspective
+	var/cmtv_link = CONFIG_GET(string/cmtv_link)
+	to_chat(new_perspective, boxed_message("[SPAN_BIGNOTICE("You will be observed in 10 seconds.")]\n\n [SPAN_NOTICE("Your perspective will be shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to cancel this, press <a href='byond://?src=\ref[src];cancel_cmtv=1'>here</a>.")]"))
+	future_perspective = WEAKREF(new_perspective)
 
-	camera_mob.do_observe(new_perspective)
+	addtimer(CALLBACK(src, PROC_REF(do_change_observed_mob)), 10 SECONDS)
+
+/datum/controller/subsystem/cmtv/proc/do_change_observed_mob()
+	if(!istype(future_perspective))
+		return reset_perspective()
+
+	var/mob/future_perspective_mob = future_perspective.resolve()
+	if(!future_perspective_mob || !future_perspective_mob.client)
+		return reset_perspective()
+
+	RegisterSignal(future_perspective_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH), PROC_REF(reset_perspective))
+	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(handle_z_change))
+	current_perspective = future_perspective_mob
+
+	var/cmtv_link = CONFIG_GET(string/cmtv_link)
+	to_chat(current_perspective, boxed_message("[SPAN_BIGNOTICE("You are being observed.")]\n\n [SPAN_NOTICE("Your perspective is currently being shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to hand this off to a different player, press <a href='byond://?src=\ref[src];abandon_cmtv=1'>here</a>. You can also use the verb 'Handoff CMTV' at any point.")]"))
+	add_verb(current_perspective, /client/proc/handoff_cmtv)
+
+	camera_mob.do_observe(current_perspective)
 
 /datum/controller/subsystem/cmtv/proc/handle_z_change(atom/movable/moving, old_z, new_z)
 	SIGNAL_HANDLER
@@ -116,6 +146,13 @@ SUBSYSTEM_DEF(cmtv)
 		if(length(priority_mobs))
 			return pick(priority_mobs)
 
+/client/proc/handoff_cmtv()
+	set name = "Handoff CMTV"
+	set category = "OOC.CMTV"
+
+	if(SScmtv.current_perspective == mob)
+		SScmtv.reset_perspective()
+
 /client/proc/change_observed_player(mob/new_player in GLOB.player_list)
 	set name = "Change Observed Player"
 	set category = "Admin.CMTV"
@@ -126,4 +163,7 @@ SUBSYSTEM_DEF(cmtv)
 	addtimer(CALLBACK(src, PROC_REF(handle_new_camera), camera, TRUE), 5 SECONDS)
 
 /datum/config_entry/string/cmtv_ckey
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/cmtv_link
 	protection = CONFIG_ENTRY_LOCKED

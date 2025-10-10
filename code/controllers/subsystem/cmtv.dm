@@ -26,6 +26,9 @@ SUBSYSTEM_DEF(cmtv)
 	/// if there is someone more interesting to watch instead.
 	var/list/priority_list
 
+	/// The world.time when we should move over to our new watchee
+	var/swap_at
+
 
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
@@ -42,6 +45,10 @@ SUBSYSTEM_DEF(cmtv)
 
 /datum/controller/subsystem/cmtv/fire(resumed)
 	priority_list = get_active_priority_player_list()
+
+	if(future_perspective && swap_at <= world.time)
+		do_change_observed_mob()
+		return
 
 	if(!current_perspective && !future_perspective)
 		reset_perspective()
@@ -124,14 +131,17 @@ SUBSYSTEM_DEF(cmtv)
 
 /// Takes a new mob to observe. If there is already a queued up mob, or a current perspective, they will be notified and dropped. This will become the new perspective in 10 seconds.
 /datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective)
+	log_debug("CMTV: Swapping to perspective [new_perspective].")
+
 	if(current_perspective)
 		to_chat(current_perspective, boxed_message("[SPAN_BIGNOTICE("You are no longer being observed.")]\n\n [SPAN_NOTICE("You have opted out or are no longer eligible to be displayed on CMTV.")]"))
 
 		UnregisterSignal(current_perspective, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH, COMSIG_MOVABLE_Z_CHANGED))
-		remove_verb(current_perspective, /client/proc/handoff_cmtv)
+		remove_verb(current_perspective, /mob/proc/handoff_cmtv)
 		current_perspective = null
 
 	if(!istype(new_perspective) || !new_perspective.client)
+		log_debug("CMTV: Perspective could not be swapped to, picking new perspective.")
 		return reset_perspective()
 
 	if(future_perspective)
@@ -139,16 +149,18 @@ SUBSYSTEM_DEF(cmtv)
 
 	var/cmtv_link = CONFIG_GET(string/cmtv_link)
 	to_chat(new_perspective, boxed_message("[SPAN_BIGNOTICE("You will be observed in 10 seconds.")]\n\n [SPAN_NOTICE("Your perspective will be shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to cancel this, press <a href='byond://?src=\ref[src];cancel_cmtv=1'>here</a>.")]"))
-	future_perspective = WEAKREF(new_perspective)
 
-	addtimer(CALLBACK(src, PROC_REF(do_change_observed_mob)), 10 SECONDS)
+	future_perspective = WEAKREF(new_perspective)
+	swap_at = world.time + 10 SECONDS
 
 /datum/controller/subsystem/cmtv/proc/do_change_observed_mob()
 	if(!istype(future_perspective))
+		log_debug("CMTV: Perspective changed while we were waiting, aborting and resetting.")
 		return reset_perspective()
 
 	var/mob/future_perspective_mob = future_perspective.resolve()
 	if(!future_perspective_mob || !future_perspective_mob.client)
+		log_debug("CMTV: Perspective could not resolve, aborting and resetting.")
 		return reset_perspective()
 
 	RegisterSignal(future_perspective_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH), PROC_REF(reset_perspective))
@@ -157,9 +169,13 @@ SUBSYSTEM_DEF(cmtv)
 
 	var/cmtv_link = CONFIG_GET(string/cmtv_link)
 	to_chat(current_perspective, boxed_message("[SPAN_BIGNOTICE("You are being observed.")]\n\n [SPAN_NOTICE("Your perspective is currently being shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to hand this off to a different player, press <a href='byond://?src=\ref[src];abandon_cmtv=1'>here</a>. You can also use the verb 'Handoff CMTV' at any point.")]"))
-	add_verb(current_perspective, /client/proc/handoff_cmtv)
+	add_verb(current_perspective, /mob/proc/handoff_cmtv)
 
 	camera_mob.do_observe(current_perspective)
+
+	future_perspective = null
+
+	log_debug("CMTV: Perspective successfully changed to [current_perspective].")
 
 /// Signal handler - it might be dull if a player wanders off to medical on the ship.
 /datum/controller/subsystem/cmtv/proc/handle_z_change(atom/movable/moving, old_z, new_z)
@@ -178,8 +194,11 @@ SUBSYSTEM_DEF(cmtv)
 /datum/controller/subsystem/cmtv/proc/reset_perspective()
 	SIGNAL_HANDLER
 
+	log_debug("CMTV: Perspective reset requested.")
+
 	var/mob/active_player = get_active_player()
 	if(!active_player)
+		log_debug("CMTV: Unable to find an appropriate player.")
 		return FALSE // start the blooper reel, we've got nothing
 
 	change_observed_mob(get_active_player())
@@ -250,11 +269,11 @@ SUBSYSTEM_DEF(cmtv)
 
 	return TRUE
 
-/client/proc/handoff_cmtv()
+/mob/proc/handoff_cmtv()
 	set name = "Handoff CMTV"
 	set category = "OOC.CMTV"
 
-	if(SScmtv.current_perspective == mob)
+	if(SScmtv.current_perspective == src)
 		SScmtv.reset_perspective()
 
 /client/proc/change_observed_player()

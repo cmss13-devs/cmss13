@@ -188,14 +188,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	// EYEWEAR
 	/obj/item/clothing/glasses/mgoggles = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
-	/obj/item/clothing/glasses/mgoggles/v2 = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/v2/prescription = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/v2/blue = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/v2/blue/prescription = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/v2/polarized_blue = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/v2/polarized_blue/prescription = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/v2/polarized_orange = NO_GARB_OVERRIDE,
-	/obj/item/clothing/glasses/mgoggles/v2/polarized_orange/prescription = NO_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2 = PREFIX_HELMET_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/prescription = PREFIX_HELMET_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/blue = PREFIX_HELMET_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/blue/prescription = PREFIX_HELMET_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/polarized_blue = PREFIX_HELMET_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/polarized_blue/prescription = PREFIX_HELMET_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/polarized_orange = PREFIX_HELMET_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/v2/polarized_orange/prescription = PREFIX_HELMET_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/prescription = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/glasses/mgoggles/black = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/glasses/mgoggles/black/prescription = PREFIX_HELMET_GARB_OVERRIDE, // helmet_

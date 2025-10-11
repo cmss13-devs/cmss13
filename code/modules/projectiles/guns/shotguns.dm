@@ -375,6 +375,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
+/obj/item/weapon/gun/shotgun/combat/unloaded //for making it start unloaded and with the safety on
+	current_mag = null
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_TRIGGER_SAFETY
+
 
 /obj/item/weapon/gun/shotgun/combat/get_examine_text(mob/user)
 	. = ..()
@@ -1254,6 +1258,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
+/obj/item/weapon/gun/shotgun/pump/unloaded //for making it start unloaded and with the safety on
+	current_mag = null
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_TRIGGER_SAFETY
+
 /obj/item/weapon/gun/shotgun/pump/unique_action(mob/user)
 	pump_shotgun(user)
 
@@ -1352,6 +1360,10 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/stock/synth/collapsible,
 	)
+
+/obj/item/weapon/gun/shotgun/pump/m37a/unloaded //for making it start unloaded and with the safety on
+	current_mag = null
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_TRIGGER_SAFETY
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube
 	name = "generic dual-tube pump shotgun"

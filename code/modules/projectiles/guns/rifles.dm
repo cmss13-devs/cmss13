@@ -112,6 +112,9 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
+/obj/item/weapon/gun/rifle/m41a/unloaded //for making it start unloaded and with the safety on
+	current_mag = null
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
 
 //variant without ugl attachment
 /obj/item/weapon/gun/rifle/m41a/stripped
@@ -278,6 +281,10 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
+
+/obj/item/weapon/gun/rifle/m41a/elite/unloaded //for making it start unloaded and with the safety on
+	current_mag = null
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED|GUN_TRIGGER_SAFETY
 
 /obj/item/weapon/gun/rifle/m41a/elite/commando //special version for commandos, has preset attachments.
 
@@ -470,6 +477,10 @@
 
 /obj/item/weapon/gun/rifle/m41aMK1/ap //for making it start with ap loaded
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
+
+/obj/item/weapon/gun/rifle/m41aMK1/unloaded //for making it start unloaded and with the safety on
+	current_mag = null
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
 
 /obj/item/weapon/gun/rifle/m41aMK1/tactical
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1, /obj/item/attachable/suppressor, /obj/item/attachable/magnetic_harness, /obj/item/attachable/stock/rifle/collapsible)
@@ -1896,6 +1907,10 @@
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
 
+/obj/item/weapon/gun/rifle/m4ra/unloaded //for making it start unloaded and with the safety on
+	current_mag = null
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
+
 /obj/item/weapon/gun/rifle/m4ra/training
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/rubber
 
@@ -1974,6 +1989,10 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
+
+/obj/item/weapon/gun/rifle/l42/unloaded //for making it start unloaded and with the safety on
+	current_mag = null
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
 
 /obj/item/weapon/gun/rifle/l42a/training
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/rubber

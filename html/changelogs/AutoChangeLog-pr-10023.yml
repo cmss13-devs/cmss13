@@ -1,6 +1,0 @@
-author: "Zenith"
-delete-after: True
-changes:
-  - rscadd: "Added each appropriate UPP/Hyperdyne aligned Synth presets to Soro"
-  - rscadd: "Minor tweaks to Soro survivor presets."
-  - bugfix: "Changed the WY Synth reset key to Hyperdyne on Soro"

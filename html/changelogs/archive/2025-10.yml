@@ -51,3 +51,10 @@
       spread to make it more viable.
   - soundadd: Added new firing sounds for the M10 and custom suppressor sounds.
   - imageadd: Updated M10 belt sprites to change based on map type.
+2025-10-11:
+  Zenith:
+  - rscadd: Added each appropriate UPP/Hyperdyne aligned Synth presets to Soro
+  - rscadd: Minor tweaks to Soro survivor presets.
+  - bugfix: Changed the WY Synth reset key to Hyperdyne on Soro
+  cuberound, harry:
+  - rscadd: adds upper level mirroring to wall behind stairs

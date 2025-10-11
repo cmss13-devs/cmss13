@@ -1,4 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - bugfix: "MP honor guard no longer shows up on the occupations preferences list"

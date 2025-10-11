@@ -38,8 +38,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
 
-	var/list/possible_options = list("Blue" = "crtblue", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")
-	var/list/chosen_theme = list("Blue", "Green", "Yellow", "Red")
+	var/list/possible_options = list("Blue" = "crtblue", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred", "Purple" = "crtpurple")
+	var/list/chosen_theme = list("Blue", "Green", "Yellow", "Red", "Purple")
 	var/command_channel_key = ":v"
 
 	var/freq = CRYO_FREQ

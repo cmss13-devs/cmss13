@@ -26,9 +26,9 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
-
-	///How much explosive power is needed to breach, null is unbreachable
-	var/breach_threshold
+	plane = TURF_PLANE
+  ///How much explosive power is needed to breach, null is unbreachable
+  var/breach_threshold
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE
 	///Can blood spawn on this turf?
@@ -139,7 +139,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 
-/obj/vis_contents_holder/Initialize(mapload, vis, offset)
+/obj/vis_contents_holder/Initialize(mapload, vis, offset, backdrop = TRUE)
 	. = ..()
 	plane -= offset
 	vis_contents += GLOB.openspace_backdrop_one_for_all

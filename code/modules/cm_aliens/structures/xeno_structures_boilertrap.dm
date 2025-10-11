@@ -12,7 +12,7 @@
 	health = 1
 	layer = RESIN_STRUCTURE_LAYER
 	var/list/tripwires = list()
-	var/hivenumber = XENO_HIVE_NORMAL
+	hivenumber = XENO_HIVE_NORMAL
 	var/root_duration = 17.5
 
 	var/mob/living/carbon/xenomorph/bound_xeno // Boiler linked to this trap

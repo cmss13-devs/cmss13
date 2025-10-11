@@ -85,9 +85,9 @@
 		A.Collided(src)
 
 /// Called when an atom has been hit by a movable atom via movement
-/atom/movable/Collided(atom/movable/AM)
-	if(isliving(AM) && !anchored)
-		var/target_dir = get_dir(AM, src)
+/atom/movable/Collided(atom/movable/collider)
+	if(!anchored && isliving(collider))
+		var/target_dir = get_dir(collider, src)
 		var/turf/target_turf = get_step(loc, target_dir)
 		Move(target_turf)
 

@@ -598,7 +598,7 @@
 
 /datum/action/xeno_action/onclick/tacmap/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.xeno_tacmap()
+	xeno.tacmap()
 	return ..()
 
 /datum/action/xeno_action/active_toggle/toggle_meson_vision

@@ -84,11 +84,7 @@
 
 /obj/structure/machinery/prop/almayer/CICmap/Initialize()
 	. = ..()
-
-	if (faction == FACTION_MARINE)
-		map = new /datum/tacmap/drawing(src, minimap_type)
-	else
-		map = new(src, minimap_type) // Non-drawing version
+	map = new /datum/tacmap/drawing(src, minimap_type)
 
 /obj/structure/machinery/prop/almayer/CICmap/Destroy()
 	QDEL_NULL(map)

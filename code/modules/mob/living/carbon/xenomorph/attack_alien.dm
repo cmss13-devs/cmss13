@@ -326,11 +326,9 @@
 
 	if(status_flags & XENO_HOST)
 		for(var/obj/item/alien_embryo/AE in contents)
-			if(AE.stage <= 1)
-				return FALSE
-		if(world.time > timeofdeath + revive_grace_period)
-			return FALSE // they ain't gonna burst now
-		return TRUE
+			if(AE.stage >= 5)
+				return TRUE
+
 	return FALSE // leave the dead alone
 
 //This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)

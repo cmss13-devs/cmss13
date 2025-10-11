@@ -28,9 +28,10 @@ jobs:
 
       - name: "Setup python"
         if: steps.value_holder.outputs.ACTIONS_ENABLED
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v6
         with:
           python-version: '3.x'
+          cache: 'pip'
       - name: "Install deps"
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |

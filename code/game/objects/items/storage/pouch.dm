@@ -886,7 +886,7 @@
 		new /obj/item/reagent_container/glass/beaker/vial(src)
 
 /obj/item/storage/pouch/chem
-	name = "chemist pouch"
+	name = "chemistry pouch"
 	desc = "A pouch for carrying glass beakers."
 	icon_state = "chemist"
 	storage_slots = 2

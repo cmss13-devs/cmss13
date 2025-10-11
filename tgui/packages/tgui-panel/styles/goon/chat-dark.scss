@@ -1587,4 +1587,9 @@ em {
   height: 1.5em;
   margin: 0;
   padding: 0;
+
+  &.corplogo {
+    width: 100px !important;
+    height: 33px !important;
+  }
 }

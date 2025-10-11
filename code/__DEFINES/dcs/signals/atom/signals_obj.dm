@@ -64,3 +64,6 @@
 // from /obj/item/device/binoculars/range/designator/acquire_target()
 #define COMSIG_DESIGNATOR_LASE "comsig_designator_lase"
 #define COMSIG_DESIGNATOR_LASE_OFF "comsig_designator_lase_off"
+
+/// from /obj/vehicle/multitile/blackfoot/add_seated_verbs()
+#define COMSIG_BLACKFOOT_ACTIONS_UPDATE "comsig_blackfoot_actions_update"

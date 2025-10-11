@@ -142,7 +142,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/template_noop)
 "H" = (
-/obj/structure/reagent_dispensers/fueltank/oxygentank,
+/obj/structure/reagent_dispensers/tank/fuel/oxygentank,
 /turf/open/space,
 /area/template_noop)
 "I" = (

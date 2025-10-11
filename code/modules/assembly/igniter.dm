@@ -17,13 +17,13 @@
 			var/obj/item/explosive/explosive = holder.loc
 			explosive.prime()
 
-		else if(istype(holder.loc, /obj/structure/reagent_dispensers/fueltank))
-			var/obj/structure/reagent_dispensers/fueltank/tank = holder.loc
+		else if(istype(holder.loc, /obj/structure/reagent_dispensers/tank/fuel))
+			var/obj/structure/reagent_dispensers/tank/fuel/tank = holder.loc
 
 			if(tank && !tank.exploding)
 				playsound(get_turf(tank), 'sound/machines/twobeep.ogg', 75, 1)
 				tank.exploding = TRUE
-				addtimer(CALLBACK(tank, TYPE_PROC_REF(/obj/structure/reagent_dispensers/fueltank, explode)), 3 SECONDS)
+				addtimer(CALLBACK(tank, TYPE_PROC_REF(/obj/structure/reagent_dispensers/tank/fuel, explode)), 3 SECONDS)
 
 				tank.update_icon()
 

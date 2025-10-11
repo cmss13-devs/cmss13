@@ -347,7 +347,7 @@
 /turf/open/floor/almayer/sterile_green_corner,
 /area/adminlevel/bunker01/medbay)
 "bn" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/orange/southwest,
 /area/adminlevel/bunker01/engineering)
 "bo" = (
@@ -885,7 +885,7 @@
 /turf/closed/wall,
 /area/adminlevel/bunker01/hydroponics)
 "dd" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/blue/northwest,
 /area/adminlevel/bunker01/hydroponics)
 "de" = (

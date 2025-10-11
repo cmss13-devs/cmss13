@@ -132,8 +132,7 @@
 	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 	qdel(src)
 	return TRUE
-
-/obj/structure/reagent_dispensers/fueltank/handle_vehicle_bump(obj/vehicle/multitile/V)
+/obj/structure/reagent_dispensers/tank/fuel/handle_vehicle_bump(obj/vehicle/multitile/V)
 	reagents.source_mob = V.seats[VEHICLE_DRIVER]
 	if(reagents.handle_volatiles())
 		if(V.seats[VEHICLE_DRIVER])

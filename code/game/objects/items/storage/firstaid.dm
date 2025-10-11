@@ -1,6 +1,6 @@
 /* First aid storage
  * Contains:
- * First Aid Kits
+ * First-Aid Kits
  * Pill Bottles
  * Pill Packets
  */
@@ -108,7 +108,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/no_med_skill/tramadol(src)
 
 /obj/item/storage/firstaid/fire/empty/fill_preset_inventory()
 	return
@@ -120,8 +120,8 @@
 
 /obj/item/storage/firstaid/regular/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/no_med_skill(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/no_med_skill/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/ointment(src)
@@ -159,9 +159,11 @@
 /obj/item/storage/firstaid/toxin/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/storage/pill_bottle/antitox(src)
-	new /obj/item/reagent_container/pill/antitox(src)
-	new /obj/item/reagent_container/pill/antitox(src)
-	new /obj/item/reagent_container/pill/antitox(src)
+	new /obj/item/storage/pill_bottle/antitox(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/no_med_skill/tramadol(src)
 
 /obj/item/storage/firstaid/toxin/empty/fill_preset_inventory()
 	return
@@ -174,8 +176,8 @@
 
 /obj/item/storage/firstaid/o2/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/reagent_container/pill/dexalin(src)
-	new /obj/item/reagent_container/pill/dexalin(src)
+	new /obj/item/storage/pill_bottle/dexalin(src)
+	new /obj/item/storage/pill_bottle/dexalin(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
@@ -850,99 +852,109 @@
 
 /obj/item/storage/pill_bottle/kelotane
 	name = "\improper Kelotane pill bottle"
+	desc = "A pill bottle filled with Kelotane pills for treating burns."
 	icon_state = "pill_canister2"
 	item_state = "pill_canister2"
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
 	maptext_label = "Kl"
 
-/obj/item/storage/pill_bottle/kelotane/skillless
+/obj/item/storage/pill_bottle/kelotane/no_med_skill
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/antitox
 	name = "\improper Dylovene pill bottle"
+	desc = "A pill bottle filled with Dylovene pills for treating toxin damage."
 	icon_state = "pill_canister6"
 	item_state = "pill_canister6"
 	pill_type_to_fill = /obj/item/reagent_container/pill/antitox
 	maptext_label = "Dy"
 
 
-/obj/item/storage/pill_bottle/antitox/skillless
+/obj/item/storage/pill_bottle/antitox/no_med_skill
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/inaprovaline
 	name = "\improper Inaprovaline pill bottle"
+	desc = "A pill bottle filled with Inaprovaline pills for stabilizing critical patients."
 	icon_state = "pill_canister3"
 	item_state = "pill_canister3"
 	pill_type_to_fill = /obj/item/reagent_container/pill/inaprovaline
 	maptext_label = "In"
 
-/obj/item/storage/pill_bottle/inaprovaline/skillless
+/obj/item/storage/pill_bottle/inaprovaline/no_med_skill
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/tramadol
 	name = "\improper Tramadol pill bottle"
+	desc = "A pill bottle filled with Tramadol. Treats pain."
 	icon_state = "pill_canister5"
 	item_state = "pill_canister5"
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 	maptext_label = "Tr"
 
-/obj/item/storage/pill_bottle/tramadol/skillless
+/obj/item/storage/pill_bottle/tramadol/no_med_skill
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/spaceacillin
 	name = "\improper Spaceacillin pill bottle"
+	desc = "A pill bottle filled with Spaceacillin pills for treating space illnesses."
 	icon_state = "pill_canister4"
 	item_state = "pill_canister4"
 	pill_type_to_fill = /obj/item/reagent_container/pill/spaceacillin
 	maptext_label = "Sp"
 
-/obj/item/storage/pill_bottle/spaceacillin/skillless
+/obj/item/storage/pill_bottle/spaceacillin/no_med_skill
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/bicaridine
 	name = "\improper Bicaridine pill bottle"
+	desc = "A pill bottle filled with Bicaridine pills for treating brute damage."
 	icon_state = "pill_canister11"
 	item_state = "pill_canister11"
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 	maptext_label = "Bi"
 
-/obj/item/storage/pill_bottle/bicaridine/skillless
+/obj/item/storage/pill_bottle/bicaridine/no_med_skill
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/dexalin
 	name = "\improper Dexalin pill bottle"
+	desc = "A pill bottle filled with Dexalin pills for reoxygenating patients."
 	icon_state = "pill_canister1"
 	item_state = "pill_canister1"
 	pill_type_to_fill = /obj/item/reagent_container/pill/dexalin
 	maptext_label = "Dx"
 
-/obj/item/storage/pill_bottle/dexalin/skillless
+/obj/item/storage/pill_bottle/dexalin/no_med_skill
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 //Alkysine
 /obj/item/storage/pill_bottle/alkysine
 	name = "\improper Alkysine pill bottle"
+	desc = "A pill bottle filled with Alkysine pills for treating brain damage."
 	icon_state = "pill_canister7"
 	item_state = "pill_canister7"
 	pill_type_to_fill = /obj/item/reagent_container/pill/alkysine
 	maptext_label = "Al"
 
-/obj/item/storage/pill_bottle/alkysine/skillless
+/obj/item/storage/pill_bottle/alkysine/no_med_skill
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 //imidazoline
 /obj/item/storage/pill_bottle/imidazoline
 	name = "\improper Imidazoline pill bottle"
+	desc = "A pill bottle filled with Imidazoline pills for treating eye damage."
 	icon_state = "pill_canister9"
 	item_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imidazoline
 	maptext_label = "Im"
 
-/obj/item/storage/pill_bottle/imidazoline/skillless
+/obj/item/storage/pill_bottle/imidazoline/no_med_skill
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/imialky
 	name = "\improper Imidazoline-Alkysine pill bottle"
+	desc = "A pill bottle filled with Imidazoline-Alkysine combo pills to treat brain and eye damage simultaneously."
 	icon_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imialky
 	maptext_label = "IA"
@@ -950,12 +962,13 @@
 //PERIDAXON
 /obj/item/storage/pill_bottle/peridaxon
 	name = "\improper Peridaxon pill bottle"
+	desc = "A pill bottle filled with Peridaxon pills to halt most effects of organ damage."
 	icon_state = "pill_canister10"
 	item_state = "pill_canister10"
 	pill_type_to_fill = /obj/item/reagent_container/pill/peridaxon
 	maptext_label = "Pr"
 
-/obj/item/storage/pill_bottle/peridaxon/skillless
+/obj/item/storage/pill_bottle/peridaxon/no_med_skill
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 //RUSSIAN RED ANTI-RAD
@@ -966,7 +979,7 @@
 	pill_type_to_fill = /obj/item/reagent_container/pill/russianRed
 	maptext_label = "Rr"
 
-/obj/item/storage/pill_bottle/russianRed/skillless
+/obj/item/storage/pill_bottle/russianRed/no_med_skill
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 //Ultrazine
@@ -1016,8 +1029,9 @@
 		return
 	..()
 
-/obj/item/storage/pill_bottle/ultrazine/skillless
+/obj/item/storage/pill_bottle/ultrazine/no_med_skill
 	name = "\improper Ultrazine pill bottle"
+	desc = "This contains pills that are like Adderall on steroids. Makes you go fast as fuck, boy. Highly addictive."
 	idlock = FALSE
 	display_maptext = TRUE
 	maptext_label = "Uz"
@@ -1038,27 +1052,36 @@
 		var/obj/item/reagent_container/pill/P = new pill_to_fill(src)
 		P.identificable = FALSE
 
-/obj/item/storage/pill_bottle/mystery/skillless
+/obj/item/storage/pill_bottle/mystery/no_med_skill
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/stimulant
 	name = "\improper Stimulant pill bottle"
+	desc = "This contains pills that send the nervous and muscular system into overdrive. Makes you unga faster and harder."
 	icon_state = "pill_canister12"
 	item_state = "pill_canister12"
 	pill_type_to_fill = /obj/item/reagent_container/pill/stimulant
-	maptext_label = "ST"
+	maptext_label = "St"
 
-/obj/item/storage/pill_bottle/stimulant/skillless
+/obj/item/storage/pill_bottle/stimulant/no_med_skill
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 //NOT FOR USCM USE!!!!
 /obj/item/storage/pill_bottle/paracetamol
 	name = "\improper Paracetamol pill bottle"
-	desc = "This is probably someone's prescription bottle."
+	desc = "This is probably someone's prescription pain pill bottle."
 	icon_state = "pill_canister7"
 	pill_type_to_fill = /obj/item/reagent_container/pill/paracetamol
 	skilllock = SKILL_MEDICAL_DEFAULT
 	maptext_label = "Pc"
+
+/obj/item/storage/pill_bottle/oxycodone
+	name = "\improper Oxycodone pill bottle"
+	desc = "This contains pills that treat severe pain, even during live surgery."
+	icon_state = "pill_canister9"
+	pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone
+	skilllock = SKILL_MEDICAL_DEFAULT
+	maptext_label = "Ox"
 
 //---------PILL PACKETS---------
 /obj/item/storage/pill_bottle/packet

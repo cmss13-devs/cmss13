@@ -142,7 +142,7 @@ About Reagents:
 		on_mob_life(mob/M)
 			This proc is called everytime the mobs life proc executes.
 			This is the place where you put damage for toxins ,
-			drowsyness for sleep toxins etc etc.
+			drowsiness for sleep toxins etc etc.
 			You'll want to call the parents proc by using ..() .
 			If you don't, the chemical will stay in the mob forever -
 			unless you write your own piece of code to slowly remove it.

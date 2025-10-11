@@ -1411,7 +1411,7 @@
 /turf/closed/wall,
 /area/adminlevel/ert_station)
 "OI" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/ert_station)
 "Po" = (
@@ -1864,7 +1864,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
 "ZJ" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/ert_station)
 "ZU" = (

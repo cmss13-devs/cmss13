@@ -111,8 +111,8 @@
 
 
 /obj/item/frame/firstaid_arm_assembly
-	name = "first aid/robot arm assembly"
-	desc = "A first aid kit with a robot arm permanently grafted to it."
+	name = "first-aid/robot arm assembly"
+	desc = "A first-aid kit with a robot arm permanently grafted to it."
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "firstaid_arm"
 	var/build_step = 0

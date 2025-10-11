@@ -444,7 +444,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "bp" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/research)
 "bq" = (
@@ -755,7 +755,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "dw" = (
@@ -1223,7 +1223,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)
 "sk" = (
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "sy" = (

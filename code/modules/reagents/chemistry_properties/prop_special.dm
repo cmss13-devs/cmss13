@@ -2,7 +2,7 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 8
-//IF YOU ADD A NEW LEGENADRY INTENDED FOR RESEARCH NORMAL LOOP, MAKE SURE TO ADD TO LEGENDARY PROPERTY LIST DEFINE
+//IF YOU ADD A NEW LEGENDARY INTENDED FOR RESEARCH NORMAL LOOP, MAKE SURE TO ADD TO LEGENDARY PROPERTY LIST DEFINE
 /datum/chem_property/special/boosting
 	name = PROPERTY_BOOSTING
 	code = "BST"
@@ -16,7 +16,7 @@
 /datum/chem_property/special/optimized
 	name = PROPERTY_OPTIMIZED
 	code = "OPM"
-	description = "Chemical molecule is structured diffrently, resulting in more efficient and easy synthesis process."
+	description = "Chemical molecule is structured differently, resulting in more efficient and easy synthesis process."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
 
@@ -61,7 +61,7 @@
 /datum/chem_property/special/organhealing
 	name = PROPERTY_ORGAN_HEALING
 	code = "OHG"
-	description = "Regenerates all types of cell membranes mending damage in all organs."
+	description = "Regenerates all types of cell membranes, mending damage in all organs."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_MEDICINE
 
@@ -95,7 +95,7 @@
 /datum/chem_property/special/DNA_Disintegrating/trigger()
 	SSticker.mode.get_specific_call(/datum/emergency_call/goon/chem_retrieval, TRUE, FALSE, holder.name) // "Weyland-Yutani Goon (Chemical Investigation Squad)"
 	GLOB.chemical_data.update_credits(10)
-	message_admins("The research department has discovered DNA_Disintegrating in [holder.name] adding 10 bonus tech points.")
+	message_admins("The research department has discovered DNA Disintegrating in [holder.name] adding 10 bonus tech points.")
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 	tree.add_points(10)
 	ai_announcement("NOTICE: Encrypted data transmission received from USCSS Royce. Shuttle inbound.")
@@ -193,7 +193,7 @@
 /datum/chem_property/special/embryonic
 	name = PROPERTY_EMBRYONIC
 	code = "MYO"
-	description = "The chemical agent carries causes an infection of type REDACTED parasitic embryonic organism."
+	description = "The chemical agent carries an infection of type REDACTED parasitic embryonic organism."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 666
@@ -289,7 +289,7 @@
 	M.set_effect(0, PARALYZE)
 	M.silent = 0
 	M.dizziness = 0
-	M.drowsyness = 0
+	M.drowsiness = 0
 	M.stuttering = 0
 	M.confused = 0
 	M.sleeping = 0
@@ -320,7 +320,7 @@
 /datum/chem_property/special/radius
 	name = PROPERTY_RADIUS
 	code = "RAD"
-	description = "Controls the radius of a fire, using unknown means"
+	description = "Controls the radius of a fire, using unknown means."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 666
@@ -344,7 +344,7 @@
 /datum/chem_property/special/intensity
 	name = PROPERTY_INTENSITY
 	code = "INT"
-	description = "Controls the intensity of a fire, using unknown means"
+	description = "Controls the intensity of a fire, using unknown means."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 666

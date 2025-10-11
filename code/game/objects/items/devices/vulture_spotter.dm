@@ -23,7 +23,7 @@
 	. = ..()
 	to_chat(user, SPAN_WARNING("[src] needs to be mounted on a tripod to use!"))
 
-/obj/item/device/vulture_spotter_scope/skillless
+/obj/item/device/vulture_spotter_scope/no_skill
 
 /obj/item/device/vulture_spotter_tripod
 	name = "\improper M707 spotter tripod"

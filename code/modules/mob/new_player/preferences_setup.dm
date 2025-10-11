@@ -194,7 +194,7 @@
 	if(isnull(preview_dummy))
 		preview_dummy = new()
 
-	preview_dummy.blocks_emissive = FALSE
+	preview_dummy.blocks_emissive = EMISSIVE_BLOCK_NONE
 	preview_dummy.update_emissive_block()
 
 	clear_equipment()

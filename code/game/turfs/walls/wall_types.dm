@@ -553,6 +553,9 @@
 	walltype = WALL_WOOD
 	baseturfs = /turf/open/floor/wood
 
+/turf/closed/wall/wood/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_WOOD, -10, 5)
+
 /turf/closed/wall/wood/update_icon()
 	..()
 	if(special_icon)
@@ -573,6 +576,9 @@
 	walltype = WALL_CAVE
 	turf_flags = TURF_HULL
 	baseturfs = /turf/open/gm/dirt
+
+/turf/closed/wall/desertcavewall/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_ROCK, -10, 5, 1)
 
 /turf/closed/wall/rock/brown
 	color = "#826161"
@@ -828,6 +834,8 @@
 		var/area/area = get_area(src)
 		area?.current_resin_count--
 
+/turf/closed/wall/resin/add_debris_element()
+	AddElement(/datum/element/debris, null, -15, 8, 0.7)
 
 /turf/closed/wall/resin/process()
 	. = ..()

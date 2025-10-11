@@ -1,0 +1,226 @@
+@use '../base.scss';
+@use '../colors.scss';
+@use '../functions.scss' as *;
+
+$light: hsl(140, 100%, 46%);
+$dark: hsl(120, 100%, 3%);
+
+$loading_color: hsl(140, 100%, 36%);
+$animation_load_duration: 1s;
+
+$small-text: 1rem;
+$large-text: 1.5rem;
+
+.DropshipMaintenance {
+  span {
+    font-size: $small-text;
+  }
+
+  .TopPanelSlide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 1;
+    animation-duration: $animation_load_duration;
+    animation-name: slideouttop;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    background-color: $dark;
+    border-bottom: 0.5rem solid $light;
+  }
+
+  .BottomPanelSlide {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 1;
+    animation-duration: $animation_load_duration;
+    animation-name: slideoutbot;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    background-color: $dark;
+    border-top: 0.5rem solid $light;
+  }
+
+  @keyframes slideouttop {
+    from {
+      width: 100%;
+      margin-top: 0;
+    }
+    to {
+      margin-top: -50%;
+      visibility: hidden;
+    }
+  }
+
+  @keyframes slideoutbot {
+    from {
+      width: 100%;
+      margin-bottom: 0%;
+    }
+    to {
+      margin-bottom: -50%;
+      visibility: hidden;
+    }
+  }
+
+  .RepairBox {
+    border: 2px solid $light;
+  }
+
+  .TitleBox {
+    @extend .RepairBox;
+    padding: 3px;
+  }
+
+  .TitleContainer {
+    align-content: center;
+    align-items: center;
+  }
+
+  .TitleText {
+    font-size: $large-text;
+    color: $light;
+  }
+
+  .RepairCard {
+    height: 100%;
+    width: 270px;
+    margin-left: 2px;
+    margin-right: 2px;
+    span {
+      font-size: $large-text;
+      display: block;
+      width: 100%;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+    .GunFlex {
+      width: 270px;
+    }
+  }
+
+  .EmptyDisplay {
+    margin-top: 6px;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/bg-westonyamada.svg');
+    background-size: 20%;
+    background-position: top;
+    background-repeat: repeat-x;
+    .Stack {
+      .Stack__item {
+        width: 100%;
+      }
+    }
+    span {
+      display: block;
+      font-size: $large-text;
+      text-align: center;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+  }
+
+  .DropshipDiagram {
+    position: relative;
+    box-sizing: border-box;
+    padding: 4px;
+    border: 1px solid $light;
+    border-radius: 4px;
+
+    text {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+  }
+
+  .GunFlex {
+    gap: 5px;
+    max-width: 25rem;
+    margin-right: auto;
+    margin-left: auto;
+
+    &.PerScanDetail {
+      max-width: none;
+      width: 100%;
+    }
+  }
+
+  .EngagedBox {
+    padding: 3px;
+    text-align: center;
+    border: 2px solid $light;
+    span {
+      display: inline-block;
+      font-family: monospace;
+      font-weight: bold;
+      font-size: $large-text;
+
+      &.value {
+        font-weight: 400 !important;
+        font-family: inherit !important;
+      }
+    }
+
+    &.PerScanDetail {
+      text-align: left;
+
+      .Flex {
+        align-items: flex-start;
+      }
+    }
+  }
+
+  .EngagedWarningBox {
+    @extend .EngagedBox;
+    animation: warningBoxAnimation 1s infinite;
+    span {
+      animation: warningTextAnimation 1s infinite;
+    }
+  }
+
+  @keyframes warningBoxAnimation {
+    0% {
+      background-color: rgba($color: $light, $alpha: 0);
+    }
+    49% {
+      background-color: rgba($color: $light, $alpha: 0);
+    }
+    50% {
+      background-color: rgba($color: $light, $alpha: 1);
+    }
+    100% {
+      background-color: rgba($color: $light, $alpha: 1);
+    }
+  }
+
+  @keyframes warningTextAnimation {
+    0% {
+      color: $light;
+    }
+    49% {
+      color: $light;
+    }
+    50% {
+      color: $dark;
+    }
+    100% {
+      color: $dark;
+    }
+  }
+
+  .EngagedBox.PerScanDetail span.value {
+    font-weight: 300 !important;
+    font-family: inherit !important;
+    opacity: 0.9;
+  }
+}

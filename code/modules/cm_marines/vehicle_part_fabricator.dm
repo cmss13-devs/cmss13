@@ -253,32 +253,80 @@
 /obj/structure/machinery/part_fabricator/dropship/spend_point_store(number = 1)
 	linked_supply_controller.dropship_points -= number
 
+GLOBAL_LIST_EMPTY(cached_dropship_equipment_categories)
+
+// Initialize the equipment categories
+/proc/init_dropship_equipment_categories()
+	if(length(GLOB.cached_dropship_equipment_categories))
+		return
+
+	for(var/build_type in typesof(/obj/structure/dropship_equipment))
+		var/obj/structure/dropship_equipment/temp_instance = new build_type(null)
+		var/list/equip_cats = temp_instance.equip_categories ? temp_instance.equip_categories.Copy() : list()
+		temp_instance.loc = null
+		qdel(temp_instance)
+
+		// Store the categories for this equipment type
+		GLOB.cached_dropship_equipment_categories[build_type] = equip_cats
+
 /obj/structure/machinery/part_fabricator/dropship/ui_static_data(mob/user)
+	init_dropship_equipment_categories()
+
 	var/list/static_data = list()
 	static_data["Equipment"] = list()
+
+	var/list/equipment_by_category = list()
+	equipment_by_category["dropship_weapon"] = list()
+	equipment_by_category["dropship_crew_weapon"] = list()
+	equipment_by_category["dropship_electronics"] = list()
+	equipment_by_category["dropship_fuel_equipment"] = list()
+	equipment_by_category["dropship_computer"] = list()
+	equipment_by_category["Uncategorized"] = list()
+
 	var/is_ammo = 0
 	var/index = 1
 	for(var/build_type in typesof(/obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/dropship_equipment_data = build_type
-		if(dropship_equipment_data.faction_exclusive)
-			if(faction != dropship_equipment_data.faction_exclusive)
+		if(initial(dropship_equipment_data.faction_exclusive))
+			if(faction != initial(dropship_equipment_data.faction_exclusive))
 				continue
 
-		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && dropship_equipment_data.combat_equipment)
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_combat_cas) && initial(dropship_equipment_data.combat_equipment))
 			index +=  1
 			continue
 		var/build_name = initial(dropship_equipment_data.name)
 		var/build_description = initial(dropship_equipment_data.desc)
 		var/build_cost = initial(dropship_equipment_data.point_cost)
+
+		var/list/equip_cats = GLOB.cached_dropship_equipment_categories[build_type]
+
 		if(build_cost)
-			static_data["Equipment"] += list(list(
+			var/equipment_data = list(
 				"name" = capitalize_first_letters(build_name),
 				"desc" = build_description,
 				"cost" = build_cost,
 				"index" = index,
 				"is_ammo" = is_ammo
-			))
+			)
+
+			if(length(equip_cats))
+				for(var/category in equip_cats)
+					if(category in equipment_by_category)
+						equipment_by_category[category] += list(equipment_data)
+					else
+						equipment_by_category["Uncategorized"] += list(equipment_data)
+			else
+				equipment_by_category["Uncategorized"] += list(equipment_data)
 		index += 1
+
+	static_data["Equipment"] = list(
+		"Weapon" = equipment_by_category["dropship_weapon"],
+		"Crew Weapon" = equipment_by_category["dropship_crew_weapon"],
+		"Electronics" = equipment_by_category["dropship_electronics"],
+		"Fuel Equipment" = equipment_by_category["dropship_fuel_equipment"],
+		"Computer" = equipment_by_category["dropship_computer"],
+		"Uncategorized" = equipment_by_category["Uncategorized"]
+	)
 
 	static_data["Ammo"] = list()
 	is_ammo = 1

@@ -99,17 +99,12 @@
 	return amount * GLOBAL_STATUS_MULTIPLIER
 /mob/living/proc/IsStun() //If we're stunned
 	return has_status_effect(/datum/status_effect/incapacitating/stun)
-/mob/living/proc/AmountStunResistMultiplier()
-	var/datum/status_effect/incapacitating/stun/status = IsStun()
-	if(!status)
-		return 1
-	return status.multiplier
 /mob/living/proc/AmountStun() //How much time remain in our stun - scaled by GLOBAL_STATUS_MULTIPLIER (normally in multiples of legacy 2 seconds)
 	var/datum/status_effect/incapacitating/stun/S = IsStun()
 	if(S)
 		return S.get_duration_left() / GLOBAL_STATUS_MULTIPLIER
 	return 0
-/mob/living/proc/Stun(amount, accumulate_resist = FALSE)
+/mob/living/proc/Stun(amount, resistable = FALSE)
 	if(!(status_flags & CANSTUN))
 		return
 	amount = GetStunDuration(amount)
@@ -118,11 +113,9 @@
 		if(nst_stim.get_property(PROPERTY_NERVESTIMULATING))
 			nst_stim.volume += max(min((-1*amount)/10, 0), -10)
 	if(S)
-		S.update_duration(amount, increment=TRUE, include_resist=accumulate_resist)
+		S.update_duration(amount, increment=TRUE, resistable=resistable)
 	else if(amount > 0)
-		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount)
-	if(accumulate_resist)
-		S.accumulate_resist()
+		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount, resistable)
 	return S
 /mob/living/proc/SetStun(amount, ignore_canstun = FALSE) //Sets remaining duration
 	if(!(status_flags & CANSTUN))

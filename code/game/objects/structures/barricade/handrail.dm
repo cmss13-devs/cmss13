@@ -74,14 +74,6 @@
 			return ..()
 
 		climber.client?.move_delay += 3 DECISECONDS
-		if(do_climb(climber))
-			if(prob(25))
-				if(ishuman(climber))
-					var/mob/living/carbon/human/human = climber
-					human.apply_damage(5, BRUTE, no_limb_loss = TRUE)
-				else
-					climber.apply_damage(5, BRUTE)
-				climber.visible_message(SPAN_WARNING("[climber] injures themselves vaulting over [src]."), SPAN_WARNING("You hit yourself as you vault over [src]."))
 	..()
 
 /obj/structure/barricade/handrail/get_examine_text(mob/user)

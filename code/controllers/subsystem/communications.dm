@@ -81,11 +81,12 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 
 //WY Channels (1230-1249)
 #define WY_FREQ 1231
-#define PMC_CMD_FREQ 1232
-#define PMC_FREQ 1233
-#define PMC_ENGI_FREQ 1234
-#define PMC_MED_FREQ 1235
-#define PMC_CCT_FREQ 1236
+#define WY_SEC_FREQ 1232
+#define PMC_CMD_FREQ 1233
+#define PMC_FREQ 1234
+#define PMC_ENGI_FREQ 1235
+#define PMC_MED_FREQ 1236
+#define PMC_CCT_FREQ 1237
 #define WY_WO_FREQ 1239
 
 //UPP Channels (1250-1269)
@@ -200,6 +201,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_HYPERDYNE = HDC_FREQ,
 
 	RADIO_CHANNEL_WY = WY_FREQ,
+	RADIO_CHANNEL_WY_SEC = WY_SEC_FREQ,
 	RADIO_CHANNEL_PMC_GEN = PMC_FREQ,
 	RADIO_CHANNEL_PMC_CMD = PMC_CMD_FREQ,
 	RADIO_CHANNEL_PMC_ENGI = PMC_ENGI_FREQ,
@@ -240,7 +242,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 #define CLF_FREQS list(CLF_FREQ, CLF_CMD_FREQ, CLF_ENGI_FREQ, CLF_MED_FREQ, CLF_CCT_FREQ)
 
 // PMC Frequencies
-#define PMC_FREQS list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_WO_FREQ, WY_FREQ)
+#define PMC_FREQS list(PMC_FREQ, PMC_CMD_FREQ, PMC_ENGI_FREQ, PMC_MED_FREQ, PMC_CCT_FREQ, WY_WO_FREQ, WY_FREQ, WY_SEC_FREQ)
 
 //Listening Device Frequencies
 #define BUG_FREQS list(BUG_A_FREQ, BUG_B_FREQ)
@@ -297,6 +299,7 @@ SUBSYSTEM_DEF(radio)
 		"[JTAC_FREQ]" = "jtacradio",
 		"[INTEL_FREQ]" = "intelradio",
 		"[WY_FREQ]" = "wyradio",
+		"[WY_SEC_FREQ]" = "wyradio",
 		"[VAI_FREQ]" = "vairadio",
 		"[RMC_FREQ]" = "rmcradio",
 		"[CIA_FREQ]" = "ciaradio",

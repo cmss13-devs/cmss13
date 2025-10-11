@@ -1369,6 +1369,9 @@
 	faction_group = FACTION_LIST_HUNTED
 	ert_squad = TRUE
 
+/datum/equipment_preset/uscm/hunted/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_NORMAL
+
 /datum/equipment_preset/uscm/hunted/rifleman
 	name = "USCM Solar Devils Rifleman (Hunted)"
 	access = list(ACCESS_MARINE_PREP)
@@ -1380,8 +1383,6 @@
 
 	minimap_icon = "private"
 
-/datum/equipment_preset/uscm/hunted/rifleman/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_MAX
 
 /datum/equipment_preset/uscm/hunted/rifleman/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
@@ -1426,9 +1427,6 @@
 	skills = /datum/skills/tl_pve
 
 	minimap_icon = "tl"
-
-/datum/equipment_preset/uscm/hunted/tl/load_status(mob/living/carbon/human/new_human)
-	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/hunted/tl/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)

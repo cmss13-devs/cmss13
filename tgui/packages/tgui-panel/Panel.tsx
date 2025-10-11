@@ -41,7 +41,7 @@ export const Panel = (props) => {
   const [fixedWidth, setFixedWidth] = useState<number | false>(false);
   useEffect(() => {
     if (game.tvMode) {
-      Byond.winget('browser_output', 'size').then(
+      Byond.winget('browseroutput', 'size').then(
         (size: { x: number; y: number }) => {
           setFixedWidth(size.x);
         },
@@ -104,7 +104,7 @@ export const Panel = (props) => {
         )}
         <Stack.Item grow>
           <Section fill fitted position="relative">
-            <Pane.Content scrollable>
+            <Pane.Content scrollable={!game.tvMode}>
               <ChatPanel lineHeight={settings.lineHeight} />
             </Pane.Content>
             <Notifications>

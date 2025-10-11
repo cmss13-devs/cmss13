@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'tgui/backend';
 import { Button, Section, Stack } from 'tgui/components';
 import { Pane } from 'tgui/layouts';
@@ -38,8 +38,22 @@ export const Panel = (props) => {
     dispatch(rebuildChat());
   }, [honk]);
 
+  const [fixedWidth, setFixedWidth] = useState<number | false>(false);
+  useEffect(() => {
+    if (game.tvMode) {
+      Byond.winget('browser_output', 'size').then(
+        (size: { x: number; y: number }) => {
+          setFixedWidth(size.x);
+        },
+      );
+    }
+  }, [game.tvMode]);
+
   return (
-    <Pane theme={settings.theme}>
+    <Pane
+      theme={settings.theme}
+      width={fixedWidth ? `${fixedWidth}px` : undefined}
+    >
       <Stack fill vertical>
         {!game.tvMode && (
           <Stack.Item>

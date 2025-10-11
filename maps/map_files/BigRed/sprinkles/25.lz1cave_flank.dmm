@@ -6,7 +6,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "d" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/space_port)
 "e" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -28,7 +28,7 @@
 /area/bigredv2/outside/lz1_north_cas)
 "F" = (
 /obj/structure/sign/safety/hazard,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/space_port)
 
 (1,1,1) = {"

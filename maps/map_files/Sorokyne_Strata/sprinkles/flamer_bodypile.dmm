@@ -116,7 +116,7 @@
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "rH" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/exterior/north_outpost)
 "sj" = (
 /turf/open/floor/strata/multi_tiles/west,
@@ -226,7 +226,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/outpost_decks)
 "Gn" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/exterior/outpost_decks)
 "GB" = (
 /obj/structure/platform_decoration/metal/strata/east{
@@ -384,7 +384,7 @@
 /obj/structure/machinery/weather_siren{
 	pixel_y = -8
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/exterior/outpost_decks)
 "PN" = (
 /obj/structure/platform/metal/strata/east{

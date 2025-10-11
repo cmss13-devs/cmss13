@@ -50,6 +50,7 @@
 
 //What to do if all ofthe installed modules have been broken
 /obj/vehicle/multitile/proc/handle_all_modules_broken()
+	update_minimap_icon(TRUE)
 	return
 
 /obj/vehicle/multitile/proc/deactivate_all_hardpoints()
@@ -219,6 +220,7 @@
 	HP.on_install(src)
 	HP.rotate(turning_angle(HP.dir, dir))
 
+	update_minimap_icon()
 	update_icon()
 
 //General proc for taking off hardpoints

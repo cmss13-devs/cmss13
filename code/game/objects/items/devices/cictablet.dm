@@ -17,25 +17,18 @@
 	var/announcement_faction = FACTION_MARINE
 	var/add_pmcs = FALSE
 
-	var/datum/tacmap/tacmap
-	var/minimap_type = MINIMAP_FLAG_USCM
+	///flags that we want to be shown when you interact with this table
+	var/minimap_flag = MINIMAP_FLAG_USCM
 
 	COOLDOWN_DECLARE(announcement_cooldown)
 	COOLDOWN_DECLARE(distress_cooldown)
 
 /obj/item/device/cotablet/Initialize()
-	if(announcement_faction == FACTION_MARINE)
-		tacmap = new /datum/tacmap/drawing(src, minimap_type)
-	else
-		tacmap = new(src, minimap_type) // Non-drawing version
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
-	return ..()
-
-/obj/item/device/cotablet/Destroy()
-	QDEL_NULL(tacmap)
+	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE)
 	return ..()
 
 /obj/item/device/cotablet/proc/disable_pmc()
@@ -51,6 +44,10 @@
 		tgui_interact(user)
 	else
 		to_chat(user, SPAN_DANGER("Access denied."))
+
+/obj/item/device/cotablet/ui_close(mob/user)
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.on_unset_interaction(user)
 
 /obj/item/device/cotablet/ui_static_data(mob/user)
 	var/list/data = list()
@@ -78,6 +75,8 @@
 		return UI_UPDATE
 	if(!on)
 		return UI_DISABLED
+
+	return UI_INTERACTIVE
 
 /obj/item/device/cotablet/ui_state(mob/user)
 	return GLOB.inventory_state
@@ -128,7 +127,12 @@
 			. = TRUE
 
 		if("mapview")
-			tacmap.tgui_interact(user)
+			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+
+			if(user in tacmap_component.interactees)
+				tacmap_component.on_unset_interaction(user)
+			else
+				tacmap_component.show_tacmap(user)
 			. = TRUE
 
 		if("evacuation_start")
@@ -176,7 +180,7 @@
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
 	add_pmcs = TRUE
-	minimap_type = MINIMAP_FLAG_WY
+	minimap_flag = MINIMAP_FLAG_WY
 
 /obj/item/device/cotablet/upp
 
@@ -188,4 +192,4 @@
 	announcement_faction = FACTION_UPP
 	req_access = list(ACCESS_UPP_LEADERSHIP)
 
-	minimap_type = MINIMAP_FLAG_UPP
+	minimap_flag = MINIMAP_FLAG_UPP

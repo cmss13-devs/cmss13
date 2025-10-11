@@ -155,6 +155,11 @@
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
 
+/mob/living/carbon/xenomorph/verb/view_tacmaps()
+	set name = "View Tacmap"
+	set category = "Alien"
+	GLOB.tacmap_viewer.tgui_interact(src)
+
 // /mob/living/carbon/xenomorph/verb/enter_tree()
 // set name = "Enter Techtree"
 // set desc = "Enter the Xenomorph techtree"

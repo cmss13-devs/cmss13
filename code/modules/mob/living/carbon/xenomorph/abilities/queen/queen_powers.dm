@@ -354,7 +354,7 @@
 /datum/action/xeno_action/onclick/manage_hive/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/queen_manager = owner
 	plasma_cost = 0
-	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)", "Permissions", "Purchase Buffs")
+	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)", "Permissions", "Purchase Buffs", "Edit Tacmap")
 	if(queen_manager.hive.hivenumber == XENO_HIVE_CORRUPTED)
 		var/datum/hive_status/corrupted/hive = queen_manager.hive
 		options += "Add Personal Ally"
@@ -384,7 +384,18 @@
 			permissions()
 		if("Purchase Buffs")
 			purchase_buffs()
+		if("Edit Tacmap")
+			edit_tacmap()
 	return ..()
+
+/datum/action/xeno_action/onclick/manage_hive/proc/edit_tacmap()
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	var/datum/component/tacmap/tacmap_component = xeno.GetComponent(/datum/component/tacmap)
+
+	if(xeno in tacmap_component.interactees)
+		tacmap_component.on_unset_interaction(xeno)
+	else
+		tacmap_component.show_tacmap(xeno)
 
 /datum/action/xeno_action/onclick/manage_hive/proc/permissions()
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
@@ -786,13 +797,6 @@
 /datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(turf/T)
 	recently_built_turfs -= T
 
-
-/mob/living/carbon/xenomorph/proc/xeno_tacmap()
-	set name = "View Xeno Tacmap"
-	set desc = "This opens a tactical map, where you can see where every xenomorph is."
-	set category = "Alien"
-	hive.tacmap.tgui_interact(src)
-
 /datum/action/xeno_action/onclick/screech/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
 
@@ -1006,4 +1010,3 @@
 	// We don't test or apply the cooldown here because the proc does it since verbs can activate it too
 	xeno.hive_message()
 	return ..()
-

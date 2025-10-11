@@ -1,4 +1,5 @@
 GLOBAL_LIST_EMPTY(marine_leaders)
+GLOBAL_LIST_EMPTY(marine_officers)
 
 // THE MARINE TECH TREE
 /datum/techtree/marine

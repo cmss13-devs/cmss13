@@ -77,11 +77,8 @@
 	for(var/obj/item/device/chameleon/S in M)
 		S.disrupt(M)
 
-	var/trained_human = FALSE
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED))
-			trained_human = TRUE
 
 		var/list/protections = list(H.glasses, H.wear_mask, H.head)
 		var/total_eye_protection = 0
@@ -95,49 +92,36 @@
 			return
 
 	var/weaken_amount
-	var/paralyze_amount
 	var/deafen_amount
 
 	if(M.flash_eyes())
-		weaken_amount += 2
-		paralyze_amount += 10
+		weaken_amount += 1
 
 	if((get_dist(M, T) <= 2 || src.loc == M.loc || src.loc == M))
-		if(trained_human)
-			weaken_amount += 2
-			paralyze_amount += 1
-		else
-			weaken_amount += 10
-			paralyze_amount += 3
-			deafen_amount += 15
-			if(!no_damage)
-				if((prob(14) || (M == src.loc && prob(70))))
-					M.ear_damage += rand(1, 10)
-				else
-					M.ear_damage += rand(0, 5)
+		weaken_amount += 2
+		deafen_amount += 2
+		if(!no_damage)
+			if((prob(14) || (M == src.loc && prob(70))))
+				M.ear_damage += rand(1, 10)
+			else
+				M.ear_damage += rand(0, 5)
 
 	else if(get_dist(M, T) <= 5)
-		if(!trained_human)
-			weaken_amount += 8
-			deafen_amount += 10
-			if(!no_damage)
-				M.ear_damage += rand(0, 3)
-
-	else if(!trained_human)
-		weaken_amount += 4
-		deafen_amount += 5
+		weaken_amount += 1
+		deafen_amount += 1
 		if(!no_damage)
-			M.ear_damage += rand(0, 1)
+			M.ear_damage += rand(0, 3)
+
+	else
+		deafen_amount += 2
 
 	if(HAS_TRAIT(M, TRAIT_EAR_PROTECTION))
 		weaken_amount *= 0.85
-		paralyze_amount *= 0.85
 		deafen_amount = 0
 		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
 
 	M.Stun(weaken_amount)
 	M.KnockDown(weaken_amount)
-	M.KnockOut(paralyze_amount)
 	if(deafen_amount)
 		M.SetEarDeafness(max(M.ear_deaf, deafen_amount))
 

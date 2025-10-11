@@ -57,7 +57,7 @@
 	job_title = JOB_WY_GOON_MEDIC
 	skills = /datum/skills/civilian/survivor/goon/medic
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL, ACCESS_WY_MEDICAL)
-	minimap_icon = "goon_med"
+	minimap_icon_state = "goon_med"
 
 	survivor_variant = MEDICAL_SURVIVOR
 
@@ -94,7 +94,7 @@
 	job_title = JOB_WY_GOON_TECH
 	skills = /datum/skills/civilian/survivor/goon/tech
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL, ACCESS_WY_ENGINEERING)
-	minimap_icon = "goon_engi"
+	minimap_icon_state = "goon_engi"
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
@@ -128,7 +128,7 @@
 	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/goon/lead
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL, ACCESS_WY_MEDICAL, ACCESS_WY_ENGINEERING)
-	minimap_icon = "goon_leader"
+	minimap_icon_state = "goon_leader"
 
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -159,7 +159,7 @@
 	idtype = /obj/item/card/id/silver/cl
 	assignment = JOB_WY_GOON_SYNTH
 	job_title = JOB_WY_GOON_SYNTH
-	minimap_icon = "goon_synth"
+	minimap_icon_state = "goon_synth"
 	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap/wy_cap,

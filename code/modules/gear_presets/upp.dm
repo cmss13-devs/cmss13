@@ -96,7 +96,7 @@
 	assignment = JOB_UPP
 	job_title = JOB_UPP
 	role_comm_title = "Sol"
-	minimap_icon = "upp_pvt"
+	minimap_icon_state = "upp_pvt"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 	access = list(
 		ACCESS_UPP_GENERAL,
@@ -329,7 +329,7 @@
 	assignment = JOB_UPP_MEDIC
 	job_title = JOB_UPP_MEDIC
 	role_comm_title = "Med"
-	minimap_icon = "upp_med"
+	minimap_icon_state = "upp_med"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	access = list(
 		ACCESS_UPP_GENERAL,
@@ -538,7 +538,7 @@
 	assignment = JOB_UPP_ENGI
 	job_title = JOB_UPP_ENGI
 	role_comm_title = "Sap"
-	minimap_icon = "upp_sapper"
+	minimap_icon_state = "upp_sapper"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	access = list(
 		ACCESS_UPP_GENERAL,
@@ -710,7 +710,7 @@
 	assignment = JOB_UPP_SPECIALIST
 	job_title = JOB_UPP_SPECIALIST
 	role_comm_title = "Spc"
-	minimap_icon = "upp_spec"
+	minimap_icon_state = "upp_spec"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 	access = list(
 		ACCESS_UPP_GENERAL,
@@ -854,7 +854,7 @@
 	assignment = JOB_UPP_SPECIALIST
 	job_title = JOB_UPP_SPECIALIST
 	role_comm_title = "Spc"
-	minimap_icon = "upp_spec"
+	minimap_icon_state = "upp_spec"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 	access = list(
 		ACCESS_UPP_GENERAL,
@@ -1009,7 +1009,7 @@
 	assignment = JOB_UPP_LEADER
 	job_title = JOB_UPP_LEADER
 	role_comm_title = "SL"
-	minimap_icon = "upp_sl"
+	minimap_icon_state = "upp_sl"
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
 	access = list(
 		ACCESS_UPP_GENERAL,
@@ -1218,7 +1218,7 @@
 	assignment = JOB_UPP_POLICE
 	job_title = JOB_UPP_POLICE
 	role_comm_title = "MP"
-	minimap_icon = "upp_mp"
+	minimap_icon_state = "upp_mp"
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
 	access = list(
 		ACCESS_UPP_GENERAL,
@@ -1591,7 +1591,7 @@
 	assignment = JOB_UPP_SUPPLY
 	job_title = JOB_UPP_SUPPLY
 	role_comm_title = "Log."
-	minimap_icon = "upp_cargo"
+	minimap_icon_state = "upp_cargo"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	access = list(
 		ACCESS_UPP_GENERAL,
@@ -1703,7 +1703,7 @@
 	assignment = JOB_UPP_LT_OFFICER
 	job_title = JOB_UPP_LT_OFFICER
 	role_comm_title = "Lt."
-	minimap_icon = "upp_lt"
+	minimap_icon_state = "upp_lt"
 	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
 	access = list(
 		ACCESS_UPP_GENERAL,
@@ -1907,7 +1907,7 @@
 	assignment = JOB_UPP_SRLT_OFFICER
 	job_title = JOB_UPP_SRLT_OFFICER
 	role_comm_title = "Sr-Lt."
-	minimap_icon = "upp_slt"
+	minimap_icon_state = "upp_slt"
 	paygrades = list(PAY_SHORT_UO2 = JOB_PLAYTIME_TIER_0)
 	access = list(
 		ACCESS_UPP_GENERAL,
@@ -2082,7 +2082,7 @@
 	assignment = JOB_UPP_KPT_OFFICER
 	job_title = JOB_UPP_KPT_OFFICER
 	role_comm_title = "May."
-	minimap_icon = "upp_xo"
+	minimap_icon_state = "upp_xo"
 	paygrades = list(PAY_SHORT_UO3 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/kapitan
 
@@ -2276,7 +2276,7 @@
 	assignment = JOB_UPP_MAY_OFFICER
 	job_title = JOB_UPP_MAY_OFFICER
 	role_comm_title = "May."
-	minimap_icon = "upp_co"
+	minimap_icon_state = "upp_co"
 	paygrades = list(PAY_SHORT_UO4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2463,7 +2463,7 @@
 	assignment = JOB_UPP_LTKOL_OFFICER
 	job_title = JOB_UPP_LTKOL_OFFICER
 	role_comm_title = "Lt. Kol."
-	minimap_icon = "upp_co"
+	minimap_icon_state = "upp_co"
 	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2477,7 +2477,7 @@
 	assignment = JOB_UPP_LTKOL_OFFICER
 	job_title = JOB_UPP_LTKOL_OFFICER
 	role_comm_title = "Lt. Kol."
-	minimap_icon = "upp_co"
+	minimap_icon_state = "upp_co"
 	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/officer/flag/dressed/podpolkovnik/New()
@@ -2487,7 +2487,7 @@
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/officer/flag
 	name = "UPP Flag Officer Base"
-	minimap_icon = "upp_co"
+	minimap_icon_state = "upp_co"
 	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/flag/dressed
@@ -2700,7 +2700,7 @@
 	assignment = JOB_UPP_MAY_GENERAL
 	job_title = JOB_UPP_MAY_GENERAL
 	role_comm_title = "Ley. Gen."
-	minimap_icon = "upp_co"
+	minimap_icon_state = "upp_co"
 	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2709,7 +2709,7 @@
 	assignment = JOB_UPP_MAY_GENERAL
 	job_title = JOB_UPP_MAY_GENERAL
 	role_comm_title = "Ley. Gen."
-	minimap_icon = "upp_co"
+	minimap_icon_state = "upp_co"
 	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/officer/flag/may_gen/dressed/New()
@@ -2727,7 +2727,7 @@
 	assignment = JOB_UPP_LT_GENERAL
 	job_title = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
-	minimap_icon = "upp_co"
+	minimap_icon_state = "upp_co"
 	paygrades = list(PAY_SHORT_UO9 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2736,7 +2736,7 @@
 	assignment = JOB_UPP_LT_GENERAL
 	job_title = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
-	minimap_icon = "upp_co"
+	minimap_icon_state = "upp_co"
 
 /datum/equipment_preset/upp/officer/flag/ley_gen/dressed/New()
 	.=..()
@@ -2752,7 +2752,7 @@
 	assignment = JOB_UPP_GENERAL
 	job_title = JOB_UPP_GENERAL
 	role_comm_title = "Gen."
-	minimap_icon = "upp_co"
+	minimap_icon_state = "upp_co"
 	paygrades = list(PAY_SHORT_UO10 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
@@ -2761,7 +2761,7 @@
 	assignment = JOB_UPP_GENERAL
 	job_title = JOB_UPP_GENERAL
 	role_comm_title = "Gen."
-	minimap_icon = "upp_co"
+	minimap_icon_state = "upp_co"
 
 /datum/equipment_preset/upp/officer/flag/gen/dressed/New()
 	.=..()
@@ -2830,7 +2830,7 @@
 	skills = /datum/skills/synthetic
 	assignment = JOB_UPP_SUPPORT_SYNTH
 	job_title = JOB_UPP_SUPPORT_SYNTH
-	minimap_icon = "upp_synth"
+	minimap_icon_state = "upp_synth"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag/upp
 	access = list(
@@ -3147,7 +3147,7 @@
 	paygrades = list(PAY_SHORT_UC1 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/data
 
-	minimap_icon = "upp_com"
+	minimap_icon_state = "upp_com"
 
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 
@@ -3280,7 +3280,7 @@
 	assignment = JOB_UPP_COMMANDO_MEDIC
 	job_title = JOB_UPP_COMMANDO_MEDIC
 	role_comm_title = "2ndKdo"
-	minimap_icon = "upp_commed"
+	minimap_icon_state = "upp_commed"
 	paygrades = list(PAY_SHORT_UC2 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/commando/medic/dressed
@@ -3450,7 +3450,7 @@
 	assignment = JOB_UPP_COMMANDO_LEADER
 	job_title = JOB_UPP_COMMANDO_LEADER
 	role_comm_title = "1stKdo"
-	minimap_icon = "upp_comsl"
+	minimap_icon_state = "upp_comsl"
 	paygrades = list(PAY_SHORT_UC3 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver
 
@@ -3720,7 +3720,7 @@
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TANK"
 
-	minimap_icon = "upp_vc"
+	minimap_icon_state = "upp_vc"
 
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
@@ -3937,7 +3937,7 @@
 	job_title = JOB_UPP_COMMISSAR
 	paygrades = list(PAY_SHORT_UO4P = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Commissar"
-	minimap_icon = "upp_plt"
+	minimap_icon_state = "upp_plt"
 	minimum_age = 30
 	skills = /datum/skills/upp/commissar
 	access = list(ACCESS_UPP_GENERAL, ACCESS_UPP_LEADERSHIP)
@@ -4058,7 +4058,7 @@
 	assignment = JOB_UPP_CONSCRIPT
 	job_title = JOB_UPP_CONSCRIPT
 	role_comm_title = "Cons"
-	minimap_icon = "upp_pvt"
+	minimap_icon_state = "upp_pvt"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 	access = list(
 		ACCESS_UPP_GENERAL,

@@ -109,7 +109,7 @@
 
 	var/obj/item/card/id/ID = user.get_idcard()
 	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Spotter")
-	ID.minimap_icon_override = "spotter"
+	ID.minimap_icon_state_override = "spotter"
 	user.update_minimap_icon()
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Spotter")
 
@@ -197,7 +197,7 @@
 
 	var/obj/item/card/id/ID = user.get_idcard()
 	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Loader")
-	ID.minimap_icon_override = "loader"
+	ID.minimap_icon_state_override = "loader"
 	user.update_minimap_icon()
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Loader")
 
@@ -230,7 +230,7 @@
 
 	var/obj/item/card/id/ID = user.get_idcard()
 	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Mortar Operator")
-	ID.minimap_icon_override = "mortar"
+	ID.minimap_icon_state_override = "mortar"
 	user.update_minimap_icon()
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Mortar Operator")
 
@@ -267,7 +267,7 @@
 
 	var/obj/item/card/id/ID = user.get_idcard()
 	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "K9 Handler")
-	ID.minimap_icon_override = "medic_k9"
+	ID.minimap_icon_state_override = "medic_k9"
 	user.update_minimap_icon()
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "K9 Handler")
 

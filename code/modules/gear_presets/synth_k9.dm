@@ -3,7 +3,7 @@
 	uses_special_name = TRUE
 	languages = ALL_SYNTH_LANGUAGES
 	skills = /datum/skills/synth_k9
-	minimap_icon = "synth_k9"
+	minimap_icon_state = "synth_k9"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold

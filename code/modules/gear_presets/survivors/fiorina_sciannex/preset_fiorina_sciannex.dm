@@ -31,7 +31,7 @@
 	assignment = JOB_WY_SEC
 	job_title = JOB_WY_SEC
 	minimap_background = "background_goon"
-	minimap_icon = "cmp"
+	minimap_icon_state = "cmp"
 	idtype = /obj/item/card/id/silver/cl
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
@@ -56,7 +56,7 @@
 	job_title = JOB_SURVIVOR
 	role_comm_title = "UA RO"
 	faction = FACTION_SURVIVOR
-	minimap_icon = "mp"
+	minimap_icon_state = "mp"
 	minimap_background = "background_ua"
 
 /datum/equipment_preset/survivor/colonial_marshal/fiorina/load_gear(mob/living/carbon/human/new_human)

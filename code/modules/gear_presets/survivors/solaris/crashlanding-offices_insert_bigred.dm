@@ -12,7 +12,7 @@
 	idtype = /obj/item/card/id/pmc
 	skills = /datum/skills/civilian/survivor/pmc
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	minimap_icon = "pmc_gun"
+	minimap_icon_state = "pmc_gun"
 	minimap_background = "background_pmc"
 	origin_override = ORIGIN_WY_PMC
 
@@ -87,7 +87,7 @@
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CM"
 	skills = /datum/skills/civilian/survivor/pmc/medic
-	minimap_icon = "pmc_md"
+	minimap_icon_state = "pmc_md"
 
 /datum/equipment_preset/survivor/pmc/medic/load_gear(mob/living/carbon/human/new_human)
 	//uniform
@@ -133,7 +133,7 @@
 	paygrades = list(PAY_SHORT_PMC_TEC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TEC"
 	skills = /datum/skills/civilian/survivor/pmc/engineer
-	minimap_icon = "mt"
+	minimap_icon_state = "mt"
 
 /datum/equipment_preset/survivor/pmc/engineer/load_gear(mob/living/carbon/human/new_human)
 	//uniform
@@ -173,7 +173,7 @@
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SL"
 	skills = /datum/skills/civilian/survivor/pmc/lead
-	minimap_icon = "pmc_ld"
+	minimap_icon_state = "pmc_ld"
 
 /datum/equipment_preset/survivor/pmc/pmc_leader/load_gear(mob/living/carbon/human/new_human)
 	//uniform
@@ -213,7 +213,7 @@
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Colony Supervisor"
 	job_title = JOB_EXECUTIVE_SUPERVISOR
-	minimap_icon = "exec_super"
+	minimap_icon_state = "exec_super"
 	role_comm_title = "Supervisor"
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction = FACTION_WY
@@ -283,7 +283,7 @@
 	role_comm_title = "WY Syn"
 	skills = /datum/skills/synthetic
 	preset_generation_support = FALSE
-	minimap_icon = "pmc_syn"
+	minimap_icon_state = "pmc_syn"
 	minimap_background = "background_pmc"
 	origin_override = ORIGIN_WY_PMC
 
@@ -341,7 +341,7 @@
 	paygrades = list(PAY_SHORT_PMC_FOL = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "FOL"
 	skills = /datum/skills/civilian/survivor/pmc/co_survivor
-	minimap_icon = "pmc_fol"
+	minimap_icon_state = "pmc_fol"
 
 /datum/equipment_preset/survivor/pmc/pmc_commander/load_gear(mob/living/carbon/human/new_human)
 	//uniform

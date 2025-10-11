@@ -70,7 +70,8 @@
 	var/id_type = "ID Card"
 	var/list/faction_group
 	/// For custom minimap icons
-	var/minimap_icon_override = null
+	var/minimap_icon_state_override = null
+	var/icon/minimap_icon_file_override = null
 
 	/// The name registered_name on the card
 	var/registered_name = "Unknown"

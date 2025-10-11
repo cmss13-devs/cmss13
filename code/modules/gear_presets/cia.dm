@@ -11,7 +11,7 @@
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CIV"
 	minimap_background = "background_civillian"
-	minimap_icon = "cia_ia"
+	minimap_icon_state = "cia_ia"
 	idtype = /obj/item/card/id/adaptive
 
 /datum/equipment_preset/cia/New()
@@ -66,7 +66,7 @@
 	assignment = JOB_CIA_LIAISON
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "ILO"
-	minimap_icon = "cia_lo"
+	minimap_icon_state = "cia_lo"
 	minimap_background = "background_ua"
 
 /datum/equipment_preset/cia/officer/load_gear(mob/living/carbon/human/new_human, client/mob_client)
@@ -209,7 +209,7 @@
 	assignment = JOB_CIA_UACQS_ADMN
 	paygrades = list(PAY_SHORT_CADMIN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "UACQS"
-	minimap_icon = "uacqs"
+	minimap_icon_state = "uacqs"
 	minimap_background = "background_ua"
 
 /datum/equipment_preset/cia/uacqs/load_gear(mob/living/carbon/human/new_human, client/mob_client)
@@ -255,7 +255,7 @@
 	job_title = JOB_CIA_UACQS_COMR
 	assignment = JOB_CIA_UACQS_COMR
 	paygrades = list(PAY_SHORT_COM = JOB_PLAYTIME_TIER_0)
-	minimap_icon = "uacqs_c"
+	minimap_icon_state = "uacqs_c"
 	idtype = /obj/item/card/id/adaptive/silver
 	skills = /datum/skills/cia_senior
 
@@ -268,7 +268,7 @@
 	job_title = JOB_CIA_UACQS_SEC
 	assignment = JOB_CIA_UACQS_SEC
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
-	minimap_icon = "uacqs_s"
+	minimap_icon_state = "uacqs_s"
 
 /datum/equipment_preset/cia/uacqs/security/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	//back

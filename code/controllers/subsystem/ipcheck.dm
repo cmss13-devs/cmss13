@@ -243,7 +243,7 @@ SUBSYSTEM_DEF(ipcheck)
 	if(!SSipcheck.is_enabled(src))
 		return
 
-	if(SSipcheck.is_exempt(src) || SSipcheck.is_whitelisted(src))
+	if(SSipcheck.is_exempt(src) || SSipcheck.is_whitelisted(ckey))
 		return
 
 	if(check_localhost_status())

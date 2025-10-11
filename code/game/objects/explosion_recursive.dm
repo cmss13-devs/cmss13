@@ -31,6 +31,7 @@ explosion resistance exactly as much as their health
 	Controller.initiate_explosion(epicenter, power, falloff, explosion_cause_data)
 
 
+
 /obj/effect/explosion
 	var/list/explosion_turfs = list()
 	var/list/explosion_turf_directions = list()

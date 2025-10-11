@@ -26,6 +26,8 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		initialize_pass_flags()
 
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+	for(var/atom/movable/fall_candidate in contents)
+		check_fall(fall_candidate)
 	return INITIALIZE_HINT_LATELOAD
 
 /turf/open_space/attack_alien(mob/user)
@@ -90,6 +92,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	while(istype(below, /turf/open_space))
 		below = SSmapping.get_turf_below(below)
 		height++
+
+	if(!below)
+		return //so we do not try to fall when there is nowhere to fall
 
 	movable.forceMove(below)
 	movable.onZImpact(below, height)

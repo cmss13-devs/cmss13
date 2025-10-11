@@ -99,6 +99,8 @@
 	if(my_area.lighting_effect)
 		overlays += my_area.lighting_effect
 
+
+
 /turf/open/proc/scorch(heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
 	// "name_scorched#" where # is the scorchedness level 0 - 1 - 2 - 3

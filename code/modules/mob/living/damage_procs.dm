@@ -15,7 +15,8 @@
 	Returns
 	standard 0 if fail
 */
-/mob/living/proc/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE, enviro = FALSE)
+
+/mob/living/proc/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE, enviro = FALSE , chemical = FALSE)
 	if(!damage)
 		return FALSE
 
@@ -28,7 +29,7 @@
 		if(BRUTE)
 			adjustBruteLoss(damage)
 		if(BURN)
-			adjustFireLoss(damage)
+			adjustFireLoss(damage, chemical)
 		if(TOX)
 			adjustToxLoss(damage)
 		if(OXY)

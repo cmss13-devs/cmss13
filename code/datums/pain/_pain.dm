@@ -88,6 +88,7 @@
 	else
 		return percentage
 
+///this function should not be used outside of recalculate_pain
 /datum/pain/proc/apply_pain(amount = 0, type = BRUTE)
 	var/actual_amount = amount
 

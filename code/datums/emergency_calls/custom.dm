@@ -33,8 +33,27 @@
 
 	return
 
-/datum/emergency_call/custom/spawn_candidates(announce, override_spawn_loc)
+/datum/emergency_call/custom/spawn_candidates(announce, override_spawn_loc, delete_mindless_mobs = FALSE)
 	. = ..()
+	if(delete_mindless_mobs)
+		delete_mindless_mobs()
+	else
+		offer_mobs_for_ghosts()
+
+/datum/emergency_call/custom/proc/offer_mobs_for_ghosts()
 	if(owner)
 		for(var/mob/living/carbon/human/H in players_to_offer)
 			owner.free_for_ghosts(H)
+
+/datum/emergency_call/custom/proc/delete_mindless_mobs()
+	var/count_mob_deleted = 0
+	for(var/player in players_to_offer)
+		if(!ismob(player))
+			continue
+		var/mob/spawned_mob = player
+		if(spawned_mob.mind)
+			continue
+		qdel(spawned_mob)
+		count_mob_deleted++
+
+	message_admins("After ERT spawn as [name], [count_mob_deleted] out of [mob_max] mindless mobs were removed.")

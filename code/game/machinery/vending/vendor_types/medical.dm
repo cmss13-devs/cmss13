@@ -419,6 +419,9 @@
 
 		// Since the reagent is deleted on use it's easier to make a new one instead of snowflake checking
 		var/obj/item/reagent_container/new_container = new container.type(src)
+		// Preserve transfer amount from the original container
+		if(istype(container, /obj/item/reagent_container) && istype(new_container, /obj/item/reagent_container))
+			new_container.amount_per_transfer_from_this = container.amount_per_transfer_from_this
 		qdel(container)
 		user.put_in_hands(new_container)
 		return

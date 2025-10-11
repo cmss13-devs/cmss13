@@ -38,7 +38,7 @@
 
 	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
-/proc/apply_neuro(mob/living/M, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE)
+/proc/apply_neuro(mob/living/M, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE, apply_effect = TRUE)
 	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
 		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
@@ -53,6 +53,9 @@
 		if(drain_medchems)
 			for(var/datum/reagent/medical/med in H.reagents.reagent_list)
 				H.reagents.remove_reagent(med.id, drain, TRUE)
+
+	if(!apply_effect)
+		return
 
 	if(!isxeno(M))
 		if(insta_neuro)
@@ -218,6 +221,28 @@
 		PAS = new /datum/effects/prae_acid_stacks(H)
 	else
 		PAS.increment_stack_count()
+
+/datum/ammo/xeno/acid/despoiler
+	name = "corrosive spit"
+	icon_state = "xeno_acid_strong"
+	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
+	accuracy = HIT_ACCURACY_TIER_5
+	accurate_range = 32
+	max_range = 4
+	damage = 35
+	shell_speed = AMMO_SPEED_TIER_1
+	scatter = SCATTER_AMOUNT_TIER_6
+
+/datum/ammo/xeno/acid/despoiler/on_hit_mob(mob/mob, obj/projectile/projectile)
+	. = ..()
+	if(. == FALSE)
+		return
+	var/datum/effects/acid/acid_effect = locate() in mob.effects_list
+	if(acid_effect)
+		acid_effect.enhance_acid(super_acid = FALSE)
+		return
+
+	new /datum/effects/acid/(mob, projectile.firer)
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of neuro gas"

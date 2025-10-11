@@ -124,6 +124,7 @@ GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/cmd_admin_world_narrate, /*sends text to all players with no padding*/
 	/client/proc/cmd_admin_object_narrate,
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
+	/client/proc/screen_alert_menu, //graphical faction message, with a selection of portraits
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
 	/client/proc/cmd_admin_medals_panel, // Marine and Xeno medals editor panel
 	/client/proc/force_event,
@@ -356,6 +357,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	remove_verb(src, list(
 		GLOB.admin_verbs_default,
 		/client/proc/togglebuildmodeself,
+		/client/proc/screen_alert_menu,
 		GLOB.admin_verbs_admin,
 		GLOB.admin_verbs_ban,
 		GLOB.admin_verbs_minor_event,

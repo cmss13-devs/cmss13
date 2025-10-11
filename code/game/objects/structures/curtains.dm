@@ -30,6 +30,14 @@
 	qdel(src)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/curtain/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart with its tail!"),
+	SPAN_DANGER("We slice [src] apart with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	qdel(src)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/curtain/proc/toggle()
 	open = !open
 	if(!transparent)

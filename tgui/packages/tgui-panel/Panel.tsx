@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'tgui/backend';
 import { Button, Section, Stack } from 'tgui/components';
 import { Pane } from 'tgui/layouts';
@@ -38,42 +38,58 @@ export const Panel = (props) => {
     dispatch(rebuildChat());
   }, [honk]);
 
+  const [fixedWidth, setFixedWidth] = useState<number | false>(false);
+  useEffect(() => {
+    if (game.tvMode) {
+      Byond.winget('browser_output', 'size').then(
+        (size: { x: number; y: number }) => {
+          setFixedWidth(size.x);
+        },
+      );
+    }
+  }, [game.tvMode]);
+
   return (
-    <Pane theme={settings.theme}>
+    <Pane
+      theme={settings.theme}
+      width={fixedWidth ? `${fixedWidth}px` : undefined}
+    >
       <Stack fill vertical>
-        <Stack.Item>
-          <Section fitted>
-            <Stack mr={1} align="center">
-              <Stack.Item grow overflowX="auto">
-                <ChatTabs />
-              </Stack.Item>
-              <Stack.Item>
-                <PingIndicator />
-              </Stack.Item>
-              <Stack.Item>
-                <Button
-                  color="grey"
-                  selected={audio.visible}
-                  icon="music"
-                  tooltip="Music player"
-                  tooltipPosition="bottom-start"
-                  onClick={() => audio.toggle()}
-                />
-              </Stack.Item>
-              <Stack.Item>
-                <Button
-                  icon={settings.visible ? 'times' : 'cog'}
-                  selected={settings.visible}
-                  tooltip={
-                    settings.visible ? 'Close settings' : 'Open settings'
-                  }
-                  tooltipPosition="bottom-start"
-                  onClick={() => settings.toggle()}
-                />
-              </Stack.Item>
-            </Stack>
-          </Section>
-        </Stack.Item>
+        {!game.tvMode && (
+          <Stack.Item>
+            <Section fitted>
+              <Stack mr={1} align="center">
+                <Stack.Item grow overflowX="auto">
+                  <ChatTabs />
+                </Stack.Item>
+                <Stack.Item>
+                  <PingIndicator />
+                </Stack.Item>
+                <Stack.Item>
+                  <Button
+                    color="grey"
+                    selected={audio.visible}
+                    icon="music"
+                    tooltip="Music player"
+                    tooltipPosition="bottom-start"
+                    onClick={() => audio.toggle()}
+                  />
+                </Stack.Item>
+                <Stack.Item>
+                  <Button
+                    icon={settings.visible ? 'times' : 'cog'}
+                    selected={settings.visible}
+                    tooltip={
+                      settings.visible ? 'Close settings' : 'Open settings'
+                    }
+                    tooltipPosition="bottom-start"
+                    onClick={() => settings.toggle()}
+                  />
+                </Stack.Item>
+              </Stack>
+            </Section>
+          </Stack.Item>
+        )}
         {audio.visible && (
           <Stack.Item>
             <Section>

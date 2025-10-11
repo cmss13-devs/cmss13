@@ -4,7 +4,8 @@
  * @license MIT
  */
 
-import { connectionLost } from './actions';
+import { chatRenderer } from '../chat/renderer';
+import { connectionLost, tvMode } from './actions';
 import { connectionRestored } from './actions';
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   roundTime: null,
   roundRestartedAt: null,
   connectionLostAt: null,
+  tvMode: false,
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -33,6 +35,24 @@ export const gameReducer = (state = initialState, action) => {
     return {
       ...state,
       connectionLostAt: null,
+    };
+  }
+  if (type === tvMode.type) {
+    chatRenderer.alwaysStayAtBottom = true;
+
+    Byond.winget('outputwindow', 'size').then(
+      (size: { x: number; y: number }) => {
+        Byond.winset(
+          'outputwindow.legacy_output_selector',
+          'size',
+          `${size.x}x${size.y}`,
+        );
+      },
+    );
+
+    return {
+      ...state,
+      tvMode: true,
     };
   }
   return state;

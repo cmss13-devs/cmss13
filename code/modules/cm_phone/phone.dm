@@ -30,6 +30,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	/// The Phone_ID of the last person to call this telephone.
 	var/last_caller
 
+	var/can_be_renamed = FALSE
+
 	var/base_icon_state
 
 	var/timeout_timer_id
@@ -134,7 +136,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(!ishuman(usr))
 		return
 
-	var/mob/living/carbon/human/user = usr
+	var/mob/living/carbon/human/user = ui.user
 
 	switch(action)
 		if("call_phone")
@@ -143,6 +145,34 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 			SStgui.close_uis(src)
 		if("toggle_dnd")
 			toggle_dnd(user)
+		if("rename_phone")
+			var/new_name = reject_bad_text(params["new_name"] || "", 60)
+
+			if(new_name == phone_id)
+				return
+
+			var/list/phone_list = list()
+
+			phone_list = get_transmitters()
+
+			if(LAZYFIND(phone_list, new_name) > 0)
+				to_chat(user, SPAN_WARNING("This name is already assigned to the other phone line."))
+				return
+
+			if((!new_name || new_name == ""))
+				to_chat(user, SPAN_WARNING("This name is invalid."))
+				return
+
+			for(var/obj/structure/transmitter/phone in phone_list)
+				if(phone.last_caller == phone_id)
+					phone.last_caller = new_name
+
+			phone_id = new_name
+
+			ui.title = phone_id
+
+			SStgui.try_update_ui(user, src, ui)
+			return TRUE
 
 	update_icon()
 
@@ -151,6 +181,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	data["availability"] = do_not_disturb
 	data["last_caller"] = last_caller
+	data["current_name"] = phone_id
 
 	return data
 
@@ -158,6 +189,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	. = list()
 
 	.["available_transmitters"] = get_transmitters() - list(phone_id)
+	.["can_be_renamed"] = can_be_renamed
 	var/list/transmitters = list()
 	for(var/i in GLOB.transmitters)
 		var/obj/structure/transmitter/T = i

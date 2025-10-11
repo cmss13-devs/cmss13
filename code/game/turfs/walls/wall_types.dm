@@ -514,6 +514,15 @@
 	name = "wall"
 	turf_flags = TURF_HULL
 
+/turf/closed/wall/cult/temple
+	name = "temple wall"
+	desc = "A heavy wall of dark stone."
+	color = "#5B6266"
+
+/turf/closed/wall/cult/temple/update_icon()
+	. = ..()
+
+
 /turf/closed/wall/cult/make_girder(destroyed_girder)
 	return
 

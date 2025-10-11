@@ -46,19 +46,10 @@
 		. += current
 
 //more specialised stuff
-/proc/sanitize_gender(gender,neuter=0,plural=0, default="male")
+/proc/sanitize_gender(gender, default = MALE)
 	switch(gender)
-		if(MALE, FEMALE)return gender
-		if(NEUTER)
-			if(neuter)
-				return gender
-			else
-				return default
-		if(PLURAL)
-			if(plural)
-				return gender
-			else
-				return default
+		if(MALE, FEMALE, PLURAL)
+			return gender
 	return default
 
 /proc/sanitize_skin_color(skin_color, default = "Pale 2")

@@ -26,7 +26,7 @@
 	GLOB.living_mob_list -= src
 	cleanup_status_effects()
 	pipes_shown = null
-	observed_atom = null
+	QDEL_NULL(observed_atom)
 
 	. = ..()
 
@@ -413,13 +413,6 @@
 	if(!(living_mob.status_flags & CANPUSH))
 		return
 
-	..()
-
-/mob/living/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
-	var/turf/above = SSmapping.get_turf_above(thrower)
-	if(above && above.z == target.z)
-		to_chat(thrower, SPAN_WARNING("You can't throw someone that high!"))
-		return
 	..()
 
 /mob/living/launch_towards(datum/launch_metadata/LM, tracking = FALSE)

@@ -44,6 +44,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_bodypart_hidden = BODY_FLAG_CHEST
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROT
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
 	blood_overlay_type = "armor"
@@ -276,6 +277,7 @@
 	desc = "A well tinkered and crafted hybrid of Smart-Gunner mesh and M3 pattern plates. Robust, yet nimble, with room for all your pouches."
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUM
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	storage_slots = 4
 	light_range = 5 //slightly higher
 	specialty = "M4 pattern marine"
@@ -290,6 +292,7 @@
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	allowed = list(
@@ -320,6 +323,7 @@
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens. Useful for letting your men know who is in charge."
 	icon_state = "warden"
 	uniform_restricted = list(/obj/item/clothing/under/marine/warden)
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	specialty = "M3 pattern warden MP"
 
 /obj/item/clothing/suit/storage/marine/MP/WO
@@ -327,6 +331,7 @@
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief MPs. Useful for letting your men know who is in charge."
 	icon_state = "warrant_officer"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	specialty = "M3 pattern chief MP"
 	black_market_value = 30
 
@@ -620,6 +625,7 @@
 	specialty = "\improper M3-EOD pattern"
 	icon_state = "H1"
 	armor_variation = 6
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
@@ -640,10 +646,12 @@
 /obj/item/clothing/suit/storage/marine/heavy/padless
 	icon_state = "H2"
 	armor_variation = 0
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 
 /obj/item/clothing/suit/storage/marine/heavy/padless_lines
 	icon_state = "H3"
 	armor_variation = 0
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 
 /obj/item/clothing/suit/storage/marine/heavy/carrier
 	icon_state = "H4"
@@ -676,6 +684,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	specialty = "B18 defensive"
 	unacidable = TRUE
@@ -719,6 +728,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	specialty = "M3-G4 grenadier"
 	unacidable = TRUE
@@ -729,6 +739,7 @@
 	desc = "A custom set of M3 armor designed for users of long-ranged explosive weaponry."
 	icon_state = "demolitionist"
 	armor_bomb = CLOTHING_ARMOR_HIGH
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	specialty = "M3-T light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
@@ -739,6 +750,7 @@
 	desc = "A custom set of M3 armor designed for USCM Scouts."
 	icon_state = "scout_armor"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	specialty = "M3-S light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE

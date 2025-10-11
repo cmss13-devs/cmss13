@@ -280,6 +280,20 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	damage_falloff_mod = 0.1
 
+/obj/item/attachable/suppressor/sleek
+	name = "compact suppressor"
+	desc = "A lightweight, low-profile suppressor designed specifically for SMGs and sidearms. It dampens sound and muzzle flash while marginally improving stability and accuracy, though it slightly reduces projectile velocity and terminal damage."
+	icon_state = "suppressor_sleek"
+	slot = "muzzle"
+	pixel_shift_y = 15
+	attach_icon = "suppressor_sleek_a"
+	hud_offset_mod = -3
+	gun_traits = list(TRAIT_GUN_SILENCED_ALT)
+
+/obj/item/attachable/suppressor/sleek/New()
+	..()
+	damage_falloff_mod = 0.1
+
 /obj/item/attachable/suppressor/nsg
 	name = "\improper BL11 firearm muffler"
 	desc = "Threaded steel barrel attachment; slows the escape of propellant gasses, resulting in muffled weapon fire."
@@ -507,6 +521,51 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
 	velocity_mod = AMMO_SPEED_TIER_1
 
+/obj/item/attachable/extended_barrel/vented
+	name = "AB-RVX extended compensator"
+	desc = "A precision-engineered vented barrel extension used by various UA forces. Greatly improves accuracy, muzzle control, and projectile velocity, but reduces terminal damage due to pressure venting."
+	desc_lore = "Designed by Armat Battlefield Systems under contract for the United Americas Colonial Marine Corps, the AB-RVX compensator is a general-purpose muzzle device intended primarily for rifles such as the M41A, though it has also been adapted for smaller-caliber weapons like the M39 submachine gun and the M10 auto pistol. Its extended ported design effectively reduces recoil and muzzle rise, enhancing shot stability and control during sustained fire. While the aggressive gas redirection slightly decreases impact force, the compensator improves overall accuracy. Due to its specialized application and manufacturing complexity."
+	slot = "muzzle"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
+	icon_state = "ebarrel_vented"
+	attach_icon = "ebarrel_vented_a"
+	pixel_shift_y = 15
+	hud_offset_mod = -3
+	wield_delay_mod = WIELD_DELAY_FAST
+
+/obj/item/attachable/extended_barrel/vented/Initialize(mapload, ...)
+	. = ..()
+	select_gamemode_skin(type)
+
+/obj/item/attachable/extended_barrel/vented/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	var/new_attach_icon
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
+			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+			. = TRUE
+		if("desert")
+			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+			. = TRUE
+		if("classic")
+			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			. = TRUE
+	return .
+
+/obj/item/attachable/extended_barrel/vented/New()
+	..()
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_6
+	damage_mod = -BULLET_DAMAGE_MULT_TIER_2
+	recoil_mod = -RECOIL_AMOUNT_TIER_5
+
+	damage_falloff_mod = -0.1
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_6
+	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
+	velocity_mod = AMMO_SPEED_TIER_1
+
 /obj/item/attachable/heavy_barrel
 	name = "barrel charger"
 	desc = "A hyper threaded barrel extender that fits to the muzzle of most firearms. Increases bullet speed and velocity.\nGreatly increases projectile damage at the cost of accuracy and firing speed."
@@ -550,6 +609,93 @@ Defined in conflicts.dm of the #defines folder.
 	damage_falloff_mod = 0.1
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
 	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
+
+/obj/item/attachable/compensator/m10
+	name = "M10 extended recoil compensator"
+	desc = "A heavy, overbuilt compensator and barrel extension for the M10 Auto Pistol. Greatly improves recoil control during automatic fire, at the cost of bulk and handling. Definitely compensating for something, but brutally effective."
+	desc_lore = "A limited-production muzzle device developed by Armat Battlefield Systems. The compensator channels muzzle gases to counteract recoil and slightly increase bullet velocity through focused pressure, marginally improving ballistic performance."
+	slot = "muzzle"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
+	icon_state = "m10_overcomp"
+	attach_icon = "m10_overcomp_a"
+	pixel_shift_x = 17
+	hud_offset_mod = -3
+
+/obj/item/attachable/compensator/m10/New()
+	..()
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
+	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
+	damage_mod = BULLET_DAMAGE_MULT_TIER_1
+
+/obj/item/attachable/compensator/m10/Initialize(mapload, ...)
+	. = ..()
+	select_gamemode_skin(type)
+
+/obj/item/attachable/compensator/m10/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	var/new_attach_icon
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
+			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+			. = TRUE
+		if("desert")
+			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+			. = TRUE
+		if("classic")
+			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			. = TRUE
+	return .
+
+/obj/item/attachable/compensator/m10/spiked
+	name = "M10 extended spiked recoil compensator"
+	desc = "A brutally heavy, over-engineered compensator and barrel extension for the M10 Auto Pistol, tipped with a hardened spiked cap. Greatly improves recoil control during automatic fire—and turns the pistol into a nasty bludgeon in close quarters. Definitely compensating for something, but brutally effective."
+	desc_lore = "A rare prototype developed by Armat Battlefield Systems for a short-lived M10 close-quarters combat program. The compensator channels muzzle gases to counteract recoil and slightly increase bullet velocity through focused pressure, marginally increasing projectile force. The hardened spike cap provides a secondary striking option in confined engagements. Only a limited run was manufactured before the project was abandoned, making surviving units a rare and sought-after upgrade."
+	slot = "muzzle"
+	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
+	icon_state = "m10_overcomp_spike"
+	attach_icon = "m10_overcomp_spike_a"
+	pixel_shift_x = 17
+	hud_offset_mod = -3
+	melee_mod = 20
+	sharp = IS_SHARP_ITEM_SIMPLE
+	force = MELEE_FORCE_STRONG
+	throwforce = MELEE_FORCE_WEAK
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 6
+	hitsound = 'sound/weapons/spike_thunk.ogg'
+	attack_verb = list("bashed", "bludgeoned", "cracked", "smashed", "crushed", "pummeled", "spiked", "rammed")
+	attack_speed = 9
+
+/obj/item/attachable/compensator/m10/spiked/Attach(obj/item/weapon/gun/attaching_gun)
+	if(!istype(attaching_gun, /obj/item/weapon/gun))
+		return ..()
+	attaching_gun.hitsound = 'sound/weapons/spike_thunk.ogg'
+	melee_mod = 20
+	sharp = IS_SHARP_ITEM_SIMPLE
+	force = MELEE_FORCE_STRONG
+	hitsound = 'sound/weapons/spike_thunk.ogg'
+	attack_verb = list("bashed", "bludgeoned", "cracked", "smashed", "crushed", "pummeled", "spiked", "rammed")
+	attack_speed = 9
+	return ..()
+
+/obj/item/attachable/compensator/m10/spiked/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
+	if(!istype(detaching_gun, /obj/item/weapon/gun))
+		return ..()
+	detaching_gun.hitsound = initial(detaching_gun.hitsound)
+	return ..()
+
+/obj/item/attachable/compensator/m10/spiked/New()
+	..()
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
+	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
+	damage_mod = BULLET_DAMAGE_MULT_TIER_1
 
 /obj/item/attachable/shotgun_choke
 	name = "shotgun choke"
@@ -681,6 +827,21 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+
+/obj/item/attachable/reddot/small
+	name = "S5-Micro dot sight"
+	desc = "A lightweight, low-profile dot optic designed for rapid target acquisition with minimal weight penalty. Optimized for submachine guns and sidearms, it's ideal for close-quarters combat where speed and agility matter most."
+	desc_lore = "Designated AN/PVQ-64(M), the Micro variant of the S5 collimator sight strips the platform down to essentials. With reduced bulk and weight, it's favored by scouts and boarding teams. Despite the mil-spec designation, it's little more than a civilian reflex sight rebranded with a price hike."
+	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
+	icon_state = "reddot_small"
+	attach_icon = "reddot_small_a"
+	slot = "rail"
+
+/obj/item/attachable/reddot/small/New()
+	..()
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
+	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
 
 /obj/item/attachable/reflex
 	name = "S6 reflex sight"
@@ -1998,6 +2159,124 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_4
 
+/obj/item/attachable/stock/pistol/collapsible
+	name = "\improper M10 folding stock"
+	desc = "A collapsible stock custom-fitted for the M10 Auto Pistol. Enhances recoil control when deployed, while maintaining compactness for close-quarters use."
+	slot = "stock"
+	icon_state = "m10_folding"
+	attach_icon = "m10_folding_a"
+	pixel_shift_x = 40
+	pixel_shift_y = 14
+	hud_offset_mod = 3
+	collapsible = TRUE
+	stock_activated = FALSE
+	collapse_delay = 0.5 SECONDS
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = ATTACH_REMOVABLE | ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+
+	var/base_icon = "m10_folding"
+
+/obj/item/attachable/stock/pistol/collapsible/New()
+	..()
+	select_gamemode_skin(type)
+	//it makes stuff much better when two-handed
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	wield_delay_mod = WIELD_DELAY_FAST
+	delay_mod = 0
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
+	//it makes stuff much worse when one handed
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
+	//but at the same time you are slowish when 2 handed
+	aim_speed_mod = CONFIG_GET(number/slowdown_low)
+
+/obj/item/attachable/stock/pistol/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
+	if (stock_activated)
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_3
+		recoil_mod = -RECOIL_AMOUNT_TIER_4
+		scatter_mod = -SCATTER_AMOUNT_TIER_8
+		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
+		size_mod = 1
+		aim_speed_mod = CONFIG_GET(number/slowdown_low)
+		wield_delay_mod = WIELD_DELAY_FAST
+		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
+		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+	else
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
+		movement_onehanded_acc_penalty_mod = 0
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
+		scatter_unwielded_mod = 0
+		aim_speed_mod = 0
+		hud_offset_mod = 3
+		wield_delay_mod = WIELD_DELAY_NONE
+
+	select_gamemode_skin(type)
+	gun.recalculate_attachment_bonuses()
+	gun.update_overlays(src, "stock")
+
+/obj/item/attachable/stock/pistol/collapsible/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	var/prefix = ""
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("classic") prefix = "c_"
+		if("desert") prefix = "d_"
+		if("snow") prefix = "s_"
+		if("urban") prefix = "u_"
+
+	var/suffix = stock_activated ? "_on" : ""
+	icon_state = "[prefix][base_icon][suffix]"
+	attach_icon = "[prefix][base_icon]_a[suffix]"
+
+/obj/item/attachable/stock/m10_solid
+	name = "\improper M10 solid stock"
+	desc = "A fixed polymer stock designed exclusively for the M10 Auto Pistol, improving stability during sustained fire."
+	icon_state = "m10_stock"
+	attach_icon = "m10_stock_a"
+	wield_delay_mod = WIELD_DELAY_FAST
+	pixel_shift_x = 40
+	pixel_shift_y = 14
+	hud_offset_mod = 3
+	melee_mod = 10
+
+/obj/item/attachable/stock/m10_solid/Initialize(mapload, ...)
+	. = ..()
+	select_gamemode_skin(type)
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_7
+	recoil_mod = -RECOIL_AMOUNT_TIER_3
+	scatter_mod = -SCATTER_AMOUNT_TIER_6
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_5
+	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_6
+	aim_speed_mod = CONFIG_GET(number/slowdown_low)
+	delay_mod = 0
+
+/obj/item/attachable/stock/m10_solid/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..() // We are forcing attach_icon skin
+	var/new_attach_icon
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
+			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+			. = TRUE
+		if("desert")
+			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+			. = TRUE
+		if("classic")
+			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			. = TRUE
+	return .
+
 /obj/item/attachable/stock/xm88
 	name = "\improper XM88 padded stock"
 	desc = "A specially made compound polymer stock reinforced with aluminum rods and thick rubber padding to shield the user from recoil. Fitted specifically for the XM88 Heavy Rifle."
@@ -2481,7 +2760,6 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = 5
 	collapsible = TRUE
 	var/base_icon = "smgstockc"
-
 
 /obj/item/attachable/stock/smg/collapsible/New()
 	..()
@@ -3527,6 +3805,24 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_9
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 
+/obj/item/attachable/lasersight/micro
+	name = "micro laser module"
+	desc = "A compact, high-precision laser sight engineered exclusively for the M10 Auto Pistol. Offers exceptional accuracy gains by interfacing directly with the weapon's internal targeting systems."
+	desc_lore = "An advanced derivative of the AN/PEQ-42 line, the '42M' variant was precision-tuned by Kessler Optics for use with the M10 Auto Pistol. Its microcontroller syncs with the pistol's fire-control unit for superior point-of-aim fidelity and scatter compensation. Rare, expensive, and typically reserved for elite units or covert applications."
+	icon = 'icons/obj/items/weapons/guns/attachments/under.dmi'
+	icon_state = "lasersight_micro"
+	attach_icon = "lasersight_micro_a"
+	slot = "under"
+	pixel_shift_x = 17
+	pixel_shift_y = 17
+
+/obj/item/attachable/lasersight/micro/New()
+	..()
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	scatter_mod = -SCATTER_AMOUNT_TIER_10
+	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_9
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 
 /obj/item/attachable/bipod
 	name = "bipod"

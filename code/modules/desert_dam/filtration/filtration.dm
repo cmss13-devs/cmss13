@@ -51,51 +51,68 @@ Each var depends on others
 	if(east_filtration)
 
 */
-
-/obj/effect/blocker/toxic_water
+/obj/effect/blocker/water
 	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
 	unacidable = TRUE
-	layer = ABOVE_FLY_LAYER //to make it visible in the map editor
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	icon = 'icons/old_stuff/mark.dmi'
 
-	var/dispersing = 0
-	var/toxic = 1
-	var/disperse_group
+	icon = 'icons/turf/floors/desert_water.dmi'
+	icon_state = "seadeep"
+
+
+	alpha = 0
+	layer = TURF_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+	var/flooded_alpha = 180
+	var/dispersing = FALSE
+	var/toxic = FALSE
+	var/disperse_group = 1
 	var/spread_delay = 5
+	var/list/water_sounds = list('sound/effects/slosh.ogg')
+
+
+
+
+/obj/effect/blocker/water/toxic
+	icon = 'icons/old_stuff/mark.dmi'
+	toxic = TRUE
+	disperse_group
+	spread_delay = 5
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	layer = ABOVE_FLY_LAYER //to make it visible in the map editor
 
 	icon_state = "spawn_shuttle"
 
-/obj/effect/blocker/toxic_water/Group_1
+/obj/effect/blocker/water/toxic/Group_1
 	disperse_group = 1
 	icon_state = "spawn_event"
 
-/obj/effect/blocker/toxic_water/Group_1/delay
+/obj/effect/blocker/water/toxic/Group_1/delay
 	spread_delay = 100
 	icon_state = "spawn_shuttle_dock"
 
-/obj/effect/blocker/toxic_water/Group_2
+/obj/effect/blocker/water/toxic/Group_2
 	disperse_group = 2
 	icon_state = "spawn_goal"
 
-/obj/effect/blocker/toxic_water/Group_2/delay
+/obj/effect/blocker/water/toxic/Group_2/delay
 	spread_delay = 100
 	icon_state = "spawn_shuttle_dock"
 
 
-/obj/effect/blocker/toxic_water/Initialize(mapload, ...)
+/obj/effect/blocker/water/Initialize(mapload, ...)
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/effect/blocker/toxic_water/LateInitialize()
+/obj/effect/blocker/water/toxic/LateInitialize()
 	. = ..()
 	update_turf()
 	icon_state = null
 
 
-/obj/effect/blocker/toxic_water/proc/update_turf()
+/obj/effect/blocker/water/proc/update_turf()
 	if(istype(src.loc, /turf/open/gm/river/desert))
 		var/turf/open/gm/river/desert/R = src.loc
 		R.toxic = src.toxic
@@ -113,7 +130,7 @@ Each var depends on others
 
 
 
-/obj/effect/blocker/toxic_water/Crossed(atom/A)
+/obj/effect/blocker/water/Crossed(atom/A)
 	if(toxic == 0)
 		return
 
@@ -138,7 +155,6 @@ Each var depends on others
 		if(HAS_TRAIT(M, TRAIT_HAULED))
 			return
 
-		cause_damage(M)
 		START_PROCESSING(SSobj, src)
 		return
 	else if(isVehicleMultitile(A))
@@ -151,7 +167,7 @@ Each var depends on others
 		return
 
 
-/obj/effect/blocker/toxic_water/process()
+/obj/effect/blocker/water/process()
 
 	if(!toxic)
 		STOP_PROCESSING(SSobj, src)
@@ -167,7 +183,6 @@ Each var depends on others
 	var/targets_present = 0
 	for(var/mob/living/carbon/M in range(0, src))
 		targets_present++
-		cause_damage(M)
 	for(var/obj/vehicle/multitile/V in range(0, src))
 		if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 			targets_present++
@@ -206,8 +221,8 @@ Each var depends on others
 	playsound(target, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 
-/obj/effect/blocker/toxic_water/proc/disperse_spread(from_dir = 0)
-	if(dispersing || !toxic)
+/obj/effect/blocker/water/proc/disperse_spread(from_dir = 0, drain = FALSE)
+	if((dispersing && !drain) || (!dispersing && drain))
 		return
 
 	for(var/direction in GLOB.alldirs)
@@ -221,22 +236,57 @@ Each var depends on others
 			else
 				effective_spread_delay = spread_delay * 1.414 //diagonal spreading takes longer
 
-		for(var/obj/effect/blocker/toxic_water/W in get_step(src,direction) )
+		for(var/obj/effect/blocker/water/W in get_step(src,direction) )
 			if(W.disperse_group == src.disperse_group)
 				spawn(effective_spread_delay)
-					W.disperse_spread(turn(direction,180))
+					W.disperse_spread(turn(direction,180), drain)
+	if(drain)
+		drain()
+	else
+		disperse(from_dir)
 
-	disperse()
+/obj/effect/blocker/water/proc/drain()
+	dispersing = 0
+	animate(src, alpha = initial(alpha), time = 60)
+	var/turf/location = loc
+	location.is_weedable = initial(location.is_weedable)
 
-/obj/effect/blocker/toxic_water/proc/disperse()
+
+/obj/effect/blocker/water/proc/disperse(from_dir)
 	dispersing = 1
+	if(prob(30))
+		var/sound = pick(water_sounds)
+		playsound(loc, sound, 10, 1)
+	for(var/obj/effect/alien/weeds/weeds_to_clean in loc)
+		qdel(weeds_to_clean)
+
+	for(var/obj/effect/alien/resin/resin in loc)
+		qdel(resin)
+
+	for(var/obj/flamer_fire/fire in loc)
+		qdel(fire)
+
+	for(var/obj/item/item in loc)
+		if(item.anchored)
+			continue
+		if(prob(70))
+			item.throw_atom((get_step(loc,turn(from_dir,180))),1)
+
+	animate(src, alpha= flooded_alpha, easing = BACK_EASING | EASE_OUT , time= 40)
+	update_icon()
+	var/turf/location = loc
+	location.is_weedable = NOT_WEEDABLE
+
+
+/obj/effect/blocker/water/toxic/disperse()
+	.=..()
 	toxic = -1
 
 	update_turf()
 
 	addtimer(CALLBACK(src, PROC_REF(do_disperse)), 1 SECONDS)
 
-/obj/effect/blocker/toxic_water/proc/do_disperse()
+/obj/effect/blocker/water/toxic/proc/do_disperse()
 	toxic = 0
 	update_turf()
 	dispersing = 0
@@ -249,17 +299,20 @@ Each var depends on others
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/id = null
 
+/obj/structure/machinery/dispersal_initiator/floodgate
+	id = "floodgate"
+
 /obj/structure/machinery/dispersal_initiator/New()
 	..()
 	icon_state = null
 
-/obj/structure/machinery/dispersal_initiator/proc/initiate()
+/obj/structure/machinery/dispersal_initiator/proc/initiate(drain = FALSE)
 	// Ported over ambience->ambience_exterior, was broken. Enable if you actually want it
 	//var/area/A = get_area(src)
 	//A.ambience_exterior = 'sound/ambience/ambiatm1.ogg'
 	sleep(30)
-	for(var/obj/effect/blocker/toxic_water/W in get_turf(src))
-		W.disperse_spread()
+	for(var/obj/effect/blocker/water/W in get_turf(src))
+		W.disperse_spread(drain = drain)
 
 /obj/structure/machinery/dispersal_initiator/ex_act()
 	return
@@ -268,7 +321,7 @@ Each var depends on others
 /obj/structure/machinery/filtration_button
 	name = "\improper Filtration Activation"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
-	icon_state = "launcherbtt"
+	icon_state = "big_red_button_wallv"
 	desc = "Activates the filtration mechanism."
 	var/id = null
 	var/active = 0
@@ -278,6 +331,21 @@ Each var depends on others
 	active_power_usage = 4
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/machinery/filtration_button/floodgate
+	id = "floodgate"
+
+/obj/structure/machinery/filtration_button/floodgate/power_change(area/master_area)
+	. = ..()
+	if(!inoperable())
+		return
+
+	drain()
+
+/obj/structure/machinery/filtration_button/floodgate/proc/drain()
+	for(var/obj/structure/machinery/dispersal_initiator/M in GLOB.machines)
+		if (M.id == src.id)
+			M.initiate(drain = TRUE)
 
 /obj/structure/machinery/filtration_button/attack_hand(mob/user as mob)
 
@@ -289,7 +357,7 @@ Each var depends on others
 	use_power(5)
 
 	active = 1
-	icon_state = "launcheract"
+	icon_state = "big_red_button_wallv1"
 
 	// Ported over ambience->ambience_exterior, was broken. Enable if you actually want it
 	//var/area/A = get_area(src)
@@ -299,9 +367,12 @@ Each var depends on others
 		if (M.id == src.id)
 			M.initiate()
 
+	marine_announcement("Alert: Tyrargo sewer release valve triggered: Imminent flooding of sewer lines.")
+	xeno_announcement("The hosts have triggered the release of a flood of water in to the sewers underneath this battleground. Be wary of the loss our ability to weed the sewer tunnels.")
+
 	sleep(50)
 
-	icon_state = "launcherbtt"
+	icon_state = "big_red_button_wallv-p"
 	active = 0
 
 	return
@@ -310,11 +381,11 @@ Each var depends on others
 	return
 
 /*
-/obj/effect/blocker/toxic_water/connector
+/obj/effect/blocker/water/toxic/connector
 	icon_state = null
 
 //something to stop this stuff from killing people
 
-/obj/effect/blocker/toxic_water/connector/disperse()
+/obj/effect/blocker/water/toxic/connector/disperse()
 	return
 */

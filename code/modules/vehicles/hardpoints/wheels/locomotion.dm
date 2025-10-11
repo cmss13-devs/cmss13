@@ -64,7 +64,7 @@
 		if(acid.cause_data.cause_name == "resin acid trap")
 			take_damage = floor(take_damage / 3)
 
-	else if(istype(A, /obj/effect/blocker/toxic_water))
+	else if(istype(A, /obj/effect/blocker/water/toxic))
 		//multitile vehicles are, well, multitile and will be receiving damage for each tile, so damage is low per tile.
 		take_damage = 10
 

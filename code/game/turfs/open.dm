@@ -99,6 +99,10 @@
 	if(my_area.lighting_effect)
 		overlays += my_area.lighting_effect
 
+	var/turf/above = SSmapping.get_turf_above(src)
+	if(above && istype(above, /turf/open_space)  && SSmapping.level_has_any_trait(z,list(ZTRAIT_GROUND)) )
+		overlays += GLOB.look_up_effect
+
 /turf/open/proc/scorch(heat_level)
 	// All scorched icons should be in the dmi that their unscorched bases are
 	// "name_scorched#" where # is the scorchedness level 0 - 1 - 2 - 3

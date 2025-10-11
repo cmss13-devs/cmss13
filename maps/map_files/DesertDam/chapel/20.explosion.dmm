@@ -1,0 +1,630 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"ab" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"ac" = (
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = 12;
+	name = "holy water";
+	desc = "A basin filled with water."
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"ad" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/structure/noticeboard{
+	pixel_y = 33;
+	icon_state = "notices_4";
+	desc = null;
+	name = "sticky notes"
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"aQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet10_8/west,
+/area/desert_dam/building/church)
+"eY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/plating/platingdmg3,
+/area/desert_dam/building/church)
+"fO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet13_5/west,
+/area/desert_dam/building/church)
+"gX" = (
+/obj/structure/machinery/light,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"he" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"hB" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/chapel/west,
+/area/desert_dam/building/church)
+"hF" = (
+/obj/structure/machinery/light,
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"ii" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"jD" = (
+/obj/item/shard,
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 1
+	},
+/turf/open/floor/chapel/north,
+/area/desert_dam/building/church)
+"jY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3,
+/area/desert_dam/building/church)
+"mr" = (
+/obj/structure/flora/grass/desert/heavygrass_3,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"nb" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/platingdmg3,
+/area/desert_dam/building/church)
+"ny" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist,
+/turf/open/floor/carpet14_10/west,
+/area/desert_dam/building/church)
+"nz" = (
+/turf/open/floor/carpet13_5/west,
+/area/desert_dam/building/church)
+"oa" = (
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"oe" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"op" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp/candelabra,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"oO" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating/platingdmg1,
+/area/desert_dam/building/church)
+"po" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	name = "\improper Chapel"
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"pQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet6_2/west,
+/area/desert_dam/building/church)
+"qB" = (
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"ru" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"ry" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/chapel/north,
+/area/desert_dam/building/church)
+"sa" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/desert_dam/building/church)
+"sJ" = (
+/obj/structure/closet/wardrobe/chaplain_black,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"sS" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"uq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/desert_dam/building/church)
+"uQ" = (
+/obj/structure/stairs{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"vc" = (
+/obj/effect/landmark/good_item,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"vE" = (
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 1
+	},
+/turf/open/floor/chapel/north,
+/area/desert_dam/building/church)
+"wb" = (
+/obj/structure/bed/sofa/pews/flipped,
+/turf/open/floor/chapel,
+/area/desert_dam/building/church)
+"wI" = (
+/obj/structure/bed/sofa/pews/flipped,
+/turf/open/floor/chapel/west,
+/area/desert_dam/building/church)
+"xb" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 1
+	},
+/turf/open/floor/chapel/east,
+/area/desert_dam/building/church)
+"xr" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/plating/platingdmg1,
+/area/desert_dam/building/church)
+"xu" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"xO" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"Ai" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/candle,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"BW" = (
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 1
+	},
+/turf/open/floor/plating/platingdmg1,
+/area/desert_dam/building/church)
+"Ca" = (
+/obj/structure/window_frame/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/church)
+"Dc" = (
+/obj/structure/flora/bush/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"DF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/sofa/pews/flipped,
+/turf/open/floor/chapel,
+/area/desert_dam/building/church)
+"DN" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/bible,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"FU" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"GS" = (
+/obj/structure/flora/grass/desert/lightgrass_9,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"Hl" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/trash/candle,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"Lh" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/church)
+"Lx" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/plating,
+/area/desert_dam/building/church)
+"Ly" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/plating/platingdmg3/west,
+/area/desert_dam/building/church)
+"LD" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/plating/platingdmg3,
+/area/desert_dam/building/church)
+"LM" = (
+/turf/closed/wall,
+/area/desert_dam/building/church)
+"Mc" = (
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 1
+	},
+/turf/open/floor/chapel/east,
+/area/desert_dam/building/church)
+"Mm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/platingdmg1,
+/area/desert_dam/building/church)
+"MU" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"Ny" = (
+/obj/item/shard,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"Ox" = (
+/obj/structure/surface/rack,
+/obj/item/storage/fancy/candle_box,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"ON" = (
+/turf/open/floor/carpet9_4/west,
+/area/desert_dam/building/church)
+"Pm" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/plating/platingdmg1,
+/area/desert_dam/building/church)
+"PS" = (
+/obj/effect/spawner/gibspawner/human,
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/desert_dam/building/church)
+"QU" = (
+/obj/structure/flora/bush/desert/cactus{
+	icon_state = "cactus_8"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"Rw" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/building/church)
+"SX" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/plating/platingdmg3,
+/area/desert_dam/building/church)
+"Th" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"Tw" = (
+/obj/structure/machinery/light,
+/obj/structure/bed/sofa/pews/flipped,
+/turf/open/floor/chapel,
+/area/desert_dam/building/church)
+"VH" = (
+/obj/item/explosive/grenade/high_explosive/m15,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/platingdmg3,
+/area/desert_dam/building/church)
+"Xr" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Backroom"
+	},
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"ZA" = (
+/turf/open/floor/plating/platingdmg1,
+/area/desert_dam/building/church)
+"ZK" = (
+/turf/open/floor/carpet5_1/west,
+/area/desert_dam/building/church)
+"ZX" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/platingdmg3/west,
+/area/desert_dam/building/church)
+
+(1,1,1) = {"
+mr
+Th
+LM
+LM
+oa
+po
+LM
+LM
+Th
+Th
+"}
+(2,1,1) = {"
+GS
+xu
+LM
+ab
+oa
+ii
+hF
+LM
+Th
+QU
+"}
+(3,1,1) = {"
+oe
+Th
+LM
+ad
+ii
+oa
+ac
+LM
+Th
+Th
+"}
+(4,1,1) = {"
+Th
+LM
+LM
+LM
+oa
+po
+LM
+LM
+LM
+Th
+"}
+(5,1,1) = {"
+Th
+Lh
+oa
+he
+ii
+oa
+oa
+oa
+Lh
+Th
+"}
+(6,1,1) = {"
+Th
+Lh
+vE
+wI
+pQ
+ZK
+vE
+wI
+Lh
+Th
+"}
+(7,1,1) = {"
+Th
+LM
+xb
+wb
+Pm
+nz
+Mc
+Tw
+LM
+Th
+"}
+(8,1,1) = {"
+Ny
+Rw
+vE
+wI
+eY
+oO
+vE
+wI
+Lh
+Th
+"}
+(9,1,1) = {"
+Ny
+Ca
+ZA
+ZX
+uq
+Ly
+Mc
+DF
+Lh
+Th
+"}
+(10,1,1) = {"
+Th
+LM
+ry
+SX
+VH
+jY
+LD
+hB
+LM
+Th
+"}
+(11,1,1) = {"
+Ny
+Rw
+nb
+Lx
+PS
+xr
+Mc
+wb
+Lh
+Th
+"}
+(12,1,1) = {"
+Th
+Lh
+jD
+wI
+sa
+Mm
+vE
+wI
+Lh
+Th
+"}
+(13,1,1) = {"
+LM
+LM
+Mc
+wb
+ny
+fO
+BW
+wb
+LM
+LM
+"}
+(14,1,1) = {"
+Lh
+oa
+ii
+oa
+aQ
+ON
+oa
+oa
+oa
+Lh
+"}
+(15,1,1) = {"
+Lh
+ru
+oa
+oa
+oa
+sS
+oa
+ii
+oa
+Lh
+"}
+(16,1,1) = {"
+Lh
+oa
+uQ
+Hl
+aa
+aa
+Ai
+uQ
+oa
+Lh
+"}
+(17,1,1) = {"
+LM
+LM
+qB
+qB
+FU
+qB
+qB
+qB
+LM
+LM
+"}
+(18,1,1) = {"
+Th
+Lh
+qB
+MU
+qB
+qB
+MU
+qB
+Lh
+Th
+"}
+(19,1,1) = {"
+Th
+LM
+LM
+LM
+LM
+Xr
+LM
+LM
+LM
+Th
+"}
+(20,1,1) = {"
+Th
+Th
+LM
+xO
+qB
+qB
+op
+LM
+Th
+Th
+"}
+(21,1,1) = {"
+Th
+Th
+LM
+DN
+qB
+qB
+gX
+LM
+Th
+Th
+"}
+(22,1,1) = {"
+Dc
+Th
+LM
+qB
+vc
+sJ
+Ox
+LM
+Th
+Th
+"}
+(23,1,1) = {"
+Th
+Th
+LM
+LM
+LM
+LM
+LM
+LM
+Th
+Th
+"}

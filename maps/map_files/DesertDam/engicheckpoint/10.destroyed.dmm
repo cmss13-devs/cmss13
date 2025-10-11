@@ -1,0 +1,1253 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/art{
+	pixel_y = 32
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ab" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp,
+/obj/structure/sign/poster/pinup{
+	pixel_y = 32
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ac" = (
+/obj/structure/machinery/light,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ad" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ae" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"af" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ag" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ah" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"aq" = (
+/turf/closed/wall,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"by" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"ch" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"cp" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	id = "dam_stormlock_east";
+	name = "\improper Storm Lock";
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"cE" = (
+/turf/open/desert/rock/deep/transition/southwest,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"cK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"da" = (
+/obj/item/stack/sheet/metal,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"dz" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"eh" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"et" = (
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ey" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"fk" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"gQ" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/reagent_container/food/snacks/wy_chips/pepper{
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/snacks/wy_chips/pepper{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"hE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ij" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"iy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"iK" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"jg" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"jp" = (
+/turf/open/desert/rock,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"jq" = (
+/obj/structure/closet/cabinet,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"jt" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"jw" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Dormitory"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"jA" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 10
+	},
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"kf" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"kh" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/item/stack/rods,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"mc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"mw" = (
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"nj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"nz" = (
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"nK" = (
+/turf/open/asphalt/cement/cement14,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"nO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ou" = (
+/obj/structure/bed/chair,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"oA" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"oC" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/weapon/gun/flamer/survivor,
+/turf/open/asphalt/cement/cement3,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"oW" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement9,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"pl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = -8
+	},
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	pixel_y = 32;
+	layer = 3.6;
+	pixel_x = -4
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"pG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"pV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"qc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"qd" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"qf" = (
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"qr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"qY" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/tool/pickaxe,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"rs" = (
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"sg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"sl" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"sR" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/stack/sheet/wood{
+	amount = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"sW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ts" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"tK" = (
+/turf/open/desert/rock/deep/transition,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"tL" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ur" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/cable_coil,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"uE" = (
+/obj/structure/machinery/microwave,
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"vt" = (
+/obj/structure/bed,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/bedsheet/brown,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"vP" = (
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"wF" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"wK" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"xQ" = (
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"yb" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"yw" = (
+/turf/open/desert/rock/deep/transition/north,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"yI" = (
+/obj/item/stack/rods,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"zn" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement15,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"zB" = (
+/turf/open/desert/rock/deep,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"zV" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/item/ammo_casing,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"zW" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/wy_chips_pepper,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"zX" = (
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"AT" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"AZ" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"Bu" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/corsat/spiralplate,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Bv" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"BQ" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/sand_overlay/sand2,
+/obj/item/tool/weldingtool,
+/turf/open/asphalt/cement/cement9,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"DH" = (
+/obj/structure/closet/cabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Ep" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/desert/rock/deep/transition/north,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"EA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/item/stack/sheet/wood,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"EH" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/spawner/random/pills/midchance,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"EY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Gc" = (
+/obj/structure/surface/table,
+/obj/item/tool/pickaxe/drill,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Gw" = (
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"Gz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"GA" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 9
+	},
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"GI" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"Ha" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Hm" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"Hr" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"Hv" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"HY" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/structure/machinery/sentry_holder/colony{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/structure/machinery/light,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Ik" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"IK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"Jw" = (
+/obj/structure/surface/table,
+/obj/item/stack/medical/bruise_pack,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"JL" = (
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"JM" = (
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"JW" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Kd" = (
+/turf/open/desert/rock/deep,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Kg" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Dormitory"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Ky" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/shotgun/double,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"KE" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"KI" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = -8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 28
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"LF" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt/cement/cement14,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"LJ" = (
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"LP" = (
+/turf/open/desert/rock/deep/transition,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"LT" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"Md" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"MK" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"MN" = (
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"MP" = (
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"MZ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Nf" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Nh" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	id = "dam_stormlock_east";
+	name = "\improper Storm Lock";
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Nk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"NJ" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/item/shard,
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"NL" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"NQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"NW" = (
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"NZ" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony,
+/turf/open/floor/plating/asteroidfloor/north,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Or" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Pw" = (
+/obj/item/shard,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"PL" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"PN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"PO" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/tool/pickaxe,
+/obj/item/stack/medical/ointment,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"PT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Qg" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"RA" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"RR" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/desert/rock/deep/transition/north,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"RZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = -8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Si" = (
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Sk" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Sr" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"SA" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/donut_box,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"SH" = (
+/obj/structure/machinery/sentry_holder/colony{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/asphalt/cement/cement15,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"SZ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 5
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"Tr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"TB" = (
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"TY" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"Ua" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Um" = (
+/obj/effect/decal/sand_overlay/sand2,
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Vz" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Wi" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Wl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Ws" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = -8
+	},
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"WW" = (
+/obj/structure/machinery/door_control{
+	id = "dam_stormlock_east";
+	name = "Storm Shutter Lockdown"
+	},
+/turf/closed/wall/r_wall/bunker,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Xl" = (
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"Xv" = (
+/obj/effect/decal/sand_overlay/sand2,
+/obj/item/stack/rods,
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Xz" = (
+/turf/closed/wall/r_wall/bunker,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"Ya" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"YA" = (
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = -8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"YK" = (
+/obj/item/ammo_casing,
+/turf/open/floor/interior/wood,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"YX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"Zn" = (
+/turf/open/desert/rock/deep/transition/north,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+
+(1,1,1) = {"
+Bv
+Bv
+Bv
+aq
+aq
+aq
+aq
+aq
+aq
+Bv
+Xz
+zB
+yw
+jp
+eh
+GI
+AZ
+Sr
+iK
+yb
+cE
+Bv
+Bv
+"}
+(2,1,1) = {"
+Bv
+Bv
+Bv
+aq
+SA
+ae
+ou
+Jw
+aq
+LF
+Xz
+zB
+RR
+GA
+by
+ch
+AZ
+cK
+qr
+LT
+jA
+LP
+Bv
+"}
+(3,1,1) = {"
+Bv
+Bv
+Bv
+aq
+uE
+iy
+ou
+Gc
+Sk
+NJ
+Xz
+Xz
+Ep
+oW
+Si
+SH
+Ha
+kf
+TB
+kh
+Vz
+Xz
+Bv
+"}
+(4,1,1) = {"
+Bv
+Bv
+Bv
+aq
+NW
+iy
+iy
+iy
+RA
+NL
+Zn
+Xz
+Xz
+Xz
+NZ
+Xz
+Nh
+cp
+et
+AT
+LJ
+Xz
+Bv
+"}
+(5,1,1) = {"
+Bv
+Bv
+Bv
+aq
+JM
+Nk
+Nk
+JM
+RA
+NJ
+Zn
+Zn
+Xz
+oC
+Si
+nK
+Ha
+PN
+et
+JW
+Wi
+Xz
+Bv
+"}
+(6,1,1) = {"
+aq
+aq
+aq
+aq
+aa
+gQ
+sl
+ac
+aq
+NQ
+zV
+EA
+Nf
+Si
+YA
+Ws
+wK
+nj
+nO
+JW
+Xv
+tK
+Bv
+"}
+(7,1,1) = {"
+aq
+Hv
+xQ
+aq
+af
+zW
+fk
+Gz
+MP
+ur
+Md
+hE
+WW
+Si
+Si
+rs
+Ha
+PN
+et
+JW
+LJ
+tK
+Kd
+"}
+(8,1,1) = {"
+aq
+vt
+Or
+jw
+Nk
+sR
+YK
+EY
+Ua
+pV
+oA
+sW
+hE
+Si
+Ik
+rs
+Ha
+PN
+et
+MK
+Um
+tK
+Bv
+"}
+(9,1,1) = {"
+aq
+jq
+fk
+aq
+JM
+Or
+Or
+ad
+aq
+KE
+Tr
+MZ
+Xz
+ij
+Si
+Bu
+PL
+Wl
+nO
+JW
+BQ
+Bv
+Bv
+"}
+(10,1,1) = {"
+aq
+aq
+aq
+aq
+KI
+pl
+RZ
+JM
+Sk
+NL
+Zn
+Zn
+Xz
+Xz
+NZ
+Xz
+Nh
+PN
+da
+JW
+Xz
+Xz
+Bv
+"}
+(11,1,1) = {"
+aq
+vt
+Or
+aq
+ag
+Ky
+Or
+JM
+Sk
+NL
+Bv
+Bv
+Xz
+jt
+tL
+Qg
+Ha
+PN
+yI
+JW
+HY
+Xz
+Bv
+"}
+(12,1,1) = {"
+aq
+DH
+xQ
+Kg
+Or
+sg
+Or
+PO
+Sk
+zn
+Bv
+Bv
+Xl
+SZ
+dz
+Ya
+ey
+pG
+mc
+Hr
+Hm
+Gw
+Bv
+"}
+(13,1,1) = {"
+aq
+ab
+xQ
+aq
+PT
+xQ
+xQ
+EH
+aq
+Bv
+Bv
+Bv
+vP
+JL
+SZ
+qd
+ey
+qc
+zX
+jg
+Hm
+mw
+Bv
+"}
+(14,1,1) = {"
+aq
+aq
+aq
+aq
+ah
+JM
+Pw
+qY
+aq
+Bv
+Bv
+Bv
+Bv
+vP
+JL
+ts
+ey
+YX
+zX
+Hr
+Hm
+Gw
+qf
+"}
+(15,1,1) = {"
+nz
+wF
+wF
+aq
+aq
+RA
+Sk
+aq
+aq
+Bv
+Bv
+Bv
+Bv
+Bv
+Xl
+ts
+ey
+pG
+IK
+Hr
+Hm
+TY
+MN
+"}

@@ -1,0 +1,337 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xsplatter4"
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"b" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"d" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"g" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/largecrate/random/barrel/black{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"j" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/shard,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"m" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/obj/structure/sign/poster/safety{
+	pixel_y = 32
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
+/turf/open/floor/prison/darkyellow2/northeast,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"n" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"o" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"p" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"q" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"r" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random{
+	pixel_y = 3
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"s" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/structure/prop/hybrisa/misc/blood/blood1,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"t" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"v" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"w" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"y" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/obj/structure/largecrate/random/secure{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"A" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"B" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/autoname{
+	welded = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"C" = (
+/obj/structure/largecrate/random/barrel/purewhite{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"D" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"E" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/obj/item/shard,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"F" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"G" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/mini{
+	pixel_x = 9;
+	pixel_y = 10
+	},
+/obj/item/prop/alien/hugger,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"H" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"I" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/shard,
+/obj/item/weapon/gun/flamer/survivor,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"J" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gibleg";
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"K" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"M" = (
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"N" = (
+/obj/structure/largecrate/random/barrel/red{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"O" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"P" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/civ,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"Q" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/largecrate/random{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"R" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/autoname{
+	dir = 2;
+	welded = 1
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"S" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellowcorners2/west,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"U" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"W" = (
+/obj/structure/largecrate/random{
+	pixel_x = -2;
+	pixel_y = 1
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+"X" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/building/substation/southwest/solar/walkway)
+
+(1,1,1) = {"
+w
+U
+B
+U
+w
+w
+U
+U
+U
+w
+w
+U
+U
+U
+w
+"}
+(2,1,1) = {"
+w
+s
+d
+S
+q
+Q
+W
+v
+N
+C
+n
+o
+o
+v
+U
+"}
+(3,1,1) = {"
+w
+I
+J
+P
+D
+K
+F
+r
+G
+a
+M
+M
+M
+p
+R
+"}
+(4,1,1) = {"
+w
+m
+E
+j
+X
+A
+H
+g
+y
+X
+A
+X
+X
+t
+U
+"}
+(5,1,1) = {"
+w
+w
+O
+b
+U
+w
+U
+U
+U
+w
+w
+U
+U
+U
+w
+"}

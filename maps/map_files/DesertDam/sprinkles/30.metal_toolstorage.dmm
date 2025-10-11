@@ -1,0 +1,801 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/stack/sheet/cardboard,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"ab" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"ac" = (
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 15;
+	pixel_x = 4
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -13;
+	pixel_y = 9
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"bw" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"bx" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"ca" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"cA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/pistol/highchance,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"dF" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/frame/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"dV" = (
+/obj/structure/sign/poster/safety{
+	pixel_x = -1;
+	pixel_y = 34
+	},
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/prison/darkyellow2/northwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"ex" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"gJ" = (
+/turf/open/floor/plating/platingdmg3,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"gW" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"hz" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/stack/cable_coil/orange{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/device/lightreplacer{
+	pixel_y = 5;
+	pixel_x = -4
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"hB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal/med_large_stack,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"iN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/smg/nailgun,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"iT" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun{
+	pixel_y = 6
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"iV" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"kf" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"kk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"ls" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty,
+/obj/item/clothing/head/hardhat/white{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"lw" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"nd" = (
+/obj/structure/window/framed/hangar/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"oe" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/device/multitool{
+	pixel_x = -11;
+	pixel_y = 2
+	},
+/obj/effect/spawner/random/tech_supply,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"op" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/darkyellowcorners2/east,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"ox" = (
+/obj/structure/closet/secure_closet/engineering_welding,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"pJ" = (
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"qI" = (
+/obj/structure/machinery/floodlight,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"sh" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"sF" = (
+/obj/item/weapon/gun/smg/nailgun,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"uj" = (
+/obj/structure/pipes/vents/pump,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"vh" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"wq" = (
+/obj/effect/spawner/random/toolbox,
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"wB" = (
+/obj/structure/pipes/vents/pump,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"xB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"yf" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding{
+	layer = 3.6;
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"yk" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"yq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/smg/nailgun,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"zq" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Am" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 2;
+	pixel_y = 34
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -13;
+	pixel_y = 33
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -12;
+	pixel_y = 16
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Ao" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"AF" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"AV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Bh" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/crowbar/red{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/tool/screwdriver,
+/obj/effect/spawner/random/tech_supply,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"BV" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Cc" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/toolkit/empty{
+	pixel_x = 5
+	},
+/obj/item/clothing/head/hardhat{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/clothing/head/hardhat{
+	pixel_x = -9;
+	pixel_y = -4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Cs" = (
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Cv" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/stack/cable_coil/random{
+	pixel_y = 12;
+	pixel_x = 3
+	},
+/obj/item/tool/wrench,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"DO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"DS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"EJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"EP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Fo" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Fq" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Engineering Central"
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"HK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"HS" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/junction,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"IE" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Engineering Central"
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"JP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellowcorners2/west,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"JR" = (
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"JU" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"KV" = (
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Lb" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/device/multitool,
+/turf/open/floor/prison/darkyellow2/southeast,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Lj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Lx" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Me" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/darkyellowcorners2/north,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Mq" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"MN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating/platingdmg3,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"NQ" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/ammo_magazine/smg/nailgun{
+	pixel_y = 4;
+	pixel_x = -4
+	},
+/obj/item/ammo_magazine/smg/nailgun{
+	pixel_y = 4
+	},
+/obj/item/ammo_magazine/smg/nailgun{
+	pixel_y = 4;
+	pixel_x = 4
+	},
+/obj/item/ammo_magazine/smg/nailgun{
+	pixel_x = -4
+	},
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun{
+	pixel_x = 4
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Oy" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/clothing/head/hardhat/white{
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/obj/item/device/radio,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"OE" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Pa" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Pd" = (
+/obj/effect/landmark/survivor_spawner,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Pe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Pt" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Pu" = (
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"PF" = (
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Qk" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/plasteel/med_small_stack,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Rd" = (
+/obj/structure/largecrate/empty,
+/obj/structure/largecrate/random/mini{
+	layer = 4;
+	pixel_y = 14
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Sb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"ST" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Ty" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/stock_parts/smes_coil,
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"TN" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"UH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Vm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/platingdmg3,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Vp" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"VG" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/food/drinks/coffee{
+	layer = 4;
+	pixel_x = -7;
+	pixel_y = 12
+	},
+/obj/item/paper/crumpled,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Wn" = (
+/turf/closed/wall/hangar,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Wq" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"WD" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/clothing/suit/storage/hazardvest{
+	pixel_x = 7
+	},
+/obj/item/device/flashlight{
+	pixel_x = -12;
+	pixel_y = 5
+	},
+/obj/item/device/flashlight{
+	pixel_x = -9
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"WU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Xr" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"Zz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellowcorners2,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+"ZW" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
+
+(1,1,1) = {"
+Wn
+Wn
+Wn
+nd
+nd
+nd
+nd
+Xr
+Xr
+"}
+(2,1,1) = {"
+Wn
+dV
+yf
+Oy
+hz
+qI
+yk
+lw
+Rd
+"}
+(3,1,1) = {"
+nd
+op
+ab
+KV
+KV
+aa
+xB
+KV
+KV
+"}
+(4,1,1) = {"
+IE
+BV
+Mq
+ex
+uj
+Pt
+HS
+Wq
+TN
+"}
+(5,1,1) = {"
+KV
+ST
+KV
+Pd
+EJ
+gW
+Pe
+HK
+Lj
+"}
+(6,1,1) = {"
+nd
+Me
+ac
+KV
+WU
+AF
+bx
+PF
+Pu
+"}
+(7,1,1) = {"
+Wn
+NQ
+JR
+AV
+VG
+dF
+MN
+gJ
+Ty
+"}
+(8,1,1) = {"
+nd
+iT
+JR
+EJ
+WD
+oe
+kf
+Vm
+pJ
+"}
+(9,1,1) = {"
+nd
+Pa
+JR
+EJ
+Cc
+Cv
+EJ
+ca
+ls
+"}
+(10,1,1) = {"
+nd
+Fo
+ca
+EJ
+ZW
+Bh
+EJ
+ca
+JP
+"}
+(11,1,1) = {"
+nd
+JU
+JR
+EJ
+EJ
+sh
+EJ
+KV
+EJ
+"}
+(12,1,1) = {"
+Wn
+ox
+ca
+sF
+kk
+sh
+EJ
+cA
+EJ
+"}
+(13,1,1) = {"
+nd
+op
+UH
+yq
+Am
+sh
+EJ
+DS
+Zz
+"}
+(14,1,1) = {"
+Fq
+ST
+iN
+EP
+wB
+bw
+EJ
+ca
+vh
+"}
+(15,1,1) = {"
+KV
+Sb
+EJ
+hB
+EJ
+KV
+KV
+zq
+Vp
+"}
+(16,1,1) = {"
+nd
+Ao
+Qk
+DO
+OE
+wq
+iV
+Lx
+Lb
+"}
+(17,1,1) = {"
+Xr
+Xr
+Xr
+Xr
+Cs
+Cs
+Cs
+Cs
+Cs
+"}

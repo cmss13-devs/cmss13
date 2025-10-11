@@ -229,9 +229,6 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/proc/reload_attachment(obj/item/I, mob/user)
 	return
 
-/obj/item/attachable/proc/unique_action(mob/user)
-	return
-
 ///Returns TRUE if its functionality is successfully used, FALSE if gun's own unloading should proceed instead.
 /obj/item/attachable/proc/unload_attachment(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
 	return FALSE

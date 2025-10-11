@@ -232,6 +232,23 @@
 	icon_state = "rwall"
 	walltype = WALL_REINFORCED
 
+/turf/closed/wall/r_wall/prison/temphull
+	name = "heavy reinforced hull"
+	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. This wall appears to have had an extra layer of sheeting slid over."
+	icon = 'icons/turf/walls/prison.dmi'
+	icon_state = "tempwall"
+	damage_cap = HEALTH_WALL_REINFORCED
+	turf_flags = TURF_HULL
+
+/turf/closed/wall/r_wall/prison/temphull/Initialize()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_ABYSSAL_LOCKDOWN, PROC_REF(de_hull))
+
+/turf/closed/wall/r_wall/prison/temphull/proc/de_hull()
+	SIGNAL_HANDLER
+	turf_flags = NO_FLAGS
+	desc = "A highly reinforced metal wall used to separate rooms and make up the ship. The extra defensive sheeting has slid away."
+
 /turf/closed/wall/r_wall/prison_unmeltable
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."

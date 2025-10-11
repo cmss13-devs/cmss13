@@ -611,8 +611,9 @@
 			apply_damage(10 + rand(0, 10), BRUTE)
 
 	else if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM)
-		apply_effect(3, WEAKEN)
-		apply_damage(10 + rand(0, 10), BRUTE)
+		apply_effect(1.5, WEAKEN)
+		apply_effect(3, SLOW)
+		apply_damage(5 + rand(0, 5), BRUTE)
 		dmg = TRUE
 
 	else if(V.vehicle_flags & VEHICLE_CLASS_HEAVY)

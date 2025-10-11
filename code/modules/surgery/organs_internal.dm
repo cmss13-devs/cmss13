@@ -36,6 +36,17 @@ and organ transplant code which may come in handy in future but haven't been edi
 	)
 	time = 3 SECONDS
 	repeat_step = TRUE
+	///How many stacks to use for each organ.
+	var/use_stack = 1
+
+// Use materials to repair organs
+/datum/surgery_step/repair_organs/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
+	. = ..()
+	if(istype(tool, /obj/item/stack/medical))
+		var/obj/item/stack/medical/packs = tool
+		if(!packs.use(use_stack))
+			to_chat(user, SPAN_BOLDWARNING("You don't have enough of \the [packs]!"))
+			return FALSE
 
 /datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
@@ -92,6 +103,11 @@ and organ transplant code which may come in handy in future but haven't been edi
 		SPAN_WARNING("Your hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising your organs and contaminating your [surgery.affected_limb.cavity]!"),
 		SPAN_WARNING("[user]'s hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"))
+
+	//Refund the stack
+	if(istype(tool, /obj/item/stack/medical))
+		var/obj/item/stack/medical/packs = tool
+		packs.add(use_stack)
 
 	var/dam_amt = 2
 	switch(tool_type)

@@ -1397,6 +1397,7 @@
 #include "code\game\objects\structures\flora.dm"
 #include "code\game\objects\structures\girders.dm"
 #include "code\game\objects\structures\grille.dm"
+#include "code\game\objects\structures\gun_rack.dm"
 #include "code\game\objects\structures\hunter_props.dm"
 #include "code\game\objects\structures\hybrisa_props.dm"
 #include "code\game\objects\structures\ice_caves.dm"

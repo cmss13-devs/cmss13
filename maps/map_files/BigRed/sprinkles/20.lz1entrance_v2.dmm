@@ -195,7 +195,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "ta" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/asphalt/cement/cement9,
 /area/bigredv2/outside/space_port)
 "tv" = (
@@ -273,7 +273,7 @@
 /area/bigredv2/outside/nw)
 "xB" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/darkgreen2/southwest,
 /area/bigredv2/outside/space_port)
 "yp" = (

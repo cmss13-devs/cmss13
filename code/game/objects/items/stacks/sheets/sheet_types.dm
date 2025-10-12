@@ -242,6 +242,10 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		new/datum/stack_recipe("empty magazine box (M10 Ext)", /obj/item/ammo_box/magazine/m10/extended/empty), \
 		new/datum/stack_recipe("empty magazine box (M10 Drum)", /obj/item/ammo_box/magazine/m10/drum/empty), \
 		null, \
+		new/datum/stack_recipe("empty magazine box (M10 AP)", /obj/item/ammo_box/magazine/m10/ap/empty), \
+		new/datum/stack_recipe("empty magazine box (M10 AP Ext)", /obj/item/ammo_box/magazine/m10/ap/extended/empty), \
+		new/datum/stack_recipe("empty magazine box (M10 AP Drum)", /obj/item/ammo_box/magazine/m10/ap/drum/empty), \
+		null, \
 		new/datum/stack_recipe("empty magazine box (M39)", /obj/item/ammo_box/magazine/m39/empty), \
 		new/datum/stack_recipe("empty magazine box (M39 AP)", /obj/item/ammo_box/magazine/m39/ap/empty), \
 		new/datum/stack_recipe("empty magazine box (M39 Ext)", /obj/item/ammo_box/magazine/m39/ext/empty), \
@@ -391,7 +395,9 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		null, \
 		new/datum/stack_recipe("empty rifle ammo box (5.45x39mm)", /obj/item/ammo_box/rounds/type71/empty), \
 		new/datum/stack_recipe("empty rifle ammo box (5.45x39mm AP)", /obj/item/ammo_box/rounds/type71/ap/empty), \
-
+		null, \
+		new/datum/stack_recipe("empty auto-pistol ammo box (10x20mm-APC)", /obj/item/ammo_box/rounds/pistol/m10/empty), \
+		new/datum/stack_recipe("empty auto-pistol ammo box (10x20mm-APC (AP))", /obj/item/ammo_box/rounds/pistol/m10/ap/empty), \
 
 		)) \
 ))

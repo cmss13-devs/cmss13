@@ -85,7 +85,8 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "aan" = (
 /obj/structure/machinery/colony_floodlight{
-	pixel_x = -14
+	pixel_x = -14;
+	density = 0
 	},
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
@@ -466,6 +467,10 @@
 "abJ" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/misc/concretestatue{
+	desc = "A decorative statue with the Weyland-Yutani 'Wings' adorned on it. A deep scratch on the back reveals it is made of solid gold. How ridiculous!";
+	pixel_y = 16
+	},
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/main_hall)
 "abK" = (
@@ -2110,7 +2115,10 @@
 /area/lv624/ground/colony/phi_lab/dome)
 "ags" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/machinery/fuelcell_recycler/full,
+/obj/structure/closet/crate/science,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/prison/darkyellowfull2,
 /area/lv624/ground/colony/phi_lab/dome)
 "agt" = (
@@ -2528,7 +2536,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/pipes,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/lazarus/engineering)
@@ -2584,7 +2594,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/lazarus/engineering)
 "ahQ" = (
@@ -2609,7 +2621,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/lazarus/engineering)
 "ahV" = (
@@ -2688,7 +2702,9 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/comms)
 "aih" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/barricade/handrail{
 	layer = 4.20
 	},
@@ -2709,7 +2725,9 @@
 /obj/structure/barricade/handrail{
 	layer = 4.20
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/pumping_station)
 "ail" = (
@@ -2887,6 +2905,15 @@
 	},
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/pumping_station)
+"aiM" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e";
+	pixel_y = 2;
+	pixel_x = -1
+	},
+/obj/item/reagent_container/food/drinks/cans/aspen,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
+/area/lv624/lazarus/sushi)
 "aiN" = (
 /turf/open/floor/kutjevo/tan/grey_edge/west,
 /area/lv624/lazarus/main_hall)
@@ -2895,6 +2922,10 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/pumping_station)
+"aiP" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/lv624/lazarus/hydroponics)
 "aiQ" = (
 /obj/structure/machinery/light{
 	unacidable = 1;
@@ -3383,7 +3414,9 @@
 /turf/open/gm/mudcoast/greenwater/cornerinner/east,
 /area/lv624/ground/river/central_river)
 "akX" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
@@ -3672,7 +3705,9 @@
 /obj/structure/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/wire/red{
 	dir = 4;
 	pixel_y = -4
@@ -3730,7 +3765,9 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "amd" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/cult,
 /area/lv624/lazarus/engineering)
@@ -4016,7 +4053,9 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "anb" = (
@@ -4594,7 +4633,9 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv624/lazarus/kitchen)
 "aoP" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/gm/river,
 /area/lv624/lazarus/hydroponics)
 "aoR" = (
@@ -5174,6 +5215,11 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_y = 2;
+	pixel_x = 8
+	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv624/lazarus/kitchen)
 "aqz" = (
@@ -5349,6 +5395,9 @@
 /area/lv624/ground/river/west_river)
 "ard" = (
 /obj/structure/largecrate/random,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_y = 8
+	},
 /turf/open/floor/kutjevo/tan,
 /area/lv624/lazarus/main_hall)
 "are" = (
@@ -6661,6 +6710,26 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/reagent_container/food/drinks/cans/aspen,
+/obj/item/reagent_container/food/drinks/cans/aspen,
+/obj/item/reagent_container/food/drinks/cans/aspen,
+/obj/item/reagent_container/food/drinks/cans/aspen,
+/obj/structure/closet/crate/freezer,
+/obj/item/storage/beer_pack{
+	pixel_y = -5;
+	layer = 3.13;
+	pixel_x = -2
+	},
+/obj/item/storage/beer_pack{
+	pixel_y = -5;
+	layer = 3.13;
+	pixel_x = -2
+	},
+/obj/item/storage/beer_pack{
+	pixel_y = -5;
+	layer = 3.13;
+	pixel_x = -2
+	},
 /turf/open/floor/hybrisa/tile/cementflat,
 /area/lv624/lazarus/sushi)
 "awL" = (
@@ -7233,7 +7302,9 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_14"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/podhatchfloor,
 /area/lv624/lazarus/nexus_radio)
 "aAc" = (
@@ -8445,11 +8516,15 @@
 /area/lv624/lazarus/nexus_dorms)
 "aED" = (
 /obj/effect/landmark/static_comms/net_one,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/podhatchfloor,
 /area/lv624/lazarus/nexus_radio)
 "aEE" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/podhatchfloor,
 /area/lv624/lazarus/nexus_radio)
 "aEF" = (
@@ -9231,7 +9306,9 @@
 /turf/open/hybrisa/street/cement2,
 /area/lv624/lazarus/landing_zones/lz1)
 "aHN" = (
-/obj/structure/machinery/colony_floodlight,
+/obj/structure/machinery/colony_floodlight{
+	density = 0
+	},
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -9378,6 +9455,7 @@
 	pixel_y = 31;
 	layer = 2.95
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood/wood_broken2,
 /area/lv624/lazarus/nexus_dorms)
 "aIo" = (
@@ -9539,10 +9617,6 @@
 /turf/open/floor/kutjevo/tan/grey_edge/southeast,
 /area/lv624/lazarus/main_hall)
 "aJd" = (
-/obj/structure/prop/hybrisa/misc/concretestatue{
-	pixel_y = -16;
-	desc = "A decorative statue with the Weyland-Yutani 'Wings' adorned on it. A deep scratch on the back reveals it is made of solid gold. How ridiculous!"
-	},
 /obj/structure/flora/bush/desert{
 	pixel_y = 7;
 	pixel_x = 1;
@@ -10485,6 +10559,7 @@
 	pixel_x = -4
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/dark,
 /area/lv624/lazarus/armory)
 "aMY" = (
@@ -10496,6 +10571,8 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/dark,
 /area/lv624/lazarus/armory)
 "aMZ" = (
@@ -10702,6 +10779,7 @@
 /obj/item/weapon/gun/revolver/cmb/normalpoint{
 	pixel_y = 7
 	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/dark,
 /area/lv624/lazarus/armory)
 "aNN" = (
@@ -11844,7 +11922,9 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/pipes/pipe1{
 	color = "#858680"
 	},
@@ -12296,7 +12376,9 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/pipes/pipe1{
 	dir = 4;
 	layer = 2.1
@@ -12505,7 +12587,9 @@
 	dir = 4;
 	pixel_x = -16
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/bcircuit,
 /area/lv624/lazarus/engineering)
 "aUt" = (
@@ -12634,7 +12718,9 @@
 /turf/open/hybrisa/street/roadlines4,
 /area/lv624/ground/colony/north_nexus_road)
 "aUQ" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/plating,
 /area/lv624/lazarus/pumping_station)
@@ -12710,7 +12796,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv624/ground/colony/west_medbay_road)
 "aVe" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/wire/red{
 	dir = 4;
 	pixel_y = -4
@@ -12737,7 +12825,9 @@
 	pixel_x = -7;
 	pixel_y = 13
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/bcircuit,
 /area/lv624/lazarus/engineering)
@@ -12745,7 +12835,9 @@
 /obj/structure/lattice{
 	layer = 2.9
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/bcircuit,
 /area/lv624/lazarus/engineering)
@@ -15155,7 +15247,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv624/lazarus/cargo_storage)
 "bdA" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/machinery/light{
 	dir = 1
@@ -15203,7 +15297,9 @@
 /area/lv624/lazarus/hydroponics)
 "bdE" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -16512,7 +16608,7 @@
 	icon_state = "p_stair_full";
 	dir = 8
 	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_right{
+/obj/structure/platform/stone/stair_cut/stone_right{
 	color = "34393C"
 	},
 /turf/open/gm/grass/grass1,
@@ -16524,7 +16620,7 @@
 /turf/open/hunter_temple,
 /area/lv624/ground/jungle/north_east_jungle)
 "bhA" = (
-/obj/structure/platform/stone/stair_cut/runed_sandstone_left{
+/obj/structure/platform/stone/stair_cut/stone_left{
 	color = "34393C"
 	},
 /obj/structure/stairs/perspective{
@@ -18342,7 +18438,9 @@
 	layer = 5.1;
 	name = "water pipe"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/barricade/handrail{
 	layer = 4.20
 	},
@@ -18484,7 +18582,9 @@
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/ground/jungle/west_jungle/swamp)
 "bpr" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/barricade/handrail{
 	dir = 4;
 	layer = 3.1;
@@ -18624,7 +18724,9 @@
 	layer = 5.1;
 	name = "water pipe"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/pumping_station)
 "bpR" = (
@@ -18921,7 +19023,9 @@
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble6{
 	pixel_x = -6
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -18934,7 +19038,9 @@
 /obj/structure/disposalpipe/trunk{
 	name = "water pipe"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/pumping_station)
 "bqO" = (
@@ -18943,7 +19049,9 @@
 	name = "water pipe";
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/pumping_station)
 "bqP" = (
@@ -18952,7 +19060,9 @@
 	name = "water pipe";
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/barricade/handrail{
 	dir = 4;
 	layer = 3.1;
@@ -23800,7 +23910,8 @@
 /obj/structure/machinery/door_control/colony_lockdown/lv624{
 	pixel_y = -4;
 	id = "phiresearchlockdown";
-	needs_power = 0
+	needs_power = 0;
+	name = "Phi Labs Lockdown"
 	},
 /turf/open/floor/red,
 /area/lv624/ground/colony/phi_lab)
@@ -27880,7 +27991,9 @@
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRx" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/lattice,
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	dir = 4;
@@ -27923,12 +28036,16 @@
 /obj/structure/cable{
 	icon_state = "4-9"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRz" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/lattice,
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 4
@@ -27978,7 +28095,9 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /obj/structure/platform_decoration/metal/almayer/northeast{
 	dir = 10
@@ -27999,7 +28118,9 @@
 /obj/structure/cable{
 	icon_state = "5-8"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
@@ -28023,7 +28144,9 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 4
 	},
@@ -28119,15 +28242,14 @@
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
 "bRP" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/weldingtool,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRQ" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
 	dir = 4
 	},
@@ -28156,11 +28278,15 @@
 /obj/structure/cable{
 	icon_state = "4-9"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRS" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
 	dir = 4
 	},
@@ -28220,7 +28346,9 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRZ" = (
@@ -28234,7 +28362,9 @@
 /obj/structure/cable{
 	icon_state = "5-8"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSa" = (
@@ -28252,7 +28382,9 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 4
 	},
@@ -28399,16 +28531,14 @@
 /obj/structure/machinery/light/blue{
 	dir = 8
 	},
-/obj/item/clothing/glasses/welding/superior,
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/effect/landmark/objective_landmark/far,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/prison/darkyellow2/west,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSu" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/lattice,
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 1
@@ -28438,7 +28568,9 @@
 /obj/structure/cable{
 	icon_state = "4-9"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSw" = (
@@ -28458,7 +28590,9 @@
 /obj/structure/cable{
 	icon_state = "5-8"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSz" = (
@@ -28476,7 +28610,9 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 4
 	},
@@ -28635,7 +28771,19 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/prison/darkyellow2,
+/obj/structure/machinery/power/power_generator/reactor/colony,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/turf/open/floor/bcircuit,
 /area/lv624/ground/colony/phi_lab/dome)
 "bST" = (
 /obj/structure/machinery/big_computers/computerblack/computer2{
@@ -28825,28 +28973,14 @@
 /area/lv624/ground/colony/phi_lab/dome)
 "bTq" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/machinery/power/power_generator/reactor/colony,
-/turf/open/floor/plating/platebot,
+/turf/open/floor/prison/darkyellowcorners2/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTr" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate2,
-/turf/open/floor/bcircuit,
+/turf/open/floor/prison/darkyellow2/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTs" = (
-/obj/structure/machinery/power/power_generator/reactor/colony,
-/turf/open/floor/plating/platebot,
-/area/lv624/ground/colony/phi_lab/dome)
-"bTt" = (
-/obj/item/ammo_box/magazine/misc/power_cell,
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/prison/darkyellowcorners2/north,
+/turf/open/floor/prison/darkyellow2/east,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTu" = (
 /turf/open/floor/prison/darkyellow2/north,
@@ -28887,7 +29021,9 @@
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 8;
@@ -28943,8 +29079,12 @@
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /turf/open/floor/plating,
 /area/lv624/ground/colony/phi_lab/dome)
@@ -28976,7 +29116,9 @@
 	pixel_x = 15;
 	pixel_y = -15
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 4
 	},
@@ -29082,22 +29224,19 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/west_caves)
 "bTP" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
+/obj/item/clothing/glasses/welding/superior,
+/obj/effect/landmark/objective_landmark/far,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/obj/structure/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate2,
-/turf/open/floor/bcircuit,
+/turf/open/floor/prison/darkyellowfull2,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33
+/obj/item/ammo_box/magazine/misc/power_cell,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/obj/structure/machinery/power/power_generator/reactor/colony,
-/turf/open/floor/plating/platebot,
+/turf/open/floor/prison/darkyellowfull2,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTR" = (
 /obj/effect/decal/hybrisa/trash{
@@ -29105,7 +29244,11 @@
 	pixel_x = -6;
 	pixel_y = -12
 	},
-/turf/open/floor/prison/darkyellow2/east,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/weldingtool,
+/turf/open/floor/prison/darkyellowfull2,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTS" = (
 /obj/structure/cable/white{
@@ -29136,7 +29279,9 @@
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 8;
 	pixel_x = -1;
@@ -29188,8 +29333,12 @@
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = -4
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/machinery/sensortower{
 	pixel_x = -13;
 	layer = 3.1
@@ -29224,7 +29373,9 @@
 	pixel_x = 15;
 	pixel_y = -15
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 4
 	},
@@ -29286,38 +29437,24 @@
 /turf/open/floor/cult,
 /area/lv624/ground/caves/west_caves)
 "bUf" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	layer = 3.33;
-	pixel_y = 1;
-	pixel_x = -1
-	},
-/obj/structure/machinery/power/power_generator/reactor/colony,
-/turf/open/floor/plating/platebot,
+/turf/open/floor/prison/darkyellowcorners2,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUg" = (
 /obj/item/shard/shrapnel,
-/obj/structure/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate2,
-/turf/open/floor/bcircuit,
+/turf/open/floor/prison/darkyellow2,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUh" = (
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33
-	},
-/obj/structure/machinery/power/power_generator/reactor/colony,
-/turf/open/floor/plating/platebot,
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/prison/darkyellow2,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUi" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/tool/wirecutters/tactical,
-/turf/open/floor/prison/darkyellowcorners2/southwest,
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/prison/darkyellow2,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUk" = (
 /obj/structure/cable/white{
@@ -29342,7 +29479,9 @@
 	dir = 4;
 	pixel_y = -9
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 1
 	},
@@ -29378,7 +29517,9 @@
 	dir = 4;
 	pixel_y = -9
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 1
 	},
@@ -29409,7 +29550,9 @@
 	layer = 5;
 	level = 2
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 1
 	},
@@ -29464,14 +29607,19 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/closet/crate/science,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/obj/item/fuel_cell,
-/turf/open/floor/prison/darkyellow2/north,
+/obj/structure/machinery/power/power_generator/reactor/colony,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/turf/open/floor/bcircuit,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUv" = (
 /turf/open/floor/corsat/spiralblueoffice,
@@ -29555,7 +29703,9 @@
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = 8
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 8
 	},
@@ -29571,7 +29721,9 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
@@ -29591,7 +29743,9 @@
 /obj/structure/cable{
 	icon_state = "6-8"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
@@ -29600,7 +29754,9 @@
 /obj/structure/cable{
 	icon_state = "4-9"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3,
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	layer = 2.5;
@@ -29655,7 +29811,9 @@
 /obj/structure/cable{
 	icon_state = "5-8"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	layer = 2.5;
 	pixel_x = -2
@@ -29679,7 +29837,9 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUT" = (
@@ -29690,7 +29850,9 @@
 /obj/structure/cable{
 	icon_state = "5-8"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 4
 	},
@@ -29726,7 +29888,9 @@
 /obj/structure/cable{
 	icon_state = "4-9"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 8;
 	pixel_y = -1
@@ -29742,7 +29906,9 @@
 /obj/structure/cable{
 	icon_state = "6-8"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/hybrisa/metal/underground_unweedable,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVb" = (
@@ -29753,7 +29919,9 @@
 /obj/structure/cable{
 	icon_state = "4-9"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	layer = 2.5;
 	pixel_x = -2
@@ -29820,7 +29988,9 @@
 /obj/structure/cable{
 	icon_state = "5-8"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	dir = 4;
 	pixel_y = -9
@@ -29852,7 +30022,9 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	dir = 4;
 	pixel_y = -9
@@ -29871,7 +30043,9 @@
 /obj/structure/cable{
 	icon_state = "5-8"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	dir = 4;
 	pixel_y = -9
@@ -29918,7 +30092,9 @@
 /obj/structure/cable{
 	icon_state = "4-9"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	dir = 4;
 	pixel_y = -4
@@ -29943,7 +30119,9 @@
 /obj/structure/cable{
 	icon_state = "6-8"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	dir = 4;
 	pixel_y = -4
@@ -29962,7 +30140,9 @@
 /obj/structure/cable{
 	icon_state = "4-9"
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	dir = 4;
 	pixel_y = -4
@@ -30118,6 +30298,29 @@
 	color = "#6b675e"
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/item/ammo_magazine/rifle/nsg23/extended{
+	pixel_y = 11;
+	pixel_x = 7
+	},
+/obj/item/ammo_magazine/rifle/nsg23/ap{
+	pixel_y = 5;
+	pixel_x = 8
+	},
+/obj/item/weapon/gun/flamer/m240{
+	pixel_y = 10;
+	pixel_x = -4;
+	current_mag = null
+	},
+/obj/item/weapon/gun/flamer/m240{
+	pixel_y = 6;
+	pixel_x = -4;
+	current_mag = null
+	},
+/obj/item/weapon/gun/flamer/m240{
+	pixel_y = 1;
+	pixel_x = -4;
+	current_mag = null
+	},
 /turf/open/floor/prison/darkredcorners2/east,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVS" = (
@@ -30172,6 +30375,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
+/obj/item/storage/backpack/pmc/backpack/commando/apesuit,
 /turf/open/floor/prison/darkred2/northwest,
 /area/lv624/ground/colony/phi_lab/dome)
 "bWb" = (
@@ -30179,7 +30383,16 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/storage/backpack/pmc/backpack/commando/apesuit,
+/obj/item/weapon/gun/rifle/nsg23/no_lock{
+	pixel_y = 12
+	},
+/obj/item/ammo_magazine/rifle/nsg23/extended{
+	pixel_x = -9
+	},
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/ammo_magazine/rifle/nsg23/ap{
+	pixel_x = 4
+	},
 /turf/open/floor/prison/darkred2/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "bWc" = (
@@ -32372,7 +32585,9 @@
 /turf/open/floor/whiteblue/north,
 /area/lv624/lazarus/medbay)
 "clV" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/barricade/handrail{
 	layer = 4.20
 	},
@@ -35078,7 +35293,9 @@
 /turf/open/gm/grass/grassmud/corner2/south_east,
 /area/lv624/ground/jungle/south_central_jungle)
 "fdr" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/bcircuit,
 /area/lv624/lazarus/engineering)
@@ -35396,7 +35613,9 @@
 	pixel_x = -4
 	},
 /obj/effect/hybrisa/misc/fake/pipes,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/bcircuit,
 /area/lv624/lazarus/engineering)
 "fvD" = (
@@ -35465,7 +35684,9 @@
 /area/lv624/ground/caves/mining)
 "fAs" = (
 /obj/item/tool/crowbar,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/structure/machinery/light,
 /obj/effect/decal/hybrisa/trash{
@@ -35733,7 +35954,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/lazarus/engineering)
 "fMl" = (
@@ -36266,6 +36489,12 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
 /turf/open/floor/prison/darkbrown3,
 /area/lv624/lazarus/engineering)
 "grT" = (
@@ -36569,7 +36798,9 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
 "gKg" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/wire/red{
 	pixel_x = 10
 	},
@@ -37984,7 +38215,9 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/lazarus/engineering)
 "iiV" = (
@@ -38318,7 +38551,9 @@
 /turf/open/gm/grass/grassmud/corner2/south_west,
 /area/lv624/ground/jungle/north_east_jungle)
 "iIT" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gibleg";
 	pixel_x = -1;
@@ -38906,7 +39141,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_left{
+/obj/structure/platform/stone/stair_cut/stone_left{
 	color = "34393C"
 	},
 /turf/open/hunter_temple,
@@ -39253,7 +39488,9 @@
 	dir = 4;
 	pixel_x = -16
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/bcircuit,
 /area/lv624/lazarus/engineering)
@@ -39888,7 +40125,9 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "kzd" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/gm/river,
 /area/lv624/lazarus/hydroponics)
@@ -40938,7 +41177,9 @@
 	pixel_y = -4
 	},
 /obj/effect/hybrisa/misc/fake/pipes,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/bcircuit,
 /area/lv624/lazarus/engineering)
 "lHd" = (
@@ -41802,7 +42043,7 @@
 	icon_state = "p_stair_full";
 	dir = 8
 	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_right{
+/obj/structure/platform/stone/stair_cut/stone_right{
 	color = "34393C"
 	},
 /turf/open/hunter_temple,
@@ -42489,7 +42730,6 @@
 /turf/open/gm/grass/grassmud/west,
 /area/lv624/lazarus/landing_zones/lz1)
 "nmj" = (
-/obj/structure/girder,
 /obj/structure/sign/poster/corporate{
 	layer = 3.01
 	},
@@ -42498,7 +42738,7 @@
 	pixel_x = -10;
 	layer = 3.02
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/closed/wall,
 /area/lv624/ground/caves/mining)
 "nms" = (
 /obj/effect/decal/warning_stripes{
@@ -43330,7 +43570,9 @@
 /turf/open/hybrisa/street/cement1,
 /area/lv624/ground/colony/phi_lab/cargo)
 "oeS" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/pumping_station)
 "off" = (
@@ -43365,8 +43607,12 @@
 /area/lv624/ground/caves/central_caves)
 "ogR" = (
 /obj/item/prop/alien/hugger,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	pixel_x = -4
 	},
@@ -43944,7 +44190,9 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/pipes/pipe1{
 	dir = 4;
 	layer = 2.1
@@ -46015,7 +46263,7 @@
 	icon_state = "p_stair_full";
 	dir = 8
 	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_right{
+/obj/structure/platform/stone/stair_cut/stone_right{
 	color = "34393C"
 	},
 /turf/open/hunter_temple,
@@ -46154,7 +46402,9 @@
 /turf/open/floor/prison,
 /area/lv624/lazarus/secure_bunker)
 "rkq" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/machinery/light,
 /turf/open/gm/river,
 /area/lv624/lazarus/hydroponics)
@@ -47021,7 +47271,9 @@
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/mining)
 "siY" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/effect/hybrisa/misc/fake/wire/red{
 	pixel_x = 10
 	},
@@ -47816,7 +48068,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 2.01
+	},
 /obj/structure/prop/invuln/overhead_pipe{
 	color = "#a6aeab";
 	dir = 4;
@@ -48334,7 +48588,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_left{
+/obj/structure/platform/stone/stair_cut/stone_left{
 	color = "34393C"
 	},
 /turf/open/hunter_temple,
@@ -49906,7 +50160,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/stone/stair_cut/runed_sandstone_left{
+/obj/structure/platform/stone/stair_cut/stone_left{
 	color = "34393C"
 	},
 /turf/open/hunter_temple,
@@ -71286,7 +71540,7 @@ ixb
 bPP
 bUh
 bTQ
-bTs
+bTu
 bSR
 agq
 agq
@@ -71514,7 +71768,7 @@ bUF
 bTu
 bUi
 bTR
-bTt
+bPP
 agr
 bSu
 bRQ
@@ -74787,7 +75041,7 @@ aCD
 anG
 anG
 ehy
-nHj
+aiP
 bej
 bdS
 aoP
@@ -80758,7 +81012,7 @@ acj
 awB
 axK
 aus
-awA
+aiM
 atj
 asn
 aiX

@@ -19622,7 +19622,7 @@
 /area/fiorina/maintenance)
 "obE" = (
 /obj/structure/machinery/power/apc/no_power/south,
-/turf/open/asphalt/cement/cement4,
+/turf/open/floor/plating/prison,
 /area/fiorina/station/flight_deck)
 "obQ" = (
 /obj/structure/stairs/perspective{

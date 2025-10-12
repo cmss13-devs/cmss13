@@ -132,7 +132,7 @@
 
 /obj/item/clothing/suit/storage/labcoat/virologist
 	name = "virologist's lab coat"
-	desc = "A suit that protects against minor chemical spills. Offers slightly more protection against bio-hazards than the standard model. Has a green stripe on the shoulder."
+	desc = "A suit that protects against minor chemical spills. Offers slightly more protection against biohazards than the standard model. Has a green stripe on the shoulder."
 	icon_state = "labcoat_vir"
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
@@ -148,7 +148,7 @@
 	desc = "A suit that protects against minor chemical spills. Has a purple stripe on the shoulder."
 	icon_state = "labcoat_tox"
 
-/obj/item/clothing/suit/storage/labcoat/officer
+/obj/item/clothing/suit/storage/labcoat/cmo
 	name = "chief medical officer's lab coat"
 	desc = "A green, sleek, long, and sturdy lab coat, designed to distinguish a higher ranking medical personnel. The fabric provides protection against chemical and biological hazards."
 	icon_state = "labcoatg"

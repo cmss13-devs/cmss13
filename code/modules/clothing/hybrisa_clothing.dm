@@ -224,7 +224,7 @@
 
 /obj/item/clothing/under/rank/scientist/hybrisa
 	name = "scientist's utility jumpsuit"
-	desc = "It's made of a special fiber that provides minor protection against bio-hazards. It has markings that denote the wearer as a scientist."
+	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer as a scientist."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/research.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/research.dmi',
@@ -436,7 +436,7 @@
 
 /obj/item/clothing/head/helmet/hybrisa/medtech
 	name = "MT-SHIELD-X 525 helmet"
-	desc = "The MT-SHIELD-X 525 (MedTech - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protects the user from potential bio-hazards. This helmet was designed by Hyperdyne Systems, in collabaration with MedTech."
+	desc = "The MT-SHIELD-X 525 (MedTech - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protects the user from potential biohazards. This helmet was designed by Hyperdyne Systems, in collabaration with MedTech."
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -568,7 +568,7 @@
 
 /obj/item/clothing/suit/storage/synthbio/wy_bio
 	name = "WY-TSS MK I - bio suit"
-	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. A Synthetic compliant bio-hazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
+	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. A Synthetic compliant biohazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',

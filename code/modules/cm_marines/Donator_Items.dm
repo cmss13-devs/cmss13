@@ -684,7 +684,7 @@
 	item_state = "kailas_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/fridrich
-	name = "Solid Black Lab coat"
+	name = "Solid Black Lab Coat"
 	desc = "Very stylish. DONOR ITEM"
 	icon_state = "Reznoriam"
 	item_state = "Reznoriam"

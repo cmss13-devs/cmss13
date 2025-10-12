@@ -46,7 +46,7 @@
 	minimap_icon = list("doctor")
 	minimap_background = "background_command"
 
-	utility_under = list(/obj/item/clothing/under/rank/chief_medical_officer)
+	utility_under = list(/obj/item/clothing/under/rank/cmo)
 	utility_hat = list()
 	utility_gloves = list()
 	utility_shoes = list(/obj/item/clothing/shoes/white)
@@ -57,7 +57,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chief_medical_officer(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/cmo(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/unique/tier_two(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)

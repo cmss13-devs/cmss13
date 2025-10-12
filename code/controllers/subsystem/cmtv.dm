@@ -333,7 +333,7 @@ SUBSYSTEM_DEF(cmtv)
 	maptext_width = 400
 
 /atom/movable/screen/cmtv/proc/change_displayed_mob(display_name)
-	maptext = MAPTEXT_VCR_OSD_MONO("<span style='font-size: 16px; text-align: center;'><span style='text-decoration: underline;'>Currently observing:</span><br>[display_name]</span>")
+	maptext = MAPTEXT("<span style='text-align: center;'><span style='text-decoration: underline; font-size: 12px;'>Currently observing:</span><br><span style='font-size: 16px;'>[display_name]</span></span>")
 
 
 #undef PRIORITY_FIRST

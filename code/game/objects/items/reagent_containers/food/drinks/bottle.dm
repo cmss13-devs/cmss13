@@ -311,7 +311,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/goldschlager
 	name = "College Girl Goldschlager"
-	desc = "Because they are the only ones who will drink 100 proof cinnamon schnapps."
+	desc = "Because they are the only ones who will drink 100-proof cinnamon schnapps."
 	icon_state = "goldschlagerbottle"
 	center_of_mass = "x=15;y=3"
 
@@ -362,7 +362,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/melonliquor
 	name = "Emeraldine Melon Liquor"
-	desc = "A bottle of 46 proof Emeraldine Melon Liquor. Sweet and light."
+	desc = "A bottle of 46-proof Emeraldine Melon Liquor. Sweet and light."
 	icon_state = "alco-green" //Placeholder.
 	center_of_mass = "x=16;y=6"
 
@@ -535,7 +535,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/lemonjuice/Initialize()
 	. = ..()
-	reagents.add_reagent("grapejuice", 100)
+	reagents.add_reagent("lemonjuice", 100)
 
 /obj/item/reagent_container/food/drinks/bottle/grapejuice
 	name = "Carton of Grape Juice"
@@ -619,9 +619,9 @@
 
 /obj/item/reagent_container/food/drinks/bottle/bananajuice
 	name = "Carton of Banana Juice"
-	desc = "Clowns wish this ran through their veins."
-	icon_state = "potatojuice"
-	item_state = "potatojuice"
+	desc = "Clowns wish this runs through their veins."
+	icon_state = "bananajuice"
+	item_state = "bananajuice"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',

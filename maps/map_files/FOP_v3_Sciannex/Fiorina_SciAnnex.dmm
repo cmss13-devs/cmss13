@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/power_ring)
 "aab" = (
 /obj/effect/landmark/corpsespawner/security/marshal/riot,
 /turf/open/auto_turf/shale/layer1,
@@ -11,13 +15,9 @@
 	},
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/tumor/ice_lab)
-"aad" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/asphalt/cement,
-/area/fiorina/station/power_ring)
 "aae" = (
 /obj/structure/machinery/power/apc/power/south,
-/turf/open/asphalt/cement/cement4,
+/turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "aaf" = (
 /obj/structure/machinery/power/apc/no_power/north,
@@ -25,7 +25,7 @@
 /area/fiorina/tumor/servers)
 "aag" = (
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "aai" = (
 /obj/effect/landmark/nightmare{
@@ -66,7 +66,7 @@
 /area/fiorina/station/medbay)
 "aaq" = (
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "aar" = (
 /obj/structure/machinery/power/apc/power/south,
@@ -10588,7 +10588,7 @@
 /area/fiorina/station/security)
 "gaQ" = (
 /obj/structure/machinery/power/apc/power/east,
-/turf/open/asphalt/cement/cement3,
+/turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "gbf" = (
 /turf/open/floor/prison/floor_plate,
@@ -10858,7 +10858,7 @@
 /area/fiorina/tumor/servers)
 "gqo" = (
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/asphalt/cement/cement12,
+/turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec/showers_laundry)
 "gqC" = (
 /obj/structure/platform/metal/almayer/west,
@@ -14087,7 +14087,7 @@
 /area/fiorina/station/central_ring)
 "iYJ" = (
 /obj/structure/machinery/power/apc/power/south,
-/turf/open/asphalt/cement/cement4,
+/turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "iYQ" = (
 /obj/item/fuel_cell,
@@ -19721,7 +19721,7 @@
 /area/fiorina/station/transit_hub)
 "ofQ" = (
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/asphalt/cement,
+/turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "oga" = (
 /obj/structure/bed{
@@ -27206,7 +27206,7 @@
 /area/fiorina/station/lowsec)
 "uNG" = (
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/asphalt/cement/cement12,
+/turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "uNI" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -27631,7 +27631,7 @@
 /area/fiorina/lz/near_lzI)
 "vgG" = (
 /obj/structure/machinery/power/apc/power/west,
-/turf/open/asphalt/cement,
+/turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
 "vgL" = (
 /obj/structure/closet/secure_closet/guncabinet{
@@ -76015,7 +76015,7 @@ ahH
 ume
 bzO
 bzO
-vEK
+aaa
 agN
 aen
 aen
@@ -76440,7 +76440,7 @@ ahv
 vDO
 tUs
 mxQ
-aad
+vEK
 aeT
 aen
 aen

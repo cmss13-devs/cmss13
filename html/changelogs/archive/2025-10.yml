@@ -58,3 +58,6 @@
   - bugfix: Changed the WY Synth reset key to Hyperdyne on Soro
   cuberound, harry:
   - rscadd: adds upper level mirroring to wall behind stairs
+2025-10-12:
+  Googles-Hands:
+  - maptweak: A blackbox and colony information recorder have been added to New Varadero

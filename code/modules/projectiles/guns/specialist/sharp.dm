@@ -31,6 +31,11 @@
 	. = ..()
 	. += SPAN_INFO("Switching firemodes will toggle the explosion delay timer between 1 second and 5 seconds")
 
+/obj/item/weapon/gun/rifle/sharp/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
+
 /obj/item/weapon/gun/rifle/sharp/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 22, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
@@ -72,7 +77,7 @@
 	explosion_delay_sharp = !explosion_delay_sharp
 	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [explosion_delay_sharp ? SPAN_BOLD("enable") : SPAN_BOLD("disable")] [src]'s delayed fire mode. Explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("5 seconds") : SPAN_BOLD("2.5 seconds")]."))
-	user.balloon_alert(user, "explosion delay [explosion_delay_sharp ? SPAN_BOLD("5 seconds") : SPAN_BOLD("2.5 seconds")].")
+	user.balloon_alert(user, "explosion delay [explosion_delay_sharp ? "5 seconds" : "2.5 seconds"].")
 
 
 

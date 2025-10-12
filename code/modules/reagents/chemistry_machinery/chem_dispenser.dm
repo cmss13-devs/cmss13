@@ -332,6 +332,7 @@
 		"sodawater",
 		"lemon_lime",
 		"sugar",
+		"chocolate",
 		"orangejuice",
 		"limejuice",
 		"watermelonjuice",
@@ -341,6 +342,7 @@
 		"grapejuice",
 		"lemonjuice",
 		"bananajuice",
+		"potatojuice",
 	)
 	hacked_reagents = list(
 		"milk",

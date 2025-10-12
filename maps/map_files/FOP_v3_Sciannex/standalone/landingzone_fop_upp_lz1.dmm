@@ -68,10 +68,6 @@
 "aY" = (
 /turf/open/floor/prison/darkpurple2/east,
 /area/event/metal/dynamic)
-"be" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "bq" = (
 /obj/structure/filingcabinet/disk,
 /turf/open/floor/prison,
@@ -92,11 +88,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison,
 /area/event/metal/dynamic)
-"bW" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/lattice,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "bZ" = (
 /obj/structure/disposalpipe/segment{
 	color = "#c4c4c4";
@@ -112,10 +103,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
-"cj" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "cH" = (
 /obj/structure/window/framed/prison,
 /turf/open/floor/plating/prison,
@@ -133,12 +120,6 @@
 	},
 /turf/open/floor/prison/darkpurple2/southeast,
 /area/fiorina/tumor/servers)
-"dc" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "di" = (
 /turf/closed/wall/prison,
 /area/fiorina/tumor/servers)
@@ -211,14 +192,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison,
 /area/event/metal/dynamic)
-"gH" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
-"hb" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "hj" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
@@ -369,17 +342,6 @@
 	},
 /turf/closed/wall/prison,
 /area/fiorina/tumor/servers)
-"om" = (
-/obj/structure/lattice,
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/obj/structure/barricade/handrail{
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "support struts"
-	},
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "oz" = (
 /obj/structure/machinery/computer3/server/rack,
 /obj/structure/window{
@@ -422,12 +384,6 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison/darkyellow2/north,
 /area/fiorina/tumor/servers)
-"pQ" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/lattice,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "pR" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison,
@@ -464,10 +420,6 @@
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
-"sb" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "sq" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
@@ -495,10 +447,6 @@
 	},
 /turf/open/floor/prison,
 /area/event/metal/dynamic)
-"tY" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/turf/open/floor/almayer_hull,
-/area/fiorina/oob)
 "up" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 8;
@@ -510,9 +458,6 @@
 "uG" = (
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
-"vd" = (
-/turf/open/floor/solarpanel,
-/area/fiorina/oob)
 "vr" = (
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 8
@@ -558,10 +503,6 @@
 /obj/item/disk,
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
-"xF" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/turf/open/floor/almayer_hull,
-/area/fiorina/oob)
 "xP" = (
 /obj/structure/stairs/perspective{
 	dir = 4;
@@ -590,10 +531,6 @@
 	},
 /turf/open/floor/prison/floor_marked/southwest,
 /area/event/metal/dynamic)
-"yJ" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "yP" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/tumor/servers)
@@ -638,26 +575,10 @@
 /obj/structure/machinery/computer/objective,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
-"Bu" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/floor/almayer_hull,
-/area/fiorina/oob)
-"Bx" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/floor/almayer_hull,
-/area/fiorina/oob)
 "BG" = (
 /obj/structure/prop/almayer/computers/sensor_computer1,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
-"BJ" = (
-/obj/structure/bedsheetbin{
-	icon_state = "linenbin-empty";
-	name = "solar lattice";
-	pixel_y = 6
-	},
-/turf/open/floor/almayer_hull,
-/area/fiorina/oob)
 "BM" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
@@ -782,10 +703,6 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/prison/darkpurple2,
 /area/fiorina/tumor/servers)
-"Gl" = (
-/obj/item/stack/rods,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "Gt" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/event/metal/dynamic)
@@ -835,15 +752,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
-"Ih" = (
-/obj/structure/prop/invuln{
-	desc = "An inflated membrane. This one is puncture proof. Wow!";
-	icon = 'icons/obj/items/inflatable.dmi';
-	icon_state = "wall";
-	name = "inflatable wall"
-	},
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "Il" = (
 /obj/structure/stairs/perspective{
 	dir = 9;
@@ -851,12 +759,6 @@
 	},
 /turf/open/floor/prison,
 /area/event/metal/dynamic)
-"Iu" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/lattice,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "IJ" = (
 /turf/open/floor/prison/darkpurple2,
 /area/fiorina/tumor/servers)
@@ -890,11 +792,6 @@
 /obj/item/stack/sheet/mineral/plastic,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
-"Ke" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "Kt" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control/upp{
@@ -943,6 +840,7 @@
 	pixel_x = 10;
 	pixel_y = -3
 	},
+/obj/structure/machinery/telecomms/relay/preset/tower/all,
 /turf/open/floor/prison,
 /area/event/metal/dynamic)
 "LR" = (
@@ -977,16 +875,6 @@
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/servers)
-"MS" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "Nd" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
@@ -998,10 +886,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
-"Nf" = (
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/turf/open/floor/almayer_hull,
-/area/fiorina/oob)
 "Ng" = (
 /turf/open/floor/prison,
 /area/event/metal/dynamic)
@@ -1132,10 +1016,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
-"Ua" = (
-/obj/structure/lattice,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "Ub" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 5
@@ -1242,11 +1122,6 @@
 /obj/structure/closet/crate/trashcart,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/servers)
-"Zh" = (
-/obj/structure/lattice,
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "Zk" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison/floor_plate,
@@ -1265,9 +1140,6 @@
 	},
 /turf/closed/wall/prison,
 /area/fiorina/tumor/servers)
-"ZN" = (
-/turf/closed/wall/strata_ice/dirty,
-/area/event/metal/dynamic)
 "ZP" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stack/sheet/mineral/plastic,
@@ -1336,7 +1208,6 @@ pl
 pl
 pl
 pl
-be
 pl
 pl
 pl
@@ -1346,21 +1217,22 @@ pl
 pl
 pl
 pl
-be
-yJ
-yJ
-yJ
-hb
-be
-yJ
-yJ
-yJ
-hb
-be
-yJ
-yJ
-yJ
-hb
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
 pl
 pl
 pl
@@ -1398,23 +1270,23 @@ pl
 pl
 pl
 pl
-be
-Iu
-vd
-vd
-vd
-Zh
-bW
-vd
-vd
-vd
-Zh
-bW
-vd
-vd
-vd
-pQ
-hb
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
 pl
 pl
 pl
@@ -1444,30 +1316,30 @@ pl
 pl
 pl
 pl
-ZN
 pl
 pl
 pl
 pl
 pl
 pl
-sb
-Bx
-vd
-BJ
-vd
-tY
-Bx
-vd
-BJ
-vd
-tY
-Bx
-vd
-BJ
-vd
-tY
-gH
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
 pl
 pl
 pl
@@ -1504,23 +1376,23 @@ pl
 pl
 pl
 pl
-sb
-Bx
-vd
-vd
-vd
-Zh
-bW
-vd
-vd
-vd
-Zh
-bW
-vd
-vd
-vd
-tY
-gH
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
 pl
 pl
 pl
@@ -1552,34 +1424,34 @@ pl
 pl
 pl
 pl
-om
 pl
 pl
 pl
 pl
-sb
-Nf
-MS
-cj
-Ke
-Bu
-Bu
-MS
-cj
-Ke
-Bu
-Bu
-MS
-cj
-Ke
-xF
-gH
 pl
 pl
 pl
-Ih
-Ih
-Ih
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
 pl
 aK
 aK
@@ -1631,7 +1503,7 @@ Ut
 Ut
 Ut
 az
-Ih
+pl
 aK
 aK
 aK
@@ -1846,7 +1718,7 @@ SQ
 aN
 aj
 aK
-Ih
+pl
 pl
 pl
 il
@@ -2871,7 +2743,7 @@ pl
 pl
 pl
 pl
-dc
+pl
 pl
 pl
 pl
@@ -3193,7 +3065,7 @@ pl
 pl
 pl
 pl
-Ua
+pl
 pl
 pl
 pl
@@ -3246,7 +3118,7 @@ pl
 pl
 pl
 pl
-Gl
+pl
 pl
 pl
 pl
@@ -3300,7 +3172,7 @@ pl
 pl
 pl
 pl
-Ua
+pl
 pl
 pl
 pl

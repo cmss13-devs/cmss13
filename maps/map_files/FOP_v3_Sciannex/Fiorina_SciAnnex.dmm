@@ -294,10 +294,6 @@
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/station)
-"abg" = (
-/obj/structure/lattice,
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/oob)
 "abh" = (
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/auto_turf/shale/layer1,
@@ -716,10 +712,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
-"acK" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/station/research_cells/west)
 "acL" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/condiment/saltshaker{
@@ -34031,10 +34023,10 @@ bMz
 naW
 xHV
 xHV
-kPz
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
+bQM
 tfP
 tfP
 eyi
@@ -34455,12 +34447,12 @@ jQy
 naW
 xHV
 xHV
-kPz
-kPz
-kPz
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
 tfP
 tfP
 anC
@@ -35092,12 +35084,12 @@ naW
 bQM
 bQM
 xHV
-kPz
-kPz
-kPz
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
 anA
 dwQ
 dwQ
@@ -35519,7 +35511,7 @@ xHV
 bQM
 bQM
 bQM
-kPz
+bQM
 bQM
 bQM
 hLM
@@ -35728,11 +35720,11 @@ jQy
 dyY
 xHV
 xHV
-kPz
-kPz
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
+bQM
+bQM
 tfP
 tfP
 wpW
@@ -36150,13 +36142,13 @@ jQy
 jQy
 lFV
 xHV
-kPz
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
+bQM
 gwH
 tfP
-kPY
+tfP
 gwH
 gwH
 wnD
@@ -63319,9 +63311,9 @@ agz
 agN
 agN
 mRM
-abg
-abg
-abg
+mRM
+mRM
+mRM
 dCM
 svc
 wNG
@@ -63531,9 +63523,9 @@ bEm
 vRA
 vFV
 mRM
-abg
 mRM
-abg
+mRM
+mRM
 dCM
 nIw
 wNG
@@ -63743,9 +63735,9 @@ agx
 agx
 agO
 mRM
-abg
-abg
-abg
+mRM
+mRM
+mRM
 dCM
 bsc
 rIy
@@ -65813,7 +65805,7 @@ rhH
 cKa
 wef
 wef
-acK
+acF
 bQM
 bQM
 bQM

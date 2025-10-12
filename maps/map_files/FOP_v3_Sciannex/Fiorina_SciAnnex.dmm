@@ -922,6 +922,10 @@
 /obj/item/clothing/glasses/science,
 /turf/open/auto_turf/sand_white/layer0,
 /area/fiorina/tumor/fiberbush)
+"adw" = (
+/obj/structure/tunnel,
+/turf/open/auto_turf/shale/layer1,
+/area/fiorina/tumor/aux_engi)
 "adx" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/auto_turf/shale/layer1,
@@ -946,6 +950,10 @@
 /obj/item/disk,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
+"adB" = (
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/auto_turf/shale/layer1,
+/area/fiorina/station/power_ring)
 "adC" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/plating/prison,
@@ -1286,6 +1294,10 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
+"aeT" = (
+/obj/structure/tunnel,
+/turf/open/auto_turf/shale/layer1,
+/area/fiorina/tumor/fiberbush)
 "aeU" = (
 /turf/open/auto_turf/sand_white/layer0,
 /area/fiorina/station/park)
@@ -4770,14 +4782,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec/east)
-"arm" = (
-/obj/effect/landmark/static_comms/net_one,
-/turf/open/floor/plating/prison,
-/area/fiorina/lz/near_lzI)
-"arn" = (
-/obj/effect/landmark/static_comms/net_two,
-/turf/open/floor/plating/prison,
-/area/fiorina/lz/near_lzI)
 "aro" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -5584,6 +5588,30 @@
 /obj/structure/machinery/space_heater,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
+"aul" = (
+/obj/structure/tunnel,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/chapel)
+"aum" = (
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/asphalt/cement,
+/area/fiorina/station/telecomm/lz1_cargo)
+"aun" = (
+/obj/structure/tunnel,
+/turf/open/auto_turf/shale/layer1,
+/area/fiorina/station/research_cells/east)
+"auo" = (
+/obj/structure/tunnel,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"aup" = (
+/obj/structure/tunnel,
+/turf/open/auto_turf/shale/layer1,
+/area/fiorina/tumor/ice_lab)
+"auq" = (
+/obj/structure/tunnel,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
 "auQ" = (
 /obj/structure/barricade/handrail/type_b{
 	layer = 3.5
@@ -9066,13 +9094,6 @@
 "dLL" = (
 /turf/open/floor/prison/darkpurple2/southwest,
 /area/fiorina/tumor/servers)
-"dLN" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/emails{
-	pixel_y = 5
-	},
-/turf/open/floor/prison/bluefull,
-/area/fiorina/station/power_ring)
 "dMT" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/auto_turf/sand_white/layer0,
@@ -9124,10 +9145,7 @@
 /turf/open/asphalt/cement,
 /area/fiorina/station/disco)
 "dPm" = (
-/obj/structure/bed/chair{
-	dir = 1;
-	layer = 2.7
-	},
+/obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "dQe" = (
@@ -33868,7 +33886,7 @@ jjM
 wnD
 adP
 adP
-adP
+aeT
 rHr
 wnD
 uyN
@@ -40058,7 +40076,7 @@ abp
 ace
 abp
 abp
-abp
+adw
 abp
 jlk
 jlk
@@ -42060,7 +42078,7 @@ jXz
 pPG
 jXz
 lLQ
-lLQ
+auo
 lLQ
 ael
 lLQ
@@ -47452,7 +47470,7 @@ jlk
 jlk
 uNM
 amN
-abp
+adw
 abp
 okT
 abp
@@ -50729,7 +50747,7 @@ jHz
 jHz
 aPD
 hoZ
-hoZ
+auq
 hoZ
 hoZ
 itv
@@ -54834,7 +54852,7 @@ tna
 umW
 jjW
 mCp
-rJF
+aul
 gTi
 jjW
 tna
@@ -59014,7 +59032,7 @@ atG
 xLi
 rfd
 ado
-ado
+aup
 ado
 kii
 ujo
@@ -68230,7 +68248,7 @@ btJ
 naI
 pLE
 duF
-dLN
+pYB
 dPm
 tOM
 tOM
@@ -68442,7 +68460,7 @@ hDF
 vza
 pLE
 duF
-chg
+pYB
 tOM
 tOM
 tOM
@@ -71988,7 +72006,7 @@ ajY
 acx
 acx
 ajU
-ajS
+aum
 ajS
 bcX
 ajS
@@ -73671,7 +73689,7 @@ asr
 asg
 asg
 asg
-adc
+aun
 adc
 acT
 acT
@@ -76488,7 +76506,7 @@ bzO
 bzO
 mxQ
 abx
-abo
+adB
 abo
 abo
 aiy
@@ -81106,7 +81124,7 @@ nGZ
 uNs
 xeO
 xeO
-arm
+xeO
 xeO
 xeO
 xeO
@@ -81742,7 +81760,7 @@ nGZ
 tgK
 xeO
 xeO
-arn
+xeO
 xeO
 xeO
 xeO

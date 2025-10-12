@@ -1062,12 +1062,6 @@
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/logistic/maintenance_starboard)
-"acR" = (
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
-/turf/open/floor/hybrisa/tile/green_bigtile/east,
-/area/navalis/indoors/residential/cafeteria)
 "acS" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
 /obj/structure/prop/structure_lattice{
@@ -4258,12 +4252,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/industrial/power)
-"akU" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/hybrisa/tile/green_bigtile/west,
-/area/navalis/indoors/residential/cafeteria)
 "akV" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -7475,6 +7463,16 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/port)
+"avZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = 16;
+	pixel_y = -15
+	},
+/turf/open/floor/plating,
+/area/navalis/indoors/charon/below_deck/front)
 "awa" = (
 /turf/closed/wall/hybrisa/colony/office/reinforced,
 /area/navalis/indoors/command/maintenance_port)
@@ -8200,6 +8198,11 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/com_ext)
+"ayy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/platingdmg3,
+/area/navalis/indoors/charon/below_deck/front)
 "ayz" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
@@ -8224,6 +8227,9 @@
 	},
 /turf/open/floor/corsat/box,
 /area/navalis/indoors/charon/below_deck/middle)
+"ayB" = (
+/turf/open/floor/plating/platingdmg3,
+/area/navalis/indoors/charon/below_deck/front)
 "ayC" = (
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
@@ -8658,7 +8664,7 @@
 	icon_state = "lattice12";
 	pixel_y = 2
 	},
-/turf/open/floor/prison/greenblue/northwest,
+/turf/open/floor/plating,
 /area/navalis/indoors/charon/below_deck/front)
 "azF" = (
 /obj/structure/platform/stone/strata/west,
@@ -9059,6 +9065,9 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/refinery)
+"aAE" = (
+/turf/open/floor/plating/platingdmg2,
+/area/navalis/indoors/charon/below_deck/front)
 "aAF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump,
@@ -9235,6 +9244,12 @@
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
 "aBf" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 1
+	},
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors/residential/cafeteria)
 "aBg" = (
@@ -10437,6 +10452,7 @@
 "aEa" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/alien/weeds,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/darkpurple2/west,
 /area/navalis/oob/powered)
 "aEb" = (
@@ -10848,6 +10864,7 @@
 "aFl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/alien/weeds,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison/darkbrown3,
 /area/navalis/oob/powered)
 "aFm" = (
@@ -12845,6 +12862,9 @@
 	},
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/oob/empty_space)
+"aLf" = (
+/turf/open/floor/plating,
+/area/navalis/indoors/charon/below_deck/front)
 "aLg" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -11;
@@ -12869,6 +12889,15 @@
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /turf/open/floor/plating/catwalk/grate/net,
 /area/navalis/indoors/charon/surface_deck/main_deck)
+"aLl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/navalis/indoors/charon/below_deck/front)
 "aLm" = (
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/navalis/indoors/charon/below_deck/rear)
@@ -12890,11 +12919,7 @@
 "aLp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/obj/structure/prop/invuln/lattice_prop{
-	icon_state = "lattice12";
-	pixel_y = 2
-	},
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/plating,
 /area/navalis/indoors/charon/below_deck/front)
 "aLq" = (
 /obj/effect/decal/warning_stripes{
@@ -12931,6 +12956,9 @@
 	},
 /turf/open/floor/almayer/blackfull/west,
 /area/navalis/indoors/charon/below_deck/front)
+"aLv" = (
+/turf/open/floor/plating/platingdmg1,
+/area/navalis/indoors/charon/below_deck/front)
 "aLw" = (
 /obj/structure/machinery/light{
 	invisibility = 101;
@@ -12940,6 +12968,9 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/navalis/indoors/ice_cavern)
+"aLx" = (
+/turf/open/floor/plating/panelscorched,
+/area/navalis/indoors/charon/below_deck/front)
 "aLy" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison/dark,
@@ -12981,7 +13012,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/almayer/west,
-/turf/open/floor/plating,
+/turf/open/floor/plating/platingdmg3,
 /area/navalis/indoors/charon/below_deck/front)
 "aLE" = (
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
@@ -13082,7 +13113,9 @@
 	pixel_x = -32;
 	layer = 4.2
 	},
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced/hull{
+	name = "PSV Charon"
+	},
 /area/navalis/indoors/charon/below_deck/rear)
 "aLS" = (
 /obj/item/tool/wirecutters/tactical{
@@ -13164,6 +13197,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/cell_stripe/west,
 /area/navalis/indoors/med_sci/upper_level/sci_ent)
+"aMd" = (
+/turf/open/floor/plating/platingdmg2,
+/area/navalis/indoors/logistic/maintenance_starboard)
 "aMe" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/outdoors/exterior/med_ext/upper)
@@ -13525,6 +13561,9 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/charon/below_deck/middle)
+"aNe" = (
+/turf/open/floor/plating/platingdmg1,
+/area/navalis/indoors/logistic/maintenance_starboard)
 "aNf" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreenfull,
@@ -13696,6 +13735,9 @@
 /obj/structure/barricade/handrail/strata/navalis,
 /turf/open/floor/plating/catwalk/grate/alt,
 /area/navalis/outdoors/landing_zone_2)
+"aNF" = (
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
+/area/navalis/indoors/residential/starboard)
 "aNG" = (
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/charon/below_deck/rear)
@@ -14337,6 +14379,7 @@
 /area/navalis/oob)
 "aPw" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison,
 /area/navalis/oob/powered)
 "aPx" = (
@@ -14513,6 +14556,10 @@
 "aPT" = (
 /turf/open/floor/plating,
 /area/navalis/indoors/industrial/mining)
+"aPU" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/navalis/indoors/residential/starboard)
 "aPV" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /turf/closed/wall/shiva/ice,
@@ -14581,6 +14628,10 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/navalis/indoors/residential/maint_starboard)
+"aQh" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/almayer/greenfull2,
+/area/navalis/indoors/residential/port)
 "aQi" = (
 /obj/structure/pipes/standard/simple/visible/purple{
 	dir = 6
@@ -14610,6 +14661,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/command/starboard_hallway)
+"aQm" = (
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
+/area/navalis/indoors/residential/port)
 "aQn" = (
 /obj/structure/barricade/handrail/strata/navalis,
 /obj/structure/pipes/standard/simple/visible/purple{
@@ -15009,6 +15063,10 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
 /area/navalis/indoors/residential/kitchen)
+"aRo" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating,
+/area/navalis/indoors/residential/maint_stern)
 "aRp" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
@@ -15036,6 +15094,9 @@
 	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
 /area/navalis/indoors/residential/port)
+"aRt" = (
+/turf/open/floor/plating/platingdmg3,
+/area/navalis/indoors/residential/maint_stern)
 "aRu" = (
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor/darkblue2,
@@ -15215,6 +15276,10 @@
 	},
 /turf/open/floor/kutjevo/grey,
 /area/navalis/outdoors/landing_zone_2)
+"aRQ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/plating/platingdmg1,
+/area/navalis/indoors/residential/maint_stern)
 "aRR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_arrow2";
@@ -15570,6 +15635,13 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/navalis/oob/empty_space)
+"aSQ" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/navalis/indoors/residential/cafeteria)
 "aSR" = (
 /obj/structure/platform/stone/strata/north,
 /obj/structure/platform/stone/strata/west,
@@ -15629,6 +15701,7 @@
 /area/navalis/indoors/ice_cavern)
 "aSZ" = (
 /obj/effect/alien/weeds,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison,
 /area/navalis/oob/powered)
 "aTa" = (
@@ -15643,6 +15716,33 @@
 	},
 /turf/closed/wall/hybrisa/colony/office/reinforced/hull,
 /area/navalis/oob/empty_space)
+"aTd" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/hybrisa/carpet/rug_colorable/biege/northwest,
+/area/navalis/indoors/residential/cafeteria)
+"aTe" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/hybrisa/carpet/rug_colorable/biege/northeast,
+/area/navalis/indoors/residential/cafeteria)
+"aTf" = (
+/turf/open/floor/plating/platingdmg2,
+/area/navalis/indoors/residential/cafeteria)
+"aTg" = (
+/turf/open/floor/plating/platingdmg1,
+/area/navalis/indoors/residential/cafeteria)
+"aTh" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/navalis/indoors/residential/cafeteria)
+"aTi" = (
+/turf/open/floor/plating/platingdmg3,
+/area/navalis/indoors/residential/cafeteria)
+"aTj" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/navalis/indoors/residential/cafeteria)
 "aTm" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /turf/open_space,
@@ -17290,10 +17390,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/residential/maint_stern)
-"aYF" = (
-/obj/effect/alien/resin/sticky,
-/turf/open/floor/prison/floor_plate,
-/area/navalis/oob)
 "aYG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -18800,11 +18896,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/navalis/indoors/residential/maint_stern)
-"bdK" = (
-/obj/effect/alien/resin/sticky,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/navalis/indoors/residential/cafeteria)
 "bdL" = (
 /turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
 /area/navalis/indoors/industrial/power)
@@ -18817,23 +18908,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/floor_plate,
 /area/navalis/indoors/residential/maint_stern)
-"bdO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 8
-	},
-/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/navalis/indoors/residential/cafeteria)
-"bdP" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/hybrisa/tile/green_bigtile/east,
-/area/navalis/indoors/residential/cafeteria)
-"bdQ" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan,
-/turf/open/floor/hybrisa/tile/green_bigtile,
-/area/navalis/indoors/residential/cafeteria)
 "bdR" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -18859,32 +18933,11 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/residential/cafeteria)
-"bdW" = (
-/obj/structure/pipes/vents/pump,
-/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/navalis/indoors/residential/cafeteria)
-"bdX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/generic,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/navalis/indoors/residential/cafeteria)
-"bdY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/alien/resin/sticky,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/navalis/indoors/residential/cafeteria)
 "bdZ" = (
 /obj/effect/decal/cleanable/generic,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/floor_plate,
 /area/navalis/indoors/residential/maint_stern)
-"bea" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/navalis/indoors/residential/cafeteria)
 "beb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -18905,19 +18958,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/navalis/indoors/residential/maint_stern)
-"bee" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/hybrisa/tile/green_bigtile/east,
-/area/navalis/indoors/residential/cafeteria)
-"bef" = (
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 1
-	},
-/turf/open/floor/hybrisa/tile/green_bigtile/north,
-/area/navalis/indoors/residential/cafeteria)
 "beg" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -18997,13 +19037,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
-	},
-/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/navalis/indoors/residential/cafeteria)
-"bew" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 10
 	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/residential/cafeteria)
@@ -19660,12 +19693,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/ice/layer1,
 /area/navalis/oob)
-"bgD" = (
-/obj/structure/stairs{
-	dir = 8
-	},
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/residential/cafeteria)
 "bgE" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/trash/buritto,
@@ -20009,10 +20036,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/navalis/outdoors/exterior/log_ext/upper)
-"blN" = (
-/obj/effect/alien/resin/sticky,
-/turf/open/floor/hybrisa/tile/green_bigtile/west,
-/area/navalis/indoors/residential/cafeteria)
 "bmd" = (
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/indoors/charon/below_deck/front)
@@ -20220,7 +20243,7 @@
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer/northeast,
 /obj/structure/platform_decoration/metal/almayer/southwest,
-/turf/open/floor/plating,
+/turf/open/floor/plating/panelscorched,
 /area/navalis/indoors/charon/below_deck/front)
 "bsv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -21911,6 +21934,7 @@
 /turf/open/floor/plating/catwalk/rusted,
 /area/navalis/oob/empty_space)
 "cCU" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison/darkbrown3,
 /area/navalis/oob/powered)
 "cDl" = (
@@ -24829,6 +24853,7 @@
 "ePD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/alien/weeds,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison,
 /area/navalis/oob/powered)
 "ePG" = (
@@ -24991,6 +25016,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/command/maintenance_port)
 "eUs" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison,
 /area/navalis/oob/powered)
 "eUJ" = (
@@ -25464,7 +25490,7 @@
 "flK" = (
 /obj/structure/machinery/light,
 /obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
+	dir = 5
 	},
 /turf/open/floor/hybrisa/tile/green_bigtile/north,
 /area/navalis/indoors/residential/cafeteria)
@@ -25874,10 +25900,6 @@
 /obj/structure/window/framed/hybrisa/colony,
 /turf/open/floor/plating,
 /area/navalis/indoors/logistic/upper_deck/workshop)
-"fBN" = (
-/obj/structure/window/framed/hybrisa/colony,
-/turf/open/floor/plating,
-/area/navalis/indoors/residential/cafeteria)
 "fBP" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
@@ -27512,9 +27534,6 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/command/maintenance_port)
 "gFS" = (
-/obj/structure/machinery/door/airlock/almayer/generic/glass{
-	dir = 1
-	},
 /turf/open/floor/corsat/marked,
 /area/navalis/indoors/residential/cafeteria)
 "gGc" = (
@@ -27715,10 +27734,6 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/mining)
-"gTn" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/hybrisa/tile/green_bigtile/north,
-/area/navalis/indoors/residential/cafeteria)
 "gTw" = (
 /turf/open/floor/prison/darkbrown2/west,
 /area/navalis/indoors/logistic/upper_deck/office)
@@ -34435,7 +34450,9 @@
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/navalis/indoors/command/bathroom)
 "met" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/strata_outpost/reinforced/hull{
+	name = "PSV Charon"
+	},
 /area/navalis/indoors/charon/below_deck/rear)
 "mfg" = (
 /obj/effect/decal/hybrisa/warningstripes_angled_corner{
@@ -38990,6 +39007,7 @@
 /area/navalis/indoors/charon/below_deck/front)
 "pFT" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison/darkbrowncorners3,
 /area/navalis/oob/powered)
 "pGi" = (
@@ -39451,6 +39469,9 @@
 /area/navalis/oob/empty_space)
 "pVx" = (
 /obj/structure/machinery/light,
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors/residential/cafeteria)
 "pVA" = (
@@ -40234,6 +40255,7 @@
 /area/navalis/indoors/charon/below_deck/middle)
 "qut" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison/darkbrown3,
 /area/navalis/oob/powered)
 "quu" = (
@@ -40788,6 +40810,7 @@
 /area/navalis/indoors/med_sci/upper_level/store)
 "qQO" = (
 /obj/effect/alien/weeds,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/darkpurple2/north,
 /area/navalis/oob/powered)
 "qSa" = (
@@ -42169,6 +42192,7 @@
 "rVO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/alien/weeds,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison/darkbrown3/east,
 /area/navalis/oob/powered)
 "rVR" = (
@@ -43598,8 +43622,7 @@
 /area/navalis/outdoors/landing_zone_2)
 "sZk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/alien/resin/sticky,
-/turf/open/floor/hybrisa/tile/green_bigtile/east,
+/turf/open/floor/plating/platingdmg1,
 /area/navalis/indoors/residential/cafeteria)
 "sZs" = (
 /obj/structure/platform/metal/kutjevo_smooth/west,
@@ -45214,7 +45237,9 @@
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble10{
 	pixel_x = 3
 	},
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced/hull{
+	name = "PSV Charon"
+	},
 /area/navalis/indoors/charon/below_deck/rear)
 "uiG" = (
 /obj/structure/machinery/light{
@@ -45962,7 +45987,7 @@
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
+	dir = 6
 	},
 /turf/open/floor/hybrisa/tile/green_bigtile,
 /area/navalis/indoors/residential/cafeteria)
@@ -46542,9 +46567,6 @@
 "vfx" = (
 /turf/closed/wall/hybrisa/colony/office/reinforced,
 /area/navalis/indoors/command/upper_deck/server)
-"vfH" = (
-/turf/closed/wall/hybrisa/colony/reinforced,
-/area/navalis/indoors/residential/cafeteria)
 "vfS" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
@@ -47979,6 +48001,7 @@
 "wnl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/alien/weeds,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/darkpurplecorners2/north,
 /area/navalis/oob/powered)
 "wnA" = (
@@ -112222,8 +112245,8 @@ azL
 azL
 aAf
 azL
-cwd
-aLB
+ayB
+avZ
 aLB
 aLB
 aMp
@@ -112385,9 +112408,9 @@ azL
 azL
 aAf
 azL
-niP
+aAE
 aLp
-aLK
+ayy
 aLK
 aLK
 bYh
@@ -112548,8 +112571,8 @@ azL
 azL
 azL
 azL
-niP
-msB
+aLv
+aLf
 azE
 pEU
 pEU
@@ -112711,9 +112734,9 @@ aAf
 azL
 azL
 azL
-niP
+aLx
 bsj
-mkl
+aLl
 iwF
 aNf
 aNf
@@ -150832,8 +150855,8 @@ aog
 aog
 aog
 aog
-aog
-aog
+aNe
+aMd
 aog
 aog
 aog
@@ -161125,7 +161148,7 @@ uTF
 uTF
 ohK
 xDV
-aqZ
+gDz
 sEF
 sEF
 sEF
@@ -161289,7 +161312,7 @@ pPg
 ajE
 pPg
 pPg
-aqZ
+gDz
 dXh
 tAA
 tAA
@@ -165061,7 +165084,6 @@ aqZ
 aqZ
 aqZ
 aqZ
-aqZ
 gDz
 gDz
 gDz
@@ -165069,7 +165091,8 @@ gDz
 gDz
 gDz
 gDz
-aqZ
+gDz
+gDz
 aqZ
 aqZ
 asq
@@ -165225,7 +165248,7 @@ auT
 aHY
 pSA
 abK
-atX
+aQm
 unR
 atD
 wPp
@@ -165233,7 +165256,7 @@ aje
 qEC
 aHx
 eSn
-apk
+aNF
 eKa
 aGE
 owN
@@ -166216,7 +166239,7 @@ xYy
 ydM
 tSv
 apB
-asq
+aPU
 apk
 lDY
 lDY
@@ -166374,13 +166397,13 @@ oOx
 iTX
 ajB
 atX
-asq
+drK
 drK
 ato
 apB
 aph
 aph
-asq
+asJ
 apk
 uKC
 lDY
@@ -166538,14 +166561,14 @@ aSj
 aSj
 aSj
 aSj
-asq
+atI
 atI
 atp
 asY
 qch
 asJ
-asq
-asq
+asJ
+aPU
 aRY
 aRY
 aRY
@@ -166702,14 +166725,14 @@ xAm
 xAm
 aSC
 atY
-asq
+aQh
 urt
 qGh
 urt
 iSa
 qGh
 urt
-asq
+urt
 qGh
 aSC
 xAm
@@ -196198,10 +196221,10 @@ tAt
 tAt
 tAt
 tAt
-tAt
-tAt
-tAt
-tAt
+hhH
+hhH
+hhH
+hhH
 asq
 asq
 asq
@@ -196364,10 +196387,10 @@ tAt
 tAt
 tAt
 tAt
-tAt
-tAt
+hhH
+hhH
 aRD
-aRD
+asq
 asq
 asq
 asq
@@ -196696,8 +196719,8 @@ tAt
 tAt
 aRD
 aRD
-aRD
-aRD
+asq
+asq
 asq
 asq
 asq
@@ -196859,10 +196882,10 @@ tAt
 tAt
 kVD
 siq
-aRD
-aRD
-aRD
-aRD
+asq
+asq
+asq
+asq
 asq
 asq
 asq
@@ -197023,12 +197046,12 @@ tAt
 tAt
 kVD
 tAt
-aRD
-aRD
-aRD
-aRD
 asq
-aRD
+asq
+asq
+asq
+asq
+asq
 asq
 asq
 asq
@@ -197188,12 +197211,12 @@ tAt
 kVD
 tAt
 siq
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
 asq
 asq
 asq
@@ -197352,13 +197375,13 @@ tAt
 kVD
 tAt
 siq
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
 asq
 asq
 asq
@@ -197516,14 +197539,14 @@ tAt
 kVD
 tAt
 siq
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
 asq
 asq
 asq
@@ -197680,14 +197703,14 @@ tAt
 kVD
 tAt
 siq
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
 asq
 asq
 tAA
@@ -197711,8 +197734,8 @@ aYP
 aYe
 asq
 asq
-aYC
-aYe
+aRQ
+aRt
 aWi
 aWi
 aWi
@@ -197844,14 +197867,14 @@ tAt
 kVD
 aRD
 siq
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
 asq
 asq
 asq
@@ -197874,7 +197897,7 @@ aYp
 aYQ
 aYe
 aYf
-aYF
+aYg
 aYe
 aYe
 aYp
@@ -198008,14 +198031,14 @@ tAt
 kVD
 aRD
 siq
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
 asq
 asq
 asq
@@ -198172,14 +198195,14 @@ tAt
 kVD
 aRD
 siq
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
 asq
 asq
 asq
@@ -198205,7 +198228,7 @@ aYr
 aYD
 aYD
 aWQ
-aVF
+aRo
 aVF
 aVA
 aYg
@@ -198336,13 +198359,13 @@ tAt
 kVD
 aRD
 siq
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
 asq
 asq
 tAA
@@ -198500,13 +198523,13 @@ tAt
 kVD
 aRD
 siq
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
 asq
 asq
 tAA
@@ -198664,17 +198687,17 @@ tAt
 kVD
 aRD
 siq
-aRD
-aRD
-aRD
-aRD
-aRD
-aRD
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+aZz
 asq
-asq
-asq
-tAA
-asq
+aZZ
+aZQ
 aYt
 aYt
 aWr
@@ -198828,17 +198851,17 @@ tAt
 kVD
 aRD
 siq
-aRD
-aRD
-aRD
-aRD
-aRD
-asq
-asq
-asq
-asq
-aAJ
-asq
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+aZz
+aZz
+aZQ
+aZQ
+aZQ
 aZR
 aZQ
 aWL
@@ -198860,7 +198883,7 @@ aYL
 aWy
 aYG
 aWs
-aVY
+aXy
 asq
 asq
 asq
@@ -198997,8 +199020,8 @@ bbK
 bbK
 bbK
 bbK
-asq
-asq
+aZz
+aZz
 aZQ
 aZQ
 aZQ
@@ -199161,7 +199184,7 @@ aWP
 aWP
 aWP
 aWP
-asq
+aZz
 aZQ
 aZR
 aZQ
@@ -200316,7 +200339,7 @@ asq
 asq
 dtA
 lei
-aAJ
+tAA
 bdu
 ber
 bav
@@ -200493,7 +200516,7 @@ asq
 asq
 asq
 asq
-aAJ
+asq
 aZc
 aWk
 aWk
@@ -200650,12 +200673,12 @@ beu
 bav
 bah
 bah
+aZQ
 asq
 asq
-asq
-asq
-asq
-asq
+bbK
+bbK
+bbK
 asq
 asq
 aXy
@@ -200813,15 +200836,15 @@ baI
 beu
 bav
 bam
-asq
-asq
-asq
-asq
-asq
-asq
-asq
-asq
-asq
+aZQ
+aZQ
+aZQ
+bbK
+bbK
+bbK
+bbK
+bbK
+aXy
 aXy
 aXy
 aWk
@@ -200978,16 +201001,16 @@ beu
 bav
 aZY
 aZR
-asq
-asq
-asq
-asq
-asq
-asq
-asq
-asq
-aXv
+aZQ
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
 aXy
+aXv
 aWk
 aWA
 bdD
@@ -201142,14 +201165,14 @@ mNU
 bav
 aZY
 aZQ
-asq
-asq
-asq
-asq
-asq
-asq
-asq
-asq
+aZQ
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
 aWD
 aWD
 iaG
@@ -201306,15 +201329,15 @@ ber
 bav
 aZQ
 aZQ
-asq
-asq
-asq
-asq
-asq
-asq
-asq
-viE
-viE
+aZQ
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+aWD
 aYB
 nyR
 vTx
@@ -201470,15 +201493,15 @@ beu
 bav
 aZQ
 aZZ
-tAA
-tAA
-tAA
-tAA
-tAA
-tAA
-tAA
-tAA
-viE
+aZZ
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+aWD
 aWD
 aWD
 vTx
@@ -201634,16 +201657,16 @@ beu
 bav
 tcK
 aZZ
-tAA
-bYO
-bYO
-bYO
-bYO
-bYO
-bYO
-bYO
-tAA
-asq
+aZZ
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+bbK
+viE
+aWD
 aWD
 vTx
 bdF
@@ -201796,18 +201819,18 @@ viE
 hfe
 bdF
 med
-gkw
-viE
-tAA
-bYO
-bYO
-bYO
-bYO
-bYO
-bYO
-bYO
-tAA
 asq
+asq
+viE
+bYO
+bYO
+bYO
+bYO
+bYO
+bYO
+bYO
+viE
+aWD
 aWD
 vTx
 bdG
@@ -201960,9 +201983,9 @@ viE
 sJx
 bev
 uoV
-oCA
-oCA
-akU
+asq
+asq
+asq
 dAk
 dAk
 dAk
@@ -201970,8 +201993,8 @@ dAk
 dAk
 dAk
 dAk
-akU
-blN
+asq
+asq
 oCA
 iAe
 bdF
@@ -202122,23 +202145,23 @@ asq
 asq
 viE
 vKO
-bew
-bdM
-bdM
-bdO
-bdV
-bdV
-bdV
-bea
-bdV
-bdY
-bdX
-bdV
-bdV
-bdO
-bdM
-bdK
-bdH
+bev
+iaG
+iaG
+lyT
+lyT
+cEJ
+cEJ
+xNo
+cEJ
+nAE
+oRk
+cEJ
+lyT
+lyT
+iaG
+nyR
+bdF
 laz
 viE
 asq
@@ -202286,23 +202309,23 @@ asq
 asq
 viE
 hfe
-cEJ
+bev
 cEJ
 aZf
-bee
-qKH
+lyT
+cEJ
 sZk
 qKH
 fFV
-acR
 fFV
 fFV
 fFV
-fFV
-bdP
+aTi
+iaG
+asq
 iaG
 iaG
-cEJ
+bev
 laz
 viE
 asq
@@ -202450,23 +202473,23 @@ asq
 tAA
 viE
 hfe
-cEJ
+bev
 lfM
 paj
-bef
-bdW
-vfH
-vfH
-vfH
-vfH
-vfH
-vfH
-vfH
-bdW
-bdQ
+vTx
+iaG
+aTi
+aTg
+aTi
+aTi
+aTg
+aTi
+aTi
+iaG
+med
 lck
 fLz
-iaG
+bdF
 kAC
 viE
 asq
@@ -202614,10 +202637,10 @@ tAA
 tAA
 viE
 hfe
-cEJ
+bev
 dXJ
 sqk
-beg
+vTx
 iaG
 gFS
 xWY
@@ -202627,10 +202650,10 @@ xWY
 okl
 gFS
 iaG
-bdR
+med
 oBW
 nsW
-xiC
+aSQ
 laz
 viE
 asq
@@ -202778,23 +202801,23 @@ asq
 asq
 viE
 vkr
-cEJ
+bev
 dXJ
 sqk
-beg
-iaG
-fBN
+vTx
+aTf
+aTg
 tiQ
-bgD
 aWD
-bgD
+aWD
+aWD
 tiQ
-fBN
-iaG
-bdR
+aTg
+aTf
+med
 oBW
 sqk
-cEJ
+bev
 wfQ
 viE
 asq
@@ -202942,23 +202965,23 @@ asq
 asq
 viE
 hfe
-iaG
+bdF
 oBW
 sqk
-beg
-viE
-viE
+vTx
+aTg
+aTg
 xMW
 aWD
 aWD
 aWD
 bGr
-viE
-viE
-bdR
+aTg
+aTg
+med
 oBW
 sqk
-iaG
+bdF
 laz
 viE
 asq
@@ -203106,9 +203129,9 @@ asq
 asq
 viE
 bLu
-iaG
-oBW
-sqk
+aTj
+aTe
+aTd
 flK
 viE
 vqh
@@ -203120,9 +203143,9 @@ tiQ
 xzX
 viE
 uKr
-oBW
-sqk
-iaG
+aTe
+aTd
+bdH
 cSG
 viE
 asq
@@ -203446,7 +203469,7 @@ cRQ
 cUV
 mtv
 viE
-mPV
+aTh
 bdR
 iaG
 cEJ
@@ -205895,8 +205918,8 @@ asq
 asq
 jeL
 asq
-med
-asq
+bYO
+bYO
 aBf
 baa
 bYO
@@ -206058,9 +206081,6 @@ asq
 asq
 tAA
 asq
-asq
-asq
-tAA
 bYO
 bYO
 bYO
@@ -206072,8 +206092,11 @@ bYO
 bYO
 bYO
 bYO
-tAA
-gTn
+bYO
+bYO
+bYO
+bYO
+bYO
 asq
 asq
 tAA
@@ -206222,9 +206245,6 @@ tAA
 tAA
 tAA
 asq
-asq
-asq
-tAA
 bYO
 bYO
 bYO
@@ -206236,7 +206256,10 @@ bYO
 bYO
 bYO
 bYO
-tAA
+bYO
+bYO
+bYO
+bYO
 asq
 asq
 asq
@@ -206719,13 +206742,13 @@ asq
 tAA
 tAA
 tAA
-tAA
-tAA
-tAA
-tAA
-tAA
-tAA
-tAA
+bYO
+bYO
+bYO
+bYO
+bYO
+bYO
+bYO
 tAA
 tAA
 asq
@@ -206883,12 +206906,12 @@ asq
 tAA
 asq
 asq
-asq
-asq
-asq
-asq
-asq
-asq
+bYO
+bYO
+bYO
+bYO
+bYO
+bYO
 asq
 asq
 asq
@@ -207047,12 +207070,12 @@ asq
 tAA
 asq
 asq
-asq
-asq
-asq
-asq
-asq
-asq
+tAA
+bYO
+bYO
+bYO
+bYO
+bYO
 asq
 asq
 tAA
@@ -207211,12 +207234,12 @@ asq
 tAA
 tAA
 asq
-asq
-asq
-asq
-asq
-asq
-asq
+tAA
+bYO
+bYO
+bYO
+bYO
+bYO
 asq
 asq
 tAA
@@ -207376,8 +207399,8 @@ okQ
 okQ
 okQ
 asq
-asq
-asq
+tAA
+tAA
 asq
 asq
 asq

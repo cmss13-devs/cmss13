@@ -1011,7 +1011,7 @@ SUBSYSTEM_DEF(minimaps)
 		UnregisterSignal(source, COMSIG_MOB_MOUSEDOWN)
 		source.client.mouse_pointer_icon = null
 		return NONE
-	if(istype(object, /atom/movable/screen/minimap_tool))
+	if(istype(object, /atom/movable/screen/minimap_tool) || istype(object, /atom/movable/screen/exit_map))
 		linked_map.active_draw_tool = null
 		UnregisterSignal(usr, COMSIG_MOB_MOUSEDOWN)
 		usr.client.mouse_pointer_icon = null

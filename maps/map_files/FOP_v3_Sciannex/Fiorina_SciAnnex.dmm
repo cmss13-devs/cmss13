@@ -16708,10 +16708,6 @@
 /obj/structure/machinery/computer3/server/rack,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/tumor/servers)
-"kPz" = (
-/obj/structure/lattice,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "kPY" = (
 /turf/closed/wall/prison,
 /area/fiorina/tumor/fiberbush)
@@ -67072,7 +67068,7 @@ acM
 aqK
 acF
 bQM
-kPz
+bQM
 bQM
 jmG
 jmG
@@ -67117,7 +67113,7 @@ gos
 gos
 duL
 uTv
-kPz
+bQM
 ipy
 auS
 btJ
@@ -67283,9 +67279,9 @@ wef
 acM
 aqK
 acF
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
 jmG
 cOF
 cOF
@@ -67496,7 +67492,7 @@ kWx
 acF
 acF
 bQM
-kPz
+bQM
 bQM
 jmG
 cOF
@@ -67541,7 +67537,7 @@ umN
 xBF
 mwP
 xxg
-kPz
+bQM
 jTJ
 vUl
 btJ
@@ -67708,7 +67704,7 @@ aqK
 aqK
 acF
 bQM
-kPz
+bQM
 bQM
 jmG
 jsu
@@ -67920,7 +67916,7 @@ aqK
 aqK
 acF
 bQM
-kPz
+bQM
 bQM
 jmG
 bZI
@@ -67965,7 +67961,7 @@ umN
 umN
 umN
 xxg
-kPz
+bQM
 ipy
 pLE
 btJ
@@ -68131,9 +68127,9 @@ jMf
 aqK
 aqK
 acF
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
 jmG
 wxW
 jEK
@@ -68344,7 +68340,7 @@ aTM
 acF
 acF
 bQM
-kPz
+bQM
 bQM
 jmG
 txf
@@ -69610,10 +69606,10 @@ wHV
 arC
 wHV
 nLO
-kPz
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
+bQM
 acF
 oPR
 rpt
@@ -69631,9 +69627,9 @@ oPR
 oPR
 ofl
 mlC
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
 mlC
 aoY
 eUP
@@ -70045,7 +70041,7 @@ aor
 dYo
 mlC
 bQM
-kPz
+bQM
 bQM
 mlC
 aqs
@@ -70055,9 +70051,9 @@ oPR
 oPR
 dYo
 uDF
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
 uDF
 aCw
 aCw
@@ -70256,9 +70252,9 @@ aor
 aor
 dYo
 mlC
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
 uDF
 aqs
 oPR
@@ -70469,7 +70465,7 @@ apU
 aqR
 uDF
 bQM
-kPz
+bQM
 bQM
 uDF
 aqt
@@ -70737,8 +70733,8 @@ abo
 afc
 bzO
 bQM
-kPz
-kPz
+bQM
+bQM
 bQM
 bzO
 mxQ
@@ -71743,8 +71739,8 @@ ajS
 tjp
 ajS
 ezn
-kPz
-kPz
+bQM
+bQM
 hxq
 ajS
 ajS
@@ -78147,7 +78143,7 @@ abo
 abo
 afc
 rzt
-kPz
+bQM
 rzt
 agc
 agc

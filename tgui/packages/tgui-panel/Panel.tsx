@@ -41,11 +41,13 @@ export const Panel = (props) => {
   const [fixedWidth, setFixedWidth] = useState<number | false>(false);
   useEffect(() => {
     if (game.tvMode) {
-      Byond.winget('browseroutput', 'size').then(
-        (size: { x: number; y: number }) => {
-          setFixedWidth(size.x);
-        },
-      );
+      setTimeout(() => {
+        Byond.winget('browseroutput', 'size').then(
+          (size: { x: number; y: number }) => {
+            setFixedWidth(size.x);
+          },
+        );
+      }, 1000);
     }
   }, [game.tvMode]);
 

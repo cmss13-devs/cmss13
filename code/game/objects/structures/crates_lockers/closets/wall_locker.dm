@@ -2,7 +2,7 @@
 //not sure if there's an immediate place for secure wall lockers, but i'm sure the players will think of something
 
 /obj/structure/closet/walllocker
-	desc = "A wall mounted storage locker."
+	desc = "A wall-mounted storage locker."
 	name = "Wall Locker"
 	icon = 'icons/obj/structures/props/walllocker.dmi'
 	icon_state = "wall-locker"
@@ -16,7 +16,7 @@
 
 /obj/structure/closet/walllocker/emerglocker
 	name = "emergency locker"
-	desc = "A wall mounted locker with emergency supplies."
+	desc = "A wall-mounted locker with emergency supplies."
 	var/list/spawnitems = list(/obj/item/tank/emergency_oxygen/double,/obj/item/clothing/mask/gas)
 	var/amount = 6 // spawns each items X times.
 	icon_state = "emerg"

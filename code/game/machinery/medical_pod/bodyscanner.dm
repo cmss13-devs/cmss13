@@ -242,7 +242,7 @@
 	var/s_class = occ["health"] > 50 ? INTERFACE_GOOD : INTERFACE_BAD
 	dat += "[SET_CLASS("Health:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["health"]]% ([aux])</font>", s_class)]<br>"
 	if (occ["virus_present"])
-		dat += SET_CLASS("Viral pathogen detected in blood stream.", INTERFACE_RED)
+		dat += SET_CLASS("Viral pathogen detected in bloodstream.", INTERFACE_RED)
 		dat += "<br>"
 
 	s_class = occ["bruteloss"] < 60 ? INTERFACE_GOOD : INTERFACE_BAD

@@ -80,6 +80,39 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
 		var/obj/item/storage/box/spec/spec_kit = prod_type
 		GLOB.primary_specialists_picked[spec_kit::kit_name] = TRUE
 
+/obj/structure/machinery/cm_vending/gear/spec/automatic_vend(mob/user)
+	// Try to automatically vend spec kit if it was already assigned automatically if needed
+	var/mob/living/carbon/human/human_user = user
+	if(!istype(human_user))
+		return
+	if(!HAS_TRAIT(user, TRAIT_SPEC_VENDOR))
+		return
+	if(!vendor_role.Find(JOB_SQUAD_SPECIALIST))
+		return
+	if(!user.skills.get_skill_level(SKILL_SPEC_WEAPONS) == SKILL_SPEC_TRAINED)
+		return
+	if((!human_user.assigned_squad && squad_tag) || (!human_user.assigned_squad?.omni_squad_vendor && (squad_tag && human_user.assigned_squad.name != squad_tag)))
+		to_chat(user, SPAN_WARNING("This machine isn't for your squad."))
+		return
+	var/datum/specialist_set/chosen_set = get_specialist_set(user)
+	if(!chosen_set)
+		return
+	var/kit_path = chosen_set::kit_typepath
+	var/list/itemspec
+	for(var/list/entry as anything in GLOB.cm_vending_gear_spec)
+		if(entry[3] == kit_path)
+			itemspec = entry
+			break
+	if(!itemspec)
+		// Fallback
+		human_user.put_in_any_hand_if_possible(new kit_path, FALSE)
+		CRASH("Failed to locate [chosen_set::name] for [user] in GLOB.cm_vending_gear_spec!")
+	if(!handle_vend(itemspec, human_user))
+		return
+	vendor_successful_vend(itemspec, user)
+	var/obj/item/card/id/idcard = human_user.get_idcard()
+	GLOB.data_core.manifest_modify(human_user.real_name, WEAKREF(human_user), idcard.assignment)
+
 //------------CLOTHING VENDOR---------------
 
 GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
@@ -134,8 +167,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 		list("SU-6 Smart Pistol", 15, /obj/item/storage/box/guncase/smartpistol, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
-		list("M10 HV extended magazine (10x20mm)", 10, /obj/item/ammo_magazine/pistol/m10/extended , null, VENDOR_ITEM_REGULAR),
-		list("M10 HV drum magazine (10x20mm)", 15, /obj/item/ammo_magazine/pistol/m10/drum , null, VENDOR_ITEM_REGULAR),
+		list("M10 HV Extended Magazine (10x20mm-APC)", 6, /obj/item/ammo_magazine/pistol/m10/extended , null, VENDOR_ITEM_REGULAR),
 		list("M44 Heavy Speed Loader (.44)", 10, /obj/item/ammo_magazine/revolver/heavy, null, VENDOR_ITEM_REGULAR),
 		list("M44 Marksman Speed Loader (.44)", 10, /obj/item/ammo_magazine/revolver/marksman, null, VENDOR_ITEM_REGULAR),
 		list("M4A3 HP Magazine", 5, /obj/item/ammo_magazine/pistol/hp, null, VENDOR_ITEM_REGULAR),

@@ -41,12 +41,6 @@
 /obj/structure/largecrate/random/case/small,
 /turf/open/asphalt/cement,
 /area/fiorina/station/park)
-"aak" = (
-/obj/effect/decal/hefa_cult_decals/d32{
-	icon_state = "4"
-	},
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/tumor/servers)
 "aal" = (
 /turf/open/asphalt/cement/cement4,
 /area/fiorina/station/park)
@@ -450,14 +444,6 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/asphalt/cement/cement3,
 /area/fiorina/tumor/aux_engi)
-"abN" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = -3
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/fiorina/station/transit_hub)
 "abO" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -3937,10 +3923,6 @@
 "aom" = (
 /turf/open/auto_turf/sand_white/layer0,
 /area/fiorina/station/central_ring)
-"aon" = (
-/turf/open/auto_turf/shale/layer1,
-/turf/open/auto_turf/sand_white/layer0,
-/area/fiorina/station/central_ring)
 "aoo" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks,
 /turf/open/asphalt/cement/cement1,
@@ -4464,10 +4446,6 @@
 "aqj" = (
 /turf/open/asphalt/cement/cement15,
 /area/fiorina/station/civres_blue)
-"aqk" = (
-/turf/open/auto_turf/shale/layer1,
-/turf/open/asphalt/cement/cement14,
-/area/fiorina/station/central_ring)
 "aql" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -6384,11 +6362,6 @@
 "bis" = (
 /turf/closed/wall/prison,
 /area/fiorina/station/chapel)
-"biz" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/obj/structure/lattice,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "bjf" = (
 /obj/item/tool/warning_cone,
 /obj/structure/machinery/light/double/blue,
@@ -6569,10 +6542,6 @@
 "brC" = (
 /turf/open/floor/prison/whitegreen/southeast,
 /area/fiorina/station/medbay)
-"brY" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/station/transit_hub)
 "bsc" = (
 /obj/structure/prop/almayer/computers/sensor_computer3,
 /turf/open/floor/prison/darkredfull2,
@@ -6639,10 +6608,6 @@
 	},
 /turf/open/floor/prison/damaged1/southwest,
 /area/fiorina/station/central_ring)
-"bvr" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/tumor/aux_engi)
 "bvK" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/book/manual/atmospipes{
@@ -9881,14 +9846,6 @@
 "exI" = (
 /turf/open/floor/prison/darkbrowncorners2/west,
 /area/fiorina/station/park)
-"exW" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = -3
-	},
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/station/transit_hub)
 "eyi" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/atmos_alert{
@@ -10276,12 +10233,6 @@
 	},
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/station/medbay)
-"eOI" = (
-/obj/item/shard{
-	icon_state = "large"
-	},
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/station/transit_hub)
 "eOM" = (
 /obj/item/reagent_container/food/snacks/eat_bar,
 /turf/open/floor/prison/whitegreen/east,
@@ -12955,10 +12906,6 @@
 /obj/item/device/flashlight,
 /turf/open/floor/prison/darkyellow2,
 /area/fiorina/lz/near_lzI)
-"hmS" = (
-/obj/structure/lattice,
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/station/park)
 "hnh" = (
 /obj/item/reagent_container/food/drinks/sillycup,
 /turf/open/asphalt/cement/cement14,
@@ -13647,14 +13594,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
-"hQk" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = -3
-	},
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/oob)
 "hQM" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -18636,11 +18575,6 @@
 "mvp" = (
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
-"mvt" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/obj/structure/lattice,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "mvY" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/tool,
@@ -20030,10 +19964,6 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/lowsec/east)
-"nJu" = (
-/obj/item/stack/rods,
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/station/transit_hub)
 "nJT" = (
 /obj/structure/inflatable/popped/door,
 /turf/open/floor/prison/whitegreen/west,
@@ -20758,12 +20688,6 @@
 /obj/item/tool/weldingtool,
 /turf/open/auto_turf/shale/layer1,
 /area/fiorina/tumor/civres)
-"osu" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/station/transit_hub)
 "osN" = (
 /obj/structure/closet/bodybag,
 /obj/effect/decal/cleanable/blood/gibs/limb,
@@ -22140,10 +22064,6 @@
 	},
 /turf/open/floor/prison/yellowfull,
 /area/fiorina/station/lowsec/showers_laundry)
-"pLQ" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/station/transit_hub)
 "pMr" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/cups,
@@ -25271,11 +25191,6 @@
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/prison/kitchen/southwest,
 /area/fiorina/station/civres_blue)
-"sGS" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/lattice,
-/turf/closed/wall/strata_ice/dirty,
-/area/fiorina/oob)
 "sGX" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/snacks/mre_pack/meal4{
@@ -25783,14 +25698,6 @@
 	},
 /turf/open/floor/prison/whitegreen,
 /area/fiorina/station/medbay)
-"tcW" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = -3
-	},
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/station/transit_hub)
 "tde" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/prison/floor_plate,
@@ -26404,13 +26311,6 @@
 /obj/structure/window/framed/prison,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
-"tER" = (
-/obj/item/phone{
-	pixel_x = 9;
-	pixel_y = -10
-	},
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/station/transit_hub)
 "tEU" = (
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring/reactor)
@@ -29026,14 +28926,6 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/fiorina/station/telecomm/lz1_cargo)
-"weB" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = 13
-	},
-/turf/open/asphalt/cement/cement3,
-/area/fiorina/station/transit_hub)
 "weM" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/yellow,
@@ -29309,14 +29201,6 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/fiorina/station/power_ring)
-"wtm" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 4;
-	pixel_x = 10;
-	pixel_y = -3
-	},
-/turf/closed/wall/mineral/bone_resin,
-/area/fiorina/oob)
 "wty" = (
 /obj/structure/closet/secure_closet/security_empty,
 /obj/structure/window/reinforced{
@@ -31343,20 +31227,20 @@ bQM
 bQM
 bQM
 xwC
-kPz
-bQM
-bQM
-bQM
-bQM
-kPz
-kPz
 bQM
 bQM
 bQM
 bQM
 bQM
-kPz
-kPz
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
 bQM
 bQM
 bQM
@@ -31555,20 +31439,20 @@ bQM
 bQM
 bQM
 xwC
-kPz
 bQM
 bQM
 bQM
 bQM
-kPz
+bQM
+bQM
 xwC
 bQM
 bQM
 bQM
 bQM
 bQM
-kPz
-kPz
+bQM
+bQM
 bQM
 bQM
 bQM
@@ -31767,19 +31651,19 @@ tfP
 bQM
 bQM
 xwC
-kPz
 bQM
 bQM
 bQM
 bQM
-kPz
+bQM
+bQM
 xwC
 bQM
 bQM
 bQM
 bQM
 bQM
-kPz
+bQM
 xwC
 bQM
 bQM
@@ -31984,7 +31868,7 @@ xwC
 bQM
 bQM
 bQM
-kPz
+bQM
 xwC
 xwC
 bQM
@@ -31992,7 +31876,7 @@ bQM
 bQM
 xwC
 xwC
-kPz
+bQM
 bQM
 pqO
 eVO
@@ -32197,14 +32081,14 @@ xwC
 bQM
 bQM
 xwC
-kPz
+bQM
 xwC
 xwC
 bQM
 bQM
 xwC
 xwC
-kPz
+bQM
 bQM
 byb
 wbE
@@ -32409,7 +32293,7 @@ xwC
 bQM
 bQM
 xwC
-kPz
+bQM
 xwC
 xwC
 bQM
@@ -47463,7 +47347,7 @@ jlk
 jlk
 jlk
 jlk
-bvr
+jlk
 jlk
 jlk
 jlk
@@ -47726,7 +47610,7 @@ wbI
 itN
 mRM
 mRM
-abg
+mRM
 mRM
 mRM
 adH
@@ -47885,10 +47769,10 @@ aTo
 aTo
 aTo
 aTo
-brY
 aTo
 aTo
-brY
+aTo
+aTo
 aTo
 aTo
 aTo
@@ -47928,8 +47812,8 @@ vhB
 irB
 irB
 vhB
-hmS
-hmS
+irB
+irB
 vhB
 itN
 itN
@@ -47938,7 +47822,7 @@ itN
 itN
 mRM
 mRM
-abg
+mRM
 mRM
 mRM
 bQM
@@ -48106,7 +47990,7 @@ mRM
 mRM
 mRM
 mRM
-hQk
+mRM
 abd
 okv
 okv
@@ -48114,13 +47998,13 @@ okv
 okv
 okv
 okv
-abN
+okv
 aTo
 aTo
 aTo
 aTo
 aTo
-tcW
+aTo
 aTo
 aTo
 aTo
@@ -48135,19 +48019,19 @@ irB
 irB
 irB
 irB
-hmS
-hmS
-hmS
 irB
-hmS
-hmS
-hmS
-hmS
-hmS
-abg
-abg
-abg
-abg
+irB
+irB
+irB
+irB
+irB
+irB
+irB
+irB
+mRM
+mRM
+mRM
+mRM
 mRM
 mRM
 mRM
@@ -48347,22 +48231,22 @@ irB
 irB
 irB
 irB
-hmS
-hmS
-hmS
 irB
-hmS
-hmS
-hmS
-hmS
-hmS
-abg
-abg
-abg
-abg
+irB
+irB
+irB
+irB
+irB
+irB
+irB
+irB
 mRM
 mRM
-abg
+mRM
+mRM
+mRM
+mRM
+mRM
 mRM
 mRM
 mRM
@@ -48530,7 +48414,7 @@ mRM
 mRM
 mRM
 mRM
-wtm
+mRM
 air
 aii
 aii
@@ -48538,13 +48422,13 @@ aii
 aii
 aii
 aii
-exW
 aTo
 aTo
 aTo
 aTo
 aTo
-exW
+aTo
+aTo
 aTo
 aTo
 aTo
@@ -48559,19 +48443,19 @@ aeU
 aeU
 aeU
 aeU
-hmS
-hmS
-hmS
-irB
-hmS
 irB
 irB
-hmS
-hmS
-abg
-abg
-abg
-abg
+irB
+irB
+irB
+irB
+irB
+irB
+irB
+mRM
+mRM
+mRM
+mRM
 mRM
 mRM
 mRM
@@ -48733,7 +48617,7 @@ aiH
 aca
 aTo
 aTo
-pLQ
+aTo
 aTo
 aTo
 aTo
@@ -48786,7 +48670,7 @@ itN
 itN
 itN
 mRM
-abg
+mRM
 mRM
 mRM
 bQM
@@ -49157,7 +49041,7 @@ pxu
 enn
 aTo
 aTo
-pLQ
+aTo
 aTo
 aTo
 aTo
@@ -49581,7 +49465,7 @@ ojk
 aiK
 and
 aTo
-pLQ
+aTo
 aTo
 aTo
 and
@@ -51589,7 +51473,7 @@ bQM
 bQM
 agi
 aWV
-aak
+aWV
 pnh
 pKO
 gpY
@@ -51913,7 +51797,7 @@ aiH
 aca
 rdi
 aTo
-tER
+aTo
 and
 okv
 xkg
@@ -55091,8 +54975,8 @@ ant
 lNP
 aTo
 aTo
-eOI
-osu
+aTo
+aTo
 and
 xkg
 oxU
@@ -55513,7 +55397,7 @@ aTo
 aTo
 aTo
 aTo
-nJu
+aTo
 aTo
 aTo
 okv
@@ -55713,20 +55597,20 @@ aot
 wIL
 rJF
 cvn
-kPz
-kPz
-kPz
-kPz
-kPz
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
 aTo
 aTo
 aTo
 aTo
 aTo
-weB
+aii
 aii
 aii
 aii
@@ -55928,7 +55812,7 @@ cvn
 bQM
 bQM
 bQM
-kPz
+bQM
 bQM
 bQM
 bQM
@@ -56140,12 +56024,12 @@ bFr
 bQM
 bQM
 bQM
-kPz
 bQM
 bQM
 bQM
 bQM
-abg
+bQM
+mRM
 bQM
 bQM
 bQM
@@ -56350,17 +56234,17 @@ ajb
 ajj
 act
 act
-kPz
-kPz
-kPz
-kPz
-kPz
-kPz
-kPz
-kPz
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
 dCM
 bBt
 ihB
@@ -56564,12 +56448,12 @@ act
 act
 bQM
 bQM
-kPz
 bQM
 bQM
 bQM
 bQM
-kPz
+bQM
+bQM
 bQM
 bQM
 bQM
@@ -58880,12 +58764,12 @@ bQM
 bQM
 bQM
 bQM
-lud
-mvt
 bQM
 bQM
 bQM
-biz
+bQM
+bQM
+bQM
 bQM
 twb
 ecL
@@ -59728,7 +59612,7 @@ bQM
 bQM
 bQM
 bQM
-mtM
+bQM
 bQM
 bQM
 bQM
@@ -59947,7 +59831,7 @@ acu
 acu
 acu
 acu
-kPz
+bQM
 bQM
 twb
 twb
@@ -62494,7 +62378,7 @@ aom
 aom
 aom
 aom
-aon
+acm
 aoh
 mGr
 suX
@@ -64599,7 +64483,7 @@ egk
 iYw
 aog
 aoz
-aqk
+aqq
 acm
 acm
 acm
@@ -65019,7 +64903,7 @@ cKa
 kjt
 rLG
 jmG
-kPz
+bQM
 bQM
 bQM
 iYw
@@ -65236,7 +65120,7 @@ bQM
 bQM
 bQM
 bQM
-kPz
+bQM
 iYw
 iES
 wfw
@@ -65252,9 +65136,9 @@ frv
 frv
 iYw
 bQM
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
 wzE
 kqC
 ioc
@@ -65464,7 +65348,7 @@ rcg
 rcg
 sKY
 bQM
-kPz
+bQM
 bQM
 bQM
 wzE
@@ -65675,8 +65559,8 @@ hys
 nGf
 rPs
 sKY
-kPz
-kPz
+bQM
+bQM
 bQM
 bQM
 wzE
@@ -65888,9 +65772,9 @@ mke
 tdY
 sKY
 bQM
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
 wzE
 oXD
 xbM
@@ -66079,12 +65963,12 @@ cKa
 wef
 wef
 acK
-rcy
 bQM
 bQM
 bQM
 bQM
-kPz
+bQM
+bQM
 iYw
 nQu
 jRF
@@ -66100,7 +65984,7 @@ wTW
 wTW
 ecM
 bQM
-kPz
+bQM
 bQM
 bQM
 wzE
@@ -68359,12 +68243,12 @@ bQM
 bQM
 bQM
 bQM
-kPz
-kPz
-kPz
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
+bQM
+bQM
+bQM
 uwk
 uwk
 kjt
@@ -68571,8 +68455,8 @@ bQM
 bQM
 bQM
 bQM
-kPz
-iIw
+bQM
+bQM
 bQM
 bQM
 bQM
@@ -69421,10 +69305,10 @@ bQM
 bQM
 bQM
 bQM
-rhR
-sGS
-rhR
-mtM
+bQM
+bQM
+bQM
+bQM
 uwk
 iTr
 jWI
@@ -69632,11 +69516,11 @@ bQM
 bQM
 bQM
 bQM
-kPz
-kPz
-kPz
-kPz
-kPz
+bQM
+bQM
+bQM
+bQM
+bQM
 uwk
 uwk
 kjt

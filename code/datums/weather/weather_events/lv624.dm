@@ -35,6 +35,8 @@
 
 GLOBAL_LIST_INIT(fog_tiles, list())
 
+GLOBAL_LIST_INIT(big_fog_tiles, list())
+
 /obj/effect/landmark/fog_marker
 	name = "Fog marker"
 	var/active = FALSE
@@ -61,6 +63,21 @@ GLOBAL_LIST_INIT(fog_tiles, list())
 /obj/effect/landmark/fog_marker/proc/deactivate()
 	active = FALSE
 
+/obj/effect/landmark/big_fog_marker
+	name = "Big fog spawner"
+	var/obj/effect/big_fog/linked_fog
+
+/obj/effect/landmark/big_fog_marker/Initialize(mapload, ...)
+	. = ..()
+	GLOB.big_fog_tiles += src
+
+/obj/effect/landmark/big_fog_marker/proc/activate()
+	addtimer(CALLBACK(src, PROC_REF(spawn_fog)),x * 4)
+
+/obj/effect/landmark/big_fog_marker/proc/spawn_fog()
+	linked_fog = new/obj/effect/big_fog()
+
+
 /obj/effect/landmark/fog_marker/Destroy()
 	. = ..()
 	GLOB.fog_tiles -= src
@@ -71,8 +88,20 @@ GLOBAL_LIST_INIT(fog_tiles, list())
 
 /datum/weather_event/heavy_rain/fog/handle_weather_process()
 	. = ..()
-	for(var/i = 1 to 60)
-		var/obj/effect/landmark/fog_marker/marker = pick(GLOB.fog_tiles)
+	//for(var/i = 1 to 60)
+	//	var/obj/effect/landmark/fog_marker/marker = pick(GLOB.fog_tiles)
+
+
+
+/datum/weather_event/heavy_rain/fog/start_weather_event()
+	for(var/obj/effect/landmark/big_fog_marker/marker as anything in GLOB.big_fog_tiles)
 		marker.activate()
 
+/obj/effect/big_fog
+	icon = 'icons/effects/192x192.dmi'
+	icon_state = "massive_fog"
+
+/obj/effect/big_fog/New(loc, ...)
+	. = ..()
+	animate(src, time = 3 SECONDS ,loop = -1, alpha = 200, color = "#b33e1e")
 

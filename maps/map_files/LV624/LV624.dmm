@@ -2782,11 +2782,34 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
+"aiu" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv624/lazarus/sushi)
 "aiv" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/west,
 /area/lv624/ground/jungle/north_jungle)
+"aiw" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/gm/river/pool,
+/area/lv624/lazarus/fitness)
+"aix" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/hydroponics)
+"aiy" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/effect/landmark/xeno_spawn,
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
+"aiz" = (
+/obj/effect/landmark/xeno_spawn,
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/north_west_caves)
 "aiA" = (
 /obj/structure/stairs/perspective{
 	dir = 10;
@@ -2802,6 +2825,10 @@
 	},
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/pumping_station)
+"aiC" = (
+/obj/effect/landmark/xeno_spawn,
+/turf/open/gm/dirt/brown/variant_2,
+/area/lv624/ground/caves/north_west_caves)
 "aiD" = (
 /obj/structure/disposalpipe/segment{
 	layer = 5.1;
@@ -2819,6 +2846,10 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv624/lazarus/nexus_admin)
+"aiF" = (
+/obj/effect/landmark/queen_spawn,
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/north_west_caves)
 "aiG" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3{
 	dir = 1
@@ -2828,6 +2859,10 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/pumping_station)
+"aiH" = (
+/obj/effect/landmark/xeno_spawn,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/lv624/ground/caves/north_east_caves)
 "aiI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -2837,6 +2872,10 @@
 /obj/structure/machinery/light,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/lv624/lazarus/disposals)
+"aiJ" = (
+/obj/effect/landmark/queen_spawn,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/lv624/ground/caves/north_east_caves)
 "aiK" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/platebot,
@@ -4658,6 +4697,7 @@
 /area/lv624/lazarus/kitchen)
 "apg" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv624/lazarus/kitchen)
 "aph" = (
@@ -20090,6 +20130,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating,
 /area/lv624/lazarus/disposals)
 "bvx" = (
@@ -54339,7 +54380,7 @@ bVX
 bVX
 bWh
 bVX
-bWm
+aiC
 bVX
 bVX
 bVX
@@ -55023,9 +55064,9 @@ bVX
 bVX
 bVX
 bVX
+aiF
 bVX
-bVX
-bVX
+aiz
 bVX
 bVX
 bVX
@@ -55479,7 +55520,7 @@ bWm
 bZo
 bZe
 bVX
-bVX
+aiz
 bWm
 bVX
 bVX
@@ -57792,7 +57833,7 @@ owZ
 bzm
 bwy
 ptm
-bvZ
+aiy
 bsO
 bsO
 bsO
@@ -74542,7 +74583,7 @@ aQS
 aPX
 auE
 aNU
-aNU
+aiw
 aNU
 aFL
 avM
@@ -78399,7 +78440,7 @@ ber
 baK
 baL
 baL
-bct
+aix
 aFJ
 baL
 baK
@@ -82082,7 +82123,7 @@ aDB
 aAI
 azR
 sEv
-bky
+aiu
 aGu
 bky
 bky
@@ -88537,7 +88578,7 @@ bWB
 bWB
 bWB
 bWB
-bWB
+aiH
 bWB
 bWB
 uYj
@@ -88762,7 +88803,7 @@ bWB
 bWB
 bXm
 bWB
-bWB
+aiJ
 bWB
 bWB
 bWB
@@ -89020,7 +89061,7 @@ bvj
 acg
 aaS
 acg
-acg
+bVx
 acg
 acg
 bvj
@@ -89676,7 +89717,7 @@ bWO
 uYj
 bXx
 bWB
-bWB
+aiH
 bWB
 bWB
 pZb

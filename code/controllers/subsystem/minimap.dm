@@ -522,7 +522,8 @@ SUBSYSTEM_DEF(minimaps)
 	choices_by_mob = list()
 	stop_polling = list()
 	icon = SSminimaps.minimaps_by_z["[target]"].hud_image
-	SSminimaps.add_to_updaters(src, minimap_flags, target, drawing)
+	if(live)
+		SSminimaps.add_to_updaters(src, minimap_flags, target, drawing)
 	src.drawing = drawing
 	src.minimap_flags = minimap_flags
 	src.target = target

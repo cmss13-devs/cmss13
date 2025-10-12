@@ -469,7 +469,7 @@
 		if(0 to 49)
 			desc = "Full of vitamins and deliciousness! Contains NO pulp!"
 		if(50 to 100)
-			desc = "Full of vitamins and deliciousness! Contains pulp!"
+			desc = "Full of vitamins and deliciousness! Contains some pulp!"
 		else
 			desc = "Full of vitamins and deliciousness! Contains 100% pulp!"
 
@@ -517,7 +517,7 @@
 	center_of_mass = "x=16;y=8"
 	isGlass = 0
 
-/obj/item/reagent_container/food/drinks/bottle/lemonjuice/Initialize()
+/obj/item/reagent_container/food/drinks/bottle/limejuice/Initialize()
 	. = ..()
 	reagents.add_reagent("limejuice", 100)
 
@@ -549,13 +549,13 @@
 	center_of_mass = "x=16;y=8"
 	isGlass = 0
 
-/obj/item/reagent_container/food/drinks/bottle/lemonjuice/Initialize()
+/obj/item/reagent_container/food/drinks/bottle/grapejuice/Initialize()
 	. = ..()
 	reagents.add_reagent("grapejuice", 100)
 
 /obj/item/reagent_container/food/drinks/bottle/watermelonjuice
 	name = "Carton of Watermelon Juice"
-	desc = "Juice that tastes like watermelon. Smells like summer."
+	desc = "Takes all the fun out of eating a watermelon slice."
 	icon_state = "watermelonjuice"
 	item_state = "watermelonjuice"
 	item_icons = list(
@@ -565,7 +565,7 @@
 	center_of_mass = "x=16;y=8"
 	isGlass = 0
 
-/obj/item/reagent_container/food/drinks/bottle/lemonjuice/Initialize()
+/obj/item/reagent_container/food/drinks/bottle/watermelonjuice/Initialize()
 	. = ..()
 	reagents.add_reagent("watermelonjuice", 100)
 
@@ -581,10 +581,54 @@
 	center_of_mass = "x=16;y=8"
 	isGlass = 0
 
-/obj/item/reagent_container/food/drinks/bottle/lemonjuice/Initialize()
+/obj/item/reagent_container/food/drinks/bottle/carrotjuice/Initialize()
 	. = ..()
 	reagents.add_reagent("carrotjuice", 100)
 
+/obj/item/reagent_container/food/drinks/bottle/berryjuice
+	name = "Carton of Berry Juice"
+	desc = "Juice from a blend of ripe, mixed berries."
+	icon_state = "berryjuice"
+	item_state = "berryjuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	center_of_mass = "x=16;y=8"
+	isGlass = 0
 
+/obj/item/reagent_container/food/drinks/bottle/berryjuice/Initialize()
+	. = ..()
+	reagents.add_reagent("berryjuice", 100)
 
+/obj/item/reagent_container/food/drinks/bottle/potatojuice
+	name = "Carton of Potato Juice"
+	desc = "You don't even know what to use this for..."
+	icon_state = "potatojuice"
+	item_state = "potatojuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	center_of_mass = "x=16;y=8"
+	isGlass = 0
 
+/obj/item/reagent_container/food/drinks/bottle/potatojuice/Initialize()
+	. = ..()
+	reagents.add_reagent("potatojuice", 100)
+
+/obj/item/reagent_container/food/drinks/bottle/bananajuice
+	name = "Carton of Banana Juice"
+	desc = "Clowns wish this ran through their veins."
+	icon_state = "potatojuice"
+	item_state = "potatojuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	center_of_mass = "x=16;y=8"
+	isGlass = 0
+
+/obj/item/reagent_container/food/drinks/bottle/bananajuice/Initialize()
+	. = ..()
+	reagents.add_reagent("bananajuice", 100)

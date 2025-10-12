@@ -26,6 +26,8 @@ SUBSYSTEM_DEF(cmtv)
 	/// if there is someone more interesting to watch instead.
 	var/list/priority_list
 
+	var/atom/movable/screen/cmtv/perspective_display
+
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
 	if(!username || !CONFIG_GET(string/cmtv_link))
@@ -37,6 +39,7 @@ SUBSYSTEM_DEF(cmtv)
 	if(!camera)
 		return SS_INIT_NO_NEED
 
+	perspective_display = new
 	handle_new_camera(camera)
 
 /datum/controller/subsystem/cmtv/fire(resumed)
@@ -122,6 +125,7 @@ SUBSYSTEM_DEF(cmtv)
 	camera_operator.prefs.toggles_chat &= ~(CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_LISTENINGBUG)
 
 	camera_operator.screen += give_escape_menu_details()
+	camera_operator.screen += perspective_display
 
 	if(!QDELETED(current_perspective))
 		camera_mob.do_observe(current_perspective)
@@ -152,6 +156,7 @@ SUBSYSTEM_DEF(cmtv)
 		UnregisterSignal(current_perspective, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH, COMSIG_MOVABLE_Z_CHANGED))
 		remove_verb(current_perspective, /mob/proc/handoff_cmtv)
 		current_perspective = null
+		perspective_display.change_displayed_mob("Finding player...")
 
 	if(!istype(new_perspective) || !new_perspective.client)
 		log_debug("CMTV: Perspective could not be swapped to, picking new perspective.")
@@ -181,6 +186,9 @@ SUBSYSTEM_DEF(cmtv)
 	RegisterSignal(future_perspective_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH), PROC_REF(reset_perspective))
 	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(handle_z_change))
 	current_perspective = future_perspective_mob
+	perspective_display.change_displayed_mob(current_perspective.real_name)
+
+	camera_operator.screen += give_escape_menu_details()
 
 	var/cmtv_link = CONFIG_GET(string/cmtv_link)
 	to_chat(current_perspective, boxed_message("[SPAN_BIGNOTICE("You are being observed.")]\n\n [SPAN_NOTICE("Your perspective is currently being shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to hand this off to a different player, press <a href='byond://?src=\ref[src];abandon_cmtv=1'>here</a>. You can also use the verb 'Handoff CMTV' at any point.")]"))
@@ -270,6 +278,9 @@ SUBSYSTEM_DEF(cmtv)
 	if(possible_player.client.inactivity > delay_time)
 		return FALSE
 
+	if(world.time > possible_player.client.talked_at + delay_time)
+		return FALSE
+
 	if(world.time > possible_player.l_move_time + delay_time)
 		return FALSE
 
@@ -309,6 +320,21 @@ SUBSYSTEM_DEF(cmtv)
 
 /datum/config_entry/string/cmtv_link
 	protection = CONFIG_ENTRY_LOCKED
+
+/atom/movable/screen/cmtv
+	clear_with_screen = FALSE
+	icon_state = "blank"
+
+	screen_loc = "CENTER-5,NORTH-1.5"
+
+	appearance_flags = RESET_COLOR|RESET_TRANSFORM|NO_CLIENT_COLOR|PIXEL_SCALE
+
+	maptext_height = 400
+	maptext_width = 400
+
+/atom/movable/screen/cmtv/proc/change_displayed_mob(display_name)
+	maptext = MAPTEXT_VCR_OSD_MONO("<span style='font-size: 16px; text-align: center;'><span style='text-decoration: underline;'>Currently observing:</span><br>[display_name]</span>")
+
 
 #undef PRIORITY_FIRST
 #undef PRIORITY_SECOND

@@ -197,6 +197,7 @@
 	required_reagents = list("chocolate_beverage" = 1, "water" = 5)
 	result_amount = 5
 
+
 //*****************************************************************************************************/
 //******************************************Cocktails**************************************************/
 //*****************************************************************************************************/
@@ -222,6 +223,13 @@
 	result = "bilk"
 	required_reagents = list("milk" = 1, "beer" = 1)
 	result_amount = 2
+
+/datum/chemical_reaction/chocolate_milk
+	name = "Chocolate Milk"
+	id = "chocolate_milk"
+	result = "chocolate_milk"
+	required_reagents = list("chocolate" = 2, "milk" = 3)
+	result_amount = 5
 
 /datum/chemical_reaction/icetea
 	name = "Iced Tea"
@@ -485,22 +493,15 @@
 	name = "Margarita"
 	id = "margarita"
 	result = "margarita"
-	required_reagents = list("tequila" = 2, "limejuice" = 1)
-	result_amount = 3
+	required_reagents = list("tequila" = 2, "limejuice" = 1, "sugar" = 1)
+	result_amount = 4
 
 /datum/chemical_reaction/longislandicedtea
 	name = "Long Island Iced Tea"
 	id = "longislandicedtea"
 	result = "longislandicedtea"
-	required_reagents = list("vodka" = 1, "gin" = 1, "tequila" = 1, "cubalibre" = 1)
-	result_amount = 4
-
-/datum/chemical_reaction/icedtea
-	name = "Long Island Iced Tea"
-	id = "longislandicedtea"
-	result = "longislandicedtea"
-	required_reagents = list("vodka" = 1, "gin" = 1, "tequila" = 1, "cubalibre" = 1)
-	result_amount = 4
+	required_reagents = list("vodka" = 1, "gin" = 1, "tequila" = 1, "cubalibre" = 1, "limejuice" = 1)
+	result_amount = 5
 
 /datum/chemical_reaction/threemileisland
 	name = "Three Mile Island Iced Tea"
@@ -583,7 +584,7 @@
 	name = "Booger"
 	id = "booger"
 	result = "booger"
-	required_reagents = list("cream" = 1, "banana" = 1, "rum" = 1, "watermelonjuice" = 1)
+	required_reagents = list("cream" = 1, "bananajuice" = 1, "rum" = 1, "watermelonjuice" = 1)
 	result_amount = 4
 
 /datum/chemical_reaction/antifreeze
@@ -614,6 +615,12 @@
 	required_reagents = list("rum" = 1, "sugar" = 1, "limejuice" = 1, "sodawater" = 1)
 	result_amount = 4
 
+/datum/chemical_reaction/bluemotorcycle
+	name = "Blue Motorcycle"
+	id = "bluemotorcycle"
+	result = "bluemotorcycle"
+	required_reagents = list("vodka" = 1, "rum" = 1, "tequila" = 1, "gin" = 1, "bluecuracao" = 1, "sodawater" = 2, "lemonjuice" = 1, "limejuice" = 1, "ice" = 1)
+	result_amount = 10
 
 
 ////DRINKS THAT REQUIRED IMPROVED SPRITES BELOW:: -Agouri/////
@@ -742,7 +749,7 @@
 	name = "Erika Surprise"
 	id = "erikasurprise"
 	result = "erikasurprise"
-	required_reagents = list("ale" = 1, "limejuice" = 1, "whiskey" = 1, "banana" = 1, "ice" = 1)
+	required_reagents = list("ale" = 1, "limejuice" = 1, "whiskey" = 1, "bananajuice" = 1, "ice" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/devilskiss
@@ -763,7 +770,7 @@
 	name = "Banana Honk"
 	id = "bananahonk"
 	result = "bananahonk"
-	required_reagents = list("banana" = 1, "cream" = 1, "sugar" = 1)
+	required_reagents = list("bananajuice" = 1, "cream" = 1, "sugar" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/silencer
@@ -807,6 +814,13 @@
 	result = "milkshake"
 	required_reagents = list("cream" = 1, "ice" = 2, "milk" = 2)
 	result_amount = 5
+
+/datum/chemical_reaction/chocolate_milkshake
+	name = "Chocolate Milkshake"
+	id = "chocolate_milkshake"
+	result = "chocolate_milkshake"
+	required_reagents = list("chocolate" = 1, "milkshake" = 2)
+	result_amount = 2
 
 /datum/chemical_reaction/rewriter
 	name = "Rewriter"

@@ -815,3 +815,11 @@
 	color = "#C0FF00" // rgb: 192, 255, 0
 	properties = list(PROPERTY_ALCOHOLIC = 1, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
 	boozepwr = 1
+
+/datum/reagent/ethanol/bluemotorcycle
+	name = "Blue Motorcycle"
+	id = "bluemotorcycle"
+	description = "A very powerful drink with five types of alcohol in it. Adios, amigo." //This is its kid-friendly name. It's actually called, 'Adios, Motherfucker'. This bitch has 5 types of alcohol in it. Gets you fucked up.
+	color = "#00BFFF" // rgb: 0, 191, 255
+	properties = list(PROPERTY_ALCOHOLIC = 5, PROPERTY_FUELING = 3, PROPERTY_OXIDIZING = 3, PROPERTY_FLOWING = 2)
+	boozepwr = 5

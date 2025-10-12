@@ -133,15 +133,15 @@
 	description = "This juice is VERY sour."
 	color = "#d1db42" // rgb: 209, 219, 66
 
-/datum/reagent/drink/banana
+/datum/reagent/drink/bananajuice
 	name = "Banana Juice"
-	id = "banana"
+	id = "bananajuice"
 	description = "The raw essence of a banana."
 	color = "#e4c439" // rgb: 228, 196, 57
 
-/datum/reagent/drink/potato_juice
+/datum/reagent/drink/potatojuice
 	name = "Potato Juice"
-	id = "potato"
+	id = "potatojuice"
 	description = "Juice of the potato. Bleh."
 	nutriment_factor = 2 * FOOD_METABOLISM
 	color = "#302000" // rgb: 48, 32, 0
@@ -151,7 +151,6 @@
 	id = "grenadine"
 	description = "Made in the modern day with proper pomegranate substitute. Who uses real fruit, anyways?"
 	color = "#FF004F" // rgb: 255, 0, 79
-
 
 
 //MILK//
@@ -201,9 +200,18 @@
 	name = "Milkshake"
 	description = "Glorious brainfreezing mixture."
 	id = "milkshake"
-	color = "#AEE5E4" // rgb" 174, 229, 228
+	color = "#AEE5E4" // rgb: 174, 229, 228
 	adj_temp = -2
 	target_temp = T0C
+
+/datum/reagent/drink/cold/chocolate_milkshake
+	name = "Chocolate Milkshake"
+	description = "A fan favorite!"
+	id = "chocolate_milkshake"
+	color = "#866b65" // rgb: 134, 107, 101
+	adj_temp = -2
+	target_temp = T0C
+
 
 /datum/reagent/drink/cold/milkshake/on_mob_life(mob/living/M)
 	. = ..()

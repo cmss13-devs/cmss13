@@ -340,7 +340,7 @@
 		"berryjuice",
 		"grapejuice",
 		"lemonjuice",
-		"banana",
+		"bananajuice",
 	)
 	hacked_reagents = list(
 		"milk",

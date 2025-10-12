@@ -2490,13 +2490,7 @@
 	icon_state = "cargo_arrow"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/tool/wrench{
-	pixel_x = -8;
-	pixel_y = 10
-	},
-/obj/item/stack/rods{
-	pixel_x = -5
-	},
+/obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/mech_bay)
 "agE" = (
@@ -2699,20 +2693,16 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/navalis/indoors/logistic/mech_bay)
 "ahh" = (
-/obj/structure/machinery/mech_bay_recharge_port{
-	name = "Power Port"
-	},
 /obj/structure/sign/poster/pinup{
 	pixel_y = 32
 	},
-/turf/open/floor/prison/darkyellow2/northwest,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/logistic/mech_bay)
 "ahi" = (
-/obj/structure/largecrate/random/barrel/yellow,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
-/turf/open/floor/prison/darkyellow2/northeast,
+/turf/open/floor/prison,
 /area/navalis/indoors/logistic/mech_bay)
 "ahj" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -7430,6 +7420,9 @@
 "avO" = (
 /turf/closed/wall/hybrisa/colony/office/reinforced,
 /area/navalis/indoors/command/director_office)
+"avP" = (
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/navalis/indoors/logistic/mech_bay)
 "avQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/green/east,
@@ -8207,9 +8200,6 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/com_ext)
-"ayy" = (
-/turf/closed/wall/strata_outpost/reinforced,
-/area/navalis/oob)
 "ayz" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
@@ -8234,13 +8224,6 @@
 	},
 /turf/open/floor/corsat/box,
 /area/navalis/indoors/charon/below_deck/middle)
-"ayB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/corsat/blue/west,
-/area/navalis/oob)
 "ayC" = (
 /obj/structure/blocker/forcefield/all{
 	invisibility = 101
@@ -12957,15 +12940,6 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/navalis/indoors/ice_cavern)
-"aLx" = (
-/obj/structure/prop/invuln/lattice_prop{
-	dir = 1;
-	icon_state = "lattice-simple";
-	pixel_x = 16;
-	pixel_y = -15
-	},
-/turf/closed/wall/strata_outpost/reinforced,
-/area/navalis/oob)
 "aLy" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison/dark,
@@ -24775,7 +24749,7 @@
 /turf/open/floor/prison,
 /area/navalis/indoors/command/cent_com)
 "eKW" = (
-/turf/open/floor/prison/darkyellow2/east,
+/turf/open/floor/prison,
 /area/navalis/indoors/logistic/mech_bay)
 "eLu" = (
 /turf/open/floor/corsat/darkgreencorner/west,
@@ -28016,10 +27990,6 @@
 "heF" = (
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/navalis/indoors/command/upper_deck/port)
-"heN" = (
-/obj/vehicle/powerloader/jd,
-/turf/open/floor/mech_bay_recharge_floor,
-/area/navalis/indoors/logistic/mech_bay)
 "hfe" = (
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/navalis/indoors/residential/cafeteria)
@@ -42834,7 +42804,7 @@
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/mid)
 "syS" = (
-/turf/open/floor/prison/darkyellow2/west,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/logistic/mech_bay)
 "szk" = (
 /turf/open/floor/prison/whitered/north,
@@ -111933,16 +111903,16 @@ bhh
 bhg
 sbz
 sbz
-ayy
-ayy
-ayy
-ayy
-ayB
+niP
+niP
+niP
+niP
 sbz
-ayB
-ayy
-ayy
-ayy
+sbz
+sbz
+niP
+niP
+niP
 acV
 acV
 acV
@@ -112252,7 +112222,7 @@ azL
 azL
 aAf
 azL
-aLx
+cwd
 aLB
 aLB
 aLB
@@ -112415,7 +112385,7 @@ azL
 azL
 aAf
 azL
-ayy
+niP
 aLp
 aLK
 aLK
@@ -112578,7 +112548,7 @@ azL
 azL
 azL
 azL
-ayy
+niP
 msB
 azE
 pEU
@@ -112741,7 +112711,7 @@ aAf
 azL
 azL
 azL
-ayy
+niP
 bsj
 mkl
 iwF
@@ -149527,7 +149497,7 @@ aoV
 ufj
 ahM
 apu
-aoN
+avP
 ahg
 sjh
 oaS
@@ -149691,7 +149661,7 @@ aoV
 aih
 ahO
 apO
-aoN
+avP
 ahh
 syS
 lKg
@@ -149855,8 +149825,8 @@ aoV
 apw
 kfq
 bwB
-aoN
-heN
+avP
+eKW
 agD
 fjp
 aqc
@@ -150019,7 +149989,7 @@ aoV
 ahZ
 apH
 aqa
-aoN
+avP
 ahi
 eKW
 suG
@@ -150183,10 +150153,10 @@ bhP
 aoV
 aoV
 aqM
-aoN
-aoN
-aoN
-aoN
+avP
+avP
+avP
+avP
 aoN
 aoN
 aoN

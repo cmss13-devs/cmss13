@@ -1075,6 +1075,16 @@
 		return
 	GLOB.crew_manifest.open_ui(src)
 
+/mob/living/carbon/human/verb/view_tacmaps()
+	set name = "View Tacmap"
+	set category = "IC"
+
+	if(faction != FACTION_MARINE)
+		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] tactical map."))
+		return
+
+	GLOB.tacmap_viewer.tgui_interact(src)
+
 /mob/living/carbon/human/verb/view_objective_memory()
 	set name = "View intel objectives"
 	set category = "IC"

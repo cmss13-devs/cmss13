@@ -29,10 +29,14 @@ GLOBAL_DATUM_INIT(tacmap_viewer, /datum/tacmap_viewer, new)
 /datum/tacmap_viewer/ui_data(mob/user)
 	var/list/data = list()
 
-	if(isliving(user))
-		data["can_see_marine_map"] = FALSE
-	else
-		data["can_see_marine_map"] = TRUE
+	var/list/factions = list()
+	if(ishuman(user) && user.faction == FACTION_MARINE)
+		factions += "USCM"
+
+	if(isxeno(user))
+		factions += "Hive"
+
+	data["factions"] = factions
 
 	var/uscm_length = length(GLOB.uscm_drawing_tacmap_data)
 	if(uscm_length == 0)

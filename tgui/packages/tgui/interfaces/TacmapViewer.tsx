@@ -24,19 +24,19 @@ type Data = {
   xeno_map: string | null;
   xeno_svg: string | null;
   map_fallback: string;
-  can_see_marine_map: boolean;
+  factions: string[];
 };
 
 export const TacmapViewer = (props) => {
   const { data } = useBackend<Data>();
   const { uscm_map, xeno_map, uscm_svg, xeno_svg, map_fallback } = data;
 
-  const initialIndex = data.can_see_marine_map
-    ? 0
-    : Math.max(
+  const initialIndex = data.factions.length
+    ? Math.max(
         0,
-        PAGES.findIndex((p) => p.title === 'Hive'),
-      );
+        PAGES.findIndex((p) => p.title === data.factions[0]),
+      )
+    : 0;
 
   const [pageIndex, setPageIndex] = useState(initialIndex);
 
@@ -51,7 +51,10 @@ export const TacmapViewer = (props) => {
           <Stack.Item basis="content" grow={0} pb={1}>
             <Tabs>
               {PAGES.map((page, i) => {
-                if (page.title === 'USCM' && !data.can_see_marine_map) {
+                if (
+                  !data.factions.includes(page.title) &&
+                  data.factions.length > 0
+                ) {
                   return null;
                 }
                 return (

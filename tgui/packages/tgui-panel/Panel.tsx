@@ -41,13 +41,14 @@ export const Panel = (props) => {
   const [fixedWidth, setFixedWidth] = useState<number | false>(false);
   useEffect(() => {
     if (game.tvMode) {
-      setTimeout(() => {
-        Byond.winget('browseroutput', 'size').then(
-          (size: { x: number; y: number }) => {
-            setFixedWidth(size.x);
-          },
+      Byond.winget('split;mainwindow').then((data: { [key: string]: any }) => {
+        const split = Number.parseFloat(data['split.splitter']);
+        const windowWidth = Math.floor(
+          Number.parseFloat((data['mainwindow.size'] as string).split('x')[0]),
         );
-      }, 1000);
+
+        setFixedWidth(windowWidth * ((100 - split) / 100));
+      });
     }
   }, [game.tvMode]);
 

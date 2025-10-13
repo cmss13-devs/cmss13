@@ -349,5 +349,13 @@
 		response = "Invalid command! Use !help to view all commands."
 		return
 
+	var/cannot_run = selected_command.cannot_run(input)
+	if(cannot_run)
+		statuscode = "401"
+		response = cannot_run
+		return
+
 	statuscode = 200
 	response = selected_command.execute(input)
+
+	selected_command.post_execute(input)

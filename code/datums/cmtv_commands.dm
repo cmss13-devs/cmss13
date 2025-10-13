@@ -126,10 +126,14 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	global_cooldown_time = 30 SECONDS
 
 /datum/cmtv_command/getmobs/execute(list/arguments)
+	var/to_follow = SScmtv.get_most_active_list()
+	if(!length(to_follow))
+		return "No players to follow at this time."
+
 	var/return_text = "Available to follow:"
 
 	var/budget = length(return_text)
-	for(var/mob/living/active_mob in SScmtv.get_most_active_list())
+	for(var/mob/living/active_mob in to_follow)
 		var/text_to_add = "[active_mob.real_name]\n"
 		if(text_to_add + budget > 500)
 			break

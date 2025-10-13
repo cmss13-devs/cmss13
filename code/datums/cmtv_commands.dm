@@ -70,7 +70,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 		if(!command_datum.description)
 			continue
 
-		response_text += "![command]: [command_datum.description]"
+		response_text += "![command]: [command_datum.description]\n"
 
 	return response_text
 
@@ -135,9 +135,10 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	var/budget = length(return_text)
 	for(var/mob/living/active_mob in to_follow)
 		var/text_to_add = "[active_mob.real_name]\n"
-		if(text_to_add + budget > 500)
+		if(length(text_to_add) + budget > 500)
 			break
 	
 		return_text += text_to_add
+		budget += length(text_to_add)
 
 	return return_text

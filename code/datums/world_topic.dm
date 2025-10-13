@@ -335,3 +335,19 @@
 	data["roles"] = get_whitelisted_roles(player.ckey)
 	statuscode = 200
 	response = "Lookup successful."
+
+/datum/world_topic/cmtv
+	key = "cmtv"
+	required_params = list("command")
+
+/datum/world_topic/cmtv/Run(list/input)
+	. = ..()
+
+	var/datum/cmtv_command/selected_command = GLOB.cmtv_commands[input["command"]]
+	if(!selected_command)
+		statuscode = "404"
+		response = "Invalid command! Use !help to view all commands."
+		return
+
+	statuscode = 200
+	response = selected_command.execute(input)

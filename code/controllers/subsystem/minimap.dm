@@ -1329,17 +1329,15 @@ SUBSYSTEM_DEF(minimaps)
 	if(!locate(mini) in source.client?.screen)
 		return
 
-	var/mutable_appearance/textbox = new
+	var/mutable_appearance/textbox = mutable_appearance(icon('icons/ui_icons/map_blips.dmi'), "label", ABOVE_FLOAT_LAYER, appearance_flags = KEEP_TOGETHER)
 	textbox.maptext_x = 5
 	textbox.maptext_y = 5
 	textbox.maptext_width = 64
 	textbox.maptext = label_text
 
 	linked_map.labelled_turfs += target
-	var/image/blip = image('icons/ui_icons/map_blips.dmi', null, "label", ABOVE_FLOAT_LAYER)
-	blip.overlays += textbox
 	msg_admin_niche("[key_name(source)] has crated a label at ([target.x],[target.y]) with text: [label_text].")
-	SSminimaps.add_marker(target, minimap_flag, blip, is_label=TRUE)
+	SSminimaps.add_marker(target, minimap_flag, textbox, is_label=TRUE)
 
 /atom/movable/screen/minimap_tool/clear
 	icon_state = "clear"
@@ -1356,9 +1354,6 @@ SUBSYSTEM_DEF(minimaps)
 	desc = "Send a tacmap update"
 	screen_loc = "15,7"
 	COOLDOWN_DECLARE(update_cooldown)
-
-/atom/movable/screen/minimap_tool/update/Initialize(mapload, zlevel, minimap_flag, linked_map, owner)
-	. = ..()
 
 /atom/movable/screen/minimap_tool/update/proc/cooldown_finished()
 	icon_state = initial(icon_state)
@@ -1384,8 +1379,10 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/update/proc/announce_xeno(mob/user)
 	playsound_client(user.client, get_sfx("queen"))
 
-	var/icon/flat_map = getFlatIcon(linked_map, appearance_flags = TRUE)
-	var/icon/flat_drawing = getFlatIcon(drawn_image, appearance_flags = TRUE)
+	user.client.images += drawn_image
+	var/icon/flat_drawing = icon(user.client.RenderIcon(drawn_image))
+	user.client.images -= drawn_image
+	var/icon/flat_map = icon(user.client.RenderIcon(linked_map))
 	if(!flat_map || !flat_drawing)
 		to_chat(usr, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
 		return FALSE

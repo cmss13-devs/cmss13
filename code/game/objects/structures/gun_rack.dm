@@ -62,10 +62,10 @@
 	allowed_type = /obj/item/weapon/gun/rifle/m41aMK1
 	populate_type = /obj/item/weapon/gun/rifle/m41aMK1
 
-/obj/structure/gun_rack/m41/unloaded
+/obj/structure/gun_rack/m41a/unloaded
 	populate_type = /obj/item/weapon/gun/rifle/m41aMK1/unloaded
 
-/obj/structure/gun_rack/m41/empty
+/obj/structure/gun_rack/m41a/empty
 	initial_stored = 0
 
 /obj/structure/gun_rack/m41a2
@@ -78,15 +78,6 @@
 
 /obj/structure/gun_rack/m41a2/empty
 	initial_stored = 0
-
-/obj/structure/gun_rack/m39
-	name = "M39 sub-machinegun rack"
-	icon_state = "m39"
-	desc = ""
-	max_stored = 5
-	initial_stored = 5
-	allowed_type = /obj/item/weapon/gun/smg/m39
-	populate_type = /obj/item/weapon/gun/smg/m39
 
 /obj/structure/gun_rack/m39
 	name = "M39 sub-machinegun rack"
@@ -135,6 +126,18 @@
 
 /obj/structure/gun_rack/m4ra/unloaded
 	populate_type = /obj/item/weapon/gun/rifle/m4ra/unloaded
+
+/obj/structure/gun_rack/l42
+	name = "L42A Mark 1 battle rifle Rack"
+	icon_state = "l42"
+	desc = ""
+	max_stored = 5
+	initial_stored = 5
+	allowed_type = /obj/item/weapon/gun/rifle/l42a
+	populate_type = /obj/item/weapon/gun/rifle/l42a
+
+/obj/structure/gun_rack/m4ra/unloaded
+	populate_type = /obj/item/weapon/gun/rifle/l42a/unloaded
 
 /obj/structure/gun_rack/type71/empty
 	initial_stored = 0
@@ -190,12 +193,12 @@
 //	initial_stored = 0
 //	allowed_type = /obj/item/ammo_magazine/hardpoint/m56_cupola/quad_cannon
 
-/obj/structure/gun_rack/m41/recon
-	icon_state = "m41arecon"
-	populate_type = /obj/item/weapon/gun/rifle/m41aMK1/forecon
+// /obj/structure/gun_rack/m41/recon
+//	icon_state = "m41arecon"
+//	populate_type = /obj/item/weapon/gun/rifle/m41aMK1/forecon
 
-/obj/structure/gun_rack/m41/recon/unloaded
-	populate_type = /obj/item/weapon/gun/rifle/m41aMK1/forecon/unloaded
+// /obj/structure/gun_rack/m41/recon/unloaded
+//	populate_type = /obj/item/weapon/gun/rifle/m41aMK1/forecon/unloaded
 
 /obj/structure/gun_rack/flamer
 	name = "M240A1 incinerator rack"
@@ -203,11 +206,11 @@
 	desc = "ARMAT-produced gun rack for storage of long guns. While initial model was supposed to be extremely modifiable, USCM comissioned racks with fixed slots which only fit M240A1 incinerators. Some say they were cheaper, and some say the main reason was marine's ability to easily break anything more complex than a tungsten ball."
 	max_stored = 2
 	initial_stored = 2
-	allowed_type = /obj/item/weapon/gun/flamer
-	populate_type = /obj/item/weapon/gun/flamer
+	allowed_type = /obj/item/weapon/gun/flamer/m240
+	populate_type = /obj/item/weapon/gun/flamer/m240
 
 /obj/structure/gun_rack/flamer/unloaded
-	populate_type = /obj/item/weapon/gun/flamer/unloaded
+	populate_type = /obj/item/weapon/gun/flamer/m240/unloaded
 
 /obj/structure/gun_rack/flamer/empty
 	initial_stored = 0
@@ -228,9 +231,9 @@
 //	initial_stored = 0
 
 /obj/structure/gun_rack/mk221
-	name = "M120 shotgun rack"
+	name = "MK211 semi-automatic shotgun rack"
 	icon_state = "mk221"
-	desc = "ARMAT-produced gun rack for storage of long guns. While initial model was supposed to be extremely modifiable, USCM comissioned racks with fixed slots which only fit M120 tactical shotguns. Some say they were cheaper, and some say the main reason was marine's ability to easily break anything more complex than a tungsten ball."
+	desc = "ARMAT-produced gun rack for storage of long guns. While initial model was supposed to be extremely modifiable, USCM comissioned racks with fixed slots which only fit MK221 tactical shotguns. Some say they were cheaper, and some say the main reason was marine's ability to easily break anything more complex than a tungsten ball."
 	max_stored = 2
 	initial_stored = 2
 	allowed_type = /obj/item/weapon/gun/shotgun/combat
@@ -238,6 +241,10 @@
 
 /obj/structure/gun_rack/mk221/empty
 	initial_stored = 0
+
+/obj/structure/gun_rack/mk221/unloaded
+	initial_stored = 2
+	populate_type = /obj/item/weapon/gun/shotgun/combat/unloaded
 
 // /obj/structure/gun_rack/m20a  This rifle doesn't appear to exist in PVP CM-SS13 (At least not yet)
 //	name = "M20A pulse rifle rack"
@@ -283,17 +290,17 @@
 // /obj/structure/gun_rack/ag80/empty
 //	initial_stored = 0
 
-/obj/structure/gun_rack/nsg
-	name = "NSG L23A1 pulse rifle rack"
-	icon_state = "nsg"
-	desc = "ARMAT-produced gun rack for storage of long guns. This one is configured to hold up to five L23A1 pulse rifles."
-	max_stored = 5
-	initial_stored = 5
-	allowed_type = /obj/item/weapon/gun/rifle/nsg23/rmc
-	populate_type = /obj/item/weapon/gun/rifle/nsg23/rmc
+// /obj/structure/gun_rack/nsg
+//	name = "NSG L23A1 pulse rifle rack"
+//	icon_state = "nsg"
+//	desc = "ARMAT-produced gun rack for storage of long guns. This one is configured to hold up to five L23A1 pulse rifles."
+//	max_stored = 5
+//	initial_stored = 5
+//	allowed_type = /obj/item/weapon/gun/rifle/nsg23/rmc
+//	populate_type = /obj/item/weapon/gun/rifle/nsg23/rmc
 
-/obj/structure/gun_rack/nsg/unloaded
-	populate_type = /obj/item/weapon/gun/rifle/nsg23/rmc/unloaded
+// /obj/structure/gun_rack/nsg/unloaded
+//	populate_type = /obj/item/weapon/gun/rifle/nsg23/rmc/unloaded
 
 /obj/structure/gun_rack/nsg/Empty
 	initial_stored = 0

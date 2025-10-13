@@ -1536,6 +1536,10 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT //10~ more damage than m41, as well as higher ap from bullet, slightly higher DPS, 133>137.5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
+/obj/item/weapon/gun/rifle/type71/unloaded //for making it start unloaded and with the safety on
+	current_mag = null
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
+
 /obj/item/weapon/gun/rifle/type71/rifleman
 	//add GL
 	random_spawn_chance = 100
@@ -1990,7 +1994,7 @@
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
 
-/obj/item/weapon/gun/rifle/l42/unloaded //for making it start unloaded and with the safety on
+/obj/item/weapon/gun/rifle/l42a/unloaded //for making it start unloaded and with the safety on
 	current_mag = null
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_TRIGGER_SAFETY
 

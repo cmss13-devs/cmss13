@@ -1,16 +1,22 @@
 GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 
 /datum/cmtv_command
+	/// What must be invoked in chat to trigger this
 	var/name
+
+	/// Helptext of the command. Keep it short, we've only got 500 characters to play with.
 	var/description
 
+	/// If this command requires being a moderator to invoke
 	var/require_moderator
 
+	/// How long the cooldown must be which applies to everyone, other than moderators
 	var/global_cooldown_time
-	COOLDOWN_DECLARE(global_cooldown)
+	COOLDOWN_DECLARE(_global_cooldown)
 
+	/// How long the personal cooldown is which applies to individuals, other than moderators
 	var/user_cooldown_time
-	var/user_cooldown = list()
+	var/_user_cooldown = list()
 
 /datum/cmtv_command/proc/cannot_run(list/arguments)
 	if(arguments["is_moderator"])
@@ -19,11 +25,11 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	if(require_moderator)
 		return "This command requires Moderator."
 
-	if(user_cooldown_time && user_cooldown[arguments["username"]] && !COOLDOWN_FINISHED(src, user_cooldown[arguments["username"]]))
-		return "On user cooldown: [COOLDOWN_SECONDSLEFT(src, user_cooldown[arguments["username"]])]s left."
+	if(user_cooldown_time && _user_cooldown[arguments["username"]] && !COOLDOWN_FINISHED(src, _user_cooldown[arguments["username"]]))
+		return "On user cooldown: [COOLDOWN_SECONDSLEFT(src, _user_cooldown[arguments["username"]])]s left."
 
-	if(global_cooldown_time && !COOLDOWN_FINISHED(src, global_cooldown))
-		return "On global cooldown: [COOLDOWN_SECONDSLEFT(src, global_cooldown)]s left."
+	if(global_cooldown_time && !COOLDOWN_FINISHED(src, _global_cooldown))
+		return "On global cooldown: [COOLDOWN_SECONDSLEFT(src, _global_cooldown)]s left."
 
 	return FALSE
 
@@ -34,10 +40,10 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 		return
 
 	if(global_cooldown_time)
-		COOLDOWN_START(src, global_cooldown, global_cooldown_time)
+		COOLDOWN_START(src, _global_cooldown, global_cooldown_time)
 
 	if(user_cooldown_time)
-		COOLDOWN_START(src, user_cooldown[arguments["username"]], user_cooldown_time)
+		COOLDOWN_START(src, _user_cooldown[arguments["username"]], user_cooldown_time)
 
 	log_game("CMTV: [name] ([arguments["args"]]) executed by [arguments["username"]].")
 

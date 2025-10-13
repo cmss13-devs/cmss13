@@ -33,6 +33,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 
 	return FALSE
 
+/// The actual execution of the command. The returned text is what will be displayed in chat.
 /datum/cmtv_command/proc/execute(list/arguments)
 
 /datum/cmtv_command/proc/post_execute(list/arguments)

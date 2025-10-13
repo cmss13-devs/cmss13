@@ -129,18 +129,23 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 			var/is_uscm = params["uscm"]
 			var/image/selected_drawing_image
 			var/atom/movable/screen/minimap/selected_minimap
+			var/drawn_by
 
 			if(is_uscm)
 				if(uscm_selection == LATEST_SELECTION)
 					return TRUE
 				selected_drawing_image = SSminimaps.get_drawing_image(2, MINIMAP_FLAG_USCM, TRUE)
 				selected_minimap = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_USCM, FALSE)
+				var/datum/drawing_data/draw_data = GLOB.uscm_drawing_tacmap_data[uscm_selection + 1]
+				drawn_by = draw_data.ckey
 				GLOB.uscm_drawing_tacmap_data[uscm_selection + 1] = null
 				GLOB.uscm_flat_tacmap_data[uscm_selection + 1] = null
 			else
 				if(xeno_selection == LATEST_SELECTION)
 					return TRUE
 				selected_drawing_image = SSminimaps.get_drawing_image(2, MINIMAP_FLAG_XENO, TRUE)
+				var/datum/drawing_data/draw_data = GLOB.xeno_drawing_tacmap_data[uscm_selection + 1]
+				drawn_by = draw_data.ckey
 				GLOB.xeno_drawing_tacmap_data[xeno_selection + 1] = null
 				GLOB.xeno_flat_tacmap_data[xeno_selection + 1] = null
 
@@ -157,7 +162,7 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 
 				client_ui.refresh_cooldown = FALSE
 				client_ui.send_update(force = TRUE)
-			message_admins("[key_name_admin(usr)] deleted a <a href='byond://?tacmaps_panel=1'>tactical map drawing</a>.")
+			message_admins("[key_name_admin(usr)] deleted a <a href='byond://?tacmaps_panel=1'>tactical map drawing</a> drawn by [drawn_by].")
 			return TRUE
 
 /datum/tacmap_admin_panel/ui_close(mob/user)

@@ -134,7 +134,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	if(!length(to_follow))
 		return "No players to follow at this time."
 
-	var/return_text = "Available to follow:"
+	var/return_text = "Available to follow: "
 
 	var/budget = length(return_text)
 	for(var/datum/weakref/mob_ref in to_follow)
@@ -142,7 +142,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 		if(!active_mob)
 			continue
 
-		var/text_to_add = "[active_mob.real_name]\n"
+		var/text_to_add = "'[active_mob.real_name]' "
 		if(length(text_to_add) + budget > 500)
 			break
 	

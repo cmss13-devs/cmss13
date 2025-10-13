@@ -521,6 +521,9 @@
 	// This can happen if a xeno gets made before the game starts
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
+
+	if(hive.hivenumber != XENO_HIVE_NORMAL)
+		remove_verb(src, /mob/living/carbon/xenomorph/verb/view_tacmaps)
 	minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
 	var/datum/action/minimap/ref = minimap_ref.resolve()
 	ref.give_to(src, ref)

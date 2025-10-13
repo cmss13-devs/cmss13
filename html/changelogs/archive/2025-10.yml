@@ -1,0 +1,69 @@
+2025-10-02:
+  FishyFlaps2024:
+  - qol: Added purple-crt style sheet and imported it with other crt color style sheets
+  - qol: Added purple as OW console color option
+  Red-byte3D:
+  - bugfix: Specialists now properly get updated on the manifest
+  - balance: Pred hunting traps now require TRAIT_YAUTJA_TECH
+  Teragen:
+  - rscadd: Marine Command Helmet variant with Basic Med Optic
+  - rscadd: Gave Chief Engineer actual armored insulated gloves in their deploy kit.
+  - qol: Removed the two extra boots the Chief Engineer got
+  - qol: Gave the basic Command variant to RO and CE
+  - balance: Gave Chief Engineer a level in vehicles
+2025-10-03:
+  PoltavskaPraca:
+  - qol: adds a little feedback text when you save your character prefs and it's successful
+  Sergeys:
+  - ui: Added search box to construction UI
+2025-10-06:
+  BKryth:
+  - balance: lowers required neurotoxin plasma to turn shrapnel type of custom explosives
+      from 30 to 10
+  - bugfix: replaces the chemical required to turn shrapnel into hornet shrapnel from
+      sulphuric acid into polytrinic acid due to recipe conflicts
+2025-10-07:
+  Detective-Google:
+  - bugfix: CE's no longer can vend infinite essentials kits.
+  matttheficus:
+  - bugfix: Clicking on paper with a pen now opens it at the same size as reading
+      it.
+  - rscadd: Added [s][/s], [name], [rank], [job], [op], [ship], and [colony] macros.
+  - ui: increased the size of the default paper popup window and makes it a define.
+2025-10-09:
+  matttheficus:
+  - rscadd: added M1911C ammo to the CO vendor.
+  - balance: gave the M1911C a 1 second knockdown, up from 0.2 seconds.
+  - bugfix: added the "fire in the air" ability to the M1911C to match all other CO
+      guns.
+2025-10-10:
+  Blundir:
+  - bugfix: removed unintended uranium drums from pmc sg
+  Zenith:
+  - rscadd: Added new M10 gun-case kit.
+  - rscadd: Added a few new M10-specific attachments, spiked CQB compensator/regular
+      one, solid & foldable stock, micro laser.
+  - rscadd: Added AP variants of all existing M10 magazine types.
+  - rscadd: Added two new universal attachments usable by pistols and SMGs, a compact
+      suppressor and the S5 Micro Dot Sight.
+  - rscadd: Added "extended-compensator" universal attachment for multiple gun types.
+  - balance: Increased the M10's base damage, improved accuracy, and reduced bullet
+      spread to make it more viable.
+  - soundadd: Added new firing sounds for the M10 and custom suppressor sounds.
+  - imageadd: Updated M10 belt sprites to change based on map type.
+2025-10-11:
+  Zenith:
+  - rscadd: Added each appropriate UPP/Hyperdyne aligned Synth presets to Soro
+  - rscadd: Minor tweaks to Soro survivor presets.
+  - bugfix: Changed the WY Synth reset key to Hyperdyne on Soro
+  cuberound, harry:
+  - rscadd: adds upper level mirroring to wall behind stairs
+2025-10-12:
+  Googles-Hands:
+  - maptweak: A blackbox and colony information recorder have been added to New Varadero
+2025-10-13:
+  Drathek:
+  - balance: Pulling something that also is pulling something is significantly slower
+  - balance: Pushing something that is pulling something will inherit their pull delay
+      unless already pulling
+  - code_imp: Cleaned up atom/moveable/Collided

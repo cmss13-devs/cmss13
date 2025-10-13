@@ -89352,7 +89352,7 @@
 	pixel_y = 24
 	},
 /obj/item/device/cotablet,
-/obj/item/device/radio/headset/almayer/mcom,
+/obj/item/device/radio/headset/almayer/mcom/cdrcom,
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
 "wcm" = (

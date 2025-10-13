@@ -594,6 +594,10 @@
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smartgun(src)
+
+/obj/item/storage/pouch/magazine/large/pmc_sg/commando/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun/dirty(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/marsoc

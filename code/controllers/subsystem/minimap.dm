@@ -167,13 +167,19 @@ SUBSYSTEM_DEF(minimaps)
  * * flags: flags for the types of blips we want to be updated
  * * ztarget: zlevel we want to be updated with
  */
-/datum/controller/subsystem/minimaps/proc/add_to_updaters(atom/target, flags, ztarget, drawing)
+/datum/controller/subsystem/minimaps/proc/add_to_updaters(atom/target, flags, ztarget, drawing, labels)
 	var/datum/minimap_updator/holder = new(target, ztarget, drawing)
 	for(var/flag in bitfield2list(flags))
 		LAZYADD(update_targets["[flag]"], holder)
 		holder.raw_blips += minimaps_by_z["[ztarget]"].images_raw["[flag]"]
 		if(holder.drawing)
 			holder.raw_blips += drawn_images["[ztarget]-[flag]"]
+		if(!labels)
+			continue
+		LAZYADD(update_targets["[flag]label"], holder)
+		holder.raw_blips += minimaps_by_z["[ztarget]"].images_raw["[flag]label"]
+		if(holder.drawing)
+			holder.raw_blips += drawn_images["[ztarget]-[flag]label"]
 	updators_by_datum[target] = holder
 	update_targets_unsorted += holder
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_updator))
@@ -219,6 +225,8 @@ SUBSYSTEM_DEF(minimaps)
 	for(var/flag in GLOB.all_minimap_flags)
 		images_assoc["[flag]"] = list()
 		images_raw["[flag]"] = list()
+		images_assoc["[flag]label"] = list()
+		images_raw["[flag]label"] = list()
 
 /**
  * Holder datum to ease updating of atoms to update
@@ -247,7 +255,7 @@ SUBSYSTEM_DEF(minimaps)
  * * hud_flags: tracked HUDs we want this atom to be displayed on
  * * marker: image or mutable_appearance we want to be using on the map
  */
-/datum/controller/subsystem/minimaps/proc/add_marker(atom/target, hud_flags = NONE, image/blip, image_x, image_y)
+/datum/controller/subsystem/minimaps/proc/add_marker(atom/target, hud_flags = NONE, image/blip, image_x, image_y, is_label=FALSE)
 	if(!isatom(target) || !hud_flags || !blip)
 		CRASH("Invalid marker added to subsystem")
 
@@ -273,6 +281,8 @@ SUBSYSTEM_DEF(minimaps)
 
 	images_by_source[target] = blip
 	for(var/flag in bitfield2list(hud_flags))
+		if(is_label)
+			flag = "[flag]label"
 		minimaps_by_z["[target_turf.z]"].images_assoc["[flag]"][target] = blip
 		minimaps_by_z["[target_turf.z]"].images_raw["[flag]"] += blip
 		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]"])
@@ -308,6 +318,10 @@ SUBSYSTEM_DEF(minimaps)
 		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]"])
 			if(updator.ztarget == target_turf.z)
 				updator.raw_blips -= blip
+		minimaps_by_z["[target_turf.z]"].images_raw["[flag]label"] -= blip
+		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]label"])
+			if(updator.ztarget == target_turf.z)
+				updator.raw_blips -= blip
 	blip.UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 	removal_cbs -= target
 
@@ -319,6 +333,7 @@ SUBSYSTEM_DEF(minimaps)
 /datum/controller/subsystem/minimaps/proc/on_z_change(atom/movable/source, oldz, newz)
 	SIGNAL_HANDLER
 	var/image/blip
+	// Assumption: Never would a label be attached to a moveable atom
 	for(var/flag in GLOB.all_minimap_flags)
 		if(!minimaps_by_z["[oldz]"]?.images_assoc["[flag]"][source])
 			continue
@@ -378,6 +393,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/turf/source_turf = get_turf(source)
 	for(var/flag in GLOB.all_minimap_flags)
 		minimaps_by_z["[source_turf.z]"].images_assoc["[flag]"] -= source
+		minimaps_by_z["[source_turf.z]"].images_assoc["[flag]label"] -= source
 	images_by_source -= source
 	removal_cbs[source].Invoke()
 	removal_cbs -= source
@@ -394,6 +410,8 @@ SUBSYSTEM_DEF(minimaps)
 	if(minimaps_by_z["[z_level]"])
 		for(var/flag in GLOB.all_minimap_flags)
 			if(source in minimaps_by_z["[z_level]"].images_assoc["[flag]"])
+				return TRUE
+			if(source in minimaps_by_z["[z_level]"].images_assoc["[flag]label"])
 				return TRUE
 
 	return FALSE
@@ -523,7 +541,7 @@ SUBSYSTEM_DEF(minimaps)
 	stop_polling = list()
 	icon = SSminimaps.minimaps_by_z["[target]"].hud_image
 	if(live)
-		SSminimaps.add_to_updaters(src, minimap_flags, target, drawing)
+		SSminimaps.add_to_updaters(src, minimap_flags, target, drawing, labels=drawing)
 	src.drawing = drawing
 	src.minimap_flags = minimap_flags
 	src.target = target
@@ -546,7 +564,7 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	SSminimaps.remove_updator(src)
-	SSminimaps.add_to_updaters(src, minimap_flags, target, drawing)
+	SSminimaps.add_to_updaters(src, minimap_flags, target, drawing, labels=drawing)
 
 /atom/movable/screen/minimap/Destroy()
 	SSminimaps.hashed_minimaps -= src
@@ -1321,7 +1339,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/image/blip = image('icons/ui_icons/map_blips.dmi', null, "label", ABOVE_FLOAT_LAYER)
 	blip.overlays += textbox
 	msg_admin_niche("[key_name(source)] has crated a label at ([target.x],[target.y]) with text: [label_text].")
-	SSminimaps.add_marker(target, minimap_flag, blip)
+	SSminimaps.add_marker(target, minimap_flag, blip, is_label=TRUE)
 
 /atom/movable/screen/minimap_tool/clear
 	icon_state = "clear"

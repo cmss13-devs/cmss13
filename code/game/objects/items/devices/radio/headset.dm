@@ -511,7 +511,7 @@
 	name = "researcher radio headset"
 	desc = "A headset used by medbay's skilled researchers. Channels are as follows: :m - medical, :t - intel."
 	icon_state = "med_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/medres)
+	initial_keys = list(/obj/item/device/encryptionkey/medres, /obj/item/device/encryptionkey/wy_pub)
 	additional_hud_types = list(MOB_HUD_FACTION_WY)
 
 /obj/item/device/radio/headset/almayer/ct
@@ -649,18 +649,6 @@
 	. = ..()
 	if(spy_bug)
 		spy_bug.nametag = "CL Radio"
-
-/obj/item/device/radio/headset/almayer/mcl/sec
-	name = "corporate security radio headset"
-	spy_bug_type = null
-	desc = "Issued to Corporate Security personnel. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :y for WY and #y for WY Security."
-
-	misc_tracking = TRUE
-	locate_setting = TRACKER_CL
-	inbuilt_tracking_options = list(
-		"Corporate Liaison" = TRACKER_CL
-	)
-	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl, /obj/item/device/encryptionkey/wy_sec)
 
 /obj/item/device/radio/headset/almayer/reporter
 	name = "reporter radio headset"
@@ -1088,7 +1076,7 @@
 	desc = "A headset commonly worn by WY corporate personnel."
 	icon_state = "wy_headset"
 	frequency = WY_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/colony)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/wy_pub)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_WY
 
@@ -1098,12 +1086,15 @@
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/wy_sec)
 
 /obj/item/device/radio/headset/distress/WY/security/guard
+	name = "WY personal protection headset"
+	desc = "Issued to Corporate Security personnel. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :1 for WY Public, :y for WY Corporate and #y for WY Security."
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CL
 	inbuilt_tracking_options = list(
 		"Corporate Liaison" = TRACKER_CL
 	)
-	additional_hud_types = list(MOB_HUD_FACTION_WY)
+	additional_hud_types = list(MOB_HUD_FACTION_MARINE)
+	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl, /obj/item/device/encryptionkey/wy_sec)
 
 /obj/item/device/radio/headset/distress/hyperdyne
 	name = "HC corporate headset"

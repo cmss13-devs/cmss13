@@ -109,7 +109,7 @@
 	access = get_access(ACCESS_LIST_MARINE_LIAISON) + list(ACCESS_WY_SECURITY)
 
 /datum/equipment_preset/uscm_ship/corp_sec/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcl/sec, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY/security/guard, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/black, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/wy_faction, WEAR_ACCESSORY)

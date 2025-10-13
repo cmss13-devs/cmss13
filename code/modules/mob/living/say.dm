@@ -29,7 +29,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":y" = RADIO_CHANNEL_WY, ".y" = RADIO_CHANNEL_WY, "#y" = RADIO_CHANNEL_WY_SEC,
 	":z" = RADIO_CHANNEL_HIGHCOM, ".z" = RADIO_CHANNEL_HIGHCOM, "#z" = RADIO_CHANNEL_PMC_CMD,
 
-	//0-9 available
+	":1" = RADIO_CHANNEL_WY_PUB, ".1" = RADIO_CHANNEL_WY_PUB, "#1" = RADIO_CHANNEL_WY_PUB,
+	//1-9 available
 ))
 
 /proc/channel_to_prefix(channel)

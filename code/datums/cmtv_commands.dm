@@ -111,7 +111,11 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 /datum/cmtv_command/follow/execute(list/arguments)
 	var/looking_for = arguments["args"]
 
-	for(var/mob/living/active_mob in SScmtv.get_most_active_list())
+	for(var/datum/weakref/mob_ref in SScmtv.get_most_active_list())
+		var/mob/living/active_mob = mob_ref.resolve()
+		if(!active_mob)
+			continue
+
 		if(active_mob.real_name == looking_for)
 			SScmtv.change_observed_mob(active_mob)
 			return "Player is still active, switching after delay..."
@@ -133,7 +137,11 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	var/return_text = "Available to follow:"
 
 	var/budget = length(return_text)
-	for(var/mob/living/active_mob in to_follow)
+	for(var/datum/weakref/mob_ref in to_follow)
+		var/mob/living/active_mob = mob_ref.resolve()
+		if(!active_mob)
+			continue
+
 		var/text_to_add = "[active_mob.real_name]\n"
 		if(length(text_to_add) + budget > 500)
 			break

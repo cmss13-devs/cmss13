@@ -535,6 +535,10 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		return
 
 	if(pickupify.anchored)
+		var/obj/item/storage/backpack/marine/satchel/rto/pack = pickupify
+		if(pack && ishuman(usr))
+			pack.disassemble(src)
+			return
 		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
 		return
 	if(!isturf(pickupify.loc))

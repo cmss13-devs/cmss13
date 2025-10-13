@@ -1422,13 +1422,8 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/update/proc/announce_human(mob/user)
 	playsound_client(user.client, "sound/effects/data-transmission.ogg")
 
-	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)
-		var/datum/action/minimap/minimap_action = locate() in player.actions
-
-		if(!minimap_action)
-			continue
-
-		minimap_action.map?.update()
+	var/atom/movable/screen/minimap/minimap_to_update = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_USCM, FALSE)
+	minimap_to_update.update()
 
 	var/icon/flat_map = getFlatIcon(linked_map, appearance_flags = TRUE)
 	var/icon/flat_drawing = getFlatIcon(drawn_image, appearance_flags = TRUE)

@@ -31,12 +31,13 @@ export const TacmapViewer = (props) => {
   const { data } = useBackend<Data>();
   const { uscm_map, xeno_map, uscm_svg, xeno_svg, map_fallback } = data;
 
-  const initialIndex = data.factions.length
-    ? Math.max(
-        0,
-        PAGES.findIndex((p) => p.title === data.factions[0]),
-      )
-    : 0;
+  const initialIndex =
+    data.factions && data.factions.length
+      ? Math.max(
+          0,
+          PAGES.findIndex((p) => p.title === data.factions[0]),
+        )
+      : 0;
 
   const [pageIndex, setPageIndex] = useState(initialIndex);
 
@@ -52,6 +53,7 @@ export const TacmapViewer = (props) => {
             <Tabs>
               {PAGES.map((page, i) => {
                 if (
+                  data.factions &&
                   !data.factions.includes(page.title) &&
                   data.factions.length > 0
                 ) {

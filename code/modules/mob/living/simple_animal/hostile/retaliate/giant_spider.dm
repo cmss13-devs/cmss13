@@ -5,7 +5,7 @@
 #define SPINNING_COCOON 4
 
 //basic spider mob, these generally guard nests
-/mob/living/simple_animal/hostile/giant_spider
+/mob/living/simple_animal/hostile/retaliate/playable/giant_spider
 	name = "giant spider"
 	desc = "Furry and black, it makes you shudder to look at it. This one has deep red eyes."
 	icon_state = "guard"
@@ -35,7 +35,7 @@
 	speed = 3
 
 //nursemaids - these create webs and eggs
-/mob/living/simple_animal/hostile/giant_spider/nurse
+/mob/living/simple_animal/hostile/retaliate/playable/giant_spider/nurse
 	desc = "Furry and black, it makes you shudder to look at it. This one has brilliant green eyes."
 	icon_state = "nurse"
 	icon_living = "nurse"
@@ -50,7 +50,7 @@
 	var/fed = 0
 
 //hunters have the most poison and move the fastest, so they can find prey
-/mob/living/simple_animal/hostile/giant_spider/hunter
+/mob/living/simple_animal/hostile/retaliate/playable/giant_spider/hunter
 	desc = "Furry and black, it makes you shudder to look at it. This one has sparkling purple eyes."
 	icon_state = "hunter"
 	icon_living = "hunter"
@@ -62,12 +62,12 @@
 	poison_per_bite = 5
 	move_to_delay = 4
 
-/mob/living/simple_animal/hostile/giant_spider/initialize_pass_flags(datum/pass_flags_container/PF)
+/mob/living/simple_animal/hostile/retaliate/playable/giant_spider/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER
 
-/mob/living/simple_animal/hostile/giant_spider/AttackingTarget()
+/mob/living/simple_animal/hostile/retaliate/playable/giant_spider/AttackingTarget()
 	..()
 	var/mob/living/target_mob = target_mob_ref?.resolve()
 	if(isliving(target_mob))
@@ -77,7 +77,7 @@
 				to_chat(target_mob, SPAN_DANGER("You feel a tiny prick."))
 				target_mob.reagents.add_reagent(poison_type, 5)
 
-/mob/living/simple_animal/hostile/giant_spider/Life(delta_time)
+/mob/living/simple_animal/hostile/retaliate/playable/giant_spider/Life(delta_time)
 	. = ..()
 	if(stat == CONSCIOUS)
 		if(stance == HOSTILE_STANCE_IDLE)
@@ -92,7 +92,7 @@
 					stop_automated_movement = 0
 					walk(src,0)
 
-/mob/living/simple_animal/hostile/giant_spider/nurse/proc/GiveUp(C)
+/mob/living/simple_animal/hostile/retaliate/playable/giant_spider/nurse/proc/GiveUp(C)
 	spawn(100)
 		if(busy == MOVING_TO_TARGET)
 			if(cocoon_target == C && get_dist(src,cocoon_target) > 1)
@@ -100,7 +100,7 @@
 			busy = FALSE
 			stop_automated_movement = 0
 
-/mob/living/simple_animal/hostile/giant_spider/nurse/Life(delta_time)
+/mob/living/simple_animal/hostile/retaliate/playable/giant_spider/nurse/Life(delta_time)
 	. = ..()
 	if(stat == CONSCIOUS)
 		if(stance == HOSTILE_STANCE_IDLE)
@@ -172,7 +172,7 @@
 								C.pixel_x = cocoon_target.pixel_x
 								C.pixel_y = cocoon_target.pixel_y
 								for(var/mob/living/M in C.loc)
-									if(istype(M, /mob/living/simple_animal/hostile/giant_spider))
+									if(istype(M, /mob/living/simple_animal/hostile/retaliate/playable/giant_spider))
 										continue
 									large_cocoon = 1
 									fed++

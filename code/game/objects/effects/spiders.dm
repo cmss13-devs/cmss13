@@ -61,7 +61,7 @@
 		icon_state = "stickyweb2"
 
 /obj/effect/spider/stickyweb/BlockedPassDirs(atom/movable/mover, target_dir)
-	if(istype(mover, /mob/living/simple_animal/hostile/giant_spider))
+	if(istype(mover, /mob/living/simple_animal/hostile/retaliate/playable/giant_spider))
 		return NO_BLOCKED_MOVEMENT
 	else if(isliving(mover))
 		if(prob(50))
@@ -167,7 +167,7 @@
 	if(isturf(loc) && amount_grown > 0)
 		amount_grown += rand(0,2)
 		if(amount_grown >= 100)
-			var/spawn_type = pick(typesof(/mob/living/simple_animal/hostile/giant_spider))
+			var/spawn_type = pick(typesof(/mob/living/simple_animal/hostile/retaliate/playable/giant_spider))
 			new spawn_type(src.loc)
 			qdel(src)
 

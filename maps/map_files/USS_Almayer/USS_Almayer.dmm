@@ -36502,9 +36502,6 @@
 "bKH" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /turf/open/floor/almayer/flooredge/northeast,
 /area/almayer/command/corporateliaison)
 "bKI" = (
@@ -37085,7 +37082,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
 "bLV" = (
-/obj/structure/machinery/light,
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
@@ -37142,6 +37138,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)

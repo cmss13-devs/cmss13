@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - bugfix: "Fixed a way to bypass the binocular blocker in the overwatch console"

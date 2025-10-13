@@ -18,6 +18,10 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	var/user_cooldown_time
 	var/_user_cooldown = list()
 
+	/// If the [/datum/cmtv_command/proc/execute] function determines no cooldown should be applied,
+	/// this should be toggled to false. For instance, when a command fails.
+	var/apply_cooldown = TRUE
+
 /datum/cmtv_command/proc/cannot_run(list/arguments)
 	if(arguments["is_moderator"])
 		return FALSE
@@ -33,11 +37,19 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 
 	return FALSE
 
+/datum/cmtv_command/proc/pre_execute(list/arguments)
+	apply_cooldown = TRUE
+
 /// The actual execution of the command. The returned text is what will be displayed in chat.
 /datum/cmtv_command/proc/execute(list/arguments)
 
 /datum/cmtv_command/proc/post_execute(list/arguments)
+	log_game("CMTV: [name] ([arguments["args"]]) executed by [arguments["username"]].")
+
 	if(arguments["is_moderator"])
+		return
+
+	if(!apply_cooldown)
 		return
 
 	if(global_cooldown_time)
@@ -46,7 +58,6 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	if(user_cooldown_time)
 		COOLDOWN_START(src, _user_cooldown[arguments["username"]], user_cooldown_time)
 
-	log_game("CMTV: [name] ([arguments["args"]]) executed by [arguments["username"]].")
 
 /datum/cmtv_command/help
 	name = "help"
@@ -79,10 +90,50 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 
 /datum/cmtv_command/fixchat/execute(list/arguments)
 	SScmtv.restart_chat()
+	return "Fix chat executed."
 
 /datum/cmtv_command/newperspective
 	name = "changeperspective"
+	description = "Changes perspective to anyone."
 	require_moderator = TRUE
 
 /datum/cmtv_command/newperspective/execute(list/arguments)
 	SScmtv.reset_perspective()
+	return "Switching to new perspective after delay..."
+
+/datum/cmtv_command/follow
+	name = "follow"
+	description = "Follow new mob (requires name)."
+
+	global_cooldown_time = 10 MINUTES
+	user_cooldown_time = 3 HOURS
+
+/datum/cmtv_command/follow/execute(list/arguments)
+	var/looking_for = arguments["args"]
+
+	for(var/mob/living/active_mob in SScmtv.get_most_active_list())
+		if(active_mob.real_name == looking_for)
+			SScmtv.change_observed_mob(active_mob)
+			return "Player is still active, switching after delay..."
+
+	apply_cooldown = FALSE
+	return "Player could not be found or is not active."
+
+/datum/cmtv_command/getmobs
+	name = "getmobs"
+	description = "Gets active mobs."
+
+	global_cooldown_time = 30 SECONDS
+
+/datum/cmtv_command/getmobs/execute(list/arguments)
+	var/return_text = "Available to follow:"
+
+	var/budget = length(return_text)
+	for(var/mob/living/active_mob in SScmtv.get_most_active_list())
+		var/text_to_add = "[active_mob.real_name]\n"
+		if(text_to_add + budget > 500)
+			break
+	
+		return_text += text_to_add
+
+	return return_text

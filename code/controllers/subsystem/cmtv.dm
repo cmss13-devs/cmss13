@@ -270,6 +270,19 @@ SUBSYSTEM_DEF(cmtv)
 
 	return FALSE
 
+/// Returns the mob list with the greatest priority. If there are priority 1 mobs, it will return that list, even if there is only one.
+/datum/controller/subsystem/cmtv/proc/get_most_active_list()
+	if(!length(priority_list))
+		return
+
+	for(var/priority in priority_list)
+		var/list/priority_mobs_list = priority_list[priority]
+		
+		if(!length(priority_mobs_list))
+			continue
+
+		return priority_mobs_list
+
 /// If a player has moved recently, also checks the inactivity var
 /datum/controller/subsystem/cmtv/proc/is_active(mob/possible_player, delay_time)
 	if(!possible_player || !possible_player.client)

@@ -355,6 +355,8 @@
 		response = cannot_run
 		return
 
+	selected_command.pre_execute(input)
+
 	statuscode = 200
 	response = selected_command.execute(input)
 

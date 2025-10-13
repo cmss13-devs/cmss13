@@ -61,3 +61,9 @@
 2025-10-12:
   Googles-Hands:
   - maptweak: A blackbox and colony information recorder have been added to New Varadero
+2025-10-13:
+  Drathek:
+  - balance: Pulling something that also is pulling something is significantly slower
+  - balance: Pushing something that is pulling something will inherit their pull delay
+      unless already pulling
+  - code_imp: Cleaned up atom/moveable/Collided

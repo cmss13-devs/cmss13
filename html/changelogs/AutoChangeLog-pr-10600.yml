@@ -1,0 +1,8 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - bugfix: "fixed some color oddities on scout cloak and some sprite inconsistencies on sadar helmet"
+  - bugfix: "fixed worn/inhand pixel dimensions backend"
+  - imageadd: "sniper armor on classic camo maps (fiorina, 522) now looks similar to the one on urban maps (hybrisa)"
+  - imageadd: "sniper rifle back sprite is now also a suit storage one now (suit storage one didn't exist)"
+  - imageadd: "sniper rifle inhands sprite now look better and aren't cut out"

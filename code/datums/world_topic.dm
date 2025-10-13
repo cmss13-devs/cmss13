@@ -345,13 +345,13 @@
 
 	var/datum/cmtv_command/selected_command = GLOB.cmtv_commands[input["command"]]
 	if(!selected_command)
-		statuscode = "404"
+		statuscode = 404
 		response = "Invalid command! Use !help to view all commands."
 		return
 
 	var/cannot_run = selected_command.cannot_run(input)
 	if(cannot_run)
-		statuscode = "401"
+		statuscode = 401
 		response = cannot_run
 		return
 

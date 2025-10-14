@@ -12802,14 +12802,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/starboard_atmos)
-"aGH" = (
-/obj/structure/machinery/computer/secure_data{
-	dir = 8;
-	pixel_y = 4;
-	pixel_x = -1
-	},
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/living/numbertwobunks)
 "aGI" = (
 /obj/structure/closet,
 /obj/item/clothing/glasses/welding,
@@ -198372,7 +198364,7 @@ aCY
 wLC
 mGb
 uOh
-aGH
+awF
 aEM
 aGV
 rvA

@@ -287,7 +287,10 @@ SUBSYSTEM_DEF(cmtv)
 /datum/controller/subsystem/cmtv/proc/is_active(mob/possible_player, delay_time)
 	if(!possible_player || !possible_player.client)
 		return FALSE
-	
+
+	if(!isturf(possible_player.loc))
+		return FALSE
+
 	if(possible_player.client.inactivity > delay_time)
 		return FALSE
 

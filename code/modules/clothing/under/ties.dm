@@ -839,6 +839,21 @@
 /obj/item/clothing/accessory/storage/webbing/five_slots
 	hold = /obj/item/storage/internal/accessory/webbing/five_slots
 
+/obj/item/clothing/accessory/storage/exoskeleton
+	name = "passive exoskeleton"
+	desc = "A lightweight exoskeleton that helps with carrying heavy armor."
+	icon_state = "webbing" // Placeholder icon
+	var/list/armor_slowdown_replacements
+
+/obj/item/clothing/accessory/storage/exoskeleton/Initialize(mapload)
+	. = ..(mapload)
+	armor_slowdown_replacements = list(
+		"[SLOWDOWN_ARMOR_MEDIUM]" = 0.4,
+		"[SLOWDOWN_ARMOR_LOWHEAVY]" = 0.55,
+		"[SLOWDOWN_ARMOR_HEAVY]" = 0.8,
+		"[SLOWDOWN_ARMOR_VERY_HEAVY]" = 0.95
+	)
+
 /obj/item/storage/internal/accessory/webbing/five_slots
 	storage_slots = 5
 

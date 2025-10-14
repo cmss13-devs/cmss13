@@ -12,7 +12,7 @@
 	var/observation_timer = 20 SECONDS
 
 /datum/cmtv_event/proc/handle_global_event()
-	SScmtv.temporary_spectate_turf(args[spectate_arg_position], observation_timer)
+	SScmtv.temporary_spectate_turf(args[spectate_arg_position + 1], observation_timer)
 
 /datum/cmtv_event/orbital_bombardment
 	name = "Orbital Bombardment"

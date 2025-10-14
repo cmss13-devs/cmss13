@@ -286,7 +286,7 @@ SUBSYSTEM_DEF(cmtv)
 
 	terminate_current_perspective(event)
 	camera_mob.clean_observe_target()
-	camera_mob.forceMove(where_to_look)
+	camera_mob.abstract_move(where_to_look)
 
 	camera_mob.hud_used.plane_masters["[HUD_PLANE]"].alpha = 0
 

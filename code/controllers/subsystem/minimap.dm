@@ -1536,7 +1536,7 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	var/is_observer = user.faction == FACTION_NEUTRAL && isobserver(user)
-	if(is_observer || user.faction == FACTION_MARINE && length(GLOB.uscm_flat_tacmap_data))
+	if((is_observer || user.faction == FACTION_MARINE) && length(GLOB.uscm_flat_tacmap_data))
 		// Send marine maps
 		var/datum/flattened_tacmap/latest = GLOB.uscm_flat_tacmap_data[length(GLOB.uscm_flat_tacmap_data)]
 		if(latest)
@@ -1546,7 +1546,7 @@ SUBSYSTEM_DEF(minimaps)
 			SSassets.transport.send_assets(user.client, latest_draw_data.asset_key)
 
 	var/mob/living/carbon/xenomorph/xeno = user
-	if(is_observer || istype(xeno) && xeno.hivenumber == XENO_HIVE_NORMAL && length(GLOB.xeno_flat_tacmap_data))
+	if((is_observer || istype(xeno) && xeno.hivenumber == XENO_HIVE_NORMAL) && length(GLOB.xeno_flat_tacmap_data))
 		// Send xeno maps
 		var/datum/flattened_tacmap/latest = GLOB.xeno_flat_tacmap_data[length(GLOB.xeno_flat_tacmap_data)]
 		if(latest)

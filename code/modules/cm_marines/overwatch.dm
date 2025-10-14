@@ -38,8 +38,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
 
-	var/list/possible_options = list("Blue" = "crtblue", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")
-	var/list/chosen_theme = list("Blue", "Green", "Yellow", "Red")
+	var/list/possible_options = list("Blue" = "crtblue", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred", "Purple" = "crtpurple")
+	var/list/chosen_theme = list("Blue", "Green", "Yellow", "Red", "Purple")
 	var/command_channel_key = ":v"
 
 	var/freq = CRYO_FREQ
@@ -1183,6 +1183,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(!isRemoteControlling(user))
 		concurrent_users += WEAKREF(user)
 		if(cam)
+			if(user.client.view != GLOB.world_view_size)
+				to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
+				return
 			user.reset_view(cam)
 			user.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 

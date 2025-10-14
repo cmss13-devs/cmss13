@@ -723,13 +723,11 @@ SUBSYSTEM_DEF(minimaps)
 		owner.client.add_to_screen(locator)
 		locator.link_locator(map, owner)
 		locator.update(tracking, null, null)
-		locator.RegisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
 		locator.RegisterSignal(tracking, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
 	else
 		owner.client.remove_from_screen(map)
 		owner.client.remove_from_screen(locator)
 		map.stop_polling -= owner
-		locator.UnregisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED)
 		locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 	minimap_displayed = force_state
 	return TRUE
@@ -754,7 +752,6 @@ SUBSYSTEM_DEF(minimaps)
 			if(!old_turf || !old_turf.z || old_turf.z != new_track.z)
 				on_owner_z_change(new_track, old_turf?.z, new_track?.z)
 		return
-	locator.UnregisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED)
 	locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 	locator_override = to_track
 	if(to_track)
@@ -765,7 +762,6 @@ SUBSYSTEM_DEF(minimaps)
 	var/turf/old_turf = get_turf(tracking)
 	if(old_turf.z != new_track.z)
 		on_owner_z_change(new_track, old_turf.z, new_track.z)
-	locator.RegisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
 	locator.RegisterSignal(new_track, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
 	locator.link_locator(map, new_track)
 	locator.update(new_track)
@@ -791,7 +787,6 @@ SUBSYSTEM_DEF(minimaps)
 			on_owner_z_change(owner, locator_override.z, owner_turf.z)
 	if(minimap_displayed)
 		locator.UnregisterSignal(locator_override, COMSIG_MOVABLE_MOVED)
-		locator.RegisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
 		locator.RegisterSignal(owner, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
 		locator.link_locator(map, owner)
 		locator.update(owner)
@@ -828,7 +823,6 @@ SUBSYSTEM_DEF(minimaps)
 		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"] || !SSminimaps.minimaps_by_z["[default_overwatch_level]"].hud_image)
 			if(minimap_displayed)
 				owner.client?.screen -= locator
-				locator.UnregisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED)
 				locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 				minimap_displayed = FALSE
 			return
@@ -842,7 +836,6 @@ SUBSYSTEM_DEF(minimaps)
 	if(!SSminimaps.minimaps_by_z["[newz]"] || !SSminimaps.minimaps_by_z["[newz]"].hud_image)
 		if(minimap_displayed)
 			owner.client?.screen -= locator
-			locator.UnregisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED)
 			locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 			minimap_displayed = FALSE
 		return

@@ -17,20 +17,20 @@
 /datum/cmtv_event/orbital_bombardment
 	name = "Orbital Bombardment"
 	listener = COMSIG_GLOB_ORBITAL_BOMBARDMENT
+	observation_timer = 30 SECONDS
 
 /datum/cmtv_event/queen_death
 	name = "Queen Death"
 	listener = COMSIG_GLOB_QUEEN_DEATH
-	observation_timer = 10 SECONDS
 
 /datum/cmtv_event/dropship_impact
 	name = "Dropship Impact"
 	listener = COMSIG_GLOB_DROPSHIP_IMPACT
+	observation_timer = 40 SECONDS
 
 /datum/cmtv_event/dropship_locked
 	name = "Dropship Locked"
 	listener = COMSIG_GLOB_DROPSHIP_LOCKED
-	observation_timer = 10 SECONDS
 
 /datum/cmtv_event/firemission_imbound
 	name = "Firemission Imbound"

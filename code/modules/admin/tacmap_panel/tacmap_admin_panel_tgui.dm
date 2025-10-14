@@ -47,10 +47,13 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	for(var/i = 1, i <= uscm_length, i++)
 		var/datum/drawing_data/current_draw_data = GLOB.uscm_drawing_tacmap_data[i]
 		if(!current_draw_data)
-			continue
-		uscm_ckeys += current_draw_data.ckey
-		uscm_names += current_draw_data.name
-		uscm_times += current_draw_data.time
+			uscm_ckeys += "DELETED"
+			uscm_names += "DELETED"
+			uscm_times += "DELETED"
+		else
+			uscm_ckeys += current_draw_data.ckey
+			uscm_names += current_draw_data.name
+			uscm_times += current_draw_data.time
 	data["uscm_ckeys"] = uscm_ckeys
 	data["uscm_names"] = uscm_names
 	data["uscm_times"] = uscm_times
@@ -61,10 +64,13 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	for(var/i = 1, i <= xeno_length, i++)
 		var/datum/drawing_data/current_draw_data = GLOB.xeno_drawing_tacmap_data[i]
 		if(!current_draw_data)
-			continue
-		xeno_ckeys += current_draw_data.ckey
-		xeno_names += current_draw_data.name
-		xeno_times += current_draw_data.time
+			uscm_ckeys += "DELETED"
+			uscm_names += "DELETED"
+			uscm_times += "DELETED"
+		else
+			xeno_ckeys += current_draw_data.ckey
+			xeno_names += current_draw_data.name
+			xeno_times += current_draw_data.time
 	data["xeno_ckeys"] = xeno_ckeys
 	data["xeno_names"] = xeno_names
 	data["xeno_times"] = xeno_times

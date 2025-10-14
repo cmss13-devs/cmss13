@@ -43,6 +43,10 @@ SUBSYSTEM_DEF(cmtv)
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_new_client))
 
+	for(var/type in subtypesof(/datum/cmtv_event))
+		var/datum/cmtv_event/event = new type
+		event.RegisterSignal(SSdcs, event.listener, TYPE_PROC_REF(/datum/cmtv_event, handle_global_event))
+
 	var/camera = GLOB.directory[username]
 	if(!camera)
 		return SS_INIT_NO_NEED
@@ -50,9 +54,6 @@ SUBSYSTEM_DEF(cmtv)
 	perspective_display = new
 	handle_new_camera(camera)
 
-	for(var/type in subtypesof(/datum/cmtv_event))
-		var/datum/cmtv_event/event = new type
-		event.RegisterSignal(SSdcs, event.listener, TYPE_PROC_REF(/datum/cmtv_event, handle_global_event))
 
 /datum/controller/subsystem/cmtv/fire(resumed)
 	priority_list = get_active_priority_player_list()

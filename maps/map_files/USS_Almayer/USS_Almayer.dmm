@@ -11617,6 +11617,10 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/safety/cryo{
+	pixel_y = 26;
+	pixel_x = -1
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
 "aDt" = (
@@ -21865,7 +21869,7 @@
 	},
 /obj/item/storage/pouch/general/medium,
 /obj/item/storage/pouch/general/medium,
-/turf/open/floor/almayer/no_build/plating,
+/turf/open/floor/almayer/plating_stripedcorner/west,
 /area/almayer/middeck/req)
 "bdd" = (
 /turf/closed/wall/almayer,
@@ -22314,7 +22318,7 @@
 "bem" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
-/turf/open/floor/almayer/no_build/plating,
+/turf/open/floor/almayer/plating_striped/southwest,
 /area/almayer/middeck/req)
 "ben" = (
 /obj/effect/decal/cleanable/dirt,
@@ -28096,6 +28100,9 @@
 "bqz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/firecloset,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
 /turf/open/floor/almayer/plating_striped,
 /area/almayer/middeck/req)
 "bqA" = (
@@ -28165,19 +28172,16 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "bqI" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
-	},
-/turf/open/floor/almayer/no_build/plating,
+/turf/open/floor/almayer/plating_stripedcorner/west,
 /area/almayer/middeck/req)
 "bqJ" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
 	},
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/req)
+/turf/open/floor/almayer,
+/area/almayer/hallways/lower/port_aft_hallway)
 "bqK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack,
@@ -28470,7 +28474,11 @@
 "brz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/ladder/multiz,
-/turf/open/floor/almayer/no_build/plating,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/req)
 "brA" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -28719,25 +28727,17 @@
 	amount = 50
 	},
 /obj/item/packageWrap,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
-	},
 /obj/structure/noticeboard{
 	pixel_x = 16;
 	pixel_y = 29
 	},
-/turf/open/floor/almayer/no_build/plating,
+/turf/open/floor/almayer/plating_stripedcorner/north,
 /area/almayer/middeck/req)
 "bsb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
-	},
 /obj/effect/landmark/map_item,
-/turf/open/floor/almayer/no_build/plating,
+/turf/open/floor/almayer/plating_stripedcorner/south,
 /area/almayer/middeck/req)
 "bsc" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -28924,16 +28924,13 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/turf/open/floor/almayer/plating_striped/southwest,
+/turf/open/floor/almayer/plating_striped/southeast,
 /area/almayer/middeck/req)
 "bst" = (
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/operating_room_one)
 "bsu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F"
-	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
@@ -30379,11 +30376,9 @@
 /area/almayer/command/cic)
 "bvv" = (
 /obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+	light_color = "#BB3F3F"
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/plating_striped/north,
+/turf/open/floor/almayer/plating_striped,
 /area/almayer/middeck/req)
 "bvw" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
@@ -30718,7 +30713,7 @@
 	},
 /obj/item/storage/pouch/autoinjector,
 /obj/item/storage/pouch/autoinjector,
-/turf/open/floor/almayer/no_build/plating,
+/turf/open/floor/almayer/plating_stripedcorner/north,
 /area/almayer/middeck/req)
 "bwr" = (
 /obj/effect/decal/cleanable/dirt,
@@ -30727,7 +30722,7 @@
 	pixel_y = 13
 	},
 /obj/item/storage/firstaid/adv,
-/turf/open/floor/almayer/no_build/plating,
+/turf/open/floor/almayer/plating_stripedcorner/south,
 /area/almayer/middeck/req)
 "bws" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -34269,10 +34264,6 @@
 /area/almayer/middeck/maintenance/paft)
 "bEp" = (
 /obj/structure/filingcabinet,
-/obj/structure/sign/safety/galley{
-	pixel_x = 8;
-	pixel_y = 32
-	},
 /turf/open/floor/almayer/green/northeast,
 /area/almayer/squads/req)
 "bEq" = (
@@ -42189,6 +42180,9 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
+"dHZ" = (
+/turf/open/floor/almayer/plating_striped/northwest,
+/area/almayer/middeck/req)
 "dIi" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /turf/open/floor/plating/plating_catwalk/aicore,
@@ -44997,10 +44991,9 @@
 	desc = "The note is haphazardly attached to the cork board by what looks like a bent firing pin. 'The order has come in to perform end of life service checks on all L42A service rifles, any that are defective are to be dis-assembled and packed into a crate and sent to to the cargo hold. L42A service rifles that are in working order after servicing, are to be locked in secure cabinets ready to be off-loaded at Chinook. Scheduled end of life service for the L42A -  Complete'";
 	pixel_y = 29
 	},
-/obj/structure/flora/pottedplant/random{
-	pixel_y = 9;
-	pixel_x = 7
-	},
+/obj/structure/closet/crate,
+/obj/item/ammo_box/magazine/l42a,
+/obj/item/ammo_box/magazine/l42a,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
 "ePM" = (
@@ -45221,8 +45214,12 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_a_s)
 "eTx" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
+/obj/structure/sign/safety/ammunition{
+	pixel_x = 15;
+	pixel_y = 26
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_y = 26
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/lower/port_aft_hallway)
@@ -48957,10 +48954,8 @@
 /area/almayer/shipboard/starboard_point_defense)
 "gxk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a{
-	pixel_y = 6
+/obj/structure/gun_rack/l42/unloaded{
+	initial_stored = 3
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
@@ -51545,10 +51540,8 @@
 /area/almayer/engineering/upper_engineering/notunnel)
 "hzg" = (
 /obj/structure/surface/rack,
-/obj/item/storage/firstaid{
-	pixel_y = -1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/storage/firstaid/regular/response,
 /turf/open/floor/almayer/greencorner/west,
 /area/almayer/squads/req)
 "hzs" = (
@@ -56773,9 +56766,13 @@
 "jFM" = (
 /obj/structure/surface/table/almayer,
 /obj/item/attachable/lasersight,
-/obj/item/reagent_container/food/drinks/cans/souto/vanilla{
-	pixel_x = 10;
-	pixel_y = 11
+/obj/item/weapon/gun/rifle/l42a{
+	pixel_x = 17;
+	pixel_y = 6
+	},
+/obj/item/prop/helmetgarb/gunoil{
+	pixel_x = -7;
+	pixel_y = 12
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
@@ -59584,6 +59581,14 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
+"kOt" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -29
+	},
+/turf/open/floor/almayer/green,
+/area/almayer/hallways/lower/starboard_midship_hallway)
 "kOv" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -60888,6 +60893,13 @@
 "lpt" = (
 /turf/open/floor/almayer/blue,
 /area/almayer/squads/charlie_delta_shared)
+"lpw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/gun_rack/m41a2/unloaded{
+	initial_stored = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/upper/u_m_s)
 "lql" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/starboard_umbilical)
@@ -61302,18 +61314,13 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "lzt" = (
-/obj/structure/surface/table/almayer,
-/obj/item/tool/screwdriver,
-/obj/item/prop/helmetgarb/gunoil{
-	pixel_x = -7;
-	pixel_y = 12
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = -29
 	},
-/obj/item/weapon/gun/rifle/l42a{
-	pixel_x = 17;
-	pixel_y = 6
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/upper/u_m_s)
+/turf/open/floor/almayer,
+/area/almayer/hallways/lower/starboard_aft_hallway)
 "lzA" = (
 /obj/structure/bed/chair/comfy{
 	dir = 5
@@ -64520,8 +64527,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_a_s)
 "mSo" = (
-/obj/structure/surface/rack,
-/obj/item/facepaint/sniper,
+/obj/structure/gun_rack/m39/unloaded,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
 "mSr" = (
@@ -72474,13 +72480,11 @@
 /area/almayer/living/auxiliary_officer_office)
 "qbP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a{
-	pixel_y = 6
-	},
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
+	},
+/obj/structure/gun_rack/l42/unloaded{
+	initial_stored = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
@@ -74861,11 +74865,13 @@
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/lifeboat_pumps/south1)
 "qTi" = (
-/obj/structure/closet/crate,
-/obj/item/ammo_box/magazine/l42a,
-/obj/item/ammo_box/magazine/l42a,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/cans/souto/vanilla{
+	pixel_x = 10;
+	pixel_y = 11
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
@@ -79727,6 +79733,12 @@
 /obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/lifeboat)
+"sQX" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/lower/port_aft_hallway)
 "sSa" = (
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	dir = 2;
@@ -82308,6 +82320,7 @@
 	pixel_y = 6
 	},
 /obj/item/weapon/gun/rifle/l42a,
+/obj/item/tool/screwdriver,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
 "tTk" = (
@@ -83486,11 +83499,7 @@
 /area/almayer/shipboard/brig/armory)
 "uqs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/item/weapon/gun/rifle/m41a{
-	pixel_y = 6
-	},
-/obj/item/weapon/gun/rifle/m41a,
+/obj/structure/gun_rack/m41a2/unloaded,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
 "uqA" = (
@@ -88906,13 +88915,9 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/bridgebunks)
 "wnb" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/item/weapon/gun/smg/m39{
-	pixel_y = 6
-	},
-/obj/item/weapon/gun/smg/m39{
-	pixel_y = -6
-	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/item/facepaint/sniper,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
 "wnh" = (
@@ -90286,11 +90291,6 @@
 "wMI" = (
 /obj/structure/machinery/light{
 	dir = 1
-	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 28
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_aft_hallway)
@@ -92465,14 +92465,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_f_p)
 "xGI" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/item/weapon/gun/rifle/l42a{
-	pixel_y = 6
-	},
-/obj/item/weapon/gun/rifle/l42a,
-/obj/item/weapon/gun/rifle/l42a{
-	pixel_y = -6
-	},
+/obj/structure/gun_rack/l42/unloaded,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
 "xGJ" = (
@@ -93597,6 +93590,13 @@
 /area/almayer/living/briefing)
 "ycH" = (
 /obj/structure/machinery/light,
+/obj/structure/sign/safety/ammunition{
+	pixel_x = 15;
+	pixel_y = -26
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_y = -26
+	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/squads/req)
 "ycM" = (
@@ -146362,7 +146362,7 @@ aQL
 bMf
 eFa
 fEF
-tLZ
+kOt
 bdl
 bEl
 wup
@@ -147825,7 +147825,7 @@ amL
 gsm
 amD
 bbs
-uPE
+sQX
 vuV
 uPE
 bJC
@@ -148649,7 +148649,7 @@ lJu
 bEd
 bFs
 bbs
-uPE
+bqJ
 vuV
 pOW
 fzq
@@ -149245,7 +149245,7 @@ qDq
 bTb
 bqc
 ubQ
-bqc
+lzt
 bbs
 ccd
 ccN
@@ -174706,7 +174706,7 @@ bsn
 asm
 asm
 asm
-bqU
+bsd
 bqz
 asm
 baT
@@ -175628,13 +175628,13 @@ bcW
 byl
 bcW
 asm
-bsd
+bqU
 bsu
 asm
 asm
 asm
+bsd
 bvv
-bqD
 asm
 aXu
 bbq
@@ -176352,9 +176352,9 @@ aSV
 aHF
 asm
 bsa
-aZw
+bvm
 aIm
-aIm
+bvx
 bqI
 asm
 bbM
@@ -176457,8 +176457,8 @@ asm
 bsb
 bem
 aZw
-aIm
-bqJ
+dHZ
+nzO
 aUJ
 bEI
 bbv
@@ -176560,7 +176560,7 @@ asm
 asm
 bwr
 brz
-aIm
+bvn
 asm
 asm
 bBa
@@ -205686,7 +205686,7 @@ njn
 tXa
 jsA
 tSX
-lzt
+njn
 ael
 afE
 agT
@@ -205992,7 +205992,7 @@ mAF
 kbv
 mbx
 njn
-gJg
+wnb
 cGR
 cGR
 uqs
@@ -206098,7 +206098,7 @@ njn
 ePz
 jsA
 jsA
-uqs
+lpw
 ael
 afK
 agY
@@ -206716,7 +206716,7 @@ njn
 ugo
 uTl
 jsA
-wnb
+njn
 njn
 njn
 eDe

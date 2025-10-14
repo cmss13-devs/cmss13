@@ -8,6 +8,7 @@
 	var/populate_type
 	var/max_stored = 5
 	var/initial_stored = 5
+	var/new_icon_state
 
 /obj/structure/gun_rack/Initialize()
 	. = ..()
@@ -15,7 +16,6 @@
 		icon_state = "m41a_0"
 		return
 
-	var/new_icon_state
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("classic")
 			icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
@@ -53,9 +53,29 @@
 
 /obj/structure/gun_rack/update_icon()
 	if(contents.len)
-		icon_state = "[initial(icon_state)]_[contents.len]"
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("classic")
+				icon_state = new_icon_state ? new_icon_state : "c_" + "[initial(icon_state)]_[contents.len]"
+			if("desert")
+				icon_state = new_icon_state ? new_icon_state : "d_" + "[initial(icon_state)]_[contents.len]"
+			if("snow")
+				icon_state = new_icon_state ? new_icon_state : "s_" + "[initial(icon_state)]_[contents.len]"
+			if("urban")
+				icon_state = new_icon_state ? new_icon_state : "u_" + "[initial(icon_state)]_[contents.len]"
+			else
+				icon_state = "[initial(icon_state)]_[contents.len]"
 	else
-		icon_state = "[initial(icon_state)]_0"
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("classic")
+				icon_state = new_icon_state ? new_icon_state : "c_" + "[initial(icon_state)]_0"
+			if("desert")
+				icon_state = new_icon_state ? new_icon_state : "d_" + "[initial(icon_state)]_0"
+			if("snow")
+				icon_state = new_icon_state ? new_icon_state : "s_" + "[initial(icon_state)]_0"
+			if("urban")
+				icon_state = new_icon_state ? new_icon_state : "u_" + "[initial(icon_state)]_0"
+			else
+				icon_state = "[initial(icon_state)]_0"
 
 /obj/structure/gun_rack/m41a
 	name = "M41A MK1 pulse rifle rack"
@@ -70,6 +90,7 @@
 
 /obj/structure/gun_rack/m41a2
 	name = "M41A MK2 pulse rifle rack"
+	icon_state = "m41a_mk2"
 	allowed_type = /obj/item/weapon/gun/rifle/m41a
 	populate_type = /obj/item/weapon/gun/rifle/m41a
 
@@ -136,7 +157,7 @@
 	allowed_type = /obj/item/weapon/gun/rifle/l42a
 	populate_type = /obj/item/weapon/gun/rifle/l42a
 
-/obj/structure/gun_rack/m4ra/unloaded
+/obj/structure/gun_rack/l42/unloaded
 	populate_type = /obj/item/weapon/gun/rifle/l42a/unloaded
 
 /obj/structure/gun_rack/type71/empty
@@ -302,5 +323,5 @@
 // /obj/structure/gun_rack/nsg/unloaded
 //	populate_type = /obj/item/weapon/gun/rifle/nsg23/rmc/unloaded
 
-/obj/structure/gun_rack/nsg/Empty
-	initial_stored = 0
+// /obj/structure/gun_rack/nsg/Empty
+//	initial_stored = 0

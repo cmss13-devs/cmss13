@@ -416,7 +416,7 @@
 	name = "\improper M240A1 incinerator unit"
 	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
 
-obj/item/weapon/gun/flamer/m240/unloaded
+/obj/item/weapon/gun/flamer/m240/unloaded
 	current_mag = null
 
 /obj/item/weapon/gun/flamer/m240/underextinguisher

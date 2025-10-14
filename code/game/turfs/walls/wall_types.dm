@@ -333,39 +333,36 @@
 /turf/closed/wall/lv_outpost
 	name = "bare outpost walls"
 	icon = 'icons/turf/walls/lv_colony_walls.dmi'
-	icon_state = "uppwall_interior"
+	icon_state = "lvwall"
 	desc = "A thick and chunky metal wall. The surface is barren and imposing."
-	walltype = WALL_STRATA_OUTPOST_BARE
+	walltype = WALL_LV_BASE
 
 /turf/closed/wall/lv_outpost/reinforced
 	name = "ribbed outpost walls"
-	icon_state = "uppwall_reinforced"
+	icon_state = "lvwall_reinforced"
 	desc = "A thick and chunky metal wall covered in jagged ribs."
-	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/lv_outpost/reinforced/hull
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
-	icon_state = "uppwall_hull"
+	icon_state = "lvwall_hull"
 	turf_flags = TURF_HULL
 
 /turf/closed/wall/lv_outpost/white
 	name = "bare outpost walls"
 	icon = 'icons/turf/walls/white_lv_colony_walls.dmi'
-	icon_state = "uppwall_interior"
+	icon_state = "lvwall"
 	desc = "A thick and chunky metal wall. The surface is barren and imposing."
-	walltype = WALL_STRATA_OUTPOST_BARE
 
 /turf/closed/wall/lv_outpost/white/reinforced
 	name = "ribbed outpost walls"
-	icon_state = "uppwall_reinforced"
+	icon_state = "lvwall_reinforced"
 	desc = "A thick and chunky metal wall covered in jagged ribs."
-	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/lv_outpost/white/reinforced/hull
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
-	icon_state = "uppwall_hull"
+	icon_state = "lvwall_hull"
 	turf_flags = TURF_HULL
 
 
@@ -439,7 +436,7 @@
 	//var/electro = 1
 	//var/shocked = null
 
-/turf/closed/wall/mineral/gold/wy
+/turf/closed/wall/mineral/gold_wy
 	name = "gold wall"
 	desc = "A wall with gold plating. Swag!"
 	icon = 'icons/turf/walls/walls.dmi'
@@ -470,40 +467,69 @@
 /turf/closed/wall/mineral/sandstone
 	name = "sandstone wall"
 	desc = "A wall with sandstone plating."
-	icon = 'icons/turf/walls/hunter/stone.dmi'
-	color = "#c6a480"
-	icon_state = "stone"
+	icon = 'icons/turf/walls/hunter/hunter_temple.dmi'
+	color = null
+	icon_state = "ancient_stone"
 	mineral = "sandstone"
+	walltype = WALL_ANCIENT_BASE
 	baseturfs = /turf/open/gm/dirt
+	var/decoration_type
+	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
+
+
+/turf/closed/wall/mineral/sandstone/Initialize(mapload, ...)
+	if(!special_icon && prob(20))
+		decoration_type = rand(0,3)
+	return ..()
+
+/turf/closed/wall/mineral/sandstone/update_icon()
+	if(decoration_type == null)
+		return ..()
+	if(neighbors_list in list(EAST|WEST))
+		special_icon = TRUE
+		icon_state = "ancient_stone[decoration_type]"
+	else // Wall connection was broken, return to normality
+		special_icon = FALSE
+	return ..()
 
 /turf/closed/wall/mineral/sandstone/runed
 	name = "sandstone temple wall"
-	desc = "A heavy wall of sandstone."
-	icon = 'icons/turf/walls/hunter/hunter_temple.dmi'
+	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_3.dmi'
 	color = null
 	icon_state = "ancient_stone"
 	mineral = "runed sandstone"
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters, can can still be blown up or melted by boilers.
 	baseturfs = /turf/open/floor/sandstone/runed
+	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
 
 /turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
 	visible_message("[user] scrapes uselessly against [src] with their claws.")
 	return
 
 /turf/closed/wall/mineral/sandstone/runed/decor
-	name = "runed sandstone temple wall"
+	name = "decoarated sandstone temple wall"
 	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
-	color = null
-	icon_state = "ancient_stone3d"
-	walltype = "runedstone"
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_3.dmi'
+	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
+
 
 /turf/closed/wall/mineral/sandstone/runed/deco_1
-	color = null
-	icon_state = "ancient_stone1d"
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_1.dmi'
+	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
+
 
 /turf/closed/wall/mineral/sandstone/runed/deco_2
-	color = null
-	icon_state = "ancient_stone2d"
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_2.dmi'
+	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
+
+
+/turf/closed/wall/mineral/sandstone/broken
+	name = "damaged sandstone temple wall"
+	desc = "A damaged heavy wall of sandstone."
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_2.dmi'
+	damage_cap = HEALTH_WALL_XENO
+	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
 
 /turf/closed/wall/mineral/sandstone/runed/can_be_dissolved()
 	return 2
@@ -631,7 +657,7 @@
 /turf/closed/wall/wood/plain
 	name = "plain wood wall"
 	icon = 'icons/turf/walls/wood_plain.dmi'
-	icon_state = "wood_plain"
+	icon_state = "wood"
 	walltype = WALL_WOOD
 	baseturfs = /turf/open/floor/wood
 

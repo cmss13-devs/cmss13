@@ -518,18 +518,6 @@
 /turf/open/floor/ancient_temple/floor_19/west
 	dir = WEST
 
-/turf/open/floor/ancient_temple/floor_19/northeast
-	dir = NORTHEAST
-
-/turf/open/floor/ancient_temple/floor_19/northwest
-	dir = NORTHWEST
-
-/turf/open/floor/ancient_temple/floor_19/southeast
-	dir = SOUTHEAST
-
-/turf/open/floor/ancient_temple/floor_19/southwest
-	dir = SOUTHWEST
-
 //
 
 /turf/open/floor/ancient_temple/floor_20
@@ -543,18 +531,6 @@
 
 /turf/open/floor/ancient_temple/floor_20/west
 	dir = WEST
-
-/turf/open/floor/ancient_temple/floor_20/northeast
-	dir = NORTHEAST
-
-/turf/open/floor/ancient_temple/floor_20/northwest
-	dir = NORTHWEST
-
-/turf/open/floor/ancient_temple/floor_20/southeast
-	dir = SOUTHEAST
-
-/turf/open/floor/ancient_temple/floor_20/southwest
-	dir = SOUTHWEST
 
 // MISC
 
@@ -687,3 +663,113 @@
 
 /turf/open/floor/ancient_temple/fake_wall_dark
 	icon_state = "fake_wall_dark"
+
+/turf/open/floor/waterfall
+	icon = 'icons/turf/waterfall_test.dmi'
+
+	icon_state = "waterfall_top"
+
+/turf/open/floor/waterfall/top
+
+	icon_state = "waterfall_top"
+
+/turf/open/floor/waterfall/top/one
+
+	icon_state = "waterfall_top_1"
+
+/turf/open/floor/waterfall/top/two
+
+	icon_state = "waterfall_top_2"
+
+/turf/open/floor/waterfall/center
+
+	icon_state = "waterfall_center"
+
+
+/turf/open/floor/waterfall/center/one
+
+	icon_state = "waterfall_center_1"
+
+/turf/open/floor/waterfall/center/two
+
+	icon_state = "waterfall_center_2"
+
+/turf/open/floor/waterfall/bottom
+
+	icon_state = "waterfall_bottom"
+
+/turf/open/floor/waterfall/bottom/one
+
+	icon_state = "waterfall_bottom_1"
+
+/turf/open/floor/waterfall/bottom/two
+
+	icon_state = "waterfall_bottom_2"
+
+/turf/open/floor/waterfall/under_bottom
+
+	icon_state = "waterfall_underbottom"
+
+/turf/open/floor/waterfall/under_bottom/one
+
+	icon_state = "waterfall_underbottom_1"
+
+/turf/open/floor/waterfall/under_bottom/two
+
+	icon_state = "waterfall_underbottom_2"
+
+// Ancient Temple Walls
+
+/turf/closed/wall/ancient_temple
+	icon = 'icons/turf/walls/hunter/hunter_temple.dmi'
+	icon_state = "ancient_stone"
+	walltype = WALL_ANCIENT_BASE
+	baseturfs = /turf/open/gm/dirt
+	var/decoration_type
+
+/turf/closed/wall/ancient_temple/sandstone
+	name = "sandstone wall"
+	desc = "A wall with sandstone plating."
+	turf_flags = TURF_HULL
+
+/turf/closed/wall/ancient_temple/sandstone/Initialize(mapload, ...)
+	if(!special_icon && prob(20))
+		decoration_type = rand(0,3)
+	return ..()
+
+/turf/closed/wall/ancient_temple/sandstone/update_icon()
+	if(decoration_type == null)
+		return ..()
+	if(neighbors_list in list(EAST|WEST))
+		special_icon = TRUE
+		icon_state = "ancient_stone[decoration_type]"
+	else // Wall connection was broken, return to normality
+		special_icon = FALSE
+	return ..()
+
+/turf/closed/wall/ancient_temple/sandstone/runed
+	name = "sandstone temple wall"
+	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_3.dmi'
+	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/ancient_temple/sandstone/runed, /turf/closed/wall/ancient_temple/sandstone/runed/decor, /turf/closed/wall/ancient_temple/sandstone/runed/deco_1, /turf/closed/wall/ancient_temple/sandstone/runed/deco_2)
+
+/turf/closed/wall/ancient_temple/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
+	visible_message("[user] scrapes uselessly against [src] with their claws.")
+	return
+
+/turf/closed/wall/ancient_temple/sandstone/runed/decor
+	name = "decoarated sandstone temple wall"
+	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_3.dmi'
+
+/turf/closed/wall/ancient_temple/sandstone/runed/deco_1
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_1.dmi'
+
+/turf/closed/wall/ancient_temple/sandstone/runed/deco_2
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_2.dmi'
+
+/turf/closed/wall/ancient_temple/sandstone/broken
+	name = "damaged sandstone temple wall"
+	desc = "A damaged heavy wall of sandstone."
+	icon = 'icons/turf/walls/hunter/hunter_temple_deco_2.dmi'
+	damage_cap = HEALTH_WALL_XENO

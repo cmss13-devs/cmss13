@@ -2,12 +2,12 @@
 //Trucks
 //Read the documentation in multitile.dm before trying to decipher this stuff
 
-/obj/vehicle/multitile/van_white
-	name = "Colony Van"
+/obj/vehicle/multitile/white_van
+	name = "Weyland-Yutani Van"
 	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides."
 	layer = ABOVE_XENO_LAYER
 
-	icon = 'icons/obj/vehicles/van_white.dmi'
+	icon = 'icons/obj/vehicles/white_van.dmi'
 	icon_state = "van_base"
 	pixel_x = -16
 	pixel_y = -16
@@ -18,7 +18,7 @@
 	bound_x = 0
 	bound_y = 0
 
-	interior_map = /datum/map_template/interior/van_white
+	interior_map = /datum/map_template/interior/white_van
 
 	entrances = list(
 		"left" = list(2, 0),
@@ -74,7 +74,7 @@
 	var/next_push = 0
 	var/push_delay = 0.5 SECONDS
 
-/obj/vehicle/multitile/van_white/Initialize()
+/obj/vehicle/multitile/white_van/Initialize()
 	. = ..()
 	under_image = image(icon, src, icon_state, layer = BELOW_MOB_LAYER)
 	under_image.alpha = 127
@@ -88,7 +88,7 @@
 	for(var/I in GLOB.player_list)
 		add_default_image(SSdcs, I)
 
-/obj/vehicle/multitile/van_white/BlockedPassDirs(atom/movable/mover, target_dir)
+/obj/vehicle/multitile/white_van/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(mover in mobs_under) //can't collide with the thing you're buckled to
 		return NO_BLOCKED_MOVEMENT
 
@@ -111,7 +111,7 @@
 /*
 ** PRESETS
 */
-/obj/vehicle/multitile/van_white/pre_movement()
+/obj/vehicle/multitile/white_van/pre_movement()
 	if(locate(/obj/effect/alien/weeds) in loc)
 		move_momentum *= momentum_loss_on_weeds_factor
 
@@ -122,7 +122,7 @@
 		if(!(M.loc in locs))
 			remove_under_van(M)
 
-/obj/vehicle/multitile/van_white/proc/add_under_van(mob/living/L)
+/obj/vehicle/multitile/white_van/proc/add_under_van(mob/living/L)
 	if(L in mobs_under)
 		return
 
@@ -134,7 +134,7 @@
 	if(L.client)
 		add_client(L)
 
-/obj/vehicle/multitile/van_white/proc/remove_under_van(mob/living/L)
+/obj/vehicle/multitile/white_van/proc/remove_under_van(mob/living/L)
 	SIGNAL_HANDLER
 	mobs_under -= L
 
@@ -148,21 +148,21 @@
 		COMSIG_MOVABLE_MOVED,
 	))
 
-/obj/vehicle/multitile/van_white/proc/check_under_van(mob/M, turf/oldloc, direction)
+/obj/vehicle/multitile/white_van/proc/check_under_van(mob/M, turf/oldloc, direction)
 	SIGNAL_HANDLER
 	if(!(M.loc in locs))
 		remove_under_van(M)
 
-/obj/vehicle/multitile/van_white/proc/add_client(mob/living/L)
+/obj/vehicle/multitile/white_van/proc/add_client(mob/living/L)
 	SIGNAL_HANDLER
 	L.client.images += under_image
 	L.client.images -= normal_image
 
-/obj/vehicle/multitile/van_white/proc/add_default_image(subsystem, mob/M)
+/obj/vehicle/multitile/white_van/proc/add_default_image(subsystem, mob/M)
 	SIGNAL_HANDLER
 	M.client.images += normal_image
 
-/obj/vehicle/multitile/van_white/Destroy()
+/obj/vehicle/multitile/white_van/Destroy()
 	for(var/I in mobs_under)
 		remove_under_van(I)
 
@@ -174,7 +174,7 @@
 
 	return ..()
 
-/obj/vehicle/multitile/van_white/attackby(obj/item/O, mob/user)
+/obj/vehicle/multitile/white_van/attackby(obj/item/O, mob/user)
 	if(user.z != z)
 		return ..()
 
@@ -196,7 +196,7 @@
 	. = ..()
 
 
-/obj/vehicle/multitile/van_white/handle_click(mob/living/user, atom/A, list/mods)
+/obj/vehicle/multitile/white_van/handle_click(mob/living/user, atom/A, list/mods)
 	if(mods[SHIFT_CLICK] && !mods[ALT_CLICK])
 		if(overdrive_next > world.time)
 			to_chat(user, SPAN_WARNING("You can't activate overdrive yet! Wait [round((overdrive_next - world.time) / 10, 0.1)] seconds."))
@@ -212,17 +212,17 @@
 
 	return ..()
 
-/obj/vehicle/multitile/van_white/proc/reset_overdrive()
+/obj/vehicle/multitile/white_van/proc/reset_overdrive()
 	misc_multipliers["move"] += overdrive_speed_mult
 
-/obj/vehicle/multitile/van_white/get_projectile_hit_boolean(obj/projectile/P)
+/obj/vehicle/multitile/white_van/get_projectile_hit_boolean(obj/projectile/P)
 	if(src == P.original) //clicking on the van itself will hit it.
 		var/hitchance = P.get_effective_accuracy()
 		if(prob(hitchance))
 			return TRUE
 	return FALSE
 
-/obj/vehicle/multitile/van_white/Collide(atom/A)
+/obj/vehicle/multitile/white_van/Collide(atom/A)
 	if(!seats[VEHICLE_DRIVER])
 		return FALSE
 
@@ -243,29 +243,29 @@
 ** PRESETS SPAWNERS
 */
 
-/obj/effect/vehicle_spawner/van_white
+/obj/effect/vehicle_spawner/white_van
 	name = "Van Spawner"
-	icon = 'icons/obj/vehicles/van_white.dmi'
+	icon = 'icons/obj/vehicles/white_van.dmi'
 	icon_state = "van_base"
 	pixel_x = -16
 	pixel_y = -16
 
-/obj/effect/vehicle_spawner/van_white/Initialize()
+/obj/effect/vehicle_spawner/white_van/Initialize()
 	. = ..()
 	spawn_vehicle()
 	qdel(src)
 
 //PRESET: no hardpoints
-/obj/effect/vehicle_spawner/van_white/spawn_vehicle()
-	var/obj/vehicle/multitile/van_white/VAN = new (loc)
+/obj/effect/vehicle_spawner/white_van/spawn_vehicle()
+	var/obj/vehicle/multitile/white_van/VAN = new (loc)
 
 	load_misc(VAN)
 	handle_direction(VAN)
 	VAN.update_icon()
 
 //PRESET: wheels installed, destroyed
-/obj/effect/vehicle_spawner/van_white/decrepit/spawn_vehicle()
-	var/obj/vehicle/multitile/van_white/VAN = new (loc)
+/obj/effect/vehicle_spawner/white_van/decrepit/spawn_vehicle()
+	var/obj/vehicle/multitile/white_van/VAN = new (loc)
 
 	load_misc(VAN)
 	load_hardpoints(VAN)
@@ -273,17 +273,17 @@
 	load_damage(VAN)
 	VAN.update_icon()
 
-/obj/effect/vehicle_spawner/van_white/decrepit/load_hardpoints(obj/vehicle/multitile/van_white/V)
+/obj/effect/vehicle_spawner/white_van/decrepit/load_hardpoints(obj/vehicle/multitile/white_van/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
 
 //PRESET: wheels installed
-/obj/effect/vehicle_spawner/van_white/fixed/spawn_vehicle()
-	var/obj/vehicle/multitile/van_white/VAN = new (loc)
+/obj/effect/vehicle_spawner/white_van/fixed/spawn_vehicle()
+	var/obj/vehicle/multitile/white_van/VAN = new (loc)
 
 	load_misc(VAN)
 	load_hardpoints(VAN)
 	handle_direction(VAN)
 	VAN.update_icon()
 
-/obj/effect/vehicle_spawner/van_white/fixed/load_hardpoints(obj/vehicle/multitile/van_white/V)
+/obj/effect/vehicle_spawner/white_van/fixed/load_hardpoints(obj/vehicle/multitile/white_van/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)

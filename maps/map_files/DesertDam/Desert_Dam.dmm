@@ -42246,7 +42246,7 @@
 /area/desert_dam/interior/dam_interior/break_room)
 "gIS" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -45114,7 +45114,7 @@
 /area/desert_dam/exterior/landing_pad_one)
 "ndP" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -46935,11 +46935,9 @@
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/landing_pad_one)
 "qLT" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
+/obj/structure/closet/coffin/predator/ancient_stone{
+	pixel_x = -16;
+	pixel_y = -8
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
@@ -49867,7 +49865,7 @@
 /turf/open/floor/prison/whitered/west,
 /area/desert_dam/building/medical/office1)
 "wFU" = (
-/obj/structure/showcase/yautja,
+/obj/structure/showcase/yautja/ancient,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
 "wGI" = (

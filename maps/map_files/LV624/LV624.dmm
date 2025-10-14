@@ -915,7 +915,7 @@
 "adH" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
@@ -1018,7 +1018,7 @@
 /area/lv624/ground/caves/south_east_caves)
 "adY" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
@@ -1027,7 +1027,7 @@
 "adZ" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
@@ -1043,7 +1043,7 @@
 	name = "Alien Mine"
 	},
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -1093,7 +1093,7 @@
 /area/lv624/ground/caves/sand_temple)
 "aek" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
@@ -1134,7 +1134,7 @@
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aer" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -1252,7 +1252,7 @@
 /area/lv624/ground/barrens/containers)
 "aeR" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/whiteyellowfull/east,
@@ -1444,7 +1444,7 @@
 "afE" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -1560,7 +1560,7 @@
 /area/lv624/ground/barrens/containers)
 "agd" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
@@ -3916,7 +3916,7 @@
 "avp" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -4940,7 +4940,7 @@
 	pixel_y = -31
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 4
 	},
 /obj/effect/spider/stickyweb,
@@ -5192,14 +5192,14 @@
 	pixel_y = -31
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "aBi" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -7074,7 +7074,7 @@
 /area/lv624/lazarus/yggdrasil)
 "aKj" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -8558,7 +8558,7 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "aSo" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -10489,7 +10489,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
 "btr" = (
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 8
 	},
 /turf/open/floor/sandstone/runed,
@@ -10638,7 +10638,7 @@
 	pixel_x = 1;
 	pixel_y = 31
 	},
-/obj/structure/showcase/yautja,
+/obj/structure/showcase/yautja/ancient,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "bFa" = (
@@ -10751,7 +10751,7 @@
 /area/lv624/ground/caves/south_east_caves)
 "bQA" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -10930,7 +10930,7 @@
 /area/lv624/lazarus/secure_storage)
 "cib" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
@@ -11451,7 +11451,7 @@
 /area/lv624/lazarus/quartstorage)
 "dqo" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -11774,7 +11774,7 @@
 /area/lv624/ground/caves/central_caves)
 "dSb" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -11965,7 +11965,7 @@
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "ekB" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -12513,7 +12513,7 @@
 /area/lv624/ground/caves/sand_temple)
 "fxZ" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -12529,8 +12529,11 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
 "fzZ" = (
-/obj/structure/showcase/yautja/alt,
-/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/morgue/sarcophagus{
+	pixel_x = -17;
+	pixel_y = -12;
+	dir = 1
+	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "fAs" = (
@@ -12557,7 +12560,7 @@
 "fDo" = (
 /obj/structure/platform/stone/runed_sandstone,
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
@@ -12718,7 +12721,7 @@
 /area/lv624/lazarus/engineering)
 "fQD" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
@@ -13134,7 +13137,7 @@
 /area/lv624/ground/caves/sand_temple)
 "gRh" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
@@ -13728,7 +13731,7 @@
 "hYx" = (
 /obj/structure/platform/stone/runed_sandstone/north,
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -13788,7 +13791,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
 "idz" = (
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 8
 	},
 /turf/open/floor/strata/grey_multi_tiles,
@@ -13988,7 +13991,7 @@
 /area/lv624/ground/caves/sand_temple)
 "iAv" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -14357,7 +14360,7 @@
 /area/lv624/ground/caves/west_caves)
 "jvV" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
@@ -14684,11 +14687,10 @@
 /turf/open/floor/bot/north,
 /area/lv624/ground/caves/north_central_caves)
 "kbr" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
+/obj/structure/morgue/sarcophagus{
+	pixel_x = -17;
+	pixel_y = -14;
+	dir = 2
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
@@ -14945,7 +14947,7 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "kBJ" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -15160,7 +15162,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "lde" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
@@ -15436,7 +15438,12 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/lv624/ground/jungle/south_central_jungle)
 "lJm" = (
-/obj/structure/showcase/yautja/alt,
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/morgue/sarcophagus{
+	pixel_x = -17;
+	pixel_y = -14;
+	dir = 2
+	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "lJo" = (
@@ -15854,7 +15861,7 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "mww" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
@@ -16052,7 +16059,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "mVg" = (
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
@@ -16283,7 +16290,7 @@
 	pixel_x = -1;
 	pixel_y = 31
 	},
-/obj/structure/showcase/yautja,
+/obj/structure/showcase/yautja/ancient,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "nwI" = (
@@ -16339,7 +16346,7 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/robotics)
 "nEo" = (
-/obj/structure/showcase/yautja,
+/obj/structure/showcase/yautja/ancient,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "nED" = (
@@ -16396,7 +16403,7 @@
 /area/lv624/ground/barrens/east_barrens)
 "nIH" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
@@ -16492,7 +16499,7 @@
 /area/lv624/ground/caves/south_west_caves)
 "nRb" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
@@ -16638,7 +16645,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
 "off" = (
-/obj/structure/morgue/sarcophagus,
+/obj/structure/morgue/sarcophagus{
+	pixel_x = -14;
+	pixel_y = -14
+	},
 /obj/item/weapon/twohanded/yautja/glaive/damaged{
 	name = "damaged war glaive"
 	},
@@ -16815,7 +16825,7 @@
 /area/lv624/ground/river/west_river)
 "oys" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
@@ -17572,7 +17582,7 @@
 /area/lv624/ground/caves/sand_temple)
 "pRx" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -17758,7 +17768,7 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "qpX" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -18083,7 +18093,7 @@
 /area/lv624/ground/caves/south_central_caves)
 "rbw" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
 	},
@@ -18332,7 +18342,7 @@
 /area/lv624/ground/jungle/west_central_jungle)
 "rCK" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -18956,7 +18966,7 @@
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "sPq" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
@@ -19135,7 +19145,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
 "thn" = (
-/obj/structure/showcase/yautja{
+/obj/structure/showcase/yautja/ancient{
 	dir = 4
 	},
 /turf/open/floor/strata/grey_multi_tiles,
@@ -19280,7 +19290,7 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "tur" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -19391,7 +19401,7 @@
 /area/lv624/lazarus/medbay)
 "tIw" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5
@@ -19857,13 +19867,12 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
 "uDd" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	icon = 'icons/obj/structures/morgue.dmi';
-	name = "alien sarcophagus"
-	},
 /obj/structure/flora/jungle/vines/heavy,
+/obj/structure/morgue/sarcophagus{
+	pixel_x = -17;
+	pixel_y = -12;
+	dir = 1
+	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
 "uDs" = (
@@ -20100,7 +20109,7 @@
 /area/lv624/ground/caves/central_caves)
 "vcI" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -20411,7 +20420,7 @@
 /area/lv624/lazarus/quartstorage/outdoors)
 "vMA" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -20792,7 +20801,7 @@
 /area/lv624/ground/caves/east_caves)
 "wEk" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
@@ -52236,13 +52245,13 @@ ahv
 ahv
 ahv
 aeg
-uDd
+lJm
 iSa
 mhZ
 mhZ
 mhZ
 pEV
-uFA
+uDd
 cRm
 poE
 agX
@@ -52464,7 +52473,7 @@ ahv
 ahv
 ahv
 slW
-fzZ
+uFA
 pEV
 mhZ
 mhZ
@@ -52692,13 +52701,13 @@ ahv
 ahv
 ahv
 slW
-uDd
+lJm
 pEV
 mhZ
 mhZ
 mhZ
 dID
-kbr
+fzZ
 jFc
 poE
 agX
@@ -52920,13 +52929,13 @@ ahv
 ahv
 ahv
 slW
-fzZ
+uFA
 pEV
 mhZ
 mhZ
 mhZ
 pEV
-lJm
+urR
 aeg
 poE
 gxd
@@ -53376,13 +53385,13 @@ ahv
 ahv
 ahv
 afS
-lJm
+urR
 pEV
 mhZ
 mhZ
 mhZ
 pEV
-fzZ
+uFA
 aeg
 efJ
 eSb

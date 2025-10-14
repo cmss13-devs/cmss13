@@ -398,6 +398,28 @@
 	icon_state = "grass_1"
 	bleed_layer = 1
 
+// LV grass auto but with HUGE edges - seriously big, will fit over half a tile.
+
+/turf/open/auto_turf/lv_grass_big_edges
+	name = "jungle grass"
+	icon = 'icons/turf/floors/auto_lv_turf.dmi'
+	icon_state = "altgrass_0"
+	icon_prefix = "altgrass"
+	layer_name = list("ground","lush thick grass")
+	desc = "grass, dirt, mud, and other assorted high moisture cave flooring."
+
+/turf/open/auto_turf/lv_grass_big_edges/insert_self_into_baseturfs()
+	baseturfs += /turf/open/auto_turf/lv_grass_big_edges/layer0
+
+/turf/open/auto_turf/lv_grass_big_edges/layer0
+	icon_state = "altgrass_0"
+	bleed_layer = 0
+	variant_prefix_name = "matted grass"
+
+/turf/open/auto_turf/lv_grass_big_edges/layer1
+	icon_state = "altgrass_1"
+	bleed_layer = 1
+
 /// Sand
 
 /turf/open/auto_turf/lv_sand
@@ -418,37 +440,6 @@
 /turf/open/auto_turf/lv_sand/layer1
 	icon_state = "sand_1"
 	bleed_layer = 1
-
-/turf/open/auto_turf/lv_sand/layer2_random_rocks
-	icon_state = "sand_1_1"
-	bleed_layer = 1
-	variant = 1
-	variant_prefix_name = "rocky"
-
-/turf/open/auto_turf/lv_sand/layer2_random_rocks_alt
-	icon_state = "sand_1_2"
-	bleed_layer = 1
-	variant = 1
-	variant_prefix_name = "rocky"
-
-/turf/open/auto_turf/lv_sand/layer2_hole
-	icon_state = "sand_1_3"
-	bleed_layer = 1
-	variant_prefix_name = "rocky"
-
-/turf/open/auto_turf/lv_sand/layer2_footsteps
-	icon_state = "sand_1_4"
-	bleed_layer = 1
-	variant_prefix_name = "rocky"
-
-/turf/open/auto_turf/lv_sand/layer2_footsteps/east
-	dir = EAST
-
-/turf/open/auto_turf/lv_sand/layer2_footsteps/south
-	dir = SOUTH
-
-/turf/open/auto_turf/lv_sand/layer2_footsteps/west
-	dir = WEST
 
 /turf/open/auto_turf/lv_sand_alt
 	icon = 'icons/turf/floors/auto_lv_turf.dmi'

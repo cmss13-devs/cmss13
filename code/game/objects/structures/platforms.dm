@@ -293,11 +293,11 @@
 
 /obj/structure/platform/stone/stair_cut/runed_sandstone_left
 	icon_state = "stone_stair"
-	color = "#b29082"
+	color = "#9a8a79"
 
 /obj/structure/platform/stone/stair_cut/runed_sandstone_right
 	icon_state = "stone_stair_alt"
-	color = "#b29082"
+	color = "#9a8a79"
 
 /// Ancient-Temple platform stair-cut
 
@@ -497,7 +497,7 @@
 /obj/structure/platform/stone/runed_sandstone
 	name = "sandstone temple platform"
 	icon_state = "stone"
-	color = "#b29082"
+	color = "#9a8a79"
 
 /obj/structure/platform/stone/runed_sandstone/north
 	dir = NORTH
@@ -724,7 +724,7 @@
 /obj/structure/platform_decoration/stone/runed_sandstone
 	name = "sandstone temple platform corner"
 	icon_state = "stone_deco"
-	color = "#b29082"
+	color = "#9a8a79"
 
 /obj/structure/platform_decoration/stone/runed_sandstone/north
 	dir = NORTH

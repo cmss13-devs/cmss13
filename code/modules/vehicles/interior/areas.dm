@@ -30,8 +30,8 @@
 	name = "van interior"
 	icon_state = "van"
 
-/area/interior/vehicle/van_white
-	name = "van interior"
+/area/interior/vehicle/white_van
+	name = "WY van interior"
 	icon_state = "van"
 
 /area/interior/vehicle/clf_van

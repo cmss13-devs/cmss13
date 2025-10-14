@@ -65,3 +65,7 @@ endmap
 
 map whiskey_outpost_v2
 endmap
+
+map lv624_lazarus_landing
+
+endmap

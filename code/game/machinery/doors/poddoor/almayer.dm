@@ -75,7 +75,8 @@
 	vehicle_resistant = TRUE
 
 /obj/structure/machinery/door/poddoor/almayer/grey
-	icon_state ="grey_pdoor"
+	icon_state ="grey_pdoor1"
+	base_icon_state = "grey_pdoor"
 
 /obj/structure/machinery/door/poddoor/almayer/grey/Initialize()
 	. = ..()
@@ -102,7 +103,8 @@
 	opacity = TRUE
 
 /obj/structure/machinery/door/poddoor/almayer/white
-	icon_state ="white_pdoor"
+	icon_state ="white_pdoor1"
+	base_icon_state = "white_pdoor"
 
 /obj/structure/machinery/door/poddoor/almayer/white/Initialize()
 	. = ..()

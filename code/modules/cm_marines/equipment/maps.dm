@@ -64,6 +64,11 @@
 	desc = "A satellite printout of the Lazarus Landing colony on LV-624."
 	html_link = "images/6/6f/LV624.png"
 
+/obj/item/map/lv624_lazarus_landing_map
+	name = "\improper Lazarus Landing Map"
+	desc = "A satellite printout of the Lazarus Landing colony on LV-624."
+	html_link = "images/6/6f/LV624.png"
+
 /obj/item/map/ice_colony_map
 	name = "\improper Ice Colony map"
 	desc = "A satellite printout of the Ice Colony."
@@ -147,6 +152,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 /proc/setup_all_maps()
 	return list(
 		MAP_LV_624 = new /obj/item/map/lazarus_landing_map(),
+		MAP_LV_624_LAZARUS_LANDING = new /obj/item/map/lv624_lazarus_landing_map(),
 		MAP_ICE_COLONY = new /obj/item/map/ice_colony_map(),
 		MAP_ICE_COLONY_V3 = new /obj/item/map/ice_colony_map_v3(),
 		MAP_WHISKEY_OUTPOST = new /obj/item/map/whiskey_outpost_map(),

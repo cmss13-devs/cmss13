@@ -41,6 +41,10 @@
 	icon_closed = "ancient_coffin"
 	icon_opened = "ancient_coffin_open"
 	anchored = TRUE
+	unacidable = TRUE
+	unslashable = TRUE
+	store_items = TRUE
+	storage_capacity = 100
 
 	open_sound = 'sound/effects/stonedoor_openclose.ogg'
 	close_sound = 'sound/effects/stonedoor_openclose.ogg'
@@ -63,6 +67,11 @@
 /obj/structure/closet/coffin/predator/ancient_stone/mummy/deco/gas
 	name = "ornate ancient stone sarcophagus"
 	desc = "An ornate colossal stone sarcophagus, its surface scarred with the glyphs of the Hunt. Time and tradition have sealed whatever lies within..."
+	anchored = TRUE
+	unacidable = TRUE
+	unslashable = TRUE
+	store_items = TRUE
+	storage_capacity = 100
 	var/gas_triggered = FALSE
 	var/radius = 4
 	var/datum/effect_system/smoke_spread/gas_holder

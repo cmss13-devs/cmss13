@@ -436,7 +436,7 @@
 /area/desert_dam/building/cafeteria/loading)
 "gV" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5;
@@ -804,13 +804,13 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "mD" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 1;
 	icon_state = "p_stair_ew_half_cap";
 	pixel_y = -18
 	},
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_full";
 	pixel_y = 14
@@ -1067,7 +1067,7 @@
 /area/desert_dam/building/mining/workshop_foyer)
 "qX" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
@@ -1644,7 +1644,7 @@
 	dir = 8
 	},
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 8;
 	icon_state = "p_stair_ew_half_cap";
 	pixel_y = 9
@@ -1670,7 +1670,7 @@
 /area/event/metal/dynamic/lit)
 "Bu" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 1;
 	icon_state = "p_stair_ew_half_cap";
 	pixel_y = 5
@@ -2195,7 +2195,7 @@
 /area/desert_dam/building/cafeteria/loading)
 "JX" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	icon_state = "p_stair_ew_full_cap";
 	layer = 3.5;
 	pixel_y = 4
@@ -2214,7 +2214,7 @@
 /area/desert_dam/building/mining/workshop)
 "Kd" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/interior/wood,
@@ -2585,7 +2585,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "QL" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 1;
 	icon_state = "p_stair_ew_half_cap";
 	pixel_y = 5
@@ -2782,7 +2782,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "TN" = (
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 1;
 	icon_state = "p_stair_full"
 	},
@@ -2862,7 +2862,7 @@
 	icon_state = "sandbag_0"
 	},
 /obj/structure/stairs/perspective{
-	color = "#b29082";
+	color = "#9a8a79";
 	dir = 1;
 	icon_state = "p_stair_full"
 	},

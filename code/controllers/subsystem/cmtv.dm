@@ -184,6 +184,9 @@ SUBSYSTEM_DEF(cmtv)
 
 	var/cmtv_link = CONFIG_GET(string/cmtv_link)
 	to_chat(new_perspective, boxed_message("[SPAN_BIGNOTICE("You will be observed in 10 seconds.")]\n\n [SPAN_NOTICE("Your perspective will be shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to cancel this, press <a href='byond://?src=\ref[src];cancel_cmtv=1'>here</a>.")]"))
+	add_verb(new_perspective, /mob/proc/handoff_cmtv)
+	give_action(new_perspective, /datum/action/stop_cmtv)
+
 
 	future_perspective = WEAKREF(new_perspective)
 	addtimer(CALLBACK(src, PROC_REF(do_change_observed_mob), set_showtime), 10 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
@@ -210,8 +213,6 @@ SUBSYSTEM_DEF(cmtv)
 
 	var/cmtv_link = CONFIG_GET(string/cmtv_link)
 	to_chat(current_perspective, boxed_message("[SPAN_BIGNOTICE("You are being observed.")]\n\n [SPAN_NOTICE("Your perspective is currently being shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to hand this off to a different player, press <a href='byond://?src=\ref[src];abandon_cmtv=1'>here</a>. You can also use the verb 'Handoff CMTV' at any point.")]"))
-	add_verb(current_perspective, /mob/proc/handoff_cmtv)
-	give_action(current_perspective, /datum/action/stop_cmtv)
 
 	camera_mob.do_observe(current_perspective)
 	if(set_showtime)

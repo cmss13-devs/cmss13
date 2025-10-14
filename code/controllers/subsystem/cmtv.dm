@@ -74,7 +74,7 @@ SUBSYSTEM_DEF(cmtv)
 
 /datum/controller/subsystem/cmtv/Topic(href, href_list)
 	. = ..()
-	
+
 	if(href_list["abandon_cmtv"] && usr == current_perspective)
 		reset_perspective()
 
@@ -165,6 +165,7 @@ SUBSYSTEM_DEF(cmtv)
 
 		UnregisterSignal(current_perspective, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH, COMSIG_MOVABLE_Z_CHANGED, COMSIG_MOVABLE_ENTERED_OBJ))
 		remove_verb(current_perspective, /mob/proc/handoff_cmtv)
+		remove_action(current_perspective, /datum/action/stop_cmtv)
 		current_perspective = null
 		perspective_display.change_displayed_mob("Finding player...")
 
@@ -210,6 +211,7 @@ SUBSYSTEM_DEF(cmtv)
 	var/cmtv_link = CONFIG_GET(string/cmtv_link)
 	to_chat(current_perspective, boxed_message("[SPAN_BIGNOTICE("You are being observed.")]\n\n [SPAN_NOTICE("Your perspective is currently being shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to hand this off to a different player, press <a href='byond://?src=\ref[src];abandon_cmtv=1'>here</a>. You can also use the verb 'Handoff CMTV' at any point.")]"))
 	add_verb(current_perspective, /mob/proc/handoff_cmtv)
+	give_action(current_perspective, /datum/action/stop_cmtv)
 
 	camera_mob.do_observe(current_perspective)
 	if(set_showtime)
@@ -285,7 +287,7 @@ SUBSYSTEM_DEF(cmtv)
 
 	for(var/priority in priority_list)
 		var/list/priority_mobs_list = priority_list[priority]
-		
+
 		if(!length(priority_mobs_list))
 			continue
 
@@ -306,7 +308,7 @@ SUBSYSTEM_DEF(cmtv)
 
 	for(var/priority in priority_list)
 		var/list/priority_mobs_list = priority_list[priority]
-		
+
 		if(!length(priority_mobs_list))
 			continue
 
@@ -382,6 +384,16 @@ SUBSYSTEM_DEF(cmtv)
 /atom/movable/screen/cmtv/proc/change_displayed_mob(display_name)
 	maptext = MAPTEXT("<span style='text-align: center;'><span style='text-decoration: underline; font-size: 12px;'>Currently observing:</span><br><span style='font-size: 16px;'>[display_name]</span></span>")
 
+/datum/action/stop_cmtv
+	name = "Stop CMTV"
+	icon_file = 'icons/obj/structures/machinery/monitors.dmi'
+	action_icon_state = "camera"
+
+/datum/action/stop_cmtv/action_activate()
+	. = ..()
+
+	if(owner == SScmtv.current_perspective || owner == SScmtv.future_perspective.resolve())
+		SScmtv.reset_perspective()
 
 #undef PRIORITY_FIRST
 #undef PRIORITY_SECOND

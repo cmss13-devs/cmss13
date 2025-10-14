@@ -1,4 +1,0 @@
-author: "Sergeys"
-delete-after: True
-changes:
-  - bugfix: "fixed the construction cancel after closing UI."

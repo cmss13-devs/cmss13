@@ -103,7 +103,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 
 /datum/cmtv_command/follow
 	name = "follow"
-	description = "Follow new mob (requires name)."
+	description = "Follow new mob for 60s (requires name)."
 
 	global_cooldown_time = 10 MINUTES
 	user_cooldown_time = 3 HOURS
@@ -111,14 +111,15 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 /datum/cmtv_command/follow/execute(list/arguments)
 	var/looking_for = arguments["args"]
 
-	for(var/datum/weakref/mob_ref in SScmtv.get_most_active_list())
-		var/mob/living/active_mob = mob_ref.resolve()
-		if(!active_mob)
-			continue
+	for(var/priority, mob_list in SScmtv.priority_list)
+		for(var/datum/weakref/mob_ref in mob_list)
+			var/mob/living/active_mob = mob_ref.resolve()
+			if(!active_mob)
+				continue
 
-		if(active_mob.real_name == looking_for)
-			SScmtv.change_observed_mob(active_mob)
-			return "Player is still active, switching after delay..."
+			if(active_mob.real_name == looking_for)
+				SScmtv.change_observed_mob(active_mob, set_showtime = 60 SECONDS)
+				return "Player is still active, switching after delay..."
 
 	apply_cooldown = FALSE
 	return "Player could not be found or is not active."

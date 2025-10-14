@@ -28,6 +28,11 @@ SUBSYSTEM_DEF(cmtv)
 
 	var/atom/movable/screen/cmtv/perspective_display
 
+	/// How long until we should start polling to change perspective
+	/// excluding mobs dying or other factors that make a mob ineligible
+	/// based on DCS
+	COOLDOWN_DECLARE(minimum_screentime)
+
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
 	if(!username || !CONFIG_GET(string/cmtv_link))
@@ -47,6 +52,9 @@ SUBSYSTEM_DEF(cmtv)
 
 	if(!current_perspective && !future_perspective)
 		reset_perspective()
+		return
+
+	if(minimum_screentime && !COOLDOWN_FINISHED(src, minimum_screentime))
 		return
 
 	if(future_perspective)
@@ -143,7 +151,9 @@ SUBSYSTEM_DEF(cmtv)
 	camera_operator.tgui_panel.window.send_message("game/tvmode")
 
 /// Takes a new mob to observe. If there is already a queued up mob, or a current perspective, they will be notified and dropped. This will become the new perspective in 10 seconds.
-/datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective, instant = FALSE)
+/// If set to instant, we immediately switch to observe nothing. If set_showtime is set, the camera will stay on the new perspective for at least this long,
+/// unless they die or something.
+/datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective, instant = FALSE, set_showtime = FALSE)
 	if(new_perspective == current_perspective)
 		log_debug("CMTV: New perspective same as the old perspective, skipping change.")
 		return
@@ -161,6 +171,9 @@ SUBSYSTEM_DEF(cmtv)
 	if(instant)
 		camera_mob.forceMove(pick(GLOB.observer_starts))
 
+	if(!set_showtime)
+		minimum_screentime = null
+
 	if(!istype(new_perspective) || !new_perspective.client)
 		log_debug("CMTV: Perspective could not be swapped to, picking new perspective.")
 		return reset_perspective()
@@ -172,9 +185,9 @@ SUBSYSTEM_DEF(cmtv)
 	to_chat(new_perspective, boxed_message("[SPAN_BIGNOTICE("You will be observed in 10 seconds.")]\n\n [SPAN_NOTICE("Your perspective will be shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to cancel this, press <a href='byond://?src=\ref[src];cancel_cmtv=1'>here</a>.")]"))
 
 	future_perspective = WEAKREF(new_perspective)
-	addtimer(CALLBACK(src, PROC_REF(do_change_observed_mob)), 10 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, PROC_REF(do_change_observed_mob), set_showtime), 10 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 
-/datum/controller/subsystem/cmtv/proc/do_change_observed_mob()
+/datum/controller/subsystem/cmtv/proc/do_change_observed_mob(set_showtime = FALSE)
 	if(!istype(future_perspective))
 		log_debug("CMTV: Perspective changed while we were waiting, aborting.")
 		future_perspective = null
@@ -199,6 +212,8 @@ SUBSYSTEM_DEF(cmtv)
 	add_verb(current_perspective, /mob/proc/handoff_cmtv)
 
 	camera_mob.do_observe(current_perspective)
+	if(set_showtime)
+		COOLDOWN_START(src, minimum_screentime, set_showtime)
 
 	future_perspective = null
 
@@ -297,7 +312,7 @@ SUBSYSTEM_DEF(cmtv)
 
 		return priority_mobs_list
 
-/// If a player has moved recently, also checks the inactivity var
+/// If a player is still categorised as being active
 /datum/controller/subsystem/cmtv/proc/is_active(mob/possible_player, delay_time)
 	if(!possible_player || !possible_player.client)
 		return FALSE
@@ -342,8 +357,10 @@ SUBSYSTEM_DEF(cmtv)
 	if(!selected_mob)
 		return
 
+	var/how_long = tgui_input_number(src, "How long should we stay on this perspective (in seconds)? Set 0 to not force a length.", "CMTV Length", default = 60)
+
 	message_admins("CMTV: [key_name(src)] swapped the perspective to [key_name_admin(selected_mob)].")
-	SScmtv.change_observed_mob(selected_mob)
+	SScmtv.change_observed_mob(selected_mob, set_showtime = how_long)
 
 /datum/config_entry/string/cmtv_ckey
 	protection = CONFIG_ENTRY_LOCKED

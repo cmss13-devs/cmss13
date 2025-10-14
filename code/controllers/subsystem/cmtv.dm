@@ -287,12 +287,15 @@ SUBSYSTEM_DEF(cmtv)
 	camera_mob.clean_observe_target()
 	camera_mob.abstract_move(where_to_look)
 
+	camera_mob.hud_used.plane_masters["[HUD_PLANE]"].alpha = 0
 	camera_mob.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 0
 
 	addtimer(CALLBACK(src, PROC_REF(stop_spectating_turf)), how_long - 10 SECONDS)
 
 /datum/controller/subsystem/cmtv/proc/stop_spectating_turf()
+	camera_mob.hud_used.plane_masters["[HUD_PLANE]"].alpha = 255
 	camera_mob.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 255
+
 	temporarily_observing_turf = FALSE
 
 	reset_perspective()

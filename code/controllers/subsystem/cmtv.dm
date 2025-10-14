@@ -143,7 +143,7 @@ SUBSYSTEM_DEF(cmtv)
 	camera_operator.tgui_panel.window.send_message("game/tvmode")
 
 /// Takes a new mob to observe. If there is already a queued up mob, or a current perspective, they will be notified and dropped. This will become the new perspective in 10 seconds.
-/datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective)
+/datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective, instant = FALSE)
 	if(new_perspective == current_perspective)
 		log_debug("CMTV: New perspective same as the old perspective, skipping change.")
 		return
@@ -153,10 +153,13 @@ SUBSYSTEM_DEF(cmtv)
 	if(current_perspective)
 		to_chat(current_perspective, boxed_message("[SPAN_BIGNOTICE("You are no longer being observed.")]\n\n [SPAN_NOTICE("You have opted out or are no longer eligible to be displayed on CMTV.")]"))
 
-		UnregisterSignal(current_perspective, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH, COMSIG_MOVABLE_Z_CHANGED))
+		UnregisterSignal(current_perspective, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH, COMSIG_MOVABLE_Z_CHANGED, COMSIG_MOVABLE_ENTERED_OBJ))
 		remove_verb(current_perspective, /mob/proc/handoff_cmtv)
 		current_perspective = null
 		perspective_display.change_displayed_mob("Finding player...")
+
+	if(instant)
+		camera_mob.forceMove(pick(GLOB.observer_starts))
 
 	if(!istype(new_perspective) || !new_perspective.client)
 		log_debug("CMTV: Perspective could not be swapped to, picking new perspective.")
@@ -183,7 +186,8 @@ SUBSYSTEM_DEF(cmtv)
 		future_perspective = null
 		return
 
-	RegisterSignal(future_perspective_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH), PROC_REF(reset_perspective))
+	RegisterSignal(future_perspective_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH), PROC_REF(handle_reset_signal))
+	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_ENTERED_OBJ, PROC_REF(handle_reset_signal_immediate))
 	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(handle_z_change))
 	current_perspective = future_perspective_mob
 	perspective_display.change_displayed_mob(current_perspective.real_name)
@@ -213,10 +217,20 @@ SUBSYSTEM_DEF(cmtv)
 	if(is_ground_level(old_z) && is_mainship_level(new_z))
 		reset_perspective() // dull, either fleeing or going to med
 
-/// Generic signal handler for deaths, nestings, logouts, etc. Immediately queues up a new perspective to be switched to
-/datum/controller/subsystem/cmtv/proc/reset_perspective()
+/// Generic reset handler, will keep the perspective on the old mob till the new one accepts
+/datum/controller/subsystem/cmtv/proc/handle_reset_signal()
 	SIGNAL_HANDLER
 
+	reset_perspective()
+
+/// Reset handler that immediately switches perspective to something generic while we wait
+/datum/controller/subsystem/cmtv/proc/handle_reset_signal_immediate()
+	SIGNAL_HANDLER
+
+	reset_perspective(instant = TRUE)
+
+/// Generic signal handler for deaths, nestings, logouts, etc. Immediately queues up a new perspective to be switched to
+/datum/controller/subsystem/cmtv/proc/reset_perspective(instant = FALSE)
 	log_debug("CMTV: Perspective reset requested.")
 
 	var/mob/active_player = get_active_player()
@@ -224,7 +238,7 @@ SUBSYSTEM_DEF(cmtv)
 		log_debug("CMTV: Unable to find an appropriate player.")
 		return FALSE // start the blooper reel, we've got nothing
 
-	change_observed_mob(get_active_player())
+	change_observed_mob(get_active_player(), instant)
 
 #define PERSPECTIVE_SELECTION_DELAY_TIME (20 SECONDS)
 

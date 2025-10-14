@@ -45,8 +45,8 @@ GLOBAL_DATUM_INIT(tacmap_viewer, /datum/tacmap_viewer, new)
 	else
 		var/datum/flattened_tacmap/selected_flat = GLOB.uscm_flat_tacmap_data[uscm_length]
 		var/datum/drawing_data/selected_draw_data = GLOB.uscm_drawing_tacmap_data[uscm_length]
-		data["uscm_map"] = selected_flat.flat_tacmap
-		data["uscm_svg"] = selected_draw_data.draw_data
+		data["uscm_map"] = selected_flat ? selected_flat.flat_tacmap : null
+		data["uscm_svg"] = selected_draw_data ? selected_draw_data.draw_data : null
 
 	var/xeno_length = length(GLOB.xeno_drawing_tacmap_data)
 	if(xeno_length == 0)
@@ -55,8 +55,8 @@ GLOBAL_DATUM_INIT(tacmap_viewer, /datum/tacmap_viewer, new)
 	else
 		var/datum/flattened_tacmap/selected_flat = GLOB.xeno_flat_tacmap_data[xeno_length]
 		var/datum/drawing_data/selected_draw_data = GLOB.xeno_drawing_tacmap_data[xeno_length]
-		data["xeno_map"] = selected_flat.flat_tacmap
-		data["xeno_svg"] = selected_draw_data.draw_data
+		data["xeno_map"] = selected_flat ? selected_flat.flat_tacmap : null
+		data["xeno_svg"] = selected_draw_data ? selected_draw_data.draw_data : null
 
 	data["map_fallback"] = wiki_map_fallback
 	return data

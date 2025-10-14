@@ -169,25 +169,27 @@ const FactionPage = (props) => {
           <Flex.Item grow={1} align="center" m={1} p={0.2}>
             {names[ckey_index]} ({ckey}) - {times[ckey_index]}
           </Flex.Item>
-          <Flex.Item grow={0} basis="content" mr={0.5} mt={0.8}>
-            <Button.Confirm
-              icon="trash"
-              color="white"
-              confirmColor="bad"
-              textAlign="center"
-              verticalAlignContent="bottom"
-              width={6.5}
-              disabled={selected_map !== ckey_index || svg === null}
-              onClick={() =>
-                act('delete', {
-                  uscm: is_uscm,
-                  index: ckey_index,
-                })
-              }
-            >
-              Delete
-            </Button.Confirm>
-          </Flex.Item>
+          {ckey_index === ckeys.length - 1 && (
+            <Flex.Item grow={0} basis="content" mr={0.5} mt={0.8}>
+              <Button.Confirm
+                icon="trash"
+                color="white"
+                confirmColor="bad"
+                textAlign="center"
+                verticalAlignContent="bottom"
+                width={6.5}
+                disabled={selected_map !== ckey_index || svg === null}
+                onClick={() =>
+                  act('delete', {
+                    uscm: is_uscm,
+                    index: ckey_index,
+                  })
+                }
+              >
+                Delete
+              </Button.Confirm>
+            </Flex.Item>
+          )}
         </Flex>
       ))}
     </Section>

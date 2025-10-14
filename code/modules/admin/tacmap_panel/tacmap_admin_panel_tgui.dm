@@ -46,6 +46,8 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 		uscm_selection = uscm_length - 1
 	for(var/i = 1, i <= uscm_length, i++)
 		var/datum/drawing_data/current_draw_data = GLOB.uscm_drawing_tacmap_data[i]
+		if(!current_draw_data)
+			continue
 		uscm_ckeys += current_draw_data.ckey
 		uscm_names += current_draw_data.name
 		uscm_times += current_draw_data.time
@@ -58,6 +60,8 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 		xeno_selection = xeno_length - 1
 	for(var/i = 1, i <= xeno_length, i++)
 		var/datum/drawing_data/current_draw_data = GLOB.xeno_drawing_tacmap_data[i]
+		if(!current_draw_data)
+			continue
 		xeno_ckeys += current_draw_data.ckey
 		xeno_names += current_draw_data.name
 		xeno_times += current_draw_data.time
@@ -71,8 +75,8 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	else
 		var/datum/flattened_tacmap/selected_flat = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
 		var/datum/drawing_data/selected_draw_data = GLOB.uscm_drawing_tacmap_data[uscm_selection + 1]
-		data["uscm_map"] = selected_flat.flat_tacmap
-		data["uscm_svg"] = selected_draw_data.draw_data
+		data["uscm_map"] = selected_flat ? selected_flat.flat_tacmap : null
+		data["uscm_svg"] = selected_draw_data ? selected_draw_data.draw_data : null
 
 	if(xeno_selection == LATEST_SELECTION)
 		data["xeno_map"] = null
@@ -80,8 +84,8 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	else
 		var/datum/flattened_tacmap/selected_flat = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
 		var/datum/drawing_data/selected_draw_data = GLOB.xeno_drawing_tacmap_data[xeno_selection + 1]
-		data["xeno_map"] = selected_flat.flat_tacmap
-		data["xeno_svg"] = selected_draw_data.draw_data
+		data["xeno_map"] = selected_flat ? selected_flat.flat_tacmap : null
+		data["xeno_svg"] = selected_draw_data ? selected_draw_data.draw_data : null
 
 	data["uscm_selection"] = uscm_selection
 	data["xeno_selection"] = xeno_selection
@@ -150,6 +154,8 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 				GLOB.xeno_flat_tacmap_data[xeno_selection + 1] = null
 
 			if(selected_minimap)
+				for(var/turf/label as anything in selected_minimap.labelled_turfs)
+					SSminimaps.remove_marker(label)
 				selected_minimap.update()
 			selected_drawing_image.icon = icon('icons/ui_icons/minimap.dmi')
 			last_update_time = world.time

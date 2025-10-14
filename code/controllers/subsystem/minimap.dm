@@ -1425,8 +1425,10 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/movable/screen/minimap/minimap_to_update = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_USCM, FALSE)
 	minimap_to_update.update()
 
-	var/icon/flat_map = getFlatIcon(linked_map, appearance_flags = TRUE)
-	var/icon/flat_drawing = getFlatIcon(drawn_image, appearance_flags = TRUE)
+	user.client.images += drawn_image
+	var/icon/flat_drawing = icon(user.client.RenderIcon(drawn_image))
+	user.client.images -= drawn_image
+	var/icon/flat_map = icon(user.client.RenderIcon(linked_map))
 	if(!flat_map || !flat_drawing)
 		to_chat(usr, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
 		return FALSE

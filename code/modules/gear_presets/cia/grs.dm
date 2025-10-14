@@ -785,7 +785,7 @@
 	switch(strength_type)
 		if(STRENGTH_WEAK, STRENGTH_SURVIVOR)
 
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/low_grade_full, WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/low_grade_full/wy, WEAR_L_STORE)
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/wy/full_advanced, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/dutch/black/grs_weak, WEAR_WAIST)

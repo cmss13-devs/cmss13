@@ -66,7 +66,7 @@
 
 /obj/item/clothing/suit/storage/marine/sof/grs/synth
 	name = "\improper GRS Synthetic Armor"
-	desc = "A dark set of armor used by the Global Response Staff synthetics. It has all the armor inserts removed for high speed."
+	desc = "A dark set of armor used by the Global Response Staff synthetics. It has all the armor inserts removed for high speed and an internal toolbelt."
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
 	armor_bomb = CLOTHING_ARMOR_NONE

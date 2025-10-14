@@ -166,7 +166,7 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 				for(var/turf/label as anything in selected_minimap.labelled_turfs)
 					SSminimaps.remove_marker(label)
 				selected_drawing_image = SSminimaps.get_drawing_image(2, MINIMAP_FLAG_XENO, TRUE)
-				var/datum/drawing_data/draw_data = GLOB.xeno_drawing_tacmap_data[uscm_selection + 1]
+				var/datum/drawing_data/draw_data = GLOB.xeno_drawing_tacmap_data[xeno_selection + 1]
 				drawn_by = draw_data.ckey
 				GLOB.xeno_drawing_tacmap_data[xeno_selection + 1] = null
 				GLOB.xeno_flat_tacmap_data[xeno_selection + 1] = null

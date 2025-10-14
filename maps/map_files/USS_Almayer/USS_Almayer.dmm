@@ -45351,12 +45351,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
-"eVj" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 4
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/command/cic)
 "eVm" = (
 /obj/structure/sign/safety/bulkhead_door{
 	pixel_x = 8;
@@ -52040,15 +52034,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
-"hNm" = (
-/obj/structure/machinery/conveyor{
-	id = "req_belt"
-	},
-/obj/structure/machinery/conveyor{
-	id = "req_belt"
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/operating_room_four)
 "hNv" = (
 /obj/structure/sign/safety/escapepod{
 	pixel_x = 8;
@@ -56402,10 +56387,6 @@
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/cryo)
-"jvX" = (
-/obj/structure/machinery/cm_vending/gear/staff_officer_armory,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/command/cic)
 "jvY" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/command/telecomms)
@@ -93017,7 +92998,7 @@
 	pixel_x = 32;
 	pixel_y = 0
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/almayer/mono,
 /area/almayer/squads/req)
 "xQz" = (
 /obj/structure/machinery/alarm/almayer{
@@ -139790,7 +139771,7 @@ tni
 bCn
 acB
 abQ
-hNm
+abJ
 knm
 jZe
 knm
@@ -196838,8 +196819,8 @@ aic
 aov
 wVW
 teY
-aqN
-eVj
+alX
+eoa
 dkB
 asc
 abk
@@ -197674,7 +197655,7 @@ aBY
 aED
 wVW
 cWw
-jvX
+cWw
 wVW
 wVW
 anV

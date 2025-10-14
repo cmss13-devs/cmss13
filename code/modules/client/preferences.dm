@@ -333,6 +333,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	real_name = random_name(gender)
 	gear = list()
 
+	#ifdef QUICK_START
+	job_preference_list[JOB_CO] = HIGH_PRIORITY
+	#endif
 
 /datum/preferences/proc/client_reconnected(client/C)
 	owner = C
@@ -1979,6 +1982,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					save_preferences()
 					save_character()
 					save_cooldown = world.time + 50
+					to_chat(user, SPAN_WARNING(SPAN_BOLD("Successfully saved preferences.")))
 
 				if("reload")
 					if(reload_cooldown > world.time)

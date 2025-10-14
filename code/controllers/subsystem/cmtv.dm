@@ -144,7 +144,6 @@ SUBSYSTEM_DEF(cmtv)
 	camera_operator.prefs.toggles_chat &= ~(CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_LISTENINGBUG)
 
 	camera_operator.screen += give_escape_menu_details()
-	camera_operator.screen += perspective_display
 
 	if(!QDELETED(current_perspective))
 		camera_mob.do_observe(current_perspective)
@@ -213,7 +212,7 @@ SUBSYSTEM_DEF(cmtv)
 	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_ENTERED_OBJ, PROC_REF(handle_reset_signal_immediate))
 	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(handle_z_change))
 	current_perspective = future_perspective_mob
-	perspective_display.change_displayed_mob(current_perspective.real_name)
+	change_displayed_mob(current_perspective.real_name)
 
 	camera_operator.screen += give_escape_menu_details()
 
@@ -237,7 +236,7 @@ SUBSYSTEM_DEF(cmtv)
 	remove_action(current_perspective, /datum/action/stop_cmtv)
 
 	current_perspective = null
-	perspective_display.change_displayed_mob(ticker_text)
+	change_displayed_mob(ticker_text)
 
 /// Signal handler - it might be dull if a player wanders off to medical on the ship.
 /datum/controller/subsystem/cmtv/proc/handle_z_change(atom/movable/moving, old_z, new_z)
@@ -385,6 +384,10 @@ SUBSYSTEM_DEF(cmtv)
 
 	return TRUE
 
+/datum/controller/subsystem/cmtv/proc/change_displayed_mob(display_name)
+	perspective_display.maptext = MAPTEXT("<span style='text-align: center;'><span style='text-decoration: underline; font-size: 12px;'>Currently observing:</span><br><span style='font-size: 16px;'>[display_name]</span></span>")
+	camera_operator.screen += perspective_display
+
 /mob/proc/handoff_cmtv()
 	set name = "Handoff CMTV"
 	set category = "OOC.CMTV"
@@ -421,9 +424,6 @@ SUBSYSTEM_DEF(cmtv)
 
 	maptext_height = 400
 	maptext_width = 400
-
-/atom/movable/screen/cmtv/proc/change_displayed_mob(display_name)
-	maptext = MAPTEXT("<span style='text-align: center;'><span style='text-decoration: underline; font-size: 12px;'>Currently observing:</span><br><span style='font-size: 16px;'>[display_name]</span></span>")
 
 /datum/action/stop_cmtv
 	name = "Stop CMTV"

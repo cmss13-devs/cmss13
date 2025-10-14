@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(cmtv)
 
 	perspective_display = new
 	handle_new_camera(camera)
-
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/cmtv/fire(resumed)
 	priority_list = get_active_priority_player_list()

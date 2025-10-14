@@ -707,6 +707,97 @@
 /datum/equipment_preset/cia_global_response/commander/deputy/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
 
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/cia_global_response/synth
+	name = JOB_CIA_GRS_SYN
+	flags = EQUIPMENT_PRESET_EXTRA
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_FRENCH, LANGUAGE_TSL, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH)
+	skills = /datum/skills/synthetic
+	assignment = JOB_CIA_GRS_SYN
+	job_title = JOB_CIA_GRS_SYN
+	minimap_icon = "pmc_syn"
+	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "GRS Syn"
+
+/datum/equipment_preset/cia_global_response/synth/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(MALE, FEMALE)
+
+	var/datum/preferences/A = new()
+	A.randomize_appearance(new_human)
+
+	var/random_name
+	switch(new_human.gender)
+		if(FEMALE)
+			random_name = capitalize(pick(GLOB.first_names_female))
+		if(PLURAL, NEUTER) // Not currently possible
+			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male) : pick(GLOB.first_names_female))
+		else // MALE
+			random_name = capitalize(pick(GLOB.first_names_male))
+			new_human.f_style = "5 O'clock Shadow"
+
+	new_human.change_real_name(new_human, random_name)
+	new_human.r_hair = 15
+	new_human.g_hair = 15
+	new_human.b_hair = 25
+	new_human.r_eyes = 139
+	new_human.g_eyes = 62
+	new_human.b_eyes = 19
+
+/datum/equipment_preset/cia_global_response/synth/load_race(mob/living/carbon/human/new_human)
+	new_human.set_species(SYNTH_GEN_THREE)
+	new_human.allow_gun_usage = FALSE
+
+/datum/equipment_preset/cia_global_response/synth/load_gear(mob/living/carbon/human/new_human)
+	load_standard_gear(new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
+
+	//backpack and stuff in it
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/blood/OMinus, WEAR_IN_BACK)
+
+	switch(strength_type)
+		if(STRENGTH_WEAK, STRENGTH_SURVIVOR)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire/wy, WEAR_L_STORE)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/wy/full_advanced, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/dutch/black/grs_weak, WEAR_WAIST)
+
+			new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
+			if(strength_type == STRENGTH_SURVIVOR)
+				new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack, WEAR_IN_BACK)
+
+		if(STRENGTH_NORM, STRENGTH_NO_IFF)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire/wy, WEAR_L_STORE)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/wy/full_elite, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/dutch/black/grs, WEAR_WAIST)
+
+			new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/grs_medical, WEAR_IN_BACK)
+
+		if(STRENGTH_DEATH)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire/wy, WEAR_L_STORE)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/wy/full_elite, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/dutch/black/grs, WEAR_WAIST)
+
+			new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/grs_medical/deathsquad, WEAR_IN_BACK)
+
+
+
+
+
+
+
 #undef STRENGTH_NORM
 #undef STRENGTH_NO_IFF
 #undef STRENGTH_WEAK

@@ -108,7 +108,7 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 		if("recache")
 			var/is_uscm = params["uscm"]
 			var/datum/flattened_tacmap/selected_flat
-			var/datum/draw_data/selected_draw_data
+			var/datum/drawing_data/selected_draw_data
 			if(is_uscm)
 				if(uscm_selection == LATEST_SELECTION)
 					return TRUE

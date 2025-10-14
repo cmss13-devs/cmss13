@@ -1079,7 +1079,7 @@
 	set name = "View Tacmap"
 	set category = "IC"
 
-	if(faction != FACTION_MARINE)
+	if(faction != FACTION_MARINE && !(FACTION_MARINE in faction_group))
 		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] tactical map."))
 		return
 

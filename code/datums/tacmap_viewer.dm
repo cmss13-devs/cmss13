@@ -30,7 +30,7 @@ GLOBAL_DATUM_INIT(tacmap_viewer, /datum/tacmap_viewer, new)
 	var/list/data = list()
 
 	var/list/factions = list()
-	if(ishuman(user) && user.faction == FACTION_MARINE)
+	if(ishuman(user) && (user.faction == FACTION_MARINE || (FACTION_MARINE in user.faction_group)))
 		factions += "USCM"
 
 	if(isxeno(user))

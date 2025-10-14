@@ -133,5 +133,5 @@ SYNTHETIC
 /datum/skills/synthetic/antag
 	name = "Synthetic"
 	additional_skills = list(
-		SKILL_ANTAG = SKILL_ANTAG_AGENT
+		SKILL_ANTAG = SKILL_ANTAG_AGENT,
 	)

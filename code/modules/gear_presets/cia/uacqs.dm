@@ -8,7 +8,7 @@
 	role_comm_title = "UACQS"
 	minimap_icon = "uacqs"
 	minimap_background = "background_ua"
-	var/headset_type = /obj/item/device/radio/headset/almayer/uacqs
+	var/headset_type = /obj/item/device/radio/headset/almayer/cia/uacqs
 	var/pistol_path = /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical
 	var/pistol_ammo_path = /obj/item/ammo_magazine/pistol/ap
 
@@ -60,7 +60,7 @@
 	minimap_icon = "uacqs_c"
 	idtype = /obj/item/card/id/adaptive/silver
 	skills = /datum/skills/cia/field_agent/senior
-	headset_type = /obj/item/device/radio/headset/almayer/uacqs_com
+	headset_type = /obj/item/device/radio/headset/almayer/cia/uacqs/com
 
 /datum/equipment_preset/cia/uacqs/commissioner/New()
 	. = ..()
@@ -79,7 +79,7 @@
 	minimap_icon = "uacqs_c"
 	idtype = /obj/item/card/id/adaptive/gold
 	skills = /datum/skills/cia/field_agent/senior
-	headset_type = /obj/item/device/radio/headset/almayer/uacqs_com
+	headset_type = /obj/item/device/radio/headset/almayer/cia/uacqs/com
 	pistol_path = /obj/item/weapon/gun/pistol/m1911/custom/tactical
 	pistol_ammo_path = /obj/item/ammo_magazine/pistol/m1911/highimpact
 
@@ -110,7 +110,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/low_points, WEAR_IN_BACK) //CIA equipment
 	//face
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/uacqs(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia/uacqs(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/antag(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black, WEAR_FACE)
 

@@ -138,6 +138,13 @@
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
+"aB" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_grs/sniper,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/bigredv2/outside/office_complex)
 "aC" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 1;
@@ -1711,7 +1718,7 @@ Eq
 Vg
 aw
 qw
-ws
+aB
 hl
 zH
 hl

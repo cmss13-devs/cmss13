@@ -333,8 +333,8 @@
 	iff_signal = FACTION_CONTRACTOR
 
 /obj/item/device/motiondetector/m717/cia
-	name = "modified M717 pocket motion detector"
-	desc = "This prototype motion detector sacrifices versatility, having only the long-range mode, for size, being so small it can even fit in pockets. This one has been modified with an after-market IFF sensor to filter out Global Response signals instead of USCM ones."
+	name = "GRS M717 pocket motion detector"
+	desc = "This prototype motion detector sacrifices versatility, having only the long-range mode, for size, being so small it can even fit in pockets. This one has been modified to filter out Global Response signals instead of USCM ones."
 	iff_signal = FACTION_CIA
 
 /obj/item/device/motiondetector/hacked

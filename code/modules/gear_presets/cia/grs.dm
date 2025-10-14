@@ -148,7 +148,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus/strong, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_IN_BACK)
 
 		if(STRENGTH_DEATH)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical/incendiary, WEAR_IN_ACCESSORY)
@@ -296,7 +296,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m10, WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/xm88/black/half_full_cia, WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
@@ -313,7 +313,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m10/ap, WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/xm88/black/full_cia, WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/no_stims, WEAR_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
@@ -377,7 +377,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/es7/tactical/lethal, WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/black/es7_lethal/half, WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/medium_stack, WEAR_IN_BACK)
@@ -394,7 +394,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive(new_human), WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/black/es7_lethal, WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/no_stims, WEAR_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/large_stack, WEAR_IN_BACK)
@@ -556,7 +556,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m47, WEAR_J_STORE)
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_L_STORE)
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)
@@ -582,7 +582,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus/strong, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_IN_BACK)
 
 		if(STRENGTH_DEATH)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical/incendiary, WEAR_IN_ACCESSORY)
@@ -657,7 +657,7 @@
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_IN_BACK)
 			if(strength_type == STRENGTH_SURVIVOR)
 				new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack, WEAR_IN_BACK)
 
@@ -680,7 +680,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus/strong, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_IN_BACK)
 
 		if(STRENGTH_DEATH)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/incendiary, WEAR_IN_ACCESSORY)

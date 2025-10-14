@@ -1328,6 +1328,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	built_in_visors = list(new /obj/item/device/helmet_visor/night_vision)
 
 /obj/item/clothing/head/helmet/marine/sof/grs/sniper
 	name = "\improper GRS Marksman Hood"

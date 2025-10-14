@@ -116,6 +116,8 @@
 /obj/item/ammo_magazine/rifle/m47/ap,
 /obj/item/ammo_magazine/rifle/m47/ap,
 /obj/structure/closet/crate/secure/ammo,
+/obj/item/ammo_magazine/smartgun/holo_targetting/grs,
+/obj/item/ammo_magazine/lever_action/xm88/cia_iff,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "aB" = (

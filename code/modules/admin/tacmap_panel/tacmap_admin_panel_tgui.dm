@@ -145,6 +145,10 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 					return TRUE
 				selected_drawing_image = SSminimaps.get_drawing_image(2, MINIMAP_FLAG_USCM, TRUE)
 				selected_minimap = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_USCM, FALSE)
+				selected_minimap.update()
+				selected_minimap = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_USCM, TRUE)
+				for(var/turf/label as anything in selected_minimap.labelled_turfs)
+					SSminimaps.remove_marker(label)
 				var/datum/drawing_data/draw_data = GLOB.uscm_drawing_tacmap_data[uscm_selection + 1]
 				drawn_by = draw_data.ckey
 				GLOB.uscm_drawing_tacmap_data[uscm_selection + 1] = null
@@ -152,16 +156,15 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 			else
 				if(xeno_selection == LATEST_SELECTION)
 					return TRUE
+				selected_minimap = SSminimaps.fetch_minimap_object(2, MINIMAP_FLAG_XENO, TRUE)
+				for(var/turf/label as anything in selected_minimap.labelled_turfs)
+					SSminimaps.remove_marker(label)
 				selected_drawing_image = SSminimaps.get_drawing_image(2, MINIMAP_FLAG_XENO, TRUE)
 				var/datum/drawing_data/draw_data = GLOB.xeno_drawing_tacmap_data[uscm_selection + 1]
 				drawn_by = draw_data.ckey
 				GLOB.xeno_drawing_tacmap_data[xeno_selection + 1] = null
 				GLOB.xeno_flat_tacmap_data[xeno_selection + 1] = null
 
-			if(selected_minimap)
-				for(var/turf/label as anything in selected_minimap.labelled_turfs)
-					SSminimaps.remove_marker(label)
-				selected_minimap.update()
 			selected_drawing_image.icon = icon('icons/ui_icons/minimap.dmi')
 			last_update_time = world.time
 			for(var/client/client as anything in GLOB.clients)

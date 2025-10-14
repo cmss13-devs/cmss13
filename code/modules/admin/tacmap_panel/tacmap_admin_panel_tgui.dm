@@ -126,6 +126,10 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 				selected_flat = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
 				selected_draw_data = GLOB.xeno_drawing_tacmap_data[xeno_selection + 1]
 
+			if(!selected_flat || !selected_draw_data)
+				to_chat(user, SPAN_WARNING("The selected tacmap couldn't be recached since it was deleted."))
+				return
+
 			SSassets.transport.send_assets(client_user, selected_draw_data.asset_key)
 			SSassets.transport.send_assets(client_user, selected_flat.asset_key)
 			last_update_time = world.time

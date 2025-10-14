@@ -69,7 +69,7 @@
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
 
-/obj/item/weapon/gun/rifle/m47 //PLACEHOLDER SPRITES
+/obj/item/weapon/gun/rifle/m47
 	name = "\improper M47 pulse rifle"
 	desc = "A lightweight and powerful pulse rifle used by some special forces groups."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
@@ -84,7 +84,7 @@
 	reload_sound = 'sound/weapons/handling/rmcdmr_reload.ogg'
 	unload_sound = 'sound/weapons/handling/rmcdmr_unload.ogg'
 	fire_sound = "gun_l64"
-	current_mag = /obj/item/ammo_magazine/rifle/m47/ap
+	current_mag = /obj/item/ammo_magazine/rifle/m47
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
 
 	attachable_allowed = list(
@@ -173,6 +173,9 @@
 /obj/item/weapon/gun/rifle/m47/carbine/handle_starting_attachment()
 	return
 
+/obj/item/weapon/gun/rifle/m47/ap
+	current_mag = /obj/item/ammo_magazine/rifle/m47/ap
+
 /obj/item/weapon/gun/rifle/m47/heap
 	current_mag = /obj/item/ammo_magazine/rifle/m47/heap
 
@@ -180,6 +183,9 @@
 	random_spawn_under = list(
 		/obj/item/attachable/attached_gun/grenade/grs/hedp,
 	)
+
+/obj/item/weapon/gun/rifle/m47/grenadier/ap
+	current_mag = /obj/item/ammo_magazine/rifle/m47/ap
 
 /obj/item/weapon/gun/rifle/m47/grenadier/heap
 	random_spawn_under = list(

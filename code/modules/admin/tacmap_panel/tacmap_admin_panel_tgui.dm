@@ -108,14 +108,19 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 		if("recache")
 			var/is_uscm = params["uscm"]
 			var/datum/flattened_tacmap/selected_flat
+			var/datum/draw_data/selected_draw_data
 			if(is_uscm)
 				if(uscm_selection == LATEST_SELECTION)
 					return TRUE
 				selected_flat = GLOB.uscm_flat_tacmap_data[uscm_selection + 1]
+				selected_draw_data = GLOB.uscm_drawing_tacmap_data[uscm_selection + 1]
 			else
 				if(xeno_selection == LATEST_SELECTION)
 					return TRUE
 				selected_flat = GLOB.xeno_flat_tacmap_data[xeno_selection + 1]
+				selected_draw_data = GLOB.xeno_drawing_tacmap_data[xeno_selection + 1]
+
+			SSassets.transport.send_assets(client_user, selected_draw_data.asset_key)
 			SSassets.transport.send_assets(client_user, selected_flat.asset_key)
 			last_update_time = world.time
 			return TRUE

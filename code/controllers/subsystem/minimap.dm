@@ -1409,7 +1409,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
 	var/flat_drawing_png = SSassets.transport.get_asset_url(flat_drawing_key)
 	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
-	var/datum/drawing_data/draw_data = new(flat_drawing_png, user)
+	var/datum/drawing_data/draw_data = new(flat_drawing_png, user, flat_drawing_key)
 
 	GLOB.xeno_flat_tacmap_data += new_flat
 	GLOB.xeno_drawing_tacmap_data += draw_data
@@ -1455,7 +1455,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
 	var/flat_drawing_png = SSassets.transport.get_asset_url(flat_drawing_key)
 	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
-	var/datum/drawing_data/draw_data = new(flat_drawing_png, user)
+	var/datum/drawing_data/draw_data = new(flat_drawing_png, user, flat_drawing_key)
 
 	GLOB.uscm_flat_tacmap_data += new_flat
 	GLOB.uscm_drawing_tacmap_data += draw_data
@@ -1481,12 +1481,14 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/drawing_data
 	var/draw_data
+	var/asset_key
 	var/ckey
 	var/name
 	var/time
 
-/datum/drawing_data/New(draw_data, mob/user)
+/datum/drawing_data/New(draw_data, mob/user, asset_key)
 	src.draw_data = draw_data
+	src.asset_key = asset_key
 	src.ckey = user?.persistent_ckey
 	src.name = user?.real_name
 	src.time = time_stamp()
@@ -1528,6 +1530,30 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/popout/set_zlevel(zlevel, minimap_flag)
 	x_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].x_offset : 0
 	y_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].y_offset : 0
+
+/datum/proc/send_tacmap_assets_latejoin(mob/user)
+	if(!user.client)
+		return
+
+	var/is_observer = user.faction == FACTION_NEUTRAL && isobserver(user)
+	if(is_observer || user.faction == FACTION_MARINE)
+		// Send marine maps
+		var/datum/flattened_tacmap/latest = GLOB.uscm_flat_tacmap_data[length(GLOB.uscm_flat_tacmap_data)]
+		if(latest)
+			SSassets.transport.send_assets(user.client, latest.asset_key)
+		var/datum/drawing_data/latest_draw_data = GLOB.uscm_drawing_tacmap_data[length(GLOB.uscm_drawing_tacmap_data)]
+		if(latest_draw_data)
+			SSassets.transport.send_assets(user.client, latest_draw_data.asset_key)
+
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(is_observer || istype(xeno) && xeno.hivenumber == XENO_HIVE_NORMAL)
+		// Send xeno maps
+		var/datum/flattened_tacmap/latest = GLOB.xeno_flat_tacmap_data[length(GLOB.xeno_flat_tacmap_data)]
+		if(latest)
+			SSassets.transport.send_assets(user.client, latest.asset_key)
+		var/datum/drawing_data/latest_draw_data = GLOB.xeno_drawing_tacmap_data[length(GLOB.xeno_drawing_tacmap_data)]
+		if(latest_draw_data)
+			SSassets.transport.send_assets(user.client, latest_draw_data.asset_key)
 
 /// Gets the MINIMAP_FLAG for the provided faction or hivenumber if one exists
 /proc/get_minimap_flag_for_faction(faction)

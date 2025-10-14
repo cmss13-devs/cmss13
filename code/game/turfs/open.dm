@@ -190,28 +190,28 @@
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "outerhull"
 
-/turf/open/slippery/hull
+/turf/open/slippery/hull/dir
 	icon_state = "outerhull_dir"
 
-/turf/open/slippery/hull/southwest
+/turf/open/slippery/hull/dir/southwest
 	dir = SOUTHWEST
 
-/turf/open/slippery/hull/north
+/turf/open/slippery/hull/dir/north
 	dir = NORTH
 
-/turf/open/slippery/hull/east
+/turf/open/slippery/hull/dir/east
 	dir = EAST
 
-/turf/open/slippery/hull/northeast
+/turf/open/slippery/hull/dir/northeast
 	dir = NORTHEAST
 
-/turf/open/slippery/hull/southeast
+/turf/open/slippery/hull/dir/southeast
 	dir = SOUTHEAST
 
-/turf/open/slippery/hull/west
+/turf/open/slippery/hull/dir/west
 	dir = WEST
 
-/turf/open/slippery/hull/northwest
+/turf/open/slippery/hull/dir/northwest
 	dir = NORTHWEST
 
 

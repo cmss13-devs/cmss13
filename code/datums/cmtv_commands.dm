@@ -70,6 +70,9 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 		if(!command_datum.description)
 			continue
 
+		if(command_datum.require_moderator && !arguments["is_moderator"])
+			continue
+
 		response_text += "![command]: [command_datum.description]\n"
 
 	return response_text
@@ -106,7 +109,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	description = "Follow new mob for 60s (requires name)."
 
 	global_cooldown_time = 10 MINUTES
-	user_cooldown_time = 3 HOURS
+	user_cooldown_time = 30 MINUTES
 
 /datum/cmtv_command/follow/execute(list/arguments)
 	var/looking_for = arguments["args"]
@@ -122,7 +125,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 				return "Player is still active, switching after delay..."
 
 	apply_cooldown = FALSE
-	return "Player could not be found or is not active."
+	return "Given name is not in active player list. Name must be retrieved from !getmobs"
 
 /datum/cmtv_command/getmobs
 	name = "getmobs"
@@ -146,7 +149,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 		var/text_to_add = "'[active_mob.real_name]' "
 		if(length(text_to_add) + budget > 500)
 			break
-	
+
 		return_text += text_to_add
 		budget += length(text_to_add)
 

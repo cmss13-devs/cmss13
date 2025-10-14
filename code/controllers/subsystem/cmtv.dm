@@ -33,6 +33,9 @@ SUBSYSTEM_DEF(cmtv)
 	/// based on DCS
 	COOLDOWN_DECLARE(minimum_screentime)
 
+	/// While we're currently checking out a different turf
+	var/temporarily_observing_turf = FALSE
+
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
 	if(!username || !CONFIG_GET(string/cmtv_link))
@@ -47,8 +50,15 @@ SUBSYSTEM_DEF(cmtv)
 	perspective_display = new
 	handle_new_camera(camera)
 
+	for(var/type in subtypesof(/datum/cmtv_event))
+		var/datum/cmtv_event/event = new type
+		event.RegisterSignal(SSdcs, event.listener, TYPE_PROC_REF(/datum/cmtv_event, handle_global_event))
+
 /datum/controller/subsystem/cmtv/fire(resumed)
 	priority_list = get_active_priority_player_list()
+
+	if(temporarily_observing_turf)
+		return
 
 	if(!current_perspective && !future_perspective)
 		reset_perspective()
@@ -161,15 +171,10 @@ SUBSYSTEM_DEF(cmtv)
 	log_debug("CMTV: Swapping to perspective [new_perspective].")
 
 	if(current_perspective)
-		to_chat(current_perspective, boxed_message("[SPAN_BIGNOTICE("You are no longer being observed.")]\n\n [SPAN_NOTICE("You have opted out or are no longer eligible to be displayed on CMTV.")]"))
-
-		UnregisterSignal(current_perspective, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH, COMSIG_MOVABLE_Z_CHANGED, COMSIG_MOVABLE_ENTERED_OBJ))
-		remove_verb(current_perspective, /mob/proc/handoff_cmtv)
-		remove_action(current_perspective, /datum/action/stop_cmtv)
-		current_perspective = null
-		perspective_display.change_displayed_mob("Finding player...")
+		terminate_current_perspective()
 
 	if(instant)
+		camera_mob.clean_observe_target()
 		camera_mob.forceMove(pick(GLOB.observer_starts))
 
 	if(!set_showtime)
@@ -222,6 +227,17 @@ SUBSYSTEM_DEF(cmtv)
 
 	log_debug("CMTV: Perspective successfully changed to [current_perspective].")
 
+/datum/controller/subsystem/cmtv/proc/terminate_current_perspective(ticker_text = "Finding player...")
+	to_chat(current_perspective, boxed_message("[SPAN_BIGNOTICE("You are no longer being observed.")]\n\n [SPAN_NOTICE("You have opted out or are no longer eligible to be displayed on CMTV.")]"))
+
+	UnregisterSignal(current_perspective, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH, COMSIG_MOVABLE_Z_CHANGED, COMSIG_MOVABLE_ENTERED_OBJ))
+
+	remove_verb(current_perspective, /mob/proc/handoff_cmtv)
+	remove_action(current_perspective, /datum/action/stop_cmtv)
+
+	current_perspective = null
+	perspective_display.change_displayed_mob(ticker_text)
+
 /// Signal handler - it might be dull if a player wanders off to medical on the ship.
 /datum/controller/subsystem/cmtv/proc/handle_z_change(atom/movable/moving, old_z, new_z)
 	SIGNAL_HANDLER
@@ -257,6 +273,29 @@ SUBSYSTEM_DEF(cmtv)
 		return FALSE // start the blooper reel, we've got nothing
 
 	change_observed_mob(get_active_player(), instant)
+
+/datum/controller/subsystem/cmtv/proc/temporary_spectate_turf(turf/where_to_look, how_long, event)
+	if(!how_long || !where_to_look)
+		return
+
+	if(!istype(where_to_look))
+		where_to_look = get_turf(where_to_look)
+
+	temporarily_observing_turf = TRUE
+
+	terminate_current_perspective(event)
+	camera_mob.clean_observe_target()
+	camera_mob.forceMove(where_to_look)
+
+	camera_mob.hud_used.plane_masters["[HUD_PLANE]"].alpha = 0
+
+	addtimer(CALLBACK(src, PROC_REF(stop_spectating_turf)), how_long - 10 SECONDS)
+
+/datum/controller/subsystem/cmtv/proc/stop_spectating_turf()
+	camera_mob.hud_used.plane_masters["[HUD_PLANE]"].alpha = 255
+	temporarily_observing_turf = FALSE
+
+	reset_perspective()
 
 #define PERSPECTIVE_SELECTION_DELAY_TIME (20 SECONDS)
 

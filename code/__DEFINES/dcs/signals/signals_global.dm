@@ -92,3 +92,18 @@
 
 /// From /datum/controller/subsystem/hijack/fire()
 #define COMSIG_GLOB_FUEL_PUMP_UPDATE "!fuel_pump_update"
+
+/// From /obj/structure/machinery/computer/overwatch/proc/fire_bombard() : (turf/bombarded)
+#define COMSIG_GLOB_ORBITAL_BOMBARDMENT "!orbital_bombardment"
+
+/// From /mob/living/xenomorph/death() : (dead_queen)
+#define COMSIG_GLOB_QUEEN_DEATH "!queen_death"
+
+/// From /datum/dropship_hijack/almayer/proc/check_final_approach() : (impact_turf)
+#define COMSIG_GLOB_DROPSHIP_IMPACT "!dropship_impact"
+
+/// From /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien() : (hacked_console)
+#define COMSIG_GLOB_DROPSHIP_LOCKED "!dropship_locked"
+
+/// From /datum/cas_fire_envelope/proc/execute_firemission_unsafe() : (impact_turf)
+#define COMSIG_GLOB_FIREMISSION_IMBOUND "!firemission_imbound"

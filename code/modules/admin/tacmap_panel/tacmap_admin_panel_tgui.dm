@@ -64,9 +64,9 @@ GLOBAL_DATUM_INIT(tacmap_admin_panel, /datum/tacmap_admin_panel, new)
 	for(var/i = 1, i <= xeno_length, i++)
 		var/datum/drawing_data/current_draw_data = GLOB.xeno_drawing_tacmap_data[i]
 		if(!current_draw_data)
-			uscm_ckeys += "DELETED"
-			uscm_names += "DELETED"
-			uscm_times += "DELETED"
+			xeno_ckeys += "DELETED"
+			xeno_names += "DELETED"
+			xeno_times += "DELETED"
 		else
 			xeno_ckeys += current_draw_data.ckey
 			xeno_names += current_draw_data.name

@@ -169,7 +169,7 @@ const FactionPage = (props) => {
           <Flex.Item grow={1} align="center" m={1} p={0.2}>
             {names[ckey_index]} ({ckey}) - {times[ckey_index]}
           </Flex.Item>
-          {ckey_index === ckeys.length - 1 && (
+          {ckey_index === ckeys.length - 1 && ckey !== 'DELETED' && (
             <Flex.Item grow={0} basis="content" mr={0.5} mt={0.8}>
               <Button.Confirm
                 icon="trash"

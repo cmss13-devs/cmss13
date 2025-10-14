@@ -64,6 +64,50 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
+/obj/item/clothing/suit/storage/marine/sof/grs/synth
+	name = "\improper GRS Synthetic Armor"
+	desc = "A dark set of armor used by the Global Response Staff synthetics. It has all the armor inserts removed for high speed."
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
+	storage_slots = 7
+
+/obj/item/clothing/suit/storage/marine/sof/grs/synth/Initialize()
+	..()
+	flags_marine_armor |= SYNTH_ALLOWED
+	fill_pockets()
+
+/obj/item/clothing/suit/storage/marine/sof/grs/synth/proc/fill_pockets()
+	if(!pockets)
+		return FALSE
+
+	pockets.can_hold = list(
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/wrench,
+		/obj/item/tool/weldingtool,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/wirecutters,
+		/obj/item/stack/cable_coil,
+		/obj/item/device/multitool,
+		/obj/item/tool/shovel/etool,
+		/obj/item/weapon/gun/smg/nailgun/compact,
+		/obj/item/device/defibrillator/synthetic,
+		/obj/item/stack/rods,
+	)
+
+	new /obj/item/tool/screwdriver/tactical(pockets)
+	new /obj/item/tool/wrench(pockets)
+	new /obj/item/tool/weldingtool(pockets)
+	new /obj/item/tool/crowbar/tactical(pockets)
+	new /obj/item/tool/wirecutters/tactical(pockets)
+	new /obj/item/stack/cable_coil(pockets)
+	new /obj/item/device/multitool/antag(pockets)
+	return TRUE
+
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/sof/grs
 	name = "\improper GRS Smartgun Harness"
 	desc = "A dark set of armor used by the Global Response Staff. This variant is designed to hold a smartgun system."

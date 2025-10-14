@@ -129,3 +129,9 @@ SYNTHETIC
 		SKILL_DOMESTIC = SKILL_DOMESTIC_MASTER,
 		SKILL_NAVIGATIONS = SKILL_NAVIGATIONS_DEFAULT,
 	)
+
+/datum/skills/synthetic/antag
+	name = "Synthetic"
+	additional_skills = list(
+		SKILL_ANTAG = SKILL_ANTAG_AGENT
+	)

@@ -67,6 +67,12 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
 	)
 
+/obj/item/clothing/mask/gas/pmc/marsoc/grs
+	name = "\improper GRS armored balaclava"
+
+/obj/item/clothing/mask/gas/pmc/marsoc/grs/deathsquad
+	anti_hug = 3
+
 /obj/item/clothing/mask/gas/pmc/upp
 	name = "\improper UPP armored commando balaclava"
 	icon_state = "upp_mask"

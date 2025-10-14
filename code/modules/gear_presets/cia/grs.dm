@@ -21,6 +21,7 @@
 	var/uniform_type = /obj/item/clothing/under/marine/veteran/marsoc/grs
 	var/suit_type = /obj/item/clothing/suit/storage/marine/sof/grs
 	var/back_type = /obj/item/storage/backpack/lightpack/black
+	var/mask_type = /obj/item/clothing/mask/gas/pmc/marsoc/grs
 
 /datum/equipment_preset/cia_global_response/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE,FEMALE)
@@ -60,15 +61,21 @@
 
 /// Loads the Headset, Helmet, Mask, Uniform, Armor, Gloves, Shoes and Backpack
 /datum/equipment_preset/cia_global_response/proc/load_standard_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new helmet_type, WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/marsoc, WEAR_FACE)
-	new_human.equip_to_slot_or_del(new uniform_type, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new suit_type, WEAR_JACKET)
+	if(headset_type)
+		new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
+	if(helmet_type)
+		new_human.equip_to_slot_or_del(new helmet_type, WEAR_HEAD)
+	if(mask_type)
+		new_human.equip_to_slot_or_del(new mask_type, WEAR_FACE)
+	if(uniform_type)
+		new_human.equip_to_slot_or_del(new uniform_type, WEAR_BODY)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
+	if(suit_type)
+		new_human.equip_to_slot_or_del(new suit_type, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/cia_knife, WEAR_FEET)
-	new_human.equip_to_slot_or_del(new back_type, WEAR_BACK)
+	if(back_type)
+		new_human.equip_to_slot_or_del(new back_type, WEAR_BACK)
 
 
 //*****************************************************************************************************/
@@ -86,6 +93,7 @@
 
 /datum/equipment_preset/cia_global_response/standard/deathsquad
 	strength_type = STRENGTH_DEATH
+	mask_type = /obj/item/clothing/mask/gas/pmc/marsoc/grs/deathsquad
 
 /datum/equipment_preset/cia_global_response/standard/no_iff
 	strength_type = STRENGTH_NO_IFF
@@ -183,6 +191,7 @@
 
 /datum/equipment_preset/cia_global_response/heavy/deathsquad
 	strength_type = STRENGTH_DEATH
+	mask_type = /obj/item/clothing/mask/gas/pmc/marsoc/grs/deathsquad
 
 /datum/equipment_preset/cia_global_response/heavy/no_iff
 	strength_type = STRENGTH_NO_IFF
@@ -254,6 +263,7 @@
 
 /datum/equipment_preset/cia_global_response/sniper/deathsquad
 	strength_type = STRENGTH_DEATH
+	mask_type = /obj/item/clothing/mask/gas/pmc/marsoc/grs/deathsquad
 
 /datum/equipment_preset/cia_global_response/sniper/no_iff
 	strength_type = STRENGTH_NO_IFF
@@ -343,6 +353,7 @@
 
 /datum/equipment_preset/cia_global_response/engineer/deathsquad
 	strength_type = STRENGTH_DEATH
+	mask_type = /obj/item/clothing/mask/gas/pmc/marsoc/grs/deathsquad
 
 /datum/equipment_preset/cia_global_response/engineer/no_iff
 	strength_type = STRENGTH_NO_IFF
@@ -359,12 +370,7 @@
 	load_standard_gear(new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
-
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior, WEAR_EYES)
-
-	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/large_stack, WEAR_IN_BACK)
 
 	switch(strength_type)
 		if(STRENGTH_WEAK, STRENGTH_SURVIVOR)
@@ -372,6 +378,9 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/black/es7_lethal/half, WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/medium_stack, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/explosive_mines, WEAR_IN_BACK)
@@ -386,6 +395,9 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/black/es7_lethal, WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/no_stims, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/large_stack, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/explosive_mines, WEAR_IN_BACK)
@@ -400,6 +412,9 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/black/es7_incendiary, WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/full, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/large_stack, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/large_stack, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/explosive_mines, WEAR_IN_BACK)
@@ -422,6 +437,7 @@
 
 /datum/equipment_preset/cia_global_response/medic/deathsquad
 	strength_type = STRENGTH_DEATH
+	mask_type = /obj/item/clothing/mask/gas/pmc/marsoc/grs/deathsquad
 
 /datum/equipment_preset/cia_global_response/medic/no_iff
 	strength_type = STRENGTH_NO_IFF
@@ -507,6 +523,7 @@
 
 /datum/equipment_preset/cia_global_response/leader/deathsquad
 	strength_type = STRENGTH_DEATH
+	mask_type = /obj/item/clothing/mask/gas/pmc/marsoc/grs/deathsquad
 
 /datum/equipment_preset/cia_global_response/leader/no_iff
 	strength_type = STRENGTH_NO_IFF
@@ -604,6 +621,7 @@
 
 /datum/equipment_preset/cia_global_response/commander/deathsquad
 	strength_type = STRENGTH_DEATH
+	mask_type = /obj/item/clothing/mask/gas/pmc/marsoc/grs/deathsquad
 
 /datum/equipment_preset/cia_global_response/commander/no_iff
 	strength_type = STRENGTH_NO_IFF
@@ -695,6 +713,7 @@
 
 /datum/equipment_preset/cia_global_response/commander/deputy/deathsquad
 	strength_type = STRENGTH_DEATH
+	mask_type = /obj/item/clothing/mask/gas/pmc/marsoc/grs/deathsquad
 
 /datum/equipment_preset/cia_global_response/commander/deputy/no_iff
 	strength_type = STRENGTH_NO_IFF
@@ -714,12 +733,15 @@
 	name = JOB_CIA_GRS_SYN
 	flags = EQUIPMENT_PRESET_EXTRA
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_FRENCH, LANGUAGE_TSL, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH)
-	skills = /datum/skills/synthetic
+	skills = /datum/skills/synthetic/antag
 	assignment = JOB_CIA_GRS_SYN
 	job_title = JOB_CIA_GRS_SYN
 	minimap_icon = "pmc_syn"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "GRS Syn"
+	helmet_type = null
+	mask_type = null
+	suit_type = /obj/item/clothing/suit/storage/marine/sof/grs/synth
 
 /datum/equipment_preset/cia_global_response/synth/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
@@ -763,7 +785,7 @@
 	switch(strength_type)
 		if(STRENGTH_WEAK, STRENGTH_SURVIVOR)
 
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full_barbed_wire/wy, WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/low_grade_full, WEAR_L_STORE)
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/wy/full_advanced, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/dutch/black/grs_weak, WEAR_WAIST)
@@ -792,10 +814,17 @@
 			new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/grs_medical/deathsquad, WEAR_IN_BACK)
 
+/datum/equipment_preset/cia_global_response/synth/deathsquad
+	strength_type = STRENGTH_DEATH
 
+/datum/equipment_preset/cia_global_response/synth/no_iff
+	strength_type = STRENGTH_NO_IFF
 
+/datum/equipment_preset/cia_global_response/synth/weak
+	strength_type = STRENGTH_WEAK
 
-
+/datum/equipment_preset/cia_global_response/synth/weak/survivor
+	strength_type = STRENGTH_SURVIVOR
 
 
 #undef STRENGTH_NORM

@@ -20,7 +20,9 @@
 	wield_delay = WIELD_DELAY_VERY_FAST
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
@@ -56,7 +58,9 @@
 	current_mag = /obj/item/ammo_magazine/smg/m39
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/verticalgrip,
@@ -68,6 +72,7 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/co2,
@@ -135,6 +140,7 @@
 	random_spawn_chance = 100
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
@@ -211,6 +217,7 @@
 	current_mag = /obj/item/ammo_magazine/smg/mp5
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/co2,
@@ -226,9 +233,11 @@
 		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
@@ -273,6 +282,7 @@
 	item_state = "mp5_alt"
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/co2,
@@ -288,9 +298,11 @@
 		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
@@ -322,6 +334,7 @@
 	random_spawn_chance = 100
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 	)
 
@@ -349,6 +362,7 @@
 	current_mag = /obj/item/ammo_magazine/smg/mp27
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/co2,
@@ -364,9 +378,11 @@
 		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
@@ -513,13 +529,16 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/magnetic_harness,
 	)
 
@@ -597,10 +616,13 @@
 
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/scope/mini,
@@ -651,10 +673,13 @@
 
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/scope/mini,
@@ -734,6 +759,7 @@
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 	)
 	random_spawn_chance = 65
@@ -781,6 +807,7 @@
 	random_spawn_chance = 100
 	random_spawn_rail = list(
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
@@ -887,10 +914,13 @@
 	current_mag = /obj/item/ammo_magazine/smg/p90
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini,
@@ -930,10 +960,13 @@
 	current_mag = /obj/item/ammo_magazine/smg/p90/twe
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini,

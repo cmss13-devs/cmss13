@@ -382,13 +382,15 @@ SUBSYSTEM_DEF(cmtv)
 
 /datum/controller/subsystem/cmtv/proc/is_ineligible(mob/possible_player)
 	if(!possible_player)
-		return
+		return TRUE
 
 	if(!possible_player.client)
-		return
+		return TRUE
 
 	if(!isturf(possible_player.loc))
-		return
+		return TRUE
+
+	return FALSE
 
 /// Checks if the latest [/datum/cause_data] was generated within the given delay_time
 /datum/controller/subsystem/cmtv/proc/is_combatant(mob/possible_combatant, delay_time)

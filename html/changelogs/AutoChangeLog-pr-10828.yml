@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - spellcheck: "hijack fuel announcement now uses % instead of percent, rather than both"

@@ -544,7 +544,6 @@
 	density = TRUE
 	health = 600
 	anchored = TRUE
-	tiles_with = list(/turf/closed/wall, /obj/structure/window/framed, /obj/structure/window_frame, /obj/structure/girder, /obj/structure/machinery/door, /turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
 
 /obj/structure/prop/hunter/ancient_temple/collapsed_wall/bullet_act(obj/projectile/P)
 	health -= P.damage

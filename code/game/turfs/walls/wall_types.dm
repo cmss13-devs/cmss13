@@ -474,26 +474,26 @@
 	walltype = WALL_ANCIENT_BASE
 	baseturfs = /turf/open/gm/dirt
 	var/decoration_type
-	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
+	blend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
 
-
-/turf/closed/wall/mineral/sandstone/Initialize(mapload, ...)
-	if(!special_icon && prob(20))
+/turf/closed/wall/mineral/sandstone/LateInitialize()
+	. = ..()
+	if(prob(20))
 		decoration_type = rand(0,3)
-	return ..()
+	update_icon()
 
 /turf/closed/wall/mineral/sandstone/update_icon()
 	if(decoration_type == null)
 		return ..()
 	if(neighbors_list in list(EAST|WEST))
 		special_icon = TRUE
-		icon_state = "ancient_stone[decoration_type]"
+		icon_state = "ancient_stone_deco_wall[decoration_type]"
 	else // Wall connection was broken, return to normality
 		special_icon = FALSE
 	return ..()
 
 /turf/closed/wall/mineral/sandstone/runed
-	name = "sandstone temple wall"
+	name = "sandstone decorated wall"
 	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
 	icon = 'icons/turf/walls/hunter/hunter_temple_deco_3.dmi'
 	color = null
@@ -501,35 +501,25 @@
 	mineral = "runed sandstone"
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters, can can still be blown up or melted by boilers.
 	baseturfs = /turf/open/floor/sandstone/runed
-	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
+	blend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
 
 /turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
 	visible_message("[user] scrapes uselessly against [src] with their claws.")
 	return
 
 /turf/closed/wall/mineral/sandstone/runed/decor
-	name = "decoarated sandstone temple wall"
+	name = "decorated sandstone wall"
 	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
 	icon = 'icons/turf/walls/hunter/hunter_temple_deco_3.dmi'
-	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
-
+	blend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
 
 /turf/closed/wall/mineral/sandstone/runed/deco_1
 	icon = 'icons/turf/walls/hunter/hunter_temple_deco_1.dmi'
-	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
-
+	blend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
 
 /turf/closed/wall/mineral/sandstone/runed/deco_2
 	icon = 'icons/turf/walls/hunter/hunter_temple_deco_2.dmi'
-	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
-
-
-/turf/closed/wall/mineral/sandstone/broken
-	name = "damaged sandstone temple wall"
-	desc = "A damaged heavy wall of sandstone."
-	icon = 'icons/turf/walls/hunter/hunter_temple_deco_2.dmi'
-	damage_cap = HEALTH_WALL_XENO
-	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
+	blend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/mineral/sandstone/runed, /turf/closed/wall/mineral/sandstone/runed/decor, /turf/closed/wall/mineral/sandstone/runed/deco_1, /turf/closed/wall/mineral/sandstone/runed/deco_2)
 
 /turf/closed/wall/mineral/sandstone/runed/can_be_dissolved()
 	return 2
@@ -644,6 +634,7 @@
 	icon_state = "wood"
 	walltype = WALL_WOOD
 	baseturfs = /turf/open/floor/wood
+	blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed, /obj/structure/mineral_door)
 
 /turf/closed/wall/wood/update_icon()
 	..()
@@ -700,6 +691,7 @@
 	walltype = WALL_CAVE
 	turf_flags = TURF_HULL
 	baseturfs = /turf/open/gm/dirt
+	noblend_turfs = list(/turf/closed/wall/ancient_temple, /turf/closed/wall/ancient_temple/sandstone/runed, /turf/closed/wall/ancient_temple/sandstone/runed/decor, /turf/closed/wall/ancient_temple/sandstone/runed/deco_1, /turf/closed/wall/ancient_temple/sandstone/runed/deco_2, /turf/closed/wall/mineral/bone_resin)
 
 /turf/closed/wall/rock/brown
 	color = "#826161"
@@ -745,6 +737,7 @@
 	desc = "Exceptionally dense vegetation that you can't see through."
 	walltype = WALL_JUNGLE_UPDATED //Not a metal wall
 	turf_flags = TURF_HULL
+	noblend_turfs = list(/turf/closed/wall/ancient_temple, /turf/closed/wall/ancient_temple/sandstone/runed, /turf/closed/wall/ancient_temple/sandstone/runed/decor, /turf/closed/wall/ancient_temple/sandstone/runed/deco_1, /turf/closed/wall/ancient_temple/sandstone/runed/deco_2)
 
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
 	name = "ribbed outpost walls"

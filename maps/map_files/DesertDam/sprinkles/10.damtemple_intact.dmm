@@ -160,7 +160,7 @@
 /area/desert_dam/interior/caves/temple)
 "fX" = (
 /obj/structure/stairs/perspective{
-	color = "#9a8a79";
+	color = "#b6a38f";
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
@@ -350,7 +350,7 @@
 /area/desert_dam/interior/caves/temple)
 "uO" = (
 /obj/structure/stairs/perspective{
-	color = "#9a8a79";
+	color = "#b6a38f";
 	dir = 9;
 	icon_state = "p_stair_full"
 	},
@@ -358,7 +358,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "vb" = (
 /obj/structure/stairs/perspective{
-	color = "#9a8a79";
+	color = "#b6a38f";
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
@@ -384,7 +384,7 @@
 /area/desert_dam/interior/caves/temple)
 "yT" = (
 /obj/structure/stairs/perspective{
-	color = "#9a8a79";
+	color = "#b6a38f";
 	dir = 4;
 	icon_state = "p_stair_full"
 	},

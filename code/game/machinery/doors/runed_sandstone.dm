@@ -14,7 +14,7 @@
 	openspeed = 4 SECONDS
 	unacidable = TRUE//Walls can still be melted or blown up.
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters so no abuse from marines.
-	color = "#9a8a79"
+	color = "#a99784"
 
 /obj/structure/machinery/door/airlock/sandstone/runed/proc/can_use(mob/user as mob, loud = 0)
 	if(!in_range(src, user))

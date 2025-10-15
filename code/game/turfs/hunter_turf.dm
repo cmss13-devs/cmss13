@@ -721,45 +721,45 @@
 // Ancient Temple Walls
 
 /turf/closed/wall/ancient_temple
+	name = "ancient temple wall"
+	desc = "A heavy wall of sandstone with sandstone plating."
 	icon = 'icons/turf/walls/hunter/hunter_temple.dmi'
 	icon_state = "ancient_stone"
 	walltype = WALL_ANCIENT_BASE
 	baseturfs = /turf/open/gm/dirt
 	var/decoration_type
+	var/list/debris
+	blend_objects = list(/obj/structure/prop/hunter/ancient_temple/collapsed_wall, /obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed)
+	debris = list(/obj/item/stack/sheet/mineral/sandstone, /obj/effect/hunter/ancient_temple/rubble/rubble)
 
 /turf/closed/wall/ancient_temple/sandstone
-	name = "sandstone wall"
-	desc = "A wall with sandstone plating."
 	turf_flags = TURF_HULL
 
-/turf/closed/wall/ancient_temple/sandstone/Initialize(mapload, ...)
-	if(!special_icon && prob(20))
+/turf/closed/wall/ancient_temple/sandstone/attack_alien(mob/living/carbon/xenomorph/user)
+	visible_message("[user] scrapes uselessly against [src] with their claws.")
+	return
+
+/turf/closed/wall/ancient_temple/sandstone/LateInitialize()
+	. = ..()
+	if(prob(80))
 		decoration_type = rand(0,3)
-	return ..()
+	update_icon()
 
 /turf/closed/wall/ancient_temple/sandstone/update_icon()
 	if(decoration_type == null)
 		return ..()
 	if(neighbors_list in list(EAST|WEST))
 		special_icon = TRUE
-		icon_state = "ancient_stone[decoration_type]"
+		icon_state = "ancient_stone_deco_wall[decoration_type]"
 	else // Wall connection was broken, return to normality
 		special_icon = FALSE
 	return ..()
 
 /turf/closed/wall/ancient_temple/sandstone/runed
-	name = "sandstone temple wall"
 	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
 	icon = 'icons/turf/walls/hunter/hunter_temple_deco_3.dmi'
-	tiles_with = list(/turf/closed/wall/mineral, /turf/closed/wall/ancient_temple/sandstone/runed, /turf/closed/wall/ancient_temple/sandstone/runed/decor, /turf/closed/wall/ancient_temple/sandstone/runed/deco_1, /turf/closed/wall/ancient_temple/sandstone/runed/deco_2)
-
-/turf/closed/wall/ancient_temple/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
-	visible_message("[user] scrapes uselessly against [src] with their claws.")
-	return
 
 /turf/closed/wall/ancient_temple/sandstone/runed/decor
-	name = "decoarated sandstone temple wall"
-	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
 	icon = 'icons/turf/walls/hunter/hunter_temple_deco_3.dmi'
 
 /turf/closed/wall/ancient_temple/sandstone/runed/deco_1
@@ -767,9 +767,3 @@
 
 /turf/closed/wall/ancient_temple/sandstone/runed/deco_2
 	icon = 'icons/turf/walls/hunter/hunter_temple_deco_2.dmi'
-
-/turf/closed/wall/ancient_temple/sandstone/broken
-	name = "damaged sandstone temple wall"
-	desc = "A damaged heavy wall of sandstone."
-	icon = 'icons/turf/walls/hunter/hunter_temple_deco_2.dmi'
-	damage_cap = HEALTH_WALL_XENO

@@ -356,7 +356,6 @@
 #include "code\datums\changelog.dm"
 #include "code\datums\chat_payload.dm"
 #include "code\datums\cmtv_commands.dm"
-#include "code\datums\cmtv_events.dm"
 #include "code\datums\combat_personalized.dm"
 #include "code\datums\computerfiles.dm"
 #include "code\datums\crew_manifest.dm"

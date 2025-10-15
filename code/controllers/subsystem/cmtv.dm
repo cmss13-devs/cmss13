@@ -43,10 +43,6 @@ SUBSYSTEM_DEF(cmtv)
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_new_client))
 
-	for(var/type in subtypesof(/datum/cmtv_event))
-		var/datum/cmtv_event/event = new type
-		event.RegisterSignal(SSdcs, event.listener, TYPE_PROC_REF(/datum/cmtv_event, handle_global_event))
-
 	var/camera = GLOB.directory[username]
 	if(!camera)
 		return SS_INIT_NO_NEED
@@ -219,6 +215,7 @@ SUBSYSTEM_DEF(cmtv)
 	var/cmtv_link = CONFIG_GET(string/cmtv_link)
 	to_chat(current_perspective, boxed_message("[SPAN_BIGNOTICE("You are being observed.")]\n\n [SPAN_NOTICE("Your perspective is currently being shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to hand this off to a different player, press <a href='byond://?src=\ref[src];abandon_cmtv=1'>here</a>. You can also use the verb 'Handoff CMTV' at any point.")]"))
 
+	camera_mob.sight = current_perspective.sight
 	camera_mob.do_observe(current_perspective)
 	if(set_showtime)
 		COOLDOWN_START(src, minimum_screentime, set_showtime)
@@ -236,7 +233,9 @@ SUBSYSTEM_DEF(cmtv)
 	remove_action(current_perspective, /datum/action/stop_cmtv)
 
 	current_perspective = null
-	change_displayed_mob(ticker_text)
+
+	if(ticker_text)
+		change_displayed_mob(ticker_text)
 
 /// Signal handler - it might be dull if a player wanders off to medical on the ship.
 /datum/controller/subsystem/cmtv/proc/handle_z_change(atom/movable/moving, old_z, new_z)
@@ -274,30 +273,41 @@ SUBSYSTEM_DEF(cmtv)
 
 	change_observed_mob(get_active_player(), instant)
 
-/datum/controller/subsystem/cmtv/proc/temporary_spectate_turf(turf/where_to_look, how_long, event)
-	if(!how_long || !where_to_look)
+/datum/controller/subsystem/cmtv/proc/spectate_event(event, turf/where_to_look, how_long_for = 20 SECONDS, zoom_out = FALSE, when_start = 0)
+	if(!how_long_for || !where_to_look)
 		return
 
 	if(!istype(where_to_look))
 		where_to_look = get_turf(where_to_look)
 
+	if(when_start > 0)
+		addtimer(CALLBACK(src, PROC_REF(spectate_event), event, where_to_look, how_long_for, zoom_out), when_start)
+		return
+
 	temporarily_observing_turf = TRUE
 
-	terminate_current_perspective(event)
-	camera_mob.clean_observe_target()
+	if(current_perspective)
+		terminate_current_perspective(ticker_text = null)
+		camera_mob.clean_observe_target()
+
 	camera_mob.abstract_move(where_to_look)
 
-	camera_mob.hud_used.plane_masters["[HUD_PLANE]"].alpha = 0
-	camera_mob.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 0
+	change_displayed_mob(event)
 
-	addtimer(CALLBACK(src, PROC_REF(stop_spectating_turf)), how_long - 10 SECONDS)
+	camera_mob.hud_used.plane_masters["[HUD_PLANE]"].alpha = 0
+	camera_mob.sight = SEE_TURFS|SEE_MOBS|SEE_OBJS
+
+	if(zoom_out)
+		camera_operator.view = "32x24"
+
+	addtimer(CALLBACK(src, PROC_REF(stop_spectating_turf)), how_long_for - 10 SECONDS)
 
 /datum/controller/subsystem/cmtv/proc/stop_spectating_turf()
 	camera_mob.hud_used.plane_masters["[HUD_PLANE]"].alpha = 255
-	camera_mob.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 255
 
 	temporarily_observing_turf = FALSE
 
+	camera_operator.view = "20x15"
 	reset_perspective()
 
 #define PERSPECTIVE_SELECTION_DELAY_TIME (20 SECONDS)

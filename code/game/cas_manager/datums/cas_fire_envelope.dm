@@ -316,7 +316,7 @@
 	notify_ghosts(header = "CAS Fire Mission", message = "[usr ? usr : "Someone"] is launching Fire Mission '[mission.name]' at [get_area(target_turf)].", source = firemission_effect)
 	msg_admin_niche("[usr ? key_name(usr) : "Someone"] is launching Fire Mission '[mission.name]' at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
 
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_FIREMISSION_IMBOUND, target_turf)
+	SScmtv.spectate_event("Firemission Imbound", target_turf)
 
 	addtimer(CALLBACK(src, PROC_REF(play_sound), target_turf), grace_period)
 	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 15, 1), first_warning)

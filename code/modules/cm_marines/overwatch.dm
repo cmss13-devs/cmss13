@@ -1416,7 +1416,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/mutable_appearance/warhead_appearance = mutable_appearance(current_orbital_cannon.tray.warhead.icon, current_orbital_cannon.tray.warhead.icon_state)
 	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
 
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_ORBITAL_BOMBARDMENT, T)
+	SScmtv.spectate_event("Orbital Bombardment", T, 40 SECONDS, zoom_out = TRUE)
 
 	/// Project ARES interface log.
 	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb], Z[z_bomb] in [get_area(T)]")

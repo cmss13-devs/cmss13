@@ -389,6 +389,9 @@
 	flags_atom |= (USES_HEARING|USES_SEEING)
 	handle_move()
 	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
+
+	SScmtv.change_observed_mob(user, set_showtime = INFINITY)
+
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
 	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
 	update_icon()
@@ -397,6 +400,10 @@
 	active = FALSE
 	flags_atom &= ~(USES_HEARING|USES_SEEING)
 	linked_cam.status = FALSE
+
+	if(SScmtv.current_perspective == user)
+		SScmtv.reset_perspective()
+
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 	to_chat(user, SPAN_NOTICE("[src] goes silent as the broadcast stops."))
 	update_icon()
@@ -412,9 +419,14 @@
 	. = ..()
 	linked_cam.view_range = 4
 
+	if(SScmtv.current_perspective == user)
+		SScmtv.reset_perspective()
+
 /obj/item/device/broadcasting/pickup(mob/user, silent)
 	. = ..()
 	linked_cam.view_range = 7
+
+	SScmtv.change_observed_mob(user, set_showtime = INFINITY)
 
 /obj/item/device/broadcasting/attack_self(mob/user)
 	. = ..()

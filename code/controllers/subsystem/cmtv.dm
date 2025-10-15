@@ -57,7 +57,7 @@ SUBSYSTEM_DEF(cmtv)
 	if(temporarily_observing_turf)
 		return
 
-	if(!current_perspective && !future_perspective)
+	if(is_ineligible(current_perspective) && !future_perspective)
 		reset_perspective()
 		return
 
@@ -369,14 +369,8 @@ SUBSYSTEM_DEF(cmtv)
 
 /// If a player is still categorised as being active
 /datum/controller/subsystem/cmtv/proc/is_active(mob/possible_player, delay_time)
-	if(!possible_player || !possible_player.client)
-		return FALSE
-
-	if(!isturf(possible_player.loc))
-		return FALSE
-
-	if(possible_player.client.inactivity > delay_time)
-		return FALSE
+	if(is_ineligible(possible_player))
+		return
 
 	if(world.time > possible_player.client.talked_at + delay_time)
 		return FALSE
@@ -385,6 +379,16 @@ SUBSYSTEM_DEF(cmtv)
 		return FALSE
 
 	return TRUE
+
+/datum/controller/subsystem/cmtv/proc/is_ineligible(mob/possible_player)
+	if(!possible_player)
+		return
+
+	if(!possible_player.client)
+		return
+
+	if(!isturf(possible_player.loc))
+		return
 
 /// Checks if the latest [/datum/cause_data] was generated within the given delay_time
 /datum/controller/subsystem/cmtv/proc/is_combatant(mob/possible_combatant, delay_time)

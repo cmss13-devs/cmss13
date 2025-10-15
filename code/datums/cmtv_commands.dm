@@ -23,6 +23,9 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	var/apply_cooldown = TRUE
 
 /datum/cmtv_command/proc/cannot_run(list/arguments)
+	if(!SScmtv.online())
+		return "CMTV is not currently running."
+
 	if(arguments["is_moderator"])
 		return FALSE
 

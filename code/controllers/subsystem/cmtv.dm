@@ -88,6 +88,12 @@ SUBSYSTEM_DEF(cmtv)
 	if(href_list["cancel_cmtv"] && usr == future_perspective.resolve())
 		reset_perspective()
 
+/datum/controller/subsystem/cmtv/proc/online()
+	if(camera_operator)
+		return TRUE
+
+	return FALSE
+
 /// Signal handler for if the client disconnects/rejoins midround
 /datum/controller/subsystem/cmtv/proc/handle_new_client(SSdcs, client/new_client)
 	SIGNAL_HANDLER
@@ -149,6 +155,9 @@ SUBSYSTEM_DEF(cmtv)
 	addtimer(CALLBACK(src, PROC_REF(restart_chat), 10 SECONDS))
 
 /datum/controller/subsystem/cmtv/proc/restart_chat()
+	if(!online())
+		return
+
 	camera_operator.nuke_chat()
 	addtimer(CALLBACK(src, PROC_REF(do_init_chat)), 0.5 SECONDS)
 
@@ -417,6 +426,9 @@ SUBSYSTEM_DEF(cmtv)
 /client/proc/change_observed_player()
 	set name = "Change Observed Player"
 	set category = "Admin.CMTV"
+
+	if(!SScmtv.online())
+		return to_chat(src, SPAN_WARNING("CMTV is currently offline!"))
 
 	var/mob/selected_mob = tgui_input_list(src, "Who should be selected for observation?", "CMTV Target", GLOB.player_list)
 	if(!selected_mob)

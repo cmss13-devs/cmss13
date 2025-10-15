@@ -974,6 +974,7 @@
 	worn_state = "pmc_jumpsuit"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	undershirt = TRUE
 	suit_restricted = list(
 		/obj/item/clothing/suit/storage/marine/veteran/pmc,
 		/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc,
@@ -1100,6 +1101,7 @@
 	has_sensor = UNIFORM_HAS_SENSORS
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet, /obj/item/clothing/suit/storage/snow_suit/survivor, /obj/item/clothing/suit/storage/webbing, /obj/item/clothing/suit/storage/webbing/brown, /obj/item/clothing/suit/storage/webbing/black)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	undershirt = TRUE
 
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UPP.dmi'
@@ -1137,30 +1139,35 @@
 	desc = "A set of Civilian-style Orange Overalls with a dark tan undershirt. The material is of a poor quality, however it's better than nothing. Clothing of this style is typically given out to those who work laborious jobs."
 	icon_state = "upp_uniform_civi1"
 	worn_state = "upp_uniform_civi1"
+	suit_restricted = FALSE
 
 /obj/item/clothing/under/marine/veteran/UPP/civi2
 	name = "\improper UPP Civilian-style tan overalls"
 	desc = "A set of Civilian-style Tan Overalls with a Blue undershirt. The material is of a poor quality, however it's better than nothing. Clothing of this style is typically given to those who work laborious jobs."
 	icon_state = "upp_uniform_civi2"
 	worn_state = "upp_uniform_civi2"
+	suit_restricted = FALSE
 
 /obj/item/clothing/under/marine/veteran/UPP/civi3
 	name = "\improper UPP Civilian-style shirt and pants"
 	desc = "A set of Civilian-style tan shirt and jeans. The material, while poor, is comfortable enough to be worn during all periods of the day."
 	icon_state = "upp_uniform_civi3"
 	worn_state = "upp_uniform_civi3"
+	suit_restricted = FALSE
 
 /obj/item/clothing/under/marine/veteran/UPP/civi4
 	name = "\improper UPP Civilian-style Vest and pants"
 	desc = "A set of Civilian-style Brown vest and orange pants. The material is surprisingly decent, something not often worn by the civilians of the UPP for two reasons: They typically can't afford such clothing, and if they can, it paints a target on their back."
 	icon_state = "upp_uniform_civi4"
 	worn_state = "upp_uniform_civi4"
+	suit_restricted = FALSE
 
 /obj/item/clothing/under/marine/veteran/UPP/civi5
 	name = "\improper Jùtóu Combine mining overalls"
 	desc = "A durable, olive-green jumpsuit worn beneath a sleeveless, puffy orange work vest—standard issue for Jùtóu Combine laborers. The vest's faded fabric is lined with reinforced padding, offering minimal protection against workplace hazards. A red star insignia is stamped on the back, marking its wearer as part of the Combine’s industrial workforce. Stiff, uncomfortable, and mass-produced, but better than nothing in the unforgiving conditions of deep-space labor."
 	icon_state = "miner_uniform"
 	worn_state = "miner_uniform"
+	suit_restricted = FALSE
 
 /obj/item/clothing/under/marine/veteran/UPP/army
 	name = "\improper UPP army jungle fatigues"
@@ -1383,6 +1390,7 @@
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/workwear.dmi',
 	)
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	icon_state = "workwear_grey"
 	worn_state = "workwear_grey"
 
@@ -1701,6 +1709,13 @@
 	icon_state = "green_utility"
 	worn_state = "green_utility"
 	displays_id = FALSE
+
+/obj/item/clothing/under/rank/utility/upp
+	name = "\improper green utility uniform"
+	desc = "A green-on-green utility uniform, popularly issued to UPP workers on the frontier."
+	has_sensor = UNIFORM_HAS_SENSORS
+	suit_restricted = FALSE
+	armor_energy = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/rank/utility/yellow
 	name = "\improper yellow utility uniform"

@@ -1208,7 +1208,7 @@
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
-	verbs -= /obj/item/weapon/gun/verb/use_unique_action
+	verbs -= /obj/item/verb/use_unique_action
 
 /obj/item/weapon/gun/launcher/spike/set_gun_config_values()
 	..()
@@ -1303,7 +1303,7 @@
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/use_toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
-	verbs -= /obj/item/weapon/gun/verb/use_unique_action
+	verbs -= /obj/item/verb/use_unique_action
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/process()
 	if(charge_time < 100)

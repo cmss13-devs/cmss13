@@ -1688,24 +1688,29 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 	var/list/mobs = sortmobs()
 	var/list/namecounts = list()
 	var/list/pois = list()
-	for(var/mob/M as anything in mobs)
-		if(skip_mindless && (!M.mind && !M.ckey))
+	for(var/mob/current as anything in mobs)
+		if(skip_mindless && (!current.mind && !current.ckey))
 			continue
-		if(M.client?.admin_holder)
-			if(M.client.admin_holder.fakekey || M.client.admin_holder.invisimined) //stealthmins
+		if(current.client?.admin_holder)
+			if(current.client.admin_holder.fakekey || current.client.admin_holder.invisimined) //stealthmins
 				continue
-		var/name = avoid_assoc_duplicate_keys(M.name, namecounts)
+		var/name = avoid_assoc_duplicate_keys(current.name ? current.name : "Unknown", namecounts)
 
-		if(M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if(M.stat == DEAD && specify_dead_role)
-			if(isobserver(M))
-				name += " \[ghost\]"
-			else
-				name += " \[dead\]"
-		pois[name] = M
+		if(current.real_name && current.real_name != current.name)
+			name += " \[[current.real_name]\]"
+		if(current.stat == DEAD)
+			var/isobserver = isobserver(current)
+			if(isobserver && current.mind?.original?.aghosted)
+				continue
+			if(specify_dead_role)
+				if(isobserver)
+					name += " \[ghost\]"
+				else
+					name += " \[dead\]"
+		pois[name] = current
 
-	pois.Add(get_multi_vehicles())
+	if(!mobs_only)
+		pois.Add(get_multi_vehicles())
 
 	return pois
 
@@ -1773,3 +1778,12 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		return TRUE
 
 	return FALSE
+
+///Converts a screen loc param to a x,y coordinate pixel on the screen
+/proc/params2screenpixel(scr_loc)
+	var/list/x_and_y = splittext(scr_loc, ",")
+	var/list/x_dirty = splittext(x_and_y[1], ":")
+	var/list/y_dirty = splittext(x_and_y[2], ":")
+	var/x = (text2num(x_dirty[1])-1)*32 + text2num(x_dirty[2])
+	var/y = (text2num(y_dirty[1])-1)*32 + text2num(y_dirty[2])
+	return list(x, y)

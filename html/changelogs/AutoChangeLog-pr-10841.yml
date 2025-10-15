@@ -1,0 +1,5 @@
+author: "rattybag"
+delete-after: True
+changes:
+  - qol: "add modifier keys to ladders for fast throwing and climbing"
+  - refactor: "consolidated ladder climbing and item throwing logic into shared helper functions"

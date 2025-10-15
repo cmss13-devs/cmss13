@@ -691,6 +691,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				break
 
 		transfer_marine.hud_set_squad()
+	SEND_SIGNAL(transfer_marine, COMSIG_HUMAN_SQUAD_CHANGED)
 
 // returns TRUE if transfer_marine's role is at max capacity in the new squad
 /datum/authority/branch/role/proc/check_squad_capacity(mob/living/carbon/human/transfer_marine, datum/squad/new_squad)

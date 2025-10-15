@@ -3,7 +3,7 @@
 	see_in_dark = 50
 	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 
-	var/base_icon_state
+	var/base_icon_state = "Giant Lizard"
 	var/icon_sleeping
 	var/icon_knocked_down
 	///Reference to the wound icon.

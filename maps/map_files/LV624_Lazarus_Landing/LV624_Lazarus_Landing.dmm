@@ -13794,11 +13794,20 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/sand_temple)
 "iBs" = (
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/brown_dirt/random_rocks_alt{
-	dir = 6
+/obj/structure/surface/table{
+	color = "#8B7B5B"
 	},
-/area/lv624/ground/barrens/south_west_barrens)
+/obj/item/prop{
+	desc = "An issue of The Pioneer's Standard, the newspaper circulating in UA-controlled space.";
+	icon = 'icons/obj/items/paper.dmi';
+	icon_state = "newspaper";
+	name = "The Pioneer's Standard";
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/sterile_white,
+/area/lv624/lazarus/canteen)
 "iBC" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/east_caves)
@@ -19237,6 +19246,9 @@
 	},
 /obj/effect/decal/lv_decals/red_mud_corner{
 	dir = 4
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv624/ground/colony/west_nexus_road)
@@ -45836,7 +45848,7 @@ xLg
 cuG
 xLg
 xLg
-iBs
+qrD
 nWz
 vPq
 bwE
@@ -68970,7 +68982,7 @@ sDy
 bNK
 mUi
 mSj
-tmm
+iBs
 bhv
 lJk
 bhv

@@ -2411,7 +2411,6 @@
 /area/white_antre/indoors/upper_level/central_command)
 "afS" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/prop/almayer/CICmap,
 /obj/item/device/binoculars/range/designator{
 	pixel_x = 9;
 	pixel_y = 7
@@ -3710,7 +3709,6 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
 	},
-/obj/structure/machinery/prop/almayer/CICmap,
 /obj/item/prop/almayer/flight_recorder/colony{
 	pixel_x = 7;
 	pixel_y = 7
@@ -12470,7 +12468,6 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
 	},
-/obj/structure/machinery/prop/almayer/CICmap,
 /turf/open/floor/prison/floor_plate,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aCJ" = (

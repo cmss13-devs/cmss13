@@ -159,7 +159,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		area = get_area(src)
 		opened = APC_COVER_OPEN
 		operating = 0
-		name = "\improper [area.name] APC"
+		name = "\improper [area.declent_ru()] АПЦ" // SS220 ADDICTION
 		stat |= MAINT
 		update_icon()
 		addtimer(CALLBACK(src, PROC_REF(update)), 5)

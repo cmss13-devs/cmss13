@@ -1,0 +1,4 @@
+#include "_skills.dm"
+
+#include "code/skills.dm"
+#include "code/pamplets.dm"

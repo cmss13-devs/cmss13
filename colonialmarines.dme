@@ -131,6 +131,12 @@
 #include "code\__DEFINES\weather.dm"
 #include "code\__DEFINES\wycomputer.dm"
 #include "code\__DEFINES\xeno.dm"
+#include "code\__DEFINES\bandamarines\cyrillic.dm"
+#include "code\__DEFINES\bandamarines\pronouns.dm"
+#include "code\__DEFINES\bandamarines\ru_jobs.dm"
+#include "code\__DEFINES\bandamarines\rust_g.dm"
+#include "code\__DEFINES\bandamarines\tts.dm"
+#include "code\__DEFINES\bandamarines\xenos.dm"
 #include "code\__DEFINES\dcs\flags.dm"
 #include "code\__DEFINES\dcs\helpers.dm"
 #include "code\__DEFINES\dcs\signals\signals_admin.dm"
@@ -176,6 +182,7 @@
 #include "code\__HELPERS\_lists.dm"
 #include "code\__HELPERS\_time.dm"
 #include "code\__HELPERS\animations.dm"
+#include "code\__HELPERS\bandamarines.dm"
 #include "code\__HELPERS\chat.dm"
 #include "code\__HELPERS\cmp.dm"
 #include "code\__HELPERS\dates.dm"
@@ -2665,4 +2672,5 @@
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "maps\_basemap.dm"
+#include "modular\modular.dme" // BANDASTATION EDIT
 // END_INCLUDE

@@ -6,7 +6,7 @@
 	mob_max = 15
 	mob_min = 1
 	probability = 0
-	objectives = "Assist the USCM forces"
+	objectives = "Окажите поддержку силам КМП."
 
 	max_smartgunners = 1
 	max_heavies = 1

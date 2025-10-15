@@ -1,0 +1,4 @@
+author: "rodcowartt"
+delete-after: True
+changes:
+  - bugfix: "Tanks will no longer attempt to move without treads installed."

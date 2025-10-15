@@ -3,400 +3,162 @@ export enum WindowSize {
   Small = 30,
   Medium = 50,
   Large = 70,
-  Width = 380,
+  Width = 325,
 }
+
+export const SMALL_WINDOW_SIZE = WindowSize.Small;
+export const MEDIUM_WINDOW_SIZE = WindowSize.Medium;
+export const LARGE_WINDOW_SIZE = WindowSize.Large;
+export const WIDTH_WINDOW_SIZE = WindowSize.Width;
 
 /** Line lengths for autoexpand */
 export enum LineLength {
-  Small = 36,
-  Medium = 70,
-  Large = 104,
+  Small = 30,
+  Medium = 60,
+  Large = 90,
 }
+
+export const SMALL_LINE_SIZE = LineLength.Small;
+export const MEDIUM_LINE_SIZE = LineLength.Medium;
+export const LARGE_LINE_SIZE = LineLength.Large;
+
+export const LIVING_TYPES = {
+  HUMAN: 'human',
+  XENO: 'xeno',
+  SYNTH: 'synth',
+  YAUTJA: 'yautja',
+} as const;
+
+export type LivingType = (typeof LIVING_TYPES)[keyof typeof LIVING_TYPES];
+
+export const RADIO_PREFIXES_MAP: Record<string, string> = {
+  ':й ': ':q ',
+  ':ц ': ':w ',
+  ':у ': ':e ',
+  ':к ': ':r ',
+  ':е ': ':t ',
+  ':н ': ':y ',
+  ':г ': ':u ',
+  ':ш ': ':i ',
+  ':щ ': ':o ',
+  ':з ': ':p ',
+  ':ф ': ':a ',
+  ':ы ': ':s ',
+  ':в ': ':d ',
+  ':а ': ':f ',
+  ':п ': ':g ',
+  ':р ': ':h ',
+  ':о ': ':j ',
+  ':л ': ':k ',
+  ':д ': ':l ',
+  ':я ': ':z ',
+  ':ч ': ':x ',
+  ':с ': ':c ',
+  ':м ': ':v ',
+  ':и ': ':b ',
+  ':т ': ':n ',
+  ':ь ': ':m ',
+} as const;
 
 /**
  * Radio prefixes.
- * Contains the properties:
- * id - string. css class identifier.
- * label - string. button label.
+ * Displays the name in the left button, tags a css class.
  */
 export const RADIO_PREFIXES = {
   ':h ': {
-    id: 'department',
-    label: 'Depart.',
-  },
-  '.h ': {
-    id: 'department',
-    label: 'Depart.',
-  },
-  '#h ': {
-    id: 'department',
-    label: 'Depart.',
+    id: null,
+    label: 'Отдел',
   },
   ':i ': {
-    id: 'comms',
-    label: 'Intercom',
-  },
-  '.i ': {
-    id: 'comms',
-    label: 'Intercom',
-  },
-  '#i ': {
-    id: 'comms',
-    label: 'Intercom',
-  },
-  ':l ': {
-    id: 'comms',
-    label: 'L Hand',
-  },
-  '.l ': {
-    id: 'comms',
-    label: 'L Hand',
-  },
-  ':r ': {
-    id: 'comms',
-    label: 'R Hand',
-  },
-  '.r ': {
-    id: 'comms',
-    label: 'R Hand',
+    id: null,
+    label: 'ВнутрСвязь',
   },
   ':w ': {
-    id: 'whisper',
-    label: 'Whisper',
-  },
-  '.w ': {
-    id: 'whisper',
-    label: 'Whisper',
-  },
-  '#w ': {
-    id: 'whisper',
-    label: 'Whisper',
+    id: null,
+    label: 'Шёпот',
   },
   ':a ': {
-    id: 'alpha',
-    label: 'Alpha',
-  },
-  '.a ': {
-    id: 'alpha',
-    label: 'Alpha',
-  },
-  '#a ': {
-    id: 'clf-med',
-    label: 'CLF Med',
+    id: 'Alpha',
+    label: 'Альфа',
   },
   ':b ': {
-    id: 'bravo',
-    label: 'Bravo',
-  },
-  '.b ': {
-    id: 'bravo',
-    label: 'Bravo',
-  },
-  '#b ': {
-    id: 'clf-engi',
-    label: 'CLF Engi',
+    id: 'Bravo',
+    label: 'Браво',
   },
   ':c ': {
-    id: 'charlie',
-    label: 'Charl.',
-  },
-  '.c ': {
-    id: 'charlie',
-    label: 'Charl.',
-  },
-  '#c ': {
-    id: 'clf-cmd',
-    label: 'CLF Cmd.',
+    id: 'Charlie',
+    label: 'Чарли',
   },
   ':d ': {
-    id: 'delta',
-    label: 'Delta',
-  },
-  '.d ': {
-    id: 'delta',
-    label: 'Delta',
-  },
-  '#d ': {
-    id: 'clf-cct',
-    label: 'CLF CCT',
+    id: 'Delta',
+    label: 'Дельта',
   },
   ':e ': {
-    id: 'echo',
-    label: 'Echo',
-  },
-  '.e ': {
-    id: 'echo',
-    label: 'Echo',
-  },
-  '#e ': {
-    id: 'pmc-engi',
-    label: 'PMC Engi',
+    id: 'Echo',
+    label: 'Эхо',
   },
   ':f ': {
-    id: 'foxtrot',
-    label: 'Foxtr.',
-  },
-  '.f ': {
-    id: 'foxtrot',
-    label: 'Foxtr.',
-  },
-  '#f ': {
-    id: 'pmc-med',
-    label: 'PMC Med',
+    id: 'Foxtrot',
+    label: 'Фокстрот',
   },
   ':g ': {
-    id: 'ship',
-    label: 'Ship',
-  },
-  '.g ': {
-    id: 'ship',
-    label: 'Ship',
-  },
-  '#g ': {
-    id: 'clf',
-    label: 'CLF',
+    id: null,
+    label: 'Корабль',
   },
   ':j ': {
-    id: 'jtac',
+    id: 'JTAC',
     label: 'JTAC',
-  },
-  '.j ': {
-    id: 'jtac',
-    label: 'JTAC',
-  },
-  '#j ': {
-    id: 'upp-cct',
-    label: 'UPP CCT',
   },
   ':k ': {
-    id: 'sof',
-    label: 'SOF',
-  },
-  '.k ': {
-    id: 'sof',
-    label: 'SOF',
-  },
-  '#k ': {
-    id: 'specops',
-    label: 'SpecOps',
-  },
-  '#l ': {
-    id: 'provost',
-    label: 'Provost',
+    id: null,
+    label: 'ССО',
   },
   ':m ': {
-    id: 'medsci',
-    label: 'MedSci',
-  },
-  '.m ': {
-    id: 'medsci',
-    label: 'MedSci',
-  },
-  '#m ': {
-    id: 'upp-med',
-    label: 'UPP Med',
+    id: 'MedSci',
+    label: 'МедИс',
   },
   ':n ': {
-    id: 'engi',
-    label: 'Engi',
-  },
-  '.n ': {
-    id: 'engi',
-    label: 'Engi',
-  },
-  '#n ': {
-    id: 'upp-engi',
-    label: 'UPP Engi',
+    id: 'Engi',
+    label: 'Инж',
   },
   ':o ': {
-    id: 'colony',
-    label: 'Colony',
-  },
-  '.o ': {
-    id: 'colony',
-    label: 'Colony',
-  },
-  '#o ': {
-    id: 'pmc-cct',
-    label: 'PMC CCT',
+    id: null,
+    label: 'Колония',
   },
   ':p ': {
-    id: 'security',
-    label: 'MP',
-  },
-  '.p ': {
-    id: 'security',
-    label: 'MP',
-  },
-  '#p ': {
-    id: 'pmc',
-    label: 'PMC',
+    id: 'MP',
+    label: 'ВоенПол',
   },
   ':q ': {
-    id: 'hive',
-    label: 'Hive',
-  },
-  '.q ': {
-    id: 'hive',
-    label: 'Hive',
-  },
-  '#q ': {
-    id: 'hive',
-    label: 'Hive',
-  },
-  '#r ': {
-    id: 'yautja',
-    label: 'Yautja',
+    id: 'Hivemind',
+    label: 'Улей',
   },
   ':s ': {
-    id: 'cia',
-    label: 'CIA',
-  },
-  '.s ': {
-    id: 'cia',
-    label: 'CIA',
-  },
-  '#s ': {
-    id: 'yautja',
-    label: 'Yautja Ovr.',
+    id: null,
+    label: 'ЦРУ',
   },
   ':t ': {
-    id: 'intel',
-    label: 'Int',
-  },
-  '.t ': {
-    id: 'intel',
-    label: 'Int',
-  },
-  '#t ': {
-    id: 'upp-kdo',
-    label: 'UPP Kdo',
+    id: 'Intel',
+    label: 'Разведка',
   },
   ':u ': {
-    id: 'req',
-    label: 'Req',
-  },
-  '.u ': {
-    id: 'req',
-    label: 'Req',
-  },
-  '#u ': {
-    id: 'upp',
-    label: 'UPP',
+    id: 'Req',
+    label: 'Запросы',
   },
   ':v ': {
-    id: 'command',
-    label: 'Cmd.',
-  },
-  '.v ': {
-    id: 'command',
-    label: 'Cmd.',
-  },
-  '#v ': {
-    id: 'upp-cmd',
-    label: 'UPP Cmd.',
+    id: 'Command',
+    label: 'Команд',
   },
   ':x ': {
-    id: 'hyperdyne',
-    label: 'Hyperdyne',
-  },
-  '.x ': {
-    id: 'hyperdyne',
-    label: 'Hyperdyne',
-  },
-  '#x ': {
-    id: 'hyperdyne',
-    label: 'Hyperdyne',
+    id: null,
+    label: 'Гипердайн',
   },
   ':y ': {
-    id: 'wy',
-    label: 'W-Y',
-  },
-  '.y ': {
-    id: 'wy',
-    label: 'W-Y',
-  },
-  '#y ': {
-    id: 'wy',
-    label: 'W-Y',
+    id: null,
+    label: 'ВейЮ',
   },
   ':z ': {
-    id: 'highcom',
-    label: 'HC',
-  },
-  '.z ': {
-    id: 'highcom',
-    label: 'HC',
-  },
-  '#z ': {
-    id: 'pmc-cmd',
-    label: 'PMC Cmd.',
-  },
-} as const;
-
-export const LANGUAGE_PREFIXES = {
-  '!0 ': {
-    id: 'scandinavian',
-    label: 'Scandinavian',
-  },
-  '!1 ': {
-    id: 'english',
-    label: 'English',
-  },
-  '!2 ': {
-    id: 'japanese',
-    label: 'Japanese',
-  },
-  '!3 ': {
-    id: 'russian',
-    label: 'Russian',
-  },
-  '!4 ': {
-    id: 'german',
-    label: 'German',
-  },
-  '!5 ': {
-    id: 'spanish',
-    label: 'Spanish',
-  },
-  '!6 ': {
-    id: 'apollo',
-    label: 'Apollo',
-  },
-  '!7 ': {
-    id: 'telepathy',
-    label: 'Telepathy',
-  },
-  '!8 ': {
-    id: 'chinese',
-    label: 'Chinese',
-  },
-  '!9 ': {
-    id: 'french',
-    label: 'French',
-  },
-  '!x ': {
-    id: 'xenomorph',
-    label: 'Xenomporph',
-  },
-  '!l ': {
-    id: 'tactical sign language',
-    label: 'Tactical Sign',
-  },
-  '!s ': {
-    id: 'sainja',
-    label: 'Sainja',
-  },
-  '!h ': {
-    id: 'hellhound',
-    label: 'Hellhound',
-  },
-  '!q ': {
-    id: 'hivemind',
-    label: 'Hivemind',
-  },
-  '!_ ': {
-    id: 'primitive',
-    label: 'Primitive',
+    id: null,
+    label: 'ВысшКоманд.',
   },
 } as const;

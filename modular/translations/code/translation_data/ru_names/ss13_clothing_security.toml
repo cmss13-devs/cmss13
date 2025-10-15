@@ -1,0 +1,134 @@
+["blue helmet"]
+nominative = "синий шлем"
+genitive = "синего шлема"
+dative = "синему шлему"
+accusative = "синий шлем"
+instrumental = "синим шлемом"
+prepositional = "синем шлеме"
+gender = "male"
+
+["security gloves"]
+nominative = "перчатки охраны"
+genitive = "перчаток охраны"
+dative = "перчаткам охраны"
+accusative = "перчатки охраны"
+instrumental = "перчатками охраны"
+prepositional = "перчатках охраны"
+gender = "plural"
+
+["security gas mask"]
+nominative = "противогаз охраны"
+genitive = "противогаза охраны"
+dative = "противогазу охраны"
+accusative = "противогаз охраны"
+instrumental = "противогазом охраны"
+prepositional = "противогазе охраны"
+gender = "male"
+
+[helmet]
+nominative = "шлем"
+genitive = "шлема"
+dative = "шлему"
+accusative = "шлем"
+instrumental = "шлемом"
+prepositional = "шлеме"
+gender = "male"
+
+["armor vest"]
+nominative = "бронежилет"
+genitive = "бронежилета"
+dative = "бронежилету"
+accusative = "бронежилет"
+instrumental = "бронежилетом"
+prepositional = "бронежилете"
+gender = "male"
+
+["large armor vest"]
+nominative = "большой бронежилет"
+genitive = "большого бронежилета"
+dative = "большому бронежилету"
+accusative = "большой бронежилет"
+instrumental = "большим бронежилетом"
+prepositional = "большом бронежилете"
+gender = "male"
+
+["bulletproof armor"]
+nominative = "пуленепробиваемый бронежилет"
+genitive = "пуленепробиваемого бронежилета"
+dative = "пуленепробиваемому бронежилету"
+accusative = "пуленепробиваемый бронежилет"
+instrumental = "пуленепробиваемым бронежилетом"
+prepositional = "пуленепробиваемом бронежилете"
+gender = "male"
+
+["bulletproof helmet"]
+nominative = "пуленепробиваемый шлем"
+genitive = "пуленепробиваемого шлема"
+dative = "пуленепробиваемому шлему"
+accusative = "пуленепробиваемый шлем"
+instrumental = "пуленепробиваемым шлемом"
+prepositional = "пуленепробиваемом шлеме"
+gender = "male"
+
+["riot suit"]
+nominative = "броня для подавления беспорядков"
+genitive = "брони для подавления беспорядков"
+dative = "броне для подавления беспорядков"
+accusative = "брони для подавления беспорядков"
+instrumental = "броней для подавления беспорядков"
+prepositional = "броне для подавления беспорядков"
+gender = "female"
+
+["riot helmet"]
+nominative = "шлем для подавления беспорядков"
+genitive = "шлема для подавления беспорядков"
+dative = "шлему для подавления беспорядков"
+accusative = "шлем для подавления беспорядков"
+instrumental = "шлемом для подавления беспорядков"
+prepositional = "шлеме для подавления беспорядков"
+gender = "male"
+
+["MK.I SWAT Suit"]
+nominative = "броня MK.I SWAT"
+genitive = "брони MK.I SWAT"
+dative = "броне MK.I SWAT"
+accusative = "броню MK.I SWAT"
+instrumental = "броней MK.I SWAT"
+prepositional = "броне MK.I SWAT"
+gender = "female"
+
+["SWAT Helmet"]
+nominative = "шлем SWAT"
+genitive = "шлема SWAT"
+dative = "шлему SWAT"
+accusative = "шлем SWAT"
+instrumental = "шлемом SWAT"
+prepositional = "шлеме SWAT"
+gender = "male"
+
+["SWAT mask"]
+nominative = "маска SWAT"
+genitive = "маски SWAT"
+dative = "маске SWAT"
+accusative = "маску SWAT"
+instrumental = "маской SWAT"
+prepositional = "маске SWAT"
+gender = "female"
+
+["assault belt"]
+nominative = "штурмовой пояс"
+genitive = "штурмового пояса"
+dative = "штурмовому поясу"
+accusative = "штурмовой пояс"
+instrumental = "штурмовым поясом"
+prepositional = "штурмовом поясе"
+gender = "male"
+
+["black gloves"]
+nominative = "чёрные перчатки"
+genitive = "чёрных перчаток"
+dative = "чёрным перчаткам"
+accusative = "чёрные перчатки"
+instrumental = "чёрными перчатками"
+prepositional = "чёрных перчатках"
+gender = "plural"

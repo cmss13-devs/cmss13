@@ -1,0 +1,5 @@
+#include "_bump_attacks.dm"
+
+#include "code/bump_attacks_atoms.dm"
+#include "code/bump_attacks_button.dm"
+#include "code/bump_attacks_component.dm"

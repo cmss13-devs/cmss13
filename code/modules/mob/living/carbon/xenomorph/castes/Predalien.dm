@@ -94,7 +94,7 @@
 	if(!loc)
 		return FALSE
 
-	elder_overseer_message("An abomination has been detected at [get_area_name(loc)]. Exterminate it immediately. Heavy Armory unlocked.")
+	elder_overseer_message("Обнаружена абоминация на террории [get_area_name(loc)]. \nУничтожьте это немедленно. \n\nТяжелая оружейная разблокирована.")
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 
 	to_chat(src, {"

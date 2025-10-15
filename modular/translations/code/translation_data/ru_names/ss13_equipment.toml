@@ -1,0 +1,11 @@
+# Uncategorized equipment
+# Tools of any kind (hemostat, screwdriver), necessary equipment (zipties, handcuffs)
+
+["crowbar"]
+nominative = "лом"
+genitive = "лома"
+dative = "лому"
+accusative = "лом"
+instrumental = "ломом"
+prepositional = "ломе"
+gender = "male"

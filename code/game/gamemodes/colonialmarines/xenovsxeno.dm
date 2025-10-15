@@ -193,7 +193,7 @@
 
 			if(!sudden_death && world.time > round_time_sd)
 				sudden_death = TRUE
-				xeno_announcement("The hives have entered sudden death mode. No more respawns, no more Queens", "everything", HIGHER_FORCE_ANNOUNCE)
+				xeno_announcement("Ульи перешли в состояние скоропостижной гибели. Больше не будет ни перерождений, ни королев.", "everything", HIGHER_FORCE_ANNOUNCE)
 				for(var/obj/effect/alien/resin/special/pylon/core/C in hive_cores)
 					qdel(C)
 				hive_cores = list()
@@ -240,7 +240,7 @@
 			living_hives++
 			last_living_hive = H
 		else if (H in current_hives)
-			xeno_announcement("\The [H] has been eliminated from the world", "everything", HIGHER_FORCE_ANNOUNCE)
+			xeno_announcement("[H] был стёрт с лица земли.", "everything", HIGHER_FORCE_ANNOUNCE)
 			current_hives -= H
 
 

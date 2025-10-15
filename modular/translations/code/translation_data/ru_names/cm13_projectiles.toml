@@ -1,0 +1,570 @@
+# Uncategorized projectiles
+# Stuff that shoots from other stuff (9mm, fireball)
+
+# MARK: grenades
+
+["M12 blast grenade"]
+nominative = "разрывная граната M12"
+genitive = "разрывной гранаты M12"
+dative = "разрывной гранате M12"
+accusative = "разрывную гранату M12"
+instrumental = "разрывной гранатой M12"
+prepositional = "разрывной гранате M12"
+gender = "female"
+
+["M15 fragmentation grenade"]
+nominative = "осколочная граната M15"
+genitive = "осколочной гранаты M15"
+dative = "осколочной гранате M15"
+accusative = "осколочную гранату M15"
+instrumental = "осколочной гранатой M15"
+prepositional = "осколочной гранате M15"
+gender = "female"
+
+["M40 HEDP Grenades x6"] # Unique Vendor Name
+nominative = "граната M40 HEDP (разрывная) x 6"
+
+["M40 HEDP grenade"]
+nominative = "граната M40 HEDP (разрывная)"
+genitive = "гранаты M40 HEDP (разрывная)"
+dative = "гранате M40 HEDP (разрывная)"
+accusative = "гранату M40 HEDP (разрывная)"
+instrumental = "гранатой M40 HEDP (разрывная)"
+prepositional = "гранате M40 HEDP (разрывная)"
+gender = "female"
+
+["M40 HEFA grenade"]
+nominative = "граната M40 HEFA (осколочная)"
+genitive = "гранаты M40 HEFA (осколочная)"
+dative = "гранате M40 HEFA (осколочная)"
+accusative = "гранату M40 HEFA (осколочная)"
+instrumental = "гранатой M40 HEFA (осколочная)"
+prepositional = "гранате M40 HEFA (осколочная)"
+gender = "female"
+
+["M40 HIDP Incendiary Grenade x6"] # Unique Vendor Name
+nominative = "граната M40 HIDP (зажигательная) x 6"
+
+["M40 HIDP incendiary grenade"]
+nominative = "граната M40 HIDP (зажигательная)"
+genitive = "гранаты M40 HIDP (зажигательная)"
+dative = "гранате M40 HIDP (зажигательная)"
+accusative = "гранату M40 HIDP (зажигательная)"
+instrumental = "гранатой M40 HIDP (зажигательная)"
+prepositional = "гранате M40 HIDP (зажигательная)"
+gender = "female"
+
+["M40 CCDP Chemical Compound Smoke Grenade"] # Unique Vendor Name
+nominative = "граната M40 CCDP (фосфорная)"
+
+["M40 CCDP Chemical Compound Grenades x6"] # Unique Vendor Name
+nominative = "граната M40 CCDP (фосфорная) x 6"
+
+["M40 CCDP grenade"]
+nominative = "граната M40 CCDP (фосфорная)"
+genitive = "гранаты M40 CCDP (фосфорная)"
+dative = "гранате M40 CCDP (фосфорная)"
+accusative = "гранату M40 CCDP (фосфорная)"
+instrumental = "гранатой M40 CCDP (фосфорная)"
+prepositional = "гранате M40 CCDP (фосфорная)"
+gender = "female"
+
+["M40 HSDP smoke grenade"]
+nominative = "граната M40 HSDP (дымовая)"
+genitive = "гранаты M40 HSDP (дымовая)"
+dative = "гранате M40 HSDP (дымовая)"
+accusative = "гранату M40 HSDP (дымовая)"
+instrumental = "гранатой M40 HSDP (дымовая)"
+prepositional = "гранате M40 HSDP (дымовая)"
+gender = "female"
+
+["M74 AGM-Frag Airburst Grenade"] # Unique Vendor Name
+nominative = "прыгающая граната M74 AGM-F (осколочная)"
+
+["M74 AGM-F Fragmentation Grenades x6"] # Unique Vendor Name
+nominative = "прыгающая граната M74 AGM-F (осколочная) x 6"
+
+["M74 AGM-F 40mm Grenade"]
+nominative = "прыгающая граната M74 AGM-F (осколочная)"
+genitive = "прыгающей гранаты M74 AGM-F (осколочная)"
+dative = "прыгающей гранате M74 AGM-F (осколочная)"
+accusative = "прыгающую гранату M74 AGM-F (осколочная)"
+instrumental = "прыгающей гранатой M74 AGM-F (осколочная)"
+prepositional = "прыгающей гранате M74 AGM-F (осколочная)"
+gender = "female"
+
+["M74 AGM-Incendiary Airburst Grenade"] # Unique Vendor Name
+nominative = "прыгающая граната M74 AGM-I (зажигательная)"
+
+["M74 AGM-I Incendiary Grenades x6"] # Unique Vendor Name
+nominative = "прыгающая граната M74 AGM-I (зажигательная) x 6"
+
+["M74 AGM-I 40mm Grenade"]
+nominative = "прыгающая граната M74 AGM-I (зажигательная)"
+genitive = "прыгающей гранаты M74 AGM-I (зажигательная)"
+dative = "прыгающей гранате M74 AGM-I (зажигательная)"
+accusative = "прыгающую гранату M74 AGM-I (зажигательная)"
+instrumental = "прыгающей гранатой M74 AGM-I (зажигательная)"
+prepositional = "прыгающей гранате M74 AGM-I (зажигательная)"
+gender = "female"
+
+["M74 AGM-Smoke Airburst Grenade"] # Unique Vendor Name
+nominative = "прыгающая граната M74 AGM-S (дымовая)"
+
+["M74 AGM-S Smoke Grenades x6"] # Unique Vendor Name
+nominative = "прыгающая граната M74 AGM-S (дымовая) x 6"
+
+["M74 AGM-S 40mm Grenade"]
+nominative = "прыгающая граната M74 AGM-S (дымовая)"
+genitive = "прыгающей гранаты M74 AGM-S (дымовая)"
+dative = "прыгающей гранате M74 AGM-S (дымовая)"
+accusative = "прыгающую гранату M74 AGM-S (дымовая)"
+instrumental = "прыгающей гранатой M74 AGM-S (дымовая)"
+prepositional = "прыгающей гранате M74 AGM-S (дымовая)"
+gender = "female"
+
+["M74 AGM-Star Shell"] # Unique Vendor Name
+nominative = "прыгающая граната M74 AGM-S «Звезда»"
+
+["M74 AGM-S Star Shell"]
+nominative = "прыгающая граната M74 AGM-S «Звезда»"
+genitive = "прыгающей гранаты M74 AGM-S «Звезда»"
+dative = "прыгающей гранате M74 AGM-S «Звезда»"
+accusative = "прыгающую гранату M74 AGM-S «Звезда»"
+instrumental = "прыгающей гранатой M74 AGM-S «Звезда»"
+prepositional = "прыгающей гранате M74 AGM-S «Звезда»"
+gender = "female"
+
+["M74 AGM-Hornet Shell"] # Unique Vendor Name
+nominative = "прыгающая граната M74 AGM-H «Шершень»"
+
+["M74 AGM-H 40mm Hornet Shell"]
+nominative = "прыгающая граната M74 AGM-H «Шершень»"
+genitive = "прыгающей гранаты M74 AGM-H «Шершень»"
+dative = "прыгающей гранате M74 AGM-H «Шершень»"
+accusative = "прыгающую гранату M74 AGM-H «Шершень»"
+instrumental = "прыгающей гранатой M74 AGM-H «Шершень»"
+prepositional = "прыгающей гранате M74 AGM-H «Шершень»"
+gender = "female"
+
+["G2 Electroshock Grenade"] # Unique Vendor Name
+nominative = "электрошоковая граната G2"
+
+["G2 Electroshock Grenade Pack x6"] # Unique Vendor Name
+nominative = "электрошоковая граната G2 x 6"
+
+["G2 electroshock grenade"]
+nominative = "электрошоковая граната G2"
+genitive = "электрошоковой гранаты G2"
+dative = "электрошоковой гранате G2"
+accusative = "электрошоковую гранату G2"
+instrumental = "электрошоковой гранатой G2"
+prepositional = "электрошоковой гранате G2"
+gender = "female"
+
+["M40 HIRR Baton Slug"] # Unique Vendor Name
+nominative = "граната M40 HIRR (резина)"
+
+["HIRR Baton Slugs"] # Unique Vendor Name
+nominative = "граната M40 HIRR (резина)"
+
+["HIRR baton slug"]
+nominative = "граната M40 HIRR (резина)"
+genitive = "гранаты M40 HIRR (резина)"
+dative = "гранате M40 HIRR (резина)"
+accusative = "гранату M40 HIRR (резина)"
+instrumental = "гранатой M40 HIRR (резина)"
+prepositional = "гранате M40 HIRR (резина)"
+gender = "female"
+
+["M40 MFHS Metal Foam Grenade"] # Unique Vendor Name
+nominative = "граната M40 MFHS (пена)"
+
+["M40 MFHS grenade"]
+nominative = "граната M40 MFHS (пена)"
+genitive = "гранаты M40 HIRR (пена)"
+dative = "гранате M40 HIRR (пена)"
+accusative = "гранату M40 HIRR (пена)"
+instrumental = "гранатой M40 HIRR (пена)"
+prepositional = "гранате M40 HIRR (пена)"
+gender = "female"
+
+# MARK: shell, slugs и bullets
+
+["handful of buckshot shell (12g)"]
+nominative = "патроны для дробовика (картечь)"
+genitive = "патронов для дробовика (картечь)"
+dative = "патронам для дробовика (картечь)"
+accusative = "патроны для дробовика (картечь)"
+instrumental = "патронами для дробовика (картечь)"
+prepositional = "патронах для дробовика (картечь)"
+gender = "plural"
+
+["handful of shotgun slugs (12g)"]
+nominative = "патроны для дробовика (пуля)"
+genitive = "патронов для дробовика (пуля)"
+dative = "патронам для дробовика (пуля)"
+accusative = "патроны для дробовика (пуля)"
+instrumental = "патронами для дробовика (пуля)"
+prepositional = "патронах для дробовика (пуля)"
+gender = "plural"
+
+["handful of flechette shell (12g)"]
+nominative = "патроны для дробовика (флешетты)"
+genitive = "патронов для дробовика (флешетты)"
+dative = "патронам для дробовика (флешетты)"
+accusative = "патроны для дробовика (флешетты)"
+instrumental = "патронами для дробовика (флешетты)"
+prepositional = "патронах для дробовика (флешетты)"
+gender = "plural"
+
+["handful of light breaching shell (16g)"]
+nominative = "патроны для дробовика (бетонобойные)"
+genitive = "патроны для дробовика (бетонобойные)"
+dative = "патроны для дробовика (бетонобойные)"
+accusative = "патроны для дробовика (бетонобойные)"
+instrumental = "патроны для дробовика (бетонобойные)"
+prepositional = "патроны для дробовика (бетонобойные)"
+gender = "female"
+
+["handful of rifle bullets (10x24mm)"]
+nominative = "винтовочные пули (10x24мм)"
+genitive = "винтовочных пуль (10x24мм)"
+dative = "винтовочным пулям (10x24мм)"
+accusative = "винтовочные пули (10x24мм)"
+instrumental = "винтовочными пулями (10x24мм)"
+prepositional = "винтовочных пулях (10x24мм)"
+gender = "plural"
+
+["handful of armor-piercing rifle bullets (10x24mm)"]
+nominative = "винтовочные пули (10x24мм AP)"
+genitive = "винтовочных пуль (10x24мм AP)"
+dative = "винтовочным пулям (10x24мм AP)"
+accusative = "винтовочные пули (10x24мм AP)"
+instrumental = "винтовочными пулями (10x24мм AP)"
+prepositional = "винтовочных пулях (10x24мм AP)"
+gender = "plural"
+
+["handful of high-velocity submachinegun bullets (10x20mm)"]
+nominative = "пули для пистолетов-пулемётов (10x20мм HV)"
+genitive = "пуль для пистолетов-пулемётов (10x20мм HV)"
+dative = "пулям для пистолетов-пулемётов (10x20мм HV)"
+accusative = "пули для пистолетов-пулемётов (10x20мм HV)"
+instrumental = "пулями для пистолетов-пулемётов (10x20мм HV)"
+prepositional = "пулях для пистолетов-пулемётов (10x20мм HV)"
+gender = "plural"
+
+["handful of armor-piercing submachinegun bullets (10x20mm)"]
+nominative = "пули для пистолетов-пулемётов (10x20мм AP)"
+genitive = "пуль для пистолетов-пулемётов (10x20мм AP)"
+dative = "пулям для пистолетов-пулемётов (10x20мм AP)"
+accusative = "пули для пистолетов-пулемётов (10x20мм AP)"
+instrumental = "пулями для пистолетов-пулемётов (10x20мм AP)"
+prepositional = "пулях для пистолетов-пулемётов (10x20мм AP)"
+gender = "plural"
+
+["handful of revolver bullets (.44)"]
+nominative = "пули для револьверов (.44)"
+genitive = "пуль для револьверов (.44)"
+dative = "пулям для револьверов (.44)"
+accusative = "пули для револьверов (.44)"
+instrumental = "пулями для револьверов (.44)"
+prepositional = "пулях для револьверов (.44)"
+gender = "plural"
+
+["handful of heavy revolver bullets (.44)"]
+nominative = "пули для револьверов (.44 Heavy)"
+genitive = "пуль для револьверов (.44 Heavy)"
+dative = "пулям для револьверов (.44 Heavy)"
+accusative = "пули для револьверов (.44 Heavy)"
+instrumental = "пулями для револьверов (.44 Heavy)"
+prepositional = "пулях для револьверов (.44 Heavy)"
+gender = "plural"
+
+["handful of marksman revolver bullets (.44)"]
+nominative = "пули для револьверов (.44 Marksman)"
+genitive = "пуль для револьверов (.44 Marksman)"
+dative = "пулям для револьверов (.44 Marksman)"
+accusative = "пули для револьверов (.44 Marksman)"
+instrumental = "пулями для револьверов (.44 Marksman)"
+prepositional = "пулях для револьверов (.44 Marksman)"
+gender = "plural"
+
+["handful of smartpistol bullets (.45)"]
+nominative = "пистолетные пули (.45 SMART)"
+genitive = "пистолетных пуль (.45 SMART)"
+dative = "пистолетным пулям (.45 SMART)"
+accusative = "пистолетные пули (.45 SMART)"
+instrumental = "пистолетными пулями (.45 SMART)"
+prepositional = "пистолетных пулях (.45 SMART)"
+gender = "plural"
+
+["handful of pistol bullets (9mm)"]
+nominative = "пистолетные пули (9мм)"
+genitive = "пистолетных пуль (9мм)"
+dative = "пистолетным пулям (9мм)"
+accusative = "пистолетные пули (9мм)"
+instrumental = "пистолетными пулями (9мм)"
+prepositional = "пистолетных пулях (9мм)"
+gender = "plural"
+
+["handful of armor-piercing pistol bullets (9mm)"]
+nominative = "пистолетные пули (9мм AP)"
+genitive = "пистолетных пуль (9мм AP)"
+dative = "пистолетным пулям (9мм AP)"
+accusative = "пистолетные пули (9мм AP)"
+instrumental = "пистолетными пулями (9мм AP)"
+prepositional = "пистолетных пулях (9мм AP)"
+gender = "plural"
+
+["handful of squash-head pistol bullets (9mm)"]
+nominative = "экспансивные пистолетные пули (9мм SH)"
+genitive = "экспансивных пистолетных пуль (9мм SH)"
+dative = "экспансивным пистолетным пулям (9мм SH)"
+accusative = "экспансивные пистолетные пули (9мм SH)"
+instrumental = "экспансивными пистолетными пулями (9мм SH)"
+prepositional = "экспансивных пистолетных пулях (9мм SH)"
+gender = "plural"
+
+["handful of hollowpoint pistol bullets (9mm)"]
+nominative = "экспансивные пистолетные пули (9мм HP)"
+genitive = "экспансивных пистолетных пуль (9мм HP)"
+dative = "экспансивным пистолетным пулям (9мм HP)"
+accusative = "экспансивные пистолетные пули (9мм HP)"
+instrumental = "экспансивными пистолетными пулями (9мм HP)"
+prepositional = "экспансивных пистолетных пулях (9мм HP)"
+gender = "plural"
+
+["handful of smartgun tracer bullets (10x28mm)"]
+nominative = "трассирующие пули для смартгана (10x28мм)"
+genitive = "трассирующих пуль для смартгана (10x28мм)"
+dative = "трассирующим пулям для смартгана (10x28мм)"
+accusative = "трассирующие пули для смартгана (10x28мм)"
+instrumental = "трассирующими пулями для смартгана (10x28мм)"
+prepositional = "трассирующих пулях для смартгана (10x28мм)"
+gender = "plural"
+
+["handful of .458 SOCOM rounds (.458)"]
+nominative = "винтовочные пули (.458 SOCOM)"
+genitive = "винтовочных пуль (.458 SOCOM)"
+dative = "винтовочным пулям (.458 SOCOM)"
+accusative = "винтовочные пули (.458 SOCOM)"
+instrumental = "винтовочными пулями (.458 SOCOM)"
+prepositional = "винтовочных пулях (.458 SOCOM)"
+gender = "plural"
+
+["handful of heavy machinegun bullets (10x28mm)"]
+nominative = "пулемётная пуля (10x28мм SP)"
+genitive = "пулемётной пули (10x28мм SP)"
+dative = "пулемётной пуле (10x28мм SP)"
+accusative = "пулемётную пулю (10x28мм SP)"
+instrumental = "пулемётной пулей (10x28мм SP)"
+prepositional = "пулемётной пуле (10x28мм SP)"
+gender = "female"
+
+["handful of A19 high velocity bullets (10x24mm)"]
+nominative = "винтовочные пули (10x24мм HV)"
+genitive = "винтовочных пуль (10x24мм HV)"
+dative = "винтовочным пулям (10x24мм HV)"
+accusative = "винтовочные пули (10x24мм HV)"
+instrumental = "винтовочными пулями (10x24мм HV)"
+prepositional = "винтовочных пулях (10x24мм HV)"
+gender = "female"
+
+["handful of A19 high velocity incendiary bullets (10x24mm)"]
+nominative = "зажигательные винтовочные пули (10x24мм HV)"
+genitive = "зажигательных винтовочных пуль (10x24мм HV)"
+dative = "зажигательным винтовочным пулям (10x24мм HV)"
+accusative = "зажигательные винтовочные пули (10x24мм HV)"
+instrumental = "зажигательными винтовочными пулями (10x24мм HV)"
+prepositional = "зажигательных винтовочных пулях (10x24мм HV)"
+gender = "female"
+
+["handful of A19 high velocity impact bullets (10x24mm)"]
+nominative = "экспансивные винтовочные пули (10x24мм HV)"
+genitive = "экспансивных винтовочных пуль (10x24мм HV)"
+dative = "экспансивным винтовочным пулям (10x24мм HV)"
+accusative = "экспансивные винтовочные пули (10x24мм HV)"
+instrumental = "экспансивными винтовочными пулями (10x24мм HV)"
+prepositional = "экспансивных винтовочных пулях (10x24мм HV)"
+gender = "female"
+
+["handful of sniper bullets (10x28mm)"]
+nominative = "снайперские пули (10x28мм)"
+genitive = "снайперских пуль (10x28мм)"
+dative = "снайперским пулям (10x28мм)"
+accusative = "снайперские пули (10x28мм)"
+instrumental = "снайперскими пулями (10x28мм)"
+prepositional = "снайперских пулях (10x28мм)"
+gender = "female"
+
+["handful of incendiary sniper bullets (10x28mm)"]
+nominative = "зажигательные снайперские пули (10x28мм)"
+genitive = "зажигательных снайперских пуль (10x28мм)"
+dative = "зажигательным снайперским пулям (10x28мм)"
+accusative = "зажигательные снайперские пули (10x28мм)"
+instrumental = "зажигательными снайперскими пулями (10x28мм)"
+prepositional = "зажигательных снайперских пулях (10x28мм)"
+gender = "female"
+
+["handful of flak sniper bullets (10x28mm)"]
+nominative = "экспансивные снайперские пули (10x28мм)"
+genitive = "экспансивных снайперских пуль (10x28мм)"
+dative = "экспансивным снайперским пулям (10x28мм)"
+accusative = "экспансивные снайперские пули (10x28мм)"
+instrumental = "экспансивными снайперскими пулями (10x28мм)"
+prepositional = "экспансивных снайперских пулях (10x28мм)"
+gender = "female"
+
+["handful of anti-materiel sniper bullets (10x99mm)"]
+nominative = "крупнокалиберные снайперские пули (10x99мм)"
+genitive = "крупнокалиберных снайперских пуль (10x99мм)"
+dative = "крупнокалиберным снайперским пулям (10x99мм)"
+accusative = "крупнокалиберные снайперские пули (10x99мм)"
+instrumental = "крупнокалиберными снайперскими пулями (10x99мм)"
+prepositional = "крупнокалиберных снайперских пулях (10x99мм)"
+gender = "female"
+
+["handful of anti-materiel sniper bullets (20x102mm)"]
+nominative = "крупнокалиберные снайперские пули (20x102мм)"
+genitive = "крупнокалиберных снайперских пуль (20x102мм)"
+dative = "крупнокалиберным снайперским пулям (20x102мм)"
+accusative = "крупнокалиберные снайперские пули (20x102мм)"
+instrumental = "крупнокалиберными снайперскими пулями (20x102мм)"
+prepositional = "крупнокалиберных снайперских пулях (20x102мм)"
+gender = "female"
+
+["handful of holo-targeting anti-materiel sniper bullets (20x102mm)"]
+nominative = "крупнокалиберные снайперские пули (20x102мм Holo-Target)"
+genitive = "крупнокалиберных снайперских пуль (20x102мм Holo-Target)"
+dative = "крупнокалиберным снайперским пулям (20x102мм Holo-Target)"
+accusative = "крупнокалиберные снайперские пули (20x102мм Holo-Target)"
+instrumental = "крупнокалиберными снайперскими пулями (20x102мм Holo-Target)"
+prepositional = "крупнокалиберных снайперских пулях (20x102мм Holo-Target)"
+gender = "female"
+
+["M5510 Laser-Guided Rocket"]
+nominative = "ракета с лазерным наведением M5510"
+genitive = "ракеты с лазерным наведением M5510"
+dative = "ракете с лазерным наведением M5510"
+accusative = "ракету с лазерным наведением M5510"
+instrumental = "ракетой с лазерным наведением M5510"
+prepositional = "ракете с лазерным наведением M5510"
+gender = "female"
+
+["84mm High-Explosive Rocket"] # Unique Vendor Name
+nominative = "ракета (84мм разрывная)"
+
+["84mm high explosive rocket"]
+nominative = "ракета (84мм разрывная)"
+genitive = "ракеты (84мм разрывная)"
+dative = "ракете (84мм разрывная)"
+accusative = "ракету (84мм разрывная)"
+instrumental = "ракетой (84мм разрывная)"
+prepositional = "ракете (84мм разрывная)"
+gender = "female"
+
+["84mm Anti-Armor Rocket"] # Unique Vendor Name
+nominative = "ракета (84мм бронебойная)"
+
+["84mm anti-armor rocket"]
+nominative = "ракета (84мм бронебойная)"
+genitive = "ракеты (84мм бронебойная)"
+dative = "ракете (84мм бронебойная)"
+accusative = "ракету (84мм бронебойная)"
+instrumental = "ракетой (84мм бронебойная)"
+prepositional = "ракете (84мм бронебойная)"
+gender = "female"
+
+["84mm White-Phosphorus Rocket"] # Unique Vendor Name
+nominative = "ракета (84мм фосфорная)"
+
+["84mm white-phosphorus rocket"]
+nominative = "ракета (84мм фосфорная)"
+genitive = "ракеты (84мм фосфорная)"
+dative = "ракете (84мм фосфорная)"
+accusative = "ракету (84мм фосфорная)"
+instrumental = "ракетой (84мм фосфорная)"
+prepositional = "ракете (84мм фосфорная)"
+gender = "female"
+
+["P9 SHARP explosive dart"]
+nominative = "дротик 9X-E (осколочный)"
+genitive = "дротика 9X-E (осколочный)"
+dative = "дротику 9X-E (осколочный)"
+accusative = "дротик 9X-E (осколочный)"
+instrumental = "дротиком 9X-E (осколочный)"
+prepositional = "дротике 9X-E (осколочный)"
+gender = "male"
+
+["P9 SHARP incendiary dart"]
+nominative = "дротик 9X-T (зажигательный)"
+genitive = "дротика 9X-T (зажигательный)"
+dative = "дротику 9X-T (зажигательный)"
+accusative = "дротик 9X-T (зажигательный)"
+instrumental = "дротиком 9X-T (зажигательный)"
+prepositional = "дротике 9X-T (зажигательный)"
+gender = "male"
+
+["handful of 9X-T sticky incendiary darts (Dart)"]
+nominative = "дротики 9X-T (зажигательные)"
+genitive = "дротиков 9X-T (зажигательные)"
+dative = "дротикам 9X-T (зажигательные)"
+accusative = "дротики 9X-T (зажигательные)"
+instrumental = "дротиками 9X-T (зажигательные)"
+prepositional = "дротиках 9X-T (зажигательные)"
+gender = "plural"
+
+["handful of 9X-E sticky explosive darts (Dart)"]
+nominative = "дротики 9X-E (осколочные)"
+genitive = "дротиков 9X-E (осколочные)"
+dative = "дротикам 9X-E (осколочные)"
+accusative = "дротики 9X-E (осколочные)"
+instrumental = "дротиками 9X-E (осколочные)"
+prepositional = "дротиках 9X-E (осколочные)"
+gender = "plural"
+
+["handful of 9X-F flechette darts (Dart)"]
+nominative = "дротики 9X-F (флешетты)"
+genitive = "дротиков 9X-F (флешетты)"
+dative = "дротикам 9X-F (флешетты)"
+accusative = "дротики 9X-F (флешетты)"
+instrumental = "дротиками 9X-F (флешетты)"
+prepositional = "дротиках 9X-F (флешетты)"
+gender = "plural"
+
+["80mm incendiary mortar shell"]
+nominative = "ракета (80мм зажигательная)"
+genitive = "ракеты (80мм зажигательная)"
+dative = "ракете (80мм зажигательная)"
+accusative = "ракету (80мм зажигательная)"
+instrumental = "ракетой (80мм зажигательная)"
+prepositional = "ракете (80мм зажигательная)"
+gender = "female"
+
+["80mm high explosive mortar shell"]
+nominative = "ракета (80мм разрывная)"
+genitive = "ракеты (80мм разрывная)"
+dative = "ракете (80мм разрывная)"
+accusative = "ракету (80мм разрывная)"
+instrumental = "ракетой (80мм разрывная)"
+prepositional = "ракете (80мм разрывная)"
+gender = "female"
+
+["80mm fragmentation mortar shell"]
+nominative = "ракета (80мм осколочная)"
+genitive = "ракеты (80мм осколочная)"
+dative = "ракете (80мм осколочная)"
+accusative = "ракету (80мм осколочная)"
+instrumental = "ракетой (80мм осколочная)"
+prepositional = "ракете (80мм осколочная)"
+gender = "female"
+
+["80mm flare/camera mortar shell"]
+nominative = "ракета (80мм камерная-осветительная)"
+genitive = "ракеты (80мм камерная-осветительная)"
+dative = "ракете (80мм камерная-осветительная)"
+accusative = "ракету (80мм камерная-осветительная)"
+instrumental = "ракетой (80мм камерная-осветительная)"
+prepositional = "ракете (80мм камерная-осветительная)"
+gender = "female"

@@ -3041,7 +3041,7 @@ Defined in conflicts.dm of the #defines folder.
 	w_class = SIZE_MEDIUM
 	current_rounds = 0
 	max_rounds = 3
-	max_range = 13
+	max_range = 21
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_flare.ogg'
 	ammo = /datum/ammo/flare/no_ignite

@@ -23,9 +23,27 @@ const sortWeapons = (a: DropshipEquipment, b: DropshipEquipment) => {
 const CreateFiremissionPanel = (props: {
   readonly fmName: string;
   readonly setFmName: React.Dispatch<React.SetStateAction<string>>;
+  readonly fmLength: string;
+  readonly setFmLength: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const { act } = useBackend();
-  const { fmName, setFmName } = props;
+  const { fmName, setFmName, fmLength, setFmLength } = props;
+
+  const handleCreate = () => {
+    const parsedLength = parseInt(fmLength, 10);
+    if (fmName === '' || isNaN(parsedLength) || parsedLength <= 0) {
+      return;
+    }
+
+    act('firemission-create', {
+      firemission_name: fmName,
+      firemission_length: parsedLength,
+    });
+
+    setFmName('');
+    setFmLength('');
+  };
+
   return (
     <Stack align="center" vertical>
       <Stack.Item>
@@ -36,16 +54,16 @@ const CreateFiremissionPanel = (props: {
         <Input
           value={fmName}
           onInput={(e, value) => setFmName(value)}
-          onEnter={() => {
-            if (fmName === '') {
-              return;
-            }
-            act('firemission-create', {
-              firemission_name: fmName,
-              firemission_length: 12,
-            });
-            setFmName('');
-          }}
+          onEnter={handleCreate}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        Input FM Length{' '}
+        <Input
+          value={fmLength}
+          type="number"
+          onInput={(e, value) => setFmLength(value)}
+          onEnter={handleCreate}
         />
       </Stack.Item>
     </Stack>
@@ -73,6 +91,7 @@ const FiremissionList = (props) => {
 const FiremissionMfdHomePage = (props: MfdProps) => {
   const { setSelectedFm } = fmState(props.panelStateId);
   const [fmName, setFmName] = useState<string>('');
+  const [fmLength, setFmLength] = useState<string>('');
   const { data, act } = useBackend<FiremissionContext>();
   const { setPanelState } = mfdState(props.panelStateId);
 
@@ -102,27 +121,26 @@ const FiremissionMfdHomePage = (props: MfdProps) => {
       topButtons={[
         {},
         {},
-        fmName
+        fmName && fmLength
           ? {
               children: 'SAVE',
               onClick: () => {
+                const parsedLength = parseInt(fmLength, 10);
+                if (isNaN(parsedLength) || parsedLength <= 0) {
+                  return;
+                }
+
                 act('firemission-create', {
                   firemission_name: fmName,
-                  firemission_length: 12,
+                  firemission_length: parsedLength,
                 });
                 setFmName('');
+                setFmLength('');
               },
             }
           : {},
+
         {},
-        {
-          children: fmOffset > 0 ? <Icon name="arrow-up" /> : undefined,
-          onClick: () => {
-            if (fmOffset > 0) {
-              setFmOffset(fmOffset - 1);
-            }
-          },
-        },
       ]}
       bottomButtons={[
         {
@@ -151,7 +169,12 @@ const FiremissionMfdHomePage = (props: MfdProps) => {
           <Stack.Item width="300px">
             <Stack vertical align="center">
               <Stack.Item>
-                <CreateFiremissionPanel fmName={fmName} setFmName={setFmName} />
+                <CreateFiremissionPanel
+                  fmName={fmName}
+                  setFmName={setFmName}
+                  fmLength={fmLength}
+                  setFmLength={setFmLength}
+                />
               </Stack.Item>
               <Stack.Item>
                 <FiremissionList />
@@ -182,6 +205,27 @@ const ViewFiremissionMfdPanel = (
     props.panelStateId,
   );
 
+  // Add scroll state for steps
+  const [stepScroll, setStepScroll] = useState(0);
+  const visibleSteps = 12;
+  // Find the first weapon with offsets to determine step count
+  const firstOffsets = props.firemission.records[0]?.offsets;
+  const stepCount = firstOffsets ? firstOffsets.length : 12;
+
+  const leftButtons = [
+    {
+      children: <Icon name="arrow-up" />,
+      disabled: stepScroll <= 0,
+      onClick: () => setStepScroll(Math.max(0, stepScroll - 1)),
+    },
+    {
+      children: <Icon name="arrow-down" />,
+      disabled: stepScroll + visibleSteps >= stepCount,
+      onClick: () =>
+        setStepScroll(Math.min(stepCount - visibleSteps, stepScroll + 1)),
+    },
+  ];
+
   const rightButtons = [
     editFmWeapon === undefined
       ? {}
@@ -201,6 +245,7 @@ const ViewFiremissionMfdPanel = (
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
+      leftButtons={leftButtons}
       topButtons={[
         {
           children: 'DELETE',
@@ -243,9 +288,22 @@ const ViewFiremissionMfdPanel = (
                 </Stack>
               </Stack.Item>
               <Stack.Item>
+                <Stack>
+                  <Stack.Item>
+                    <h4>Length:</h4>
+                  </Stack.Item>
+                  <Stack.Item>
+                    <h4>{firemission.mission_length}</h4>
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+              <Stack.Item>
                 <FiremissionView
                   panelStateId={props.panelStateId}
                   fm={firemission}
+                  stepScroll={stepScroll}
+                  setStepScroll={setStepScroll}
+                  visibleSteps={visibleSteps}
                 />
               </Stack.Item>
             </Stack>
@@ -257,20 +315,41 @@ const ViewFiremissionMfdPanel = (
   );
 };
 
-const FiremissionView = (props: MfdProps & { readonly fm: CasFiremission }) => {
+const FiremissionView = (
+  props: MfdProps & {
+    readonly fm: CasFiremission;
+    readonly stepScroll: number;
+    readonly setStepScroll: (n: number) => void;
+    readonly visibleSteps: number;
+  },
+) => {
   const { data } = useBackend<DropshipProps & FiremissionContext>();
-
   const { editFm } = fmEditState(props.panelStateId);
-
   const { editFmWeapon } = fmWeaponEditState(props.panelStateId);
-
   const weaponData = props.fm.records
     .map((x) => data.equipment_data.find((y) => y.mount_point === x.weapon))
     .filter((x) => x !== undefined)
     .sort(sortWeapons) as Array<DropshipEquipment>;
-
   const selectedWeapon = weaponData.find((x) => x.mount_point === editFmWeapon);
   const displayDetail = editFm;
+  // Find the first weapon with offsets to determine step count
+  const firstOffsets = props.fm.records[0]?.offsets;
+  const stepCount = firstOffsets ? firstOffsets.length : 12;
+  const { stepScroll, setStepScroll, visibleSteps } = props;
+
+  const offsetsForWeapon = (weapon: DropshipEquipment) => {
+    const weaponFm = props.fm.records.find(
+      (x) => x.weapon === weapon.mount_point,
+    );
+    if (!weaponFm) {
+      return [];
+    }
+    return weaponFm.offsets.map((offset) => {
+      const numOffset = parseInt(offset, 10);
+      return isNaN(numOffset) ? offset : numOffset;
+    });
+  };
+
   return (
     <Stack>
       <Stack.Item>
@@ -290,15 +369,59 @@ const FiremissionView = (props: MfdProps & { readonly fm: CasFiremission }) => {
               <Stack.Item className="FireMissionTitle">Offset</Stack.Item>
             </>
           )}
-
           <Stack.Item>
             <Divider />
           </Stack.Item>
-          {range(1, 13).map((x) => (
-            <Stack.Item className="FireMissionTitle" key={x}>
-              {x}
+          {/* Step header and offsets */}
+          <Stack>
+            <Stack vertical>
+              {range(
+                stepScroll + 1,
+                Math.min(stepScroll + visibleSteps, stepCount) + 1,
+              ).map((x) => (
+                <Stack.Item className="FireMissionTitle" key={x}>
+                  {x}
+                </Stack.Item>
+              ))}
+            </Stack>
+            <Stack.Item>
+              <Divider vertical />
+              <Divider vertical />
             </Stack.Item>
-          ))}
+            {/* Render offsets for each weapon vertically, aligned with step numbers */}
+            {!editFm &&
+              weaponData.map((x) => (
+                <Stack vertical key={x.mount_point}>
+                  {offsetsForWeapon(x)
+                    .slice(stepScroll, stepScroll + visibleSteps)
+                    .map((val, i) => (
+                      <Stack.Item
+                        key={i + stepScroll}
+                        className="FireMissionOffsetLabel"
+                      >
+                        {val}
+                      </Stack.Item>
+                    ))}
+                </Stack>
+              ))}
+            {editFm && selectedWeapon === undefined && (
+              <Stack.Item>Select weapon on right panel</Stack.Item>
+            )}
+            {editFm && selectedWeapon && (
+              <Stack vertical key={selectedWeapon.mount_point}>
+                {offsetsForWeapon(selectedWeapon)
+                  .slice(stepScroll, stepScroll + visibleSteps)
+                  .map((val, i) => (
+                    <Stack.Item
+                      key={i + stepScroll}
+                      className="FireMissionOffsetLabel"
+                    >
+                      {val}
+                    </Stack.Item>
+                  ))}
+              </Stack>
+            )}
+          </Stack>
         </Stack>
       </Stack.Item>
       <Stack.Item>
@@ -313,6 +436,8 @@ const FiremissionView = (props: MfdProps & { readonly fm: CasFiremission }) => {
               fm={props.fm}
               panelStateId={props.panelStateId}
               equipment={x}
+              stepScroll={stepScroll}
+              visibleSteps={visibleSteps}
             />
           </Stack.Item>
         ))}
@@ -326,6 +451,8 @@ const FiremissionView = (props: MfdProps & { readonly fm: CasFiremission }) => {
             fm={props.fm}
             panelStateId={props.panelStateId}
             equipment={selectedWeapon}
+            stepScroll={stepScroll}
+            visibleSteps={visibleSteps}
           />
         </Stack.Item>
       )}
@@ -449,29 +576,26 @@ const FMOffsetStack = (
     readonly fm: CasFiremission;
     readonly equipment: DropshipEquipment;
     readonly displayDetail?: boolean;
+    readonly stepScroll?: number;
+    readonly visibleSteps?: number;
   },
 ) => {
-  const { fm } = props;
+  const { fm, stepScroll = 0, visibleSteps = 12 } = props;
   const { act } = useBackend<DropshipProps & FiremissionContext>();
   const offsets = props.fm.records.find(
     (x) => x.weapon === props.equipment.mount_point,
   )?.offsets;
-
   const { editFm } = fmEditState(props.panelStateId);
   const availableGimbals = gimbals[props.equipment.mount_point] ?? gimbals[0];
-
   const firemissionOffsets = props.equipment.firemission_delay ?? 0;
-
   if (firemissionOffsets === 0) {
     return <FMOffsetError {...props} />;
   }
-
-  const availableMap = range(0, 13).map((_) => true);
+  const availableMap = offsets ? range(0, offsets.length).map((_) => true) : [];
   offsets?.forEach((x, index) => {
     if (x === undefined || x === '-') {
       return;
     }
-    // if offset is 0 then not allowed on strike.
     if (firemissionOffsets === 0) {
       range(0, availableMap.length - 1).forEach(
         (value) => (availableMap[value] = false),
@@ -485,7 +609,6 @@ const FMOffsetStack = (
     );
     range(indexMin, indexMax).forEach((value) => (availableMap[value] = false));
   });
-
   return (
     <Stack vertical className="FireMissionStack">
       {props.displayDetail ? (
@@ -516,25 +639,24 @@ const FMOffsetStack = (
       </Stack.Item>
       {editFm === false &&
         offsets &&
-        offsets.map((x, i) => (
-          <Stack.Item key={i} className="FireMissionOffsetLabel">
+        offsets.slice(stepScroll, stepScroll + visibleSteps).map((x, i) => (
+          <Stack.Item key={i + stepScroll} className="FireMissionOffsetLabel">
             {x}
           </Stack.Item>
         ))}
-
       {editFm === true &&
         offsets &&
-        offsets.map((x, i) => {
-          if (availableMap[i] === false && x === '-') {
+        offsets.slice(stepScroll, stepScroll + visibleSteps).map((x, i) => {
+          if (availableMap[i + stepScroll] === false && x === '-') {
             return (
-              <Stack.Item key={i}>
+              <Stack.Item key={i + stepScroll}>
                 <Box className="FiremissionBadStep">WEAPON BUSY</Box>
               </Stack.Item>
             );
           }
           if (props.equipment.firemission_delay === 0) {
             return (
-              <Stack.Item key={i}>
+              <Stack.Item key={i + stepScroll}>
                 <Box className="FiremissionBadStep">
                   Ammo unusable for firemissions
                 </Box>
@@ -542,7 +664,7 @@ const FMOffsetStack = (
             );
           }
           return (
-            <Stack.Item key={i}>
+            <Stack.Item key={i + stepScroll}>
               <Stack>
                 {availableGimbals.values.map((y) => {
                   const is_selected = x.toString() === y;
@@ -559,7 +681,7 @@ const FMOffsetStack = (
                           act('firemission-edit', {
                             tag: `${fm.mission_tag}`,
                             weapon_id: `${props.equipment.mount_point}`,
-                            offset_id: `${i}`,
+                            offset_id: `${i + stepScroll}`,
                             offset_value: `${y}`,
                           });
                         }}

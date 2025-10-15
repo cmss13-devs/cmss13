@@ -10,6 +10,7 @@
 #define LANGUAGE_YAUTJA "Sainja"
 #define LANGUAGE_MONKEY "Primitive" // nanu
 #define LANGUAGE_HELLHOUND "Hellhound"
+#define LANGUAGE_SIMPLEMOB "Simple Speech"
 
 #define LANGUAGE_XENOMORPH "Xenomorph"
 #define LANGUAGE_HIVEMIND "Hivemind"

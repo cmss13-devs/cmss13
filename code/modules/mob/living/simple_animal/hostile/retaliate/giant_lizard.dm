@@ -46,6 +46,8 @@
 	///Are we currently mauling a mob after pouncing them? Used to stop normal attacks on pounced targets.
 	var/is_ravaging = FALSE
 
+/mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/desert
+	base_icon_state = "Desert Lizard"
 
 //For displaying wound states, and the tongue flicker.
 /atom/movable/vis_obj/giant_lizard_icon_holder

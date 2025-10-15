@@ -79,6 +79,7 @@
 	pounce_callbacks[/mob] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/playable/proc/pounced_mob_wrapper)
 	pounce_callbacks[/turf] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/playable/proc/pounced_turf_wrapper)
 	pounce_callbacks[/obj] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/playable/proc/pounced_obj_wrapper)
+	set_languages(list(LANGUAGE_SIMPLEMOB))
 
 	GLOB.giant_fauna_alive += src
 

@@ -402,7 +402,7 @@
 	linked_cam.status = FALSE
 
 	if(SScmtv.current_perspective == user)
-		SScmtv.reset_perspective()
+		SScmtv.reset_perspective("Broadcasting ended as turned off.")
 
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
 	to_chat(user, SPAN_NOTICE("[src] goes silent as the broadcast stops."))
@@ -420,7 +420,7 @@
 	linked_cam.view_range = 4
 
 	if(SScmtv.current_perspective == user)
-		SScmtv.reset_perspective()
+		SScmtv.reset_perspective("Broadcasting ended as dropped.")
 
 /obj/item/device/broadcasting/pickup(mob/user, silent)
 	. = ..()

@@ -104,7 +104,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	require_moderator = TRUE
 
 /datum/cmtv_command/newperspective/execute(list/arguments)
-	SScmtv.reset_perspective()
+	SScmtv.reset_perspective("Chat command requested reset by [arguments["username"]]")
 	return "Switching to new perspective after delay..."
 
 /datum/cmtv_command/follow

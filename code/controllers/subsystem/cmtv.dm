@@ -58,7 +58,7 @@ SUBSYSTEM_DEF(cmtv)
 		return
 
 	if(is_ineligible(current_perspective) && !future_perspective)
-		reset_perspective()
+		reset_perspective("Ineligible current perspective and no future perspective.")
 		return
 
 	if(minimum_screentime && !COOLDOWN_FINISHED(src, minimum_screentime))
@@ -73,7 +73,7 @@ SUBSYSTEM_DEF(cmtv)
 	if(is_active(current_perspective, 20 SECONDS))
 		return
 
-	reset_perspective()
+	reset_perspective("Inactive (last 20 seconds), non-combatant (last 40 seconds).")
 
 /datum/controller/subsystem/cmtv/stat_entry(msg)
 	. = ..()
@@ -83,10 +83,10 @@ SUBSYSTEM_DEF(cmtv)
 	. = ..()
 
 	if(href_list["abandon_cmtv"] && usr == current_perspective)
-		reset_perspective()
+		reset_perspective("Current user requested reset (topic)")
 
 	if(href_list["cancel_cmtv"] && usr == future_perspective.resolve())
-		reset_perspective()
+		reset_perspective("Future user requested reset (topic)")
 
 /datum/controller/subsystem/cmtv/proc/online()
 	if(camera_operator)
@@ -187,7 +187,7 @@ SUBSYSTEM_DEF(cmtv)
 
 	if(!istype(new_perspective) || !new_perspective.client)
 		log_debug("CMTV: Perspective could not be swapped to, picking new perspective.")
-		return reset_perspective()
+		return reset_perspective("New perspective does not exist or is not cliented.")
 
 	if(future_perspective)
 		to_chat(future_perspective, boxed_message("[SPAN_BIGNOTICE("You are no longer going to be observed.")]\n\n [SPAN_NOTICE("You have been opted out of displaying on CMTV.")]"))
@@ -256,24 +256,24 @@ SUBSYSTEM_DEF(cmtv)
 	if(is_ground_level(new_z))
 		return // getting into the action
 
-	if(is_ground_level(old_z) && is_mainship_level(new_z))
-		reset_perspective() // dull, either fleeing or going to med
+	if(is_reserved_level(old_z) && is_mainship_level(new_z))
+		reset_perspective("Current perspective is going to the ship.") // dull, either fleeing or going to med
 
 /// Generic reset handler, will keep the perspective on the old mob till the new one accepts
 /datum/controller/subsystem/cmtv/proc/handle_reset_signal()
 	SIGNAL_HANDLER
 
-	reset_perspective()
+	reset_perspective("Current perspective is no longer eligible (signal)")
 
 /// Reset handler that immediately switches perspective to something generic while we wait
 /datum/controller/subsystem/cmtv/proc/handle_reset_signal_immediate()
 	SIGNAL_HANDLER
 
-	reset_perspective(instant = TRUE)
+	reset_perspective("Current perspective is no longer eligible (instant signal)", instant = TRUE)
 
 /// Generic signal handler for deaths, nestings, logouts, etc. Immediately queues up a new perspective to be switched to
-/datum/controller/subsystem/cmtv/proc/reset_perspective(instant = FALSE)
-	log_debug("CMTV: Perspective reset requested.")
+/datum/controller/subsystem/cmtv/proc/reset_perspective(reason, instant = FALSE)
+	log_debug("CMTV: Perspective reset requested: [reason].")
 
 	var/mob/active_player = get_active_player()
 	if(!active_player)
@@ -317,7 +317,7 @@ SUBSYSTEM_DEF(cmtv)
 	temporarily_observing_turf = FALSE
 
 	camera_operator.view = "20x15"
-	reset_perspective()
+	reset_perspective("Turf spectation ended.")
 
 #define PERSPECTIVE_SELECTION_DELAY_TIME (20 SECONDS)
 
@@ -421,7 +421,10 @@ SUBSYSTEM_DEF(cmtv)
 	set category = "OOC.CMTV"
 
 	if(SScmtv.current_perspective == src)
-		SScmtv.reset_perspective()
+		SScmtv.reset_perspective("Current user requested reset (verb)")
+
+	if(SScmtv.future_perspective?.resolve() == src)
+		SScmtv.reset_perspective("Future user requested reset (verb)")
 
 /client/proc/change_observed_player()
 	set name = "Change Observed Player"
@@ -446,6 +449,7 @@ SUBSYSTEM_DEF(cmtv)
 	protection = CONFIG_ENTRY_LOCKED
 
 /atom/movable/screen/cmtv
+	plane = ESCAPE_MENU_PLANE
 	clear_with_screen = FALSE
 	icon_state = "blank"
 
@@ -464,8 +468,11 @@ SUBSYSTEM_DEF(cmtv)
 /datum/action/stop_cmtv/action_activate()
 	. = ..()
 
-	if(owner == SScmtv.current_perspective || owner == SScmtv.future_perspective.resolve())
-		SScmtv.reset_perspective()
+	if(owner == SScmtv.current_perspective)
+		SScmtv.reset_perspective("Current user requested reset (action)")
+
+	if(owner == SScmtv.future_perspective?.resolve())
+		SScmtv.reset_perspective("Future user requested reset (action)")
 
 #undef PRIORITY_FIRST
 #undef PRIORITY_SECOND

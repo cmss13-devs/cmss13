@@ -1508,6 +1508,7 @@
 #include "code\game\turfs\soro.dm"
 #include "code\game\turfs\space.dm"
 #include "code\game\turfs\strata.dm"
+#include "code\game\turfs\temple.dm"
 #include "code\game\turfs\transit.dm"
 #include "code\game\turfs\turf.dm"
 #include "code\game\turfs\floors\desert.dm"

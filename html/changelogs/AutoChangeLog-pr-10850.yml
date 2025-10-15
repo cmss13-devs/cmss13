@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fix predator bracer self-destruct not checking incapacitated or hauled states (doesn't care about hauled for deactivation)"
+  - ui: "Predator bracer self-destruct now uses tgui_alert and tgui_alerts no longer ignore whitespace like the new line character"

@@ -15129,17 +15129,178 @@
 /obj/structure/fence/slim,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_security)
+"aWm" = (
+/obj/structure/largecrate/empty/case/double,
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aWn" = (
+/obj/item/storage/box/mre/wy{
+	pixel_x = -9
+	},
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aWo" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = 7;
+	pixel_x = 6
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = -4;
+	pixel_x = -2
+	},
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aWp" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aWq" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aWr" = (
+/obj/effect/spawner/random/gun/rifle/highchance,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_hydro)
 "aWs" = (
 /obj/effect/blocker/toxic_water/Group_1,
 /obj/item/stack/sheet/wood/medium_stack,
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_south)
+"aWt" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aWu" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aWv" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aWw" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 17
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aWx" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aWy" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = -4;
+	pixel_x = 5
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/water_treatment_one/lobby)
+"aWz" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	dir = 8;
+	icon_state = "xsplatter5"
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aWA" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aWB" = (
+/obj/effect/spawner/random/gun/rifle/highchance,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aWC" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aWD" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aWE" = (
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "2"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aWF" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aWG" = (
+/obj/structure/largecrate/random/mini/small_case{
+	layer = 5;
+	pixel_y = 12
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aWH" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "2"
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
 "aWI" = (
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "aWJ" = (
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/purification)
+"aWK" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = 32;
+	pixel_x = -12
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aWL" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/structure/largecrate/empty/secure,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aWM" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aWN" = (
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/desert_dam/exterior/valley/south_valley_dam)
 "aWQ" = (
 /turf/open/floor/prison/darkredcorners2/east,
 /area/desert_dam/building/security/armory)
@@ -17989,8 +18150,8 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/upper_hallway)
 "cds" = (
-/obj/effect/landmark/corpsespawner/wygoon/lead,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/wygoon/lead/trijent,
 /turf/open/floor/prison/blue,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "cdy" = (
@@ -18623,7 +18784,7 @@
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 1
 	},
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/whitepurple/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
@@ -22837,7 +22998,7 @@
 "dWE" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/landmark/objective_landmark/far,
-/obj/item/clothing/under/marine/veteran/pmc/corporate,
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /obj/effect/landmark/objective_landmark/medium,
@@ -24911,7 +25072,7 @@
 "eOS" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/landmark/objective_landmark/close,
-/obj/item/clothing/under/marine/veteran/pmc/corporate,
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
 /obj/item/storage/belt/gun/m4a3/mod88,
@@ -28267,10 +28428,10 @@
 /area/desert_dam/exterior/valley/north_valley_dam)
 "gcc" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/clothing/under/marine/veteran/pmc/corporate,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
 /obj/item/storage/belt/gun/m4a3/mod88,
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /turf/open/floor/prison/darkred2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "gcp" = (
@@ -37713,10 +37874,10 @@
 /area/desert_dam/exterior/river/riverside_east)
 "jHv" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/clothing/under/marine/veteran/pmc/corporate/engineer,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/engi,
 /obj/item/storage/belt/utility/full,
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /turf/open/floor/prison/darkred2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "jHB" = (
@@ -41120,7 +41281,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
@@ -45715,7 +45876,7 @@
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "mRG" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/clothing/under/marine/veteran/pmc/corporate,
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
 /obj/item/storage/belt/gun/m4a3/mod88,
@@ -45969,7 +46130,7 @@
 "mWU" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/landmark/objective_landmark/far,
-/obj/item/clothing/under/marine/veteran/pmc/corporate,
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /obj/item/storage/belt/gun,
@@ -46448,7 +46609,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_medical)
 "nhp" = (
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
@@ -46978,10 +47139,12 @@
 /area/desert_dam/exterior/valley/valley_northwest)
 "nrD" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/clothing/under/marine/veteran/pmc/corporate/lead,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/lead,
 /obj/item/storage/belt/gun/m4a3/mod88,
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo/lead{
+	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is more breathable for use in hot, dry environments and has gold armbands denoting the team leadsssssssssssssssssser."
+	},
 /turf/open/floor/prison/darkred2/northeast,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "nrE" = (
@@ -51675,7 +51838,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "pgD" = (
@@ -53122,13 +53285,13 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "pIG" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/clothing/under/marine/veteran/pmc/corporate/medic,
 /obj/item/storage/belt/medical/full,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/medic,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/medic,
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /turf/open/floor/prison/darkred2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "pIL" = (
@@ -53733,7 +53896,7 @@
 /area/desert_dam/building/medical/primary_storage)
 "pUb" = (
 /obj/structure/closet/secure_closet/security,
-/obj/item/clothing/under/marine/veteran/pmc/corporate,
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /obj/item/storage/belt/gun/m4a3/mod88,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
@@ -63022,7 +63185,7 @@
 /turf/open/desert/rock/deep/transition/west,
 /area/desert_dam/interior/caves/temple)
 "tws" = (
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/dark2,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
@@ -63948,6 +64111,10 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
 "tNM" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -4;
+	pixel_y = 6
+	},
 /turf/open/floor/darkred2/north,
 /area/desert_dam/building/administration/lobby)
 "tNO" = (
@@ -66908,7 +67075,7 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "uWD" = (
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
@@ -69243,7 +69410,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "vRs" = (
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
@@ -157762,7 +157929,7 @@ beM
 xVz
 hhn
 sXS
-sXS
+aWy
 gPD
 sYN
 qOl
@@ -161989,12 +162156,12 @@ uYk
 uYk
 uYk
 uYk
-uYk
+aWx
 uYk
 uYk
 qBu
-iIp
-ihI
+aWv
+aWp
 qaR
 qaR
 qaR
@@ -162225,11 +162392,11 @@ uYk
 uYk
 uYk
 uYk
-uYk
+aWx
 qBu
-iIp
-pdo
-hqS
+aWw
+aWq
+aWm
 qaR
 qaR
 qaR
@@ -162463,7 +162630,7 @@ nma
 uXC
 sCC
 iIp
-ihI
+aWn
 qaR
 qaR
 qaR
@@ -162696,7 +162863,7 @@ eMU
 eAk
 mbb
 bhz
-iIp
+aWr
 ihI
 qaR
 qaR
@@ -162930,8 +163097,8 @@ eMU
 eMU
 vsX
 bhz
-ipJ
-ktq
+aWt
+aWo
 qaR
 qaR
 qaR
@@ -163164,7 +163331,7 @@ eMU
 eMU
 eMU
 bhz
-ktq
+aWu
 qaR
 qaR
 qaR
@@ -165138,7 +165305,7 @@ kFt
 iYc
 soP
 gOT
-vqc
+aWC
 jQW
 hey
 qUB
@@ -165371,9 +165538,9 @@ cKR
 lWT
 iYc
 soP
-gOT
-vqc
-jQW
+aWH
+aWD
+aWA
 hey
 qUB
 qUB
@@ -165604,10 +165771,10 @@ cKR
 cKR
 ycC
 iYc
-soP
-gOT
-vqc
-jQW
+aWM
+aWK
+aWE
+aWB
 dOW
 kJk
 kJk
@@ -165840,10 +166007,10 @@ oHf
 iYc
 eYP
 gOT
-shj
+aWF
 kvM
 dyX
-dyX
+aWz
 dyX
 dso
 hey
@@ -166072,9 +166239,9 @@ cKR
 cKR
 oHf
 iYc
-owG
-gOT
-dWm
+aWN
+aWL
+aWG
 fFU
 vkD
 vkD

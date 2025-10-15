@@ -858,6 +858,57 @@
 
 //*****************************************************************************************************/
 
+//Trijent Goon
+
+/datum/equipment_preset/corpse/pmc/goon/trijent
+	name = "Corpse - Weyland-Yutani Corporate Security (Trijent Goon)"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_WY_GOON
+	job_title = JOB_WY_GOON
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+
+/datum/equipment_preset/corpse/pmc/goon/trijent/load_gear(mob/living/carbon/human/new_human)
+
+	var/hat = rand(1,4)
+	switch(hat)
+		if(1 to 3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate, WEAR_HEAD)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/wy_cap, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife, WEAR_FEET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/pmc, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/mod88_near_empty, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/black, WEAR_R_STORE)
+
+	//Lead Goon
+
+/datum/equipment_preset/corpse/pmc/goon/lead/trijent
+	name = "Corpse - Weyland-Yutani Corporate Security Lead (Trijent Goon Lead)"
+
+/datum/equipment_preset/corpse/pmc/goon/lead/trijent/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo/lead, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/lead, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife, WEAR_FEET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/pmc, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/mod88_near_empty, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/black, WEAR_R_STORE)
+
+
+//*****************************************************************************************************/
+
 //Freelancer
 
 /datum/equipment_preset/corpse/freelancer

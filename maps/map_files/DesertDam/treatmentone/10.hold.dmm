@@ -855,7 +855,6 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/effect/spawner/random/gun/rifle/midchance,
-/obj/effect/landmark/corpsespawner/wysec,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
 "zW" = (

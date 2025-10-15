@@ -268,8 +268,8 @@
 /area/desert_dam/building/administration/stairwell/upper)
 "BL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/wygoon,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/upper_hallway)
 "Ct" = (

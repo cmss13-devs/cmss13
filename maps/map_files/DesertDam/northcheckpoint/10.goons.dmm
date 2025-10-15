@@ -30,6 +30,7 @@
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "dC" = (
@@ -184,7 +185,6 @@
 "sK" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/landmark/objective_landmark/far,
-/obj/item/clothing/under/marine/veteran/pmc/corporate,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /obj/item/storage/belt/gun/m4a3/mod88,
@@ -300,12 +300,12 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/effect/landmark/corpsespawner/wygoon/lead,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6";
 	pixel_y = -8
 	},
+/obj/effect/landmark/corpsespawner/wygoon/lead/trijent,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "DR" = (
@@ -427,8 +427,8 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "On" = (
-/obj/effect/landmark/corpsespawner/wygoon,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "Oo" = (
@@ -541,8 +541,8 @@
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "VP" = (
 /obj/structure/desertdam/decals/road_edge,
-/obj/effect/landmark/corpsespawner/wygoon,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "VY" = (

@@ -369,7 +369,7 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "Up" = (

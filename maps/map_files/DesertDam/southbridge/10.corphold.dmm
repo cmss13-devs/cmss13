@@ -173,7 +173,7 @@
 "hr" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "ht" = (
@@ -959,7 +959,7 @@
 /area/desert_dam/exterior/valley/valley_medical)
 "NT" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "NV" = (
@@ -1104,8 +1104,8 @@
 "Ua" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/wygoon,
 /obj/effect/spawner/random/gun/corporate,
+/obj/effect/landmark/corpsespawner/wygoon/lead/trijent,
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_east)
 "Uj" = (

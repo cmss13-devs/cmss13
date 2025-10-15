@@ -96,6 +96,14 @@
 	name = "Weyland-Yutani Kutjevo Corporate Security"
 	equip_path = /datum/equipment_preset/corpse/pmc/goon/kutjevo
 
+/obj/effect/landmark/corpsespawner/wygoon/trijent
+	name = "Weyland-Yutani Trijent Corporate Security"
+	equip_path = /datum/equipment_preset/corpse/pmc/goon/trijent
+
+/obj/effect/landmark/corpsespawner/wygoon/lead/trijent
+	name = "Weyland-Yutani Trijent Corporate Security Lead"
+	equip_path = /datum/equipment_preset/corpse/pmc/goon/lead/trijent
+
 
 ///CM specific jobs///
 

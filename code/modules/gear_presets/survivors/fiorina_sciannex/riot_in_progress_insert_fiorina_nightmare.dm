@@ -162,7 +162,7 @@
 	assignment = JOB_UA_RIOT_OFFICER
 	skills = /datum/skills/civilian/survivor/marshal
 	minimap_icon = "mp"
-	minimap_background = "background_ua"
+	minimap_background = "background_cmb"
 	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/survivor/cmb/ua/load_gear(mob/living/carbon/human/new_human)
@@ -247,7 +247,7 @@
 	languages = ALL_SYNTH_LANGUAGES
 	skills = /datum/skills/colonial_synthetic
 	minimap_icon = "synth"
-	minimap_background = "background_ua"
+	minimap_background = "background_cmb"
 	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/synth/survivor/cmb/ua_synth/load_race(mob/living/carbon/human/new_human)

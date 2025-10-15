@@ -59,6 +59,7 @@
 	faction_group = FACTION_LIST_SURVIVOR_UA
 	minimap_icon = "mp"
 	minimap_background = "background_ua"
+	 
 
 /datum/equipment_preset/survivor/colonial_marshal/fiorina/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(new_human), WEAR_BODY)

@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "af" = (
-/mob/living/simple_animal/hostile/giant_spider/hunter,
+/mob/living/simple_animal/hostile/retaliate/playable/giant_spider/hunter,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "aL" = (
@@ -273,7 +273,7 @@
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
 "NP" = (
-/mob/living/simple_animal/hostile/giant_spider/hunter,
+/mob/living/simple_animal/hostile/retaliate/playable/giant_spider/hunter,
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
 "NW" = (

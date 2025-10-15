@@ -540,7 +540,7 @@
 /turf/open/ice/noweed,
 /area/shiva/interior/colony/research_hab)
 "acv" = (
-/mob/living/simple_animal/hostile/giant_spider/nurse,
+/mob/living/simple_animal/hostile/retaliate/playable/giant_spider/nurse,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/right_spiders)
 "acw" = (
@@ -14438,7 +14438,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "lYq" = (
-/mob/living/simple_animal/hostile/giant_spider/hunter,
+/mob/living/simple_animal/hostile/retaliate/playable/giant_spider/hunter,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "lYG" = (
@@ -21804,7 +21804,7 @@
 /turf/open/floor/shiva/green/southwest,
 /area/shiva/interior/colony/botany)
 "uSF" = (
-/mob/living/simple_animal/hostile/giant_spider/nurse,
+/mob/living/simple_animal/hostile/retaliate/playable/giant_spider/nurse,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "uTu" = (

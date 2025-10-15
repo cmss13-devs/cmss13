@@ -117,9 +117,6 @@
 			. += "Primary Objective: [html_decode(assigned_squad.primary_objective)]"
 		if(assigned_squad.secondary_objective)
 			. += "Secondary Objective: [html_decode(assigned_squad.secondary_objective)]"
-	if(faction == FACTION_MARINE)
-		. += ""
-		. += "<a href='byond://?MapView=1'>View Tactical Map</a>"
 	if(mobility_aura)
 		. += "Active Order: MOVE"
 	if(protection_aura)
@@ -1077,6 +1074,16 @@
 		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] crew manifest."))
 		return
 	GLOB.crew_manifest.open_ui(src)
+
+/mob/living/carbon/human/verb/view_tacmaps()
+	set name = "View Tacmap"
+	set category = "IC"
+
+	if(faction != FACTION_MARINE && !(FACTION_MARINE in faction_group))
+		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] tactical map."))
+		return
+
+	GLOB.tacmap_viewer.tgui_interact(src)
 
 /mob/living/carbon/human/verb/view_objective_memory()
 	set name = "View intel objectives"

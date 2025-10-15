@@ -938,6 +938,7 @@
 /area/bigredv2/caves/mining)
 "nW" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
 	},
@@ -1885,6 +1886,8 @@
 "DN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/burger,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/burger,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
 	},
@@ -2332,6 +2335,13 @@
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "Lo" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6
+	},
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -8;
 	pixel_y = 6

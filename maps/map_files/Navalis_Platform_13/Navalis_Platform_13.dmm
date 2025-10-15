@@ -27120,10 +27120,6 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/structure/machinery/prop/almayer/CICmap/pmc{
-	faction = "Survivor";
-	name = "colony map table"
-	},
 /turf/open/floor/prison,
 /area/navalis/indoors/command/upper_deck/naval_traffic_control)
 "guB" = (
@@ -40398,10 +40394,6 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/structure/machinery/prop/almayer/CICmap/pmc{
-	faction = "Survivor";
-	name = "colony map table"
-	},
 /obj/item/prop/almayer/flight_recorder/colony{
 	pixel_x = 7;
 	pixel_y = 7
@@ -48695,7 +48687,6 @@
 /area/navalis/indoors/residential/port)
 "wKz" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/prop/almayer/CICmap/pmc,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/roof_weedable,
 /area/navalis/oob/water)

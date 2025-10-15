@@ -15628,7 +15628,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "aOM" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "aON" = (
@@ -16081,7 +16081,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "aPS" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/engine_core)
 "aPT" = (
@@ -26455,7 +26455,7 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bnh" = (
@@ -29278,11 +29278,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "btp" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/engineer)
 "btq" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/structure/machinery/portable_atmospherics/powered/scrubber{
 	pixel_y = 20
 	},
@@ -38111,7 +38111,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -50114,7 +50114,7 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -50604,7 +50604,7 @@
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/lifeboat_pumps/north1)
 "hmv" = (
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -65111,7 +65111,7 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -70723,7 +70723,7 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},

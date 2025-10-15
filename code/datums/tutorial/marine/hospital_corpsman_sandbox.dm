@@ -490,27 +490,27 @@
 
 	for(var/datum/reagent/medical/chemical as anything in target.reagents.reagent_list)
 		if(chemical.volume >= chemical.overdose_critical)
-			status_message |= "Critical [chemical.name] overdose detected"
+			status_message |= "critical [chemical.name] overdose detected"
 	for(var/datum/internal_organ/organ as anything in target.internal_organs)
 		if(organ.damage >= organ.min_broken_damage)
 			if((locate(/datum/reagent/medical/peridaxon) in target.reagents.reagent_list) || (target.stat == DEAD))
-				status_message |= "Ruptured [organ.name] detected"
+				status_message |= "ruptured [organ.name] detected"
 			else
-				medevac_bed.balloon_alert_to_viewers("Organ damage detected! Please stabilize patient with Peridaxon before transit.", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+				medevac_bed.balloon_alert_to_viewers("organ damage detected! stabilize patient with peridaxon before transit!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
 				playsound(medevac_bed.loc, 'sound/machines/twobeep.ogg', 20)
 				return
 
 	if(tutorial_mob == target)
-		medevac_bed.balloon_alert_to_viewers("Error! Unable to self-evacuate!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+		medevac_bed.balloon_alert_to_viewers("unable to self-evacuate!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
 		playsound(medevac_bed.loc, 'sound/machines/twobeep.ogg', 20)
 		return
 	if(length(status_message))
-		medevac_bed.balloon_alert_to_viewers("[pick(status_message)]! Evacuating patient!!", null, DEFAULT_MESSAGE_RANGE, null, LIGHT_COLOR_BLUE)
+		medevac_bed.balloon_alert_to_viewers("[pick(status_message)]! evacuating patient!", null, DEFAULT_MESSAGE_RANGE, null, LIGHT_COLOR_BLUE)
 		playsound(medevac_bed.loc, pick_weight(list('sound/machines/ping.ogg' = 9, 'sound/machines/juicer.ogg' = 1)), 20)
 		make_agent_leave(target, TRUE)
 		addtimer(CALLBACK(src, PROC_REF(animate_medevac_bed), target), 2.7 SECONDS)
 	else
-		medevac_bed.balloon_alert_to_viewers("Error! Patient condition does not warrant evacuation!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
+		medevac_bed.balloon_alert_to_viewers("patient condition does not warrant evacuation!", null, DEFAULT_MESSAGE_RANGE, null, COLOR_RED)
 		playsound(medevac_bed.loc, 'sound/machines/twobeep.ogg', 20)
 		return
 

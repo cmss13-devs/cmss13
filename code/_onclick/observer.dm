@@ -30,8 +30,10 @@
 		if(ismob(target) || isVehicle(target))
 			if(isxeno(target) && SSticker.mode.check_xeno_late_join(src)) //if it's a xeno and all checks are alright, we are gonna try to take their body
 				var/mob/living/carbon/xenomorph/xeno = target
-				if(xeno.stat == DEAD || should_block_game_interaction(xeno) || xeno.aghosted)
-					to_chat(src, SPAN_WARNING("You cannot join as [xeno]."))
+				var/dead_or_ignored = xeno.stat == DEAD || should_block_game_interaction(xeno)
+				if(dead_or_ignored || xeno.aghosted)
+					if(dead_or_ignored)
+						to_chat(src, SPAN_WARNING("You cannot join as [xeno]."))
 					do_observe(xeno)
 					return FALSE
 
@@ -48,7 +50,7 @@
 
 				if(xeno.away_timer < required_leave_time)
 					var/to_wait = required_leave_time - xeno.away_timer
-					if(to_wait > 60 SECONDS) // don't spam for clearly non-AFK xenos
+					if(to_wait < 30) // don't spam for clearly non-AFK xenos
 						to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
 					do_observe(target)
 					return FALSE

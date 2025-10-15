@@ -301,7 +301,7 @@
 /datum/reagent/toxin/ferrous_sulfate
 	name = "Ferrous Sulfate"
 	id = "ferrous_sulfate"
-	description = "This iron(II) sulfate is a heptahydrate, requiring 6 water molecules to synthesize. This sulfide material often used as an intermediate or starting component in various chemical processes"
+	description = "This iron(II) sulfate is a heptahydrate, requiring 7 water molecules to synthesize. This sulfide material often used as an intermediate or starting component in various chemical processes."
 	reagent_state = SOLID
 	color = "#1c5c6a"
 	chemclass = CHEM_CLASS_UNCOMMON

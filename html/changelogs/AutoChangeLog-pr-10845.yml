@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Xenomorph tackles now cannot stun longer than 20s."
+  - balance: "Hauling now ends any stun/knockdown on the hauled mob (Not hugger paralyze)"
+  - rscadd: "Xenomorph tackle sfx has a higher pitch if the new duration was altered because of the 20s limit (otherwise does not vary now)"

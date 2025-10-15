@@ -1,6 +1,0 @@
-author: "Lukas-Seltz"
-delete-after: True
-changes:
-  - code_imp: "Changed the defines of Chain of Command"
-  - code_imp: "Added a check for doctors in to the list for Chain Of Command announcement"
-  - bugfix: "Fixes the Intel Officers to use the proper way of doing the check and not checking via squad"

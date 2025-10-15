@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fix autoclimb potentially being performed when already autoclimbing or manually climbing a railing"

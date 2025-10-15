@@ -84,3 +84,14 @@
   - bugfix: fixed the construction cancel after closing UI.
   TheGamerdk:
   - bugfix: Fixed a way to bypass the binocular blocker in the overwatch console
+2025-10-15:
+  Drathek:
+  - bugfix: Fix autoclimb potentially being performed when already autoclimbing or
+      manually climbing a railing
+  Lukas-Seltz:
+  - code_imp: Changed the defines of Chain of Command
+  - code_imp: Added a check for doctors in to the list for Chain Of Command announcement
+  - bugfix: Fixes the Intel Officers to use the proper way of doing the check and
+      not checking via squad
+  rattybag:
+  - rscadd: add medical keys to marine preps

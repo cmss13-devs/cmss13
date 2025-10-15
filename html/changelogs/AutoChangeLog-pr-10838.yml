@@ -1,0 +1,4 @@
+author: "rattybag"
+delete-after: True
+changes:
+  - code_imp: "Persist transfer amount when refilling chem bottles"

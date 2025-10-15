@@ -67,3 +67,31 @@
   - balance: Pushing something that is pulling something will inherit their pull delay
       unless already pulling
   - code_imp: Cleaned up atom/moveable/Collided
+2025-10-14:
+  Blundir:
+  - bugfix: fixed some color oddities on scout cloak and some sprite inconsistencies
+      on sadar helmet
+  - bugfix: fixed worn/inhand pixel dimensions backend
+  - imageadd: sniper armor on classic camo maps (fiorina, 522) now looks similar to
+      the one on urban maps (hybrisa)
+  - imageadd: sniper rifle back sprite is now also a suit storage one now (suit storage
+      one didn't exist)
+  - imageadd: sniper rifle inhands sprite now look better and aren't cut out
+  Googles-Hands:
+  - balance: Exchanged the CIC headset for the operations Commander for a senior command
+      headset
+  Sergeys:
+  - bugfix: fixed the construction cancel after closing UI.
+  TheGamerdk:
+  - bugfix: Fixed a way to bypass the binocular blocker in the overwatch console
+2025-10-15:
+  Drathek:
+  - bugfix: Fix autoclimb potentially being performed when already autoclimbing or
+      manually climbing a railing
+  Lukas-Seltz:
+  - code_imp: Changed the defines of Chain of Command
+  - code_imp: Added a check for doctors in to the list for Chain Of Command announcement
+  - bugfix: Fixes the Intel Officers to use the proper way of doing the check and
+      not checking via squad
+  rattybag:
+  - rscadd: add medical keys to marine preps

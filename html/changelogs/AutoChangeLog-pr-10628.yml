@@ -1,9 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Some crates are no longer riggable"
-  - balance: "Xenos can break open crates even if normally unopenable (e.g. secure crates)"
-  - balance: "Rigged crate electrocution now has a 3s cooldown"
-  - bugfix: "Rigging crate overlays now applies when wired (not necessarily with an electropack) and is properly retained when opened"
-  - bugfix: "Fixed edge cases where a rigged crate opening would electrocute usr even if they weren't physically touching it"
-  - code_imp: "Various code cleanup including user arguments for open and breakopen"

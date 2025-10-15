@@ -4,6 +4,7 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 
 	var/base_icon_state = "Giant Lizard"
+	icon = 'icons/mob/mob_64.dmi'
 	var/icon_sleeping
 	var/icon_knocked_down
 	///Reference to the wound icon.

@@ -34,6 +34,9 @@ GLOBAL_VAR_INIT(create_and_destroy_ignore_paths, generate_ignore_paths())
 	// Always ought to have an associated escape menu. Any references it could possibly hold would need one regardless.
 	. += subtypesof(/atom/movable/screen/escape_menu)
 	. += typesof(/obj/effect/timed_event)
+	// These are temporary effects that aren't ment to be spawned
+	. += typesof(/obj/effect/abstract/particle_holder)
+	. += typesof(/obj/effect/abstract/shared_particle_holder)
 
 GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 /datum/unit_test/create_and_destroy/Run()

@@ -42,14 +42,16 @@
 	var/obj/item/clothing/suit/storage/marine/medium/rto/intel/recon = holder_item
 	recon.toggle_motion_detector(owner)
 
-/datum/action/item_action/intel/toggle_motion_detector/proc/update_icon()
+/datum/action/item_action/intel/toggle_motion_detector/update_button_icon()
 	if(!holder_item)
 		return
 	var/obj/item/clothing/suit/storage/marine/medium/rto/intel/recon = holder_item
 	if(recon.motion_detector)
-		button.icon_state = "template_on"
+		action_icon_state = "motion_detector_off"
 	else
-		button.icon_state = "template"
+		action_icon_state = "motion_detector"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /obj/item/clothing/suit/storage/marine/medium/rto/intel/process()
 	if(!motion_detector)
@@ -73,7 +75,7 @@
 		playsound(loc,'sound/items/detector_turn_off.ogg', 25, 1)
 	motion_detector = !motion_detector
 	var/datum/action/item_action/intel/toggle_motion_detector/TMD = locate(/datum/action/item_action/intel/toggle_motion_detector) in actions
-	TMD.update_icon()
+	TMD.update_button_icon()
 	motion_detector()
 
 /obj/item/clothing/suit/storage/marine/medium/rto/intel/proc/motion_detector()

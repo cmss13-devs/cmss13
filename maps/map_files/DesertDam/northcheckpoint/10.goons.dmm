@@ -12,6 +12,22 @@
 	},
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"ac" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	current_rounds = 0;
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	current_rounds = 0;
+	pixel_x = -9;
+	pixel_y = 14
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "aM" = (
 /obj/item/ammo_magazine/rifle{
 	current_rounds = 0
@@ -70,6 +86,9 @@
 "ha" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
+	},
+/obj/item/ammo_magazine/rifle/nsg23{
+	current_rounds = 0
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel)
@@ -235,9 +254,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/effect/landmark/corpsespawner/wygoon,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/random/gun/corporate,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "xP" = (
@@ -717,7 +736,7 @@ dC
 (12,1,1) = {"
 Oh
 Ay
-kA
+ac
 kA
 kA
 kA

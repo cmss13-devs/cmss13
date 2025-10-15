@@ -14,7 +14,7 @@
 	..()
 
 /datum/equipment_preset/survivor/goon/trijent
-	name = "Survivor - Trijent - Weyland-Yutani - Corporate Security Guard"
+	name = "Survivor - Trijent Corporate Security Guard"
 
 /datum/equipment_preset/survivor/goon/trijent/load_gear(mob/living/carbon/human/new_human)
 
@@ -52,7 +52,6 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/corporate/no_lock(new_human), WEAR_J_STORE)
-	..()
 
 /datum/equipment_preset/survivor/nspa/trijent
 	name = "Survivor - Trijent NSPA Constable"

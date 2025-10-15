@@ -45,6 +45,14 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
+"ah" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = 8;
+	pixel_x = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/river/riverside_east)
 "am" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/crap_item,
@@ -254,9 +262,9 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "kT" = (
-/obj/effect/landmark/corpsespawner/wygoon,
 /obj/structure/prop/hybrisa/misc/blood/blood3,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "kU" = (
@@ -386,6 +394,10 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "pT" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = -1;
+	pixel_x = 5
+	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/valley_medical)
 "pZ" = (
@@ -1416,7 +1428,7 @@ Kh
 ug
 Yi
 GJ
-Nm
+ah
 tF
 tF
 tF

@@ -165,8 +165,8 @@
 /area/desert_dam/building/administration/hallway)
 "rM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/wygoon,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/wygoon/trijent,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
 "ti" = (

@@ -49,6 +49,28 @@
 /mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/desert
 	base_icon_state = "Desert Lizard"
 
+/mob/living/simple_animal/hostile/retaliate/playable/giant_lizard/desert/change_tongue_offset(datum/source, olddir, newdir)
+	if(!newdir)
+		newdir = dir
+	switch(newdir)
+		if(WEST)
+			if(resting)
+				tongue_icon_holder.pixel_x = 7
+				tongue_icon_holder.pixel_y = -4
+				return
+			tongue_icon_holder.pixel_x = -2
+			tongue_icon_holder.pixel_y = -1
+		if(EAST)
+			if(resting)
+				tongue_icon_holder.pixel_x = -7
+				tongue_icon_holder.pixel_y = -4
+				return
+			tongue_icon_holder.pixel_x = 2
+			tongue_icon_holder.pixel_y = -1
+		if(SOUTH)
+			tongue_icon_holder.pixel_x = 0
+			tongue_icon_holder.pixel_y = -1
+
 //For displaying wound states, and the tongue flicker.
 /atom/movable/vis_obj/giant_lizard_icon_holder
 	icon = 'icons/mob/mob_64.dmi'

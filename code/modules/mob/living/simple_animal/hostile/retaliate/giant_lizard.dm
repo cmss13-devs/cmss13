@@ -55,15 +55,15 @@
 	switch(newdir)
 		if(WEST)
 			if(resting)
-				tongue_icon_holder.pixel_x = 7
-				tongue_icon_holder.pixel_y = -4
+				tongue_icon_holder.pixel_x = 6
+				tongue_icon_holder.pixel_y = -6
 				return
 			tongue_icon_holder.pixel_x = -2
 			tongue_icon_holder.pixel_y = -1
 		if(EAST)
 			if(resting)
-				tongue_icon_holder.pixel_x = -7
-				tongue_icon_holder.pixel_y = -4
+				tongue_icon_holder.pixel_x = -6
+				tongue_icon_holder.pixel_y = -6
 				return
 			tongue_icon_holder.pixel_x = 2
 			tongue_icon_holder.pixel_y = -1

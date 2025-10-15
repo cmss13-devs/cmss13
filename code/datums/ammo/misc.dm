@@ -139,6 +139,10 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 2.5)
 	))
 
+/datum/ammo/flare/no_ignite/set_bullet_traits()
+	return
+
+
 /datum/ammo/flare/on_hit_mob(mob/M,obj/projectile/P)
 	drop_flare(get_turf(M), P, P.firer)
 

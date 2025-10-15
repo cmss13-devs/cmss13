@@ -3044,7 +3044,7 @@ Defined in conflicts.dm of the #defines folder.
 	max_range = 13
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_flare.ogg'
-	ammo = /datum/ammo/flare
+	ammo = /datum/ammo/flare/no_ignite
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
 
 /obj/item/attachable/attached_gun/flare_launcher/New()

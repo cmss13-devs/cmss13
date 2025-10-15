@@ -347,25 +347,26 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	max_range = 6
 
-/datum/ammo/grenade_container/on_hit_mob(mob/M,obj/projectile/P)
-	drop_nade(P)
+/datum/ammo/grenade_container/on_hit_mob(mob/mob, obj/projectile/projectile)
+	drop_nade(projectile)
 
-/datum/ammo/grenade_container/on_hit_obj(obj/O,obj/projectile/P)
-	drop_nade(P)
+/datum/ammo/grenade_container/on_hit_obj(obj/obj, obj/projectile/projectile)
+	drop_nade(projectile)
 
-/datum/ammo/grenade_container/on_hit_turf(turf/T,obj/projectile/P)
-	drop_nade(P)
+/datum/ammo/grenade_container/on_hit_turf(turf/turf, obj/projectile/projectile)
+	drop_nade(projectile)
 
-/datum/ammo/grenade_container/do_at_max_range(obj/projectile/P)
-	drop_nade(P)
+/datum/ammo/grenade_container/do_at_max_range(obj/projectile/projectile)
+	drop_nade(projectile)
 
-/datum/ammo/grenade_container/proc/drop_nade(obj/projectile/P)
-	var/turf/T = get_turf(P)
-	var/obj/item/explosive/grenade/G = new nade_type(T)
-	G.visible_message(SPAN_WARNING("\A [G] lands on [T]!"))
-	G.det_time = 10
-	G.cause_data = P.weapon_cause_data
-	G.activate()
+/datum/ammo/grenade_container/proc/drop_nade(obj/projectile/projectile)
+	var/turf/turf = get_turf(projectile)
+	var/obj/item/explosive/grenade/grenade = new nade_type(turf)
+	turf.on_throw_end(grenade)
+	grenade.visible_message(SPAN_WARNING("\A [grenade] lands on [turf]!"))
+	grenade.det_time = min(10, grenade.det_time)
+	grenade.cause_data = projectile.weapon_cause_data
+	grenade.activate()
 
 /datum/ammo/grenade_container/rifle
 	flags_ammo_behavior = NO_FLAGS
@@ -377,6 +378,14 @@
 
 /datum/ammo/grenade_container/tank_glauncher
 	max_range = 8
+
+/datum/ammo/grenade_container/blackfoot_launcher
+	name = "starburst shell"
+	nade_type = /obj/item/explosive/grenade/high_explosive/starshell
+
+/datum/ammo/grenade_container/doorgun
+	name = "hornet shell"
+	nade_type = /obj/item/explosive/grenade/high_explosive/hornet
 
 /datum/ammo/hugger_container
 	name = "hugger shell"

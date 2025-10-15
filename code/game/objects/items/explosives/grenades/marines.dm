@@ -188,7 +188,7 @@
 	dispersion_angle = 25//tight cone
 
 /obj/item/explosive/grenade/high_explosive/airburst/starshell
-	name = "\improper M74 AGM-S Star Shell"
+	name = "\improper M74 AGM-S 40mm Star Shell"
 	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the star shells bursts into burning phosphor that illuminates the area."
 	icon_state = "grenade_starshell"
 	item_state = "grenade_starshell_active"
@@ -196,6 +196,27 @@
 	shrapnel_type = /datum/ammo/flare/starshell
 	direct_hit_shrapnel = 5
 	dispersion_angle = 360 //beeg circle
+
+// Non-airburst variant
+/obj/item/explosive/grenade/high_explosive/starshell
+	name = "\improper M74 HE 40mm impact Star Shell"
+	desc = "A non-airburst variant of the standard AGM-S 40mm Star Shell, with an impact detonator installed. Bursts into burning phosphor that illuminates the area upon contact."
+	icon_state = "grenade_starshell"
+	item_state = "grenade_starshell_active"
+	shrapnel_count = 8
+	shrapnel_type = /datum/ammo/flare/starshell
+	det_time = 0
+	explosion_power = 0
+
+/obj/item/explosive/grenade/high_explosive/hornet
+	name = "\improper M74 HE 40mm impact Hornet Shell"
+	desc = "A non-airburst variant of the standard AGM-H 40mm Hornet Shell, with an impact detonator installed. Shoots off holo-targeting .22lr rounds. The equivalent to buckshot at-range."
+	icon_state = "grenade_hornet"
+	item_state = "grenade_hornet_active"
+	shrapnel_count = 15
+	shrapnel_type = /datum/ammo/bullet/shrapnel/hornet_rounds
+	det_time = 0
+	explosion_power = 0
 
 /*
 //================================================

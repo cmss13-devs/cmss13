@@ -62,7 +62,7 @@
 	assignment = "Royal Marines Rifleman"
 	job_title = JOB_TWE_RMC_RIFLEMAN
 
-	minimap_icon = "rmc_rifleman"
+	minimap_icon_state = "rmc_rifleman"
 
 	skills = /datum/skills/rmc
 
@@ -123,7 +123,7 @@
 	name = "TWE Royal Marine Commando (Marksman)"
 	assignment = "Royal Marines Marksman"
 	job_title = JOB_TWE_RMC_MARKSMAN
-	minimap_icon = "rmc_marksman"
+	minimap_icon_state = "rmc_marksman"
 
 /datum/equipment_preset/twe/royal_marine/spec/marksman/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -168,7 +168,7 @@
 	role_comm_title = "RMC BRC"
 	assignment = "Royal Marines Breacher"
 	job_title = JOB_TWE_RMC_BREACHER
-	minimap_icon = "rmc_breacher"
+	minimap_icon_state = "rmc_breacher"
 
 	skills = /datum/skills/rmc/breacher
 
@@ -219,7 +219,7 @@
 	assignment = "Royal Marines Smartgunner"
 	job_title = JOB_TWE_RMC_SMARTGUNNER
 
-	minimap_icon = "rmc_sg"
+	minimap_icon_state = "rmc_sg"
 
 	skills = /datum/skills/rmc/smartgun
 
@@ -270,7 +270,7 @@
 	assignment = "Royal Marines Medical Technician"
 	job_title = JOB_TWE_RMC_MEDIC
 
-	minimap_icon = "rmc_medic"
+	minimap_icon_state = "rmc_medic"
 
 	skills = /datum/skills/rmc/medic
 
@@ -319,7 +319,7 @@
 	assignment = "Royal Marines Team Leader"
 	job_title = JOB_TWE_RMC_TEAMLEADER
 
-	minimap_icon = "rmc_teamleader"
+	minimap_icon_state = "rmc_teamleader"
 
 	skills = /datum/skills/rmc/leader
 
@@ -372,7 +372,7 @@
 	assignment = "Royal Marines Team Commander"
 	job_title = JOB_TWE_RMC_LIEUTENANT
 
-	minimap_icon = "rmc_lieutenant"
+	minimap_icon_state = "rmc_lieutenant"
 
 	skills = /datum/skills/rmc/lieutenant
 
@@ -441,7 +441,7 @@
 	assignment = "Royal Marines Captain"
 	job_title = JOB_TWE_RMC_CAPTAIN
 
-	minimap_icon = "rmc_commander"
+	minimap_icon_state = "rmc_commander"
 
 	skills = /datum/skills/rmc/captain
 
@@ -510,7 +510,7 @@
 	assignment = "Royal Marines Major"
 	job_title = JOB_TWE_RMC_MAJOR
 
-	minimap_icon = "rmc_major"
+	minimap_icon_state = "rmc_major"
 
 	skills = /datum/skills/rmc/major
 

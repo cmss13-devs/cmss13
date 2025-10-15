@@ -8,7 +8,7 @@
 	job_title = JOB_DS_CU
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_FRENCH, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_TSL) //Synths after all.
 	skills = /datum/skills/everything //They are Synths, programmed for Everything.
-	minimap_icon = "whiteout"
+	minimap_icon_state = "whiteout"
 	idtype = /obj/item/card/id/pmc/ds
 	paygrades = list(PAY_SHORT_CDNM = JOB_PLAYTIME_TIER_0)
 	var/new_bubble_icon = "machine"

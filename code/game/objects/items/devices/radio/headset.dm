@@ -370,7 +370,7 @@
 		return
 
 	SSminimaps.remove_marker(wearer)
-	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon)
+	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon_state)
 		return
 	var/marker_flags = minimap_type
 	var/turf/turf_gotten = get_turf(wearer)

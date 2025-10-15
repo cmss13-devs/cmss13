@@ -23,7 +23,7 @@
 	var/list/faction_group
 	var/origin_override
 
-	var/minimap_icon = "private"
+	var/minimap_icon_state = "private"
 	var/minimap_background = "background"
 	var/always_minimap_visible = TRUE
 
@@ -281,25 +281,28 @@
 		character_trait.apply_trait(new_human, src)
 
 /datum/equipment_preset/proc/get_minimap_icon(mob/living/carbon/human/user)
-	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', user.assigned_squad?.background_icon ? user.assigned_squad.background_icon : minimap_background)
+	var/image/background = mutable_appearance('icons/ui_icons/minimap/backgrounds.dmi', user.assigned_squad?.background_icon ? user.assigned_squad.background_icon : minimap_background)
 
-	if(islist(minimap_icon))
-		for(var/icons in minimap_icon)
+	if(islist(minimap_icon_state))
+		for(var/icons in minimap_icon_state)
 			var/iconstate = icons ? icons : "unknown"
-			var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
+			var/mutable_appearance/icon = image('icons/ui_icons/minimap/map_blips.dmi', icon_state = iconstate)
 			icon.appearance_flags = RESET_COLOR
 
-			if(minimap_icon[icons])
-				icon.color = minimap_icon[icons]
+			if(minimap_icon_state[icons])
+				icon.color = minimap_icon_state[icons]
 			background.overlays += icon
 	else
-		var/obj/item/card/id/ID = user.get_idcard()
-		var/icon_to_use
-		if(ID.minimap_icon_override)
-			icon_to_use = ID.minimap_icon_override
+		var/obj/item/card/id/id_card = user.get_idcard()
+		var/icon_state_to_use
+		var/icon/icon_file_to_use = 'icons/ui_icons/minimap/map_blips.dmi'
+		if(id_card.minimap_icon_state_override)
+			icon_state_to_use = id_card.minimap_icon_state_override
 		else
-			icon_to_use = minimap_icon ? minimap_icon : "unknown"
-		var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = icon_to_use)
+			icon_state_to_use = minimap_icon_state ? minimap_icon_state : "unknown"
+		if(id_card.minimap_icon_file_override)
+			icon_file_to_use = id_card.minimap_icon_file_override
+		var/mutable_appearance/icon = image(icon_file_to_use, icon_state = icon_state_to_use)
 		icon.appearance_flags = RESET_COLOR
 		background.overlays += icon
 

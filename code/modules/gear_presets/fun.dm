@@ -85,7 +85,7 @@
 	paygrades = list("Ser" = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "OHEFA"
 
-	minimap_icon = "hefa"
+	minimap_icon_state = "hefa"
 
 	skills = /datum/skills/specialist
 

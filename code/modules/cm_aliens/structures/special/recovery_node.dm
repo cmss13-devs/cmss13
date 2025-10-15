@@ -14,7 +14,7 @@
 
 /obj/effect/alien/resin/special/plasma_tree/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
-	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(linked_hive?.hivenumber), "recovery_node")
+	SSminimaps.add_marker(src, get_minimap_flag_for_faction(linked_hive?.hivenumber), image('icons/UI_icons/map_blips.dmi', null, "recovery_node"))
 
 /obj/effect/alien/resin/special/plasma_tree/get_examine_text(mob/user)
 	. = ..()
@@ -75,7 +75,7 @@
 
 /obj/effect/alien/resin/special/recovery/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
-	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(linked_hive?.hivenumber), "recovery_node")
+	SSminimaps.add_marker(src, get_minimap_flag_for_faction(linked_hive?.hivenumber), image('icons/UI_icons/map_blips.dmi', null, "recovery_node"))
 
 /obj/effect/alien/resin/special/recovery/Destroy()
 	. = ..()

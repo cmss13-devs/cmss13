@@ -43,6 +43,16 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define CORPORATE_SURVIVOR "Corporate Survivor"
 #define SURVIVOR_VARIANT_LIST list(ANY_SURVIVOR = "Any", CIVILIAN_SURVIVOR = "Civ", SECURITY_SURVIVOR = "Sec", SCIENTIST_SURVIVOR = "Sci", MEDICAL_SURVIVOR = "Med", ENGINEERING_SURVIVOR = "Eng", CORPORATE_SURVIVOR = "W-Y")
 
+#define INSERT_CORPORATE "Insert Corporate"
+#define INSERT_LEADER "Insert Leader"
+#define INSERT_MEDIC "Insert Medic"
+#define INSERT_ENGINEER "Insert Engineer"
+#define INSERT_SMARTGUNNER "Insert Smartgunner"
+#define INSERT_SPECIALIST "Insert Specialist"
+#define INSERT_NONE "Insert None"
+#define INSERT_SYNTH "Insert Synth"
+#define INSERT_CO "Insert CO"
+
 //-1 is infinite amount, these are soft caps and can be bypassed by randomization
 #define MAX_SURVIVOR_PER_TYPE list(ANY_SURVIVOR = -1, CIVILIAN_SURVIVOR = -1, SECURITY_SURVIVOR = 2, SCIENTIST_SURVIVOR = 2, MEDICAL_SURVIVOR = 3, ENGINEERING_SURVIVOR = 4, CORPORATE_SURVIVOR = 2)
 

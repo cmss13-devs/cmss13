@@ -614,12 +614,36 @@
 	amount = 1 //Amount depends on Boiler upgrade!
 	smokeranking = SMOKE_RANK_BOILER
 	/// How much neuro is dosed per tick
-	var/neuro_dose = 6
+	var/neuro_dose = 0.6
 	var/msg = "Your skin tingles as the gas consumes you!" // Message given per tick. Changes depending on which species is hit.
 
-//No effect when merely entering the smoke turf, for balance reasons
+//Apply neurotoxin when entering the smoke tile
 /obj/effect/particle_effect/smoke/xeno_weak/Crossed(mob/living/carbon/moob as mob)
-	return
+	if(!istype(moob))
+		return
+
+	if(moob.stat == DEAD)
+		return
+
+	if(isxeno(moob))
+		return
+
+	if(isyautja(moob))
+		return
+
+	if(issynth(moob))
+		return
+
+	if(!moob.reagents)
+		return
+
+	var/list/reagent_data
+	var/mob/source_mob = cause_data?.resolve_mob()
+	if(source_mob)
+		reagent_data = list("last_source_mob" = WEAKREF(source_mob))
+	// Apply reduced amount when entering (half of the staying-in-smoke amount)
+	var/entry_dose = neuro_dose * 0.5
+	moob.reagents.add_reagent(REAGENT_XENO_NEUROTOXIN, entry_dose, reagent_data)
 
 /obj/effect/particle_effect/smoke/xeno_weak/affect(mob/living/carbon/moob) // This applies every tick someone is in the smoke
 	. = ..()
@@ -646,11 +670,15 @@
 	moob.apply_damage(5, OXY) //  Base "I can't breath oxyloss" Slightly more longer lasting then stamina damage
 	// reworked code below
 	if(!issynth(moob))
-		var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
-		if(!neuro_effect)
-			neuro_effect = new(moob, cause_data.resolve_mob())
-			neuro_effect.strength = effect_amt
-		neuro_effect.duration += neuro_dose
+		if(moob.reagents)
+			var/list/reagent_data
+			var/mob/source_mob = cause_data?.resolve_mob()
+			if(source_mob)
+				reagent_data = list("last_source_mob" = WEAKREF(source_mob))
+			moob.reagents.add_reagent(REAGENT_XENO_NEUROTOXIN, neuro_dose, reagent_data)
+			var/datum/reagent/toxin/xeno/neurotoxin/neuro = moob.reagents.has_reagent(REAGENT_XENO_NEUROTOXIN, 0)
+			if(neuro)
+				neuro.register_exposure(effect_amt)
 		if(human_moob && moob.coughedtime < world.time && !moob.stat) //Coughing/gasping
 			moob.coughedtime = world.time + 1.5 SECONDS
 			if(prob(50))

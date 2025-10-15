@@ -136,6 +136,17 @@
 
 	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_scatter_neuro))
 
+/datum/ammo/xeno/toxin/shotgun/on_hit_mob(mob/M, obj/projectile/P)
+	. = ..()
+	// Apply small amount of neurotoxin reagent for scattered spit
+	if(iscarbon(M))
+		var/mob/living/carbon/carbon = M
+		if(!issynth(carbon) && carbon.reagents)
+			var/list/reagent_data
+			if(P?.firer)
+				reagent_data = list("last_source_mob" = WEAKREF(P.firer))
+			carbon.reagents.add_reagent(REAGENT_XENO_NEUROTOXIN, 0.6, reagent_data)
+
 /datum/ammo/xeno/toxin/shotgun/additional
 	name = "additional neurotoxic droplets"
 
@@ -253,10 +264,11 @@
 		var/mob/living/carbon/carbon = moob
 		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD || HAS_TRAIT(carbon, TRAIT_HAULED))
 			return
-	var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
-	if(!neuro_effect)
-		neuro_effect = new /datum/effects/neurotoxin(moob, proj.firer)
-	neuro_effect.duration += 5
+		if(!issynth(carbon) && carbon.reagents)
+			var/list/reagent_data
+			if(proj?.firer)
+				reagent_data = list("last_source_mob" = WEAKREF(proj.firer))
+			carbon.reagents.add_reagent(REAGENT_XENO_NEUROTOXIN, 0.6, reagent_data)
 	moob.apply_effect(3, DAZE)
 	to_chat(moob, SPAN_HIGHDANGER("Neurotoxic liquid spreads all over you and immediately soaks into your pores and orifices! Oh fuck!")) // Fucked up but have a chance to escape rather than being game-ended
 	drop_nade(get_turf(proj), proj,TRUE)

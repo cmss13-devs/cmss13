@@ -274,10 +274,11 @@
 			carbon_target.reagents.add_reagent("molecularacid", 6)
 			carbon_target.reagents.set_source_mob(owner, /datum/reagent/toxin/molecular_acid)
 		else if(stabbing_xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
-			var/datum/effects/neurotoxin/neuro_effect = locate() in carbon_target.effects_list
-			if(!neuro_effect)
-				neuro_effect = new(carbon_target, owner)
-			neuro_effect.duration += 20
+			if(!issynth(carbon_target) && carbon_target.reagents)
+				var/list/reagent_data
+				if(owner)
+					reagent_data = list("last_source_mob" = WEAKREF(owner))
+				carbon_target.reagents.add_reagent(REAGENT_XENO_NEUROTOXIN, 2, reagent_data)
 			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [stabbing_xeno]'s tailstab!"))
 		else
 			CRASH("Globber has unknown ammo [stabbing_xeno.ammo]! Oh no!")

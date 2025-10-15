@@ -11,10 +11,10 @@
 		switch(gender)
 			if(FEMALE)
 				first_name = capitalize(pick(GLOB.first_names_female_upp))
-			if(MALE)
-				first_name = capitalize(pick(GLOB.first_names_male_upp))
-			if(PLURAL)
+			if(PLURAL, NEUTER)
 				first_name = capitalize(pick(pick(GLOB.first_names_male_upp), pick(GLOB.first_names_female_upp)))
+			else // MALE
+				first_name = capitalize(pick(GLOB.first_names_male_upp))
 	if(prob(35))
 		last_name = "[capitalize(randomly_generate_chinese_word(pick(20;1, 80;2)))]"
 	else

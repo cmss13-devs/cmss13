@@ -79,6 +79,9 @@
 		if(climber.a_intent != INTENT_HARM)
 			return ..()
 
+		if(climber.action_busy)
+			return ..()
+
 		climber.client?.move_delay += 3 DECISECONDS
 		if(do_climb(climber))
 			if(prob(25))

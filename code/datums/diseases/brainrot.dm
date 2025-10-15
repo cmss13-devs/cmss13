@@ -30,7 +30,7 @@
 				affected_mob.emote("stare")
 			if(prob(2))
 				affected_mob.emote("drool")
-			if(prob(10) && affected_mob.getBrainLoss()<=98)//shouldn't retard you to death now
+			if(prob(10) && affected_mob.getBrainLoss()<=98)//shouldn't brain damage you to death now
 				affected_mob.adjustBrainLoss(2)
 				affected_mob.updatehealth()
 				if(prob(2))

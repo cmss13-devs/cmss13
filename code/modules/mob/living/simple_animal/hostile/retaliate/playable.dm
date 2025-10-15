@@ -122,7 +122,7 @@
 		var/mob/living/target = target_mob
 		//invisible mobs will still randomly be attacked regardless of this check if the lizard is in combat (intended)
 		if(target.stat == DEAD || target.alpha <= 200 || !isturf(target.loc))
-			return FALSE //TRUE means it's unattackable (amazing code!)
+			return FALSE
 	return TRUE
 
 /mob/living/simple_animal/hostile/retaliate/playable/get_examine_text(mob/user)

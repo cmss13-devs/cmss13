@@ -161,9 +161,6 @@ SUBSYSTEM_DEF(cmtv)
 		return
 
 	camera_operator.nuke_chat()
-
-//	winset(camera_operator, "split", "right=output_browser")
-
 	addtimer(CALLBACK(src, PROC_REF(do_init_chat)), 0.5 SECONDS)
 
 /// To ensure the chat is fully initialised after we nuke it, we wait a bit before sending it an action
@@ -173,7 +170,7 @@ SUBSYSTEM_DEF(cmtv)
 /// Takes a new mob to observe. If there is already a queued up mob, or a current perspective, they will be notified and dropped. This will become the new perspective in 10 seconds.
 /// If set to instant, we immediately switch to observe nothing. If set_showtime is set, the camera will stay on the new perspective for at least this long,
 /// unless they die or something.
-/datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective, instant = FALSE, set_showtime = FALSE)
+/datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective, instant_switch_away = FALSE, instant_switch_to = FALSE, set_showtime = FALSE)
 	if(new_perspective == current_perspective)
 		log_debug("CMTV: New perspective same as the old perspective, skipping change.")
 		return
@@ -183,25 +180,29 @@ SUBSYSTEM_DEF(cmtv)
 	if(current_perspective)
 		terminate_current_perspective()
 
-	if(instant)
+	if(instant_switch_away)
 		camera_mob.clean_observe_target()
 		camera_mob.forceMove(pick(GLOB.observer_starts))
 
 	if(!set_showtime)
 		minimum_screentime = null
 
-	if(!istype(new_perspective) || !new_perspective.client)
+	if(is_ineligible(new_perspective))
 		log_debug("CMTV: Perspective could not be swapped to, picking new perspective.")
 		return reset_perspective("New perspective does not exist or is not cliented.")
 
 	if(future_perspective)
 		to_chat(future_perspective, boxed_message("[SPAN_BIGNOTICE("You are no longer going to be observed.")]\n\n [SPAN_NOTICE("You have been opted out of displaying on CMTV.")]"))
 
-	var/cmtv_link = CONFIG_GET(string/cmtv_link)
-	to_chat(new_perspective, boxed_message("[SPAN_BIGNOTICE("You will be observed in 10 seconds.")]\n\n [SPAN_NOTICE("Your perspective will be shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to cancel this, press <a href='byond://?src=\ref[src];cancel_cmtv=1'>here</a>.")]"))
 	add_verb(new_perspective, /mob/proc/handoff_cmtv)
 	give_action(new_perspective, /datum/action/stop_cmtv)
 
+	if(instant_switch_to)
+		do_change_observed_mob(set_showtime)
+		return
+
+	var/cmtv_link = CONFIG_GET(string/cmtv_link)
+	to_chat(new_perspective, boxed_message("[SPAN_BIGNOTICE("You will be observed in 10 seconds.")]\n\n [SPAN_NOTICE("Your perspective will be shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to cancel this, press <a href='byond://?src=\ref[src];cancel_cmtv=1'>here</a>.")]"))
 
 	future_perspective = WEAKREF(new_perspective)
 	addtimer(CALLBACK(src, PROC_REF(do_change_observed_mob), set_showtime), 10 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
@@ -300,6 +301,10 @@ SUBSYSTEM_DEF(cmtv)
 
 	temporarily_observing_turf = TRUE
 
+	var/to_switch_to = null
+	if(minimum_screentime && world.time + how_long_for < minimum_screentime)
+		to_switch_to = current_perspective
+
 	if(current_perspective)
 		terminate_current_perspective(ticker_text = null)
 		camera_mob.clean_observe_target()
@@ -314,14 +319,19 @@ SUBSYSTEM_DEF(cmtv)
 	if(zoom_out)
 		camera_operator.view = "32x24"
 
-	addtimer(CALLBACK(src, PROC_REF(stop_spectating_turf)), how_long_for - 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(end_spectate_event), to_switch_to), how_long_for - 10 SECONDS)
 
-/datum/controller/subsystem/cmtv/proc/stop_spectating_turf()
+/datum/controller/subsystem/cmtv/proc/end_spectate_event(mob/to_switch_to)
 	camera_mob.hud_used.plane_masters["[HUD_PLANE]"].alpha = 255
 
 	temporarily_observing_turf = FALSE
 
 	camera_operator.view = "20x15"
+
+	if(to_switch_to)
+		change_observed_mob(to_switch_to, instant_switch_to = TRUE)
+		return
+
 	reset_perspective("Turf spectation ended.")
 
 #define PERSPECTIVE_SELECTION_DELAY_TIME (20 SECONDS)

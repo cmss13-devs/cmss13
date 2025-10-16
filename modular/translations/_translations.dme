@@ -115,7 +115,6 @@
 #include "code/gear_presets/wo.dm"
 #include "code/gear_presets/wy_goons.dm"
 #include "code/gear_presets/wy.dm"
-#include "code/gear_presets/yautja.dm"
 
 // MARK: Xeno Abilities
 #include "code/xeno/castes_age.dm"

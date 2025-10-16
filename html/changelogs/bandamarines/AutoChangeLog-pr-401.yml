@@ -1,0 +1,4 @@
+author: "Traviesso"
+delete-after: True
+changes:
+  - bugfix: "Починилась кнопка менторов на плашки в IC."

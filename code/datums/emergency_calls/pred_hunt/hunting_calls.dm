@@ -181,9 +181,8 @@
 	name = "Template"
 	var/blooding_name
 	var/youngblood_time
+	var/youngblood_time_required_for_job
 	probability = 0
-	mob_max = 3
-	mob_min = 1
 	objectives = "Hunt down and defeat prey within the hunting grounds to earn your mark. You may not: Stun hit prey, hit prey in cloak or excessively run away to heal."
 	ert_message = "A group of Yautja Youngbloods are being awakened for a hunt"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
@@ -201,8 +200,11 @@
 		if(check_timelock(youngblood_candidate.current?.client, JOB_SQUAD_ROLES_LIST, time_required_for_job) && (youngblood_candidate.current?.client.get_total_xeno_playtime() >= time_required_for_job))
 			youngblood_candidates_clean.Add(youngblood_candidate)
 			continue
+		if(!check_timelock(youngblood_candidate.current?.client, JOB_YOUNGBLOOD_ROLES_LIST, youngblood_time_required_for_job))
+			to_chat(youngblood_candidate.current, SPAN_WARNING("You did not qualify for the ERT beacon because you do not have enough experience as a youngblood. You need [round((youngblood_time_required_for_job / 18000) / 2)] hours as youngblood for the [name] beacon."))
+			continue
 		if(youngblood_candidate.current)
-			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you did not meet the required hours for this role [round(time_required_for_job / 18000)] hours on both squad roles and xenomorph roles."))
+			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you did not meet the required hours for this role [round((time_required_for_job / 18000) / 2)] hours on both squad roles and xenomorph roles."))
 	return youngblood_candidates_clean
 
 
@@ -250,20 +252,55 @@
 	if(SSticker.mode)
 		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)
 
-/datum/emergency_call/young_bloods/inexperienced
+/datum/emergency_call/young_bloods/one_member //For if a pred wants to teach a single youngblood
+	name = "Hunting Grounds - Solo Youngblood"
+	blooding_name = "Solo Youngblood (One member)"
+	mob_max = 1
+	mob_min = 1
+	time_required_for_job = 5 HOURS
+	youngblood_time = 0 HOURS
+	youngblood_time_required_for_job = 0 HOURS
+
+/datum/emergency_call/young_bloods/one_member/experienced //For if a pred wants to teach a more experienced youngblood but still one on one
+	name = "Hunting Grounds - Solo Youngblood (Experienced)"
+	blooding_name = "Solo Youngblood (One member - Experienced)"
+	youngblood_time = 7 HOURS
+	youngblood_time_required_for_job = 5 HOURS
+
+/datum/emergency_call/young_bloods/three_members
 	name = "Hunting Grounds - Inexperienced Youngblood Party" //For completly new youngblood players
 	blooding_name = "Inexperienced Youngblood Party (Three members)"
+	mob_max = 3
+	mob_min = 2
 	time_required_for_job = 5 HOURS
 	youngblood_time = 2 HOURS
+	youngblood_time_required_for_job = 0 HOURS
 
-/datum/emergency_call/young_bloods/intermediate
+/datum/emergency_call/young_bloods/three_members/intermediate
 	name = "Hunting Grounds - Intermediate Youngblood Party" //For players who have played a few rounds as youngblood
 	blooding_name = "Intermediate Youngblood Party (Three members)"
 	time_required_for_job = 10 HOURS
 	youngblood_time = 5 HOURS
+	youngblood_time_required_for_job = 2 HOURS
 
-/datum/emergency_call/young_bloods/experienced //Regular youngblood party
+/datum/emergency_call/young_bloods/three_members/experienced //Regular youngblood party
 	name = "Hunting Grounds - Experienced Youngblood Party"
 	blooding_name = "Experienced Youngblood Party (Three members)"
 	time_required_for_job = 20 HOURS
 	youngblood_time = 10 HOURS
+	youngblood_time_required_for_job = 3 HOURS
+
+/datum/emergency_call/young_bloods/three_members/lowpop //draws from every skill level to fill the party
+	name = "Hunting Grounds - Mixed experience Youngblood Party"
+	blooding_name = "Mixed experience Youngblood Party (Three members)"
+	youngblood_time = 10 HOURS
+	youngblood_time_required_for_job = 0 HOURS
+
+/datum/emergency_call/young_bloods/six_members //Larger group for highpop rounds
+	name = "Hunting Grounds - Youngblood Hunting Pack (Six members)"
+	blooding_name = "Youngblood Hunting Pack (Six members)"
+	mob_max = 6
+	mob_min = 4
+	time_required_for_job = 5 HOURS
+	youngblood_time = 10 HOURS
+	youngblood_time_required_for_job = 0 HOURS

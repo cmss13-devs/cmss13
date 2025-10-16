@@ -38,6 +38,14 @@ GLOBAL_LIST_INIT(exempted_cause_areas, typecacheof(list(
 		if(causing_object && is_type_in_typecache(causing_object, GLOB.exempted_cause_objects))
 			return
 
+		if(islarva(causing_mob))
+			var/mob/living/carbon/burst = locate(/mob/living/carbon) in get_turf(causing_mob)
+			if(!burst)
+				return
+
+			if(!HAS_TRAIT(burst, TRAIT_NESTED))
+				return
+
 		var/area/mob_area = get_area(causing_mob)
 		if(is_type_in_typecache(mob_area, GLOB.exempted_cause_areas))
 			return

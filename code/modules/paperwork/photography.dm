@@ -390,7 +390,8 @@
 	handle_move()
 	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
 
-	if(is_ground_level(get_turf(user).z))
+	var/turf/user_turf = get_turf(user)
+	if(is_ground_level(user_turf.z))
 		SScmtv.change_observed_mob(user, set_showtime = INFINITY)
 
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))

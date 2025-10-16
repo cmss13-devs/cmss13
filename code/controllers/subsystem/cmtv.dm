@@ -128,7 +128,6 @@ SUBSYSTEM_DEF(cmtv)
 	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_roundstart)))
 
 	winset(camera_operator, null, {"
-		infowindow.info.splitter=0;
 		tgui_say.is-disabled=true;
 		tooltip.is-disabled=true;
 		mapwindow.status_bar.is-visible=false;
@@ -162,6 +161,9 @@ SUBSYSTEM_DEF(cmtv)
 		return
 
 	camera_operator.nuke_chat()
+
+//	winset(camera_operator, "split", "right=output_browser")
+
 	addtimer(CALLBACK(src, PROC_REF(do_init_chat)), 0.5 SECONDS)
 
 /// To ensure the chat is fully initialised after we nuke it, we wait a bit before sending it an action

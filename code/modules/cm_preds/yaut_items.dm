@@ -331,6 +331,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	black_market_value = 100
 	flags_item = ITEM_PREDATOR
 	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR)
+	minimap_flag = MINIMAP_FLAG_YAUTJA
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.
@@ -975,9 +976,10 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/hunting_trap/attack_self(mob/user as mob)
 	..()
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
-		var/wait_time = 3 SECONDS
 		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-			wait_time = rand(5 SECONDS, 10 SECONDS)
+			to_chat(user, SPAN_WARNING("You don't know how to use this thing!"))
+			return
+		var/wait_time = 3 SECONDS
 		if(!do_after(user, wait_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			return
 		armed = TRUE
@@ -1703,7 +1705,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	force = 1
 	throwforce = 1
 	unacidable = TRUE
-	var/obj/structure/machinery/computer/cameras/yautja/internal_camera
+	var/obj/structure/machinery/computer/cameras/internal/yautja/internal_camera
 
 /obj/item/device/houndcam/Initialize()
 	. = ..()

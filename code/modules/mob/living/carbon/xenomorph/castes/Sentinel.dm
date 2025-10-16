@@ -50,6 +50,7 @@
 		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
 		/datum/action/xeno_action/activable/draining_bite,
 		/datum/action/xeno_action/onclick/tacmap,
+
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

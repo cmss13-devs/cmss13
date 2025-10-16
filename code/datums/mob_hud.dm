@@ -716,11 +716,11 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	holder.overlays.Cut()
 
 	if(mob_flags & MUTINY_MUTINEER)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudmutineer", pixel_y = 12)
+		holder.overlays += image('icons/mob/hud/human_status.dmi', src, "hudmutineer", pixel_y = 12)
 	else if(mob_flags & MUTINY_LOYALIST)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudloyalist", pixel_y = 12)
+		holder.overlays += image('icons/mob/hud/human_status.dmi', src, "hudloyalist", pixel_y = 12)
 	else if(mob_flags & MUTINY_NONCOMBAT)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudnoncombat", pixel_y = 9)
+		holder.overlays += image('icons/mob/hud/human_status.dmi', src, "hudnoncombat", pixel_y = 9)
 
 	hud_set_new_player()
 	F.modify_hud_holder(holder, src)
@@ -799,9 +799,9 @@ GLOBAL_DATUM_INIT(hud_icon_hunter_blooded, /image, image('icons/mob/hud/hud_yaut
 /mob/proc/hud_set_order()
 	return
 
-GLOBAL_DATUM_INIT(hud_icon_hudmove, /image, image('icons/mob/hud/marine_hud.dmi', src, "hudmove"))
-GLOBAL_DATUM_INIT(hud_icon_hudhold, /image, image('icons/mob/hud/marine_hud.dmi', src, "hudhold"))
-GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi', src, "hudfocus"))
+GLOBAL_DATUM_INIT(hud_icon_hudmove, /image, image('icons/mob/hud/human_status.dmi', src, "hudmove"))
+GLOBAL_DATUM_INIT(hud_icon_hudhold, /image, image('icons/mob/hud/human_status.dmi', src, "hudhold"))
+GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/human_status.dmi', src, "hudfocus"))
 // ORDER HUD
 /mob/living/carbon/human/hud_set_order()
 	var/image/holder = hud_list[ORDER_HUD]

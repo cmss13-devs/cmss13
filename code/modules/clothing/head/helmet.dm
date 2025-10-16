@@ -1199,10 +1199,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/ghillie/select_gamemode_skin()
 	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("urban")
-			name = "\improper M10-LS pattern sniper helmet"
-			desc = "A lightweight version of M10 helmet with thermal signature dampering used by USCM snipers on urban recon missions."
+	if(SSmapping.configs[GROUND_MAP].camouflage_type == "urban"	|| "classic")
+		name = "\improper M10-LS pattern sniper helmet"
+		desc = "A lightweight version of M10 helmet with thermal signature dampering used by USCM snipers on urban recon missions."
 
 /obj/item/clothing/head/helmet/marine/leader/CO
 	name = "\improper M11C pattern commanding officer helmet"
@@ -1266,6 +1265,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	)
 	specialty = "M10 pattern officer"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
+
+/obj/item/clothing/head/helmet/marine/MP/SO/basic
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical)
 
 /obj/item/clothing/head/helmet/marine/MP/provost/marshal
 	name = "\improper M10 pattern MP riot helmet"

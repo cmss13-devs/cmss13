@@ -1,8 +1,10 @@
 /datum/faction/iasf
 	name = "TWE - Imperial Armed Space Force"
 	faction_tag = FACTION_IASF
+	base_icon_file = 'icons/mob/hud/factions/twe.dmi'
 
 /datum/faction/iasf/modify_hud_holder(image/holder, mob/living/carbon/human/human)
+	var/icon/override_icon_file
 	var/hud_icon_state
 	var/obj/item/card/id/dogtag/ID = human.get_idcard()
 	var/_role
@@ -38,4 +40,4 @@
 		if (JOB_TWE_IASF_PARA_SYNTH)
 			hud_icon_state = "synth"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "iasf_[hud_icon_state]")
+		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "iasf_[hud_icon_state]")

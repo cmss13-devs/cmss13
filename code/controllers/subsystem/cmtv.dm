@@ -130,7 +130,6 @@ SUBSYSTEM_DEF(cmtv)
 	camera_operator.prefs.toggle_prefs |= TOGGLE_FULLSCREEN
 
 	camera_operator.update_fullscreen()
-	winset(camera_operator, "split", "right=output_browser;splitter=75")
 
 	camera_operator.screen += give_escape_menu_details()
 
@@ -140,6 +139,7 @@ SUBSYSTEM_DEF(cmtv)
 
 	if(!SSticker.HasRoundStarted() && !round_start)
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(setup_camera_mob)))
+		winset(camera_operator, "split", "right=output_browser;splitter=75")
 		return
 
 	setup_camera_mob()
@@ -171,8 +171,8 @@ SUBSYSTEM_DEF(cmtv)
 
 /// To ensure the chat is fully initialised after we nuke it, we wait a bit before sending it an action
 /datum/controller/subsystem/cmtv/proc/do_init_chat()
-	camera_operator.fit_viewport()
 	camera_operator.tgui_panel.window.send_message("game/tvmode")
+	camera_operator.fit_viewport()
 
 /// Takes a new mob to observe. If there is already a queued up mob, or a current perspective, they will be notified and dropped. This will become the new perspective in 10 seconds.
 /// If set to instant, we immediately switch to observe nothing. If set_showtime is set, the camera will stay on the new perspective for at least this long,

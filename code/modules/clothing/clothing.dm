@@ -37,6 +37,8 @@
 	// copies the properties of the clothing item to the accessory, in the future, take literally almost every var from ties.dm parent object and place it in clothing parent
 	var/obj/item/clothing/accessory/new_accessory = new accessory_path(loc)
 	new_accessory.name = name
+	if(flags_item == ITEM_PREDATOR) // checks for Pred Cape for recoloring
+		new_accessory.color = color
 	new_accessory.icon = icon
 	new_accessory.icon_state = icon_state
 	new_accessory.desc = desc

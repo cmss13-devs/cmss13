@@ -2599,6 +2599,10 @@
 	. = ..()
 	AddComponent(/datum/component/shimmy_around)
 
+/obj/structure/prop/hybrisa/misc/firehydrant/initialize_pass_flags(datum/pass_flags_container/PF)
+	if(PF)
+		PF.flags_can_pass_all = PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_ACID_SPRAY
+
 /obj/structure/prop/hybrisa/misc/firehydrant/bullet_act(obj/projectile/P)
 	health -= P.damage
 	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
@@ -2688,6 +2692,10 @@
 /obj/structure/prop/hybrisa/misc/pole/Initialize(mapload, ...)
 	. = ..()
 	AddComponent(/datum/component/shimmy_around)
+
+/obj/structure/prop/hybrisa/misc/pole/initialize_pass_flags(datum/pass_flags_container/PF)
+	if(PF)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_ACID_SPRAY
 
 /obj/structure/bed/sofa/hybrisa/misc/bench
 	name = "bench"

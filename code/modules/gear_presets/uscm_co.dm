@@ -41,7 +41,6 @@
 	minimap_icon = "co"
 	minimap_background = "background_command"
 
-
 /datum/equipment_preset/uscm_co/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_ALL)

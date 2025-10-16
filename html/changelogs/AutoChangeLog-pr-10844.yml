@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Pulling something that also is pulling something is significantly slower"
-  - balance: "Pushing something that is pulling something will inherit their pull delay unless already pulling"
-  - code_imp: "Cleaned up atom/moveable/Collided"

@@ -748,7 +748,7 @@
 	name = "Synthetic - Working Joe"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	faction = FACTION_MARINE
-	faction_group = list(FACTION_MARINE)
+	faction_group = FACTION_LIST_ARES_MARINE
 	assignment = JOB_WORKING_JOE
 	job_title = JOB_WORKING_JOE
 

@@ -138,6 +138,8 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary, stacks = 2.5)
 	))
+/datum/ammo/flare/no_ignite
+	max_range = 21
 
 /datum/ammo/flare/no_ignite/set_bullet_traits()
 	return

@@ -131,7 +131,7 @@
 /mob/living/carbon/xenomorph/king/death(cause, gibbed)
 	. = ..()
 	if(hive)
-		hive.banned_allies = initial(hive.banned_allies)
+		hive.setup_banned_allies()
 
 /*
 	REND ABILITY

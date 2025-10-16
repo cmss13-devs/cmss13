@@ -1,0 +1,5 @@
+author: "RG-P"
+delete-after: True
+changes:
+  - rscdel: "Удалил остатки попыток старого перевода"
+  - qol: "WL Yautja Legacy теперь управляется сенатором ВЛ"

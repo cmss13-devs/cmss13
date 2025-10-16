@@ -10873,7 +10873,7 @@
 /area/yautja/hangar)
 "Li" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
-	dir = 3;
+	dir = 2;
 	name = "\improper Houndmasters Quarters"
 	},
 /turf/open/shuttle/dropship/predship/tile/red,

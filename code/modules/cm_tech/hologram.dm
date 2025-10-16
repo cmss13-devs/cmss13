@@ -141,8 +141,8 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 			var/mob/living/linked_living = linked_mob
 			linked_living.observed_atom = null
 
-	if(linked_mob.client)
-		linked_mob.client.images -= view_blocker_images
+		if(linked_mob.client)
+			linked_mob.client.images -= view_blocker_images
 	view_blocker_images.Cut()
 	. = ..()
 

@@ -111,21 +111,9 @@ SUBSYSTEM_DEF(cmtv)
 	if(!istype(camera_operator))
 		CRASH("Not a client ([camera_operator]) passed to [__PROC__]")
 
-	if(!SSticker.HasRoundStarted() && !round_start)
-		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_new_camera), camera_operator, TRUE))
-		return
-
 	src.camera_operator = camera_operator
 
-	var/mob/dead/observer/new_mob = new(locate(1, 1, 1))
-	new_mob.client = camera_operator
-	new_mob.see_invisible = HIDE_INVISIBLE_OBSERVER
-	new_mob.alpha = 0
-
-	camera_mob = new_mob
-
 	restart_chat()
-	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_roundstart)))
 
 	winset(camera_operator, null, {"
 		tgui_say.is-disabled=true;
@@ -135,22 +123,36 @@ SUBSYSTEM_DEF(cmtv)
 		mainwindow.pos=0,0;
 		"})
 
-	camera_operator.view = "20x15"
+	camera_operator.prefs.hide_statusbar = TRUE
+	camera_operator.prefs.toggles_chat &= ~(CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_LISTENINGBUG)
 	camera_operator.prefs.auto_fit_viewport = TRUE
 	camera_operator.prefs.toggle_prefs |= TOGGLE_FULLSCREEN
+
+	camera_operator.screen += give_escape_menu_details()
+
+	camera_operator.view = "20x15"
 	camera_operator.update_fullscreen()
 
 	for(var/hud in list(MOB_HUD_MEDICAL_OBSERVER, MOB_HUD_XENO_STATUS, MOB_HUD_FACTION_OBSERVER))
 		var/datum/mob_hud/hud_datum = GLOB.huds[hud]
 		hud_datum.add_hud_to(camera_mob, camera_mob)
 
-	camera_operator.prefs.hide_statusbar = TRUE
-	camera_operator.prefs.toggles_chat &= ~(CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_LISTENINGBUG)
+	if(!SSticker.HasRoundStarted() && !round_start)
+		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(setup_camera_mob)))
+		return
 
-	camera_operator.screen += give_escape_menu_details()
+	setup_camera_mob()
 
 	if(!QDELETED(current_perspective))
 		camera_mob.do_observe(current_perspective)
+
+/datum/controller/subsystem/cmtv/proc/setup_camera_mob()
+	var/mob/dead/observer/new_mob = new(locate(1, 1, 1))
+	new_mob.client = camera_operator
+	new_mob.see_invisible = HIDE_INVISIBLE_OBSERVER
+	new_mob.alpha = 0
+
+	camera_mob = new_mob
 
 /// For events we want to occur at the beginning of the round - eg, when the map becomes actually visible
 /datum/controller/subsystem/cmtv/proc/handle_roundstart()

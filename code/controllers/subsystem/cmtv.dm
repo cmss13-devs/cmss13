@@ -130,9 +130,6 @@ SUBSYSTEM_DEF(cmtv)
 
 	camera_operator.screen += give_escape_menu_details()
 
-	camera_operator.view = "20x15"
-	camera_operator.update_fullscreen()
-
 	for(var/hud in list(MOB_HUD_MEDICAL_OBSERVER, MOB_HUD_XENO_STATUS, MOB_HUD_FACTION_OBSERVER))
 		var/datum/mob_hud/hud_datum = GLOB.huds[hud]
 		hud_datum.add_hud_to(camera_mob, camera_mob)
@@ -153,6 +150,9 @@ SUBSYSTEM_DEF(cmtv)
 	new_mob.alpha = 0
 
 	camera_mob = new_mob
+
+	camera_operator.view = "20x15"
+	camera_operator.update_fullscreen()
 
 /// For events we want to occur at the beginning of the round - eg, when the map becomes actually visible
 /datum/controller/subsystem/cmtv/proc/handle_roundstart()

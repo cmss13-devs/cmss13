@@ -428,7 +428,8 @@
 	. = ..()
 	linked_cam.view_range = 7
 
-	if(active && is_ground_level(get_turf(user).z))
+	var/turf/user_turf = get_turf(user)
+	if(active && is_ground_level(user_turf.z))
 		SScmtv.change_observed_mob(user, set_showtime = INFINITY)
 
 /obj/item/device/broadcasting/attack_self(mob/user)

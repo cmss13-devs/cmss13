@@ -140,11 +140,16 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 		if(istype(linked_mob, /mob/living))
 			var/mob/living/linked_living = linked_mob
 			linked_living.observed_atom = null
-	linked_mob.client.images -= view_blocker_images
+
+	if(linked_mob.client)
+		linked_mob.client.images -= view_blocker_images
 	view_blocker_images.Cut()
 	. = ..()
 
 /mob/hologram/look_up/proc/update_view_blockers(mob/user)
+	if(!user.client)
+		return
+
 	user.client.images -= view_blocker_images
 	view_blocker_images.Cut()
 	var/list/turf/visible_turfs = alist()

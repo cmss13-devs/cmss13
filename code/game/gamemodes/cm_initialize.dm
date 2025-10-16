@@ -783,6 +783,8 @@ Additional game mode variables.
 	SSround_recording.recorder.update_key(new_xeno)
 	if(new_xeno.client)
 		new_xeno.client.change_view(GLOB.world_view_size)
+		if(isnewplayer(xeno_candidate))
+			send_tacmap_assets_latejoin(new_xeno)
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	if(isxeno(new_xeno)) //Dear lord

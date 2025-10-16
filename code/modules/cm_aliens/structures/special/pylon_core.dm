@@ -254,7 +254,7 @@
 
 /obj/effect/alien/resin/special/pylon/core/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
-	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(linked_hive?.hivenumber), "core")
+	SSminimaps.add_marker(src, get_minimap_flag_for_faction(linked_hive?.hivenumber), image('icons/ui_icons/map_blips.dmi', null, "core"))
 
 /obj/effect/alien/resin/special/pylon/core/process()
 	. = ..()

@@ -135,7 +135,6 @@
 
 	minimap_icon = "correspondent"
 	minimap_background = "background_civillian"
-
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 

@@ -124,18 +124,25 @@
 		return
 
 	if(!isyautja(owner))
+		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, "bracer_stolen")
+		var/overlay_icon_state
 		if(owner.stat >= DEAD)
 			if(human_owner.undefibbable)
-				SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("undefibbable"))
+				overlay_icon_state = "undefibbable"
 			else
-				SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("defibbable"))
+				overlay_icon_state = "defibbable"
 		else
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi')
+			overlay_icon_state = null
+		if(overlay_icon_state)
+			var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, overlay_icon_state)
+			underlay.overlays += overlay
+		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
 	else
+		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, minimap_icon)
 		if(owner?.stat >= DEAD)
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, human_owner.assigned_equipment_preset.minimap_icon,, 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("undefibbable")) //defib/undefib status doesn't really matter because they're gonna explode in the end regardless
-		else
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, human_owner.assigned_equipment_preset.minimap_icon, 'icons/ui_icons/map_blips.dmi')
+			var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, "undefibbable")
+			underlay.overlays += overlay
+		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
 /*
 *This is the main proc for checking AND draining the bracer energy. It must have human passed as an argument.
 *It can take a negative value in amount to restore energy.
@@ -219,6 +226,24 @@
 
 	notification_sound = !notification_sound
 	to_chat(usr, SPAN_NOTICE("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
+
+/obj/item/clothing/gloves/yautja/thrall/update_minimap_icon()
+	if(!ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/human_owner = owner
+	var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, minimap_icon)
+	var/overlay_icon_state
+	if(owner.stat >= DEAD)
+		if(human_owner.undefibbable)
+			overlay_icon_state = "undefibbable"
+		else
+			overlay_icon_state = "defibbable"
+		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, overlay_icon_state)
+		underlay.overlays += overlay
+		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
+	else
+		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
 
 /obj/item/clothing/gloves/yautja/hunter
 	name = "clan bracers"

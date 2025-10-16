@@ -1143,30 +1143,35 @@
 	desc = "A set of Civilian-style Orange Overalls with a dark tan undershirt. The material is of a poor quality, however it's better than nothing. Clothing of this style is typically given out to those who work laborious jobs."
 	icon_state = "upp_uniform_civi1"
 	worn_state = "upp_uniform_civi1"
+	suit_restricted = FALSE
 
 /obj/item/clothing/under/marine/veteran/UPP/civi2
 	name = "\improper UPP Civilian-style tan overalls"
 	desc = "A set of Civilian-style Tan Overalls with a Blue undershirt. The material is of a poor quality, however it's better than nothing. Clothing of this style is typically given to those who work laborious jobs."
 	icon_state = "upp_uniform_civi2"
 	worn_state = "upp_uniform_civi2"
+	suit_restricted = FALSE
 
 /obj/item/clothing/under/marine/veteran/UPP/civi3
 	name = "\improper UPP Civilian-style shirt and pants"
 	desc = "A set of Civilian-style tan shirt and jeans. The material, while poor, is comfortable enough to be worn during all periods of the day."
 	icon_state = "upp_uniform_civi3"
 	worn_state = "upp_uniform_civi3"
+	suit_restricted = FALSE
 
 /obj/item/clothing/under/marine/veteran/UPP/civi4
 	name = "\improper UPP Civilian-style Vest and pants"
 	desc = "A set of Civilian-style Brown vest and orange pants. The material is surprisingly decent, something not often worn by the civilians of the UPP for two reasons: They typically can't afford such clothing, and if they can, it paints a target on their back."
 	icon_state = "upp_uniform_civi4"
 	worn_state = "upp_uniform_civi4"
+	suit_restricted = FALSE
 
 /obj/item/clothing/under/marine/veteran/UPP/civi5
 	name = "\improper Jùtóu Combine mining overalls"
 	desc = "A durable, olive-green jumpsuit worn beneath a sleeveless, puffy orange work vest—standard issue for Jùtóu Combine laborers. The vest's faded fabric is lined with reinforced padding, offering minimal protection against workplace hazards. A red star insignia is stamped on the back, marking its wearer as part of the Combine’s industrial workforce. Stiff, uncomfortable, and mass-produced, but better than nothing in the unforgiving conditions of deep-space labor."
 	icon_state = "miner_uniform"
 	worn_state = "miner_uniform"
+	suit_restricted = FALSE
 
 /obj/item/clothing/under/marine/veteran/UPP/army
 	name = "\improper UPP army jungle fatigues"
@@ -1708,6 +1713,13 @@
 	icon_state = "green_utility"
 	worn_state = "green_utility"
 	displays_id = FALSE
+
+/obj/item/clothing/under/rank/utility/upp
+	name = "\improper green utility uniform"
+	desc = "A green-on-green utility uniform, popularly issued to UPP workers on the frontier."
+	has_sensor = UNIFORM_HAS_SENSORS
+	suit_restricted = FALSE
+	armor_energy = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/rank/utility/yellow
 	name = "\improper yellow utility uniform"

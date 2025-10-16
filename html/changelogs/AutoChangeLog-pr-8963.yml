@@ -1,0 +1,8 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - rscadd: "New tacmap"
+  - rscadd: "opening tacmap can now be set to a hotkey, default is 5."
+  - rscadd: "you can now use scrollwheel/shift scrollwheel to move the tacmap drawing around"
+  - rscadd: "added a new verb View Tacmap(s) available in ghost/alien/IC tab for observers/xenos/marines which allows you to see the latest drawing of the tacmap"
+  - rscadd: "Queen can now edit the tacmap from manage the hive ability"

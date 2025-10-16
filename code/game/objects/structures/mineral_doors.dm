@@ -82,7 +82,7 @@
 	if(!loc)
 		return
 	density = FALSE
-	opacity = FALSE
+	set_opacity(FALSE)
 	open = TRUE
 	update_icon()
 	isSwitchingStates = FALSE
@@ -97,7 +97,7 @@
 	if(!loc)
 		return
 	density = TRUE
-	opacity = TRUE
+	set_opacity(TRUE)
 	open = FALSE
 	update_icon()
 	isSwitchingStates = FALSE
@@ -195,7 +195,7 @@
 
 /obj/structure/mineral_door/transparent/finish_close()
 	..()
-	opacity = FALSE
+	set_opacity(FALSE)
 
 /obj/structure/mineral_door/transparent/phoron
 	icon_state = "phoron"
@@ -236,7 +236,7 @@
 	if(!loc)
 		return
 	density = FALSE
-	opacity = FALSE
+	set_opacity(FALSE)
 	open = TRUE
 	update_icon()
 	isSwitchingStates = FALSE
@@ -251,7 +251,7 @@
 	if(!loc)
 		return
 	density = TRUE
-	opacity = TRUE
+	set_opacity(TRUE)
 	open = FALSE
 	update_icon()
 	isSwitchingStates = FALSE

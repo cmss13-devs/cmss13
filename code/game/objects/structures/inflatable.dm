@@ -221,7 +221,7 @@
 	if(!loc)
 		return
 	density = FALSE
-	opacity = FALSE
+	set_opacity(FALSE)
 	open = TRUE
 	update_icon()
 	isSwitchingStates = FALSE
@@ -236,7 +236,7 @@
 	if(!loc)
 		return
 	density = TRUE
-	opacity = FALSE
+	set_opacity(FALSE)
 	open = FALSE
 	update_icon()
 	isSwitchingStates = FALSE

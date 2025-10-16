@@ -60,6 +60,7 @@
 	if(new_opacity == opacity)
 		return
 	SEND_SIGNAL(src, COMSIG_ATOM_SET_OPACITY, new_opacity)
+
 	. = opacity
 
 	opacity = new_opacity

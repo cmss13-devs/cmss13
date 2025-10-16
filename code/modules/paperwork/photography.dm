@@ -390,7 +390,8 @@
 	handle_move()
 	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
 
-	SScmtv.change_observed_mob(user, set_showtime = INFINITY)
+	if(is_ground_level(get_turf(user).z))
+		SScmtv.change_observed_mob(user, set_showtime = INFINITY)
 
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
 	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
@@ -426,7 +427,7 @@
 	. = ..()
 	linked_cam.view_range = 7
 
-	if(active)
+	if(active && is_ground_level(get_turf(user).z))
 		SScmtv.change_observed_mob(user, set_showtime = INFINITY)
 
 /obj/item/device/broadcasting/attack_self(mob/user)

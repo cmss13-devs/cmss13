@@ -473,8 +473,8 @@
 		reagents = max_fuel
 
 /obj/item/tool/weldingtool/simple
-	name = "\improper ME3 hand welder"
-	desc = "A compact, handheld welding torch produced by Seegson, mainly used for technicians and Working Joe units."
+	name = "\improper Seegson MCT"
+	desc = "MCT standing for Mechanical Cutting Torch. A compact, handheld welding torch produced by Seegson, mainly used for technicians and Working Joe."
 	max_fuel = 5
 	has_welding_screen = TRUE
 	icon_state = "welder_b"

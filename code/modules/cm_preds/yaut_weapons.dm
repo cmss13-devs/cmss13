@@ -1823,7 +1823,7 @@
 	max_storage_space = 20
 	icon_state = "quiver"
 	item_state = "s_marinebelt"
-	flags_equip_slot = SLOT_WAIST|SLOT_SUIT_STORE
+	flags_equip_slot = SLOT_WAIST|SLOT_SUIT_STORE|SLOT_BACK // it's a quiver, quivers go on your back
 	max_w_class = SIZE_LARGE
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(

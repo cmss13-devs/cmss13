@@ -347,6 +347,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/combat/Initialize(mapload, spawn_empty)
 	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 	if(current_mag && current_mag.current_rounds > 0)
 		load_into_chamber()
 
@@ -477,6 +478,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	map_specific_decoration = FALSE
 	gauge = "8g"
 	starting_attachment_types = list(/obj/item/attachable/stock/type23)
+
+/obj/item/weapon/gun/shotgun/type23/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/weapon/gun/shotgun/type23/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 13, "rail_y" = 21, "under_x" = 24, "under_y" = 15, "stock_x" = -1, "stock_y" = 17)
@@ -614,6 +619,13 @@ can cause issues with ammo types getting mixed up during the burst.
 	has_open_icon = TRUE
 	civilian_usable_override = TRUE // Come on. It's THE survivor shotgun.
 	additional_fire_group_delay = 1.5 SECONDS
+
+/obj/item/weapon/gun/shotgun/double/Initialize()
+	. = ..()
+	if(istype(src, /obj/item/weapon/gun/shotgun/double/mou53))
+		AddElement(/datum/element/corp_label/henjin_garcia)
+	else
+		AddElement(/datum/element/corp_label/spearhead)
 
 /obj/item/weapon/gun/shotgun/double/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14, "stock_x" = 13, "stock_y" = 14)
@@ -853,7 +865,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/mou53
 	name = "\improper MOU53 break action shotgun"
-	desc = "A limited production Kerchner MOU53 triple break action classic. Respectable damage output at medium ranges, while the ARMAT M37 is the king of CQC, the Kerchner MOU53 is what hits the broadside of that barn. This specific model cannot safely fire buckshot shells."
+	desc = "A limited production Henjin-Garcia MOU53 triple break action classic. Respectable damage output at medium ranges, while the Armat M37 is the king of CQC, the Henjin-Garcia MOU53 is what hits the broadside of that barn. This specific model cannot safely fire buckshot shells."
 	icon_state = "mou"
 	item_state = "mou"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
@@ -896,9 +908,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	var/current_rounds = 0
 	COOLDOWN_DECLARE(breach_action_cooldown)
 
+/obj/item/weapon/gun/shotgun/double/mou53/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/henjin_garcia)
+
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 21, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
-
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_config_values()
 	..()
@@ -1236,6 +1251,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	pump_delay = FIRE_DELAY_TIER_5*2
 	additional_fire_group_delay += pump_delay
 
+	if(istype(src, /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb))
+		AddElement(/datum/element/corp_label/henjin_garcia)
+	else
+		AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/shotgun/pump/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 20, "under_x" = 20, "under_y" = 14, "stock_x" = 20, "stock_y" = 14)

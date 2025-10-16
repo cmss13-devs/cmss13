@@ -77,6 +77,10 @@
 	)
 	product_type = VENDOR_PRODUCT_TYPE_FOOD
 
+/obj/structure/machinery/vending/snack/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/structure/machinery/vending/snack/packaged
 	product_slogans = ""
 	product_ads = ""
@@ -137,6 +141,10 @@
 	)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	product_type = VENDOR_PRODUCT_TYPE_SOUTO
+
+/obj/structure/machinery/vending/cola/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
 
 /obj/structure/machinery/vending/cola/research
 	desc = "A softdrink vendor provided by Souto Soda Company, Havana. This one is bound to the Research Budget card and doesn't require swiping"
@@ -284,6 +292,10 @@
 		/obj/item/tool/lighter/zippo/blue = 30,
 	)
 
+/obj/structure/machinery/vending/cigarette/koorlander/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/koorlander)
+
 /obj/structure/machinery/vending/cigarette/koorlander/free
 		prices = list(
 		/obj/item/storage/fancy/cigarettes/kpack = 0,
@@ -390,6 +402,7 @@
 /obj/structure/machinery/vending/cigarette/wy/Initialize(mapload, ...)
 	var/exec_number = rand(0, 2)
 	products[/obj/item/storage/fancy/cigarettes/blackpack] = exec_number
+	AddElement(/datum/element/corp_label/wy)
 	return ..()
 
 /obj/structure/machinery/vending/cigarette/wy/free

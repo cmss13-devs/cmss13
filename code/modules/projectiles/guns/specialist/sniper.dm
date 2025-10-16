@@ -335,6 +335,10 @@
 	pixel_x = -6
 	hud_offset = -6
 
+/obj/item/weapon/gun/rifle/sniper/M42A/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/rifle/sniper/M42A/verb/toggle_scope_zoom_level()
 	set name = "Toggle Scope Zoom Level"
 	set category = "Weapons"
@@ -393,6 +397,10 @@
 	sniper_lockon_icon = "sniper_lockon"
 	pixel_x = -4
 	hud_offset = -4
+
+/obj/item/weapon/gun/rifle/sniper/XM43E1/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/handle_starting_attachment()
 	..()
@@ -457,6 +465,10 @@
 	sniper_beam_type = /obj/effect/ebeam/laser/intense
 	sniper_beam_icon = "laser_beam_intense"
 	sniper_lockon_icon = "sniper_lockon_intense"
+
+/obj/item/weapon/gun/rifle/sniper/elite/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/rifle/sniper/elite/handle_starting_attachment()
 	..()

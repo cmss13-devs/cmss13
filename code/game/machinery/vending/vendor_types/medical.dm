@@ -535,6 +535,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/Initialize()
 	. = ..()
 
+	AddElement(/datum/element/corp_label/wy)
 	// If this is a medlinked vendor (that needs a link) and isn't dynamically changing it will periodically restock itself
 	if(vend_flags & VEND_STOCK_DYNAMIC)
 		return
@@ -871,3 +872,7 @@
 		list("Souto Grape", 1, /obj/item/reagent_container/food/drinks/cans/souto/grape, VENDOR_ITEM_REGULAR),
 		list("Diet Souto Grape", 1, /obj/item/reagent_container/food/drinks/cans/souto/diet/grape, VENDOR_ITEM_REGULAR)
 	)
+
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/souto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)

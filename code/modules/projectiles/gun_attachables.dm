@@ -369,6 +369,10 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "wy_bayonet_a"
 	unacidable = TRUE
 
+/obj/item/attachable/bayonet/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/attachable/bayonet/upp
 	AUTOWIKI_SKIP(TRUE)
 
@@ -738,13 +742,13 @@ Defined in conflicts.dm of the #defines folder.
 	detaching_gun.fire_sound = initial(detaching_gun.fire_sound)
 	return ..()
 
-// Mateba barrels
+// Mateba(Unica) barrels
 
 /obj/item/attachable/mateba
-	name = "standard mateba barrel"
+	name = "standard Unica barrel"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "mateba_medium"
-	desc = "A standard mateba barrel. Offers a balance between accuracy and fire rate."
+	desc = "A standard unica barrel. Offers a balance between accuracy and fire rate."
 	slot = "special"
 	flags_attach_features = NO_FLAGS
 
@@ -767,9 +771,9 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "mateba_medium_a"
 
 /obj/item/attachable/mateba/long
-	name = "marksman mateba barrel"
+	name = "marksman Unica barrel"
 	icon_state = "mateba_long"
-	desc = "A marksman mateba barrel. Offers a greater accuracy at the cost of fire rate."
+	desc = "A marksman Unica barrel. Offers a greater accuracy at the cost of fire rate."
 	flags_attach_features = NO_FLAGS
 	hud_offset_mod = -1
 
@@ -790,9 +794,9 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "mateba_long_a"
 
 /obj/item/attachable/mateba/short
-	name = "snubnose mateba barrel"
+	name = "snubnose Unica barrel"
 	icon_state = "mateba_short"
-	desc = "A snubnosed mateba barrel. Offers a fast fire rate at the cost of accuracy."
+	desc = "A snubnosed Unica barrel. Offers a fast fire rate at the cost of accuracy."
 	hud_offset_mod = 2
 
 /obj/item/attachable/mateba/short/New()
@@ -815,7 +819,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/reddot
 	name = "S5 red-dot sight"
-	desc = "An ARMAT S5 red-dot sight. A zero-magnification optic that offers faster, and more accurate target acquisition."
+	desc = "An Armat S5 red-dot sight. A zero-magnification optic that offers faster, and more accurate target acquisition."
 	desc_lore = "An all-weather collimator sight, designated as the AN/PVQ-64 Dot Sight. Equipped with a sunshade to increase clarity in bright conditions and resist weathering. Compact and efficient, a marvel of military design, until you realize that this is actually just an off-the-shelf design that got a military designation slapped on."
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "reddot"
@@ -827,6 +831,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/attachable/reddot/small
 	name = "S5-Micro dot sight"
@@ -845,7 +850,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/reflex
 	name = "S6 reflex sight"
-	desc = "An ARMAT S6 reflex sight. A zero-magnification alternative to iron sights with a more open optic window when compared to the S5 red-dot. Helps to reduce scatter during automated fire."
+	desc = "An Armat S6 reflex sight. A zero-magnification alternative to iron sights with a more open optic window when compared to the S5 red-dot. Helps to reduce scatter during automated fire."
 	desc_lore = "A simple folding reflex sight designated as the AN/PVG-72 Reflex Sight, compatible with most rail systems. Bulky and built to last, it can link with military HUDs for limited point-of-aim calculations."
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "reflex"
@@ -859,6 +864,7 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
 	burst_scatter_mod = -1
 	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	AddElement(/datum/element/corp_label/armat)
 
 
 /obj/item/attachable/flashlight
@@ -1127,7 +1133,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "iffbarrel"
 	attach_icon = "iffbarrel_a"
-	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the M4RA Battle Rifle, the M44 Combat Revolver, and the M41A MK2 Pulse Rifle."
+	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by Armat, this sight has integrated IFF systems. It can only attach to the M4RA Battle Rifle, the M44 Combat Revolver, and the M41A MK2 Pulse Rifle."
 	desc_lore = "An experimental fire-control optic capable of linking into compatible IFF systems on certain weapons, designated the XAN/PVG-110 Smart Scope. Experimental technology developed by Armat, who have assured that all previously reported issues with false-negative IFF recognitions have been solved. Make sure to check the sight after every deployment, just in case."
 	slot = "rail"
 	pixel_shift_y = 15
@@ -1158,7 +1164,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
 	icon_state = "sniperscope"
 	attach_icon = "sniperscope_a"
-	desc = "An ARMAT S8 telescopic eye piece. Fixed at 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
+	desc = "An Armat S8 telescopic eye piece. Fixed at 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 	desc_lore = "An intermediate-power Armat scope designated as the AN/PVQ-31 4x Optic. Fairly basic, but both durable and functional... enough. 780 meters is about as far as one can push the 10x24mm cartridge, really."
 	slot = "rail"
 	aim_speed_mod = SLOWDOWN_ADS_SCOPE //Extra slowdown when wielded
@@ -1250,10 +1256,14 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/variable_zoom
 	name = "S10 variable zoom telescopic scope"
-	desc = "An ARMAT S10 telescopic eye piece. Can be switched between 2x zoom, which allows the user to move while scoped in, and 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
+	desc = "An Armat S10 telescopic eye piece. Can be switched between 2x zoom, which allows the user to move while scoped in, and 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 	attachment_action_type = /datum/action/item_action/toggle
 	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
 	var/zoom_level = ZOOM_LEVEL_4X
+
+/obj/item/attachable/scope/variable_zoom/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/attachable/scope/variable_zoom/Attach(obj/item/weapon/gun/G)
 	. = ..()
@@ -1327,7 +1337,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "S10 variable zoom telescopic scope"
 	icon_state = "3we_scope"
 	attach_icon = "3we_scope_a"
-	desc = "An ARMAT S10 telescopic eye piece. Can be switched between 2x zoom, which allows the user to move while scoped in, and 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
+	desc = "An Armat S10 telescopic eye piece. Can be switched between 2x zoom, which allows the user to move while scoped in, and 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 
 #undef ZOOM_LEVEL_2X
 #undef ZOOM_LEVEL_4X
@@ -1337,7 +1347,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "S4 2x telescopic mini-scope"
 	icon_state = "miniscope"
 	attach_icon = "miniscope_a"
-	desc = "An ARMAT S4 telescoping eye piece. Fixed at a modest 2x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
+	desc = "An Armat S4 telescoping eye piece. Fixed at a modest 2x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 	desc_lore = "A light-duty optic, designated as the AN/PVQ-45 2x Optic. Suited towards short to medium-range engagements. Users are advised to zero it often, as the first mass-production batch had a tendency to drift in one direction or another with sustained use."
 	slot = "rail"
 	zoom_offset = 6
@@ -1351,6 +1361,8 @@ Defined in conflicts.dm of the #defines folder.
 	delay_mod = 0
 	delay_scoped_nerf = FIRE_DELAY_TIER_SMG
 	damage_falloff_scoped_buff = -0.2 //has to be negative
+	AddElement(/datum/element/corp_label/armat)
+
 
 /obj/item/attachable/scope/mini/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
 	. = ..()
@@ -1386,15 +1398,19 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/mini/nsg23
 	name = "W-Y S4 2x advanced telescopic mini-scope"
-	desc = "An ARMAT S4 telescoping eye piece, custom-tuned by W-Y scientists to be as ergonomic as possible."
+	desc = "An Armat S4 telescoping eye piece, custom-tuned by W-Y scientists to be as ergonomic as possible."
 	icon_state = "miniscope_nsg23"
 	attach_icon = "miniscope_nsg23_a"
 	zoom_offset = 7
 	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
 
+/obj/item/attachable/scope/mini/nsg23/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/attachable/scope/mini/xm88
 	name = "XS-9 targeting relay"
-	desc = "An ARMAT XS-9 optical interface. Unlike a traditional scope, this rail-mounted device features no telescoping lens. Instead, the firearm's onboard targeting system relays data directly to the optic for the system operator to reference in realtime."
+	desc = "An Armat XS-9 optical interface. Unlike a traditional scope, this rail-mounted device features no telescoping lens. Instead, the firearm's onboard targeting system relays data directly to the optic for the system operator to reference in realtime."
 	icon_state = "boomslang-scope"
 	zoom_offset = 7
 	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
@@ -1403,6 +1419,7 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	select_gamemode_skin(type)
 	attach_icon = icon_state
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/attachable/scope/slavic
 	icon_state = "slavicscope"
@@ -2707,7 +2724,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"
-	desc = "A rare ARMAT stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"
+	desc = "A rare Armat stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"
 	slot = "stock"
 	melee_mod = 15
 	size_mod = 1
@@ -2726,6 +2743,7 @@ Defined in conflicts.dm of the #defines folder.
 	delay_mod = 0
 	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	aim_speed_mod = CONFIG_GET(number/slowdown_low)
+	AddElement(/datum/element/corp_label/armat)
 
 
 /obj/item/attachable/stock/smg/collapsible
@@ -3434,7 +3452,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper U7 underbarrel shotgun"
 	icon_state = "masterkey"
 	attach_icon = "masterkey_a"
-	desc = "An ARMAT U7 tactical shotgun. Attaches to the underbarrel of most weapons. Only capable of loading up to five buckshot shells. Specialized for breaching into buildings."
+	desc = "An Armat U7 tactical shotgun. Attaches to the underbarrel of most weapons. Only capable of loading up to five buckshot shells. Specialized for breaching into buildings."
 	w_class = SIZE_MEDIUM
 	max_rounds = 5
 	current_rounds = 5
@@ -3447,6 +3465,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/shotgun/New()
 	..()
 	attachment_firing_delay = FIRE_DELAY_TIER_5*3
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/attachable/attached_gun/shotgun/get_examine_text(mob/user)
 	. = ..()

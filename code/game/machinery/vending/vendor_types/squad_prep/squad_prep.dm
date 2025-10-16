@@ -366,7 +366,7 @@
 //--------------SQUAD ATTACHMENTS VENDOR--------------
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad
-	name = "\improper Armat Systems Squad Attachments Vendor"
+	name = "\improper Armat Battlefield Systems Squad Attachments Vendor"
 	desc = "An automated supply rack hooked up to a small storage of weapons attachments. Can be accessed by any Marine Rifleman."
 	req_access = list(ACCESS_MARINE_ALPHA)
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)

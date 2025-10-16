@@ -137,6 +137,7 @@
 	pockets.max_storage_space = 8
 
 	light_holder = new(src)
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/clothing/suit/storage/marine/Destroy()
 	QDEL_NULL(light_holder)

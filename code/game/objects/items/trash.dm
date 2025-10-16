@@ -76,6 +76,10 @@
 	name = "Popcorn"
 	icon_state = "popcorn"
 
+/obj/item/trash/popcorn/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/trash/raisins
 	name = "4no raisins"
 	gender = PLURAL

@@ -855,6 +855,10 @@
 	density = TRUE
 	health = 100
 
+/obj/structure/prop/hybrisa/supermart/souto_man_prop/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
+
 /obj/structure/prop/hybrisa/supermart/souto_rack
 	name = "Souto cans rack"
 	icon = 'icons/obj/structures/props/hybrisa/souto.dmi'

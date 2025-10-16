@@ -1079,6 +1079,10 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_WY
 
+/obj/item/device/radio/headset/distress/WY/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/device/radio/headset/distress/WY/guard
 	misc_tracking = TRUE
 	locate_setting = TRACKER_CL
@@ -1146,6 +1150,10 @@
 		"Corporate Liaison" = TRACKER_CL
 	)
 	additional_hud_types = list(MOB_HUD_FACTION_WY)
+
+/obj/item/device/radio/headset/distress/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/device/radio/headset/distress/pmc/commando
 	name = "W-Y commando headset"

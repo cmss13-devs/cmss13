@@ -2255,6 +2255,7 @@
 #include "code\modules\mob\living\silicon\silicon.dm"
 #include "code\modules\mob\living\silicon\decoy\decoy.dm"
 #include "code\modules\mob\living\simple_animal\bat.dm"
+#include "code\modules\mob\living\simple_animal\moth.dm"
 #include "code\modules\mob\living\simple_animal\parrot.dm"
 #include "code\modules\mob\living\simple_animal\simple_animal.dm"
 #include "code\modules\mob\living\simple_animal\slug.dm"

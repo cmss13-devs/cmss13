@@ -905,6 +905,10 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv624/lazarus/corporate_dome)
+"aBY" = (
+/mob/living/simple_animal/moth,
+/turf/open/floor/wood/ship,
+/area/lv624/ground/caves/west_caves)
 "aBZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2762,6 +2766,10 @@
 /obj/item/shard,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"bMg" = (
+/mob/living/simple_animal/moth,
+/turf/open/floor/ancient_temple/floor_20,
+/area/lv624/ground/caves/east_caves)
 "bMz" = (
 /obj/structure/pipes/vents/scrubber_hybrisa,
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
@@ -4126,6 +4134,10 @@
 	},
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
 /area/lv624/ground/caves/north_east_caves)
+"cGf" = (
+/mob/living/simple_animal/moth,
+/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/area/lv624/ground/caves/north_east_caves)
 "cGk" = (
 /obj/structure/platform/stone/ancient_temple/north,
 /obj/structure/platform/stone/ancient_temple/west{
@@ -5225,6 +5237,12 @@
 "dqf" = (
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/ground/jungle/north_west_jungle)
+"dqm" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/lv624/ground/jungle/south_east_jungle)
 "drf" = (
 /obj/structure/platform_decoration/stone/ancient_temple/alt/west,
 /obj/effect/hunter/ancient_temple/rubble/rubble_3,
@@ -6669,6 +6687,10 @@
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/lv624/ground/caves/south_east_caves)
+"enk" = (
+/mob/living/simple_animal/moth,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lv624/ground/caves/north_west_caves)
 "enp" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 1
@@ -8169,6 +8191,7 @@
 /area/lv624/lazarus/kitchen)
 "fij" = (
 /obj/item/clothing/mask/yautja_flavor,
+/mob/living/simple_animal/moth,
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
 /area/lv624/ground/caves/west_caves)
 "fik" = (
@@ -9328,6 +9351,10 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/interior/tatami,
 /area/lv624/lazarus/fitness)
+"fVk" = (
+/mob/living/simple_animal/moth,
+/turf/open/floor/ancient_temple/base,
+/area/lv624/ground/caves/central_caves)
 "fVp" = (
 /obj/effect/hunter/ancient_temple/deco_border/deco_border3{
 	dir = 1
@@ -13708,6 +13735,10 @@
 /area/lv624/ground/river/east_river{
 	supports_fishing = 1
 	})
+"izf" = (
+/mob/living/simple_animal/moth,
+/turf/open/floor/ancient_temple/floor_2,
+/area/lv624/ground/caves/north_west_caves)
 "izg" = (
 /obj/structure/platform_decoration/wood/west,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -22880,6 +22911,10 @@
 "oaS" = (
 /turf/open/floor/ancient_temple/floor_20/north,
 /area/lv624/ground/caves/east_caves)
+"oaY" = (
+/mob/living/simple_animal/moth,
+/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/area/lv624/ground/caves/north_west_caves)
 "obb" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
 /turf/open/floor/ancient_temple/ruined/north,
@@ -23825,6 +23860,11 @@
 /obj/structure/machinery/big_computers/computerwhite/computer1,
 /turf/open/floor/strata/light_purple_tile,
 /area/lv624/lazarus/research)
+"oDL" = (
+/mob/living/simple_animal/hostile/retaliate/giant_lizard,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/barrens/south_west_barrens)
 "oEh" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /obj/structure/flora/jungle/vines/blue/light_1,
@@ -26819,6 +26859,7 @@
 /area/lv624/lazarus/main_hall)
 "qtI" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
+/mob/living/simple_animal/moth,
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
 /area/lv624/ground/caves/north_east_caves)
 "que" = (
@@ -30272,6 +30313,10 @@
 "sEr" = (
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lv624/ground/colony/south_medbay_road)
+"sEC" = (
+/mob/living/simple_animal/moth,
+/turf/open/floor/ancient_temple/floor_13/east,
+/area/lv624/ground/caves/north_east_caves)
 "sEM" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
@@ -30791,6 +30836,7 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "sSv" = (
 /obj/effect/hunter/ancient_temple/deco_border,
+/mob/living/simple_animal/moth,
 /turf/open/floor/ancient_temple/base,
 /area/lv624/ground/caves/east_caves)
 "sSF" = (
@@ -33526,6 +33572,10 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/north_west_caves)
+"uyp" = (
+/mob/living/simple_animal/moth,
+/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/area/lv624/ground/caves/west_caves)
 "uyK" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/lv_grass/layer1,
@@ -33567,6 +33617,12 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
+"uzR" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/turf/open/floor/prison/cell_stripe/west,
+/area/lv624/lazarus/landing_zones/lz1)
 "uzS" = (
 /obj/effect/hunter/ancient_temple/rubble/rubble_6{
 	pixel_x = -8;
@@ -34727,6 +34783,13 @@
 /obj/structure/flora/grass/tallgrass/jungle_alt_2,
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/jungle/central_jungle)
+"vnv" = (
+/obj/effect/hunter/ancient_temple/deco_border{
+	dir = 4
+	},
+/mob/living/simple_animal/moth,
+/turf/open/floor/ancient_temple/floor_2,
+/area/lv624/ground/caves/north_east_caves)
 "vnR" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
@@ -35460,6 +35523,12 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/south_east_caves)
+"vPk" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lv624/ground/barrens/south_west_barrens)
 "vPq" = (
 /obj/structure/flora/jungle/vines/blue/light_1,
 /turf/open/floor/brown_dirt/random_rocks_alt{
@@ -37547,6 +37616,10 @@
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/ground/jungle/east_central_jungle)
+"xeQ" = (
+/mob/living/simple_animal/moth,
+/turf/open/floor/ancient_temple/floor_2,
+/area/lv624/ground/caves/west_caves)
 "xeS" = (
 /obj/structure/closet/cabinet,
 /obj/item/roller/bedroll,
@@ -38791,6 +38864,10 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/prison/floor_marked,
 /area/lv624/lazarus/quartstorage)
+"xXH" = (
+/mob/living/simple_animal/moth,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
 "xYg" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_east_jungle)
@@ -40239,7 +40316,7 @@ xLg
 xLg
 xLg
 xLg
-wYc
+xLg
 nBI
 xLg
 xLg
@@ -40461,9 +40538,9 @@ wYc
 wGl
 wGl
 xLg
-nWz
-wYc
-eKD
+nBI
+xLg
+nBI
 xLg
 xLg
 cuG
@@ -40685,8 +40762,8 @@ wYc
 xLg
 oYA
 oYA
-wYc
-wYc
+xLg
+xLg
 xLg
 xLg
 cuG
@@ -40908,8 +40985,8 @@ xLg
 kkE
 xLg
 nWz
-wYc
-wYc
+xLg
+xLg
 nWz
 xLg
 cuG
@@ -41131,8 +41208,8 @@ qrD
 nWz
 oYA
 jkG
-eKD
-wYc
+dvn
+xLg
 xLg
 xLg
 xLg
@@ -41517,9 +41594,9 @@ uRF
 uRF
 uRF
 tcR
-tcR
-tcR
-tcR
+tBJ
+tBJ
+tBJ
 tcR
 uRF
 uRF
@@ -41805,7 +41882,7 @@ xLg
 cuG
 cuG
 ptc
-gFk
+oDL
 djZ
 xCW
 kui
@@ -41982,7 +42059,7 @@ qMD
 gjA
 dZF
 gjA
-dZF
+uyp
 gjA
 qMD
 vLL
@@ -42702,7 +42779,7 @@ cuG
 xLg
 nWz
 xLg
-nWz
+nBI
 bYB
 iIm
 rnu
@@ -42931,7 +43008,7 @@ xLg
 bYB
 lXy
 xLg
-nWz
+nBI
 xLg
 xLg
 wYc
@@ -43287,7 +43364,7 @@ oEW
 egp
 oEW
 gBC
-sMk
+oaY
 egp
 egp
 gBC
@@ -43830,7 +43907,7 @@ eDe
 xLg
 xLg
 xLg
-nWz
+nBI
 xLg
 xLg
 xxQ
@@ -44052,7 +44129,7 @@ cuG
 ehq
 fFo
 xLg
-qrD
+vPk
 nWz
 xLg
 xLg
@@ -44382,7 +44459,7 @@ stj
 egp
 oEW
 sMk
-sMk
+oaY
 sMk
 sMk
 egp
@@ -46465,7 +46542,7 @@ uRF
 tcR
 hnl
 tRY
-tRY
+xeQ
 tRY
 tRY
 tcR
@@ -47074,7 +47151,7 @@ kuY
 cga
 bly
 icW
-bly
+enk
 icW
 bly
 ikn
@@ -47087,7 +47164,7 @@ jAt
 sMk
 gBC
 sMk
-gBC
+izf
 sMk
 sMk
 sMk
@@ -47511,7 +47588,7 @@ egp
 egp
 sMk
 sMk
-sMk
+oaY
 sMk
 sMk
 jCi
@@ -47571,7 +47648,7 @@ nMp
 tRY
 dZF
 tRY
-dZF
+uyp
 eWW
 tcR
 tcR
@@ -47605,7 +47682,7 @@ rQW
 rQW
 rQW
 gjC
-gjC
+aBY
 nTe
 rQW
 rEt
@@ -48226,7 +48303,7 @@ nUP
 tBJ
 nMp
 dZF
-tRY
+xeQ
 tRY
 dZF
 dZF
@@ -50226,7 +50303,7 @@ jCi
 gBC
 xRG
 gBC
-gBC
+izf
 gBC
 jCi
 jJD
@@ -52686,7 +52763,7 @@ eHo
 qnr
 qjL
 hYr
-mTk
+xXH
 nnh
 qjL
 gdO
@@ -66360,7 +66437,7 @@ aOh
 jAf
 ltO
 bvF
-nAp
+fVk
 kAD
 vOp
 ack
@@ -73495,7 +73572,7 @@ gwz
 baI
 uPc
 faH
-djb
+cGf
 faH
 faH
 gIP
@@ -75927,7 +76004,7 @@ tjC
 rRZ
 syP
 amh
-amh
+uzR
 uBw
 nnJ
 rRZ
@@ -76375,7 +76452,7 @@ tjC
 xDP
 xum
 sMW
-sMW
+dqm
 iHu
 xDP
 xDP
@@ -76422,7 +76499,7 @@ hqF
 uvR
 fsK
 ovr
-ovr
+vnv
 ovr
 tBs
 alv
@@ -76664,7 +76741,7 @@ laC
 hvo
 dkB
 ooQ
-orn
+sEC
 bpf
 mub
 eXf
@@ -77343,7 +77420,7 @@ mub
 mub
 jxw
 hyA
-cvr
+bMg
 vzb
 lwD
 lwD

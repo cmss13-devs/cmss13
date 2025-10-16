@@ -695,8 +695,9 @@
 	color = "#535963"
 	walltype = WALL_CAVE
 	turf_flags = TURF_HULL
-	noblend_turfs = list(/turf/closed/wall/ancient_temple, /turf/closed/wall/ancient_temple/sandstone/runed, /turf/closed/wall/ancient_temple/sandstone/runed/decor, /turf/closed/wall/ancient_temple/sandstone/runed/deco_1, /turf/closed/wall/ancient_temple/sandstone/runed/deco_2, /turf/closed/wall/mineral/bone_resin)
 	baseturfs = /turf/open/gm/dirt
+	noblend_turfs = list(/turf/closed/wall/ancient_temple, /turf/closed/wall/ancient_temple/sandstone/runed, /turf/closed/wall/ancient_temple/sandstone/runed/decor, /turf/closed/wall/ancient_temple/sandstone/runed/deco_1, /turf/closed/wall/ancient_temple/sandstone/runed/deco_2, /turf/closed/wall/mineral/bone_resin)
+
 	minimap_color = MINIMAP_BLACK
 
 /turf/closed/wall/rock/Initialize(mapload)

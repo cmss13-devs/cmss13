@@ -8,10 +8,10 @@
 
 	var/ready = FALSE
 	var/spawning = FALSE//Referenced when you want to delete the new_player later on in the code.
-	///The last message for this player with their larva queue information
-	var/larva_queue_cached_message
-	///The time when the larva_queue_cached_message should be considered stale
-	var/larva_queue_message_stale_time
+	///The last message for this player with their larva pool information
+	var/larva_pool_cached_message
+	///The time when the larva_pool_cached_message should be considered stale
+	var/larva_pool_message_stale_time
 
 	/// The window that we display the main menu in
 	var/datum/tgui_window/lobby_window
@@ -23,6 +23,10 @@
 	var/datum/callback/execute_on_confirm
 
 /mob/new_player/Initialize()
+	#ifdef QUICK_START
+	ready = TRUE
+	#endif
+
 	. = ..()
 	GLOB.dead_mob_list -= src
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
@@ -104,6 +108,7 @@
 
 	if(observer.client)
 		observer.client.change_view(GLOB.world_view_size)
+		send_tacmap_assets_latejoin(observer)
 
 	observer.set_huds_from_prefs()
 
@@ -151,7 +156,7 @@
 
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
 
-	if (ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
+	if(ROUND_TIME < XENO_ROUNDSTART_LATEJOIN_LARVA_TIME)
 		latejoin_larva_drop = SSticker.mode.latejoin_larva_drop_early
 
 	if(latejoin_larva_drop && SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= latejoin_larva_drop)
@@ -160,7 +165,7 @@
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(hive.latejoin_burrowed == TRUE)
-				if(length(hive.totalXenos) && (hive.hive_location || ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2))
+				if(length(hive.totalXenos) && (hive.hive_location || ROUND_TIME < XENO_ROUNDSTART_LATEJOIN_LARVA_TIME))
 					hive.stored_larva++
 					hive.hive_ui.update_burrowed_larva()
 
@@ -174,6 +179,7 @@
 				msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)]</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 			if(client.player_data && client.player_data.playtime_loaded && ((round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= CONFIG_GET(number/notify_new_player_age)))
 				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
+			send_tacmap_assets_latejoin(character)
 
 	character.client.init_verbs()
 	qdel(src)

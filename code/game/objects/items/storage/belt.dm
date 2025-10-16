@@ -844,7 +844,7 @@
 
 /obj/item/storage/belt/marine/smartgunner
 	name = "\improper M280 pattern smartgunner drum belt"
-	desc = "Despite the fact that 1. drum magazines are incredibly non-ergonomical, and 2. require incredibly precise machining in order to fit universally (spoiler, they don't, adding further to the myth of 'Smartgun Personalities'), the USCM decided to issue a modified marine belt (more formally known by the designation M280) with hooks and dust covers (overly complex for the average jarhead) for the M56B system's drum munitions. When the carry catch on the drum isn't getting stuck in the oiled up velcro, the rig actually does do a decent job at holding a plentiful amount of drums. But at the end of the day, compared to standard rigs... it sucks, but isn't that what being a Marine is all about?"
+	desc = "Despite the fact that 1. drum magazines are incredibly non-ergonomical, and 2. require incredibly precise machining in order to fit universally (spoiler, they don't, adding further to the myth of 'Smartgun Personalities'), the USCM decided to issue a modified marine belt (more formally known by the designation M280) with hooks and dust covers (overly complex for the average jarhead) for the M56A2 system's drum munitions. When the carry catch on the drum isn't getting stuck in the oiled up velcro, the rig actually does do a decent job at holding a plentiful amount of drums. But at the end of the day, compared to standard rigs... it sucks, but isn't that what being a Marine is all about?"
 	icon_state = "sgbelt_ammo"
 	storage_slots = 6
 	bypass_w_limit = list(
@@ -963,7 +963,7 @@
 	new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
 
 
-// M56E HMG gunner belt
+// M2C HMG/M56D gunner belt
 /obj/item/storage/belt/marine/m2c
 	name = "\improper M804 heavygunner storage rig"
 	desc = "The M804 heavygunner storage rig is an M276 pattern toolbelt rig modified to carry ammunition for heavy machinegun systems, and engineering tools for the gunner."
@@ -1840,18 +1840,12 @@
 
 /obj/item/storage/belt/gun/m10
 	name = "\improper M276 pattern M10 holster rig"
-	desc = "Special issue variant of the M276 - designed exclusively to securely hold a M10 Auto Pistol and eight spare magazines, allowing quick access in close-quarters situations. Ideal for defending against boarding threats, this belt supports rapid deployment of high-rate sidearms while maintaining stability in zero-G environments."
+	desc = "Special issue variant of the M276 - designed exclusively to securely hold a M10 Auto Pistol and seven spare magazines, allowing quick access in close-quarters situations. Ideal for defending against boarding threats, this belt supports rapid deployment of high-rate sidearms while maintaining stability in zero-G environments."
 	icon_state = "m10_armor"
-	item_state = "marinebelt"
-	icon = 'icons/obj/items/clothing/belts/belts.dmi'
-	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
-	)
-	gun_has_gamemode_skin = TRUE
-	storage_slots = 9
+	flags_atom = FPRINT // has gamemode skin
+	storage_slots = 8
 	max_w_class = 5
+	gun_has_gamemode_skin = TRUE
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/m10,
 		/obj/item/ammo_magazine/pistol,
@@ -2527,8 +2521,31 @@
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 
+/obj/item/storage/belt/gun/smartgunner/marsoc
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
+/obj/item/storage/belt/gun/smartgunner/marsoc/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/socom/equipped())
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/smartgun/heap(src)
+	new /obj/item/ammo_magazine/smartgun/heap(src)
+	new /obj/item/ammo_magazine/smartgun/heap(src)
+
+/obj/item/storage/belt/gun/smartgunner/marsoc/full_low_threat/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/socom/equipped())
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/smartgun(src)
+	new /obj/item/ammo_magazine/smartgun(src)
+	new /obj/item/ammo_magazine/smartgun(src)
+
 /obj/item/storage/belt/gun/smartgunner/pmc
-	name = "\improper WY-TM410 pattern 'Dirty' smartgunner sidearm rig"
+	name = "\improper WY-TM410 pattern smartgunner sidearm rig"
 	desc = "A special pattern of W-Y made combat belt, designed to carry smartgun ammunition and a sidearm."
 	icon = 'icons/obj/items/clothing/belts/belts_by_faction/WY.dmi'
 	icon_state = "wy_sgbelt"
@@ -2553,8 +2570,8 @@
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new /obj/item/ammo_magazine/smartgun(src)
+	new /obj/item/ammo_magazine/smartgun(src)
 
 /obj/item/storage/belt/gun/smartgunner/commando
 	name = "\improper WY-TM410 pattern 'Terminator' smartgunner sidearm rig"
@@ -2609,9 +2626,34 @@
 /obj/item/storage/belt/gun/smartgunner/clf/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
-	new /obj/item/ammo_magazine/smartgun(src)
-	new /obj/item/ammo_magazine/smartgun(src)
-	new /obj/item/ammo_magazine/smartgun(src)
+	new /obj/item/ammo_magazine/smartgun/rusty(src)
+	new /obj/item/ammo_magazine/smartgun/rusty(src)
+	new /obj/item/ammo_magazine/smartgun/rusty(src)
+
+/obj/item/storage/belt/gun/smartgunner/clf/full_alt/fill_preset_inventory()
+	switch(rand(1, 5))
+		if(1)
+			handle_item_insertion(new /obj/item/weapon/gun/revolver/upp())
+			new /obj/item/ammo_magazine/revolver/upp(src)
+			new /obj/item/ammo_magazine/revolver/upp(src)
+		if(2)
+			handle_item_insertion(new /obj/item/weapon/gun/revolver/cmb())
+			new /obj/item/ammo_magazine/revolver/cmb(src)
+			new /obj/item/ammo_magazine/revolver/cmb(src)
+		if(3)
+			handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911())
+			new /obj/item/ammo_magazine/pistol/m1911(src)
+			new /obj/item/ammo_magazine/pistol/m1911(src)
+		if(4)
+			handle_item_insertion(new /obj/item/weapon/gun/pistol/t73())
+			new /obj/item/ammo_magazine/pistol/t73(src)
+			new /obj/item/ammo_magazine/pistol/t73(src)
+		if(5)
+			handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy())
+			new /obj/item/ammo_magazine/pistol/heavy(src)
+			new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/smartgun/rusty(src)
+	new /obj/item/ammo_magazine/smartgun/rusty(src)
 
 /obj/item/storage/belt/gun/mortarbelt
 	name="\improper M276 pattern mortar operator belt"

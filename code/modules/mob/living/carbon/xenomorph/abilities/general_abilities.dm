@@ -522,85 +522,6 @@
 	if(xeno && !xeno.is_mob_incapacitated() || !xeno.buckled || !xeno.evolving && xeno.plasma_stored >= plasma_cost)
 		return TRUE
 
-
-/datum/action/xeno_action/onclick/tacmap
-	name = "View Tactical Map"
-	action_icon_state = "toggle_queen_zoom"
-
-	var/mob/living/carbon/xenomorph/queen/tracked_queen
-	var/hivenumber
-
-/datum/action/xeno_action/onclick/tacmap/Destroy()
-	tracked_queen = null
-	return ..()
-
-/datum/action/xeno_action/onclick/tacmap/give_to(mob/living/carbon/xenomorph/xeno)
-	. = ..()
-
-	hivenumber = xeno.hive.hivenumber
-	RegisterSignal(xeno.hive, COMSIG_HIVE_NEW_QUEEN, PROC_REF(handle_new_queen))
-	RegisterSignal(xeno.hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(handle_unhide_tacmap))
-
-	if(!xeno.hive.living_xeno_queen && !xeno.hive.allow_no_queen_actions)
-		hide_from(xeno)
-		return
-
-	if(!xeno.hive.living_xeno_queen?.ovipositor && !xeno.hive.tacmap_requires_queen_ovi)
-		hide_from(xeno)
-
-	handle_new_queen(new_queen = xeno.hive.living_xeno_queen)
-
-/datum/action/xeno_action/onclick/tacmap/remove_from(mob/living/carbon/xenomorph/xeno)
-	. = ..()
-	UnregisterSignal(GLOB.hive_datum[hivenumber], COMSIG_HIVE_NEW_QUEEN)
-
-/// handles the addition of a new queen, hiding if appropriate
-/datum/action/xeno_action/onclick/tacmap/proc/handle_new_queen(datum/hive_status/hive, mob/living/carbon/xenomorph/queen/new_queen)
-	SIGNAL_HANDLER
-
-	if(tracked_queen)
-		UnregisterSignal(tracked_queen, list(COMSIG_QUEEN_MOUNT_OVIPOSITOR, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR))
-
-	tracked_queen = new_queen
-
-	if(!tracked_queen?.ovipositor)
-		hide_from(owner)
-
-	RegisterSignal(tracked_queen, COMSIG_QUEEN_MOUNT_OVIPOSITOR, PROC_REF(handle_mount_ovipositor))
-	RegisterSignal(tracked_queen, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(handle_dismount_ovipositor))
-
-/// deals with the queen mounting the ovipositor, unhiding the action from the user
-/datum/action/xeno_action/onclick/tacmap/proc/handle_mount_ovipositor()
-	SIGNAL_HANDLER
-
-	unhide_from(owner)
-
-/// deals with the queen dismounting the ovipositor, hiding the action from the user
-/datum/action/xeno_action/onclick/tacmap/proc/handle_dismount_ovipositor()
-	SIGNAL_HANDLER
-
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno.hive?.tacmap_requires_queen_ovi)
-		hide_from(owner)
-
-/datum/action/xeno_action/onclick/tacmap/proc/handle_unhide_tacmap()
-	SIGNAL_HANDLER
-
-	unhide_from(owner)
-
-/datum/action/xeno_action/onclick/tacmap/can_use_action()
-	if(!owner)
-		return FALSE
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno.is_mob_incapacitated() || xeno.dazed)
-		return FALSE
-	return TRUE
-
-/datum/action/xeno_action/onclick/tacmap/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.xeno_tacmap()
-	return ..()
-
 /datum/action/xeno_action/active_toggle/toggle_meson_vision
 	name = "Toggle Meson Vision"
 	action_icon_state = "project_xeno"
@@ -610,11 +531,11 @@
 
 /datum/action/xeno_action/active_toggle/toggle_meson_vision/enable_toggle()
 	. = ..()
-	owner.sight |= SEE_TURFS
+	owner.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 0
 
 /datum/action/xeno_action/active_toggle/toggle_meson_vision/disable_toggle()
 	. = ..()
-	owner.sight &= ~SEE_TURFS
+	owner.hud_used.plane_masters["[BLACKNESS_PLANE]"].alpha = 255
 
 /mob/living/carbon/xenomorph/proc/add_abilities()
 	if(!base_actions)

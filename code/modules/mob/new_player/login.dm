@@ -247,12 +247,23 @@
 		if("keyboard")
 			playsound_client(client, get_sfx("keyboard"), vol = 20)
 
-/// Join as a 'xeno' - set us up in the larva queue
+/// Join as a 'xeno' - set us up in the larva pool
 /mob/new_player/proc/observe_for_xeno()
-	if(client.prefs && !(client.prefs.be_special & BE_ALIEN_AFTER_DEATH))
-		client.prefs.be_special |= BE_ALIEN_AFTER_DEATH
-		to_chat(src, SPAN_BOLDNOTICE("You will now be considered for Xenomorph after unrevivable death events (where possible)."))
+	if(!client)
+		return
+
+	if(client.prefs && !(client.prefs.be_special & BE_ALIEN))
+		client.prefs.be_special |= BE_ALIEN
+		to_chat(src, SPAN_BOLDNOTICE("SpecialRole Candidacy was forced so you can be considered for Xenomorph."))
+
+	var/client/current_client = client
+
 	attempt_observe()
+
+	// If a mod wants to join as a xeno, disable their larva protection so that they can enter the larva pool.
+	if(check_client_rights(current_client, R_MOD, FALSE) && current_client.mob)
+		var/mob/dead/observer/mod_observer = current_client.mob
+		mod_observer.admin_larva_protection = FALSE
 
 /mob/new_player/proc/lobby()
 	if(!client)

@@ -149,6 +149,9 @@
 		object_used.afterattack(atom_clicked, src, 0, mods)
 		return
 
+	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, A, params) & COMSIG_MOB_CLICK_CANCELED)
+		return
+
 	RangedAttack(atom_clicked, mods)
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, atom_clicked, mods)
 	return

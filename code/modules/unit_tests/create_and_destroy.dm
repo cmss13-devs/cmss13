@@ -160,5 +160,5 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	var/width = run_loc_floor_top_right.x - run_loc_floor_bottom_left.x + 1
 	var/height = run_loc_floor_top_right.y - run_loc_floor_bottom_left.y + 1
 	for(var/turf/turf as anything in CORNER_BLOCK(run_loc_floor_bottom_left, width, height))
-		message_admins("Changing [turf] - [turf.type] at [turf.x],[turf.y] to [original_turf_type]") // TODO: Remove this
+		debug_log("C&D: Changing [turf] - [turf.type] at [turf.x],[turf.y] back to [original_turf_type]")
 		turf.ChangeTurf(original_turf_type, original_baseturfs)

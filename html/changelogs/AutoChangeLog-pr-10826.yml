@@ -1,4 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - code_imp: "Adds backend functionality of unique-action for all items"

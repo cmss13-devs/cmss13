@@ -1,5 +1,0 @@
-author: "Steelpoint"
-delete-after: True
-changes:
-  - maptweak: "The loot inside the west dropship on Chances Claim has been partially distributed to the east dropship. Furthermore, the east dropship is now accessible via C4 instead of needing to be opened from the west dropship."
-  - maptweak: "Additional resin nodes and sticky resin tiles have been placed near the reactor core entrance. To slightly deter early game intruders."

@@ -34,6 +34,7 @@
 #define COLOR_CYAN "#00FFFF"
 /// Magenta	rgb(255, 0, 255) R+B
 #define COLOR_MAGENTA "#FF00FF"
+#define COLOR_PINK "#FFC0CB"
 /// Yellow	rgb(255, 255, 0) R+G
 #define COLOR_YELLOW "#FFFF00"
 
@@ -64,6 +65,7 @@
 ///light green rgb( 0, 128, 0)
 #define COLOR_LIGHT_GREEN "#008000"
 #define COLOR_DARK_MODERATE_LIME_GREEN "#44964A"
+#define COLOR_LIME "#32CD32"
 
 #define COLOR_TEAL "#008080"
 

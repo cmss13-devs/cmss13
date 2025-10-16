@@ -664,6 +664,56 @@
 	item_state = "upp_firefighter_alt"
 	uniform_restricted = FALSE
 
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp/alt
+	icon_state = "upp_firefighter"
+	item_state = "upp_firefighter"
+
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp/synth
+	name = "T-20 synthetic fire response coat"
+	desc = "A rugged, no-frills fire-resistant overcoat issued to UPP industrial and emergency crews. Based on the PyroTex LT design but using cheaper, domestically produced materials, it offers basic protection against heat and debris at the cost of weight and comfort."
+
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	storage_slots = 4
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
+
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp/synth/Initialize()
+	flags_atom |= NO_NAME_OVERRIDE
+	flags_marine_armor |= SYNTH_ALLOWED
+	return ..()
+
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp/synth/alt
+	name = "T-20 synthetic fire response coat"
+	desc = "A rugged, no-frills fire-resistant overcoat issued to UPP industrial and emergency crews. Based on the PyroTex LT design but using cheaper, domestically produced materials, it offers basic protection against heat and debris at the cost of weight and comfort."
+	icon_state = "upp_firefighter"
+	item_state = "upp_firefighter"
+
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	storage_slots = 4
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
+
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp/synth/alt/Initialize()
+	flags_atom |= NO_NAME_OVERRIDE
+	flags_marine_armor |= SYNTH_ALLOWED
+	return ..()
+
 // Kelland Mining
 
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland

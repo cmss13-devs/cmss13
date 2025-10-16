@@ -280,31 +280,6 @@
 		var/datum/character_trait/character_trait = GLOB.character_traits[trait]
 		character_trait.apply_trait(new_human, src)
 
-/datum/equipment_preset/proc/get_minimap_icon(mob/living/carbon/human/user)
-	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', user.assigned_squad?.background_icon ? user.assigned_squad.background_icon : minimap_background)
-
-	if(islist(minimap_icon))
-		for(var/icons in minimap_icon)
-			var/iconstate = icons ? icons : "unknown"
-			var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
-			icon.appearance_flags = RESET_COLOR
-
-			if(minimap_icon[icons])
-				icon.color = minimap_icon[icons]
-			background.overlays += icon
-	else
-		var/obj/item/card/id/ID = user.get_idcard()
-		var/icon_to_use
-		if(ID.minimap_icon_override)
-			icon_to_use = ID.minimap_icon_override
-		else
-			icon_to_use = minimap_icon ? minimap_icon : "unknown"
-		var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = icon_to_use)
-		icon.appearance_flags = RESET_COLOR
-		background.overlays += icon
-
-	return background
-
 /datum/equipment_preset/strip //For removing all equipment
 	name = "*strip*"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -1016,9 +991,12 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		list("Laser Sight", 0, /obj/item/attachable/lasersight, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Masterkey Shotgun", 0, /obj/item/attachable/attached_gun/shotgun, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 0, /obj/item/attachable/compensator, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
+		list("M10 Compensator", 0, /obj/item/attachable/compensator/m10, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Red-Dot Sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
+		list("Mini Red-Dot Sight", 0, /obj/item/attachable/reddot/small, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Reflex Sight", 0, /obj/item/attachable/reflex, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Suppressor", 0, /obj/item/attachable/suppressor, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
+		list("Suppressor, Compact", 0, /obj/item/attachable/suppressor/sleek, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Vertical Grip", 0, /obj/item/attachable/verticalgrip, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),

@@ -82,22 +82,22 @@
 /obj/item/pamphlet/skill/spotter/can_use(mob/living/carbon/human/user)
 	var/specialist_skill = user.skills.get_skill_level(SKILL_SPEC_WEAPONS)
 	if(specialist_skill == SKILL_SPEC_SNIPER)
-		to_chat(user, SPAN_WARNING("You don't need to use this! Give it to another marine to make them your spotter."))
+		to_chat(user, SPAN_WARNING("Вам нет необходимости это использовать! Отдайте другому морпеху, чтобы сделать его вашим корректировщиком."))
 		return FALSE
 	if(specialist_skill != SKILL_SPEC_DEFAULT)
-		to_chat(user, SPAN_WARNING("You're already a specialist! Give this to a lesser trained marine."))
+		to_chat(user, SPAN_WARNING("Вы уже специалист! Отдайте это слабо натренированному морпеху."))
 		return FALSE
 
 	if(user.job != JOB_SQUAD_MARINE)
-		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
+		to_chat(user, SPAN_WARNING("Это может использовать только стрелок отряда."))
 		return
 
 	var/obj/item/card/id/ID = user.get_idcard()
 	if(!ID) //not wearing an ID
-		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		to_chat(user, SPAN_WARNING("Перед тем как это использовать, вы должны надеть ваш ID."))
 		return FALSE
 	if(!ID.check_biometrics(user))
-		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		to_chat(user, SPAN_WARNING("Перед тем как это использовать, вы должны надеть ваш ID."))
 		return FALSE
 
 	return ..()
@@ -127,7 +127,7 @@
 
 	var/obj/item/card/id/id_card = user.get_idcard()
 	if(!id_card || !id_card.check_biometrics(user)) //not wearing an ID
-		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		to_chat(user, SPAN_WARNING("Перед тем как это использовать, вы должны надеть ваш ID."))
 		return FALSE
 
 	if(user.rank_fallback == "hgmp"|| (id_card.minimap_icon_override == "honorguard"))
@@ -170,22 +170,22 @@
 /obj/item/pamphlet/skill/loader/can_use(mob/living/carbon/human/user)
 	var/specialist_skill = user.skills.get_skill_level(SKILL_SPEC_WEAPONS)
 	if(specialist_skill == SKILL_SPEC_ROCKET)
-		to_chat(user, SPAN_WARNING("You don't need to use this! Give it to another marine to make them your loader."))
+		to_chat(user, SPAN_WARNING("Вам нет необходимости это использовать! Отдайте другому морпеху, чтобы сделать его вашим заряжающим."))
 		return FALSE
 	if(specialist_skill != SKILL_SPEC_DEFAULT)
-		to_chat(user, SPAN_WARNING("You're already a specialist! Give this to a lesser trained marine."))
+		to_chat(user, SPAN_WARNING("Вы уже специалист! Отдайте это слабо натренированному морпеху."))
 		return FALSE
 
 	if(user.job != JOB_SQUAD_MARINE)
-		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
+		to_chat(user, SPAN_WARNING("Это может использовать только стрелок отряда."))
 		return
 
 	var/obj/item/card/id/ID = user.get_idcard()
 	if(!ID) //not wearing an ID
-		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		to_chat(user, SPAN_WARNING("Перед тем как это использовать, вы должны надеть ваш ID."))
 		return FALSE
 	if(!ID.check_biometrics(user))
-		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		to_chat(user, SPAN_WARNING("Перед тем как это использовать, вы должны надеть ваш ID."))
 		return FALSE
 
 	return ..()
@@ -210,15 +210,15 @@
 
 /obj/item/pamphlet/skill/mortar_operator/can_use(mob/living/carbon/human/user)
 	if(user.job != JOB_SQUAD_MARINE)
-		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
+		to_chat(user, SPAN_WARNING("Это может использовать только стрелок отряда."))
 		return
 
 	var/obj/item/card/id/ID = user.get_idcard()
 	if(!ID) //not wearing an ID
-		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		to_chat(user, SPAN_WARNING("Перед тем как это использовать, вы должны надеть ваш ID."))
 		return FALSE
 	if(!ID.check_biometrics(user))
-		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		to_chat(user, SPAN_WARNING("Перед тем как это использовать, вы должны надеть ваш ID."))
 		return FALSE
 
 	return ..()
@@ -243,19 +243,19 @@
 
 /obj/item/pamphlet/skill/k9_handler/can_use(mob/living/carbon/human/user)
 	if(isk9synth(user))
-		to_chat(user, SPAN_WARNING("You don't need to use this! Give it to another marine to make them your handler."))
+		to_chat(user, SPAN_WARNING("Вам нет необходимости это использовать! Отдайте другому морпеху, чтобы сделать его вашим кинологом."))
 		return FALSE
 
 	if(user.job != JOB_SQUAD_MEDIC && user.job != JOB_POLICE)
-		to_chat(user, SPAN_WARNING("This is not meant for you."))
+		to_chat(user, SPAN_WARNING("Это не для вас."))
 		return
 
 	var/obj/item/card/id/ID = user.get_idcard()
 	if(!istype(ID)) //not wearing an ID
-		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		to_chat(user, SPAN_WARNING("Перед тем как это использовать, вы должны надеть ваш ID."))
 		return FALSE
 	if(!ID.check_biometrics(user))
-		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		to_chat(user, SPAN_WARNING("Перед тем как это использовать, вы должны надеть ваш ID."))
 		return FALSE
 
 	return ..()
@@ -373,7 +373,7 @@
 		return FALSE
 
 	if(!(user.job in JOB_SQUAD_ROLES_LIST))
-		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
+		to_chat(user, SPAN_WARNING("Это может использовать только стрелок отряда."))
 		return FALSE
 
 	if(user.has_used_pamphlet && !bypass_pamphlet_limit)

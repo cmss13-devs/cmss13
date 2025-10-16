@@ -1,5 +1,9 @@
 /obj/item/weapon/gun/boltaction/vulture
     var/iff_enabled = FALSE
+/*
+Не забудь включить TOGGLE AUTO здесь по строке 3914:
+code/modules/projectiles/gun_attachables.dm
+*/
 
 /obj/item/weapon/gun/boltaction/vulture/Initialize(mapload, ...)
     . = ..()

@@ -168,6 +168,7 @@ SUBSYSTEM_DEF(cmtv)
 /// To ensure the chat is fully initialised after we nuke it, we wait a bit before sending it an action
 /datum/controller/subsystem/cmtv/proc/do_init_chat()
 	camera_operator.tgui_panel.window.send_message("game/tvmode")
+	camera_operator.fit_viewport()
 
 /// Takes a new mob to observe. If there is already a queued up mob, or a current perspective, they will be notified and dropped. This will become the new perspective in 10 seconds.
 /// If set to instant, we immediately switch to observe nothing. If set_showtime is set, the camera will stay on the new perspective for at least this long,

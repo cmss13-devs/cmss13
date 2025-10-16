@@ -691,7 +691,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	..()
 	health = rand(50,75)
 	if(prob(75))
-		set_opacity(TRUE)
+		opacity = TRUE
 	setDir(pick(NORTH,EAST,SOUTH,WEST))
 
 
@@ -762,7 +762,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 
 /obj/structure/flora/jungle/thickbush/proc/healthcheck()
 	if(health < 35 && opacity)
-		set_opacity(FALSE)
+		opacity = FALSE
 	if(health < 0)
 		if(prob(10))
 			icon_state = "stump[rand(1,2)]"

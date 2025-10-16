@@ -6,7 +6,7 @@
 	. = ..()
 
 	if(loc.opacity)
-		loc.set_opacity(FALSE)
+		loc.opacity = FALSE
 
 /obj/structure/interior_wall/apc
 	name = "\improper APC interior wall"

@@ -440,7 +440,7 @@
 	if(!loc || QDELETED(src))
 		return
 	density = FALSE
-	set_opacity(FALSE)
+	opacity = FALSE
 	open = TRUE
 	update_icon()
 	isSwitchingStates = FALSE
@@ -473,7 +473,7 @@
 	if(!loc || QDELETED(src))
 		return
 	density = TRUE
-	set_opacity(TRUE)
+	opacity = TRUE
 	open = FALSE
 	update_icon()
 	isSwitchingStates = FALSE

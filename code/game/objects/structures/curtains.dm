@@ -33,7 +33,7 @@
 /obj/structure/curtain/proc/toggle()
 	open = !open
 	if(!transparent)
-		set_opacity(!opacity)
+		opacity = !opacity
 	if(open)
 		icon_state = "[initial(icon_state)]-o"
 		layer = OBJ_LAYER

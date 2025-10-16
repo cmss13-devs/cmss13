@@ -88,7 +88,7 @@ SUBSYSTEM_DEF(cmtv)
 	if(href_list["abandon_cmtv"] && usr == current_perspective)
 		reset_perspective("Current user requested reset (topic)")
 
-	if(href_list["cancel_cmtv"] && usr == future_perspective.resolve())
+	if(href_list["cancel_cmtv"] && usr == future_perspective?.resolve())
 		reset_perspective("Future user requested reset (topic)")
 
 /datum/controller/subsystem/cmtv/proc/online()

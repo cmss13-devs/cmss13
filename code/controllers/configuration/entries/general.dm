@@ -703,7 +703,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/flag/ipcheck_reject_unknown
 	config_entry_value = FALSE
 
-
 /datum/config_entry/number/ipcheck_rate_day
 	config_entry_value = 1000
 	min_val = 0
@@ -715,6 +714,9 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/number/ipcheck_exempt_playtime_living
 	config_entry_value = 5
 	min_val = 0
+
+/datum/config_entry/string/ipcheck_fail_message
+	config_entry_value = "Please contact an Admin to whitelist you."
 
 /datum/config_entry/keyed_list/auth_urls
 	splitter = "|"

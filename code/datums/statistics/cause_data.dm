@@ -4,6 +4,11 @@ GLOBAL_LIST_INIT(exempted_cause_objects, typecacheof(list(
 	/obj/structure/machinery/defenses,
 )))
 
+GLOBAL_LIST_INIT(exempted_cause_areas, typecacheof(list(
+	/area/almayer/shipboard/firing_range_north,
+	/area/almayer/shipboard/firing_range_south
+)))
+
 /datum/cause_data
 	var/datum/weakref/weak_mob
 	var/ckey
@@ -29,8 +34,12 @@ GLOBAL_LIST_INIT(exempted_cause_objects, typecacheof(list(
 
 		if(causing_mob.mind)
 			ckey = causing_mob.mind.ckey
-		
+
 		if(causing_object && is_type_in_typecache(causing_object, GLOB.exempted_cause_objects))
+			return
+
+		var/area/mob_area = get_area(causing_mob)
+		if(is_type_in_typecache(mob_area, GLOB.exempted_cause_areas))
 			return
 
 		GLOB.ref_mob_to_last_cause_data_time[weak_mob.reference] = world.time

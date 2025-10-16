@@ -43,6 +43,7 @@ SUBSYSTEM_DEF(cmtv)
 		can_fire = FALSE
 		return SS_INIT_NO_NEED
 
+	perspective_display = new
 	RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_new_client))
 
 	var/camera = GLOB.directory[username]
@@ -50,7 +51,6 @@ SUBSYSTEM_DEF(cmtv)
 		can_fire = FALSE
 		return SS_INIT_NO_NEED
 
-	perspective_display = new
 	handle_new_camera(camera)
 	return SS_INIT_SUCCESS
 
@@ -126,6 +126,7 @@ SUBSYSTEM_DEF(cmtv)
 
 	camera_operator.prefs.hide_statusbar = TRUE
 	camera_operator.prefs.toggles_chat &= ~(CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_LISTENINGBUG)
+
 	camera_operator.prefs.auto_fit_viewport = TRUE
 	camera_operator.prefs.toggle_prefs |= TOGGLE_FULLSCREEN
 

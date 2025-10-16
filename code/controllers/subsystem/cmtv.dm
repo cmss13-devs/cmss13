@@ -39,12 +39,14 @@ SUBSYSTEM_DEF(cmtv)
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
 	if(!username || !CONFIG_GET(string/cmtv_link))
+		can_fire = FALSE
 		return SS_INIT_NO_NEED
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_new_client))
 
 	var/camera = GLOB.directory[username]
 	if(!camera)
+		can_fire = FALSE
 		return SS_INIT_NO_NEED
 
 	perspective_display = new
@@ -101,6 +103,7 @@ SUBSYSTEM_DEF(cmtv)
 	if(new_client.ckey != ckey(CONFIG_GET(string/cmtv_ckey)))
 		return
 
+	can_fire = TRUE
 	INVOKE_ASYNC(src, PROC_REF(handle_new_camera), new_client)
 
 /// Sets up the camera client, including assigning a new mob, making it widescreen, winsetting() for clarity

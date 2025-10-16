@@ -419,14 +419,15 @@
 	. = ..()
 	linked_cam.view_range = 4
 
-	if(SScmtv.current_perspective == user)
+	if(active && SScmtv.current_perspective == user)
 		SScmtv.reset_perspective("Broadcasting ended as dropped.")
 
 /obj/item/device/broadcasting/pickup(mob/user, silent)
 	. = ..()
 	linked_cam.view_range = 7
 
-	SScmtv.change_observed_mob(user, set_showtime = INFINITY)
+	if(active)
+		SScmtv.change_observed_mob(user, set_showtime = INFINITY)
 
 /obj/item/device/broadcasting/attack_self(mob/user)
 	. = ..()

@@ -37,7 +37,7 @@
 	// copies the properties of the clothing item to the accessory, in the future, take literally almost every var from ties.dm parent object and place it in clothing parent
 	var/obj/item/clothing/accessory/new_accessory = new accessory_path(loc)
 	new_accessory.name = name
-	if(flags_item == ITEM_PREDATOR) // checks for Pred Cape for recoloring
+	if(istype(src, /obj/item/clothing/yautja_cape)) // checks for Pred Cape for recoloring
 		new_accessory.color = color
 	new_accessory.icon = icon
 	new_accessory.icon_state = icon_state
@@ -74,6 +74,9 @@
 	if(!original_item)
 		to_chat(user, SPAN_NOTICE("Failed to revert [src] to its original item."))
 		return
+
+	if(istype(original_item, /obj/item/clothing/yautja_cape)) // checks for Pred Cape for recoloring
+		original_item.color = access.color
 
 	if(ismob(loc) && loc == user)
 		user.put_in_hands(original_item)

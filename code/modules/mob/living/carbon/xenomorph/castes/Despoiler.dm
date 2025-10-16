@@ -51,7 +51,6 @@
 		/datum/action/xeno_action/activable/xeno_spit/despoiler,
 		/datum/action/xeno_action/onclick/corrosive_slash,
 		/datum/action/xeno_action/onclick/decomposing_enzymes,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/despoiler.dmi'

@@ -10,40 +10,40 @@
 #define SQUAD_MARINE_5_RU "Эхо"
 #define SQUAD_MARINE_CRYO_RU "Фокстрот"
 #define SQUAD_MARINE_INTEL_RU "Интел"
-#define SQUAD_SOF_RU "SOF"
-#define SQUAD_CBRN_RU "CBRN"
+#define SQUAD_SOF_RU "ССО"
+#define SQUAD_CBRN_RU "РХБЗ"
 #define SQUAD_FORECON_RU "РАЗВЕДКА"
-#define SQUAD_SOLAR_RU "Дьяволы Солнца"
+#define SQUAD_SOLAR_RU "Дьяволы солнца"
 // Внимание! Эти названия участвуют в:
 // 		tgui/packages/tgui/interfaces/Orbit/index.tsx
 // ОФФы наговнокодили в интерфейсе, а мне впадлу рефакторить.
 
 // Job name defines
 #define JOB_SQUAD_MARINE_RU "Стрелок"
-#define JOB_SQUAD_LEADER_RU "Командир Отряда"
-#define JOB_SQUAD_ENGI_RU "Полевой Техник"
-#define JOB_SQUAD_MEDIC_RU "Полевой Санитар"
-#define JOB_SQUAD_SPECIALIST_RU "Оружейный Специалист"
-#define JOB_SQUAD_TEAM_LEADER_RU "Командир Боевой Группы"
+#define JOB_SQUAD_LEADER_RU "Командир отряда"
+#define JOB_SQUAD_ENGI_RU "Полевой техник"
+#define JOB_SQUAD_MEDIC_RU "Полевой санитар"
+#define JOB_SQUAD_SPECIALIST_RU "Оружейный специалист"
+#define JOB_SQUAD_TEAM_LEADER_RU "Командир боевой группы"
 #define JOB_SQUAD_SMARTGUN_RU "Смартганнер"
 
 #define JOB_COLONIST_RU "Колонист"
 #define JOB_PASSENGER_RU "Пассажир"
 #define JOB_SURVIVOR_RU "Выживший"
-#define JOB_SYNTH_SURVIVOR_RU "Выживший Синтетик"
+#define JOB_SYNTH_SURVIVOR_RU "Выживший-синтетик"
 #define JOB_CO_SURVIVOR_RU "Выживший КО"
 
-#define ANY_SURVIVOR_RU "Любой Выживший"
-#define CIVILIAN_SURVIVOR_RU "Выживший Гражданский"
-#define SECURITY_SURVIVOR_RU "Выживший Безопасник"
-#define SCIENTIST_SURVIVOR_RU "Выживший Ученый"
-#define MEDICAL_SURVIVOR_RU "Выживший Медик"
-#define ENGINEERING_SURVIVOR_RU "Выживший Инженер"
-#define CORPORATE_SURVIVOR_RU "Выживший Корпорат"
-#define HOSTILE_SURVIVOR_RU "Враждебный Выживший" //AKA Marine Killers assuming they survive. Will do cultist survivor at some point.
+#define ANY_SURVIVOR_RU "Любой выживший"
+#define CIVILIAN_SURVIVOR_RU "Выживший гражданский"
+#define SECURITY_SURVIVOR_RU "Выживший охраны"
+#define SCIENTIST_SURVIVOR_RU "Выживший учёный"
+#define MEDICAL_SURVIVOR_RU "Выживший медик"
+#define ENGINEERING_SURVIVOR_RU "Выживший инженер"
+#define CORPORATE_SURVIVOR_RU "Выживший корпорат"
+#define HOSTILE_SURVIVOR_RU "Враждебный выживший" //AKA Marine Killers assuming they survive. Will do cultist survivor at some point.
 
 #define JOB_CMO_RU "Главврач"
-#define JOB_DOCTOR_RU "Доктор"
+#define JOB_DOCTOR_RU "Врач"
 #define JOB_SURGEON_RU "Хирург"
 #define JOB_FIELD_DOCTOR_RU "Полевой врач"
 
@@ -51,58 +51,58 @@
 #define JOB_NURSE_RU_MALE "Медбрат"
 #define JOB_NURSE_RU_FEMALE "Медсестра"
 #define JOB_RESEARCHER_RU "Исследователь"
-#define JOB_CORPORATE_LIAISON_RU "Связной Корпорации"
+#define JOB_CORPORATE_LIAISON_RU "Связной корпорации"
 
-#define JOB_COMBAT_REPORTER_RU "Полевой Корреспондент"
-#define JOB_CIVILIAN_REPORTER_RU "Гражданский Корреспондент"
-#define JOB_MILITARY_REPORTER_RU "Военный Корреспондент"
+#define JOB_COMBAT_REPORTER_RU "Полевой корреспондент"
+#define JOB_CIVILIAN_REPORTER_RU "Гражданский корреспондент"
+#define JOB_MILITARY_REPORTER_RU "Военный корреспондент"
 
-#define JOB_MESS_SERGEANT_RU "Обслуживающий Персонал"
+#define JOB_MESS_SERGEANT_RU "Кок"
 #define JOB_SYNTH_RU "Синтетик"
 #define JOB_SYNTH_K9_RU "Синтетик K9"
 #define JOB_WORKING_JOE_RU "Рабочий Джо"
 #define JOB_HAZMAT_JOE_RU "Хазмат Джо"
 
-#define JOB_CO_RU "Коммандующий Офицер"
-#define JOB_XO_RU "Исполнительный Офицер"
-#define JOB_SO_RU "Штаб-Офицер"
-#define JOB_AUXILIARY_OFFICER_RU "Офицер Поддержки"
+#define JOB_CO_RU "Командующий офицер"
+#define JOB_XO_RU "Исполнительный офицер"
+#define JOB_SO_RU "Штаб-офицер"
+#define JOB_AUXILIARY_OFFICER_RU "Офицер поддержки"
 
-#define JOB_CAS_PILOT_RU "Боевой Пилот"
-#define JOB_DROPSHIP_PILOT_RU "Десантный Пилот"
-#define JOB_TANK_CREW_RU "Экипаж Танка"
-#define JOB_DROPSHIP_CREW_CHIEF_RU "Экипаж Десантного Корабля"
-#define JOB_INTEL_RU "Офицер Разведки"
+#define JOB_CAS_PILOT_RU "Боевой пилот"
+#define JOB_DROPSHIP_PILOT_RU "Десантный пилот"
+#define JOB_TANK_CREW_RU "Экипаж бронетехники"
+#define JOB_DROPSHIP_CREW_CHIEF_RU "Экипаж десантного корабля"
+#define JOB_INTEL_RU "Офицер разведки"
 
-#define JOB_POLICE_RU "Военная Полиция"
-#define JOB_WARDEN_RU "Военный Смотритель"
-#define JOB_CHIEF_POLICE_RU "Шеф Военной Полиции"
+#define JOB_POLICE_RU "Военная полиция"
+#define JOB_WARDEN_RU "Военный смотритель"
+#define JOB_CHIEF_POLICE_RU "Начальник военной полиции"
 
-#define JOB_SEA_RU "Старший Инструктор"
+#define JOB_SEA_RU "Старший инструктор"
 
-#define JOB_CHIEF_ENGINEER_RU "Старший Инженер"
-#define JOB_MAINT_TECH_RU "Техник Обслуживания"
-#define JOB_ORDNANCE_TECH_RU "Оружейный Техник"
+#define JOB_CHIEF_ENGINEER_RU "Главный инженер"
+#define JOB_MAINT_TECH_RU "Техник обслуживания"
+#define JOB_ORDNANCE_TECH_RU "Оружейный техник"
 
-#define JOB_CHIEF_REQUISITION_RU "Квартирмейстер"	// Можно "Индентант", но квартирмейстер у нас тоже используется
-#define JOB_CARGO_TECH_RU "Грузовой Техник"
+#define JOB_CHIEF_REQUISITION_RU "Квартирмейстер" // Можно "Интендант", но квартирмейстер у нас тоже используется
+#define JOB_CARGO_TECH_RU "Грузовой техник"
 
-#define JOB_MARINE_RAIDER_RU "Морпех Рейдер"
-#define JOB_MARINE_RAIDER_SG_RU "Морпех Рейдер Смартганнер"
-#define JOB_MARINE_RAIDER_SL_RU "Морпех Рейдер Командир"
-#define JOB_MARINE_RAIDER_CMD_RU "Морпех Рейдер Командир Взвода"
+#define JOB_MARINE_RAIDER_RU "Рейдер"
+#define JOB_MARINE_RAIDER_SG_RU "Рейдер-смартганнер"
+#define JOB_MARINE_RAIDER_SL_RU "Комотряда-рейдер"
+#define JOB_MARINE_RAIDER_CMD_RU "Комгруппы-рейдер"
 
 #define JOB_STOWAWAY_RU "Безбилетник"
 
-#define JOB_MARINE_RU "ККМП Морпех" //generic marine
-#define JOB_COLONEL_RU "ККМП Полковник"
-#define JOB_USCM_OBSV_RU "ККМП Наблюдатель"
-#define JOB_GENERAL_RU "ККМП Генерал"
-#define JOB_ACMC_RU "Помощник коменданта Корпуса Морской Пехоты"
-#define JOB_CMC_RU "Комендант Корпуса Морской Пехота"
-#define JOB_PLT_MED_RU "Санитар Взвода"
-#define JOB_PLT_SL_RU "Командир Взвода"
-#define JOB_SQUAD_TECH_RU "Техник Поддержки Разведки"
+#define JOB_MARINE_RU "Морпех ККМП" //generic marine
+#define JOB_COLONEL_RU "Полковник ККМП"
+#define JOB_USCM_OBSV_RU "Наблюдатель ККМП"
+#define JOB_GENERAL_RU "Генерал ККМП"
+#define JOB_ACMC_RU "Заместитель коменданта КМП"
+#define JOB_CMC_RU "Комендант КМП"
+#define JOB_PLT_MED_RU "Санитар отряда"
+#define JOB_PLT_SL_RU "Командир отряда"
+#define JOB_SQUAD_TECH_RU "Специалист по рекогносцировке"
 
 
 

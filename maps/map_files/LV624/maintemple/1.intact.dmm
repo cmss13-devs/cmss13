@@ -733,14 +733,6 @@
 /obj/structure/platform/stone/runed_sandstone/west,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"wS" = (
-/obj/structure/morgue/sarcophagus{
-	pixel_x = -17;
-	pixel_y = -12;
-	dir = 1
-	},
-/turf/open/floor/corsat/squareswood/north,
-/area/lv624/ground/caves/sand_temple)
 "wZ" = (
 /obj/effect/decal/cleanable/blood{
 	basecolor = "#20d450";
@@ -1304,9 +1296,10 @@
 /area/lv624/ground/caves/sand_temple/powered)
 "Sq" = (
 /obj/structure/morgue/sarcophagus{
-	pixel_x = -16;
+	pixel_x = -17;
 	pixel_y = -12;
-	dir = 1
+	dir = 1;
+	layer = 4.12
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
@@ -1921,7 +1914,7 @@ Jc
 Jc
 Jc
 fQ
-wS
+Sq
 oi
 TO
 Ai

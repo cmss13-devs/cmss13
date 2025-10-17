@@ -156,11 +156,26 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	layer = ABOVE_XENO_LAYER
 
 // LV-624's Yggdrasil Tree
-/obj/structure/flora/tree/jungle/bigtreeTR
-	icon_state = "bigtreeTR"
 
-/obj/structure/flora/tree/jungle/bigtreeTL
+/obj/structure/roof/flora/tree/jungle/bigtreeTR
+	icon_state = "bigtreeTR"
+	name = "huge tree"
+	icon = 'icons/obj/structures/props/natural/vegetation/ground_map64.dmi'
+	desc = "What an enormous tree!"
+	density = FALSE
+	layer = ABOVE_XENO_LAYER
+	bound_height = 128
+	bound_width = 128
+
+/obj/structure/roof/flora/tree/jungle/bigtreeTL
 	icon_state = "bigtreeTL"
+	name = "huge tree"
+	icon = 'icons/obj/structures/props/natural/vegetation/ground_map64.dmi'
+	desc = "What an enormous tree!"
+	density = FALSE
+	layer = ABOVE_XENO_LAYER
+	bound_height = 128
+	bound_width = 128
 
 /obj/structure/flora/tree/jungle/bigtreeBOT
 	icon_state = "bigtreeBOT"

@@ -7497,8 +7497,8 @@
 /area/lv624/ground/caves/south_east_caves)
 "eNg" = (
 /obj/structure/flora/tree/jungle/bigtreeBOT{
-	density = 1;
-	pixel_x = -17
+	pixel_x = -21;
+	pixel_y = 5
 	},
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/river/soro,
@@ -13642,7 +13642,10 @@
 /turf/open/floor/ancient_temple/deco/deco_1/east,
 /area/lv624/ground/caves/sand_temple)
 "iwH" = (
-/obj/structure/flora/tree/jungle/bigtreeTR,
+/obj/structure/roof/flora/tree/jungle/bigtreeTR{
+	pixel_x = -20;
+	pixel_y = 5
+	},
 /turf/open/auto_turf/lv_grass/layer1,
 /area/lv624/lazarus/yggdrasil)
 "iwQ" = (
@@ -17342,6 +17345,11 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/north_east_caves)
+"kOc" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/yggdrasil)
 "kOl" = (
 /turf/open/floor/ancient_temple/floor_20,
 /area/lv624/ground/caves/sand_temple)
@@ -20827,8 +20835,9 @@
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lv624/ground/jungle/south_west_jungle)
 "mPd" = (
-/obj/structure/flora/tree/jungle/bigtreeTL{
-	pixel_y = 3
+/obj/structure/roof/flora/tree/jungle/bigtreeTL{
+	pixel_y = 7;
+	pixel_x = -20
 	},
 /turf/open/gm/coast/dirt/west,
 /area/lv624/lazarus/yggdrasil)
@@ -25686,6 +25695,10 @@
 	},
 /turf/open/floor/ancient_temple/ruined/west,
 /area/lv624/ground/caves/north_west_caves)
+"pGU" = (
+/obj/structure/flora/jungle/treeblocker,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/lazarus/yggdrasil)
 "pGZ" = (
 /obj/structure/bed/chair/comfy/beige,
 /turf/open/floor/almayer/silverfull,
@@ -29179,6 +29192,10 @@
 	},
 /turf/open/auto_turf/lv_sand_alt/layer0,
 /area/lv624/ground/caves/south_east_caves)
+"rPa" = (
+/obj/structure/flora/jungle/treeblocker,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/yggdrasil)
 "rPc" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
 	dir = 10
@@ -31388,6 +31405,10 @@
 	},
 /turf/open/floor/prison/kitchen,
 /area/lv624/lazarus/kitchen)
+"tbl" = (
+/obj/structure/flora/jungle/cart_wreck,
+/turf/open/gm/coast/dirt/east,
+/area/lv624/lazarus/yggdrasil)
 "tbm" = (
 /turf/open/floor/ancient_temple/ruined/north,
 /area/lv624/ground/caves/west_caves)
@@ -58293,7 +58314,7 @@ oWy
 xqD
 fYn
 weT
-uku
+tbl
 wdN
 iGN
 oaD
@@ -58742,7 +58763,7 @@ fYn
 oio
 jVx
 qGB
-jVx
+rPa
 tcU
 eNg
 oio
@@ -58965,8 +58986,8 @@ tcU
 dKX
 oio
 iwH
-giG
-jVx
+pGU
+rPa
 tcU
 fYn
 oio
@@ -59190,7 +59211,7 @@ fYn
 oio
 vHd
 giG
-jVx
+rPa
 tcU
 fYn
 abh
@@ -59413,7 +59434,7 @@ tcU
 fYn
 iGN
 oaD
-sKJ
+kOc
 oWy
 nzG
 kpj

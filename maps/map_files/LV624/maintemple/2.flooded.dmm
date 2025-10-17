@@ -997,9 +997,10 @@
 /area/lv624/ground/barrens/south_eastern_barrens)
 "JN" = (
 /obj/structure/morgue/sarcophagus{
-	pixel_x = -16;
+	pixel_x = -17;
 	pixel_y = -12;
-	dir = 1
+	dir = 1;
+	layer = 4.12
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
@@ -1048,11 +1049,14 @@
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/river/east_river)
 "Mn" = (
-/obj/structure/flora/jungle/vines/heavy,
 /obj/structure/morgue/sarcophagus{
-	pixel_x = -16;
+	pixel_x = -17;
 	pixel_y = -12;
-	dir = 1
+	dir = 1;
+	layer = 4.12
+	},
+/obj/structure/flora/jungle/vines/heavy{
+	layer = 4.13
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)

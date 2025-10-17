@@ -335,3 +335,17 @@
 	for(var/turf/T as anything in block(bounds[1], bounds[2]))
 		for(var/obj/effect/landmark/interior/L in T)
 			L.on_load(src)
+
+/datum/interior/proc/drop_human_bodies(turf/drop_turf)
+	if((passengers_taken_slots == 0) && (revivable_dead_taken_slots == 0))
+		return // no one of interest inside
+
+	var/update = FALSE
+
+	for(var/mob/living/L as anything in get_passengers())
+		if(L.stat == DEAD)
+			L.forceMove(drop_turf) // Drop the bodies on the floor
+			update = TRUE
+
+	if(update)
+		update_passenger_count()

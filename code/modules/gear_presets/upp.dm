@@ -1923,7 +1923,7 @@
 	)
 
 /datum/equipment_preset/upp/officer/senior/dressed
-	name = "UPP Senior Lieutenant"
+	name = "UPP Starshiy Leytenant"
 
 /datum/equipment_preset/upp/officer/senior/dressed/New()
 	.=..()
@@ -2286,7 +2286,7 @@
 	job_title = JOB_UPP_CO_OFFICER
 
 /datum/equipment_preset/upp/officer/major/dressed
-	name = "UPP Major"
+	name = "UPP Mayjor"
 
 /datum/equipment_preset/upp/officer/major/dressed/New()
 	.=..()

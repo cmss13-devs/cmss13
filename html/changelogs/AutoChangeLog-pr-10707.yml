@@ -1,0 +1,7 @@
+author: "Nemesis1337"
+delete-after: True
+changes:
+  - rscadd: "ammo box for ap p90 magazines"
+  - qol: "rail flashlights can now be attached to p90"
+  - bugfix: "ap magazines can now be used with regular p90"
+  - imageadd: "added p90 magazine sprite overlays and new sprites for ammo boxes"

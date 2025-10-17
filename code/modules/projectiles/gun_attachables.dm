@@ -3039,7 +3039,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "grenade"
 	attach_icon = "grenade_a"
 	w_class = SIZE_MEDIUM
-	current_rounds = 0
+	current_rounds = 3
 	max_rounds = 3
 	max_range = 21
 	slot = "under"
@@ -3070,7 +3070,7 @@ Defined in conflicts.dm of the #defines folder.
 			qdel(attacking_flare)
 			update_icon()
 		else
-			to_chat(user, SPAN_WARNING("You can not load more falres in."))
+			to_chat(user, SPAN_WARNING("You can not load more flares in."))
 	else
 		to_chat(user, SPAN_WARNING("That's not a flare!"))
 

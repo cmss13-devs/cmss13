@@ -2215,6 +2215,10 @@
 	},
 /turf/open/floor/prison/brown_bright/east,
 /area/lv624/lazarus/main_hall)
+"bsf" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/coast/dirt/beachcorner/south_east,
+/area/lv624/lazarus/yggdrasil)
 "bsp" = (
 /obj/structure/machinery/door/airlock/light_grey_lv/solid{
 	name = "\improper Central Complex Cold Storage"
@@ -4590,6 +4594,10 @@
 "cVo" = (
 /turf/open/gm/dirt/brown/variant_5,
 /area/lv624/ground/jungle/south_central_jungle)
+"cVG" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/lazarus/yggdrasil)
 "cWn" = (
 /obj/item/reagent_container/food/drinks/cans/ale{
 	open = 1;
@@ -20099,6 +20107,10 @@
 /obj/structure/platform/stone/ancient_temple/alt/west,
 /turf/open/gm/river/soro,
 /area/lv624/ground/caves/north_east_caves)
+"muy" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/yggdrasil)
 "muP" = (
 /obj/structure/prop/ice_colony/surveying_device{
 	dir = 1
@@ -29403,6 +29415,11 @@
 	},
 /turf/open/floor/interior/wood/alt,
 /area/lv624/ground/barrens/east_barrens)
+"rYA" = (
+/obj/structure/window/framed/lv_colony/reinforced,
+/obj/structure/flora/jungle/planttop1,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/yggdrasil)
 "rYR" = (
 /obj/structure/prop/rock/brown{
 	dir = 5;
@@ -58046,8 +58063,8 @@ lJv
 isM
 qon
 qon
-cpc
-giG
+rYA
+cVG
 aDg
 oWy
 laO
@@ -59847,8 +59864,8 @@ fYn
 weT
 uku
 uku
-cYP
-jVx
+bsf
+muy
 bti
 oKf
 imY

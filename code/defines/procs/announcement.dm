@@ -41,13 +41,14 @@
 				continue
 			if(is_mainship_level(receiver.z) && !(istype(GLOB.master_mode, /datum/game_mode/extended/faction_clash))) // People on ship see everything, unless it is faction clash
 				continue
-			/// If they're in a joint-USCM job they'll get announcements regardless.
-			if(receiver.job in USCM_SHARED_JOBS)
-				continue
 
 			// If they have iff AND a marine headset they will recieve announcements
 			var/obj/item/card/id/card = receiver.get_idcard()
 			if ((FACTION_MARINE in card?.faction_group) && (istype(receiver.wear_l_ear, /obj/item/device/radio/headset/almayer) || istype(receiver.wear_r_ear, /obj/item/device/radio/headset/almayer)))
+				continue
+
+			/// If they're in a joint-USCM job they'll get announcements regardless.
+			if(receiver.job in USCM_SHARED_JOBS  && (istype(receiver.wear_l_ear, /obj/item/device/radio/headset) || istype(receiver.wear_r_ear, /obj/item/device/radio/headset)))
 				continue
 
 			if((receiver.faction != faction_to_display && !add_PMCs) || (receiver.faction != faction_to_display && add_PMCs && !(receiver.faction in FACTION_LIST_WY)) && !(faction_to_display in receiver.faction_group)) //faction checks

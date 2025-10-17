@@ -140,3 +140,17 @@
   zzzmike:
   - spellcheck: hijack fuel announcement now uses % instead of percent, rather than
       both
+2025-10-17:
+  MrsTonedOne, ZephyrTFA, optimumtact, harryob:
+  - server: added ipintel backend
+  hry-gh:
+  - bugfix: fixes bad shadows under windows
+  kiVts:
+  - bugfix: copy mode in buildmode is working correctly.
+  ori-disillusion-mirnov:
+  - maptweak: removed access restriction on houndmaster's quarters, removed old hellhound
+      spawners, added sleeping hellhounds in the hellhound cells
+  - rscdel: old hellhound callers are gone
+  - rscadd: new sleeping hellhounds replace them, you can click on them to wake them
+      up.
+  - bugfix: fixes misplaced bed roll on pred ship

@@ -109,7 +109,7 @@
 		playtime = get_job_playtime(mob_client, job_title)
 		if((playtime >= JOB_PLAYTIME_TIER_1) && !mob_client.prefs.playtime_perks)
 			playtime = JOB_PLAYTIME_TIER_1
-		if((playtime <= JOB_PLAYTIME_TIER_4) && mob_client.can_skip_role_lock() && mob_client.prefs.skip_playtime_ranks)
+		else if((playtime <= JOB_PLAYTIME_TIER_4) && mob_client.can_skip_role_lock() && mob_client.prefs.skip_playtime_ranks)
 			playtime = JOB_PLAYTIME_TIER_4
 	var/final_paygrade
 	for(var/current_paygrade as anything in paygrades)

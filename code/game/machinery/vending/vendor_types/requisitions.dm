@@ -439,7 +439,7 @@
 		list("Underbarrel Extinguisher", 4.5, /obj/item/attachable/attached_gun/extinguisher, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Flashlight Grip", 9.5, /obj/item/attachable/flashlight/grip, VENDOR_ITEM_REGULAR),
 		list("Underslung Grenade Launcher", 9.5, /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Flare Launcher", 9.5,/obj/item/attachable/attached_gun/flare_launcher,VENDOR_ITEM_REGULAR),
+		list("Underbarrel Flare Launcher", 9.5, /obj/item/attachable/attached_gun/flare_launcher, VENDOR_ITEM_REGULAR),
 		list("Vertical Grip", 9.5, /obj/item/attachable/verticalgrip, VENDOR_ITEM_REGULAR),
 
 		list("STOCK", -1, null, null),
@@ -630,7 +630,7 @@
 		list("Rail Flashlight", floor(scale * 25), /obj/item/attachable/flashlight, VENDOR_ITEM_RECOMMENDED),
 		list("Underbarrel Flashlight Grip", floor(scale * 10), /obj/item/attachable/flashlight/grip, VENDOR_ITEM_RECOMMENDED),
 		list("Underslung Grenade Launcher", floor(scale * 25), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR), //They already get these as on-spawns, might as well formalize some spares.
-		list("Underbarrel Flare Launcher", floor(scale*25),/obj/item/attachable/attached_gun/flare_launcher,VENDOR_ITEM_REGULAR),
+		list("Underbarrel Flare Launcher", floor(scale * 25), /obj/item/attachable/attached_gun/flare_launcher, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", -1, null, null),
 		list("M07 Training Grenade", floor(scale * 15), /obj/item/explosive/grenade/high_explosive/training, VENDOR_ITEM_REGULAR),

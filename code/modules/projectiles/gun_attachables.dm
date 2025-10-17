@@ -3036,8 +3036,8 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/flare_launcher
 	name = "U2 flare launcher"
 	desc = "A weapon-mounted reloadable flare launcher"
-	icon_state = "grenade"
-	attach_icon = "grenade_a"
+	icon_state = "flare"
+	attach_icon = "flare_a"
 	w_class = SIZE_MEDIUM
 	current_rounds = 3
 	max_rounds = 3

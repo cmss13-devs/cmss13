@@ -162,7 +162,7 @@
 		list("Rail Flashlight", floor(scale * 20), /obj/item/attachable/flashlight, VENDOR_ITEM_RECOMMENDED),
 		list("Underbarrel Flashlight Grip", floor(scale * 10), /obj/item/attachable/flashlight/grip, VENDOR_ITEM_RECOMMENDED),
 		list("Underslung Grenade Launcher", floor(scale * 20), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Flare Launcher", floor(scale*25),/obj/item/attachable/attached_gun/flare_launcher,VENDOR_ITEM_REGULAR),
+		list("Underbarrel Flare Launcher", floor(scale * 20), /obj/item/attachable/attached_gun/flare_launcher, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", -1, null, null),
 		list("M5 Bayonet", floor(scale * 20), /obj/item/attachable/bayonet/upp, VENDOR_ITEM_REGULAR),

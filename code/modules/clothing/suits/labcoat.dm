@@ -150,7 +150,7 @@
 
 /obj/item/clothing/suit/storage/labcoat/cmo
 	name = "chief medical officer's lab coat"
-	desc = "A green, sleek, long, and sturdy lab coat, designed to distinguish a higher ranking medical personnel. The fabric provides protection against chemical and biological hazards."
+	desc = "A long, green, sleek, and sturdy lab coat designed to distinguish a higher ranking medical personnel. The fabric provides extra protection against chemical and biological hazards."
 	icon_state = "labcoatg"
 	item_state = "labcoatg"
 	armor_bio = CLOTHING_ARMOR_MEDIUM

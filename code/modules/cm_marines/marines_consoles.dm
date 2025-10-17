@@ -992,6 +992,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_INTEL = 25,
 				JOB_CIA_LIAISON = 26,
 				JOB_TANK_CREW = 27,
+				JOB_MECH_OP = 27,
 				// 30-39: Security
 				JOB_CHIEF_POLICE = 30,
 				JOB_PROVOST_TML = 30,

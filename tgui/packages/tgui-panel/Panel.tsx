@@ -39,10 +39,7 @@ export const Panel = (props) => {
   }, [honk]);
 
   return (
-    <Pane
-      theme={settings.theme}
-      width={fixedWidth ? `${fixedWidth}px` : undefined}
-    >
+    <Pane theme={settings.theme}>
       <Stack fill vertical>
         {!game.tvMode && (
           <Stack.Item>

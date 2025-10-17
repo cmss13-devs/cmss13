@@ -961,8 +961,11 @@
 	if(boomer.health < HEALTH_THRESHOLD_CRIT)
 		to_chat(boomer, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
 		return
-	if(boomer.stat)
+	if(boomer.stat != CONSCIOUS)
 		to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+		return
+	if(boomer.is_mob_incapacitated() || (!exploding && HAS_TRAIT(boomer, TRAIT_HAULED)))
+		to_chat(boomer, SPAN_WARNING("You cannot do this in your current state."))
 		return
 	if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) // Hunted need mask to escape
 		to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
@@ -980,7 +983,16 @@
 			if(isspeciesyautja(victim))
 				message = "Are you sure you want to send this [victim.species] into the great hunting grounds?"
 			if(istype(bracer))
-				if(forced || alert(message,"Explosive Bracers", "Yes", "No") == "Yes")
+				if(forced || tgui_alert(boomer, message, "Explosive Bracers", list("Yes", "No"), 20 SECONDS) == "Yes")
+					if(boomer.stat == DEAD)
+						to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
+						return
+					if(boomer.stat != CONSCIOUS)
+						to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+						return
+					if(boomer.is_mob_incapacitated() || HAS_TRAIT(boomer, TRAIT_HAULED))
+						to_chat(boomer, SPAN_WARNING("You cannot do this in your current state."))
+						return
 					if(boomer.get_active_hand() == G && victim && victim.gloves == bracer && !bracer.exploding)
 						var/area/A = get_area(boomer)
 						var/turf/T = get_turf(boomer)
@@ -999,13 +1011,13 @@
 		return
 
 	if(exploding)
-		if(forced || alert("Are you sure you want to stop the countdown?","Bracers", "Yes", "No") == "Yes")
+		if(forced || tgui_alert(boomer, "Are you sure you want to stop the countdown?", "Explosive Bracers", list("Yes", "No"), 20 SECONDS) == "Yes")
 			if(boomer.gloves != src)
 				return
 			if(boomer.stat == DEAD)
 				to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
 				return
-			if(boomer.stat)
+			if(boomer.stat != CONSCIOUS)
 				to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
 				return
 			exploding = FALSE
@@ -1025,14 +1037,17 @@
 		to_chat(boomer, SPAN_WARNING("Strange...something seems to be interfering with your bracer functions..."))
 		return
 
-	if(forced || alert("Detonate the bracers? Are you sure?\n\nNote: If you activate SD for any non-accidental reason during or after a fight, you commit to the SD. By initially activating the SD, you have accepted your impending death to preserve any lost honor.","Explosive Bracers", "Yes", "No") == "Yes")
+	if(forced || tgui_alert(boomer, "Detonate the bracers? Are you sure?\n\nNote: If you activate SD for any non-accidental reason during or after a fight, you commit to the SD. By initially activating the SD, you have accepted your impending death to preserve any lost honor.", "Explosive Bracers", list("Yes", "No"), 20 SECONDS) == "Yes")
 		if(boomer.gloves != src)
 			return
 		if(boomer.stat == DEAD)
 			to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
 			return
-		if(boomer.stat)
+		if(boomer.stat != CONSCIOUS)
 			to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+			return
+		if(boomer.is_mob_incapacitated() || HAS_TRAIT(boomer, TRAIT_HAULED))
+			to_chat(boomer, SPAN_WARNING("You cannot do this in your current state."))
 			return
 		if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) //Hunted need mask to escape
 			to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))

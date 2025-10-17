@@ -1,0 +1,4 @@
+author: "VictorJob"
+delete-after: True
+changes:
+  - imageadd: "New Sprites for m82f"

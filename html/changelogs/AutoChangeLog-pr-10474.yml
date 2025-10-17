@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - imageadd: "Better sprites for special cursor sprites"

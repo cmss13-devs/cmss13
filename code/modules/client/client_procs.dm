@@ -395,6 +395,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /client/proc/PostLogin()
 	add_verb(src, collect_client_verbs())
 
+	check_ip_vpn()
+
 	acquire_dpi()
 
 	// Initialize tgui panel

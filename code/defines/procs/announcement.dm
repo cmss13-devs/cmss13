@@ -39,7 +39,7 @@
 			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H)) //base human checks
 				targets.Remove(H)
 				continue
-			if(is_mainship_level(H.z) && istype(GLOB.master_mode, /datum/game_mode/extended/faction_clash )) // People on ship see everything, unless it is faction clash
+			if(is_mainship_level(H.z) && !(istype(GLOB.master_mode, /datum/game_mode/extended/faction_clash))) // People on ship see everything, unless it is faction clash
 				continue
 
 			// If they have iff AND a marine headset they will recieve announcements

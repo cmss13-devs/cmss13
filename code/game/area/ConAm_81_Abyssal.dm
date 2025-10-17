@@ -26,7 +26,7 @@
 	icon_state = "base_icon"
 	ceiling = CEILING_NONE
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_CONTAINMENT
+	flags_area = AREA_NOTUNNEL|AREA_CONTAINMENT|AREA_UNWEEDABLE
 	requires_power = FALSE
 	ambience_exterior = SCAPE_ABYSSAL_EXTERIOR
 	minimap_color = MINIMAP_AREA_GLASS

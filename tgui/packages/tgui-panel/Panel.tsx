@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'tgui/backend';
 import { Button, Section, Stack } from 'tgui/components';
 import { Pane } from 'tgui/layouts';
@@ -37,20 +37,6 @@ export const Panel = (props) => {
   useEffect(() => {
     dispatch(rebuildChat());
   }, [honk]);
-
-  const [fixedWidth, setFixedWidth] = useState<number | false>(false);
-  useEffect(() => {
-    if (game.tvMode) {
-      Byond.winget('split;mainwindow').then((data: { [key: string]: any }) => {
-        const split = Number.parseFloat(data['split.splitter']);
-        const windowWidth = Math.floor(
-          Number.parseFloat((data['mainwindow.size'] as string).split('x')[0]),
-        );
-
-        setFixedWidth(windowWidth * ((100 - split) / 100));
-      });
-    }
-  }, [game.tvMode]);
 
   return (
     <Pane

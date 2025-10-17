@@ -361,3 +361,39 @@
 	response = selected_command.execute(input)
 
 	selected_command.post_execute(input)
+
+/datum/world_topic/role_icons
+	key = "role_icons"
+
+/datum/world_topic/role_icons/Run(list/input)
+	if(!length(GLOB.minimap_icons))
+		statuscode = 501
+		response = "No minimap icons available."
+		return
+
+	data = GLOB.minimap_icons
+	statuscode = 200
+	response = "Minimap icons available."
+
+/datum/world_topic/active_mobs
+	key = "active_mobs"
+
+/datum/world_topic/active_mobs/Run(list/input)
+	var/to_follow = SScmtv.get_most_active_list()
+	if(!length(to_follow))
+		statuscode = 404
+		response = "No active mobs available."
+		return
+
+	var/list/mobs = list()
+
+	for(var/datum/weakref/weakref in to_follow)
+		var/mob/living/living_mob = weakref.resolve()
+		if(!living_mob)
+			continue
+
+		mobs += living_mob.real_name
+
+	data = mobs
+	statuscode = 200
+	response = "Active mobs available."

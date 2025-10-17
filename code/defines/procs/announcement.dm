@@ -48,7 +48,7 @@
 				continue
 
 			/// If they're in a joint-USCM job they'll get announcements regardless.
-			if(receiver.job in USCM_SHARED_JOBS  && (istype(receiver.wear_l_ear, /obj/item/device/radio/headset) || istype(receiver.wear_r_ear, /obj/item/device/radio/headset)))
+			if((receiver.job in USCM_SHARED_JOBS) && (istype(receiver.wear_l_ear, /obj/item/device/radio/headset) || istype(receiver.wear_r_ear, /obj/item/device/radio/headset)))
 				continue
 
 			if((receiver.faction != faction_to_display && !add_PMCs) || (receiver.faction != faction_to_display && add_PMCs && !(receiver.faction in FACTION_LIST_WY)) && !(faction_to_display in receiver.faction_group)) //faction checks

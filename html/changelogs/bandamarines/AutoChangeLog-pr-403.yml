@@ -1,5 +1,0 @@
-author: "Golub4ik-Official"
-delete-after: True
-changes:
-  - bugfix: "Перевод & Переработка названия ролей"
-  - ui: "Обновление TGUI под новые названия ролей"

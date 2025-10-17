@@ -18,7 +18,7 @@
 /obj/item/clothing/gloves/swat
 	desc = "These tactical gloves are somewhat fire and impact-resistant."
 	name = "\improper SWAT Gloves"
-	icon_state = "black"
+	icon_state = "veteran"
 	item_state = "black"
 	siemens_coefficient = 0.6
 
@@ -55,7 +55,11 @@
 	item_state = "ggloves"
 	siemens_coefficient = 0.9
 
-
+/obj/item/clothing/gloves/black_leather
+	name = "stylish leather gloves"
+	desc = "Supple, black leather gloves crafted from the finest leather. Stylish, durable, and ready for work or play."
+	icon_state = "black_leather"
+	item_state = "black"
 
 /obj/item/clothing/gloves/boxing
 	name = "boxing gloves"

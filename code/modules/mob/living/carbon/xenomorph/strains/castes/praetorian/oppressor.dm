@@ -12,6 +12,7 @@
 		/datum/action/xeno_action/activable/prae_acid_ball,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
 		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/activable/xeno_spit/praetorian,
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/tail_stab/tail_seize,
@@ -165,11 +166,11 @@
 
 			targets += target
 	if (LAZYLEN(targets) == 1)
-		abduct_user.balloon_alert(abduct_user, "our tail catches and slows one target!", text_color = "#51a16c")
+		abduct_user.balloon_alert(abduct_user, "slowed one target", text_color = "#51a16c")
 	else if (LAZYLEN(targets) == 2)
-		abduct_user.balloon_alert(abduct_user, "our tail catches and roots two targets!", text_color = "#51a16c")
+		abduct_user.balloon_alert(abduct_user, "rooted two targets", text_color = "#51a16c")
 	else if (LAZYLEN(targets) >= 3)
-		abduct_user.balloon_alert(abduct_user, "our tail catches and stuns [LAZYLEN(targets)] targets!", text_color = "#51a16c")
+		abduct_user.balloon_alert(abduct_user, "stunned [LAZYLEN(targets)] targets", text_color = "#51a16c")
 
 	apply_cooldown()
 

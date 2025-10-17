@@ -5,14 +5,13 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	flags_bodypart_hidden = BODY_FLAG_CHEST
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROT
 	max_heat_protection_temperature = HELMET_MAX_HEAT_PROT
 	siemens_coefficient = 0.6
 	w_class = SIZE_HUGE
 	allowed = list(/obj/item/weapon/gun, /obj/item/storage/backpack/general_belt) //Guns only.
 	uniform_restricted = list(/obj/item/clothing/under)
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 
 	pickup_sound = "armorequip"
@@ -89,7 +88,6 @@
 	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 /obj/item/clothing/suit/armor/vest/warden
 	name = "Warden's jacket"
@@ -98,6 +96,7 @@
 	item_state = "armor"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
@@ -139,7 +138,6 @@
 
 /obj/item/clothing/suit/armor/bulletproof/badge
 	icon_state = "bulletproofbadge"
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 /obj/item/clothing/suit/armor/riot
 	name = "riot suit"
@@ -147,6 +145,7 @@
 	icon_state = "riot"
 	item_state = "swat_suit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	slowdown = 1
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -168,6 +167,7 @@
 	item_state = "gladiator"
 	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -184,7 +184,6 @@
 		/obj/item/weapon/shield/riot,
 		/obj/item/device/flashlight,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/misc_ert.dmi',
 	)
@@ -271,7 +270,6 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 /obj/item/clothing/suit/armor/hos
 	name = "armored coat"

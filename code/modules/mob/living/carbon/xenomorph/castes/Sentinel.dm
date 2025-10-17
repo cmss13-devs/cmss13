@@ -49,7 +49,6 @@
 		/datum/action/xeno_action/activable/slowing_spit, //first macro
 		/datum/action/xeno_action/activable/scattered_spit, //second macro
 		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -57,6 +56,8 @@
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_1/sentinel.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/sentinel.dmi'
+
+	acid_overlay = icon('icons/mob/xenos/castes/tier_1/sentinel.dmi', "Sentinel-Spit")
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")

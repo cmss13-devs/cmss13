@@ -1,7 +1,7 @@
 /datum/equipment_preset/contractor
 	name = "Military Contractor"
 	faction = FACTION_CONTRACTOR
-	rank = JOB_CONTRACTOR
+	job_title = JOB_CONTRACTOR
 	idtype = /obj/item/card/id/data
 	faction = FACTION_CONTRACTOR
 	faction_group = list(FACTION_CONTRACTOR)
@@ -15,14 +15,13 @@
 
 
 /datum/equipment_preset/contractor/load_name(mob/living/carbon/human/new_human)
-	new_human.gender = pick(60;MALE,40;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	var/random_name
-	random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
+	var/random_name = random_name(new_human.gender)
 	new_human.change_real_name(new_human, random_name)
 	new_human.name = new_human.real_name
-	new_human.age = rand(22,45)
+	new_human.age = rand(20,45)
 
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
 	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
@@ -43,11 +42,6 @@
 		new_human.f_style = pick("5 O'clock Shadow", "Shaved", "Full Beard", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache", "7 O'clock Shadow", "7 O'clock Moustache",)
 	else
 		new_human.h_style = pick("Ponytail 1", "Ponytail 2", "Ponytail 3", "Ponytail 4", "Pvt. Redding", "Pvt. Clarison", "Cpl. Dietrich", "Pvt. Vasquez", "Marine Bun", "Marine Bun 2", "Marine Flat Top",)
-	new_human.change_real_name(new_human, random_name)
-	new_human.age = rand(20,45)
-	new_human.r_hair = rand(15,35)
-	new_human.g_hair = rand(15,35)
-	new_human.b_hair = rand(25,45)
 
 /datum/equipment_preset/contractor/load_id(mob/living/carbon/human/new_human, client/mob_client)
 	if(human_versus_human)
@@ -64,7 +58,7 @@
 	role_comm_title = "Merc"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "VAIPO Mercenary"
-	rank = JOB_CONTRACTOR_ST
+	job_title = JOB_CONTRACTOR_ST
 	skills = /datum/skills/contractor
 	faction = FACTION_CONTRACTOR
 
@@ -173,7 +167,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Automatic Rifleman"
-	rank = JOB_CONTRACTOR_MG
+	job_title = JOB_CONTRACTOR_MG
 	skills = /datum/skills/contractor/heavy
 	faction = FACTION_CONTRACTOR
 
@@ -235,7 +229,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Engineering Specialist"
-	rank = JOB_CONTRACTOR_ENGI
+	job_title = JOB_CONTRACTOR_ENGI
 	skills = /datum/skills/contractor/engi
 	faction = FACTION_CONTRACTOR
 
@@ -281,7 +275,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIMS Medical Specialist"
-	rank = JOB_CONTRACTOR_MEDIC
+	job_title = JOB_CONTRACTOR_MEDIC
 	skills = /datum/skills/contractor/medic
 	faction = FACTION_CONTRACTOR
 
@@ -327,7 +321,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Team Leader"
-	rank = JOB_CONTRACTOR_TL
+	job_title = JOB_CONTRACTOR_TL
 	skills = /datum/skills/contractor/leader
 	faction = FACTION_CONTRACTOR
 
@@ -378,7 +372,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Support Synthetic"
-	rank = JOB_CONTRACTOR_SYN
+	job_title = JOB_CONTRACTOR_SYN
 	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES
 
@@ -387,18 +381,20 @@
 		new_human.allow_gun_usage = FALSE
 
 /datum/equipment_preset/contractor/duty/synth/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(50;MALE,50;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
+
 	var/random_name
-	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male)]"
-	else
-		random_name = "[pick(GLOB.first_names_female)]"
-
-	if(new_human.gender == MALE)
-		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
-
+	switch(new_human.gender)
+		if(FEMALE)
+			random_name = capitalize(pick(GLOB.first_names_female))
+		if(PLURAL, NEUTER) // Not currently possible
+			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male) : pick(GLOB.first_names_female))
+		else // MALE
+			random_name = capitalize(pick(GLOB.first_names_male))
+			new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")
@@ -469,7 +465,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Mercenary"
-	rank = JOB_CONTRACTOR_COVST
+	job_title = JOB_CONTRACTOR_COVST
 	skills = /datum/skills/contractor
 	faction = FACTION_CONTRACTOR
 
@@ -578,7 +574,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Automatic Rifleman"
-	rank = JOB_CONTRACTOR_COVMG
+	job_title = JOB_CONTRACTOR_COVMG
 	skills = /datum/skills/contractor/heavy
 	faction = FACTION_CONTRACTOR
 
@@ -629,7 +625,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Engineering Specialist"
-	rank = JOB_CONTRACTOR_COVENG
+	job_title = JOB_CONTRACTOR_COVENG
 	skills = /datum/skills/contractor/engi
 	faction = FACTION_CONTRACTOR
 
@@ -676,7 +672,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIMS Medical Specialist"
-	rank = JOB_CONTRACTOR_COVMED
+	job_title = JOB_CONTRACTOR_COVMED
 	skills = /datum/skills/contractor/medic
 	faction = FACTION_CONTRACTOR
 
@@ -723,7 +719,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Team Leader"
-	rank = JOB_CONTRACTOR_COVTL
+	job_title = JOB_CONTRACTOR_COVTL
 	skills = /datum/skills/contractor/leader
 	faction = FACTION_CONTRACTOR
 
@@ -774,7 +770,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Support Synthetic"
-	rank = JOB_CONTRACTOR_COVSYN
+	job_title = JOB_CONTRACTOR_COVSYN
 	skills = /datum/skills/synthetic
 	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES
@@ -784,18 +780,20 @@
 		new_human.allow_gun_usage = FALSE
 
 /datum/equipment_preset/contractor/covert/synth/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(50;MALE,50;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
+
 	var/random_name
-	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male)]"
-	else
-		random_name = "[pick(GLOB.first_names_female)]"
-
-	if(new_human.gender == MALE)
-		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
-
+	switch(new_human.gender)
+		if(FEMALE)
+			random_name = capitalize(pick(GLOB.first_names_female))
+		if(PLURAL, NEUTER) // Not currently possible
+			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male) : pick(GLOB.first_names_female))
+		else // MALE
+			random_name = capitalize(pick(GLOB.first_names_male))
+			new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")

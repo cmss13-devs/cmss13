@@ -105,13 +105,6 @@
 		I.pixel_x += nozzle && nozzle == active_attachable ? 6 : 1
 		overlays += I
 
-/obj/item/weapon/gun/flamer/able_to_fire(mob/user)
-	. = ..()
-	if(.)
-		if(!current_mag || !current_mag.current_rounds)
-			click_empty(user)
-			return NONE
-
 /obj/item/weapon/gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
 		'sound/weapons/gun_flamethrower1.ogg',
@@ -464,9 +457,9 @@
 		return FALSE
 	return ..()
 
-/obj/item/weapon/gun/flamer/m240/spec/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
+/obj/item/weapon/gun/flamer/m240/spec/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot, check_loc, silent)
 	if(retrieval_slot == WEAR_J_STORE) //If we are using a magharness...
-		if(..(user, WEAR_IN_SCABBARD)) //...first try to put it onto the Broiler.
+		if(..(user, WEAR_IN_SCABBARD, check_loc, silent)) //...first try to put it onto the Broiler.
 			return TRUE
 	return ..()
 

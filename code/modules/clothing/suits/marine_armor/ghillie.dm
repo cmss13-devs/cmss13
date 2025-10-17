@@ -9,10 +9,7 @@
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	flags_item = MOB_LOCK_ON_EQUIP
 	specialty = "M45 pattern ghillie"
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO, ACCESSORY_SLOT_MASK)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	unacidable = TRUE
-
 	var/camo_active = FALSE
 	var/hide_in_progress = FALSE
 	var/full_camo_alpha = FULL_CAMOUFLAGE_ALPHA
@@ -32,10 +29,9 @@
 
 /obj/item/clothing/suit/storage/marine/ghillie/select_gamemode_skin()
 	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("urban")
-			name = "\improper M3-LS pattern sniper armor"
-			desc = "A lightweight version of M3 pattern armor, with an integrated thermal signature dampering device, used by USCM snipers on urban recon missions. Very lightweight, but doesn't protect much."
+	if(SSmapping.configs[GROUND_MAP].camouflage_type == "urban" || "classic")
+		name = "\improper M3-LS pattern sniper armor"
+		desc = "A lightweight version of M3 pattern armor, with an integrated thermal signature dampering device, used by USCM snipers on urban recon missions. Very lightweight, but doesn't protect much."
 
 /obj/item/clothing/suit/storage/marine/ghillie/verb/camouflage()
 	set name = "Prepare Position"

@@ -99,6 +99,26 @@
 	)
 	flags_armor_protection = 0
 
+/obj/item/clothing/head/straw
+	name = "\improper straw hat"
+	desc = "A weathered straw hat with a brown leather band around the crown. It looks perfect for sunny days and long afternoons in the fields."
+	icon_state = "strawhat"
+	item_state = "strawhat"
+
+/obj/item/clothing/head/cowboy
+
+	name = "\improper cowboy hat"
+	desc = "An iconic American cowboy hat."
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	icon_state = "cowboy_dark"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
+	)
+	desc = "A finely made cowboy hat."
+
+/obj/item/clothing/head/cowboy/light
+	icon_state = "cowboy_light"
+
 //stylish bs12 hats
 
 /obj/item/clothing/head/bowlerhat
@@ -197,3 +217,19 @@
 	flags_inv_hide = HIDEALLHAIR
 	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+
+/obj/item/clothing/head/xenos
+	name = "alien costume helmet"
+	icon_state = "xenos"
+	item_state = "xenos_helm"
+	desc = "A helmet made out of a cheap fabric."
+	flags_inventory = COVERMOUTH|COVEREYES|BLOCKSHARPOBJ
+	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
+	siemens_coefficient = 2
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+
+/obj/item/clothing/head/foil
+	name = "foil hat"
+	desc = "Keeps the government, aliens, and your in-laws from reading your thoughts. Probably."
+	icon_state = "foil"
+	item_state = "foil"

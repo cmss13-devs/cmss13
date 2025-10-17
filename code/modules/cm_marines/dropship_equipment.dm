@@ -322,7 +322,7 @@
 
 /obj/structure/dropship_equipment/sentry_holder/Destroy()
 	if(deployed_turret)
-		QDEL_NULL(deployed_turret.linked_cam)
+		QDEL_NULL(deployed_turret)
 	. = ..()
 
 
@@ -1267,7 +1267,7 @@
 			continue
 		var/recovery_object
 		if(fulton.attached_atom)
-			recovery_object = fulton.attached_atom.name
+			recovery_object = strip_improper(fulton.attached_atom.name)
 		else
 			recovery_object = "Empty"
 		.["[recovery_object]"] = fulton

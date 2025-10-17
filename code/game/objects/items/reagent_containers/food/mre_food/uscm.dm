@@ -26,7 +26,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/porkribs
 	name = "boneless pork ribs"
 	icon_state = "boneless pork ribs"
-	desc = "You can't even taste processed meat taste under all those spices!"
+	desc = "You can't even taste the processed meat protein under all those spices!"
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/porkribs/Initialize()
 	. = ..()
@@ -37,7 +37,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/grilledchicken
 	name = "grilled chicken"
 	icon_state = "grilled chicken"
-	desc = "Doesn't actually tastes like grilled one, but do you really expect that luxury here?"
+	desc = "Doesn't actually taste like grilled chicken, but did you really expect that luxury here?"
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/grilledchicken/Initialize()
 	. = ..()
@@ -47,7 +47,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/pizzasquare
 	name = "pizza square"
 	icon_state = "pizza square"
-	desc = "An American classic, been added and removed from the menu about 27 times at this point, still loved despite being cheap parody of a real thing."
+	desc = "An American classic that's been added and removed from the menu about 27 times. Still loved despite being a cheap parody of the real thing."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/pizzasquare/Initialize()
 	. = ..()
@@ -61,7 +61,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/pepperonisquare
 	name = "pepperoni pizza square"
 	icon_state = "pepperoni square"
-	desc = "A newer addition to the timeless MRE classic, very similar."
+	desc = "A newer addition to the standard MRE. Like the ordinary pizza square, its texture is that of a piece of greased cardboard. However, this one has some overly spiced circles of imitation pepperoni."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/pepperonisquare/Initialize()
 	. = ..()
@@ -74,7 +74,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/chickentender
 	name = "chicken tender"
 	icon_state = "chicken tender"
-	desc = "Really tasty and has nice crumbs texture, but makes you wish for some good chicken wings..."
+	desc = "Surprisingly tasty, but mostly succeeds in making you want the real thing."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/chickentender/Initialize()
 	. = ..()
@@ -85,7 +85,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/grilledchickenbreast
 	name = "grilled chicken breast"
 	icon_state = "grilled chicken breast"
-	desc = "Very plain grilled chicken meat, simple but yet very classic taste."
+	desc = "Doesn't actually taste like grilled chicken, but if you're fine with bland food and don't mind the chewy texture, it's not that bad."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/grilledchickenbreast/Initialize()
 	. = ..()
@@ -95,7 +95,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/spaghettichunks
 	name = "meat spaghetti"
 	icon_state = "spaghetti chunks"
-	desc = "Spaghetti with some cooked meat chunks, all covered in a tomato sauce."
+	desc = "Limp, rubbery noodles with some cooked meat chunks, all covered in a tomato sauce. It's unpleasantly cold and somewhat slimy. Might be more appetizing if you heated it up, but you don't have the time for that."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/spaghettichunks/Initialize()
 	. = ..()
@@ -107,7 +107,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/chiliconcarne
 	name = "chili con carne"
 	icon_state = "chili con carne"
-	desc = "Spicy minced meat dish, there is no limit on adding chili in there, having some milk in near proximity is recommended."
+	desc = "An incredibly spicy minced meat dish. There's probably more chili powder than meat in here. Having some milk in close proximity is recommended."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/chiliconcarne/Initialize()
 	. = ..()
@@ -120,7 +120,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/noodlesoup
 	name = "noodle soup"
 	icon_state = "noodle soup"
-	desc = "Very nourishing noodle soup with vegetables and a chicken flavor, will keep you warm for a long time if heated."
+	desc = "A watery noodle soup with vegetables, a chicken flavor, and some nutrient powder to round out the meal. Will keep you warm for a long time if heated."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/noodlesoup/Initialize()
 	. = ..()
@@ -132,7 +132,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/feijoada
 	name = "feijoada"
 	icon_state = "brazilian-style feijoada"
-	desc = "A Brazillian dish filled with black beans, different kinds of meat, vegetables and spices, very nourishing and rich in flavor."
+	desc = "A Brazillian dish filled with black beans, different kinds of meat, vegetables and spices. Rich in flavor and very filling."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/entree/feijoada/Initialize()
 	. = ..()
@@ -163,7 +163,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/cracker
 	name = "cracker"
 	icon_state = "cracker"
-	desc = "Crumbs easily but it's the most satisfying part."
+	desc = "Crumbles easily. You'll never quite get the crumbs out of your uniform."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/cracker/Initialize()
 	. = ..()
@@ -173,7 +173,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/mashedpotatoes
 	name = "mashed potatoes"
 	icon_state = "mashed potatoes"
-	desc = "Really soft and gentle, goes well with a main dish."
+	desc = "Great for someone with a busted jaw, and fans of room temperature puree."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/mashedpotatoes/Initialize()
 	. = ..()
@@ -185,7 +185,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/risotto
 	name = "risotto"
 	icon_state = "risotto"
-	desc = "A bit more exotic, but Italian cuisine never dissapoints."
+	desc = "A bit more exotic, but Italian cuisine never disappoints. Budget imitation Italian made with a shelf life of 3-5 years, however, often does."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/risotto/Initialize()
 	. = ..()
@@ -197,7 +197,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/onigiri
 	name = "rice onigiri"
 	icon_state = "rice onigiri"
-	desc = "Cooked rice in a form of a triangle, covered in a seaweed at the bottom, doesn't fall apart, surprisingly."
+	desc = "Cooked rice in the form of a triangle with a seaweed wrap at the bottom. Well... you think it might be seaweed."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/onigiri/Initialize()
 	. = ..()
@@ -208,7 +208,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/cornbread
 	name = "cornbread"
 	icon_state = "cornbread"
-	desc = "Almost universally hated, very dry and simple taste of it really gets old fast. Requisitions probably has ass-load of it in the back. Nobody eats that shit."
+	desc = "Universally hated for being incredibly dry and tasting like uncooked flour. Requisitions probably has an ass-load of it in the back. Nobody eats that shit."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/cornbread/Initialize()
 	. = ..()
@@ -219,7 +219,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/kale
 	name = "marinated kale"
 	icon_state = "kale"
-	desc = "A sort of cabbage, marinated in spices, still has a lot of moist and crunch to it."
+	desc = "Dried plant covered in spices. Kale can be a hard sell even when it's not military grade."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/kale/Initialize()
 	. = ..()
@@ -230,7 +230,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/tortillas
 	name = "tortillas"
 	icon_state = "tortillas"
-	desc = "A kind of flat bread, goes well with adding other things onto it."
+	desc = "Added to the MRE with the idea of wrapping your entree in it. This idea literally falls apart when you get a spaghetti square."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/tortillas/Initialize()
 	. = ..()
@@ -239,7 +239,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/biscuits
 	name = "biscuits"
 	icon_state = "biscuits"
-	desc = "An assortment of biscuits, go well with adding other things onto them."
+	desc = "An assortment of biscuits. Always hard and somewhat stale, but goes well with other things."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/biscuits/Initialize()
 	. = ..()
@@ -249,7 +249,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/cinnamonappleslices
 	name = "cinnamon apple slices"
 	icon_state = "cinnamon apple slices"
-	desc = "A bit gooey pieces of apple in cinnamon sauce, a bit sticky but tasty."
+	desc = "Gooey pieces of apple in a cinnamon sauce. Noteable for being sweet and even somewhat delicious, but also terribly sticky. Wash your hands after eating, or your gun will be horribly tacky for a year."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/cinnamonappleslices/Initialize()
 	. = ..()
@@ -259,7 +259,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/boiledrice
 	name = "boiled rice"
 	icon_state = "rice"
-	desc = "A packet of plain boiled rice, a bit boring but would go well with additives."
+	desc = "A packet of plain boiled rice. Bland and boring, but would go well with additives."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/side/boiledrice/Initialize()
 	. = ..()
@@ -282,7 +282,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/snack/biscuit
 	name = "biscuit"
 	icon_state = "biscuit"
-	desc = "Reminds you of a cracker, but has a lot more different grains in it, which gives it more unique texture and flavor."
+	desc = "Reminds you of a cracker, but this one's whole grain. Purportedly part of a USCM health initiative, it has a unique texture and flavor."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/snack/biscuit/Initialize()
 	. = ..()
@@ -292,7 +292,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/snack/meatballs
 	name = "meatballs"
 	icon_state = "meatballs"
-	desc = "You can even taste muscle fibers, despite it being a cooked minced meat."
+	desc = "Despite being a ball of cooked, minced meat, you can still taste the gristle."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/snack/meatballs/Initialize()
 	. = ..()
@@ -303,7 +303,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/snack/pretzels
 	name = "pretzels"
 	icon_state = "pretzels"
-	desc = "Really salty and crunchy, thirst provoking."
+	desc = "Salty and crunchy, these pretzels will have you parched in no time."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/snack/pretzels/Initialize()
 	. = ..()
@@ -313,7 +313,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/snack/sushi
 	name = "sushi"
 	icon_state = "sushi"
-	desc = "You kinda highly doubt that raw fish wouldn't go bad in here, it barely smells like one... is it even fish?..."
+	desc = "You highly doubt that raw fish wouldn't go bad in here. It barely smells like the real thing... is this even fish?"
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/snack/sushi/Initialize()
 	. = ..()
@@ -325,7 +325,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/snack/peanuts
 	name = "peanuts"
 	icon_state = "peanuts"
-	desc = "Some crunchy salted peanuts, easy to get addicted to."
+	desc = "Some crunchy salted peanuts. Surprisingly, not a bad snack. You might even find yourself wanting more."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/snack/peanuts/Initialize()
 	. = ..()
@@ -355,7 +355,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/spicedapples
 	name = "spiced apples"
 	icon_state = "spiced apples"
-	desc = "A bit dry pieces of apple in cinnamon spice, makes your mouth water, but still tasty."
+	desc = "Dried apple slices spiced with cinnamon. Gives you cottonmouth, but that's why MREs include water."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/spicedapples/Initialize()
 	. = ..()
@@ -365,7 +365,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/chocolatebrownie
 	name = "chocolate brownie"
 	icon_state = "chocolate brownie"
-	desc = "Coco filled cake base with a chocolate frosting on top, has a deep chocolate flavor."
+	desc = "A chocolatey square of cake. Home-made brownies are dense and chewy in a good way. This brownie is not home-made."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/chocolatebrownie/Initialize()
 	. = ..()
@@ -376,7 +376,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/sugarcookie
 	name = "sugar cookie"
 	icon_state = "sugar cookie"
-	desc = "Baked cookie frosted with a caramelized sugar."
+	desc = "A sweet cookie. A little hard, but still better than most of the entrees."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/sugarcookie/Initialize()
 	. = ..()
@@ -397,7 +397,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/flan
 	name = "flan"
 	icon_state = "flan"
-	desc = "A soft milky biscuit pie."
+	desc = "A soft milky biscuit pie. Somewhat flaky and crumbly to the touch."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/flan/Initialize()
 	. = ..()
@@ -409,7 +409,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/honeyflan
 	name = "honey flan"
 	icon_state = "honey flan"
-	desc = "A soft milky biscuit pie, covered in honey topping."
+	desc = "A soft milky biscuit pie, covered in a honey topping. The topping itself is more of a thick gel than a syrupy sauce. Maybe the manufacturer learned from the cinnamon apple slices."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/honeyflan/Initialize()
 	. = ..()
@@ -421,7 +421,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/lemonpie
 	name = "lemon pie"
 	icon_state = "lemon pie"
-	desc = "A creamy pie with a milky lemon filling and a thick crust."
+	desc = "A pie with a thick, overpoweringly lemon flavored filling and a dry, chunky crust."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/lemonpie/Initialize()
 	. = ..()
@@ -434,7 +434,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/limepie
 	name = "key lime pie"
 	icon_state = "key lime pie"
-	desc = "A creamy pie with a milky lime filling and a thick crust."
+	desc = "A pie with an overpoweringly sour lime flavored filling and a dry, chunky crust"
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/limepie/Initialize()
 	. = ..()
@@ -447,7 +447,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/brigadeiro
 	name = "brigadeiro balls"
 	icon_state = "brigadeiro balls"
-	desc = "A traditional Brazillian dessert, made out of condensed milk, cocoa and butter, very soft and sugary in taste."
+	desc = "A traditional Brazillian dessert, made out of condensed milk, cocoa and butter. Allegedly."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/brigadeiro/Initialize()
 	. = ..()
@@ -459,7 +459,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/strawberrytoaster
 	name = "strawberry toaster pastry"
 	icon_state = "strawberry toaster pastry"
-	desc = "A crunchy biscuit with a strawberry jam inside it, with a frosting on top."
+	desc = "A crunchy biscuit with artifical tasting strawberry jam inside of it. Dry frosting on the top completes the look of a popular breakfast product. Despite the impression, this is actually a toaster pastry: the manufacturer wanted to avoid copyright infringement."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/strawberrytoaster/Initialize()
 	. = ..()
@@ -475,7 +475,7 @@
 	name = "spread packet (cheese)"
 	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
 	icon_state = "spread"
-	desc = "A creamy and cheesy spread, made out of a processed cheese, combines well with tortillas and other snacks."
+	desc = "A creamy and cheesy spread, made out of a processed cheese. Combines well with tortillas and other snacks."
 	open_sound = "rip"
 	open_message = "You pull open the package of the spread!"
 	volume = 6
@@ -504,7 +504,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/spread/jalapeno
 	name = "spread packet (jalapeno cheese)"
-	desc = "A creamy and cheesy spread, made out of a processed cheese, combines well with tortillas and other snacks, this one has a spicy jalapeno flavor."
+	desc = "A creamy and cheesy spread, made out of a processed cheese. Combines well with tortillas and other snacks; this one has a spicy jalapeno flavor."
 	flavor = "jalapeno cheese spread"
 
 /obj/item/reagent_container/food/drinks/cans/spread/jalapeno/Initialize()
@@ -514,7 +514,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/spread/peanut_butter
 	name = "spread packet (peanut butter)"
-	desc = "A creamy and nutty spread, made out of a processed peanuts, combines well with tortillas and other snacks."
+	desc = "A creamy and nutty spread, made out of processed peanuts. Combines well with tortillas and other snacks."
 	flavor = "peanut butter"
 
 /obj/item/reagent_container/food/drinks/cans/spread/peanut_butter/Initialize()
@@ -526,7 +526,7 @@
 
 /obj/item/reagent_container/food/drinks/beverage_drink
 	name = "beverage powder packet"
-	desc = "A packet of a beverage, to be mixed with water, makes a ready-in-a-field drink."
+	desc = "Powdered flavoring that can be mixed in water for a ready-in-a-field drink."
 	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
 	icon_state = "beverage"
 	volume = 20
@@ -541,7 +541,7 @@
 
 /obj/item/reagent_container/food/drinks/beverage_drink/orange
 	name = "electrolyte beverage powder packet (orange)"
-	desc = "A packet of an electrolyte beverage, to be mixed with water, makes a ready-in-a-field drink. Has a citrusy orange flavor."
+	desc = "Powdered orange flavoring that can be mixed in water for a ready-in-a-field drink. Contains electrolytes that are supposed to help with hydration."
 
 /obj/item/reagent_container/food/drinks/beverage_drink/orange/Initialize()
 	. = ..()
@@ -549,7 +549,7 @@
 
 /obj/item/reagent_container/food/drinks/beverage_drink/lemonlime
 	name = "electrolyte beverage powder packet (lemon-lime)"
-	desc = "A packet of an electrolyte beverage, to be mixed with water, makes a ready-in-a-field drink. Has a citrusy lemon-lime flavor."
+	desc = "Powdered lemon-lime flavoring that can be mixed in water for a ready-in-a-field drink. Contains electrolytes that are supposed to help with hydration."
 
 /obj/item/reagent_container/food/drinks/beverage_drink/lemonlime/Initialize()
 	. = ..()
@@ -557,7 +557,7 @@
 
 /obj/item/reagent_container/food/drinks/beverage_drink/chocolate
 	name = "protein drink beverage powder packet (milk chocolate)"
-	desc = "A packet of a protein drink, to be mixed with water, makes a ready-in-a-field drink. Has a chocolate flavor."
+	desc = "A packet of powdered protein mix that can be added to water for a ready-in-a-field drink. Has a chocolate flavor."
 
 /obj/item/reagent_container/food/drinks/beverage_drink/chocolate/Initialize()
 	. = ..()
@@ -565,7 +565,7 @@
 
 /obj/item/reagent_container/food/drinks/beverage_drink/chocolate_hazelnut
 	name = "protein drink beverage powder packet (chocolate hazelnut)"
-	desc = "A packet of a protein drink, to be mixed with water, makes a ready-in-a-field drink. Has a chocolate hazelnut flavor."
+	desc = "A packet of powdered protein mix that can be added to water for a ready-in-a-field drink. Has a chocolate hazelnut flavor."
 
 /obj/item/reagent_container/food/drinks/beverage_drink/chocolate_hazelnut/Initialize()
 	. = ..()

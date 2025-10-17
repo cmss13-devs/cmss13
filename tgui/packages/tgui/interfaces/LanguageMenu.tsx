@@ -38,7 +38,7 @@ const LanguagesView = (props) => {
           })
         }
       >
-        {capitalize(lang.name) + ' (:' + lang.key + ')'}
+        {capitalize(lang.name) + ' (!' + lang.key + ')'}
       </Button>
       <Box height="3px" />
       <Box>{lang.desc}</Box>

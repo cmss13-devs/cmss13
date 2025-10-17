@@ -37,42 +37,36 @@
 	desc = "A 10x20mm caseless light-explosive submachinegun magazine containing special light explosive rounds, designed to rapidly decimate armor, at the cost of vastly reduced damage and penetration."
 	default_ammo = /datum/ammo/bullet/smg/le
 	ammo_band_color = AMMO_BAND_COLOR_LIGHT_EXPLOSIVE
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_MEDIUM
 
 /obj/item/ammo_magazine/smg/m39/rubber
 	name = "\improper M39 rubber magazine (10x20mm)"
 	desc = "A 10x20mm caseless rubber bullet submachinegun magazine, containing rubber bullets. Non-lethal, but terrible on bioforms."
 	default_ammo = /datum/ammo/bullet/smg/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_RUBBER //youre firing rubber, of course its gonna jam your shit a lot more
 
 /obj/item/ammo_magazine/smg/m39/heap
 	name = "\improper M39 HEAP magazine (10x20mm)"
 	desc = "A 10x20mm caseless armor-piercing high-explosive submachinegun magazine. The bullet tips are made out of a special explosive, designed to penetrate armor then detonate for maximum soft-tissue damage."
 	default_ammo = /datum/ammo/bullet/smg/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 /obj/item/ammo_magazine/smg/m39/penetrating
 	name = "\improper M39 wall-penetrating magazine (10x20mm)"
 	desc = "A 10x20mm caseless wall-penetrating bullet submachinegun magazine, containing wall-penetrating bullets. Designed to penetrate straight through objects and walls."
 	default_ammo = /datum/ammo/bullet/smg/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_FAIR
 
 /obj/item/ammo_magazine/smg/m39/toxin
 	name = "\improper M39 toxin magazine (10x20mm)"
 	desc = "A 10x20mm caseless toxin bullet submachinegun magazine, containing toxin bullets. Great at stripping away armor and destroying biological structures."
 	default_ammo = /datum/ammo/bullet/smg/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/smg/m39/incendiary
 	name = "\improper M39 incendiary magazine (10x20mm)"
 	desc = "A 10x20mm caseless incendiary submachinegun magazine. Incendiary payload sets targets ablaze, but causes the gun to have low stopping power and strongly decreased accuracy."
 	default_ammo = /datum/ammo/bullet/smg/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/smg/m39/extended
 	name = "\improper M39 HV extended magazine (10x20mm)"
@@ -80,7 +74,6 @@
 	max_rounds = 72
 	icon_state = "m39_HV_extended"
 	bonus_overlay = "m39_ex"
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 //-------------------------------------------------------
 //M5, a classic SMG used in a lot of action movies.
@@ -128,6 +121,9 @@
 //-------------------------------------------------------
 //PPSH //Based on the PPSh-41.
 
+#define PPSH_STICK_MAGAZINE_JAM_CHANCE 0.1
+#define PPSH_DRUM_MAGAZINE_JAM_CHANCE 1
+
 /obj/item/ammo_magazine/smg/ppsh
 	name = "\improper PPSh-17b stick magazine (7.62x25mm)"
 	desc = "A stick magazine for the PPSh submachinegun. Less ammo than the iconic drum magazine, but the latter causes feeding and handling issues. Your call which one's better."
@@ -140,6 +136,7 @@
 	default_ammo = /datum/ammo/bullet/smg/ppsh
 	var/bonus_mag_aim_slowdown = 0
 	var/bonus_mag_wield_delay = 0
+	var/jam_chance = PPSH_STICK_MAGAZINE_JAM_CHANCE
 	var/new_item_state = "ppsh17b"
 
 
@@ -152,8 +149,11 @@
 	w_class = SIZE_MEDIUM
 	bonus_mag_aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
 	bonus_mag_wield_delay = WIELD_DELAY_VERY_FAST
+	jam_chance = PPSH_DRUM_MAGAZINE_JAM_CHANCE
 	new_item_state = "ppsh17b_d"
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_CRITICAL // carlarc had a vision
+
+#undef PPSH_STICK_MAGAZINE_JAM_CHANCE
+#undef PPSH_DRUM_MAGAZINE_JAM_CHANCE
 
 //-------------------------------------------------------
 //Type-19, based on the PPS-43
@@ -174,21 +174,19 @@
 
 /obj/item/ammo_magazine/smg/pps43/extended
 	name = "\improper Type-19 drum magazine (7.62x25mm)"
-	desc = "A drum magazine for the Type-19 submachinegun."
+	desc = "A 7.62x25mm drum magazine for the Type-19 submachinegun."
 	icon_state = "insasu_drum"
 	bonus_overlay = "insasu_drum_overlay"
 	max_rounds = 71
 	w_class = SIZE_MEDIUM
 	bonus_mag_aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
 	bonus_mag_wield_delay = WIELD_DELAY_VERY_FAST
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
-
 //-------------------------------------------------------
 //Type 64 SMG, based on the PP Bizon.
 
 /obj/item/ammo_magazine/smg/bizon
 	name = "\improper Type 64 Helical Magazine (7.62x19mm)"
-	desc = "A 64 round magazine for the Type 64 submachinegun, the standard SMG of the UPP armed forces."
+	desc = "A 7.62x19mm 64-round helical magazine for the Type 64 submachinegun, the standard SMG of the UPP armed forces."
 	caliber = "7.62x19mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/smgs.dmi'
 	icon_state = "type64mag"
@@ -200,7 +198,7 @@
 
 /obj/item/ammo_magazine/smg/mac15 //Based on the Uzi.
 	name = "\improper MAC-15 magazine (9mm)"
-	desc = "A magazine for the MAC-15."
+	desc = "A 9mm magazine for the MAC-15."
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
 	icon_state = "mac15"
@@ -209,38 +207,44 @@
 
 /obj/item/ammo_magazine/smg/mac15/extended
 	name = "\improper MAC-15 extended magazine (9mm)"
+	desc = "An extended 9mm magazine for the MAC-15."
 	icon_state = "mac15_extended"
 	bonus_overlay = "mac15_ext"
 	max_rounds = 50
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 //-------------------------------------------------------
 // the real UZI
 
+#define UZI_NORMAL_MAGAZINE_JAM_CHANCE 0
+#define UZI_EXTENDED_MAGAZINE_JAM_CHANCE 1
+
 /obj/item/ammo_magazine/smg/uzi
 	name = "\improper UZI magazine (9x21mm)"
-	desc = "A magazine for the UZI. Seems pretty small, huh? Anything larger could cause feeding errors."
+	desc = "A 9x21mm magazine for the UZI. Seems pretty small, huh? Anything larger could cause feeding errors."
 	caliber = "9x12mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
 	icon_state = "uzi"
 	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/smg/uzi
+	var/jam_chance = UZI_NORMAL_MAGAZINE_JAM_CHANCE
 
 /obj/item/ammo_magazine/smg/uzi/extended
 	name = "\improper UZI extended magazine (9x21mm)"
-	desc = "A slightly extended magazine for the UZI. Due to its size, it may or may not cause feeding errors."
+	desc = "A slightly extended 9x21mm magazine for the UZI. Due to its size, it may or may not cause feeding errors."
 	icon_state = "uzi_extended"
 	bonus_overlay = "uzi_ext"
 	max_rounds = 32
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_MEDIUM // carlarc also also here
+	jam_chance = UZI_EXTENDED_MAGAZINE_JAM_CHANCE
 
+#undef UZI_NORMAL_MAGAZINE_JAM_CHANCE
+#undef UZI_EXTENDED_MAGAZINE_JAM_CHANCE
 
 //-------------------------------------------------------
 //FP9000 //Based on the FN P90
 
 /obj/item/ammo_magazine/smg/fp9000
 	name = "FN FP9000 magazine (5.7x28mm)"
-	desc = "A magazine for the FN FP9000 SMG."
+	desc = "A 5.7x28mm magazine for the FN FP9000 SMG."
 	default_ammo = /datum/ammo/bullet/smg/ap
 	caliber = "5.7x28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
@@ -253,7 +257,7 @@
 //Nailgun!
 /obj/item/ammo_magazine/smg/nailgun
 	name = "nailgun magazine (7x45mm)"
-	desc = "A large magazine of oversized plasteel nails. Unfortunately, the production cost of those nail makes them ill-affordable for most military projects, and only some specific construction projects requires them."
+	desc = "A large magazine of oversized plasteel nails. Unfortunately, the production cost of those nail makes them ill-affordable for most military projects, and only some specific construction projects require them."
 	default_ammo = /datum/ammo/bullet/smg/nail
 	flags_magazine = NO_FLAGS // Let's not start messing with nails...
 	caliber = "7x45mm"
@@ -280,8 +284,8 @@
 //P90, a classic SMG.(TWE version)
 
 /obj/item/ammo_magazine/smg/p90/twe
-	name = "\improper FN-TWE P90 AP magazine (5.7×28mm)"
-	desc = "A 5.7×28mm (AP) magazine for the FN-TWE P90."
+	name = "\improper FN P90 AP magazine (5.7×28mm)"
+	desc = "An armor-piercing 5.7×28mm magazine for the FN P90."
 	default_ammo = /datum/ammo/bullet/smg/p90/twe_ap
 	caliber = "5.7×28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/smgs.dmi'

@@ -20,11 +20,30 @@
 	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN
 	storage_slots = 4
 
+/obj/item/clothing/suit/storage/marine/smartgunner/veteran/sof
+	name = "\improper SOF elite combat harness"
+	desc = "A heavily customized smargunner harness. Used by Marine Raiders."
+	icon_state = "marsoc_harness"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_VERYHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	unacidable = TRUE
+	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN
+	storage_slots = 4
 
 //=============================//GENERIC FACTIONAL ARMOR ITEM\\==================================\\
 //=======================================================================\\
 
 /obj/item/clothing/suit/storage/marine/veteran
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE //Let's make these keep their name and icon.
 
@@ -140,7 +159,7 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	storage_slots = 1
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/under/marine/veteran/UPP/medic, /obj/item/clothing/under/marine/veteran/UPP/engi)
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/under/marine/veteran/UPP/medic, /obj/item/clothing/under/marine/veteran/UPP/engi, /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/support
 	name = "\improper UL6 personal armor"
@@ -185,6 +204,7 @@
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
 	flags_armor_protection = BODY_FLAG_ALL_BUT_HEAD
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
@@ -207,6 +227,7 @@
 	icon_state = "upp_coat_officer"
 	slowdown = SLOWDOWN_ARMOR_NONE
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_LOW //wear actual armor if you go into combat
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
@@ -230,6 +251,7 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	storage_slots = 4
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP/officer)
 
@@ -239,6 +261,7 @@
 	icon_state = "upp_coat_mp"
 	slowdown = SLOWDOWN_ARMOR_NONE
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_LOW //wear actual armor if you go into combat
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
@@ -248,8 +271,6 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	storage_slots = 4
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP)
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/jacket/ivan
 	name = "\improper UH4 Camo Jacket"
@@ -264,6 +285,122 @@
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	storage_slots = 2
 
+// UPP Army
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/army
+
+	name = "\improper 6B80 personal body armor"
+	desc = "An older UPP personal armor system that's since been replaced by the UPP Army Standard 6B90 body armor. It is still used by certain UPP Army units that the UPP doesn't expect to see much combat."
+	storage_slots = 3
+	icon_state = "upp_armor_army_brown"
+
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW // Goon stats
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+	flags_armor_protection = (BODY_FLAG_CHEST)
+	flags_cold_protection = (BODY_FLAG_CHEST)
+	flags_heat_protection = (BODY_FLAG_CHEST)
+
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/army/simple
+	name = "6B70 personal body armour"
+	icon_state = "upp_generic_ballistic_armor"
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/army/alt
+	name = "6B75 personal body armour"
+	icon_state = "upp_ballistic_armor"
+
+// People's Armed Police
+
+/obj/item/clothing/suit/storage/CMB/pap
+	name = "\improper PaP uniform jacket"
+	desc = "A People's Armed Police service jacket featuring small dispersed para-aramid inserts providing the barest of defensive functionality, and a Personal Light Unit rig."
+	icon_state = "upp_coat_pap"
+	uniform_restricted = FALSE
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
+	)
+
+// UPP SOF
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor
+	name = "\improper CCC5-L tactical vest"
+	desc = "A lightweight UPP-issued armor vest designed for space operations forces. It features polymer-ceramic composite plating for improved protection while allowing greater mobility. Equipped with modular pouches for ammunition and gear, it ensures rapid access to essential supplies."
+	icon_state = "sof_vest"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
+	)
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW // Goon stats & covers arms
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+	flags_armor_protection = (BODY_FLAG_CHEST|BODY_FLAG_ARMS)
+	flags_cold_protection = (BODY_FLAG_CHEST|BODY_FLAG_ARMS)
+	flags_heat_protection = (BODY_FLAG_CHEST|BODY_FLAG_ARMS)
+
+	storage_slots = 4
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor/heavy
+	name = "\improper CCC5-L Heavy Tactical Vest"
+	desc = "A heavily reinforced UPP-issued tactical vest designed for space operations forces operating in high-risk environments. The CCC5-L Heavy-Plated Tactical Vest features additional polymer-ceramic composite plating across the chest and torso, providing superior protection against ballistic and explosive threats. Despite its bulk, the vest maintains a balance between protection and mobility, with modular pouches for quick access to essential gear."
+	icon_state = "sof_vest_plate_heavy"
+
+	armor_melee = CLOTHING_ARMOR_MEDIUM // Slightly better then Goon armor & covers arms and groin
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	flags_armor_protection = (BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN)
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor/medium
+	name = "\improper CCC5-L plated tactical vest"
+	desc = "A lightweight UPP-issued armor vest designed for space operations forces. It features polymer-ceramic composite plating for improved protection while allowing greater mobility. Equipped with modular pouches for ammunition and gear, it ensures rapid access to essential supplies."
+	icon_state = "sof_vest_plate"
+
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW // Very slightly better then Goon armor & covers arms
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor/medium/alt
+	icon_state = "sof_vest_alt"
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor/synth
+	name = "\improper CCC5-L synthetic tactical vest"
+	desc = "A lightweight UPP-issued armor vest designed for space operations forces. It features polymer-ceramic composite plating for improved protection while allowing greater mobility. Equipped with modular pouches for ammunition and gear, it ensures rapid access to essential supplies."
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	storage_slots = 4
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor/synth/Initialize()
+	flags_atom |= NO_NAME_OVERRIDE
+	flags_marine_armor |= SYNTH_ALLOWED
+	return ..()
 
 //===========================//FREELANCER\\================================\\
 //=====================================================================\\
@@ -324,7 +461,6 @@
 	)
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/militia/Initialize()
 	. = ..()
@@ -364,7 +500,20 @@
 
 /obj/item/clothing/suit/storage/militia/smartgun
 	name = "colonial militia harness"
-	desc = "The hauberk of a colonist militia member, created from boiled leather and some modern armored plates. While not the most powerful form of armor, and primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. It is also quick to don, easy to hide, and cheap to produce in large workshops. This one has straps interweaved with the plates, that allow the user to fire a captured smartgun, if a bit uncomfortably."
+	icon_state = "clf_harness"
+	desc = "The hauberk of a colonist militia member, created from boiled leather and some modern armored plates. While not the most powerful form of armor, and primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. It is also quick to don, easy to hide, and cheap to produce in large workshops. This one has straps interweaved with the plates and chunks of a smartgunner harness kit, that allow the user to fire a captured smartgun, if a bit uncomfortably."
+	storage_slots = 3
+	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
+
+/obj/item/clothing/suit/storage/militia/full
+	name = "colonial militia full armor"
+	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled lether and more modern armor places, this one includes full set of armor for all limbs and full torso protection."
+	icon_state = "rebel_armor_full"
+	storage_slots = 3
+
+/obj/item/clothing/suit/storage/militia/full/smartgun
+	name = "colonial militia full armor harness"
+	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled lether and more modern armor places, this one includes full set of armor for all limbs and full torso protection. This one is even further modified with parts of M56 smargunner harness, allowing the use of smargun system electronics."
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
 
 //===========================//CMB\\================================\\
@@ -382,6 +531,7 @@
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_energy = CLOTHING_ARMOR_LOW
@@ -412,8 +562,6 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/CMB/Initialize()
 	. = ..()
@@ -475,7 +623,7 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/cmb)
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/cmb, /obj/item/clothing/under/CM_uniform)
 	item_state_slots = list(WEAR_JACKET = "cmb_heavy_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/cmb/light
@@ -607,8 +755,8 @@
 //=======================================================================\\
 
 /obj/item/clothing/suit/storage/marine/MP/provost
-	name = "\improper M3 pattern Provost armor"
-	desc = "A standard Provost M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	name = "\improper M3 pattern MP urban armor"
+	desc = "A standard M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	icon_state = "pvmedium"
 	item_state_slots = list(WEAR_JACKET = "pvmedium")
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
@@ -625,29 +773,29 @@
 	storage_slots = 3
 
 /obj/item/clothing/suit/storage/marine/MP/provost/tml
-	name = "\improper M3 pattern Senior Provost armor"
-	desc = "A more refined Provost M3 Pattern Chestplate for senior officers. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	name = "\improper M3 pattern Senior MP armor"
+	desc = "A more refined M3 Pattern Chestplate for senior officers. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	icon_state = "pvleader"
 	item_state_slots = list(WEAR_JACKET = "pvleader")
 
 /obj/item/clothing/suit/storage/marine/MP/provost/marshal
-	name = "\improper M5 pattern Provost Marshal armor"
-	desc = "A custom fit luxury armor suit for Provost Marshals. Useful for letting your men know who is in charge when taking to the field."
+	name = "\improper M3 Pattern Marshal Chestplate"
+	desc = "A M3 Pattern chestplate in a darker black and with gold color highlights for clear identification. Useful for letting your men know who is in charge when taking to the field."
 	icon_state = "pvmarshal"
 	item_state_slots = list(WEAR_JACKET = "pvmarshal")
 	w_class = SIZE_MEDIUM
 	storage_slots = 4
 
 /obj/item/clothing/suit/storage/marine/MP/provost/light
-	name = "\improper M3 pattern Provost light armor"
-	desc = "A lighter Provost M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	name = "\improper M3 pattern MP chestplate"
+	desc = "An MP M3 pattern chestplate in urban camo pattern. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	icon_state = "pvlight"
 	item_state_slots = list(WEAR_JACKET = "pvlight")
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 
 /obj/item/clothing/suit/storage/marine/MP/provost/light/flexi
-	name = "\improper M3 pattern Provost flexi-armor"
-	desc = "A flexible and easy to store M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	name = "\improper M3 pattern light armor"
+	desc = "A regular set of MP M3 Armor in Urban camo, Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	w_class = SIZE_MEDIUM
 	icon_state = "pvlight_2"
 	item_state_slots = list(WEAR_JACKET = "pvlight_2")
@@ -736,12 +884,14 @@
 	name = "kestrel armoured carry vest"
 	icon_state = "rmc_light_padded"
 	item_state = "rmc_light_padded"
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	storage_slots = 7
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine/smartgun //Smartgun Spec Armor
 	name = "kestrel armoured smartgun harness"
 	icon_state = "rmc_smartgun"
 	item_state = "rmc_smartgun"
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS
 	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN|SMARTGUN_HARNESS
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine/pointman //Pointman Spec Armor
@@ -749,6 +899,7 @@
 	desc = "A heavier version of the armor system used by the Three World Empire's Royal Marines Commandos. Designers from a Weyland Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor systemed to suit the unique needs of the Three World Empire's smaller but better equipped Royal Marines."
 	icon_state = "rmc_pointman"
 	item_state = "rmc_pointman"
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
@@ -762,7 +913,52 @@
 /atom/movable/marine_light
 	light_system = DIRECTIONAL_LIGHT
 
+//======================//=IASF=\\==============================\\
+//===============================================================\\
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf
+
+	name = "goshawk airborne vest"
+	desc = "A lightweight, high-mobility flak vest designed for the Imperial Armed Space Force’s airborne troops. Developed by Alphatech, the Goshawk offers crucial protection while ensuring paratroopers retain full freedom of movement during high-risk insertions. Advanced composite plating and reinforced webbing make it effective against shrapnel and small-arms fire, striking the perfect balance between defense and agility for those who strike fast and strike hard."
+	icon_state = "iasf_light"
+	item_state = "iasf_light"
+	storage_slots = 3
+
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW // Goon stats
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+	flags_armor_protection = (BODY_FLAG_CHEST)
+	flags_cold_protection = (BODY_FLAG_CHEST)
+	flags_heat_protection = (BODY_FLAG_CHEST)
+
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT // Gotta go fast
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf/synth
+
+	name = "goshawk airborne synthetic vest"
+	desc = "A lightweight, high-mobility flak vest designed for the Imperial Armed Space Force’s airborne troops. Developed by Alphatech, the Goshawk offers crucial protection while ensuring paratroopers retain full freedom of movement during high-risk insertions. Advanced composite plating and reinforced webbing make it effective against shrapnel and small-arms fire, striking the perfect balance between defense and agility for those who strike fast and strike hard."
+	icon_state = "iasf_light"
+	item_state = "iasf_light"
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	storage_slots = 4
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
+	flags_marine_armor = parent_type::flags_marine_armor|SYNTH_ALLOWED
+
 //CBRN
+
 /obj/item/clothing/suit/storage/marine/cbrn
 	name = "\improper M3-M armor"
 	desc = "While lacking the appearance of the M3 pattern armor worn in regular service, this armor piece is still a derivative of it. It has been heavily modified to fit over the MOPP suit with additional padding and Venlar composite layers removed, so as not to restrict the wearer’s movement. However, with the reduction of composite layers, the personal protection offered is less than desired with complaints having been lodged since 2165."

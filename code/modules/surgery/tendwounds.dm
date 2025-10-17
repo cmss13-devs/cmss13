@@ -36,6 +36,13 @@
 		new /datum/suture_handler(surgery.affected_limb)
 		added_sutures = SEND_SIGNAL(surgery.affected_limb, COMSIG_LIMB_ADD_SUTURES, TRUE) //This time, with feeling.
 
+	switch(target_zone)
+		if("head")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
+		if("chest")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 	if(added_sutures & SUTURED_FULLY)
 		user.affected_message(target,
 			SPAN_NOTICE("You close the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures."),

@@ -52,7 +52,6 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
 		/datum/action/xeno_action/activable/pounce/facehugger,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -71,6 +70,7 @@
 	var/next_facehug_goal = FACEHUG_TIER_1
 	/// Whether a hug was performed successfully
 	var/hug_successful = FALSE
+	var/last_roar_time = 0
 
 /mob/living/carbon/xenomorph/facehugger/Login()
 	var/last_ckey_inhabited = persistent_ckey
@@ -98,10 +98,11 @@
 	if(stat == DEAD)
 		return
 
+	if(QDELETED(src))
+		return
+
 	if(!aghosted)
-		// Become a npc once again
-		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
-		qdel(src)
+		gib()
 
 /mob/living/carbon/xenomorph/facehugger/update_icons()
 	. = ..()
@@ -139,8 +140,8 @@
 
 	if(ishuman(A))
 		var/mob/living/carbon/human/human = A
-		if(human.body_position != LYING_DOWN)
-			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down."))
+		if((human.body_position != LYING_DOWN) && (!HAS_TRAIT(human, TRAIT_NESTED)))
+			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down or nested."))
 			return
 		if(!can_hug(human, hivenumber))
 			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
@@ -148,8 +149,8 @@
 		visible_message(SPAN_WARNING("\The [src] starts climbing onto \the [human]'s face..."), SPAN_XENONOTICE("You start climbing onto \the [human]'s face..."))
 		if(!do_after(src, FACEHUGGER_CLIMB_DURATION, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
-		if(human.body_position != LYING_DOWN)
-			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down."))
+		if((human.body_position != LYING_DOWN) && (!HAS_TRAIT(human, TRAIT_NESTED)))
+			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down or nested."))
 			return
 		if(!can_hug(human, hivenumber))
 			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
@@ -257,6 +258,12 @@
 			return FALSE
 
 	// Otherwise, ""roar""!
+	var/current_time = world.time
+	if(current_time - last_roar_time < 1 SECONDS)
+		to_chat(src, SPAN_WARNING("You must wait before roaring again."))
+		return FALSE
+
+	last_roar_time = current_time
 	playsound(loc, "alien_roar_larva", 15)
 	return TRUE
 

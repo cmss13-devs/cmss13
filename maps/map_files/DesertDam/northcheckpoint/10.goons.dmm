@@ -46,7 +46,6 @@
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
 /obj/item/ammo_magazine/smg/m39,
-/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "dC" = (
@@ -207,6 +206,7 @@
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
 /obj/item/storage/belt/gun/m4a3/mod88,
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
 /turf/open/floor/prison/darkred2/northwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "sM" = (

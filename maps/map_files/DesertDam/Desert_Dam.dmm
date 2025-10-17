@@ -7618,8 +7618,33 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/hanger/waiting)
 "ayu" = (
-/obj/item/stack/cable_coil,
-/turf/open/floor/prison/bright_clean/southwest,
+/obj/structure/cable/white{
+	color = "#9f8700";
+	icon_state = "4-9";
+	layer = 5;
+	level = 2
+	},
+/obj/item/tool/wirecutters{
+	pixel_x = -9;
+	pixel_y = 2
+	},
+/obj/item/stack/cable_coil/yellow{
+	pixel_x = 5;
+	pixel_y = -8;
+	icon_state = "coil2"
+	},
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "5-9";
+	layer = 5
+	},
+/obj/structure/cable/white{
+	color = "#007740";
+	icon_state = "8-9";
+	layer = 5;
+	level = 2
+	},
+/turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/server)
 "ayv" = (
 /obj/item/paper/crumpled,
@@ -15301,9 +15326,33 @@
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/south_valley_dam)
+"aWO" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/whitepurple/east,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"aWP" = (
+/obj/item/clothing/glasses/science,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "aWQ" = (
 /turf/open/floor/prison/darkredcorners2/east,
 /area/desert_dam/building/security/armory)
+"aWR" = (
+/obj/structure/largecrate/random/barrel/purewhite,
+/turf/open/floor/prison/whitepurple/southeast,
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
+"aWS" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/whitepurple/east,
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aWT" = (
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/valley/valley_wilderness)
@@ -15311,9 +15360,68 @@
 /obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
+"aWV" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/whitepurple/east,
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
+"aWW" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/snacks/candy,
+/turf/open/floor/prison/whitepurple/east,
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
+"aWX" = (
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/darkpurple2/southeast,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
+"aWY" = (
+/obj/structure/largecrate/empty/secure{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/whitepurple/northeast,
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
+"aWZ" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/prison,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "aXa" = (
 /turf/open/floor/plating/warnplate/west,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"aXb" = (
+/obj/structure/machinery/light,
+/obj/item/clothing/glasses/regular/hippie,
+/turf/open/floor/prison,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"aXc" = (
+/obj/item/paper/crumpled{
+	pixel_x = 9
+	},
+/turf/open/floor/prison,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"aXd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/clothing/glasses/science,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
+"aXe" = (
+/obj/item/clothing/suit/storage/labcoat/wy,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/lab_northeast/east_lab_containment)
+"aXf" = (
+/obj/item/stack/cable_coil,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/primary_tool_storage/server)
 "aXk" = (
 /obj/structure/closet/lasertag/red,
 /turf/open/floor/prison/blue/north,
@@ -35198,6 +35306,11 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/upper_hallway)
 "iEx" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = 7;
+	pixel_y = 7
+	},
 /turf/open/floor/prison/whitepurple/southeast,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "iEz" = (
@@ -46096,6 +46209,7 @@
 /area/desert_dam/building/medical/maint/east)
 "mWH" = (
 /obj/structure/surface/table/reinforced,
+/obj/item/inflatable/door,
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "mWJ" = (
@@ -167327,7 +167441,7 @@ uer
 uer
 vmC
 yjh
-ouj
+aXe
 nbD
 nbD
 ful
@@ -167349,7 +167463,7 @@ svu
 jYd
 oPr
 jYd
-jYd
+aWP
 dTw
 ivc
 ivc
@@ -168054,7 +168168,7 @@ jYd
 aav
 sPU
 pgX
-pgX
+aWO
 pgX
 pgX
 pgX
@@ -169675,7 +169789,7 @@ ouj
 ouj
 ouj
 ouj
-eZF
+aWZ
 vmC
 lmW
 aXN
@@ -169909,7 +170023,7 @@ ouj
 ouj
 ouj
 ouj
-kUF
+aXb
 vmC
 ajm
 aXN
@@ -170143,7 +170257,7 @@ ouj
 ngQ
 nYQ
 ouj
-eZF
+aXc
 qWL
 tWn
 aXN
@@ -174356,10 +174470,10 @@ lEC
 mpm
 iNY
 iNY
-wfp
-pXj
-pXj
-pXj
+aWY
+aWW
+aWV
+aWS
 pXj
 iEx
 fvW
@@ -176931,7 +177045,7 @@ ani
 moF
 ani
 ixW
-fGE
+aWX
 mpm
 ucs
 lxm
@@ -177864,7 +177978,7 @@ iNY
 iNY
 eUY
 toI
-wOD
+aXd
 ani
 eUY
 vAV
@@ -180219,7 +180333,7 @@ krr
 xJB
 jeG
 atC
-ajW
+aWR
 tbS
 oIj
 ctG
@@ -207191,7 +207305,7 @@ awX
 ayB
 axE
 axE
-axE
+aXf
 axs
 axo
 axc

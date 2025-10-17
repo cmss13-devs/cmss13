@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - bugfix: "fixes floating tile bug with stair look up"

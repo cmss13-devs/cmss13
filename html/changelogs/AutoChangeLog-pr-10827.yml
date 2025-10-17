@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - bugfix: "The various types of freezer/fridges all now count for the nuke protection."

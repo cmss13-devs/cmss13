@@ -17,7 +17,7 @@
 
 /mob/living/simple_animal/moth/Life(delta_time)
 	. = ..()
-	if(!ckey && stat == CONSCIOUS && prob(55))
+	if(!ckey && stat == CONSCIOUS && prob(5))
 		if(locate(/turf/closed,get_step(src, NORTH)))
 			set_stat(UNCONSCIOUS)
 			icon_state = "moth_hanging"

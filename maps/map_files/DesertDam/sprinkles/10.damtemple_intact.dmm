@@ -446,8 +446,8 @@
 	pixel_x = 1
 	},
 /obj/structure/closet/coffin/predator/ancient_stone{
-	pixel_x = -16;
-	pixel_y = -8
+	pixel_x = 4;
+	pixel_y = 2
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)

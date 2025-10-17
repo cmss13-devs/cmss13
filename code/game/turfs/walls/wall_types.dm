@@ -441,16 +441,6 @@
 	//var/electro = 1
 	//var/shocked = null
 
-/turf/closed/wall/mineral/gold_wy
-	name = "gold wall"
-	desc = "A wall with gold plating. Swag!"
-	icon = 'icons/turf/walls/walls.dmi'
-	icon_state = "gold"
-	walltype = WALL_GOLD
-	mineral = "gold"
-	//var/electro = 1
-	//var/shocked = null
-
 /turf/closed/wall/mineral/silver
 	name = "silver wall"
 	desc = "A wall with silver plating. Shiny!"

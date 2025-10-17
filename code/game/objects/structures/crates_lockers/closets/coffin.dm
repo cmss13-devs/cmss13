@@ -39,7 +39,7 @@
 	icon = 'icons/obj/structures/props/hunter/sarcophagus.dmi'
 	icon_state = "ancient_coffin"
 	icon_closed = "ancient_coffin"
-	icon_opened = "ancient_coffin_open"
+	icon_opened = "ancient_coffin_empty_open"
 	anchored = TRUE
 	unacidable = TRUE
 	unslashable = TRUE

@@ -407,19 +407,23 @@
 	name = "satchel"
 	desc = "A trendy-looking satchel."
 	icon_state = "satchel-norm"
-	item_state = "satchel-sec"
+	item_state = "satchel-norm"
 
 /obj/item/storage/backpack/satchel/norm/blue
 	icon_state = "satchel-chem"
+	item_state = "satchel-chem"
 
 /obj/item/storage/backpack/satchel/norm/red_line
 	icon_state = "satchel-med"
+	item_state = "satchel-med"
 
 /obj/item/storage/backpack/satchel/norm/orange_line
 	icon_state = "satchel-eng"
+	item_state = "satchel-eng"
 
 /obj/item/storage/backpack/satchel/norm/green
 	icon_state = "satchel_hyd"
+	item_state = "satchel_hyd"
 
 /obj/item/storage/backpack/satchel/eng
 	name = "industrial satchel"

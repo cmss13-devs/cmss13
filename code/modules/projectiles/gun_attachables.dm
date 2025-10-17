@@ -3035,7 +3035,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/flare_launcher
 	name = "U2 flare launcher"
-	desc = "A weapon-mounted reloadable flare launcher"
+	desc = "A weapon-mounted reloadable flare launcher."
 	icon_state = "flare"
 	attach_icon = "flare_a"
 	w_class = SIZE_MEDIUM

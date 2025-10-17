@@ -5,6 +5,7 @@
 	icon_state = "window"
 	density = TRUE
 	anchored = TRUE
+	plane = TURF_PLANE
 	layer = WINDOW_LAYER
 	flags_atom = ON_BORDER|FPRINT
 	health = 15
@@ -582,7 +583,6 @@
 	reinf = 1
 	dir = NORTHEAST
 	window_frame = /obj/structure/window_frame/almayer
-	plane = TURF_PLANE
 
 /obj/structure/window/framed/almayer/hull
 	name = "hull window"

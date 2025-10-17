@@ -1,0 +1,6 @@
+author: "DawsonKeyes"
+delete-after: True
+changes:
+  - rscadd: "New pred plasma rifle sprites"
+  - rscadd: "You can now wear the hunting bow quiver on your back slot"
+  - bugfix: "Hunting bow quiver sprites fixed"

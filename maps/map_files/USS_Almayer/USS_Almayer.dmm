@@ -49341,12 +49341,6 @@
 	name = "\improper Weyland-Yutani Office";
 	id_tag = "cl_office_door"
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/door,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4

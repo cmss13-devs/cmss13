@@ -35646,6 +35646,10 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/containment/cell/cl)
 "bIF" = (
+/obj/structure/disposalpipe/down/almayer{
+	dir = 1;
+	id = "almayerlink"
+	},
 /turf/open/floor/almayer/silvercorner/east/no_build,
 /area/almayer/medical/containment/cell/cl)
 "bIG" = (
@@ -35812,6 +35816,7 @@
 /area/almayer/medical/containment/cell/cl)
 "bIZ" = (
 /obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /turf/open/floor/almayer/silver/northeast/no_build,
 /area/almayer/medical/containment/cell/cl)
 "bJa" = (

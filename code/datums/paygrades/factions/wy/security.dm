@@ -44,3 +44,21 @@
 	name = "Personal Protection Coordinator"
 	prefix = "PPC."
 	pay_multiplier = 4
+
+/datum/paygrade/wy_sec/bodyguard/leadership
+	paygrade = PAY_SHORT_WY_SEC_DPO
+	name = "Directorate Protection Officer"
+	prefix = "DPO."
+	pay_multiplier = 6
+
+/datum/paygrade/wy_sec/bodyguard/leadership/grade_2
+	paygrade = PAY_SHORT_WY_SEC_DPS
+	name = "Directorate Protection Specialist"
+	prefix = "DPS."
+	pay_multiplier = 7
+
+/datum/paygrade/wy_sec/bodyguard/leadership/grade_3
+	paygrade = PAY_SHORT_WY_SEC_DPC
+	name = "Directorate Protection Coordinator"
+	prefix = "DPC."
+	pay_multiplier = 8

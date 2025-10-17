@@ -123,3 +123,12 @@
 
 /// WY-SEC-PSSGT Personal Protection Coordinator
 #define PAY_SHORT_WY_SEC_PPC "WY-SEC-PPC"
+
+/// WY-SEC-PSSGT Directorate Protection Officer
+#define PAY_SHORT_WY_SEC_DPO "WY-SEC-DPO"
+
+/// WY-SEC-PSSGT Directorate Protection Specialist
+#define PAY_SHORT_WY_SEC_DPS "WY-SEC-DPS"
+
+/// WY-SEC-PSSGT Directorate Protection Coordinator
+#define PAY_SHORT_WY_SEC_DPC "WY-SEC-DPC"

@@ -34855,6 +34855,25 @@
 /obj/structure/closet/wardrobe/medic_white,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
+"bGk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/middeck/medical)
+"bGl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/medic_white,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
+"bGm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
 "bGn" = (
 /obj/structure/barricade/plasteel/metal,
 /turf/open/floor/almayer/cargo,
@@ -47902,11 +47921,6 @@
 /obj/structure/cargo_container/uscm/mid,
 /turf/open/floor/almayer/no_build,
 /area/almayer/underdeck/req)
-"ggY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/wardrobe/medic_white,
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/medical)
 "ghu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -49528,15 +49542,6 @@
 	},
 /turf/open/floor/almayer/orange/northwest,
 /area/almayer/engineering/upper_engineering/starboard)
-"gPj" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/medical)
 "gPS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -58877,11 +58882,6 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/squads/req)
-"kFT" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/medical)
 "kFU" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -170043,7 +170043,7 @@ baF
 aOh
 baC
 avN
-ggY
+bGl
 bnv
 blH
 bid
@@ -170146,7 +170146,7 @@ bnY
 bnY
 bnY
 avN
-kFT
+bGm
 bnv
 blH
 bwy
@@ -170250,7 +170250,7 @@ aOh
 baC
 avN
 aSc
-gPj
+bGk
 blH
 bie
 avN
@@ -170353,7 +170353,7 @@ bxI
 aYN
 avN
 aVU
-gPj
+bGk
 blH
 aVP
 avN

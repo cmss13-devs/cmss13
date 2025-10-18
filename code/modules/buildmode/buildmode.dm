@@ -34,6 +34,7 @@
 	holder.add_to_screen(buttons)
 	holder.click_intercept = src
 	mode.enter_mode(src)
+	RegisterSignal(c, COMSIG_CLIENT_ESCAPE_MENU_OPEN, PROC_REF(quit))
 
 /datum/buildmode/proc/quit()
 	mode.exit_mode(src)

@@ -39,13 +39,18 @@
 			log_admin("Build Mode: [key_name(admin_building)] built [upgrade_version] at [AREACOORD(clicked_turf)]")
 			return
 		else if(right_click && !alt_click && !ctrl_click)
+			var/destruction_switch = "Make Indestructible"
+			if(clicked_atom.unacidable || clicked_atom.explo_proof || CHECK_BITFIELD(clicked_turf.turf_flags, TURF_HULL))
+				destruction_switch = "Make Destructible"
 			radial_menu_options = list(
 					"Destroy" = image('icons/misc/buildmode.dmi', icon_state = "buildquit"),
-					"Make Indestructible" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
+					"[destruction_switch]" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
 					"Downgrade" = image('icons/misc/buildmode.dmi', icon_state = "build"),
 					"Turn" = image('icons/misc/buildmode.dmi', icon_state = "buildmode_edit"),
 				)
-			var/picked_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE)
+			if(GLOB.radial_menus["buildmode_basic_turf_[key_name(admin_building)]"])
+				return
+			var/picked_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE, uniqueid = "buildmode_basic_turf_[key_name(admin_building)]")
 			switch(picked_option)
 				if("Destroy")
 					log_admin("Build Mode: [key_name(admin_building)] deleted [clicked_turf] at [AREACOORD(clicked_turf)]")
@@ -64,10 +69,16 @@
 					else
 						clicked_turf.ScrapeAway()
 					log_admin("Build Mode: [key_name(admin_building)] downgraded [clicked_turf] at [AREACOORD(clicked_turf)]")
-				if("Make Indestructible")
-					clicked_atom.unacidable = TRUE
-					clicked_atom.explo_proof = TRUE
-					log_admin("Build Mode: [key_name(admin_building)] made [clicked_turf] indestructable at [AREACOORD(clicked_turf)]")
+				if("Make Indestructible", "Make Destructible")
+					if(destruction_switch == "Make Destructible")
+						clicked_atom.unacidable = FALSE
+						clicked_atom.explo_proof = FALSE
+						DISABLE_BITFIELD(clicked_turf.turf_flags, TURF_HULL)
+					else
+						clicked_atom.unacidable = TRUE
+						clicked_atom.explo_proof = TRUE
+						ENABLE_BITFIELD(clicked_turf.turf_flags, TURF_HULL)
+					log_admin("Build Mode: [key_name(admin_building)] made [clicked_turf] [clicked_atom.explo_proof ? "indestructible" : "destructible"] at [AREACOORD(clicked_turf)]")
 				if("Turn")
 					radial_menu_options = list(
 						"North" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
@@ -75,7 +86,10 @@
 						"South" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = SOUTH),
 						"West" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = WEST),
 					)
-					var/picked_turn_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE)
+					if(GLOB.radial_menus["buildmode_basic_turf_[key_name(admin_building)]"])
+						to_world("duplicate, cancel")
+						return
+					var/picked_turn_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE, uniqueid = "buildmode_basic_turf_[key_name(admin_building)]")
 					clicked_atom.setDir(text2dir(capitalize(picked_turn_option)))
 					log_admin("Build Mode: [key_name(admin_building)] turned [clicked_turf] at [AREACOORD(clicked_turf)]")
 
@@ -108,29 +122,43 @@
 					built_atom.setDir(BM.build_dir)
 	if(istype(clicked_atom, /obj))
 		var/obj/clicked_object = clicked_atom
+		var/destruction_switch = "Make Indestructible"
+		if(clicked_atom.unacidable || clicked_atom.explo_proof || clicked_object.health == -1)
+			destruction_switch = "Make Destructible"
 		if(right_click && !alt_click && !ctrl_click)
+			if(GLOB.radial_menus["buildmode_basic_obj_[key_name(admin_building)]"])
+				return
 			radial_menu_options = list(
 					"Destroy" = image('icons/misc/buildmode.dmi', icon_state = "buildquit"),
-					"Make Indestructible" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
+					"[destruction_switch]" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
 					"Turn" = image('icons/misc/buildmode.dmi', icon_state = "buildmode_edit"),
 				)
-			var/picked_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE)
+			var/picked_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE, uniqueid = "buildmode_basic_obj_[key_name(admin_building)]")
 			switch(picked_option)
 				if("Destroy")
 					log_admin("Build Mode: [key_name(admin_building)] deleted [clicked_object] at [AREACOORD(clicked_object)]")
 					qdel(clicked_object)
-				if("Make Indestructible")
-					clicked_atom.unacidable = TRUE
-					clicked_atom.explo_proof = TRUE
-					log_admin("Build Mode: [key_name(admin_building)] made [clicked_object] indestructable at [AREACOORD(clicked_object)]")
+				if("Make Indestructible", "Make Destructible")
+					if(destruction_switch == "Make Destructible")
+						clicked_atom.unacidable = FALSE
+						clicked_atom.explo_proof = FALSE
+						clicked_object.health = initial(clicked_object.health)
+					else
+						clicked_atom.unacidable = TRUE
+						clicked_atom.explo_proof = TRUE
+						clicked_object.health = -1
+
 				if("Turn")
+					if(GLOB.radial_menus["buildmode_basic_obj_[key_name(admin_building)]"])
+						to_world("duplicate, cancel")
+						return
 					radial_menu_options = list(
 						"North" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
 						"East" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = EAST),
 						"South" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = SOUTH),
 						"West" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = WEST),
 					)
-					var/picked_turn_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE)
+					var/picked_turn_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE, uniqueid = "buildmode_basic_obj_[key_name(admin_building)]")
 					clicked_atom.setDir(text2dir(capitalize(picked_turn_option)))
 					log_admin("Build Mode: [key_name(admin_building)] turned [clicked_object] at [AREACOORD(clicked_object)]")
 		else if(right_click && !alt_click && ctrl_click)

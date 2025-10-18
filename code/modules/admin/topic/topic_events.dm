@@ -323,6 +323,8 @@
 			spawned_human.ckey = owner.ckey
 
 		if (offer_as_ert)
+			var/time_to_decide = 15 SECONDS
+
 			var/datum/emergency_call/custom/em_call = new()
 			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned humans")
 			em_call.name = name
@@ -331,16 +333,21 @@
 			em_call.owner = owner
 
 			var/quiet_launch = TRUE
-			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), time_to_decide)
 			if(ql_prompt == "Yes")
 				quiet_launch = FALSE
 
 			var/announce_receipt = FALSE
-			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
+			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), time_to_decide)
 			if(ar_prompt == "Yes")
 				announce_receipt = TRUE
 
-			em_call.activate(quiet_launch, announce_receipt)
+			var/delete_midless_mobs = FALSE
+			var/del_prompt = tgui_alert(usr, "Would you like to delete mindless mobs? This will remove all mobs that did not get a mind upon spawn. If not, the mobs will be offered to ghosts.", "Delete mindless mobs?", list("Yes", "No"), time_to_decide)
+			if(del_prompt == "Yes")
+				delete_midless_mobs = TRUE
+
+			em_call.activate(quiet_launch, announce_receipt, delete_midless_mobs)
 
 		message_admins("[key_name_admin(usr)] created [humans_to_spawn] humans as [job_name] at [get_area(initial_spot)]")
 
@@ -419,6 +426,8 @@
 			X.ckey = owner.ckey
 
 		if(offer_as_ert)
+			var/time_to_decide = 15 SECONDS
+
 			var/datum/emergency_call/custom/em_call = new()
 			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned xenos")
 			em_call.name = name
@@ -427,15 +436,20 @@
 			em_call.owner = owner
 
 			var/quiet_launch = TRUE
-			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), time_to_decide)
 			if(ql_prompt == "Yes")
 				quiet_launch = FALSE
 
 			var/announce_receipt = FALSE
-			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
+			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), time_to_decide)
 			if(ar_prompt == "Yes")
 				announce_receipt = TRUE
 
-			em_call.activate(quiet_launch, announce_receipt)
+			var/delete_midless_mobs = FALSE
+			var/del_prompt = tgui_alert(usr, "Would you like to delete mindless mobs? This will remove all mobs that did not get a mind upon spawn. If not, the mobs will be offered to ghosts.", "Delete mindless mobs?", list("Yes", "No"), time_to_decide)
+			if(del_prompt == "Yes")
+				delete_midless_mobs = TRUE
+
+			em_call.activate(quiet_launch, announce_receipt, delete_midless_mobs)
 
 		message_admins("[key_name_admin(usr)] created [xenos_to_spawn] xenos as [xeno_caste] at [get_area(initial_spot)]")

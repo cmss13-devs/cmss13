@@ -20,6 +20,9 @@
 
 	update_Login_details()
 
+	if(!client.prefs.toggle_right_click_menu)
+		client.show_popup_menus = FALSE
+
 	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)
 
 	client.images = null

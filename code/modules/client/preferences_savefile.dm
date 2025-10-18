@@ -305,6 +305,7 @@
 	S["ghost_vision_pref"] >> ghost_vision_pref
 	S["ghost_orbit"] >> ghost_orbit
 	S["auto_observe"] >> auto_observe
+	S["toggle_right_click_menu"] >> toggle_right_click_menu
 
 	S["human_name_ban"] >> human_name_ban
 
@@ -461,6 +462,7 @@
 	auto_fit_viewport = sanitize_integer(auto_fit_viewport, FALSE, TRUE, TRUE)
 	adaptive_zoom = sanitize_integer(adaptive_zoom, 0, 2, 0)
 	tooltips = sanitize_integer(tooltips, FALSE, TRUE, TRUE)
+	toggle_right_click_menu = sanitize_integer(toggle_right_click_menu, FALSE, TRUE, TRUE)
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
@@ -564,6 +566,7 @@
 	S["ghost_vision_pref"] << ghost_vision_pref
 	S["ghost_orbit"] << ghost_orbit
 	S["auto_observe"] << auto_observe
+	S["toggle_right_click_menu"] << toggle_right_click_menu
 
 	S["human_name_ban"] << human_name_ban
 

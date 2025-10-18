@@ -77,6 +77,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/toggles_ert = TOGGLES_ERT_DEFAULT
 	var/toggles_survivor = TOGGLES_SURVIVOR_DEFAULT
 	var/toggles_ert_pred = TOGGLES_ERT_GROUNDS
+	var/toggle_right_click_menu = TRUE
 	var/list/volume_preferences = list(1, 0.5, 1, 0.6) // Game, music, admin midis, lobby music (this is also set in sanitize_volume_preferences() call)
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
@@ -568,6 +569,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<h2><b><u>Input Settings:</u></b></h2>"
 			dat += "<b>Mode:</b> <a href='byond://?_src_=prefs;preference=hotkeys'><b>[(hotkeys) ? "Hotkeys Mode" : "Send to Chat"]</b></a><br>"
 			dat += "<b>Keybinds:</b> <a href='byond://?_src_=prefs;preference=viewmacros'><b>View Keybinds</b></a><br>"
+			dat += "<b>Menu on Right-click:</b> <a href='byond://?_src_=prefs;preference=toggle_right_click_menu'><b>[(toggle_right_click_menu) ? "On" : "Off"]</b></a><br>"
 			dat += "<br><b>Say Input Style:</b> <a href='byond://?_src_=prefs;preference=inputstyle'><b>[tgui_say ? "Modern (default)" : "Legacy"]</b></a><br>"
 			dat += "<b>Say Input Color:</b> <a href='byond://?_src_=prefs;preference=inputcolor'><b>[tgui_say_light_mode ? "Lightmode" : "Darkmode (default)"]</b></a><br>"
 
@@ -1138,6 +1140,16 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				winset(user, null, "input.focus=true")
 			else
 				winset(user, null, "input.focus=false")
+
+		if("toggle_right_click_menu")
+			if(user.client.show_popup_menus)
+				user.client.show_popup_menus = FALSE
+				user.client.prefs.toggle_right_click_menu = FALSE
+				to_chat(user, "Right click no longer opens a menu.")
+			else
+				user.client.show_popup_menus = TRUE
+				user.client.prefs.toggle_right_click_menu = TRUE
+				to_chat(user, "Right click opens a menu.")
 
 		if("traits")
 			traits_picker.tgui_interact(user)

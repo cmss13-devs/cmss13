@@ -163,11 +163,20 @@
 		if(T in old_turfs)
 			continue
 
-		if(!T.Enter(src))
+		// This first istype() check is probably a bad practice but it'll allow V-TOL to still enter...
+		// ... open_space turfs in case Tank Desant and VTOL get TM'd together.
+		if(istype(src, /obj/vehicle/multitile/tank) && istype(T, /turf/open_space))
+			// early return so we skip crash behavior.
+			move_momentum = floor(move_momentum/2)
+			update_next_move()
+			return FALSE
+
+		if(!T.Enter(src) || locate(/obj/structure/shuttle/part) in T)
 			can_move = FALSE
 
 	// Crashed with something that stopped us
 	if(!can_move)
+		on_crash()
 		move_momentum = floor(move_momentum/2)
 		update_next_move()
 		interior_crash_effect()
@@ -304,3 +313,12 @@
 		return
 	else
 		cell_explosion(target, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+
+/**
+ * Base proc for defining special behavior when crashing
+ *
+ * on_crash is a proc meant to be overridable by child classes
+ * That way, all of the effects that happen when crashing are in the same spot.
+ */
+/obj/vehicle/multitile/proc/on_crash()
+	return

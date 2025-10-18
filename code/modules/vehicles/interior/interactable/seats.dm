@@ -47,6 +47,10 @@
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 			M.reset_view()
+			if(isliving(M))
+				var/mob/living/living_mob = M
+				if(living_mob.observed_atom)
+					QDEL_NULL(living_mob.observed_atom)
 	else
 		if(M.stat == DEAD)
 			unbuckle()

@@ -57,6 +57,15 @@ display floor(lastgen) and phorontank amount
 
 	var/open = 0
 	var/recent_fault = 0
+	var/datum/looping_sound/generator/soundloop
+
+/obj/structure/machinery/power/power_generator/port_gen/Initialize()
+	. = ..()
+	soundloop = new(src)
+
+/obj/structure/machinery/power/power_generator/port_gen/Destroy()
+	QDEL_NULL(soundloop)
+	return ..()
 
 /obj/structure/machinery/power/power_generator/port_gen/process()
 	if(is_on && HasFuel() && !crit_fail && anchored && powernet)
@@ -84,9 +93,11 @@ display floor(lastgen) and phorontank amount
 		is_on = FALSE
 		stop_processing()
 		icon_state = initial(icon_state)
+		soundloop.stop()
 	else if(HasFuel())
 		is_on = TRUE
 		start_processing()
+		soundloop.start()
 
 /obj/structure/machinery/power/power_generator/port_gen/get_examine_text(mob/user)
 	. = ..()

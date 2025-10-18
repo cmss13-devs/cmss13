@@ -74,12 +74,26 @@
 	color = "#a800a8"
 
 	hud_possible = list(XENO_STATUS_HUD)
+	flags_atom = NO_ZFALL
+
+
 	var/mob/is_watching
 
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/next_point = 0
 
 	var/point_delay = 1 SECONDS
+
+/mob/hologram/queen/proc/change_level()
+	var/turf/above = SSmapping.get_turf_above(loc)
+
+	if(istype(loc, /turf/open_space))
+		var/turf/below = SSmapping.get_turf_below(loc)
+		src.forceMove(below)
+		return
+	if(istype(above, /turf/open_space))
+		src.forceMove(above)
+		return
 
 
 /mob/hologram/queen/Initialize(mapload, mob/living/carbon/xenomorph/queen/Q)

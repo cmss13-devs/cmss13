@@ -844,6 +844,7 @@
 	color = "#00b8ff"
 	burncolor = "#00b8ff"
 	burn_sprite = "blue"
+	flags = REAGENT_TYPE_SPECIALIST
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_7,
 		PROPERTY_DURATION = BURN_TIME_TIER_4,
@@ -859,6 +860,7 @@
 	color = COLOR_GREEN
 	burncolor = COLOR_GREEN
 	burn_sprite = "green"
+	flags = REAGENT_TYPE_SPECIALIST
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION = BURN_TIME_TIER_5,

@@ -51,7 +51,8 @@
 
 	var/list/uniform_sets = null
 
-
+	/// All presets are in "All" and "Faction" (drawn from the faction variable)
+	var/selection_categories = list()
 
 /datum/equipment_preset/New()
 	if(!manifest_title)

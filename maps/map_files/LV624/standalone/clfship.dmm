@@ -145,6 +145,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
 "aB" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
@@ -702,6 +706,14 @@
 /turf/open/floor/almayer,
 /area/lv624/lazarus/crashed_ship)
 "mH" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},
@@ -956,6 +968,14 @@
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "xk" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
 	},
@@ -1511,6 +1531,14 @@
 /turf/open/floor/almayer/emeraldcorner/east,
 /area/lv624/lazarus/crashed_ship)
 "OB" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 4
 	},

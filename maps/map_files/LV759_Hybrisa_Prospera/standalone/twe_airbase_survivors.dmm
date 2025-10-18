@@ -833,7 +833,7 @@
 /obj/structure/prop/hybrisa/misc/metergreen{
 	pixel_y = 32
 	},
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/plating_striped/north,
 /area/lv759/indoors/twe_souter_outpost/maint)
 "fp" = (
@@ -2973,7 +2973,7 @@
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "zo" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/item/ammo_magazine/smg/p90/twe{
+/obj/item/ammo_magazine/smg/p90/ap{
 	pixel_x = 2;
 	pixel_y = 5
 	},
@@ -4520,7 +4520,7 @@
 	pixel_x = 4;
 	pixel_y = -9
 	},
-/obj/item/ammo_magazine/smg/p90/twe{
+/obj/item/ammo_magazine/smg/p90/ap{
 	pixel_x = 2;
 	pixel_y = 5
 	},

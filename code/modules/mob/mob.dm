@@ -425,10 +425,10 @@
 /mob/proc/print_flavor_text()
 	if (flavor_text && flavor_text != "")
 		var/msg = replacetext(flavor_text, "\n", " ")
-		if(length(msg) <= 40)
+		if(length(msg) <= 70)
 			return SPAN_NOTICE("[msg]")
 		else
-			return SPAN_NOTICE("[copytext(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a>")
+			return SPAN_NOTICE("[copytext(msg, 1, 67)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a>")
 
 /mob/Topic(href, href_list)
 	. = ..()
@@ -977,12 +977,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 			end_of_conga = TRUE //Only mobs can continue the cycle.
 	var/area/new_area = get_area(destination)
 	for(var/atom/movable/AM in conga_line)
-		var/oldLoc
+		var/atom/oldLoc
 		if(AM.loc)
 			oldLoc = AM.loc
 			AM.loc.Exited(AM,destination)
 		AM.loc = destination
 		AM.loc.Entered(AM,oldLoc)
+		if(oldLoc.z != destination.z)
+			SEND_SIGNAL(AM, COMSIG_MOVABLE_Z_CHANGED)
 		var/area/old_area
 		if(oldLoc)
 			old_area = get_area(oldLoc)

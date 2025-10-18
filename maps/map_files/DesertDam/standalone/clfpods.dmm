@@ -589,12 +589,18 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/desert_dam/exterior/valley/valley_medical)
 "lA" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
 	},
@@ -912,6 +918,9 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/lobby)
 "uU" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
@@ -1436,6 +1445,9 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 1
 	},
@@ -1621,6 +1633,10 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/lobby)
 "Oe" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
@@ -1813,6 +1829,9 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "TK" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},

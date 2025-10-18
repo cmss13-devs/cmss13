@@ -1183,13 +1183,6 @@
 /obj/effect/hunter/ancient_temple/rubble/rubble_1,
 /turf/open/auto_turf/lv_grass/layer0_mud_alt,
 /area/lv624/ground/caves/north_west_caves)
-"aOR" = (
-/obj/effect/hunter/ancient_temple/rubble/rubble{
-	pixel_x = 2;
-	pixel_y = -4
-	},
-/turf/open/floor/ancient_temple/ruined/east,
-/area/lv624/ground/caves/west_caves)
 "aPb" = (
 /obj/structure/stairs/perspective{
 	color = "#b6a38f";
@@ -33962,7 +33955,7 @@
 	pixel_y = 8
 	},
 /obj/effect/hunter/ancient_temple/rubble/rubble_5,
-/turf/open/auto_turf/lv_grass/layer0_mud_alt,
+/turf/open/floor/ancient_temple/ruined/east,
 /area/lv624/ground/caves/north_west_caves)
 "uEh" = (
 /obj/structure/disposalpipe/segment{
@@ -50092,7 +50085,7 @@ spQ
 gBC
 sMk
 jCi
-jJD
+pWU
 uDU
 tZJ
 aUR
@@ -50540,7 +50533,7 @@ gBC
 izf
 gBC
 jCi
-jJD
+pWU
 uKS
 uJl
 jdq
@@ -52581,7 +52574,7 @@ pzX
 tRY
 hnl
 tcR
-eLz
+lXa
 eLz
 oeG
 pYp
@@ -53029,7 +53022,7 @@ tRY
 pzX
 dZF
 tcR
-aOR
+lXa
 jWI
 jtb
 jwI

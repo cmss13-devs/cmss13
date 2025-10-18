@@ -11,3 +11,167 @@
   - qol: Removed the two extra boots the Chief Engineer got
   - qol: Gave the basic Command variant to RO and CE
   - balance: Gave Chief Engineer a level in vehicles
+2025-10-03:
+  PoltavskaPraca:
+  - qol: adds a little feedback text when you save your character prefs and it's successful
+  Sergeys:
+  - ui: Added search box to construction UI
+2025-10-06:
+  BKryth:
+  - balance: lowers required neurotoxin plasma to turn shrapnel type of custom explosives
+      from 30 to 10
+  - bugfix: replaces the chemical required to turn shrapnel into hornet shrapnel from
+      sulphuric acid into polytrinic acid due to recipe conflicts
+2025-10-07:
+  Detective-Google:
+  - bugfix: CE's no longer can vend infinite essentials kits.
+  matttheficus:
+  - bugfix: Clicking on paper with a pen now opens it at the same size as reading
+      it.
+  - rscadd: Added [s][/s], [name], [rank], [job], [op], [ship], and [colony] macros.
+  - ui: increased the size of the default paper popup window and makes it a define.
+2025-10-09:
+  matttheficus:
+  - rscadd: added M1911C ammo to the CO vendor.
+  - balance: gave the M1911C a 1 second knockdown, up from 0.2 seconds.
+  - bugfix: added the "fire in the air" ability to the M1911C to match all other CO
+      guns.
+2025-10-10:
+  Blundir:
+  - bugfix: removed unintended uranium drums from pmc sg
+  Zenith:
+  - rscadd: Added new M10 gun-case kit.
+  - rscadd: Added a few new M10-specific attachments, spiked CQB compensator/regular
+      one, solid & foldable stock, micro laser.
+  - rscadd: Added AP variants of all existing M10 magazine types.
+  - rscadd: Added two new universal attachments usable by pistols and SMGs, a compact
+      suppressor and the S5 Micro Dot Sight.
+  - rscadd: Added "extended-compensator" universal attachment for multiple gun types.
+  - balance: Increased the M10's base damage, improved accuracy, and reduced bullet
+      spread to make it more viable.
+  - soundadd: Added new firing sounds for the M10 and custom suppressor sounds.
+  - imageadd: Updated M10 belt sprites to change based on map type.
+2025-10-11:
+  Zenith:
+  - rscadd: Added each appropriate UPP/Hyperdyne aligned Synth presets to Soro
+  - rscadd: Minor tweaks to Soro survivor presets.
+  - bugfix: Changed the WY Synth reset key to Hyperdyne on Soro
+  cuberound, harry:
+  - rscadd: adds upper level mirroring to wall behind stairs
+2025-10-12:
+  Googles-Hands:
+  - maptweak: A blackbox and colony information recorder have been added to New Varadero
+2025-10-13:
+  Drathek:
+  - balance: Pulling something that also is pulling something is significantly slower
+  - balance: Pushing something that is pulling something will inherit their pull delay
+      unless already pulling
+  - code_imp: Cleaned up atom/moveable/Collided
+2025-10-14:
+  Blundir:
+  - bugfix: fixed some color oddities on scout cloak and some sprite inconsistencies
+      on sadar helmet
+  - bugfix: fixed worn/inhand pixel dimensions backend
+  - imageadd: sniper armor on classic camo maps (fiorina, 522) now looks similar to
+      the one on urban maps (hybrisa)
+  - imageadd: sniper rifle back sprite is now also a suit storage one now (suit storage
+      one didn't exist)
+  - imageadd: sniper rifle inhands sprite now look better and aren't cut out
+  Googles-Hands:
+  - balance: Exchanged the CIC headset for the operations Commander for a senior command
+      headset
+  Sergeys:
+  - bugfix: fixed the construction cancel after closing UI.
+  TheGamerdk:
+  - bugfix: Fixed a way to bypass the binocular blocker in the overwatch console
+2025-10-15:
+  Drathek:
+  - bugfix: Fix autoclimb potentially being performed when already autoclimbing or
+      manually climbing a railing
+  Lukas-Seltz:
+  - code_imp: Changed the defines of Chain of Command
+  - code_imp: Added a check for doctors in to the list for Chain Of Command announcement
+  - bugfix: Fixes the Intel Officers to use the proper way of doing the check and
+      not checking via squad
+  rattybag:
+  - rscadd: add medical keys to marine preps
+2025-10-16:
+  Drathek:
+  - balance: Xenomorph tackles now cannot stun longer than 20s.
+  - balance: Hauling now ends any stun/knockdown on the hauled mob (Not hugger paralyze)
+  - rscadd: Xenomorph tackle sfx has a higher pitch if the new duration was altered
+      because of the 20s limit (otherwise does not vary now)
+  - balance: Hybrisa hydrants can now be flamed and acid sprayed around and hybrisa
+      poles can now be acid sprayed around (already was allowing fire around)
+  - bugfix: Fix predator bracer self-destruct not checking incapacitated or hauled
+      states (doesn't care about hauled for deactivation)
+  - ui: Predator bracer self-destruct now uses tgui_alert and tgui_alerts no longer
+      ignore whitespace like the new line character
+  Git-Nivrak:
+  - rscadd: New tacmap
+  - rscadd: opening tacmap can now be set to a hotkey, default is 5.
+  - rscadd: you can now use scrollwheel/shift scrollwheel to move the tacmap drawing
+      around
+  - rscadd: added a new verb View Tacmap(s) available in ghost/alien/IC tab for observers/xenos/marines
+      which allows you to see the latest drawing of the tacmap
+  - rscadd: Queen can now edit the tacmap from manage the hive ability
+  Nihisohel:
+  - code_imp: Adds backend functionality of unique-action for all items
+  Steelpoint:
+  - maptweak: The loot inside the west dropship on Chances Claim has been partially
+      distributed to the east dropship. Furthermore, the east dropship is now accessible
+      via C4 instead of needing to be opened from the west dropship.
+  - maptweak: Additional resin nodes and sticky resin tiles have been placed near
+      the reactor core entrance. To slightly deter early game intruders.
+  cuberound:
+  - bugfix: fixes floating tile bug with stair look up
+  neeshacark:
+  - qol: facehuggers are now able to be worn in the helmet garb slot
+  ori-disillusion-mirnov:
+  - bugfix: chaplain survivor bible is no longer overfilled
+  rattybag:
+  - qol: add modifier keys to ladders for fast throwing and climbing
+  - refactor: consolidated ladder climbing and item throwing logic into shared helper
+      functions
+  - code_imp: Persist transfer amount when refilling chem bottles
+  realforest2001:
+  - bugfix: Fixes WJ IFF regarding ARES
+  - bugfix: The various types of freezer/fridges all now count for the nuke protection.
+  zzzmike:
+  - spellcheck: hijack fuel announcement now uses % instead of percent, rather than
+      both
+2025-10-17:
+  MrsTonedOne, ZephyrTFA, optimumtact, harryob:
+  - server: added ipintel backend
+  hry-gh:
+  - bugfix: fixes bad shadows under windows
+  kiVts:
+  - bugfix: copy mode in buildmode is working correctly.
+  ori-disillusion-mirnov:
+  - maptweak: removed access restriction on houndmaster's quarters, removed old hellhound
+      spawners, added sleeping hellhounds in the hellhound cells
+  - rscdel: old hellhound callers are gone
+  - rscadd: new sleeping hellhounds replace them, you can click on them to wake them
+      up.
+  - bugfix: fixes misplaced bed roll on pred ship
+2025-10-18:
+  CeUvi:
+  - imageadd: new helmetgarb sprites for M1A1 ballistic goggles
+  DawsonKeyes:
+  - rscadd: New pred plasma rifle sprites
+  - rscadd: You can now wear the hunting bow quiver on your back slot
+  - bugfix: Hunting bow quiver sprites fixed
+  Drathek:
+  - code_imp: Added 3 new maplints for identical barricades, pipes, and disposals
+  - maptweak: Made minor tweaks to 11 maps and 3 inserts to accommodate new lints
+  Nemesis1337:
+  - rscadd: ammo box for ap p90 magazines
+  - qol: rail flashlights can now be attached to p90
+  - bugfix: ap magazines can now be used with regular p90
+  - imageadd: added p90 magazine sprite overlays and new sprites for ammo boxes
+  Red-byte3D:
+  - imageadd: Better sprites for special cursor sprites
+  VictorJob:
+  - imageadd: New Sprites for m82f
+  realforest2001:
+  - bugfix: Fixed non-functional on-mob sprites for the blue and black leather satchels.

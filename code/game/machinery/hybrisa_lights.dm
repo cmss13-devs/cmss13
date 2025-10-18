@@ -57,6 +57,10 @@
 	. = ..()
 	AddComponent(/datum/component/shimmy_around, east_offset = -15, west_offset = -15)
 
+/obj/structure/machinery/colony_floodlight/street/initialize_pass_flags(datum/pass_flags_container/PF)
+	if(PF)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_ACID_SPRAY
+
 /obj/structure/machinery/colony_floodlight/street/update_icon()
 	if(damaged)
 		icon_state = "street_dmg"

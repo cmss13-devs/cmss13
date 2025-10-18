@@ -344,7 +344,7 @@
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 15
-	item_state_slots = list(WEAR_BACK = "satchel")
+	item_state_slots = list()
 	var/mode = TRUE
 
 /obj/item/storage/backpack/satchel/post_skin_selection()
@@ -407,19 +407,23 @@
 	name = "satchel"
 	desc = "A trendy-looking satchel."
 	icon_state = "satchel-norm"
-	item_state = "satchel-sec"
+	item_state = "satchel-norm"
 
 /obj/item/storage/backpack/satchel/norm/blue
 	icon_state = "satchel-chem"
+	item_state = "satchel-chem"
 
 /obj/item/storage/backpack/satchel/norm/red_line
 	icon_state = "satchel-med"
+	item_state = "satchel-med"
 
 /obj/item/storage/backpack/satchel/norm/orange_line
 	icon_state = "satchel-eng"
+	item_state = "satchel-eng"
 
 /obj/item/storage/backpack/satchel/norm/green
 	icon_state = "satchel_hyd"
+	item_state = "satchel_hyd"
 
 /obj/item/storage/backpack/satchel/eng
 	name = "industrial satchel"

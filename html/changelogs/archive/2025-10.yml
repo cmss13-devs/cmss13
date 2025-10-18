@@ -154,3 +154,24 @@
   - rscadd: new sleeping hellhounds replace them, you can click on them to wake them
       up.
   - bugfix: fixes misplaced bed roll on pred ship
+2025-10-18:
+  CeUvi:
+  - imageadd: new helmetgarb sprites for M1A1 ballistic goggles
+  DawsonKeyes:
+  - rscadd: New pred plasma rifle sprites
+  - rscadd: You can now wear the hunting bow quiver on your back slot
+  - bugfix: Hunting bow quiver sprites fixed
+  Drathek:
+  - code_imp: Added 3 new maplints for identical barricades, pipes, and disposals
+  - maptweak: Made minor tweaks to 11 maps and 3 inserts to accommodate new lints
+  Nemesis1337:
+  - rscadd: ammo box for ap p90 magazines
+  - qol: rail flashlights can now be attached to p90
+  - bugfix: ap magazines can now be used with regular p90
+  - imageadd: added p90 magazine sprite overlays and new sprites for ammo boxes
+  Red-byte3D:
+  - imageadd: Better sprites for special cursor sprites
+  VictorJob:
+  - imageadd: New Sprites for m82f
+  realforest2001:
+  - bugfix: Fixed non-functional on-mob sprites for the blue and black leather satchels.

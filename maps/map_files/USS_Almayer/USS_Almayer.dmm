@@ -19313,6 +19313,10 @@
 /obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/paft)
+"aXD" = (
+/obj/structure/closet/wardrobe/medic_white,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/middeck/medical)
 "aXE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -34844,10 +34848,6 @@
 /turf/solid_open_space,
 /area/almayer/middeck/maintenance/sf)
 "bGj" = (
-/obj/structure/closet/wardrobe/medic_white,
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/medical)
-"bGk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -34856,12 +34856,12 @@
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
-"bGl" = (
+"bGk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/wardrobe/medic_white,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
-"bGm" = (
+"bGl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/almayer/no_build/plate,
@@ -168270,7 +168270,7 @@ aOj
 avN
 buh
 bnv
-bGj
+aXD
 avN
 avN
 avN
@@ -170019,7 +170019,7 @@ baF
 aOh
 baC
 avN
-bGl
+bGk
 bnv
 blH
 bid
@@ -170122,7 +170122,7 @@ bnY
 bnY
 bnY
 avN
-bGm
+bGl
 bnv
 blH
 bwy
@@ -170226,7 +170226,7 @@ aOh
 baC
 avN
 aSc
-bGk
+bGj
 blH
 bie
 avN
@@ -170329,7 +170329,7 @@ bxI
 aYN
 avN
 aVU
-bGk
+bGj
 blH
 aVP
 avN

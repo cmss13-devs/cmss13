@@ -311,7 +311,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/goldschlager
 	name = "College Girl Goldschlager"
-	desc = "Because they are the only ones who will drink 100 proof cinnamon schnapps."
+	desc = "Because they are the only ones who will drink 100-proof cinnamon schnapps."
 	icon_state = "goldschlagerbottle"
 	center_of_mass = "x=15;y=3"
 
@@ -362,7 +362,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/melonliquor
 	name = "Emeraldine Melon Liquor"
-	desc = "A bottle of 46 proof Emeraldine Melon Liquor. Sweet and light."
+	desc = "A bottle of 46-proof Emeraldine Melon Liquor. Sweet and light."
 	icon_state = "alco-green" //Placeholder.
 	center_of_mass = "x=16;y=6"
 
@@ -450,7 +450,7 @@
 //////////////////////////JUICES AND STUFF ///////////////////////
 
 /obj/item/reagent_container/food/drinks/bottle/orangejuice
-	name = "Orange Juice"
+	name = "Carton of Orange Juice"
 	desc = "Full of vitamins and deliciousness!"
 	icon_state = "orangejuice"
 	item_state = "orangejuice"
@@ -469,12 +469,12 @@
 		if(0 to 49)
 			desc = "Full of vitamins and deliciousness! Contains NO pulp!"
 		if(50 to 100)
-			desc = "Full of vitamins and deliciousness! Contains pulp!"
+			desc = "Full of vitamins and deliciousness! Contains some pulp!"
 		else
 			desc = "Full of vitamins and deliciousness! Contains 100% pulp!"
 
 /obj/item/reagent_container/food/drinks/bottle/cream
-	name = "Milk Cream"
+	name = "Carton of Milk Cream"
 	desc = "It's cream. Made from milk. What else did you think you'd find in there?"
 	icon_state = "cream"
 	item_state = "cream"
@@ -490,7 +490,7 @@
 	reagents.add_reagent("cream", 100)
 
 /obj/item/reagent_container/food/drinks/bottle/tomatojuice
-	name = "Tomato Juice"
+	name = "Carton of Tomato Juice"
 	desc = "Well, at least it LOOKS like tomato juice. You can't tell with all that redness."
 	icon_state = "tomatojuice"
 	item_state = "tomatojuice"
@@ -506,7 +506,7 @@
 	reagents.add_reagent("tomatojuice", 100)
 
 /obj/item/reagent_container/food/drinks/bottle/limejuice
-	name = "Lime Juice"
+	name = "Carton of Lime Juice"
 	desc = "Sweet-sour goodness."
 	icon_state = "limejuice"
 	item_state = "limejuice"
@@ -520,3 +520,115 @@
 /obj/item/reagent_container/food/drinks/bottle/limejuice/Initialize()
 	. = ..()
 	reagents.add_reagent("limejuice", 100)
+
+/obj/item/reagent_container/food/drinks/bottle/lemonjuice
+	name = "Carton of Lemon Juice"
+	desc = "Mouth-puckering goodness."
+	icon_state = "lemonjuice"
+	item_state = "lemonjuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	center_of_mass = "x=16;y=8"
+	isGlass = 0
+
+/obj/item/reagent_container/food/drinks/bottle/lemonjuice/Initialize()
+	. = ..()
+	reagents.add_reagent("lemonjuice", 100)
+
+/obj/item/reagent_container/food/drinks/bottle/grapejuice
+	name = "Carton of Grape Juice"
+	desc = "Juice that tastes like black and red grapes."
+	icon_state = "grapejuice"
+	item_state = "grapejuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	center_of_mass = "x=16;y=8"
+	isGlass = 0
+
+/obj/item/reagent_container/food/drinks/bottle/grapejuice/Initialize()
+	. = ..()
+	reagents.add_reagent("grapejuice", 100)
+
+/obj/item/reagent_container/food/drinks/bottle/watermelonjuice
+	name = "Carton of Watermelon Juice"
+	desc = "Takes all the fun out of eating a watermelon slice."
+	icon_state = "watermelonjuice"
+	item_state = "watermelonjuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	center_of_mass = "x=16;y=8"
+	isGlass = 0
+
+/obj/item/reagent_container/food/drinks/bottle/watermelonjuice/Initialize()
+	. = ..()
+	reagents.add_reagent("watermelonjuice", 100)
+
+/obj/item/reagent_container/food/drinks/bottle/carrotjuice
+	name = "Carton of Carrot Juice"
+	desc = "It's like eating a carrot without all the chewing."
+	icon_state = "carrotjuice"
+	item_state = "carrotjuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	center_of_mass = "x=16;y=8"
+	isGlass = 0
+
+/obj/item/reagent_container/food/drinks/bottle/carrotjuice/Initialize()
+	. = ..()
+	reagents.add_reagent("carrotjuice", 100)
+
+/obj/item/reagent_container/food/drinks/bottle/berryjuice
+	name = "Carton of Berry Juice"
+	desc = "Juice from a blend of ripe, mixed berries."
+	icon_state = "berryjuice"
+	item_state = "berryjuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	center_of_mass = "x=16;y=8"
+	isGlass = 0
+
+/obj/item/reagent_container/food/drinks/bottle/berryjuice/Initialize()
+	. = ..()
+	reagents.add_reagent("berryjuice", 100)
+
+/obj/item/reagent_container/food/drinks/bottle/potatojuice
+	name = "Carton of Potato Juice"
+	desc = "You don't even know what to use this for..."
+	icon_state = "potatojuice"
+	item_state = "potatojuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	center_of_mass = "x=16;y=8"
+	isGlass = 0
+
+/obj/item/reagent_container/food/drinks/bottle/potatojuice/Initialize()
+	. = ..()
+	reagents.add_reagent("potatojuice", 100)
+
+/obj/item/reagent_container/food/drinks/bottle/bananajuice
+	name = "Carton of Banana Juice"
+	desc = "Clowns wish this runs through their veins."
+	icon_state = "bananajuice"
+	item_state = "bananajuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	center_of_mass = "x=16;y=8"
+	isGlass = 0
+
+/obj/item/reagent_container/food/drinks/bottle/bananajuice/Initialize()
+	. = ..()
+	reagents.add_reagent("bananajuice", 100)

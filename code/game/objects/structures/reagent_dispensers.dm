@@ -162,8 +162,8 @@
 	chemical = "ammonia"
 
 /obj/structure/reagent_dispensers/acidtank
-	name = "sulfuric acid tank"
-	desc = "A sulfuric acid tank"
+	name = "sulphuric acid tank"
+	desc = "A sulphuric acid tank"
 	icon_state = "sacidtank"
 	chemical = "sulphuric acid"
 

@@ -431,7 +431,7 @@
 
 /obj/item/reagent_container/glass/beaker/vial/sedative/Initialize()
 	. = ..()
-	reagents.add_reagent("chloralhydrate", 30)
+	reagents.add_reagent("chloral_hydrate", 30)
 	update_icon()
 /obj/item/reagent_container/glass/beaker/cryoxadone
 	name = "cryoxadone beaker"

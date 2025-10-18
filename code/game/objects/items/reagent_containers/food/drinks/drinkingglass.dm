@@ -1,5 +1,3 @@
-
-
 /obj/item/reagent_container/food/drinks/drinkingglass
 	name = "glass"
 	desc = "Your standard drinking glass."
@@ -28,17 +26,17 @@
 			if("beer")
 				icon_state = "beerglass"
 				name = "Beer glass"
-				desc = "A freezing pint of beer"
+				desc = "A freezing pint of beer."
 				center_of_mass = "x=16;y=8"
 			if("beer2")
 				icon_state = "beerglass"
 				name = "Beer glass"
-				desc = "A freezing pint of beer"
+				desc = "A freezing pint of beer."
 				center_of_mass = "x=16;y=8"
 			if("ale")
 				icon_state = "aleglass"
 				name = "Ale glass"
-				desc = "A freezing pint of delicious Ale"
+				desc = "A freezing pint of delicious Ale."
 				center_of_mass = "x=16;y=8"
 			if("milk")
 				icon_state = "glass_white"
@@ -48,52 +46,62 @@
 			if("cream")
 				icon_state  = "glass_white"
 				name = "Glass of cream"
-				desc = "Ewwww..."
+				desc = "Will definitely give you that white mustache you've always dreamed of."
 				center_of_mass = "x=16;y=10"
 			if("chocolate")
 				icon_state  = "chocolateglass"
 				name = "Glass of chocolate"
-				desc = "Tasty"
+				desc = "Tasty!"
+				center_of_mass = "x=16;y=10"
+			if("chocolate_milk")
+				icon_state  = "chocolate_milk"
+				name = "Glass of chocolate milk"
+				desc = "Nectar of the gods."
 				center_of_mass = "x=16;y=10"
 			if("lemonjuice")
 				icon_state  = "lemonglass"
-				name = "Glass of lemonjuice"
-				desc = "Sour..."
+				name = "Glass of Lemon juice"
+				desc = "Mouth-puckeringly sour..."
 				center_of_mass = "x=16;y=10"
 			if("cola")
 				icon_state  = "glass_brown"
 				name = "Glass of Space Cola"
-				desc = "A glass of refreshing Space Cola"
+				desc = "A glass of refreshing Space Cola."
 				center_of_mass = "x=16;y=10"
 			if("nuka_cola")
 				icon_state = "nuka_colaglass"
 				name = "Nuka Cola"
-				desc = "Don't cry, Don't raise your eye, It's only nuclear wasteland"
+				desc = "Don't cry, don't raise your eye, it's only nuclear wasteland."
 				center_of_mass = "x=16;y=6"
 			if("orangejuice")
 				icon_state = "glass_orange"
 				name = "Glass of Orange juice"
-				desc = "Vitamins! Yay!"
+				desc = "Full of vitamin C! It's a hypoglycemic's saving grace."
+				center_of_mass = "x=16;y=10"
+			if("potatojuice")
+				icon_state = "potatoglass"
+				name = "Glass of Potato juice"
+				desc = "Liquid potato... Yuck. You can't even make vodka with this."
 				center_of_mass = "x=16;y=10"
 			if("tomatojuice")
 				icon_state = "glass_red"
 				name = "Glass of Tomato juice"
-				desc = "Are you sure this is tomato juice?"
+				desc = "Juice from a tomato. Tastes tomato-y."
 				center_of_mass = "x=16;y=10"
 			if("blood")
-				icon_state = "glass_red"
-				name = "Glass of Tomato juice"
-				desc = "Are you sure this is tomato juice?"
+				icon_state = "glass_blood"
+				name = "Glass of Blood"
+				desc = "Hope it's your blood type, unless you're a vampire."
 				center_of_mass = "x=16;y=10"
 			if("limejuice")
 				icon_state = "glass_green"
 				name = "Glass of Lime juice"
-				desc = "A glass of sweet-sour lime juice."
+				desc = "A glass of sour lime juice."
 				center_of_mass = "x=16;y=10"
 			if("whiskey")
 				icon_state = "whiskeyglass"
 				name = "Glass of whiskey"
-				desc = "The silky, smokey whiskey goodness inside the glass makes the drink look very classy."
+				desc = "The silky, smoky, whiskey goodness inside the glass makes the drink look very classy."
 				center_of_mass = "x=16;y=12"
 			if("gin")
 				icon_state = "ginvodkaglass"
@@ -113,7 +121,7 @@
 			if("sake")
 				icon_state = "ginvodkaglass"
 				name = "Glass of Sake"
-				desc = "A glass of Sake."
+				desc = "A glass of sake."
 				center_of_mass = "x=16;y=12"
 			if("goldschlager")
 				icon_state = "ginvodkaglass"
@@ -133,7 +141,7 @@
 			if ("kahlua")
 				icon_state = "kahluaglass"
 				name = "Glass of RR coffee Liquor"
-				desc = "DAMN, THIS THING LOOKS ROBUST"
+				desc = "DAMN, THIS THING LOOKS ROBUST!"
 				center_of_mass = "x=15;y=7"
 			if("vermouth")
 				icon_state = "vermouthglass"
@@ -143,17 +151,17 @@
 			if("tequila")
 				icon_state = "tequilaglass"
 				name = "Glass of tequila"
-				desc = "Now all that's missing is the weird colored shades!"
+				desc = "Now, all that's missing is the weird-colored shades!"
 				center_of_mass = "x=16;y=12"
 			if("patron")
 				icon_state = "patronglass"
 				name = "Glass of Patron"
-				desc = "Drinking patron in the bar, with all the subpar ladies."
+				desc = "Drinking patron in the bar with all the subpar ladies."
 				center_of_mass = "x=7;y=8"
 			if("rum")
 				icon_state = "rumglass"
 				name = "Glass of Rum"
-				desc = "Now you want to Pray for a pirate suit, don't you?"
+				desc = "Work all night on a drink o' rum! Code red come and me wan' go home."
 				center_of_mass = "x=16;y=12"
 			if("gintonic")
 				icon_state = "gintonicglass"
@@ -163,7 +171,7 @@
 			if("whiskeycola")
 				icon_state = "whiskeycolaglass"
 				name = "Whiskey Cola"
-				desc = "An innocent-looking mixture of cola and Whiskey. Delicious."
+				desc = "An innocent-looking mixture of cola and whiskey. Delicious."
 				center_of_mass = "x=16;y=9"
 			if("whiterussian")
 				icon_state = "whiterussianglass"
@@ -173,12 +181,12 @@
 			if("screwdrivercocktail")
 				icon_state = "screwdriverglass"
 				name = "Screwdriver"
-				desc = "A simple, yet superb mixture of Vodka and orange juice. Just the thing for the tired engineer."
+				desc = "A simple, yet superb mixture of vodka and orange juice. Just the thing for the tired engineer."
 				center_of_mass = "x=15;y=10"
 			if("bloodymary")
 				icon_state = "bloodymaryglass"
 				name = "Bloody Mary"
-				desc = "Tomato juice, mixed with Vodka and a lil' bit of lime. Tastes like liquid murder."
+				desc = "Tomato juice, mixed with vodka and a lil' bit of lime. Tastes like liquid murder."
 				center_of_mass = "x=16;y=10"
 			if("martini")
 				icon_state = "martiniglass"
@@ -187,8 +195,8 @@
 				center_of_mass = "x=17;y=8"
 			if("vodkamartini")
 				icon_state = "martiniglass"
-				name = "Vodka martini"
-				desc ="A bastardisation of the classic martini. Still great."
+				name = "Vodka Martini"
+				desc ="A bastardization of the classic martini. Still great."
 				center_of_mass = "x=17;y=8"
 			if("gargleblaster")
 				icon_state = "gargleblasterglass"
@@ -198,17 +206,17 @@
 			if("bravebull")
 				icon_state = "bravebullglass"
 				name = "Brave Bull"
-				desc = "tequila and Coffee liquor, brought together in a mouthwatering mixture. Drink up."
+				desc = "tequila and coffee liqueur, brought together in a mouthwatering mixture. Drink up."
 				center_of_mass = "x=15;y=8"
 			if("tequilasunrise")
 				icon_state = "tequilasunriseglass"
-				name = "tequila Sunrise"
+				name = "Tequila Sunrise"
 				desc = "Oh great, now you feel nostalgic about sunrises back on Terra..."
 				center_of_mass = "x=16;y=10"
 			if("phoronspecial")
 				icon_state = "toxinsspecialglass"
 				name = "Toxins Special"
-				desc = "Whoah, this thing is on FIRE"
+				desc = "Whoa, this thing is on FIRE!"
 			if("doctorsdelight")
 				icon_state = "doctorsdelightglass"
 				name = "Doctor's Delight"
@@ -217,7 +225,7 @@
 			if("manlydorf")
 				icon_state = "manlydorfglass"
 				name = "The Manly Dorf"
-				desc = "A manly concoction made from Ale and Beer. Intended for true men only."
+				desc = "A manly concoction made from ale and beer. Intended for true men only."
 				center_of_mass = "x=16;y=10"
 			if("irishcream")
 				icon_state = "irishcreamglass"
@@ -272,7 +280,7 @@
 			if("manhattan_proj")
 				icon_state = "proj_manhattanglass"
 				name = "Manhattan Project"
-				desc = "A scientist drink of choice, for thinking how to blow up the station."
+				desc = "A scientist's drink of choice for thinking about how to blow up the station."
 				center_of_mass = "x=17;y=8"
 			if("ginfizz")
 				icon_state = "ginfizzglass"
@@ -282,7 +290,7 @@
 			if("irishcoffee")
 				icon_state = "irishcoffeeglass"
 				name = "Irish Coffee"
-				desc = "Coffee and alcohol. More fun than a Mimosa to drink in the morning."
+				desc = "Coffee and alcohol. More fun than a mimosa to drink in the morning."
 				center_of_mass = "x=15;y=10"
 			if("hooch")
 				icon_state = "glass_brown2"
@@ -331,7 +339,7 @@
 				center_of_mass = "x=16;y=10"
 			if("moonshine")
 				icon_state = "glass_clear"
-				name = "Moonshine"
+				name = "Glass of Moonshine"
 				desc = "You've really hit rock bottom now... your liver packed its bags and left last night."
 				center_of_mass = "x=16;y=10"
 			if("soymilk")
@@ -340,9 +348,14 @@
 				desc = "White and nutritious soy goodness!"
 				center_of_mass = "x=16;y=10"
 			if("berryjuice")
-				icon_state = "berryjuice"
+				icon_state = "berryglass"
 				name = "Glass of berry juice"
-				desc = "Berry juice. Or maybe its jam. Who cares?"
+				desc = "Berry juice. Or maybe it's jam. Who cares?"
+				center_of_mass = "x=16;y=10"
+			if("watermelonjuice")
+				icon_state = "watermelonglass"
+				name = "Glass of watermelon juice"
+				desc = "Ahh, smells like a warm, summer day!"
 				center_of_mass = "x=16;y=10"
 			if("poisonberryjuice")
 				icon_state = "poisonberryjuice"
@@ -350,19 +363,19 @@
 				desc = "A glass of deadly juice."
 				center_of_mass = "x=16;y=10"
 			if("carrotjuice")
-				icon_state = "carrotjuice"
-				name = "Glass of  carrot juice"
-				desc = "It is just like a carrot but without crunching."
+				icon_state = "carrotglass"
+				name = "Glass of carrot juice"
+				desc = "It's like eating carrot but without crunching."
 				center_of_mass = "x=16;y=10"
-			if("banana")
-				icon_state = "banana"
+			if("bananajuice")
+				icon_state = "bananaglass"
 				name = "Glass of banana juice"
-				desc = "The raw essence of a banana. HONK"
+				desc = "The raw essence of a banana. HONK!"
 				center_of_mass = "x=16;y=10"
 			if("bahama_mama")
 				icon_state = "bahama_mama"
 				name = "Bahama Mama"
-				desc = "Tropic cocktail"
+				desc = "A tropical-looking cocktail. Looking at it makes you wish you were on the beach."
 				center_of_mass = "x=16;y=5"
 			if("singulo")
 				icon_state = "singulo"
@@ -382,7 +395,7 @@
 			if("barefoot")
 				icon_state = "b&p"
 				name = "Barefoot"
-				desc = "Barefoot and pregnant"
+				desc = "Barefoot and pregnant."
 				center_of_mass = "x=17;y=8"
 			if("demonsblood")
 				icon_state = "demonsblood"
@@ -407,22 +420,22 @@
 			if("andalusia")
 				icon_state = "andalusia"
 				name = "Andalusia"
-				desc = "A nice, strange named drink."
+				desc = "A nice, strangely named drink."
 				center_of_mass = "x=16;y=9"
 			if("sbiten")
 				icon_state = "sbitenglass"
 				name = "Sbiten"
-				desc = "A spicy mix of Vodka and Spice. Very hot."
+				desc = "A spicy mix of vodka and Spice. Very hot."
 				center_of_mass = "x=17;y=8"
 			if("red_mead")
 				icon_state = "red_meadglass"
 				name = "Red Mead"
-				desc = "A True Vikings Beverage, though its color is strange."
+				desc = "A true Viking beverage, though its color is strange."
 				center_of_mass = "x=17;y=10"
 			if("mead")
 				icon_state = "meadglass"
 				name = "Mead"
-				desc = "A Vikings Beverage, though a cheap one."
+				desc = "A Viking's beverage, though a cheap one."
 				center_of_mass = "x=17;y=10"
 			if("iced_beer")
 				icon_state = "iced_beerglass"
@@ -462,7 +475,7 @@
 			if("hippiesdelight")
 				icon_state = "hippiesdelightglass"
 				name = "Hippie's Delight"
-				desc = "A drink enjoyed by people during the 1960's."
+				desc = "A drink enjoyed by people during the 1960s."
 				center_of_mass = "x=16;y=8"
 			if("bananahonk")
 				icon_state = "bananahonkglass"
@@ -515,7 +528,7 @@
 				desc = "Generally, you're supposed to put something else in there too..."
 				center_of_mass = "x=16;y=10"
 			if("icecoffee")
-				icon_state = "icedcoffeeglass"
+				icon_state = "icecoffeeglass"
 				name = "Iced Coffee"
 				desc = "A drink to perk you up and refresh you!"
 				center_of_mass = "x=16;y=10"
@@ -540,7 +553,7 @@
 				desc = "It's not what it sounds like..."
 				center_of_mass = "x=16;y=10"
 			if("grapejuice")
-				icon_state = "grapejuice"
+				icon_state = "grapeglass"
 				name = "Glass of grape juice"
 				desc = "It's grrrrrape!"
 				center_of_mass = "x=16;y=10"
@@ -552,7 +565,7 @@
 			if("icetea")
 				icon_state = "icedteaglass"
 				name = "Iced Tea"
-				desc = "No relation to a certain rap artist/ actor."
+				desc = "No relation to a certain rap artist/actor."
 				center_of_mass = "x=15;y=10"
 			if("grenadine")
 				icon_state = "grenadineglass"
@@ -563,6 +576,11 @@
 				icon_state = "milkshake"
 				name = "Milkshake"
 				desc = "Glorious brainfreezing mixture."
+				center_of_mass = "x=16;y=7"
+			if("chocolatemilkshake")
+				icon_state = "chocolate_milkshake"
+				name = "Chocolate Milkshake"
+				desc = "A fan favorite!"
 				center_of_mass = "x=16;y=7"
 			if("lemonade")
 				icon_state = "lemonadeglass"
@@ -587,7 +605,7 @@
 			if("melonliquor")
 				icon_state = "emeraldglass"
 				name = "Glass of Melon Liquor"
-				desc = "A relatively sweet and fruity 46 proof liquor."
+				desc = "A relatively sweet and fruity 46-proof liquor."
 				center_of_mass = "x=16;y=5"
 			if("bluecuracao")
 				icon_state = "curacaoglass"
@@ -602,12 +620,12 @@
 			if("pwine")
 				icon_state = "pwineglass"
 				name = "Glass of ???"
-				desc = "A black ichor with an oily purple sheer on top. Are you sure you should drink this?"
+				desc = "A black ichor with an oily purple sheen on top. Are you sure you should drink this?"
 				center_of_mass = "x=16;y=5"
 			if("eggnog")
 				icon_state = "glass_white"
 				name = "Glass of Eggnog"
-				desc = "A rich, non-alcoholic dairy-based beverage traditionally consumed around Christmastime."
+				desc = "A rich, non-alcoholic dairy-based beverage traditionally consumed around Christmas time."
 				center_of_mass = "x=16;y=10"
 			if("spikedeggnog")
 				icon_state = "goldschlagerglass"
@@ -617,7 +635,12 @@
 			if("mojito")
 				icon_state = "mojitoglass"
 				name = "Glass of Mojito"
-				desc = "A Cuban classic, this drink will never dissapoint you."
+				desc = "A Cuban classic, this drink will never disappoint you."
+				center_of_mass = "x=16;y=5"
+			if("bluemotorcycle")
+				icon_state = "adiosglass"
+				name = "Glass of Blue Motorcycle"
+				desc = "This beautiful drink has five types of alcohol in it. The Swedish Fish swimming inside bid you adios, amigo."
 				center_of_mass = "x=16;y=5"
 			else
 				//a common drinking reagent that makes more than half of the total volume

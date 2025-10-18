@@ -473,7 +473,7 @@
 
 /obj/item/reagent_container/ld50_syringe/choral/Initialize()
 	. = ..()
-	reagents.add_reagent("chloralhydrate", 50)
+	reagents.add_reagent("chloral_hydrate", 50)
 	mode = SYRINGE_INJECT
 	update_icon()
 

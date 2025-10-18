@@ -120,7 +120,7 @@
 	display_maptext = TRUE
 	maptext_label = "D+"
 
-/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate
+/obj/item/reagent_container/hypospray/autoinjector/chloral_hydrate
 	name = "anesthetic autoinjector"
 	chemname = "anesthetic"
 	desc = "An autoinjector loaded with 3 uses of Chloral Hydrate and Sleeping Agent. Good to quickly pacify someone, for surgery of course."
@@ -129,9 +129,9 @@
 	mixed_chem = TRUE
 	display_maptext = TRUE //if you want to give it a label you can, but it won't come with one by default.
 
-/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
+/obj/item/reagent_container/hypospray/autoinjector/chloral_hydrate/Initialize()
 	. = ..()
-	reagents.add_reagent("chloralhydrate", 1*3)
+	reagents.add_reagent("chloral_hydrate", 1*3)
 	reagents.add_reagent("stoxin", 9*3)
 	update_icon()
 

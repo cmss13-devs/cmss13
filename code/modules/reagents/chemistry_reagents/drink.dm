@@ -40,20 +40,20 @@
 /datum/reagent/drink/orangejuice
 	name = "Orange juice"
 	id = "orangejuice"
-	description = "Both delicious AND rich in Vitamin C, what more do you need?"
+	description = "Both delicious AND rich in Vitamin C, what more do you need? Heals brute damage."
 	color = "#E78108" // rgb: 231, 129, 8
 
 /datum/reagent/drink/orangejuice/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.)
 		return
-	if(M.getOxyLoss() && prob(30))
-		M.apply_damage(-1, OXY)
+	if(M.getBruteLoss() && prob(20))
+		M.heal_limb_damage(0,1)
 
 /datum/reagent/drink/tomatojuice
 	name = "Tomato Juice"
 	id = "tomatojuice"
-	description = "Tomatoes made into juice. What a waste of big, juicy tomatoes, huh?"
+	description = "Tomatoes made into juice. What a waste of big, juicy tomatoes, huh? Heals burn damage."
 	color = "#731008" // rgb: 115, 16, 8
 
 /datum/reagent/drink/tomatojuice/on_mob_life(mob/living/M)
@@ -63,11 +63,10 @@
 	if(M.getFireLoss() && prob(20))
 		M.heal_limb_damage(0,1)
 
-
 /datum/reagent/drink/limejuice
 	name = "Lime Juice"
 	id = "limejuice"
-	description = "The sweet-sour juice of limes."
+	description = "The sour juice of limes. Removes toxins."
 	color = "#365E30" // rgb: 54, 94, 48
 
 /datum/reagent/drink/limejuice/on_mob_life(mob/living/M)
@@ -80,7 +79,7 @@
 /datum/reagent/drink/carrotjuice
 	name = "Carrot juice"
 	id = "carrotjuice"
-	description = "It is just like a carrot but without crunching."
+	description = "It is just like a carrot but without crunching. Good for your eyes!"
 	color = "#973800" // rgb: 151, 56, 0
 
 /datum/reagent/drink/carrotjuice/on_mob_life(mob/living/M)
@@ -133,25 +132,30 @@
 	description = "This juice is VERY sour."
 	color = "#d1db42" // rgb: 209, 219, 66
 
-/datum/reagent/drink/banana
+/datum/reagent/drink/pineapplejuice
+	name = "Pineapple Juice"
+	id = "pineapplejuice"
+	description = "The bromelain hurts, but it tastes so good!"
+	color = "#e6aa31" // rgb: 230, 170, 49
+
+/datum/reagent/drink/bananajuice
 	name = "Banana Juice"
-	id = "banana"
+	id = "bananajuice"
 	description = "The raw essence of a banana."
 	color = "#e4c439" // rgb: 228, 196, 57
 
-/datum/reagent/drink/potato_juice
+/datum/reagent/drink/potatojuice
 	name = "Potato Juice"
-	id = "potato"
-	description = "Juice of the potato. Bleh."
+	id = "potatojuice"
+	description = "Juice of the potato. Bleh. Fills you up, somehow."
 	nutriment_factor = 2 * FOOD_METABOLISM
-	color = "#302000" // rgb: 48, 32, 0
+	color = "#ba9484" // rgb: 186, 148, 132
 
 /datum/reagent/drink/grenadine
 	name = "Grenadine Syrup"
 	id = "grenadine"
 	description = "Made in the modern day with proper pomegranate substitute. Who uses real fruit, anyways?"
 	color = "#FF004F" // rgb: 255, 0, 79
-
 
 
 //MILK//
@@ -185,6 +189,12 @@
 	chemclass = CHEM_CLASS_NONE
 	flags = REAGENT_NO_GENERATION
 
+/datum/reagent/drink/milk/chocolate
+	name = "Chocolate Milk"
+	id = "milk"
+	description = "Nectar of the gods."
+	color = "#786055" // rgb: 120, 96, 85
+
 /datum/reagent/drink/milk/cream
 	name = "Cream"
 	id = "cream"
@@ -201,9 +211,18 @@
 	name = "Milkshake"
 	description = "Glorious brainfreezing mixture."
 	id = "milkshake"
-	color = "#AEE5E4" // rgb" 174, 229, 228
+	color = "#AEE5E4" // rgb: 174, 229, 228
 	adj_temp = -2
 	target_temp = T0C
+
+/datum/reagent/drink/cold/chocolate_milkshake
+	name = "Chocolate Milkshake"
+	description = "A fan favorite!"
+	id = "chocolate_milkshake"
+	color = "#866b65" // rgb: 134, 107, 101
+	adj_temp = -2
+	target_temp = T0C
+
 
 /datum/reagent/drink/cold/milkshake/on_mob_life(mob/living/M)
 	. = ..()
@@ -675,8 +694,8 @@
 /datum/reagent/drink/doctor_delight
 	name = "The Doctor's Delight"
 	id = "doctorsdelight"
-	description = "A gulp a day keeps the MediBot away. That's probably for the best."
-	color = "#FF8CFF" // rgb: 255, 140, 255
+	description = "A gulp a day keeps the doctors away. That's probably for the best."
+	color = "#ba7cba" // rgb: 186, 124, 186
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_NEOGENETIC = 0.5, PROPERTY_ANTICORROSIVE = 0.5, PROPERTY_ANTITOXIC = 0.5, PROPERTY_OXYGENATING = 0.5, PROPERTY_RELAXING = 1)

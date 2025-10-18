@@ -2781,9 +2781,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -19305,11 +19302,6 @@
 /obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/paft)
-"aXD" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer/mono,
-/area/almayer/hallways/upper/port)
 "aXE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -48166,9 +48158,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Dorms"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/port_emb)
 "goL" = (
@@ -55011,9 +55000,6 @@
 	access_modified = 1;
 	name = "\improper Flight Office";
 	req_one_access_txt = "3;22;19"
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -77791,7 +77777,6 @@
 	desc = "A bulletproof cabinet containing communications equipment.";
 	name = "communications cabinet";
 	pixel_y = 24;
-	req_access = null;
 	req_one_access_txt = "207;203"
 	},
 /obj/item/device/radio,
@@ -81669,9 +81654,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
 "tPm" = (
@@ -82770,12 +82752,6 @@
 /obj/structure/machinery/vending/cigarette/free{
 	pixel_y = 16;
 	density = 0
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out"
 	},
 /obj/structure/machinery/vending/cigarette/koorlander{
 	pixel_y = 16;
@@ -87623,7 +87599,7 @@
 	pixel_y = 24
 	},
 /obj/item/device/cotablet,
-/obj/item/device/radio/headset/almayer/mcom,
+/obj/item/device/radio/headset/almayer/mcom/cdrcom,
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
 "wcm" = (
@@ -204706,7 +204682,7 @@ gsC
 cMz
 cMz
 atZ
-aXD
+atZ
 atZ
 cMz
 cMz

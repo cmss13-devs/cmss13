@@ -4789,10 +4789,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/mob/living/simple_animal/cat/blackcat{
-	dir = 8;
-	name = "Sebastian"
-	},
+/mob/living/simple_animal/corgi/Ian,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/abyssal/interior/bunker)
 "any" = (
@@ -5934,6 +5931,7 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
+/mob/living/simple_animal/cat/Runtime,
 /turf/open/floor/darkish,
 /area/abyssal/interior/landing_zone)
 "aqk" = (

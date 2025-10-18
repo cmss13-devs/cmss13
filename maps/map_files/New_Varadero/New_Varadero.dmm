@@ -1250,7 +1250,7 @@
 /turf/open/floor/shiva/wred,
 /area/varadero/interior/medical)
 "aLn" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_SE)
 "aMp" = (
@@ -1403,7 +1403,7 @@
 /turf/open/gm/dirt/desert3,
 /area/varadero/exterior/lz1_near)
 "aTh" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/medical)
 "aTC" = (
@@ -1639,7 +1639,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "bbt" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "bbF" = (
@@ -2035,7 +2035,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "bpI" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
@@ -2344,7 +2344,7 @@
 "bFo" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight/flare,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "bFV" = (
@@ -3666,7 +3666,7 @@
 /turf/open/floor/light,
 /area/varadero/interior_protected/vessel)
 "cHY" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "cIB" = (
@@ -5327,7 +5327,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
 "egj" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/plating/icefloor,
 /area/varadero/exterior/lz1_near)
 "egp" = (
@@ -5612,7 +5612,7 @@
 /area/varadero/exterior/eastocean)
 "esB" = (
 /obj/structure/closet/radiation,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/comms3)
 "esK" = (
@@ -6478,7 +6478,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "fcF" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/vessel)
 "fcK" = (
@@ -7415,7 +7415,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/comms3)
 "fMj" = (
@@ -7480,7 +7480,7 @@
 /area/varadero/interior/hall_SE)
 "fPo" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/storage/fancy/cigar,
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/administration)
@@ -9635,7 +9635,7 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/comms4)
 "hHn" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "hHE" = (
@@ -11918,7 +11918,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms1)
 "jty" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/varadero/interior/hall_N)
 "jtH" = (
@@ -13804,7 +13804,7 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/hall_NW)
 "kZl" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
 "kZn" = (
@@ -14683,7 +14683,7 @@
 /area/varadero/interior_protected/caves)
 "lMq" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/spawner/random/supply_kit,
 /turf/open/floor/shiva/blue/northeast,
 /area/varadero/interior/administration)
@@ -17047,7 +17047,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/electrical)
 "nOj" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/varadero/interior/cargo)
 "nOz" = (
@@ -20882,7 +20882,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/security/north)
 "qHu" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_N)
 "qHF" = (
@@ -23181,7 +23181,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/comms1)
 "ssv" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4
 	},
@@ -24363,7 +24363,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
 "tpa" = (
-/obj/effect/landmark/hunter_secondary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz2_near)
 "tpB" = (
@@ -28569,7 +28569,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "wGs" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/comms3)
@@ -28711,7 +28711,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "wOL" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -29383,7 +29383,7 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "xuW" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
 "xuX" = (

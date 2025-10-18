@@ -430,7 +430,7 @@
 /area/bigredv2/outside/admin_building)
 "PU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/darkred2/west,
 /area/bigredv2/outside/admin_building)
 "PX" = (

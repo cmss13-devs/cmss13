@@ -166,8 +166,8 @@
 /obj/structure/gun_rack/type71
 	icon_state = "type71"
 	desc = "Some off-branded gun rack. Per SOF and UPPA regulations, weapons should be stored in secure safes and only given out when necessary. Of course, most (but not all!) units overlook this regulation, only storing their firearms in safes when inspection arrives."
-	max_stored = 6
-	initial_stored = 6
+	max_stored = 5
+	initial_stored = 5
 	allowed_type = /obj/item/weapon/gun/rifle/type71
 	populate_type = /obj/item/weapon/gun/rifle/type71
 

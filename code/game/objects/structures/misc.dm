@@ -484,8 +484,8 @@
 		for(var/turf/turf as anything in to_turfs)
 			if((dir == NORTH && turf.y <= stair.y) \
 			|| (dir == EAST && turf.x <= stair.x) \
-			|| (dir == SOUTH && turf.y > stair.y) \
-			|| (dir == WEST && turf.x > stair.x))
+			|| (dir == SOUTH && turf.y >= stair.y) \
+			|| (dir == WEST && turf.x >= stair.x))
 				continue
 
 			if(istransparentturf(turf))
@@ -505,7 +505,7 @@
 				var/cross_product = turf_to_stair.x * turf_to_target.y - turf_to_stair.y * turf_to_target.x
 
 				var/distance_to_target = sqrt(turf_to_target.x * turf_to_target.x + turf_to_target.y * turf_to_target.y)
-				if(distance_to_target && distance_to_stair && distance_to_target < distance_to_stair)
+				if(!distance_to_target || (distance_to_stair && distance_to_target < distance_to_stair))
 					continue
 
 				if(cross_product && abs(cross_product) / (distance_to_stair * distance_to_target) > 0.40)

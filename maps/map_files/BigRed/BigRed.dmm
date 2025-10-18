@@ -1406,6 +1406,13 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
+"afq" = (
+/obj/item/clothing/suit/storage/CMB{
+	pixel_x = -6;
+	pixel_y = -10
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1510,6 +1517,10 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
+"afK" = (
+/obj/effect/spawner/random/claymore/highchance,
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "afL" = (
 /obj/structure/showcase{
 	icon_state = "broadcaster_send";
@@ -1520,6 +1531,13 @@
 "afM" = (
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/space_port)
+"afN" = (
+/obj/item/clothing/suit/armor/riot{
+	pixel_y = -5;
+	pixel_x = -4
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/delivery,
@@ -1539,6 +1557,10 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
+"afR" = (
+/obj/structure/platform/stone/kutjevo/north,
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "afS" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -1659,9 +1681,22 @@
 	},
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/space_port)
+"agp" = (
+/obj/item/clothing/under/color/orange{
+	pixel_y = -7;
+	pixel_x = 6
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "agq" = (
 /turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/n)
+"agr" = (
+/obj/structure/platform/stone/kutjevo/east{
+	pixel_x = 4
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "ags" = (
 /turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/n)
@@ -1715,11 +1750,37 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"agE" = (
+/obj/item/storage/box/mre/wy,
+/obj/item/storage/box/mre/wy{
+	pixel_x = 7;
+	pixel_y = 8
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
+"agF" = (
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
+"agG" = (
+/obj/item/device/flashlight/lamp/tripod{
+	layer = 6;
+	pixel_y = 11
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "agH" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
+"agI" = (
+/obj/structure/platform/stone/kutjevo/west{
+	pixel_x = -3
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "agJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
@@ -1767,6 +1828,10 @@
 "agQ" = (
 /turf/open/floor/darkpurple2/north,
 /area/bigredv2/caves/lambda/xenobiology)
+"agR" = (
+/obj/item/clothing/accessory/storage/holster/armpit,
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "agS" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -1836,6 +1901,24 @@
 /obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"ahg" = (
+/obj/structure/bed/bedroll{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/prop/colony/usedbandage{
+	dir = 4;
+	pixel_x = -1;
+	pixel_y = -4
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
+"ahh" = (
+/obj/structure/platform/stone/kutjevo/west{
+	pixel_x = -3
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "ahi" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars,
@@ -1870,6 +1953,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"aho" = (
+/obj/structure/platform/stone/kutjevo/west{
+	pixel_x = -3
+	},
+/obj/structure/platform/stone/kutjevo,
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "ahp" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
@@ -5304,11 +5394,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
-"axF" = (
-/obj/structure/barricade/wooden,
-/obj/structure/barricade/wooden,
-/turf/open/floor/asteroidwarning/east,
-/area/bigredv2/outside/n)
 "axG" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -58609,7 +58694,7 @@ alF
 alF
 alF
 alF
-axF
+asf
 asf
 alF
 akw
@@ -59210,10 +59295,10 @@ aao
 aao
 aao
 aao
-aao
-aao
-aao
-aao
+agr
+agr
+agr
+agr
 aao
 aao
 aao
@@ -59430,9 +59515,9 @@ aao
 aao
 aao
 aao
-aao
-aao
-aao
+agE
+afR
+afq
 aao
 aao
 aao
@@ -59646,10 +59731,10 @@ aao
 aao
 aao
 aao
-aao
-aao
-aao
-aao
+agR
+agF
+afR
+afK
 aao
 tjX
 dgQ
@@ -59861,12 +59946,12 @@ aao
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
+ahh
+aho
+ahg
+agG
+afR
+afK
 aao
 xqW
 vHU
@@ -60080,10 +60165,10 @@ aao
 aao
 aao
 aao
-aao
-aao
-aao
-aao
+ahh
+agI
+agp
+afN
 aao
 psI
 dQR

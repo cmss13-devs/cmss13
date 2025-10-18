@@ -214,11 +214,6 @@
 	. = ..()
 	heal_brute = initial(heal_brute) * 3 // 3x stronger
 
-/obj/item/stack/medical/advanced/bruise_pack/upgraded/low_amount/Initialize(mapload, ...)
-	. = ..()
-	amount = rand(1,4)
-	update_icon()
-
 /obj/item/stack/medical/advanced/bruise_pack/predator
 	name = "mending herbs"
 	singular_name = "mending herb"
@@ -294,11 +289,6 @@
 /obj/item/stack/medical/advanced/ointment/upgraded/Initialize(mapload, ...)
 	. = ..()
 	heal_burn = initial(heal_burn) * 3 // 3x stronger
-
-/obj/item/stack/medical/advanced/ointment/upgraded/low_amount/Initialize(mapload, ...)
-	. = ..()
-	amount = rand(1,4)
-	update_icon()
 
 /obj/item/stack/medical/advanced/ointment/predator
 	name = "soothing herbs"
@@ -390,11 +380,6 @@
 	max_amount = 5
 
 	stack_id = "nano splint"
-
-/obj/item/stack/medical/splint/nano/low_amount/Initialize(mapload, ...)
-	. = ..()
-	amount = rand(1,2)
-	update_icon()
 
 /obj/item/stack/medical/splint/nano/research
 	desc = "Advanced technology allows these splints to hold bones in place while being flexible and damage-resistant. Those are made from durable carbon fiber and dont look cheap, better use them sparingly."

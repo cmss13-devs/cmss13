@@ -486,7 +486,9 @@
 	var/muzzle_flash_lum = 4
 	var/icon_full = "M56D" // Put this system in for other MGs or just other mounted weapons in general, future proofing.
 	var/icon_empty = "M56D_e" //Empty
-	var/zoom = 0 // 0 is it doesn't zoom, 1 is that it zooms.
+	var/zoom = 0 /// 0 is it doesn't zoom, 1 is that it zooms.
+	var/zoom_tile_offset = 5 /// How much do we zoom forwards when looking down the scope
+	var/zoom_viewsize = 0 /// What do we set the user's viewsize to when zooming, 0 is no change
 	var/damage_state = M56D_DMG_NONE
 
 	var/gun_noise = 'sound/weapons/gun_rifle.ogg' // Variations for gun noises for M56D, M2C, the auto one, uses a different set of sounds. emergency_cooling
@@ -997,7 +999,7 @@
 		var/diff_x = 0
 		var/diff_y = 0
 		var/tilesize = 32
-		var/viewoffset = zoom ? (tilesize * 5) : (tilesize * 2)
+		var/viewoffset = zoom ? (tilesize * zoom_tile_offset) : (tilesize * 2)
 		switch(dir)
 			if(NORTH)
 				diff_y = -16 + user_old_y
@@ -1020,13 +1022,16 @@
 					user.client.pixel_x = -viewoffset
 					user.client.pixel_y = 0
 
-		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
+		if(zoom_viewsize)
+			user.client.change_view(zoom_viewsize)
+
+		animate(user, pixel_x = diff_x + src.pixel_x , pixel_y = diff_y + src.pixel_y , 0.4 SECONDS)
 	else
 		if(user.client)
 			user.client.change_view(GLOB.world_view_size)
 			user.client.pixel_x = 0
 			user.client.pixel_y = 0
-		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
+		animate(user, pixel_x = user_old_x, pixel_y = user_old_y, 4, 1)
 
 /obj/structure/machinery/m56d_hmg/check_eye(mob/living/user)
 	if(user.body_position != STANDING_UP || get_dist(user,src) > 0 || user.is_mob_incapacitated() || !user.client)
@@ -1200,6 +1205,7 @@
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
 	zoom = 1
+	zoom_tile_offset = 5
 	ammo = /datum/ammo/bullet/machinegun/doorgun
 
 /obj/structure/machinery/m56d_hmg/mg_turret/update_health(amount) //Negative values restores health.
@@ -1216,10 +1222,21 @@
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"
-	desc = "A scoped M56D heavy machine gun mounted behind a metal shield. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."
+	desc = "A modified scoped M56D heavy machine gun mounted behind a metal shield. <br>Drag its sprite onto yourself to man it. Ctrl-click it to cycle through firemodes."
 	icon_full = "towergun_folding"
 	icon_empty = "towergun_folding"
+	fire_delay = 0.3 SECONDS
+	burst_fire_delay = 0.25 SECONDS
+	rounds = 700
+	rounds_max = 700
+	zoom = 1
+	zoom_tile_offset = 6
+	zoom_viewsize = 10
 	var/obj/structure/dropship_equipment/mg_holder/deployment_system
+
+/obj/structure/machinery/m56d_hmg/mg_turret/dropship/Initialize(mapload, ...)
+	. = ..()
+	gun_firemodes += GUN_FIREMODE_BURSTFIRE // OG description said it has burst fire so that's why this is here
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship/Destroy()
 	if(deployment_system)

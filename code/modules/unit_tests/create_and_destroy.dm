@@ -15,7 +15,7 @@ GLOBAL_VAR_INIT(create_and_destroy_ignore_paths, generate_ignore_paths())
 		// These use walk_away() after initialization, which causes false positives
 		/obj/item/explosive/grenade/flashbang/cluster/segment,
 		/obj/item/explosive/grenade/flashbang/cluster_piece,
-		/mob/living/simple_animal/hostile/retaliate/giant_lizard,
+		/mob/living/simple_animal/hostile/retaliate/playable/giant_lizard,
 		/obj/effect/landmark/lizard_spawn,
 		/obj/effect/fake_attacker,
 		/atom/movable/lighting_mask, //leave it alone

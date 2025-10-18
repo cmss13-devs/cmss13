@@ -131,4 +131,4 @@ GLOBAL_VAR(obfs_y)
 GLOBAL_VAR(obfs_z)
 
 /// List of giant lizards that are alive.
-GLOBAL_LIST_EMPTY(giant_lizards_alive)
+GLOBAL_LIST_EMPTY(giant_fauna_alive)

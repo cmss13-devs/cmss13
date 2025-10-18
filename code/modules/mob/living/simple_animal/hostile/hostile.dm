@@ -68,7 +68,7 @@
 /mob/living/simple_animal/hostile/proc/MoveToTarget()
 	stop_automated_movement = TRUE
 	var/mob/living/target_mob = target_mob_ref?.resolve()
-	if(!target_mob || SA_attackable(target_mob))
+	if(!target_mob || !SA_attackable(target_mob))
 		stance = HOSTILE_STANCE_IDLE
 	if(target_mob in ListTargets(10))
 		stance = HOSTILE_STANCE_ATTACKING
@@ -77,7 +77,7 @@
 /mob/living/simple_animal/hostile/proc/AttackTarget()
 	stop_automated_movement = TRUE
 	var/mob/living/target_mob = target_mob_ref?.resolve()
-	if(!target_mob || SA_attackable(target_mob))
+	if(!target_mob || !SA_attackable(target_mob))
 		LoseTarget()
 		return 0
 	if(!(target_mob in ListTargets(10)))

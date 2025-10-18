@@ -84,7 +84,7 @@
 	density = FALSE
 	anchored = TRUE
 	layer = FLY_LAYER
-	icon = 'icons/effects/effects.dmi'
+	icon = 'icons/mob/spider.dmi'
 	icon_state = "cobweb1"
 
 /obj/effect/decal/cleanable/molten_item
@@ -103,7 +103,7 @@
 	density = FALSE
 	anchored = TRUE
 	layer = OBJ_LAYER
-	icon = 'icons/effects/effects.dmi'
+	icon = 'icons/mob/spider.dmi'
 	icon_state = "cobweb2"
 
 /// Variant used for halloween - need to pass info in constructor as its turned in an overlay

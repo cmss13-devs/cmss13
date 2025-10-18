@@ -1182,7 +1182,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 /obj/structure/largecrate/black_market/secured_wildlife/unpack()
 	//We need to pick a 'secured wildlife' mob that actually makes sense.
 	var/unfit_simplemobs = list(/mob/living/simple_animal/drone, /mob/living/simple_animal/hostile/retaliate/malf_drone)
-	var/fit_hostiles = list(/mob/living/simple_animal/hostile/giant_spider, /mob/living/simple_animal/hostile/bear,, /mob/living/simple_animal/hostile/retaliate/goat)
+	var/fit_hostiles = list(/mob/living/simple_animal/hostile/retaliate/playable/giant_spider, /mob/living/simple_animal/hostile/bear,, /mob/living/simple_animal/hostile/retaliate/goat)
 	var/monkey_mobs = list(/mob/living/carbon/human/monkey, /mob/living/carbon/human/farwa, /mob/living/carbon/human/stok, /mob/living/carbon/human/yiren, /mob/living/carbon/human/neaera)
 	var/mob/contained_mob_type = pick( ( subtypesof(/mob/living/simple_animal) - typesof(/mob/living/simple_animal/hostile) ) + fit_hostiles + monkey_mobs - unfit_simplemobs)
 	new contained_mob_type(loc)

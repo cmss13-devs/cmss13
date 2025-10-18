@@ -239,7 +239,6 @@
 
 /obj/item/reagent_container/food/condiment/hotsauce/franks/macho/Initialize()
 	. = ..()
-	AddElement(/datum/element/corp_label/wy)
 	reagents.add_reagent("machosauce", 60)
 
 /obj/item/reagent_container/food/condiment/coldsauce

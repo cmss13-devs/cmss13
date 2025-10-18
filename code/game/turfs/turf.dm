@@ -123,7 +123,6 @@
 	if(density)
 		is_weedable = NOT_WEEDABLE
 
-
 	if(istransparentturf(src))
 		return INITIALIZE_HINT_LATELOAD
 	else

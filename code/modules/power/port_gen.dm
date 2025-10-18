@@ -79,6 +79,16 @@ display floor(lastgen) and phorontank amount
 	if(!anchored)
 		return
 
+/obj/structure/machinery/power/power_generator/port_gen/proc/TogglePower()
+	if(is_on)
+		is_on = FALSE
+		stop_processing()
+		icon_state = initial(icon_state)
+	else if(HasFuel())
+		is_on = TRUE
+		start_processing()
+		icon_state = "portgen1"
+
 /obj/structure/machinery/power/power_generator/port_gen/get_examine_text(mob/user)
 	. = ..()
 	if(is_on)
@@ -276,11 +286,60 @@ display floor(lastgen) and phorontank amount
 	if (!anchored)
 		return
 
-	interact(user)
+	tgui_interact(user)
 
 /obj/structure/machinery/power/power_generator/port_gen/pacman/attack_remote(mob/user as mob)
-	interact(user)
+	tgui_interact(user)
 
+/obj/structure/machinery/power/power_generator/port_gen/pacman/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "port_gen", name)
+		ui.open()
+
+/obj/structure/machinery/power/power_generator/port_gen/pacman/ui_data()
+	var/data = list()
+
+	data["is_on"] = is_on
+	data["sheet_name"] = capitalize(sheet_name)
+	data["sheets"] = sheets
+	data["stack_percent"] = round(sheet_left * 100, 0.1)
+
+	data["anchored"] = anchored
+	data["connected"] = (powernet == null ? 0 : 1)
+	data["ready_to_boot"] = anchored && HasFuel()
+	data["power_generated"] = display_power(power_gen)
+	data["power_output"] = display_power(power_gen * (power_gen_percent / 100))
+	data["power_available"] = (powernet == null ? 0 : display_power(avail()))
+	data["heat"] = heat
+	. = data
+
+/obj/structure/machinery/power/power_generator/port_gen/pacman/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	if(.)
+		return
+	switch(action)
+		if("toggle_power")
+			TogglePower()
+			. = TRUE
+
+		if("eject")
+			if(!is_on)
+				DropFuel()
+				. = TRUE
+
+		if("lower_power")
+			if (power_gen_percent > 100)
+				power_gen_percent -= 100
+				. = TRUE
+
+		if("higher_power")
+			if (power_gen_percent < 400)
+				power_gen_percent += 100
+				. = TRUE
+
+/*
 /obj/structure/machinery/power/power_generator/port_gen/pacman/interact(mob/user)
 	if (get_dist(src, user) > 1 )
 		if (!isRemoteControlling(user))
@@ -338,6 +397,8 @@ display floor(lastgen) and phorontank amount
 		if (href_list["action"] == "close")
 			close_browser(usr, "port_gen")
 			usr.unset_interaction()
+
+		*/
 
 /obj/structure/machinery/power/power_generator/port_gen/pacman/inoperable(additional_flags)
 	return (stat & (BROKEN|additional_flags)) //Removes NOPOWER check since its a goddam generator and doesn't need power

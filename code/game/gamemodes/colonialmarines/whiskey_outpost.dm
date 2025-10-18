@@ -74,7 +74,7 @@
 	var/list/whiskey_outpost_waves = list()
 
 	hardcore = TRUE
-	starting_round_modifiers = list(/datum/gamemode_modifier/permadeath)
+	starting_round_modifiers = list(/datum/gamemode_modifier/permadeath, /datum/gamemode_modifier/more_crit, /datum/gamemode_modifier/disable_wj_spawns)
 
 	votable = TRUE
 	vote_cycle = 75 // approx. once every 5 days, if it wins the vote

@@ -29,6 +29,8 @@
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 	if(colony_camera_mapload && mapload && is_ground_level(z))
+		if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
+			return FALSE
 		network = list(CAMERA_NET_COLONY)
 
 

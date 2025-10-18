@@ -87,7 +87,6 @@ display floor(lastgen) and phorontank amount
 	else if(HasFuel())
 		is_on = TRUE
 		start_processing()
-		icon_state = "portgen1"
 
 /obj/structure/machinery/power/power_generator/port_gen/get_examine_text(mob/user)
 	. = ..()

@@ -74,5 +74,5 @@
 
 /datum/element/corp_label/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	var/logo = "[icon2html('icons/ui_icons/logos.dmi', viewers(source), manufacturer, extra_classes = "corplogo", non_standard_size = TRUE)]"
+	var/logo = "[icon2html('icons/ui_icons/logos.dmi', viewers(get_turf(source)), manufacturer, extra_classes = "corplogo", non_standard_size = TRUE)]"
 	examine_list += SPAN_INFO("On [source] you can see [full_name] logo, it reads: [logo]")

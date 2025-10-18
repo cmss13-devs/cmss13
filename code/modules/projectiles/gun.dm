@@ -2077,8 +2077,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	SIGNAL_HANDLER
 
 	var/list/modifiers = params2list(params)
-	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5]) // if we dont remove 'modifiers[RIGHT_CLICK]' here, we will get access to faultless PB with shotguns
 		return
+	if(ishuman(gun_user))
+		var/mob/living/carbon/human/H = gun_user // basically there so that we DON'T shoot while tryna use spec gun abilities via RMB !AND! so that we DO shoot if we use spec stuff via MMB/shift+LMB
+		if(H.selected_ability && modifiers[RIGHT_CLICK] && H.client.prefs.xeno_ability_click_mode == XENO_ABILITY_CLICK_RIGHT)
+			return
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.
 	if(!isturf(gun_user.loc))

@@ -540,14 +540,30 @@
 	return null
 
 /obj/item/clothing/clicked(mob/user, list/mods)
-	if(mods[ALT_CLICK] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
+	if(mods[ALT_CLICK] && mods[LEFT_CLICK] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
 		for(var/V in verbs)
 			if(V == /obj/item/clothing/suit/storage/verb/toggle_draw_mode) //So that alt-clicks are only intercepted for clothing items with internal storage and toggleable draw modes.
 				return
 
 	var/obj/item/storage/internal/pockets = get_pockets()
-	if(pockets && !mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
+	if(pockets && mods[RIGHT_CLICK] && !mods[ALT_CLICK] && CAN_PICKUP(user, src))
 		pockets.open(user)
 		return TRUE
+
+	if(mods[ALT_CLICK] && mods[MIDDLE_CLICK])
+		if(accessories)
+			remove_accessory(user, pick_accessory_to_remove(user, user))
+		else
+			to_chat(user, "No accessories to remove!")
+
+	if(mods[ALT_CLICK] && mods[RIGHT_CLICK])
+		if(!istype(src, /obj/item/clothing/suit/storage)) // This will trigger on uniforms, for webbings etc
+			for(var/obj/item/clothing/accessory/storage/A in accessories)
+				if(A.hold.storage_flags)
+					A.hold.storage_draw_logic(A.name)
+					break
+		else
+			var/obj/item/clothing/suit/storage/storage = src
+			storage.pockets.storage_draw_logic(src.name)
 
 	return ..()

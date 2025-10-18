@@ -67,15 +67,27 @@
 			add_fingerprint(usr)
 
 /obj/item/storage/clicked(mob/user, list/mods)
-	if(!mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
+	if(!mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && !mods[ALT_CLICK] && CAN_PICKUP(user, src))
 		handle_mmb_open(user)
 		return TRUE
 
 	//Allow alt-clicking to remove items directly from storage.
 	//Does so by passing the alt mod back to do_click(), which eventually delivers it to attack_hand().
 	//This ensures consistent click behaviour between alt-click and left-mouse drawing.
-	if(mods[ALT_CLICK]  && loc == user && !user.get_active_hand())
+	if(mods[ALT_CLICK] && mods[LEFT_CLICK] && loc == user && !user.get_active_hand())
 		return FALSE
+
+	if(mods[ALT_CLICK] && mods[RIGHT_CLICK])
+		storage_draw_logic(src.name)
+
+	if(mods[ALT_CLICK] && mods[MIDDLE_CLICK])
+		if(istype(src, /obj/item/storage/belt/medical))
+			if(ishuman(user))
+				var/obj/item/storage/belt/medical/med_belt = src
+				med_belt.mode = !med_belt.mode
+				to_chat(user, SPAN_NOTICE("You will now [med_belt.mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
+		else
+			to_chat(user, SPAN_NOTICE("This item isn't a medical belt."))
 
 	return ..()
 

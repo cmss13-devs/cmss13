@@ -50,9 +50,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
 "ai" = (
-/obj/structure/machinery/light{
-	dir = 2
-	},
+/obj/structure/machinery/light,
 /obj/structure/platform/metal/almayer{
 	dir = 1
 	},
@@ -7568,10 +7566,6 @@
 /area/whiskey_outpost/outside/north/platform)
 "If" = (
 /obj/structure/barricade/sandbags/wired,
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0"
-	},
 /obj/structure/barricade/sandbags/wired{
 	dir = 8;
 	icon_state = "sandbag_0"

@@ -2776,15 +2776,6 @@
 	},
 /turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2,
 /area/adminlevel/ert_station/weyland_station)
-"RZ" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat/squares,
-/area/adminlevel/ert_station/weyland_station)
 "Si" = (
 /obj/structure/bed/roller,
 /obj/structure/machinery/light/double{
@@ -4474,7 +4465,7 @@ kV
 gL
 fX
 kA
-RZ
+al
 Je
 fX
 fX

@@ -15422,6 +15422,16 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/server)
+"aXg" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/landmark/nightmare{
+	insert_tag = "nspa_cordon"
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/south_valley_dam)
 "aXk" = (
 /obj/structure/closet/lasertag/red,
 /turf/open/floor/prison/blue/north,
@@ -159579,7 +159589,7 @@ bgG
 bgG
 bgG
 bgG
-cNo
+aXg
 cUS
 bvA
 xYi

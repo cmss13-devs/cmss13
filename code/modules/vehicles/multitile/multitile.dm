@@ -97,6 +97,8 @@
 	//some vehicles have special slots for dead revivable corpses for various reasons
 	//revivable corpses slots
 	var/revivable_dead_slots = 0
+	//To prevent the dead from taking up all passenger slots and making the vehicle un-enterable.
+	var/perma_dead_slots = 2
 	//Special roles categories slots. These allow to set specific roles in categories with their own slots.
 	//For example, (list(JOB_CREWMAN, JOB_UPP_CREWMAN) = 2) means that USCM and UPP crewman will always have 2 slots reserved for them.
 	//Only first encounter of job will be checked for slots, so don't put job in more than one category.

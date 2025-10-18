@@ -7,7 +7,7 @@
 	anchored = TRUE
 	unslashable = FALSE
 	health = 100
-	layer = CATWALK_LAYER
+	layer = 2.4
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/prop/tyrargo/boards/boards_1

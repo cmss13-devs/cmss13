@@ -2026,8 +2026,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 10;
-	pixel_y = -9;
-	layer = 2.9
+	pixel_y = -9
 	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/south_west)
@@ -2210,8 +2209,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_y = -2;
-	pixel_x = 3;
-	layer = 2.1
+	pixel_x = 3
 	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
@@ -2719,6 +2717,11 @@
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"ahh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/xeno_spawn,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/upper)
 "ahi" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_16";
@@ -7692,8 +7695,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_x = 7;
-	pixel_y = -4;
-	layer = 2.8
+	pixel_y = -4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
@@ -12449,6 +12451,13 @@
 	},
 /turf/open/asphalt/cement/cement15,
 /area/tyrargo/outdoors/colony_streets/south_west)
+"aFr" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = 7
+	},
+/obj/effect/landmark/xeno_spawn,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/upper)
 "aFs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -16981,7 +16990,6 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -3;
 	pixel_y = -13;
-	layer = 2.9;
 	dir = 1
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -17285,6 +17293,11 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/fsb_north)
+"aPL" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/xeno_spawn,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/upper)
 "aPM" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 1;
@@ -17409,8 +17422,7 @@
 "aPX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/boards{
-	pixel_x = 6;
-	layer = 2.9
+	pixel_x = 6
 	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -17682,8 +17694,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_y = -2;
-	pixel_x = 3;
-	layer = 2.1
+	pixel_x = 3
 	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -20598,7 +20609,6 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -3;
 	pixel_y = -13;
-	layer = 2.9;
 	dir = 1
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -21374,7 +21384,6 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -3;
 	pixel_y = -13;
-	layer = 2.9;
 	dir = 1
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -22607,8 +22616,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_y = -2;
-	pixel_x = 3;
-	layer = 2.1
+	pixel_x = 3
 	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
@@ -23503,7 +23511,6 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -3;
 	pixel_y = -13;
-	layer = 2.9;
 	dir = 1
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -26146,13 +26153,11 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 15;
 	pixel_y = 2;
-	layer = 2.98;
 	dir = 8
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 15;
 	pixel_y = -10;
-	layer = 2.98;
 	dir = 4
 	},
 /obj/structure/barricade/hesco{
@@ -26265,8 +26270,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 11;
-	pixel_y = -1;
-	layer = 2.98
+	pixel_y = -1
 	},
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -26382,7 +26386,6 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 14;
 	pixel_y = -4;
-	layer = 2.98;
 	dir = 1
 	},
 /obj/structure/barricade/hesco{
@@ -26748,8 +26751,7 @@
 	},
 /obj/structure/prop/tyrargo/boards{
 	pixel_x = -8;
-	pixel_y = -1;
-	layer = 2.98
+	pixel_y = -1
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
@@ -26759,13 +26761,11 @@
 "biH" = (
 /obj/structure/prop/tyrargo/boards{
 	pixel_x = 12;
-	pixel_y = 4;
-	layer = 2.98
+	pixel_y = 4
 	},
 /obj/structure/prop/tyrargo/boards{
 	pixel_x = -8;
 	pixel_y = -1;
-	layer = 2.98;
 	dir = 8
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -26896,7 +26896,6 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 15;
 	pixel_y = 2;
-	layer = 2.98;
 	dir = 1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
@@ -26983,20 +26982,17 @@
 "bjg" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -11;
-	pixel_y = 15;
-	layer = 2.98
+	pixel_y = 15
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 1;
 	pixel_x = -9;
-	pixel_y = -5;
-	layer = 2.95
+	pixel_y = -5
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 1;
 	pixel_x = 3;
-	pixel_y = -5;
-	layer = 2.95
+	pixel_y = -5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_2)
@@ -27135,8 +27131,7 @@
 "bjx" = (
 /obj/structure/prop/tyrargo/boards{
 	pixel_x = 12;
-	pixel_y = -6;
-	layer = 2.98
+	pixel_y = -6
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_2)
@@ -27281,8 +27276,7 @@
 "bjO" = (
 /obj/structure/prop/tyrargo/boards{
 	pixel_x = -11;
-	pixel_y = 5;
-	layer = 2.98
+	pixel_y = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2)
@@ -27321,7 +27315,6 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 15;
 	pixel_y = 2;
-	layer = 2.98;
 	dir = 1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
@@ -30827,7 +30820,6 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -3;
 	pixel_y = -13;
-	layer = 2.9;
 	dir = 1
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -31015,13 +31007,11 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 15;
 	pixel_y = -10;
-	layer = 2.98;
 	dir = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 11;
-	pixel_y = -1;
-	layer = 2.98
+	pixel_y = -1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
@@ -40915,7 +40905,6 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -3;
 	pixel_y = -13;
-	layer = 2.9;
 	dir = 1
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -45148,8 +45137,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_x = 7;
-	pixel_y = -4;
-	layer = 2.8
+	pixel_y = -4
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/south)
@@ -45247,7 +45235,6 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 7;
 	pixel_y = -8;
-	layer = 2.98;
 	dir = 4
 	},
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
@@ -45256,8 +45243,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_x = 6;
-	pixel_y = -1;
-	layer = 2.8
+	pixel_y = -1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/north)
@@ -45507,14 +45493,12 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 15;
 	pixel_y = 2;
-	layer = 2.98;
 	dir = 1
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_x = 7;
-	pixel_y = -4;
-	layer = 2.8
+	pixel_y = -4
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/north)
@@ -45522,14 +45506,12 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 15;
 	pixel_y = 2;
-	layer = 2.98;
 	dir = 8
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_y = -2;
-	pixel_x = 3;
-	layer = 2.1
+	pixel_x = 3
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/north)
@@ -48083,6 +48065,7 @@
 	light_range = 1;
 	pixel_y = 5
 	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
 "cjw" = (
@@ -48093,6 +48076,7 @@
 	light_range = 1;
 	light_power = 2
 	},
+/obj/effect/landmark/xeno_spawn,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
 "cjx" = (
@@ -53737,6 +53721,7 @@
 "cBW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/xeno_spawn,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
 "cBX" = (
@@ -60055,8 +60040,7 @@
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
 	pixel_x = 4;
-	pixel_y = 2;
-	layer = 2.98
+	pixel_y = 2
 	},
 /turf/open/floor/plating,
 /area/tyrargo/indoors/mall/upper)
@@ -60122,8 +60106,7 @@
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
 	pixel_x = -3;
-	pixel_y = 2;
-	layer = 2.98
+	pixel_y = 2
 	},
 /turf/open/floor/plating,
 /area/tyrargo/indoors/mall/upper)
@@ -63942,8 +63925,7 @@
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
-	pixel_x = 2;
-	layer = 2.98
+	pixel_x = 2
 	},
 /turf/open/hybrisa/street/cement2,
 /area/tyrargo/outdoors/colony_streets/south_west)
@@ -72955,8 +72937,7 @@
 "dBB" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 7;
-	pixel_y = -9;
-	layer = 2.9
+	pixel_y = -9
 	},
 /turf/open/floor/hybrisa/tile/tilered,
 /area/tyrargo/underground/apartment)
@@ -73068,8 +73049,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_x = 10;
-	pixel_y = -6;
-	layer = 2.8
+	pixel_y = -6
 	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
@@ -73122,8 +73102,7 @@
 "dBT" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 4;
-	pixel_y = -4;
-	layer = 2.8
+	pixel_y = -4
 	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
@@ -76573,7 +76552,6 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_y = -3;
-	layer = 2.8;
 	pixel_x = -3
 	},
 /obj/structure/barricade/sandbags/weak_wired{
@@ -87883,8 +87861,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_x = 7;
-	pixel_y = -4;
-	layer = 2.8
+	pixel_y = -4
 	},
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/oob_area)
@@ -88016,8 +87993,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_x = 6;
-	pixel_y = -1;
-	layer = 2.8
+	pixel_y = -1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/underground/oob_area)
@@ -88025,8 +88001,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 4;
 	pixel_x = -1;
-	pixel_y = -5;
-	layer = 2.8
+	pixel_y = -5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/oob_area)
@@ -91365,7 +91340,6 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -3;
 	pixel_y = -13;
-	layer = 2.9;
 	dir = 1
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -100548,8 +100522,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_y = -2;
-	pixel_x = 3;
-	layer = 2.1
+	pixel_x = 3
 	},
 /obj/item/device/flashlight/flare/on{
 	fuel_rate = 5
@@ -101449,8 +101422,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_x = 6;
-	pixel_y = -1;
-	layer = 2.8
+	pixel_y = -1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/oob_area)
@@ -107507,8 +107479,7 @@
 	},
 /obj/structure/prop/tyrargo/boards{
 	pixel_x = -8;
-	pixel_y = -1;
-	layer = 2.98
+	pixel_y = -1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -107576,8 +107547,7 @@
 /obj/structure/prop/tyrargo/boards{
 	dir = 8;
 	pixel_x = 5;
-	pixel_y = 11;
-	layer = 3.0
+	pixel_y = 11
 	},
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/apartment/north_upper)
@@ -242263,15 +242233,15 @@ cCm
 aKi
 cCc
 cCc
-eji
+ejj
 ejn
 eji
-eji
+ejj
 ejm
-eji
-eji
+ejj
+ejj
 cjv
-eji
+ejj
 eji
 eji
 eji
@@ -242636,7 +242606,7 @@ uxo
 uxo
 bxM
 cCc
-eji
+ejj
 cBT
 eji
 eji
@@ -242820,7 +242790,7 @@ ejm
 ejm
 cCc
 cCc
-eji
+ejj
 cBR
 eji
 eji
@@ -243000,7 +242970,7 @@ cCn
 cDf
 clu
 cCc
-eji
+ejj
 eji
 ejm
 ejn
@@ -243184,7 +243154,7 @@ cVr
 cVr
 clu
 clu
-lJn
+aFr
 dSx
 its
 eji
@@ -243372,7 +243342,7 @@ ejk
 eji
 nIV
 nIV
-lJn
+aFr
 cBR
 eji
 eji
@@ -243555,7 +243525,7 @@ aKN
 lJn
 lJn
 cCc
-eji
+ejj
 ejk
 cBR
 cBJ
@@ -243740,7 +243710,7 @@ ejm
 cmz
 cCc
 cCc
-eji
+ejj
 cBR
 eji
 eji
@@ -243920,7 +243890,7 @@ eji
 eji
 cCc
 aKQ
-eji
+ejj
 eji
 ejk
 ejm
@@ -244290,10 +244260,10 @@ eji
 ejm
 cBR
 eji
-eji
+ejj
 cCc
 cCc
-cBR
+ahh
 eji
 eji
 eji
@@ -244483,7 +244453,7 @@ ejn
 eji
 eji
 eji
-eji
+ejj
 cAZ
 cjc
 cjc
@@ -244657,7 +244627,7 @@ cBR
 ejk
 cCc
 cCc
-eji
+ejj
 eji
 cCr
 ejm
@@ -244667,7 +244637,7 @@ ejj
 ejj
 ejj
 ejj
-eji
+ejj
 cAZ
 cjc
 cjc
@@ -244841,16 +244811,16 @@ cCm
 cCn
 cCt
 cCc
-ejk
-eji
-eji
+aPL
+ejj
+ejj
 ejm
-eji
+ejj
 cjw
-eji
-eji
-eji
-eji
+ejj
+ejj
+ejj
+ejj
 bta
 bta
 fTs

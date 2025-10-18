@@ -1020,7 +1020,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/toolbox/electrical{
-	pixel_x = 15;
+	pixel_x = 9;
 	pixel_y = -8
 	},
 /turf/open/floor/almayer,
@@ -3695,6 +3695,7 @@
 	pixel_y = 11
 	},
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped,
+/obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/surg_vest/equipped,
 /obj/item/prop{
 	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
@@ -5889,6 +5890,7 @@
 /area/almayer/medical/morgue)
 "aor" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/morgue,
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
 "aos" = (
@@ -19311,6 +19313,10 @@
 /obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/paft)
+"aXD" = (
+/obj/structure/closet/wardrobe/medic_white,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/middeck/medical)
 "aXE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -21391,6 +21397,11 @@
 	pixel_y = 3;
 	pixel_x = -8
 	},
+/obj/item/tool/crowbar,
+/obj/item/storage/box/vials{
+	pixel_x = 7;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "bci" = (
@@ -21575,7 +21586,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/closet/wardrobe/chemistry_white,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "bcB" = (
@@ -26537,6 +26548,10 @@
 	pixel_x = 7;
 	pixel_y = 10
 	},
+/obj/item/storage/box/bloodbag{
+	pixel_x = 7;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
 "bnr" = (
@@ -26914,26 +26929,7 @@
 /area/almayer/middeck/engineer)
 "boh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/rack,
-/obj/item/storage/box/sprays{
-	pixel_x = 4;
-	pixel_y = 7
-	},
-/obj/item/storage/box/lights/mixed{
-	pixel_x = 4
-	},
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = -6
-	},
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = -6
-	},
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = -6
-	},
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = -6
-	},
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "boi" = (
@@ -34851,6 +34847,25 @@
 "bGi" = (
 /turf/solid_open_space,
 /area/almayer/middeck/maintenance/sf)
+"bGj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/middeck/medical)
+"bGk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/medic_white,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
+"bGl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
 "bGn" = (
 /obj/structure/barricade/plasteel/metal,
 /turf/open/floor/almayer/cargo,
@@ -36978,22 +36993,26 @@
 /obj/item/storage/box/masks{
 	pixel_x = 5
 	},
-/obj/item/roller/surgical,
-/obj/item/roller/surgical,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/roller/surgical,
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
-	},
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
+/obj/item/storage/box/bloodbag{
+	pixel_x = -8;
+	pixel_y = 0
 	},
 /obj/item/storage/box/bodybags{
 	pixel_y = 12;
 	pixel_x = -8
 	},
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/effect/decal/cleanable/dirt,
 /obj/item/reagent_container/glass/minitank{
 	pixel_x = -16;
 	pixel_y = 5
@@ -44316,6 +44335,7 @@
 	pixel_x = -8;
 	pixel_y = 28
 	},
+/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "eFK" = (
@@ -57836,7 +57856,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
-/obj/structure/closet/secure_closet/medical_doctor,
+/obj/structure/closet/secure_closet/medical_doctor{
+	storage_capacity = 60
+	},
 /obj/structure/sign/safety/med_cryo{
 	pixel_x = 15;
 	pixel_y = -27
@@ -73617,14 +73639,14 @@
 	pixel_x = 2;
 	pixel_y = 3
 	},
-/obj/item/tool/mop{
-	pixel_x = -13;
-	pixel_y = 26
-	},
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
 	pixel_x = 18;
 	pixel_y = 1
+	},
+/obj/item/tool/mop{
+	pixel_x = 0;
+	pixel_y = 2
 	},
 /turf/open/floor/almayer,
 /area/almayer/medical/lower_medical_medbay)
@@ -87619,8 +87641,31 @@
 /obj/structure/machinery/status_display{
 	pixel_y = -30
 	},
-/obj/structure/machinery/recharge_station,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/item/storage/box/sprays{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/item/storage/box/lights/mixed{
+	pixel_x = 4
+	},
+/obj/item/storage/box/bloodbag{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -6
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "wbV" = (
@@ -90500,9 +90545,6 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaltopleft";
 	pixel_x = 19
-	},
-/obj/structure/sign/nosmoking_2{
-	pixel_x = 28
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -135294,7 +135336,7 @@ wXT
 cdA
 bcm
 bcm
-emC
+bcm
 emC
 mTL
 xFt
@@ -168228,7 +168270,7 @@ aOj
 avN
 buh
 bnv
-aTF
+aXD
 avN
 avN
 avN
@@ -169977,7 +170019,7 @@ baF
 aOh
 baC
 avN
-bcj
+bGk
 bnv
 blH
 bid
@@ -170080,7 +170122,7 @@ bnY
 bnY
 bnY
 avN
-bcj
+bGl
 bnv
 blH
 bwy
@@ -170184,7 +170226,7 @@ aOh
 baC
 avN
 aSc
-bnv
+bGj
 blH
 bie
 avN
@@ -170287,7 +170329,7 @@ bxI
 aYN
 avN
 aVU
-bnC
+bGj
 blH
 aVP
 avN

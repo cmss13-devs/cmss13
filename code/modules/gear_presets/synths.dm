@@ -219,7 +219,7 @@
 		WEAR_R_EAR = /obj/item/device/flashlight/pen,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
 		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
-		WEAR_BODY = /obj/item/clothing/under/rank/chief_medical_officer,
+		WEAR_BODY = /obj/item/clothing/under/rank/cmo,
 		WEAR_ACCESSORY = /obj/item/clothing/accessory/stethoscope,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/med,
 		WEAR_IN_BACK = /obj/item/roller/surgical,

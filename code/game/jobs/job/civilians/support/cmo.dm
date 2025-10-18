@@ -7,7 +7,7 @@
 	selection_class = "job_cmo"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/cmo
-	entry_message_body = "You're a commissioned officer of the USCM. <a href='"+WIKI_PLACEHOLDER+"'>You have authority over everything related to Medbay and Research</a>, only able to be overridden by the XO and CO. You are in charge of medical staff, surgery, chemistry, stimulants and keeping the marines healthy overall."
+	entry_message_body = "You're a commissioned officer of the USCM. <a href='"+WIKI_PLACEHOLDER+"'>You have authority and knowledge over everything related to Medbay and Research</a>. All personnel within the medical and research bay must answer to you, while you only answer to the XO and CO. You are in charge of medical staff, surgery, chemistry, stimulants and keeping the marines healthy overall by ensuring all departments are running smoothly. You are also responsible for filling the role of a doctor, surgeon, pharmacist, or researcher if their respective departments are understaffed. "
 	var/mob/living/carbon/human/active_cmo
 
 /datum/job/civilian/professor/generate_entry_conditions(mob/living/cmo, whitelist_status)

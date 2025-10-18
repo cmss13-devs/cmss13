@@ -179,11 +179,6 @@
 /obj/structure/barricade/handrail/kutjevo,
 /turf/open/floor/prison/darkbrown2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence)
-"aax" = (
-/obj/structure/barricade/handrail/kutjevo,
-/obj/structure/barricade/handrail/kutjevo,
-/turf/open/floor/prison/darkbrown2/north,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "aay" = (
 /turf/open/floor/prison/darkbrowncorners2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence)
@@ -15432,6 +15427,15 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/south_valley_dam)
+"aXh" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	name = "\improper Security Isolation"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/security/deathrow)
 "aXk" = (
 /obj/structure/closet/lasertag/red,
 /turf/open/floor/prison/blue/north,
@@ -38183,13 +38187,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"jLj" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/administration/hallway)
 "jLr" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/surface/rack,
@@ -45517,7 +45514,6 @@
 /area/desert_dam/building/medical/outgoing)
 "mHe" = (
 /obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/dark2,
 /area/desert_dam/building/administration/hallway)
@@ -60827,7 +60823,6 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
@@ -110381,7 +110376,7 @@ hPy
 aaf
 aaI
 aaC
-aax
+aaw
 aaf
 hPy
 rfS
@@ -149459,7 +149454,7 @@ swv
 swv
 swv
 sKV
-jLj
+swv
 syi
 gNP
 hXJ
@@ -195664,7 +195659,7 @@ ckr
 ckr
 ckr
 bbr
-asI
+aXh
 bbr
 ckr
 aqY

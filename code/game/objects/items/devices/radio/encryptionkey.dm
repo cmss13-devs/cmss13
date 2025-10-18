@@ -92,7 +92,7 @@
 /obj/item/device/encryptionkey/medres
 	name = "Research Radio Encryption Key"
 	icon_state = "med_key"
-	channels = list(RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_WY = TRUE)
+	channels = list(RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_INTEL = TRUE)
 
 // MARINE MILITARY POLICE
 

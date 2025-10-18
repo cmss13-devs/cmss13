@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Added 3 new maplints for identical barricades, pipes, and disposals"
-  - maptweak: "Made minor tweaks to 11 maps and 3 inserts to accommodate new lints"

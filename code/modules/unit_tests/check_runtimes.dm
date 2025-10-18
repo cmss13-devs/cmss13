@@ -1,5 +1,5 @@
 /datum/unit_test/check_runtimes
-	priority = TEST_LONGER
+	priority = TEST_CHECK_RUNTIMES
 
 	///Regex patterns if we must satisfy checks with runtimes present
 	var/list/whitelisted_regex = list()

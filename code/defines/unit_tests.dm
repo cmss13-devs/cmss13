@@ -61,8 +61,9 @@
 #define TEST_DEFAULT 1
 /// After most test steps, used for tests that run long so shorter issues can be noticed faster
 #define TEST_LONGER 10
-/// This must be the last test to run due to the inherent nature of the test iterating every single tangible atom in the game and qdeleting all of them (while taking long sleeps to make sure the garbage collector fires properly) taking a large amount of time.
-#define TEST_CREATE_AND_DESTROY INFINITY
+/// This must be the second to last test to run due to the inherent nature of the test iterating every single tangible atom in the game and qdeleting all of them (while taking long sleeps to make sure the garbage collector fires properly) taking a large amount of time.
+#define TEST_CREATE_AND_DESTROY SHORT_REAL_LIMIT
+#define TEST_CHECK_RUNTIMES INFINITY
 
 /// Change color to red on ANSI terminal output, if enabled with -DANSICOLORS.
 #ifdef ANSICOLORS

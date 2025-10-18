@@ -301,11 +301,11 @@
 			user.update_med_icon()
 
 
-/obj/item/weapon/gun/boltaction/vulture/skillless
+/obj/item/weapon/gun/boltaction/vulture/no_skill
 	bypass_trait = TRUE
 
 /obj/item/weapon/gun/boltaction/vulture/holo_target
 	current_mag = /obj/item/ammo_magazine/rifle/boltaction/vulture/holo_target
 
-/obj/item/weapon/gun/boltaction/vulture/holo_target/skillless
+/obj/item/weapon/gun/boltaction/vulture/holo_target/no_skill
 	bypass_trait = TRUE

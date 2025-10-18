@@ -240,14 +240,14 @@
 	icon_state = "loot_pills"
 
 /obj/effect/spawner/random/pills/item_to_spawn()
-	return pick(prob(4);/obj/item/storage/pill_bottle/inaprovaline/skillless,\
-				prob(4);/obj/item/storage/pill_bottle/mystery/skillless,\
-				prob(3);/obj/item/storage/pill_bottle/alkysine/skillless,\
-				prob(3);/obj/item/storage/pill_bottle/imidazoline/skillless,\
-				prob(3);/obj/item/storage/pill_bottle/tramadol/skillless,\
-				prob(3);/obj/item/storage/pill_bottle/bicaridine/skillless,\
-				prob(3);/obj/item/storage/pill_bottle/kelotane/skillless,\
-				prob(3);/obj/item/storage/pill_bottle/peridaxon/skillless,\
+	return pick(prob(4);/obj/item/storage/pill_bottle/inaprovaline/no_med_skill,\
+				prob(4);/obj/item/storage/pill_bottle/mystery/no_med_skill,\
+				prob(3);/obj/item/storage/pill_bottle/alkysine/no_med_skill,\
+				prob(3);/obj/item/storage/pill_bottle/imidazoline/no_med_skill,\
+				prob(3);/obj/item/storage/pill_bottle/tramadol/no_med_skill,\
+				prob(3);/obj/item/storage/pill_bottle/bicaridine/no_med_skill,\
+				prob(3);/obj/item/storage/pill_bottle/kelotane/no_med_skill,\
+				prob(3);/obj/item/storage/pill_bottle/peridaxon/no_med_skill,\
 				prob(2);/obj/item/storage/pill_bottle/packet/oxycodone)
 
 /obj/effect/spawner/random/pills/lowchance

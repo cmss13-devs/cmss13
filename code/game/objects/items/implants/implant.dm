@@ -284,7 +284,7 @@ will suffer from an increased appetite.</B><BR>
 <HR>
 <b>Implant Details:</b><BR>
 <b>Function:</b> Contains a small capsule that can contain various chemicals. Upon receiving a specially encoded signal<BR>
-the implant releases the chemicals directly into the blood stream.<BR>
+the implant releases the chemicals directly into the bloodstream.<BR>
 <b>Special Features:</b>
 <i>Micro-Capsule</i>- Can be loaded with any sort of chemical agent via the common syringe and can hold 50 units.<BR>
 Can only be loaded while still in its original case.<BR>

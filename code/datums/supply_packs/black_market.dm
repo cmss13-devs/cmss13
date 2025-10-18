@@ -538,7 +538,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 	contains = list(
 		/obj/item/storage/pill_bottle/happy,
 		/obj/item/storage/pill_bottle/mystery,
-		/obj/item/storage/pill_bottle/russianRed/skillless,
+		/obj/item/storage/pill_bottle/russianRed/no_med_skill,
 		/obj/item/reagent_container/food/drinks/flask/weylandyutani/poison,
 		/obj/item/reagent_container/food/drinks/bottle/holywater/bong,
 		/obj/item/storage/pill_bottle/paracetamol,

@@ -10,7 +10,7 @@ Healing
 	Fatal Level.
 
 Bonus
-	Heals toxins in the affected mob's blood stream.
+	Heals toxins in the affected mob's bloodstream.
 
 //////////////////////////////////////
 */

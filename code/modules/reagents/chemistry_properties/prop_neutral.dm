@@ -6,7 +6,7 @@
 /datum/chem_property/neutral/cryometabolizing
 	name = PROPERTY_CRYOMETABOLIZING
 	code = "CMB"
-	description = "The chemical is passively metabolized with no other effects in temperatures above 170 kelvin. Below however, the chemical will metabolize with increased effect."
+	description = "The chemical is passively metabolized with no other effects in temperatures above 170 kelvin. Below, however, the chemical will metabolize with increased effect."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_METABOLITE
 	value = 1
@@ -35,7 +35,7 @@
 /datum/chem_property/neutral/excreting
 	name = PROPERTY_EXCRETING
 	code = "EXT"
-	description = "Excretes all chemicals contained in the blood stream by using the kidneys to turn it into urine. Upregulates chemical production in plants."
+	description = "Excretes all chemicals contained in the bloodstream by using the kidneys to turn it into urine. Upregulates chemical production in plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 
@@ -97,7 +97,7 @@
 /datum/chem_property/neutral/ketogenic
 	name = PROPERTY_KETOGENIC
 	code = "KTG"
-	description = "Activates ketosis causing the liver to rapidly burn fatty acids and alcohols in the body, resulting in weight loss. Can cause ketoacidosis in high concentrations, resulting in a buildup of acids and lowered pH levels in the blood."
+	description = "Activates ketosis, causing the liver to rapidly burn fatty acids and alcohols in the body, resulting in weight loss. Can cause ketoacidosis in high concentrations, resulting in a buildup of acids and lowered pH levels in the blood."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_METABOLITE
 
@@ -106,7 +106,7 @@
 	M.overeatduration = 0
 	if(M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)) //Ketosis causes rapid metabolization of alcohols
 		M.confused = min(M.confused + potency,10*potency)
-		M.drowsyness = min(M.drowsyness + potency,15*potency)
+		M.drowsiness = min(M.drowsiness + potency,15*potency)
 
 /datum/chem_property/neutral/ketogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.nutrition = max(M.nutrition - 5 * potency * delta_time, 0)
@@ -121,7 +121,7 @@
 /datum/chem_property/neutral/neuroinhibiting
 	name = PROPERTY_NEUROINHIBITING
 	code = "NIH"
-	description = "Inhibits neurological processes in the brain such to sight, hearing and speech which can result in various associated disabilities. Restoration will require surgery."
+	description = "Inhibits neurological processes in the brain such as sight, hearing, and speech, which can result in various associated disabilities. Restoration will require surgery."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
 	value = -1
@@ -151,7 +151,7 @@
 /datum/chem_property/neutral/alcoholic
 	name = PROPERTY_ALCOHOLIC
 	code = "AOL"
-	description = "Binds to glutamate neurotransmitters and gamma aminobutyric acid (GABA), slowing brain functions response to stimuli. This effect is also known as intoxication."
+	description = "Binds to glutamate neurotransmitters and gamma aminobutyric acid (GABA), slowing the brain's response to stimuli. This effect is also known as intoxication."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 0
@@ -163,7 +163,7 @@
 			return
 
 	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_VVLOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
-	mob.drowsyness = min(mob.drowsyness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
+	mob.drowsiness = min(mob.drowsiness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
 
 	if(prob(50 * delta_time) || potency >= 5)
 		mob.confused = min(mob.confused + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_VHIGH * potency)
@@ -174,7 +174,7 @@
 	mob.apply_damage(POTENCY_MULTIPLIER_LOW * potency * delta_time, OXY)
 
 	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_VLOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
-	mob.drowsyness = min(mob.drowsyness + potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
+	mob.drowsiness = min(mob.drowsiness + potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
 
 	if(prob(POTENCY_MULTIPLIER_MEDIUM * delta_time))
 		mob.sleeping = min(mob.sleeping + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_HIGHEXTREMEINTER * potency)
@@ -193,7 +193,7 @@
 
 	mob.confused = min(mob.confused + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
 	mob.dizziness = min(mob.dizziness + POTENCY_MULTIPLIER_LOW * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
-	mob.drowsyness = min(mob.drowsyness + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
+	mob.drowsiness = min(mob.drowsiness + POTENCY_MULTIPLIER_MEDIUM * potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
 	mob.slurring = min(mob.slurring + potency * delta_time, POTENCY_MULTIPLIER_EXTREME * potency)
 
 	if(prob(POTENCY_MULTIPLIER_VHIGH * potency * delta_time))
@@ -330,7 +330,7 @@
 
 /datum/chem_property/neutral/hypothermic/process_overdose(mob/living/M, potency = 1)
 	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency)
-	M.drowsyness  = max(M.drowsyness, 30)
+	M.drowsiness  = max(M.drowsiness, 30)
 
 /datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(20, PARALYZE)
@@ -362,7 +362,7 @@
 /datum/chem_property/neutral/fluffing
 	name = PROPERTY_FLUFFING
 	code = "FLF"
-	description = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth. Found to increase yeilds in plants."
+	description = "Accelerates cell division in the hair follicles, resulting in random and excessive hair growth. Found to increase yields in plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
@@ -413,7 +413,7 @@
 /datum/chem_property/neutral/euphoric
 	name = PROPERTY_EUPHORIC
 	code = "EPH"
-	description = "Causes the release of endorphin hormones resulting intense excitement and happiness."
+	description = "Causes the release of endorphin hormones, resulting in intense excitement and happiness."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
@@ -460,7 +460,7 @@
 /datum/chem_property/neutral/psychostimulating
 	name = PROPERTY_PSYCHOSTIMULATING
 	code = "PST"
-	description = "Stimulates psychological functions causing increased awareness, focus and anti-depressing effects."
+	description = "Stimulates psychological functions causing increased awareness, focus, and anti-depressing effects."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 0
@@ -545,7 +545,7 @@
 /datum/chem_property/neutral/sedative
 	name = PROPERTY_SEDATIVE
 	code = "SDT"
-	description = "Causes the body to release melatonin resulting in increased sleepiness."
+	description = "Causes the body to release melatonin, resulting in increased sleepiness."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
@@ -583,7 +583,7 @@
 		return
 	H.chem_effect_flags |= CHEM_EFFECT_HYPER_THROTTLE
 	to_chat(M, SPAN_NOTICE("You feel like you're in a dream. It is as if the world is standing still."))
-	M.universal_understand = TRUE //Brain is working so fast it can understand the intension of everything it hears
+	M.universal_understand = TRUE //Brain is working so fast it can understand the intention of everything it hears
 
 /datum/chem_property/neutral/hyperthrottling/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(1.5 * potency * delta_time, BRAIN)
@@ -594,7 +594,7 @@
 /datum/chem_property/neutral/encephalophrasive
 	name = PROPERTY_ENCEPHALOPHRASIVE
 	code = "ESP"
-	description = "Drastically increases the amplitude of Gamma and Beta brain waves, allowing the host to broadcast their mind."
+	description = "Drastically increases the amplitude of gamma and beta brain waves, allowing the host to broadcast their mind."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_STIMULANT
 	value = 8
@@ -613,7 +613,7 @@
 		return
 
 	give_action(chem_host, /datum/action/human_action/psychic_whisper)
-	to_chat(chem_host, SPAN_NOTICE("A terrible headache manifests, and suddenly it feels as though your mind is outside of your skull."))
+	to_chat(chem_host, SPAN_NOTICE("A terrible headache manifests, and suddenly it feels as though your mind is outside your skull."))
 
 /datum/chem_property/neutral/encephalophrasive/process(mob/living/chem_host, potency = 1, delta_time)
 	chem_host.pain.apply_pain(1 * potency)
@@ -662,7 +662,7 @@
 	M.apply_effect(20, PARALYZE)
 
 /datum/chem_property/neutral/thermostabilizing/process_critical(mob/living/M, potency = 1, delta_time)
-	M.drowsyness  = max(M.drowsyness, 30)
+	M.drowsiness  = max(M.drowsiness, 30)
 
 /datum/chem_property/neutral/focusing
 	name = PROPERTY_FOCUSING
@@ -677,7 +677,7 @@
 	M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
-	M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+	M.drowsiness = max(M.drowsiness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 	if(potency >= POTENCY_MAX_TIER_1)
@@ -718,7 +718,7 @@
 /datum/chem_property/neutral/unknown
 	name = PROPERTY_UNKNOWN
 	code = "UNK"
-	description = "The chemical has a unique property which can not be defined by the Synthesis Simulator. This property might no longer work if the chemical is modified."
+	description = "The chemical has a unique property that cannot be defined by the Synthesis Simulator. This property might no longer work if the chemical is modified."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_ANOMALOUS|PROPERTY_TYPE_UNADJUSTABLE
 

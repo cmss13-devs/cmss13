@@ -371,31 +371,31 @@
 
 /datum/autolathe/recipe/medilathe/autoinjector/s1x1
 	name = "EZ autoinjector (E-U) (1x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/unit
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/unit
 
 /datum/autolathe/recipe/medilathe/autoinjector/s5x1
 	name = "EZ autoinjector (E-VS) (5x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/verysmall
 
 /datum/autolathe/recipe/medilathe/autoinjector/s10x1
 	name = "EZ autoinjector (E-S) (10x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/small
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x1
 	name = "EZ autoinjector (E-T) (15x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill
 
 /datum/autolathe/recipe/medilathe/autoinjector/s30x1
 	name = "EZ autoinjector (E-M) (30x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/medium
 
 /datum/autolathe/recipe/medilathe/autoinjector/s45x1
 	name = "EZ autoinjector (E-L) (45x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/large
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/large
 
 /datum/autolathe/recipe/medilathe/autoinjector/s60x1
 	name = "EZ autoinjector (E-XL) (60x1)"
-	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/no_med_skill/extralarge
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x6
 	name = "Medic autoinjector (M-M) (15x6)"
@@ -439,32 +439,32 @@
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_regular
-	name = "first aid kit (reg)"
+	name = "first-aid kit (reg)"
 	path = /obj/item/storage/firstaid/regular/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_fire
-	name = "first aid kit (fire)"
+	name = "first-aid kit (fire)"
 	path = /obj/item/storage/firstaid/fire/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_toxin
-	name = "first aid kit (tox)"
+	name = "first-aid kit (tox)"
 	path = /obj/item/storage/firstaid/toxin/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_oxy
-	name = "first aid kit (oxy)"
+	name = "first-aid kit (oxy)"
 	path = /obj/item/storage/firstaid/o2/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_adv
-	name = "first aid kit (adv)"
+	name = "first-aid kit (adv)"
 	path = /obj/item/storage/firstaid/adv/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_rad
-	name = "first aid kit (rad)"
+	name = "first-aid kit (rad)"
 	path = /obj/item/storage/firstaid/rad/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 

@@ -82,7 +82,7 @@
 		return ..()
 
 /obj/item/tool/extinguisher/afterattack(atom/target, mob/user , flag)
-	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(user,target) <= 1)
+	if(istype(target, /obj/structure/reagent_dispensers/tank/water) && get_dist(user,target) <= 1)
 		var/obj/object = target
 		if(object.reagents.contains_harmful_substances())
 			to_chat(user, SPAN_WARNING("You cannot re-fill the extinguisher with the contents of this."))

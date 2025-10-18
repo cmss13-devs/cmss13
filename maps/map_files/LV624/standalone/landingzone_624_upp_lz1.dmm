@@ -705,7 +705,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
 "Pv" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "Pw" = (
@@ -731,7 +731,7 @@
 /turf/template_noop,
 /area/template_noop)
 "Rd" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "Rl" = (

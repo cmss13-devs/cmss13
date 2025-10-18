@@ -41,7 +41,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "bK" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/fiorina/lz/near_lzII)
 "cl" = (
@@ -592,7 +592,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security/wardens)
 "Dj" = (
-/obj/structure/reagent_dispensers/fueltank/gas/hydrogen{
+/obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen{
 	layer = 2.6
 	},
 /obj/structure/machinery/light/double/blue,
@@ -621,7 +621,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/lz/near_lzII)
 "Ew" = (
-/obj/structure/reagent_dispensers/fueltank/gas/hydrogen{
+/obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen{
 	layer = 2.6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -708,7 +708,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security/wardens)
 "GR" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	layer = 2.6
 	},
 /obj/structure/machinery/light/double/blue,
@@ -841,7 +841,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "OD" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	layer = 2.6
 	},
 /turf/open/floor/prison/floor_plate,
@@ -1008,7 +1008,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "Wu" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	layer = 2.6
 	},
 /turf/open/floor/plating/plating_catwalk/prison,

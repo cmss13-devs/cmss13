@@ -227,7 +227,7 @@
 /turf/open/asphalt/cement,
 /area/event/dynamic/lit)
 "dQ" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/floor/plating,
 /area/event/dynamic/lit)
 "dR" = (
@@ -263,7 +263,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/event/dynamic/lit)
 "dX" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/event/dynamic/lit)
 "dZ" = (
@@ -1157,7 +1157,7 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/central)
 "tC" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/event/dynamic/lit)
 "tF" = (

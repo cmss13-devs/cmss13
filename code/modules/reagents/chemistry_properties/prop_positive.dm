@@ -19,7 +19,7 @@
 	M.apply_internal_damage(0.5 * potency * delta_time, "eyes")
 
 /datum/chem_property/positive/antitoxic/process_critical(mob/living/M, potency = 1, delta_time)
-	M.drowsyness  = max(M.drowsyness, 30)
+	M.drowsiness  = max(M.drowsiness, 30)
 
 /datum/chem_property/positive/antitoxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
@@ -123,7 +123,7 @@
 /datum/chem_property/positive/hemogenic
 	name = PROPERTY_HEMOGENIC
 	code = "HMG"
-	description = "Increases the production of erythrocytes (red blood cells) in the bonemarrow, leading to polycythemia, an elevated volume of erythrocytes in the blood."
+	description = "Increases the production of erythrocytes (red blood cells) in the bone marrow, leading to polycythemia, an elevated volume of erythrocytes in the blood."
 	rarity = PROPERTY_COMMON
 
 /datum/chem_property/positive/hemogenic/process(mob/living/M, potency = 1, delta_time)
@@ -209,7 +209,7 @@
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
-		M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.drowsiness = max(M.drowsiness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 

@@ -23,7 +23,7 @@
 	/// The maximum distance this can be from the sniper scope
 	var/max_sniper_distance = 7
 	/// If this requires the vulture_user trait to use
-	var/skillless = FALSE
+	var/no_skill = FALSE
 
 /obj/structure/vulture_spotter_tripod/Initialize(mapload)
 	. = ..()
@@ -39,8 +39,8 @@
 /obj/structure/vulture_spotter_tripod/deconstruct(disassembled)
 	. = ..()
 	if(scope_attached && bound_rifle)
-		if(skillless)
-			new /obj/item/device/vulture_spotter_scope/skillless(get_turf(src), bound_rifle)
+		if(no_skill)
+			new /obj/item/device/vulture_spotter_scope/no_skill(get_turf(src), bound_rifle)
 		else
 			new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
 	new /obj/item/device/vulture_spotter_tripod(get_turf(src))
@@ -69,7 +69,7 @@
 		return
 	var/mob/living/carbon/human/user = usr //this is us
 
-	if(!HAS_TRAIT(user, TRAIT_VULTURE_USER) && !skillless)
+	if(!HAS_TRAIT(user, TRAIT_VULTURE_USER) && !no_skill)
 		to_chat(user, SPAN_WARNING("You don't know how to use this!"))
 		return
 
@@ -163,8 +163,8 @@
 	if(scope_attached)
 		return
 
-	if(istype(scope, /obj/item/device/vulture_spotter_scope/skillless))
-		skillless = TRUE
+	if(istype(scope, /obj/item/device/vulture_spotter_scope/no_skill))
+		no_skill = TRUE
 
 	user.visible_message(SPAN_NOTICE("[user] attaches [scope] to [src]."), SPAN_NOTICE("You attach [scope] to [src]."))
 	icon_state = "vulture_tripod_deployed"
@@ -184,8 +184,8 @@
 	unscope()
 	scope_attached = FALSE
 	desc = initial(desc) + " Though, it doesn't seem to have one attached yet."
-	if(skillless)
-		new /obj/item/device/vulture_spotter_scope/skillless(get_turf(src), bound_rifle)
+	if(no_skill)
+		new /obj/item/device/vulture_spotter_scope/no_skill(get_turf(src), bound_rifle)
 	else
 		new /obj/item/device/vulture_spotter_scope(get_turf(src), bound_rifle)
 

@@ -87640,11 +87640,15 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack,
+/obj/item/storage/box/sprays{
+	pixel_x = 4;
+	pixel_y = 7
+	},
 /obj/item/storage/box/lights/mixed{
 	pixel_x = 4
 	},
-/obj/item/storage/box/sprays{
-	pixel_x = 4;
+/obj/item/storage/box/bloodbag{
+	pixel_x = -7;
 	pixel_y = 7
 	},
 /obj/item/reagent_container/spray/cleaner{
@@ -90538,9 +90542,6 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaltopleft";
 	pixel_x = 19
-	},
-/obj/structure/sign/nosmoking_2{
-	pixel_x = 28
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -135332,7 +135333,7 @@ wXT
 cdA
 bcm
 bcm
-emC
+bcm
 emC
 mTL
 xFt

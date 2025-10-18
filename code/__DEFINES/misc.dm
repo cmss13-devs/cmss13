@@ -38,8 +38,8 @@
 
 /// used to make mobs skip bioscans
 #define AREA_AVOID_BIOSCAN (1<<0)
-/// makes it so the area can not be tunneled to
-#define AREA_NOTUNNEL (1<<1)
+/// makes it so the area can not be burrowed into or burrow from there.
+#define AREA_NOBURROW (1<<1)
 /// xenos can join whilst in this area (for admin zlevel)
 #define AREA_ALLOW_XENO_JOIN (1<<2)
 /// Flags the area as a containment area
@@ -54,6 +54,8 @@
 #define AREA_YAUTJA_HANGABLE (1<<7)
 /// Makes it so barricades can't be anchored and starts unsecured.
 #define AREA_NOSECURECADES (1<<8)
+/// Flags the area, preventing the creation of xeno tunnels, overwriting can_dig_xeno_tunnel.
+#define AREA_NOTUNNEL (1<<9)
 
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5

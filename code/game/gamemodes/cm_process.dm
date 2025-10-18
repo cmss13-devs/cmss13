@@ -139,7 +139,7 @@ GLOBAL_VAR_INIT(next_predator_bioscan, 5 MINUTES)
 // 30 minutes in
 GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
-/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle/dropship/flight/lz1/console)
+/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle/dropship/flight/console)
 	if(active_lz)
 		return
 	active_lz = console

@@ -293,6 +293,9 @@
 /datum/game_mode/colonialmarines/proc/clear_proximity_resin()
 	var/datum/cause_data/cause_data = create_cause_data(/obj/effect/particle_effect/smoke/weedkiller::name)
 
+	if(!active_lz)
+		select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+
 	for(var/area/near_area as anything in GLOB.all_areas)
 		var/area_lz = near_area.linked_lz
 		if(!area_lz)
@@ -450,8 +453,7 @@
 					xeno_message("The Hive is ready for a new Queen to evolve. The Hive can only survive for a limited time without a Queen!", 3, hive.hivenumber)
 
 
-
-		if(!active_lz && world.time > lz_selection_timer)
+		if(!active_lz && ROUND_TIME > lz_selection_timer)
 			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
 
 		// Automated bioscan / Queen Mother message

@@ -335,3 +335,65 @@
 	data["roles"] = get_whitelisted_roles(player.ckey)
 	statuscode = 200
 	response = "Lookup successful."
+
+/datum/world_topic/cmtv
+	key = "cmtv"
+	required_params = list("command")
+
+/datum/world_topic/cmtv/Run(list/input)
+	. = ..()
+
+	var/datum/cmtv_command/selected_command = GLOB.cmtv_commands[input["command"]]
+	if(!selected_command)
+		statuscode = 404
+		response = "Invalid command! Use !help to view all commands."
+		return
+
+	var/cannot_run = selected_command.cannot_run(input)
+	if(cannot_run)
+		statuscode = 401
+		response = cannot_run
+		return
+
+	selected_command.pre_execute(input)
+
+	statuscode = 200
+	response = selected_command.execute(input)
+
+	selected_command.post_execute(input)
+
+/datum/world_topic/role_icons
+	key = "role_icons"
+
+/datum/world_topic/role_icons/Run(list/input)
+	if(!length(GLOB.minimap_icons))
+		statuscode = 501
+		response = "No minimap icons available."
+		return
+
+	data = GLOB.minimap_icons
+	statuscode = 200
+	response = "Minimap icons available."
+
+/datum/world_topic/active_mobs
+	key = "active_mobs"
+
+/datum/world_topic/active_mobs/Run(list/input)
+	var/to_follow = SScmtv.get_most_active_list()
+	if(!length(to_follow))
+		statuscode = 404
+		response = "No active mobs available."
+		return
+
+	var/list/mobs = list()
+
+	for(var/datum/weakref/weakref in to_follow)
+		var/mob/living/living_mob = weakref.resolve()
+		if(!living_mob)
+			continue
+
+		mobs += living_mob.real_name
+
+	data = mobs
+	statuscode = 200
+	response = "Active mobs available."

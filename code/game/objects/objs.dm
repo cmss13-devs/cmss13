@@ -87,6 +87,10 @@
 		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
 			enable_pixel_scaling()
 
+/obj/Entered(atom/movable/moved_obj, atom/old_loc)
+	. = ..()
+
+	SEND_SIGNAL(moved_obj, COMSIG_MOVABLE_ENTERED_OBJ, src, old_loc)
 
 // object is being physically reduced into parts
 /obj/proc/deconstruct(disassembled = TRUE)

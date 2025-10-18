@@ -41,39 +41,41 @@ export const Panel = (props) => {
   return (
     <Pane theme={settings.theme}>
       <Stack fill vertical>
-        <Stack.Item>
-          <Section fitted>
-            <Stack mr={1} align="center">
-              <Stack.Item grow overflowX="auto">
-                <ChatTabs />
-              </Stack.Item>
-              <Stack.Item>
-                <PingIndicator />
-              </Stack.Item>
-              <Stack.Item>
-                <Button
-                  color="grey"
-                  selected={audio.visible}
-                  icon="music"
-                  tooltip="Music player"
-                  tooltipPosition="bottom-start"
-                  onClick={() => audio.toggle()}
-                />
-              </Stack.Item>
-              <Stack.Item>
-                <Button
-                  icon={settings.visible ? 'times' : 'cog'}
-                  selected={settings.visible}
-                  tooltip={
-                    settings.visible ? 'Close settings' : 'Open settings'
-                  }
-                  tooltipPosition="bottom-start"
-                  onClick={() => settings.toggle()}
-                />
-              </Stack.Item>
-            </Stack>
-          </Section>
-        </Stack.Item>
+        {!game.tvMode && (
+          <Stack.Item>
+            <Section fitted>
+              <Stack mr={1} align="center">
+                <Stack.Item grow overflowX="auto">
+                  <ChatTabs />
+                </Stack.Item>
+                <Stack.Item>
+                  <PingIndicator />
+                </Stack.Item>
+                <Stack.Item>
+                  <Button
+                    color="grey"
+                    selected={audio.visible}
+                    icon="music"
+                    tooltip="Music player"
+                    tooltipPosition="bottom-start"
+                    onClick={() => audio.toggle()}
+                  />
+                </Stack.Item>
+                <Stack.Item>
+                  <Button
+                    icon={settings.visible ? 'times' : 'cog'}
+                    selected={settings.visible}
+                    tooltip={
+                      settings.visible ? 'Close settings' : 'Open settings'
+                    }
+                    tooltipPosition="bottom-start"
+                    onClick={() => settings.toggle()}
+                  />
+                </Stack.Item>
+              </Stack>
+            </Section>
+          </Stack.Item>
+        )}
         {audio.visible && (
           <Stack.Item>
             <Section>
@@ -88,7 +90,7 @@ export const Panel = (props) => {
         )}
         <Stack.Item grow>
           <Section fill fitted position="relative">
-            <Pane.Content scrollable>
+            <Pane.Content scrollable={!game.tvMode}>
               <ChatPanel lineHeight={settings.lineHeight} />
             </Pane.Content>
             <Notifications>

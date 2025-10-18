@@ -247,7 +247,13 @@
 			break
 
 	return blocked
-
+/obj/item/weapon/gun/rifle/sniper/equipped(mob/living/user, slot)
+	. = ..()
+	//Toggle Aimed Shot on equip in hands. Skips back and armour slot equips
+	if(slot == WEAR_R_HAND || slot == WEAR_L_HAND)
+		var /datum/action/toggling_action = locate(/datum/action/item_action/specialist/aimed_shot) in user.actions
+		if(toggling_action)
+			toggling_action.action_activate()
 // Snipers may enable or disable their laser tracker at will.
 /datum/action/item_action/specialist/toggle_laser
 

@@ -540,7 +540,13 @@
 
 	COOLDOWN_START(designator, spotting_cooldown, designator.spotting_cooldown_delay)
 	return TRUE
-
+/obj/item/device/binoculars/range/designator/spotter/equipped(mob/living/user, slot)
+	. = ..()
+	//Toggle Spot Target on equip in hands. Avoids toggle in pockets
+	if(slot == WEAR_R_HAND || slot == WEAR_L_HAND)
+		var /datum/action/toggling_action = locate(/datum/action/item_action/specialist/spotter_target) in user.actions
+		if(toggling_action)
+			toggling_action.action_activate()
 //ADVANCED LASER DESIGNATER, was used for WO.
 /obj/item/device/binoculars/designator
 	name = "advanced laser designator" // Make sure they know this will kill people in the desc below.

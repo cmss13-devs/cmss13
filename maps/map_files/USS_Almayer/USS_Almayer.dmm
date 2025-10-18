@@ -21402,6 +21402,10 @@
 	pixel_x = -8
 	},
 /obj/item/tool/crowbar,
+/obj/item/storage/box/vials{
+	pixel_x = 7;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "bci" = (
@@ -26547,6 +26551,10 @@
 /obj/item/computer3_part{
 	pixel_x = 7;
 	pixel_y = 10
+	},
+/obj/item/storage/box/bloodbag{
+	pixel_x = 7;
+	pixel_y = -2
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
@@ -47894,6 +47902,11 @@
 /obj/structure/cargo_container/uscm/mid,
 /turf/open/floor/almayer/no_build,
 /area/almayer/underdeck/req)
+"ggY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/medic_white,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
 "ghu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -49515,6 +49528,15 @@
 	},
 /turf/open/floor/almayer/orange/northwest,
 /area/almayer/engineering/upper_engineering/starboard)
+"gPj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/middeck/medical)
 "gPS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -58855,6 +58877,11 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/squads/req)
+"kFT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
 "kFU" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -170016,7 +170043,7 @@ baF
 aOh
 baC
 avN
-bcj
+ggY
 bnv
 blH
 bid
@@ -170119,7 +170146,7 @@ bnY
 bnY
 bnY
 avN
-bcj
+kFT
 bnv
 blH
 bwy
@@ -170223,7 +170250,7 @@ aOh
 baC
 avN
 aSc
-bnv
+gPj
 blH
 bie
 avN
@@ -170326,7 +170353,7 @@ bxI
 aYN
 avN
 aVU
-bnC
+gPj
 blH
 aVP
 avN

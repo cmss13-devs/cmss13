@@ -1,0 +1,5 @@
+author: "halander1"
+delete-after: True
+changes:
+  - rscadd: "New pay levels for researchers and W-Y comms"
+  - bugfix: "Low pay of researchers"

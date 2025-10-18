@@ -301,7 +301,7 @@
 
 		list("MAGAZINE BOXES", -1, null, null),
 		list("Magazine Box (M10 x 22)", 0, /obj/item/ammo_box/magazine/m10, VENDOR_ITEM_REGULAR),
-		list("Magazine Box (Ext M10 x 14)", 0, /obj/item/ammo_box/magazine/m10/extended, VENDOR_ITEM_REGULAR),
+		list("Magazine Box (Ext M10 x 14)", 0, /obj/item/ammo_box/magazine/m10/ext, VENDOR_ITEM_REGULAR),
 		list("Magazine Box (Drum M10 x 12)", 0, /obj/item/ammo_box/magazine/m10/drum, VENDOR_ITEM_REGULAR),
 		list("Magazine Box (M10 AP x 22)", 0, /obj/item/ammo_box/magazine/m10/ap, VENDOR_ITEM_REGULAR),
 		list("Magazine Box (Ext M10 AP x 14)", 0, /obj/item/ammo_box/magazine/m10/ap/extended, VENDOR_ITEM_REGULAR),

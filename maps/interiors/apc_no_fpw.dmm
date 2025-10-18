@@ -91,7 +91,16 @@
 	},
 /obj/structure/vehicle_locker{
 	layer = 5.21;
-	pixel_y = 28
+	pixel_y = 28;
+	pixel_x = -10
+	},
+/obj/structure/gun_rack/apc/boyars{
+	pixel_x = 7;
+	pixel_y = 33
+	},
+/obj/structure/gun_rack/apc/frontal{
+	pixel_y = 23;
+	pixel_x = 7
 	},
 /turf/open/shuttle/vehicle/floor_3_8_1,
 /area/interior/vehicle/apc)

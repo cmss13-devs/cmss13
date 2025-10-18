@@ -506,6 +506,10 @@
 	center_of_mass = "x=16;y=10"
 	embeddable = 1
 
+/obj/item/reagent_container/food/drinks/cans/souto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
+
 /obj/item/reagent_container/food/drinks/cans/souto/diet
 	name = "\improper Diet Souto"
 	desc = "Now with 0% fruit juice! Canned in Havana"
@@ -712,3 +716,4 @@
 /obj/item/reagent_container/food/drinks/cans/aspen/Initialize()
 	. = ..()
 	reagents.add_reagent("beer", 50)
+	AddElement(/datum/element/corp_label/wy)

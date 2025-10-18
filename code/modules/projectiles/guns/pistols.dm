@@ -75,9 +75,12 @@
 		/obj/item/attachable/burstfire_assembly,
 	)
 
+/obj/item/weapon/gun/pistol/m4a3/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/pistol/m4a3/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 21, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
-
 
 /obj/item/weapon/gun/pistol/m4a3/set_gun_config_values()
 	..()
@@ -129,17 +132,18 @@
 
 /obj/item/weapon/gun/pistol/m1911
 	name = "\improper M1911 service pistol"
-	desc = "A timeless classic since the first World War. Once standard issue for the USCM, now back order only. Chambered in .45 ACP. Unfortunately, due to the progression of IFF technology, M1911 .45 ACP is NOT compatible with the SU-6."
+	desc = "A timeless classic since the first World War, produced in limited amount by Armat Battlefield Systems after their aquisison of Colt's Manufacturing Company. Once standard issue for the USCM, now back order only. Chambered in .45 ACP."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	icon_state = "m4a345"
 	item_state = "m4a3"
-
 	current_mag = /obj/item/ammo_magazine/pistol/m1911
 
+/obj/item/weapon/gun/pistol/m1911/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/pistol/m1911/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
-
 
 /obj/item/weapon/gun/pistol/m1911/set_gun_config_values()
 	..()
@@ -150,7 +154,6 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
-
 
 /obj/item/weapon/gun/pistol/m1911/socom
 	name = "\improper M48A4 service pistol"
@@ -178,7 +181,6 @@
 	icon_state = "m1911c"
 	item_state = "m4a3"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
-
 	current_mag = /obj/item/ammo_magazine/pistol/m1911/highimpact
 
 /obj/item/weapon/gun/pistol/m1911/custom/set_gun_config_values()
@@ -331,6 +333,10 @@
 		/obj/item/attachable/flashlight,
 	)
 
+/obj/item/weapon/gun/pistol/np92/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
+
 /obj/item/weapon/gun/pistol/np92/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
 
@@ -385,6 +391,10 @@
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
 	)
+
+/obj/item/weapon/gun/pistol/t73/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/weapon/gun/pistol/t73/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 22, "under_x" = 22, "under_y" = 15, "stock_x" = 21, "stock_y" = 18)
@@ -486,6 +496,9 @@
 		/obj/item/attachable/lasersight,
 	)
 
+/obj/item/weapon/gun/pistol/holdout/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/spearhead)
 
 /obj/item/weapon/gun/pistol/holdout/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 20,"rail_x" = 6, "rail_y" = 20, "under_x" = 20, "under_y" = 17, "stock_x" = 22, "stock_y" = 17)
@@ -537,6 +550,10 @@
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 	)
+
+/obj/item/weapon/gun/pistol/action/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/spearhead)
 
 /obj/item/weapon/gun/pistol/action/set_gun_config_values()
 	..()
@@ -634,6 +651,7 @@
 /obj/item/weapon/gun/pistol/highpower/Initialize(mapload, spawn_empty)
 	. = ..()
 	manually_slided = TRUE
+	AddElement(/datum/element/corp_label/henjin_garcia)
 
 /obj/item/weapon/gun/pistol/highpower/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!manually_slided)
@@ -693,6 +711,8 @@
 	starting_attachment_types = list(/obj/item/attachable/suppressor, /obj/item/attachable/lasersight, /obj/item/attachable/reflex)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 
+
+
 //-------------------------------------------------------
 //mod88 based off VP70 - Counterpart to M1911, offers burst and capacity ine exchange of low accuracy and damage.
 
@@ -726,9 +746,12 @@
 		/obj/item/attachable/stock/mod88,
 	)
 
+/obj/item/weapon/gun/pistol/mod88/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/pistol/mod88/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 21,"rail_x" = 8, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 18, "stock_y" = 15)
-
 
 /obj/item/weapon/gun/pistol/mod88/set_gun_config_values()
 	..()
@@ -779,9 +802,12 @@
 		/obj/item/attachable/lasersight,
 	)
 
+/obj/item/weapon/gun/pistol/es4/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/pistol/es4/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 21, "rail_x" = 10, "rail_y" = 22, "under_x" = 25, "under_y" = 18, "stock_x" = 18, "stock_y" = 15)
-
 
 /obj/item/weapon/gun/pistol/es4/set_gun_config_values()
 	..()
@@ -821,6 +847,10 @@
 		/obj/item/attachable/heavy_barrel,
 	)
 
+/obj/item/weapon/gun/pistol/vp78/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/pistol/vp78/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/flashlight/laser_light_combo/VP = new(src)
@@ -831,7 +861,6 @@
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 10, "rail_y" = 23, "under_x" = 20, "under_y" = 17, "stock_x" = 18, "stock_y" = 14)
-
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_config_values()
 	..()
@@ -1039,6 +1068,10 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	unload_sound = 'sound/weapons/handling/gun_m10_auto_pistol_unload.ogg'
 
 	current_mag = /obj/item/ammo_magazine/pistol/m10
+
+/obj/item/weapon/gun/pistol/m10/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/pistol/m10/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 21, "under_x" = 18, "under_y" = 15, "stock_x" = 25, "stock_y" = 17)

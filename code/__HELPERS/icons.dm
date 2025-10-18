@@ -748,7 +748,7 @@ world
  * * extra_clases - string of extra css classes to use when returning the icon string
  * * keyonly - if TRUE, only returns the asset key to use get_asset_url manually. Overrides sourceonly.
  */
-/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, keyonly = FALSE)
+/proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, keyonly = FALSE, non_standard_size = FALSE)
 	if (!thing)
 		return
 
@@ -813,11 +813,12 @@ world
 
 	icon2collapse = icon(icon2collapse, icon_state, dir, frame, moving)
 
-	var/width = icon2collapse.Width()
-	var/height = icon2collapse.Height()
-	if(width != height)
-		var/new_dimension = min(width, height)
-		center_icon(icon2collapse, new_dimension, new_dimension)
+	if(!non_standard_size)
+		var/width = icon2collapse.Width()
+		var/height = icon2collapse.Height()
+		if(width != height)
+			var/new_dimension = min(width, height)
+			center_icon(icon2collapse, new_dimension, new_dimension)
 
 	var/list/name_and_ref = generate_and_hash_rsc_file(icon2collapse, icon_path)//pretend that tuples exist
 

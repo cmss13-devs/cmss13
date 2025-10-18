@@ -173,6 +173,10 @@
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 
+/obj/item/clothing/suit/storage/labcoat/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/suit/chef/classic/medical
 	name = "medical's apron"
 	desc = "A basic and sterile white apron, good for surgical and, of course, other medical practices."

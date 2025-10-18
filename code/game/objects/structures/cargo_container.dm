@@ -97,6 +97,10 @@
 	name = "Weyland-Yutani Cargo Container"
 	desc = "A huge industrial shipping container.\nThis one is from The Weyland-Yutani Corporation, you have probably heard of them before."
 
+/obj/structure/cargo_container/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/structure/cargo_container/wy/left
 	icon_state = "wy_l"
 
@@ -120,8 +124,12 @@
 	icon_state = "wy2_r"
 
 /obj/structure/cargo_container/armat
-	name = "ARMAT Cargo Container"
-	desc = "A large industrial container. This one is from ARMAT, the defense contractors behind the M41A and other marine weaponry."
+	name = "Armat Cargo Container"
+	desc = "A large industrial container. This one is from Armat, the defense contractors behind the M41A and other marine weaponry."
+
+/obj/structure/cargo_container/armat/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/structure/cargo_container/armat/left
 	icon_state = "armat_l"
@@ -135,6 +143,10 @@
 /obj/structure/cargo_container/hd
 	name = "Hyperdyne Systems Cargo Container"
 	desc = "A huge industrial shipping container.\nThis one is from Hyperdyne Systems, a manufacturer of synthetics, prosthetics, and weapons.\nWe don't speak about their former affiliations with the UPP."
+
+/obj/structure/cargo_container/hd/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/hyperdyne)
 
 /obj/structure/cargo_container/hd/left
 	icon_state = "hd_l"
@@ -182,6 +194,10 @@
 	bound_height = 32 //It's smaller than the rest
 	layer = ABOVE_XENO_LAYER //Due to size, needs to be above player and xenos
 
+/obj/structure/cargo_container/kelland/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
+
 /obj/structure/cargo_container/kelland/left
 	icon_state = "kelland_l"
 
@@ -205,6 +221,10 @@
 	name = "Lockmart Corporation Cargo Container"
 	desc = "A huge industrial shipping container.\nThis one is from Lockheed Martin, a manufacturer of spaceships and spaceship parts.\nThey made the USCSS Nostromo... whatever happened to that ship, anyways?"
 
+/obj/structure/cargo_container/lockmart/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/lockmart)
+
 /obj/structure/cargo_container/lockmart/left
 	icon_state = "lockmart_l"
 
@@ -217,6 +237,10 @@
 /obj/structure/cargo_container/seegson
 	name = "Seegson Corporation Cargo Container"
 	desc = "A huge industrial shipping container.\nThis one is from Seegson, they makes just about anything and everything.\nYou notice this container has a peeling note on it, saying all contents were transferred from another station decades ago, how long has it been here?"
+
+/obj/structure/cargo_container/seegson/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/seegson)
 
 /obj/structure/cargo_container/seegson/left
 	icon_state = "seegson_l"

@@ -225,6 +225,10 @@
 	auto_retrieval_slot = WEAR_J_STORE
 	attachable_allowed = list()
 
+/obj/item/weapon/gun/launcher/rocket/m5/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/launcher/rocket/m5/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
 	. = ..()
 	update_icon()
@@ -273,6 +277,10 @@
 	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
 	flags_item = TWOHANDED
+
+/obj/item/weapon/gun/launcher/rocket/anti_tank/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/set_bullet_traits()
 	. = ..()
@@ -388,6 +396,10 @@
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
+/obj/item/weapon/gun/launcher/rocket/upp/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
+
 /obj/item/weapon/gun/launcher/rocket/upp/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 6, "rail_y" = 19, "under_x" = 19, "under_y" = 14, "stock_x" = -6, "stock_y" = 16, "special_x" = 37, "special_y" = 16)
 
@@ -434,9 +446,12 @@
 	var/f_aiming_time = 4 SECONDS
 	var/aiming = FALSE
 
+/obj/item/weapon/gun/launcher/rocket/brute/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/launcher/rocket/brute/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 8, "rail_y" = 17, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
-
 
 /obj/item/weapon/gun/launcher/rocket/brute/set_bullet_traits()
 	LAZYADD(traits_to_give, list(

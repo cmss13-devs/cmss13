@@ -783,11 +783,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/tool/lighter/zippo/blue
 	name = "blue Zippo lighter"
-	desc = "A fancy blue Zippo lighter. In Koorlander blue..."
+	desc = "A fancy blue Zippo lighter. In Koorlander blue."
 	icon_state = "bluezippo"
 	item_state = "bluezippo"
 	icon_on = "bluezippoon"
 	icon_off = "bluezippo"
+
+/obj/item/tool/lighter/zippo/blue/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/koorlander)
 
 /obj/item/tool/lighter/zippo/gold
 	name = "golden Zippo lighter"
@@ -806,6 +810,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_on = "execzippoon"
 	icon_off = "execzippo"
 	black_market_value = 40
+
+/obj/item/tool/lighter/zippo/executive/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/tool/lighter/random
 

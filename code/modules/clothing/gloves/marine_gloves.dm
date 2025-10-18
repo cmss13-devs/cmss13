@@ -168,6 +168,10 @@
 	icon_state = "pmc"
 	item_state = "pmc"
 
+/obj/item/clothing/gloves/marine/veteran/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/gloves/marine/veteran/pmc/commando
 	name = "\improper W-Y Commando gloves"
 	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani Commandos. They are insulated against electrical shock."
@@ -234,6 +238,10 @@
 	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
 	unacidable = TRUE
 	adopts_squad_color = FALSE
+
+/obj/item/clothing/gloves/marine/veteran/souto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
 
 /obj/item/clothing/gloves/marine/veteran/insulated/van_bandolier
 	name = "custom shooting gloves"

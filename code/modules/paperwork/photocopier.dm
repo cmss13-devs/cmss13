@@ -260,6 +260,9 @@
 	maxcopies = 30
 	animate_state = "bigscannerpro1"
 
+/obj/structure/machinery/photocopier/wyphotocopier/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /// The actual toner cartridge used in photcopiers
 /obj/item/device/toner

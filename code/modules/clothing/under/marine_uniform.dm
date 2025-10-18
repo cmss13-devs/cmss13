@@ -987,6 +987,10 @@
 		/obj/item/clothing/suit/storage/snow_suit,
 	) //if you remove this, it allows you to wear the marine M3 armor over the pmc fatigues
 
+/obj/item/clothing/under/marine/veteran/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/clothing/under/marine/veteran/pmc/leader
 	name = "\improper PMC command fatigues"
 	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is emblazed on the suit. This particular suit looks like it belongs to a high-ranking officer."
@@ -1376,6 +1380,13 @@
 	icon_state = "colonist"
 	worn_state = "colonist"
 	has_sensor = UNIFORM_HAS_SENSORS
+
+/obj/item/clothing/under/colonist/Initialize()
+	. = ..()
+	if(istypestrict(src, /obj/item/clothing/under/colonist))
+		AddElement(/datum/element/corp_label/wy)
+	if(istypestrict(src, /obj/item/clothing/under/colonist/administrator))
+		AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/under/colonist/administrator
 	name = "administrator uniform"
@@ -1820,6 +1831,7 @@
 /obj/item/clothing/under/rank/synthetic/joe/Initialize()
 	. = ..()
 	camera = new /obj/structure/machinery/camera/autoname/almayer/containment/ares(src)
+	AddElement(/datum/element/corp_label/seegson)
 
 /obj/item/clothing/under/rank/synthetic/joe/Destroy()
 	QDEL_NULL(camera)

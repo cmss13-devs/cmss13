@@ -42,6 +42,8 @@
 	else
 		cause_data = create_cause_data(initial(name), null, src)
 
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/explosive/mine/Destroy()
 	QDEL_NULL(tripwire)
 	. = ..()

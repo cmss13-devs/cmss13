@@ -190,6 +190,10 @@
 	item_state = "wypacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_wypack")
 
+/obj/item/storage/fancy/cigarettes/wypacket/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/storage/fancy/cigarettes/wypacket_4
 	name = "\improper Weyland-Yutani Gold mini packet"
 	desc = "Building Better Worlds, and rolling better cigarettes. Compact and ready for your executive ventures, protecting corporate assets never felt cooler."
@@ -198,6 +202,10 @@
 	item_state = "wypacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_wypack")
 	storage_slots = 4
+
+/obj/item/storage/fancy/cigarettes/wypacket_4/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/fancy/cigarettes/balaji
 	name = "\improper Balaji Imperial packet"
@@ -262,6 +270,10 @@
 	icon = 'icons/obj/items/smoking/packets/koorlander.dmi'
 	item_state = "kpacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_kpack")
+
+/obj/item/storage/fancy/cigarettes/kpack/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/koorlander)
 
 /obj/item/storage/fancy/cigarettes/arcturian_ace
 	name = "\improper Arcturian Ace packet"
@@ -451,6 +463,10 @@
 	desc = "A small book of cheap paper matches. Good luck getting them to light."
 	icon_state = "mpacket_kl"
 
+/obj/item/storage/fancy/cigar/matchbook/koorlander/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/koorlander)
+
 /obj/item/storage/fancy/cigar/matchbook/exec_select
 	name = "\improper Executive Select matchbook"
 	desc = "A small book of expensive paper matches. These ones light almost every time!"
@@ -471,6 +487,10 @@
 	icon_state = "mpacket_wy"
 	light_chance = 60
 	burn_chance = 40
+
+/obj/item/storage/fancy/cigar/matchbook/wy_gold/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 // VIAL BOX
 

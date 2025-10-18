@@ -124,7 +124,7 @@
 
 
 //execution skill
-//roles with the execution skill can perform battlefield executions (i.e. mateba and deagle)
+//roles with the execution skill can perform battlefield executions (i.e. mateba(unica) and deagle)
 //should be restricted to CO/general/W-Y execs maybe
 
 #define SKILL_EXECUTION_DEFAULT 0

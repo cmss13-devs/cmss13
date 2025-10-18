@@ -41,6 +41,7 @@ log transactions
 	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/structure/machinery/atm/Destroy()
 	QDEL_NULL(spark_system)

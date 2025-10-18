@@ -151,6 +151,7 @@
 /obj/item/reagent_container/food/drinks/bottle/sake/Initialize()
 	. = ..()
 	reagents.add_reagent("sake", 100)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/bottle/vodka
 	name = "\improper Red Star Vodka"

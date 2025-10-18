@@ -27,6 +27,10 @@
 
 	var/explosion_delay_sharp = TRUE
 
+/obj/item/weapon/gun/rifle/sharp/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/rifle/sharp/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_INFO("Switching firemodes will toggle the explosion delay timer between 1 second and 5 seconds")

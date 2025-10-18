@@ -32,7 +32,7 @@
 // M44
 #define REVOLVER_TIP_COLOR_MARKSMAN "#FF744F"
 #define REVOLVER_TIP_COLOR_HEAVY AMMO_BAND_COLOR_IMPACT
-// Mateba
+// Mateba(Unica)
 #define REVOLVER_TIP_COLOR_HIGH_IMPACT AMMO_BAND_COLOR_HIGH_IMPACT
 #define REVOLVER_TIP_COLOR_AP AMMO_BAND_COLOR_AP
 #define REVOLVER_TIP_COLOR_HIAP AMMO_BAND_COLOR_HIGH_IMPACT_AP
@@ -56,8 +56,8 @@
 ///Council CO special weapons options
 #define COUNCIL_CO_GUNS list(CO_GUN_MATEBA_COUNCIL)
 
-#define CO_GUN_MATEBA "Mateba"
-#define CO_GUN_MATEBA_SPECIAL "Mateba Special"
+#define CO_GUN_MATEBA "Unica"
+#define CO_GUN_MATEBA_SPECIAL "Unica Special"
 #define CO_GUN_DEAGLE "Desert Eagle"
 #define CO_GUN_M1911C "M1911C"
-#define CO_GUN_MATEBA_COUNCIL "Colonel's Mateba"
+#define CO_GUN_MATEBA_COUNCIL "Colonel's Unica"

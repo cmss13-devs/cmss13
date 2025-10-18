@@ -373,6 +373,15 @@
 	sound_safety_off = 'sound/machines/click.ogg'
 	sound_release = 'sound/items/synth_reset_key/release.ogg'
 
+/obj/item/device/defibrillator/synthetic/Initialize()
+	. = ..()
+	if(istype(src, /obj/item/device/defibrillator/synthetic/seegson))
+		AddElement(/datum/element/corp_label/seegson)
+	if(istype(src, /obj/item/device/defibrillator/synthetic/hyperdyne))
+		AddElement(/datum/element/corp_label/hyperdyne)
+	if(istypestrict(src, /obj/item/device/defibrillator/synthetic) || istypestrict(src, /obj/item/device/defibrillator/synthetic/noskill))
+		AddElement(/datum/element/corp_label/wy)
+
 /obj/item/device/defibrillator/synthetic/update_icon()
 	icon_state = initial(icon_state)
 	overlays.Cut()

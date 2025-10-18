@@ -406,6 +406,10 @@
 	icon_state = "wycup"
 	item_state = "wycup"
 
+/obj/item/reagent_container/food/drinks/coffeecup/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 // Hybrisa
 
 /obj/item/reagent_container/food/drinks/coffee/cuppa_joes

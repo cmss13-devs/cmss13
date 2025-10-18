@@ -261,6 +261,10 @@
 		/obj/item/device/defibrillator/synthetic,
 	)
 
+/obj/item/storage/firstaid/whiteout/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/storage/firstaid/whiteout/fill_preset_inventory()
 	new /obj/item/stack/nanopaste(src)
 	new /obj/item/stack/nanopaste(src)

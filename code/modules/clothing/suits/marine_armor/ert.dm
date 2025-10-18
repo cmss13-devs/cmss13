@@ -47,6 +47,10 @@
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE //Let's make these keep their name and icon.
 
+/obj/item/clothing/suit/storage/marine/veteran/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
+
 //===========================//DISTRESS\\================================\\
 //=======================================================================\\
 
@@ -160,6 +164,10 @@
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	storage_slots = 1
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/under/marine/veteran/UPP/medic, /obj/item/clothing/under/marine/veteran/UPP/engi, /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform)
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/support
 	name = "\improper UL6 personal armor"
@@ -326,6 +334,10 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
 	)
+
+/obj/item/clothing/suit/storage/CMB/pap/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 // UPP SOF
 
@@ -626,6 +638,10 @@
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/cmb, /obj/item/clothing/under/CM_uniform)
 	item_state_slots = list(WEAR_JACKET = "cmb_heavy_armor")
 
+/obj/item/clothing/suit/storage/marine/veteran/cmb/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/clothing/suit/storage/marine/veteran/cmb/light
 	name = "\improper M4R pattern CMB light armor"
 	icon_state = "cmb_light_armor"
@@ -825,6 +841,10 @@
 	uniform_restricted = list(/obj/item/clothing/under/marine/ua_riot)
 	flags_atom = NO_GAMEMODE_SKIN
 
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/clothing/suit/storage/marine/veteran/ua_riot/synth
 	name = "\improper UA-M1S Synthetic body armor"
 	desc = "Based on the M-3 pattern employed by the USCM, the UA-M1 body armor is employed by UA security, riot control and union-busting teams. The UA-1MS modification is Synthetic programming compliant, sacrificing protection for speed and carrying capacity."
@@ -870,6 +890,10 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine/light //RMC Rifleman Armor
 	icon_state = "rmc_light"
@@ -936,6 +960,10 @@
 	flags_heat_protection = (BODY_FLAG_CHEST)
 
 	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT // Gotta go fast
+
+/obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/alphatech)
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf/synth
 

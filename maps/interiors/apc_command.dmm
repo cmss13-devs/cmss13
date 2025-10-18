@@ -66,6 +66,11 @@
 "j" = (
 /obj/structure/extinguisher_cabinet/lifeboat{
 	icon = 'icons/obj/vehicles/interiors/general.dmi';
+	pixel_x = -8;
+	pixel_y = 28
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle{
+	pixel_x = 3;
 	pixel_y = 28
 	},
 /turf/open/shuttle/vehicle/floor_3_13,
@@ -119,11 +124,21 @@
 /turf/open/void/vehicle,
 /area/space)
 "q" = (
-/obj/structure/vehicle_locker{
-	pixel_y = 28
-	},
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor{
 	dir = 4
+	},
+/obj/structure/vehicle_locker{
+	layer = 5.21;
+	pixel_y = 28;
+	pixel_x = -10
+	},
+/obj/structure/gun_rack/apc/boyars{
+	pixel_x = 7;
+	pixel_y = 33
+	},
+/obj/structure/gun_rack/apc/frontal{
+	pixel_y = 23;
+	pixel_x = 7
 	},
 /turf/open/shuttle/vehicle/floor_3_8_1,
 /area/interior/vehicle/apc/command)
@@ -160,12 +175,8 @@
 	dir = 8
 	},
 /obj/effect/landmark/interior/spawn/telephone{
-	pixel_x = -9;
+	pixel_x = -8;
 	pixel_y = 30
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle{
-	pixel_x = 6;
-	pixel_y = 28
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	pixel_x = -21;

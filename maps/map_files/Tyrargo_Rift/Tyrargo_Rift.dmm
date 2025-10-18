@@ -1302,18 +1302,6 @@
 	color = "#a98c7c";
 	layer = 2.2
 	},
-/obj/structure/barricade/sandbags/wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.2
-	},
-/obj/structure/barricade/sandbags/wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.2
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
@@ -69437,9 +69425,6 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dsK" = (
-/obj/structure/barricade/handrail/hybrisa/handrail{
-	dir = 4
-	},
 /obj/structure/barricade/handrail/hybrisa/handrail{
 	dir = 4
 	},

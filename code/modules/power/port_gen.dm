@@ -298,20 +298,20 @@ display floor(lastgen) and phorontank amount
 		ui.open()
 
 /obj/structure/machinery/power/power_generator/port_gen/pacman/ui_data()
-	var/data = list()
+	var/data = list(
+		"is_on" = is_on,
+		"sheet_name" = capitalize(sheet_name),
+		"sheets" = sheets,
+		"stack_percent" = round(sheet_left * 100, 0.1),
 
-	data["is_on"] = is_on
-	data["sheet_name"] = capitalize(sheet_name)
-	data["sheets"] = sheets
-	data["stack_percent"] = round(sheet_left * 100, 0.1)
-
-	data["anchored"] = anchored
-	data["connected"] = (powernet == null ? 0 : 1)
-	data["ready_to_boot"] = anchored && HasFuel()
-	data["power_generated"] = display_power(power_gen)
-	data["power_output"] = display_power(power_gen * (power_gen_percent / 100))
-	data["power_available"] = (powernet == null ? 0 : display_power(avail()))
-	data["heat"] = heat
+		"anchored" = anchored,
+		"connected" = (powernet == null ? 0 : 1),
+		"ready_to_boot" = anchored && HasFuel(),
+		"power_generated" = display_power(power_gen),
+		"power_output" = display_power(power_gen * (power_gen_percent / 100)),
+		"power_available" = (powernet == null ? 0 : display_power(avail())),
+		"heat" = heat
+	)
 	. = data
 
 /obj/structure/machinery/power/power_generator/port_gen/pacman/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -338,67 +338,6 @@ display floor(lastgen) and phorontank amount
 			if (power_gen_percent < 400)
 				power_gen_percent += 100
 				. = TRUE
-
-/*
-/obj/structure/machinery/power/power_generator/port_gen/pacman/interact(mob/user)
-	if (get_dist(src, user) > 1 )
-		if (!isRemoteControlling(user))
-			user.unset_interaction()
-			close_browser(user, "port_gen")
-			return
-
-	user.set_interaction(src)
-
-	var/dat = text("<b>[name]</b><br>")
-	if (is_on)
-		dat += text("Generator: <A href='byond://?src=\ref[src];action=disable'>On</A><br>")
-	else
-		dat += text("Generator: <A href='byond://?src=\ref[src];action=enable'>Off</A><br>")
-	dat += text("[capitalize(sheet_name)]: [sheets] - <A href='byond://?src=\ref[src];action=eject'>Eject</A><br>")
-	var/stack_percent = round(sheet_left * 100, 1)
-	dat += text("Current stack: [stack_percent]% <br>")
-	dat += text("Power output: <A href='byond://?src=\ref[src];action=lower_power'>-</A> [power_gen * (power_gen_percent / 100)] <A href='byond://?src=\ref[src];action=higher_power'>+</A><br>")
-	dat += text("Power current: [(powernet == null ? "Unconnected" : "[avail()]")]<br>")
-	dat += text("Heat: [heat]<br>")
-	dat += "<br><A href='byond://?src=\ref[src];action=close'>Close</A>"
-	user << browse(HTML_SKELETON(dat), "window=port_gen")
-	onclose(user, "port_gen")
-
-/obj/structure/machinery/power/power_generator/port_gen/pacman/Topic(href, href_list)
-	if(..())
-		return
-
-	src.add_fingerprint(usr)
-	if(href_list["action"])
-		if(href_list["action"] == "enable")
-			if(!is_on && HasFuel() && !crit_fail)
-				is_on = 1
-				start_processing()
-				icon_state = "portgen1"
-				src.updateUsrDialog()
-		if(href_list["action"] == "disable")
-			if (is_on)
-				is_on = 0
-				stop_processing()
-				icon_state = "portgen0"
-				src.updateUsrDialog()
-		if(href_list["action"] == "eject")
-			if(!is_on)
-				DropFuel()
-				src.updateUsrDialog()
-		if(href_list["action"] == "lower_power")
-			if (power_gen_percent > 100)
-				power_gen_percent -= 100
-				src.updateUsrDialog()
-		if (href_list["action"] == "higher_power")
-			if (power_gen_percent < 400)
-				power_gen_percent += 100
-				src.updateUsrDialog()
-		if (href_list["action"] == "close")
-			close_browser(usr, "port_gen")
-			usr.unset_interaction()
-
-		*/
 
 /obj/structure/machinery/power/power_generator/port_gen/pacman/inoperable(additional_flags)
 	return (stat & (BROKEN|additional_flags)) //Removes NOPOWER check since its a goddam generator and doesn't need power

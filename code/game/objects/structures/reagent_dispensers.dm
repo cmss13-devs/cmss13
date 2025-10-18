@@ -471,15 +471,15 @@
 	drag_delay = 3
 	chemical = "water"
 
+/obj/structure/reagent_dispensers/water_cooler/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/structure/reagent_dispensers/water_cooler/walk_past
 	density = FALSE
 
 /obj/structure/reagent_dispensers/water_cooler/stacks
 	icon_state = "water_cooler_2"
-
-/obj/structure/reagent_dispensers/water_cooler/stacks/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/wy)
 
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"

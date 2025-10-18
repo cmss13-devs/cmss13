@@ -26,10 +26,18 @@
 	icon_state = "burger"
 	desc = "A greasy plastic film that once held a Cheeseburger. Packaged by the Weyland-Yutani Corporation."
 
+/obj/item/trash/burger/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/trash/buritto
 	name = "Burrito wrapper"
 	icon_state = "burrito"
 	desc = "A foul-smelling plastic film that once held a microwave burrito. Packaged by the Weyland-Yutani Corporation."
+
+/obj/item/trash/buritto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/trash/candy
 	name = "Candy"
@@ -63,6 +71,10 @@
 	name = "Hotdog wrapper"
 	icon_state = "hotdog"
 	desc = "A musty plastic film that once held a hotdog. Packaged by the Weyland-Yutani Corporation."
+
+/obj/item/trash/hotdog/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/trash/kepler
 	name = "Kepler wrapper"

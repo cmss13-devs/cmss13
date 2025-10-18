@@ -266,6 +266,10 @@
 	name = "WY pen"
 	clicky = TRUE
 
+/obj/item/tool/pen/clicky/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/tool/pen/blue
 	desc = "It's a normal blue ink pen."
 	item_state_slots = list(WEAR_AS_GARB = "pen_blue")

@@ -662,6 +662,7 @@
 /obj/item/device/radio/headset/almayer/mcl/Initialize()
 	. = ..()
 	spy_bug.nametag = "CL Radio"
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/device/radio/headset/almayer/reporter
 	name = "reporter radio headset"

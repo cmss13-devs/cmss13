@@ -361,6 +361,7 @@
 	. = ..()
 	reagents.add_reagent("bread", 3)
 	reagents.add_reagent("blackpepper", 1)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/cookie
 	name = "cookie"
@@ -1186,6 +1187,7 @@
 	. = ..()
 	unpopped = rand(1,10)
 	reagents.add_reagent("plantmatter", 2)
+	AddElement(/datum/element/corp_label/wy)
 	bitesize = 0.1 //this snack is supposed to be eating during looooong time. And this it not dinner food! --rastaf0
 
 /obj/item/reagent_container/food/snacks/popcorn/On_Consume()
@@ -3328,6 +3330,7 @@
 	. = ..()
 	reagents.add_reagent("bread", 5)
 	reagents.add_reagent("meatprotein", 5)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/packaged_burrito/attack_self(mob/user)
 	..()
@@ -3354,7 +3357,7 @@
 	reagents.add_reagent("bread", 5)
 	reagents.add_reagent("meatprotein", 5)
 	reagents.add_reagent("sodiumchloride", 2)
-
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/packaged_burger/attack_self(mob/user)
 	..()
@@ -3381,6 +3384,7 @@
 	reagents.add_reagent("bread", 2)
 	reagents.add_reagent("meatprotein", 1)
 	reagents.add_reagent("sodiumchloride", 2)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/packaged_hdogs/attack_self(mob/user)
 	..()

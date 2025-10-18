@@ -345,6 +345,7 @@
 /obj/item/reagent_container/food/drinks/flask/weylandyutani/Initialize()
 	. = ..()
 	reagents.add_reagent("fruit_beer", 60)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/flask/canteen
 	name = "canteen"

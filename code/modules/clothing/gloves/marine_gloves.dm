@@ -262,6 +262,10 @@
 	unacidable = TRUE
 	adopts_squad_color = FALSE
 
+/obj/item/clothing/gloves/marine/joe/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/seegson)
+
 //=ROYAL MARINES=\\
 
 /obj/item/clothing/gloves/marine/veteran/royal_marine

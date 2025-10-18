@@ -44,11 +44,11 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/tail_stab/sentinel,
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
 		/datum/action/xeno_action/activable/slowing_spit, //first macro
-		/datum/action/xeno_action/activable/scattered_spit, //second macro
 		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
+		/datum/action/xeno_action/activable/draining_bite,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -70,12 +70,12 @@
 	name = "Base Sentinel Behavior Delegate"
 
 	// State
-	var/next_slash_buffed = FALSE
-
-#define NEURO_TOUCH_DELAY 4 SECONDS
+	var/max_buffed_slashes = 3
+	var/buffed_slashes = 0
+	var/increment_amount = 7
 
 /datum/behavior_delegate/sentinel_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon_target)
-	if (!next_slash_buffed)
+	if (!buffed_slashes)
 		return original_damage
 
 	if (!isxeno_human(carbon_target))
@@ -83,28 +83,32 @@
 
 	if(skillcheck(carbon_target, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))
 		carbon_target.visible_message(SPAN_DANGER("[carbon_target] withstands the neurotoxin!"))
-		next_slash_buffed = FALSE
+		buffed_slashes --
 		return original_damage //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(carbon_target))
 		var/mob/living/carbon/human/human = carbon_target
 		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || human.species.flags & NO_NEURO)
 			human.visible_message(SPAN_DANGER("[human] shrugs off the neurotoxin!"))
-			next_slash_buffed = FALSE
+			buffed_slashes --
 			return //species like zombies or synths are immune to neurotoxin
-	if (next_slash_buffed)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We add neurotoxin into our attack, [carbon_target] is about to fall over paralyzed!"))
-		to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
-		carbon_target.sway_jitter(times = 3, steps = floor(NEURO_TOUCH_DELAY/3))
-		carbon_target.apply_effect(4, DAZE)
-		addtimer(CALLBACK(src, PROC_REF(paralyzing_slash), carbon_target), NEURO_TOUCH_DELAY)
-		next_slash_buffed = FALSE
-	if(!next_slash_buffed)
+		if (buffed_slashes)
+			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Our slash applied a large amount of neurotoxin!"))
+			to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel your muscles, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
+			var/datum/effects/sentinel_neuro_stacks/sns = null
+			for (var/datum/effects/sentinel_neuro_stacks/sentinel_neuro_stacks in human.effects_list)
+				sns = sentinel_neuro_stacks
+				break
+
+			if (sns == null)
+				sns = new /datum/effects/sentinel_neuro_stacks(human)
+			sns.increment_stack_count(increment_amount)
+
+			buffed_slashes --
+	if(!buffed_slashes)
 		var/datum/action/xeno_action/onclick/paralyzing_slash/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/paralyzing_slash)
 		if (ability && istype(ability))
 			ability.button.icon_state = "template"
 	return original_damage
-
-#undef NEURO_TOUCH_DELAY
 
 /datum/behavior_delegate/sentinel_base/override_intent(mob/living/carbon/target_carbon)
 	. = ..()
@@ -112,13 +116,8 @@
 	if(!isxeno_human(target_carbon))
 		return
 
-	if(next_slash_buffed)
+	if(buffed_slashes)
 		return INTENT_HARM
-
-/datum/behavior_delegate/sentinel_base/proc/paralyzing_slash(mob/living/carbon/human/human_target)
-	human_target.KnockDown(2)
-	human_target.Stun(2)
-	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the toxin!"))
 
 
 
@@ -200,9 +199,9 @@
 
 	var/datum/behavior_delegate/sentinel_base/behavior = paraslash_user.behavior_delegate
 	if (istype(behavior))
-		behavior.next_slash_buffed = TRUE
+		behavior.buffed_slashes = behavior.max_buffed_slashes
 
-	to_chat(paraslash_user, SPAN_XENOHIGHDANGER("Our next slash will apply neurotoxin!"))
+	to_chat(paraslash_user, SPAN_XENOHIGHDANGER("Our next three slashes will apply neurotoxin!"))
 	button.icon_state = "template_active"
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
@@ -217,9 +216,56 @@
 	var/datum/behavior_delegate/sentinel_base/behavior = unbuffslash_user.behavior_delegate
 	if (istype(behavior))
 		// In case slash has already landed
-		if (!behavior.next_slash_buffed)
+		if (!behavior.buffed_slashes)
 			return
-		behavior.next_slash_buffed = FALSE
+		behavior.buffed_slashes = 0
 
 	to_chat(unbuffslash_user, SPAN_XENODANGER("We have waited too long, our slash will no longer apply neurotoxin!"))
 	button.icon_state = "template"
+
+/datum/action/xeno_action/activable/draining_bite/use_ability(atom/target)
+	. = ..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(!ishuman(target))
+		return
+	if(!action_cooldown_check())
+		return
+
+	var/mob/living/carbon/human/target_human = target
+
+	if(xeno.can_not_harm(target_human))
+		return
+
+	if(!xeno.Adjacent(target_human))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("We can only drain bite an adjacent target!"))
+		return
+
+	if(!xeno.check_state())
+		return
+
+	if(xeno.action_busy)
+		return
+
+	var/datum/effects/sentinel_neuro_stacks/sns = null
+	for (var/datum/effects/sentinel_neuro_stacks/sentinel_neuro_stacks in target_human.effects_list)
+		sns = sentinel_neuro_stacks
+		break
+	var/stun_duration = minimal_stun
+	if(sns)
+		stun_duration = max(minimal_stun, (sns.stack_count/10)-1)
+		sns.increment_stack_count(-sns.stack_count/3)
+		apply_neuro(target_human, 0, sns.stack_count/2, TRUE, TRUE, TRUE, FALSE)
+
+	xeno.flick_attack_overlay(target_human, "headbite")
+	xeno.animation_attack_on(target_human, pixel_offset = 16)
+	target_human.Stun(stun_duration)
+	target_human.KnockDown(stun_duration)
+	playsound(target_human,'sound/weapons/alien_bite2.ogg', 50, TRUE)
+	apply_cooldown()
+
+
+
+
+
+

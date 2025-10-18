@@ -170,13 +170,3 @@
 
 /datum/caste_datum/proc/get_caste_requirement(client/client)
 	return minimum_xeno_playtime - client.get_total_xeno_playtime()
-
-/datum/caste_datum/proc/get_minimap_icon()
-	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', minimap_background)
-
-	var/iconstate = minimap_icon ? minimap_icon : "unknown"
-	var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
-	icon.appearance_flags = RESET_COLOR
-	background.overlays += icon
-
-	return background

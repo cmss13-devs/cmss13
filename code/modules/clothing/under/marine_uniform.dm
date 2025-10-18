@@ -670,6 +670,12 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
+/obj/item/clothing/under/marine/officer/bridge/skirt
+	name = "marine service skirt uniform"
+	desc = "A steel grey skirt paired with a tan shirt worn by members of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "BO_jumpsuit_skirt"
+	worn_state = "BO_jumpsuit_skirt"
+
 /obj/item/clothing/under/marine/officer/boiler
 	name = "marine operations uniform"
 	desc = "An operations uniform worn by members of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
@@ -837,6 +843,19 @@
 /obj/item/clothing/under/marine/dress
 	name = "marine formal service uniform"
 	desc = "A formal service uniform typically worn by marines of the USCM. Still practicable while still being more formal than the standard service uniform."
+	icon_state = "formal_jumpsuit"
+	worn_state = "formal_jumpsuit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	flags_jumpsuit = FALSE
+	black_market_value = 15
+
+/obj/item/clothing/under/marine/dress/skirt
+	name = "marine formal service skirt uniform"
+	desc = "A steel grey skirt paired with a formal shirt typically worn by marines of the USCM. Still practicable while still being more formal than the standard service uniform."
 	icon_state = "formal_jumpsuit"
 	worn_state = "formal_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'

@@ -294,7 +294,7 @@
 	var/datum/cause_data/cause_data = create_cause_data(/obj/effect/particle_effect/smoke/weedkiller::name)
 
 	if(!active_lz)
-		select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+		pick_a_lz()
 
 	for(var/area/near_area as anything in GLOB.all_areas)
 		var/area_lz = near_area.linked_lz
@@ -454,7 +454,7 @@
 
 
 		if(!active_lz && ROUND_TIME > lz_selection_timer)
-			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+			pick_a_lz()
 
 		// Automated bioscan / Queen Mother message
 		if(world.time > bioscan_current_interval) //If world time is greater than required bioscan time.

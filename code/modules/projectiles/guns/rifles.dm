@@ -314,10 +314,6 @@
 	map_specific_decoration = FALSE
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible)
 
-/obj/item/weapon/gun/rifle/m41a/corporate/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/wy)
-
 /obj/item/weapon/gun/rifle/m41a/corporate/no_lock //for PMC nightmares.
 	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. This one had its IFF electronics removed."
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER

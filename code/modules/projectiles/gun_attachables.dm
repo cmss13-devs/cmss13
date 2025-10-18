@@ -1416,7 +1416,6 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	select_gamemode_skin(type)
 	attach_icon = icon_state
-	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/attachable/scope/slavic
 	icon_state = "slavicscope"

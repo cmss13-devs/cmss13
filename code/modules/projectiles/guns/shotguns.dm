@@ -908,10 +908,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	var/current_rounds = 0
 	COOLDOWN_DECLARE(breach_action_cooldown)
 
-/obj/item/weapon/gun/shotgun/double/mou53/Initialize()
-	. = ..()
-	AddElement(/datum/element/corp_label/henjin_garcia)
-
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 21, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
 

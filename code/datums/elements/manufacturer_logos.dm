@@ -1,7 +1,6 @@
 /datum/element/corp_label
 	var/manufacturer
 	var/full_name
-	var/icon
 
 /datum/element/corp_label/wy
 	manufacturer = "weyland_yutani"
@@ -65,13 +64,13 @@
 
 /datum/element/corp_label/Attach(datum/target)
 	. = ..()
-	if(!manufacturer)
+	if(!length(manufacturer))
 		return ELEMENT_INCOMPATIBLE
 	RegisterSignal(target, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 /datum/element/corp_label/Detach(datum/target)
-	. = ..()
 	UnregisterSignal(target, list(COMSIG_PARENT_EXAMINE))
+	return ..()
 
 /datum/element/corp_label/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER

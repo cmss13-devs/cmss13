@@ -290,7 +290,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		"is_multi" = is_multi,
 		"maximum_to_build" = max_build,
 		"can_build" = can_build,
-		"amount_to_build" = is_multi ? 5 : 1,
+		"amount_to_build" = 1 * rec.res_amount,
 		"empty_line_next" = empty_line_next,
 		"image" = imgid,
 		"image_size" = image_size,

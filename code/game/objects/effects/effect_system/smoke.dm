@@ -504,8 +504,12 @@
 ////////////////////////////////////
 
 /obj/effect/particle_effect/smoke/fog
-	alpha = 180
-	color = "white"
+	icon = 'icons/obj/structures/props/watercloset.dmi'
+	icon_state = "steam"
+
+/obj/effect/particle_effect/smoke/fog/Initialize(mapload, oldamount, datum/cause_data/new_cause_data)
+	. = ..()
+	animate(src,3 SECONDS, loop = FALSE)
 
 //////////////////////////////////////
 // FLASHBANG SMOKE

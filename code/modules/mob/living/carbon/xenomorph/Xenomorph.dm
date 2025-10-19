@@ -629,25 +629,26 @@
 	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
 		. |= COMPONENT_XENO_FRENZY
 
+/// Registers the caste_datum's fire immunity info onto the mob, then adds signals. The mob immunity is what gets altered by strains and/or other things.
 /mob/living/carbon/xenomorph/proc/set_initial_fire_immunity()
-	// Registers the caste_datum's fire immunity info onto the mob, then adds signals. The mob immunity is what gets altered by strains and/or other things.
 	fire_immunity = caste.fire_immunity
 	fire_vulnerability_mult = caste.fire_vulnerability_mult
 	add_fire_immunity_signals()
 
+/// Removes any registered signals, re-registers the the caste_datum's initial fire immunity info onto the mob, then reapplies signals.
+/// As the caste info should *NOT* be changed by anything, this is more of an admin failsafe to make *absolutely sure* that the Xeno is back to initial fire immunity should something go wrong somehow.
 /mob/living/carbon/xenomorph/proc/reset_to_initial_fire_immunity()
-	// Removes any registered signals, re-registers the the caste_datum's initial fire immunity info onto the mob, then reapplies signals.
-	// As the caste info should *NOT* be changed by anything, this is more of an admin failsafe to make *absolutely sure* that the Xeno is back to initial fire immunity.
 	remove_fire_immunity_signals()
 	fire_immunity = initial(caste.fire_immunity)
 	fire_vulnerability_mult = initial(caste.fire_vulnerability_mult)
 	add_fire_immunity_signals()
 
+/// Removes and readds fire immunity signals. This is to account for frequently shifting immunities, like hivebuff.
 /mob/living/carbon/xenomorph/proc/reset_fire_immunity()
-	// Removes and readds fire immunity signals. This is to account for frequently shifting immunities, like hivebuff or Burrower's burrowing.
 	remove_fire_immunity_signals()
 	add_fire_immunity_signals()
 
+/// The actual proc that adds fire immunity signals based on fire immunity flags registered to the Xenomorph.
 /mob/living/carbon/xenomorph/proc/add_fire_immunity_signals()
 	var/valid_immunity = fire_immunity
 	if(fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
@@ -669,6 +670,7 @@
 			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(preignition_burrower_immunity))
 			RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_cross_burrower_immunity))
 
+/// Removes all fire immunity related signals on a Xenomorph.
 /mob/living/carbon/xenomorph/proc/remove_fire_immunity_signals()
 		UnregisterSignal(src, list(
 			COMSIG_LIVING_PREIGNITION,

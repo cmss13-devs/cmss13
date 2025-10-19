@@ -75,10 +75,10 @@
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
 	storage_slots = 7
+	flags_marine_armor = ARMOR_LAMP_OVERLAY|SYNTH_ALLOWED
 
 /obj/item/clothing/suit/storage/marine/sof/grs/synth/Initialize()
-	..()
-	flags_marine_armor |= SYNTH_ALLOWED
+	. = ..()
 	fill_pockets()
 
 /obj/item/clothing/suit/storage/marine/sof/grs/synth/proc/fill_pockets()

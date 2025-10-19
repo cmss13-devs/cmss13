@@ -776,9 +776,11 @@
 	additional_hud_types = list(MOB_HUD_FACTION_MARINE, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY, MOB_HUD_FACTION_UPP, MOB_HUD_FACTION_PMC, MOB_HUD_FACTION_IASF, MOB_HUD_FACTION_TWE)
 	ignore_z = TRUE
 
+/obj/item/device/radio/headset/almayer/cia_grs/hvh
+	initial_keys = list(/obj/item/device/encryptionkey/cia, /obj/item/device/encryptionkey/colony)
+
 /obj/item/device/radio/headset/almayer/cia_grs/survivor
 	initial_keys = list(/obj/item/device/encryptionkey/colony)
-	ignore_z = TRUE
 
 //############################## ALPHA ###############################
 /obj/item/device/radio/headset/almayer/marine/alpha

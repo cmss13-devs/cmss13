@@ -49,6 +49,7 @@
 		if(STRENGTH_NO_IFF)
 			name = "[name] (No-IFF)"
 			faction_group = FACTION_LIST_CIA
+			headset_type = /obj/item/device/radio/headset/almayer/cia_grs/hvh
 		if(STRENGTH_SURVIVOR)
 			name = "Survivor - [name]"
 			faction_group = FACITON_LIST_SURVIVOR_CIA
@@ -56,6 +57,7 @@
 		if(STRENGTH_DEATH)
 			name = "[name] (!DEATHSQUAD!)"
 			faction_group = FACTION_LIST_CIA
+			headset_type = /obj/item/device/radio/headset/almayer/cia_grs/hvh
 
 //*****************************************************************************************************/
 

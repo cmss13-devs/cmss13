@@ -560,6 +560,10 @@
 	slowdown = 0
 	uniform_restricted = null
 
+/obj/item/clothing/head/bio_hood/wy_bio/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 // Synth Bio
 
 /obj/item/clothing/head/bio_hood/synth/wy_bio

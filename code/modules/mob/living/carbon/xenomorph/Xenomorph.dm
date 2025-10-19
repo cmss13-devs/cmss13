@@ -1174,7 +1174,7 @@
 	. = ..()
 	if (. & IGNITE_IGNITED)
 		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, PROC_REF(cancel_heal))
-		if(!caste || !(fire_immunity & FIRE_IMMUNITY_NO_DAMAGE | FIRE_IMMUNITY_COMPLETE) || fire_reagent.fire_penetrating)
+		if(!(fire_immunity & (FIRE_IMMUNITY_NO_DAMAGE || FIRE_IMMUNITY_COMPLETE)) || fire_reagent.fire_penetrating)
 			INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "roar")
 
 /mob/living/carbon/xenomorph/ExtinguishMob()

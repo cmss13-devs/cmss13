@@ -1,7 +1,7 @@
 /datum/xeno_strain/carbuncle
 	name = DEFENDER_CARBUNCLE
 	description = "Trade some of your armor, some of your speed, and most of your normal abilities to gain fire immunity and new abilities. Being on fire adds a bit of extra damage to your slashes and tail slams. Vomit Bile can be used to immediately extinguish allies and turfs for a faster cooldown, or to cover enemies in a flammable substance; if you are on fire, you can no longer extinguish allies or turfs but will instead cut out the middleman and directly set enemies on fire! Thermoregulation only works when you are on fire and provides a 5-second buff to speed and slash speed before extinguishing you."
-	flavor_description = "Shed your fear, sister. Turn it around on our foes."
+	flavor_description = "Shed your fear, sister. Set their worlds alight like they do ours."
 	icon_state_prefix = "Carbuncle"
 
 	actions_to_remove = list(

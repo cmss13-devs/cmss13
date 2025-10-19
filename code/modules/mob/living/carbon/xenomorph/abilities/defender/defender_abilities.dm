@@ -65,3 +65,35 @@
 	var/damage_threshold = 140
 	/// Initially zero, gets damage added when the ability is activated
 	var/damage_accumulated = 0
+
+// Carbuncle Abilities
+/datum/action/xeno_action/activable/vomit_bile
+	name = "Vomit Bile"
+	action_icon_state = "spray_acid"
+	macro_path = /datum/action/xeno_action/verb/verb_vomit_bile
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
+
+	plasma_cost = 40
+	xeno_cooldown = 10 SECONDS
+
+	var/on_fire_fire_stack_amount = 15 // Requires at least one roll or pat to extinguish
+
+/datum/action/xeno_action/onclick/thermoregulation
+	name = "Thermoregulation"
+	action_icon_state = "soak"
+	macro_path = /datum/action/xeno_action/verb/verb_thermoregulation
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3
+
+	plasma_cost = 80
+	xeno_cooldown = 20 SECONDS
+
+	var/thermoregulate_duration = 5 SECONDS
+	var/thermoregulate_bonus_speed = 0.5 // Go from slow to pretty quick
+	var/thermoregulate_attack_speed = 2
+
+/datum/action/xeno_action/onclick/thermoregulation/can_use_action()
+	var/mob/living/carbon/xenomorph/xeno_user = owner
+	if(..() && xeno_user.on_fire)
+		return TRUE

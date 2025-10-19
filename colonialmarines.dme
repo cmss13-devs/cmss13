@@ -2231,6 +2231,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\boiler\trapper.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\carrier\eggsac.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\crusher\charger.dm"
+#include "code\modules\mob\living\carbon\xenomorph\strains\castes\defender\carbuncle.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\defender\steel_crest.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\drone\gardener.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\drone\healer.dm"

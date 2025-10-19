@@ -115,20 +115,20 @@
 /// WY-SEC-PSO Trainee Personal Protection Officer
 #define PAY_SHORT_WY_SEC_TPPO "WY-SEC-TPPO"
 
-/// WY-SEC-PSO Personal Protection Officer
+/// WY-SEC-PPO Personal Protection Officer
 #define PAY_SHORT_WY_SEC_PPO "WY-SEC-PPO"
 
-/// WY-SEC-PSS Personal Protection Specialist
+/// WY-SEC-PPS Personal Protection Specialist
 #define PAY_SHORT_WY_SEC_PPS "WY-SEC-PPS"
 
-/// WY-SEC-PSSGT Personal Protection Coordinator
+/// WY-SEC-PPC Personal Protection Coordinator
 #define PAY_SHORT_WY_SEC_PPC "WY-SEC-PPC"
 
-/// WY-SEC-PSSGT Directorate Protection Officer
+/// WY-SEC-DPO Directorate Protection Officer
 #define PAY_SHORT_WY_SEC_DPO "WY-SEC-DPO"
 
-/// WY-SEC-PSSGT Directorate Protection Specialist
+/// WY-SEC-DPS Directorate Protection Specialist
 #define PAY_SHORT_WY_SEC_DPS "WY-SEC-DPS"
 
-/// WY-SEC-PSSGT Directorate Protection Coordinator
+/// WY-SEC-DPC Directorate Protection Coordinator
 #define PAY_SHORT_WY_SEC_DPC "WY-SEC-DPC"

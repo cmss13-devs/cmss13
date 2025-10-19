@@ -37021,12 +37021,10 @@
 /obj/structure/machinery/light,
 /obj/structure/filingcabinet/security{
 	pixel_x = -8;
-	density = 0;
 	layer = 3.2
 	},
 /obj/structure/filingcabinet/documentation/liaison{
 	pixel_x = 8;
-	density = 0;
 	layer = 3.2
 	},
 /turf/open/floor/almayer/plate,

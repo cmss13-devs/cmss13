@@ -87,7 +87,6 @@
 						"West" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = WEST),
 					)
 					if(GLOB.radial_menus["buildmode_basic_turf_[key_name(admin_building)]"])
-						to_world("duplicate, cancel")
 						return
 					var/picked_turn_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE, uniqueid = "buildmode_basic_turf_[key_name(admin_building)]")
 					clicked_atom.setDir(text2dir(capitalize(picked_turn_option)))

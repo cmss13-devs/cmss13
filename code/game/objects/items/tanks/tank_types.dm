@@ -20,11 +20,11 @@
 
 
 /obj/item/tank/oxygen/yellow
-	desc = "A tank of oxygen, this one is yellow."
+	desc = "A tank of oxygen. This one is yellow."
 	icon_state = "oxygen_f"
 
 /obj/item/tank/oxygen/red
-	desc = "A tank of oxygen, this one is red."
+	desc = "A tank of oxygen. This one is red."
 	icon_state = "oxygen_fr"
 
 
@@ -33,7 +33,7 @@
  */
 /obj/item/tank/anesthetic
 	name = "anesthetic tank"
-	desc = "A tank with an N2O/O2 gas mix."
+	desc = "A tank with an N2O/O2 gas mix to put patients under anesthesia."
 	icon_state = "anesthetic"
 	item_state = "anesthetic"
 	gas_type = GAS_TYPE_N2O
@@ -71,6 +71,7 @@
 
 /obj/item/tank/emergency_oxygen/engi
 	name = "extended-capacity emergency oxygen tank"
+	desc = "Used for emergencies. Lasts three times as long as the standard model."
 	icon_state = "emergency_engi"
 	volume = 6
 	pressure = 5*ONE_ATMOSPHERE
@@ -78,6 +79,7 @@
 
 /obj/item/tank/emergency_oxygen/double
 	name = "double emergency oxygen tank"
+	desc = "Used for emergencies. Lasts five times as long as the original model."
 	icon_state = "emergency_double"
 	volume = 10
 	pressure = 5*ONE_ATMOSPHERE
@@ -96,7 +98,7 @@
 // Phoron, used for generators.
 /obj/item/tank/phoron
 	name = "phoron tank"
-	desc = "A tank of liquid phoron. WARNING: Phumes are extremely dangerous."
+	desc = "A tank of liquid phoron. WARNING: Fumes are extremely dangerous."
 	icon_state = "phoron"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	gas_type = GAS_TYPE_PHORON

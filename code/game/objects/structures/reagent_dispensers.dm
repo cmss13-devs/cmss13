@@ -204,8 +204,6 @@
 
 		var/percent = floor((reagents.total_volume / reagents.maximum_volume * 100))
 		switch(percent)
-			if(0)
-				meter.icon_state = "t_0"
 			if(1 to 20)
 				meter.icon_state = "t_20"
 			if(21 to 40)
@@ -216,6 +214,8 @@
 				meter.icon_state = "t_80"
 			if(81 to INFINITY)
 				meter.icon_state = "t_100"
+			else
+				return
 
 		overlays += meter
 

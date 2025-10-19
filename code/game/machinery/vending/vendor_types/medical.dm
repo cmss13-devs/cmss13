@@ -54,9 +54,8 @@
 /obj/structure/restock_cart
 	name = "restock cart"
 	desc = "A rather heavy cart filled with various supplies to restock a vendor with."
-	icon = 'icons/obj/structures/liquid_tanks.dmi'
-	icon_state = "tank_normal" // Temporary
-	var/overlay_color = rgb(252, 186, 3) // Temporary
+	icon = 'icons/obj/structures/restock_carts.dmi'
+	icon_state = "medcart" //
 
 	density = TRUE
 	anchored = FALSE
@@ -82,7 +81,7 @@
 /obj/structure/restock_cart/medical
 	name = "\improper Wey-Yu restock cart"
 	desc = "A rather heavy cart filled with various supplies to restock a vendor with. Provided by Wey-Yu Pharmaceuticals Division(TM)."
-	icon_state = "tank_normal" // Temporary
+	icon_state = "medcart" //temporary?
 
 	supplies_remaining = 20
 	supplies_max = 20
@@ -99,8 +98,7 @@
 /obj/structure/restock_cart/medical/reagent
 	name = "\improper Wey-Yu reagent restock cart"
 	desc = "A rather heavy cart filled with various reagents to restock a vendor with. Provided by Wey-Yu Pharmaceuticals Division(TM)."
-	icon_state = "tank_normal" // Temporary
-	overlay_color = rgb(252, 115, 3) // Temporary
+	icon_state = "reagentcart" // Temporary
 
 	supplies_remaining = 1200
 	supplies_max = 1200
@@ -115,9 +113,22 @@
 
 /obj/structure/restock_cart/update_icon()
 	. = ..()
-	var/image/overlay_image = image(icon, icon_state = "tn_color") // Temporary
-	overlay_image.color = overlay_color
-	overlays += overlay_image
+	if(supplies_remaining && supplies_max)
+		var/image/filled
+		var/percent = floor((supplies_remaining / supplies_max * 100))
+		switch(percent)
+			if(1 to 25)
+				filled = image(icon, src, "[icon_state]_1")
+			if(26 to 50)
+				filled = image(icon, src, "[icon_state]_2")
+			if(51 to 75)
+				filled = image(icon, src, "[icon_state]_3")
+			if(76 to INFINITY)
+				filled = image(icon, src, "[icon_state]_4")
+			else
+				return
+
+		overlays += filled
 
 /obj/structure/restock_cart/get_examine_text(mob/user)
 	. = ..()
@@ -209,6 +220,7 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
+	. = ..()
 
 //------------SORTED MEDICAL VENDORS------------
 
@@ -380,6 +392,7 @@
 
 		if(restocking_reagents)
 			var/reagent_added = restock_reagents(min(cart.supplies_remaining, 100))
+			cart.update_icon()
 			if(reagent_added <= 0 || chem_refill_volume == chem_refill_volume_max)
 				break // All done
 			cart.supplies_remaining -= reagent_added
@@ -389,6 +402,7 @@
 			cart.supplies_remaining--
 
 	being_restocked = FALSE
+	cart.update_icon()
 	user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with [cart.supply_descriptor]."),
 	SPAN_NOTICE("You finish stocking [src] with [cart.supply_descriptor]."))
 
@@ -860,7 +874,7 @@
 	icon_state = "soutomed"
 
 	listed_products = list(
-		list("FIRST AID SUPPLIES", -1, null, null),
+		list("FIRST-AID SUPPLIES", -1, null, null),
 		list("First-Aid Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/no_med_skill, VENDOR_ITEM_REGULAR),
 		list("Pain-Stop Autoinjector", 2, /obj/item/reagent_container/hypospray/autoinjector/no_med_skill/tramadol, VENDOR_ITEM_REGULAR),
 		list("Roll Of Gauze", 4, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),

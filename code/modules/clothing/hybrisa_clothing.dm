@@ -560,7 +560,7 @@
 	slowdown = 0
 	uniform_restricted = null
 
-/obj/item/clothing/head/bio_hood/wy_bio/Initialize()
+/obj/item/clothing/suit/bio_suit/wy_bio/Initialize()
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
 

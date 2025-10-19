@@ -241,6 +241,7 @@
 //Misc actions
 /datum/action/yautja_emote_panel
 	name = "Open Emote Panel"
+	icon_file = 'icons/mob/hud/actions_yautja.dmi'
 	button_icon_state = "pred_template"
 	action_icon_state = "looc_toggle"
 

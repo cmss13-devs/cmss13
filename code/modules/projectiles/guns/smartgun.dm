@@ -325,9 +325,9 @@
 		return
 	var/obj/item/weapon/gun/smartgun/smortgun = holder_item
 	if(smortgun.aim_assist)
-		button.icon_state = "template_on"
+		button.icon_state = "aimassist_off"
 	else
-		button.icon_state = "template"
+		button.icon_state = "aimassist"
 
 /datum/action/item_action/smartgun/toggle_accuracy_improvement/New(Target, obj/item/holder)
 	. = ..()

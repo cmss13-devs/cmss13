@@ -150,7 +150,6 @@
 
 				if("Turn")
 					if(GLOB.radial_menus["buildmode_basic_obj_[key_name(admin_building)]"])
-						to_world("duplicate, cancel")
 						return
 					radial_menu_options = list(
 						"North" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),

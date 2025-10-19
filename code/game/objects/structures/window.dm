@@ -95,10 +95,11 @@
 	setDir(ini_dir)
 
 
-//create_debris creates debris like shards and rods. This also includes the window frame for explosions
-//If an user is passed, it will create a "user smashes through the window" message. AM is the item that hits
-//Please only fire this after a hit
-/obj/structure/window/proc/healthcheck(make_hit_sound = 1, make_shatter_sound = 1, create_debris = 1, mob/user, atom/movable/AM)
+/**
+ * Creates debris like shards and rods. This also includes the window frame for explosions.
+ * If an user is passed, it will create a "user smashes through the window" message. causing_atom is the item that hit this.
+ */
+/obj/structure/window/proc/healthcheck(make_hit_sound = TRUE, make_shatter_sound = TRUE, create_debris = TRUE, mob/user, atom/movable/causing_atom)
 	if(not_damageable)
 		if(make_hit_sound) //We'll still make the noise for immersion's sake
 			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
@@ -107,11 +108,8 @@
 		if(user && istype(user))
 			user.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
 			SEND_SIGNAL(user, COMSIG_MOB_DESTROY_WINDOW, src)
-			for(var/mob/living/carbon/viewer_in_range in orange(7, src))
-				if(AM)
-					to_chat(viewer_in_range, SPAN_WARNING("[user] smashes through [src] with [AM]!"))
-				else
-					to_chat(viewer_in_range, SPAN_WARNING("[src] breaks!"))
+			visible_message(SPAN_WARNING("[user] smashes [src][causing_atom ? " with [causing_atom]!" : "!"]"),
+			SPAN_WARNING("[src] breaks!"), 7)
 			if(is_mainship_level(z))
 				SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
 		if(make_shatter_sound)
@@ -121,17 +119,17 @@
 		if(make_hit_sound)
 			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 
-/obj/structure/window/bullet_act(obj/projectile/Proj)
+/obj/structure/window/bullet_act(obj/projectile/bullet)
 	//Tasers and the like should not damage windows.
-	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
-	if(Proj.ammo.damage_type == HALLOSS || Proj.damage <= 0 || ammo_flags == AMMO_ENERGY)
-		return 0
+	var/ammo_flags = bullet.ammo.flags_ammo_behavior | bullet.projectile_override_flags
+	if(bullet.ammo.damage_type == HALLOSS || bullet.damage <= 0 || ammo_flags == AMMO_ENERGY)
+		return FALSE
 
 	if(!not_damageable) //Impossible to destroy
-		health -= Proj.damage
+		health -= bullet.damage
 	..()
-	healthcheck(user = Proj.firer)
-	return 1
+	healthcheck(user = bullet.firer, causing_atom = bullet)
+	return TRUE
 
 /obj/structure/window/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
 	if(not_damageable) //Impossible to destroy

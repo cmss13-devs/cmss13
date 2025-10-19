@@ -160,6 +160,10 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
+/obj/item/clothing/under/hybrisa/kelland_mining/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
+
 // Weymart
 
 /obj/item/clothing/under/hybrisa/weymart
@@ -496,6 +500,10 @@
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 
+/obj/item/clothing/head/helmet/hybrisa/kelland_mining_helmet/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
+
 // Pizza-Galaxy (Rare Helmet)
 
 /obj/item/clothing/head/helmet/hybrisa/pizza_galaxy
@@ -529,6 +537,10 @@
 	)
 	icon_state = "sci_expedition_helmet"
 	item_state = "sci_expedition_helmet"
+
+/obj/item/clothing/head/bio_hood/wy_bio/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/head/bio_hood/wy_bio/alt
 	name = "WY-TSS MK I - bio hood"
@@ -757,6 +769,10 @@
 		/obj/item/storage/belt/gun/xm51,
 	)
 
+/obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
+
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt
 	name = "\improper Kelland-Mining utility uniform"
 	desc = "A set of standard issue Kelland-Mining utility fatigues, a yellow pair of utility work slacks and a black collard heavy padded jacket, which protects against various environmental hazards."
@@ -797,6 +813,10 @@
 		/obj/item/storage/belt/gun/m39,
 		/obj/item/storage/belt/gun/xm51,
 	)
+
+/obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
 
 // EMT - Paramedic
 

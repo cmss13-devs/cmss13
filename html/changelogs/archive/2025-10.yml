@@ -175,3 +175,9 @@
   - imageadd: New Sprites for m82f
   realforest2001:
   - bugfix: Fixed non-functional on-mob sprites for the blue and black leather satchels.
+2025-10-19:
+  Zenith:
+  - imageadd: sprite replacements of the basketball hoop, LV-big tree & drone fabricator.
+  halander1:
+  - rscadd: New pay levels for researchers and W-Y comms
+  - bugfix: Low pay of researchers

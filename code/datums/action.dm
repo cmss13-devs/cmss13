@@ -338,6 +338,57 @@
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
+/datum/action/item_action/toggle/m56goggles/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/m56goggles/action_activate()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/m56goggles/update_button_icon()
+	var/obj/item/clothing/glasses/night = holder_item
+	if(!night.deactive_state || night.active)
+		action_icon_state = "sg_nv_off"
+	else
+		action_icon_state = "sg_nv"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/hudgoggles/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/hudgoggles/action_activate()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/hudgoggles/update_button_icon()
+	var/obj/item/clothing/glasses/hud_goggles = holder_item
+	var/base_icon
+	var/deactivate_state = "degoggles"
+
+	if(istype(hud_goggles, /obj/item/clothing/glasses/hud/health))
+		base_icon = "healthhud"
+	else if(istype(hud_goggles, /obj/item/clothing/glasses/hud/security))
+		base_icon = "securityhud"
+	else if(istypestrict(hud_goggles, /obj/item/clothing/glasses/meson))
+		base_icon = "meson"
+	else if(istypestrict(hud_goggles, /obj/item/clothing/glasses/meson/refurbished))
+		base_icon = "refurb_meson"
+	else if(istype(hud_goggles, /obj/item/clothing/glasses/science))
+		base_icon = "purple"
+		deactivate_state = "purple_off"
+	else
+		base_icon = "healthhud"
+
+	if(!hud_goggles.deactive_state || hud_goggles.active)
+		action_icon_state = base_icon
+	else
+		action_icon_state = deactivate_state
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
 /datum/action/item_action/toggle/flashlight/New()
 	. = ..()
 	update_button_icon()

@@ -310,7 +310,7 @@
 	. = ..()
 	name = "Toggle Aim Assist"
 
-	action_icon_state = "aimassist"
+	update_icon()
 	button.name = name
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
@@ -325,9 +325,9 @@
 		return
 	var/obj/item/weapon/gun/smartgun/smortgun = holder_item
 	if(smortgun.aim_assist)
-		button.icon_state = "aimassist_off"
+		action_icon_state = "aimassist"
 	else
-		button.icon_state = "aimassist"
+		action_icon_state = "aimassist_off"
 
 /datum/action/item_action/smartgun/toggle_accuracy_improvement/New(Target, obj/item/holder)
 	. = ..()

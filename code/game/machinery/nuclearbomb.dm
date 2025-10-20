@@ -434,12 +434,12 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 					qdel(embryo)
 
 	for(var/mob/current_mob in alive_mobs)
-		if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
+		if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer))
 			continue
 		current_mob.death(create_cause_data("nuclear explosion"))
 
 	for(var/mob/living/current_mob in (alive_mobs + dead_mobs))
-		if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
+		if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer))
 			continue
 		for(var/obj/item/alien_embryo/embryo in current_mob)
 			qdel(embryo)

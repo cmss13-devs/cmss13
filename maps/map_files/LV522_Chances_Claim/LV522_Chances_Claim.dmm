@@ -777,24 +777,10 @@
 "add" = (
 /turf/open/slippery/hull/dir/southwest,
 /area/sky)
-"ade" = (
+"adj" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/sand_white/layer0,
-/area/lv522/oob)
-"adf" = (
-/obj/structure/platform_decoration/stone/strata/west,
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/oob)
-"adg" = (
-/obj/structure/platform/stone/strata/north,
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/oob)
-"adh" = (
-/obj/structure/platform_decoration/stone/strata/east,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adi" = (
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
+/area/sky)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -822,164 +808,23 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/containers)
-"adp" = (
-/obj/structure/platform/stone/strata/east,
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/oob)
-"adq" = (
-/obj/item/prop/colony/usedbandage{
-	dir = 9;
-	pixel_x = 5;
-	pixel_y = 15
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adr" = (
-/turf/open/auto_turf/shale/layer2,
-/area/lv522/oob)
-"ads" = (
-/obj/structure/platform/stone/strata/north,
-/obj/structure/platform/stone/strata/west,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adt" = (
-/obj/structure/platform/stone/strata/north,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adu" = (
-/obj/structure/platform_decoration/stone/strata/east,
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/oob)
-"adv" = (
-/obj/structure/platform/stone/strata/east,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adw" = (
-/obj/item/stack/medical/bruise_pack,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adx" = (
-/obj/item/prop/colony/usedbandage{
-	dir = 5;
-	pixel_y = 8
-	},
-/obj/item/prop/colony/usedbandage{
-	dir = 10
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"ady" = (
-/obj/structure/bed/bedroll{
-	dir = 1;
-	layer = 6;
-	pixel_y = 16
-	},
-/obj/item/bedsheet/ce{
-	layer = 6.1;
-	pixel_y = 17
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adz" = (
-/obj/item/ammo_magazine/sniper{
-	current_rounds = 0;
-	pixel_x = -6;
-	pixel_y = -7
-	},
-/obj/item/ammo_magazine/sniper{
-	current_rounds = 0;
-	pixel_x = 3;
-	pixel_y = 12
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adA" = (
-/obj/structure/platform_decoration/stone/strata,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adB" = (
-/obj/structure/platform/stone/strata,
-/obj/structure/platform/stone/strata/east,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adC" = (
-/obj/item/storage/belt/marine{
-	pixel_x = 7;
+"adn" = (
+/obj/structure/prop/invuln/rope{
+	pixel_x = 11;
 	pixel_y = 5
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adD" = (
-/obj/item/weapon/gun/rifle/sniper/M42A{
-	current_mag = null
-	},
+/area/sky)
+"ado" = (
+/obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adE" = (
-/obj/item/device/flashlight/lamp/tripod{
-	layer = 6;
-	pixel_y = 11
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adF" = (
-/obj/structure/platform/stone/strata/west,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
+/area/sky)
 "adG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/condiment/saltshaker,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/lone_buildings/chunk)
-"adH" = (
-/obj/item/storage/box/mre{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/mre{
-	pixel_x = -1;
-	pixel_y = -6
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adI" = (
-/obj/item/trash/uscm_mre{
-	pixel_x = 10;
-	pixel_y = -2
-	},
-/obj/item/trash/uscm_mre{
-	pixel_y = 10
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adJ" = (
-/obj/structure/platform/stone/strata/west,
-/obj/structure/platform/stone/strata,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adK" = (
-/obj/structure/platform_decoration/stone/strata/north,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adL" = (
-/obj/structure/prop/invuln/rope{
-	pixel_x = 11;
-	pixel_y = 5
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
-"adM" = (
-/obj/structure/platform_decoration/stone/strata,
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/oob)
-"adN" = (
-/obj/structure/platform/stone/strata,
-/turf/open/auto_turf/sand_white/layer0,
-/area/lv522/oob)
-"adO" = (
-/obj/structure/platform/stone/strata,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/oob)
 "adP" = (
 /obj/structure/barricade/deployable{
 	dir = 4
@@ -48784,8 +48629,8 @@ cpy
 cpy
 cpy
 cpy
-ade
-ade
+cpy
+cpy
 cpy
 cpy
 cpy
@@ -48989,10 +48834,10 @@ cpy
 cpy
 cpy
 cpy
-adA
-adv
-adp
-adf
+cpy
+cpy
+cpy
+cpy
 cpy
 cpy
 cpy
@@ -49194,12 +49039,12 @@ cpy
 cpy
 cpy
 cpy
-adA
-adB
-adw
-adq
-adg
-ade
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
 cpy
 cpy
 cpy
@@ -49399,13 +49244,13 @@ cpy
 cpy
 cpy
 cpy
-adM
-adB
-adC
-adx
-adr
-adg
-ade
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
 cpy
 cpy
 cpy
@@ -49605,13 +49450,13 @@ cpy
 cpy
 cpy
 cpy
-adN
-adH
-adi
-adi
-ads
-adh
-ade
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
 cpy
 cpy
 cpy
@@ -49810,13 +49655,13 @@ cpy
 cpy
 cpy
 cpy
-ade
-adN
-adI
-adD
-ady
-adt
-adi
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
 cpy
 cpy
 cpy
@@ -50015,14 +49860,14 @@ cpy
 cpy
 cpy
 cpy
-ade
-ade
-adO
-adr
-adE
-adz
-adt
-ade
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
 cpy
 cpy
 cpy
@@ -50221,14 +50066,14 @@ cpy
 cpy
 cpy
 cpy
-ade
-adi
-adK
-adJ
-adr
-ads
-adu
-ade
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
 cpy
 cpy
 cpy
@@ -50428,12 +50273,12 @@ cpy
 cpy
 cpy
 cpy
-adi
-adi
-adK
-adF
-adh
-ade
+cpy
+cpy
+cpy
+cpy
+cpy
+cpy
 cpy
 cpy
 cpy
@@ -50635,11 +50480,11 @@ ien
 cpy
 cpy
 ien
-adi
-adL
+cpy
+cpy
 ien
-ade
-ade
+cpy
+cpy
 ien
 cpy
 cpy
@@ -90394,11 +90239,11 @@ rzq
 roM
 roM
 cCg
-cYd
-uab
+ado
+adn
 cCg
-fIA
-fIA
+adj
+adj
 cCg
 roM
 roM
@@ -104652,7 +104497,7 @@ acY
 add
 rzq
 rzq
-add
+acY
 add
 rzq
 rzq
@@ -109172,9 +109017,9 @@ rzq
 rzq
 rzq
 acX
-rzq
-rzq
-rzq
+adc
+adc
+adc
 acV
 acV
 acV
@@ -110821,7 +110666,7 @@ rzq
 rzq
 rzq
 rzq
-rzq
+acW
 acV
 acV
 acV
@@ -111027,7 +110872,7 @@ rzq
 rzq
 rzq
 rzq
-rzq
+acW
 acV
 acV
 acV

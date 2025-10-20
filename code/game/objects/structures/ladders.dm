@@ -29,8 +29,10 @@
 /obj/structure/ladder/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("Drag-click to look up or down [src].")
+	. += SPAN_NOTICE("Ctrl-click to go up, Alt-click to go down.")
 	if(ishuman(user))
 		. += SPAN_NOTICE("Click [src] with unprimed grenades/flares to prime and toss it up or down.")
+		. += SPAN_NOTICE("Ctrl-click or Alt-click with grenades/flares to throw in that direction.")
 
 /obj/structure/ladder/LateInitialize()
 	. = ..()
@@ -82,27 +84,50 @@
 		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 		return
 
+	var/direction
+	if(up && down)
+		var/choice = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
+		if(choice == "up")
+			direction = "up"
+		else if(choice == "down")
+			direction = "down"
+		else
+			return //User cancelled or invalid choice
+	else if(up)
+		direction = "up"
+	else if(down)
+		direction = "down"
+	else
+		return FALSE //No valid directions
+
+	climb_ladder(user, direction)
+
+//Helper function to handle climbing logic for both manual clicks and modifier clicks
+/obj/structure/ladder/proc/climb_ladder(mob/living/user, direction)
+	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored)
+		return FALSE
+	if(busy)
+		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
+		return FALSE
+
 	var/ladder_dir_name
 	var/obj/structure/ladder/ladder_dest
-	if(up && down)
-		ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
-		if(ladder_dest == "up")
-			ladder_dest = up
-			ladder_dir_name = ("up")
-		if(ladder_dest == "down")
-			ladder_dest = down
-			ladder_dir_name = ("down")
-	else if(up)
+
+	if(direction == "up")
+		if(!up)
+			return FALSE
 		ladder_dir_name = "up"
 		ladder_dest = up
-	else if(down)
+	else if(direction == "down")
+		if(!down)
+			return FALSE
 		ladder_dir_name = "down"
 		ladder_dest = down
 	else
-		return FALSE //just in case
+		return FALSE
 
 	if(!ladder_dest)
-		return
+		return FALSE
 
 	step(user, get_dir(user, src))
 	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),
@@ -117,6 +142,36 @@
 			user.trainteleport(ladder_dest.loc)
 	busy = FALSE
 	add_fingerprint(user)
+	return TRUE
+
+//Alt click to go down
+/obj/structure/ladder/proc/alt_click_action(mob/user)
+	if(!isliving(user))
+		return
+	climb_ladder(user, "down")
+
+//Ctrl click to go up
+/obj/structure/ladder/proc/ctrl_click_action(mob/user)
+	if(!isliving(user))
+		return
+	climb_ladder(user, "up")
+
+//Override clicked to handle modifier clicks
+/obj/structure/ladder/clicked(mob/user, list/mods)
+	// If user is holding a throwable item, let attackby handle the modifier clicks
+	if(isliving(user))
+		var/mob/living/living_user = user
+		var/obj/item/held_item = living_user.get_active_hand()
+		if(held_item && (istype(held_item, /obj/item/explosive/grenade) || istype(held_item, /obj/item/device/flashlight)))
+			return FALSE // Let attackby handle this
+
+	if(mods[ALT_CLICK])
+		alt_click_action(user)
+		return TRUE
+	if(mods[CTRL_CLICK])
+		ctrl_click_action(user)
+		return TRUE
+	return ..()
 
 /obj/structure/ladder/check_eye(mob/living/user)
 	//Are we capable of looking?
@@ -210,92 +265,91 @@
 /obj/structure/ladder/ex_act(severity)
 	return
 
-//Throwing Shiet
-/obj/structure/ladder/attackby(obj/item/W, mob/user)
-	//Throwing Grenades
-	if(istype(W,/obj/item/explosive/grenade))
-		var/obj/item/explosive/grenade/G = W
-		var/ladder_dir_name
-		var/obj/structure/ladder/ladder_dest
-		if(up && down)
-			ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
-			if(ladder_dest == "up")
-				ladder_dest = up
-				ladder_dir_name = ("up")
-			if(ladder_dest == "down")
-				ladder_dest = down
-				ladder_dir_name = ("down")
-		else if(up)
-			ladder_dir_name = "up"
-			ladder_dest = up
-		else if(down)
-			ladder_dir_name = "down"
-			ladder_dest = down
-		else
-			return FALSE //just in case
+//Helper function to handle throwing items up/down ladders
+/obj/structure/ladder/proc/throw_item_ladder(obj/item/item, mob/user, direction)
+	var/ladder_dir_name
+	var/obj/structure/ladder/ladder_dest
 
-		if(!ladder_dest)
-			return
+	if(direction == "up")
+		if(!up)
+			return FALSE
+		ladder_dir_name = "up"
+		ladder_dest = up
+	else if(direction == "down")
+		if(!down)
+			return FALSE
+		ladder_dir_name = "down"
+		ladder_dest = down
+	else
+		return FALSE
 
+	if(!ladder_dest)
+		return FALSE
+
+	// Handle grenade-specific logic
+	if(istype(item, /obj/item/explosive/grenade))
+		var/obj/item/explosive/grenade/G = item
 		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
 			to_chat(user, SPAN_WARNING("\The [G.name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
-			// Let staff know, in case someone's actually about to try to grief
 			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
-			return
+			return FALSE
 
-		user.visible_message(SPAN_WARNING("[user] takes position to throw [G] [ladder_dir_name] [src]."),
-		SPAN_WARNING("You take position to throw [G] [ladder_dir_name] [src]."))
-		if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message(SPAN_WARNING("[user] throws [G] [ladder_dir_name] [src]!"),
-			SPAN_WARNING("You throw [G] [ladder_dir_name] [src]"))
-			user.drop_held_item()
-			G.forceMove(ladder_dest.loc)
-			G.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
-			step_away(G, src, rand(1, 5))
+	user.visible_message(SPAN_WARNING("[user] takes position to throw [item] [ladder_dir_name] [src]."),
+	SPAN_WARNING("You take position to throw [item] [ladder_dir_name] [src]."))
+
+	if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		user.visible_message(SPAN_WARNING("[user] throws [item] [ladder_dir_name] [src]!"),
+		SPAN_WARNING("You throw [item] [ladder_dir_name] [src]"))
+		user.drop_held_item()
+		item.forceMove(ladder_dest.loc)
+		item.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
+		step_away(item, src, rand(1, 5))
+
+		// Handle grenade activation
+		if(istype(item, /obj/item/explosive/grenade))
+			var/obj/item/explosive/grenade/G = item
 			if(!G.active)
 				G.activate(user)
 
-	//Throwing Flares and flashlights
-	else if(istype(W,/obj/item/device/flashlight))
-		var/obj/item/device/flashlight/F = W
-		var/ladder_dir_name
-		var/obj/structure/ladder/ladder_dest
-		if(up && down)
-			ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
-			if(ladder_dest == "up")
-				ladder_dest = up
-				ladder_dir_name = ("up")
-			if(ladder_dest == "down")
-				ladder_dest = down
-				ladder_dir_name = ("down")
-		else if(up)
-			ladder_dir_name = "up"
-			ladder_dest = up
-		else if(down)
-			ladder_dir_name = "down"
-			ladder_dest = down
-		else
-			return FALSE //just in case
+		// Handle flare activation
+		if(istype(item, /obj/item/device/flashlight/flare))
+			var/obj/item/device/flashlight/flare/the_flare = item
+			if(!the_flare.on)
+				the_flare.turn_on()
 
+	return TRUE
 
-		if(!ladder_dest)
-			return
-
-		user.visible_message(SPAN_WARNING("[user] takes position to throw [F] [ladder_dir_name] [src]."),
-		SPAN_WARNING("You take position to throw [F] [ladder_dir_name] [src]."))
-		if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message(SPAN_WARNING("[user] throws [F] [ladder_dir_name] [src]!"),
-			SPAN_WARNING("You throw [F] [ladder_dir_name] [src]"))
-			user.drop_held_item()
-			F.forceMove(ladder_dest.loc)
-			F.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
-			step_away(F,src,rand(1, 5))
-			if(istype(W, /obj/item/device/flashlight/flare))
-				var/obj/item/device/flashlight/flare/the_flare = W
-				if(!the_flare.on)
-					the_flare.turn_on()
-	else
+//Throwing Shiet
+/obj/structure/ladder/attackby(obj/item/W, mob/user, list/mods)
+	// Check if this is a throwable item (grenades or flashlights)
+	if(!istype(W, /obj/item/explosive/grenade) && !istype(W, /obj/item/device/flashlight))
 		return attack_hand(user)
+
+	var/direction
+
+	// Check for modifier keys first
+	if(mods && mods[CTRL_CLICK] && up)
+		direction = "up"
+	else if(mods && mods[ALT_CLICK] && down)
+		direction = "down"
+	// If no modifier or invalid direction, use menu/auto-select
+	else if(up && down)
+		var/choice = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
+		if(choice == "up")
+			direction = "up"
+		else if(choice == "down")
+			direction = "down"
+		else
+			return // User cancelled
+	else if(up)
+		direction = "up"
+	else if(down)
+		direction = "down"
+	else
+		return FALSE // No valid directions
+
+	// Use the helper function to throw the item
+	throw_item_ladder(W, user, direction)
 
 /obj/structure/ladder/fragile_almayer //goes away on hijack
 	name = "rickety ladder"

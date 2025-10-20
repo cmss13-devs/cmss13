@@ -62,6 +62,10 @@
 	manufacturer = "souta"
 	full_name = "<span class='corp_label_red'>Souta Corporation</span>"
 
+/datum/element/corp_label/karnak
+	manufacturer = "karnak"
+	full_name = "<span class='corp_label_white'>Karnak Electronics</span>"
+
 /datum/element/corp_label/Attach(datum/target)
 	. = ..()
 	if(!length(manufacturer))

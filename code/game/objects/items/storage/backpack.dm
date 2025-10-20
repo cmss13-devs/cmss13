@@ -1112,6 +1112,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	camo_on_sound = 'sound/effects/pred_cloakon.ogg'
 	camo_off_sound = 'sound/effects/pred_cloakoff.ogg'
 
+/obj/item/storage/backpack/marine/satchel/scout_cloak/wy_invis_droid/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 // Welder Backpacks //
 
 /obj/item/storage/backpack/marine/engineerpack

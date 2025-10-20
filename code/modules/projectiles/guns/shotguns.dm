@@ -1483,7 +1483,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb
 	name = "\improper HG 37-12 pump shotgun"
-	desc = "A eight-round pump action shotgun with four-round capacity dual internal tube magazines allowing for quick reloading and highly accurate fire. Used exclusively by Colonial Marshals. You can switch the active internal magazine by toggling the shotgun tube."
+	desc = "A Henjin-Garcia Armaments Company eight-round pump action shotgun with four-round capacity dual internal tube magazines allowing for quick reloading and highly accurate fire. You can switch the active internal magazine by toggling the shotgun tube."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/shotguns.dmi'
 	icon_state = "hg3712"
 	item_state = "hg3712"

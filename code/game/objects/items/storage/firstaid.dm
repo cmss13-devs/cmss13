@@ -557,6 +557,10 @@
 	icon_state = "surgical_case_elite"
 	storage_slots = 5
 
+/obj/item/storage/surgical_case/elite/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/storage/surgical_case/elite/commando/fill_preset_inventory()
 	new /obj/item/tool/surgery/scalpel(src)
 	new /obj/item/tool/surgery/hemostat(src)

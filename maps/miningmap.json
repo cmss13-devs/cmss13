@@ -3,7 +3,7 @@
     "map_path": "map_files/miningmap",
     "map_file": "miningmap.dmm",
     "webmap_url": "LV624",
-    "weather_holder": "/datum/weather_ss_map_holder/lv624",
+    "weather_holder": "/datum/weather_ss_map_holder/big_red",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",
         "/datum/equipment_preset/survivor/doctor/lv",

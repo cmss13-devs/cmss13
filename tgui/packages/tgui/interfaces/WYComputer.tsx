@@ -258,7 +258,7 @@ const MainMenu = (props) => {
           >
             Security Flash
           </Button.Confirm>
-          {(access_level === 3 || access_level >= 7) && (
+          {(access_level === 3 || access_level === 4 || access_level >= 7) && (
             <Button
               align="center"
               tooltip="Release stored CN20-X nerve gas from security vents."

@@ -152,6 +152,7 @@
 
 #define COLOR_ORANGE "#FF9900"
 #define COLOR_OIL "#030303"
+#define COLOR_OIL_TEXT "#F9CA24" // SS220 EDIT ADDICTION
 
 //Grass Colors coming from _math.dm
 

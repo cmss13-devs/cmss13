@@ -23,6 +23,7 @@ type Data = {
   beakerContents: BeakerProps;
   beakerCurrentVolume: number | null;
   beakerMaxVolume: number | null;
+  network: string | null;
   chemicals: { title: string; id: string }[];
 };
 
@@ -30,20 +31,28 @@ export const ChemDispenser = (props) => {
   const { act, data } = useBackend<Data>();
   const beakerTransferAmounts = data.beakerTransferAmounts || [];
   const beakerContents = data.beakerContents || [];
+  let chemDispenserTitle = 'Реагенты';
+  switch (data.network) {
+    case 'Misc':
+      chemDispenserTitle = 'Напитки';
+      break;
+    default:
+      break;
+  }
   return (
-    <Window width={435} height={620}>
+    <Window width={500} height={620}>
       <Window.Content scrollable>
-        <Section title="Status">
+        <Section title="Статус">
           <LabeledList>
-            <LabeledList.Item label="Energy">
+            <LabeledList.Item label="Заряд">
               <ProgressBar value={data.energy / data.maxEnergy}>
-                {toFixed(data.energy) + ' energy'}
+                {toFixed(data.energy) + ' энергии'}
               </ProgressBar>
             </LabeledList.Item>
           </LabeledList>
         </Section>
         <Section
-          title="Dispense"
+          title={`${chemDispenserTitle}`}
           buttons={beakerTransferAmounts.map((amount) => (
             <Button
               key={amount}
@@ -59,12 +68,18 @@ export const ChemDispenser = (props) => {
             </Button>
           ))}
         >
-          <Box mr={-1}>
+          <Box
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', // Фикс для переполнения
+              gap: '4px',
+              width: '100%',
+            }}
+          >
             {data.chemicals.map((chemical) => (
               <Button
                 key={chemical.id}
                 icon="arrow-alt-circle-down"
-                width="129.5px"
                 lineHeight={1.75}
                 onClick={() =>
                   act('dispense', {
@@ -78,7 +93,7 @@ export const ChemDispenser = (props) => {
           </Box>
         </Section>
         <Section
-          title="Beaker"
+          title="Ёмкость"
           buttons={beakerTransferAmounts.map((amount) => (
             <Button
               key={amount}
@@ -91,7 +106,7 @@ export const ChemDispenser = (props) => {
         >
           <LabeledList>
             <LabeledList.Item
-              label="Beaker"
+              label="Заполнено"
               buttons={
                 !!data.isBeakerLoaded && (
                   <Button
@@ -99,7 +114,7 @@ export const ChemDispenser = (props) => {
                     disabled={!data.isBeakerLoaded}
                     onClick={() => act('eject')}
                   >
-                    Eject
+                    Извлечь
                   </Button>
                 )
               }
@@ -110,19 +125,19 @@ export const ChemDispenser = (props) => {
                     initial={0}
                     value={data.beakerCurrentVolume || 0}
                   />
-                  /{data.beakerMaxVolume} units
+                  /{data.beakerMaxVolume} единиц
                 </>
-              )) || <NoticeBox info>No beaker loaded!</NoticeBox>}
+              )) || <NoticeBox info>Ёмкость не обнаружена!</NoticeBox>}
             </LabeledList.Item>
-            <LabeledList.Item label="Contents">
+            <LabeledList.Item label="Состав">
               <Box color="label">
-                {(!data.isBeakerLoaded && 'N/A') ||
-                  (beakerContents.length === 0 && 'Nothing')}
+                {(!data.isBeakerLoaded && 'Н/Д') ||
+                  (beakerContents.length === 0 && 'Н/Д')}
               </Box>
               {beakerContents.map((chemical) => (
                 <Box key={chemical.name} color="label">
-                  <AnimatedNumber initial={0} value={chemical.volume} /> units
-                  of {chemical.name}
+                  <AnimatedNumber initial={0} value={chemical.volume} />
+                  &nbsp;единиц {chemical.name}
                 </Box>
               ))}
             </LabeledList.Item>

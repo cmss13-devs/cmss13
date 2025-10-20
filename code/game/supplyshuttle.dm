@@ -149,7 +149,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "SupplyComputer")
+		ui = new(user, src, "SupplyComputer", capitalize(declent_ru()))
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
@@ -170,23 +170,23 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		.["current_order"] += list(list_pack)
 
 	var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
-	.["shuttle_status"] = "lowered"
+	.["shuttle_status"] = "Поднять лифт" // SS220 EDIT ADDITTION
 	if (shuttle.has_arrive_time())
-		.["shuttle_status"] = "moving"
+		.["shuttle_status"] = "Движется" // SS220 EDIT ADDITTION
 		return
 
 	if (shuttle.at_station() )
-		.["shuttle_status"] = "raised"
+		.["shuttle_status"] = "Опустить лифт" // SS220 EDIT ADDITTION
 
 		switch(shuttle.docking_controller?.get_docking_status())
 			if ("docked")
-				.["shuttle_status"] = "raised"
+				.["shuttle_status"] = "поднять" // SS220 EDIT ADDITTION
 			if ("undocked")
-				.["shuttle_status"] = "lowered"
+				.["shuttle_status"] = "опустить" // SS220 EDIT ADDITTION
 			if ("docking")
-				.["shuttle_status"] = "raising"
+				.["shuttle_status"] = "поднимается" // SS220 EDIT ADDITTION
 			if ("undocking")
-				.["shuttle_status"] = "lowering"
+				.["shuttle_status"] = "опускается" // SS220 EDIT ADDITTION
 
 /obj/structure/machinery/computer/supply/ui_static_data(mob/user)
 	. = ..()
@@ -210,7 +210,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			continue
 
 		if(!pack.contraband && length(pack.group))
-			.["valid_categories"] |= pack.group
+			.["valid_categories"] |= linked_supply_controller.translated_all_supply_groups[pack.group] || pack.group // SS220 EDIT ADDITTION
 
 		var/list_pack = pack.get_list_representation()
 
@@ -321,7 +321,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			print_form(supply_order)
 
 			linked_supply_controller.requestlist += supply_order
-			system_message = "Thanks for your request. The cargo team will process it as soon as possible."
+			system_message = "Спасибо за заказ. Грузовые техники обработают его как можно скорее." // SS220 - EDIT ADDITTION
 			return TRUE
 
 		if("acknowledged")
@@ -338,28 +338,35 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/structure/machinery/computer/supply/proc/print_form(datum/supply_order/order)
 	var/list/accesses = list()
+	var/list/categories = list() // SS220 - EDIT ADDITTION
 
 	for(var/datum/supply_packs/pack as anything in order.objects)
-		var/access = get_access_desc(pack.access)
+		// SS220 - START EDIT ADDITTION
+		var/access = translate_get_access_desc(pack.access)
+		var/group = linked_supply_controller.translated_all_supply_groups[pack.group] || pack.group
+		pack.name = capitalize(declent_ru_initial(pack.name, NOMINATIVE, pack.name))
+		// SS220 - END EDIT ADDITTION
+
 		if(length(access))
 			accesses += access
+		if(length(group)) // SS220 EDIT ADDITTION
+			categories += group // SS220 EDIT ADDITTION
 
-	var/obj/item/paper/reqform = new(loc)
-	reqform.name = "Requisition Form - #[order.ordernum]"
-
-	reqform.info += "<h3>[MAIN_SHIP_NAME] Supply Requisition Form</h3><hr>"
-	reqform.info += "INDEX: #[order.ordernum]<br>"
-	reqform.info += "REQUESTED BY: [order.orderedby]<br>"
-	reqform.info += "RANK: [order.orderedby_rank]<br>"
-	reqform.info += "REASON: [order.reason]<br>"
-	reqform.info += "ACCESS RESTRICTION: [english_list(accesses, nothing_text = "None")]<br>"
-	reqform.info += "CONTENTS:<br>"
-	for(var/datum/supply_packs/supply_pack as anything in order.objects)
-		reqform.info += supply_pack.manifest
-	reqform.info += "<hr>"
-	reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
-
-	reqform.update_icon()
+// SS220 - START EDIT ADDITTION
+	var/obj/item/paper/reqform/slip
+	slip = new /obj/item/paper/reqform(loc)
+	slip.shipname = MAIN_SHIP_NAME
+	slip.ordernum = "[order.ordernum]-[rand(0,99)]-[rand(0,999)]"
+	slip.orderedby = order.orderedby
+	slip.orderedby_rank = order.orderedby_rank
+	slip.reason = order.reason
+	slip.date = "[translate_time2text(REALTIMEOFDAY)]"
+	slip.accesses = accesses
+	slip.supplypacks = order.objects
+	slip.categories = categories
+	slip.generate_contents()
+	slip.update_icon()
+// SS220 - END EDIT ADDITTION
 
 /obj/structure/machinery/computer/supply/proc/is_buyable(datum/supply_packs/supply_pack)
 	if(!supply_pack.buyable)
@@ -600,8 +607,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 
 	crate.visible_message(SPAN_WARNING("\The [crate] loads into a launch tube. Stand clear!"))
-	current_squad.send_message("'[crate.name]' supply drop incoming. Heads up!")
-	current_squad.send_maptext(crate.name, "Incoming Supply Drop:")
+	current_squad.send_message("Приближается дроп-под '[crate.name]' со снабжением. Осторожно!")
+	current_squad.send_maptext(crate.name, "Приближается дроп-под снабжения:")
 	COOLDOWN_START(src, next_fire, drop_cooldown)
 	if(ismob(usr))
 		var/mob/M = usr
@@ -652,6 +659,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/orderedby_rank
 
 	var/approvedby = null
+	var/approvedby_rank = null // SS220 EDIT ADDITTION
 
 	/// The user submitted reason as to why they want this order
 	var/reason
@@ -710,7 +718,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	if(length(ordered))
 		if(objects ~! ordered)
-			buyer.system_message = "Could not purchase all items. Available items have been purchased."
+			buyer.system_message = "Не удалось обработать весь заказ. Доступные для доставки предметы были заказаны." // SS220 - EDIT ADDITTION
 
 		objects = ordered
 		buyer.linked_supply_controller.requestlist -= src
@@ -782,6 +790,29 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Explosives",
 		"Reagent tanks",
 		)
+
+	// SS220 - START ADDITTION
+	var/list/translated_all_supply_groups = list(
+		"Operations" = "Операции",
+		"Weapons" = "Вооружение",
+		"Vehicle Ammo" = "Боеприпасы для транспорта",
+		"Vehicle Equipment" = "Оборудование для транспорта",
+		"Attachments" = "Обвесы для оружия",
+		"Ammo" = "Стандартные боеприпасы",
+		"Weapons Specialist Ammo" = "Боеприпасы специалистов",
+		"Restricted Equipment" = "Экипировка с ограниченным доступом",
+		"Clothing" = "Стандартная экипировка",
+		"Medical" = "Медицинское оборудование",
+		"Engineering" = "Инженерное оборудование",
+		"Research" = "Исследовательское оборудование",
+		"Supplies" = "Прочее",
+		"Food" = "Еда",
+		"Gear" = "Стандартное снаряжение",
+		"Mortar" = "Снаряжение миномётчика",
+		"Explosives" = "Взрывчатые вещества",
+		"Reagent tanks" = "Ёмкости для реагентов",
+	)
+	// SS220 - END ADDITTION
 
 	var/list/contraband_supply_groups = list(
 		"Seized Items",
@@ -1009,16 +1040,20 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					content_types += pick(package.contains)
 			for(var/typepath in content_types)
 				var/atom/item = new typepath(container)
-				content_names += item.name
+				content_names += capitalize(declent_ru_initial(item.name, NOMINATIVE, item.name)) // SS220 - EDIT ADDITTION
 
 			// Manifest generation
 			var/obj/item/paper/manifest/slip
 			if(!package.contraband) // I'm sorry boss i misplaced it...
 				slip = new /obj/item/paper/manifest(container)
-				slip.ordername = package.name
-				slip.ordernum = order.ordernum
+				slip.shipname = MAIN_SHIP_NAME // SS220 - EDIT ADDITTION
+				slip.ordername = capitalize(declent_ru_initial(package.name, NOMINATIVE, package.name)) // SS220 - EDIT ADDITTION
+				slip.ordernum = "[order.ordernum]-[rand(0,99)]-[rand(0,999)]" // SS220 - EDIT ADDITTION
 				slip.orderedby = order.orderedby
+				slip.orderedby_rank = order.orderedby_rank // SS220 EDIT ADDITTION
 				slip.approvedby = order.approvedby
+				slip.approvedby_rank = order.approvedby_rank // SS220 EDIT ADDITTION
+				slip.date = "[translate_time2text(REALTIMEOFDAY)]" // SS220 EDIT ADDITTION
 				slip.packages = content_names
 				slip.generate_contents()
 				slip.update_icon()
@@ -1026,66 +1061,85 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/item/paper/manifest
 	name = "Supply Manifest"
+	var/shipname // SS220 EDIT ADDITTION
 	var/ordername
 	var/ordernum
 	var/orderedby
+	var/orderedby_rank // SS220 EDIT ADDITTION
 	var/approvedby
+	var/approvedby_rank // SS220 EDIT ADDITTION
+	var/date // SS220 EDIT ADDITTION
 	var/list/packages
 
-/obj/item/paper/manifest/read_paper(mob/user, scramble = FALSE)
-	var/paper_info = info
-	if(scramble)
-		paper_info = stars_decode_html(info)
-	// Tossing ref in widow id as this allows us to read multiple manifests at same time
-	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", null, "manifest\ref[src]", width = 550, height = 650)
-	onclose(user, "manifest\ref[src]")
+// SS220 - START EDIT ADDITTION
+/obj/item/paper/reqform
+	name = "Requisition Form"
+	var/shipname
+	var/ordernum
+	var/orderedby
+	var/orderedby_rank
+	var/reason
+	var/date
+	var/accesses
+	var/categories
+	var/list/supplypacks
+
+/obj/item/paper/manifest/read_paper(mob/user, scramble = FALSE, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "PaperSupplyManifest", capitalize(declent_ru()))
+		ui.open()
+
+/obj/item/paper/reqform/read_paper(mob/user, scramble = FALSE, datum/tgui/ui, datum/supply_order/order)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "PaperRequisitionForm", capitalize(declent_ru()))
+		ui.open()
+
+/obj/item/paper/manifest/ui_data(mob/user)
+	var/list/data = list()
+
+	data["shipname"] = shipname
+	data["ordernum"] = ordernum
+	data["ordername"] = ordername
+	data["orderedby"] = orderedby
+	data["orderedby_rank"] = orderedby_rank
+	data["approvedby"] = approvedby
+	data["approvedby_rank"] = approvedby_rank
+	data["date"] = date
+	data["stampslist"] = stamps_list || list()
+	data["packages"] = packages
+
+	return data
+
+/obj/item/paper/reqform/ui_data(mob/user)
+	var/list/data = list()
+
+	data["shipname"] = shipname
+	data["ordernum"] = ordernum
+	data["orderedby"] = orderedby
+	data["orderedby_rank"] = orderedby_rank
+	data["reason"] = reason
+	data["date"] = date
+	data["accesses"] = accesses
+	data["categories"] = categories
+	data["stampslist"] = stamps_list || list()
+	data["supplypacks"] = supplypacks
+
+	return data
+// SS220 - END EDIT ADDITTION
 
 /obj/item/paper/manifest/proc/generate_contents()
-	// You don't tell anyone this is inspired from player-made fax layouts,
-	// or else, capiche ? Yes this is long, it's 80 col standard
-	info = "   \
-		<style>    \
-			#container { width: 500px; min-height: 500px; margin: 25px auto;  \
-					font-family: monospace; padding: 0; font-size: 130% }  \
-			#title { font-size: 250%; letter-spacing: 8px; \
-					font-weight: bolder; margin: 20px auto }   \
-			.header { font-size: 130%; text-align: center; }   \
-			.important { font-variant: small-caps; font-size = 130%;   \
-						font-weight: bolder; }    \
-			.tablelabel { width: 150px; }  \
-			.field { font-style: italic; } \
-			li { list-style-type: disc; list-style-position: inside; } \
-			table { table-layout: fixed }  \
-		</style><div id='container'>   \
-		<div class='header'>   \
-			<p id='title' class='important'>A.S.R.S.</p>   \
-			<p class='important'>Automatic Storage Retrieval System</p>    \
-			<p class='field'>Order #[ordernum]</p> \
-		</div><hr><table>  \
-		<colgroup> \
-			<col class='tablelabel important'> \
-			<col class='field'>    \
-		</colgroup>    \
-		<tr><td>Shipment:</td> \
-		<td>[ordername]</td></tr>  \
-		<tr><td>Ordered by:</td>   \
-		<td>[orderedby]</td></tr>  \
-		<tr><td>Approved by:</td>  \
-		<td>[approvedby]</td></tr> \
-		<tr><td># packages:</td>   \
-		<td class='field'>[length(packages)]</td></tr> \
-		</table><hr><p class='header important'>Contents</p>   \
-		<ul class='field'>"
-
-	for(var/packagename in packages)
-		info += "<li>[packagename]</li>"
-
-	info += "  \
-		</ul><br/><hr><br/><p class='important header'>    \
-			Please stamp below and return to confirm receipt of shipment   \
-		</p></div>"
-
+	info = "text" // SS220 - NEED FOR ICON_STATE
 	name = "[name] - [ordername]"
+	ru_names_rename(ru_names_toml(src::name, suffix = " - [ordername]", override_base = name)) // SS220 - EDIT ADDITTION
+
+// SS220 - START EDIT ADDITTION
+/obj/item/paper/reqform/proc/generate_contents()
+	info = "text" // SS220 - NEED FOR ICON_STATE
+	name = "[name] - [ordernum]"
+	ru_names_rename(ru_names_toml(src::name, suffix = " - #[ordernum]", override_base = name))
+// SS220 - END EDIT ADDITTION
 
 /obj/structure/machinery/computer/supply/asrs/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -1180,7 +1234,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				return TRUE
 
 			linked_supply_controller.requestlist += supply_order
-			system_message = "Unable to purchase order, order has been placed in Requests."
+			system_message = "Не удалось добавить заказ, он был перемещен во вкладку «Запросы»." // SS220 EDIT ADDITTION
 			return TRUE
 
 		if("change_order")
@@ -1203,10 +1257,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			switch(params["order_status"])
 				if("approve")
 					order.approvedby = id_name
+					order.approvedby_rank = assignment // SS220 EDIT ADDITTION
 					if(order.buy(src))
 						return TRUE
 
-					system_message = "Unable to approve order, order remains in Requests."
+					system_message = "Не удалось принять заказ, он останется во вкладке «Запросы»." // SS220 EDIT ADDITTION
 					return TRUE
 				if("deny")
 					linked_supply_controller.requestlist -= order
@@ -1219,7 +1274,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 			if(shuttle.at_station())
 				if (shuttle.forbidden_atoms_check())
-					system_message = "For safety reasons, the Automated Storage and Retrieval System cannot store live organisms, classified nuclear weaponry or homing beacons."
+					system_message = "Система безопасности АСС не может позволить вам оставить на лифте живые организмы, ядерное оружие или маяки." // SS220 EDIT ADDITTION
 					return TRUE
 				shuttle.launch(src)
 				return TRUE

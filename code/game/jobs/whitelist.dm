@@ -110,7 +110,7 @@ GLOBAL_LIST_INIT(syn_flags, list(
 ))
 GLOBAL_LIST_INIT(yaut_flags, list(
 	list(name = "Yautja", bitflag = WHITELIST_YAUTJA, permission = WL_PANEL_RIGHT_YAUTJA),
-	list(name = "Legacy Holder", bitflag = WHITELIST_YAUTJA_LEGACY, permission = WL_PANEL_RIGHT_MANAGER),
+	list(name = "Legacy Holder", bitflag = WHITELIST_YAUTJA_LEGACY, permission = WL_PANEL_RIGHT_OVERSEER),    // SS220 EDIT
 	list(name = "Council", bitflag = WHITELIST_YAUTJA_COUNCIL, permission = WL_PANEL_RIGHT_YAUTJA),
 	list(name = "Legacy Council", bitflag = WHITELIST_YAUTJA_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_YAUTJA),
 	list(name = "Senator", bitflag = WHITELIST_YAUTJA_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)

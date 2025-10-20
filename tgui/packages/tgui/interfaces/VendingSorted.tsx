@@ -35,6 +35,7 @@ interface VendingRecord {
   prod_cost: number;
   image: string;
   image_size: string;
+  prod_name_en: string; // BANDAMARINES ADDITION
 }
 
 interface VendingCategory {
@@ -272,7 +273,8 @@ export const ViewVendingCategory = (props: VendingCategoryProps) => {
   const { vendor_type } = data;
   const { category, searchTerm } = props;
   const searchFilter = (x: VendingRecord) =>
-    x.prod_name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+    x.prod_name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
+    x.prod_name_en.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()); // BANDAMARINES ADDITION
 
   const filteredCategories = category.items.filter(searchFilter);
   if (filteredCategories.length === 0) {
@@ -345,7 +347,12 @@ export const VendingSorted = () => {
   const reagents = data.reagents ?? 0;
   const reagents_max = data.reagents_max ?? 0;
   return (
-    <Window height={800} width={450} theme={getTheme(data.theme)}>
+    <Window
+      height={800}
+      width={450}
+      title={data.vendor_name}
+      theme={getTheme(data.theme)}
+    >
       <Window.Content
         scrollable
         className="Vendor"
@@ -365,7 +372,7 @@ export const VendingSorted = () => {
               className="Section__title"
             >
               <Flex.Item>
-                <span className="Section__titleText">Search</span>
+                <span className="Section__titleText">Поиск</span>
               </Flex.Item>
               <Flex.Item>
                 <Input
@@ -403,7 +410,7 @@ export const VendingSorted = () => {
               className="Section__title"
             >
               <Flex.Item>
-                <span className="Section__titleText">Points Remaining</span>
+                <span className="Section__titleText">Очков осталось</span>
               </Flex.Item>
               <Flex.Item>
                 <span>{points}</span>
@@ -414,8 +421,8 @@ export const VendingSorted = () => {
 
         {isEmpty && (
           <NoticeBox danger className="ItemContainer">
-            Nothing in here seems to be for you. If this is a mistake contact
-            your local administrator.
+            Здесь нет ничего, подходящего для вас. Если присутствует ошибка,
+            свяжитесь с вашим администратором.
           </NoticeBox>
         )}
 

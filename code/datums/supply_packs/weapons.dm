@@ -92,6 +92,8 @@
 	contains = list(
 		/obj/item/storage/box/guncase/lmg,
 		/obj/item/storage/box/guncase/lmg,
+		/obj/item/ammo_magazine/rifle/lmg, // SS220 EDIT FIX MISSING AMMO
+		/obj/item/ammo_magazine/rifle/lmg, // SS220 EDIT FIX MISSING AMMO
 	)
 	name = "M41AE2 HPR crate (HPR x2, HPR ammo box x2)"
 	cost = 40

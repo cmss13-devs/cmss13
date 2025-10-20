@@ -1,0 +1,20 @@
+# Uncategorized stuff
+# Consumable items which usually look like food
+
+["donut box"]
+nominative = "коробка пончиков"
+genitive = "коробки пончиков"
+dative = "коробке пончиков"
+accusative = "коробку пончиков"
+instrumental = "коробкой пончиков"
+prepositional = "коробке пончиков"
+gender = "female"
+
+["donut"]
+nominative = "пончик"
+genitive = "пончика"
+dative = "пончику"
+accusative = "пончик"
+instrumental = "пончиком"
+prepositional = "пончике"
+gender = "male"

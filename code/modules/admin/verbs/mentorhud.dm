@@ -24,7 +24,7 @@
 	else
 		the_hud.remove_hud_from(observer_user, observer_user)
 
-/client/proc/toggle_newplayer_ic_hud(sea_forced = FALSE)
+/client/proc/toggle_newplayer_ic_hud(sea_forced = TRUE) //SS220 FIX - Mentor NEWplayersICON in IC fix
 	set category = "Admin.Mentor"
 	set name = "Toggle Markers (IC)"
 	set desc = "Toggles new player HUD while IC."

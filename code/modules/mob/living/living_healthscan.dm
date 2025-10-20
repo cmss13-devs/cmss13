@@ -188,7 +188,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				continue
 			var/list/core_body_parts = list("head", "chest", "groin")
 			var/list/current_list = list(
-				"name" = limb.display_name,
+				"name" = capitalize(declent_ru_initial(limb.display_name, NOMINATIVE, limb.display_name)), // SS220 - EDIT ADDITTION
 				"brute" = floor(limb.brute_dam),
 				"burn" = floor(limb.burn_dam),
 				"bandaged" = limb.is_bandaged(),
@@ -277,7 +277,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		data["limbs_damaged"] = length(limb_data_lists)
 		data["internal_bleeding"] = internal_bleeding
 		data["body_temperature"] = "[round(human_target_mob.bodytemperature-T0C, 0.1)]℃ ([round(human_target_mob.bodytemperature*1.8-459.67, 0.1)]℉)" // METRIC RULES IMPERIAL DROOLS
-		data["pulse"] = "[human_target_mob.get_pulse(GETPULSE_TOOL)] bpm"
+		data["pulse"] = "[human_target_mob.get_pulse(GETPULSE_TOOL)] уд./мин" // SS220 - EDIT ADDITTION
 		data["implants"] = unknown_implants
 		data["core_fracture"] = core_fracture_detected
 
@@ -287,9 +287,9 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			if(!organ.damage)
 				continue
 			var/current_organ = list(
-				"name" = organ.name,
+				"name" = capitalize(declent_ru_initial(organ.name, NOMINATIVE, organ.name)), // SS220 - EDIT ADDITTION,
 				"damage" = organ.damage,
-				"status" = organ.organ_status == ORGAN_BROKEN ? "Broken" : "Bruised",
+				"status" = organ.organ_status == ORGAN_BROKEN ? "Тяжёлое" : "Лёгкое", // SS220 - EDIT ADDITTION
 				"robotic" = organ.robotic
 			)
 			damaged_organs += list(current_organ)
@@ -474,9 +474,9 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		data["ssd"] = "Subject has taken extreme amounts of brain damage."
 	else if(target_mob.has_brain() && target_mob.stat != DEAD && ishuman(target_mob) && !(target_mob.status_flags & FAKESOUL))
 		if(!target_mob.key)
-			data["ssd"] = "No soul detected." // they ghosted
+			data["ssd"] = "Душа не обнаружена." // they ghosted
 		else if(!target_mob.client)
-			data["ssd"] = "SSD detected." // SSD
+			data["ssd"] = "Наблюдается космическое расстройство сна." // SSD
 
 	return data
 

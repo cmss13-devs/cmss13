@@ -133,7 +133,7 @@
 				if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE_LONG)
 					to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE_LONG*0.1] second\s to pass between announcements."))
 					return FALSE
-				var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
+				var/input = stripped_multiline_input(usr, "Пожалуйста, напишите сообщение для экипажа станции.", "Приоритетное оповещение", "")
 				if(!input || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE_LONG || !(usr in dview(1, src)))
 					return FALSE
 

@@ -7,11 +7,11 @@
 	job_options = list("Gunnery Sergeant" = "GySGT", "Master Sergeant" = "MSgt", "First Sergeant" = "1Sgt", "Master Gunnery Sergeant" = "MGySgt", "Sergeant Major" = "SgtMaj")
 
 /datum/job/command/senior/on_config_load()
-	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are</a> held to a higher standard and are required to obey not only the Server Rules but <a href='"+LAW_PLACEHOLDER+"'>Marine Law</a> and <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_SOP]'>Standard Operating Procedure</a>. Failure to do so may result in your Mentorship Removal. Your primary job is to teach others the game and its mechanics, and offer advice to all USCM Departments and Personnel on-board."
+	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Вы</a> придерживаетесь более высоких стандартов и обязаны соблюдать не только Правила сервера, но и <a href='"+LAW_PLACEHOLDER+"'>Законы Морпехов</a> и <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_SOP]'>Стандартные Рабочие Процедуры</a>. Невыполнение этого требования может привести к отстранению от наставничества. Ваша основная задача — обучать других игре и ее механике, а также давать советы всем отделам и персоналу ККМП на борту."	// SS220 EDIT TRANSLATE
 	return ..()
 
 /datum/job/command/senior/announce_entry_message(mob/living/carbon/human/H)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(all_hands_on_deck), "Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!", MAIN_AI_SYSTEM, sound('sound/misc/attention_jingle.ogg')), 1.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(all_hands_on_deck), "Всем внимание, [H.get_paygrade(0)] [H.real_name] на борту!", MAIN_AI_SYSTEM, sound('sound/misc/attention_jingle.ogg')), 1.5 SECONDS)	// SS220 EDIT TRANSLATE
 	return ..()
 
 /datum/job/command/senior/filter_job_option(mob/job_applicant)

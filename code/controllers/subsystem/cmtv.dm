@@ -134,6 +134,9 @@ SUBSYSTEM_DEF(cmtv)
 
 	camera_operator.screen += give_escape_menu_details()
 
+	camera_operator.prefs.toggles_sound &= ~(SOUND_LOBBY)
+	camera_operator << sound(null, repeat = 0, wait = 0, volume = 85, channel = SOUND_CHANNEL_LOBBY)
+
 	if(!SSticker.HasRoundStarted() && !round_start)
 		SSticker.OnRoundstart(CALLBACK(src, PROC_REF(setup_camera_mob)))
 		winset(camera_operator, "split", "right=output_browser;splitter=75")

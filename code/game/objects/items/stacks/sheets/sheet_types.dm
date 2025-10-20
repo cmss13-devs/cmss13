@@ -368,6 +368,7 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		new/datum/stack_recipe("empty magazine box (FN FP9000)", /obj/item/ammo_box/magazine/fp9000/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (FN P90)", /obj/item/ammo_box/magazine/p90/empty), \
+		new/datum/stack_recipe("empty magazine box (FN P90 AP)", /obj/item/ammo_box/magazine/p90/ap/empty), \
 		null, \
 		new/datum/stack_recipe("empty magazine box (Type19)", /obj/item/ammo_box/magazine/type19/empty), \
 		null, \

@@ -1,8 +1,8 @@
 
 
 /obj/item/device/walkman
-	name = "walkman"
-	desc = "A cassette player that first hit the market over 200 years ago. Crazy how these never went out of style."
+	name = "Synsound Walkman"
+	desc = "A Synsound cassette player that first hit the market over 200 years ago. Crazy how these never went out of style."
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "walkman"
 	item_icons = list(
@@ -31,6 +31,7 @@
 	. = ..()
 	design = rand(1, 5)
 	update_icon()
+	AddElement(/datum/element/corp_label/synsound)
 
 /obj/item/device/walkman/Destroy()
 	QDEL_NULL(tape)
@@ -333,6 +334,10 @@
 	var/flipped = FALSE //Tape side
 	var/list/songs = list()
 	var/id = 1
+
+/obj/item/device/cassette_tape/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/synsound)
 
 /obj/item/device/cassette_tape/attack_self(mob/user)
 	..()

@@ -66,6 +66,14 @@
 	manufacturer = "karnak"
 	full_name = "<span class='corp_label_white'>Karnak Electronics</span>"
 
+/datum/element/corp_label/grant
+	manufacturer = "karnak"
+	full_name = "<span class='corp_label_red'>Grant Corporation</span>"
+
+/datum/element/corp_label/synsound
+	manufacturer = "synsound"
+	full_name = "<span class='corp_label_red'>Synsound Corporation</span>"
+
 /datum/element/corp_label/Attach(datum/target)
 	. = ..()
 	if(!length(manufacturer))

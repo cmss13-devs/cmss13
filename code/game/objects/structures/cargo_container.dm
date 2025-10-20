@@ -62,6 +62,10 @@
 	name = "Grant Corporation Cargo Container"
 	desc = "A huge industrial shipping container.\nThis one is from The Grant Corporation, a manufacturer of medical and biotechnological parts.\nYou remember hearing about one of their latest drugs, and how dangerous it was... though they claimed to be close to finding a solution."
 
+/obj/structure/cargo_container/grant/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/grant)
+
 /obj/structure/cargo_container/grant/left
 	icon_state = "grant_l"
 

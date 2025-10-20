@@ -707,6 +707,10 @@
 	)
 	product_type = VENDOR_PRODUCT_TYPE_RECREATIONAL
 
+/obj/structure/machinery/vending/walkman/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 //vendor of ingredients for kitchen
 /obj/structure/machinery/vending/ingredients
 	name = "\improper Galley Auxiliary Storage Requisition System"

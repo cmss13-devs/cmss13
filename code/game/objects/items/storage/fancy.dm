@@ -326,6 +326,10 @@
 	)
 	var/obj/item/toy/trading_card/trading_card
 
+/obj/item/storage/fancy/cigarettes/trading_card/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/storage/fancy/cigarettes/trading_card/fill_preset_inventory()
 	flags_atom |= NOREACT
 	for(var/i = 1 to (storage_slots-1))
@@ -599,7 +603,7 @@
 	name = "pack of [capitalize(collection_color)] WeyYu Military Trading Cards"
 	desc = "A 5 pack of [capitalize(collection_color)] Weyland Yutani Military Trading Cards."
 	icon_state = "trading_[collection_color]_pack_closed"
-
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/fancy/trading_card/fill_preset_inventory()
 

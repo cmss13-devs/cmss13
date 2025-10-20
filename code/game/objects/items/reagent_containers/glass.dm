@@ -13,7 +13,7 @@
 	icon_state = null
 	item_state = null
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60)
+	possible_transfer_amounts = list(5,10,15,20,25,30,60)
 	volume = 60
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
@@ -347,7 +347,7 @@
 	matter = list("glass" = 5000)
 	volume = 120
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60,120)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,60,120)
 
 /obj/item/reagent_container/glass/beaker/silver
 	name = "large silver beaker"
@@ -357,7 +357,7 @@
 	volume = 240
 	matter = list("silver" = 5000)
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60,120,240)
+	possible_transfer_amounts = list(5,10,15,20,25,30,60,120,240)
 	pixel_y = 5
 
 /obj/item/reagent_container/glass/beaker/noreact
@@ -367,6 +367,7 @@
 	matter = list("glass" = 500)
 	volume = 60
 	amount_per_transfer_from_this = 10
+
 	flags_atom = FPRINT|OPENCONTAINER|NOREACT
 
 /obj/item/reagent_container/glass/beaker/bluespace
@@ -388,7 +389,7 @@
 	volume = 30
 	amount_per_transfer_from_this = 10
 	matter = list()
-	possible_transfer_amounts = list(5,10,15,25,30)
+	possible_transfer_amounts = list(5,10,15,20,25,30)
 	flags_atom = FPRINT|OPENCONTAINER
 	ground_offset_x = 9
 	ground_offset_y = 8

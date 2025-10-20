@@ -4,6 +4,16 @@
 	icon_state = "shutter1"
 	base_icon_state = "shutter"
 	power_channel = POWER_CHANNEL_ENVIRON
+	plane = TURF_PLANE
+
+/obj/structure/machinery/door/poddoor/shutters/Initialize()
+	. = ..()
+
+	if(!density)
+		plane = TURF_PLANE
+		return
+
+	plane = GAME_PLANE
 
 /obj/structure/machinery/door/poddoor/shutters/opened
 	density = FALSE
@@ -20,15 +30,7 @@
 	if(!C.pry_capable)
 		return
 	if(density && (stat & NOPOWER) && !operating && !unacidable)
-		operating = DOOR_OPERATING_OPENING
-		spawn(-1)
-			flick("[base_icon_state]c0", src)
-			icon_state = "[base_icon_state]0"
-			sleep(15)
-			density = FALSE
-			set_opacity(0)
-			operating = DOOR_OPERATING_IDLE
-			return
+		open()
 	return
 
 /obj/structure/machinery/door/poddoor/shutters/open(forced = FALSE)
@@ -51,6 +53,7 @@
 
 	density = FALSE
 	layer = open_layer
+	plane = TURF_PLANE
 	set_opacity(0)
 
 	operating = DOOR_OPERATING_IDLE
@@ -65,6 +68,7 @@
 	flick("[base_icon_state]c1", src)
 	icon_state = "[base_icon_state]1"
 	layer = closed_layer
+	plane = GAME_PLANE
 	density = TRUE
 	if(visible)
 		set_opacity(1)

@@ -829,7 +829,10 @@
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "qe" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "qu" = (
@@ -866,7 +869,10 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/bar)
 "rR" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a";
+	dir = 8
+	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "rX" = (
@@ -1134,7 +1140,10 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/desert_dam/building/bar/bar)
 "xg" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 8;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "xj" = (
@@ -1155,7 +1164,9 @@
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "xr" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "xt" = (
@@ -2056,7 +2067,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "Ow" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "OD" = (

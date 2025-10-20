@@ -1,6 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/structure/fence/slim/door,
+/obj/structure/fence/slim/door{
+	dir = 4
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "bE" = (

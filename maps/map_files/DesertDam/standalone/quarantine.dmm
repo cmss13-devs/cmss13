@@ -31,6 +31,14 @@
 /obj/structure/prop/hybrisa/vehicles/Meridian/Cop,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
+"ag" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 8
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
 "al" = (
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/lobby)
@@ -1741,7 +1749,7 @@ vd
 oZ
 IW
 Fb
-cG
+ag
 gQ
 XO
 lH

@@ -179,6 +179,14 @@
 /obj/structure/barricade/handrail/kutjevo,
 /turf/open/floor/prison/darkbrown2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence)
+"aax" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 1
+	},
+/turf/open/desert/rock/deep/transition/east,
+/area/desert_dam/interior/caves/west_caves)
 "aay" = (
 /turf/open/floor/prison/darkbrowncorners2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence)
@@ -3536,7 +3544,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "akX" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/desert_dam/exterior/valley/valley_cargo)
 "akY" = (
@@ -9724,7 +9735,9 @@
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/west_caves)
 "aEv" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/west_caves)
 "aEw" = (
@@ -9751,7 +9764,10 @@
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/west_caves)
 "aEB" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
+	},
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/west_caves)
 "aEC" = (
@@ -9803,7 +9819,11 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/desert_dam/building/security/prison)
 "aEK" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	dir = 5;
+	pixel_y = -1
+	},
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/west_caves)
 "aEL" = (
@@ -15136,14 +15156,14 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
-/obj/structure/fence/slim,
+/obj/structure/fence/slim/door,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_security)
 "aWl" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/obj/structure/fence/slim,
+/obj/structure/fence/slim/door,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_security)
 "aWm" = (
@@ -15433,16 +15453,114 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/deathrow)
+"aXi" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 5
+	},
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aXj" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/dirt/rock1,
+/area/desert_dam/interior/caves/temple)
 "aXk" = (
 /obj/structure/closet/lasertag/red,
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/building/dorms/pool)
+"aXl" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/west_caves)
+"aXm" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/west_caves)
+"aXn" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 1
+	},
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aXo" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"aXp" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 5
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/temple)
+"aXq" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	dir = 5;
+	pixel_y = -1
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/temple)
+"aXr" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/east_caves)
 "aXs" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_telecoms)
+"aXt" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 1
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/east_caves)
+"aXu" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 4
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/east_caves)
+"aXv" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aXw" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/east_caves)
 "aXx" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -15450,6 +15568,122 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
+"aXy" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/east_caves)
+"aXz" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_two)
+"aXA" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/exterior/landing_pad_two)
+"aXB" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 5
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aXC" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"aXD" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aXE" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 8;
+	color = "#da822a"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"aXF" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aXG" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 10
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"aXH" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aXI" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aXJ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"aXK" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"aXL" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 10
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aXM" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/dirt/dirt2,
+/area/desert_dam/exterior/river/riverside_south)
 "aXN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -15464,10 +15698,42 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/morgue)
+"aXP" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/desert_dam/exterior/valley/valley_civilian)
+"aXQ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/desert_dam/exterior/valley/valley_cargo)
+"aXR" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 5
+	},
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/desert_dam/exterior/valley/valley_hydro)
 "aXS" = (
 /obj/structure/xenoautopsy/tank/broken/yautja,
 /turf/open/shuttle/red,
 /area/desert_dam/interior/caves/temple)
+"aXT" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 5
+	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/desert_dam/exterior/valley/valley_hydro)
 "aXU" = (
 /obj/structure/largecrate/random/mini/med{
 	pixel_x = -6;
@@ -15475,11 +15741,166 @@
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/primary_storage)
+"aXV" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"aXW" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 8
+	},
+/turf/open/desert/dirt/rock1,
+/area/desert_dam/exterior/valley/valley_telecoms)
+"aXX" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 5
+	},
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aXY" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 8
+	},
+/turf/open/desert/rock/edge1/east,
+/area/desert_dam/exterior/valley/valley_security)
+"aXZ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 8
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aYa" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"aYb" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aYc" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 8
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_security)
 "aYd" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/tatami,
 /area/desert_dam/building/bar/bar)
+"aYe" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 10
+	},
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/desert_dam/exterior/valley/valley_security)
+"aYf" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 5
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_security)
+"aYg" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aYh" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 5
+	},
+/turf/open/desert/dirt/rock1,
+/area/desert_dam/exterior/valley/valley_medical)
+"aYi" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
+	},
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"aYj" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/desert_dam/exterior/valley/valley_medical)
+"aYk" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 10
+	},
+/turf/open/desert/rock/edge1/east,
+/area/desert_dam/exterior/valley/valley_security)
+"aYl" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 4
+	},
+/turf/open/desert/rock/deep/transition,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"aYm" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 10
+	},
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/exterior/valley/valley_security)
+"aYn" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	dir = 5;
+	pixel_y = -1
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/exterior/valley/valley_medical)
+"aYo" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/rock/deep,
+/area/desert_dam/interior/dam_interior/western_dam_cave)
+"aYp" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 1
+	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/desert_dam/exterior/valley/south_valley_dam)
 "aYq" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -15487,6 +15908,124 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/primary_storage)
+"aYr" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aYs" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 5
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aYt" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 10
+	},
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aYu" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 5
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aYv" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aYw" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 8
+	},
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"aYx" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aYy" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/north_valley_dam)
+"aYz" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	dir = 5;
+	pixel_y = -1
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aYA" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aYB" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 1
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/desert_dam/exterior/valley/north_valley_dam)
+"aYC" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/central_caves)
+"aYD" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 1
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
+"aYE" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 1
+	},
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/desert_dam/exterior/valley/north_valley_dam)
+"aYF" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/interior/caves/central_caves)
 "aYG" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "warehouse_dam_3";
@@ -15500,6 +16039,68 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
+"aYH" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 5
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"aYI" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 1
+	},
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/desert_dam/interior/caves/central_caves)
+"aYJ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 1
+	},
+/turf/open/desert/rock/deep/transition/north,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"aYK" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"aYL" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aYM" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 8
+	},
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"aYN" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	dir = 5;
+	pixel_y = -1
+	},
+/turf/open/desert/rock/deep/transition/north,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"aYO" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/desert_dam/exterior/landing_pad_one)
 "aYP" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /obj/structure/disposalpipe/segment{
@@ -15507,6 +16108,28 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_wilderness)
+"aYQ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 1
+	},
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/desert_dam/exterior/valley/valley_northwest)
+"aYR" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/dirt/rock1,
+/area/desert_dam/exterior/landing_pad_one)
+"aYS" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 8;
+	color = "#da822a"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/landing_pad_one)
 "aYX" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -17719,7 +18342,10 @@
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/temple)
 "bRb" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/interior/caves/central_caves)
 "bRf" = (
@@ -20429,7 +21055,10 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/shuttle/trijent_shuttle/lz2)
 "cVt" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "cVF" = (
@@ -22707,7 +23336,10 @@
 /turf/open/floor/dark,
 /area/desert_dam/exterior/roof)
 "dNC" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/rock/edge1/east,
 /area/desert_dam/exterior/valley/valley_cargo)
 "dNH" = (
@@ -25317,7 +25949,10 @@
 /turf/open/floor/delivery,
 /area/desert_dam/exterior/telecomm/lz1_south)
 "eRt" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a";
+	dir = 4
+	},
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/temple)
 "eRv" = (
@@ -26747,7 +27382,10 @@
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "frB" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/valley_wilderness)
@@ -28323,7 +28961,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/desert_dam/exterior/valley/valley_civilian)
 "fWE" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "fWZ" = (
@@ -28465,7 +29106,10 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/north_wing_hallway)
 "gam" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "gao" = (
@@ -28590,7 +29234,10 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "gcQ" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "gcU" = (
@@ -29027,7 +29674,10 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "glB" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "glD" = (
@@ -32458,7 +33108,10 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/purification)
 "hAz" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 8;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/exterior/valley/north_valley_dam)
 "hBd" = (
@@ -34195,7 +34848,10 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/warehouse/warehouse)
 "ijd" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/landing_pad_one)
 "ijk" = (
@@ -35495,7 +36151,10 @@
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/valley_civilian)
 "iGR" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "iGT" = (
@@ -36668,7 +37327,9 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "jgk" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "jgx" = (
@@ -38489,7 +39150,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_northwest)
 "jQv" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "jQG" = (
@@ -40125,7 +40789,10 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/desert_dam/building/security/prison)
 "kyt" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "kyu" = (
@@ -41170,7 +41837,10 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "kVT" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/east_caves)
 "kVU" = (
@@ -41696,6 +42366,11 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
 "lhK" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 10
+	},
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_hydro)
 "lhN" = (
@@ -41731,10 +42406,6 @@
 /obj/structure/largecrate/random/mini/wooden,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/interior/dam_interior/hangar_storage)
-"lij" = (
-/obj/structure/prop/dam/boulder/boulder2,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "lil" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -42717,7 +43388,10 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "lBW" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "lCc" = (
@@ -42993,7 +43667,9 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "lFS" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "lGd" = (
@@ -44520,7 +45196,9 @@
 /turf/open/floor/carpet/edge/east,
 /area/desert_dam/building/administration/meetingrooom)
 "mnQ" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "mnW" = (
@@ -45365,7 +46043,10 @@
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/west_wing_hallway)
 "mDr" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "mDt" = (
@@ -45721,6 +46402,11 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "mKm" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 4
+	},
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "mKy" = (
@@ -46000,7 +46686,10 @@
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "mRl" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/landing_pad_one)
 "mRo" = (
@@ -46277,7 +46966,10 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "mWQ" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 8;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_cargo)
 "mWR" = (
@@ -47420,7 +48112,10 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
 "ntd" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "ntm" = (
@@ -47805,8 +48500,9 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/building/substation/southwest)
 "nCj" = (
-/obj/structure/prop/dam/boulder/boulder2{
-	desc = "A large rock. It looks very hard to get around."
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
 	},
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/caves/temple)
@@ -52617,7 +53313,10 @@
 /turf/open/floor/plating/warnplate/southwest,
 /area/desert_dam/building/substation/northwest)
 "psS" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/north_valley_dam)
 "pta" = (
@@ -52842,7 +53541,10 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "pxy" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/landing_pad_one)
 "pxF" = (
@@ -53029,7 +53731,10 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "pAU" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 8;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/central_caves)
 "pAX" = (
@@ -53917,8 +54622,11 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/building/mining/workshop)
 "pRn" = (
-/obj/structure/prop/dam/boulder/boulder1,
-/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
+	},
+/turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "pRq" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -56718,10 +57426,6 @@
 	},
 /turf/open/floor/prison/cell_stripe/north,
 /area/desert_dam/building/warehouse/warehouse)
-"qRQ" = (
-/obj/structure/prop/dam/boulder/boulder1,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "qRV" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/cult,
@@ -58148,7 +58852,10 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/loading)
 "rvd" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/caves/temple)
 "rvf" = (
@@ -58783,7 +59490,10 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
 "rHt" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "rHL" = (
@@ -60593,7 +61303,9 @@
 /turf/open/floor/warning/west,
 /area/desert_dam/interior/dam_interior/engine_room)
 "ssZ" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "stf" = (
@@ -60626,7 +61338,10 @@
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/dam_interior/break_room)
 "stu" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/interior/caves/east_caves)
 "sty" = (
@@ -62117,7 +62832,9 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "sWQ" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "sWY" = (
@@ -62740,7 +63457,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "tjQ" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "tjU" = (
@@ -62901,6 +63621,10 @@
 /turf/closed/wall,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "tnU" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/desert_dam/exterior/valley/valley_labs)
 "tnW" = (
@@ -63917,7 +64641,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/building/water_treatment_two/purification)
 "tIm" = (
-/obj/structure/prop/dam/boulder/boulder1,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a";
+	dir = 8
+	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "tIv" = (
@@ -64911,7 +65638,10 @@
 /turf/open/asphalt/cement/cement15,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "uaQ" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 8;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/landing_pad_two)
 "uaS" = (
@@ -65527,7 +66257,10 @@
 /turf/open/floor/prison/whitegreencorner,
 /area/desert_dam/building/medical/upper_hallway)
 "ulv" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 8;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "ulz" = (
@@ -69387,7 +70120,9 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "vMQ" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "vMW" = (
@@ -69710,7 +70445,10 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/northern_hallway)
 "vTD" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_security)
 "vTL" = (
@@ -71998,6 +72736,11 @@
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "wSe" = (
 /obj/structure/platform/metal/almayer/west,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "wSg" = (
@@ -72130,7 +72873,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/valley_civilian)
 "wVA" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "wVL" = (
@@ -72931,7 +73677,10 @@
 /turf/open/desert/dirt/rock1,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "xli" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 4;
+	color = "#da822a"
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "xlk" = (
@@ -73608,6 +74357,11 @@
 /area/desert_dam/building/administration/overseer_office)
 "xzk" = (
 /obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
 	dir = 4
 	},
 /turf/open/desert/rock/deep,
@@ -74367,10 +75121,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/asphalt/cement/cement3,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"xPf" = (
-/obj/structure/prop/dam/boulder/boulder1,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_civilian)
 "xPm" = (
 /obj/structure/bed/roller/hospital_empty/bigrollerempty,
 /turf/open/floor/prison/whitegreen/east,
@@ -74532,7 +75282,9 @@
 /turf/open/floor/carpet9_4/west,
 /area/desert_dam/building/administration/overseer_office)
 "xSg" = (
-/obj/structure/prop/dam/boulder/boulder2,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "xSk" = (
@@ -74557,7 +75309,9 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
 "xSs" = (
-/obj/structure/prop/dam/boulder/boulder3,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "xSE" = (
@@ -86860,7 +87614,7 @@ rfS
 rfS
 rfS
 rfS
-acl
+aXm
 acl
 acl
 acl
@@ -87563,7 +88317,7 @@ rfS
 acl
 acl
 acl
-aEv
+aXl
 rfS
 rfS
 rfS
@@ -91090,7 +91844,7 @@ rfS
 rfS
 rfS
 rfS
-aeh
+aax
 aEx
 acl
 acl
@@ -119151,7 +119905,7 @@ rfS
 dHb
 sbh
 dHb
-dHb
+aXn
 qzQ
 vNG
 whM
@@ -120093,7 +120847,7 @@ wgp
 dHb
 dHb
 dHb
-dHb
+aXi
 rfS
 rfS
 rfS
@@ -120996,7 +121750,7 @@ dHb
 dHb
 eBa
 dHb
-dHb
+aXv
 rfS
 rfS
 rfS
@@ -122864,7 +123618,7 @@ rfS
 rfS
 rfS
 rfS
-dHb
+aXn
 dHb
 dHb
 dHb
@@ -125197,7 +125951,7 @@ rfS
 sxl
 sxl
 sxl
-sxl
+aXt
 rfS
 rfS
 rfS
@@ -125914,7 +126668,7 @@ kOU
 kOU
 vmL
 sxl
-sxl
+aXt
 rfS
 rfS
 rfS
@@ -127110,7 +127864,7 @@ rfS
 rfS
 rfS
 rfS
-fhO
+aXj
 fhO
 fhO
 pUm
@@ -127323,7 +128077,7 @@ rfS
 rfS
 rfS
 rfS
-sxl
+aXr
 cWd
 rfS
 kOU
@@ -127548,7 +128302,7 @@ rfS
 rfS
 kOU
 kOU
-kOU
+aXw
 kOU
 kOU
 kOU
@@ -128509,7 +129263,7 @@ dMk
 dMk
 dMk
 dMk
-dMk
+aXo
 dMk
 dMk
 rfS
@@ -129421,7 +130175,7 @@ kOU
 kOU
 vmL
 sxl
-sxl
+aXu
 rfS
 rfS
 rfS
@@ -129899,7 +130653,7 @@ rfS
 rfS
 rfS
 rfS
-hBs
+aXq
 rGx
 dMk
 dMk
@@ -130351,7 +131105,7 @@ rfS
 kOU
 rfS
 rfS
-sxl
+aXr
 sxl
 rfS
 rfS
@@ -131079,7 +131833,7 @@ dMk
 dMk
 rfS
 rfS
-hBs
+aXp
 rfS
 rfS
 rfS
@@ -132199,7 +132953,7 @@ pfK
 rfS
 rfS
 rfS
-pfK
+aXy
 fgx
 rfS
 rfS
@@ -134656,7 +135410,7 @@ qaR
 qaR
 aQG
 aQG
-aQG
+aXY
 qaR
 qaR
 qaR
@@ -134871,7 +135625,7 @@ aQG
 aQG
 aQG
 aQG
-aQG
+aYk
 qaR
 qaR
 qaR
@@ -135898,7 +136652,7 @@ hKj
 plw
 plw
 plw
-uaQ
+aXA
 sSB
 plw
 plw
@@ -136026,7 +136780,7 @@ nLy
 wvP
 qaR
 qaR
-wvP
+aYo
 wvP
 wvP
 oku
@@ -136050,7 +136804,7 @@ gNv
 gNv
 gNv
 gNv
-gNv
+aYf
 gNv
 gNv
 gNv
@@ -136754,7 +137508,7 @@ gNv
 gNv
 gNv
 gNv
-gNv
+aYc
 gNv
 cSj
 vTy
@@ -136874,7 +137628,7 @@ tcL
 sSw
 adD
 ueE
-oLN
+aYS
 oLN
 oLN
 oLN
@@ -136893,7 +137647,7 @@ gsv
 nCs
 qaR
 qaR
-wFz
+aYO
 lsP
 ciS
 uXa
@@ -140064,7 +140818,7 @@ qaR
 qaR
 qaR
 qaR
-wkF
+aXW
 jVH
 qwy
 iAC
@@ -140716,7 +141470,7 @@ gyp
 gyp
 qaR
 qaR
-qwE
+aYm
 oLV
 mDT
 lpV
@@ -141476,7 +142230,7 @@ iDA
 iDA
 iDA
 lSM
-uOf
+aXQ
 qaR
 qaR
 qaR
@@ -141721,7 +142475,7 @@ qxz
 qaR
 qaR
 qYV
-iDA
+aXG
 iDA
 qYV
 iDA
@@ -141760,7 +142514,7 @@ xkb
 uqL
 xkb
 xkb
-plw
+aXz
 plw
 qaR
 qaR
@@ -142639,7 +143393,7 @@ air
 iHd
 fRI
 aik
-qRQ
+pRn
 sAk
 tVP
 deo
@@ -144831,7 +145585,7 @@ rHU
 sKO
 gvK
 aMG
-nCs
+aYR
 ciS
 aFe
 aHu
@@ -145173,7 +145927,7 @@ gNv
 gNv
 gNv
 gNv
-gNv
+aYf
 gNv
 amL
 amG
@@ -145479,7 +146233,7 @@ ngf
 ycP
 iDA
 iDA
-iDA
+aXC
 obN
 xhD
 hNR
@@ -147283,7 +148037,7 @@ qaR
 qaR
 qaR
 qaR
-urD
+aYe
 urD
 qaR
 qaR
@@ -147312,7 +148066,7 @@ kno
 kno
 qaR
 qaR
-qme
+aXX
 hqS
 qaR
 qaR
@@ -147557,7 +148311,7 @@ iIp
 iIp
 iIp
 iIp
-iIp
+aXB
 qaR
 qaR
 qaR
@@ -148504,7 +149258,7 @@ dQu
 dKu
 dKu
 xYT
-iDA
+aXJ
 iDA
 iDA
 dQu
@@ -150508,7 +151262,7 @@ cHX
 kRg
 awh
 awh
-prc
+aYw
 prc
 uou
 lhe
@@ -151326,7 +152080,7 @@ bHA
 naX
 iDA
 hEE
-iDA
+aXG
 iDA
 fOs
 lkJ
@@ -151719,7 +152473,7 @@ eeT
 cUU
 qNo
 rPx
-jlt
+aYl
 qaR
 qaR
 qaR
@@ -151795,7 +152549,7 @@ naX
 iDA
 tDC
 iIp
-iIp
+aXF
 tTb
 xqD
 wLz
@@ -152239,7 +152993,7 @@ pdo
 hqS
 ruj
 qaR
-fPW
+aXR
 iIp
 iIp
 iIp
@@ -152423,7 +153177,7 @@ qNo
 ihA
 cpI
 jlt
-qaR
+aYi
 qaR
 iNv
 iNv
@@ -152468,7 +153222,7 @@ iIp
 iIp
 iIp
 iIp
-iIp
+aXH
 iIp
 pdo
 qme
@@ -153372,7 +154126,7 @@ hjB
 fso
 vvh
 rux
-ulv
+aYa
 uqQ
 uqQ
 uqQ
@@ -153501,7 +154255,7 @@ msv
 qaR
 qaR
 qaR
-jTk
+aYQ
 wYR
 xVP
 ylp
@@ -155442,7 +156196,7 @@ qeA
 dah
 qaR
 qaR
-ccH
+aYp
 bne
 soP
 soP
@@ -155876,7 +156630,7 @@ aAK
 rEh
 bxE
 qaR
-qsB
+aYB
 rEh
 lLB
 qaR
@@ -156469,7 +157223,7 @@ uve
 kCM
 rBH
 pWN
-iIp
+aXH
 iIp
 tTb
 xqD
@@ -156563,7 +157317,7 @@ qaR
 qaR
 qaR
 qaR
-gbC
+aYE
 bgm
 pOR
 kcd
@@ -157381,7 +158135,7 @@ kBO
 kBO
 kBO
 kBO
-iIp
+aXH
 iIp
 iIp
 hJl
@@ -157586,7 +158340,7 @@ tty
 bfa
 gHV
 uqQ
-fWE
+ulv
 uqQ
 epd
 urc
@@ -159051,7 +159805,7 @@ wLz
 wLz
 sAD
 aco
-iIp
+aXD
 fLa
 rwO
 kss
@@ -159393,7 +160147,7 @@ oaW
 mCu
 pOR
 uGj
-pOR
+aYy
 pOR
 wWQ
 awk
@@ -159497,7 +160251,7 @@ mBK
 fTX
 gdR
 iIp
-iIp
+aXL
 pWN
 rKj
 iyU
@@ -161126,7 +161880,7 @@ qaR
 qaR
 qaR
 qaR
-dFT
+aXT
 ybj
 iIp
 iIp
@@ -162034,7 +162788,7 @@ xCi
 xCi
 jPN
 kex
-iWi
+aXZ
 szM
 tgc
 kKA
@@ -162875,7 +163629,7 @@ jtK
 fUM
 wid
 lXy
-uGM
+aYK
 qaR
 qaR
 qaR
@@ -162957,7 +163711,7 @@ qaR
 qaR
 qaR
 qaR
-nwc
+aYh
 cvI
 otd
 hzF
@@ -163178,7 +163932,7 @@ nZP
 rtj
 muj
 mJF
-vbi
+aYn
 qaR
 qaR
 otd
@@ -163655,7 +164409,7 @@ cRc
 ckJ
 kfE
 qaR
-uxD
+aYj
 vOZ
 qaR
 vDI
@@ -165371,7 +166125,7 @@ sAD
 aco
 tEI
 qOK
-iIp
+aXB
 iIp
 tpl
 iKY
@@ -165684,7 +166438,7 @@ qaR
 qaR
 qaR
 qaR
-jWW
+aYJ
 oId
 oId
 klf
@@ -165818,7 +166572,7 @@ qyz
 tkw
 qBu
 iIp
-iIp
+aXH
 dfQ
 agn
 agn
@@ -166761,7 +167515,7 @@ qUc
 qUc
 qUc
 qUc
-qUc
+aXI
 qUc
 qUc
 ewW
@@ -168261,7 +169015,7 @@ qaR
 qaR
 qaR
 qaR
-aeD
+aYH
 bBV
 oId
 oId
@@ -168857,7 +169611,7 @@ qaR
 qaR
 qaR
 qaR
-xRQ
+aXM
 qug
 mXf
 slo
@@ -170829,7 +171583,7 @@ jYd
 oCQ
 pnn
 qaR
-aeD
+aYM
 aeD
 aeD
 jWW
@@ -170975,7 +171729,7 @@ sQr
 qcg
 jOe
 jOe
-sWQ
+aXE
 jOe
 jOe
 jOe
@@ -170985,7 +171739,7 @@ bbz
 bbz
 rsa
 kqb
-sWQ
+aXE
 fyr
 jOe
 riS
@@ -172036,7 +172790,7 @@ qaR
 qaR
 qaR
 qaR
-uRM
+aYx
 kPj
 vDK
 vDK
@@ -172603,7 +173357,7 @@ jOe
 jOe
 rZX
 jOe
-jOe
+aXK
 jOe
 jOe
 koF
@@ -172834,7 +173588,7 @@ kxz
 jOe
 jOe
 jOe
-xPf
+sWQ
 rZX
 jOe
 jOe
@@ -172986,7 +173740,7 @@ yfM
 wUG
 wei
 lgc
-vDK
+aYr
 qaR
 qaR
 qaR
@@ -173688,7 +174442,7 @@ tIv
 lgc
 vDK
 vDK
-qbW
+aYs
 qaR
 qaR
 qaR
@@ -173769,7 +174523,7 @@ bnn
 cUs
 hcH
 bnn
-eBj
+aXP
 qaR
 qaR
 qaR
@@ -174385,7 +175139,7 @@ vDK
 vDK
 vDK
 vDK
-vDK
+aYv
 vDK
 baZ
 vDK
@@ -174572,7 +175326,7 @@ qaR
 qaR
 qaR
 qaR
-jWW
+aYN
 oId
 oId
 ovz
@@ -175594,7 +176348,7 @@ iWi
 iWi
 iWi
 iWi
-iWi
+aYg
 iWi
 iWi
 pld
@@ -175770,7 +176524,7 @@ wnv
 oHh
 qaR
 qaR
-kPj
+aYz
 vDK
 vAc
 qKr
@@ -175834,7 +176588,7 @@ der
 iWi
 kRj
 qkD
-iWi
+aYb
 qaR
 qaR
 qaR
@@ -178833,7 +179587,7 @@ vDK
 wnv
 oHh
 qaR
-vDK
+aYu
 wnv
 cne
 oHh
@@ -179045,7 +179799,7 @@ dHb
 qaR
 qaR
 qaR
-dHb
+aYA
 rXL
 vDK
 vDK
@@ -179377,7 +180131,7 @@ qaR
 qaR
 qaR
 qaR
-jOe
+aXV
 qaR
 cyN
 vcU
@@ -180191,7 +180945,7 @@ iyt
 vDK
 pSc
 qaR
-ssZ
+aYL
 vDK
 vDK
 pcG
@@ -181132,7 +181886,7 @@ qaR
 qaR
 lTZ
 oEp
-lij
+rHt
 qbW
 xYh
 qaR
@@ -182069,7 +182823,7 @@ jDl
 jDl
 jDl
 jDl
-bRb
+aYF
 lQe
 aQO
 qaR
@@ -182306,7 +183060,7 @@ jDl
 oRq
 bHH
 aQO
-aQO
+aYD
 qaR
 qaR
 qaR
@@ -183750,7 +184504,7 @@ njl
 njl
 qaR
 qaR
-dHb
+aYt
 dHb
 dHb
 dHb
@@ -185593,7 +186347,7 @@ jDl
 jDl
 jDl
 jDl
-jDl
+aYC
 jDl
 jDl
 jDl
@@ -186277,7 +187031,7 @@ hor
 qaR
 qaR
 qaR
-oqd
+aYI
 jDl
 jDl
 btD

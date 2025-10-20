@@ -3338,6 +3338,7 @@
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
+		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
 		new /obj/item/trash/buritto (user.loc)
 		icon_state = "open-burrito"
@@ -3365,6 +3366,7 @@
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hamburger!"))
+		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
 		new /obj/item/trash/burger (user.loc)
 		icon_state = "hburger"
@@ -3392,6 +3394,7 @@
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hotdog!"))
+		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
 		new /obj/item/trash/hotdog (user.loc)
 		icon_state = "open-hotdog"
@@ -3410,7 +3413,7 @@
 	. = ..()
 	reagents.add_reagent("nutriment", 4)
 	reagents.add_reagent("meatprotein", 4)
-
+	AddElement(/datum/element/corp_label/wy) //Had WY logo (wings) in Alien Isolation
 
 /obj/item/reagent_container/food/snacks/kepler_crisps
 	name = "Kepler Crisps"
@@ -3424,6 +3427,7 @@
 	. = ..()
 	reagents.add_reagent("bread", 4)
 	reagents.add_reagent("sodiumchloride", 12)
+	AddElement(/datum/element/corp_label/wy) //Had WY logo (wings) in Alien Isolation
 
 /obj/item/reagent_container/food/snacks/kepler_crisps/flamehot
 	name = "Kepler Flamehot"

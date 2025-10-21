@@ -1,4 +1,0 @@
-author: "kiVts"
-delete-after: True
-changes:
-  - admin: "basic buildmode should be more friendlier now."

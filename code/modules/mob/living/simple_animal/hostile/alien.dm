@@ -42,7 +42,6 @@
 
 	var/atom/movable/vis_obj/wound_icon_holder
 	/// for check on lurker invisibility
-	var/stealth = FALSE
 
 /mob/living/simple_animal/hostile/alien/Initialize()
 	maxHealth = health
@@ -92,7 +91,7 @@
 		return FALSE
 
 /mob/living/simple_animal/hostile/alien/pull_response(mob/puller)
-	if(stat != DEAD && has_species(puller, "Human") && stealth != 1) // If the Xeno is alive, fight back against a grab/pull
+	if(stat != DEAD && has_species(puller, "Human")) // If the Xeno is alive, fight back against a grab/pull
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE

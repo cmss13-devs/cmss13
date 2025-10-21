@@ -161,7 +161,7 @@ GLOBAL_LIST_INIT(human_medals_admin, list(MARINE_COMMENDATION_RIBBON, MARINE_CON
 			if(MARINE_SPECIAL_MEDAL)
 				medal = new /obj/item/clothing/accessory/medal/platinum/special_award(turf_location)
 			if(MARINE_UA_CROSS_MEDAL)
-				medal = new /obj/item/clothing/accessory/medal/platinum/legion_of_distinction(turf_location)
+				medal = new /obj/item/clothing/accessory/medal/platinum/distinction(turf_location)
 			else
 				return FALSE
 		medal.recipient_name = chosen_recipient
@@ -261,6 +261,8 @@ GLOBAL_LIST_INIT(human_medals_admin, list(MARINE_COMMENDATION_RIBBON, MARINE_CON
 				medal = new /obj/item/clothing/accessory/medal/gold/heroism(turf_location)
 			if(MARINE_SPECIAL_MEDAL)
 				medal = new /obj/item/clothing/accessory/medal/platinum/special_award(turf_location)
+			if(MARINE_UA_CROSS_MEDAL)
+				medal = new /obj/item/clothing/accessory/medal/platinum/distinction(turf_location)
 			else
 				return FALSE
 		medal.recipient_name = chosen_recipient

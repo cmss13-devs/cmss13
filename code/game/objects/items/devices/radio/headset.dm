@@ -52,6 +52,9 @@
 
 	var/mob/living/carbon/human/wearer
 
+	var/minimap_path_blips = 'icons/ui_icons/map_blips.dmi' // SS220 ADD
+	var/minimap_path_blips_override // SS220 ADD
+
 /obj/item/device/radio/headset/Initialize()
 	. = ..()
 	keys = list()
@@ -379,7 +382,7 @@
 	else
 		icon_to_use = wearer.assigned_equipment_preset.minimap_icon ? wearer.assigned_equipment_preset.minimap_icon : "unknown"
 
-	var/image/background = image('icons/ui_icons/map_blips.dmi', wearer.assigned_squad?.background_icon ? wearer.assigned_squad.background_icon : wearer.assigned_equipment_preset.minimap_background)
+	var/image/background = image(minimap_path_blips, wearer.assigned_squad?.background_icon ? wearer.assigned_squad.background_icon : wearer.assigned_equipment_preset.minimap_background)
 
 	if(wearer.stat == DEAD)
 		var/defib_icon_to_use
@@ -394,25 +397,31 @@
 		else
 			defib_icon_to_use = "defibbable"
 
-		background.overlays += image('icons/ui_icons/map_blips.dmi', null, defib_icon_to_use, ABOVE_FLOAT_LAYER)
+		background.overlays += image(minimap_path_blips, null, defib_icon_to_use, ABOVE_FLOAT_LAYER)
 		if(!wearer.mind)
 			var/mob/dead/observer/ghost = wearer.get_ghost(TRUE)
 			if(!ghost?.can_reenter_corpse)
-				background.overlays += image('icons/ui_icons/map_blips.dmi', null, "undefibbable", ABOVE_FLOAT_LAYER)
+				background.overlays += image(minimap_path_blips, null, "undefibbable", ABOVE_FLOAT_LAYER)
 	if(wearer.assigned_squad)
-		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, "squad_underlay")
-		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, icon_to_use)
+		var/image/underlay = image(minimap_path_blips, null, "squad_underlay")
+		var/image/overlay = image(minimap_path_blips, null, icon_to_use)
+		// SS220 EDIT - START --- минимап блипы тоже от нас
+		if(minimap_path_blips_override)
+			overlay = image(minimap_path_blips_override, null, icon_to_use)
+		else
+			overlay = image(minimap_path_blips, null, icon_to_use)
+		// SS220 EDIT - END
 		background.overlays += underlay
 		background.overlays += overlay
 
 		if(wearer.assigned_squad?.squad_leader == wearer)
-			var/image/leader_trim = image('icons/ui_icons/map_blips.dmi', null, "leader_trim")
+			var/image/leader_trim = image(minimap_path_blips, null, "leader_trim")
 			background.overlays += leader_trim
 
 		SSminimaps.add_marker(wearer, minimap_flag, background)
 		return
 
-	background.overlays += image('icons/ui_icons/map_blips.dmi', null, icon_to_use)
+	background.overlays += image(minimap_path_blips, null, icon_to_use)
 	SSminimaps.add_marker(wearer, minimap_flag, background)
 
 ///Give minimap action to wearer

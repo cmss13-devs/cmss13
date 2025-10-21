@@ -1,3 +1,4 @@
+#define MARINE_COMMENDATION_RIBBON "USCMC commendation ribbon"
 #define MARINE_CONDUCT_MEDAL "distinguished conduct medal"
 #define MARINE_BRONZE_HEART_MEDAL "bronze heart medal"
 #define MARINE_VALOR_MEDAL "medal of valor"
@@ -40,7 +41,7 @@ GLOBAL_LIST_EMPTY(medal_recommendations)
 	giver_ckey = list()
 
 GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL))
-GLOBAL_LIST_INIT(human_medals_admin, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL, MARINE_SPECIAL_MEDAL, WY_COMMENDATION_MEDAL))
+GLOBAL_LIST_INIT(human_medals_admin, list(MARINE_COMMENDATION_RIBBON, MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL, MARINE_SPECIAL_MEDAL, WY_COMMENDATION_MEDAL))
 
 /proc/give_medal_award(medal_location, as_admin = FALSE, as_xo = FALSE)
 	if(as_admin && !check_rights(R_ADMIN))
@@ -61,7 +62,7 @@ GLOBAL_LIST_INIT(human_medals_admin, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HE
 	if(as_admin)
 		medal_options = GLOB.human_medals_admin
 	else if(as_xo)
-		medal_options = list(MARINE_CONDUCT_MEDAL)
+		medal_options = list(MARINE_COMMENDATION_RIBBON)
 
 	// Pick a medal
 	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", medal_options)
@@ -144,6 +145,8 @@ GLOBAL_LIST_INIT(human_medals_admin, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HE
 		var/turf/turf_location = get_turf(medal_location)
 		var/obj/item/clothing/accessory/medal/medal
 		switch(medal_type)
+			if(MARINE_COMMENDATION_RIBBON)
+				medal = new /obj/item/clothing/accessory/medal/commendation(turf_location)
 			if(MARINE_CONDUCT_MEDAL)
 				medal = new /obj/item/clothing/accessory/medal/bronze/conduct(turf_location)
 			if(MARINE_BRONZE_HEART_MEDAL)
@@ -241,6 +244,8 @@ GLOBAL_LIST_INIT(human_medals_admin, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HE
 		var/turf/turf_location = get_turf(medal_location)
 		var/obj/item/clothing/accessory/medal/medal
 		switch(medal_type)
+			if(MARINE_COMMENDATION_RIBBON)
+				medal = new /obj/item/clothing/accessory/medal/commendation(turf_location)
 			if(MARINE_CONDUCT_MEDAL)
 				medal = new /obj/item/clothing/accessory/medal/bronze/conduct(turf_location)
 			if(MARINE_BRONZE_HEART_MEDAL)
@@ -649,7 +654,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			if(recommendation.recipient_name == user.real_name)
 				to_chat(user, SPAN_WARNING("You cannot give medals to yourself!"))
 				return
-			if(is_xo_medal && !(medal_type == MARINE_CONDUCT_MEDAL))
+			if(is_xo_medal && !(medal_type == MARINE_COMMENDATION_RIBBON))
 				to_chat(user, SPAN_WARNING("You cannot award this medal!"))
 				return
 

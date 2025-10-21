@@ -18,6 +18,7 @@ type Data = {
 export const IcMedalsPanel = (props) => {
   const { act, data } = useBackend<Data>();
 
+  const COMMENDATION_RIBBON = 'USCMC commendation ribbon';
   const CONDUCT_MEDAL = 'distinguished conduct medal';
   const BRONZE_HEART_MEDAL = 'bronze heart medal';
   const VALOR_MEDAL = 'medal of valor';
@@ -50,6 +51,30 @@ export const IcMedalsPanel = (props) => {
               <Stack.Item>
                 <Flex>
                   <Flex direction="column">
+                    <Flex.Item>
+                      <Button
+                        tooltip="USCMC Commendation Ribbon"
+                        color={
+                          recommendationMedalTypes[index] ===
+                          COMMENDATION_RIBBON
+                            ? 'green'
+                            : ''
+                        }
+                        onClick={() => {
+                          const new_array = [...recommendationMedalTypes];
+                          new_array[index] = COMMENDATION_RIBBON;
+                          setRecommendationMedalTypes(new_array);
+                        }}
+                      >
+                        <span
+                          className={classes([
+                            'medal32x32',
+                            COMMENDATION_RIBBON.replace(/ /g, '-'),
+                            'medal-icon',
+                          ])}
+                        />
+                      </Button>
+                    </Flex.Item>
                     <Flex.Item>
                       <Button
                         tooltip="Distinguished Conduct Medal"

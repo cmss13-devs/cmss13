@@ -307,6 +307,11 @@
 
 	. += "Awarded to: \'[recipient_rank] [recipient_name]\'. [citation_to_read]"
 
+/obj/item/clothing/accessory/medal/commendation
+	name = MARINE_COMMENDATION_RIBBON
+	desc = "A ribbon awarded to commend conduct and actions of note, often given alongside a formal letter of commendation. This is the most basic award given by the USCM."
+	icon_state = "commendation"
+
 /obj/item/clothing/accessory/medal/bronze
 	name = "bronze medal"
 	desc = "A bronze medal."
@@ -314,7 +319,7 @@
 
 /obj/item/clothing/accessory/medal/bronze/conduct
 	name = MARINE_CONDUCT_MEDAL
-	desc = "A bronze medal awarded for distinguished conduct. Whilst a great honor, this is the most basic award given by the USCM"
+	desc = "A bronze medal awarded for distinguished conduct. Whilst a great honor, this is one of the most basic awards given by the USCM."
 
 /obj/item/clothing/accessory/medal/bronze/heart
 	name = MARINE_BRONZE_HEART_MEDAL

@@ -654,7 +654,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			if(recommendation.recipient_name == user.real_name)
 				to_chat(user, SPAN_WARNING("You cannot give medals to yourself!"))
 				return
-			if(is_xo_medal && !(medal_type == MARINE_COMMENDATION_RIBBON))
+			if((is_xo_medal && !(medal_type == MARINE_COMMENDATION_RIBBON)) || (!is_xo_medal && (medal_type == MARINE_COMMENDATION_RIBBON)))
 				to_chat(user, SPAN_WARNING("You cannot award this medal!"))
 				return
 

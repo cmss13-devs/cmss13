@@ -9,11 +9,17 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/mining/workshop)
 "ac" = (
+/obj/structure/flora/bush/desert/cactus/multiple{
+	icon_state = "cacti_8"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ad" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/small_stack,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/mining/workshop)
-"ad" = (
+"ae" = (
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe/drill,
 /obj/item/tool/pickaxe/drill{
@@ -21,108 +27,79 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
-"ae" = (
+"af" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldpack,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
-"af" = (
+"ag" = (
 /obj/structure/prop/hybrisa/vehicles/Meridian/Orange,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
-"ag" = (
-/obj/structure/surface/table,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/trash/tray{
-	pixel_x = -1;
-	pixel_y = 9
-	},
-/obj/item/reagent_container/food/snacks/hotdog{
-	pixel_x = -3;
-	pixel_y = 8
-	},
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
 "ah" = (
-/obj/structure/surface/table,
-/obj/item/reagent_container/food/condiment/saltshaker{
-	pixel_x = -9;
-	pixel_y = 7
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 8
 	},
-/obj/item/reagent_container/food/condiment/peppermill{
-	pixel_x = -11;
-	pixel_y = 13
-	},
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "ai" = (
-/obj/structure/prop/dam/crane/damaged,
-/turf/open/floor/prison,
-/area/desert_dam/building/cafeteria/loading)
-"aj" = (
-/obj/structure/surface/table,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/tool/kitchen/utensil/fork{
-	pixel_x = -9;
-	pixel_y = 3
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
 	},
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aj" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "ak" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/twohanded/folded_metal_chair,
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
-"al" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/broken_glass,
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
-"am" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate/plastic,
-/obj/item/reagent_container/food/snacks/grown/corn,
-/obj/item/reagent_container/food/snacks/grown/corn,
-/obj/item/reagent_container/food/snacks/grown/corn,
-/obj/item/reagent_container/food/snacks/grown/corn,
-/obj/item/reagent_container/food/snacks/grown/corn,
-/turf/open/floor/prison/floor_marked/southwest,
-/area/desert_dam/building/cafeteria/loading)
-"an" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
-	pixel_y = 38
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"al" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"am" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	dir = 5;
+	pixel_y = -1
 	},
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"an" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "ao" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/no_power/east,
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "ap" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate/freezer,
-/obj/item/reagent_container/food/snacks/grown/wheat,
-/obj/item/reagent_container/food/snacks/grown/wheat,
-/obj/item/reagent_container/food/snacks/grown/wheat,
-/obj/item/reagent_container/food/snacks/grown/wheat,
-/obj/item/reagent_container/food/snacks/grown/wheat,
-/turf/open/floor/prison/floor_marked/southwest,
-/area/desert_dam/building/cafeteria/loading)
+/obj/structure/flora/grass/desert/lightgrass_9,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "aq" = (
-/obj/structure/closet/crate/freezer,
-/obj/item/reagent_container/food/snacks/grown/potato,
-/obj/item/reagent_container/food/snacks/grown/potato,
-/obj/item/reagent_container/food/snacks/grown/potato,
-/obj/item/reagent_container/food/snacks/grown/potato,
-/obj/item/reagent_container/food/snacks/grown/potato,
-/turf/open/floor/prison/floor_marked/southwest,
-/area/desert_dam/building/cafeteria/loading)
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2"
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "ar" = (
 /obj/structure/machinery/door_control{
 	id = "warehouse_dam_2";
@@ -148,10 +125,168 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "au" = (
+/obj/structure/flora/grass/desert/lightgrass_8,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"av" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 4
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aw" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"ax" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/prison/darkbrown2,
+/area/desert_dam/building/mining/workshop_foyer)
+"ay" = (
+/obj/structure/flora/grass/desert/heavygrass_3,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"az" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 6
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aA" = (
+/obj/structure/flora/grass/tallgrass/desert/corner,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aB" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 10
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aC" = (
+/obj/structure/flora/grass/desert/lightgrass_7,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aD" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aE" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 10
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aF" = (
+/obj/structure/surface/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/tray{
+	pixel_x = -1;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/snacks/hotdog{
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"aG" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = -9;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = -11;
+	pixel_y = 13
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"aH" = (
+/obj/structure/prop/dam/crane/damaged,
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"aI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_civilian)
+"aJ" = (
+/obj/structure/surface/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = -9;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"aK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"aL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/broken_glass,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"aM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/plastic,
+/obj/item/reagent_container/food/snacks/grown/corn,
+/obj/item/reagent_container/food/snacks/grown/corn,
+/obj/item/reagent_container/food/snacks/grown/corn,
+/obj/item/reagent_container/food/snacks/grown/corn,
+/obj/item/reagent_container/food/snacks/grown/corn,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
+"aN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 38
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"aO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"aP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/obj/item/reagent_container/food/snacks/grown/wheat,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
+"aQ" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
+"aR" = (
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Garbage,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
-"av" = (
+"aS" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -161,47 +296,47 @@
 	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
-"aw" = (
+"aU" = (
 /obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
-"ax" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/prison/darkbrown2,
-/area/desert_dam/building/mining/workshop_foyer)
-"ay" = (
+"aV" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
-"az" = (
+"aW" = (
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
-"aA" = (
+"aX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
-"aB" = (
+"aY" = (
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
-"aC" = (
+"aZ" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/storage/bag/trash,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
-"aD" = (
+"ba" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
 	name = "dirt"
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
-"aE" = (
+"bb" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
-"aF" = (
+"bc" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"bd" = (
 /obj/structure/surface/rack,
 /obj/item/tool/wet_sign,
 /obj/item/tool/wet_sign,
@@ -211,141 +346,6 @@
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
-"aG" = (
-/obj/structure/flora/bush/desert/cactus/multiple{
-	icon_state = "cacti_8"
-	},
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_civilian)
-"aH" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#da822a";
-	pixel_y = -1;
-	dir = 8
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aI" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
-/area/desert_dam/exterior/valley/valley_civilian)
-"aJ" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#da822a"
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aK" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#da822a";
-	pixel_y = -1;
-	dir = 6
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aL" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#da822a";
-	pixel_y = -1;
-	dir = 4
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aM" = (
-/obj/structure/flora/grass/desert/lightgrass_2,
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aN" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#da822a";
-	dir = 5;
-	pixel_y = -1
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aO" = (
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 5
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aP" = (
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 9
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aQ" = (
-/obj/structure/flora/grass/desert/lightgrass_9,
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aR" = (
-/obj/structure/flora/bush/desert{
-	icon_state = "tree_2"
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aS" = (
-/obj/structure/flora/grass/desert/lightgrass_8,
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aT" = (
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 4
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aU" = (
-/obj/structure/flora/grass/tallgrass/desert,
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aV" = (
-/obj/structure/flora/grass/desert/heavygrass_3,
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aW" = (
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 6
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aX" = (
-/obj/structure/flora/grass/tallgrass/desert/corner,
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aY" = (
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 10
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"aZ" = (
-/obj/structure/flora/grass/desert/lightgrass_7,
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"ba" = (
-/obj/structure/flora/grass/desert/heavygrass_4,
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"bb" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#da822a";
-	pixel_y = -1;
-	dir = 10
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
-"bc" = (
-/obj/structure/machinery/light,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/cafeteria/cafeteria)
-"bd" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#da822a";
-	pixel_y = -1
-	},
-/turf/open/desert/dirt,
-/area/event/dynamic/lit)
 "be" = (
 /obj/structure/flora/bush/desert{
 	icon_state = "tree_3"
@@ -3683,7 +3683,7 @@ BW
 BW
 Cx
 Cx
-az
+aW
 Cx
 ff
 Qj
@@ -3739,7 +3739,7 @@ BW
 BW
 BW
 Cx
-aC
+aZ
 Ry
 hV
 ff
@@ -3751,7 +3751,7 @@ NE
 oK
 oK
 Qv
-ah
+aG
 mK
 ff
 IG
@@ -3797,7 +3797,7 @@ BW
 BW
 Cx
 OV
-aA
+aX
 Cx
 QR
 FC
@@ -3910,8 +3910,8 @@ ET
 Cx
 Cx
 gw
-aD
-aB
+ba
+aY
 Cx
 gS
 ff
@@ -3967,7 +3967,7 @@ JL
 Cx
 Uf
 Ry
-aE
+bb
 YQ
 Cx
 XL
@@ -3978,7 +3978,7 @@ wi
 ZI
 oK
 oK
-aj
+aJ
 PU
 fL
 ff
@@ -4022,22 +4022,22 @@ ww
 RT
 FX
 Cx
-aF
-aA
+bd
+aX
 Ry
 oA
 Cx
-aw
+aU
 Qj
 Qr
 fL
 Rt
 gC
 oK
-al
+aL
 rX
 tz
-ag
+aF
 cL
 FL
 FL
@@ -4089,7 +4089,7 @@ Ty
 si
 Fn
 mg
-ak
+aK
 oK
 oK
 mg
@@ -4202,7 +4202,7 @@ Qj
 yS
 dw
 oK
-ao
+aO
 kY
 oK
 He
@@ -4311,14 +4311,14 @@ FL
 um
 ee
 yS
-ay
+aV
 ff
 QR
-av
+aT
 QR
 QR
 QR
-an
+aN
 oK
 QR
 QR
@@ -4446,11 +4446,11 @@ wq
 zN
 zN
 JY
-af
+ag
 IH
 Fu
 Gu
-aG
+ac
 OF
 wK
 wK
@@ -4491,7 +4491,7 @@ QV
 QV
 oK
 oK
-ak
+aK
 QV
 QV
 ff
@@ -4829,7 +4829,7 @@ iE
 JN
 iE
 xN
-ap
+aP
 Qc
 iE
 FL
@@ -4885,7 +4885,7 @@ Gg
 fy
 gU
 iE
-aq
+aQ
 xN
 ns
 iE
@@ -4962,7 +4962,7 @@ IH
 Fu
 nW
 Nz
-ac
+ad
 Kc
 lv
 ab
@@ -5005,7 +5005,7 @@ IY
 za
 un
 iE
-ai
+aH
 Iy
 Ut
 yL
@@ -5174,7 +5174,7 @@ RP
 RP
 lq
 iE
-am
+aM
 Qc
 iE
 Im
@@ -5512,7 +5512,7 @@ Iy
 Iy
 AO
 Wa
-au
+aR
 vD
 IH
 bH
@@ -5646,7 +5646,7 @@ IH
 rb
 nW
 Nz
-ad
+ae
 zk
 Kc
 Kc
@@ -5703,7 +5703,7 @@ IH
 rb
 nW
 Nz
-ae
+af
 zk
 zk
 Kc
@@ -6095,9 +6095,9 @@ Ub
 wZ
 uw
 uw
-aR
+aq
 uw
-aL
+ak
 uw
 vQ
 AA
@@ -6242,7 +6242,7 @@ BW
 bh
 uw
 uw
-aV
+ay
 Ub
 Ub
 Ub
@@ -6322,11 +6322,11 @@ Ub
 Ub
 Ub
 uw
-aV
-aS
+ay
+au
 uw
 uw
-aK
+aj
 BW
 BW
 BW
@@ -6379,10 +6379,10 @@ Ub
 Ub
 Ub
 uw
-aW
-aT
-aO
-aM
+az
+av
+an
+al
 uw
 BW
 BW
@@ -6411,7 +6411,7 @@ BW
 BW
 BW
 BW
-aM
+al
 uw
 uw
 Ub
@@ -6435,13 +6435,13 @@ Ub
 Ub
 Ub
 Ub
-ba
-aX
-aU
-aP
+aD
+aA
+aw
+ao
 uw
 uw
-aH
+ah
 BW
 BW
 SR
@@ -6493,12 +6493,12 @@ Ub
 Ub
 Ub
 uw
-aY
-aP
-aQ
+aB
+ao
+ap
 uw
 uw
-aJ
+ai
 BW
 BW
 BW
@@ -6550,8 +6550,8 @@ Ub
 Ub
 Ub
 uw
-aZ
-aM
+aC
+al
 uw
 uw
 uw
@@ -6610,7 +6610,7 @@ uw
 uw
 uw
 uw
-aN
+am
 BW
 BW
 BW
@@ -6709,19 +6709,19 @@ uw
 uw
 uw
 uw
-bd
+aS
 uw
 uw
-aM
-uw
-uw
-uw
-uw
-bb
+al
 uw
 uw
 uw
-aH
+uw
+aE
+uw
+uw
+uw
+ah
 BW
 BW
 BW

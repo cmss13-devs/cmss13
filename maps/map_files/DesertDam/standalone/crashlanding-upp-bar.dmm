@@ -21,25 +21,25 @@
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "ad" = (
+/obj/structure/flora/tree/joshua,
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"ae" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shard,
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
-"ae" = (
+"af" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"ag" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
 	pixel_y = 38
 	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
-"af" = (
-/obj/structure/flora/tree/joshua,
-/turf/open/desert/rock,
-/area/desert_dam/exterior/valley/bar_valley_dam)
-"ag" = (
-/obj/structure/flora/grass/desert/lightgrass_3,
-/turf/open/desert/rock,
-/area/desert_dam/exterior/valley/bar_valley_dam)
 "am" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
@@ -3236,9 +3236,9 @@ xT
 "}
 (14,1,1) = {"
 hv
-ae
+ag
 Vr
-ad
+ae
 jj
 ye
 Xh
@@ -3467,7 +3467,7 @@ xT
 xT
 ln
 ln
-af
+ad
 ln
 ln
 xX
@@ -3504,7 +3504,7 @@ tX
 xT
 ln
 ln
-ag
+af
 ln
 ln
 ln

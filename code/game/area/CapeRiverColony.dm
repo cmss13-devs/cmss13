@@ -46,6 +46,7 @@
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_MINING
 	unoviable_timer = FALSE
+	always_unpowered = TRUE
 
 /area/caperiver/indoors/caves/central
 	name = "Caves - Central"

@@ -351,6 +351,10 @@
 	name = MARINE_HEROISM_MEDAL
 	desc = "An extremely rare golden medal awarded only by the USCM. To receive such a medal is the highest honor and as such, very few exist."
 
+/obj/item/clothing/accessory/medal/gold/ua_cross
+	name = MARINE_UA_CROSS_MEDAL
+	icon_state = "ua_cross"
+
 /obj/item/clothing/accessory/medal/platinum
 	name = "platinum medal"
 	desc = "A very prestigious platinum medal, only able to be handed out by generals due to special circumstances."
@@ -359,6 +363,11 @@
 
 /obj/item/clothing/accessory/medal/platinum/special_award
 	name = MARINE_SPECIAL_MEDAL
+
+/obj/item/clothing/accessory/medal/platinum/distinction
+	name = MARINE_UA_CROSS_MEDAL
+	desc = "The Legion of Distinction is the highest award given to the United Americas Armed Forces. Given only to those who demonstrate exceptional service and commitment. These medals are granted only by executive order of the President of the United Americas."
+	icon_state = "ua_cross"
 
 //Playtime Service Medals
 /obj/item/clothing/accessory/medal/bronze/service

@@ -4,6 +4,7 @@
 #define MARINE_VALOR_MEDAL "medal of valor"
 #define MARINE_HEROISM_MEDAL "medal of exceptional heroism"
 #define MARINE_SPECIAL_MEDAL "special services medal"
+#define MARINE_UA_CROSS_MEDAL "legion of distinction"
 
 #define WY_COMMENDATION_MEDAL "corporate service award"
 
@@ -41,7 +42,7 @@ GLOBAL_LIST_EMPTY(medal_recommendations)
 	giver_ckey = list()
 
 GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL))
-GLOBAL_LIST_INIT(human_medals_admin, list(MARINE_COMMENDATION_RIBBON, MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL, MARINE_SPECIAL_MEDAL, WY_COMMENDATION_MEDAL))
+GLOBAL_LIST_INIT(human_medals_admin, list(MARINE_COMMENDATION_RIBBON, MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL, MARINE_SPECIAL_MEDAL, MARINE_UA_CROSS_MEDAL, WY_COMMENDATION_MEDAL))
 
 /proc/give_medal_award(medal_location, as_admin = FALSE, as_xo = FALSE)
 	if(as_admin && !check_rights(R_ADMIN))
@@ -159,6 +160,8 @@ GLOBAL_LIST_INIT(human_medals_admin, list(MARINE_COMMENDATION_RIBBON, MARINE_CON
 				medal = new /obj/item/clothing/accessory/medal/gold/heroism(turf_location)
 			if(MARINE_SPECIAL_MEDAL)
 				medal = new /obj/item/clothing/accessory/medal/platinum/special_award(turf_location)
+			if(MARINE_UA_CROSS_MEDAL)
+				medal = new /obj/item/clothing/accessory/medal/platinum/legion_of_distinction(turf_location)
 			else
 				return FALSE
 		medal.recipient_name = chosen_recipient

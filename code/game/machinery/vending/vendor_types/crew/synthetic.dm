@@ -232,12 +232,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/uscm/service_white
 	path = /obj/item/clothing/under/marine/dress
 
-/datum/gear/synthetic/uscm/service_tan/skirt
-	path = /obj/item/clothing/under/marine/officer/bridge/skirt
-
-/datum/gear/synthetic/uscm/service_white/skirt
-	path = /obj/item/clothing/under/marine/dress/skirt
-
 /datum/gear/synthetic/uscm/engineer_jungle
 	path = /obj/item/clothing/under/marine/engineer/jungle
 

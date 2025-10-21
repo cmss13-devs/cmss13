@@ -18,7 +18,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer, list(
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Service Uniform", 0, /obj/item/clothing/under/marine/officer/bridge, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
-		list("Service Skirt Uniform", 0, /obj/item/clothing/under/marine/officer/bridge/skirt, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 		list("Operations Uniform", 0, /obj/item/clothing/under/marine/officer/boiler, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
 		list("Insulated Gloves (Black)", 0, /obj/item/clothing/gloves/marine/insulated/black, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 

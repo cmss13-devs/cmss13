@@ -736,6 +736,18 @@
 	specialty = "USCM officer"
 	flags_atom = FPRINT && NO_GAMEMODE_SKIN
 
+/obj/item/clothing/under/marine/officer/command/skirt
+	name = "\improper USCM officer skirt uniform"
+	desc = "The well-ironed skirt and button-up uniform of a USCM officer. The skirt has rather spacous pockets sewn into it, showning the wearers high rank. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "CO_jumpskirt"
+	worn_state = "CO_jumpskirt"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	)
+	specialty = "USCM officer"
+	flags_atom = FPRINT && NO_GAMEMODE_SKIN
+
 /obj/item/clothing/under/marine/officer/general
 	name = "USCM Service 'C' Officer Uniform"
 	desc = "A standard-issue USCM Officer 'C' service uniform, comes with a short sleeve buttoned-up tan shirt and green trousers."
@@ -819,7 +831,7 @@
 /obj/item/clothing/under/marine/officer/formal/servicedress
 	name = "commanding officer's dress shirt"
 	desc = "The shirt and tie of a two-piece Navy service dress uniform for high-ranking officers. Wear with style and substance."
-	specialty = "captain's service dress"
+	specialty = "commander's service dress"
 	icon_state = "CO_service"
 	worn_state = "CO_service"
 	flags_atom = NO_GAMEMODE_SKIN
@@ -829,7 +841,7 @@
 	desc = "A well-ironed USCM officer uniform  intended for parades or hot weather. Wear this with pride."
 	icon_state = "co_gray"
 	worn_state = "co_gray"
-	specialty = "captain's gray formal"
+	specialty = "commander's gray formal"
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/officer/formal/turtleneck
@@ -837,7 +849,7 @@
 	desc = "A well-ironed USCM officer uniform intended for more formal or somber events. Wear this with pride."
 	icon_state = "co_turtleneck"
 	worn_state = "co_turtleneck"
-	specialty = "captain's turtleneck"
+	specialty = "commander's turtleneck"
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/dress
@@ -856,8 +868,8 @@
 /obj/item/clothing/under/marine/dress/skirt
 	name = "marine formal service skirt uniform"
 	desc = "A steel grey skirt paired with a formal shirt typically worn by marines of the USCM. Still practicable while still being more formal than the standard service uniform."
-	icon_state = "formal_jumpsuit"
-	worn_state = "formal_jumpsuit"
+	icon_state = "formal_jumpsuit_skirt"
+	worn_state = "formal_jumpsuit_skirt"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',

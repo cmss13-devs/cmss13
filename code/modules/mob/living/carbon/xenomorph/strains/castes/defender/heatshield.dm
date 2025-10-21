@@ -1,8 +1,8 @@
-/datum/xeno_strain/carbuncle
-	name = DEFENDER_CARBUNCLE
+/datum/xeno_strain/heatshield
+	name = DEFENDER_HEATSHIELD
 	description = "Trade some of your armor, some of your speed, and most of your normal abilities to gain fire immunity and new abilities. Being on fire adds a bit of extra damage to your slashes and tail slams. Vomit Bile can be used to immediately extinguish allies and turfs for a faster cooldown, or to cover enemies in a flammable substance; if you are on fire, you can no longer extinguish allies or turfs but will instead cut out the middleman and directly set enemies on fire! Thermoregulation only works when you are on fire and provides a 5-second buff to speed and slash speed before extinguishing you."
 	flavor_description = "Shed your fear, sister. Set their worlds alight like they do ours."
-	icon_state_prefix = "Carbuncle"
+	icon_state_prefix = "Heatshield"
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/headbutt,
@@ -11,37 +11,40 @@
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/vomit_bile,
+		/datum/action/xeno_action/onclick/selfimmolate,
 		/datum/action/xeno_action/onclick/thermoregulation,
 	)
 
-	behavior_delegate_type = /datum/behavior_delegate/defender_carbuncle
+	behavior_delegate_type = /datum/behavior_delegate/defender_heatshield
 
-/datum/xeno_strain/carbuncle/apply_strain(mob/living/carbon/xenomorph/defender/defender)
+/datum/xeno_strain/heatshield/apply_strain(mob/living/carbon/xenomorph/defender/defender)
 	defender.armor_modifier -= XENO_ARMOR_MOD_SMALL
 	defender.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
-	defender.fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
-	defender.remove_fire_immunity_signals()
-	defender.add_fire_immunity_signals()
+	defender.fire_immunity = FIRE_MODIFIER
+	defender.fire_modifier_mult = 0.5
+	defender.refresh_fire_immunity()
 	defender.recalculate_stats()
 
-/datum/behavior_delegate/defender_carbuncle
-	name = "Defender Carbuncle Behavior Delegate"
+/datum/behavior_delegate/defender_heatshield
+	name = "Defender Heatshield Behavior Delegate"
 
 	var/burning_bonus_damage = 3 // Penetrates armor, so not a large value
 
-/datum/behavior_delegate/defender_carbuncle/on_update_icons() // Carbuncle keeps Toggle Crest Defence but has different behavior delegate, so this keeps things working properly
+/datum/behavior_delegate/defender_heatshield/on_update_icons() // Heatshield keeps Toggle Crest Defence but has different behavior delegate, so this keeps things working properly
 	if(bound_xeno.stat == DEAD)
 		return
 
 	if(bound_xeno.crest_defense && bound_xeno.health > 0)
-		bound_xeno.icon_state = "Carbuncle Defender Crest"
+		bound_xeno.icon_state = "Heatshield Defender Crest"
 		return TRUE
 
-/datum/behavior_delegate/defender_carbuncle/melee_attack_additional_effects_target(mob/living/carbon/target)
+/datum/behavior_delegate/defender_heatshield/on_life()
+	if(bound_xeno.fire_stacks > 5)
+		bound_xeno.fire_stacks -= 5 // Limits how long you can stay on fire for
+
+/datum/behavior_delegate/defender_heatshield/melee_attack_additional_effects_target(mob/living/carbon/target)
 	if(bound_xeno.on_fire)
 		target.apply_damage(burning_bonus_damage, BURN, bound_xeno.zone_selected, sharp = FALSE, edge = FALSE)
-		if(target.fire_stacks > 0)
-			target.IgniteMob()
 
 // Abilities
 /datum/action/xeno_action/activable/vomit_bile/use_ability(atom/target_atom)
@@ -119,6 +122,37 @@
 		apply_cooldown()
 		return ..()
 
+/datum/action/xeno_action/onclick/selfimmolate/use_ability(atom/target_atom)
+	var/mob/living/carbon/xenomorph/fendy = owner
+
+	if(!istype(fendy) || !fendy.check_state())
+		return
+
+	if(!action_cooldown_check() || !check_and_use_plasma_owner())
+		return
+
+	fendy.adjust_fire_stacks(selfimmolation_stacks)
+	playsound(fendy, "alien_drool", 30)
+	if(fendy.on_fire)
+		fendy.visible_message(SPAN_XENODANGER("[fendy] regurgitates a burning orange bile onto itself, intensifying the fire already consuming it!"), \
+		SPAN_XENODANGER("We regurgitate bile onto ourself to prolong the flames covering us!"))
+
+	else
+		fendy.visible_message(SPAN_XENODANGER("[fendy] starts covering itself in with a regurgitated orange bile..."), \
+		SPAN_XENODANGER("We begin to coat ourself in flammable bile!"))
+		if(!do_after(fendy, windup_time, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			apply_cooldown()
+			return
+
+		playsound(fendy, 'sound/weapons/alien_claw_block.ogg', 25)
+		playsound(fendy, 'sound/weapons/gun_flamethrower2.ogg', 15)
+		fendy.TryIgniteMob(selfimmolation_stacks)
+		fendy.visible_message(SPAN_XENODANGER("[fendy] strikes the back of its crest with its tail and ignites the bile covering it!"), \
+		SPAN_XENODANGER("We finish coating ourself in flammable bile and ignite ourself!"))
+
+	apply_cooldown()
+	return ..()
+
 /datum/action/xeno_action/onclick/thermoregulation/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/fendy = owner
 
@@ -136,7 +170,7 @@
 	var/color = "#ffa95e"
 	var/alpha = 50
 	color += num2text(alpha, 2, 16)
-	fendy.add_filter("carbuncle_boost", 1, list("type" = "outline", "color" = color, "size" = 3))
+	fendy.add_filter("heatshield_boost", 1, list("type" = "outline", "color" = color, "size" = 3))
 
 	fendy.visible_message(SPAN_XENODANGER("The flames on [fendy] flare up as it begins moving startlingly fast!"), \
 	SPAN_XENODANGER("We absorb the heat energy from the fire on us to bolster ourself!"))
@@ -154,7 +188,7 @@
 	fendy.recalculate_speed()
 	fendy.ExtinguishMob()
 
-	fendy.remove_filter("carbuncle_boost")
+	fendy.remove_filter("heatshield_boost")
 
 	fendy.visible_message(SPAN_XENODANGER("The fire on [fendy] dies out as they slow down!"), \
 	SPAN_XENODANGER("We expend all the energy of the fire on us and return to normal!"))

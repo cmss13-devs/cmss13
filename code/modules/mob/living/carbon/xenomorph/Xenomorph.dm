@@ -133,10 +133,10 @@
 	var/weed_level = WEED_LEVEL_STANDARD
 	var/acid_level = 0
 
-	// Fire Immunity/Vulnerability
+	// Fire Immunity/Vulnerability/Resistance
 	// Basically copies of the respective vars on caste_datum for referance simplicity
 	var/fire_immunity = FIRE_IMMUNITY_NONE
-	var/fire_vulnerability_mult = 0
+	var/fire_modifier_mult = 0
 
 	/// The xeno's strain, if they've taken one.
 	var/datum/xeno_strain/strain = null
@@ -632,7 +632,7 @@
 /// Registers the caste_datum's fire immunity info onto the mob, then adds signals. The mob immunity is what gets altered by strains and/or other things.
 /mob/living/carbon/xenomorph/proc/set_initial_fire_immunity()
 	fire_immunity = caste.fire_immunity
-	fire_vulnerability_mult = caste.fire_vulnerability_mult
+	fire_modifier_mult = caste.fire_modifier_mult
 	add_fire_immunity_signals()
 
 /// Removes any registered signals, re-registers the the caste_datum's initial fire immunity info onto the mob, then reapplies signals.
@@ -640,11 +640,11 @@
 /mob/living/carbon/xenomorph/proc/reset_to_initial_fire_immunity()
 	remove_fire_immunity_signals()
 	fire_immunity = initial(caste.fire_immunity)
-	fire_vulnerability_mult = initial(caste.fire_vulnerability_mult)
+	fire_modifier_mult = initial(caste.fire_modifier_mult)
 	add_fire_immunity_signals()
 
 /// Removes and readds fire immunity signals. This is to account for frequently shifting immunities, like hivebuff.
-/mob/living/carbon/xenomorph/proc/reset_fire_immunity()
+/mob/living/carbon/xenomorph/proc/refresh_fire_immunity()
 	remove_fire_immunity_signals()
 	add_fire_immunity_signals()
 

@@ -45,7 +45,7 @@
 
 	var/fire_immunity = FIRE_IMMUNITY_NONE
 	/// If fire_immunity is set to be vulnerable, how much will fire damage be multiplied. Defines in xeno.dm
-	var/fire_vulnerability_mult = 0
+	var/fire_modifier_mult = 0
 	var/fire_intensity_resistance = 0
 
 	/// Windup for spits

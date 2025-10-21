@@ -500,7 +500,7 @@
 			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_ignition))
 
 /datum/hivebuff/fire/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.reset_fire_immunity() // Returns all affected Xenos back to whatever fire immunity is logged on the mob
+	xeno.refresh_fire_immunity() // Returns all affected Xenos back to whatever fire immunity is logged on the mob
 
 /datum/hivebuff/adaptability
 	name = "Boon of Adaptability"

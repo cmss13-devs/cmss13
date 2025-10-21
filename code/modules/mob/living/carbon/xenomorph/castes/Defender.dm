@@ -18,7 +18,7 @@
 	deevolves_to = list(XENO_CASTE_LARVA)
 	can_vent_crawl = 0
 
-	available_strains = list(/datum/xeno_strain/steel_crest, /datum/xeno_strain/carbuncle)
+	available_strains = list(/datum/xeno_strain/steel_crest, /datum/xeno_strain/heatshield)
 	behavior_delegate_type = /datum/behavior_delegate/defender_base
 
 	tackle_min = 2

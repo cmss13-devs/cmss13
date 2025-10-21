@@ -427,7 +427,7 @@
 
 // Defender strain flags
 #define DEFENDER_STEELCREST "Steelcrest"
-#define DEFENDER_CARBUNCLE "Carbuncle"
+#define DEFENDER_HEATSHIELD "Heatshield"
 
 // Crusher strain flags
 #define CRUSHER_CHARGER "Charger"
@@ -757,7 +757,7 @@
 #define FIRE_IMMUNITY_COMPLETE			(1<<2) // Cannot be set on fire and will not take damage from fire
 #define FIRE_IMMUNITY_BURROWER			(1<<3) // Bespoke variant for Burrower so we don't need to constantly add and remove signals
 #define FIRE_IMMUNITY_XENO_FRENZY		(1<<4) // Will have COMPONENT_XENO_FRENZY added
-#define FIRE_VULNERABILITY				(1<<5) // Will have fire damage multiplied by a certain factor
+#define FIRE_MODIFIER					(1<<5) // Indicates vulnerability/resistance rather than immunity
 
 #define FIRE_MULTIPLIER_BASE	 	1
 #define FIRE_MULTIPLIER_LOW		 	1.25

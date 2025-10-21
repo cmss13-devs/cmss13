@@ -66,10 +66,10 @@
 	/// Initially zero, gets damage added when the ability is activated
 	var/damage_accumulated = 0
 
-// Carbuncle Abilities
+// Heatshield Abilities
 /datum/action/xeno_action/activable/vomit_bile
 	name = "Vomit Bile"
-	action_icon_state = "spray_acid"
+	action_icon_state = "regurgitate"
 	macro_path = /datum/action/xeno_action/verb/verb_vomit_bile
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -79,12 +79,25 @@
 
 	var/on_fire_fire_stack_amount = 15 // Requires at least one roll or pat to extinguish
 
-/datum/action/xeno_action/onclick/thermoregulation
-	name = "Thermoregulation"
+/datum/action/xeno_action/onclick/selfimmolate
+	name = "Self-Immolate"
 	action_icon_state = "soak"
-	macro_path = /datum/action/xeno_action/verb/verb_thermoregulation
+	macro_path = /datum/action/xeno_action/verb/verb_selfimmolate
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
+
+	plasma_cost = 60
+	xeno_cooldown = 10 SECONDS
+
+	var/windup_time = 3 SECONDS
+	var/selfimmolation_stacks = 15
+
+/datum/action/xeno_action/onclick/thermoregulation
+	name = "Thermoregulation"
+	action_icon_state = "rage"
+	macro_path = /datum/action/xeno_action/verb/verb_thermoregulation
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 	plasma_cost = 80
 	xeno_cooldown = 20 SECONDS

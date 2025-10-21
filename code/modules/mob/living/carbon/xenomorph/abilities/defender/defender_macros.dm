@@ -41,6 +41,13 @@
 	var/action_name = "Vomit Bile"
 	handle_xeno_macro(src, action_name)
 
+/datum/action/xeno_action/verb/verb_selfimmolate()
+	set category = "Alien"
+	set name = "Self-Immolate"
+	set hidden = TRUE
+	var/action_name = "Self-Immolate"
+	handle_xeno_macro(src, action_name)
+
 /datum/action/xeno_action/verb/verb_thermoregulation()
 	set category = "Alien"
 	set name = "Thermoregulation"

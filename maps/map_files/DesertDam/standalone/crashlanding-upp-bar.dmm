@@ -32,6 +32,14 @@
 	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
+"af" = (
+/obj/structure/flora/tree/joshua,
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"ag" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/bar_valley_dam)
 "am" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
@@ -3459,7 +3467,7 @@ xT
 xT
 ln
 ln
-ln
+af
 ln
 ln
 xX
@@ -3496,7 +3504,7 @@ tX
 xT
 ln
 ln
-ln
+ag
 ln
 ln
 ln

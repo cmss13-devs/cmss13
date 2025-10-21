@@ -75,10 +75,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/church)
-"mr" = (
-/obj/structure/flora/grass/desert/heavygrass_3,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "nb" = (
 /obj/item/stack/sheet/wood,
 /obj/effect/decal/cleanable/blood,
@@ -95,10 +91,6 @@
 "oa" = (
 /turf/open/floor/dark,
 /area/desert_dam/building/church)
-"oe" = (
-/obj/structure/flora/grass/desert/lightgrass_3,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "op" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp/candelabra,
@@ -192,10 +184,6 @@
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/floor/plating/platingdmg1,
 /area/desert_dam/building/church)
-"xu" = (
-/obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "xO" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
@@ -216,10 +204,6 @@
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating,
 /area/desert_dam/building/church)
-"Dc" = (
-/obj/structure/flora/bush/desert,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "DF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/sofa/pews/flipped,
@@ -237,10 +221,6 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
-"GS" = (
-/obj/structure/flora/grass/desert/lightgrass_9,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "Hl" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/trash/candle,
@@ -306,12 +286,6 @@
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/church)
-"QU" = (
-/obj/structure/flora/bush/desert/cactus{
-	icon_state = "cactus_8"
-	},
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "Rw" = (
 /obj/structure/window_frame/colony/reinforced,
 /obj/item/shard,
@@ -322,8 +296,8 @@
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/church)
 "Th" = (
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
+/turf/template_noop,
+/area/template_noop)
 "Tw" = (
 /obj/structure/machinery/light,
 /obj/structure/bed/sofa/pews/flipped,
@@ -353,7 +327,7 @@
 /area/desert_dam/building/church)
 
 (1,1,1) = {"
-mr
+Th
 Th
 LM
 LM
@@ -365,8 +339,8 @@ Th
 Th
 "}
 (2,1,1) = {"
-GS
-xu
+Th
+Th
 LM
 ab
 oa
@@ -374,10 +348,10 @@ ii
 hF
 LM
 Th
-QU
+Th
 "}
 (3,1,1) = {"
-oe
+Th
 Th
 LM
 ad
@@ -605,7 +579,7 @@ Th
 Th
 "}
 (22,1,1) = {"
-Dc
+Th
 Th
 LM
 qB

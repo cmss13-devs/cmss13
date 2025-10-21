@@ -194,8 +194,8 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "sU" = (
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_hydro)
+/turf/template_noop,
+/area/template_noop)
 "ti" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,

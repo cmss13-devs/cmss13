@@ -37,10 +37,6 @@
 "bx" = (
 /turf/open/floor/carpet14_10/west,
 /area/desert_dam/building/church)
-"bM" = (
-/obj/structure/flora/grass/desert/lightgrass_9,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "cw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -67,13 +63,9 @@
 /obj/structure/machinery/light,
 /turf/open/floor/dark,
 /area/desert_dam/building/church)
-"gL" = (
-/obj/structure/flora/grass/desert/lightgrass_3,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "gT" = (
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
+/turf/template_noop,
+/area/template_noop)
 "hV" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -103,10 +95,6 @@
 /obj/structure/bed/sofa/pews/flipped,
 /turf/open/floor/chapel/west,
 /area/desert_dam/building/church)
-"oy" = (
-/obj/structure/flora/bush/desert,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "oC" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/carpet13_5/west,
@@ -161,10 +149,6 @@
 /obj/item/device/flashlight/lamp/candelabra,
 /turf/open/floor/cult,
 /area/desert_dam/building/church)
-"vJ" = (
-/obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "vL" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/bible{
@@ -200,12 +184,6 @@
 /obj/item/prop/helmetgarb/spent_buckshot,
 /turf/open/floor/carpet13_5/west,
 /area/desert_dam/building/church)
-"AK" = (
-/obj/structure/flora/bush/desert/cactus{
-	icon_state = "cactus_8"
-	},
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "AM" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -232,10 +210,6 @@
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/dark,
 /area/desert_dam/building/church)
-"Hb" = (
-/obj/structure/flora/grass/desert/heavygrass_3,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_cargo)
 "Ho" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/carpet14_10/west,
@@ -346,7 +320,7 @@
 /area/desert_dam/building/church)
 
 (1,1,1) = {"
-Hb
+gT
 gT
 JB
 JB
@@ -358,8 +332,8 @@ gT
 gT
 "}
 (2,1,1) = {"
-bM
-vJ
+gT
+gT
 JB
 AM
 ZA
@@ -367,10 +341,10 @@ Tj
 gK
 JB
 gT
-AK
+gT
 "}
 (3,1,1) = {"
-gL
+gT
 gT
 JB
 ab
@@ -598,7 +572,7 @@ gT
 gT
 "}
 (22,1,1) = {"
-oy
+gT
 gT
 JB
 CY

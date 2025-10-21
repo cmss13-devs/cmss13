@@ -53,6 +53,22 @@
 	},
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"aj" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 10
+	},
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"ak" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/rock/deep/transition/north,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "bg" = (
 /obj/structure/bed,
 /obj/structure/machinery/light{
@@ -803,7 +819,7 @@ pF
 ge
 tL
 pC
-pC
+ak
 fN
 gQ
 je
@@ -1004,7 +1020,7 @@ BH
 Sh
 Sh
 Sh
-Gy
+aj
 IS
 sR
 tv

@@ -211,14 +211,177 @@
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
+"aG" = (
+/obj/structure/flora/bush/desert/cactus/multiple{
+	icon_state = "cacti_8"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"aH" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 8
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "aI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
 /area/desert_dam/exterior/valley/valley_civilian)
+"aJ" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a"
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aK" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aL" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 4
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aM" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aN" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	dir = 5;
+	pixel_y = -1
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aO" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aP" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aQ" = (
+/obj/structure/flora/grass/desert/lightgrass_9,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aR" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2"
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aS" = (
+/obj/structure/flora/grass/desert/lightgrass_8,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aT" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 4
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aU" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aV" = (
+/obj/structure/flora/grass/desert/heavygrass_3,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aW" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 6
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aX" = (
+/obj/structure/flora/grass/tallgrass/desert/corner,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aY" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 10
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"aZ" = (
+/obj/structure/flora/grass/desert/lightgrass_7,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"ba" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"bb" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 10
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "bc" = (
 /obj/structure/machinery/light,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
+"bd" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"be" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3"
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"bf" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#da822a";
+	dir = 4
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"bg" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 9
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"bh" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 1
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"bi" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	dir = 1;
+	color = "#da822a"
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
 "bl" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/prison,
@@ -3888,7 +4051,7 @@ tn
 DF
 ik
 Gu
-NL
+xK
 OF
 wK
 wK
@@ -4287,7 +4450,7 @@ af
 IH
 Fu
 Gu
-NL
+aG
 OF
 wK
 wK
@@ -4504,7 +4667,7 @@ ff
 ff
 bc
 QR
-NL
+xK
 Qt
 Fu
 Lx
@@ -5932,9 +6095,9 @@ Ub
 wZ
 uw
 uw
+aR
 uw
-uw
-uw
+aL
 uw
 vQ
 AA
@@ -6076,10 +6239,10 @@ BW
 BW
 BW
 BW
+bh
 uw
 uw
-uw
-uw
+aV
 Ub
 Ub
 Ub
@@ -6133,10 +6296,10 @@ BW
 BW
 BW
 BW
+bi
 uw
 uw
 uw
-uw
 Ub
 Ub
 Ub
@@ -6159,11 +6322,11 @@ Ub
 Ub
 Ub
 uw
+aV
+aS
 uw
 uw
-uw
-uw
-uw
+aK
 BW
 BW
 BW
@@ -6216,10 +6379,10 @@ Ub
 Ub
 Ub
 uw
-uw
-uw
-uw
-uw
+aW
+aT
+aO
+aM
 uw
 BW
 BW
@@ -6248,9 +6411,9 @@ BW
 BW
 BW
 BW
+aM
 uw
 uw
-uw
 Ub
 Ub
 Ub
@@ -6272,13 +6435,13 @@ Ub
 Ub
 Ub
 Ub
-uw
-uw
-uw
-uw
-uw
+ba
+aX
+aU
+aP
 uw
 uw
+aH
 BW
 BW
 SR
@@ -6306,36 +6469,36 @@ BW
 BW
 BW
 uw
+be
+uw
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+uw
+aY
+aP
+aQ
 uw
 uw
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-Ub
-uw
-uw
-uw
-uw
-uw
-uw
-uw
+aJ
 BW
 BW
 BW
@@ -6362,9 +6525,9 @@ BW
 BW
 BW
 BW
+bg
 uw
 uw
-uw
 Ub
 Ub
 Ub
@@ -6387,8 +6550,8 @@ Ub
 Ub
 Ub
 uw
-uw
-uw
+aZ
+aM
 uw
 uw
 uw
@@ -6447,7 +6610,7 @@ uw
 uw
 uw
 uw
-uw
+aN
 BW
 BW
 BW
@@ -6534,6 +6697,7 @@ BW
 BW
 BW
 BW
+bf
 uw
 uw
 uw
@@ -6545,20 +6709,19 @@ uw
 uw
 uw
 uw
+bd
+uw
+uw
+aM
 uw
 uw
 uw
 uw
+bb
 uw
 uw
 uw
-uw
-uw
-uw
-uw
-uw
-uw
-uw
+aH
 BW
 BW
 BW

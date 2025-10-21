@@ -53,6 +53,10 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/river/riverside_east)
+"ai" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
 "am" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/crap_item,
@@ -664,6 +668,7 @@
 	pixel_y = 4
 	},
 /obj/item/tool/shovel,
+/obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "Bp" = (
@@ -1281,7 +1286,7 @@ wb
 uX
 NN
 CC
-ih
+ai
 eg
 oI
 Hp

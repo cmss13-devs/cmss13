@@ -3,6 +3,10 @@
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/plating,
 /area/desert_dam/building/security/lobby)
+"ab" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_security)
 "ac" = (
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -717,7 +721,7 @@ lJ
 zU
 AX
 eI
-lT
+ab
 WJ
 pf
 Da

@@ -10,6 +10,14 @@
 "ac" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/maint/north)
+"ad" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
+"ae" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
 "bA" = (
 /obj/structure/desertdam/decals/road_edge,
 /obj/item/weapon/broken_bottle,
@@ -1167,7 +1175,7 @@ lf
 YT
 rj
 Pj
-xG
+ad
 cR
 dW
 uf
@@ -1479,7 +1487,7 @@ Ch
 XA
 Vh
 Pj
-xG
+ae
 gg
 Qu
 rP

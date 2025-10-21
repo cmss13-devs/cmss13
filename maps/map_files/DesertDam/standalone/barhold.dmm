@@ -506,11 +506,8 @@
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "AB" = (
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/bar_valley_dam)
-"AW" = (
-/turf/open/desert/dirt/desert_transition_corner1,
-/area/desert_dam/interior/dam_interior/south_tunnel)
+/turf/template_noop,
+/area/template_noop)
 "Bv" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -994,9 +991,6 @@
 	},
 /turf/open/floor/platingdmg1,
 /area/desert_dam/building/bar/bar)
-"XJ" = (
-/turf/open/desert/rock,
-/area/desert_dam/interior/dam_interior/south_tunnel)
 "XX" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor/interior/wood/alt,
@@ -1019,7 +1013,7 @@
 /area/desert_dam/building/bar/bar)
 
 (1,1,1) = {"
-XJ
+AB
 cm
 cm
 cm
@@ -1038,7 +1032,7 @@ Mv
 Mv
 "}
 (2,1,1) = {"
-XJ
+AB
 cm
 cm
 cm
@@ -1076,7 +1070,7 @@ HR
 Mv
 "}
 (4,1,1) = {"
-AW
+AB
 cm
 cm
 cm

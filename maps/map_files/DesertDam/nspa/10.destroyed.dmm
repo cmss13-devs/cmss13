@@ -3,6 +3,10 @@
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/plating,
 /area/desert_dam/building/security/lobby)
+"ab" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_security)
 "bp" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
@@ -534,7 +538,7 @@ BV
 Ft
 iE
 Yn
-dO
+ab
 XS
 pn
 jM

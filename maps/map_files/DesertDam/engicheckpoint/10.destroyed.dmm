@@ -47,6 +47,22 @@
 	},
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
+"ai" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 10
+	},
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"aj" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 6
+	},
+/turf/open/desert/rock/deep/transition/north,
+/area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aq" = (
 /turf/closed/wall,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -560,6 +576,11 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Kd" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	dir = 5;
+	pixel_y = -1
+	},
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "Kg" = (
@@ -988,7 +1009,7 @@ JM
 RA
 NJ
 Zn
-Zn
+aj
 Xz
 oC
 Si
@@ -1189,7 +1210,7 @@ aq
 Bv
 Bv
 Bv
-vP
+ai
 JL
 SZ
 qd

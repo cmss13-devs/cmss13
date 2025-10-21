@@ -141,6 +141,7 @@
 /turf/open/desert/rock/deep/transition/east,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "lq" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "lu" = (
@@ -188,6 +189,11 @@
 /turf/open/desert/rock/deep/transition/east,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "qG" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 8
+	},
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "rV" = (
@@ -494,6 +500,11 @@
 /turf/open/asphalt/cement/cement3,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "Rq" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 1
+	},
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "Rr" = (

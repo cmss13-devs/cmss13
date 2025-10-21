@@ -1156,34 +1156,6 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/caperiver/indoors/caves/w)
 "aen" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 7;
 	pixel_y = 9;
@@ -1193,6 +1165,13 @@
 /obj/structure/sign/safety/north{
 	pixel_x = 7;
 	pixel_y = 23
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/caperiver/outdoors/scrublands/south/antiweed)
@@ -2207,34 +2186,6 @@
 /turf/open/gm/dirt/brown,
 /area/caperiver/indoors/caves/sw)
 "aij" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 24;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 24;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -4;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 23;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/north{
 	pixel_x = 17;
 	pixel_y = 23
@@ -2244,6 +2195,13 @@
 	pixel_y = 9;
 	desc = "Sign denoting the location of a mine site.";
 	name = "Mining Site"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 25;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_west)
@@ -2275,34 +2233,6 @@
 /turf/open/floor/wood,
 /area/space)
 "aiq" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/north{
 	pixel_x = 7;
 	pixel_y = 23
@@ -2312,6 +2242,13 @@
 	pixel_y = 9;
 	desc = "Sign denoting the location of a mine site.";
 	name = "Mining Site"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/con_am_exterior/north)
@@ -3195,28 +3132,7 @@
 "alI" = (
 /obj/structure/barricade/handrail/kutjevo{
 	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
 	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
 	pixel_y = 16;
 	density = 0;
 	name = "pole signal"
@@ -4816,34 +4732,6 @@
 /turf/open/floor/asteroidwarning/northwest,
 /area/caperiver/outdoors/mining_base_exterior/south)
 "arr" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/commline_connection{
 	pixel_x = 7;
 	pixel_y = 8;
@@ -4860,6 +4748,13 @@
 /obj/structure/sign/safety/north{
 	pixel_x = 7;
 	pixel_y = 23
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/south/antiweed)
@@ -6224,34 +6119,6 @@
 /turf/open/desert/dirt,
 /area/space)
 "avS" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/west{
 	pixel_y = 23;
 	pixel_x = 7;
@@ -6262,6 +6129,13 @@
 	pixel_y = 9;
 	name = "\improper Mining colony";
 	desc = "Sign denoting the direction of a mining colony"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/scrublands/north)
@@ -8539,27 +8413,6 @@
 /turf/open/desert/rock/deep/rock4,
 /area/space)
 "aDY" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/east{
 	pixel_x = 7;
 	pixel_y = 23;
@@ -8571,6 +8424,13 @@
 	pixel_y = 9;
 	name = "\improper Con-Am Facility";
 	desc = "A sign denoting the location of a Con-Am facility."
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/caperiver/outdoors/scrublands/north_west)
@@ -8856,34 +8716,6 @@
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/caperiver/outdoors/scrublands/south_east)
 "aEU" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 7;
 	pixel_y = 9;
@@ -8893,6 +8725,13 @@
 /obj/structure/sign/safety/north{
 	pixel_x = 7;
 	pixel_y = 23
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/caperiver/outdoors/scrublands/south/antiweed)
@@ -10707,34 +10546,6 @@
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/south)
 "aLg" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/north{
 	pixel_x = 7;
 	pixel_y = 23
@@ -10744,6 +10555,13 @@
 	pixel_y = 9;
 	desc = "Sign denoting the location of a mine site.";
 	name = "Mining Site"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/scrublands/north)
@@ -10765,34 +10583,6 @@
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/caperiver/outdoors/landing_zone_2)
 "aLk" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/east{
 	pixel_x = 7;
 	pixel_y = 23;
@@ -10812,6 +10602,13 @@
 	desc = "Direction of a Communications Array."
 	},
 /obj/structure/flora/grass/desert/heavygrass_3,
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/caperiver/outdoors/scrublands/south/antiweed)
 "aLl" = (
@@ -19815,27 +19612,6 @@
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/caperiver/outdoors/scrublands/west/antiweed)
 "iqQ" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/east{
 	pixel_x = 7;
 	pixel_y = 23;
@@ -19847,6 +19623,13 @@
 	pixel_y = 9;
 	name = "\improper Con-Am Facility";
 	desc = "A sign denoting the location of a Con-Am facility."
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/caperiver/outdoors/scrublands/north_west)
@@ -20195,34 +19978,6 @@
 /turf/open/floor/cult,
 /area/caperiver/indoors/conambase/unknown)
 "iVs" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/north{
 	pixel_x = 7;
 	pixel_y = 23
@@ -20232,6 +19987,13 @@
 	pixel_y = 9;
 	desc = "Sign denoting the location of a mine site.";
 	name = "Mining Site"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_west)
@@ -20747,27 +20509,6 @@
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/caperiver/outdoors/scrublands/south/antiweed)
 "jIq" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/east{
 	pixel_x = 7;
 	pixel_y = 23;
@@ -20779,6 +20520,13 @@
 	pixel_y = 9;
 	name = "\improper Con-Am Facility";
 	desc = "A sign denoting the location of a Con-Am facility."
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_west)
@@ -26541,34 +26289,6 @@
 /turf/open/desert/rock/deep/rock4,
 /area/caperiver/outdoors/landing_zone_2/cave)
 "suy" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/hvac_old{
 	pixel_x = 7;
 	pixel_y = 9;
@@ -26578,6 +26298,13 @@
 /obj/structure/sign/safety/north{
 	pixel_x = 7;
 	pixel_y = 23
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/caperiver/outdoors/scrublands/west/antiweed)
@@ -28650,27 +28377,6 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/caperiver/outdoors/road/west/antiweed)
 "wjn" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/east{
 	pixel_x = 7;
 	pixel_y = 23;
@@ -28682,6 +28388,13 @@
 	pixel_y = 9;
 	name = "\improper Con-Am Facility";
 	desc = "A sign denoting the location of a Con-Am facility."
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/caperiver/outdoors/scrublands/north)

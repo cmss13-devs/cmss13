@@ -5311,3 +5311,346 @@
 	value = "marine2_balthazar"
 	category = TTS_CATEGORY_WH40k
 	gender = TTS_GENDER_MALE
+
+
+/datum/tts_seed/silero/amazon
+	name = "Amazon"
+	value = "amazon"
+	category = TTS_CATEGORY_HEROESOFTHESTORM
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/anastasia
+	name = "Anastasia"
+	value = "anastasia"
+	category = TTS_CATEGORY_OTHER
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/annie
+	name = "Annie"
+	value = "annie"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/azmodan
+	name = "Azmodan"
+	value = "azmodan"
+	category = TTS_CATEGORY_HEROESOFTHESTORM
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/baleog
+	name = "Baleog"
+	value = "baleog"
+	category = TTS_CATEGORY_HEROESOFTHESTORM
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/bandit1
+	name = "Bandit1"
+	value = "bandit1"
+	category = TTS_CATEGORY_STALKER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cannibal1
+	name = "Cannibal1"
+	value = "cannibal1"
+	category = TTS_CATEGORY_METRO
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cho
+	name = "Cho"
+	value = "cho"
+	category = TTS_CATEGORY_HEROESOFTHESTORM
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/deathwing
+	name = "Deathwing"
+	value = "deathwing"
+	category = TTS_CATEGORY_WOW
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/diablo
+	name = "Diablo"
+	value = "diablo"
+	category = TTS_CATEGORY_HEROESOFTHESTORM
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/diana
+	name = "Diana"
+	value = "diana"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/dragonknight
+	name = "Dragonknight"
+	value = "dragonknight"
+	category = TTS_CATEGORY_DOTA2
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/eleanora
+	name = "Eleanora"
+	value = "eleanora"
+	category = TTS_CATEGORY_UNKNOWN
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/falstad
+	name = "Falstad"
+	value = "falstad"
+	category = TTS_CATEGORY_HEROESOFTHESTORM
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/galmar
+	name = "Galmar"
+	value = "galmar"
+	category = TTS_CATEGORY_SKYRIM
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/garrosh
+	name = "Garrosh"
+	value = "garrosh"
+	category = TTS_CATEGORY_WOW
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/gazlowe
+	name = "Gazlowe"
+	value = "gazlowe"
+	category = TTS_CATEGORY_HEROESOFTHESTORM
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/guldan
+	name = "Guldan"
+	value = "guldan"
+	category = TTS_CATEGORY_WOW
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/gwen
+	name = "Gwen"
+	value = "gwen"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/hogger
+	name = "Hogger"
+	value = "hogger"
+	category = TTS_CATEGORY_WOW
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/imperius
+	name = "Imperius"
+	value = "imperius"
+	category = TTS_CATEGORY_HEROESOFTHESTORM
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/irelia
+	name = "Irelia"
+	value = "irelia"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/jhin
+	name = "Jhin"
+	value = "jhin"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/jhinx
+	name = "Jhinкс (Да, в силеро именно так называется)"
+	value = "jhinкс"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/kaelthas
+	name = "Kaelthas"
+	value = "kaelthas"
+	category = TTS_CATEGORY_WARCRAFT3
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/karthus
+	name = "Karthus"
+	value = "karthus"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/leoric
+	name = "Leoric"
+	value = "leoric"
+	category = TTS_CATEGORY_HEROESOFTHESTORM
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/lili
+	name = "Lili"
+	value = "lili"
+	category = TTS_CATEGORY_HEROESOFTHESTORM
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/lillia
+	name = "Lillia"
+	value = "lillia"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/lucian
+	name = "Lucian"
+	value = "lucian"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/malganis
+	name = "Malganis"
+	value = "malganis"
+	category = TTS_CATEGORY_WARCRAFT3
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/mei
+	name = "Mei"
+	value = "mei"
+	category = TTS_CATEGORY_OVERWATCH
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/meiow
+	name = "Meiow"
+	value = "meiow"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_ANY
+
+/datum/tts_seed/silero/mephala
+	name = "Mephala"
+	value = "mephala"
+	category = TTS_CATEGORY_SKYRIM
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/merc3
+	name = "Merc3"
+	value = "merc3"
+	category = TTS_CATEGORY_METRO
+	gender = TTS_GENDER_ANY
+
+/datum/tts_seed/silero/olya
+	name = "Olya"
+	value = "olya"
+	category = TTS_CATEGORY_OTHER
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/orisa
+	name = "Orisa"
+	value = "orisa"
+	category = TTS_CATEGORY_OVERWATCH
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/petr
+	name = "Petr"
+	value = "petr"
+	category = TTS_CATEGORY_OTHER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/reinhardt
+	name = "Reinhardt"
+	value = "reinhardt"
+	category = TTS_CATEGORY_OVERWATCH
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/rumble
+	name = "Rumble"
+	value = "rumble"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/sion
+	name = "Sion"
+	value = "sion"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stitches
+	name = "Stitches"
+	value = "stitches"
+	category = TTS_CATEGORY_HEROESOFTHESTORM
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/tahm_kench
+	name = "Tahm_Kench"
+	value = "tahm_kench"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/tank
+	name = "Tank"
+	value = "tank"
+	category = TTS_CATEGORY_OVERWATCH
+	gender = TTS_GENDER_ANY
+
+/datum/tts_seed/silero/torbjorn
+	name = "Torbjorn"
+	value = "torbjorn"
+	category = TTS_CATEGORY_OVERWATCH
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/tribal2
+	name = "Tribal2"
+	value = "tribal2"
+	category = TTS_CATEGORY_METRO
+	gender = TTS_GENDER_ANY
+
+/datum/tts_seed/silero/twitch
+	name = "Twitch"
+	value = "twitch"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/vaas
+	name = "Vaas"
+	value = "vaas"
+	category = TTS_CATEGORY_OTHER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/valeria
+	name = "Valeria"
+	value = "valeria"
+	category = TTS_CATEGORY_UNKNOWN
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/viktor
+	name = "Viktor"
+	value = "viktor"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/winslow
+	name = "Winslow"
+	value = "winslow"
+	category = TTS_CATEGORY_UNKNOWN
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/wizard
+	name = "Wizard"
+	value = "wizard"
+	category = TTS_CATEGORY_HEROESOFTHESTORM
+	gender = TTS_GENDER_ANY
+
+/datum/tts_seed/silero/wrecking_ball
+	name = "Wrecking_Ball"
+	value = "wrecking_ball"
+	category = TTS_CATEGORY_OVERWATCH
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/yorick
+	name = "Yorick"
+	value = "yorick"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/zagara
+	name = "Zagara"
+	value = "zagara"
+	category = TTS_CATEGORY_HEROESOFTHESTORM
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/zeri
+	name = "Zeri"
+	value = "zeri"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/ziggs
+	name = "Ziggs"
+	value = "ziggs"
+	category = TTS_CATEGORY_LOL
+	gender = TTS_GENDER_MALE

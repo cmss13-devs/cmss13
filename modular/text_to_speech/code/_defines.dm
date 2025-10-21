@@ -57,6 +57,7 @@
 #define TTS_CATEGORY_DEEP_ROCK_GALACTIC "Deep Rock Galactic"
 #define TTS_CATEGORY_SUNBOY "Пророк Санбой"
 #define TTS_CATEGORY_WH40k "Warhammer 40k"
+#define TTS_CATEGORY_UNKNOWN "Загадка Силеро"
 
 #define TTS_GENDER_ANY "Любой"
 #define TTS_GENDER_MALE "Мужской"

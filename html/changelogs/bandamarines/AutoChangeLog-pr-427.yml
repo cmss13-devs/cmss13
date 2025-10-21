@@ -1,0 +1,4 @@
+author: "PhantornRU"
+delete-after: True
+changes:
+  - bugfix: "Фикс причины поломки отображения плашки NEW у менторов / SEA"

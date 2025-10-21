@@ -4700,12 +4700,8 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/caperiver/outdoors/road/south)
 "arm" = (
-/obj/structure/surface/table/woodentable/poor,
 /obj/structure/machinery/computer/cameras{
 	pixel_y = 4
-	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#98a3ab"
 	},
 /obj/structure/sign/banners/upp_flag{
 	pixel_x = -1;
@@ -12011,11 +12007,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/strata/fake_wood,
 /area/caperiver/outdoors/landing_zone_2/cave)
-"aQs" = (
-/obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/north,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/west)
 "aQt" = (
 /obj/structure/window/framed/kutjevo/reinforced,
 /turf/open/floor/plating/kutjevo,
@@ -12243,12 +12234,8 @@
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/space)
 "aRh" = (
-/obj/structure/surface/table/woodentable/poor,
 /obj/structure/machinery/computer/cameras{
 	pixel_y = 4
-	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#98a3ab"
 	},
 /turf/open/floor/corsat/red/north,
 /area/space)
@@ -36790,7 +36777,7 @@ ahF
 ahF
 ahF
 ahf
-agL
+abG
 aau
 afc
 acw
@@ -36994,7 +36981,7 @@ ahF
 ahF
 ahF
 ahn
-agO
+abG
 aau
 aTF
 aTF
@@ -37198,7 +37185,7 @@ ahF
 aia
 aia
 ahF
-agL
+abG
 aau
 aTF
 aTF
@@ -47332,7 +47319,7 @@ aWQ
 aWQ
 aWQ
 ann
-aQs
+anQ
 aro
 axL
 awB

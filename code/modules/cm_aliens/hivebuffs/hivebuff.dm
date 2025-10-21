@@ -491,9 +491,10 @@
 
 		if(FIRE_IMMUNITY_NO_DAMAGE) // Immune to damage but not ignition, make them immune to ignition
 			RegisterSignal(xeno, COMSIG_LIVING_PREIGNITION, TYPE_PROC_REF(/mob/living/carbon/xenomorph, preignition_no_ignition))
+			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_ignition))
 
 		if(FIRE_IMMUNITY_NO_IGNITE) // Immune to ignition but not damage, make them immune to damage
-			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_ignition))
+			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_damage))
 
 		if(FIRE_IMMUNITY_BURROWER) // Burrower but not burrowed, get same immunities as FIRE_IMMUNITY_NONE
 			RegisterSignal(xeno, COMSIG_LIVING_PREIGNITION, TYPE_PROC_REF(/mob/living/carbon/xenomorph, preignition_no_ignition))

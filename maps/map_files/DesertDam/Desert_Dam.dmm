@@ -7972,7 +7972,7 @@
 /area/desert_dam/interior/dam_interior/hanger/waiting)
 "azs" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
-/turf/open/desert/dirt,
+/turf/open/floor/plating,
 /area/desert_dam/interior/caves/east_caves)
 "azt" = (
 /obj/item/trash/cigbutt,
@@ -14757,7 +14757,7 @@
 /area/desert_dam/exterior/valley/valley_labs)
 "aUG" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
-/turf/open/desert/dirt,
+/turf/open/floor/plating,
 /area/desert_dam/interior/caves/east_caves)
 "aUH" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
@@ -15844,6 +15844,9 @@
 	},
 /turf/open/desert/dirt/rock1,
 /area/desert_dam/exterior/valley/valley_medical)
+"aYi" = (
+/turf/closed/wall/r_wall/bunker,
+/area/desert_dam/interior/caves/east_caves)
 "aYj" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#da822a";
@@ -16743,7 +16746,7 @@
 /area/desert_dam/interior/caves/east_caves)
 "baK" = (
 /obj/item/tool/pickaxe/drill,
-/turf/open/desert/rock/deep/transition/west,
+/turf/open/desert/rock,
 /area/desert_dam/interior/caves/east_caves)
 "baL" = (
 /obj/item/device/flashlight/lamp/tripod{
@@ -17798,6 +17801,100 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
+"beh" = (
+/obj/structure/fence/slim/dark,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/east_caves)
+"bei" = (
+/obj/structure/fence/slim/dark/door,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/east_caves)
+"bej" = (
+/obj/structure/fence/slim/dark,
+/turf/open/desert/rock/deep/transition/east,
+/area/desert_dam/interior/caves/east_caves)
+"bek" = (
+/obj/structure/fence/slim/dark,
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/caves/east_caves)
+"bel" = (
+/turf/closed/wall/r_wall/bunker,
+/area/desert_dam/exterior/rock/level1)
+"bem" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/east_caves)
+"ben" = (
+/obj/structure/machinery/floodlight,
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
+"beo" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
+"bep" = (
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
+"beq" = (
+/obj/item/stack/rods{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/desert_dam/interior/caves/east_caves)
+"ber" = (
+/obj/item/device/flashlight/on,
+/turf/open/floor/plating,
+/area/desert_dam/interior/caves/east_caves)
+"bes" = (
+/obj/effect/decal/hybrisa/lattice/full,
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/desert_dam/interior/caves/east_caves)
+"bet" = (
+/obj/effect/decal/hybrisa/lattice/full,
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/east_caves)
+"beu" = (
+/obj/item/stack/rods{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/east_caves)
+"bev" = (
+/obj/structure/largecrate/random/barrel/black{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/east_caves)
+"bew" = (
+/obj/structure/largecrate/random/barrel/brown{
+	pixel_x = -5
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/east_caves)
+"bex" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 8;
+	pixel_y = -3
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"bey" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#da822a";
+	pixel_y = -1;
+	dir = 8
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"bez" = (
+/obj/structure/flora/tree/joshua,
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/central_caves)
 "beA" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/tool/kitchen/tray{
@@ -28056,10 +28153,6 @@
 	},
 /turf/open/floor/almayer/research/containment/corner_var1/east,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
-"fdR" = (
-/obj/structure/flora/tree/joshua,
-/turf/open/desert/dirt,
-/area/desert_dam/interior/caves/east_caves)
 "fdU" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
@@ -41332,6 +41425,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_main)
 "khn" = (
+/obj/effect/decal/hybrisa/lattice/full,
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/interior/caves/east_caves)
 "khC" = (
@@ -131299,9 +131393,9 @@ rfS
 pBF
 rfS
 rfS
-rfS
-rfS
-rfS
+bel
+bel
+bel
 rfS
 rfS
 rfS
@@ -131534,9 +131628,9 @@ biJ
 biJ
 nVu
 azs
-pfK
-rfS
-rfS
+beo
+bel
+bel
 rfS
 rfS
 rfS
@@ -131768,9 +131862,9 @@ biJ
 biJ
 aUJ
 aUG
-pfK
-pfK
-rfS
+bep
+ben
+bel
 rfS
 rfS
 rfS
@@ -131998,18 +132092,18 @@ pfK
 pfK
 pfK
 yiP
-pfK
-pfK
-pfK
-whE
+bew
+bev
+bet
+ber
+beq
 khn
-khn
+bel
 rfS
 rfS
 rfS
 rfS
-rfS
-rfS
+aYi
 rfS
 rfS
 sxl
@@ -132234,17 +132328,17 @@ vsE
 pfK
 pfK
 pfK
-pfK
-fgx
+beu
+bes
 kOU
 kOU
-kOU
+bem
 kOU
 baM
-sxl
-rfS
-rfS
-rfS
+ljD
+cWd
+beh
+xFN
 bai
 sxl
 sxl
@@ -132475,10 +132569,10 @@ xiq
 kOU
 kOU
 kOU
-xFN
+kOU
 baK
-rfS
-ljD
+beh
+kOU
 ljD
 ljD
 cWd
@@ -132711,7 +132805,7 @@ kOU
 kOU
 kOU
 kOU
-kOU
+bei
 baw
 kOU
 kOU
@@ -132944,8 +133038,8 @@ baO
 kOU
 xym
 kOU
-baL
-edP
+qBT
+bej
 edP
 edP
 tys
@@ -133177,9 +133271,9 @@ fuo
 sjA
 kOU
 kOU
-qBT
+baL
 sxl
-sxl
+bek
 sxl
 baJ
 rfS
@@ -133413,7 +133507,7 @@ baN
 kOU
 xFN
 ljD
-rfS
+aYi
 rfS
 rfS
 rfS
@@ -133637,7 +133731,7 @@ uMk
 uTH
 qKg
 njm
-fdR
+pfK
 pfK
 pfK
 pfK
@@ -180754,8 +180848,8 @@ oNd
 oEp
 qaR
 qaR
-oEp
-qbW
+bey
+bex
 qaR
 qaR
 hFK
@@ -187723,7 +187817,7 @@ aQO
 oqd
 jDl
 jDl
-jDl
+bez
 jDl
 jDl
 jDl

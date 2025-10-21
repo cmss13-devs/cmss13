@@ -427,7 +427,6 @@
 
 // Defender strain flags
 #define DEFENDER_STEELCREST "Steelcrest"
-#define DEFENDER_HEATSHIELD "Heatshield"
 
 // Crusher strain flags
 #define CRUSHER_CHARGER "Charger"

@@ -33,24 +33,3 @@
 	set hidden = TRUE
 	var/action_name = "Soak"
 	handle_xeno_macro(src, action_name)
-
-/datum/action/xeno_action/verb/verb_vomit_bile()
-	set category = "Alien"
-	set name = "Vomit Bile"
-	set hidden = TRUE
-	var/action_name = "Vomit Bile"
-	handle_xeno_macro(src, action_name)
-
-/datum/action/xeno_action/verb/verb_selfimmolate()
-	set category = "Alien"
-	set name = "Self-Immolate"
-	set hidden = TRUE
-	var/action_name = "Self-Immolate"
-	handle_xeno_macro(src, action_name)
-
-/datum/action/xeno_action/verb/verb_thermoregulation()
-	set category = "Alien"
-	set name = "Thermoregulation"
-	set hidden = TRUE
-	var/action_name = "Thermoregulation"
-	handle_xeno_macro(src, action_name)

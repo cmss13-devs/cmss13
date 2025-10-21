@@ -17580,34 +17580,6 @@
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/caperiver/outdoors/scrublands/north_east)
 "fmu" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/north{
 	pixel_x = 7;
 	pixel_y = 23
@@ -17617,6 +17589,13 @@
 	pixel_y = 9;
 	desc = "Sign denoting the location of a mine site.";
 	name = "Mining Site"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 15;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/rock/deep/rock3,
 /area/caperiver/outdoors/scrublands/north_west)
@@ -21318,34 +21297,6 @@
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/caperiver/outdoors/landing_zone_2)
 "kVJ" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/north{
 	pixel_x = 7;
 	pixel_y = 23
@@ -21355,6 +21306,13 @@
 	pixel_y = 9;
 	desc = "Sign denoting the location of a mine site.";
 	name = "Mining Site"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 15;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_east)
@@ -23841,34 +23799,6 @@
 /turf/open/floor/dark,
 /area/caperiver/indoors/conambase/unknown)
 "oOD" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
 /obj/structure/sign/safety/north{
 	pixel_x = 7;
 	pixel_y = 23
@@ -23878,6 +23808,13 @@
 	pixel_y = 9;
 	desc = "Sign denoting the location of a mine site.";
 	name = "Mining Site"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 15;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north)

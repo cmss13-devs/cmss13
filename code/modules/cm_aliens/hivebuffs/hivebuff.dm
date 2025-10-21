@@ -481,8 +481,6 @@
 	if((valid_immunity & FIRE_IMMUNITY_COMPLETE)) // Already completely fire immune, return
 		return
 
-	if(valid_immunity & FIRE_IMMUNITY_BURROWER && HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED)) // Is a currently burrowed Burrower and is thus completely fire immune, return
-		return
 
 	switch(valid_immunity)
 		if(FIRE_IMMUNITY_NONE) // No immunities whatsoever, make immune to ignition but not fire damage
@@ -496,7 +494,7 @@
 		if(FIRE_IMMUNITY_NO_IGNITE) // Immune to ignition but not damage, make them immune to damage
 			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_damage))
 
-		if(FIRE_IMMUNITY_BURROWER) // Burrower but not burrowed, get same immunities as FIRE_IMMUNITY_NONE
+		if(FIRE_IMMUNITY_BURROWER) // Burrower, get same immunities as FIRE_IMMUNITY_NONE
 			RegisterSignal(xeno, COMSIG_LIVING_PREIGNITION, TYPE_PROC_REF(/mob/living/carbon/xenomorph, preignition_no_ignition))
 			RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), TYPE_PROC_REF(/mob/living/carbon/xenomorph, flamer_cross_no_ignition))
 

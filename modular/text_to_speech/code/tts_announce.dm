@@ -41,3 +41,9 @@
 /datum/announcer/yautja
 	tts_seed = TTS_SEED_YAUTJA_ANNOUNCE
 	sound_effect = SOUND_EFFECT_ROBOT
+
+/// Беззвучный анонсер на случай, если не нужно проигрывать ттс
+/datum/announcer/silent
+
+/datum/announcer/silent/Message(message, garbled_message, receivers, garbled_receivers)
+	return

@@ -41,7 +41,6 @@
 	old_x = -12
 
 	var/atom/movable/vis_obj/wound_icon_holder
-	/// for check on lurker invisibility
 
 /mob/living/simple_animal/hostile/alien/Initialize()
 	maxHealth = health

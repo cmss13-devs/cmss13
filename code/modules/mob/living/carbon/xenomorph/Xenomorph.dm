@@ -809,7 +809,7 @@
 			return TRUE
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
-		if(stealth == 1)
+		if(stealth)
 			puller.apply_effect(caste.tacklestrength_min, WEAKEN)
 			return FALSE
 		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)

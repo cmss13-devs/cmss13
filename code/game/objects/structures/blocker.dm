@@ -172,3 +172,9 @@
 	desc = "It is a machine that pumps fuel around the ship."
 	invisibility = 101
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/blocker/forcefield/all
+	types = list(/mob/living/carbon/human, /mob/living/carbon/xenomorph, /obj/item/weapon)
+	icon_state = "purple_line"
+
+	visible = TRUE

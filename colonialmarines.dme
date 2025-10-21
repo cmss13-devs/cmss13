@@ -821,6 +821,7 @@
 #include "code\game\area\areas.dm"
 #include "code\game\area\areas_event.dm"
 #include "code\game\area\BigRed.dm"
+#include "code\game\area\CapeRiverColony.dm"
 #include "code\game\area\ChigusaShipyard.dm"
 #include "code\game\area\chinook.dm"
 #include "code\game\area\Corsat.dm"

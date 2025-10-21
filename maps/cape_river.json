@@ -1,9 +1,8 @@
 {
-    "map_name": "miningmap",
-    "map_path": "map_files/miningmap",
-    "map_file": "miningmap.dmm",
+    "map_name": "Cape River Mining Colony",
+    "map_path": "map_files/cape_river",
+    "map_file": "cape_river.dmm",
     "webmap_url": "LV624",
-    "weather_holder": "/datum/weather_ss_map_holder/big_red",
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",
         "/datum/equipment_preset/survivor/doctor/lv",
@@ -22,12 +21,10 @@
         "/datum/equipment_preset/survivor/clf/coordinator"
     ],
     "map_item_type": "/obj/item/map/lazarus_landing_map",
-    "announce_text": "An automated distress signal has been received from the archaeological site of Lazarus Landing, on the border world of LV-624. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "announce_text": "An automated distress signal has been received from Cape River, a Con-Amalagated corporate operated mining colony. The ###SHIPNAME### has been dictated to conduct an investigation in force.",
     "monkey_types": [
         "farwa",
-        "monkey",
-        "neaera",
-        "stok"
+        "neaera"
     ],
     "environment_traits": { "Fog": true },
     "traits": [{ "Ground": true }],

@@ -280,6 +280,7 @@
 		list("SpcPy", "hudsquad_spec_pyro"),
 		list("TL", "hudsquad_tl"),
 		list("SL", "hudsquad_leader"),
+		list("hg", "hudsquad_hg"),
 	)
 
 	for(var/datum/squad/marine/squad in GLOB.RoleAuthority.squads)

@@ -2,6 +2,9 @@
 #define MARINE_BRONZE_HEART_MEDAL "bronze heart medal"
 #define MARINE_VALOR_MEDAL "medal of valor"
 #define MARINE_HEROISM_MEDAL "medal of exceptional heroism"
+#define MARINE_SPECIAL_MEDAL "special services medal"
+
+#define WY_COMMENDATION_MEDAL "corporate service award"
 
 #define XENO_SLAUGHTER_MEDAL "royal jelly of slaughter"
 #define XENO_RESILIENCE_MEDAL "royal jelly of resilience"
@@ -37,8 +40,9 @@ GLOBAL_LIST_EMPTY(medal_recommendations)
 	giver_ckey = list()
 
 GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL))
+GLOBAL_LIST_INIT(human_medals_admin, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_MEDAL, MARINE_VALOR_MEDAL, MARINE_HEROISM_MEDAL, MARINE_SPECIAL_MEDAL, WY_COMMENDATION_MEDAL))
 
-/proc/give_medal_award(medal_location, as_admin = FALSE)
+/proc/give_medal_award(medal_location, as_admin = FALSE, as_xo = FALSE)
 	if(as_admin && !check_rights(R_ADMIN))
 		as_admin = FALSE
 
@@ -53,8 +57,14 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 	if(!chosen_recipient)
 		return FALSE
 
+	var/list/medal_options = GLOB.human_medals
+	if(as_admin)
+		medal_options = GLOB.human_medals_admin
+	else if(as_xo)
+		medal_options = list(MARINE_CONDUCT_MEDAL)
+
 	// Pick a medal
-	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", GLOB.human_medals)
+	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", medal_options)
 	if(!medal_type)
 		return FALSE
 
@@ -140,8 +150,12 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 				medal = new /obj/item/clothing/accessory/medal/bronze/heart(turf_location)
 			if(MARINE_VALOR_MEDAL)
 				medal = new /obj/item/clothing/accessory/medal/silver/valor(turf_location)
+			if(WY_COMMENDATION_MEDAL)
+				medal = new /obj/item/clothing/accessory/medal/silver/corporate(turf_location)
 			if(MARINE_HEROISM_MEDAL)
 				medal = new /obj/item/clothing/accessory/medal/gold/heroism(turf_location)
+			if(MARINE_SPECIAL_MEDAL)
+				medal = new /obj/item/clothing/accessory/medal/platinum/special_award(turf_location)
 			else
 				return FALSE
 		medal.recipient_name = chosen_recipient
@@ -233,8 +247,12 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 				medal = new /obj/item/clothing/accessory/medal/bronze/heart(turf_location)
 			if(MARINE_VALOR_MEDAL)
 				medal = new /obj/item/clothing/accessory/medal/silver/valor(turf_location)
+			if(WY_COMMENDATION_MEDAL)
+				medal = new /obj/item/clothing/accessory/medal/silver/corporate(turf_location)
 			if(MARINE_HEROISM_MEDAL)
 				medal = new /obj/item/clothing/accessory/medal/gold/heroism(turf_location)
+			if(MARINE_SPECIAL_MEDAL)
+				medal = new /obj/item/clothing/accessory/medal/platinum/special_award(turf_location)
 			else
 				return FALSE
 		medal.recipient_name = chosen_recipient
@@ -261,7 +279,11 @@ GLOBAL_LIST_INIT(human_medals, list(MARINE_CONDUCT_MEDAL, MARINE_BRONZE_HEART_ME
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
 		return
 
-	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades)))
+	var/is_xo_medal
+	if(card.assignment == JOB_XO)
+		is_xo_medal = TRUE
+
+	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades) || is_xo_medal))
 		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
 		return
 
@@ -586,7 +608,11 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
 		return
 
-	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades)))
+	var/is_xo_medal
+	if(card.assignment == JOB_XO)
+		is_xo_medal = TRUE
+
+	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades) || is_xo_medal))
 		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
 		return
 
@@ -608,7 +634,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 
 	switch(action)
 		if("grant_new_medal")
-			if(give_medal_award(actual_loc))
+			if(give_medal_award(actual_loc, FALSE, is_xo_medal))
 				actual_loc.visible_message(SPAN_NOTICE("[actual_loc] prints a medal."))
 			. = TRUE
 
@@ -622,6 +648,9 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 				return
 			if(recommendation.recipient_name == user.real_name)
 				to_chat(user, SPAN_WARNING("You cannot give medals to yourself!"))
+				return
+			if(is_xo_medal && !(medal_type == MARINE_CONDUCT_MEDAL))
+				to_chat(user, SPAN_WARNING("You cannot award this medal!"))
 				return
 
 			var/choice = tgui_alert(user, "Would you like to change the medal text?", "Medal Citation", list("Yes", "No"))

@@ -10,7 +10,7 @@
 	var/blooded_skin = "moto_mudak-overlay"
 	var/create_stroller = FALSE
 
-	var/required_skill = SKILL_VEHICLE_SMALL
+	var/required_skill = SKILL_VEHICLE_DEFAULT // скилл больше не требуется
 
 	health = 400
 	maxhealth = 400

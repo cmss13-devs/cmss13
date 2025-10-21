@@ -1,14 +1,25 @@
 /obj/vehicle/motorbike
-	var/can_drive_when_hands_full = FALSE // Не надо водить когда хотя бы одна рука не свободна, лучше 2
-	 // На будущее потеря контроля когда не можешь водить
-	var/chance_lost_drive_control_when_one_hand = 5 // Ездишь с одной рукой - имеешь шанс нахуй потерять драйв контрол
-	var/lost_drive_control_dir					 // Направление по которому начинает ездить машина потерявшее управление
-	var/lost_drive_control_time_min = 2 SECONDS	 // Нижняя граница времени движения при потере контроля
-	var/lost_drive_control_time_max	= 6 SECONDS // Верхняя граница времени движения при потере контроля
-	var/lost_drive_control_time_temp = 0		 // "Когда" потеря контроля закончится по глобал тайму
-	var/forward_dir = SOUTH // направление движения вперед при поворотах
-	var/forward_dir_saved = SOUTH // Запоминаем куда мы ДВИГАЛИСЬ вперед
 
+	// Неуправляемая езда
+	/// Уровень езды после которого можешь водить с одной рукой, иначе только 2 или потеряешь управление
+	var/skill_vehicle_required_onehand = SKILL_VEHICLE_SMALL
+	/// Проверка на прохождение значения скила skill_vehicle_required_onehand
+	var/can_drive_one_hand = FALSE
+	// TODO: Потеря контроля когда не можешь водить
+	/// Ездишь с одной рукой - имеешь шанс нахуй потерять драйв контрол
+	var/chance_lost_drive_control_when_one_hand = 5
+	/// Направление по которому начинает ездить машина потерявшее управление
+	var/lost_drive_control_dir
+	/// Нижняя граница времени движения при потере контроля
+	var/lost_drive_control_time_min = 2 SECONDS
+	/// Верхняя граница времени движения при потере контроля
+	var/lost_drive_control_time_max	= 6 SECONDS
+	/// "Когда" потеря контроля закончится по глобал тайму
+	var/lost_drive_control_time_temp = 0
+	/// направление движения вперед при поворотах
+	var/forward_dir = SOUTH
+	/// Запоминаем куда мы ДВИГАЛИСЬ вперед
+	var/forward_dir_saved = SOUTH
 
 	// Система ускорения
 	var/current_speed_level = 1 // 1 - начальная, 2 - промежуточная, 3 - максимальная
@@ -20,18 +31,27 @@
 	var/lightweight_speed_mod = 0.7 // Модификатор скорости если не прицеплена коляска
 
 	// Скорость
-	var/reset_time = 0.5 SECONDS // Через сколько секунд простоя сбрасываем скорость
-	var/change_speed_time = 1.5 SECONDS // Через сколько времени меняем скорость (увеличиваем)
+	/// Через сколько секунд простоя сбрасываем скорость
+	var/reset_time = 0.5 SECONDS
+	/// Через сколько времени меняем скорость (увеличиваем)
+	var/change_speed_time = 1.5 SECONDS
 
 // ==========================================
 // ========== Параметры движения ============
 
 /obj/vehicle/motorbike/proc/update_drive_skill_parameters()
+	can_drive_one_hand = FALSE
+	chance_lost_drive_control_when_one_hand = initial(chance_lost_drive_control_when_one_hand)
 	if(!buckled_mob)
-		chance_lost_drive_control_when_one_hand = initial(chance_lost_drive_control_when_one_hand)
 		return
-	var/mult = buckled_mob.get_skill_duration_multiplier(SKILL_VEHICLE)
-	chance_lost_drive_control_when_one_hand = round(chance_lost_drive_control_when_one_hand * mult)
+
+	// Проверяем что можем гонять с одной рукой
+	if(skillcheck(buckled_mob, SKILL_VEHICLE, skill_vehicle_required_onehand))
+		can_drive_one_hand = TRUE
+	else
+		// Если не можем, то у нас дебафф модификаторы к гонке одной рукой
+		var/mult = buckled_mob.get_skill_duration_multiplier(SKILL_VEHICLE)
+		chance_lost_drive_control_when_one_hand = round(chance_lost_drive_control_when_one_hand * mult)
 
 // ==========================================
 // =============== Движение =================
@@ -51,7 +71,7 @@
 			reset_speed()
 		return ..()
 
-	if(!can_drive_when_hands_full && chance_lost_drive_control_when_one_hand >= 0)
+	if(!can_drive_one_hand && chance_lost_drive_control_when_one_hand >= 0)
 		// Проверка движения назад
 		var/back_dir = turn(dir, 180)
 		if(direction == back_dir)

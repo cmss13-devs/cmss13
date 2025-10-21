@@ -59,6 +59,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_intelligence_officer, list(
 
 		list("SPARE INTEL KIT", 0, null, null, null),
 		list("Field Intelligence Support Kit (For untrained personnel)", 20, /obj/item/storage/box/kit/mini_intel, null, VENDOR_ITEM_REGULAR),
+
+		// SS220 EDIT - START
+		list("ОБОРУДОВАНИЕ", 0, null, null, null),
+		list("Мотоцикл (Камуфляж)", 0, /obj/vehicle/motorbike/camo, CIVILIAN_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
+		list("Коляска мотоцикла (Камуфляж)", 0, /obj/structure/bed/chair/stroller/camo, CIVILIAN_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
+		// SS220 EDIT - END
 	))
 
 /obj/structure/machinery/cm_vending/gear/intelligence_officer

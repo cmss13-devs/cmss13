@@ -80,6 +80,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl, list(
 		list("JTAC Radio Encryption Key", 5, /obj/item/device/encryptionkey/jtac, null, VENDOR_ITEM_REGULAR),
 		list("Supply Radio Encryption Key", 5, /obj/item/device/encryptionkey/req, null, VENDOR_ITEM_REGULAR),
 		list("Medical Radio Encryption Key", 5, /obj/item/device/encryptionkey/med, null, VENDOR_ITEM_REGULAR),
+
+		// SS220 EDIT - START
+		list("ОБОРУДОВАНИЕ", 0, null, null, null),
+		list("Мотоцикл (Камуфляж)", 10, /obj/vehicle/motorbike/camo, CIVILIAN_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
+		list("Коляска мотоцикла (Камуфляж)", 5, /obj/structure/bed/chair/stroller/camo, CIVILIAN_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
+		// SS220 EDIT - END
 	))
 
 /obj/structure/machinery/cm_vending/gear/tl

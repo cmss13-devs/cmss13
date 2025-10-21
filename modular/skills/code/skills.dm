@@ -1,19 +1,19 @@
 /datum/skills/intel/New(mob/skillset_owner)
 	. = ..()
 	skills |= list(
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
 	)
 
 /datum/skills/pilot/New(mob/skillset_owner)
 	. = ..()
 	skills |= list(
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN,
 	)
 
 /datum/skills/crew_chief/New(mob/skillset_owner)
 	. = ..()
 	skills |= list(
-		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
 	)
 
 /datum/skills/MP/New(mob/skillset_owner)

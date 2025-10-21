@@ -351,10 +351,6 @@
 	name = MARINE_HEROISM_MEDAL
 	desc = "An extremely rare golden medal awarded only by the USCM. To receive such a medal is the highest honor and as such, very few exist."
 
-/obj/item/clothing/accessory/medal/gold/ua_cross
-	name = MARINE_UA_CROSS_MEDAL
-	icon_state = "ua_cross"
-
 /obj/item/clothing/accessory/medal/platinum
 	name = "platinum medal"
 	desc = "A very prestigious platinum medal, only able to be handed out by generals due to special circumstances."

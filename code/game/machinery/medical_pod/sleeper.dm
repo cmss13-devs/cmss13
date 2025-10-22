@@ -434,6 +434,8 @@
 	upgraded = TRUE
 
 /obj/structure/machinery/medical_pod/sleeper/upgraded
+	name = "advanced sleeper"
+	desc = "A more expensive model of the sleeper bed, comes with additional chemicals and an advanced dialysis machine, capable of removing chemicals much faster and more of them at the same time."
 	available_chemicals = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
 	emergency_chems = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "oxycodone", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
 	reagent_removed_per_second = AMOUNT_PER_TIME(8, 1 SECONDS)

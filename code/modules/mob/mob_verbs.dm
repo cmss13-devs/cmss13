@@ -254,8 +254,8 @@
 		QDEL_NULL(observed_atom)
 		return
 
-	if(istype(client?.eye, /mob/hologram/queen))
-		var/mob/hologram/queen/eye = client.eye
+	if(istype(client?.eye, /mob/hologram))
+		var/mob/hologram/eye = client.eye
 		eye.change_level()
 		return
 

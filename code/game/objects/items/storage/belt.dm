@@ -1497,6 +1497,8 @@
 			user.update_inv_belt()
 		else if(src == user.s_store)
 			user.update_inv_s_store()
+		else if(src == user.back)
+			user.update_inv_back()
 
 //There are only two types here that can be inserted, and they are mutually exclusive. We only track the gun.
 /obj/item/storage/belt/gun/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE) //We don't need to stop messages, but it can be left in.

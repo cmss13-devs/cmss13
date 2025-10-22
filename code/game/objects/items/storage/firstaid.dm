@@ -1133,7 +1133,11 @@
 	. = ..()
 	update_icon()
 
+<<<<<<< HEAD
 /obj/item/storage/pill_bottle/packet/empty(mob/user, turf/T)
+=======
+/obj/item/storage/pill_bottle/packet/empty(mob/user, turf/T)
+>>>>>>> 036193780ffd569c7a3548669a9971f59c5e0360
 	. = ..()
 	update_icon()
 

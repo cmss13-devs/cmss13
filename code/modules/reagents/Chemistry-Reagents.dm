@@ -202,6 +202,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 			var/overdose_message = "[istype(src, /datum/reagent/generated) ? "custom chemical" : initial(name)] overdose"
 			M.last_damage_data = create_cause_data(overdose_message, last_source_mob?.resolve())
 
+	process_non_property_effects(M, mods, delta_time)
+
 	if(mods[REAGENT_PURGE])
 		holder.remove_all_type(/datum/reagent,mods[REAGENT_PURGE] * delta_time)
 
@@ -380,3 +382,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	if(holder && holder.my_atom && ishuman(holder.my_atom))
 		var/mob/living/carbon/human/H = holder.my_atom
 		H.pain.reset_pain_reduction()
+
+/datum/reagent/proc/process_non_property_effects(mob/living/M, list/mods, delta_time)
+	return

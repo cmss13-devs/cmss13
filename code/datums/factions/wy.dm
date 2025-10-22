@@ -19,7 +19,7 @@
 			hud_icon_state = "goon_leader"
 		if(JOB_WY_GOON_SYNTH)
 			hud_icon_state = "goon_synth"
-		if(JOB_WY_RESEARCHER)
+		if(JOB_WY_RESEARCHER, JOB_RESEARCHER)
 			hud_icon_state = "researcher"
 		if(JOB_WY_RESEARCH_LEAD)
 			hud_icon_state = "research_lead"

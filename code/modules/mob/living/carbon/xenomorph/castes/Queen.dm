@@ -46,7 +46,6 @@
 	minimum_evolve_time = 0
 
 	minimap_icon = "xenoqueen"
-
 	minimap_background = "xeno_ruler"
 
 	royal_caste = TRUE
@@ -119,12 +118,20 @@
 	med_hud_set_status()
 	add_to_all_mob_huds()
 
-	hud_used = Q.hud_used
-
 	Q.sight |= SEE_TURFS|SEE_OBJS
 
 /mob/hologram/queen/proc/exit_hologram()
 	SIGNAL_HANDLER
+
+	var/obj/structure/tent/tent = locate() in ((get_turf(linked_mob)).contents)
+
+	var/atom/movable/screen/plane_master/roof/roof_plane = linked_mob.hud_used.plane_masters["[ROOF_PLANE]"]
+
+	if(!tent)
+		roof_plane?.invisibility = 0
+	else if (roof_plane?.invisibility == 0)
+		roof_plane?.invisibility = INVISIBILITY_MAXIMUM
+
 	qdel(src)
 
 /mob/hologram/queen/handle_move(mob/living/carbon/xenomorph/X, NewLoc, direct)
@@ -321,7 +328,6 @@
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
-		/datum/action/xeno_action/onclick/tacmap,
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 	)
 
@@ -451,6 +457,8 @@
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 	AddComponent(/datum/component/seethrough_mob)
+	if(hive.hivenumber == XENO_HIVE_NORMAL)
+		AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=get_minimap_flag_for_faction(hive.hivenumber), has_update=TRUE, drawing=TRUE)
 	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))
 
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
@@ -517,6 +525,11 @@
 	SIGNAL_HANDLER
 	if(queen_age_temp_timer_id == TIMER_ID_NULL)
 		CRASH("[src] called on_take_damage when not temporarily mature!")
+	if(damage_data["enviro"])
+		return
+	var/damage = damage_data["damage"]
+	if(damage < 5)
+		return
 	var/new_duration = min(timeleft(queen_age_temp_timer_id) + XENO_QUEEN_TEMP_AGE_EXTENSION, XENO_QUEEN_TEMP_AGE_DURATION)
 	queen_age_temp_timer_id = addtimer(CALLBACK(src, PROC_REF(refresh_combat_effective)), new_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_NO_HASH_WAIT)
 
@@ -555,6 +568,14 @@
 			queen_age_temp_timer_id = TIMER_ID_NULL
 			UnregisterSignal(src, COMSIG_XENO_TAKE_DAMAGE)
 
+	refresh_combat_effective()
+
+/mob/living/carbon/xenomorph/queen/proc/end_temporary_maturity()
+	if(queen_age_temp_timer_id == TIMER_ID_NULL)
+		return
+	deltimer(queen_age_temp_timer_id)
+	queen_age_temp_timer_id = TIMER_ID_NULL
+	UnregisterSignal(src, COMSIG_XENO_TAKE_DAMAGE)
 	refresh_combat_effective()
 
 /// When not on ovipositor, refreshes all mobile_abilities including mobile_aged_abilities if applicable
@@ -624,7 +645,8 @@
 
 		// Grant temporary maturity if near the hive_location for early game
 		if(!queen_aged)
-			var/near_hive = hive?.hive_location && (get_area(hive.hive_location) == get_area(src) || get_dist(hive.hive_location, src) <= 10)
+			// Explicitly requires queen to not be inside something (e.g. a tunnel)
+			var/near_hive = hive?.hive_location && loc == get_turf(src) && (get_area(hive.hive_location) == get_area(src) || get_dist(hive.hive_location, src) <= 10)
 			if(near_hive && ROUND_TIME < XENO_QUEEN_AGE_TIME * 2 && !is_mob_incapacitated(TRUE))
 				make_combat_effective(temporary=TRUE)
 			else if(queen_age_temp_timer_id != TIMER_ID_NULL)
@@ -1059,8 +1081,6 @@
 	for(var/path in immobile_abilities)
 		give_action(src, path)
 
-	add_verb(src, /mob/living/carbon/xenomorph/proc/xeno_tacmap)
-
 	ADD_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
 	ADD_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))
 
@@ -1107,8 +1127,6 @@
 
 	set_resin_build_order(GLOB.resin_build_order_drone) // This needs to occur before we update the abilities so we can update the choose resin icon
 	refresh_combat_abilities()
-
-	remove_verb(src, /mob/living/carbon/xenomorph/proc/xeno_tacmap)
 
 	REMOVE_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
 	REMOVE_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))

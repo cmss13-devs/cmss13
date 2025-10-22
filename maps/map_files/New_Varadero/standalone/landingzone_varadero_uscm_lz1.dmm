@@ -907,7 +907,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
 "gT" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "gY" = (
@@ -1003,7 +1003,7 @@
 /turf/open/gm/dirt/desert_dug,
 /area/varadero/exterior/lz1_near)
 "hG" = (
-/obj/structure/machinery/power/port_gen/pacman/mrs,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/mrs,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "hI" = (
@@ -1200,8 +1200,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
-	pixel_x = 8;
-	explo_proof = 1
+	pixel_x = 8
 	},
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/unmeltable,
@@ -3050,8 +3049,7 @@
 /obj/structure/machinery/door_control{
 	id = "undergroundhangarsouth";
 	name = "South Dock Door";
-	pixel_x = -24;
-	explo_proof = 1
+	pixel_x = -24
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/varadero/interior/maintenance/north)
@@ -3186,8 +3184,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
-	pixel_x = 3;
-	explo_proof = 1
+	pixel_x = 3
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/exterior/lz1_near)
@@ -4514,8 +4511,7 @@
 	id = "undergroundhangarsouth";
 	name = "South Dock Door";
 	pixel_x = -32;
-	pixel_y = -18;
-	explo_proof = 1
+	pixel_y = -18
 	},
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor/plating/icefloor/warnplate/north,
@@ -5067,7 +5063,7 @@
 /area/varadero/interior/hall_N)
 "PO" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "PP" = (
@@ -5078,21 +5074,6 @@
 "PQ" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
-"PR" = (
-/obj/structure/barricade/handrail{
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "support struts"
-	},
-/obj/structure/barricade/handrail{
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "support struts"
-	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pontoon_beach)
 "Qa" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -10139,7 +10120,7 @@ hw
 Wy
 pg
 Ts
-PR
+Mr
 Wy
 Wy
 Wy
@@ -10149,7 +10130,7 @@ Wy
 Wy
 pg
 Ts
-PR
+Mr
 dC
 dC
 Ze

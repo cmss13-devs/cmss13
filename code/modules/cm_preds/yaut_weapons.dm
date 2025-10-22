@@ -360,6 +360,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
@@ -949,6 +950,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
@@ -1177,6 +1179,7 @@
 	item_state = "spikelauncher"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/pred_guns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_righthand.dmi'
 	)
@@ -1274,6 +1277,7 @@
 	muzzle_flash_color = COLOR_MAGENTA
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/pred_guns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_righthand.dmi'
 	)

@@ -35,16 +35,16 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("WP Grenade Pack", 15, /obj/item/storage/box/packet/phosphorus, null, VENDOR_ITEM_REGULAR),
 		list("G2 Electroshock Grenade Packet (x3 grenades)",  15, /obj/item/storage/box/packet/sebb, null, VENDOR_ITEM_REGULAR),
 
-		list("RAIL ATTACHMENTS", 0, null, null, null),
-		list("Red-Dot Sight", 15, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
-		list("S5-Micro Dot Sight", 15, /obj/item/attachable/reddot/small, VENDOR_ITEM_REGULAR),
-		list("Reflex Sight", 15, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
-		list("S4 2x Telescopic Mini-Scope", 15, /obj/item/attachable/scope/mini, null, VENDOR_ITEM_REGULAR),
-
-		list("Helmet Visors", 0, null, null, null),
+		list("HELMET VISORS", 0, null, null, null),
 		list("Night Vision Visor", 10, /obj/item/device/helmet_visor/night_vision, null, VENDOR_ITEM_RECOMMENDED),
 		list("Medical Visor", 5, /obj/item/device/helmet_visor/medical/advanced, null, VENDOR_ITEM_REGULAR),
 		list("Welding Visor", 5, /obj/item/device/helmet_visor/welding_visor, null, VENDOR_ITEM_REGULAR),
+
+		list("RAIL ATTACHMENTS", 0, null, null, null),
+		list("Red-Dot Sight", 15, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
+		list("S5-Micro Dot Sight", 15, /obj/item/attachable/reddot/small, null, VENDOR_ITEM_REGULAR),
+		list("Reflex Sight", 15, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
+		list("S4 2x Telescopic Mini-Scope", 15, /obj/item/attachable/scope/mini, null, VENDOR_ITEM_REGULAR),
 
 		list("UNDERBARREL ATTACHMENTS", 0, null, null, null),
 		list("Laser Sight", 15, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),

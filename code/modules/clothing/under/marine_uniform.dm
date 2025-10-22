@@ -987,6 +987,10 @@
 		/obj/item/clothing/suit/storage/snow_suit,
 	) //if you remove this, it allows you to wear the marine M3 armor over the pmc fatigues
 
+/obj/item/clothing/under/marine/veteran/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/under/marine/veteran/pmc/leader
 	name = "\improper PMC command fatigues"
 	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is emblazed on the suit. This particular suit looks like it belongs to a high-ranking officer."
@@ -1106,6 +1110,10 @@
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UPP.dmi'
 	)
+
+/obj/item/clothing/under/marine/veteran/UPP/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/clothing/under/marine/veteran/UPP/medic
 	name = "\improper UPP medic fatigues"
@@ -1377,6 +1385,13 @@
 	worn_state = "colonist"
 	has_sensor = UNIFORM_HAS_SENSORS
 
+/obj/item/clothing/under/colonist/Initialize()
+	. = ..()
+	if(istypestrict(src, /obj/item/clothing/under/colonist))
+		AddElement(/datum/element/corp_label/wy)
+	if(istypestrict(src, /obj/item/clothing/under/colonist/administrator))
+		AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/under/colonist/administrator
 	name = "administrator uniform"
 	desc = "An office grey polo with a Wey-Yu badge on the chest. Worn by administrators on colonies owned by the Company."
@@ -1521,6 +1536,10 @@
 	icon_state = "liaison_charcoal"
 	worn_state = "liaison_charcoal"
 
+/obj/item/clothing/under/liaison_suit/charcoal/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/under/liaison_suit/charcoal/skirt
 	name = "liaison's charcoal suitskirt"
 	desc = "A stiff, stylish charcoal suit commonly worn by businesswomen from the Weyland-Yutani corporation. Expertly crafted to make you look like a prick."
@@ -1543,17 +1562,29 @@
 	icon_state = "liaison_formal"
 	worn_state = "liaison_formal"
 
+/obj/item/clothing/under/liaison_suit/formal/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/under/liaison_suit/suspenders
 	name = "liaison's suspenders"
 	desc = "A collared shirt, complimented by a pair of suspenders. Worn by Weyland-Yutani employees who ask the tough questions. Smells faintly of cigars and bad acting."
 	icon_state = "liaison_suspenders"
 	worn_state = "liaison_suspenders"
 
+/obj/item/clothing/under/liaison_suit/suspenders/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/under/liaison_suit/blazer
 	name = "liaison's blue blazer"
 	desc = "A stiff but casual blue blazer. Similar can be found in any Weyland-Yutani office. Only the finest wear for the galaxy's most cunning."
 	icon_state = "liaison_blue_blazer"
 	worn_state = "liaison_blue_blazer"
+
+/obj/item/clothing/under/liaison_suit/blazer/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/under/liaison_suit/field
 	name = "corporate casual"
@@ -1652,10 +1683,18 @@
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi',
 	)
 
+/obj/item/clothing/under/stowaway/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/under/rank/chef/exec
 	name = "\improper Weyland-Yutani suit"
 	desc = "A formal white undersuit."
 	flags_jumpsuit = FALSE
+
+/obj/item/clothing/under/rank/chef/exec/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/under/rank/qm_suit
 	name = "quartermaster suit"
@@ -1820,6 +1859,7 @@
 /obj/item/clothing/under/rank/synthetic/joe/Initialize()
 	. = ..()
 	camera = new /obj/structure/machinery/camera/autoname/almayer/containment/ares(src)
+	AddElement(/datum/element/corp_label/seegson)
 
 /obj/item/clothing/under/rank/synthetic/joe/Destroy()
 	QDEL_NULL(camera)

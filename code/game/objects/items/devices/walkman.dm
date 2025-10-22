@@ -272,7 +272,11 @@
 
 /datum/action/item_action/walkman/New()
 	..()
+	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/walkman/update_button_icon()
+	return
 
 /datum/action/item_action/walkman/play_pause
 	action_icon_state = "walkman_playpause"

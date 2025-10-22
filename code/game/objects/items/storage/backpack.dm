@@ -678,7 +678,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "Use Phone"
 	button.name = name
 	button.overlays.Cut()
-	var/image/IMG = image('icons/obj/structures/phone.dmi', button, "rpb_phone")
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "phone")
 	button.overlays += IMG
 
 /datum/action/item_action/rto_pack/use_phone/action_activate()
@@ -1082,9 +1082,16 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	..()
 	name = "Toggle Cloak"
 	button.name = name
+	update_button_icon()
+
+/datum/action/item_action/specialist/toggle_cloak/update_button_icon()
+	var/obj/item/storage/backpack/marine/satchel/scout_cloak/cloak = holder_item
+	if(cloak.camo_active)
+		action_icon_state = "invisibility"
+	else
+		action_icon_state = "invisibility_off"
 	button.overlays.Cut()
-	var/image/IMG = image('icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi', button, "scout_cloak")
-	button.overlays += IMG
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/specialist/toggle_cloak/can_use_action()
 	var/mob/living/carbon/human/H = owner
@@ -1095,6 +1102,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	. = ..()
 	var/obj/item/storage/backpack/marine/satchel/scout_cloak/SC = holder_item
 	SC.camouflage()
+	update_button_icon()
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/wy_invis_droid
 	name = "M7X Mark II optical camouflage powerpack"

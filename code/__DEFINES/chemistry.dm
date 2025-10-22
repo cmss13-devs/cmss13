@@ -360,7 +360,7 @@
 /// The minimum amount of chems required to turn shrapnel into a special type
 #define EXPLOSION_PHORON_THRESHOLD 10
 #define EXPLOSION_ACID_THRESHOLD 10
-#define EXPLOSION_NEURO_THRESHOLD 30
+#define EXPLOSION_NEURO_THRESHOLD 10
 
 #define EXPLOSION_MIN_FALLOFF 25
 #define EXPLOSION_BASE_SHARDS 4

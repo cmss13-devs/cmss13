@@ -46,7 +46,6 @@
 		/datum/action/xeno_action/onclick/lurker_invisibility/blight, // Macro 1
 		/datum/action/xeno_action/activable/pounce/lurker, // Macro 2
 		/datum/action/xeno_action/onclick/blight_slash,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

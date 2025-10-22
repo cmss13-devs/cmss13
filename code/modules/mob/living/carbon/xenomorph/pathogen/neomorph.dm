@@ -46,7 +46,6 @@
 		/datum/action/xeno_action/activable/pounce/runner/neomorph, // Macro 1
 		/datum/action/xeno_action/activable/headbite/neomorph, // Macro 2
 		/datum/action/xeno_action/onclick/blight_slash,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

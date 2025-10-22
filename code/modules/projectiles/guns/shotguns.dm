@@ -1456,10 +1456,10 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	if(holder_gun.chamber_swap)
 		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>start swapping</b> the chambered shell with the other tube. <b>Your current tube must be underloaded or it will forcefully eject the shell out of the chamber.</b>"))
-		button.icon_state = "template_on"
+		action_icon_state = "chamber_swap_off"
 	else
 		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>stop swapping</b> the chambered shell with the other tube."))
-		button.icon_state = "template"
+		action_icon_state = "chamber_swap"
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)

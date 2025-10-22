@@ -59,7 +59,6 @@
 		/datum/action/xeno_action/activable/runner_skillshot, // Macro 2
 		/datum/action/xeno_action/onclick/toggle_long_range/runner, // Macro 3
 		/datum/action/xeno_action/onclick/blight_slash,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

@@ -115,7 +115,7 @@
 /datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.lay_down()
-	button.icon_state = xeno.resting ? "template_active" : "template"
+	button.icon_state = xeno.resting ? "template_active" : "template_xeno"
 	return ..()
 
 // Shift spits
@@ -597,7 +597,7 @@
 	else
 		xeno.layer = initial(xeno.layer)
 		to_chat(xeno, SPAN_NOTICE("We have stopped hiding."))
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 		UnregisterSignal(xeno, COMSIG_MOB_STATCHANGE)
 	xeno.update_wounds()
 	apply_cooldown()

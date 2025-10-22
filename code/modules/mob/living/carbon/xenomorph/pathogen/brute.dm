@@ -47,7 +47,6 @@
 		/datum/action/xeno_action/onclick/crusher_stomp/pathogen_brute, // Macro 1
 		/datum/action/xeno_action/activable/oppressor_punch, // Macro 2
 		/datum/action/xeno_action/onclick/crusher_shield, // Macro 3
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
 

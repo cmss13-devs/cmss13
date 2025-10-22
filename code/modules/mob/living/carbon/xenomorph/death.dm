@@ -19,6 +19,9 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 	if(SSticker?.mode?.hardcore)
 		ghostize()
 
+	if(hauled_mob)
+		release_haul(stuns=FALSE)
+
 	set_light_range(0)
 
 	if(pulledby)

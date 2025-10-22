@@ -51,7 +51,6 @@
 		/datum/action/xeno_action/activable/rav_spikes, // Macro 2
 		/datum/action/xeno_action/onclick/spike_shed, // Macro 3
 		/datum/action/xeno_action/onclick/blight_wave, // Macro 4
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
 

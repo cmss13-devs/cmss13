@@ -8,6 +8,7 @@
 	name = "facehugger"
 	desc = "It has some sort of a tube at the end of its tail."
 	icon = 'icons/mob/xenos/effects.dmi'
+	flags_obj = OBJ_IS_HELMET_GARB
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',

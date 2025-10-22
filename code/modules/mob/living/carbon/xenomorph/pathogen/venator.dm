@@ -49,7 +49,6 @@
 		/datum/action/xeno_action/activable/prae_impale/venator, //Macro 2
 		/datum/action/xeno_action/activable/venator_savage, // Macro 3
 		/datum/action/xeno_action/onclick/blight_slash,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
 

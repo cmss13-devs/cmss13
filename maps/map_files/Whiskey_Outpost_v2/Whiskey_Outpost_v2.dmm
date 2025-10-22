@@ -1079,16 +1079,20 @@
 /obj/structure/machinery/m56d_hmg/mg_turret,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/three_south)
+"dI" = (
+/obj/structure/machinery/vending/walkman,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/whiskey_outpost/inside/bunker/bunker/front)
 "dJ" = (
 /obj/structure/curtain/shower,
 /turf/open/floor/prison/sterile_white,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "dK" = (
-/obj/structure/machinery/vending/walkman,
-/turf/open/floor/prison/floor_plate/southwest,
+/obj/structure/machinery/cm_vending/gear/engi,
+/turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "dL" = (
-/obj/structure/machinery/cm_vending/gear/engi,
+/obj/structure/machinery/cm_vending/clothing/engi,
 /turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "dM" = (
@@ -1141,7 +1145,7 @@
 /turf/open/floor/whitegreen/northwest,
 /area/whiskey_outpost/inside/hospital)
 "dR" = (
-/obj/structure/machinery/cm_vending/clothing/engi,
+/obj/effect/landmark/start/whiskey/engineer,
 /turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "dS" = (
@@ -1173,13 +1177,6 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/tunnel)
 "dV" = (
-/obj/effect/landmark/start/whiskey/engineer,
-/turf/open/floor/prison/floor_plate,
-/area/whiskey_outpost/inside/bunker/bunker/front)
-"dW" = (
-/turf/open/floor/plating/platebot,
-/area/whiskey_outpost/outside/lane/one_north)
-"dX" = (
 /obj/structure/machinery/cm_vending/clothing/marine/delta{
 	density = 0;
 	pixel_x = 16
@@ -1187,6 +1184,17 @@
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/bluefull,
 /area/whiskey_outpost/outside/lane/two_north)
+"dW" = (
+/turf/open/floor/plating/platebot,
+/area/whiskey_outpost/outside/lane/one_north)
+"dX" = (
+/obj/structure/machinery/cm_vending/clothing/marine/bravo{
+	density = 0;
+	pixel_x = -16
+	},
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer/orangefull,
+/area/whiskey_outpost/outside/lane/three_north)
 "dY" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/pillbottles{
@@ -1211,13 +1219,11 @@
 /turf/open/floor/whitegreen/southwest,
 /area/whiskey_outpost/inside/hospital)
 "dZ" = (
-/obj/structure/machinery/cm_vending/clothing/marine/bravo{
-	density = 0;
-	pixel_x = -16
+/obj/structure/machinery/light{
+	dir = 8
 	},
-/obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/almayer/orangefull,
-/area/whiskey_outpost/outside/lane/three_north)
+/turf/open/gm/dirt,
+/area/whiskey_outpost/outside/north/beach)
 "ea" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -1231,11 +1237,9 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "ec" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/north/beach)
+/obj/structure/machinery/vending/walkman,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/living)
 "ed" = (
 /turf/open/floor/asteroidfloor/north,
 /area/whiskey_outpost/outside/north/platform)
@@ -1257,9 +1261,12 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/hospital/triage)
 "eh" = (
-/obj/structure/machinery/vending/walkman,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
+/area/whiskey_outpost/inside/cic)
 "ei" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/syringes,
@@ -1279,15 +1286,12 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "el" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
-"em" = (
 /obj/structure/machinery/cm_vending/gear/engi,
 /obj/structure/machinery/light/small,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/living)
+"em" = (
+/obj/effect/landmark/start/whiskey/engineer,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "en" = (
@@ -1308,7 +1312,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "er" = (
-/obj/effect/landmark/start/whiskey/engineer,
+/obj/structure/machinery/cm_vending/clothing/engi,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "es" = (
@@ -1318,7 +1322,7 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south/far)
 "et" = (
-/obj/structure/machinery/cm_vending/clothing/engi,
+/obj/structure/machinery/cm_vending/gear/engi,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "eu" = (
@@ -1332,7 +1336,10 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "ew" = (
-/obj/structure/machinery/cm_vending/gear/engi,
+/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "ex" = (
@@ -1348,14 +1355,15 @@
 "ez" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /obj/structure/machinery/light/small{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "eA" = (
-/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
-/obj/structure/machinery/light/small{
-	dir = 4
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper ComTech Preparations";
+	req_access = list(11);
+	req_one_access = list()
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
@@ -1374,14 +1382,6 @@
 /obj/structure/platform/metal/almayer,
 /turf/open/gm/coast/west,
 /area/whiskey_outpost/outside/river/east)
-"eF" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper ComTech Preparations";
-	req_access = list(11);
-	req_one_access = list()
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
 "eG" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/whiskey_outpost/outside/lane/two_north)
@@ -18732,7 +18732,7 @@ hw
 iS
 jq
 iS
-el
+eh
 mo
 mM
 nw
@@ -23458,7 +23458,7 @@ Ck
 Sm
 Sm
 Oq
-dX
+dV
 UZ
 VM
 mT
@@ -24065,8 +24065,8 @@ Ck
 xH
 UR
 Gw
-dR
 dL
+dK
 yW
 Nf
 ks
@@ -24468,8 +24468,8 @@ XA
 Ck
 lx
 wN
-dV
-dV
+dR
+dR
 Sl
 WR
 IU
@@ -24670,8 +24670,8 @@ cO
 Ck
 lx
 wN
-dV
-dV
+dR
+dR
 Sl
 Sl
 IU
@@ -25076,11 +25076,11 @@ xH
 UR
 ik
 FT
-dL
+dK
 Br
 Nf
 ks
-dK
+dI
 fV
 fV
 MF
@@ -25805,7 +25805,7 @@ kG
 lJ
 kG
 Ys
-eh
+ec
 pq
 rB
 eC
@@ -27093,7 +27093,7 @@ Pm
 Qy
 Qy
 Pm
-dZ
+dX
 SO
 Pm
 Ve
@@ -28424,11 +28424,11 @@ fr
 fr
 Ys
 pq
-ez
-et
 ew
+er
 et
-em
+er
+el
 pq
 mT
 mT
@@ -28625,12 +28625,12 @@ Ys
 fr
 fr
 sI
-eF
+eA
 jM
-er
-er
-er
-er
+em
+em
+em
+em
 pq
 mT
 mT
@@ -28829,10 +28829,10 @@ fr
 sI
 Ys
 jM
-er
-er
-er
-er
+em
+em
+em
+em
 pq
 mT
 oE
@@ -29030,11 +29030,11 @@ fr
 fr
 Ys
 pq
-eA
+ez
+er
 et
-ew
-et
-em
+er
+el
 pq
 mT
 oE
@@ -29650,10 +29650,10 @@ sV
 hW
 fy
 fy
-ec
+dZ
 fy
 fy
-ec
+dZ
 fy
 fy
 fy

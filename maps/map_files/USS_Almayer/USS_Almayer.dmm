@@ -3911,6 +3911,11 @@
 "aiO" = (
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/hallways/upper/midship_hallway)
+"aiP" = (
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/structure/closet/secure_closet/staff_officer/armory/m4a1,
+/turf/open/floor/almayer/redfull,
+/area/almayer/command/cic)
 "aiQ" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -196965,7 +196970,7 @@ tUo
 aIf
 bHa
 wVW
-bGZ
+aiP
 qEk
 iaa
 wVW
@@ -197068,7 +197073,7 @@ tCT
 aDv
 aEC
 wVW
-bGZ
+aiP
 qEk
 iaa
 wVW

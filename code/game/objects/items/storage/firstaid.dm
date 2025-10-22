@@ -1118,32 +1118,59 @@
 	to_chat(user, SPAN_NOTICE("You throw away [src]."))
 	qdel(src)
 
+/obj/item/storage/pill_bottle/packet/get_examine_text(mob/user)
+	. = ..()
+	if(length(contents))
+		. += SPAN_NOTICE("Pills left: [length(contents)].")
+	else
+		. += SPAN_NOTICE("It is empty.")
+
+/obj/item/storage/pill_bottle/packet/fill_preset_inventory()
+	. = ..()
+	update_icon()
+
+/obj/item/storage/pill_bottle/packet/attack_hand(mob/user, mods)
+	. = ..()
+	update_icon()
+
+/obj/item/storage/pill_bottle/empty(mob/user, turf/T)
+	. = ..()
+	update_icon()
+
+/obj/item/storage/pill_bottle/packet/update_icon()
+	overlays.Cut()
+	var/obj/item/reagent_container/pill/current = locate() in contents //access the pills inside the packet
+	if(current)
+		var/datum/reagents/current_reagents = current.reagents
+		var/datum/reagent/current_reagent = locate() in current_reagents.reagent_list //reagent color is in here
+		if(current_reagent)
+			var/image/filling = image('icons/obj/items/chemistry.dmi', src, "[icon_state]_[length(contents)]")
+			filling.color = current.reagents.reagent_list
+			overlays += filling
+			return
+
+//icon states are handled by update_icon
 /obj/item/storage/pill_bottle/packet/tricordrazine
 	name = "Tricordazine pill packet"
-	icon_state = "tricordrazine_packet"
 	desc = "This packet contains tricordazine pills. Heals all types of damage slightly. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/tricordrazine
 
 /obj/item/storage/pill_bottle/packet/tramadol
 	name = "Tramadol pill packet"
-	icon_state = "tramadol_packet"
 	desc = "This packet contains tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 
 /obj/item/storage/pill_bottle/packet/bicaridine
 	name = "Bicaridine pill packet"
-	icon_state = "bicaridine_packet"
 	desc = "This packet contains bicaridine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 
 /obj/item/storage/pill_bottle/packet/kelotane
 	name = "kelotane pill packet"
-	icon_state = "kelotane_packet"
 	desc = "This packet contains kelotane pills. Heals burn damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
 
 /obj/item/storage/pill_bottle/packet/oxycodone
 	name = "oxycodone pill packet"
-	icon_state = "oxycodone_packet"
 	desc = "This packet contains oxycodone pills. A highly effective painkiller. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone

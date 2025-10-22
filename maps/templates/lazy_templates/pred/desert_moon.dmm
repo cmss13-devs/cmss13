@@ -1475,10 +1475,6 @@
 /obj/effect/decal/remains/xeno,
 /turf/open/mars_cave/mars_cave_2,
 /area/yautja_grounds/caves/north_east)
-"gm" = (
-/obj/effect/alien/weeds/node/feral,
-/turf/open/mars_cave/mars_cave_2,
-/area/yautja_grounds/caves/north_east)
 "gn" = (
 /turf/open/mars_cave/mars_dirt_6,
 /area/yautja_grounds/caves/north_east)
@@ -1493,7 +1489,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/yautja_grounds/caves/north_west)
 "gr" = (
-/obj/effect/alien/weeds/node/feral,
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno,
 /turf/open/mars_cave/mars_cave_2,
 /area/yautja_grounds/caves/north)
 "gs" = (
@@ -1540,10 +1536,6 @@
 /obj/item/weapon/harpoon/yautja,
 /turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/prep_room/desert/interior)
-"gD" = (
-/obj/effect/alien/weeds/node/feral,
-/turf/open/mars_cave/mars_cave_2,
-/area/yautja_grounds/caves/north_west)
 "gE" = (
 /obj/effect/spider/spiderling/nogrow,
 /turf/open/mars_cave/mars_cave_2,
@@ -1580,6 +1572,14 @@
 /obj/structure/machinery/hunt_ground_escape,
 /turf/closed/wall/solaris/rock,
 /area/yautja_grounds/caves/north_west)
+"gN" = (
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno,
+/turf/open/mars_cave/mars_cave_2,
+/area/yautja_grounds/caves/east)
+"gO" = (
+/obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno,
+/turf/open/mars_cave/mars_cave_2,
+/area/yautja_grounds/caves/north_east)
 "gZ" = (
 /obj/structure/platform/stone/kutjevo,
 /turf/closed/wall/kutjevo/rock,
@@ -4509,7 +4509,7 @@ gh
 gh
 gh
 gi
-gD
+gi
 gh
 gh
 gh
@@ -5203,7 +5203,7 @@ gh
 gi
 gi
 gh
-gD
+gi
 gi
 gh
 gh
@@ -6094,7 +6094,7 @@ gj
 gj
 gk
 gk
-gr
+gk
 gk
 gj
 gj
@@ -6593,7 +6593,7 @@ gk
 gj
 gj
 gk
-gr
+gk
 gk
 gk
 gj
@@ -6985,7 +6985,7 @@ gj
 gj
 gj
 gk
-gr
+gk
 gk
 gj
 gj
@@ -6995,7 +6995,7 @@ gk
 gA
 gk
 gk
-gr
+gk
 gk
 gk
 gk
@@ -7090,7 +7090,7 @@ gk
 gj
 gj
 gk
-gk
+gr
 gk
 gk
 gk
@@ -7982,7 +7982,7 @@ gj
 gj
 gk
 gk
-gr
+gk
 gk
 gk
 gk
@@ -8087,7 +8087,7 @@ gk
 gk
 gk
 gk
-gr
+gk
 gk
 gj
 gj
@@ -8682,7 +8682,7 @@ gk
 gk
 gk
 gk
-gr
+gk
 gk
 gj
 gj
@@ -8974,7 +8974,7 @@ gj
 gj
 gj
 gk
-gr
+gk
 gk
 gk
 gj
@@ -9472,11 +9472,11 @@ gj
 gk
 gk
 gk
-gr
 gk
 gk
 gk
-gr
+gk
+gk
 gk
 gk
 gj
@@ -10071,7 +10071,7 @@ gj
 gj
 gj
 gk
-gr
+gk
 gk
 gj
 gj
@@ -10946,25 +10946,25 @@ fZ
 fZ
 ga
 ga
-gm
-ga
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-fZ
-ga
 ga
 ga
 fZ
 fZ
 fZ
+fZ
+fZ
+fZ
+fZ
+fZ
 ga
 ga
-gm
+ga
+fZ
+fZ
+fZ
+ga
+ga
+ga
 ga
 ga
 fZ
@@ -10984,7 +10984,7 @@ fK
 fK
 fL
 fK
-fK
+gN
 fK
 fK
 fL
@@ -11252,7 +11252,7 @@ ga
 ga
 ga
 ga
-gm
+ga
 ga
 ga
 ga
@@ -11362,7 +11362,7 @@ ga
 ga
 ga
 gl
-ga
+gO
 ga
 ga
 ga
@@ -11444,7 +11444,7 @@ fZ
 ga
 ga
 ga
-gm
+ga
 fZ
 ga
 ga
@@ -11552,14 +11552,14 @@ fZ
 fZ
 fZ
 ga
-gm
+ga
 ga
 ga
 fZ
 fZ
 fZ
 ga
-gm
+ga
 ga
 ga
 fZ

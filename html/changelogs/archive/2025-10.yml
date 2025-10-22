@@ -181,3 +181,16 @@
   halander1:
   - rscadd: New pay levels for researchers and W-Y comms
   - bugfix: Low pay of researchers
+2025-10-20:
+  Unknownity:
+  - bugfix: Fixed clan bracers being able to be put inside pockets.
+  cuberound:
+  - rscadd: Tacmap stair indicators for multiz
+  kiVts:
+  - admin: basic buildmode should be more friendlier now.
+2025-10-22:
+  matttheficus:
+  - bugfix: Pred Cloaks now retain their custom colors when turned to accessories
+      and back.
+  ori-disillusion-mirnov:
+  - bugfix: predators can no longer join the hunt a second time

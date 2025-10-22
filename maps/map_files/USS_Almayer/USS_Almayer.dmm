@@ -3911,11 +3911,6 @@
 "aiO" = (
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/hallways/upper/midship_hallway)
-"aiP" = (
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/structure/closet/secure_closet/staff_officer/armory/m4a1,
-/turf/open/floor/almayer/redfull,
-/area/almayer/command/cic)
 "aiQ" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -7886,7 +7881,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/upper_engineering)
 "ato" = (
-/obj/structure/closet/toolcloset,
+/obj/structure/closet/secure_closet/staff_officer/armory/shotgun,
+/obj/item/clothing/suit/storage/marine/light/vest,
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
 "atp" = (
@@ -19323,6 +19319,17 @@
 /obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/paft)
+"aXD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/command/cic)
 "aXE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -34863,6 +34870,32 @@
 "bGi" = (
 /turf/solid_open_space,
 /area/almayer/middeck/maintenance/sf)
+"bGj" = (
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/structure/closet/secure_closet/staff_officer/armory/m4a1,
+/turf/open/floor/almayer/redfull,
+/area/almayer/command/cic)
+"bGk" = (
+/obj/structure/sign/safety/hazard{
+	pixel_x = 15;
+	pixel_y = -32
+	},
+/obj/structure/sign/safety/ammunition{
+	pixel_y = -32
+	},
+/turf/open/floor/almayer/silver,
+/area/almayer/command/cic)
+"bGl" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 8;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/command/cic)
+"bGm" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/almayer/redfull,
+/area/almayer/command/cic)
 "bGn" = (
 /obj/structure/barricade/plasteel/metal,
 /turf/open/floor/almayer/cargo,
@@ -34877,6 +34910,17 @@
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/squads/req)
+"bGp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/command/cic)
 "bGq" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/warning_stripes{
@@ -34995,50 +35039,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
-"bGY" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/command/cic)
-"bGZ" = (
-/obj/structure/closet/secure_closet/staff_officer/armory/shotgun,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/turf/open/floor/almayer/redfull,
-/area/almayer/command/cic)
-"bHa" = (
-/obj/structure/sign/safety/hazard{
-	pixel_x = 15;
-	pixel_y = -32
-	},
-/obj/structure/sign/safety/ammunition{
-	pixel_y = -32
-	},
-/turf/open/floor/almayer/silver,
-/area/almayer/command/cic)
-"bHb" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/command/cic)
-"bHc" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/command/cic)
 "bHg" = (
 /obj/structure/pipes/unary/freezer{
 	throwpass = 1
@@ -196679,7 +196679,7 @@ aTl
 dLe
 wVW
 atx
-bHc
+bGp
 fvB
 sOi
 asc
@@ -196691,7 +196691,7 @@ aIf
 awk
 sOi
 fvB
-bGY
+aXD
 iaa
 wVW
 aKn
@@ -196783,7 +196783,7 @@ aov
 wVW
 atx
 qEk
-bGZ
+ato
 wVW
 aKF
 alX
@@ -196791,9 +196791,9 @@ hxm
 deD
 tUo
 aIf
-bHa
+bGk
 wVW
-aiP
+bGj
 qEk
 iaa
 wVW
@@ -196886,7 +196886,7 @@ aov
 wVW
 atx
 qEk
-bGZ
+ato
 wVW
 rOC
 aqN
@@ -196896,7 +196896,7 @@ tCT
 aDv
 aEC
 wVW
-aiP
+bGj
 qEk
 iaa
 wVW
@@ -196989,12 +196989,12 @@ aoA
 wVW
 atx
 jvX
-ato
+bGm
 wVW
 vTu
 aCV
 alX
-bHb
+bGl
 alX
 aBY
 aED

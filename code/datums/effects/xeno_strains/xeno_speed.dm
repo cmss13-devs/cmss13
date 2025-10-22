@@ -46,6 +46,6 @@
 		if(effect_end_message)
 			to_chat(xeno, effect_end_message)
 		if(istype(xeno) && show_baloon_alert)
-			xeno.balloon_alert(xeno, "our speed fall back to normal.", text_color = "#5B248C")
+			xeno.balloon_alert(xeno, "our speed returns to normal", text_color = "#5B248C")
 			playsound(xeno, 'sound/effects/squish_and_exhaust.ogg', 25, 1)
 	return ..()

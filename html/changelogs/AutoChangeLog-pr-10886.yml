@@ -1,4 +1,0 @@
-author: "matttheficus"
-delete-after: True
-changes:
-  - bugfix: "Pred Cloaks now retain their custom colors when turned to accessories and back."

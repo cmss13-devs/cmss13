@@ -1,4 +1,0 @@
-author: "ori-disillusion-mirnov"
-delete-after: True
-changes:
-  - bugfix: "predators can no longer join the hunt a second time"

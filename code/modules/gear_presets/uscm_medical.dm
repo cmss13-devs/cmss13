@@ -171,7 +171,7 @@
 	origin_override = ORIGIN_CIVILIAN
 
 	minimap_icon = "researcher"
-	minimap_background = "background_medical"
+	minimap_background = "background_goon"
 	utility_under = list(/obj/item/clothing/under/marine/officer/researcher)
 	utility_hat = list()
 	utility_gloves = list()

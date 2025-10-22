@@ -222,4 +222,4 @@
 		behavior.next_slash_buffed = FALSE
 
 	to_chat(unbuffslash_user, SPAN_XENODANGER("We have waited too long, our slash will no longer apply neurotoxin!"))
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"

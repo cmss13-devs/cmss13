@@ -1,0 +1,9 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "added manufacturer logos in object descriptions"
+  - rscadd: "renames Mateba autorevolver into Spearhead Unica 6 autorevoler"
+  - imageadd: "added welding shield sprite back to the Seegson welder (it has protection mechanically, but not visually)"
+  - imageadd: "returned"
+  - spellcheck: "fixed a oddities in company namings"
+  - spellcheck: "renamed Seegson welder, it had USCM lore welder name for some reason"

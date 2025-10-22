@@ -37769,6 +37769,9 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 32
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "bNz" = (

@@ -84,6 +84,8 @@
 	motion_sensed = TRUE
 	initial_leave_button = /datum/action/leave_hologram/falcon
 
+	flags_atom = NO_ZFALL
+
 	var/obj/item/falcon_drone/parent_drone
 	var/obj/item/clothing/gloves/yautja/owned_bracers
 

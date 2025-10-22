@@ -11,6 +11,8 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	sight = SEE_SELF
 	layer = ABOVE_FLY_LAYER
 
+	flags_atom = NO_ZFALL
+
 	var/action_icon_state = "hologram_exit"
 
 	var/mob/linked_mob
@@ -20,6 +22,18 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	var/motion_sensed = FALSE
 	///If this hologram can hear speech.
 	var/hears_speech = FALSE
+
+/mob/hologram/proc/change_level()
+	var/turf/above = SSmapping.get_turf_above(loc)
+
+	if(istype(loc, /turf/open_space))
+		var/turf/below = SSmapping.get_turf_below(loc)
+		src.forceMove(below)
+		return
+
+	if(istype(above, /turf/open_space))
+		src.forceMove(above)
+		return
 
 /mob/hologram/movement_delay()
 	. = -2 // Very fast speed, so they can navigate through easily, they can't ever have movement delay whilst as a hologram

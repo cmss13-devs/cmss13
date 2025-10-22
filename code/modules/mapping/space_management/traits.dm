@@ -53,6 +53,10 @@
 /datum/controller/subsystem/mapping/proc/get_turf_below(turf/T)
 	if (!T)
 		return
+	var/datum/turf_reservation/reservation = SSmapping.used_turfs[T]
+	if(reservation)
+		var/turf/below = reservation.get_turf_below(T)
+		return below
 	var/offset = level_trait(T.z, ZTRAIT_DOWN)
 	if (!offset)
 		return
@@ -62,6 +66,10 @@
 /datum/controller/subsystem/mapping/proc/get_turf_above(turf/T)
 	if (!T)
 		return
+	var/datum/turf_reservation/reservation = SSmapping.used_turfs[T]
+	if(reservation)
+		var/turf/above = reservation.get_turf_above(T)
+		return above
 	var/offset = level_trait(T.z, ZTRAIT_UP)
 	if (!offset)
 		return
@@ -86,9 +94,9 @@
 /datum/controller/subsystem/mapping/proc/same_z_map(z1, z2)
 	if(z1 == z2)
 		return TRUE
-	
+
 	var/diff = z2 - z1
-	var/direction = diff > 0 ? ZTRAIT_UP : ZTRAIT_DOWN  
+	var/direction = diff > 0 ? ZTRAIT_UP : ZTRAIT_DOWN
 
 	for(var/step in 1 to abs(diff))
 		if(!level_trait(z1, direction))
@@ -99,5 +107,5 @@
 		if(z1 == z2)
 			return TRUE
 
-	return FALSE 
-		
+	return FALSE
+

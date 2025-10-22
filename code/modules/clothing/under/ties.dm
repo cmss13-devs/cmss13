@@ -364,7 +364,7 @@
 
 /obj/item/clothing/accessory/medal/gold/cross
 	name = MARINE_MEDAL_GALACTIC_CROSS
-	desc = "The second highest decoration within the USCM. Granted for acts of valor performed under extreme conditions. When the mission’s success or the survival of fellow marines hinged upon extraordinary courage and quick thinking."
+	desc = "The second highest decoration within the USCM. Granted for acts of valor performed under extreme conditions. When the mission's success or the survival of fellow marines hinged upon extraordinary courage and quick thinking."
 	icon_state = "ua_cross"
 
 /obj/item/clothing/accessory/medal/platinum

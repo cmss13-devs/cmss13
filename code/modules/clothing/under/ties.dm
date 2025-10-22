@@ -344,8 +344,8 @@
 
 /obj/item/clothing/accessory/medal/silver/star
 	name = MARINE_MEDAL_SILVER_STAR
-	desc = "Awarded for conspicuous gallantry in action. The Silver Star recognizes those who go beyond the call of duty: charging into danger, holding the line when all seems lost, or saving lives under relentless enemy fire.\n\nPLACEHOLDER SPRITE"
-	icon_state = "silver_gold"//Placeholder
+	desc = "Awarded for conspicuous gallantry in action. The Silver Star recognizes those who go beyond the call of duty: charging into danger, holding the line when all seems lost, or saving lives under relentless enemy fire."
+	icon_state = "silver_star"
 
 /obj/item/clothing/accessory/medal/silver/valor
 	name = MARINE_MEDAL_VALOR

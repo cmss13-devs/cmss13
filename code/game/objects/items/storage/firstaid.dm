@@ -1133,11 +1133,7 @@
 	. = ..()
 	update_icon()
 
-<<<<<<< HEAD
 /obj/item/storage/pill_bottle/packet/empty(mob/user, turf/T)
-=======
-/obj/item/storage/pill_bottle/packet/empty(mob/user, turf/T)
->>>>>>> 036193780ffd569c7a3548669a9971f59c5e0360
 	. = ..()
 	update_icon()
 
@@ -1149,7 +1145,7 @@
 		var/datum/reagent/current_reagent = locate() in current_reagents.reagent_list //reagent color is in here
 		if(current_reagent)
 			var/image/filling = image('icons/obj/items/chemistry.dmi', src, "[icon_state]_[length(contents)]")
-			filling.color = current.reagents.reagent_list
+			filling.color = current_reagent.color
 			overlays += filling
 			return
 

@@ -35039,10 +35039,6 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/command/cic)
-"bHd" = (
-/obj/structure/closet/secure_closet/securecom,
-/turf/open/floor/carpet,
-/area/almayer/living/commandbunks)
 "bHg" = (
 /obj/structure/pipes/unary/freezer{
 	throwpass = 1
@@ -195849,7 +195845,7 @@ agj
 ogK
 qgr
 agc
-bHd
+agc
 kJm
 lpg
 kcN

@@ -18,11 +18,13 @@ type Data = {
 export const IcMedalsPanel = (props) => {
   const { act, data } = useBackend<Data>();
 
-  const COMMENDATION_RIBBON = 'USCMC commendation ribbon';
-  const CONDUCT_MEDAL = 'distinguished conduct medal';
-  const BRONZE_HEART_MEDAL = 'bronze heart medal';
+  const COMMENDATION_RIBBON = 'ribbon of commendation';
+  const LEADERSHIP_RIBBON = 'distinguished leadership ribbon';
+  const PROFICIENCY_RIBBON = 'technical proficiency ribbon';
+  const PURPLE_HEART_MEDAL = 'purple heart medal';
   const VALOR_MEDAL = 'medal of valor';
-  const HEROISM_MEDAL = 'medal of exceptional heroism';
+  const SILVER_STAR_MEDAL = 'silver star medal';
+  const GAL_CROSS_MEDAL = 'galactic cross medal';
 
   const [recommendationMedalTypes, setRecommendationMedalTypes] = useState<
     string[]
@@ -53,7 +55,7 @@ export const IcMedalsPanel = (props) => {
                   <Flex direction="column">
                     <Flex.Item>
                       <Button
-                        tooltip="USCMC Commendation Ribbon"
+                        tooltip="Ribbon of Commendation"
                         color={
                           recommendationMedalTypes[index] ===
                           COMMENDATION_RIBBON
@@ -77,27 +79,100 @@ export const IcMedalsPanel = (props) => {
                     </Flex.Item>
                     <Flex.Item>
                       <Button
-                        tooltip="Distinguished Conduct Medal"
+                        tooltip="Distinguished Leadership Ribbon"
                         color={
-                          recommendationMedalTypes[index] === CONDUCT_MEDAL
+                          recommendationMedalTypes[index] === LEADERSHIP_RIBBON
                             ? 'green'
                             : ''
                         }
                         onClick={() => {
                           const new_array = [...recommendationMedalTypes];
-                          new_array[index] = CONDUCT_MEDAL;
+                          new_array[index] = LEADERSHIP_RIBBON;
                           setRecommendationMedalTypes(new_array);
                         }}
                       >
                         <span
                           className={classes([
                             'medal32x32',
-                            CONDUCT_MEDAL.replace(/ /g, '-'),
+                            LEADERSHIP_RIBBON.replace(/ /g, '-'),
                             'medal-icon',
                           ])}
                         />
                       </Button>
                     </Flex.Item>
+                    <Flex.Item>
+                      <Button
+                        tooltip="Technical Proficiency Ribbon"
+                        color={
+                          recommendationMedalTypes[index] === PROFICIENCY_RIBBON
+                            ? 'green'
+                            : ''
+                        }
+                        onClick={() => {
+                          const new_array = [...recommendationMedalTypes];
+                          new_array[index] = PROFICIENCY_RIBBON;
+                          setRecommendationMedalTypes(new_array);
+                        }}
+                      >
+                        <span
+                          className={classes([
+                            'medal32x32',
+                            PROFICIENCY_RIBBON.replace(/ /g, '-'),
+                            'medal-icon',
+                          ])}
+                        />
+                      </Button>
+                    </Flex.Item>
+                  </Flex>
+                  <Flex direction="column">
+                    <Flex.Item>
+                      <Button
+                        tooltip="Purple Heart Medal"
+                        color={
+                          recommendationMedalTypes[index] === PURPLE_HEART_MEDAL
+                            ? 'green'
+                            : ''
+                        }
+                        onClick={() => {
+                          const new_array = [...recommendationMedalTypes];
+                          new_array[index] = PURPLE_HEART_MEDAL;
+                          setRecommendationMedalTypes(new_array);
+                        }}
+                      >
+                        <span
+                          className={classes([
+                            'medal32x32',
+                            PURPLE_HEART_MEDAL.replace(/ /g, '-'),
+                            'medal-icon',
+                          ])}
+                        />
+                      </Button>
+                    </Flex.Item>
+                    <Flex.Item>
+                      <Button
+                        tooltip="Silver Star Medal"
+                        color={
+                          recommendationMedalTypes[index] === SILVER_STAR_MEDAL
+                            ? 'green'
+                            : ''
+                        }
+                        onClick={() => {
+                          const new_array = [...recommendationMedalTypes];
+                          new_array[index] = SILVER_STAR_MEDAL;
+                          setRecommendationMedalTypes(new_array);
+                        }}
+                      >
+                        <span
+                          className={classes([
+                            'medal32x32',
+                            SILVER_STAR_MEDAL.replace(/ /g, '-'),
+                            'medal-icon',
+                          ])}
+                        />
+                      </Button>
+                    </Flex.Item>
+                  </Flex>
+                  <Flex direction="column">
                     <Flex.Item>
                       <Button
                         tooltip="Medal of Valor"
@@ -121,49 +196,24 @@ export const IcMedalsPanel = (props) => {
                         />
                       </Button>
                     </Flex.Item>
-                  </Flex>
-                  <Flex direction="column">
                     <Flex.Item>
                       <Button
-                        tooltip="Bronze Heart Medal"
+                        tooltip="Galactic Cross Medal"
                         color={
-                          recommendationMedalTypes[index] === BRONZE_HEART_MEDAL
+                          recommendationMedalTypes[index] === GAL_CROSS_MEDAL
                             ? 'green'
                             : ''
                         }
                         onClick={() => {
                           const new_array = [...recommendationMedalTypes];
-                          new_array[index] = BRONZE_HEART_MEDAL;
+                          new_array[index] = GAL_CROSS_MEDAL;
                           setRecommendationMedalTypes(new_array);
                         }}
                       >
                         <span
                           className={classes([
                             'medal32x32',
-                            BRONZE_HEART_MEDAL.replace(/ /g, '-'),
-                            'medal-icon',
-                          ])}
-                        />
-                      </Button>
-                    </Flex.Item>
-                    <Flex.Item>
-                      <Button
-                        tooltip="Medal of Exceptional Heroism"
-                        color={
-                          recommendationMedalTypes[index] === HEROISM_MEDAL
-                            ? 'green'
-                            : ''
-                        }
-                        onClick={() => {
-                          const new_array = [...recommendationMedalTypes];
-                          new_array[index] = HEROISM_MEDAL;
-                          setRecommendationMedalTypes(new_array);
-                        }}
-                      >
-                        <span
-                          className={classes([
-                            'medal32x32',
-                            HEROISM_MEDAL.replace(/ /g, '-'),
+                            GAL_CROSS_MEDAL.replace(/ /g, '-'),
                             'medal-icon',
                           ])}
                         />

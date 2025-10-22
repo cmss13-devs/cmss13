@@ -307,24 +307,34 @@
 
 	. += "Awarded to: \'[recipient_rank] [recipient_name]\'. [citation_to_read]"
 
-/obj/item/clothing/accessory/medal/commendation
-	name = MARINE_COMMENDATION_RIBBON
+/obj/item/clothing/accessory/medal/ribbon
+	name = "award ribbon"
+	desc = "A military award ribbon."
+
+/obj/item/clothing/accessory/medal/ribbon/commendation
+	name = MARINE_RIBBON_COMMENDATION
 	desc = "A ribbon awarded to commend conduct and actions of note, often given alongside a formal letter of commendation. This is the most basic award given by the USCM."
-	icon_state = "commendation"
+	icon_state = "ribbon_commendation"
+
+/obj/item/clothing/accessory/medal/ribbon/leadership
+	name = MARINE_RIBBON_LEADERSHIP
+	desc = "A ribbon given to officers, NCOs, or squad leaders whose coordination, decision-making, or morale-keeping played a critical role in their unit's success or survival."
+	icon_state = "ribbon_leadership"
+
+/obj/item/clothing/accessory/medal/ribbon/proficiency
+	name = MARINE_RIBBON_PROFICIENCY
+	desc = "A ribbon awarded for outstanding technical expertise in the field. Engineering, medical, or logistics personnel whose skill or innovation directly contributed to mission success."
+	icon_state = "ribbon_proficiency"
+
+/obj/item/clothing/accessory/medal/purple_heart
+	name = MARINE_MEDAL_PURPLE_HEART
+	desc = "Awarded to those wounded or killed in action. A solemn token of sacrifice and resilience given in recognition of the physical and personal cost of service."
+	icon_state = "purple_heart"
 
 /obj/item/clothing/accessory/medal/bronze
 	name = "bronze medal"
 	desc = "A bronze medal."
 	icon_state = "bronze"
-
-/obj/item/clothing/accessory/medal/bronze/conduct
-	name = MARINE_CONDUCT_MEDAL
-	desc = "A bronze medal awarded for distinguished conduct. Whilst a great honor, this is one of the most basic awards given by the USCM."
-
-/obj/item/clothing/accessory/medal/bronze/heart
-	name = MARINE_BRONZE_HEART_MEDAL
-	desc = "A bronze heart-shaped medal awarded for sacrifice. It is often awarded posthumously or for severe injury in the line of duty."
-	icon_state = "bronze_heart"
 
 /obj/item/clothing/accessory/medal/silver
 	name = "silver medal"
@@ -332,13 +342,18 @@
 	icon_state = "silver"
 	item_state = "silver"
 
+/obj/item/clothing/accessory/medal/silver/star
+	name = MARINE_MEDAL_SILVER_STAR
+	desc = "Awarded for conspicuous gallantry in action. The Silver Star recognizes those who go beyond the call of duty: charging into danger, holding the line when all seems lost, or saving lives under relentless enemy fire.\n\nPLACEHOLDER SPRITE"
+	icon_state = "silver_gold"//Placeholder
+
 /obj/item/clothing/accessory/medal/silver/valor
-	name = MARINE_VALOR_MEDAL
-	desc = "A silver medal awarded for acts of exceptional valor."
+	name = MARINE_MEDAL_VALOR
+	desc = "For acts of courage performed during combat operations. Recognizes marines who display calm, determination, and bravery under fire, contributing to the survival and morale of their squad."
 
 /obj/item/clothing/accessory/medal/silver/corporate
-	name = WY_COMMENDATION_MEDAL
-	desc = "A silver medal awarded for notable service in the interests of Weyland-Yutani."
+	name = WY_MEDAL_COMMENDATION
+	desc = "A silver and gold medal awarded for notable service in the interests of Weyland-Yutani."
 	icon_state = "silver_gold_corp"
 
 /obj/item/clothing/accessory/medal/gold
@@ -347,9 +362,10 @@
 	icon_state = "gold"
 	item_state = "gold"
 
-/obj/item/clothing/accessory/medal/gold/heroism
-	name = MARINE_HEROISM_MEDAL
-	desc = "An extremely rare golden medal awarded only by the USCM. To receive such a medal is the highest honor and as such, very few exist."
+/obj/item/clothing/accessory/medal/gold/cross
+	name = MARINE_MEDAL_GALACTIC_CROSS
+	desc = "The second highest decoration within the USCM. Granted for acts of valor performed under extreme conditions. When the mission’s success or the survival of fellow marines hinged upon extraordinary courage and quick thinking."
+	icon_state = "ua_cross"
 
 /obj/item/clothing/accessory/medal/platinum
 	name = "platinum medal"
@@ -357,13 +373,30 @@
 	icon_state = "platinum"
 	item_state = "platinum"
 
-/obj/item/clothing/accessory/medal/platinum/special_award
-	name = MARINE_SPECIAL_MEDAL
+/obj/item/clothing/accessory/medal/platinum/honor
+	name = MARINE_MEDAL_HONOR
+	desc = "The highest distinction awarded by the United States Colonial Marine Corps. Bestowed upon those whose actions demonstrate unparalleled bravery, self-sacrifice, and devotion to duty - often in the face of certain death. To wear this medal is to stand among legends of the Corps."
 
-/obj/item/clothing/accessory/medal/platinum/distinction
-	name = MARINE_UA_CROSS_MEDAL
-	desc = "The Legion of Distinction is the highest award given to the United Americas Armed Forces. Given only to those who demonstrate exceptional service and commitment. These medals are granted only by executive order of the President of the United Americas."
-	icon_state = "ua_cross"
+//Legacy medals.
+//Keeping in code as to allow medal records to display correctly, but won't be issued further.
+/obj/item/clothing/accessory/medal/legacy
+	name = "legacy medal"
+	desc = "An old and disused award."
+
+/obj/item/clothing/accessory/medal/legacy/distinguished_conduct
+	name = MARINE_LEGACY_MEDAL_CONDUCT
+	desc = "A bronze medal awarded for distinguished conduct. Whilst a great honor, this is one of the most basic awards given by the USCM."
+	icon_state = "conduct"
+
+/obj/item/clothing/accessory/medal/legacy/bronze_heart
+	name = MARINE_LEGACY_MEDAL_BRONZE_HEART
+	desc = "A bronze heart-shaped medal awarded for sacrifice. It is often awarded posthumously or for severe injury in the line of duty."
+	icon_state = "bronze_heart"
+
+/obj/item/clothing/accessory/medal/legacy/heroism
+	name = MARINE_LEGACY_MEDAL_HEROISM
+	desc = "An extremely rare golden medal awarded only by the USCM. To receive such a medal is the highest honor and as such, very few exist."
+	icon_state = "heroism"
 
 //Playtime Service Medals
 /obj/item/clothing/accessory/medal/bronze/service

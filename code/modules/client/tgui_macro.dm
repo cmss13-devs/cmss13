@@ -75,7 +75,6 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 						kbinds -= old_key
 				INVOKE_ASYNC(owner, /client/proc/set_macros)
 				prefs.save_preferences()
-				SEND_SIGNAL(owner, COMSIG_KB_CONFIG_UPDATED) // SS220 EDIT ADDICTION
 				return
 
 			var/list/tempList = list()
@@ -101,7 +100,6 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			kbinds[full_key] = sortList(kbinds[full_key])
 
 			prefs.save_preferences()
-			SEND_SIGNAL(owner, COMSIG_KB_CONFIG_UPDATED) // SS220 EDIT ADDICTION
 			INVOKE_ASYNC(owner, /client/proc/set_macros)
 			return TRUE
 
@@ -121,7 +119,6 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			kbinds["Unbound"] |= kb_name
 
 			prefs.save_preferences()
-			SEND_SIGNAL(owner, COMSIG_KB_CONFIG_UPDATED) // SS220 EDIT ADDICTION
 			INVOKE_ASYNC(owner, /client/proc/set_macros)
 			return TRUE
 
@@ -133,5 +130,4 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			prefs.key_bindings = (prefs.hotkeys) ? deep_copy_list(GLOB.hotkey_keybinding_list_by_key) : deep_copy_list(GLOB.classic_keybinding_list_by_key)
 			INVOKE_ASYNC(owner, /client/proc/set_macros)
 			prefs.save_preferences()
-			SEND_SIGNAL(owner, COMSIG_KB_CONFIG_UPDATED) // SS220 EDIT ADDICTION
 			return TRUE

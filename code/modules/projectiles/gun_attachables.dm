@@ -90,7 +90,6 @@ Defined in conflicts.dm of the #defines folder.
 	var/list/list/traits_to_give
 	/// List of traits to be given to the gun itself.
 	var/list/gun_traits
-	var/hotkey_id // SS220 EDIT ADDICTION
 
 /obj/item/attachable/Initialize(mapload, ...)
 	. = ..()
@@ -819,7 +818,6 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "reddot"
 	attach_icon = "reddot_a"
 	slot = "rail"
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/reddot/New()
 	..()
@@ -850,7 +848,6 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "reflex"
 	attach_icon = "reflex_a"
 	slot = "rail"
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/reflex/New()
 	..()
@@ -885,7 +882,6 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/flashlight/on_enter_storage(obj/item/storage/internal/S)
 	..()
@@ -1016,7 +1012,6 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	original_state = "flashgrip"
 	original_attach = "flashgrip_a"
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/flashlight/grip/New()
 	..()
@@ -1038,7 +1033,6 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	original_state = "vplaserlight"
 	original_attach = "vplaserlight_a"
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/flashlight/laser_light_combo/New()
 	..()
@@ -1062,7 +1056,6 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "rail"
 	pixel_shift_x = 13
 	var/retrieval_slot = WEAR_J_STORE
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/magnetic_harness/New()
 	..()
@@ -1092,7 +1085,6 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	wield_delay_mod = WIELD_DELAY_VERY_FAST
 	retrieval_slot = WEAR_BACK
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/magnetic_harness/lever_sling/New()
 	..()
@@ -1136,7 +1128,6 @@ Defined in conflicts.dm of the #defines folder.
 	desc_lore = "An experimental fire-control optic capable of linking into compatible IFF systems on certain weapons, designated the XAN/PVG-110 Smart Scope. Experimental technology developed by Armat, who have assured that all previously reported issues with false-negative IFF recognitions have been solved. Make sure to check the sight after every deployment, just in case."
 	slot = "rail"
 	pixel_shift_y = 15
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/alt_iff_scope/New()
 	..()
@@ -1179,7 +1170,6 @@ Defined in conflicts.dm of the #defines folder.
 	var/damage_falloff_scoped_buff
 	var/ignore_clash_fog = FALSE
 	var/using_scope
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/scope/New()
 	..()
@@ -1259,7 +1249,6 @@ Defined in conflicts.dm of the #defines folder.
 	name = "S10 variable zoom telescopic scope"
 	desc = "An ARMAT S10 telescopic eye piece. Can be switched between 2x zoom, which allows the user to move while scoped in, and 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 	attachment_action_type = /datum/action/item_action/toggle
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL // SS220 EDIT ADDICTION
 	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
 	var/zoom_level = ZOOM_LEVEL_4X
 
@@ -1353,7 +1342,6 @@ Defined in conflicts.dm of the #defines folder.
 	allows_movement = TRUE
 	aim_speed_mod = 0
 	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/scope/mini/New()
 	..()
@@ -1481,7 +1469,6 @@ Defined in conflicts.dm of the #defines folder.
 	var/spotter_spotting = FALSE
 	/// How much time it takes to adjust the position of the scope. Adjusting the offset will take half of this time
 	var/adjust_delay = 1 SECONDS
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/vulture_scope/Initialize(mapload, ...)
 	. = ..()
@@ -1927,7 +1914,6 @@ Defined in conflicts.dm of the #defines folder.
 	var/stock_activated = TRUE
 	var/collapse_delay  = 0
 	var/list/deploy_message = list("collapse", "extend")
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT // SS220 EDIT ADDICTION
 
 /obj/item/attachable/stock/proc/apply_on_weapon(obj/item/weapon/gun/gun)
 	return TRUE
@@ -1976,7 +1962,6 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 32
 	pixel_shift_y = 15
 	hud_offset_mod = 6 //*Very* long sprite.
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT // SS220 EDIT ADDICTION
 
 /obj/item/attachable/stock/shotgun/New()
 	..()
@@ -2012,7 +1997,6 @@ Defined in conflicts.dm of the #defines folder.
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT // SS220 EDIT ADDICTION
 
 /obj/item/attachable/stock/synth/collapsible/New()
 	..()
@@ -2121,7 +2105,6 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 32
 	pixel_shift_y = 15
 	hud_offset_mod = 2
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT // SS220 EDIT ADDICTION
 
 /obj/item/attachable/stock/double/New()
 	..()
@@ -2337,7 +2320,6 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_y = 10
 	wield_delay_mod = WIELD_DELAY_FAST
 	hud_offset_mod = 3
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT // SS220 EDIT ADDICTION
 
 /obj/item/attachable/stock/rifle/New()
 	..()
@@ -2370,7 +2352,6 @@ Defined in conflicts.dm of the #defines folder.
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT // SS220 EDIT ADDICTION
 
 /obj/item/attachable/stock/rifle/collapsible/New()
 	..()
@@ -2435,7 +2416,6 @@ Defined in conflicts.dm of the #defines folder.
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT // SS220 EDIT ADDICTION
 
 /obj/item/attachable/stock/rifle/collapsible/ak4047/New()
 	..()
@@ -2500,7 +2480,6 @@ Defined in conflicts.dm of the #defines folder.
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT // SS220 EDIT ADDICTION
 
 /obj/item/attachable/stock/rifle/collapsible/m41ae2/New()
 	..()
@@ -2547,7 +2526,6 @@ Defined in conflicts.dm of the #defines folder.
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT // SS220 EDIT ADDICTION
 	var/base_icon = "m16_folding"
 
 /obj/item/attachable/stock/xm177/Initialize()
@@ -2679,7 +2657,6 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_y = 8
 	wield_delay_mod = WIELD_DELAY_NORMAL
 	hud_offset_mod = 2
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT // SS220 EDIT ADDICTION
 
 /obj/item/attachable/stock/carbine/New()
 	..()
@@ -2737,7 +2714,6 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_y = 11
 	wield_delay_mod = WIELD_DELAY_FAST
 	hud_offset_mod = 5
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT // SS220 EDIT ADDICTION
 
 /obj/item/attachable/stock/smg/New()
 	..()
@@ -2764,7 +2740,6 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = 5
 	collapsible = TRUE
 	var/base_icon = "smgstockc"
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT // SS220 EDIT ADDICTION
 
 /obj/item/attachable/stock/smg/collapsible/New()
 	..()
@@ -2895,7 +2870,6 @@ Defined in conflicts.dm of the #defines folder.
 					/obj/item/ammo_magazine/revolver,
 					/obj/item/ammo_magazine/revolver/marksman,
 					/obj/item/ammo_magazine/revolver/heavy)
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_STOCKATTACHMENT // SS220 EDIT ADDICTION
 
 /obj/item/attachable/stock/revolver/New()
 	..()
@@ -3077,7 +3051,6 @@ Defined in conflicts.dm of the #defines folder.
 	var/cocked = TRUE // has the UGL been cocked via opening and closing the breech?
 	var/open_sound = 'sound/weapons/handling/ugl_open.ogg'
 	var/close_sound = 'sound/weapons/handling/ugl_close.ogg'
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/attached_gun/grenade/Initialize()
 	. = ..()
@@ -3278,7 +3251,6 @@ Defined in conflicts.dm of the #defines folder.
 	var/burn_duration = BURN_TIME_TIER_1
 	var/round_usage_per_tile = 1
 	var/intense_mode = FALSE
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/attached_gun/flamer/New()
 	..()
@@ -3468,7 +3440,6 @@ Defined in conflicts.dm of the #defines folder.
 	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
 	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/attached_gun/shotgun/New()
 	..()
@@ -3516,7 +3487,6 @@ Defined in conflicts.dm of the #defines folder.
 	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
 	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/attached_gun/shotgun/af13/New()
 	..()
@@ -3564,7 +3534,6 @@ Defined in conflicts.dm of the #defines folder.
 	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
 	gun_activate_sound = 'sound/weapons/handling/gun_u7_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_WIELD_OVERRIDE
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/attached_gun/shotgun/af13b/New()
 	..()
@@ -3610,7 +3579,6 @@ Defined in conflicts.dm of the #defines folder.
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE
 	var/obj/item/tool/extinguisher/internal_extinguisher
 	current_rounds = 1 //This has to be done to pass the fire_attachment check.
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/attached_gun/extinguisher/get_examine_text(mob/user)
 	. = ..()
@@ -3673,7 +3641,6 @@ Defined in conflicts.dm of the #defines folder.
 		'sound/weapons/gun_flamethrower2.ogg',
 		'sound/weapons/gun_flamethrower3.ogg'
 	)
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/attached_gun/flamer_nozzle/handle_attachment_description(slot)
 	return "It has a [icon2html(src)] [name] mounted beneath the barrel.<br>"
@@ -3743,7 +3710,6 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 1
 	slot = "under"
 	pixel_shift_x = 20
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/verticalgrip/New()
 	..()
@@ -3765,7 +3731,6 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 1
 	slot = "under"
 	pixel_shift_x = 20
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/gyro
 	name = "gyroscopic stabilizer"
@@ -3774,7 +3739,6 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "gyro"
 	attach_icon = "gyro_a"
 	slot = "under"
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/gyro/New()
 	..()
@@ -3803,7 +3767,6 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "under"
 	pixel_shift_x = 17
 	pixel_shift_y = 17
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/lasersight/New()
 	..()
@@ -3853,7 +3816,6 @@ Defined in conflicts.dm of the #defines folder.
 	var/old_firemode = null
 	// if this bipod has a camo skin
 	var/camo_bipod = FALSE
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/bipod/New()
 	..()
@@ -4147,7 +4109,6 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "rapidfire"
 	attach_icon = "rapidfire_a"
 	slot = "under"
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/burstfire_assembly/New()
 	..()
@@ -4163,7 +4124,6 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "rxfm5_eva_doodad"
 	attach_icon = "rxfm5_eva_doodad_a"
 	slot = "under"
-	hotkey_id = COMSIG_KB_HUMAN_WEAPON_UNDERBARREL // SS220 EDIT ADDICTION
 
 /obj/item/attachable/eva_doodad/New()
 	..()

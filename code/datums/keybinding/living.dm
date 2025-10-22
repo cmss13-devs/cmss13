@@ -38,7 +38,7 @@
 	return TRUE
 
 /datum/keybinding/living/toggle_surgery
-	name = "surgery_toggle" // SS220 EDIT ADDICTIONB
+	name = "toggle_surgery"
 	full_name = "Toggle Surgery Mode"
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")

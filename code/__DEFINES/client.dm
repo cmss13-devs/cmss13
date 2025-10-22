@@ -5,8 +5,6 @@
 };\
 /client/proc/##verb_name(args)\
 
-#define COMSIG_KB_CONFIG_UPDATED "keybinding_config_updated" // SS220 EDIT ADDICTION
-
 /// This gathers all the client *procs* that we are pretending are verbs - but only particularly want
 /// authorized users to be able to use
 /client/proc/collect_client_verbs() as /list

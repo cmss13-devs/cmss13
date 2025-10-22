@@ -336,11 +336,6 @@
 	desc = "A bronze medal."
 	icon_state = "bronze"
 
-/obj/item/clothing/accessory/medal/bronze/corporate
-	name = WY_MEDAL_BRONZE_STAR
-	desc = "A bronze star awarded by Weyland-Yutani."
-	icon_state = "corporate_star"
-
 /obj/item/clothing/accessory/medal/silver
 	name = "silver medal"
 	desc = "A silver medal."
@@ -356,10 +351,15 @@
 	name = MARINE_MEDAL_VALOR
 	desc = "For acts of courage performed during combat operations. Recognizes marines who display calm, determination, and bravery under fire, contributing to the survival and morale of their squad."
 
-/obj/item/clothing/accessory/medal/silver/corporate
-	name = WY_MEDAL_COMMENDATION
-	desc = "A silver and gold medal awarded for notable service in the interests of Weyland-Yutani."
-	icon_state = "corporate_silver"
+/obj/item/clothing/accessory/medal/gold/corporate_award
+	name = WY_MEDAL_AWARD_1
+	desc = "A gold medal awarded for notable service in the interests of Weyland-Yutani."
+	icon_state = "corporate_award"
+
+/obj/item/clothing/accessory/medal/gold/corporate_medallion
+	name = WY_MEDAL_AWARD_2
+	desc = "A gold medal awarded for notable service in the interests of Weyland-Yutani."
+	icon_state = "corporate_medallion"
 
 /obj/item/clothing/accessory/medal/gold
 	name = "gold medal"

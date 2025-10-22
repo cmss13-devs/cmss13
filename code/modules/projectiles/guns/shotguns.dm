@@ -393,7 +393,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a red handle to signify its use with Military Police Honor Guards."
 	icon_state = "mp221"
 	item_state = "mp221"
-	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/bayonet)
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 
 /obj/item/weapon/gun/shotgun/combat/covert

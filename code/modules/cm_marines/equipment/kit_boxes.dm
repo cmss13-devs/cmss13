@@ -606,21 +606,6 @@
 	new /obj/item/attachable/lasersight(src)
 	new /obj/item/storage/belt/gun/smartpistol(src)
 
-/obj/item/storage/box/kit/honorguard
-	name = "\improper Honor Guard Kit"
-	pro_case_overlay = "shield"
-
-/obj/item/storage/box/kit/honorguard/fill_preset_inventory()
-	new /obj/item/device/radio/headset/almayer/marine/mp_honor(src)
-	new /obj/item/storage/pill_bottle/packet/oxycodone(src)
-	new /obj/item/storage/pill_bottle/packet/kelotane(src)
-	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
-	new /obj/item/weapon/gun/shotgun/combat/guard(src)
-	new /obj/item/storage/pouch/general/large(src)
-	new /obj/item/ammo_magazine/shotgun/buckshot(src)
-	new /obj/item/ammo_magazine/shotgun/buckshot(src)
-	new /obj/item/pamphlet/skill/honorguard(src)
-
 /obj/item/storage/box/kit/spotter
 	name = "\improper Spotter Kit"
 	pro_case_overlay = "spotter"
@@ -683,3 +668,53 @@
 	new /obj/item/attachable/extended_barrel(src)
 	new /obj/item/ammo_magazine/rifle/type71/ap(src)
 	new /obj/item/ammo_magazine/rifle/type71/ap(src)
+
+
+//******************************************Honor Guard Kits****************************************************************/
+
+/obj/item/storage/box/kit/honor_mk221
+	name = "\improper Mk221 Honor Guard Kit"
+	pro_case_overlay = "shield"
+
+/obj/item/storage/box/kit/honor_mk221/fill_preset_inventory()
+	new /obj/item/weapon/gun/shotgun/combat/guard(src)
+	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+	new /obj/item/ammo_magazine/shotgun/buckshot(src)
+	new /obj/item/ammo_magazine/shotgun/slugs(src)
+	new /obj/item/ammo_magazine/shotgun/flechette(src)
+
+/obj/item/storage/box/kit/honor_m4ra
+	name = "\improper M4RA Honor Guard Kit"
+	pro_case_overlay = "sniper"
+
+/obj/item/storage/box/kit/honor_m4ra/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m4ra(src)
+	new /obj/item/attachable/scope/mini(src)
+	new /obj/item/attachable/extended_barrel(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/ap(src)
+	new /obj/item/ammo_magazine/rifle/m4ra/extended(src)
+	new /obj/item/ammo_magazine/rifle/m4ra(src)
+	new /obj/item/ammo_magazine/rifle/m4ra(src)
+
+/obj/item/storage/box/kit/honor_m41a
+	name = "\improper M41A Honor Guard Kit"
+	pro_case_overlay = "pursuit"
+
+/obj/item/storage/box/kit/honor_m41a/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/m41a(src)
+	new /obj/item/attachable/angledgrip(src)
+	new /obj/item/ammo_magazine/rifle/ap(src)
+	new /obj/item/ammo_magazine/rifle/extended(src)
+	new /obj/item/ammo_magazine/rifle(src)
+	new /obj/item/ammo_magazine/rifle(src)
+
+/obj/item/storage/box/kit/honor_m39
+	name = "\improper M39 Honor Guard Kit"
+	pro_case_overlay = "defense"
+
+/obj/item/storage/box/kit/honor_m39/fill_preset_inventory()
+	new /obj/item/weapon/gun/smg/m39(src)
+	new /obj/item/ammo_magazine/smg/m39/ap(src)
+	new /obj/item/ammo_magazine/smg/m39/extended(src)
+	new /obj/item/ammo_magazine/smg/m39(src)
+	new /obj/item/ammo_magazine/smg/m39(src)

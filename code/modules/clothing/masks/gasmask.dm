@@ -58,6 +58,11 @@
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
 	flags_equip_slot = SLOT_FACE
 
+/obj/item/clothing/mask/gas/pmc/Initialize()
+	. = ..()
+	if(istypestrict(src, /obj/item/clothing/mask/gas/pmc) || istypestrict(src, /obj/item/clothing/mask/gas/pmc/leader))
+		AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/mask/gas/pmc/marsoc
 	name = "\improper SOF armored balaclava"
 	desc = "Designed for maximum protection -- and badassery. Provides protection against facial attacks, filters toxins, and conceals the wearer's identity."

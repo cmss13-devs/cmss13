@@ -1,0 +1,8 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "preds, humans and xenos now have different hide button icons"
+  - imageadd: "almost all of the action button icons were remade"
+  - imageadd: "action icons for humans now have new semi transparent sprites"
+  - bugfix: "walkman having incorrect icons"
+  - bugfix: "transfer liquid action button having incorrect and misleading name"

@@ -19323,9 +19323,6 @@
 /obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/paft)
-"aXD" = (
-/turf/closed/wall/almayer/reinforced,
-/area/space)
 "aXE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -34866,40 +34863,6 @@
 "bGi" = (
 /turf/solid_open_space,
 /area/almayer/middeck/maintenance/sf)
-"bGj" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 2;
-	id = "bot_armory";
-	name = "\improper Armory Shutters"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/space)
-"bGk" = (
-/obj/structure/surface/rack,
-/obj/item/tool/extinguisher,
-/obj/item/device/flashlight,
-/obj/item/device/flashlight,
-/obj/item/device/flashlight,
-/obj/item/device/flashlight,
-/turf/open/floor/almayer/redfull,
-/area/space)
-"bGl" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = -28
-	},
-/turf/open/floor/almayer/redfull,
-/area/space)
-"bGm" = (
-/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
-/turf/open/floor/almayer/redfull,
-/area/space)
 "bGn" = (
 /obj/structure/barricade/plasteel/metal,
 /turf/open/floor/almayer/cargo,
@@ -34914,11 +34877,6 @@
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/squads/req)
-"bGp" = (
-/obj/structure/machinery/light,
-/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_mk1_rifle_ap,
-/turf/open/floor/almayer/redfull,
-/area/space)
 "bGq" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/warning_stripes{
@@ -34926,24 +34884,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
-"bGr" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/space)
-"bGs" = (
-/obj/structure/closet/secure_closet/securecom,
-/turf/open/floor/almayer/redfull,
-/area/space)
-"bGt" = (
-/obj/structure/closet/secure_closet/staff_officer/armory/shotgun,
-/turf/open/floor/almayer/redfull,
-/area/space)
 "bGu" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -34953,31 +34893,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"bGv" = (
-/obj/structure/closet/secure_closet/staff_officer/armory/shotgun,
-/obj/structure/machinery/light,
-/turf/open/floor/almayer/redfull,
-/area/space)
 "bGw" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
-"bGx" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/space)
 "bGy" = (
 /turf/open/floor/almayer/green/west,
 /area/almayer/squads/req)
@@ -34988,65 +34909,6 @@
 	},
 /turf/open/floor/almayer/green/northwest,
 /area/almayer/squads/req)
-"bGA" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/space)
-"bGB" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/space)
-"bGC" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/closet/toolcloset,
-/turf/open/floor/almayer/redfull,
-/area/space)
-"bGD" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out";
-	pixel_x = 1
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/space)
-"bGE" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/space)
 "bGF" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 1
@@ -35129,45 +34991,10 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
-"bGR" = (
-/obj/structure/closet/secure_closet/staff_officer/armory/m4a1,
-/turf/open/floor/almayer/redfull,
-/area/space)
-"bGS" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/closet/secure_closet/staff_officer/armory/m4a1,
-/turf/open/floor/almayer/redfull,
-/area/space)
-"bGT" = (
-/obj/structure/machinery/cm_vending/gear/staff_officer_armory,
-/turf/open/floor/almayer/redfull,
-/area/space)
 "bGU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
-"bGV" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 28
-	},
-/obj/structure/machinery/cm_vending/gear/staff_officer_armory,
-/turf/open/floor/almayer/redfull,
-/area/space)
-"bGW" = (
-/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_shotgun,
-/turf/open/floor/almayer/redfull,
-/area/space)
-"bGX" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/closet/secure_closet/guncabinet/red/cic_armory_shotgun,
-/turf/open/floor/almayer/redfull,
-/area/space)
 "bGY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -195241,14 +195068,14 @@ aag
 aag
 aag
 ajZ
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -195344,14 +195171,14 @@ nLp
 aag
 aag
 ajZ
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -195447,14 +195274,14 @@ nLp
 aag
 aag
 ajZ
-aaa
-aaa
 bdH
-bGC
 bdH
-aXD
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -195550,14 +195377,14 @@ nLp
 aag
 aag
 ajZ
-aaa
-aaa
-bGV
-bGD
-bGr
-bGj
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -195653,14 +195480,14 @@ nLp
 aag
 aag
 ajZ
-aaa
-aaa
-bGW
-bGA
-bGs
-aXD
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -195756,14 +195583,14 @@ nLp
 nLp
 nLp
 ajZ
-aaa
-aaa
-bGW
-bGA
-bGt
-aXD
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -195859,14 +195686,14 @@ dPd
 rLH
 rwZ
 ajZ
-aaa
-aaa
-bGX
-bGA
-bGv
-aXD
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -195962,14 +195789,14 @@ hrI
 dPO
 rwZ
 ajZ
-aaa
-aaa
-bGW
-bGB
-bGt
-aXD
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -196065,14 +195892,14 @@ vwU
 uew
 rwZ
 ajZ
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -196168,14 +195995,14 @@ jne
 rDH
 nLp
 ajZ
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -196271,14 +196098,14 @@ tNB
 ioM
 rwZ
 ajZ
-aaa
-aaa
-aXD
 bdH
 bdH
-bGk
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -196374,14 +196201,14 @@ ppG
 ioM
 rwZ
 ajZ
-aaa
-aaa
-bGj
-bGE
-bGx
-bGl
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -196477,14 +196304,14 @@ raO
 ioM
 rwZ
 ajZ
-aaa
-aaa
-aXD
-bGR
-bGA
-bGm
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -196580,14 +196407,14 @@ kzc
 gen
 nLp
 ajZ
-aaa
-aaa
-aXD
-bGR
-bGA
-bGm
-aaa
-aaa
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa
@@ -196683,12 +196510,12 @@ fjz
 hPu
 rwZ
 ajZ
-aaa
-aaa
-aXD
-bGS
 bdH
-bGp
+bdH
+bdH
+bdH
+bdH
+bdH
 bdH
 bdH
 aaa
@@ -196786,12 +196613,12 @@ dcT
 hrI
 rwZ
 ajZ
-aaa
-aaa
-aXD
-bGT
-bGB
-bGm
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 bdH
 bdH
 aaa
@@ -196889,9 +196716,9 @@ pfD
 pfD
 rwZ
 ajZ
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
 bdH
 bdH
 bdH
@@ -196992,9 +196819,9 @@ nLp
 nLp
 nLp
 ajZ
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
 bdH
 bdH
 bdH
@@ -197095,9 +196922,9 @@ nLp
 aag
 aag
 ajZ
-aaa
-aaa
-aaa
+bdH
+bdH
+bdH
 bdH
 bdH
 bdH

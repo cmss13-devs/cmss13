@@ -336,6 +336,11 @@
 	desc = "A bronze medal."
 	icon_state = "bronze"
 
+/obj/item/clothing/accessory/medal/bronze/corporate
+	name = WY_MEDAL_BRONZE_STAR
+	desc = "A bronze star awarded by Weyland-Yutani."
+	icon_state = "corporate_star"
+
 /obj/item/clothing/accessory/medal/silver
 	name = "silver medal"
 	desc = "A silver medal."
@@ -354,7 +359,7 @@
 /obj/item/clothing/accessory/medal/silver/corporate
 	name = WY_MEDAL_COMMENDATION
 	desc = "A silver and gold medal awarded for notable service in the interests of Weyland-Yutani."
-	icon_state = "silver_gold_corp"
+	icon_state = "corporate_silver"
 
 /obj/item/clothing/accessory/medal/gold
 	name = "gold medal"

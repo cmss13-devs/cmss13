@@ -13,6 +13,7 @@
 #define MARINE_LEGACY_MEDAL_BRONZE_HEART "bronze heart medal"
 #define MARINE_LEGACY_MEDAL_HEROISM "medal of exceptional heroism"
 
+#define WY_MEDAL_BRONZE_STAR "corporate star"
 #define WY_MEDAL_COMMENDATION "corporate service award"
 
 #define XENO_SLAUGHTER_MEDAL "royal jelly of slaughter"
@@ -55,7 +56,7 @@ GLOBAL_LIST_INIT(medal_options, generate_medal_options())
 	options_list["marine_medals_xo"] = list(MARINE_RIBBON_COMMENDATION, MARINE_RIBBON_PROFICIENCY, MARINE_RIBBON_LEADERSHIP)
 	options_list["marine_medals_co"] = list(MARINE_RIBBON_PROFICIENCY, MARINE_RIBBON_LEADERSHIP, MARINE_MEDAL_PURPLE_HEART, MARINE_MEDAL_VALOR, MARINE_MEDAL_SILVER_STAR, MARINE_MEDAL_GALACTIC_CROSS)
 	options_list["marine_medals_admin"] = list(MARINE_RIBBON_COMMENDATION, MARINE_RIBBON_PROFICIENCY, MARINE_RIBBON_LEADERSHIP, MARINE_MEDAL_PURPLE_HEART, MARINE_MEDAL_VALOR, MARINE_MEDAL_SILVER_STAR, MARINE_MEDAL_GALACTIC_CROSS, MARINE_MEDAL_HONOR)
-	options_list["wy_medals_admin"] = list(WY_MEDAL_COMMENDATION)
+	options_list["wy_medals_admin"] = list(WY_MEDAL_BRONZE_STAR, WY_MEDAL_COMMENDATION)
 
 	return options_list
 
@@ -77,6 +78,8 @@ GLOBAL_LIST_INIT(medal_options, generate_medal_options())
 			return /obj/item/clothing/accessory/medal/gold/cross
 		if(MARINE_MEDAL_HONOR)
 			return /obj/item/clothing/accessory/medal/platinum/honor
+		if(WY_MEDAL_BRONZE_STAR)
+			return /obj/item/clothing/accessory/medal/bronze/corporate
 		if(WY_MEDAL_COMMENDATION)
 			return /obj/item/clothing/accessory/medal/silver/corporate
 

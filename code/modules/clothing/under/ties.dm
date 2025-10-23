@@ -391,7 +391,7 @@
 /obj/item/clothing/accessory/medal/platinum/honor
 	name = MARINE_MEDAL_HONOR
 	desc = "The highest distinction awarded by the United States Colonial Marine Corps. Bestowed upon those whose actions demonstrate unparalleled bravery, self-sacrifice, and devotion to duty - often in the face of certain death. To wear this medal is to stand among legends of the Corps."
-	awarding_faction = FACTION_MARINE
+	awarding_faction = "USCM HC"
 
 //Legacy medals.
 //Keeping in code as to allow medal records to display correctly, but won't be issued further.

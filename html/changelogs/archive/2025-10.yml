@@ -188,3 +188,23 @@
   - rscadd: Tacmap stair indicators for multiz
   kiVts:
   - admin: basic buildmode should be more friendlier now.
+2025-10-22:
+  matttheficus:
+  - bugfix: Pred Cloaks now retain their custom colors when turned to accessories
+      and back.
+  ori-disillusion-mirnov:
+  - bugfix: predators can no longer join the hunt a second time
+2025-10-23:
+  Blundir:
+  - rscadd: preds, humans and xenos now have different hide button icons
+  - imageadd: almost all of the action button icons were remade
+  - imageadd: action icons for humans now have new semi transparent sprites
+  - bugfix: walkman having incorrect icons
+  - bugfix: transfer liquid action button having incorrect and misleading name
+  - rscadd: added manufacturer logos in object descriptions
+  - rscadd: renames Mateba autorevolver into Spearhead Unica 6 autorevoler
+  - imageadd: added welding shield sprite back to the Seegson welder (it has protection
+      mechanically, but not visually)
+  - imageadd: returned
+  - spellcheck: fixed a oddities in company namings
+  - spellcheck: renamed Seegson welder, it had USCM lore welder name for some reason

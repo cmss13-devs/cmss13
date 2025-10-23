@@ -4,23 +4,17 @@
     "map_file": "cape_river.dmm",
     "webmap_url": "LV624",
     "survivor_types": [
-        "/datum/equipment_preset/survivor/scientist/lv",
-        "/datum/equipment_preset/survivor/doctor/lv",
-        "/datum/equipment_preset/survivor/chaplain/lv",
-        "/datum/equipment_preset/survivor/engineer/lv",
-        "/datum/equipment_preset/survivor/corporate/lv",
-        "/datum/equipment_preset/survivor/trucker/lv",
-        "/datum/equipment_preset/survivor/security/lv",
-        "/datum/equipment_preset/survivor/colonial_marshal/lv",
-        "/datum/equipment_preset/survivor/goon",
-        "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
-        "/datum/equipment_preset/survivor/civilian",
-        "/datum/equipment_preset/survivor/civilian_unique"
+        "/datum/equipment_preset/survivor/caperiver/civilian",
+        "/datum/equipment_preset/survivor/caperiver/engineer",
+        "/datum/equipment_preset/survivor/caperiver/security_officer",
+        "/datum/equipment_preset/survivor/caperiver/scientist",
+        "/datum/equipment_preset/survivor/caperiver/doctor",
+        "/datum/equipment_preset/survivor/conam_cl"
     ],
     "CO_insert_survivor_types": [
-        "/datum/equipment_preset/survivor/clf/coordinator"
+        "/datum/equipment_preset/survivor/caperiver/captain"
     ],
-    "map_item_type": "/obj/item/map/lazarus_landing_map",
+    "map_item_type": "/obj/item/map/cape_river",
     "announce_text": "An automated distress signal has been received from Cape River, a Con-Amalagated corporate operated mining colony. The ###SHIPNAME### has been dictated to conduct an investigation in force.",
     "monkey_types": [
         "farwa",

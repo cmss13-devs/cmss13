@@ -1940,6 +1940,7 @@
 #include "code\modules\gear_presets\yautja.dm"
 #include "code\modules\gear_presets\survivors\misc.dm"
 #include "code\modules\gear_presets\survivors\survivors.dm"
+#include "code\modules\gear_presets\survivors\cape_river\preset_cape_river.dm"
 #include "code\modules\gear_presets\survivors\corsat\preset_corsat.dm"
 #include "code\modules\gear_presets\survivors\fiorina_sciannex\preset_fiorina_sciannex.dm"
 #include "code\modules\gear_presets\survivors\fiorina_sciannex\riot_in_progress_insert_fiorina_nightmare.dm"

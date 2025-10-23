@@ -277,8 +277,8 @@
 	name = "Con-Am 'Corestone Base' - Delivery"
 	icon_state = "maint_cargo"
 
-/area/caperiver/indoors/conambase/cargo
-	name = "Con-Am 'Corestone Base' - Cargo"
+/area/caperiver/indoors/conambase/medical
+	name = "Con-Am 'Corestone Base' - Medical"
 	icon_state = "Holodeck"
 
 /area/caperiver/indoors/conambase/bunker

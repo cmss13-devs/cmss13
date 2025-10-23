@@ -583,15 +583,17 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			updating_icon = 0
 
 //Attack with an item - open/close cover, insert cell, or (un)lock interface
-/obj/structure/machinery/power/apc/attackby(obj/item/W, mob/user)
-
+/obj/structure/machinery/power/apc/attackby(obj/item/attacking_item, mob/living/user, list/mods)
 	if(isRemoteControlling(user) && get_dist(src, user) > 1)
 		return attack_hand(user)
+
+	if(user.action_busy)
+		return
+
 	add_fingerprint(user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && opened)
+
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR) && opened)
 		if(has_electronics == 1)
-			if(user.action_busy)
-				return
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no idea how to deconstruct [src]."))
 				return
@@ -616,16 +618,16 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		else if(opened != APC_COVER_REMOVED) //Cover isn't removed
 			opened = APC_COVER_CLOSED
 			update_icon()
-	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && !(stat & BROKEN))
+	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR) && !(stat & BROKEN))
 		if(coverlocked && !(stat & MAINT))
 			to_chat(user, SPAN_WARNING("The cover is locked and cannot be opened."))
 			return
 		else
 			opened = APC_COVER_OPEN
 			update_icon()
-	else if(istype(W, /obj/item/cell) && opened) //Trying to put a cell inside
+	else if(istype(attacking_item, /obj/item/cell) && opened) //Trying to put a cell inside
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You have no idea how to fit [W] into [src]."))
+			to_chat(user, SPAN_WARNING("You have no idea how to fit [attacking_item] into [src]."))
 			return
 		if(cell)
 			to_chat(user, SPAN_WARNING("There is a power cell already installed."))
@@ -634,16 +636,16 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			if(stat & MAINT)
 				to_chat(user, SPAN_WARNING("There is no connector for your power cell."))
 				return
-			if(user.drop_inv_item_to_loc(W, src))
-				cell = W
-				user.visible_message(SPAN_NOTICE("[user] inserts [W] into [src]!"),
-					SPAN_NOTICE("You insert [W] into [src]!"))
+			if(user.drop_inv_item_to_loc(attacking_item, src))
+				cell = attacking_item
+				user.visible_message(SPAN_NOTICE("[user] inserts [attacking_item] into [src]!"),
+					SPAN_NOTICE("You insert [attacking_item] into [src]!"))
 				chargecount = 0
 				update_icon()
-	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER)) //Haxing
+	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER)) //Haxing
 		if(opened)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(user, SPAN_WARNING("\The [src]'s wiring confuses you."))
+				to_chat(user, SPAN_WARNING("[src]'s wiring confuses you."))
 				return
 			if(cell)
 				to_chat(user, SPAN_WARNING("Close the APC first.")) //Less hints more mystery!
@@ -670,14 +672,14 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			beenhit = wiresexposed ? XENO_HITS_TO_EXPOSE_WIRES_MIN : 0
 			user.visible_message(SPAN_NOTICE("[user] [wiresexposed ? "exposes" : "unexposes"] [src]'s wiring."),
 			SPAN_NOTICE("You [wiresexposed ? "expose" : "unexpose"] [src]'s wiring."))
-			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			update_icon()
 			if(SStgui.close_uis(src)) //if you had UIs open before from this APC...
 				tgui_interact(user) //then close them and open up the new ones (wires/panel)
 
-	else if(istype(W, /obj/item/card/id)) //Trying to unlock the interface with an ID card
+	else if(istype(attacking_item, /obj/item/card/id)) //Trying to unlock the interface with an ID card
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You're not sure where to swipe \the [W] on [src]."))
+			to_chat(user, SPAN_WARNING("You're not sure where to swipe [attacking_item] on [src]."))
 			return
 		if(opened)
 			to_chat(user, SPAN_WARNING("You must close the cover to swipe an ID card."))
@@ -693,46 +695,46 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				update_icon()
 			else
 				to_chat(user, SPAN_WARNING("Access denied."))
-	else if(iswire(W) && !terminal && opened && has_electronics != 2)
+	else if(iswire(attacking_item) && !terminal && opened && has_electronics != 2)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [src]."))
 			return
 		if(loc:intact_tile)
 			to_chat(user, SPAN_WARNING("You must remove the floor plating in front of the APC first."))
 			return
-		var/obj/item/stack/cable_coil/C = W
-		if(C.get_amount() < 10)
+		var/obj/item/stack/cable_coil/coil = attacking_item
+		if(coil.get_amount() < 10)
 			to_chat(user, SPAN_WARNING("You need more wires."))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts wiring [src]'s frame."),
 		SPAN_NOTICE("You start wiring [src]'s frame."))
-		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
+		playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		if(do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !terminal && opened && has_electronics != 2)
-			var/turf/T = get_turf(src)
-			var/obj/structure/cable/N = T.get_cable_node()
-			if(prob(50) && electrocute_mob(usr, N, N))
+			var/turf/turf = get_turf(src)
+			var/obj/structure/cable/cable = turf.get_cable_node()
+			if(prob(50) && electrocute_mob(usr, cable, cable))
 				var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
 				spark.set_up(5, 1, src)
 				spark.start()
 				return
-			if(C.use(10))
+			if(coil.use(10))
 				user.visible_message(SPAN_NOTICE("[user] wires [src]'s frame."),
 				SPAN_NOTICE("You wire [src]'s frame."))
 				make_terminal()
 				terminal.connect_to_network()
-	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && terminal && opened && has_electronics != 2)
+	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS) && terminal && opened && has_electronics != 2)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
+			to_chat(user, SPAN_WARNING("You have no idea what to do with [attacking_item]."))
 			return
 		if(loc:intact_tile)
 			to_chat(user, SPAN_WARNING("You must remove the floor plating in front of the APC first."))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s wiring and terminal."),
 		SPAN_NOTICE("You start removing [src]'s wiring and terminal."))
-		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
+		playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!terminal)
-				to_chat(user, SPAN_WARNING("\The [src] lacks a terminal to remove."))
+				to_chat(user, SPAN_WARNING("[src] lacks a terminal to remove."))
 				return
 			if (prob(50) && electrocute_mob(user, terminal.powernet, terminal))
 				var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
@@ -744,47 +746,47 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			SPAN_NOTICE("You remove [src]'s wiring and terminal."))
 			qdel(terminal)
 			terminal = null
-	else if(istype(W, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && !(stat & BROKEN))
+	else if(istype(attacking_item, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && !(stat & BROKEN))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
+			to_chat(user, SPAN_WARNING("You have no idea what to do with [attacking_item]."))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts inserting the power control board into [src]."),
 		SPAN_NOTICE("You start inserting the power control board into [src]."))
-		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
+		playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		if(do_after(user, 15, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			has_electronics = 1
 			user.visible_message(SPAN_NOTICE("[user] inserts the power control board into [src]."),
 			SPAN_NOTICE("You insert the power control board into [src]."))
-			qdel(W)
-	else if(istype(W, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && (stat & BROKEN))
+			qdel(attacking_item)
+	else if(istype(attacking_item, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && (stat & BROKEN))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
+			to_chat(user, SPAN_WARNING("You have no idea what to do with [attacking_item]."))
 			return
 		to_chat(user, SPAN_WARNING("You cannot put the board inside, the frame is damaged."))
 		return
-	else if(iswelder(W) && opened && has_electronics == 0 && !terminal)
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+	else if(iswelder(attacking_item) && opened && has_electronics == 0 && !terminal)
+		if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
+			to_chat(user, SPAN_WARNING("You have no idea what to do with [attacking_item]."))
 			return
-		var/obj/item/tool/weldingtool/WT = W
-		if(WT.get_fuel() < 3)
+		var/obj/item/tool/weldingtool/torch = attacking_item
+		if(torch.get_fuel() < 3)
 			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s frame."),
 		SPAN_NOTICE("You start welding [src]'s frame."))
-		playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
-		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			if(!src || !WT.remove_fuel(3, user))
+		playsound(loc, 'sound/items/Welder.ogg', 25, 1)
+		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+			if(QDELETED(src) || !torch.remove_fuel(3, user))
 				return
 			user.visible_message(SPAN_NOTICE("[user] welds [src]'s frame apart."), SPAN_NOTICE("You weld [src]'s frame apart."))
 			deconstruct()
 			return
-	else if(istype(W, /obj/item/frame/apc) && opened && (stat & BROKEN))
+	else if(istype(attacking_item, /obj/item/frame/apc) && opened && (stat & BROKEN))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
+			to_chat(user, SPAN_WARNING("You have no idea what to do with [attacking_item]."))
 			return
 		if(has_electronics)
 			to_chat(user, SPAN_WARNING("You cannot repair this APC until you remove the electronics still inside."))
@@ -795,25 +797,25 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged frontal panel with a new one."),
 			SPAN_NOTICE("You replace [src]'s damaged frontal panel with a new one."))
 			user.count_niche_stat(STATISTICS_NICHE_REPAIR_APC)
-			qdel(W)
+			qdel(attacking_item)
 			beenhit = 0
 			stat &= ~BROKEN
 			if(opened == 2)
 				opened = APC_COVER_OPEN
 			update_icon()
 	else
-		if(((stat & BROKEN)) && !opened && W.force >= 5)
+		if(((stat & BROKEN)) && !opened && attacking_item.force >= 5)
 			opened = APC_COVER_REMOVED
-			user.visible_message(SPAN_WARNING("[user] knocks down [src]'s cover with [W]!"),
-				SPAN_WARNING("You knock down [src]'s cover with [W]!"))
+			user.visible_message(SPAN_WARNING("[user] knocks down [src]'s cover with [attacking_item]!"),
+				SPAN_WARNING("You knock down [src]'s cover with [attacking_item]!"))
 			update_icon()
 		else
 			if(isRemoteControlling(user))
 				return attack_hand(user)
-			if(!opened && wiresexposed && (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS)))
+			if(!opened && wiresexposed && (HAS_TRAIT(attacking_item, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS)))
 				return attack_hand(user)
-			user.visible_message(SPAN_DANGER("[user] hits [src] with \the [W]!"),
-			SPAN_DANGER("You hit [src] with \the [W]!"))
+			user.visible_message(SPAN_DANGER("[user] hits [src] with [attacking_item]!"),
+			SPAN_DANGER("You hit [src] with [attacking_item]!"))
 
 /obj/structure/machinery/power/apc/deconstruct(disassembled = TRUE)
 	if(disassembled)

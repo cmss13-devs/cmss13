@@ -100,27 +100,29 @@
 
 
 //copied from computer.dm
-/obj/structure/machinery/power/monitor/attackby(obj/item/I, user as mob)
-	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER) && circuit)
-		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			var/obj/structure/computerframe/A = new( src.loc )
-			var/obj/item/circuitboard/computer/M = new circuit( A )
-			A.circuit = M
-			A.anchored = TRUE
-			for (var/obj/C in src)
-				C.forceMove(src.loc)
-			if (src.stat & BROKEN)
-				to_chat(user, SPAN_NOTICE(" The broken glass falls out."))
-				new /obj/item/shard( src.loc )
-				A.state = 3
-				A.icon_state = "3"
+/obj/structure/machinery/power/monitor/attackby(obj/item/attacking_item, mob/living/user, list/mods)
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && circuit)
+		if(user.action_busy)
+			return
+		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
+		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+			var/obj/structure/computerframe/frame = new(loc)
+			var/obj/item/circuitboard/computer/board = new circuit(frame)
+			frame.circuit = board
+			frame.anchored = TRUE
+			for(var/obj/current in src)
+				current.forceMove(loc)
+			if(stat & BROKEN)
+				to_chat(user, SPAN_NOTICE("The broken glass falls out."))
+				new /obj/item/shard(loc)
+				frame.build_state = COMPUTERFRAME_STATE_NO_GLASS
+				frame.icon_state = "3"
 			else
-				to_chat(user, SPAN_NOTICE(" You disconnect the monitor."))
-				A.state = 4
-				A.icon_state = "4"
-			M.deconstruct(src)
+				to_chat(user, SPAN_NOTICE("You disconnect the monitor."))
+				frame.build_state = COMPUTERFRAME_STATE_COMPLETE
+				frame.icon_state = "4"
+			board.deconstruct(src)
 			qdel(src)
-	else
-		src.attack_hand(user)
-	return
+		return
+
+	attack_hand(user)

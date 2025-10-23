@@ -102,6 +102,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_liaison, list(
 	list("Black Gloves", 0, /obj/item/clothing/gloves/black, CIVILIAN_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),
 	list("Brown Gloves", 0, /obj/item/clothing/gloves/brown, CIVILIAN_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
 	list("Dress Gloves", 0, /obj/item/clothing/gloves/marine/dress, CIVILIAN_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
+	list("Fingerless Gloves", 0, /obj/item/clothing/gloves/marine/fingerless, CIVILIAN_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
 	list("Black Leather Gloves", 0, /obj/item/clothing/gloves/black_leather, CIVILIAN_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),
 
 	list("ACCESSORIES (CHOOSE 5)", 0, null, null, null),

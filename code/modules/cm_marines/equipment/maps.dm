@@ -145,7 +145,7 @@
 /obj/item/map/cape_river
 	name = "\improper Cape River map"
 	desc = "A labeled blueprint of the Con-Am mining outpost Cape River"
-	html_link = "images/9/94/New_Varadero.png"
+	html_link = "images/4/46/Cape_River.png"
 	color = "red"
 
 

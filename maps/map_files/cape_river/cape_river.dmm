@@ -243,6 +243,10 @@
 	},
 /turf/open/floor/kutjevo/plate,
 /area/caperiver/telecomms/telecomm_2)
+"aaS" = (
+/obj/structure/sign/conam,
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/area/caperiver/oob)
 "aaT" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/ramptop/north,
@@ -936,6 +940,26 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/caperiver/indoors/miningbase/security)
+"acZ" = (
+/obj/structure/sign/safety/hvac_old{
+	pixel_x = 7;
+	pixel_y = 9;
+	name = "\improper Mining colony";
+	desc = "Sign denoting the direction of a mining colony"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/sign/safety/north{
+	pixel_x = 7;
+	pixel_y = 23
+	},
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/south)
 "ada" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 6
@@ -2232,6 +2256,28 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/caperiver/indoors/caves/s)
+"ahk" = (
+/obj/structure/sign/safety/east{
+	pixel_x = 7;
+	pixel_y = 23;
+	name = "\improper East traffic signal";
+	desc = "A traffic signal denoting the nearby presence of something to the East."
+	},
+/obj/structure/sign/safety/hvac{
+	pixel_x = 7;
+	pixel_y = 9;
+	name = "\improper Con-Am Facility";
+	desc = "A sign denoting the location of a Con-Am facility."
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/south_east)
 "ahl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -3246,6 +3292,28 @@
 "akH" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/caperiver/outdoors/con_am_exterior/north)
+"akI" = (
+/obj/structure/sign/safety/east{
+	pixel_x = 7;
+	pixel_y = 23;
+	name = "\improper East traffic signal";
+	desc = "A traffic signal denoting the nearby presence of something to the East."
+	},
+/obj/structure/sign/safety/hvac{
+	pixel_x = 7;
+	pixel_y = 9;
+	name = "\improper Con-Am Facility";
+	desc = "A sign denoting the location of a Con-Am facility."
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/caperiver/outdoors/scrublands/south/antiweed)
 "akJ" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
@@ -3831,6 +3899,12 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/caperiver/indoors/conambase/bunker)
+"amE" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2"
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south/antiweed)
 "amF" = (
 /obj/structure/flora/tree/joshua,
 /obj/structure/flora/grass/desert/lightgrass_5,
@@ -5142,6 +5216,27 @@
 /obj/structure/prop/dam/boulder/boulder2,
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/caperiver/outdoors/bushlands)
+"aqZ" = (
+/obj/structure/sign/safety/west{
+	pixel_y = 23;
+	pixel_x = 7;
+	name = "\improper West traffic signal"
+	},
+/obj/structure/sign/safety/hvac_old{
+	pixel_x = 7;
+	pixel_y = 9;
+	name = "\improper Mining colony";
+	desc = "Sign denoting the direction of a mining colony"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/caperiver/outdoors/scrublands/south_east)
 "ara" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -5571,6 +5666,12 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/caperiver/outdoors/scrublands/central)
+"aso" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
+/turf/open/floor/darkblue2,
+/area/caperiver/indoors/conambase/command)
 "asp" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -44656,12 +44757,6 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/caperiver/indoors/miningbase/rec)
-"wNf" = (
-/obj/structure/flora/bush/desert{
-	icon_state = "tree_2"
-	},
-/turf/open/desert/dirt/desert_transition_corner1/north,
-/area/caperiver/outdoors/scrublands/south/antiweed)
 "wNH" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/kutjevo/multi_tiles/east,
@@ -54104,7 +54199,7 @@ nPu
 qGA
 qGA
 iae
-oTw
+obv
 oTw
 xRs
 wAX
@@ -59790,7 +59885,7 @@ beG
 bei
 bdP
 oTw
-oTw
+obv
 nPu
 nPu
 nPu
@@ -60431,7 +60526,7 @@ aWQ
 aWQ
 jNk
 jNk
-ajs
+aaS
 fsD
 fsD
 aPf
@@ -61822,9 +61917,9 @@ ebO
 alN
 oGX
 rGD
-oGX
-wNf
-mYe
+amE
+nRy
+akI
 kRT
 kRT
 oxq
@@ -66318,7 +66413,7 @@ nZO
 ajG
 aJY
 aJY
-aJY
+acZ
 aJY
 aqt
 kRT
@@ -67134,7 +67229,7 @@ aVV
 aNn
 aFw
 lgw
-alz
+ahk
 alz
 alz
 gFu
@@ -70996,7 +71091,7 @@ yhc
 fea
 alz
 aZE
-xtt
+aqZ
 hXF
 alz
 xtt
@@ -78866,7 +78961,7 @@ nuH
 bqk
 boM
 nuH
-kdx
+aso
 bpF
 bpy
 bpq

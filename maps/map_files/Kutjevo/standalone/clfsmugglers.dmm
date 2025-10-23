@@ -211,8 +211,7 @@
 /area/kutjevo/exterior/stonyfields)
 "iN" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8;
-	selected_categories = list("IFF STATUS" = "CLF")
+	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/interior/colony/landing_zone_checkpoint)
@@ -532,8 +531,7 @@
 /area/kutjevo/interior/colony/clf_shuttle)
 "AT" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8;
-	selected_categories = list("IFF STATUS" = "CLF")
+	dir = 8
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
@@ -793,8 +791,7 @@
 /area/kutjevo/interior/colony/clf_shuttle)
 "Nw" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 1;
-	selected_categories = list("IFF STATUS" = "CLF")
+	dir = 1
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)

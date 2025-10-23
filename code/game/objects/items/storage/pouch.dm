@@ -611,6 +611,20 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap(src)
 
+/obj/item/storage/pouch/magazine/large/m16/ap/black
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/rifle_heap
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/rifle_heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/heap(src)
+
+/obj/item/storage/pouch/magazine/large/m60/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/m60(src)
+
 /obj/item/storage/pouch/shotgun
 	name = "shotgun shell pouch"
 	desc = "It can contain handfuls of shells, or bullets if you choose to for some reason."
@@ -1704,6 +1718,10 @@
 	can_hold = list(/obj/item/device/cassette_tape, /obj/item/tape/regulation)
 	storage_slots = 3
 	var/base_icon_state = "cassette_pouch"
+
+/obj/item/storage/pouch/cassette/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/synsound)
 
 /obj/item/storage/pouch/cassette/update_icon()
 	underlays.Cut()

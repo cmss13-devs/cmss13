@@ -43,6 +43,7 @@
 	return FALSE
 
 // Hybrisa Streetlights
+
 /obj/structure/machinery/colony_floodlight/street
 	name = "colony streetlight"
 	icon = 'icons/obj/structures/props/streetlights.dmi'
@@ -50,10 +51,15 @@
 	layer = BILLBOARD_LAYER
 	light_color = LIGHT_COLOR_XENON
 	explo_proof = FALSE
+	lum_value = 12
 
 /obj/structure/machinery/colony_floodlight/street/Initialize(mapload, ...)
 	. = ..()
 	AddComponent(/datum/component/shimmy_around, east_offset = -15, west_offset = -15)
+
+/obj/structure/machinery/colony_floodlight/street/initialize_pass_flags(datum/pass_flags_container/PF)
+	if(PF)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_ACID_SPRAY
 
 /obj/structure/machinery/colony_floodlight/street/update_icon()
 	if(damaged)

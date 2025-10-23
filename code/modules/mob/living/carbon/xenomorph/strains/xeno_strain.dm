@@ -33,6 +33,10 @@
 	for(var/action_path in actions_to_add)
 		give_action(xeno, action_path)
 
+	var/datum/action/minimap/ref = xeno.minimap_ref.resolve()
+	ref.remove_from(xeno)
+	ref.give_to(xeno, ref)
+
 	// Update the xeno's behavior delegate.
 	if(behavior_delegate_type)
 		if(xeno.behavior_delegate)
@@ -94,6 +98,7 @@
 	// Create the strain datum and apply it to the xeno.
 	var/datum/xeno_strain/strain_instance = new chosen_strain()
 	if(strain_instance._add_to_xeno(src))
+		overlays -= acid_overlay
 		xeno_jitter(1.5 SECONDS)
 		// If it applied successfully, add it to the logs.
 		log_strain("[name] purchased strain '[strain_instance.type]'")

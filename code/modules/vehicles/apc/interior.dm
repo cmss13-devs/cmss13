@@ -62,7 +62,7 @@
 
 /obj/structure/prop/vehicle/firing_port_weapon
 	name = "M56 FPW handle"
-	desc = "A control handle for a modified M56B Smartgun installed on the sides of M577 Armored Personnel Carrier as a Firing Port Weapon. \
+	desc = "A control handle for a modified M56A2 Smartgun installed on the sides of M577 Armored Personnel Carrier as a Firing Port Weapon. \
 	Used by support gunners to cover friendly infantry entering or exiting APC via side doors. \
 	For ease of use, firing ports are marked with green (right side) and red (left side) marks. \
 	Do not be mistaken however, this is not a piece of an actual weapon, but a joystick made in a familiar to marines form."

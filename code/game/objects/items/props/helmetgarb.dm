@@ -167,7 +167,7 @@
 	var/active_icon_state = "nvg_down"
 	var/inactive_icon_state = "nvg"
 
-	var/datum/action/item_action/activation
+	var/datum/action/item_action/toggle/helmet_nvg/activation
 	var/obj/item/clothing/head/attached_item
 	var/mob/living/attached_mob
 	var/lighting_alpha = 100
@@ -301,8 +301,9 @@
 
 /obj/item/prop/helmetgarb/helmet_nvg/proc/set_attached_mob(mob/User)
 	attached_mob = User
-	activation = new /datum/action/item_action/toggle(src, attached_item)
+	activation = new /datum/action/item_action/toggle/helmet_nvg(src, attached_item)
 	activation.give_to(attached_mob)
+	activation.action_icon_state = "nvg"
 	add_verb(attached_mob, /obj/item/prop/helmetgarb/helmet_nvg/proc/toggle)
 	RegisterSignal(attached_mob, COMSIG_HUMAN_XENO_ATTACK, PROC_REF(break_nvg))
 	RegisterSignal(attached_item, COMSIG_ITEM_DROPPED, PROC_REF(remove_attached_mob))
@@ -607,7 +608,7 @@
 
 /obj/item/prop/helmetgarb/bullet_pipe
 	name = "10x99mm XM43E1 casing pipe"
-	desc = "The XM43E1 was an experimental weapons platform briefly fielded by the USCM and Wey-Yu PMC teams. It was manufactured by ARMAT systems at the Atlas weapons facility. Unfortunately the project had its funding pulled alongside the M5 integrated gasmask program. This spent casing has been converted into a pipe, but there is too much tar in the mouthpiece for it to be useable."
+	desc = "The XM43E1 was an experimental weapons platform briefly fielded by the USCM and Wey-Yu PMC teams. It was manufactured by Armat systems at the Atlas weapons facility. Unfortunately the project had its funding pulled alongside the M5 integrated gasmask program. This spent casing has been converted into a pipe, but there is too much tar in the mouthpiece for it to be useable."
 	icon_state = "bullet_pipe"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',

@@ -2,7 +2,7 @@
 	name = "dispenser"
 	desc = "..."
 	icon = 'icons/obj/structures/liquid_tanks.dmi'
-	icon_state = "watertank"
+	icon_state = "tank/water"
 	density = TRUE
 	anchored = FALSE
 	drag_delay = 1
@@ -146,13 +146,13 @@
 	. = ..()
 
 //Dispensers
-/obj/structure/reagent_dispensers/watertank
-	name = "watertank"
+/obj/structure/reagent_dispensers/tank/water
+	name = "tank/water"
 	desc = "A water tank"
-	icon_state = "watertank"
+	icon_state = "tank/water"
 	chemical = "water"
 
-/obj/structure/reagent_dispensers/watertank/yautja
+/obj/structure/reagent_dispensers/tank/water/yautja
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/reagent_dispensers/ammoniatank

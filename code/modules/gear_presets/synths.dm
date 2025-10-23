@@ -384,7 +384,7 @@
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
 		WEAR_L_HAND = /obj/item/maintenance_jack,
-		WEAR_R_HAND = /obj/item/reagent_container/glass/watertank/atmos
+		WEAR_R_HAND = /obj/item/reagent_container/glass/tank/water/atmos
 	)
 
 	survivor_variant = ENGINEERING_SURVIVOR

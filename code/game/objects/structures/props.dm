@@ -389,7 +389,7 @@
 	name = "resin coated object"
 	desc = "Well, it's useless now."
 	icon = 'icons/obj/resin_objects.dmi'
-	icon_state = "watertank"
+	icon_state = "tank/water"
 
 //industructible props
 /obj/structure/prop/invuln

@@ -64,13 +64,25 @@
 				kit = /obj/item/storage/mateba_case/captain
 			if(CO_GUN_MATEBA_SPECIAL)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/special
-			if(CO_GUN_MATEBA_COUNCIL)
-				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full
-				kit = /obj/item/storage/mateba_case/captain/council
+			if(CO_GUN_2006M)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/mtr6m/full
 			if(CO_GUN_DEAGLE)
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
 			if(CO_GUN_M1911C)
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/m1911/commander
+			//Council variants
+			if(CO_GUN_MATEBA_COUNCIL)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full
+				kit = /obj/item/storage/mateba_case/captain/council
+			if(CO_GUN_MATEBA_COUNCIL_GOLDEN)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full_golden
+				kit = /obj/item/storage/mateba_case/captain/council_gold
+			if(CO_GUN_2006M_COUNCIL)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/mtr6m/full
+			if(CO_GUN_2006MB_COUNCIL)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/mtr6m/full_black
+			if(CO_GUN_DEAGLE_COUNCIL)
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
 	switch(whitelist_level)
 		if(WHITELIST_COUNCIL)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/council(new_human), WEAR_HEAD)

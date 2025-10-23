@@ -36,3 +36,6 @@
   npukoJl:
   - rscadd: Новые голоса ТТС.
   - bugfix: Возвращает вультуру в игру
+2025-10-23:
+  biologed:
+  - bugfix: 'revert #390'

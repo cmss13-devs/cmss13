@@ -1,4 +1,0 @@
-author: "biologed"
-delete-after: True
-changes:
-  - bugfix: "revert #390"

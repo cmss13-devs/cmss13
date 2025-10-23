@@ -66,7 +66,6 @@
 		/datum/action/xeno_action/activable/reap, //second macro
 		/datum/action/xeno_action/activable/replenish, //third macro
 		/datum/action/xeno_action/onclick/emit_mist, //fourth macro
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	inherent_verbs = list(

@@ -302,11 +302,28 @@
 
 // Ancient Temple
 
+/turf/open/floor/plating/ancient_temple
+	icon = 'icons/turf/floors/hunter/ancientfloor.dmi'
+	icon_state = "plating"
+
+/turf/open/floor/plating/ancient_temple/damage_1
+	icon_state = "platingdmg1"
+
+/turf/open/floor/plating/ancient_temple/damage_2
+	icon_state = "platingdmg2"
+
+/turf/open/floor/plating/ancient_temple/damage_3
+	icon_state = "platingdmg3"
+
+/turf/open/floor/plating/ancient_temple/damage_4
+	icon_state = "damage_plating_4"
+
 /turf/open/floor/ancient_temple
 	name = "floor"
 	icon = 'icons/turf/floors/hunter/ancientfloor.dmi'
 	icon_state = "floor1"
 	supports_surgery = TRUE
+	plating_type = /turf/open/floor/plating/ancient_temple
 
 //
 
@@ -658,6 +675,30 @@
 
 /turf/open/floor/ancient_temple/ruined/west
 	dir = WEST
+
+/turf/open/floor/ancient_temple/damaged
+	icon_state = "damage_1"
+
+/turf/open/floor/ancient_temple/damaged/damage_1
+	icon_state = "damage_1"
+
+/turf/open/floor/ancient_temple/damaged/damage_2
+	icon_state = "damage_2"
+
+/turf/open/floor/ancient_temple/damaged/damage_3
+	icon_state = "damage_3"
+
+/turf/open/floor/ancient_temple/damaged/damage_4
+	icon_state = "damage_4"
+
+/turf/open/floor/ancient_temple/damaged/damage_5
+	icon_state = "damage_5"
+
+/turf/open/floor/ancient_temple/damaged/damage_6
+	icon_state = "damage_6"
+
+/turf/open/floor/ancient_temple/damaged/damage_7
+	icon_state = "damage_7"
 
 //
 

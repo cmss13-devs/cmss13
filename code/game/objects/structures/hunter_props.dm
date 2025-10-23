@@ -155,6 +155,56 @@
 /obj/effect/hunter/ancient_temple/deco_border/bronze/deco_border7
 	icon_state = "bronze_deco_border7"
 
+// Floor tile edges
+
+/obj/effect/hunter/ancient_temple/tile_edge
+	icon_state = "floor_edges_1"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_2
+	icon_state = "floor_edges_2"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_3
+	icon_state = "floor_edges_3"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_4
+	icon_state = "floor_edges_4"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_5
+	icon_state = "floor_edges_5"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_6
+	icon_state = "floor_edges_6"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_7
+	icon_state = "floor_edges_7"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_8
+	icon_state = "floor_edges_8"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_9
+	icon_state = "floor_edges_9"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_10
+	icon_state = "floor_edges_10"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_11
+	icon_state = "floor_edges_11"
+
+/obj/effect/hunter/ancient_temple/tile_edge/tile_edge_12
+	icon_state = "floor_edges_12"
+
+/obj/effect/hunter/ancient_temple/tile_edge_corner
+	icon_state = "floor_corner_1"
+
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2
+	icon_state = "floor_corner_2"
+
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_3
+	icon_state = "floor_corner_3"
+
+/obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_4
+	icon_state = "floor_corner_4"
+
 // Catwalks
 
 /obj/structure/prop/hunter/catwalk

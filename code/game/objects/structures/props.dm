@@ -495,6 +495,7 @@
 	light_on = FALSE
 	frame_type = /obj/structure/prop/brazier/frame/full
 	state = STATE_FUEL
+	pixel_y = 3
 
 /obj/structure/prop/brazier/frame/full
 	name = "empty full brazier"

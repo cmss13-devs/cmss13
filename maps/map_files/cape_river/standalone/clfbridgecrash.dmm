@@ -1,4 +1,44 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/scrublands/central)
+"ab" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/scrublands/central)
+"ac" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8;
+	closed = 0
+	},
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/scrublands/central)
+"ad" = (
+/obj/structure/fence/slim,
+/obj/structure/sign/poster/clf{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/caperiver/outdoors/mining_base_exterior/south)
 "ak" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/warning/redandwhite_S,
@@ -113,6 +153,12 @@
 /obj/structure/barricade/plasteel/wired{
 	dir = 8;
 	closed = 0
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles/east,
 /area/caperiver/outdoors/scrublands/central)
@@ -1157,6 +1203,15 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
 /turf/open/floor/kutjevo/tan/multi_tiles/east,
 /area/caperiver/outdoors/scrublands/central)
 "vA" = (
@@ -1468,9 +1523,10 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
-/obj/structure/sign/poster/clf{
-	pixel_y = 32
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
 	},
+/obj/structure/machinery/power/apc/upgraded/power/north,
 /turf/open/floor/kutjevo/tan/multi_tiles/east,
 /area/caperiver/outdoors/scrublands/central)
 "AY" = (
@@ -2622,6 +2678,9 @@
 	pixel_x = 3
 	},
 /obj/structure/machinery/floodlight,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
 /turf/open/floor/kutjevo/tan/multi_tiles/east,
 /area/caperiver/outdoors/scrublands/central)
 "XH" = (
@@ -2802,7 +2861,7 @@ Mj
 Mj
 Mj
 OD
-QZ
+ad
 GV
 QZ
 QZ
@@ -2835,11 +2894,11 @@ Mj
 Mj
 OD
 AV
-dd
-vu
-vu
-vu
-vu
+ac
+ab
+aa
+aa
+aa
 dd
 vu
 Xw

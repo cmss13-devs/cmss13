@@ -125,7 +125,7 @@
 	amount_per_transfer_from_this = 10
 	volume = 30
 	mixed_chem = TRUE
-	display_maptext = TRUE //if you want to give it a label you can, but it won't come with one by default.
+	display_maptext = "CH"//if you want to give it a label you can, but it won't come with one by default.
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
 	. = ..()
@@ -147,12 +147,15 @@
 	desc = "An EZ autoinjector loaded with 3 uses of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	maptext_label = "EzTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use
+	name = "one-use tramadol EZ autoinjector"
 	desc = "An EZ autoinjector loaded with 1 use of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1
+	maptext_label = "OuTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/oxycodone
 	name = "oxycodone autoinjector (EXTREME PAINKILLER)"
@@ -177,12 +180,15 @@
 	desc = "An EZ autoinjector loaded with 3 uses of Kelotane, a common burn medicine. Doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	maptext_label = "EzKl"
 
 /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use
+	name = "one-use kelotane EZ autoinjector"
 	desc = "An EZ autoinjector loaded with 1 use of Kelotane, a common burn medicine. Doesn't require any training to use."
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1
+	maptext_label = "OuKl"
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine
 	name = "bicaridine autoinjector"
@@ -195,15 +201,18 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless
 	name = "bicaridine EZ autoinjector"
-	desc = "An EZ autoinjector loaded with 3 uses of Bicaridine, a common brute and circulatory damage medicine.  Doesn't require any training to use."
+	desc = "An EZ autoinjector loaded with 3 uses of Bicaridine, a common brute and circulatory damage medicine. Doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	maptext_label = "EzBi"
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use
-	desc = "An EZ autoinjector loaded with 1 use of Bicaridine, a common brute and circulatory damage medicine.  Doesn't require any training to use."
+	name = "one-use bicaridine EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 1 use of Bicaridine, a common brute and circulatory damage medicine. Doesn't require any training to use."
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1
+	maptext_label = "OuBi"
 
 /obj/item/reagent_container/hypospray/autoinjector/antitoxin
 	name = "dylovene autoinjector"
@@ -216,9 +225,18 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless
 	name = "dylovene EZ autoinjector"
-	desc = "An EZ autoinjector loaded with 3 uses of Dylovene, a common toxin damage medicine.  Doesn't require any training to use."
+	desc = "An EZ autoinjector loaded with 3 uses of Dylovene, a common toxin damage medicine. Doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	maptext_label = "EzDy"
+
+/obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless/one_use
+	name = "one-use dylovene EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 1 use of Bicaridine, a common brute toxin damage medicine. Doesn't require any training to use."
+	volume = 15
+	amount_per_transfer_from_this = 15
+	uses_left = 1
+	maptext_label = "OuBi"
 
 /obj/item/reagent_container/hypospray/autoinjector/meralyne
 	name = "meralyne autoinjector"

@@ -51,7 +51,7 @@
 
 
 /datum/equipment_preset/uscm_co/load_gear(mob/living/carbon/human/new_human)
-	var/sidearm = "Unica"
+	var/sidearm = "Unica (camo comforting)"
 	var/kit = null
 	var/sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
 	var/back_item = /obj/item/storage/backpack/satchel/lockable
@@ -64,6 +64,9 @@
 				kit = /obj/item/storage/mateba_case/captain
 			if(CO_GUN_MATEBA_SPECIAL)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/special
+			if(CO_GUN_MATEBA_CLASSIC)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/full
+				kit = /obj/item/storage/mateba_case/captain
 			if(CO_GUN_2006M)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/mtr6m/full
 			if(CO_GUN_DEAGLE)

@@ -9,7 +9,7 @@
 	assignment = "Assistant Operations Manager"
 	minimap_background = "background_wy_management"
 	minimap_icon = "ass_man"
-	rank = JOB_ASSISTANT_MANAGER
+	job_title = JOB_ASSISTANT_MANAGER
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	access = list(
@@ -34,7 +34,6 @@
 /datum/equipment_preset/survivor/corporate/asstmanager/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/grant, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/survivor/parka/navy(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -49,7 +48,7 @@
 	name = "Survivor - Weyland-Yutani Commando (Shivas)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_COMMANDO_STANDARD
-	rank = JOB_WY_COMMANDO_STANDARD
+	job_title = JOB_WY_COMMANDO_STANDARD
 	faction = FACTION_PMC
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	paygrades = list(PAY_SHORT_WY_COM = JOB_PLAYTIME_TIER_0)
@@ -57,7 +56,8 @@
 	skills = /datum/skills/civilian/survivor/pmc/commando
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_TSL)
 	minimap_icon = "private"
-	minimap_background = "background_pmc"
+	minimap_background = "background_wy_com"
+	minimap_icon = "pmc_gun"
 
 	access = list(
 		ACCESS_WY_GENERAL,
@@ -111,5 +111,5 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle, WEAR_IN_BELT)
 
 	//storage items
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/black(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy(new_human), WEAR_R_STORE)

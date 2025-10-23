@@ -48,6 +48,9 @@
 /// For when a mob is hauled by a Xeno
 #define COMSIG_MOB_HAULED "mob_hauled"
 	#define COMPONENT_CANCEL_HAUL (1<<0)
+// For when a mob is no longer being hauled by a Xeno
+#define COMSIG_MOB_UNHAULED "mob_unhauled"
+
 // Reserved for tech trees
 #define COMSIG_MOB_ENTER_TREE "mob_enter_tree"
 	#define COMPONENT_CANCEL_TREE_ENTRY (1<<0)
@@ -74,6 +77,10 @@
 
 #define COMSIG_MOB_PRE_CLICK "mob_pre_click"
 	#define COMPONENT_INTERRUPT_CLICK (1<<0)
+
+#define COMSIG_MOB_CLICKON "mob_clickon" //from base of mob/clickon(): (atom/A, params)
+
+#define COMSIG_OBSERVER_CLICKON "observer_clickon" //from mob/dead/observer/ClickOn(): (atom/A, params)
 
 /// From base of /mob/Login(), called when a client logs into this mob: ()
 /// Not to be confused with [COMSIG_MOB_LOGGED_IN]
@@ -188,3 +195,6 @@
 
 /// From /obj/item/roller/proc/deploy_roller() : (mob/user, obj/structure/bed/roller/roller)
 #define COMSIG_MOB_ITEM_ROLLER_DEPLOYED "mob_roller_deployed"
+
+/// From /modules/animations/animations_library.dm and /code/modules/mob/mob.dm
+#define COMSIG_MOB_ANIMATING "mob_animating"

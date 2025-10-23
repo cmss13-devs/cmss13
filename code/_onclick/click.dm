@@ -142,6 +142,9 @@
 		W.afterattack(A, src, 0, mods)
 		return
 
+	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, A, params) & COMSIG_MOB_CLICK_CANCELED)
+		return
+
 	RangedAttack(A, mods)
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, A, mods)
 	return
@@ -384,7 +387,7 @@
 	if(prefs.adaptive_zoom)
 		INVOKE_ASYNC(src, PROC_REF(adaptive_zoom))
 	else if(prefs.auto_fit_viewport)
-		INVOKE_ASYNC(src, VERB_REF(fit_viewport))
+		INVOKE_ASYNC(src, PROC_REF(fit_viewport))
 
 /client/proc/get_adaptive_zoom_factor()
 	if(!prefs.adaptive_zoom)

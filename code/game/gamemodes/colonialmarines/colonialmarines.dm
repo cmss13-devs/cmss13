@@ -21,9 +21,6 @@
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
 	static_comms_amount = 1
 	var/round_status_flags
-
-	var/research_allocation_interval = 10 MINUTES
-	var/next_research_allocation = 0
 	var/next_stat_check = 0
 	var/list/running_round_stats = list()
 	var/list/lz_smoke = list()
@@ -137,7 +134,9 @@
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
+	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 2 MINUTES)
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
+	GLOB.chemical_data.reroll_chemicals()
 
 	return ..()
 
@@ -358,6 +357,63 @@
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
+/datum/game_mode/proc/ares_command_check()
+	var/role_in_charge
+	var/mob/living/carbon/human/person_in_charge
+
+	var/list/role_needs_id = list(JOB_SO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL, JOB_FIELD_DOCTOR, JOB_DOCTOR, JOB_CHIEF_REQUISITION)
+	var/list/role_needs_comms = list(JOB_CHIEF_POLICE, JOB_CMO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL, JOB_FIELD_DOCTOR, JOB_DOCTOR, JOB_CHIEF_REQUISITION)
+	var/announce_addendum
+
+	//Basically this follows the list of command staff in order of CoC,
+	//then if the role lacks senior command access it gives the person that access
+
+	if(GLOB.marine_leaders[JOB_CO] || GLOB.marine_leaders[JOB_XO])
+		return
+	//If we have a CO or XO, we're good no need to announce anything.
+
+	for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
+		role_in_charge = job_by_chain
+
+		if(job_by_chain == JOB_SO && GLOB.marine_leaders[JOB_SO])
+			person_in_charge = pick(GLOB.marine_leaders[JOB_SO])
+			break
+		if(job_by_chain == JOB_INTEL && GLOB.marine_officers[JOB_INTEL])
+			person_in_charge = pick(GLOB.marine_officers[JOB_INTEL])
+			break
+		if(job_by_chain == JOB_DOCTOR && GLOB.marine_officers[JOB_DOCTOR])
+			person_in_charge = pick(GLOB.marine_officers[JOB_DOCTOR])
+			break
+		//If the job is a list we have to stop here
+		if(person_in_charge)
+			continue
+
+		var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]
+		person_in_charge = job_datum.get_active_player_on_job()
+		if(!isnull(person_in_charge))
+			break
+
+	if(isnull(person_in_charge))
+		return
+
+	if(LAZYFIND(role_needs_comms, role_in_charge))
+		//If the role needs comms we let them know about the headset.
+		announce_addendum += "\nA Command headset is availible in the CIC Command Tablet cabinet."
+
+	if(LAZYFIND(role_needs_id, role_in_charge))
+		//If the role needs senior command access, we need to add it to the ID card.
+		var/obj/item/card/id/card = person_in_charge.get_idcard()
+		if(card)
+			var/list/access = card.access
+			access.Add(list(ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE))
+			announce_addendum += "\nSenior Command access added to ID."
+
+	//does an announcement to the crew about the commander & alerts admins to that change for logs.
+	shipwide_ai_announcement("Due to the absence of command staff, commander authority now falls to [role_in_charge] [person_in_charge], who will assume command until further notice. Please direct all inquiries and follow instructions accordingly. [announce_addendum]", MAIN_AI_SYSTEM, 'sound/misc/interference.ogg')
+	message_admins("[key_name(person_in_charge, 1)] [ADMIN_JMP_USER(person_in_charge)] has been designated the operation commander.")
+	return
+
+
 /datum/game_mode/colonialmarines/proc/ares_conclude()
 	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
 	ai_silent_announcement("Saving operational report to archive.", ".V")
@@ -376,9 +432,8 @@
 		check_hijack_explosions()
 		check_ground_humans()
 
-	if(next_research_allocation < world.time)
-		GLOB.chemical_data.update_credits(GLOB.chemical_data.research_allocation_amount)
-		next_research_allocation = world.time + research_allocation_interval
+	if(GLOB.chemical_data.next_reroll < world.time)
+		GLOB.chemical_data.reroll_chemicals()
 
 	if(!round_finished)
 		var/datum/hive_status/hive
@@ -386,9 +441,15 @@
 			hive = GLOB.hive_datum[hivenumber]
 			if(!hive.xeno_queen_timer)
 				continue
-
 			if(!hive.living_xeno_queen && hive.xeno_queen_timer < world.time)
-				xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
+				var/time_remaining = (QUEEN_DEATH_COUNTDOWN + hive.xeno_queen_timer) - world.time
+				if(time_remaining <= 59 SECONDS)
+					var/seconds_left = round(time_remaining / 10)
+					xeno_message("The Hive is ready for a new Queen to evolve. The Hive will collapse in [seconds_left] seconds without a Queen.", 3, hive.hivenumber)
+				else
+					xeno_message("The Hive is ready for a new Queen to evolve. The Hive can only survive for a limited time without a Queen!", 3, hive.hivenumber)
+
+
 
 		if(!active_lz && world.time > lz_selection_timer)
 			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
@@ -419,7 +480,7 @@
 				check_win()
 			round_checkwin = 0
 
-		if(!evolution_ovipositor_threshold && world.time >= SSticker.round_start_time + round_time_evolution_ovipositor)
+		if(!evolution_ovipositor_threshold && ROUND_TIME >= round_time_evolution_ovipositor)
 			for(var/hivenumber in GLOB.hive_datum)
 				hive = GLOB.hive_datum[hivenumber]
 				hive.evolution_without_ovipositor = FALSE

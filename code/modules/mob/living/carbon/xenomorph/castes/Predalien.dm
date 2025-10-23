@@ -64,7 +64,6 @@
 		/datum/action/xeno_action/activable/feral_smash,
 		/datum/action/xeno_action/activable/feralfrenzy,
 		/datum/action/xeno_action/onclick/toggle_gut_targeting,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
@@ -95,7 +94,7 @@
 	if(!loc)
 		return FALSE
 
-	yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(loc)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately.\n\nHeavy Armory unlocked."))
+	elder_overseer_message("An abomination has been detected at [get_area_name(loc)]. Exterminate it immediately. Heavy Armory unlocked.")
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 
 	to_chat(src, {"

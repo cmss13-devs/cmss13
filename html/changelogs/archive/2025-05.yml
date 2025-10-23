@@ -1,0 +1,273 @@
+2025-05-02:
+  Blundir:
+  - bugfix: fixed suit storage gun icons being missing in some cases
+  Joe Lampost:
+  - bugfix: Fixes multiple elder overseer messages being sent for a weather event.
+  Kashargul:
+  - bugfix: a potential lockup with tgui
+2025-05-03:
+  BertStein:
+  - qol: Pill bottles and autoinjectors now support 3-character sprite labels.
+  Lagomorphica:
+  - bugfix: oppressor praetorian can no longer click on marine muzzle flashes to grab
+      you from off-screen
+  - balance: weyland-yutani commandos can no longer come as a random ert due to budget
+      cuts aboard the USCSS Nisshoku
+  LiquidPotroh:
+  - bugfix: vanguard explosive armor goes to minus infinity
+  private-tristan:
+  - qol: The third chemmaster in research can now make vials
+  - balance: Research's machinery has extra health, and should be able to withstand
+      a few explosive incidents.
+  rodcowartt:
+  - qol: Replaced second rangefinder in the mortar kit with a laser designator for
+      improved usability.
+  zzzmike:
+  - qol: DP+DCC have medbay access
+2025-05-04:
+  DarkLordCabbage:
+  - qol: Light tubes can't be removed by hand anymore, use a screwdriver instead
+  - bugfix: Fixed some lighting fixture descriptions not showing up correctly, as
+      well as other misc items.
+2025-05-05:
+  DarkLordCabbage:
+  - code_imp: Moves the acid ball ability from the dancer strain to its actual home
+      in base praetorian abilities.
+  realforest2001:
+  - rscadd: Allowed Yautja Ancient's to decide per spawn if they want to broadcast
+      to other Yautja that they're awake.
+  - rscadd: Added Yautja Overseer radio channel.
+2025-05-06:
+  seanlol092:
+  - qol: Custom mines tell you what sensitivity it is when examined
+  - balance: Claymores can now switch to low sensitive mode / high sensitive mode
+      using a wirecutter
+  - balance: 'When on less sensitive mode: Claymores cant be trigger by huggers and
+      Lesser drones'
+  - balance: Claymores can be triggered by two xeno spits, but cannot be slashed by
+      Lesser drones
+  - balance: Claymores now layer above lying mobs
+2025-05-07:
+  Blundir:
+  - rscadd: rearranged equipment preset of joe, so less manual actions are required
+      now
+  - rscdel: 5% chance for a joe to have hair
+  - rscdel: joe can now only speak english, spanish and japanese
+  - bugfix: joe not having intent eyes and glow working after spawn
+  - bugfix: joe being possible to spawn as female
+  - bugfix: joe being possible to have flavor text
+  - bugfix: dzho not getting hyperdyne key in backpack
+  - bugfix: custom skill presets for synthetics not working
+  - bugfix: some joe voice lines not working
+  - bugfix: custom synthetic skillsets not working because skillsets were getting
+      overriden
+  - mapadd: added a lot of equipment to empty storage room in ares area, for joes
+      to use
+  MistChristmas:
+  - bugfix: Messages ending in '!' and '?' change the verb from 'says' to 'shouts/yells/excalims'
+      or 'asks' again or their language equivalent.
+  Nihisohel:
+  - rscadd: Scarves and some masks can be used as accessory items! Use them inhand
+      to change them back and to an accessory.
+  - bugfix: Armbands no longer hide when sleeves are cut or jacket is removed
+  - bugfix: Accessories may no longer be attached while it is in a storage item.
+2025-05-08:
+  Nihisohel:
+  - balance: Xenos can now damage guns on the ground
+  - balance: Jamming is now calculated exponentially rather than linearly
+  - qol: Clarifies durability examine wording, gives it some color too
+  - bugfix: Fixes infinite gun cocking delay via unjamming
+  - bugfix: Fixes grenade launchers and flare guns from being unable to be repaired
+  - bugfix: Fixes bullets loaded in guns without a traditional chamber defaulting
+      its values rather than incorporating it
+  - balance: ES4 pistol no longer guarantees durability loss per fire, instead coinflips
+      the chances
+  Red-byte3D:
+  - balance: Lethal "bolt" for hpc now does "75 damage", and a small explosive at
+      the tile it effects, its deadlier.
+  - balance: Large stun sphere now stuns people from 7 tiles away from the target
+      it lands on instead of everything in view
+  - refactor: Rewrote some hpc code
+  - balance: Lowered power requirement for single target lethal bolts
+  - code_imp: Plasma caster now only has 2 modes for stuns, one that stuns whatever
+      it hits, and one that stuns anything  7 tiles from it
+  - balance: Stun bolt timer is now 3 instead of 2
+2025-05-09:
+  Lagomorphica:
+  - balance: undamaged lungemines now gib the user on hit, ex_act was removed due
+      to being bugged (caused runtimes, did not do anything to xenomorphs due to checking
+      the user for the explosive pen so ultimately won't change anything about it)
+2025-05-12:
+  Detective-Google:
+  - rscadd: WY beacon guards now return to the WY ert station rather than the default
+      one.
+2025-05-13:
+  Blundir, Nomoresolvalou, TheManWithNoHands, Triiodine, Shad0vvs:
+  - rscadd: Added SHARP Operator spec, P9 SHARP rifle, and SHARP ammo belt
+  - balance: Added SHARP Operator spec to the squad spec vendor
+  - soundadd: Added SHARP gun sounds
+  - imageadd: Added SHARP rifle and ammo sprites (by Triiodine and TheManWithNoHands)
+  Detective-Google:
+  - bugfix: default accessories are wearable again
+  - bugfix: combat android bodyguard beacon now spawns the leader android properly
+  - balance: underbarrel flamethrowers no longer fit onto shotguns.
+  Lagomorphica:
+  - bugfix: fluffing no longer gives you an unremovable beard as a female character
+  Red-byte3D:
+  - soundadd: Added a bunch of new sounds, ported from TG
+  - bugfix: Caster stun timer now works properly
+  Unknownity:
+  - rscadd: Added a portable Hellhound camera console used to overwatch Hellhounds
+      from greater distances. You can find the Houndpads in the Houndmaster's quarters.
+  - imageadd: Added a unique sprite for the Houndpad.
+  kiVts:
+  - bugfix: Fix spammed runtimes related to tvs relaying messages
+  realforest2001:
+  - bugfix: Fixes HighCommand fax machines breaking.
+2025-05-15:
+  DangerRevolution:
+  - rscadd: Increased the number of M5 Camera Gears from 3 to 15 in the Requsition
+      Vendor.
+  - bugfix: M5 Camera Gear now properly spawns in the Squad Vendors.
+  jupyterkat:
+  - qol: quick equip will try to put an item to the slot it was drawn from.
+  - qol: mag harnessed weapons always prefers the slots it usually snaps to on quick-equip
+2025-05-16:
+  MistChristmas:
+  - bugfix: Edit Hotkey's search bar is case-insensitive.
+  Red-byte3D:
+  - qol: Xenos can now examine an acid runner to see how much acid they have.
+2025-05-17:
+  Uristthedorf:
+  - rscadd: Barcidine now has bicaridine.
+2025-05-18:
+  SPACE5891, A rich guy four:
+  - bugfix: can put FixOVein in first-aid kit
+2025-05-19:
+  stalkerino:
+  - balance: removed marsoc helmet from shiva
+2025-05-21:
+  FebrezeNinja:
+  - bugfix: Add "Research Roles" label to timelocks
+  LC4492:
+  - code_imp: Coded the new in_hands for the knives and IDs in.
+  - code_imp: All satchels have received a new mechanic that allows, upon right-click
+      interaction, changing on which shoulder the strap will be on in the on_mob (Works
+      only with satchels that have straps). Code by Blundir.
+  - imageadd: Backpacks and Belts needed to be updated to accomodate better new in_hands,
+      given that they were outdated and persistently overlapping with the character's
+      hands (and overlapping with objects being held by those hands, making stuff
+      ugly).
+  - imageadd: Swords have been updated to fix some mistakes I have done in the past,
+      and the katana looks less like a knife now!
+  - imageadd: All knives added by Zenith have now received proper in_hands, and fixes
+      have been done to already present ones. W-Y bayonet added by Blundir has also
+      received an exclusive in_hand.
+  - imageadd: ID cards and badges have received proper in_hand and on_mob versions,
+      matching a little more with their object counterparts.
+  - imageadd: Most scabbards have also received visual improvements to match with
+      the in_hand versions of the long blades, and the ceremonial sword's scabbard
+      have received a major fix and looks much better now.
+  lanse12:
+  - spellcheck: fixed typo in W-Y engi helm description
+2025-05-22:
+  MeH0y, TyranicRanger4:
+  - rscadd: Adds yautja cleaner vials to yautja hunting equipment
+2025-05-24:
+  TrollerNoob:
+  - imageadd: Updated the USCM and PMC's Sniper Specialist's HUD and Map icon.
+  realforest2001:
+  - rscadd: Added tracking to command headsets.
+  - rscadd: Added a tracker for Intel Squad Lead.
+  - rscadd: Added XO and CO subtypes for the senior command headset. This has no identifying
+      features aside from different tracking options.
+2025-05-25:
+  Waseemq1235:
+  - spellcheck: Fixes a minor spelling mistake when attempting to tweak access requirements
+      on a vending machine
+2025-05-26:
+  Contrabang:
+  - imageadd: added a locked icon for locked dropship controls
+  Drathek:
+  - code_imp: CI now caches/installs Byond, spacemandmm, rust, bootstrap, node, and
+      yarn differently for Github actions
+  KornFlaks:
+  - bugfix: Xenos can no longer acid resin doors.
+  - bugfix: Xenos are no longer health scannable.
+2025-05-27:
+  DarkLordCabbage:
+  - rscadd: Added a no skill synth reset key to the handler's kit. Added novice engi
+      skills to the handler's pamphlet.
+  - soundadd: Added 3 whine sounds. Added 3 new growl sounds.
+  - sounddel: Removed old growl sounds
+  IowaPotatoFarmer:
+  - rscadd: Added the rebalanced double-barrel back to the maps it was removed from,
+      some in the same locations they were previously.
+  IroquoisLou:
+  - balance: Lowered Maximum RMC ERT Personnel down to 6 instead of 7,
+  - balance: Ups recoil for the L23 and lowers the damage from 57.2 to 50.
+  KornFlaks:
+  - rscadd: Dogtags added to crosses will now always display the fallen marine's name
+      at end of round memoriam, even if the cross is later destroyed.
+  Red-byte3D:
+  - bugfix: Thermap tarps now have stun to match the rest of the tarps
+  stalkerino, thwomper, lagomorphica:
+  - rscadd: Adds a satchel to Intelligence Officers
+2025-05-28:
+  Ansekishoku:
+  - imageadd: New sprites for armored gloves
+  Detective-Google:
+  - maptweak: trijent LZs can now be powered
+  DolphinShark20:
+  - spellcheck: Fixes slight spelling mistake within the description of meatbread.
+  Some Random Guy 3124, Morrowwolf, Amory:
+  - rscadd: Added MSF Herculis patch for USCM Generals, added MP armband for provost
+      enforcers
+  - imageadd: added New USCM General Uniform and Provost uniforms
+  - imagedel: deleted the old USCM General Uniforms, TIS and Provost gear.
+2025-05-29:
+  BOBAMAx:
+  - balance: the mar-50 LMG can no longer be used with a bipod
+  - bugfix: the mar-50 no longer spawns with other invalid attachments like barrel
+      attachments
+  KornFlaks:
+  - bugfix: Xenos now heal at full speed while not on fire.
+2025-05-30:
+  Ansekishoku:
+  - rscadd: Added black drop pouches to vendors.
+  - imageadd: Resprited all drop pouch sprites including the surgical drop pouches
+      and also slightly tweaks item sprites.
+  Joe Lampost, Suprisedbaby_:
+  - rscadd: Areas now have a hangable var that allows for the hanging of bodies where
+      it would be feasible for them to be hung.
+  - bugfix: Fixes some upside-down tiles on LV-624.
+  - soundadd: Added New ambience for the Jungle Moon.
+  - soundadd: Added three new random animal noises for the Jungle Moon.
+  - maptweak: Updated the Jungle moon.
+  KornFlaks:
+  - bugfix: Dropping handheld crew monitor now properly closes the UI.
+  - rscadd: Weapons in scabbards can now be accessed while hauled for reverse bursting.
+      This also includes the machete pouch.
+  - bugfix: Newly evolved xenos no longer become a solid wall when resting.
+  Lagomorphica:
+  - balance: CLF squad leader no longer has Endurance 5 or full construction/engineering
+      skill, now having basic medical and surgical skills to treat IB. Most CLF roles
+      aside from the squad leader and synthetic have lost the ability to drive the
+      van. CLF engineer now has proper engineering training, and all CLF survivors
+      have Endurance 1.
+  - balance: CLF insert sentries no longer have unlimited ammo, instead spawning with
+      a random amount between 100 - 500 to simulate them having been crashed for a
+      while.
+  Swagile:
+  - rscadd: Gives SL radio supply channel access by default.
+  Willzadl:
+  - maptweak: LV-624 will now always generate a fog gap.
+  hry-gh:
+  - server: the server now returns additional testmerge info in the world/Topic api
+  realforest2001:
+  - bugfix: SHARP Operator, Heavy Sniper, and marine specialist support roles now
+      show properly on the crew monitor.
+2025-05-31:
+  Venuska1117:
+  - qol: Allows xenos to drag lying/unconcious queen without getting shoved when pulling
+      her on same tile as player.

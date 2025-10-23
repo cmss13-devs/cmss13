@@ -489,6 +489,10 @@
 	/// Post falloff calc damage is multipled by this to get human stamina damage
 	var/human_stam_dam_factor = 0.5
 
+/obj/item/explosive/grenade/sebb/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/explosive/grenade/sebb/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("To put into mine mode, plant at feet.")
@@ -908,11 +912,15 @@
 // abstract grenades used for hijack explosions
 
 /obj/item/explosive/grenade/high_explosive/bursting_pipe
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "bursting pipe"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/item/explosive/grenade/incendiary/bursting_pipe
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "bursting pipe"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

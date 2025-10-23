@@ -95,13 +95,13 @@
 	mob_min = 2
 	probability = 0
 	max_medics = 2
-	max_smartgunners = 1
+	max_smartgunners = 0
 	var/checked_objective = FALSE
 
 /datum/emergency_call/pmc/chem_retrieval/New()
 	..()
 	dispatch_message = "[MAIN_SHIP_NAME], this is USCSS Royce. We are sending a second squad aboard to retrieve all samples of a chemical recently scanned from your research department. If you do not cooperate, the team is authorized to use lethal force and terminate the research department."
-	objectives = "Secure all documents, samples and chemicals containing the property DNA_Disintegrating from [MAIN_SHIP_NAME] research department."
+	objectives = "Secure all documents and samples of chemical 'Xenogenetic Catalyst' from [MAIN_SHIP_NAME] research department. Ensure the vial stays intact and contains 30 units."
 
 /datum/emergency_call/pmc/chem_retrieval/proc/check_objective_info()
 	if(objective_info)
@@ -123,7 +123,7 @@
 
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Squad Leader!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Lead Investigator!"))
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_lead_investigator, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
@@ -131,8 +131,8 @@
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_med_investigator, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		heavies++
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Heavy Gunner!"))
-		arm_equipment(H, /datum/equipment_preset/pmc/pmc_gunner, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Crowd Control Specialist!"))
+		arm_equipment(H, /datum/equipment_preset/pmc/pmc_riot_control, TRUE, TRUE)
 	else
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Detainer!"))
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_detainer, TRUE, TRUE)

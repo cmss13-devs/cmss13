@@ -77,6 +77,13 @@
 	var/base_color   //Used when setting species.
 	var/hair_color   //If the species only has one hair color
 
+	//Currently, this is only used for flavor in surgery messages. Can be changed for individual species (i.e. synths)
+	var/flesh_type = "flesh"
+	var/nerves_type = "nervous system"
+	var/muscle_type = "muscles"
+	var/vasculature_type = "blood vessels"
+	var/bone_type = "bone"
+
 	//Used in icon caching.
 	var/race_key = 0
 	var/icon_template = 'icons/mob/humans/template.dmi'

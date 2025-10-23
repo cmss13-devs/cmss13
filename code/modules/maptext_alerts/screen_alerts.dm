@@ -84,6 +84,12 @@
 
 	return ..()
 
+/atom/movable/screen/text/screen_text/command_order/yautja
+	letters_per_update = 2
+	play_delay = 0.3
+	fade_out_delay = 10 SECONDS
+	fade_out_time = 3 SECONDS
+
 ///proc for actually playing this screen_text on a mob.
 /atom/movable/screen/text/screen_text/proc/play_to_client()
 	player?.add_to_screen(src)
@@ -274,9 +280,7 @@
 		if(NOTIFY_JOIN_XENO)
 			ghost_user.join_as_alien()
 		if(NOTIFY_USCM_TACMAP)
-			GLOB.uscm_tacmap_status.tgui_interact(ghost_user)
-		if(NOTIFY_XENO_TACMAP)
-			GLOB.xeno_tacmap_status.tgui_interact(ghost_user)
+			ghost_user.view_tacmaps()
 
 /atom/movable/screen/alert/buckled
 	name = "Buckled"

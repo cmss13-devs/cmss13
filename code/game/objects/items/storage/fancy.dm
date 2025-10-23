@@ -177,6 +177,7 @@
 /obj/item/storage/fancy/cigarettes/emeraldgreen
 	name = "\improper Emerald Green Packet"
 	desc = "They remind you of a gross, tar-filled version of Ireland. These cheap cigarettes are Weyland-Yutani's entry into the general market."
+	desc_lore = "Instantly recognizable by their price that undercuts even water, these cigarettes have become a fixture wherever budgets and morale run low. Nobody is quite sure what goes into the blend, but most agree you don't buy Emerald Greens for the flavor."
 	icon_state = "cigpacket"
 	item_state = "cigpacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_cig")
@@ -189,6 +190,10 @@
 	item_state = "wypacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_wypack")
 
+/obj/item/storage/fancy/cigarettes/wypacket/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/storage/fancy/cigarettes/wypacket_4
 	name = "\improper Weyland-Yutani Gold mini packet"
 	desc = "Building Better Worlds, and rolling better cigarettes. Compact and ready for your executive ventures, protecting corporate assets never felt cooler."
@@ -197,6 +202,10 @@
 	item_state = "wypacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_wypack")
 	storage_slots = 4
+
+/obj/item/storage/fancy/cigarettes/wypacket_4/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/fancy/cigarettes/balaji
 	name = "\improper Balaji Imperial packet"
@@ -256,10 +265,15 @@
 /obj/item/storage/fancy/cigarettes/kpack
 	name = "\improper Koorlander Gold packet"
 	desc = "Lovingly machine-rolled for YOUR pleasure. For when you want to look cool and the risk of a slow horrible death isn't really a factor."
+	desc_lore = "Popularized by Seegson workers during the construction of Sevastopol Station, these cigarettes lit easily, burned evenly, and offered a straightforward, dependable smoke. The flat, dusty flavor and steady draw quickly made them a colonial staple. Koorlander later scaled production on frontier farming worlds and locked in exclusive trade deals with the USCM."
 	icon_state = "kpacket"
 	icon = 'icons/obj/items/smoking/packets/koorlander.dmi'
 	item_state = "kpacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_kpack")
+
+/obj/item/storage/fancy/cigarettes/kpack/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/koorlander)
 
 /obj/item/storage/fancy/cigarettes/arcturian_ace
 	name = "\improper Arcturian Ace packet"
@@ -272,6 +286,7 @@
 /obj/item/storage/fancy/cigarettes/lady_finger
 	name = "\improper Lady Fingers packet"
 	desc = "These intensely strong unfiltered menthol cigarettes don't seem very ladylike. They don't seem very fingerlike for that matter, either. Smoking may kill, but poor branding is almost as bad."
+	desc_lore = "A bold experiment in marketing, these brutal, unfiltered menthol cigarettes come in dusty rose packaging aimed at the women of the USCM. The scent is so overpowering that they are sometimes used to keep bugs out of field tents. Despite the effort, they are rarely chosen and mostly sit untouched in vending machines, quietly daring someone to try. Whether anyone actually likes them is another question."
 	icon_state = "lfpacket"
 	icon = 'icons/obj/items/smoking/packets/lady_fingers.dmi'
 	item_state = "lfpacket"
@@ -310,6 +325,10 @@
 		/obj/item/toy/trading_card,
 	)
 	var/obj/item/toy/trading_card/trading_card
+
+/obj/item/storage/fancy/cigarettes/trading_card/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/fancy/cigarettes/trading_card/fill_preset_inventory()
 	flags_atom |= NOREACT
@@ -448,6 +467,10 @@
 	desc = "A small book of cheap paper matches. Good luck getting them to light."
 	icon_state = "mpacket_kl"
 
+/obj/item/storage/fancy/cigar/matchbook/koorlander/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/koorlander)
+
 /obj/item/storage/fancy/cigar/matchbook/exec_select
 	name = "\improper Executive Select matchbook"
 	desc = "A small book of expensive paper matches. These ones light almost every time!"
@@ -468,6 +491,10 @@
 	icon_state = "mpacket_wy"
 	light_chance = 60
 	burn_chance = 40
+
+/obj/item/storage/fancy/cigar/matchbook/wy_gold/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 // VIAL BOX
 
@@ -496,7 +523,7 @@
 	if(is_random)
 		var/spawns = rand(1,4)
 		for(var/i=1; i <= storage_slots; i++)
-			if(i<=spawns)
+			if(i<=spawns && prob(40))
 				new /obj/item/reagent_container/glass/beaker/vial/random(src)
 			else
 				new /obj/item/reagent_container/glass/beaker/vial(src)
@@ -506,7 +533,8 @@
 
 /obj/item/storage/fancy/vials/random
 	unacidable = TRUE
-	is_random = 1
+	is_random = TRUE
+
 
 /obj/item/storage/fancy/vials/empty
 	start_vials = 0
@@ -575,7 +603,7 @@
 	name = "pack of [capitalize(collection_color)] WeyYu Military Trading Cards"
 	desc = "A 5 pack of [capitalize(collection_color)] Weyland Yutani Military Trading Cards."
 	icon_state = "trading_[collection_color]_pack_closed"
-
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/fancy/trading_card/fill_preset_inventory()
 

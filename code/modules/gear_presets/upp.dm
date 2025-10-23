@@ -38,33 +38,29 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 
 /datum/equipment_preset/upp/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(60;MALE,40;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	var/random_name
+
 	var/first_name
 	var/last_name
-	//gender checks
-	if(new_human.gender == MALE)
-		if(prob(40))
-			first_name = "[capitalize(randomly_generate_chinese_word(1))]"
-		else
-			first_name = "[pick(GLOB.first_names_male_upp)]"
-		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+	if(prob(40))
+		first_name = capitalize(randomly_generate_chinese_word(1))
 	else
-		if(prob(40))
-			first_name = "[capitalize(randomly_generate_chinese_word(1))]"
-		else
-			first_name = "[pick(GLOB.first_names_female_upp)]"
-	//surname
+		switch(new_human.gender)
+			if(FEMALE)
+				first_name = capitalize(pick(GLOB.first_names_female_upp))
+			if(PLURAL, NEUTER) // Not currently possible
+				first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_upp) : pick(GLOB.first_names_female_upp))
+			else // MALE
+				first_name = capitalize(pick(GLOB.first_names_male_upp))
 	if(prob(35))
-		last_name = "[capitalize(randomly_generate_chinese_word(pick(20;1, 80;2)))]"
+		last_name = capitalize(randomly_generate_chinese_word(pick(20;1, 80;2)))
 	else
-		last_name = "[pick(GLOB.last_names_upp)]"
-	//put them together
-	random_name = "[first_name] [last_name]"
+		last_name = capitalize(pick(GLOB.last_names_upp))
 
-	new_human.change_real_name(new_human, random_name)
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
 	new_human.age = rand(17,35)
 	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut", "Bun, Topknot")
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
@@ -98,7 +94,7 @@
 
 	skills = /datum/skills/pfc
 	assignment = JOB_UPP
-	rank = JOB_UPP
+	job_title = JOB_UPP
 	role_comm_title = "Sol"
 	minimap_icon = "upp_pvt"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
@@ -240,12 +236,13 @@
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Black Webbing", 10, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("E-Tool", 5, /obj/item/tool/shovel/etool/folded, null, VENDOR_ITEM_REGULAR),
 		list("Sandbags", 20, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_REGULAR),
 		list("ES-11 Mobile Fuel Canister", 5, /obj/item/tool/weldpack/minitank, null, VENDOR_ITEM_REGULAR),
-		list("ME3 Hand Welder", 5, /obj/item/tool/weldingtool/simple, null, VENDOR_ITEM_REGULAR),
+		list("Seegson MCT", 5, /obj/item/tool/weldingtool/simple, null, VENDOR_ITEM_REGULAR),
 
 		list("SPECIAL AMMUNITION", 0, null, null, null),
 		list("Type 71 AP Magazine (5.45x39mm)", 10, /obj/item/ammo_magazine/rifle/type71/ap , null, VENDOR_ITEM_REGULAR),
@@ -277,7 +274,7 @@
 		list("E-Tool", 5, /obj/item/tool/shovel/etool/folded, null, VENDOR_ITEM_REGULAR),
 		list("Sandbags", 20, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_REGULAR),
 		list("ES-11 Mobile Fuel Canister", 5, /obj/item/tool/weldpack/minitank, null, VENDOR_ITEM_REGULAR),
-		list("ME3 Hand Welder", 5, /obj/item/tool/weldingtool/simple, null, VENDOR_ITEM_REGULAR),
+		list("Seegson MCT", 5, /obj/item/tool/weldingtool/simple, null, VENDOR_ITEM_REGULAR),
 
 		list("SPECIAL AMMUNITION", 0, null, null, null),
 		list("Type 71 AP Magazine (5.45x39mm)", 10, /obj/item/ammo_magazine/rifle/type71/ap , null, VENDOR_ITEM_REGULAR),
@@ -330,7 +327,7 @@
 
 	skills = /datum/skills/combat_medic
 	assignment = JOB_UPP_MEDIC
-	rank = JOB_UPP_MEDIC
+	job_title = JOB_UPP_MEDIC
 	role_comm_title = "Med"
 	minimap_icon = "upp_med"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
@@ -539,7 +536,7 @@
 
 	skills = /datum/skills/combat_engineer
 	assignment = JOB_UPP_ENGI
-	rank = JOB_UPP_ENGI
+	job_title = JOB_UPP_ENGI
 	role_comm_title = "Sap"
 	minimap_icon = "upp_sapper"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
@@ -711,7 +708,7 @@
 
 	skills = /datum/skills/upp/specialist
 	assignment = JOB_UPP_SPECIALIST
-	rank = JOB_UPP_SPECIALIST
+	job_title = JOB_UPP_SPECIALIST
 	role_comm_title = "Spc"
 	minimap_icon = "upp_spec"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
@@ -855,7 +852,7 @@
 
 	skills = /datum/skills/upp/specialist
 	assignment = JOB_UPP_SPECIALIST
-	rank = JOB_UPP_SPECIALIST
+	job_title = JOB_UPP_SPECIALIST
 	role_comm_title = "Spc"
 	minimap_icon = "upp_spec"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
@@ -1010,7 +1007,7 @@
 
 	skills = /datum/skills/SL
 	assignment = JOB_UPP_LEADER
-	rank = JOB_UPP_LEADER
+	job_title = JOB_UPP_LEADER
 	role_comm_title = "SL"
 	minimap_icon = "upp_sl"
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
@@ -1219,7 +1216,7 @@
 
 	skills = /datum/skills/upp/military_police
 	assignment = JOB_UPP_POLICE
-	rank = JOB_UPP_POLICE
+	job_title = JOB_UPP_POLICE
 	role_comm_title = "MP"
 	minimap_icon = "upp_mp"
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
@@ -1414,7 +1411,7 @@
 
 	skills = /datum/skills/upp/combat_medic
 	assignment = JOB_UPP_LT_DOKTOR
-	rank = JOB_UPP_LT_DOKTOR
+	job_title = JOB_UPP_LT_DOKTOR
 	role_comm_title = "Lt. Med."
 	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
 	access = list(
@@ -1592,7 +1589,7 @@
 
 	skills = /datum/skills/upp/logistics_technician
 	assignment = JOB_UPP_SUPPLY
-	rank = JOB_UPP_SUPPLY
+	job_title = JOB_UPP_SUPPLY
 	role_comm_title = "Log."
 	minimap_icon = "upp_cargo"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
@@ -1704,7 +1701,7 @@
 
 	skills = /datum/skills/upp/officer
 	assignment = JOB_UPP_LT_OFFICER
-	rank = JOB_UPP_LT_OFFICER
+	job_title = JOB_UPP_LT_OFFICER
 	role_comm_title = "Lt."
 	minimap_icon = "upp_lt"
 	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
@@ -1908,7 +1905,7 @@
 /datum/equipment_preset/upp/officer/senior
 	name = "UPP Starshiy Leytenant (Cryo)"
 	assignment = JOB_UPP_SRLT_OFFICER
-	rank = JOB_UPP_SRLT_OFFICER
+	job_title = JOB_UPP_SRLT_OFFICER
 	role_comm_title = "Sr-Lt."
 	minimap_icon = "upp_slt"
 	paygrades = list(PAY_SHORT_UO2 = JOB_PLAYTIME_TIER_0)
@@ -2083,7 +2080,7 @@
 /datum/equipment_preset/upp/officer/kapitan
 	name = "UPP Kapitan (Cryo)"
 	assignment = JOB_UPP_KPT_OFFICER
-	rank = JOB_UPP_KPT_OFFICER
+	job_title = JOB_UPP_KPT_OFFICER
 	role_comm_title = "May."
 	minimap_icon = "upp_xo"
 	paygrades = list(PAY_SHORT_UO3 = JOB_PLAYTIME_TIER_0)
@@ -2277,7 +2274,7 @@
 /datum/equipment_preset/upp/officer/major
 	name = "UPP Mayjor (Cryo)"
 	assignment = JOB_UPP_MAY_OFFICER
-	rank = JOB_UPP_MAY_OFFICER
+	job_title = JOB_UPP_MAY_OFFICER
 	role_comm_title = "May."
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO4 = JOB_PLAYTIME_TIER_0)
@@ -2286,7 +2283,7 @@
 /datum/equipment_preset/upp/officer/major/co
 	name = "UPP Mayjor (CO)(Cryo)"
 	assignment = JOB_UPP_CO_OFFICER
-	rank = JOB_UPP_CO_OFFICER
+	job_title = JOB_UPP_CO_OFFICER
 
 /datum/equipment_preset/upp/officer/major/dressed
 	name = "UPP Major"
@@ -2464,7 +2461,7 @@
 /datum/equipment_preset/upp/officer/flag/podpolkovnik
 	name = "UPP Podpolkovnik (Cryo)"
 	assignment = JOB_UPP_LTKOL_OFFICER
-	rank = JOB_UPP_LTKOL_OFFICER
+	job_title = JOB_UPP_LTKOL_OFFICER
 	role_comm_title = "Lt. Kol."
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
@@ -2473,12 +2470,12 @@
 /datum/equipment_preset/upp/officer/flag/podpolkovnik/co
 	name = "UPP Podpolkovnik (CO)(Cryo)"
 	assignment = JOB_UPP_CO_OFFICER
-	rank = JOB_UPP_CO_OFFICER
+	job_title = JOB_UPP_CO_OFFICER
 
 /datum/equipment_preset/upp/officer/flag/dressed/podpolkovnik
 	name = "UPP Podpolkovnik"
 	assignment = JOB_UPP_LTKOL_OFFICER
-	rank = JOB_UPP_LTKOL_OFFICER
+	job_title = JOB_UPP_LTKOL_OFFICER
 	role_comm_title = "Lt. Kol."
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO5 = JOB_PLAYTIME_TIER_0)
@@ -2662,19 +2659,19 @@
 /datum/equipment_preset/upp/officer/flag/polkovnik
 	name = "UPP Polkovnik (Cryo)"
 	assignment = JOB_UPP_KOL_OFFICER
-	rank = JOB_UPP_KOL_OFFICER
+	job_title = JOB_UPP_KOL_OFFICER
 	role_comm_title = "Kol."
 	paygrades = list(PAY_SHORT_UO6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/officer/flag/polkovnik/co
 	name = "UPP Polkovnik (CO)(Cryo)"
 	assignment = JOB_UPP_CO_OFFICER
-	rank = JOB_UPP_CO_OFFICER
+	job_title = JOB_UPP_CO_OFFICER
 
 /datum/equipment_preset/upp/officer/flag/dressed/polkovnik
 	name = "UPP Polkovnik"
 	assignment = JOB_UPP_KOL_OFFICER
-	rank = JOB_UPP_KOL_OFFICER
+	job_title = JOB_UPP_KOL_OFFICER
 	role_comm_title = "Kol."
 	paygrades = list(PAY_SHORT_UO6 = JOB_PLAYTIME_TIER_0)
 //*****************************************************************************************************/
@@ -2685,14 +2682,14 @@
 /datum/equipment_preset/upp/officer/flag/brig_gen
 	name = "UPP General Mayjor (Cryo)"
 	assignment = JOB_UPP_BRIG_GENERAL
-	rank = JOB_UPP_BRIG_GENERAL
+	job_title = JOB_UPP_BRIG_GENERAL
 	role_comm_title = "May. Gen."
 	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/officer/flag/dressed/brig_gen
 	name = "UPP General Mayjor"
 	assignment = JOB_UPP_BRIG_GENERAL
-	rank = JOB_UPP_BRIG_GENERAL
+	job_title = JOB_UPP_BRIG_GENERAL
 	role_comm_title = "May. Gen."
 	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 
@@ -2701,7 +2698,7 @@
 /datum/equipment_preset/upp/officer/flag/may_gen
 	name = "UPP General Leytenant (Cryo)"
 	assignment = JOB_UPP_MAY_GENERAL
-	rank = JOB_UPP_MAY_GENERAL
+	job_title = JOB_UPP_MAY_GENERAL
 	role_comm_title = "Ley. Gen."
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
@@ -2710,7 +2707,7 @@
 /datum/equipment_preset/upp/officer/flag/may_gen/dressed
 	name = "UPP General Leytenant"
 	assignment = JOB_UPP_MAY_GENERAL
-	rank = JOB_UPP_MAY_GENERAL
+	job_title = JOB_UPP_MAY_GENERAL
 	role_comm_title = "Ley. Gen."
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO8 = JOB_PLAYTIME_TIER_0)
@@ -2728,7 +2725,7 @@
 /datum/equipment_preset/upp/officer/flag/ley_gen
 	name = "UPP General Polkovnik (Cryo)"
 	assignment = JOB_UPP_LT_GENERAL
-	rank = JOB_UPP_LT_GENERAL
+	job_title = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO9 = JOB_PLAYTIME_TIER_0)
@@ -2737,7 +2734,7 @@
 /datum/equipment_preset/upp/officer/flag/ley_gen/dressed
 	name = "UPP General Polkovnik"
 	assignment = JOB_UPP_LT_GENERAL
-	rank = JOB_UPP_LT_GENERAL
+	job_title = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
 	minimap_icon = "upp_co"
 
@@ -2753,7 +2750,7 @@
 /datum/equipment_preset/upp/officer/flag/gen
 	name = "UPP General Armii (Cryo)"
 	assignment = JOB_UPP_GENERAL
-	rank = JOB_UPP_GENERAL
+	job_title = JOB_UPP_GENERAL
 	role_comm_title = "Gen."
 	minimap_icon = "upp_co"
 	paygrades = list(PAY_SHORT_UO10 = JOB_PLAYTIME_TIER_0)
@@ -2762,7 +2759,7 @@
 /datum/equipment_preset/upp/officer/flag/gen/dressed
 	name = "UPP General Armii"
 	assignment = JOB_UPP_GENERAL
-	rank = JOB_UPP_GENERAL
+	job_title = JOB_UPP_GENERAL
 	role_comm_title = "Gen."
 	minimap_icon = "upp_co"
 
@@ -2832,7 +2829,7 @@
 
 	skills = /datum/skills/synthetic
 	assignment = JOB_UPP_SUPPORT_SYNTH
-	rank = JOB_UPP_SUPPORT_SYNTH
+	job_title = JOB_UPP_SUPPORT_SYNTH
 	minimap_icon = "upp_synth"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag/upp
@@ -2865,20 +2862,23 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 
 /datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(50;MALE,50;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
+
 	var/random_name
 	if(prob(10))
 		random_name = "[capitalize(randomly_generate_chinese_word(2))]"
-	else if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male_upp)]"
 	else
-		random_name = "[pick(GLOB.first_names_female_upp)]"
-
-	if(new_human.gender == MALE)
-		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
-
+		switch(new_human.gender)
+			if(FEMALE)
+				random_name = capitalize(pick(GLOB.first_names_female_upp))
+			if(PLURAL, NEUTER) // Not currently possible
+				random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_upp) : pick(GLOB.first_names_female_upp))
+			else // MALE
+				random_name = capitalize(pick(GLOB.first_names_male_upp))
+				new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")
@@ -3076,7 +3076,7 @@
 	name = "UPP Combat Synthetic (Cryo)"
 
 	assignment = JOB_UPP_COMBAT_SYNTH
-	rank = JOB_UPP_COMBAT_SYNTH
+	job_title = JOB_UPP_COMBAT_SYNTH
 
 /datum/equipment_preset/upp/synth/combat/dressed
 	name = "UPP Combat Synthetic"
@@ -3142,7 +3142,7 @@
 
 	skills = /datum/skills/commando
 	assignment = JOB_UPP_COMMANDO
-	rank = JOB_UPP_COMMANDO
+	job_title = JOB_UPP_COMMANDO
 	role_comm_title = "JKdo"
 	paygrades = list(PAY_SHORT_UC1 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/data
@@ -3278,7 +3278,7 @@
 
 	skills = /datum/skills/commando/medic
 	assignment = JOB_UPP_COMMANDO_MEDIC
-	rank = JOB_UPP_COMMANDO_MEDIC
+	job_title = JOB_UPP_COMMANDO_MEDIC
 	role_comm_title = "2ndKdo"
 	minimap_icon = "upp_commed"
 	paygrades = list(PAY_SHORT_UC2 = JOB_PLAYTIME_TIER_0)
@@ -3448,7 +3448,7 @@
 
 	skills = /datum/skills/commando/leader
 	assignment = JOB_UPP_COMMANDO_LEADER
-	rank = JOB_UPP_COMMANDO_LEADER
+	job_title = JOB_UPP_COMMANDO_LEADER
 	role_comm_title = "1stKdo"
 	minimap_icon = "upp_comsl"
 	paygrades = list(PAY_SHORT_UC3 = JOB_PLAYTIME_TIER_0)
@@ -3716,7 +3716,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_UPP_CREWMAN
-	rank = JOB_UPP_CREWMAN
+	job_title = JOB_UPP_CREWMAN
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TANK"
 
@@ -3833,7 +3833,7 @@
 	name = "UPP Pilot (Cryo)"
 	assignment = JOB_UPP_PILOT
 	role_comm_title = "Pilot"
-	rank = JOB_UPP_PILOT
+	job_title = JOB_UPP_PILOT
 	paygrades = list(PAY_SHORT_UO1 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pilot
 	access = list(ACCESS_UPP_GENERAL, ACCESS_UPP_ENGINEERING, ACCESS_UPP_FLIGHT)
@@ -3934,7 +3934,7 @@
 	name = "UPP Political Commissar (Cryo)"
 
 	assignment = JOB_UPP_COMMISSAR
-	rank = JOB_UPP_COMMISSAR
+	job_title = JOB_UPP_COMMISSAR
 	paygrades = list(PAY_SHORT_UO4P = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Commissar"
 	minimap_icon = "upp_plt"
@@ -4056,7 +4056,7 @@
 
 	skills = /datum/skills/upp
 	assignment = JOB_UPP_CONSCRIPT
-	rank = JOB_UPP_CONSCRIPT
+	job_title = JOB_UPP_CONSCRIPT
 	role_comm_title = "Cons"
 	minimap_icon = "upp_pvt"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)

@@ -6,7 +6,7 @@
 /datum/chem_property/positive/antitoxic
 	name = PROPERTY_ANTITOXIC
 	code = "ATX"
-	description = "Absorbs and neutralizes toxic chemicals in the bloodstream and allowing them to be excreted safely."
+	description = "Absorbs and neutralizes toxic chemicals in the bloodstream and xylem sap, allowing them to be excreted safely."
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1
@@ -21,13 +21,20 @@
 /datum/chem_property/positive/antitoxic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.drowsyness  = max(M.drowsyness, 30)
 
+/datum/chem_property/positive/antitoxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.toxins > 0)
+		processing_tray.toxins += -1.5*(potency*2)
+
 /datum/chem_property/positive/anticorrosive
 	name = PROPERTY_ANTICORROSIVE
 	code = "ACR"
-	description = "Accelerates cell division around corroded areas in order to replace the lost tissue. Excessive use can trigger apoptosis."
+	description = "Accelerates cell division around corroded areas in order to replace the lost tissue. Plant damage rapidly healed. Excessive use can trigger apoptosis."
 	rarity = PROPERTY_COMMON
 	starter = TRUE
-	value = 1
+	value = 2
 
 /datum/chem_property/positive/anticorrosive/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(0, potency)
@@ -40,13 +47,20 @@
 /datum/chem_property/positive/anticorrosive/process_critical(mob/living/M, potency = 1)
 	M.apply_damages(POTENCY_MULTIPLIER_VHIGH*potency, 0, POTENCY_MULTIPLIER_VHIGH*potency) //Massive brute/tox damage
 
+/datum/chem_property/positive/anticorrosive/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.toxins > 0)
+		processing_tray.plant_health += 0.75*(potency*2)
+
 /datum/chem_property/positive/neogenetic
 	name = PROPERTY_NEOGENETIC
 	code = "NGN"
 	description = "Regenerates ruptured membranes resulting in the repair of damaged organic tissue. High concentrations can corrode the cell membranes."
 	rarity = PROPERTY_COMMON
 	starter = TRUE
-	value = 1
+	value = 2
 
 /datum/chem_property/positive/neogenetic/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(potency, 0)
@@ -69,10 +83,10 @@
 /datum/chem_property/positive/repairing
 	name = PROPERTY_REPAIRING
 	code = "REP"
-	description = "Repairs cybernetic organs by the use of REDACTED property of REDACTED element."
+	description = "Repairs inorganic materials such as barricades and synthetics by the use of REDACTED property of REDACTED element."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_MEDICINE
-	value = 2
+	value = 1
 
 /datum/chem_property/positive/repairing/process(mob/living/M, potency = 1, delta_time)
 	if(!iscarbon(M))
@@ -96,6 +110,15 @@
 		if(!(T.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 			continue
 		T.heal_damage(potency * volume,potency * volume, robo_repair = TRUE)
+
+/datum/chem_property/positive/repairing/reaction_obj(obj/sprayed_object, volume, potency) //heal cades and stuff
+	. = ..()
+	if(istype(sprayed_object, /obj/structure/barricade))
+		var/obj/structure/barricade/healing_cade = sprayed_object
+		healing_cade.update_health(-potency*POTENCY_MULTIPLIER_VVHIGH, TRUE)
+	if(istype(sprayed_object, /obj/structure/machinery/defenses))
+		var/obj/structure/machinery/defenses/healing_defenses = sprayed_object
+		healing_defenses.update_health(-potency*POTENCY_MULTIPLIER_VVHIGH)
 
 /datum/chem_property/positive/hemogenic
 	name = PROPERTY_HEMOGENIC
@@ -123,6 +146,18 @@
 /datum/chem_property/positive/hemogenic/process_critical(mob/living/M, potency = 1)
 	M.nutrition = max(M.nutrition - POTENCY_MULTIPLIER_VHIGH*potency, 0)
 
+/datum/chem_property/positive/hemogenic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.sampled == 0)
+		return
+	if(prob(60))
+		processing_tray.sampled = 0
+		var/turf/c_turf = get_turf(processing_tray)
+		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name]'s graft scar has healed!"))
+
+
 /datum/chem_property/positive/hemogenic/proc/handle_nutrition_loss(mob/living/M, potency = 1, delta_time)
 	M.nutrition = max(M.nutrition - potency, 0)
 
@@ -140,7 +175,7 @@
 	description = "Vastly improves the blood's natural ability to coagulate and stop bleeding by heightening platelet production and effectiveness. Overdosing will cause extreme blood clotting, resulting in severe tissue damage."
 	rarity = PROPERTY_UNCOMMON
 	max_level = 1
-	value = 2
+	value = 3
 
 /datum/chem_property/positive/hemostatic/process(mob/living/affected_mob, potency = 1, delta_time)
 	var/mob/living/carbon/human/effected_human = affected_mob
@@ -161,16 +196,15 @@
 /datum/chem_property/positive/nervestimulating
 	name = PROPERTY_NERVESTIMULATING
 	code = "NST"
-	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control."
+	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control. Excessive muscular control loss causes the reagent to bind to nociceptors more aggressively than usual."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
-	value = 3
+	value = 4
 
 /datum/chem_property/positive/nervestimulating/process(mob/living/M, potency = 1)
-	M.adjust_effect(potency*-1, PARALYZE)
+	M.adjust_effect(potency*-0.75, PARALYZE)
 	M.adjust_effect(potency*-1, STUN)
-	M.adjust_effect(potency*-1, WEAKEN)
-	M.adjust_effect(-0.5*potency, STUN)
+	M.adjust_effect(potency*-0.75, WEAKEN)
 	if(potency > CREATE_MAX_TIER_1)
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
@@ -194,7 +228,7 @@
 /datum/chem_property/positive/musclestimulating
 	name = PROPERTY_MUSCLESTIMULATING
 	code = "MST"
-	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles."
+	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength, this provides increase in carry weight increase at zero cost of speed. High doses might exhaust the cardiac muscles."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 
@@ -255,7 +289,7 @@
 /datum/chem_property/positive/hepatopeutic
 	name = PROPERTY_HEPATOPEUTIC
 	code = "HPP"
-	description = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions."
+	description = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions. Forces some negative mutations in plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 
@@ -272,10 +306,20 @@
 /datum/chem_property/positive/hepatopeutic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(2.5 * potency * delta_time, TOX)
 
+//Applies mutation enable onto hydrotray plants, negative affects like increasing consumption and lowering life
+/datum/chem_property/positive/hepatopeutic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["Plant Cancer"] < 1)
+		processing_tray.mutation_controller["Plant Cancer"] = 1
+	if (processing_tray.mutation_controller["Gluttony"] < 1)
+		processing_tray.mutation_controller["Gluttony"] = 1
+
 /datum/chem_property/positive/nephropeutic
 	name = PROPERTY_NEPHROPEUTIC
 	code = "NPP"
-	description = "Heals damaged and deteriorated podocytes in the kidney, restoring organ functions."
+	description = "Heals damaged and deteriorated podocytes in the kidney, restoring organ functions. Forces mutation of the tolerance to light, weeds, and toxins in plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 
@@ -292,10 +336,22 @@
 /datum/chem_property/positive/nephropeutic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(2.5 * potency * delta_time, TOX)
 
+//Applies mutation enable onto hydrotray plants, enables tolerance adjustment, parasitic and carnivorus
+/datum/chem_property/positive/nephropeutic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["Light Tolerance"] < 1)
+		processing_tray.mutation_controller["Light Tolerance"] = 1
+	if (processing_tray.mutation_controller["Weed Tolerance"] < 1)
+		processing_tray.mutation_controller["Weed Tolerance"] = 1
+	if (processing_tray.mutation_controller["Toxin Tolerance"] < 1)
+		processing_tray.mutation_controller["Toxin Tolerance"] = 1
+
 /datum/chem_property/positive/pneumopeutic
 	name = PROPERTY_PNEUMOPEUTIC
 	code = "PNP"
-	description = "Mends the interstitium tissue of the alveoli restoring respiratory functions in the lungs."
+	description = "Mends the interstitium tissue of the alveoli restoring respiratory functions in the lungs. Forces mutation of growth speed and health in plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 
@@ -312,10 +368,24 @@
 /datum/chem_property/positive/pneumopeutic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH*potency, OXY)
 
+//Applies mutation enable onto hydrotray plants, enables plant life, yield, grow times and repeat harvest mutation
+/datum/chem_property/positive/pneumopeutic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["Endurance"] < 1)
+		processing_tray.mutation_controller["Endurance"] = 1
+	if (processing_tray.mutation_controller["Production"] < 1)
+		processing_tray.mutation_controller["Production"] = 1
+	if (processing_tray.mutation_controller["Lifespan"] < 1)
+		processing_tray.mutation_controller["Lifespan"] = 1
+	if (processing_tray.mutation_controller["Maturity"] < 1)
+		processing_tray.mutation_controller["Maturity"] = 1
+
 /datum/chem_property/positive/oculopeutic
 	name = PROPERTY_OCULOPEUTIC
 	code = "OCP"
-	description = "Restores sensory capabilities of photoreceptive cells in the eyes returning lost vision."
+	description = "Restores sensory capabilities of photoreceptive cells in the eyes returning lost vision. Forces mutation of potency in plants."
 	rarity = PROPERTY_COMMON
 	value = 1
 
@@ -333,10 +403,22 @@
 	M.apply_damages(potency, potency, POTENCY_MULTIPLIER_HIGH * potency)
 	M.apply_damage(potency, BRAIN)
 
+//Applies mutation enable onto hydrotray plants, enables potency, glowing or flowers mutations
+/datum/chem_property/positive/oculopeutic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["Potency"] < 1)
+		processing_tray.mutation_controller["Potency"] = 1
+	if(processing_tray.mutation_controller["Bioluminecence"] < 1)
+		processing_tray.mutation_controller["Bioluminecence"] = 1
+	if (processing_tray.mutation_controller["Flowers"] < 1)
+		processing_tray.mutation_controller["Flowers"] = 1
+
 /datum/chem_property/positive/cardiopeutic
 	name = PROPERTY_CARDIOPEUTIC
 	code = "CDP"
-	description = "Regenerates damaged cardiomyocytes and recovers a correct cardiac cycle and heart functionality."
+	description = "Regenerates damaged cardiomyocytes and recovers a correct cardiac cycle and heart functionality. Prevents forces mutation of produced chemicals in plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 
@@ -359,10 +441,22 @@
 
 	M.pain.apply_pain(PROPERTY_CARDIOPEUTIC_PAIN_CRITICAL)
 
+//Applies mutation cancel onto hydrotray plants, enables new chems from being added
+/datum/chem_property/positive/cardiopeutic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["New Chems"] < 1)
+		processing_tray.mutation_controller["New Chems"] = 1
+	if(processing_tray.mutation_controller["New Chems2"] < 1)
+		processing_tray.mutation_controller["New Chems2"] = 1
+	if (processing_tray.mutation_controller["New Chems3"] < 1)
+		processing_tray.mutation_controller["New Chems3"] = 1
+
 /datum/chem_property/positive/neuropeutic
 	name = PROPERTY_NEUROPEUTIC
 	code = "NRP"
-	description = "Rebuilds damaged and broken neurons in the central nervous system re-establishing brain functionality."
+	description = "Rebuilds damaged and broken neurons in the central nervous system re-establishing brain functionality. Forces species mutation in plants."
 	rarity = PROPERTY_COMMON
 
 /datum/chem_property/positive/neuropeutic/process(mob/living/M, potency = 1)
@@ -375,11 +469,19 @@
 	M.apply_damage(POTENCY_MULTIPLIER_HIGH * potency, BRAIN)
 	M.adjust_effect(potency, STUN)
 
+//Applies mutation enable onto hydrotray plants, enables species mutation
+/datum/chem_property/positive/neuropeutic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["Mutate Species"] < 1)
+		processing_tray.mutation_controller["Mutate Species"] = 1
+
 /datum/chem_property/positive/bonemending
 	name = PROPERTY_BONEMENDING
 	code = "BNM"
 	description = "Rapidly increases the production of osteoblasts and chondroblasts while also accelerating the process of endochondral ossification. This allows broken bone tissue to be re-woven and restored quickly if the bone is correctly positioned. Overdosing may result in the bone structure growing abnormally and can have adverse effects on the skeletal structure."
-	rarity = PROPERTY_UNCOMMON
+	rarity = PROPERTY_RARE
 
 /datum/chem_property/positive/bonemending/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
@@ -456,8 +558,8 @@
 /datum/chem_property/positive/neurocryogenic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(10 * delta_time))
 		to_chat(M, SPAN_WARNING("You feel like you have the worst brain freeze ever!"))
-	M.apply_effect(20, PARALYZE)
-	M.apply_effect(20, STUN)
+	M.KnockDown(20)
+	M.Stun(20)
 
 /datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.bodytemperature = max(BODYTEMP_CRYO_LIQUID_THRESHOLD, M.bodytemperature - 2.5 * potency * delta_time)
@@ -493,12 +595,15 @@
 			if(embryo.counter > 0)
 				embryo.counter = embryo.counter - (potency * delta_time)
 				current_human.take_limb_damage(0, POTENCY_MULTIPLIER_MEDIUMLOW*potency)
+				if(prob(potency * 5)) //Higher chance of notice with higher potency makes sense
+					to_chat(current_human, SPAN_NOTICE("You feel something inside you squirming in agitation!")) //Inform the marine their embryo is dying
 			else
 				embryo.stage--
 				if(embryo.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
-					qdel(embryo)
+					embryo.forceMove(current_human.loc) //forces the embryo out of the container that is the human host and onto the ground
 					current_human.take_limb_damage(0,rand(20,40))
 					current_human.vomit()
+					to_chat(current_human, SPAN_NOTICE("You throw up several bits of wormlike matter!")) //Embryo is dead
 				else
 					embryo.counter = embryo.per_stage_hugged_time - (potency * delta_time)
 
@@ -513,7 +618,7 @@
 	code = "OGS"
 	description = "Stabilizes internal organ damage, stopping internal damage symptoms."
 	rarity = PROPERTY_DISABLED
-	value = 2
+	value = 1
 
 /datum/chem_property/positive/organstabilize/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
@@ -527,13 +632,33 @@
 /datum/chem_property/positive/organstabilize/process_critical(mob/living/M, potency = 1)
 	M.apply_damages(POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency)
 
+/datum/chem_property/positive/criticalstabilize
+	name = PROPERTY_CRITICALSTABILIZE
+	code = "CTS"
+	description = "Stabilizes critical damage and bleeding."
+	rarity = PROPERTY_DISABLED
+	value = 2
+
+/datum/chem_property/positive/criticalstabilize/process(mob/living/living_mob, potency = 1, delta_time)
+	if(!ishuman(living_mob))
+		return
+	var/mob/living/carbon/human/human_mob = living_mob
+
+	human_mob.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
+
+	var/heal_brute = human_mob.getBruteLoss()/human_mob.maxHealth >= 1 ? 1 : 0
+	var/heal_burn = human_mob.getFireLoss()/human_mob.maxHealth >= 1 ? 1 : 0
+	human_mob.heal_overall_damage(heal_brute, heal_burn)
+	if(human_mob.getOxyLoss() > 20)
+		human_mob.apply_damage(-1, OXY)
+
 /datum/chem_property/positive/electrogenetic
 	name = PROPERTY_ELECTROGENETIC
 	code = "EGN"
 	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrillator."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
-	value = 1
+	value = 2
 	cost_penalty = FALSE
 
 /datum/chem_property/positive/electrogenetic/trigger(A)
@@ -550,9 +675,10 @@
 	description = "Causes an electrochemical reaction in the cardiac muscles, forcing the heart to continue pumping. May cause irregular heart rhythms."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
-	value = 3
+	value = 2
 	cost_penalty = FALSE
-	COOLDOWN_DECLARE(ghost_notif)
+	var/revivetimerid
+	COOLDOWN_DECLARE(revive_notif)
 
 /datum/chem_property/positive/defibrillating/on_delete(mob/living/M)
 	..()
@@ -575,22 +701,38 @@
 		return
 	M.apply_internal_damage(0.5 * potency * delta_time, "heart")
 
-/datum/chem_property/positive/defibrillating/process_dead(mob/living/M, potency = 1, delta_time)
-	if(!ishuman(M))
+/datum/chem_property/positive/defibrillating/process_dead(mob/living/affected_mob, potency = 1, delta_time)
+	if(!ishuman(affected_mob))
 		return
-	var/mob/living/carbon/human/dead = M
+	var/mob/living/carbon/human/dead = affected_mob
 	var/revivable = dead.check_tod() && dead.is_revivable()
-	for(var/datum/reagent/electrogenetic_reagent in M.reagents.reagent_list)
+	if(!revivable)
+		return
+
+	if(revivetimerid)
+		if(dead.health <= HEALTH_THRESHOLD_DEAD) //If the mob got damaged to below the threshold while the timer was ticking then we reset
+			deltimer(revivetimerid)
+			revivetimerid = null
+		return
+
+	for(var/datum/reagent/electrogenetic_reagent in affected_mob.reagents.reagent_list)
 		var/datum/chem_property/property = electrogenetic_reagent.get_property(PROPERTY_ELECTROGENETIC) //Adrenaline helps greatly at restarting the heart
 		if(property)
-			property.trigger(M)
-			M.reagents.remove_reagent(electrogenetic_reagent.id, 1)
+			property.trigger(affected_mob)
+			affected_mob.reagents.remove_reagent(electrogenetic_reagent.id, 1)
 			break
-	if(revivable && (dead.health > HEALTH_THRESHOLD_DEAD))
-		addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS)
+	if(dead.health > HEALTH_THRESHOLD_DEAD)
+		revivetimerid = addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS, TIMER_STOPPABLE)
+		if(!COOLDOWN_FINISHED(src, revive_notif))
+			return
+		COOLDOWN_START(src, revive_notif, 10 SECONDS)
 		to_chat(dead, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
 		playsound_client(dead.client, 'sound/effects/heart_beat_short.ogg', 35)
-	else if ((potency >= 1) && revivable && dead.health <= HEALTH_THRESHOLD_DEAD) //heals on all level above 1. This is however, minimal.
+		var/mob/dead/observer/ghost = dead.get_ghost()
+		if(ghost?.client)
+			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
+			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
+	else if ((potency >= 1) && dead.health <= HEALTH_THRESHOLD_DEAD) //heals on all level above 1. This is however, minimal.
 		to_chat(dead, SPAN_NOTICE("You feel a faint spark in your chest."))
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)
@@ -602,15 +744,6 @@
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BURN)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
-		if(dead.health < HEALTH_THRESHOLD_DEAD)
-			return
-		if(!COOLDOWN_FINISHED(src, ghost_notif))
-			return
-		var/mob/dead/observer/ghost = dead.get_ghost()
-		if(ghost?.client)
-			COOLDOWN_START(src, ghost_notif, 30 SECONDS)
-			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
-			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
 	return TRUE
 
 /datum/chem_property/positive/hyperdensificating
@@ -646,7 +779,7 @@
 	description = "Protects the brain from neurological damage caused by toxins."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
-	value = 3
+	value = 2
 	max_level = 1
 
 /datum/chem_property/positive/neuroshielding/process(mob/living/M, potency = 1, delta_time)
@@ -745,8 +878,8 @@
 	description = "The chemical can be burned as a fuel, expanding the burn time of a chemical fire. However, this also slightly lowers heat intensity."
 	rarity = PROPERTY_COMMON
 	value = 1
-	intensity_per_level = -2
-	duration_per_level = 6
+	intensity_per_level = -3
+	duration_per_level = 8
 
 	intensitymod_per_level = -0.1
 	durationmod_per_level = 0.2
@@ -772,8 +905,8 @@
 	description = "The chemical is oxidizing, increasing the intensity of chemical fires. However, the fuel is also burned slightly faster because of it."
 	rarity = PROPERTY_COMMON
 	value = 1
-	intensity_per_level = 6
-	duration_per_level = -2
+	intensity_per_level = 8
+	duration_per_level = -3
 
 	intensitymod_per_level = 0.2
 	durationmod_per_level = -0.1
@@ -786,7 +919,7 @@
 	if(istype(L) && method == TOUCH)//Oxidizing 6+ makes a fire, otherwise it just adjusts fire stacks
 		L.adjust_fire_stacks(max(L.fire_stacks, volume * potency))
 		if(potency > /datum/chem_property/positive/fire/oxidizing::ignite_threshold)
-			L.IgniteMob(TRUE)
+			L.IgniteMob()
 
 /datum/chem_property/positive/fire/oxidizing/can_cause_harm()
 	. = ..()
@@ -800,7 +933,7 @@
 	description = "The chemical is the opposite of viscous, and it tends to spill everywhere. This could probably be used to expand the radius of a chemical fire."
 	rarity = PROPERTY_COMMON
 	value = 1
-	range_per_level = 1
+	range_per_level = 2
 
 	intensitymod_per_level = -0.05
 	radiusmod_per_level = 0.05
@@ -830,19 +963,38 @@
 /datum/chem_property/positive/photosensitive
 	name = PROPERTY_PHOTOSENSITIVE
 	code = "PTS"
-	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer."
+	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer. Supercharges photosynthesis, treated plants able to be harvested repeatedly "
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
 	max_level = 1
 
-/datum/chem_property/positive/photosensetive/process(mob/living/M, potency = 1)
+/datum/chem_property/positive/photosensitive/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
 	M.apply_internal_damage(potency, "brain")
+
+/datum/chem_property/positive/photosensitive/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.seed.harvest_repeat == 1)
+		return
+	processing_tray.weedlevel += 0.25*volume
+	processing_tray.nutrilevel += -0.25*volume
+	processing_tray.repeat_harvest_counter += 10*volume
+	if (processing_tray.repeat_harvest_counter >= 100)
+		if (prob(50))
+			processing_tray.repeat_harvest_counter += -1*rand(20,50)
+			return
+		var/turf/c_turf = get_turf(processing_tray)
+		processing_tray.seed = processing_tray.seed.diverge()
+		processing_tray.seed.harvest_repeat = 1
+		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] begins to shimmer with a color out of space!"))
+		processing_tray.potency_counter = 0
 
 /datum/chem_property/positive/crystallization
 	name = PROPERTY_CRYSTALLIZATION
 	code = "CRL"
-	description = "The chemical structure of the chemical forms itself in a lens. passing light wider, while also keeping focus. Not safe to administer"
+	description = "The chemical structure of the chemical forms itself in a lens. passing light wider, while also keeping focus. Not safe to administer. Hardens root structure of plants, improving survivability during repeat harvests."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
 	max_level = 1
@@ -851,6 +1003,25 @@
 	to_chat(M, SPAN_WARNING("You feel like many razor sharp blades cut through your insides!"))
 	M.take_limb_damage(brute = 0.5 * potency)
 	M.apply_internal_damage(potency, "liver")
+
+/datum/chem_property/positive/crystallization/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.seed.harvest_repeat == 1)
+		return
+	processing_tray.weedlevel += 0.25*volume
+	processing_tray.nutrilevel += -0.25*volume
+	processing_tray.repeat_harvest_counter += 10*volume
+	if (processing_tray.repeat_harvest_counter >= 100)
+		if (prob(50))
+			processing_tray.repeat_harvest_counter += -1*rand(20,50)
+			return
+		var/turf/c_turf = get_turf(processing_tray)
+		processing_tray.seed = processing_tray.seed.diverge()
+		processing_tray.seed.harvest_repeat = 1
+		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] begins to shimmer with a color out of space!"))
+		processing_tray.potency_counter = 0
 
 //properties with combat uses
 /datum/chem_property/positive/disrupting
@@ -874,7 +1045,7 @@
 	if(!isxeno(M))
 		return
 	var/mob/living/carbon/xenomorph/xeno = M
-	xeno.AddComponent(/datum/component/status_effect/interference, volume * potency, 90)
+	xeno.AddComponent(/datum/component/status_effect/interference, volume * potency * 1.2, 90)
 
 /datum/chem_property/positive/neutralizing
 	name = PROPERTY_NEUTRALIZING
@@ -900,7 +1071,7 @@
 	L.ExtinguishMob() //Extinguishes mobs on contact
 	if(isxeno(L))
 		var/mob/living/carbon/xenomorph/xeno = M
-		xeno.plasma_stored = max(xeno.plasma_stored - POTENCY_MULTIPLIER_HIGH * volume * potency, 0)
+		xeno.plasma_stored = max(xeno.plasma_stored - POTENCY_MULTIPLIER_VHIGH * volume * potency, 0)
 		to_chat(xeno, SPAN_WARNING("You feel your plasma reserves being drained!"))
 
 /datum/chem_property/positive/neutralizing/reaction_turf(turf/T, volume, potency)
@@ -936,11 +1107,11 @@
 
 /datum/chem_property/positive/cardiostabilizing/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.make_jittery(5) //Overdose causes a spasm
-	M.apply_effect(20, PARALYZE)
+	M.KnockDown(20)
+	M.Stun(20)
 
 /datum/chem_property/positive/cardiostabilizing/process_critical(mob/living/M, potency = 1, delta_time)
-	M.drowsyness = max(M.drowsyness, 20)
-	if(!ishuman(M)) //Critical overdose causes total blackout and heart damage. Too much stimulant
+	if(!ishuman(M)) //Critical overdose causes heart damage. Too much stimulant
 		return
 	M.apply_internal_damage(0.25 * delta_time, "heart")
 	if(prob(5 * delta_time))
@@ -951,12 +1122,12 @@
 		return
 	var/mob/living/carbon/xenomorph/X = M
 	if(X.health < 0) //heals out of crit with enough potency/volume, otherwise reduces crit
-		X.gain_health(min(potency * volume * 0.5, -X.health + 1))
+		X.gain_health(min(potency * volume * 0.8, -X.health + 1))
 
 /datum/chem_property/positive/aiding
 	name = PROPERTY_AIDING
 	code = "AID"
-	description = "Fixes genetic defects, disfigurments and disabilities."
+	description = "Fixes genetic defects, disfigurments, disabilities. In plants removes compounds modfying yield and mutation."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_MEDICINE
 	value = 1
@@ -974,6 +1145,13 @@
 	M.apply_effect(20 * potency, PARALYZE) //Total DNA collapse // That's some long goddamn stun
 	M.apply_damage(0.5 * potency * delta_time, TOX)
 	M.apply_damage(1.5 * potency * delta_time, CLONE)
+
+/datum/chem_property/positive/aiding/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency = 1, volume = 1)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray?.mutation_mod += -4*(potency*2)*volume
+	processing_tray?.yield_mod += -4*(potency*2)*volume
 
 /datum/chem_property/positive/oxygenating
 	name = PROPERTY_OXYGENATING
@@ -1016,22 +1194,7 @@
 /datum/chem_property/positive/anticarcinogenic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)//Hyperactive apoptosis
 
-/datum/chem_property/positive/regulating
-	name = PROPERTY_REGULATING
-	code = "REG"
-	description = "The chemical regulates its own metabolization, any amount overdosed is turned into sugar."
-	rarity = PROPERTY_COMMON
-	category = PROPERTY_TYPE_METABOLITE
-	max_level = 1
-	value = 1
 
-/datum/chem_property/positive/regulating/reset_reagent()
-	holder.flags = initial(holder.flags)
-	..()
-
-/datum/chem_property/positive/regulating/update_reagent()
-	holder.flags |= REAGENT_CANNOT_OVERDOSE
-	..()
 
 /datum/chem_property/positive/firepenetrating
 	name = PROPERTY_FIRE_PENETRATING
@@ -1039,7 +1202,7 @@
 	description = "Gives the chemical a unique, anomalous combustion chemistry, causing the flame to react with flame-resistant material and obliterate through it."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
-	value = 8
+	value = 3
 	max_level = 1
 
 /datum/chem_property/positive/firepenetrating/reset_reagent()

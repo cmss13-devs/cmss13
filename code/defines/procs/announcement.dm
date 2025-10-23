@@ -5,7 +5,6 @@
 #define QUEEN_ANNOUNCE "The words of the Queen reverberate in your head..."
 #define QUEEN_MOTHER_ANNOUNCE "Queen Mother Psychic Directive"
 #define XENO_GENERAL_ANNOUNCE "You sense something unusual..." //general xeno announcement that don't involve Queen, for nuke for example
-#define YAUTJA_ANNOUNCE "You receive a message from your ship AI..." //preds announcement
 #define HIGHER_FORCE_ANNOUNCE SPAN_ANNOUNCEMENT_HEADER_BLUE("Unknown Higher Force")
 
 //xenomorph hive announcement
@@ -78,18 +77,6 @@
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
-
-	announcement_helper(message, title, targets, sound_to_play)
-
-//yautja ship AI announcement
-/proc/yautja_announcement(message, title = YAUTJA_ANNOUNCE, sound_to_play = sound('sound/misc/notice1.ogg'))
-	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/M in targets)
-		if(isobserver(M)) //observers see everything
-			continue
-		var/mob/living/carbon/human/H = M
-		if(!isyautja(H) || H.stat != CONSCIOUS)
-			targets.Remove(H)
 
 	announcement_helper(message, title, targets, sound_to_play)
 

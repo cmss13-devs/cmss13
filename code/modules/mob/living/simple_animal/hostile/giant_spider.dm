@@ -79,7 +79,7 @@
 
 /mob/living/simple_animal/hostile/giant_spider/Life(delta_time)
 	. = ..()
-	if(!stat)
+	if(stat == CONSCIOUS)
 		if(stance == HOSTILE_STANCE_IDLE)
 			//1% chance to skitter madly away
 			if(!busy && prob(1))
@@ -102,7 +102,7 @@
 
 /mob/living/simple_animal/hostile/giant_spider/nurse/Life(delta_time)
 	. = ..()
-	if(!stat)
+	if(stat == CONSCIOUS)
 		if(stance == HOSTILE_STANCE_IDLE)
 			var/list/can_see = view(src, 10)
 			//30% chance to stop wandering and do something

@@ -12,16 +12,16 @@ export const meta = {
   render: () => <Story />,
 };
 
-const Story = () => {
-  const positions = [
-    'top',
-    'left',
-    'right',
-    'bottom',
-    'bottom-start',
-    'bottom-end',
-  ];
+const positions = [
+  'top',
+  'left',
+  'right',
+  'bottom',
+  'bottom-start',
+  'bottom-end',
+] as Placement[];
 
+function Story() {
   return (
     <Section>
       <Box>
@@ -38,7 +38,7 @@ const Story = () => {
             key={position}
             color="transparent"
             tooltip="Tooltip text."
-            tooltipPosition={position as Placement}
+            tooltipPosition={position}
           >
             {position}
           </Button>
@@ -46,4 +46,4 @@ const Story = () => {
       </Box>
     </Section>
   );
-};
+}

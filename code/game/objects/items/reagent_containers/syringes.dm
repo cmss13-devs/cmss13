@@ -21,6 +21,7 @@
 	volume = 15
 	w_class = SIZE_TINY
 	flags_item = NOBLUDGEON
+	flags_equip_slot = SLOT_WAIST|SLOT_EAR|SLOT_SUIT_STORE
 	sharp = IS_SHARP_ITEM_SIMPLE
 	transparent = TRUE
 	reagent_desc_override = TRUE //uses display_contents
@@ -37,7 +38,7 @@
 
 
 /obj/item/reagent_container/syringe/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/syringe/dropped(mob/user)
@@ -311,7 +312,7 @@
 	update_icon()
 
 /obj/item/reagent_container/ld50_syringe/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/ld50_syringe/dropped(mob/user)

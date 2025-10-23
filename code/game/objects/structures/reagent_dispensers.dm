@@ -17,6 +17,7 @@
 
 /obj/structure/reagent_dispensers/Initialize(mapload, reagent_amount = 1000)
 	. = ..()
+	ADD_TRAIT(src, TRAIT_REACTS_UNSAFELY, TRAIT_SOURCE_INHERENT)
 	create_reagents(reagent_amount)
 	if(!possible_transfer_amounts)
 		verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
@@ -469,6 +470,10 @@
 	anchored = TRUE
 	drag_delay = 3
 	chemical = "water"
+
+/obj/structure/reagent_dispensers/water_cooler/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/structure/reagent_dispensers/water_cooler/walk_past
 	density = FALSE

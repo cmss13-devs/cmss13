@@ -691,6 +691,10 @@
 	linked_lz = DROPSHIP_LZ1
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
+	always_unpowered = FALSE
+	power_light = TRUE
+	power_equip = TRUE
+	power_environ = TRUE
 
 //Landing Pad for the Normandy. THIS IS NOT THE SHUTTLE AREA
 /area/desert_dam/exterior/landing_pad_two
@@ -699,6 +703,10 @@
 	linked_lz = DROPSHIP_LZ2
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
+	always_unpowered = FALSE
+	power_light = TRUE
+	power_equip = TRUE
+	power_environ = TRUE
 
 //Valleys
 //Near LZ

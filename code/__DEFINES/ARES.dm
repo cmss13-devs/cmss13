@@ -75,6 +75,8 @@
 /// Downgraded from Priority
 #define TICKET_NON_PRIORITY "non-priority"
 
+GLOBAL_LIST_EMPTY_TYPED(gas_vents, /obj/structure/pipes/vents/pump/no_boom/gas)
+
 /// Cooldowns
 #define COOLDOWN_ARES_SENSOR 60 SECONDS
 #define COOLDOWN_ARES_ACCESS_CONTROL 20 SECONDS
@@ -82,3 +84,9 @@
 
 /// Time until someone can respawn as Working Joe
 #define JOE_JOIN_DEAD_TIME (15 MINUTES)
+
+#define FACTION_ARES "Ares"
+#define FACTION_LIST_ARES_MARINE list(FACTION_MARINE, FACTION_ARES)
+#define FACTION_LIST_ARES_ALL list(FACTION_ARES, FACTION_MARINE, FACTION_PMC, FACTION_WY_DEATHSQUAD, FACTION_WY)
+#define FACTION_LIST_ARES_WY list(FACTION_ARES, FACTION_PMC, FACTION_WY_DEATHSQUAD, FACTION_WY)
+#define FACTION_LIST_ARES_ALONE list(FACTION_ARES)

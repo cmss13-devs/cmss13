@@ -227,7 +227,7 @@ class ChatRenderer {
     }
   }
 
-  setHighlight(highlightSettings, highlightSettingById) {
+  setHighlight(highlightSettings, highlightSettingById, highlightKeywords) {
     this.highlightParsers = null;
     if (!highlightSettings) {
       return;
@@ -263,6 +263,17 @@ class ChatRenderer {
       let regexExpressions: string[] = [];
       // Organize each highlight entry into regex expressions and words
       for (let line of lines) {
+        // This comes before all the existing processing.
+        for (const [trigger, replacement] of Object.entries(
+          highlightKeywords,
+        )) {
+          // Skip if line cannot possibly fit the trigger and accompanying $$.
+          if (!trigger || !replacement || line.length < trigger.length + 2) {
+            continue;
+          }
+          line = line.replaceAll('$' + trigger + '$', replacement as string);
+        }
+
         // Regex expression syntax is /[exp]/
         if (line.charAt(0) === '/' && line.charAt(line.length - 1) === '/') {
           const expr = line.substring(1, line.length - 1);
@@ -480,10 +491,12 @@ class ChatRenderer {
 
           /* eslint-disable react/no-danger */
           reactRoot.render(
-            <Element {...outputProps}>
-              <span dangerouslySetInnerHTML={oldHtml} />
-            </Element>,
-            childNode,
+            <>
+              <Element {...outputProps}>
+                <span dangerouslySetInnerHTML={oldHtml} />
+              </Element>
+              {childNode}
+            </>,
           );
           /* eslint-enable react/no-danger */
         }
@@ -516,7 +529,7 @@ class ChatRenderer {
           }
         }
       }
-      this.storeQueue.push({ ...message });
+      this.storeQueue.push({ ...message, stored: true });
       // Store the node in the message
       message.node = node;
       // Query all possible selectors to find out the message type

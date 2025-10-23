@@ -38,9 +38,9 @@
 	yautja = mob
 
 	if(require_bracers)
-		if(istype(yautja.gloves, /obj/item/clothing/gloves/yautja/hunter))
+		if(istype(yautja.gloves, /obj/item/clothing/gloves/yautja))
 			bracers = yautja.gloves
-		else if(istype(yautja.get_held_item(), /obj/item/clothing/gloves/yautja/hunter))
+		else if(istype(yautja.get_held_item(), /obj/item/clothing/gloves/yautja))
 			bracers = yautja.get_held_item()
 		if(!bracers)
 			to_chat(yautja, SPAN_WARNING("You don't have bracers."))
@@ -209,7 +209,7 @@
 
 /datum/action/predator_action/bracer/capsule
 	name = "Create Healing Capsule"
-	action_icon_state = "thwei"
+	action_icon_state = "gel_vial"
 	listen_signal = COMSIG_KB_YAUTJA_CAPSULE
 	active = PREDATOR_ACTION_ON_CLICK
 
@@ -241,6 +241,7 @@
 //Misc actions
 /datum/action/yautja_emote_panel
 	name = "Open Emote Panel"
+	icon_file = 'icons/mob/hud/actions_yautja.dmi'
 	button_icon_state = "pred_template"
 	action_icon_state = "looc_toggle"
 
@@ -291,7 +292,7 @@
 	var/list/data = list()
 
 	data["categories"] = yautja_categories
-	data["theme"] = "crtgreen"
+	data["theme"] = "crtred"
 	data["emotes"] = list()
 
 	for(var/datum/emote/living/carbon/human/yautja/emote as anything in yautja_emotes)

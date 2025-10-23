@@ -622,6 +622,9 @@
 "nl" = (
 /obj/structure/largecrate/random/barrel/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/calendar/twe{
+	pixel_y = 28
+	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "nn" = (
@@ -731,6 +734,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
+/obj/structure/sign/calendar/twe{
+	pixel_y = 28
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/royal_marines_station)
 "qw" = (
@@ -948,6 +954,9 @@
 /obj/item/book/manual/marine_law{
 	pixel_x = -3;
 	pixel_y = 1
+	},
+/obj/structure/sign/calendar/twe{
+	pixel_y = 28
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)

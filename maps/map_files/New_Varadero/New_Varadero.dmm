@@ -214,6 +214,49 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
+"aaP" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/oob)
+"aaQ" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
+"aaR" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
+"aaS" = (
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/security)
+"aaT" = (
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"aaU" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"aaV" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva/blue/north,
+/area/varadero/interior/administration)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -1090,6 +1133,9 @@
 	pixel_y = 6
 	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "aHu" = (
@@ -2028,7 +2074,7 @@
 	pixel_x = -11;
 	pixel_y = 4
 	},
-/obj/item/paper/research_notes/good{
+/obj/item/paper/research_notes/unique/tier_three{
 	pixel_x = -15;
 	pixel_y = 2
 	},
@@ -5890,7 +5936,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms3)
 "eGd" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -6371,6 +6417,7 @@
 /area/varadero/exterior/pontoon_beach)
 "faX" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
 "fbw" = (
@@ -7204,7 +7251,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
 "fFI" = (
@@ -9887,12 +9934,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
 "hRs" = (
-/obj/structure/machinery/power/smes/magical{
-	capacity = 9e+008;
-	charge = 9e+008;
-	dir = 4;
-	name = "plasma power generator"
-	},
+/obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
 "hRv" = (
@@ -10226,7 +10268,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "igQ" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "igU" = (
@@ -10880,6 +10922,9 @@
 /area/varadero/exterior/pool)
 "iIt" = (
 /obj/structure/filingcabinet/chestdrawer,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "iIC" = (
@@ -11733,7 +11778,7 @@
 /turf/open/floor/prison/chapel_carpet/doubleside/north,
 /area/varadero/interior/chapel)
 "joO" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
@@ -12918,7 +12963,7 @@
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_SE)
 "kmo" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "kmu" = (
@@ -14331,8 +14376,7 @@
 /obj/structure/machinery/door_control{
 	id = "undergroundhangarsouth";
 	name = "South Dock Door";
-	pixel_x = -24;
-	explo_proof = 1
+	pixel_x = -24
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/varadero/interior/maintenance/north)
@@ -16657,7 +16701,7 @@
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "nwi" = (
-/obj/structure/machinery/power/port_gen/pacman/mrs,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/mrs,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "nwq" = (
@@ -17381,8 +17425,7 @@
 	id = "undergroundhangarsouth";
 	name = "South Dock Door";
 	pixel_x = -32;
-	pixel_y = -18;
-	explo_proof = 1
+	pixel_y = -18
 	},
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/varadero/exterior/lz1_near)
@@ -18876,7 +18919,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "pkT" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/bcircuit,
 /area/varadero/interior/electrical)
 "pkX" = (
@@ -20367,8 +20410,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
-	pixel_x = 3;
-	explo_proof = 1
+	pixel_x = 3
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/exterior/lz1_near)
@@ -20745,6 +20787,7 @@
 /area/varadero/interior/maintenance/research)
 "qDs" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/shiva/red/southeast,
 /area/varadero/interior/security)
 "qDt" = (
@@ -22856,21 +22899,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
-"sgn" = (
-/obj/structure/barricade/handrail{
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "support struts"
-	},
-/obj/structure/barricade/handrail{
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "support struts"
-	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pontoon_beach)
 "sgp" = (
 /obj/structure/barricade/wooden,
 /turf/open/shuttle/elevator,
@@ -23287,7 +23315,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "swM" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/electrical)
@@ -24084,6 +24112,7 @@
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/hall_N)
 "tfc" = (
+/obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning,
 /area/varadero/exterior/lz2_near)
 "tfj" = (
@@ -24132,7 +24161,7 @@
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
 "thp" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/electrical)
 "thS" = (
@@ -28185,7 +28214,7 @@
 /area/varadero/interior/medical)
 "wpC" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "wpG" = (
@@ -28521,8 +28550,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
-	pixel_x = 8;
-	explo_proof = 1
+	pixel_x = 8
 	},
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/unmeltable,
@@ -35490,7 +35518,7 @@ qul
 qul
 qul
 qHc
-mJe
+aaQ
 xCn
 xCn
 oPQ
@@ -43111,7 +43139,7 @@ bZU
 bZU
 xsH
 mrC
-wMw
+aaU
 wMw
 wMw
 wMw
@@ -43337,7 +43365,7 @@ qqA
 qqA
 bYT
 xgG
-xUq
+aaV
 tkT
 rzg
 rzg
@@ -46199,7 +46227,7 @@ lTR
 lTR
 pFZ
 knw
-sgn
+cpF
 dXg
 dXg
 scL
@@ -47312,7 +47340,7 @@ hsl
 giN
 hyr
 sXb
-tzw
+aaT
 aJP
 svH
 kBo
@@ -50072,7 +50100,7 @@ fEZ
 htt
 wVf
 wVf
-idw
+aaS
 jQB
 psb
 idw
@@ -54341,7 +54369,7 @@ mCF
 mCF
 pGs
 pGs
-pGs
+aaP
 wUU
 "}
 (132,1,1) = {"
@@ -56561,7 +56589,7 @@ wlB
 wlB
 wlB
 wlB
-wlB
+aaR
 wlB
 wlB
 wlB

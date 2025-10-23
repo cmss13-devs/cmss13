@@ -60,8 +60,6 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	var/buttoned = TRUE
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
@@ -175,6 +173,10 @@
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 
+/obj/item/clothing/suit/storage/labcoat/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/suit/chef/classic/medical
 	name = "medical's apron"
 	desc = "A basic and sterile white apron, good for surgical and, of course, other medical practices."
@@ -191,6 +193,7 @@
 	icon_state = "snowsuit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -202,7 +205,6 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	blood_overlay_type = "armor"
 	siemens_coefficient = 0.7
-	valid_accessory_slots = list(ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/snow_suit/doctor
 	name = "doctor's snow suit"
@@ -349,6 +351,10 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
 	)
 
+/obj/item/clothing/suit/storage/snow_suit/liaison/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/suit/storage/snow_suit/liaison/modified
 	name = "modified liaison's winter coat"
 	desc = "A Weyland-Yutani winter coat. This one has been modified to holster guns and other objects. Only the best comfort and utility for the liaison surviving in a cold, hostile environment."
@@ -366,3 +372,15 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
+
+/obj/item/clothing/suit/storage/labcoat/brown
+	icon_state = "labcoat_brown"
+	item_state = "labcoat_brown"
+
+/obj/item/clothing/suit/storage/labcoat/short
+	icon_state = "labcoat_short"
+	item_state = "labcoat_short"
+
+/obj/item/clothing/suit/storage/labcoat/long
+	icon_state = "labcoat_long"
+	item_state = "labcoat_long"

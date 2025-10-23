@@ -732,7 +732,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s wiring and terminal."),
 		SPAN_NOTICE("You start removing [src]'s wiring and terminal."))
 		playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			if(!terminal)
 				to_chat(user, SPAN_WARNING("[src] lacks a terminal to remove."))
 				return

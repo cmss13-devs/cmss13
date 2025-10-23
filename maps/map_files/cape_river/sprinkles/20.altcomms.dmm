@@ -1,4 +1,43 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/caperiver/telecomms/telecomm_2)
+"ab" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash,
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/caperiver/telecomms/telecomm_2)
+"ac" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2"
+	},
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/caperiver/telecomms/telecomm_2)
+"ad" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_y = 12
+	},
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/caperiver/telecomms/telecomm_2)
+"ae" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/mats/midchance,
+/turf/open/floor/kutjevo/tan/plate,
+/area/caperiver/telecomms/telecomm_2)
+"af" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
 "aJ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -191,6 +230,10 @@
 	icon_state = "NE-out";
 	pixel_y = 2;
 	pixel_x = 2
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
 	},
 /turf/open/floor/kutjevo/tan/grey_inner_edge/east,
 /area/caperiver/telecomms/telecomm_2)
@@ -480,6 +523,10 @@
 /turf/open/floor/plating/kutjevo,
 /area/caperiver/telecomms/telecomm_2)
 "Vo" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	layer = 3.2
+	},
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/caperiver/telecomms/telecomm_2)
 "Wl" = (
@@ -544,7 +591,7 @@ ss
 EN
 zP
 Tv
-ss
+af
 vM
 vM
 Au
@@ -602,7 +649,7 @@ DO
 DO
 cW
 pc
-No
+ab
 zE
 mt
 vo
@@ -635,8 +682,8 @@ vM
 vM
 DO
 NJ
-Ew
-gK
+ae
+ad
 pn
 eH
 PI
@@ -676,7 +723,7 @@ bY
 tQ
 No
 zE
-zi
+aa
 Nc
 lv
 bR
@@ -710,7 +757,7 @@ DO
 DO
 DO
 XH
-No
+ac
 zE
 ZC
 OT

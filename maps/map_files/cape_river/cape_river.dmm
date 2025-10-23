@@ -12852,6 +12852,7 @@
 /area/caperiver/indoors/caves/nw)
 "aOT" = (
 /obj/structure/flora/grass/desert/lightgrass_8,
+/obj/effect/spawner/random/gun/rifle/lowchance,
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/caperiver/telecomms/telecomm_2)
 "aOU" = (
@@ -20160,7 +20161,7 @@
 /area/caperiver/indoors/miningbase/dorm)
 "bma" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/mats/midchance,
+/obj/effect/spawner/random/mats/lowchance,
 /turf/open/floor/kutjevo/multi_tiles/east,
 /area/caperiver/indoors/miningbase/dorm)
 "bmb" = (
@@ -23368,6 +23369,10 @@
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/floor/kutjevo/tan/multi_tiles/east,
 /area/caperiver/outdoors/scrublands/central)
+"bwK" = (
+/obj/effect/spawner/random/mats/lowchance,
+/turf/open/floor/kutjevo/colors/purple/edge/east,
+/area/caperiver/indoors/miningbase/dorm)
 "bxg" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/reagent_container/food/snacks/meat/human,
@@ -28118,6 +28123,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
 	},
+/obj/effect/spawner/random/gun/pistol/midchance,
 /turf/open/floor/kutjevo/multi_tiles/southwest,
 /area/caperiver/telecomms/telecomm_2)
 "fMK" = (
@@ -61951,7 +61957,7 @@ wmO
 aDe
 pGO
 aap
-btT
+bkC
 blF
 bkC
 bkC
@@ -62155,7 +62161,7 @@ wmO
 aDe
 pGO
 akf
-akf
+bwK
 blj
 blj
 blj

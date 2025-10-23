@@ -1109,7 +1109,7 @@
 /datum/recipe/bun
 	reagents = list("sodiumchloride" = 1)
 	items = list(
-		/obj/item/reagent_container/food/snacks/dough,
+		/obj/item/reagent_container/food/snacks/doughslice,
 	)
 	result = /obj/item/reagent_container/food/snacks/bun
 

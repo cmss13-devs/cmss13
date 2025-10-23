@@ -586,6 +586,10 @@
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smartgun(src)
+
+/obj/item/storage/pouch/magazine/large/pmc_sg/commando/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun/dirty(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/marsoc
@@ -606,20 +610,6 @@
 /obj/item/storage/pouch/magazine/large/m16/ap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap(src)
-
-/obj/item/storage/pouch/magazine/large/m16/ap/black
-	icon_state = "wy_ammo_mag"
-
-/obj/item/storage/pouch/magazine/large/rifle_heap
-	icon_state = "wy_ammo_mag"
-
-/obj/item/storage/pouch/magazine/large/rifle_heap/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/rifle/heap(src)
-
-/obj/item/storage/pouch/magazine/large/m60/fill_preset_inventory()
-	for(var/i in 1 to storage_slots)
-		new /obj/item/ammo_magazine/m60(src)
 
 /obj/item/storage/pouch/shotgun
 	name = "shotgun shell pouch"

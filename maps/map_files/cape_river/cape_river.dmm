@@ -2415,6 +2415,9 @@
 /turf/open/desert/rock,
 /area/caperiver/outdoors/mining_base_exterior/north)
 "ahL" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
 /turf/open/floor/kutjevo/tan/multi_tiles/east,
 /area/caperiver/outdoors/mining_base_exterior/south)
 "ahM" = (
@@ -6293,6 +6296,15 @@
 /turf/open/floor/engine,
 /area/caperiver/indoors/conambase/delivery)
 "aut" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
 /turf/open/floor/kutjevo/tan/multi_tiles/east,
 /area/caperiver/outdoors/scrublands/central)
 "auu" = (
@@ -13155,6 +13167,18 @@
 /obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/desert/rock/deep/transition,
 /area/caperiver/outdoors/scrublands/west/antiweed)
+"aPW" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/mining_base_exterior/south)
 "aPX" = (
 /obj/structure/flora/grass/desert,
 /turf/open/desert/rock,
@@ -20659,6 +20683,15 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/prison,
 /area/caperiver/indoors/processing)
+"bnQ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/mining_base_exterior/south)
 "bnR" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -23269,6 +23302,13 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/plating,
 /area/caperiver/indoors/caves/w)
+"bwD" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/scrublands/central)
 "bwE" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -23279,6 +23319,30 @@
 	},
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/caperiver/indoors/miningbase/rec)
+"bwF" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/mining_base_exterior/south)
+"bwG" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/mining_base_exterior/south)
 "bwH" = (
 /obj/structure/prop/hybrisa/misc/blood/blood3{
 	layer = 4
@@ -23287,6 +23351,23 @@
 /obj/effect/decal/floor_symbol/con_am/alt/top_4,
 /turf/open/floor/darkpurple2/east,
 /area/caperiver/indoors/conambase/unknown)
+"bwI" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/scrublands/central)
+"bwJ" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/scrublands/central)
 "bxg" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/reagent_container/food/snacks/meat/human,
@@ -66766,13 +66847,13 @@ wmO
 aDe
 ajs
 ahL
+bwF
+bwG
+aPW
 ahL
-ahL
-ahL
-ahL
-ahL
-ahL
-ahL
+bwF
+bnQ
+aPW
 ahL
 ajs
 aWQ
@@ -67173,15 +67254,15 @@ wmO
 wmO
 aDe
 ajs
+uJT
+bwJ
+bwI
+aTt
+aTt
+aTt
+bwD
 aut
-aut
-aut
-aut
-aut
-aut
-aut
-aut
-aut
+uJT
 ajs
 aWQ
 aWQ

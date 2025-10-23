@@ -676,11 +676,6 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/caperiver/indoors/caves/se)
-"acg" = (
-/obj/structure/platform/metal/kutjevo/east,
-/obj/structure/flora/grass/desert/lightgrass_2,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/north_east)
 "ach" = (
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/caperiver/outdoors/scrublands/west)
@@ -2058,7 +2053,6 @@
 /turf/open/floor/engine,
 /area/caperiver/indoors/conambase/engi)
 "agC" = (
-/obj/structure/platform/metal/kutjevo/west,
 /obj/structure/flora/bush/desert/cactus/multiple{
 	icon_state = "cacti_11"
 	},
@@ -2476,10 +2470,6 @@
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_west)
-"ahV" = (
-/obj/structure/platform/metal/kutjevo/east,
-/turf/open/floor/coagulation/icon8_3,
-/area/caperiver/outdoors/scrublands/north_east)
 "ahW" = (
 /turf/closed/wall/strata_outpost,
 /area/caperiver/indoors/caves/s)
@@ -2596,10 +2586,6 @@
 /obj/effect/spawner/random/gun/clf_primary/midchance,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
-"aip" = (
-/obj/structure/flora/grass/desert/lightgrass_8,
-/turf/open/auto_turf/sand/layer2,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "aiq" = (
 /obj/structure/sign/safety/north{
 	pixel_x = 7;
@@ -2663,10 +2649,6 @@
 /obj/structure/flora/grass/desert/lightgrass_5,
 /turf/open/desert/rock/deep/transition/southwest,
 /area/caperiver/outdoors/mining_base_exterior/north)
-"aiy" = (
-/obj/structure/platform/metal/kutjevo/north,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/north_east)
 "aiz" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/desert/dirt,
@@ -2715,10 +2697,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/caperiver/outdoors/bushlands)
-"aiI" = (
-/obj/structure/platform/metal/kutjevo,
-/turf/open/desert/dirt/desert_transition_edge1/north,
-/area/caperiver/outdoors/scrublands/north_east)
 "aiJ" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 9
@@ -3840,10 +3818,6 @@
 	},
 /turf/closed/wall/abyssal/standard,
 /area/caperiver/telecomms/telecomm_4)
-"amv" = (
-/obj/structure/platform/metal/kutjevo/west,
-/turf/open/floor/coagulation/icon0_5,
-/area/caperiver/outdoors/scrublands/north_east)
 "amw" = (
 /turf/open/floor/asteroidfloor,
 /area/caperiver/outdoors/scrublands/west)
@@ -5556,10 +5530,6 @@
 	},
 /turf/open/floor/dark,
 /area/caperiver/indoors/conambase/recreational)
-"arV" = (
-/obj/structure/flora/grass/desert/lightgrass_6,
-/turf/open/desert/dirt/desert_transition_edge1/west,
-/area/caperiver/outdoors/mining_base_exterior/south)
 "arW" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 10
@@ -6154,10 +6124,6 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/central)
-"atX" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/turf/open/desert/dirt/desert_transition_corner1,
-/area/caperiver/outdoors/scrublands/north_east)
 "atY" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_10";
@@ -7220,10 +7186,6 @@
 "axf" = (
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/caperiver/outdoors/scrublands/north)
-"axg" = (
-/obj/structure/platform/metal/kutjevo/east,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/north_east)
 "axh" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 1
@@ -7489,6 +7451,11 @@
 	},
 /turf/open/asphalt/cement/cement15,
 /area/caperiver/outdoors/scrublands/south_east)
+"ayb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/sword/machete,
+/turf/open/floor/prison/floor_plate,
+/area/caperiver/telecomms/telecomm_3)
 "ayc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -7781,10 +7748,6 @@
 "ayW" = (
 /turf/open/gm/river/desert/shallow_corner/east,
 /area/caperiver/outdoors/chasm)
-"ayX" = (
-/obj/structure/platform/metal/kutjevo/west,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/north_east)
 "ayY" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#FF9D5C"
@@ -7797,6 +7760,9 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/caperiver/outdoors/road/south)
+"aza" = (
+/turf/closed/wall/solaris/reinforced/hull/lv522,
+/area/caperiver/indoors/conambase/research_w)
 "azb" = (
 /obj/structure/prop/hybrisa/vehicles/Mining_Crawlers{
 	icon_state = "mining_crawler_4";
@@ -7875,10 +7841,6 @@
 	},
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/caperiver/indoors/miningbase/rec)
-"azp" = (
-/obj/structure/platform/metal/kutjevo/north,
-/turf/open/floor/coagulation/icon7_8_2,
-/area/caperiver/outdoors/scrublands/north_east)
 "azq" = (
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/caperiver/outdoors/landing_zone_2)
@@ -8259,12 +8221,6 @@
 "aAu" = (
 /obj/structure/flora/grass/desert/heavygrass_5,
 /turf/open/desert/dirt,
-/area/caperiver/outdoors/mining_base_exterior/south)
-"aAv" = (
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 10
-	},
-/turf/open/desert/dirt/desert_transition_edge1/east,
 /area/caperiver/outdoors/mining_base_exterior/south)
 "aAw" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -8792,6 +8748,7 @@
 /turf/open/desert/rock/deep/rock4,
 /area/caperiver/outdoors/landing_zone_2/cave)
 "aCc" = (
+/obj/item/weapon/sword/machete,
 /turf/open/floor/kutjevo/colors/red,
 /area/caperiver/indoors/miningbase/security)
 "aCd" = (
@@ -9058,9 +9015,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/strata/fake_wood,
 /area/caperiver/outdoors/landing_zone_2/cave)
-"aCT" = (
-/turf/open/gm/river/desert/deep/covered,
-/area/caperiver/outdoors/scrublands/north_east)
 "aCU" = (
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/road/west)
@@ -11013,11 +10967,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/caperiver/outdoors/road/south)
-"aJi" = (
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/platform/metal/kutjevo,
-/turf/open/floor/coagulation/icon0_0,
-/area/caperiver/outdoors/scrublands/north_east)
 "aJj" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/dark,
@@ -11219,10 +11168,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/desert/rock/deep/transition/northwest,
 /area/caperiver/outdoors/landing_zone_2)
-"aJQ" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/north_east)
 "aJR" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8;
@@ -11482,11 +11427,6 @@
 /obj/structure/flora/grass/desert/lightgrass_10,
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/caperiver/outdoors/bushlands)
-"aKC" = (
-/obj/structure/platform/metal/kutjevo/east,
-/obj/structure/platform/metal/kutjevo,
-/turf/open/floor/coagulation/icon8_0,
-/area/caperiver/outdoors/scrublands/north_east)
 "aKD" = (
 /obj/structure/flora/bush/desert/cactus{
 	icon_state = "cacti_7"
@@ -12831,11 +12771,6 @@
 	},
 /turf/closed/wall/abyssal/standard/reinforced,
 /area/caperiver/indoors/conambase/bunker)
-"aOQ" = (
-/obj/structure/platform/metal/kutjevo/north,
-/obj/structure/platform/metal/kutjevo/west,
-/turf/open/floor/coagulation/icon0_8,
-/area/caperiver/outdoors/scrublands/north_east)
 "aOR" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -14591,10 +14526,6 @@
 "aUI" = (
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/caperiver/outdoors/scrublands/west)
-"aUJ" = (
-/obj/structure/platform/metal/kutjevo,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/north_east)
 "aUK" = (
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/scrublands/central)
@@ -15715,10 +15646,6 @@
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
-"aYs" = (
-/obj/structure/platform/metal/kutjevo/west,
-/turf/open/desert/dirt/desert_transition_corner1,
-/area/caperiver/outdoors/scrublands/north_east)
 "aYt" = (
 /obj/structure/flora/bush/desert/cactus/multiple,
 /turf/open/desert/rock,
@@ -22958,13 +22885,6 @@
 /obj/effect/spawner/random/gun/special/midchance,
 /turf/open/floor/kutjevo/tan,
 /area/caperiver/indoors/miningbase/admin)
-"bvg" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#FF9D5C";
-	dir = 6
-	},
-/turf/open/desert/dirt/desert_transition_edge1/southeast,
-/area/caperiver/outdoors/con_am_exterior/north)
 "bvh" = (
 /obj/structure/flora/grass/desert/lightgrass_12,
 /turf/open/desert/rock,
@@ -23506,6 +23426,25 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/plating/kutjevo,
 /area/caperiver/outdoors/landing_zone_1/interior)
+"bwW" = (
+/turf/closed/wall/solaris/reinforced/hull/lv522,
+/area/caperiver/indoors/conambase/research_e)
+"bwX" = (
+/turf/closed/wall/abyssal/blue/unmeltable,
+/area/caperiver/indoors/conambase/research_e)
+"bwY" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/item/weapon/sword/machete,
+/turf/open/floor/dark,
+/area/caperiver/indoors/conambase/research_e)
+"bwZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/pouch/machete/full,
+/turf/open/floor/prison,
+/area/caperiver/indoors/processing)
+"bxa" = (
+/turf/closed/wall/solaris/reinforced/hull/lv522,
+/area/caperiver/indoors/conambase/command)
 "bxg" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/reagent_container/food/snacks/meat/human,
@@ -24093,13 +24032,6 @@
 /obj/effect/decal/sand_overlay/sand2,
 /turf/open/floor/plating/kutjevo,
 /area/caperiver/telecomms/telecomm_4)
-"bYk" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 9
-	},
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/north_east)
 "bYK" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/kutjevo/tan/grey_edge/southwest,
@@ -24537,7 +24469,7 @@
 /turf/open/floor/dark,
 /area/caperiver/indoors/conambase/delivery)
 "crR" = (
-/turf/closed/wall/kutjevo/colony,
+/turf/closed/wall/kutjevo/colony/reinforced,
 /area/caperiver/indoors/miningbase/admin)
 "csa" = (
 /obj/effect/landmark/monkey_spawn,
@@ -28103,10 +28035,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/plating,
 /area/caperiver/indoors/caves/s)
-"fEA" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/north_east)
 "fFC" = (
 /obj/effect/decal/hybrisa/grate{
 	dir = 8
@@ -28440,10 +28368,6 @@
 /area/caperiver/telecomms/telecomm_3)
 "fUE" = (
 /obj/structure/flora/grass/desert/lightgrass_8,
-/turf/open/desert/dirt,
-/area/caperiver/outdoors/mining_base_exterior/north)
-"fUS" = (
-/obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/mining_base_exterior/north)
 "fVL" = (
@@ -29549,10 +29473,6 @@
 "gUP" = (
 /turf/open/asphalt/cement/cement15,
 /area/caperiver/outdoors/con_am_exterior/south)
-"gUU" = (
-/obj/structure/platform/metal/kutjevo,
-/turf/open/floor/coagulation/icon7_0,
-/area/caperiver/outdoors/scrublands/north_east)
 "gVr" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 10
@@ -30928,6 +30848,7 @@
 /area/caperiver/indoors/conambase/engi)
 "igM" = (
 /obj/structure/largecrate/empty/case,
+/obj/item/weapon/sword/machete,
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/bushlands)
 "igR" = (
@@ -31376,10 +31297,6 @@
 /obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/south_east)
-"iCh" = (
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/turf/open/desert/dirt/desert_transition_edge1/northeast,
-/area/caperiver/outdoors/scrublands/north_east)
 "iCi" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 1
@@ -33944,13 +33861,6 @@
 /obj/item/stack/rods,
 /turf/open/floor/engine,
 /area/caperiver/indoors/conambase/research_w)
-"kIN" = (
-/obj/structure/prop/colorable_rock/colorable/alt{
-	color = "#FF9D5C";
-	dir = 8
-	},
-/turf/open/desert/dirt,
-/area/caperiver/outdoors/scrublands/north_west)
 "kJn" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
@@ -34167,7 +34077,7 @@
 /area/caperiver/telecomms/telecomm_4)
 "kVb" = (
 /obj/structure/sign/conam,
-/turf/closed/wall/kutjevo/colony,
+/turf/closed/wall/kutjevo/colony/reinforced,
 /area/caperiver/indoors/miningbase/security)
 "kVu" = (
 /obj/structure/flora/grass/desert/lightgrass_12,
@@ -34897,11 +34807,6 @@
 	},
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/scrublands/north_east)
-"lFT" = (
-/obj/structure/platform/metal/kutjevo/north,
-/obj/structure/platform/metal/kutjevo/east,
-/turf/open/floor/coagulation/icon8_8,
-/area/caperiver/outdoors/scrublands/north_east)
 "lGy" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_4";
@@ -35033,6 +34938,7 @@
 /area/caperiver/telecomms/telecomm_2)
 "lJx" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/item/weapon/sword/machete,
 /turf/open/floor/darkred2/southeast,
 /area/caperiver/indoors/conambase/support)
 "lKb" = (
@@ -36286,13 +36192,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/kutjevo/tan/grey_edge,
 /area/caperiver/indoors/miningbase/admin)
-"mVp" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 6
-	},
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/north_east)
 "mVJ" = (
 /obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/desert/dirt/desert_transition_edge1/north,
@@ -37599,7 +37498,7 @@
 /turf/open/floor/engine,
 /area/caperiver/indoors/conambase/recreational)
 "oes" = (
-/turf/closed/wall/kutjevo/colony,
+/turf/closed/wall/kutjevo/colony/reinforced,
 /area/caperiver/indoors/miningbase/security)
 "oeG" = (
 /obj/item/stack/tile/plasteel{
@@ -37626,7 +37525,7 @@
 /turf/open/desert/rock/deep/transition/east,
 /area/caperiver/outdoors/bushlands)
 "ofT" = (
-/turf/closed/wall/kutjevo/colony,
+/turf/closed/wall/kutjevo/colony/reinforced,
 /area/caperiver/indoors/miningbase/medical)
 "ofV" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -39027,7 +38926,7 @@
 /area/caperiver/outdoors/bushlands)
 "psq" = (
 /obj/structure/sign/nosmoking_1,
-/turf/closed/wall/kutjevo/colony,
+/turf/closed/wall/kutjevo/colony/reinforced,
 /area/caperiver/indoors/miningbase/medical)
 "psz" = (
 /obj/structure/flora/grass/desert/heavygrass_4,
@@ -40511,12 +40410,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/kutjevo/tan/alt_edge/west,
 /area/caperiver/telecomms/telecomm_4)
-"qOM" = (
-/obj/structure/flora/grass/tallgrass/desert/corner{
-	dir = 9
-	},
-/turf/open/desert/dirt/desert_transition_edge1/east,
-/area/caperiver/outdoors/mining_base_exterior/south)
 "qOS" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -45459,11 +45352,6 @@
 	},
 /turf/open/floor/kutjevo/tan,
 /area/caperiver/indoors/miningbase/admin)
-"vsm" = (
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/flora/grass/desert/lightgrass_1,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/north_east)
 "vsp" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -46118,10 +46006,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/caperiver/indoors/conambase/engi)
-"wff" = (
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/north_east)
 "wfm" = (
 /obj/structure/flora/grass/desert/lightgrass_11,
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -46366,11 +46250,6 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/darkpurple2,
 /area/caperiver/indoors/conambase/research_w)
-"wry" = (
-/obj/structure/platform/metal/kutjevo,
-/obj/structure/flora/grass/desert/lightgrass_10,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/north_east)
 "wte" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#FF9D5C";
@@ -47461,7 +47340,7 @@
 /area/caperiver/indoors/conambase/unknown)
 "xpQ" = (
 /obj/structure/sign/conam,
-/turf/closed/wall/kutjevo/colony,
+/turf/closed/wall/kutjevo/colony/reinforced,
 /area/caperiver/indoors/miningbase/admin)
 "xqf" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -47663,10 +47542,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/caperiver/outdoors/road/central)
-"xzB" = (
-/obj/effect/landmark/monkey_spawn,
-/turf/open/desert/dirt/desert_transition_edge1/north,
-/area/caperiver/outdoors/mining_base_exterior/south)
 "xAm" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/desert/rock/deep/transition/east,
@@ -54559,7 +54434,7 @@ acC
 acC
 awP
 acl
-aWQ
+arG
 aWQ
 aWQ
 aWQ
@@ -54964,7 +54839,7 @@ aDW
 abm
 afh
 bkf
-acC
+aWQ
 gdj
 acC
 acC
@@ -55168,7 +55043,7 @@ aDW
 agG
 aRw
 acC
-acC
+aWQ
 acC
 qyG
 acC
@@ -55372,7 +55247,7 @@ qnS
 ssP
 afh
 acC
-acC
+aWQ
 acC
 acC
 acC
@@ -55950,8 +55825,8 @@ aHK
 atS
 atS
 atS
-aLr
-atS
+aWQ
+aWQ
 atS
 atS
 aTx
@@ -56154,9 +56029,9 @@ aPc
 aRB
 aRB
 awk
-uQF
-aip
-fUS
+aWQ
+aWQ
+aWQ
 aLr
 aTx
 ahn
@@ -56359,7 +56234,7 @@ akv
 lfc
 sPj
 aIF
-awq
+aWQ
 crR
 abS
 aTx
@@ -57769,7 +57644,7 @@ aLo
 aLo
 lKv
 dBf
-aSP
+aWQ
 anV
 amM
 atF
@@ -57822,7 +57697,7 @@ awJ
 afh
 aCI
 aYW
-aEA
+aWQ
 dIp
 ayv
 aNk
@@ -57973,8 +57848,8 @@ iyV
 aLo
 aLo
 akC
-aSP
-aSP
+aWQ
+aWQ
 eyu
 abt
 alZ
@@ -58026,9 +57901,9 @@ abm
 afh
 aCI
 aYW
-aZW
-aTm
-abm
+aWQ
+aWQ
+arG
 edY
 sjS
 arG
@@ -58178,8 +58053,8 @@ aLo
 aTf
 tXU
 aSP
-kIN
-aSP
+aWQ
+aWQ
 aSP
 anV
 nFR
@@ -58231,8 +58106,8 @@ aTN
 aCI
 aYW
 rYe
-aAv
-qOM
+aWQ
+aWQ
 vrT
 aJL
 aJL
@@ -58383,8 +58258,8 @@ pNU
 hAt
 ybz
 ahR
-ahR
-aSP
+aWQ
+aWQ
 aSP
 aSP
 aSP
@@ -59659,7 +59534,7 @@ acC
 acC
 aZb
 aTm
-abm
+aWQ
 afh
 mSM
 aAu
@@ -59862,8 +59737,8 @@ acC
 acC
 aEA
 apr
-aHi
-axh
+aWQ
+aWQ
 avv
 aAS
 aAs
@@ -60063,11 +59938,11 @@ baa
 xdO
 afh
 acC
-acC
+bkf
 iju
-aht
-aHi
-axh
+aWQ
+aWQ
+aWQ
 aTN
 aCI
 aYW
@@ -60268,9 +60143,9 @@ aBf
 aJe
 acC
 acC
-xzB
-aht
-aHi
+aWQ
+aWQ
+aWQ
 agG
 afh
 aCI
@@ -60472,8 +60347,8 @@ aJe
 acC
 qyG
 acC
-aZW
-aKI
+aWQ
+aWQ
 agG
 awJ
 lIM
@@ -64766,7 +64641,7 @@ aVf
 aVf
 aVf
 vBk
-rMX
+aWQ
 xCu
 lQR
 aVf
@@ -64969,9 +64844,9 @@ acC
 acC
 tst
 glX
-hfc
-ayv
-arV
+aWQ
+aWQ
+aWQ
 ayv
 woG
 rZw
@@ -65173,9 +65048,9 @@ acC
 acC
 acC
 awP
-aJL
 usJ
-acl
+aWQ
+aWQ
 aPO
 aTm
 baf
@@ -69615,7 +69490,7 @@ hsA
 kme
 boh
 bnT
-bnF
+bwZ
 bnD
 cwx
 clZ
@@ -72469,9 +72344,9 @@ aKX
 vdH
 aYo
 ahw
-aKX
+aWQ
+aWQ
 cSg
-aKX
 wPi
 aKX
 bZg
@@ -72673,11 +72548,11 @@ aKX
 aXS
 aYo
 tOD
-atX
-axg
-axg
-axg
-aJQ
+vbp
+aWQ
+aWQ
+aKX
+aKX
 aKX
 glT
 aKX
@@ -72877,11 +72752,11 @@ fJR
 aXS
 aYo
 aYo
-aiI
-aOQ
-amv
-aJi
-aiy
+ahw
+aWQ
+aWQ
+aWQ
+aKX
 eAd
 bpj
 aKX
@@ -73081,11 +72956,11 @@ aKX
 aky
 aEB
 aYo
-aiI
-azp
-aCT
-gUU
-aiy
+ahw
+aWQ
+aWQ
+aWQ
+aKX
 fZh
 rFD
 tzw
@@ -73285,11 +73160,11 @@ aKX
 dMQ
 aXS
 aZJ
-aiI
-lFT
-ahV
-aKC
-aiy
+ahw
+aKX
+aWQ
+aWQ
+aWQ
 rFD
 fuY
 mGX
@@ -73489,11 +73364,11 @@ kGV
 nRs
 aXS
 aYo
-iCh
-aYs
-ayX
-vsm
-mVp
+aUt
+vbp
+aWQ
+dux
+rFD
 fuY
 iJs
 bie
@@ -73698,11 +73573,11 @@ ahw
 fZh
 rFD
 fuY
-bYk
-acg
-axg
-axg
-aJQ
+bie
+aWQ
+aKX
+aKX
+aKX
 avd
 bie
 tyL
@@ -73902,11 +73777,11 @@ aUt
 vbp
 avd
 bie
-wry
-aOQ
-amv
-aJi
-aiy
+aWQ
+aWQ
+aWQ
+aKX
+aKX
 rDf
 auM
 aKX
@@ -74106,11 +73981,11 @@ aYo
 ahw
 aKX
 aKX
-aUJ
-azp
-aCT
-gUU
-aiy
+aWQ
+aWQ
+aWQ
+aWQ
+aKX
 aKX
 aKX
 xDo
@@ -74310,11 +74185,11 @@ aYo
 cbq
 aKX
 aKX
-aUJ
-lFT
-ahV
-aKC
-aiy
+aKX
+aWQ
+aWQ
+aWQ
+aWQ
 aKX
 auu
 abd
@@ -74514,11 +74389,11 @@ aYo
 aUt
 kFf
 aKX
-wff
+aKX
 agC
-ayX
-ayX
-fEA
+aWQ
+aWQ
+aKX
 rSR
 abd
 aYo
@@ -75736,7 +75611,7 @@ aYo
 ajS
 aiM
 qCw
-mJN
+aza
 ryF
 fzW
 nzx
@@ -75748,8 +75623,8 @@ mJN
 mJN
 mJN
 mJN
-mJN
-mJN
+aza
+aza
 aWQ
 aWQ
 aWQ
@@ -75804,7 +75679,7 @@ bql
 aFH
 vAB
 fWg
-fpp
+ayb
 faE
 fpp
 aeT
@@ -75939,8 +75814,8 @@ wGq
 aWR
 aWR
 aWR
-mJN
-mJN
+aza
+aza
 atx
 vuX
 gQU
@@ -75953,7 +75828,7 @@ atx
 azM
 pnv
 aLM
-mJN
+aza
 mJN
 aWQ
 aWQ
@@ -76761,9 +76636,9 @@ uAM
 slv
 wqX
 mJN
-mJN
-mJN
-mJN
+aza
+aza
+aza
 mJN
 sSk
 ryF
@@ -77565,7 +77440,7 @@ aWQ
 aWQ
 aWQ
 aWQ
-tPz
+aWQ
 dus
 gog
 gog
@@ -77770,7 +77645,7 @@ aWQ
 aWQ
 aWQ
 aWQ
-dus
+aWQ
 gog
 ghT
 bvv
@@ -77974,7 +77849,7 @@ aWQ
 aWQ
 aWQ
 aWQ
-dus
+aWQ
 gog
 gog
 tEY
@@ -77991,8 +77866,8 @@ xjc
 byL
 suK
 xwE
-mJN
-mJN
+aza
+aza
 bmr
 aSo
 wQe
@@ -78182,8 +78057,8 @@ dus
 gog
 gog
 tEY
-mJN
-mJN
+aza
+aza
 bXP
 bXP
 mJN
@@ -78195,8 +78070,8 @@ hgq
 ykA
 bzu
 aEq
-mJN
-mJN
+aza
+aza
 bmr
 buC
 wQe
@@ -78386,8 +78261,8 @@ bvE
 gog
 gog
 tEY
-mJN
-mJN
+aza
+aza
 uUW
 aHD
 fjZ
@@ -78399,8 +78274,8 @@ gBL
 alR
 amQ
 jLh
-mJN
-mJN
+aza
+aza
 bmr
 aSo
 wQe
@@ -79414,8 +79289,8 @@ akD
 tPz
 tPz
 buP
-tPz
-dus
+bvh
+aWQ
 bmK
 bmF
 bvb
@@ -79605,8 +79480,8 @@ nuH
 nuH
 nuH
 nuH
-nuH
-nuH
+bxa
+bxa
 gog
 gog
 gog
@@ -79617,9 +79492,9 @@ buJ
 ovw
 tPz
 tPz
-tPz
 bvh
-dus
+aWQ
+aWQ
 bmK
 bmF
 bvc
@@ -79810,7 +79685,7 @@ boU
 boH
 vbc
 boz
-nuH
+bxa
 gog
 gog
 gog
@@ -79821,9 +79696,9 @@ bvm
 wnm
 wnm
 wnm
-wnm
-wnm
-bvg
+aWQ
+aWQ
+aWQ
 bmK
 bmG
 bmx
@@ -81459,7 +81334,7 @@ aWv
 qDE
 dKF
 irr
-grE
+bwW
 bmr
 tPz
 aSo
@@ -81653,17 +81528,17 @@ tEY
 grE
 grE
 lIQ
-tKg
+bwY
 aBX
-grE
-grE
-grE
-grE
+bwX
+bwX
+bwX
+bwX
 tWf
 tKg
 amr
-grE
-grE
+bwW
+bwW
 bmr
 buQ
 aSo
@@ -81859,15 +81734,15 @@ grE
 jLz
 shy
 aBX
-grE
-grE
-grE
-grE
+bwX
+bwX
+bwX
+bwX
 sdh
 tKg
 rcy
-grE
-grE
+bwW
+bwW
 bmr
 buR
 aSo
@@ -82071,7 +81946,7 @@ aXY
 puQ
 qVQ
 wMB
-grE
+bwW
 bmw
 bmv
 aSo
@@ -82460,7 +82335,7 @@ dGt
 dGt
 bpf
 boT
-nuH
+bxa
 bvK
 gog
 gog
@@ -82663,8 +82538,8 @@ boU
 vbc
 nuH
 bpg
-nuH
-nuH
+bxa
+bxa
 dus
 gog
 ghT
@@ -82674,12 +82549,12 @@ tWf
 dKF
 abg
 tuy
-grE
-grE
+bwX
+bwX
 uWu
 vfX
-grE
-grE
+bwX
+bwX
 qqV
 ksM
 eXq
@@ -82866,9 +82741,9 @@ nuH
 boH
 vbc
 nuH
-nuH
-nuH
-nuH
+bxa
+bxa
+bxa
 dus
 gog
 gog
@@ -82876,16 +82751,16 @@ bvz
 grE
 tWf
 amr
-grE
-grE
-grE
-grE
+bwX
+bwX
+bwX
+bwX
 bgA
 ecT
-grE
-grE
-grE
-grE
+bwX
+bwX
+bwX
+bwX
 wok
 bmC
 grE
@@ -83080,16 +82955,16 @@ tEY
 grE
 tWf
 ujO
-grE
-grE
-grE
+bwX
+bwX
+bwX
 dON
 aXY
 bmX
 rSM
-grE
-grE
-grE
+bwX
+bwX
+bwX
 wok
 aqW
 khT

@@ -176,8 +176,8 @@
 
 /obj/item/storage/firstaid/o2/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/storage/pill_bottle/dexalin(src)
-	new /obj/item/storage/pill_bottle/dexalin(src)
+	new /obj/item/reagent_container/pill/dexalin(src)
+	new /obj/item/reagent_container/pill/dexalin(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)

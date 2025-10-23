@@ -676,6 +676,9 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/caperiver/indoors/caves/se)
+"acg" = (
+/turf/closed/wall/solaris/reinforced/hull/lv522,
+/area/caperiver/indoors/miningbase/dorm)
 "ach" = (
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/caperiver/outdoors/scrublands/west)
@@ -2470,6 +2473,9 @@
 /obj/structure/flora/grass/desert/lightgrass_9,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_west)
+"ahV" = (
+/turf/closed/wall/solaris/reinforced/hull/lv522,
+/area/caperiver/indoors/miningbase/hydro)
 "ahW" = (
 /turf/closed/wall/strata_outpost,
 /area/caperiver/indoors/caves/s)
@@ -2586,6 +2592,9 @@
 /obj/effect/spawner/random/gun/clf_primary/midchance,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/bushlands)
+"aip" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/caperiver/indoors/miningbase/rec)
 "aiq" = (
 /obj/structure/sign/safety/north{
 	pixel_x = 7;
@@ -19471,7 +19480,7 @@
 /area/caperiver/outdoors/mining_base_exterior/south)
 "bkg" = (
 /obj/structure/sign/conam,
-/turf/closed/wall/kutjevo/colony,
+/turf/closed/wall/solaris/reinforced/hull/lv522,
 /area/caperiver/indoors/miningbase/dorm)
 "bkh" = (
 /obj/effect/decal/sand_overlay/sand1,
@@ -37868,7 +37877,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/caperiver/outdoors/scrublands/south_east)
 "ouS" = (
-/turf/closed/wall/kutjevo/colony,
+/turf/closed/wall/solaris/reinforced/hull/lv522,
 /area/caperiver/indoors/miningbase/rec)
 "ovc" = (
 /obj/item/trash/cigbutt,
@@ -39793,7 +39802,7 @@
 /turf/open/desert/rock/deep/transition/northwest,
 /area/caperiver/outdoors/bushlands)
 "qnS" = (
-/turf/closed/wall/kutjevo/colony,
+/turf/closed/wall/kutjevo/colony/reinforced,
 /area/caperiver/indoors/miningbase/hydro)
 "qnV" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
@@ -54425,7 +54434,7 @@ aHj
 aQh
 qnS
 qnS
-qnS
+ahV
 oQo
 akL
 aQK
@@ -54629,8 +54638,8 @@ akF
 uHi
 vHX
 fvA
-qnS
-qnS
+ahV
+ahV
 alw
 anI
 afh
@@ -56058,8 +56067,8 @@ oju
 abY
 qnS
 aQh
-qnS
-qnS
+ahV
+ahV
 ljT
 oiR
 acC
@@ -56262,7 +56271,7 @@ aCI
 ajI
 usJ
 aJL
-qnS
+ahV
 aDG
 adW
 aGw
@@ -57275,12 +57284,12 @@ enB
 vlT
 iQK
 oYw
-ouS
+aip
 rWS
-ouS
+aip
 qtY
 azl
-ouS
+aip
 rWS
 ouS
 ouS
@@ -57479,14 +57488,14 @@ aNQ
 cJx
 wmO
 aDe
-ouS
+aip
 cQm
-ouS
+aip
 wNd
 atU
-ouS
+aip
 uCe
-ouS
+aip
 vuK
 arG
 arG
@@ -57683,14 +57692,14 @@ aNQ
 cJx
 wmO
 aDe
-ouS
+aip
 aIU
 are
 vnL
 aRh
 ntg
 azo
-ouS
+aip
 aDW
 abm
 awJ
@@ -58295,14 +58304,14 @@ aNQ
 cJx
 wmO
 aDe
-ouS
+aip
 aGg
 wMo
 bue
 tLr
 lAZ
 hYy
-ouS
+aip
 aDW
 aHi
 agG
@@ -58499,14 +58508,14 @@ aNQ
 cJx
 wmO
 aDe
-ouS
+aip
 aGo
 fwm
 tLr
 aFh
 aEM
 elJ
-ouS
+aip
 aDW
 agG
 aPO
@@ -58703,7 +58712,7 @@ aNQ
 cJx
 wmO
 aDe
-ouS
+aip
 eht
 bwE
 nYX
@@ -58907,13 +58916,13 @@ aNQ
 cJx
 wmO
 aDe
-ouS
-ouS
+aip
+aip
 aFF
 xxJ
 dxF
 dDN
-ouS
+aip
 ouS
 ouS
 arG
@@ -59112,12 +59121,12 @@ cJx
 wmO
 aDe
 abp
-ouS
+aip
 aFI
 cmp
 rKd
-ouS
-ouS
+aip
+aip
 aJr
 asm
 nzu
@@ -59927,8 +59936,8 @@ cJx
 wmO
 wmO
 aDe
-ouS
-ouS
+aip
+aip
 aBA
 fsb
 afg
@@ -60132,10 +60141,10 @@ wmO
 wmO
 aDe
 abp
-ouS
+aip
 wNd
 atU
-ouS
+aip
 ouS
 aJr
 asm
@@ -61365,7 +61374,7 @@ tQt
 pGO
 pGO
 pGO
-tQt
+acg
 anI
 itx
 aBf
@@ -61569,8 +61578,8 @@ tQt
 bkK
 bkB
 auU
-tQt
-tQt
+acg
+acg
 arG
 afh
 thi
@@ -61774,7 +61783,7 @@ mSF
 mSF
 aGD
 hWG
-tQt
+acg
 bkg
 afh
 gmX
@@ -65038,7 +65047,7 @@ wPY
 wPY
 aNN
 aZu
-tQt
+acg
 bkg
 nyK
 sCj
@@ -65241,8 +65250,8 @@ tQt
 bkN
 bkD
 auU
-tQt
-tQt
+acg
+acg
 mjG
 aJe
 acC
@@ -65445,7 +65454,7 @@ tQt
 pGO
 pGO
 pGO
-tQt
+acg
 aBf
 aJe
 qyG
@@ -81321,7 +81330,7 @@ dus
 gog
 gog
 tEY
-grE
+bwW
 bom
 aDy
 akg
@@ -81525,8 +81534,8 @@ jTS
 gog
 gog
 tEY
-grE
-grE
+bwW
+bwW
 lIQ
 bwY
 aBX
@@ -81729,8 +81738,8 @@ xyO
 gog
 gog
 tEY
-grE
-grE
+bwW
+bwW
 jLz
 shy
 aBX
@@ -81933,7 +81942,7 @@ gog
 oou
 irC
 bvx
-grE
+bwW
 gYD
 ees
 puQ

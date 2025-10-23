@@ -332,6 +332,12 @@
 	icon_state = "head_quarters"
 	minimap_color = MINIMAP_AREA_ENGI
 
+/area/caperiver/indoors/clf_dropship
+	name = "UD-9M 'Dogbite'"
+	icon_state = "head_quarters"
+	requires_power = FALSE
+	minimap_color = MINIMAP_AREA_COLONY
+
 //// -- Telecomms -- \\\\
 
 /area/caperiver/telecomms

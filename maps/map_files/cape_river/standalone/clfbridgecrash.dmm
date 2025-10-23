@@ -1,0 +1,3787 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ak" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/item/storage/firstaid/regular{
+	pixel_y = 2
+	},
+/turf/open/floor/corsat/officetiles,
+/area/caperiver/indoors/clf_dropship)
+"aq" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -7;
+	buckle_offset_x = -7
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 9;
+	buckling_x = 9
+	},
+/obj/structure/machinery/light/blue{
+	pixel_x = 15
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/turf/open/floor/corsat/spiralplate,
+/area/caperiver/indoors/clf_dropship)
+"aJ" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/caperiver/outdoors/scrublands/central)
+"aL" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_E,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/caperiver/indoors/clf_dropship)
+"bc" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 8
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"by" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_4"
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"bI" = (
+/turf/open/auto_turf/sand/layer2,
+/area/caperiver/outdoors/scrublands/central)
+"bJ" = (
+/obj/structure/machinery/floodlight,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"bO" = (
+/obj/structure/machinery/power/power_generator/port_gen,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"co" = (
+/obj/structure/machinery/door_control{
+	id = "clf_cargo_1";
+	name = "Cargo Lockdown";
+	pixel_x = -10;
+	pixel_y = 26
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/obj/structure/largecrate/supply/ammo/m56d,
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/caperiver/indoors/clf_dropship)
+"cB" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/turf/open/gm/river/desert/deep,
+/area/caperiver/outdoors/chasm)
+"cI" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/caperiver/outdoors/scrublands/central)
+"cK" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/caperiver/outdoors/scrublands/central)
+"cO" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/caperiver/outdoors/scrublands/central)
+"cQ" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/scrublands/central)
+"cZ" = (
+/obj/structure/flora/grass/desert/lightgrass_11,
+/obj/structure/barricade/sandbags/wired,
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/caperiver/outdoors/scrublands/central)
+"dc" = (
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/caperiver/outdoors/scrublands/central)
+"dd" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8;
+	closed = 0
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/scrublands/central)
+"dq" = (
+/obj/structure/flora/tree/joshua,
+/obj/item/trash/cigbutt,
+/turf/open/desert/rock/deep/transition/east,
+/area/caperiver/outdoors/scrublands/central)
+"dr" = (
+/turf/open/desert/desert_shore/shore_corner2/east,
+/area/caperiver/outdoors/scrublands/central)
+"dt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock/deep,
+/area/caperiver/outdoors/scrublands/central)
+"dx" = (
+/turf/open/floor/prison/cell_stripe/east,
+/area/caperiver/outdoors/scrublands/central)
+"dF" = (
+/obj/structure/machinery/light/dropship/red{
+	dir = 8
+	},
+/obj/item/stack/cable_coil/cut{
+	icon_state = "coil1"
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "28"
+	},
+/area/caperiver/indoors/clf_dropship)
+"dJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/caperiver/outdoors/scrublands/central)
+"dM" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe/west,
+/area/caperiver/outdoors/scrublands/central)
+"ee" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"eo" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/caperiver/outdoors/scrublands/central)
+"ep" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidfloor,
+/area/caperiver/outdoors/scrublands/central)
+"es" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "wy_leftengine"
+	},
+/area/caperiver/indoors/clf_dropship)
+"eO" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	dir = 6
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/caperiver/outdoors/scrublands/central)
+"eR" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -7;
+	pixel_y = 15;
+	buckling_x = -7;
+	buckling_y = 15
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 9;
+	pixel_y = 15;
+	buckling_x = 9;
+	buckling_y = 15
+	},
+/obj/structure/machinery/light/blue{
+	dir = 1;
+	pixel_x = -15;
+	pixel_y = 20
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/corsat/spiralplate,
+/area/caperiver/indoors/clf_dropship)
+"eY" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "9_alt"
+	},
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "45"
+	},
+/turf/open/desert/rock/deep,
+/area/caperiver/indoors/clf_dropship)
+"fd" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock/deep,
+/area/caperiver/outdoors/scrublands/central)
+"ff" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/effect/landmark/survivor_spawner/clf_medic/caperiver,
+/turf/open/floor/corsat/officetiles,
+/area/caperiver/indoors/clf_dropship)
+"fh" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/item/clothing/head/militia/bucket{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/floor/corsat/officetiles,
+/area/caperiver/indoors/clf_dropship)
+"fj" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/clothing/accessory/storage/webbing/black,
+/obj/item/clothing/accessory/storage/webbing/black,
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/caperiver/indoors/clf_dropship)
+"fk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/scrublands/central)
+"fo" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "97"
+	},
+/area/caperiver/indoors/clf_dropship)
+"fC" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	dir = 10
+	},
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/caperiver/outdoors/scrublands/central)
+"fM" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
+	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/caperiver/outdoors/scrublands/central)
+"fO" = (
+/obj/structure/prop/dam/large_boulder/boulder1,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"fV" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 9
+	},
+/turf/open/asphalt/cement/cement2,
+/area/caperiver/outdoors/scrublands/central)
+"fX" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/central)
+"gf" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 5
+	},
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/plating/kutjevo,
+/area/caperiver/outdoors/scrublands/central)
+"gh" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 4;
+	closed = 0
+	},
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"gu" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/caperiver/outdoors/scrublands/central)
+"gA" = (
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/caperiver/outdoors/scrublands/central)
+"gK" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/caperiver/outdoors/scrublands/central)
+"gN" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_E,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/caperiver/indoors/clf_dropship)
+"gQ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/structure/tent/big,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning/west,
+/area/caperiver/outdoors/scrublands/central)
+"gW" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"gY" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "brokendropshipconsole3"
+	},
+/area/caperiver/indoors/clf_dropship)
+"gZ" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "103"
+	},
+/area/caperiver/indoors/clf_dropship)
+"ha" = (
+/obj/structure/machinery/light/spot/blue,
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "101"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/caperiver/indoors/clf_dropship)
+"hb" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 6
+	},
+/turf/open/desert/rock/deep/transition/northwest,
+/area/caperiver/outdoors/scrublands/central)
+"ho" = (
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/caperiver/outdoors/scrublands/central)
+"ht" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"hy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidfloor,
+/area/caperiver/outdoors/scrublands/central)
+"hA" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "31"
+	},
+/area/caperiver/indoors/clf_dropship)
+"hD" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	dir = 4
+	},
+/obj/item/trash/cigbutt,
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/caperiver/outdoors/scrublands/central)
+"hG" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "98"
+	},
+/area/caperiver/indoors/clf_dropship)
+"hM" = (
+/turf/closed/wall/strata_ice/rock,
+/area/caperiver/oob)
+"hQ" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "92"
+	},
+/area/caperiver/indoors/clf_dropship)
+"hZ" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/obj/item/trash/cigbutt,
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/caperiver/outdoors/scrublands/central)
+"io" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "110";
+	dir = 4
+	},
+/area/caperiver/indoors/clf_dropship)
+"iq" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1;
+	pixel_x = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock/deep,
+/area/caperiver/outdoors/scrublands/central)
+"ir" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/turf/open/floor/asteroidwarning/west,
+/area/caperiver/outdoors/scrublands/central)
+"is" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/caperiver/outdoors/scrublands/central)
+"iy" = (
+/obj/structure/barricade/sandbags/wired,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"iz" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"iF" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/caperiver/outdoors/scrublands/central)
+"iN" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1;
+	pixel_x = 6
+	},
+/turf/open/desert/rock/deep,
+/area/caperiver/outdoors/scrublands/central)
+"ja" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/corsat/officetiles,
+/area/caperiver/indoors/clf_dropship)
+"jj" = (
+/turf/open/desert/desert_shore/shore_corner2,
+/area/caperiver/outdoors/scrublands/central)
+"jz" = (
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/caperiver/outdoors/scrublands/central)
+"jA" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"jD" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/obj/structure/machinery/colony_floodlight,
+/turf/open/asphalt/cement,
+/area/caperiver/outdoors/scrublands/central)
+"jI" = (
+/turf/open/desert/rock/deep/transition/northwest,
+/area/caperiver/outdoors/scrublands/central)
+"jM" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 1
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"jQ" = (
+/obj/structure/prop/dam/boulder/boulder1,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"jW" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/test_floor4,
+/area/caperiver/indoors/clf_dropship)
+"kp" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	dir = 5
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/caperiver/outdoors/scrublands/central)
+"ky" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"kz" = (
+/obj/structure/flora/grass/desert/lightgrass_7,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"kA" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/central)
+"kC" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/structure/machinery/faxmachine{
+	department = "CLF - Cell 42"
+	},
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/scrublands/central)
+"kJ" = (
+/obj/structure/prop/structure_lattice{
+	desc = "An old company comms tower used to transmit communications between subspace bodies. Looks like this one has seen better days.";
+	dir = 4;
+	icon = 'icons/obj/structures/machinery/comm_tower2.dmi';
+	icon_state = "construct_9_1";
+	layer = 5;
+	level = 5;
+	name = "destroyed comms tower"
+	},
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/turf/open/floor/plating/kutjevo,
+/area/caperiver/outdoors/scrublands/central)
+"kM" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1;
+	pixel_y = 8;
+	buckling_y = 8;
+	pixel_x = 5;
+	buckling_x = 5
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/structure/machinery/door_control{
+	id = "clf_lockdown";
+	name = "Dropship Lockdown";
+	pixel_x = -15;
+	pixel_y = 22
+	},
+/obj/item/device/binoculars{
+	pixel_y = 5;
+	pixel_x = -15
+	},
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/caperiver/indoors/clf_dropship)
+"kR" = (
+/obj/structure/bed/hybrisa/bunkbed3{
+	dir = 4;
+	pixel_y = 8;
+	buckling_y = 16
+	},
+/obj/structure/sign/poster/pinup{
+	pixel_x = 6;
+	pixel_y = 31;
+	layer = 2.9
+	},
+/obj/structure/machinery/light/blue{
+	dir = 4;
+	pixel_y = -8
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/prison/southwest,
+/area/caperiver/indoors/clf_dropship)
+"lf" = (
+/obj/structure/flora/grass/desert/lightgrass_5,
+/obj/structure/machinery/floodlight,
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/caperiver/outdoors/scrublands/central)
+"lq" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/turf/open/gm/river/desert/shallow_edge,
+/area/caperiver/outdoors/chasm)
+"lr" = (
+/obj/item/stack/sheet/metal,
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "20"
+	},
+/area/caperiver/indoors/clf_dropship)
+"lv" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"lM" = (
+/obj/structure/flora/bush/desert/cactus{
+	icon_state = "cactus_4"
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"lP" = (
+/obj/structure/flora/grass/desert/lightgrass_5,
+/obj/effect/landmark/survivor_spawner/clf_engi/caperiver,
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/caperiver/outdoors/scrublands/central)
+"lW" = (
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/turf/open/gm/river/desert/shallow_edge,
+/area/caperiver/outdoors/chasm)
+"mn" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired,
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/central)
+"mp" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/caperiver/outdoors/scrublands/central)
+"mq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock/deep/transition/north,
+/area/caperiver/outdoors/scrublands/central)
+"my" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"mO" = (
+/obj/item/attachable/bayonet/upp,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"mQ" = (
+/obj/structure/flora/grass/desert/lightgrass_10,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"mT" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"mY" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock/deep/transition/northwest,
+/area/caperiver/outdoors/scrublands/central)
+"ne" = (
+/obj/structure/machinery/light/dropship/green{
+	dir = 4
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "83"
+	},
+/area/caperiver/indoors/clf_dropship)
+"ng" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/obj/item/stack/cable_coil/cut{
+	icon_state = "coil2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock/deep,
+/area/caperiver/outdoors/scrublands/central)
+"nh" = (
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer2,
+/area/caperiver/outdoors/scrublands/central)
+"nw" = (
+/turf/open/floor/prison/cell_stripe/west,
+/area/caperiver/outdoors/scrublands/north)
+"nz" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/turf/open/floor/corsat/officetiles,
+/area/caperiver/indoors/clf_dropship)
+"nA" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/turf/open/asphalt/cement/cement3,
+/area/caperiver/outdoors/scrublands/central)
+"nM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"nN" = (
+/turf/open/desert/rock/deep/transition/west,
+/area/caperiver/outdoors/scrublands/central)
+"nU" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/book/codebook/clf{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/paper_bin{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/item/tool/pen,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/scrublands/central)
+"oa" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "leftengine_3"
+	},
+/area/caperiver/indoors/clf_dropship)
+"og" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 9
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/asphalt/cement/cement2,
+/area/caperiver/outdoors/scrublands/central)
+"oQ" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "49"
+	},
+/turf/open/desert/rock/deep,
+/area/caperiver/indoors/clf_dropship)
+"oU" = (
+/obj/item/stack/sheet/metal,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"po" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf{
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/item/mre_food_packet/clf{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/asteroidwarning/west,
+/area/caperiver/outdoors/scrublands/central)
+"pB" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 10
+	},
+/turf/open/floor/asteroidwarning/southwest,
+/area/caperiver/outdoors/scrublands/central)
+"pD" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -7;
+	pixel_y = 15;
+	buckling_x = -7;
+	buckling_y = 15
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 9;
+	pixel_y = 15;
+	buckling_x = 9;
+	buckling_y = 15
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/floor/corsat/spiralplate,
+/area/caperiver/indoors/clf_dropship)
+"pL" = (
+/obj/structure/flora/bush/desert/cactus{
+	icon_state = "cactus_7"
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/caperiver/outdoors/scrublands/central)
+"pO" = (
+/obj/effect/decal/medical_decals{
+	dir = 4;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3";
+	pixel_x = -2
+	},
+/obj/structure/surface/rack{
+	pixel_y = 17;
+	density = 0;
+	layer = 2.4
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = 12;
+	pixel_y = 5;
+	layer = 3.1
+	},
+/obj/item/roller{
+	pixel_x = 1;
+	pixel_y = -1;
+	layer = 2.41
+	},
+/turf/open/floor/prison/southwest,
+/area/caperiver/indoors/clf_dropship)
+"pQ" = (
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/structure/closet/crate/ammo,
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/obj/structure/machinery/door_control{
+	id = "clf_cargo_2";
+	name = "Cargo Lockdown";
+	pixel_x = -10;
+	pixel_y = -20
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/caperiver/indoors/clf_dropship)
+"pT" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/caperiver/outdoors/scrublands/central)
+"pY" = (
+/obj/item/stack/rods{
+	pixel_x = -8
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "34"
+	},
+/area/caperiver/indoors/clf_dropship)
+"pZ" = (
+/obj/structure/prop/dam/boulder/boulder3,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"qa" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/mre_food_packet/clf,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"qh" = (
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"qp" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 4
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"qt" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/closed/wall/strata_ice/rock,
+/area/caperiver/oob)
+"qw" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"qA" = (
+/obj/structure/machinery/door/airlock/prison_hatch,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper UD-9M 'Dogbite'";
+	color = "#646464";
+	id = "clf_lockdown";
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/caperiver/indoors/clf_dropship)
+"qI" = (
+/obj/structure/sign/banners/clf_flag{
+	pixel_x = -14;
+	pixel_y = 31;
+	layer = 2.9
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_W,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/caperiver/indoors/clf_dropship)
+"qL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/caperiver/outdoors/scrublands/central)
+"qM" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/caperiver/outdoors/scrublands/central)
+"qN" = (
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"rb" = (
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/spawner/random/technology_scanner,
+/obj/effect/spawner/random/toolbox{
+	pixel_y = 12
+	},
+/obj/structure/surface/rack{
+	color = "#8B7B5B"
+	},
+/turf/open/desert/rock/deep,
+/area/caperiver/outdoors/scrublands/central)
+"ro" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock/deep/transition/northeast,
+/area/caperiver/outdoors/scrublands/central)
+"ry" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "10_interior_1"
+	},
+/area/caperiver/indoors/clf_dropship)
+"rC" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/caperiver/outdoors/scrublands/central)
+"rD" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 10
+	},
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/plating/kutjevo,
+/area/caperiver/outdoors/scrublands/central)
+"rN" = (
+/obj/structure/machinery/door_control{
+	id = "clf_cargo_1";
+	name = "Cargo Lockdown";
+	pixel_x = -10;
+	pixel_y = -20
+	},
+/obj/structure/closet/crate/green,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/under/colonist/clf,
+/obj/item/clothing/under/colonist/clf,
+/obj/item/clothing/under/colonist/clf,
+/obj/item/clothing/under/colonist/clf,
+/obj/item/roller/bedroll,
+/obj/item/roller/bedroll,
+/obj/item/roller/bedroll,
+/obj/item/roller/bedroll,
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/prison/southwest,
+/area/caperiver/indoors/clf_dropship)
+"rP" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/officetiles,
+/area/caperiver/indoors/clf_dropship)
+"rU" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"sG" = (
+/obj/item/trash/cigbutt,
+/obj/item/tool/shovel/etool,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"sI" = (
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/turf/open/gm/river/desert/shallow,
+/area/caperiver/outdoors/chasm)
+"sK" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "wy_rightengine"
+	},
+/area/caperiver/indoors/clf_dropship)
+"sL" = (
+/obj/structure/flora/grass/desert/lightgrass_11,
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/caperiver/outdoors/scrublands/central)
+"sP" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -7;
+	pixel_y = 15;
+	buckling_x = -7;
+	buckling_y = 15
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 9;
+	pixel_y = 15;
+	buckling_x = 9;
+	buckling_y = 15
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_W,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/spiralplate,
+/area/caperiver/indoors/clf_dropship)
+"sS" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	dir = 8
+	},
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/caperiver/outdoors/scrublands/central)
+"sW" = (
+/turf/open/desert/rock/deep,
+/area/caperiver/outdoors/scrublands/central)
+"sY" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/caperiver/outdoors/scrublands/central)
+"tk" = (
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"to" = (
+/turf/open/floor/prison/ramptop/north,
+/area/caperiver/outdoors/scrublands/central)
+"tE" = (
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/caperiver/outdoors/scrublands/central)
+"tK" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "102"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/caperiver/indoors/clf_dropship)
+"tM" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "95"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/caperiver/indoors/clf_dropship)
+"tP" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 9;
+	buckling_x = 9
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -7;
+	buckle_offset_x = -7
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/decal/hybrisa/warning/redandwhite_E,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/floor/corsat/spiralplate,
+/area/caperiver/indoors/clf_dropship)
+"tV" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"tX" = (
+/obj/item/stack/cable_coil/cut{
+	icon_state = "coil2"
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "35"
+	},
+/area/caperiver/indoors/clf_dropship)
+"uA" = (
+/obj/item/trash/cigbutt,
+/turf/open/desert/rock/deep/transition/north,
+/area/caperiver/outdoors/scrublands/central)
+"uD" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/caperiver/outdoors/scrublands/central)
+"uF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"uI" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#FF9D5C";
+	dir = 4
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/caperiver/outdoors/scrublands/central)
+"uY" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/desert/desert_shore/shore_edge1/west,
+/area/caperiver/outdoors/scrublands/central)
+"vm" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"vo" = (
+/turf/open/floor/prison,
+/area/caperiver/outdoors/scrublands/north)
+"vs" = (
+/obj/item/reagent_container/food/snacks/meat,
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_x = 3;
+	pixel_y = 7
+	},
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/caperiver/outdoors/scrublands/central)
+"vu" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/scrublands/central)
+"vA" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "45"
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/desert/rock/deep,
+/area/caperiver/outdoors/scrublands/central)
+"vE" = (
+/obj/structure/cable{
+	icon_state = "2-6";
+	color = "#550d0d";
+	level = 2;
+	pixel_x = -16;
+	pixel_y = 5
+	},
+/obj/structure/cable{
+	icon_state = "2-8";
+	level = 2;
+	color = "#550d0d";
+	pixel_y = -10;
+	pixel_x = 14
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"vM" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/caperiver/outdoors/scrublands/central)
+"vO" = (
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper UD-9M 'Dogbite' - Cargo Hold";
+	color = "#646464";
+	id = "clf_cargo_1"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/caperiver/indoors/clf_dropship)
+"vV" = (
+/obj/structure/flora/grass/desert/heavygrass_9,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"wc" = (
+/obj/structure/prop/ice_colony/hula_girl{
+	pixel_x = -14;
+	pixel_y = 20
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "brokendropshipconsole1"
+	},
+/area/caperiver/indoors/clf_dropship)
+"wf" = (
+/turf/open/gm/river/desert/shallow_edge/north,
+/area/caperiver/outdoors/chasm)
+"wh" = (
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/floor/asteroidwarning,
+/area/caperiver/outdoors/scrublands/central)
+"wB" = (
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper UD-9M 'Dogbite' - Cargo Hold";
+	color = "#646464";
+	id = "clf_cargo_2"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/test_floor4,
+/area/caperiver/indoors/clf_dropship)
+"wE" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "110"
+	},
+/area/caperiver/indoors/clf_dropship)
+"wL" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "99"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/caperiver/indoors/clf_dropship)
+"wM" = (
+/obj/item/stack/sandbags_empty/half,
+/turf/open/auto_turf/sand/layer2,
+/area/caperiver/outdoors/scrublands/central)
+"wN" = (
+/obj/item/stack/rods,
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "29"
+	},
+/area/caperiver/indoors/clf_dropship)
+"wQ" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/scrublands/central)
+"wZ" = (
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"xh" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "15_alt"
+	},
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "44"
+	},
+/turf/open/desert/rock/deep,
+/area/caperiver/indoors/clf_dropship)
+"xj" = (
+/obj/structure/flora/grass/desert/heavygrass_3,
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/caperiver/outdoors/scrublands/central)
+"xm" = (
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/turf/open/gm/river/desert/shallow_edge/north,
+/area/caperiver/outdoors/chasm)
+"xs" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/central)
+"xD" = (
+/obj/item/trash/cigbutt,
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/caperiver/outdoors/scrublands/central)
+"xJ" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "32"
+	},
+/area/caperiver/indoors/clf_dropship)
+"xN" = (
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/central)
+"xS" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/caperiver/outdoors/scrublands/central)
+"yf" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/item/clothing/accessory/storage/webbing/black,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/test_floor4,
+/area/caperiver/indoors/clf_dropship)
+"yp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock/deep/transition/northeast,
+/area/caperiver/outdoors/scrublands/central)
+"yw" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "39"
+	},
+/area/caperiver/indoors/clf_dropship)
+"yA" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/obj/item/clothing/mask/breath/medical{
+	pixel_x = -3
+	},
+/turf/open/floor/prison/southwest,
+/area/caperiver/indoors/clf_dropship)
+"yB" = (
+/obj/structure/flora/bush/desert/cactus{
+	icon_state = "cactus_7"
+	},
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/caperiver/outdoors/scrublands/central)
+"yE" = (
+/obj/structure/flora/grass/desert/lightgrass_5,
+/turf/open/desert/rock/deep,
+/area/caperiver/outdoors/scrublands/central)
+"yG" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "23"
+	},
+/area/caperiver/indoors/clf_dropship)
+"yP" = (
+/turf/open/desert/rock/deep/transition/northeast,
+/area/caperiver/outdoors/scrublands/central)
+"yU" = (
+/turf/open/floor/prison,
+/area/caperiver/outdoors/scrublands/central)
+"zb" = (
+/turf/open/desert/desert_shore/desert_shore1,
+/area/caperiver/outdoors/scrublands/central)
+"ze" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/cell_stripe/west,
+/area/caperiver/outdoors/scrublands/north)
+"zg" = (
+/obj/structure/flora/grass/desert/lightgrass_7,
+/turf/open/desert/rock/deep/transition/northwest,
+/area/caperiver/outdoors/scrublands/central)
+"zi" = (
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/weapon/gun/smg/fp9000,
+/obj/structure/closet/crate/ammo,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/test_floor5,
+/area/caperiver/indoors/clf_dropship)
+"zn" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "78"
+	},
+/area/caperiver/indoors/clf_dropship)
+"zp" = (
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/turf/open/gm/river/desert/shallow_corner,
+/area/caperiver/outdoors/chasm)
+"zr" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/corsat/officetiles,
+/area/caperiver/indoors/clf_dropship)
+"zA" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "27"
+	},
+/area/caperiver/indoors/clf_dropship)
+"zC" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/turf/open/floor/prison/ramptop,
+/area/caperiver/indoors/clf_dropship)
+"zI" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "30"
+	},
+/area/caperiver/indoors/clf_dropship)
+"zX" = (
+/obj/structure/prop/hybrisa/airport/dropshipenginedamage{
+	light_on = 1;
+	light_power = 5;
+	light_range = 6
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "22"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Af" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 9
+	},
+/obj/structure/machinery/floodlight,
+/turf/open/asphalt/cement/cement2,
+/area/caperiver/outdoors/scrublands/central)
+"Ap" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/cell_stripe/west,
+/area/caperiver/outdoors/scrublands/central)
+"Aw" = (
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/turf/open/desert/desert_shore/shore_corner2,
+/area/caperiver/outdoors/chasm)
+"AB" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/item/clothing/accessory/storage/webbing/black,
+/turf/open/floor/almayer/test_floor4,
+/area/caperiver/indoors/clf_dropship)
+"AD" = (
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/caperiver/outdoors/scrublands/central)
+"AN" = (
+/obj/structure/machinery/optable{
+	dir = 1;
+	density = 0
+	},
+/obj/structure/sign/safety/medical{
+	pixel_x = 22;
+	pixel_y = 28;
+	layer = 2.9
+	},
+/obj/structure/machinery/light/blue{
+	dir = 8;
+	pixel_y = -8
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/surface/rack{
+	pixel_y = 17;
+	density = 0;
+	layer = 2.4
+	},
+/obj/item/storage/surgical_tray{
+	pixel_x = 1;
+	pixel_y = -3
+	},
+/turf/open/floor/prison/southwest,
+/area/caperiver/indoors/clf_dropship)
+"AV" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/structure/sign/poster/clf{
+	pixel_y = 32
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/scrublands/central)
+"AY" = (
+/obj/structure/prop/dam/boulder/boulder2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Bb" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/floor/almayer/test_floor4,
+/area/caperiver/indoors/clf_dropship)
+"Bd" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/corsat/officetiles,
+/area/caperiver/indoors/clf_dropship)
+"Bk" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/sand/layer2,
+/area/caperiver/outdoors/scrublands/central)
+"Bl" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	dir = 6
+	},
+/obj/item/stack/cable_coil/cut{
+	icon_state = "coil2"
+	},
+/turf/open/desert/rock/deep/transition/north,
+/area/caperiver/outdoors/scrublands/central)
+"Bu" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/obj/structure/barricade/plasteel/wired,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"BA" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2";
+	pixel_y = 14
+	},
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/caperiver/outdoors/scrublands/central)
+"BH" = (
+/obj/item/stack/sheet/metal/med_large_stack,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/surface/rack{
+	color = "#8B7B5B"
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"BJ" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "96"
+	},
+/area/caperiver/indoors/clf_dropship)
+"BU" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/obj/item/stack/rods{
+	pixel_x = -8
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"BW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "3"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Cs" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	dir = 1
+	},
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/caperiver/outdoors/scrublands/central)
+"Ct" = (
+/obj/item/stack/sandbags/small_stack,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"Cw" = (
+/obj/structure/shuttle/part/dropship_clf/transparent,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/desert/rock,
+/area/caperiver/indoors/clf_dropship)
+"Cx" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "94"
+	},
+/area/caperiver/indoors/clf_dropship)
+"CL" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "7"
+	},
+/area/caperiver/indoors/clf_dropship)
+"CN" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "46"
+	},
+/turf/open/desert/rock/deep,
+/area/caperiver/indoors/clf_dropship)
+"CS" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "2"
+	},
+/turf/open/desert/rock/deep/transition/northeast,
+/area/caperiver/indoors/clf_dropship)
+"CT" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "38"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Da" = (
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/scrublands/central)
+"Dy" = (
+/obj/effect/attach_point/electronics/dropship1{
+	dir = 1;
+	attach_id = 5
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "106"
+	},
+/area/caperiver/indoors/clf_dropship)
+"DB" = (
+/obj/structure/closet/crate/ammo,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/test_floor5,
+/area/caperiver/indoors/clf_dropship)
+"DJ" = (
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/caperiver/outdoors/scrublands/central)
+"DK" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "4"
+	},
+/area/caperiver/indoors/clf_dropship)
+"DU" = (
+/obj/structure/largecrate/random/barrel/brown{
+	layer = 4.1;
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"DX" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "37"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Ei" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Ej" = (
+/obj/item/trash/cigbutt,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Eo" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/caperiver/outdoors/scrublands/central)
+"EP" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/floor/asteroidwarning/southeast,
+/area/caperiver/outdoors/scrublands/central)
+"ER" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/central)
+"Fe" = (
+/obj/structure/flora/grass/desert/lightgrass_11,
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
+	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/caperiver/outdoors/scrublands/central)
+"Ff" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags/wired,
+/turf/open/asphalt/cement/cement3,
+/area/caperiver/outdoors/scrublands/central)
+"Fg" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/obj/structure/flora/grass/desert/heavygrass_10,
+/turf/open/desert/rock/deep/transition/west,
+/area/caperiver/outdoors/scrublands/central)
+"Ft" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "16"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Fu" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "leftengine_1";
+	opacity = 0
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/desert/rock/deep,
+/area/caperiver/indoors/clf_dropship)
+"FG" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/caperiver/outdoors/scrublands/north)
+"FJ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/floor/asteroidwarning/east,
+/area/caperiver/outdoors/scrublands/central)
+"FK" = (
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper UD-9M 'Dogbite' - Cargo Hold";
+	color = "#646464";
+	id = "clf_cargo_1"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/test_floor4,
+/area/caperiver/indoors/clf_dropship)
+"Gf" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/storage/box/clf{
+	pixel_x = 8;
+	pixel_y = 1
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Gh" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	dir = 4
+	},
+/obj/structure/flora/grass/desert/lightgrass_4,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/scrublands/central)
+"Gu" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 9
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement2,
+/area/caperiver/outdoors/scrublands/central)
+"Gv" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/caperiver/outdoors/scrublands/central)
+"GC" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"GK" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3"
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"GO" = (
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 1
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/caperiver/outdoors/scrublands/central)
+"GV" = (
+/obj/structure/fence/slim/door{
+	dir = 4
+	},
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/caperiver/outdoors/mining_base_exterior/south)
+"GY" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/obj/structure/cable{
+	icon_state = "5-9";
+	color = "#550d0d";
+	level = 2;
+	pixel_y = -26
+	},
+/turf/open/floor/plating/kutjevo,
+/area/caperiver/outdoors/scrublands/central)
+"Hb" = (
+/obj/item/trash/cigbutt,
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"Hf" = (
+/obj/structure/flora/grass/desert/heavygrass_9,
+/obj/structure/flag/plantable/clf,
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/central)
+"Hg" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/central)
+"Hh" = (
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/turf/open/gm/river/desert/shallow_edge/northeast,
+/area/caperiver/outdoors/chasm)
+"Hm" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"Hp" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/caperiver/outdoors/scrublands/central)
+"Hy" = (
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/caperiver/outdoors/scrublands/central)
+"HE" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning/west,
+/area/caperiver/outdoors/scrublands/central)
+"HG" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/desert/desert_shore/desert_shore1,
+/area/caperiver/outdoors/scrublands/central)
+"HH" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "24"
+	},
+/area/caperiver/indoors/clf_dropship)
+"HJ" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 1
+	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/caperiver/outdoors/scrublands/central)
+"HS" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/central)
+"HT" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/caperiver/outdoors/scrublands/north)
+"Ic" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/clothing/accessory/patch/clf_patch,
+/turf/open/floor/asteroidwarning/west,
+/area/caperiver/outdoors/scrublands/central)
+"Ie" = (
+/obj/structure/machinery/door/airlock/prison_hatch{
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/caperiver/indoors/clf_dropship)
+"Ig" = (
+/obj/structure/flora/grass/desert/lightgrass_12,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Ix" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "36"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Iy" = (
+/turf/open/desert/rock/deep/transition/east,
+/area/caperiver/outdoors/scrublands/central)
+"IX" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper UD-9M 'Dogbite' - Cargo Hold";
+	color = "#646464";
+	id = "clf_cargo_2"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/caperiver/indoors/clf_dropship)
+"Jd" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired,
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/caperiver/outdoors/scrublands/central)
+"Ju" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/caperiver/outdoors/scrublands/central)
+"JD" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement4,
+/area/caperiver/outdoors/scrublands/central)
+"JF" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/turf/open/floor/asteroidwarning/east,
+/area/caperiver/outdoors/scrublands/central)
+"JU" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "36_alt"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Kb" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/caperiver/outdoors/scrublands/central)
+"Kk" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "5"
+	},
+/turf/open/desert/rock/deep,
+/area/caperiver/indoors/clf_dropship)
+"Kz" = (
+/turf/open/floor/prison/cell_stripe/east,
+/area/caperiver/outdoors/scrublands/north)
+"KA" = (
+/obj/structure/flora/grass/desert/heavygrass_9,
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/central)
+"KB" = (
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/caperiver/outdoors/scrublands/central)
+"KL" = (
+/obj/item/stack/cable_coil/green{
+	icon_state = "coil1"
+	},
+/obj/item/trash/cigbutt,
+/turf/open/desert/rock/deep,
+/area/caperiver/outdoors/scrublands/central)
+"KR" = (
+/obj/structure/machinery/light/dropship/red{
+	dir = 8
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "75"
+	},
+/area/caperiver/indoors/clf_dropship)
+"KT" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/scrublands/central)
+"KZ" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "44"
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/desert/rock/deep,
+/area/caperiver/outdoors/scrublands/central)
+"Le" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3"
+	},
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/caperiver/outdoors/scrublands/central)
+"Lf" = (
+/obj/structure/flora/grass/desert/lightgrass_8,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Lp" = (
+/turf/open/desert/desert_shore/shore_edge1,
+/area/caperiver/outdoors/scrublands/central)
+"LB" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_y = -2;
+	pixel_x = -4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/caperiver/indoors/clf_dropship)
+"LU" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/caperiver/outdoors/scrublands/central)
+"Mb" = (
+/obj/structure/flora/grass/desert/heavygrass_10,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Me" = (
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 8
+	},
+/obj/item/weapon/gun/rifle/mar40/lmg{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/obj/structure/surface/rack{
+	color = "#8B7B5B"
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/central)
+"Mf" = (
+/obj/structure/closet/coffin/woodencrate{
+	pixel_y = 8
+	},
+/obj/item/mre_food_packet/clf{
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/item/mre_food_packet/clf{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/obj/item/mre_food_packet/clf{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/item/mre_food_packet/clf{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/mre_food_packet/clf{
+	pixel_x = -2;
+	pixel_y = 10
+	},
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/caperiver/indoors/clf_dropship)
+"Mi" = (
+/turf/open/floor/prison/cell_stripe/west,
+/area/caperiver/outdoors/scrublands/central)
+"Mj" = (
+/turf/template_noop,
+/area/template_noop)
+"Mm" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = 9
+	},
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/floor/almayer/test_floor4,
+/area/caperiver/indoors/clf_dropship)
+"Mo" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Mp" = (
+/obj/structure/flora/bush/desert/cactus{
+	icon_state = "cactus_8"
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Mv" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/asphalt/cement,
+/area/caperiver/outdoors/scrublands/central)
+"MH" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_4"
+	},
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/caperiver/outdoors/scrublands/central)
+"MI" = (
+/obj/structure/closet/crate/ammo,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/caperiver/outdoors/scrublands/central)
+"MO" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "26"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Nk" = (
+/obj/structure/machinery/body_scanconsole,
+/obj/effect/decal/medical_decals{
+	dir = 4;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3";
+	pixel_x = -2
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/item/storage/belt/medical/full{
+	pixel_y = 17
+	},
+/obj/item/tank/anesthetic{
+	pixel_x = 8
+	},
+/turf/open/floor/prison/southwest,
+/area/caperiver/indoors/clf_dropship)
+"Nl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/obj/structure/surface/rack{
+	color = "#8B7B5B"
+	},
+/turf/open/floor/asteroidwarning/east,
+/area/caperiver/outdoors/scrublands/central)
+"Nr" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 9
+	},
+/obj/effect/decal/sand_overlay/sand2,
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/caperiver/outdoors/scrublands/central)
+"Nu" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/central)
+"NE" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/caperiver/outdoors/scrublands/central)
+"NF" = (
+/obj/structure/flora/tree/joshua,
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/caperiver/outdoors/scrublands/central)
+"NX" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning/southeast,
+/area/caperiver/outdoors/scrublands/central)
+"Oa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/floor/asteroidfloor,
+/area/caperiver/outdoors/scrublands/central)
+"Ob" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Ou" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "25"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Ov" = (
+/obj/structure/flora/grass/desert/lightgrass_12,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"OB" = (
+/obj/structure/flora/grass/desert/lightgrass_9,
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/caperiver/outdoors/scrublands/central)
+"OD" = (
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/area/caperiver/oob)
+"OK" = (
+/obj/structure/flora/grass/desert,
+/obj/structure/tunnel,
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/caperiver/outdoors/scrublands/central)
+"OZ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/light/small/blue,
+/obj/item/prop/almayer/comp_open{
+	pixel_y = 5
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/caperiver/indoors/clf_dropship)
+"Pd" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/obj/item/stack/rods{
+	pixel_x = -8
+	},
+/turf/open/desert/rock/deep/transition/northeast,
+/area/caperiver/outdoors/scrublands/central)
+"Po" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1;
+	pixel_y = 8;
+	buckling_y = 8;
+	pixel_x = -5;
+	buckling_x = -5
+	},
+/obj/item/trash/cigbutt,
+/obj/effect/landmark/survivor_spawner/clf_lead/caperiver,
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/caperiver/indoors/clf_dropship)
+"Pz" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"PD" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/caperiver/outdoors/scrublands/central)
+"PL" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
+	},
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/scrublands/central)
+"PV" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 6
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/plating/kutjevo,
+/area/caperiver/outdoors/scrublands/central)
+"Qh" = (
+/obj/structure/sign/poster/clf{
+	pixel_x = 10;
+	pixel_y = 29;
+	layer = 2.8
+	},
+/obj/structure/sign/poster/clf{
+	pixel_y = 32;
+	layer = 2.9
+	},
+/obj/structure/bed/hybrisa/bunkbed3{
+	dir = 4;
+	pixel_y = 8;
+	buckling_y = 16
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/southwest,
+/area/caperiver/indoors/clf_dropship)
+"Qp" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/prison,
+/area/caperiver/outdoors/scrublands/central)
+"Qq" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 6
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Qr" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "17"
+	},
+/area/caperiver/indoors/clf_dropship)
+"QG" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "100"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/caperiver/indoors/clf_dropship)
+"QI" = (
+/turf/open/auto_turf/sand/layer0,
+/area/caperiver/outdoors/scrublands/central)
+"QR" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_W,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/caperiver/indoors/clf_dropship)
+"QZ" = (
+/obj/structure/fence/slim,
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/caperiver/outdoors/mining_base_exterior/south)
+"Rd" = (
+/obj/structure/flora/bush/desert/cactus{
+	icon_state = "cactus_7"
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Rh" = (
+/obj/effect/decal/sand_overlay/sand2/corner2,
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/floor/asteroidfloor,
+/area/caperiver/outdoors/scrublands/central)
+"RA" = (
+/obj/structure/flora/grass/desert/lightgrass_12,
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/central)
+"RD" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "10_interior"
+	},
+/area/caperiver/indoors/clf_dropship)
+"RT" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/turf/open/desert/rock/deep/transition/east,
+/area/caperiver/outdoors/scrublands/central)
+"Sa" = (
+/turf/open/desert/rock/deep/transition/north,
+/area/caperiver/outdoors/scrublands/central)
+"Sd" = (
+/obj/structure/flora/tree/joshua,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Sg" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "8"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Sr" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -3;
+	pixel_y = 17
+	},
+/obj/item/storage/box/m56d_hmg,
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/almayer/test_floor5,
+/area/caperiver/indoors/clf_dropship)
+"Sx" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/caperiver/outdoors/scrublands/central)
+"SF" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/light/small/blue,
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_small_bl_full";
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/caperiver/indoors/clf_dropship)
+"SI" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/caperiver/outdoors/scrublands/central)
+"SO" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/desert/rock/deep,
+/area/caperiver/outdoors/scrublands/central)
+"SP" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"SS" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 9;
+	buckling_x = 9
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -7;
+	buckle_offset_x = -7
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/decal/hybrisa/warning/redandwhite_W,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/caperiver/indoors/clf_dropship)
+"SV" = (
+/obj/structure/bed/hybrisa/bunkbed3,
+/obj/item/weapon/gun/rifle/m16{
+	pixel_x = -3;
+	pixel_y = 11
+	},
+/turf/open/floor/prison/southwest,
+/area/caperiver/indoors/clf_dropship)
+"Tg" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/caperiver/indoors/clf_dropship)
+"Tj" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/caperiver/outdoors/scrublands/central)
+"To" = (
+/obj/item/trash/cigbutt,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"Tp" = (
+/obj/structure/largecrate/random/case/double{
+	pixel_y = -9;
+	layer = 2.9
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"TA" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "107"
+	},
+/area/caperiver/indoors/clf_dropship)
+"TH" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "rightengine_1";
+	opacity = 0
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/desert/rock/deep,
+/area/caperiver/indoors/clf_dropship)
+"TJ" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/obj/structure/bed/stool{
+	pixel_y = 17
+	},
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"TT" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "10"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Up" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_4"
+	},
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/caperiver/outdoors/scrublands/central)
+"UV" = (
+/obj/item/stack/cable_coil/green{
+	icon_state = "coil1"
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "21"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Ve" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/turf/open/desert/rock/deep/transition/west,
+/area/caperiver/outdoors/scrublands/central)
+"Vk" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C"
+	},
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/central)
+"VA" = (
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/central)
+"VK" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/ramptop,
+/area/caperiver/indoors/clf_dropship)
+"VR" = (
+/turf/open/gm/river/desert/shallow_corner,
+/area/caperiver/outdoors/chasm)
+"VV" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "37_alt"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Wc" = (
+/obj/structure/flora/grass/desert/lightgrass_11,
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/central)
+"Wd" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Wv" = (
+/turf/open/floor/asteroidfloor,
+/area/caperiver/outdoors/scrublands/central)
+"Wx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/food/drinks/bottle/whiskey,
+/obj/structure/surface/rack{
+	color = "#8B7B5B"
+	},
+/turf/open/floor/asteroidwarning/east,
+/area/caperiver/outdoors/scrublands/central)
+"WF" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "6"
+	},
+/turf/open/desert/rock/deep/transition/northwest,
+/area/caperiver/indoors/clf_dropship)
+"WJ" = (
+/obj/structure/flora/grass/desert/lightgrass_7,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"WP" = (
+/obj/structure/sign/banners/clf_flag{
+	pixel_x = 13;
+	pixel_y = 31;
+	layer = 2.9
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -7;
+	pixel_y = 15;
+	buckling_x = -7;
+	buckling_y = 15
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 9;
+	pixel_y = 15;
+	buckling_x = 9;
+	buckling_y = 15
+	},
+/obj/structure/machinery/light/blue{
+	dir = 1;
+	pixel_x = -15;
+	pixel_y = 20
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_E,
+/turf/open/floor/corsat/spiralplate,
+/area/caperiver/indoors/clf_dropship)
+"WZ" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Xj" = (
+/obj/structure/machinery/light/dropship/green{
+	dir = 4
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "33"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Xm" = (
+/obj/structure/machinery/door_control{
+	id = "clf_cargo_2";
+	name = "Cargo Lockdown";
+	pixel_x = 22;
+	pixel_y = 33
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1;
+	pixel_x = 6
+	},
+/turf/open/desert/rock/deep,
+/area/caperiver/outdoors/scrublands/central)
+"Xw" = (
+/obj/structure/sign/poster/clf{
+	pixel_y = -30;
+	pixel_x = 3
+	},
+/obj/structure/machinery/floodlight,
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/caperiver/outdoors/scrublands/central)
+"XH" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	dir = 4
+	},
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/central)
+"XQ" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 8
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/asteroidfloor,
+/area/caperiver/outdoors/scrublands/central)
+"XT" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -7;
+	buckle_offset_x = -7
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 9;
+	buckling_x = 9
+	},
+/obj/structure/machinery/light/blue{
+	pixel_x = -15
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/survivor_spawner/clf/caperiver,
+/turf/open/floor/corsat/spiralplate,
+/area/caperiver/indoors/clf_dropship)
+"Yh" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/central)
+"Yj" = (
+/turf/open/gm/river/desert/deep,
+/area/caperiver/outdoors/chasm)
+"Yk" = (
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = -1
+	},
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/structure/surface/rack{
+	color = "#8B7B5B"
+	},
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/central)
+"Yy" = (
+/obj/structure/largecrate/random/barrel/brown{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"YF" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "rightengine_3"
+	},
+/area/caperiver/indoors/clf_dropship)
+"YV" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"YW" = (
+/obj/structure/flora/grass/desert/lightgrass_8,
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/caperiver/outdoors/scrublands/central)
+"YX" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+"Zh" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "brokendropshipconsole2"
+	},
+/area/caperiver/indoors/clf_dropship)
+"Zy" = (
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 4
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/caperiver/outdoors/scrublands/central)
+"ZF" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/caperiver/outdoors/scrublands/central)
+"ZH" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/central)
+
+(1,1,1) = {"
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+"}
+(2,1,1) = {"
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+"}
+(3,1,1) = {"
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+OD
+QZ
+GV
+QZ
+QZ
+QZ
+QZ
+GV
+QZ
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+tk
+fO
+Mj
+Mj
+Mj
+Mj
+"}
+(4,1,1) = {"
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+OD
+AV
+dd
+vu
+vu
+vu
+vu
+dd
+vu
+Xw
+OD
+Mj
+Mj
+Mj
+bc
+Fe
+yB
+gA
+tk
+Sd
+Mj
+Mj
+Mj
+"}
+(5,1,1) = {"
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+zb
+pZ
+wQ
+Hm
+qh
+nh
+qh
+To
+sS
+lM
+mQ
+hM
+tk
+qw
+dc
+YW
+qh
+Eo
+gA
+tk
+Mj
+Mj
+Mj
+"}
+(6,1,1) = {"
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Aw
+Lp
+jz
+Hg
+Ov
+Hb
+qh
+qh
+Sx
+MH
+vV
+dc
+ho
+gK
+Ju
+my
+qh
+qh
+AD
+BA
+gA
+Mj
+Mj
+"}
+(7,1,1) = {"
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+sI
+zb
+Nr
+lP
+mn
+Hf
+qh
+Hm
+Hm
+xD
+xS
+KB
+vm
+ht
+qh
+bI
+qh
+ee
+qh
+qh
+kp
+ho
+ho
+"}
+(8,1,1) = {"
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+sI
+zb
+gf
+kJ
+rD
+kC
+kz
+Hm
+wM
+qh
+qh
+qN
+qh
+ht
+qh
+qh
+qh
+qh
+qh
+qh
+qh
+bI
+qh
+"}
+(9,1,1) = {"
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+dr
+uY
+iz
+GY
+PV
+nU
+TJ
+Hm
+sG
+Ct
+qh
+qh
+To
+vM
+ER
+KA
+xs
+xN
+fX
+VA
+qh
+qh
+qh
+"}
+(10,1,1) = {"
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+HG
+bJ
+Ig
+vE
+bO
+Da
+qh
+Hm
+Hm
+DJ
+Wc
+xN
+kA
+lf
+hM
+hM
+hM
+Mo
+GC
+jz
+Vk
+qh
+mT
+"}
+(11,1,1) = {"
+Mj
+nw
+ze
+nw
+Mi
+Mi
+Ap
+dM
+to
+pB
+Mb
+jA
+jz
+Me
+Yk
+qh
+Hp
+GK
+Tp
+wZ
+hM
+hM
+hM
+hM
+qp
+YX
+WJ
+OK
+Yh
+lv
+"}
+(12,1,1) = {"
+Mj
+FG
+FG
+vo
+yU
+SI
+SI
+PD
+to
+XQ
+HE
+HE
+ir
+Ic
+po
+gQ
+pB
+hD
+vV
+gW
+hM
+hM
+hM
+hM
+hM
+WZ
+YX
+qM
+KB
+qh
+"}
+(13,1,1) = {"
+Mj
+FG
+HT
+vo
+Qp
+SI
+SI
+PD
+GO
+Wv
+hy
+hy
+Wv
+ep
+Oa
+hy
+wh
+pL
+sL
+mO
+Gf
+hM
+hM
+hM
+hM
+WZ
+HJ
+xj
+qh
+bI
+"}
+(14,1,1) = {"
+Mj
+FG
+FG
+vo
+yU
+Kb
+SI
+PD
+to
+Rh
+JF
+JF
+JF
+Nl
+Wx
+FJ
+EP
+VA
+Tj
+is
+qa
+hM
+hM
+hM
+hM
+WZ
+PL
+qh
+qh
+qh
+"}
+(15,1,1) = {"
+Mj
+Kz
+Kz
+Kz
+dx
+dx
+dx
+mp
+to
+NX
+Iy
+RT
+dq
+yP
+Yy
+DU
+tk
+vs
+Nu
+hZ
+MI
+hM
+hM
+hM
+hM
+jM
+cQ
+qh
+qh
+ee
+"}
+(16,1,1) = {"
+Mj
+Mj
+cB
+cB
+cB
+cB
+lq
+zb
+tk
+BH
+rb
+sW
+KL
+Bl
+oU
+BU
+tk
+tk
+jz
+HS
+AD
+hM
+hM
+hM
+hM
+fM
+KB
+qh
+qh
+DJ
+"}
+(17,1,1) = {"
+Mj
+Mj
+Yj
+Yj
+Yj
+QG
+KR
+qA
+qA
+es
+oa
+Fu
+KZ
+pY
+dF
+zX
+lr
+Pd
+nM
+dJ
+RA
+hM
+hM
+hM
+hM
+KT
+qh
+my
+cO
+Cs
+"}
+(18,1,1) = {"
+Mj
+Mj
+Yj
+Yj
+Yj
+ha
+zn
+qI
+QR
+ry
+JU
+wE
+eY
+tX
+wN
+yG
+UV
+ng
+ro
+Cw
+uD
+ZF
+hM
+hM
+hM
+Da
+qh
+qh
+NF
+tk
+"}
+(19,1,1) = {"
+Mj
+Mj
+zp
+tM
+hQ
+Dy
+zn
+sP
+SS
+zn
+AN
+yA
+ry
+Ix
+zI
+HH
+JU
+CN
+dt
+CS
+tk
+tV
+hM
+hM
+iy
+Da
+qh
+qh
+tE
+hM
+"}
+(20,1,1) = {"
+Mj
+Mj
+xm
+BJ
+wc
+OZ
+zn
+eR
+XT
+gZ
+pO
+Nk
+gZ
+Mf
+Sr
+zi
+Tg
+TT
+CL
+BW
+yp
+nM
+Ei
+uF
+LU
+KB
+bI
+qh
+tE
+tk
+"}
+(21,1,1) = {"
+Mj
+Mj
+xm
+fo
+Zh
+Po
+Ie
+rP
+ja
+Ie
+ff
+ak
+FK
+zC
+Mm
+jW
+AB
+wB
+fd
+fd
+SO
+uA
+tk
+qL
+eo
+qh
+ee
+qh
+tE
+Rd
+"}
+(22,1,1) = {"
+Mj
+Mj
+xm
+fo
+Zh
+kM
+Ie
+zr
+nz
+Ie
+Bd
+fh
+vO
+VK
+yf
+Bb
+LB
+IX
+Xm
+iN
+dt
+mq
+sY
+cK
+Bu
+qh
+qh
+eO
+Hy
+tk
+"}
+(23,1,1) = {"
+Mj
+Mj
+xm
+hG
+gY
+SF
+zn
+pD
+aq
+zn
+Qh
+rN
+gZ
+co
+DB
+fj
+pQ
+TT
+Sg
+DK
+jI
+Ej
+fk
+qh
+ht
+qh
+DJ
+Gv
+tk
+tV
+"}
+(24,1,1) = {"
+Mj
+Mj
+xm
+wL
+Cx
+TA
+zn
+WP
+tP
+zn
+kR
+SV
+RD
+DX
+hA
+Ou
+VV
+oQ
+sW
+Kk
+Sa
+sY
+cI
+Bk
+ht
+gu
+Hy
+tk
+tk
+tk
+"}
+(25,1,1) = {"
+Mj
+Mj
+xm
+Yj
+Yj
+ha
+zn
+gN
+aL
+RD
+VV
+io
+xh
+yw
+xJ
+MO
+Ft
+iN
+iq
+WF
+dc
+KB
+qh
+qh
+Jd
+Hy
+tk
+by
+tk
+ky
+"}
+(26,1,1) = {"
+Mj
+Mj
+xm
+Yj
+Yj
+tK
+ne
+qt
+qt
+sK
+YF
+TH
+vA
+CT
+Xj
+zA
+Qr
+fd
+mY
+sY
+cI
+Hm
+DJ
+XH
+cZ
+tk
+tk
+tk
+tk
+tk
+"}
+(27,1,1) = {"
+Mj
+Mj
+Hh
+VR
+Yj
+Yj
+lW
+hM
+hM
+hM
+sW
+sW
+sW
+yE
+hM
+hM
+hM
+zg
+dc
+KB
+qh
+DJ
+rC
+tk
+Ob
+tk
+fV
+nA
+hM
+hM
+"}
+(28,1,1) = {"
+Mj
+Mj
+Mj
+wf
+Yj
+Yj
+lW
+zb
+hM
+ZH
+nN
+Ve
+Fg
+hb
+YX
+hM
+hM
+AY
+Gh
+To
+qh
+tE
+Pz
+Mp
+Ob
+Mb
+JD
+Mj
+Mj
+Mj
+"}
+(29,1,1) = {"
+Mj
+Mj
+Mj
+wf
+Yj
+Yj
+lW
+zb
+jQ
+Wd
+jA
+Lf
+Qq
+WZ
+hM
+hM
+hM
+hM
+KB
+bI
+Zy
+Hy
+tk
+Af
+Ff
+nA
+jD
+Mj
+Mj
+Mj
+"}
+(30,1,1) = {"
+Mj
+Mj
+Mj
+wf
+Yj
+Yj
+lW
+zb
+Ei
+tk
+rU
+Wd
+hM
+hM
+hM
+hM
+hM
+OB
+gh
+SP
+NE
+og
+nA
+Mv
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+"}
+(31,1,1) = {"
+Mj
+Mj
+Mj
+wf
+Yj
+Yj
+lW
+zb
+mQ
+tk
+tk
+tk
+tk
+hM
+hM
+hM
+iF
+qh
+qh
+DJ
+Gu
+Mv
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+"}
+(32,1,1) = {"
+Mj
+Mj
+Mj
+wf
+Yj
+Yj
+lW
+zb
+QI
+tk
+tV
+tk
+YV
+tk
+hM
+uI
+my
+qh
+qh
+Le
+JD
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+"}
+(33,1,1) = {"
+Mj
+Mj
+Mj
+wf
+Yj
+Yj
+lW
+jj
+Lp
+tk
+tk
+Up
+ho
+fC
+YW
+qh
+bI
+qh
+aJ
+pT
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+"}

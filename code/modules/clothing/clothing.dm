@@ -37,6 +37,7 @@
 	// copies the properties of the clothing item to the accessory, in the future, take literally almost every var from ties.dm parent object and place it in clothing parent
 	var/obj/item/clothing/accessory/new_accessory = new accessory_path(loc)
 	new_accessory.name = name
+	new_accessory.color = color
 	new_accessory.icon = icon
 	new_accessory.icon_state = icon_state
 	new_accessory.desc = desc
@@ -74,6 +75,7 @@
 		return
 
 	if(ismob(loc) && loc == user)
+		original_item.color = access.color
 		user.put_in_hands(original_item)
 
 	to_chat(user, SPAN_NOTICE("You will start wearing [src] as normal."))
@@ -232,6 +234,7 @@
 	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
 	var/fire_resist = T0C+100
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	allowed = list(
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
@@ -293,6 +296,7 @@
 	var/wired = 0
 	var/obj/item/cell/cell = 0
 	flags_armor_protection = BODY_FLAG_HANDS
+	flags_bodypart_hidden = BODY_FLAG_HANDS
 	flags_equip_slot = SLOT_HANDS
 	attack_verb = list("challenged")
 	valid_accessory_slots = list(ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R)
@@ -421,6 +425,7 @@
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	siemens_coefficient = 0.9
 	flags_armor_protection = BODY_FLAG_FEET
+	flags_bodypart_hidden = BODY_FLAG_FEET
 	flags_equip_slot = SLOT_FEET
 
 	slowdown = SHOES_SLOWDOWN

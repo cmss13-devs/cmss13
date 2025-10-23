@@ -43,9 +43,8 @@
 	role_comm_title = "CMO"
 	skills = /datum/skills/CMO
 
-	minimap_icon = list("doctor")
+	minimap_icon = "doctor"
 	minimap_background = "background_command"
-
 	utility_under = list(/obj/item/clothing/under/rank/chief_medical_officer)
 	utility_hat = list()
 	utility_gloves = list()
@@ -74,7 +73,7 @@
 	skills = /datum/skills/doctor
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_DATABASE)
 
-	minimap_icon = list("doctor")
+	minimap_icon = "doctor"
 	minimap_background = "background_medical"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/load_gear(mob/living/carbon/human/new_human)
@@ -138,9 +137,8 @@
 	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
 
-	minimap_icon = list("nurse")
+	minimap_icon = "nurse"
 	minimap_background = "background_shipside"
-
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
@@ -164,13 +162,16 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_RESEARCHER
 	job_title = JOB_RESEARCHER
-	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0, PAY_SHORT_CCMOA = JOB_PLAYTIME_TIER_1, PAY_SHORT_CCMOB = JOB_PLAYTIME_TIER_2, PAY_SHORT_CCMOC = JOB_PLAYTIME_TIER_3, PAY_SHORT_CCMOD = JOB_PLAYTIME_TIER_4)
 	role_comm_title = "Rsr"
 	skills = /datum/skills/researcher
 
+	faction = FACTION_WY
+	faction_group =	FACTION_LIST_MARINE_WY
+	origin_override = ORIGIN_CIVILIAN
+
 	minimap_icon = "researcher"
 	minimap_background = "background_medical"
-
 	utility_under = list(/obj/item/clothing/under/marine/officer/researcher)
 	utility_hat = list()
 	utility_gloves = list()

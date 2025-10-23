@@ -45,7 +45,7 @@
 	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/wo/commander/load_gear(mob/living/carbon/human/new_human)
-	var/sidearm = "Mateba"
+	var/sidearm = "Unica"
 	var/kit = null
 	var/sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
 	var/back_item = /obj/item/storage/backpack/satchel/lockable
@@ -410,7 +410,7 @@
 	access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_COMMAND, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_WO_CMO
 	job_title = JOB_WO_CMO
-	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "HS"
 	skills = /datum/skills/CMO
 	idtype = /obj/item/card/id/silver
@@ -454,7 +454,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_WO_DOCTOR
 	job_title = JOB_WO_DOCTOR
-	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
 	idtype = /obj/item/card/id
@@ -495,7 +495,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_WO_RESEARCHER
 	job_title = JOB_WO_RESEARCHER
-	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Chem"
 	skills = /datum/skills/researcher
 	idtype = /obj/item/card/id

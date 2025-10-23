@@ -799,6 +799,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 #define RAIDER_OFFICER_SQUAD "SOF [JOB_MARINE_RAIDER_CMD]"
 #define RAIDER_SL_SQUAD "SOF [JOB_MARINE_RAIDER_SL]"
 #define RAIDER_SQUAD "SOF [JOB_MARINE_RAIDER]"
+#define RAIDER_SG_SQUAD "SOF [JOB_MARINE_RAIDER_SG]"
 
 /datum/crewmonitor
 	/// List of user -> UI source
@@ -996,6 +997,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_PROVOST_TML = 30,
 				JOB_WARDEN = 31,
 				JOB_PROVOST_ENFORCER = 31,
+				JOB_POLICE_HG = 32,
 				JOB_RIOT_CHIEF = 32,
 				JOB_RIOT = 33,
 				JOB_POLICE = 34,
@@ -1079,7 +1081,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_MARINE_RAIDER_SL = 130,
 				RAIDER_SL_SQUAD = 130,
 				JOB_MARINE_RAIDER = 131,
-				RAIDER_SQUAD = 131,
+				JOB_MARINE_RAIDER_SG = 132,
+				RAIDER_SQUAD = 132,
 
 				JOB_FORECON_CO = 140,
 				JOB_FORECON_SL = 140,

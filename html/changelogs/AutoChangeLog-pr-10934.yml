@@ -1,0 +1,4 @@
+author: "GoodWheatley"
+delete-after: True
+changes:
+  - bugfix: "The CO gear vendor can now vend most attachments again"

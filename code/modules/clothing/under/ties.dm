@@ -203,6 +203,7 @@
 	high_visibility = TRUE
 	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
 	worn_accessory_limit = 2
+	var/awarding_faction
 
 /obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	. = ..()
@@ -315,21 +316,25 @@
 	name = MARINE_RIBBON_COMMENDATION
 	desc = "A ribbon awarded to commend conduct and actions of note, often given alongside a formal letter of commendation. This is the most basic award given by the USCM."
 	icon_state = "ribbon_commendation"
+	awarding_faction = FACTION_MARINE
 
 /obj/item/clothing/accessory/medal/ribbon/leadership
 	name = MARINE_RIBBON_LEADERSHIP
 	desc = "A ribbon given to officers, NCOs, or squad leaders whose coordination, decision-making, or morale-keeping played a critical role in their unit's success or survival."
 	icon_state = "ribbon_leadership"
+	awarding_faction = FACTION_MARINE
 
 /obj/item/clothing/accessory/medal/ribbon/proficiency
 	name = MARINE_RIBBON_PROFICIENCY
 	desc = "A ribbon awarded for outstanding technical expertise in the field. Engineering, medical, or logistics personnel whose skill or innovation directly contributed to mission success."
 	icon_state = "ribbon_proficiency"
+	awarding_faction = FACTION_MARINE
 
 /obj/item/clothing/accessory/medal/purple_heart
 	name = MARINE_MEDAL_PURPLE_HEART
 	desc = "Awarded to those wounded or killed in action. A solemn token of sacrifice and resilience given in recognition of the physical and personal cost of service."
 	icon_state = "purple_heart"
+	awarding_faction = FACTION_MARINE
 
 /obj/item/clothing/accessory/medal/bronze
 	name = "bronze medal"
@@ -346,20 +351,24 @@
 	name = MARINE_MEDAL_SILVER_STAR
 	desc = "Awarded for conspicuous gallantry in action. The Silver Star recognizes those who go beyond the call of duty: charging into danger, holding the line when all seems lost, or saving lives under relentless enemy fire."
 	icon_state = "silver_star"
+	awarding_faction = FACTION_MARINE
 
 /obj/item/clothing/accessory/medal/silver/valor
 	name = MARINE_MEDAL_VALOR
 	desc = "For acts of courage performed during combat operations. Recognizes marines who display calm, determination, and bravery under fire, contributing to the survival and morale of their squad."
+	awarding_faction = FACTION_MARINE
 
 /obj/item/clothing/accessory/medal/gold/corporate_award
 	name = WY_MEDAL_AWARD_1
 	desc = "A gold medal awarded for notable service in the interests of Weyland-Yutani."
 	icon_state = "corporate_award"
+	awarding_faction = FACTION_WY
 
 /obj/item/clothing/accessory/medal/gold/corporate_medallion
 	name = WY_MEDAL_AWARD_2
 	desc = "A gold medal awarded for notable service in the interests of Weyland-Yutani."
 	icon_state = "corporate_medallion"
+	awarding_faction = FACTION_WY
 
 /obj/item/clothing/accessory/medal/gold
 	name = "gold medal"
@@ -371,6 +380,7 @@
 	name = MARINE_MEDAL_GALACTIC_CROSS
 	desc = "The second highest decoration within the USCM. Granted for acts of valor performed under extreme conditions. When the mission's success or the survival of fellow marines hinged upon extraordinary courage and quick thinking."
 	icon_state = "ua_cross"
+	awarding_faction = FACTION_MARINE
 
 /obj/item/clothing/accessory/medal/platinum
 	name = "platinum medal"
@@ -381,6 +391,7 @@
 /obj/item/clothing/accessory/medal/platinum/honor
 	name = MARINE_MEDAL_HONOR
 	desc = "The highest distinction awarded by the United States Colonial Marine Corps. Bestowed upon those whose actions demonstrate unparalleled bravery, self-sacrifice, and devotion to duty - often in the face of certain death. To wear this medal is to stand among legends of the Corps."
+	awarding_faction = FACTION_MARINE
 
 //Legacy medals.
 //Keeping in code as to allow medal records to display correctly, but won't be issued further.

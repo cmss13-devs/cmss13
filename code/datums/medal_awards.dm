@@ -50,6 +50,13 @@ GLOBAL_LIST_EMPTY(medal_recommendations)
 	giver_ckey = list()
 
 GLOBAL_LIST_INIT(medal_options, generate_medal_options())
+GLOBAL_LIST_INIT(medal_references, generate_medal_references())
+
+/proc/generate_medal_references()
+	var/list/medals = list()
+	for(var/medal in subtypesof(/obj/item/clothing/accessory/medal))
+		medals += new medal
+	return medals
 
 /proc/generate_medal_options()
 	var/list/options_list = list()
@@ -570,9 +577,7 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	recommendation.recipient_name = recipient_mob.real_name
 	recommendation.recommended_by_name = recommendation_giver.real_name
 	recommendation.recommended_by_ckey = recommendation_giver.ckey
-	recommendation.recommended_by_rank = recipient_ranks[recommendation_giver.real_name]
-
-
+	recommendation.recommended_by_rank = recommendation_giver.job
 	recommendation.reason = reason
 
 	return TRUE
@@ -607,6 +612,21 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 
 /datum/ic_medal_panel/ui_data(mob/user)
 	var/list/data = list()
+	var/list/available_medals = list()
+	var/list/medal_names = list()
+
+	for(var/obj/item/clothing/accessory/medal/award in GLOB.medal_references)
+		if(!(award.awarding_faction == user.faction))
+			continue
+		var/list/award_stuff = list()
+		award_stuff["name"] = award.name
+		award_stuff["description"] = award.desc
+
+		available_medals[award.name] = award_stuff
+		medal_names += award.name
+
+	data["medal_types"] = available_medals
+	data["medal_names"] = medal_names
 	data["recommendations"] = list()
 
 	for(var/datum/medal_recommendation/recommendation in GLOB.medal_recommendations)

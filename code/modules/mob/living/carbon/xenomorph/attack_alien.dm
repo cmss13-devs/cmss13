@@ -50,7 +50,7 @@
 				SPAN_XENONOTICE("We try to strike [src] but fail due to our restraints!"))
 				return XENO_ATTACK_ACTION
 
-			if(attacking_xeno.can_not_harm(src))
+			if(attacking_xeno.can_not_harm(src, check_hive_flags=FALSE)) // We manually check hive_flags later
 				attacking_xeno.animation_attack_on(src)
 				attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
 				SPAN_XENONOTICE("We nibble [src]"))
@@ -64,11 +64,29 @@
 				return XENO_NO_DELAY_ACTION
 
 			if(attacking_xeno.caste && !attacking_xeno.caste.is_intelligent)
-				if(HAS_TRAIT(src, TRAIT_NESTED) && (status_flags & XENO_HOST))
+				var/embryo_allied = FALSE
+				if(status_flags & XENO_HOST)
 					for(var/obj/item/alien_embryo/embryo in src)
 						if(HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, embryo.hivenumber))
-							to_chat(attacking_xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
-							return XENO_NO_DELAY_ACTION
+							embryo_allied = TRUE
+							break
+
+				if(embryo_allied)
+					if(HAS_TRAIT(src, TRAIT_NESTED))
+						attacking_xeno.animation_attack_on(src)
+						attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
+						SPAN_XENONOTICE("We nibble [src], as it has a sister inside we should not harm."))
+						return XENO_NO_DELAY_ACTION
+					if(!HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_INFECTED))
+						attacking_xeno.animation_attack_on(src)
+						attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
+						SPAN_XENONOTICE("We nibble [src], as queen forbade slashing of infected hosts!"))
+						return XENO_ATTACK_ACTION
+				if(!HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_NORMAL))
+					attacking_xeno.animation_attack_on(src)
+					attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
+					SPAN_XENONOTICE("We nibble [src], as queen forbade slashing!"))
+					return XENO_ATTACK_ACTION
 
 			if(check_shields(0, attacking_xeno.name)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s slash is blocked by [src]'s shield!"),
@@ -205,10 +223,11 @@
 
 			var/knocked_down
 			if(attacking_xeno.attempt_tackle(src, tackle_mult, tackle_min_offset, tackle_max_offset))
-				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				var/strength = rand(attacking_xeno.tacklestrength_min, attacking_xeno.tacklestrength_max)
-				Stun(strength)
-				KnockDown(strength) // Purely for knockdown visuals. All the heavy lifting is done by Stun
+				var/datum/status_effect/incapacitating/stun/stun = Stun(strength, resistable=TRUE)
+				var/stun_resisted = strength != stun.last_amount
+				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, stun_resisted ? 1.5 : 0)
+				KnockDown(stun.last_amount) // Purely for knockdown visuals. All the heavy lifting is done by Stun
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] tackles down [src]!"),
 				SPAN_DANGER("We tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				SEND_SIGNAL(src, COMSIG_MOB_TACKLED_DOWN, attacking_xeno)
@@ -359,7 +378,7 @@
 	if(is_wired)
 		M.visible_message(SPAN_DANGER("The barbed wire slices into [M]!"),
 		SPAN_DANGER("The barbed wire slices into us!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		M.apply_damage(10)
+		M.apply_damage(10, enviro=TRUE)
 	return XENO_ATTACK_ACTION
 
 /obj/structure/barricade/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
@@ -372,7 +391,7 @@
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes \the [src] with its tail!"), SPAN_DANGER("We strike \the [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	if(is_wired)
 		xeno.visible_message(SPAN_DANGER("The barbed wire slices into \the [xeno]'s tail!"), SPAN_DANGER("The barbed wire slices into our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		xeno.apply_damage(5)
+		xeno.apply_damage(5, enviro=TRUE)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/surface/rack/attack_alien(mob/living/carbon/xenomorph/M)
@@ -951,7 +970,7 @@
 			if(welded)
 				difficulty = 30 // if its welded shut it should be harder to smash open
 			if(prob(difficulty))
-				break_open()
+				break_open(M)
 				M.visible_message(SPAN_DANGER("[M] smashes \the [src] open!"),
 				SPAN_DANGER("We smash \the [src] open!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		else

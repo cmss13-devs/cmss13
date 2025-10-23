@@ -163,6 +163,7 @@
 	pen_armor_punch = 0
 	shell_speed = 2*AMMO_SPEED_TIER_6
 	accuracy = HIT_ACCURACY_TIER_5
+	damage_enviro = TRUE
 
 /datum/ammo/bullet/turret/dumb
 	icon_state = "bullet"

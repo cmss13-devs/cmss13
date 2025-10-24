@@ -1837,7 +1837,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/yautja_grounds/caves/north)
 "ih" = (
-/obj/effect/glowshroom/single,
+/obj/effect/glowshroom,
 /turf/open/mars_cave/mars_dirt_7,
 /area/yautja_grounds/caves/north)
 "ii" = (
@@ -2647,10 +2647,6 @@
 	},
 /turf/open/mars_cave/mars_dirt_6,
 /area/yautja_grounds/caves/south_west)
-"kY" = (
-/obj/effect/glowshroom/single,
-/turf/open/mars_cave/mars_dirt_4,
-/area/yautja_grounds/caves/south)
 "kZ" = (
 /obj/item/ore/glass,
 /turf/open/mars_cave/mars_cave_2,
@@ -2730,10 +2726,6 @@
 "lo" = (
 /turf/closed/wall/kutjevo/rock,
 /area/yautja_grounds/temple)
-"lp" = (
-/obj/effect/glowshroom/single,
-/turf/open/mars_cave/mars_dirt_4,
-/area/yautja_grounds/caves/south_west)
 "lq" = (
 /obj/structure/prop/dam/wide_boulder/boulder1,
 /turf/open/mars_cave/mars_dirt_4,
@@ -2769,20 +2761,12 @@
 /obj/structure/prop/hybrisa/misc/blood/blood3,
 /turf/open/mars_cave/mars_cave_14,
 /area/yautja_grounds/caves/central)
-"ly" = (
-/obj/effect/glowshroom/single,
-/turf/open/mars_cave/mars_dirt_6,
-/area/yautja_grounds/caves/central)
 "lz" = (
 /obj/item/ore/slag,
 /turf/open/mars_cave/mars_cave_2,
 /area/yautja_grounds/caves/east)
-"lA" = (
-/obj/effect/glowshroom/single,
-/turf/open/mars_cave/mars_dirt_4,
-/area/yautja_grounds/caves/west)
 "lB" = (
-/obj/effect/glowshroom/single,
+/obj/effect/glowshroom,
 /turf/open/mars_cave/mars_dirt_5,
 /area/yautja_grounds/caves/central)
 "lC" = (
@@ -2806,7 +2790,7 @@
 /turf/open/mars_cave/mars_dirt_5,
 /area/yautja_grounds/caves/west)
 "lH" = (
-/obj/effect/glowshroom/single,
+/obj/effect/glowshroom,
 /turf/open/mars_cave/mars_dirt_6,
 /area/yautja_grounds/caves/west)
 "lI" = (
@@ -2938,7 +2922,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/yautja_grounds/caves/north_east)
 "mb" = (
-/obj/effect/glowshroom/single,
+/obj/effect/glowshroom,
 /turf/open/mars_cave/mars_dirt_7,
 /area/yautja_grounds/caves/north_west)
 "mc" = (
@@ -3029,6 +3013,18 @@
 /obj/item/ore/gold,
 /turf/open/mars_cave/mars_cave_3,
 /area/yautja_grounds/caves/north_east)
+"mr" = (
+/obj/effect/glowshroom,
+/turf/open/mars_cave/mars_dirt_6,
+/area/yautja_grounds/caves/central)
+"ms" = (
+/obj/effect/glowshroom,
+/turf/open/mars_cave/mars_dirt_7,
+/area/yautja_grounds/caves/central)
+"mt" = (
+/obj/effect/glowshroom,
+/turf/open/mars_cave/mars_dirt_4,
+/area/yautja_grounds/caves/north_west)
 "mU" = (
 /turf/closed/wall/kutjevo/rock,
 /area/yautja_grounds/temple/entrance/desert)
@@ -4310,7 +4306,7 @@ fD
 fD
 fD
 fD
-lA
+lD
 fC
 fD
 fD
@@ -4579,7 +4575,7 @@ fD
 fD
 fD
 fC
-lA
+lD
 hN
 fD
 fD
@@ -4723,7 +4719,7 @@ aq
 fr
 aq
 aq
-lp
+hZ
 fr
 aq
 aq
@@ -5463,7 +5459,7 @@ gt
 gh
 gt
 fD
-lA
+lD
 fC
 fC
 fC
@@ -5673,7 +5669,7 @@ fC
 fC
 fD
 fD
-lA
+lD
 fC
 fC
 fC
@@ -6009,7 +6005,7 @@ fr
 fr
 aq
 fr
-lp
+hZ
 aq
 aq
 aq
@@ -6332,7 +6328,7 @@ gs
 gt
 gt
 gs
-gt
+mt
 gt
 gs
 gs
@@ -6370,7 +6366,7 @@ kk
 kk
 kk
 kk
-ly
+mr
 kk
 fS
 kk
@@ -6669,7 +6665,7 @@ fF
 fF
 hq
 as
-ly
+mr
 fS
 fS
 fS
@@ -6882,7 +6878,7 @@ fS
 fS
 hl
 as
-fV
+mr
 fS
 fS
 fS
@@ -7293,7 +7289,7 @@ kk
 kk
 kk
 cZ
-kY
+kR
 gR
 gR
 gR
@@ -8334,7 +8330,7 @@ ky
 ky
 ky
 fS
-ly
+mr
 hl
 as
 fS
@@ -9180,7 +9176,7 @@ gR
 gR
 gR
 gR
-kY
+kR
 cZ
 cZ
 gR
@@ -9462,7 +9458,7 @@ fS
 fS
 fS
 fS
-fV
+mr
 fS
 fS
 fS
@@ -10671,7 +10667,7 @@ gR
 gR
 cZ
 cZ
-kY
+kR
 gR
 gR
 gR
@@ -10758,7 +10754,7 @@ fS
 fS
 fS
 kj
-kY
+kR
 gR
 gR
 gR
@@ -10946,7 +10942,7 @@ fS
 fS
 hl
 as
-ly
+mr
 fS
 fS
 hl
@@ -11118,7 +11114,7 @@ fF
 fY
 fF
 as
-fU
+ms
 fS
 fS
 fS
@@ -11806,7 +11802,7 @@ fE
 fS
 fS
 fS
-ly
+mr
 fS
 fS
 fS

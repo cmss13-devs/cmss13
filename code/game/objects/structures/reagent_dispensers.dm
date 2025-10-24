@@ -150,19 +150,13 @@
 	. = ..()
 
 //Dispensers
-<<<<<<< HEAD
 /obj/structure/reagent_dispensers/tank/water
 	name = "water tank"
 	desc = "A tank for containing water."
-=======
-/obj/structure/reagent_dispensers/watertank
-	name = "water tank"
-	desc = "A tank for containing water."
->>>>>>> parent of 5107a701c2 (Changes tank file paths)
 	icon_state = "watertank"
 	chemical = "water"
 
-/obj/structure/reagent_dispensers/watertank/yautja
+/obj/structure/reagent_dispensers/tank/water/yautja
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/reagent_dispensers/tank/ammonia

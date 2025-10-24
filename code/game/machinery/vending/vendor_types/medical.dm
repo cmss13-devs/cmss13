@@ -397,7 +397,7 @@
 				break // All done
 			cart.supplies_remaining--
 
-	cart.update_icon()
+		cart.update_icon()
 
 	being_restocked = FALSE
 	cart.update_icon()

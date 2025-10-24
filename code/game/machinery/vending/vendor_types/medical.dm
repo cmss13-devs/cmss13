@@ -55,7 +55,7 @@
 	name = "restock cart"
 	desc = "A rather heavy cart filled with various supplies to restock a vendor with."
 	icon = 'icons/obj/structures/restock_carts.dmi'
-	icon_state = "medcart" //
+	icon_state = "medcart"
 
 	density = TRUE
 	anchored = FALSE
@@ -81,7 +81,7 @@
 /obj/structure/restock_cart/medical
 	name = "\improper Wey-Yu restock cart"
 	desc = "A rather heavy cart filled with various supplies to restock a vendor with. Provided by Wey-Yu Pharmaceuticals Division(TM)."
-	icon_state = "medcart" //temporary?
+	icon_state = "medcart"
 
 	supplies_remaining = 20
 	supplies_max = 20
@@ -112,6 +112,7 @@
 	update_icon()
 
 /obj/structure/restock_cart/update_icon()
+	overlays.Cut()
 	. = ..()
 	if(supplies_remaining && supplies_max)
 		var/image/filled
@@ -389,14 +390,13 @@
 
 		if(restocking_reagents)
 			var/reagent_added = restock_reagents(min(cart.supplies_remaining, 100))
-			cart.update_icon()
 			if(reagent_added <= 0 || chem_refill_volume == chem_refill_volume_max)
 				break // All done
 			cart.supplies_remaining -= reagent_added
 		else
 			if(!restock_supplies(prob_to_skip = 0, can_remove = FALSE))
 				break // All done
-			cart.supplies_remaining--
+		cart.update_icon()
 
 	being_restocked = FALSE
 	cart.update_icon()

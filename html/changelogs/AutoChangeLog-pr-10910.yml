@@ -1,0 +1,6 @@
+author: "ori-disillusion-mirnov"
+delete-after: True
+changes:
+  - bugfix: "pacman generators now stay one color, and charge APCs based on enabled powernets, instead of assuming all powernets are on"
+  - ui: "pacman ui is now TGUI, from TGstation"
+  - soundadd: "new sounds for pacman generators running, also from TGstation"

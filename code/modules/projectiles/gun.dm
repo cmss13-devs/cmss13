@@ -2096,6 +2096,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(gun_user.Adjacent(object) && (istype(src, /obj/item/weapon/gun/shotgun) || gun_user.a_intent != INTENT_HARM) || gun_user.loc == get_turf(object)) //Dealt with by attack code
 			return
 
+		if(gun_user.Adjacent(object) && gun_user.zone_selected == "head" && ishuman_strict(object) && skillcheck(gun_user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
+			if(src.ammo && src.ammo.signal_procs)
+				if(COMSIG_AMMO_POINT_BLANK in src.ammo.signal_procs[src.ammo])
+					if(src.ammo.signal_procs[src.ammo][COMSIG_AMMO_POINT_BLANK] == "handle_battlefield_execution") //...I hate this actually
+						return
+
 	if(QDELETED(object))
 		return
 

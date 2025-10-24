@@ -136,14 +136,12 @@
 		if(get_turf(atom_clicked) == src.loc)
 			click_adjacent(atom_clicked, object_used, mods)
 			return
-		else
-			if(!istype(object_used, /obj/item/weapon/gun) || istype(object_used, /obj/item/weapon/gun/shotgun)) //Exception for shotguns cause they don't suck for PBing
-				click_adjacent(atom_clicked, object_used, mods)
-				return
-			else
-				if(src.a_intent != INTENT_HARM) //Force normal gunfire on harm intent.
-					click_adjacent(atom_clicked, object_used, mods)
-					return
+		if(!istype(object_used, /obj/item/weapon/gun) || istype(object_used, /obj/item/weapon/gun/shotgun)) //Exception for shotguns cause they don't suck for PBing
+			click_adjacent(atom_clicked, object_used, mods)
+			return
+		if(src.a_intent != INTENT_HARM) //Force normal gunfire on harm intent.
+			click_adjacent(atom_clicked, object_used, mods)
+			return
 	// If not standing next to the atom clicked.
 	if(object_used)
 		object_used.afterattack(atom_clicked, src, 0, mods)

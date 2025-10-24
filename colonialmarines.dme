@@ -674,6 +674,7 @@
 #include "code\datums\paygrades\factions\uscm\provost.dm"
 #include "code\datums\paygrades\factions\wy\commando.dm"
 #include "code\datums\paygrades\factions\wy\pmc.dm"
+#include "code\datums\paygrades\factions\wy\security.dm"
 #include "code\datums\paygrades\factions\wy\wy.dm"
 #include "code\datums\redis\redis_message.dm"
 #include "code\datums\redis\callbacks\_redis_callback.dm"

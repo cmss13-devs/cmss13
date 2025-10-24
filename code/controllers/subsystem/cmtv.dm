@@ -55,6 +55,10 @@ SUBSYSTEM_DEF(cmtv)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/cmtv/fire(resumed)
+	if(!online())
+		can_fire = FALSE
+		return
+
 	priority_list = get_active_priority_player_list()
 
 	if(temporarily_observing_turf)
@@ -330,7 +334,7 @@ SUBSYSTEM_DEF(cmtv)
 	if(zoom_out)
 		camera_operator.view = "32x24"
 
-	addtimer(CALLBACK(src, PROC_REF(end_spectate_event), to_switch_to), how_long_for - 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(end_spectate_event), to_switch_to), to_switch_to ? how_long_for : how_long_for - 10 SECONDS)
 
 /datum/controller/subsystem/cmtv/proc/end_spectate_event(mob/to_switch_to)
 	camera_mob.hud_used.plane_masters["[HUD_PLANE]"].alpha = 255

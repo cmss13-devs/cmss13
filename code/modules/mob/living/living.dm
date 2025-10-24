@@ -23,7 +23,7 @@
 	GLOB.living_mob_list += src
 
 /mob/living/Destroy()
-	GLOB.living_mob_list -= src
+	GLOB.living_player_list -= src
 	GLOB.living_mob_list -= src
 	cleanup_status_effects()
 	pipes_shown = null

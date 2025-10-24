@@ -1619,6 +1619,9 @@
 /obj/item/tool/pickaxe,
 /turf/open/mars_cave/mars_cave_3,
 /area/yautja_grounds/caves/south_east)
+"gY" = (
+/turf/open/mars_cave/mars_cave_17,
+/area/yautja_grounds/caves/south)
 "gZ" = (
 /obj/structure/platform/stone/kutjevo,
 /turf/closed/wall/kutjevo/rock,
@@ -11480,7 +11483,7 @@ fS
 kj
 kj
 kj
-fv
+gY
 fv
 hc
 cZ
@@ -11579,7 +11582,7 @@ fS
 kj
 kj
 kj
-fv
+gY
 fv
 fv
 kh
@@ -11667,17 +11670,17 @@ fK
 fK
 fK
 fK
-fw
-fw
-fw
-fw
-fw
-fw
-fw
-fw
-fw
-fw
-fw
+hd
+hd
+hd
+hd
+hd
+hd
+hd
+hd
+hd
+hd
+hd
 fw
 fw
 fw

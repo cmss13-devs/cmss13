@@ -492,7 +492,7 @@
 /turf/open/floor/prison/sterile_white/south,
 /area/adminlevel/bunker01/kitchen)
 "bB" = (
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer/blue/northwest,
 /area/adminlevel/bunker01/hydroponics)
 "bC" = (
@@ -1180,7 +1180,7 @@
 /turf/closed/wall,
 /area/adminlevel/bunker01/engineering)
 "dw" = (
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/bunker01/storage)
 "dx" = (

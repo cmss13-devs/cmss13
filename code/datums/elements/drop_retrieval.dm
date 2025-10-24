@@ -70,7 +70,7 @@
 	compatible_types = list(/obj/item/reagent_container/spray/mister)
 
 /datum/element/drop_retrieval/mister/dropped(obj/item/I, mob/user)
-	var/obj/item/reagent_container/glass/tank/water/WT = user.back
+	var/obj/item/reagent_container/glass/watertank/WT = user.back
 	if(!istype(WT))
 		return ..()
 	WT.remove_noz()

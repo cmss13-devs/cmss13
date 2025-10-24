@@ -1,6 +1,6 @@
 //Hydroponics tank and base code
-/obj/item/reagent_container/glass/tank/water
-	name = "backpack tank/water"
+/obj/item/reagent_container/glass/watertank
+	name = "backpack watertank"
 	desc = "A commercially-produced backpack tank, capable of holding and spraying various liquids. Widely used in the agricultural industry on colonies and in space stations."
 	icon = 'icons/obj/items/backpack_sprayers.dmi'
 	icon_state = "backpack_sprayer"
@@ -18,24 +18,24 @@
 
 	var/obj/item/noz
 
-/obj/item/reagent_container/glass/tank/water/Initialize()
+/obj/item/reagent_container/glass/watertank/Initialize()
 	. = ..()
 	if(!spawn_empty)
 		reagents.add_reagent(fill_reagent, volume)
 	update_icon()
 
-/obj/item/reagent_container/glass/tank/water/update_icon()
+/obj/item/reagent_container/glass/watertank/update_icon()
 	if(!noz || QDELETED(noz) || (noz in src))
 		overlays += "[icon_state]_nozzle"
 	else
 		overlays = null
 	return ..()
 
-/obj/item/reagent_container/glass/tank/water/Destroy()
+/obj/item/reagent_container/glass/watertank/Destroy()
 	QDEL_NULL(noz)
 	return ..()
 
-/obj/item/reagent_container/glass/tank/water/proc/toggle_mister(mob/living/user)
+/obj/item/reagent_container/glass/watertank/proc/toggle_mister(mob/living/user)
 	if(!istype(user))
 		return
 	if(user.get_item_by_slot(WEAR_BACK) != src)
@@ -58,40 +58,40 @@
 		//Remove from their hands and put back "into" the tank
 		remove_noz()
 
-/obj/item/reagent_container/glass/tank/water/proc/make_noz()
+/obj/item/reagent_container/glass/watertank/proc/make_noz()
 	return new /obj/item/reagent_container/spray/mister(src)
 
-/obj/item/reagent_container/glass/tank/water/equipped(mob/user, slot)
+/obj/item/reagent_container/glass/watertank/equipped(mob/user, slot)
 	..()
 	if(slot != WEAR_BACK)
 		remove_noz()
 
-/obj/item/reagent_container/glass/tank/water/proc/remove_noz()
+/obj/item/reagent_container/glass/watertank/proc/remove_noz()
 	qdel(noz)
 	if(!QDELETED(noz))
 		qdel(noz)
 	update_icon()
 
-/obj/item/reagent_container/glass/tank/water/attack_hand(mob/user, list/modifiers)
+/obj/item/reagent_container/glass/watertank/attack_hand(mob/user, list/modifiers)
 	if(user.get_item_by_slot(WEAR_BACK) == src)
 		toggle_mister(user)
 	else
 		return ..()
 
-/obj/item/reagent_container/glass/tank/water/attackby(obj/item/W, mob/user, params)
+/obj/item/reagent_container/glass/watertank/attackby(obj/item/W, mob/user, params)
 	if(W == noz)
 		remove_noz()
 		return TRUE
 	return ..()
 
-/obj/item/reagent_container/glass/tank/water/verb/toggle_mister_verb()
+/obj/item/reagent_container/glass/watertank/verb/toggle_mister_verb()
 	set name = "Toggle Mister"
 	set category = "Object"
 	set src in usr
 	toggle_mister(usr)
 
 
-/obj/item/reagent_container/glass/tank/water/MouseDrop(obj/over_object as obj)
+/obj/item/reagent_container/glass/watertank/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))
 		return ..()
 	if(!istype(over_object, /atom/movable/screen))
@@ -108,21 +108,21 @@
 			usr.put_in_l_hand(src)
 	add_fingerprint(usr)
 
-/obj/item/reagent_container/glass/tank/water/dropped(mob/user)
+/obj/item/reagent_container/glass/watertank/dropped(mob/user)
 	..()
 	remove_noz()
 
-/obj/item/reagent_container/glass/tank/water/get_examine_text(mob/user)
+/obj/item/reagent_container/glass/watertank/get_examine_text(mob/user)
 	. = ..()
 	if(!noz || QDELETED(noz) || (noz in src))
 		. += SPAN_NOTICE("Its nozzle is attached.")
 	else
 		. += SPAN_NOTICE("Its nozzle is detached.")
 
-// This mister item is intended as an extension of the tank/water and always attached to it.
+// This mister item is intended as an extension of the watertank and always attached to it.
 // Therefore, it's designed to be "locked" to the player's hands or extended back onto
-// the tank/water backpack. Allowing it to be placed elsewhere or created without a parent
-// tank/water object will likely lead to weird behaviour or runtimes.
+// the watertank backpack. Allowing it to be placed elsewhere or created without a parent
+// watertank object will likely lead to weird behaviour or runtimes.
 /obj/item/reagent_container/spray/mister
 	name = "water mister"
 	desc = "A mister nozzle attached to a water tank. This is what your reagents come out of."
@@ -145,20 +145,20 @@
 
 /obj/item/reagent_container/spray/mister/Initialize()
 	. = ..()
-	var/obj/item/reagent_container/glass/tank/water/W = loc
+	var/obj/item/reagent_container/glass/watertank/W = loc
 	if(!istype(W))
 		return INITIALIZE_HINT_QDEL
 
 /obj/item/reagent_container/spray/mister/get_examine_text(mob/user)
 	. = ..()
-	var/obj/item/reagent_container/glass/tank/water/W = user.back
+	var/obj/item/reagent_container/glass/watertank/W = user.back
 	if(!istype(W))
 		return
 	. += "It is linked to \the [W]."
 
 /obj/item/reagent_container/spray/mister/afterattack(atom/A, mob/user, proximity)
 	//this is what you get for using afterattack() TODO: make is so this is only called if attackby() returns 0 or something
-	var/obj/item/reagent_container/glass/tank/water/W = user.back
+	var/obj/item/reagent_container/glass/watertank/W = user.back
 	if(!istype(W))
 		return
 
@@ -184,7 +184,7 @@
 
 
 /obj/item/reagent_container/spray/mister/Spray_at(atom/A, mob/user)
-	var/obj/item/reagent_container/glass/tank/water/W = user.back
+	var/obj/item/reagent_container/glass/watertank/W = user.back
 	if(!istype(W))
 		return
 	var/obj/effect/decal/chempuff/D = new /obj/effect/decal/chempuff(get_turf(src))
@@ -200,8 +200,8 @@
 #define METAL_LAUNCHER 1
 #define METAL_FOAM 2
 
-/obj/item/reagent_container/glass/tank/water/atmos
-	name = "backpack firefighting tank/water"
+/obj/item/reagent_container/glass/watertank/atmos
+	name = "backpack firefighting watertank"
 	desc = "A refrigerated and pressurised backpack tank with an extinguisher nozzle, intended to fight fires and plug hull breaches. Swaps between extinguisher, metal foam launcher and a smaller scale metal foamer."
 	icon_state = "backpack_foamer"
 	item_state = "backpack_foamer"
@@ -210,10 +210,10 @@
 	var/nozzle_mode = EXTINGUISHER
 	var/launcher_cooldown //to prevent the spam
 
-/obj/item/reagent_container/glass/tank/water/atmos/make_noz()
+/obj/item/reagent_container/glass/watertank/atmos/make_noz()
 	return new /obj/item/reagent_container/spray/mister/atmos(src)
 
-/obj/item/reagent_container/glass/tank/water/atmos/afterattack(obj/O as obj, mob/user as mob, proximity)
+/obj/item/reagent_container/glass/watertank/atmos/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(!proximity || !(istype(O, /obj/structure/reagent_dispensers))) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
 		return
 	if(src.reagents.total_volume < volume)
@@ -226,7 +226,7 @@
 		return
 	..()
 
-/obj/item/reagent_container/glass/tank/water/atmos/get_examine_text(mob/user)
+/obj/item/reagent_container/glass/watertank/atmos/get_examine_text(mob/user)
 	. = ..()
 	switch(nozzle_mode)
 		if(EXTINGUISHER)
@@ -245,7 +245,7 @@
 	icon_state = "fnozzle"
 	item_state = "fnozzle"
 	w_class = SIZE_LARGE
-	var/obj/item/reagent_container/glass/tank/water/atmos/tank
+	var/obj/item/reagent_container/glass/watertank/atmos/tank
 	var/nozzle_mode = 0
 	var/foamer_cost = 10
 	var/launcher_cost = 100
@@ -254,7 +254,7 @@
 
 /obj/item/reagent_container/spray/mister/atmos/Initialize(mapload)
 	. = ..()
-	if(!istype(loc, /obj/item/reagent_container/glass/tank/water/atmos))
+	if(!istype(loc, /obj/item/reagent_container/glass/watertank/atmos))
 		return INITIALIZE_HINT_QDEL
 
 	tank = loc
@@ -292,7 +292,7 @@
 
 /obj/item/reagent_container/spray/mister/atmos/attack_self(mob/user) //swapping mode
 	..()
-	var/obj/item/reagent_container/glass/tank/water/atmos/tank = user.back
+	var/obj/item/reagent_container/glass/watertank/atmos/tank = user.back
 	if(!istype(tank))
 		return ..()
 	switch(nozzle_mode)

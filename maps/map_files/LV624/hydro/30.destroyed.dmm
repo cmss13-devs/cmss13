@@ -11,7 +11,7 @@
 /area/lv624/lazarus/hydroponics)
 "aO" = (
 /obj/effect/landmark/crap_item,
-/obj/item/reagent_container/glass/tank/water,
+/obj/item/reagent_container/glass/watertank,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/hydroponics)
 "bd" = (

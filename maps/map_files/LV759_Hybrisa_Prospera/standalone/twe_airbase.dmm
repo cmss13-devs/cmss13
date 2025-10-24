@@ -932,7 +932,7 @@
 	icon_state = "igniter0";
 	name = "floor panel"
 	},
-/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
+/obj/structure/reagent_dispensers/fueltank/spacecraft,
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "he" = (
@@ -2922,7 +2922,7 @@
 	icon_state = "igniter0";
 	name = "floor panel"
 	},
-/obj/structure/reagent_dispensers/tank/fuel/spacecraft{
+/obj/structure/reagent_dispensers/fueltank/spacecraft{
 	layer = 3.1
 	},
 /turf/open/floor/shiva/radiator_tile2,

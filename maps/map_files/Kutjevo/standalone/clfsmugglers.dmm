@@ -792,7 +792,7 @@
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/exterior/clf_lz)
 "Ou" = (
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "OE" = (

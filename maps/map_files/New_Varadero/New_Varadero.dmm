@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
-/obj/structure/reagent_dispensers/tank/fuel/yautja,
+/obj/structure/reagent_dispensers/fueltank/yautja,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
 "aab" = (
@@ -617,7 +617,7 @@
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/security)
 "apY" = (
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -642,7 +642,7 @@
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/pontoon_beach)
 "aqk" = (
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "aqq" = (
@@ -2799,7 +2799,7 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/exterior/lz1_near)
 "bZA" = (
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/maintenance/north)
 "bZI" = (
@@ -10693,7 +10693,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/maintenance/north)
 "ixQ" = (
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/makeshift_tent)
@@ -12376,7 +12376,7 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach/lz)
 "jLU" = (
-/obj/structure/reagent_dispensers/tank/fuel/gas,
+/obj/structure/reagent_dispensers/fueltank/gas,
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/makeshift_tent)
 "jMq" = (
@@ -13611,7 +13611,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/electrical)
 "kPj" = (
@@ -13822,7 +13822,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
 "kZL" = (
@@ -14671,7 +14671,7 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/medical)
 "lLq" = (
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/technical_storage)
 "lLZ" = (
@@ -15242,7 +15242,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "miP" = (
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "miR" = (
@@ -16645,7 +16645,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
 "nsl" = (
@@ -18719,7 +18719,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/vessel)
 "pcK" = (
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/technical_storage)
 "pdc" = (
@@ -21432,7 +21432,7 @@
 /turf/open/gm/dirt/desert3,
 /area/varadero/exterior/eastbeach)
 "ret" = (
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "rex" = (
@@ -21917,7 +21917,7 @@
 /turf/open/floor/shiva/wredfull,
 /area/varadero/interior/medical)
 "rtP" = (
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "rtR" = (
@@ -22746,7 +22746,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
 "sbG" = (
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "sbP" = (
@@ -23410,7 +23410,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/comms3)
 "szw" = (
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/digsite)
 "szS" = (
@@ -23804,7 +23804,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/interior/maintenance/north)
 "sOj" = (
@@ -25362,7 +25362,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/north)
 "ukw" = (
@@ -26860,7 +26860,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
 "vtR" = (
@@ -26977,7 +26977,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "vzt" = (
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/hall_SE)
 "vzz" = (
@@ -27842,7 +27842,7 @@
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/disposals)
 "wdI" = (
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/shuttle/elevator,
 /area/varadero/interior/records)
 "wdX" = (

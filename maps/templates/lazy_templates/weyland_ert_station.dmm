@@ -92,7 +92,7 @@
 /turf/open/floor/corsat/sterileplate,
 /area/adminlevel/ert_station/weyland_station)
 "cn" = (
-/obj/structure/reagent_dispensers/tank/water,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/corsat/cargo,
 /area/adminlevel/ert_station/weyland_station)
 "cq" = (
@@ -1261,7 +1261,7 @@
 /turf/open/floor/corsat/sterileplate,
 /area/adminlevel/ert_station/weyland_station)
 "ul" = (
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/corsat/cargo,
 /area/adminlevel/ert_station/weyland_station)
 "uv" = (

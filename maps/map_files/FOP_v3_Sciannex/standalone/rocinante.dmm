@@ -579,7 +579,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/station/park)
 "ls" = (
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -1532,7 +1532,7 @@
 /turf/open/floor/almayer/blue/northwest,
 /area/fiorina/station/clf_ship)
 "Pm" = (
-/obj/structure/reagent_dispensers/tank/fuel,
+/obj/structure/reagent_dispensers/fueltank,
 /obj/structure/sign/poster/clf{
 	pixel_y = 32
 	},

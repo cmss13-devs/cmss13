@@ -70,7 +70,7 @@
 	name = "Temple Cave Shutters";
 	req_one_access_txt = "390"
 	},
-/turf/open/mars_cave/mars_dirt_4,
+/turf/open/mars_cave/mars_cave_2,
 /area/yautja_grounds/caves/south_east)
 "al" = (
 /turf/open/mars_cave/mars_cave_19,
@@ -1014,6 +1014,9 @@
 /area/yautja_grounds/desert/north_west)
 "ed" = (
 /obj/structure/platform/stone/kutjevo,
+/obj/structure/stairs/multiz/down{
+	layer = 1
+	},
 /turf/open/auto_turf/sand/layer0,
 /area/yautja_grounds/desert/north_east)
 "ee" = (
@@ -1050,6 +1053,9 @@
 /area/yautja_grounds/desert/north_east)
 "em" = (
 /obj/structure/platform/stone/kutjevo/north,
+/obj/structure/stairs/multiz/down{
+	layer = 1
+	},
 /turf/open/auto_turf/sand/layer0,
 /area/yautja_grounds/desert/north_east)
 "en" = (
@@ -1372,6 +1378,9 @@
 	},
 /turf/open/mars_cave/mars_dirt_6,
 /area/yautja_grounds/caves/central)
+"fJ" = (
+/turf/open/mars_cave/mars_cave_3,
+/area/yautja_grounds/caves/south_east)
 "fK" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/yautja_grounds/caves/east)
@@ -1465,6 +1474,10 @@
 /obj/effect/decal/remains/xeno,
 /turf/open/mars_cave/mars_cave_2,
 /area/yautja_grounds/caves/north_east)
+"gm" = (
+/obj/item/roller/bedroll,
+/turf/open/mars_cave/mars_cave_3,
+/area/yautja_grounds/caves/south_east)
 "gn" = (
 /turf/open/mars_cave/mars_dirt_6,
 /area/yautja_grounds/caves/north_east)
@@ -1602,13 +1615,18 @@
 "gW" = (
 /turf/open/mars_cave/mars_cave_14,
 /area/yautja_grounds/caves/south_east)
-"gY" = (
-/turf/open/mars_cave/mars_cave_13,
+"gX" = (
+/obj/item/tool/pickaxe,
+/turf/open/mars_cave/mars_cave_3,
 /area/yautja_grounds/caves/south_east)
 "gZ" = (
 /obj/structure/platform/stone/kutjevo,
 /turf/closed/wall/kutjevo/rock,
 /area/yautja_grounds/desert/north_west)
+"ha" = (
+/obj/item/weapon/broken_glass,
+/turf/open/mars_cave/mars_cave_3,
+/area/yautja_grounds/caves/south_east)
 "hb" = (
 /turf/open/mars_cave/mars_cave_16,
 /area/yautja_grounds/caves/south)
@@ -1636,6 +1654,10 @@
 "hj" = (
 /turf/open/mars_cave/mars_cave_19,
 /area/yautja_grounds/caves/south)
+"hk" = (
+/obj/item/paper/fortune/premade,
+/turf/open/mars_cave/mars_cave_3,
+/area/yautja_grounds/caves/south_east)
 "hl" = (
 /turf/open/mars_cave/mars_cave_17,
 /area/yautja_grounds/caves/central)
@@ -1667,6 +1689,10 @@
 "hu" = (
 /turf/open/mars_cave/mars_cave_19,
 /area/yautja_grounds/caves/east)
+"hv" = (
+/obj/structure/prop/broken_ladder,
+/turf/open/mars_cave/mars_cave_3,
+/area/yautja_grounds/caves/south_east)
 "hw" = (
 /turf/open/mars_cave/mars_cave_14,
 /area/yautja_grounds/caves/east)
@@ -1679,9 +1705,39 @@
 "hz" = (
 /turf/open/mars_cave/mars_cave_15,
 /area/yautja_grounds/caves/east)
+"hA" = (
+/obj/structure/stairs/multiz/up{
+	layer = 1
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/yautja_grounds/caves/south_west)
+"hB" = (
+/obj/structure/stairs/multiz/up{
+	layer = 1
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/yautja_grounds/caves/north_east)
+"hC" = (
+/obj/structure/stairs/multiz/up{
+	layer = 1
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/yautja_grounds/caves/north_west)
+"hD" = (
+/obj/structure/stairs/multiz/down{
+	layer = 1
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/yautja_grounds/desert/south_west)
 "hE" = (
 /turf/open/mars_cave/mars_dirt_5,
 /area/yautja_grounds/caves/west)
+"hF" = (
+/obj/structure/stairs/multiz/down{
+	layer = 1
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/yautja_grounds/desert/north_east)
 "hG" = (
 /turf/open/mars_cave/mars_dirt_6,
 /area/yautja_grounds/caves/west)
@@ -1692,6 +1748,12 @@
 "hI" = (
 /turf/open/mars_cave/mars_cave_3,
 /area/yautja_grounds/caves/east)
+"hJ" = (
+/obj/structure/stairs/multiz/down{
+	layer = 1
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/yautja_grounds/desert/north_west)
 "hL" = (
 /obj/structure/stairs/multiz/up{
 	layer = 1
@@ -1738,7 +1800,7 @@
 /area/yautja_grounds/caves/north_east)
 "hY" = (
 /obj/effect/decal/remains/xeno,
-/turf/open/mars_cave/mars_dirt_4,
+/turf/open/mars_cave/mars_cave_3,
 /area/yautja_grounds/caves/north_east)
 "ia" = (
 /turf/open/mars_cave/mars_cave_17,
@@ -2714,6 +2776,9 @@
 /area/yautja_grounds/prep_room/desert/interior)
 "Bg" = (
 /obj/structure/platform/stone/kutjevo/west,
+/obj/structure/stairs/multiz/down{
+	layer = 1
+	},
 /turf/open/auto_turf/sand/layer0,
 /area/yautja_grounds/desert/north_west)
 "Bu" = (
@@ -3048,7 +3113,7 @@ gs
 gs
 gs
 gs
-fC
+kq
 fC
 fC
 fC
@@ -3148,7 +3213,7 @@ gs
 gs
 gs
 fC
-fC
+kq
 fC
 fC
 fC
@@ -3246,13 +3311,13 @@ gs
 gs
 gs
 gs
+kq
 fC
 fC
 fC
 fC
 fC
-fC
-fC
+kq
 fC
 fC
 fC
@@ -3348,7 +3413,7 @@ gs
 fC
 fC
 fC
-fC
+kq
 fC
 fC
 fC
@@ -3444,7 +3509,7 @@ gs
 gs
 gs
 gs
-fC
+kq
 fC
 fC
 fC
@@ -3544,7 +3609,7 @@ gs
 gs
 gs
 fC
-fC
+kq
 fC
 fC
 fC
@@ -3602,7 +3667,7 @@ fr
 fr
 fr
 ki
-aq
+hA
 aq
 ao
 an
@@ -3642,11 +3707,11 @@ gt
 gt
 gs
 gs
+kq
 fC
 fC
 fC
-fC
-fC
+kq
 fC
 fC
 fC
@@ -3701,7 +3766,7 @@ fr
 fr
 fr
 kB
-aq
+hA
 kB
 kB
 kB
@@ -3741,8 +3806,8 @@ gt
 gt
 gs
 gs
-fC
-fC
+kq
+kq
 fC
 fC
 fC
@@ -3840,7 +3905,7 @@ gK
 gw
 hQ
 gs
-fC
+kq
 fC
 fC
 fC
@@ -3931,7 +3996,7 @@ gK
 gK
 gw
 gu
-gt
+hC
 gs
 gs
 kG
@@ -4030,7 +4095,7 @@ gi
 gi
 gx
 gv
-gt
+hC
 kH
 gs
 kG
@@ -4129,7 +4194,7 @@ kD
 kD
 gy
 gu
-gt
+hC
 gs
 gs
 kG
@@ -11541,7 +11606,7 @@ fZ
 fZ
 fZ
 fZ
-hO
+is
 fZ
 fZ
 fZ
@@ -11619,10 +11684,10 @@ fw
 fw
 hd
 fw
-gY
-gY
-gY
-gW
+fw
+fw
+fw
+he
 kb
 kb
 ft
@@ -11639,9 +11704,9 @@ fZ
 fZ
 fZ
 fZ
+is
 hO
-hO
-ga
+gB
 fZ
 fZ
 fZ
@@ -11717,11 +11782,11 @@ fw
 fw
 fw
 fw
-gW
-gU
-gV
-gT
-gT
+fw
+fw
+fw
+fw
+he
 kb
 ft
 ft
@@ -11738,10 +11803,10 @@ fZ
 fZ
 fZ
 fZ
-hO
-hO
+is
+iv
 ga
-ga
+gB
 fZ
 fZ
 fZ
@@ -11815,12 +11880,12 @@ fw
 ft
 ft
 ft
-he
-gV
-gS
-gU
-gV
-gV
+fw
+fw
+fw
+fw
+fw
+fw
 ft
 ft
 ft
@@ -11838,15 +11903,15 @@ fZ
 fZ
 fZ
 fZ
-hO
+iv
+gB
 ga
-ii
+gB
+gB
+ga
+ga
+ij
 gn
-gc
-gc
-gc
-ge
-gc
 gn
 gp
 ga
@@ -11914,16 +11979,16 @@ fw
 ft
 ft
 ft
-he
-gS
-gV
-gS
-gV
-gS
-gS
-gS
-gS
-gS
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
 ft
 ft
 ft
@@ -11939,12 +12004,12 @@ fZ
 fZ
 fZ
 fZ
-gn
-gn
-gc
-gc
-gc
-gc
+gB
+ga
+ga
+ga
+ga
+ij
 hX
 ge
 hU
@@ -12012,17 +12077,17 @@ ft
 fw
 ft
 ft
-gS
-hf
-hd
+fw
+fw
+fw
 ft
-gS
-gS
-gS
-gS
-gS
-gS
-gS
+fw
+fw
+fw
+fw
+fw
+fw
+fw
 Cj
 MT
 MT
@@ -12038,12 +12103,12 @@ fZ
 fZ
 fZ
 fZ
-gn
-gc
-gc
+ga
+ga
+gB
 fZ
-gc
-gc
+ga
+ij
 gc
 gn
 hU
@@ -12109,19 +12174,19 @@ ft
 ft
 ft
 fw
-hg
-gS
-gS
-gS
+fw
+fw
+fw
+fw
 ft
 ft
 ft
-gS
-gS
-gS
-gS
-gT
-gS
+fJ
+fJ
+fJ
+fJ
+fw
+fw
 yW
 qr
 qr
@@ -12137,12 +12202,12 @@ fZ
 fZ
 fZ
 fZ
-hX
-gc
+gB
+gB
 fZ
 fZ
 fZ
-ge
+ij
 hX
 gn
 hU
@@ -12207,19 +12272,19 @@ ft
 ft
 ft
 ft
+fJ
+fJ
 fw
-he
-gS
-gU
-gS
+fw
+fw
 ft
 ft
 ft
-gS
-gT
-gS
-gS
-gS
+fJ
+fJ
+fJ
+fJ
+fJ
 ak
 Cj
 aj
@@ -12235,13 +12300,13 @@ fZ
 fZ
 fZ
 fZ
+gF
 ga
-gf
-ge
-gc
+ga
+ga
 fZ
-gc
-gc
+ga
+ij
 hX
 ge
 hV
@@ -12307,19 +12372,19 @@ ft
 ft
 ft
 ft
-gW
-gS
-gS
-gS
-gS
+fJ
+fw
+fw
+fw
+fw
 ft
 ft
-gS
-gS
-gS
-gS
-gS
-gS
+fJ
+fJ
+fJ
+fJ
+fJ
+fJ
 MT
 qr
 qr
@@ -12334,13 +12399,13 @@ fZ
 fZ
 fZ
 fZ
+gB
 ga
-ij
-gc
-ge
-ge
-gc
-gc
+ga
+ga
+ga
+ga
+ga
 fZ
 fZ
 fZ
@@ -12406,16 +12471,16 @@ ft
 ft
 ft
 ft
-gT
-gS
-gS
-gS
-gS
-gS
-gU
-gS
-gS
-gS
+fJ
+fw
+fw
+fw
+fw
+fw
+fw
+fJ
+fJ
+fJ
 ft
 ft
 ft
@@ -12435,10 +12500,10 @@ fZ
 fZ
 fZ
 ga
-go
-gf
-gc
-ge
+gB
+ga
+ga
+gB
 fZ
 fZ
 fZ
@@ -12505,15 +12570,15 @@ ft
 ft
 ft
 ft
-hg
-gS
+fJ
+fw
 ft
 ft
-gS
-gS
-gS
-gS
-gS
+fw
+fw
+fw
+fw
+fw
 ft
 ft
 ft
@@ -12536,7 +12601,7 @@ gB
 ga
 gl
 ga
-go
+gB
 fZ
 fZ
 fZ
@@ -12600,19 +12665,19 @@ fw
 ft
 ft
 ft
+fJ
+fJ
+fJ
+fJ
 fw
 fw
-fw
-fw
-he
-gS
 ft
-gS
-gS
-gS
-gS
-gS
-gS
+fJ
+fJ
+fw
+fw
+fw
+fw
 ft
 ft
 ft
@@ -12634,8 +12699,8 @@ gE
 gB
 ga
 ga
-ga
-ga
+gB
+gF
 fZ
 fZ
 fZ
@@ -12701,17 +12766,17 @@ fw
 fw
 fw
 ft
+fJ
+fJ
 fw
 fw
-gW
-gS
-gV
-gS
-gS
-gS
-gS
-gS
-gS
+fJ
+fJ
+fJ
+fJ
+fw
+fw
+fw
 ft
 ft
 ft
@@ -12733,7 +12798,7 @@ gB
 gB
 gB
 ga
-ga
+gB
 fZ
 fZ
 fZ
@@ -12801,16 +12866,16 @@ fw
 fw
 ft
 ft
-he
-gU
-gS
-gS
-gS
-gS
-gS
+fJ
+fw
+fw
+fJ
+fJ
+fJ
+fJ
 ft
-gS
-gS
+fw
+fw
 ft
 ft
 ft
@@ -12832,7 +12897,7 @@ ga
 ga
 gB
 fZ
-ga
+gF
 fZ
 fZ
 fZ
@@ -12899,17 +12964,17 @@ fw
 fw
 fw
 fw
+fJ
+fJ
+ft
+ft
+ft
+ft
+fJ
+fJ
+ft
 fw
 fw
-ft
-ft
-ft
-ft
-gS
-gS
-ft
-gS
-gT
 ft
 ft
 ft
@@ -12998,17 +13063,17 @@ ft
 ft
 fw
 fw
+fJ
+ft
+ft
+ft
+ft
+ft
+ft
 fw
-ft
-ft
-ft
-ft
-ft
-ft
-gS
-gT
-gS
-gS
+fw
+fw
+fw
 ft
 ft
 ft
@@ -13104,10 +13169,10 @@ ft
 ft
 ft
 ft
-gS
-gS
-gS
-gS
+fw
+fw
+fw
+fw
 ft
 ft
 ft
@@ -13130,8 +13195,8 @@ fZ
 fZ
 fZ
 fZ
-gn
-gc
+is
+iv
 fZ
 fZ
 fZ
@@ -13203,11 +13268,11 @@ ft
 ft
 ft
 ft
-gS
-gS
-gV
-gV
-gT
+fw
+fw
+fw
+fw
+fw
 ft
 ft
 ft
@@ -13230,9 +13295,9 @@ fZ
 fZ
 fZ
 fZ
-gc
-gc
-ge
+is
+hO
+iv
 fZ
 fZ
 fZ
@@ -13303,11 +13368,11 @@ ft
 ft
 ft
 ft
-gV
-gT
-gT
-gT
-gT
+fw
+fw
+fw
+fw
+fw
 ft
 ft
 ft
@@ -13329,9 +13394,9 @@ fZ
 fZ
 fZ
 fZ
-gc
-gc
-gc
+hO
+iv
+hO
 fZ
 fZ
 fZ
@@ -13342,9 +13407,9 @@ fZ
 fZ
 fZ
 gb
-gc
-gc
-gc
+hB
+hB
+hB
 gb
 fZ
 fZ
@@ -13403,11 +13468,11 @@ ft
 ft
 ft
 ft
-gT
-gT
-gT
-gT
-gT
+fw
+fw
+fw
+fJ
+fJ
 ft
 ft
 ft
@@ -13428,9 +13493,9 @@ fZ
 fZ
 fZ
 fZ
-ge
+iv
 hY
-gc
+iv
 fZ
 fZ
 fZ
@@ -13502,10 +13567,10 @@ ft
 ft
 ft
 ft
-gT
-gT
-gT
-gT
+fJ
+fJ
+fJ
+fJ
 ft
 ft
 ft
@@ -13527,10 +13592,10 @@ fZ
 fZ
 fZ
 fZ
-gc
-gc
-ge
-gc
+iv
+iv
+hO
+iv
 fZ
 fZ
 fZ
@@ -13601,9 +13666,9 @@ ft
 ft
 ft
 ft
-gT
-gT
-gT
+fJ
+fJ
+fJ
 ft
 ft
 ft
@@ -13625,12 +13690,12 @@ fZ
 fZ
 fZ
 fZ
-hX
-gc
-gc
-gc
-gc
-ge
+is
+hO
+hO
+iv
+ij
+gn
 fZ
 fZ
 ga
@@ -13700,9 +13765,9 @@ ft
 ft
 ft
 ft
-gU
-gU
-gU
+fJ
+fJ
+fJ
 ft
 ft
 ft
@@ -13727,8 +13792,8 @@ fZ
 fZ
 fZ
 fZ
-ge
-gc
+hO
+ij
 hX
 gn
 gp
@@ -13799,9 +13864,9 @@ ft
 ft
 ft
 ft
-gU
-gU
-gU
+fJ
+ha
+fJ
 ft
 ft
 ft
@@ -13826,8 +13891,8 @@ fZ
 fZ
 fZ
 fZ
-gc
-gc
+is
+ii
 ge
 gn
 hU
@@ -13899,8 +13964,8 @@ ft
 ft
 ft
 ft
-gU
-gU
+hk
+gm
 ft
 ft
 ft
@@ -13926,7 +13991,7 @@ fZ
 fZ
 fZ
 fZ
-ge
+gn
 hX
 gn
 hV
@@ -13998,8 +14063,8 @@ ft
 ft
 ft
 ft
-gV
-gV
+hv
+gX
 ft
 ft
 ft
@@ -14789,7 +14854,7 @@ aB
 aR
 aF
 aF
-aF
+hD
 OD
 wU
 wU
@@ -14888,7 +14953,7 @@ aB
 aF
 XY
 XY
-aF
+hD
 Eu
 aB
 aB
@@ -15219,7 +15284,7 @@ op
 wU
 wU
 Cw
-ec
+hJ
 im
 im
 im
@@ -15318,7 +15383,7 @@ op
 wU
 wU
 Cw
-ec
+hJ
 im
 im
 im
@@ -24432,7 +24497,7 @@ xV
 xV
 xV
 em
-dH
+hF
 ed
 xV
 xV

@@ -574,18 +574,6 @@
 /obj/item/reagent_container/glass/pressurized_canister/on_reagent_change()
 	update_icon()
 
-/obj/item/reagent_container/glass/pressurized_canister/pickup(mob/user)
-	. = ..()
-	update_icon()
-
-/obj/item/reagent_container/glass/pressurized_canister/dropped(mob/user)
-	..()
-	update_icon()
-
-/obj/item/reagent_container/glass/pressurized_canister/attack_hand()
-	..()
-	update_icon()
-
 /obj/item/reagent_container/glass/pressurized_canister/afterattack(obj/target, mob/user, flag)
 	if(!istype(target, /obj/structure/reagent_dispensers))
 		return

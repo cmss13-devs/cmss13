@@ -20,29 +20,30 @@
 	return
 
 /datum/equipment_preset/pmc/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(MALE,FEMALE)
-	var/random_name
-	var/first_name
-	var/last_name
+	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	if(new_human.gender == MALE)
-		if(prob(10))
-			first_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
-		else
-			first_name = "[pick(GLOB.first_names_male_pmc)]"
-		new_human.f_style = "5 O'clock Shadow"
+
+	var/first_name
+	var/last_name
+	if(prob(10))
+		first_name = capitalize(randomly_generate_japanese_word(rand(2, 3)))
 	else
-		if(prob(10))
-			first_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
-		else
-			first_name = "[pick(GLOB.first_names_female_pmc)]"
+		switch(new_human.gender)
+			if(FEMALE)
+				first_name = capitalize(pick(GLOB.first_names_female_pmc))
+			if(PLURAL, NEUTER) // Not currently possible
+				first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_pmc) : pick(GLOB.first_names_female_pmc))
+			else // MALE
+				first_name = capitalize(pick(GLOB.first_names_male_pmc))
+				new_human.f_style = "5 O'clock Shadow"
 	if(prob(25))
-		last_name = "[capitalize(randomly_generate_japanese_word(rand(2, 4)))]"
+		last_name = capitalize(randomly_generate_japanese_word(rand(2, 4)))
 	else
-		last_name = "[pick(GLOB.last_names_pmc)]"
-	random_name = "[first_name] [last_name]"
-	new_human.change_real_name(new_human, random_name)
+		last_name = pick(GLOB.last_names_pmc)
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
+
 	new_human.age = rand(25,35)
 	new_human.h_style = "Shaved Head"
 	new_human.r_hair = 25
@@ -1151,8 +1152,8 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/pmc, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/pmc, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/smartgun_battery, WEAR_IN_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/dirty, WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/l56a2, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/full, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/pmc/full, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles, WEAR_EYES)
@@ -1200,14 +1201,14 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	return list(
 
 		list("PMC GUNNER SET (SPARE)", 0, null, null, null),
-		list("Spare M56D 'Dirty' Set", 0, /obj/item/storage/box/m56_dirty_system, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Spare M56D 'Dirty' Set", 0, /obj/item/storage/box/l56a2_dirty_system, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Entrenching Tool", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
 		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("SPECIAL AMMUNITION", 0, null, null, null),
-		list("Irradiated smartgun drum (10x28mm)", 15, /obj/item/ammo_magazine/smartgun/dirty, null, VENDOR_ITEM_REGULAR),
+		list("Irradiated smartgun drum (10x28mm)", 15, /obj/item/ammo_magazine/smartgun, null, VENDOR_ITEM_REGULAR),
 
 		list("ATTACHMENTS", 0, null, null, null),
 		list("Extended Barrel", 10, /obj/item/attachable/extended_barrel, null, VENDOR_ITEM_REGULAR),
@@ -1888,19 +1889,22 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 
 /datum/equipment_preset/pmc/synth/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(50;MALE,50;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
+
 	var/random_name
 	if(prob(10))
 		random_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
-	else if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male_pmc)]"
-	else
-		random_name = "[pick(GLOB.first_names_female_pmc)]"
-
-	if(new_human.gender == MALE)
-		new_human.f_style = "5 O'clock Shadow"
+	switch(new_human.gender)
+		if(FEMALE)
+			random_name = capitalize(pick(GLOB.first_names_female_pmc))
+		if(PLURAL, NEUTER) // Not currently possible
+			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_pmc) : pick(GLOB.first_names_female_pmc))
+		else // MALE
+			random_name = capitalize(pick(GLOB.first_names_male_pmc))
+			new_human.f_style = "5 O'clock Shadow"
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.r_hair = 15

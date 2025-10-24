@@ -528,7 +528,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			to_chat(mob, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
 			to_chat(mob, SPAN_BOLDNOTICE("If you log out or close your client now, your character will permanently removed from the round in 10 minutes. If you ghost, timer will be decreased to 2 minutes."))
 			if(!should_block_game_interaction(src)) // Set their queue time now because the client has to actually leave to despawn and at that point the client is lost
-				mob.client.player_details.larva_queue_time = max(mob.client.player_details.larva_queue_time, world.time)
+				mob.client.player_details.larva_pool_time = max(mob.client.player_details.larva_pool_time, world.time)
 		var/area/location = get_area(src)
 		if(mob.job != GET_MAPPED_ROLE(JOB_SQUAD_MARINE))
 			message_admins("[key_name_admin(mob)], [mob.job], has entered \a [src] at [location] after playing for [duration2text(world.time - mob.life_time_start)].")

@@ -12,6 +12,7 @@
 
 	flags_item = ITEM_PREDATOR
 	flags_inventory = CANTSTRIP
+	flags_equip_slot = SLOT_NO_STORE|SLOT_HANDS
 	flags_cold_protection = BODY_FLAG_HANDS
 	flags_heat_protection = BODY_FLAG_HANDS
 	flags_armor_protection = BODY_FLAG_HANDS
@@ -124,18 +125,25 @@
 		return
 
 	if(!isyautja(owner))
+		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, "bracer_stolen")
+		var/overlay_icon_state
 		if(owner.stat >= DEAD)
 			if(human_owner.undefibbable)
-				SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("undefibbable"))
+				overlay_icon_state = "undefibbable"
 			else
-				SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("defibbable"))
+				overlay_icon_state = "defibbable"
 		else
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, "bracer_stolen", 'icons/ui_icons/map_blips.dmi')
+			overlay_icon_state = null
+		if(overlay_icon_state)
+			var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, overlay_icon_state)
+			underlay.overlays += overlay
+		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
 	else
+		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, minimap_icon)
 		if(owner?.stat >= DEAD)
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, human_owner.assigned_equipment_preset.minimap_icon,, 'icons/ui_icons/map_blips.dmi', overlay_iconstates = list("undefibbable")) //defib/undefib status doesn't really matter because they're gonna explode in the end regardless
-		else
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, human_owner.assigned_equipment_preset.minimap_icon, 'icons/ui_icons/map_blips.dmi')
+			var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, "undefibbable")
+			underlay.overlays += overlay
+		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
 /*
 *This is the main proc for checking AND draining the bracer energy. It must have human passed as an argument.
 *It can take a negative value in amount to restore energy.
@@ -225,14 +233,18 @@
 		return
 
 	var/mob/living/carbon/human/human_owner = owner
-	var/turf/wearer_turf = get_turf(owner)
+	var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, minimap_icon)
+	var/overlay_icon_state
 	if(owner.stat >= DEAD)
 		if(human_owner.undefibbable)
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, overlay_iconstates = list("undefibbable"))
+			overlay_icon_state = "undefibbable"
 		else
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, overlay_iconstates = list("defibbable"))
+			overlay_icon_state = "defibbable"
+		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, overlay_icon_state)
+		underlay.overlays += overlay
+		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
 	else
-		SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon)
+		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
 
 /obj/item/clothing/gloves/yautja/hunter
 	name = "clan bracers"
@@ -950,8 +962,11 @@
 	if(boomer.health < HEALTH_THRESHOLD_CRIT)
 		to_chat(boomer, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
 		return
-	if(boomer.stat)
+	if(boomer.stat != CONSCIOUS)
 		to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+		return
+	if(boomer.is_mob_incapacitated() || (!exploding && HAS_TRAIT(boomer, TRAIT_HAULED)))
+		to_chat(boomer, SPAN_WARNING("You cannot do this in your current state."))
 		return
 	if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) // Hunted need mask to escape
 		to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
@@ -969,7 +984,16 @@
 			if(isspeciesyautja(victim))
 				message = "Are you sure you want to send this [victim.species] into the great hunting grounds?"
 			if(istype(bracer))
-				if(forced || alert(message,"Explosive Bracers", "Yes", "No") == "Yes")
+				if(forced || tgui_alert(boomer, message, "Explosive Bracers", list("Yes", "No"), 20 SECONDS) == "Yes")
+					if(boomer.stat == DEAD)
+						to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
+						return
+					if(boomer.stat != CONSCIOUS)
+						to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+						return
+					if(boomer.is_mob_incapacitated() || HAS_TRAIT(boomer, TRAIT_HAULED))
+						to_chat(boomer, SPAN_WARNING("You cannot do this in your current state."))
+						return
 					if(boomer.get_active_hand() == G && victim && victim.gloves == bracer && !bracer.exploding)
 						var/area/A = get_area(boomer)
 						var/turf/T = get_turf(boomer)
@@ -988,13 +1012,13 @@
 		return
 
 	if(exploding)
-		if(forced || alert("Are you sure you want to stop the countdown?","Bracers", "Yes", "No") == "Yes")
+		if(forced || tgui_alert(boomer, "Are you sure you want to stop the countdown?", "Explosive Bracers", list("Yes", "No"), 20 SECONDS) == "Yes")
 			if(boomer.gloves != src)
 				return
 			if(boomer.stat == DEAD)
 				to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
 				return
-			if(boomer.stat)
+			if(boomer.stat != CONSCIOUS)
 				to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
 				return
 			exploding = FALSE
@@ -1014,14 +1038,17 @@
 		to_chat(boomer, SPAN_WARNING("Strange...something seems to be interfering with your bracer functions..."))
 		return
 
-	if(forced || alert("Detonate the bracers? Are you sure?\n\nNote: If you activate SD for any non-accidental reason during or after a fight, you commit to the SD. By initially activating the SD, you have accepted your impending death to preserve any lost honor.","Explosive Bracers", "Yes", "No") == "Yes")
+	if(forced || tgui_alert(boomer, "Detonate the bracers? Are you sure?\n\nNote: If you activate SD for any non-accidental reason during or after a fight, you commit to the SD. By initially activating the SD, you have accepted your impending death to preserve any lost honor.", "Explosive Bracers", list("Yes", "No"), 20 SECONDS) == "Yes")
 		if(boomer.gloves != src)
 			return
 		if(boomer.stat == DEAD)
 			to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
 			return
-		if(boomer.stat)
+		if(boomer.stat != CONSCIOUS)
 			to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+			return
+		if(boomer.is_mob_incapacitated() || HAS_TRAIT(boomer, TRAIT_HAULED))
+			to_chat(boomer, SPAN_WARNING("You cannot do this in your current state."))
 			return
 		if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) //Hunted need mask to escape
 			to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
@@ -1263,7 +1290,7 @@
 	set src in usr
 	. = translate_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(mob/user, forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(mob/living/user, forced = FALSE)
 	if(!user || user.stat)
 		return
 
@@ -1275,21 +1302,24 @@
 		to_chat(user, SPAN_DANGER("You cannot translate (muted)."))
 		return
 
-	user.create_typing_indicator()
-	var/msg = sanitize(input(user, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
-	user.remove_typing_indicator()
-	if(!msg || !user.client)
+	var/list/heard = get_mobs_in_view(7, user)
+	for(var/mob/heard_mob in heard)
+		if(heard_mob.ear_deaf)
+			heard -= heard_mob
+
+	var/image/translator_bubble = image('icons/mob/effects/talk.dmi', src, "pred_translator", TYPING_LAYER)
+	user.show_speech_bubble(heard, looping_bubble = TRUE, animated = FALSE, speech_bubble = translator_bubble)
+	var/message = tgui_input_text(user, "The bracer beeps and is awaiting to translate", "Translator", multiline = TRUE)
+	user.remove_speech_bubble(translator_bubble)
+	if(!message || !user.client)
 		return
 
 	if(!drain_power(user, 50))
 		return
 
-	log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] \[Yautja Translator\]: [msg] (CKEY: [user.key]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
+	user.show_speech_bubble(heard, "pred_translator1")
 
-	var/list/heard = get_mobs_in_view(7, user)
-	for(var/mob/M in heard)
-		if(M.ear_deaf)
-			heard -= M
+	log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] \[Yautja Translator\]: [message] (CKEY: [user.key]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
 
 	var/overhead_color = "#ff0505"
 	var/span_class = "yautja_translator"
@@ -1297,22 +1327,22 @@
 		if(translator_type == PRED_TECH_RETRO)
 			overhead_color = "#FFFFFF"
 			span_class = "retro_translator"
-		msg = replacetext(msg, "a", "@")
-		msg = replacetext(msg, "e", "3")
-		msg = replacetext(msg, "i", "1")
-		msg = replacetext(msg, "o", "0")
-		msg = replacetext(msg, "s", "5")
-		msg = replacetext(msg, "l", "1")
+		message = replacetext(message, "a", "@")
+		message = replacetext(message, "e", "3")
+		message = replacetext(message, "i", "1")
+		message = replacetext(message, "o", "0")
+		message = replacetext(message, "s", "5")
+		message = replacetext(message, "l", "1")
 
-	user.langchat_speech(msg, heard, GLOB.all_languages, overhead_color, TRUE)
+	user.langchat_speech(message, heard, GLOB.all_languages, overhead_color, TRUE)
 
 	var/voice_name = "A strange voice"
 	if(user.name == user.real_name && user.alpha == initial(user.alpha))
 		voice_name = "<b>[user.name]</b>"
-	for(var/mob/Q as anything in heard)
-		if(Q.stat && !isobserver(Q))
+	for(var/mob/heard_human as anything in heard)
+		if(heard_human.stat && !isobserver(heard_human))
 			continue //Unconscious
-		to_chat(Q, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[msg]'</span>")
+		to_chat(heard_human, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[message]'</span>")
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracername()
 	set name = "Toggle Bracer Name"

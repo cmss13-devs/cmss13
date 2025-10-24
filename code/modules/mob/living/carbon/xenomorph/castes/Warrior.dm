@@ -51,7 +51,6 @@
 		/datum/action/xeno_action/activable/warrior_punch,
 		/datum/action/xeno_action/activable/lunge,
 		/datum/action/xeno_action/activable/fling,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	claw_type = CLAW_TYPE_SHARP

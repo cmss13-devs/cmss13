@@ -59,7 +59,6 @@
 		/datum/action/xeno_action/activable/pounce/runner,
 		/datum/action/xeno_action/activable/runner_skillshot,
 		/datum/action/xeno_action/onclick/toggle_long_range/runner,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,

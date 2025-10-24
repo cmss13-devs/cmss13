@@ -38,33 +38,29 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 
 /datum/equipment_preset/upp/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(60;MALE,40;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	var/random_name
+
 	var/first_name
 	var/last_name
-	//gender checks
-	if(new_human.gender == MALE)
-		if(prob(40))
-			first_name = "[capitalize(randomly_generate_chinese_word(1))]"
-		else
-			first_name = "[pick(GLOB.first_names_male_upp)]"
-		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+	if(prob(40))
+		first_name = capitalize(randomly_generate_chinese_word(1))
 	else
-		if(prob(40))
-			first_name = "[capitalize(randomly_generate_chinese_word(1))]"
-		else
-			first_name = "[pick(GLOB.first_names_female_upp)]"
-	//surname
+		switch(new_human.gender)
+			if(FEMALE)
+				first_name = capitalize(pick(GLOB.first_names_female_upp))
+			if(PLURAL, NEUTER) // Not currently possible
+				first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_upp) : pick(GLOB.first_names_female_upp))
+			else // MALE
+				first_name = capitalize(pick(GLOB.first_names_male_upp))
 	if(prob(35))
-		last_name = "[capitalize(randomly_generate_chinese_word(pick(20;1, 80;2)))]"
+		last_name = capitalize(randomly_generate_chinese_word(pick(20;1, 80;2)))
 	else
-		last_name = "[pick(GLOB.last_names_upp)]"
-	//put them together
-	random_name = "[first_name] [last_name]"
+		last_name = capitalize(pick(GLOB.last_names_upp))
 
-	new_human.change_real_name(new_human, random_name)
+	new_human.change_real_name(new_human, "[first_name] [last_name]")
 	new_human.age = rand(17,35)
 	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut", "Bun, Topknot")
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
@@ -246,7 +242,7 @@
 		list("E-Tool", 5, /obj/item/tool/shovel/etool/folded, null, VENDOR_ITEM_REGULAR),
 		list("Sandbags", 20, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_REGULAR),
 		list("ES-11 Mobile Fuel Canister", 5, /obj/item/tool/weldpack/minitank, null, VENDOR_ITEM_REGULAR),
-		list("ME3 Hand Welder", 5, /obj/item/tool/weldingtool/simple, null, VENDOR_ITEM_REGULAR),
+		list("Seegson MCT", 5, /obj/item/tool/weldingtool/simple, null, VENDOR_ITEM_REGULAR),
 
 		list("SPECIAL AMMUNITION", 0, null, null, null),
 		list("Type 71 AP Magazine (5.45x39mm)", 10, /obj/item/ammo_magazine/rifle/type71/ap , null, VENDOR_ITEM_REGULAR),
@@ -278,7 +274,7 @@
 		list("E-Tool", 5, /obj/item/tool/shovel/etool/folded, null, VENDOR_ITEM_REGULAR),
 		list("Sandbags", 20, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_REGULAR),
 		list("ES-11 Mobile Fuel Canister", 5, /obj/item/tool/weldpack/minitank, null, VENDOR_ITEM_REGULAR),
-		list("ME3 Hand Welder", 5, /obj/item/tool/weldingtool/simple, null, VENDOR_ITEM_REGULAR),
+		list("Seegson MCT", 5, /obj/item/tool/weldingtool/simple, null, VENDOR_ITEM_REGULAR),
 
 		list("SPECIAL AMMUNITION", 0, null, null, null),
 		list("Type 71 AP Magazine (5.45x39mm)", 10, /obj/item/ammo_magazine/rifle/type71/ap , null, VENDOR_ITEM_REGULAR),
@@ -2866,20 +2862,23 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 
 /datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(50;MALE,50;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
+
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
+
 	var/random_name
 	if(prob(10))
 		random_name = "[capitalize(randomly_generate_chinese_word(2))]"
-	else if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male_upp)]"
 	else
-		random_name = "[pick(GLOB.first_names_female_upp)]"
-
-	if(new_human.gender == MALE)
-		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
-
+		switch(new_human.gender)
+			if(FEMALE)
+				random_name = capitalize(pick(GLOB.first_names_female_upp))
+			if(PLURAL, NEUTER) // Not currently possible
+				random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_upp) : pick(GLOB.first_names_female_upp))
+			else // MALE
+				random_name = capitalize(pick(GLOB.first_names_male_upp))
+				new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")

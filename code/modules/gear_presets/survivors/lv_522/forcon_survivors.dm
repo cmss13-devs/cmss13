@@ -253,7 +253,7 @@
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "FORECON CO"
 	minimap_icon = "co"
-	minimap_background = "background_command"
+	minimap_background = "background_forecon"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
@@ -285,8 +285,8 @@
 				sidearmammo = /obj/item/ammo_magazine/pistol/heavy/super
 			if(CO_GUN_M1911C)
 				sidearm = /obj/item/weapon/gun/pistol/m1911/custom
-				sidearmbelt = /obj/item/storage/belt/gun/m4a3/m1911/commander
-				sidearmammo = /obj/item/ammo_magazine/pistol/m1911/highimpact
+				sidearmbelt = /obj/item/storage/belt/gun/m4a3
+				sidearmammo = /obj/item/ammo_magazine/pistol/m1911
 
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()

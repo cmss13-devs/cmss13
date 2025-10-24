@@ -134,7 +134,7 @@
 /datum/tgui_checkbox_input/Destroy(force)
 	SStgui.close_uis(src)
 	state = null
-	items = null // TG QDEL_NULLs this
+	items?.Cut()
 	return ..()
 
 /**
@@ -189,7 +189,11 @@
 		if("submit")
 			var/list/selections = params["entry"]
 			if(length(selections) >= min_checked && length(selections) <= max_checked)
-				set_choices(selections)
+				var/list/valid_selections = list()
+				for(var/raw_entry in selections)
+					if(raw_entry in items)
+						valid_selections += raw_entry
+				set_choices(valid_selections)
 			closed = TRUE
 			SStgui.close_uis(src)
 			return TRUE

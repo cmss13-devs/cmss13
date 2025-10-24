@@ -142,12 +142,3 @@
 	flags_equip_slot = SLOT_BACK
 
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
-
-/obj/item/tool/scythe/afterattack(atom/A, mob/user as mob, proximity)
-	if(!proximity)
-		return
-	if(istype(A, /obj/effect/plantsegment))
-		for(var/obj/effect/plantsegment/B in orange(A,1))
-			if(prob(80))
-				qdel(B)
-		qdel(A)

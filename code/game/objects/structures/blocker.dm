@@ -174,7 +174,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/blocker/forcefield/all
-	types = list(/mob/living/carbon/human, /mob/living/carbon/xenomorph, /obj/item/weapon)
+	types = list(/mob/living/carbon/human, /mob/living/carbon/xenomorph, /obj/item/weapon, /mob/living/simple_animal/hostile/retaliate/giant_lizard)
 	icon_state = "purple_line"
 
 	visible = TRUE

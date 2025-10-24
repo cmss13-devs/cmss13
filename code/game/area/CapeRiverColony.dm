@@ -5,6 +5,7 @@
 	icon_state = "unknown"
 	can_build_special = TRUE
 	powernet_name = "ground"
+	temperature = 308.7 //kelvin, 35c, 95f
 	minimap_color = MINIMAP_MARS_DIRT
 
 //parent types

@@ -1793,6 +1793,10 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/caperiver/outdoors/scrublands/north)
+"afP" = (
+/obj/structure/flora/grass/desert/heavygrass_3,
+/turf/open/auto_turf/sand/layer2,
+/area/caperiver/outdoors/landing_zone_1)
 "afQ" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 5
@@ -2336,6 +2340,12 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/caperiver/indoors/caves/sw)
+"ahA" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/caperiver/outdoors/landing_zone_1)
 "ahB" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -3171,6 +3181,10 @@
 "akq" = (
 /turf/open/floor/plating/platingdmg3,
 /area/caperiver/indoors/caves/s)
+"akr" = (
+/obj/structure/flora/grass/desert/heavygrass_6,
+/turf/open/auto_turf/sand/layer2,
+/area/caperiver/outdoors/landing_zone_1)
 "aks" = (
 /turf/open/desert/desert_shore/shore_corner2/east,
 /area/caperiver/outdoors/scrublands/central)
@@ -6572,11 +6586,6 @@
 /obj/item/ammo_box/magazine/shotgun/flechette/empty,
 /turf/open/floor/kutjevo/colors/red/edge,
 /area/caperiver/indoors/miningbase/security)
-"avq" = (
-/obj/structure/flora/grass/desert/lightgrass_6,
-/obj/effect/landmark/lizard_spawn,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/central)
 "avr" = (
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	color = "#FF7700";
@@ -7512,6 +7521,12 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/caperiver/outdoors/landing_zone_2)
+"ayq" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/closed/wall/strata_ice/rock,
+/area/caperiver/oob)
 "ayr" = (
 /obj/structure/flora/grass/desert/lightgrass_6,
 /turf/open/desert/rock,
@@ -9981,6 +9996,10 @@
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/floor/prison/ramptop/north,
 /area/caperiver/outdoors/mining_base_exterior/south)
+"aFX" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/scrublands/south/antiweed)
 "aFY" = (
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/caperiver/outdoors/scrublands/lz_cave)
@@ -11515,6 +11534,11 @@
 	color = "#FF9D5C"
 	},
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/central)
+"aKV" = (
+/obj/structure/flora/grass/desert/lightgrass_5,
+/obj/effect/landmark/lizard_spawn,
+/turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/central)
 "aKW" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -13842,6 +13866,10 @@
 "aSB" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/caperiver/indoors/caves/ne)
+"aSC" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison/ramptop/north,
+/area/caperiver/indoors/caves/s)
 "aSD" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/item/trash/cigbutt,
@@ -16886,6 +16914,10 @@
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/caperiver/outdoors/road/south)
+"bcj" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/desert/rock/deep/transition/northeast,
+/area/caperiver/outdoors/scrublands/north_west)
 "bck" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 1
@@ -16923,6 +16955,10 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/kutjevo/tan/grey_edge,
 /area/caperiver/outdoors/landing_zone_2/cave)
+"bcs" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/caperiver/indoors/caves/w)
 "bcu" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/largecrate/random,
@@ -35590,6 +35626,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt/brown,
 /area/caperiver/indoors/caves/s)
 "nmt" = (
@@ -46609,10 +46646,6 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/kutjevo/grey,
 /area/caperiver/telecomms/telecomm_4)
-"xSR" = (
-/obj/structure/flora/bush/ausbushes/palebush,
-/turf/open/desert/dirt/desert_transition_edge1/southeast,
-/area/caperiver/outdoors/scrublands/south/antiweed)
 "xTl" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -54622,7 +54655,7 @@ nPu
 nPu
 ani
 nPu
-nPu
+aBb
 nPu
 awo
 nPu
@@ -54824,13 +54857,13 @@ nPu
 nPu
 nPu
 nPu
-nPu
-nPu
-aBb
-fIQ
-fIQ
-nPu
-nPu
+aWQ
+aml
+aLE
+axu
+juR
+aWQ
+aWQ
 nPu
 nPu
 nPu
@@ -55028,15 +55061,15 @@ qGA
 nPu
 aPz
 nPu
-nPu
-fIQ
-nPu
-fIQ
-fIQ
-nPu
-nPu
-nPu
-fIQ
+aWQ
+aWQ
+aWQ
+aWQ
+aWQ
+aWQ
+aWQ
+aWQ
+aWQ
 nPu
 nPu
 qGA
@@ -55232,16 +55265,16 @@ nPu
 fIQ
 fIQ
 nPu
-nPu
-nPu
-nPu
-nPu
-nPu
+ahA
+aWQ
+aWQ
+aWQ
+aWQ
 awR
 aUF
-nPu
-fIQ
-nPu
+aWQ
+aWQ
+aWQ
 nPu
 nPu
 nPu
@@ -55436,10 +55469,10 @@ nPu
 nPu
 fIQ
 aaw
-nPu
 avw
-qGA
-qGA
+ahA
+amS
+afP
 nPu
 nPu
 nPu
@@ -55641,7 +55674,7 @@ nPu
 nPu
 nPu
 nPu
-qGA
+akr
 qGA
 nPu
 nPu
@@ -56228,9 +56261,9 @@ aRy
 wwB
 pNB
 azn
-azn
-erd
-nIx
+jcu
+aWQ
+aWQ
 aeU
 rwI
 qSm
@@ -56432,10 +56465,10 @@ uin
 oXo
 idr
 rxo
-azn
-azn
-nIx
-aeU
+jcu
+mbW
+aWQ
+ayq
 rwI
 qSm
 aHq
@@ -56637,10 +56670,10 @@ jWi
 mbW
 azn
 azn
-jcu
-nIx
-aeU
-rwI
+azn
+aWQ
+ayq
+aWQ
 qSm
 nPu
 fIQ
@@ -56841,10 +56874,10 @@ jYG
 azn
 azn
 aKH
-azn
-nIx
-aeU
-rwI
+aWQ
+aWQ
+ayq
+aWQ
 qSm
 qGA
 fIQ
@@ -57046,8 +57079,8 @@ azn
 azn
 azn
 azn
-nIx
-aeU
+aWQ
+ayq
 rwI
 qSm
 qGA
@@ -57156,7 +57189,7 @@ bwC
 bwA
 pna
 alx
-abq
+bcj
 fOV
 mQG
 adk
@@ -57354,7 +57387,7 @@ aJd
 ajK
 aTK
 ajK
-ajK
+bcs
 wNU
 jJi
 beC
@@ -58173,7 +58206,7 @@ aJd
 lfS
 aJd
 ajK
-ajK
+bcs
 bwx
 acz
 aWQ
@@ -58680,7 +58713,7 @@ puG
 aZg
 mYe
 iJt
-rwI
+dJH
 qSm
 fIQ
 abU
@@ -58884,7 +58917,7 @@ kRT
 kRT
 kRT
 iJt
-dJH
+rwI
 qSm
 nPu
 aMD
@@ -59088,7 +59121,7 @@ kRT
 cfH
 kRT
 iJt
-rwI
+aWQ
 qSm
 aiY
 bdF
@@ -59291,8 +59324,8 @@ kRT
 kRT
 tel
 bfR
-iJt
-rwI
+ayq
+aWQ
 obv
 oOq
 fKy
@@ -59494,9 +59527,9 @@ kRT
 xlF
 nUm
 gxw
-xSR
-iJt
-rwI
+aWQ
+ayq
+aWQ
 oTw
 xRs
 bdv
@@ -59697,9 +59730,9 @@ kRT
 aiC
 aCr
 aNt
-sjD
+aFX
 iBy
-oTw
+aWQ
 oTw
 oTw
 beU
@@ -70668,7 +70701,7 @@ aWQ
 aZS
 aby
 alC
-avW
+aKV
 aTS
 aOc
 aHh
@@ -70870,7 +70903,7 @@ aca
 avy
 aOi
 alC
-avq
+aCP
 aMO
 aTS
 aZS
@@ -71035,7 +71068,7 @@ atm
 ajp
 bwd
 ajp
-atm
+aSC
 fkC
 aXZ
 jgl
@@ -71848,7 +71881,7 @@ aUA
 aLw
 aLw
 abR
-aLw
+qOS
 amI
 ale
 ale

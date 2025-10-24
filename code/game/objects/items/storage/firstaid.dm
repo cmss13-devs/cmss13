@@ -261,6 +261,10 @@
 		/obj/item/device/defibrillator/synthetic,
 	)
 
+/obj/item/storage/firstaid/whiteout/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/storage/firstaid/whiteout/fill_preset_inventory()
 	new /obj/item/stack/nanopaste(src)
 	new /obj/item/stack/nanopaste(src)
@@ -552,6 +556,10 @@
 		\nStep five: Close the incision with a surgical line."
 	icon_state = "surgical_case_elite"
 	storage_slots = 5
+
+/obj/item/storage/surgical_case/elite/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/surgical_case/elite/commando/fill_preset_inventory()
 	new /obj/item/tool/surgery/scalpel(src)

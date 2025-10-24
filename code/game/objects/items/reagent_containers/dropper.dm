@@ -21,26 +21,26 @@
 /obj/item/reagent_container/dropper/update_icon() //droppers now have fill icon states for each unit inside the dropper
 	overlays.Cut()
 
-	if(reagents.total_volume)
-		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
-
+	if(reagents?.total_volume)
+		var/image/filling
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0)
-				filling.icon_state = null
 			if(1 to 20)
-				filling.icon_state = "[icon_state]-1"
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-1")
 			if(21 to 40)
-				filling.icon_state = "[icon_state]-2"
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-2")
 			if(41 to 60)
-				filling.icon_state = "[icon_state]-3"
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-3")
 			if(61 to 80)
-				filling.icon_state = "[icon_state]-4"
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-4")
 			if(81 to INFINITY)
-				filling.icon_state = "[icon_state]-5"
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-5")
+			else
+				return ..()
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
+	..()
 
 /obj/item/reagent_container/dropper/afterattack(obj/target, mob/user , flag)
 	if(!target.reagents || !flag)

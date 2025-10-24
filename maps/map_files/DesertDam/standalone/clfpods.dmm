@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/desert_dam/building/medical/garage)
 "ab" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/sandbags/wired{
@@ -14,6 +18,10 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"ad" = (
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/asphalt,
+/area/desert_dam/building/medical/garage)
 "ae" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -23,6 +31,10 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_medical)
+"af" = (
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "ag" = (
 /obj/effect/decal/cleanable/dirt,
@@ -88,6 +100,12 @@
 	icon_state = "road_edge_decal2"
 	},
 /obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"ap" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/tiretrack,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "aq" = (
@@ -1062,6 +1080,7 @@
 	icon_state = "W"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/tiretrack,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "rg" = (
@@ -2961,11 +2980,11 @@ yo
 pU
 JD
 qY
-Ct
-Au
+ap
+af
 qY
-Rf
-UZ
+ad
+aa
 UZ
 UZ
 aE

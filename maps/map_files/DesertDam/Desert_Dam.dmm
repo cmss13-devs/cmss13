@@ -17914,19 +17914,167 @@
 	},
 /turf/open/floor/prison/darkpurple2/east,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
+"beB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/asphalt,
+/area/desert_dam/building/hydroponics/hydroponics_loading)
+"beC" = (
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/asphalt,
+/area/desert_dam/building/hydroponics/hydroponics_loading)
+"beD" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"beE" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"beF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/Taxi/damage_2{
+	dir = 1;
+	pixel_x = -3;
+	pixel_y = 3;
+	icon_state = "meridian_taxi_damage_2"
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"beG" = (
+/obj/structure/prop/hybrisa/vehicles/Box_Vans/Blue_Grey,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_hydro)
 "beH" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_east)
+"beI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"beJ" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 6;
+	pixel_x = -16
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_hydro)
 "beK" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
+"beL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_hydro)
 "beM" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_hydro)
+"beN" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"beO" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/desert_dam/building/medical/garage)
+"beP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"beQ" = (
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"beR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"beS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_security)
+"beT" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_security)
+"beU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_security)
+"beV" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_security)
+"beW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_security)
+"beX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_security)
+"beY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_security)
 "beZ" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/west,
@@ -17937,6 +18085,15 @@
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"bfb" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
 "bfe" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/administration/overseer_office)
@@ -140146,9 +140303,9 @@ itM
 itM
 lXr
 pzB
-wKU
-wKU
-pzB
+beY
+beY
+beX
 fNg
 bzf
 pzB
@@ -142256,7 +142413,7 @@ krO
 krO
 krO
 stR
-pzB
+beU
 pzB
 scQ
 pOu
@@ -142490,7 +142647,7 @@ qaR
 rNy
 qwE
 jTQ
-bzf
+beV
 bzf
 qrd
 pOu
@@ -142724,7 +142881,7 @@ qaR
 qaR
 qwE
 jTQ
-rBY
+beW
 dOP
 scQ
 pOu
@@ -145973,7 +146130,7 @@ kmu
 kmu
 kmu
 oLz
-vxr
+bfb
 qMY
 uTm
 rbW
@@ -146207,7 +146364,7 @@ wPo
 mYm
 xvM
 dyH
-vxr
+bfb
 qMY
 uTm
 uTm
@@ -146238,9 +146395,9 @@ uTm
 bzf
 bzf
 amE
-bzf
-bzf
-amE
+beT
+beT
+beS
 bzf
 pzB
 amE
@@ -146441,7 +146598,7 @@ wPo
 wPo
 wPo
 dyH
-vxr
+bfb
 qMY
 uTm
 uTm
@@ -154017,7 +154174,7 @@ iDA
 iDA
 iDA
 dQu
-dKu
+beD
 dKu
 kuQ
 xmR
@@ -154251,7 +154408,7 @@ iIp
 iIp
 iIp
 eyD
-wLz
+beE
 wLz
 sAD
 beM
@@ -154485,7 +154642,7 @@ iIp
 iIp
 iIp
 eyD
-udo
+beF
 oki
 sAD
 tgj
@@ -154953,7 +155110,7 @@ iIp
 iIp
 iIp
 eyD
-wLz
+beG
 wLz
 sAD
 nLd
@@ -155187,7 +155344,7 @@ wMh
 wMh
 aYX
 vcw
-udo
+beI
 oki
 sAD
 uXG
@@ -155421,7 +155578,7 @@ chg
 chg
 erD
 urG
-wLz
+beE
 wLz
 nQi
 erD
@@ -155653,9 +155810,9 @@ wLz
 wLz
 vRr
 wLz
-wLz
-vRr
-wLz
+beN
+beL
+beJ
 gCq
 vRr
 wLz
@@ -166193,9 +166350,9 @@ agn
 twQ
 agn
 wYJ
-fjW
-kWG
-kWG
+beC
+beB
+beB
 pKu
 gCq
 qpb
@@ -166849,12 +167006,12 @@ lSn
 sEx
 lSn
 dbE
-sJg
-esA
-eeb
-sJg
+beP
+beR
+beQ
+beP
 jAp
-cHC
+beO
 cHC
 cHC
 qzR

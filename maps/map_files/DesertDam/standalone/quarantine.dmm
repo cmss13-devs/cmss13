@@ -15,6 +15,10 @@
 /obj/structure/prop/hybrisa/vehicles/Meridian/Cop{
 	dir = 1
 	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_y = 7
+	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "ad" = (
@@ -39,9 +43,42 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
+"ah" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/template_noop)
+"ai" = (
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"ak" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 10;
+	pixel_y = 7
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
 "al" = (
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/lobby)
+"am" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
 "aW" = (
 /obj/structure/closet/bodybag{
 	icon_state = "bodybag_open"
@@ -332,6 +369,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/inflatable/door,
+/obj/effect/decal/hybrisa/tiretrack,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "mT" = (
@@ -592,6 +630,10 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_y = 7
+	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "wf" = (
@@ -819,6 +861,7 @@
 	icon_state = "W"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/tiretrack,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "DP" = (
@@ -1815,7 +1858,7 @@ NX
 QA
 lZ
 lZ
-Cl
+ak
 pc
 ql
 cG
@@ -1838,7 +1881,7 @@ xc
 kv
 Cs
 Dw
-Dw
+am
 aa
 hp
 cG
@@ -2004,11 +2047,11 @@ Iy
 Hm
 fx
 DF
-lZ
-Jw
+aj
+ai
 mD
 Mq
-LQ
+ah
 "}
 (21,1,1) = {"
 Od

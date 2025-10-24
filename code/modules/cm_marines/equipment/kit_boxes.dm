@@ -714,6 +714,8 @@
 
 /obj/item/storage/box/kit/honor_m39/fill_preset_inventory()
 	new /obj/item/weapon/gun/smg/m39(src)
+	new /obj/item/attachable/suppressor(src)
+	new /obj/item/attachable/flashlight/grip(src)
 	new /obj/item/ammo_magazine/smg/m39/ap(src)
 	new /obj/item/ammo_magazine/smg/m39/extended(src)
 	new /obj/item/ammo_magazine/smg/m39(src)

@@ -395,7 +395,7 @@
 		else
 			if(!restock_supplies(prob_to_skip = 0, can_remove = FALSE))
 				break // All done
-			cart.supplies_remaining--
+		cart.update_icon()
 
 	being_restocked = FALSE
 	cart.update_icon()

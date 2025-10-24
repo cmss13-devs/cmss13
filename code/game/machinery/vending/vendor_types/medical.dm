@@ -55,7 +55,7 @@
 	name = "restock cart"
 	desc = "A rather heavy cart filled with various supplies to restock a vendor with."
 	icon = 'icons/obj/structures/restock_carts.dmi'
-	icon_state = "medcart" //
+	icon_state = "medcart"
 
 	density = TRUE
 	anchored = FALSE

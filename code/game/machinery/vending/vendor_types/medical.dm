@@ -112,6 +112,7 @@
 	update_icon()
 
 /obj/structure/restock_cart/update_icon()
+	overlays.Cut()
 	. = ..()
 	if(supplies_remaining && supplies_max)
 		var/image/filled

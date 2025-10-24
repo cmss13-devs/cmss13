@@ -389,7 +389,6 @@
 
 		if(restocking_reagents)
 			var/reagent_added = restock_reagents(min(cart.supplies_remaining, 100))
-			cart.update_icon()
 			if(reagent_added <= 0 || chem_refill_volume == chem_refill_volume_max)
 				break // All done
 			cart.supplies_remaining -= reagent_added

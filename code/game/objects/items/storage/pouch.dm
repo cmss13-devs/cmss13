@@ -1252,20 +1252,19 @@
 	if(inner)
 		overlays += "+[icon_state]_loaded"
 		if(inner.reagents?.total_volume)
-			var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "+[icon_state]-0")
-
+			var/image/filling
 			var/percent = floor((inner.reagents.total_volume / inner.reagents.maximum_volume) * 100)
 			switch(percent)
-				if(0)
-					filling.icon_state = null
 				if(1 to 25)
-					filling.icon_state = "+[icon_state]-25"
+					filling = image('icons/obj/items/reagentfillings.dmi', src, "+[icon_state]-25")
 				if(26 to 50)
-					filling.icon_state = "+[icon_state]-50"
+					filling = image('icons/obj/items/reagentfillings.dmi', src, "+[icon_state]-50")
 				if(51 to 75)
-					filling.icon_state = "+[icon_state]-75"
+					filling = image('icons/obj/items/reagentfillings.dmi', src, "+[icon_state]-75")
 				if(76 to INFINITY)
-					filling.icon_state = "+[icon_state]-100"
+					filling = image('icons/obj/items/reagentfillings.dmi', src, "+[icon_state]-100")
+				else
+					return
 
 			filling.color = mix_color_from_reagents(inner.reagents.reagent_list)
 			overlays += filling

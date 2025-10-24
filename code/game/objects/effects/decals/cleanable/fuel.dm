@@ -38,6 +38,9 @@
 			return
 		if(prob(50))
 			var/turf/target = get_step(my_turf, direction)
+			var/obj/effect/decal/cleanable/liquid_fuel/adjacent_fuel = LAZYACCESS(target?.cleanables, CLEANABLE_IGNITEABLE)
+			if(adjacent_fuel && istype(adjacent_fuel))
+				continue
 			if(locate(/obj/effect/decal/cleanable/liquid_fuel) in target)
 				continue
 			if(LinkBlocked(src, my_turf, target))

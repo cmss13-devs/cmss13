@@ -208,3 +208,6 @@
   - imageadd: returned
   - spellcheck: fixed a oddities in company namings
   - spellcheck: renamed Seegson welder, it had USCM lore welder name for some reason
+2025-10-24:
+  GoodWheatley:
+  - bugfix: The CO gear vendor can now vend most attachments again

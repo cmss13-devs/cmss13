@@ -1,0 +1,4 @@
+author: "armsdealer9876"
+delete-after: True
+changes:
+  - balance: "Reduce airburst grenade point cost for consistency amongst roles"

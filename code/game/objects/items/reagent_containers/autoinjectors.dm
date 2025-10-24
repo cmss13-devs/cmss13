@@ -99,6 +99,7 @@
 	desc = "An EZ autoinjector loaded with 3 uses of Tricordrazine, a weak general use medicine for treating damage. Doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	maptext_label = "EzTc"
 
 /obj/item/reagent_container/hypospray/autoinjector/adrenaline
 	name = "epinephrine autoinjector"
@@ -125,7 +126,8 @@
 	amount_per_transfer_from_this = 10
 	volume = 30
 	mixed_chem = TRUE
-	display_maptext = "CH"//if you want to give it a label you can, but it won't come with one by default.
+	display_maptext = TRUE
+	maptext_label = "ChSa"
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate/Initialize()
 	. = ..()
@@ -236,7 +238,7 @@
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1
-	maptext_label = "OuBi"
+	maptext_label = "OuDy"
 
 /obj/item/reagent_container/hypospray/autoinjector/meralyne
 	name = "meralyne autoinjector"
@@ -324,7 +326,7 @@
 	icon_state = "stimpack"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = TRUE
-	maptext_label = "UZ"
+	maptext_label = "Uz"
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
 	icon_state = uses_left ? "stimpack" : "stimpack0"
@@ -379,6 +381,7 @@
 	skilllock = SKILL_MEDICAL_DEFAULT
 	uses_left = 1
 	display_maptext = TRUE
+	maptext_label = "OuTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/attack(mob/M as mob, mob/user as mob)
 	. = ..()
@@ -405,6 +408,7 @@
 	chemname = "tramadol"
 	desc = "An autoinjector loaded with a small amount of painkiller for marines to self-administer."
 	icon_state = "tramadol"
+	maptext_label = "OuTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty
 	name = "autoinjector (C-T)"

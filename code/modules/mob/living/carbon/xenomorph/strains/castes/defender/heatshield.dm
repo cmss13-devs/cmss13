@@ -1,6 +1,11 @@
 /datum/xeno_strain/heatshield
 	name = DEFENDER_HEATSHIELD
-	description = "Trade some of your armor, some of your speed, and most of your normal abilities to gain fire immunity and new abilities. Being on fire adds a bit of extra damage to your slashes and tail slams. Vomit Bile can be used to immediately extinguish allies and turfs for a faster cooldown, or to cover enemies in a flammable substance; if you are on fire, you can no longer extinguish allies or turfs but will instead cut out the middleman and directly set enemies on fire! Thermoregulation only works when you are on fire and provides a 5-second buff to speed and slash speed before extinguishing you."
+	description = "Trade some of your armor, some of your speed, and most of your normal abilities to gain fire immunity and new abilities. \
+	Being on fire adds a bit of extra damage to your slashes and tail slams. \
+	Vomit Bile can be used to immediately extinguish allies and turfs for a faster cooldown, or to cover enemies in a flammable substance; \
+	if you are on fire, you can no longer extinguish allies or turfs but will instead cut out the middleman and directly set enemies on fire! \
+	Self-Immolate lets you cover yourself in flammable substances and self-ignite after a wind-up if you are not already on fire. \
+	Thermoregulation only works when you are on fire and provides a 5-second buff to speed and slash speed before extinguishing you."
 	flavor_description = "Shed your fear, sister. Set their worlds alight like they do ours."
 	icon_state_prefix = "Heatshield"
 
@@ -106,7 +111,7 @@
 					to_chat(carbon_target, SPAN_XENOHIGHDANGER("You are covered in a gross orange bile- OH FUCK, IT'S BURNING!"))
 				fendy.visible_message(SPAN_XENODANGER("[fendy] regurgitates a burning orange bile onto [carbon_target], setting them on fire!"), \
 				SPAN_XENODANGER("We regurgitate burning bile onto [carbon_target] and set them on fire!"))
-			 // If they are fireproof, notify us that the ability didn't work!
+			// If they are fireproof, notify us that the ability didn't work!
 			else
 				fendy.visible_message(SPAN_XENODANGER("[fendy] regurgitates a burning orange bile onto [carbon_target], but it fails to ignite them!"), \
 				SPAN_XENODANGER("We regurgitate burning bile onto [carbon_target], but it fails to ignite them!"))

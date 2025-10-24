@@ -1,0 +1,4 @@
+author: "FishyFlaps2024"
+delete-after: True
+changes:
+  - rscadd: "Makes the xeno grab stun shorter if the xeno is stealthed"

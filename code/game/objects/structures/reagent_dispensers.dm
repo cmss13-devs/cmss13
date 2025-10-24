@@ -152,7 +152,7 @@
 //Dispensers
 /obj/structure/reagent_dispensers/tank/water
 	name = "water tank"
-	desc = "A tank for containing water."
+	desc = "A tank filled with water."
 	icon_state = "watertank"
 	chemical = "water"
 
@@ -161,31 +161,31 @@
 
 /obj/structure/reagent_dispensers/tank/ammonia
 	name = "ammonia tank"
-	desc = "A tank for containing ammonia gas."
+	desc = "A tank filled with ammonia gas."
 	icon_state = "ammoniatank"
 	chemical = "ammonia"
 
 /obj/structure/reagent_dispensers/tank/sacid
 	name = "sulphuric acid tank"
-	desc = "A tank for containing sulphuric acid."
+	desc = "A tank filled with sulphuric acid."
 	icon_state = "sacidtank"
 	chemical = "sulphuric acid"
 
 /obj/structure/reagent_dispensers/tank/pacid
 	name = "polytrinic acid tank"
-	desc = "A tank for containing polytrinic acid."
+	desc = "A tank filled with polytrinic acid."
 	icon_state = "pacidtank"
 	chemical = "pacid"
 
 /obj/structure/reagent_dispensers/tank/ethanol
 	name = "ethanol tank"
-	desc = "A tank for containing ethanol."
+	desc = "A tank filled with ethanol. Command hopes you do not drink it all."
 	icon_state = "ethanoltank"
 	chemical = "ethanol"
 
 /obj/structure/reagent_dispensers/tank/fuel
 	name = "fuel tank"
-	desc = "A tank for containing fuel."
+	desc = "A tank filled with fuel."
 	icon_state = "weldtank"
 	amount_per_transfer_from_this = 10
 	chemical = "fuel"
@@ -409,19 +409,19 @@
 
 /obj/structure/reagent_dispensers/tank/fuel/gas/methane
 	name = "methane tank"
-	desc = "A tank for containing methane gas. Does not smell like farts."
+	desc = "A tank filled with methane gas. Does not smell like farts."
 	icon_state = "methanetank"
 	chemical = "methane"
 
 /obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen
 	name = "hydrogen tank"
-	desc = "A tank for containing hydrogen gas."
+	desc = "A tank filled with hydrogen gas."
 	icon_state = "hydrogentank"
 	chemical = "hydrogen"
 
 /obj/structure/reagent_dispensers/tank/fuel/oxygentank
 	name = "oxygen tank"
-	desc = "A tank for containing sweet, sweet oxygen."
+	desc = "A tank filled with sweet, sweet oxygen."
 	icon_state = "oxygentank"
 	chemical = "oxygen"
 

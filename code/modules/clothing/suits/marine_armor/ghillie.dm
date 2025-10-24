@@ -19,7 +19,7 @@
 	var/camouflage_enter_delay = 4 SECONDS
 	var/can_camo = TRUE
 
-	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/specialist/prepare_position)
+	actions_types = list(/datum/action/item_action/toggle/lamp, /datum/action/item_action/specialist/prepare_position)
 
 /obj/item/clothing/suit/storage/marine/ghillie/dropped(mob/user)
 	if(ishuman(user) && !issynth(user))

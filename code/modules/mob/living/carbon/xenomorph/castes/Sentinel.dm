@@ -221,7 +221,7 @@
 		behavior.buffed_slashes = 0
 
 	to_chat(unbuffslash_user, SPAN_XENODANGER("We have waited too long, our slash will no longer apply neurotoxin!"))
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"
 
 /datum/action/xeno_action/activable/draining_bite/use_ability(atom/target)
 	. = ..()
@@ -263,9 +263,5 @@
 	target_human.KnockDown(stun_duration)
 	playsound(target_human,'sound/weapons/alien_bite2.ogg', 50, TRUE)
 	apply_cooldown()
-
-
-
-
 
 

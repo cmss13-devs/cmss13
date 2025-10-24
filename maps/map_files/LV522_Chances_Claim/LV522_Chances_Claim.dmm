@@ -6497,9 +6497,6 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
 	id = "Sec-Kitchen-Lockdown";

@@ -140,3 +140,71 @@
   zzzmike:
   - spellcheck: hijack fuel announcement now uses % instead of percent, rather than
       both
+2025-10-17:
+  MrsTonedOne, ZephyrTFA, optimumtact, harryob:
+  - server: added ipintel backend
+  hry-gh:
+  - bugfix: fixes bad shadows under windows
+  kiVts:
+  - bugfix: copy mode in buildmode is working correctly.
+  ori-disillusion-mirnov:
+  - maptweak: removed access restriction on houndmaster's quarters, removed old hellhound
+      spawners, added sleeping hellhounds in the hellhound cells
+  - rscdel: old hellhound callers are gone
+  - rscadd: new sleeping hellhounds replace them, you can click on them to wake them
+      up.
+  - bugfix: fixes misplaced bed roll on pred ship
+2025-10-18:
+  CeUvi:
+  - imageadd: new helmetgarb sprites for M1A1 ballistic goggles
+  DawsonKeyes:
+  - rscadd: New pred plasma rifle sprites
+  - rscadd: You can now wear the hunting bow quiver on your back slot
+  - bugfix: Hunting bow quiver sprites fixed
+  Drathek:
+  - code_imp: Added 3 new maplints for identical barricades, pipes, and disposals
+  - maptweak: Made minor tweaks to 11 maps and 3 inserts to accommodate new lints
+  Nemesis1337:
+  - rscadd: ammo box for ap p90 magazines
+  - qol: rail flashlights can now be attached to p90
+  - bugfix: ap magazines can now be used with regular p90
+  - imageadd: added p90 magazine sprite overlays and new sprites for ammo boxes
+  Red-byte3D:
+  - imageadd: Better sprites for special cursor sprites
+  VictorJob:
+  - imageadd: New Sprites for m82f
+  realforest2001:
+  - bugfix: Fixed non-functional on-mob sprites for the blue and black leather satchels.
+2025-10-19:
+  Zenith:
+  - imageadd: sprite replacements of the basketball hoop, LV-big tree & drone fabricator.
+  halander1:
+  - rscadd: New pay levels for researchers and W-Y comms
+  - bugfix: Low pay of researchers
+2025-10-20:
+  Unknownity:
+  - bugfix: Fixed clan bracers being able to be put inside pockets.
+  cuberound:
+  - rscadd: Tacmap stair indicators for multiz
+  kiVts:
+  - admin: basic buildmode should be more friendlier now.
+2025-10-22:
+  matttheficus:
+  - bugfix: Pred Cloaks now retain their custom colors when turned to accessories
+      and back.
+  ori-disillusion-mirnov:
+  - bugfix: predators can no longer join the hunt a second time
+2025-10-23:
+  Blundir:
+  - rscadd: preds, humans and xenos now have different hide button icons
+  - imageadd: almost all of the action button icons were remade
+  - imageadd: action icons for humans now have new semi transparent sprites
+  - bugfix: walkman having incorrect icons
+  - bugfix: transfer liquid action button having incorrect and misleading name
+  - rscadd: added manufacturer logos in object descriptions
+  - rscadd: renames Mateba autorevolver into Spearhead Unica 6 autorevoler
+  - imageadd: added welding shield sprite back to the Seegson welder (it has protection
+      mechanically, but not visually)
+  - imageadd: returned
+  - spellcheck: fixed a oddities in company namings
+  - spellcheck: renamed Seegson welder, it had USCM lore welder name for some reason

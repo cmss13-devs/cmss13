@@ -99,6 +99,12 @@
 /obj/item/weapon/gun/rifle/m41a/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
+/obj/item/weapon/gun/rifle/m41a/Initialize(mapload, ...)
+	. = ..()
+	if(istype(src, /obj/item/weapon/gun/rifle/m41a/corporate) || istype(src, /obj/item/weapon/gun/rifle/m41a/elite))
+		AddElement(/datum/element/corp_label/wy)
+	else
+		AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/rifle/m41a/set_gun_config_values()
 	..()
@@ -190,6 +196,7 @@
 /obj/item/weapon/gun/rifle/nsg23/Initialize(mapload, spawn_empty)
 	. = ..()
 	update_icon()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/rifle/nsg23/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 12,"rail_y" = 22, "under_x" = 26, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
@@ -453,9 +460,12 @@
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1, /obj/item/attachable/stock/rifle/collapsible)
 	start_automatic = TRUE
 
-/obj/item/weapon/gun/rifle/m41aMK1/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 14)
+/obj/item/weapon/gun/rifle/m41aMK1/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
+/obj/item/weapon/gun/rifle/m41aMK1/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 23, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 14)
 
 /obj/item/weapon/gun/rifle/m41aMK1/set_gun_config_values()
 	..()
@@ -560,6 +570,7 @@
 /obj/item/weapon/gun/rifle/m46c/Initialize(mapload, ...)
 	LAZYADD(actions_types, /datum/action/item_action/m46c/toggle_lethal_mode)
 	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 	if(iff_enabled)
 		LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
@@ -1437,6 +1448,10 @@
 	gun_category = GUN_CATEGORY_HEAVY
 	start_automatic = TRUE
 
+/obj/item/weapon/gun/rifle/lmg/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/rifle/lmg/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 19, "rail_x" = 12, "rail_y" = 23, "under_x" = 27, "under_y" = 13, "stock_x" = 14, "stock_y" = 15)
 
@@ -1519,6 +1534,10 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	flags_equip_slot = SLOT_BACK
 	start_automatic = TRUE
+
+/obj/item/weapon/gun/rifle/type71/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/weapon/gun/rifle/type71/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 39, "muzzle_y" = 17, "rail_x" = 16, "rail_y" = 23, "under_x" = 26, "under_y" = 13, "stock_x" = 11, "stock_y" = 13)
@@ -1812,6 +1831,10 @@
 	pixel_x = -6
 	hud_offset = -6
 
+/obj/item/weapon/gun/rifle/ak4047/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
+
 /obj/item/weapon/gun/rifle/ak4047/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 38, "muzzle_y" = 18,"rail_x" = 20, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 11, "stock_y" = 13, "special_x" = 33, "special_y" = 17)
 
@@ -1838,7 +1861,7 @@
 
 /obj/item/weapon/gun/rifle/m4ra
 	name = "\improper M4RA battle rifle"
-	desc = "The M4RA battle rifle is a designated marksman rifle in service with the USCM. Sporting a bullpup configuration, the M4RA battle rifle is perfect for reconnaissance and fire support teams.\nTakes *only* non-high-velocity M4RA magazines."
+	desc = "The Armat Battlefield Systems M4RA battle rifle is a designated marksman rifle in service with the USCM. Sporting a bullpup configuration, the M4RA battle rifle is perfect for reconnaissance and fire support teams.\nTakes *only* non-high-velocity M4RA magazines."
 	icon_state = "m4ra"
 	item_state = "m4ra"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
@@ -1895,6 +1918,10 @@
 	pixel_x = -5
 	hud_offset = -5
 
+/obj/item/weapon/gun/rifle/m4ra/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 22, "rail_y" = 21, "under_x" = 30, "under_y" = 13, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
 
@@ -1925,7 +1952,7 @@
 
 /obj/item/weapon/gun/rifle/l42a
 	name = "\improper L42A battle rifle"
-	desc = "The L42A Battle Rifle, found commonly around the frontiers of the Galaxy. It's commonly used by colonists for self defense, as well as many colonial militias, whomever they serve due to it's rugged reliability and ease of use without much training. This rifle was put up for adoption by the USCM and tested for a time, but ultimately lost to the M4RA already in service."
+	desc = "The Armat Battlefield Systems L42A Battle Rifle, found commonly around the frontiers of the Galaxy. It's commonly used by colonists for self defense, as well as many colonial militias, whomever they serve due to it's rugged reliability and ease of use without much training. This rifle was put up for adoption by the USCM and tested for a time, but ultimately lost to the M4RA already in service."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
@@ -1976,6 +2003,10 @@
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	starting_attachment_types = list(/obj/item/attachable/stock/carbine)
 	map_specific_decoration = TRUE
+
+/obj/item/weapon/gun/rifle/l42a/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/rifle/l42a/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 20, "under_x" = 18, "under_y" = 15, "stock_x" = 22, "stock_y" = 10)
@@ -2145,9 +2176,12 @@
 	map_specific_decoration = FALSE
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 
+/obj/item/weapon/gun/rifle/rmc_f90/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/rifle/rmc_f90/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 15, "rail_y" = 21, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
-
 
 /obj/item/weapon/gun/rifle/rmc_f90/set_gun_config_values()
 	..()
@@ -2312,6 +2346,7 @@
 /obj/item/weapon/gun/rifle/l23/Initialize(mapload, spawn_empty)
 	. = ..()
 	update_icon()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/rifle/l23/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 14, "rail_y" = 21, "under_x" = 26, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
@@ -2578,6 +2613,7 @@
 	. = ..()
 	pump_delay = FIRE_DELAY_TIER_8*3
 	additional_fire_group_delay += pump_delay
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/rifle/xm51/set_bullet_traits()
 	LAZYADD(traits_to_give, list(

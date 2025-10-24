@@ -4,7 +4,7 @@
 	icon_state = "fuel"
 	layer = ABOVE_TURF_LAYER
 	anchored = TRUE
-	cleanable_type = CLEANABLE_IGNITEABLE
+	cleanable_type = CLEANABLE_IGNITABLE
 	var/amount = 1 //Basically moles.
 
 /obj/effect/decal/cleanable/liquid_fuel/Initialize(mapload, amt = 1)
@@ -38,7 +38,7 @@
 			return
 		if(prob(50))
 			var/turf/target = get_step(my_turf, direction)
-			var/obj/effect/decal/cleanable/liquid_fuel/adjacent_fuel = LAZYACCESS(target?.cleanables, CLEANABLE_IGNITEABLE)
+			var/obj/effect/decal/cleanable/liquid_fuel/adjacent_fuel = LAZYACCESS(target?.cleanables, CLEANABLE_IGNITABLE)
 			if(adjacent_fuel && istype(adjacent_fuel))
 				continue
 			if(locate(/obj/effect/decal/cleanable/liquid_fuel) in target)
@@ -61,7 +61,7 @@
 		var/turf/target = get_step(my_turf, direction)
 		if(locate(/obj/flamer_fire) in target)
 			continue
-		var/obj/effect/decal/cleanable/liquid_fuel/adjacent_fuel = LAZYACCESS(target?.cleanables, CLEANABLE_IGNITEABLE)
+		var/obj/effect/decal/cleanable/liquid_fuel/adjacent_fuel = LAZYACCESS(target?.cleanables, CLEANABLE_IGNITABLE)
 		if(QDELETED(adjacent_fuel) || !istype(adjacent_fuel))
 			continue
 		new /obj/flamer_fire(target) // This will invoke an ignite

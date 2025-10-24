@@ -653,7 +653,7 @@
 		var/turf/open/scorch_turf_target = loc
 		if(scorch_turf_target.scorchable)
 			scorch_turf_target.scorch(burnlevel)
-		var/obj/effect/decal/cleanable/liquid_fuel/liquid = LAZYACCESS(scorch_turf_target.cleanables, CLEANABLE_IGNITEABLE)
+		var/obj/effect/decal/cleanable/liquid_fuel/liquid = LAZYACCESS(scorch_turf_target.cleanables, CLEANABLE_IGNITABLE)
 		if(liquid && istype(liquid))
 			INVOKE_NEXT_TICK(liquid, TYPE_PROC_REF(/obj/effect/decal/cleanable/liquid_fuel, ignite))
 

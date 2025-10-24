@@ -29,14 +29,14 @@
 
 /obj/effect/decal/cleanable/liquid_fuel/proc/spread()
 	//Allows liquid fuels to sometimes flow into other tiles.
-	if(amount < 5.0)
-		return
 	var/turf/my_turf = loc
 	if(!istype(my_turf))
 		return
 
 	for(var/direction in GLOB.cardinals)
-		if(rand(25))
+		if(amount < 5.0)
+			return
+		if(prob(50))
 			var/turf/target = get_step(my_turf, direction)
 			if(locate(/obj/effect/decal/cleanable/liquid_fuel) in target)
 				continue

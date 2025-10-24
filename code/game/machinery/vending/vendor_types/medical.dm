@@ -221,7 +221,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-	. = ..()
 
 //------------SORTED MEDICAL VENDORS------------
 

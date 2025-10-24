@@ -232,7 +232,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless/one_use
 	name = "one-use dylovene EZ autoinjector"
-	desc = "An EZ autoinjector loaded with 1 use of Bicaridine, a common brute toxin damage medicine. Doesn't require any training to use."
+	desc = "An EZ autoinjector loaded with 1 use of Dylovene, a common toxin damage medicine. Doesn't require any training to use."
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1

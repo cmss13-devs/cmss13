@@ -6586,6 +6586,13 @@
 /obj/item/ammo_box/magazine/shotgun/flechette/empty,
 /turf/open/floor/kutjevo/colors/red/edge,
 /area/caperiver/indoors/miningbase/security)
+"avq" = (
+/obj/item/shard,
+/obj/structure/machinery/colony_floodlight/engineer_circular{
+	alpha = 0
+	},
+/turf/open/floor/engine,
+/area/caperiver/indoors/conambase/unknown)
 "avr" = (
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	color = "#FF7700";
@@ -8208,10 +8215,6 @@
 /obj/structure/flora/grass/desert/heavygrass_5,
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/mining_base_exterior/south)
-"aAv" = (
-/obj/structure/platform/stone/soro/west,
-/turf/closed/wall/strata_ice/rock,
-/area/caperiver/oob)
 "aAw" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 1
@@ -22859,6 +22862,9 @@
 "bxg" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/reagent_container/food/snacks/meat/human,
+/obj/structure/machinery/colony_floodlight/engineer_circular{
+	alpha = 0
+	},
 /turf/open/floor/dark,
 /area/caperiver/indoors/conambase/unknown)
 "bxh" = (
@@ -26112,7 +26118,6 @@
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/caperiver/telecomms/telecomm_4)
 "euU" = (
-/obj/structure/machinery/colony_floodlight/engineer_circular,
 /turf/open/floor/plating/engineer_ship,
 /area/caperiver/indoors/conambase/unknown)
 "euW" = (
@@ -33506,9 +33511,6 @@
 /obj/effect/spawner/random/toolbox,
 /obj/structure/prop/hybrisa/signs/high_voltage{
 	pixel_x = -30
-	},
-/obj/structure/machinery/colony_floodlight_switch{
-	pixel_y = 30
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/caperiver/indoors/conambase/engi)
@@ -66816,7 +66818,7 @@ ahC
 cJx
 aUJ
 aWQ
-aAv
+aWQ
 arV
 aDe
 axr
@@ -77559,7 +77561,7 @@ gSE
 aQl
 aQl
 aQl
-bLC
+avq
 sPS
 wWv
 bLC

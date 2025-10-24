@@ -111,25 +111,6 @@
 	supplies_remaining = min(supplies_remaining, supplies_max)
 	update_icon()
 
-/obj/structure/restock_cart/update_icon()
-	. = ..()
-	if(supplies_remaining && supplies_max)
-		var/image/filled
-		var/percent = floor((supplies_remaining / supplies_max * 100))
-		switch(percent)
-			if(1 to 25)
-				filled = image(icon, src, "[icon_state]_1")
-			if(26 to 50)
-				filled = image(icon, src, "[icon_state]_2")
-			if(51 to 75)
-				filled = image(icon, src, "[icon_state]_3")
-			if(76 to INFINITY)
-				filled = image(icon, src, "[icon_state]_4")
-			else
-				return
-
-		overlays += filled
-
 /obj/structure/restock_cart/get_examine_text(mob/user)
 	. = ..()
 	if(get_dist(user, src) > 2 && user != loc)
@@ -389,19 +370,39 @@
 
 		if(restocking_reagents)
 			var/reagent_added = restock_reagents(min(cart.supplies_remaining, 100))
-			cart.update_icon()
+
 			if(reagent_added <= 0 || chem_refill_volume == chem_refill_volume_max)
 				break // All done
 			cart.supplies_remaining -= reagent_added
+			update_icon()
 		else
 			if(!restock_supplies(prob_to_skip = 0, can_remove = FALSE))
 				break // All done
 			cart.supplies_remaining--
 
 	being_restocked = FALSE
-	cart.update_icon()
 	user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with [cart.supply_descriptor]."),
 	SPAN_NOTICE("You finish stocking [src] with [cart.supply_descriptor]."))
+	update_icon()
+
+/obj/structure/restock_cart/update_icon()
+	. = ..()
+	if(supplies_remaining && supplies_max)
+		var/image/filled
+		var/percent = floor((supplies_remaining / supplies_max * 100))
+		switch(percent)
+			if(1 to 25)
+				filled = image(icon, src, "[icon_state]_1")
+			if(26 to 50)
+				filled = image(icon, src, "[icon_state]_2")
+			if(51 to 75)
+				filled = image(icon, src, "[icon_state]_3")
+			if(76 to INFINITY)
+				filled = image(icon, src, "[icon_state]_4")
+			else
+				return
+
+		overlays += filled
 
 /obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/I, mob/user)
 	if(stat != WORKING)

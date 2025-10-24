@@ -156,8 +156,8 @@
 	desc = "A tank for containing water."
 =======
 /obj/structure/reagent_dispensers/watertank
-	name = "watertank"
-	desc = "A water tank"
+	name = "water tank"
+	desc = "A tank for containing water."
 >>>>>>> parent of 5107a701c2 (Changes tank file paths)
 	icon_state = "watertank"
 	chemical = "water"

@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Manufacturer logos are now only sent to the examiner mob instead of all viewers"

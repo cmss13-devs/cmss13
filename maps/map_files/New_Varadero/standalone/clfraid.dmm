@@ -1155,6 +1155,10 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = 6
+	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 1
 	},
@@ -1541,6 +1545,11 @@
 /turf/closed/wall/r_wall,
 /area/varadero/interior/research)
 "IE" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 24
+	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
 	pixel_x = 16;

@@ -485,8 +485,26 @@
 	if (!tracks_target)
 		A = get_turf(A)
 
+	//everyone gets (extra) timer to pounce up
 	if(A.z > X.z)
-		return
+		var/list/turf/path = get_line(SSmapping.get_turf_above(X), A)
+		for(var/turf/turf_in_path in path)
+			if(!istype(turf_in_path, /turf/open_space))
+				continue
+
+			var/turf/below = SSmapping.get_turf_below(turf_in_path)
+			while (below)
+				if(below.turf_flags & TURF_HULL)
+					return
+
+				for(var/obj/structure/cur_obj in below.contents)
+					if(cur_obj.density && cur_obj.unslashable && cur_obj.unacidable && cur_obj.explo_proof)
+						return
+
+				below = SSmapping.get_turf_below(below)
+
+		if (!do_after(X, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			return
 
 	if(A.z != X.z && X.mob_size >= MOB_SIZE_BIG)
 		if (!do_after(X, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))

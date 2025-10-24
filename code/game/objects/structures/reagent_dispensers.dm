@@ -204,6 +204,7 @@
 	var/datum/weakref/source_mob
 
 /obj/structure/reagent_dispensers/tank/update_icon()
+	overlays.Cut()
 	. = ..()
 	if(reagents && reagents.total_volume)
 		var/image/meter = image(icon, src, "t-25")

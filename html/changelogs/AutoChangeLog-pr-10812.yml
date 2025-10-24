@@ -1,0 +1,4 @@
+author: "Yachuk"
+delete-after: True
+changes:
+  - qol: "reloading M240 flamethrower tanks one by one"

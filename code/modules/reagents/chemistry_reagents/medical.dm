@@ -58,7 +58,7 @@
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_PAINKILLING = 2.5)
 
-//Changed to Common so Oxy will dispense. definition of common chem class "Chemicals which recipe is commonly known and made". Oxycodone is such being available from med dispenser
+//Changed to Common so turing will dispense. definition of common chem class "Chemicals which recipe is commonly known and made". Oxycodone is such being available from med dispenser
 /datum/reagent/medical/oxycodone
 	name = "Oxycodone"
 	id = "oxycodone"
@@ -93,7 +93,7 @@
 /datum/reagent/medical/kelotane
 	name = "Kelotane"
 	id = "kelotane"
-	description = "Kelotane is a common anticorrosive drug used to treat corrosive and caustic trauma. Overdoses are ironically caustic and toxic, damaging skin and muscle tissues."
+	description = "Kelotane is a common anticorrosive drug used to treat corrosive and caustic burn trauma. Overdoses are ironically caustic and toxic, damaging skin and muscle tissues."
 	reagent_state = LIQUID
 	color = "#d8b343" // rgb: 216, 179, 67
 	overdose = REAGENTS_OVERDOSE

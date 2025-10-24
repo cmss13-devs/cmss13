@@ -413,6 +413,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/empty
 	name = "autoinjector (C-T)"
 	desc = "A custom-made autoinjector, likely from research."
+	icon_state = "empty_ez"
 	mixed_chem = TRUE
 	amount_per_transfer_from_this = 5
 	volume = 15

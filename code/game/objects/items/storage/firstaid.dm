@@ -1124,13 +1124,6 @@
 	to_chat(user, SPAN_NOTICE("You throw away [src]."))
 	qdel(src)
 
-/obj/item/storage/pill_bottle/packet/get_examine_text(mob/user)
-	. = ..()
-	if(length(contents))
-		. += SPAN_NOTICE("Pills left: [length(contents)].")
-	else
-		. += SPAN_NOTICE("It is empty.")
-
 /obj/item/storage/pill_bottle/packet/fill_preset_inventory()
 	. = ..()
 	update_icon()

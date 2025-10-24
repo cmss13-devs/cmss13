@@ -663,6 +663,7 @@
 	. = ..()
 	if(spy_bug)
 		spy_bug.nametag = "CL Radio"
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/device/radio/headset/almayer/reporter
 	name = "reporter radio headset"
@@ -1095,6 +1096,10 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_WY
 
+/obj/item/device/radio/headset/distress/WY/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/device/radio/headset/distress/WY/security
 	name = "WY corporate security headset"
 	desc = "A headset commonly worn by WY corporate security personnel."
@@ -1170,6 +1175,10 @@
 		"Corporate Liaison" = TRACKER_CL
 	)
 	additional_hud_types = list(MOB_HUD_FACTION_WY)
+
+/obj/item/device/radio/headset/distress/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/device/radio/headset/distress/pmc/commando
 	name = "W-Y commando headset"

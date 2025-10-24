@@ -416,6 +416,10 @@
 	name = "\improper M240A1 incinerator unit"
 	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
 
+/obj/item/weapon/gun/flamer/m240/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/flamer/m240/underextinguisher
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
 
@@ -982,6 +986,10 @@
 	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer
 
 	attachable_allowed = null
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/flamer/flammenwerfer3/get_fire_sound()
 	var/list/fire_sounds = list(

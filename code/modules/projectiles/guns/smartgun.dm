@@ -966,6 +966,7 @@
 /obj/item/weapon/gun/smartgun/l56a2/Initialize(mapload, ...)
 	. = ..()
 	toggle_aim_assist(null, TRUE)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/smartgun/l56a2/elite
 	name = "\improper L56A2D 'Dirty' smartgun"
@@ -1162,6 +1163,10 @@
 	item_state = "la56"
 	gun_faction = FACTION_TWE
 
+/obj/item/weapon/gun/smartgun/rmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/smartgun/upp
 	name = "\improper RFVS37 smartgun"
 	desc = "The actual firearm in the 2-piece RFVS37 Smartgun System. This experimental variant is used by the Union of Progressive Peoples units."
@@ -1173,6 +1178,10 @@
 	current_mag = /obj/item/ammo_magazine/smartgun/upp
 	mouse_pointer = 'icons/effects/mouse_pointer/upp_smartgun_mouse.dmi'
 	gun_faction = FACTION_UPP
+
+/obj/item/weapon/gun/smartgun/upp/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 //  Solar devils SG, frontline mode only
 

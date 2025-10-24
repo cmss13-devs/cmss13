@@ -5,6 +5,10 @@
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE //Let's make these keep their name and icon.
 	built_in_visors = list()
 
+/obj/item/clothing/head/helmet/marine/veteran/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
+
 /obj/item/clothing/head/helmet/marine/veteran/pmc
 	name = "\improper PMC tactical cap"
 	desc = "A protective cap made from flexible kevlar. Standard issue for most security firms in the place of a helmet."
@@ -23,6 +27,10 @@
 	flags_marine_helmet = NO_FLAGS
 
 	camera_factions = FACTION_LIST_WY
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/black
 	name = "\improper PMC black tactical cap"

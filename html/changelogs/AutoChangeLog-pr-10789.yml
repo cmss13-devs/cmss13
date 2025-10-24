@@ -1,0 +1,5 @@
+author: "PoltavskaPraca"
+delete-after: True
+changes:
+  - qol: "detached attachies are put in hand, faster bayonet attach/detach"
+  - balance: "bayonet and subtypes now take 3 ticks to detach/attach"

@@ -81,7 +81,7 @@
 /obj/structure/restock_cart/medical
 	name = "\improper Wey-Yu restock cart"
 	desc = "A rather heavy cart filled with various supplies to restock a vendor with. Provided by Wey-Yu Pharmaceuticals Division(TM)."
-	icon_state = "medcart" //temporary?
+	icon_state = "medcart"
 
 	supplies_remaining = 20
 	supplies_max = 20

@@ -142,6 +142,9 @@
 		if(src.a_intent != INTENT_HARM) //Force normal gunfire on harm intent.
 			click_adjacent(atom_clicked, object_used, mods)
 			return
+		if(skillcheck(src, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED) && src.zone_selected == "head" && ishuman_strict(atom_clicked))
+			click_adjacent(atom_clicked, object_used, mods)
+			return
 	// If not standing next to the atom clicked.
 	if(object_used)
 		object_used.afterattack(atom_clicked, src, 0, mods)

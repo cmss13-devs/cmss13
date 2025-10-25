@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 /obj/item/reagent_container/dropper
 	name = "dropper"
-	desc = "A dropper. Transfers 5 units."
+	desc = "An instrument used to measure and transfer small units of liquid. Transfers up to 5 units."
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',

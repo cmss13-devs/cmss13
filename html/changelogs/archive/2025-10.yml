@@ -154,3 +154,84 @@
   - rscadd: new sleeping hellhounds replace them, you can click on them to wake them
       up.
   - bugfix: fixes misplaced bed roll on pred ship
+2025-10-18:
+  CeUvi:
+  - imageadd: new helmetgarb sprites for M1A1 ballistic goggles
+  DawsonKeyes:
+  - rscadd: New pred plasma rifle sprites
+  - rscadd: You can now wear the hunting bow quiver on your back slot
+  - bugfix: Hunting bow quiver sprites fixed
+  Drathek:
+  - code_imp: Added 3 new maplints for identical barricades, pipes, and disposals
+  - maptweak: Made minor tweaks to 11 maps and 3 inserts to accommodate new lints
+  Nemesis1337:
+  - rscadd: ammo box for ap p90 magazines
+  - qol: rail flashlights can now be attached to p90
+  - bugfix: ap magazines can now be used with regular p90
+  - imageadd: added p90 magazine sprite overlays and new sprites for ammo boxes
+  Red-byte3D:
+  - imageadd: Better sprites for special cursor sprites
+  VictorJob:
+  - imageadd: New Sprites for m82f
+  realforest2001:
+  - bugfix: Fixed non-functional on-mob sprites for the blue and black leather satchels.
+2025-10-19:
+  Zenith:
+  - imageadd: sprite replacements of the basketball hoop, LV-big tree & drone fabricator.
+  halander1:
+  - rscadd: New pay levels for researchers and W-Y comms
+  - bugfix: Low pay of researchers
+2025-10-20:
+  Unknownity:
+  - bugfix: Fixed clan bracers being able to be put inside pockets.
+  cuberound:
+  - rscadd: Tacmap stair indicators for multiz
+  kiVts:
+  - admin: basic buildmode should be more friendlier now.
+2025-10-22:
+  matttheficus:
+  - bugfix: Pred Cloaks now retain their custom colors when turned to accessories
+      and back.
+  ori-disillusion-mirnov:
+  - bugfix: predators can no longer join the hunt a second time
+2025-10-23:
+  Blundir:
+  - rscadd: preds, humans and xenos now have different hide button icons
+  - imageadd: almost all of the action button icons were remade
+  - imageadd: action icons for humans now have new semi transparent sprites
+  - bugfix: walkman having incorrect icons
+  - bugfix: transfer liquid action button having incorrect and misleading name
+  - rscadd: added manufacturer logos in object descriptions
+  - rscadd: renames Mateba autorevolver into Spearhead Unica 6 autorevoler
+  - imageadd: added welding shield sprite back to the Seegson welder (it has protection
+      mechanically, but not visually)
+  - imageadd: returned
+  - spellcheck: fixed a oddities in company namings
+  - spellcheck: renamed Seegson welder, it had USCM lore welder name for some reason
+2025-10-24:
+  GoodWheatley:
+  - bugfix: The CO gear vendor can now vend most attachments again
+2025-10-25:
+  Drathek:
+  - code_imp: Manufacturer logos are now only sent to the examiner mob instead of
+      all viewers
+  - balance: LZ turrets (spaceborne) can no longer be driven past or destroyed by
+      vehicles
+  FishyFlaps2024:
+  - rscadd: Makes the xeno grab stun shorter if the xeno is stealthed
+  PoltavskaPraca:
+  - qol: detached attachies are put in hand, faster bayonet attach/detach
+  - balance: bayonet and subtypes now take 3 ticks to detach/attach
+  Yachuk:
+  - qol: reloading M240 flamethrower tanks one by one
+  armsdealer9876:
+  - balance: Reduce airburst grenade point cost for consistency amongst roles
+  cuberound:
+  - bugfix: no slowdown water no longer speeds up xenos
+  ihatethisengine:
+  - balance: hive with a king is no longer allowed to have alliances
+  ori-disillusion-mirnov:
+  - bugfix: pacman generators now stay one color, and charge APCs based on enabled
+      powernets, instead of assuming all powernets are on
+  - ui: pacman ui is now TGUI, from TGstation
+  - soundadd: new sounds for pacman generators running, also from TGstation

@@ -1680,6 +1680,10 @@
 	storage_slots = 3
 	var/base_icon_state = "cassette_pouch"
 
+/obj/item/storage/pouch/cassette/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/synsound)
+
 /obj/item/storage/pouch/cassette/update_icon()
 	underlays.Cut()
 	if(!content_watchers)

@@ -112,6 +112,7 @@ Class Procs:
 	var/obj/structure/machinery/colony_floodlight_switch/breaker_switch
 	/// Whether this is toggled on
 	var/is_on = TRUE
+	var/power_initialized = FALSE
 
 /obj/structure/machinery/vv_get_dropdown()
 	. = ..()
@@ -206,11 +207,14 @@ Class Procs:
 
 //sets the use_power var and then forces an area power update
 /obj/structure/machinery/proc/update_use_power(new_use_power)
-	if (new_use_power == use_power)
+	if(new_use_power == use_power)
 		return //don't need to do anything
+	if(QDELETED(src))
+		return
 
 	var/delta_power = 0 //figuring how much our power delta is
-	delta_power -= calculate_current_power_usage() //current usage
+	if(power_initialized)
+		delta_power -= calculate_current_power_usage() //current usage
 	use_power = new_use_power
 	delta_power += calculate_current_power_usage() //updated usage
 

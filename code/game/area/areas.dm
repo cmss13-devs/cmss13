@@ -386,35 +386,34 @@
 		if(POWER_CHANNEL_ONEOFF)
 			used_oneoff += amount
 
-/area/Entered(A,atom/OldLoc)
-	if(ismob(A))
+/area/Entered(atom/movable/thing, atom/OldLoc)
+	if(ismob(thing))
 		if(!OldLoc)
 			return
-		var/mob/M = A
+		var/mob/M = thing
 		var/area/old_area = get_area(OldLoc)
 		if(old_area == src)
 			return
 		M?.client?.soundOutput?.update_ambience(src, null, TRUE)
-	else if(istype(A, /obj/structure/machinery))
-		add_machine(A)
+	else if(istype(thing, /obj/structure/machinery))
+		add_machine(thing)
 
-/area/Exited(A)
-	if(istype(A, /obj/structure/machinery))
-		remove_machine(A)
-	else if(ismob(A))
-		var/mob/exiting_mob = A
+/area/Exited(atom/movable/thing)
+	if(istype(thing, /obj/structure/machinery))
+		if(!QDELING(thing))
+			remove_machine(thing)
+	else if(ismob(thing))
+		var/mob/exiting_mob = thing
 		exiting_mob?.client?.soundOutput?.update_ambience(target_area = null, ambience_override = null, force_update = TRUE)
 
-/area/proc/add_machine(obj/structure/machinery/M)
+/area/proc/add_machine(obj/structure/machinery/machine)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(istype(M))
-		use_power(M.calculate_current_power_usage(), M.power_channel)
-		M.power_change()
+	use_power(machine.calculate_current_power_usage(), machine.power_channel)
+	machine.power_change()
 
-/area/proc/remove_machine(obj/structure/machinery/M)
+/area/proc/remove_machine(obj/structure/machinery/machine)
 	SHOULD_NOT_SLEEP(TRUE)
-	if(istype(M))
-		use_power(-M.calculate_current_power_usage(), M.power_channel)
+	use_power(-machine.calculate_current_power_usage(), machine.power_channel)
 
 //atmos related procs
 

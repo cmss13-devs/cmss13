@@ -137,8 +137,6 @@
 	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
 
-	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_DATABASE)
-
 	minimap_icon = "nurse"
 	minimap_background = "background_shipside"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)

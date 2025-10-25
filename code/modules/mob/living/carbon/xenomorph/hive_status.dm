@@ -844,9 +844,10 @@
 
 		xeno_maptext("My Children, the time has come to assault the Metal Hive. Evolve now into castes best suited for the task!", "Queen Mother")
 
-		add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)
-		var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
-		transmute_action.give_to(xeno)
+		if(xeno.caste.tier > 0)
+			add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)
+			var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
+			transmute_action.give_to(xeno)
 
 
 /datum/hive_status/proc/free_respawn(client/C)

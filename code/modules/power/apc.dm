@@ -94,6 +94,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/lastused_environ = 0
 	var/lastused_oneoff = 0
 	var/lastused_total = 0
+	var/lastused_total_actual = 0
+	var/lastgenerated_total = 0
+	var/lastgenerated_total_surplus = 0
 	var/main_status = 0
 
 	var/wiresexposed = 0
@@ -218,7 +221,11 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		"powerCellStatus" = cell ? cell.percent() : null,
 		"chargeMode" = chargemode,
 		"chargingStatus" = charging,
-		"totalLoad" = display_power(lastused_total),
+		"totalLoad" = display_power(lastused_total_actual),
+		"totalLoadDemanded" = display_power(lastused_total),
+		"totalGenerated" = display_power(lastgenerated_total),
+		"totalGeneratedSurplus" = display_power(lastgenerated_total_surplus),
+		"generatorCount" = length(connected_power_sources),
 		"coverLocked" = coverlocked,
 		"siliconUser" = FALSE,
 
@@ -1096,10 +1103,18 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	if(!area.requires_power)
 		return
 
+	lastused_total_actual = 0
 	lastused_light = area.usage(POWER_CHANNEL_LIGHT)
+	if(area.powered(POWER_CHANNEL_LIGHT))
+		lastused_total_actual += lastused_light
 	lastused_equip = area.usage(POWER_CHANNEL_EQUIP)
+	if(area.powered(POWER_CHANNEL_EQUIP))
+		lastused_total_actual += lastused_equip
 	lastused_environ = area.usage(POWER_CHANNEL_ENVIRON)
+	if(area.powered(POWER_CHANNEL_ENVIRON))
+		lastused_total_actual += lastused_environ
 	lastused_oneoff = area.usage(POWER_CHANNEL_ONEOFF, TRUE) //getting the one-off power usage and resetting it to 0 for the next processing tick
+	lastused_total_actual += lastused_oneoff
 	lastused_total = lastused_light + lastused_equip + lastused_environ + lastused_oneoff
 
 	//store states to update icon if any change
@@ -1122,7 +1137,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		var/cell_maxcharge = cell.maxcharge
 
 		//Calculate how much power the APC will try to get from the grid.
-		var/target_draw = lastused_total
+		var/target_draw = lastused_total_actual
 
 		if(attempt_charging())
 			target_draw += min((cell_maxcharge - cell.charge), (cell_maxcharge * CHARGELEVEL))/CELLRATE
@@ -1133,29 +1148,22 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 		//Try to draw from local grid
 		var/got_power_from_local_grid = FALSE
+		lastgenerated_total = 0
+		lastgenerated_total_surplus = 0
 		if(length(connected_power_sources) > 0)
-			var/total_power_generated = 0
+			for(var/obj/structure/machinery/power/power_generator/generator in connected_power_sources)
+				if(generator.current_area != current_area)
+					generator.apc_in_area = null
+					LAZYREMOVE(connected_power_sources, generator)
+					continue
+				if(generator.is_on)
+					lastgenerated_total += (generator.power_gen_percent / 100) * generator.power_gen
 
-			for(var/power_system in connected_power_sources)
-				if(istype(power_system, /obj/structure/machinery/power/power_generator))
-					var/obj/structure/machinery/power/power_generator/generator = power_system
-					if(!generator)
-						LAZYREMOVE(connected_power_sources, power_system)
-						continue
-					if(generator.current_area != current_area)
-						generator.apc_in_area = null
-						LAZYREMOVE(connected_power_sources, power_system)
-						continue
-					if(generator.is_on)
-						total_power_generated += (generator.power_gen_percent / 100) * generator.power_gen
-				else
-					LAZYREMOVE(connected_power_sources, power_system)
-
-			if(total_power_generated > 0)
-				power_drawn = min(total_power_generated, max(target_draw, MAXIMUM_GIVEN_POWER_TO_LOCAL_APC))
+			if(lastgenerated_total > 0)
+				power_drawn = min(lastgenerated_total, min(target_draw, MAXIMUM_GIVEN_POWER_TO_LOCAL_APC))
 				target_draw = max(target_draw - power_drawn, 0)
-				total_power_generated -= power_drawn
-				add_avail(total_power_generated)
+				lastgenerated_total_surplus = lastgenerated_total - power_drawn
+				add_avail(lastgenerated_total_surplus)
 
 				got_power_from_local_grid = target_draw <= 0
 				charging = APC_CHARGING
@@ -1168,7 +1176,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		power_excess = power_drawn - lastused_total
 
 		if(power_excess < 0) //Couldn't get enough power from the grid, we will need to take from the power cell.
-
 			charging = APC_NOT_CHARGING
 
 			var/required_power = -power_excess

@@ -6,6 +6,7 @@ import {
   LabeledList,
   ProgressBar,
   Section,
+  Tooltip,
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
@@ -30,6 +31,10 @@ type Data = {
   chargeMode: BooleanLike;
   chargingStatus: number;
   totalLoad: string;
+  totalLoadDemanded: string;
+  totalGenerated: string;
+  totalGeneratedSurplus: string;
+  generatorCount: number;
   coverLocked: BooleanLike;
   siliconUser: BooleanLike;
   powerChannels: PowerChannel[];
@@ -173,9 +178,20 @@ const ApcContent = (props) => {
               </LabeledList.Item>
             );
           })}
-          <LabeledList.Item label="Total Load">
-            <b>{data.totalLoad}</b>
-          </LabeledList.Item>
+          <Tooltip content="How much power is used (Demand includes idle usage that a breaker may be preventing)">
+            <LabeledList.Item label="Total Load (Demand)">
+              <b>
+                {data.totalLoad} ({data.totalLoadDemanded})
+              </b>
+            </LabeledList.Item>
+          </Tooltip>
+          {data.generatorCount > 0 && (
+            <Tooltip content="How much generators are producing (Surplus is how much is supplied to the grid)">
+              <LabeledList.Item label="Generated (Surplus)">
+                {data.totalGenerated} ({data.totalGeneratedSurplus})
+              </LabeledList.Item>
+            </Tooltip>
+          )}
         </LabeledList>
       </Section>
       <Section

@@ -1,8 +1,8 @@
 //job options for doctors
 
-#define DOCTOR_VARIANT "Doctor"
-#define PHARMACIST_VARIANT "Pharmaceutical Physician"
-#define SURGEON_VARIANT "Surgeon"
+#define DOCTOR_VARIANT "Doctor" // "I go wherever I am needed in the medical bay."
+#define PHARMACIST_VARIANT "Pharmaceutical Physician" // "I try to prioritize manufacturing and administering medicine."
+#define SURGEON_VARIANT "Surgeon" // "I try to prioritize operating on patients."
 
 // Doctor
 /datum/job/civilian/doctor

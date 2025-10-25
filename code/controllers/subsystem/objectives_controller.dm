@@ -19,6 +19,63 @@ SUBSYSTEM_DEF(objectives)
 	// Keep track of the list of objectives to process, in case we need to defer to the next tick.
 	var/list/datum/cm_objective/current_active_run = list()
 
+/datum/sinusoidal_wave
+    var/name = "Unknown Wave"
+    var/amplitude = 1.0        // Property 1: Wave height/intensity
+    var/frequency = 1.0        // Property 2: Wave frequency/speed
+    var/phase = 0.0           // Property 3: Wave phase shift
+    var/damage_type = "base"   // Type of damage this wave represents
+    var/color = "#ffffff"
+
+/datum/sinusoidal_wave/New(amp = 1.0, freq = 1.0, ph = 0.0, damage = "base")
+    amplitude = amp
+    frequency = freq
+    phase = ph
+    damage_type = damage
+
+// Create dictionary to organize waves by type
+var/list/wave_dict = list(
+	"brute" = list(),
+	"burn" = list(),
+	"toxin" = list(),
+	"oxygen" = list(),
+	"bone" = list(),
+	"organ" = list(),
+	"pain" = list(),
+	"parasitic" = list()
+)
+
+
+/datum/controller/subsystem/objectives/proc/initialize_sinusoidal_waves()
+	SHOULD_NOT_SLEEP(TRUE)
+	// Generate waves for each damage type
+	var/list/damage_types = list("brute", "burn") //"toxin", "oxygen", "bone", "organ", "pain", "parasitic")
+	for(var/damage_type in damage_types)
+		var/list/wave_data = list(
+			"amplitude" = 1.0,
+			"frequency" = 1.0,
+			"phase" = 0.0,
+			"color" = "#ffffff",
+			"name" = "Wave",
+			"damage_type" = damage_type
+		)
+		// Set parameters based on damage type
+		switch(damage_type)
+			if("brute")
+				wave_data["amplitude"] = 1
+				wave_data["phase"] = 1.0
+				wave_data["frequency"] = 1.0
+				wave_data["color"] = "#ff4444"
+				wave_data["name"] = "Brute Damage Wave"
+			if("burn")
+				wave_data["amplitude"] = 1
+				wave_data["phase"] = 1.5
+				wave_data["frequency"] = 1.0
+				wave_data["color"] = "#ffbb33"
+				wave_data["name"] = "Burn Damage Wave"
+		wave_dict[damage_type] += list(wave_data)
+	GLOB.research_sinusoids = wave_dict
+
 /datum/controller/subsystem/objectives/Initialize(start_timeofday)
 	. = ..()
 
@@ -51,6 +108,9 @@ SUBSYSTEM_DEF(objectives)
 	power = new
 	comms = new
 	corpsewar = new
+
+	// Initialize sinusoidal waves for the round
+	initialize_sinusoidal_waves()
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(pre_round_start))
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(post_round_start))

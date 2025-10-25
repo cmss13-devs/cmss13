@@ -638,3 +638,6 @@ GLOBAL_PROTECT(topic_tokens)
 
 GLOBAL_LIST_EMPTY(topic_commands)
 GLOBAL_PROTECT(topic_commands)
+
+GLOBAL_LIST_EMPTY(research_sinusoids)
+

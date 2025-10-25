@@ -2436,6 +2436,7 @@
 #include "code\modules\reagents\chemistry_machinery\chem_master.dm"
 #include "code\modules\reagents\chemistry_machinery\chem_simulator.dm"
 #include "code\modules\reagents\chemistry_machinery\chem_storage.dm"
+#include "code\modules\reagents\chemistry_machinery\corpse_analyzer.dm"
 #include "code\modules\reagents\chemistry_machinery\pandemic.dm"
 #include "code\modules\reagents\chemistry_machinery\reagent_analyzer.dm"
 #include "code\modules\reagents\chemistry_machinery\reagent_grinder.dm"

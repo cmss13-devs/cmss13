@@ -211,3 +211,27 @@
 2025-10-24:
   GoodWheatley:
   - bugfix: The CO gear vendor can now vend most attachments again
+2025-10-25:
+  Drathek:
+  - code_imp: Manufacturer logos are now only sent to the examiner mob instead of
+      all viewers
+  - balance: LZ turrets (spaceborne) can no longer be driven past or destroyed by
+      vehicles
+  FishyFlaps2024:
+  - rscadd: Makes the xeno grab stun shorter if the xeno is stealthed
+  PoltavskaPraca:
+  - qol: detached attachies are put in hand, faster bayonet attach/detach
+  - balance: bayonet and subtypes now take 3 ticks to detach/attach
+  Yachuk:
+  - qol: reloading M240 flamethrower tanks one by one
+  armsdealer9876:
+  - balance: Reduce airburst grenade point cost for consistency amongst roles
+  cuberound:
+  - bugfix: no slowdown water no longer speeds up xenos
+  ihatethisengine:
+  - balance: hive with a king is no longer allowed to have alliances
+  ori-disillusion-mirnov:
+  - bugfix: pacman generators now stay one color, and charge APCs based on enabled
+      powernets, instead of assuming all powernets are on
+  - ui: pacman ui is now TGUI, from TGstation
+  - soundadd: new sounds for pacman generators running, also from TGstation

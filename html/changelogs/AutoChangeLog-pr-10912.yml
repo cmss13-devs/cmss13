@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - bugfix: "no slowdown water no longer speeds up xenos"

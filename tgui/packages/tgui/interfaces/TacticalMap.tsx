@@ -5,8 +5,10 @@ import { ByondUi } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
 interface TacMapProps {
-  isXeno: boolean;
   mapRef: string;
+  mapPixelSizeX: number;
+  mapPixelSizeY: number;
+  isXeno: boolean;
   canChangeZ: boolean;
 }
 
@@ -77,7 +79,7 @@ export const TacticalMap = (props) => {
         </Tabs.Tab>
         <Tabs.Tab
           key={PAGES.length + 1}
-          color={data.isXeno ? 'purple' : 'blue'}
+          color={getThemeColor(data)}
           selected={false}
           icon={'minus'}
           onClick={() => tryDecrementZ()}

@@ -49,15 +49,6 @@
 /datum/chem_property/negative/toxic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(potency * POTENCY_MULTIPLIER_VHIGH, TOX)
 
-/datum/chem_property/negative/toxic/reaction_obj(obj/O, volume, potency = 1)
-	if(istype(O,/obj/effect/alien/weeds/))
-		var/obj/effect/alien/weeds/alien_weeds = O
-		alien_weeds.take_damage(25 * potency) // Kills alien weeds on touch
-		return
-	if(istype(O,/obj/effect/glowshroom))
-		qdel(O)
-		return
-
 /datum/chem_property/negative/toxic/reaction_mob(mob/living/M, method=TOUCH, volume, potency = 1)
 	if(!iscarbon(M))
 		return

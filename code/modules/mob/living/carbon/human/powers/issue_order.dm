@@ -126,18 +126,18 @@
 
 /mob/living/carbon/human/proc/cycle_voice_level()
 	if(!HAS_TRAIT(src, TRAIT_LEADERSHIP)) // just in case
-		to_chat(src, SPAN_WARNING("You don't particularly understand how to speak... 'authoratively.'"))
+		to_chat(src, SPAN_WARNING("You don't particularly understand how to speak... 'authoritatively .'"))
 		return
 
 	switch(langchat_styles)
 		if("", null)
 			langchat_styles = "langchat_smaller_bolded"
-			to_chat(src, SPAN_NOTICE("You will now speak authoratively."))
+			to_chat(src, SPAN_NOTICE("You will now speak authoritatively ."))
 			return
 
 		if("langchat_smaller_bolded")
 			langchat_styles = "langchat_bolded"
-			to_chat(src, SPAN_NOTICE("You will now speak loudly and authoratively."))
+			to_chat(src, SPAN_NOTICE("You will now speak loudly and authoritatively ."))
 			return
 
 		if("langchat_bolded")

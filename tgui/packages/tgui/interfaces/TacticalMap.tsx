@@ -33,6 +33,22 @@ export const TacticalMap = (props) => {
     });
   };
 
+  const getTheme = (props: TacMapProps): string => {
+    if (props.isXeno) {
+      return 'hive_status';
+    } else {
+      return 'crtblue';
+    }
+  };
+
+  const getThemeColor = (props: TacMapProps): string => {
+    if (props.isXeno) {
+      return 'purple';
+    } else {
+      return 'blue';
+    }
+  };
+
   const tryIncrementZ = () => {
     act('changeZ', {
       amount: 1,
@@ -52,7 +68,7 @@ export const TacticalMap = (props) => {
       <>
         <Tabs.Tab
           key={PAGES.length}
-          color={data.isXeno ? 'purple' : 'blue'}
+          color={getThemeColor(data)}
           selected={false}
           icon={'plus'}
           onClick={() => tryIncrementZ()}
@@ -73,11 +89,7 @@ export const TacticalMap = (props) => {
   };
 
   return (
-    <Window
-      width={700}
-      height={850}
-      theme={data.isXeno ? 'hive_status' : 'crtblue'}
-    >
+    <Window width={700} height={850} theme={getTheme(data)}>
       <Window.Content>
         <Section
           fitted
@@ -93,7 +105,7 @@ export const TacticalMap = (props) => {
                   return (
                     <Tabs.Tab
                       key={i}
-                      color={data.isXeno ? 'purple' : 'blue'}
+                      color={getThemeColor(data)}
                       selected={i === pageIndex}
                       icon={page.icon}
                       onClick={() => handleTacmapOnClick(i, page.title)}

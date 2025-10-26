@@ -1166,7 +1166,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				add_avail(lastgenerated_total_surplus)
 
 				got_power_from_local_grid = target_draw <= 0
-				charging = APC_CHARGING
+				if(chargemode && operating)
+					charging = APC_CHARGING
 
 		//Try to draw from powernet
 		if(avail())
@@ -1244,13 +1245,15 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(attempt_charging())
 			if(power_excess > 0) //Check to make sure we have enough to charge
 				var/surplus = max(power_excess - cell.give(power_excess * CELLRATE) / CELLRATE, 0) //Actually recharge the cell
-				//Giving surplus to the powernet
-				add_avail(surplus)
 				if(got_power_from_local_grid)
+					add_avail(surplus)
 					lastgenerated_total_surplus += surplus
 			else
 				charging = APC_NOT_CHARGING //Stop charging
 				chargecount = 0
+		else if(power_excess > 0 && got_power_from_local_grid)
+			add_avail(power_excess)
+			lastgenerated_total_surplus += power_excess
 
 		//Show cell as fully charged if so
 		if(cell.percent() >= 98)
@@ -1268,7 +1271,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 				if(chargecount >= 10)
 					chargecount = 0
-					charging = 1
+					charging = APC_CHARGING
 
 		else //Chargemode off
 			charging = APC_NOT_CHARGING

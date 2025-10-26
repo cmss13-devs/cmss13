@@ -112,7 +112,8 @@ Class Procs:
 	var/obj/structure/machinery/colony_floodlight_switch/breaker_switch
 	/// Whether this is toggled on
 	var/is_on = TRUE
-	var/power_initialized = FALSE
+	/// The last calculate_current_power_usage when update_use_power was called
+	var/last_power_usage = 0
 
 /obj/structure/machinery/vv_get_dropdown()
 	. = ..()
@@ -205,18 +206,19 @@ Class Procs:
 			return
 	return
 
-//sets the use_power var and then forces an area power update
+///sets the use_power var and then forces an area power update
+///use -1 only for initialization purposes
 /obj/structure/machinery/proc/update_use_power(new_use_power)
-	if(new_use_power == use_power)
+	if(new_use_power == use_power && new_use_power != -1)
 		return //don't need to do anything
 	if(QDELETED(src))
 		return
 
-	var/delta_power = 0 //figuring how much our power delta is
-	if(power_initialized)
-		delta_power -= calculate_current_power_usage() //current usage
-	use_power = new_use_power
-	delta_power += calculate_current_power_usage() //updated usage
+	var/delta_power = -last_power_usage
+	if(new_use_power != -1)
+		use_power = new_use_power
+	last_power_usage = calculate_current_power_usage() //updated usage
+	delta_power += last_power_usage
 
 	//we're updating our power over time amount, not just using one-off power usage, hence why we're passing the channel
 	use_power(delta_power, power_channel)

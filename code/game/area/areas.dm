@@ -375,7 +375,7 @@
 
 	return used
 
-/area/proc/use_power(amount, chan)
+/area/proc/use_power(amount, chan = POWER_CHANNEL_ONEOFF)
 	switch(chan)
 		if(POWER_CHANNEL_EQUIP)
 			used_equip += amount
@@ -408,12 +408,12 @@
 
 /area/proc/add_machine(obj/structure/machinery/machine)
 	SHOULD_NOT_SLEEP(TRUE)
-	use_power(machine.calculate_current_power_usage(), machine.power_channel)
+	machine.update_use_power(-1)
 	machine.power_change()
 
 /area/proc/remove_machine(obj/structure/machinery/machine)
 	SHOULD_NOT_SLEEP(TRUE)
-	use_power(-machine.calculate_current_power_usage(), machine.power_channel)
+	use_power(-machine.last_power_usage, machine.power_channel)
 
 //atmos related procs
 

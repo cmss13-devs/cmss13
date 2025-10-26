@@ -71,8 +71,6 @@
 	if(!isarea(current_area))
 		return FALSE
 
-	if(amount != 0)
-		power_initialized = TRUE
 	current_area.use_power(amount, chan)
 
 	log_power_update_request(current_area, src, amount, chan)

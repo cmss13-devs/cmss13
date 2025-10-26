@@ -4286,7 +4286,17 @@
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/central)
 "anT" = (
-/turf/open/desert/desert_shore/shore_edge1/north,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 4
+	},
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/caperiver/outdoors/mining_base_exterior/north)
 "anU" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -23784,6 +23794,62 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/asteroidwarning/north,
 /area/caperiver/outdoors/mining_base_exterior/south)
+"bxR" = (
+/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/caperiver/outdoors/mining_base_exterior/north)
+"bxS" = (
+/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/caperiver/outdoors/mining_base_exterior/north)
+"bxT" = (
+/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/caperiver/outdoors/mining_base_exterior/north)
+"bxU" = (
+/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/caperiver/outdoors/mining_base_exterior/north)
+"bxV" = (
+/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/caperiver/outdoors/mining_base_exterior/north)
+"bxW" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 9
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/caperiver/outdoors/mining_base_exterior/north)
+"bxX" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 5
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/caperiver/outdoors/mining_base_exterior/north)
+"bxY" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 5
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/caperiver/outdoors/mining_base_exterior/north)
 "byo" = (
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/floor/kutjevo/grey,
@@ -26004,7 +26070,10 @@
 	pixel_x = 9;
 	pixel_y = 25
 	},
-/turf/open/desert/rock,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/caperiver/outdoors/mining_base_exterior/north)
 "dGs" = (
 /obj/structure/largecrate/random/case,
@@ -26591,7 +26660,7 @@
 	dir = 8
 	},
 /obj/structure/cargo_container/hybrisa/containersextended/greenright,
-/turf/open/asphalt/cement_sunbleached,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/caperiver/outdoors/mining_base_exterior/south)
 "eht" = (
 /obj/structure/machinery/power/apc/power/north{
@@ -26764,10 +26833,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/plating/kutjevo,
 /area/caperiver/telecomms/telecomm_4)
-"enB" = (
-/obj/structure/platform/metal/strata/west,
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "eoh" = (
 /obj/item/ammo_magazine/pistol/highpower{
 	current_rounds = 3
@@ -26898,7 +26963,7 @@
 	pixel_x = -6;
 	pixel_y = 12
 	},
-/turf/open/floor/prison/darkbrown2/east,
+/turf/open/floor/prison/darkbrown2/northeast,
 /area/caperiver/indoors/conambase/recreational)
 "esk" = (
 /turf/open/desert/dirt/desert_transition_edge1/west,
@@ -27975,9 +28040,6 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/caperiver/indoors/miningbase/rec)
 "fsv" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	dir = 1
-	},
 /turf/open/floor/prison/cell_stripe/west,
 /area/caperiver/outdoors/mining_base_exterior/north)
 "fsD" = (
@@ -28176,7 +28238,10 @@
 	pixel_x = 13;
 	pixel_y = 29
 	},
-/turf/open/desert/rock,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/caperiver/outdoors/mining_base_exterior/north)
 "fAJ" = (
 /obj/structure/largecrate/empty/case,
@@ -30188,7 +30253,7 @@
 /area/caperiver/indoors/conambase/engi)
 "hxt" = (
 /obj/effect/decal/sand_overlay/sand2{
-	dir = 9
+	dir = 1
 	},
 /turf/open/floor/prison/ramptop/north,
 /area/caperiver/outdoors/mining_base_exterior/north)
@@ -39362,10 +39427,6 @@
 /obj/structure/prop/dam/large_boulder/boulder2,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/south)
-"pWd" = (
-/obj/structure/platform/metal/strata/east,
-/turf/open/desert/desert_shore/desert_shore1/north,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "pWi" = (
 /obj/structure/platform_decoration/stone/soro/west,
 /turf/open/desert/dirt/desert_transition_edge1,
@@ -46678,13 +46739,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/darkish,
 /area/caperiver/indoors/conambase/recreational)
-"wZI" = (
-/obj/structure/barricade/handrail/strata,
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/turf/open/desert/rock,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "wZZ" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#FF9D5C"
@@ -46756,12 +46810,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/desert/rock/deep/transition,
 /area/caperiver/outdoors/landing_zone_2/cave)
-"xdA" = (
-/obj/effect/decal/sand_overlay/sand2{
-	dir = 5
-	},
-/turf/open/floor/prison/ramptop/north,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "xdK" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip,
@@ -47373,9 +47421,6 @@
 /obj/structure/flora/grass/desert/lightgrass_3,
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/caperiver/outdoors/scrublands/south_east)
-"xLY" = (
-/turf/open/desert/desert_shore/shore_corner2/north,
-/area/caperiver/outdoors/mining_base_exterior/north)
 "xMc" = (
 /obj/item/trash/cigbutt,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -53214,7 +53259,7 @@ aBv
 kUd
 aWQ
 aWQ
-cJx
+apK
 wmO
 aDe
 abp
@@ -53417,8 +53462,8 @@ aak
 aTx
 apd
 dFC
-aNQ
-cJx
+vdP
+aWu
 wmO
 aDe
 abp
@@ -53620,9 +53665,9 @@ bxn
 bxn
 oes
 apd
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 abp
@@ -53824,9 +53869,9 @@ bHo
 afu
 hVp
 apd
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 abp
@@ -54028,9 +54073,9 @@ abi
 afu
 apd
 xAO
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 qnS
@@ -54232,9 +54277,9 @@ abk
 oes
 oes
 apd
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 qnS
@@ -54436,9 +54481,9 @@ aCc
 oes
 oes
 tIp
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 qnS
@@ -54640,9 +54685,9 @@ lNp
 afu
 sQT
 nUh
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 aQh
@@ -54844,9 +54889,9 @@ lNp
 afu
 uxp
 apd
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 aQh
@@ -55048,9 +55093,9 @@ bxn
 bxn
 oes
 apd
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 aQh
@@ -55252,9 +55297,9 @@ bxn
 atE
 apd
 uxp
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 qnS
@@ -55456,9 +55501,9 @@ kVb
 sQT
 apd
 apd
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 qnS
@@ -55660,9 +55705,9 @@ aTx
 apd
 heI
 xYy
-tfL
-pWd
+bxS
 wqs
+ayg
 ayg
 uTa
 qnS
@@ -56680,7 +56725,7 @@ xpQ
 aTx
 xYy
 lAD
-xdA
+hxt
 hUE
 auR
 auR
@@ -56884,9 +56929,9 @@ bxo
 lfA
 apd
 apd
-tfL
-enB
+bxT
 vlT
+iQK
 iQK
 oYw
 aip
@@ -57089,8 +57134,8 @@ bxo
 xpQ
 apd
 fAn
-aNQ
 cJx
+wmO
 wmO
 aDe
 aip
@@ -57292,9 +57337,9 @@ aIG
 aTc
 abb
 apd
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 aip
@@ -57495,10 +57540,10 @@ aUB
 lkG
 aTc
 xXO
-apd
-tfL
-aNQ
+bxW
+bxU
 cJx
+wmO
 wmO
 aDe
 rWS
@@ -57699,10 +57744,10 @@ aUB
 aeA
 crR
 oIU
-apd
-tfL
-aNQ
+bxX
+bxV
 cJx
+wmO
 wmO
 aDe
 rWS
@@ -57904,9 +57949,9 @@ aeA
 crR
 oVH
 ahK
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 aip
@@ -58108,9 +58153,9 @@ ahX
 crR
 apd
 apd
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 aip
@@ -58312,9 +58357,9 @@ crR
 crR
 crR
 rCf
-tfL
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 aip
@@ -58516,9 +58561,9 @@ crR
 sQT
 vTu
 apd
-wZI
-aNQ
+bxR
 cJx
+wmO
 wmO
 aDe
 aip
@@ -58719,10 +58764,10 @@ aBv
 crR
 isR
 qZZ
-tfL
+bxY
 anT
-xLY
 cJx
+wmO
 wmO
 aDe
 abp
@@ -58925,8 +58970,8 @@ apd
 apd
 tfL
 aNQ
-vdP
-rES
+cJx
+wmO
 wmO
 aDe
 abp

@@ -323,7 +323,6 @@
 	soundscape_interval = 40
 	ceiling_muffle = FALSE
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
-	is_resin_allowed =  FALSE
 	requires_power = FALSE
 
 // - Misc - \\
@@ -371,7 +370,6 @@
 /area/caperiver/outdoors/landing_zone_1
 	name = "Cape River Mining Colony - Cargo Transfer - Landing Zone One"
 	icon_state = "away1"
-	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_CELL_HIGH
 	linked_lz = DROPSHIP_LZ1
@@ -397,7 +395,6 @@
 /area/caperiver/outdoors/landing_zone_2
 	name = "Cape River - Unknown Encampment - Landing Zone Two"
 	icon_state = "away2"
-	is_resin_allowed =  FALSE
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_CELL_HIGH
 	linked_lz = DROPSHIP_LZ2

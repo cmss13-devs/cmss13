@@ -1105,13 +1105,13 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	lastused_total_actual = 0
 	lastused_light = area.usage(POWER_CHANNEL_LIGHT)
-	if(area.powered(POWER_CHANNEL_LIGHT))
+	if(lighting)
 		lastused_total_actual += lastused_light
 	lastused_equip = area.usage(POWER_CHANNEL_EQUIP)
-	if(area.powered(POWER_CHANNEL_EQUIP))
+	if(equipment)
 		lastused_total_actual += lastused_equip
 	lastused_environ = area.usage(POWER_CHANNEL_ENVIRON)
-	if(area.powered(POWER_CHANNEL_ENVIRON))
+	if(environ)
 		lastused_total_actual += lastused_environ
 	lastused_oneoff = area.usage(POWER_CHANNEL_ONEOFF, TRUE) //getting the one-off power usage and resetting it to 0 for the next processing tick
 	lastused_total_actual += lastused_oneoff
@@ -1160,7 +1160,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 					lastgenerated_total += (generator.power_gen_percent / 100) * generator.power_gen
 
 			if(lastgenerated_total > 0)
-				power_drawn = min(lastgenerated_total, min(target_draw, MAXIMUM_GIVEN_POWER_TO_LOCAL_APC))
+				power_drawn = min(lastgenerated_total, max(target_draw, MAXIMUM_GIVEN_POWER_TO_LOCAL_APC))
 				target_draw = max(target_draw - power_drawn, 0)
 				lastgenerated_total_surplus = lastgenerated_total - power_drawn
 				add_avail(lastgenerated_total_surplus)
@@ -1246,6 +1246,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				var/surplus = max(power_excess - cell.give(power_excess * CELLRATE) / CELLRATE, 0) //Actually recharge the cell
 				//Giving surplus to the powernet
 				add_avail(surplus)
+				if(got_power_from_local_grid)
+					lastgenerated_total_surplus += surplus
 			else
 				charging = APC_NOT_CHARGING //Stop charging
 				chargecount = 0

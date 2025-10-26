@@ -217,8 +217,8 @@ Class Procs:
 	var/delta_power = -last_power_usage
 	if(new_use_power != -1)
 		use_power = new_use_power
-	last_power_usage = calculate_current_power_usage() //updated usage
-	delta_power += last_power_usage
+	delta_power += calculate_current_power_usage() //updated usage
+	last_power_usage = delta_power
 
 	//we're updating our power over time amount, not just using one-off power usage, hence why we're passing the channel
 	use_power(delta_power, power_channel)

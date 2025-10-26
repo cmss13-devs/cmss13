@@ -136,7 +136,6 @@ const ViewMapPanel = (props) => {
         winsetParams={{
           id: data.mapRef,
           type: 'map',
-          'background-color': '#00FF00',
         }}
         boxProps={{
           height: '100%',

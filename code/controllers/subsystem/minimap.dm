@@ -151,6 +151,8 @@ SUBSYSTEM_DEF(minimaps)
 	icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset + xmin)
 	icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset + ymin)
 	minimaps_by_z["[level]"].hud_image = icon_gen //done making the image!
+	minimaps_by_z["[level]"].pixel_width = icon_gen.Width()
+	minimaps_by_z["[level]"].pixel_height = icon_gen.Height()
 
 	//lateload icons
 	if(!LAZYACCESS(earlyadds, "[level]"))
@@ -219,6 +221,10 @@ SUBSYSTEM_DEF(minimaps)
 	var/x_max = 1
 	///max y for this zlevel
 	var/y_max = 1
+
+	/// Pixel dimensions of the minimap image, width and height.
+	var/pixel_width = 0
+	var/pixel_height = 0
 
 /datum/hud_displays/New()
 	..()
@@ -487,6 +493,10 @@ SUBSYSTEM_DEF(minimaps)
 	/// Max ratio to x_max/y_max you can scroll the map to
 	var/max_scroll_ratio = 0.8
 
+	/// Raw pixel sizes of the underlying image (from the hud object)
+	var/pixel_width = 0
+	var/pixel_height = 0
+
 	var/atom/movable/screen/minimap_tool/draw_tool/active_draw_tool
 	/// List of turfs that have labels attached to them. kept around so it can be cleared
 	var/list/turf/labelled_turfs = list()
@@ -540,6 +550,9 @@ SUBSYSTEM_DEF(minimaps)
 	choices_by_mob = list()
 	stop_polling = list()
 	icon = SSminimaps.minimaps_by_z["[target]"].hud_image
+	pixel_width = SSminimaps.minimaps_by_z["[target]"].pixel_width
+	pixel_height = SSminimaps.minimaps_by_z["[target]"].pixel_height
+
 	if(live)
 		SSminimaps.add_to_updaters(src, minimap_flags, target, drawing, labels=drawing)
 	src.drawing = drawing

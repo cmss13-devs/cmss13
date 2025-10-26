@@ -118,9 +118,9 @@
 
 	if (map_holder != null)
 		if (map_holder.map != null)
-			var/icon/mapIcon = icon(map_holder?.map.icon)
-			.["mapPixelSizeX"] = mapIcon.Width()
-			.["mapPixelSizeY"] = mapIcon.Height()
+			.["mapPixelSizeX"] = map_holder.map.pixel_width
+			.["mapPixelSizeY"] = map_holder.map.pixel_height
+
 		.["mapRef"] = map_holder.map_ref
 
 	.["isXeno"] = isxeno(user)

@@ -933,6 +933,11 @@ GLOBAL_LIST_EMPTY(map_model_default)
 			old_area = crds.loc
 //			old_area.turfs_to_uncontain += crds
 //			area_instance.contained_turfs.Add(crds)
+			if(old_area)
+				// Make sure atoms leave their old area and enter the new area
+				for(var/atom/turf_atom as anything in crds.GetAllTurfStrictContents())
+					old_area.Exited(turf_atom)
+					area_instance.Entered(turf_atom, crds)
 		area_instance.contents.Add(crds)
 
 		if(GLOB.use_preloader)

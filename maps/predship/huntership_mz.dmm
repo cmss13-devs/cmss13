@@ -571,30 +571,6 @@
 /obj/effect/hunter/bridge_border/brown/corner,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
-"cI" = (
-/obj/item/clothing/accessory/limb/skeleton/head{
-	pixel_x = -2;
-	pixel_y = 11;
-	anchored = 1
-	},
-/obj/item/prop/torch_frame{
-	pixel_x = 13;
-	pixel_y = 21
-	},
-/obj/effect/hunter/catwalk/hunter_grate,
-/obj/effect/hunter/bridge_border/brown/small_stair_right{
-	dir = 1;
-	pixel_y = 6
-	},
-/obj/effect/hunter/bridge_border/brown{
-	dir = 1;
-	pixel_y = 6
-	},
-/obj/effect/hunter/bridge_border/brown/small_stair{
-	pixel_y = -14
-	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
-/area/yautja)
 "cJ" = (
 /obj/structure/prop/brazier/frame{
 	pixel_y = 12
@@ -731,10 +707,6 @@
 /obj/item/stack/sheet/metal/large_stack,
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja)
-"dR" = (
-/obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
-/area/yautja)
 "dS" = (
 /obj/structure/platform_decoration/metal/hunter{
 	layer = 3.1
@@ -749,7 +721,6 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/obj/effect/landmark/clan_spawn,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "dY" = (
@@ -2766,10 +2737,6 @@
 /obj/structure/platform_decoration/metal/hunter,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
-"nG" = (
-/obj/structure/platform_decoration/metal/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
-/area/yautja)
 "nH" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/prop/hunter/fake_platform/hunter,
@@ -2828,11 +2795,6 @@
 	pixel_y = 34
 	},
 /turf/open/shuttle/dropship/predship/red_glow/on,
-/area/yautja)
-"ob" = (
-/obj/structure/platform_decoration/metal/hunter/east,
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
 /area/yautja)
 "oc" = (
 /obj/structure/shuttle/engine/heater{
@@ -4007,21 +3969,6 @@
 /obj/item/reagent_container/food/snacks/meat,
 /obj/item/reagent_container/food/snacks/meat,
 /turf/open/shuttle/dropship/predship/hunter_grate/north,
-/area/yautja)
-"tA" = (
-/obj/effect/hunter/catwalk/hunter_grate,
-/obj/effect/hunter/bridge_border/brown/small_stair_left{
-	dir = 1;
-	pixel_y = 6
-	},
-/obj/effect/hunter/bridge_border/brown{
-	dir = 1;
-	pixel_y = 6
-	},
-/obj/effect/hunter/bridge_border/brown/small_stair{
-	pixel_y = -14
-	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "tG" = (
 /obj/structure/prop/ice_colony/tiger_rug{
@@ -5218,14 +5165,6 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
-"zF" = (
-/obj/structure/platform_decoration/metal/hunter/north{
-	pixel_y = 24;
-	pixel_x = -6
-	},
-/obj/structure/prop/hunter/fake_platform/hunter/east,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
-/area/yautja)
 "zH" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -6302,12 +6241,6 @@
 /obj/effect/alien/weeds/node/forsaken,
 /turf/open/floor/almayer/research/containment/yautja,
 /area/yautja)
-"Fv" = (
-/obj/effect/hunter/bridge_border/brown/corner{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
-/area/yautja)
 "Fy" = (
 /obj/structure/platform_decoration/metal/hunter/west{
 	layer = 3.1;
@@ -6375,11 +6308,6 @@
 	density = 0
 	},
 /turf/open/shuttle/dropship/predship/red_glow/on,
-/area/yautja)
-"FO" = (
-/obj/structure/prop/hunter/fake_platform/hunter/north,
-/obj/structure/platform_decoration/metal/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
 /area/yautja)
 "FQ" = (
 /obj/effect/hunter/rune/corner{
@@ -6694,40 +6622,6 @@
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow/on,
-/area/yautja)
-"Hr" = (
-/obj/item/prop/torch_frame{
-	pixel_x = -13;
-	pixel_y = -11
-	},
-/obj/item/skull/hunter{
-	pixel_x = -10;
-	pixel_y = 1;
-	anchored = 1
-	},
-/obj/structure/bed/chair/hunter/throne{
-	pixel_x = 16;
-	pixel_y = 8;
-	buckling_x = 17;
-	buckling_y = 8
-	},
-/obj/structure/bed/chair/hunter/throne/top{
-	pixel_x = 16;
-	pixel_y = 40;
-	can_buckle = 0
-	},
-/obj/item/skull/runner{
-	pixel_x = -6;
-	pixel_y = 36
-	},
-/obj/item/skull/drone{
-	pixel_x = -5;
-	pixel_y = 24
-	},
-/obj/effect/hunter/bridge_border/brown{
-	dir = 1
-	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "Hy" = (
 /obj/item/storage/backpack/yautja,
@@ -7580,12 +7474,6 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
 /area/yautja)
-"Lq" = (
-/obj/effect/hunter/bridge_border/brown/corner{
-	dir = 1
-	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
-/area/yautja)
 "Lt" = (
 /obj/effect/hunter/bridge_border/brown/large_stair{
 	dir = 8
@@ -7881,15 +7769,6 @@
 	dir = 8
 	},
 /obj/structure/prop/ice_colony/tiger_rug{
-	icon_state = "White";
-	color = "#52443b";
-	pixel_x = 8;
-	pixel_y = 1;
-	layer = 2.9;
-	name = "animal pelt";
-	desc = "A pelt of a fearsome dead creature."
-	},
-/obj/structure/prop/ice_colony/tiger_rug{
 	dir = 8;
 	icon_state = "White";
 	color = "#63594d";
@@ -8091,10 +7970,6 @@
 /obj/structure/prop/hunter/fake_platform/hunter/west,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
-"NK" = (
-/obj/effect/hunter/bridge_border/brown/corner,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
-/area/yautja)
 "NM" = (
 /obj/effect/hunter/rune/corner_2{
 	dir = 4
@@ -8233,43 +8108,6 @@
 	},
 /obj/item/weapon/twohanded/yautja/glaive/alt,
 /turf/open/shuttle/dropship/predship/tile/red3,
-/area/yautja)
-"OB" = (
-/obj/item/clothing/accessory/limb/skeleton/head{
-	pixel_x = -5;
-	pixel_y = 17;
-	anchored = 1;
-	layer = 3
-	},
-/obj/item/skull/hunter{
-	anchored = 1;
-	pixel_y = 36;
-	pixel_x = 45
-	},
-/obj/item/clothing/accessory/limb/skeleton/head{
-	pixel_x = 8;
-	anchored = 1
-	},
-/obj/item/skull/lurker{
-	pixel_x = 7;
-	pixel_y = 8;
-	anchored = 1
-	},
-/obj/item/skull/drone{
-	anchored = 1
-	},
-/obj/item/skull/lurker{
-	pixel_x = 5;
-	pixel_y = 37
-	},
-/obj/item/skull/drone{
-	pixel_x = 3;
-	pixel_y = 24
-	},
-/obj/effect/hunter/bridge_border/brown{
-	dir = 1
-	},
-/turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "OC" = (
 /obj/structure/platform_decoration/metal/hunter,
@@ -8811,16 +8649,6 @@
 "QN" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/predship/hull/non_weedable_hull/north,
-/area/yautja)
-"QO" = (
-/obj/structure/platform_decoration/metal/hunter/north{
-	pixel_y = 24;
-	pixel_x = -6
-	},
-/obj/effect/hunter/bridge_border/brown/corner{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "QQ" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -9401,13 +9229,6 @@
 	id = "prisonlockdown"
 	},
 /turf/open/shuttle/dropship/predship/mainfloor/direction_2,
-/area/yautja)
-"Vq" = (
-/obj/structure/platform_decoration/metal/hunter/north{
-	pixel_y = 24
-	},
-/obj/structure/prop/hunter/fake_platform/hunter/west,
-/turf/open/shuttle/dropship/predship/tile/hunter_tile_1,
 /area/yautja)
 "Vs" = (
 /obj/effect/hunter/catwalk/hunter_grate,
@@ -30622,10 +30443,10 @@ SG
 LH
 Nm
 Nm
-jw
-jw
-jw
-jw
+Gl
+Gl
+Gl
+Gl
 Gl
 Gl
 Gl
@@ -30714,10 +30535,10 @@ SG
 Nm
 Nm
 Nm
-jw
-jw
-jw
-jw
+Gl
+Gl
+Gl
+Gl
 Gl
 Gl
 Gl
@@ -30804,12 +30625,12 @@ SG
 SG
 LH
 Nm
-jw
-jw
-jw
-jw
-jw
-jw
+Gl
+Gl
+Gl
+Gl
+Gl
+Gl
 Gl
 Gl
 Gl
@@ -30896,12 +30717,12 @@ SG
 SG
 Nm
 Nm
-zF
-dR
-jw
-jw
-jw
-jw
+Gl
+Gl
+Gl
+Gl
+Gl
+Gl
 Gl
 Gl
 Gl
@@ -30987,13 +30808,13 @@ SG
 SG
 SG
 Nm
-NK
-QO
-FO
-jw
-jw
-jw
-jw
+Gl
+Gl
+Gl
+Gl
+Gl
+Gl
+Gl
 Gl
 Gl
 Gl
@@ -31079,13 +30900,13 @@ SG
 SG
 SG
 Nm
-Hr
-tA
-jw
-jw
-jw
-jw
-jw
+Gl
+Gl
+Gl
+Gl
+Gl
+Gl
+Gl
 Gl
 Gl
 Gl
@@ -31171,13 +30992,13 @@ SG
 SG
 SG
 Nm
-OB
-cI
-jw
-jw
-jw
-jw
-jw
+Gl
+Gl
+Gl
+Gl
+Gl
+Gl
+Gl
 Gl
 Gl
 Gl
@@ -31263,13 +31084,13 @@ SG
 SG
 SG
 Nm
-Lq
-Fv
-ob
-jw
-jw
-jw
-jw
+Gl
+Gl
+Gl
+Gl
+Gl
+Gl
+Gl
 Gl
 Gl
 Gl
@@ -31356,12 +31177,12 @@ SG
 SG
 Nm
 Nm
-Vq
-nG
-jw
-jw
-jw
-jw
+Gl
+Gl
+Gl
+Gl
+Gl
+Gl
 Gl
 Gl
 Gl
@@ -31448,12 +31269,12 @@ SG
 SG
 In
 Nm
-jw
-jw
-jw
-jw
-jw
-jw
+Gl
+Gl
+Gl
+Gl
+Gl
+Gl
 Gl
 Gl
 Gl
@@ -31542,10 +31363,10 @@ SG
 Nm
 Nm
 Nm
-jw
-jw
-jw
-jw
+Gl
+Gl
+Gl
+Gl
 Gl
 Gl
 Gl
@@ -31634,10 +31455,10 @@ SG
 In
 Nm
 Nm
-jw
-jw
-jw
-jw
+Gl
+Gl
+Gl
+Gl
 Gl
 Gl
 Gl

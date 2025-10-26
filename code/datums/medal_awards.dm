@@ -676,10 +676,9 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 		return
 
 	switch(action)
-		if("grant_new_medal")
-			if(give_medal_award(actual_loc, FALSE, is_xo_medal))
-				actual_loc.visible_message(SPAN_NOTICE("[actual_loc] prints a medal."))
-			. = TRUE
+		if("recommend_new_medal")
+			if(add_medal_recommendation(user))
+				. = TRUE
 
 		if("approve_medal")
 			var/recommendation_ref = params["ref"]

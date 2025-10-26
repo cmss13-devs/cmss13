@@ -47,9 +47,9 @@ export const IcMedalsPanel = (props) => {
             fontSize="20px"
             icon="medal"
             color="danger"
-            onClick={() => act('grant_new_medal')}
+            onClick={() => act('recommend_new_medal')}
           >
-            Grant new medal
+            New Medal Creation
           </Button>
         </NoticeBox>
         {data.recommendations.map((recommendation, index) => (

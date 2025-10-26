@@ -133,14 +133,16 @@ const ViewMapPanel = (props) => {
   return (
     <Section fill fitted height="86%">
       <ByondUi
-        height="100%"
-        width="100%"
-        params={{
+        winsetParams={{
           id: data.mapRef,
           type: 'map',
           'background-color': '#00FF00',
         }}
-        className="TacticalMap"
+        boxProps={{
+          height: '100%',
+          width: '100%',
+          className: 'TacticalMap',
+        }}
       />
     </Section>
   );

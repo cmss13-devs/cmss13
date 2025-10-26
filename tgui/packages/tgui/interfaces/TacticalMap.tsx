@@ -13,23 +13,18 @@ import { ByondUi } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
 import { CanvasLayer } from './CanvasLayer';
-import { DrawnMap } from './DrawnMap';
 
 interface TacMapProps {
   toolbarColorSelection: string;
   toolbarUpdatedSelection: string;
   updatedCanvas: boolean;
   themeId: number;
-  svgData: (string | number | CanvasGradient | CanvasPattern)[];
-  canViewTacmap: boolean;
   canDraw: boolean;
   isxeno: boolean;
   canViewCanvas: boolean;
   newCanvasFlatImage: string;
-  oldCanvasFlatImage: string;
   actionQueueChange: number;
   exportedColor: string;
-  mapFallback: string;
   mapRef: string;
   currentMenu: string;
   lastUpdateTime: number;
@@ -195,29 +190,10 @@ const ViewMapPanel = (props) => {
         params={{
           id: data.mapRef,
           type: 'map',
-          'background-color': 'none',
+          'background-color': '#00FF00',
         }}
         className="TacticalMap"
       />
-    </Section>
-  );
-};
-
-const OldMapPanel = (props) => {
-  const { data } = useBackend<TacMapProps>();
-  return (
-    <Section fill fitted height="86%" align="center" fontSize="30px">
-      {data.canViewCanvas ? (
-        <DrawnMap
-          svgData={data.svgData}
-          flatImage={data.oldCanvasFlatImage}
-          backupImage={data.mapFallback}
-        />
-      ) : (
-        <Box my="40%">
-          <h1>Unauthorized.</h1>
-        </Box>
-      )}
     </Section>
   );
 };

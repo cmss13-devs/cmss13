@@ -400,15 +400,17 @@
 
 /area/Exited(atom/movable/thing)
 	if(istype(thing, /obj/structure/machinery))
-		if(!QDELING(thing))
-			remove_machine(thing)
+		remove_machine(thing)
 	else if(ismob(thing))
 		var/mob/exiting_mob = thing
 		exiting_mob?.client?.soundOutput?.update_ambience(target_area = null, ambience_override = null, force_update = TRUE)
 
 /area/proc/add_machine(obj/structure/machinery/machine)
 	SHOULD_NOT_SLEEP(TRUE)
-	machine.update_use_power(-1)
+	if(!machine.last_power_usage)
+		machine.update_use_power(-1)
+	else
+		use_power(machine.last_power_usage, machine.power_channel)
 	machine.power_change()
 
 /area/proc/remove_machine(obj/structure/machinery/machine)

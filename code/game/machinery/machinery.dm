@@ -142,9 +142,6 @@ Class Procs:
 	GLOB.machines -= src
 	GLOB.processing_machines -= src
 	GLOB.power_machines -= src
-	var/area/A = get_area(src)
-	if(A)
-		A.remove_machine(src) //takes care of removing machine from power usage
 	if(breaker_switch)
 		breaker_switch.machinery_list -= src
 		breaker_switch = null
@@ -218,7 +215,7 @@ Class Procs:
 	if(new_use_power != -1)
 		use_power = new_use_power
 	delta_power += calculate_current_power_usage() //updated usage
-	last_power_usage = delta_power
+	last_power_usage += delta_power
 
 	//we're updating our power over time amount, not just using one-off power usage, hence why we're passing the channel
 	use_power(delta_power, power_channel)

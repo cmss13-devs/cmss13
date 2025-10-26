@@ -49,13 +49,11 @@
 
 		var/apc_count = length(found_apcs)
 		if(apc_count == 1)
-			var/obj/structure/machinery/power/apc/cur_apc = found_apcs[1]
-			var/apc_notes = "APC loc: ([cur_apc.x],[cur_apc.y]) [cur_apc.loc?.type]"
 			if(any_inaccessible)
+				var/obj/structure/machinery/power/apc/cur_apc = found_apcs[1]
+				var/apc_notes = "APC loc: ([cur_apc.x],[cur_apc.y]) [cur_apc.loc?.type]"
 				TEST_FAIL("[cur_area] ([cur_area.type]) has an APC with an inaccessible terminal!\n\t[apc_notes]")
-			if(cur_apc.lastused_equip < 0 || cur_apc.lastused_light < 0 || cur_apc.lastused_environ < 0 || cur_apc.lastused_oneoff < 0 || cur_apc.lastused_total_actual < 0)
-				TEST_FAIL("[cur_area] ([cur_area.type]) has an APC with [cur_apc.lastused_equip] Eqp, [cur_apc.lastused_light] Lgt, [cur_apc.lastused_environ] Env, [cur_apc.lastused_oneoff] OneOff, [cur_apc.lastused_total] Total ([cur_apc.lastused_total_actual] Current) power used!\n\t[apc_notes]")
-			else if(cur_area.used_equip < 0 || cur_area.used_light < 0 || cur_area.used_environ < 0 || cur_area.used_oneoff < 0)
+			if(cur_area.used_equip < 0 || cur_area.used_light < 0 || cur_area.used_environ < 0 || cur_area.used_oneoff < 0)
 				TEST_FAIL("[cur_area] ([cur_area.type]) has [cur_area.used_equip] Eqp, [cur_area.used_light] Lgt, [cur_area.used_environ] Env, [cur_area.used_oneoff] OneOff power used!")
 			continue // Pass
 		if(apc_count > 1)

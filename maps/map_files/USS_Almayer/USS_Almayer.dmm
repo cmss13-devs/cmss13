@@ -25405,6 +25405,11 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/item/device/motion_sensor/wy{
+	anchored = 1;
+	pixel_x = 8;
+	pixel_y = 8
+	},
 /turf/open/floor/almayer/silver/east/no_build,
 /area/almayer/medical/containment/cell/cl)
 "ble" = (
@@ -35598,10 +35603,6 @@
 	pixel_y = 13;
 	pixel_x = 4
 	},
-/obj/item/storage/xeno_tag_case/full{
-	pixel_y = 3;
-	pixel_x = -1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
@@ -35728,16 +35729,6 @@
 /turf/open/floor/almayer/greencorner/west,
 /area/almayer/hallways/lower/port_fore_hallway)
 "bIP" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	access_modified = 1;
-	req_access_txt = "200";
-	req_one_access = null
-	},
-/obj/item/device/motion_sensor/wy{
-	anchored = 1;
-	pixel_x = 8;
-	pixel_y = 8
-	},
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
 	id = "cl_quarter_maintenance_2";
@@ -35850,7 +35841,9 @@
 /area/almayer/medical/containment/cell/cl)
 "bJc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet/guncabinet/wy,
+/obj/structure/closet/secure_closet/guncabinet/wy{
+	req_access = list(203,207)
+	},
 /obj/structure/barricade/handrail{
 	dir = 4;
 	layer = 3.2
@@ -35861,6 +35854,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/item/storage/xeno_tag_case/full{
+	pixel_y = 3;
+	pixel_x = -1
 	},
 /turf/open/floor/almayer/silver/north/no_build,
 /area/almayer/medical/containment/cell/cl)

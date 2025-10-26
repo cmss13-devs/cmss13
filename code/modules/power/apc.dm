@@ -1276,6 +1276,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		else //Chargemode off
 			charging = APC_NOT_CHARGING
 			chargecount = 0
+		if(!operating)
+			charging = APC_NOT_CHARGING
+			chargecount = 0
 
 	else //No cell, switch everything off
 		charging = APC_NOT_CHARGING

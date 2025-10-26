@@ -99,6 +99,13 @@
 	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible)
 	map_specific_decoration = TRUE
 
+/obj/item/weapon/gun/smg/m39/Initialize()
+	. = ..()
+	if(istype(src, /obj/item/weapon/gun/smg/m39/corporate) || istype(src, /obj/item/weapon/gun/smg/m39/elite))
+		AddElement(/datum/element/corp_label/wy)
+	else
+		AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/smg/m39/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 14, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 24, "stock_y" = 15)
 
@@ -151,7 +158,6 @@
 		/obj/item/attachable/bayonet/wy,
 		/obj/item/attachable/extended_barrel,
 	)
-
 
 /obj/item/weapon/gun/smg/m39/elite/set_gun_config_values()
 	..()
@@ -560,6 +566,10 @@
 		/obj/item/attachable/magnetic_harness,
 	)
 
+/obj/item/weapon/gun/smg/pps43/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
+
 /obj/item/weapon/gun/smg/pps43/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 20, "rail_x" = 10, "rail_y" = 21, "under_x" = 25, "under_y" = 17, "stock_x" = 26, "stock_y" = 15)
 
@@ -594,6 +604,10 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_MIN
 	aim_slowdown = SLOWDOWN_ADS_QUICK_MINUS
+
+/obj/item/weapon/gun/smg/bizon/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/hyperdyne)
 
 /obj/item/weapon/gun/smg/bizon/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 20,"rail_x" = 18, "rail_y" = 23, "under_x" = 26, "under_y" = 15, "stock_x" = 26, "stock_y" = 15)
@@ -834,6 +848,10 @@
 		/obj/item/attachable/lasersight,
 	)
 
+/obj/item/weapon/gun/smg/fp9000/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/smg/fp9000/pmc/set_gun_config_values()
 	..()
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
@@ -879,6 +897,10 @@
 	var/nailing_speed = 2 SECONDS //Time to apply a sheet for patching. Also haha name. Try to keep sync with soundbyte duration
 	var/repair_sound = 'sound/weapons/nailgun_repair_long.ogg'
 	var/material_per_repair = 1
+
+/obj/item/weapon/gun/smg/nailgun/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/alphatech)
 
 /obj/item/weapon/gun/smg/nailgun/set_gun_config_values()
 	..()

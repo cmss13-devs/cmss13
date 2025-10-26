@@ -385,20 +385,21 @@
 			used_environ += amount
 		if(POWER_CHANNEL_ONEOFF)
 			used_oneoff += amount
+
 #if defined(UNIT_TESTS)
 	switch(chan)
 		if(POWER_CHANNEL_EQUIP)
 			if(used_equip < 0)
-				stack_trace("[src] ([type]) now has [used_equip] used_equip!")
+				stack_trace("[src] ([type]) now has [used_equip] used_equip after use_power([amount],...)!")
 		if(POWER_CHANNEL_LIGHT)
 			if(used_light < 0)
-				stack_trace("[src] ([type]) now has [used_light] used_light!")
+				stack_trace("[src] ([type]) now has [used_light] used_light after use_power([amount],...)!")
 		if(POWER_CHANNEL_ENVIRON)
 			if(used_environ < 0)
-				stack_trace("[src] ([type]) now has [used_environ] used_environ!")
+				stack_trace("[src] ([type]) now has [used_environ] used_environ after use_power([amount],...)!")
 		if(POWER_CHANNEL_ONEOFF)
 			if(used_oneoff < 0)
-				stack_trace("[src] ([type]) now has [used_oneoff] used_oneoff!")
+				stack_trace("[src] ([type]) now has [used_oneoff] used_oneoff after use_power([amount],...)!")
 #endif
 
 /area/Entered(atom/movable/thing, atom/OldLoc)

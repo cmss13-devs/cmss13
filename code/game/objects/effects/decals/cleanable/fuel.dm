@@ -35,6 +35,11 @@
 	if(locate(/obj/flamer_fire) in cleanable_turf)
 		INVOKE_NEXT_TICK(src, PROC_REF(ignite))
 
+/obj/effect/decal/cleanable/liquid_fuel/Destroy()
+	if(datum_flags & DF_ISPROCESSING)
+		STOP_PROCESSING(SSslowobj, src)
+	return ..()
+
 /obj/effect/decal/cleanable/liquid_fuel/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	if(pass_flags)
 		pass_flags.flags_can_pass_all = PASS_AROUND|PASS_UNDER|PASS_MOB_THRU|PASS_THROUGH

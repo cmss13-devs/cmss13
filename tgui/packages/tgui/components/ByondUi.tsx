@@ -14,52 +14,40 @@ function byondFmtDuple(size_array: number[]): string {
   return `${x_size}x${y_size}`;
 }
 
-function byondFmtAnchor(anchor_array: number[]): string {
-  const x_anchor = anchor_array[0];
-  const y_anchor = anchor_array[0];
-  return `${x_anchor},${y_anchor}`;
-}
-
-function dupleFromViewSize(viewSizeStr: string): number[] | null {
-  console.log('viewSizeStr');
-  console.log(viewSizeStr);
-
-  const regex = /(\d+)x(\d+)/;
-  const matches = viewSizeStr.match(regex);
-  if (!matches) {
-    console.log('!matches');
-    return null;
-  }
-  console.log(matches);
-
-  let retn = [Number(matches[1]), Number(matches[2])];
-  console.log(retn);
-  return retn;
-}
+type ZoomDrawingMode =
+  | { type: 'NativeScaling' }
+  | { type: 'ManuallyCalculate'; nativeSize: number[] };
 
 function getZoomFactor(
+  zoomDrawingMode: ZoomDrawingMode,
   domBox: BoundingBox,
-  byondOriginalSizeX: number,
-  byondOriginalSizeY: number,
 ): number {
-  const possibleXScaleFactor = domBox.size[0] / byondOriginalSizeX;
-  const possibleYScaleFactor = domBox.size[1] / byondOriginalSizeY;
+  switch (zoomDrawingMode.type) {
+    case 'NativeScaling':
+      return 0;
+    case 'ManuallyCalculate': {
+      const byondOriginalSizeX = zoomDrawingMode.nativeSize[0];
+      const byondOriginalSizeY = zoomDrawingMode.nativeSize[1];
 
-  console.log('spam');
-  console.log(byondOriginalSizeX);
-  console.log(byondOriginalSizeY);
-  console.log(domBox.size[0]);
-  console.log(domBox.size[1]);
-  console.log(possibleXScaleFactor);
-  console.log(possibleYScaleFactor);
+      const possibleXScaleFactor = domBox.size[0] / byondOriginalSizeX;
+      const possibleYScaleFactor = domBox.size[1] / byondOriginalSizeY;
 
-  return Math.min(possibleXScaleFactor, possibleYScaleFactor);
+      // XXX 4khan: the byond zoom winset param always scales the entire image.
+      // This means that for a square image like tacmaps, we can't apply one
+      // scaling factor horizontally and another vertically, so we have to
+      // choose the smaller of the two.
+      return Math.min(possibleXScaleFactor, possibleYScaleFactor);
+    }
+    default:
+      return 0;
+  }
 }
 
 type ByondUiElement = {
   render: (
     containerRef: React.Ref<HTMLDivElement>,
     params: Record<string, any>,
+    zoomDrawingMode: ZoomDrawingMode,
   ) => void;
   unmount: () => void;
 };
@@ -92,7 +80,7 @@ type SampleWinsetParams = Partial<{
   /** Text shown in label/button/input. For input controls this setting is only available at runtime. */
   text: string;
   /**
-   * You can find a full reference of these parameters
+   * You can find a full list of possible parameters
    * in [BYOND controls and parameters guide](https://secure.byond.com/docs/ref/skinparams.html). */
 }>;
 
@@ -100,34 +88,24 @@ function callWinset(
   index: number,
   id: string,
   constParams: any,
+  zoomDrawingMode: ZoomDrawingMode,
   container: React.RefObject<HTMLDivElement>,
 ) {
   byondUiStack[index] = id;
 
   const element = container.current;
   if (!element) {
-    console.log('early return: 1');
     return;
   }
   const box = getBoundingBox(element);
-  console.log('boundingBox:');
-  console.log(box);
 
   // Calculate appropriate zoom
-  const zoom = getZoomFactor(box);
-  console.log('calculated zoom: ');
-  console.log(zoom);
-
-  console.log('static params:');
-  console.log(constParams);
+  const zoom = getZoomFactor(zoomDrawingMode, box);
 
   let params = { ...constParams };
   params['pos'] = byondFmtDuple(box.pos);
   params['size'] = byondFmtDuple(box.size);
   params['zoom'] = zoom;
-
-  console.log('final params:');
-  console.log(params);
 
   Byond.winset(id, { ...params, style: Byond.styleSheet });
 }
@@ -144,8 +122,9 @@ function createByondUiElement(elementId: string | undefined): ByondUiElement {
     render: (
       containerRef: React.RefObject<HTMLDivElement>,
       constParams: SampleWinsetParams,
+      zoomDrawingMode: ZoomDrawingMode,
     ) => {
-      callWinset(index, id, constParams, containerRef);
+      callWinset(index, id, constParams, zoomDrawingMode, containerRef);
     },
     unmount: () => {
       byondUiStack[index] = null;
@@ -157,13 +136,25 @@ function createByondUiElement(elementId: string | undefined): ByondUiElement {
 }
 
 type ByondUiProps = Partial<{
-  /** An object with parameters, which are directly passed to
-   * the `winset` proc call.
-   *
+  /**
+   * Parameters passed directly to the underlying winset() BYOND call.
    * You can find a full reference of these parameters
    * in [BYOND controls and parameters guide](https://secure.byond.com/docs/ref/skinparams.html). */
   winsetParams: SampleWinsetParams & Record<string, any>;
+
+  /** params passed to calculateBoxProps from ../box.tsx */
   boxProps: Record<string, any>;
+
+  /**
+   * For map byond UIs, whether or not to hand-calculate the 'zoom'
+   * winset attr. The default behavior is to pass zoom=0, which auto-calculates
+   * the zoom factor based on the size of the parent element. However, this zoom
+   * assumes a square view which isn't always the case, causing the window to
+   * draw outside the DOM bounding box. The first index of the passed number
+   * array for the ManuallyCalculate variant should be the width of the
+   * byond object in pixels, the second index should be the height.
+   */
+  zoomDrawingMode: ZoomDrawingMode;
 }>;
 
 // Stack of currently allocated BYOND UI element ids.
@@ -201,6 +192,7 @@ const byondUiStack: Array<string | null> = [];
 export function ByondUi(props: ByondUiProps) {
   const winsetParams = props.winsetParams;
   const boxProps = props.boxProps;
+  const zoomDrawingMode = props.zoomDrawingMode;
 
   const containerRef = useRef<HTMLDivElement>(null);
   const byondUiElement = useRef(createByondUiElement(winsetParams?.id));
@@ -210,7 +202,11 @@ export function ByondUi(props: ByondUiProps) {
       parent: Byond.windowId,
       ...winsetParams,
     };
-    byondUiElement.current.render(containerRef, constParams);
+    byondUiElement.current.render(
+      containerRef,
+      constParams,
+      zoomDrawingMode ? zoomDrawingMode : { type: 'NativeScaling' },
+    );
   }
 
   const handleResize = debounce(() => {

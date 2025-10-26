@@ -35,6 +35,7 @@ const MapPanel = () => {
         boxProps={{
           className: 'MapPanel',
         }}
+        zoomDrawingMode={{ type: 'NativeScaling' }}
       />
     </Box>
   );

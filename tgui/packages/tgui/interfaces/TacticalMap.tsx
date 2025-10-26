@@ -143,6 +143,10 @@ const ViewMapPanel = (props) => {
           width: '100%',
           className: 'TacticalMap',
         }}
+        zoomDrawingMode={{
+          type: 'ManuallyCalculate',
+          nativeSize: [data.mapPixelSizeX, data.mapPixelSizeY],
+        }}
       />
     </Section>
   );

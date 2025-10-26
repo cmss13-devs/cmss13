@@ -82,6 +82,7 @@ export const ColorMatrixEditor = (props) => {
               boxProps={{
                 height: '100%',
               }}
+              zoomDrawingMode={{ type: 'NativeScaling' }}
             />
           </Stack.Item>
         </Stack>

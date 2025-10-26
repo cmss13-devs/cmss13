@@ -14,6 +14,11 @@
 	idle_power_usage = 300
 	active_power_usage = 300
 
+/obj/structure/machinery/power/monitor/Initialize(mapload, ...)
+	. = ..()
+	if(!mapload)
+		connect_to_network()
+
 /obj/structure/machinery/power/monitor/attack_remote(mob/user)
 	add_fingerprint(user)
 

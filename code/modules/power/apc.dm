@@ -1105,13 +1105,13 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	lastused_total_actual = 0
 	lastused_light = area.usage(POWER_CHANNEL_LIGHT)
-	if(lighting)
+	if(lighting && operating)
 		lastused_total_actual += lastused_light
 	lastused_equip = area.usage(POWER_CHANNEL_EQUIP)
-	if(equipment)
+	if(equipment && operating)
 		lastused_total_actual += lastused_equip
 	lastused_environ = area.usage(POWER_CHANNEL_ENVIRON)
-	if(environ)
+	if(environ && operating)
 		lastused_total_actual += lastused_environ
 	lastused_oneoff = area.usage(POWER_CHANNEL_ONEOFF, TRUE) //getting the one-off power usage and resetting it to 0 for the next processing tick
 	lastused_total_actual += lastused_oneoff

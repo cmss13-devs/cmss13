@@ -1817,7 +1817,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			var/focus_mult = focused_human.marksman_aura * 1.5 //Flat decrease of 3 % scatter per aura level
 			gun_scatter -= focus_mult
 
-	to_chat(user, SPAN_INFO("Scatter simulated: [gun_scatter]"))
 	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * gun_accuracy_mult) // Apply gun accuracy multiplier to projectile accuracy
 	projectile_to_fire.scatter += gun_scatter
 
@@ -1931,7 +1930,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			var/focus_mult = focused_human.marksman_aura * 0.5 //set this by a lot and you wont be getting any camera recoil whatsoever, in fact leadership level 3 is pretty cracked as is
 			total_recoil -= focus_mult
 
-	to_chat(user, SPAN_INFO("Recoil simulated: [total_recoil]"))
 	if(total_recoil > 0 && (ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)))
 		if(total_recoil >= 4)
 			shake_camera(user, total_recoil * 0.5, total_recoil)

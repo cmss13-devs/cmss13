@@ -390,11 +390,11 @@
 	if(ismob(thing))
 		if(!OldLoc)
 			return
-		var/mob/M = thing
+		var/mob/mob_thing = thing
 		var/area/old_area = get_area(OldLoc)
 		if(old_area == src)
 			return
-		M?.client?.soundOutput?.update_ambience(src, null, TRUE)
+		mob_thing?.client?.soundOutput?.update_ambience(src, null, TRUE)
 	else if(istype(thing, /obj/structure/machinery))
 		add_machine(thing)
 

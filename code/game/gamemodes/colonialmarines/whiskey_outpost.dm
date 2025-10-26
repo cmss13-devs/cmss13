@@ -192,11 +192,18 @@
 	var/wave = pick(whiskey_outpost_waves[xeno_wave])
 	spawn_whiskey_outpost_xenos(wave)
 	announce_xeno_wave(wave)
+	if(xeno_wave == 1)
+		xeno_announcement("It is time, dear Queen. Release the hive!", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 	if(xeno_wave == 7)
 		//Wave when Marines get reinforcements!
 		get_specific_call(/datum/emergency_call/wo, FALSE, TRUE) // "Marine Reinforcements (Squad)"
+	if(xeno_wave == 14)
+		xeno_announcement("We sense that they are sending signals for help, we have little time left. We have granted you vision of all humans in the area, slaughter them all!", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+		var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+		main_hive.see_humans_on_tacmap = TRUE
+		main_hive.tacmap_requires_queen_ovi = FALSE
+		SEND_SIGNAL(main_hive, COMSIG_XENO_REVEAL_TACMAP)
 	xeno_wave = min(xeno_wave + 1, WO_MAX_WAVE)
-
 
 /datum/game_mode/whiskey_outpost/proc/announce_xeno_wave(datum/whiskey_outpost_wave/wave_data)
 	if(!istype(wave_data))

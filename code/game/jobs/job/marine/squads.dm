@@ -926,6 +926,7 @@
 	return
 
 //Managing MIA and KIA statuses for marines
+//this is currently defunct, but theres probably something to salvage here
 /datum/squad/proc/change_squad_status(mob/living/carbon/human/target_mob)
 	if(target_mob == squad_leader)
 		return //you can't mark yourself KIA

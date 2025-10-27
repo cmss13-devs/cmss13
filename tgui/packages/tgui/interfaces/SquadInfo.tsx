@@ -164,7 +164,7 @@ const FireTeam = (props: { readonly ft: string }) => {
                   <Table.Cell className="RoleCell">Role</Table.Cell>
                   <Table.Cell className="RankCell">Rank</Table.Cell>
                   <Table.Cell className="MemberCell">Member</Table.Cell>
-                  {data.is_lead === 'sl' && (
+                  {data.is_lead && (
                     <Table.Cell className="ActionCell">
                       {props.ft === 'Unassigned' ? 'Assign FT' : 'Actions'}
                     </Table.Cell>
@@ -233,7 +233,7 @@ const FireTeamMember = (props: {
       <Table.Cell>{props.member.paygrade}</Table.Cell>
       <Table.Cell>{props.member.name}</Table.Cell>
 
-      {data.is_lead === 'sl' && (
+      {data.is_lead && (
         <Table.Cell>
           <Stack fill justify="center">
             {props.team === 'Unassigned' && (

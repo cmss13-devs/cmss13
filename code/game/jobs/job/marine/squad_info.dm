@@ -57,7 +57,7 @@
 			var/target_marine = params["target_marine"]
 			var/target_team = params["target_ft"]
 
-			if (islead != "sl")
+			if (islead != "sl" && islead != target_team)
 				return
 
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
@@ -70,13 +70,15 @@
 
 		if ("unassign_ft")
 			var/target_marine = params["target_marine"]
+			var/target_team = params["target_ft"]
 
-			if (islead != "sl")
+			if (islead != "sl" && islead != target_team)
 				return
 
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
 			if(!target)
 				return
+
 			unassign_fireteam(target, TRUE)
 			update_all_squad_info()
 			return
@@ -96,6 +98,7 @@
 			var/target_team = params["target_ft"]
 
 			if (islead != "sl")
+				to_chat(user, SPAN_WARNING("You don't have the permissions to promote a fireteam leader!"))
 				return
 
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)

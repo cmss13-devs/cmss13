@@ -160,6 +160,11 @@
 #define COMSIG_KB_XENO_TECH_SECRETE_RESIN "keybinding_xeno_tech_secrete_resin"
 #define COMSIG_KB_XENO_SCREECH "keybinding_xeno_screech"
 #define COMSIG_KB_TAIL_STAB "keybinding_tail_stab"
+#define COMSIG_KB_XENO_TOGGLE_LONG_RANGE_SIGHT "keybinding_toggle_long_range_sight"
+#define COMSIG_KB_XENO_PLANT_WEEDS "keybinding_plant_weeds"
+#define COMSIG_KB_XENO_CHOOSE_RESIN "keybinding_choose_resin"
+#define COMSIG_KB_XENO_SECRETE_RESIN "keybinding_secrete_resin"
+#define COMSIG_KB_XENO_PLACE_CONSTRUCTION "keybinding_place_construction"
 
 #define COMSIG_KB_XENO_HIVE_STATUS "keybinding_hive_status"
 #define COMSIG_KB_XENO_HIDE "keybinding_hide"
@@ -167,6 +172,169 @@
 #define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
 #define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
 #define COMSIG_KB_XENO_BECOME_SEETHROUGH "keybinding_become_seethrough"
+
+#define COMSIG_KB_XENO_TRANSFER_PLASMA "keybinding_drone_transfer_plasma"
+#define COMSIG_KB_XENO_PLANT_RESIN_FRUIT "keybinding_plant_resin_fruit"
+#define COMSIG_KB_XENO_CHANGE_FRUIT "keybinding_change_fruit"
+
+// Xenomorph Facehugger
+#define COMSIG_KB_XENO_FACEHUGGER_POUNCE "keybinding_hugger_pounce"
+
+// Xenomorph Runner
+#define COMSIG_KB_XENO_RUNNER_POUNCE "keybinding_runner_pounce"
+#define COMSIG_KB_XENO_RUNNER_BONE_SPUR "keybinding_runner_bonespur"
+#define COMSIG_KB_XENO_ACIDER_FOR_THE_HIVE "keybinding_acider_for_the_hive"
+#define COMSIG_KB_XENO_ACIDER_ACID "keybinding_acider_acid"
+
+// Xenomorph Drone
+#define COMSIG_KB_XENO_HEALER_APPLY_SALVE "keybinding_healer_apply_salve"
+#define COMSIG_KB_XENO_HEALER_SACRIFICE "keybinding_healer_sacrifice"
+#define COMSIG_KB_XENO_GARDENER_PLANT_WEEDS "keybinding_gardener_plant_weeds"
+#define COMSIG_KB_XENO_GARDENER_RESING_SURGE "keybinding_gardener_resin_surge"
+
+// Xenomorph Sentinel
+#define COMSIG_KB_XENO_SENTINEL_SLOWING_SPIT "keybinding_sentinel_slowing_spit"
+#define COMSIG_KB_XENO_SENTINEL_SCATTERED_SPIT "keybinding_sentinel_scattered_spit"
+#define COMSIG_KB_XENO_SENTINEL_PARALYZING_SLASH "keybinding_sentinel_paralyzing_slash"
+
+// Xenomorph Defender
+#define COMSIG_KB_XENO_DEFENDER_TOGGLE_CREST_DEFENCE "keybinding_defender_toggle_crest_defence"
+#define COMSIG_KB_XENO_DEFENDER_HEADBUTT "keybinding_defender_headbutt"
+#define COMSIG_KB_XENO_DEFENDER_TAIL_SWEEP "keybinding_defender_tail_sweep"
+#define COMSIG_KB_XENO_DEFENDER_FORTIFY "keybinding_defender_fortify"
+#define COMSIG_KB_XENO_STEEL_CREST_SOAK "keybinding_steal_crest_soak"
+
+// Xenomorph Spitter
+#define COMSIG_KB_XENO_SPITTER_SPRAY_ACID "keybinding_spitter_spray_acid"
+#define COMSIG_KB_XENO_SPITTER_CHARGE_SPIT "keybinding_spitter_charge_spit"
+#define COMSIG_KB_XENO_SPITTER_SPIT "keybinding_spitter_spit"
+#define COMSIG_KB_XENO_SPITTER_TAIL_STAB "keybinding_spitter_tail_stab"
+
+// Xenomorph Warrior
+#define COMSIG_KB_XENO_WARRIOR_PUNCH "keybinding_warrior_punch"
+#define COMSIG_KB_XENO_WARRIOR_LUNCH "keybinding_warrior_lunch"
+#define COMSIG_KB_XENO_WARRIOR_FLING "keybinding_warrior_fling"
+
+// Xenomorph Burrower
+#define COMSIG_KB_XENO_BURROWER_BUILD_TUNNEL "keybinding_burrower_build_tunnel"
+#define COMSIG_KB_XENO_BURROWER_PLACE_TRAP "keybinding_burrower_place_trap"
+#define COMSIG_KB_XENO_BURROWER_BURROW "keybinding_burrower_burrow"
+#define COMSIG_KB_XENO_BURROWER_TREMOR "keybinding_burrower_tremor"
+#define COMSIG_KB_XENO_BURROWER_TOGGLE_MESON_VISION "keybinding_burrower_toggle_meson_vision"
+
+// Xenomorph Hivelord Resin Whisperer
+#define COMSIG_KB_XENO_RESIN_WHISPERER_TOGGLE_SPEED "keybinding_hivelord_resin_whisperer_toggle_speed"
+
+// Xenomorph Hivelord Designer
+#define COMSIG_KB_XENO_DESIGNER_CHANGE_DESIGN "keybinding_hivelord_designer_change_design"
+#define COMSIG_KB_XENO_DESIGNER_PLACE_DESIGN "keybinding_hivelord_designer_place_design"
+#define COMSIG_KB_XENO_DESIGNER_TOGGLE_DESIGN_ICONS "keybinding_hivelord_designer_toggle_design_icons"
+#define COMSIG_KB_XENO_DESIGNER_GREATER_RESIN_SURGE "keybinding_hivelord_designer_greater_resin_surge"
+
+// Xenomorph Lurker
+#define COMSIG_KB_XENO_LURKER_POUNCE "keybinding_lurker_pounce"
+#define COMSIG_KB_XENO_LURKER_INVISIBILITY "keybinding_lurker_invisibility"
+#define COMSIG_KB_XENO_LURKER_ASSASINATE "keybinding_lurker_assasinate"
+
+// Xenomorph Lurker Vampire
+#define COMSIG_KB_XENO_VAMPIRE_RUSH "keybinding_vampire_rush"
+#define COMSIG_KB_XENO_VAMPIRE_FLURRY "keybinding_vampire_flurry"
+#define COMSIG_KB_XENO_VAMPIRE_TAIL_JAB "keybinding_vampire_tail_jab"
+#define COMSIG_KB_XENO_VAMPIRE_HEADBITE "keybinding_vampire_headbite"
+
+// Xenomorph Carrier
+#define COMSIG_KB_XENO_CARRIER_THROW_HUGGER "keybinding_carrier_throw_hugger"
+#define COMSIG_KB_XENO_CARRIER_RETRIEVE_EGG "keybinding_carrier_retrieve_egg"
+#define COMSIG_KB_XENO_CARRIER_SET_HUGGER_RESERVE "keybinding_carrier_set_hugger_reserve"
+
+// Xenomorph Carrier Eggsac
+#define COMSIG_KB_XENO_EGGSAC_GENERATE_EGG "keybinding_eggsac_generate_egg"
+#define COMSIG_KB_XENO_EGGSAC_RETRIEVE_EGG "keybinding_eggsac_retrieve_egg"
+
+// Xenomorph Ravager
+#define COMSIG_KB_XENO_RAVAGER_CHARGE "keybinding_ravager_charge"
+#define COMSIG_KB_XENO_RAVAGER_EMPOWER "keybinding_ravager_empower"
+#define COMSIG_KB_XENO_RAVAGER_SCISSOR_CUT "keybinding_ravager_scissor_cut"
+
+// Xenomorph Ravager Berserker
+#define COMSIG_KB_XENO_BERSERKER_APPREHEND "keybinding_berserker_apprened"
+#define COMSIG_KB_XENO_BERSERKER_CLOTHESLINE "keybinding_berserker_clothesline"
+#define COMSIG_KB_XENO_BERSERKER_EVISCERATE "keybinding_berserker_eviscerate"
+
+// Xenomorph Ravager Hedgehog
+#define COMSIG_KB_XENO_HEDGEHOG_SPIKE_SHIELD "keybinding_hedgehog_spike_shield"
+#define COMSIG_KB_XENO_HEDGEHOG_RAV_SPIKES "keybinding_hedgehog_rav_spikes"
+#define COMSIG_KB_XENO_HEDGEHOG_SPIKE_SHED "keybinding_hedgehog_spike_shed"
+
+// Xenomorph Crusher
+#define COMSIG_KB_XENO_CRUSHER_CHARGE "keybinding_crusher_charge"
+#define COMSIG_KB_XENO_CRUSHER_STOMP "keybinding_crusher_stomp"
+#define COMSIG_KB_XENO_CRUSHER_SHIELD "keybinding_crusher_shield"
+
+// Xenomorph Crusher Charger
+#define COMSIG_KB_XENO_CHARGER_CHARGE "keybinding_charger_charge"
+#define COMSIG_KB_XENO_CHARGER_TUMBLE "keybinding_charger_tumble"
+#define COMSIG_KB_XENO_CHARGER_STOMP "keybinding_charger_stomp"
+#define COMSIG_KB_XENO_CHARGER_FLING "keybinding_charger_fling"
+
+// Xenomorph Boiler
+#define COMSIG_KB_XENO_BOILER_BOMBARD "keybinding_boiler_bombard"
+#define COMSIG_KB_XENO_BOILER_SHIFT_SPITS "keybinding_boiler_shift_spits"
+#define COMSIG_KB_XENO_BOILER_SPRAY_ACID "keybinding_boiler_spray_acid"
+#define COMSIG_KB_XENO_BOILER_ACID_SHROUD "keybinding_boiler_acid_shroud"
+
+// Xenomorph Boiler Trapper
+#define COMSIG_KB_XENO_TRAPPER_TRAP "keybinding_trapper_trap"
+#define COMSIG_KB_XENO_TRAPPER_ACID_MINE "keybinding_trapper_acid_mine"
+#define COMSIG_KB_XENO_TRAPPER_ACID_SHOTGUN "keybinding_trapper_acid_shotgun"
+
+// Xenomorph Praetorian
+#define COMSIG_KB_XENO_PRAETORIAN_SPIT "keybinding_praetorian_spit"
+#define COMSIG_KB_XENO_PRAETORIAN_DASH "keybinding_praetorian_dash"
+#define COMSIG_KB_XENO_PRAETORIAN_ACID_BALL "keybinding_praetorian_acid_ball"
+#define COMSIG_KB_XENO_PRAETORIAN_SPRAY_ACID "keybinding_praetorian_spray_acid"
+
+// Xenomorph Praetorian Dancer
+#define COMSIG_KB_XENO_DANCER_IMPALE "keybinding_dancer_impale"
+#define COMSIG_KB_XENO_DANCER_DODGE "keybinding_dancer_dodge"
+#define COMSIG_KB_XENO_DANCER_TAIL_TRIP "keybinding_dancer_tail_trip"
+
+// Xenomorph Praetorian Oppressor
+#define COMSIG_KB_XENO_OPPRESSOR_ABDUCT "keybinding_oppressor_adbuct"
+#define COMSIG_KB_XENO_OPPRESSOR_PUNCH "keybinding_oppressor_punch"
+#define COMSIG_KB_XENO_OPPRESSOR_TAIL_LASH "keybinding_oppressor_tail_lash"
+
+// Xenomorph Praetorian Vanguard
+#define COMSIG_KB_XENO_VANGUARD_PIERCE "keybinding_vanguard_pierce"
+#define COMSIG_KB_XENO_VANGUARD_DASH "keybinding_vanguard_dash"
+#define COMSIG_KB_XENO_VANGUARD_CLEAVE "keybinding_vanguard_cleave"
+#define COMSIG_KB_XENO_VANGUARD_TOGGLE_CLEAVE "keybinding_vanguard_toggle_cleave"
+
+// Xenomorph Praetorian Valkyrie
+#define COMSIG_KB_XENO_VALKYRIE_RAGE "keybinding_valkyrie_rage"
+#define COMSIG_KB_XENO_VALKYRIE_HIGH_GALLOP "keybinding_valkyrie_high_gallop"
+#define COMSIG_KB_XENO_VALKYRIE_FIGHT_OR_FLIGHT "keybinding_valkyrie_fight_or_flight"
+#define COMSIG_KB_XENO_VALKYRIE_RETRIEVE "keybinding_valkyrie_retrieve"
+
+// Xenomorph Queen
+#define COMSIG_KB_XENO_QUEEN_SPIT "keybinding_queen_spit"
+#define COMSIG_KB_XENO_QUEEN_SHIFT_SPITS "keybinding_queen_shift_spits"
+#define COMSIG_KB_XENO_QUEEN_GUT "keybinding_queen_gut"
+#define COMSIG_KB_XENO_QUEEN_GROW_OVIPOSITOR "keybinding_queen_grow_ovipositor"
+#define COMSIG_KB_XENO_QUEEN_MANAGE_HIVE "keybinding_queen_manage_hive"
+
+// Xenomorph King
+#define COMSIG_KB_XENO_KING_REND "keybinding_king_rend"
+#define COMSIG_KB_XENO_KING_DOOM "keybinding_king_doom"
+#define COMSIG_KB_XENO_KING_DESTROY "keybinding_king_destroy"
+#define COMSIG_KB_XENO_KING_SHIELD "keybinding_king_shield"
+
+// Xenomorph Predalien
+#define COMSIG_KB_XENO_PREDALIEN_FERALRUSH "keybinding_predalien_feralrush"
+#define COMSIG_KB_XENO_PREDALIEN_ROAR "keybinding_predalien_roar"
+#define COMSIG_KB_XENO_PREDALIEN_FERAL_SMASH "keybinding_predalien_feral_smash"
+#define COMSIG_KB_XENO_PREDALIEN_FERALFRENZY "keybinding_predalien_feralfrenzy"
+#define COMSIG_KB_XENO_PREDALIEN_TOGGLE_GUT_TARGETING "keybinding_predalien_toggle_gut_targeting"
 
 // Yautja
 

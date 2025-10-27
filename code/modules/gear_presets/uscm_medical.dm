@@ -112,7 +112,7 @@
 	role_comm_title = "Fld Doc"
 	skills = /datum/skills/doctor
 
-	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_FIELD_DOC)
+	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_FIELD_DOC, ACCESS_MARINE_DATABASE)
 
 	minimap_icon = "field_doctor"
 	minimap_background = "background_medical"

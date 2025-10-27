@@ -238,3 +238,6 @@
 2025-10-26:
   LC4492:
   - imageadd: Updates on_mobs for most feet items
+2025-10-27:
+  ori-disillusion-mirnov:
+  - spellcheck: removed outdated wording in a comment, no player facing changes

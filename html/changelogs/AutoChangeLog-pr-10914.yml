@@ -1,0 +1,4 @@
+author: "Thwomper"
+delete-after: True
+changes:
+  - balance: "Removed additional BRUTE rockets from ComTech vendor."

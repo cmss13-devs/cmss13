@@ -141,8 +141,8 @@
 
 //leadership skill
 #define SKILL_LEAD_NOVICE 0 //Anyone but the above. Using SL items is possible but painfully slow
-#define SKILL_LEAD_TRAINED 1 //SL
-#define SKILL_LEAD_EXPERT 2 //SOs
+#define SKILL_LEAD_TRAINED 1 //Team leaders
+#define SKILL_LEAD_EXPERT 2 //SLs, Junior Officers
 #define SKILL_LEAD_MASTER 3 //XO, CO
 #define SKILL_LEAD_MAX 3
 

@@ -172,51 +172,58 @@ GLOBAL_LIST_INIT(cm_vending_clothing_nurse, list(
 //------------ RESEARCHER ---------------
 GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 
-		list("MEDICAL SET (MANDATORY)", 0, null, null, null),
-		list("Essential Medical Set", 0, /obj/effect/essentials_set/medical/doctor, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("RESEARCH SET", 0, null, null, null),
+		list("Recommended Research Set", 0, /obj/effect/essentials_set/medical/researcher, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
-		list("STANDARD EQUIPMENT", 0, null, null, null),
-		list("Gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-		list("Headset", 0, /obj/item/device/radio/headset/almayer/research, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+		list("IMPORTANT EQUIPMENT", 0, null, null, null),
+		list("Latex gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Research headset", 0, /obj/item/device/radio/headset/almayer/research, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 
 		list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
-		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
-		list("Prescription Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
-		list("Reagent Scanner HUD Goggles", 0, /obj/item/clothing/glasses/science, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
-		list("Prescription Reagent Scanner HUD Goggles", 0, /obj/item/clothing/glasses/science/prescription, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, CIVILIAN_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
+		list("Prescription Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health/prescription, CIVILIAN_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
+		list("Reagent Scanner HUD Goggles", 0, /obj/item/clothing/glasses/science, CIVILIAN_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+		list("Prescription Reagent Scanner HUD Goggles", 0, /obj/item/clothing/glasses/science/prescription, CIVILIAN_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 
-		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
-		list("Researcher Uniform", 0, /obj/item/clothing/under/marine/officer/researcher, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
-		list("Green Scrubs", 0, /obj/item/clothing/under/rank/medical/green, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
-		list("Blue Scrubs", 0, /obj/item/clothing/under/rank/medical/blue, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
-		list("Light Blue Scrubs", 0, /obj/item/clothing/under/rank/medical/lightblue, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
-		list("Purple Scrubs", 0, /obj/item/clothing/under/rank/medical/purple, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
-		list("Olive Scrubs", 0, /obj/item/clothing/under/rank/medical/olive, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
-		list("Grey Scrubs", 0, /obj/item/clothing/under/rank/medical/grey, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("SUITS AND UNDERSHIRTS (CHOOSE 5)", 0, null, null, null),
+		list("Simple White Shirt, Black Pants", 0, /obj/item/clothing/under/sl_suit, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Simple White Shirt, Blue Pants", 0, /obj/item/clothing/under/lawyer/bluesuit, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Black Suit Pants", 0, /obj/item/clothing/under/liaison_suit/black, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
+		list("Blue Suit Pants", 0, /obj/item/clothing/under/liaison_suit/blue, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Brown Suit Pants", 0, /obj/item/clothing/under/liaison_suit/brown, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("White Suit Pants", 0, /obj/item/clothing/under/liaison_suit/corporate_formal, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Grey Suit Pants", 0, /obj/item/clothing/under/detective/grey, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Worn Suit", 0, /obj/item/clothing/under/detective/neutral, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Orange Outfit", 0, /obj/item/clothing/under/liaison_suit/orange, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Grey Workwear", 0, /obj/item/clothing/under/colonist/workwear, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Khaki Workwear", 0, /obj/item/clothing/under/colonist/workwear/khaki, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Pink Workwear", 0, /obj/item/clothing/under/colonist/workwear/pink, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Green Workwear", 0, /obj/item/clothing/under/colonist/workwear/green, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Blue Workwear", 0, /obj/item/clothing/under/colonist/workwear/blue, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("White work shirt and grey pants", 0, /obj/item/clothing/under/marine/reporter, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Black work shirt and dark tan pants", 0, /obj/item/clothing/under/marine/reporter/black, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Orange work shirt and black pants", 0, /obj/item/clothing/under/marine/reporter/orange, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+		list("Red work shirt and bright tan pants", 0, /obj/item/clothing/under/marine/reporter/red, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
-		list("SUIT (CHOOSE 1)", 0, null, null, null),
-		list("Labcoat", 0, /obj/item/clothing/suit/storage/labcoat/researcher, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
+		list("LABCOATS (CHOOSE 1)", 0, null, null, null),
+		list("White labcoat", 0, /obj/item/clothing/suit/storage/labcoat, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
+		list("Tan Labcoat", 0, /obj/item/clothing/suit/storage/labcoat/researcher, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_RECOMMENDED),
 
-		list("SNOW GEAR (SNOW USE ONLY)", 0, null, null, null),
-		list("Snowcoat", 0, /obj/item/clothing/suit/storage/snow_suit/doctor, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Balaclava", 0, /obj/item/clothing/mask/balaclava, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
-		list("Snow Scarf", 0, /obj/item/clothing/mask/tornscarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
-
-		list("HEADWEAR (CHOOSE 1)", 0, null, null, null),
-		list("Surgical Cap, Orange", 0, /obj/item/clothing/head/surgery/orange, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("Surgical Cap, Blue", 0, /obj/item/clothing/head/surgery/blue, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("Surgical Cap, Purple", 0, /obj/item/clothing/head/surgery/purple, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("Surgical Cap, Green", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("SHOES (CHOOSE 2)", 0, null, null, null),
+		list("Laceup Shoes, Black", 0, /obj/item/clothing/shoes/laceup, CIVILIAN_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
+		list("Laceup Shoes, Brown", 0, /obj/item/clothing/shoes/laceup/brown, CIVILIAN_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
+		list("Fancy Leather Shoes", 0, /obj/item/clothing/shoes/leather/fancy, CIVILIAN_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
 
 		list("BAG (CHOOSE 1)", 0, null, null, null),
-		list("Standard Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Standard Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Medical Satchel", 0, /obj/item/storage/backpack/marine/satchel/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
-		list("Medical Backpack", 0, /obj/item/storage/backpack/marine/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
+		list("Leather brown satchel", 0, /obj/item/storage/backpack/satchel, CIVILIAN_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Leather blue satchel", 0, /obj/item/storage/backpack/satchel/blue, CIVILIAN_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Leather black satchel", 0, /obj/item/storage/backpack/satchel/black, CIVILIAN_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
+		list("Marine satchel", 0, /obj/item/storage/backpack/marine/satchel, CIVILIAN_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("M276 Lifesaver Bag (Full)", 0, /obj/item/storage/belt/medical/lifesaver/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("M276 Medical Storage Rig (Full)", 0, /obj/item/storage/belt/medical/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("M276 G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Vials Pouch", 0, /obj/item/storage/pouch/vials, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_MANDATORY),
@@ -236,11 +243,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		list("Pressurized Reagent Canister Pouch (EMPTY)", 0, /obj/item/storage/pouch/pressurized_reagent_canister, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
-		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
-		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("TIES (CHOOSE 5)", 0, null, null, null),
+		list("Black Tie", 0, /obj/item/clothing/accessory/tie/black, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
+		list("Red Tie", 0, /obj/item/clothing/accessory/tie/red, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Purple Tie", 0, /obj/item/clothing/accessory/tie/purple, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Blue Tie", 0, /obj/item/clothing/accessory/tie, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Green Tie", 0, /obj/item/clothing/accessory/tie/green, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Gold Tie", 0, /obj/item/clothing/accessory/tie/gold, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Special Tie", 0, /obj/item/clothing/accessory/tie/horrible, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 	))
 
 /obj/effect/essentials_set/medical
@@ -254,8 +264,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		/obj/item/storage/surgical_case/regular,
 		/obj/item/clothing/accessory/stethoscope,
 		/obj/item/device/flashlight/pen,
-
-
 	)
 
 /obj/effect/essentials_set/medical/doctor
@@ -269,3 +277,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		/obj/item/device/flashlight/pen,
 		/obj/item/storage/syringe_case,
 	)
+
+/obj/effect/essentials_set/medical/researcher
+	spawned_gear_list = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/reagent_scanner,
+		/obj/item/clothing/accessory/stethoscope,
+		/obj/item/device/flashlight/pen,
+	)
+
+

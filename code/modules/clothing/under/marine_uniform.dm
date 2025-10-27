@@ -1610,8 +1610,8 @@
 	worn_state = "corporate_blue"
 
 /obj/item/clothing/under/marine/reporter
-	name = "combat correspondent uniform"
-	desc = "A relaxed and robust uniform fit for any potential reporting needs."
+	name = "white work shirt and grey pants"
+	desc = "A relaxed and robust clothing fit for any apparel needs."
 	icon_state = "cc_white"
 	worn_state = "cc_white"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
@@ -1621,14 +1621,17 @@
 	)
 
 /obj/item/clothing/under/marine/reporter/black
+	name = "black work shirt and dark tan pants"
 	icon_state = "cc_black"
 	worn_state = "cc_black"
 
 /obj/item/clothing/under/marine/reporter/orange
+	name = "orange work shirt and black pants"
 	icon_state = "cc_orange"
 	worn_state = "cc_orange"
 
 /obj/item/clothing/under/marine/reporter/red
+	name = "red work shirt and bright tan pants"
 	icon_state = "cc_red"
 	worn_state = "cc_red"
 

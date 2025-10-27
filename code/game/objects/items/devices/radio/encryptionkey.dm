@@ -137,7 +137,7 @@
 /obj/item/device/encryptionkey/mcom/cl
 	name = "\improper Corporate Liaison radio encryption key"
 	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY_PUB = TRUE)
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_WY_PUB = TRUE)
 
 /obj/item/device/encryptionkey/mcom/rep
 	name = "\improper Representative radio encryption key"
@@ -262,7 +262,7 @@
 /obj/item/device/encryptionkey/pmc/command
 	name = "\improper WY PMC Command Radio Encryption Key"
 	icon_state = "pmc_key"
-	channels = list(RADIO_CHANNEL_PMC_CMD = TRUE, RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY_SEC = TRUE, RADIO_CHANNEL_PMC_ENGI = TRUE, RADIO_CHANNEL_PMC_CCT = TRUE, RADIO_CHANNEL_PMC_MED = TRUE)
+	channels = list(RADIO_CHANNEL_PMC_CMD = TRUE, RADIO_CHANNEL_PMC_GEN = TRUE, RADIO_CHANNEL_WY = TRUE, RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY_SEC = TRUE, RADIO_CHANNEL_PMC_ENGI = TRUE, RADIO_CHANNEL_PMC_CCT = TRUE, RADIO_CHANNEL_PMC_MED = TRUE)
 
 /obj/item/device/encryptionkey/commando
 	name = "\improper WY Commando Radio Encryption Key"

@@ -479,7 +479,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_three
 	id = "Bus 3"
 	network = "tcommsat"
-	freq_listening = list(SEC_FREQ, COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
+	freq_listening = list(SEC_FREQ, COMM_FREQ, WY_WO_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, YAUT_OVR_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, WY_PUB_FREQ, WY_SEC_FREQ, HC_FREQ, PVST_FREQ, SOF_FREQ, CBRN_FREQ)
 	autolinkers = list("processor3", "security", "command", "JTAC")
 
 /obj/structure/machinery/telecomms/bus/preset_four

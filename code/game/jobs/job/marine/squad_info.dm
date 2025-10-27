@@ -98,7 +98,7 @@
 			var/target_team = params["target_ft"]
 
 			if (islead != "sl")
-				to_chat(user, SPAN_WARNING("You don't have the permissions to promote a fireteam leader!"))
+				to_chat(usr, SPAN_WARNING("You don't have the permissions to promote a fireteam leader!"))
 				return
 
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)

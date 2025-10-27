@@ -200,6 +200,8 @@ export function ByondUi(props: ByondUiProps) {
   function updateRender() {
     const constParams = {
       parent: Byond.windowId,
+      anchor1: byondFmtDuple([5, 0]),
+      anchor2: byondFmtDuple([95, 100]),
       ...winsetParams,
     };
     byondUiElement.current.render(

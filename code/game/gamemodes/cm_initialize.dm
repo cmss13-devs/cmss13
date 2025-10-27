@@ -214,7 +214,7 @@ Additional game mode variables.
 			to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
 		return FALSE
 
-	if(pred_candidate.ckey in predators)
+	if(pred_candidate.key in predators)
 		if(show_warning)
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
 		return FALSE

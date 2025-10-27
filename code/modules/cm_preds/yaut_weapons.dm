@@ -1172,13 +1172,13 @@
 	name = "spike launcher"
 	desc = "A compact Yautja device in the shape of a crescent. It can rapidly fire damaging spikes and automatically recharges."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/pred.dmi'
 	icon_state = "spikelauncher"
 	item_state = "spikelauncher"
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/pred_guns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_righthand.dmi'
 	)
 
 	muzzle_flash = null // TO DO, add a decent one.
@@ -1267,15 +1267,15 @@
 	return TRUE
 
 /obj/item/weapon/gun/energy/yautja
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/pred.dmi'
 	icon_state = null
 	works_in_recharger = FALSE
 	muzzle_flash = "muzzle_flash_blue"
 	muzzle_flash_color = COLOR_MAGENTA
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/pred_guns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_righthand.dmi'
 	)
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle
@@ -1289,6 +1289,8 @@
 	zoomdevicename = "scope"
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_HUGE
+	pixel_x = -2
+	hud_offset = -2
 	var/charge_time = 0
 	var/last_regen = 0
 	flags_gun_features = GUN_UNUSUAL_DESIGN
@@ -1313,7 +1315,6 @@
 				to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
 		update_icon()
 
-
 /obj/item/weapon/gun/energy/yautja/plasmarifle/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_4*2)
@@ -1323,7 +1324,6 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
-
 /obj/item/weapon/gun/energy/yautja/plasmarifle/get_examine_text(mob/user)
 	if(isyautja(user))
 		. = ..()
@@ -1331,12 +1331,6 @@
 	else
 		. = list()
 		. += SPAN_NOTICE("This thing looks like an alien rifle of some kind. Strange.")
-
-/obj/item/weapon/gun/energy/yautja/plasmarifle/update_icon()
-	if(last_regen < charge_time + 20 || last_regen > charge_time || charge_time > 95)
-		var/new_icon_state = charge_time <=15 ? null : icon_state + "[round(charge_time/33, 1)]"
-		update_special_overlay(new_icon_state)
-		last_regen = charge_time
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/able_to_fire(mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -1497,6 +1491,7 @@
 	icon_state = "plasma_ebony"
 	var/base_icon_state = "plasma"
 	var/base_item_state = "plasma_wear"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
@@ -1821,7 +1816,6 @@
 	ammo_datum = /datum/ammo/arrow/expl
 	to_chat(user, SPAN_NOTICE("You activate [src]."))
 
-
 /obj/item/storage/belt/gun/quiver
 	name = "quiver strap"
 	desc = "A strap that can hold a bow with a quiver for arrows."
@@ -1829,10 +1823,11 @@
 	max_storage_space = 20
 	icon_state = "quiver"
 	item_state = "s_marinebelt"
-	flags_equip_slot = SLOT_WAIST|SLOT_SUIT_STORE
+	flags_equip_slot = SLOT_WAIST|SLOT_SUIT_STORE|SLOT_BACK // it's a quiver, quivers go on your back
 	max_w_class = SIZE_LARGE
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
@@ -1842,24 +1837,11 @@
 	)
 	explo_proof = TRUE
 	unacidable = TRUE
-	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/gun/quiver/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/bow())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/arrow(src)
-
-/obj/item/storage/belt/gun/quiver/update_icon()
-	overlays.Cut()
-	if(content_watchers && flap)
-		icon_state = "quiver_open"
-		return
-	var/magazines = length(contents) - length(holstered_guns)
-	if(!magazines)
-		icon_state = "quiver_open"
-		return
-	icon_state = "quiver"
-
 
 #undef FLAY_STAGE_SCALP
 #undef FLAY_STAGE_STRIP

@@ -44,6 +44,8 @@
 	var/metallic = TRUE
 	/// Lower limit of damage beyond which the barricade cannot be fixed by welder. Compared to damage_state. If null it can be repaired at any damage_state.
 	var/welder_lower_damage_limit = null
+	/// Check if cade is on acid, if yes, do not leave debris after melting.
+	var/on_acid = FALSE
 
 /obj/structure/barricade/Initialize(mapload, mob/user)
 	. = ..()
@@ -79,7 +81,7 @@
 
 /obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
-	if (pass_flags)
+	if(pass_flags)
 		pass_flags.flags_can_pass_all = NONE
 		pass_flags.flags_can_pass_front = NONE
 		pass_flags.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
@@ -327,7 +329,7 @@
 			if(stack_amt)
 				new stack_type(loc, stack_amt)
 	else
-		if(destroyed_stack_amount)
+		if(!on_acid && destroyed_stack_amount)
 			new stack_type(loc, destroyed_stack_amount)
 	return ..()
 
@@ -360,7 +362,7 @@
 // However, will look into fixing bugs w/diagonal movement different if this is
 // to hacky.
 /obj/structure/barricade/handle_rotation()
-	if (dir & EAST)
+	if(dir & EAST)
 		setDir(EAST)
 	else if(dir & WEST)
 		setDir(WEST)
@@ -368,6 +370,7 @@
 
 /obj/structure/barricade/acid_spray_act()
 	take_damage(25 * burn_multiplier)
+	take_damage(acided = TRUE)
 	visible_message(SPAN_WARNING("[src] is hit by the acid spray!"))
 	new /datum/effects/acid(src, null, null)
 
@@ -377,7 +380,7 @@
 /obj/structure/barricade/proc/hit_barricade(obj/item/item)
 	take_damage(item.force * item.demolition_mod * 0.5 * brute_multiplier)
 
-/obj/structure/barricade/proc/take_damage(damage)
+/obj/structure/barricade/proc/take_damage(damage, acided = FALSE)
 	for(var/obj/structure/barricade/barricade in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
 		if(barricade.dir == reverse_direction(dir))
 			barricade.update_health(damage)
@@ -386,6 +389,7 @@
 
 /obj/structure/barricade/proc/take_acid_damage(damage)
 	take_damage(damage * burn_multiplier)
+	take_damage(acided = TRUE)
 
 /obj/structure/barricade/update_health(damage, nomessage)
 	health -= damage

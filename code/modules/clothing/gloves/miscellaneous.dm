@@ -46,7 +46,7 @@
 	icon_state = "latex"
 	item_state = "latex"
 	siemens_coefficient = 0.30
-	armor_bio = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/gloves/botanic_leather
 	desc = "These leather gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin."

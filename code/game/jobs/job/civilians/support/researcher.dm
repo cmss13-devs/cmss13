@@ -6,11 +6,11 @@
 	spawn_positions = 2
 	allow_additional = 1
 	scaled = 1
-	supervisors = "the chief medical officer and the Wey-Yu corporate office"
+	supervisors = "the Chief Medical Officer and the Weyland-Yutani Corporation"
 	selection_class = "job_researcher"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/researcher
-	entry_message_body = "You're a researcher contracted by Weyland-Yutani to work onboard the Almayer. You are tasked with <a href='"+WIKI_PLACEHOLDER+"'>research</a> and development, and you should be taking every opportunity this operation will throw at you to discover new things. Your role involves a lot of roleplaying, and you have the skills to work as a medical doctor if the situation requires. Any new discovery must be kept away from marine hands unless the distribution has been authorized by your supervisor. You do not answer to the Corporate Liaison."
+	entry_message_body = "You've been contracted by Weyland-Yutani to work onboard the Almayer. You are tasked with <a href='"+WIKI_PLACEHOLDER+"'>research</a> and development, and you should be taking every opportunity this operation will throw at you to discover new things. Your role involves a lot of roleplaying, and you have the skills to work as a medical doctor if the situation requires. Any new discovery must be kept away from marine hands unless the distribution has been authorized by your supervisor. You do not answer to the Corporate Liaison."
 
 /datum/job/civilian/researcher/set_spawn_positions(count)
 	spawn_positions = rsc_slot_formula(count)

@@ -2,27 +2,34 @@
 	name = "\improper ColMarTech Medical Equipment Rack"
 	desc = "An automated equipment vendor for the Medical Department."
 	req_access = list(ACCESS_MARINE_MEDBAY)
-	vendor_role = list(JOB_DOCTOR,JOB_FIELD_DOCTOR,JOB_NURSE,JOB_RESEARCHER,JOB_CMO)
+	vendor_role = list(JOB_DOCTOR,JOB_FIELD_DOCTOR,JOB_NURSE,JOB_CMO)
 	icon_state = "dress"
 
 /obj/structure/machinery/cm_vending/clothing/medical_crew/get_listed_products(mob/user)
 	if(!user)
 		var/list/combined = list()
 		combined += GLOB.cm_vending_clothing_nurse
-		combined += GLOB.cm_vending_clothing_researcher
 		combined += GLOB.cm_vending_clothing_cmo
 		combined += GLOB.cm_vending_clothing_doctor
 		return combined
 	if(user.job == JOB_NURSE)
 		return GLOB.cm_vending_clothing_nurse
-	else if(user.job == JOB_RESEARCHER)
-		return GLOB.cm_vending_clothing_researcher
 	else if(user.job == JOB_CMO)
 		///defined in senior_officers.dm
 		return GLOB.cm_vending_clothing_cmo
 	else if(user.job == JOB_DOCTOR || user.job == JOB_FIELD_DOCTOR)
 		return GLOB.cm_vending_clothing_doctor
 	return ..()
+
+/obj/structure/machinery/cm_vending/clothing/medical_crew/researcher
+	name = "\improper Researcher's Wardrobe"
+	desc = "A wardrobe fit for all the clothes and equipment a researcher needs."
+	req_access = list(ACCESS_MARINE_MEDBAY)
+	vendor_role = list(JOB_RESEARCHER)
+	icon_state = "wardrobe_vendor"
+
+/obj/structure/machinery/cm_vending/clothing/medical_crew/get_listed_products(mob/user)
+	return GLOB.cm_vending_clothing_researcher
 
 
 

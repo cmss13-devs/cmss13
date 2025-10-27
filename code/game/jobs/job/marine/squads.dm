@@ -527,6 +527,12 @@
 		if(JOB_SQUAD_TEAM_LEADER)
 			assignment = JOB_SQUAD_TEAM_LEADER
 			target_mob.important_radio_channels += radio_freq
+			for(var/lead in 1 to roles_cap[JOB_SQUAD_TEAM_LEADER])
+				if(!fireteam_leaders["FT[lead]"])
+					assign_fireteam("FT[lead]", target_mob)
+					assign_ft_leader("FT[lead]", target_mob)
+					break
+
 		if(JOB_SQUAD_SMARTGUN)
 			assignment = JOB_SQUAD_SMARTGUN
 		if(JOB_SQUAD_LEADER)
@@ -770,6 +776,9 @@
 		if(fireteam_leaders[fireteam]) //if TL exists -> FT group, otherwise -> SL group
 			SStracking.start_tracking(fireteam, H)
 			if(H.stat == CONSCIOUS)
+				var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+				if(earpiece)
+					earpiece.locate_setting = TRACKER_FTL
 				to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam]. Report to your Fireteam Leader ASAP.")))
 			to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was assigned to your fireteam.")))
 		else
@@ -785,6 +794,9 @@
 			SStracking.stop_tracking(tracking_id, H) //remove from previous FT group
 			SStracking.start_tracking(fireteam, H)
 			if(H.stat == CONSCIOUS)
+				var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+				if(earpiece)
+					earpiece.locate_setting = TRACKER_FTL
 				to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam]. Report to your Fireteam Leader ASAP.")))
 			to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was assigned to your fireteam.")))
 		if(H.stat == CONSCIOUS)

@@ -27,7 +27,7 @@
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
 	plane = TURF_PLANE
-  ///How much explosive power is needed to breach, null is unbreachable
+	///How much explosive power is needed to breach, null is unbreachable
 	var/breach_threshold
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE

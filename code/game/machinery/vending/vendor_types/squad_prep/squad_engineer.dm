@@ -27,7 +27,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("ES-11 Mobile Fuel Canister", 4, /obj/item/tool/weldpack/minitank, null, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", 0, null, null, null),
-		list("M5510 Laser-Guided Rocket", 8, /obj/item/ammo_magazine/rocket/brute, null, VENDOR_ITEM_RECOMMENDED),
 		list("M40 HEDP High Explosive Packet (x3 grenades)", 18, /obj/item/storage/box/packet/high_explosive, null, VENDOR_ITEM_REGULAR),
 		list("M40 HIDP Incendiary Packet (x3 grenades)", 18, /obj/item/storage/box/packet/incendiary, null, VENDOR_ITEM_REGULAR),
 		list("M40 WPDP White Phosphorus Packet (x3 grenades)", 18, /obj/item/storage/box/packet/phosphorus, null, VENDOR_ITEM_REGULAR),

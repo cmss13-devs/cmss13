@@ -1117,6 +1117,9 @@
 		teardown()
 		usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
 
+	if(src != over_object)
+		remove_outline()
+
 /atom/movable/proc/do_item_attack_animation(atom/attacked_atom, visual_effect_icon, obj/item/used_item)
 	var/image/attack_image
 	if(visual_effect_icon)
@@ -1189,3 +1192,24 @@
 		src = gun.active_attachable
 
 	unique_action(usr)
+
+/obj/item/MouseEntered()
+	SHOULD_CALL_PARENT(TRUE)
+	. = ..()
+	apply_outline()
+	var/client/client = usr.client
+	if(client.prefs?.hide_statusbar){
+		winset(client, "mapwindow.status_bar", "is-visible=false")
+		return
+	}
+	winset(client, "mapwindow.status_bar", "text=\"[name]\"")
+
+/obj/item/MouseExited()
+	SHOULD_CALL_PARENT(TRUE)
+	. = ..()
+	remove_outline()
+	var/client/client = usr.client
+	if(client.prefs?.hide_statusbar){
+		return
+	}
+	winset(client, "mapwindow.status_bar", "text=\"\"")

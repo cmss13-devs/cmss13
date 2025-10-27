@@ -345,7 +345,7 @@ SUBSYSTEM_DEF(yautja_panel)
 			if(!typeout)
 				typeout = "null"
 
-			var/input = tgui_input_text(src, "Are you sure you want to purge this person? Type '[typeout]' to purge", "Confirm Purge") as text|null
+			var/input = tgui_input_text(src, "Are you sure you want to purge this person? Type '[typeout]' to purge", "Confirm Purge")
 
 
 			if(!input || input != typeout)

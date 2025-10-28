@@ -40,7 +40,7 @@
 /datum/reagent/medical/paracetamol
 	name = "Paracetamol"
 	id = "paracetamol"
-	description = "Also known as Tylenol, this is a moderate long lasting painkiller that has been commonly available since 1950. Paracetamol is capable of both analgesic and antipyretic activity but no anti-inflammatory action. Overdosing on paracetamol is toxic, may induce hallucinations, and cause acute liver failure. Side effects of Paracetamol overdoses include: Opiate Receptor Deficiency, hallucinations, and toxin damage. Critical overdoses become neurotoxic, hepatotoxic, and cause extreme difficulties in breathing."
+	description = "Also known as Tylenol, this is a moderate, long lasting painkiller that has been commonly available since 1950. Paracetamol is capable of both analgesic and antipyretic activity but no anti-inflammatory action. Overdosing on paracetamol is toxic, may induce hallucinations, and cause acute liver failure. Side effects of Paracetamol overdoses include: Opiate Receptor Deficiency, hallucinations, and toxin damage. Critical overdoses become neurotoxic, hepatotoxic, and cause extreme difficulties in breathing."
 	reagent_state = LIQUID
 	color = "#C855DC" // rgb: 200, 85, 220
 	custom_metabolism = AMOUNT_PER_TIME(15, 10 MINUTES) // Lasts 10 minutes for 15 units
@@ -277,7 +277,7 @@
 /datum/reagent/medical/meralyne
 	name = "Meralyne"
 	id = "meralyne"
-	description = "Advanced analgesic medication used to treat extremely severe blunt trauma. Allows the body to quickly repair damaged tissue. Overdosing on Meralyne will cause severe corrosion to cell membranes and is toxic at critical overdoses."
+	description = "Advanced analgesic medication used to treat extremely severe blunt trauma. Allows the body to quickly repair damaged tissue, even muscles and tendons severed from bones. Overdosing on Meralyne will cause severe corrosion to cell membranes and is toxic at critical overdoses."
 	reagent_state = LIQUID
 	color = "#b40000"  // rgb: 180, 0, 0
 	overdose = LOWH_REAGENTS_OVERDOSE
@@ -376,7 +376,7 @@
 /datum/reagent/medical/ethylredoxrazine // FUCK YOU, ALCOHOL
 	name = "Ethylredoxrazine"
 	id = "ethylredoxrazine"
-	description = "Neutralizes the effects of alcohol in the bloodstream, by oxidizing it into water molecules. However, it does not stop immediate intoxication. Ethylredoxrazine, ironically, becomes toxic upon overdosing."
+	description = "Neutralizes the effects of alcohol in the bloodstream by oxidizing it into water molecules. However, it does not stop immediate intoxication. Ethylredoxrazine, ironically, becomes toxic upon overdosing."
 	reagent_state = SOLID
 	color = "#605048" // rgb: 96, 80, 72
 	overdose = REAGENTS_OVERDOSE

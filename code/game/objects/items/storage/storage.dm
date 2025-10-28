@@ -904,14 +904,13 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	SIGNAL_HANDLER
 	storage_close(watcher)
 
-/obj/item/storage/proc/dump_objectives()
+/obj/item/storage/proc/dump_important_items()
 	for(var/obj/item/cur_item in src)
-		if(cur_item.is_objective)
+		if(cur_item.is_objective || cur_item.explo_proof || cur_item.unacidable)
 			remove_from_storage(cur_item, loc)
 
-
 /obj/item/storage/Destroy()
-	dump_objectives()
+	dump_important_items()
 	for(var/mob/M in content_watchers)
 		hide_from(M)
 	content_watchers = null

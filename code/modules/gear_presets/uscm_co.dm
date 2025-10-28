@@ -41,7 +41,6 @@
 	minimap_icon = "co"
 	minimap_background = "background_command"
 
-
 /datum/equipment_preset/uscm_co/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_ALL)
@@ -52,7 +51,7 @@
 
 
 /datum/equipment_preset/uscm_co/load_gear(mob/living/carbon/human/new_human)
-	var/sidearm = "Mateba"
+	var/sidearm = "Unica"
 	var/kit = null
 	var/sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
 	var/back_item = /obj/item/storage/backpack/satchel/lockable

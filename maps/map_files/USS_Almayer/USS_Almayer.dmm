@@ -2781,9 +2781,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -15628,7 +15625,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
 "aOM" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "aON" = (
@@ -16081,7 +16078,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "aPS" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/engine_core)
 "aPT" = (
@@ -19314,11 +19311,6 @@
 /obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/paft)
-"aXD" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer/mono,
-/area/almayer/hallways/upper/port)
 "aXE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -26455,7 +26447,7 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bnh" = (
@@ -29278,11 +29270,11 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "btp" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/engineer)
 "btq" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/structure/machinery/portable_atmospherics/powered/scrubber{
 	pixel_y = 20
 	},
@@ -38111,7 +38103,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -48202,9 +48194,6 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Dorms"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/port_emb)
 "goL" = (
@@ -50114,7 +50103,7 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -50604,7 +50593,7 @@
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/lifeboat_pumps/north1)
 "hmv" = (
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -55051,9 +55040,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/offices/flight)
@@ -58181,7 +58167,7 @@
 	},
 /obj/item/tool/screwdriver,
 /obj/item/bananapeel{
-	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. It can only attach to the L42A Battle Rifle, M44 Combat Revolver, and M46C Pulse Rifle. This one appears to be covered in gun oil";
+	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by Armat, this sight has integrated IFF systems. It can only attach to the L42A Battle Rifle, M44 Combat Revolver, and M46C Pulse Rifle. This one appears to be covered in gun oil";
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi';
 	icon_state = "iffbarrel";
 	name = "Broken B8 Smart-Scope";
@@ -65111,7 +65097,7 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -70723,7 +70709,7 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
-/obj/structure/machinery/power/reactor{
+/obj/structure/machinery/power/power_generator/reactor{
 	pixel_x = -1;
 	pixel_y = -3
 	},
@@ -77827,7 +77813,6 @@
 	desc = "A bulletproof cabinet containing communications equipment.";
 	name = "communications cabinet";
 	pixel_y = 24;
-	req_access = null;
 	req_one_access_txt = "207;203"
 	},
 /obj/item/device/radio,
@@ -81705,9 +81690,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
 "tPm" = (
@@ -82806,12 +82788,6 @@
 /obj/structure/machinery/vending/cigarette/free{
 	pixel_y = 16;
 	density = 0
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out"
 	},
 /obj/structure/machinery/vending/cigarette/koorlander{
 	pixel_y = 16;
@@ -87659,7 +87635,7 @@
 	pixel_y = 24
 	},
 /obj/item/device/cotablet,
-/obj/item/device/radio/headset/almayer/mcom,
+/obj/item/device/radio/headset/almayer/mcom/cdrcom,
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
 "wcm" = (
@@ -204742,7 +204718,7 @@ gsC
 cMz
 cMz
 atZ
-aXD
+atZ
 atZ
 cMz
 cMz

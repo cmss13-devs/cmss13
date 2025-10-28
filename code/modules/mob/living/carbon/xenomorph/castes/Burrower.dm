@@ -72,7 +72,6 @@
 		/datum/action/xeno_action/onclick/tremor, //fourth macro
 		/datum/action/xeno_action/onclick/build_tunnel,
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
-		/datum/action/xeno_action/onclick/tacmap,
 		)
 
 	inherent_verbs = list(

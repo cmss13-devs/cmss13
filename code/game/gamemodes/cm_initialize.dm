@@ -214,7 +214,7 @@ Additional game mode variables.
 			to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
 		return FALSE
 
-	if(pred_candidate.ckey in predators)
+	if(pred_candidate.key in predators)
 		if(show_warning)
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
 		return FALSE
@@ -782,6 +782,8 @@ Additional game mode variables.
 	SSround_recording.recorder.update_key(new_xeno)
 	if(new_xeno.client)
 		new_xeno.client.change_view(GLOB.world_view_size)
+		if(isnewplayer(xeno_candidate))
+			send_tacmap_assets_latejoin(new_xeno)
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	if(isxeno(new_xeno)) //Dear lord
@@ -1002,7 +1004,7 @@ Additional game mode variables.
 			current_survivors -= survivor
 			continue //Not a mind? How did this happen?
 
-		random_name = pick(random_name(FEMALE),random_name(MALE))
+		random_name = random_name(pick(FEMALE, MALE))
 
 		if(istype(survivor.current, /mob/living) && survivor.current.first_xeno)
 			current_survivors -= survivor

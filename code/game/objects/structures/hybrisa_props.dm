@@ -594,6 +594,10 @@
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 
+/obj/structure/prop/hybrisa/vehicles/Mining_Crawlers/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
+
 /obj/structure/prop/hybrisa/vehicles/Mining_Crawlers/Fuel
 	icon = 'icons/obj/structures/props/vehicles/mining_crawler_fuel.dmi'
 	icon_state = "mining_crawler_fuel"
@@ -854,6 +858,10 @@
 	icon_state = "souto_man_prop"
 	density = TRUE
 	health = 100
+
+/obj/structure/prop/hybrisa/supermart/souto_man_prop/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
 
 /obj/structure/prop/hybrisa/supermart/souto_rack
 	name = "Souto cans rack"
@@ -2595,6 +2603,10 @@
 	. = ..()
 	AddComponent(/datum/component/shimmy_around)
 
+/obj/structure/prop/hybrisa/misc/firehydrant/initialize_pass_flags(datum/pass_flags_container/PF)
+	if(PF)
+		PF.flags_can_pass_all = PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_ACID_SPRAY
+
 /obj/structure/prop/hybrisa/misc/firehydrant/bullet_act(obj/projectile/P)
 	health -= P.damage
 	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
@@ -2684,6 +2696,10 @@
 /obj/structure/prop/hybrisa/misc/pole/Initialize(mapload, ...)
 	. = ..()
 	AddComponent(/datum/component/shimmy_around)
+
+/obj/structure/prop/hybrisa/misc/pole/initialize_pass_flags(datum/pass_flags_container/PF)
+	if(PF)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_ACID_SPRAY
 
 /obj/structure/bed/sofa/hybrisa/misc/bench
 	name = "bench"

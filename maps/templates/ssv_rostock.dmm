@@ -5217,7 +5217,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/power/reactor/rostock,
+/obj/structure/machinery/power/power_generator/reactor/rostock,
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/reactor)
 "dtF" = (
@@ -10925,7 +10925,7 @@
 /turf/open/floor/plating,
 /area/rostock/airoom)
 "hPW" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/main_area)
 "hQd" = (
@@ -16378,18 +16378,6 @@
 /obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
-"lYe" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/strata,
-/area/rostock/command/astronavigation)
 "lYw" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -20706,8 +20694,7 @@
 /area/rostock/lowerdeck_maint/p_a)
 "pHz" = (
 /obj/structure/closet/secure_closet/cmdcabinet{
-	pixel_y = 24;
-	req_access = null
+	pixel_y = 24
 	},
 /obj/item/device/cotablet/upp,
 /turf/open/floor/strata/blue3,
@@ -23740,7 +23727,7 @@
 /turf/closed/wall/upp_ship,
 /area/rostock/upperdeck_maint/s_a)
 "seH" = (
-/obj/structure/machinery/power/reactor/rostock,
+/obj/structure/machinery/power/power_generator/reactor/rostock,
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/reactor)
 "seY" = (
@@ -28269,7 +28256,7 @@
 /area/rostock/engineering/main_area)
 "vPO" = (
 /obj/structure/machinery/light,
-/obj/structure/machinery/power/reactor/rostock,
+/obj/structure/machinery/power/power_generator/reactor/rostock,
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/reactor)
 "vPR" = (
@@ -56335,7 +56322,7 @@ hKO
 nhl
 hKO
 mrt
-lYe
+iwu
 lSG
 jhS
 wNt

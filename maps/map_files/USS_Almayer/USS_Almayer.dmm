@@ -44721,13 +44721,6 @@
 /obj/structure/prop/almayer/name_stencil,
 /turf/open/floor/almayer_hull/outerhull_dir,
 /area/space)
-"etF" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/shipboard/starboard_point_defense)
 "etM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -93595,6 +93588,9 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/starboard_point_defense)
 "xYP" = (
@@ -139437,7 +139433,7 @@ aKS
 pzG
 bby
 aLL
-etF
+bJg
 bbS
 aLL
 aLL
@@ -140055,7 +140051,7 @@ aKS
 aKS
 bby
 bJj
-etF
+bJg
 bbS
 aLL
 aLL

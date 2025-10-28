@@ -103,6 +103,9 @@
 	else
 		to_chat(usr, SPAN_NOTICE("[src] is now filling"))
 
+
+
+
 /obj/structure/reagent_dispensers/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
@@ -219,6 +222,15 @@
 				return
 
 		overlays += meter
+
+	if(dispensing)
+		var/image/dispensing = image(icon, src, "dispensing")
+		dispensing.icon_state = "dispensing"
+		overlays += dispensing
+	else
+		var/image/not_dispensing = image(icon, src, "filling")
+		not_dispensing.icon_state = "filling"
+		overlays += not_dispensing
 
 /obj/structure/reagent_dispensers/tank/on_reagent_change()
 	. = ..()

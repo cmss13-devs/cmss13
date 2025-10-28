@@ -118,6 +118,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "cI" = (
@@ -641,6 +642,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge,
 /area/caperiver/outdoors/chasm)
 "lr" = (
@@ -668,6 +670,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge,
 /area/caperiver/outdoors/chasm)
 "mn" = (
@@ -1057,6 +1060,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow,
 /area/caperiver/outdoors/chasm)
 "sK" = (
@@ -1222,6 +1226,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/desert/rock/deep,
 /area/caperiver/outdoors/scrublands/central)
 "vE" = (
@@ -1330,6 +1335,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/caperiver/outdoors/chasm)
 "xs" = (
@@ -1431,6 +1437,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_corner,
 /area/caperiver/outdoors/chasm)
 "zr" = (
@@ -1482,6 +1489,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/desert/desert_shore/shore_corner2,
 /area/caperiver/outdoors/chasm)
 "AB" = (
@@ -1876,6 +1884,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/caperiver/outdoors/chasm)
 "Hm" = (
@@ -2033,6 +2042,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/desert/rock/deep,
 /area/caperiver/outdoors/scrublands/central)
 "Le" = (

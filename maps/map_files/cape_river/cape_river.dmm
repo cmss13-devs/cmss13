@@ -2774,6 +2774,7 @@
 	dir = 1
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/caperiver/indoors/caves/nw)
 "aiT" = (
@@ -3736,6 +3737,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/caperiver/oob)
 "ami" = (
@@ -4472,6 +4474,7 @@
 /area/caperiver/indoors/miningbase/medical)
 "aoA" = (
 /obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/desert/dirt,
 /area/caperiver/oob)
 "aoB" = (
@@ -5507,6 +5510,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "arS" = (
@@ -7257,6 +7261,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow,
 /area/caperiver/outdoors/chasm)
 "axs" = (
@@ -7483,6 +7488,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "ayh" = (
@@ -9099,6 +9105,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge,
 /area/caperiver/outdoors/chasm)
 "aDf" = (
@@ -9995,6 +10002,7 @@
 	pixel_x = 1;
 	pixel_y = 2
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "aFS" = (
@@ -10851,6 +10859,7 @@
 	icon_state = "dynamic_2";
 	pixel_y = 14
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/caperiver/oob)
 "aIJ" = (
@@ -11025,6 +11034,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_corner/east,
 /area/caperiver/outdoors/chasm)
 "aJq" = (
@@ -11973,6 +11983,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/asphalt/cement_sunbleached,
 /area/caperiver/oob)
 "aMm" = (
@@ -13756,6 +13767,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "aSc" = (
@@ -13769,6 +13781,7 @@
 	pixel_x = -12;
 	pixel_y = -13
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/caperiver/indoors/caves/nw)
 "aSe" = (
@@ -15913,6 +15926,7 @@
 	pixel_y = -3;
 	pixel_x = 7
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/caperiver/oob)
 "aZi" = (
@@ -23598,6 +23612,7 @@
 	alpha = 0
 	},
 /obj/structure/platform_decoration/stone/soro,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_corner/north,
 /area/caperiver/outdoors/chasm)
 "bxf" = (
@@ -23850,6 +23865,67 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/caperiver/outdoors/mining_base_exterior/north)
+"bxZ" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/oob)
+"bya" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/desert/rock,
+/area/caperiver/oob)
+"byb" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/desert/rock/deep/rock4,
+/area/caperiver/oob)
+"byc" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor/asteroidwarning/east,
+/area/caperiver/outdoors/mining_base_exterior/south)
+"byd" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/caperiver/indoors/caves/nw)
+"bye" = (
+/obj/structure/prop/dam/large_boulder/boulder2{
+	unacidable = 1;
+	explo_proof = 1;
+	color = "#483C32"
+	},
+/obj/structure/prop/dam/wide_boulder/boulder1{
+	explo_proof = 1;
+	unacidable = 1;
+	layer = 3.1;
+	color = "#483C32"
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/caperiver/oob)
+"byf" = (
+/obj/structure/prop/dam/large_boulder/boulder1{
+	explo_proof = 1;
+	unacidable = 1;
+	color = "#483C32"
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/caperiver/oob)
+"byg" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/caperiver/oob)
 "byo" = (
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/floor/kutjevo/grey,
@@ -25105,6 +25181,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/caperiver/outdoors/chasm)
 "cJB" = (
@@ -29410,6 +29487,7 @@
 	pixel_x = -12;
 	pixel_y = -13
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/caperiver/oob)
 "gHl" = (
@@ -29472,6 +29550,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge/southwest,
 /area/caperiver/outdoors/chasm)
 "gJR" = (
@@ -29665,6 +29744,7 @@
 	color = "#483C32"
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/caperiver/oob)
 "gUf" = (
@@ -31689,6 +31769,7 @@
 	alpha = 0
 	},
 /obj/structure/platform_decoration/stone/soro/north,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_corner,
 /area/caperiver/outdoors/chasm)
 "iMH" = (
@@ -31799,6 +31880,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "iQN" = (
@@ -33328,6 +33410,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge/southeast,
 /area/caperiver/outdoors/chasm)
 "khh" = (
@@ -35300,6 +35383,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_corner/west,
 /area/caperiver/outdoors/chasm)
 "lXc" = (
@@ -38425,6 +38509,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge,
 /area/caperiver/outdoors/chasm)
 "oYQ" = (
@@ -38639,6 +38724,7 @@
 /area/caperiver/indoors/conambase/unknown)
 "piW" = (
 /obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/caperiver/indoors/caves/nw)
 "pje" = (
@@ -41332,6 +41418,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_corner/north,
 /area/caperiver/outdoors/chasm)
 "rEW" = (
@@ -42141,6 +42228,7 @@
 	color = "#FF9D5C";
 	dir = 6
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "ssC" = (
@@ -42437,6 +42525,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/desert/desert_shore/shore_corner2,
 /area/caperiver/outdoors/chasm)
 "sFy" = (
@@ -44203,6 +44292,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge/northeast,
 /area/caperiver/outdoors/chasm)
 "uqE" = (
@@ -44662,6 +44752,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge,
 /area/caperiver/outdoors/chasm)
 "uTF" = (
@@ -44863,6 +44954,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge/northwest,
 /area/caperiver/outdoors/chasm)
 "veb" = (
@@ -45022,6 +45114,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/caperiver/outdoors/chasm)
 "vlV" = (
@@ -45979,6 +46072,7 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/caperiver/outdoors/chasm)
 "wqx" = (
@@ -59305,8 +59399,8 @@ aei
 aei
 aei
 aSd
-aei
-aei
+byd
+byd
 aSd
 aiS
 aJI
@@ -59512,7 +59606,7 @@ aei
 aei
 aei
 aei
-aei
+byd
 pUi
 aUV
 aUV
@@ -59713,9 +59807,9 @@ aWQ
 aWQ
 aei
 aei
-aei
-aei
-aei
+byd
+byd
+byd
 piW
 aUV
 scM
@@ -60612,7 +60706,7 @@ aCI
 bae
 aSA
 bad
-bad
+byc
 bad
 aSA
 aSA
@@ -61141,7 +61235,7 @@ auX
 kcn
 ajO
 aHG
-aHG
+bye
 rhn
 ljs
 aTd
@@ -61345,7 +61439,7 @@ aUu
 pqy
 ajO
 aSS
-aSS
+byf
 asd
 hDJ
 qfq
@@ -61753,7 +61847,7 @@ elq
 jYi
 ajO
 ajO
-aSS
+byf
 bjB
 aUV
 aFp
@@ -61957,7 +62051,7 @@ ajO
 vkS
 aWQ
 aWQ
-ajO
+byg
 asd
 asd
 aUV
@@ -69993,10 +70087,10 @@ ayH
 aWQ
 aWQ
 tJp
-aGO
+bya
 srT
-aGO
-aGO
+bya
+bya
 arR
 aSb
 aPG
@@ -70202,7 +70296,7 @@ bWi
 acO
 acO
 acO
-aGO
+bya
 anS
 apC
 aUK
@@ -70406,7 +70500,7 @@ agp
 aUf
 acO
 nzY
-nzY
+byb
 wRr
 aSF
 ahJ
@@ -70905,7 +70999,7 @@ aUE
 aiH
 xpl
 aTU
-aoM
+bxZ
 avr
 aOA
 fzL

@@ -330,7 +330,9 @@ DEFINES in setup.dm, referenced here.
 			var/old_mag_loc = magazine.loc
 			if(user.skills)
 				tac_reload_time = max(15 - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
-			if(!do_after(user, tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY) || magazine.loc != old_mag_loc || current_mag)
+			if(!do_after(user, tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY))
+				return
+			if(magazine.loc != old_mag_loc || current_mag)
 				return
 
 			if(isstorage(magazine.loc))

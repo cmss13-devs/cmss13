@@ -230,8 +230,11 @@
 		return FALSE
 	if((turf_below.turf_flags & TURF_HULL) && turf_below.density) //so we do not make hole into unbreachable wall on bottom layer
 		return FALSE
+	if(get_pylon_protection_level() >= TURF_PROTECTION_CORE || turf_below.get_pylon_protection_level() >= TURF_PROTECTION_CORE)
+		return FALSE
 	if(turf_flags & TURF_HULL)
 		return FALSE
+
 	//if(is_mainship_level(z) && SShijack.hijack_status < HIJACK_OBJECTIVES_STARTED)
 	//	return FALSE
 	if(!floor_destroying)

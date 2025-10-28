@@ -985,8 +985,10 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			break
 	if(!found_handful)
 		var/obj/item/ammo_magazine/handful/new_handful = new()
-		user.put_in_hands(new_handful)
-		//var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_COCKING_TO_HAND)
+			user.put_in_hands(new_handful)
+		else
+			new_handful.forceMove(get_turf(src)) // just drop it
 		new_handful.generate_handful(ammo_type, caliber, 8, 1, type)
 
 	QDEL_NULL(in_chamber)
@@ -1006,8 +1008,12 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	cock_cooldown = world.time + cock_delay
 	cock_gun(user)
 	if(in_chamber)
-		user.visible_message(SPAN_NOTICE("[user] cocks [src], clearing a [in_chamber.name] from its chamber."),
-		SPAN_NOTICE("You cock [src], clearing a [in_chamber.name] from its chamber."), null, 4, CHAT_TYPE_COMBAT_ACTION)
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_COCKING_TO_HAND)
+			user.visible_message(SPAN_NOTICE("[user] cocks [src], catching the [in_chamber.name] after leaving its chamber!"),
+			SPAN_NOTICE("You cock [src], catching the [in_chamber.name] after leaving its chamber!"), null, 4, CHAT_TYPE_COMBAT_ACTION)
+		else
+			user.visible_message(SPAN_NOTICE("[user] cocks [src], clearing a [in_chamber.name] from its chamber."),
+			SPAN_NOTICE("You cock [src], clearing a [in_chamber.name] from its chamber."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 		unload_chamber(user)
 	else
 		user.visible_message(SPAN_NOTICE("[user] cocks [src]."),

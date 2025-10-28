@@ -18770,11 +18770,11 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/chief_mp_office)
 "aWh" = (
-/obj/structure/window/framed/almayer,
+/obj/structure/window/framed/almayer/hull,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
 "aWi" = (
-/obj/structure/window/framed/almayer,
+/obj/structure/window/framed/almayer/hull,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sf)
 "aWj" = (
@@ -169338,7 +169338,7 @@ aWj
 aWj
 aWj
 bnV
-aJM
+bzb
 bzB
 bke
 bzc
@@ -169398,7 +169398,7 @@ bwT
 bwT
 baa
 aPF
-aHs
+bwH
 amX
 aWf
 aWf
@@ -169441,7 +169441,7 @@ bGi
 bGi
 bGi
 bnV
-aJM
+bzb
 aJM
 aUd
 aJM
@@ -169501,7 +169501,7 @@ bwV
 aHs
 aQj
 aHs
-aHs
+bwH
 amX
 bFT
 bFT
@@ -170059,7 +170059,7 @@ bGi
 bGi
 bGi
 bnV
-aJM
+bzb
 aJM
 aUd
 aJM
@@ -170119,7 +170119,7 @@ bwW
 aHs
 aHs
 aHs
-aHs
+bwH
 amX
 bFT
 bFT
@@ -170162,7 +170162,7 @@ aWj
 aWj
 aWj
 bnV
-aJM
+bzb
 aTX
 buq
 aJM
@@ -170222,7 +170222,7 @@ aXO
 aRw
 aHs
 aHs
-aHs
+bwH
 amX
 aWf
 aWf

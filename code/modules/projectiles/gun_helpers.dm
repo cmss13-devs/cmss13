@@ -311,42 +311,30 @@ DEFINES in setup.dm, referenced here.
 			to_chat(user, SPAN_WARNING("You don't know how to do tactical reloads."))
 			return
 		// unconventional tac reloads, yes, you can reload with one hand if you know what youre doing irl
-		var/tac_reload_time = 15
-		var/old_ammo_loc = bullet.loc
-		var/obj/item/weapon/gun/shotgun/shotload = src
-		var/obj/item/weapon/gun/revolver/revload = src
 		if(flags_gun_features & GUN_INTERNAL_MAG)
-			if(magazine.caliber != caliber)
-				to_chat(user, SPAN_WARNING("This doesn't match the [src]'s caliber!"))
-				return
-			if(current_mag && current_mag.current_rounds >= current_mag.max_rounds)
-				to_chat(user, SPAN_WARNING("[src] is already at its maximum capacity!"))
-				return
-			if(user.skills)
-				tac_reload_time = 2 //until this can loop, better for it to be in 2 ticks
-			if(current_mag && current_mag.current_rounds < current_mag.max_rounds)
-				to_chat(user, SPAN_NOTICE("You get on one knee and start an unconventional tactical reload.")) // the "you get on one knee and start" makes more sense if looping is added
-				if(!do_after(user,tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) || bullet.loc != old_ammo_loc || current_mag.current_rounds >= current_mag.max_rounds)
-					return
-				if(shotload)
-					shotload.reload(user, bullet)
-					return
-				else if(revload)
-					revload.reload(user, bullet)
-					return
+			unconventional_reload(user, magazine)
+			return
+
 		// actual tactical reloads
-		else if(istype(src, magazine.gun_type) || (magazine.type in accepted_ammo))
+		var/tac_reload_time = 15
+		if(istype(src, magazine.gun_type) || (magazine.type in accepted_ammo))
+
 			if(istype(bullet, /obj/item/ammo_magazine/handful) && in_chamber)
 				to_chat(user, SPAN_WARNING("You can't tactically reload with [bullet] without clearing the [src]'s chamber!"))
 				return
+
 			if(current_mag)
 				unload(user, FALSE, TRUE)
 			to_chat(user, SPAN_NOTICE("You start a tactical reload."))
+
 			var/old_mag_loc = magazine.loc
 			if(user.skills)
 				tac_reload_time = max(15 - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
-			if(!do_after(user,tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY) || magazine.loc != old_mag_loc || current_mag)
+			if(!do_after(user, tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY))
 				return
+			if(magazine.loc != old_mag_loc || current_mag.current_rounds >= current_mag.max_rounds)
+				return
+
 			if(isstorage(magazine.loc))
 				var/obj/item/storage/master_storage = magazine.loc
 				master_storage.remove_from_storage(magazine)
@@ -358,6 +346,26 @@ DEFINES in setup.dm, referenced here.
 		..()
 
 
+/obj/item/weapon/gun/proc/unconventional_reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(magazine.caliber != caliber)
+		to_chat(user, SPAN_WARNING("This doesn't match the [src]'s caliber!"))
+		return
+	if(current_mag && current_mag.current_rounds >= current_mag.max_rounds)
+		to_chat(user, SPAN_WARNING("[src] is already at its maximum capacity!"))
+		return
+
+	var/tac_reload_time = 2
+
+	to_chat(user, SPAN_NOTICE("You get on one knee and start an unconventional reload."))
+	while(current_mag && current_mag.current_rounds < current_mag.max_rounds && magazine && magazine.current_rounds > 0)
+		var/old_ammo_loc = magazine.loc
+		if(!do_after(user, tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			break
+		if(QDELETED(magazine) || magazine.loc != old_ammo_loc || !current_mag || current_mag.current_rounds >= current_mag.max_rounds)
+			break
+		reload(user, magazine)
+
+	to_chat(user, SPAN_NOTICE("You finish reloading."))
 
 //----------------------------------------------------------
 				//  \\

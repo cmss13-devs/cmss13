@@ -874,12 +874,16 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
 		return
 
-	if(!magazine || !istype(magazine))
-		to_chat(user, SPAN_WARNING("That's not a magazine!"))
+	//code for manually inserting a bullet into a chamber
+	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
+		if(in_chamber)
+			to_chat(user, SPAN_WARNING("[src] needs to be unchambered first."))
+			return
+		insert_bullet(user)
 		return
 
-	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
-		to_chat(user, SPAN_WARNING("[src] needs an actual magazine."))
+	if(!magazine || !istype(magazine))
+		to_chat(user, SPAN_WARNING("That's not a magazine!"))
 		return
 
 	if(magazine.current_rounds <= 0)
@@ -911,6 +915,23 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	update_icon()
 	return TRUE
+
+/obj/item/weapon/gun/proc/insert_bullet(mob/user)
+	if(!current_mag && !in_chamber)
+		var/obj/item/ammo_magazine/handful/bullet = user.get_active_hand()
+		if(istype(bullet) && bullet.caliber == caliber)
+			if(bullet.current_rounds > 0)
+				in_chamber = create_bullet(bullet.ammo_source, initial(name))
+				apply_traits(in_chamber)
+				user.visible_message(SPAN_NOTICE(("[user] loads a [bullet.singular_name] into [src]'s chamber!")),
+					SPAN_NOTICE(("You load a [bullet.singular_name] into [src]'s chamber.")))
+				bullet.current_rounds--
+				bullet.update_icon()
+				if(bullet.current_rounds <= 0)
+					QDEL_NULL(bullet)
+				playsound(src, 'sound/weapons/handling/gun_boltaction_close.ogg', 15)
+		else
+			to_chat(user, SPAN_WARNING("The [bullet] doesn't match [src]'s caliber!"))
 
 /obj/item/weapon/gun/proc/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	user.drop_inv_item_to_loc(magazine, src) //Click!
@@ -963,7 +984,9 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			H.update_icon()
 			break
 	if(!found_handful)
-		var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
+		var/obj/item/ammo_magazine/handful/new_handful = new()
+		user.put_in_hands(new_handful)
+		//var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
 		new_handful.generate_handful(ammo_type, caliber, 8, 1, type)
 
 	QDEL_NULL(in_chamber)

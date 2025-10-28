@@ -336,9 +336,6 @@ DEFINES in setup.dm, referenced here.
 				//  \\
 //----------------------------------------------------------
 
-/obj/item/weapon/proc/unique_action(mob/user) //moved this up a path to make macroing for other weapons easier -spookydonut
-	return
-
 /obj/item/weapon/gun/proc/check_inactive_hand(mob/user)
 	if(user)
 		var/obj/item/weapon/gun/in_hand = user.get_inactive_hand()
@@ -392,7 +389,10 @@ DEFINES in setup.dm, referenced here.
 
 	user.visible_message(SPAN_NOTICE("[user] begins attaching [attachment] to [src]."),
 	SPAN_NOTICE("You begin attaching [attachment] to [src]."), null, 4)
-	if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 2))
+	var/attach_delay = 1.5 SECONDS
+	if(istype(attachment, /obj/item/attachable/bayonet))
+		attach_delay = 0.3 SECONDS
+	if(do_after(user, attach_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 2))
 		if(attachment && attachment.loc)
 			user.visible_message(SPAN_NOTICE("[user] attaches [attachment] to [src]."),
 			SPAN_NOTICE("You attach [attachment] to [src]."), null, 4)
@@ -676,7 +676,10 @@ DEFINES in setup.dm, referenced here.
 	usr.visible_message(SPAN_NOTICE("[usr] begins stripping [attachment] from [src]."),
 	SPAN_NOTICE("You begin stripping [attachment] from [src]."), null, 4)
 
-	if(!do_after(usr, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	var/detach_delay = 1.5 SECONDS
+	if(istype(attachment, /obj/item/attachable/bayonet))
+		detach_delay = 0.3 SECONDS
+	if(!do_after(usr, detach_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 
 	if(!(attachment == attachments[attachment.slot]))
@@ -806,22 +809,6 @@ DEFINES in setup.dm, referenced here.
 			user.swap_hand()
 
 	unload(user, FALSE, drop_to_ground) //We want to drop the mag on the ground.
-
-/obj/item/weapon/gun/verb/use_unique_action()
-	set category = "Weapons"
-	set name = "Unique Action"
-	set desc = "Use anything unique your firearm is capable of. Includes pumping a shotgun or spinning a revolver. If you have an active attachment, this will activate on the attachment instead."
-	set src = usr.contents
-
-	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr)
-	if(!active_firearm)
-		return
-	if(active_firearm.active_attachable)
-		src = active_firearm.active_attachable
-	else
-		src = active_firearm
-
-	unique_action(usr)
 
 /obj/item/weapon/gun/verb/toggle_gun_safety()
 	set category = "Weapons"

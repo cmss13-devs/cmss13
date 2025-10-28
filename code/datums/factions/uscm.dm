@@ -62,10 +62,6 @@
 				if("Team")
 					marine_rk = "soctl_a"
 
-			current_human.langchat_styles = "langchat_bolded" // bold text for bold leaders
-		else
-			current_human.langchat_styles = initial(current_human.langchat_styles)
-
 		current_human.langchat_color = current_human.assigned_squad.chat_color
 
 		var/icon/file_to_use = override_icon_file ? override_icon_file : base_icon_file
@@ -135,7 +131,12 @@
 				marine_rk = "cmp"
 				border_rk = "command"
 			if(JOB_POLICE)
-				marine_rk = "mp"
+				if(current_human.rank_fallback == "hgmp")
+					marine_rk = "hgmp"
+				else
+					marine_rk = "mp"
+			if(JOB_POLICE_HG)
+				marine_rk = "hgmp"
 			if(JOB_TANK_CREW)
 				marine_rk = "tc"
 			if(JOB_WARDEN)

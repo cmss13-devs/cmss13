@@ -1,6 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - qol: "Leadership big texts are now toggleable into three differing modes"
-  - refactor: "Leadership text styles are no longer hardcoded to faction.dm files, instead given to those with leadership skill"
-  - refactor: "Removed spoken_order embolden asterisks for redundancy."

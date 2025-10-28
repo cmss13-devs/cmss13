@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Launching a dropship without a primary LZ selected will now force that dropship's destination to be the primary LZ if possible"
-  - bugfix: "Fixes LZ selection not supporting maps that might only have 1 LZ and changes the automatic LZ selection from 25 mins world time to 15 mins round time"

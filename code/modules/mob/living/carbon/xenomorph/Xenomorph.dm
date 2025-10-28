@@ -934,7 +934,10 @@
 
 /mob/living/carbon/xenomorph/proc/recalculate_health()
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health
-	if (new_max_health == maxHealth)
+	if(hive)
+		new_max_health += hive.hive_stat_modifier_flat["health"]
+		new_max_health *= hive.hive_stat_modifier_multiplier["health"]
+	if(new_max_health == maxHealth)
 		return
 	var/currentHealthRatio = 1
 	if(health < maxHealth)
@@ -950,6 +953,11 @@
 
 	var/new_plasma_max = plasmapool_modifier * caste.plasma_max
 	plasma_gain = plasmagain_modifier + caste.plasma_gain
+	if(hive)
+		new_plasma_max += hive.hive_stat_modifier_flat["plasmapool"]
+		new_plasma_max *= hive.hive_stat_modifier_multiplier["plasmapool"]
+		plasma_gain += hive.hive_stat_modifier_flat["plasmagain"]
+		plasma_gain *= hive.hive_stat_modifier_multiplier["plasmagain"]
 	if (new_plasma_max == plasma_max)
 		return
 	var/plasma_ratio = plasma_stored / plasma_max
@@ -961,6 +969,9 @@
 /mob/living/carbon/xenomorph/proc/recalculate_speed()
 	recalculate_move_delay = TRUE
 	speed = speed_modifier
+	if(hive)
+		speed += hive.hive_stat_modifier_flat["speed"]
+		speed *= hive.hive_stat_modifier_multiplier["speed"]
 	if(caste)
 		speed += caste.speed
 	SEND_SIGNAL(src, COMSIG_XENO_RECALCULATE_SPEED)
@@ -969,6 +980,11 @@
 	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences
 	armor_deflection = armor_modifier + floor(100 - (100 - caste.armor_deflection))
 	armor_explosive_buff = explosivearmor_modifier
+	if(hive)
+		armor_deflection += hive.hive_stat_modifier_flat["armor"]
+		armor_deflection *= hive.hive_stat_modifier_multiplier["armor"]
+		armor_explosive_buff += hive.hive_stat_modifier_flat["explosivearmor"]
+		armor_explosive_buff *= hive.hive_stat_modifier_multiplier["explosivearmor"]
 
 /mob/living/carbon/xenomorph/proc/recalculate_damage()
 	melee_damage_lower = damage_modifier
@@ -978,10 +994,20 @@
 		melee_damage_lower += caste.melee_damage_lower
 		melee_damage_upper += caste.melee_damage_upper
 		melee_vehicle_damage += caste.melee_vehicle_damage
+	if(hive)
+		melee_damage_lower += hive.hive_stat_modifier_flat["damage"]
+		melee_damage_upper += hive.hive_stat_modifier_flat["damage"]
+		melee_vehicle_damage += hive.hive_stat_modifier_flat["damage"]
+		melee_damage_lower *= hive.hive_stat_modifier_multiplier["damage"]
+		melee_damage_upper *= hive.hive_stat_modifier_multiplier["damage"]
+		melee_vehicle_damage *= hive.hive_stat_modifier_multiplier["damage"]
 
 /mob/living/carbon/xenomorph/proc/recalculate_evasion()
 	if(caste)
 		evasion = evasion_modifier + caste.evasion
+	if(hive)
+		evasion += hive.hive_stat_modifier_flat["evasion"]
+		evasion *= hive.hive_stat_modifier_multiplier["evasion"]
 
 /mob/living/carbon/xenomorph/proc/recalculate_actions()
 	recalculate_acid()

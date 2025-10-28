@@ -357,15 +357,21 @@ DEFINES in setup.dm, referenced here.
 	var/tac_reload_time = 2
 
 	to_chat(user, SPAN_NOTICE("You get on one knee and start an unconventional reload."))
+	var/interrupted = FALSE
 	while(current_mag && current_mag.current_rounds < current_mag.max_rounds && magazine && magazine.current_rounds > 0)
 		var/old_ammo_loc = magazine.loc
 		if(!do_after(user, tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			interrupted = TRUE
 			break
 		if(QDELETED(magazine) || magazine.loc != old_ammo_loc || !current_mag || current_mag.current_rounds >= current_mag.max_rounds)
+			interrupted = TRUE
 			break
 		reload(user, magazine)
 
-	to_chat(user, SPAN_NOTICE("You finish reloading."))
+	if(!interrupted)
+		to_chat(user, SPAN_NOTICE("You finish reloading."))
+	else
+		to_chat(user, SPAN_NOTICE("Your reload was interrupted!"))
 
 //----------------------------------------------------------
 				//  \\

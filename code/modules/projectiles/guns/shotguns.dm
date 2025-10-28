@@ -922,7 +922,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/mou53/unique_action(mob/user)
 	if(!COOLDOWN_FINISHED(src, breach_action_cooldown))
-		to_chat(user, SPAN_WARNING("You must wait before [current_mag.chamber_closed ? "opening" : "closing"] the chamber again."))
+		// to_chat(user, SPAN_WARNING("You must wait before [current_mag.chamber_closed ? "opening" : "closing"] the chamber again."))	SS220 Remove - unnecessary chat spam
 		return
 	COOLDOWN_START(src, breach_action_cooldown, MOU_ACTION_COOLDOWN)
 	. = ..()

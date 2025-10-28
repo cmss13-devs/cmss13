@@ -235,8 +235,8 @@
 	if(turf_flags & TURF_HULL)
 		return FALSE
 
-	//if(is_mainship_level(z) && SShijack.hijack_status < HIJACK_OBJECTIVES_STARTED)
-	//	return FALSE
+	if(is_mainship_level(z) && !SSticker?.mode?.is_in_endgame)
+		return FALSE
 	if(!floor_destroying)
 		return FALSE
 

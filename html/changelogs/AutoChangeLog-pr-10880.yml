@@ -1,0 +1,4 @@
+author: "ori-disillusion-mirnov"
+delete-after: True
+changes:
+  - bugfix: "labels appear on injectors when automatically vended into a container"

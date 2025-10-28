@@ -1,0 +1,4 @@
+author: "Detective-Google"
+delete-after: True
+changes:
+  - rscadd: "There's a new indicator that shows whether there's a Multi-Z space above you to look up at."

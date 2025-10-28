@@ -158,6 +158,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Pressurized Reagent Canister Pouch (Revival Mix - Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Pressurized Reagent Canister Pouch (Revival Mix - Peridaxon)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Pressurized Reagent Canister Pouch (Field Anesthetic)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (EMPTY)", 0, /obj/item/storage/pouch/pressurized_reagent_canister, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Tools Pouch (Full)", 0, /obj/item/storage/pouch/tools/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Machete Pouch (Full)", 0, /obj/item/storage/pouch/machete/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -204,6 +205,15 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/uscm/medical_grey
 	path = /obj/item/clothing/under/rank/medical/grey
+
+/datum/gear/synthetic/uscm/medical_white
+	path = /obj/item/clothing/under/rank/medical/white
+
+/datum/gear/synthetic/uscm/medical_black
+	path = /obj/item/clothing/under/rank/medical/morgue
+
+/datum/gear/synthetic/uscm/medical_pharmacist
+	path = /obj/item/clothing/under/rank/medical/pharmacist
 
 /datum/gear/synthetic/uscm/standard_synth
 	path = /obj/item/clothing/under/rank/synthetic
@@ -431,6 +441,36 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/headwear
 	category = "Headwear"
+
+/datum/gear/synthetic/headwear/surgcap_green
+	path = /obj/item/clothing/head/surgery/green
+
+/datum/gear/synthetic/headwear/surgcap_blue
+	path = /obj/item/clothing/head/surgery/blue
+
+/datum/gear/synthetic/headwear/surgcap_lightblue
+	path = /obj/item/clothing/head/surgery/lightblue
+
+/datum/gear/synthetic/headwear/surgcap_purple
+	path = /obj/item/clothing/head/surgery/purple
+
+/datum/gear/synthetic/headwear/surgcap_olive
+	path = /obj/item/clothing/head/surgery/olive
+
+/datum/gear/synthetic/headwear/surgcap_grey
+	path = /obj/item/clothing/head/surgery/grey
+
+/datum/gear/synthetic/headwear/surgcap_brown
+	path = /obj/item/clothing/head/surgery/brown
+
+/datum/gear/synthetic/headwear/surgcap_white
+	path = /obj/item/clothing/head/surgery/white
+
+/datum/gear/synthetic/headwear/surgcap_black
+	path = /obj/item/clothing/head/surgery/morgue
+
+/datum/gear/synthetic/headwear/surgcap_pharmacist
+	path = /obj/item/clothing/head/surgery/pharmacist
 
 /datum/gear/synthetic/headwear/beanie
 	path = /obj/item/clothing/head/beanie

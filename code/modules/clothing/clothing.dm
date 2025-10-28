@@ -65,6 +65,7 @@
 	// copies the properties of the clothing item to the accessory, in the future, take literally almost every var from ties.dm parent object and place it in clothing parent
 	var/obj/item/clothing/accessory/new_accessory = new accessory_path(loc)
 	new_accessory.name = name
+	new_accessory.color = color
 	new_accessory.icon = icon
 	new_accessory.icon_state = icon_state
 	new_accessory.desc = desc
@@ -102,6 +103,7 @@
 		return
 
 	if(ismob(loc) && loc == user)
+		original_item.color = access.color
 		user.put_in_hands(original_item)
 
 	to_chat(user, SPAN_NOTICE("You will start wearing [src] as normal."))

@@ -249,6 +249,14 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"aaV" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva/blue/north,
+/area/varadero/interior/administration)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -14368,8 +14376,7 @@
 /obj/structure/machinery/door_control{
 	id = "undergroundhangarsouth";
 	name = "South Dock Door";
-	pixel_x = -24;
-	explo_proof = 1
+	pixel_x = -24
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/varadero/interior/maintenance/north)
@@ -17418,8 +17425,7 @@
 	id = "undergroundhangarsouth";
 	name = "South Dock Door";
 	pixel_x = -32;
-	pixel_y = -18;
-	explo_proof = 1
+	pixel_y = -18
 	},
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/varadero/exterior/lz1_near)
@@ -20404,8 +20410,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
-	pixel_x = 3;
-	explo_proof = 1
+	pixel_x = 3
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/exterior/lz1_near)
@@ -22894,21 +22899,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
-"sgn" = (
-/obj/structure/barricade/handrail{
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "support struts"
-	},
-/obj/structure/barricade/handrail{
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "support struts"
-	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pontoon_beach)
 "sgp" = (
 /obj/structure/barricade/wooden,
 /turf/open/shuttle/elevator,
@@ -28560,8 +28550,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
-	pixel_x = 8;
-	explo_proof = 1
+	pixel_x = 8
 	},
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/unmeltable,
@@ -43376,7 +43365,7 @@ qqA
 qqA
 bYT
 xgG
-xUq
+aaV
 tkT
 rzg
 rzg
@@ -46238,7 +46227,7 @@ lTR
 lTR
 pFZ
 knw
-sgn
+cpF
 dXg
 dXg
 scL

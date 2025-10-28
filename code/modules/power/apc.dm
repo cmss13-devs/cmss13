@@ -1244,7 +1244,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		//Now trickle-charge the cell
 		if(attempt_charging())
 			if(power_excess > 0) //Check to make sure we have enough to charge
-				var/surplus = max(power_excess - cell.give(power_excess * CELLRATE) / CELLRATE, 0) //Actually recharge the cell
+				var/surplus = floor(max(power_excess - cell.give(power_excess * CELLRATE) / CELLRATE, 0)) //Actually recharge the cell
 				if(got_power_from_local_grid)
 					add_avail(surplus)
 					lastgenerated_total_surplus += surplus

@@ -27,8 +27,6 @@
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
 	plane = TURF_PLANE
-	///How much explosive power is needed to breach, null is unbreachable
-	var/breach_threshold
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE
 	///Can blood spawn on this turf?
@@ -231,6 +229,8 @@
 	if(!turf_below) //so we do not make hole into space
 		return FALSE
 	if((turf_below.turf_flags & TURF_HULL) && turf_below.density) //so we do not make hole into unbreachable wall on bottom layer
+		return FALSE
+	if(turf_flags & TURF_HULL)
 		return FALSE
 	//if(is_mainship_level(z) && SShijack.hijack_status < HIJACK_OBJECTIVES_STARTED)
 	//	return FALSE

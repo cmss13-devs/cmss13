@@ -18737,7 +18737,7 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
 "aWi" = (
-/obj/structure/window/framed/almayer,
+/obj/structure/window/framed/almayer/hull,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sf)
 "aWj" = (
@@ -170234,7 +170234,7 @@ aWj
 aWj
 aWj
 bnV
-aJM
+bzb
 bzB
 bke
 bzc
@@ -170337,7 +170337,7 @@ bGi
 bGi
 bGi
 bnV
-aJM
+bzb
 aJM
 aUd
 aJM
@@ -170955,7 +170955,7 @@ bGi
 bGi
 bGi
 bnV
-aJM
+bzb
 aJM
 aUd
 aJM
@@ -171058,7 +171058,7 @@ aWj
 aWj
 aWj
 bnV
-aJM
+bzb
 aTX
 buq
 aJM

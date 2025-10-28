@@ -540,7 +540,6 @@
 	new /obj/item/storage/pill_bottle/oxycodone(src)
 	new /obj/item/storage/pill_bottle/antitox(src)
 	new /obj/item/storage/pill_bottle/alkysine(src)
-	new /obj/item/storage/pill_bottle/oxycodone(src)
 	new /obj/item/storage/pill_bottle/imidazoline(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)

@@ -58,3 +58,6 @@
 
 ///from base of atom/bullet_act(): (/obj/projectile)
 #define COMSIG_ATOM_BULLET_ACT "atom_bullet_act"
+
+//from base of atom/Exited(): (atom/movable/exiting, direction)
+#define COMSIG_ATOM_EXITED "atom_exited"

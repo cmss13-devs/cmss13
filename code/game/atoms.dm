@@ -817,3 +817,6 @@ Parameters are passed from New.
 ///Adds the debris element for projectile impacts
 /atom/proc/add_debris_element()
 	SHOULD_CALL_PARENT(FALSE)
+
+/atom/Exited(atom/movable/AM, direction)
+	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, AM, direction)

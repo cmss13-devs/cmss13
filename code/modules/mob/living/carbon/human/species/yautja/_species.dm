@@ -213,6 +213,7 @@
 				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
 
 	hunter.set_languages(list(LANGUAGE_YAUTJA))
+	hunter.hud_used?.hide_actions_toggle.update_button_icon(hunter)
 	give_action(hunter, /datum/action/yautja_emote_panel)
 	give_action(hunter, /datum/action/predator_action/mark_for_hunt)
 	give_action(hunter, /datum/action/predator_action/mark_panel)

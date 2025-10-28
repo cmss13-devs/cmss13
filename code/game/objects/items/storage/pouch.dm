@@ -586,6 +586,10 @@
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smartgun(src)
+
+/obj/item/storage/pouch/magazine/large/pmc_sg/commando/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun/dirty(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/marsoc
@@ -882,7 +886,7 @@
 		new /obj/item/reagent_container/glass/beaker/vial(src)
 
 /obj/item/storage/pouch/chem
-	name = "chemist pouch"
+	name = "chemistry pouch"
 	desc = "A pouch for carrying glass beakers."
 	icon_state = "chemist"
 	storage_slots = 2
@@ -1675,6 +1679,10 @@
 	can_hold = list(/obj/item/device/cassette_tape, /obj/item/tape/regulation)
 	storage_slots = 3
 	var/base_icon_state = "cassette_pouch"
+
+/obj/item/storage/pouch/cassette/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/synsound)
 
 /obj/item/storage/pouch/cassette/update_icon()
 	underlays.Cut()

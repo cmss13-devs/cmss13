@@ -36,7 +36,7 @@
 	item_state = "mortar_ammo_he"
 
 /obj/item/mortar_shell/he/detonate(turf/T)
-	explosion(T, 0, 3, 5, 7, explosion_cause_data = cause_data)
+	cell_explosion(T, 220, 32, explosion_cause_data = cause_data, floor_destroying = TRUE)
 
 /obj/item/mortar_shell/frag
 	name = "\improper 80mm fragmentation mortar shell"
@@ -47,7 +47,7 @@
 /obj/item/mortar_shell/frag/detonate(turf/T)
 	create_shrapnel(T, 60, cause_data = cause_data, shrapnel_type = /datum/ammo/bullet/shrapnel/breaching)
 	sleep(2)
-	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data, floor_destroying = TRUE)
 
 /obj/item/mortar_shell/incendiary
 	name = "\improper 80mm incendiary mortar shell"

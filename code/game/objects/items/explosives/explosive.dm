@@ -38,6 +38,8 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_righthand.dmi'
 	)
+	/// Whether or not it should destroy floors
+	var/floor_destroying = FALSE
 
 /obj/item/explosive/Initialize()
 	. = ..()

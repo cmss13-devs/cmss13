@@ -216,24 +216,26 @@
 		return FALSE
 	. = ..()
 
-/turf/ex_act(severity)
+/turf/ex_act(severity, direction, explosion_cause_data, piercing, enviro, floor_destroying)
 	. = ..()
 	var/turf/above = SSmapping.get_turf_above(src)
-	if(above && above.explodable(severity))
+	if(above && above.explodable(severity, floor_destroying))
 		addtimer(CALLBACK(above,PROC_REF(breach_floor), severity), 1)
 	if(!explodable(severity))
 		return FALSE
 	addtimer(CALLBACK(src,PROC_REF(breach_floor), severity), 1)
 	return TRUE
 
-/turf/proc/explodable(severity)
+/turf/proc/explodable(severity, floor_destroying)
 	var/turf/turf_below = SSmapping.get_turf_below(src)
 	if(!turf_below) //so we do not make hole into space
 		return FALSE
 	if((turf_below.turf_flags & TURF_HULL) && turf_below.density) //so we do not make hole into unbreachable wall on bottom layer
 		return FALSE
-	//if(!breach_threshold || severity < breach_threshold)
+	//if(is_mainship_level(z) && SShijack.hijack_status < HIJACK_OBJECTIVES_STARTED)
 	//	return FALSE
+	if(!floor_destroying)
+		return FALSE
 
 	return TRUE
 

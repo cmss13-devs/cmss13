@@ -13,7 +13,7 @@
 
 /datum/reagent/medical/recalculate_variables()
 	. = ..()
-	description = "OD limit at: [overdose]u. Critical OD Limit at: [overdose_critical]u. Here is the description:[description]"
+	description = "Critical OD Limit at: [overdose_critical]u. Here is the description: [description]"
 
 /datum/reagent/medical/inaprovaline
 	name = "Inaprovaline"

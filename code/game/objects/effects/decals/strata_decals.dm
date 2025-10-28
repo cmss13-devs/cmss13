@@ -39,6 +39,15 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	keep_as_object = TRUE
 
+/obj/effect/decal/lv_decals
+	icon = 'icons/turf/floors/auto_lv_turf.dmi'
+	icon_state = "grass_0_mud_alt_innercorner"
+	icon_state = "grass_0_mud_alt_innercorner"
+	name = "mud"
+	desc = null
+	layer = TURF_LAYER
+	anchored = TRUE
+
 /obj/effect/decal/lv_decals/cave_mud_corner
 	icon = 'icons/turf/floors/auto_lv_turf.dmi'
 	icon_state = "grass_0_mud_alt_innercorner"

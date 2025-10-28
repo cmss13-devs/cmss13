@@ -2709,6 +2709,9 @@
 /turf/open/floor/prison/kitchen
 	icon_state = "kitchen"
 
+/turf/open/floor/prison/kitchen/alt
+	icon_state = "kitchen_alt"
+
 /turf/open/floor/prison/kitchen/southwest
 	dir = SOUTHWEST
 
@@ -3455,6 +3458,63 @@
 
 /turf/open/floor/interior/wood/alt
 	icon_state = "oldwood2"
+
+/turf/open/floor/interior/wood/alt2
+	icon_state = "oldwood3"
+
+/turf/open/floor/interior/wood/damage
+	icon_state = "oldwood-broken"
+
+/turf/open/floor/interior/wood/damage_1
+	icon_state = "oldwood-broken2"
+
+/turf/open/floor/interior/wood/damage_2
+	icon_state = "oldwood-broken3"
+
+/turf/open/floor/interior/wood/damage_3
+	icon_state = "oldwood-broken4"
+
+/turf/open/floor/interior/wood/damage_4
+	icon_state = "oldwood-broken5"
+
+/turf/open/floor/interior/wood/damage_5
+	icon_state = "oldwood-broken6"
+
+/turf/open/floor/interior/wood/damage_6
+	icon_state = "oldwood-broken7"
+
+/turf/open/floor/interior/wood_sat
+	name = "wooden floor"
+	icon_state = "wood"
+	tile_type = /obj/item/stack/tile/wood
+	turf_flags = NO_FLAGS // platingdmg && panelscorched icon_state does not exist in this icon
+
+/turf/open/floor/interior/wood_sat/is_wood_floor()
+	return TRUE
+
+/turf/open/floor/interior/wood_sat/alt
+	icon_state = "wood1"
+
+/turf/open/floor/interior/wood_sat/damage
+	icon_state = "wood-broken"
+
+/turf/open/floor/interior/wood_sat/damage_1
+	icon_state = "wood-broken2"
+
+/turf/open/floor/interior/wood_sat/damage_2
+	icon_state = "wood-broken3"
+
+/turf/open/floor/interior/wood_sat/damage_3
+	icon_state = "wood-broken4"
+
+/turf/open/floor/interior/wood_sat/damage_4
+	icon_state = "wood-broken5"
+
+/turf/open/floor/interior/wood_sat/damage_5
+	icon_state = "wood-broken6"
+
+/turf/open/floor/interior/wood_sat/damage_6
+	icon_state = "wood-broken7"
 
 /turf/open/floor/interior/tatami
 	name = "tatami flooring"

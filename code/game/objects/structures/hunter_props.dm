@@ -159,6 +159,11 @@
 
 /obj/effect/hunter/ancient_temple/tile_edge
 	icon_state = "floor_edges_1"
+	name = "tile edge"
+	desc = null
+	layer = TURF_LAYER
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/hunter/ancient_temple/tile_edge/tile_edge_2
 	icon_state = "floor_edges_2"

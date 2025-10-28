@@ -46,6 +46,22 @@
 	new /obj/item/storage/belt/security(src)
 	new /obj/item/clothing/shoes/jackboots(src)
 
+/obj/structure/closet/secure_closet/marshal/alt
+	icon_state = "secure_alt_locked_warrant"
+	icon_closed = "secure_alt_unlocked_warrant"
+	icon_locked = "secure_alt_locked_warrant"
+	icon_opened = "secure_alt_open_warrant"
+	icon_broken = "secure_alt_locked_warrant"
+	icon_off = "secure_alt_closed_warrant"
+
+/obj/structure/closet/secure_closet/marshal/alt/Initialize()
+	. = ..()
+	new /obj/item/clothing/suit/storage/CMB(src)
+	new /obj/item/clothing/under/CM_uniform(src)
+	new /obj/item/storage/backpack/security(src)
+	new /obj/item/storage/belt/security(src)
+	new /obj/item/clothing/shoes/jackboots(src)
+
 /obj/structure/closet/secure_closet/security/standard
 	name = "Security Officer's Locker"
 	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_BRIG)

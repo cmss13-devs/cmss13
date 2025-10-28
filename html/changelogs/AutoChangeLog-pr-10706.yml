@@ -1,0 +1,5 @@
+author: "jupyterkat"
+delete-after: True
+changes:
+  - rscadd: "The lighting inside maintenance sections of the USS Almayer is now darker."
+  - bugfix: "The USS Almayer's medical bay should receive less red light bleeding from the maintenance deck above it."

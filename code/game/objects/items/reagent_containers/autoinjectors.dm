@@ -104,7 +104,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/adrenaline
 	name = "epinephrine autoinjector"
 	chemname = "adrenaline"
-	desc = "An autoinjector loaded with 3 doses of 15u of Epinephrine, better known as Adrenaline, a nerve stimulant useful in restarting the heart. You can refill it at Wey-Med vending machines."
+	desc = "An autoinjector loaded with 3 doses of 5.25u of Epinephrine, better known as Adrenaline, a nerve stimulant useful in restarting the heart. You can refill it at Wey-Med vending machines."
 	amount_per_transfer_from_this = LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
@@ -163,7 +163,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/oxycodone
 	name = "oxycodone autoinjector (EXTREME PAINKILLER)"
 	chemname = "oxycodone"
-	desc = "An autoinjector loaded with 3 doses of 15u of Oxycodone, a powerful painkiller intended for life-threatening situations. You can refill it at Wey-Med vending machines."
+	desc = "An autoinjector loaded with 3 doses of 10u of Oxycodone, a powerful painkiller intended for life-threatening situations. You can refill it at Wey-Med vending machines."
 	amount_per_transfer_from_this = MED_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (MED_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
@@ -268,7 +268,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/inaprovaline
 	name = "inaprovaline autoinjector"
 	chemname = "inaprovaline"
-	desc = "An autoinjector loaded with 3 doses of 15u of Inaprovaline, an emergency stabilization medicine for patients in critical condition. You can refill it at Wey-Med vending machines."
+	desc = "An autoinjector loaded with 3 doses of 30u of Inaprovaline, an emergency stabilization medicine for patients in critical condition. You can refill it at Wey-Med vending machines."
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
@@ -277,7 +277,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/peridaxon
 	name = "peridaxon autoinjector"
 	chemname = "peridaxon"
-	desc = "An autoinjector loaded with 3 doses of 15u of Peridaxon, an emergency medicine used to stop most symptoms of organ damage. Does not fix organ damage. You can refill it at Wey-Med vending machines."
+	desc = "An autoinjector loaded with 3 doses of 30u of Peridaxon, an emergency medicine used to stop most symptoms of organ damage. Does not fix organ damage. You can refill it at Wey-Med vending machines."
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
@@ -285,7 +285,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency
 	name = "emergency autoinjector (CAUTION)"
-	desc = "An autoinjector loaded with a single dose of 70u of a special cocktail of chemicals, to be used in life-threatening situations. Doesn't require any training to use."
+	desc = "An autoinjector loaded with a single dose of 77u of a special cocktail of chemicals, to be used in life-threatening situations. Doesn't require any training to use."
 	icon_state = "emptyskill"
 	chemname = "emergency"
 	amount_per_transfer_from_this = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1)
@@ -381,14 +381,14 @@
 /obj/item/reagent_container/hypospray/autoinjector/skillless
 	name = "first-aid autoinjector"
 	chemname = "tricordrazine"
-	desc = "An autoinjector loaded with a single dose of 15u of tricordrazine for marines to treat themselves with. You can only refill this in Wey-Med Plus machines."
+	desc = "An autoinjector loaded with a single dose of 15u of tricordrazine for marines to treat themselves with. You can refill it at Wey-Med vending machines."
 	icon_state = "tricord"
 	amount_per_transfer_from_this = 15
 	volume = 15
 	skilllock = SKILL_MEDICAL_DEFAULT
 	uses_left = 1
 	display_maptext = TRUE
-	maptext_label = "OuTz"
+	maptext_label = "OuTc"
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/attack(mob/M as mob, mob/user as mob)
 	. = ..()
@@ -413,7 +413,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
 	name = "pain-stop autoinjector"
 	chemname = "tramadol"
-	desc = "An autoinjector loaded with a single 15u dose of tramadol for marines to self-administer. You can only refill this in Wey-Med Plus machines."
+	desc = "An autoinjector loaded with a single 15u dose of tramadol for marines to self-administer. You can refill it at Wey-Med vending machines."
 	icon_state = "tramadol"
 	maptext_label = "OuPs"
 
@@ -426,7 +426,7 @@
 	volume = 15
 	uses_left = 0
 	display_maptext = TRUE
-	maptext_label = "Cs5u"
+	maptext_label = "C5u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/get_examine_text(mob/user)
 	. = ..()
@@ -436,19 +436,19 @@
 	name = "15u custom autoinjector"
 	amount_per_transfer_from_this = 15
 	volume = 45
-	maptext_label = "Cs15u"
+	maptext_label = "C15u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medium
 	name = "30u custom autoinjector"
 	amount_per_transfer_from_this = 30
 	volume = 90
-	maptext_label = "Cs30u"
+	maptext_label = "C30u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/large
 	name = "60u custom autoinjector"
 	amount_per_transfer_from_this = 60
 	volume = 180
-	maptext_label = "Cs60u"
+	maptext_label = "C60u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless
 	name = "15u custom EZ autoinjector"
@@ -459,43 +459,43 @@
 	amount_per_transfer_from_this = 15
 	volume = 15
 	uses_left = 0
-	maptext_label = "CEZ50u"
+	maptext_label = "EZ15"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/unit
 	name = "1u custom EZ autoinjector"
 	volume = 1
 	amount_per_transfer_from_this = 1
-	maptext_label = "CEZ1u"
+	maptext_label = "EZ1u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
 	name = "5u custom EZ autoinjector"
 	volume = 5
 	amount_per_transfer_from_this = 5
-	maptext_label = "CEZ5u"
+	maptext_label = "EZ5u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
 	name = "10u custom EZ autoinjector"
 	volume = 10
 	amount_per_transfer_from_this = 10
-	maptext_label = "CEZ10u"
+	maptext_label = "EZ10"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium
 	name = "30u custom EZ autoinjector"
 	volume = 30
 	amount_per_transfer_from_this = 30
-	maptext_label = "CEZ30u"
+	maptext_label = "EZ30"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/large
 	name = "45u custom EZ autoinjector"
 	volume = 45
 	amount_per_transfer_from_this = 45
-	maptext_label = "CEZ45u"
+	maptext_label = "EZ45"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
 	name = "60u custom EZ autoinjector"
 	volume = 60
 	amount_per_transfer_from_this = 60
-	maptext_label = "CEZ60u"
+	maptext_label = "EZ60"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic
 	name = "Medic Autoinjector (M-M)"
@@ -506,10 +506,10 @@
 	autoinjector_type = "autoinjector_medic"
 	icon_state = "empty_medic"
 	uses_left = 0
-	maptext_label = "MD15u"
+	maptext_label = "M15u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
 	name = "Medic Autoinjector (M-L)"
 	volume = 180
 	amount_per_transfer_from_this = 30
-	maptext_label = "MD30u"
+	maptext_label = "M30u"

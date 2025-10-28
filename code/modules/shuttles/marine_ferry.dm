@@ -454,13 +454,6 @@
 			controller.overload_lighting()
 			controller.set_broken()
 
-	if(SSticker.mode) //this is here so that the impact explosions make breaches
-		SSticker.mode.is_in_endgame = TRUE
-		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
-		if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
-			var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode
-			colonial_marines.add_current_round_status_to_end_results("Hijack")
-
 	var/turf/sploded
 	var/explonum = rand(10,15)
 	for(var/j=0; j<explonum; j++)
@@ -537,6 +530,13 @@
 
 	sleep(100)
 	moving_status = SHUTTLE_CRASHED
+
+	if(SSticker.mode)
+		SSticker.mode.is_in_endgame = TRUE
+		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
+		if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
+			var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode
+			colonial_marines.add_current_round_status_to_end_results("Hijack")
 
 
 /datum/shuttle/ferry/marine/proc/disable_latejoin()

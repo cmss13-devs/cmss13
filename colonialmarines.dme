@@ -1390,6 +1390,7 @@
 #include "code\game\objects\structures\catwalk.dm"
 #include "code\game\objects\structures\coathanger.dm"
 #include "code\game\objects\structures\curtains.dm"
+#include "code\game\objects\structures\debris.dm"
 #include "code\game\objects\structures\desertdam.dm"
 #include "code\game\objects\structures\displaycase.dm"
 #include "code\game\objects\structures\extinguisher.dm"

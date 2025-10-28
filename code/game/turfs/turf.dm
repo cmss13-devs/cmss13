@@ -245,6 +245,7 @@
 /turf/proc/breach_floor(severity, floor_destroying)
 	if(!explodable(severity, floor_destroying)) // incase something fucks up from the moment of explosion
 		return
+	var/obj/structure/debris/new_debris = new(loc)
 	ChangeTurf(/turf/open_space)
 
 /turf/proc/update_icon() //Base parent. - Abby

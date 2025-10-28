@@ -29,6 +29,7 @@
 	if(istype(xeno, /mob/living/carbon/xenomorph))
 		created_by = xeno.nicknumber
 
+	cause_data = create_cause_data("resin trap", xeno)
 	set_hive_data(src, hivenumber)
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))

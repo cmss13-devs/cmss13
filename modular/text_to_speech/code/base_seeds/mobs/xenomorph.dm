@@ -73,7 +73,7 @@
 
 // Tier Special
 /mob/living/carbon/xenomorph/predalien/add_tts_component()
-	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/widowmaker)
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/laezel)
 
 /mob/living/carbon/xenomorph/hellhound/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/deathwhisper)

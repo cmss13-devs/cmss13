@@ -614,17 +614,30 @@
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH*potency, TOX)
 
 /datum/chem_property/positive/organstabilize
-	name = PROPERTY_ORGANSTABILIZE
+	name = PROPERTY_ORGANSTABILIZEBODY
 	code = "OGS"
-	description = "Stabilizes internal organ damage, stopping internal damage symptoms."
+	description = "Stabilizes internal body organ damage, stopping internal damage symptoms."
 	rarity = PROPERTY_DISABLED
 	value = 1
+	var/stasis_flag = CHEM_EFFECT_ORGAN_BODY_STASIS
+
+/datum/chem_property/positive/organstabilize/brain
+	name = PROPERTY_ORGANSTABILIZEBRAIN
+	code = "OBS"
+	description = "Stabilizes brain organ damage, stopping internal damage symptoms."
+	stasis_flag = CHEM_EFFECT_ORGAN_BRAIN_STASIS
+
+/datum/chem_property/positive/organstabilize/eye
+	name = PROPERTY_ORGANSTABILIZEEYE
+	code = "OES"
+	description = "Stabilizes eye organ damage, stopping internal damage symptoms."
+	stasis_flag = CHEM_EFFECT_ORGAN_EYE_STASIS
 
 /datum/chem_property/positive/organstabilize/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
-	H.chem_effect_flags |= CHEM_EFFECT_ORGAN_STASIS
+	H.chem_effect_flags |= stasis_flag
 
 /datum/chem_property/positive/organstabilize/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(0.5 * potency * delta_time, BRUTE)

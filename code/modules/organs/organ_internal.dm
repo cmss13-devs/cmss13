@@ -12,7 +12,7 @@
 	var/damage = 0 // amount of damage to the organ
 	var/min_little_bruised_damage = 1 //to make sure the stethoscope/penlight will not lie to the player
 	var/min_bruised_damage = 10
-	var/min_broken_damage = 30
+	var/min_broken_damage = 40
 	var/parent_limb = "chest"
 	var/robotic = 0 //1 for 'assisted' organs (e.g. pacemaker), 2 for actual cyber organ.
 	var/cut_away = FALSE //internal organ has its links to the body severed, organ is ready to be removed.
@@ -137,6 +137,7 @@
 	parent_limb = "chest"
 	removed_type = /obj/item/organ/heart
 	robotic_type = /obj/item/organ/heart/prosthetic
+	min_broken_damage = 30
 
 /datum/internal_organ/heart/prosthetic //used by synthetic species
 	robotic = ORGAN_ROBOT
@@ -152,9 +153,10 @@
 	. = ..()
 	if(. == PROCESS_KILL)
 		return // Parent implemention qdeleted us
-
-	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+	//Peridaxon won't halt side effects of lung damage if the lung is fugg'd.
+	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS && organ_status < ORGAN_BROKEN)
 		return
+	//Bruised lung hurtie, can't breathe.
 	if(organ_status >= ORGAN_BRUISED)
 		if(prob(2))
 			spawn owner.emote("me", 1, "coughs up blood!")
@@ -182,7 +184,9 @@
 	. = ..()
 	if(. == PROCESS_KILL)
 		return // Parent implemention qdeleted us
-
+	//Peridaxon won't halt side effects of liver damage if the liver is fugg'd.
+	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS && organ_status < ORGAN_BROKEN)
+		return
 	if(owner.life_tick % PROCESS_ACCURACY == 0)
 
 		//High toxins levels are dangerous
@@ -205,7 +209,7 @@
 
 		// Get the effectiveness of the liver.
 		var/filter_effect = 3
-		if(!(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS))
+		if(!(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS))
 			if(organ_status >= ORGAN_BRUISED)
 				filter_effect--
 			if(organ_status >= ORGAN_BROKEN)
@@ -221,7 +225,7 @@
 			owner.reagents.remove_reagent(R.id, R.custom_metabolism*filter_effect)
 
 		//Deal toxin damage if damaged
-		if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+		if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS)
 			return
 		if(organ_status >= ORGAN_BRUISED && prob(25))
 			owner.apply_damage(0.1 * (damage/2), TOX)
@@ -243,9 +247,10 @@
 	if(. == PROCESS_KILL)
 		return // Parent implemention qdeleted us
 
-	//Deal toxin damage if damaged
-	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+	//Peri won't stop side effects if the kidneys are fugg'd.
+	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS && organ_status < ORGAN_BROKEN)
 		return
+	//Deal toxin damage if damaged
 	if(organ_status >= ORGAN_BRUISED && prob(25))
 		owner.apply_damage(0.1 * (damage/3), TOX)
 	else if(organ_status >= ORGAN_BROKEN && prob(50))
@@ -268,7 +273,8 @@
 	if(. == PROCESS_KILL)
 		return // Parent implemention qdeleted us
 
-	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+	//Alkysine won't work if the brain is mush.
+	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BRAIN_STASIS && organ_status < ORGAN_BROKEN)
 		return
 
 	if(organ_status >= ORGAN_BRUISED && prob(5 * delta_time))
@@ -303,10 +309,9 @@
 	. = ..()
 	if(. == PROCESS_KILL)
 		return // Parent implemention qdeleted us
-
-	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+	//Imidazoline will not cure blindness if your eyes are AWOL.
+	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_EYE_STASIS && organ_status < ORGAN_BROKEN)
 		return
-
 	if(organ_status >= ORGAN_BRUISED)
 		owner.SetEyeBlur(20)
 	if(organ_status >= ORGAN_BROKEN)

@@ -219,37 +219,37 @@
 /datum/reagent/medical/alkysine
 	name = "Alkysine"
 	id = "alkysine"
-	description = "Alkysine is a drug used to lessen and heal the damage to neurological tissue after a catastrophic injury. Small amounts can repair extensive brain trauma. Functions as a very weak painkiller. Overdosing on alkysine is extremely toxic."
+	description = "Alkysine is a drug used to lessen the effects of neurological neurological tissue damage after a catastrophic head injury. Overdosing on alkysine is extremely toxic."
 	reagent_state = LIQUID
 	color = "#e9d191"
 	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_NEUROPEUTIC = 2)
+	properties = list(PROPERTY_ORGANSTABILIZEBRAIN = 2)
 
 /datum/reagent/medical/imidazoline
 	name = "Imidazoline"
 	id = "imidazoline"
-	description = "Used for treating non-genetic eye trauma. Generally prescribed as treatment for most cases of eye trauma instead of performing a surgical operation."
+	description = "Used for temporarily treating non-genetic eye trauma. Generally prescribed as temporary treatment for acute eye trauma in lieu of performing a surgical operation."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_OCULOPEUTIC = 2)
+	properties = list(PROPERTY_ORGANSTABILIZEEYE = 2)
 
 /datum/reagent/medical/peridaxon
 	name = "Peridaxon"
 	id = "peridaxon"
-	description = "Prevents symptoms caused by damaged internal organs while in the bloodstream, but does not fix the organ damage. Recommended for patients awaiting internal organ surgery. Overdosing on peridaxon will cause internal tissue damage."
+	description = "Prevents symptoms caused by damaged internal body organs while in the bloodstream, but does not fix the organ damage. Recommended for patients awaiting internal organ surgery. Overdosing on peridaxon will cause internal tissue damage."
 	reagent_state = LIQUID
 	color = "#403142"
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_ORGANSTABILIZE = 4)
+	properties = list(PROPERTY_ORGANSTABILIZEBODY = 4)
 
 /datum/reagent/medical/bicaridine // yes it cures IB, it's located in some other part of wound code for whatever reason
 	name = "Bicaridine"

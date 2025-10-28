@@ -68,6 +68,12 @@
 
 	var/obj/effect/particle_effect/shockwave/shockwave = null
 
+	//we do not want to expand up, if we already expanded down
+	var/expanded_up = FALSE
+
+	//we do not want to expand down, if we already expanded up
+	var/expanded_down = FALSE
+
 // If we're on a fake z teleport, teleport over
 /datum/automata_cell/explosion/birth()
 	shockwave = new(in_turf)
@@ -211,6 +217,9 @@
 			E.power_falloff = new_falloff
 			E.falloff_shape = falloff_shape
 			E.explosion_cause_data = explosion_cause_data
+			E.floor_destroying = floor_destroying
+			E.expanded_down = expanded_down
+			E.expanded_up = expanded_up
 
 			// Set the direction the explosion is traveling in
 			E.direction = dir
@@ -221,7 +230,7 @@
 			setup_new_cell(E)
 
 		var/turf/below = SSmapping.get_turf_below(E.in_turf)
-		if(below && istype(E.in_turf,/turf/open_space) && (!below.get_cell(type)))
+		if(below && istype(E.in_turf,/turf/open_space) && (!below.get_cell(type)) && !expanded_up)
 			var/datum/automata_cell/C = new type(below)
 			var/datum/automata_cell/explosion/explosion = C
 			new_power -= (power_falloff * dir_falloff)
@@ -229,15 +238,18 @@
 			explosion.power_falloff = new_falloff
 			explosion.falloff_shape = falloff_shape
 			explosion.explosion_cause_data = explosion_cause_data
+			explosion.floor_destroying = floor_destroying
+			explosion.expanded_down = TRUE
+			explosion.expanded_up = expanded_up
 
 			// Set the direction the explosion is traveling in
 			explosion.direction = dir
 			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
 			if(!direction && (dir in GLOB.diagonals))
 				explosion.delay = 1
-			setup_new_cell(E)
+			setup_new_cell(explosion)
 		var/turf/above = SSmapping.get_turf_above(E.in_turf)
-		if(above && istype(above,/turf/open_space) && (! above.get_cell(type)))
+		if(above && istype(above,/turf/open_space) && (! above.get_cell(type)) && !expanded_down)
 			var/datum/automata_cell/C = new type(above)
 			var/datum/automata_cell/explosion/explosion = C
 			new_power -= (power_falloff * dir_falloff)
@@ -245,13 +257,16 @@
 			explosion.power_falloff = new_falloff
 			explosion.falloff_shape = falloff_shape
 			explosion.explosion_cause_data = explosion_cause_data
+			explosion.floor_destroying = floor_destroying
+			explosion.expanded_down = expanded_down
+			explosion.expanded_up = TRUE
 
 			// Set the direction the explosion is traveling in
 			explosion.direction = dir
 			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
 			if(!direction && (dir in GLOB.diagonals))
 				explosion.delay = 1
-			setup_new_cell(E)
+			setup_new_cell(explosion)
 
 
 

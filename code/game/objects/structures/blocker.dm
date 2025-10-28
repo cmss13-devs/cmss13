@@ -107,6 +107,7 @@
 	anchored = TRUE
 	unacidable = TRUE
 	density = FALSE
+	flags_atom = NO_ZFALL
 
 	var/is_whitelist = FALSE
 	var/strict_types = FALSE

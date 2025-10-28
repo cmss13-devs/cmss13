@@ -15,6 +15,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	plane = OPEN_SPACE_PLANE_START
 	is_weedable = NOT_WEEDABLE
 
+/turf/open_space/explodable(severity, floor_destroying)
+	return FALSE
+
 /turf/open_space/Initialize()
 	pass_flags = GLOB.pass_flags_cache[type]
 

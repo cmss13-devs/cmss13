@@ -56,7 +56,7 @@
 			deconstruct(FALSE)
 
 /obj/structure/onZImpact()
-	var/obj/structure/debris/debris = new(loc)
+	new/obj/structure/debris()
 	qdel(src)
 
 /obj/structure/proc/handle_debris(severity = 0, direction = 0)

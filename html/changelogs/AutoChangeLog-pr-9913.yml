@@ -1,0 +1,18 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - rscadd: "Added Pharmaceutical Physician as a doctor job variant with a wardrobe and matching scrubs, caps, and lab coats."
+  - rscadd: "Added chemistry pouches to vending machines."
+  - rscadd: "Added tons more scrub and cap colors, and short and long lab coats."
+  - mapadd: "Added morgue and pharmphys wardrobe, added a bunch more equipment to the medical locker."
+  - mapadd: "Added a box of empty blood bags in Field Doctor storage so field doctors can stuff their O- blood bags in a more convenient area."
+  - mapadd: "Reassigned two area tiles."
+  - spellcheck: "Made some small spellchecks here and there."
+  - mapadd: "Moved some things around to make medbay's debilitation ward prettier."
+  - bugfix: "Medical lockers no longer share the same contents as wardrobes. They offer pouches, now. Also adds a CMO radio in the CMO locker."
+  - bugfix: "Deleted a duplicate no smoking decal in Medbay."
+  - bugfix: "Scientist's coat should now properly display if it's been opened while lying on the ground."
+  - bugfix: "Surgical scrubs and surgical caps will now tell you what color they are in their names."
+  - bugfix: "Synths can now put on surgical caps."
+  - imageadd: "Complete redesign of surgical caps, lab coats, and cmo outfits, and re-shaded webbings and some lab coats. Also redesigned some box decals."
+  - code_imp: "The color of scrubs and caps associated with roles has those roles in their names. Example: Green Surgical Scrubs are now Surgeon's Surgical Scrubs."

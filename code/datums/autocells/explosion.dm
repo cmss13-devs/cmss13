@@ -214,6 +214,7 @@
 
 			// Set the direction the explosion is traveling in
 			E.direction = dir
+			E.floor_destroying = floor_destroying
 			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
 			if(!direction && (dir in GLOB.diagonals))
 				E.delay = 1

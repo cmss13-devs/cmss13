@@ -218,10 +218,10 @@
 	. = ..()
 	var/turf/above = SSmapping.get_turf_above(src)
 	if(above && above.explodable(severity, floor_destroying))
-		addtimer(CALLBACK(above,PROC_REF(breach_floor), severity), 1)
-	if(!explodable(severity))
+		addtimer(CALLBACK(above,PROC_REF(breach_floor), severity, floor_destroying), 1)
+	if(!explodable(severity, floor_destroying))
 		return FALSE
-	addtimer(CALLBACK(src,PROC_REF(breach_floor), severity), 1)
+	addtimer(CALLBACK(src,PROC_REF(breach_floor), severity, floor_destroying), 1)
 	return TRUE
 
 /turf/proc/explodable(severity, floor_destroying)
@@ -242,8 +242,8 @@
 
 	return TRUE
 
-/turf/proc/breach_floor(severity)
-	if(!explodable(severity)) // incase something fucks up from the moment of explosion
+/turf/proc/breach_floor(severity, floor_destroying)
+	if(!explodable(severity, floor_destroying)) // incase something fucks up from the moment of explosion
 		return
 	ChangeTurf(/turf/open_space)
 

@@ -3,15 +3,6 @@
 /datum/reagent/medical
 	flags = REAGENT_TYPE_MEDICAL | REAGENT_SCANNABLE
 
-/datum/reagent/medical/New()
-	if(properties)
-		properties = properties_to_datums()
-	recalculate_variables()
-
-/datum/reagent/medical/recalculate_variables()
-	. = ..()
-	description = "OD limit at: [overdose]u. Critical OD Limit at: [overdose_critical]u. Here is the description:[description]"
-
 /datum/reagent/medical/inaprovaline
 	name = "Inaprovaline"
 	id = "inaprovaline"

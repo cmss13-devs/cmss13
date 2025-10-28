@@ -6,10 +6,6 @@
 /datum/reagent/medical/New()
 	if(properties)
 		properties = properties_to_datums()
-	recalculate_variables()
-
-/datum/reagent/medical/recalculate_variables()
-	. = ..()
 
 /datum/reagent/medical/recalculate_variables()
 	. = ..()

@@ -173,6 +173,7 @@
 
 	// Hive Stat Modifiers
 	// Makes sweeping increases/decreases to certain stats of Xenos in the Hive
+	// Flat decreases obviously just need - added before the value (except for speed cause speed is special and needs the opposite)
 	var/list/hive_stat_modifier_multiplier = list(
 		"damage" = XENO_HIVE_STATMOD_MULT_NONE,
 		"health" = XENO_HIVE_STATMOD_MULT_NONE,

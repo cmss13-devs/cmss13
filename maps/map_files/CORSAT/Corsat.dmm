@@ -8799,11 +8799,6 @@
 	},
 /turf/open/floor/corsat/brown,
 /area/corsat/omega/cargo)
-"aHJ" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat/retrosquareslight,
-/area/corsat/sigma/south/complex)
 "aHK" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/corsat/red/west,
@@ -40707,11 +40702,6 @@
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/corsat/plate,
 /area/corsat/omega/complex)
-"rJo" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass/grass1/weedable,
-/area/corsat/theta/biodome)
 "rJu" = (
 /obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -72280,7 +72270,7 @@ aKk
 prI
 rwo
 dOo
-rJo
+jqz
 pnQ
 osY
 geN
@@ -92881,7 +92871,7 @@ wfK
 wfK
 wfK
 wfK
-aHJ
+wfK
 wfK
 wfK
 wfK

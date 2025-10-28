@@ -219,7 +219,7 @@
 		WEAR_R_EAR = /obj/item/device/flashlight/pen,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
 		WEAR_EYES = /obj/item/clothing/glasses/hud/health,
-		WEAR_BODY = /obj/item/clothing/under/rank/chief_medical_officer,
+		WEAR_BODY = /obj/item/clothing/under/rank/cmo,
 		WEAR_ACCESSORY = /obj/item/clothing/accessory/stethoscope,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/med,
 		WEAR_IN_BACK = /obj/item/roller/surgical,
@@ -748,7 +748,7 @@
 	name = "Synthetic - Working Joe"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	faction = FACTION_MARINE
-	faction_group = list(FACTION_MARINE)
+	faction_group = FACTION_LIST_ARES_MARINE
 	assignment = JOB_WORKING_JOE
 	job_title = JOB_WORKING_JOE
 

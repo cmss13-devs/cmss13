@@ -477,11 +477,15 @@
 		reagents = max_fuel
 
 /obj/item/tool/weldingtool/simple
-	name = "\improper ME3 hand welder"
-	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field."
+	name = "\improper Seegson MCT"
+	desc = "MCT, standing for Mechanical Cutting Torch, is a compact, handheld welding torch produced by Seegson, mainly used by technicians and Working Joe units."
 	max_fuel = 5
 	has_welding_screen = TRUE
 	icon_state = "welder_b"
+
+/obj/item/tool/weldingtool/simple/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/seegson)
 
 /*
  * Crowbar

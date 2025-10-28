@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Specialists now properly get updated on the manifest"

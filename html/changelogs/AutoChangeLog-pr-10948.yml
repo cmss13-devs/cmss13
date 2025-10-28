@@ -1,0 +1,10 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - rscadd: "Adds Oxycodone canister pouches to vends."
+  - qol: "You can now tell which kind of pressurized reagent pouch you have by looking at its name."
+  - qol: "You can now tell which chemicals and how much of them are in pressurized reagent pouches and canisters via a fill indicator."
+  - qol: "There are more unit transfer options for glass containers, bottles, and beakers."
+  - bugfix: "Some Corpsman and Medbay pouch colors were swapped for consistency between departments."
+  - code_imp: "Adds fill indicator to pressurized reagent pouches and vends."
+  - imageadd: "Adds overlays for pouches and canisters, updated canister sprites"

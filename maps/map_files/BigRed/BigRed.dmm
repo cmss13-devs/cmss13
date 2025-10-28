@@ -5304,11 +5304,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/outside/medical)
-"axF" = (
-/obj/structure/barricade/wooden,
-/obj/structure/barricade/wooden,
-/turf/open/floor/asteroidwarning/east,
-/area/bigredv2/outside/n)
 "axG" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -58645,7 +58640,7 @@ alF
 alF
 alF
 alF
-axF
+asf
 asf
 alF
 akw

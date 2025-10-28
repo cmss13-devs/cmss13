@@ -270,7 +270,6 @@
 	new /obj/item/clothing/shoes/morgue(src)
 	new /obj/item/clothing/suit/storage/labcoat(src)
 	new /obj/item/clothing/suit/storage/labcoat(src)
-	return
 
 /obj/structure/closet/wardrobe/genetics_white
 	name = "genetics wardrobe"

@@ -189,6 +189,9 @@
 	if(!owner)
 		return
 
+	if(owner.faction in FACTION_LIST_HUNTED) //Hunting Grounds
+		return
+
 	var/armor = owner.getarmor_organ(src, ARMOR_INTERNALDAMAGE)
 	if(owner.mind && owner.skills)
 		armor += owner.skills.get_skill_level(SKILL_ENDURANCE)*5
@@ -457,7 +460,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(!owner)
 		return
 
-	if(owner.faction in FACTION_LIST_HUNTED)
+	if(owner.faction in FACTION_LIST_HUNTED)//Hunting Grounds
 		return
 
 	var/armor = owner.getarmor_organ(src, ARMOR_INTERNALDAMAGE)

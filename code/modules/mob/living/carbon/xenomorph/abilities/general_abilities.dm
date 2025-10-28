@@ -141,6 +141,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_corrosive_acid
 	ability_primacy = XENO_CORROSIVE_ACID
 	action_type = XENO_ACTION_CLICK
+	ability_uses_acid_overlay = TRUE
 
 /datum/action/xeno_action/activable/corrosive_acid/New()
 	update_level()
@@ -357,6 +358,7 @@
 	var/action_text = "spray acid"
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
 	action_type = XENO_ACTION_CLICK
+	ability_uses_acid_overlay = TRUE
 
 	plasma_cost = 40
 	xeno_cooldown = 8 SECONDS
@@ -443,8 +445,9 @@
 	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	cooldown_message = "We feel our neurotoxin glands swell with ichor. We can spit again."
-	xeno_cooldown = 60 SECONDS
+	xeno_cooldown = 2.5 SECONDS
+	no_cooldown_msg = TRUE // Currently [14.6.25], every xeno that uses this save Boiler has a cooldown far too fast for messages to be worth it
+	ability_uses_acid_overlay = TRUE
 
 	/// Var that keeps track of in-progress wind-up spits like Bombard to prevent spitting multiple spits at the same time
 	var/spitting = FALSE
@@ -462,6 +465,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 23 SECONDS
+	ability_uses_acid_overlay = TRUE
 
 	// Range and other config
 	var/effect_range = 3
@@ -535,12 +539,13 @@
 
 	hivenumber = xeno.hive.hivenumber
 	RegisterSignal(xeno.hive, COMSIG_HIVE_NEW_QUEEN, PROC_REF(handle_new_queen))
+	RegisterSignal(xeno.hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(handle_unhide_tacmap))
 
-	if(!xeno.hive.living_xeno_queen)
+	if(!xeno.hive.living_xeno_queen && !xeno.hive.allow_no_queen_actions)
 		hide_from(xeno)
 		return
 
-	if(!xeno.hive.living_xeno_queen.ovipositor)
+	if(!xeno.hive.living_xeno_queen?.ovipositor && !xeno.hive.tacmap_requires_queen_ovi)
 		hide_from(xeno)
 
 	handle_new_queen(new_queen = xeno.hive.living_xeno_queen)
@@ -574,7 +579,14 @@
 /datum/action/xeno_action/onclick/tacmap/proc/handle_dismount_ovipositor()
 	SIGNAL_HANDLER
 
-	hide_from(owner)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno.hive?.tacmap_requires_queen_ovi)
+		hide_from(owner)
+
+/datum/action/xeno_action/onclick/tacmap/proc/handle_unhide_tacmap()
+	SIGNAL_HANDLER
+
+	unhide_from(owner)
 
 /datum/action/xeno_action/onclick/tacmap/can_use_action()
 	if(!owner)
@@ -609,3 +621,23 @@
 		return
 	for(var/action_path in base_actions)
 		give_action(src, action_path)
+
+
+/datum/action/xeno_action/onclick/toggle_seethrough
+	name = "Toggle Seethrough"
+	action_icon_state = "xenohide"
+	xeno_cooldown = 5 SECONDS
+	ability_primacy = XENO_BECOME_SEETHROUGH
+
+
+/datum/action/xeno_action/onclick/toggle_seethrough/use_ability(atom/target)
+
+	var/datum/component/seethrough_mob/seethroughComp = owner.GetComponent(/datum/component/seethrough_mob)
+	. = ..()
+
+	if(!action_cooldown_check())
+		return
+
+
+	seethroughComp.toggle_active()
+	apply_cooldown()

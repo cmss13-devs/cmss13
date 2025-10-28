@@ -6,7 +6,7 @@ import {
   GeneratorTypes,
   GeneratorTypesNoVectors,
   P_DATA_GENERATOR,
-  ParticleUIData,
+  type ParticleUIData,
   RandToNumber,
   RandTypes,
 } from './data';

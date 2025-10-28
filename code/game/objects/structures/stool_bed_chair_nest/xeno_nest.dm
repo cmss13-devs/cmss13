@@ -148,7 +148,7 @@
 
 	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/X = user
-		if(!X.hive.unnesting_allowed && !isxeno_builder(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
+		if((X.hive.hive_flags & XENO_UNNESTING_RESTRICTED) && !isxeno_builder(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 			to_chat(X, SPAN_XENOWARNING("We shouldn't interfere with the nest, leave that to the drones."))
 			return
 	else if(iscarbon(user))
@@ -279,19 +279,26 @@
 	REMOVE_TRAIT(buckled_mob, TRAIT_NO_STRAY, TRAIT_SOURCE_BUCKLE)
 	var/mob/living/carbon/human/buckled_human = buckled_mob
 
-	var/mob/dead/observer/G = ghost_of_buckled_mob
-	var/datum/mind/M = G?.mind
+	var/mob/dead/observer/ghost_mob = ghost_of_buckled_mob
+	var/datum/mind/ghost_mind = ghost_mob?.mind
 	ghost_of_buckled_mob = null
 
 	. = ..() //Very important that this comes after, since it deletes the nest and clears ghost_of_buckled_mob
 
-	if(!istype(buckled_human) || !istype(G) || !istype(M) || buckled_human.undefibbable || buckled_human.mind || M.original != buckled_human || buckled_human.chestburst)
+	if(!istype(buckled_human) || buckled_human.undefibbable || buckled_human.chestburst)
+		return
+
+	var/client/user_client = ghost_mob?.client || buckled_human.client
+	if(user_client?.prefs.toggles_flashing & FLASH_UNNEST)
+		window_flash(user_client)
+
+	if(!istype(ghost_mob) || !istype(ghost_mind) || buckled_human.mind || ghost_mind.original != buckled_human)
 		return // Zealous checking as most is handled by ghost code
-	to_chat(G, FONT_SIZE_HUGE(SPAN_DANGER("You have been freed from your nest and may go back to your body! (Look for 'Re-enter Corpse' in Ghost verbs, or <a href='byond://?src=\ref[G];reentercorpse=1'>click here</a>!)")))
-	sound_to(G, 'sound/effects/attackblob.ogg')
-	if(buckled_human.client?.prefs.toggles_flashing & FLASH_UNNEST)
-		window_flash(buckled_human.client)
-	G.can_reenter_corpse = TRUE
+
+	to_chat(ghost_mob, FONT_SIZE_HUGE(SPAN_DANGER("You have been freed from your nest and may go back to your body! (Look for 'Re-enter Corpse' in Ghost verbs, or <a href='byond://?src=\ref[ghost_mob];reentercorpse=1'>click here</a>!)")))
+	sound_to(ghost_mob, 'sound/effects/attackblob.ogg')
+
+	ghost_mob.can_reenter_corpse = TRUE
 
 /obj/structure/bed/nest/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)

@@ -45,6 +45,10 @@
 	var/list/synth_survivor_types_by_variant
 
 	var/list/CO_survivor_types
+	var/list/CO_survivor_types_by_variant
+
+	var/list/CO_insert_survivor_types
+	var/list/CO_insert_survivor_types_by_variant
 
 	var/list/defcon_triggers = list(5150, 4225, 2800, 1000, 0.0)
 
@@ -103,7 +107,6 @@
 		/datum/equipment_preset/synth/survivor/atc_synth,
 		/datum/equipment_preset/synth/survivor/cmb_synth,
 		/datum/equipment_preset/synth/survivor/wy/security_synth,
-		/datum/equipment_preset/synth/survivor/wy/protection_synth,
 		/datum/equipment_preset/synth/survivor/wy/corporate_synth,
 		/datum/equipment_preset/synth/survivor/detective_synth,
 		/datum/equipment_preset/synth/survivor/icc_synth,
@@ -278,6 +281,23 @@
 				continue
 		pathed_CO_survivor_types += CO_survivor_typepath
 	CO_survivor_types = pathed_CO_survivor_types.Copy()
+
+	if(islist(json["CO_insert_survivor_types"]))
+		CO_insert_survivor_types = json["CO_insert_survivor_types"]
+	else if ("CO_insert_survivor_types" in json)
+		log_world("map_config CO_insert_survivor_types is not a list!")
+		return
+
+	var/list/pathed_CO_insert_survivor_types = list()
+	for(var/CO_insert_surv_type in CO_insert_survivor_types)
+		var/CO_insert_survivor_typepath = CO_insert_surv_type
+		if(!ispath(CO_insert_survivor_typepath))
+			CO_insert_survivor_typepath = text2path(CO_insert_surv_type)
+			if(!ispath(CO_insert_survivor_typepath))
+				log_world("[CO_insert_surv_type] isn't a proper typepath, removing from CO_insert_survivor_types list")
+				continue
+		pathed_CO_insert_survivor_types += CO_insert_survivor_typepath
+	CO_insert_survivor_types = pathed_CO_insert_survivor_types.Copy()
 
 	if (islist(json["monkey_types"]))
 		monkey_types = list()

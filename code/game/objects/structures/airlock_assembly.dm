@@ -221,7 +221,11 @@
 				if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 				airlock_type = tgui_input_list(user,"Select an airlock type." , "Airlock Type" , airlock_types)
-				update_icon()
+				if(airlock_type)
+					update_icon()
+				else
+					to_chat(user, SPAN_WARNING("You must choose a type"))
+					return
 			if(iswelder(attacking_item))
 				if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
 					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))

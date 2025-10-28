@@ -59,6 +59,8 @@
 #define XENO_CORROSIVE_ACID 6 //Macro for covering things in acid, universal ability
 #define XENO_SCREECH 7 //Macro for queen screech
 #define XENO_TAIL_STAB 8 //macro for tail stabs
+#define XENO_BECOME_SEETHROUGH 9 // macro to become seethrough, only used by queen as of implementation
+
 
 #define NO_ACTION_CHARGES -1 // This ability does not have a limit to how many times it can be used
 
@@ -81,15 +83,14 @@
 
 #define IGNORE_BUILD_DISTANCE -1
 
-#define XENO_LEADER_HIVE_POS(X)   (X + 1)
-#define GET_XENO_LEADER_NUM(X)  (X.hive_pos - 1)
-#define IS_XENO_LEADER(X)    (X.hive_pos > 1)
+#define XENO_LEADER_HIVE_POS(X) (X + 1)
+#define GET_XENO_LEADER_NUM(X) (X.hive_pos - 1)
+#define IS_XENO_LEADER(X) (X.hive_pos >= XENO_LEADER)
+#define IS_NORMAL_XENO(X) (X.hive_pos == NORMAL_XENO)
 
 #define NORMAL_XENO  0
 #define XENO_QUEEN   1
 #define XENO_LEADER  2
-/// Nobody can create constructions. (Feral)
-#define XENO_NOBODY  3
 
 #define XENO_HIVE_AREA_SIZE 21 //The turf size from the centrepiece of a hive in which special things can be done (like building structures)
 
@@ -106,8 +107,37 @@
 
 #define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
 
-#define XENO_SLASH_ALLOWED 0
-#define XENO_SLASH_FORBIDDEN 1
+// Queen permission toggles
+#define COOLDOWN_TOGGLE_SLASH "cooldown_toggle_slash"
+#define COOLDOWN_TOGGLE_CONSTRUCTION "cooldown_toggle_construction"
+#define COOLDOWN_TOGGLE_DECONSTRUCTION "cooldown_toggle_deconstruction"
+#define COOLDOWN_TOGGLE_UNNESTING "cooldown_toggle_unnesting"
+
+/// Whether you can harm non-infected
+#define XENO_SLASH_NORMAL (1<<0)
+/// Whether you can harm infected
+#define XENO_SLASH_INFECTED (1<<1)
+/// Multi-flag to indicate all harming is allowed
+#define XENO_SLASH_ALLOW_ALL (XENO_SLASH_NORMAL|XENO_SLASH_INFECTED)
+/// Whether only drone castes can unnest hosts
+#define XENO_UNNESTING_RESTRICTED (1<<2)
+/// Whether normal xenos can make special structures
+#define XENO_CONSTRUCTION_NORMAL (1<<3)
+/// Whether leader xenos can make special structures
+#define XENO_CONSTRUCTION_LEADERS (1<<4)
+/// Whether queen can make special structures
+#define XENO_CONSTRUCTION_QUEEN (1<<5)
+/// Multi-flag to indicate all special structures construction is allowed
+#define XENO_CONSTRUCTION_ALLOW_ALL (XENO_CONSTRUCTION_QUEEN|XENO_CONSTRUCTION_LEADERS|XENO_CONSTRUCTION_NORMAL)
+/// Whether normal xenos can destroy special structures
+#define XENO_DECONSTRUCTION_NORMAL (1<<6)
+/// Whether leader xenos can destroy special structures
+#define XENO_DECONSTRUCTION_LEADERS (1<<7)
+/// Whether queen can destroy special structures
+#define XENO_DECONSTRUCTION_QUEEN (1<<8)
+/// Multi-flag to indicate all special structures deconstruction is allowed
+#define XENO_DECONSTRUCTION_ALLOW_ALL (XENO_DECONSTRUCTION_QUEEN|XENO_DECONSTRUCTION_LEADERS|XENO_DECONSTRUCTION_NORMAL)
+
 // Holds defines for /datum/caste_datum, which is the primary datum for the caste system,
 // /datum/hive_status (self explanatory)
 // and some of the var defines for the Xenomorph base type.
@@ -197,8 +227,6 @@
 #define XENO_LEAVE_TIMER_LARVA 80 //80 seconds
 /// The time against away_timer when an AFK xeno (not larva) can be replaced
 #define XENO_LEAVE_TIMER 300 //300 seconds
-/// The time against away_timer when an AFK facehugger converts to a npc
-#define XENO_FACEHUGGER_LEAVE_TIMER 420 //420 seconds
 /// The time against away_timer when an AFK xeno gets listed in the available list so ghosts can get ready
 #define XENO_AVAILABLE_TIMER 60 //60 seconds
 
@@ -379,6 +407,7 @@
 
 // Hivelord strain flags
 #define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
+#define HIVELORD_DESIGNER "Designer"
 
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
@@ -639,6 +668,7 @@
 #define XENO_STRUCTURE_PYLON "hive pylon"
 #define XENO_STRUCTURE_EGGMORPH  "egg morpher"
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
+#define XENO_STRUCTURE_PLASMA_TREE "plasma tree"
 #define XENO_STRUCTURE_NEST  "thick resin nest"
 
 #define RESIN_TRAP_EMPTY 0
@@ -706,6 +736,9 @@
 #define XENO_CASTE_PREDALIEN  "Predalien"
 #define XENO_CASTE_HELLHOUND  "Hellhound"
 #define XENO_SPECIAL_CASTES   list(XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN, XENO_CASTE_HELLHOUND)
+
+//caste list
+#define XENO_CONSTRUCT_NODE_BOOST list(XENO_CASTE_HIVELORD, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_QUEEN)
 
 #define ALL_XENO_CASTES list(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA, XENO_CASTE_FACEHUGGER, XENO_CASTE_LESSER_DRONE, XENO_CASTE_DRONE, XENO_CASTE_RUNNER, XENO_CASTE_SENTINEL, XENO_CASTE_DEFENDER, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD, XENO_CASTE_LURKER, XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER, XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER, XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN, XENO_CASTE_HELLHOUND, XENO_CASTE_KING)
 

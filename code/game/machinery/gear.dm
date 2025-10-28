@@ -15,6 +15,9 @@
 /obj/structure/machinery/gear/proc/stop_moving()
 	icon_state = "gear"
 
+/obj/structure/machinery/gear/upp
+	id = "supply_elevator_railing_upp"
+
 /obj/structure/machinery/elevator_strut
 	name = "\improper strut"
 	icon = 'icons/turf/elevator_strut.dmi'
@@ -32,4 +35,5 @@
 
 /obj/structure/machinery/elevator_strut/bottom
 	icon_state = "strut_bottom"
+
 

@@ -128,7 +128,6 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/apron/overalls
 	name = "blue coveralls"
@@ -153,7 +152,6 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/apron/overalls/tan
 	name = "tan coveralls"
@@ -268,6 +266,7 @@
 		/obj/item/storage/belt/gun/m44,
 		/obj/item/storage/belt/gun/mateba,
 		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/storage/belt/gun/type47,
 		/obj/item/weapon/gun,
 
 		/obj/item/device/flashlight,
@@ -280,6 +279,14 @@
 		/obj/item/storage/large_holster/katana,
 		/obj/item/device/motiondetector,
 	)
+
+/obj/item/clothing/suit/storage/webbing/black
+	icon_state = "webbing_black"
+	item_state = "webbing_black"
+
+/obj/item/clothing/suit/storage/webbing/brown
+	icon_state = "webbing_brown"
+	item_state = "webbing_brown"
 
 /obj/item/clothing/suit/storage/utility_vest
 	name = "utility vest"
@@ -352,8 +359,8 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 
 /obj/item/clothing/suit/xenos
-	name = "xenos suit"
-	desc = "A suit made out of chitinous alien hide."
+	name = "alien costume suit"
+	desc = "A costume made out of a cheap fabric."
 	icon_state = "xenos"
 	item_state = "xenos_suit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
@@ -452,8 +459,6 @@
 	)
 	min_cold_protection_temperature = T0C
 	siemens_coefficient = 0.7
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/bomber/alt
 	name = "black bomber jacket"
@@ -489,8 +494,6 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/director
 	name = "director's jacket"
@@ -523,5 +526,3 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)

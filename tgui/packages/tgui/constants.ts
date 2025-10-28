@@ -46,6 +46,7 @@ export const COLORS = {
     echo: '#027d02',
     foxtrot: '#4a4740',
     raiders: '#6e1919',
+    forecon: '#32CD32',
   },
   // Damage type colors
   damageType: {
@@ -92,6 +93,11 @@ export const RADIO_CHANNELS = [
     color: '#1ecc43',
   },
   {
+    name: 'Yautja Overseer',
+    freq: 1206,
+    color: '#1ecc43',
+  },
+  {
     name: "Dutch's Dozen",
     freq: 1210,
     color: '#1ecc43',
@@ -105,6 +111,11 @@ export const RADIO_CHANNELS = [
     name: 'CMB',
     freq: 1220,
     color: '#1b748c',
+  },
+  {
+    name: 'CIA',
+    freq: 1225,
+    color: '#e6754c',
   },
   {
     name: 'WY',
@@ -207,6 +218,11 @@ export const RADIO_CHANNELS = [
     color: '#d65d95',
   },
   {
+    name: 'Hyperdyne',
+    freq: 1331,
+    color: '#ff711a',
+  },
+  {
     name: 'Common',
     freq: 1461,
     color: '#1ecc43',
@@ -242,7 +258,7 @@ export const RADIO_CHANNELS = [
     color: '#779cc2',
   },
   {
-    name: 'Medsci',
+    name: 'MedSci',
     freq: 1482,
     color: '#008160',
   },

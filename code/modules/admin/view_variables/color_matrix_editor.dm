@@ -60,7 +60,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 	else if(istext(_target?.color))
 		current_color = color_hex2color_matrix(_target.color)
 	else
-		current_color = color_matrix_identity()
+		current_color = COLOR_MATRIX_IDENTITY
 	proxy_view = new
 	if(_target)
 		target = WEAKREF(_target)

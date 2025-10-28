@@ -186,7 +186,7 @@
 #define SYNTH_COLONY "Third Generation Colonial Synthetic"
 #define SYNTH_COLONY_GEN_TWO "Second Generation Colonial Synthetic"
 #define SYNTH_COLONY_GEN_ONE "First Generation Colonial Synthetic"
-#define SYNTH_COMBAT "Combat Synthetic"
+#define SYNTH_COMBAT "W-Y Combat Android"
 #define SYNTH_INFILTRATOR "Infiltrator Synthetic"
 #define SYNTH_WORKING_JOE "Working Joe"
 #define SYNTH_HAZARD_JOE "Hazard Joe"

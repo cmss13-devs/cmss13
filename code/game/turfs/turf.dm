@@ -67,6 +67,9 @@
 	/// Is fishing allowed on this turf
 	var/fishing_allowed = FALSE
 
+	/// Can xenomorph weeds grow on the tile
+	var/is_weedable = FULLY_WEEDABLE
+
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
 	if(flags_atom & INITIALIZED)
@@ -114,6 +117,11 @@
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
 
+	//dense turfs stop weeds
+	if(density)
+		is_weedable = NOT_WEEDABLE
+
+
 	if(istransparentturf(src))
 		return INITIALIZE_HINT_LATELOAD
 	else
@@ -126,6 +134,7 @@
 	plane = OPEN_SPACE_PLANE_START
 	vis_flags = VIS_HIDE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	anchored = TRUE
 
 /obj/vis_contents_holder/Initialize(mapload, vis, offset)
 	. = ..()
@@ -340,6 +349,15 @@
 		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			if(!mover.Collide(A))
 				return FALSE
+
+	if(mover.move_intentionally && istype(src, /turf/open_space) && istype(mover,/mob/living))
+		var/turf/open_space/space = src
+		var/mob/living/climber = mover
+		if(climber.a_intent == INTENT_HARM)
+			return TRUE
+		space.climb_down(climber)
+		return FALSE
+
 
 	return TRUE //Nothing found to block so return success!
 
@@ -676,44 +694,6 @@
 
 //////////////////////////////////////////////////////////
 
-//Check if you can plant weeds on that turf.
-//Does NOT return a message, just a 0 or 1.
-/turf/proc/is_weedable()
-	return density ? NOT_WEEDABLE : FULLY_WEEDABLE
-
-/turf/open/space/is_weedable()
-	return NOT_WEEDABLE
-
-/turf/open/gm/grass/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/open/gm/dirtgrassborder/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/open/gm/river/is_weedable()
-	return NOT_WEEDABLE
-
-/turf/open/gm/coast/is_weedable()
-	return NOT_WEEDABLE
-
-/turf/open/snow/is_weedable()
-	return bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
-
-/turf/open/mars/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/open/jungle/is_weedable()
-	return NOT_WEEDABLE
-
-/turf/open/auto_turf/shale/layer1/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/open/auto_turf/shale/layer2/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/closed/wall/is_weedable()
-	return FULLY_WEEDABLE //so we can spawn weeds on the walls
-
 
 /turf/proc/can_dig_xeno_tunnel()
 	return FALSE
@@ -944,17 +924,21 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 /turf/proc/on_throw_end(atom/movable/thrown_atom)
 	return TRUE
 
-/turf/proc/z_impact(mob/living/victim, height, stun_modifier = 1, damage_modifier = 1, fracture_modifier = 1)
+/turf/proc/z_impact(mob/living/victim, height, stun_modifier = 1, damage_modifier = 1, fracture_modifier = 0)
 	if(ishuman_strict(victim))
 		var/mob/living/carbon/human/human_victim = victim
+		if(HAS_TRAIT(human_victim, TRAIT_HAULED))
+			return
+
 		if (stun_modifier > 0)
-			human_victim.KnockDown(5 * height * stun_modifier)
-			human_victim.Stun(5 * height * stun_modifier)
+			human_victim.KnockDown(3 * height * stun_modifier)
+			human_victim.Stun(3 * height * stun_modifier)
+			human_victim.Slow(5 * height * stun_modifier)
 
 		if (damage_modifier > 0)
 			var/total_damage = ((20 * height) ** 1.3) * damage_modifier
-			human_victim.apply_damage(total_damage / 2, BRUTE, "r_leg")
-			human_victim.apply_damage(total_damage / 2, BRUTE, "l_leg")
+			human_victim.apply_damage(total_damage / 2, BRUTE, "r_leg", enviro=TRUE)
+			human_victim.apply_damage(total_damage / 2, BRUTE, "l_leg", enviro=TRUE)
 
 		if (fracture_modifier > 0)
 			var/obj/limb/leg/found_rleg = locate(/obj/limb/leg/l_leg) in human_victim.limbs
@@ -963,15 +947,19 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			found_rleg?.fracture(100 * fracture_modifier)
 			found_lleg?.fracture(100 * fracture_modifier)
 
-	if(isxeno(victim) && victim.mob_size >= MOB_SIZE_BIG)
+	if(isxeno(victim))
 		var/mob/living/carbon/xenomorph/xeno_victim = victim
 		if(stun_modifier > 0)
-			xeno_victim.KnockDown(5 * height * stun_modifier)
-			xeno_victim.Stun(5 * height * stun_modifier)
+			if(xeno_victim.mob_size >= MOB_SIZE_BIG)
+				xeno_victim.KnockDown(height * 3.5 * stun_modifier)
+				xeno_victim.Stun( height * 3.5 * stun_modifier)
+				xeno_victim.Slow(height * 6 * stun_modifier)
+			else
+				xeno_victim.KnockDown(height * 0.5 * stun_modifier)
+				xeno_victim.Stun( height * 0.5 * stun_modifier)
+				xeno_victim.Slow(height * 2.5 * stun_modifier)
 
-		if (damage_modifier > 0)
-			var/total_damage = ((60 * height) ** 1.3) * damage_modifier
-			xeno_victim.apply_damage(total_damage / 2, BRUTE)
+
 
 	if(damage_modifier > 0.5)
 		playsound(loc, "slam", 50, 1)

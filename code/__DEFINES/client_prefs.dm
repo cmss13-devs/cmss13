@@ -1,6 +1,6 @@
 //=================================================
-#define BE_ALIEN_AFTER_DEATH (1<<0)
-#define BE_AGENT (1<<1)
+#define BE_ALIEN (1<<0)
+// 1<<1 was BE_AGENT
 #define BE_KING (1<<2)
 //=================================================
 
@@ -66,6 +66,8 @@
 #define TOGGLE_AMMO_DISPLAY_TYPE (1<<19)
 ///Toggles between automatically shoving xenomorphs in the way as Queen.
 #define TOGGLE_AUTO_SHOVE_OFF (1<<20)
+///Toggles whether activating marine leader orders will be spoken or not
+#define TOGGLE_LEADERSHIP_SPOKEN_ORDERS (1<<21)
 //=================================================
 
 #define JOB_SLOT_RANDOMISED_SLOT -1

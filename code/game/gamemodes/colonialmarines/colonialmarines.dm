@@ -21,9 +21,6 @@
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
 	static_comms_amount = 1
 	var/round_status_flags
-
-	var/research_allocation_interval = 10 MINUTES
-	var/next_research_allocation = 0
 	var/next_stat_check = 0
 	var/list/running_round_stats = list()
 	var/list/lz_smoke = list()
@@ -137,7 +134,9 @@
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
+	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 2 MINUTES)
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
+	GLOB.chemical_data.reroll_chemicals()
 
 	return ..()
 
@@ -358,6 +357,63 @@
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
+/datum/game_mode/proc/ares_command_check()
+	var/role_in_charge
+	var/mob/living/carbon/human/person_in_charge
+
+	var/list/role_needs_id = list(JOB_SO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL)
+	var/list/role_needs_comms = list(JOB_CHIEF_POLICE, JOB_CMO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL)
+	var/announce_addendum
+
+	var/datum/squad/intel_squad = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/intel]
+	var/list/intel_officers = intel_squad.marines_list
+
+	//Basically this follows the list of command staff in order of CoC,
+	//then if the role lacks senior command access it gives the person that access
+
+	if(GLOB.marine_leaders[JOB_CO] || GLOB.marine_leaders[JOB_XO])
+		return
+	//If we have a CO or XO, we're good no need to announce anything.
+
+	for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
+		role_in_charge = job_by_chain
+
+		if(job_by_chain == JOB_SO && GLOB.marine_leaders[JOB_SO])
+			person_in_charge = pick(GLOB.marine_leaders[JOB_SO])
+			break
+		if(job_by_chain == JOB_INTEL && !!length(intel_officers))
+			person_in_charge = pick(intel_officers)
+			break
+		//If the job is a list we have to stop here
+		if(person_in_charge)
+			continue
+
+		var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]
+		person_in_charge = job_datum.get_active_player_on_job()
+		if(!isnull(person_in_charge))
+			break
+
+	if(isnull(person_in_charge))
+		return
+
+	if(LAZYFIND(role_needs_comms, role_in_charge))
+		//If the role needs comms we let them know about the headset.
+		announce_addendum += "\nA Command headset is availible in the CIC Command Tablet cabinet."
+
+	if(LAZYFIND(role_needs_id, role_in_charge))
+		//If the role needs senior command access, we need to add it to the ID card.
+		var/obj/item/card/id/card = person_in_charge.get_idcard()
+		if(card)
+			var/list/access = card.access
+			access.Add(list(ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE))
+			announce_addendum += "\nSenior Command access added to ID."
+
+	//does an announcement to the crew about the commander & alerts admins to that change for logs.
+	shipwide_ai_announcement("Due to the absence of command staff, commander authority now falls to [role_in_charge] [person_in_charge], who will assume command until further notice. Please direct all inquiries and follow instructions accordingly. [announce_addendum]", MAIN_AI_SYSTEM, 'sound/misc/interference.ogg')
+	message_admins("[key_name(person_in_charge, 1)] [ADMIN_JMP_USER(person_in_charge)] has been designated the operation commander.")
+	return
+
+
 /datum/game_mode/colonialmarines/proc/ares_conclude()
 	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
 	ai_silent_announcement("Saving operational report to archive.", ".V")
@@ -376,9 +432,8 @@
 		check_hijack_explosions()
 		check_ground_humans()
 
-	if(next_research_allocation < world.time)
-		GLOB.chemical_data.update_credits(GLOB.chemical_data.research_allocation_amount)
-		next_research_allocation = world.time + research_allocation_interval
+	if(GLOB.chemical_data.next_reroll < world.time)
+		GLOB.chemical_data.reroll_chemicals()
 
 	if(!round_finished)
 		var/datum/hive_status/hive
@@ -386,9 +441,15 @@
 			hive = GLOB.hive_datum[hivenumber]
 			if(!hive.xeno_queen_timer)
 				continue
-
 			if(!hive.living_xeno_queen && hive.xeno_queen_timer < world.time)
-				xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
+				var/time_remaining = (QUEEN_DEATH_COUNTDOWN + hive.xeno_queen_timer) - world.time
+				if(time_remaining <= 59 SECONDS)
+					var/seconds_left = round(time_remaining / 10)
+					xeno_message("The Hive is ready for a new Queen to evolve. The Hive will collapse in [seconds_left] seconds without a Queen.", 3, hive.hivenumber)
+				else
+					xeno_message("The Hive is ready for a new Queen to evolve. The Hive can only survive for a limited time without a Queen!", 3, hive.hivenumber)
+
+
 
 		if(!active_lz && world.time > lz_selection_timer)
 			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
@@ -419,7 +480,7 @@
 				check_win()
 			round_checkwin = 0
 
-		if(!evolution_ovipositor_threshold && world.time >= SSticker.round_start_time + round_time_evolution_ovipositor)
+		if(!evolution_ovipositor_threshold && ROUND_TIME >= round_time_evolution_ovipositor)
 			for(var/hivenumber in GLOB.hive_datum)
 				hive = GLOB.hive_datum[hivenumber]
 				hive.evolution_without_ovipositor = FALSE
@@ -602,26 +663,29 @@
 				GLOB.round_statistics.current_map.total_marine_majors++
 		if(MODE_INFESTATION_X_MINOR)
 			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
+			end_icon = "xeno_minor"
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
 				var/headcount = count_per_faction()
 				var/living = headcount["total_headcount"]
 				if ((headcount["WY_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
+					end_icon = "wy_major"
 					log_game("3rd party victory: Weyland-Yutani")
 					message_admins("3rd party victory: Weyland-Yutani")
 				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+					end_icon = "upp_major"
 					log_game("3rd party victory: Union of Progressive Peoples")
 					message_admins("3rd party victory: Union of Progressive Peoples")
 				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
+					end_icon = "upp_major"
 					log_game("3rd party victory: Colonial Liberation Front")
 					message_admins("3rd party victory: Colonial Liberation Front")
 				else if ((headcount["marine_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
-			end_icon = "xeno_minor"
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_victories++
 		if(MODE_INFESTATION_M_MINOR)
@@ -634,9 +698,12 @@
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_draws++
-	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	S.status = SOUND_STREAM
-	sound_to(world, S)
+		else
+			end_icon = "draw"
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+	var/sound/theme = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	theme.status = SOUND_STREAM
+	sound_to(world, theme)
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time

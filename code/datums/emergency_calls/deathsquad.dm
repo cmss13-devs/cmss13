@@ -30,21 +30,21 @@
 
 	if(!leader && HAS_FLAG(person.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(person.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = person
-		to_chat(person, SPAN_ROLE_HEADER("You are the Whiteout Team Leader!"))
+		to_chat(person, SPAN_ROLE_HEADER("You are the Whiteout Team Leading Unit!"))
 		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/leader, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(person.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(person.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Medic!"))
+		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Support Unit!"))
 		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/medic, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(person.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(person.client, list(JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN), time_required_for_job))
 		heavies++
-		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Terminator!"))
+		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Cloaker Unit!"))
 		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
-		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/terminator, TRUE, TRUE)
+		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/cloaker, TRUE, TRUE)
 	else
-		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Operative!"))
+		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Combat Unit!"))
 		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout, TRUE, TRUE)
 
@@ -67,21 +67,21 @@
 
 	if(!leader && HAS_FLAG(person.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(person.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = person
-		to_chat(person, SPAN_ROLE_HEADER("You are the Whiteout Team Leader!"))
+		to_chat(person, SPAN_ROLE_HEADER("You are the Whiteout Team Leading Unit!"))
 		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/low_threat/leader, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(person.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(person.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Medic!"))
+		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Support Unit!"))
 		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(person.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(person.client, list(JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN), time_required_for_job))
 		heavies++
-		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Terminator!"))
+		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Cloaker Unit!"))
 		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
-		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/low_threat/terminator, TRUE, TRUE)
+		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/low_threat/cloaker, TRUE, TRUE)
 	else
-		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Operative!"))
+		to_chat(person, SPAN_ROLE_HEADER("You are a Whiteout Team Combat Unit!"))
 		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/low_threat, TRUE, TRUE)
 
@@ -95,12 +95,14 @@
 	name = "Marine Raider Operatives (!DEATHSQUAD!)"
 	mob_max = 8
 	mob_min = 5
+	max_smartgunners = 1
 	probability = 0
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	home_base = /datum/lazy_template/ert/weyland_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 	var/leader_preset = /datum/equipment_preset/uscm/marsoc/sl
 	var/member_preset = /datum/equipment_preset/uscm/marsoc
+	var/sg_preset = /datum/equipment_preset/uscm/marsoc/sg
 
 /datum/emergency_call/marsoc/create_member(datum/mind/player, turf/override_spawn_loc)
 
@@ -116,6 +118,10 @@
 		leader = member
 		to_chat(member, SPAN_WARNING(FONT_SIZE_BIG("You are a Marine Raider Team Leader, better than all the rest.")))
 		arm_equipment(member, leader_preset, TRUE, TRUE)
+	else if(smartgunners < max_smartgunners && HAS_FLAG(member.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(member.client, JOB_SQUAD_SMARTGUN))
+		smartgunners++
+		to_chat(member, SPAN_ROLE_HEADER("You are a Marine Raider Smartgunner!"))
+		arm_equipment(member, sg_preset, TRUE, TRUE)
 	else
 		to_chat(member, SPAN_WARNING(FONT_SIZE_BIG("You are an elite Marine Raider Operative, the best of the best.")))
 		arm_equipment(member, member_preset, TRUE, TRUE)
@@ -127,9 +133,10 @@
 	name = "Marine Raider Operatives (!DEATHSQUAD! Covert)"
 	leader_preset = /datum/equipment_preset/uscm/marsoc/sl/covert
 	member_preset = /datum/equipment_preset/uscm/marsoc/covert
-
+	sg_preset = /datum/equipment_preset/uscm/marsoc/sg/covert
 
 /datum/emergency_call/marsoc/low_threat
 	name = "Marine Raider Operatives"
 	leader_preset = /datum/equipment_preset/uscm/marsoc/low_threat/sl
 	member_preset = /datum/equipment_preset/uscm/marsoc/low_threat
+	sg_preset = /datum/equipment_preset/uscm/marsoc/sg/low_threat

@@ -12,19 +12,20 @@ export const meta = {
   render: () => <Story />,
 };
 
-type TabProps = {
-  vertical: boolean;
+const TAB_RANGE = ['Tab #1', 'Tab #2', 'Tab #3', 'Tab #4'] as const;
+
+type TabProps = Partial<{
+  centered: boolean;
+  fluid: boolean;
+  icon: boolean;
   leftSlot: boolean;
   rightSlot: boolean;
-  icon: boolean;
-  fluid: boolean;
-  centered: boolean;
-};
+  vertical: boolean;
+}>;
 
-const TAB_RANGE = ['Tab #1', 'Tab #2', 'Tab #3', 'Tab #4'];
+function Story() {
+  const [tabProps, setTabProps] = useState<TabProps>({});
 
-const Story = (props) => {
-  const [tabProps, setTabProps] = useState({} as TabProps);
   return (
     <>
       <Section>
@@ -38,7 +39,7 @@ const Story = (props) => {
             })
           }
         >
-          vertical
+          Vertical
         </Button.Checkbox>
         <Button.Checkbox
           inline
@@ -114,29 +115,29 @@ const Story = (props) => {
       <TabsPrefab tabProps={tabProps} />
     </>
   );
-};
+}
 
-const TabsPrefab = (props: { readonly tabProps: TabProps }) => {
+function TabsPrefab(props) {
   const [tabIndex, setTabIndex] = useState(0);
-  const { tabProps } = props;
+
   return (
     <Tabs
-      vertical={tabProps.vertical}
-      fluid={tabProps.fluid}
-      textAlign={tabProps.centered && 'center'}
+      vertical={props.tabProps.vertical}
+      fluid={props.tabProps.fluid}
+      textAlign={props.tabProps.centered && 'center'}
     >
       {TAB_RANGE.map((text, i) => (
         <Tabs.Tab
           key={i}
           selected={i === tabIndex}
-          icon={tabProps.icon ? 'info-circle' : undefined}
+          icon={props.tabProps.icon ? 'info-circle' : undefined}
           leftSlot={
-            tabProps.leftSlot && (
+            props.tabProps.leftSlot && (
               <Button circular compact color="transparent" icon="times" />
             )
           }
           rightSlot={
-            tabProps.rightSlot && (
+            props.tabProps.rightSlot && (
               <Button circular compact color="transparent" icon="times" />
             )
           }
@@ -147,4 +148,4 @@ const TabsPrefab = (props: { readonly tabProps: TabProps }) => {
       ))}
     </Tabs>
   );
-};
+}

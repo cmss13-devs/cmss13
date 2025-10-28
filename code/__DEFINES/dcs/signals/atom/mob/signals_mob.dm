@@ -48,6 +48,9 @@
 /// For when a mob is hauled by a Xeno
 #define COMSIG_MOB_HAULED "mob_hauled"
 	#define COMPONENT_CANCEL_HAUL (1<<0)
+// For when a mob is no longer being hauled by a Xeno
+#define COMSIG_MOB_UNHAULED "mob_unhauled"
+
 // Reserved for tech trees
 #define COMSIG_MOB_ENTER_TREE "mob_enter_tree"
 	#define COMPONENT_CANCEL_TREE_ENTRY (1<<0)
@@ -185,3 +188,9 @@
 #define COMSIG_MOB_END_TUTORIAL "mob_end_tutorial"
 
 #define COMSIG_MOB_NESTED "mob_nested"
+
+/// From /obj/item/roller/proc/deploy_roller() : (mob/user, obj/structure/bed/roller/roller)
+#define COMSIG_MOB_ITEM_ROLLER_DEPLOYED "mob_roller_deployed"
+
+/// From /modules/animations/animations_library.dm and /code/modules/mob/mob.dm
+#define COMSIG_MOB_ANIMATING "mob_animating"

@@ -272,3 +272,55 @@
 /obj/item/shard/shrapnel/tutorial
 	damage_on_move = 0
 
+/obj/item/sharp
+	name = "sharp dart shrapnel"
+	desc = "It looks like a used 9X-E Sticky Explosive Dart, useless now."
+	icon = 'icons/obj/items/weapons/projectiles.dmi'
+	icon_state = "sharp_explosive_dart"
+	sharp = IS_SHARP_ITEM_BIG
+	w_class = SIZE_SMALL
+	edge = TRUE
+	force = 0
+	throwforce = 0
+	garbage = TRUE
+	var/damage_on_move = 3
+	var/count = 1
+
+/obj/item/sharp/Initialize(mapload, dir)
+	. = ..()
+	if(dir && dir <= 6)
+		turn_object(90)
+	else
+		turn_object(270)
+
+/obj/item/sharp/proc/on_embed(mob/embedded_mob, obj/limb/target_organ)
+	return
+
+/obj/item/sharp/proc/on_embedded_movement(mob/living/embedded_mob)
+	if(!ishuman(embedded_mob))
+		return
+	var/mob/living/carbon/human/H = embedded_mob
+	if(H.species.flags & NO_SHRAPNEL)
+		return
+	var/obj/limb/organ = embedded_organ
+	if(istype(organ))
+		organ.take_damage(damage_on_move * count, 0, 0, no_limb_loss = TRUE)
+		embedded_mob.pain.apply_pain(damage_on_move * count)
+
+/obj/item/sharp/proc/turn_object(amount)
+	var/matrix/initial_matrix = matrix(transform)
+	initial_matrix.Turn(amount)
+	apply_transform(initial_matrix)
+
+/obj/item/sharp/explosive
+	name = "\improper 9X-E Sticky Explosive Dart"
+
+/obj/item/sharp/incendiary
+	name = "\improper 9X-T Sticky Incendiary Dart"
+	desc = "It looks like a used 9X-T Sticky Incendiary Dart, useless now."
+	icon_state = "sharp_incendiary_dart"
+
+/obj/item/sharp/flechette
+	name = "\improper 9X-F Flechette Dart"
+	desc = "It looks like a used 9X-F Flechette Dart, useless now."
+	icon_state = "sharp_flechette_dart"

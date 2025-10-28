@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'bun:test';
+
 import { createSearch, decodeHtmlEntities, toTitleCase } from './string';
 
 describe('createSearch', () => {

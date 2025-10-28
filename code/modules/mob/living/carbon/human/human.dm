@@ -134,7 +134,7 @@
 		if(SShijack.sd_unlocked)
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
-/mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
+/mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
@@ -264,7 +264,7 @@
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 		var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
 		var/obj/limb/affecting = get_limb(rand_zone(dam_zone))
-		apply_damage(damage, BRUTE, affecting)
+		apply_damage(damage, BRUTE, affecting, enviro=TRUE)
 
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
@@ -675,11 +675,11 @@
 						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])
 								if(hasHUD(usr,"medical"))
-									to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Blood Type:</b> [R.fields["b_type"]]")
-									to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
-									to_chat(usr, "<b>Details:</b> [R.fields["mi_dis_d"]]")
-									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
-									to_chat(usr, "<b>Details:</b> [R.fields["ma_dis_d"]]")
+									to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Blood Type:</b> [R.fields["blood_type"]]")
+									to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["minor_disability"]]")
+									to_chat(usr, "<b>Details:</b> [R.fields["minor_disability_details"]]")
+									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["major_disability"]]")
+									to_chat(usr, "<b>Details:</b> [R.fields["major_disability_details"]]")
 									to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
 									to_chat(usr, "<a href='byond://?src=\ref[src];medrecordComment=1'>\[View Comment Log\]</a>")
 									read = 1
@@ -861,34 +861,35 @@
 /mob/living/carbon/human/ui_state(mob/user)
 	return GLOB.not_incapacitated_state
 
-///get_eye_protection()
-///Returns a number between -1 to 2
+/// Gets a value between EYE_PROTECTION_NEGATIVE (-1) and EYE_PROTECTION_WELDING (3) based on whether there are eyes
+/// to blind or how much clothing protects them
 /mob/living/carbon/human/get_eye_protection()
-	var/number = 0
+	var/number = EYE_PROTECTION_NONE
 
 	if(species && !species.has_organ["eyes"])
 		return EYE_PROTECTION_WELDING //No eyes, can't hurt them.
 
 	if(!internal_organs_by_name)
 		return EYE_PROTECTION_WELDING
-	var/datum/internal_organ/eyes/I = internal_organs_by_name["eyes"]
-	if(I)
-		if(I.cut_away)
+	var/datum/internal_organ/eyes/eyes_organ = internal_organs_by_name["eyes"]
+	if(eyes_organ)
+		if(eyes_organ.cut_away)
 			return EYE_PROTECTION_WELDING
-		if(I.robotic == ORGAN_ROBOT)
+		if(eyes_organ.robotic == ORGAN_ROBOT)
 			return EYE_PROTECTION_WELDING
 	else
 		return EYE_PROTECTION_WELDING
 
 	if(istype(head, /obj/item/clothing))
-		var/obj/item/clothing/C = head
-		number += C.eye_protection
+		var/obj/item/clothing/cloth_item = head
+		number += cloth_item.eye_protection
 	if(istype(wear_mask, /obj/item/clothing))
-		number += wear_mask.eye_protection
+		var/obj/item/clothing/cloth_item = wear_mask
+		number += cloth_item.eye_protection
 	if(glasses)
 		number += glasses.eye_protection
 
-	return number
+	return clamp(number, EYE_PROTECTION_NEGATIVE, EYE_PROTECTION_WELDING)
 
 
 /mob/living/carbon/human/abiotic(full_body = 0)
@@ -1015,6 +1016,9 @@
 			embedded.on_embedded_movement(src)
 		else if(istype(W, /obj/item/shard/shrapnel))
 			var/obj/item/shard/shrapnel/embedded = W
+			embedded.on_embedded_movement(src)
+		else if(istype(W, /obj/item/sharp))
+			var/obj/item/sharp/embedded = W
 			embedded.on_embedded_movement(src)
 		// Check if its a sharp weapon
 		else if(is_sharp(W))
@@ -1203,32 +1207,46 @@
 	var/legs_exposed = 1
 	var/hands_exposed = 1
 	var/feet_exposed = 1
+	var/armor_on = 0
+	var/helmet_on = 0
 
 	for(var/obj/item/clothing/C in equipment)
-		if(C.flags_armor_protection & BODY_FLAG_HEAD)
+		if(C.flags_bodypart_hidden & BODY_FLAG_HEAD)
 			head_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_FACE)
+		if(C.flags_inv_hide & HIDEFACE)
 			face_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_EYES)
+		if(C.flags_inv_hide & HIDEEYES)
 			eyes_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_CHEST)
+		if(C.flags_bodypart_hidden & BODY_FLAG_CHEST)
 			torso_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_ARMS)
+		if(C.flags_bodypart_hidden & BODY_FLAG_ARMS)
 			arms_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_HANDS)
+		if(C.flags_bodypart_hidden & BODY_FLAG_HANDS)
 			hands_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_LEGS)
+		if(C.flags_bodypart_hidden & BODY_FLAG_LEGS)
 			legs_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_FEET)
+		if(C.flags_bodypart_hidden & BODY_FLAG_FEET)
 			feet_exposed = 0
+		if(istype(C, /obj/item/clothing/suit/storage/marine))
+			armor_on = 1
+		if(istype(C, /obj/item/clothing/head/helmet/marine))
+			helmet_on = 1
 
 	flavor_text = flavor_texts["general"]
 	flavor_text += "\n\n"
 	for(var/T in flavor_texts)
 		if(flavor_texts[T] && flavor_texts[T] != "")
-			if((T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed))
+			if((T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed) || (T == "armor" && armor_on) || (T == "helmet" && helmet_on))
+				flavor_text += "[capitalize(T)]: "
+				flavor_text += "\n\n"
 				flavor_text += flavor_texts[T]
 				flavor_text += "\n\n"
+
+	// Variable inserts
+	flavor_text = replacetext(flavor_text, "%bloodtype%", blood_type)
+	flavor_text = replacetext(flavor_text, "%rank%", get_paygrade())
+	flavor_text = replacetext(flavor_text, "%name%", name)
+
 	return ..()
 
 
@@ -1266,8 +1284,12 @@
 		TRACKER_CSL = /datum/squad/marine/charlie,
 		TRACKER_DSL = /datum/squad/marine/delta,
 		TRACKER_ESL = /datum/squad/marine/echo,
-		TRACKER_FSL = /datum/squad/marine/cryo
+		TRACKER_FSL = /datum/squad/marine/cryo,
+		TRACKER_ISL = /datum/squad/marine/intel
 	)
+
+	hud_used.locate_leader.overlays.Cut()
+
 	switch(tracker_setting)
 		if(TRACKER_SL)
 			if(assigned_squad)
@@ -1276,11 +1298,15 @@
 			var/obj/structure/machinery/computer/shuttle_control/C = SSticker.mode.active_lz
 			if(!C) //no LZ selected
 				hud_used.locate_leader.icon_state = "trackoff"
-			else if(C.z != src.z || get_dist(src,C) < 1)
+			else if(!SSmapping.same_z_map(src.z, C.z) || get_dist(src,C) < 1)
 				hud_used.locate_leader.icon_state = "trackondirect_lz"
 			else
 				hud_used.locate_leader.setDir(Get_Compass_Dir(src,C))
 				hud_used.locate_leader.icon_state = "trackon_lz"
+				if(C.z > z)
+					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "up")
+				if(C.z < z)
+					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "down")
 			return
 		if(TRACKER_FTL)
 			if(assigned_squad)
@@ -1318,17 +1344,21 @@
 		return
 
 	var/atom/tracking_atom = H
-	if(tracking_atom.z != src.z && SSinterior.in_interior(tracking_atom))
+	if(tracking_atom.z != z && SSinterior.in_interior(tracking_atom))
 		var/datum/interior/interior = SSinterior.get_interior_by_coords(tracking_atom.x, tracking_atom.y, tracking_atom.z)
 		var/atom/exterior = interior.exterior
 		if(exterior)
 			tracking_atom = exterior
 
-	if(tracking_atom.z != src.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
+	if(!SSmapping.same_z_map(z, tracking_atom.z) || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
 		hud_used.locate_leader.icon_state = "trackondirect[tracking_suffix]"
 	else
 		hud_used.locate_leader.setDir(Get_Compass_Dir(src, tracking_atom))
 		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
+		if(tracking_atom.z > z)
+			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "up")
+		if(tracking_atom.z < z)
+			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "down")
 
 /mob/living/carbon/proc/locate_nearest_nuke()
 	if(!GLOB.bomb_set)
@@ -1671,7 +1701,7 @@
 		drop_inv_item_on_ground(restraint)
 
 /mob/living/carbon/human/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, list/slot_equipment_priority)
-	if(species)
+	if(species && !slot_equipment_priority)
 		slot_equipment_priority = species.slot_equipment_priority
 	return ..(W,ignore_delay,slot_equipment_priority)
 
@@ -1688,6 +1718,10 @@
 	set category = "IC"
 
 	var/HTML = "<body>"
+	HTML += "You may include %bloodtype% %rank% or %name% as inserts."
+	HTML += "<br>"
+	HTML += "The %rank% will include a space after if applicable."
+	HTML += "<br>"
 	HTML += "<tt>"
 	HTML += "<a href='byond://?src=\ref[src];flavor_change=general'>General:</a> "
 	HTML += TextPreview(flavor_texts["general"])
@@ -1716,10 +1750,13 @@
 	HTML += "<a href='byond://?src=\ref[src];flavor_change=feet'>Feet:</a> "
 	HTML += TextPreview(flavor_texts["feet"])
 	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=armor'>Armor:</a> "
+	HTML += TextPreview(flavor_texts["armor"])
+	HTML += "<br>"
 	HTML += "<hr />"
 	HTML +="<a href='byond://?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
-	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", width = 430, height = 300)
+	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", width = 430, height = 430)
 
 /mob/living/carbon/human/throw_item(atom/target)
 	if(!throw_allowed)
@@ -1728,6 +1765,13 @@
 			to_chat(src, SPAN_DANGER("You are currently unable to throw harmful items."))
 			return
 	. = ..()
+
+/mob/living/carbon/human/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
+	var/turf/above = SSmapping.get_turf_above(thrower)
+	if(above && above.z == target.z)
+		to_chat(thrower, SPAN_WARNING("You can't throw someone that high!"))
+		return
+	..()
 
 /mob/living/carbon/human/equip_to_slot_if_possible(obj/item/equipping_item, slot, ignore_delay = 1, del_on_fail = 0, disable_warning = 0, redraw_mob = 1, permanent = 0)
 
@@ -1824,5 +1868,4 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
-
 

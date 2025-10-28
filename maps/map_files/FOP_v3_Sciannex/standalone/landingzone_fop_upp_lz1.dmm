@@ -1,0 +1,3927 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aj" = (
+/obj/structure/window/framed/prison/reinforced/hull,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"am" = (
+/obj/structure/window,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"ar" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/obj/structure/platform_decoration/metal/almayer/northeast,
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"as" = (
+/turf/open/floor/plating,
+/area/fiorina/oob)
+"av" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/sheet/mineral/plastic,
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"ax" = (
+/obj/structure/stairs/perspective,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"ay" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison/darkpurple2,
+/area/event/metal/dynamic)
+"az" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/oob)
+"aH" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"aK" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/fiorina/tumor/servers)
+"aN" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"aO" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open/space,
+/area/fiorina/oob)
+"aR" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"aV" = (
+/obj/item/ammo_casing{
+	icon_state = "casing_8"
+	},
+/turf/open/floor/prison/darkpurple2/northwest,
+/area/event/metal/dynamic)
+"aY" = (
+/turf/open/floor/prison/darkpurple2/east,
+/area/event/metal/dynamic)
+"be" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"bq" = (
+/obj/structure/filingcabinet/disk,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"bA" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"bF" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/turf/open/space,
+/area/fiorina/oob)
+"bU" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"bW" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"bZ" = (
+/obj/structure/disposalpipe/segment{
+	color = "#c4c4c4";
+	dir = 2;
+	layer = 6;
+	name = "overhead pipe";
+	pixel_x = -16;
+	pixel_y = 12
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"cj" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"cy" = (
+/obj/structure/monorail{
+	dir = 4;
+	name = "launch track"
+	},
+/turf/open/space,
+/area/fiorina/oob)
+"cH" = (
+/obj/structure/window/framed/prison,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"cI" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/spawner/random/powercell,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"cX" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/prison/darkpurple2/southeast,
+/area/fiorina/tumor/servers)
+"dc" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/space,
+/area/fiorina/oob)
+"di" = (
+/turf/closed/wall/prison,
+/area/fiorina/tumor/servers)
+"dt" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/west,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"dH" = (
+/obj/structure/xenoautopsy/tank,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/event/metal/dynamic)
+"dO" = (
+/obj/item/stack/sheet/metal,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"dR" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/darkpurple2/east,
+/area/fiorina/tumor/servers)
+"ed" = (
+/obj/item/clothing/head/helmet/space/uscm,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"eG" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
+"eN" = (
+/obj/structure/prop/dam/crane{
+	bound_height = 32;
+	climbable = 1;
+	pixel_y = -23
+	},
+/obj/structure/xenoautopsy/tank/larva{
+	pixel_y = -1;
+	layer = 3.1
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"eX" = (
+/obj/structure/surface/rack,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"fa" = (
+/obj/structure/disposalpipe/segment{
+	color = "#c4c4c4";
+	dir = 2;
+	layer = 6;
+	name = "overhead pipe";
+	pixel_x = -16;
+	pixel_y = 12
+	},
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"fn" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"fB" = (
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"fN" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/turf/open/space,
+/area/fiorina/oob)
+"fW" = (
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"fX" = (
+/turf/open/auto_turf/sand/layer1,
+/area/event/metal/dynamic)
+"gc" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison/darkpurple2/west,
+/area/event/metal/dynamic)
+"gD" = (
+/obj/structure/window/framed/prison/reinforced,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"gG" = (
+/obj/structure/xenoautopsy/tank/broken,
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"gH" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"gI" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/monorail{
+	dir = 9;
+	name = "launch track"
+	},
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"gX" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/monorail{
+	dir = 5;
+	name = "launch track"
+	},
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"hb" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"hj" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/prison/darkpurple2/northeast,
+/area/event/metal/dynamic)
+"hz" = (
+/obj/item/tool/screwdriver,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"hH" = (
+/obj/item/stock_parts/micro_laser/ultra,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"hO" = (
+/obj/item/frame/rack,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"hQ" = (
+/obj/item/disk/data,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"hY" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/fiorina/tumor/servers)
+"ik" = (
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"il" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/tumor/servers)
+"iu" = (
+/obj/structure/closet/crate/internals,
+/obj/item/tool/crew_monitor,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"iw" = (
+/obj/item/ammo_casing{
+	icon_state = "casing_6_1"
+	},
+/turf/open/floor/prison/darkpurple2,
+/area/event/metal/dynamic)
+"iz" = (
+/turf/open/floor/prison/floor_plate,
+/area/event/metal/dynamic)
+"iD" = (
+/obj/structure/prop/almayer/computers/sensor_computer2,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"iT" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/prison/darkpurple2/north,
+/area/fiorina/tumor/servers)
+"jo" = (
+/obj/item/ammo_casing{
+	dir = 6;
+	icon_state = "casing_10_1"
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"jt" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/north,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"jy" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"jM" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/space,
+/area/fiorina/oob)
+"ka" = (
+/obj/item/stack/cable_coil,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"kc" = (
+/turf/open/floor/prison/darkpurplefull2/northwest,
+/area/event/metal/dynamic)
+"kn" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7;
+	pixel_x = 17
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"kZ" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"lb" = (
+/obj/item/stack/sheet/metal,
+/turf/open/space,
+/area/fiorina/oob)
+"lx" = (
+/obj/item/stock_parts/manipulator/pico,
+/turf/open/floor/prison/darkpurple2/east,
+/area/fiorina/tumor/servers)
+"lF" = (
+/obj/item/tool/wrench,
+/turf/open/floor/prison/darkpurple2/west,
+/area/fiorina/tumor/servers)
+"mb" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison/darkpurple2/east,
+/area/event/metal/dynamic)
+"mt" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/darkpurple2,
+/area/fiorina/tumor/servers)
+"mw" = (
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"mD" = (
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"nc" = (
+/turf/open/floor/prison/darkpurple2/west,
+/area/event/metal/dynamic)
+"no" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"nC" = (
+/obj/structure/surface/rack,
+/obj/item/tool/lighter,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"oc" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/monorail{
+	dir = 4;
+	name = "launch track"
+	},
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"oi" = (
+/obj/structure/disposalpipe/segment{
+	color = "#c4c4c4";
+	dir = 4;
+	layer = 6;
+	name = "overhead pipe";
+	pixel_y = 20
+	},
+/turf/closed/wall/prison,
+/area/fiorina/tumor/servers)
+"om" = (
+/obj/structure/lattice,
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/space/basic,
+/area/fiorina/oob)
+"oy" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/space,
+/area/fiorina/oob)
+"oz" = (
+/obj/structure/machinery/computer3/server/rack,
+/obj/structure/window{
+	dir = 4
+	},
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"oM" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"oU" = (
+/obj/structure/window{
+	dir = 1
+	},
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"oX" = (
+/obj/structure/platform/metal/strata,
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"pg" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"pj" = (
+/turf/open/floor/prison/darkpurple2/southwest,
+/area/event/metal/dynamic)
+"pl" = (
+/turf/open/space/basic,
+/area/fiorina/oob)
+"pm" = (
+/obj/item/stack/rods/plasteel,
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"po" = (
+/obj/item/tool/wrench,
+/turf/open/floor/prison/darkpurple2/southeast,
+/area/fiorina/tumor/servers)
+"pM" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/prison/darkyellow2/north,
+/area/fiorina/tumor/servers)
+"pQ" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"pR" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"pT" = (
+/obj/item/stack/rods/plasteel,
+/turf/open/auto_turf/sand/layer1,
+/area/event/metal/dynamic)
+"qg" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7;
+	pixel_x = 17
+	},
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"qs" = (
+/obj/structure/xenoautopsy/tank/larva,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/event/metal/dynamic)
+"qx" = (
+/obj/structure/platform/metal/kutjevo/east,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"qO" = (
+/obj/structure/surface/rack,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7;
+	pixel_x = 17
+	},
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"rn" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"rt" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"sb" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"sq" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"sr" = (
+/obj/structure/machinery/computer3/server/rack,
+/obj/structure/barricade/handrail/type_b{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"su" = (
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"tc" = (
+/turf/closed/wall/r_wall/prison,
+/area/fiorina/tumor/servers)
+"tt" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"tY" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"up" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
+"uG" = (
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"vd" = (
+/turf/open/floor/solarpanel,
+/area/fiorina/oob)
+"vr" = (
+/obj/structure/prop/invuln/minecart_tracks/bumper{
+	dir = 8
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"vS" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	explo_proof = 1;
+	name = "launch bay door"
+	},
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/oob)
+"wp" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	explo_proof = 1;
+	name = "launch bay door"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/oob)
+"ww" = (
+/obj/item/tool/shovel/etool{
+	pixel_y = 7;
+	pixel_x = 8
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/event/metal/dynamic)
+"wA" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/prison/darkpurple2/east,
+/area/fiorina/tumor/servers)
+"wW" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"wZ" = (
+/obj/item/ammo_casing{
+	icon_state = "casing_8"
+	},
+/turf/open/floor/prison/darkpurple2,
+/area/event/metal/dynamic)
+"xf" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"xo" = (
+/turf/open/floor/prison/darkpurple2/east,
+/area/fiorina/tumor/servers)
+"xv" = (
+/obj/item/disk,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"xF" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"xP" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"xT" = (
+/obj/item/stock_parts/manipulator/pico,
+/turf/open/floor/prison/darkpurple2/southeast,
+/area/fiorina/tumor/servers)
+"xU" = (
+/obj/structure/machinery/computer3/server/rack,
+/obj/structure/window{
+	dir = 8
+	},
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"xY" = (
+/turf/open/space,
+/area/fiorina/oob)
+"yo" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"yG" = (
+/obj/structure/xenoautopsy/tank/hugger,
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/prison/floor_marked/southwest,
+/area/event/metal/dynamic)
+"yJ" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"yP" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/fiorina/tumor/servers)
+"zH" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"zI" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"zM" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	health = 300
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	pixel_y = 10
+	},
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"zO" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"zP" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"zU" = (
+/obj/structure/lz_sign/prison_sign,
+/turf/open/floor/prison/floor_plate,
+/area/event/metal/dynamic)
+"zY" = (
+/turf/open/floor/prison/darkpurple2/southeast,
+/area/fiorina/tumor/servers)
+"Bb" = (
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"Bq" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/objective,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"Bu" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"Bx" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"BG" = (
+/obj/structure/prop/almayer/computers/sensor_computer1,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"BJ" = (
+/obj/structure/bedsheetbin{
+	icon_state = "linenbin-empty";
+	name = "solar lattice";
+	pixel_y = 6
+	},
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"BM" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"BR" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"Ch" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"Cs" = (
+/turf/open/floor/prison/darkpurple2/northwest,
+/area/fiorina/tumor/servers)
+"Cz" = (
+/obj/item/stack/sandbags_empty/half,
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"CA" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/space,
+/area/fiorina/oob)
+"CE" = (
+/obj/item/stack/cable_coil,
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/prison/darkpurple2/north,
+/area/fiorina/tumor/servers)
+"CF" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"Df" = (
+/obj/structure/surface/rack,
+/obj/item/tool/crowbar/red,
+/obj/item/storage/pill_bottle/inaprovaline/skillless,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"Ds" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
+"Dv" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"DU" = (
+/obj/item/stack/rods,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"Em" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"Eo" = (
+/obj/item/disk,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"Er" = (
+/obj/structure/disposalpipe/segment{
+	color = "#c4c4c4";
+	dir = 2;
+	layer = 6;
+	name = "overhead pipe";
+	pixel_x = -16;
+	pixel_y = 12
+	},
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"EH" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"EP" = (
+/turf/open/floor/prison/darkpurple2/northeast,
+/area/event/metal/dynamic)
+"EV" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"Fb" = (
+/obj/structure/stairs/perspective{
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"Fj" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison/darkpurple2/southeast,
+/area/event/metal/dynamic)
+"Fl" = (
+/turf/open/floor/prison/darkpurple2/northwest,
+/area/event/metal/dynamic)
+"Fy" = (
+/obj/structure/platform/metal/kutjevo/north,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"FR" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"FY" = (
+/obj/structure/disposalpipe/segment{
+	color = "#c4c4c4";
+	dir = 4;
+	layer = 6;
+	name = "overhead pipe";
+	pixel_y = 20
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/tumor/servers)
+"Gf" = (
+/obj/item/stack/cable_coil,
+/turf/open/floor/prison/darkpurple2,
+/area/fiorina/tumor/servers)
+"Gl" = (
+/obj/item/stack/rods,
+/turf/open/space,
+/area/fiorina/oob)
+"Gt" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/event/metal/dynamic)
+"Gy" = (
+/obj/structure/platform/metal/kutjevo,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"Gz" = (
+/obj/item/tool/crowbar,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"GJ" = (
+/turf/open/floor/prison/darkpurple2/west,
+/area/fiorina/tumor/servers)
+"GW" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"He" = (
+/turf/open/floor/prison/darkpurple2/north,
+/area/event/metal/dynamic)
+"Hg" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/floor/prison/darkpurple2,
+/area/fiorina/tumor/servers)
+"Hm" = (
+/obj/item/circuitboard/machine/rdserver,
+/turf/open/floor/prison/floorscorched1,
+/area/fiorina/tumor/servers)
+"Ho" = (
+/obj/structure/tunnel/maint_tunnel,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"Hu" = (
+/turf/open/floor/prison/darkpurple2/southwest,
+/area/fiorina/tumor/servers)
+"HD" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"HQ" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/fiorina/tumor/servers)
+"Ig" = (
+/obj/structure/machinery/computer3/server/rack,
+/obj/structure/barricade/handrail/type_b{
+	dir = 8;
+	layer = 3.5
+	},
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"Ih" = (
+/obj/structure/prop/invuln{
+	desc = "An inflated membrane. This one is puncture proof. Wow!";
+	icon = 'icons/obj/items/inflatable.dmi';
+	icon_state = "wall";
+	name = "inflatable wall"
+	},
+/turf/open/space/basic,
+/area/fiorina/oob)
+"Il" = (
+/obj/structure/stairs/perspective{
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"Iu" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/lattice,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"IJ" = (
+/turf/open/floor/prison/darkpurple2,
+/area/fiorina/tumor/servers)
+"IW" = (
+/obj/structure/largecrate/supply/supplies/mre,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"IX" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic)
+"IY" = (
+/obj/structure/xenoautopsy/tank/alien,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/event/metal/dynamic)
+"Jl" = (
+/obj/structure/disposalpipe/segment{
+	color = "#c4c4c4";
+	dir = 2;
+	layer = 6;
+	name = "overhead pipe";
+	pixel_x = -16;
+	pixel_y = 12
+	},
+/turf/closed/wall/prison,
+/area/fiorina/tumor/servers)
+"JR" = (
+/turf/open/floor/prison/floor_marked/southwest,
+/area/event/metal/dynamic)
+"Ka" = (
+/obj/structure/platform/metal/kutjevo/west,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"Kc" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/sheet/mineral/plastic,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"Ke" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open/space,
+/area/fiorina/oob)
+"Kt" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control/upp{
+	name = "Remote dropship navigation computer"
+	},
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"Kv" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"Li" = (
+/obj/structure/powerloader_wreckage,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/floor_plate,
+/area/event/metal/dynamic)
+"Lo" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"Lt" = (
+/obj/item/stack/cable_coil,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"Lu" = (
+/turf/open/floor/prison/darkyellow2/north,
+/area/fiorina/tumor/servers)
+"LJ" = (
+/obj/structure/disposalpipe/segment{
+	color = "#c4c4c4";
+	dir = 4;
+	layer = 6;
+	name = "overhead pipe";
+	pixel_y = 20
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 13
+	},
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"LQ" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = -3
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"LR" = (
+/obj/structure/machinery/computer3/server/rack,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"Mc" = (
+/obj/item/prop/almayer/comp_closed{
+	pixel_x = -1
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"Mi" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/space/basic,
+/area/fiorina/oob)
+"Mn" = (
+/obj/structure/prop/structure_lattice{
+	dir = 4
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 4;
+	layer = 3.1;
+	pixel_y = 10
+	},
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"Mp" = (
+/obj/structure/disposalpipe/segment{
+	color = "#c4c4c4";
+	dir = 2;
+	layer = 6;
+	name = "overhead pipe";
+	pixel_x = -16;
+	pixel_y = 12
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/tumor/servers)
+"MS" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/barricade/handrail{
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "solar lattice"
+	},
+/turf/open/space,
+/area/fiorina/oob)
+"Nb" = (
+/obj/structure/monorail{
+	dir = 10;
+	name = "launch track"
+	},
+/turf/open/space,
+/area/fiorina/oob)
+"Nd" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/closet/crate/miningcar{
+	layer = 3.1;
+	name = "\improper materials storage bin";
+	pixel_y = 8
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"Nf" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"Ng" = (
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"Nk" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/darkpurple2/northwest,
+/area/fiorina/tumor/servers)
+"NJ" = (
+/turf/open/floor/prison/darkpurple2,
+/area/event/metal/dynamic)
+"NN" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"NU" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/east,
+/turf/open/floor/almayer_hull,
+/area/fiorina/oob)
+"Oo" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"OB" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"Pm" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 13
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"PN" = (
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"PS" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "N-W Research Landing Zone";
+	faction = "UPP"
+	},
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"Qd" = (
+/obj/structure/stairs/perspective{
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/prison/darkpurple2,
+/area/event/metal/dynamic)
+"Qf" = (
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison/darkpurple2,
+/area/fiorina/tumor/servers)
+"QM" = (
+/obj/structure/monorail{
+	dir = 4;
+	name = "launch track"
+	},
+/turf/open/space/basic,
+/area/fiorina/oob)
+"Rk" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"Rm" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"Ry" = (
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"RO" = (
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 8;
+	explosive_multiplier = 0.1;
+	pixel_x = -5
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"Sh" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/metal/stair_cut/platform_left,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"SD" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/fire/empty,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"SK" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 13
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"SQ" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -9
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"SX" = (
+/turf/open/floor/prison/platingdmg1,
+/area/fiorina/oob)
+"Tg" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"Tj" = (
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/floor/plating,
+/area/fiorina/oob)
+"Tk" = (
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/fiorina/tumor/servers)
+"Tv" = (
+/obj/structure/closet/fireaxecabinet{
+	pixel_y = 32
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"TG" = (
+/obj/structure/disposalpipe/segment{
+	color = "#c4c4c4";
+	dir = 4;
+	layer = 6;
+	name = "overhead pipe";
+	pixel_y = 20
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"TV" = (
+/obj/structure/monorail{
+	dir = 6;
+	name = "launch track"
+	},
+/turf/open/space/basic,
+/area/fiorina/oob)
+"Ua" = (
+/obj/structure/lattice,
+/turf/open/space,
+/area/fiorina/oob)
+"Ub" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 5
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"Ut" = (
+/obj/structure/window/framed/prison/reinforced/hull,
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"Ux" = (
+/turf/open/floor/prison/darkyellow2/northwest,
+/area/fiorina/tumor/servers)
+"UC" = (
+/obj/structure/prop/almayer/computers/sensor_computer3,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"UK" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"UW" = (
+/turf/open/floor/prison/darkpurple2/north,
+/area/fiorina/tumor/servers)
+"Vg" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southeast,
+/obj/structure/platform_decoration/metal/almayer/southwest,
+/turf/open/floor/plating/prison,
+/area/event/metal/dynamic)
+"Vs" = (
+/turf/open/floor/prison/darkpurple2/southeast,
+/area/event/metal/dynamic)
+"VE" = (
+/obj/structure/xenoautopsy/tank/hugger,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/event/metal/dynamic)
+"WD" = (
+/obj/structure/largecrate/supply/explosives/mortar_flare,
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"WH" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"WI" = (
+/obj/structure/machinery/computer3/server/rack,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"Xe" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"Xn" = (
+/obj/structure/disposalpipe/segment{
+	color = "#c4c4c4";
+	dir = 4;
+	layer = 6;
+	name = "overhead pipe";
+	pixel_y = 20
+	},
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+"XA" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"XD" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"XG" = (
+/obj/structure/prop/invuln/minecart_tracks/bumper{
+	dir = 1
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"Ys" = (
+/turf/open/floor/plating/prison,
+/area/fiorina/oob)
+"Yx" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/servers)
+"YK" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -8
+	},
+/turf/open/floor/prison/darkpurple2/southwest,
+/area/event/metal/dynamic)
+"YL" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/turf/open/floor/prison,
+/area/event/metal/dynamic)
+"YR" = (
+/obj/structure/closet/crate/trashcart,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/servers)
+"Zh" = (
+/obj/structure/lattice,
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open/space/basic,
+/area/fiorina/oob)
+"Zk" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/floor_plate,
+/area/event/metal/dynamic)
+"ZC" = (
+/turf/open/floor/prison/darkpurple2/northeast,
+/area/fiorina/tumor/servers)
+"ZG" = (
+/obj/structure/filingcabinet/disk,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/prison/darkpurplefull2,
+/area/fiorina/tumor/servers)
+"ZH" = (
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	},
+/turf/closed/wall/prison,
+/area/fiorina/tumor/servers)
+"ZN" = (
+/obj/structure/machinery/telecomms/relay/preset/tower/all,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic)
+"ZP" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/stack/sheet/mineral/plastic,
+/turf/open/floor/prison,
+/area/fiorina/tumor/servers)
+
+(1,1,1) = {"
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+xY
+xY
+xY
+xY
+xY
+xY
+aK
+aK
+il
+aK
+aK
+aK
+aK
+aK
+"}
+(2,1,1) = {"
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+be
+yo
+yo
+yo
+hb
+pl
+pl
+pl
+pl
+pl
+be
+yJ
+yJ
+yJ
+hb
+be
+yJ
+yJ
+yJ
+hb
+be
+yJ
+yJ
+yJ
+hb
+pl
+pl
+pl
+pl
+xY
+xY
+xY
+xY
+xY
+xY
+aK
+aK
+il
+aK
+aK
+uG
+aK
+aK
+"}
+(3,1,1) = {"
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+bW
+zO
+qx
+dt
+Zh
+pl
+pl
+pl
+pl
+be
+Iu
+vd
+vd
+vd
+Zh
+bW
+vd
+vd
+vd
+Zh
+bW
+vd
+vd
+vd
+pQ
+hb
+pl
+pl
+pl
+xY
+xY
+xY
+xY
+xY
+xY
+aK
+aK
+aK
+aK
+aK
+HD
+Cs
+GJ
+"}
+(4,1,1) = {"
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+bW
+Gy
+ZN
+Fy
+rt
+pl
+pl
+pl
+pl
+sb
+Bx
+vd
+BJ
+vd
+tY
+Bx
+vd
+BJ
+vd
+tY
+Bx
+vd
+BJ
+vd
+tY
+gH
+pl
+pl
+pl
+xY
+xY
+pl
+xY
+xY
+aK
+aK
+aK
+aK
+aK
+su
+cI
+UW
+WI
+"}
+(5,1,1) = {"
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+bW
+jt
+Ka
+NU
+rt
+pl
+pl
+pl
+pl
+sb
+Bx
+vd
+vd
+vd
+Zh
+bW
+vd
+vd
+vd
+Zh
+bW
+vd
+vd
+vd
+tY
+gH
+pl
+pl
+pl
+pl
+pl
+pl
+xY
+aK
+aK
+aK
+aK
+aK
+aK
+su
+HD
+ZC
+xo
+"}
+(6,1,1) = {"
+pl
+pl
+pl
+xY
+xY
+pl
+pl
+pl
+zP
+Ds
+oM
+eG
+om
+pl
+pl
+pl
+pl
+sb
+Nf
+MS
+cj
+Ke
+Bu
+Bu
+MS
+cj
+Ke
+Bu
+Bu
+MS
+cj
+Ke
+xF
+gH
+pl
+pl
+pl
+Ih
+Ih
+Ih
+xY
+aK
+aK
+aK
+il
+aK
+aK
+su
+uG
+uG
+uG
+"}
+(7,1,1) = {"
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+Gt
+Gt
+Ut
+Ut
+Ut
+Gt
+Gt
+Ut
+Ut
+Ut
+Gt
+Gt
+Ut
+Ut
+Ut
+Gt
+Gt
+Ut
+Ut
+Ut
+Gt
+Gt
+Ut
+Ut
+Ut
+Gt
+Gt
+Ut
+Ut
+Ut
+az
+Ih
+aK
+aK
+aK
+aK
+aK
+il
+aK
+zM
+Yx
+uG
+Cs
+GJ
+"}
+(8,1,1) = {"
+pl
+pl
+xY
+pl
+pl
+pl
+Gt
+Gt
+Gt
+ar
+Oo
+Vg
+Gt
+Gt
+ar
+Oo
+Vg
+Gt
+Gt
+ar
+Oo
+Vg
+Gt
+EV
+qs
+Ng
+IY
+Ng
+yG
+Ng
+UK
+Ng
+Ng
+tt
+pR
+pm
+fX
+aK
+aK
+aK
+aK
+aK
+aK
+aK
+il
+su
+su
+su
+eX
+UW
+WI
+"}
+(9,1,1) = {"
+pl
+pl
+xY
+pl
+pl
+Gt
+Gt
+Ng
+tt
+IX
+Ng
+Ng
+IX
+up
+Ng
+Ng
+Ng
+IX
+up
+Ng
+Ng
+Ng
+IX
+Ng
+IY
+Ng
+VE
+Ng
+qs
+Ng
+aV
+nc
+nc
+YK
+jo
+Cz
+fX
+ww
+aK
+aK
+aK
+aK
+aK
+aK
+il
+no
+zM
+su
+uG
+ZC
+xo
+"}
+(10,1,1) = {"
+pl
+pl
+xY
+xY
+Gt
+Gt
+YL
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+pR
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+He
+gG
+Li
+NJ
+Ng
+IX
+Cz
+Cz
+pT
+il
+aK
+aK
+pl
+pl
+il
+Yx
+su
+su
+Lo
+uG
+hz
+"}
+(11,1,1) = {"
+pl
+pl
+pl
+az
+az
+Gt
+GW
+Fl
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+pj
+Zk
+wZ
+XA
+UK
+Ng
+SQ
+aN
+aj
+aK
+Ih
+pl
+pl
+il
+su
+zM
+su
+uG
+Cs
+GJ
+"}
+(12,1,1) = {"
+pl
+pl
+pl
+wp
+as
+wp
+oX
+He
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+iw
+aY
+Vs
+Ng
+Ng
+Ng
+Ng
+Ng
+aj
+pl
+pl
+pl
+pl
+il
+no
+su
+Yx
+uG
+UW
+WI
+"}
+(13,1,1) = {"
+pl
+pl
+pl
+wp
+as
+wp
+oX
+He
+kc
+Kv
+wW
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+wW
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+wW
+Kv
+kc
+NJ
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+aj
+pl
+pl
+pl
+pl
+il
+su
+zM
+su
+uG
+ZC
+xo
+"}
+(14,1,1) = {"
+TV
+Mi
+Mi
+vS
+Tj
+vS
+gX
+He
+kc
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+kc
+NJ
+Ch
+IX
+Ng
+IX
+Ng
+Ng
+Ng
+il
+pl
+pl
+pl
+pl
+il
+di
+di
+su
+uG
+uG
+uG
+"}
+(15,1,1) = {"
+QM
+pl
+pl
+wp
+as
+wp
+oc
+He
+kc
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+kc
+NJ
+Ch
+IX
+Ng
+IX
+Ng
+Ng
+ik
+il
+il
+aj
+aj
+aj
+il
+FY
+il
+PN
+PN
+PN
+PN
+"}
+(16,1,1) = {"
+cy
+xY
+pl
+wp
+as
+wp
+oc
+He
+kc
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+kc
+NJ
+Ch
+Ng
+Ng
+Ng
+Il
+tc
+tc
+tc
+fW
+Df
+fW
+nC
+di
+oi
+di
+RO
+XD
+su
+su
+"}
+(17,1,1) = {"
+cy
+xY
+xY
+wp
+as
+wp
+oc
+He
+kc
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+kc
+NJ
+Fl
+nc
+nc
+nc
+gc
+Rm
+fW
+fW
+fW
+fW
+fW
+WH
+uG
+TG
+uG
+su
+Rk
+su
+su
+"}
+(18,1,1) = {"
+cy
+xY
+xY
+wp
+as
+wp
+oc
+He
+kc
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+PS
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+kc
+NJ
+He
+Ng
+Ng
+Ng
+zH
+Rm
+fW
+fW
+fW
+fW
+fW
+WH
+uG
+Xn
+uG
+su
+su
+su
+su
+"}
+(19,1,1) = {"
+cy
+xY
+xY
+wp
+as
+wp
+oc
+He
+kc
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+kc
+NJ
+EP
+aY
+aY
+aY
+mb
+Rm
+fW
+fW
+fW
+fW
+fW
+WH
+uG
+LJ
+uG
+su
+su
+su
+su
+"}
+(20,1,1) = {"
+cy
+xY
+xY
+wp
+as
+wp
+oc
+He
+kc
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+kc
+NJ
+Ch
+Ng
+pR
+Ng
+zH
+Nk
+Hu
+fW
+fW
+fW
+fW
+Ho
+di
+oi
+di
+PN
+PN
+su
+su
+"}
+(21,1,1) = {"
+cy
+xY
+xY
+wp
+as
+wp
+oc
+He
+kc
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+kc
+NJ
+Ch
+IX
+Ng
+IX
+Fb
+tc
+cX
+uG
+uG
+di
+il
+il
+il
+FY
+di
+su
+su
+su
+su
+"}
+(22,1,1) = {"
+Nb
+CA
+CA
+vS
+Tj
+vS
+gI
+He
+kc
+Kt
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+kc
+NJ
+Ch
+IX
+Ng
+IX
+ik
+tc
+bZ
+fa
+Er
+Jl
+Mp
+il
+il
+il
+ZH
+di
+di
+di
+su
+"}
+(23,1,1) = {"
+xY
+xY
+xY
+wp
+as
+wp
+oX
+He
+kc
+Kv
+wW
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+wW
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+Bb
+wW
+Kv
+kc
+NJ
+Ng
+Ng
+Ng
+Ng
+tc
+tc
+uG
+uG
+uG
+di
+di
+di
+di
+av
+ZP
+bq
+di
+uG
+fW
+"}
+(24,1,1) = {"
+xY
+xY
+xY
+wp
+as
+wp
+oX
+He
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+kc
+NJ
+nc
+pj
+Ng
+Ch
+gD
+ZG
+xv
+fW
+WH
+uG
+fW
+fW
+fW
+uG
+ka
+fW
+NN
+uG
+fW
+"}
+(25,1,1) = {"
+xY
+xY
+xY
+az
+az
+Gt
+aH
+EP
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+Vs
+zU
+NJ
+Ng
+Ch
+gD
+Kc
+fW
+fW
+NN
+uG
+fW
+fW
+fW
+uG
+fW
+fW
+fW
+uG
+GJ
+"}
+(26,1,1) = {"
+xY
+xY
+xY
+xY
+Gt
+Gt
+YL
+Ng
+Ng
+Ng
+pR
+Ng
+Ng
+Ng
+Ng
+Ng
+sq
+sq
+sq
+He
+Ng
+NJ
+sq
+sq
+sq
+Ng
+Ng
+Ng
+Ng
+Ng
+He
+iz
+iz
+NJ
+Ng
+Ch
+gD
+Bq
+fW
+fW
+NN
+uG
+fW
+fW
+fW
+uG
+fW
+fW
+fW
+uG
+fW
+"}
+(27,1,1) = {"
+xY
+xY
+xY
+xY
+pl
+Gt
+Gt
+Ng
+Ng
+IX
+Ng
+Ng
+IX
+IX
+Ng
+Ng
+IX
+IX
+Ng
+He
+Ng
+NJ
+Ng
+IX
+IX
+Ng
+IX
+IX
+Ng
+pR
+EP
+aY
+aY
+Vs
+Ng
+Ch
+gD
+ZG
+fW
+fW
+WH
+uG
+fW
+fW
+fW
+uG
+Dv
+fW
+NN
+uG
+xo
+"}
+(28,1,1) = {"
+xY
+xY
+xY
+xY
+pl
+pl
+Gt
+Gt
+LQ
+Ng
+Ng
+Ng
+Ng
+Ng
+Pm
+Ng
+Ng
+Ng
+Ng
+He
+Ng
+NJ
+Ng
+IX
+Ng
+Ng
+Ng
+Ng
+bU
+Ng
+Ng
+Ng
+Ng
+Ng
+Ng
+xf
+tc
+tc
+Sh
+zI
+BR
+il
+di
+di
+di
+il
+bA
+zI
+xP
+di
+GJ
+"}
+(29,1,1) = {"
+xY
+xY
+xY
+xY
+pl
+pl
+pl
+Gt
+Gt
+Ut
+Ut
+Ut
+Gt
+Gt
+Gt
+Gt
+Mc
+pR
+Ng
+He
+Ng
+NJ
+Ng
+Ng
+Ng
+dH
+Gz
+JR
+Ng
+JR
+Ng
+IX
+IX
+Ng
+Ng
+WD
+tc
+tc
+pg
+Dv
+mt
+di
+xU
+xU
+xU
+di
+Tg
+fW
+Hg
+cH
+fW
+"}
+(30,1,1) = {"
+xY
+xY
+xY
+xY
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+Gt
+Gt
+Ng
+Ng
+He
+Ng
+NJ
+Ng
+Ng
+Ng
+JR
+Ng
+JR
+Ng
+dH
+Ng
+IX
+IX
+Ry
+iu
+tc
+tc
+qg
+uG
+fW
+IJ
+XD
+PN
+mw
+PN
+Mn
+uG
+fW
+IJ
+cH
+xo
+"}
+(31,1,1) = {"
+xY
+xY
+xY
+xY
+pl
+pl
+dc
+pl
+pl
+DU
+dc
+SX
+fB
+fB
+pl
+pl
+Gt
+Gt
+Tv
+Fl
+nc
+pj
+Ng
+IX
+Ng
+Ng
+Pm
+sq
+sq
+sq
+Ng
+IW
+SK
+mD
+tc
+tc
+tc
+PN
+uG
+su
+uG
+PN
+Lt
+PN
+uG
+Mn
+uG
+uG
+uG
+cH
+cH
+"}
+(32,1,1) = {"
+xY
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+lb
+Ua
+Ua
+pl
+pl
+pl
+pl
+pl
+Gt
+YL
+He
+kc
+NJ
+Ng
+IX
+Ng
+tc
+tc
+gD
+gD
+gD
+tc
+tc
+tc
+tc
+tc
+tc
+GJ
+fW
+fW
+GJ
+GJ
+GJ
+EH
+GJ
+GJ
+GJ
+dO
+GJ
+GJ
+GJ
+EH
+"}
+(33,1,1) = {"
+xY
+pl
+pl
+pl
+xY
+Ua
+pl
+Ys
+xY
+Ua
+xY
+lb
+pl
+pl
+jM
+bF
+xY
+Ut
+Ng
+EP
+aY
+Vs
+Ng
+Ng
+bU
+tc
+PN
+Ux
+PN
+PN
+PN
+su
+su
+Rk
+yP
+fW
+fW
+PN
+PN
+PN
+Eo
+PN
+fW
+fW
+fW
+PN
+PN
+PN
+PN
+PN
+PN
+"}
+(34,1,1) = {"
+xY
+pl
+pl
+pl
+xY
+xY
+Ua
+xY
+Gl
+dc
+pl
+pl
+pl
+pl
+jM
+fB
+oy
+Ut
+Ng
+He
+Ng
+NJ
+bU
+eN
+Ng
+tc
+qg
+Lu
+Ub
+Em
+Em
+Em
+Em
+XG
+yP
+fW
+BM
+xo
+xo
+xo
+xo
+dR
+uG
+fW
+uG
+xo
+xo
+xo
+xo
+xo
+uG
+"}
+(35,1,1) = {"
+xY
+xY
+xY
+xY
+pl
+xY
+pl
+xY
+pl
+xY
+xY
+pl
+pl
+pl
+jM
+ed
+fB
+Gt
+kn
+He
+Ng
+NJ
+Ng
+Pm
+Ng
+tc
+PN
+Lu
+FR
+su
+su
+su
+su
+di
+di
+kZ
+Qf
+di
+xU
+xU
+xU
+di
+iT
+PN
+Qf
+il
+xU
+xU
+xU
+il
+iT
+"}
+(36,1,1) = {"
+xY
+xY
+xY
+xY
+pl
+xY
+pl
+pl
+xY
+Ua
+xY
+pl
+Ua
+pl
+jM
+fB
+aO
+Gt
+Ng
+He
+Ng
+Qd
+tc
+tc
+tc
+tc
+su
+pM
+FR
+su
+su
+PN
+di
+di
+sr
+PN
+IJ
+oU
+Cs
+lF
+Hu
+am
+UW
+PN
+IJ
+oU
+Cs
+GJ
+Hu
+am
+UW
+"}
+(37,1,1) = {"
+xY
+xY
+pl
+pl
+xY
+pl
+pl
+pl
+pl
+pl
+Ua
+pl
+pl
+pl
+jM
+fB
+fN
+Ut
+Ng
+He
+Ng
+ay
+hY
+su
+Tk
+rn
+Tk
+Lu
+FR
+su
+su
+su
+di
+iD
+ax
+PN
+IJ
+uG
+UW
+fW
+IJ
+uG
+UW
+PN
+Gf
+uG
+UW
+fW
+IJ
+uG
+UW
+"}
+(38,1,1) = {"
+xY
+xY
+xY
+pl
+xY
+xY
+pl
+pl
+xY
+pl
+Gl
+pl
+pl
+dc
+jM
+fB
+fN
+Ut
+Ng
+He
+Ng
+ay
+HQ
+PN
+PN
+XD
+PN
+su
+FR
+su
+PN
+di
+il
+di
+Ig
+PN
+IJ
+oU
+ZC
+xo
+xT
+am
+UW
+PN
+IJ
+oU
+ZC
+xo
+zY
+am
+UW
+"}
+(39,1,1) = {"
+xY
+xY
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+Ua
+pl
+pl
+jM
+fB
+fN
+Gt
+Gt
+hj
+aY
+Fj
+hY
+su
+Tk
+rn
+Tk
+su
+FR
+su
+PN
+di
+il
+di
+di
+kZ
+Qf
+di
+LR
+LR
+LR
+di
+iT
+PN
+Qf
+il
+LR
+LR
+LR
+il
+iT
+"}
+(40,1,1) = {"
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+jM
+fB
+fN
+pl
+il
+il
+il
+il
+il
+il
+il
+il
+su
+YR
+FR
+su
+PN
+di
+il
+di
+sr
+PN
+IJ
+oU
+Cs
+GJ
+Hu
+am
+UW
+PN
+IJ
+oU
+Cs
+GJ
+Hu
+am
+UW
+"}
+(41,1,1) = {"
+xY
+pl
+xY
+xY
+pl
+xY
+xY
+xY
+xY
+pl
+xY
+xY
+xY
+xY
+jM
+fB
+fN
+pl
+pl
+pl
+aK
+aK
+aK
+aK
+aK
+di
+qO
+PN
+FR
+su
+OB
+di
+il
+UC
+ax
+PN
+IJ
+uG
+UW
+fW
+IJ
+uG
+UW
+PN
+IJ
+uG
+UW
+fW
+IJ
+hQ
+UW
+"}
+(42,1,1) = {"
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+pl
+xY
+xY
+pl
+xY
+xY
+pl
+jM
+fB
+fN
+pl
+pl
+pl
+aK
+aK
+aK
+aK
+aK
+di
+SD
+PN
+Nd
+su
+su
+di
+il
+di
+Ig
+PN
+IJ
+oU
+ZC
+wA
+po
+am
+UW
+Eo
+IJ
+oU
+ZC
+lx
+zY
+am
+UW
+"}
+(43,1,1) = {"
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+xY
+pl
+xY
+bF
+fN
+pl
+pl
+pl
+aK
+aK
+aK
+aK
+aK
+di
+hO
+su
+FR
+su
+PN
+su
+di
+di
+di
+kZ
+Qf
+di
+oz
+Hm
+oz
+di
+iT
+PN
+Qf
+il
+oz
+oz
+oz
+il
+CE
+"}
+(44,1,1) = {"
+xY
+xY
+xY
+xY
+xY
+pl
+pl
+pl
+pl
+pl
+pl
+xY
+xY
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+aK
+aK
+aK
+aK
+aK
+di
+jy
+jy
+vr
+su
+aR
+jy
+di
+di
+sr
+fW
+uG
+GJ
+GJ
+GJ
+GJ
+GJ
+uG
+fW
+uG
+GJ
+GJ
+GJ
+GJ
+GJ
+uG
+"}
+(45,1,1) = {"
+xY
+xY
+xY
+xY
+xY
+pl
+pl
+pl
+pl
+pl
+pl
+xY
+xY
+pl
+pl
+pl
+pl
+pl
+pl
+pl
+aK
+aK
+aK
+aK
+aK
+di
+su
+CF
+su
+su
+PN
+su
+di
+BG
+ax
+PN
+fW
+PN
+PN
+PN
+PN
+PN
+fW
+fn
+hH
+PN
+Xe
+PN
+PN
+PN
+fW
+"}
+(46,1,1) = {"
+xY
+xY
+xY
+xY
+xY
+pl
+pl
+pl
+pl
+pl
+pl
+xY
+xY
+pl
+pl
+xY
+bF
+pl
+pl
+pl
+aK
+aK
+aK
+aK
+aK
+di
+su
+PN
+su
+su
+su
+su
+di
+di
+Ig
+fW
+uG
+aK
+aK
+aK
+aK
+aK
+uG
+fW
+uG
+xo
+xo
+xo
+xo
+xo
+uG
+"}

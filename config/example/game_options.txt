@@ -58,3 +58,6 @@ ANIMAL_DELAY 0
 
 ## Remove the # in front of this config option to have loyalty implants spawn by default on your server.
 #USE_LOYALTY_IMPLANTS
+
+## Block nuclear device invocation until more marines than this percentage are alive. (0-100)
+nuclear_lock_marines_percentage 0

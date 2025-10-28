@@ -229,7 +229,7 @@
 				/obj/item/toy/sword,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,\
-				/obj/item/clothing/accessory/horrible,\
+				/obj/item/clothing/accessory/tie/horrible,\
 				/obj/item/clothing/shoes/slippers,\
 				/obj/item/clothing/shoes/slippers_worn,\
 				/obj/item/clothing/head/collectable/tophat/super)
@@ -268,11 +268,7 @@
 	icon_state = "loot_goggles"
 
 /obj/effect/spawner/random/goggles/item_to_spawn()
-	return pick(prob(4);/obj/item/clothing/glasses/thermal/syndi/bug_b_gone,\
-				prob(4);/obj/item/clothing/glasses/thermal/syndi,\
-				prob(4);/obj/item/clothing/glasses/thermal/monocle,\
-				prob(4);/obj/item/clothing/glasses/thermal/eyepatch,\
-				prob(4);/obj/item/clothing/glasses/welding/superior,\
+	return pick(prob(4);/obj/item/clothing/glasses/welding/superior,\
 				prob(4);/obj/item/clothing/glasses/hud/security/jensenshades,\
 				prob(4);/obj/item/clothing/glasses/meson/refurbished,\
 				prob(4);/obj/item/clothing/glasses/science,\
@@ -525,7 +521,7 @@
 		/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,
 		/obj/item/weapon/gun/shotgun/combat = null,
 		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/weapon/gun/launcher/grenade/m81/m79 = null
+		/obj/item/weapon/gun/launcher/grenade/m81/m85a1 = null
 		)
 
 /obj/effect/spawner/random/gun/special/lowchance
@@ -579,7 +575,6 @@
 /obj/effect/spawner/random/warhead
 	name = "random orbital warhead"
 	desc = "This is a random orbital warhead."
-	icon = 'icons/obj/items/new_assemblies.dmi'
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "ob_warhead_1"
 	spawn_on_roundstart = TRUE

@@ -14,12 +14,26 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		if(!nosleep)
 			sleep(40)
 
-		var/list/jobs_to_check = GLOB.ROLES_CIC + GLOB.ROLES_AUXIL_SUPPORT + GLOB.ROLES_MISC + GLOB.ROLES_POLICE + GLOB.ROLES_ENGINEERING + GLOB.ROLES_REQUISITION + GLOB.ROLES_MEDICAL + GLOB.ROLES_MARINES
-		for(var/mob/living/carbon/human/H as anything in GLOB.human_mob_list)
-			if(should_block_game_interaction(H))
+		var/list/jobs_to_check = GLOB.ROLES_USCM + GLOB.ROLES_WO
+
+		for(var/mob/living/carbon/human/current_human as anything in GLOB.human_mob_list)
+			if(should_block_game_interaction(current_human))
 				continue
-			if(H.job in jobs_to_check)
-				manifest_inject(H)
+
+			if(is_in_manifest(current_human))
+				continue
+
+			if(current_human.job in jobs_to_check)
+				manifest_inject(current_human)
+
+/datum/datacore/proc/is_in_manifest(mob/living/carbon/human/current_human)
+	var/weakref = WEAKREF(current_human)
+
+	for(var/datum/data/record/current_record as anything in general)
+		if(current_record.fields["ref"] == weakref)
+			return TRUE
+
+	return FALSE
 
 /datum/datacore/proc/manifest_modify(name, ref, assignment, rank, p_stat)
 	var/datum/data/record/foundrecord
@@ -55,6 +69,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	else
 		assignment = "Unassigned"
 
+	var/manifest_title
+	if(target?.assigned_equipment_preset.manifest_title)
+		manifest_title = target.assigned_equipment_preset.manifest_title
+	else
+		manifest_title = target.job
+
 	var/id = add_zero(num2hex(target.gid), 6) //this was the best they could come up with? A large random number? *sigh*
 	var/icon/front = new(get_id_photo(target), dir = SOUTH)
 	var/icon/side = new(get_id_photo(target), dir = WEST)
@@ -65,8 +85,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_general.fields["id"] = id
 	record_general.fields["name"] = target.real_name
 	record_general.name = target.real_name
-	record_general.fields["real_rank"] = target.job
-	record_general.fields["rank"] = assignment
+	record_general.fields["real_rank"] = assignment
+	record_general.fields["rank"] = manifest_title
 	record_general.fields["squad"] = target.assigned_squad ? target.assigned_squad.name : null
 	record_general.fields["age"] = target.age
 	record_general.fields["p_stat"] = "Active"
@@ -92,19 +112,18 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_medical.fields["id"] = id
 	record_medical.fields["name"] = target.real_name
 	record_medical.name = target.name
-	record_medical.fields["b_type"] = target.blood_type
-	record_medical.fields["mi_dis"] = "None"
-	record_medical.fields["mi_dis_d"] = "No minor disabilities have been declared."
-	record_medical.fields["ma_dis"] = "None"
-	record_medical.fields["ma_dis_d"] = "No major disabilities have been diagnosed."
-	record_medical.fields["alg"] = "None"
-	record_medical.fields["alg_d"] = "No allergies have been detected in this patient."
-	record_medical.fields["cdi"] = "None"
-	record_medical.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
+	record_medical.fields["blood_type"] = target.blood_type
+	record_medical.fields["minor_disability"] = "None"
+	record_medical.fields["minor_disability_details"] = "No minor disabilities have been declared."
+	record_medical.fields["major_disability"] = "None"
+	record_medical.fields["major_disability_details"] = "No major disabilities have been diagnosed."
+	record_medical.fields["allergies"] = "None"
+	record_medical.fields["allergies_details"] = "No allergies have been detected in this patient."
+	record_medical.fields["diseases"] = "None"
+	record_medical.fields["diseases_details"] = "No diseases have been diagnosed at the moment."
 	record_medical.fields["last_scan_time"] = null
 	record_medical.fields["last_scan_result"] = "No scan data on record" // body scanner results
 	record_medical.fields["autodoc_data"] = list()
-	record_medical.fields["autodoc_manual"] = list()
 	record_medical.fields["ref"] = WEAKREF(target)
 
 	if(target.med_record && !jobban_isbanned(target, "Records"))
@@ -137,7 +156,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_locked.fields["rank"] = target.job
 	record_locked.fields["age"] = target.age
 	record_locked.fields["sex"] = target.gender
-	record_locked.fields["b_type"] = target.b_type
+	record_locked.fields["blood_type"] = target.blood_type
 	record_locked.fields["species"] = target.get_species()
 	record_locked.fields["origin"] = target.origin
 	record_locked.fields["faction"] = target.personal_faction

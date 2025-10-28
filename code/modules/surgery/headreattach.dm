@@ -21,20 +21,9 @@
 	pain_reduction_required = NONE
 	var/obj/item/limb/head/synth/patient_head
 	var/no_revive = FALSE
-	var/list/species_allowed = list(
-		SYNTH_COLONY,
-		SYNTH_COLONY_GEN_ONE,
-		SYNTH_COLONY_GEN_TWO,
-		SYNTH_COMBAT,
-		SYNTH_GEN_ONE,
-		SYNTH_GEN_TWO,
-		SYNTH_GEN_THREE,
-		SYNTH_INFILTRATOR,
-		SYNTH_WORKING_JOE
-		)
 
 /datum/surgery/head_reattach/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
-	if(patient.species.name in species_allowed)
+	if(IS_SYNTHETIC)
 		return TRUE
 	return FALSE
 
@@ -59,22 +48,23 @@
 	user.visible_message(SPAN_NOTICE("[user] begins to peel [target]'s neck stump open with \the [tool].") ,
 	SPAN_NOTICE("You begin to peel [target]'s neck stump open with \the [tool]."))
 
-	log_interact(user, target, "[key_name(user)] began to peel back tattered skin around [key_name(target)]'s neck with \the [tool].")
+	log_interact(user, target, "[key_name(user)] began to peel back tattered artificial skin around [key_name(target)]'s neck with \the [tool].")
 
 /datum/surgery_step/peel_skin/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] draws back the ragged flesh of [target]'s neck stump."),
-	SPAN_NOTICE("You draw back the ragged flesh of [target]'s neck stump."))
+	//we could fetch the synth's flesh type, but because this surgery is only for synths, I'm too lazy to do it.
+	user.visible_message(SPAN_NOTICE("[user] draws back the ragged synthetic flesh of [target]'s neck stump."),
+	SPAN_NOTICE("You draw back the ragged synthetic flesh of [target]'s neck stump."))
 
 	surgery.affected_limb.setAmputatedTree()
 	target.update_body()
 
-	log_interact(user, target, "[key_name(user)] peeled back flesh where [key_name(target)]'s head used to be with \the [tool], beginning [surgery]")
+	log_interact(user, target, "[key_name(user)] peeled back synthetic flesh where [key_name(target)]'s head used to be with \the [tool], beginning [surgery]")
 
 /datum/surgery_step/peel_skin/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, somehow damaging the flesh of [target]'s stump even worse!"),
-	SPAN_WARNING("Your hand slips, somehow damaging the flesh of [target]'s stump even worse!"))
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, somehow damaging the synthetic flesh of [target]'s stump even worse!"),
+	SPAN_WARNING("Your hand slips, somehow damaging the synthetic flesh of [target]'s stump even worse!"))
 
-	log_interact(user, target, "[key_name(user)] failed to finish peeling back flesh where [key_name(target)]'s head used to be with \the [tool], aborting [surgery].")
+	log_interact(user, target, "[key_name(user)] failed to finish peeling back synthetic flesh where [key_name(target)]'s head used to be with \the [tool], aborting [surgery].")
 	return FALSE
 
 //------------------------------------
@@ -91,8 +81,8 @@
 	log_interact(user, target, "[key_name(user)] started to attach [tool] to [key_name(target)]'s reshaped neck.")
 
 /datum/surgery_step/reattach_head/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/head_reattach/surgery)
-	user.visible_message(SPAN_NOTICE("[user] reattaches [target]'s head to the bones and musculature of \his body."),
-	SPAN_NOTICE("You reattach [target]'s head to the bones and musculature of \his body."))
+	user.visible_message(SPAN_NOTICE("[user] reattaches [target]'s head to the carbon fiber skeleton and silicon musculature of \his body."),
+	SPAN_NOTICE("You reattach [target]'s head to the carbon fiber skeleton and silicon musculature of \his body."))
 	log_interact(user, target, "[key_name(user)] attached [tool] to [key_name(target)]'s neck.")
 
 	surgery.patient_head = tool
@@ -124,8 +114,8 @@
 	time = 4 SECONDS
 
 /datum/surgery_step/mend_connections/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] begins to shape the flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."),
-	SPAN_NOTICE("You begin to shape the flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."))
+	user.visible_message(SPAN_NOTICE("[user] begins to shape the synthetic flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."),
+	SPAN_NOTICE("You begin to shape the synthetic flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."))
 
 	log_interact(user, target, "[key_name(user)] started to reshape [key_name(target)]'s head esophagal and vocal region with \the [tool].")
 
@@ -136,8 +126,8 @@
 	log_interact(user, target, "[key_name(user)] reshaped [key_name(target)]'s head esophagal and vocal region with \the [tool].")
 
 /datum/surgery_step/mend_connections/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, rending the flesh of [target]'s neck and throat even more!"),
-	SPAN_WARNING("Your hand slips, rending the flesh of [target]'s neck and throat even more!"))
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, rending the synthetic flesh of [target]'s neck and throat even more!"),
+	SPAN_WARNING("Your hand slips, rending the synthetic flesh of [target]'s neck and throat even more!"))
 
 	log_interact(user, target, "[key_name(user)] failed to reshape [key_name(target)]'s head esophagal and vocal region with \the [tool].")
 	return FALSE

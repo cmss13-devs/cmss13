@@ -81,7 +81,7 @@
 /area/lv624/lazarus/research)
 "an" = (
 /obj/structure/fence,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/south_medbay_road)
 "ao" = (
 /obj/structure/window/framed/colony/reinforced,

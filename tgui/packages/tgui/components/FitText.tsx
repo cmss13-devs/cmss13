@@ -1,9 +1,9 @@
 import {
   Component,
   createRef,
-  HTMLAttributes,
-  PropsWithChildren,
-  RefObject,
+  type HTMLAttributes,
+  type PropsWithChildren,
+  type RefObject,
 } from 'react';
 
 const DEFAULT_ACCEPTABLE_DIFFERENCE = 5;

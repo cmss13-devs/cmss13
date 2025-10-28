@@ -230,6 +230,16 @@
 	dir = NORTH
 	id = "almayer-ert3"
 
+/obj/docking_port/stationary/emergency_response/port1_upp
+	name = "Rostock starboard landing pad"
+	dir = NORTH
+	id = "rostock-ert1"
+
+/obj/docking_port/stationary/emergency_response/port2_upp
+	name = "Rostock port landing pad"
+	dir = NORTH
+	id = "rostock-ert2"
+
 /obj/docking_port/stationary/emergency_response/external
 	is_external = TRUE
 	var/airlock_id
@@ -289,6 +299,15 @@
 	height = 29
 	airlock_id = "n_umbilical"
 	airlock_area = /area/almayer/hallways/lower/starboard_umbilical
+
+/obj/docking_port/stationary/emergency_response/external/hangar_port_upp
+	name = "Rostock hanger port external airlock"
+	dir = EAST
+	id = "rostock-ert-hangar-port"
+	width  = 17
+	height = 29
+	airlock_id = "rostock_umbilical"
+	airlock_area = /area/rostock/lower_deck/starboard_umbilical
 
 // These are docking ports not on the almayer
 /obj/docking_port/stationary/emergency_response/idle_port1

@@ -30,7 +30,7 @@
 	if(!leader)
 		new_mob = new/mob/living/carbon/human(spawn_loc)
 		new_mob.create_hud()
-		arm_equipment(new_mob, /datum/equipment_preset/pmc/xeno_handler, TRUE, TRUE)
+		arm_equipment(new_mob, /datum/equipment_preset/pmc/commando/dogcatcher, TRUE, TRUE)
 
 		hive.make_leader(new_mob)
 		leader = new_mob
@@ -46,15 +46,3 @@
 	else
 		new_mob.away_timer = XENO_LEAVE_TIMER
 		new_mob.free_for_ghosts()
-
-/datum/skills/pmc/xeno_handler
-	name = "PMC Xeno Handler"
-	skills = list(
-		SKILL_FIREARMS = SKILL_FIREARMS_EXPERT,
-		SKILL_POLICE = SKILL_POLICE_SKILLED,
-		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
-		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
-		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
-		SKILL_OVERWATCH = SKILL_OVERWATCH_TRAINED,
-		SKILL_ENDURANCE = SKILL_ENDURANCE_EXPERT,
-	)

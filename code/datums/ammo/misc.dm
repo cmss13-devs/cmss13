@@ -405,3 +405,29 @@
 	var/obj/item/clothing/mask/facehugger/child = new(T)
 	child.hivenumber = hugger_hive
 	INVOKE_ASYNC(child, TYPE_PROC_REF(/obj/item/clothing/mask/facehugger, leap_at_nearest_target))
+
+/datum/ammo/pill
+	name = "syringe"
+	icon_state = "syringe"
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_ALWAYS_FF
+
+	damage = 0
+
+/datum/ammo/pill/on_hit_mob(mob/M, obj/projectile/P)
+	. = ..()
+
+	if(!ishuman(M))
+		return
+
+	if(!istype(P, /obj/projectile/pill))
+		return
+
+	var/obj/projectile/pill/pill_projectile = P
+
+	if(QDELETED(pill_projectile.source_pill))
+		pill_projectile.source_pill = null
+		return
+
+	var/datum/reagents/pill_reagents = pill_projectile.source_pill.reagents
+
+	pill_reagents.trans_to(M, pill_reagents.total_volume)

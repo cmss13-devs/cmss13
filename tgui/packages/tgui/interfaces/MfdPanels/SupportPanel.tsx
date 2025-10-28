@@ -4,7 +4,7 @@ import { Box, Stack } from 'tgui/components';
 import { FultonMfdPanel } from './FultonPanel';
 import { MedevacMfdPanel } from './MedevacPanel';
 import { MgMfdPanel } from './MGPanel';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { ParadropMfdPanel } from './ParadropPanel';
 import { SentryMfdPanel } from './SentryPanel';
 import { SpotlightMfdPanel } from './SpotlightPanel';

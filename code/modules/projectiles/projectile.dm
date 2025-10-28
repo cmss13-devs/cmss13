@@ -421,7 +421,7 @@
 
 		// If the ammo should hit the surface of the target and the next turf is dense
 		// The current turf is the "surface" of the target
-		if(ammo_flags & AMMO_STRIKES_SURFACE)
+		if(ammo_flags & (AMMO_STRIKES_SURFACE|AMMO_STRIKES_SURFACE_ONLY))
 			// We "hit" the current turf but strike the actual blockage
 			ammo.on_hit_turf(get_turf(src),src)
 		else
@@ -482,7 +482,7 @@
 
 		// If the ammo should hit the surface of the target and there is an object blocking
 		// The current turf is the "surface" of the target
-		if(ammo_flags & AMMO_STRIKES_SURFACE)
+		if(ammo_flags & (AMMO_STRIKES_SURFACE|AMMO_STRIKES_SURFACE_ONLY))
 			var/turf/T = get_turf(O)
 
 			// We "hit" the current turf but strike the actual blockage
@@ -601,7 +601,7 @@
 
 /obj/projectile/proc/check_canhit(turf/current_turf, turf/next_turf, list/ignore_list)
 	var/proj_dir = get_dir(current_turf, next_turf)
-	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf, ignore_list = ignore_list))
+	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf, ignore_list = ignore_list) && current_turf.z == next_turf.z)
 		ammo.on_hit_turf(current_turf, src)
 		current_turf.bullet_act(src)
 		return TRUE
@@ -902,9 +902,6 @@
 		if(evasion > 0)
 			. -= evasion
 
-/mob/living/silicon/robot/drone/get_projectile_hit_chance(obj/projectile/P)
-	return FALSE // just stop them getting hit by projectiles completely
-
 
 /obj/projectile/proc/play_hit_effect(mob/hit_mob)
 	if(ammo.sound_hit)
@@ -943,7 +940,7 @@
 	. = TRUE
 	bullet_message(P, damaging = damage)
 	if(damage)
-		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P)
+		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P, enviro=P.ammo.damage_enviro)
 		P.play_hit_effect(src)
 
 	SEND_SIGNAL(P, COMSIG_BULLET_ACT_LIVING, src, damage, damage)
@@ -1035,7 +1032,7 @@
 		handle_blood_splatter(splatter_dir)
 
 		. = TRUE
-		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer = P.firer)
+		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer=P.firer, enviro=P.ammo.damage_enviro)
 
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + floor(damage / 10)))
 			if(ammo_flags & AMMO_SPECIAL_EMBED)
@@ -1043,6 +1040,7 @@
 
 			var/obj/item/shard/shrapnel/new_embed = new P.ammo.shrapnel_type
 			var/obj/item/large_shrapnel/large_embed = new P.ammo.shrapnel_type
+			var/embed_sound = pick('sound/effects/crackandbleed.ogg', 'sound/effects/pierce3.ogg')
 			if(istype(large_embed))
 				large_embed.on_embed(src, organ)
 			if(istype(new_embed))
@@ -1060,6 +1058,7 @@
 				if(!stat && pain.feels_pain)
 					emote("scream")
 					to_chat(src, SPAN_HIGHDANGER("You scream in pain as the impact sends <B>shrapnel</b> into the wound!"))
+					playsound(src, embed_sound, 75, 1)
 	SEND_SIGNAL(P, COMSIG_POST_BULLET_ACT_HUMAN, src, damage, damage_result)
 
 //Deal with xeno bullets.
@@ -1105,6 +1104,7 @@
 			"armor_integrity" = armor_integrity,
 			"direction" = P.dir,
 			"armour_type" = GLOB.xeno_ranged,
+			"enviro" = P.ammo.damage_enviro,
 		)
 		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, damagedata)
 		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damagedata["damage"],
@@ -1132,7 +1132,7 @@
 		//only apply the blood splatter if we do damage
 		handle_blood_splatter(get_dir(P.starting, loc))
 
-		apply_damage(damage_result,P.ammo.damage_type, P.def_zone) //Deal the damage.
+		apply_damage(damage_result,P.ammo.damage_type, P.def_zone, enviro=P.ammo.damage_enviro) //Deal the damage.
 		if(length(xeno_shields))
 			P.play_shielded_hit_effect(src)
 		else
@@ -1271,7 +1271,8 @@
 				var/ff_living = TRUE
 				if(src.stat == DEAD)
 					ff_living = FALSE
-				msg_admin_ff(ff_msg, ff_living)
+				if(!(((mob_flags & MUTINY_MUTINEER) && (firingMob.mob_flags & MUTINY_LOYALIST)) || ((mob_flags & MUTINY_LOYALIST) && (firingMob.mob_flags & MUTINY_MUTINEER))))
+					msg_admin_ff(ff_msg, ff_living)
 				if(ishuman(firingMob) && P.weapon_cause_data)
 					var/mob/living/carbon/human/H = firingMob
 					H.track_friendly_fire(P.weapon_cause_data.cause_name)
@@ -1322,6 +1323,13 @@
 	SIGNAL_HANDLER
 
 	accuracy = HIT_ACCURACY_TIER_2 // flat 10% chance if you're desperate and try to fire this thing without a bipod
+
+/obj/projectile/pill
+	var/obj/item/reagent_container/pill/source_pill
+
+/obj/projectile/pill/Destroy()
+	. = ..()
+	source_pill = null
 
 #undef DEBUG_HIT_CHANCE
 #undef DEBUG_HUMAN_DEFENSE

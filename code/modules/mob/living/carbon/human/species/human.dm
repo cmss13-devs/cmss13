@@ -25,7 +25,7 @@
 			var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 			if(!heart)
 				b_volume = 0
-			else if(chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+			else if(chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS)
 				b_volume *= 1
 			else if(heart.damage >= heart.organ_status >= ORGAN_BRUISED)
 				b_volume *= clamp(100 - (2 * heart.damage), 30, 100) / 100

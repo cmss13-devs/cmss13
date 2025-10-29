@@ -1,0 +1,4 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - imageadd: "resprites hugger sprite on human face"

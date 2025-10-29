@@ -428,6 +428,10 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
+"abb" = (
+/obj/docking_port/stationary/emergency_response/external/hangar_port,
+/turf/open/space,
+/area/space)
 "abc" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
@@ -132111,7 +132115,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+abb
 aaa
 aaa
 aaa

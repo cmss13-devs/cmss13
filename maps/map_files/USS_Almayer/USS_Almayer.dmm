@@ -428,6 +428,10 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
+"abb" = (
+/obj/structure/reagent_dispensers/tank/water,
+/turf/open/floor/almayer,
+/area/almayer/shipboard/starboard_point_defense)
 "abc" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
@@ -4518,6 +4522,10 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/upper/fore_hallway)
+"akq" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/almayer,
+/area/almayer/shipboard/starboard_point_defense)
 "akr" = (
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/shipboard/port_point_defense)
@@ -35281,7 +35289,9 @@
 /area/almayer/shipboard/port_point_defense)
 "bHA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel{
+	anchored = 1
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/port_point_defense)
 "bHB" = (
@@ -35327,8 +35337,8 @@
 /turf/open/floor/almayer/plating,
 /area/almayer/shipboard/weapon_room)
 "bHJ" = (
-/obj/structure/reagent_dispensers/watertank,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/port_point_defense)
 "bHK" = (
@@ -36437,7 +36447,7 @@
 /area/almayer/shipboard/starboard_point_defense)
 "bKK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/largecrate/random,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_point_defense)
 "bKL" = (
@@ -139131,7 +139141,7 @@ aaa
 bKW
 aKR
 aKR
-aLW
+abb
 bKO
 aLW
 bKL
@@ -139234,7 +139244,7 @@ aaa
 bKW
 aKR
 aLL
-aLW
+akq
 bKQ
 bKe
 bJI

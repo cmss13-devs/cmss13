@@ -62,10 +62,6 @@
 				if("Team")
 					marine_rk = "soctl_a"
 
-			current_human.langchat_styles = "langchat_bolded" // bold text for bold leaders
-		else
-			current_human.langchat_styles = initial(current_human.langchat_styles)
-
 		current_human.langchat_color = current_human.assigned_squad.chat_color
 
 		var/icon/file_to_use = override_icon_file ? override_icon_file : base_icon_file

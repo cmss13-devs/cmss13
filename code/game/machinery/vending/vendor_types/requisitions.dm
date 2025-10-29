@@ -391,7 +391,7 @@
 //------------ATTACHMENTS VENDOR---------------
 
 /obj/structure/machinery/cm_vending/sorted/attachments
-	name = "\improper Armat Systems Attachments Vendor"
+	name = "\improper Armat Battlefield Systems Attachments Vendor"
 	desc = "An automated supply rack hooked up to a big storage of weapons attachments. Can be accessed by the Quartermaster and Cargo Technicians."
 	req_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
@@ -399,6 +399,10 @@
 	vend_dir = WEST
 	vend_dir_whitelist = list(SOUTHEAST, NORTHEAST)
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_STOCK_DYNAMIC //We want to vend to turf not hand, since we are in requisitions
+
+/obj/structure/machinery/cm_vending/sorted/attachments/squad/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/structure/machinery/cm_vending/sorted/attachments/vend_fail()
 	return

@@ -1515,6 +1515,8 @@
 			user.update_inv_belt()
 		else if(src == user.s_store)
 			user.update_inv_s_store()
+		else if(src == user.back)
+			user.update_inv_back()
 
 //There are only two types here that can be inserted, and they are mutually exclusive. We only track the gun.
 /obj/item/storage/belt/gun/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE) //We don't need to stop messages, but it can be left in.
@@ -2088,8 +2090,8 @@
 	skip_fullness_overlays = TRUE
 
 /obj/item/storage/belt/gun/mateba
-	name = "\improper M276 pattern Mateba holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, along with five small pouches for speedloaders. This one is aging poorly, and seems to be surplus equipment. It's stamped '3rd 'Dust Raiders' Battalion'."
+	name = "\improper M276 pattern Unica holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Unica autorevolver, along with five small pouches for speedloaders. This one is aging poorly, and seems to be surplus equipment. It's stamped '3rd 'Dust Raiders' Battalion'."
 	icon_state = "cmateba_holster"
 	item_state = "marinebelt"
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
@@ -2119,8 +2121,8 @@
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 
 /obj/item/storage/belt/gun/mateba/cmateba
-	name = "\improper M276 pattern Mateba holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, along with five small pouches for speedloaders. It was included with the mail-order USCM edition of the Mateba autorevolver in the early 2170s."
+	name = "\improper M276 pattern Unica holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Unica autorevolver, along with five small pouches for speedloaders. It was included with the mail-order USCM edition of the Unica autorevolver in the early 2170s."
 	icon_state = "cmateba_holster"
 	item_state = "marinebelt"
 	flags_atom = FPRINT // has gamemode skin
@@ -2144,9 +2146,9 @@
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 
 /obj/item/storage/belt/gun/mateba/council
-	name = "colonel's M276 pattern Mateba holster rig"
+	name = "colonel's M276 pattern Unica holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. \
-	It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, \
+	It consists of a modular belt with various clips. This version is for the powerful Unica autorevolver, \
 	along with five small pouches for speedloaders. This specific one is tinted black and engraved with gold, heavily customized for a high-ranking official."
 	icon_state = "amateba_holster"
 	item_state = "marinebelt"
@@ -2167,9 +2169,9 @@
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 
 /obj/item/storage/belt/gun/mateba/commando
-	name = "commando WY-T190 pattern Mateba holster rig"
+	name = "commando WY-T190 pattern Unica holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the Weyland Yutani. \
-	It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, \
+	It consists of a modular belt with various clips. This version is for the powerful Unica autorevolver, \
 	along with five small pouches for speedloaders. This specific one is tinted black and engraved with gold, heavily customized for a high-ranking official."
 	icon_state = "amateba_holster"
 	item_state = "marinebelt"
@@ -2200,9 +2202,9 @@
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 
 /obj/item/storage/belt/gun/mateba/general
-	name = "luxurious M276 pattern Mateba holster rig"
+	name = "luxurious M276 pattern Unica holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. \
-	It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, \
+	It consists of a modular belt with various clips. This version is for the powerful Unica autorevolver, \
 	along with five small pouches for speedloaders. This specific one is tinted black and engraved with gold, heavily customized for a high-ranking official."
 	icon_state = "amateba_holster"
 	item_state = "marinebelt"
@@ -2239,9 +2241,9 @@
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 
 /obj/item/storage/belt/gun/mateba/pmc
-	name = "PMC M276 pattern Mateba holster rig"
+	name = "PMC M276 pattern Unica holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. \
-	It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, \
+	It consists of a modular belt with various clips. This version is for the powerful Unica autorevolver, \
 	along with five small pouches for speedloaders. This specific one is tinted black and engraved with gold, heavily customized for a high-ranking official."
 	icon_state = "amateba_holster"
 	item_state = "marinebelt"
@@ -2622,7 +2624,7 @@
 
 /obj/item/storage/belt/gun/smartgunner/clf
 	name = "\improper M802 pattern 'Freedom' smartgunner sidearm rig"
-	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Mateba revolver. This one has the CLF logo carved over the manufacturing stamp."
+	desc = "A modification of the standard M802 load-bearing equipment, designed to carry smartgun ammunition and a Unica autorevolver. This one has the CLF logo carved over the manufacturing stamp."
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi',
@@ -2799,6 +2801,10 @@
 	flags_inventory = CANTSTRIP
 	max_w_class = 0 //this belt cannot hold anything
 	skip_fullness_overlays = TRUE
+
+/obj/item/storage/belt/souto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
 
 /obj/item/storage/belt/souto/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

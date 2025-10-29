@@ -154,6 +154,8 @@
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use
 	name = "single-use tramadol EZ autoinjector"
 	desc = "An EZ autoinjector loaded with a single dose of 15u of Tramadol, a weak but effective painkiller for normal wounds. You cannot refill it, but it doesn't require any training to use."
+	icon_state = "empty_oneuse"
+	autoinjector_type = "autoinjector_oneuse"
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1
@@ -189,6 +191,8 @@
 /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use
 	name = "single-use kelotane EZ autoinjector"
 	desc = "An EZ autoinjector loaded with a single dose of 15u of Kelotane, a common burn medicine. You cannot refill it, but it doesn't require any training to use."
+	icon_state = "empty_oneuse"
+	autoinjector_type = "autoinjector_oneuse"
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1
@@ -215,6 +219,8 @@
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use
 	name = "single-use bicaridine EZ autoinjector"
 	desc = "An EZ autoinjector loaded with a single dose of 15u of Bicaridine, a common brute and circulatory damage medicine. You cannot refill it, but it doesn't require any training to use."
+	icon_state = "empty_oneuse"
+	autoinjector_type = "autoinjector_oneuse"
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1
@@ -241,6 +247,8 @@
 /obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless/one_use
 	name = "single-use dylovene EZ autoinjector"
 	desc = "An EZ autoinjector loaded with a single dose of 15u of Dylovene, a common toxin damage medicine. You cannot refill it, but it doesn't require any training to use."
+	icon_state = "empty_oneuse"
+	autoinjector_type = "autoinjector_oneuse"
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1
@@ -286,8 +294,9 @@
 /obj/item/reagent_container/hypospray/autoinjector/emergency
 	name = "emergency autoinjector (CAUTION)"
 	desc = "An autoinjector loaded with a single dose of 77u of a special cocktail of chemicals, to be used in life-threatening situations. Doesn't require any training to use."
-	icon_state = "empty_ez"
+	icon_state = "empty_emergency"
 	chemname = "emergency"
+	autoinjector_type = "autoinjector_oneuse"
 	amount_per_transfer_from_this = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1)
 	volume = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1)
 	mixed_chem = TRUE
@@ -308,8 +317,9 @@
 /obj/item/reagent_container/hypospray/autoinjector/black_goo_cure
 	name = "\"Pathogen\" cure autoinjector (SINGLE-USE)"
 	desc = "An autoinjector loaded with a single dose of a cure for Agent A0-3959X.91–15, also known as the 'black-goo'. Doesn't require any training to administrate."
-	icon_state = "empty_ez"
+	icon_state = "empty_research_oneuse"
 	chemname = "antiZed"
+	autoinjector_type = "autoinjector_oneuse"
 	amount_per_transfer_from_this = 5
 	volume = 5
 	uses_left = 1
@@ -413,14 +423,14 @@
 /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
 	name = "pain-stop autoinjector"
 	chemname = "tramadol"
-	desc = "An autoinjector loaded with a single 15u dose of tramadol for marines to self-administer. You can refill it at Wey-Med vending machines."
 	icon_state = "tramadol"
+	desc = "An autoinjector loaded with a single 15u dose of tramadol for marines to self-administer. You can refill it at Wey-Med vending machines."
 	maptext_label = "OuPs"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty
 	name = "5u custom autoinjector"
 	desc = "A custom-made autoinjector, likely from research. You can refill it with a pressurized reagent canister pouch."
-	icon_state = "empty_ez"
+	icon_state = "empty_research"
 	mixed_chem = TRUE
 	amount_per_transfer_from_this = 5
 	volume = 15
@@ -449,8 +459,8 @@
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless
 	name = "15u custom EZ autoinjector"
 	desc = "A custom-made EZ autoinjector, likely from research. You can refill it with a pressurized reagent canister pouch. It injects its entire payload immediately and doesn't require any training."
-	autoinjector_type = "autoinjector_ez"
-	icon_state = "empty_ez"
+	icon_state = "empty_research_oneuse"
+	autoinjector_type = "autoinjector_oneuse"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	amount_per_transfer_from_this = 15
 	volume = 15

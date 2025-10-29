@@ -154,7 +154,7 @@
 	if(. == PROCESS_KILL)
 		return // Parent implemention qdeleted us
 	//Peridaxon won't halt side effects of lung damage if the lung is fugg'd.
-	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS && organ_status < ORGAN_BROKEN)
+	if((owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS) && organ_status < ORGAN_BROKEN)
 		return
 	//Bruised lung hurtie, can't breathe.
 	if(organ_status >= ORGAN_BRUISED)

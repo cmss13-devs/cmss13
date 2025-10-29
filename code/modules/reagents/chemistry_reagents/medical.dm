@@ -203,7 +203,7 @@
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_ANTITOXIC = 1, PROPERTY_BIOACIDIC = 1)
+	properties = list(PROPERTY_ANTITOXIC = 1, PROPERTY_BIOCIDIC = 1)
 
 /datum/reagent/medical/russianred
 	name = "Russian Red"
@@ -214,7 +214,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 2 SECONDS)
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
-	properties = list(PROPERTY_ANTITOXIC = 1, PROPERTY_BIOACIDIC = 2)
+	properties = list(PROPERTY_ANTITOXIC = 1, PROPERTY_BIOCIDIC = 2)
 
 /datum/reagent/medical/alkysine
 	name = "Alkysine"

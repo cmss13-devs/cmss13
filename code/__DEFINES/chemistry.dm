@@ -142,7 +142,7 @@
 #define PROPERTY_HYPOXEMIC "hypoxemic"
 #define PROPERTY_TOXIC "toxic"
 #define PROPERTY_CORROSIVE "corrosive"
-#define PROPERTY_BIOACIDIC "bioacidic"
+#define PROPERTY_BIOCIDIC "biocidic"
 #define PROPERTY_HEMOLYTIC "hemolytic"
 #define PROPERTY_HEMORRAGING "hemorrhaging"
 #define PROPERTY_CARCINOGENIC "carcinogenic"

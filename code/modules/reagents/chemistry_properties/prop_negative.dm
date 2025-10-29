@@ -168,25 +168,25 @@
 
 
 
-/datum/chem_property/negative/bioacidic
-	name = PROPERTY_BIOACIDIC
+/datum/chem_property/negative/biocidic
+	name = PROPERTY_BIOCIDIC
 	code = "BCD"
 	description = "Ruptures cell membranes on contact, destroying most types of organic tissue. Reduces pest and weed populations."
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = -1
 
-/datum/chem_property/negative/bioacidic/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/negative/biocidic/process(mob/living/M, potency = 1, delta_time)
 	..()
 	M.take_limb_damage(0.5 * potency * delta_time)
 
-/datum/chem_property/negative/bioacidic/process_overdose(mob/living/M, potency = 1)
+/datum/chem_property/negative/biocidic/process_overdose(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)
 
-/datum/chem_property/negative/bioacidic/process_critical(mob/living/M, potency = 1)
+/datum/chem_property/negative/biocidic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_VHIGH * potency)
 
-/datum/chem_property/negative/bioacidic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+/datum/chem_property/negative/biocidic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
 	if(!processing_tray.seed)
 		return
@@ -197,7 +197,7 @@
 
 /datum/chem_property/negative/neuropathic
 	name = PROPERTY_NEUROPATHIC
-	code = "PNG"
+	code = "NPT"
 	description = "Activates the somatosensory system causing neuropathic pain all over the body. Unlike nociceptive pain, this is not caused to any tissue damage and is solely perceptive."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT

@@ -70,7 +70,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_HYPOXEMIC = 8, PROPERTY_BIOACIDIC = 1)
+	properties = list(PROPERTY_HYPOXEMIC = 8, PROPERTY_BIOCIDIC = 1)
 
 /datum/reagent/toxin/cyanide //Fast and Lethal
 	name = "Cyanide"
@@ -273,7 +273,7 @@
 	color = COLOR_WHITE
 	overdose = 10
 	chemclass = CHEM_CLASS_RARE
-	properties = list(PROPERTY_ANTISPASMOTIC = 10, PROPERTY_HYPOXEMIC = 4, PROPERTY_BIOACIDIC = 5)
+	properties = list(PROPERTY_ANTISPASMOTIC = 10, PROPERTY_HYPOXEMIC = 4, PROPERTY_BIOCIDIC = 5)
 
 
 /datum/reagent/toxin/beer2 //disguised as normal beer for use by emagged brobots

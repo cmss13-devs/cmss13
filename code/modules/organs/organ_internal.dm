@@ -271,7 +271,7 @@
 		return // Parent implemention qdeleted us
 
 	//Alkysine won't work if the brain is mush.
-	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BRAIN_STASIS && organ_status < ORGAN_BROKEN)
+	if((owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BRAIN_STASIS) && organ_status < ORGAN_BROKEN)
 		return
 
 	if(organ_status >= ORGAN_BRUISED && prob(5 * delta_time))

@@ -984,7 +984,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/offices/flight)
 "acA" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north2)
 "acB" = (
@@ -1020,7 +1020,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/toolbox/electrical{
-	pixel_x = 15;
+	pixel_x = 9;
 	pixel_y = -8
 	},
 /turf/open/floor/almayer,
@@ -1384,7 +1384,7 @@
 /turf/closed/wall/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "adr" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north1)
 "ads" = (
@@ -1591,7 +1591,7 @@
 /turf/closed/wall/almayer,
 /area/almayer/engineering/starboard_atmos)
 "adP" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north1)
 "adQ" = (
@@ -2457,7 +2457,7 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "afN" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "afO" = (
@@ -3695,6 +3695,7 @@
 	pixel_y = 11
 	},
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped,
+/obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/surg_vest/equipped,
 /obj/item/prop{
 	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
@@ -3999,7 +4000,7 @@
 	icon_state = "S"
 	},
 /obj/structure/machinery/power/apc/almayer/south,
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/containment/cell)
 "ajb" = (
@@ -4671,11 +4672,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "akT" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/engineering/lower/workshop/hangar)
 "akU" = (
-/obj/structure/reagent_dispensers/fueltank/gas/hydrogen,
+/obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen,
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/engineering/lower/workshop/hangar)
 "akV" = (
@@ -4710,13 +4711,13 @@
 /turf/open/floor/almayer/flooredgesmooth2/east,
 /area/almayer/squads/charlie_delta_shared)
 "alb" = (
-/obj/structure/reagent_dispensers/pacidtank{
+/obj/structure/reagent_dispensers/tank/pacid{
 	anchored = 1
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/engineering/lower/workshop/hangar)
 "alc" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	anchored = 1
 	},
 /obj/structure/window/reinforced/toughened{
@@ -4732,7 +4733,7 @@
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/weapon_room)
 "ale" = (
-/obj/structure/reagent_dispensers/fueltank/oxygentank{
+/obj/structure/reagent_dispensers/tank/fuel/oxygentank{
 	anchored = 1
 	},
 /turf/open/floor/almayer/test_floor5,
@@ -5015,7 +5016,7 @@
 	icon_state = "NE-out";
 	pixel_y = 1
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = 8;
 	pixel_y = 32
@@ -5889,6 +5890,7 @@
 /area/almayer/medical/morgue)
 "aor" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/morgue,
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
 "aos" = (
@@ -6833,7 +6835,7 @@
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/command/lifeboat)
 "aqK" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering/starboard)
 "aqL" = (
@@ -7223,7 +7225,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/s_bow)
 "arE" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/s_bow)
 "arF" = (
@@ -7923,7 +7925,7 @@
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
 "aty" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "atz" = (
@@ -9255,7 +9257,7 @@
 	pixel_x = 8;
 	pixel_y = 28
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/item/reagent_container/glass/beaker{
 	pixel_x = 6;
 	pixel_y = 7
@@ -9564,7 +9566,7 @@
 /turf/open/floor/almayer/flooredgesmooth2/south,
 /area/almayer/hallways/upper/fore_hallway)
 "ayh" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_p)
 "ayi" = (
@@ -12337,7 +12339,7 @@
 /area/almayer/hallways/upper/aft_hallway)
 "aFr" = (
 /obj/structure/machinery/light,
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "aFs" = (
@@ -14548,13 +14550,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
-"aLN" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/maint/hull/lower/lower_astronav)
 "aLO" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
@@ -14621,7 +14616,8 @@
 /area/almayer/maint/hull/lower/lower_astronav)
 "aLV" = (
 /obj/structure/largecrate/random/case/double,
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -14960,13 +14956,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/navigation)
-"aMW" = (
-/obj/structure/machinery/light/red{
-	dir = 8;
-	light_color = "#BB3F3F"
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/shipboard/navigation)
 "aMX" = (
 /obj/structure/barricade/handrail/no_vault{
 	dir = 1
@@ -14980,16 +14969,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
-"aMZ" = (
-/obj/structure/machinery/light/red{
-	dir = 4;
-	light_color = "#BB3F3F"
-	},
-/obj/structure/barricade/handrail/no_vault{
-	dir = 1
-	},
-/turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/shipboard/navigation)
 "aNa" = (
 /obj/structure/barricade/handrail/no_vault{
 	dir = 1
@@ -15017,12 +14996,6 @@
 "aNd" = (
 /obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
-/area/almayer/shipboard/navigation)
-"aNe" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "aNf" = (
 /obj/structure/barricade/handrail/no_vault{
@@ -15562,16 +15535,6 @@
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/medical)
-"aOE" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/medical)
 "aOF" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -15719,34 +15682,12 @@
 "aOY" = (
 /turf/open_space,
 /area/almayer/middeck/medical)
-"aOZ" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/medical)
 "aPa" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
-"aPb" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F"
-	},
-/turf/open_space,
-/area/almayer/middeck/medical)
-"aPc" = (
-/obj/structure/platform/metal/almayer_smooth/east,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F"
-	},
-/turf/open_space,
-/area/almayer/middeck/medical)
 "aPd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
@@ -15812,11 +15753,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha)
 "aPm" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 4
 	},
-/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "aPn" = (
@@ -15962,21 +15903,6 @@
 /obj/structure/largecrate/supply,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
-"aPG" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/medical)
 "aPH" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -16101,21 +16027,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/saft)
-"aPX" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
-	},
-/turf/open_space,
-/area/almayer/middeck/medical)
-"aPY" = (
-/obj/structure/platform/metal/almayer_smooth/east,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
-	},
-/turf/open_space,
-/area/almayer/middeck/medical)
 "aPZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -18439,15 +18350,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
-"aVA" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/req)
 "aVB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -19311,6 +19213,10 @@
 /obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/paft)
+"aXD" = (
+/obj/structure/closet/wardrobe/medic_white,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/middeck/medical)
 "aXE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -20298,7 +20204,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "aZI" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/p_stern)
 "aZJ" = (
@@ -20823,7 +20729,7 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
 	},
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	anchored = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -21391,6 +21297,11 @@
 	pixel_y = 3;
 	pixel_x = -8
 	},
+/obj/item/tool/crowbar,
+/obj/item/storage/box/vials{
+	pixel_x = 7;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "bci" = (
@@ -21575,7 +21486,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/closet/wardrobe/chemistry_white,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "bcB" = (
@@ -21590,7 +21501,7 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/req)
 "bcC" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
 	},
@@ -22672,14 +22583,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
-"bfi" = (
-/obj/structure/machinery/light/red{
-	dir = 8;
-	light_color = "#BB3F3F"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/shipboard/navigation)
 "bfj" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/structure/machinery/light/red{
@@ -23491,21 +23394,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
-"bhe" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/req)
 "bhf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
@@ -23538,14 +23426,6 @@
 	dir = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/req)
-"bhj" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
-	},
-/obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/req)
 "bhk" = (
 /obj/effect/decal/warning_stripes{
@@ -25283,7 +25163,7 @@
 	icon_state = "NE-out";
 	pixel_y = 1
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
 "bkL" = (
@@ -25445,7 +25325,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
 "blb" = (
@@ -25936,6 +25816,10 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/structure/machinery/light/red{
+	dir = 8;
+	light_color = "#BB3F3F"
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "bmd" = (
@@ -25968,7 +25852,7 @@
 /area/almayer/middeck/req)
 "bmg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bmh" = (
@@ -26537,6 +26421,10 @@
 	pixel_x = 7;
 	pixel_y = 10
 	},
+/obj/item/storage/box/bloodbag{
+	pixel_x = 7;
+	pixel_y = -2
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
 "bnr" = (
@@ -26906,6 +26794,9 @@
 "bof" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flash,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "bog" = (
@@ -26914,26 +26805,7 @@
 /area/almayer/middeck/engineer)
 "boh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/rack,
-/obj/item/storage/box/sprays{
-	pixel_x = 4;
-	pixel_y = 7
-	},
-/obj/item/storage/box/lights/mixed{
-	pixel_x = 4
-	},
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = -6
-	},
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = -6
-	},
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = -6
-	},
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = -6
-	},
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "boi" = (
@@ -27667,7 +27539,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
 "bpW" = (
@@ -27759,7 +27631,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "bqd" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
 "bqe" = (
@@ -27823,7 +27695,7 @@
 "bqi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "bqj" = (
@@ -27879,7 +27751,7 @@
 "bqn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/paft)
 "bqo" = (
@@ -27961,7 +27833,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/paft)
 "bqt" = (
@@ -28499,7 +28371,7 @@
 	icon_state = "W";
 	layer = 3.3
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
 "brJ" = (
@@ -29056,7 +28928,7 @@
 /area/almayer/living/offices)
 "bsO" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/req)
 "bsP" = (
@@ -29260,7 +29132,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "btn" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
 "bto" = (
@@ -29286,7 +29158,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "bts" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "btt" = (
@@ -29397,12 +29269,12 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "btF" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/largecrate/random/barrel/medical,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 4
 	},
-/obj/effect/decal/heavy_cable/cable_horizontal,
-/obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "btG" = (
@@ -29678,7 +29550,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "buj" = (
@@ -30452,7 +30324,7 @@
 /area/almayer/middeck/maintenance/saft)
 "bvP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/saft)
 "bvQ" = (
@@ -30486,7 +30358,7 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/saft)
 "bvU" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/saft)
 "bvV" = (
@@ -30635,7 +30507,7 @@
 "bwo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/spawner/random/pills,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
@@ -30788,7 +30660,7 @@
 /area/almayer/middeck/maintenance/saft)
 "bwF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 1
@@ -30912,7 +30784,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/middeck/maintenance/sp)
 "bwV" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "bwW" = (
@@ -31609,7 +31481,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sf)
 "byH" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -32547,7 +32419,7 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/weapon_room)
 "bAO" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = 7;
 	pixel_y = 32
@@ -34232,7 +34104,7 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
 "bEs" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/item/tool/extinguisher,
 /obj/item/tool/extinguisher,
 /obj/item/tool/extinguisher,
@@ -34732,7 +34604,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
 "bFH" = (
-/obj/structure/reagent_dispensers/fueltank/oxygentank{
+/obj/structure/reagent_dispensers/tank/fuel/oxygentank{
 	anchored = 1
 	},
 /obj/structure/window/reinforced/toughened{
@@ -34851,6 +34723,32 @@
 "bGi" = (
 /turf/solid_open_space,
 /area/almayer/middeck/maintenance/sf)
+"bGj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/middeck/medical)
+"bGk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/medic_white,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
+"bGl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
+"bGm" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/lower_astronav)
 "bGn" = (
 /obj/structure/barricade/plasteel/metal,
 /turf/open/floor/almayer/cargo,
@@ -34865,6 +34763,13 @@
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/squads/req)
+"bGp" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/middeck/medical)
 "bGq" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/warning_stripes{
@@ -34872,6 +34777,29 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
+"bGr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/medical)
+"bGs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/shipboard/navigation)
+"bGt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/shipboard/navigation)
 "bGu" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -34881,12 +34809,34 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
+"bGv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
 "bGw" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
+"bGx" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/req)
 "bGy" = (
 /turf/open/floor/almayer/green/west,
 /area/almayer/squads/req)
@@ -34897,6 +34847,54 @@
 	},
 /turf/open/floor/almayer/green/northwest,
 /area/almayer/squads/req)
+"bGA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/req)
+"bGB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/engineer)
+"bGC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
+"bGD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/req)
+"bGE" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/req)
 "bGF" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 1
@@ -34979,10 +34977,78 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
+"bGR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/engineer)
+"bGS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/shipboard/navigation)
+"bGT" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/middeck/medical)
 "bGU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
+"bGV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/largecrate/random/barrel/medical,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/medical)
+"bGW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/middeck/medical)
+"bGX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/machinery/light/red{
+	dir = 8;
+	light_color = "#BB3F3F"
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
+"bGY" = (
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/o2,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
 "bHg" = (
 /obj/structure/pipes/unary/freezer{
 	throwpass = 1
@@ -35411,14 +35477,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
-/turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/shipboard/navigation)
-"bLj" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "bLk" = (
@@ -36978,22 +37036,26 @@
 /obj/item/storage/box/masks{
 	pixel_x = 5
 	},
-/obj/item/roller/surgical,
-/obj/item/roller/surgical,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/roller/surgical,
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
-	},
-/obj/item/reagent_container/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner"
+/obj/item/storage/box/bloodbag{
+	pixel_x = -8;
+	pixel_y = 0
 	},
 /obj/item/storage/box/bodybags{
 	pixel_y = 12;
 	pixel_x = -8
 	},
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/obj/effect/decal/cleanable/dirt,
 /obj/item/reagent_container/glass/minitank{
 	pixel_x = -16;
 	pixel_y = 5
@@ -37158,7 +37220,7 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = 8;
 	pixel_y = -32
@@ -41004,12 +41066,13 @@
 /turf/open/floor/almayer/plating_stripedcorner/south,
 /area/almayer/command/securestorage)
 "dnZ" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/disposaloutlet,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
 	},
 /turf/open/floor/almayer/plating_striped/east,
 /area/almayer/maint/hull/lower/l_a_p)
@@ -42685,7 +42748,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/briefing)
 "dZu" = (
-/obj/structure/reagent_dispensers/ammoniatank,
+/obj/structure/reagent_dispensers/tank/ammonia,
 /obj/structure/window/reinforced/toughened{
 	dir = 4;
 	health = 500
@@ -43798,7 +43861,7 @@
 /turf/open/floor/almayer/uscm/directional/logo_c/west,
 /area/almayer/command/cic)
 "euW" = (
-/obj/structure/reagent_dispensers/acidtank,
+/obj/structure/reagent_dispensers/tank/sacid,
 /obj/structure/window/reinforced/toughened{
 	dir = 8;
 	health = 500
@@ -43978,7 +44041,7 @@
 /turf/open/floor/almayer/orange,
 /area/almayer/hallways/hangar)
 "eyV" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/sign/safety/water{
 	pixel_x = -17;
 	pixel_y = -8
@@ -44316,6 +44379,7 @@
 	pixel_x = -8;
 	pixel_y = 28
 	},
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "eFK" = (
@@ -45665,9 +45729,6 @@
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
 "ffx" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
 /obj/item/clothing/head/helmet/marine/tech/tanker,
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer/plate,
@@ -45802,7 +45863,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower)
 "fje" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_p)
 "fjl" = (
@@ -48485,7 +48546,7 @@
 /turf/open/floor/almayer/orangecorner/west,
 /area/almayer/maint/upper/u_a_s)
 "guS" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/starboard_point_defense)
 "guW" = (
@@ -48859,7 +48920,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "gCf" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "gCu" = (
@@ -50242,9 +50303,6 @@
 /turf/open/floor/almayer/plating_striped/southeast,
 /area/almayer/engineering/lower/engine_core)
 "hfO" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
 /obj/structure/surface/rack,
 /obj/item/storage/belt/utility/full{
 	pixel_y = 8
@@ -50252,6 +50310,10 @@
 /obj/item/storage/belt/utility/full,
 /obj/item/clothing/suit/storage/hazardvest/black,
 /obj/item/tool/crowbar,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
 "hfQ" = (
@@ -51871,7 +51933,7 @@
 	dir = 8;
 	health = 500
 	},
-/obj/structure/reagent_dispensers/fueltank/gas/hydrogen,
+/obj/structure/reagent_dispensers/tank/fuel/gas/hydrogen,
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/engineering/lower/workshop/hangar)
 "hQU" = (
@@ -54802,7 +54864,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "iZE" = (
-/obj/structure/reagent_dispensers/acidtank,
+/obj/structure/reagent_dispensers/tank/sacid,
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/engineering/lower/workshop/hangar)
 "iZU" = (
@@ -56818,7 +56880,7 @@
 /turf/open/floor/almayer/orange/southeast,
 /area/almayer/engineering/lower/engine_core)
 "jPq" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering/starboard)
 "jPu" = (
@@ -57836,7 +57898,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
-/obj/structure/closet/secure_closet/medical_doctor,
+/obj/structure/closet/secure_closet/medical_doctor{
+	storage_capacity = 60
+	},
 /obj/structure/sign/safety/med_cryo{
 	pixel_x = 15;
 	pixel_y = -27
@@ -58604,7 +58668,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_aft_hallway)
 "kAm" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south2)
 "kAv" = (
@@ -59005,7 +59069,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
 "kJH" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -62318,7 +62382,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/orange/north,
 /area/almayer/hallways/hangar)
 "mhm" = (
@@ -63695,7 +63759,7 @@
 	dir = 4;
 	pixel_y = 13
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/fore_hallway)
 "mJO" = (
@@ -64446,9 +64510,6 @@
 /turf/open/floor/almayer/plating_striped/east,
 /area/almayer/engineering/lower/engine_core)
 "mZM" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -66793,7 +66854,7 @@
 /turf/open/floor/almayer/green/east,
 /area/almayer/squads/req)
 "nUd" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/item/reagent_container/spray/cleaner{
 	layer = 3.2;
 	pixel_x = -7;
@@ -68427,7 +68488,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
 "oyO" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/sign/safety/water{
 	pixel_x = -17
 	},
@@ -72387,7 +72448,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/upper_medical)
 "qhD" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	anchored = 1
 	},
 /turf/open/floor/almayer/test_floor5,
@@ -72958,7 +73019,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/s_stern)
 "qra" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/engineering/lower/engine_core)
 "qrc" = (
@@ -73617,14 +73678,14 @@
 	pixel_x = 2;
 	pixel_y = 3
 	},
-/obj/item/tool/mop{
-	pixel_x = -13;
-	pixel_y = 26
-	},
 /obj/structure/machinery/computer/working_joe{
 	dir = 8;
 	pixel_x = 18;
 	pixel_y = 1
+	},
+/obj/item/tool/mop{
+	pixel_x = 0;
+	pixel_y = 2
 	},
 /turf/open/floor/almayer,
 /area/almayer/medical/lower_medical_medbay)
@@ -75804,7 +75865,7 @@
 /turf/open/floor/almayer/orange/west,
 /area/almayer/hallways/hangar)
 "ruz" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/hangar)
 "ruL" = (
@@ -78380,7 +78441,7 @@
 /turf/open/floor/almayer/green/northeast,
 /area/almayer/living/grunt_rnr)
 "swG" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_p)
 "swH" = (
@@ -79572,7 +79633,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/lifeboat)
 "sYP" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/port_point_defense)
 "sYT" = (
@@ -80533,7 +80594,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/engineering/lower/engine_core)
 "tqG" = (
@@ -82700,7 +82761,7 @@
 /turf/open_space,
 /area/almayer/stair_clone/upper/port_aft)
 "ukP" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/engine_core)
 "ukS" = (
@@ -83553,7 +83614,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
 "uCh" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
 	pixel_y = -32
@@ -84684,7 +84745,7 @@
 /turf/open/floor/almayer/orange/east,
 /area/almayer/engineering/upper_engineering/starboard)
 "uZV" = (
-/obj/structure/reagent_dispensers/fueltank/gas/methane{
+/obj/structure/reagent_dispensers/tank/fuel/gas/methane{
 	anchored = 1
 	},
 /obj/structure/window/reinforced/toughened{
@@ -87619,8 +87680,31 @@
 /obj/structure/machinery/status_display{
 	pixel_y = -30
 	},
-/obj/structure/machinery/recharge_station,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/item/storage/box/sprays{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/item/storage/box/lights/mixed{
+	pixel_x = 4
+	},
+/obj/item/storage/box/bloodbag{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -6
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "wbV" = (
@@ -90501,9 +90585,6 @@
 	icon_state = "triagedecaltopleft";
 	pixel_x = 19
 	},
-/obj/structure/sign/nosmoking_2{
-	pixel_x = 28
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1
@@ -90515,7 +90596,7 @@
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "xgm" = (
-/obj/structure/reagent_dispensers/fueltank/oxygentank,
+/obj/structure/reagent_dispensers/tank/fuel/oxygentank,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering/starboard)
 "xgr" = (
@@ -91056,7 +91137,7 @@
 	dir = 4;
 	health = 500
 	},
-/obj/structure/reagent_dispensers/ethanoltank{
+/obj/structure/reagent_dispensers/tank/ethanol{
 	anchored = 1
 	},
 /obj/structure/machinery/light,
@@ -91454,7 +91535,7 @@
 /area/almayer/stair_clone/upper/port_fore)
 "xyf" = (
 /obj/structure/platform/metal/almayer/north,
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_s)
 "xyj" = (
@@ -92705,7 +92786,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "xYQ" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "xZk" = (
@@ -129918,7 +129999,7 @@ aLB
 aLB
 aLB
 aLB
-aLA
+bGm
 aLA
 aLA
 aLC
@@ -130742,7 +130823,7 @@ blv
 aLV
 aLU
 aLP
-aLN
+aLw
 aLA
 aLA
 aLD
@@ -135294,7 +135375,7 @@ wXT
 cdA
 bcm
 bcm
-emC
+bcm
 emC
 mTL
 xFt
@@ -161640,13 +161721,13 @@ bFY
 bFY
 bFY
 alU
-azA
+bGS
 azA
 bLs
-bLj
+mZM
 bmQ
 ayw
-aMV
+bGs
 alU
 bFY
 bFY
@@ -161849,7 +161930,7 @@ alU
 alU
 ayw
 ayw
-aNe
+byh
 azA
 azA
 alU
@@ -161949,13 +162030,13 @@ bFY
 bFY
 bFY
 alU
-aMW
+ayw
 ayw
 byh
 aNf
 byh
 azA
-bfi
+azA
 alU
 bFY
 bFY
@@ -162052,13 +162133,13 @@ bFY
 bFY
 bFY
 alU
-azA
+bGS
 byh
 aNk
 aNg
 aNa
 byh
-azA
+bGt
 alU
 bFY
 bFY
@@ -162366,7 +162447,7 @@ aNp
 aNo
 aNj
 aNd
-aMZ
+aMX
 byh
 alU
 bFY
@@ -165065,7 +165146,7 @@ bFV
 bwT
 aTR
 aQh
-aRk
+aPk
 bwN
 bdH
 bdH
@@ -167717,13 +167798,13 @@ bud
 bib
 avN
 avN
-aPX
+aOY
 aOx
 bfM
-bmU
+bGC
 aPq
 aOl
-aPb
+aOY
 avN
 avN
 brG
@@ -167917,7 +167998,7 @@ aIA
 avN
 aIA
 avN
-bix
+bGY
 bns
 aTF
 bcO
@@ -168228,17 +168309,17 @@ aOj
 avN
 buh
 bnv
-aTF
+aXD
 avN
 avN
 avN
-aPY
+aPu
 aPV
 bfM
 bmU
 bfU
 aOm
-aPc
+aPu
 avN
 avN
 avN
@@ -168333,7 +168414,7 @@ avN
 aIA
 avN
 avN
-aIc
+bGX
 beB
 bhw
 bhw
@@ -168434,7 +168515,7 @@ aOl
 avN
 bui
 bnw
-aOE
+aHP
 aHP
 bnm
 bcP
@@ -168448,7 +168529,7 @@ aYN
 aYN
 bmd
 blV
-aOE
+aHP
 aHr
 bci
 avN
@@ -169161,9 +169242,9 @@ beB
 aHE
 aHE
 aHE
-aOZ
+aHE
 bmU
-aOZ
+aHE
 beB
 beB
 beB
@@ -169261,7 +169342,7 @@ aJA
 bih
 avN
 avN
-bnY
+bGT
 bhD
 bnY
 avN
@@ -169269,7 +169350,7 @@ avN
 avN
 btj
 bnY
-bnY
+bGp
 avN
 avN
 aIb
@@ -169879,7 +169960,7 @@ bnv
 blH
 bcj
 avN
-btP
+bGV
 bmV
 bfU
 aOl
@@ -169887,7 +169968,7 @@ aOY
 aOx
 bfM
 bah
-baC
+bGr
 avN
 bwp
 blP
@@ -169977,7 +170058,7 @@ baF
 aOh
 baC
 avN
-bcj
+bGk
 bnv
 blH
 bid
@@ -170080,7 +170161,7 @@ bnY
 bnY
 bnY
 avN
-bcj
+bGl
 bnv
 blH
 bwy
@@ -170184,7 +170265,7 @@ aOh
 baC
 avN
 aSc
-bnv
+bGj
 blH
 bie
 avN
@@ -170287,7 +170368,7 @@ bxI
 aYN
 avN
 aVU
-bnC
+bGj
 blH
 aVP
 avN
@@ -170497,15 +170578,15 @@ aIA
 avN
 avN
 avN
+bGW
 bhD
-bhD
 bnY
 avN
 avN
 avN
 bnY
 bnY
-bnY
+bGp
 avN
 avN
 avN
@@ -170603,9 +170684,9 @@ bah
 bhO
 bah
 beJ
-aPG
+aOh
 bvA
-aPG
+aOh
 beJ
 aOh
 beJ
@@ -170811,7 +170892,7 @@ beB
 beB
 aOh
 beB
-aOh
+bGv
 beB
 beB
 beB
@@ -174002,7 +174083,7 @@ lcg
 daz
 lmz
 asm
-bhe
+aTa
 bgB
 bdb
 aUJ
@@ -174105,9 +174186,9 @@ lcg
 daz
 lmz
 asm
-bcW
+bGD
 bak
-bcX
+bGx
 asm
 bsH
 bsc
@@ -174723,9 +174804,9 @@ daz
 daz
 daz
 asm
-bcX
+bGE
 byl
-bcW
+bGA
 asm
 bsO
 bsc
@@ -174826,7 +174907,7 @@ ahM
 daz
 lmz
 asm
-bhe
+aTa
 bgD
 bdS
 aUJ
@@ -175341,9 +175422,9 @@ lmz
 lmz
 lmz
 asm
-bcW
+bGD
 bak
-bcW
+bGA
 asm
 asm
 bsA
@@ -175444,7 +175525,7 @@ bFZ
 asm
 asm
 asm
-aVA
+bcW
 bak
 bcW
 asm
@@ -177092,7 +177173,7 @@ asm
 asm
 asm
 asm
-bhj
+bcX
 byl
 bcW
 asm
@@ -177195,9 +177276,9 @@ bFZ
 bFZ
 bFZ
 asm
-bcX
+bGE
 byl
-bcW
+bGA
 asm
 asm
 beM
@@ -177813,9 +177894,9 @@ bFZ
 bFZ
 bFZ
 asm
-bcX
+bGE
 bak
-bcW
+bGA
 asm
 asm
 aIJ
@@ -178122,7 +178203,7 @@ bFZ
 bFZ
 bFZ
 asm
-bhe
+aTa
 bgB
 aTf
 asm
@@ -178431,9 +178512,9 @@ bFZ
 bFZ
 bFZ
 asm
-bcW
+bGD
 byl
-bcX
+bGx
 asm
 btb
 aZw
@@ -178740,7 +178821,7 @@ bFZ
 bFZ
 bFZ
 asm
-aVA
+bcW
 byl
 bcX
 asm
@@ -182963,9 +183044,9 @@ aTC
 bhu
 brE
 aHH
+bGR
 aSN
-aSN
-aSN
+bGB
 aHH
 brE
 bex

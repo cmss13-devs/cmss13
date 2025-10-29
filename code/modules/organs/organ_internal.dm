@@ -184,9 +184,6 @@
 	. = ..()
 	if(. == PROCESS_KILL)
 		return // Parent implemention qdeleted us
-	//Peridaxon won't halt side effects of liver damage if the liver is fugg'd.
-	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS && organ_status < ORGAN_BROKEN)
-		return
 	if(owner.life_tick % PROCESS_ACCURACY == 0)
 
 		//High toxins levels are dangerous

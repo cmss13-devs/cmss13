@@ -319,9 +319,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/park)
-"ei" = (
-/turf/open/space,
-/area/fiorina/oob)
 "el" = (
 /obj/structure/girder/displaced,
 /turf/open/floor/platingdmg3,
@@ -349,19 +346,6 @@
 "eQ" = (
 /turf/open/floor/plating/platebot,
 /area/fiorina/station/clf_ship)
-"fe" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 5
-	},
-/obj/structure/barricade/handrail/type_b{
-	layer = 3.5
-	},
-/obj/structure/barricade/handrail/type_b{
-	dir = 8;
-	layer = 3.5
-	},
-/turf/open/organic/grass/astroturf,
-/area/fiorina/station/park)
 "ff" = (
 /obj/structure/barricade/handrail/type_b{
 	layer = 3.5
@@ -376,16 +360,6 @@
 /obj/structure/machinery/power/smes/buildable/charged,
 /turf/open/floor/almayer/orange/west,
 /area/fiorina/station/clf_ship)
-"fz" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 6
-	},
-/obj/structure/barricade/handrail/type_b{
-	dir = 8;
-	layer = 3.5
-	},
-/turf/open/organic/grass/astroturf,
-/area/fiorina/station/park)
 "fC" = (
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/cell_stripe/west,
@@ -464,15 +438,6 @@
 	},
 /turf/open/floor/almayer/blue/north,
 /area/fiorina/station/clf_ship)
-"hP" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 1
-	},
-/obj/structure/barricade/handrail/type_b{
-	layer = 3.5
-	},
-/turf/open/floor/plating,
-/area/fiorina/station/park)
 "hV" = (
 /obj/effect/landmark/survivor_spawner/clf/fiorina,
 /turf/open/floor/almayer,
@@ -501,15 +466,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/panelscorched,
 /area/fiorina/station/clf_ship)
-"iQ" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 1
-	},
-/obj/structure/barricade/handrail/type_b{
-	layer = 3.5
-	},
-/turf/open/organic/grass/astroturf,
-/area/fiorina/station/park)
 "iZ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stack/sheet/metal/med_large_stack,
@@ -772,10 +728,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/station/clf_ship)
-"qW" = (
-/obj/structure/window/framed/prison,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/park)
 "qZ" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -858,9 +810,6 @@
 "tX" = (
 /turf/open/floor/almayer/emerald/north,
 /area/fiorina/station/clf_ship)
-"uj" = (
-/turf/open/space/basic,
-/area/fiorina/oob)
 "ul" = (
 /obj/item/stack/rods,
 /turf/open/floor/wood,
@@ -1101,12 +1050,6 @@
 "Cw" = (
 /turf/open/floor/almayer/orange,
 /area/fiorina/station/clf_ship)
-"CD" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 6
-	},
-/turf/open/organic/grass/astroturf,
-/area/fiorina/station/park)
 "CL" = (
 /obj/item/stool,
 /obj/item/weapon/gun/shotgun/merc,
@@ -1325,10 +1268,6 @@
 /obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/greenblue/southwest,
 /area/fiorina/station/botany)
-"Js" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner,
-/turf/open/organic/grass/astroturf,
-/area/fiorina/station/park)
 "Ju" = (
 /obj/structure/barricade/handrail/type_b{
 	layer = 3.5
@@ -1566,15 +1505,6 @@
 /obj/structure/bed/chair,
 /turf/open/floor/almayer,
 /area/fiorina/station/clf_ship)
-"PS" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 1
-	},
-/obj/structure/barricade/wooden{
-	dir = 1
-	},
-/turf/open/organic/grass/astroturf,
-/area/fiorina/station/park)
 "PV" = (
 /obj/structure/barricade/handrail/type_b{
 	layer = 3.5
@@ -1605,15 +1535,6 @@
 /area/fiorina/station/park)
 "Qv" = (
 /turf/open/floor/prison/darkbrown2,
-/area/fiorina/station/park)
-"Qw" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 5
-	},
-/obj/structure/barricade/handrail/type_b{
-	layer = 3.5
-	},
-/turf/open/floor/plating,
 /area/fiorina/station/park)
 "QB" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
@@ -2003,7 +1924,7 @@ ZI
 ZI
 ZI
 ZI
-ei
+ZI
 "}
 (2,1,1) = {"
 ZI
@@ -2043,9 +1964,9 @@ ZI
 ZI
 ZI
 ZI
-ei
-ei
-ei
+ZI
+ZI
+ZI
 "}
 (3,1,1) = {"
 OH
@@ -2085,9 +2006,9 @@ ZI
 ZI
 ZI
 ZI
-ei
-ei
-ei
+ZI
+ZI
+ZI
 "}
 (4,1,1) = {"
 OH
@@ -2128,8 +2049,8 @@ hr
 Hn
 si
 RR
-uj
-uj
+ZI
+ZI
 "}
 (5,1,1) = {"
 pM
@@ -2171,7 +2092,7 @@ hr
 Hn
 si
 RR
-ei
+ZI
 "}
 (6,1,1) = {"
 pM
@@ -2253,9 +2174,9 @@ DP
 TN
 It
 SB
-ei
-ei
-ei
+ZI
+ZI
+ZI
 "}
 (8,1,1) = {"
 zm
@@ -2295,9 +2216,9 @@ fS
 fS
 aM
 SB
-ei
-ei
-ei
+ZI
+ZI
+ZI
 "}
 (9,1,1) = {"
 zm
@@ -2337,9 +2258,9 @@ ZG
 DF
 fU
 SB
-ei
-ei
-ei
+ZI
+ZI
+ZI
 "}
 (10,1,1) = {"
 zm
@@ -2379,9 +2300,9 @@ af
 ra
 VJ
 SB
-ei
-ei
-ei
+ZI
+ZI
+ZI
 "}
 (11,1,1) = {"
 XD
@@ -2421,9 +2342,9 @@ ra
 ra
 jQ
 SB
-ei
-ei
-ei
+ZI
+ZI
+ZI
 "}
 (12,1,1) = {"
 vo
@@ -2463,9 +2384,9 @@ DF
 DF
 nF
 SB
-ei
-ei
-ei
+ZI
+ZI
+ZI
 "}
 (13,1,1) = {"
 XD
@@ -2549,7 +2470,7 @@ dy
 GW
 Da
 yJ
-ei
+ZI
 "}
 (15,1,1) = {"
 Jn
@@ -2590,8 +2511,8 @@ dy
 GW
 Da
 yJ
-uj
-uj
+ZI
+ZI
 "}
 (16,1,1) = {"
 OF
@@ -2627,13 +2548,13 @@ PA
 gu
 PA
 Qc
-ei
-ei
-ei
-ei
-ei
-ei
-ei
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
+ZI
 "}
 (17,1,1) = {"
 PF
@@ -2671,11 +2592,11 @@ IH
 NS
 NS
 NS
-ei
-ei
-ei
-ei
-ei
+ZI
+ZI
+ZI
+ZI
+ZI
 "}
 (18,1,1) = {"
 zY
@@ -2700,8 +2621,8 @@ QM
 ny
 au
 gW
-Js
-hP
+HD
+HD
 jh
 Ip
 Tg
@@ -2713,11 +2634,11 @@ IH
 IH
 IH
 NS
-ei
-ei
-ei
-ei
-ei
+ZI
+ZI
+ZI
+ZI
+ZI
 "}
 (19,1,1) = {"
 Jn
@@ -2731,19 +2652,19 @@ js
 js
 KN
 Qv
-IH
+eq
 Qo
 IY
 HD
 ff
-CD
-Qw
+HD
+HD
 Ef
 tS
 Qv
 vA
-Js
-iQ
+HD
+HD
 ds
 Hr
 Kp
@@ -2757,9 +2678,9 @@ IH
 NS
 NS
 NS
-ei
-ei
-ei
+ZI
+ZI
+ZI
 "}
 (20,1,1) = {"
 OF
@@ -2773,23 +2694,23 @@ gF
 XI
 Am
 Qv
-qW
+eq
 cp
 XI
 IY
 PV
-Js
-PS
+HD
+HD
 pU
 AX
 Hy
 Ju
-Js
-iQ
+HD
+HD
 Hr
 PV
-fz
-fe
+HD
+HD
 pU
 IY
 IY
@@ -2799,7 +2720,7 @@ IH
 IH
 IH
 NS
-ei
-ei
-ei
+ZI
+ZI
+ZI
 "}

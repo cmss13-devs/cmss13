@@ -224,11 +224,9 @@
 
 	if(dispensing)
 		var/image/dispensing = image(icon, src, "dispensing")
-		dispensing.icon_state = "dispensing"
 		overlays += dispensing
 	else
 		var/image/not_dispensing = image(icon, src, "filling")
-		not_dispensing.icon_state = "filling"
 		overlays += not_dispensing
 
 /obj/structure/reagent_dispensers/tank/on_reagent_change()

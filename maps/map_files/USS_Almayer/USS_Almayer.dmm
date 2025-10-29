@@ -71974,7 +71974,7 @@
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/upper/fore_hallway)
 "pzG" = (
-/obj/docking_port/stationary/emergency_response/port2,
+/obj/docking_port/stationary/emergency_response/port1,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/starboard_point_defense)
 "pzJ" = (

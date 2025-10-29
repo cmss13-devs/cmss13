@@ -286,7 +286,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/emergency
 	name = "emergency autoinjector (CAUTION)"
 	desc = "An autoinjector loaded with a single dose of 77u of a special cocktail of chemicals, to be used in life-threatening situations. Doesn't require any training to use."
-	icon_state = "emptyskill"
+	icon_state = "empty_ez"
 	chemname = "emergency"
 	amount_per_transfer_from_this = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1)
 	volume = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1)
@@ -426,7 +426,6 @@
 	volume = 15
 	uses_left = 0
 	display_maptext = TRUE
-	maptext_label = "C5u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/get_examine_text(mob/user)
 	. = ..()
@@ -436,19 +435,16 @@
 	name = "15u custom autoinjector"
 	amount_per_transfer_from_this = 15
 	volume = 45
-	maptext_label = "C15u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medium
 	name = "30u custom autoinjector"
 	amount_per_transfer_from_this = 30
 	volume = 90
-	maptext_label = "C30u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/large
 	name = "60u custom autoinjector"
 	amount_per_transfer_from_this = 60
 	volume = 180
-	maptext_label = "C60u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless
 	name = "15u custom EZ autoinjector"
@@ -459,57 +455,48 @@
 	amount_per_transfer_from_this = 15
 	volume = 15
 	uses_left = 0
-	maptext_label = "EZ15"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/unit
 	name = "1u custom EZ autoinjector"
 	volume = 1
 	amount_per_transfer_from_this = 1
-	maptext_label = "EZ1u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
 	name = "5u custom EZ autoinjector"
 	volume = 5
 	amount_per_transfer_from_this = 5
-	maptext_label = "EZ5u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
 	name = "10u custom EZ autoinjector"
 	volume = 10
 	amount_per_transfer_from_this = 10
-	maptext_label = "EZ10"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium
 	name = "30u custom EZ autoinjector"
 	volume = 30
 	amount_per_transfer_from_this = 30
-	maptext_label = "EZ30"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/large
 	name = "45u custom EZ autoinjector"
 	volume = 45
 	amount_per_transfer_from_this = 45
-	maptext_label = "EZ45"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
 	name = "60u custom EZ autoinjector"
 	volume = 60
 	amount_per_transfer_from_this = 60
-	maptext_label = "EZ60"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic
-	name = "Medic Autoinjector (M-M)"
-	desc = "A custom-made professional injector, likely from research. Has a similar lock to pill bottles, and fits up to 6 injections."
+	name = "15u Reagent Pouch Autoinjector"
+	desc = "An autoinjector specifically designed to fit inside and refill from Pressurized Reagent Canister Pouches. Has a similar lock to pill bottles, and fits up to 6 injections."
 	skilllock = SKILL_MEDICAL_MEDIC
 	volume = 90
 	amount_per_transfer_from_this = 15
 	autoinjector_type = "autoinjector_medic"
 	icon_state = "empty_medic"
 	uses_left = 0
-	maptext_label = "M15u"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
-	name = "Medic Autoinjector (M-L)"
+	name = "30u Reagent Pouch Autoinjector"
 	volume = 180
 	amount_per_transfer_from_this = 30
-	maptext_label = "M30u"

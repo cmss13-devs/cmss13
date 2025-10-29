@@ -386,7 +386,7 @@
 	name = PROPERTY_OCULOPEUTIC
 	code = "OCP"
 	description = "Restores sensory capabilities of photoreceptive cells in the eyes returning lost vision. Forces mutation of potency in plants."
-	rarity = PROPERTY_COMMON
+	rarity = PROPERTY_RARE
 	value = 1
 
 /datum/chem_property/positive/oculopeutic/process(mob/living/M, potency = 1, delta_time)
@@ -457,7 +457,7 @@
 	name = PROPERTY_NEUROPEUTIC
 	code = "NRP"
 	description = "Rebuilds damaged and broken neurons in the central nervous system re-establishing brain functionality. Forces species mutation in plants."
-	rarity = PROPERTY_COMMON
+	rarity = PROPERTY_RARE
 
 /datum/chem_property/positive/neuropeutic/process(mob/living/M, potency = 1)
 	M.apply_damage(-POTENCY_MULTIPLIER_HIGH * potency, BRAIN)

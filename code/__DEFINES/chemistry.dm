@@ -166,7 +166,7 @@
 #define PROPERTY_HYPERTHERMIC "hyperthermic"
 #define PROPERTY_HYPOTHERMIC "hypothermic"
 #define PROPERTY_ATRICHOGENIC "atrichogenic"
-#define PROPERTY_FLUFFING "trichogenic"
+#define PROPERTY_TRICHOGENIC "trichogenic"
 #define PROPERTY_ALLERGENIC "allergenic"
 #define PROPERTY_CRYOMETABOLIZING "cryometabolizing"
 #define PROPERTY_EUPHORIC "euphoric"

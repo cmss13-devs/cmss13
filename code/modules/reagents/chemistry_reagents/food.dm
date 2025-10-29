@@ -293,7 +293,7 @@
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	color = "#9ec265" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_HYDRO
-	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_FLUFFING = 1)
+	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_TRICHOGENIC = 1)
 
 /datum/reagent/urishiol
 	name = "Urishiol"

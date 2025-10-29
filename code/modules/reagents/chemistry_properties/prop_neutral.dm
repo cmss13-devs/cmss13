@@ -237,7 +237,7 @@
 /datum/chem_property/neutral/antispasmotic
 	name = PROPERTY_ANTISPASMOTIC
 	code = "RLX"
-	description = "Has a hypnotic effect on neuromuscular junctions depressing the force of muscle contractions. High concentrations can cause respiratory failure and cardiac arrest."
+	description = "Relaxes smooth muscles and treats muscle spasms by blocking the neurotransmitter, acetylcholine. High concentrations can cause respiratory failure and cardiac arrest."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
@@ -338,7 +338,7 @@
 /datum/chem_property/neutral/atrichogenic
 	name = PROPERTY_ATRICHOGENIC
 	code = "BLD"
-	description = "Damages the hair follicles in the skin causing extreme alopecia, also refered to as baldness."
+	description = "Damages the hair follicles in the skin to disrupt the hair growth cycle, causing extreme alopecia, also refered to as baldness."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
@@ -360,7 +360,7 @@
 	M.adjustCloneLoss(0.5 * potency * delta_time)
 
 /datum/chem_property/neutral/trichogenic
-	name = PROPERTY_FLUFFING
+	name = PROPERTY_TRICHOGENIC
 	code = "FLF"
 	description = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth. Found to increase yeilds in plants."
 	rarity = PROPERTY_UNCOMMON

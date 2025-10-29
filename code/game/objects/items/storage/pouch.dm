@@ -900,8 +900,8 @@
 	new /obj/item/reagent_container/glass/beaker(src)
 
 /obj/item/storage/pouch/autoinjector
-	name = "auto-injector pouch"
-	desc = "A pouch specifically for auto-injectors."
+	name = "autoinjector pouch"
+	desc = "A pouch specifically for autoinjectors."
 	icon_state = "injectors"
 	storage_slots = 7
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector)

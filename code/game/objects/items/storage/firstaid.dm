@@ -159,9 +159,11 @@
 /obj/item/storage/firstaid/toxin/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/storage/pill_bottle/antitox(src)
-	new /obj/item/reagent_container/pill/antitox(src)
-	new /obj/item/reagent_container/pill/antitox(src)
-	new /obj/item/reagent_container/pill/antitox(src)
+	new /obj/item/storage/pill_bottle/antitox(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 
 /obj/item/storage/firstaid/toxin/empty/fill_preset_inventory()
 	return

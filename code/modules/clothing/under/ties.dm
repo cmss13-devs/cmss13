@@ -491,7 +491,6 @@
 	flags_obj = OBJ_IS_HELMET_GARB
 	worn_accessory_slot = ACCESSORY_SLOT_PATCH
 	worn_accessory_limit = 4
-	stylish = TRUE
 
 /obj/item/clothing/accessory/patch/uscmpatch
 	name = "USCM patch"
@@ -499,6 +498,7 @@
 	icon_state = "uscmpatch"
 	item_state = "uscmpatch_style_1"
 	item_state_slots = list(WEAR_AS_GARB = "uscmpatch_style_1")
+	stylish = TRUE
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "USCM Falling Falcons patch"

@@ -411,7 +411,7 @@
 	id = "antiZed"
 	description = "An experimental drug that destroys the zombie virus in living humans and prevents regeneration for those who have already turned."
 	reagent_state = LIQUID
-	color = "#C8A5DC"
+	color = "#41D4FB"
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	data = 0
 	properties = list(PROPERTY_CURING = 2)

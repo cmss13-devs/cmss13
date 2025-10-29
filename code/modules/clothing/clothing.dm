@@ -38,12 +38,13 @@
 	for(var/obj/item/clothing/accessory/A in accessories)
 		. += "[icon2html(A, user)] \A [A] is [A.additional_examine_text()]" //The spacing of the examine text proc is deliberate. By default it returns ".".
 	if(stylish)
-		.+= "This object is considered stylish. Press unique-action to change its style!"
+		.+= SPAN_GREEN("This object is considered stylish. Press unique-action to change its style!")
 
 /obj/item/clothing/unique_action(mob/user)
 	if(stylish)
 		change_style(user)
 
+// helmet garbs are technically supported out of the box, but it requires following the naming convention of item_state being "base_style_X", otherwise it may just show empty, but its hardly going to be a problem since you might just be changing the style for the specific look itself anyway - nihi
 /obj/item/clothing/proc/change_style(mob/user)
 	var/base_state = initial(icon_state)
 	var/current_style = 0
@@ -59,11 +60,18 @@
 		item_state = desired_item_state
 		update_clothing_icon()
 		to_chat(user, SPAN_NOTICE("You change the style of [src] to style [next_style]."))
+		if((flags_obj & OBJ_IS_HELMET_GARB) && item_icons && item_icons[WEAR_AS_GARB])
+			if(desired_item_state in icon_states(item_icons[WEAR_AS_GARB]))
+				LAZYSET(item_state_slots, WEAR_AS_GARB, desired_item_state)
+				to_chat(user, SPAN_NOTICE("... and you also change its helmet garb style!"))
+
 	else
 		// loop back to the first style.
 		item_state = "[style_prefix]1"
 		update_clothing_icon()
 		to_chat(user, SPAN_NOTICE("You change the style of [src] back to default."))
+		if((flags_obj & OBJ_IS_HELMET_GARB) && item_icons && item_icons[WEAR_AS_GARB])
+			LAZYSET(item_state_slots, WEAR_AS_GARB, item_state)
 
 /obj/item/clothing/proc/convert_to_accessory(mob/user)
 	if(!can_become_accessory)

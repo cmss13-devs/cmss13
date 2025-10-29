@@ -122,6 +122,7 @@ SUBSYSTEM_DEF(objectives)
 	var/experimental_devices = 15
 	var/research_papers = 15
 	var/vial_boxes = 20
+	var/research_legendary_hints = 8
 
 	//A stub of tweaking item spawns based on map
 	switch(SSmapping.configs[GROUND_MAP])
@@ -131,7 +132,6 @@ SUBSYSTEM_DEF(objectives)
 			folders = 25
 			disks = 25
 		if(MAP_CORSAT)
-			vial_boxes = 30
 			research_papers = 30
 			experimental_devices = 20
 
@@ -189,11 +189,16 @@ SUBSYSTEM_DEF(objectives)
 
 	//Research
 	for(var/i=0;i<research_papers;i++)
-		var/dest = pick(10;"close", 8;"medium", 2;"far", 20;"science", 15;"close_documents", 12;"medium_documents", 3;"far_documents", 30;"science_documents")
+		var/dest = pick_weight(list("close" = 3,"medium" = 1, "far" = 5, "science" = 4,"close_documents" = 5, "medium_documents" = 4, "far_documents" = 3, "science_documents" = 4))
 		spawn_objective_at_landmark(dest, /obj/item/paper/research_notes)
+	for(var/i=0;i<research_legendary_hints;i++)//;-;
+		var/dest = pick_weight(list("close" = 1,"medium" = 2, "far" = 2, "science" = 3,"close_documents" = 5, "medium_documents" = 4, "far_documents" = 3, "science_documents" = 4))
+		spawn_objective_at_landmark(dest, pick_weight(list(/obj/item/paper/research_notes/leg_hint = 5, /obj/item/paper/research_notes/ciph_hint/complete = 3)))
 	for(var/i=0;i<vial_boxes;i++)
-		var/dest = pick(15;"close", 30;"medium", 5;"far", 50;"science")
+		var/dest = pick_weight(list("medium" = 1, "far" = 5, "science" = 4))
 		spawn_objective_at_landmark(dest, /obj/item/storage/fancy/vials/random)
+
+
 
 // Populate the map with objective items.
 

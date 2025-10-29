@@ -229,13 +229,13 @@
 /obj/item/clothing/mask/gas/yautja/thrall
 	name = "alien mask"
 	desc = "A simplistic metallic face mask with advanced capabilities."
-	icon_state = "thrall_mask"
-	item_state = "thrall_mask"
+	icon_state = "thrallmask_ebony"
+	item_state = "thrallmask_ebony"
 	icon = 'icons/obj/items/hunter/thrall_gear.dmi'
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
 	)
-	item_state_slots = list(WEAR_FACE = "thrall_mask")
+	item_state_slots = list(WEAR_FACE = "thrallmask_ebony")
 	thrall = TRUE
 
 /obj/item/clothing/mask/gas/yautja/thrall/toggle_zoom()

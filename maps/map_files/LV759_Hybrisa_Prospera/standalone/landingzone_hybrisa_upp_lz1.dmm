@@ -366,7 +366,7 @@
 /obj/item/reagent_container/food/snacks/packaged_burger{
 	pixel_y = 11
 	},
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer5,
+/obj/structure/prop/hybrisa/supermart/freezer/freezer5,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/spaceport/kitchen)
 "aW" = (
@@ -1157,7 +1157,7 @@
 /turf/open/floor/strata/orange_edge,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "fv" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /obj/structure/largecrate/random/mini{
 	pixel_x = 6;
 	pixel_y = 18
@@ -1196,7 +1196,7 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "fM" = (
 /obj/effect/decal/cleanable/liquid_fuel,
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
@@ -1412,7 +1412,7 @@
 "gU" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/structure/pipes/vents/pump_hybrisa,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/maintenance_east)
 "gV" = (
@@ -1709,7 +1709,7 @@
 	icon_state = "igniter0";
 	name = "floor panel"
 	},
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/spaceport/engineering)
 "io" = (
@@ -3131,8 +3131,8 @@
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/lv759/indoors/spaceport/cuppajoes)
 "qL" = (
-/obj/structure/window/framed/hybrisa/spaceport/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/obj/structure/window/framed/hybrisa/spaceport,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "qM" = (
@@ -3839,11 +3839,11 @@
 /turf/open/floor/strata/floor3,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "uY" = (
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4,
+/obj/structure/prop/hybrisa/supermart/freezer/freezer4,
 /turf/closed/wall/hybrisa/spaceport/reinforced,
 /area/lv759/indoors/spaceport/kitchen)
 "va" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/item/tool/mop,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/spaceport/baggagehandling)
@@ -3992,10 +3992,10 @@
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "vM" = (
-/obj/structure/window/framed/hybrisa/spaceport/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 8
 	},
+/obj/structure/window/framed/hybrisa/spaceport,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/kitchen)
 "vN" = (
@@ -4932,7 +4932,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/engineering)
@@ -6172,7 +6172,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "HP" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/maintenance_east)
 "HR" = (
@@ -8062,7 +8062,7 @@
 /obj/structure/closet/crate/freezer/cooler{
 	layer = 5
 	},
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer6,
+/obj/structure/prop/hybrisa/supermart/freezer/freezer6,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/spaceport/kitchen)
 "TG" = (
@@ -8148,7 +8148,7 @@
 	layer = 3.33
 	},
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /obj/structure/platform/metal/strata/west,
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv759/indoors/spaceport/docking_bay_2)
@@ -8456,10 +8456,10 @@
 /turf/open/shuttle/escapepod/floor1,
 /area/lv759/indoors/spaceport/engineering)
 "Wq" = (
-/obj/structure/window/framed/hybrisa/spaceport/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 8
 	},
+/obj/structure/window/framed/hybrisa/spaceport,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/hallway_east)
 "Ww" = (
@@ -8862,7 +8862,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Zu" = (
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Zw" = (

@@ -160,11 +160,18 @@
 
 
 /mob/living/carbon/human/proc/process_glasses(obj/item/clothing/glasses/G)
+	var/atom/movable/screen/plane_master/blackness/darkness_plane = hud_used?.plane_masters["[BLACKNESS_PLANE]"]
+
 	if(!G || !G.active)
+		darkness_plane?.alpha = 255
 		return
 	see_in_dark += G.darkness_view
 	if(G.vision_flags)
 		sight |= G.vision_flags
+
+	if(G.vision_flags & SEE_TURFS)
+		darkness_plane?.alpha = 0
+
 	if(G.lighting_alpha < lighting_alpha)
 		lighting_alpha = G.lighting_alpha
 
@@ -196,6 +203,7 @@
 
 
 /mob/living/carbon/human/proc/handle_revive()
+	revive_grace_period = initial(revive_grace_period)
 	SEND_SIGNAL(src, COMSIG_HUMAN_REVIVED)
 	track_revive(job)
 	GLOB.alive_mob_list += src
@@ -209,7 +217,6 @@
 	last_damage_data = null
 	statistic_tracked = FALSE
 	tod = null
-	revive_grace_period = initial(revive_grace_period)
 	set_stat(UNCONSCIOUS)
 	emote("gasp")
 	regenerate_icons()

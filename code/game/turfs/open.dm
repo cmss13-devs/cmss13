@@ -167,6 +167,25 @@
 	can_bloody = FALSE
 	supports_surgery = FALSE
 
+//Slipery slope
+/turf/open/slippery
+	name = "sloped roof"
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "grass1"
+	is_weedable = NOT_WEEDABLE
+
+
+/turf/open/slippery/Entered(atom/movable/crosser)
+	. = ..()
+	if(isobserver(crosser) || crosser.anchored)
+		return
+
+	if(!(isitem(crosser) || isliving(crosser)))
+		return
+
+	INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
+
+
 // Prison grass
 /turf/open/organic/grass
 	name = "grass"
@@ -701,9 +720,9 @@
 			river_slowdown -= 0.7
 			if(isboiler(C))
 				river_slowdown -= 1
+		river_slowdown = max(0, river_slowdown)
 
-		var/new_slowdown = C.next_move_slowdown + river_slowdown
-		C.next_move_slowdown = new_slowdown
+		C.next_move_slowdown += river_slowdown
 
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
@@ -1387,6 +1406,11 @@
 	icon_state = "plating"
 	allow_construction = FALSE
 	supports_surgery = TRUE
+
+/turf/open/shuttle/lifeboat/catwalk
+	icon = 'icons/turf/escapepods.dmi'
+	icon_state = "floor3"
+	dir = EAST
 
 /turf/open/shuttle/lifeboat/plating_striped
 	icon_state = "plating_striped"

@@ -497,6 +497,9 @@
 /area/almayer/maint/hull/lower/p_bow
 	name = "\improper Lower Deck Port-Bow Hull"
 
+/area/almayer/maint/hull/lower/lower_astronav
+	name = "\improper Lower Deck Weapons Control Maintenance"
+
 /area/almayer/maint/hull/lower/s_bow
 	name = "\improper Lower Deck Starboard-Bow Hull"
 
@@ -923,3 +926,85 @@
 /area/almayer/evacuation/stranded/pod16
 /area/almayer/evacuation/stranded/pod17
 /area/almayer/evacuation/stranded/pod18
+
+//Mid-Deck
+
+/area/almayer/middeck
+	name = "USS Almayer - Middle Deck"
+	allow_construction = FALSE
+	icon_state = "lowerhull"
+
+/area/almayer/middeck/hanger
+	name = "Middle Deck - Hangerbay Catwalks"
+	icon_state = "hangar"
+
+/area/almayer/middeck/medical
+	name = "Middle Deck - Medical Catwalks"
+	icon_state = "medical"
+
+/area/almayer/middeck/engineer
+	name = "Middle Deck - Engineering Catwalks"
+	icon_state = "workshop"
+
+/area/almayer/middeck/req
+	name = "Middle Deck - Requisition Catwalks"
+	icon_state = "req"
+
+/area/almayer/middeck/briefing
+	name = "Middle Deck - Briefing Catwalks"
+	icon_state = "briefing"
+
+/area/almayer/middeck/maintenance
+	name = "\improper Middle Deck Maintenance - Parent"
+
+//Bow
+
+/area/almayer/middeck/maintenance/bow
+	name = "\improper Middle Deck Maintenance - Bow"
+
+/area/almayer/middeck/maintenance/pb
+	name = "\improper Middle Deck Maintenance - Port-Bow"
+
+/area/almayer/middeck/maintenance/sb
+	name = "\improper Middle Deck Maintenance - Starboard-Bow"
+
+//Fore
+
+/area/almayer/middeck/maintenance/amidship
+	name = "\improper Middle Deck Maintenance - Amidship"
+
+/area/almayer/middeck/maintenance/sf
+	name = "\improper Middle Deck Maintenance - Starboard-Fore"
+
+/area/almayer/middeck/maintenance/sp
+	name = "\improper Middle Deck Maintenance - Port-Fore"
+
+//Aft
+
+/area/almayer/middeck/maintenance/aft
+	name = "\improper Middle Deck Maintenance - Aft"
+
+/area/almayer/middeck/maintenance/saft
+	name = "\improper Middle Deck Maintenance - Starboard-Aft"
+
+/area/almayer/middeck/maintenance/paft
+	name = "\improper Middle Deck Maintenance - Port-Aft"
+
+//Admin Lower Level
+
+/area/almayer/underdeck/
+	name = "USS Almayer - Under Deck"
+	allow_construction = FALSE
+	icon_state = "lowerhull"
+
+/area/almayer/underdeck/hangar
+	name = "USS Almayer - Under Deck Hangar"
+	icon_state = "hangar"
+
+/area/almayer/underdeck/req
+	name = "USS Almayer - Under Deck Cargo"
+	icon_state = "req"
+
+/area/almayer/underdeck/vehicle
+	name = "USS Almayer - Under Deck Vehicle Bay"
+	icon_state = "req"

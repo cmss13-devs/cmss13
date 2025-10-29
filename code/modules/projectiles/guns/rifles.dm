@@ -77,6 +77,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/stock/rifle,
@@ -98,6 +99,12 @@
 /obj/item/weapon/gun/rifle/m41a/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
+/obj/item/weapon/gun/rifle/m41a/Initialize(mapload, ...)
+	. = ..()
+	if(istype(src, /obj/item/weapon/gun/rifle/m41a/corporate) || istype(src, /obj/item/weapon/gun/rifle/m41a/elite))
+		AddElement(/datum/element/corp_label/wy)
+	else
+		AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/rifle/m41a/set_gun_config_values()
 	..()
@@ -162,6 +169,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/grenade,
@@ -188,6 +196,7 @@
 /obj/item/weapon/gun/rifle/nsg23/Initialize(mapload, spawn_empty)
 	. = ..()
 	update_icon()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/rifle/nsg23/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 12,"rail_y" = 22, "under_x" = 26, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
@@ -451,9 +460,12 @@
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1, /obj/item/attachable/stock/rifle/collapsible)
 	start_automatic = TRUE
 
-/obj/item/weapon/gun/rifle/m41aMK1/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 14)
+/obj/item/weapon/gun/rifle/m41aMK1/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
+/obj/item/weapon/gun/rifle/m41aMK1/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 23, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 14)
 
 /obj/item/weapon/gun/rifle/m41aMK1/set_gun_config_values()
 	..()
@@ -533,6 +545,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
@@ -557,6 +570,7 @@
 /obj/item/weapon/gun/rifle/m46c/Initialize(mapload, ...)
 	LAZYADD(actions_types, /datum/action/item_action/m46c/toggle_lethal_mode)
 	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 	if(iff_enabled)
 		LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
@@ -736,6 +750,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/magnetic_harness,
@@ -830,6 +845,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/grenade,
@@ -975,6 +991,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/attached_gun/grenade,
@@ -1056,6 +1073,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/attached_gun/grenade,
@@ -1116,6 +1134,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/attached_gun/grenade/m203,
 	)
@@ -1274,6 +1293,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/compensator,
 	)
 	random_spawn_chance = 10
@@ -1397,6 +1417,7 @@
 	fire_sound = 'sound/weapons/gun_hpr.ogg'
 
 	aim_slowdown = SLOWDOWN_ADS_LMG
+	map_specific_decoration = TRUE
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -1408,18 +1429,31 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/stock/rifle/collapsible/m41ae2,
+		/obj/item/attachable/bipod/m41ae2,
 	)
 
+	pixel_x = -1
+
+	starting_attachment_types = list(
+		/obj/item/attachable/stock/rifle/collapsible/m41ae2,
+		/obj/item/attachable/bipod/m41ae2,
+	)
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_HEAVY
 	start_automatic = TRUE
 
+/obj/item/weapon/gun/rifle/lmg/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/rifle/lmg/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 23, "under_x" = 23, "under_y" = 12, "stock_x" = 24, "stock_y" = 12)
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 19, "rail_x" = 12, "rail_y" = 23, "under_x" = 27, "under_y" = 13, "stock_x" = 14, "stock_y" = 15)
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_config_values()
 	..()
@@ -1486,6 +1520,7 @@
 		/obj/item/attachable/bayonet/rmc_replica,
 		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/verticalgrip, // Underbarrel
 		/obj/item/attachable/flashlight/grip,
@@ -1499,6 +1534,10 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	flags_equip_slot = SLOT_BACK
 	start_automatic = TRUE
+
+/obj/item/weapon/gun/rifle/type71/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/weapon/gun/rifle/type71/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 39, "muzzle_y" = 17, "rail_x" = 16, "rail_y" = 23, "under_x" = 26, "under_y" = 13, "stock_x" = 11, "stock_y" = 13)
@@ -1594,6 +1633,7 @@
 		/obj/item/attachable/bayonet/rmc_replica,
 		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 	)
 
@@ -1653,6 +1693,7 @@
 		/obj/item/attachable/bayonet/rmc_replica,
 		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/verticalgrip, // Underbarrel
 		/obj/item/attachable/burstfire_assembly,
@@ -1769,6 +1810,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/stock/rifle/collapsible/ak4047,
@@ -1788,6 +1830,10 @@
 
 	pixel_x = -6
 	hud_offset = -6
+
+/obj/item/weapon/gun/rifle/ak4047/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/weapon/gun/rifle/ak4047/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 38, "muzzle_y" = 18,"rail_x" = 20, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 11, "stock_y" = 13, "special_x" = 33, "special_y" = 17)
@@ -1815,7 +1861,7 @@
 
 /obj/item/weapon/gun/rifle/m4ra
 	name = "\improper M4RA battle rifle"
-	desc = "The M4RA battle rifle is a designated marksman rifle in service with the USCM. Sporting a bullpup configuration, the M4RA battle rifle is perfect for reconnaissance and fire support teams.\nTakes *only* non-high-velocity M4RA magazines."
+	desc = "The Armat Battlefield Systems M4RA battle rifle is a designated marksman rifle in service with the USCM. Sporting a bullpup configuration, the M4RA battle rifle is perfect for reconnaissance and fire support teams.\nTakes *only* non-high-velocity M4RA magazines."
 	icon_state = "m4ra"
 	item_state = "m4ra"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
@@ -1852,6 +1898,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/verticalgrip,
@@ -1870,6 +1917,10 @@
 	map_specific_decoration = TRUE
 	pixel_x = -5
 	hud_offset = -5
+
+/obj/item/weapon/gun/rifle/m4ra/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 22, "rail_y" = 21, "under_x" = 30, "under_y" = 13, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)
@@ -1901,7 +1952,7 @@
 
 /obj/item/weapon/gun/rifle/l42a
 	name = "\improper L42A battle rifle"
-	desc = "The L42A Battle Rifle, found commonly around the frontiers of the Galaxy. It's commonly used by colonists for self defense, as well as many colonial militias, whomever they serve due to it's rugged reliability and ease of use without much training. This rifle was put up for adoption by the USCM and tested for a time, but ultimately lost to the M4RA already in service."
+	desc = "The Armat Battlefield Systems L42A Battle Rifle, found commonly around the frontiers of the Galaxy. It's commonly used by colonists for self defense, as well as many colonial militias, whomever they serve due to it's rugged reliability and ease of use without much training. This rifle was put up for adoption by the USCM and tested for a time, but ultimately lost to the M4RA already in service."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
@@ -1935,6 +1986,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/stock/carbine,
 		/obj/item/attachable/stock/carbine/wood,
@@ -1951,6 +2003,10 @@
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	starting_attachment_types = list(/obj/item/attachable/stock/carbine)
 	map_specific_decoration = TRUE
+
+/obj/item/weapon/gun/rifle/l42a/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/rifle/l42a/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 20, "under_x" = 18, "under_y" = 15, "stock_x" = 22, "stock_y" = 10)
@@ -2112,6 +2168,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/magnetic_harness,
 	)
@@ -2119,9 +2176,12 @@
 	map_specific_decoration = FALSE
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 
+/obj/item/weapon/gun/rifle/rmc_f90/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/rifle/rmc_f90/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 15, "rail_y" = 21, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
-
 
 /obj/item/weapon/gun/rifle/rmc_f90/set_gun_config_values()
 	..()
@@ -2146,6 +2206,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 	)
 
 /obj/item/weapon/gun/rifle/rmc_f90/a_grip/handle_starting_attachment()
@@ -2249,6 +2310,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/grenade,
@@ -2284,6 +2346,7 @@
 /obj/item/weapon/gun/rifle/l23/Initialize(mapload, spawn_empty)
 	. = ..()
 	update_icon()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/rifle/l23/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 14, "rail_y" = 21, "under_x" = 26, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
@@ -2374,9 +2437,9 @@
 
 //L42A3 Battle Rifle
 
-/obj/item/weapon/gun/rifle/l42a3
-	name = "\improper L42A3 battle rifle"
-	desc = "The L42A3 Battle Rifle, found commonly in Three World Empire's armories. Used by RMC and IASF alike, valued for its reliability."
+/obj/item/weapon/gun/rifle/l64a3
+	name = "\improper L64A3 battle rifle"
+	desc = "A lightweight designated marksman rifle developed by Howatomo Precision Machining for the Royal Marines and Imperial Armed Space Forces. valued for its reliability."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/marksman_rifles.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
@@ -2386,10 +2449,10 @@
 	)
 	icon_state = "l42a3"
 	item_state = "l42a3"
-	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
-	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
-	fire_sound = 'sound/weapons/gun_carbine.ogg'
-	current_mag = /obj/item/ammo_magazine/rifle/l42a
+	reload_sound = 'sound/weapons/handling/rmcdmr_reload.ogg'
+	unload_sound = 'sound/weapons/handling/rmcdmr_unload.ogg'
+	fire_sound = "gun_l64"
+	current_mag = /obj/item/ammo_magazine/rifle/l64
 
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -2402,11 +2465,11 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/scope,
-		/obj/item/attachable/stock/carbine/l42a3,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/scope/mini/nsg23,
 		/obj/item/attachable/scope/variable_zoom/twe,
@@ -2416,25 +2479,18 @@
 	)
 
 	accepted_ammo = list(
-		/obj/item/ammo_magazine/rifle/l42a,
-		/obj/item/ammo_magazine/rifle/l42a/ap,
-		/obj/item/ammo_magazine/rifle/l42a/le,
-		/obj/item/ammo_magazine/rifle/l42a/rubber,
-		/obj/item/ammo_magazine/rifle/l42a/heap,
-		/obj/item/ammo_magazine/rifle/l42a/penetrating,
-		/obj/item/ammo_magazine/rifle/l42a/toxin,
-		/obj/item/ammo_magazine/rifle/l42a/extended,
-		/obj/item/ammo_magazine/rifle/l42a/incendiary,
+		/obj/item/ammo_magazine/rifle/l64,
+		/obj/item/ammo_magazine/rifle/l64/ap,
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_VERY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 
-/obj/item/weapon/gun/rifle/l42a3/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19, "rail_x" = 13, "rail_y" = 22, "under_x" = 20, "under_y" = 16, "stock_x" = 22, "stock_y" = 10)
+/obj/item/weapon/gun/rifle/l64a3/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 17, "rail_y" = 22, "under_x" = 27, "under_y" = 14, "stock_x" = 22, "stock_y" = 10)
 
-/obj/item/weapon/gun/rifle/l42a3/set_gun_config_values()
+/obj/item/weapon/gun/rifle/l64a3/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_9)
 	set_burst_amount(0)
@@ -2446,14 +2502,12 @@
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
 
-/obj/item/weapon/gun/rifle/l42a3/training
-	current_mag = /obj/item/ammo_magazine/rifle/l42a/rubber
 
-/obj/item/weapon/gun/rifle/l42a3/marksman
-	name = "\improper L42A3 battle rifle"
-	desc = "The L42A3 Battle Rifle, modification sold to TWE. This particular version of the weapon has been given a custom stock and variable zoom scope. Reliable and deadly."
+/obj/item/weapon/gun/rifle/l64a3/marksman
+	name = "\improper L64A3 battle rifle"
+	desc = "A lightweight designated marksman rifle developed by Howatomo Precision Machining for the Royal Marines and Imperial Armed Space Forces.  Reliable and deadly."
 
-	current_mag = /obj/item/ammo_magazine/rifle/l42a/ap
+	current_mag = /obj/item/ammo_magazine/rifle/l64/ap
 
 	random_spawn_chance = 100 //L42A3 always spawns with attachments
 	random_spawn_muzzle = list(
@@ -2464,38 +2518,17 @@
 		/obj/item/attachable/bipod,
 	)
 
-/obj/item/weapon/gun/rifle/l42a3/marksman/set_gun_config_values()
+/obj/item/weapon/gun/rifle/l64a3/marksman/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_11)
 
-/obj/item/weapon/gun/rifle/l42a3/marksman/handle_starting_attachment() //Adds Marksman DMR's standard attachments.
+/obj/item/weapon/gun/rifle/l64a3/marksman/handle_starting_attachment() //Adds Marksman DMR's standard attachments.
 	..()
 	var/obj/item/attachable/scope/variable_zoom/twe/SC = new(src)
 	SC.flags_attach_features &= ~ATTACH_REMOVABLE
 	SC.Attach(src)
 	update_attachable(SC.slot)
-	var/obj/item/attachable/stock/carbine/l42a3/marksman/S = new(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
 
-/obj/item/weapon/gun/rifle/l42a3/fal // THE RIGHT ARM OF FREEDOM, MOTHERFU-
-	name = "\improper L42A3-F battle rifle"
-	desc = "The L42A3 Battle Rifle with a heavily modified firing mechanism, giving it a burst-fire option. Extremely deadly."
-
-	current_mag = /obj/item/ammo_magazine/rifle/l42a/extended
-	start_automatic = TRUE
-
-/obj/item/weapon/gun/rifle/l42a3/fal/set_gun_config_values()
-	..()
-	set_fire_delay(FIRE_DELAY_TIER_10)
-	set_burst_amount(0)
-	set_burst_delay(FIRE_DELAY_TIER_9)
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_10
-	damage_falloff_mult = 0
-	scatter = SCATTER_AMOUNT_TIER_9
 
 //-------------------------------------------------------
 
@@ -2580,6 +2613,7 @@
 	. = ..()
 	pump_delay = FIRE_DELAY_TIER_8*3
 	additional_fire_group_delay += pump_delay
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/rifle/xm51/set_bullet_traits()
 	LAZYADD(traits_to_give, list(

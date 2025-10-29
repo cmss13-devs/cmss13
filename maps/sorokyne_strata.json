@@ -16,6 +16,17 @@
         "/datum/equipment_preset/survivor/upp_miner",
         "/datum/equipment_preset/survivor/upp_fire_fighter"
     ],
+	"synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/sorokyne/engineer",
+        "/datum/equipment_preset/synth/survivor/sorokyne/security",
+        "/datum/equipment_preset/synth/survivor/sorokyne/scientist",
+        "/datum/equipment_preset/synth/survivor/sorokyne/civilian",
+        "/datum/equipment_preset/synth/survivor/sorokyne/doctor",
+        "/datum/equipment_preset/synth/survivor/sorokyne/corporate"
+    ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf/coordinator"
+    ],
     "defcon_triggers": [
         3750,
         2600,

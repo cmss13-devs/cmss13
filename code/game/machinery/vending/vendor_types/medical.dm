@@ -54,9 +54,8 @@
 /obj/structure/restock_cart
 	name = "restock cart"
 	desc = "A rather heavy cart filled with various supplies to restock a vendor with."
-	icon = 'icons/obj/structures/liquid_tanks.dmi'
-	icon_state = "tank_normal" // Temporary
-	var/overlay_color = rgb(252, 186, 3) // Temporary
+	icon = 'icons/obj/structures/restock_carts.dmi'
+	icon_state = "medcart"
 
 	density = TRUE
 	anchored = FALSE
@@ -82,7 +81,7 @@
 /obj/structure/restock_cart/medical
 	name = "\improper Wey-Yu restock cart"
 	desc = "A rather heavy cart filled with various supplies to restock a vendor with. Provided by Wey-Yu Pharmaceuticals Division(TM)."
-	icon_state = "tank_normal" // Temporary
+	icon_state = "medcart"
 
 	supplies_remaining = 20
 	supplies_max = 20
@@ -99,8 +98,7 @@
 /obj/structure/restock_cart/medical/reagent
 	name = "\improper Wey-Yu reagent restock cart"
 	desc = "A rather heavy cart filled with various reagents to restock a vendor with. Provided by Wey-Yu Pharmaceuticals Division(TM)."
-	icon_state = "tank_normal" // Temporary
-	overlay_color = rgb(252, 115, 3) // Temporary
+	icon_state = "reagentcart" // Temporary
 
 	supplies_remaining = 1200
 	supplies_max = 1200
@@ -114,10 +112,24 @@
 	update_icon()
 
 /obj/structure/restock_cart/update_icon()
+	overlays.Cut()
 	. = ..()
-	var/image/overlay_image = image(icon, icon_state = "tn_color") // Temporary
-	overlay_image.color = overlay_color
-	overlays += overlay_image
+	if(supplies_remaining && supplies_max)
+		var/image/filled
+		var/percent = floor((supplies_remaining / supplies_max * 100))
+		switch(percent)
+			if(1 to 25)
+				filled = image(icon, src, "[icon_state]_1")
+			if(26 to 50)
+				filled = image(icon, src, "[icon_state]_2")
+			if(51 to 75)
+				filled = image(icon, src, "[icon_state]_3")
+			if(76 to INFINITY)
+				filled = image(icon, src, "[icon_state]_4")
+			else
+				return
+
+		overlays += filled
 
 /obj/structure/restock_cart/get_examine_text(mob/user)
 	. = ..()
@@ -241,10 +253,12 @@
 	var/list/chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
 		/obj/item/reagent_container/hypospray/autoinjector/dexalinp,
+		/obj/item/reagent_container/hypospray/autoinjector/antitoxin,
 		/obj/item/reagent_container/hypospray/autoinjector/adrenaline,
 		/obj/item/reagent_container/hypospray/autoinjector/inaprovaline,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane,
 		/obj/item/reagent_container/hypospray/autoinjector/oxycodone,
+		/obj/item/reagent_container/hypospray/autoinjector/peridaxon,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
 
@@ -252,6 +266,7 @@
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
@@ -385,7 +400,10 @@
 				break // All done
 			cart.supplies_remaining--
 
+		cart.update_icon()
+
 	being_restocked = FALSE
+	cart.update_icon()
 	user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with [cart.supply_descriptor]."),
 	SPAN_NOTICE("You finish stocking [src] with [cart.supply_descriptor]."))
 
@@ -485,12 +503,14 @@
 		list("AUTOINJECTORS", -1, null, null),
 		list("Autoinjector (Bicaridine)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/bicaridine, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Dexalin+)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/dexalinp, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Dylovene)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/antitoxin, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Epinephrine)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/adrenaline, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Inaprovaline)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Kelotane)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/kelotane, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Oxycodone)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/oxycodone, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Peridaxon)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tramadol, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricord)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
 
 		list("LIQUID BOTTLES", -1, null, null),
 		list("Bottle (Bicaridine)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),
@@ -805,6 +825,7 @@
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
 	)

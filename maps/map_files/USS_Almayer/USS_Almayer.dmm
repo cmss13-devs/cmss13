@@ -5361,9 +5361,17 @@
 	},
 /turf/open/floor/almayer/silver/west,
 /area/almayer/living/cryo_cells)
+"amR" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/shipboard/starboard_point_defense)
 "amS" = (
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/shipboard/stern_point_defense)
+"amT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating_striped/west,
+/area/almayer/shipboard/starboard_point_defense)
 "amU" = (
 /obj/structure/machinery/gear{
 	id = "vehicle_elevator_gears"
@@ -6027,6 +6035,10 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/living/cryo_cells)
+"aoH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/starboard_point_defense)
 "aoI" = (
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/lifeboat_pumps/north1)
@@ -6087,6 +6099,10 @@
 "aoP" = (
 /turf/open/floor/almayer/aicore/no_build/ai_floor2,
 /area/almayer/command/airoom)
+"aoQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating_striped/east,
+/area/almayer/shipboard/starboard_point_defense)
 "aoR" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/disposalpipe/segment{
@@ -7925,6 +7941,7 @@
 	light_color = "#BB3F3F";
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating_stripedcorner/west,
 /area/almayer/shipboard/starboard_point_defense)
 "atx" = (
@@ -7950,6 +7967,7 @@
 	light_color = "#BB3F3F";
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating_stripedcorner/east,
 /area/almayer/shipboard/starboard_point_defense)
 "atB" = (
@@ -8056,6 +8074,7 @@
 	light_color = "#BB3F3F";
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating_stripedcorner/south,
 /area/almayer/shipboard/starboard_point_defense)
 "atW" = (
@@ -15625,6 +15644,14 @@
 /obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
+"aON" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating_striped/east,
+/area/almayer/shipboard/starboard_point_defense)
 "aOO" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/structure/barricade/handrail/no_vault{
@@ -21049,6 +21076,10 @@
 /area/almayer/middeck/maintenance/sp)
 "bby" = (
 /turf/open/floor/almayer/plating_striped/south,
+/area/almayer/shipboard/starboard_point_defense)
+"bbz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/starboard_point_defense)
 "bbA" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
@@ -35700,7 +35731,7 @@
 	emp_proof = 1;
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer/plate,
 /area/almayer/shipboard/stern_point_defense)
 "bID" = (
 /turf/open/floor/almayer/test_floor4,
@@ -139214,7 +139245,7 @@ aKR
 aLL
 bKq
 bJG
-bbS
+bJp
 aLW
 bKh
 aLL
@@ -139317,17 +139348,17 @@ bKr
 atR
 atI
 atI
-atI
-atI
-atI
+amT
+amT
+amT
 aKU
 atI
 atI
 atI
 atI
 aKU
-atI
-atI
+amT
+amT
 atw
 aLL
 dvD
@@ -139421,8 +139452,8 @@ atU
 aKS
 aKS
 aKS
-aKS
-aKS
+aoH
+aoH
 aKS
 aKS
 aKS
@@ -139431,7 +139462,7 @@ aKS
 aKS
 aKS
 pzG
-bby
+amR
 aLL
 bJg
 bbS
@@ -139527,7 +139558,7 @@ aKS
 aKS
 aKS
 aKS
-aKS
+aoH
 aKS
 aKS
 aKS
@@ -139629,15 +139660,15 @@ aKS
 aKS
 aKS
 aKS
+aoH
+aoH
+aoH
 aKS
 aKS
 aKS
 aKS
 aKS
-aKS
-aKS
-aKS
-bby
+amR
 bJi
 bJg
 bbS
@@ -139730,10 +139761,10 @@ atU
 aKS
 aKS
 aKS
-aKS
-aKS
-aKS
-aKS
+aoH
+aoH
+aoH
+aoH
 aKS
 aKS
 aKS
@@ -139832,15 +139863,15 @@ bKr
 atU
 aKS
 aKS
+aoH
+aoH
+aoH
+aoH
 aKS
 aKS
 aKS
-aKS
-aKS
-aKS
-aKS
-aKS
-aKS
+aoH
+aoH
 aKS
 aKS
 bby
@@ -139936,17 +139967,17 @@ atU
 aKS
 aKS
 aKS
+aoH
+aoH
 aKS
 aKS
 aKS
+aoH
+aoH
+aoH
 aKS
 aKS
-aKS
-aKS
-aKS
-aKS
-aKS
-bby
+amR
 bJi
 bJg
 bbS
@@ -140035,7 +140066,7 @@ aaa
 aab
 aad
 bKr
-atU
+bbz
 aKS
 aKS
 aKS
@@ -140043,13 +140074,13 @@ aKS
 aKS
 aKS
 aKS
+aoH
+aoH
+aoH
 aKS
 aKS
-aKS
-aKS
-aKS
-aKS
-bby
+aoH
+amR
 bJj
 bJg
 bbS
@@ -140139,19 +140170,19 @@ aab
 aad
 bKr
 atV
-atL
+aoQ
 atL
 atL
 atL
 aKV
 atL
+aoQ
+aON
+aoQ
 atL
 aKV
-atL
-atL
-aKV
-atL
-atL
+aoQ
+aoQ
 atA
 aLL
 qVE

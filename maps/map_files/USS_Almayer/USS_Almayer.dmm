@@ -428,10 +428,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
-"abb" = (
-/obj/structure/reagent_dispensers/tank/water,
-/turf/open/floor/almayer,
-/area/almayer/shipboard/starboard_point_defense)
 "abc" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
@@ -4522,10 +4518,6 @@
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/upper/fore_hallway)
-"akq" = (
-/obj/structure/largecrate/random/case/small,
-/turf/open/floor/almayer,
-/area/almayer/shipboard/starboard_point_defense)
 "akr" = (
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/shipboard/port_point_defense)
@@ -36482,17 +36474,25 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/starboard_point_defense)
 "bKR" = (
+/obj/structure/reagent_dispensers/tank/water,
+/turf/open/floor/almayer,
+/area/almayer/shipboard/starboard_point_defense)
+"bKS" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/almayer,
+/area/almayer/shipboard/starboard_point_defense)
+"bKT" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plating_stripedcorner/north,
 /area/almayer/shipboard/starboard_point_defense)
-"bKS" = (
+"bKU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/starboard_point_defense)
-"bKT" = (
+"bKV" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 4
@@ -36500,7 +36500,7 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating_stripedcorner/south,
 /area/almayer/shipboard/starboard_point_defense)
-"bKU" = (
+"bKW" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
 	name = "\improper Umbillical Airlock";
@@ -36510,7 +36510,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/starboard_point_defense)
-"bKV" = (
+"bKX" = (
+/obj/structure/machinery/chem_dispenser/corpsman{
+	pixel_y = 3
+	},
+/turf/open/floor/almayer/emerald/north,
+/area/almayer/squads/charlie)
+"bKY" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
 	name = "tele_ground1";
@@ -36523,7 +36529,7 @@
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/northwest,
 /area/space)
-"bKW" = (
+"bKZ" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
 	name = "tele_ground1";
@@ -36536,13 +36542,7 @@
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/space)
-"bKX" = (
-/obj/structure/machinery/chem_dispenser/corpsman{
-	pixel_y = 3
-	},
-/turf/open/floor/almayer/emerald/north,
-/area/almayer/squads/charlie)
-"bKY" = (
+"bLa" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
 	name = "tele_ground1";
@@ -139035,7 +139035,7 @@ aaa
 (135,1,2) = {"
 aaa
 aaa
-bKV
+bKY
 aag
 aKR
 aKR
@@ -139138,10 +139138,10 @@ aaa
 (136,1,2) = {"
 aaa
 aaa
-bKW
+bKZ
 aKR
 aKR
-abb
+bKR
 bKO
 aLW
 bKL
@@ -139241,10 +139241,10 @@ aaa
 (137,1,2) = {"
 aaa
 aaa
-bKW
+bKZ
 aKR
 aLL
-akq
+bKS
 bKQ
 bKe
 bJI
@@ -139344,9 +139344,9 @@ aaa
 (138,1,2) = {"
 aaa
 aaa
+bKZ
 bKW
-bKU
-bKR
+bKT
 atI
 atI
 atI
@@ -139447,8 +139447,8 @@ aaa
 (139,1,2) = {"
 aaa
 aaa
+bKZ
 bKW
-bKU
 atU
 aKS
 aKS
@@ -139550,8 +139550,8 @@ aaa
 (140,1,2) = {"
 aaa
 aaa
+bKZ
 bKW
-bKU
 atU
 aKS
 aKS
@@ -139653,8 +139653,8 @@ aaa
 (141,1,2) = {"
 aaa
 aaa
+bKZ
 bKW
-bKU
 atU
 aKS
 aKS
@@ -139756,8 +139756,8 @@ aaa
 (142,1,2) = {"
 aaa
 aaa
+bKZ
 bKW
-bKU
 atU
 aKS
 aKS
@@ -139859,8 +139859,8 @@ aaa
 (143,1,2) = {"
 aaa
 aaa
+bKZ
 bKW
-bKU
 atU
 aKS
 aKS
@@ -139962,8 +139962,8 @@ aaa
 (144,1,2) = {"
 aaa
 aaa
+bKZ
 bKW
-bKU
 atU
 aKS
 aKS
@@ -140065,8 +140065,8 @@ aaa
 (145,1,2) = {"
 aaa
 aaa
+bKZ
 bKW
-bKU
 atU
 aKS
 aKS
@@ -140168,9 +140168,9 @@ aaa
 (146,1,2) = {"
 aaa
 aaa
+bKZ
 bKW
 bKU
-bKS
 aKS
 aKS
 aKS
@@ -140271,8 +140271,8 @@ aaa
 (147,1,2) = {"
 aaa
 aaa
+bKZ
 bKW
-bKU
 atU
 aKS
 aKS
@@ -140374,9 +140374,9 @@ aaa
 (148,1,2) = {"
 aaa
 aaa
+bKZ
 bKW
-bKU
-bKT
+bKV
 bJQ
 atL
 atL
@@ -140477,7 +140477,7 @@ aaa
 (149,1,2) = {"
 aaa
 aaa
-bKW
+bKZ
 aKR
 aKR
 aKR
@@ -140580,7 +140580,7 @@ aaa
 (150,1,2) = {"
 aaa
 aaa
-bKY
+bLa
 aah
 aah
 aah

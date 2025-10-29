@@ -307,7 +307,7 @@
 	if(. == PROCESS_KILL)
 		return // Parent implemention qdeleted us
 	//Imidazoline will not cure blindness if your eyes are AWOL.
-	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_EYE_STASIS && organ_status < ORGAN_BROKEN)
+	if((owner.chem_effect_flags & CHEM_EFFECT_ORGAN_EYE_STASIS) && organ_status < ORGAN_BROKEN)
 		return
 	if(organ_status >= ORGAN_BRUISED)
 		owner.SetEyeBlur(20)

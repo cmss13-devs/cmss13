@@ -168,25 +168,25 @@
 
 
 
-/datum/chem_property/negative/biocidic
-	name = PROPERTY_BIOCIDIC
+/datum/chem_property/negative/bioacidic
+	name = PROPERTY_BIOACIDIC
 	code = "BCD"
 	description = "Ruptures cell membranes on contact, destroying most types of organic tissue. Reduces pest and weed populations."
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = -1
 
-/datum/chem_property/negative/biocidic/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/negative/bioacidic/process(mob/living/M, potency = 1, delta_time)
 	..()
 	M.take_limb_damage(0.5 * potency * delta_time)
 
-/datum/chem_property/negative/biocidic/process_overdose(mob/living/M, potency = 1)
+/datum/chem_property/negative/bioacidic/process_overdose(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)
 
-/datum/chem_property/negative/biocidic/process_critical(mob/living/M, potency = 1)
+/datum/chem_property/negative/bioacidic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_VHIGH * potency)
 
-/datum/chem_property/negative/biocidic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+/datum/chem_property/negative/bioacidic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
 	if(!processing_tray.seed)
 		return
@@ -195,33 +195,33 @@
 	if(processing_tray.pestlevel > 0)
 		processing_tray.pestlevel += -1*(potency*2)*volume
 
-/datum/chem_property/negative/paining
-	name = PROPERTY_PAINING
+/datum/chem_property/negative/neuropathic
+	name = PROPERTY_NEUROPATHIC
 	code = "PNG"
 	description = "Activates the somatosensory system causing neuropathic pain all over the body. Unlike nociceptive pain, this is not caused to any tissue damage and is solely perceptive."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = -1
 
-/datum/chem_property/negative/paining/on_delete(mob/living/M)
+/datum/chem_property/negative/neuropathic/on_delete(mob/living/M)
 	..()
 
 	M.pain.recalculate_pain()
 
-/datum/chem_property/negative/paining/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/negative/neuropathic/process(mob/living/M, potency = 1, delta_time)
 	if(!(..()))
 		return
 
-	M.pain.apply_pain(PROPERTY_PAINING_PAIN * potency)
+	M.pain.apply_pain(PROPERTY_NEUROPATHIC_PAIN * potency)
 
-/datum/chem_property/negative/paining/process_overdose(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/negative/neuropathic/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(!(..()))
 		return
 
-	M.pain.apply_pain(PROPERTY_PAINING_PAIN_OD * potency)
+	M.pain.apply_pain(PROPERTY_NEUROPATHIC_PAIN_OD * potency)
 	M.take_limb_damage(0.5 * potency * delta_time)
 
-/datum/chem_property/negative/paining/process_critical(mob/living/M, potency = 1)
+/datum/chem_property/negative/neuropathic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)
 
 /datum/chem_property/negative/hemolytic

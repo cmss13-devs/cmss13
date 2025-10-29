@@ -142,7 +142,7 @@
 #define PROPERTY_HYPOXEMIC "hypoxemic"
 #define PROPERTY_TOXIC "toxic"
 #define PROPERTY_CORROSIVE "corrosive"
-#define PROPERTY_BIOCIDIC "biocidic"
+#define PROPERTY_BIOACIDIC "bioacidic"
 #define PROPERTY_HEMOLYTIC "hemolytic"
 #define PROPERTY_HEMORRAGING "hemorrhaging"
 #define PROPERTY_CARCINOGENIC "carcinogenic"
@@ -158,15 +158,15 @@
 //Neutral
 #define PROPERTY_NUTRITIOUS "nutritious"
 #define PROPERTY_KETOGENIC "ketogenic"
-#define PROPERTY_PAINING "paining"
+#define PROPERTY_NEUROPATHIC "neuropathic"
 #define PROPERTY_NEUROINHIBITING "neuroinhibiting"
 #define PROPERTY_ALCOHOLIC "alcoholic"
 #define PROPERTY_HALLUCINOGENIC "hallucinogenic"
-#define PROPERTY_RELAXING "relaxing"
+#define PROPERTY_ANTISPASMOTIC "antispasmotic"
 #define PROPERTY_HYPERTHERMIC "hyperthermic"
 #define PROPERTY_HYPOTHERMIC "hypothermic"
-#define PROPERTY_BALDING "balding"
-#define PROPERTY_FLUFFING "fluffing"
+#define PROPERTY_ATRICHOGENIC "atrichogenic"
+#define PROPERTY_FLUFFING "trichogenic"
 #define PROPERTY_ALLERGENIC "allergenic"
 #define PROPERTY_CRYOMETABOLIZING "cryometabolizing"
 #define PROPERTY_EUPHORIC "euphoric"
@@ -175,7 +175,7 @@
 #define PROPERTY_ANTIHALLUCINOGENIC "anti-hallucinogenic"
 #define PROPERTY_EXCRETING "excreting"
 #define PROPERTY_HYPOMETABOLIC "hypometabolic"
-#define PROPERTY_SEDATIVE "sedative"
+#define PROPERTY_HYPNOTIC "hypnotic"
 #define PROPERTY_TRANSFORMATIVE "transformative"
 //Positive
 #define PROPERTY_ANTITOXIC "anti-toxic"
@@ -284,8 +284,8 @@
 #define PROPERTY_TYPE_COMBUSTIBLE 512
 
 // Defines for pain applied pr tick by chems
-#define PROPERTY_PAINING_PAIN 1
-#define PROPERTY_PAINING_PAIN_OD 2
+#define PROPERTY_NEUROPATHIC_PAIN 1
+#define PROPERTY_NEUROPATHIC_PAIN_OD 2
 #define PROPERTY_DEFIBRILLATING_PAIN_OD 2
 #define PROPERTY_CARDIOPEUTIC_PAIN_CRITICAL 3
 

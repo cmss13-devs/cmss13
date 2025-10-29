@@ -271,7 +271,7 @@
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	color = "#8f947b" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_HYDRO
-	properties = list(PROPERTY_SEDATIVE = 5)
+	properties = list(PROPERTY_HYPNOTIC = 5)
 
 /datum/reagent/zygacine
 	name = "Zygacine"

@@ -206,7 +206,7 @@
 
 		// Get the effectiveness of the liver.
 		var/filter_effect = 3
-		if(!(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS))
+		if(!(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS) || organ_status >= ORGAN_BROKEN)
 			if(organ_status >= ORGAN_BRUISED)
 				filter_effect--
 			if(organ_status >= ORGAN_BROKEN)

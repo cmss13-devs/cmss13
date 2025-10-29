@@ -222,7 +222,7 @@
 			owner.reagents.remove_reagent(R.id, R.custom_metabolism*filter_effect)
 
 		//Deal toxin damage if damaged
-		if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS)
+		if((owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS) && organ_status < ORGAN_BROKEN)
 			return
 		if(organ_status >= ORGAN_BRUISED && prob(25))
 			owner.apply_damage(0.1 * (damage/2), TOX)

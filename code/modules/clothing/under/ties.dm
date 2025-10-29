@@ -8,7 +8,7 @@
 	var/list/mob_overlay = list()
 	var/overlay_state = null
 	var/inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ties.dmi'
-	var/list/accessory_icons = list(
+	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi'
 	)
@@ -1404,7 +1404,6 @@ Wrist Accessories
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)
 	stylish = TRUE
-	max_styles = 3
 	worn_accessory_slot = ACCESSORY_SLOT_DECOR
 	worn_accessory_limit = 2
 

@@ -18,8 +18,6 @@
 	var/clothing_traits_active = TRUE //are the clothing traits that are applied to the item active (acting on the mob) or not?
 
 	var/stylish = FALSE // if the clothing is considered for the style system
-	var/style = 1 // current icon appearance style of the clothing, default should be 1
-	var/max_styles = 1 // max styles available for the clothing, used to loop back to 1
 
 	// accessory stuff
 	var/list/accessories
@@ -32,30 +30,40 @@
 	var/accessory_path = /obj/item/clothing/accessory
 	/// default limit for attaching accessories, should only be 1 for most accessories, you don't want multiple storage accessories after all
 	var/worn_accessory_limit = 1
+	/// icons specific to this clothing item as an accessory
+	var/list/accessory_icons = null
 
 /obj/item/clothing/get_examine_text(mob/user)
 	. = ..()
 	for(var/obj/item/clothing/accessory/A in accessories)
 		. += "[icon2html(A, user)] \A [A] is [A.additional_examine_text()]" //The spacing of the examine text proc is deliberate. By default it returns ".".
 	if(stylish)
-		.+= "This object is considered stylish. <a href='byond://?src=\ref[src];change_style=1'>\[Change style\]</a>"
+		.+= "This object is considered stylish. Press unique-action to change its style!"
+
+/obj/item/clothing/unique_action(mob/user)
+	if(stylish)
+		change_style(user)
 
 /obj/item/clothing/proc/change_style(mob/user)
-	var/next_style = style + 1
-	// essentially, we retrieve the name of the icon_state as a base, then append _style_X to it for a more dynamic icon change
-	var/desired_item_state = icon_state + "_style_" + num2text(next_style)
+	var/base_state = initial(icon_state)
+	var/current_style = 0
+	var/style_prefix = "[base_state]_style_"
+	if(findtext(item_state, style_prefix))
+		current_style = text2num(copytext(item_state, length(style_prefix) + 1))
 
-	// max styles are used here since my attempts to dynamically check for item_state (not icon_states) specifically were not working out - nihi
-	if(style <= max_styles)
-		style = next_style
+	var/next_style = current_style + 1
+	var/desired_item_state = "[style_prefix][next_style]"
+
+	// check if the next styles icon_state exists in the DMI file
+	if(desired_item_state in icon_states(accessory_icons ? accessory_icons[WEAR_JACKET] : icon)) // again, not as dynamic as id like, but better than nothing
 		item_state = desired_item_state
 		update_clothing_icon()
-		to_chat(user, SPAN_NOTICE("You change the style of [src] into style [style]."))
+		to_chat(user, SPAN_NOTICE("You change the style of [src] to style [next_style]."))
 	else
-		style = 1
-		item_state = icon_state + "_style_1"
+		// loop back to the first style.
+		item_state = "[style_prefix]1"
 		update_clothing_icon()
-		to_chat(user, SPAN_NOTICE("You change the style of [src] (reverted to default)."))
+		to_chat(user, SPAN_NOTICE("You change the style of [src] back to default."))
 
 /obj/item/clothing/proc/convert_to_accessory(mob/user)
 	if(!can_become_accessory)
@@ -137,9 +145,6 @@
 				ties += "[icon2html(accessory)] \a [accessory]"
 			to_chat(usr, "Attached to \the [src] are [english_list(ties)].")
 		return
-	if(href_list["change_style"])
-		if(usr == src.loc)
-			change_style(usr)
 
 /obj/item/clothing/attack_hand(mob/user as mob)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)

@@ -494,11 +494,13 @@
 	worn_accessory_slot = ACCESSORY_SLOT_PATCH
 	worn_accessory_limit = 4
 	stylish = TRUE
+	item_state_slots = list(WEAR_AS_GARB = "uscmpatch_style_1")
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
+	item_state_slots = list(WEAR_AS_GARB = "fallingfalconspatch")
 
 /obj/item/clothing/accessory/patch/devils
 	name = "USCM Solar Devils patch"

@@ -8,6 +8,7 @@
 	explo_proof = TRUE
 	icon = 'icons/landmarks.dmi'
 	icon_state = "map_blocker"
+	flags_atom = NO_ZFALL
 
 /obj/structure/blocker/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -107,7 +108,6 @@
 	anchored = TRUE
 	unacidable = TRUE
 	density = FALSE
-	flags_atom = NO_ZFALL
 
 	var/is_whitelist = FALSE
 	var/strict_types = FALSE

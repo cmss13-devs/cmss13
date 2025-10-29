@@ -31,6 +31,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	for(var/atom/movable/fall_candidate in contents)
 		check_fall(fall_candidate)
+	var/turf/above = SSmapping.get_turf_above(src)
+	if(above)
+		above.update_vis_contents()
 	return INITIALIZE_HINT_LATELOAD
 
 /turf/open_space/attack_alien(mob/user)

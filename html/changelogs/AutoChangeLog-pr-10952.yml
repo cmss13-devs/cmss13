@@ -1,0 +1,11 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - rscadd: "Adds reagent-colored fill icons for droppers and industrial droppers."
+  - rscadd: "Adds oxycodone pill bottles."
+  - rscadd: "Adds icon states on pill packets that change depending on how many pills are left."
+  - qol: "Adds descriptions to Wey-Med-dispensed pill bottles."
+  - qol: "All reagent fill sprites have universal shading."
+  - bugfix: "Adds missing fill icon states for silver beakers and cryostasis beakers."
+  - code_imp: "Tweaks some names and adds some descriptions to some items."
+  - imageadd: "Adds proper fill icon states for droppers, industrial droppers, silver beakers, and cryostasis beakers."

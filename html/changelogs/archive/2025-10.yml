@@ -238,3 +238,73 @@
 2025-10-26:
   LC4492:
   - imageadd: Updates on_mobs for most feet items
+2025-10-27:
+  ori-disillusion-mirnov:
+  - spellcheck: removed outdated wording in a comment, no player facing changes
+2025-10-28:
+  Drathek:
+  - bugfix: Launching a dropship without a primary LZ selected will now force that
+      dropship's destination to be the primary LZ if possible
+  - bugfix: Fixes LZ selection not supporting maps that might only have 1 LZ and changes
+      the automatic LZ selection from 25 mins world time to 15 mins round time
+  Nihisohel:
+  - qol: Leadership big texts are now toggleable into three differing modes
+  - refactor: Leadership text styles are no longer hardcoded to faction.dm files,
+      instead given to those with leadership skill
+  - refactor: Removed spoken_order embolden asterisks for redundancy.
+  - rscadd: Humans can now brace for shuttle impact by leaning on walls.
+  Thwomper:
+  - balance: Removed additional BRUTE rockets from ComTech vendor.
+  troytroy400:
+  - rscadd: Field doctors now have medical records access.
+2025-10-29:
+  Blundir:
+  - bugfix: fixed emote icon being huge
+  Detective-Google:
+  - rscadd: There's a new indicator that shows whether there's a Multi-Z space above
+      you to look up at.
+  Puckaboo2:
+  - rscadd: Added Pharmaceutical Physician as a doctor job variant with a wardrobe
+      and matching scrubs, caps, and lab coats.
+  - rscadd: Added chemistry pouches to vending machines.
+  - rscadd: Added tons more scrub and cap colors, and short and long lab coats.
+  - mapadd: Added morgue and pharmphys wardrobe, added a bunch more equipment to the
+      medical locker.
+  - mapadd: Added a box of empty blood bags in Field Doctor storage so field doctors
+      can stuff their O- blood bags in a more convenient area.
+  - mapadd: Reassigned two area tiles.
+  - spellcheck: Made some small spellchecks here and there.
+  - mapadd: Moved some things around to make medbay's debilitation ward prettier.
+  - bugfix: Medical lockers no longer share the same contents as wardrobes. They offer
+      pouches, now. Also adds a CMO radio in the CMO locker.
+  - bugfix: Deleted a duplicate no smoking decal in Medbay.
+  - bugfix: Scientist's coat should now properly display if it's been opened while
+      lying on the ground.
+  - bugfix: Surgical scrubs and surgical caps will now tell you what color they are
+      in their names.
+  - bugfix: Synths can now put on surgical caps.
+  - imageadd: Complete redesign of surgical caps, lab coats, and cmo outfits, and
+      re-shaded webbings and some lab coats. Also redesigned some box decals.
+  - code_imp: 'The color of scrubs and caps associated with roles has those roles
+      in their names. Example: Green Surgical Scrubs are now Surgeon''s Surgical Scrubs.'
+  - rscadd: Adds Oxycodone canister pouches to vends.
+  - qol: You can now tell which kind of pressurized reagent pouch you have by looking
+      at its name.
+  - qol: You can now tell which chemicals and how much of them are in pressurized
+      reagent pouches and canisters via a fill indicator.
+  - qol: There are more unit transfer options for glass containers, bottles, and beakers.
+  - bugfix: Some Corpsman and Medbay pouch colors were swapped for consistency between
+      departments.
+  - code_imp: Adds fill indicator to pressurized reagent pouches and vends.
+  - imageadd: Adds overlays for pouches and canisters, updated canister sprites
+  byondsucks:
+  - rscadd: Youngbloods now have access to chain gauntlets.
+  dawsonkeyes:
+  - bugfix: hunting bow quiver back onmobs update properly
+  - bugfix: pred weapons now visually show up on you when stored in the suit slot
+  jupyterkat:
+  - rscadd: The lighting inside maintenance sections of the USS Almayer is now darker.
+  - bugfix: The USS Almayer's medical bay should receive less red light bleeding from
+      the maintenance deck above it.
+  ori-disillusion-mirnov:
+  - bugfix: labels appear on injectors when automatically vended into a container

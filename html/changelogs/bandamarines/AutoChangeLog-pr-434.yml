@@ -1,5 +1,0 @@
-author: "RG-P"
-delete-after: True
-changes:
-  - soundadd: "Добавил новый голос Абоминации"
-  - sounddel: "Удалил старый голос Абоминации"

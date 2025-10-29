@@ -1424,7 +1424,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 				var/rankpath = get_rank_pins(card.paygrade)
 				if(rankpath)
 					var/obj/item/clothing/accessory/ranks/rank_insignia = new rankpath()
-					var/obj/item/clothing/accessory/patch/uscmpatch = new()
+					var/obj/item/clothing/accessory/patch/uscmpatch/uscmpatch = new()
 					underclothes.attach_accessory(user, rank_insignia)
 					underclothes.attach_accessory(user, uscmpatch)
 

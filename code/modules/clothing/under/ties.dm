@@ -477,10 +477,8 @@
 
 //patches
 /obj/item/clothing/accessory/patch
-	name = "USCM patch"
-	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
-	icon_state = "uscmpatch"
-	item_state = "uscmpatch_style_1"
+	name = "potato patch"
+	desc = "you shouldnt see this, ahelp if you do."
 	icon = 'icons/obj/items/clothing/accessory/patches.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/patches.dmi',
@@ -494,13 +492,18 @@
 	worn_accessory_slot = ACCESSORY_SLOT_PATCH
 	worn_accessory_limit = 4
 	stylish = TRUE
+
+/obj/item/clothing/accessory/patch/uscmpatch
+	name = "USCM patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
+	icon_state = "uscmpatch"
+	item_state = "uscmpatch_style_1"
 	item_state_slots = list(WEAR_AS_GARB = "uscmpatch_style_1")
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "USCM Falling Falcons patch"
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
-	item_state_slots = list(WEAR_AS_GARB = "fallingfalconspatch")
 
 /obj/item/clothing/accessory/patch/devils
 	name = "USCM Solar Devils patch"

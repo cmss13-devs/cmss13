@@ -289,7 +289,7 @@
 /datum/chem_property/positive/hepatopeutic
 	name = PROPERTY_HEPATOPEUTIC
 	code = "HPP"
-	description = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions. Forces some negative mutations in plants."
+	description = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 
@@ -385,7 +385,7 @@
 /datum/chem_property/positive/oculopeutic
 	name = PROPERTY_OCULOPEUTIC
 	code = "OCP"
-	description = "Restores sensory capabilities of photoreceptive cells in the eyes returning lost vision. Forces mutation of potency in plants."
+	description = "Restores sensory capabilities of photoreceptive cells in the eyes returning lost vision."
 	rarity = PROPERTY_RARE
 	value = 1
 
@@ -402,18 +402,6 @@
 /datum/chem_property/positive/oculopeutic/process_critical(mob/living/M, potency = 1)
 	M.apply_damages(potency, potency, POTENCY_MULTIPLIER_HIGH * potency)
 	M.apply_damage(potency, BRAIN)
-
-//Applies mutation enable onto hydrotray plants, enables potency, glowing or flowers mutations
-/datum/chem_property/positive/oculopeutic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
-	. = ..()
-	if(!processing_tray.seed)
-		return
-	if (processing_tray.mutation_controller["Potency"] < 1)
-		processing_tray.mutation_controller["Potency"] = 1
-	if(processing_tray.mutation_controller["Bioluminecence"] < 1)
-		processing_tray.mutation_controller["Bioluminecence"] = 1
-	if (processing_tray.mutation_controller["Flowers"] < 1)
-		processing_tray.mutation_controller["Flowers"] = 1
 
 /datum/chem_property/positive/cardiopeutic
 	name = PROPERTY_CARDIOPEUTIC
@@ -456,7 +444,7 @@
 /datum/chem_property/positive/neuropeutic
 	name = PROPERTY_NEUROPEUTIC
 	code = "NRP"
-	description = "Rebuilds damaged and broken neurons in the central nervous system re-establishing brain functionality. Forces species mutation in plants."
+	description = "Rebuilds damaged and broken neurons in the central nervous system re-establishing brain functionality."
 	rarity = PROPERTY_RARE
 
 /datum/chem_property/positive/neuropeutic/process(mob/living/M, potency = 1)
@@ -468,14 +456,6 @@
 /datum/chem_property/positive/neuropeutic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_HIGH * potency, BRAIN)
 	M.adjust_effect(potency, STUN)
-
-//Applies mutation enable onto hydrotray plants, enables species mutation
-/datum/chem_property/positive/neuropeutic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
-	. = ..()
-	if(!processing_tray.seed)
-		return
-	if (processing_tray.mutation_controller["Mutate Species"] < 1)
-		processing_tray.mutation_controller["Mutate Species"] = 1
 
 /datum/chem_property/positive/bonemending
 	name = PROPERTY_BONEMENDING
@@ -624,14 +604,15 @@
 /datum/chem_property/positive/organstabilize/brain
 	name = PROPERTY_ORGANSTABILIZEBRAIN
 	code = "OBS"
-	description = "Stabilizes brain organ damage, stopping internal damage symptoms."
+	description = "Stabilizes brain organ damage, stopping internal damage symptoms. Forces species mutation in plants."
 	stasis_flag = CHEM_EFFECT_ORGAN_BRAIN_STASIS
 
 /datum/chem_property/positive/organstabilize/eye
 	name = PROPERTY_ORGANSTABILIZEEYE
 	code = "OES"
-	description = "Stabilizes eye organ damage, stopping internal damage symptoms."
+	description = "Stabilizes eye organ damage, stopping internal damage symptoms. Forces mutation of potency in plants."
 	stasis_flag = CHEM_EFFECT_ORGAN_EYE_STASIS
+
 
 /datum/chem_property/positive/organstabilize/process(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
@@ -644,6 +625,27 @@
 
 /datum/chem_property/positive/organstabilize/process_critical(mob/living/M, potency = 1)
 	M.apply_damages(POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency)
+
+//Applies mutation enable onto hydrotray plants, enables species mutation
+/datum/chem_property/positive/organstabilize/brain/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["Mutate Species"] < 1)
+		processing_tray.mutation_controller["Mutate Species"] = 1
+
+//Applies mutation enable onto hydrotray plants, enables potency, glowing or flowers mutations
+/datum/chem_property/positive/organstabilize/eye/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["Potency"] < 1)
+		processing_tray.mutation_controller["Potency"] = 1
+	if(processing_tray.mutation_controller["Bioluminecence"] < 1)
+		processing_tray.mutation_controller["Bioluminecence"] = 1
+	if (processing_tray.mutation_controller["Flowers"] < 1)
+		processing_tray.mutation_controller["Flowers"] = 1
+
 
 /datum/chem_property/positive/criticalstabilize
 	name = PROPERTY_CRITICALSTABILIZE

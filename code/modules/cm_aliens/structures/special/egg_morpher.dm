@@ -34,7 +34,7 @@
 
 /obj/effect/alien/resin/special/eggmorph/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
-	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(linked_hive?.hivenumber), "morpher")
+	SSminimaps.add_marker(src, get_minimap_flag_for_faction(linked_hive?.hivenumber), image('icons/UI_icons/map_blips.dmi', null, "morpher"))
 
 /obj/effect/alien/resin/special/eggmorph/Destroy()
 	if(stored_huggers && linked_hive)
@@ -116,7 +116,11 @@
 
 	if(!linked_hive || !COOLDOWN_FINISHED(src, spawn_cooldown) || stored_huggers == huggers_to_grow_max)
 		return
-	COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
+
+	if(boosted_structure)
+		COOLDOWN_START(src, spawn_cooldown, 30 SECONDS)
+	else
+		COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 	if(stored_huggers < huggers_to_grow_max)
 		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 

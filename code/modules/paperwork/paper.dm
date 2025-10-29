@@ -37,8 +37,6 @@
 	var/ico[0] //Icons and
 	var/offset_x[0] //offsets stored for later
 	var/offset_y[0] //usage by the photocopier
-	var/rigged = 0
-	var/spam_flag = 0
 
 	// any photos that might be attached to the paper
 	var/list/photo_list
@@ -116,7 +114,7 @@
 	var/paper_info = info
 	if(scramble)
 		paper_info = stars_decode_html(info)
-	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width = 650, height = 700)
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -247,6 +245,8 @@
 	paper_text = replacetext(paper_text, "\[/i\]", "</I>")
 	paper_text = replacetext(paper_text, "\[u\]", "<U>")
 	paper_text = replacetext(paper_text, "\[/u\]", "</U>")
+	paper_text = replacetext(paper_text, "\[s\]", "<S>")
+	paper_text = replacetext(paper_text, "\[/s\]", "</S>")
 	paper_text = replacetext(paper_text, "\[large\]", "<font size=\"4\">")
 	paper_text = replacetext(paper_text, "\[/large\]", "</font>")
 	paper_text = replacetext(paper_text, "\[sign\]", "<font face=\"[signfont]\"><i>[user ? user.real_name : "Anonymous"]</i></font>")
@@ -255,6 +255,13 @@
 	paper_text = replacetext(paper_text, "\[time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")]</i></font>")
 	paper_text = replacetext(paper_text, "\[date+time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")], [time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>")
 	paper_text = replacetext(paper_text, "\[field\]", "<span class=\"paper_field\"></span>")
+	paper_text = replacetext(paper_text, "\[name\]", "[user ? user.name : "Anonymous"]")
+	paper_text = replacetext(paper_text, "\[rank\]", "[user ? user.get_paygrade(0) : "None"]")
+	paper_text = replacetext(paper_text, "\[job\]", "[user ? user.job : "None"]")
+	paper_text = replacetext(paper_text, "\[op\]", "[GLOB.round_statistics ? GLOB.round_statistics.round_name : "None"]")
+	paper_text = replacetext(paper_text, "\[colony\]", "[SSmapping.configs[GROUND_MAP].map_name]")
+	paper_text = replacetext(paper_text, "\[ship\]", "[MAIN_SHIP_NAME]")
+
 
 	paper_text = replacetext(paper_text, "\[h1\]", "<H1>")
 	paper_text = replacetext(paper_text, "\[/h1\]", "</H1>")
@@ -336,6 +343,13 @@
 		\[sign\] : Inserts a signature of your name in a foolproof way.<br>
 		\[field\] : Inserts an invisible field which lets you start type from there. Useful for forms.<br>
 		<br>
+		\[name\] : Your name, but not in signature font!<br>
+		\[s\] - \[/s\] | strikethrough!<br>
+		\[job\] : Your job noted on your ID.<br>
+		\[rank\] : Your rank/paygrade.<br>
+		\[op\] : The name of the Operation.<br>
+		\[colony\] : The name of the Map.<br>
+		\[ship\] : The name of the main Ship.<br>
 		<b><center>Pen exclusive commands</center></b><br>
 		\[small\] - \[/small\] : Decreases the <font size = \"1\">size</font> of the text.<br>
 		\[list\] - \[/list\] : A list.<br>
@@ -466,7 +480,7 @@
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
 				return
-		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
+		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name, width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT) // Update the window
 		//openhelp(user)
 		return
 
@@ -798,6 +812,7 @@
 					txt += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[chemical_to_generate.description]\n"
 				txt += "<BR>Overdoses at: [chemical_to_generate.overdose] units</font><BR>\n"
+				txt += "<BR>Critically Overdoses at: [chemical_to_generate.overdose_critical] units</font><BR>\n"
 				icon_state = "paper_wy_full_report"
 			else
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
@@ -948,6 +963,7 @@
 				info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 			info += "<font size = \"2.5\">[S.description]\n"
 			info += "<BR>Overdoses at: [S.overdose] units\n"
+			info += "<BR>Critically Overdoses at: [S.overdose_critical] units\n"
 			info += "<BR>Standard duration multiplier of [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 			completed = TRUE
 			icon_state = "paper_wy_full_report"
@@ -975,6 +991,7 @@
 			info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 		info += "<font size = \"2.5\">[S.description]\n"
 		info += "<BR>Overdoses at: [S.overdose] units\n"
+		info += "<BR>Critically Overdoses at: [S.overdose_critical] units\n"
 		info += "<BR>Standard duration multiplier: [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 		completed = TRUE
 		icon_state = "paper_wy_full_report"

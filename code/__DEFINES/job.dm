@@ -56,18 +56,21 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_CMO "Chief Medical Officer"
 #define JOB_DOCTOR "Doctor"
 #define JOB_SURGEON "Surgeon"
+#define JOB_PHARMACIST "Pharmaceutical Physician"
 #define JOB_FIELD_DOCTOR "Field Doctor"
 
 #define JOB_NURSE "Nurse"
 #define JOB_RESEARCHER "Researcher"
 #define JOB_MEDIC_ROLES /datum/timelock/medic
-#define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_NURSE, JOB_RESEARCHER, JOB_SURGEON)
+#define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_NURSE, JOB_RESEARCHER, JOB_SURGEON, JOB_PHARMACIST)
 #define JOB_DOCTOR_ROLES /datum/timelock/doctor
-#define JOB_DOCTOR_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_SURGEON, JOB_FIELD_DOCTOR)
+#define JOB_DOCTOR_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_SURGEON, JOB_PHARMACIST, JOB_FIELD_DOCTOR)
 #define JOB_RESEARCH_ROLES /datum/timelock/research
 #define JOB_RESEARCH_ROLES_LIST list(JOB_RESEARCHER)
 
 #define JOB_CORPORATE_LIAISON "Corporate Liaison"
+/// Jobs that are part of the USCM, but have a primary faction that is not USCM.
+#define USCM_SHARED_JOBS list(JOB_CORPORATE_LIAISON, JOB_RESEARCHER)
 
 #define JOB_COMBAT_REPORTER "Combat Correspondent"
 #define JOB_CIVIL_ROLES    /datum/timelock/civil
@@ -108,6 +111,8 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_CHIEF_POLICE "Chief MP"
 #define JOB_POLICE_ROLES /datum/timelock/mp
 #define JOB_POLICE_ROLES_LIST    list(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE, JOB_CO)
+/// Not a spawn role, but used for title assignment.
+#define JOB_POLICE_HG "Military Police Honor Guard"
 
 #define JOB_SEA "Senior Enlisted Advisor"
 
@@ -123,9 +128,10 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_REQUISITION_ROLES_LIST   list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
 
 #define JOB_MARINE_RAIDER "Marine Raider"
+#define JOB_MARINE_RAIDER_SG "Marine Raider Smartgunner"
 #define JOB_MARINE_RAIDER_SL "Marine Raider Team Lead"
 #define JOB_MARINE_RAIDER_CMD "Marine Raider Platoon Lead"
-#define JOB_MARINE_RAIDER_ROLES_LIST list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CMD)
+#define JOB_MARINE_RAIDER_ROLES_LIST list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SG, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CMD)
 
 #define MUTINY_LOYALIST_ROLES list(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE, JOB_CO, JOB_SEA)
 
@@ -161,7 +167,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 }
 
 /// Role lists for Marine roles
-#define CHAIN_OF_COMMAND_ROLES list(JOB_CO, JOB_XO, JOB_AUXILIARY_OFFICER, JOB_CHIEF_POLICE, JOB_CMO, JOB_SO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL)
+#define CHAIN_OF_COMMAND_ROLES list(JOB_CO, JOB_XO, JOB_AUXILIARY_OFFICER, JOB_CHIEF_POLICE, JOB_CMO, JOB_SO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL, JOB_FIELD_DOCTOR, JOB_SURGEON, JOB_DOCTOR, JOB_CHIEF_REQUISITION)
 
 //-------------WO roles---------------
 
@@ -208,11 +214,12 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_PMC_SNIPER "PMC Weapons Specialist" //Renamed from Sharpshooter to specialist as it uses specialist skills.
 #define JOB_PMC_CREWMAN "PMC Vehicle Crewman"
 #define JOB_PMC_LEADER "PMC Leader"
+#define JOB_PMC_FIELD_OP_LEADER "PMC Field Operations Leader" // Used for Nightmare Solaris CO.
 #define JOB_PMC_LEAD_INVEST "PMC Lead Investigator"
 #define JOB_PMC_DIRECTOR "PMC Site Director"
 #define JOB_PMC_SYNTH "PMC Support Synthetic"
 
-#define ROLES_WY_PMC list(JOB_PMC_LEADER, JOB_PMC_SNIPER, JOB_PMC_GUNNER, JOB_PMC_ENGINEER, JOB_PMC_MEDIC, JOB_PMC_STANDARD)
+#define ROLES_WY_PMC list(JOB_PMC_FIELD_OP_LEADER, JOB_PMC_LEADER, JOB_PMC_SNIPER, JOB_PMC_GUNNER, JOB_PMC_ENGINEER, JOB_PMC_MEDIC, JOB_PMC_STANDARD)
 #define ROLES_WY_PMC_AUX list(JOB_PMC_SYNTH, JOB_PMC_CREWMAN, JOB_PMC_DOCTOR)
 #define ROLES_WY_PMC_INSPEC list(JOB_PMC_LEAD_INVEST, JOB_PMC_INVESTIGATOR, JOB_PMC_DETAINER, JOB_PMC_CROWD_CONTROL)
 #define ROLES_WY_PMC_ALL ROLES_WY_PMC + ROLES_WY_PMC_AUX + ROLES_WY_PMC_INSPEC
@@ -516,8 +523,8 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 //---------- ANTAG ----------//
 #define JOB_PREDATOR "Predator"
-#define JOB_XENOMORPH    "Xenomorph"
-#define JOB_XENOMORPH_QUEEN  "Queen"
+#define JOB_XENOMORPH "Xenomorph"
+#define JOB_XENOMORPH_QUEEN "Queen"
 
 // For coloring the ranks in the statistics menu
 #define JOB_PLAYTIME_TIER_0  (0 HOURS)
@@ -532,7 +539,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_PLAYTIME_TIER_9  (2100 HOURS)
 #define JOB_PLAYTIME_TIER_10 (2800 HOURS)
 
-#define XENO_NO_AGE  -1
+#define XENO_NO_AGE -1
 #define XENO_YOUNG 0
 #define XENO_NORMAL 1
 #define XENO_MATURE 2

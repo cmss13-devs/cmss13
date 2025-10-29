@@ -38,12 +38,13 @@
 		list("M82F Flare Gun", floor(scale * 5), /obj/item/weapon/gun/flare, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", -1, null, null),
-		list("M10 HV magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/pistol/m10, VENDOR_ITEM_REGULAR),
+		list("M10 HV Magazine (10x20mm-APC)", floor(scale * 10), /obj/item/ammo_magazine/pistol/m10, VENDOR_ITEM_REGULAR),
 		list("88M4 AP Magazine (9mm)", floor(scale * 10), /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("M44 Speedloader (.44)", floor(scale * 10), /obj/item/ammo_magazine/revolver, VENDOR_ITEM_REGULAR),
 		list("M4A3 Magazine (9mm)", floor(scale * 10), /obj/item/ammo_magazine/pistol, VENDOR_ITEM_REGULAR),
 
 		list("ATTACHMENTS", -1, null, null),
+		list("M10 Folding Stock", floor(scale * 5), /obj/item/attachable/stock/pistol/collapsible, VENDOR_ITEM_REGULAR),
 		list("M39 Folding Stock", floor(scale * 5), /obj/item/attachable/stock/smg/collapsible, VENDOR_ITEM_REGULAR),
 		list("M41A Folding Stock", floor(scale * 5), /obj/item/attachable/stock/rifle/collapsible, VENDOR_ITEM_REGULAR),
 		list("Rail Flashlight", floor(scale * 10), /obj/item/attachable/flashlight, VENDOR_ITEM_RECOMMENDED),
@@ -109,6 +110,7 @@
 		list("Marine Brown Combat Gloves", floor(scale * 15), /obj/item/clothing/gloves/marine/brown, VENDOR_ITEM_REGULAR),
 		list("Marine Black Combat Gloves", floor(scale * 15), /obj/item/clothing/gloves/marine/black, VENDOR_ITEM_REGULAR),
 		list("Marine Grey Combat Gloves", floor(scale * 15), /obj/item/clothing/gloves/marine/grey, VENDOR_ITEM_REGULAR),
+		list("Marine Fingerless Combat Gloves", floor(scale * 15), /obj/item/clothing/gloves/marine/fingerless, VENDOR_ITEM_REGULAR),
 		list("Marine Radio Headset", floor(scale * 15), /obj/item/device/radio/headset/almayer, VENDOR_ITEM_REGULAR),
 		list("M10 Pattern Marine Helmet", floor(scale * 15), /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),
 
@@ -281,6 +283,8 @@
 	listed_products = list(
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
 		list("M4RA AP Magazine (10x24mm)", 3.5, /obj/item/ammo_magazine/rifle/m4ra/ap, VENDOR_ITEM_REGULAR),
+		list("M10 AP Magazine (10x20mm-APC)", floor(scale * 4), /obj/item/ammo_magazine/pistol/m10/ap , VENDOR_ITEM_REGULAR),
+		list("M10 AP Extended Magazine (10x20mm-APC)", floor(scale * 2), /obj/item/ammo_magazine/pistol/m10/ap/extended , VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", floor(scale * 3), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine (10x24mm)", floor(scale * 3), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
 
@@ -288,9 +292,7 @@
 		list("M4RA Extended Magazine (10x24mm)", 1.8, /obj/item/ammo_magazine/rifle/m4ra/extended, null, VENDOR_ITEM_REGULAR),
 		list("M39 Extended Magazine (10x20mm)", 1.8, /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
 		list("M41A Extended Magazine (10x24mm)", 1.9, /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
-		list("M10 HV extended magazine (10x20mm)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/extended , VENDOR_ITEM_REGULAR),
-		list("M10 HV drum magazine (10x20mm)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/drum , VENDOR_ITEM_REGULAR),
-
+		list("M10 HV Extended Magazine (10x20mm-APC)", floor(scale * 4), /obj/item/ammo_magazine/pistol/m10/extended , VENDOR_ITEM_REGULAR),
 
 		list("SPECIAL AMMUNITION", -1, null, null),
 		list("M56 Smartgun Drum", 1, /obj/item/ammo_magazine/smartgun, VENDOR_ITEM_REGULAR),
@@ -338,7 +340,7 @@
 		list("Crowbar", floor(scale * 5), /obj/item/tool/crowbar, VENDOR_ITEM_REGULAR),
 		list("Wrench", floor(scale * 5), /obj/item/tool/wrench, VENDOR_ITEM_REGULAR),
 		list("Multitool", floor(scale * 1), /obj/item/device/multitool, VENDOR_ITEM_REGULAR),
-		list("ME3 hand welder", floor(scale * 1), /obj/item/tool/weldingtool/simple, VENDOR_ITEM_REGULAR),
+		list("Seegson MCT", floor(scale * 1), /obj/item/tool/weldingtool/simple, VENDOR_ITEM_REGULAR),
 
 		list("FLARE AND LIGHT", -1, null, null),
 		list("Combat Flashlight", floor(scale * 5), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
@@ -364,7 +366,7 @@
 //--------------SQUAD ATTACHMENTS VENDOR--------------
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad
-	name = "\improper Armat Systems Squad Attachments Vendor"
+	name = "\improper Armat Battlefield Systems Squad Attachments Vendor"
 	desc = "An automated supply rack hooked up to a small storage of weapons attachments. Can be accessed by any Marine Rifleman."
 	req_access = list(ACCESS_MARINE_ALPHA)
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
@@ -379,9 +381,12 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/squad/populate_product_list(scale)
 	listed_products = list(
 		list("BARREL", -1, null, null),
+		list("Extended Recoil Compensator", 2.5, /obj/item/attachable/extended_barrel/vented, VENDOR_ITEM_REGULAR),
 		list("Extended Barrel", 2.5, /obj/item/attachable/extended_barrel, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 2.5, /obj/item/attachable/compensator, VENDOR_ITEM_REGULAR),
+		list("M10 Compensator", 2.5, /obj/item/attachable/compensator/m10, VENDOR_ITEM_REGULAR),
 		list("Suppressor", 2.5, /obj/item/attachable/suppressor, VENDOR_ITEM_REGULAR),
+		list("Suppressor, Compact", 2.5, /obj/item/attachable/suppressor/sleek, VENDOR_ITEM_REGULAR),
 		list("Shotgun Choke", 1.5, /obj/item/attachable/shotgun_choke, VENDOR_ITEM_REGULAR),
 
 		list("RAIL", -1, null, null),
@@ -389,6 +394,7 @@
 		list("Magnetic Harness", 4, /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
 		list("S4 2x Telescopic Mini-Scope", 2, /obj/item/attachable/scope/mini, VENDOR_ITEM_REGULAR),
 		list("S5 Red-Dot Sight", 3, /obj/item/attachable/reddot, VENDOR_ITEM_REGULAR),
+		list("S5-Micro Dot Sight", 3, /obj/item/attachable/reddot/small, VENDOR_ITEM_REGULAR),
 		list("S6 Reflex Sight", 3, /obj/item/attachable/reflex, VENDOR_ITEM_REGULAR),
 		list("S8 4x Telescopic Scope", 2, /obj/item/attachable/scope, VENDOR_ITEM_REGULAR),
 
@@ -398,6 +404,7 @@
 		list("Burst Fire Assembly", 1.5, /obj/item/attachable/burstfire_assembly, VENDOR_ITEM_REGULAR),
 		list("Gyroscopic Stabilizer", 1.5, /obj/item/attachable/gyro, VENDOR_ITEM_REGULAR),
 		list("Laser Sight", 3, /obj/item/attachable/lasersight, VENDOR_ITEM_REGULAR),
+		list("Micro Laser Sight", 1.5, /obj/item/attachable/lasersight/micro, VENDOR_ITEM_REGULAR),
 		list("Mini Flamethrower", 1.5, /obj/item/attachable/attached_gun/flamer, VENDOR_ITEM_REGULAR),
 		list("XM-VESG-1 Flamer Nozzle", 1.5, /obj/item/attachable/attached_gun/flamer_nozzle, VENDOR_ITEM_REGULAR),
 		list("U7 Underbarrel Shotgun", 1.5, /obj/item/attachable/attached_gun/shotgun, VENDOR_ITEM_REGULAR),
@@ -405,6 +412,7 @@
 		list("Vertical Grip", 3, /obj/item/attachable/verticalgrip, VENDOR_ITEM_REGULAR),
 
 		list("STOCK", -1, null, null),
+		list("M10 Solid Stock", 1.5, /obj/item/attachable/stock/m10_solid, VENDOR_ITEM_REGULAR),
 		list("M37A2 Collapsible Stock", 1.5, /obj/item/attachable/stock/synth/collapsible, VENDOR_ITEM_REGULAR),
 		list("M39 Arm Brace", 1.5, /obj/item/attachable/stock/smg/collapsible/brace, VENDOR_ITEM_REGULAR),
 		list("M39 Stock", 1.5, /obj/item/attachable/stock/smg, VENDOR_ITEM_REGULAR),

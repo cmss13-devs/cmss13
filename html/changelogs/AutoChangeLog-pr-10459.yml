@@ -1,4 +1,0 @@
-author: "TheGamerdk"
-delete-after: True
-changes:
-  - bugfix: "ASRS console UI now respects being broken/depowered/etc"

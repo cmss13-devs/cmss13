@@ -235,6 +235,7 @@
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
 	overdose = REAGENTS_OVERDOSE
+	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_ORGANSTABILIZEEYE = 2)

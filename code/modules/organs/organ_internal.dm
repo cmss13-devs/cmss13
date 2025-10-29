@@ -245,7 +245,7 @@
 		return // Parent implemention qdeleted us
 
 	//Peri won't stop side effects if the kidneys are fugg'd.
-	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS && organ_status < ORGAN_BROKEN)
+	if((owner.chem_effect_flags & CHEM_EFFECT_ORGAN_BODY_STASIS) && organ_status < ORGAN_BROKEN)
 		return
 	//Deal toxin damage if damaged
 	if(organ_status >= ORGAN_BRUISED && prob(25))

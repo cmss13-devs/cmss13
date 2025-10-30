@@ -959,7 +959,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "cE" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "cG" = (
@@ -4086,7 +4086,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "MX" = (
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)

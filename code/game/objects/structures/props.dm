@@ -257,6 +257,10 @@
 	desc = "Yutani OS is a proprietary operating system used by the Company to run most all of their servers, banking, and management systems. A code leak in 2144 led some amateur hackers to believe that Yutani OS is loosely based on the 2017 release of TempleOS. But the Company has refuted these claims."
 	icon_state = "yutani_server_on"
 
+/obj/structure/prop/server_equipment/yutani_server/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/structure/prop/server_equipment/yutani_server/broken
 	icon_state = "yutani_server_broken"
 

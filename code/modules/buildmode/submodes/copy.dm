@@ -14,7 +14,8 @@
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		var/turf/clicked_turf = get_turf(object)
 		if(stored)
-			DuplicateObject(stored, perfectcopy = TRUE, sameloc = FALSE, newloc = clicked_turf)
+			var/atom/new_object = DuplicateObject(stored, perfectcopy = TRUE, sameloc = FALSE, newloc = clicked_turf)
+			new_object.setDir(BM.build_dir)
 			log_admin("Build Mode: [key_name(admin_copying)] copied [stored] to [AREACOORD(object)]")
 	else if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(ismovable(object)) // No copying turfs for now.

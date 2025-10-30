@@ -38,6 +38,12 @@
 			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/intel/council,
 			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/intel/council
 			)
+		if("MP")
+			gear_preset_whitelist = list(
+			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/mp,
+			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/mp/council,
+			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/mp/council
+			)
 		if("Command")
 			gear_preset_whitelist = list(
 			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/command,

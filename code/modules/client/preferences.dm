@@ -1254,6 +1254,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							var/datum/action/human_action/activable/ability = human.selected_ability
 							human.set_selected_ability(null)
 							human.set_selected_ability(ability)
+
 				if("synth_name")
 					var/raw_name = input(user, "Choose your Synthetic's name:", "Character Preference")  as text|null
 					if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
@@ -1267,7 +1268,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(new_synth_type)
 						synthetic_type = new_synth_type
 				if("synth_specialisation")
-					var/list/options = list("Generalised", "Engineering", "Medical", "Intel", "Command")
+					var/list/options = list("Generalised", "Engineering", "Medical", "Intel", "MP", "Command")
 
 					var/new_specialisation = tgui_input_list(user, "Choose your new Specialisation.", "Specialisation", options)
 

@@ -1214,6 +1214,9 @@
 	update_damage_state()
 	update_icon()
 
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey
+	ammo = /datum/ammo/bullet/machinegun/whiskey
+
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"
 	desc = "A scoped M56D heavy machine gun mounted behind a metal shield. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."

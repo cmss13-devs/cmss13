@@ -289,6 +289,11 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
+"aU" = (
+/obj/structure/barricade/metal/wired,
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
+/turf/open/gm/dirt,
+/area/whiskey_outpost/outside/lane/three_south)
 "aV" = (
 /turf/open/floor/whitegreen/southwest,
 /area/whiskey_outpost/inside/hospital)
@@ -1074,11 +1079,6 @@
 "dG" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/whiskey_outpost/outside/lane/three_south)
-"dH" = (
-/obj/structure/barricade/metal/wired,
-/obj/structure/machinery/m56d_hmg/mg_turret,
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/three_south)
 "dI" = (
 /obj/structure/machinery/vending/walkman,
 /turf/open/floor/prison/floor_plate/southwest,
@@ -1427,8 +1427,8 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "eR" = (
-/obj/structure/machinery/m56d_hmg/mg_turret,
 /obj/structure/barricade/sandbags/wired,
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_south)
 "eS" = (
@@ -5140,7 +5140,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/supply)
 "uR" = (
-/obj/structure/machinery/m56d_hmg/mg_turret{
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey{
 	dir = 8;
 	icon_state = "towergun"
 	},
@@ -5627,7 +5627,7 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "wX" = (
-/obj/structure/machinery/m56d_hmg/mg_turret{
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey{
 	dir = 4;
 	icon_state = "towergun"
 	},
@@ -5883,8 +5883,8 @@
 /turf/open/gm/coast/beachcorner/north_west,
 /area/whiskey_outpost/outside/lane/four_south)
 "yr" = (
-/obj/structure/machinery/m56d_hmg/mg_turret,
 /obj/structure/barricade/metal/wired,
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/bunker)
 "yt" = (
@@ -6145,7 +6145,7 @@
 /turf/open/jungle/impenetrable,
 /area/whiskey_outpost/outside/north)
 "zG" = (
-/obj/structure/machinery/m56d_hmg/mg_turret{
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey{
 	dir = 8;
 	icon_state = "towergun"
 	},
@@ -6318,7 +6318,7 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south/far)
 "AB" = (
-/obj/structure/machinery/m56d_hmg/mg_turret{
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey{
 	dir = 8;
 	icon_state = "towergun"
 	},
@@ -6661,7 +6661,7 @@
 /turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital/triage)
 "Cg" = (
-/obj/structure/machinery/m56d_hmg/mg_turret{
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey{
 	dir = 4;
 	icon_state = "towergun"
 	},
@@ -7512,7 +7512,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_south)
 "GR" = (
-/obj/structure/machinery/m56d_hmg/mg_turret,
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
 /turf/open/floor/plating/warnplate,
 /area/whiskey_outpost/outside/north/beach)
 "GS" = (
@@ -7803,7 +7803,6 @@
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/two_north)
 "Io" = (
-/obj/structure/machinery/m56d_hmg/mg_turret,
 /obj/structure/barricade/sandbags/wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -7874,8 +7873,8 @@
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/whiskey_outpost/outside/river/west)
 "IF" = (
-/obj/structure/machinery/m56d_hmg/mg_turret,
 /obj/structure/barricade/sandbags/wired,
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
 /turf/open/floor/asteroidwarning,
 /area/whiskey_outpost/outside/north/platform)
 "IG" = (
@@ -8274,7 +8273,7 @@
 /turf/open/gm/coast/west,
 /area/whiskey_outpost/outside/river/west)
 "Le" = (
-/obj/structure/machinery/m56d_hmg/mg_turret,
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/northeast)
 "Lf" = (
@@ -8511,7 +8510,7 @@
 	},
 /area/whiskey_outpost/outside/lane/four_south)
 "Mp" = (
-/obj/structure/machinery/m56d_hmg/mg_turret{
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey{
 	dir = 8;
 	icon_state = "towergun"
 	},
@@ -8798,7 +8797,7 @@
 /area/whiskey_outpost/outside/north/beach)
 "Of" = (
 /obj/structure/barricade/metal/wired,
-/obj/structure/machinery/m56d_hmg/mg_turret,
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/south)
 "Oi" = (
@@ -9198,8 +9197,8 @@
 /turf/open/floor/almayer/redfull,
 /area/whiskey_outpost/outside/lane/three_north)
 "QA" = (
-/obj/structure/machinery/m56d_hmg/mg_turret,
 /obj/structure/barricade/metal/wired,
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/one_north)
 "QB" = (
@@ -9633,7 +9632,7 @@
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "Te" = (
 /obj/structure/barricade/metal/wired,
-/obj/structure/machinery/m56d_hmg/mg_turret,
+/obj/structure/machinery/m56d_hmg/mg_turret/whiskey,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "Th" = (
@@ -9937,11 +9936,6 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/bunker/pillbox/one)
-"UJ" = (
-/obj/structure/machinery/m56d_hmg/mg_turret,
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/prison/floor_plate/southwest,
-/area/whiskey_outpost/inside/bunker/bunker/front)
 "UK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -14983,7 +14977,7 @@ wR
 wR
 hK
 Uy
-QA
+vK
 Ci
 ko
 Vo
@@ -25106,8 +25100,8 @@ Tk
 HL
 Ss
 lU
-YE
-UJ
+Ss
+kt
 Bk
 lk
 Si
@@ -27325,8 +27319,8 @@ VK
 TE
 wj
 yC
-Vl
-dH
+yC
+mr
 yC
 yC
 yC
@@ -27729,8 +27723,8 @@ Nh
 Nh
 Nh
 yC
-yC
-mr
+Vl
+aU
 yC
 yC
 yC
@@ -28739,8 +28733,8 @@ Sy
 FL
 FL
 lg
-Vl
-dH
+yC
+mr
 Jc
 xO
 xO

@@ -217,6 +217,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
+"aaE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/research/containment/corner/north,
+/area/almayer/medical/containment/cell)
 "aaF" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer,
@@ -2731,6 +2741,20 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/basketball)
+"agr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/flasher{
+	alpha = 1;
+	id = "Containment Cell 2";
+	layer = 2.1;
+	name = "Mounted Flash";
+	pixel_y = 30
+	},
+/turf/open/floor/almayer/research/containment/floor2/north,
+/area/almayer/medical/containment/cell)
 "ags" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -3962,16 +3986,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/machinery/power/apc/almayer/south,
-/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "ajb" = (
@@ -5613,13 +5627,7 @@
 /obj/structure/curtain/open/medical{
 	pixel_x = -1
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/wardrobe/morgue,
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
 "aos" = (
@@ -8930,28 +8938,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/dark_sterile,
-/area/almayer/medical/upper_medical)
-"axn" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/sign/safety/rewire{
-	layer = 2.4;
-	pixel_x = 8;
-	pixel_y = 28
-	},
-/obj/structure/reagent_dispensers/tank/water,
-/obj/item/reagent_container/glass/beaker{
-	pixel_x = 6;
-	pixel_y = 7
-	},
-/obj/item/reagent_container/glass/beaker/large{
-	pixel_x = -6;
-	pixel_y = 8
-	},
-/turf/closed/wall/almayer/white/reinforced,
 /area/almayer/medical/upper_medical)
 "axo" = (
 /obj/structure/bed/chair/office/dark{
@@ -20817,15 +20803,6 @@
 	pixel_y = 3;
 	pixel_x = -8
 	},
-/obj/item/storage/fancy/trading_card/blue{
-	pixel_y = 4;
-	pixel_x = 7
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/surface/table/almayer,
 /obj/item/stack/cable_coil{
 	pixel_y = 3;
@@ -21354,7 +21331,11 @@
 	pixel_y = 16
 	},
 /obj/item/clothing/glasses/sunglasses{
-	pixel_y = 5
+	pixel_y = 16;
+	pixel_x = -2
+	},
+/obj/item/storage/fancy/trading_card/blue{
+	pixel_y = 4
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
@@ -27637,19 +27618,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
-"brI" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/structure/reagent_dispensers/tank/fuel,
-/turf/open/floor/almayer/research/containment/floor2/west,
-/area/almayer/medical/containment/cell)
 "brK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -28388,15 +28356,6 @@
 /obj/item/folder/black_random,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
-"btn" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/reagent_dispensers/tank/water,
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/middeck/briefing)
 "bto" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
@@ -29740,6 +29699,9 @@
 /obj/structure/machinery/light/double/blue{
 	light_color = "#a7dbc7";
 	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
 	},
 /turf/open/floor/almayer/research/containment/floor2/west,
 /area/almayer/medical/containment/cell)
@@ -33989,33 +33951,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"bGv" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_y = 1
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/medical)
 "bGw" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -34224,7 +34159,6 @@
 /obj/structure/machinery/power/apc/almayer/north,
 /obj/merge_conflict_marker{
 	name = "---Merge Conflict Marker---";
-	
 	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
 	},
 /obj/effect/decal/warning_stripes{
@@ -34578,6 +34512,10 @@
 	pixel_y = 8
 	},
 /obj/structure/machinery/light,
+/obj/item/storage/box/bloodbag{
+	pixel_x = -2;
+	pixel_y = -1
+	},
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/containment)
 "bHI" = (
@@ -34633,7 +34571,12 @@
 /area/almayer/medical/containment)
 "bHN" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S"
+	icon_state = "SE-out";
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = 0
 	},
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/containment)
@@ -34703,6 +34646,16 @@
 "bHT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
+	},
+/obj/structure/surface/rack{
+	pixel_x = -1
+	},
+/obj/item/storage/box/bodybags{
+	pixel_y = 7
+	},
+/obj/item/storage/box/gloves{
+	pixel_x = -2;
+	pixel_y = -1
 	},
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/containment)
@@ -34894,36 +34847,8 @@
 	layer = 3.3
 	},
 /obj/structure/largecrate/random/barrel/true_random,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
-"bIl" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/reagent_dispensers/tank/water,
-/turf/closed/wall/almayer/research/containment/wall/west,
-/area/almayer/medical/containment/cell)
-"bIm" = (
-/obj/structure/machinery/camera/autoname/almayer/containment{
-	dir = 4
-	},
-/turf/open/floor/almayer/research/containment/floor2/west,
-/area/almayer/medical/containment/cell)
 "bIn" = (
 /obj/structure/machinery/computer/cameras/almayer_network,
 /obj/structure/surface/table/almayer,
@@ -35082,18 +35007,6 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/containment)
-"bIF" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/medical)
 "bIG" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom,
 /obj/structure/surface/table/reinforced/prison{
@@ -35211,11 +35124,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/req)
-"bIR" = (
-/obj/effect/decal/heavy_cable/cable_horizontal,
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/medical)
 "bIS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -35297,7 +35205,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/containment)
 "bJb" = (
@@ -35417,10 +35325,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/reagent_dispensers/fueltank/custom,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/containment)
 "bJl" = (
@@ -35511,7 +35419,11 @@
 /area/almayer/medical/containment)
 "bJr" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/sterile_green_corner/north,
@@ -35787,24 +35699,6 @@
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
-"bJQ" = (
-/obj/structure/machinery/flasher{
-	alpha = 1;
-	id = "Containment Cell 2";
-	layer = 2.1;
-	name = "Mounted Flash";
-	pixel_y = 30
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/machinery/light/double/blue{
-	light_color = "#a7dbc7";
-	dir = 1
-	},
-/turf/open/floor/almayer/research/containment/floor2/north,
-/area/almayer/medical/containment/cell)
 "bJR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -35910,10 +35804,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/navigation)
-"bKe" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/briefing)
 "bKf" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/machinery/light/red{
@@ -39426,18 +39316,15 @@
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/port_point_defense)
 "bSg" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/surgery/scalpel,
-/obj/item/tool/surgery/retractor,
-/obj/item/tool/surgery/hemostat{
-	pixel_x = -8;
-	pixel_y = 3
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
 	},
 /turf/open/floor/almayer/flooredge/northeast,
 /area/almayer/medical/morgue)
 "bSh" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4;
+	dir = 2;
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/almayer/flooredge/north,
@@ -39552,6 +39439,12 @@
 /obj/structure/machinery/light/small/blue{
 	dir = 8
 	},
+/obj/item/tool/surgery/hemostat{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/item/tool/surgery/retractor,
+/obj/item/tool/surgery/scalpel,
 /turf/open/floor/almayer/flooredge/southeast,
 /area/almayer/medical/morgue)
 "bSy" = (
@@ -41940,9 +41833,6 @@
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/starboard_point_defense)
-"coZ" = (
-/turf/open/floor/almayer/research/containment/corner/east,
-/area/almayer/medical/containment/cell)
 "cpj" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/ashtray/glass,
@@ -53154,6 +53044,9 @@
 /area/almayer/command/cicconference)
 "hbI" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/medical/morgue)
 "hcf" = (
@@ -71727,11 +71620,8 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "oNJ" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/morgue,
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/medical/morgue)
 "oNK" = (
@@ -73714,7 +73604,6 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/reagent_dispensers/watertank,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -82931,7 +82820,7 @@
 "tsn" = (
 /obj/structure/sign/safety/ladder{
 	pixel_x = 8;
-	pixel_y = -28
+	pixel_y = -26
 	},
 /turf/open/floor/almayer/blue,
 /area/almayer/hallways/upper/midship_hallway)
@@ -89650,7 +89539,7 @@
 "vZJ" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 8;
-	pixel_y = -28
+	pixel_y = -26
 	},
 /turf/open/floor/almayer/green/southeast,
 /area/almayer/hallways/upper/fore_hallway)
@@ -172836,7 +172725,7 @@ aHP
 aHP
 bnw
 aHP
-bGv
+bnw
 aHP
 bHR
 aHP
@@ -172936,8 +172825,8 @@ beB
 aSK
 bHe
 bHe
-bIR
-bIF
+beB
+aOh
 beB
 aOh
 bIa
@@ -173042,7 +172931,7 @@ aRQ
 aRQ
 aRQ
 aRQ
-btn
+aRQ
 aRQ
 aRQ
 aRQ
@@ -173145,7 +173034,7 @@ otu
 xXh
 xXh
 xXh
-bIl
+xXh
 xXh
 otu
 xXh
@@ -173245,11 +173134,11 @@ bHr
 bHx
 bHf
 uyH
-wWm
-jQt
+vHO
+uXj
 bwu
-bIm
-coZ
+ruc
+uvP
 uyH
 vHO
 bHx
@@ -173342,21 +173231,21 @@ bxJ
 bxr
 aRQ
 wWz
-uwZ
+agr
 wWm
 jQt
 bJv
 sNz
 uyH
-tyD
-jQt
-jQt
-jQt
-vfP
+qxP
+gxP
+gxP
+gxP
+aaE
 uyH
 uwZ
 wWm
-brI
+jQt
 bHl
 sNz
 wTM
@@ -173445,7 +173334,7 @@ bxJ
 bxr
 aRQ
 wWz
-bJQ
+bys
 xQm
 wLy
 xQm
@@ -175501,7 +175390,7 @@ bGh
 bGh
 aJM
 aRQ
-bKe
+aRz
 bKa
 aRz
 aWA
@@ -204140,7 +204029,7 @@ lXl
 yiu
 bBH
 sqf
-axn
+sqf
 sqf
 fnA
 sqf

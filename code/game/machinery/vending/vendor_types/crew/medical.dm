@@ -28,7 +28,7 @@
 	vendor_role = list(JOB_RESEARCHER)
 	icon_state = "wardrobe_vendor"
 
-/obj/structure/machinery/cm_vending/clothing/medical_crew/get_listed_products(mob/user)
+/obj/structure/machinery/cm_vending/clothing/medical_crew/researcher/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_researcher
 
 
@@ -222,10 +222,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_researcher, list(
 		list("Fancy Leather Shoes", 0, /obj/item/clothing/shoes/leather/fancy, CIVILIAN_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
 
 		list("BAG (CHOOSE 1)", 0, null, null, null),
-		list("Leather brown satchel", 0, /obj/item/storage/backpack/satchel, CIVILIAN_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Leather blue satchel", 0, /obj/item/storage/backpack/satchel/blue, CIVILIAN_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Leather black satchel", 0, /obj/item/storage/backpack/satchel/black, CIVILIAN_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
-		list("Marine satchel", 0, /obj/item/storage/backpack/marine/satchel, CIVILIAN_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
+		list("Leather brown satchel", 0, /obj/item/storage/backpack/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Leather blue satchel", 0, /obj/item/storage/backpack/satchel/blue, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Leather black satchel", 0, /obj/item/storage/backpack/satchel/black, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
+		list("Marine satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("M276 Lifesaver Bag (Full)", 0, /obj/item/storage/belt/medical/lifesaver/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),

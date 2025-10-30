@@ -1905,7 +1905,7 @@
 	pixel_y = -10;
 	pixel_x = -10
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/greenfull,
 /area/rostock/lower_deck/p_a_hallway)
 "aGw" = (
@@ -2579,7 +2579,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/command/hallway)
 "biG" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/sign/safety/water{
 	pixel_x = -20
 	},
@@ -4306,7 +4306,7 @@
 "cDO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
 	pixel_y = 32
@@ -5221,7 +5221,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/reactor)
 "dtF" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/orange_edge,
 /area/rostock/req)
 "dtI" = (
@@ -5863,7 +5863,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/lower_deck/m_hallway)
 "dQr" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -7105,7 +7105,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/prep)
 "eNM" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/machinery/light,
 /turf/open/floor/strata/orange_edge,
 /area/rostock/req)
@@ -7747,7 +7747,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/railgun/starboard)
 "fke" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = -20
 	},
@@ -9233,7 +9233,7 @@
 	dir = 4;
 	light_color = "#ffd4d4"
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = 7;
 	pixel_y = -32
@@ -9601,7 +9601,7 @@
 /area/rostock/command/co)
 "gQK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = 7;
 	pixel_y = 32
@@ -10842,7 +10842,7 @@
 /turf/open/floor/strata/cyan2,
 /area/rostock/command/astronavigation)
 "hNu" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/darkbrown3,
 /area/rostock/req)
 "hND" = (
@@ -11061,7 +11061,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_m)
 "hSQ" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/sign/safety/water{
 	pixel_x = 32
 	},
@@ -12737,7 +12737,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/s_a)
 "jfw" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.97
 	},
 /obj/structure/prop/invuln/overhead_pipe{
@@ -13527,7 +13527,7 @@
 /turf/open/floor/strata/purp2,
 /area/rostock/req)
 "jKq" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/chemistry)
 "jKM" = (
@@ -14807,7 +14807,7 @@
 /area/rostock/lowerdeck_maint/s_f)
 "kFl" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_m)
 "kFJ" = (
@@ -14908,7 +14908,7 @@
 /turf/open/floor/strata/orange_edge/east,
 /area/rostock/req)
 "kIg" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /obj/structure/machinery/light{
 	dir = 4;
 	light_color = "#ccecff"
@@ -15960,7 +15960,7 @@
 "lGU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
 	pixel_y = -32
@@ -16378,18 +16378,6 @@
 /obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
-"lYe" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/strata,
-/area/rostock/command/astronavigation)
 "lYw" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -20706,8 +20694,7 @@
 /area/rostock/lowerdeck_maint/p_a)
 "pHz" = (
 /obj/structure/closet/secure_closet/cmdcabinet{
-	pixel_y = 24;
-	req_access = null
+	pixel_y = 24
 	},
 /obj/item/device/cotablet/upp,
 /turf/open/floor/strata/blue3,
@@ -21225,7 +21212,7 @@
 /turf/open/floor/wood,
 /area/rostock/command/polcom)
 "qdo" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -23058,7 +23045,7 @@
 	pixel_x = 7;
 	pixel_y = 32
 	},
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.97
 	},
 /turf/open/floor/corsat/spiralplate,
@@ -24474,7 +24461,7 @@
 /turf/open/floor/upp_hull_rostock,
 /area/space)
 "sMo" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/s_f)
 "sNd" = (
@@ -24515,7 +24502,7 @@
 /turf/open/floor/prison,
 /area/rostock/command/cic)
 "sPy" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/sign/safety/water{
 	pixel_x = -22
 	},
@@ -24785,7 +24772,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "tdi" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/sign/safety/water{
 	pixel_x = 24;
 	pixel_y = -32
@@ -24833,7 +24820,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
 "tfH" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/main_area)
 "tfL" = (
@@ -28599,7 +28586,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/lower_deck/s_a_hallway)
 "vYw" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/sign/safety/water{
 	pixel_x = 8;
 	pixel_y = 32
@@ -30263,7 +30250,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/command/armory)
 "xqh" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = 24;
 	pixel_y = -32
@@ -30638,7 +30625,7 @@
 	pixel_x = 1;
 	pixel_y = 2
 	},
-/obj/structure/reagent_dispensers/ethanoltank,
+/obj/structure/reagent_dispensers/tank/ethanol,
 /turf/open/floor/strata/floor3/east,
 /area/rostock/engineering/starboard_aft_accessway)
 "xEn" = (
@@ -30931,7 +30918,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/hangar/hangarbay)
 "xRE" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrown3,
 /area/rostock/req)
 "xSk" = (
@@ -56335,7 +56322,7 @@ hKO
 nhl
 hKO
 mrt
-lYe
+iwu
 lSG
 jhS
 wNt

@@ -77,6 +77,7 @@
 /datum/hud/New(mob/owner)
 	mymob = owner
 	hide_actions_toggle = new
+	hide_actions_toggle.update_button_icon(owner)
 
 	for(var/mytype in subtypesof(/atom/movable/screen/plane_master)- /atom/movable/screen/plane_master/rendering_plate - /atom/movable/screen/plane_master/open_space)
 		var/atom/movable/screen/plane_master/instance = new mytype()

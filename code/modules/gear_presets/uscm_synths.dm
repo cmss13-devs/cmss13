@@ -11,7 +11,7 @@
 	preset_generation_support = FALSE
 
 	minimap_icon = "synth"
-	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/synthetic
 
 	var/is_council = FALSE
@@ -41,7 +41,7 @@
 
 /datum/equipment_preset/synth/uscm/councillor
 	name = "USCM Synthetic Council (Generalised)"
-	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_MCWO = JOB_PLAYTIME_TIER_0)
 	is_council = TRUE
 
 //*****************************************************************************************************/

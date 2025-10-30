@@ -2,10 +2,10 @@
 	name = "ancient alien bracers"
 	desc = "A pair of strange, alien bracers."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/pred_bracers.dmi'
 	icon_state = "bracer"
 	item_icons = list(
-		WEAR_HANDS = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_HANDS = 'icons/mob/humans/onmob/hunter/pred_bracers.dmi'
 	)
 
 	siemens_coefficient = 0
@@ -48,6 +48,8 @@
 	COOLDOWN_DECLARE(bracer_recharge)
 	/// What minimap icon this bracer should have
 	var/minimap_icon
+	///sprite style
+	var/material
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
@@ -97,7 +99,7 @@
 
 		charge = min(charge + charge_increase, charge_max)
 		var/perc_charge = (charge / charge_max * 100)
-		human_holder.update_power_display(perc_charge)
+		human_holder.update_power_display(perc_charge, material)
 
 	//Non-Yautja have a chance to get stunned with each power drain
 	if(!HAS_TRAIT(human_holder, TRAIT_CLOAKED))
@@ -158,7 +160,7 @@
 
 	charge -= amount
 	var/perc = (charge / charge_max * 100)
-	human.update_power_display(perc)
+	human.update_power_display(perc, material)
 
 	return TRUE
 
@@ -292,7 +294,7 @@
 	if(right_bracer_attachment)
 		. += SPAN_NOTICE("The right bracer attachment is [right_bracer_attachment.attached_weapon].")
 
-/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_invis_sound, new_caster_material, new_owner_rank)
+/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_invis_sound, new_caster_material, new_owner_rank, new_bracer_material)
 	. = ..()
 	if(new_owner_rank)
 		owner_rank = new_owner_rank
@@ -304,6 +306,9 @@
 	if(new_caster_material)
 		caster_material = new_caster_material
 	caster = new(src, FALSE, caster_material)
+	if(new_bracer_material)
+		icon_state = "bracer_" + new_bracer_material
+		material = new_bracer_material
 
 /obj/item/clothing/gloves/yautja/hunter/emp_act(severity)
 	. = ..()

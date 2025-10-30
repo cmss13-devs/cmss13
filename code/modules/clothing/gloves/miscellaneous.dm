@@ -42,11 +42,11 @@
 
 /obj/item/clothing/gloves/latex
 	name = "latex gloves"
-	desc = "Sterile latex gloves."
+	desc = "Sterile latex gloves. Offers some biological protection."
 	icon_state = "latex"
 	item_state = "latex"
 	siemens_coefficient = 0.30
-	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 
 /obj/item/clothing/gloves/botanic_leather
 	desc = "These leather gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin."

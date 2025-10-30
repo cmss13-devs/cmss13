@@ -856,6 +856,11 @@
 "ck" = (
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/outdoors/outskirts/central)
+"cl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/tank/fuel,
+/turf/open/floor/almayer,
+/area/tyrargo/indoors/heyst)
 "cn" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -4
@@ -1069,10 +1074,6 @@
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/tyrargo/outdoors/outskirts/central)
-"eC" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/plating,
-/area/tyrargo/indoors/heyst)
 "eE" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/effect/decal/cleanable/blood/oil,
@@ -3774,11 +3775,6 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/almayer/plate,
 /area/tyrargo/indoors/heyst)
-"Cd" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/almayer/orange/west,
-/area/tyrargo/indoors/heyst)
 "Ce" = (
 /obj/structure/flora/tree/tyrargo/tree_3{
 	pixel_x = -9;
@@ -3926,9 +3922,6 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts_road/central)
 "DY" = (
-/obj/structure/reagent_dispensers/fueltank{
-	layer = 2.9
-	},
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -7235,7 +7228,7 @@ nw
 VZ
 kU
 sv
-Cd
+qq
 qq
 eE
 ji
@@ -7757,12 +7750,12 @@ op
 nS
 op
 op
-eC
+op
 op
 gY
 op
 SF
-ze
+cl
 aN
 sx
 sx

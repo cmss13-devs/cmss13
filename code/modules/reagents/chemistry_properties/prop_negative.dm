@@ -252,9 +252,9 @@
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
 
 /datum/chem_property/negative/hemorrhaging
-	name = PROPERTY_HEMORRAGING
+	name = PROPERTY_HEMORRHAGING
 	code = "HMR"
-	description = "Ruptures endothelial cells making up bloodvessels, causing blood to escape from the circulatory system. Persistant mutagen to plants."
+	description = "Ruptures endothelial cells making up bloodvessels, causing blood to escape from the circulatory system. Persistent mutagen to plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 	cost_penalty = FALSE
@@ -393,7 +393,7 @@
 /datum/chem_property/negative/nephrotoxic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, TOX)
 
-//Applies mutation cancel onto hydrotray plants, prevents tolerance adjustment, parasitic and carnivorus
+//Applies mutation cancel onto hydrotray plants, prevents tolerance adjustment, parasitic and carnivorous
 /datum/chem_property/negative/nephrotoxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
 	if(!processing_tray.seed)

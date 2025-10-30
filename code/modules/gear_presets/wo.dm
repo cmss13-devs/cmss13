@@ -77,6 +77,8 @@
 				sidearmpath = /obj/item/storage/belt/gun/mateba/council/mtr6m/full
 			if(CO_GUN_2006MB_COUNCIL)
 				sidearmpath = /obj/item/storage/belt/gun/mateba/council/mtr6m/full_black
+			if(CO_GUN_2006MS_COUNCIL)
+				sidearmpath = /obj/item/storage/belt/gun/mateba/council/mtr6m/full_silver
 			if(CO_GUN_DEAGLE_COUNCIL)
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
 	//back

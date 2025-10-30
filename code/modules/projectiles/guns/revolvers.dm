@@ -852,13 +852,18 @@
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 23, "rail_x" = 19, "rail_y" = 23, "under_x" = 19, "under_y" = 17, "stock_x" = 19, "stock_y" = 17, "special_x" = 23, "special_y" = 22)
 
 /obj/item/weapon/gun/revolver/mateba/mtr6m/golden
-	name = "\improper golden 2006M autorevolver"
+	name = "\improper golden Spearhead 2006M autorevolver"
 	icon_state = "gmateba_2006m"
 	item_state = "gmateba_2006m"
 
 /obj/item/weapon/gun/revolver/mateba/mtr6m/golden/black_handle
 	icon_state = "bgmateba_2006m"
 	item_state = "bgmateba_2006m"
+
+/obj/item/weapon/gun/revolver/mateba/mtr6m/silver
+	name = "\improper silver Spearhead 2006M autorevolver"
+	icon_state = "smateba_2006m"
+	item_state = "smateba_2006m"
 
 
 //-------------------------------------------------------

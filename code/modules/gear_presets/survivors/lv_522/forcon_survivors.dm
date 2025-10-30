@@ -308,6 +308,10 @@
 				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m/golden/black_handle
 				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
 				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
+			if(CO_GUN_2006MS_COUNCIL)
+				sidearm = /obj/item/weapon/gun/revolver/mateba/mtr6m/silver
+				sidearmbelt = /obj/item/storage/belt/gun/mateba/council
+				sidearmammo = /obj/item/ammo_magazine/revolver/mateba
 			if(CO_GUN_DEAGLE_COUNCIL)
 				sidearm = /obj/item/weapon/gun/pistol/heavy/co/gold
 				sidearmbelt = /obj/item/storage/belt/gun/m4a3/black

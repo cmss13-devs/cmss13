@@ -35,7 +35,6 @@ const CameraPanel = () => {
         boxProps={{
           className: 'CameraPanel',
         }}
-        zoomDrawingMode={{ type: 'NativeScaling' }}
       />
     </Box>
   );

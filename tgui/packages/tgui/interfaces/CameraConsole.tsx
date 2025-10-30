@@ -213,7 +213,6 @@ const CameraControls = (props: { readonly searchText: string }) => {
               height: '100%',
               width: '100%',
             }}
-            zoomDrawingMode={{ type: 'NativeScaling' }}
           />
         </Stack.Item>
       </Stack>

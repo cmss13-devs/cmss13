@@ -27,7 +27,6 @@ function Story() {
             type: 'button',
             text: 'Button',
           }}
-          zoomDrawingMode={{ type: 'NativeScaling' }}
         />
       </Section>
       <Section

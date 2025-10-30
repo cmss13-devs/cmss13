@@ -132,21 +132,38 @@ const ViewMapPanel = (props) => {
 
   return (
     <Section fill fitted height="86%">
-      <ByondUi
-        winsetParams={{
-          id: data.mapRef,
-          type: 'map',
-        }}
-        boxProps={{
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
           height: '100%',
           width: '100%',
-          className: 'TacticalMap',
         }}
-        zoomDrawingMode={{
-          type: 'ManuallyCalculate',
-          nativeSize: [data.mapPixelSizeX, data.mapPixelSizeY],
-        }}
-      />
+      >
+        <div
+          style={{
+            aspectRatio: 1,
+            objectFit: 'contain',
+            height: '100%',
+            width: 'auto',
+            maxWidth: '100%',
+            flexGrow: 1,
+          }}
+        >
+          <ByondUi
+            winsetParams={{
+              id: data.mapRef,
+              type: 'map',
+            }}
+            boxProps={{
+              height: '100%',
+              width: '100%',
+              className: 'TacticalMap',
+            }}
+          />
+        </div>
+      </div>
     </Section>
   );
 };

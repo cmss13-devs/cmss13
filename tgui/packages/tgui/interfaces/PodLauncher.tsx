@@ -395,7 +395,6 @@ const ViewTabHolder = (props) => {
               className: 'CameraPanel',
               height: '100%',
             }}
-            zoomDrawingMode={{ type: 'NativeScaling' }}
           />
         </Flex.Item>
       </Flex>

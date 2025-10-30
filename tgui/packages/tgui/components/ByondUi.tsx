@@ -22,40 +22,10 @@ function byondFmtSize(size: number[]): string {
   return `${xSize}x${ySize}`;
 }
 
-type ZoomDrawingMode =
-  | { type: 'NativeScaling' }
-  | { type: 'ManuallyCalculate'; nativeSize: number[] };
-
-function getZoomFactor(
-  zoomDrawingMode: ZoomDrawingMode,
-  domBox: BoundingBox,
-): number {
-  switch (zoomDrawingMode.type) {
-    case 'NativeScaling':
-      return 0;
-    case 'ManuallyCalculate': {
-      const byondOriginalSizeX = zoomDrawingMode.nativeSize[0];
-      const byondOriginalSizeY = zoomDrawingMode.nativeSize[1];
-
-      const possibleXScaleFactor = domBox.size[0] / byondOriginalSizeX;
-      const possibleYScaleFactor = domBox.size[1] / byondOriginalSizeY;
-
-      // XXX 4khan: the byond zoom winset param always scales the entire image.
-      // This means that for a square image like tacmaps, we can't apply one
-      // scaling factor horizontally and another vertically, so we have to
-      // choose the smaller of the two.
-      return Math.min(possibleXScaleFactor, possibleYScaleFactor);
-    }
-    default:
-      return 0;
-  }
-}
-
 type ByondUiElement = {
   render: (
     containerRef: React.Ref<HTMLDivElement>,
     params: Record<string, any>,
-    zoomDrawingMode: ZoomDrawingMode,
   ) => void;
   unmount: () => void;
 };
@@ -94,35 +64,29 @@ function callWinset(
   index: number,
   id: string,
   constParams: any,
-  zoomDrawingMode: ZoomDrawingMode,
   container: React.RefObject<HTMLDivElement>,
 ) {
   byondUiStack[index] = id;
 
+  const element = container.current;
+  if (!element) {
+    return;
+  }
+  const box = getBoundingBox(element);
+
+  let params = { ...constParams };
+  params['pos'] = byondFmtPos(box.pos);
+  params['size'] = byondFmtSize(box.size);
+  params['zoom'] = 0;
+  params['icon-size'] = 0;
+
+  console.log('winset');
+  console.log(params);
+
+  Byond.winset(id, { ...params, style: Byond.styleSheet });
   Byond.winget(id, '*').then((res: Record<string, any>) => {
     console.log('winget');
     console.log(res);
-
-    const element = container.current;
-    if (!element) {
-      return;
-    }
-    const box = getBoundingBox(element);
-
-    // Calculate appropriate zoom
-    const zoom = getZoomFactor(zoomDrawingMode, box);
-
-    let params = { ...constParams };
-    params['pos'] = byondFmtPos(box.pos);
-    params['size'] = byondFmtSize(box.size);
-    params['zoom'] = zoom;
-    params['background-color'] = '#00FF00';
-    params['anchor1'] = '33,33';
-
-    console.log('winset');
-    console.log(params);
-
-    Byond.winset(id, { ...params, style: Byond.styleSheet });
   });
 }
 
@@ -138,9 +102,8 @@ function createByondUiElement(elementId: string | undefined): ByondUiElement {
     render: (
       containerRef: React.RefObject<HTMLDivElement>,
       constParams: Record<string, any>,
-      zoomDrawingMode: ZoomDrawingMode,
     ) => {
-      callWinset(index, id, constParams, zoomDrawingMode, containerRef);
+      callWinset(index, id, constParams, containerRef);
     },
     unmount: () => {
       byondUiStack[index] = null;
@@ -160,17 +123,6 @@ type ByondUiProps = Partial<{
 
   /** params passed to calculateBoxProps from ../box.tsx */
   boxProps: Record<string, any>;
-
-  /**
-   * For map byond UIs, whether or not to hand-calculate the 'zoom'
-   * winset attr. The default behavior is to pass zoom=0, which auto-calculates
-   * the zoom factor based on the size of the parent element. However, this zoom
-   * assumes a square view which isn't always the case, causing the window to
-   * draw outside the DOM bounding box. The first index of the passed number
-   * array for the ManuallyCalculate variant should be the width of the
-   * byond object in pixels, the second index should be the height.
-   */
-  zoomDrawingMode: ZoomDrawingMode;
 }>;
 
 // Stack of currently allocated BYOND UI element ids.
@@ -208,7 +160,6 @@ const byondUiStack: Array<string | null> = [];
 export function ByondUi(props: ByondUiProps) {
   const winsetParams = props.winsetParams;
   const boxProps = props.boxProps;
-  const zoomDrawingMode = props.zoomDrawingMode;
 
   const containerRef = useRef<HTMLDivElement>(null);
   const byondUiElement = useRef(createByondUiElement(winsetParams?.id));
@@ -218,11 +169,7 @@ export function ByondUi(props: ByondUiProps) {
       parent: Byond.windowId,
       ...winsetParams,
     };
-    byondUiElement.current.render(
-      containerRef,
-      { ...constParams },
-      zoomDrawingMode ? zoomDrawingMode : { type: 'NativeScaling' },
-    );
+    byondUiElement.current.render(containerRef, { ...constParams });
   }
 
   const handleResize = debounce(() => {

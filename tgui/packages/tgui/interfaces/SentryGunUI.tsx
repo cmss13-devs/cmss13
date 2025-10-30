@@ -460,7 +460,6 @@ const SentryCamera = (props: { readonly sentry_data: SentrySpec[] }) => {
               boxProps={{
                 className: 'CameraBox',
               }}
-              zoomDrawingMode={{ type: 'NativeScaling' }}
             />
           </Flex.Item>
         </Flex>

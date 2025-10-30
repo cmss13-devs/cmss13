@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(yautja_panel)
 
 /client/verb/yautja_panel()
 	set name = "Yautja Clan Panel"
-	set category = "OOC.Records"
+	set category = "OOC.Whitelist"
 
 	if(!check_whitelist_status(WHITELIST_PREDATOR))
 		return FALSE

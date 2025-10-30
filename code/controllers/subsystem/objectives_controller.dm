@@ -1,4 +1,6 @@
 #define CORPSES_TO_SPAWN 100
+#define MATH_PI 3.14159265358979323846
+
 
 SUBSYSTEM_DEF(objectives)
 	name = "Objectives"
@@ -19,30 +21,17 @@ SUBSYSTEM_DEF(objectives)
 	// Keep track of the list of objectives to process, in case we need to defer to the next tick.
 	var/list/datum/cm_objective/current_active_run = list()
 
-/datum/sinusoidal_wave
-    var/name = "Unknown Wave"
-    var/amplitude = 1.0        // Property 1: Wave height/intensity
-    var/frequency = 1.0        // Property 2: Wave frequency/speed
-    var/phase = 0.0           // Property 3: Wave phase shift
-    var/damage_type = "base"   // Type of damage this wave represents
-    var/color = "#ffffff"
-
-/datum/sinusoidal_wave/New(amp = 1.0, freq = 1.0, ph = 0.0, damage = "base")
-    amplitude = amp
-    frequency = freq
-    phase = ph
-    damage_type = damage
 
 // Create dictionary to organize waves by type
 var/list/wave_dict = list(
 	"brute" = list(),
-	"burn" = list(),
-	"toxin" = list(),
-	"oxygen" = list(),
-	"bone" = list(),
-	"organ" = list(),
-	"pain" = list(),
-	"parasitic" = list()
+	"burn" = list()
+	//"toxin" = list(),
+	//"oxygen" = list(),
+	//"bone" = list(),
+	//"organ" = list(),
+	//"pain" = list(),
+	//"parasitic" = list()
 )
 
 
@@ -53,7 +42,7 @@ var/list/wave_dict = list(
 	for(var/damage_type in damage_types)
 		var/list/wave_data = list(
 			"amplitude" = 1.0,
-			"frequency" = 1.0,
+			"frequency" = 1,
 			"phase" = 0.0,
 			"color" = "#ffffff",
 			"name" = "Wave",
@@ -64,15 +53,20 @@ var/list/wave_dict = list(
 			if("brute")
 				wave_data["amplitude"] = 1
 				wave_data["phase"] = 1.0
-				wave_data["frequency"] = 1.0
+				wave_data["frequency"] = MATH_PI
 				wave_data["color"] = "#ff4444"
 				wave_data["name"] = "Brute Damage Wave"
+
 			if("burn")
 				wave_data["amplitude"] = 1
 				wave_data["phase"] = 1.5
-				wave_data["frequency"] = 1.0
+				wave_data["frequency"] = MATH_PI / 2
 				wave_data["color"] = "#ffbb33"
 				wave_data["name"] = "Burn Damage Wave"
+
+			else
+				// Default case for any unhandled damage types
+				wave_data["name"] = "[damage_type] Wave"
 		wave_dict[damage_type] += list(wave_data)
 	GLOB.research_sinusoids = wave_dict
 

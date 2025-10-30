@@ -18,8 +18,6 @@ type Data = {
       color: string;
       name: string;
     }>;
-    xRange: [number, number];
-    yRange: [number, number];
   } | null;
   componentData: {
     datasets: Array<{
@@ -27,17 +25,15 @@ type Data = {
       color: string;
       name: string;
     }>;
-    xRange: [number, number];
-    yRange: [number, number];
   } | null;
 };
 
-export const CorpseAnalyzer = (props) => {
+export const CorpseAnalyzer = () => {
   const { act, data } = useBackend<Data>();
   const topPlotRef = useRef<HTMLDivElement>(null);
   const bottomPlotRef = useRef<HTMLDivElement>(null);
 
-  // Common plot configuration
+  // Static plot configuration
   const plotConfig = {
     width: 600,
     height: 250,
@@ -45,11 +41,11 @@ export const CorpseAnalyzer = (props) => {
     disableZoom: true,
     xAxis: {
       label: 'Time (seconds)',
-      domain: data.plotData?.xRange || [0, 10],
+      domain: [0, data.analysis_duration || 10],
     },
     yAxis: {
       label: 'Analysis Data',
-      domain: data.plotData?.yRange || [-2, 2],
+      domain: [-3, 3],
     },
   };
 
@@ -58,7 +54,7 @@ export const CorpseAnalyzer = (props) => {
     if (topPlotRef.current) {
       topPlotRef.current.innerHTML = '';
 
-      if (data.plotData) {
+      if (data.plotData && data.plotData.datasets) {
         functionPlot({
           target: topPlotRef.current,
           ...plotConfig,
@@ -89,18 +85,13 @@ export const CorpseAnalyzer = (props) => {
     if (bottomPlotRef.current) {
       bottomPlotRef.current.innerHTML = '';
 
-      if (data.componentData) {
-        // Use componentData from backend instead of modified plotData
+      if (data.componentData && data.componentData.datasets) {
         functionPlot({
           target: bottomPlotRef.current,
           ...plotConfig,
-          xAxis: {
-            label: 'Time (seconds)',
-            domain: data.componentData.xRange || [0, 10],
-          },
           yAxis: {
             label: 'Component Data',
-            domain: data.componentData.yRange || [-2, 2],
+            domain: [-3, 3],
           },
           data: data.componentData.datasets.map((dataset) => ({
             points: dataset.points,
@@ -130,6 +121,7 @@ export const CorpseAnalyzer = (props) => {
     data.current_graph_index,
     data.phase,
     data.amplitude,
+    data.analysis_duration,
   ]);
 
   return (
@@ -199,28 +191,28 @@ export const CorpseAnalyzer = (props) => {
             >
               <div>
                 <label style={{ display: 'block', marginBottom: '5px' }}>
-                  Phase: {(data.phase || 0.0).toFixed(2)}π radians
+                  Phase: {(data.phase || 0.0).toFixed(3)}π radians
                 </label>
                 <Slider
                   animated
                   value={data.phase || 0.0}
                   minValue={0}
                   maxValue={1}
-                  step={0.01}
+                  step={0.001} // Reduced from 0.01 for finer control
                   onChange={(e, value) => act('set_phase', { value: value })}
                 />
               </div>
 
               <div>
                 <label style={{ display: 'block', marginBottom: '5px' }}>
-                  Amplitude: {(data.amplitude || 1.0).toFixed(1)}
+                  Amplitude: {(data.amplitude || 1.0).toFixed(2)}
                 </label>
                 <Slider
                   animated
                   value={data.amplitude || 1.0}
                   minValue={0.1}
                   maxValue={3.0}
-                  step={0.1}
+                  step={0.005} // Reduced from 0.1 for smoother control
                   onChange={(e, value) =>
                     act('set_amplitude', { value: value })
                   }

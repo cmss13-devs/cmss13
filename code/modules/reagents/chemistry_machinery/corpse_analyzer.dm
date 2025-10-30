@@ -96,62 +96,74 @@
 	return amplitude * sin(frequency * time + phase)
 
 /obj/structure/machinery/corpse_analyzer/proc/get_selected_damage_type()
-    if(current_graph_index < 0 || current_graph_index >= length(damage_type_map))
-        return "brute" // Fallback to brute if index is out of bounds
-    return damage_type_map[current_graph_index + 1] // DM lists are 1-indexed
+	if(current_graph_index < 0 || current_graph_index >= length(damage_type_map))
+		return "brute" // Fallback to brute if index is out of bounds
+	return damage_type_map[current_graph_index + 1] // DM lists are 1-indexed
 
 
 /obj/structure/machinery/corpse_analyzer/ui_data(mob/user)
-    . = list()
-    .["current_graph_index"] = current_graph_index
-    .["current_damage_type"] = get_selected_damage_type()
-    .["phase"] = get_current_phase()
-    .["amplitude"] = get_current_amplitude()
-    .["analysis_duration"] = analysis_duration
-    .["resolution"] = resolution
+	. = list()
+	.["current_graph_index"] = current_graph_index
+	.["current_damage_type"] = get_selected_damage_type()
+	.["phase"] = get_current_phase()
+	.["amplitude"] = get_current_amplitude()
+	.["analysis_duration"] = analysis_duration
+	.["resolution"] = resolution
 
-    // Generate plot data for top graph (total analysis)
-    .["plotData"] = generate_plot_data()
+	// Generate plot data for top graph (total analysis)
+	.["plotData"] = generate_plot_data()
 
-    // Generate separate data for bottom graph (component analysis)
-    .["componentData"] = generate_component_data()
+	// Generate separate data for bottom graph (component analysis)
+	.["componentData"] = generate_component_data()
 
 // New proc to generate component-specific data
 /obj/structure/machinery/corpse_analyzer/proc/generate_component_data()
-    return generate_plot_data() // For now, uses same data - you can modify this later
+	return generate_plot_data() // For now, uses same data - you can modify this later
 
 
 /obj/structure/machinery/corpse_analyzer/proc/generate_plot_data()
-	if(!GLOB.research_sinusoids || !length(GLOB.research_sinusoids))
-		return
+    if(!GLOB.research_sinusoids || !length(GLOB.research_sinusoids))
+        return null
 
+    // Get current damage type based on graph index
+    var/selected_damage_type = get_selected_damage_type()
+    var/list/wave_list = GLOB.research_sinusoids[selected_damage_type]
 
+    if(!wave_list || !length(wave_list))
+        return null
 
-	// Get current damage type based on graph index
-	var/selected_damage_type = get_selected_damage_type()
-	var/list/wave_list = GLOB.research_sinusoids[selected_damage_type]
+    // Get current graph's specific modifiers
+    var/current_phase = get_current_phase()
+    var/current_amplitude = get_current_amplitude()
+    var/list/graph_points = list()
 
-	if(!wave_list || !length(wave_list))
-		return
+    // Process the wave in the selected damage type
+    for(var/list/wave_data in wave_list)
+        var/time_step = analysis_duration / resolution
 
-	// Get current graph's specific modifiers
-	var/current_phase = get_current_phase()
-	var/current_amplitude = get_current_amplitude()
-	var/list/graph_points = list()
-	// Process the wave in the selected damage type
-	for(var/list/wave_data in wave_list)
-		var/time_step = analysis_duration / resolution //determines how many x values we have
+        var/wave_amplitude = wave_data["amplitude"] * current_amplitude
+        var/wave_frequency = wave_data["frequency"]
+        var/wave_phase = (wave_data["phase"] * 3.14159 + (current_phase * 3.14159))
 
-		// Extract wave parameters and apply current graph's modifiers
-		var/wave_amplitude = wave_data["amplitude"] * current_amplitude
-		var/wave_frequency = wave_data["frequency"]
-		var/wave_phase = (wave_data["phase"] + (current_phase * 3.14159)) // Convert 0-1 to 0-π
-		// Generate points for this wave
-		for(var/i = 0; i <= resolution; i++)
-			var/time = i * time_step
-			var/value = calculate_sinusoidal_value(wave_amplitude, wave_frequency, wave_phase, time)
-			graph_points += list(list(time, value))
-	return graph_points
+        for(var/i = 0; i <= resolution; i++)
+            var	time = i * time_step
+            var	value = calculate_sinusoidal_value(wave_amplitude, wave_frequency, wave_phase, time)
+            graph_points += list(list(time, value))
+
+    // Simplified return structure - no xRange/yRange
+    var/list/plot_data = list()
+    var/list/datasets = list()
+
+    var/capitalized_damage_type = uppertext(copytext(selected_damage_type, 1, 2)) + copytext(selected_damage_type, 2)
+
+    datasets += list(list(
+        "points" = graph_points,
+        "color" = "#ff0000",
+        "name" = "[capitalized_damage_type] Analysis"
+    ))
+
+    plot_data["datasets"] = datasets
+    return plot_data
 
 /obj/structure/machinery/corpse_analyzer/ui_act(action, list/params)
 	. = ..()

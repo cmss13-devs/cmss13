@@ -80,6 +80,9 @@
 	if(!my_turf)
 		return
 
+	if(!locate(/obj/flamer_fire) in my_turf)
+		new /obj/flamer_fire(my_turf)
+
 	for(var/direction in GLOB.cardinals)
 		var/turf/target = get_step(my_turf, direction)
 		var/obj/effect/decal/cleanable/liquid_fuel/adjacent_fuel = LAZYACCESS(target?.cleanables, CLEANABLE_IGNITABLE)

@@ -6,7 +6,6 @@ import { Window } from 'tgui/layouts';
 type Data = {
   data_target_x: number;
   data_target_y: number;
-  data_target_z: number;
   data_dial_x: number;
   data_dial_y: number;
 };
@@ -16,14 +15,12 @@ export const Mortar = (props) => {
   const {
     data_target_x,
     data_target_y,
-    data_target_z,
     data_dial_x,
-    data_dial_y,
+    data_dial_y
   } = data;
 
   const [target_x, setTargetX] = useState(data_target_x);
   const [target_y, setTargetY] = useState(data_target_y);
-  const [target_z, setTargetZ] = useState(data_target_z);
   const [dial_x, setDialX] = useState(data_dial_x);
   const [dial_y, setDialY] = useState(data_dial_y);
 
@@ -52,16 +49,6 @@ export const Mortar = (props) => {
                 onChange={(value) => setTargetY(value)}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Target Z">
-              <NumberInput
-                width="4em"
-                step={1}
-                minValue={-1000}
-                maxValue={1000}
-                value={target_z}
-                onChange={(value) => setTargetZ(value)}
-              />
-            </LabeledList.Item>
           </LabeledList>
           <Button
             icon="crosshairs"
@@ -73,7 +60,6 @@ export const Mortar = (props) => {
               act('set_target', {
                 target_x: target_x,
                 target_y: target_y,
-                target_z: target_z,
               })
             }
           >

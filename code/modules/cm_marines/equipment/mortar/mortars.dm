@@ -16,7 +16,6 @@
 	// Initial target coordinates
 	var/targ_x = 0
 	var/targ_y = 0
-	var/targ_z = 0
 	// Automatic offsets from target
 	var/offset_x = 0
 	var/offset_y = 0
@@ -56,7 +55,6 @@
 	// Makes coords appear as 0 in UI
 	targ_x = deobfuscate_x(0)
 	targ_y = deobfuscate_y(0)
-	targ_z = deobfuscate_z(0)
 	internal_camera = new(loc)
 
 	var/new_icon_state
@@ -209,9 +207,8 @@
 	return list(
 		"data_target_x" = obfuscate_x(targ_x),
 		"data_target_y" = obfuscate_y(targ_y),
-		"data_target_z" = obfuscate_z(targ_z),
 		"data_dial_x" = dial_x,
-		"data_dial_y" = dial_y
+		"data_dial_y" = dial_y,
 	)
 
 /obj/structure/mortar/ui_act(action, params)
@@ -244,7 +241,7 @@
 		temp_targ_y = tgui_input_real_number(user, "Input the latitude of the target.")
 		temp_targ_z = tgui_input_real_number(user, "Input the height of the target.")
 
-	if(!can_fire_at(user, test_targ_x = deobfuscate_x(temp_targ_x), test_targ_y = deobfuscate_y(temp_targ_y), test_targ_z = deobfuscate_z(temp_targ_z)))
+	if(!can_fire_at(user, test_targ_x = deobfuscate_x(temp_targ_x), test_targ_y = deobfuscate_y(temp_targ_y)))
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] starts adjusting [src]'s firing angle and distance."),
@@ -264,7 +261,6 @@
 	SPAN_NOTICE("You finish adjusting [src]'s firing angle and distance to match the new coordinates."))
 	targ_x = deobfuscate_x(temp_targ_x)
 	targ_y = deobfuscate_y(temp_targ_y)
-	targ_z = deobfuscate_z(temp_targ_z)
 	var/offset_x_max = floor(abs((targ_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 20 tiles travelled
 	var/offset_y_max = floor(abs((targ_y) - y)/offset_per_turfs)
 	offset_x = rand(-offset_x_max, offset_x_max)
@@ -299,7 +295,7 @@
 	if(!aiming) // If lase went down before mortar has aimed, we cancel
 		return
 	var/obj/effect/overlay/temp/laser_target = linked_designator.laser
-	if(!can_fire_at(null, laser_target.x, laser_target.y, laser_target.z, 0, 0))
+	if(!can_fire_at(null, laser_target.x, laser_target.y, 0, 0))
 		aiming = FALSE
 		aimed = FALSE
 		return
@@ -363,7 +359,7 @@
 
 	if(istype(item, /obj/item/mortar_shell))
 		var/obj/item/mortar_shell/mortar_shell = item
-		var/turf/target_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, targ_z)
+		var/turf/aimed_turf = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, z)
 		if(lase_mode)
 			if(!linked_designator)
 				to_chat(user, SPAN_WARNING("The [src] is in laser targeting mode, but there is no laser designator linked!"))
@@ -374,7 +370,34 @@
 			if(aiming)
 				to_chat(user, SPAN_WARNING("The [src] is still calibrating!"))
 			else
-				target_turf = get_turf(linked_designator.laser)
+				aimed_turf = get_turf(linked_designator.laser)
+
+		var/x_coord = aimed_turf.x
+		var/y_coord = aimed_turf.y
+		var/z_coord = null
+		var/protected_by_pylon = FALSE
+		var/too_deap = FALSE
+		for(var/z in SSmapping.levels_by_trait(ZTRAIT_GROUND))
+			var/turf/turf = locate(x_coord, y_coord, z)
+			if(isnull(turf))
+				continue
+
+			if(protected_by_pylon(TURF_PROTECTION_MORTAR, turf)) //pylon and core protects when on any z level
+				protected_by_pylon = TRUE
+				break
+			if(istype(turf, /turf/open/space)) //we do not detonate in the open
+				continue
+			if(turf.turf_flags & TURF_HULL) //this makes us ignore the walls above caves, might cause issue if someone uses turf with this flag incorrectly like almayer hull being used for roofs
+				continue
+
+			var/area/area = get_area(turf)
+			if(istype(area) && CEILING_IS_PROTECTED(area.ceiling, CEILING_PROTECTION_TIER_2))
+				too_deap = TRUE
+				continue
+
+			z_coord = max(z, z_coord)
+
+		var/turf/target_turf = locate(x_coord,y_coord,z_coord)
 		var/area/target_area = get_area(target_turf)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You don't have the training to fire [src]."))
@@ -383,7 +406,7 @@
 			to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 			return
 		if(!ship_side)
-			if(targ_x == 0 && targ_y == 0 && targ_z == 0 && !lase_mode) //Mortar wasn't set
+			if(targ_x == 0 && targ_y == 0 && !lase_mode) //Mortar wasn't set
 				to_chat(user, SPAN_WARNING("[src] needs to be aimed first."))
 				return
 			if(!target_turf)
@@ -392,9 +415,11 @@
 			if(!istype(target_area))
 				to_chat(user, SPAN_WARNING("This area is out of bounds!"))
 				return
-			if(CEILING_IS_PROTECTED(target_area.ceiling, CEILING_PROTECTION_TIER_2) || protected_by_pylon(TURF_PROTECTION_MORTAR, target_turf))
+			if(too_deap)
 				to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
 				return
+			if(protected_by_pylon)
+				to_chat(user, SPAN_WARNING("You cannot hit the target due to biological protection."))
 			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_mortar_protection) && target_area.is_landing_zone)
 				to_chat(user, SPAN_WARNING("You cannot bomb the landing zone!"))
 				return
@@ -528,7 +553,7 @@
 	qdel(shell)
 	firing = FALSE
 
-/obj/structure/mortar/proc/can_fire_at(mob/user = null, test_targ_x = targ_x, test_targ_y = targ_y, test_targ_z = targ_z, test_dial_x, test_dial_y)
+/obj/structure/mortar/proc/can_fire_at(mob/user = null, test_targ_x = targ_x, test_targ_y = targ_y, test_dial_x, test_dial_y)
 	var/dialing = test_dial_x || test_dial_y
 	var/attempt_info
 	var/can_fire = TRUE
@@ -546,9 +571,6 @@
 		can_fire = FALSE
 	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) < min_range)
 		attempt_info = SPAN_WARNING("[user ? "You" : "The [src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is too close to [user ? "your" : "the"] mortar.")
-		can_fire = FALSE
-	if(!is_ground_level(test_targ_z))
-		attempt_info = SPAN_WARNING("[user ? "You" : "The [src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is outside of the area of operations.")
 		can_fire = FALSE
 	if(get_dist(src, locate(test_targ_x + test_dial_x, test_targ_y + test_dial_y, z)) > max_range)
 		attempt_info = SPAN_WARNING("[user ? "You" : "The [src]"] cannot [dialing ? "dial to" : "aim at"] this [lase_mode ? "target" : "coordinate"], it is too far from [user ? "your" : "the"] mortar.")

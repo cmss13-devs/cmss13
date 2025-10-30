@@ -316,7 +316,7 @@
 	if(!sterile)
 		if(!human.species || !(human.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
 			human.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
-			for(var/datum/reagent/generated/stim in human.reagents.reagent_list) // Cause fuck 'em stims, boah
+			for(var/datum/reagent/generated/stim in human.reagents.reagent_list) // Banish them stims
 				human.reagents.remove_reagent(stim.id, stim_drain, TRUE)
 
 	var/area/hug_area = get_area(src)

@@ -206,6 +206,10 @@ SUBSYSTEM_DEF(cmtv)
 /// If set to instant, we immediately switch to observe nothing. If set_showtime is set, the camera will stay on the new perspective for at least this long,
 /// unless they die or something.
 /datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective, instant_switch_away = FALSE, instant_switch_to = FALSE, set_showtime = FALSE)
+	if(temporarily_observing_turf)
+		log_debug("CMTV: Cannot change perspective, currently observing a turf.")
+		return
+
 	if(new_perspective == current_perspective)
 		log_debug("CMTV: New perspective same as the old perspective, skipping change.")
 		return

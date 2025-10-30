@@ -233,7 +233,7 @@
 				var/datum/automata_cell/C = new type(below)
 				var/datum/automata_cell/explosion/explosion = C
 				new_power -= (power_falloff * dir_falloff)
-				explosion.power = new_power
+				explosion.power = new_power * 0.8
 				explosion.power_falloff = new_falloff
 				explosion.falloff_shape = falloff_shape
 				explosion.explosion_cause_data = explosion_cause_data
@@ -253,7 +253,7 @@
 				var/datum/automata_cell/C = new type(above)
 				var/datum/automata_cell/explosion/explosion = C
 				new_power -= (power_falloff * dir_falloff)
-				explosion.power = new_power
+				explosion.power = new_power * 0.8
 				explosion.power_falloff = new_falloff
 				explosion.falloff_shape = falloff_shape
 				explosion.explosion_cause_data = explosion_cause_data

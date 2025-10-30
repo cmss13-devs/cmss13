@@ -225,6 +225,10 @@
 	return TRUE
 
 /turf/proc/explodable(severity, floor_destroying)
+	if(!floor_destroying)
+		return FALSE
+	if(severity < 50)
+		return FALSE
 	var/turf/turf_below = SSmapping.get_turf_below(src)
 	if(!turf_below) //so we do not make hole into space
 		return FALSE
@@ -237,8 +241,8 @@
 
 	if(is_mainship_level(z) && !SSticker?.mode?.is_in_endgame)
 		return FALSE
-	if(!floor_destroying)
-		return FALSE
+
+
 
 	return TRUE
 

@@ -635,7 +635,7 @@
 
 	if(!prey_found)
 		to_chat(hunter, SPAN_XENONOTICE("We fail to sense any prey on this level!"))
-		hunter.balloon_alert(hunter, "No prey found!")
+		hunter.balloon_alert(hunter, "no prey found!")
 
 	apply_cooldown()
 	return ..()

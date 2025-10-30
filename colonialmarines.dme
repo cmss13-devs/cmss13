@@ -383,6 +383,7 @@
 #include "code\datums\quadtree.dm"
 #include "code\datums\recipe.dm"
 #include "code\datums\research_upgrade_datum.dm"
+#include "code\datums\target_rail_manager.dm"
 #include "code\datums\shuttles.dm"
 #include "code\datums\soundOutput.dm"
 #include "code\datums\tacmap_viewer.dm"

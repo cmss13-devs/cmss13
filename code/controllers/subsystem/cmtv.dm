@@ -234,6 +234,9 @@ SUBSYSTEM_DEF(cmtv)
 		future_perspective = null
 		return
 
+	if(temporarily_observing_turf)
+		return
+
 	RegisterSignal(future_perspective_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH), PROC_REF(handle_reset_signal))
 	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_ENTERED_OBJ, PROC_REF(handle_reset_signal_immediate))
 	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(handle_z_change))
@@ -270,6 +273,9 @@ SUBSYSTEM_DEF(cmtv)
 /// Signal handler - it might be dull if a player wanders off to medical on the ship.
 /datum/controller/subsystem/cmtv/proc/handle_z_change(atom/movable/moving, old_z, new_z)
 	SIGNAL_HANDLER
+
+	if(isxeno(moving))
+		return
 
 	if(SSticker.mode?.is_in_endgame)
 		return

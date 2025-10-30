@@ -37329,17 +37329,23 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/navigation)
 "bNT" = (
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/suit/storage/marine/light/vest,
 /obj/structure/surface/rack,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/item/clothing/suit/storage/marine/light/vest{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/clothing/suit/storage/marine/light/vest{
+	pixel_y = 2;
+	pixel_x = 5
+	},
+/obj/item/clothing/suit/storage/marine/light/vest{
+	pixel_y = -5;
+	pixel_x = 5
+	},
+/obj/item/clothing/suit/storage/marine/light/vest{
+	pixel_x = -4;
+	pixel_y = -5
+	},
 /turf/open/floor/almayer/redfull,
 /area/almayer/medical/upper_medical)
 "bNU" = (
@@ -37483,12 +37489,23 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/upper_medical)
 "bOl" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 28
-	},
 /obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/marine/light/vest{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/clothing/suit/storage/marine/light/vest{
+	pixel_x = -4;
+	pixel_y = -5
+	},
+/obj/item/clothing/suit/storage/marine/light/vest{
+	pixel_y = 2;
+	pixel_x = 5
+	},
+/obj/item/clothing/suit/storage/marine/light/vest{
+	pixel_y = -5;
+	pixel_x = 5
+	},
 /turf/open/floor/almayer/redfull,
 /area/almayer/medical/upper_medical)
 "bOm" = (
@@ -89539,8 +89556,12 @@
 /area/almayer/hallways/upper/midship_hallway)
 "vZJ" = (
 /obj/structure/sign/safety/medical{
-	pixel_x = 8;
+	pixel_x = 1;
 	pixel_y = -26
+	},
+/obj/structure/sign/safety/reduction{
+	pixel_y = -26;
+	pixel_x = 15
 	},
 /turf/open/floor/almayer/green/southeast,
 /area/almayer/hallways/upper/fore_hallway)
@@ -92567,6 +92588,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "xgP" = (
+/obj/structure/sign/safety/reduction{
+	pixel_y = 28;
+	pixel_x = 8
+	},
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/upper_medical)
 "xgS" = (

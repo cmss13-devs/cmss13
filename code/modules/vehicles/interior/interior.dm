@@ -340,12 +340,13 @@
 	if((passengers_taken_slots == 0) && (revivable_dead_taken_slots == 0))
 		return // no one of interest inside
 
-	var/update = FALSE
+	var/count = 0
 
 	for(var/mob/living/L as anything in get_passengers())
 		if(L.stat == DEAD)
 			L.forceMove(drop_turf) // Drop the bodies on the floor
-			update = TRUE
+			count += 1
 
-	if(update)
+	if(count > 0)
+		exterior.visible_message(SPAN_NOTICE("Sudden jolt throws \the [count==1?"body":"bodies"] out of \the [src]"))
 		update_passenger_count()

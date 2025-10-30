@@ -171,6 +171,10 @@
 	/// Has a King hatchery
 	var/has_hatchery = FALSE
 
+	// Hive Abilities
+	// Abilities that all members of the Hive get
+	var/hive_abilities = list()
+
 /datum/hive_status/New()
 	hive_ui = new(src)
 	mark_ui = new(src)
@@ -1122,6 +1126,18 @@
 		partial_larva--
 		stored_larva++
 
+/// Used to give Hive Abilities to Xenos
+/datum/hive_status/proc/give_hive_abilities(mob/living/carbon/xenomorph/hive_member)
+	for(var/action_path in hive_abilities)
+		if(action_path in hive_member.actions)
+			return
+		// I hate this following code, but I've found no other way for hive_ability_check_conditions to be executed here than this jank add-then-remove method
+		give_action(hive_member, action_path)
+		var/datum/action/xeno_action/hive_ability = action_path
+		for(hive_ability in hive_member.actions)
+			if(!hive_ability.hive_ability_check_conditions())
+				remove_action(hive_member, action_path)
+
 /datum/hive_status/corrupted
 	name = FACTION_XENOMORPH_CORRUPTED
 	reporting_id = "corrupted"
@@ -1229,6 +1245,11 @@
 	tacmap_requires_queen_ovi = FALSE
 
 	need_round_end_check = TRUE
+
+	hive_abilities = list(
+		/datum/action/xeno_action/onclick/plant_weeds/hive_ability,
+		/datum/action/xeno_action/onclick/human_hunt_hive_ability,
+	)
 
 /datum/hive_status/forsaken/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
 	return FALSE

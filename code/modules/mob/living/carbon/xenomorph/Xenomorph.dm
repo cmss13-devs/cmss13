@@ -507,9 +507,12 @@
 		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 
 	// Only handle free slots if the xeno is not in tdome
-	if(hive && !should_block_game_interaction(src))
-		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
-		hive.used_slots[selected_caste]++
+	if(hive)
+		if(!should_block_game_interaction(src))
+			var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
+			hive.used_slots[selected_caste]++
+		if(!length(hive.hive_abilities == 0))
+			hive.give_hive_abilities(src)
 
 	//Statistics
 	var/area/current_area = get_area(src)

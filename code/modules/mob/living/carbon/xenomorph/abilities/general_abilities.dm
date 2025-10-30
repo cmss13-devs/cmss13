@@ -28,6 +28,18 @@
 	var/plant_on_semiweedable = FALSE
 	var/node_type = /obj/effect/alien/weeds/node
 
+/datum/action/xeno_action/onclick/plant_weeds/hive_ability
+	name = "Spread Weeds"
+	plasma_cost = 0 // To account for Xenos without Plasma
+	xeno_cooldown = 8 SECONDS // Compensation for the above
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
+/datum/action/xeno_action/onclick/plant_weeds/hive_ability/hive_ability_check_conditions()
+	if(isxeno_builder(owner))
+		return FALSE
+
+	return ..()
+
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting
 	name = "Rest"
@@ -562,3 +574,86 @@
 
 	seethroughComp.toggle_active()
 	apply_cooldown()
+
+/datum/action/xeno_action/onclick/human_hunt_hive_ability
+	name = "Hunt Hosts"
+	action_icon_state = "mark_hosts"
+	xeno_cooldown = 2 SECONDS
+
+/datum/action/xeno_action/onclick/human_hunt_hive_ability/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/hunter = owner
+
+	if(!action_cooldown_check() || !hunter.check_state())
+		return
+	var/prey_found = FALSE
+	var/list/found_prey_list = list()
+	var/closest_prey_distance = null
+	var/new_prey_distance = null
+	var/mob/living/carbon/human/closest_prey
+	// First, assemble list of valid (alive, not Pred) prey currently on same Z level as user
+	for(var/mob/living/carbon/human/avaliable_prey in GLOB.alive_human_list)
+		var/atom/prey_loc = avaliable_prey.loc
+		var/atom/hunter_loc = hunter.loc
+		// Not same Z level as user
+		if(!(prey_loc.z == hunter_loc.z))
+			continue
+		// No hunting Preds or Synths, since they don't matter to bioscan
+		if(isyautja(avaliable_prey) || issynth(avaliable_prey))
+			continue
+		var/area/prey_area = get_area(avaliable_prey)
+		// Not in an area that should matter
+		if(prey_area?.flags_area & AREA_AVOID_BIOSCAN)
+			continue
+		// Already in list (redundancy)
+		if(avaliable_prey == found_prey_list)
+			continue
+
+		// Find distance
+		new_prey_distance = get_dist(hunter, avaliable_prey)
+
+		// If closest logged is null that means none have been logged. Log this new distance as closest to be referance point
+		if(isnull(closest_prey_distance))
+			closest_prey_distance = new_prey_distance
+			closest_prey = avaliable_prey
+
+		// Add prey to list of found prey, the closest will be dug out later
+		found_prey_list.Add(avaliable_prey)
+
+		// Compare new distance with last closest. If new is lower than last closest, make it the new closest
+		if(new_prey_distance <= closest_prey_distance)
+			closest_prey_distance = new_prey_distance
+			closest_prey = avaliable_prey
+
+	for(var/mob/living/carbon/human/final_prey in found_prey_list)
+		// After every valid prey has been checked and a closest one established, fish them out from found prey list
+		if(final_prey != closest_prey)
+			continue
+		prey_found = TRUE
+		to_chat(hunter, SPAN_XENONOTICE("We sense prey [SPAN_XENOBOLDNOTICE("[get_dist(hunter, final_prey)] units [dir2text(Get_Compass_Dir(hunter, final_prey))] in [get_area_name(final_prey)]!")]"))
+		hunter.balloon_alert(hunter, "[get_dist(hunter, final_prey)] units [dir2text(Get_Compass_Dir(hunter, final_prey))], [get_area_name(final_prey)]")
+		break
+
+	if(!prey_found)
+		to_chat(hunter, SPAN_XENONOTICE("We fail to sense any prey on this level!"))
+		hunter.balloon_alert(hunter, "No prey found!")
+
+	apply_cooldown()
+	return ..()
+
+/*
+	var/prey_found = FALSE
+	var/area/hunting_area = get_area(hunter)
+	for(var/mob/living/carbon/human/closest_prey in hunting_area)
+		if(isyautja(closest_prey)) // No hunting Preds
+			continue
+		if(closest_prey.stat == DEAD || hunter.can_not_harm(closest_prey)) // No hunting the dead or allies
+			continue
+		prey_found = TRUE
+		to_chat(hunter, SPAN_XENONOTICE("We sense prey [SPAN_XENOBOLDNOTICE("[get_dist(hunter, closest_prey)] units [dir2text(Get_Compass_Dir(hunter, closest_prey))] in [get_area_name(closest_prey)]!")]"))
+		hunter.balloon_alert(hunter, "[get_dist(hunter, closest_prey)] units [dir2text(Get_Compass_Dir(hunter, closest_prey))], [get_area_name(closest_prey)]")
+		break
+
+	if(!prey_found)
+		to_chat(hunter, SPAN_XENONOTICE("We fail to sense any prey in this area!"))
+		hunter.balloon_alert(hunter, "No prey in area!")
+*/

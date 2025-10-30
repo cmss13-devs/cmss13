@@ -639,21 +639,3 @@
 
 	apply_cooldown()
 	return ..()
-
-/*
-	var/prey_found = FALSE
-	var/area/hunting_area = get_area(hunter)
-	for(var/mob/living/carbon/human/closest_prey in hunting_area)
-		if(isyautja(closest_prey)) // No hunting Preds
-			continue
-		if(closest_prey.stat == DEAD || hunter.can_not_harm(closest_prey)) // No hunting the dead or allies
-			continue
-		prey_found = TRUE
-		to_chat(hunter, SPAN_XENONOTICE("We sense prey [SPAN_XENOBOLDNOTICE("[get_dist(hunter, closest_prey)] units [dir2text(Get_Compass_Dir(hunter, closest_prey))] in [get_area_name(closest_prey)]!")]"))
-		hunter.balloon_alert(hunter, "[get_dist(hunter, closest_prey)] units [dir2text(Get_Compass_Dir(hunter, closest_prey))], [get_area_name(closest_prey)]")
-		break
-
-	if(!prey_found)
-		to_chat(hunter, SPAN_XENONOTICE("We fail to sense any prey in this area!"))
-		hunter.balloon_alert(hunter, "No prey in area!")
-*/

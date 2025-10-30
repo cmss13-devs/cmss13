@@ -20779,7 +20779,6 @@
 	pixel_y = 3;
 	pixel_x = -8
 	},
-/obj/structure/surface/table/almayer,
 /obj/item/stack/cable_coil{
 	pixel_y = 3;
 	pixel_x = -8
@@ -34122,14 +34121,6 @@
 	layer = 3.3
 	},
 /obj/structure/machinery/power/apc/almayer/north,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
 /obj/structure/machinery/light/red{
 	dir = 8;
 	light_color = "#BB3F3F"
@@ -37201,9 +37192,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/almayer/cargo_arrow/west{
-	dir = 1
-	},
+/turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/medical/medical_science)
 "bNy" = (
 /obj/effect/decal/warning_stripes{
@@ -37213,9 +37202,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/almayer/cargo_arrow/west{
-	dir = 1
-	},
+/turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/medical/medical_science)
 "bNz" = (
 /obj/structure/surface/table/almayer,
@@ -38219,9 +38206,7 @@
 /area/almayer/medical/medical_science)
 "bPN" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/cargo_arrow/west{
-	dir = 1
-	},
+/turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/medical/medical_science)
 "bPO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -38240,9 +38225,7 @@
 	pixel_x = 32;
 	pixel_y = -5
 	},
-/turf/open/floor/almayer/cargo_arrow/west{
-	dir = 1
-	},
+/turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/medical/medical_science)
 "bPQ" = (
 /obj/effect/decal/cleanable/dirt,

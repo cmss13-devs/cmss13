@@ -567,16 +567,12 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/x_coord = deobfuscate_x(x_supply)
 	var/y_coord = deobfuscate_y(y_supply)
 	var/z_coord = null
-	var/protected_by_pylon = FALSE
 	var/too_deap = FALSE
 	for(var/z in SSmapping.levels_by_trait(ZTRAIT_GROUND))
 		var/turf/turf = locate(x_coord, y_coord, z)
 		if(isnull(turf))
 			continue
 
-		if(protected_by_pylon(TURF_PROTECTION_MORTAR, turf)) //pylon and core protects when on any z level
-			protected_by_pylon = TRUE
-			break
 		if(istype(turf, /turf/open_space)) //we do not detonate in the open
 			continue
 		if(turf.turf_flags & TURF_HULL) //this makes us ignore the walls above caves, might cause issue if someone uses turf with this flag incorrectly like almayer hull being used for roofs
@@ -598,7 +594,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Error, invalid coordinates.")]")
 		return
 
-	var/area/A = get_area(T)
 	if(too_deap)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone is underground. The supply drop cannot reach here.")]")
 		return

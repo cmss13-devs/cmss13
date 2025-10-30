@@ -234,6 +234,8 @@
 		return FALSE
 	if((turf_below.turf_flags & TURF_HULL) && turf_below.density) //so we do not make hole into unbreachable wall on bottom layer
 		return FALSE
+	if(is_mainship_level(z) && SSticker?.mode?.is_in_endgame) // the ship is made out of tilet paper now
+		return TRUE
 	if(get_pylon_protection_level() >= TURF_PROTECTION_CORE || turf_below.get_pylon_protection_level() >= TURF_PROTECTION_CORE)
 		return FALSE
 	if(turf_flags & TURF_HULL)

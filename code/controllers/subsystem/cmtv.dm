@@ -22,6 +22,12 @@ SUBSYSTEM_DEF(cmtv)
 	/// to ensure they can cancel, if they want to.
 	var/datum/weakref/future_perspective
 
+	/// The time that we should switch to our new perspective
+	var/switch_at
+
+	/// How long our next contestant will be shown for
+	var/next_show_time
+
 	/// The cached list of priority groups for observing. This is
 	/// used so we can ensure we're only switching perspective
 	/// if there is someone more interesting to watch instead.
@@ -36,6 +42,9 @@ SUBSYSTEM_DEF(cmtv)
 
 	/// While we're currently checking out a different turf
 	var/temporarily_observing_turf = FALSE
+
+	/// Who we should check out when we're finished observing turfs
+	var/to_switch_to
 
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
@@ -62,6 +71,17 @@ SUBSYSTEM_DEF(cmtv)
 	priority_list = get_active_priority_player_list()
 
 	if(temporarily_observing_turf)
+		if(COOLDOWN_FINISHED(src, temporarily_observing_turf))
+			end_spectate_event()
+			temporarily_observing_turf = FALSE
+
+		return
+
+	if(switch_at && COOLDOWN_FINISHED(src, switch_at))
+		do_change_observed_mob()
+
+		switch_at = null
+		next_show_time = null
 		return
 
 	if(is_ineligible(current_perspective) && !future_perspective)
@@ -220,9 +240,11 @@ SUBSYSTEM_DEF(cmtv)
 	to_chat(new_perspective, boxed_message("[SPAN_BIGNOTICE("You will be observed in 10 seconds.")]\n\n [SPAN_NOTICE("Your perspective will be shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to cancel this, press <a href='byond://?src=\ref[src];cancel_cmtv=1'>here</a>.")]"))
 
 	future_perspective = WEAKREF(new_perspective)
-	addtimer(CALLBACK(src, PROC_REF(do_change_observed_mob), set_showtime), 10 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 
-/datum/controller/subsystem/cmtv/proc/do_change_observed_mob(set_showtime = FALSE)
+	COOLDOWN_START(src, switch_at, 10 SECONDS)
+	next_show_time = set_showtime
+
+/datum/controller/subsystem/cmtv/proc/do_change_observed_mob()
 	if(!istype(future_perspective))
 		log_debug("CMTV: Perspective changed while we were waiting, aborting.")
 		future_perspective = null
@@ -250,8 +272,8 @@ SUBSYSTEM_DEF(cmtv)
 
 	camera_mob.sight = current_perspective.sight
 	camera_mob.do_observe(current_perspective)
-	if(set_showtime)
-		COOLDOWN_START(src, minimum_screentime, set_showtime)
+	if(next_show_time)
+		COOLDOWN_START(src, minimum_screentime, next_show_time)
 
 	future_perspective = null
 
@@ -320,11 +342,17 @@ SUBSYSTEM_DEF(cmtv)
 		addtimer(CALLBACK(src, PROC_REF(spectate_event), event, where_to_look, how_long_for, zoom_out), when_start)
 		return
 
-	temporarily_observing_turf = TRUE
+	temporarily_observing_turf = how_long_for
+	to_switch_to = null
 
-	var/to_switch_to = null
 	if(minimum_screentime && world.time + how_long_for < minimum_screentime)
 		to_switch_to = current_perspective
+
+	if(future_perspective)
+		to_switch_to = future_perspective
+
+	if(to_switch_to)
+		temporarily_observing_turf -= 10 SECONDS
 
 	if(current_perspective)
 		terminate_current_perspective(ticker_text = null)
@@ -340,9 +368,7 @@ SUBSYSTEM_DEF(cmtv)
 	if(zoom_out)
 		camera_operator.view = "32x24"
 
-	addtimer(CALLBACK(src, PROC_REF(end_spectate_event), to_switch_to), to_switch_to ? how_long_for : how_long_for - 10 SECONDS)
-
-/datum/controller/subsystem/cmtv/proc/end_spectate_event(mob/to_switch_to)
+/datum/controller/subsystem/cmtv/proc/end_spectate_event()
 	camera_mob.hud_used.plane_masters["[HUD_PLANE]"].alpha = 255
 
 	temporarily_observing_turf = FALSE

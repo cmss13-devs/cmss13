@@ -1,0 +1,4 @@
+author: "Lagomorphica"
+delete-after: True
+changes:
+  - bugfix: "peridaxon autoinjector no longer overdoses you"

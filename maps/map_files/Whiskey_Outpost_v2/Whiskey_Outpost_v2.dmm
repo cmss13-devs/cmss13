@@ -2337,6 +2337,14 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/surface/rack,
+/obj/item/mortar_shell/frag,
+/obj/item/mortar_shell/frag,
+/obj/item/mortar_shell/frag,
+/obj/item/mortar_shell/frag,
+/obj/item/mortar_shell/frag,
+/obj/item/mortar_shell/frag,
+/obj/item/mortar_shell/frag,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/mortar_pit)
 "iN" = (
@@ -3715,7 +3723,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/whiskey_outpost)
 "oO" = (
-/obj/structure/largecrate/supply/explosives/mortar_incend,
+/obj/structure/largecrate/supply/explosives/mortar_frag,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/caverns)
 "oP" = (
@@ -3923,6 +3931,9 @@
 /area/whiskey_outpost/outside/north/platform)
 "pR" = (
 /obj/structure/surface/rack,
+/obj/item/mortar_shell/incendiary,
+/obj/item/mortar_shell/incendiary,
+/obj/item/mortar_shell/incendiary,
 /obj/item/mortar_shell/incendiary,
 /obj/item/mortar_shell/incendiary,
 /obj/item/mortar_shell/incendiary,

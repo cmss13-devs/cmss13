@@ -175,7 +175,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/research/secret/testing)
 "aau" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -7580,7 +7580,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/recreation/highsec/n)
 "aBk" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/nw)
 "aBm" = (
@@ -9829,7 +9829,7 @@
 /turf/open/floor/wood,
 /area/prison/quarters/research)
 "aJZ" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/prison/maintenance/staff_research)
 "aKa" = (
@@ -11405,7 +11405,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/cleaning)
 "aQv" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison,
 /area/prison/cleaning)
 "aQw" = (
@@ -13711,7 +13711,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/cellblock/lowsec/ne)
 "aZy" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/sterile_white,
 /area/prison/hallway/staff)
 "aZz" = (
@@ -14346,7 +14346,7 @@
 /turf/open/floor/prison/darkred2/northeast,
 /area/prison/security/checkpoint/vip)
 "bbR" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison,
 /area/prison/storage/vip)
 "bbS" = (
@@ -20804,7 +20804,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/hangar_barracks)
 "bCQ" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/prison/maintenance/hangar_barracks)
 "bCR" = (
@@ -23892,7 +23892,7 @@
 /turf/open/floor/prison/darkred2/east,
 /area/prison/security/checkpoint/medsec)
 "bPC" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2/east,
 /area/prison/storage/medsec)
 "bPD" = (
@@ -27881,7 +27881,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/prison/engineering)
 "cfx" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/prison/engineering)
 "cfy" = (
@@ -29742,11 +29742,11 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/cellblock/highsec/south/south)
 "cmY" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/prison/disposal)
 "cmZ" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/prison/disposal)
 "cna" = (
@@ -30571,7 +30571,7 @@
 /turf/open/floor/prison/yellow/north,
 /area/prison/cellblock/mediumsec/west)
 "cqx" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/closet/walllocker/emerglocker/west,
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -33287,7 +33287,7 @@
 /turf/open/floor/prison/red/east,
 /area/prison/cellblock/highsec/south/north)
 "ePO" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/prison/maintenance/staff_research)
 "eRq" = (
@@ -34609,7 +34609,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "jNC" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/prison/storage/medsec)
 "jOj" = (
@@ -36423,7 +36423,7 @@
 /turf/open/floor/prison/bright_clean_marked,
 /area/prison/telecomms)
 "rLO" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/sw)
 "rMk" = (
@@ -36750,7 +36750,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/prison/cellblock/highsec/north/south)
 "toL" = (
-/obj/structure/reagent_dispensers/fueltank/gas/methane,
+/obj/structure/reagent_dispensers/tank/fuel/gas/methane,
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/nw)
 "tpn" = (

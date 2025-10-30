@@ -1186,6 +1186,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	inserted_visors = list(new /obj/item/device/helmet_visor/po_visor)
 	max_inserted_visors = 1
 
+/obj/item/clothing/head/helmet/marine/pilot/novisor //For vendors that give sepreate visor options
+	inserted_visors = list()
+
 /obj/item/clothing/head/helmet/marine/pilot/tex
 	name = "\improper Tex's MK30 tactical helmet"
 	desc = "The MK30 tactical helmet has an eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."

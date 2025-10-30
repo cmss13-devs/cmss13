@@ -40,11 +40,11 @@ SUBSYSTEM_DEF(cmtv)
 	/// based on DCS
 	COOLDOWN_DECLARE(minimum_screentime)
 
-	/// While we're currently checking out a different turf
+	/// While we're currently checking out a different turf, the time remaining till we switch back
 	var/temporarily_observing_turf = FALSE
 
-	/// Who we should check out when we're finished observing turfs
-	var/to_switch_to
+	/// Who we should check out when we're finished observing turfs. Can be null, or a hardref to a mob
+	var/datum/weakref/to_switch_to
 
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
@@ -350,7 +350,7 @@ SUBSYSTEM_DEF(cmtv)
 	to_switch_to = null
 
 	if(minimum_screentime && world.time + how_long_for < minimum_screentime)
-		to_switch_to = current_perspective
+		to_switch_to = WEAKREF(current_perspective)
 
 	if(future_perspective)
 		to_switch_to = future_perspective
@@ -379,8 +379,9 @@ SUBSYSTEM_DEF(cmtv)
 
 	camera_operator.view = "20x15"
 
-	if(to_switch_to)
-		change_observed_mob(to_switch_to, instant_switch_to = TRUE)
+	var/mob/to_switch_mob = to_switch_to?.resolve()
+	if(to_switch_mob)
+		change_observed_mob(to_switch_mob, instant_switch_to = TRUE)
 		return
 
 	reset_perspective("Turf spectation ended.")

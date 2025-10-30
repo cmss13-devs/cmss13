@@ -225,10 +225,6 @@ GLOBAL_LIST_INIT(admin_verbs_debug_advanced, list(
 	/client/proc/SDQL2_query,
 ))
 
-GLOBAL_LIST_INIT(clan_verbs, list(
-	/client/proc/usr_create_new_clan
-))
-
 GLOBAL_LIST_INIT(debug_verbs, list(
 	/client/proc/Cell,
 	/client/proc/cmd_assume_direct_control,
@@ -351,8 +347,6 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 		add_verb(src, GLOB.admin_verbs_spawn)
 	if(CLIENT_HAS_RIGHTS(src, R_STEALTH))
 		add_verb(src, GLOB.admin_verbs_stealth)
-	if(check_whitelist_status(WHITELIST_YAUTJA_LEADER))
-		add_verb(src, GLOB.clan_verbs)
 
 /client/proc/remove_admin_verbs()
 	remove_verb(src, list(

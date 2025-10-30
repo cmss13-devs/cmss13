@@ -57,6 +57,18 @@ const ViewClans = () => {
 
   return (
     <Section>
+      {!!user_is_superadmin && (
+        <Section>
+          <Button.Confirm
+            bold
+            width="auto"
+            disabled={!user_is_superadmin}
+            onClick={() => act('create_new_clan')}
+          >
+            New Clan
+          </Button.Confirm>
+        </Section>
+      )}
       <Dropdown
         width="100%"
         menuWidth="200px"

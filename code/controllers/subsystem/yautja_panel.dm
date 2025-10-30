@@ -340,8 +340,7 @@ SUBSYSTEM_DEF(yautja_panel)
 				to_chat(user, SPAN_WARNING("You are not authorized to do this."))
 				return FALSE
 
-			var/player_name = target_yautja.player_id
-			var/typeout = player_name
+			var/typeout = target_ckey
 			if(!typeout)
 				typeout = "null"
 
@@ -349,10 +348,11 @@ SUBSYSTEM_DEF(yautja_panel)
 
 
 			if(!input || input != typeout)
+				to_chat(user, "You have decided not to delete [typeout].")
 				return FALSE
 
-			message_admins("[key_name_admin(user)] has purged [player_name]'s clan profile.")
-			to_chat(user, SPAN_NOTICE("You have purged [player_name]'s clan profile."))
+			message_admins("[key_name_admin(user)] has purged [typeout]'s clan profile.")
+			to_chat(user, SPAN_NOTICE("You have purged [typeout]'s clan profile."))
 
 			target_yautja.delete()
 
@@ -360,12 +360,26 @@ SUBSYSTEM_DEF(yautja_panel)
 				target_player.owning_client.clan_info = null
 			forbid_yautja_save = TRUE
 
+		if("create_new_clan")
+			if(!verify_superadmin(user))
+				to_chat(user, SPAN_WARNING("You are not authorized to do this."))
+				return FALSE
+
+			var/new_clan_name = tgui_input_text(user, "Please input the name of the clan to proceed. (Include 'Clan' as a prefix)", "New Clan")
+			if(!new_clan_name)
+				to_chat(user, SPAN_WARNING("No clan name detected."))
+				return FALSE
+
+			create_new_clan(new_clan_name)
+			message_admins("[key_name_admin(user)] has made a new Yautja clan, [new_clan_name].")
+			to_chat(user, SPAN_NOTICE("You have created a new clan, [new_clan_name]."))
+
 		if("delete_clan")
 			if(!verify_superadmin(user))
 				to_chat(user, SPAN_WARNING("You are not authorized to do this."))
 				return FALSE
 
-			var/input = input(user, "Please input the name of the clan to proceed.", "Delete Clan") as text|null
+			var/input = tgui_input_text(user, "Please input the name of the clan to proceed.", "Delete Clan")
 			if(input != target_clan.name)
 				to_chat(user, "You have decided not to delete [target_clan.name].")
 				return FALSE
@@ -533,3 +547,8 @@ SUBSYSTEM_DEF(yautja_panel)
 		return TRUE
 	return FALSE
 
+/datum/controller/subsystem/yautja_panel/proc/create_new_clan(clanname)
+	var/datum/entity/clan/C = DB_ENTITY(/datum/entity/clan)
+	C.name = clanname
+	C.description = "This is a clan."
+	C.save()

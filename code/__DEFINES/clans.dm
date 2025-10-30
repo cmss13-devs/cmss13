@@ -52,25 +52,6 @@
 #define CLAN_HREF "clan_href"
 #define CLAN_TARGET_HREF "clan_target_href"
 
-#define CLAN_ACTION "clan_action"
-
-/// Set name of clan
-#define CLAN_ACTION_CLAN_RENAME "rename"
-/// Set description of clan
-#define CLAN_ACTION_CLAN_SETDESC "setdesc"
-/// Set honor of clan
-#define CLAN_ACTION_CLAN_SETHONOR "sethonor"
-
-#define CLAN_ACTION_CLAN_DELETE "delete"
-#define CLAN_ACTION_CLAN_SETCOLOR "setcolor"
-
-/// Set a player's clan
-#define CLAN_ACTION_PLAYER_MOVECLAN "moveclan"
-/// Set a player's rank. Resets when moved from clan to Young Blood
-#define CLAN_ACTION_PLAYER_MODIFYRANK "modifyrank"
-
-#define CLAN_ACTION_PLAYER_PURGE "purge"
-
 #define GET_CLAN(clan_id) DB_ENTITY(/datum/entity/clan, clan_id)
 #define GET_CLAN_PLAYER(player_id) DB_EKEY(/datum/entity/clan_player, text2num(player_id))
 
@@ -78,7 +59,6 @@
 			clan_id = null,\
 			clan_name = CLAN_NAME_CLANLESS,\
 			clan_description = "This is a list of players without a clan",\
-			clan_honor = null,\
 			clan_keys = list(),\
 			\
 			player_delete_clan = FALSE,\

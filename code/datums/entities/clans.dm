@@ -4,7 +4,6 @@
 	var/permissions
 	var/clan_id
 
-	var/honor
 	var/player_name
 	var/clan_ancillary
 
@@ -12,7 +11,6 @@
 	var/name
 	var/description
 
-	var/honor
 	var/color
 
 BSQL_PROTECT_DATUM(/datum/entity/clan_player)
@@ -24,7 +22,6 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 	field_types = list(
 		"name" = DB_FIELDTYPE_STRING_MEDIUM,
 		"description" = DB_FIELDTYPE_STRING_MAX,
-		"honor" = DB_FIELDTYPE_BIGINT,
 		"color" = DB_FIELDTYPE_STRING_SMALL,
 	)
 
@@ -48,7 +45,6 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 	key_field = "player_id"
 
 /datum/entity_meta/clan_player/on_insert(datum/entity/clan_player/player)
-	player.honor = 0
 	player.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_UNBLOODED]
 	player.clan_ancillary = CLAN_ANCILLARY_NONE
 	player.permissions = GLOB.clan_ranks[CLAN_RANK_UNBLOODED].permissions

@@ -233,9 +233,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				message_admins("[key_name_admin(src)] attempted to do a href exploit. (Inputted command: [html_encode(proc_to_call)])")
 			return // Don't call hsrc in this case since it's ourselves
 
-	if(href_list[CLAN_ACTION])
-		clan_topic(href, href_list)
-
 	return ..() //redirect to hsrc.Topic()
 
 /client/proc/handle_spam_prevention(message, mute_type)

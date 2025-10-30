@@ -522,6 +522,6 @@
 		found.on_removal()
 		qdel(found)
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our enhanced shield end!"))
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 
 	xeno.overlay_shields()

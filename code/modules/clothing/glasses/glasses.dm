@@ -167,7 +167,7 @@
 	icon_state = "purple"
 	item_state = "glasses"
 	deactive_state = "purple_off"
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/hudgoggles)
 	toggleable = TRUE
 	flags_inventory = COVEREYES
 	req_skill = SKILL_RESEARCH

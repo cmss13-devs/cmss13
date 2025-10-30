@@ -594,6 +594,10 @@
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
 
+/obj/structure/prop/hybrisa/vehicles/Mining_Crawlers/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
+
 /obj/structure/prop/hybrisa/vehicles/Mining_Crawlers/Fuel
 	icon = 'icons/obj/structures/props/vehicles/mining_crawler_fuel.dmi'
 	icon_state = "mining_crawler_fuel"
@@ -854,6 +858,10 @@
 	icon_state = "souto_man_prop"
 	density = TRUE
 	health = 100
+
+/obj/structure/prop/hybrisa/supermart/souto_man_prop/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
 
 /obj/structure/prop/hybrisa/supermart/souto_rack
 	name = "Souto cans rack"

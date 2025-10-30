@@ -1063,7 +1063,7 @@
 	icon_state = "igniter0";
 	name = "floor panel"
 	},
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "he" = (
@@ -2964,7 +2964,7 @@
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "zo" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/item/ammo_magazine/smg/p90/twe{
+/obj/item/ammo_magazine/smg/p90/ap{
 	pixel_x = 2;
 	pixel_y = 5
 	},
@@ -3295,7 +3295,7 @@
 	icon_state = "igniter0";
 	name = "floor panel"
 	},
-/obj/structure/reagent_dispensers/fueltank/spacecraft{
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft{
 	layer = 3.1
 	},
 /turf/open/floor/shiva/radiator_tile2,
@@ -4511,7 +4511,7 @@
 	pixel_x = 4;
 	pixel_y = -9
 	},
-/obj/item/ammo_magazine/smg/p90/twe{
+/obj/item/ammo_magazine/smg/p90/ap{
 	pixel_x = 2;
 	pixel_y = 5
 	},

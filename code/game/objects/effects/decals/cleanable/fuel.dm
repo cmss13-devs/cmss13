@@ -1,6 +1,6 @@
 /obj/effect/decal/cleanable/liquid_fuel
 	//Liquid fuel is used for things that used to rely on volatile fuels or phoron being contained to a couple tiles.
-	name = "fuel residue"	
+	name = "fuel residue"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "fuel"
 	layer = ABOVE_WEED_LAYER
@@ -35,6 +35,12 @@
 	// Ignition because fire already exists
 	if(locate(/obj/flamer_fire) in cleanable_turf)
 		INVOKE_NEXT_TICK(src, PROC_REF(ignite))
+		return
+	for(var/obj/item/thing in cleanable_turf)
+		if(thing.heat_source)
+			INVOKE_NEXT_TICK(src, PROC_REF(ignite))
+			return
+	RegisterSignal(cleanable_turf, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
 
 /obj/effect/decal/cleanable/liquid_fuel/Destroy()
 	if(datum_flags & DF_ISPROCESSING)
@@ -49,6 +55,15 @@
 	amount -= evaporate_amount
 	if(amount < evaporate_amount)
 		fade_and_disappear()
+
+/obj/effect/decal/cleanable/liquid_fuel/proc/on_turf_entered(turf/source, atom/movable/enterer)
+	if(!istype(enterer, /obj/item))
+		return
+
+	var/obj/item/entered_thing = enterer
+	if(entered_thing.heat_source)
+		INVOKE_NEXT_TICK(src, PROC_REF(ignite))
+		UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
 
 /obj/effect/decal/cleanable/liquid_fuel/proc/spread()
 	//Allows liquid fuels to sometimes flow into other tiles.

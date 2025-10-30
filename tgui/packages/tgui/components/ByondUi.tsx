@@ -8,10 +8,18 @@ type BoundingBox = {
   size: number[];
 };
 
-function byondFmtDuple(size_array: number[]): string {
-  const x_size = size_array[0];
-  const y_size = size_array[1];
-  return `${x_size}x${y_size}`;
+function joinComma(num1: number, num2: number): string {
+  return `${num1},${num2}`;
+}
+
+function byondFmtPos(pos: number[]): string {
+  return joinComma(pos[0], pos[1]);
+}
+
+function byondFmtSize(size: number[]): string {
+  const xSize = size[0];
+  const ySize = size[1];
+  return `${xSize}x${ySize}`;
 }
 
 type ZoomDrawingMode =
@@ -59,15 +67,13 @@ function getBoundingBox(element: HTMLDivElement): BoundingBox {
   const pixelRatio = window.devicePixelRatio ?? 1;
   const rect = element.getBoundingClientRect();
 
-  const to_return = {
+  return {
     pos: [rect.left * pixelRatio, rect.top * pixelRatio],
     size: [
       (rect.right - rect.left) * pixelRatio,
       (rect.bottom - rect.top) * pixelRatio,
     ],
   };
-
-  return to_return;
 }
 
 type SampleWinsetParams = Partial<{
@@ -93,21 +99,31 @@ function callWinset(
 ) {
   byondUiStack[index] = id;
 
-  const element = container.current;
-  if (!element) {
-    return;
-  }
-  const box = getBoundingBox(element);
+  Byond.winget(id, '*').then((res: Record<string, any>) => {
+    console.log('winget');
+    console.log(res);
 
-  // Calculate appropriate zoom
-  const zoom = getZoomFactor(zoomDrawingMode, box);
+    const element = container.current;
+    if (!element) {
+      return;
+    }
+    const box = getBoundingBox(element);
 
-  let params = { ...constParams };
-  params['pos'] = byondFmtDuple(box.pos);
-  params['size'] = byondFmtDuple(box.size);
-  params['zoom'] = zoom;
+    // Calculate appropriate zoom
+    const zoom = getZoomFactor(zoomDrawingMode, box);
 
-  Byond.winset(id, { ...params, style: Byond.styleSheet });
+    let params = { ...constParams };
+    params['pos'] = byondFmtPos(box.pos);
+    params['size'] = byondFmtSize(box.size);
+    params['zoom'] = zoom;
+    params['background-color'] = '#00FF00';
+    params['anchor1'] = '33,33';
+
+    console.log('winset');
+    console.log(params);
+
+    Byond.winset(id, { ...params, style: Byond.styleSheet });
+  });
 }
 
 function createByondUiElement(elementId: string | undefined): ByondUiElement {
@@ -121,7 +137,7 @@ function createByondUiElement(elementId: string | undefined): ByondUiElement {
   return {
     render: (
       containerRef: React.RefObject<HTMLDivElement>,
-      constParams: SampleWinsetParams,
+      constParams: Record<string, any>,
       zoomDrawingMode: ZoomDrawingMode,
     ) => {
       callWinset(index, id, constParams, zoomDrawingMode, containerRef);
@@ -200,13 +216,11 @@ export function ByondUi(props: ByondUiProps) {
   function updateRender() {
     const constParams = {
       parent: Byond.windowId,
-      anchor1: byondFmtDuple([5, 0]),
-      anchor2: byondFmtDuple([95, 100]),
       ...winsetParams,
     };
     byondUiElement.current.render(
       containerRef,
-      constParams,
+      { ...constParams },
       zoomDrawingMode ? zoomDrawingMode : { type: 'NativeScaling' },
     );
   }

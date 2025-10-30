@@ -34120,7 +34120,6 @@
 	icon_state = "S";
 	layer = 3.3
 	},
-/obj/structure/machinery/power/apc/almayer/north,
 /obj/structure/machinery/light/red{
 	dir = 8;
 	light_color = "#BB3F3F"

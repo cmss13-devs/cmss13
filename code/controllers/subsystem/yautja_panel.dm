@@ -345,14 +345,14 @@ SUBSYSTEM_DEF(yautja_panel)
 			if(!typeout)
 				typeout = "null"
 
-			var/input = tgui_input_text(src, "Are you sure you want to purge this person? Type '[typeout]' to purge", "Confirm Purge")
+			var/input = tgui_input_text(user, "Are you sure you want to purge this person? Type '[typeout]' to purge", "Confirm Purge")
 
 
 			if(!input || input != typeout)
 				return FALSE
 
-			message_admins("[key_name_admin(src)] has purged [player_name]'s clan profile.")
-			to_chat(src, SPAN_NOTICE("You have purged [player_name]'s clan profile."))
+			message_admins("[key_name_admin(user)] has purged [player_name]'s clan profile.")
+			to_chat(user, SPAN_NOTICE("You have purged [player_name]'s clan profile."))
 
 			target_yautja.delete()
 

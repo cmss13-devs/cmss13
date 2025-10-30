@@ -162,7 +162,7 @@
 #define PROPERTY_NEUROINHIBITING "neuroinhibiting"
 #define PROPERTY_ALCOHOLIC "alcoholic"
 #define PROPERTY_HALLUCINOGENIC "hallucinogenic"
-#define PROPERTY_ANTISPASMOTIC "antispasmotic"
+#define PROPERTY_ANTISPASMODIC "antispasmodic"
 #define PROPERTY_HYPERTHERMIC "hyperthermic"
 #define PROPERTY_HYPOTHERMIC "hypothermic"
 #define PROPERTY_ATRICHOGENIC "atrichogenic"

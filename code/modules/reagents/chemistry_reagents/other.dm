@@ -610,7 +610,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_NEUROTOXIC = 2, PROPERTY_ANTISPASMOTIC = 1)
+	properties = list(PROPERTY_NEUROTOXIC = 2, PROPERTY_ANTISPASMODIC = 1)
 
 //*****************************************************************************************************/
 

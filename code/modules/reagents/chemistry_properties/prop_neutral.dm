@@ -234,26 +234,26 @@
 	M.apply_damage(0.5 * potency * delta_time, BRAIN)
 	M.apply_effect(20, PARALYZE)
 
-/datum/chem_property/neutral/antispasmotic
-	name = PROPERTY_ANTISPASMOTIC
+/datum/chem_property/neutral/antispasmodic
+	name = PROPERTY_ANTISPASMODIC
 	code = "RLX"
 	description = "Relaxes smooth muscles and treats muscle spasms by blocking the neurotransmitter, acetylcholine. High concentrations can cause respiratory failure and cardiac arrest."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
-/datum/chem_property/neutral/antispasmotic/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/antispasmodic/process(mob/living/M, potency = 1, delta_time)
 	M.reagent_move_delay_modifier += potency
 	if(prob(5 * delta_time))
 		M.emote("yawn")
 	M.recalculate_move_delay = TRUE
 
-/datum/chem_property/neutral/antispasmotic/process_overdose(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/antispasmodic/process_overdose(mob/living/M, potency = 1, delta_time)
 	//heart beats slower
 	M.reagent_move_delay_modifier += POTENCY_MULTIPLIER_MEDIUM * potency
 	if(prob(10))
 		to_chat(M, SPAN_WARNING("You feel incredibly weak!"))
 
-/datum/chem_property/neutral/antispasmotic/process_critical(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/antispasmodic/process_critical(mob/living/M, potency = 1, delta_time)
 	//heart stops beating, lungs stop working
 	if(prob(7.5 * potency * delta_time))
 		M.apply_effect(potency, PARALYZE)

@@ -254,7 +254,7 @@
 /datum/chem_property/negative/hemorrhaging
 	name = PROPERTY_HEMORRHAGING
 	code = "HMR"
-	description = "Ruptures endothelial cells making up bloodvessels, causing blood to escape from the circulatory system. Persistent mutagen to plants."
+	description = "Ruptures endothelial cells making up blood vessels, causing blood to escape from the circulatory system. Persistent mutagen to plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 	cost_penalty = FALSE

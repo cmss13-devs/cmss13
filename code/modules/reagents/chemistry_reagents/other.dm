@@ -207,7 +207,7 @@
 /datum/reagent/sleen
 	name = "Sleen"
 	id = "sleen"
-	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for it's distinct red hue. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
+	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for its distinct red hue. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
 	reagent_state = LIQUID
 	color = "#C21D24" // rgb: 194, 29, 36
 	overdose = MED_REAGENTS_OVERDOSE

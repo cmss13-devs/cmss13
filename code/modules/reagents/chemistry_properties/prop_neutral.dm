@@ -338,7 +338,7 @@
 /datum/chem_property/neutral/atrichogenic
 	name = PROPERTY_ATRICHOGENIC
 	code = "BLD"
-	description = "Damages the hair follicles in the skin to disrupt the hair growth cycle, causing extreme alopecia, also refered to as baldness."
+	description = "Damages the hair follicles in the skin to disrupt the hair growth cycle, causing extreme alopecia, also referred to as baldness."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
@@ -362,7 +362,7 @@
 /datum/chem_property/neutral/trichogenic
 	name = PROPERTY_TRICHOGENIC
 	code = "FLF"
-	description = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth. Found to increase yeilds in plants."
+	description = "Accelerates cell division in the hair follicles resulting in random and excessive hair growth. Found to increase yields in plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
@@ -503,7 +503,7 @@
 /datum/chem_property/neutral/antihallucinogenic
 	name = PROPERTY_ANTIHALLUCINOGENIC
 	code = "AHL"
-	description = "Stabilizes perseptive abnormalities such as hallucinations caused by mindbreaker toxin."
+	description = "Stabilizes perceptive abnormalities such as hallucinations caused by mindbreaker toxin."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1

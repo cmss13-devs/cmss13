@@ -289,7 +289,7 @@
 /datum/chem_property/positive/hepatopeutic
 	name = PROPERTY_HEPATOPEUTIC
 	code = "HPP"
-	description = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions."
+	description = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions.  Forces some negative mutations in plants."
 	rarity = PROPERTY_UNCOMMON
 	value = 1
 

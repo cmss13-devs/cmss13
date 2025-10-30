@@ -436,7 +436,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	req_access = list(ACCESS_MARINE_CARGO)
 	var/x_supply = 0
 	var/y_supply = 0
-	var/z_supply = 0
 	var/datum/squad/current_squad = null
 	var/drop_cooldown = 1 MINUTES
 	var/can_pick_squad = TRUE
@@ -485,7 +484,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	data["worldtime"] = world.time
 	data["x_offset"] = x_supply
 	data["y_offset"] = y_supply
-	data["z_offset"] = z_supply
 	data["loaded"] = loaded_crate
 	if(loaded_crate)
 		data["crate_name"] = loaded_crate.name
@@ -512,13 +510,6 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			if(isnull(new_y))
 				return
 			y_supply = new_y
-			. = TRUE
-
-		if("set_z")
-			var/new_z = text2num(params["set_z"])
-			if(isnull(new_z))
-				return
-			z_supply = new_z
 			. = TRUE
 
 		if("pick_squad")
@@ -575,7 +566,28 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	var/x_coord = deobfuscate_x(x_supply)
 	var/y_coord = deobfuscate_y(y_supply)
-	var/z_coord = deobfuscate_z(z_supply)
+	var/z_coord = null
+	var/protected_by_pylon = FALSE
+	var/too_deap = FALSE
+	for(var/z in SSmapping.levels_by_trait(ZTRAIT_GROUND))
+		var/turf/turf = locate(x_coord, y_coord, z)
+		if(isnull(turf))
+			continue
+
+		if(protected_by_pylon(TURF_PROTECTION_MORTAR, turf)) //pylon and core protects when on any z level
+			protected_by_pylon = TRUE
+			break
+		if(istype(turf, /turf/open_space)) //we do not detonate in the open
+			continue
+		if(turf.turf_flags & TURF_HULL) //this makes us ignore the walls above caves, might cause issue if someone uses turf with this flag incorrectly like almayer hull being used for roofs
+			continue
+
+		var/area/area = get_area(turf)
+		if(istype(area) && CEILING_IS_PROTECTED(area.ceiling, CEILING_PROTECTION_TIER_2))
+			too_deap = TRUE
+			continue
+
+		z_coord = max(z, z_coord)
 
 	if(!is_ground_level(z_coord))
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
@@ -587,7 +599,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 
 	var/area/A = get_area(T)
-	if(A && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2))
+	if(too_deap)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone is underground. The supply drop cannot reach here.")]")
 		return
 

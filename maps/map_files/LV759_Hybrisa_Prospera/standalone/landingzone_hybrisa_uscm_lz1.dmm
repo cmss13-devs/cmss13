@@ -3661,6 +3661,7 @@
 "GJ" = (
 /obj/structure/machinery/atm{
 	icon = 'icons/obj/structures/props/atm.dmi';
+	plane = GAME_PLANE;
 	pixel_x = 6;
 	pixel_y = 11
 	},

@@ -67,6 +67,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
 	unslashable = TRUE
 	unacidable = TRUE
+	plane = TURF_PLANE
 
 	var/area/area
 	var/areastring = null

@@ -779,6 +779,7 @@
 	desc = "A wall-mounted medical equipment dispenser."
 	icon_state = "wallmed"
 	appearance_flags = TILE_BOUND
+	plane = TURF_PLANE
 	req_access = list()
 	density = FALSE
 	wrenchable = FALSE

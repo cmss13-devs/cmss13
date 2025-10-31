@@ -22,6 +22,7 @@
 	density = FALSE
 	use_power = USE_POWER_NONE
 	idle_power_usage = 10
+	plane = TURF_PLANE
 	var/mode = 0 // 0 = Blank
 					// 1 = Shuttle timer
 					// 2 = Arbitrary message(s)

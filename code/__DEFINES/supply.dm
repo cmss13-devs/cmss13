@@ -10,7 +10,7 @@
 // List of pools of supply packs, rolled individually by the ASRS system
 /// Main pool of ASRS supplies, dispensing military supplies such as ammo
 #define ASRS_POOL_MAIN "Main"
-/// Secondary ASRS pool dispening food related items for MessTech
+/// Secondary ASRS pool dispensing food related items for MessTech
 #define ASRS_POOL_FOOD "Food"
 
 /// Divider to the amount of xeno forces on the planet to ASRS provided crates. It is used as such sqrt(xenos/ASRS_XENO_CRATES_DIVIDER))

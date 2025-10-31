@@ -34,7 +34,7 @@ length to avoid portals or something i guess?? Not that they're counted right no
 // Modified to provide ID argument - supplied to 'adjacent' proc, defaults to null
 // Used for checking if route exists through a door which can be opened
 
-// Also added 'exclude' turf to avoid travelling over; defaults to null
+// Also added 'exclude' turf to avoid traveling over; defaults to null
 
 
 /PriorityQueue

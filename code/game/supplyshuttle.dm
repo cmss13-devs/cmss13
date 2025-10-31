@@ -819,7 +819,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /datum/controller/supply/proc/start_processing()
 	START_PROCESSING(SSslowobj, src)
 
-//Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
+//Supply shuttle ticker - handles supply point regenertion and shuttle traveling between centcomm and the station
 /datum/controller/supply/process(delta_time)
 	iteration++
 	points += points_per_process

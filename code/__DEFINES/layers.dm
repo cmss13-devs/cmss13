@@ -189,7 +189,7 @@
 
 //---------- EMISSIVES -------------
 //Layering order of these is not particularly meaningful.
-//Important part is the seperation of the planes for control via plane_master
+//Important part is the separation of the planes for control via plane_master
 
 /// This plane masks out lighting to create an "emissive" effect, ie for glowing lights in otherwise dark areas.
 #define EMISSIVE_PLANE 90
@@ -253,7 +253,7 @@
 /// Above Game Plane. For things which are above game objects, but below screen effects.
 #define ABOVE_GAME_PLANE 2
 
-///Slightly above the game plane but does not catch mouse clicks. Useful for certain visuals that should be clicked through, like seethrough trees
+///Slightly above the game plane but does not catch mouse clicks. Useful for certain visuals that should be clicked through, like see-through trees
 #define SEETHROUGH_PLANE 3
 
 /// Roof plane, disappearing when entering buildings

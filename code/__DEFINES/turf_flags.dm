@@ -1,7 +1,7 @@
 //turf_flags values
 /// Marks a turf as organic. Used for alien wall and membranes.
 #define TURF_ORGANIC (1<<0)
-/// If a turf is an usused reservation turf awaiting assignment
+/// If a turf is an unused reservation turf awaiting assignment
 #define UNUSED_RESERVATION_TURF (1<<1)
 /// If a turf is a reserved turf
 #define RESERVATION_TURF (1<<2)

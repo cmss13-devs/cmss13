@@ -31,7 +31,7 @@
 */
 
 //firearms skill (general knowledge of guns) (hidden skill)
-//increase or decrase accuracy, recoil, and firing delay of rifles and smgs.
+//increase or decrease accuracy, recoil, and firing delay of rifles and smgs.
 #define SKILL_FIREARMS_CIVILIAN 0  //civilian
 #define SKILL_FIREARMS_TRAINED 1   //marines (allow tactical reloads)
 #define SKILL_FIREARMS_SKILLED 2   //a few marines and more trained personnel
@@ -175,7 +175,7 @@
 #define SKILL_PILOT_EXPERT 2 // Pilot, Synth
 #define SKILL_PILOT_MAX 2
 
-//Navigations skill - for seting orbital alt
+//Navigations skill - for setTing orbital alt
 #define SKILL_NAVIGATIONS_DEFAULT 0
 #define SKILL_NAVIGATIONS_TRAINED 1
 #define SKILL_NAVIGATIONS_MAX 1

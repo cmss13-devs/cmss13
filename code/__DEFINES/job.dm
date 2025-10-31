@@ -151,7 +151,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 	. = ..(L);\
 }
 
-// Used to add a timelock to a job. Will be passed onto derivates. Will not include the parent's timelocks.
+// Used to add a timelock to a job. Will be passed onto derivatives. Will not include the parent's timelocks.
 #define OverrideTimelock(Path, timelockList) \
 ##Path/setup_requirements(list/L){\
 	L = timelockList;\

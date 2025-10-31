@@ -17,7 +17,7 @@
 #define NOBLOODY (1<<4)
 /// movable atom won't change direction when Moving()ing. Useful for items that have several dir states.
 #define DIRLOCK (1<<5)
-/// Reagents dont' react inside this container.
+/// Reagents don't' react inside this container.
 #define NOREACT (1<<6)
 /// is an open container for chemistry purposes
 #define OPENCONTAINER (1<<7)

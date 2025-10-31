@@ -193,7 +193,7 @@
 	log_say("[speaker.name != "Unknown" ? speaker.name : "([speaker.real_name])"] \[APOLLO\]: [message] (CKEY: [speaker.key]) (JOB: [speaker.job]) (AREA: [get_area_name(speaker)])")
 	log_ares_apollo(speaker.real_name, message)
 	for (var/mob/dead in GLOB.dead_mob_list)
-		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
+		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-eavesdropping
 			var/dead_message = "<span class='[scale]'><span class='[color]'>[message_start](<a href='byond://?src=\ref[dead];track=\ref[speaker]'>F</a>) [message_body]</span></span>"
 			dead.show_message(dead_message, SHOW_MESSAGE_VISIBLE)
 
@@ -210,7 +210,7 @@
 	for (var/mob/living/M in listening)
 		if(isSilicon(M) || M.hear_apollo())
 			continue
-		M.show_message("<i><span class='game say'><span class='name'>synthesised voice</span> <span class='message'>beeps, \"beep beep beep\"</span></span></i>",2)
+		M.show_message("<i><span class='game say'><span class='name'>synthesized voice</span> <span class='message'>beeps, \"beep beep beep\"</span></span></i>",2)
 
 /datum/language/primitive
 	name = LANGUAGE_MONKEY

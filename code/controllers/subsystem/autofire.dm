@@ -2,7 +2,7 @@
  * # Autofire Subsystem
  *
  * Maintains a timer-like system to handle autofiring. Much of this code is modeled
- * after or adapted from TGMC's runechat subsytem.
+ * after or adapted from TGMC's runechat subsystem.
  *
  * Note that this has the same structure for storing and queueing shooter component as the timer subsystem does
  * for handling timers: the bucket_list is a list of autofire component, each of which are the head

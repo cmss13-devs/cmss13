@@ -4,7 +4,7 @@
 In order to debug `qdel()` failures, there are several tools available.
 To enable these tools, define `TESTING` in [_compile_options.dm](https://github.com/tgstation/-tg-station/blob/master/code/_compile_options.dm).
 
-First is a verb called "Find References", which lists **every** refererence to an object in the world. This allows you to track down any indirect or obfuscated references that you might have missed.
+First is a verb called "Find References", which lists **every** reference to an object in the world. This allows you to track down any indirect or obfuscated references that you might have missed.
 
 Complementing this is another verb, "qdel() then Find References".
 This does exactly what you'd expect; it calls `qdel()` on the object and then it finds all references remaining.

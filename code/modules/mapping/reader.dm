@@ -28,7 +28,7 @@
 #define MAP_DMM "dmm"
 /**
  * TGM SPEC:
- * TGM is a derevation of DMM, with restrictions placed on it
+ * TGM is a derivation of DMM, with restrictions placed on it
  * to make it easier to parse and to reduce merge conflicts/ease their resolution
  *
  * Requirements:
@@ -134,7 +134,7 @@
 #define TRIM_TEXT(text) (trim_reduced(text))
 
 /**
- * Helper and recommened way to load a map file
+ * Helper and recommend way to load a map file
  * - dmm_file: The path to the map file
  * - x_offset: The x offset to load the map at
  * - y_offset: The y offset to load the map at
@@ -207,7 +207,7 @@
 	var/stored_index = 1
 	var/list/regexOutput
 	//multiz lool
-	dmm_regex.next = stored_index // CM addition: Neccessary to reset start position in case of loading the same file concurrently. Putting it in Find() below is NOT enough!
+	dmm_regex.next = stored_index // CM addition: Necessary to reset start position in case of loading the same file concurrently. Putting it in Find() below is NOT enough!
 	while(dmm_regex.Find(tfile, stored_index))
 		stored_index = dmm_regex.next
 		// Datum var lookup is expensive, this isn't
@@ -337,14 +337,14 @@
 	SSatoms.map_loader_begin(REF(src))
 
 	// Loading used to be done in this proc
-	// We make the assumption that if the inner procs runtime, we WANT to do cleanup on them, but we should stil tell our parents we failed
+	// We make the assumption that if the inner procs runtime, we WANT to do cleanup on them, but we should still tell our parents we failed
 	// Since well, we did
-	var/sucessful = FALSE
+	var/successful = FALSE
 	switch(map_format)
 		if(MAP_TGM)
-			sucessful = _tgm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
+			successful = _tgm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
 		else
-			sucessful = _dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
+			successful = _dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
 
 	// And we are done lads, call it off
 	SSatoms.map_loader_stop(REF(src))
@@ -368,7 +368,7 @@
 		testing("Skipped loading [turfsSkipped] default turfs")
 	#endif
 
-	return sucessful
+	return successful
 
 // Wanna clear something up about maps, talking in 255x255 here
 // In the tgm format, each gridset contains 255 lines, each line representing one tile, with 255 total gridsets
@@ -423,7 +423,7 @@
 
 	// We're gonna skip all the entries above the upper x, or maxx if cropMap is set
 	// The last column is guarenteed to have the highest x value we;ll encounter
-	// Even if z scales, this still works
+	// Even if z scales, this stilll works
 	var/datum/grid_set/last_column = gridSets[length(gridSets)]
 	var/final_x = last_column.xcrd + x_relative_to_absolute
 
@@ -811,7 +811,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	return .
 
 /// Builds key caches for general formats
-/// Slower then the proc above, tho it could still be optimized slightly. it's just not a priority
+/// Slower then the proc above, tho it could stilll be optimized slightly. it's just not a priority
 /// Since we don't run DMM maps, ever.
 /datum/parsed_map/proc/dmm_build_cache(no_changeturf, bad_paths=null)
 	if(modelCache && !bad_paths)

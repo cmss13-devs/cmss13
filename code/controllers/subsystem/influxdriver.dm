@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(influxdriver)
 	var/list/send_queue = list()
 
 	/// Maximum amount of metric lines to send at most in one request
-	/// This is neccessary because sending a lot of metrics can get expensive
+	/// This is necessary because sending a lot of metrics can get expensive
 	/// and drive the subsystem into overtime, but we can't split the work as it'd be even less efficient
 	var/max_batch = 150
 

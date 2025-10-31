@@ -14,7 +14,7 @@
 	var/resident_file //the file which this was loaded from, if any
 	var/modified = FALSE //set to TRUE if the default has been overridden by a config entry
 
-	var/deprecated_by //the /datum/config_entry type that supercedes this one
+	var/deprecated_by //the /datum/config_entry type that supersedes this one
 
 	var/protection = NONE
 	var/abstract_type = /datum/config_entry //do not instantiate if type matches this
@@ -25,7 +25,7 @@
 
 /datum/config_entry/New()
 	if(type == abstract_type)
-		CRASH("Abstract config entry [type] instatiated!")
+		CRASH("Abstract config entry [type] instantiated!")
 	name = lowertext(type2top(type))
 	if(islist(config_entry_value))
 		var/list/L = config_entry_value

@@ -8,20 +8,20 @@ ones. At that point there are too many anyway. Shells and bullets leave differen
 items, so they do not intersect. This is far more efficient than using Bl*nd() or
 Turn() or Shift() as there is virtually no overhead. ~N
 */
+// do note that most of these comments are likely outdated - nihi
+
 /obj/effect/decal/ammo_casing
 	name = "spent casing"
 	desc = "Empty and useless now."
 	icon = 'icons/obj/items/casings.dmi'
 	icon_state = "casing"
-	dir = NORTH //Always north when it spawns.
 	var/current_casings = 1 //This is manipulated in the procs that use these.
 	var/max_casings = 16
 	var/current_icon = 0
 	var/number_of_states = 10 //How many variations of this item there are.
 	garbage = TRUE
 	appearance_flags = PIXEL_SCALE
-	anchored = TRUE
-	layer = BELOW_OBJ_LAYER //Puts them under most objects.
+	layer = ABOVE_WEED_LAYER
 	density = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 

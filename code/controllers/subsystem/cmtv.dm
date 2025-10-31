@@ -235,6 +235,7 @@ SUBSYSTEM_DEF(cmtv)
 
 	add_verb(new_perspective, /mob/proc/handoff_cmtv)
 	give_action(new_perspective, /datum/action/stop_cmtv)
+	camera_operator.view = "20x15"
 
 	if(instant_switch_to)
 		do_change_observed_mob(set_showtime)
@@ -374,10 +375,7 @@ SUBSYSTEM_DEF(cmtv)
 
 /datum/controller/subsystem/cmtv/proc/end_spectate_event()
 	camera_mob.hud_used.plane_masters["[HUD_PLANE]"].alpha = 255
-
 	temporarily_observing_turf = FALSE
-
-	camera_operator.view = "20x15"
 
 	var/mob/to_switch_mob = to_switch_to?.resolve()
 	if(to_switch_mob)

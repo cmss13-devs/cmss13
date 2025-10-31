@@ -18,6 +18,7 @@ type Data = {
   base_amplitude: number;
   base_phase: number;
   wave_color: string;
+  wave_name: string;
   plotData: {
     datasets: Array<{
       points: Array<[number, number]>;
@@ -32,6 +33,10 @@ type Data = {
       name: string;
     }>;
   } | null;
+  loaded_corpse: boolean;
+  corpse_name: string | null;
+  has_target: boolean;
+  match_percentage: number;
 };
 
 export const CorpseAnalyzer = () => {
@@ -56,7 +61,7 @@ export const CorpseAnalyzer = () => {
   };
 
   useEffect(() => {
-    // Top graph
+    // Top graph - Shows player signal vs target signal
     if (topPlotRef.current) {
       topPlotRef.current.innerHTML = '';
 
@@ -87,7 +92,7 @@ export const CorpseAnalyzer = () => {
       }
     }
 
-    // Bottom graph
+    // Bottom graph - Shows individual component waves
     if (bottomPlotRef.current) {
       bottomPlotRef.current.innerHTML = '';
 
@@ -97,7 +102,7 @@ export const CorpseAnalyzer = () => {
           ...plotConfig,
           yAxis: {
             label: 'Component Data',
-            domain: [-3, 3],
+            domain: [-1.5, 1.5],
           },
           data: data.componentData.datasets.map((dataset) => ({
             points: dataset.points,
@@ -131,11 +136,92 @@ export const CorpseAnalyzer = () => {
   ]);
 
   return (
-    <Window width={850} height={880}>
+    <Window width={900} height={1210} theme={'weyland'}>
       <Window.Content>
+        {/* Corpse Information Section - Always show */}
+        <Section
+          title={
+            data.loaded_corpse
+              ? `Corpse Analysis: ${data.corpse_name || 'Unknown'}`
+              : 'Corpse Analysis: No Subject Loaded'
+          }
+        >
+          <div
+            style={{
+              display: 'flex',
+              gap: '20px',
+              padding: '10px',
+              backgroundColor: '#1a1a1a',
+              borderRadius: '5px',
+              marginBottom: '10px',
+            }}
+          >
+            <div style={{ flex: 1 }}>
+              <div
+                style={{
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  marginBottom: '5px',
+                }}
+              >
+                Subject Information:
+              </div>
+              <div style={{ fontSize: '12px', lineHeight: '1.4' }}>
+                <div>
+                  <strong>Name:</strong>{' '}
+                  {data.corpse_name || 'No corpse loaded'}
+                </div>
+                <div>
+                  <strong>Status:</strong>{' '}
+                  {data.has_target
+                    ? 'Death data available'
+                    : 'No death data available'}
+                </div>
+              </div>
+            </div>
+            <div style={{ flex: 1 }}>
+              <div
+                style={{
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  marginBottom: '5px',
+                }}
+              >
+                Analysis Progress:
+              </div>
+              <div style={{ fontSize: '12px', lineHeight: '1.4' }}>
+                <div>
+                  <strong>Target Match:</strong>{' '}
+                  <span
+                    style={{
+                      color: data.has_target
+                        ? data.match_percentage >= 90
+                          ? '#00ff00'
+                          : data.match_percentage >= 70
+                            ? '#ffff00'
+                            : '#ff0000'
+                        : '#888888',
+                    }}
+                  >
+                    {data.has_target
+                      ? `${data.match_percentage.toFixed(1)}%`
+                      : 'N/A'}
+                  </span>
+                </div>
+                <div>
+                  <strong>Objective:</strong>{' '}
+                  {data.has_target
+                    ? 'Match green line to red target'
+                    : 'Load a corpse to begin analysis'}
+                </div>
+              </div>
+            </div>
+          </div>
+        </Section>
+
         {/* Graph Stats Display */}
         <Section
-          title={`${data.current_damage_type || 'Unknown'} Wave Analysis`}
+          title={`${data.wave_name || 'Unknown Wave'} - Graph ${(data.current_graph_index || 0) + 1}`}
         >
           <div
             style={{
@@ -158,6 +244,12 @@ export const CorpseAnalyzer = () => {
                 Base Wave Properties:
               </div>
               <div style={{ fontSize: '12px', lineHeight: '1.4' }}>
+                <div>
+                  <strong>Name:</strong> {data.wave_name || 'Unknown Wave'}
+                </div>
+                <div>
+                  <strong>Type:</strong> {data.current_damage_type || 'Unknown'}
+                </div>
                 <div>
                   <strong>Frequency:</strong>{' '}
                   {(data.base_frequency || 0).toFixed(3)} rad/s
@@ -189,8 +281,9 @@ export const CorpseAnalyzer = () => {
               </div>
               <div style={{ fontSize: '12px', lineHeight: '1.4' }}>
                 <div>
-                  <strong>Phase Shift:</strong> +{(data.phase || 0).toFixed(3)}π
-                  rad
+                  <strong>Phase Shift:</strong>{' '}
+                  {((data.phase || 0) * 180).toFixed(0)}° (
+                  {(data.phase || 0).toFixed(2)}π rad)
                 </div>
                 <div>
                   <strong>Amplitude Scale:</strong>{' '}
@@ -211,8 +304,32 @@ export const CorpseAnalyzer = () => {
           </div>
         </Section>
 
-        {/* Displays total add of all components and a fit line */}
-        <Section title="Total Analysis">
+        {/* Shows player signal vs target signal */}
+        <Section
+          title={
+            data.has_target ? 'Signal Matching Analysis' : 'Total Analysis'
+          }
+        >
+          <div
+            style={{ fontSize: '12px', marginBottom: '10px', color: '#888' }}
+          >
+            <span style={{ color: '#00ff00' }}>● Your Signal</span>
+            {data.has_target ? (
+              <>
+                {' | '}
+                <span style={{ color: '#ff4444' }}>● Target Signal</span>
+                {' | '}
+                Match: <strong>{data.match_percentage.toFixed(1)}%</strong>
+              </>
+            ) : (
+              <>
+                {' | '}
+                <span style={{ color: '#888888' }}>
+                  No target signal available
+                </span>
+              </>
+            )}
+          </div>
           <div
             ref={topPlotRef}
             style={{
@@ -224,7 +341,7 @@ export const CorpseAnalyzer = () => {
           />
         </Section>
 
-        {/* Displays a singular component */}
+        {/* Shows individual component waves */}
         <Section title="Component Analysis">
           <div
             ref={bottomPlotRef}
@@ -275,15 +392,16 @@ export const CorpseAnalyzer = () => {
             >
               <div>
                 <label style={{ display: 'block', marginBottom: '5px' }}>
-                  Phase: {(data.phase || 0.0).toFixed(2)}π radians
+                  Phase: {((data.phase || 0.0) * 180).toFixed(0)}° (
+                  {(data.phase || 0.0).toFixed(2)}π rad)
                 </label>
                 <Slider
-                  animated // ← Turn off animation for more precise control
+                  animated
                   value={data.phase || 0.0}
                   minValue={0}
-                  maxValue={1}
-                  step={0.25}
-                  stepPixelSize={60} // ← Add this: makes each step take 60 pixels of mouse movement
+                  maxValue={2}
+                  step={0.5}
+                  stepPixelSize={60}
                   onChange={(e, value) => act('set_phase', { value: value })}
                 />
               </div>
@@ -294,12 +412,12 @@ export const CorpseAnalyzer = () => {
                   {((data.amplitude || 0.0) * 100).toFixed(0)}%
                 </label>
                 <Slider
-                  animated // ← Turn off animation for more precise control
+                  animated
                   value={data.amplitude || 0.0}
                   minValue={0.0}
                   maxValue={1.0}
                   step={0.1}
-                  stepPixelSize={30} // ← Add this: makes each 10% step take 30 pixels of mouse movement
+                  stepPixelSize={30}
                   onChange={(e, value) =>
                     act('set_amplitude', { value: value })
                   }
@@ -322,6 +440,15 @@ export const CorpseAnalyzer = () => {
                 icon="chevron-down"
                 color="blue"
                 onClick={() => act('previous_graph')}
+              />
+              <Button
+                content={
+                  data.loaded_corpse ? 'Unload Corpse' : 'No Corpse Loaded'
+                }
+                icon="eject"
+                color={data.loaded_corpse ? 'red' : 'grey'}
+                disabled={!data.loaded_corpse}
+                onClick={() => act('unload_corpse')}
               />
             </div>
           </div>

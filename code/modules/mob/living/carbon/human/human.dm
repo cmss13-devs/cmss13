@@ -1872,17 +1872,17 @@
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
 
 
-
-var/list/death_variables = list()
+/mob/living/carbon/human
+	var/list/death_variables = list()
 
 /mob/living/carbon/human/proc/on_death_signal()
 	SIGNAL_HANDLER
 
 	// Initialize death variables when the mob dies
-	LAZYSET(death_variables, "brute_damage", bruteloss)
-	LAZYSET(death_variables, "burn_damage", fireloss)
-	LAZYSET(death_variables, "toxin_damage", toxloss)
-	LAZYSET(death_variables, "oxygen_damage", oxyloss)
-	LAZYSET(death_variables, "broken_bones", count_broken_bones())
-	LAZYSET(death_variables, "pain_percentage", pain.get_pain_percentage())
+	LAZYSET(death_variables, CORPSE_BRUTE_DAMAGE, getBruteLoss())
+	LAZYSET(death_variables, CORPSE_BURN_DAMAGE, getFireLoss())
+	LAZYSET(death_variables, CORPSE_TOXIN_DAMAGE, getToxLoss())
+	LAZYSET(death_variables, CORPSE_OXYGEN_DAMAGE, getOxyLoss())
+	LAZYSET(death_variables, CORPSE_BROKEN_BONES, count_broken_bones())
+	LAZYSET(death_variables, CORPSE_PAIN_DAMAGE, pain.get_pain_percentage())
 	//code for larva parasitization and organ damage?

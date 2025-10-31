@@ -1,5 +1,10 @@
 #define CORPSES_TO_SPAWN 100
-#define MATH_PI 3.14159265358979323846
+#define CORPSE_BRUTE_DAMAGE "brute"
+#define CORPSE_BURN_DAMAGE "burn"
+#define CORPSE_TOXIN_DAMAGE "toxin"
+#define CORPSE_OXYGEN_DAMAGE "oxygen"
+#define CORPSE_PAIN_DAMAGE "pain"
+#define CORPSE_BROKEN_BONES "broken Bones"
 
 
 SUBSYSTEM_DEF(objectives)
@@ -24,21 +29,22 @@ SUBSYSTEM_DEF(objectives)
 
 // Create dictionary to organize waves by type
 var/list/wave_dict = list(
-	"brute" = list(),
-	"burn" = list()
-	//"toxin" = list(),
-	//"oxygen" = list(),
-	//"bone" = list(),
-	//"organ" = list(),
-	//"pain" = list(),
-	//"parasitic" = list()
+	CORPSE_BRUTE_DAMAGE = list(),
+	CORPSE_BURN_DAMAGE = list(),
+	CORPSE_TOXIN_DAMAGE = list(),
+	CORPSE_OXYGEN_DAMAGE = list(),
+	CORPSE_BROKEN_BONES = list(),
+	CORPSE_PAIN_DAMAGE = list(),
+	//CORPSE_ORGAN_DAMAGE = list(),
+
+	//CORPSE_PARASITIC_DAMAGE = list()
 )
 
 
 /datum/controller/subsystem/objectives/proc/initialize_sinusoidal_waves()
 	SHOULD_NOT_SLEEP(TRUE)
 	// Generate waves for each damage type
-	var/list/damage_types = list("brute", "burn") //"toxin", "oxygen", "bone", "organ", "pain", "parasitic")
+	var/list/damage_types = list(CORPSE_BRUTE_DAMAGE, CORPSE_BURN_DAMAGE, CORPSE_TOXIN_DAMAGE, CORPSE_OXYGEN_DAMAGE, CORPSE_BROKEN_BONES, CORPSE_PAIN_DAMAGE) // "organ",  "parasitic")
 	for(var/damage_type in damage_types)
 		var/list/wave_data = list(
 			"amplitude" = 1.0,
@@ -50,20 +56,43 @@ var/list/wave_dict = list(
 		)
 		// Set parameters based on damage type
 		switch(damage_type)
-			if("brute")
-				wave_data["amplitude"] = 1
+			if(CORPSE_BRUTE_DAMAGE)
+				wave_data["amplitude"] = 0.8
 				wave_data["phase"] = 1.0
 				wave_data["frequency"] = 2 //frequency is in radians
 				wave_data["color"] = "#ff4444"
 				wave_data["name"] = "Brute Damage Wave"
 
-			if("burn")
+			if(CORPSE_BURN_DAMAGE)
 				wave_data["amplitude"] = 1
 				wave_data["phase"] = 1.5
 				wave_data["frequency"] = 1 //frequency is in radians
 				wave_data["color"] = "#ffbb33"
 				wave_data["name"] = "Burn Damage Wave"
-
+			if(CORPSE_TOXIN_DAMAGE)
+				wave_data["amplitude"] = 1
+				wave_data["phase"] = rand(0,10)/10
+				wave_data["frequency"] = 1 + rand(0,10)/10 //frequency is in radians
+				wave_data["color"] = "#33ff77"
+				wave_data["name"] = "Toxin Damage Wave"
+			if(CORPSE_OXYGEN_DAMAGE)
+				wave_data["amplitude"] = 0.75
+				wave_data["phase"] = rand(0,10)/10
+				wave_data["frequency"] = 1 + rand(0,10)/10 //frequency is in radians
+				wave_data["color"] = "#3399ff"
+				wave_data["name"] = "Oxygen Deprivation Wave"
+			if(CORPSE_BROKEN_BONES)
+				wave_data["amplitude"] = 1.
+				wave_data["phase"] = rand(0,10)/10
+				wave_data["frequency"] = 1 + rand(0,10)/10 //frequency is in radians
+				wave_data["color"] = "#aaaaaa"
+				wave_data["name"] = "Orthopedic Damage Wave"
+			if(CORPSE_PAIN_DAMAGE)
+				wave_data["amplitude"] = 0.5
+				wave_data["phase"] = rand(0,10)/10
+				wave_data["frequency"] = 1 + rand(0,10)/10 //frequency is in radians
+				wave_data["color"] = "#ff77ff"
+				wave_data["name"] = "Pain Wave"
 			else
 				// Default case for any unhandled damage types
 				wave_data["name"] = "[damage_type] Wave"

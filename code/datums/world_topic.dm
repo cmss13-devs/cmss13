@@ -362,19 +362,6 @@
 
 	selected_command.post_execute(input)
 
-/datum/world_topic/role_icons
-	key = "role_icons"
-
-/datum/world_topic/role_icons/Run(list/input)
-	if(!length(GLOB.minimap_icons))
-		statuscode = 501
-		response = "No minimap icons available."
-		return
-
-	data = GLOB.minimap_icons
-	statuscode = 200
-	response = "Minimap icons available."
-
 /datum/world_topic/active_mobs
 	key = "active_mobs"
 

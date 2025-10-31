@@ -52,6 +52,12 @@ SUBSYSTEM_DEF(cmtv)
 		can_fire = FALSE
 		return SS_INIT_NO_NEED
 
+	var/api_url = CONFIG_GET(string/cmtv_api)
+	var/api_comms_key = CONFIG_GET(string/cmtv_api_key)
+	if(api_url && api_comms_key)
+		var/datum/http_request/request = new(RUSTG_HTTP_METHOD_POST, "[api_url]/role_icons", json_encode(list("auth_key" = api_comms_key, "role_icons" = GLOB.minimap_icons)))
+		request.execute_blocking()
+
 	perspective_display = new
 	RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_new_client))
 
@@ -512,6 +518,12 @@ SUBSYSTEM_DEF(cmtv)
 
 /datum/config_entry/string/cmtv_link
 	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/cmtv_api
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/string/cmtv_api_key
+	protection = CONFIG_ENTRY_HIDDEN | CONFIG_ENTRY_LOCKED
 
 /atom/movable/screen/cmtv
 	plane = ESCAPE_MENU_PLANE

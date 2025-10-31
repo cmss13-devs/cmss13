@@ -135,7 +135,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "aaA" = (
-/obj/item/ammo_casing/shell{
+/obj/effect/decal/ammo_casing/shell{
 	icon_state = "shell_9_1"
 	},
 /turf/open/floor/prison,
@@ -155,7 +155,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "aaE" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/ammo_casing/shell,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "aaF" = (
@@ -248,7 +248,7 @@
 /obj/effect/decal/cleanable/blood/splatter{
 	icon_state = "gib4"
 	},
-/obj/item/ammo_casing{
+/obj/effect/decal/ammo_casing{
 	icon_state = "casing_5_1"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -257,7 +257,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/obj/item/ammo_casing{
+/obj/effect/decal/ammo_casing{
 	dir = 6;
 	icon_state = "casing_10_1"
 	},

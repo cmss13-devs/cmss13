@@ -15,6 +15,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	desc = "Empty and useless now."
 	icon = 'icons/obj/items/casings.dmi'
 	icon_state = "casing"
+	dir = NORTH //Always north when it spawns.
 	var/current_casings = 1 //This is manipulated in the procs that use these.
 	var/max_casings = 16
 	var/current_icon = 0

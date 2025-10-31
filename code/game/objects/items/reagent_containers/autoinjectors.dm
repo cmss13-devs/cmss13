@@ -59,7 +59,7 @@
 	else
 		maptext = ""
 
-	if(uses_left)
+	if(uses_left && autoinjector_type)
 		var/image/filling = image('icons/obj/items/syringe.dmi', src, "[autoinjector_type]_[uses_left]")
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -341,6 +341,8 @@
 	volume = 25
 	uses_left = 5
 	autoinjector_type = "+stimpack_custom"
+	icon_state = "stimpack"
+	autoinjector_type = null
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = TRUE
 	maptext_label = "Uz"
@@ -370,6 +372,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "crystal"
 	injectSFX = 'sound/items/pred_crystal_inject.ogg'
+	autoinjector_type = null
 	injectVOL = 15
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE
 	volume = REAGENTS_OVERDOSE
@@ -394,6 +397,7 @@
 	chemname = "tricordrazine"
 	desc = "An autoinjector loaded with a single dose of 15u of tricordrazine for marines to treat themselves with. You can refill it at Wey-Med vending machines."
 	icon_state = "tricord"
+	autoinjector_type = null
 	amount_per_transfer_from_this = 15
 	volume = 15
 	skilllock = SKILL_MEDICAL_DEFAULT

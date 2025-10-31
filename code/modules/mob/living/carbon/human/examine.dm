@@ -75,7 +75,7 @@
 	var/rank_display = get_paygrades(id_paygrade, FALSE, gender)
 	var/msg = "<span class='info'>\nThis is "
 
-	if(skipjumpsuit && skipface) //big suits/masks/helmets make it hard to tell their gender
+	if(skipjumpsuit && skipface || gender == PLURAL) //big suits/masks/helmets make it hard to tell their gender
 		t_He = "They"
 		t_his = "their"
 		t_him = "them"
@@ -533,8 +533,9 @@
 			temp_msg += " <a href='byond://?src=\ref[src];use_stethoscope=1'>\[Use Stethoscope\]</a>"
 		msg += "\n<span class = 'deptradio'>Medical actions: [temp_msg]\n"
 
-	if(print_flavor_text())
-		msg += "[print_flavor_text()]\n"
+	var/flavor = print_flavor_text()
+	if(flavor)
+		msg += "[flavor]\n"
 
 	msg += "</span>"
 

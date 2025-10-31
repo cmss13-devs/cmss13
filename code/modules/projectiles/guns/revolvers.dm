@@ -51,11 +51,6 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 	movement_onehanded_acc_penalty_mult = 3
-	can_jam = TRUE //for the sake of posterity, we also allow revolvers to jam
-	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
-	unjam_chance = GUN_UNJAM_CHANCE_RELIABLE
-	durability_loss = GUN_DURABILITY_LOSS_INSUBSTANTIAL
-	jam_threshold = GUN_DURABILITY_LOW
 
 /obj/item/weapon/gun/revolver/get_examine_text(mob/user)
 	. = ..()
@@ -180,7 +175,6 @@
 	if(current_mag)
 		if(current_mag.current_rounds > 0)
 			if(current_mag.chamber_contents[current_mag.chamber_position] == "bullet")
-				current_mag.current_rounds-- //Subtract the round from the mag.
 				in_chamber = create_bullet(ammo, initial(name))
 				apply_traits(in_chamber)
 				return in_chamber
@@ -195,6 +189,8 @@
 /obj/item/weapon/gun/revolver/reload_into_chamber(mob/user)
 	in_chamber = null
 	if(current_mag)
+		if(current_mag.current_rounds > 0)
+			current_mag.current_rounds-- // Subtract the round from the mag only after firing is confirmed
 		current_mag.chamber_contents[current_mag.chamber_position] = "blank" //We shot the bullet.
 		rotate_cylinder()
 		return 1
@@ -207,10 +203,7 @@
 
 // FLUFF
 /obj/item/weapon/gun/revolver/unique_action(mob/user)
-	if(jammed)
-		jam_unique_action(user)
-	else
-		spin_cylinder(user)
+	spin_cylinder(user)
 
 /obj/item/weapon/gun/revolver/proc/revolver_basic_spin(mob/living/carbon/human/user, direction = 1, obj/item/weapon/gun/revolver/double)
 	set waitfor = 0
@@ -335,10 +328,12 @@
 		/obj/item/attachable/bayonet/rmc_replica,
 		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/stock/revolver,
 		/obj/item/attachable/scope,
@@ -347,6 +342,10 @@
 		/obj/item/attachable/alt_iff_scope,
 	)
 	var/folded = FALSE // Used for the stock attachment, to check if we can shoot or not
+
+/obj/item/weapon/gun/revolver/m44/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/revolver/m44/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 21,"rail_x" = 12, "rail_y" = 23, "under_x" = 21, "under_y" = 16, "stock_x" = 16, "stock_y" = 20)
@@ -403,6 +402,13 @@
 		/obj/item/attachable/lasersight,
 	)
 
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/pistols.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_righthand.dmi'
+	)
+
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 11, "rail_y" = 25, "under_x" = 20, "under_y" = 18, "stock_x" = 20, "stock_y" = 18)
 
@@ -422,6 +428,7 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
@@ -435,7 +442,7 @@
 	name = "\improper PKL 'Double' Blaster"
 	desc = "Sold to civilians and private corporations, the Pflager Katsumata Series-L Blaster is a premium double barrel sidearm that can fire two rounds at the same time. Usually found in the hands of combat synths and replicants, this hand cannon is worth more than the combined price of three Emanators. Originally commissioned by the Wallace Corporation, it has since been released onto public market as a luxury firearm."
 	icon_state = "pkd_double"
-	item_state = "88m4" //placeholder
+	item_state = "_88m4" //placeholder
 
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight,
@@ -454,9 +461,9 @@
 	set_burst_delay(FIRE_DELAY_TIER_12)
 
 
-/obj/item/weapon/gun/revolver/m44/custom/webley //Van Bandolier's Webley.
-	name = "\improper Webley Mk VI service pistol"
-	desc = "A heavy top-break revolver. Bakelite grips, and older than most nations. .455 was good enough for angry tribesmen and <i>les boche</i>, and by Gum it'll do for Colonial Marines and xenomorphs as well."
+/obj/item/weapon/gun/revolver/m44/custom/webley
+	name = "\improper Webley SRV-80"
+	desc = "A top-break revolver used by the Imperial Armed Space Force’s 24th Para Regiment, and sometimes seen in the hands of other TWE military forces. Fires .455 Magnum. Archaic, yes, but brutally effective. Vacuum-sealed internals, Bakelite-style grips, and a recoil like getting kicked by a mule. Still puts things down. Hard."
 	current_mag = /obj/item/ammo_magazine/internal/revolver/webley
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/revolvers.dmi'
 	icon_state = "webley"
@@ -464,6 +471,15 @@
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
 	)
 
 /obj/item/weapon/gun/revolver/m44/custom/webley/set_gun_config_values()
@@ -471,6 +487,9 @@
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 
+/obj/item/weapon/gun/revolver/m44/custom/webley/IASF_webley
+	icon_state = "webley_black"
+	item_state = "m44r"
 
 //-------------------------------------------------------
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.
@@ -493,6 +512,7 @@
 	force = 8
 	attachable_allowed = list(
 		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/scope,
@@ -501,8 +521,13 @@
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/lasersight, // Underbarrel
 		)
+
+/obj/item/weapon/gun/revolver/upp/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/weapon/gun/revolver/upp/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 19, "under_y" = 17, "stock_x" = 24, "stock_y" = 19)
@@ -571,11 +596,11 @@
 	item_state = "black_sw357"
 
 //-------------------------------------------------------
-//BURST REVOLVER //Mateba is pretty well known. The cylinder folds up instead of to the side.
+//BURST REVOLVER //Mateba(Unica) is pretty well known. The cylinder folds up instead of to the side.
 
 /obj/item/weapon/mateba_key
-	name = "mateba barrel key"
-	desc = "Used to swap the barrels of a mateba revolver."
+	name = "Unica barrel key"
+	desc = "Used to swap the barrels of a unica revolver."
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "matebakey"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
@@ -587,8 +612,13 @@
 	attack_verb = list("stabbed")
 
 /obj/item/weapon/gun/revolver/mateba
-	name = "\improper Mateba autorevolver"
-	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It fires heavy .454 rounds."
+	name = "\improper Spearhead Unica 6 autorevolver"
+	desc = "The Spearhead Unica is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It fires heavy .454 rounds."
+	desc_lore = "Originally an Italian design, during the middle 21st century, Mateba company had many severe financial issues as well as violation of local firearm laws. \
+	After numerous court cases, they went bankrupt and few years later, Spearhead Armaments aquired the rights to the Mateba designs, and re-introduced the Unica 6 as the 'Spearhead Unica', \
+	as well as many other Mateba revolvers. The new design featured a few changes, like rechambered variation for .454 rounds, picatinny rail and other attachments support, but overall, design intentionally remained the same, \
+	due to the iconic status in pop culture and high demand for the authentic piece. The gun is produced in limited numbers and is considered a luxury firearm, often seen in the hands of high-ranking officers, mercenaries and wealthy collectors, \
+	usually comes with authentic wooden grips, engravings, or gold plating finish."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/revolvers.dmi'
 	icon_state = "mateba"
 	item_state = "mateba"
@@ -598,6 +628,7 @@
 	force = 15
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/heavy_barrel,
@@ -612,6 +643,10 @@
 	black_market_value = 100
 	var/is_locked = TRUE
 	var/can_change_barrel = TRUE
+
+/obj/item/weapon/gun/revolver/mateba/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/spearhead)
 
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/weapon/mateba_key) && can_change_barrel)
@@ -661,39 +696,39 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_10
 	recoil = RECOIL_AMOUNT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
-	jam_threshold = GUN_DURABILITY_HIGH
 
 /obj/item/weapon/gun/revolver/mateba/pmc
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/ap
 
 /obj/item/weapon/gun/revolver/mateba/general
-	name = "\improper golden Mateba autorevolver custom"
-	desc = "Boasting a gold-plated frame and grips made of a critically-endangered rosewood tree, this heavily-customized Mateba revolver's pretentious design rivals only the power of its wielder. Fit for a king. Or a general."
+	name = "\improper golden Spearhead Unica-6 autorevolver custom"
+	desc = "Boasting a gold-plated frame and grips made of a critically-endangered rosewood tree, this heavily-customized Unica 6 autorevolver's pretentious design rivals only the power of its wielder. Fit for a king. Or a general."
 	icon_state = "amateba"
 	item_state = "amateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
-		/obj/item/attachable/mateba/dark,
-		/obj/item/attachable/mateba/long/dark,
-		/obj/item/attachable/mateba/short/dark,
+		/obj/item/attachable/mateba/gold,
+		/obj/item/attachable/mateba/long/gold,
+		/obj/item/attachable/mateba/short/gold,
 	)
 	starting_attachment_types = null
 
 /obj/item/weapon/gun/revolver/mateba/general/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/mateba/long/dark/barrel = new(src)
+	var/obj/item/attachable/mateba/long/gold/barrel = new(src)
 	barrel.flags_attach_features &= ~ATTACH_REMOVABLE
 	barrel.Attach(src)
 	update_attachables()
 
 /obj/item/weapon/gun/revolver/mateba/general/santa
 	name = "\improper Festeba"
-	desc = "The Mateba used by SANTA himself. Rumoured to be loaded with explosive ammunition."
+	desc = "The Unica used by SANTA himself. Rumoured to be loaded with explosive ammunition."
 	icon_state = "amateba"
 	item_state = "amateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/explosive
@@ -703,32 +738,52 @@
 	starting_attachment_types = list(/obj/item/attachable/heavy_barrel)
 
 /obj/item/weapon/gun/revolver/mateba/engraved
-	name = "\improper engraved Mateba autorevolver"
-	desc = "With a matte black chassis, ebony wooden grips, and gold-trimmed cylinder, this statement of a Mateba is as much a work of art as it is a bringer of death."
+	name = "\improper engraved Spearhead Unica 6 autorevolver"
+	desc = "With a matte black chassis, ebony wooden grips, and gold-trimmed cylinder, this statement of a Unica is as much a work of art as it is a bringer of death."
 	icon_state = "aamateba"
 	item_state = "aamateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
+
+/obj/item/weapon/gun/revolver/mateba/silver
+	name = "\improper polished Spearhead Unica 6 autorevolver"
+	desc = "The .454 Spearhead Unica 6 autorevolver is a semi-automatic handcannon that uses its own recoil to rotate the cylinders. Extremely rare, prohibitively costly, and unyieldingly powerful, it's found in the hands of a select few high-ranking USCM officials. Stylish, sophisticated, and above all, extremely deadly. This one is finished in a beautiful polished silver."
+	icon_state = "smateba"
+	item_state = "smateba"
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/mateba/silver,
+		/obj/item/attachable/mateba/long/silver,
+		/obj/item/attachable/mateba/short/silver,
+	)
+
+	starting_attachment_types = list(/obj/item/attachable/mateba/silver)
 
 /obj/item/weapon/gun/revolver/mateba/engraved/tactical
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba
 	starting_attachment_types = list(/obj/item/attachable/mateba, /obj/item/attachable/compensator, /obj/item/attachable/reflex)
 
 /obj/item/weapon/gun/revolver/mateba/cmateba
-	name = "\improper Mateba autorevolver custom"
-	desc = "The .454 Mateba 6 Unica autorevolver is a semi-automatic handcannon that uses its own recoil to rotate the cylinders. Extremely rare, prohibitively costly, and unyieldingly powerful, it's found in the hands of a select few high-ranking USCM officials. Stylish, sophisticated, and above all, extremely deadly."
+	name = "custom Spearhead Unica 6 autorevolver"
+	desc = "The .454 Spearhead Unica 6 autorevolver is a semi-automatic handcannon that uses its own recoil to rotate the cylinders. Extremely rare, prohibitively costly, and unyieldingly powerful, it's found in the hands of a select few high-ranking USCM officials. Stylish, sophisticated, and above all, extremely deadly."
 	icon_state = "cmateba"
 	item_state = "cmateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/revolver/mateba/special
-	name = "\improper Mateba autorevolver special"
-	desc = "An old, heavily modified version of the Mateba Autorevolver. It sports a smooth wooden grip, and a much larger barrel to it's unmodified counterpart. It's clear that this weapon has been cared for over a long period of time."
+	name = "special Spearhead Unica 6 autorevolver"
+	desc = "An old, heavily modified version of the Spearhead Unica 6 autorevolver. It sports a smooth wooden grip, and a much larger barrel to it's unmodified counterpart. It's clear that this weapon has been cared for over a long period of time."
 	icon_state = "cmateba_special"
 	item_state = "cmateba_special"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/heavy_barrel,
@@ -748,7 +803,7 @@
 //MARSHALS REVOLVER //Spearhead exists in Alien cannon.
 
 /obj/item/weapon/gun/revolver/cmb
-	name = "\improper CMB Spearhead autorevolver"
+	name = "\improper Spearhead Autorevolver"
 	desc = "An automatic revolver chambered in .357, often loaded with hollowpoint on spaceships to prevent hull damage. Commonly issued to Colonial Marshals."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/revolvers.dmi'
 	icon_state = "spearhead"
@@ -761,16 +816,23 @@
 	force = 12
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor, // Muzzle
+		/obj/item/attachable/suppressor/sleek,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot, // Rail
+		/obj/item/attachable/reddot/small,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/gyro, // Under
 		/obj/item/attachable/lasersight,
 	)
+
+/obj/item/weapon/gun/revolver/cmb/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/corp_label/spearhead)
 
 /obj/item/weapon/gun/revolver/cmb/click_empty(mob/user)
 	if(user)

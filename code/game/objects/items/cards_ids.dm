@@ -183,6 +183,10 @@
 	item_state = "silver_id"
 	var/credits_to_give = 15 //gives the equivalent clearance access in credits
 
+/obj/item/card/id/silver/clearance_badge/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/card/id/silver/clearance_badge/scientist
 	name = "corporate scientist badge"
 	desc = "A corporate holo-badge. It is fingerprint locked with clearance level 4 access. It is commonly held by corporate scientists."
@@ -214,6 +218,10 @@
 	icon_state = "gold"
 	item_state = "gold_id"
 
+/obj/item/card/id/souto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
+
 /obj/item/card/id/gold
 	name = "identification holo-badge"
 	desc = "A gold plated holo-badge which shows power and might."
@@ -232,6 +240,18 @@
 	icon_state = "cl"
 	item_state = "cl_id"
 
+/obj/item/card/id/silver/cl/Initialize()
+	. = ..()
+	if(istype(src, /obj/item/card/id/silver/cl/hyperdyne))
+		AddElement(/datum/element/corp_label/hyperdyne)
+	else
+		AddElement(/datum/element/corp_label/wy)
+
+/obj/item/card/id/silver/cl/hyperdyne
+	name = "corporate holo-badge"
+	desc = "A corporate holo-badge. It's a unique Corporate orange and black."
+	icon_state = "hyperdyne"
+
 /obj/item/card/id/gold/council
 	name = "identification holo-badge"
 	desc = "A real bronze gold Colonel's holo-badge. Commands respect, authority, and it makes for an excellent paperweight."
@@ -248,6 +268,7 @@
 
 /obj/item/card/id/pmc/New()
 	access = get_access(ACCESS_LIST_WY_ALL)
+	AddElement(/datum/element/corp_label/wy)
 	..()
 
 /obj/item/card/id/pmc/commando
@@ -306,6 +327,16 @@
 	item_state = "gold_id"
 	paygrade = PAY_SHORT_CINSP
 
+/obj/item/card/id/PaP
+	name = "PaP identification holo-badge"
+	desc = "A standard-issue holo-badge for personnel within the UPP's People's Armed Police. It displays the officer's rank and affiliation."
+	icon_state = "data"
+	paygrade = PAY_SHORT_PAP_MLTS
+
+/obj/item/card/id/PaP/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
+
 /obj/item/card/id/general
 	name = "general officer holo-badge"
 	desc = "Top brass of the top brass. Issued to only the most dedicated."
@@ -331,6 +362,14 @@
 /obj/item/card/id/adaptive
 	name = "agent card"
 	access = list(ACCESS_ILLEGAL_PIRATE)
+
+/obj/item/card/id/adaptive/silver
+	icon_state = "silver"
+	item_state = "silver_id"
+
+/obj/item/card/id/adaptive/gold
+	icon_state = "gold"
+	item_state = "gold_id"
 
 /obj/item/card/id/adaptive/New(mob/user as mob)
 	..()

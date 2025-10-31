@@ -157,6 +157,7 @@
 		fire_overlay = fire_overlay_image
 
 /mob/living/simple_animal/Life(delta_time)
+	..()
 	if(affected_by_fire)
 		handle_fire()
 	//Health
@@ -180,7 +181,7 @@
 
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
-		if(isturf(src.loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE)) //This is so it only moves if it's not inside a closet, gentics machine, etc.
+		if(isturf(loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE) && !HAS_TRAIT(src, TRAIT_HAULED)) //This is so it only moves if it's not inside a closet, gentics machine, etc.
 			turns_since_move++
 			if(turns_since_move >= turns_per_move)
 				if(!(stop_automated_movement_when_pulled && pulledby)) //Soma animals don't move when pulled
@@ -323,7 +324,7 @@
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
-		apply_damage(damage, BRUTE)
+		apply_damage(damage, BRUTE, enviro=TRUE)
 
 /mob/living/simple_animal/attack_hand(mob/living/carbon/human/attacking_mob)
 	..()
@@ -406,7 +407,7 @@
 	move_delay = .
 
 
-/mob/living/simple_animal/ex_act(severity, direction)
+/mob/living/simple_animal/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 
 	if(severity >= 30)
 		flash_eyes()
@@ -415,7 +416,7 @@
 		gib()
 		return
 
-	apply_damage(severity, BRUTE)
+	apply_damage(severity, BRUTE, enviro=enviro)
 	updatehealth()
 
 	var/knock_value = min( round( severity*0.1 ,1) ,10)

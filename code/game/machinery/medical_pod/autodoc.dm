@@ -1,6 +1,6 @@
 //Autodoc
 /obj/structure/machinery/medical_pod/autodoc
-	name = "\improper autodoc emergency medical system"
+	name = "autodoc emergency medical system"
 	desc = "An emergency surgical device designed to perform life-saving treatments and basic surgeries on patients automatically, without the need of a surgeon. <br>It still requires someone with medical knowledge to program the treatments correctly; for this reason, colonies that use these often have paramedics trained in autodoc operation."
 	icon_state = "autodoc_open"
 
@@ -8,6 +8,7 @@
 	skilllock = SKILL_SURGERY_NOVICE
 
 	var/list/surgery_todo_list = list() //a list of surgeries to do.
+	var/list/generated_surgery_list = list() //copy from medical record if available
 	var/surgery = 0 //Are we operating or no? 0 for no, 1 for yes
 	var/surgery_mod = 1 //What multiple to increase the surgery timer? This is used for any non-WO maps or events that are done.
 	var/obj/item/reagent_container/blood/OMinus/blood_pack = new()
@@ -45,13 +46,29 @@
 
 /obj/structure/machinery/medical_pod/autodoc/go_in(mob/patient)
 	. = ..()
+	if(ishuman(patient))
+		var/datum/data/record/patient_record = null
+		var/human_ref = WEAKREF(patient)
+		for(var/datum/data/record/medrec as anything in GLOB.data_core.medical)
+			if (medrec.fields["ref"] == human_ref)
+				patient_record = medrec
+				break
+		if(!isnull(patient_record))
+			generated_surgery_list = patient_record.fields["autodoc_data"]
 	start_processing()
 	if(connected)
 		connected.start_processing()
 
 /obj/structure/machinery/medical_pod/autodoc/go_out()
 	. = ..()
+	surgery = FALSE
+	heal_brute = FALSE
+	heal_burn = FALSE
+	heal_toxin = FALSE
+	filtering = FALSE
+	blood_transfer = FALSE
 	surgery_todo_list = list()
+	generated_surgery_list = list()
 	stop_processing()
 	if(connected)
 		connected.stop_processing()
@@ -68,12 +85,6 @@
 	if(surgery)
 		visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> malfunctions as [usr] aborts the surgery in progress.")
 		occupant.take_limb_damage(rand(30,50),rand(30,50))
-		surgery = FALSE
-		heal_brute = 0
-		heal_burn = 0
-		heal_toxin = 0
-		filtering = 0
-		blood_transfer = 0
 		// message_admins for now, may change to message_admins later
 		message_admins("[key_name(usr)] ejected [key_name(occupant)] from the autodoc during surgery causing damage.")
 		return TRUE
@@ -106,9 +117,8 @@
 
 /obj/structure/machinery/medical_pod/autodoc/power_change(area/master_area = null)
 	..()
-	if(stat & NOPOWER)
+	if((stat & NOPOWER) && occupant)
 		visible_message("\The [src] engages the safety override, ejecting the occupant.")
-		surgery = 0
 		go_out()
 		return
 
@@ -135,7 +145,6 @@
 	if(occupant)
 		if(occupant.stat == DEAD)
 			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Patient has expired.")
-			surgery = 0
 			go_out()
 			return
 		if(surgery)
@@ -229,51 +238,77 @@
 		if(limb)
 			for(var/datum/wound/wound in limb.wounds)
 				if(wound.internal)
-					surgery_list += create_autodoc_surgery(limb,LIMB_SURGERY,"internal")
+					surgery_list += create_autodoc_surgery(limb, LIMB_SURGERY, "internal")
 					break
-
-			var/organdamagesurgery = 0
 			for(var/datum/internal_organ/organ in limb.internal_organs)
 				if(organ.robotic == ORGAN_ASSISTED || organ.robotic == ORGAN_ROBOT)
 					// we can't deal with these
 					continue
 				if(organ.damage > 0)
-					if(organ.name == "eyeballs") // treat eye surgery differently
-						continue
-					if(organdamagesurgery > 0)
-						continue // avoid duplicates
-					surgery_list += create_autodoc_surgery(limb,ORGAN_SURGERY,"organdamage",0,organ)
-					organdamagesurgery++
-
+					surgery_list += create_autodoc_surgery(limb, ORGAN_SURGERY, "organdamage", 0, organ)
 			if(limb.status & LIMB_BROKEN)
-				surgery_list += create_autodoc_surgery(limb,LIMB_SURGERY,"broken")
+				surgery_list += create_autodoc_surgery(limb, LIMB_SURGERY, "broken")
 			if(limb.status & LIMB_DESTROYED)
 				if(!(limb.parent.status & LIMB_DESTROYED) && limb.name != "head")
-					surgery_list += create_autodoc_surgery(limb,LIMB_SURGERY,"missing")
+					surgery_list += create_autodoc_surgery(limb, LIMB_SURGERY, "missing")
 			if(length(limb.implants))
 				for(var/implant in limb.implants)
 					if(!is_type_in_list(implant,known_implants))
-						surgery_list += create_autodoc_surgery(limb,LIMB_SURGERY,"shrapnel")
+						surgery_list += create_autodoc_surgery(limb, LIMB_SURGERY, "shrapnel")
 			if(patient.incision_depths[limb.name] != SURGERY_DEPTH_SURFACE)
-				surgery_list += create_autodoc_surgery(limb,LIMB_SURGERY,"open")
+				surgery_list += create_autodoc_surgery(limb, LIMB_SURGERY, "open")
 	var/datum/internal_organ/eyes = patient.internal_organs_by_name["eyes"]
-	if(eyes && (patient.disabilities & NEARSIGHTED || patient.sdisabilities & DISABILITY_BLIND || eyes.damage > 0))
-		surgery_list += create_autodoc_surgery(null,ORGAN_SURGERY,"eyes",0,eyes)
+	if(eyes && (patient.disabilities & NEARSIGHTED || patient.sdisabilities & DISABILITY_BLIND))
+		surgery_list += create_autodoc_surgery(null, ORGAN_SURGERY, "eyes", 0, eyes)
 	if(patient.getBruteLoss() > 0)
-		surgery_list += create_autodoc_surgery(null,EXTERNAL_SURGERY,"brute")
+		surgery_list += create_autodoc_surgery(null, EXTERNAL_SURGERY, "brute")
 	if(patient.getFireLoss() > 0)
-		surgery_list += create_autodoc_surgery(null,EXTERNAL_SURGERY,"burn")
+		surgery_list += create_autodoc_surgery(null, EXTERNAL_SURGERY, "burn")
 	if(patient.getToxLoss() > 0)
-		surgery_list += create_autodoc_surgery(null,EXTERNAL_SURGERY,"toxin")
+		surgery_list += create_autodoc_surgery(null, EXTERNAL_SURGERY, "toxin")
 	var/overdoses = 0
 	for(var/datum/reagent/chem in patient.reagents.reagent_list)
 		if(istype(chem,/datum/reagent/toxin) || patient.reagents.get_reagent_amount(chem.id) > chem.overdose)
 			overdoses++
 	if(overdoses)
-		surgery_list += create_autodoc_surgery(null,EXTERNAL_SURGERY,"dialysis")
+		surgery_list += create_autodoc_surgery(null, EXTERNAL_SURGERY, "dialysis")
 	if(patient.blood_volume < BLOOD_VOLUME_NORMAL)
-		surgery_list += create_autodoc_surgery(null,EXTERNAL_SURGERY,"blood")
+		surgery_list += create_autodoc_surgery(null, EXTERNAL_SURGERY, "blood")
+	if(locate(/obj/item/alien_embryo) in patient)
+		surgery_list += create_autodoc_surgery("chest", ORGAN_SURGERY, "larva", 0)
 	return surgery_list
+
+/obj/structure/machinery/medical_pod/autodoc/proc/import_generated_surgery_list()
+	if(!occupant || !ishuman(occupant) || occupant.stat == DEAD || surgery)
+		return
+	if(isnull(generated_surgery_list) || generated_surgery_list.len < 1)
+		visible_message("[src] buzzes, no data to import.")
+		return
+	surgery_todo_list = list()
+	var/list/researched_upgrades = list()
+	for(var/iter in connected.upgrades)
+		switch(iter)
+			if(RESEARCH_UPGRADE_TIER_1)
+				researched_upgrades["internal"] = 1
+			if(RESEARCH_UPGRADE_TIER_2)
+				researched_upgrades["broken"] = 1
+			if(RESEARCH_UPGRADE_TIER_3)
+				researched_upgrades["organdamage"] = 1
+			if(RESEARCH_UPGRADE_TIER_4)
+				researched_upgrades["larva"] = 1
+	var/skipped = 0
+	for(var/datum/autodoc_surgery/surgery_item as anything in generated_surgery_list)
+		if((surgery_item.surgery_procedure == "internal") || (surgery_item.surgery_procedure == "broken") || \
+			(surgery_item.surgery_procedure == "organdamage") || (surgery_item.surgery_procedure == "larva"))
+			if(!researched_upgrades[surgery_item.surgery_procedure])
+				skipped++
+				continue
+		if(surgery_item.surgery_procedure == "missing") //not currently supported
+			skipped++
+			continue
+		surgery_todo_list += surgery_item
+	if(skipped > 0)
+		visible_message("[src] buzzes, some surgeries cannot be completed by this machine.")
 
 /obj/structure/machinery/medical_pod/autodoc/proc/surgery_op(mob/living/carbon/enclosed)
 	set background = 1
@@ -538,7 +573,13 @@
 							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
 						close_encased(patient,current_surgery.limb_ref)
 						close_incision(patient,current_surgery.limb_ref)
-
+						switch(current_surgery.limb_ref.name)
+							if("head")
+								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
+							if("chest")
+								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
 		if(prob(30))
 			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure complete.");
@@ -554,7 +595,6 @@
 
 	patient.pain.recalculate_pain()
 	visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> clicks and opens up having finished the requested operations.")
-	surgery = 0
 	SStgui.close_uis(connected)
 	go_out()
 
@@ -604,7 +644,7 @@
 
 //Auto Doc console that links up to it.
 /obj/structure/machinery/autodoc_console
-	name = "\improper autodoc medical system control console"
+	name = "autodoc medical system control console"
 	desc = "The control interface used to operate the adjoining autodoc. Requires training to use properly."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeperconsole"
@@ -676,8 +716,8 @@
 		to_chat(user, "This console seems to be powered down.")
 		return
 
-	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
-		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+	if(connected.skilllock && !skillcheck(user, SKILL_SURGERY, connected.skilllock))
+		to_chat(user, SPAN_WARNING("The interface looks too complicated for you. You're going to need someone trained in the usage of \the [connected.name]!"))
 		return
 
 	tgui_interact(user)
@@ -732,6 +772,8 @@
 				occupantData["bloodLevel"] = floor(occupant.blood_volume)
 				occupantData["bloodMax"] = occupant.max_blood
 				occupantData["bloodPercent"] = round(100*(occupant.blood_volume/occupant.max_blood), 0.01)
+			if(!isnull(connected.generated_surgery_list) && connected.generated_surgery_list.len > 0)
+				occupantData["hasImport"] = 1
 
 	.["occupant"] = occupantData
 	.["surgery"] = connected.surgery
@@ -860,6 +902,8 @@
 			// The rest
 			if("clear")
 				connected.surgery_todo_list = list()
+			if("import")
+				connected.import_generated_surgery_list()
 			if("surgery")
 				if(connected.occupant)
 					connected.surgery_op(src.connected.occupant)
@@ -873,6 +917,7 @@
 /obj/structure/machinery/autodoc_console/yautja
 	name = "medical pod console"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	upgrades = list(1=1, 2=2, 3=3, 4=4)
 
 /obj/structure/machinery/medical_pod/autodoc/unskilled
 	name = "advanced autodoc emergency medical system"
@@ -880,6 +925,6 @@
 	skilllock = null
 
 /obj/structure/machinery/medical_pod/autodoc/yautja
-	name = "alien automated medical pod"
+	name = "automated medical pod"
 	desc = "An emergency surgical alien device designed to perform life-saving treatments and basic surgeries on patients automatically, without the need of a surgeon."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

@@ -257,6 +257,10 @@
 	desc = "Yutani OS is a proprietary operating system used by the Company to run most all of their servers, banking, and management systems. A code leak in 2144 led some amateur hackers to believe that Yutani OS is loosely based on the 2017 release of TempleOS. But the Company has refuted these claims."
 	icon_state = "yutani_server_on"
 
+/obj/structure/prop/server_equipment/yutani_server/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/structure/prop/server_equipment/yutani_server/broken
 	icon_state = "yutani_server_broken"
 
@@ -1181,3 +1185,35 @@
 	if(initial(emote.sound))
 		playsound(loc, initial(emote.sound), 50, FALSE)
 	return TRUE
+
+// Body Bag Pile
+
+/obj/structure/prop/body_bag_pile
+	name = "bodybag pile"
+	desc = "A grim mound of body bags stacked haphazardly."
+	icon = 'icons/obj/structures/props/64x64_bodybag_pile.dmi'
+	icon_state = "bodybag_pile"
+	bound_height = 64
+	bound_width = 64
+	density = TRUE
+	layer = BIG_XENO_LAYER
+
+/obj/structure/prop/body_bag_pile/charred
+	name = "charred bodybag pile"
+	desc = "A grim mound of body bags stacked haphazardly, their surfaces blackened and blistered from intense heat. The contents are partially burned."
+	icon = 'icons/obj/structures/props/64x64_bodybag_pile.dmi'
+	icon_state = "bodybag_pile"
+	bound_height = 64
+	bound_width = 64
+	density = TRUE
+	dir = 4
+	layer = BIG_XENO_LAYER
+
+/obj/effect/decal/large_stain
+	name = "large stain"
+	desc = FALSE
+	icon = 'icons/obj/structures/props/64x64_bodybag_pile.dmi'
+	icon_state = "large_stain"
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

@@ -102,7 +102,8 @@
 /obj/effect/decal/ammo_casing,
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 1;
-	faction_group = list("CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/plating/platebot,
 /area/fiorina/station/clf_ship)
@@ -205,6 +206,12 @@
 "aF" = (
 /obj/item/ammo_box/magazine/misc/mre/wy,
 /turf/open/floor/almayer/green/north,
+/area/fiorina/station/clf_ship)
+"aG" = (
+/obj/structure/machinery/light,
+/obj/item/defenses/handheld/planted_flag/clf,
+/obj/item/flag/plantable/clf,
+/turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/clf_ship)
 "aI" = (
 /turf/open/floor/almayer/blue/southwest,
@@ -560,7 +567,8 @@
 "kw" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 8;
-	faction_group = list("CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -571,7 +579,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/station/park)
 "ls" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -759,7 +767,8 @@
 "qR" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4;
-	faction_group = list("CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/station/clf_ship)
@@ -1011,7 +1020,8 @@
 "Ah" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4;
-	faction_group = list("CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
@@ -1522,7 +1532,7 @@
 /turf/open/floor/almayer/blue/northwest,
 /area/fiorina/station/clf_ship)
 "Pm" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/sign/poster/clf{
 	pixel_y = 32
 	},
@@ -2261,7 +2271,7 @@ xH
 BS
 am
 Nv
-yx
+aG
 rJ
 Pc
 Pr

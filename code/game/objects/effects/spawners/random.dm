@@ -229,7 +229,7 @@
 				/obj/item/toy/sword,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,\
-				/obj/item/clothing/accessory/horrible,\
+				/obj/item/clothing/accessory/tie/horrible,\
 				/obj/item/clothing/shoes/slippers,\
 				/obj/item/clothing/shoes/slippers_worn,\
 				/obj/item/clothing/head/collectable/tophat/super)
@@ -521,7 +521,7 @@
 		/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,
 		/obj/item/weapon/gun/shotgun/combat = null,
 		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78,
-		/obj/item/weapon/gun/launcher/grenade/m81/m79 = null
+		/obj/item/weapon/gun/launcher/grenade/m81/m85a1 = null
 		)
 
 /obj/effect/spawner/random/gun/special/lowchance

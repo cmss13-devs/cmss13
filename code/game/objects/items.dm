@@ -84,6 +84,8 @@
 	var/flags_heat_protection = NO_FLAGS
 	/// flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	var/flags_cold_protection = NO_FLAGS
+	/// flags which determine which body parts are hidden from view.
+	var/flags_bodypart_hidden = NO_FLAGS
 	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by flags_heat_protection flags
 	var/max_heat_protection_temperature
 	/// Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by flags_cold_protection flags
@@ -206,13 +208,13 @@
 	return ..()
 
 /obj/item/ex_act(severity, explosion_direction)
-	var/splode = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
+	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
 	explosion_throw(severity, explosion_direction)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
 				if(!explo_proof)
-					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [splode]")))
+					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
 					deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
@@ -220,7 +222,7 @@
 					deconstruct(FALSE)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(!explo_proof)
-				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [splode]")))
+				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
 				deconstruct(FALSE)
 
 /obj/item/mob_launch_collision(mob/living/L)
@@ -338,6 +340,8 @@
 	if(isstorage(loc))
 		var/obj/item/storage/S = loc
 		S.remove_from_storage(src, user.loc, user)
+	else if(isturf(loc) && HAS_TRAIT(user, TRAIT_HAULED))
+		return
 
 	throwing = 0
 
@@ -410,15 +414,20 @@
 
 	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
 
-// called just as an item is picked up (loc is not yet changed)
+/// Called just as an item is picked up (loc is not yet changed) and will return TRUE if the pickup wasn't canceled.
 /obj/item/proc/pickup(mob/user, silent)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
+	if((SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)) & COMSIG_ITEM_PICKUP_CANCELLED)
+		if(!silent)
+			to_chat(user, SPAN_WARNING("Can't pick [src] up!"))
+			balloon_alert(user, "can't pick up")
+		return FALSE
 	SEND_SIGNAL(user, COMSIG_MOB_PICKUP_ITEM, src)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	if(pickup_sound && !silent && src.loc?.z)
 		playsound(src, pickup_sound, pickupvol, pickup_vary)
 	do_pickup_animation(user)
+	return TRUE
 
 ///Helper function for updating last_equipped_slot when item is drawn from storage
 /obj/item/proc/set_last_equipped_slot_of_storage(obj/item/storage/storage_item)
@@ -1150,3 +1159,33 @@
 ///Called by /mob/living/carbon/swap_hand() when hands are swapped
 /obj/item/proc/hands_swapped(mob/living/carbon/swapper_of_hands)
 	return
+
+// formerly in gun_helpers.dm, moved here for universal usage
+/obj/item/proc/unique_action(mob/user)
+	return
+
+/obj/item/verb/use_unique_action()
+	set category = "Object"
+	set name = "Unique Action"
+	set desc = "Use anything unique your item is capable of."
+	set src = usr.contents
+
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
+		return
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		to_chat(usr, SPAN_WARNING("Not right now."))
+		return
+
+	var/obj/item/held_item = usr.get_active_hand()
+	if(!held_item)
+		to_chat(usr, SPAN_WARNING("You need to be holding something to do that!"))
+		return
+
+	src = held_item
+
+	// For guns, check if we should use the active attachable instead
+	var/obj/item/weapon/gun/gun = src
+	if(isgun(gun) && gun.active_attachable)
+		src = gun.active_attachable
+
+	unique_action(usr)

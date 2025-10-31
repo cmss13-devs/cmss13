@@ -44,6 +44,21 @@
 
 	var/icon_full //icon state to use when kit is full
 	var/possible_icons_full
+	/// List of types and their corresponding overlay icon state for appearing inside the item.
+	var/list/types_and_overlays = list(
+		/obj/item/reagent_container/hypospray/autoinjector/tricord = "tricord_injector_overlay",
+		/obj/item/stack/medical/advanced/bruise_pack = "brute_kit_overlay",
+		/obj/item/stack/medical/advanced/ointment = "burn_kit_overlay",
+		/obj/item/stack/medical/splint = "splints_overlay",
+		/obj/item/storage/syringe_case = "syringe_case_overlay",
+		/obj/item/tool/surgery/synthgraft = "synthgraft_overlay",
+		/obj/item/tool/surgery/surgical_line = "surgical_line_overlay",
+		/obj/item/tool/surgery/FixOVein = "fixovein_overlay",
+		/obj/item/reagent_container/blood = "bloodpack_overlay",
+		/obj/item/storage/surgical_case = "surgical_case_overlay",
+	)
+	/// Whether this kit has content overlays or not
+	var/has_overlays = TRUE
 
 /obj/item/storage/firstaid/Initialize()
 	. = ..()
@@ -56,8 +71,17 @@
 	update_icon()
 
 /obj/item/storage/firstaid/update_icon()
-	if(content_watchers || !length(contents))
+	overlays.Cut()
+	if(content_watchers)
 		icon_state = empty_icon
+		if(!has_overlays)
+			return
+		for(var/obj/item/overlayed_item in contents)
+			if(types_and_overlays[overlayed_item.type])
+				overlays += types_and_overlays[overlayed_item.type]
+	else if(!length(contents))
+		icon_state = empty_icon
+		return
 	else
 		icon_state = icon_full
 
@@ -135,9 +159,11 @@
 /obj/item/storage/firstaid/toxin/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/storage/pill_bottle/antitox(src)
-	new /obj/item/reagent_container/pill/antitox(src)
-	new /obj/item/reagent_container/pill/antitox(src)
-	new /obj/item/reagent_container/pill/antitox(src)
+	new /obj/item/storage/pill_bottle/antitox(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/antitoxin(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 
 /obj/item/storage/firstaid/toxin/empty/fill_preset_inventory()
 	return
@@ -218,6 +244,7 @@
 	icon_state = "whiteout"
 	empty_icon = "whiteout_empty"
 	item_state = "whiteout"
+	has_overlays = FALSE //different formfactor
 	can_hold = list(
 		/obj/item/device/healthanalyzer,
 		/obj/item/reagent_container/dropper,
@@ -235,6 +262,10 @@
 		/obj/item/tool/weldingtool,
 		/obj/item/device/defibrillator/synthetic,
 	)
+
+/obj/item/storage/firstaid/whiteout/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/firstaid/whiteout/fill_preset_inventory()
 	new /obj/item/stack/nanopaste(src)
@@ -289,7 +320,7 @@
 	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
 	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
 	new /obj/item/stack/medical/splint/nano(src)
-	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/reagent_container/blood/OMinus(src)
 	new /obj/item/storage/syringe_case/commando(src)
 	new /obj/item/storage/surgical_case/elite/commando(src)
 	new /obj/item/roller/surgical(src)
@@ -416,7 +447,7 @@
 /obj/item/storage/syringe_case/commando
 
 /obj/item/storage/syringe_case/commando/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/ultrazine( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline( src )
 
@@ -527,6 +558,10 @@
 		\nStep five: Close the incision with a surgical line."
 	icon_state = "surgical_case_elite"
 	storage_slots = 5
+
+/obj/item/storage/surgical_case/elite/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/surgical_case/elite/commando/fill_preset_inventory()
 	new /obj/item/tool/surgery/scalpel(src)
@@ -825,6 +860,7 @@
 
 /obj/item/storage/pill_bottle/kelotane
 	name = "\improper Kelotane pill bottle"
+	desc = "A pill bottle filled with Kelotane pills for treating burns."
 	icon_state = "pill_canister2"
 	item_state = "pill_canister2"
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
@@ -835,6 +871,7 @@
 
 /obj/item/storage/pill_bottle/antitox
 	name = "\improper Dylovene pill bottle"
+	desc = "A pill bottle filled with Dylovene pills for treating toxin damage."
 	icon_state = "pill_canister6"
 	item_state = "pill_canister6"
 	pill_type_to_fill = /obj/item/reagent_container/pill/antitox
@@ -846,6 +883,7 @@
 
 /obj/item/storage/pill_bottle/inaprovaline
 	name = "\improper Inaprovaline pill bottle"
+	desc = "A pill bottle filled with Inaprovaline pills for stabilizing critical patients."
 	icon_state = "pill_canister3"
 	item_state = "pill_canister3"
 	pill_type_to_fill = /obj/item/reagent_container/pill/inaprovaline
@@ -856,6 +894,7 @@
 
 /obj/item/storage/pill_bottle/tramadol
 	name = "\improper Tramadol pill bottle"
+	desc = "A pill bottle filled with Tramadol. Treats pain."
 	icon_state = "pill_canister5"
 	item_state = "pill_canister5"
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
@@ -866,6 +905,7 @@
 
 /obj/item/storage/pill_bottle/spaceacillin
 	name = "\improper Spaceacillin pill bottle"
+	desc = "A pill bottle filled with Spaceacillin pills for treating space illnesses."
 	icon_state = "pill_canister4"
 	item_state = "pill_canister4"
 	pill_type_to_fill = /obj/item/reagent_container/pill/spaceacillin
@@ -876,6 +916,7 @@
 
 /obj/item/storage/pill_bottle/bicaridine
 	name = "\improper Bicaridine pill bottle"
+	desc = "A pill bottle filled with Bicaridine pills for treating brute damage."
 	icon_state = "pill_canister11"
 	item_state = "pill_canister11"
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
@@ -886,6 +927,7 @@
 
 /obj/item/storage/pill_bottle/dexalin
 	name = "\improper Dexalin pill bottle"
+	desc = "A pill bottle filled with Dexalin pills for reoxygenating patients."
 	icon_state = "pill_canister1"
 	item_state = "pill_canister1"
 	pill_type_to_fill = /obj/item/reagent_container/pill/dexalin
@@ -897,6 +939,7 @@
 //Alkysine
 /obj/item/storage/pill_bottle/alkysine
 	name = "\improper Alkysine pill bottle"
+	desc = "A pill bottle filled with Alkysine pills for treating brain damage."
 	icon_state = "pill_canister7"
 	item_state = "pill_canister7"
 	pill_type_to_fill = /obj/item/reagent_container/pill/alkysine
@@ -908,6 +951,7 @@
 //imidazoline
 /obj/item/storage/pill_bottle/imidazoline
 	name = "\improper Imidazoline pill bottle"
+	desc = "A pill bottle filled with Imidazoline pills for treating eye damage."
 	icon_state = "pill_canister9"
 	item_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imidazoline
@@ -918,6 +962,7 @@
 
 /obj/item/storage/pill_bottle/imialky
 	name = "\improper Imidazoline-Alkysine pill bottle"
+	desc = "A pill bottle filled with Imidazoline-Alkysine combo pills to treat brain and eye damage simultaneously."
 	icon_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imialky
 	maptext_label = "IA"
@@ -925,6 +970,7 @@
 //PERIDAXON
 /obj/item/storage/pill_bottle/peridaxon
 	name = "\improper Peridaxon pill bottle"
+	desc = "A pill bottle filled with Peridaxon pills to halt most effects of organ damage."
 	icon_state = "pill_canister10"
 	item_state = "pill_canister10"
 	pill_type_to_fill = /obj/item/reagent_container/pill/peridaxon
@@ -993,6 +1039,7 @@
 
 /obj/item/storage/pill_bottle/ultrazine/skillless
 	name = "\improper Ultrazine pill bottle"
+	desc = "This contains pills that are like Adderall on steroids. Makes you go fast as fuck, boy. Highly addictive."
 	idlock = FALSE
 	display_maptext = TRUE
 	maptext_label = "Uz"
@@ -1018,10 +1065,11 @@
 
 /obj/item/storage/pill_bottle/stimulant
 	name = "\improper Stimulant pill bottle"
+	desc = "This contains pills that send the nervous and muscular system into overdrive. Makes you unga faster and harder."
 	icon_state = "pill_canister12"
 	item_state = "pill_canister12"
 	pill_type_to_fill = /obj/item/reagent_container/pill/stimulant
-	maptext_label = "ST"
+	maptext_label = "St"
 
 /obj/item/storage/pill_bottle/stimulant/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -1029,11 +1077,19 @@
 //NOT FOR USCM USE!!!!
 /obj/item/storage/pill_bottle/paracetamol
 	name = "\improper Paracetamol pill bottle"
-	desc = "This is probably someone's prescription bottle."
+	desc = "This is probably someone's prescription pain pill bottle."
 	icon_state = "pill_canister7"
 	pill_type_to_fill = /obj/item/reagent_container/pill/paracetamol
 	skilllock = SKILL_MEDICAL_DEFAULT
 	maptext_label = "Pc"
+
+/obj/item/storage/pill_bottle/oxycodone
+	name = "\improper Oxycodone pill bottle"
+	desc = "This contains pills that treat severe pain, even during live surgery."
+	icon_state = "pill_canister9"
+	pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone
+	skilllock = SKILL_MEDICAL_DEFAULT
+	maptext_label = "Ox"
 
 //---------PILL PACKETS---------
 /obj/item/storage/pill_bottle/packet
@@ -1070,32 +1126,52 @@
 	to_chat(user, SPAN_NOTICE("You throw away [src]."))
 	qdel(src)
 
+/obj/item/storage/pill_bottle/packet/fill_preset_inventory()
+	. = ..()
+	update_icon()
+
+/obj/item/storage/pill_bottle/packet/attack_hand(mob/user, mods)
+	. = ..()
+	update_icon()
+
+/obj/item/storage/pill_bottle/packet/empty(mob/user, turf/T)
+	. = ..()
+	update_icon()
+
+/obj/item/storage/pill_bottle/packet/update_icon()
+	overlays.Cut()
+	var/obj/item/reagent_container/pill/current = locate() in contents //access the pills inside the packet
+	if(current)
+		var/datum/reagents/current_reagents = current.reagents
+		var/datum/reagent/current_reagent = locate() in current_reagents.reagent_list //reagent color is in here
+		if(current_reagent)
+			var/image/filling = image('icons/obj/items/chemistry.dmi', src, "[icon_state]_[length(contents)]")
+			filling.color = current_reagent.color
+			overlays += filling
+			return
+
+//icon states are handled by update_icon
 /obj/item/storage/pill_bottle/packet/tricordrazine
 	name = "Tricordazine pill packet"
-	icon_state = "tricordrazine_packet"
 	desc = "This packet contains tricordazine pills. Heals all types of damage slightly. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/tricordrazine
 
 /obj/item/storage/pill_bottle/packet/tramadol
 	name = "Tramadol pill packet"
-	icon_state = "tramadol_packet"
-	desc = "This packet contains tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	desc = "This packet contains tramadol pills, mild painkillers. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 
 /obj/item/storage/pill_bottle/packet/bicaridine
 	name = "Bicaridine pill packet"
-	icon_state = "bicaridine_packet"
 	desc = "This packet contains bicaridine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 
 /obj/item/storage/pill_bottle/packet/kelotane
-	name = "kelotane pill packet"
-	icon_state = "kelotane_packet"
+	name = "Kelotane pill packet"
 	desc = "This packet contains kelotane pills. Heals burn damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
 
 /obj/item/storage/pill_bottle/packet/oxycodone
-	name = "oxycodone pill packet"
-	icon_state = "oxycodone_packet"
-	desc = "This packet contains oxycodone pills. A highly effective painkiller. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
+	name = "Oxycodone pill packet"
+	desc = "This packet contains oxycodone pills, highly effective painkillers. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone

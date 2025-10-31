@@ -475,10 +475,19 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 //=================================================
 
 //=================================================
-/// Default accessory slot for non-accessory specific clothing
+/// Default accessory slot for non-accessory specific clothing, this should almost never be used for proper categorization
 #define ACCESSORY_SLOT_DEFAULT "Accessory"
 
+// Accessory slots that have mechanics tied to them
 #define ACCESSORY_SLOT_UTILITY "Utility"
+#define ACCESSORY_SLOT_STORAGE "Storage"
+#define ACCESSORY_SLOT_ARMOR_C "Chest armor"
+#define ACCESSORY_SLOT_WRIST_L "Left wrist"
+#define ACCESSORY_SLOT_WRIST_R "Right wrist"
+
+// Accessory slots that are purely if not mostly cosmetic
+#define ACCESSORY_SLOT_TIE "Tie"
+#define ACCESSORY_SLOT_PATCH "Patch"
 #define ACCESSORY_SLOT_ARMBAND "Armband"
 #define ACCESSORY_SLOT_RANK "Rank"
 #define ACCESSORY_SLOT_DECOR "Decor"
@@ -486,18 +495,15 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define ACCESSORY_SLOT_PONCHO "Ponchos"
 #define ACCESSORY_SLOT_TROPHY "Trophy"
 #define ACCESSORY_SLOT_YAUTJA_MASK "Yautja Mask"
-#define ACCESSORY_SLOT_WRIST_L "Left wrist"
-#define ACCESSORY_SLOT_WRIST_R "Right wrist"
 #define ACCESSORY_SLOT_MASK "Mask"
 
-/// Used for uniform armor inserts.
-#define ACCESSORY_SLOT_ARMOR_C "Chest armor"
-
+// Accessory slots that are currently unused
 #define ACCESSORY_SLOT_ARMOR_A "Arm armor"
 #define ACCESSORY_SLOT_ARMOR_L "Leg armor"
 #define ACCESSORY_SLOT_ARMOR_S "Armor storage"
 #define ACCESSORY_SLOT_ARMOR_M "Misc armor"
 #define ACCESSORY_SLOT_HELM_C "Helmet cover"
+
 //=================================================
 
 //=================================================

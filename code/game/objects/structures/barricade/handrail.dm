@@ -40,8 +40,9 @@
 			layer = initial(layer) - 0.01
 		else
 			layer = initial(layer)
+	pixel_y = initial(pixel_y)
 	if(!anchored)
-		layer = initial(layer)
+		pixel_y += 2
 	if(build_state == BARRICADE_BSTATE_FORTIFIED)
 		if(reinforced)
 			overlays += image('icons/obj/structures/handrail.dmi', icon_state = "[barricade_type]_reinforced_[damage_state]")
@@ -71,6 +72,9 @@
 
 		var/mob/living/climber = movable
 		if(climber.a_intent != INTENT_HARM)
+			return ..()
+
+		if(climber.action_busy)
 			return ..()
 
 		climber.client?.move_delay += 3 DECISECONDS
@@ -221,6 +225,9 @@
 					return
 	. = ..()
 
+/obj/structure/barricade/handrail/no_vault
+	autoclimb = FALSE
+
 /obj/structure/barricade/handrail/type_b
 	icon_state = "handrail_b_0"
 
@@ -270,6 +277,7 @@
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	layer = MOB_LAYER + 0.01
 
+
 // Hybrisa Barricades
 
 /obj/structure/barricade/handrail/hybrisa
@@ -282,6 +290,8 @@
 	name = "plastic road barrier"
 	icon_state = "plasticroadbarrierred"
 	barricade_hitsound = 'sound/effects/thud.ogg'
+	health = 10
+	maxhealth = 10
 
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red
 	name = "plastic road barrier"
@@ -301,6 +311,8 @@
 	name = "wood road barrier"
 	icon_state = "roadbarrierwood"
 	barricade_hitsound = 'sound/effects/woodhit.ogg'
+	health = 10
+	maxhealth = 10
 
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange
 	name = "wood road barrier"
@@ -328,6 +340,10 @@
 	name = "metal road barrier"
 	icon_state = "centerroadbarrier2"
 
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark/offset
+	pixel_y = -2
+	layer = BETWEEN_OBJECT_ITEM_LAYER
+
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark/middle
 	name = "metal road barrier"
 	icon_state = "centerroadbarrier2_middle"
@@ -343,6 +359,10 @@
 /obj/structure/barricade/handrail/hybrisa/road/metal/double
 	name = "metal road barrier"
 	icon_state = "centerroadbarrierdouble"
+	layer = BETWEEN_OBJECT_ITEM_LAYER
+
+/obj/structure/barricade/handrail/hybrisa/road/metal/double/offset
+	pixel_y = -5
 
 /obj/structure/barricade/handrail/hybrisa/handrail
 	name = "handrail"

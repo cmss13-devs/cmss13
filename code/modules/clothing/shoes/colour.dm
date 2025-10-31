@@ -8,6 +8,11 @@
 	flags_heat_protection = BODY_FLAG_FEET
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
+/obj/item/clothing/shoes/morgue
+	name = "morgue shoes"
+	icon_state = "morgue"
+	desc = "A pair of all-black shoes to wear in the morgue."
+
 /obj/item/clothing/shoes/brown
 	name = "brown shoes"
 	desc = "A pair of brown shoes."
@@ -40,7 +45,7 @@
 	allowed_items_typecache = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
-		/obj/item/weapon/gun/pistol/holdout,
+		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/tool/screwdriver,
 		/obj/item/weapon/straight_razor,
@@ -48,6 +53,7 @@
 
 /obj/item/clothing/shoes/white
 	name = "white shoes"
+	desc = "A pair of white shoes. Not sterile."
 	icon_state = "white"
 
 
@@ -55,6 +61,11 @@
 	name = "leather shoes"
 	desc = "A sturdy pair of leather shoes."
 	icon_state = "leather"
+
+/obj/item/clothing/shoes/leather/fancy
+	name = "fancy leather shoes"
+	desc = "A fancy pair of leather shoes."
+	icon_state = "fancy"
 
 /obj/item/clothing/shoes/rainbow
 	name = "rainbow shoes"

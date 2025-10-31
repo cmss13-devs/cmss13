@@ -34,6 +34,7 @@
 #define COLOR_CYAN "#00FFFF"
 /// Magenta	rgb(255, 0, 255) R+B
 #define COLOR_MAGENTA "#FF00FF"
+#define COLOR_PINK "#FFC0CB"
 /// Yellow	rgb(255, 255, 0) R+G
 #define COLOR_YELLOW "#FFFF00"
 
@@ -64,6 +65,7 @@
 ///light green rgb( 0, 128, 0)
 #define COLOR_LIGHT_GREEN "#008000"
 #define COLOR_DARK_MODERATE_LIME_GREEN "#44964A"
+#define COLOR_LIME "#32CD32"
 
 #define COLOR_TEAL "#008080"
 
@@ -156,8 +158,8 @@
 #define COLOR_G_ICE "#C7EDDE" //faded cyan
 #define COLOR_G_DES "#FF7C1C" //bright orange
 #define COLOR_G_JUNG "#64AA6E" //faded green
+#define COLOR_G_SORO "#99d178" //light green
 
 /// Gun muzzle colors
 #define COLOR_LASER_RED "#FF8D8D"
 #define COLOR_MUZZLE_BLUE "#2CB2E8"
-

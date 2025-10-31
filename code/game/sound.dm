@@ -307,6 +307,8 @@
 				sound = pick('sound/bullets/spear_ricochet1.ogg','sound/bullets/spear_ricochet2.ogg')
 			if("gun_silenced")
 				sound = pick('sound/weapons/gun_silenced_shot1.ogg','sound/weapons/gun_silenced_shot2.ogg')
+			if("gun_silenced_alt")
+				sound = pick('sound/weapons/gun_silenced_alt_shot1.ogg','sound/weapons/gun_silenced_alt_shot2.ogg','sound/weapons/gun_silenced_alt_shot3.ogg')
 			if("gun_pulse")
 				sound = pick('sound/weapons/gun_m41a_1.ogg','sound/weapons/gun_m41a_2.ogg','sound/weapons/gun_m41a_3.ogg','sound/weapons/gun_m41a_4.ogg','sound/weapons/gun_m41a_5.ogg','sound/weapons/gun_m41a_6.ogg')
 			if("gun_smartgun")
@@ -328,6 +330,8 @@
 				sound = pick('sound/weapons/gun_nsg23_1.ogg','sound/weapons/gun_nsg23_2.ogg')
 			if("gun_pkd")
 				sound = pick('sound/weapons/gun_pkd_fire01.ogg','sound/weapons/gun_pkd_fire02.ogg','sound/weapons/gun_pkd_fire03.ogg')
+			if("gun_l64")
+				sound = pick('sound/weapons/gun_l64_1.ogg','sound/weapons/gun_l64_2.ogg','sound/weapons/gun_l64_3.ogg')
 
 			// Xeno
 			if("acid_hit")
@@ -416,7 +420,7 @@
 			if("talk_phone")
 				sound = pick('sound/machines/telephone/talk_phone1.ogg', 'sound/machines/telephone/talk_phone2.ogg', 'sound/machines/telephone/talk_phone3.ogg', 'sound/machines/telephone/talk_phone4.ogg', 'sound/machines/telephone/talk_phone5.ogg', 'sound/machines/telephone/talk_phone6.ogg', 'sound/machines/telephone/talk_phone7.ogg')
 			if("bone_break")
-				sound = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg')
+				sound = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg','sound/effects/crack1.ogg', 'sound/effects/crack2.ogg', 'sound/effects/crackandbleed.ogg')
 			if("plush")
 				sound = pick('sound/items/plush1.ogg', 'sound/items/plush2.ogg', 'sound/items/plush3.ogg')
 			// working joe
@@ -478,4 +482,4 @@
 	set category = "Debug"
 
 	for(var/sound/soundin in SoundQuery())
-		UNLINT(to_chat(src, "channel#[soundin.channel]: [soundin.status] - [soundin.file] - len=[length(soundin)], wait=[soundin.wait], offset=[soundin.offset], repeat=[soundin.repeat]")) // unlint until spacemandmm suite-1.7
+		to_chat(src, "channel#[soundin.channel]: [soundin.status] - [soundin.file] - len=[length(soundin)], wait=[soundin.wait], offset=[soundin.offset], repeat=[soundin.repeat]")

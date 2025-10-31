@@ -1,5 +1,5 @@
-GLOBAL_VAR_INIT(blooding_activated, FALSE)
 GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
+GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 //Items specific to yautja. Other people can use em, they're not restricted or anything.
 //They can't, however, activate any of the special functions.
@@ -59,7 +59,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M, ACCESSORY_SLOT_TROPHY)
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO, ACCESSORY_SLOT_MASK, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M, ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_PATCH, ACCESSORY_SLOT_TROPHY)
 	var/thrall = FALSE//Used to affect icon generation.
 	fire_intensity_resistance = 10
 	black_market_value = 100
@@ -155,6 +155,8 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
 	var/councillor_override = FALSE
+	worn_accessory_slot = ACCESSORY_SLOT_PONCHO
+	can_become_accessory = TRUE
 
 /obj/item/clothing/yautja_cape/Initialize(mapload, new_color = "#654321")
 	. = ..()
@@ -165,9 +167,9 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	..()
 
 /obj/item/clothing/yautja_cape/pickup(mob/living/user)
+	. = ..()
 	if(isyautja(user))
 		remove_from_missing_pred_gear(src)
-	..()
 
 /obj/item/clothing/yautja_cape/Destroy()
 	. = ..()
@@ -278,6 +280,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	has_sensor = UNIFORM_HAS_SENSORS
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	valid_accessory_slots = list(ACCESSORY_SLOT_DEFAULT, ACCESSORY_SLOT_TIE, ACCESSORY_SLOT_PATCH, ACCESSORY_SLOT_STORAGE, ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R, ACCESSORY_SLOT_MASK, ACCESSORY_SLOT_TROPHY)
 
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -291,7 +294,6 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 /obj/item/clothing/under/chainshirt/hunter
 	name = "body mesh"
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
-	valid_accessory_slots = list(ACCESSORY_SLOT_TROPHY)
 
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -329,6 +331,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	black_market_value = 100
 	flags_item = ITEM_PREDATOR
 	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR)
+	minimap_flag = MINIMAP_FLAG_YAUTJA
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.
@@ -522,7 +525,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 
 /obj/structure/machinery/hunting_ground_selection/attack_hand(mob/living/user)
 	. = ..()
-	if(!isyautja(user))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
 
@@ -706,15 +709,16 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 		to_chat(user, SPAN_WARNING("This is not for you."))
 		return
 
-	if(GLOB.blooding_activated) //only one per round unless admins spawn more or var edit the console.
-		to_chat(user, SPAN_WARNING("A blooding ritual has already taken place. Maybe ask the AI for another."))
+	if(!COOLDOWN_FINISHED(GLOB, youngblood_timer_yautja))
+		var/remaining_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, youngblood_timer_yautja))
+		to_chat(user, SPAN_WARNING("You may begin another hunt in: [remaining_time]."))
 		return
 
 	if(!length(un_blooded))
 		to_chat(user, SPAN_WARNING("There are no youngbloods available."))
 		return
 
-	var/choice = tgui_input_list(user, "Available youngblood groups to awaken.", "[src]", un_blooded) // maybe we can add varients of the ert sometime.
+	var/choice = tgui_input_list(user, "Available youngblood groups to awaken.", "[src]", un_blooded)
 	if(!choice)
 		to_chat(user, SPAN_WARNING("You choose not to awaken any youngbloods."))
 		return
@@ -723,7 +727,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	message_all_yautja("[user.real_name] has chosen to awaken: [choice].")
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) has called [choice] (Youngblood ERT)."))
 	SSticker.mode.get_specific_call(un_blooded[choice], TRUE, FALSE)
-	GLOB.blooding_activated = TRUE
+	COOLDOWN_START(GLOB, youngblood_timer_yautja, 40 MINUTES)
 
 //=================//\\=================\\
 //======================================\\
@@ -862,79 +866,6 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	else
 		. += SPAN_WARNING("Scalp-collecting is supposed to be a <i>joke</i>. Has someone been going around doing this shit for real? What next, a necklace of severed ears? Jesus Christ.")
 
-/obj/item/explosive/grenade/spawnergrenade/hellhound
-	name = "hellhound caller"
-	spawner_type = /mob/living/carbon/xenomorph/hellhound
-	deliveryamt = 1
-	desc = "A strange piece of alien technology. It seems to call forth a hellhound."
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "hellnade"
-	w_class = SIZE_TINY
-	det_time = 30
-	var/obj/structure/machinery/camera/current = null
-	var/turf/activated_turf = null
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/dropped(mob/user)
-	check_eye(user)
-	return ..()
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/attack_self(mob/living/carbon/human/user)
-	if(!active)
-		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-			to_chat(user, SPAN_WARNING("What's this thing?"))
-			return
-		to_chat(user, SPAN_WARNING("You activate the hellhound beacon!"))
-		activate(user)
-		add_fingerprint(user)
-		if(iscarbon(user))
-			var/mob/living/carbon/C = user
-			C.toggle_throw_mode(THROW_MODE_NORMAL)
-	..()
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/activate(mob/user)
-	if(active)
-		return
-
-	if(user)
-		msg_admin_attack("[key_name(user)] primed \a [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-	icon_state = initial(icon_state) + "_active"
-	active = 1
-	update_icon()
-	addtimer(CALLBACK(src, PROC_REF(prime), user), det_time)
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/prime(mob/user)
-	if(spawner_type && deliveryamt)
-		// Make a quick flash
-		var/turf/spawn_turf = get_turf(src)
-		if(ispath(spawner_type))
-			var/mob/living/carbon/xenomorph/hellhound/hound = new spawner_type(spawn_turf)
-			var/datum/behavior_delegate/hellhound_base/hound_owner = hound.behavior_delegate
-			hound_owner.pred_owner = user
-			notify_ghosts(header = "Hellhound", message = "A hellhound has been called in [get_area(user)] by [user.real_name] click play as hellhound to play as one.", extra_large = TRUE)
-	return
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/check_eye(mob/user)
-	if (user.is_mob_incapacitated() || user.blinded )
-		user.unset_interaction()
-	else if ( !current || get_turf(user) != activated_turf || src.loc != user ) //camera doesn't work, or we moved.
-		user.unset_interaction()
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/New()
-	. = ..()
-
-	force = 20
-	throwforce = 40
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/on_set_interaction(mob/user)
-	..()
-	user.reset_view(current)
-
-/obj/item/explosive/grenade/spawnergrenade/hellhound/on_unset_interaction(mob/user)
-	..()
-	current = null
-	user.reset_view(null)
-
-
 // Hunting traps
 /obj/item/hunting_trap
 	name = "hunting trap"
@@ -972,9 +903,10 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 /obj/item/hunting_trap/attack_self(mob/user as mob)
 	..()
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
-		var/wait_time = 3 SECONDS
 		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-			wait_time = rand(5 SECONDS, 10 SECONDS)
+			to_chat(user, SPAN_WARNING("You don't know how to use this thing!"))
+			return
+		var/wait_time = 3 SECONDS
 		if(!do_after(user, wait_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			return
 		armed = TRUE
@@ -1682,6 +1614,13 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/device/multitool/yautja(src)
 
+/obj/item/yautja/chain
+	name = "metal chains"
+	desc = "the weld pattern tells you that these chains were made with heavy weights in mind, the sharp edge implies this was also made to pierce."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "metal_chain"
+	item_state = "metal_chain"
+
 /obj/item/device/houndcam
 	name = "Hellhound Observation Pad"
 	desc = "A portable camera console device, used for remotely overwatching Hellhounds."
@@ -1693,7 +1632,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	force = 1
 	throwforce = 1
 	unacidable = TRUE
-	var/obj/structure/machinery/computer/cameras/yautja/internal_camera
+	var/obj/structure/machinery/computer/cameras/internal/yautja/internal_camera
 
 /obj/item/device/houndcam/Initialize()
 	. = ..()

@@ -1,4 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - refactor: "xeno wound icons have been moved to xeno caste dmi files"

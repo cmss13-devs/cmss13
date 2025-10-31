@@ -1,11 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
-	dir = 1
-	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/clf_lz)
 "am" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname,
 /turf/open/floor/almayer,
@@ -210,9 +203,10 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/stonyfields)
 "iN" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 8;
 	faction_group = list("CLF");
-	dir = 8
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/interior/colony/landing_zone_checkpoint)
@@ -515,9 +509,10 @@
 	},
 /area/kutjevo/interior/colony/clf_shuttle)
 "AT" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 8;
 	faction_group = list("CLF");
-	dir = 8
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
@@ -760,9 +755,10 @@
 /turf/open/floor/almayer/blue/northwest,
 /area/kutjevo/interior/colony/clf_shuttle)
 "Nw" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+/obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 1;
-	faction_group = list("CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
@@ -796,7 +792,7 @@
 /turf/open/floor/almayer/research/containment/floor1,
 /area/kutjevo/exterior/clf_lz)
 "Ou" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
 "OE" = (
@@ -1484,7 +1480,7 @@ Kn
 qx
 lX
 Ix
-aa
+Nw
 cf
 cf
 zp

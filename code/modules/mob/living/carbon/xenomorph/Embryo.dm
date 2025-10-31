@@ -82,6 +82,11 @@
 	if(hivenumber == XENO_HIVE_TUTORIAL)
 		return
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+
+	var/is_nested = HAS_TRAIT(affected_mob, TRAIT_NESTED)
+	if(is_nested && !(affected_mob.stat & DEAD) && stage <= 3 && affected_mob.reagents && affected_mob.reagents.get_reagent_amount("host_stabilizer") < 1)
+		affected_mob.reagents.add_reagent("host_stabilizer", 1)
+
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
 		if(affected_mob.in_stasis || affected_mob.bodytemperature < BODYTEMP_CRYO_LIQUID_THRESHOLD)
@@ -89,7 +94,7 @@
 				counter += 0.33 * hive.larva_gestation_multiplier * delta_time
 			if(stage == 4) // Stasis affects late-stage less
 				counter += 0.11 * hive.larva_gestation_multiplier * delta_time
-		else if(HAS_TRAIT(affected_mob, TRAIT_NESTED)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
+		else if(is_nested) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
 			counter += 1.5 * hive.larva_gestation_multiplier * delta_time //Currently twice as much, can be changed
 		else
 			if(stage < 5)
@@ -175,9 +180,9 @@
 
 	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva.
 	if((!isyautja(affected_mob) || (isyautja(affected_mob) && prob(20))) && is_nested)
-		if(affected_mob.first_xeno || (affected_mob.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
+		if(affected_mob.first_xeno || (affected_mob.client?.prefs?.be_special & BE_ALIEN && !jobban_isbanned(affected_mob, JOB_XENOMORPH)))
 			picked = affected_mob
-		else if(affected_mob.mind?.ghost_mob && affected_mob.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
+		else if(affected_mob.mind?.ghost_mob && affected_mob.client?.prefs?.be_special & BE_ALIEN && !jobban_isbanned(affected_mob, JOB_XENOMORPH))
 			picked = affected_mob.mind.ghost_mob // This currently doesn't look possible
 		else if(affected_mob.persistent_ckey)
 			for(var/mob/dead/observer/cur_obs as anything in GLOB.observer_list)
@@ -185,7 +190,7 @@
 					continue
 				if(cur_obs.ckey != affected_mob.persistent_ckey)
 					continue
-				if(cur_obs.client?.prefs?.be_special & BE_ALIEN_AFTER_DEATH && !jobban_isbanned(cur_obs, JOB_XENOMORPH))
+				if(cur_obs.client?.prefs?.be_special & BE_ALIEN && !jobban_isbanned(cur_obs, JOB_XENOMORPH))
 					picked = cur_obs
 				break
 
@@ -248,8 +253,8 @@
 
 	if(hive)
 		hive.add_xeno(new_xeno)
-		if(!affected_mob.first_xeno && hive.hive_location)
-			hive.increase_larva_after_burst()
+		if(!affected_mob.first_xeno && hive.hive_location && !ismonkey(affected_mob))
+			hive.increase_larva_after_burst(is_nested)
 			hive.hive_ui.update_burrowed_larva()
 
 	new_xeno.update_icons()
@@ -328,6 +333,7 @@
 	for(var/mob/living/carbon/xenomorph/larva/larva_embryo in victim)
 		var/datum/hive_status/hive = GLOB.hive_datum[larva_embryo.hivenumber]
 		larva_embryo.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
+		SEND_SIGNAL(larva_embryo, COMSIG_MOVABLE_Z_CHANGED, 0, (get_turf(victim)).z)
 		larva_embryo.grant_spawn_protection(1 SECONDS)
 		playsound(larva_embryo, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
 
@@ -375,6 +381,7 @@
 				O = victim_human.internal_organs_by_name[i]
 				victim_human.internal_organs_by_name -= i
 				victim_human.internal_organs -= O
-		victim.death(cause) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
+			victim_human.undefibbable = TRUE
 		victim.chestburst = 2
 		victim.update_burst()
+		victim.death(cause) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.

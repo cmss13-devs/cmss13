@@ -14,7 +14,8 @@
 	var/idtype = /obj/item/card/id
 	var/list/access = list()
 	var/assignment
-	var/rank
+	var/job_title
+	var/manifest_title
 	var/list/paygrades = list("???")
 	var/role_comm_title
 	var/minimum_age
@@ -53,6 +54,9 @@
 
 
 /datum/equipment_preset/New()
+	if(!manifest_title)
+		manifest_title = job_title
+
 	uniform_sets = list(
 		UNIFORM_VEND_UTILITY_UNIFORM = utility_under,
 		UNIFORM_VEND_UTILITY_JACKET = utility_over,
@@ -84,10 +88,10 @@
 	return
 
 /datum/equipment_preset/proc/load_name(mob/living/carbon/human/new_human, randomise, client/mob_client)
-	new_human.gender = pick(60;MALE,40;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	var/random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
+	var/random_name = random_name(new_human.gender)
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(21,45)
 
@@ -102,7 +106,7 @@
 	if(!mob_client || new_human.client != mob_client)
 		playtime = JOB_PLAYTIME_TIER_1
 	else
-		playtime = get_job_playtime(mob_client, rank)
+		playtime = get_job_playtime(mob_client, job_title)
 		if((playtime >= JOB_PLAYTIME_TIER_1) && !mob_client.prefs.playtime_perks)
 			playtime = JOB_PLAYTIME_TIER_1
 	var/final_paygrade
@@ -111,7 +115,7 @@
 		if(required_time - playtime > 0)
 			break
 		final_paygrade = current_paygrade
-	if(rank == JOB_SQUAD_MARINE && final_paygrade == PAY_SHORT_ME3)
+	if(job_title == JOB_SQUAD_MARINE && final_paygrade == PAY_SHORT_ME3)
 		if(GLOB.data_core.leveled_riflemen > GLOB.data_core.leveled_riflemen_max)
 			return PAY_SHORT_ME2
 		else
@@ -145,7 +149,7 @@
 	ID.faction = faction
 	ID.faction_group = faction_group.Copy()
 	ID.assignment = assignment
-	ID.rank = rank
+	ID.rank = manifest_title
 	ID.registered_name = new_human.real_name
 	ID.registered_ref = WEAKREF(new_human)
 	ID.registered_gid = new_human.gid
@@ -158,7 +162,7 @@
 	if(new_human.mind)
 		new_human.mind.name = new_human.real_name
 		// Bank account details handled in generate_money_account()
-	new_human.job = rank
+	new_human.job = job_title
 	new_human.comm_title = role_comm_title
 
 /datum/equipment_preset/proc/load_languages(mob/living/carbon/human/new_human, client/mob_client)
@@ -222,7 +226,7 @@
 				qdel(R)
 
 	if(flags & EQUIPMENT_PRESET_MARINE)
-		var/playtime = get_job_playtime(new_human.client, rank)
+		var/playtime = get_job_playtime(new_human.client, job_title)
 		var/medal_type
 
 		switch(playtime)
@@ -275,31 +279,6 @@
 	for(var/trait in real_client.prefs.traits)
 		var/datum/character_trait/character_trait = GLOB.character_traits[trait]
 		character_trait.apply_trait(new_human, src)
-
-/datum/equipment_preset/proc/get_minimap_icon(mob/living/carbon/human/user)
-	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', user.assigned_squad?.background_icon ? user.assigned_squad.background_icon : minimap_background)
-
-	if(islist(minimap_icon))
-		for(var/icons in minimap_icon)
-			var/iconstate = icons ? icons : "unknown"
-			var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)
-			icon.appearance_flags = RESET_COLOR
-
-			if(minimap_icon[icons])
-				icon.color = minimap_icon[icons]
-			background.overlays += icon
-	else
-		var/obj/item/card/id/ID = user.get_idcard()
-		var/icon_to_use
-		if(ID.minimap_icon_override)
-			icon_to_use = ID.minimap_icon_override
-		else
-			icon_to_use = minimap_icon ? minimap_icon : "unknown"
-		var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = icon_to_use)
-		icon.appearance_flags = RESET_COLOR
-		background.overlays += icon
-
-	return background
 
 /datum/equipment_preset/strip //For removing all equipment
 	name = "*strip*"
@@ -578,6 +557,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 		/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 		/obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,
+		/obj/item/ammo_magazine/pistol/action = /obj/item/ammo_magazine/pistol/action,
 		/obj/item/weapon/gun/pistol/highpower = /obj/item/ammo_magazine/pistol/highpower,
 		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 		/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
@@ -789,7 +769,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		if(1)
 			new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/grant(new_human.back), WEAR_IN_BACK)
 		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/good(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/unique/tier_three(new_human.back), WEAR_IN_BACK)
 
 /datum/equipment_preset/proc/add_random_kutjevo_survivor_uniform(mob/living/carbon/human/new_human) // Kutjevo Survivor Clothing Randomizer
 	var/random_gear = rand(0,1)
@@ -995,7 +975,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Bayonet Sheath", 0, /obj/item/storage/pouch/bayonet/upp, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Explosive Pouch", 0, /obj/item/storage/pouch/explosive, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("First-Aid Pouch (Refillable Autoinjectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
@@ -1011,9 +991,12 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		list("Laser Sight", 0, /obj/item/attachable/lasersight, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Masterkey Shotgun", 0, /obj/item/attachable/attached_gun/shotgun, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 0, /obj/item/attachable/compensator, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
+		list("M10 Compensator", 0, /obj/item/attachable/compensator/m10, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Red-Dot Sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
+		list("Mini Red-Dot Sight", 0, /obj/item/attachable/reddot/small, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Reflex Sight", 0, /obj/item/attachable/reflex, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Suppressor", 0, /obj/item/attachable/suppressor, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
+		list("Suppressor, Compact", 0, /obj/item/attachable/suppressor/sleek, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("Vertical Grip", 0, /obj/item/attachable/verticalgrip, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
@@ -1126,3 +1109,33 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/t73(new_human), WEAR_WAIST)
 		if (4)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp(new_human), WEAR_WAIST)
+
+/datum/equipment_preset/proc/add_survivor_rare_item(mob/living/carbon/human/new_human)
+	var/random_rare_item = rand(1,444)
+	switch(random_rare_item)
+		if(1 to 4) // 2%
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717(new_human), WEAR_IN_BACK)
+		if(5 to 8) // 2%
+			new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact(new_human), WEAR_IN_BACK)
+		if(9 to 16) // 4%
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/survivor(new_human), WEAR_IN_BACK)
+		if(17 to 26) // 5%
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive(new_human), WEAR_IN_BACK)
+		if(27 to 38) // 6%
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/advanced/bruise_pack/upgraded(new_human), WEAR_IN_BACK)
+		if(39 to 54) // 8%
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/advanced/ointment/upgraded(new_human), WEAR_IN_BACK)
+		if(55 to 74) // 10%
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
+		if(75 to 104) // 15%
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
+		if(105 to 144) // 20%
+			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15(new_human), WEAR_IN_BACK)
+		if(145 to 194) // 25%
+			new_human.equip_to_slot_or_del(new /obj/item/cell/hyper(new_human), WEAR_IN_BACK)
+		if(195 to 254) // 30%
+			new_human.equip_to_slot_or_del(new /obj/item/attachable/flashlight/grip(new_human), WEAR_IN_BACK)
+		if(255 to 324) // 35%
+			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack (new_human), WEAR_IN_BACK)
+		if(325 to 444) // 45%
+			new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/civ(new_human), WEAR_IN_BACK)

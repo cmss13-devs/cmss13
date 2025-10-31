@@ -1,8 +1,7 @@
 /obj/item/clothing/accessory
-	name = "tie"
-	desc = "A neosilk clip-on tie."
+	name = "accessory"
+	desc = "Ahelp if you see this."
 	icon = 'icons/obj/items/clothing/accessory/ties.dmi'
-	icon_state = "bluetie"
 	w_class = SIZE_SMALL
 	var/image/inv_overlay = null //overlay used when attached to clothing.
 	var/obj/item/clothing/has_suit = null //the suit the tie may be attached to
@@ -20,10 +19,13 @@
 	flags_equip_slot = SLOT_ACCESSORY
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/ties_monkey.dmi')
 	var/original_item_path = /obj/item/clothing/accessory
+	worn_accessory_slot = 1
 
 /obj/item/clothing/accessory/attack_self(mob/user)
 	if(can_become_accessory)
 		revert_from_accessory(user)
+		return
+	return ..()
 
 /obj/item/clothing/accessory/Initialize()
 	. = ..()
@@ -79,31 +81,33 @@
 /obj/item/clothing/accessory/proc/additional_examine_text()
 	return "attached to it."
 
-/obj/item/clothing/accessory/blue
+/obj/item/clothing/accessory/tie
 	name = "blue tie"
+	desc = "A neosilk clip-on tie."
 	icon_state = "bluetie"
+	worn_accessory_slot = ACCESSORY_SLOT_TIE
 
-/obj/item/clothing/accessory/red
+/obj/item/clothing/accessory/tie/red
 	name = "red tie"
 	icon_state = "redtie"
 
-/obj/item/clothing/accessory/green
+/obj/item/clothing/accessory/tie/green
 	name = "green tie"
 	icon_state = "greentie"
 
-/obj/item/clothing/accessory/black
+/obj/item/clothing/accessory/tie/black
 	name = "black tie"
 	icon_state = "blacktie"
 
-/obj/item/clothing/accessory/gold
+/obj/item/clothing/accessory/tie/gold
 	name = "gold tie"
 	icon_state = "goldtie"
 
-/obj/item/clothing/accessory/purple
+/obj/item/clothing/accessory/tie/purple
 	name = "purple tie"
 	icon_state = "purpletie"
 
-/obj/item/clothing/accessory/horrible
+/obj/item/clothing/accessory/tie/horrible
 	name = "horrible tie"
 	desc = "A neosilk clip-on tie. This one is disgusting."
 	icon_state = "horribletie"
@@ -122,6 +126,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
 	)
+	worn_accessory_slot = ACCESSORY_SLOT_UTILITY
 
 /obj/item/clothing/accessory/stethoscope/attack(mob/living/carbon/human/being, mob/living/user)
 	if(!ishuman(being) || !isliving(user))
@@ -196,6 +201,7 @@
 	worn_accessory_slot = ACCESSORY_SLOT_MEDAL
 	high_visibility = TRUE
 	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
+	worn_accessory_limit = 2
 
 /obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	. = ..()
@@ -378,6 +384,7 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/armbands.dmi'
 	)
 	worn_accessory_slot = ACCESSORY_SLOT_ARMBAND
+	worn_accessory_limit = 2
 
 /obj/item/clothing/accessory/armband/cargo
 	name = "cargo armband"
@@ -483,6 +490,8 @@
 	)
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 	flags_obj = OBJ_IS_HELMET_GARB
+	worn_accessory_slot = ACCESSORY_SLOT_PATCH
+	worn_accessory_limit = 4
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "USCM Falling Falcons patch"
@@ -657,6 +666,11 @@
 	desc = "A fire-resistant shoulder patch, depicting the logo of Marine Space Force III, Herculis, deployed throughout the Anglo-Japanese arm from the outer veil to the ICSC Network, this patch is often worn by any general assigned to the MSF Herculis, US Space Command and UA Allied Command Generals often have their own patches."
 	icon_state = "msfpatch"
 
+/obj/item/clothing/accessory/patch/hyperdyne_patch
+	name = "Hyperdyne Corporation patch"
+	desc = "A sleek corporate patch bearing the logo of the Hyperdyne Corporation—one of the most powerful conglomerates. Known for synthetic production, AI research, and deep-space logistics. Wearing this patch implies loyalty to profit over people."
+	icon_state = "hyperdynepatch"
+
 // Misc
 
 /obj/item/clothing/accessory/dogtags
@@ -669,7 +683,7 @@
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
 	)
-	worn_accessory_slot = ACCESSORY_SLOT_MEDAL
+	worn_accessory_slot = ACCESSORY_SLOT_DECOR
 
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
@@ -708,6 +722,18 @@
 /obj/item/clothing/accessory/poncho/purple
 	icon_state = "s_poncho"
 
+/obj/item/clothing/accessory/clf_cape
+	name = "torn CLF flag"
+	desc = "A torn up CLF flag with a pin that allows it to be worn as a cape."
+	icon_state = "clf_cape"
+	icon = 'icons/obj/items/clothing/accessory/ponchos.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ponchos.dmi'
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ponchos.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ponchos.dmi'
+	)
+	worn_accessory_slot = ACCESSORY_SLOT_PONCHO
+
 
 //Ties that can store stuff
 
@@ -726,7 +752,7 @@
 	)
 	w_class = SIZE_LARGE //too big to store in other pouches
 	var/obj/item/storage/internal/hold = /obj/item/storage/internal/accessory
-	worn_accessory_slot = ACCESSORY_SLOT_UTILITY
+	worn_accessory_slot = ACCESSORY_SLOT_STORAGE
 	high_visibility = TRUE
 
 /obj/item/clothing/accessory/storage/Initialize()
@@ -804,6 +830,12 @@
 	icon_state = "webbing_black"
 	item_state = "webbing_black"
 
+/obj/item/clothing/accessory/storage/webbing/iasf
+	name = "IASF airborne webbing"
+	desc = "A durable harness system issued to IASF airborne forces, designed to distribute weight evenly for comfort and mobility. Fitted with reinforced pouches for carrying essential gear during high-risk insertions."
+	icon_state = "webbing_twe"
+	item_state = "webbing_twe"
+
 /obj/item/clothing/accessory/storage/webbing/five_slots
 	hold = /obj/item/storage/internal/accessory/webbing/five_slots
 
@@ -868,6 +900,50 @@
 	hold = /obj/item/storage/internal/accessory/tool_webbing
 	icon_state = "vest_brown"
 
+/obj/item/clothing/accessory/storage/black_vest/leg_pouch
+	name = "Leg Pouch"
+	desc = "A camo conforming leg pouch usually worn by hunters, military and people who dream of being military."
+	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
+	icon_state = "leg_pouch"
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/legpouch.dmi'
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/legpouch.dmi',
+	)
+	flags_atom = MAP_COLOR_INDEX
+
+/obj/item/clothing/accessory/storage/black_vest/leg_pouch/Initialize()
+	. = ..()
+	select_gamemode_skin(/obj/item/clothing/accessory/storage/black_vest/leg_pouch)
+	inv_overlay = image("icon" = inv_overlay_icon, "icon_state" = "[icon_state]")
+	update_icon()
+
+/obj/item/clothing/accessory/storage/black_vest/leg_pouch/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	if(flags_atom & MAP_COLOR_INDEX)
+		return
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon_state = "j_leg_pouch"
+		if("classic")
+			icon_state = "c_leg_pouch"
+		if("desert")
+			icon_state = "d_leg_pouch"
+		if("snow")
+			icon_state = "s_leg_pouch"
+		if("urban")
+			icon_state = "u_leg_pouch"
+
+/obj/item/clothing/accessory/storage/black_vest/black_leg_pouch
+	name = "Black Leg Pouch"
+	desc = "A black leg pouch usually worn by hunters, military and people who dream of being military."
+	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
+	icon_state = "leg_pouch_black"
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/legpouch.dmi'
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/legpouch.dmi',
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/accessory/storage/tool_webbing/small
 	name = "Small Tool Webbing"
 	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage. This is the small low-budget version."
@@ -887,8 +963,6 @@
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/device/defibrillator/synthetic,
 		/obj/item/stack/rods,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunkit,
 	)
 
 /obj/item/storage/internal/accessory/tool_webbing/small
@@ -1096,7 +1170,7 @@
 	name = "shoulder holster"
 	desc = "A handgun holster with an attached pouch, allowing two magazines or speedloaders to be stored along with it."
 	icon_state = "holster"
-	worn_accessory_slot = ACCESSORY_SLOT_UTILITY
+	worn_accessory_slot = ACCESSORY_SLOT_STORAGE
 	high_visibility = TRUE
 	hold = /obj/item/storage/internal/accessory/holster
 
@@ -1196,6 +1270,7 @@
 	)
 	flags_equip_slot = SLOT_WAIST
 	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
+	worn_accessory_slot = ACCESSORY_SLOT_DECOR
 
 	var/stored_name = null
 
@@ -1239,7 +1314,7 @@
 	if(isliving(user))
 		user.visible_message(SPAN_DANGER("[user] invades [M]'s personal space, thrusting [src] into their face insistently."),SPAN_DANGER("You invade [M]'s personal space, thrusting [src] into their face insistently. You are the law."))
 
-/obj/item/storage/box/holobadge
+/obj/item/storage/box/holobadge // re-org this out in the future
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
 
@@ -1270,6 +1345,7 @@ Wrist Accessories
 	icon_state = "bracelet"
 	inv_overlay_icon = null
 	worn_accessory_slot = ACCESSORY_SLOT_WRIST_L
+	worn_accessory_limit = 4
 	var/which_wrist = "left wrist"
 
 /obj/item/clothing/accessory/wrist/get_examine_text(mob/user)
@@ -1301,6 +1377,7 @@ Wrist Accessories
 	desc = "A cheap 24-hour only digital wrist watch. It has a crappy red display, great for looking at in the dark!"
 	icon = 'icons/obj/items/clothing/accessory/watches.dmi'
 	icon_state = "cheap_watch"
+	worn_accessory_limit = 1 // though, this means you can wear a watch on each wrist, which should be fine, although you might look stupid for doing this
 
 /obj/item/clothing/accessory/wrist/watch/get_examine_text(mob/user)
 	. = ..()

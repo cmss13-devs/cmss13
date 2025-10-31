@@ -361,13 +361,24 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	overlay_type = "tallgrass_overlay_corner"
 	center = FALSE
 
-//ICE COLONY - SOROKYNE//
+//ICE COLONY
 /obj/structure/flora/grass/tallgrass/ice
 	color = COLOR_G_ICE
 	icon_state = "tallgrass"
 	desc = "A large swathe of bristling snowgrass"
 
 /obj/structure/flora/grass/tallgrass/ice/corner
+	icon_state = "tallgrass_corner"
+	overlay_type = "tallgrass_overlay_corner"
+	center = FALSE
+
+// SOROKYNE
+/obj/structure/flora/grass/tallgrass/jungle_alt
+	color = COLOR_G_SORO
+	icon_state = "tallgrass"
+	desc = "A thick carpet of bristling junglegrass, vibrant and untamed."
+
+/obj/structure/flora/grass/tallgrass/jungle_alt/corner
 	icon_state = "tallgrass_corner"
 	overlay_type = "tallgrass_overlay_corner"
 	center = FALSE
@@ -773,3 +784,25 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	desc = "Looks like some of that fruit might be edible."
 	icon_tag = "plant"
 	variations  = 7
+
+// Large Jungle Bush - SORO - (Colorable)
+
+/obj/structure/flora/jungle/thickbush/large_jungle_bush
+	name = "bush"
+	desc = "A large jungle bush, it'll take something sharp and a lot of determination to clear away."
+	icon = 'icons/obj/structures/props/natural/vegetation/colorable_junge_bush.dmi'
+	icon_state = "bush1"
+	density = FALSE
+	layer = ABOVE_XENO_LAYER
+	fire_flag = FLORA_BURN_NO_SPREAD
+	health = 100
+
+/obj/structure/flora/jungle/thickbush/large_jungle_bush/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION

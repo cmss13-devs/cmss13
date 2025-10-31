@@ -1,6 +1,6 @@
 GLOBAL_LIST_EMPTY(vox_types)
 
-/proc/play_sound_vox(sentence, list/players, list/vox, client/caller, volume = 100)
+/proc/play_sound_vox(sentence, list/players, list/vox, client/user, volume = 100)
 	if(!islist(players))
 		players = list(players)
 
@@ -18,9 +18,9 @@ GLOBAL_LIST_EMPTY(vox_types)
 		var/sound_file = vox[word]
 		sounds += sound_file
 
-	if(caller && length(bad_words))
+	if(user && length(bad_words))
 		var/missed_words = jointext(bad_words, ", ")
-		to_chat(caller, SPAN_WARNING("Couldn't find the sound files for: [missed_words]"))
+		to_chat(user, SPAN_WARNING("Couldn't find the sound files for: [missed_words]"))
 
 	for(var/s in sounds)
 		var/sound/S = sound(s, wait=TRUE, channel=SOUND_CHANNEL_VOX, volume=volume)

@@ -34,8 +34,9 @@
 //increase or decrase accuracy, recoil, and firing delay of rifles and smgs.
 #define SKILL_FIREARMS_CIVILIAN 0  //civilian
 #define SKILL_FIREARMS_TRAINED 1   //marines (allow tactical reloads)
-#define SKILL_FIREARMS_EXPERT 2   //special training
-#define SKILL_FIREARMS_MAX 2
+#define SKILL_FIREARMS_SKILLED 2   //a few marines and more trained personnel
+#define SKILL_FIREARMS_MASTER 3   //special training
+#define SKILL_FIREARMS_MAX 3
 
 //spec_weapons skill
 //hidden. who can and can't use specialist weapons
@@ -123,7 +124,7 @@
 
 
 //execution skill
-//roles with the execution skill can perform battlefield executions (i.e. mateba and deagle)
+//roles with the execution skill can perform battlefield executions (i.e. mateba(unica) and deagle)
 //should be restricted to CO/general/W-Y execs maybe
 
 #define SKILL_EXECUTION_DEFAULT 0

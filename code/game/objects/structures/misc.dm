@@ -1,3 +1,10 @@
+#define PRACTICE_LEVEL_LOW list(XENO_HEALTH_RUNNER, XENO_NO_ARMOR) //runner
+#define PRACTICE_LEVEL_MEDIUM_LOW list(XENO_HEALTH_TIER_6, XENO_NO_ARMOR)//drone
+#define PRACTICE_LEVEL_MEDIUM list(XENO_HEALTH_TIER_6, XENO_ARMOR_TIER_1) //warrior
+#define PRACTICE_LEVEL_HIGH list(XENO_HEALTH_TIER_10, XENO_ARMOR_TIER_3)//crusher
+#define PRACTICE_LEVEL_VERY_HIGH list(XENO_HEALTH_QUEEN, XENO_ARMOR_TIER_2)//queen
+#define PRACTICE_LEVEL_EXTREMELY_HIGH list(XENO_HEALTH_KING, XENO_ARMOR_FACTOR_TIER_5)//king
+
 /obj/structure/showcase
 	name = "Showcase"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
@@ -71,12 +78,60 @@
 
 /obj/structure/target
 	name = "shooting target"
-	anchored = FALSE
-	desc = "A shooting target."
+	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, its not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo wont have any effect."
 	icon = 'icons/obj/structures/props/target_dummies.dmi'
 	icon_state = "target_a"
 	density = FALSE
-	health = 5000
+	health = 10000
+	wrenchable = TRUE
+	anchored = TRUE
+	///mode that dictates how difficult the target should be to flatten(kill)
+	var/list/practice_mode = PRACTICE_LEVEL_LOW
+	///health of the target mode
+	var/practice_health = 230
+/obj/structure/target/Initialize(mapload, ...)
+	. = ..()
+	icon_state = pick("target_a", "target_q")
+
+/obj/structure/target/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_BOLDNOTICE("It seems to have a control panel on it.")
+	. += SPAN_NOTICE("It appears to be at [floor(max(1, practice_health)/practice_mode[1]*100)]% health.")
+	if(practice_health <= 0)
+		. += SPAN_WARNING("[src] is currently rebooting!")
+
+/obj/structure/target/bullet_act(obj/projectile/bullet)
+	. = ..()
+	if(practice_health <= 0 || !anchored)
+		return
+	var/damage_dealt = floor(armor_damage_reduction(GLOB.xeno_ranged, bullet.damage, practice_mode[2], bullet.ammo.penetration))
+	langchat_speech(damage_dealt, get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
+	practice_health -= damage_dealt
+	animation_flash_color(src, "#FF0000", 1)
+	playsound(loc, get_sfx("ballistic_hit"), 20, TRUE, 7)
+	if(practice_health <= 0)
+		start_practice_health_reset()
+
+/obj/structure/target/attack_hand(mob/user)
+	. = ..()
+	var/list/sorted_options = list("Very light target" = PRACTICE_LEVEL_LOW, "Light target" = PRACTICE_LEVEL_MEDIUM_LOW, "Standard target" = PRACTICE_LEVEL_MEDIUM, "Heavy target" = PRACTICE_LEVEL_HIGH, "Super-heavy target" = PRACTICE_LEVEL_VERY_HIGH, "Impossible" = PRACTICE_LEVEL_EXTREMELY_HIGH)
+	var/picked_option = tgui_input_list(user, "Select target difficulty.", "Target difficulty", sorted_options,  20 SECONDS)
+	if(picked_option)
+		practice_mode = sorted_options[picked_option]
+		practice_health = practice_mode[1]
+		user.visible_message(SPAN_NOTICE("[user] adjusted the difficulty of [src]."), SPAN_NOTICE("You adjusted the difficulty of [src] to [lowertext(picked_option)]"))
+
+/obj/structure/target/proc/start_practice_health_reset()
+	animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_IN)
+	animate(transform = matrix(270, MATRIX_ROTATE), time = 1, easing = EASE_OUT)
+	langchat_speech("[src] folds to the ground!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+	playsound(loc, 'sound/machines/chime.ogg', 50, TRUE, 7)
+	addtimer(CALLBACK(src, PROC_REF(raise_target)), 5 SECONDS)
+
+/obj/structure/target/proc/raise_target()
+	animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_OUT)
+	langchat_speech("[src] raises back into position!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+	practice_health = practice_mode[1]
 
 /obj/structure/target/syndicate
 	icon_state = "target_s"
@@ -148,7 +203,7 @@
 	health = max(0, health - damage)
 
 	if(health == 0)
-		visible_message(loc, SPAN_DANGER("[src] shatters!"))
+		visible_message(SPAN_DANGER("[src] shatters!"))
 		deconstruct(FALSE)
 		return TRUE
 
@@ -308,6 +363,9 @@
 	for(var/turf/blocked_turf in range(1, src))
 		blockers += new /obj/effect/build_blocker(blocked_turf, src)
 		new /obj/structure/blocker/anti_cade(blocked_turf)
+	return INITIALIZE_HINT_LATELOAD
+
+
 
 /obj/structure/stairs/multiz/Destroy()
 	QDEL_LIST(blockers)
@@ -339,6 +397,8 @@
 		actual_turf = SSmapping.get_turf_above(target_turf)
 	else
 		actual_turf = SSmapping.get_turf_below(target_turf)
+		mover.plane = ABOVE_BLACKNESS_PLANE
+		addtimer(VARSET_CALLBACK(mover, plane, GAME_PLANE), 0.5 SECONDS)
 
 	if(actual_turf)
 		if(istype(mover, /mob))
@@ -354,8 +414,183 @@
 /obj/structure/stairs/multiz/up
 	direction = UP
 
+	var/datum/staircase/staircase
+
+/obj/structure/stairs/multiz/up/LateInitialize()
+	. = ..()
+
+	if(staircase)
+		return
+
+	var/stairs = list(src)
+
+	for(var/direction in list(turn(dir, 90), turn(dir, -90)))
+		var/adjacent_turf = get_step(src, direction)
+		while(adjacent_turf)
+			var/obj/structure/stairs/multiz/up/up_ladder = locate() in adjacent_turf
+			if(!up_ladder || up_ladder.staircase || up_ladder.dir != dir)
+				break
+
+			stairs += up_ladder
+			adjacent_turf = get_step(adjacent_turf, direction)
+
+	staircase = new(stairs, dir)
+
+/datum/staircase
+
+	/// The direction that this staircase is going in
+	var/dir
+
+	/// The turf -> client images shown when stepped on
+	var/from_turf_to_images = list()
+
+	/// All the turfs that we are monitoring for changes
+	var/from_turfs = list()
+
+	/// Mobs that we are currently displaying images to
+	var/in_range_mob = list()
+
+/datum/staircase/New(list/obj/structure/stairs/multiz/up/stairs, dir)
+	src.dir = dir
+
+	var/to_turfs = list()
+
+	for(var/obj/structure/stairs/multiz/up/stair as anything in stairs)
+		stair.staircase = src
+
+		var/turf/under_the_stairs = get_step(stair, stair.dir)
+
+		for(var/turf/turf in view(under_the_stairs))
+			if(turf in from_turfs)
+				continue
+
+			if((dir == NORTH && turf.y > stair.y) \
+			|| (dir == EAST && turf.x > stair.x) \
+			|| (dir == SOUTH && turf.y < stair.y) \
+			|| (dir == WEST && turf.x < stair.x))
+				continue
+
+			from_turfs += turf
+
+		for(var/turf/turf in view(SSmapping.get_turf_above(under_the_stairs)))
+			if(turf in to_turfs)
+				continue
+			to_turfs += turf
+
+	var/destination_turf_images = list()
+	var/filtered_to_turfs = list()
+
+	for(var/obj/structure/stairs/multiz/up/stair as anything in stairs)
+		for(var/turf/turf as anything in to_turfs)
+			if((dir == NORTH && turf.y <= stair.y) \
+			|| (dir == EAST && turf.x <= stair.x) \
+			|| (dir == SOUTH && turf.y >= stair.y) \
+			|| (dir == WEST && turf.x >= stair.x))
+				continue
+
+			if(istransparentturf(turf))
+				continue
+
+			destination_turf_images["\ref[turf]"] = create_vis_contents_screen(SSmapping.get_turf_below(turf), turf)
+			filtered_to_turfs |= turf
+
+	for(var/turf/turf as anything in from_turfs)
+		for(var/obj/structure/stairs/multiz/up/stair as anything in stairs)
+
+			var/vector/turf_to_stair = vector(stair.x - turf.x, stair.y - turf.y)
+			var/distance_to_stair = sqrt(turf_to_stair.x * turf_to_stair.x + turf_to_stair.y * turf_to_stair.y)
+
+			for(var/turf/to_turf as anything in filtered_to_turfs)
+				var/vector/turf_to_target = vector(to_turf.x - turf.x, to_turf.y - turf.y)
+				var/cross_product = turf_to_stair.x * turf_to_target.y - turf_to_stair.y * turf_to_target.x
+
+				var/distance_to_target = sqrt(turf_to_target.x * turf_to_target.x + turf_to_target.y * turf_to_target.y)
+				if(!distance_to_target || (distance_to_stair && distance_to_target < distance_to_stair))
+					continue
+
+				if(cross_product && abs(cross_product) / (distance_to_stair * distance_to_target) > 0.40)
+					continue
+
+				LAZYADD(from_turf_to_images["\ref[turf]"], destination_turf_images["\ref[to_turf]"])
+				RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered), TRUE)
+
+
+/datum/staircase/proc/handle_entered(turf/originator, atom/what_did_it)
+	SIGNAL_HANDLER
+
+	var/mob/mover = what_did_it
+	if(!istype(mover))
+		return
+
+	if(mover in in_range_mob)
+		return
+
+	RegisterSignal(mover, COMSIG_MOVABLE_MOVED, PROC_REF(handle_movement))
+	RegisterSignal(mover, COMSIG_PARENT_QDELETING, PROC_REF(handle_deleted))
+	handle_movement(mover, originator)
+
+	in_range_mob += mover
+
+
+/datum/staircase/proc/handle_movement(mob/mover, old_loc, direction)
+	SIGNAL_HANDLER
+
+	var/turf/where_from = get_turf(old_loc)
+	if(where_from in from_turfs)
+		for(var/image in from_turf_to_images["\ref[where_from]"])
+			mover.client?.images -= image
+
+	var/turf/where_to = get_turf(mover)
+	if(where_to in from_turfs)
+		for(var/image in from_turf_to_images["\ref[where_to]"])
+			mover.client?.images += image
+
+		return
+
+	in_range_mob -= mover
+	UnregisterSignal(mover, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
+
+/datum/staircase/proc/handle_deleted(atom/updater)
+	SIGNAL_HANDLER
+
+	in_range_mob -= updater
+
+
+/proc/create_vis_contents_screen(turf/appear_where, turf/clone_what)
+	var/image/clone = image('icons/turf/floors/floors.dmi', appear_where, "transparent")
+	clone.vis_contents += clone_what
+	clone.vis_contents += GLOB.above_blackness_backdrop
+	clone.override = TRUE
+
+	clone.plane = ABOVE_BLACKNESS_PLANE
+
+	return clone
+
+GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdrop, new)
+
+/atom/movable/above_blackness_backdrop
+	name = "above_blackness_backdrop"
+	anchored = TRUE
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "grey"
+	plane = ABOVE_BLACKNESS_BACKDROP_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
 /obj/structure/stairs/multiz/down
 	direction = DOWN
+
+/obj/effect/stairs
+	var/direction
+
+/obj/effect/stairs/Initialize(mapload, ...)
+	. = ..()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "stairs_[direction]")
+
+/obj/effect/stairs/up
+	direction = "up"
+
+/obj/effect/stairs/down
+	direction = "down"
 
 /obj/structure/stairs/perspective //instance these for the required icons
 	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi'
@@ -537,3 +772,9 @@
 
 #undef DOUBLE_BAND
 #undef TRIPLE_BAND
+#undef PRACTICE_LEVEL_LOW
+#undef PRACTICE_LEVEL_MEDIUM_LOW
+#undef PRACTICE_LEVEL_MEDIUM
+#undef PRACTICE_LEVEL_HIGH
+#undef PRACTICE_LEVEL_VERY_HIGH
+#undef PRACTICE_LEVEL_EXTREMELY_HIGH

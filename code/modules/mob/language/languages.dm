@@ -13,22 +13,23 @@
 	space_chance = 100 //uses a unique system
 
 // Galactic common languages (systemwide accepted standards).
+/datum/language/scandinavian
+	name = LANGUAGE_SCANDINAVIAN
+	desc = "While not technically one language, Scandinavian languages have grown similar and are nearly indistinguishable from one another unless you actually know the languages."
+	speech_verb = "utters"
+	ask_verb = "queries"
+	exclaim_verb = "yelps"
+	color = "scandinavian"
+	key = "0"
+
+	syllables = list("de", "vin", "meg", "og", "vi", "en", "nei", "ing", "gen", "et", "pur", "ke", "er", "nei", "hjort", "tysk", "de", "kjae", "en", "stein", "ja", "ull", "sil", "pa", "hun", "kjo", "erg", "ba", "re", "ol", "kyll", "menn", "esk", "gul", "gronn", "natt", "makt", "to", "fi", "re", "dag", "god", "jul", "ild", "fem", "jeg", "deg", "bjor", "en", "russ", "land", "sve", "rig", "nor", "ge", "dan", "is")
+
 /datum/language/generated/japanese
 	name = LANGUAGE_JAPANESE
 	desc = "A notoriously complex language boasting an extensive grammatical system, three writing systems, and a new smattering of English loanwords. It has gained popularity due to high cultural contact in the 3WE, and finds use outside due to emigration."
 	speech_verb = "vocalizes"
 	color = "japanese"
 	key = "2"
-
-
-/datum/language/generated/chinese
-	name = LANGUAGE_CHINESE
-	desc = "The secondary language of the UPP, widespread around Asia and with a notable immigrant population in other parts of the world. The most spoken language in charted space."
-	speech_verb = "voices"
-	ask_verb = "questions"
-	exclaim_verb = "shouts"
-	color = "chinese"
-	key = "8"
 
 /datum/language/russian
 	name = LANGUAGE_RUSSIAN
@@ -50,16 +51,35 @@
 
 	syllables = list("die", "das", "wein", "mir", "und", "wir", "ein", "nein", "gen", "en", "sauen", "bin", "nein", "rhein", "deut", "der", "lieb", "en", "stein", "nein", "ja", "wolle", "sil", "bei", "der", "sie", "sch", "kein", "nur", "ach", "kann", "volk", "vau", "gelb", "grun", "macht", "zwei", "vier", "nacht", "tag")
 
-/datum/language/scandinavian
-	name = LANGUAGE_SCANDINAVIAN
-	desc = "While not technically one language, Scandinavian languages have grown similar and are nearly indistinguishable from one another unless you actually know the languages."
-	speech_verb = "utters"
-	ask_verb = "queries"
-	exclaim_verb = "yelps"
-	color = "scandinavian"
-	key = "0"
+/datum/language/spanish
+	name = LANGUAGE_SPANISH
+	desc = "The second most common language spoken in the UA, brought from marines from the Latin American territories and in the former southern USA."
+	speech_verb = "states"
+	ask_verb = "quizes"
+	exclaim_verb = "yells"
+	color = "spanish"
+	key = "5"
 
-	syllables = list("de", "vin", "meg", "og", "vi", "en", "nei", "ing", "gen", "et", "pur", "ke", "er", "nei", "hjort", "tysk", "de", "kjae", "en", "stein", "ja", "ull", "sil", "pa", "hun", "kjo", "erg", "ba", "re", "ol", "kyll", "menn", "esk", "gul", "gronn", "natt", "makt", "to", "fi", "re", "dag", "god", "jul", "ild", "fem", "jeg", "deg", "bjor", "en", "russ", "land", "sve", "rig", "nor", "ge", "dan", "is")
+	syllables = list("ha", "pana", "ja", "blo", "que", "spa", "di", "ga", "na", "ces", "si", "mo", "so", "de", "el", "to", "ro", "mi", "ca", "la", "di", "ah", "mio", "tar", "ion", "gran", "van", "jo", "cie", "qie", "las", "locho", "mas", "no", "gui", "es", "mal")
+
+/datum/language/event_hivemind
+	name = LANGUAGE_TELEPATH
+	desc = "An event only language that provides a hivemind for its users."
+	speech_verb = "resonates"
+	ask_verb = "resonates"
+	exclaim_verb = "resonates"
+	color = "tajaran"
+	key = "7"
+	flags = RESTRICTED|HIVEMIND
+
+/datum/language/generated/chinese
+	name = LANGUAGE_CHINESE
+	desc = "The secondary language of the UPP, widespread around Asia and with a notable immigrant population in other parts of the world. The most spoken language in charted space."
+	speech_verb = "voices"
+	ask_verb = "questions"
+	exclaim_verb = "shouts"
+	color = "chinese"
+	key = "8"
 
 /datum/language/french
 	name = LANGUAGE_FRENCH
@@ -72,16 +92,17 @@
 
 	syllables = list("le", "en", "es", "de", "re", "ai", "an", "ar", "au", "ou", "nt", "on", "er", "ur", "an", "it", "te", "me", "la", "is", "ou", "nt", "on", "er", "ur", "an", "it", "te", "et", "me", "is", "qu", "se", "il", "ent", "que", "ait", "les", "lle", "our", "men", "ais", "est", "tre", "mai", "ous", "par", "ant", "ion", "eme", "tai", "ans", "pas", "ell", "vou", "tou", "pou", "eur", "ont", "res", "dan", "une", "ien", "sur", "son", "mme", "tio", "des")
 
-/datum/language/spanish
-	name = LANGUAGE_SPANISH
-	desc = "The second most common language spoken in the UA, brought from marines from the Latin American territories and in the former southern USA."
-	speech_verb = "states"
-	ask_verb = "quizes"
-	exclaim_verb = "yells"
-	color = "spanish"
-	key = "5"
+/datum/language/hellhound
+	name = LANGUAGE_HELLHOUND
+	desc = "A growling, guttural method of communication, only Hellhounds seem to be capable of producing these sounds."
+	speech_verb = "growls"
+	ask_verb = "grumbles"
+	exclaim_verb = "snarls"
+	color = "monkey"
+	key = "h"
 
-	syllables = list("ha", "pana", "ja", "blo", "que", "spa", "di", "ga", "na", "ces", "si", "mo", "so", "de", "el", "to", "ro", "mi", "ca", "la", "di", "ah", "mio", "tar", "ion", "gran", "van", "jo", "cie", "qie", "las", "locho", "mas", "no", "gui", "es", "mal")
+/datum/language/hellhound/scramble(input)
+	return pick("Grrr...", "Grah!", "Gurrr...")
 
 /datum/language/commando
 	name = LANGUAGE_TSL
@@ -108,27 +129,6 @@
 
 	syllables = list("!", "?", ".", "@", "$", "%", "^", "&", "*", "-", "=", "+", "e", "b", "y", "p", "|", "z", "~", ">")
 	space_chance = 20
-
-/datum/language/hellhound
-	name = LANGUAGE_HELLHOUND
-	desc = "A growling, guttural method of communication, only Hellhounds seem to be capable of producing these sounds."
-	speech_verb = "growls"
-	ask_verb = "grumbles"
-	exclaim_verb = "snarls"
-	color = "monkey"
-	key = "h"
-
-/datum/language/hellhound/scramble(input)
-	return pick("Grrr...", "Grah!", "Gurrr...")
-
-/datum/language/primitive
-	name = LANGUAGE_MONKEY
-	desc = "Ook ook ook."
-	speech_verb = "chimpers"
-	ask_verb = "chimpers"
-	exclaim_verb = "screeches"
-	color = "monkey"
-	key = "_"
 
 /datum/language/xenomorph
 	name = LANGUAGE_XENOMORPH
@@ -212,12 +212,11 @@
 			continue
 		M.show_message("<i><span class='game say'><span class='name'>synthesised voice</span> <span class='message'>beeps, \"beep beep beep\"</span></span></i>",2)
 
-/datum/language/event_hivemind
-	name = LANGUAGE_TELEPATH
-	desc = "An event only language that provides a hivemind for its users."
-	speech_verb = "resonates"
-	ask_verb = "resonates"
-	exclaim_verb = "resonates"
-	color = "tajaran"
-	key = "7"
-	flags = RESTRICTED|HIVEMIND
+/datum/language/primitive
+	name = LANGUAGE_MONKEY
+	desc = "Ook ook ook."
+	speech_verb = "chimpers"
+	ask_verb = "chimpers"
+	exclaim_verb = "screeches"
+	color = "monkey"
+	key = "_"

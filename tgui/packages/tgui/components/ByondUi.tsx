@@ -77,17 +77,8 @@ function callWinset(
   let params = { ...constParams };
   params['pos'] = byondFmtPos(box.pos);
   params['size'] = byondFmtSize(box.size);
-  params['zoom'] = 0;
-  params['icon-size'] = 0;
-
-  console.log('winset');
-  console.log(params);
 
   Byond.winset(id, { ...params, style: Byond.styleSheet });
-  Byond.winget(id, '*').then((res: Record<string, any>) => {
-    console.log('winget');
-    console.log(res);
-  });
 }
 
 function createByondUiElement(elementId: string | undefined): ByondUiElement {

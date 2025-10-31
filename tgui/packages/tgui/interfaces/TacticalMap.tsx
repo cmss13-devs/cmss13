@@ -6,8 +6,6 @@ import { Window } from 'tgui/layouts';
 
 interface TacMapProps {
   mapRef: string;
-  mapPixelSizeX: number;
-  mapPixelSizeY: number;
   isXeno: boolean;
   canChangeZ: boolean;
 }
@@ -155,6 +153,7 @@ const ViewMapPanel = (props) => {
             winsetParams={{
               id: data.mapRef,
               type: 'map',
+              'icon-size': 0,
             }}
             boxProps={{
               height: '100%',

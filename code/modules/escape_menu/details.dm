@@ -9,7 +9,7 @@ GLOBAL_DATUM(escape_menu_details, /atom/movable/screen/escape_menu/details)
 	return GLOB.escape_menu_details
 
 /atom/movable/screen/escape_menu/details
-	screen_loc = "EAST:-180,NORTH:-25"
+	screen_loc = "EAST:-180,NORTH:-30"
 	maptext_height = 200
 	maptext_width = 200
 

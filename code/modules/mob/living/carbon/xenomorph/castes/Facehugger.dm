@@ -90,7 +90,7 @@
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
-		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
+		PF.flags_can_pass_all = PASS_ALL|PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/facehugger/Logout()
 	. = ..()

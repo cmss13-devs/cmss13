@@ -53,14 +53,14 @@ var/list/wave_dict = list(
 			if("brute")
 				wave_data["amplitude"] = 1
 				wave_data["phase"] = 1.0
-				wave_data["frequency"] = MATH_PI
+				wave_data["frequency"] = 2 //frequency is in radians
 				wave_data["color"] = "#ff4444"
 				wave_data["name"] = "Brute Damage Wave"
 
 			if("burn")
 				wave_data["amplitude"] = 1
 				wave_data["phase"] = 1.5
-				wave_data["frequency"] = MATH_PI / 2
+				wave_data["frequency"] = 1 //frequency is in radians
 				wave_data["color"] = "#ffbb33"
 				wave_data["name"] = "Burn Damage Wave"
 

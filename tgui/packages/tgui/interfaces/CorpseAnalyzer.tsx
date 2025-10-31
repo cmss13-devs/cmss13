@@ -12,6 +12,12 @@ type Data = {
   current_graph_index: number;
   phase: number;
   amplitude: number;
+  // Add graph stats
+  current_damage_type: string;
+  base_frequency: number;
+  base_amplitude: number;
+  base_phase: number;
+  wave_color: string;
   plotData: {
     datasets: Array<{
       points: Array<[number, number]>;
@@ -61,7 +67,7 @@ export const CorpseAnalyzer = () => {
           data: data.plotData.datasets.map((dataset) => ({
             points: dataset.points,
             fnType: 'points',
-            graphType: 'polyline',
+            graphType: 'scatter',
             color: dataset.color,
           })),
         });
@@ -96,7 +102,7 @@ export const CorpseAnalyzer = () => {
           data: data.componentData.datasets.map((dataset) => ({
             points: dataset.points,
             fnType: 'points',
-            graphType: 'polyline',
+            graphType: 'scatter',
             color: dataset.color,
           })),
         });
@@ -127,6 +133,84 @@ export const CorpseAnalyzer = () => {
   return (
     <Window width={850} height={880}>
       <Window.Content>
+        {/* Graph Stats Display */}
+        <Section
+          title={`${data.current_damage_type || 'Unknown'} Wave Analysis`}
+        >
+          <div
+            style={{
+              display: 'flex',
+              gap: '20px',
+              padding: '10px',
+              backgroundColor: '#1a1a1a',
+              borderRadius: '5px',
+              marginBottom: '10px',
+            }}
+          >
+            <div style={{ flex: 1 }}>
+              <div
+                style={{
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  marginBottom: '5px',
+                }}
+              >
+                Base Wave Properties:
+              </div>
+              <div style={{ fontSize: '12px', lineHeight: '1.4' }}>
+                <div>
+                  <strong>Frequency:</strong>{' '}
+                  {(data.base_frequency || 0).toFixed(3)} rad/s
+                </div>
+                <div>
+                  <strong>Amplitude:</strong>{' '}
+                  {(data.base_amplitude || 0).toFixed(2)}
+                </div>
+                <div>
+                  <strong>Phase:</strong> {(data.base_phase || 0).toFixed(3)}{' '}
+                  rad
+                </div>
+                <div>
+                  <strong>Color:</strong>{' '}
+                  <span style={{ color: data.wave_color || '#ffffff' }}>●</span>{' '}
+                  {data.wave_color || '#ffffff'}
+                </div>
+              </div>
+            </div>
+            <div style={{ flex: 1 }}>
+              <div
+                style={{
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  marginBottom: '5px',
+                }}
+              >
+                Current Modifiers:
+              </div>
+              <div style={{ fontSize: '12px', lineHeight: '1.4' }}>
+                <div>
+                  <strong>Phase Shift:</strong> +{(data.phase || 0).toFixed(3)}π
+                  rad
+                </div>
+                <div>
+                  <strong>Amplitude Scale:</strong> ×
+                  {(data.amplitude || 1).toFixed(2)}
+                </div>
+                <div>
+                  <strong>Effective Frequency:</strong>{' '}
+                  {(data.base_frequency || 0).toFixed(3)} rad/s
+                </div>
+                <div>
+                  <strong>Effective Amplitude:</strong>{' '}
+                  {((data.base_amplitude || 0) * (data.amplitude || 1)).toFixed(
+                    2,
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </Section>
+
         {/* Displays total add of all components and a fit line */}
         <Section title="Total Analysis">
           <div

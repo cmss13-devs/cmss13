@@ -46,6 +46,9 @@ SUBSYSTEM_DEF(cmtv)
 	/// Who we should check out when we're finished observing turfs. Can be null, or a hardref to a mob
 	var/datum/weakref/to_switch_to
 
+	/// Ckeys that have opted out -> when they opted outs. If within the last 5 minutes, they're excluded
+	var/alist/opted_out_ckeys = alist()
+
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
 	if(!username || !CONFIG_GET(string/cmtv_link))
@@ -115,11 +118,8 @@ SUBSYSTEM_DEF(cmtv)
 /datum/controller/subsystem/cmtv/Topic(href, href_list)
 	. = ..()
 
-	if(href_list["abandon_cmtv"] && usr == current_perspective)
-		reset_perspective("Current user requested reset (topic)")
-
-	if(href_list["cancel_cmtv"] && usr == future_perspective?.resolve())
-		reset_perspective("Future user requested reset (topic)")
+	if(href_list["abandon_cmtv"])
+		handoff(usr, "topic")
 
 /datum/controller/subsystem/cmtv/proc/online()
 	if(camera_operator)
@@ -248,7 +248,7 @@ SUBSYSTEM_DEF(cmtv)
 		return
 
 	var/cmtv_link = CONFIG_GET(string/cmtv_link)
-	to_chat(new_perspective, boxed_message("[SPAN_BIGNOTICE("You will be observed in 10 seconds.")]\n\n [SPAN_NOTICE("Your perspective will be shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to cancel this, press <a href='byond://?src=\ref[src];cancel_cmtv=1'>here</a>.")]"))
+	to_chat(new_perspective, boxed_message("[SPAN_BIGNOTICE("You will be observed in 10 seconds.")]\n\n [SPAN_NOTICE("Your perspective will be shared on <a href='[cmtv_link]'>[cmtv_link]</a>. If you wish to cancel this, press <a href='byond://?src=\ref[src];abandon_cmtv=1'>here</a>.")]"))
 
 	future_perspective = WEAKREF(new_perspective)
 
@@ -341,6 +341,15 @@ SUBSYSTEM_DEF(cmtv)
 		return FALSE // start the blooper reel, we've got nothing
 
 	change_observed_mob(get_active_player(), instant)
+
+/datum/controller/subsystem/cmtv/proc/handoff(mob/trying_to_handoff, source)
+	if(current_perspective == trying_to_handoff)
+		reset_perspective("Current user requested reset ([source])")
+		opted_out_ckeys[trying_to_handoff.ckey] = world.time
+
+	if(future_perspective?.resolve() == trying_to_handoff)
+		reset_perspective("Future perspective requested reset ([source])")
+		opted_out_ckeys[trying_to_handoff.ckey] = world.time
 
 /datum/controller/subsystem/cmtv/proc/spectate_event(event, turf/where_to_look, how_long_for = 20 SECONDS, zoom_out = FALSE, when_start = 0)
 	if(!how_long_for || !where_to_look)
@@ -464,6 +473,10 @@ SUBSYSTEM_DEF(cmtv)
 	if(!possible_player)
 		return TRUE
 
+	var/is_opted_out = opted_out_ckeys[possible_player.ckey]
+	if(is_opted_out && world.time - 5 MINUTES < is_opted_out)
+		return TRUE
+
 	if(!possible_player.client)
 		return TRUE
 
@@ -491,11 +504,7 @@ SUBSYSTEM_DEF(cmtv)
 	set name = "Handoff CMTV"
 	set category = "OOC.CMTV"
 
-	if(SScmtv.current_perspective == src)
-		SScmtv.reset_perspective("Current user requested reset (verb)")
-
-	if(SScmtv.future_perspective?.resolve() == src)
-		SScmtv.reset_perspective("Future user requested reset (verb)")
+	SScmtv.handoff(src, "verb")
 
 /client/proc/change_observed_player()
 	set name = "Change Observed Player"
@@ -545,11 +554,7 @@ SUBSYSTEM_DEF(cmtv)
 /datum/action/stop_cmtv/action_activate()
 	. = ..()
 
-	if(owner == SScmtv.current_perspective)
-		SScmtv.reset_perspective("Current user requested reset (action)")
-
-	if(owner == SScmtv.future_perspective?.resolve())
-		SScmtv.reset_perspective("Future user requested reset (action)")
+	SScmtv.handoff(owner, "action")
 
 #undef PRIORITY_FIRST
 #undef PRIORITY_SECOND

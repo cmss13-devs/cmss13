@@ -484,7 +484,6 @@
 
 /mob/living/simple_animal/small
 	name = "small animal"
-	density = FALSE
 
 /mob/living/simple_animal/small/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()

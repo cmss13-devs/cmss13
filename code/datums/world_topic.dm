@@ -379,7 +379,13 @@
 		if(!living_mob)
 			continue
 
-		mobs += living_mob.real_name
+		var/minimap_icon = astype(living_mob, /mob/living/carbon/xenomorph)?.caste.minimap_icon
+		if(!minimap_icon)
+			minimap_icon = astype(living_mob, /mob/living/carbon/human)?.assigned_equipment_preset.minimap_icon
+
+		mobs += list(
+			list("name" = living_mob.real_name, "job" = minimap_icon)
+		)
 
 	data = mobs
 	statuscode = 200

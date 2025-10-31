@@ -486,7 +486,7 @@
 	name = "small animal"
 	density = FALSE
 
-/mob/living/simple_animal/initialize_pass_flags(datum/pass_flags_container/pass_flags)
+/mob/living/simple_animal/small/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
 	if(pass_flags)
 		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER

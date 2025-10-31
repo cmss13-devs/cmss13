@@ -582,7 +582,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if(istype(area) && CEILING_IS_PROTECTED(area.ceiling, CEILING_PROTECTION_TIER_2))
 			too_deap = TRUE
 			continue
-
+		too_deap = FALSE
 		z_coord = max(z, z_coord)
 
 	if(!is_ground_level(z_coord))

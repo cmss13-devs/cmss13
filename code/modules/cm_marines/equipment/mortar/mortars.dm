@@ -395,6 +395,7 @@
 				too_deap = TRUE
 				continue
 
+			too_deap = FALSE
 			z_coord = max(z, z_coord)
 
 		var/turf/target_turf = locate(x_coord,y_coord,z_coord)

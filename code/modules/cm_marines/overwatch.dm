@@ -1387,7 +1387,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		if(istype(area) && CEILING_IS_PROTECTED(area.ceiling, CEILING_DEEP_UNDERGROUND))
 			too_deap = TRUE
 			continue
-
+		too_deap = FALSE
 		z_coord = max(z, z_coord)
 
 	if(protected_by_pylon)

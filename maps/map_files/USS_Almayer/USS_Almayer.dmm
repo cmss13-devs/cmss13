@@ -2110,10 +2110,15 @@
 	ring_cooldown_length = 10
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = 6
+	pixel_x = -6;
+	pixel_y = -3
 	},
 /obj/structure/machinery/door/window/eastleft{
 	dir = 8
+	},
+/obj/item/book/manual/medical_diagnostics_manual{
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /turf/open/floor/almayer/sterile_green2,
 /area/almayer/medical/lower_medical_medbay)
@@ -4586,7 +4591,9 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "akE" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera"
+	name = "ship-grade camera";
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet{
@@ -21656,6 +21663,9 @@
 	pixel_x = -3;
 	pixel_y = 10
 	},
+/obj/item/book/manual/surgery,
+/obj/item/book/manual/chemistry,
+/obj/item/book/manual/medical_diagnostics_manual,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
 "bcW" = (
@@ -22965,6 +22975,7 @@
 /area/almayer/hallways/hangar)
 "bgk" = (
 /obj/structure/surface/table/almayer,
+/obj/item/book/manual/chemistry,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/chemistry)
 "bgl" = (
@@ -59366,6 +59377,7 @@
 	pixel_x = 6;
 	req_one_access_txt = "19;20"
 	},
+/obj/item/book/manual/chemistry,
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/chemistry)
 "kPB" = (

@@ -12,12 +12,7 @@ type Data = {
 
 export const Mortar = (props) => {
   const { act, data } = useBackend<Data>();
-  const {
-    data_target_x,
-    data_target_y,
-    data_dial_x,
-    data_dial_y,
-  } = data;
+  const { data_target_x, data_target_y, data_dial_x, data_dial_y } = data;
 
   const [target_x, setTargetX] = useState(data_target_x);
   const [target_y, setTargetY] = useState(data_target_y);

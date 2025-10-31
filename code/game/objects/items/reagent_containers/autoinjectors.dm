@@ -340,12 +340,13 @@
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5
-	icon_state = "stimpack"
+	autoinjector_type = "+stimpack_custom"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = TRUE
 	maptext_label = "Uz"
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
+	. = ..()
 	icon_state = uses_left ? "stimpack" : "stimpack0"
 	if((isstorage(loc) || ismob(loc)) && display_maptext)
 		maptext = SPAN_LANGCHAT("[maptext_label]")

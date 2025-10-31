@@ -119,7 +119,7 @@
 	id = "dexalinp"
 	description = "Dexalin Plus is an upgraded form of Dexalin with added iron and carbon to expedite the rate at which oxygen binds to the hemoglobin in red blood cells. One unit can immediately and completely cleanse the body of excessive carbon dioxide. However, overdoses are toxic and can severely damage skin and muscle tissues."
 	reagent_state = LIQUID
-	color = "#293fff" // rgb: 41, 63, 255
+	color = "#4d5cdb" // rgb: 77, 92, 219
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON

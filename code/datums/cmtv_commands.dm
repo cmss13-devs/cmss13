@@ -32,8 +32,8 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	if(require_moderator)
 		return "This command requires Moderator."
 
-	if(user_cooldown_time && _user_cooldown[arguments["username"]] && !COOLDOWN_FINISHED(src, _user_cooldown[arguments["username"]]))
-		return "On user cooldown: [COOLDOWN_SECONDSLEFT(src, _user_cooldown[arguments["username"]])]s left."
+	if(user_cooldown_time && _user_cooldown[arguments["user_id"]] && !COOLDOWN_FINISHED(src, _user_cooldown[arguments["user_id"]]))
+		return "On user cooldown: [COOLDOWN_SECONDSLEFT(src, _user_cooldown[arguments["user_id"]])]s left."
 
 	if(global_cooldown_time && !COOLDOWN_FINISHED(src, _global_cooldown))
 		return "On global cooldown: [COOLDOWN_SECONDSLEFT(src, _global_cooldown)]s left."
@@ -47,7 +47,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 /datum/cmtv_command/proc/execute(list/arguments)
 
 /datum/cmtv_command/proc/post_execute(list/arguments)
-	log_game("CMTV: [name] ([arguments["args"]]) executed by [arguments["username"]].")
+	log_game("CMTV: [name] ([arguments["args"]]) executed by [arguments["username"] || arguments["user_id"]].")
 
 	if(arguments["is_moderator"])
 		return
@@ -59,7 +59,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 		COOLDOWN_START(src, _global_cooldown, global_cooldown_time)
 
 	if(user_cooldown_time)
-		COOLDOWN_START(src, _user_cooldown[arguments["username"]], user_cooldown_time)
+		COOLDOWN_START(src, _user_cooldown[arguments["user_id"]], user_cooldown_time)
 
 
 /datum/cmtv_command/help

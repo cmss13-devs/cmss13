@@ -344,7 +344,7 @@
 	icon_state = "stimpack"
 	autoinjector_type = null
 	skilllock = SKILL_MEDICAL_DEFAULT
-	display_maptext = TRUE
+	display_maptext = FALSE //corporate secret
 	maptext_label = "Uz"
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()

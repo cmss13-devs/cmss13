@@ -903,6 +903,17 @@
 /obj/item/storage/pill_bottle/tramadol/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
 
+/obj/item/storage/pill_bottle/oxycodone
+	name = "\improper Oxycodone pill bottle"
+	desc = "This contains pills that treat severe pain, even during live surgery."
+	icon_state = "pill_canister9"
+	item_state = "pill_canister9"
+	pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone
+	maptext_label = "Ox"
+
+/obj/item/storage/pill_bottle/oxycodone/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
+
 /obj/item/storage/pill_bottle/spaceacillin
 	name = "\improper Spaceacillin pill bottle"
 	desc = "A pill bottle filled with Spaceacillin pills for treating space illnesses."
@@ -1082,14 +1093,6 @@
 	pill_type_to_fill = /obj/item/reagent_container/pill/paracetamol
 	skilllock = SKILL_MEDICAL_DEFAULT
 	maptext_label = "Pc"
-
-/obj/item/storage/pill_bottle/oxycodone
-	name = "\improper Oxycodone pill bottle"
-	desc = "This contains pills that treat severe pain, even during live surgery."
-	icon_state = "pill_canister9"
-	pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone
-	skilllock = SKILL_MEDICAL_DEFAULT
-	maptext_label = "Ox"
 
 //---------PILL PACKETS---------
 /obj/item/storage/pill_bottle/packet

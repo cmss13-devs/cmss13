@@ -328,7 +328,7 @@
 /obj/item/storage/firstaid/whiteout/medical/commando/looted/fill_preset_inventory() //for commando insert
 	new /obj/item/storage/box/czsp/medic_upgraded_kits/looted(src)
 	new /obj/item/storage/box/czsp/medic_upgraded_kits/looted(src)
-	new /obj/item/stack/medical/splint/nano/low_amount(src)
+	new /obj/item/stack/medical/splint/nano(src, rand(1,2))
 	new /obj/item/storage/syringe_case/commando/looted(src)
 	new /obj/item/storage/surgical_case/elite/commando/looted(src)
 	new /obj/item/roller(src)
@@ -503,9 +503,9 @@
 /obj/item/storage/box/czsp/medic_upgraded_kits/looted/Initialize()
 	. = ..()
 	if(prob(35))
-		new /obj/item/stack/medical/advanced/bruise_pack/upgraded/low_amount(src)
+		new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src, rand(1,4))
 	if(prob(35))
-		new /obj/item/stack/medical/advanced/ointment/upgraded/low_amount(src)
+		new /obj/item/stack/medical/advanced/ointment/upgraded(src, rand(1,4))
 
 
 //---------SURGICAL CASE---------

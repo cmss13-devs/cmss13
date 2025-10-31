@@ -98,6 +98,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/ghost_vision_pref = GHOST_VISION_LEVEL_MID_NVG
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/dual_wield_pref = DUAL_WIELD_FIRE
+	var/playtime_perks = TRUE
+	var/skip_playtime_ranks = FALSE
 
 	//Synthetic specific preferences
 	var/synthetic_name = "Undefined"
@@ -243,7 +245,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/xeno_postfix = ""
 	var/xeno_name_ban = FALSE
 	var/xeno_vision_level_pref = XENO_VISION_LEVEL_MID_NVG
-	var/playtime_perks = TRUE
 	var/show_queen_name = FALSE
 
 	var/stylesheet = "Modern"
@@ -524,7 +525,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Xeno prefix:</b> <a href='byond://?_src_=prefs;preference=xeno_prefix;task=input'><b>[display_prefix]</b></a><br>"
 			dat += "<b>Xeno postfix:</b> <a href='byond://?_src_=prefs;preference=xeno_postfix;task=input'><b>[display_postfix]</b></a><br>"
 
-			dat += "<b>Enable Playtime Perks:</b> <a href='byond://?_src_=prefs;preference=playtime_perks'><b>[playtime_perks? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Show Queen Name:</b> <a href='byond://?_src_=prefs;preference=show_queen_name'><b>[show_queen_name? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Xeno Night Vision Level:</b> <a href='byond://?_src_=prefs;preference=xeno_vision_level_pref;task=input'><b>[xeno_vision_level_pref]</b></a><br>"
 
@@ -629,6 +629,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 			dat += "<div id='column3'>"
 			dat += "<h2><b><u>Gameplay Toggles:</u></b></h2>"
+			dat += "<b>Enable Playtime Perks:</b> <a href='byond://?_src_=prefs;preference=playtime_perks'><b>[playtime_perks? "Yes" : "No"]</b></a><br>"
+			if(user.client.can_skip_role_lock())
+				dat += "<b>Skip Playtime Ranks:</b> <a href='byond://?_src_=prefs;preference=skip_playtime_ranks'><b>[skip_playtime_ranks? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Toggle Being Able to Hurt Yourself: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Help Intent Safety: \
@@ -1827,6 +1830,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 				if("playtime_perks")
 					playtime_perks = !playtime_perks
+
+				if("skip_playtime_ranks")
+					skip_playtime_ranks = !skip_playtime_ranks
 
 				if("show_queen_name")
 					show_queen_name = !show_queen_name

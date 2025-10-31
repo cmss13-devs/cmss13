@@ -1415,7 +1415,7 @@
 /area/lv522/oob)
 "auv" = (
 /obj/structure/curtain,
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
@@ -2726,7 +2726,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/prison/darkpurple2/north,
 /area/lv522/indoors/a_block/dorms)
 "bnP" = (
@@ -3185,7 +3185,7 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "bGN" = (
@@ -7317,7 +7317,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/strata/white_cyan2,
 /area/lv522/indoors/a_block/executive)
 "dMy" = (
@@ -9909,7 +9909,7 @@
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/bridge)
 "fld" = (
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/garage)
 "fln" = (
@@ -12438,7 +12438,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/corpo)
 "gIg" = (
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "gIh" = (
@@ -12663,7 +12663,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "gQu" = (
-/mob/living/simple_animal/cat/kitten{
+/mob/living/simple_animal/small/cat/kitten{
 	dir = 8
 	},
 /turf/open/floor/prison,
@@ -16226,7 +16226,7 @@
 "iPO" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/objective_landmark/close,
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "iPR" = (
@@ -16642,7 +16642,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/prison/kitchen,
 /area/lv522/indoors/a_block/fitness)
 "jbd" = (
@@ -17179,7 +17179,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/mob/living/simple_animal/corgi/puppy,
+/mob/living/simple_animal/big/corgi/puppy,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/c_block/mining)
 "jqr" = (
@@ -17613,7 +17613,7 @@
 /area/lv522/indoors/a_block/admin)
 "jAI" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/cargo)
 "jAV" = (
@@ -20177,7 +20177,7 @@
 /area/lv522/indoors/a_block/dorms)
 "kLs" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
 	},
@@ -26850,7 +26850,7 @@
 /area/lv522/indoors/c_block/mining)
 "ogZ" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/strata/cyan2/east,
 /area/lv522/indoors/a_block/medical)
 "oht" = (
@@ -37395,7 +37395,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "twY" = (
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/organic/grass,
 /area/lv522/indoors/a_block/garden)
 "txK" = (
@@ -40047,7 +40047,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "uKR" = (
@@ -43530,7 +43530,7 @@
 	pixel_x = 7;
 	pixel_y = 8
 	},
-/mob/living/simple_animal/mouse,
+/mob/living/simple_animal/small/mouse,
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "wsY" = (

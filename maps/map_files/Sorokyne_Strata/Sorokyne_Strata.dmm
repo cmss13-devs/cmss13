@@ -26748,7 +26748,7 @@
 /turf/open/floor/strata/white_cyan2,
 /area/strata/interior/outpost/med)
 "byZ" = (
-/mob/living/simple_animal/cat/Runtime{
+/mob/living/simple_animal/small/cat/Runtime{
 	desc = "Also known as Bernie. Fond of potted plants and Space Carp flavored treats.";
 	name = "Bernard"
 	},

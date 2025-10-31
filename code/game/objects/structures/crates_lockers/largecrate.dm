@@ -73,7 +73,7 @@
 
 /obj/structure/largecrate/lisa/attackby(obj/item/W as obj, mob/user as mob) //ugly but oh well
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		new /mob/living/simple_animal/corgi/Lisa(loc)
+		new /mob/living/simple_animal/big/corgi/Lisa(loc)
 	. = ..()
 
 /obj/structure/largecrate/cow
@@ -82,7 +82,7 @@
 
 /obj/structure/largecrate/cow/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		new /mob/living/simple_animal/cow(loc)
+		new /mob/living/simple_animal/big/cow(loc)
 	. = ..()
 
 /obj/structure/largecrate/goat
@@ -102,7 +102,7 @@
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		var/num = rand(4, 6)
 		for(var/i = 0, i < num, i++)
-			new /mob/living/simple_animal/chick(loc)
+			new /mob/living/simple_animal/small/chick(loc)
 	. = ..()
 
 

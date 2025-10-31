@@ -151,17 +151,17 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	"Miscellaneous" = list(
 	list(
 	name = "Cat",
-	key = /mob/living/simple_animal/cat,
+	key = /mob/living/simple_animal/small/cat,
 	color = "orange"
 	),
 	list(
 	name = "Crab",
-	key = /mob/living/simple_animal/crab,
+	key = /mob/living/simple_animal/small/crab,
 	color = "orange"
 	),
 	list(
 	name = "Corgi",
-	key = /mob/living/simple_animal/corgi,
+	key = /mob/living/simple_animal/big/corgi,
 	color = "orange"
 	),
 	list(

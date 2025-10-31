@@ -19,6 +19,11 @@
 	var/break_stuff_probability = 10
 	var/destroy_surroundings = TRUE
 
+/mob/living/simple_animal/hostile/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
+	..()
+	if(pass_flags_container)
+		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER|PASS_OVER_THROW_ITEM // skill based knife throwing :)
+
 /mob/living/simple_animal/hostile/Destroy()
 	friends = null
 	target_mob_ref = null

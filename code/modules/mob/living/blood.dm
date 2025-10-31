@@ -210,19 +210,19 @@
 		return "greyblood"
 	return "blood"
 
-/mob/living/simple_animal/mouse/get_blood_id()
+/mob/living/simple_animal/small/mouse/get_blood_id()
 	return "blood"
 
-/mob/living/simple_animal/cat/get_blood_id()
+/mob/living/simple_animal/small/cat/get_blood_id()
 	return "blood"
 
-/mob/living/simple_animal/cow/get_blood_id()
+/mob/living/simple_animal/big/cow/get_blood_id()
 	return "blood"
 
-/mob/living/simple_animal/parrot/get_blood_id()
+/mob/living/simple_animal/small/parrot/get_blood_id()
 	return "blood"
 
-/mob/living/simple_animal/corgi/get_blood_id()
+/mob/living/simple_animal/big/corgi/get_blood_id()
 	return "blood"
 
 /mob/living/simple_animal/hostile/retaliate/goat/get_blood_id()

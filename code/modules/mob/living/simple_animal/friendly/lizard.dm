@@ -1,4 +1,4 @@
-/mob/living/simple_animal/lizard
+/mob/living/simple_animal/small/lizard
 	name = "Lizard"
 	desc = "A cute tiny lizard."
 	icon = 'icons/mob/critter.dmi'

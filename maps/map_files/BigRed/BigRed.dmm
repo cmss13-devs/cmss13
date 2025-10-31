@@ -4179,7 +4179,7 @@
 /turf/open/floor/elevatorshaft/north,
 /area/bigredv2/caves/lambda/breakroom)
 "aso" = (
-/mob/living/simple_animal/corgi/puppy{
+/mob/living/simple_animal/big/corgi/puppy{
 	desc = "It's a corgi puppy. MISTER WIGGLES!! HE IS THE GREATEST!";
 	name = "\improper Mister Wiggles"
 	},

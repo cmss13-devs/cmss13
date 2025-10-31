@@ -116,7 +116,7 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/mob/living/simple_animal/mouse/rat/brown,
+/mob/living/simple_animal/small/mouse/rat/brown,
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = -16;
 	pixel_y = 8
@@ -67460,7 +67460,7 @@
 	pixel_x = -1;
 	pixel_y = 28
 	},
-/mob/living/simple_animal/cat/Jones{
+/mob/living/simple_animal/small/cat/Jones{
 	dir = 8
 	},
 /turf/open/floor/wood/ship,
@@ -71472,7 +71472,7 @@
 	pixel_x = -10;
 	pixel_y = 7
 	},
-/mob/living/simple_animal/mouse/white/Doc,
+/mob/living/simple_animal/small/mouse/white/Doc,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/hydroponics)
 "pOi" = (

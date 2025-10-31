@@ -20070,7 +20070,7 @@
 	desc = "A bed of cotton fabric, purposely made for a cat to comfortably sleep on.";
 	name = "cat bed"
 	},
-/mob/living/simple_animal/cat/Runtime,
+/mob/living/simple_animal/small/cat/Runtime,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -28099,7 +28099,7 @@
 /obj/effect/decal/strata_decals/grime/grime1{
 	dir = 4
 	},
-/mob/living/simple_animal/mouse/brown,
+/mob/living/simple_animal/small/mouse/brown,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/s_f)

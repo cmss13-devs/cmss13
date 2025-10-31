@@ -118,7 +118,7 @@ ColorTone(rgb, tone)
 /*
 Get Flat Icon DEMO by DarkCampainger
 
-This is a test for the get flat icon proc, modified approprietly for icons and their states.
+This is a test for the get flat icon proc, modified appropriately for icons and their states.
 Probably not a good idea to run this unless you want to see how the proc works in detail.
 mob
 	icon = 'old_or_unused.dmi'
@@ -572,7 +572,7 @@ world
 	while (gap > 1 || swapped)
 		swapped = 0
 		if(gap > 1)
-			gap = floor(gap / 1.3) // 1.3 is the emperic comb sort coefficient
+			gap = floor(gap / 1.3) // 1.3 is the empiric comb sort coefficient
 		if(gap < 1)
 			gap = 1
 		for(var/i = 1; gap + i <= length(result); i++)
@@ -610,7 +610,7 @@ world
 /proc/generate_and_hash_rsc_file(file, dmi_file_path)
 	var/rsc_ref = fcopy_rsc(file)
 	var/hash
-	//if we have a valid dmi file path we can trust md5'ing the rsc file because we know it doesnt have the bug described in http://www.byond.com/forum/post/2611357
+	//if we have a valid dmi file path we can trust md5'ing the rsc file because we know it doesn't have the bug described in http://www.byond.com/forum/post/2611357
 	if(dmi_file_path)
 		hash = md5(rsc_ref)
 	else //otherwise, we need to do the expensive fcopy() workaround

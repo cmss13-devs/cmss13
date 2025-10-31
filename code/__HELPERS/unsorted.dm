@@ -15,22 +15,22 @@
 							HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || istype(W, /obj/item/tool/pen ) || istype(W, /obj/item/tool/shovel)) \
 						)
 
-//Offuscate x for coord system
+//Obfuscate x for coord system
 #define obfuscate_x(x) ((x) + GLOB.obfs_x)
 
-//Offuscate y for coord system
+//Obfuscate y for coord system
 #define obfuscate_y(y) ((y) + GLOB.obfs_y)
 
-//Offuscate z for the coord system
+//Obfuscate z for the coord system
 #define obfuscate_z(z) ((z) + GLOB.obfs_z)
 
-//Deoffuscate x for coord system
+//Deobfuscate x for coord system
 #define deobfuscate_x(x) ((x) - GLOB.obfs_x)
 
-//Deoffuscate y for coord system
+//Deobfuscate y for coord system
 #define deobfuscate_y(y) ((y) - GLOB.obfs_y)
 
-//Deoffuscate z for the coord system
+//Deobfuscate z for the coord system
 #define deobfuscate_z(z) ((z) - GLOB.obfs_z)
 
 #define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
@@ -263,7 +263,7 @@
 	change_real_name(src, newname)
 
 	if(oldname)
-		//update the datacore records! This is goig to be a bit costly.
+		//update the datacore records! This is going to be a bit costly.
 		var/mob_ref = WEAKREF(src)
 		for(var/list/L in list(GLOB.data_core.general, GLOB.data_core.medical, GLOB.data_core.security, GLOB.data_core.locked))
 			for(var/datum/data/record/record_entry in L)
@@ -295,7 +295,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		// This thing doesnt want to be seen, a bit snowflake.
+		// This thing doesn't want to be seen, a bit snowflake.
 		if(M.invisibility == INVISIBILITY_MAXIMUM && M.alpha == 0)
 			continue
 

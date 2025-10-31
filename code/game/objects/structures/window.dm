@@ -5,7 +5,6 @@
 	icon_state = "window"
 	density = TRUE
 	anchored = TRUE
-	plane = TURF_PLANE
 	layer = WINDOW_LAYER
 	flags_atom = ON_BORDER|FPRINT
 	health = 15
@@ -506,6 +505,7 @@
 /obj/structure/window/framed
 	name = "theoretical window"
 	layer = TABLE_LAYER
+	plane = TURF_PLANE
 	static_frame = 1
 	flags_atom = FPRINT
 	var/window_frame //For perspective windows,so the window frame doesn't magically dissapear

@@ -16,7 +16,7 @@ export const Mortar = (props) => {
     data_target_x,
     data_target_y,
     data_dial_x,
-    data_dial_y
+    data_dial_y,
   } = data;
 
   const [target_x, setTargetX] = useState(data_target_x);

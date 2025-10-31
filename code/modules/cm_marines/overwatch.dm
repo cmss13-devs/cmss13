@@ -1378,7 +1378,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		if(protected_by_pylon(TURF_PROTECTION_OB, turf)) //pylon and core protects when on any z level
 			protected_by_pylon = TRUE
 			break
-		if(istype(turf, /turf/open/space)) //we do not detonate in the open
+		if(istype(turf, /turf/open_space)) //we do not detonate in the open
 			continue
 		if(turf.turf_flags & TURF_HULL) //this makes us ignore the walls above caves, might cause issue if someone uses turf with this flag incorrectly like almayer hull being used for roofs
 			continue

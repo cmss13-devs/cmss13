@@ -1080,7 +1080,6 @@
 /area/desert_dam/exterior/valley/valley_crashsite
 	name = "Crash Site Valley"
 	icon_state = "yellow"
-	unoviable_timer = FALSE
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/desert_dam/exterior/valley/north_valley_dam
@@ -1098,8 +1097,6 @@
 /area/desert_dam/exterior/valley/valley_wilderness
 	name = "Wilderness Valley"
 	icon_state = "central"
-	unoviable_timer = FALSE
-
 
 //Rivers
 /area/desert_dam/exterior/river

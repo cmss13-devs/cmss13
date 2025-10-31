@@ -95,6 +95,9 @@
 	/// How much destroyable resin currently exists in this area
 	var/current_resin_count = 0
 
+	/// Can the floors be destroyed in this area by default
+	var/destructible_floors = TRUE
+
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
 	// rather than waiting for atoms to initialize.

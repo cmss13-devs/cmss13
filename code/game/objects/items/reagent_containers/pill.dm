@@ -187,7 +187,7 @@
 
 /obj/item/reagent_container/pill/oxycodone
 	pill_desc = "A Oxycodone pill. A powerful painkiller."
-	pill_initial_reagents = list("oxycodone" = 15)
+	pill_initial_reagents = list("oxycodone" = 10)
 	pill_icon_class = "oxy"
 
 /obj/item/reagent_container/pill/paracetamol

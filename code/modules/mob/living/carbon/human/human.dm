@@ -4,6 +4,8 @@
 	GLOB.alive_human_list += src
 	SShuman.processable_human_list += src
 
+	RegisterSignal(src, COMSIG_DEATH_DATA_UPDATE, PROC_REF(on_death_signal))
+
 	if(!species)
 		if(new_species)
 			set_species(new_species)
@@ -1869,3 +1871,18 @@
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
 
+
+
+var/list/death_variables = list()
+
+/mob/living/carbon/human/proc/on_death_signal()
+	SIGNAL_HANDLER
+
+	// Initialize death variables when the mob dies
+	LAZYSET(death_variables, "brute_damage", bruteloss)
+	LAZYSET(death_variables, "burn_damage", fireloss)
+	LAZYSET(death_variables, "toxin_damage", toxloss)
+	LAZYSET(death_variables, "oxygen_damage", oxyloss)
+	LAZYSET(death_variables, "broken_bones", count_broken_bones())
+	LAZYSET(death_variables, "pain_percentage", pain.get_pain_percentage())
+	//code for larva parasitization and organ damage?

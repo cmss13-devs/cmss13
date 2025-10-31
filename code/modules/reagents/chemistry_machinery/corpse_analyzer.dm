@@ -41,9 +41,9 @@
 
 /obj/structure/machinery/corpse_analyzer/Initialize()
 	. = ..()
-	for(var/i = 1; i <= length(damage_type_map); i++) //Initalize phase and amplitude modifiers for the 8 graphs
+	for(var/i = 0; i < length(damage_type_map); i++) // ← Fixed indexing to start at 0
 		graph_phase_modifiers["[i]"] = 0.0      // Default phase: 0
-		graph_amplitude_modifiers["[i]"] = 1.0  // Default amplitude: 1.0
+		graph_amplitude_modifiers["[i]"] = 0.0  // ← Changed from 1.0 to 0.0
 	start_processing()
 
 
@@ -80,7 +80,7 @@
 // Get current graph's amplitude modifier
 /obj/structure/machinery/corpse_analyzer/proc/get_current_amplitude()
 	var/graph_key = "[current_graph_index]"
-	return graph_amplitude_modifiers[graph_key] || 1.0
+	return graph_amplitude_modifiers[graph_key] || 0.0  // ← Changed from 1.0 to 0.0
 
 // Set current graph's phase modifier
 /obj/structure/machinery/corpse_analyzer/proc/set_current_phase(new_phase)
@@ -89,8 +89,8 @@
 
 // Set current graph's amplitude modifier
 /obj/structure/machinery/corpse_analyzer/proc/set_current_amplitude(new_amplitude)
-	var/graph_key = "[current_graph_index]"
-	graph_amplitude_modifiers[graph_key] = clamp(new_amplitude, 0.1, 3.0)
+    var/graph_key = "[current_graph_index]"
+    graph_amplitude_modifiers[graph_key] = clamp(new_amplitude, 0.0, 1.0)
 
 /obj/structure/machinery/corpse_analyzer/proc/calculate_sinusoidal_value(amplitude, frequency, phase, time)
 	return amplitude * sin(frequency * time + phase)
@@ -117,95 +117,146 @@
 
 	// Get base wave properties from GLOB.research_sinusoids
 	if(GLOB.research_sinusoids && GLOB.research_sinusoids[selected_damage_type] && length(GLOB.research_sinusoids[selected_damage_type]))
-		var/list/wave_data = GLOB.research_sinusoids[selected_damage_type][1] // Get first wave
+		var/list/wave_data = GLOB.research_sinusoids[selected_damage_type][1]
 		.["base_frequency"] = wave_data["frequency"] || 1.0
-		.["base_amplitude"] = wave_data["amplitude"] || 1.0
+		.["base_amplitude"] = wave_data["amplitude"] || 0.0
 		.["base_phase"] = wave_data["phase"] || 0.0
 		.["wave_color"] = wave_data["color"] || "#ffffff"
 	else
 		// Fallback values
 		.["base_frequency"] = 1.0
-		.["base_amplitude"] = 1.0
+		.["base_amplitude"] = 0.0
 		.["base_phase"] = 0.0
 		.["wave_color"] = "#ffffff"
 
-	.["plotData"] = generate_plot_data()
-	.["componentData"] = generate_plot_data()
+	.["plotData"] = generate_sum_data()      // ← Top graph: sum of all waves
+	.["componentData"] = generate_all_components()  // ← Bottom graph: all individual waves
 
-// New proc to generate component-specific data
-/obj/structure/machinery/corpse_analyzer/proc/generate_component_data()
-	return generate_plot_data() // For now, uses same data - you can modify this later
+// Generate SUM of all waves for top graph
+/obj/structure/machinery/corpse_analyzer/proc/generate_sum_data()
+    if(!GLOB.research_sinusoids || !length(GLOB.research_sinusoids))
+        return null
 
+    var/list/plot_data = list()
+    var/list/datasets = list()
+    var/list/sum_points = list()
+    var/time_step = analysis_duration / resolution
 
-/obj/structure/machinery/corpse_analyzer/proc/generate_plot_data()
-	// Debug: Send to admins only
+    // Calculate sum at each time point
+    for(var/i = 0; i <= resolution; i++)
+        var/time = i * time_step
+        var/sum_value = 0
 
-	if(!GLOB.research_sinusoids || !length(GLOB.research_sinusoids))
-		return null
+        // Add contribution from each damage type
+        for(var/j = 0; j < length(damage_type_map); j++)
+            var/damage_type = damage_type_map[j + 1]
+            var/list/wave_info = GLOB.research_sinusoids[damage_type]
 
-	var/selected_damage_type = get_selected_damage_type()
-	var/list/wave_info = GLOB.research_sinusoids[selected_damage_type]
+            if(!wave_info || !length(wave_info))
+                continue
 
-	if(!wave_info || !length(wave_info))
-		return null
+            var/list/wave_data = wave_info[1]
+            var/graph_key = "[j]"
+            var/graph_phase = graph_phase_modifiers[graph_key] || 0.0
+            var/graph_amplitude = graph_amplitude_modifiers[graph_key] || 0.0
 
-	var/list/wave_data = wave_info[1]
+            var/wave_amplitude = wave_data["amplitude"] * graph_amplitude
+            var/wave_frequency = wave_data["frequency"]
+            // Convert BOTH wave_data phase and graph_phase to radians
+            var/wave_phase = (wave_data["phase"] * 3.14159) + (graph_phase * 3.14159)
 
-	var/current_phase = get_current_phase()
-	var/current_amplitude = get_current_amplitude()
-	var/list/graph_points = list()
+            var/angle_degrees = (wave_frequency * time + wave_phase) * (180 / MATH_PI)
+            var/wave_value = wave_amplitude * sin(angle_degrees)
 
-	var/time_step = analysis_duration / resolution
+            sum_value += wave_value
 
-	var/wave_amplitude = wave_data["amplitude"] * current_amplitude
-	var/wave_frequency = wave_data["frequency"]
-	var/wave_phase = wave_data["phase"] + (current_phase * 3.14159)
-	var/wave_color = wave_data["color"] || "#ffffff"
+        sum_points[++sum_points.len] = list(time, sum_value)
 
-	for(var/i = 0; i <= resolution; i++)
-		var/time = i * time_step
+    // Create single dataset for the sum
+    datasets += list(list(
+        "points" = sum_points,
+        "color" = "#ffffff",  // White for the sum
+        "name" = "Combined Signal"
+    ))
 
-		// Convert from radians to degrees for DM's sin() function
-		var/angle_degrees = (wave_frequency * time + wave_phase) * (180 / MATH_PI)
-		var/value = wave_amplitude * sin(angle_degrees)  // DM sin() expects degrees
+    plot_data["datasets"] = datasets
+    return plot_data
 
-		graph_points[++graph_points.len] = list(time, value)
+// Generate ALL individual component waves for bottom graph
+/obj/structure/machinery/corpse_analyzer/proc/generate_all_components()
+    if(!GLOB.research_sinusoids || !length(GLOB.research_sinusoids))
+        return null
 
-	var/list/plot_data = list()
-	var/list/datasets = list()
+    var/list/plot_data = list()
+    var/list/datasets = list()
 
-	var/capitalized_damage_type = uppertext(copytext(selected_damage_type, 1, 2)) + copytext(selected_damage_type, 2)
+    // Generate data for ALL damage types
+    for(var/i = 0; i < length(damage_type_map); i++)
+        var/damage_type = damage_type_map[i + 1]
+        var/list/wave_info = GLOB.research_sinusoids[damage_type]
 
-	datasets += list(list(
-		"points" = graph_points,
-		"color" = wave_color,
-		"name" = "[capitalized_damage_type] Analysis"
-	))
+        if(!wave_info || !length(wave_info))
+            continue
 
-	plot_data["datasets"] = datasets
-	return plot_data
+        var/list/wave_data = wave_info[1]
+        var/graph_key = "[i]"
+        var/graph_phase = graph_phase_modifiers[graph_key] || 0.0
+        var/graph_amplitude = graph_amplitude_modifiers[graph_key] || 0.0
+
+        var/list/graph_points = list()
+        var	time_step = analysis_duration / resolution
+
+        var/wave_amplitude = wave_data["amplitude"] * graph_amplitude
+        var/wave_frequency = wave_data["frequency"]
+        // Convert BOTH wave_data phase and graph_phase to radians
+        var/wave_phase = (wave_data["phase"] * 3.14159) + (graph_phase * 3.14159)
+        var/wave_color = wave_data["color"] || "#ffffff"
+
+        // Generate points for this damage type
+        for(var/j = 0; j <= resolution; j++)
+            var	time = j * time_step
+            var/angle_degrees = (wave_frequency * time + wave_phase) * (180 / MATH_PI)
+            var/value = wave_amplitude * sin(angle_degrees)
+            graph_points[++graph_points.len] = list(time, value)
+
+        // Add this damage type's dataset
+        var/capitalized_damage_type = uppertext(copytext(damage_type, 1, 2)) + copytext(damage_type, 2)
+        var/name_suffix = ""
+
+        // Highlight the currently selected graph
+        if(i == current_graph_index)
+            name_suffix = " (Editing)"
+
+        datasets += list(list(
+            "points" = graph_points,
+            "color" = wave_color,
+            "name" = "[capitalized_damage_type][name_suffix]"
+        ))
+
+    plot_data["datasets"] = datasets
+    return plot_data
 
 /obj/structure/machinery/corpse_analyzer/ui_act(action, list/params)
-	. = ..()
-	if(.)
-		return
+    . = ..()
+    if(.)
+        return
 
-	if(inoperable())
-		return
+    if(inoperable())
+        return
 
-	switch(action)
-		if("next_graph")
-			current_graph_index = (current_graph_index + 1) % length(damage_type_map)
-			. = TRUE
+    switch(action)
+        if("next_graph")
+            current_graph_index = (current_graph_index + 1) % length(damage_type_map)
+            . = TRUE
 
-		if("previous_graph")
-			current_graph_index = (current_graph_index - 1 + length(damage_type_map)) % length(damage_type_map)
-			. = TRUE
+        if("previous_graph")
+            current_graph_index = (current_graph_index - 1 + length(damage_type_map)) % length(damage_type_map)
+            . = TRUE
 
-		if("set_phase")
-			set_current_phase(params["value"])
-			. = TRUE
+        if("set_phase")
+            set_current_phase(params["value"])
+            . = TRUE
 
-		if("set_amplitude")
-			set_current_amplitude(params["value"])
-			. = TRUE
+        if("set_amplitude")
+            set_current_amplitude(params["value"])
+            . = TRUE

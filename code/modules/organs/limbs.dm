@@ -1543,3 +1543,13 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	owner.drop_inv_item_on_ground(owner_helmet)
 	INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(RANGE_TURFS(1, get_turf(owner))), 1, SPEED_FAST)
 	playsound(owner, 'sound/effects/helmet_noise.ogg', 100)
+
+
+/mob/living/carbon/human/proc/count_broken_bones() //For corpse_analyzer code in human.dm
+    var/broken_count = 0
+
+    for(var/obj/limb/L in limbs)
+        if(L.status & LIMB_BROKEN)
+            broken_count++
+
+    return broken_count

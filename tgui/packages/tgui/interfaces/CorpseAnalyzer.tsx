@@ -193,8 +193,8 @@ export const CorpseAnalyzer = () => {
                   rad
                 </div>
                 <div>
-                  <strong>Amplitude Scale:</strong> ×
-                  {(data.amplitude || 1).toFixed(2)}
+                  <strong>Amplitude Scale:</strong>{' '}
+                  {((data.amplitude || 1) * 100).toFixed(0)}%
                 </div>
                 <div>
                   <strong>Effective Frequency:</strong>{' '}
@@ -275,28 +275,31 @@ export const CorpseAnalyzer = () => {
             >
               <div>
                 <label style={{ display: 'block', marginBottom: '5px' }}>
-                  Phase: {(data.phase || 0.0).toFixed(3)}π radians
+                  Phase: {(data.phase || 0.0).toFixed(2)}π radians
                 </label>
                 <Slider
-                  animated
+                  animated // ← Turn off animation for more precise control
                   value={data.phase || 0.0}
                   minValue={0}
                   maxValue={1}
-                  step={0.001} // Reduced from 0.01 for finer control
+                  step={0.25}
+                  stepPixelSize={60} // ← Add this: makes each step take 60 pixels of mouse movement
                   onChange={(e, value) => act('set_phase', { value: value })}
                 />
               </div>
 
               <div>
                 <label style={{ display: 'block', marginBottom: '5px' }}>
-                  Amplitude: {(data.amplitude || 1.0).toFixed(2)}
+                  Amplitude (Graph {(data.current_graph_index || 0) + 1}):{' '}
+                  {((data.amplitude || 0.0) * 100).toFixed(0)}%
                 </label>
                 <Slider
-                  animated
-                  value={data.amplitude || 1.0}
-                  minValue={0.1}
-                  maxValue={3.0}
-                  step={0.005} // Reduced from 0.1 for smoother control
+                  animated // ← Turn off animation for more precise control
+                  value={data.amplitude || 0.0}
+                  minValue={0.0}
+                  maxValue={1.0}
+                  step={0.1}
+                  stepPixelSize={30} // ← Add this: makes each 10% step take 30 pixels of mouse movement
                   onChange={(e, value) =>
                     act('set_amplitude', { value: value })
                   }

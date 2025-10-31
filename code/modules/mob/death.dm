@@ -1,3 +1,5 @@
+#define COMSIG_DEATH_DATA_UPDATE "death_data_update"
+
 //This is the proc for gibbing a mob. Cannot gib ghosts.
 //added different sort of gibs and animations. N
 /mob/proc/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
@@ -56,6 +58,8 @@
 		cause_data = create_cause_data(cause_data)
 
 	set_stat(DEAD)
+
+	SEND_SIGNAL(src, COMSIG_DEATH_DATA_UPDATE) //Sent to human.dm to log death data
 
 	dizziness = 0
 	jitteriness = 0

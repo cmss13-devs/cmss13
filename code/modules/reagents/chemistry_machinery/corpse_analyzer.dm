@@ -13,27 +13,28 @@
 
 	// Corpse inventory variables
 	var/mob/living/carbon/human/loaded_corpse = null  // Currently loaded corpse
-	var/max_corpse_capacity = 1                     // How many corpses can be stored
-	var/corpse_load_time = 3 SECONDS               // Time to load/unload corpses
+	var/max_corpse_capacity = 1			// How many corpses can be stored
+	var/corpse_load_time = 3 SECONDS			   // Time to load/unload corpses
 
 	var/req_skill = SKILL_MEDICAL
 	var/req_skill_level = SKILL_MEDICAL_DOCTOR
 	var/ui_title = "Corpse Analyzer"
 	var/ui_check = 0
 	var/current_graph_index = 0 // Index of the currently displayed graph
-	var/list/graph_phase_modifiers = list()     // Index-based phase storage
+	var/list/graph_phase_modifiers = list()	 // Index-based phase storage
 	var/list/graph_amplitude_modifiers = list()  // Index-based amplitude storage
 	var/list/corpse_amplitude_modifiers = list() // Amplitude modifiers based on corpse data
+	var/list/corpse_phase_modifiers = list()
 	var/list/damage_type_map = list(
-		CORPSE_BRUTE_DAMAGE,      // Index 0
-		CORPSE_BURN_DAMAGE,       // Index 1
-		CORPSE_TOXIN_DAMAGE,     // Index 2
-		CORPSE_OXYGEN_DAMAGE,    // Index 3
-		CORPSE_BROKEN_BONES,     // Index 4
-		CORPSE_PAIN_DAMAGE       // Index 5
+		CORPSE_BRUTE_DAMAGE,	  // Index 0
+		CORPSE_BURN_DAMAGE,	   // Index 1
+		CORPSE_TOXIN_DAMAGE,	 // Index 2
+		CORPSE_OXYGEN_DAMAGE,	// Index 3
+		CORPSE_BROKEN_BONES,	 // Index 4
+		CORPSE_PAIN_DAMAGE	   // Index 5
 	)
 	var/analysis_duration = 10.0 // Duration of analysis in seconds
-	var/resolution = 200         // Number of data points in the analysis
+	var/resolution = 200		 // Number of data points in the analysis
 
 
 // Universal Mathematical Function Base
@@ -48,7 +49,7 @@
 /obj/structure/machinery/corpse_analyzer/Initialize()
 	. = ..()
 	for(var/i = 0; i < length(damage_type_map); i++) // ← Fixed indexing to start at 0
-		graph_phase_modifiers["[i]"] = 0.0      // Default phase: 0
+		graph_phase_modifiers["[i]"] = 0.0	  // Default phase: 0
 		graph_amplitude_modifiers["[i]"] = 0.0  // ← Changed from 1.0 to 0.0
 	start_processing()
 
@@ -108,56 +109,56 @@
 
 
 /obj/structure/machinery/corpse_analyzer/ui_data(mob/user)
-    . = list()
-    .["current_graph_index"] = current_graph_index
-    .["phase"] = get_current_phase()
-    .["amplitude"] = get_current_amplitude()
-    .["analysis_duration"] = analysis_duration
-    .["resolution"] = resolution
-    .["filter_mode"] = 1
-    .["sensitivity"] = 50
+	. = list()
+	.["current_graph_index"] = current_graph_index
+	.["phase"] = get_current_phase()
+	.["amplitude"] = get_current_amplitude()
+	.["analysis_duration"] = analysis_duration
+	.["resolution"] = resolution
+	.["filter_mode"] = 1
+	.["sensitivity"] = 50
 
-    // Add corpse information
-    if(loaded_corpse)
-        .["loaded_corpse"] = TRUE
-        .["corpse_name"] = loaded_corpse.real_name || "Unknown"
+	// Add corpse information
+	if(loaded_corpse)
+		.["loaded_corpse"] = TRUE
+		.["corpse_name"] = loaded_corpse.real_name || "Unknown"
 
-        // Calculate how close player is to target
-        if(length(corpse_amplitude_modifiers))
-            .["has_target"] = TRUE
-            .["match_percentage"] = calculate_match_percentage()
-        else
-            .["has_target"] = FALSE
-            .["match_percentage"] = 0
-    else
-        .["loaded_corpse"] = FALSE
-        .["has_target"] = FALSE
-        .["match_percentage"] = 0
+		// Calculate how close player is to target
+		if(length(corpse_amplitude_modifiers))
+			.["has_target"] = TRUE
+			.["match_percentage"] = calculate_match_percentage()
+		else
+			.["has_target"] = FALSE
+			.["match_percentage"] = 0
+	else
+		.["loaded_corpse"] = FALSE
+		.["has_target"] = FALSE
+		.["match_percentage"] = 0
 
-    // Add current wave stats
-    var/selected_damage_type = get_selected_damage_type()
-    .["current_damage_type"] = uppertext(copytext(selected_damage_type, 1, 2)) + copytext(selected_damage_type, 2)
+	// Add current wave stats
+	var/selected_damage_type = get_selected_damage_type()
+	.["current_damage_type"] = uppertext(copytext(selected_damage_type, 1, 2)) + copytext(selected_damage_type, 2)
 
-    // Get base wave properties from GLOB.research_sinusoids
-    if(GLOB.research_sinusoids && GLOB.research_sinusoids[selected_damage_type] && length(GLOB.research_sinusoids[selected_damage_type]))
-        var/list/wave_data = GLOB.research_sinusoids[selected_damage_type][1]
-        .["base_frequency"] = wave_data["frequency"] || 1.0
-        .["base_amplitude"] = wave_data["amplitude"] || 0.0
-        .["base_phase"] = wave_data["phase"] || 0.0
-        .["wave_color"] = wave_data["color"] || "#ffffff"
-        .["wave_name"] = wave_data["name"] || "Unknown Wave"
-    else
-        // Fallback values
-        .["base_frequency"] = 1.0
-        .["base_amplitude"] = 0.0
-        .["base_phase"] = 0.0
-        .["wave_color"] = "#ffffff"
-        .["wave_name"] = "Unknown Wave"
+	// Get base wave properties from GLOB.research_sinusoids
+	if(GLOB.research_sinusoids && GLOB.research_sinusoids[selected_damage_type] && length(GLOB.research_sinusoids[selected_damage_type]))
+		var/list/wave_data = GLOB.research_sinusoids[selected_damage_type][1]
+		.["base_frequency"] = wave_data["frequency"] || 1.0
+		.["base_amplitude"] = wave_data["amplitude"] || 0.0
+		.["base_phase"] = wave_data["phase"] || 0.0
+		.["wave_color"] = wave_data["color"] || "#ffffff"
+		.["wave_name"] = wave_data["name"] || "Unknown Wave"
+	else
+		// Fallback values
+		.["base_frequency"] = 1.0
+		.["base_amplitude"] = 0.0
+		.["base_phase"] = 0.0
+		.["wave_color"] = "#ffffff"
+		.["wave_name"] = "Unknown Wave"
 
-    .["plotData"] = generate_sum_data()      // Top graph: player vs target
-    .["componentData"] = generate_all_components()  // Bottom graph: all individual waves
+	.["plotData"] = generate_sum_data()	  // Top graph: player vs target
+	.["componentData"] = generate_all_components()  // Bottom graph: all individual waves
 
-// Calculate how close the player's settings are to the target
+// Calculate how close the player's settings are to the target using R²
 /obj/structure/machinery/corpse_analyzer/proc/calculate_match_percentage()
 	if(!length(corpse_amplitude_modifiers))
 		return 0
@@ -165,23 +166,28 @@
 	var/list/player_values = list()
 	var/list/target_values = list()
 
-	// Collect all amplitude values
+	// Collect ALL values (both amplitude and phase) as one dataset
 	for(var/i = 0; i < length(damage_type_map); i++)
 		var/graph_key = "[i]"
+
+		// Add amplitude values to the dataset
 		var/player_amplitude = graph_amplitude_modifiers[graph_key] || 0.0
 		var/target_amplitude = corpse_amplitude_modifiers[graph_key] || 0.0
-
 		player_values += player_amplitude
 		target_values += target_amplitude
 
-	// Calculate means
+		// Only add phase values if the corpse has non-zero amplitude for this damage type
+		if(length(corpse_phase_modifiers) && target_amplitude > 0.0)
+			var/player_phase = graph_phase_modifiers[graph_key] || 0.0
+			var/target_phase = corpse_phase_modifiers[graph_key] || 0.0
+			player_values += player_phase
+			target_values += target_phase
+
+	// Calculate mean of target values
 	var/target_mean = 0
-	var/player_mean = 0
 	for(var/i = 1; i <= length(target_values); i++)
 		target_mean += target_values[i]
-		player_mean += player_values[i]
 	target_mean /= length(target_values)
-	player_mean /= length(player_values)
 
 	// Calculate R² components
 	var/ss_tot = 0  // Total sum of squares
@@ -189,7 +195,7 @@
 
 	for(var/i = 1; i <= length(target_values); i++)
 		var/target_val = target_values[i]
-		var/player_val = player_values[i]
+		var/player_val = player_values[i]  // ← Fixed the tab character here
 
 		ss_tot += (target_val - target_mean) ** 2
 		ss_res += (target_val - player_val) ** 2
@@ -209,91 +215,73 @@
 
 // Generate SUM of all waves for top graph WITH target line
 /obj/structure/machinery/corpse_analyzer/proc/generate_sum_data()
-    if(!GLOB.research_sinusoids || !length(GLOB.research_sinusoids))
-        return null
+	if(!GLOB.research_sinusoids || !length(GLOB.research_sinusoids))
+		return null
 
-    var/list/plot_data = list()
-    var/list/datasets = list()
-    var/time_step = analysis_duration / resolution
+	var/list/plot_data = list()
+	var/list/datasets = list()
+	var/time_step = analysis_duration / resolution
 
-    // Generate PLAYER's current sum (their attempt)
-    var/list/player_sum_points = list()
-    for(var/i = 0; i <= resolution; i++)
-        var/time = i * time_step
-        var/sum_value = 0
+	// Generate PLAYER's current sum (their attempt)
+	var/list/player_sum_points = list()
+	for(var/i = 0; i <= resolution; i++)
+		var/time = i * time_step
+		var/sum_value = 0
 
-        // Add contribution from each damage type using PLAYER's amplitude settings
-        for(var/j = 0; j < length(damage_type_map); j++)
-            var/damage_type = damage_type_map[j + 1]
-            var/list/wave_info = GLOB.research_sinusoids[damage_type]
-
-            if(!wave_info || !length(wave_info))
-                continue
-
-            var/list/wave_data = wave_info[1]
-            var/graph_key = "[j]"
-            var/graph_phase = graph_phase_modifiers[graph_key] || 0.0
-            var/graph_amplitude = graph_amplitude_modifiers[graph_key] || 0.0  // Player's settings
-
-            var/wave_amplitude = wave_data["amplitude"] * graph_amplitude
-            var/wave_frequency = wave_data["frequency"]
-            var/wave_phase = (wave_data["phase"] * MATH_PI) + (graph_phase * MATH_PI)
-
-            var/angle_degrees = (wave_frequency * time + wave_phase) * (180 / MATH_PI)
-            var/wave_value = wave_amplitude * sin(angle_degrees)
-
-            sum_value += wave_value
-
-        player_sum_points[++player_sum_points.len] = list(time, sum_value)
-
-    // Add player's current attempt
-    datasets += list(list(
-        "points" = player_sum_points,
-        "color" = "#00ff00",  // Green for player's attempt
-        "name" = "Your Signal"
-    ))
-
-    // Generate TARGET line from corpse data (if corpse is loaded)
-    if(loaded_corpse && length(corpse_amplitude_modifiers))
-        var/list/target_sum_points = list()
-
-        for(var/i = 0; i <= resolution; i++)
-            var/time = i * time_step
-            var/target_sum_value = 0
-
-            // Add contribution from each damage type using CORPSE's actual data
-            for(var/j = 0; j < length(damage_type_map); j++)
-                var/damage_type = damage_type_map[j + 1]
-                var/list/wave_info = GLOB.research_sinusoids[damage_type]
-
-                if(!wave_info || !length(wave_info))
-                    continue
-
-                var/list/wave_data = wave_info[1]
-                var/graph_key = "[j]"
-                var/graph_phase = graph_phase_modifiers[graph_key] || 0.0  // Still use player's phase
-                var/corpse_amplitude = corpse_amplitude_modifiers[graph_key] || 0.0  // But corpse's amplitude!
-
-                var/wave_amplitude = wave_data["amplitude"] * corpse_amplitude
-                var/wave_frequency = wave_data["frequency"]
-                var/wave_phase = (wave_data["phase"] * MATH_PI) + (graph_phase * MATH_PI)
-
-                var/angle_degrees = (wave_frequency * time + wave_phase) * (180 / MATH_PI)
-                var/wave_value = wave_amplitude * sin(angle_degrees)
-
-                target_sum_value += wave_value
-
-            target_sum_points[++target_sum_points.len] = list(time, target_sum_value)
-
-        // Add the target line (what they need to match)
-        datasets += list(list(
-            "points" = target_sum_points,
-            "color" = "#ff4444",  // Red for the target
-            "name" = "Target Signal"
-        ))
-
-    plot_data["datasets"] = datasets
-    return plot_data
+		// Add contribution from each damage type using PLAYER's amplitude settings
+		for(var/j = 0; j < length(damage_type_map); j++)
+			var/damage_type = damage_type_map[j + 1]
+			var/list/wave_info = GLOB.research_sinusoids[damage_type]
+			if(!wave_info || !length(wave_info))
+				continue
+			var/list/wave_data = wave_info[1]
+			var/graph_key = "[j]"
+			var/graph_phase = graph_phase_modifiers[graph_key]|| 0.0
+			var/graph_amplitude = graph_amplitude_modifiers[graph_key] || 0.0  // Player's settings
+			var/wave_amplitude = wave_data["amplitude"] * graph_amplitude
+			var/wave_frequency = wave_data["frequency"]
+			var/wave_phase = (wave_data["phase"] * MATH_PI) + (graph_phase * MATH_PI)
+			var/angle_degrees = (wave_frequency * time + wave_phase) * (180 / MATH_PI)
+			var/wave_value = wave_amplitude * sin(angle_degrees)
+			sum_value += wave_value
+		player_sum_points[++player_sum_points.len] = list(time, sum_value)
+	// Add player's current attempt
+	datasets += list(list(
+		"points" = player_sum_points,
+		"color" = "#00ff00",  // Green for player's attempt
+		"name" = "Your Signal"
+	))
+	// Generate TARGET line from corpse data (if corpse is loaded)
+	if(loaded_corpse && length(corpse_amplitude_modifiers))
+		var/list/target_sum_points = list()
+		for(var/i = 0; i <= resolution; i++)
+			var/time = i * time_step
+			var/target_sum_value = 0
+			// Add contribution from each damage type using CORPSE's actual data
+			for(var/j = 0; j < length(damage_type_map); j++)
+				var/damage_type = damage_type_map[j + 1]
+				var/list/wave_info = GLOB.research_sinusoids[damage_type]
+				if(!wave_info || !length(wave_info))
+					continue
+				var/list/wave_data = wave_info[1]
+				var/graph_key = "[j]"
+				var/corpse_amplitude = corpse_amplitude_modifiers[graph_key] || 0.0
+				var/corpse_phase = corpse_phase_modifiers[graph_key] || 0.0  // ← Use CORPSE phase, not player phase
+				var/wave_amplitude = wave_data["amplitude"] * corpse_amplitude
+				var/wave_frequency = wave_data["frequency"]
+				var/wave_phase = (wave_data["phase"] * MATH_PI) + (corpse_phase * MATH_PI)  // ← Use corpse_phase with 2π range
+				var/angle_degrees = (wave_frequency * time + wave_phase) * (180 / MATH_PI)
+				var/wave_value = wave_amplitude * sin(angle_degrees)
+				target_sum_value += wave_value
+			target_sum_points[++target_sum_points.len] = list(time, target_sum_value)
+		// Add the target line (what they need to match)
+		datasets += list(list(
+			"points" = target_sum_points,
+			"color" = "#ff4444",  // Red for the target
+			"name" = "Target Signal"
+		))
+	plot_data["datasets"] = datasets
+	return plot_data
 
 // Generate ALL individual component waves for bottom graph
 /obj/structure/machinery/corpse_analyzer/proc/generate_all_components()
@@ -459,21 +447,32 @@
     var/total_damage = brute + burn + toxin + oxygen
 
     if(total_damage <= 0)
-        // No damage - set all to 0
-        corpse_amplitude_modifiers["0"] = 0.0  // brute
-        corpse_amplitude_modifiers["1"] = 0.0  // burn
-        corpse_amplitude_modifiers["2"] = 0.0  // toxin
-        corpse_amplitude_modifiers["3"] = 0.0  // oxygen
+        corpse_amplitude_modifiers["0"] = 0.0
+        corpse_amplitude_modifiers["1"] = 0.0
+        corpse_amplitude_modifiers["2"] = 0.0
+        corpse_amplitude_modifiers["3"] = 0.0
     else
-        // Normalize damage types to add up to 1.0 (100%)
-        corpse_amplitude_modifiers["0"] = brute / total_damage      // brute
-        corpse_amplitude_modifiers["1"] = burn / total_damage       // burn
-        corpse_amplitude_modifiers["2"] = toxin / total_damage      // toxin
-        corpse_amplitude_modifiers["3"] = oxygen / total_damage     // oxygen
+        // Round to nearest 0.1 (1 decimal place)
+        corpse_amplitude_modifiers["0"] = round((brute / total_damage) * 10) / 10
+        corpse_amplitude_modifiers["1"] = round((burn / total_damage) * 10) / 10
+        corpse_amplitude_modifiers["2"] = round((toxin / total_damage) * 10) / 10
+        corpse_amplitude_modifiers["3"] = round((oxygen / total_damage) * 10) / 10
 
-    // Process other injury types (scale by degree of injury)
     process_bone_amplitude(death_data)
     process_pain_amplitude(death_data)
+
+    // Check for phase data and generate if missing
+    if(!length(loaded_corpse.death_phase_waves))
+        SEND_SIGNAL(loaded_corpse, COMSIG_DEATH_DATA_PHASE_GENERATION)
+
+    // Process phase data if it exists
+    if(length(loaded_corpse.death_phase_waves))
+        corpse_phase_modifiers["0"] = loaded_corpse.death_phase_waves[CORPSE_BRUTE_DAMAGE] || 0.0
+        corpse_phase_modifiers["1"] = loaded_corpse.death_phase_waves[CORPSE_BURN_DAMAGE] || 0.0
+        corpse_phase_modifiers["2"] = loaded_corpse.death_phase_waves[CORPSE_TOXIN_DAMAGE] || 0.0
+        corpse_phase_modifiers["3"] = loaded_corpse.death_phase_waves[CORPSE_OXYGEN_DAMAGE] || 0.0
+        corpse_phase_modifiers["4"] = loaded_corpse.death_phase_waves[CORPSE_BROKEN_BONES] || 0.0
+        corpse_phase_modifiers["5"] = loaded_corpse.death_phase_waves[CORPSE_PAIN_DAMAGE] || 0.0
 
     return TRUE
 
@@ -485,13 +484,14 @@
     var/max_possible_breaks = 10
     var/bone_amplitude = clamp(broken_bones / max_possible_breaks, 0.0, 1.0)
 
-    corpse_amplitude_modifiers["4"] = bone_amplitude  // broken_bones index
+    // Round to nearest 0.1 (1 decimal place)
+    corpse_amplitude_modifiers["4"] = round(bone_amplitude * 10) / 10
 
 // Process pain amplitude (scale by pain percentage)
 /obj/structure/machinery/corpse_analyzer/proc/process_pain_amplitude(list/death_data)
     var/pain_percentage = death_data[CORPSE_PAIN_DAMAGE] || 0
-
     // Pain percentage should already be 0-100, convert to 0-1
     var/pain_amplitude = clamp(pain_percentage / 100.0, 0.0, 1.0)
 
-    corpse_amplitude_modifiers["5"] = pain_amplitude  // pain index
+    // Round to nearest 0.1 (1 decimal place)
+    corpse_amplitude_modifiers["5"] = round(pain_amplitude * 10) / 10

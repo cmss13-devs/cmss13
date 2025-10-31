@@ -89,3 +89,6 @@
 
 /// From /mob/living/carbon/human/hud_set_holocard()
 #define COMSIG_HUMAN_TRIAGE_CARD_UPDATED "human_triage_card_updated"
+
+#define COMSIG_DEATH_DATA_PHASE_GENERATION "death_data_phase_generation"
+#define COMSIG_DEATH_DATA_UPDATE "death_data_update"

@@ -65,6 +65,7 @@
 	.["mask_accessory_types"] = PRED_MASK_ACCESSORY_TYPE_MAX
 
 	.["materials"] = PRED_MATERIALS
+	.["retro_materials"] = PRED_RETRO_MATERIALS
 	.["translators"] = PRED_TRANSLATORS
 	.["invisibility_sounds"] = PRED_INVIS_SOUNDS
 	.["legacies"] = PRED_LEGACIES
@@ -226,14 +227,14 @@
 
 		if("caster_material")
 			var/material = params["material"]
-			if(!material || !(material in PRED_MATERIALS))
+			if(!material || !(material in PRED_RETRO_MATERIALS))
 				return
 
 			prefs.predator_caster_material = material
 
 		if("bracer_material")
 			var/material = params["material"]
-			if(!material || !(material in PRED_MATERIALS))
+			if(!material || !(material in PRED_RETRO_MATERIALS))
 				return
 
 			prefs.predator_bracer_material = material

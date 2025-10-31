@@ -70,6 +70,7 @@ type PredData = {
   skin_colors: { [key: string]: string };
 
   materials: string[];
+  retro_materials: string[];
   translators: string[];
   invisibility_sounds: string[];
   legacies: string[];
@@ -507,6 +508,7 @@ const PredModal = (props: {
     bracer_material,
 
     materials,
+    retro_materials,
   } = data;
 
   switch (type) {
@@ -575,7 +577,7 @@ const PredModal = (props: {
           buttons={<Button icon="x" onClick={() => close()} />}
         >
           <Stack>
-            {materials.map((material) => (
+            {retro_materials.map((material) => (
               <Stack.Item key={material}>
                 <Button
                   selected={material === caster_material}
@@ -602,7 +604,7 @@ const PredModal = (props: {
           buttons={<Button icon="x" onClick={() => close()} />}
         >
           <Stack>
-            {materials.map((material) => (
+            {retro_materials.map((material) => (
               <Stack.Item key={material}>
                 <Button
                   selected={material === bracer_material}

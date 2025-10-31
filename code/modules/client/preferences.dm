@@ -1326,12 +1326,12 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						return
 					predator_greave_material = new_pred_greave_mat
 				if("pred_caster_mat")
-					var/new_pred_caster_mat = tgui_input_list(user, "Choose your caster material:", "Caster Material", PRED_MATERIALS + "retro")
+					var/new_pred_caster_mat = tgui_input_list(user, "Choose your caster material:", "Caster Material", PRED_RETRO_MATERIALS)
 					if(!new_pred_caster_mat)
 						return
 					predator_caster_material = new_pred_caster_mat
 				if("pred_bracer_mat")
-					var/new_pred_bracer_mat = tgui_input_list(user, "Choose your bracer material:", "Bracer Material", PRED_MATERIALS + "retro")
+					var/new_pred_bracer_mat = tgui_input_list(user, "Choose your bracer material:", "Bracer Material", PRED_RETRO_MATERIALS)
 					if(!new_pred_bracer_mat)
 						return
 					predator_bracer_material = new_pred_bracer_mat

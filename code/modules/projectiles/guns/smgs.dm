@@ -972,7 +972,7 @@
 	item_state = "p90_twe"
 
 	fire_sound = 'sound/weapons/p90.ogg'
-	current_mag = /obj/item/ammo_magazine/smg/p90/twe
+	current_mag = /obj/item/ammo_magazine/smg/p90/ap
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor, // Barrel
 		/obj/item/attachable/extended_barrel,

@@ -1288,7 +1288,7 @@ and you're good to go.
 	play_firing_sounds(projectile_to_fire, user)
 
 	empty_casings++
-	if(flags_gun_features & GUN_AUTO_EJECT_CASINGS)
+	if((flags_gun_features & GUN_AUTO_EJECT_CASINGS) && prob(35)) // dont want to litter the ground too much
 		eject_casing()
 
 	simulate_recoil(dual_wield, user, target)

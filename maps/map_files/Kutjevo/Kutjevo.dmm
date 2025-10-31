@@ -340,7 +340,7 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/colony_south/power2/south)
 "abB" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/floor/kutjevo/tan/grey_edge/west,
 /area/kutjevo/interior/colony_south/power2/south)
 "abC" = (
@@ -1601,7 +1601,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
 "aCo" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/kutjevo/interior/power/comms)
 "aCD" = (
@@ -2682,7 +2682,7 @@
 /turf/open/floor/kutjevo/colors/cyan/edge/east,
 /area/kutjevo/interior/complex/med/triage)
 "cnb" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/power/comms)
 "cnv" = (
@@ -2855,7 +2855,7 @@
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/interior/power)
 "cvF" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	desc = "A watertank. The label has been written over with the sequence 2---"
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles/north,
@@ -10103,7 +10103,7 @@
 /turf/closed/wall/kutjevo/colony,
 /area/kutjevo/exterior/runoff_bridge)
 "nMz" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/kutjevo/colors/orange/tile,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "nOx" = (
@@ -10199,7 +10199,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "nVH" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/kutjevo/multi_tiles/southwest,
 /area/kutjevo/interior/colony_south/power2)
 "nWu" = (
@@ -12751,7 +12751,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/colony_north)
 "rWK" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/power/comms)
 "rWP" = (
@@ -13082,7 +13082,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
 "sAe" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/kutjevo/tan/multi_tiles/east,
 /area/kutjevo/interior/complex/botany/east_tech)
 "sAf" = (
@@ -15145,7 +15145,7 @@
 /turf/open/floor/kutjevo/colors/purple/inner_corner,
 /area/kutjevo/interior/construction/north)
 "vHh" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/kutjevo/tan/multi_tiles/east,
 /area/kutjevo/interior/complex/botany/east)
 "vHB" = (

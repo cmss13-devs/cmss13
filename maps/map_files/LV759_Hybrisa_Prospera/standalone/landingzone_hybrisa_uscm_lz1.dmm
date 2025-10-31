@@ -3659,9 +3659,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
 "GJ" = (
-/obj/structure/machinery/atm{
-	icon = 'icons/obj/structures/props/atm.dmi';
-	plane = GAME_PLANE;
+/obj/structure/machinery/atm/full_size{
 	pixel_x = 6;
 	pixel_y = 11
 	},

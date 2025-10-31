@@ -489,3 +489,7 @@ log transactions
 		human_user.put_in_hands(E)
 	E.worth = sum
 	E.owner_name = authenticated_account.owner_name
+
+/obj/structure/machinery/atm/full_size
+	icon = 'icons/obj/structures/props/atm.dmi'
+	plane = GAME_PLANE

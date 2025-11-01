@@ -833,6 +833,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/cargo_intake)
+"adj" = (
+/obj/structure/bed/roller,
+/turf/open/floor/strata/white_cyan1/east,
+/area/lv522/indoors/a_block/medical/glass)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -30842,10 +30846,10 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_street)
 "qsd" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/visible{
 	dir = 10
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/white_cyan3,
 /area/lv522/indoors/a_block/medical/glass)
 "qsi" = (
@@ -37103,6 +37107,8 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "tpN" = (
+/obj/structure/machinery/cryo_cell,
+/obj/structure/pipes/standard/simple/visible,
 /turf/open/floor/strata/white_cyan3/north,
 /area/lv522/indoors/a_block/medical/glass)
 "tpZ" = (
@@ -37266,10 +37272,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
-"tue" = (
-/obj/structure/machinery/cryo_cell,
-/turf/open/floor/strata/white_cyan1/east,
-/area/lv522/indoors/a_block/medical/glass)
 "tum" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison,
@@ -39642,6 +39644,8 @@
 	pixel_x = 16
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cryo_cell,
+/obj/structure/pipes/standard/simple/visible,
 /turf/open/floor/strata/white_cyan3/north,
 /area/lv522/indoors/a_block/medical/glass)
 "uCP" = (
@@ -42204,7 +42208,7 @@
 /area/lv522/indoors/b_block/bar)
 "vLA" = (
 /obj/structure/pipes/standard/manifold/visible{
-	dir = 1
+	dir = 7
 	},
 /turf/open/floor/strata/white_cyan3,
 /area/lv522/indoors/a_block/medical/glass)
@@ -75988,7 +75992,7 @@ rtv
 jeI
 krP
 jbO
-tue
+rhz
 tTK
 dCJ
 sKJ
@@ -76194,7 +76198,7 @@ tTK
 tTK
 uBX
 vLA
-rhz
+adj
 tTK
 dCJ
 rnB
@@ -76400,7 +76404,7 @@ tTK
 tTK
 tpN
 vLA
-gzS
+adj
 tTK
 dCJ
 rnB
@@ -76606,7 +76610,7 @@ wpg
 puu
 bkf
 qsd
-tue
+gzS
 tTK
 dCJ
 rnB

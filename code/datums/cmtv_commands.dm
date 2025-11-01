@@ -111,8 +111,8 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	name = "follow"
 	description = "Follow new mob for 60s (requires name)."
 
-	global_cooldown_time = 10 MINUTES
-	user_cooldown_time = 30 MINUTES
+	global_cooldown_time = 2 MINUTES
+	user_cooldown_time = 3 MINUTES
 
 /datum/cmtv_command/follow/execute(list/arguments)
 	var/looking_for = arguments["args"]

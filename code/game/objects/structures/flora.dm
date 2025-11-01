@@ -91,8 +91,10 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	qdel(src)
 
 /obj/structure/flora/ex_act(power)
-	if(power >= EXPLOSION_THRESHOLD_VLOW)
-		deconstruct(FALSE)
+    if(explo_proof)
+        return
+    if(power >= EXPLOSION_THRESHOLD_VLOW)
+        deconstruct(FALSE)
 
 /obj/structure/flora/get_projectile_hit_boolean(obj/projectile/P)
 	. = ..()
@@ -154,6 +156,8 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	desc = "What an enormous tree!"
 	density = FALSE
 	layer = ABOVE_XENO_LAYER
+	explo_proof = TRUE
+	unacidable = TRUE
 
 // LV-624's Yggdrasil Tree
 
@@ -166,6 +170,8 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	layer = ABOVE_XENO_LAYER
 	bound_height = 128
 	bound_width = 128
+	explo_proof = TRUE
+	unacidable = TRUE
 
 /obj/structure/roof/flora/tree/jungle/bigtreeTL
 	icon_state = "bigtreeTL"
@@ -176,6 +182,8 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	layer = ABOVE_XENO_LAYER
 	bound_height = 128
 	bound_width = 128
+	explo_proof = TRUE
+	unacidable = TRUE
 
 /obj/structure/flora/tree/jungle/bigtreeBOT
 	icon_state = "bigtreeBOT"

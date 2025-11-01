@@ -136,16 +136,17 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
  *
  * Arguments:
  * * message - an html string value to be parsed and modified.
+ * * clear_char_probability - the likelihood a character does not get converted into a *
  *
  * Return:
  * returns the parsed and modified html output with the text content being partially scrambled with asteriks
  */
-/proc/stars_decode_html(message)
+/proc/stars_decode_html(message, clear_char_probability = 25)
 	if(!length(message))
 		return
 
 	// boolean value to know if the current indexed element needs to be scrambled.
-	var/parsing_message = FALSE
+	var/parsing_message = TRUE
 
 	// boolean values to know if we are currently inside a double or single quotation.
 	var/in_single_quote = FALSE
@@ -186,7 +187,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 			parsing_message = FALSE
 			current_tag = ""
 			if(length(current_string_to_scramble))
-				var/scrambled_string = stars(current_string_to_scramble)
+				var/scrambled_string = stars(current_string_to_scramble, clear_char_probability)
 				output_message += scrambled_string
 				current_string_to_scramble = ""
 
@@ -195,6 +196,11 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		else
 			output_message += current_char
 			current_tag += current_char
+
+	if(length(current_string_to_scramble))
+		var/scrambled_string = stars(current_string_to_scramble, clear_char_probability)
+		output_message += scrambled_string
+
 	return output_message
 
 /proc/slur(phrase)

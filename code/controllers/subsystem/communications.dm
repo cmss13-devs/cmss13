@@ -368,8 +368,8 @@ SUBSYSTEM_DEF(radio)
 
 	return frequency
 
+///Returns lists of Z levels that have comms
 /datum/controller/subsystem/radio/proc/get_available_tcomm_zs(frequency)
-	//Returns lists of Z levels that have comms
 	var/list/target_zs = SSmapping.levels_by_trait(ZTRAIT_ADMIN)
 	var/list/extra_zs = SSmapping.levels_by_trait(ZTRAIT_AWAY)
 	if(length(extra_zs))
@@ -383,7 +383,6 @@ SUBSYSTEM_DEF(radio)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_RESERVED)
 			break
-	SEND_SIGNAL(src, COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS, target_zs)
 	return target_zs
 
 /datum/controller/subsystem/radio/proc/add_tcomm_machine(obj/machine)

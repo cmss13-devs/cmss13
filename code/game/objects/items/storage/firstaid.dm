@@ -860,7 +860,7 @@
 
 /obj/item/storage/pill_bottle/kelotane
 	name = "\improper Kelotane pill bottle"
-	desc = "A pill bottle filled with Kelotane pills for treating burns."
+	desc = "A pill bottle filled with Kelotane pills for treating burns. Do not take more than two pills in a short period."
 	icon_state = "pill_canister2"
 	item_state = "pill_canister2"
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
@@ -871,7 +871,7 @@
 
 /obj/item/storage/pill_bottle/antitox
 	name = "\improper Dylovene pill bottle"
-	desc = "A pill bottle filled with Dylovene pills for treating toxin damage."
+	desc = "A pill bottle filled with Dylovene pills for treating toxin damage. Do not take more than two pills in a short period."
 	icon_state = "pill_canister6"
 	item_state = "pill_canister6"
 	pill_type_to_fill = /obj/item/reagent_container/pill/antitox
@@ -883,7 +883,7 @@
 
 /obj/item/storage/pill_bottle/inaprovaline
 	name = "\improper Inaprovaline pill bottle"
-	desc = "A pill bottle filled with Inaprovaline pills for stabilizing critical patients."
+	desc = "A pill bottle filled with Inaprovaline pills for stabilizing critical patients. Do not take more than two pills in a short period."
 	icon_state = "pill_canister3"
 	item_state = "pill_canister3"
 	pill_type_to_fill = /obj/item/reagent_container/pill/inaprovaline
@@ -905,7 +905,7 @@
 
 /obj/item/storage/pill_bottle/oxycodone
 	name = "\improper Oxycodone pill bottle"
-	desc = "This contains pills that treat severe pain, even during live surgery."
+	desc = "This contains pills that treat severe pain, even during live surgery. Do not take more than two pills in a short period."
 	icon_state = "pill_canister9"
 	item_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone
@@ -916,7 +916,7 @@
 
 /obj/item/storage/pill_bottle/spaceacillin
 	name = "\improper Spaceacillin pill bottle"
-	desc = "A pill bottle filled with Spaceacillin pills for treating space illnesses."
+	desc = "A pill bottle filled with Spaceacillin pills for treating space illnesses. Do not take more than two pills in a short period."
 	icon_state = "pill_canister4"
 	item_state = "pill_canister4"
 	pill_type_to_fill = /obj/item/reagent_container/pill/spaceacillin
@@ -927,7 +927,7 @@
 
 /obj/item/storage/pill_bottle/bicaridine
 	name = "\improper Bicaridine pill bottle"
-	desc = "A pill bottle filled with Bicaridine pills for treating brute damage."
+	desc = "A pill bottle filled with Bicaridine pills for treating brute damage. Do not take more than two pills in a short period."
 	icon_state = "pill_canister11"
 	item_state = "pill_canister11"
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
@@ -938,7 +938,7 @@
 
 /obj/item/storage/pill_bottle/dexalin
 	name = "\improper Dexalin pill bottle"
-	desc = "A pill bottle filled with Dexalin pills for reoxygenating patients."
+	desc = "A pill bottle filled with Dexalin pills for reoxygenating patients. Do not take more than two pills in a short period."
 	icon_state = "pill_canister1"
 	item_state = "pill_canister1"
 	pill_type_to_fill = /obj/item/reagent_container/pill/dexalin
@@ -950,7 +950,7 @@
 //Alkysine
 /obj/item/storage/pill_bottle/alkysine
 	name = "\improper Alkysine pill bottle"
-	desc = "A pill bottle filled with Alkysine pills for treating brain damage."
+	desc = "A pill bottle filled with Alkysine pills for treating brain damage. Do not take more than two pills in a short period."
 	icon_state = "pill_canister7"
 	item_state = "pill_canister7"
 	pill_type_to_fill = /obj/item/reagent_container/pill/alkysine
@@ -962,7 +962,7 @@
 //imidazoline
 /obj/item/storage/pill_bottle/imidazoline
 	name = "\improper Imidazoline pill bottle"
-	desc = "A pill bottle filled with Imidazoline pills for treating eye damage."
+	desc = "A pill bottle filled with Imidazoline pills for treating eye damage. Do not take more than two pills in a short period."
 	icon_state = "pill_canister9"
 	item_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imidazoline
@@ -973,7 +973,7 @@
 
 /obj/item/storage/pill_bottle/imialky
 	name = "\improper Imidazoline-Alkysine pill bottle"
-	desc = "A pill bottle filled with Imidazoline-Alkysine combo pills to treat brain and eye damage simultaneously."
+	desc = "A pill bottle filled with Imidazoline-Alkysine combo pills to treat brain and eye damage simultaneously. Do not take more than two pills in a short period."
 	icon_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imialky
 	maptext_label = "IA"
@@ -981,7 +981,7 @@
 //PERIDAXON
 /obj/item/storage/pill_bottle/peridaxon
 	name = "\improper Peridaxon pill bottle"
-	desc = "A pill bottle filled with Peridaxon pills to halt most effects of organ damage."
+	desc = "A pill bottle filled with Peridaxon pills to halt most effects of organ damage. Do not take more than two pills in a short period."
 	icon_state = "pill_canister10"
 	item_state = "pill_canister10"
 	pill_type_to_fill = /obj/item/reagent_container/pill/peridaxon
@@ -993,6 +993,7 @@
 //RUSSIAN RED ANTI-RAD
 /obj/item/storage/pill_bottle/russianRed
 	name = "\improper Russian red pill bottle"
+	desc = "A pill bottle filled with pills that reduce radiation damage."
 	icon_state = "pill_canister"
 	item_state = "pill_canister"
 	pill_type_to_fill = /obj/item/reagent_container/pill/russianRed
@@ -1176,5 +1177,5 @@
 
 /obj/item/storage/pill_bottle/packet/oxycodone
 	name = "Oxycodone pill packet"
-	desc = "This packet contains oxycodone pills, highly effective painkillers. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
+	desc = "This packet contains oxycodone pills, highly effective painkillers. Once you take them out, they don't go back in. Don't take more than 2 pill in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone

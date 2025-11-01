@@ -760,13 +760,18 @@
 			error_idlock(usr)
 			return
 
+
+
 /obj/item/storage/pill_bottle/clicked(mob/user, list/mods)
 	if(..())
 		return TRUE
-	if(!istype(loc, /obj/item/storage/belt/medical))
+	// Only proceed with instant pill grab if we're in a storage container
+	if(!isstorage(loc))
 		return FALSE
-	var/obj/item/storage/belt/medical/M = loc
-	if(!M.mode)
+	var/obj/item/storage/container_holding_pill = loc
+	if(!container_holding_pill.instant_pill_grabbable)
+		return FALSE
+	if(!container_holding_pill.instant_pill_grab_mode)
 		return FALSE
 	if(!can_storage_interact(user))
 		error_idlock(user)

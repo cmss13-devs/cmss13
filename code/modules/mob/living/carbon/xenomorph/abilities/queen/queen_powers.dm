@@ -823,7 +823,7 @@
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
 	xeno.create_shriekwave(14) //Adds the visual effect. Wom wom wom, 14 shriekwaves
 
-	SScmtv.spectate_event("Queen Screech", src, 10 SECONDS)
+	SScmtv.spectate_event("Queen Screech", xeno, 10 SECONDS)
 
 	FOR_DVIEW(var/mob/mob, world.view, owner, HIDE_INVISIBLE_OBSERVER)
 		if(mob && mob.client)

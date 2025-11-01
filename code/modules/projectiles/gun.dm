@@ -1286,9 +1286,12 @@ and you're good to go.
 		projectile_to_fire.def_zone = user.zone_selected
 
 	play_firing_sounds(projectile_to_fire, user)
+	if(flags_gun_features & GUN_INTERNAL_MAG)
+		empty_casings++ // accurate case ejections for these guns would be better
 
-	if(prob(35)) // dont want to litter the ground too much
+	else if(prob(35)) // dont want to litter the ground too much
 		empty_casings++
+
 	if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
 		eject_casing()
 

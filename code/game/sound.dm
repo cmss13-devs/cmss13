@@ -324,6 +324,8 @@
 				sound = pick('sound/weapons/gun_m4a3_1.ogg','sound/weapons/gun_m4a3_2.ogg','sound/weapons/gun_m4a3_3.ogg','sound/weapons/gun_m4a3_4.ogg','sound/weapons/gun_m4a3_5.ogg')
 			if("88m4")
 				sound = pick('sound/weapons/gun_88m4_v7.ogg')
+			if("gun_casing_generic")
+				sound = pick ('sound/bullets/bulletcasing_generic_fall1.ogg')
 			if("gun_casing_shotgun")
 				sound = pick ('sound/bullets/bulletcasing_shotgun_fall1.ogg')
 			if("gun_nsg23")

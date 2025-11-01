@@ -2244,4 +2244,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 				casing_image.transform = matrix(rand(0,359), MATRIX_ROTATE) * matrix(rand(-14,14), rand(-14,14), MATRIX_TRANSLATE)
 				ejection_turf.overlays += casing_image
 
+			var/eject_noise = casing.ejection_sfx
+			playsound(src, eject_noise, 25, TRUE)
+
 	empty_casings = 0

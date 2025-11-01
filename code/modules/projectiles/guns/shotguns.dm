@@ -1056,7 +1056,6 @@ can cause issues with ammo types getting mixed up during the burst.
 		to_chat(user, SPAN_NOTICE("Two empty shells fall to [floor] as you open the [initial(name)]."))
 
 	eject_casing()
-	playsound(user, "gun_casing_shotgun", 25, TRUE)
 
 	fired_shots = 0
 

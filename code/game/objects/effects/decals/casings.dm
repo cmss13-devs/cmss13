@@ -25,6 +25,7 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 	density = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/image/actual_casing //the actual image of the casing, for manipulation
+	var/ejection_sfx = "gun_casing_generic"
 
 /obj/effect/decal/ammo_casing/Initialize()
 	. = ..()
@@ -43,6 +44,7 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 /obj/effect/decal/ammo_casing/shell/green_shell
 	name = "spent shell"
 	icon_state = "green_shell"
+	ejection_sfx = "gun_casing_shotgun"
 
 /obj/effect/decal/ammo_casing/shell/red_shell
 	name = "spent shell"

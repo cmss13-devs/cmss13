@@ -1,0 +1,4 @@
+author: "Labeo0"
+delete-after: True
+changes:
+  - qol: "auto-toggle \"Aimed Shot\"/\"Spot Target\" with sniper rifle/spotter designator in hands"

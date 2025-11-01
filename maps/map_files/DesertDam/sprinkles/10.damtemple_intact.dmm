@@ -93,30 +93,26 @@
 /obj/item/lightstick/red/variant/planted,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
-"ar" = (
-/obj/structure/machinery/autolathe/yautja,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/desert_dam/interior/caves/temple)
-"as" = (
+"aq" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/hardhat,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
-"at" = (
+"ar" = (
 /obj/item/device/flashlight/lantern,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
-"au" = (
+"as" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"at" = (
+/obj/effect/decal/remains/human,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "av" = (
 /obj/structure/xenoautopsy/tank/hugger/yautja,
 /turf/open/shuttle/red,
-/area/desert_dam/interior/caves/temple)
-"aw" = (
-/obj/effect/decal/remains/human,
-/turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "aZ" = (
 /obj/structure/prop/brazier,
@@ -559,6 +555,10 @@
 /obj/structure/xenoautopsy/tank/hugger/yautja,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
+"JZ" = (
+/obj/structure/machinery/autolathe/yautja,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/desert_dam/interior/caves/temple)
 "Kj" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -884,7 +884,7 @@ an
 td
 td
 td
-as
+aq
 oH
 MH
 mn
@@ -934,7 +934,7 @@ an
 "}
 (11,1,1) = {"
 td
-au
+as
 td
 td
 td
@@ -986,9 +986,9 @@ ao
 "}
 (13,1,1) = {"
 td
-aw
-td
 at
+td
+ar
 td
 MH
 MH
@@ -1089,7 +1089,7 @@ an
 an
 "}
 (17,1,1) = {"
-au
+as
 td
 an
 an
@@ -1308,7 +1308,7 @@ AU
 MH
 Bm
 aj
-ar
+JZ
 MH
 an
 MH

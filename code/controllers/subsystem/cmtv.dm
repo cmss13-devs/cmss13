@@ -359,6 +359,9 @@ SUBSYSTEM_DEF(cmtv)
 		to_chat(future_perspective, boxed_message("[SPAN_BIGNOTICE("Opted out of observation.")]\n\n [SPAN_NOTICE("You have successfully opted out of CMTV.")]"))
 
 /datum/controller/subsystem/cmtv/proc/spectate_event(event, turf/where_to_look, how_long_for = 20 SECONDS, zoom_out = FALSE, when_start = 0)
+	if(!online())
+		return
+
 	if(!how_long_for || !where_to_look)
 		return
 

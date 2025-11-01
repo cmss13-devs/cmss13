@@ -1,0 +1,4 @@
+/obj/item/ammo_casing/@SUBTYPES : /obj/effect/decal/ammo_casing/@SUBTYPES{@OLD}
+/obj/item/ammo_casing/bullet/@SUBTYPES : /obj/effect/decal/ammo_casing/@SUBTYPES{@OLD}
+/obj/item/ammo_casing/shell/@SUBTYPES : /obj/effect/decal/ammo_casing/shell/@SUBTYPES{@OLD}
+/obj/item/ammo_casing/cartridge/@SUBTYPES : /obj/effect/decal/ammo_casing/cartridge/@SUBTYPES{@OLD}

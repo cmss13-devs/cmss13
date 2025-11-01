@@ -343,7 +343,7 @@
 			continue
 		if(affected_mob && HAS_TRAIT_FROM(affected_mob, TRAIT_UNDENSE, WALL_HIDING_TRAIT))
 			to_chat(affected_mob, SPAN_WARNING("You brace yourself against the impact!"))
-			return
+			continue
 		if(affected_mob.buckled)
 			to_chat(affected_mob, SPAN_WARNING("You are jolted against [affected_mob.buckled]!"))
 			// shake_camera(affected_mob, 3, 1)

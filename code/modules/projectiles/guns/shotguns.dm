@@ -1007,11 +1007,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	var/fired_shots = 0 //How many shots were fired since it was last closed, for casing ejection purposes. // somewhat deprecated now, but still used for the messaging
 	var/image/fired_casing
 
-/obj/item/weapon/gun/shotgun/double/twobore/Initialize(mapload, spawn_empty)
-	. = ..()
-	fired_casing = image('icons/obj/items/weapons/projectiles.dmi', "twobore_shell", ABOVE_BLOOD_LAYER)
-	fired_casing.appearance_flags = PIXEL_SCALE
-
 /obj/item/weapon/gun/shotgun/double/twobore/set_gun_config_values()
 	..()
 	set_burst_amount(BURST_AMOUNT_TIER_1)

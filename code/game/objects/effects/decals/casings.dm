@@ -28,11 +28,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/effect/decal/ammo_casing/Initialize()
 	. = ..()
-	pixel_x = rand(-0.9, 0.9) // just enough randomization but not more that it creates another turf instance
-	pixel_y = rand(-0.9, 0.9)
-	var/matrix/rotate = matrix()
-	rotate.Turn(rand(0, 359))
-	transform = rotate
+	transform = matrix(rand(-0.9, 0.9), rand(-0.9, 0.9), MATRIX_TRANSLATE) * matrix(rand(0, 359), MATRIX_ROTATE) // just enough randomization but not more that it creates another turf instance
 	icon_state += "_[rand(1,number_of_states)]" //Set the icon to it.
 
 //This does most of the heavy lifting. It updates the icon and name if needed, then changes .dir to simulate new casings.

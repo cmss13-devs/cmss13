@@ -2583,7 +2583,7 @@
 	)
 
 	flags_equip_slot = SLOT_BACK
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_MANUAL_EJECT_CASINGS
 	gun_category = GUN_CATEGORY_SHOTGUN
 	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
 	map_specific_decoration = TRUE
@@ -2635,6 +2635,7 @@
 	playsound(user, pump_sound, 10, 1)
 	COOLDOWN_START(src, allow_pump, pump_delay)
 	ready_in_chamber()
+	eject_casing()
 	burst_count = 0 //Reset the count for burst mode.
 
 /obj/item/weapon/gun/rifle/xm51/load_into_chamber(mob/user)

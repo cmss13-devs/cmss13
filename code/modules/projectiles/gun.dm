@@ -1286,7 +1286,7 @@ and you're good to go.
 		projectile_to_fire.def_zone = user.zone_selected
 
 	play_firing_sounds(projectile_to_fire, user)
-	if(flags_gun_features & GUN_INTERNAL_MAG)
+	if(flags_gun_features & GUN_INTERNAL_MAG || GUN_MANUAL_EJECT_CASINGS) //snowflake define for bolt actions or other weird guns that eject casings manually
 		empty_casings++ // accurate case ejections for these guns would be better
 
 	else if(prob(35)) // dont want to litter the ground too much

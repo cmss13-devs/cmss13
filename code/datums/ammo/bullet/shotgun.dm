@@ -388,6 +388,9 @@
 					16 GAUGE SHOTGUN AMMO
 */
 
+/datum/ammo/bullet/shotgun/light
+	shell_casing = /obj/effect/decal/ammo_casing/shell/blue_shell
+
 /datum/ammo/bullet/shotgun/light/breaching
 	name = "light breaching shell"
 	icon_state = "flechette"

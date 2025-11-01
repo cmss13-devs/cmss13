@@ -237,7 +237,7 @@ SUBSYSTEM_DEF(cmtv)
 		return reset_perspective("New perspective does not exist or is not cliented.")
 
 	if(future_perspective)
-		to_chat(future_perspective, boxed_message("[SPAN_BIGNOTICE("You are no longer going to be observed.")]\n\n [SPAN_NOTICE("You have been opted out of displaying on CMTV.")]"))
+		to_chat(future_perspective, boxed_message("[SPAN_BIGNOTICE("You are no longer going to be observed.")]\n\n [SPAN_NOTICE("Another player has been selected for observation.")]"))
 
 	add_verb(new_perspective, /mob/proc/handoff_cmtv)
 	give_action(new_perspective, /datum/action/stop_cmtv)
@@ -343,13 +343,19 @@ SUBSYSTEM_DEF(cmtv)
 	change_observed_mob(get_active_player(), instant)
 
 /datum/controller/subsystem/cmtv/proc/handoff(mob/trying_to_handoff, source)
+	var/successful = FALSE
 	if(current_perspective == trying_to_handoff)
 		reset_perspective("Current user requested reset ([source])")
+		successful = TRUE
 		opted_out_ckeys[trying_to_handoff.ckey] = world.time
 
 	if(future_perspective?.resolve() == trying_to_handoff)
-		reset_perspective("Future perspective requested reset ([source])")
+		future_perspective = null
+		successful = TRUE
+
+	if(successful)
 		opted_out_ckeys[trying_to_handoff.ckey] = world.time
+		to_chat(future_perspective, boxed_message("[SPAN_BIGNOTICE("Opted out of observation.")]\n\n [SPAN_NOTICE("You have successfully opted out of CMTV.")]"))
 
 /datum/controller/subsystem/cmtv/proc/spectate_event(event, turf/where_to_look, how_long_for = 20 SECONDS, zoom_out = FALSE, when_start = 0)
 	if(!how_long_for || !where_to_look)
@@ -371,8 +377,10 @@ SUBSYSTEM_DEF(cmtv)
 	if(future_perspective)
 		to_switch_to = future_perspective
 
-	if(to_switch_to)
+	if(!to_switch_to)
 		temporarily_observing_turf -= 10 SECONDS
+
+	temporarily_observing_turf = max(temporarily_observing_turf, 10 SECONDS)
 
 	if(current_perspective)
 		terminate_current_perspective(ticker_text = null)

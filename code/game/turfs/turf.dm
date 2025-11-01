@@ -71,9 +71,6 @@
 	/// Can xenomorph weeds grow on the tile
 	var/is_weedable = FULLY_WEEDABLE
 
-	/// DO NOT CHANGE this var on turfs, use landmarks, inverts destructibility of the turf to other then the area
-	var/destructible_override = FALSE
-
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
 	if(flags_atom & INITIALIZED)
@@ -232,9 +229,6 @@
 		return FALSE
 	if(severity < 50)
 		return FALSE
-	var/area/area = get_area(src)
-	if((!area.destructible_floors && !destructible_override) || (area.destructible_floors && destructible_override))
-		return FALSE
 	var/turf/turf_below = SSmapping.get_turf_below(src)
 	if(!turf_below) //so we do not make hole into space
 		return FALSE
@@ -242,7 +236,7 @@
 		return FALSE
 	if(is_mainship_level(z) && SSticker?.mode?.is_in_endgame) // the ship is made out of tilet paper now
 		return TRUE
-	if(get_pylon_protection_level() >= TURF_PROTECTION_CORE || turf_below.get_pylon_protection_level() >= TURF_PROTECTION_CORE)
+	if(get_pylon_protection_level() >= TURF_PROTECTION_CORE || turf_below.get_pylon_protection_level() >= TURF_PROTECTION_CAS)
 		return FALSE
 
 	if(is_mainship_level(z) && !SSticker?.mode?.is_in_endgame)

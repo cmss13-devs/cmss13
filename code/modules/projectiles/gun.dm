@@ -1286,10 +1286,10 @@ and you're good to go.
 		projectile_to_fire.def_zone = user.zone_selected
 
 	play_firing_sounds(projectile_to_fire, user)
-	if(flags_gun_features & GUN_INTERNAL_MAG || GUN_MANUAL_EJECT_CASINGS) //snowflake define for bolt actions or other weird guns that eject casings manually
+	if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS)) //snowflake define for bolt actions or other weird guns that eject casings manually
 		empty_casings++ // accurate case ejections for these guns would be better
 
-	else if(prob(35)) // dont want to litter the ground too much
+	else if(prob(15)) // dont want to litter the ground too much
 		empty_casings++
 
 	if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
@@ -2228,23 +2228,26 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 /// For ejecting the spent casing from corresponding guns
 /obj/item/weapon/gun/proc/eject_casing()
-	if(empty_casings == 0)
+	if(empty_casings <= 0)
 		return
+
 	if(!ammo)
 		return
-	if(ammo.shell_casing)
-		var/turf/ejection_turf = get_turf(src)
-		if(!ejection_turf)
-			return
 
-		for(var/ejecting = 1 to empty_casings)
-			var/obj/effect/decal/ammo_casing/casing = new ammo.shell_casing
-			var/image/casing_image = casing.actual_casing
-			if(casing_image)
-				casing_image.transform = matrix(rand(0,359), MATRIX_ROTATE) * matrix(rand(-14,14), rand(-14,14), MATRIX_TRANSLATE)
-				ejection_turf.overlays += casing_image
+	if(empty_casings >= 1)
+		if(ammo.shell_casing)
+			var/turf/ejection_turf = get_turf(src)
+			if(!ejection_turf)
+				return
 
-			var/eject_noise = casing.ejection_sfx
-			playsound(src, eject_noise, 25, TRUE)
+			for(var/ejecting = 1 to empty_casings)
+				var/obj/effect/decal/ammo_casing/casing = new ammo.shell_casing
+				var/image/casing_image = casing.actual_casing
+				if(casing_image)
+					casing_image.transform = matrix(rand(0,359), MATRIX_ROTATE) * matrix(rand(-14,14), rand(-14,14), MATRIX_TRANSLATE)
+					ejection_turf.overlays += casing_image
+
+				var/eject_noise = casing.ejection_sfx
+				playsound(loc, eject_noise, 25, TRUE)
 
 	empty_casings = 0

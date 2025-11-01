@@ -467,7 +467,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "OE" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Pa" = (

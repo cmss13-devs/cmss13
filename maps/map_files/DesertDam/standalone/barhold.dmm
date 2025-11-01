@@ -979,7 +979,7 @@
 /turf/open/floor/carpet11_12/west,
 /area/desert_dam/building/bar/bar)
 "Xh" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/bar/backroom)
 "XE" = (

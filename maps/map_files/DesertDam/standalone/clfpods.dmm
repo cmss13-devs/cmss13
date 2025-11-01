@@ -1467,12 +1467,6 @@
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 30
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "Cg" = (

@@ -93,7 +93,7 @@
 /turf/open/floor/whiteyellowcorner/east,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "ao" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/item/tool/extinguisher,
 /turf/open/floor/bot/north,
 /area/desert_dam/building/water_treatment_one/garage)
@@ -725,7 +725,7 @@
 /turf/open/floor/prison/red/northwest,
 /area/desert_dam/building/water_treatment_one/lobby)
 "tM" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/bot/north,
 /area/desert_dam/building/water_treatment_one/garage)
 "uf" = (
@@ -1270,7 +1270,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/bot/north,
 /area/desert_dam/building/water_treatment_one/garage)
 "SJ" = (

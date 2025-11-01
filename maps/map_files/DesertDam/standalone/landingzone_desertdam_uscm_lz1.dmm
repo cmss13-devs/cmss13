@@ -43,7 +43,7 @@
 /turf/open/floor/prison/darkbrown3/east,
 /area/desert_dam/interior/dam_interior/hanger)
 "aj" = (
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/hanger)
 "ak" = (

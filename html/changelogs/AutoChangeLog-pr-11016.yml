@@ -1,0 +1,11 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - bugfix: "Oxycodone pills are now 10u instead of 15u"
+  - bugfix: "Oxycodone pill bottles now have a lock on them."
+  - bugfix: "Oxycodone pill bottles can be found in pill bottle loot spawners."
+  - bugfix: "Dexalin Plus's chemical color has been updated to CM-SS13 standards."
+  - bugfix: "Ultrazine autoinjectors have fill indicators."
+  - bugfix: "Stim chemical colors have been updated to CM-SS13 standards."
+  - bugfix: "Field Doctors and Nurses can now view and print medical records"
+  - imageadd: "added fill indicators for stimpack-type autoinjectors for future reference."

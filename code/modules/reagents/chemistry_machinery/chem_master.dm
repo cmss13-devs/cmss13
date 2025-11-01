@@ -13,7 +13,9 @@
 	var/pill_maker = TRUE
 	var/vial_maker = FALSE
 	var/obj/item/reagent_container/beaker = null
+	/// list of ALL loaded pill containers
 	var/list/loaded_pill_bottles = list()
+	/// list of the current pill container to be filled
 	var/list/loaded_pill_bottles_to_fill = list()
 	var/list/presets = list()
 	var/mode = 0
@@ -137,6 +139,7 @@
 		return
 
 	loaded_pill_bottles += bottle
+	max_pill_count = bottle.max_storage_space
 
 	if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0)
 		loaded_pill_bottles_to_fill += bottle
@@ -214,7 +217,7 @@
 	.["color_pill"] = list(
 		"icon" = "[/obj/item/storage/pill_bottle::icon]",
 		"colors" = /obj/item/storage/pill_bottle::possible_colors,
-		"base" = /obj/item/storage/pill_bottle::base_icon
+		"base" = "color",
 	)
 
 	.["is_pillmaker"] = pill_maker

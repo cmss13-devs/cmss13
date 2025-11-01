@@ -1286,6 +1286,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_fax_responder_late_join(src))
 		SSticker.mode.attempt_to_join_as_fax_responder(src)
 
+
 /mob/dead/verb/drop_vote()
 	set category = "Ghost"
 	set name = "Spectator Vote"
@@ -1295,11 +1296,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
-	if(!istype(SSticker.mode,/datum/game_mode/huntergames))
+	if(!check_hunter_games())
 		to_chat(src, SPAN_INFO("Wrong game mode. You have to be observing a Hunter Games round."))
 		return
 
-	var/datum/game_mode/huntergames/mode = SSticker.mode
+	var/datum/game_mode/hunter_games/mode = SSticker.mode
 
 	if(!mode.waiting_for_drop_votes)
 		to_chat(src, SPAN_INFO("There's no drop vote currently in progress. Wait for a supply drop to be announced!"))
@@ -1311,11 +1312,21 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/list/mobs = GLOB.alive_mob_list
 	var/target = null
+	var/list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED)) // Which levels are valid for contestants are filtered by trait.
 
-	for(var/mob/living/M in mobs)
-		if(!istype(M,/mob/living/carbon/human) || M.stat || isyautja(M))
-			mobs -= M
-
+	for(var/mob/living/contestant in mobs)
+		if(!ishuman_strict(contestant))
+			mobs -= contestant
+			continue
+		if(contestant.stat != CONSCIOUS)
+			mobs -= contestant
+			continue
+		if(!(contestant.z in z_levels))
+			mobs -= contestant
+			continue
+		if(should_block_game_interaction(contestant))
+			mobs -= contestant
+			continue
 
 	target = tgui_input_list(usr, "Please, select a contestant!", "Cake Time", mobs)
 
@@ -1323,8 +1334,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 	else
 		to_chat(src, SPAN_INFO("Your vote for [target] has been counted!"))
-		SSticker.mode:supply_votes += target
-		voted_this_drop = 1
+		mode.supply_votes += target
+		voted_this_drop = TRUE
 		addtimer(VARSET_CALLBACK(src, voted_this_drop, FALSE), 20 SECONDS)
 
 /mob/dead/observer/verb/go_dnr()

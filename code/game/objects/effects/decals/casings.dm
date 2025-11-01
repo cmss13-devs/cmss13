@@ -8,44 +8,30 @@ ones. At that point there are too many anyway. Shells and bullets leave differen
 items, so they do not intersect. This is far more efficient than using Bl*nd() or
 Turn() or Shift() as there is virtually no overhead. ~N
 */
-// do note that most of these comments are likely outdated - nihi
+
+/* do note that the above comments are outdated and are just kept for record,
+and that most of the ejection procedures utilize image matrices for randomization
+that said, the icon_states in the dmi files aren't culled for use by mappers - nihi
+*/
 
 /obj/effect/decal/ammo_casing
 	name = "spent casing"
 	desc = "Empty and useless now."
 	icon = 'icons/obj/items/weapons/casings.dmi'
 	icon_state = "casing"
-	dir = NORTH //Always north when it spawns.
-	var/current_casings = 1 //This is manipulated in the procs that use these.
-	var/max_casings = 16
-	var/current_icon = 0
-	var/number_of_states = 10 //How many variations of this item there are.
 	garbage = TRUE
 	appearance_flags = PIXEL_SCALE
 	layer = ABOVE_WEED_LAYER
 	density = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/image/actual_casing //the actual image of the casing, for manipulation
 
 /obj/effect/decal/ammo_casing/Initialize()
 	. = ..()
-	if(number_of_states >= 1)
-		icon_state += "_[rand(1,number_of_states)]" //Set the icon to it.
 
-	transform = matrix(rand(-0.9, 0.9), rand(-0.9, 0.9), MATRIX_TRANSLATE) * matrix(rand(0, 359), MATRIX_ROTATE) // just enough randomization but not more that it creates another turf instance
+	actual_casing = image(icon, icon_state)
+	actual_casing.appearance_flags = PIXEL_SCALE
 
-
-//This does most of the heavy lifting. It updates the icon and name if needed, then changes .dir to simulate new casings.
-/obj/effect/decal/ammo_casing/update_icon()
-	if(max_casings >= current_casings)
-		if(current_casings >= 2) name += "s" //In case there is more than one.
-		if(floor((current_casings-1)/8) > current_icon)
-			current_icon++
-			icon_state += "_[current_icon]"
-
-		var/base_direction = current_casings - (current_icon * 8)
-		setDir(base_direction + floor(base_direction)/3)
-
-//Making child objects so that locate() and istype() doesn't screw up.
 /obj/effect/decal/ammo_casing/cartridge
 	name = "spent cartridge"
 	icon_state = "cartridge"
@@ -69,4 +55,3 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/effect/decal/ammo_casing/shell/twobore_shell
 	name = "comedically sized spent shell"
 	icon_state = "twobore_shell"
-	number_of_states = 0

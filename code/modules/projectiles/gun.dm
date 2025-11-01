@@ -2238,16 +2238,10 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			return
 
 		for(var/ejecting = 1 to empty_casings)
-			var/obj/effect/decal/ammo_casing/found_casings
-			for(var/obj/effect/decal/ammo_casing/casing in ejection_turf)
-				if(casing.type == ammo.shell_casing)
-					found_casings = casing
-					break
-			if(!found_casings)
-				found_casings = new ammo.shell_casing(ejection_turf)
-				found_casings.current_casings = 0
-
-			found_casings.current_casings += 1
-			found_casings.update_icon()
+			var/obj/effect/decal/ammo_casing/casing = new ammo.shell_casing
+			var/image/casing_image = casing.actual_casing
+			if(casing_image)
+				casing_image.transform = matrix(rand(0,359), MATRIX_ROTATE) * matrix(rand(-14,14), rand(-14,14), MATRIX_TRANSLATE)
+				ejection_turf.overlays += casing_image
 
 	empty_casings = 0

@@ -241,7 +241,6 @@ SUBSYSTEM_DEF(cmtv)
 
 	add_verb(new_perspective, /mob/proc/handoff_cmtv)
 	give_action(new_perspective, /datum/action/stop_cmtv)
-	camera_operator.view = "20x15"
 
 	if(instant_switch_to)
 		do_change_observed_mob(set_showtime)
@@ -273,8 +272,10 @@ SUBSYSTEM_DEF(cmtv)
 	RegisterSignal(future_perspective_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH), PROC_REF(handle_reset_signal))
 	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_ENTERED_OBJ, PROC_REF(handle_reset_signal_immediate))
 	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(handle_z_change))
+
 	current_perspective = future_perspective_mob
 	change_displayed_mob(current_perspective.real_name)
+	camera_operator.view = "20x15"
 
 	camera_operator.screen += give_escape_menu_details()
 

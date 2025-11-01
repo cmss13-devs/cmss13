@@ -12,17 +12,45 @@
  * The intent of this proc is double: Allowing tank drivers to defend themselves and have a chance against xenos
  * atop the tank and also punish tank drivers for bad driving by fucking up the marines on top.
  *
+ * Also scatters objs on top!
+ *
  */
 /obj/vehicle/multitile/tank/proc/_scatter_riders_on_crash()
 	if(abs(move_momentum) < 1.6)
 		return
+
+	var/sweep_range = 3
+
+	// Obj throwing is handled differently for performance
+	// there's still a lot to optimize in case this is performance intensive. (I don't expect joustling to happen that often)
+	// First order of business would be finding a way to do those calculations outside of the for loop ...
+	// and use one single cur,throw_dir and start for all objs but that might produce throws with inconsistent directions
+
+	for(var/obj/O in on_top_obj.Copy())
+		if(!O || O.z != src.z)
+			obj_clear_on_top(O)
+			continue
+
+		var/turf/start = get_turf(O)
+		var/throw_dir = get_dir(src, start)
+		if(!throw_dir)
+			throw_dir = pick(GLOB.cardinals)
+
+		var/turf/target = get_step(start, throw_dir)
+		if(!target || (target in src.locs))
+			step_away(O, src, sweep_range, 3)
+			var/turf/cur = get_turf(O)
+			target = get_step(cur, throw_dir)
+
+		if(target && !(target in src.locs))
+			obj_clear_on_top(O)
+			O.throw_atom(target, sweep_range, SPEED_FAST)
 
 	for(var/mob/living/M in on_top_mobs.Copy())
 		if(!M || M.z != src.z)
 			clear_on_top(M)
 			continue
 
-		var/sweep_range = 3
 		var/turf/start = get_turf(M)
 		var/throw_dir = get_dir(src, start)
 		if(!throw_dir)
@@ -204,6 +232,28 @@
 /obj/vehicle/multitile/tank/proc/_update_riders_after_motion(old_cx, old_cy, old_dir, new_cx, new_cy, new_dir)
 	var/k = _quarter_turns(old_dir, new_dir) // -1,0,1,2
 
+	// simpler version for objs
+	for(var/obj/O in on_top_obj.Copy())
+		if(!O || O.z != src.z)
+			obj_clear_on_top(O)
+			continue
+
+		var/turf/from = get_turf(O)
+		if(!from)
+			obj_clear_on_top(O)
+			continue
+
+		var/list/rd = _rotated_offset(from.x - old_cx, from.y - old_cy, k)
+		var/turf/target = locate(new_cx + rd[1], new_cy + rd[2], src.z)
+
+		if(target && (target in src.locs) && target != from)
+			O.forceMove(target)
+			obj_mark_on_top(O)
+		else if(from in src.locs)
+			obj_mark_on_top(O)
+		else
+			obj_clear_on_top(O)
+
 	for(var/mob/living/M in on_top_mobs.Copy())
 		if(!M || M.z != src.z)
 			clear_on_top(M)
@@ -212,6 +262,10 @@
 		var/turf/from = get_turf(M)
 		if(!from)
 			clear_on_top(M)
+			continue
+
+		// If the mob is buckled to something, we'll skip it, because the buckled obj has already moved with it.
+		if(M.buckled)
 			continue
 
 		// Offset from OLD center -> rotate by k -> translate to NEW center
@@ -287,19 +341,81 @@
 	for(var/obj/item/grab/G in list(user.l_hand, user.r_hand))
 		if(G?.grabbed_thing)
 			grabbed_things += G.grabbed_thing
-			G.grabbed_thing.forceMove(user.loc)
+
+	for(var/atom/movable/thing as anything in grabbed_things)
+		if(isliving(thing))
+			var/mob/living/L = thing
+			L.apply_effect(2, WEAKEN)
+			// Edge case: We're hauling a mob atop the tank who is buckled to a roller bed. (Grab is on mob)
+			// In that case, also bring the roller to the top of the tank.
+			if(L.buckled && istype(L.buckled, /obj/structure/bed/roller))
+				var/obj/structure/bed/roller/R = L.buckled
+				R.forceMove(dest)
+				obj_mark_on_top(R)
+			L.forceMove(dest)
+			mark_on_top(L)
+
+		else if(isobj(thing))
+			var/obj/O = thing
+			if(O.is_allowed_atop_vehicle)
+				O.forceMove(dest)
+				obj_mark_on_top(O)
+				// Edge case: We're hauling a roller bed atop the tank with a mob buckled to it. (Grab is on roller bed)
+				// In that case, also bring the mob atop to the top of the tank.
+				if(istype(O, /obj/structure/bed/roller))
+					var/obj/structure/bed/roller/R = O
+					if(R.buckled_mob)
+						var/mob/living/L = R.buckled_mob
+						L.forceMove(dest)
+						mark_on_top(L)
 
 	user.forceMove(dest)
 	mark_on_top(user)
 
+/**
+ * This proc allows a marine to pull another one DOWN the tank once he finishes climbing down.
+ *
+ * Opposite of carry_move_with_grabs. This one does the same thing but for climbing DOWN.
+ *
+ * Arguments:
+ * * mob/living/user = Mob doing the pulling.
+ * * turf/dest       = Which turf on the tank we're moving to
+ */
+/obj/vehicle/multitile/tank/proc/_carry_remove_with_grabs(mob/living/user, turf/dest)
+	var/list/grabbed_things = list()
+	for(var/obj/item/grab/G in list(user.l_hand, user.r_hand))
+		if(G?.grabbed_thing)
+			grabbed_things += G.grabbed_thing
 
 	for(var/atom/movable/thing as anything in grabbed_things)
-		thing.forceMove(dest)
 		if(isliving(thing))
 			var/mob/living/L = thing
 			L.apply_effect(2, WEAKEN)
-			mark_on_top(L)
+			// Edge case: We're hauling a mob down the tank who is buckled to a roller bed. (Grab is on mob)
+			// In that case, also bring the roller down the top of the tank.
+			if(L.buckled && istype(L.buckled, /obj/structure/bed/roller))
+				var/obj/structure/bed/roller/R = L.buckled
+				R.forceMove(dest)
+				obj_clear_on_top(R)
+			L.forceMove(dest)
+			clear_on_top(L)
 
+		else if(isobj(thing))
+			var/obj/O = thing
+			if(O.is_allowed_atop_vehicle)
+				O.forceMove(dest)
+				obj_clear_on_top(O)
+				// Edge case: We're hauling a roller bed down the tank with a mob buckled to it. (Grab is on roller bed)
+				// In that case, also bring the mob down the top of the tank.
+				if(istype(O, /obj/structure/bed/roller))
+					var/obj/structure/bed/roller/R = O
+					if(R.buckled_mob)
+						var/mob/living/L = R.buckled_mob
+						L.forceMove(dest)
+						clear_on_top(L)
+
+	user.forceMove(dest)
+	clear_on_top(user)
 
 // --- blocking helpers. Checks if turf is blocked, etc.
 

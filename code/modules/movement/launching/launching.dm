@@ -204,6 +204,8 @@
 			break
 		if (LM.dist >= LM.range)
 			break
+		if(locate(/obj/vehicle/multitile/tank) in T)
+			layer = TANK_RIDER_OBJ_LAYER // prevents thrown items from being layered under a vehicle during throw.
 		if (!Move(T)) // If this returns FALSE, then a collision happened
 			break
 		last_loc = loc
@@ -212,10 +214,14 @@
 		sleep(delay)
 
 	//done throwing, either because it hit something or it finished moving
+	src.layer = initial(src.layer)
 	if ((isobj(src) || ismob(src)) && throwing && !early_exit)
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
+		var/obj/vehicle/multitile/tank/tank = locate(/obj/vehicle/multitile/tank)
+		if(tank && (tank in T))
+			tank.obj_mark_on_top(src)
 		var/atom/hit_atom = ismob(LM.target) ? null : T // TODO, just check for LM.target, the ismob is to prevent funky behavior with grenades 'n crates
 		if(!hit_atom)
 			for(var/atom/A in T)

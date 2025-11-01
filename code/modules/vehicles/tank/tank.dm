@@ -76,6 +76,7 @@
 	explosive_resistance = 400
 
 	var/list/on_top_mobs = list() /// keeps track of all mobs currently atop the tank
+	var/list/on_top_obj = list() /// keeps track of all objs currently atop the tank
 	var/on_top_mobs_shooting_inaccuracy_time = 0 /// world_time must be bigger than this so mobs don't get penalized for shooting while atop the tank.
 
 /obj/vehicle/multitile/tank/update_next_move()
@@ -362,8 +363,7 @@
 		to_chat(user, SPAN_WARNING("The spot is no longer reachable."))
 		return
 	}
-	clear_on_top(user)
-	user.forceMove(target)
+	_carry_remove_with_grabs(user, target)
 	user.visible_message(
 		SPAN_WARNING("[user] climbs down from [src]."),
 		SPAN_WARNING("You climb down from [src]."))
@@ -395,6 +395,37 @@
 	_apply_rider_visuals(M)
 
 /**
+ * obj_mark_on_top WOULD be an ad-hoc polymorph of mark_on_top. It does the same thing, but with an obj/ type.
+ *
+ * This proc does three things:
+ *
+ * Checks if the obj can be brought atop a tank.
+ * It adds the obj to the tank's list of objs (on_top_objs)
+ * It adds the tank to a obj'ss tank_on_top_of var
+ * It calls _obj_apply_rider_visuals() to set the layer atop the tank's
+ *
+ * Arguments:
+ * * obj/O - The obj being marked ontop.
+ */
+/obj/vehicle/multitile/tank/proc/obj_mark_on_top(obj/O)
+	if(!istype(O))
+		return
+	if(!O.is_allowed_atop_vehicle)
+		return
+	if(O.z != z)
+		return
+	if(!(get_turf(O) in locs))
+		return
+	if(O.tank_on_top_of == src)
+		O.layer = TANK_RIDER_OBJ_LAYER // prevents a visual bug with layering
+		return
+	on_top_obj |= O
+	O.tank_on_top_of = src
+	O.is_atop_vehicle = TRUE
+	O.pixel_y = initial(O.pixel_y) + 12
+	O.layer = TANK_RIDER_OBJ_LAYER
+
+/**
  * clear_on_top removes rider effects from a mob who was previously atop the tank.
  *
  * This proc resets the layer and plane of a rider.
@@ -408,24 +439,41 @@
 	if(!istype(M))
 		return
 	on_top_mobs -= M
-	if(M.tank_on_top_of == src)
-		M.tank_on_top_of = null
+	M.tank_on_top_of = null
 	M.layer   = initial(M.layer)
 	M.plane   = initial(M.plane)
 	M.pixel_y = initial(M.pixel_y)
 
 /**
+ * obj_clear_on_top removes rider effects from an obj atop the tank.
+ *
+ * This behaves as an ad-hoc polymorphic version of clear_on_top.
+ */
+/obj/vehicle/multitile/tank/proc/obj_clear_on_top(obj/O)
+	if(!istype(O))
+		return
+	on_top_obj -= O
+	O.tank_on_top_of = null
+	O.is_atop_vehicle = FALSE
+	O.pixel_y = initial(O.pixel_y)
+	O.layer   = initial(O.layer)
+
+/**
  * Destroy proc. This shouldn't normally be called, but just in case.
  *
  * This proc ensures all mobs atop the tank are cleared.
- * we also cut the on_top_mobs list, just in case DM doesn't have garbage collection.
+ * we also cut the on_top_mobs and on_top_obj list, just in case DM doesn't have garbage collection.
  *
  */
 /obj/vehicle/multitile/tank/Destroy()
 	for(var/mob/living/M in on_top_mobs.Copy())
 		if(M)
 			clear_on_top(M)
+	for(var/obj/O in on_top_obj.Copy())
+		if(O)
+			obj_clear_on_top(O)
 	on_top_mobs.Cut()
+	on_top_obj.Cut()
 	return ..()
 
 /**
@@ -462,6 +510,13 @@
 		var/mob/living/M = mover
 		if(istype(M) && M.tank_on_top_of == src)
 			var/turf/start = get_turf(M)
+			var/turf/target = get_step(start, target_dir)
+			if(target && (target in src.locs))
+				return NO_BLOCKED_MOVEMENT
+	else if(isobj(mover))
+		var/obj/O = mover
+		if(O.is_atop_vehicle)
+			var/turf/start = get_turf(O)
 			var/turf/target = get_step(start, target_dir)
 			if(target && (target in src.locs))
 				return NO_BLOCKED_MOVEMENT

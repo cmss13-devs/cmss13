@@ -29,6 +29,13 @@
 	var/obj/structure/closet/bodybag/R = new unfolded_path(location, src)
 	R.add_fingerprint(user)
 	R.open(user)
+	if(isliving(user))
+		var/mob/living/L = user
+		var/obj/vehicle/multitile/tank/T = L.tank_on_top_of
+		if(T && !R.is_atop_vehicle) // tank exists, our user is atop the tank, we are not marked as atop the tank yet.
+			T.obj_mark_on_top(R)
+		else if (!T && R.is_atop_vehicle) // only remove from vehicle if it is atop a vehicle to begin with
+			R.tank_on_top_of.obj_clear_on_top(R)
 	user.temp_drop_inv_item(src)
 	qdel(src)
 
@@ -83,6 +90,7 @@
 	/// How many extra pixels to offset the bag by when buckled, since rollerbeds are set up to offset a centered horizontal human sprite.
 	var/buckle_offset = 5
 	store_items = FALSE
+	is_allowed_atop_vehicle = TRUE // Allows bodybags, exceptionally, as structures, to be used atop vehicles such as the tank.
 
 /obj/structure/closet/bodybag/Initialize()
 	. = ..()

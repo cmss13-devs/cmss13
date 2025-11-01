@@ -37,6 +37,15 @@
 
 	vis_flags = VIS_INHERIT_PLANE
 
+	/// Is this item allowed atop a climbable vehicle?
+	/// Not at all intended for structures: This is meant for grabbable items. Weapons, ammo, pizza crates, etc...
+	/// ...However, defining it as part of obj instead of obj/item helps us handle exceptions.
+	/// E.G: Exceptionally, as QoL for corpsmen: bodybags, stasis bags, and roller beds are allowed.
+	var/is_allowed_atop_vehicle = FALSE
+	/// Tracks whether this item is currently atop a vehicle.
+	var/is_atop_vehicle = FALSE
+	/// Which vehicle are we ontop of?
+	var/tmp/obj/vehicle/multitile/tank/tank_on_top_of = null
 
 /obj/Initialize(mapload, ...)
 	. = ..()
@@ -348,10 +357,39 @@
 			SPAN_NOTICE("You are buckled in to [src] by [user]."),
 			SPAN_NOTICE("You hear metal clanking"))
 
+/obj/Moved(atom/oldloc, direction, Forced = FALSE)
+	. = ..()
+	if(is_atop_vehicle && isturf(loc))
+		var/still_on_tank = FALSE
+		for(var/obj/vehicle/multitile/tank/T in loc)
+			if(loc in T.locs)
+				still_on_tank = TRUE
+				break
+		if(!still_on_tank)
+			src.tank_on_top_of.obj_clear_on_top(src)
+
 /obj/Move(NewLoc, direct)
 	. = ..()
 	handle_rotation()
-	if(. && buckled_mob && !handle_buckled_mob_movement(loc,direct)) //movement fails if buckled mob's move fails.
+	if(src.is_atop_vehicle)
+		var/still_on_tank = FALSE
+		if(isturf(NewLoc))
+			for(var/obj/vehicle/multitile/tank/T in NewLoc)
+				if(NewLoc in T.locs)
+					still_on_tank = TRUE
+					break
+
+		if(!still_on_tank && buckled_mob && ismob(buckled_mob))
+			var/mob/living/M = buckled_mob
+			var/obj/vehicle/multitile/tank/temp_tank = M.tank_on_top_of
+			if(temp_tank)
+				temp_tank.clear_on_top(M)
+
+		src.forceMove(NewLoc)
+		if(buckled_mob)
+			buckled_mob.forceMove(NewLoc)
+		return
+	if(. && buckled_mob && !handle_buckled_mob_movement(loc,direct))
 		. = FALSE
 
 /obj/forceMove(atom/dest)
@@ -471,6 +509,10 @@
 	return
 
 /obj/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
+	if(isitem(src))
+		var/obj/item/T = src
+		if(T.is_atop_vehicle) // don't process flamer fire if the item is atop a climbable vehicle.
+			return
 	. = ..()
 	flamer_fire_act(damage, fire.weapon_cause_data)
 

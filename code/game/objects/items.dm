@@ -167,6 +167,9 @@
 	/// Special storages this item prioritizes
 	var/list/preferred_storage
 
+	/// Rifles, shells, grenades, metal sheets, et-cetera should all be able to 'fit' atop the tank.
+	is_allowed_atop_vehicle = TRUE
+
 /obj/item/Initialize(mapload, ...)
 	. = ..()
 
@@ -409,6 +412,17 @@
 	if(drop_sound && (src.loc?.z))
 		playsound(src, drop_sound, dropvol, drop_vary)
 	src.do_drop_animation(user)
+
+	if(isliving(user))
+		var/mob/living/L = user
+		var/obj/vehicle/multitile/tank/T = L.tank_on_top_of
+		if(T && !src.is_atop_vehicle) // tank exists, our user is atop the tank, we are not marked as atop the tank yet.
+			T.obj_mark_on_top(src)
+		else if (!T && src.is_atop_vehicle) // only remove from vehicle if it is atop a vehicle to begin with
+			src.tank_on_top_of.obj_clear_on_top(src)
+		else if (T && !src.is_atop_vehicle) // User on tank AND already marked
+			src.pixel_y = initial(src.pixel_y) + 12 // Just refresh the pixel offset and layer to avoid a visual bug with animations
+			src.layer = TANK_RIDER_OBJ_LAYER
 
 	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
 

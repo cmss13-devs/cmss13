@@ -214,6 +214,7 @@
 	foldabletype = /obj/item/roller
 	accepts_bodybag = TRUE
 	base_bed_icon = "roller"
+	is_allowed_atop_vehicle = TRUE // Allows roller beds, exceptionally, as structures, to be used atop vehicles such as the tank.
 
 /obj/structure/bed/roller/MouseDrop(atom/over_object)
 	if(foldabletype && !buckled_mob && !buckled_bodybag)
@@ -295,6 +296,13 @@
 	roller.add_fingerprint(user)
 	user.temp_drop_inv_item(src)
 	forceMove(roller)
+	if(isliving(user))
+		var/mob/living/L = user
+		var/obj/vehicle/multitile/tank/T = L.tank_on_top_of
+		if(T && !roller.is_atop_vehicle) // tank exists, our user is atop the tank, we are not marked as atop the tank yet.
+			T.obj_mark_on_top(roller)
+		else if (!T && roller.is_atop_vehicle) // only remove from vehicle if it is atop a vehicle to begin with
+			roller.tank_on_top_of.obj_clear_on_top(roller)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ROLLER_DEPLOYED, roller)
 
 /obj/item/roller/afterattack(obj/target, mob/user, proximity)

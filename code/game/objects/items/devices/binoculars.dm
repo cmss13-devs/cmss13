@@ -61,13 +61,13 @@
 	. = ..()
 	disable_nvgs(user)
 
-/obj/item/device/binoculars/proc/update_nvgs(mob/M)
+/obj/item/device/binoculars/proc/update_nvgs(mob/morb)
 	SIGNAL_HANDLER
 
 	if(lighting_alpha < 255)
-		M.see_in_dark = viewsize
-	M.lighting_alpha = lighting_alpha
-	M.sync_lighting_plane_alpha()
+		morb.see_in_dark = viewsize
+	morb.lighting_alpha = lighting_alpha
+	morb.sync_lighting_plane_alpha()
 
 /obj/item/device/binoculars/proc/enable_nvgs(mob/living/carbon/human/user)
 	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(update_nvgs))
@@ -102,7 +102,7 @@
 		handle_upgrade(omnitrix.upgrade, omnitrix.power)
 		qdel(omnitrix)
 
-/obj/item/device/binoculars/proc/handle_upgrade(new_upgrade , power)
+/obj/item/device/binoculars/proc/handle_upgrade(new_upgrade, power)
 	upgrade = new_upgrade
 	switch(upgrade)
 		if(MATRIX_WIDE) // cristalizer makes you able to look from further away

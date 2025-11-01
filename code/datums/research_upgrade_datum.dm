@@ -176,7 +176,7 @@
 	name = "matrix frame"
 	desc = "A complex arrangement of lenses that allow the upgrade of optical devices."
 	value_upgrade = 200 // relatively cheap because it doesnt do nothing by itself
-	clearance_req = 1
+	clearance_req = 2
 	change_purchase = 100
 	maximum_price = 1000
 	behavior = RESEARCH_UPGRADE_ITEM

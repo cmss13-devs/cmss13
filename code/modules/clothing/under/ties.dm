@@ -1388,3 +1388,55 @@ Wrist Accessories
 	. = ..()
 
 	. += " It reads: [SPAN_NOTICE("[worldtime2text()]")]"
+
+
+//TEMPORARY
+
+/obj/item/clothing/accessory/helmet/cover
+	name = "potato cover"
+	desc = "ahelp if you see this."
+	garbage = TRUE // for all intents and purposes, yes
+	w_class = SIZE_TINY
+	worn_accessory_slot = ACCESSORY_SLOT_HELM_C
+	worn_accessory_limit = 2 // cover a helmet with a raincover and a netting i guess
+	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
+	accessory_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
+	)
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
+	)
+
+/obj/item/clothing/accessory/helmet/cover/raincover
+	name = "raincover"
+	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least it's something."
+	icon_state = "raincover"
+
+/obj/item/clothing/accessory/helmet/cover/raincover/jungle
+	name = "jungle raincover"
+	icon_state = "raincover_jungle"
+
+/obj/item/clothing/accessory/helmet/cover/raincover/desert
+	name = "desert raincover"
+	icon_state = "raincover_desert"
+
+/obj/item/clothing/accessory/helmet/cover/raincover/urban
+	name = "urban raincover"
+	icon_state = "raincover_urban"
+
+/obj/item/clothing/accessory/helmet/cover/netting
+	name = "combat netting"
+	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
+	icon_state = "netting"
+
+/obj/item/clothing/accessory/helmet/cover/netting/desert
+	name = "desert combat netting"
+	icon_state = "netting_desert"
+
+/obj/item/clothing/accessory/helmet/cover/netting/jungle
+	name = "jungle combat netting"
+	icon_state = "netting_jungle"
+
+/obj/item/clothing/accessory/helmet/cover/netting/urban
+	name = "urban combat netting"
+	icon_state = "netting_urban"

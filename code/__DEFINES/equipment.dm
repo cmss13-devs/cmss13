@@ -496,13 +496,13 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define ACCESSORY_SLOT_TROPHY "Trophy"
 #define ACCESSORY_SLOT_YAUTJA_MASK "Yautja Mask"
 #define ACCESSORY_SLOT_MASK "Mask"
+#define ACCESSORY_SLOT_HELM_C "Helmet cover"
 
 // Accessory slots that are currently unused
 #define ACCESSORY_SLOT_ARMOR_A "Arm armor"
 #define ACCESSORY_SLOT_ARMOR_L "Leg armor"
 #define ACCESSORY_SLOT_ARMOR_S "Armor storage"
 #define ACCESSORY_SLOT_ARMOR_M "Misc armor"
-#define ACCESSORY_SLOT_HELM_C "Helmet cover"
 
 //=================================================
 

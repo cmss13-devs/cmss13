@@ -12416,7 +12416,7 @@
 	icon_state = "game_kit";
 	name = "Thick Art LTD Gamepad"
 	},
-/obj/item/prop/helmetgarb/raincover{
+/obj/item/clothing/accessory/helmet/cover/raincover{
 	pixel_x = -8;
 	pixel_y = 9
 	},

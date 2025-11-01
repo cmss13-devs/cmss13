@@ -1,0 +1,13 @@
+2025-11-01:
+  FebrezeNinja:
+  - bugfix: Fixes an instance of medical item duping
+  Puckaboo2:
+  - bugfix: Removed an autoinjector fill overlay on Thwei.
+  realforest2001:
+  - rscadd: Moved the preference for using playtime perks to settings tab instead
+      of xenos tab.
+  - code_imp: Added backend functionality for SDTimeAward community award to function
+      without being in the staff list.
+  - admin: Added a preference for staff to decide if they use their own playtime for
+      ranks or not.
+  - bugfix: Fixes an inverted check on who can hear ship announcements such as hijack.

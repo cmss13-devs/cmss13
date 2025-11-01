@@ -341,8 +341,8 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 		else
 			icon_state = "[basestate]_off"
 
-/obj/structure/fence/electrified/proc/toggle_power()
-	electrified = !electrified
+/obj/structure/fence/electrified/proc/set_is_on(is_on)
+	electrified = is_on
 	update_icon()
 
 /obj/structure/fence/electrified/Initialize()

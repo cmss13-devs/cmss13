@@ -22,6 +22,12 @@
 	///the flick state to use when inserting paper into the machine
 	var/animate_state = "bigscanner1"
 
+/obj/structure/machinery/photocopier/Initialize()
+	. = ..()
+	if(istype(src, /obj/structure/machinery/photocopier/wyphotocopier))
+		AddElement(/datum/element/corp_label/wy)
+	else
+		AddElement(/datum/element/corp_label/seegson)
 
 /obj/structure/machinery/photocopier/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -259,7 +265,6 @@
 	toner = 180
 	maxcopies = 30
 	animate_state = "bigscannerpro1"
-
 
 /// The actual toner cartridge used in photcopiers
 /obj/item/device/toner

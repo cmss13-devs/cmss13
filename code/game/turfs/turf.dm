@@ -236,13 +236,8 @@
 		return FALSE
 	if(is_mainship_level(z) && SSticker?.mode?.is_in_endgame) // the ship is made out of tilet paper now
 		return TRUE
-	if(get_pylon_protection_level() >= TURF_PROTECTION_CORE || turf_below.get_pylon_protection_level() >= TURF_PROTECTION_CAS)
+	if(get_pylon_protection_level() >= TURF_PROTECTION_CORE || turf_below.get_pylon_protection_level() >= TURF_PROTECTION_CORE)
 		return FALSE
-
-	if(is_mainship_level(z) && !SSticker?.mode?.is_in_endgame)
-		return FALSE
-
-
 
 	return TRUE
 

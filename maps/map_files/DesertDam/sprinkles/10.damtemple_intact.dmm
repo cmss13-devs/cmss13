@@ -7,10 +7,6 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "ab" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/reagent_dispensers/tank/water/yautja,
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
@@ -63,11 +59,6 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "aj" = (
-/obj/structure/machinery/autolathe/yautja,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/reagent_dispensers/tank/fuel/yautja,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
@@ -103,10 +94,19 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "aq" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
 /obj/structure/reagent_dispensers/tank/water/yautja,
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "ar" = (
+/obj/structure/machinery/autolathe/yautja,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
 /obj/structure/reagent_dispensers/tank/fuel/yautja,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
@@ -936,8 +936,8 @@ af
 ae
 IW
 MH
-aq
 ab
+aq
 mB
 mB
 Ax
@@ -1320,8 +1320,8 @@ AU
 AU
 MH
 Bm
-ar
 aj
+ar
 MH
 an
 MH

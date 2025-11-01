@@ -28,13 +28,16 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/effect/decal/ammo_casing/Initialize()
 	. = ..()
+	if(number_of_states >= 1)
+		icon_state += "_[rand(1,number_of_states)]" //Set the icon to it.
+
 	transform = matrix(rand(-0.9, 0.9), rand(-0.9, 0.9), MATRIX_TRANSLATE) * matrix(rand(0, 359), MATRIX_ROTATE) // just enough randomization but not more that it creates another turf instance
-	icon_state += "_[rand(1,number_of_states)]" //Set the icon to it.
+
 
 //This does most of the heavy lifting. It updates the icon and name if needed, then changes .dir to simulate new casings.
 /obj/effect/decal/ammo_casing/update_icon()
 	if(max_casings >= current_casings)
-		if(current_casings == 2) name += "s" //In case there is more than one.
+		if(current_casings >= 2) name += "s" //In case there is more than one.
 		if(floor((current_casings-1)/8) > current_icon)
 			current_icon++
 			icon_state += "_[current_icon]"
@@ -66,3 +69,4 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/effect/decal/ammo_casing/shell/twobore_shell
 	name = "comedically sized spent shell"
 	icon_state = "twobore_shell"
+	number_of_states = 0

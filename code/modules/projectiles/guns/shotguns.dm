@@ -760,7 +760,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "sshotgun"
 	item_state = "sshotgun"
 	flags_equip_slot = SLOT_WAIST
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS
 
 /obj/item/weapon/gun/shotgun/double/sawn/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14,  "stock_x" = 18, "stock_y" = 16)
@@ -1005,7 +1005,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	civilian_usable_override = FALSE
 	var/braced = FALSE
 	var/fired_shots = 0 //How many shots were fired since it was last closed, for casing ejection purposes. // somewhat deprecated now, but still used for the messaging
-	var/image/fired_casing
 
 /obj/item/weapon/gun/shotgun/double/twobore/set_gun_config_values()
 	..()
@@ -1059,9 +1058,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	eject_casing()
 	playsound(user, "gun_casing_shotgun", 25, TRUE)
 
-	for(var/I in 1 to fired_shots)
-		fired_casing.transform = matrix(rand(0,359), MATRIX_ROTATE)*matrix(rand(-14,14), rand(-14,14), MATRIX_TRANSLATE)
-		floor.overlays += fired_casing
 	fired_shots = 0
 
 /obj/item/weapon/gun/shotgun/double/twobore/Fire(atom/target, mob/living/carbon/human/user, params, reflex = 0, dual_wield) //Using this instead of apply_bullet_effects() as RPG does so I get more granular angles than just user direction.

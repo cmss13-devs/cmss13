@@ -111,7 +111,7 @@
 /area/shiva/exterior/lz2_fortress)
 "U" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 "V" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	density = 0;

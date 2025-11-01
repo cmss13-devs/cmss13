@@ -10,9 +10,6 @@
 "c" = (
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_lz2)
-"d" = (
-/turf/closed/wall/shiva/ice,
-/area/shiva/interior/caves/s_lz2)
 "e" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/multi_tiles,
@@ -199,7 +196,7 @@
 /area/shiva/interior/lz2_habs)
 "W" = (
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
-/area/shiva/exterior/lz2_fortress)
+/area/shiva/interior/oob)
 "X" = (
 /obj/item/weapon/gun/boltaction,
 /obj/structure/surface/rack,
@@ -355,7 +352,7 @@ s
 a
 a
 a
-d
+i
 x
 x
 x
@@ -370,8 +367,8 @@ G
 a
 a
 a
-d
-d
+i
+i
 x
 r
 "}

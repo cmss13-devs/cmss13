@@ -13,9 +13,6 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
-"h" = (
-/turf/closed/wall/shiva/ice,
-/area/shiva/interior/caves/left_spiders)
 "j" = (
 /turf/closed/wall/shiva/prefabricated/blue,
 /area/shiva/interior/colony/research_hab)
@@ -117,7 +114,7 @@
 /area/shiva/interior/colony/research_hab)
 "J" = (
 /turf/closed/wall/shiva/ice,
-/area/shiva/interior/colony/research_hab)
+/area/shiva/interior/oob)
 "K" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/effect/decal/cleanable/dirt,
@@ -180,8 +177,8 @@
 /area/shiva/interior/colony/research_hab)
 
 (1,1,1) = {"
-h
-h
+J
+J
 j
 j
 j

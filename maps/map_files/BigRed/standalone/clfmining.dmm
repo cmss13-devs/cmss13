@@ -242,6 +242,10 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"aN" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
 "aP" = (
 /obj/structure/disposalpipe/broken{
 	dir = 4
@@ -937,7 +941,6 @@
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "nW" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
@@ -1886,8 +1889,6 @@
 "DN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/burger,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/trash/burger,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8
 	},
@@ -2335,13 +2336,6 @@
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "Lo" = (
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = -8;
-	pixel_y = 6
-	},
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_x = 6
-	},
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -8;
 	pixel_y = 6
@@ -4248,7 +4242,7 @@ kH
 LW
 zb
 uy
-FO
+aN
 DV
 FO
 FO

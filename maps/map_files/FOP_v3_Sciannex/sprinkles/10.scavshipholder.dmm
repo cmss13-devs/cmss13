@@ -20,7 +20,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos.";
 	name = "synthetic vegetation"
 	},
-/area/template_noop)
+/area/fiorina/oob)
 "bw" = (
 /obj/structure/machinery/filtration/console{
 	pixel_y = 22
@@ -268,7 +268,7 @@
 "tD" = (
 /obj/structure/lattice,
 /turf/open/space,
-/area/template_noop)
+/area/fiorina/oob)
 "tZ" = (
 /obj/item/tool/extinguisher/mini{
 	pixel_x = 14;
@@ -399,7 +399,7 @@
 "Iu" = (
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/template_noop)
+/area/fiorina/oob)
 "Jg" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan1"
@@ -468,7 +468,7 @@
 /area/template_noop)
 "Ld" = (
 /turf/open/space,
-/area/template_noop)
+/area/fiorina/oob)
 "Lz" = (
 /obj/structure/prop/invuln/fire{
 	pixel_y = -15
@@ -492,7 +492,7 @@
 /area/template_noop)
 "NV" = (
 /turf/closed/wall/mineral/bone_resin,
-/area/template_noop)
+/area/fiorina/oob)
 "Ok" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light/small{
@@ -573,7 +573,7 @@
 /area/template_noop)
 "Vh" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/template_noop)
+/area/fiorina/oob)
 "VB" = (
 /obj/structure/machinery/light/small,
 /obj/structure/machinery/defenses/sentry/premade/dumb{

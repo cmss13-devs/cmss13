@@ -234,13 +234,12 @@
 /turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "lP" = (
+/obj/item/tool/surgery/scalpel/manager,
 /obj/structure/sink{
 	dir = 8;
-	icon_state = "sink";
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/item/tool/surgery/scalpel/manager,
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/medical)
 "lW" = (
@@ -660,7 +659,6 @@
 "zb" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
 	pixel_x = 11
 	},
 /turf/open/floor/platingdmg1,

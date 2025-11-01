@@ -10,24 +10,24 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy25"
 	},
-/area/template_noop)
+/area/fiorina/oob)
 "e" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy27"
 	},
-/area/template_noop)
+/area/fiorina/oob)
 "g" = (
 /obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_1";
 	opacity = 0
 	},
-/area/template_noop)
+/area/fiorina/oob)
 "h" = (
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_1"
 	},
-/area/template_noop)
+/area/fiorina/oob)
 "l" = (
 /obj/structure/bed/roller,
 /obj/structure/machinery/filtration/console{
@@ -64,6 +64,7 @@
 	pixel_x = -12;
 	pixel_y = 6
 	},
+/obj/item/tool/wirecutters,
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "o" = (
@@ -74,7 +75,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy4"
 	},
-/area/template_noop)
+/area/fiorina/oob)
 "w" = (
 /obj/item/trash/cigbutt/ucigbutt,
 /obj/item/trash/cigbutt/ucigbutt{
@@ -88,17 +89,17 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy_rightengine"
 	},
-/area/template_noop)
+/area/fiorina/oob)
 "F" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy_leftengine"
 	},
-/area/template_noop)
+/area/fiorina/oob)
 "H" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy2"
 	},
-/area/template_noop)
+/area/fiorina/oob)
 "K" = (
 /obj/structure/prop/invuln{
 	desc = "An inflated membrane. This one is puncture proof. Wow!";
@@ -107,12 +108,12 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull,
-/area/template_noop)
+/area/fiorina/oob)
 "P" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy20"
 	},
-/area/template_noop)
+/area/fiorina/oob)
 "T" = (
 /obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/platform/metal/kutjevo_smooth/east,
@@ -139,7 +140,7 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy5"
 	},
-/area/template_noop)
+/area/fiorina/oob)
 
 (1,1,1) = {"
 P

@@ -1,0 +1,4 @@
+author: "matttheficus"
+delete-after: True
+changes:
+  - balance: "you can no longer get IB or Organ Damage while on the Hunting Preserve as a FACTION_LIST_HUNTED"

@@ -1,0 +1,4 @@
+author: "halander1"
+delete-after: True
+changes:
+  - qol: "Players now have the option to take pills directly from bottles for certain pouches."

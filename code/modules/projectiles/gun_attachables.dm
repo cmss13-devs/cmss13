@@ -3074,6 +3074,7 @@ Defined in conflicts.dm of the #defines folder.
 	current_rounds = 3
 	max_rounds = 3
 	max_range = 21
+	attachment_action_type = /datum/action/item_action/toggle/flare_launcher
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_flare.ogg'
 	ammo = /datum/ammo/flare/no_ignite

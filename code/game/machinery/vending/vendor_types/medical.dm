@@ -660,6 +660,7 @@
 		list("Beaker (60 Units)", floor(scale * 3), /obj/item/reagent_container/glass/beaker, VENDOR_ITEM_REGULAR),
 		list("Beaker, Large (120 Units)", floor(scale * 3), /obj/item/reagent_container/glass/beaker/large, VENDOR_ITEM_REGULAR),
 		list("Box of Pill Bottles", floor(scale * 2), /obj/item/storage/box/pillbottles, VENDOR_ITEM_REGULAR),
+		list("Box of Pill Packets", floor(scale * 1), /obj/item/storage/box/pillbottles/packet, VENDOR_ITEM_REGULAR),
 		list("Dropper", floor(scale * 3), /obj/item/reagent_container/dropper, VENDOR_ITEM_REGULAR),
 		list("Syringe", floor(scale * 7), /obj/item/reagent_container/syringe, VENDOR_ITEM_REGULAR)
 	)

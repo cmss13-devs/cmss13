@@ -438,6 +438,11 @@
 	path = /obj/item/storage/pill_bottle
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
+/datum/autolathe/recipe/medilathe/pill_packet
+	name = "pill packet"
+	path = /obj/item/storage/pill_bottle/packet
+	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
+
 /datum/autolathe/recipe/medilathe/firstaid_regular
 	name = "first aid kit (reg)"
 	path = /obj/item/storage/firstaid/regular/empty

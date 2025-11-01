@@ -13,7 +13,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/effect/decal/ammo_casing
 	name = "spent casing"
 	desc = "Empty and useless now."
-	icon = 'icons/obj/items/casings.dmi'
+	icon = 'icons/obj/items/weapons/casings.dmi'
 	icon_state = "casing"
 	dir = NORTH //Always north when it spawns.
 	var/current_casings = 1 //This is manipulated in the procs that use these.
@@ -66,3 +66,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/effect/decal/ammo_casing/shell/blue_shell
 	name = "spent shell"
 	icon_state = "blue_shell"
+
+/obj/effect/decal/ammo_casing/shell/twobore_shell
+	name = "comedically sized spent shell"
+	icon_state = "twobore_shell"

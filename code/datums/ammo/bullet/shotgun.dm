@@ -446,6 +446,7 @@
 	penetration = ARMOR_PENETRATION_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_1 * 3 //It has a lot of energy, but the 26mm bullet drops off fast.
 	effective_range_max = EFFECTIVE_RANGE_MAX_TIER_2 //Full damage up to this distance, then falloff for each tile beyond.
+	shell_casing = /obj/effect/decal/ammo_casing/shell/twobore_shell
 	var/hit_messages = list()
 
 /datum/ammo/bullet/shotgun/twobore/on_hit_mob(mob/living/M, obj/projectile/P)

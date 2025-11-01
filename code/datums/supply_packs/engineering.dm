@@ -1,7 +1,7 @@
 /datum/supply_packs/sandbags
 	name = "empty sandbags crate (x50)"
 	contains = list(/obj/item/stack/sandbags_empty/full)
-	cost = 20
+	cost = 15
 	containertype = /obj/structure/closet/crate/supply
 	containername = "empty sandbags crate"
 	group = "Engineering"
@@ -13,7 +13,7 @@
 		/obj/item/tool/shovel/etool,
 		/obj/item/tool/shovel/etool,
 	)
-	cost = 30
+	cost = 20
 	containertype = /obj/structure/closet/crate/supply
 	containername = "sandbags construction kit"
 	group = "Engineering"

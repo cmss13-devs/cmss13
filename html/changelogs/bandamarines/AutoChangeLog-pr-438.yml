@@ -1,0 +1,4 @@
+author: "Ingakem"
+delete-after: True
+changes:
+  - balance: "Количество пойнтов в меню лодаута было повышено с 7 до 10"

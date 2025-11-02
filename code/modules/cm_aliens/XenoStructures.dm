@@ -957,7 +957,7 @@
 		if(cur_hive_num == hive_number)
 			xeno_announcement(SPAN_XENOANNOUNCE("Наш Король сейчас взращивается в [get_area_name(loc)]. Защищайте его, а также наши пилоны на коммуникационных реле. Любой ценой!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Король другого улья сейчас взращивается в [get_area_name(loc)]."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Король другого улья сейчас взращивается в [get_area_name(loc)]. Нам необходимо уничтожить инкубатор!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 
 #define STAGE_GROWING 1
@@ -994,7 +994,7 @@
 			if(cur_hive_num == hive_number)
 				xeno_announcement(SPAN_XENOANNOUNCE("The hatchery's progress has resumed!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 			else
-				xeno_announcement(SPAN_XENOANNOUNCE("Another hive's hatchery progress has resumed!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("Another hive's hatchery progress has resumed! We must stop it!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		elder_overseer_message("The progress of the Serpent King's hatchery has resumed.")
 		marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN RESUMED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 		announced_paused = FALSE
@@ -1068,7 +1068,7 @@
 		if(cur_hive_num == hive_number)
 			xeno_announcement(SPAN_XENOANNOUNCE("Король должен появиться на свет примерно через 5 минут."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Король другого улья должен появиться на свет примерно через 5 минут."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Король другого улья должен появиться на свет примерно через 5 минут. Мы должны остановить их!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 #define KING_PLAYTIME_HOURS (50 HOURS)
 
@@ -1242,7 +1242,7 @@
 		if(cur_hive_num == hive_number)
 			xeno_announcement(SPAN_XENOANNOUNCE("Король появится на свет примерно 20 секунд."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Король другого улья появится на свет примерно 20 секунд."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Король другого улья появится на свет примерно 20 секунд. ОСТАНОВИТЕ ИХ!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 /// Causes the cocoon to change visually for hatching and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/animate_hatch_king()
@@ -1259,7 +1259,7 @@
 		if(cur_hive_num == hive_number)
 			xeno_announcement(SPAN_XENOANNOUNCE("Да здравствует Король!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Король другого улья появился на свет!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Король другого улья появился на свет! Мы должны сравнять его с землей!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 /// Actually hatches the King transferring the candidate into the spawned mob and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/hatch_king()

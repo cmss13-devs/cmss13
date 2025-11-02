@@ -586,12 +586,14 @@
 
 /// Maptext styles
 #define MAP_STYLESHEET "\
+img.icon { width: auto; height: auto } \
 .center { text-align: center; } \
 .maptext { font-family: 'Grand9K Pixel'; font-size: 6pt; -dm-text-outline: 1pt black; color: white; line-height: 1.0; } \
 .langchat { font-family: 'Grand9K Pixel'; font-size: 6pt; -dm-text-outline: 1pt black; } \
 .langchat_small { font-family: 'Spess Font'; font-size: 6pt; } \
 .langchat_yell { font-size: 12pt; } \
 .langchat_bolded { font-family: 'Press Start 2P'; font-size: 6pt; } \
+.langchat_smaller_bolded { font-weight: bold; font-size: 7px; } \
 .langchat_announce { font-family: 'Pix Cyrillic'; font-size: 12pt; } \
 .langchat_bolditalicbig { font-family: 'TinyUnicode'; font-size: 24pt; } \
 .langchat_italic { font-family: 'TinyUnicode'; font-size: 12pt; } \

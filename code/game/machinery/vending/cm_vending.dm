@@ -1439,6 +1439,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 						clothing.attach_accessory(user, new_item)
 			else
 				user.equip_to_appropriate_slot(new_item)
+				new_item.update_icon()
 
 	if(vend_flags & VEND_TO_HAND)
 		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))

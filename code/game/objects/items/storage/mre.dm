@@ -168,6 +168,10 @@
 	snack = /obj/item/mre_food_packet/wy/snack
 	dessert = /obj/item/mre_food_packet/wy/dessert
 
+/obj/item/storage/box/mre/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/storage/box/mre/pmc/choose_cigarettes()
 	var/cig_type = rand(1, 2)
 	switch(cig_type)
@@ -280,6 +284,10 @@
 	should_have_cookie = FALSE
 	should_have_utencil = FALSE
 
+/obj/item/storage/box/mre/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/storage/box/mre/wy/choose_drink()
 	new /obj/item/reagent_container/food/drinks/cans/bugjuice(src)
 
@@ -316,6 +324,10 @@
 	should_have_spread = FALSE
 	should_have_cookie = FALSE
 	should_have_utencil = TRUE
+
+/obj/item/storage/box/mre/upp/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/storage/box/mre/upp/choose_utencil()
 	new /obj/item/tool/kitchen/utensil/pspoon(src)

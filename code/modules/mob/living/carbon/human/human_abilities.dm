@@ -46,6 +46,33 @@
 	action_icon_state = "order_focus"
 	order_type = COMMAND_ORDER_FOCUS
 
+/datum/action/human_action/cycle_voice_level
+	name = "Cycle Voice Level"
+	action_icon_state = "leadership_voice_low"
+
+/datum/action/human_action/cycle_voice_level/action_activate()
+	. = ..()
+	if(!ishuman(owner)) // i actually dont know if this is necessary
+		return
+	var/mob/living/carbon/human/my_voice = owner
+	my_voice.cycle_voice_level()
+	update_button_icon()
+
+/datum/action/human_action/cycle_voice_level/update_button_icon()
+	var/mob/living/carbon/human/my_voice = owner
+	switch(my_voice.langchat_styles) // honestly, could probably merge this one with the cycle_voice_level proc
+		if("", null)
+			action_icon_state = "leadership_voice_off"
+
+		if("langchat_smaller_bolded")
+			action_icon_state = "leadership_voice_low"
+
+		if("langchat_bolded")
+			action_icon_state = "leadership_voice_high"
+
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
 /datum/action/human_action/psychic_whisper
 	name = "Psychic Whisper"
 	action_icon_state = "cultist_channel_hivemind"

@@ -361,6 +361,7 @@
 	. = ..()
 	reagents.add_reagent("bread", 3)
 	reagents.add_reagent("blackpepper", 1)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/cookie
 	name = "cookie"
@@ -1187,6 +1188,7 @@
 	. = ..()
 	unpopped = rand(1,10)
 	reagents.add_reagent("plantmatter", 2)
+	AddElement(/datum/element/corp_label/wy)
 	bitesize = 0.1 //this snack is supposed to be eating during looooong time. And this it not dinner food! --rastaf0
 
 /obj/item/reagent_container/food/snacks/popcorn/On_Consume()
@@ -3329,6 +3331,7 @@
 	. = ..()
 	reagents.add_reagent("bread", 5)
 	reagents.add_reagent("meatprotein", 5)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/packaged_burrito/attack_self(mob/user)
 	..()
@@ -3336,6 +3339,7 @@
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
+		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
 		new /obj/item/trash/buritto (user.loc)
 		icon_state = "open-burrito"
@@ -3355,7 +3359,7 @@
 	reagents.add_reagent("bread", 5)
 	reagents.add_reagent("meatprotein", 5)
 	reagents.add_reagent("sodiumchloride", 2)
-
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/packaged_burger/attack_self(mob/user)
 	..()
@@ -3363,6 +3367,7 @@
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hamburger!"))
+		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
 		new /obj/item/trash/burger (user.loc)
 		icon_state = "hburger"
@@ -3382,6 +3387,7 @@
 	reagents.add_reagent("bread", 2)
 	reagents.add_reagent("meatprotein", 1)
 	reagents.add_reagent("sodiumchloride", 2)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/packaged_hdogs/attack_self(mob/user)
 	..()
@@ -3389,6 +3395,7 @@
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hotdog!"))
+		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
 		new /obj/item/trash/hotdog (user.loc)
 		icon_state = "open-hotdog"
@@ -3407,7 +3414,7 @@
 	. = ..()
 	reagents.add_reagent("nutriment", 4)
 	reagents.add_reagent("meatprotein", 4)
-
+	AddElement(/datum/element/corp_label/wy) //Had WY logo (wings) in Alien Isolation
 
 /obj/item/reagent_container/food/snacks/kepler_crisps
 	name = "Kepler Crisps"
@@ -3421,6 +3428,7 @@
 	. = ..()
 	reagents.add_reagent("bread", 4)
 	reagents.add_reagent("sodiumchloride", 12)
+	AddElement(/datum/element/corp_label/wy) //Had WY logo (wings) in Alien Isolation
 
 /obj/item/reagent_container/food/snacks/kepler_crisps/flamehot
 	name = "Kepler Flamehot"

@@ -339,7 +339,7 @@
 	if(movement_slowdown)
 		xeno.speed_modifier -= movement_slowdown
 		xeno.recalculate_speed()
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_in()
 	return
@@ -415,7 +415,7 @@
 	UnregisterSignal(xeno, COMSIG_MOB_STATCHANGE)
 	if(xeno.layer == XENO_HIDING_LAYER)
 		xeno.layer = initial(xeno.layer)
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 		xeno.update_wounds()
 		xeno.update_layer()
 	apply_cooldown(4) //2 second cooldown after attacking

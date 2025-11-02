@@ -54,11 +54,11 @@
 		var/spoken_order = ""
 		switch(order)
 			if(COMMAND_ORDER_MOVE)
-				spoken_order = pick("*ДВИГАЕМ БУЛКАМИ*!", "*ШЕВЕЛИМСЯ*!", "*ДВИГАЕМСЯ, ДВИГАЕМСЯ*!", "*ПОШЕЛ, ПОШЕЛ, ПОШЕЛ*!", "*ВПЕРЕД*! *БЫСТРЕЕ*!", "*ДВИГАЙ, ДВИГАЙ, ДВИГАЙ*!", "*БЕГОМ, МАРШ*!", "*ШИРЕ ШАГ*!", "*ШЕВЕЛИМ ЛАСТАМИ*!", "*ШЕВЕЛИМ НОЖКАМИ, ДАМЫ*!")
+				spoken_order = pick("ДВИГАЕМ БУЛКАМИ!", "ШЕВЕЛИМСЯ!", "ДВИГАЕМСЯ, ДВИГАЕМСЯ!", "ПОШЕЛ, ПОШЕЛ, ПОШЕЛ!", "ВПЕРЕД! БЫСТРЕЕ!", "ДВИГАЙ, ДВИГАЙ, ДВИГАЙ!", "БЕГОМ, МАРШ!", "ШИРЕ ШАГ!", "ШЕВЕЛИМ ЛАСТАМИ!", "ШЕВЕЛИМ НОЖКАМИ, ДАМЫ!", "НЕ РАССЛАБЛЯЕМСЯ!", "БЕГОМ, БЕГОМ!", "ЧОП ЧОП!", "УСКОРЯЕМСЯ!", "ВПЕРЕД!", "ВЫДВИГАЕМСЯ!", "ЗА МНОЙ!", "ПОДНАЖМЕМ!", "СОБРАТЬСЯ, ЗА МНОЙ!")
 			if(COMMAND_ORDER_HOLD)
-				spoken_order = pick("*ДЕРЖИМ УДАР*!", "*БЕРЕЧЬ ГОЛОВУ*!", "*ПРИГОТОВИТЬСЯ К СТОЛКНОВЕНИЮ*!", "*ДЕРЖАТЬСЯ*!", "*ДЕРЖИТЕ СТРОЙ*!", "*НЕ СДАВАТЬСЯ*!", "*ПРИГОТОВИТЬСЯ К УДАРУ*!")
+				spoken_order = pick("ДЕРЖИМ УДАР!", "БЕРЕЧЬ ГОЛОВУ!", "ПРИГОТОВИТЬСЯ К СТОЛКНОВЕНИЮ!", "ДЕРЖАТЬСЯ!", "ДЕРЖАТЬ СТРОЙ!", "НЕ СДАВАТЬСЯ!", "ПРИГОТОВИТЬСЯ К УДАРУ!", "УДЕРЖИВАЕМ!", "НИ ШАГУ НАЗАД!", "НЕ ОТСТУПАТЬ!", "ЗАКРЕПИТЬСЯ!", "ЗАКРЕПЛЯЕМСЯ!", "ОКОПАТЬСЯ!", "УДЕРЖИВАЕМ ПОЗИЦИЮ!", "СТОИМ И СРАЖАЕМСЯ!", "СТОИМ ДО ПОСЛЕДНЕГО!", "СТОИМ ДО КОНЦА!", "ОБОРОНИТЕЛЬНАЯ ПОЗИЦИЯ!", "ОКАПЫВАЕМСЯ!", "ЗАНЯТЬ ПОЗИЦИИ!", "СТОИМ!", "ОБОРОНЯЕМСЯ!", "ЗАНЯТЬ ОБОРОНУ!", "ВСЕМ БЫТЬ НАЧЕКУ!")
 			if(COMMAND_ORDER_FOCUS)
-				spoken_order = pick("*НЕ ПАЛИТЕ ПО СВОИМ*!", "*СОСРЕДОТОЧИТЬ ОГОНЬ*!", "*СТРЕЛЬБА НА ПОРАЖЕНИЕ*!", "*ПРИМКНУТЬ ШТЫКИ*!", "*ОГОНЬ ПО ГОТОВНОСТИ*!", "*ОРУЖИЕ НА ИЗГОТОВКУ*!", "*ЦЕЛЬСЯ*!", "*ВНИМАНИЕ*!", "*ОГОНЬ*!", "*ГОТОВЬТЕСЬ К БОЮ*!", "*НАКОРМИТЕ ИХ СВИНЦОМ*!", "*УНИЧТОЖИТЬ ЦЕЛЬ*!")
+				spoken_order = pick("ЗАДАДИМ ИМ!", "СОСРЕДОТОЧИТЬ ОГОНЬ!", "СТРЕЛЬБА НА ПОРАЖЕНИЕ!", "ПРИМКНУТЬ ШТЫКИ!", "ОГОНЬ ПО ГОТОВНОСТИ!", "ОРУЖИЕ НА ИЗГОТОВКУ!", "ЦЕЛЬСЯ!", "ВНИМАНИЕ!", "ОГОНЬ!", "ПРИГОТОВИТЬСЯ К БОЮ!", "НАКОРМИТЕ ИХ СВИНЦОМ!", "УНИЧТОЖИТЬ ЦЕЛЬ!", "ЗАДАДИМ ИМ ЖАРУ!", "ЦЕЛЬСЯ, ОГОНЬ!", "НАКОРМИТЕ ИХ СВИНЦОМ!", "РАЗОРВЕМ ИХ!", "ПУСКАЙ ЛОВЯТ МАСЛИНЫ!", "НЕ ДАЕМ ИМ ВЫСУНУТЬСЯ!", "СОСРЕДОТОЧИТЬ ШКВАЛ ОГНЯ!", "ЗАШИБЕМ!")
 		say(spoken_order) // if someone thinks about adding new lines, it'll be better to split the current ones we have into two different lists per order for readability, and have a coin flip pick between spoken_orders 1 or 2
 	else
 		visible_message(SPAN_BOLDNOTICE("[src] gives an order to [order]!"), SPAN_BOLDNOTICE("You give an order to [order]!"))
@@ -123,3 +123,24 @@
 				marksman_aura = 0
 
 	hud_set_order()
+
+/mob/living/carbon/human/proc/cycle_voice_level()
+	if(!HAS_TRAIT(src, TRAIT_LEADERSHIP)) // just in case
+		to_chat(src, SPAN_WARNING("You don't particularly understand how to speak... 'authoritatively .'"))
+		return
+
+	switch(langchat_styles)
+		if("", null)
+			langchat_styles = "langchat_smaller_bolded"
+			to_chat(src, SPAN_NOTICE("You will now speak authoritatively ."))
+			return
+
+		if("langchat_smaller_bolded")
+			langchat_styles = "langchat_bolded"
+			to_chat(src, SPAN_NOTICE("You will now speak loudly and authoritatively ."))
+			return
+
+		if("langchat_bolded")
+			langchat_styles = ""
+			to_chat(src, SPAN_NOTICE("You will now speak normally."))
+			return

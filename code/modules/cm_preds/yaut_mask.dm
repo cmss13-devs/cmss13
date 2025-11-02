@@ -257,8 +257,7 @@
 	if(slot != WEAR_FACE || !mask_light_mode)
 		return the_mask
 
-	var/image/light_overlay = image('icons/mob/humans/onmob/hunter/mask_light.dmi', "[base_state]_light")
-	light_overlay.color = mask_light_color
+	var/image/light_overlay = overlay_image('icons/mob/humans/onmob/hunter/mask_light.dmi', "[base_state]_light", mask_light_color)
 	the_mask.overlays += light_overlay
 
 	switch(mask_light_mode)

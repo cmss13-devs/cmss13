@@ -382,6 +382,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		if("Red")
 			mask_light_color = "#FB0703"
 
+	set_light_color(mask_light_color)
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mob_client.prefs.predator_mask_type]_[mob_client.prefs.predator_mask_material]")
 	user.update_inv_wear_mask()
 

@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed bracing for impact preventing hijack"
-  - bugfix: "Fixed mobs only on the same Z as the crashing shuttle being affected by the crash"

@@ -39,6 +39,8 @@
 		. += "[icon2html(A, user)] \A [A] is [A.additional_examine_text()]" //The spacing of the examine text proc is deliberate. By default it returns ".".
 	if(stylish)
 		.+= SPAN_GREEN("This object is considered stylish. Press unique-action to change its style!")
+	if(can_become_accessory)
+		.+= SPAN_ORANGE("This object can be converted into an accessory. Use it in-hand to convert it!")
 
 /obj/item/clothing/unique_action(mob/user)
 	if(stylish)

@@ -38,6 +38,9 @@ type PredData = {
 
   cape_color: string;
 
+  light_color: string;
+  light_colors: string[];
+
   armor_icon: string;
   armor_type: number;
   armor_types: number;
@@ -85,7 +88,8 @@ type ModalOptions =
   | 'mask_accessory'
   | 'caster'
   | 'bracer'
-  | 'cape_color';
+  | 'cape_color'
+  | 'light_color';
 
 export const PredPicker = () => {
   const { data, act } = useBackend<PredData>();
@@ -225,6 +229,9 @@ const PredEquipment = (props: { readonly pick: (_: ModalOptions) => void }) => {
     translator_type,
     invisibility_sounds,
     invisibility_sound,
+
+    light_colors,
+    light_color,
 
     legacies,
     use_legacy,
@@ -378,6 +385,13 @@ const PredEquipment = (props: { readonly pick: (_: ModalOptions) => void }) => {
               <Button onClick={() => pick('cape_color')}>
                 <ColorBox color={data.cape_color} />
               </Button>
+            </LabeledList.Item>
+            <LabeledList.Item label="Eye-Light Color">
+              <Dropdown
+                options={light_colors}
+                selected={light_color}
+                onSelected={(val) => act('light_color', { selected: val })}
+              />
             </LabeledList.Item>
           </LabeledList>
         </Box>

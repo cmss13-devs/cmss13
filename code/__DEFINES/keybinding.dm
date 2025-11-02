@@ -199,6 +199,7 @@
 //mask
 #define COMSIG_KB_YAUTJA_MASK_TOGGLE_ZOOM "keybinding_yautja_mask_toggle_zoom"
 #define COMSIG_KB_YAUTJA_MASK_TOGGLESIGHT "keybinding_yautja_mask_togglesight"
+#define COMSIG_KB_YAUTJA_MASK_TOGGLELIGHTS "keybinding_yautja_mask_togglelights"
 
 //misc yautja
 

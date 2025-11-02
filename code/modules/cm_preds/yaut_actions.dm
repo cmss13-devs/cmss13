@@ -132,6 +132,32 @@
 
 	button.overlays += new_overlays
 
+/datum/action/predator_action/mask/lights
+	name = "Toggle Mask Lights"
+	action_icon_state = "mask_eyes"
+	require_bracers = TRUE //Needs bracer power to operate
+	listen_signal = COMSIG_KB_YAUTJA_MASK_TOGGLESIGHT
+
+/datum/action/predator_action/mask/lights/action_activate()
+	. = ..()
+	mask.togglelights()
+
+/datum/action/predator_action/mask/lights/update_button_icon(status)
+	. = ..() //Overlays
+
+	var/new_icon_state = action_icon_state
+	switch(status)
+		if(YAUTJA_MASK_LIGHTS_ON)
+			new_icon_state += "_on"
+		if(YAUTJA_MASK_LIGHTS_GHOST)
+			new_icon_state += "_ghost"
+
+	button.overlays.Cut()
+	var/image/new_overlays
+	new_overlays = image(icon_file, button, new_icon_state)
+
+	button.overlays += new_overlays
+
 /datum/action/predator_action/mask/control_falcon_drone
 	name = "Control Falcon Drone"
 	action_icon_state = "falcon_drone"

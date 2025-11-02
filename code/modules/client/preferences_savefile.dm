@@ -339,6 +339,7 @@
 	S["pred_caster_mat"] >> predator_caster_material
 	S["pred_bracer_mat"] >> predator_bracer_material
 	S["pred_cape_color"] >> predator_cape_color
+	S["pred_light_color"] >> predator_light_color
 	S["pred_h_style"] >> predator_h_style
 	S["pred_skin_color"] >> predator_skin_color
 	S["pred_flavor_text"] >> predator_flavor_text
@@ -485,6 +486,7 @@
 	predator_caster_material = sanitize_inlist(predator_caster_material, PRED_RETRO_MATERIALS, initial(predator_caster_material))
 	predator_bracer_material = sanitize_inlist(predator_bracer_material, PRED_RETRO_MATERIALS, initial(predator_bracer_material))
 	predator_cape_color = sanitize_hexcolor(predator_cape_color, initial(predator_cape_color))
+	predator_light_color = sanitize_inlist(predator_light_color, PRED_LIGHT_COLORS, initial(predator_light_color))
 	predator_h_style = sanitize_inlist(predator_h_style, GLOB.yautja_hair_styles_list, initial(predator_h_style))
 	predator_skin_color = sanitize_inlist(predator_skin_color, PRED_SKIN_COLOR, initial(predator_skin_color))
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
@@ -605,6 +607,7 @@
 	S["pred_caster_mat"] << predator_caster_material
 	S["pred_bracer_mat"] << predator_bracer_material
 	S["pred_cape_color"] << predator_cape_color
+	S["pred_light_color"] << predator_light_color
 	S["pred_h_style"] << predator_h_style
 	S["pred_skin_color"] << predator_skin_color
 	S["pred_flavor_text"] << predator_flavor_text

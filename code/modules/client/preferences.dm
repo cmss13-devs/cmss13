@@ -124,6 +124,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/predator_caster_material = "ebony"
 	var/predator_bracer_material = "ebony"
 	var/predator_cape_color = "#654321"
+	var/predator_light_color = "Yellow"
 	var/predator_flavor_text = ""
 	//CO-specific preferences
 	var/commander_sidearm = "Unica"
@@ -1356,6 +1357,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(!new_cape_color)
 						return
 					predator_cape_color = new_cape_color
+				if("pred_light_color")
+					var/new_light_color = tgui_input_list(user, "Choose your eye-light color:", "Eye-light Color", PRED_LIGHT_COLORS)
+					if(!new_light_color)
+						return
+					predator_light_color = new_light_color
 				if("pred_hair")
 					var/new_h_style = input(user, "Choose your quill style:", "Quill Style") as null|anything in GLOB.yautja_hair_styles_list
 					if(!new_h_style)

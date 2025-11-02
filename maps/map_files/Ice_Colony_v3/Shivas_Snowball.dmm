@@ -1881,13 +1881,6 @@
 /obj/structure/prop/hybrisa/misc/urinal,
 /turf/closed/wall/shiva/prefabricated,
 /area/shiva/interior/colony/medseceng)
-"agH" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/shiva/exterior/lz2_fortress)
-"agI" = (
-/turf/open/floor/plating/plating_catwalk/aicore/white,
-/area/shiva/interior/colony/medseceng)
 "agJ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/technology_scanner,
@@ -28831,7 +28824,7 @@ gkY
 gkY
 gkY
 gkY
-agH
+gkY
 gkY
 gkY
 gkY
@@ -51511,7 +51504,7 @@ pFt
 aek
 oYw
 oYw
-agI
+lGq
 xbz
 agh
 agh
@@ -53303,7 +53296,7 @@ cBe
 cBe
 cBe
 dWp
-iJY
+acT
 acT
 acT
 acT
@@ -54089,7 +54082,7 @@ puZ
 cOA
 acT
 acT
-ahd
+acT
 acT
 acT
 acT

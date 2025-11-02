@@ -63,10 +63,6 @@
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/exterior/lz_dunes)
-"ao" = (
-/obj/structure/machinery/door_control/brbutton/alt,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/lz_dunes)
 "ap" = (
 /obj/structure/window/framed/kutjevo/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -3452,7 +3448,7 @@ bT
 xy
 bT
 xy
-ao
+sL
 bT
 xy
 bT

@@ -15609,7 +15609,8 @@
 /obj/structure/bookcase{
 	density = 0;
 	icon_state = "book-3";
-	pixel_y = 18
+	pixel_y = 18;
+	opacity = 0
 	},
 /obj/structure/bed/chair/comfy/lime{
 	dir = 8

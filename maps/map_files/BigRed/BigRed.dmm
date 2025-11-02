@@ -1406,10 +1406,6 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
-"afq" = (
-/obj/structure/window/framed/solaris,
-/turf/open/auto_turf/sand,
-/area/bigredv2/caves/eta/research)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -59327,9 +59323,9 @@ aJK
 aCe
 bwx
 bwx
-bwx
-aCe
 gdN
+aCe
+bwx
 bwx
 bwx
 aCe
@@ -59544,9 +59540,9 @@ aPZ
 aCe
 bEk
 bwx
-gdN
-aCe
 bwx
+aCe
+gdN
 bwx
 bwx
 aCe
@@ -64315,7 +64311,7 @@ aCh
 aCh
 aCh
 aCh
-afq
+aCh
 aBA
 aDX
 aDX

@@ -833,9 +833,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/cargo_intake)
-"adj" = (
-/turf/open/auto_turf/sand_white/layer0,
-/area/shuttle/drop2/lv522)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -2646,7 +2643,6 @@
 /obj/effect/spawner/gibspawner/xeno,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
 "bfn" = (
@@ -81241,7 +81237,7 @@ xYA
 xYA
 aIp
 aIp
-adj
+aIp
 aIp
 aIp
 xYA

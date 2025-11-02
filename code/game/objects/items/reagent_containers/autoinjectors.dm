@@ -372,7 +372,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "crystal"
 	injectSFX = 'sound/items/pred_crystal_inject.ogg'
-	autoinjector_type = null
+	autoinjector_type = "thwei"
 	injectVOL = 15
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE
 	volume = REAGENTS_OVERDOSE

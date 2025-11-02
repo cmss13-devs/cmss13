@@ -1,0 +1,8 @@
+author: "Nomoresolvalou, Crowford"
+delete-after: True
+changes:
+  - ui: "bracer style selector added to yautja preferences"
+  - bugfix: "retro caster can now be selected in yautja preferences"
+  - bugfix: "bracer lock/unlock verb now correctly displays a to_chat, and plays a sound"
+  - imageadd: "added new bracer sprites"
+  - imageadd: "replaced old bracer sprite with new retro sprite."

@@ -13,6 +13,7 @@
 	var/increment_times =  list(20,30,40,50)
 	var/active_for = 0
 	var/hits = 1
+	var/tier_max_duarions = list(20, 40, 80)
 
 
 /datum/effects/acid/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest")
@@ -83,8 +84,13 @@
 		O.update_icon()
 	return ..()
 
+
+/datum/effects/acid/proc/prolong_duration()
+	duration = min(duration + 10, tier_max_duarions[acid_level])
+
 /datum/effects/acid/proc/enhance_acid(super_acid = FALSE)
 	if(!super_acid && acid_level >= 2 || acid_level >= 3)
+		prolong_duration()
 		return
 
 	acid_level++

@@ -175,12 +175,15 @@
 	damage = 30
 	max_range = 6
 
-/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/xeno/acid/spatter/on_hit_mob(mob/target_mob, obj/projectile/P)
 	. = ..()
 	if(. == FALSE)
 		return
-
-	new /datum/effects/acid(M, P.firer)
+	var/datum/effects/acid/acid_effect = locate() in target_mob.effects_list
+	if(acid_effect)
+		acid_effect.prolong_duration()
+		return
+	new /datum/effects/acid(target_mob, P.firer)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
@@ -331,8 +334,12 @@
 	to_chat(moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
 	playsound(moob,"acid_strike",75,1)
 	INVOKE_ASYNC(moob, TYPE_PROC_REF(/mob, emote), "pain") // why do I need this bullshit
-	new /datum/effects/acid(moob, proj.firer)
 	drop_nade(get_turf(proj), proj,TRUE)
+	var/datum/effects/acid/acid_effect = locate() in moob.effects_list
+	if(acid_effect)
+		acid_effect.prolong_duration()
+		return
+	new /datum/effects/acid(moob, proj.firer)
 
 /datum/ammo/xeno/bone_chips
 	name = "bone chips"

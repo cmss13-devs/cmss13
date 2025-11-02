@@ -40,7 +40,7 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 
 /obj/effect/decal/ammo_casing/shell
 	name = "spent shell"
-	icon_state = "red_shell" //placeholder for now
+	icon_state = "generic_shell" //its kinda like darker red, but more vague red if you know what i mean??
 	ejection_sfx = "gun_casing_shotgun"
 
 /obj/effect/decal/ammo_casing/shell/green_shell
@@ -54,6 +54,18 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 /obj/effect/decal/ammo_casing/shell/blue_shell
 	name = "spent shell"
 	icon_state = "blue_shell"
+
+/obj/effect/decal/ammo_casing/shell/purple_shell
+	name = "spent shell"
+	icon_state = "purple_shell"
+
+/obj/effect/decal/ammo_casing/shell/incen_shell
+	name = "spent shell"
+	icon_state = "incen_shell"
+
+/obj/effect/decal/ammo_casing/shell/blank_shell
+	name = "spent shell"
+	icon_state = "blank_shell"
 
 /obj/effect/decal/ammo_casing/shell/twobore_shell
 	name = "comedically sized spent shell"

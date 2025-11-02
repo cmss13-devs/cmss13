@@ -1528,6 +1528,17 @@ and you're good to go.
 		user.track_shot(initial(name))
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired, dual_wield) //We add any damage effects that we need.
 
+		// eject casing logic for PBs
+		if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
+			empty_casings++
+
+		else if(prob(15))
+			empty_casings++
+
+		if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
+			eject_casing()
+		//end
+
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 		SEND_SIGNAL(user, COMSIG_BULLET_DIRECT_HIT, attacked_mob)
 		simulate_recoil(1, user)

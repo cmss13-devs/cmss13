@@ -1539,11 +1539,6 @@
 /obj/structure/machinery/vending/security,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/medseceng)
-"afy" = (
-/turf/open/floor/shiva/red/east{
-	dir = 8
-	},
-/area/shiva/interior/colony/medseceng)
 "afz" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
@@ -1622,9 +1617,7 @@
 	dir = 1;
 	name = "\improper Colony Engineering"
 	},
-/turf/open/floor/shiva/yellow{
-	dir = 1
-	},
+/turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/colony/medseceng)
 "afP" = (
 /obj/structure/machinery/space_heater,
@@ -1666,11 +1659,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/colony/research_hab)
-"afW" = (
-/turf/open/floor/shiva/red/north{
-	dir = 2
-	},
-/area/shiva/interior/colony/medseceng)
 "afX" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
@@ -1714,9 +1702,7 @@
 /area/shiva/interior/colony/central)
 "agd" = (
 /obj/structure/machinery/disposal,
-/turf/open/floor/shiva/red/north{
-	dir = 2
-	},
+/turf/open/floor/shiva/red,
 /area/shiva/interior/colony/medseceng)
 "age" = (
 /obj/structure/closet/radiation,
@@ -2040,9 +2026,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
 "ahg" = (
-/turf/open/floor/shiva/redcorners/west{
-	dir = 2
-	},
+/turf/open/floor/shiva/redcorners,
 /area/shiva/interior/colony/medseceng)
 "ahh" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -2507,9 +2491,7 @@
 "ajg" = (
 /obj/structure/closet/toolcloset,
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/shiva/yellow/southeast{
-	dir = 10
-	},
+/turf/open/floor/shiva/yellow/southwest,
 /area/shiva/interior/colony/research_hab)
 "aji" = (
 /obj/structure/surface/rack,
@@ -3563,9 +3545,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Underground Security"
 	},
-/turf/open/floor/shiva/red/north{
-	dir = 2
-	},
+/turf/open/floor/shiva/red,
 /area/shiva/interior/colony/medseceng)
 "arB" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -16107,11 +16087,6 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/central)
-"mQL" = (
-/turf/open/floor/shiva/green/southwest{
-	dir = 9
-	},
-/area/shiva/interior/colony/botany)
 "mRc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -21315,9 +21290,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/research_hab)
 "twt" = (
-/turf/open/floor/shiva/yellow/northeast{
-	dir = 9
-	},
+/turf/open/floor/shiva/yellow/northwest,
 /area/shiva/interior/colony/research_hab)
 "twD" = (
 /obj/structure/machinery/iv_drip,
@@ -22725,9 +22698,7 @@
 	name = "\improper Underground Security"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/shiva/red/north{
-	dir = 2
-	},
+/turf/open/floor/shiva/red,
 /area/shiva/interior/colony/medseceng)
 "uZf" = (
 /turf/open/floor/shiva/wredcorners,
@@ -23504,9 +23475,7 @@
 /area/shiva/interior/garage)
 "wfB" = (
 /obj/item/book/manual/security_space_law,
-/turf/open/floor/shiva/red/north{
-	dir = 2
-	},
+/turf/open/floor/shiva/red,
 /area/shiva/interior/colony/medseceng)
 "wfH" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -42030,7 +41999,7 @@ sKf
 iCs
 sjo
 teD
-mQL
+sjo
 uSe
 vNJ
 sKf
@@ -44126,7 +44095,7 @@ mdx
 mdx
 stN
 tFk
-fiK
+sjo
 fiK
 pWw
 rBH
@@ -49269,7 +49238,7 @@ aoK
 acT
 iJY
 agh
-afW
+pFt
 oGg
 agh
 agh
@@ -49283,7 +49252,7 @@ sHc
 acT
 iJY
 agh
-afW
+pFt
 mMg
 vey
 hGH
@@ -49431,7 +49400,7 @@ aoK
 acT
 iJY
 agh
-afW
+pFt
 oGg
 agh
 agh
@@ -49445,7 +49414,7 @@ amP
 afc
 iJY
 agh
-afW
+pFt
 aDn
 acT
 acT
@@ -49593,7 +49562,7 @@ aoK
 api
 iJY
 agh
-afW
+pFt
 oGg
 oGg
 oGg
@@ -49607,7 +49576,7 @@ fkq
 acT
 iJY
 agh
-afW
+pFt
 acT
 cRs
 hwA
@@ -49917,7 +49886,7 @@ acT
 aDn
 vkq
 agh
-afW
+pFt
 aek
 axG
 aoK
@@ -49931,7 +49900,7 @@ aAM
 acT
 iJY
 agh
-afW
+pFt
 vWf
 iJY
 agh
@@ -50079,7 +50048,7 @@ aoK
 acT
 asd
 agh
-afW
+pFt
 aek
 axG
 onl
@@ -50093,7 +50062,7 @@ agh
 agu
 iJY
 agh
-afW
+pFt
 axG
 iJY
 agh
@@ -50241,7 +50210,7 @@ aoK
 acT
 ase
 agh
-afW
+pFt
 aek
 axG
 aoK
@@ -50403,7 +50372,7 @@ anP
 acT
 fBQ
 agh
-afW
+pFt
 acT
 axG
 axG
@@ -50417,7 +50386,7 @@ acT
 acT
 iJY
 agh
-afW
+pFt
 axG
 iJY
 agh
@@ -50727,7 +50696,7 @@ aoK
 apj
 iJY
 agh
-afW
+pFt
 agh
 agh
 agh
@@ -50741,7 +50710,7 @@ agh
 agh
 iJY
 agh
-afW
+pFt
 acT
 iJY
 agh
@@ -50889,7 +50858,7 @@ aoK
 acT
 iJY
 aff
-afW
+pFt
 agh
 agh
 aqz
@@ -50903,7 +50872,7 @@ agh
 agh
 iJY
 agh
-afW
+pFt
 acT
 iJY
 agh
@@ -51213,7 +51182,7 @@ acT
 piW
 iJY
 agh
-afW
+pFt
 acT
 acT
 gvT
@@ -51235,7 +51204,7 @@ agh
 hif
 acT
 jop
-afy
+hwA
 pHz
 acT
 bPJ
@@ -51538,7 +51507,7 @@ aDn
 iJY
 agh
 agh
-afW
+pFt
 aek
 oYw
 oYw
@@ -51700,7 +51669,7 @@ acT
 iJY
 aff
 agh
-afW
+pFt
 aek
 oYw
 oYw
@@ -52023,7 +51992,7 @@ anY
 acT
 cpb
 agh
-afW
+pFt
 acT
 acT
 lGq
@@ -52348,7 +52317,7 @@ acT
 iJY
 aff
 agh
-afW
+pFt
 acT
 ajO
 aDn
@@ -52510,7 +52479,7 @@ aDn
 iJY
 agh
 agh
-afW
+pFt
 acT
 ajO
 aDn
@@ -52834,7 +52803,7 @@ iJY
 agh
 agh
 agh
-afW
+pFt
 acT
 aSz
 acT
@@ -53160,7 +53129,7 @@ agh
 agh
 agh
 aff
-afW
+pFt
 acT
 iEp
 iEp
@@ -53334,7 +53303,7 @@ cBe
 cBe
 cBe
 dWp
-acT
+iJY
 acT
 acT
 acT
@@ -54120,7 +54089,7 @@ puZ
 cOA
 acT
 acT
-acT
+ahg
 acT
 acT
 acT

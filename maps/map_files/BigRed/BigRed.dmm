@@ -2599,9 +2599,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/whitegreen/southeast{
-	dir = 9
-	},
+/turf/open/floor/whitegreen/northwest,
 /area/bigredv2/caves/lambda/xenobiology)
 "akG" = (
 /obj/structure/machinery/botany/extractor,
@@ -2622,9 +2620,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/whitegreen/southeast{
-	dir = 5
-	},
+/turf/open/floor/whitegreen/northeast,
 /area/bigredv2/caves/lambda/xenobiology)
 "akK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2716,9 +2712,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "alk" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor/whitegreen/southeast{
-	dir = 5
-	},
+/turf/open/floor/whitegreen/northeast,
 /area/bigredv2/caves/lambda/xenobiology)
 "all" = (
 /turf/open/floor/asteroidwarning,

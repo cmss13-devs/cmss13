@@ -1,10 +1,31 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "undergroundhangarwest";
+	name = "West Dock Door";
+	pixel_x = 6;
+	pixel_y = 32
+	},
+/turf/open/floor/plating/icefloor/warnplate/west,
+/area/varadero/interior/cargo)
 "ab" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
 	},
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
+"ac" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/obj/structure/machinery/door_control/brbutton{
+	id = "undergroundhangarwest";
+	name = "West Dock Door";
+	pixel_x = 6;
+	pixel_y = 32
+	},
+/turf/open/floor/plating/icefloor/warnplate/east,
+/area/varadero/exterior/lz1_near)
 "ad" = (
 /obj/structure/machinery/light,
 /obj/structure/barricade/metal/wired{
@@ -12,6 +33,23 @@
 	},
 /turf/open/floor/shiva/red/west,
 /area/varadero/interior/morgue)
+"ae" = (
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = -1;
+	pixel_y = 54
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"af" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = -1;
+	pixel_y = 54
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
 "ah" = (
 /turf/closed/wall/r_wall/elevator/gears,
 /area/varadero/interior/hall_N)
@@ -1176,11 +1214,6 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "jB" = (
-/obj/structure/machinery/door_control/brbutton{
-	id = "undergroundhangarwest";
-	name = "West Dock Door";
-	pixel_x = 8
-	},
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
@@ -1481,6 +1514,9 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_x = -28
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
@@ -3136,15 +3172,6 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/exterior/pontoon_beach/lz)
-"zy" = (
-/obj/structure/sign/safety/bulkhead_door,
-/obj/structure/machinery/door_control/brbutton{
-	id = "undergroundhangarwest";
-	name = "West Dock Door";
-	pixel_x = 3
-	},
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/oob)
 "zA" = (
 /obj/structure/machinery/landinglight/ds2/spoke{
 	pixel_x = -1;
@@ -3775,6 +3802,9 @@
 /area/varadero/interior/cargo)
 "Eq" = (
 /obj/structure/bed/chair/comfy/beige,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_x = -28
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/maintenance/north)
 "Es" = (
@@ -5193,14 +5223,6 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"Rq" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
-	pixel_x = -1;
-	pixel_y = 22
-	},
-/obj/structure/sign/prop1,
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/oob)
 "Rr" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/open/floor/freezerfloor,
@@ -5953,10 +5975,6 @@
 /obj/effect/overlay/palmtree_r,
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
-"Xn" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/oob)
 "Xo" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
@@ -5972,13 +5990,6 @@
 /obj/item/trash/ceramic_plate,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
-"Xt" = (
-/obj/structure/machinery/landinglight/ds2/spoke{
-	pixel_x = -1;
-	pixel_y = 22
-	},
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/oob)
 "Xx" = (
 /obj/structure/bed/sofa/pews/flipped{
 	dir = 1
@@ -8024,8 +8035,8 @@ Je
 BL
 PQ
 PQ
-Xt
-DS
+PQ
+ae
 DS
 Ly
 DS
@@ -8041,7 +8052,7 @@ PQ
 PQ
 PQ
 jB
-xk
+aa
 xk
 xk
 xk
@@ -8166,8 +8177,8 @@ dz
 gB
 bi
 In
-zy
-eF
+jB
+ac
 Ae
 Ae
 eF
@@ -8202,7 +8213,7 @@ HI
 fo
 PQ
 PQ
-Xn
+PQ
 PQ
 PQ
 Fg
@@ -8456,8 +8467,8 @@ PQ
 Us
 sl
 Hc
-Rq
-Fg
+xe
+af
 bA
 aF
 gd
@@ -9377,7 +9388,7 @@ DS
 SE
 IW
 kW
-Xn
+PQ
 PQ
 PQ
 WE

@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Fixed missing rank for Generalised synth."
+  - rscadd: "Added MP Synth option, again."

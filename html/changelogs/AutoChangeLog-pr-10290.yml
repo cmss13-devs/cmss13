@@ -1,0 +1,6 @@
+author: "jupyterkat"
+delete-after: True
+changes:
+  - rscadd: "humans now block emissives"
+  - bugfix: "fixed emissives"
+  - refactor: "made some emissives code faster"

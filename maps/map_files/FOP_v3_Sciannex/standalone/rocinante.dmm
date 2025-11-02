@@ -218,6 +218,12 @@
 "aI" = (
 /turf/open/floor/almayer/blue/southwest,
 /area/fiorina/station/clf_ship)
+"aJ" = (
+/obj/structure/machinery/power/terminal{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/fiorina/station/clf_ship)
 "aM" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/emerald/southwest,
@@ -568,7 +574,7 @@
 	dir = 1
 	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 1
+	dir = 8
 	},
 /turf/open/floor/almayer/orange/north,
 /area/fiorina/station/clf_ship)
@@ -2150,7 +2156,7 @@ rJ
 kw
 ra
 VS
-DF
+aJ
 iZ
 rJ
 XF

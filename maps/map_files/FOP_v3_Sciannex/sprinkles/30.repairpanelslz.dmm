@@ -1,52 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/item/stack/sheet/metal,
-/turf/open/space,
-/area/template_noop)
-"ab" = (
-/obj/item/stock_parts/subspace/filter{
-	pixel_y = 6
-	},
-/turf/open/space,
-/area/template_noop)
-"ac" = (
-/obj/structure/cargo_container/grant/left{
-	desc = "A huge industrial shipping container. This one is in space."
-	},
-/turf/open/space,
-/area/template_noop)
-"ad" = (
-/obj/item/clothing/head/helmet/space{
-	pixel_x = -7;
-	pixel_y = -8
-	},
-/turf/open/space/basic,
-/area/template_noop)
 "ae" = (
 /turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "af" = (
 /obj/item/stack/sandbags_empty/half,
 /turf/open/floor/prison,
-/area/template_noop)
-"ag" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/barricade/handrail{
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "solar lattice"
-	},
-/turf/open/space,
-/area/template_noop)
-"ah" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/item/stack/sheet/metal,
-/turf/open/space,
-/area/template_noop)
-"ai" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/open/space,
 /area/template_noop)
 "aj" = (
 /obj/item/stack/sandbags/large_stack,
@@ -56,23 +14,6 @@
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
-"al" = (
-/obj/item/limb/head/synth{
-	pixel_x = -9;
-	icon_state = "scandinavian_head_m"
-	},
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/turf/open/space/basic,
-/area/template_noop)
-"am" = (
-/turf/open/floor/almayer_hull,
-/area/template_noop)
-"an" = (
-/obj/structure/cargo_container/grant/right{
-	desc = "A huge industrial shipping container. You're not sure how it got here."
-	},
-/turf/open/space,
-/area/template_noop)
 "ao" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/oob)
@@ -86,50 +27,9 @@
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/space,
 /area/fiorina/oob)
-"as" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/space,
-/area/template_noop)
-"at" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/space,
-/area/template_noop)
-"au" = (
-/turf/open/space,
-/area/template_noop)
-"av" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/item/book/manual/engineering_construction,
-/turf/open/space/basic,
-/area/template_noop)
-"aw" = (
-/obj/structure/bedsheetbin{
-	icon_state = "linenbin-empty";
-	name = "solar lattice";
-	pixel_y = 6
-	},
-/turf/open/floor/almayer_hull,
-/area/template_noop)
-"ax" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/template_noop)
 "ay" = (
 /obj/item/stack/sandbags_empty/half,
 /turf/open/floor/prison/darkyellow2/west,
-/area/template_noop)
-"az" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/item/clothing/head/cardborg,
-/turf/open/space,
-/area/template_noop)
-"aA" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/turf/open/space/basic,
-/area/template_noop)
-"aB" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/turf/open/space,
 /area/template_noop)
 "aC" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
@@ -154,33 +54,8 @@
 	},
 /turf/open/floor/prison,
 /area/template_noop)
-"aF" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/open/floor/plating/prison,
-/area/template_noop)
 "aG" = (
 /turf/open/floor/prison/darkyellow2/north,
-/area/template_noop)
-"aH" = (
-/obj/structure/reagent_dispensers/fueltank/oxygentank,
-/turf/open/space,
-/area/template_noop)
-"aI" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/effect/spawner/random/tool{
-	pixel_x = -8;
-	pixel_y = 7
-	},
-/obj/effect/spawner/random/tool{
-	pixel_x = 9
-	},
-/turf/open/space,
-/area/template_noop)
-"aJ" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/item/stack/sheet/metal,
-/turf/open/space,
 /area/template_noop)
 "aK" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
@@ -189,60 +64,15 @@
 "aL" = (
 /turf/open/floor/prison/darkyellow2/west,
 /area/template_noop)
-"aM" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/space,
-/area/template_noop)
-"aN" = (
-/turf/open/floor/solarpanel,
-/area/template_noop)
-"aO" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/space,
-/area/template_noop)
-"aP" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/floor/almayer_hull,
-/area/template_noop)
 "aQ" = (
 /turf/open/auto_turf/sand/layer1,
-/area/template_noop)
-"aR" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/space/basic,
-/area/template_noop)
-"aS" = (
-/turf/open/space/basic,
 /area/template_noop)
 "aT" = (
 /obj/item/stack/sandbags_empty/half,
 /turf/open/floor/prison/darkyellow2,
 /area/template_noop)
-"aU" = (
-/obj/item/stack/sheet/metal,
-/turf/open/space,
-/area/template_noop)
-"aV" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/item/circuitboard/solar_tracker,
-/turf/open/space,
-/area/template_noop)
-"aW" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/floor/almayer_hull,
-/area/template_noop)
 "aX" = (
 /turf/open/floor/prison/darkyellow2/northwest,
-/area/template_noop)
-"aY" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/space,
-/area/template_noop)
-"aZ" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/turf/open/space,
 /area/template_noop)
 "ba" = (
 /obj/item/stock_parts/subspace/filter{

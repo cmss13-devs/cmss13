@@ -91,6 +91,11 @@
 /obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/vessel)
+"aar" = (
+/obj/item/lightstick/variant/planted,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
 "aas" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
@@ -41436,7 +41441,7 @@ mPk
 mPk
 mPk
 mPk
-vlm
+aar
 fjv
 wBp
 cfQ

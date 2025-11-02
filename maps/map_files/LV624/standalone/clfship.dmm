@@ -353,6 +353,12 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/almayer/orange/southwest,
 /area/lv624/lazarus/crashed_ship)
+"bg" = (
+/obj/structure/machinery/power/terminal{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv624/lazarus/crashed_ship)
 "by" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/west_caves)
@@ -2317,7 +2323,7 @@ ro
 wR
 xh
 wV
-lr
+bg
 gQ
 OZ
 Xq

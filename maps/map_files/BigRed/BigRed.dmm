@@ -18209,13 +18209,6 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
-"cxi" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/gm/grass/weedable,
-/area/bigredv2/caves/eta/xenobiology)
 "cya" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
@@ -59557,7 +59550,7 @@ aPZ
 aCe
 bEk
 bwx
-bwx
+gdN
 aCe
 bwx
 bwx
@@ -61734,7 +61727,7 @@ afq
 fWw
 aCe
 dPs
-cxi
+afq
 bDe
 aCe
 aao

@@ -1086,9 +1086,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "aej" = (
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "aek" = (
 /obj/structure/window/framed/corsat/hull,
@@ -1207,9 +1205,7 @@
 /area/corsat/sigma/hangar)
 "aeK" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "aeL" = (
 /turf/open/floor/plating/warnplate/east,
@@ -2319,6 +2315,12 @@
 "aiU" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/gamma/biodome)
+"aiV" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/corsat/theta/biodome)
 "aiW" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -9446,11 +9448,6 @@
 "aKm" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/corsat/theta/biodome)
-"aKn" = (
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
-/area/corsat/theta/biodome)
 "aKo" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
@@ -14732,9 +14729,7 @@
 /area/corsat/theta/biodome)
 "bcE" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "bcF" = (
 /obj/structure/flora/jungle/vines/light_1,
@@ -14833,17 +14828,13 @@
 /obj/structure/machinery/colony_floodlight{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "bcZ" = (
 /obj/structure/machinery/colony_floodlight{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "bda" = (
 /obj/structure/machinery/colony_floodlight{
@@ -14855,9 +14846,7 @@
 /obj/structure/machinery/colony_floodlight{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "bdc" = (
 /obj/structure/fence,
@@ -15041,12 +15030,6 @@
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirtgrassborder/east,
 /area/corsat/theta/biodome)
-"bee" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
-/area/corsat/theta/biodome)
 "bef" = (
 /turf/open/mars_cave/mars_cave_4,
 /area/corsat/sigma/biodome/gunrange)
@@ -15129,9 +15112,7 @@
 /area/corsat/theta/biodome)
 "bew" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "bex" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -17610,9 +17591,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "lockdown-theta-east"
 	},
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "boD" = (
 /obj/structure/machinery/disposal,
@@ -26103,9 +26082,7 @@
 /area/corsat/gamma/residential/west)
 "cbW" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "cce" = (
 /obj/effect/landmark/survivor_spawner,
@@ -27593,9 +27570,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "dOq" = (
 /obj/structure/bed/chair/office/light{
@@ -27969,9 +27944,7 @@
 "ehg" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/vents/pump,
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "ehj" = (
 /obj/structure/flora/pottedplant,
@@ -28454,9 +28427,7 @@
 "eDM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "eDP" = (
 /obj/structure/bed/chair/office/light,
@@ -28612,9 +28583,7 @@
 /area/corsat/gamma/medbay)
 "eOZ" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "ePL" = (
 /obj/structure/closet/l3closet,
@@ -28797,9 +28766,7 @@
 "eZQ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "fax" = (
 /obj/structure/machinery/light{
@@ -29515,9 +29482,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "fOh" = (
 /obj/effect/landmark/corpsespawner/prisoner,
@@ -30046,9 +30011,7 @@
 /area/corsat/sigma/south/engineering)
 "gpP" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "gqd" = (
 /obj/structure/surface/table/reinforced,
@@ -30125,9 +30088,7 @@
 "grD" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "grK" = (
 /turf/open/floor/corsat/whitetan/southeast,
@@ -30381,9 +30342,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "gEU" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -30526,9 +30485,7 @@
 "gOk" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "gOx" = (
 /obj/structure/machinery/light{
@@ -33859,9 +33816,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "koV" = (
 /obj/structure/bed/chair/office/light{
@@ -35878,9 +35833,7 @@
 /area/corsat/gamma/cargo/disposal)
 "msP" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "msY" = (
 /turf/open/floor/corsat/blue/west,
@@ -36889,9 +36842,7 @@
 /area/corsat/gamma/residential/east)
 "nwj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "nws" = (
 /turf/open/floor/corsat/brown/east,
@@ -38192,9 +38143,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "oQO" = (
 /turf/open/floor/corsat/purplewhitecorner,
@@ -39161,9 +39110,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "pXU" = (
 /obj/structure/barricade/handrail{
@@ -40125,9 +40072,7 @@
 	dir = 1;
 	network = list("theta")
 	},
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "qVz" = (
 /obj/effect/landmark/corpsespawner/pmc,
@@ -40618,9 +40563,7 @@
 /area/corsat/sigma/hangar/security)
 "rzy" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "rzU" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
@@ -41509,9 +41452,7 @@
 /area/corsat/theta/biodome)
 "sqr" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "sqY" = (
 /turf/open/floor/corsat/darkgreen/northeast,
@@ -43222,9 +43163,7 @@
 /area/corsat/gamma/residential/west)
 "uli" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "ulq" = (
 /turf/open/floor/corsat/purplecorner/east,
@@ -43296,9 +43235,7 @@
 /area/corsat/theta/biodome)
 "upr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "upA" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -43345,9 +43282,7 @@
 /area/corsat/sigma/checkpoint)
 "usK" = (
 /obj/structure/flora/jungle/alienplant1,
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "usS" = (
 /obj/structure/flora/jungle/vines/heavy,
@@ -44478,9 +44413,7 @@
 /area/corsat/sigma/hangar/id)
 "vzK" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "vzV" = (
 /obj/structure/machinery/disposal,
@@ -45246,13 +45179,11 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/prison/hangar_storage/research/shuttle)
 "wrC" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "wrR" = (
 /obj/structure/largecrate/random,
@@ -45469,9 +45400,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder/north{
-	dir = 2
-	},
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "wCJ" = (
 /obj/structure/closet/emcloset,
@@ -46947,9 +46876,7 @@
 /area/corsat/omega/control)
 "yle" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/dirtgrassborder/south{
-	dir = 1
-	},
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "ylo" = (
 /turf/open/space,
@@ -66998,7 +66925,7 @@ aKi
 aKi
 aKi
 aKi
-aKn
+aKk
 bdP
 bdQ
 bdQ
@@ -67490,7 +67417,7 @@ aKi
 aKi
 aKi
 var
-aKn
+aKk
 aJZ
 aJZ
 bdP
@@ -67735,7 +67662,7 @@ aKi
 vaI
 aKi
 aKi
-bee
+bdW
 lKy
 aJZ
 bdP
@@ -67980,7 +67907,7 @@ aKi
 aKi
 bel
 aKi
-bee
+bdW
 beo
 aJZ
 bdS
@@ -68705,7 +68632,7 @@ bdQ
 bcD
 bdX
 aKi
-aKn
+aKk
 aej
 aKi
 gtX
@@ -69446,7 +69373,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 aJZ
 aKs
 aKs
@@ -69685,7 +69612,7 @@ aKi
 aKi
 aKi
 bdU
-bee
+bdW
 bcZ
 aKi
 gtX
@@ -69930,7 +69857,7 @@ aKi
 bel
 aKi
 aKi
-bee
+bdW
 aej
 aKi
 gtX
@@ -70428,7 +70355,7 @@ aKi
 aKi
 aKi
 bel
-bee
+bdW
 aJZ
 aJZ
 aJZ
@@ -70673,7 +70600,7 @@ aKi
 aKi
 aKi
 aKi
-aKn
+aKk
 bdS
 aJZ
 bdZ
@@ -71162,7 +71089,7 @@ gtX
 aKi
 aKi
 aKi
-aKn
+aKk
 aKs
 aKs
 bsO
@@ -71407,7 +71334,7 @@ gtX
 aKi
 aKi
 aKi
-aKn
+aKk
 aKs
 bsO
 aKz
@@ -71652,7 +71579,7 @@ rpZ
 aKi
 aKi
 aKi
-aKn
+aKk
 aKs
 aKs
 bsO
@@ -71897,7 +71824,7 @@ gtX
 aKi
 aKi
 aKi
-aKn
+aKk
 aJZ
 aKs
 aKs
@@ -72142,7 +72069,7 @@ gtX
 aKi
 aKi
 aKi
-aKn
+aKk
 bdS
 lKy
 aJZ
@@ -72387,7 +72314,7 @@ gtX
 aKi
 aKi
 aKi
-aKn
+aKk
 bdZ
 aJZ
 bdS
@@ -72614,7 +72541,7 @@ aej
 aKi
 gtX
 aKi
-aKn
+aKk
 bdy
 aKm
 aKi
@@ -72632,7 +72559,7 @@ gtX
 aKi
 aKi
 aKi
-aKn
+aKk
 aKt
 aKt
 aKt
@@ -72859,7 +72786,7 @@ aej
 aKi
 gtX
 aKi
-aKn
+aKk
 bdx
 tGV
 aKi
@@ -73104,7 +73031,7 @@ gpP
 aKi
 gtX
 bel
-aKn
+aKk
 aej
 aKi
 jIm
@@ -73121,7 +73048,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 xsU
 aKt
 nKt
@@ -73349,7 +73276,7 @@ aeK
 bdU
 gtX
 aKi
-aKn
+aKk
 aej
 aKi
 aKi
@@ -73366,7 +73293,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 aJZ
 aKt
 aKt
@@ -73611,7 +73538,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 aJZ
 aKt
 aVB
@@ -73838,7 +73765,7 @@ gpP
 aKi
 aKi
 gtX
-aKn
+aKk
 aJZ
 bdY
 aKm
@@ -73856,7 +73783,7 @@ aKi
 gtX
 aKi
 bel
-aKn
+aKk
 bdZ
 aKt
 aKC
@@ -75805,7 +75732,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 beo
 bdQ
 bdQ
@@ -76050,7 +75977,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 bdQ
 bdQ
 bcD
@@ -76295,12 +76222,12 @@ idU
 gtX
 aKi
 aKi
-aKn
+aKk
 bdP
 bdP
 aej
 aKi
-aKn
+aKk
 bdP
 bdP
 bdQ
@@ -76540,7 +76467,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 aJZ
 bdQ
 bdy
@@ -76785,7 +76712,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 beg
 bdP
 bdP
@@ -77030,7 +76957,7 @@ aKi
 gtX
 aKi
 bdU
-aKn
+aKk
 aJZ
 bem
 bdQ
@@ -77275,7 +77202,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 bdZ
 aJZ
 bdQ
@@ -77285,7 +77212,7 @@ bcH
 bcI
 bel
 aKi
-aKn
+aKk
 eiG
 aKu
 btv
@@ -77507,7 +77434,7 @@ gLs
 hqX
 bQt
 gLs
-aKk
+aej
 mlr
 btk
 rwo
@@ -77520,7 +77447,7 @@ rwo
 fYL
 aKi
 aKi
-aKn
+aKk
 aJZ
 beo
 bdQ
@@ -77752,7 +77679,7 @@ buU
 bVT
 bQt
 gLs
-bdW
+aeK
 aKi
 elR
 aKi
@@ -77765,7 +77692,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 aJZ
 bdQ
 bdQ
@@ -77997,7 +77924,7 @@ buU
 bYT
 hqX
 gLs
-bdW
+aeK
 bdU
 gtX
 aKi
@@ -78010,7 +77937,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 bdQ
 bdQ
 bdQ
@@ -78255,7 +78182,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 bdS
 bdQ
 bdQ
@@ -78508,7 +78435,7 @@ beE
 beE
 aKl
 elR
-aKn
+aKk
 bdR
 bdQ
 bdP
@@ -78535,7 +78462,7 @@ aKi
 aKi
 aKi
 aKi
-aKn
+aKk
 bdQ
 bdQ
 bdP
@@ -79235,7 +79162,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 bdQ
 vhZ
 aKm
@@ -79480,7 +79407,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 bdP
 bdQ
 bcE
@@ -79725,7 +79652,7 @@ aKi
 gtX
 bdU
 aKi
-aKn
+aKk
 bdP
 bdQ
 pWR
@@ -79970,7 +79897,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 aJZ
 bdS
 aJZ
@@ -80215,7 +80142,7 @@ aKi
 gtX
 aKi
 aKi
-aKn
+aKk
 aJZ
 beo
 aJZ
@@ -80694,7 +80621,7 @@ aKi
 bel
 aKi
 bdU
-aKn
+aKk
 aJZ
 bdQ
 bdQ
@@ -80716,7 +80643,7 @@ aKi
 aKi
 aKi
 aKi
-aKn
+aKk
 beg
 smP
 aJZ
@@ -80745,7 +80672,7 @@ bdC
 gre
 bcT
 bdM
-aKn
+aKk
 aJZ
 bdQ
 aqL
@@ -80961,7 +80888,7 @@ aKi
 aKi
 aKi
 aKi
-aKn
+aKk
 aJZ
 aJZ
 aKy
@@ -80990,7 +80917,7 @@ nbT
 gre
 bdO
 bdI
-aKn
+aKk
 bdQ
 aqL
 aqL
@@ -81206,7 +81133,7 @@ rwo
 rwo
 xoy
 bdU
-aKn
+aKk
 aJZ
 aKy
 aKy
@@ -81451,7 +81378,7 @@ aKi
 aKi
 gtX
 aKi
-aKn
+aKk
 bdZ
 aKy
 bsP
@@ -82434,7 +82361,7 @@ aKi
 aKi
 aKi
 bdU
-bee
+bdW
 aJZ
 bdZ
 beo
@@ -82679,7 +82606,7 @@ aKi
 aKi
 bel
 aKi
-bee
+bdW
 aJZ
 aJZ
 bdP
@@ -83902,7 +83829,7 @@ rwo
 ceR
 aKi
 aKi
-aKn
+aKk
 bdQ
 bdQ
 bdQ
@@ -84393,7 +84320,7 @@ gtX
 aKi
 aKi
 bel
-aKn
+aKk
 bdQ
 bdP
 bdP
@@ -84624,7 +84551,7 @@ bdU
 wpV
 bcI
 aKi
-gXN
+aiV
 bdU
 rzy
 bdP
@@ -84638,7 +84565,7 @@ gtX
 bdU
 aKi
 aKi
-bee
+bdW
 bdR
 bdP
 bdS
@@ -85371,7 +85298,7 @@ aKi
 aKi
 gtX
 aKi
-aKn
+aKk
 bdP
 bdQ
 bdQ

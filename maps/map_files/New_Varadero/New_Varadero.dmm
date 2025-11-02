@@ -259,21 +259,10 @@
 	},
 /turf/open/floor/shiva/blue/north,
 /area/varadero/interior/administration)
-"aaW" = (
-/obj/structure/window/framed/colony/reinforced/hull/yautja,
-/obj/structure/machinery/igniter,
-/turf/open/floor/strata/grey_multi_tiles,
-/area/varadero/interior/oob)
 "aaX" = (
 /obj/structure/prop/hybrisa/misc/urinal,
 /turf/closed/wall/r_wall,
 /area/varadero/interior/security)
-"aaY" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
-	pixel_x = -28
-	},
-/turf/open/floor/plating/icefloor,
-/area/varadero/exterior/lz1_near)
 "aaZ" = (
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
@@ -7460,10 +7449,6 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/interior/caves/north_research)
-"fOO" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/oob)
 "fPn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -19109,6 +19094,9 @@
 	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_x = -28
 	},
 /turf/open/floor/wood,
 /area/varadero/interior/dock_control)
@@ -40749,7 +40737,7 @@ mPk
 xSL
 huF
 huF
-fOO
+huF
 huF
 huF
 dWP
@@ -42781,7 +42769,7 @@ bZU
 bZU
 bZU
 bZU
-aaY
+bZU
 bZU
 evX
 mrC
@@ -61269,7 +61257,7 @@ uvd
 brT
 kjI
 snS
-aaW
+xka
 snS
 kjI
 mRs

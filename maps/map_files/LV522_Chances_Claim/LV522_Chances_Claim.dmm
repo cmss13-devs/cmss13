@@ -2646,6 +2646,7 @@
 /obj/effect/spawner/gibspawner/xeno,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
 "bfn" = (
@@ -6655,9 +6656,6 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Marshal Office Interrogation";
 	req_access = null
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4

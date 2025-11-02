@@ -268,6 +268,47 @@
 /obj/structure/prop/hybrisa/misc/urinal,
 /turf/closed/wall/r_wall,
 /area/varadero/interior/security)
+"aaY" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_x = -28
+	},
+/turf/open/floor/plating/icefloor,
+/area/varadero/exterior/lz1_near)
+"aaZ" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "undergroundhangarwest";
+	name = "West Dock Door";
+	pixel_x = 6;
+	pixel_y = 32
+	},
+/turf/open/floor/plating/icefloor/warnplate/west,
+/area/varadero/interior/cargo)
+"aba" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "undergroundhangarwest";
+	name = "West Dock Door";
+	pixel_x = 6;
+	pixel_y = 32
+	},
+/turf/open/floor/plating/icefloor/warnplate/east,
+/area/varadero/exterior/lz1_near)
+"abb" = (
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = -1;
+	pixel_y = 54
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
+"abc" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = -1;
+	pixel_y = 54
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz1_near)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -20237,15 +20278,6 @@
 "qqA" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
-"qqJ" = (
-/obj/structure/sign/safety/bulkhead_door,
-/obj/structure/machinery/door_control/brbutton{
-	id = "undergroundhangarwest";
-	name = "West Dock Door";
-	pixel_x = 3
-	},
-/turf/closed/wall/r_wall/unmeltable,
-/area/varadero/interior/oob)
 "qqM" = (
 /obj/structure/largecrate/random/mini,
 /turf/open/floor/asteroidfloor/north,
@@ -26630,6 +26662,9 @@
 /area/varadero/interior/hall_SE)
 "vru" = (
 /obj/structure/bed/chair/comfy/beige,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_x = -28
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/maintenance/north)
 "vrw" = (
@@ -28358,11 +28393,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/farocean)
 "wFP" = (
-/obj/structure/machinery/door_control/brbutton{
-	id = "undergroundhangarwest";
-	name = "West Dock Door";
-	pixel_x = 8
-	},
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
@@ -40184,8 +40214,8 @@ rIG
 pGs
 huF
 huF
-dEJ
-wMw
+huF
+abb
 wMw
 aHy
 wMw
@@ -40201,7 +40231,7 @@ huF
 huF
 huF
 wFP
-lFl
+aaZ
 lFl
 lFl
 lFl
@@ -40564,8 +40594,8 @@ kME
 paq
 gSY
 xBS
-qqJ
-waP
+wFP
+aba
 waP
 waP
 waP
@@ -41449,8 +41479,8 @@ huF
 bGC
 qzq
 ahg
-dEJ
-dWP
+huF
+abc
 eRM
 tCG
 aEf
@@ -42751,7 +42781,7 @@ bZU
 bZU
 bZU
 bZU
-bZU
+aaY
 bZU
 evX
 mrC
@@ -44036,7 +44066,7 @@ wMw
 xVQ
 kyz
 kqA
-fOO
+huF
 huF
 huF
 aqw

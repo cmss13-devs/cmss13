@@ -91,10 +91,10 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	qdel(src)
 
 /obj/structure/flora/ex_act(power)
-    if(explo_proof)
-        return
-    if(power >= EXPLOSION_THRESHOLD_VLOW)
-        deconstruct(FALSE)
+	if(explo_proof)
+		return
+	if(power >= EXPLOSION_THRESHOLD_VLOW)
+		deconstruct(FALSE)
 
 /obj/structure/flora/get_projectile_hit_boolean(obj/projectile/P)
 	. = ..()

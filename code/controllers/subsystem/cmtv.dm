@@ -86,11 +86,12 @@ SUBSYSTEM_DEF(cmtv)
 
 		return
 
-	if(switch_at && COOLDOWN_FINISHED(src, switch_at))
-		do_change_observed_mob()
+	if(switch_at)
+		if(COOLDOWN_FINISHED(src, switch_at))
+			do_change_observed_mob()
 
-		switch_at = null
-		next_show_time = null
+			switch_at = null
+			next_show_time = null
 		return
 
 	if(is_ineligible(current_perspective) && !future_perspective)

@@ -63,7 +63,7 @@
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/exterior/lz_dunes)
-"ap" = (
+"ao" = (
 /obj/structure/window/framed/kutjevo/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
@@ -3470,7 +3470,7 @@ Bd
 lm
 Pd
 Pd
-ap
+ao
 lm
 Lg
 Lg

@@ -24,6 +24,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkredcorners2,
 /area/bigredv2/caves/eta/xenobiology)
+"g" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/sand,
+/area/bigredv2/caves/eta/xenobiology)
 "h" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/sand,
@@ -97,10 +101,6 @@
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/darkredcorners2/west,
-/area/bigredv2/caves/eta/xenobiology)
-"w" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/sand,
 /area/bigredv2/caves/eta/xenobiology)
 "x" = (
 /obj/item/toy/plush/farwa,
@@ -186,7 +186,7 @@ b
 b
 h
 F
-w
+g
 b
 F
 F
@@ -203,7 +203,7 @@ E
 F
 h
 b
-w
+g
 F
 h
 b

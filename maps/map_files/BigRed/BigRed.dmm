@@ -1406,6 +1406,9 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
+"afq" = (
+/turf/open/auto_turf/sand/layer2,
+/area/bigredv2/caves/eta/research)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1511,19 +1514,6 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "afK" = (
-/turf/open/auto_turf/sand/layer2,
-/area/bigredv2/caves/eta/research)
-"afL" = (
-/obj/structure/showcase{
-	icon_state = "broadcaster_send";
-	icon = 'icons/obj/structures/props/server_equipment.dmi'
-	},
-/turf/open/floor/greengrid,
-/area/bigredv2/outside/telecomm)
-"afM" = (
-/turf/open/floor/plating/platingdmg3/west,
-/area/bigredv2/outside/space_port)
-"afN" = (
 /obj/structure/prop/almayer/cannon_cables{
 	name = "\improper Cables"
 	},
@@ -1552,6 +1542,22 @@
 	},
 /turf/open/shuttle/escapepod/floor1,
 /area/bigredv2/oob)
+"afL" = (
+/obj/structure/showcase{
+	icon_state = "broadcaster_send";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
+	},
+/turf/open/floor/greengrid,
+/area/bigredv2/outside/telecomm)
+"afM" = (
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/outside/space_port)
+"afN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/crap_item,
+/obj/item/shard,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/delivery,
@@ -1572,10 +1578,8 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
 "afR" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
 /obj/item/shard,
-/turf/open/floor,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/dorms)
 "afS" = (
 /turf/open/floor/dark,
@@ -1695,7 +1699,7 @@
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/space_port)
 "agp" = (
-/obj/item/shard,
+/obj/structure/prop/hybrisa/misc/urinal,
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/dorms)
 "agq" = (
@@ -1703,8 +1707,8 @@
 /area/bigredv2/outside/n)
 "agr" = (
 /obj/structure/prop/hybrisa/misc/urinal,
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/dorms)
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/lambda/xenobiology)
 "ags" = (
 /turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/n)
@@ -1756,10 +1760,6 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "agE" = (
-/obj/structure/prop/hybrisa/misc/urinal,
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/caves/lambda/xenobiology)
-"agF" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
@@ -19135,6 +19135,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"dyv" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/sand,
+/area/bigredv2/caves/eta/xenobiology)
 "dyA" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellow2,
@@ -21640,10 +21644,6 @@
 "gdK" = (
 /turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/outside/n)
-"gdN" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/auto_turf/sand,
-/area/bigredv2/caves/eta/xenobiology)
 "geo" = (
 /obj/item/weapon/dart/green{
 	pixel_y = -11
@@ -51501,7 +51501,7 @@ rIl
 uSf
 olT
 llS
-afN
+afK
 ijU
 rIl
 aao
@@ -56549,7 +56549,7 @@ aao
 aao
 aao
 aao
-agF
+agE
 aqL
 aqL
 lbh
@@ -59323,7 +59323,7 @@ aJK
 aCe
 bwx
 bwx
-gdN
+dyv
 aCe
 bwx
 bwx
@@ -59542,7 +59542,7 @@ bEk
 bwx
 bwx
 aCe
-gdN
+dyv
 bwx
 bwx
 aCe
@@ -60725,7 +60725,7 @@ aua
 asJ
 asJ
 asJ
-afR
+afN
 aws
 amI
 wxo
@@ -61373,7 +61373,7 @@ asJ
 azS
 amn
 amn
-agp
+afR
 cgt
 eqr
 amn
@@ -62022,7 +62022,7 @@ krH
 ayq
 ayY
 azV
-agr
+agp
 aBl
 aBX
 aBk
@@ -62239,7 +62239,7 @@ axK
 ayp
 asJ
 jph
-agr
+agp
 aBm
 mBc
 aBk
@@ -65611,7 +65611,7 @@ bBp
 aBv
 bvP
 bvP
-afK
+afq
 bvP
 bvP
 aBv
@@ -65830,7 +65830,7 @@ bvP
 bvP
 bCE
 bvP
-afK
+afq
 aBv
 aao
 aDY
@@ -66043,7 +66043,7 @@ bBp
 bBp
 bBp
 aBv
-afK
+afq
 bCE
 bCJ
 bvP
@@ -66261,7 +66261,7 @@ bBp
 bBC
 aBv
 bvP
-afK
+afq
 bvP
 bvP
 bvP
@@ -66480,7 +66480,7 @@ aBv
 bvP
 bvP
 bCK
-afK
+afq
 bCE
 aBv
 aao
@@ -81741,7 +81741,7 @@ eFh
 adZ
 adZ
 adZ
-agE
+agr
 agl
 agl
 agl

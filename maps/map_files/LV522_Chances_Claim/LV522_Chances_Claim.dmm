@@ -833,6 +833,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/cargo_intake)
+"adj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/south_street)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -861,14 +865,10 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/containers)
 "adn" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/south_street)
-"ado" = (
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/outdoors/colony_streets/south_west_street)
-"adp" = (
+"ado" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -879,18 +879,18 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/strata/floor3/east,
 /area/lv522/outdoors/colony_streets/south_street)
-"adq" = (
+"adp" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper C-Block - Casino Airlock";
 	welded = 1
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/bridge)
-"adr" = (
+"adq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/bridge)
-"ads" = (
+"adr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -901,7 +901,7 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/central_streets)
-"adt" = (
+"ads" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/stool{
 	buckling_y = 14;
@@ -909,7 +909,7 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
-"adu" = (
+"adt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -920,7 +920,7 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/strata/floor3/east,
 /area/lv522/outdoors/colony_streets/east_central_street)
-"adv" = (
+"adu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -933,7 +933,7 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"adw" = (
+"adv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -946,7 +946,7 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"adx" = (
+"adw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -957,7 +957,7 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"ady" = (
+"adx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -970,29 +970,29 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"adz" = (
+"ady" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/structure/fence/slim/dark/door,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"adz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
 	},
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "adA" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/fence/slim/dark/door,
-/turf/open/floor/prison/floor_plate,
-/area/lv522/outdoors/colony_streets/north_east_street)
-"adB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -1003,7 +1003,7 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/strata/floor3,
 /area/lv522/outdoors/colony_streets/containers)
-"adC" = (
+"adB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -1016,7 +1016,7 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/nw_rockies)
-"adD" = (
+"adC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -51475,7 +51475,7 @@ jrQ
 rvI
 clY
 sjY
-adw
+adv
 mZs
 mOO
 iuv
@@ -51681,7 +51681,7 @@ jrQ
 rvI
 clY
 clY
-adw
+adv
 slD
 xPx
 kCF
@@ -51887,7 +51887,7 @@ jrQ
 rvI
 clY
 clY
-adw
+adv
 vmQ
 swt
 dpk
@@ -52093,7 +52093,7 @@ kSS
 gGP
 sjY
 clY
-adw
+adv
 vzy
 hwF
 ePp
@@ -52495,11 +52495,11 @@ ien
 ien
 ien
 oqQ
-ady
+adx
 oqQ
 oqQ
 yeM
-ady
+adx
 oqQ
 oqQ
 oqQ
@@ -52729,7 +52729,7 @@ sDf
 sLZ
 acB
 acB
-adv
+adu
 sIS
 ien
 ien
@@ -53551,7 +53551,7 @@ ydA
 wMe
 ydA
 ydA
-adw
+adv
 uIr
 jPv
 hJZ
@@ -53947,7 +53947,7 @@ hJZ
 wKj
 eUt
 sjY
-adx
+adw
 clY
 clY
 clY
@@ -53999,7 +53999,7 @@ wYa
 vXc
 vXc
 vXc
-ads
+adr
 max
 max
 max
@@ -54534,7 +54534,7 @@ ien
 ien
 hUY
 hUY
-adC
+adB
 hUY
 tUa
 ien
@@ -57826,7 +57826,7 @@ gsZ
 uWO
 uWO
 uWO
-adD
+adC
 wbt
 rWS
 hip
@@ -58957,13 +58957,13 @@ uOd
 cxv
 max
 max
-ado
+adn
 axw
 gYO
 gYO
 tvk
 nye
-ado
+adn
 max
 ofi
 max
@@ -59781,13 +59781,13 @@ uWT
 rLg
 hpq
 max
-ado
+adn
 axw
 gYO
 gYO
 tvk
 nye
-ado
+adn
 max
 ofi
 ofi
@@ -63486,7 +63486,7 @@ umf
 umf
 vXc
 vXc
-adp
+ado
 nax
 nax
 nax
@@ -64310,7 +64310,7 @@ umf
 vXc
 vXc
 yiM
-adp
+ado
 nax
 nax
 mPr
@@ -65162,7 +65162,7 @@ yfu
 wHj
 ylo
 hdG
-adn
+adj
 qjM
 jas
 col
@@ -69787,7 +69787,7 @@ xZE
 xZE
 jGa
 qSH
-adA
+adz
 qSH
 uFf
 wKg
@@ -72540,7 +72540,7 @@ cXf
 qDw
 ngx
 wNp
-adq
+adp
 xgA
 bsG
 vOT
@@ -72746,7 +72746,7 @@ hFG
 hIx
 nNM
 osV
-adr
+adq
 aSZ
 acE
 vOT
@@ -73914,7 +73914,7 @@ qSH
 qSH
 vGp
 vGp
-adz
+ady
 qSH
 umR
 qSH
@@ -73974,7 +73974,7 @@ uOj
 vfj
 vNk
 bXO
-adt
+ads
 ozn
 oNM
 vNk
@@ -74180,7 +74180,7 @@ uOD
 tGo
 vNk
 bXO
-adt
+ads
 ozn
 wNp
 vNk
@@ -74386,7 +74386,7 @@ uNp
 tGh
 vNk
 fko
-adt
+ads
 xMO
 wNp
 urv
@@ -75409,7 +75409,7 @@ tTD
 rnB
 igT
 xXg
-adu
+adt
 xXg
 xXg
 xXg
@@ -77798,7 +77798,7 @@ ien
 ien
 lBM
 lBM
-adB
+adA
 pvZ
 pvZ
 pvZ
@@ -83380,7 +83380,7 @@ pvZ
 pvZ
 pvZ
 pvZ
-adB
+adA
 qSH
 qSH
 pFH

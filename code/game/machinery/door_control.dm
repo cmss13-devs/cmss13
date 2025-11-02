@@ -13,7 +13,6 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	explo_proof = TRUE
-	plane = TURF_PLANE
 	var/id = null
 	var/range = 10
 	var/normaldoorcontrol = CONTROL_POD_DOORS

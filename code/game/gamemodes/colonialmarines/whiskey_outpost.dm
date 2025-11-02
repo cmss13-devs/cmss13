@@ -192,6 +192,7 @@
 	var/wave = pick(whiskey_outpost_waves[xeno_wave])
 	spawn_whiskey_outpost_xenos(wave)
 	announce_xeno_wave(wave)
+	announce_dchat("A new xenomorph wave is available, use the Join as Xeno verb to take one of them.")
 	if(xeno_wave == 1)
 		xeno_announcement("It is time, dear Queen. Release the hive!", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 	if(xeno_wave == 7)

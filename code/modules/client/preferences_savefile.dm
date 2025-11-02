@@ -312,6 +312,7 @@
 	S["xeno_postfix"] >> xeno_postfix
 	S["xeno_name_ban"] >> xeno_name_ban
 	S["playtime_perks"] >> playtime_perks
+	S["skip_playtime_ranks"] >> skip_playtime_ranks
 	S["show_queen_name"] >> show_queen_name
 	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
 	S["view_controller"] >> View_MC
@@ -321,6 +322,7 @@
 
 	S["synth_name"] >> synthetic_name
 	S["synth_type"] >> synthetic_type
+	S["synth_specialisation"] >> synth_specialisation
 	S["pred_name"] >> predator_name
 	S["pred_gender"] >> predator_gender
 	S["pred_age"] >> predator_age
@@ -451,7 +453,8 @@
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
 	auto_observe = sanitize_integer(auto_observe, 0, 1, 1)
-	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
+	playtime_perks = sanitize_integer(playtime_perks, 0, 1, 1)
+	skip_playtime_ranks = sanitize_integer(skip_playtime_ranks, 0, 1, 1)
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
@@ -464,6 +467,7 @@
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
+	synth_specialisation = sanitize_inlist(synth_specialisation, list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command"), initial(synth_specialisation))
 	predator_name = predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender = sanitize_text(predator_gender, initial(predator_gender))
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
@@ -572,6 +576,7 @@
 	S["xeno_name_ban"] << xeno_name_ban
 	S["xeno_vision_level_pref"] << xeno_vision_level_pref
 	S["playtime_perks"] << playtime_perks
+	S["skip_playtime_ranks"] << skip_playtime_ranks
 	S["show_queen_name"] << show_queen_name
 
 	S["view_controller"] << View_MC
@@ -581,6 +586,7 @@
 
 	S["synth_name"] << synthetic_name
 	S["synth_type"] << synthetic_type
+	S["synth_specialisation"] << synth_specialisation
 	S["pred_name"] << predator_name
 	S["pred_gender"] << predator_gender
 	S["pred_age"] << predator_age

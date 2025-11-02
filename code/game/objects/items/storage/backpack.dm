@@ -1189,7 +1189,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	if(!proximity)
 		return
 	if(istype(target, /obj/structure/reagent_dispensers))
-		if(!(istypestrict(target, /obj/structure/reagent_dispensers/fueltank)))
+		if(!(istypestrict(target, /obj/structure/reagent_dispensers/tank/fuel)))
 			to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
 			return
 		if(reagents.total_volume < max_fuel)
@@ -1260,7 +1260,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
 		return
-	if (!(istype(target, /obj/structure/reagent_dispensers/fueltank)))
+	if (!(istype(target, /obj/structure/reagent_dispensers/tank/fuel)))
 		return
 
 	if (reagents.total_volume >= max_fuel)

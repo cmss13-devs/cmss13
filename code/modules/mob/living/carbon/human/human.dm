@@ -1711,20 +1711,11 @@
 	return ..(W,ignore_delay,slot_equipment_priority)
 
 /mob/living/carbon/human/verb/pose()
-
 	set name = "Set Pose"
 	set desc = "Sets a description which will be shown when someone examines you."
 	set category = "IC"
 
-	//quick vars for pose
-	var/t_is = "are"
-
-	if(MALE)
-		t_is = "is"
-	if(FEMALE)
-		t_is = "is"
-
-	pose =  strip_html(input(usr, "This is [src]. \He [t_is]...", "Pose", null)  as text)
+	pose =  strip_html(input(usr, "This is [src]. \He is...", "Pose", null)  as text)
 
 /mob/living/carbon/human/verb/set_flavor()
 	set name = "Set Flavour Text"

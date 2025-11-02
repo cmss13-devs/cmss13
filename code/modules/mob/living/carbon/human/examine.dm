@@ -89,12 +89,10 @@
 				t_He = "He"
 				t_his = "his"
 				t_him = "him"
-				t_is = "is"
 			if(FEMALE)
 				t_He = "She"
 				t_his = "her"
 				t_him = "her"
-				t_is = "is"
 
 	if(id_paygrade)
 		msg += "<EM>[rank_display] </EM>"
@@ -544,7 +542,7 @@
 	if (pose)
 		if( findtext(pose,".",length(pose)) == 0 && findtext(pose,"!",length(pose)) == 0 && findtext(pose,"?",length(pose)) == 0 )
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
-		msg += "\n[t_He] [t_is] [pose]"
+		msg += "\n[t_He] is [pose]"
 
 	. += msg
 

@@ -1,0 +1,4 @@
+author: "Nihisohel"
+delete-after: True
+changes:
+  - bugfix: "Flamer tanks can refill from other flamer tanks again"

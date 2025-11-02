@@ -337,11 +337,12 @@
 /turf/open/floor/almayer/green/north,
 /area/lv624/lazarus/crashed_ship)
 "bd" = (
-/obj/item/shard,
-/turf/open/floor/damaged3/west,
+/obj/structure/machinery/power/terminal{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
 /area/lv624/lazarus/crashed_ship)
 "be" = (
-/obj/item/stack/rods,
 /obj/item/shard,
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
@@ -354,10 +355,9 @@
 /turf/open/floor/almayer/orange/southwest,
 /area/lv624/lazarus/crashed_ship)
 "bg" = (
-/obj/structure/machinery/power/terminal{
-	dir = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
+/obj/item/stack/rods,
+/obj/item/shard,
+/turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
 "by" = (
 /turf/closed/wall/rock/brown,
@@ -2323,7 +2323,7 @@ ro
 wR
 xh
 wV
-bg
+bd
 gQ
 OZ
 Xq
@@ -2641,8 +2641,8 @@ Yj
 by
 Ab
 Ab
+bg
 be
-bd
 ro
 gX
 Dp

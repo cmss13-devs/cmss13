@@ -1086,7 +1086,10 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "aej" = (
-/turf/open/gm/dirtgrassborder/south,
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "aek" = (
 /obj/structure/window/framed/corsat/hull,
@@ -1204,9 +1207,9 @@
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/sigma/hangar)
 "aeK" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder/south,
-/area/corsat/theta/biodome)
+/obj/structure/window/framed/corsat/hull,
+/turf/open/floor/plating,
+/area/corsat/inaccessible)
 "aeL" = (
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/sigma/hangar)
@@ -1371,6 +1374,9 @@
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afw" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 4
+	},
 /obj/structure/window/framed/corsat/hull,
 /turf/open/floor/plating,
 /area/corsat/inaccessible)
@@ -1464,13 +1470,6 @@
 "afN" = (
 /turf/open/floor/plating/warnplate/southwest,
 /area/corsat/sigma/hangar)
-"afO" = (
-/obj/structure/pipes/standard/simple/visible{
-	dir = 4
-	},
-/obj/structure/window/framed/corsat/hull,
-/turf/open/floor/plating,
-/area/corsat/inaccessible)
 "afP" = (
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/sigma/hangar)
@@ -2315,12 +2314,6 @@
 "aiU" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/gamma/biodome)
-"aiV" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
-/turf/open/gm/dirt,
-/area/corsat/theta/biodome)
 "aiW" = (
 /obj/structure/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -9448,6 +9441,9 @@
 "aKm" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/corsat/theta/biodome)
+"aKn" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/corsat/theta/biodome)
 "aKo" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
 /area/corsat/theta/biodome)
@@ -14729,7 +14725,7 @@
 /area/corsat/theta/biodome)
 "bcE" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "bcF" = (
 /obj/structure/flora/jungle/vines/light_1,
@@ -14834,7 +14830,7 @@
 /obj/structure/machinery/colony_floodlight{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "bda" = (
 /obj/structure/machinery/colony_floodlight{
@@ -14846,7 +14842,7 @@
 /obj/structure/machinery/colony_floodlight{
 	dir = 8
 	},
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "bdc" = (
 /obj/structure/fence,
@@ -15029,6 +15025,10 @@
 "bed" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirtgrassborder/east,
+/area/corsat/theta/biodome)
+"bee" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "bef" = (
 /turf/open/mars_cave/mars_cave_4,
@@ -28766,7 +28766,7 @@
 "eZQ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "fax" = (
 /obj/structure/machinery/light{
@@ -29482,7 +29482,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "fOh" = (
 /obj/effect/landmark/corpsespawner/prisoner,
@@ -30088,7 +30088,7 @@
 "grD" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "grK" = (
 /turf/open/floor/corsat/whitetan/southeast,
@@ -36842,7 +36842,7 @@
 /area/corsat/gamma/residential/east)
 "nwj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "nws" = (
 /turf/open/floor/corsat/brown/east,
@@ -39110,7 +39110,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "pXU" = (
 /obj/structure/barricade/handrail{
@@ -40563,7 +40563,7 @@
 /area/corsat/sigma/hangar/security)
 "rzy" = (
 /obj/structure/flora/jungle/vines/light_1,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "rzU" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
@@ -41452,7 +41452,7 @@
 /area/corsat/theta/biodome)
 "sqr" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/dirtgrassborder/north,
+/turf/open/gm/dirtgrassborder/south,
 /area/corsat/theta/biodome)
 "sqY" = (
 /turf/open/floor/corsat/darkgreen/northeast,
@@ -43163,7 +43163,7 @@
 /area/corsat/gamma/residential/west)
 "uli" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "ulq" = (
 /turf/open/floor/corsat/purplecorner/east,
@@ -43235,7 +43235,7 @@
 /area/corsat/theta/biodome)
 "upr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/corsat/theta/biodome)
 "upA" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -66911,7 +66911,7 @@ aqL
 aqL
 aqL
 aqL
-bcE
+rzy
 beF
 aKi
 ber
@@ -67156,7 +67156,7 @@ aqL
 bdR
 bdP
 bdP
-bcE
+rzy
 aKi
 nuS
 aKi
@@ -68152,7 +68152,7 @@ rwo
 rwo
 rwo
 yfO
-eZQ
+grD
 jqz
 jqz
 bVX
@@ -68385,7 +68385,7 @@ bdQ
 bdQ
 bdQ
 bdQ
-aeK
+bee
 bdU
 aKp
 aKm
@@ -68614,7 +68614,7 @@ aqL
 aqL
 bdQ
 bdP
-aej
+aKn
 aKi
 var
 aKi
@@ -68633,7 +68633,7 @@ bcD
 bdX
 aKi
 aKk
-aej
+aKn
 aKi
 gtX
 aKi
@@ -68859,7 +68859,7 @@ aqL
 bdQ
 bdQ
 rUq
-upr
+nwj
 rwo
 iTW
 geN
@@ -68874,11 +68874,11 @@ wlY
 uBH
 fwq
 fwq
-grD
+eZQ
 jba
 mrb
-nwj
 upr
+nwj
 rwo
 fYL
 aKi
@@ -69123,7 +69123,7 @@ bdX
 bdU
 aKp
 tQk
-aej
+aKn
 bel
 gtX
 aKi
@@ -69350,7 +69350,7 @@ bdQ
 bdP
 eiG
 gqV
-aej
+aKn
 aKi
 idU
 aKi
@@ -69368,7 +69368,7 @@ ezR
 bdU
 beb
 bcL
-aej
+aKn
 aKi
 gtX
 aKi
@@ -69595,7 +69595,7 @@ bdQ
 bdQ
 eiG
 aJZ
-aej
+aKn
 aKi
 bdU
 bdz
@@ -69613,12 +69613,12 @@ aKi
 aKi
 bdU
 bdW
-bcZ
+bdb
 aKi
 gtX
 aKi
 aKi
-bdb
+bcZ
 aJZ
 aKs
 bsO
@@ -69840,7 +69840,7 @@ bdQ
 bdQ
 eiG
 aJZ
-aej
+aKn
 bdz
 bdF
 bdC
@@ -69858,7 +69858,7 @@ bel
 aKi
 aKi
 bdW
-aej
+aKn
 aKi
 gtX
 aKi
@@ -70818,7 +70818,7 @@ pvA
 bdQ
 bdP
 aJZ
-fOd
+pXx
 aKi
 bdA
 nbT
@@ -71320,7 +71320,7 @@ bdD
 bdO
 bdI
 aKi
-pXx
+fOd
 aJZ
 bdQ
 bdQ
@@ -71328,7 +71328,7 @@ bdR
 bdQ
 smP
 aJZ
-aej
+aKn
 aKi
 gtX
 aKi
@@ -71553,7 +71553,7 @@ bdR
 bcD
 bdJ
 aJZ
-fOd
+pXx
 bdU
 aKi
 bdA
@@ -71565,7 +71565,7 @@ bdO
 bdI
 aKi
 idU
-pXx
+fOd
 bdQ
 bdQ
 bdP
@@ -71573,7 +71573,7 @@ oUJ
 bdQ
 bdQ
 aJZ
-aej
+aKn
 aKi
 rpZ
 aKi
@@ -71795,7 +71795,7 @@ bdQ
 bdQ
 bdQ
 bdQ
-aej
+aKn
 aKo
 bdJ
 uRA
@@ -72040,7 +72040,7 @@ bdQ
 bdQ
 bdQ
 bdQ
-aej
+aKn
 jlL
 aKo
 kDt
@@ -72285,7 +72285,7 @@ bdQ
 bdQ
 bdQ
 bdQ
-aej
+aKn
 prI
 rwo
 dOo
@@ -72306,7 +72306,7 @@ bdQ
 bdQ
 bdR
 aJZ
-aej
+aKn
 aKi
 aKi
 aKi
@@ -72537,7 +72537,7 @@ bew
 aJZ
 aJZ
 aJZ
-aej
+aKn
 aKi
 gtX
 aKi
@@ -72551,7 +72551,7 @@ beG
 bdQ
 bdQ
 aJZ
-aej
+aKn
 aKi
 aKi
 aKi
@@ -72782,7 +72782,7 @@ bdK
 beh
 bei
 aJZ
-aej
+aKn
 aKi
 gtX
 aKi
@@ -73032,7 +73032,7 @@ aKi
 gtX
 bel
 aKk
-aej
+aKn
 aKi
 jIm
 aKi
@@ -73272,12 +73272,12 @@ bdQ
 xsU
 aJZ
 bdS
-aeK
+bee
 bdU
 gtX
 aKi
 aKk
-aej
+aKn
 aKi
 aKi
 aKi
@@ -73522,7 +73522,7 @@ wvK
 fYL
 aKp
 keE
-aej
+aKn
 vaI
 aKi
 aKp
@@ -75479,7 +75479,7 @@ bcq
 bcq
 bcq
 bcr
-uli
+sqr
 aKi
 beb
 aKl
@@ -75724,7 +75724,7 @@ msY
 caX
 bKc
 bcr
-aeK
+bee
 aKi
 aKi
 aKi
@@ -75736,7 +75736,7 @@ aKk
 beo
 bdQ
 bdQ
-aeK
+bee
 aKp
 aKj
 xxO
@@ -75969,7 +75969,7 @@ aJS
 bJW
 bKw
 bcr
-aej
+aKn
 bdU
 bel
 aKi
@@ -76225,7 +76225,7 @@ aKi
 aKk
 bdP
 bdP
-aej
+aKn
 aKi
 aKk
 bdP
@@ -76462,7 +76462,7 @@ bcr
 bdS
 gqV
 bdQ
-aej
+aKn
 aKi
 gtX
 aKi
@@ -76707,7 +76707,7 @@ bcr
 bdS
 aJZ
 bdQ
-aej
+aKn
 aKi
 gtX
 aKi
@@ -76952,7 +76952,7 @@ aKh
 bcS
 bdJ
 bdQ
-aej
+aKn
 aKi
 gtX
 aKi
@@ -77434,7 +77434,7 @@ gLs
 hqX
 bQt
 gLs
-aej
+aKn
 mlr
 btk
 rwo
@@ -77452,7 +77452,7 @@ aJZ
 beo
 bdQ
 bdQ
-aej
+aKn
 bdU
 aKi
 qoh
@@ -77483,7 +77483,7 @@ aKi
 aKi
 aKi
 aKi
-rzy
+bcE
 bdR
 bdP
 eiG
@@ -77679,7 +77679,7 @@ buU
 bVT
 bQt
 gLs
-aeK
+bee
 aKi
 elR
 aKi
@@ -77924,7 +77924,7 @@ buU
 bYT
 hqX
 gLs
-aeK
+bee
 bdU
 gtX
 aKi
@@ -77973,7 +77973,7 @@ aKi
 aKi
 bdU
 aKi
-rzy
+bcE
 bdR
 bdP
 rTj
@@ -78177,7 +78177,7 @@ sZg
 bdQ
 bdQ
 bdQ
-aej
+aKn
 aKi
 gtX
 aKi
@@ -78422,7 +78422,7 @@ bdQ
 bdQ
 bdQ
 bdZ
-aej
+aKn
 bel
 gtX
 aKi
@@ -78453,7 +78453,7 @@ aKt
 bdP
 bdP
 aJZ
-aej
+aKn
 aKi
 aKi
 gtX
@@ -78667,7 +78667,7 @@ bdQ
 bdQ
 bdQ
 tNp
-upr
+nwj
 rwo
 fYL
 aKi
@@ -78698,7 +78698,7 @@ aKL
 bdP
 bdZ
 gqT
-upr
+nwj
 rwo
 rwo
 fYL
@@ -78823,14 +78823,14 @@ aqt
 aqt
 aqt
 qIU
-afO
-afO
-qIU
-afO
+afw
 afw
 qIU
-afO
 afw
+aeK
+qIU
+afw
+aeK
 qIU
 aPC
 cjs
@@ -78912,7 +78912,7 @@ bdR
 bdQ
 bdQ
 bdQ
-aej
+aKn
 aKi
 gtX
 aKi
@@ -78925,7 +78925,7 @@ gtX
 aKi
 aKi
 aKi
-rzy
+bcE
 bdQ
 bdQ
 bdQ
@@ -79157,7 +79157,7 @@ bdR
 bdP
 bdQ
 bdQ
-aej
+aKn
 aKi
 gtX
 aKi
@@ -79402,7 +79402,7 @@ bdR
 bdR
 bdR
 bdQ
-aej
+aKn
 aKi
 gtX
 aKi
@@ -79410,7 +79410,7 @@ aKi
 aKk
 bdP
 bdQ
-bcE
+rzy
 gtX
 aKi
 aKp
@@ -79631,7 +79631,7 @@ aJZ
 eiG
 bdP
 bdP
-aej
+aKn
 bdU
 aKi
 rRR
@@ -79647,7 +79647,7 @@ bdP
 bdR
 bdP
 bdP
-aej
+aKn
 aKi
 gtX
 bdU
@@ -79792,9 +79792,9 @@ ylo
 ylo
 ylo
 qIU
+aeK
 afw
-afO
-afw
+aeK
 qIU
 aht
 aht
@@ -79892,7 +79892,7 @@ bdQ
 bdR
 bdP
 bdP
-aej
+aKn
 aKi
 gtX
 aKi
@@ -80137,7 +80137,7 @@ bdQ
 bdQ
 bdP
 aJZ
-aej
+aKn
 aKi
 gtX
 aKi
@@ -80382,7 +80382,7 @@ bdQ
 bdQ
 bdQ
 bdS
-aej
+aKn
 aKi
 gtX
 aKi
@@ -80627,7 +80627,7 @@ bdQ
 bdQ
 bep
 bei
-aej
+aKn
 bdU
 gtX
 aKi
@@ -80872,7 +80872,7 @@ aJZ
 bdQ
 bdQ
 bdQ
-aej
+aKn
 aKi
 gtX
 aKi
@@ -80911,7 +80911,7 @@ bdQ
 bdQ
 bdQ
 gqV
-aej
+aKn
 bdA
 nbT
 gre
@@ -81110,14 +81110,14 @@ jba
 rwo
 vYe
 jba
-nwj
+upr
 jqz
 bVE
 eNM
 fwq
 jqz
 jqz
-upr
+nwj
 rwo
 vYe
 rwo
@@ -81156,7 +81156,7 @@ bdQ
 bdQ
 bdQ
 beg
-aej
+aKn
 bdB
 bdG
 siu
@@ -81347,7 +81347,7 @@ aqL
 aJZ
 bdZ
 aJZ
-aej
+aKn
 aKi
 aKp
 aKj
@@ -81362,7 +81362,7 @@ bdS
 bdP
 bdP
 aJZ
-aej
+aKn
 aKi
 aKi
 bel
@@ -81858,12 +81858,12 @@ bdQ
 bdQ
 bdQ
 bdQ
-aej
+aKn
 aKi
 aKo
 bcG
 aJZ
-aej
+aKn
 aKi
 aKi
 gtX
@@ -82591,7 +82591,7 @@ bdP
 bem
 bdP
 bdR
-bcE
+rzy
 bdU
 qoh
 bdU
@@ -83082,7 +83082,7 @@ bdQ
 bdQ
 bdQ
 bdQ
-aej
+aKn
 aKi
 aKi
 bel
@@ -83095,7 +83095,7 @@ gtX
 aKi
 aKi
 aKi
-sqr
+uli
 bdQ
 bdS
 bdS
@@ -83314,7 +83314,7 @@ aYR
 bdP
 aJZ
 bdQ
-aej
+aKn
 aKi
 aKi
 quG
@@ -84068,7 +84068,7 @@ eiG
 bdP
 bdQ
 bdP
-aej
+aKn
 aKi
 aKi
 gtX
@@ -84551,13 +84551,13 @@ bdU
 wpV
 bcI
 aKi
-aiV
+aej
 bdU
-rzy
+bcE
 bdP
 bdQ
 bdQ
-aej
+aKn
 aKi
 aKi
 aKi
@@ -84802,7 +84802,7 @@ bdK
 bdQ
 bdQ
 bdQ
-aej
+aKn
 aKi
 aKi
 aKi
@@ -85047,7 +85047,7 @@ bdQ
 bdQ
 bdQ
 gqV
-aej
+aKn
 aKi
 aKi
 aKi
@@ -85538,7 +85538,7 @@ aYR
 aYR
 aJZ
 qEG
-aej
+aKn
 aKi
 aKi
 gtX

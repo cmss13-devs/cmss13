@@ -1407,11 +1407,9 @@
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
 "afq" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/gm/grass/weedable,
-/area/bigredv2/caves/eta/xenobiology)
+/obj/structure/window/framed/solaris,
+/turf/open/auto_turf/sand,
+/area/bigredv2/caves/eta/research)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1517,8 +1515,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "afK" = (
-/obj/structure/window/framed/solaris,
-/turf/open/auto_turf/sand,
+/turf/open/auto_turf/sand/layer2,
 /area/bigredv2/caves/eta/research)
 "afL" = (
 /obj/structure/showcase{
@@ -1531,28 +1528,6 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/space_port)
 "afN" = (
-/turf/open/auto_turf/sand/layer2,
-/area/bigredv2/caves/eta/research)
-"afO" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"afP" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	name = "\improper Marshal Office Prison"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"afQ" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 1;
-	name = "\improper Marshal Office Prison"
-	},
-/turf/open/floor/delivery,
-/area/bigredv2/outside/marshal_office)
-"afR" = (
 /obj/structure/prop/almayer/cannon_cables{
 	name = "\improper Cables"
 	},
@@ -1581,6 +1556,31 @@
 	},
 /turf/open/shuttle/escapepod/floor1,
 /area/bigredv2/oob)
+"afO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"afP" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 1;
+	name = "\improper Marshal Office Prison"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"afQ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 1;
+	name = "\improper Marshal Office Prison"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/marshal_office)
+"afR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/crap_item,
+/obj/item/shard,
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
 "afS" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -1699,16 +1699,14 @@
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/space_port)
 "agp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
 /obj/item/shard,
-/turf/open/floor,
+/turf/closed/wall/solaris,
 /area/bigredv2/outside/dorms)
 "agq" = (
 /turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/n)
 "agr" = (
-/obj/item/shard,
+/obj/structure/prop/hybrisa/misc/urinal,
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/dorms)
 "ags" = (
@@ -1763,13 +1761,9 @@
 /area/bigredv2/outside/marshal_office)
 "agE" = (
 /obj/structure/prop/hybrisa/misc/urinal,
-/turf/closed/wall/solaris,
-/area/bigredv2/outside/dorms)
-"agF" = (
-/obj/structure/prop/hybrisa/misc/urinal,
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/xenobiology)
-"agG" = (
+"agF" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
@@ -18202,6 +18196,12 @@
 	id = "hole2"
 	},
 /turf/open/floor/dark,
+/area/bigredv2/caves/eta/xenobiology)
+"cxi" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/gm/grass/weedable,
 /area/bigredv2/caves/eta/xenobiology)
 "cya" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -51505,7 +51505,7 @@ rIl
 uSf
 olT
 llS
-afR
+afN
 ijU
 rIl
 aao
@@ -56553,7 +56553,7 @@ aao
 aao
 aao
 aao
-agG
+agF
 aqL
 aqL
 lbh
@@ -60729,7 +60729,7 @@ aua
 asJ
 asJ
 asJ
-agp
+afR
 aws
 amI
 wxo
@@ -61377,7 +61377,7 @@ asJ
 azS
 amn
 amn
-agr
+agp
 cgt
 eqr
 amn
@@ -61717,11 +61717,11 @@ bDl
 fWw
 aCe
 fWw
-afq
+cxi
 fWw
 aCe
 dPs
-afq
+cxi
 bDe
 aCe
 aao
@@ -62026,7 +62026,7 @@ krH
 ayq
 ayY
 azV
-agE
+agr
 aBl
 aBX
 aBk
@@ -62243,7 +62243,7 @@ axK
 ayp
 asJ
 jph
-agE
+agr
 aBm
 mBc
 aBk
@@ -64315,7 +64315,7 @@ aCh
 aCh
 aCh
 aCh
-afK
+afq
 aBA
 aDX
 aDX
@@ -65615,7 +65615,7 @@ bBp
 aBv
 bvP
 bvP
-afN
+afK
 bvP
 bvP
 aBv
@@ -65834,7 +65834,7 @@ bvP
 bvP
 bCE
 bvP
-afN
+afK
 aBv
 aao
 aDY
@@ -66047,7 +66047,7 @@ bBp
 bBp
 bBp
 aBv
-afN
+afK
 bCE
 bCJ
 bvP
@@ -66265,7 +66265,7 @@ bBp
 bBC
 aBv
 bvP
-afN
+afK
 bvP
 bvP
 bvP
@@ -66484,7 +66484,7 @@ aBv
 bvP
 bvP
 bCK
-afN
+afK
 bCE
 aBv
 aao
@@ -81745,7 +81745,7 @@ eFh
 adZ
 adZ
 adZ
-agF
+agE
 agl
 agl
 agl

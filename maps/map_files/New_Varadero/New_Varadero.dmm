@@ -91,11 +91,6 @@
 /obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/vessel)
-"aar" = (
-/obj/item/lightstick/variant/planted,
-/obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/ocean/deep_ocean,
-/area/varadero/exterior/farocean)
 "aas" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
@@ -259,11 +254,11 @@
 	},
 /turf/open/floor/shiva/blue/north,
 /area/varadero/interior/administration)
-"aaX" = (
+"aaW" = (
 /obj/structure/prop/hybrisa/misc/urinal,
 /turf/closed/wall/r_wall,
 /area/varadero/interior/security)
-"aaZ" = (
+"aaX" = (
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
@@ -272,7 +267,7 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate/west,
 /area/varadero/interior/cargo)
-"aba" = (
+"aaY" = (
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
@@ -281,14 +276,14 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate/east,
 /area/varadero/exterior/lz1_near)
-"abb" = (
+"aaZ" = (
 /obj/structure/machinery/landinglight/ds2/spoke{
 	pixel_x = -1;
 	pixel_y = 54
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"abc" = (
+"aba" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
@@ -298,6 +293,11 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
+"abb" = (
+/obj/item/lightstick/variant/planted,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -40203,7 +40203,7 @@ pGs
 huF
 huF
 huF
-abb
+aaZ
 wMw
 aHy
 wMw
@@ -40219,7 +40219,7 @@ huF
 huF
 huF
 wFP
-aaZ
+aaX
 lFl
 lFl
 lFl
@@ -40583,7 +40583,7 @@ paq
 gSY
 xBS
 wFP
-aba
+aaY
 waP
 waP
 waP
@@ -41459,7 +41459,7 @@ mPk
 mPk
 mPk
 mPk
-aar
+abb
 fjv
 wBp
 cfQ
@@ -41468,7 +41468,7 @@ bGC
 qzq
 ahg
 huF
-abc
+aba
 eRM
 tCG
 aEf
@@ -54125,7 +54125,7 @@ kbQ
 tVj
 kbQ
 pGs
-aaX
+aaW
 nrd
 dnV
 kTI

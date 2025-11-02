@@ -1539,6 +1539,12 @@
 /obj/structure/machinery/vending/security,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/medseceng)
+"afy" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
+	name = "\improper Aurora Medical Clinic Treatment"
+	},
+/turf/open/floor/shiva/wredfull,
+/area/shiva/interior/colony/medseceng)
 "afz" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
@@ -1550,8 +1556,9 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
 "afB" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
-	name = "\improper Aurora Medical Clinic Treatment"
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
+	dir = 1;
+	name = "\improper Aurora Medical Clinic Storage"
 	},
 /turf/open/floor/shiva/wredfull,
 /area/shiva/interior/colony/medseceng)
@@ -1573,31 +1580,31 @@
 /turf/open/floor/shiva/purplefull,
 /area/shiva/interior/colony/research_hab)
 "afG" = (
-/obj/structure/machinery/door/airlock/almayer/medical/colony{
-	dir = 1;
-	name = "\improper Aurora Medical Clinic Storage"
-	},
-/turf/open/floor/shiva/wredfull,
-/area/shiva/interior/colony/medseceng)
-"afH" = (
 /obj/effect/decal/strata_decals/grime/grime4,
 /turf/open/floor/carpet,
 /area/shiva/interior/colony/medseceng)
-"afI" = (
+"afH" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/lz2_habs)
-"afJ" = (
+"afI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
-"afK" = (
+"afJ" = (
 /obj/structure/curtain/colorable_transparent{
 	color = "#22282c";
 	alpha = 235
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/central)
+"afK" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	name = "\improper Colony Engineering"
+	},
+/turf/open/floor/shiva/yellow/north,
+/area/shiva/interior/colony/medseceng)
 "afL" = (
 /obj/structure/surface/table,
 /obj/item/tool/wrench,
@@ -1613,11 +1620,10 @@
 /turf/open/floor/shiva/purplefull/east,
 /area/shiva/interior/colony/research_hab)
 "afO" = (
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	dir = 1;
-	name = "\improper Colony Engineering"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+	name = "\improper Colony Power Substation"
 	},
-/turf/open/floor/shiva/yellow/north,
+/turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/colony/medseceng)
 "afP" = (
 /obj/structure/machinery/space_heater,
@@ -1634,11 +1640,10 @@
 /turf/open/floor/shiva/wred/north,
 /area/shiva/interior/colony/medseceng)
 "afS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
-	name = "\improper Colony Power Substation"
-	},
-/turf/open/floor/shiva/yellowfull/west,
-/area/shiva/interior/colony/medseceng)
+/obj/item/device/analyzer/plant_analyzer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/lz2_habs)
 "afT" = (
 /obj/structure/surface/table,
 /obj/item/storage/firstaid/o2,
@@ -1649,16 +1654,22 @@
 /turf/open/floor/shiva/wred/north,
 /area/shiva/interior/colony/medseceng)
 "afU" = (
-/obj/item/device/analyzer/plant_analyzer,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/lz2_habs)
+/obj/structure/machinery/disposal,
+/turf/open/floor/shiva/red,
+/area/shiva/interior/colony/medseceng)
 "afV" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/colony/research_hab)
+"afW" = (
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
+	dir = 1;
+	name = "\improper Underground Reception"
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/medseceng)
 "afX" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
@@ -1701,9 +1712,11 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/central)
 "agd" = (
-/obj/structure/machinery/disposal,
-/turf/open/floor/shiva/red,
-/area/shiva/interior/colony/medseceng)
+/obj/structure/surface/table,
+/obj/item/tool/kitchen/utensil/fork,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/prison/kitchen,
+/area/shiva/interior/colony/central)
 "age" = (
 /obj/structure/closet/radiation,
 /obj/effect/landmark/crap_item,
@@ -1722,24 +1735,29 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "agi" = (
-/obj/structure/machinery/door/airlock/almayer/medical/colony{
-	dir = 1;
-	name = "\improper Underground Reception"
-	},
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/medseceng)
-"agj" = (
-/obj/structure/surface/table,
-/obj/item/tool/kitchen/utensil/fork,
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/prison/kitchen,
-/area/shiva/interior/colony/central)
-"agk" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Underground Security"
 	},
 /turf/open/floor/shiva/red/north,
 /area/shiva/interior/colony/medseceng)
+"agj" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/purple/east,
+/area/shiva/interior/lz2_habs)
+"agk" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/purple/west,
+/area/shiva/interior/lz2_habs)
 "agl" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
@@ -1752,23 +1770,16 @@
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/colony/research_hab)
 "agn" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 8
-	},
-/obj/structure/machinery/light/double{
-	dir = 8;
-	pixel_y = -5
-	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/purple/east,
+/turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/interior/lz2_habs)
 "ago" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 4
+/obj/structure/machinery/door/airlock/almayer/security/colony{
+	dir = 1;
+	name = "\improper Underground Security Interrogation Observation"
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/purple/west,
-/area/shiva/interior/lz2_habs)
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/medseceng)
 "agp" = (
 /obj/structure/noticeboard{
 	pixel_y = 32
@@ -1776,9 +1787,9 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
 "agq" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/plating_catwalk/shiva,
-/area/shiva/interior/lz2_habs)
+/obj/structure/machinery/power/power_generator/reactor/colony,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/medseceng)
 "agr" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Underground Security Checkpoint";
@@ -1798,16 +1809,17 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
 "agu" = (
-/obj/structure/machinery/door/airlock/almayer/security/colony{
-	dir = 1;
-	name = "\improper Underground Security Interrogation Observation"
+/obj/item/tool/wirecutters/clippers,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/lz2_habs)
+"agv" = (
+/obj/structure/bed/roller,
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
 	},
 /turf/open/floor/shiva/north,
-/area/shiva/interior/colony/medseceng)
-"agv" = (
-/obj/structure/machinery/power/power_generator/reactor/colony,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/medseceng)
+/area/shiva/interior/colony/central)
 "agw" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1845,16 +1857,18 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "agD" = (
-/obj/item/tool/wirecutters/clippers,
+/obj/structure/prop/ice_colony/ground_wire{
+	layer = 2.98
+	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/floor3,
+/turf/open/floor/shiva/purple,
 /area/shiva/interior/lz2_habs)
 "agE" = (
-/obj/structure/bed/roller,
-/obj/structure/closet/bodybag{
-	icon_state = "bodybag_open"
+/obj/item/tool/warning_cone{
+	pixel_x = -12
 	},
-/turf/open/floor/shiva/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
 /area/shiva/interior/colony/central)
 "agF" = (
 /obj/structure/machinery/landinglight/ds2,
@@ -1864,22 +1878,15 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "agG" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	layer = 2.98
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/purple,
-/area/shiva/interior/lz2_habs)
-"agH" = (
-/obj/item/tool/warning_cone{
-	pixel_x = -12
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/shiva/interior/colony/central)
-"agI" = (
 /obj/structure/prop/hybrisa/misc/urinal,
 /turf/closed/wall/shiva/prefabricated,
+/area/shiva/interior/colony/medseceng)
+"agH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/shiva/exterior/lz2_fortress)
+"agI" = (
+/turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/shiva/interior/colony/medseceng)
 "agJ" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1897,27 +1904,20 @@
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/colony/medseceng)
 "agL" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/shiva/exterior/lz2_fortress)
+/obj/structure/machinery/power/power_generator/reactor/colony,
+/turf/open/floor/shiva/yellow/north,
+/area/shiva/interior/colony/medseceng)
 "agM" = (
 /obj/item/ammo_box/magazine/nailgun,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "agN" = (
-/turf/open/floor/plating/plating_catwalk/aicore/white,
-/area/shiva/interior/colony/medseceng)
-"agO" = (
-/obj/structure/machinery/power/power_generator/reactor/colony,
-/turf/open/floor/shiva/yellow/north,
-/area/shiva/interior/colony/medseceng)
-"agP" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 8
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
-"agQ" = (
+"agO" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1;
 	pixel_y = 4
@@ -1925,6 +1925,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/purple/north,
 /area/shiva/interior/lz2_habs)
+"agP" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/central)
+"agQ" = (
+/turf/open/floor/shiva/red/southwest,
+/area/shiva/interior/colony/medseceng)
 "agR" = (
 /obj/structure/barricade/wooden{
 	dir = 4
@@ -1932,30 +1941,43 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "agS" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 2
-	},
-/turf/open/floor/shiva/multi_tiles,
-/area/shiva/interior/colony/central)
-"agT" = (
-/turf/open/floor/shiva/red/southwest,
+/turf/open/floor/shiva/redcorners/west,
 /area/shiva/interior/colony/medseceng)
+"agT" = (
+/obj/structure/machinery/light/double,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/yellowfull/west,
+/area/shiva/interior/aux_power)
 "agU" = (
 /obj/structure/platform_decoration/metal/shiva/east,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "agV" = (
-/turf/open/floor/shiva/redcorners/west,
-/area/shiva/interior/colony/medseceng)
-"agW" = (
-/obj/structure/machinery/light/double,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/yellowfull/west,
-/area/shiva/interior/aux_power)
-"agX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/interior/aux_power)
+"agW" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5";
+	pixel_x = -2
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/central)
+"agX" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7";
+	pixel_x = 2;
+	pixel_y = -4
+	},
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 2;
+	pixel_y = 23
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/central)
 "agY" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
@@ -1979,28 +2001,6 @@
 /area/shiva/interior/colony/research_hab)
 "ahb" = (
 /obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal5";
-	pixel_x = -2
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/turf/open/floor/wood,
-/area/shiva/interior/colony/central)
-"ahc" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal7";
-	pixel_x = 2;
-	pixel_y = -4
-	},
-/obj/structure/desertdam/decals/road_edge{
-	pixel_x = 2;
-	pixel_y = 23
-	},
-/turf/open/floor/wood,
-/area/shiva/interior/colony/central)
-"ahd" = (
-/obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal8";
 	pixel_x = -2;
 	pixel_y = -4
@@ -2011,11 +2011,7 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
-"ahe" = (
-/obj/structure/machinery/space_heater,
-/turf/open/floor/shiva/bluefull/west,
-/area/shiva/interior/aerodrome)
-"ahf" = (
+"ahc" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal6";
 	pixel_x = 2
@@ -2025,56 +2021,60 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
-"ahg" = (
+"ahd" = (
 /turf/open/floor/shiva/redcorners,
 /area/shiva/interior/colony/medseceng)
+"ahe" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/shiva/bluefull/west,
+/area/shiva/interior/aerodrome)
+"ahf" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5";
+	pixel_x = -16;
+	pixel_y = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8";
+	pixel_x = -16;
+	pixel_y = -16
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/central)
+"ahg" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5";
+	pixel_x = -16;
+	pixel_y = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8";
+	pixel_x = -16;
+	pixel_y = -16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/central)
 "ahh" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal7";
-	pixel_x = 16;
-	pixel_y = -16
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal6";
-	pixel_x = 16;
-	pixel_y = 16
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal5";
-	pixel_x = -16;
-	pixel_y = 16
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal8";
-	pixel_x = -16;
-	pixel_y = -16
-	},
-/turf/open/floor/wood,
-/area/shiva/interior/colony/central)
-"ahi" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal5";
-	pixel_x = -16;
-	pixel_y = 16
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal8";
-	pixel_x = -16;
-	pixel_y = -16
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal6";
-	pixel_x = 16;
-	pixel_y = 16
-	},
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal7";
-	pixel_x = 16;
-	pixel_y = -16
-	},
-/turf/open/floor/wood,
-/area/shiva/interior/colony/central)
-"ahj" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal6";
 	pixel_x = 2;
@@ -2086,7 +2086,7 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
-"ahk" = (
+"ahi" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal5";
 	pixel_x = -2;
@@ -2098,12 +2098,7 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
-"ahl" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/effect/spawner/random/tool,
-/turf/open/floor/shiva/yellow/northwest,
-/area/shiva/interior/colony/medseceng)
-"ahm" = (
+"ahj" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal7";
 	pixel_x = 2
@@ -2114,34 +2109,49 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/central)
-"ahn" = (
+"ahk" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Underground Security"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/shiva/red/north,
 /area/shiva/interior/colony/medseceng)
-"aho" = (
+"ahl" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/shiva/yellow/northwest,
+/area/shiva/interior/colony/medseceng)
+"ahm" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/aux_power)
-"ahp" = (
+"ahn" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/aux_power)
+"aho" = (
+/obj/structure/window/reinforced,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/central)
+"ahp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/medseceng)
 "ahq" = (
 /obj/structure/filingcabinet/security,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/medseceng)
 "ahr" = (
-/obj/structure/window/reinforced,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/central)
+/obj/structure/machinery/power/terminal{
+	dir = 1
+	},
+/turf/open/floor/shiva/yellowfull/west,
+/area/shiva/interior/aux_power)
 "ahs" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/shiva/interior/colony/medseceng)
+/turf/open/floor/shiva/radiator_tile2,
+/area/shiva/interior/aux_power)
 "aht" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	name = "\improper Underground Maintenance"
@@ -2160,6 +2170,7 @@
 /turf/open/floor/shiva/redfull,
 /area/shiva/interior/colony/medseceng)
 "ahw" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/terminal{
 	dir = 1
 	},
@@ -2167,29 +2178,32 @@
 /area/shiva/interior/aux_power)
 "ahx" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/radiator_tile2,
-/area/shiva/interior/aux_power)
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/central)
 "ahy" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "ahz" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/terminal{
-	dir = 1
-	},
-/turf/open/floor/shiva/yellowfull/west,
-/area/shiva/interior/aux_power)
-"ahA" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/central)
-"ahB" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
+"ahA" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 8
+	},
+/turf/open/floor/shiva/redfull,
+/area/shiva/interior/colony/medseceng)
+"ahB" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/central)
 "ahC" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_2"
@@ -2209,20 +2223,6 @@
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/colony/medseceng)
 "ahF" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 8
-	},
-/turf/open/floor/shiva/redfull,
-/area/shiva/interior/colony/medseceng)
-"ahG" = (
-/obj/structure/machinery/light/double{
-	dir = 1;
-	pixel_y = 9
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/central)
-"ahH" = (
 /obj/structure/machinery/light/double{
 	dir = 1;
 	pixel_y = 9
@@ -2230,12 +2230,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
-"ahI" = (
+"ahG" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
-"ahJ" = (
+"ahH" = (
 /obj/structure/curtain,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -25270,10 +25270,10 @@ cce
 uLq
 sXP
 cce
-agn
+agj
 cce
 cce
-agn
+agj
 aft
 aac
 pTC
@@ -25425,20 +25425,20 @@ puZ
 puZ
 puZ
 aac
-agG
+agD
 tyL
-agQ
+agO
 amR
 hpb
 acq
-agG
+agD
 sBN
 acq
 amR
 ygp
 acq
 afu
-afU
+afS
 xQJ
 aac
 aac
@@ -25596,14 +25596,14 @@ cce
 cce
 vYU
 cce
-agD
-ago
+agu
+agk
 cce
 xQJ
 xQJ
 aiJ
-afI
-afI
+afH
+afH
 xQJ
 xQJ
 xQJ
@@ -25759,13 +25759,13 @@ kLv
 odz
 xQJ
 chq
-agq
+agn
 afu
 xQJ
 xQJ
 xQJ
 mrY
-afI
+afH
 afu
 xQJ
 afu
@@ -25915,10 +25915,10 @@ rVF
 odz
 uwv
 xQJ
-agq
+agn
 afu
 xQJ
-agq
+agn
 afu
 xQJ
 odz
@@ -26239,7 +26239,7 @@ fZP
 nBB
 xQJ
 cce
-afI
+afH
 mrY
 eBp
 aPi
@@ -26722,10 +26722,10 @@ sXF
 aac
 aac
 odz
-agq
-agq
+agn
+agn
 odz
-agq
+agn
 aac
 aac
 mnD
@@ -28831,7 +28831,7 @@ gkY
 gkY
 gkY
 gkY
-agL
+agH
 gkY
 gkY
 gkY
@@ -33195,9 +33195,9 @@ puZ
 puZ
 anc
 tYm
-ahp
+ahn
 cJu
-aho
+ahm
 pBL
 bsM
 edw
@@ -33357,7 +33357,7 @@ puZ
 puZ
 anc
 uot
-ahp
+ahn
 cJu
 nTC
 pBL
@@ -33680,13 +33680,13 @@ puZ
 puZ
 anc
 jWL
-ahw
+ahr
 nTC
 nTC
 nTC
 nTC
 nTC
-agW
+agT
 anc
 xkV
 fxJ
@@ -34490,7 +34490,7 @@ puZ
 puZ
 anc
 nED
-ahx
+ahs
 ctz
 cJu
 qZa
@@ -34652,7 +34652,7 @@ puZ
 puZ
 anc
 rUN
-ahz
+ahw
 nTC
 nTC
 nTC
@@ -34820,7 +34820,7 @@ cJu
 nTC
 pBL
 pBL
-agX
+agV
 anc
 anc
 anc
@@ -35139,8 +35139,8 @@ puZ
 puZ
 anc
 dxh
-ahp
-ahp
+ahn
+ahn
 nTC
 pBL
 edw
@@ -41303,7 +41303,7 @@ aaY
 axz
 axz
 nqu
-agS
+agP
 axz
 axz
 puZ
@@ -42102,7 +42102,7 @@ cOA
 axz
 vvb
 qrz
-ahA
+ahx
 qrz
 jFy
 qrz
@@ -42262,10 +42262,10 @@ puZ
 (108,1,1) = {"
 cOA
 axz
-ahG
+ahB
 qrz
 qrz
-ahA
+ahx
 ajr
 qrz
 qrz
@@ -42588,8 +42588,8 @@ cOA
 axz
 aTT
 qrz
-ahA
-ahA
+ahx
+ahx
 axz
 qrz
 qrz
@@ -44057,7 +44057,7 @@ jqY
 ndR
 qrz
 aaY
-afJ
+afI
 xha
 dvg
 qCn
@@ -44222,8 +44222,8 @@ vWt
 xha
 xha
 xha
-afJ
-agH
+afI
+agE
 xha
 axz
 tfd
@@ -44548,7 +44548,7 @@ lQa
 jsA
 axz
 xha
-afJ
+afI
 axz
 tfd
 tfd
@@ -45036,7 +45036,7 @@ axz
 xha
 xha
 axz
-agE
+agv
 qrz
 qrz
 qrz
@@ -45195,7 +45195,7 @@ qow
 gtZ
 nnG
 axz
-afJ
+afI
 xha
 vWt
 qrz
@@ -45357,8 +45357,8 @@ axz
 mXS
 axz
 aaY
-afJ
-afJ
+afI
+afI
 axz
 qrz
 qrz
@@ -45679,7 +45679,7 @@ qrz
 qrz
 cZb
 esf
-afJ
+afI
 xha
 xha
 mjV
@@ -45689,7 +45689,7 @@ sgS
 dWD
 rWt
 qrz
-afK
+afJ
 ndR
 ndR
 ord
@@ -45832,7 +45832,7 @@ jqY
 qrz
 jFy
 nfe
-ahr
+aho
 aoX
 aqC
 ayY
@@ -45841,8 +45841,8 @@ cXM
 qrz
 qSe
 axz
-afJ
-afJ
+afI
+afI
 xha
 veS
 axz
@@ -45851,7 +45851,7 @@ qrz
 qrz
 vyM
 qrz
-afK
+afJ
 ndR
 fcq
 axz
@@ -45994,16 +45994,16 @@ jqY
 qrz
 jFy
 nfe
-ahr
+aho
 apa
 arh
 tfd
-ahb
+agW
 fFG
 qrz
 qSe
 axz
-afJ
+afI
 lYL
 xha
 bBB
@@ -46013,7 +46013,7 @@ eOF
 eOF
 qrz
 qrz
-afK
+afJ
 ndR
 gcF
 axz
@@ -46156,7 +46156,7 @@ gdk
 jqY
 akE
 qmA
-ahr
+aho
 apc
 arq
 tfd
@@ -46175,7 +46175,7 @@ kGH
 hTk
 nCx
 gPN
-afK
+afJ
 ndR
 sII
 axz
@@ -46318,11 +46318,11 @@ jqY
 jqY
 qrz
 qrz
-ahr
+aho
 apc
-ahj
 ahh
-ahc
+ahf
+agX
 oqy
 qrz
 qSe
@@ -46480,7 +46480,7 @@ jqY
 qrz
 jFy
 nfe
-ahr
+aho
 apc
 tfd
 tfd
@@ -46494,14 +46494,14 @@ xha
 xha
 xha
 xha
-afJ
+afI
 xha
 qnu
 xha
-afJ
+afI
 xha
 xha
-afJ
+afI
 aaY
 axz
 axz
@@ -46642,7 +46642,7 @@ jqY
 qrz
 jFy
 nfe
-ahr
+aho
 apc
 tfd
 tfd
@@ -46652,15 +46652,15 @@ qrz
 qSe
 axz
 csu
-afJ
-afJ
-afJ
+afI
+afI
+afI
 xha
 xha
 xha
 xha
-afJ
-afJ
+afI
+afI
 xha
 xha
 xha
@@ -46804,7 +46804,7 @@ jqY
 qrz
 jFy
 nfe
-ahr
+aho
 apa
 arx
 aBE
@@ -46824,7 +46824,7 @@ axz
 axz
 axz
 aaY
-afJ
+afI
 xha
 axz
 vbm
@@ -46966,7 +46966,7 @@ jqY
 qrz
 jFy
 nfe
-ahr
+aho
 apc
 tfd
 tfd
@@ -46986,7 +46986,7 @@ cXm
 cXm
 gbC
 axz
-afJ
+afI
 xha
 axz
 bXp
@@ -47128,7 +47128,7 @@ jqY
 qrz
 jFy
 nfe
-ahr
+aho
 apc
 tfd
 tfd
@@ -47148,7 +47148,7 @@ dQF
 dQF
 dQF
 axz
-afJ
+afI
 xha
 axz
 gzp
@@ -47290,11 +47290,11 @@ gdk
 jqY
 akE
 qrz
-ahr
+aho
 apc
-ahk
 ahi
-ahd
+ahg
+ahb
 oqy
 qrz
 qSe
@@ -47452,7 +47452,7 @@ apG
 iXZ
 qrz
 qrz
-ahr
+aho
 apc
 arq
 tfd
@@ -47473,7 +47473,7 @@ kNf
 dQF
 axz
 xha
-afJ
+afI
 vWt
 uQA
 muN
@@ -47614,11 +47614,11 @@ pmj
 apG
 jFy
 nfe
-ahr
+aho
 apa
-ahm
+ahj
 tfd
-ahf
+ahc
 fFG
 qrz
 qSe
@@ -47630,12 +47630,12 @@ irk
 kNf
 uDb
 irx
-agj
+agd
 kNf
 ves
 axz
 hQW
-afJ
+afI
 axz
 vbm
 kvB
@@ -47776,7 +47776,7 @@ iji
 apG
 jFy
 nfe
-ahr
+aho
 apf
 arz
 aRS
@@ -47796,7 +47796,7 @@ dQF
 dQF
 dQF
 axz
-afJ
+afI
 xha
 axz
 bXp
@@ -49074,7 +49074,7 @@ akL
 aoK
 oGg
 ylz
-ahn
+ahk
 xbz
 uYR
 oGg
@@ -49088,7 +49088,7 @@ eqY
 amP
 pVm
 aDn
-agk
+agi
 aek
 arA
 aDn
@@ -49228,7 +49228,7 @@ puZ
 (151,1,1) = {"
 cOA
 acT
-ahH
+ahF
 ajO
 acT
 agp
@@ -49245,7 +49245,7 @@ agh
 agh
 agh
 ykq
-agI
+agG
 amP
 amP
 sHc
@@ -49390,7 +49390,7 @@ puZ
 (152,1,1) = {"
 cOA
 acT
-ahI
+ahG
 ajO
 acT
 agt
@@ -49552,7 +49552,7 @@ puZ
 (153,1,1) = {"
 cOA
 acT
-ahs
+ahp
 ajO
 acT
 agA
@@ -50039,7 +50039,7 @@ puZ
 cOA
 acT
 ajO
-ahs
+ahp
 acT
 aoK
 akL
@@ -50059,7 +50059,7 @@ xbz
 fMe
 agh
 agh
-agu
+ago
 iJY
 agh
 pFt
@@ -50686,7 +50686,7 @@ puZ
 (160,1,1) = {"
 cOA
 acT
-ahs
+ahp
 ajO
 acT
 aoK
@@ -50849,7 +50849,7 @@ puZ
 cOA
 acT
 aSX
-ahs
+ahp
 acT
 aoK
 aoK
@@ -51011,7 +51011,7 @@ puZ
 cOA
 acT
 aZg
-ahs
+ahp
 acT
 ahq
 ala
@@ -51024,7 +51024,7 @@ axG
 adR
 acT
 acT
-agP
+agN
 acT
 buJ
 aDn
@@ -51196,7 +51196,7 @@ aek
 aDn
 iJY
 agh
-agd
+afU
 acT
 kIs
 agh
@@ -51344,8 +51344,8 @@ acT
 fWb
 iJY
 agh
-agV
-agT
+agS
+agQ
 aek
 lGq
 fGG
@@ -51511,7 +51511,7 @@ pFt
 aek
 oYw
 oYw
-agN
+agI
 xbz
 agh
 agh
@@ -51658,7 +51658,7 @@ puZ
 (166,1,1) = {"
 cOA
 acT
-ahs
+ahp
 aQX
 acT
 ahO
@@ -51830,7 +51830,7 @@ anU
 acT
 iJY
 agh
-ahg
+ahd
 bpH
 aek
 oYw
@@ -51981,7 +51981,7 @@ puZ
 "}
 (168,1,1) = {"
 cOA
-ahs
+ahp
 ajO
 ajO
 aDn
@@ -52143,7 +52143,7 @@ puZ
 "}
 (169,1,1) = {"
 cOA
-ahs
+ahp
 ajO
 ajO
 aSa
@@ -52305,7 +52305,7 @@ puZ
 "}
 (170,1,1) = {"
 cOA
-ahJ
+ahH
 ajV
 aDn
 aDn
@@ -52655,7 +52655,7 @@ ihh
 pnK
 ceS
 uXQ
-afO
+afK
 agh
 agh
 aff
@@ -52965,9 +52965,9 @@ iJY
 aff
 agh
 agh
-agV
+agS
 hwA
-agT
+agQ
 acT
 aek
 aek
@@ -53117,7 +53117,7 @@ puZ
 cOA
 ajO
 ajO
-ahs
+ahp
 acT
 miW
 all
@@ -53279,7 +53279,7 @@ puZ
 cOA
 ajO
 aQX
-ahs
+ahp
 acT
 kHB
 agh
@@ -53769,7 +53769,7 @@ ajO
 ajO
 ajO
 ajO
-ahs
+ahp
 aSa
 axG
 hdF
@@ -53929,7 +53929,7 @@ acT
 cbW
 ajO
 ajO
-ahB
+ahz
 nrt
 ajO
 aDn
@@ -54089,7 +54089,7 @@ puZ
 cOA
 acT
 acT
-ahg
+ahd
 acT
 acT
 acT
@@ -54275,7 +54275,7 @@ agh
 agh
 tCi
 uXQ
-afS
+afO
 umm
 agh
 agh
@@ -55075,13 +55075,13 @@ acT
 qDT
 eAZ
 acT
-agO
+agL
 cso
 agh
-agv
-agv
-agv
-agv
+agq
+agq
+agq
+agq
 agh
 cso
 npM
@@ -55237,7 +55237,7 @@ aDn
 eAZ
 eAZ
 aDn
-agO
+agL
 cso
 agh
 cso
@@ -55402,10 +55402,10 @@ aek
 eXL
 cso
 agh
-agv
-agv
-agv
-agv
+agq
+agq
+agq
+agq
 agh
 cso
 qdd
@@ -55899,7 +55899,7 @@ eAZ
 acT
 mLT
 ovc
-afH
+afG
 aVQ
 umm
 agh
@@ -56374,12 +56374,12 @@ eAZ
 eAZ
 oYw
 oYw
-agi
+afW
 agh
 aff
 agh
 agh
-agi
+afW
 aSi
 aSi
 gQR
@@ -57358,7 +57358,7 @@ amP
 amP
 amP
 amU
-afB
+afy
 bhS
 amP
 pGf
@@ -57815,7 +57815,7 @@ puZ
 cOA
 acT
 dOu
-ahF
+ahA
 acT
 acT
 oIh
@@ -58168,7 +58168,7 @@ aeo
 amP
 amP
 amU
-afG
+afB
 bhS
 mCg
 hUS

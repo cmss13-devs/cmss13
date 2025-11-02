@@ -393,8 +393,6 @@
 	qdel(src)
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/update_icon()
-	. = ..()
-
 	if(uses_left && autoinjector_type) //does not apply a colored fill overlay like the rest of the autoinjectors
 		var/image/filling = image('icons/obj/items/hunter/pred_gear.dmi', src, "[autoinjector_type]_[uses_left]")
 		overlays += filling

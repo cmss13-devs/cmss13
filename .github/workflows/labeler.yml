@@ -1,12 +1,10 @@
-name: Labeling and Verification
+name: "Label"
+
 on:
-  pull_request_target:
-    types: [opened, reopened, synchronize, edited]
+- pull_request_target
+
 jobs:
-  label:
-    permissions:
-      contents: read
-      pull-requests: write
+  labeler:
     runs-on: ubuntu-latest
     steps:
       - name: "Check for ACTION_ENABLER secret and pass true to output if it exists to be checked by later steps"
@@ -72,3 +70,7 @@ jobs:
               "800": "XL",
               "2000": "XXL"
             }
+    - uses: actions/labeler@v5
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        sync-labels: true

@@ -223,7 +223,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("Not enough acid built up for an explosion."))
 		return
 
-	notify_ghosts(header = "For the Hive!", message = "[xeno] is going to explode for the Hive!", source = xeno, action = NOTIFY_ORBIT)
+	notify_ghosts(header = "За улей!", message = "[xeno] is going to explode for the Hive!", source = xeno, action = NOTIFY_ORBIT)
 
 	to_chat(xeno, SPAN_XENOWARNING("Our stomach starts turning and twisting, getting ready to compress the built up acid."))
 	xeno.color = "#22FF22"
@@ -237,7 +237,7 @@
 
 	START_PROCESSING(SSfasteffects, src)
 
-	xeno.say(";FOR THE HIVE!!!")
+	xeno.say(";ЗА УЛЕЙ!!!")
 	return ..()
 
 /datum/action/xeno_action/activable/acider_for_the_hive/proc/cancel_ability()

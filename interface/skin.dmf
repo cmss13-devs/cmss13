@@ -74,8 +74,8 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		font-family = "Arial"
-		font-size = 7
+		font-family = "Grand9K Pixel"
+		font-size = 6pt
 		is-default = true
 		saved-params = "zoom;letterbox;zoom-mode;icon-size;text-mode"
 	elem "lobby_browser"

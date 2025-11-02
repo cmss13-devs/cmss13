@@ -88,6 +88,7 @@ export const DmTarget = new Juke.Target({
     "interface/**",
     "sound/**",
     "tgui/public/tgui.html",
+    "modular/**", // BANDASTATION EDIT ADDITION - Making the CBT work
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],

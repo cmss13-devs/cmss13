@@ -77,7 +77,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/toggles_ert = TOGGLES_ERT_DEFAULT
 	var/toggles_survivor = TOGGLES_SURVIVOR_DEFAULT
 	var/toggles_ert_pred = TOGGLES_ERT_GROUNDS
-	var/list/volume_preferences = list(1, 0.5, 1, 0.6) // Game, music, admin midis, lobby music (this is also set in sanitize_volume_preferences() call)
+	var/list/volume_preferences = list(1, 0.5, 1, 0.6, //Game, music, admin midis, lobby music
+	1, 0.5, 0.5) //Local, Radio,  Announces - SS220 TTS EDIT
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
 	var/pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
@@ -514,6 +515,14 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			else
 				dat += "<b>Records:</b> <a href=\"byond://?src=\ref[user];preference=records;record=1\"><b>Character Records</b></a><br>"
 
+			// SS220 ADDITION START - TTS220
+			if((SStts220.is_enabled))
+				dat += {"
+				<h2>Text-to-Speech</h2>
+				<b>Выбор голоса:</b> <a href='byond://?_src_=prefs;preference=tts_seed;task=open'>Эксплорер TTS голосов</a><br>
+				"}
+			// SS220 ADDITION END
+
 			dat += "<b>Flavor Text:</b> <a href='byond://?src=\ref[user];preference=flavor_text;task=open'><b>[TextPreview(flavor_texts["general"], 15)]</b></a><br>"
 			dat += "</div>"
 
@@ -622,6 +631,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='byond://?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"
 			dat += "<b>Button To Activate Xenomorph Abilities:</b> <a href='byond://?_src_=prefs;preference=mouse_button_activation;task=input'><b>[xeno_ability_mouse_pref_to_string(xeno_ability_click_mode)]</b></a><br>"
 			dat += "<b>Xeno Cooldown Messages:</b> <a href='byond://?_src_=prefs;preference=show_cooldown_messages'><b>[(show_cooldown_messages) ? "Show" : "Hide"]</b></a><br>"
+			// BANDAMARINES EDIT START
+			dat += "<b>Xeno Customization Visibility:</b> <a href='byond://?_src_=prefs;preference=xeno_customization_visibility;task=input'><b>[xeno_customization_visibility]</b></a><br>"
+			dat += "<b>Instant Ability Cast:</b> <a href='byond://?_src_=prefs;preference=quick_cast'><b>[(quick_cast) ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Show Screentips:</b> <a href='byond://?_src_=prefs;preference=screentips'><b>[(screentips) ? "Yes" : "No"]</b></a><br>"
+			// BANDAMARINES EDIT END
 			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/receive_random_tip'>Read Random Tip of the Round</a><br>"
 			if(CONFIG_GET(flag/allow_Metadata))
 				dat += "<b>OOC Notes:</b> <a href='byond://?_src_=prefs;preference=metadata;task=input'> Edit </a>"
@@ -780,7 +794,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			HTML += "<b><del>[job.disp_title]</del></b></td><td width='10%' align='center'></td><td>TIMELOCKED</td></tr>"
 			for(var/r in missing_requirements)
 				var/datum/timelock/T = r
-				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='center'></td><td>[duration2text(missing_requirements[r])] Hours</td></tr>"
+				HTML += "<tr class='[job.selection_class]'><td width='40%' align='middle'>[T.name]</td><td width='10%' align='center'></td><td>[deciseconds_to_time_stamp(missing_requirements[r], FALSE)] Hours</td></tr>" // SS220 EDIT - TimeLock FIX by Biologded
 			continue
 
 		HTML += "<b>[job.disp_title]</b></td><td width='10%' align='center'>"
@@ -1157,6 +1171,14 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		if("show_cooldown_messages")
 			show_cooldown_messages = !show_cooldown_messages
 
+		// SS220 ADDITION START - TTS220
+		if("tts_seed")
+			switch(href_list["task"])
+				if("open")
+					var/datum/tts_seeds_explorer/explorer = new
+					explorer.tgui_interact(user)
+		// SS220 ADDITION END
+
 	switch (href_list["task"])
 		if ("random")
 			switch (href_list["preference"])
@@ -1478,7 +1500,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					var/new_xeno_prefix = input(user, "Choose your xenomorph prefix. One or two letters capitalized. Put empty text if you want to default it to 'XX'", "Xenomorph Prefix") as text|null
 					new_xeno_prefix = uppertext(new_xeno_prefix)
 
-					var/prefix_length = length(new_xeno_prefix)
+					var/prefix_length = length_char(new_xeno_prefix) //SS220 EDIT CHANGE - Cyrillic Fixes
 
 					if(prefix_length>3)
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Invalid Xeno Prefix. Your Prefix can only be up to 3 letters long.")))
@@ -1493,14 +1515,14 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
 							return
 
-					if(length(new_xeno_prefix)==0)
+					if(length_char(new_xeno_prefix)==0) //SS220 EDIT CHANGE - Cyrillic Fixes
 						xeno_prefix = "XX"
 						owner.load_xeno_name()
 					else
 						var/all_ok = TRUE
-						for(var/i=1, i<=length(new_xeno_prefix), i++)
-							var/ascii_char = text2ascii(new_xeno_prefix,i)
-							if(ascii_char < 65 || ascii_char > 90)
+						for(var/i=1, i<=length_char(new_xeno_prefix), i++) //SS220 EDIT CHANGE - Cyrillic Fixes
+							var/ascii_char = text2ascii_char(new_xeno_prefix,i) //SS220 EDIT CHANGE - Cyrillic Fixes
+							if(!((ascii_char >= 65 && ascii_char <= 90) || (ascii_char >= 1040 && ascii_char <= 1071 && ascii_char != 1025))) //SS220 EDIT CHANGE - Cyrillic Fixes
 								all_ok = FALSE //everything else - won't
 						if(all_ok)
 							xeno_prefix = new_xeno_prefix
@@ -1518,28 +1540,28 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [time_left_until(24 HOURS, playtime, 1 HOURS)] more hours to unlock xeno postfix.")))
 						return
 
-					if(length(xeno_prefix)==3)
+					if(length_char(xeno_prefix)==3) //SS220 EDIT CHANGE - Cyrillic Fixes
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
 						return
 
 					var/new_xeno_postfix = input(user, "Choose your xenomorph postfix. One capital letter with or without a digit at the end. Put empty text if you want to remove postfix", "Xenomorph Postfix") as text|null
 					new_xeno_postfix = uppertext(new_xeno_postfix)
-					if(length(new_xeno_postfix)>2)
+					if(length_char(new_xeno_postfix)>2) //SS220 EDIT CHANGE - Cyrillic Fixes
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Invalid Xeno Postfix. Your Postfix can only be up to 2 letters long.")))
 						return
-					else if(length(new_xeno_postfix)==0)
+					else if(length_char(new_xeno_postfix)==0) //SS220 EDIT CHANGE - Cyrillic Fixes
 						xeno_postfix = ""
 						owner.load_xeno_name()
 					else
 						var/all_ok = TRUE
 						var/first_char = TRUE
-						for(var/i=1, i<=length(new_xeno_postfix), i++)
-							var/ascii_char = text2ascii(new_xeno_postfix,i)
+						for(var/i=1, i<=length_char(new_xeno_postfix), i++) //SS220 EDIT CHANGE - Cyrillic Fixes
+							var/ascii_char = text2ascii_char(new_xeno_postfix,i)
 							switch(ascii_char)
 								// A  .. Z
-								if(65 to 90) //Uppercase Letters will work on first char
+								if(65 to 90, 1040 to 1071, 1025) //Uppercase Letters will work on first char  //SS220 EDIT CHANGE - Cyrillic Fixes
 
-									if(length(xeno_prefix)!=2)
+									if(length_char(xeno_prefix)!=2) //SS220 EDIT CHANGE - Cyrillic Fixes
 										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
 										return
 
@@ -2069,7 +2091,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	if(job_title)
 		find_assigned_slot(job_title, is_late_join)
-	if(check_datacore && !(be_random_body && be_random_name))
+	if((check_datacore || is_late_join) && !(be_random_body && be_random_name)) // BANDAMARINES EDIT - Respawn
 		for(var/datum/data/record/record as anything in GLOB.data_core.locked)
 			if(record.fields["name"] == real_name)
 				be_random_body = TRUE

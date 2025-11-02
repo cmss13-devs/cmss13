@@ -38,7 +38,7 @@ async function main() {
 	const bot = new MWBot();
 
 	await bot.loginGetEditToken({
-		apiUrl: "https://cm-ss13.com/w/api.php",
+		apiUrl: "https://bm.ss220.club/api.php",
 		username: USERNAME,
 		password: PASSWORD,
 	});

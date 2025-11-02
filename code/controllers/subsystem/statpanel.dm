@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(statpanels)
 			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
 //   "Round Time: [ROUND_TIME]",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
-			"Round Time: [duration2text()]",
+			"[SSticker.round_start_time ? "Round Time" : "Lobby Time"]: [deciseconds_to_time_stamp(world.time - SSticker.round_start_time)]", // BANDAMARINES EDIT
 			"Operation Time: [worldtime2text()]",
 		)
 
@@ -184,7 +184,7 @@ SUBSYSTEM_DEF(statpanels)
 			continue
 		// We already have it. Success!
 		if(existing_image)
-			turf_items[++turf_items.len] = list("[turf_item.name]", REF(turf_item), existing_image)
+			turf_items[++turf_items.len] = list("[turf_item.declent_ru(NOMINATIVE)]", REF(turf_item), existing_image) // BANDAMARINES EDIT - translastions
 			continue
 		// Now, we're gonna queue image generation out of those refs
 		to_make += turf_item

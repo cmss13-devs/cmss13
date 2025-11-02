@@ -28,12 +28,12 @@
 		prompt = tgui_alert(src, "Alert people?", "Confirmation", list("Yes", "No"), 20 SECONDS)
 		if(prompt == "Yes")
 			announce = TRUE
-			whattoannounce = tgui_input_text(src, "Please enter announcement text. Keep it empty to keep the default.", "what?")
+			whattoannounce = tgui_input_text(src, "Введите текст объявления. Оставьте это поле пустым, чтобы сохранить значение по умолчанию.", "Что?")
 			if(!whattoannounce)
 				if(sstrength <= 7)
-					whattoannounce = "WARNING, IMPACT IMMINENT. ETA: [delayt] SECONDS. BRACE BRACE BRACE."
+					whattoannounce = "ТРЕВОГА, УДАР НЕИЗБЕЖЕН. РАСЧЕТНОЕ ВРЕМЯ: [delayt] СЕКУНД. ПРИГОТОВИТЬСЯ, ПРИГОТОВИТЬСЯ, ПРИГОТОВИТЬСЯ."
 				if(sstrength > 7)
-					whattoannounce = "DANGER, DANGER! HIGH ENERGY IMPACT IMMINENT. ETA: [delayt] SECONDS. BRACE BRACE BRACE."
+					whattoannounce = "ТРЕВОГА, УДАР ВЫСОКОЙ ЭНЕРГИИ НЕИЗБЕЖЕН. РАСЧЕТНОЕ ВРЕМЯ: [delayt] СЕКУНД. ПРИГОТОВИТЬСЯ, ПРИГОТОВИТЬСЯ, ПРИГОТОВИТЬСЯ."
 
 	prompt = tgui_alert(src, "Are you sure you want to shake the shipmap?", "Rock the ship!", list("Yes", "No"), 20 SECONDS)
 	if(prompt != "Yes")

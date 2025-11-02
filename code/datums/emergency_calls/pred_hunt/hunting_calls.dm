@@ -195,9 +195,11 @@
 		if(youngblood_candidate.current?.client?.check_whitelist_status(WHITELIST_YAUTJA) || jobban_isbanned(youngblood_candidate.current, ERT_JOB_YOUNGBLOOD))
 			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you are already whitelisted for predator or you are job banned from youngblood."))
 			continue
+		/* BANDAMARINES - Remove - Start
 		if(check_timelock(youngblood_candidate.current?.client, JOB_YOUNGBLOOD_ROLES_LIST, youngblood_time))
 			to_chat(youngblood_candidate.current, SPAN_WARNING("You did not qualify for the ERT beacon because you have already reached the maximum time allowed for Youngblood, please consider applying for Predator on the forums."))
 			continue
+		BANDAMARINES - Remove - End */
 		if(check_timelock(youngblood_candidate.current?.client, JOB_SQUAD_ROLES_LIST, time_required_for_job) && (youngblood_candidate.current?.client.get_total_xeno_playtime() >= time_required_for_job))
 			youngblood_candidates_clean.Add(youngblood_candidate)
 			continue

@@ -1,0 +1,257 @@
+# Paygrade shorthand defines, to allow clearer designation.
+
+["rank pins"]
+nominative = "погоны"
+genitive = "погон"
+dative = "погонам"
+accusative = "погоны"
+instrumental = "погонами"
+prepositional = "погонах"
+gender = "plural"
+
+["rank boards"]
+nominative = "погоны"
+genitive = "погон"
+dative = "погонам"
+accusative = "погоны"
+instrumental = "погонами"
+prepositional = "погонах"
+gender = "plural"
+
+# MARINE
+
+# ME1, Private
+["ME1"]
+nominative = "Ряд."
+
+# ME2, Private First Class
+["ME2"]
+nominative = "Ряд. 1 класса"
+
+# ME3, Lance Corporal
+["ME3"]
+nominative = "Мл.к-л"
+
+# ME4, Corporal
+["ME4"]
+nominative = "К-л"
+
+# ME5, Sergeant
+["ME5"]
+nominative = "С-т"
+
+# ME6, Staff Sergeant
+["ME6"]
+nominative = "Ш/с-т"
+
+# ME7, Gunnery Sergeant
+["ME7"]
+nominative = "К/с-т"
+
+# ME8, Master Sergeant
+["ME8"]
+nominative = "М/с-т"
+
+# ME8E, First Sergeant
+["ME8E"]
+nominative = "П/с-т"
+
+# ME9, Master Gunnery Sergeant
+["ME9"]
+nominative = "Ст.К/с-т"
+
+# ME9E, Sergeant Major
+["ME9E"]
+nominative = "С-м"
+
+# ME9C, Sergeant Major of the Colonial Marine Corps
+["ME9C"]
+nominative = "С-м КМ"
+
+# MO1, Second Lieutenant
+["MO1"]
+nominative = "В/Л-т"
+
+# MO2, First Lieutenant
+["MO2"]
+nominative = "П/л-т"
+
+# MO3, Captain
+["MO3"]
+nominative = "К-н"
+
+# MO4, Major
+["MO4"]
+nominative = "М-р"
+
+# MO5, Lieutenant Colonel
+["MO5"]
+nominative = "Л-т/п-к"
+
+# MO6, Colonel
+["MO6"]
+nominative = "П-к"
+
+# MO6E, Senior Colonel
+["MO6E"]
+nominative = "Ст.п-к"
+
+# MO6C, Division Colonel
+["MO6C"]
+nominative = "Див.п-к"
+
+# MO7, Brigadier General
+["MO7"]
+nominative = "Бриг.ген."
+
+# MO8, Major General
+["MO8"]
+nominative = "Ген.м-р"
+
+# MO9, Lieutenant General
+["MO9"]
+nominative = "Ген.л-т"
+
+# MO10, General
+["MO10"]
+nominative = "Ген."
+
+# MO10C, Assistant Commandant of the Marine Corps
+["MO10C"]
+nominative = "Зам.к-т КМП"
+
+# MO10S, Commandant of the Marine Corps
+["MO10S"]
+nominative = "К-т КМП"
+
+# SYN_K9, Synthetic K9
+["SYN_K9"]
+nominative = "В/л-т, боевой санитар"
+
+# NAVY
+
+# NE1, Seaman Recruit
+["NE1"]
+nominative = "Мат.рек."
+
+# NE2M, Seaman Apprentice
+["NE2"]
+nominative = "Мл.мат."
+
+# NE3, Seaman
+["NE3"]
+nominative = "Мат."
+
+# NE4, Petty Officer 3rd Class
+["NE4"]
+nominative = "П/оф-р 3 класса"
+
+# NE5, Petty Officer 2nd Class
+["NE5"]
+nominative = "П/оф-р 2 класса"
+
+# NE6, Petty Officer 1st Class
+["NE6"]
+nominative = "П/оф-р 1 класса"
+
+# NE7, Chief Petty Officer
+["NE7"]
+nominative = "Ч-П/оф-р"
+
+# NE8, Senior Chief Petty Officer
+["NE8"]
+nominative = "Ст.Ч-П/оф-р"
+
+# NE8C, Command Senior Chief Petty Officer
+["NE8C"]
+nominative = "Г/ст.Ч-П/оф-р"
+
+# NE9, Master Chief Petty Officer
+["NE9"]
+nominative = "М-р.Ч-П/оф-р"
+
+# NE9C, Command Master Chief Petty Officer
+["NE9C"]
+nominative = "Г/м-р.Ч-П/оф-р"
+
+# NO1, Ensign
+["NO1"]
+nominative = "Э-н"
+
+# NO2, Lieutenant Junior Grade
+["NO2"]
+nominative = "Мл.л-т"
+
+# NO3, Lieutenant
+["NO3"]
+nominative = "Л-т"
+
+# NO4, Lieutenant Commander
+["NO4"]
+nominative = "Л-т.кмдр."
+
+# NO5, Commander
+["NO5"]
+nominative = "Кмдр."
+
+# NO6, Captain
+["NO6"]
+nominative = "К-н"
+
+# NO6E, Commodore
+["NO6E"]
+nominative = "Км-р"
+
+# NO6C, Senior Commodore
+["NO6C"]
+nominative = "Ст.Км-р"
+
+# NO7, Rear Admiral (Lower Half)
+["NO7"]
+nominative = "К-адм. мл.ранга"
+
+# NO8, Rear Admiral (Upper Half)
+["NO8"]
+nominative = "К-адм. ст.ранга"
+
+# NO9, Vice Admiral
+["NO9"]
+nominative = "В-адм."
+
+# NO10, Admiral
+["NO10"]
+nominative = "Адм."
+
+# NO10C, Chief of Naval Operations
+["NO10C"]
+nominative = "Нач.ВМО"
+
+# PROVOST
+
+# PvI, Provost Advisor
+["PVA"]
+nominative = "Сов."
+
+# PvI, Provost Inspector
+["PVI"]
+nominative = "Ин-р"
+
+# PvCI, Provost Chief Inspector
+["PVCI"]
+nominative = "Ин-р оф-р"
+
+# PvDM, Provost Deputy Marshal
+["PVDM"]
+nominative = "М-л/нам."
+
+# PvM, Provost Marshal
+["PVM"]
+nominative = "М-л"
+
+# PvSM, Provost Sector Marshal
+["PVSM"]
+nominative = "С/м-л"
+
+# PvCM, Provost Chief Marshal
+["PVCM"]
+nominative = "Нач.м-л"

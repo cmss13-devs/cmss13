@@ -1,52 +1,54 @@
-export type Channel =
-  | 'Say'
-  | 'Comms'
-  | 'Me'
-  | 'OOC'
-  | 'LOOC'
-  | 'Mentor'
-  | 'ASAY';
+import { LIVING_TYPES, type LivingType } from './constants';
+
+export type Channel = (typeof CHANNELS)[keyof typeof CHANNELS];
+
+export const CHANNELS = {
+  SAY: 'Say',
+  COMMS: 'Comms',
+  WHISPER: 'Whisper',
+  ME: 'Me',
+  OOC: 'OOC',
+  LOOC: 'LOOC',
+  MENTOR: 'Mentor',
+  ASAY: 'ASAY',
+} as const;
+
+export const DEFAULT_BLACKLIST: Channel[] = [CHANNELS.MENTOR, CHANNELS.ASAY];
+export const QUIET_CHANNELS: Channel[] = [
+  CHANNELS.OOC,
+  CHANNELS.LOOC,
+  ...DEFAULT_BLACKLIST,
+];
 
 /**
- * ### ChannelIterator
  * Cycles a predefined list of channels,
  * skipping over blacklisted ones,
  * and providing methods to manage and query the current channel.
  */
 export class ChannelIterator {
   private index: number = 0;
-  private readonly channels: Channel[] = [
-    'Say',
-    'Comms',
-    'Me',
-    'OOC',
-    'LOOC',
-    'Mentor',
-    'ASAY',
-  ];
-  private readonly blacklist: Channel[] = ['Mentor', 'ASAY']; // These currently must match the ADMIN_CHANNEL and MENTOR_CHANNEL define in speech_channels.dm
-  private readonly quiet: Channel[] = ['OOC', 'LOOC', 'Mentor', 'ASAY'];
+  private readonly channels: Channel[] = Object.values(CHANNELS);
+  private readonly blacklist: Channel[];
+  private readonly livingType: LivingType;
 
-  public next(whitelist?: Channel[]): Channel {
-    if (
-      this.blacklist.includes(this.channels[this.index]) &&
-      !whitelist?.includes(this.channels[this.index])
-    ) {
+  constructor(livingType: LivingType = LIVING_TYPES.HUMAN) {
+    this.blacklist = [
+      ...DEFAULT_BLACKLIST,
+      ...(livingType === LIVING_TYPES.XENO ? [CHANNELS.WHISPER] : []),
+    ];
+    this.livingType = livingType;
+  }
+
+  public next(): Channel {
+    if (this.blacklist.includes(this.channels[this.index])) {
       return this.channels[this.index];
     }
 
-    for (let index = 1; index <= this.channels.length; index++) {
-      let nextIndex = (this.index + index) % this.channels.length;
-      if (
-        !this.blacklist.includes(this.channels[nextIndex]) ||
-        whitelist?.includes(this.channels[nextIndex])
-      ) {
-        this.index = nextIndex;
-        break;
-      }
-    }
+    do {
+      this.index = (this.index + 1) % this.channels.length;
+    } while (this.blacklist.includes(this.current()));
 
-    return this.channels[this.index];
+    return this.current();
   }
 
   public set(channel: Channel): void {
@@ -58,14 +60,47 @@ export class ChannelIterator {
   }
 
   public isSay(): boolean {
-    return this.channels[this.index] === 'Say';
+    return this.current() === CHANNELS.SAY;
   }
 
   public isVisible(): boolean {
-    return !this.quiet.includes(this.channels[this.index]);
+    return !QUIET_CHANNELS.includes(this.current());
   }
 
   public reset(): void {
     this.index = 0;
+  }
+
+  public getNextTranslated(): string {
+    this.next();
+    return this.translate();
+  }
+
+  private getCommsName() {
+    switch (this.livingType) {
+      case LIVING_TYPES.XENO:
+        return 'Улей';
+      case LIVING_TYPES.YAUTJA:
+        return 'Хищники';
+      default:
+        return 'Рация';
+    }
+  }
+
+  private getTranslations(): Record<Channel, string> {
+    return {
+      [CHANNELS.SAY]: 'Говорить',
+      [CHANNELS.COMMS]: this.getCommsName(),
+      [CHANNELS.ME]: 'Эмоция',
+      [CHANNELS.WHISPER]: 'Шёпот',
+      [CHANNELS.OOC]: 'OOC',
+      [CHANNELS.LOOC]: 'LOOC',
+      [CHANNELS.MENTOR]: 'Ментор',
+      [CHANNELS.ASAY]: 'Админ',
+    };
+  }
+
+  public translate(): string {
+    return this.getTranslations()[this.current()];
   }
 }

@@ -1,7 +1,7 @@
 //Job options for doctors based on their specialty. They can all manufacture chemicals, administer medication, and operate on patients, but the variants have specialities that they prioritize in.
 
 #define DOCTOR_VARIANT JOB_DOCTOR_RU // SS220 EDIT TRANSLATE - Original: // "Doctor" // "I do not have a specialty; I go where I am needed most."
-#define PHARMACIST_VARIANT "Врач-фармацевт" // SS220 EDIT TRANSLATE - Original: "Pharmaceutical Physician" // "I specialize in chemistry and medicine."
+#define PHARMACIST_VARIANT JOB_PHARMACIST_RU // SS220 EDIT TRANSLATE - Original: "Pharmaceutical Physician" // "I specialize in chemistry and medicine."
 #define SURGEON_VARIANT JOB_SURGEON_RU // SS220 EDIT TRANSLATE - Original: "Surgeon" // "I specialize in surgery and triage."
 
 // Doctor

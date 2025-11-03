@@ -258,11 +258,11 @@
 
 /obj/structure/barricade/handrail/sandstone/dark
 	icon_state = "hr_stone"
-	color = "#2E1E21"
+	color = "#524e49"
 
 /obj/structure/barricade/handrail/sandstone/b/dark
 	icon_state = "hr_stone_b"
-	color = "#2E1E21"
+	color = "#524e49"
 
 /obj/structure/barricade/handrail/pizza
 	name = "\improper diner half-wall"

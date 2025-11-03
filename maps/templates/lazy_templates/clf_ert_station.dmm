@@ -1061,7 +1061,8 @@
 /area/adminlevel/ert_station/clf_station)
 "BC" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
-	name = "\improper Strange Temple"
+	name = "\improper Strange Temple";
+	dir = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/adminlevel/ert_station/clf_station)

@@ -14306,6 +14306,13 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
+"joq" = (
+/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
+	name = "\improper Strange Temple";
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "jow" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grass1,
@@ -14334,7 +14341,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "jrC" = (
-/obj/structure/curtain/red,
+/obj/structure/curtain/leather/alt,
 /turf/open/shuttle/red,
 /area/lv624/ground/caves/sand_temple)
 "jsd" = (
@@ -16528,7 +16535,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "nTE" = (
-/obj/structure/curtain/red,
+/obj/structure/curtain/leather/alt,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "nTT" = (
@@ -21197,6 +21204,14 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
+"xru" = (
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
+	name = "\improper Strange Temple";
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "xrI" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/floor/warning/southeast,
@@ -54998,7 +55013,7 @@ agA
 sIH
 agA
 uDw
-mKM
+joq
 agX
 agX
 boe
@@ -55018,7 +55033,7 @@ yhd
 ufW
 agX
 agX
-yjN
+xru
 wZW
 wZW
 wZW

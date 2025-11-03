@@ -15,12 +15,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0,
 /area/yautja_grounds/jungle)
-"at" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 2
-	},
-/turf/open/auto_turf/strata_grass/layer0,
-/area/yautja_grounds/jungle/north)
 "av" = (
 /turf/closed/wall/rock/brown,
 /area/yautja_grounds/jungle/south)
@@ -346,14 +340,18 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/yautja_grounds/jungle/south)
 "bW" = (
-/obj/structure/machinery/door/airlock/sandstone/runed/dark,
+/obj/structure/machinery/door/airlock/sandstone/runed/dark{
+	color = "#625a53"
+	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja_grounds/prep_room)
 "bX" = (
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja_grounds/prep_room)
 "bY" = (
-/obj/structure/machinery/door/airlock/sandstone/runed/dark,
+/obj/structure/machinery/door/airlock/sandstone/runed/dark{
+	color = "#625a53"
+	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja_grounds/prep_room)
 "bZ" = (
@@ -880,9 +878,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/yautja_grounds/jungle/south_west)
 "ed" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 2
-	},
+/obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/yautja_grounds/jungle/south)
 "ee" = (
@@ -2171,9 +2167,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/yautja_grounds/jungle)
 "jS" = (
-/obj/structure/flora/grass/tallgrass/jungle/corner{
-	dir = 2
-	},
+/obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/yautja_grounds/jungle/east)
 "jT" = (
@@ -9172,7 +9166,7 @@ PT
 us
 gy
 gy
-at
+mF
 km
 kg
 us
@@ -9271,7 +9265,7 @@ us
 gy
 mj
 gy
-at
+mF
 km
 km
 lN
@@ -9673,7 +9667,7 @@ PT
 PT
 us
 us
-at
+mF
 km
 km
 iy
@@ -11347,7 +11341,7 @@ PT
 PT
 Db
 Db
-at
+mF
 km
 kg
 us

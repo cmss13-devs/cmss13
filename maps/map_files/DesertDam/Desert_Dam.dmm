@@ -43120,7 +43120,8 @@
 /area/desert_dam/exterior/valley/valley_hydro)
 "ivs" = (
 /obj/structure/machinery/door/airlock/sandstone/runed{
-	name = "Strange Temple"
+	name = "Strange Temple";
+	dir = 1
 	},
 /turf/open/desert/rock/deep/rock4,
 /area/desert_dam/interior/caves/temple)

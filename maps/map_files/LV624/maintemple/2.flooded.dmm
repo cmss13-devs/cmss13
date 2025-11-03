@@ -136,6 +136,13 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
+"dP" = (
+/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
+	name = "\improper Strange Temple";
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple)
 "dQ" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/south_east,
@@ -236,7 +243,7 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "gA" = (
-/obj/structure/curtain/red,
+/obj/structure/curtain/leather/alt,
 /turf/open/shuttle/red,
 /area/lv624/ground/caves/sand_temple)
 "gI" = (
@@ -892,7 +899,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "He" = (
-/obj/structure/curtain/red,
+/obj/structure/curtain/leather/alt,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "Hk" = (
@@ -1167,7 +1174,8 @@
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
-	name = "\improper Strange Temple"
+	name = "\improper Strange Temple";
+	dir = 1
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
@@ -2194,7 +2202,7 @@ ZX
 ZX
 ZX
 OR
-PA
+dP
 Ai
 Ai
 mv

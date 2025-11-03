@@ -384,7 +384,7 @@
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/sand_temple)
 "gA" = (
-/obj/structure/curtain/red,
+/obj/structure/curtain/leather/alt,
 /turf/open/shuttle/red,
 /area/lv624/ground/caves/sand_temple)
 "gI" = (
@@ -981,7 +981,7 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple/powered)
 "He" = (
-/obj/structure/curtain/red,
+/obj/structure/curtain/leather/alt,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/lv624/ground/caves/sand_temple)
 "Hl" = (
@@ -1303,6 +1303,13 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/sand_temple)
+"SE" = (
+/obj/structure/machinery/door/airlock/sandstone/runed{
+	name = "Strange Temple";
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/lv624/ground/caves/sand_temple/powered)
 "SF" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/stairs/perspective{
@@ -2210,7 +2217,7 @@ hA
 mv
 mv
 kO
-PA
+SE
 UP
 mv
 mv
@@ -2241,7 +2248,7 @@ mv
 kb
 mv
 kO
-PA
+SE
 mv
 mv
 mv
@@ -2252,7 +2259,7 @@ po
 mv
 mv
 kO
-PA
+SE
 UP
 mv
 mv
@@ -2261,7 +2268,7 @@ mv
 mv
 mv
 mv
-PA
+SE
 uE
 uE
 uE
@@ -2294,7 +2301,7 @@ Ff
 mv
 mv
 kO
-PA
+SE
 UP
 mv
 mv
@@ -2954,7 +2961,7 @@ ZX
 ZX
 ZX
 RY
-PA
+SE
 mv
 mv
 mv
@@ -2996,7 +3003,7 @@ ZX
 ZX
 ZX
 RY
-PA
+SE
 mv
 mv
 mv

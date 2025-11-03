@@ -580,12 +580,12 @@
 //Misc walls
 
 /turf/closed/wall/cult
-	name = "wall"
-	desc = "The patterns engraved on the wall seem to shift as you try to focus on them. You feel sick"
-	icon = 'icons/turf/walls/cult.dmi'
-	icon_state = "cult"
+	name = "dark temple wall"
+	desc = "Dark temple walls, the bricks look ancient - made of a rare type of stone."
+	icon = 'icons/turf/walls/hunter/runedstone.dmi'
+	icon_state = "runedstone"
 	walltype = WALL_CULT
-	color = "#3c3434"
+	color = "#524e49"
 
 /turf/closed/wall/cult/hunting_grounds
 	name = "wall"

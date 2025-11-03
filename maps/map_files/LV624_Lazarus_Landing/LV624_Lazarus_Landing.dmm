@@ -4351,7 +4351,7 @@
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/ground/jungle/south_east_jungle)
 "csG" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/machinery/light/small/blue{
 	light_color = "#dae2ff"
 	},
@@ -5319,7 +5319,7 @@
 /area/lv624/ground/caves/sand_temple)
 "cSQ" = (
 /obj/structure/pipes/vents/scrubber_hybrisa,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrown3/southwest,
 /area/lv624/lazarus/comms)
 "cTh" = (
@@ -9328,7 +9328,7 @@
 /turf/open/floor/prison/west,
 /area/lv624/lazarus/robotics)
 "faF" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/green/northwest,
 /area/lv624/lazarus/hydroponics)
 "faH" = (
@@ -10599,12 +10599,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv624/lazarus/kitchen)
-"fIh" = (
-/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
-	name = "\improper Strange Temple"
-	},
-/turf/open/auto_turf/lv_sand_alt/layer0,
-/area/lv624/ground/caves/sand_temple)
 "fIy" = (
 /obj/structure/platform/wood/north,
 /obj/structure/platform/wood/west,
@@ -14268,7 +14262,8 @@
 /area/lv624/ground/caves/sand_temple)
 "hDj" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
-	name = "\improper Strange Temple"
+	dir = 1;
+	name = "ancient temple door"
 	},
 /turf/open/floor/ancient_temple/floor_13/east,
 /area/lv624/ground/caves/east_caves)
@@ -16192,7 +16187,8 @@
 /area/lv624/lazarus/quartstorage/outdoors)
 "iFb" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
-	name = "\improper Strange Temple"
+	dir = 1;
+	name = "ancient temple door"
 	},
 /turf/open/floor/ancient_temple/floor_13/west,
 /area/lv624/ground/caves/north_east_caves)
@@ -17211,7 +17207,7 @@
 /turf/open/floor/ancient_temple/base/alt,
 /area/lv624/ground/caves/north_east_caves)
 "jin" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/floor_plate,
 /area/lv624/ground/barrens/east_barrens)
 "jip" = (
@@ -23162,7 +23158,7 @@
 /turf/open/auto_turf/lv_sand/layer0,
 /area/lv624/ground/caves/central_caves)
 "moa" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/floor_marked,
 /area/lv624/lazarus/quartstorage)
 "moe" = (
@@ -33448,7 +33444,7 @@
 /turf/open/floor/ancient_temple/ruined/east,
 /area/lv624/ground/caves/west_caves)
 "rAt" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /turf/open/floor/prison/floor_plate,
 /area/lv624/ground/barrens/east_barrens)
 "rAI" = (
@@ -34677,7 +34673,7 @@
 /turf/open/floor/ancient_temple/damaged/damage_7,
 /area/lv624/ground/caves/south_east_caves)
 "sgR" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/west,
 /area/lv624/lazarus/engineering)
 "sgV" = (
@@ -36659,7 +36655,7 @@
 	name = "Garage One Shutters";
 	needs_power = 0
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/prison/floor_marked,
 /area/lv624/lazarus/robotics)
@@ -37540,7 +37536,8 @@
 /area/lv624/ground/barrens/east_barrens)
 "tBj" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
-	name = "\improper Strange Temple"
+	dir = 1;
+	name = "ancient temple door"
 	},
 /turf/open/floor/ancient_temple/floor_13/east,
 /area/lv624/ground/caves/north_east_caves)
@@ -42567,7 +42564,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/lv624/ground/jungle/south_central_jungle)
 "wnu" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/liquid_fuel,
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 32;
@@ -43681,7 +43678,8 @@
 /area/lv624/ground/caves/north_east_caves)
 "wRZ" = (
 /obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
-	name = "\improper Strange Temple"
+	dir = 1;
+	name = "ancient temple door"
 	},
 /turf/open/floor/ancient_temple/floor_13/west,
 /area/lv624/ground/caves/east_caves)
@@ -45729,7 +45727,7 @@
 /turf/open/auto_turf/lv_grass/layer0,
 /area/lv624/lazarus/yggdrasil)
 "xXl" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/floor_marked,
 /area/lv624/lazarus/quartstorage)
 "xXv" = (
@@ -79198,8 +79196,8 @@ rDi
 bft
 gdX
 gwz
-bnQ
-bnQ
+gwz
+gwz
 lVJ
 lVJ
 qyc
@@ -79423,9 +79421,9 @@ rDi
 bft
 dPO
 erx
-bnQ
 gwz
 gwz
+fgy
 fgy
 uos
 uos
@@ -82337,7 +82335,7 @@ ghS
 gwz
 gwz
 gwz
-gwz
+fgy
 fgy
 uos
 lUU
@@ -83740,7 +83738,7 @@ xlb
 xlb
 xlb
 kJd
-fIh
+kJd
 xlb
 xlb
 xlb

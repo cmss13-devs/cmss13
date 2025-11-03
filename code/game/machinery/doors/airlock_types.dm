@@ -185,7 +185,7 @@
 
 /obj/structure/machinery/door/airlock/sandstone
 	name = "\improper Sandstone Airlock"
-	icon = 'icons/obj/structures/doors/Doorsand.dmi'
+	icon = 'icons/obj/structures/doors/hunter/colorable_ancient_temple_door.dmi'
 	mineral = "sandstone"
 
 /obj/structure/machinery/door/airlock/science/colony

@@ -158,6 +158,13 @@
 	},
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
+"ft" = (
+/obj/structure/machinery/door/airlock/sandstone/runed{
+	name = "Strange Temple";
+	dir = 1
+	},
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "fX" = (
 /obj/structure/stairs/perspective{
 	color = "#b6a38f";
@@ -999,7 +1006,7 @@ mB
 mB
 mB
 mB
-uK
+ft
 mB
 "}
 (13,1,1) = {"
@@ -1025,7 +1032,7 @@ AU
 mB
 Gz
 mB
-uK
+ft
 mB
 "}
 (14,1,1) = {"
@@ -1038,7 +1045,7 @@ MH
 WV
 am
 mB
-uK
+ft
 mB
 mB
 YH
@@ -1176,7 +1183,7 @@ mB
 mB
 mB
 mB
-uK
+ft
 AU
 AU
 fl

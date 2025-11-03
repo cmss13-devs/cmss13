@@ -32,7 +32,7 @@
 	if(owner.stat != CONSCIOUS)
 		return FALSE
 	if(TIMER_COOLDOWN_CHECK(owner, COOLDOWN_HUD_ORDER))
-		to_chat(owner, SPAN_WARNING("You have to wait untill you can send another HUD announcement!"))
+		to_chat(owner, SPAN_WARNING("You have to wait until you can send another HUD announcement!"))
 		return FALSE
 	if(!(HAS_TRAIT(owner, TRAIT_LEADERSHIP)))
 		return FALSE

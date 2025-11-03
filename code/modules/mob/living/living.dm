@@ -387,7 +387,8 @@
 		else if((living_mob.is_mob_restrained() || living_mob.a_intent == INTENT_HELP) && (is_mob_restrained() || a_intent == INTENT_HELP))
 			mob_swap = 1
 		// Big mobs (ex.: T3 xeno) can ignore pushes from smaller creatures using the help intent
-		else if(a_intent == INTENT_HELP && mob_size >= MOB_SIZE_BIG && living_mob.mob_size < MOB_SIZE_BIG)
+		else if(!ishuman(living_mob) && !isyautja(living_mob) && ( // But not with humans and jautja
+				a_intent == INTENT_HELP && mob_size >= MOB_SIZE_BIG && living_mob.mob_size < MOB_SIZE_BIG))
 			mob_swap = 1
 		if(mob_swap)
 			//switch our position with L

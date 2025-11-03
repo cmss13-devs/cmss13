@@ -49,3 +49,13 @@
   - rscadd: Added MP Synth option, again.
   zzzmike:
   - spellcheck: fixed a spelling mistake
+2025-11-03:
+  Nihisohel:
+  - bugfix: Flamer tanks can refill from other flamer tanks again
+  Nomoresolvalou, Crowford:
+  - ui: bracer style selector added to yautja preferences
+  - bugfix: retro caster can now be selected in yautja preferences
+  - bugfix: bracer lock/unlock verb now correctly displays a to_chat, and plays a
+      sound
+  - imageadd: added new bracer sprites
+  - imageadd: replaced old bracer sprite with new retro sprite.

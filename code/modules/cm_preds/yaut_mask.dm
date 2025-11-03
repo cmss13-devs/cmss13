@@ -248,7 +248,7 @@
 		if(YAUTJA_MASK_LIGHTS_OFF)
 			to_chat(user, SPAN_NOTICE("You deactivate your mask lights."))
 
-	playsound(src, 'sound/effects/pred_vision.ogg', 15, 1)
+	playsound(src, "pred_light_toggle", 15, 1)
 	user.update_inv_wear_mask()
 
 /obj/item/clothing/mask/gas/yautja/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")

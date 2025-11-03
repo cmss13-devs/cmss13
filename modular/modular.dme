@@ -35,4 +35,4 @@
 #include "loadout_preferences_gear/_loadout.dme"
 #include "ltb_rework/_ltb_rework.dme"
 #include "queen_minor/_queen_minor.dme"
-
+#include "limb_case/_limb_case.dme"

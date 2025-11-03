@@ -6,9 +6,9 @@
 	name = "alien mask"
 	desc = "A beautifully designed metallic face mask, both ornate and functional."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/masks.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/masks.dmi'
 	)
 	var/base_state = "pred_mask1"
 	icon_state = "pred_mask1_ebony"
@@ -355,9 +355,9 @@
 	name = "alien stone mask"
 	desc = "A beautifully designed face mask, ornate but non-functional and made entirely of stone."
 
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/masks.dmi'
 	item_icons = list(
-		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/masks.dmi'
 	)
 	icon_state = "pred_mask1_ebony"
 
@@ -394,6 +394,6 @@
 	name = "Mask Ornament"
 	desc = "An ornate addition to your mask"
 	icon = 'icons/obj/items/hunter/pred_mask_accessories.dmi'
-	accessory_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask_accessories.dmi')
+	accessory_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/hunter/mask_accessories.dmi')
 	icon_state = null
 	worn_accessory_slot = ACCESSORY_SLOT_YAUTJA_MASK

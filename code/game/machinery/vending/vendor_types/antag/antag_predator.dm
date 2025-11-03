@@ -319,17 +319,17 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	if(mob_client.prefs.predator_use_legacy != "None")
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
-				icon_state = "halfarmor_elder_tr"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_tr")
+				icon_state = "legacy_armor_dragon"
+				LAZYSET(item_state_slots, WEAR_JACKET, "legacy_armor_dragon")
 			if("Swamp")
-				icon_state = "halfarmor_elder_joshuu"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_joshuu")
+				icon_state = "legacy_armor_swamp"
+				LAZYSET(item_state_slots, WEAR_JACKET, "legacy_armor_swamp")
 			if("Enforcer")
-				icon_state = "halfarmor_elder_feweh"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_feweh")
+				icon_state = "legacy_armor_enforcer"
+				LAZYSET(item_state_slots, WEAR_JACKET, "legacy_armor_enforcer")
 			if("Collector")
-				icon_state = "halfarmor_elder_n"
-				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
+				icon_state = "legacy_armor_collector"
+				LAZYSET(item_state_slots, WEAR_JACKET, "legacy_armor_collector")
 		user.update_inv_wear_suit()
 		return
 
@@ -355,17 +355,21 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	if(mob_client.prefs.predator_use_legacy != "None")
 		switch(mob_client.prefs.predator_use_legacy)
 			if("Dragon")
-				icon_state = "pred_mask_elder_tr"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_tr")
+				icon_state = "legacy_mask_dragon"
+				base_state = icon_state
+				LAZYSET(item_state_slots, WEAR_FACE, "legacy_mask_dragon")
 			if("Swamp")
-				icon_state = "pred_mask_elder_joshuu"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_joshuu")
+				icon_state = "legacy_mask_swamp"
+				base_state = icon_state
+				LAZYSET(item_state_slots, WEAR_FACE, "legacy_mask_swamp")
 			if("Enforcer")
-				icon_state = "pred_mask_elder_feweh"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_feweh")
+				icon_state = "legacy_mask_enforcer"
+				base_state = icon_state
+				LAZYSET(item_state_slots, WEAR_FACE, "legacy_mask_enforcer")
 			if("Collector")
-				icon_state = "pred_mask_elder_n"
-				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_n")
+				icon_state = "legacy_mask_collector"
+				base_state = icon_state
+				LAZYSET(item_state_slots, WEAR_FACE, "legacy_mask_collector")
 		user.update_inv_wear_mask()
 		return
 

@@ -386,8 +386,8 @@
 		// restrained people act if they were on 'help' intent to prevent a person being pulled from being separated from their puller
 		else if((living_mob.is_mob_restrained() || living_mob.a_intent == INTENT_HELP) && (is_mob_restrained() || a_intent == INTENT_HELP))
 			mob_swap = 1
-		// Large mobs (ex.: T3 xeno) can ignore pushes from normal creatures using the help intent
-		else if(a_intent == INTENT_HELP && mob_size >= MOB_SIZE_BIG && living_mob.mob_size <= MOB_SIZE_XENO)
+		// Big mobs (ex.: T3 xeno) can ignore pushes from smaller creatures using the help intent
+		else if(a_intent == INTENT_HELP && mob_size >= MOB_SIZE_BIG && living_mob.mob_size < MOB_SIZE_BIG)
 			mob_swap = 1
 		if(mob_swap)
 			//switch our position with L

@@ -189,7 +189,7 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "NavigationShuttle", "[ert.name] Navigation Computer")
+		ui = new(user, src, "NavigationShuttle", "[capitalize(ert.name)] Navigation Computer")
 		ui.open()
 
 

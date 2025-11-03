@@ -71,7 +71,7 @@
 
 /// Returns TRUE if cooldown is over
 /datum/action/proc/action_cooldown_check()
-		return ability_used_time <= world.time
+	return ability_used_time <= world.time
 
 /datum/action/proc/enter_cooldown(amount = cooldown)
 	ability_used_time = world.time + amount

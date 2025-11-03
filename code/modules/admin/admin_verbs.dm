@@ -357,7 +357,6 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	remove_verb(src, list(
 		GLOB.admin_verbs_default,
 		/client/proc/togglebuildmodeself,
-		/client/proc/screen_alert_menu,
 		GLOB.admin_verbs_admin,
 		GLOB.admin_verbs_ban,
 		GLOB.admin_verbs_minor_event,

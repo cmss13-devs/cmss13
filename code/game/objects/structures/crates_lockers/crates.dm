@@ -378,6 +378,10 @@
 	icon_opened = "foodcart2_open"
 	icon_closed = "foodcart2"
 
+/obj/structure/closet/crate/foodcart/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/structure/closet/crate/foodcart/alt
 	icon_state = "foodcart1"
 	icon_opened = "foodcart1_open"

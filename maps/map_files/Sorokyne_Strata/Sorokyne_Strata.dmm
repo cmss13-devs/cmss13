@@ -1186,7 +1186,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/parts_storage)
 "adt" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/wood,
 /area/strata/interior/wooden_ruins)
 "adu" = (
@@ -1202,7 +1202,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/landing_zones/near_lz2)
 "adw" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/wood/wood_broken2,
 /area/strata/interior/wooden_ruins)
 "adx" = (
@@ -3704,7 +3704,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/landing_zones/near_lz2)
 "akt" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -3860,7 +3860,7 @@
 /turf/open/floor/plating,
 /area/strata/interior/research)
 "akP" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -3887,7 +3887,7 @@
 /turf/open/floor/plating,
 /area/strata/interior/research)
 "akT" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/strata/interior/research)
 "akU" = (
@@ -4117,7 +4117,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/deep_jungle/tearlake)
 "alu" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/parts_storage)
 "alv" = (
@@ -5437,7 +5437,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "aoW" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -7073,7 +7073,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "atj" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/asphalt/cement/cement2,
 /area/strata/interior/research)
 "atk" = (
@@ -7081,7 +7081,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/strata/interior/research)
 "atl" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/asphalt/cement/cement9,
 /area/strata/interior/research)
 "atm" = (
@@ -7375,7 +7375,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/research)
 "auf" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/asphalt/cement/cement14,
 /area/strata/interior/research)
 "aug" = (
@@ -7383,7 +7383,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/strata/interior/research)
 "auh" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/asphalt/cement/cement15,
 /area/strata/interior/research)
 "aui" = (
@@ -9471,7 +9471,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/mining_outpost)
 "azP" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -9512,7 +9512,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/research)
 "azV" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/outpost_decks)
 "azW" = (
@@ -10038,7 +10038,7 @@
 /area/strata/interior/mining_outpost)
 "aBu" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/greengrid,
 /area/strata/interior/mining_outpost)
 "aBv" = (
@@ -10049,7 +10049,7 @@
 /turf/open/floor/greengrid,
 /area/strata/interior/mining_outpost)
 "aBw" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/greengrid,
 /area/strata/interior/mining_outpost)
@@ -10236,7 +10236,7 @@
 /turf/open/floor/strata/cyan2/east,
 /area/strata/interior/mining_outpost/canteen)
 "aCa" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi)
 "aCb" = (
@@ -11213,14 +11213,14 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/outpost/engi)
 "aEX" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "aEY" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "aEZ" = (
@@ -12031,7 +12031,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/north_outpost)
 "aHi" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/barricade/handrail/strata,
 /turf/open/asphalt/cement/cement15,
 /area/strata/exterior/outpost_platform)
@@ -24504,7 +24504,7 @@
 /turf/open/gm/coast/dirt/beachcorner/south_east,
 /area/strata/exterior/carplake_center)
 "brX" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/south_outpost)
 "brY" = (
@@ -24644,7 +24644,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/deep_jungle/hot_springs)
 "bss" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/parts_storage)
 "bst" = (
@@ -24794,7 +24794,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi/drome)
 "bsP" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/south_outpost)
 "bsQ" = (
@@ -25832,7 +25832,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/strata/exterior/north_outpost)
 "bwc" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi/drome)
 "bwd" = (
@@ -26849,7 +26849,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/engi/drome)
 "bzo" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/engi/drome)
 "bzp" = (
@@ -33266,7 +33266,7 @@
 /turf/open/floor/strata/yellow3/west,
 /area/strata/interior/secure_checkpoint)
 "bRF" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/secure_checkpoint)
 "bRG" = (
@@ -38841,7 +38841,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/interior/mining_outpost)
 "ctF" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/mining_outpost)
 "ctI" = (
@@ -40002,7 +40002,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "dLT" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi)
 "dMg" = (
@@ -40485,7 +40485,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/maintenance)
 "eqS" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/exterior/outpost_decks)
 "era" = (
@@ -43121,7 +43121,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "hLf" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/tcomms_engineering_parts_storage)
 "hLX" = (
@@ -43613,7 +43613,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/underground_dorms/sec1)
 "iqD" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/mining_outpost)
 "iqY" = (
@@ -46781,7 +46781,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/parts_storage)
 "mBl" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
@@ -49109,7 +49109,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/parts_storage_cave)
 "pEY" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
 	pixel_y = 25;
 	pixel_x = 22
@@ -49894,7 +49894,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost)
 "qGK" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/asphalt/cement/cement1,
 /area/strata/exterior/outpost_platform)
 "qHk" = (
@@ -50819,7 +50819,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/landing_zones/near_lz2)
 "rNO" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/greengrid,
 /area/strata/exterior/deep_jungle/planet_core_research_station_exterior)
@@ -52581,7 +52581,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/outpost_decks)
 "uad" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/floor3/east,
 /area/strata/exterior/tcomms_engineering_parts_storage)
 "uau" = (
@@ -54074,7 +54074,7 @@
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/mining_outpost/canteen)
 "vNG" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/hive)
 "vNW" = (
@@ -54512,7 +54512,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "wsm" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/engi/drome)
 "wsn" = (

@@ -28,13 +28,15 @@
 	return filtered_job_options
 
 AddTimelock(/datum/job/command/senior, list(
-	JOB_SQUAD_ROLES = 15 HOURS,
+	// SS220 EDIT START
+	JOB_SQUAD_ROLES = 3 HOURS,
 
-	JOB_ENGINEER_ROLES = 10 HOURS,
-	JOB_POLICE_ROLES = 10 HOURS,
-	JOB_MEDIC_ROLES = 10 HOURS,
+	JOB_ENGINEER_ROLES = 3 HOURS,
+	JOB_POLICE_ROLES = 3 HOURS,
+	JOB_MEDIC_ROLES = 3 HOURS,
 
-	JOB_COMMAND_ROLES = 5 HOURS,
+	JOB_COMMAND_ROLES = 3 HOURS,
+	// SS220 EDIT END
 ))
 
 /obj/effect/landmark/start/senior

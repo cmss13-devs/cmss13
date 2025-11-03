@@ -104,7 +104,7 @@
 		return
 
 	if(xeno.fortify)
-		to_chat(xeno, SPAN_XENOWARNING("We cannot use abilities while fortified."))
+		to_chat(xeno, SPAN_XENOWARNING("Мы не можем использовать способности, пока находимся в оборонительной стойке."))
 		return
 
 	if(!xeno.check_state())
@@ -116,7 +116,7 @@
 	xeno.crest_defense = !xeno.crest_defense
 
 	if(xeno.crest_defense)
-		to_chat(xeno, SPAN_XENOWARNING("We lower our crest."))
+		to_chat(xeno, SPAN_XENOWARNING("Мы опускаем наш гребень."))
 
 		xeno.ability_speed_modifier += speed_debuff
 		xeno.armor_deflection_buff += armor_buff
@@ -124,7 +124,7 @@
 		button.icon_state = "template_active"
 		xeno.update_icons()
 	else
-		to_chat(xeno, SPAN_XENOWARNING("We raise our crest."))
+		to_chat(xeno, SPAN_XENOWARNING("Мы поднимаем наш гребень."))
 
 		xeno.ability_speed_modifier -= speed_debuff
 		xeno.armor_deflection_buff -= armor_buff
@@ -154,7 +154,7 @@
 		return
 
 	if(fendy.fortify && !usable_while_fortified)
-		to_chat(fendy, SPAN_XENOWARNING("We cannot use headbutt while fortified."))
+		to_chat(fendy, SPAN_XENOWARNING("Мы не можем применить удар головой, пока находимся в оборонительной стойке."))
 		return
 
 	var/mob/living/carbon/carbone = target_atom
@@ -176,8 +176,8 @@
 		return
 
 	carbone.last_damage_data = create_cause_data(fendy.caste_type, fendy)
-	fendy.visible_message(SPAN_XENOWARNING("[fendy] rams [carbone] with its armored crest!"),
-	SPAN_XENOWARNING("We ram [carbone] with our armored crest!"))
+	fendy.visible_message(SPAN_XENOWARNING("[fendy] таранит [carbone] своим бронированным гребнем!"), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Мы тараним [carbone] своим бронированным гребнем!")) // SS220 EDIT ADDICTION
 
 	if(carbone.stat != DEAD && (!(carbone.status_flags & XENO_HOST) || !HAS_TRAIT(carbone, TRAIT_NESTED)))
 		// -10 damage if their crest is down.
@@ -209,15 +209,15 @@
 		return
 
 	if(xeno.fortify)
-		to_chat(src, SPAN_XENOWARNING("We cannot use tail swipe while fortified."))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем применить взмах хвостом, пока находимся в оборонительной стойке."))
 		return
 
 	if(xeno.crest_defense)
 		xeno.balloon_alert(xeno, "our crest is lowered!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] sweeps its tail in a wide circle!"),
-	SPAN_XENOWARNING("We sweep our tail in a wide circle!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] размахивает хвостом по широкой дуге!"), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Мы размахиваем хвостом по широкой дуге!"))
 
 	if(!check_and_use_plasma_owner())
 		return
@@ -242,7 +242,7 @@
 		if(human.mob_size < MOB_SIZE_BIG)
 			human.apply_effect(get_xeno_stun_duration(human, 1), WEAKEN)
 
-		to_chat(human, SPAN_XENOWARNING("You are struck by [xeno]'s tail sweep!"))
+		to_chat(human, SPAN_XENOWARNING("[xeno] атаковал вас взмахом хвоста!")) // SS220 EDIT ADDICTION
 		playsound(human,'sound/weapons/alien_claw_block.ogg', 50, 1)
 
 	apply_cooldown()
@@ -300,13 +300,13 @@
 		return
 
 	if(fortify_state)
-		to_chat(xeno, SPAN_XENOWARNING("We tuck ourself into a defensive stance."))
+		to_chat(xeno, SPAN_XENOWARNING("Мы принимаем оборонительную стойку."))
 		RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, PROC_REF(check_directional_armor))
 		xeno.mob_size = MOB_SIZE_IMMOBILE //knockback immune
 		xeno.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
 		xeno.fortify = TRUE
 	else
-		to_chat(xeno, SPAN_XENOWARNING("We resume our normal stance."))
+		to_chat(xeno, SPAN_XENOWARNING("Мы возвращаемся в обычную стойку."))
 		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Fortify"))
 		xeno.anchored = FALSE
 		UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)

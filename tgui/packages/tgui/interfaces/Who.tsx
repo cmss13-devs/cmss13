@@ -28,6 +28,44 @@ type Data = {
   factions_additional: FactionPayload[];
 };
 
+const CATEGORIES_RU = {
+  'In Lobby': 'В лобби',
+  'Spectating Players': 'Наблюдатели игроки',
+  'Spectating Admins': 'Наблюдатели администраторы',
+  Humans: 'Люди',
+  'Infected Humans': 'Заражённые люди',
+  'USS Almayer Personnel': 'Персонал USS Almayer',
+  Marines: 'Морпехи',
+  Yautjas: 'Хищники',
+  'Infected Predators': 'Заражённые хищники',
+  'Hunted In Preserve': 'Охотники',
+};
+
+const CATEGORIES_TEXT_RU = {
+  'Player in lobby': 'Игроки в лобби',
+  'Spectating players': 'Наблюдающие за игрой игроки',
+  'Spectating administrators': 'Наблюдающие за игрой администраторы',
+  'Players playing as Human': 'Игроки, играющие за людей',
+  'Players playing as Infected Human': 'Игроки, играющие за заражённых людей',
+  'Players playing as USS Almayer Personnel':
+    'Игроки, играющие за персонал USS Almayer',
+  'Players playing as Marines': 'Игроки, играющие за морпехов',
+  'Players playing as Yautja': 'Игроки, играющие за хищников',
+  'Players playing as Infected Yautja':
+    'Игроки, играющие за заражённых хищников',
+  'Players playing as hunted in preserve':
+    'Игроки, играющие за охотников в заповеднике',
+};
+
+function CategoriesRu(value: string) {
+  const [k, v] = value.split(':');
+  return CATEGORIES_RU[k] ? CATEGORIES_RU[k] + ': ' + v : value;
+}
+
+function CategoriesTextRu(value: string) {
+  return CATEGORIES_TEXT_RU[value] || value;
+}
+
 export const Who = (props, context) => {
   const { act, data } = useBackend<Data>();
   const {
@@ -72,7 +110,7 @@ export const Who = (props, context) => {
                       });
                     }}
                     onInput={(e, value) => setSearchQuery(value)}
-                    placeholder="Search..."
+                    placeholder="Поиск..."
                     value={searchQuery}
                   />
                 </Stack.Item>
@@ -83,7 +121,7 @@ export const Who = (props, context) => {
             {filteredTotalPlayers && (
               <Section>
                 <WhoCollapsible
-                  title={'Players - ' + filteredTotalPlayers.length}
+                  title={'Игроки - ' + filteredTotalPlayers.length}
                   color="good"
                 >
                   <Box>
@@ -94,7 +132,7 @@ export const Who = (props, context) => {
             )}
             {factions_additional && (
               <Section>
-                <WhoCollapsible title="Information" color="olive">
+                <WhoCollapsible title="Информация" color="olive">
                   <Flex direction="column">
                     {factions_additional.map((x, index) => (
                       <GetAddInfo
@@ -136,10 +174,10 @@ const GetAddInfo = (props, context) => {
         borderWidth: '1px',
         color: color,
       }}
-      tooltip={text}
+      tooltip={CategoriesTextRu(text)}
       tooltipPosition="bottom-start"
     >
-      {content}
+      {CategoriesRu(content)}
     </Button>
   );
 };

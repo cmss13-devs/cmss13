@@ -435,7 +435,7 @@
 	marine_announcement("ДРОПШИП НА КУРСЕ СТОЛКНОВЕНИЯ. СТОЛКНОВЕНИЕ НЕИЗБЕЖНО." , "ЧРЕЗВЫЧАЙНАЯ СИТУАЦИЯ", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-		to_chat(observer, SPAN_DEADSAY(FONT_SIZE_LARGE("The dropship is about to impact [get_area_name(T_trg)]" + " [OBSERVER_JMP(observer, T_trg)]")))
+		to_chat(observer, SPAN_DEADSAY(FONT_SIZE_LARGE("Корабль-носитель вот-вот столкнется с [get_area_name(T_trg)] [OBSERVER_JMP(observer, T_trg)]"))) // SS220 EDIT ADDICTION
 
 	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
 	playsound_area(get_area(turfs_int[sound_target]), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)

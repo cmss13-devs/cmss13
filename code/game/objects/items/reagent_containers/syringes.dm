@@ -71,7 +71,7 @@
 		return
 
 	if(mode == SYRINGE_BROKEN)
-		to_chat(user, SPAN_DANGER("This syringe is broken!"))
+		to_chat(user, SPAN_DANGER("Шприц сломался!"))
 		return
 
 	if (user.a_intent == INTENT_HARM && ismob(target))

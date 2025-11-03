@@ -48,7 +48,7 @@
 	if(!linked_hive || (linked_hive && (M.hivenumber != linked_hive.hivenumber)) || (M.a_intent == INTENT_HARM && M.can_destroy_special()))
 		return ..()
 	if(!template)
-		to_chat(M, SPAN_XENOWARNING("There is no template!"))
+		to_chat(M, SPAN_XENOWARNING("Отсутствует шаблон!"))
 	else
 		template.add_crystal(M) //This proc handles attack delay itself.
 	return XENO_NO_DELAY_ACTION

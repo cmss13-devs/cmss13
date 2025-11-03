@@ -89,7 +89,7 @@
 					return 1
 				if (L.halloss > 100)
 					playsound(loc, knockout_sound, 50, FALSE)
-					M.show_message(FONT_SIZE_LARGE(SPAN_WARNING("KNOCKOUT!")), SHOW_MESSAGE_VISIBLE)
+					M.show_message(FONT_SIZE_LARGE(SPAN_WARNING("НОКАУТ!")), SHOW_MESSAGE_VISIBLE) // SS220 EDIT ADDICTION
 					return 1
 				if (L.body_position == LYING_DOWN || L.stat == UNCONSCIOUS)//Can't beat 'em while they're down.
 					to_chat(M, SPAN_WARNING("You can't box with [A], they're already down!"))

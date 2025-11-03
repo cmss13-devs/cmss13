@@ -261,7 +261,7 @@ directive is properly returned.
 
 /atom/proc/get_examine_text(mob/user)
 	. = list()
-	. += "[icon2html(src, user)] [examine_thats] [declent_ru(NOMINATIVE)]." // BANDAMARINES EDIT - translations
+	. += "[icon2html(src, user)] [examine_thats] [declent_ru()]." // BANDAMARINES EDIT - translations
 	if(desc)
 		. += desc
 	if(desc_lore)

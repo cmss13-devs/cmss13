@@ -60,7 +60,7 @@
 
 /obj/item/weapon/gun/revolver/display_ammo(mob/user) // revolvers don't *really* have a chamber, at least in a way that matters for ammo displaying
 	if(flags_gun_features & GUN_AMMO_COUNTER && !(flags_gun_features & GUN_BURST_FIRING) && current_mag)
-		to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING"))
+		to_chat(user, SPAN_DANGER("ОСТАЛОСЬ [current_mag.current_rounds] / [current_mag.max_rounds] ПАТРОНОВ")) // SS220 EDIT ADDICTION
 
 /obj/item/weapon/gun/revolver/proc/rotate_cylinder(mob/user) //Cylinder moves backward.
 	if(current_mag)
@@ -835,7 +835,7 @@
 
 /obj/item/weapon/gun/revolver/cmb/click_empty(mob/user)
 	if(user)
-		to_chat(user, SPAN_WARNING("<b>*click*</b>"))
+		to_chat(user, SPAN_WARNING("<b>*щелчок*</b>"))
 		playsound(user, pick('sound/weapons/handling/gun_cmb_click1.ogg', 'sound/weapons/handling/gun_cmb_click2.ogg'), 25, 1, 5) //5 tile range
 	else
 		playsound(src, pick('sound/weapons/handling/gun_cmb_click1.ogg', 'sound/weapons/handling/gun_cmb_click2.ogg'), 25, 1, 5)

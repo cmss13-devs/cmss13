@@ -2,10 +2,49 @@
 # Tools of any kind (hemostat, screwdriver), necessary equipment (zipties, handcuffs)
 
 ["crowbar"]
-nominative = "лом"
-genitive = "лома"
-dative = "лому"
-accusative = "лом"
-instrumental = "ломом"
-prepositional = "ломе"
+nominative = "монтировка"
+genitive = "монтировки"
+dative = "монтировке"
+accusative = "монтировку"
+instrumental = "монтировкой"
+prepositional = "монтировке"
+gender = "female"
+
+["wrench"]
+nominative = "разводной ключ"
+genitive = "разводного ключа"
+dative = "разводному ключу"
+accusative = "разводной ключ"
+instrumental = "разводным ключом"
+prepositional = "разводном ключе"
+gender = "male"
+
+["Cable (x5)"] # Unique Design Name
+nominative = "моток проводов (x5)"
+
+["cable coil"]
+nominative = "моток проводов"
+genitive = "мотка проводов"
+dative = "мотку проводов"
+accusative = "моток проводов"
+instrumental = "мотком проводов"
+prepositional = "мотке проводов"
+gender = "male"
+
+["cable piece"]
+nominative = "провод"
+genitive = "провода"
+dative = "проводу"
+accusative = "провод"
+instrumental = "проводом"
+prepositional = "проводе"
+gender = "male"
+
+["toolbox"]
+nominative = "ящик для инструментов"
+genitive = "ящика для инструментов"
+dative = "ящику для инструментов"
+accusative = "ящик для инструментов"
+instrumental = "ящиком для инструментов"
+prepositional = "ящике для инструментов"
 gender = "male"

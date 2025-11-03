@@ -33,6 +33,33 @@ export function AlertModal(props) {
     title,
   } = data;
 
+  const calculateWindowHeight = (
+    message: string,
+    buttons: string[],
+    isVerbose: boolean,
+    largeButtons: BooleanLike,
+  ): number => {
+    const baseHeight = 120;
+    const verboseHeight = isVerbose ? largeSpacing * buttons.length : 0;
+    const lines = Math.ceil(message.length / 35);
+    const textHeight = lines > 2 ? lines * 8 : 0;
+    const buttonsHeight = message.length && largeButtons ? 5 : 0;
+
+    return Math.min(
+      baseHeight + verboseHeight + textHeight + buttonsHeight,
+      600,
+    );
+  };
+
+  const calculateWindowWidth = (buttons: string[], message: string): number => {
+    const baseWidth = 345;
+    const extraButtonsWidth = buttons.length > 2 ? 55 : 0;
+    const messageWidth =
+      message.length > 100 ? Math.min(message.length * 0.8, 600) : 0;
+
+    return Math.min(baseWidth + extraButtonsWidth + messageWidth, 800);
+  };
+
   const [selected, setSelected] = useState(0);
 
   // At least one of the buttons has a long text message
@@ -40,16 +67,14 @@ export function AlertModal(props) {
   const largeSpacing = isVerbose && large_buttons ? 20 : 15;
 
   // Dynamically sets window dimensions
-  const splitMessage = message.split('\n');
-  const messageLength =
-    message.length + 30 * Math.max(splitMessage.length - 1, 0);
-  const windowHeight =
-    120 +
-    (isVerbose ? largeSpacing * buttons.length : 0) +
-    (messageLength > 30 ? Math.ceil(messageLength / 3.3) : 0) +
-    (messageLength && large_buttons ? 5 : 0);
+  const windowHeight = calculateWindowHeight(
+    message,
+    buttons,
+    isVerbose,
+    large_buttons,
+  );
 
-  const windowWidth = 345 + (buttons.length > 2 ? 55 : 0);
+  const windowWidth = calculateWindowWidth(buttons, message);
 
   /** Changes button selection, etc */
   function keyDownHandler(event: KeyboardEvent<HTMLDivElement>) {

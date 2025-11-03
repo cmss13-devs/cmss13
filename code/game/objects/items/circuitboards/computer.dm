@@ -287,7 +287,7 @@
 			locked = !locked
 			to_chat(user, SPAN_NOTICE(" You [locked ? "" : "un"]lock the circuit controls."))
 		else
-			to_chat(user, SPAN_DANGER("Access denied."))
+			to_chat(user, SPAN_DANGER("Доступ запрещён."))
 	else if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
 		if(locked)
 			to_chat(user, SPAN_DANGER("Circuit controls are locked."))

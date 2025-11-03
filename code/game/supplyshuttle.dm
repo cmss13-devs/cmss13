@@ -170,23 +170,23 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		.["current_order"] += list(list_pack)
 
 	var/datum/shuttle/ferry/supply/shuttle = linked_supply_controller.shuttle
-	.["shuttle_status"] = "Поднять лифт" // SS220 EDIT ADDITTION
+	.["shuttle_status"] = "Поднять лифт" // SS220 EDIT ADDICTION
 	if (shuttle.has_arrive_time())
-		.["shuttle_status"] = "Движется" // SS220 EDIT ADDITTION
+		.["shuttle_status"] = "Движется" // SS220 EDIT ADDICTION
 		return
 
 	if (shuttle.at_station() )
-		.["shuttle_status"] = "Опустить лифт" // SS220 EDIT ADDITTION
+		.["shuttle_status"] = "Опустить лифт" // SS220 EDIT ADDICTION
 
 		switch(shuttle.docking_controller?.get_docking_status())
 			if ("docked")
-				.["shuttle_status"] = "поднять" // SS220 EDIT ADDITTION
+				.["shuttle_status"] = "поднять" // SS220 EDIT ADDICTION
 			if ("undocked")
-				.["shuttle_status"] = "опустить" // SS220 EDIT ADDITTION
+				.["shuttle_status"] = "опустить" // SS220 EDIT ADDICTION
 			if ("docking")
-				.["shuttle_status"] = "поднимается" // SS220 EDIT ADDITTION
+				.["shuttle_status"] = "поднимается" // SS220 EDIT ADDICTION
 			if ("undocking")
-				.["shuttle_status"] = "опускается" // SS220 EDIT ADDITTION
+				.["shuttle_status"] = "опускается" // SS220 EDIT ADDICTION
 
 /obj/structure/machinery/computer/supply/ui_static_data(mob/user)
 	. = ..()
@@ -210,7 +210,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			continue
 
 		if(!pack.contraband && length(pack.group))
-			.["valid_categories"] |= linked_supply_controller.translated_all_supply_groups[pack.group] || pack.group // SS220 EDIT ADDITTION
+			.["valid_categories"] |= linked_supply_controller.translated_all_supply_groups[pack.group] || pack.group // SS220 EDIT ADDICTION
 
 		var/list_pack = pack.get_list_representation()
 
@@ -321,7 +321,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			print_form(supply_order)
 
 			linked_supply_controller.requestlist += supply_order
-			system_message = "Спасибо за заказ. Грузовые техники обработают его как можно скорее." // SS220 - EDIT ADDITTION
+			system_message = "Спасибо за заказ. Грузовые техники обработают его как можно скорее." // SS220 EDIT ADDICTION
 			return TRUE
 
 		if("acknowledged")
@@ -338,21 +338,21 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/structure/machinery/computer/supply/proc/print_form(datum/supply_order/order)
 	var/list/accesses = list()
-	var/list/categories = list() // SS220 - EDIT ADDITTION
+	var/list/categories = list() // SS220 EDIT ADDICTION
 
 	for(var/datum/supply_packs/pack as anything in order.objects)
-		// SS220 - START EDIT ADDITTION
+		// SS220 - START EDIT ADDICTION
 		var/access = translate_get_access_desc(pack.access)
 		var/group = linked_supply_controller.translated_all_supply_groups[pack.group] || pack.group
 		pack.name = capitalize(declent_ru_initial(pack.name, NOMINATIVE, pack.name))
-		// SS220 - END EDIT ADDITTION
+		// SS220 END EDIT ADDICTION
 
 		if(length(access))
 			accesses += access
-		if(length(group)) // SS220 EDIT ADDITTION
-			categories += group // SS220 EDIT ADDITTION
+		if(length(group)) // SS220 EDIT ADDICTION
+			categories += group // SS220 EDIT ADDICTION
 
-// SS220 - START EDIT ADDITTION
+// SS220 START EDIT ADDICTION
 	var/obj/item/paper/reqform/slip
 	slip = new /obj/item/paper/reqform(loc)
 	slip.shipname = MAIN_SHIP_NAME
@@ -366,7 +366,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	slip.categories = categories
 	slip.generate_contents()
 	slip.update_icon()
-// SS220 - END EDIT ADDITTION
+// SS220 END EDIT ADDICTION
 
 /obj/structure/machinery/computer/supply/proc/is_buyable(datum/supply_packs/supply_pack)
 	if(!supply_pack.buyable)
@@ -556,7 +556,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(..())  //Checks for power outages
 		return
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return TRUE
 	tgui_interact(user)
 	return
@@ -659,7 +659,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/orderedby_rank
 
 	var/approvedby = null
-	var/approvedby_rank = null // SS220 EDIT ADDITTION
+	var/approvedby_rank = null // SS220 EDIT ADDICTION
 
 	/// The user submitted reason as to why they want this order
 	var/reason
@@ -718,7 +718,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	if(length(ordered))
 		if(objects ~! ordered)
-			buyer.system_message = "Не удалось обработать весь заказ. Доступные для доставки предметы были заказаны." // SS220 - EDIT ADDITTION
+			buyer.system_message = "Не удалось обработать весь заказ. Доступные для доставки предметы были заказаны." // SS220 EDIT ADDICTION
 
 		objects = ordered
 		buyer.linked_supply_controller.requestlist -= src
@@ -791,7 +791,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Reagent tanks",
 		)
 
-	// SS220 - START ADDITTION
+	// SS220 START ADDICTION
 	var/list/translated_all_supply_groups = list(
 		"Operations" = "Операции",
 		"Weapons" = "Вооружение",
@@ -812,7 +812,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Explosives" = "Взрывчатые вещества",
 		"Reagent tanks" = "Ёмкости для реагентов",
 	)
-	// SS220 - END ADDITTION
+	// SS220 END ADDICTION
 
 	var/list/contraband_supply_groups = list(
 		"Seized Items",
@@ -1040,20 +1040,20 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 					content_types += pick(package.contains)
 			for(var/typepath in content_types)
 				var/atom/item = new typepath(container)
-				content_names += capitalize(declent_ru_initial(item.name, NOMINATIVE, item.name)) // SS220 - EDIT ADDITTION
+				content_names += capitalize(declent_ru_initial(item.name, NOMINATIVE, item.name)) // SS220 EDIT ADDICTION
 
 			// Manifest generation
 			var/obj/item/paper/manifest/slip
 			if(!package.contraband) // I'm sorry boss i misplaced it...
 				slip = new /obj/item/paper/manifest(container)
-				slip.shipname = MAIN_SHIP_NAME // SS220 - EDIT ADDITTION
-				slip.ordername = capitalize(declent_ru_initial(package.name, NOMINATIVE, package.name)) // SS220 - EDIT ADDITTION
-				slip.ordernum = "[order.ordernum]-[rand(0,99)]-[rand(0,999)]" // SS220 - EDIT ADDITTION
+				slip.shipname = MAIN_SHIP_NAME // SS220 EDIT ADDICTION
+				slip.ordername = capitalize(declent_ru_initial(package.name, NOMINATIVE, package.name)) // SS220 EDIT ADDICTION
+				slip.ordernum = "[order.ordernum]-[rand(0,99)]-[rand(0,999)]" // SS220 EDIT ADDICTION
 				slip.orderedby = order.orderedby
-				slip.orderedby_rank = order.orderedby_rank // SS220 EDIT ADDITTION
+				slip.orderedby_rank = order.orderedby_rank // SS220 EDIT ADDICTION
 				slip.approvedby = order.approvedby
-				slip.approvedby_rank = order.approvedby_rank // SS220 EDIT ADDITTION
-				slip.date = "[translate_time2text(REALTIMEOFDAY)]" // SS220 EDIT ADDITTION
+				slip.approvedby_rank = order.approvedby_rank // SS220 EDIT ADDICTION
+				slip.date = "[translate_time2text(REALTIMEOFDAY)]" // SS220 EDIT ADDICTION
 				slip.packages = content_names
 				slip.generate_contents()
 				slip.update_icon()
@@ -1061,17 +1061,17 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/item/paper/manifest
 	name = "Supply Manifest"
-	var/shipname // SS220 EDIT ADDITTION
+	var/shipname // SS220 EDIT ADDICTION
 	var/ordername
 	var/ordernum
 	var/orderedby
-	var/orderedby_rank // SS220 EDIT ADDITTION
+	var/orderedby_rank // SS220 EDIT ADDICTION
 	var/approvedby
-	var/approvedby_rank // SS220 EDIT ADDITTION
-	var/date // SS220 EDIT ADDITTION
+	var/approvedby_rank // SS220 EDIT ADDICTION
+	var/date // SS220 EDIT ADDICTION
 	var/list/packages
 
-// SS220 - START EDIT ADDITTION
+// SS220 START EDIT ADDICTION
 /obj/item/paper/reqform
 	name = "Requisition Form"
 	var/shipname
@@ -1127,19 +1127,19 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	data["supplypacks"] = supplypacks
 
 	return data
-// SS220 - END EDIT ADDITTION
+// SS220 END EDIT ADDICTION
 
 /obj/item/paper/manifest/proc/generate_contents()
 	info = "text" // SS220 - NEED FOR ICON_STATE
 	name = "[name] - [ordername]"
-	ru_names_rename(ru_names_toml(src::name, suffix = " - [ordername]", override_base = name)) // SS220 - EDIT ADDITTION
+	ru_names_rename(ru_names_toml(src::name, suffix = " - [ordername]", override_base = name)) // SS220 EDIT ADDICTION
 
-// SS220 - START EDIT ADDITTION
+// SS220 START EDIT ADDICTION
 /obj/item/paper/reqform/proc/generate_contents()
 	info = "text" // SS220 - NEED FOR ICON_STATE
 	name = "[name] - [ordernum]"
 	ru_names_rename(ru_names_toml(src::name, suffix = " - #[ordernum]", override_base = name))
-// SS220 - END EDIT ADDITTION
+// SS220 END EDIT ADDICTION
 
 /obj/structure/machinery/computer/supply/asrs/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -1148,7 +1148,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(!is_mainship_level(z))
 		return
 	if(!allowed(user))
-		to_chat(user, SPAN_DANGER("Access Denied."))
+		to_chat(user, SPAN_DANGER("Доступ запрещён."))
 		return
 
 	if(..())
@@ -1234,7 +1234,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				return TRUE
 
 			linked_supply_controller.requestlist += supply_order
-			system_message = "Не удалось добавить заказ, он был перемещен во вкладку «Запросы»." // SS220 EDIT ADDITTION
+			system_message = "Не удалось добавить заказ, он был перемещен во вкладку «Запросы»." // SS220 EDIT ADDICTION
 			return TRUE
 
 		if("change_order")
@@ -1257,11 +1257,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			switch(params["order_status"])
 				if("approve")
 					order.approvedby = id_name
-					order.approvedby_rank = assignment // SS220 EDIT ADDITTION
+					order.approvedby_rank = assignment // SS220 EDIT ADDICTION
 					if(order.buy(src))
 						return TRUE
 
-					system_message = "Не удалось принять заказ, он останется во вкладке «Запросы»." // SS220 EDIT ADDITTION
+					system_message = "Не удалось принять заказ, он останется во вкладке «Запросы»." // SS220 EDIT ADDICTION
 					return TRUE
 				if("deny")
 					linked_supply_controller.requestlist -= order
@@ -1274,7 +1274,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 			if(shuttle.at_station())
 				if (shuttle.forbidden_atoms_check())
-					system_message = "Система безопасности АСС не может позволить вам оставить на лифте живые организмы, ядерное оружие или маяки." // SS220 EDIT ADDITTION
+					system_message = "Система безопасности АСС не может позволить вам оставить на лифте живые организмы, ядерное оружие или маяки." // SS220 EDIT ADDICTION
 					return TRUE
 				shuttle.launch(src)
 				return TRUE
@@ -1473,7 +1473,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 
 	if(!allowed(H))
-		to_chat(H, SPAN_DANGER("Access Denied."))
+		to_chat(H, SPAN_DANGER("Доступ запрещён."))
 		return
 
 	H.set_interaction(src)

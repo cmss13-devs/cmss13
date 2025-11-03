@@ -793,7 +793,7 @@
 
 /obj/item/clothing/accessory/storage/attack_self(mob/user)
 	..()
-	to_chat(user, SPAN_NOTICE("You empty [src]."))
+	to_chat(user, SPAN_NOTICE("Вы опустошаете [declent_ru(ACCUSATIVE)]...")) // SS220 EDIT ADDICTION
 	var/turf/T = get_turf(src)
 	hold.storage_close(usr)
 	for(var/obj/item/I in hold.contents)

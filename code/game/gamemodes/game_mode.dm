@@ -289,7 +289,7 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 //Reports player logouts//
 //////////////////////////
 /proc/display_roundstart_logout_report()
-	var/msg = FONT_SIZE_LARGE("<b>Roundstart logout report\n\n")
+	var/msg = FONT_SIZE_LARGE("<b>Отчёт о выходе во время старта раунда<br><br>") // SS220 EDIT ADDICTION
 	for(var/i in GLOB.living_mob_list)
 		var/mob/living/L = i
 

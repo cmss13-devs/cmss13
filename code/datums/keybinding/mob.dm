@@ -68,7 +68,7 @@
 	var/mob/M = user.mob
 	var/obj/item/I = M.get_held_item()
 	if(!I)
-		to_chat(user, SPAN_WARNING("You have nothing to drop in your hand!"))
+		to_chat(user, SPAN_WARNING("У вас нет ничего, что можно было бы выронить из рук!"))
 	else
 		user.mob.drop_held_item(I)
 	return TRUE

@@ -265,7 +265,7 @@
 	REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 	deltimer(freeze_timer_id)
 	freeze_timer_id = TIMER_ID_NULL
-	to_chat(X, SPAN_XENONOTICE("Slashing frenzies us! We feel free to move immediately!"))
+	to_chat(X, SPAN_XENONOTICE("Наш натиск переполняет нас яростью, мы снова полны сил, чтобы совершить рывок!"))
 
 /// Any effects to apply to the xenomorph before the windup occurs
 /datum/action/xeno_action/activable/pounce/proc/pre_windup_effects()

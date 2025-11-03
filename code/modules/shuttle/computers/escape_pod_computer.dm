@@ -23,7 +23,7 @@
 	if(..())
 		return
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied!"))
+		to_chat(user, SPAN_WARNING("Доступ запрещён"))
 		return
 	tgui_interact(user)
 

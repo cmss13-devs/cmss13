@@ -41,7 +41,7 @@
 
 	flags_item    ^= WIELDED
 	place_offhand(user, name)
-	name    += " (Wielded)"
+	//name    += " (Wielded)" // SS220 EDIT ADDICTION
 	item_state += "_w"
 	return 1
 
@@ -50,7 +50,7 @@
 		return FALSE//Have to be actually a twohander and wielded.
 	flags_item ^= WIELDED
 	SEND_SIGNAL(src, COMSIG_ITEM_UNWIELD, user)
-	name = copytext(name,1,-10)
+	//name = copytext(name,1,-10) // SS220 EDIT ADDICTION
 	item_state  = copytext(item_state,1,-2)
 	remove_offhand(user)
 	return TRUE

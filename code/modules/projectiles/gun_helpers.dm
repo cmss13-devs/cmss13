@@ -608,7 +608,7 @@ DEFINES in setup.dm, referenced here.
 						return
 
 		if(!equip_to_appropriate_slot(active_hand, 0))
-			to_chat(src, SPAN_DANGER("You are unable to equip that."))
+			to_chat(src, SPAN_DANGER("Вы не можете надеть это."))
 	else //empty hand, start checking slots and holsters
 
 		//default order: suit, belt, back, pockets, uniform, shoes, wear_mask

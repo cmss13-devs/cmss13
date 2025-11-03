@@ -330,6 +330,15 @@ instrumental = "складным прикладом для M39"
 prepositional = "складном прикладе для M39"
 gender = "male"
 
+["M37A2 Collapsible Stock"]
+nominative = "складной приклад для M37A2"
+genitive = "складного приклада для M37A2"
+dative = "складному прикладу для M37A2"
+accusative = "складной приклад для M37A2"
+instrumental = "складным прикладом для M37A2"
+prepositional = "складном прикладе для M37A2"
+gender = "male"
+
 ["M39 Arm Brace"] # Unique Vendor Name
 nominative = "плечевой упор для M39"
 
@@ -1118,7 +1127,7 @@ gender = "male"
 nominative = "патронный короб для M41AE2 (10x24мм Holo-Target)"
 
 ["M41AE2 Box Magazine (10x24mm)"] # Unique Vendor Name
-nominative = "патронный короб для M41AE2 (10x24мм Holo-Target)"
+nominative = "патронный короб для M41AE2 (10x24мм)"
 
 ["M41AE2 ammo box (10x24mm holo-target)"]
 nominative = "патронный короб для M41AE2 (10x24мм Holo-Target)"

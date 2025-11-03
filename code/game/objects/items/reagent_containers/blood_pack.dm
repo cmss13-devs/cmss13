@@ -21,7 +21,7 @@
 	. = ..()
 	if(blood_type != null)
 		name = "[blood_type] blood pack"
-		ru_names_rename(ru_names_toml(src::name, prefix = "[blood_type] ")) // SS220 - EDIT ADDITTION
+		ru_names_rename(ru_names_toml(src::name, prefix = "[blood_type] ")) // SS220 EDIT ADDICTION
 		reagents.add_reagent("blood", initial(volume), list("viruses" = null, "blood_type" = blood_type, "resistances" = null))
 		update_icon()
 

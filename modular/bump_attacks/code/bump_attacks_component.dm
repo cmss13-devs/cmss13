@@ -43,7 +43,7 @@
 		return
 	var/mob/living/bumper = parent
 	if(!silent_activation)
-		bumper.balloon_alert(bumper, "Вы теперь будете [should_enable ? "атаковать" : "толкать"] врагов на пути.")
+		bumper.balloon_alert(bumper, "Вы теперь будете [should_enable ? "атаковать" : "толкать"] врагов на пути")
 	toggle_action?.attacking = active
 	toggle_action?.update_button_icon()
 	if(should_enable)

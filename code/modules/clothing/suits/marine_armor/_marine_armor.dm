@@ -117,13 +117,13 @@
 	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
-		var/suffix = "" // SS220 - EDIT ADDITTION
+		var/suffix = "" // SS220 EDIT ADDICTION
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: generals).
-			suffix = " (Зимний камуфляж)" // SS220 - EDIT ADDITTION
+			suffix = " (Зимний камуфляж)" // SS220 EDIT ADDICTION
 		else
 			name += " armor"
-		ru_names_rename(ru_names_toml(replacetext(name," snow",""), suffix = suffix, override_base = name)) // SS220 - EDIT ADDITTION
+		ru_names_rename(ru_names_toml(replacetext(name," snow",""), suffix = suffix, override_base = name)) // SS220 EDIT ADDICTION
 
 	if(!(flags_atom & NO_GAMEMODE_SKIN))
 		select_gamemode_skin(type)
@@ -771,4 +771,3 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi'
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
-

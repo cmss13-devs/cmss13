@@ -123,7 +123,7 @@
 /obj/effect/alien/resin/fruit/proc/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature) // Someone might've eaten it before us!
 		recipient.gain_health(75)
-		to_chat(recipient, SPAN_XENOBOLDNOTICE("We recover a bit from our injuries."))
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("Мы чувствуем, как восстанавливается часть нашего здоровья."))
 		recipient.balloon_alert(recipient, "we recover a bit from our injuries", text_color = "#17991B")
 		if(do_consume)
 			finish_consume(recipient)
@@ -136,12 +136,12 @@
 	icon_state = consumed_icon_state
 	update_icon()
 	if(!QDELETED(bound_xeno))
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("One of our picked resin fruits has been consumed."))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Один из наших собранных смоляных плодов был съеден."))
 	QDEL_IN(src, 1 SECONDS)
 
 /obj/effect/alien/resin/fruit/attack_alien(mob/living/carbon/xenomorph/affected_xeno)
 	if(picked)
-		to_chat(affected_xeno, SPAN_XENODANGER("This fruit is already being picked!"))
+		to_chat(affected_xeno, SPAN_XENODANGER("Этот плод уже был собран!"))
 		return
 
 	if(affected_xeno.a_intent != INTENT_HARM && (affected_xeno.can_not_harm(bound_xeno) || affected_xeno.hivenumber == hivenumber))
@@ -150,23 +150,23 @@
 			return cant_consume
 
 		if(mature)
-			to_chat(affected_xeno, SPAN_XENOWARNING("We prepare to consume [name]."))
+			to_chat(affected_xeno, SPAN_XENOWARNING("Мы начинаем поедать [name].")) // SS220 EDIT ADDICTION
 			xeno_noncombat_delay(affected_xeno)
 			if(!do_after(affected_xeno, consume_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				return XENO_NO_DELAY_ACTION
 
 			cant_consume = prevent_consume(affected_xeno) // Check again after the delay incase they have eaten another fruit
 			if(cant_consume)
-				to_chat(affected_xeno, SPAN_XENOWARNING("We can no longer consume [name]."))
+				to_chat(affected_xeno, SPAN_XENOWARNING("Мы больше не можем съесть [name].")) // SS220 EDIT ADDICTION
 				return cant_consume
 			consume_effect(affected_xeno)
 		else
-			to_chat(affected_xeno, SPAN_XENOWARNING("[name] isn't ripe yet. We need to wait a little longer."))
+			to_chat(affected_xeno, SPAN_XENOWARNING("[name] ещё не созрел. Нам нужно немного подождать.")) // SS220 EDIT ADDICTION
 
 	if(affected_xeno.a_intent == INTENT_HARM && isxeno_builder(affected_xeno) || (!affected_xeno.can_not_harm(bound_xeno) && affected_xeno.hivenumber != hivenumber))
 		affected_xeno.animation_attack_on(src)
-		affected_xeno.visible_message(SPAN_XENODANGER("[affected_xeno] removes [name]!"),
-		SPAN_XENODANGER("You remove [name]!"))
+		affected_xeno.visible_message(SPAN_XENODANGER("[affected_xeno] убирает [name]!"), // SS220 EDIT ADDICTION
+		SPAN_XENODANGER("Вы убираете [name]!")) // SS220 EDIT ADDICTION
 		playsound(loc, "alien_resin_break", 25)
 		qdel(src)
 		return XENO_ATTACK_ACTION
@@ -174,7 +174,7 @@
 
 /obj/effect/alien/resin/fruit/proc/prevent_consume(mob/living/carbon/xenomorph/xeno)
 	if(!(flags & CAN_CONSUME_AT_FULL_HEALTH) && xeno.health >= xeno.maxHealth)
-		to_chat(xeno, SPAN_XENODANGER("We are at full health! This would be a waste..."))
+		to_chat(xeno, SPAN_XENODANGER("Мы уже полностью здоровы! Это было бы пустой тратой фруктов..."))
 		return XENO_NO_DELAY_ACTION
 	return FALSE
 
@@ -182,7 +182,7 @@
 	//Notify and update the xeno count
 	if(!QDELETED(bound_xeno))
 		if(!picked)
-			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We sense one of our fruit has been destroyed."))
+			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Мы чувствуем, что один из наших плодов был уничтожен."))
 		bound_xeno.current_fruits.Remove(src)
 	bound_xeno = null
 
@@ -220,7 +220,7 @@
 		recipient.gain_health(heal_amount)
 		//Every second, heal them for 20.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1, show_baloon_alert = TRUE)
-		to_chat(recipient, SPAN_XENOBOLDNOTICE("We recover a bit from our injuries, and begin to regenerate rapidly."))
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("Мы чувствуем, как восстанавливается часть нашего здоровья и мы начинаем быстро регенерировать."))
 		recipient.balloon_alert(recipient, "we recover a bit and start regenerating rapidly", text_color = "#17991B")
 	if(do_consume)
 		finish_consume(recipient)
@@ -256,7 +256,7 @@
 		recipient.add_xeno_shield(clamp(overshield_amount, 0, recipient.maxHealth * 0.3), XENO_SHIELD_SOURCE_GARDENER, duration = shield_duration, decay_amount_per_second = shield_decay)
 		//Every second, heal them for 5.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1, show_baloon_alert = TRUE)
-		to_chat(recipient, SPAN_XENOBOLDNOTICE("We feel our defense being bolstered, and begin to slowly regenerate."))
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("Мы чувствуем, как наша защита укрепляется и мы начинаем медленно регенерировать."))
 		recipient.balloon_alert(recipient, "our regeneration quickens and carapace thickens", text_color = "#179973")
 	if(do_consume)
 		finish_consume(recipient)
@@ -292,7 +292,7 @@
 			if(E.effect_source == "spore")
 				qdel(E)
 		new /datum/effects/gain_xeno_cooldown_reduction_on_slash(recipient, bound_xeno, max_cooldown_reduction, cooldown_per_slash, 90 SECONDS, "spore", show_baloon_alert = TRUE)
-		to_chat(recipient, SPAN_XENOBOLDNOTICE("We feel a frenzy coming onto us! Our abilities will cool off faster as we slash!"))
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("Мы чувствуем, как нас переполняет ярость! Наши способности во время боя будут перезаряжаться быстрее!"))
 		recipient.balloon_alert(recipient, "we feel a frenzy coming onto us", text_color = "#994617", delay = 1 SECONDS)
 	if(do_consume)
 		finish_consume(recipient)
@@ -336,14 +336,14 @@
 
 /obj/effect/alien/resin/fruit/speed/prevent_consume(mob/living/carbon/xenomorph/xeno)
 	if(LAZYISIN(xeno.modifier_sources, XENO_FRUIT_SPEED))
-		to_chat(xeno, SPAN_XENOWARNING("We are already under the effects of this fruit, go out and kill!"))
+		to_chat(xeno, SPAN_XENOWARNING("Мы уже под действием этого плода, вперёд! Убивать!"))
 		return XENO_NO_DELAY_ACTION
 	return ..()
 
 /obj/effect/alien/resin/fruit/speed/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
-		new /datum/effects/xeno_speed(recipient, ttl = speed_duration, set_speed_modifier = speed_buff_amount, set_modifier_source = XENO_FRUIT_SPEED, set_end_message = SPAN_XENOWARNING("We feel the effects of the [name] wane..."), show_baloon_alert = TRUE)
-		to_chat(recipient, SPAN_XENOBOLDNOTICE("The [name] invigorates us to move faster!"))
+		new /datum/effects/xeno_speed(recipient, ttl = speed_duration, set_speed_modifier = speed_buff_amount, set_modifier_source = XENO_FRUIT_SPEED, set_end_message = SPAN_XENOWARNING("Мы чувствуем, как действие [name] ослабевает..."), show_baloon_alert = TRUE)
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("[name] придаёт нам сил двигаться быстрее!"))
 		recipient.balloon_alert(recipient, "we feel invigorated to run faster", text_color = "#5B248C", delay = 1 SECONDS)
 	if(do_consume)
 		finish_consume(recipient)
@@ -374,7 +374,7 @@
 	if(mature && recipient && recipient.plasma_max > 0 && !QDELETED(recipient))
 		//With the current values (240, 15, 3), this will give the recipient 48 plasma every 3 seconds, for a total of 240 in 15 seconds.
 		new /datum/effects/plasma_over_time(recipient, plasma_amount, plasma_time, time_between_plasmas, show_baloon_alert = TRUE)
-		to_chat(recipient, SPAN_XENOBOLDNOTICE("The [name] boosts our plasma regeneration!"))
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("[name] ускоряет нашу регенерацию плазмы!"))
 		recipient.balloon_alert(recipient, "we feel our plasma rapidly regenerate", text_color = "#287A90")
 	if(do_consume)
 		finish_consume(recipient)
@@ -408,7 +408,7 @@
 	pixel_y = 0
 
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/link_xeno(mob/living/carbon/xenomorph/xeno)
-	to_chat(xeno, SPAN_XENOHIGHDANGER("One of our resin fruits has been picked."))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("Один из наших смоляных плодов был собран."))
 	xeno.current_fruits.Add(src)
 	bound_xeno = xeno
 	RegisterSignal(xeno, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
@@ -480,7 +480,7 @@
 
 	//Notify the fruit's bound xeno if they exist
 	if(!QDELETED(bound_xeno))
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("One of our picked resin fruits has been consumed."))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Один из наших собранных смоляных плодов был съеден."))
 	qdel(src)
 	return TRUE
 
@@ -501,14 +501,14 @@
 /mob/living/carbon/xenomorph/proc/pickup_fruit(obj/effect/alien/resin/fruit/F)
 
 	if(F.bound_xeno && !can_not_harm(F.bound_xeno))
-		to_chat(src, SPAN_XENODANGER("We crush [F]."))
+		to_chat(src, SPAN_XENODANGER("Мы раздавливаем [F].")) // SS220 EDIT ADDICTION
 		qdel(F)
 		return
 	if(!F.mature)
-		to_chat(src, SPAN_XENODANGER("[F] isn't mature yet!"))
+		to_chat(src, SPAN_XENODANGER("[F] ещё не созрел!")) // SS220 EDIT ADDICTION
 		return
 	if(F.picked)
-		to_chat(src, SPAN_XENODANGER("[F] is already being picked!"))
+		to_chat(src, SPAN_XENODANGER("[F] уже собирается!")) // SS220 EDIT ADDICTION
 		return
 	// Indicates the fruit is being picked, so other xenos can't eat it at the same time
 	F.picked = TRUE
@@ -521,7 +521,7 @@
 	if(!F.mature)
 		F.picked = FALSE
 		return
-	to_chat(src, SPAN_XENONOTICE("You uproot [F]."))
+	to_chat(src, SPAN_XENONOTICE("Вы вырываете [F] из земли.")) // SS220 EDIT ADDICTION
 	var/obj/item/reagent_container/food/snacks/resin_fruit/new_fruit = new F.fruit_type()
 	new_fruit.color = F.color
 	put_in_hands(new_fruit)
@@ -531,11 +531,11 @@
 	qdel(F)
 
 /mob/living/carbon/xenomorph/larva/pickup_fruit(obj/effect/alien/resin/fruit/F)
-	to_chat(src, SPAN_XENODANGER("We are too small to pick up \the [F]!"))
+	to_chat(src, SPAN_XENODANGER("Мы слишком малы, чтобы собрать [F]!")) // SS220 EDIT ADDICTION
 	return
 
 /mob/living/carbon/xenomorph/facehugger/pickup_fruit(obj/effect/alien/resin/fruit/F)
-	to_chat(src, SPAN_XENODANGER("We are too small to pick up \the [F]!"))
+	to_chat(src, SPAN_XENODANGER("Мы слишком малы, чтобы собрать [F]!"))
 	return
 
 /obj/item/reagent_container/food/snacks/resin_fruit/lesser

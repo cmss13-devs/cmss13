@@ -296,7 +296,7 @@
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(src == M)
 		return
-	var/t_him = p_them()
+	var/t_him = ru_p_thereto()
 
 	var/shake_action
 	if(stat == DEAD || HAS_TRAIT(src, TRAIT_INCAPACITATED) || sleeping) // incap implies also unconscious or knockedout
@@ -319,8 +319,8 @@
 		if(istype(H))
 			H.species.hug(H, src, H.zone_selected)
 		else
-			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"),
-				SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
+			M.visible_message(SPAN_NOTICE("[M] похлопывает [src] по спине, чтобы [t_him] стало лучше!"), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("Вы похлопываете [src] по спине, чтобы [t_him] стало лучше!"), null, 4)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
 
@@ -411,7 +411,7 @@
 
 		if(!(thrown_thing.try_to_throw(src)))
 			return
-		visible_message(SPAN_WARNING("[src] бросает [declent_ru_initial(thrown_thing::name, ACCUSATIVE, thrown_thing::name)]."), null, null, 5) // SS220 EDIT ADDICTION
+		visible_message(SPAN_WARNING("[declent_ru()] бросает [thrown_thing.declent_ru(ACCUSATIVE)]."), null, null, 5) // SS220 EDIT ADDICTION
 
 		if(!lastarea)
 			lastarea = get_area(src.loc)

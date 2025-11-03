@@ -52,8 +52,8 @@
 	if (!action_cooldown_check())
 		return
 
-	xeno.visible_message(SPAN_DANGER("[xeno] drags its claws in a wide area in front of it!"),
-	SPAN_XENOWARNING("We unleash a barrage of slashes!"))
+	xeno.visible_message(SPAN_DANGER("[xeno] размахивает когтями по большой области перед собой!"), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Мы выпускаем шквал рубящих ударов!"))
 	playsound(xeno, 'sound/effects/alien_tail_swipe2.ogg', 30)
 	apply_cooldown()
 
@@ -97,8 +97,8 @@
 			if (HAS_TRAIT(target, TRAIT_NESTED))
 				continue
 
-			xeno.visible_message(SPAN_DANGER("[xeno] slashes [target]!"),
-			SPAN_XENOWARNING("We slash [target] multiple times!"))
+			xeno.visible_message(SPAN_DANGER("[xeno] атакует [target]!"), // SS220 EDIT ADDICTION
+			SPAN_XENOWARNING("Мы атакуем [target] несколько раз!")) // SS220 EDIT ADDICTION
 			xeno.flick_attack_overlay(target, "slash")
 			target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
 			log_attack("[key_name(xeno)] attacked [key_name(target)] with Flurry")
@@ -143,7 +143,7 @@
 					return
 				playsound(get_turf(target_window),'sound/effects/glassbreak3.ogg', 30, TRUE)
 				target_window.shatter_window(TRUE)
-				xeno.visible_message(SPAN_XENOWARNING("\The [xeno] strikes the window with their tail!"), SPAN_XENOWARNING("We strike the window with our tail!"))
+				xeno.visible_message(SPAN_XENOWARNING("[xeno] бьёт хвостом по окну!"), SPAN_XENOWARNING("Мы бьём хвостом по окну!")) // SS220 EDIT ADDICTION
 				apply_cooldown(cooldown_modifier = 0.5)
 				return
 			if(current_structure.density && !current_structure.throwpass)
@@ -158,12 +158,12 @@
 
 	if(iscarbon(hit_target) && !xeno.can_not_harm(hit_target) && hit_target.stat != DEAD)
 		if(targeted_atom == hit_target) //reward for a direct hit
-			to_chat(xeno, SPAN_XENOHIGHDANGER("We attack [hit_target], with our tail, piercing their body!"))
+			to_chat(xeno, SPAN_XENOHIGHDANGER("Мы пронзаем тело [hit_target], используя хвост!")) // SS220 EDIT ADDICTION
 			hit_target.apply_armoured_damage(15, ARMOR_MELEE, BRUTE, "chest")
 		else
-			to_chat(xeno, SPAN_XENODANGER("We attack [hit_target], slashing them with our tail!"))
+			to_chat(xeno, SPAN_XENODANGER("Мы атакуем [hit_target], используя хвост!")) // SS220 EDIT ADDICTION
 	else
-		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] размахивает хвостом в воздухе!"), SPAN_XENOWARNING("Мы размахиваем хвостом в воздухе!")) // SS220 EDIT ADDICTION
 		apply_cooldown(cooldown_modifier = 0.2)
 		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
 		return
@@ -178,8 +178,8 @@
 
 	if(!step(hit_target, direction))
 		playsound(hit_target.loc, "punch", 25, 1)
-		hit_target.visible_message(SPAN_DANGER("[hit_target] slams into an obstacle!"),
-		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		hit_target.visible_message(SPAN_DANGER("[hit_target] врезается в препятствие!"), // SS220 EDIT ADDICTION
+		isxeno(hit_target) ? SPAN_XENODANGER("Мы врезаемся в препятствие!") : SPAN_HIGHDANGER("Вы врезаетесь в препятствие!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		hit_target.apply_damage(MELEE_FORCE_TIER_2)
 		if (hit_target.mob_size < MOB_SIZE_BIG)
 			hit_target.KnockDown(0.5)
@@ -221,11 +221,11 @@
 		return
 
 	if(!(HAS_TRAIT(target_carbon, TRAIT_KNOCKEDOUT) || target_carbon.stat == UNCONSCIOUS)) //called knocked out because for some reason .stat seems to have a delay .
-		to_chat(xeno, SPAN_XENOHIGHDANGER("We can only headbite an unconscious, adjacent target!"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("Мы можем пронзить голову только находящейся рядом цели без сознания!"))
 		return
 
 	if(!xeno.Adjacent(target_carbon))
-		to_chat(xeno, SPAN_XENOHIGHDANGER("We can only headbite an unconscious, adjacent target!"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("Мы можем пронзить голову только находящейся рядом цели без сознания!"))
 		return
 
 	if(xeno.stat == UNCONSCIOUS)
@@ -243,24 +243,24 @@
 				to_chat(xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
 				return
 
-	xeno.visible_message(SPAN_DANGER("[xeno] grabs [target_carbon]’s head aggressively."),
-	SPAN_XENOWARNING("We grab [target_carbon]’s head aggressively."))
+	xeno.visible_message(SPAN_DANGER("[xeno] агрессивно хватает [target_carbon] за голову."), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Мы агрессивно хватаем [target_carbon] за голову.")) // SS220 EDIT ADDICTION
 
 	if(!do_after(xeno, 0.8 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks
 		return
 
 	// To make sure that the headbite does nothing if the target is moved away.
 	if(!xeno.Adjacent(target_carbon))
-		to_chat(xeno, SPAN_XENOHIGHDANGER("We missed! Our target was moved away before we could finish headbiting them!"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("Мы промахнулись! Нашу цель сдвинули, прежде чем мы смогли пронзить её голову!"))
 		return
 
 	if(target_carbon.stat == DEAD)
-		to_chat(xeno, SPAN_XENODANGER("They died before you could finish headbiting them! Be more careful next time!"))
+		to_chat(xeno, SPAN_XENODANGER("Цель умерла, прежде чем вы смогли пронзить её голову! Будьте осторожнее в следующий раз!"))
 		return
 
-	to_chat(xeno, SPAN_XENOHIGHDANGER("We pierce [target_carbon]’s head with our inner jaw!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("Мы пронзаем голову [target_carbon] своей внутренней челюстью!")) // SS220 EDIT ADDICTION
 	playsound(target_carbon,'sound/weapons/alien_bite2.ogg', 50, TRUE)
-	xeno.visible_message(SPAN_DANGER("[xeno] pierces [target_carbon]’s head with its inner jaw!"))
+	xeno.visible_message(SPAN_DANGER("[xeno] пронзает голову [target_carbon] своей внутренней челюстью!")) // SS220 EDIT ADDICTION
 	xeno.flick_attack_overlay(target_carbon, "headbite")
 	xeno.animation_attack_on(target_carbon, pixel_offset = 16)
 	target_carbon.apply_armoured_damage(60, ARMOR_MELEE, BRUTE, "head", 5) //DIE

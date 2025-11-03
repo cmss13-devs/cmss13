@@ -319,34 +319,34 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	var/warn_build = CONFIG_GET(number/client_warn_build)
 
 	if (byond_version < breaking_version || (byond_version == breaking_version && byond_build < breaking_build)) //Out of date client.
-		to_chat_immediate(src, SPAN_DANGER("<b>Your version of BYOND is too old:</b>"))
+		to_chat_immediate(src, SPAN_DANGER("<b>Ваша версия BYOND устарела:</b>"))
 		to_chat_immediate(src, CONFIG_GET(string/client_error_message))
-		to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
-		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later")
-		to_chat_immediate(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
+		to_chat_immediate(src, "Ваша версия BYOND: [byond_build] ([byond_version].[byond_build])")
+		to_chat_immediate(src, "Рекомендуемая версия BYOND: [breaking_build] ([breaking_version].[breaking_build]) или новее")
+		to_chat_immediate(src, "Для загрузки последних версий BYOND посетите <a href=\"https://www.byond.com/download\">официальный сайт</a> продукта.")
 		return FALSE
 
 	if (byond_version < warn_version || (byond_version == warn_version && byond_build < warn_build)) //We have words for this client.
 		if(CONFIG_GET(flag/client_warn_popup))
-			var/msg = "<b>Your version of BYOND may be getting out of date:</b><br>"
+			var/msg = "<b>Ваша версия BYOND устарела:</b><br>"
 			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
-			msg += "Your version: [byond_version].[byond_build]<br>"
-			msg += "Required version to remove this message: [warn_version].[warn_build] or later<br>"
-			msg += "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
+			msg += "Ваша версия BYOND: [byond_build] ([byond_version].[byond_build]).<br>"
+			msg += "Рекомендуемая версия BYOND: [warn_build] ([warn_version].[warn_build]) или новее.<br>"
+			msg += "Для загрузки последних версий BYOND посетите <a href=\"https://www.byond.com/download\">официальный сайт</a> продукта.<br>"
 			src << browse(HTML_SKELETON(msg), "window=warning_popup")
 		else
-			to_chat(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
+			to_chat(src, SPAN_DANGER("<b>Ваша версия BYOND устарела:</b>"))
 			to_chat(src, CONFIG_GET(string/client_warn_message))
-			to_chat(src, "Your version: [byond_version].[byond_build]")
-			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later")
-			to_chat(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
+			to_chat(src, "Ваша версия BYOND: [byond_build] ([byond_version].[byond_build])")
+			to_chat(src, "Рекомендуемая версия BYOND: [warn_build] ([warn_version].[warn_build]) или новее.")
+			to_chat(src, "Для загрузки последних версий BYOND посетите <a href=\"https://www.byond.com/download\">официальный сайт</a> продукта.")
 
 	if (num2text(byond_build) in GLOB.blacklisted_builds)
 		log_access("Failed login: [key] - blacklisted byond build ([byond_version].[byond_build])")
-		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_HUGE("Your version of BYOND is blacklisted.")))
-		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("BYOND build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].")))
-		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Please download a new version of BYOND. If [byond_build] is the latest (which it shouldn't be), you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")))
-		to_chat_immediate(src, SPAN_NOTICE(FONT_SIZE_LARGE("You will now be automatically disconnected. Have a CM day.")))
+		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_HUGE("Ваша версия BYOND находится в чёрном списке.")))
+		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Версия BYOND [byond_build] ([byond_version].[byond_build]) была занесена чёрный список по причине: [GLOB.blacklisted_builds[num2text(byond_build)]]"))) // SS220 EDIT ADDICTION
+		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Пожалуйста установите новую версию BYOND. Для загрузки последних версий BYOND посетите <a href0=\"https://secure.byond.com/download/build\">официальный сайт</a> продукта"))) // SS220 EDIT ADDICTION
+		to_chat_immediate(src, SPAN_NOTICE(FONT_SIZE_LARGE("Вы будете автоматически отключены от сервера. Хорошего дня.")))
 		return FALSE
 
 	return TRUE

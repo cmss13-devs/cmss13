@@ -85,11 +85,17 @@
 	if(capitalized)
 		. = capitalize(.)
 
+/// Применяет одно из "им", "ему", или "ей" в зависимости от пола. Установите TRUE для заглавной буквы.
+/datum/proc/ru_p_thereto(capitalized, temp_gender)
+	. = "им"
+	if(capitalized)
+		. = capitalize(.)
+
 /// Применяет одно из "сами", "само", "сам", или "сама" в зависимости от пола. Установите TRUE для заглавной буквы.
 /datum/proc/ru_p_themselves(capitalized, temp_gender)
 	. = "само"
 
-/// Применяет одно из "них", "него", "него", или "нее" в зависимости от пола. Установите TRUE для заглавной буквы.
+/// Применяет одно из "них", "него", "него", или "неё" в зависимости от пола. Установите TRUE для заглавной буквы.
 /datum/proc/ru_p_theirs(capitalized, temp_gender)
 	. = "него"
 
@@ -135,6 +141,18 @@
 	if(capitalized)
 		. = capitalize(.)
 
+/client/ru_p_thereto(capitalized, temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	. = "им"
+	switch(temp_gender)
+		if(MALE)
+			. = "ему"
+		if(FEMALE)
+			. = "ей"
+	if(capitalized)
+		. = capitalize(.)
+
 /client/ru_p_themselves(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
@@ -157,7 +175,7 @@
 		if(MALE)
 			. = "него"
 		if(FEMALE)
-			. = "нее"
+			. = "неё"
 		if(NEUTER)
 			. = "него"
 		if(PLURAL)
@@ -221,6 +239,22 @@
 	if(capitalized)
 		. = capitalize(.)
 
+/mob/ru_p_thereto(capitalized, temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	. = "им"
+	switch(temp_gender)
+		if(MALE)
+			. = "ему"
+		if(FEMALE)
+			. = "ей"
+		if(NEUTER)
+			. = "им"
+		if(PLURAL)
+			. = "им"
+	if(capitalized)
+		. = capitalize(.)
+
 /mob/ru_p_themselves(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
@@ -243,7 +277,7 @@
 		if(MALE)
 			. = "него"
 		if(FEMALE)
-			. = "нее"
+			. = "неё"
 		if(NEUTER)
 			. = "него"
 		if(PLURAL)

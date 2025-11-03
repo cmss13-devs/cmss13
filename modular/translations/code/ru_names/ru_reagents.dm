@@ -11,15 +11,6 @@
 	if(isnull(GLOB.ru_reagent_names))
 		return list()
 
-	if(!length(GLOB.ru_reagent_names))
-		var/reagents_path = "[PATH_TO_TRANSLATE_DATA]/ru_reagents.toml"
-		if(!length(reagents_path) || !fexists(file(reagents_path)))
-			return list()
-		var/list/file_data = rustg_read_toml_file(reagents_path)
-		for(var/key in file_data)
-			if(GLOB.ru_reagent_names[key])
-				continue
-			GLOB.ru_reagent_names[key] = file_data[key]
 	if(GLOB.ru_reagent_names[formatted_name])
 		var/list/entry = GLOB.ru_reagent_names[formatted_name]
 

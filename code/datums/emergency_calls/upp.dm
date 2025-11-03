@@ -46,10 +46,10 @@
 		to_chat(M, SPAN_BOLD("In an effort to protect the vulnerable MV-35 from the encroaching UA/USCM imperialists, the leadership of your battalion has opted this to be the best opportunity to strike at the Falling Falcons to catch them off guard."))
 	else
 		to_chat(M, SPAN_BOLD("Despite this, the leadership of your battalion questions what may have prompted the distress signal from their rivals. Your squad is to find out why and to render aid to the beleaguered UA forces."))
-	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to Podpolkovnik Ganbaatar.")))
-	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the Smoldering Sons.")))
-	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the UPP.")))
-	to_chat(M, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Слава подполковнику Ганбаатару.")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Слава Сынам Тлена.")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Слава СПН.")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_HUGE("Вы [hostility? "ВРАЖДЕБНЫ":"ДРУЖЕЛЮБНЫ"] к ККМП!")))
 
 ///////////////////UPP///////////////////////////
 

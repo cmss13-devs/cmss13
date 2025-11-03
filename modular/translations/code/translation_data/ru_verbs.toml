@@ -16,7 +16,6 @@
 "hammers" = "забивает"
 "bap" = "бьете"
 "baps" = "бьет"
-"hit" = "ударяете"
 "hits" = "ударяет"
 "prod" = "протыкываете"
 "prods" = "протыкывает"
@@ -38,7 +37,6 @@
 "tears" = "разрывает"
 "lacerate" = "терзаете"
 "lacerates" = "терзает"
-"cut" = "разрезаете"
 "cuts" = "разрезает"
 "chop" = "рубите"
 "chops" = "рубит"
@@ -407,8 +405,6 @@
 "slash" = "режете"
 "slashes" = "режет"
 # MARK: Organs
-"bashed" = "колотите"
-"slashed" = "режете"
 "kicked" = "пинаете"
 "stomped" = "растаптываете"
 "thump" = "стучите"
@@ -659,9 +655,12 @@
 [say_verbs]
 # atom/movable
 "says" = "говорит"
+"broadcasts" = "вещает"
 "asks" = "спрашивает"
 "exclaims" = "восклицает"
 "whispers" = "шепчет"
+"says softly" = "шепчет"
+"says quietly" = "шепчет"
 "sings" = "поет"
 "yells" = "кричит"
 # sign language

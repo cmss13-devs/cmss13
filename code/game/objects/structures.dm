@@ -122,9 +122,10 @@
 	var/list/climbdata = list("climb_delay" = climb_delay)
 	SEND_SIGNAL(user, COMSIG_LIVING_CLIMB_STRUCTURE, climbdata)
 	var/final_climb_delay = climbdata["climb_delay"] //so it doesn't set structure's climb_delay to permanently be modified
+	var/ru_name = declent_ru(ACCUSATIVE) // SS220 EDIT ADDICTION
 
-	var/climb_over_string = final_climb_delay < 1 SECONDS ? "vaulting over" : "climbing onto"
-	user.visible_message(SPAN_WARNING("[user] starts [flags_atom & ON_BORDER ? "leaping over" : climb_over_string] \the [src]!"))
+	var/climb_over_string = final_climb_delay < 1 SECONDS ? "перепрыгивать через" : "залезать на"
+	user.visible_message(SPAN_WARNING("[user] начинает [flags_atom & ON_BORDER ? "перепрыгивать через" : climb_over_string] [ru_name]!")) // SS220 EDIT ADDICTION
 
 	if(!do_after(user, final_climb_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, numticks = 2))
 		return FALSE
@@ -138,11 +139,11 @@
 		if(user.loc == TT)
 			TT = get_turf(src)
 
-	var/climb_string = final_climb_delay < 1 SECONDS ? "[user] vaults over \the [src]!" : "[user] climbs onto \the [src]!"
+	var/climb_string = final_climb_delay < 1 SECONDS ? "[user] перепрыгивает через [ru_name]!" : "[user] залезает на [ru_name]!" // SS220 EDIT ADDICTION
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(skillcheck(H, SKILL_ENDURANCE, SKILL_ENDURANCE_MASTER))
-			climb_string = "[user] tactically vaults over \the [src]!"
+			climb_string = "[user] тактикульно перепрыгивает через [ru_name]!" // SS220 EDIT ADDICTION
 	user.visible_message(SPAN_WARNING(climb_string))
 
 	var/list/grabbed_things = list()

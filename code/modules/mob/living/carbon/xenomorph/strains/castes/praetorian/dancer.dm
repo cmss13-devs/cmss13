@@ -67,17 +67,17 @@
 		return
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
-		to_chat(dancer_user, SPAN_XENODANGER("We must target a hostile!"))
+		to_chat(dancer_user, SPAN_XENODANGER("Мы должны выбрать враждебную цель!"))
 		return
 
 	if (!dancer_user.Adjacent(target_atom))
-		to_chat(dancer_user, SPAN_XENODANGER("We must be adjacent to [target_atom]!"))
+		to_chat(dancer_user, SPAN_XENODANGER("Мы должны быть рядом с [target_atom]!")) // SS220 EDIT ADDICTION
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if (target_carbon.stat == DEAD)
-		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would we want to attack it?"))
+		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] мёртв, зачем нам его атаковать?")) // SS220 EDIT ADDICTION
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -141,7 +141,7 @@
 
 	behavior.dodge_activated = TRUE
 	button.icon_state = "template_active"
-	to_chat(dodge_user, SPAN_XENOHIGHDANGER("We can now dodge through mobs!"))
+	to_chat(dodge_user, SPAN_XENOHIGHDANGER("Теперь мы можем уклоняться от врагов!"))
 	dodge_user.speed_modifier -= speed_buff_amount
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)
 	dodge_user.recalculate_speed()
@@ -167,7 +167,7 @@
 		dodge_remove.speed_modifier += speed_buff_amount
 		dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
 		dodge_remove.recalculate_speed()
-		to_chat(dodge_remove, SPAN_XENOHIGHDANGER("We can no longer dodge through mobs!"))
+		to_chat(dodge_remove, SPAN_XENOHIGHDANGER("Мы больше не можем уклоняться от врагов!"))
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/dancer_user = owner
@@ -184,13 +184,13 @@
 		return
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
-		to_chat(dancer_user, SPAN_XENODANGER("We must target a hostile!"))
+		to_chat(dancer_user, SPAN_XENODANGER("Мы должны выбрать враждебную цель!"))
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if (target_carbon.stat == DEAD)
-		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would we want to attack it?"))
+		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] мёртв, зачем нам его трогать?")) // SS220 EDIT ADDICTION
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -249,17 +249,17 @@
 		if(Xeno.mob_size >= MOB_SIZE_BIG)
 			xeno_smashed = TRUE
 			shake_camera(Xeno, 10, 1)
-			dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] smashes [Xeno] with it's tail!"), SPAN_XENODANGER("We smash [Xeno] with your tail!"))
-			to_chat(Xeno, SPAN_XENOHIGHDANGER("You feel dizzy as [dancer_user] smashes you with their tail!"))
+			dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] хлыщет [Xeno] своим хвостом!"), SPAN_XENODANGER("Мы хлыщем [Xeno] своим хвостом!")) // SS220 EDIT ADDICTION
+			to_chat(Xeno, SPAN_XENOHIGHDANGER("Вы чувствуете головокружение, когда [dancer_user] хлыщет вас хвостом!")) // SS220 EDIT ADDICTION
 			dancer_user.animation_attack_on(Xeno)
 
 	if(!xeno_smashed)
 		if (stun_duration > 0)
 			target_carbon.apply_effect(stun_duration, WEAKEN)
-		dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] trips [target_atom] with it's tail!"), SPAN_XENODANGER("We trip [target_atom] with our tail!"))
+		dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] хлыщет [target_atom] своим хвостом!"), SPAN_XENODANGER("Мы хлыщем [target_atom] своим хвостом!")) // SS220 EDIT ADDICTION
 		dancer_user.spin_circle()
 		dancer_user.emote("tail")
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You are swept off your feet by [dancer_user]!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[dancer_user] сбивает вас с ног!")) // SS220 EDIT ADDICTION
 	if (daze_duration > 0)
 		target_carbon.apply_effect(daze_duration, DAZE)
 	playsound(dancer_user, 'sound/effects/hit_kick.ogg', 75, 1)

@@ -28,7 +28,7 @@
 		return
 
 	if(!allowed(user))
-		to_chat(usr, SPAN_WARNING("Access denied."))
+		to_chat(usr, SPAN_WARNING("Доступ запрещён."))
 		return FALSE
 
 	if(!istype(loc.loc, /area/almayer/command/cic)) //Has to be in the CIC. Can also be a generic CIC area to communicate, if wanted.

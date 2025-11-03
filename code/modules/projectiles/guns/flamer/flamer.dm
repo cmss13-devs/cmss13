@@ -710,7 +710,7 @@
 		ignited_morb.apply_damage(firedamage, BURN)
 		animation_flash_color(ignited_morb, tied_reagent.burncolor) //pain hit flicker
 
-		var/msg = "Augh! You are roasted by the flames!"
+		var/msg = "Аааа! Вы загораетесь!!!"
 		if (isxeno(ignited_morb))
 			to_chat(ignited_morb, SPAN_XENODANGER(msg))
 		else

@@ -32,7 +32,7 @@
 	var/info //What's actually written on the paper.
 	var/info_links //A different version of the paper which includes html links at fields and EOF
 	var/stamps //The (text for the) stamps on the paper.
-	var/stamps_list // SS220 - EDIT ADDITTION
+	var/stamps_list // SS220 EDIT ADDICTION
 	var/fields //Amount of user created fields
 	var/list/stamped
 	var/ico[0] //Icons and
@@ -59,7 +59,7 @@
 /obj/item/paper/Initialize(mapload, photo_list)
 	. = ..()
 	stamps = ""
-	stamps_list = list() // SS220 - EDIT ADDITTION
+	stamps_list = list() // SS220 EDIT ADDICTION
 	src.photo_list = photo_list
 
 	if(info != initial(info))
@@ -229,7 +229,7 @@
 /obj/item/paper/proc/clearpaper()
 	info = null
 	stamps = null
-	stamps_list = list() // SS220 - EDIT ADDITTION
+	stamps_list = list() // SS220 EDIT ADDICTION
 	stamped = list()
 	overlays.Cut()
 	updateinfolinks()
@@ -491,14 +491,14 @@
 		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/clipboard) ) && loc.loc != user && user.get_active_hand() != P))
 			return
 
-		// SS220 - START EDIT ADDITTION
-		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>На этом документе стоит [declent_ru_initial(P.name, NOMINATIVE, P.name)].</i>"
+		// SS220 START EDIT ADDICTION
+		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>На этом документе стоит [P.declent_ru()].</i>"
 		stamps_list += list(list(
 			"name" = P.icon_state,
 			"position" = list("x" = rand(20, 80), "y" = rand(0, 100)),
 			"rotation" = rand(-60, 60)
 		))
-		// SS220 - END EDIT ADDITTION
+		// SS220 END EDIT ADDICTION
 
 		playsound(src, 'sound/effects/alien_footstep_medium3.ogg', 20, TRUE, 6)
 
@@ -785,7 +785,7 @@
 			GLOB.chemical_reagents_list[chemical_to_generate.id] = chemical_to_generate
 			chemical_to_generate.generate_assoc_recipe()
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	var/txt = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Официальный документ Вейланд-Ютани</B><BR>Запись об эксперименте</I><HR><H2>" // SS220 - EDIT ADDITTION
+	var/txt = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Официальный документ Вейланд-Ютани</B><BR>Запись об эксперименте</I><HR><H2>" // SS220 EDIT ADDICTION
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/reaction_generated = GLOB.chemical_reactions_list[chemical_to_generate.id]
@@ -826,7 +826,7 @@
 				txt += "<BR>Critically Overdoses at: [chemical_to_generate.overdose_critical] units</font><BR>\n"
 				icon_state = "paper_wy_full_report"
 			else
-				txt += "<BR>\nВ настоящее время проводятся испытания для выявления химических свойств.<BR>\n" // SS220 - EDIT ADDITTION
+				txt += "<BR>\nВ настоящее время проводятся испытания для выявления химических свойств.<BR>\n" // SS220 EDIT ADDICTION
 			var/is_volatile = FALSE
 			if(chemical_to_generate.chemfiresupp)
 				is_volatile = TRUE
@@ -836,22 +836,22 @@
 						is_volatile = TRUE
 						break
 			if(is_volatile)
-				txt += "<BR><B>\nПРЕДУПРЕЖДЕНИЕ: НЕСТАБИЛЬНЫЙ РЕАГЕНТ. СМЕШИВАЙТЕ ОСТОРОЖНО.</B><BR>\n" // SS220 - EDIT ADDITTION
-			txt += "<BR>\n<HR> - <I>Вейланд-Ютани</I>" // SS220 - EDIT ADDITTION
+				txt += "<BR><B>\nПРЕДУПРЕЖДЕНИЕ: НЕСТАБИЛЬНЫЙ РЕАГЕНТ. СМЕШИВАЙТЕ ОСТОРОЖНО.</B><BR>\n" // SS220 EDIT ADDICTION
+			txt += "<BR>\n<HR> - <I>Вейланд-Ютани</I>" // SS220 EDIT ADDICTION
 		if("test")
-			name = "Эксперимент [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]" // SS220 - EDIT ADDITTION
+			name = "Эксперимент [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]" // SS220 EDIT ADDICTION
 			icon_state = "paper_wy_synthesis"
-			txt += "Примечание для [name]</H2></center>" // SS220 - EDIT ADDITTION
-			txt += "Испытуемый <I>[rand(10000,99999)]</I> испытал [pick(chemical_to_generate.properties)] эффекта во время тестирования [chemical_to_generate.name]. <BR>\nНа текущий момент проводятся испытания для выявления других свойств.<BR>\n" // SS220 - EDIT ADDITTION
-			txt += "<BR>\n<HR> - <I>Вейланд-Ютани</I>" // SS220 - EDIT ADDITTION
+			txt += "Примечание для [name]</H2></center>" // SS220 EDIT ADDICTION
+			txt += "Испытуемый <I>[rand(10000,99999)]</I> испытал [pick(chemical_to_generate.properties)] эффекта во время тестирования [chemical_to_generate.name]. <BR>\nНа текущий момент проводятся испытания для выявления других свойств.<BR>\n" // SS220 EDIT ADDICTION
+			txt += "<BR>\n<HR> - <I>Вейланд-Ютани</I>" // SS220 EDIT ADDICTION
 		if("grant")
 			if(!grant)
 				grant = rand(2,4)
 			icon_state = "paper_wy_grant"
-			name = "Грант на исследования" // SS220 - EDIT ADDITTION
-			txt += "Грант на исследования Вейланд-Ютани</H2></center>" // SS220 - EDIT ADDITTION
-			txt += "Уважаемый исследователь. Компания Вейланд-Ютани проявила большой интерес к вашим последним научным достижениям. Для дальнейшей поддержки вашей работы мы направили вам этот исследовательский грант в размере [grant] кредитов. Пожалуйста, отсканируйте данные в вашем терминале Вейланд-Ютани, чтобы получить его.<BR>\n" // SS220 - EDIT ADDITTION
-			txt += "<BR>\n<HR> - <I>Вейланд-Ютани</I>" // SS220 - EDIT ADDITTION
+			name = "Грант на исследования" // SS220 EDIT ADDICTION
+			txt += "Грант на исследования Вейланд-Ютани</H2></center>" // SS220 EDIT ADDICTION
+			txt += "Уважаемый исследователь. Компания Вейланд-Ютани проявила большой интерес к вашим последним научным достижениям. Для дальнейшей поддержки вашей работы мы направили вам этот исследовательский грант в размере [grant] кредитов. Пожалуйста, отсканируйте данные в вашем терминале Вейланд-Ютани, чтобы получить его.<BR>\n" // SS220 EDIT ADDICTION
+			txt += "<BR>\n<HR> - <I>Вейланд-Ютани</I>" // SS220 EDIT ADDICTION
 		if("ciph_hint")
 			icon_state = "paper_wy_words"
 			name = "Transmission Intercepted"

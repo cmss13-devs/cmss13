@@ -274,7 +274,7 @@
 		SSticker.mode.flags_round_type |= MODE_DS_LANDED
 
 	if(xeno_announce)
-		xeno_announcement(SPAN_XENOANNOUNCE("Железная птица приземлилась."), "everything")
+		xeno_announcement(SPAN_XENOANNOUNCE("Корабль-носитель приземлился."), "everything")
 		xeno_announce = FALSE
 
 	for(var/obj/structure/dropship_equipment/eq as anything in dropship.equipments)
@@ -377,5 +377,3 @@
 /datum/map_template/shuttle/devana
 	name = "Devana"
 	shuttle_id = DROPSHIP_DEVANA
-
-

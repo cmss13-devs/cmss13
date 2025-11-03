@@ -211,7 +211,7 @@ nominative = "массивный ожоговый шрам"
 gender = "male"
 
 ["bruised artery"]
-nominative = "ушибленная артерия"
+nominative = "повреждена артерия"
 gender = "female"
 
 ["clotted stump"]
@@ -496,7 +496,7 @@ gender = "plural"
 genitive = "массивных ожоговых шрамов"
 
 ["bruised arterys"]
-nominative = "ушибленные артерии"
+nominative = "повреждённые артерии"
 gender = "plural"
 genitive = "ушибленных артерий"
 

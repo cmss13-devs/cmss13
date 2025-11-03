@@ -72,8 +72,8 @@
 	..()
 	safety = !safety
 	src.icon_state = "[sprite_name][!safety]"
-	src.desc = "The safety is [safety ? "on" : "off"]."
-	to_chat(user, "The safety is [safety ? "on" : "off"].")
+	src.desc = "[safety ? "Предохранитель поставлен." : "Предохранитель cнят."]."
+	to_chat(user, "[safety ? "Предохранитель поставлен." : "Предохранитель cнят."].")
 
 /obj/item/tool/extinguisher/attack(mob/living/M, mob/living/user)
 	if (M == user && !safety && reagents && reagents.total_volume > EXTINGUISHER_WATER_USE_AMT)

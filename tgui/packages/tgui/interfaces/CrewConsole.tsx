@@ -127,13 +127,13 @@ const CrewTable = (props) => {
   return (
     <Table>
       <Table.Row>
-        <Table.Cell bold>Name</Table.Cell>
+        <Table.Cell bold>Имя</Table.Cell>
         <Table.Cell bold collapsing />
         <Table.Cell bold collapsing textAlign="center">
-          Vitals
+          Показатели
         </Table.Cell>
         <Table.Cell bold textAlign="center">
-          Position
+          Местоположение
         </Table.Cell>
         {!!data.link_allowed && (
           <Table.Cell bold collapsing textAlign="center">

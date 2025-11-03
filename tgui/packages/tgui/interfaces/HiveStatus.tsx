@@ -15,7 +15,7 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import { CastesRu } from './BandaMarines/XenoCastes';
+import { CastesRu, StrainRu } from './BandaMarines/XenoCastes';
 
 const redFont = {
   color: 'red',
@@ -123,7 +123,7 @@ type XenoKey = {
 };
 
 type TierSlot = { open_slots: string; guaranteed_slots: string };
-type XenoInfo = { name: string; straing: string; ref: string };
+type XenoInfo = { name: string; strain: string; ref: string };
 type XenoVitals = {
   health: number;
   plasma: number;
@@ -499,7 +499,7 @@ const XenoList = (props) => {
               <StatusIcon entry={entry} />
             </Table.Cell>
             <Table.Cell>{entry.name}</Table.Cell>
-            <Table.Cell>{entry.strain}</Table.Cell>
+            <Table.Cell>{StrainRu(entry.strain)}</Table.Cell>
             <Table.Cell>{entry.location}</Table.Cell>
             <Table.Cell>
               {entry.health < 30 ? (

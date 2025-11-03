@@ -24,7 +24,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 /obj/structure/machinery/computer/supply/asrs/upp/attack_hand(mob/user as mob) //does not return when on non alamyer z level
 	if(!allowed(user))
-		to_chat(user, SPAN_DANGER("Access Denied."))
+		to_chat(user, SPAN_DANGER("Доступ запрещён."))
 		return
 
 	if(..())

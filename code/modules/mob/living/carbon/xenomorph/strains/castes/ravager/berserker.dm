@@ -70,7 +70,7 @@
 		if (rage == max_rage)
 			bound_xeno.add_filter("berserker_rage", 1, list("type" = "outline", "color" = "#000000ff", "size" = 1))
 			rage_lock()
-			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We feel a euphoric rush as we reach max rage! We are LOCKED at max Rage!"))
+			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Мы чувствуем эйфорический прилив, когда достигаем ПИКА своей ярости!"))
 
 	// HP vamp
 	if(!bound_xeno.on_fire)
@@ -135,8 +135,8 @@
 		return original_damage
 
 	if (next_slash_buffed)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [A]!"))
-		to_chat(A, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Мы значительно усиливаем нашу атаку, замедляя [A]!")) // SS220 EDIT ADDICTION
+		to_chat(A, SPAN_XENOHIGHDANGER("Вы чувствуете резкую боль, когда [bound_xeno] атакует и замедляет вас!")) // SS220 EDIT ADDICTION
 		A.apply_effect(get_xeno_stun_duration(A, slash_slow_duration), SLOW)
 		next_slash_buffed = FALSE
 
@@ -164,7 +164,7 @@
 	if (istype(behavior))
 		behavior.next_slash_buffed = TRUE
 
-	to_chat(xeno, SPAN_XENODANGER("Our next slash will slow!"))
+	to_chat(xeno, SPAN_XENODANGER("Наша следующая атака замедлит врагов!"))
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 
@@ -183,7 +183,7 @@
 	if (istype(xeno))
 		xeno.speed_modifier += speed_buff
 		xeno.recalculate_speed()
-		to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our speed wane!"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("Мы чувствуем, что наша скорость передвижения снижается!"))
 
 /datum/action/xeno_action/onclick/apprehend/proc/unbuff_slash()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -196,7 +196,7 @@
 			return
 		behavior.next_slash_buffed = FALSE
 
-	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer slow enemies!"))
+	to_chat(xeno, SPAN_XENODANGER("Мы слишком долго ждали, наша атака больше не замедлит врагов!"))
 
 
 /datum/action/xeno_action/activable/clothesline/use_ability(atom/affected_atom)
@@ -209,7 +209,7 @@
 		return
 
 	if (!isxeno_human(affected_atom) || xeno.can_not_harm(affected_atom))
-		to_chat(xeno, SPAN_XENOWARNING("We must target a hostile!"))
+		to_chat(xeno, SPAN_XENOWARNING("Мы должны выбрать враждебную цель!"))
 		return
 
 	if (!xeno.Adjacent(affected_atom))
@@ -286,7 +286,7 @@
 
 	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
 	if (behavior.rage == 0)
-		to_chat(xeno, SPAN_XENODANGER("We cannot eviscerate when we have 0 rage!"))
+		to_chat(xeno, SPAN_XENODANGER("Мы не можем потрошить, пока нас не переполняет ярость!"))
 		return
 	damage = damage_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
 	range = range_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
@@ -296,9 +296,9 @@
 	apply_cooldown()
 
 	if (range > 1)
-		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a massive strike!"))
+		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] начинает вскапывать землю, готовясь к мощному удару!"), SPAN_XENOHIGHDANGER("Мы начинаем вскапывать землю, готовясь к мощному удару!")) // SS220 EDIT ADDICTION
 	else
-		xeno.visible_message(SPAN_XENODANGER("[xeno] begins digging in for a strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a strike!"))
+		xeno.visible_message(SPAN_XENODANGER("[xeno] начинает вскапывать землю, готовясь к удару!"), SPAN_XENOHIGHDANGER("Мы начинаем вскапывать землю, готовясь к удару!")) // SS220 EDIT ADDICTION
 
 	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 	xeno.anchored = TRUE
@@ -321,12 +321,12 @@
 				continue
 
 			if (range > 1)
-				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [targets_to_hit]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [targets_to_hit]!"))
+				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] разрывает внутренности [targets_to_hit]!"), SPAN_XENOHIGHDANGER("Мы разрываем внутренности [targets_to_hit]!"))
 				targets_to_hit.spawn_gibs()
 				playsound(get_turf(targets_to_hit), 'sound/effects/gibbed.ogg', 30, 1)
 				targets_to_hit.apply_effect(get_xeno_stun_duration(targets_to_hit, 1), WEAKEN)
 			else
-				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [targets_to_hit]!"), SPAN_XENODANGER("We claw [targets_to_hit]!"))
+				xeno.visible_message(SPAN_XENODANGER("[xeno] царапает [targets_to_hit]!"), SPAN_XENODANGER("Мы царапаем [targets_to_hit]!")) // SS220 EDIT ADDICTION
 				playsound(get_turf(targets_to_hit), "alien_claw_flesh", 30, 1)
 
 			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, damage), ARMOR_MELEE, BRUTE, "chest", 20)

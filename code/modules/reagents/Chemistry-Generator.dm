@@ -400,11 +400,11 @@
 /datum/reagent/proc/generate_description()
 	var/info
 	for(var/datum/chem_property/P in properties)
-		info += "<BR><B>[capitalize(P.name)] (Уровень [P.level])</B> - [P.description]<BR>" // SS220 - EDIT ADDITTION
+		info += "<BR><B>[capitalize(P.name)] (Уровень [P.level])</B> - [P.description]<BR>" // SS220 EDIT ADDICTION
 		if(P == PROPERTY_HYPERTHERMIC)
-			info += "<I>ПРЕДУПРЕЖДЕНИЕ: Смешивание слишком большого количества за раз может привести к возгоранию! Остерегайтесь смешивать больше, чем порог передозировки!</I>" // SS220 - EDIT ADDITTION
+			info += "<I>ПРЕДУПРЕЖДЕНИЕ: Смешивание слишком большого количества за раз может привести к возгоранию! Остерегайтесь смешивать больше, чем порог передозировки!</I>" // SS220 EDIT ADDICTION
 		else if(P == PROPERTY_EXPLOSIVE)
-			info += "<I>ПРЕДУПРЕЖДЕНИЕ: Смешивание слишком большого количества за раз может привести к взрыву! Остерегайтесь смешивать больше, чем порог передозировки!</I>" // SS220 - EDIT ADDITTION
+			info += "<I>ПРЕДУПРЕЖДЕНИЕ: Смешивание слишком большого количества за раз может привести к взрыву! Остерегайтесь смешивать больше, чем порог передозировки!</I>" // SS220 EDIT ADDICTION
 	description = info
 
 /datum/reagent/proc/generate_assoc_recipe(list/complexity, list/required_reagents_to_add)
@@ -435,4 +435,3 @@
 			return FALSE
 		GLOB.generated_properties["neutral"] += P
 	return TRUE
-

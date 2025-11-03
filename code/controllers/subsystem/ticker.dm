@@ -68,7 +68,7 @@ SUBSYSTEM_DEF(ticker)
 				return
 			if(isnull(start_at))
 				start_at = time_left || world.time + (CONFIG_GET(number/lobby_countdown) * 10)
-			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, margin_top = 2, margin_bottom = 0, html = SPAN_ROUNDHEADER("Добро пожаловать в лобби [CONFIG_GET(string/servername)]!")) // SS220 EDIT
+			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, margin_top = 2, margin_bottom = 0, html = SPAN_ROUNDHEADER("Добро пожаловать в лобби [CONFIG_GET(string/servername)]!")) // SS220 EDIT ADDICTION
 			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, margin_top = 0, html = SPAN_ROUNDBODY("Пожалуйста, настройте вашего персонажа и приготовьтесь к игре. Игра начнется через [floor(time_left / 10) || CONFIG_GET(number/lobby_countdown)] секунд."))  // SS220 EDIT
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PREGAME_LOBBY)
 			current_state = GAME_STATE_PREGAME
@@ -175,7 +175,7 @@ SUBSYSTEM_DEF(ticker)
 	), 3 SECONDS)
 
 /datum/controller/subsystem/ticker/proc/setup()
-	to_chat(world, SPAN_BOLDNOTICE("Enjoy the game!"))
+	to_chat(world, SPAN_BOLDNOTICE("Хорошей игры!")) // SS220 EDIT ADDICTION
 	var/init_start = world.timeofday
 	//Create and announce mode
 	mode = config.pick_mode(GLOB.master_mode)
@@ -280,7 +280,7 @@ SUBSYSTEM_DEF(ticker)
 	save_mode(CONFIG_GET(string/gamemode_default))
 
 	if(GLOB.round_statistics)
-		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [GLOB.round_statistics.round_name]</B>")))
+		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Новый раунд! [GLOB.round_statistics.round_name]</B>"))) // SS220 EDIT ADDICTION
 
 	GLOB.supply_controller.start_processing()
 	GLOB.supply_controller_upp.start_processing()
@@ -484,7 +484,7 @@ SUBSYSTEM_DEF(ticker)
 		CRASH("send_tip_of_the_round() failed somewhere")
 
 	if(message)
-		to_chat(world, SPAN_PURPLE("<b>Tip of the round: </b>[html_encode(message)]"))
+		to_chat(world, SPAN_PURPLE("<b>Совет раунда: </b>[html_encode(message)]")) // SS220 EDIT ADDICTION
 		return TRUE
 	else
 		return FALSE

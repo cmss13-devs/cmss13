@@ -194,7 +194,7 @@
 			if(open)
 				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
 			else
-				to_chat(user, SPAN_WARNING("Access denied."))
+				to_chat(user, SPAN_WARNING("Доступ запрещён."))
 
 	else if (istype(W, /obj/item/reagent_container/glass))
 		if(src.locked)

@@ -10,7 +10,7 @@
     border-radius: 4px;
   }
   .Table__cell {
-    padding: 0px !important;
+    padding: 0 !important;
     border-bottom: 1px solid white !important;
   }
   tr:nth-child(even) {
@@ -31,5 +31,186 @@
   .AwardCell {
     width: 32px;
     height: 32px;
+  }
+
+  .playtimerank {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .uscm,
+  .xeno,
+  .weyland {
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .uscm {
+    background-image: url('../assets/titlebar-uscm.png');
+  }
+
+  .xeno {
+    background-image: url('../assets/titlebar-xeno.png');
+  }
+
+  .weyland {
+    background-image: url('../assets/titlebar-weyland.png');
+  }
+
+  .private1 {
+    @extend .playtimerank;
+    background-image: url('../assets/private1.svg');
+  }
+
+  .private2 {
+    @extend .playtimerank;
+    background-image: url('../assets/private2.svg');
+  }
+
+  .private3 {
+    @extend .playtimerank;
+    background-image: url('../assets/private3.svg');
+  }
+
+  .private4 {
+    @extend .playtimerank;
+    background-image: url('../assets/private4.svg');
+  }
+
+  .private5 {
+    @extend .playtimerank;
+    background-image: url('../assets/private5.svg');
+  }
+
+  .private6 {
+    @extend .playtimerank;
+    background-image: url('../assets/private6.svg');
+  }
+
+  .sergeant1 {
+    @extend .playtimerank;
+    background-image: url('../assets/sergeant1.svg');
+  }
+
+  .sergeant2 {
+    @extend .playtimerank;
+    background-image: url('../assets/sergeant2.svg');
+  }
+
+  .sergeant3 {
+    @extend .playtimerank;
+    background-image: url('../assets/sergeant3.svg');
+  }
+
+  .sergeant4 {
+    @extend .playtimerank;
+    background-image: url('../assets/sergeant4.svg');
+  }
+
+  .sergeant5 {
+    @extend .playtimerank;
+    background-image: url('../assets/sergeant5.svg');
+  }
+
+  .sergeant6 {
+    @extend .playtimerank;
+    background-image: url('../assets/sergeant6.svg');
+  }
+
+  .officer1 {
+    @extend .playtimerank;
+    background-image: url('../assets/officer1.svg');
+  }
+
+  .officer2 {
+    @extend .playtimerank;
+    background-image: url('../assets/officer2.svg');
+  }
+
+  .officer3 {
+    @extend .playtimerank;
+    background-image: url('../assets/officer3.svg');
+  }
+
+  .officer4 {
+    @extend .playtimerank;
+    background-image: url('../assets/officer4.svg');
+  }
+
+  .officer5 {
+    @extend .playtimerank;
+    background-image: url('../assets/officer5.svg');
+  }
+
+  .officer6 {
+    @extend .playtimerank;
+    background-image: url('../assets/officer6.svg');
+  }
+
+  .general1 {
+    @extend .playtimerank;
+    background-image: url('../assets/general1.svg');
+  }
+
+  .general2 {
+    @extend .playtimerank;
+    background-image: url('../assets/general2.svg');
+  }
+
+  .general3 {
+    @extend .playtimerank;
+    background-image: url('../assets/general3.svg');
+  }
+
+  .general4 {
+    @extend .playtimerank;
+    background-image: url('../assets/general4.svg');
+  }
+
+  .general5 {
+    @extend .playtimerank;
+    background-image: url('../assets/general5.svg');
+  }
+
+  .general6 {
+    @extend .playtimerank;
+    background-image: url('../assets/general6.svg');
+  }
+
+  .marshal1 {
+    @extend .playtimerank;
+    background-image: url('../assets/marshal1.svg');
+  }
+
+  .marshal2 {
+    @extend .playtimerank;
+    background-image: url('../assets/marshal2.svg');
+  }
+
+  .marshal3 {
+    @extend .playtimerank;
+    background-image: url('../assets/marshal3.svg');
+  }
+
+  .marshal4 {
+    @extend .playtimerank;
+    background-image: url('../assets/marshal4.svg');
+  }
+
+  .marshal5 {
+    @extend .playtimerank;
+    background-image: url('../assets/marshal5.svg');
+  }
+
+  .marshal6 {
+    @extend .playtimerank;
+    background-image: url('../assets/marshal6.svg');
   }
 }

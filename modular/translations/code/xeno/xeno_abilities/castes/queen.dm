@@ -7,6 +7,7 @@
 /datum/action/xeno_action/onclick/grow_ovipositor
 	desc = "Позволяет вырастить яйцеклад с задержкой в %TIME%, если вы находитесь на траве своего улья.\
 		<br>Будучи на яйцекладе, члены улья будут получать прогресс эволюции, лидеры распространять ваши феромоны, а также вы сможете строить."
+	cooldown_message = "Вы снова готовы создать яйцеклад."
 
 /datum/action/xeno_action/onclick/grow_ovipositor/apply_replaces_in_desc()
 	replace_in_desc("%TIME%", 20, DESCRIPTION_REPLACEMENT_TIME)
@@ -24,6 +25,7 @@
 
 /datum/action/xeno_action/onclick/screech
 	desc = "Оглушает всех в области видимости в радиусе %RANGE% на %STUN%, и в радиусе %RANGE_FAR% на %STUN_FAR%"
+	cooldown_message = "Мы снова полны сил, чтобы издать пронзительный крик."
 
 /datum/action/xeno_action/onclick/screech/apply_replaces_in_desc()
 	replace_in_desc("%RANGE%", 4, DESCRIPTION_REPLACEMENT_DISTANCE)
@@ -41,6 +43,7 @@
 
 /datum/action/xeno_action/activable/gut
 	desc = "После задержки в %TIME% вы разрываете тело противника."
+	cooldown_message = "Вы чувствуете, как ярость возвращается и вы готовы разорвать тело противника."
 
 /datum/action/xeno_action/activable/gut/apply_replaces_in_desc()
 	replace_in_desc("%TIME%", 8, DESCRIPTION_REPLACEMENT_TIME)

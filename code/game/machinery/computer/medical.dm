@@ -43,7 +43,7 @@
 		return
 
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return
 
 	if(!is_mainship_level(z))
@@ -273,7 +273,7 @@
 
 	var/mob/living/carbon/human/user = ui.user
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return
 
 	playsound(src, get_sfx("terminal_button"), 25, FALSE)

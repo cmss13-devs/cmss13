@@ -95,8 +95,8 @@
 	if(!round_stats)
 		var/operation_name
 		operation_name = "[pick(GLOB.operation_titles)]"
-		operation_name += " [pick(GLOB.operation_prefixes)]"
-		operation_name += "-[pick(GLOB.operation_postfixes)]"
+		operation_name += " «[pick(GLOB.operation_prefixes)]" // SS220 EDIT ADDICTION
+		operation_name += "-[pick(GLOB.operation_postfixes)]»" // SS220 EDIT ADDICTION
 
 		// Round stats
 		round_stats = DB_ENTITY(/datum/entity/statistic/round)

@@ -72,8 +72,10 @@
 #define SPAN_ALERT(X) "<span class='alert'>[X]</span>"
 
 #define SPAN_INFO(X) "<span class='info'>[X]</span>"
+#define SPAN_INFO_BOLD(X) "<span class='infobold'>[X]</span>" // SS220 EDIT ADDICTION
 
 #define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
+#define SPAN_DANGER_BOLD(X) "<span class='bolddanger'>[X]</span>" // SS220 EDIT ADDICTION
 #define SPAN_USERDANGER(X) "<span class='userdanger'>[X]</span>"
 #define SPAN_HIGHDANGER(X) "<span class='highdanger'>[X]</span>"
 

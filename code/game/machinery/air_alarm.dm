@@ -970,7 +970,7 @@ table tr:first-child th:first-child { border: none;}
 						to_chat(user, SPAN_NOTICE(" You [locked ? "lock" : "unlock"] the Air Alarm interface."))
 						updateUsrDialog()
 					else
-						to_chat(user, SPAN_DANGER("Access denied."))
+						to_chat(user, SPAN_DANGER("Доступ запрещён."))
 			return
 
 		if(1)
@@ -1044,5 +1044,3 @@ table tr:first-child th:first-child { border: none;}
 
 //Almayer version
 /obj/structure/machinery/alarm/almayer
-
-

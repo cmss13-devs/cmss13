@@ -461,6 +461,11 @@ h2.alert {
 
 .boldwarning {
   color: hsl(0, 100%, 50%);
+  font-weight: bold;
+}
+
+.bolditalicwarning {
+  color: hsl(0, 100%, 50%);
   font-style: italic;
   font-weight: bold;
 }
@@ -491,6 +496,11 @@ h2.alert {
 
 .info {
   color: hsl(240, 100%, 40%);
+}
+
+.infobold {
+  color: hsl(240, 100%, 40%);
+  font-weight: bold;
 }
 
 .notice {

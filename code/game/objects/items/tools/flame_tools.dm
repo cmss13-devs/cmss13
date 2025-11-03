@@ -180,6 +180,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		holder.update_inv_r_hand()
 	turn_light(toggle_on = FALSE)
 	name = burnt_name
+	ru_names_rename(ru_names_toml(name)) // SS220 EDIT ADDICTION
 	desc = "A match. This one has seen better days."
 	STOP_PROCESSING(SSobj, src)
 

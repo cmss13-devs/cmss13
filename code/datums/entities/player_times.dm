@@ -59,7 +59,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 
 	var/playtime_percentage = min((total_minutes MINUTES_TO_DECISECOND) / JOB_PLAYTIME_TIER_4, 1)
 	return list(
-		"job" = role_id,
+		"job" = declent_ru_initial(role_id, NOMINATIVE, role_id), // SS220 EDIT ADDICTION
 		"playtime" = round(total_minutes MINUTES_TO_HOURS, 0.1),
 		"bgcolor" = "rgb(0, [floor(128 * playtime_percentage)], [floor(255 * playtime_percentage)])",
 		"textcolor" = "#FFFFFF",
@@ -69,7 +69,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 /datum/entity/player/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "Playtime", "Playtimes")
+		ui = new(user, src, "Playtime", "Игровая активность") // SS220 EDIT ADDICTION
 		ui.open()
 
 /datum/entity/player/ui_assets(mob/user)

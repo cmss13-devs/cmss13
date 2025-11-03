@@ -41,7 +41,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	. = ..()
 	if(flags_gun_features & GUN_AMMO_COUNTER && user)
 		var/chambered = in_chamber ? TRUE : FALSE
-		. += "It has [current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] rounds remaining."
+		. += "Осталось [current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] патронов."
 
 /obj/item/weapon/gun/shotgun/set_gun_config_values()
 	..()
@@ -78,7 +78,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		playsound(user, reload_sound, 25, TRUE)
 		if(flags_gun_features & GUN_AMMO_COUNTER)
 			var/chambered = in_chamber ? TRUE : FALSE
-			to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
+			to_chat(user, SPAN_DANGER("ОСТАЛОСЬ [current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ПАТРОНОВ")) // SS220 EDIT ADDICTION
 	return TRUE
 
 /obj/item/weapon/gun/shotgun/proc/empty_chamber(mob/user, silent = FALSE, only_chamber = FALSE)
@@ -93,7 +93,7 @@ can cause issues with ammo types getting mixed up during the burst.
 			if(flags_gun_features & GUN_AMMO_COUNTER && user)
 				var/chambered = in_chamber ? TRUE : FALSE //useless, but for consistency
 				if(!silent)
-					to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
+					to_chat(user, SPAN_DANGER("ОСТАЛОСЬ [current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ПАТРОНОВ")) // SS220 EDIT ADDICTION
 		else
 			if(user && !silent)
 				to_chat(user, SPAN_WARNING("[src] is already empty."))
@@ -1187,7 +1187,7 @@ can cause issues with ammo types getting mixed up during the burst.
 			user.visible_message(SPAN_DANGER("[user] slams into [blocker]!"),
 				SPAN_DANGER("The [initial(name)]'s recoil hammers you against [blocker]!"))
 		else
-			user.visible_message(SPAN_DANGER("[user] slams into an obstacle!"),
+			user.visible_message(SPAN_DANGER("[user] врезается в препятствие!"),
 				SPAN_DANGER("The [initial(name)]'s recoil hammers you against an obstacle!"))
 		user.apply_damage(5, BRUTE)
 

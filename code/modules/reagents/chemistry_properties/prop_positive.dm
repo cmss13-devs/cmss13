@@ -731,7 +731,7 @@
 		var/mob/dead/observer/ghost = dead.get_ghost()
 		if(ghost?.client)
 			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
-			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
+			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Look for 'Re-enter Corpse' in Ghost verbs, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
 	else if ((potency >= 1) && dead.health <= HEALTH_THRESHOLD_DEAD) //heals on all level above 1. This is however, minimal.
 		to_chat(dead, SPAN_NOTICE("You feel a faint spark in your chest."))
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)

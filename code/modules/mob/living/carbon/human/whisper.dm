@@ -6,7 +6,7 @@
 
 	if (src.client)
 		if (src.client.prefs.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("You cannot whisper (muted)."))
+			to_chat(src, SPAN_DANGER("Вы не можете шептать (вы заглушены)."))
 			return
 
 		if (src.client.handle_spam_prevention(message,MUTE_IC))

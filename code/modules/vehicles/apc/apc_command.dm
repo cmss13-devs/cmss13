@@ -148,7 +148,7 @@
 //taken from gear_access_point.dm
 /obj/vehicle/multitile/apc/command/proc/access_techpod(mob/user)
 	if(!ishuman(user) || !get_access_permission(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return
 
 	if(health < initial(health) * 0.5)

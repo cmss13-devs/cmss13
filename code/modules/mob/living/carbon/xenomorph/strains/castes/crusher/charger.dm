@@ -140,8 +140,8 @@
 			charger_ability.stop_momentum()
 			return
 		xeno.visible_message(
-			SPAN_DANGER("[xeno] smashes straight into \the [src]!"),
-			SPAN_XENODANGER("You smash straight into \the [src]!")
+			SPAN_DANGER("[xeno] врезается прямо в [declent_ru()]!"), // SS220 EDIT ADDICTION
+			SPAN_XENODANGER("Вы врезаетесь прямо в [declent_ru()]!") // SS220 EDIT ADDICTION
 		)
 		playsound(loc, "punch", 25, TRUE)
 		tip_over()
@@ -158,8 +158,8 @@
 /obj/structure/machinery/cm_vending/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum >= CCA_MOMENTUM_LOSS_THIRD)
 		xeno.visible_message(
-			SPAN_DANGER("[xeno] smashes straight into \the [src]!"),
-			SPAN_XENODANGER("You smash straight into \the [src]!")
+			SPAN_DANGER("[xeno] врезается прямо в [declent_ru()]!"), // SS220 EDIT ADDICTION
+			SPAN_XENODANGER("Вы врезаетесь прямо в [declent_ru()]!") // SS220 EDIT ADDICTION
 		)
 		playsound(loc, "punch", 25, TRUE)
 		tip_over()
@@ -191,8 +191,8 @@
 /obj/structure/barricade/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(charger_ability.momentum)
 		visible_message(
-			SPAN_DANGER("[xeno] rams into \the [src] and skids to a halt!"),
-			SPAN_XENOWARNING("You ram into \the [src] and skid to a halt!")
+			SPAN_DANGER("[xeno] врезается в [declent_ru()] и тормозит!"), // SS220 EDIT ADDICTION
+			SPAN_XENOWARNING("Мы врезаемся в [declent_ru()] и тормозим!") // SS220 EDIT ADDICTION
 		)
 		take_damage(charger_ability.momentum * 22)
 		playsound(src, barricade_hitsound, 25, TRUE)
@@ -345,8 +345,8 @@
 	take_overall_armored_damage(charger_ability.momentum * momentum_mult, ARMOR_MELEE, BRUTE, 60, 13) // Giving AP because this spreads damage out and then applies armor to them
 	apply_armoured_damage(charger_ability.momentum * momentum_mult/4, ARMOR_MELEE, BRUTE,"chest")
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_DANGER("[xeno] таранит [declent_ru()]!"), // SS220 EDIT ADDICTION
+		SPAN_XENODANGER("Вы тараните [declent_ru()]!") // SS220 EDIT ADDICTION
 	)
 	var/knockdown = 1
 	if(charger_ability.momentum == charger_ability.max_momentum)
@@ -404,8 +404,8 @@
 		var/target_turf = get_step(src, ram_dir)
 		if(LinkBlocked(src, cur_turf, target_turf))
 			xeno.emote("roar")
-			xeno.visible_message(SPAN_DANGER("[xeno] flings [src] over to the side!"),SPAN_DANGER( "You fling [src] out of the way!"))
-			to_chat(src, SPAN_XENOHIGHDANGER("[xeno] flings you out of its way! Move it!"))
+			xeno.visible_message(SPAN_DANGER("[xeno] отбрасывает [declent_ru()] в сторону!"),SPAN_DANGER("Вы отбрасываете [declent_ru()] в сторону!")) // SS220 EDIT ADDICTION
+			to_chat(src, SPAN_XENOHIGHDANGER("[xeno] отбрасывает вас в сторону! С дороги!")) // SS220 EDIT ADDICTION
 			apply_effect(1, WEAKEN) // brief flicker stun
 			throw_atom(get_turf(src), 1, 3, xeno, TRUE)
 		step(src, ram_dir, charger_ability.momentum * 0.5)
@@ -425,8 +425,8 @@
 		momentum_mult = 8
 	take_overall_damage(charger_ability.momentum * momentum_mult)
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_DANGER("[xeno] таранит [declent_ru()]!"), // SS220 EDIT ADDICTION
+		SPAN_XENODANGER("Вы тараните [declent_ru()]!") // SS220 EDIT ADDICTION
 	)
 	var/knockdown = 1
 	if(charger_ability.momentum == charger_ability.max_momentum)
@@ -478,8 +478,8 @@
 	var/datum/effect_system/spark_spread/sparks = new
 	sparks.set_up(5, 1, loc)
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_DANGER("[xeno] таранит [declent_ru()]!"), // SS220 EDIT ADDICTION
+		SPAN_XENODANGER("Вы тараните [declent_ru()]!") // SS220 EDIT ADDICTION
 	)
 	if(health <= CHARGER_DAMAGE_SENTRY)
 		new /obj/effect/spawner/gibspawner/robot(src.loc) // if we goin down ,we going down with a show.
@@ -506,8 +506,8 @@
 	sparks.set_up(1, 1, loc)
 	sparks.start()
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_DANGER("[xeno] таранит [declent_ru()]!"), // SS220 EDIT ADDICTION
+		SPAN_XENODANGER("Вы тараните [declent_ru()]!") // SS220 EDIT ADDICTION
 	)
 	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
 
@@ -543,8 +543,8 @@
 	sparks.set_up(1, 1, loc)
 	sparks.start()
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_DANGER("[xeno] таранит [declent_ru()]!"), // SS220 EDIT ADDICTION
+		SPAN_XENODANGER("Вы тараните [declent_ru()]!") // SS220 EDIT ADDICTION
 	)
 	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
 
@@ -598,8 +598,8 @@
 		charger_ability.stop_momentum()
 		return
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_DANGER("[xeno] таранит [declent_ru()]!"), // SS220 EDIT ADDICTION
+		SPAN_XENODANGER("Вы тараните [declent_ru()]!") // SS220 EDIT ADDICTION
 	)
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
 	qdel(src)
@@ -618,8 +618,8 @@
 		charger_ability.stop_momentum()
 		return
 	xeno.visible_message(
-		SPAN_DANGER("[xeno] rams [src]!"),
-		SPAN_XENODANGER("You ram [src]!")
+		SPAN_DANGER("[xeno] таранит [declent_ru()]!"), // SS220 EDIT ADDICTION
+		SPAN_XENODANGER("Вы тараните [declent_ru()]!") // SS220 EDIT ADDICTION
 	)
 	playsound(src, "sound/effects/metalhit.ogg", 25, TRUE)
 	qdel(src)
@@ -656,8 +656,8 @@
 	var/mob/living/carbon/xenomorph/Xeno = owner
 
 	activated = !activated
-	var/will_charge = "[activated ? "now" : "no longer"]"
-	to_chat(Xeno, SPAN_XENONOTICE("We will [will_charge] charge when moving."))
+	var/will_charge = "[activated ? "" : "больше не"]" // SS220 EDIT ADDICTION
+	to_chat(Xeno, SPAN_XENONOTICE("Мы [will_charge] будем атаковать во время передвижения.")) // SS220 EDIT ADDICTION
 	if(activated)
 		RegisterSignal(Xeno, COMSIG_MOVABLE_MOVED, PROC_REF(handle_movement))
 		RegisterSignal(Xeno, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(handle_position_change))
@@ -702,7 +702,7 @@
 	if(!target_dir)
 		return
 
-	Xeno.visible_message(SPAN_XENOWARNING("[Xeno] tumbles over to the side!"), SPAN_XENOHIGHDANGER("We tumble over to the side!"))
+	Xeno.visible_message(SPAN_XENOWARNING("[Xeno] отпрыгивает в сторону!"), SPAN_XENOHIGHDANGER("Мы отпрыгиваем в сторону!")) // SS220 EDIT ADDICTION
 	Xeno.spin(5,1) // note: This spins the sprite and DOES NOT affect directional armor
 	var/start_charging = HAS_TRAIT(Xeno, TRAIT_CHARGING)
 	SEND_SIGNAL(Xeno, COMSIG_XENO_STOP_MOMENTUM)

@@ -41,6 +41,10 @@
     animation-delay: 5s;
   }
 
+  .crt {
+    z-index: 0;
+  }
+
   @keyframes bg-load {
     from {
       opacity: 0;
@@ -187,6 +191,18 @@
 
   .messageHolder {
     pointer-events: none;
+  }
+
+  .Dimmer {
+    z-index: 9999;
+
+    .Section__buttons {
+      top: 0;
+    }
+  }
+
+  .Flex {
+    justify-content: center;
   }
 }
 

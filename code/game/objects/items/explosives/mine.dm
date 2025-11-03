@@ -261,7 +261,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(xeno.a_intent == INTENT_HELP)
-		to_chat(xeno, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
+		to_chat(xeno, SPAN_XENONOTICE("Если ударить достаточно сильно, оно, вероятно, взорвётся."))
 		return XENO_NO_DELAY_ACTION
 
 	if(tripwire)

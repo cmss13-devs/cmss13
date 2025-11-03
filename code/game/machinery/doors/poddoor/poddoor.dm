@@ -53,7 +53,7 @@
 
 /obj/structure/machinery/door/poddoor/proc/pry_open(mob/living/carbon/xenomorph/X, time = 4 SECONDS)
 	X.visible_message(SPAN_DANGER("[X] begins prying [src] open."),
-	SPAN_XENONOTICE("You start prying [src] open."), max_distance = 3)
+	SPAN_XENONOTICE("Вы начинаете взламывать [declent_ru()]."), max_distance = 3) // SS220 EDIT ADDICTION
 
 	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
 
@@ -62,7 +62,7 @@
 		return
 
 	X.visible_message(SPAN_DANGER("[X] pries open [src]."),
-	SPAN_XENONOTICE("You pry open [src]."), max_distance = 3)
+	SPAN_XENONOTICE("Вы взламываете [declent_ru()]."), max_distance = 3) // SS220 EDIT ADDICTION
 
 	open()
 	return TRUE

@@ -19,6 +19,7 @@
 /datum/action/xeno_action/activable/xeno_spit/bombard
 	desc = "Дальнобойный плевок, который взрывается по области. При прямом попадании наносит дополнительные эффекты.\
 		<br>После плевка накладывается перезарядка на Acid Shroud на %COOLDOWN_DEBUFF%"
+	cooldown_message = "Наш желудок наполняется кислотой. Мы готовы выпустить газовый шар в любой момент!"
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/apply_replaces_in_desc()
 	. = ..()

@@ -99,7 +99,7 @@
 
 	var/tmp_sound = get_sound(user)
 	if(TIMER_COOLDOWN_CHECK(user, type))
-		to_chat(user, SPAN_NOTICE("You just did an emote. Wait awhile."))
+		to_chat(user, SPAN_NOTICE("Вы уже использовали эмоцию. Подождите немного, прежде чем попробовать снова."))
 		return
 	else if(tmp_sound && should_play_sound(user, intentional))
 		if(TIMER_COOLDOWN_CHECK(user, COOLDOWN_MOB_AUDIO))

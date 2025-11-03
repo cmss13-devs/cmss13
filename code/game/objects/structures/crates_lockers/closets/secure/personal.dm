@@ -70,9 +70,9 @@
 				src.registered_name = I.registered_name
 				src.desc = "Owned by [I.registered_name]."
 		else
-			to_chat(user, SPAN_DANGER("Access Denied"))
+			to_chat(user, SPAN_DANGER("Доступ запрещён."))
 	else
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Доступ запрещён."))
 	return
 
 /obj/structure/closet/secure_closet/personal/verb/reset()

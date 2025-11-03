@@ -819,13 +819,13 @@ Additional game mode variables.
 
 	original.sight = BLIND
 
-	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
+	var/selected_spawn = tgui_input_list(original, "Где вы хотите появиться вместе с вашим ульем?", "Появление Королевы", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status") // SS220 EDIT ADDICTION
 	if(hive.living_xeno_queen)
-		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, a queen has already evolved before you."))
+		to_chat(original, SPAN_XENOANNOUNCE("Вы слишком долго выбирали место для появления, Королева уже эволюционировала."))
 		player.send_to_lobby()
 	if(!selected_spawn)
 		selected_spawn = pick(spawn_list_map)
-		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, one has been chosen for you."))
+		to_chat(original, SPAN_XENOANNOUNCE("Вы слишком долго выбирали место для появления, оно было выбрано за вас."))
 
 	var/turf/QS
 	var/obj/effect/landmark/queen_spawn/QSI
@@ -938,10 +938,10 @@ Additional game mode variables.
 					to_chat(H, line)
 		else
 			spawn(4)
-				to_chat(H, "<h2>You are a survivor!</h2>")
+				to_chat(H, "<h2>Вы - выживший!</h2>")
 				to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-				to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-				to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
+				to_chat(H, SPAN_NOTICE("Вы полностью осознаете угрозу ксеноморфов и можете использовать эти знания по своему усмотрению."))
+				to_chat(H, SPAN_NOTICE("Вы НЕ знаете о морпехах и их намерениях."))
 		if(spawner.story_text)
 			. = 1
 			spawn(6)
@@ -961,10 +961,10 @@ Additional game mode variables.
 	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
 		new /datum/cm_objective/move_mob/almayer/survivor(H)
 		spawn(4)
-			to_chat(H, "<h2>You are a survivor!</h2>")
+			to_chat(H, "<h2>Вы - выживший!</h2>")
 			to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-			to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-			to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions."))
+			to_chat(H, SPAN_NOTICE("Вы полностью осознаете угрозу ксеноморфов и можете использовать эти знания по своему усмотрению."))
+			to_chat(H, SPAN_NOTICE("Вы НЕ знаете о морпехах и их намерениях."))
 		return 1
 
 /datum/game_mode/proc/tell_survivor_story()

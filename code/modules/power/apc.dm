@@ -692,7 +692,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				SPAN_NOTICE("You [locked ? "lock" : "unlock"] [src]'s interface."))
 				update_icon()
 			else
-				to_chat(user, SPAN_WARNING("Access denied."))
+				to_chat(user, SPAN_WARNING("Доступ запрещён."))
 	else if(iswire(W) && !terminal && opened && has_electronics != 2)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [src]."))

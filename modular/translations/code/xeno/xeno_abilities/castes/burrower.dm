@@ -15,3 +15,4 @@
 
 /datum/action/xeno_action/onclick/build_tunnel
 	desc = "Вырыть туннель, который будет соединен с сетью туннелей."
+	cooldown_message = "Мы снова полны сил, чтобы вырыть новый туннель."

@@ -304,10 +304,10 @@
 		var/mob/dead/observer/cur_obs = candidates[i]
 
 		// Generate the messages
-		var/cached_message = "You are currently [i-dequeued]\th in the larva pool."
+		var/cached_message = "Вы сейчас [i-dequeued]-ый в очереди на грудолома." // SS220 EDIT ADDICTION
 		cur_obs.larva_pool_cached_message = cached_message
 		if(!cache_only)
-			var/chat_message = dequeued ? replacetext(cached_message, "currently", "now") : cached_message
+			var/chat_message = dequeued ? replacetext(cached_message, "сейчас", "теперь") : cached_message // SS220 EDIT ADDICTION
 			to_chat(candidates[i], SPAN_XENONOTICE(chat_message))
 
 /**
@@ -325,12 +325,10 @@
 	if(!SSticker.HasRoundStarted() || world.time < SSticker.round_start_time + 15 SECONDS)
 		// Larva pool numbers are too volatile at the start of the game for the estimation to be what they end up with
 		if(!cache_only)
-			to_chat(candidate_new_player, SPAN_XENONOTICE("Larva pool position estimation is not available until shortly after the game has started. \
-				The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
-				you will periodically receive updates where you are in the pool relative to other currently valid xeno candidates. \
-				Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
-				Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \
-				This means you won't lose your relative place in the pool if you step away, disconnect, play as a facehugger/lesser, or play in the thunderdome."))
+			to_chat(candidate_new_player, SPAN_XENONOTICE("Оценка позиции в очереди на появление в роли грудолома недоступна до тех пор, пока игра не начнётся. \
+				Позиция в очереди определяется временем вашей смерти или присоединения к игре. \
+				Периодически вы будете получать сообщения о текущей позиции в очереди относительно других игроков. \
+				Примечание: вы не потеряете своё место в очереди, если отойдёте или потеряете соединение."))
 		return
 
 	if(candidate_new_player.larva_pool_message_stale_time <= world.time)
@@ -343,12 +341,10 @@
 				break
 			position++
 		candidate_new_player.larva_pool_message_stale_time = world.time + 2.5 MINUTES // spam prevention
-		candidate_new_player.larva_pool_cached_message = "Your position would be [position]\th in the larva pool if you observed and were eligible to be a xeno. \
-			The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
-			you will periodically receive updates where you are in the pool relative to other currently valid xeno candidates. \
-			Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
-			Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \
-			This means you won't lose your relative place in the pool if you step away, disconnect, play as a facehugger/lesser, or play in the thunderdome."
+		candidate_new_player.larva_pool_cached_message = "Ваша позиция в очереди на появление в роли грудолома была бы на [position] месте, если бы вы наблюдали и имели право быть ксеноморфом. \
+			Позиция в очереди определяется временем вашей смерти или присоединения к игре. \
+			Периодически вы будете получать сообщения о вашей позиции в очереди относительно других игроков. \
+			Примечание: вы не потеряете своё место в очереди, если отойдёте или потеряете соединение."
 
 	if(!cache_only)
 		to_chat(candidate_new_player, SPAN_XENONOTICE(candidate_new_player.larva_pool_cached_message))
@@ -387,12 +383,10 @@
 			if(current.client.player_details.larva_pool_time >= candidate_time)
 				break
 			position++
-		candidate_observer.larva_pool_cached_message = "You are currently ineligible to be a larva but would be [position]\th in the pool. \
-			The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
-			you will periodically receive updates where you are in the pool relative to other currently valid xeno candidates. \
-			Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
-			Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \
-			This means you won't lose your relative place in the pool if you step away, disconnect, play as a facehugger/lesser, or play in the thunderdome."
+		candidate_observer.larva_pool_cached_message = "В настоящее время вы не можете стать грудоломом, но ваша позиция в очереди была бы на [position] месте. \
+			Позиция в очереди определяется временем вашей смерти или присоединения к игре. \
+			Периодически вы будете получать сообщения о вашей позиции в очереди относительно других игроков. \
+			Примечание: вы не потеряете своё место в очереди, если отойдёте или потеряете соединение."
 
 	// Note banishment too
 	var/datum/hive_status/cur_hive

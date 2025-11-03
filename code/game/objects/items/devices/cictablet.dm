@@ -43,7 +43,7 @@
 	if(allowed(user) && card?.check_biometrics(user))
 		tgui_interact(user)
 	else
-		to_chat(user, SPAN_DANGER("Access denied."))
+		to_chat(user, SPAN_DANGER("Доступ запрещён."))
 
 /obj/item/device/cotablet/ui_close(mob/user)
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
@@ -84,7 +84,7 @@
 /obj/item/device/cotablet/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "CommandTablet", "Command Tablet")
+		ui = new(user, src, "CommandTablet", capitalize(declent_ru())) // SS220 EDIT ADDICTION
 		ui.open()
 
 /obj/item/device/cotablet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

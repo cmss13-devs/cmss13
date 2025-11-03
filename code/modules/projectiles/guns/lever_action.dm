@@ -110,7 +110,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		if(streak)
 			to_chat(user, SPAN_BOLDNOTICE("Bullseye! [streak + 1] hits in a row!"))
 		else
-			to_chat(user, SPAN_BOLDNOTICE("Bullseye!"))
+			to_chat(user, SPAN_BOLDNOTICE("В яблочко!"))
 		streak++
 		playsound(user, lever_hitsound, 25, FALSE)
 	if(!(flags_gun_lever_action & USES_STREAKS))

@@ -130,14 +130,14 @@
 		return FALSE
 
 	step(user, get_dir(user, src))
-	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),
-	SPAN_NOTICE("You start climbing [ladder_dir_name] [src]."))
+	user.visible_message(SPAN_NOTICE("[user] начинает [ladder_dir_name == "up" ? "забираться вверх" : "спускаться вниз"] по [src]."),
+	SPAN_NOTICE("Вы начинаете [ladder_dir_name] по [src]."))
 	busy = TRUE
 	if(do_after(user, 20, INTERRUPT_INCAPACITATED|INTERRUPT_OUT_OF_RANGE|INTERRUPT_RESIST, BUSY_ICON_GENERIC, src, INTERRUPT_NONE))
 		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && user.body_position != LYING_DOWN && !user.buckled && !user.anchored)
-			visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src].")) //Hack to give a visible message to the people here without duplicating user message
-			user.visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src]."),
-			SPAN_NOTICE("You climb [ladder_dir_name] [src]."))
+			visible_message(SPAN_NOTICE("[user] [ladder_dir_name == "up" ? "забирается вверх" : "спускается вниз"] по [src].")) //Hack to give a visible message to the people here without duplicating user message
+			user.visible_message(SPAN_NOTICE("[user] [ladder_dir_name == "up" ? "забирается вверх" : "спускается вниз"] по [src]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("Вы [ladder_dir_name == "up" ? "поднялись" : "спустились"] [src]."))
 			ladder_dest.add_fingerprint(user)
 			user.trainteleport(ladder_dest.loc)
 	busy = FALSE

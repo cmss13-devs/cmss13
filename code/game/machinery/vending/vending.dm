@@ -563,7 +563,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			user_id = human_user.get_idcard()
 
 		if(!allowed(user))
-			speak("Access denied.")
+			speak("Доступ запрещён.")
 			flick(icon_deny, src)
 			vend_ready = TRUE
 			return
@@ -606,9 +606,9 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	record.amount--
 	playsound(src, "sound/machines/vending.ogg", 40, TRUE)
 	if(user.Adjacent(src) && user.put_in_hands(vended_item))
-		to_chat(user, SPAN_NOTICE("You take \the [record.product_name] out of the slot."))
+		to_chat(user, SPAN_NOTICE("Вы достаёте из автомата [vended_item.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 	else
-		to_chat(user, SPAN_WARNING("\The [record.product_name] falls onto the floor!"))
+		to_chat(user, SPAN_WARNING("[record.product_name] падает на пол!")) // SS220 EDIT ADDICTION
 	if(ripped_off)
 		flick(icon_deny, src)
 		addtimer(VARSET_CALLBACK(src, vend_ready, TRUE), 1 SECONDS)

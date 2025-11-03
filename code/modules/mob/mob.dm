@@ -282,7 +282,7 @@
 		if(del_on_fail)
 			qdel(W)
 		else if(!disable_warning)
-			to_chat(src, SPAN_WARNING("You are unable to equip that.")) //Only print if del_on_fail is false
+			to_chat(src, SPAN_WARNING("Вы не можете надеть это.")) //Only print if del_on_fail is false
 		return FALSE
 
 	var/start_loc = W.loc
@@ -312,7 +312,7 @@
 		if(del_on_fail)
 			qdel(W)
 		else if(!disable_warning)
-			to_chat(src, SPAN_WARNING("You are unable to equip that.")) //Only print if del_on_fail is false
+			to_chat(src, SPAN_WARNING("Вы не можете надеть это.")) //Only print if del_on_fail is false
 		return
 	equip_to_slot(W, slot) //This proc should not ever fail.
 	if(permanent)
@@ -395,7 +395,7 @@
 			new /obj/effect/overlay/temp/point/big(T, src, A)
 		else
 			new /obj/effect/overlay/temp/point/big/squad(T, src, A, squad.equipment_color)
-	visible_message("<b>[src]</b> points to [A]", null, null, 5)
+	visible_message(SPAN_INFO("<b>[declent_ru()]</b> указывает на [A.declent_ru(ACCUSATIVE)]"), null, null, 5) // SS220 EDIT ADDICTION
 	return TRUE
 
 ///Is this mob important enough to point with big arrows?
@@ -574,7 +574,7 @@
 
 		if(!no_msg)
 			animation_attack_on(M)
-			visible_message(SPAN_WARNING("[src] has grabbed [M] passively!"), null, null, 5)
+			visible_message(SPAN_WARNING("[declent_ru()] несильно хватает [M]."), null, null, 5) // SS220 EDIT ADDICTION
 
 		if(M.mob_size > MOB_SIZE_HUMAN || !(M.status_flags & CANPUSH))
 			G.icon_state = "!reinforce"
@@ -760,7 +760,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	var/list/visible_implants = list()
 	for(var/obj/item/O in embedded)
 		if(O.w_class > class)
-			visible_implants += O
+			visible_implants[capitalize(O.declent_ru())] = O // SS220 EDIT ADDICTION
 	return visible_implants
 
 /mob/proc/yank_out_object()
@@ -776,11 +776,11 @@ note dizziness decrements automatically in the mob's Life() proc.
 	recalculate_move_delay = TRUE
 
 	if(usr.stat)
-		to_chat(usr, "You are unconscious and cannot do that!")
+		to_chat(usr, "Вы без сознания и не можете этого сделать!") // SS220 EDIT ADDICTION
 		return
 
 	if(usr.is_mob_restrained())
-		to_chat(usr, "You are restrained and cannot do that!")
+		to_chat(usr, "Вы связаны и не можете этого сделать!") // SS220 EDIT ADDICTION
 		return
 
 	var/self
@@ -790,33 +790,34 @@ note dizziness decrements automatically in the mob's Life() proc.
 	var/list/valid_objects = get_visible_implants()
 	if(!valid_objects)
 		if(self)
-			to_chat(src, "You have nothing stuck in your body that is large enough to remove.")
+			to_chat(src, "В вашем теле нет ничего, что можно было бы вытащить.") // SS220 EDIT ADDICTION
 		else
-			to_chat(usr, "[src] has nothing stuck in their wounds that is large enough to remove.")
+			to_chat(usr, "В теле [declent_ru()] нет ничего, что можно было бы вытащить.") // SS220 EDIT ADDICTION
 		remove_verb(src, /mob/proc/yank_out_object)
 		return
 
-	var/obj/item/selection = tgui_input_list(usr, "What do you want to yank out?", "Embedded objects", valid_objects)
+	var/obj/item/selection = tgui_input_list(usr, "Что вы хотите вытащить?", "Посторонние объекты", valid_objects) // SS220 EDIT ADDICTION
+	if(!selection || !src || !usr || !istype(selection)) // SS220 EDIT ADDICTION
+		return // SS220 EDIT ADDICTION
+	var/selection_ru = lowertext(selection) // SS220 EDIT ADDICTION
 	if(self)
 		if(get_active_hand())
-			to_chat(src, SPAN_WARNING("You need an empty hand for this!"))
+			to_chat(src, SPAN_WARNING("Вам нужна свободная рука для этого!"))
 			return FALSE
-		to_chat(src, SPAN_WARNING("You attempt to get a good grip on [selection] in your body."))
+		to_chat(src, SPAN_WARNING("Вы пытаетесь вытащить [selection_ru] из своего тела.")) // SS220 EDIT ADDICTION
 	else
 		if(usr.get_active_hand())
-			to_chat(usr, SPAN_WARNING("You need an empty hand for this!"))
+			to_chat(usr, SPAN_WARNING("Вам нужна свободная рука для этого!"))
 			return FALSE
-		to_chat(usr, SPAN_WARNING("You attempt to get a good grip on [selection] in [src]'s body."))
+		to_chat(usr, SPAN_WARNING("Вы пытаетесь вытащить [selection_ru] из тела [src].")) // SS220 EDIT ADDICTION
 
 	if(!do_after(usr, 2 SECONDS * selection.w_class * usr.get_skill_duration_multiplier(SKILL_SURGERY), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
-	if(!selection || !src || !usr || !istype(selection))
-		return
 
 	if(self)
-		visible_message(SPAN_WARNING("<b>[src] rips [selection] out of their body.</b>"),SPAN_WARNING("<b>You rip [selection] out of your body.</b>"), null, 5)
+		visible_message(SPAN_BOLDWARNING("[declent_ru()] вытаскивает [selection_ru] из своего тела."),SPAN_BOLDWARNING("Вы вытаскиваете [selection_ru] из своего тела."), null, 5) // SS220 EDIT ADDICTION
 	else
-		visible_message(SPAN_WARNING("<b>[usr] rips [selection] out of [src]'s body.</b>"),SPAN_WARNING("<b>[usr] rips [selection] out of your body.</b>"), null, 5)
+		visible_message(SPAN_BOLDWARNING("[usr] вытаскивает [selection_ru] из тела [declent_ru()]."),SPAN_BOLDWARNING("[usr] вытаскивает [selection_ru] из вашего тела."), null, 5) // SS220 EDIT ADDICTION
 
 	if(length(valid_objects) == 1) //Yanking out last object - removing verb.
 		remove_verb(src, /mob/proc/yank_out_object)

@@ -99,12 +99,12 @@
 
 	user.grab_level = GRAB_AGGRESSIVE
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-	user.visible_message(SPAN_WARNING("[user] has grabbed [victim] aggressively!"), null, null, 5)
+	user.visible_message(SPAN_WARNING("[user] сильно хватает [victim]."), null, null, 5) // SS220 EDIT ADDICTION
 
 /obj/item/grab/proc/progress_aggressive(mob/living/carbon/human/user, mob/living/victim)
 	user.grab_level = GRAB_CHOKE
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-	user.visible_message(SPAN_WARNING("[user] holds [victim] by the neck and starts choking them!"), null, null, 5)
+	user.visible_message(SPAN_WARNING("[user] хватает [victim] за шею и душит!"), null, null, 5) // SS220 EDIT ADDICTION
 	msg_admin_attack("[key_name(user)] started to choke [key_name(victim)] at [get_area_name(victim)]", victim.loc.x, victim.loc.y, victim.loc.z)
 	victim.Move(user.loc, get_dir(victim.loc, user.loc))
 	victim.update_transform(TRUE)
@@ -140,13 +140,13 @@
 						to_chat(src, "You start to haul [pulled] but realize \he is already dead.")
 						return */
 		if(user.action_busy)
-			to_chat(xeno, SPAN_WARNING("We are already busy with something."))
+			to_chat(xeno, SPAN_WARNING("Мы уже заняты чем-то другим."))
 			return
 		SEND_SIGNAL(xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 		xeno.visible_message(SPAN_DANGER("[xeno] starts to restrain [pulled]!"),
 		SPAN_DANGER("We start restraining [pulled]!"), null, 5)
 		if(HAS_TRAIT(xeno, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
-			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno] is trying to restrain you!")))
+			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno] пытается вас связать!"))) // SS220 EDIT ADDICTION
 		if(do_after(xeno, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			if((isxeno(pulled.loc) && !xeno.hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
 				to_chat(xeno, SPAN_WARNING("Someone already took \the [pulled]."))
@@ -156,4 +156,3 @@
 					return FALSE
 				xeno.haul(pulled)
 				xeno.stop_pulling()
-

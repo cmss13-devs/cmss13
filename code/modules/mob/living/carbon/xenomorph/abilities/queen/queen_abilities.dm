@@ -102,7 +102,7 @@
 			return
 
 		if(target_area.linked_lz && istype(SSticker.mode, /datum/game_mode/colonialmarines))
-			to_chat(owner, SPAN_XENONOTICE("It's too early to spread the hive this far."))
+			to_chat(owner, SPAN_XENONOTICE("Ещё слишком рано распространять улей так далеко."))
 			return
 
 	return ..()
@@ -137,7 +137,7 @@
 	UnregisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS)
 
 	if(owner)
-		to_chat(owner, SPAN_XENOHIGHDANGER("Your boosted building has been disabled!"))
+		to_chat(owner, SPAN_XENOHIGHDANGER("Ускорение строительства было отключено!"))
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/override_secrete_thick_resin()
 	return COMPONENT_THICK_BYPASS

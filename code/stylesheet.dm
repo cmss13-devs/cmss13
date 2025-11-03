@@ -99,15 +99,18 @@ h1.alert, h2.alert {color: #000000;}
 .scannerburnb {color: #ffa500; font-weight: bold;}
 .rose {color: #ff5050;}
 .info {color: #0000CC;}
+.infobold {color: #0000CC; font-weight: bold;}
 .debuginfo {color: #493D26; font-style: italic;}
 .notice {color: #000099;}
 .xenonotice {color: #2a623d;}
 .xenoboldnotice {color: #2a623d; font-weight: bold;}
 .boldnotice {color: #000099; font-weight: bold;}
 .warning {color: #ff0000; font-style: italic;}
+.boldwarning {color: #ff0000; font-weight: bold;}
 .xenowarning {color: #2a623d; font-style: italic;}
 .xenominorwarning {color: #2a623d; font-weight: bold; font-style: italic;}
 .danger {color: #ff0000; font-weight: bold;}
+.bolddanger {color: #ff0000; font-weight: bold;}
 .xenodanger {color: #2a623d; font-weight: bold;}
 .avoidharm {color: #72a0e5; font-weight: bold;}
 .highdanger {color: #ff0000; font-weight: bold; font-size: 3;}

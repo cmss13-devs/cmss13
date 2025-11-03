@@ -15,7 +15,7 @@
 		return
 
 	if(SSticker?.mode?.hardcore)
-		to_chat(xenomorph, SPAN_XENOWARNING("A certain presence is preventing us from burrowing here."))
+		to_chat(xenomorph, SPAN_XENOWARNING("Чъё-то присутствие здесь мешает нам рыть туннель."))
 		return
 
 	if(HAS_TRAIT(xenomorph, TRAIT_ABILITY_BURROWED))
@@ -41,4 +41,3 @@
 	action_type = XENO_ACTION_ACTIVATE //doesn't really need a macro
 	xeno_cooldown =  4 MINUTES
 	cooldown_message = "We can dig a tunnel again."
-

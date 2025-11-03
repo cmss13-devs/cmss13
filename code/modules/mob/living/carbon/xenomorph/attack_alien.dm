@@ -46,14 +46,14 @@
 		if(INTENT_HARM)
 			if(attacking_xeno.claw_restrained())
 				attacking_xeno.animation_attack_on(src)
-				attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] tries to strike [src]"),
-				SPAN_XENONOTICE("We try to strike [src] but fail due to our restraints!"))
+				attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] пытается ударить [declent_ru()]"), // SS220 EDIt ADDICTION
+				SPAN_XENONOTICE("Мы пытаемся ударить [declent_ru()], но терпим неудачу из-за наших оков!")) // SS220 EDIt ADDICTION
 				return XENO_ATTACK_ACTION
 
 			if(attacking_xeno.can_not_harm(src, check_hive_flags=FALSE)) // We manually check hive_flags later
 				attacking_xeno.animation_attack_on(src)
-				attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
-				SPAN_XENONOTICE("We nibble [src]"))
+				attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] кусает [declent_ru()]"), // SS220 EDIt ADDICTION
+				SPAN_XENONOTICE("Мы кусаем [declent_ru()]")) // SS220 EDIt ADDICTION
 				return XENO_ATTACK_ACTION
 
 			if(attacking_xeno.behavior_delegate && attacking_xeno.behavior_delegate.handle_slash(src))
@@ -203,7 +203,7 @@
 
 		if(INTENT_DISARM)
 			if(attacking_xeno.legcuffed && isyautja(src))
-				to_chat(attacking_xeno, SPAN_XENODANGER("We don't have the dexterity to tackle the headhunter with that thing on our leg!"))
+				to_chat(attacking_xeno, SPAN_XENODANGER("У нас нет ловкости, чтобы справиться с охотником за головами с этой штукой на нашей ноге!"))
 				return XENO_NO_DELAY_ACTION
 
 			attacking_xeno.animation_attack_on(src)
@@ -710,8 +710,8 @@
 		if(islarva(M))
 			return
 		else
-			M.visible_message(SPAN_XENONOTICE("[M] claws [src]!"),
-			SPAN_XENONOTICE("We claw [src]."), null, null, CHAT_TYPE_XENO_COMBAT)
+			M.visible_message(SPAN_XENONOTICE("[M] царапает [declent_ru()]!"), // SS220 EDIT ADDICTION
+			SPAN_XENONOTICE("Мы царапаем [declent_ru(ACCUSATIVE)]."), null, null, CHAT_TYPE_XENO_COMBAT) // SS220 EDIT ADDICTION
 			playsound(loc, "alien_resin_break", 25)
 
 		M.animation_attack_on(src)
@@ -822,18 +822,18 @@
 /datum/shuttle/ferry/marine/proc/hijack(mob/living/carbon/xenomorph/M, shuttle_tag)
 	if(!queen_locked) //we have not hijacked it yet
 		if(world.time < SHUTTLE_LOCK_TIME_LOCK)
-			to_chat(M, SPAN_XENODANGER("We can't mobilize the strength to hijack the shuttle yet. Please wait another [time_left_until(SHUTTLE_LOCK_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
+			to_chat(M, SPAN_XENODANGER("Мы не можем мобилизовать силы для захвата шаттла. Пожалуйста, подождите ещё [time_left_until(SHUTTLE_LOCK_TIME_LOCK, world.time, 1 MINUTES)] минут, прежде чем пытаться снова.")) // SS220 EDIT ADDICTION
 			return
 
 		var/message
 		if(shuttle_tag == "Ground Transport 1") // CORSAT monorail
-			message = "We have wrested away remote control of the metal crawler! Rejoice!"
+			message = "Мы вырвали у них дистанционное управление металлическим червяком! Возрадуемся!"
 		else
-			message = "We have wrested away remote control of the metal bird! Rejoice!"
+			message = "Мы вырвали у них дистанционное управление металлической птицей! Возрадуемся!"
 			if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
 				MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 
-		to_chat(M, SPAN_XENONOTICE("We interact with the machine and disable remote control."))
+		to_chat(M, SPAN_XENONOTICE("Мы взаимодействуем с машиной и отключаем дистанционное управление."))
 		xeno_message(SPAN_XENOANNOUNCE("[message]"),3,M.hivenumber)
 		last_locked = world.time
 		if(GLOB.almayer_orbital_cannon)
@@ -843,8 +843,8 @@
 
 /datum/shuttle/ferry/marine/proc/door_override(mob/living/carbon/xenomorph/M, shuttle_tag)
 	if(!door_override)
-		to_chat(M, SPAN_XENONOTICE("We override the doors."))
-		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"),3,M.hivenumber)
+		to_chat(M, SPAN_XENONOTICE("Мы взламываем двери."))
+		xeno_message(SPAN_XENOANNOUNCE("Двери металлической птицы взломаны! Возрадуемся!"),3,M.hivenumber)
 		last_door_override = world.time
 		door_override = 1
 
@@ -879,10 +879,10 @@
 /obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/xenomorph/M)
 
 	if(stat & BROKEN)
-		to_chat(M, SPAN_XENONOTICE("[src] is already broken!"))
+		to_chat(M, SPAN_XENONOTICE("[declent_ru()] уже сломан!")) // SS220 EDIT ADDICTION
 		return XENO_NO_DELAY_ACTION
 	else if(beenhit >= XENO_HITS_TO_CUT_WIRES && M.mob_size < MOB_SIZE_BIG)
-		to_chat(M, SPAN_XENONOTICE("We aren't big enough to further damage [src]."))
+		to_chat(M, SPAN_XENONOTICE("У нас недостаточно силы, чтобы нанести много урона по [declent_ru()].")) // SS220 EDIT ADDICTION
 		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"),

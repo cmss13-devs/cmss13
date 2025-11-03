@@ -305,7 +305,7 @@
 /obj/structure/machinery/door_display/research_cell/attack_hand(mob/user)
 	. = ..()
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied!"))
+		to_chat(user, SPAN_WARNING("Доступ запрещён"))
 
 	tgui_interact(user)
 

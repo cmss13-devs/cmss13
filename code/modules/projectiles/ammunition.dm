@@ -315,7 +315,7 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 	var/multiple_handful_name = bullet.multiple_handful_name
 
 	name = "handful of [ammo_name + (multiple_handful_name ? " ":"s ") + "([new_caliber])"]"
-	ru_names_rename(ru_names_toml(name)) // SS220 - EDIT ADDITTION
+	ru_names_rename(ru_names_toml(name)) // SS220 EDIT ADDICTION
 
 	default_ammo = new_ammo
 	caliber = new_caliber

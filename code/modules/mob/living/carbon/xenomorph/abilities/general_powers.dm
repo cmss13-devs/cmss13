@@ -15,11 +15,11 @@
 	var/turf/turf = xeno.loc
 
 	if(!istype(turf))
-		to_chat(xeno, SPAN_WARNING("We can't do that here."))
+		to_chat(xeno, SPAN_WARNING("Мы не можем сделать это здесь."))
 		return
 
 	if(turf.density)
-		to_chat(xeno, SPAN_WARNING("We can't do that here."))
+		to_chat(xeno, SPAN_WARNING("Мы не можем сделать это здесь."))
 		return
 
 	var/is_weedable = turf.is_weedable
@@ -47,15 +47,15 @@
 
 	for(var/obj/structure/struct in turf)
 		if(struct.density && !(struct.flags_atom & ON_BORDER)) // Not sure exactly if we need to test against ON_BORDER though
-			to_chat(xeno, SPAN_WARNING("We can't do that here."))
+			to_chat(xeno, SPAN_WARNING("Мы не можем сделать это здесь."))
 			return
 
 	var/area/area = get_area(turf)
 	if(isnull(area) || !(area.is_resin_allowed))
 		if(!area || area.flags_area & AREA_UNWEEDABLE)
-			to_chat(xeno, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			to_chat(xeno, SPAN_XENOWARNING("Эта область не подходит для размещения улья!"))
 			return
-		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		to_chat(xeno, SPAN_XENOWARNING("Ещё слишком рано распространять улей так далеко."))
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -65,8 +65,8 @@
 	if(node)
 		to_convert = node.children.Copy()
 
-	xeno.visible_message(SPAN_XENONOTICE("\The [xeno] regurgitates a pulsating node and plants it on the ground!"),
-	SPAN_XENONOTICE("We regurgitate a pulsating node and plant it on the ground!"), null, 5)
+	xeno.visible_message(SPAN_XENONOTICE("[xeno] извергает пульсирующий узел и сажает его в землю!"), // SS220 EDIT ADDICTION
+	SPAN_XENONOTICE("Мы извергаем пульсирующий узел и сажаем его в землю!"), null, 5)
 	var/obj/effect/alien/weeds/node/new_node = new node_type(xeno.loc, src, xeno)
 
 	if(to_convert)
@@ -249,7 +249,7 @@
 	if(istype(target, /atom/movable/screen))
 		return FALSE
 	if(!SSmapping.same_z_map(target.z, xeno_owner.z))
-		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
+		to_chat(owner, SPAN_XENOWARNING("Эта область слишком далеко!"))
 		return
 	apply_cooldown()
 	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, build_speed_mod))
@@ -280,7 +280,7 @@
 		return FALSE
 
 	if(ismob(A)) //anticheese : if they click a mob, it will cancel.
-		to_chat(X, SPAN_XENOWARNING("We can't place resin markers on living things!"))
+		to_chat(X, SPAN_XENOWARNING("Мы не можем размещать смоляные метки на живых существах!"))
 		return FALSE //this is because xenos have thermal vision and can see mobs through walls - which would negate not being able to place them through walls
 
 	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen))
@@ -288,11 +288,11 @@
 	var/turf/target_turf = get_turf(A)
 
 	if(!SSmapping.same_z_map(X.loc.z, target_turf.loc.z))
-		to_chat(X, SPAN_XENOWARNING("Our mind cannot reach that far."))
+		to_chat(X, SPAN_XENOWARNING("Наш разум не может достать так далеко."))
 		return
 
 	if(!X.hive.living_xeno_queen || !SSmapping.same_z_map(X.hive.living_xeno_queen.z, X.z))
-		to_chat(X, SPAN_XENOWARNING("Our psychic link is gone, the Queen is either dead or too far away!"))
+		to_chat(X, SPAN_XENOWARNING("Наша психическая связь с ульем была прервана, либо наша Королева мертва, либо слишком далеко."))
 		return
 
 	var/tally = 0
@@ -301,7 +301,7 @@
 		if(MRK.createdby == X.nicknumber)
 			tally++
 	if(tally >= max_markers)
-		to_chat(X, SPAN_XENOWARNING("We have reached the maximum number of resin marks."))
+		to_chat(X, SPAN_XENOWARNING("Мы достигли максимально возможного количества смоляных меток."))
 		var/list/promptlist = list("Yes", "No")
 		var/obj/effect/alien/resin/marker/Goober = null
 		var/promptuser = null
@@ -343,7 +343,7 @@
 		return FALSE
 
 	if(!acid_level)
-		to_chat(src, SPAN_XENONOTICE("You can't secrete any acid into [target]."))
+		to_chat(src, SPAN_XENONOTICE("Вы не можете наполнить [target] кислотой.")) // SS220 EDIT ADDICTION
 		return FALSE
 
 	var/trap_acid_level = 0
@@ -351,7 +351,7 @@
 		trap_acid_level = 1 + target.trap_type - RESIN_TRAP_ACID1
 
 	if(trap_acid_level >= acid_level)
-		to_chat(src, SPAN_XENONOTICE("It already has good acid in."))
+		to_chat(src, SPAN_XENONOTICE("В ловушке уже достаточно кислоты."))
 		return FALSE
 
 	var/acid_cost = ACID_COST_LEVEL_1
@@ -361,10 +361,10 @@
 		acid_cost = ACID_COST_LEVEL_3
 
 	if(!check_plasma(acid_cost))
-		to_chat(src, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+		to_chat(src, SPAN_XENOWARNING("Вам нужно больше плазмы, чтобы сделать это."))
 		return FALSE
 
-	to_chat(src, SPAN_XENONOTICE("You begin charging the resin trap with acid."))
+	to_chat(src, SPAN_XENONOTICE("Вы начинаете наполнять смоляную ловушку кислотой."))
 	xeno_attack_delay(src)
 	if(!do_after(src, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 		return FALSE
@@ -385,8 +385,8 @@
 	target.set_state(RESIN_TRAP_ACID1 + acid_level - 1)
 
 	playsound(target, 'sound/effects/refill.ogg', 25, 1)
-	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with acid!"),
-	SPAN_XENOWARNING("You pressurise the resin trap with acid!"), null, 5)
+	visible_message(SPAN_XENOWARNING("[declent_ru()] наполняет смоляную ловушку кислотой!"), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Вы наполняете смоляную ловушку кислотой!"), null, 5)
 	return TRUE
 
 #undef ACID_COST_LEVEL_1
@@ -404,21 +404,21 @@
 	if(!check_state(TRUE))
 		return
 	if(!(locate(/datum/action/xeno_action/onclick/emit_pheromones) in actions))
-		to_chat(src, SPAN_XENOWARNING("We are incapable of emitting pheromones!"))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем выделять феромоны!"))
 		return
 	if(!pheromone)
 		if(current_aura)
 			current_aura = null
-			visible_message(SPAN_XENOWARNING("\The [src] stops emitting pheromones."),
-			SPAN_XENOWARNING("We stop emitting pheromones."), null, 5)
+			visible_message(SPAN_XENOWARNING("[declent_ru()] перестаёт выделять феромоны."), // SS220 EDIT ADDICTION
+			SPAN_XENOWARNING("Мы перестаём выделять феромоны."), null, 5)
 		else
 			if(!check_plasma(emit_cost))
-				to_chat(src, SPAN_XENOWARNING("We do not have enough plasma!"))
+				to_chat(src, SPAN_XENOWARNING("У нас недостаточно плазмы!"))
 				return
 			if(client.prefs && client.prefs.no_radials_preference)
-				pheromone = tgui_input_list(src, "Choose a pheromone", "Pheromone Menu", caste.aura_allowed + "help" + "cancel", theme="hive_status")
+				pheromone = tgui_input_list(src, "Выберите какие феромоны вы хотите выделять", "Феромоны", caste.aura_allowed + "help" + "cancel", theme="hive_status")
 				if(pheromone == "help")
-					to_chat(src, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
+					to_chat(src, SPAN_NOTICE("<br>Феромоны дают усиления всем ксеноморфам в большом радиусе за счёт запасов плазмы, а именно:<br><b>Безумие (красный)</b> - повышает скорость бега, урон и шанс сбить маски охотников за головами.<br><b>Охрана (зелёный)</b> - в критическом состоянии повышает порог отрицательного здоровья и замедляет кровотечение вне травы улья.<br><b>Восстановление (синий)</b> - повышает регенерацию плазмы и здоровья.<br>"))
 					return
 				if(!pheromone || pheromone == "cancel" || current_aura || !check_state(1)) //If they are stacking windows, disable all input
 					return
@@ -426,21 +426,21 @@
 				var/static/list/phero_selections = list("Help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "Frenzy" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "Warding" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "Recovery" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
 				pheromone = lowertext(show_radial_menu(src, src.client?.eye, phero_selections))
 				if(pheromone == "help")
-					to_chat(src, SPAN_XENONOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy (Red)</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding (Green)</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery (Blue)</B> - Increased plasma and health regeneration.<br>"))
+					to_chat(src, SPAN_XENONOTICE("<br>Феромоны дают усиления всем ксеноморфам в большом радиусе за счёт запасов плазмы, а именно:<br><b>Безумие (красный)</b> - повышает скорость бега, урон и шанс сбить маски охотников за головами.<br><b>Охрана (зелёный)</b> - в критическом состоянии повышает порог отрицательного здоровья и замедляет кровотечение вне травы улья.<br><b>Восстановление (синий)</b> - повышает регенерацию плазмы и здоровья.<br>"))
 					return
 				if(!pheromone || current_aura || !check_state(1)) //If they are stacking windows, disable all input
 					return
 	if(pheromone)
 		if(pheromone == current_aura)
-			to_chat(src, SPAN_XENOWARNING("We are already emitting [pheromone] pheromones!"))
+			to_chat(src, SPAN_XENOWARNING("Мы уже выделяем [pheromone]-феромоны!")) // SS220 EDIT ADDICTION
 			return
 		if(!check_plasma(emit_cost))
-			to_chat(src, SPAN_XENOWARNING("We do not have enough plasma!"))
+			to_chat(src, SPAN_XENOWARNING("У нас недостаточно плазмы!"))
 			return
 		use_plasma(emit_cost)
 		current_aura = pheromone
-		visible_message(SPAN_XENOWARNING("\The [src] begins to emit strange-smelling pheromones."),
-		SPAN_XENOWARNING("We begin to emit '[pheromone]' pheromones."), null, 5)
+		visible_message(SPAN_XENOWARNING("[declent_ru()] начинает выделять [pheromone]-феромоны."), // SS220 EDIT ADDICTION
+		SPAN_XENOWARNING("Мы начинаем выделять [pheromone]-феромоны."), null, 5) // SS220 EDIT ADDICTION
 		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
 
@@ -461,14 +461,14 @@
 		return
 
 	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("We can't [action_text] from here!"))
+		to_chat(X, SPAN_XENOWARNING("Мы не можем осуществить [action_text] отсюда!")) // SS220 EDIT ADDICTION
 		return
 
 	if(!X.check_state())
 		return
 
 	if(X.legcuffed)
-		to_chat(X, SPAN_XENODANGER("We can't [action_text] with that thing on our leg!"))
+		to_chat(X, SPAN_XENODANGER("Мы не можем [action_text] с этой штукой на ноге!")) // SS220 EDIT ADDICTION
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -507,7 +507,7 @@
 		pre_windup_effects()
 
 		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			to_chat(X, SPAN_XENODANGER("We cancel our [action_text]!"))
+			to_chat(X, SPAN_XENODANGER("Мы отменяем [action_text]!")) // SS220 EDIT ADDICTION
 			if (!windup_interruptable)
 				REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 				X.anchored = FALSE
@@ -519,7 +519,7 @@
 			X.anchored = FALSE
 		post_windup_effects()
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("We [action_text] at [A]!"))
+	X.visible_message(SPAN_XENOWARNING("[X] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] в [A]!"), SPAN_XENOWARNING("Мы [action_text] в [A]!")) // SS220 EDIT ADDICTION
 
 	pre_pounce_effects()
 
@@ -548,7 +548,7 @@
 		return
 
 	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("We can't [action_text] from here!"))
+		to_chat(X, SPAN_XENOWARNING("Мы не можем осуществить [action_text] отсюда!")) // SS220 EDIT ADDICTION
 		return
 
 	if(!X.check_state() || X.action_busy)
@@ -556,7 +556,7 @@
 
 	if (activation_delay)
 		if(!do_after(X, activation_delay_length, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			to_chat(X, SPAN_XENOWARNING("We decide to cancel our acid spray."))
+			to_chat(X, SPAN_XENOWARNING("Мы отменяем кислотное распыление."))
 			end_cooldown()
 			return
 
@@ -569,7 +569,7 @@
 		return
 
 	playsound(get_turf(X), 'sound/effects/refill.ogg', 25, 1)
-	X.visible_message(SPAN_XENOWARNING("[X] vomits a flood of acid!"), SPAN_XENOWARNING("We vomit a flood of acid!"), null, 5)
+	X.visible_message(SPAN_XENOWARNING("[X] извергает поток кислоты!"), SPAN_XENOWARNING("Мы извергаем поток кислоты!"), null, 5) // SS220 EDIT ADDICTION
 
 	apply_cooldown()
 
@@ -621,7 +621,7 @@
 
 	var/turf/T = get_turf(X)
 	if(!istype(T))
-		to_chat(X, SPAN_XENOWARNING("We can't do that here."))
+		to_chat(X, SPAN_XENOWARNING("Мы не можем сделать это здесь."))
 		return
 	var/area/AR = get_area(T)
 	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
@@ -647,60 +647,60 @@
 	X.use_plasma(plasma_cost)
 	playsound(X.loc, "alien_resin_build", 25)
 	new /obj/effect/alien/resin/trap(T, X)
-	to_chat(X, SPAN_XENONOTICE("We place a resin hole on the weeds, it still needs a sister to fill it with acid."))
+	to_chat(X, SPAN_XENONOTICE("Мы создаём смоляную ловушку на траве, попросите сестру заполнить её кислотой."))
 	return ..()
 
 /turf/proc/check_xeno_trap_placement(mob/living/carbon/xenomorph/xeno)
 	if(is_weedable < FULLY_WEEDABLE || !can_xeno_build(src))
-		to_chat(xeno, SPAN_XENOWARNING("We can't do that here."))
+		to_chat(xeno, SPAN_XENOWARNING("Мы не можем сделать это здесь."))
 		return FALSE
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in src
 	if(!alien_weeds)
-		to_chat(xeno, SPAN_XENOWARNING("We can only shape on weeds. We must find some resin before we start building!"))
+		to_chat(xeno, SPAN_XENOWARNING("Мы можем строить только на траве!"))
 		return FALSE
 
 	if(alien_weeds.linked_hive.hivenumber != xeno.hivenumber)
-		to_chat(xeno, SPAN_XENOWARNING("These weeds don't belong to our hive!"))
+		to_chat(xeno, SPAN_XENOWARNING("Эта трава не принадлежит нашему улью!"))
 		return FALSE
 
 	// This snowflake check exists because stairs specifically are indestructable, tile-covering, and cannot be moved, which allows resin holes to be
 	// planted under them without any possible counterplay. In the future if resin holes stop being able to be hidden under objects, remove this check.
 	if(locate(/obj/structure) in src)
 		if(locate(/obj/structure/stairs) in src)
-			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a staircase!"))
+			to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку на лестнице!"))
 			return FALSE
 
 		if(locate(/obj/structure/monorail) in src)
-			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a track!"))
+			to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку на рельсе!"))
 			return FALSE
 
 		if(locate(/obj/structure/machinery/conveyor) in src)
-			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a conveyor!"))
+			to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку на конвейере!"))
 			return FALSE
 
 		if(locate(/obj/structure/machinery/colony_floodlight) in src)
-			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a light!"))
+			to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку на лампе!"))
 			return FALSE
 
 		if(locate(/obj/structure/flora/jungle/vines) in src)
-			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole under the vines!"))
+			to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку под лозами!"))
 			return FALSE
 
 	if(!xeno.check_alien_construction(src, check_doors = TRUE))
 		return FALSE
 
 	if(locate(/obj/effect/alien/resin/trap) in orange(1, src)) // obj/effect/alien/resin presence is checked on turf by check_alien_construction, so we just check orange.
-		to_chat(xeno, SPAN_XENOWARNING("This is too close to another resin hole!"))
+		to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку слишком близко к другой!"))
 		return FALSE
 
 	if(locate(/obj/effect/alien/resin/fruit) in orange(1, src))
-		to_chat(xeno, SPAN_XENOWARNING("This is too close to a fruit!"))
+		to_chat(xeno, SPAN_XENOWARNING("Это слишком близко к плоду!"))
 		return FALSE
 
 	for(var/mob/living/body in src)
 		if(body.stat == DEAD)
-			to_chat(xeno, SPAN_XENOWARNING("The body is in the way!"))
+			to_chat(xeno, SPAN_XENOWARNING("Мы не можем создать ловушку под телом!"))
 			return FALSE
 
 	return alien_weeds
@@ -738,9 +738,9 @@
 	var/area/target_area = get_area(target_turf)
 	if(isnull(target_area) || !(target_area.is_resin_allowed))
 		if(!target_area || target_area.flags_area & AREA_UNWEEDABLE)
-			to_chat(xeno, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			to_chat(xeno, SPAN_XENOWARNING("Эта область не подходит для размещения улья!"))
 			return
-		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		to_chat(xeno, SPAN_XENOWARNING("Ещё слишком рано распространять улей так далеко."))
 		return FALSE
 
 	if(target_turf.z != xeno.z)
@@ -899,7 +899,7 @@
 		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),
 		SPAN_WARNING("We begin to spit [xeno.ammo.name]!"))
 		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our spit."))
+			to_chat(xeno, SPAN_XENODANGER("Мы отменяем кислотный плевок."))
 			spitting = FALSE
 			return
 	plasma_cost = xeno.ammo.spit_cost
@@ -908,9 +908,8 @@
 		spitting = FALSE
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"),
-
-	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] плюёт в [atom]!"), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Мы плюём [xeno.ammo.name] в [atom]!")) // SS220 EDIT ADDICTION
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	var/obj/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
@@ -935,7 +934,7 @@
 	var/turf/turf = get_turf(atom)
 
 	if(isnull(turf) || istype(turf, /turf/closed) || !turf.can_bombard(owner))
-		to_chat(xeno, SPAN_XENODANGER("We can't bombard that!"))
+		to_chat(xeno, SPAN_XENODANGER("Мы не можем осуществить кислотный плевок в эту область!"))
 		return FALSE
 
 	if (!check_plasma_owner())
@@ -949,9 +948,9 @@
 	if (!xeno.can_bombard_turf(turf, range, bombard_source))
 		return FALSE
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] digs itself into place!"), SPAN_XENODANGER("We dig ourself into place!"))
+	xeno.visible_message(SPAN_XENODANGER("[xeno] зарывается на месте!"), SPAN_XENODANGER("Мы зарываемся на месте!")) // SS220 EDIT ADDICTION
 	if (!do_after(xeno, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
-		to_chat(xeno, SPAN_XENODANGER("We decide to cancel our bombard."))
+		to_chat(xeno, SPAN_XENODANGER("Мы отменяем дальнобойный плевок."))
 		return FALSE
 
 	if (!xeno.can_bombard_turf(turf, range, bombard_source)) //Second check in case something changed during the do_after.
@@ -962,7 +961,7 @@
 
 	apply_cooldown()
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] launches a massive ball of acid at [atom]!"), SPAN_XENODANGER("You launch a massive ball of acid at [atom]!"))
+	xeno.visible_message(SPAN_XENODANGER("[xeno] запускает огромный шар кислоты в [atom]!"), SPAN_XENODANGER("Вы запускаете огромный шар кислоты в [atom]!")) // SS220 EDIT ADDICTION
 	playsound(get_turf(xeno), 'sound/effects/blobattack.ogg', 25, 1)
 
 	recursive_spread(turf, effect_range, effect_range)
@@ -982,7 +981,7 @@
 	addtimer(CALLBACK(src, PROC_REF(new_effect), T, owner), 2*(orig_depth - dist_left))
 
 	for(var/mob/living/L in T)
-		to_chat(L, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
+		to_chat(L, SPAN_XENOHIGHDANGER("Вы видите огромный шар кислоты, летящий в вашу сторону!"))
 
 	for(var/dirn in GLOB.alldirs)
 		recursive_spread(get_step(T, dirn), dist_left - 1, orig_depth)
@@ -1016,13 +1015,13 @@
 
 /mob/living/carbon/xenomorph/proc/can_bombard_turf(atom/target, range = 5, atom/bombard_source) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
 	if(!bombard_source || !isturf(bombard_source.loc))
-		to_chat(src, SPAN_XENODANGER("That target is obstructed!"))
+		to_chat(src, SPAN_XENODANGER("Эта область заблокирована!"))
 		return FALSE
 	var/turf/current = bombard_source.loc
 	var/turf/target_turf = get_turf(target)
 
 	if (get_dist_sqrd(current, target_turf) > (range*range))
-		to_chat(src, SPAN_XENODANGER("That is too far away!"))
+		to_chat(src, SPAN_XENODANGER("Эта область слишком далеко!"))
 		return
 
 	. = TRUE
@@ -1039,7 +1038,7 @@
 					. = FALSE
 					break
 		if(!.)
-			to_chat(src, SPAN_XENODANGER("That target is obstructed!"))
+			to_chat(src, SPAN_XENODANGER("Эта область заблокирована!"))
 			return
 
 		current = get_step_towards(current, target_turf)
@@ -1050,7 +1049,7 @@
 		return
 
 	if(HAS_TRAIT(stabbing_xeno, TRAIT_ABILITY_BURROWED) || stabbing_xeno.is_ventcrawling)
-		to_chat(stabbing_xeno, SPAN_XENOWARNING("We must be above ground to do this."))
+		to_chat(stabbing_xeno, SPAN_XENOWARNING("Мы должны быть над землёй, чтобы сделать это."))
 		return
 
 	if(!stabbing_xeno.check_state() || stabbing_xeno.cannot_slash)
@@ -1102,7 +1101,7 @@
 		return ..()
 
 	if(!isxeno_human(targetted_atom))
-		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("[stabbing_xeno] размахивает хвостом в воздухе!"), SPAN_XENOWARNING("Мы размахиваем хвостом в воздухе!")) // SS220 EDIT ADDICTION
 		apply_cooldown(cooldown_modifier = 0.1)
 		xeno_attack_delay(stabbing_xeno)
 		playsound(stabbing_xeno, "alien_tail_swipe", 50, TRUE)
@@ -1146,7 +1145,8 @@
 	var/stab_overlay
 
 	if(blunt_stab)
-		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes its tail into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("We swipe our tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("[stabbing_xeno] бьёт хвостом по [limb ? declent_ru_initial(limb.display_name, DATIVE, limb.display_name) : "груди"] [target], сильно повреждая её!"), // SS220 EDIT ADDICTION
+		SPAN_XENOWARNING("Мы бьём хвостом по [limb ? declent_ru_initial(limb.display_name, DATIVE, limb.display_name) : "груди"] [target], сильно повреждая её!")) // SS220 EDIT ADDICTION
 		if(prob(1))
 			playsound(target, 'sound/effects/comical_bonk.ogg', 50, TRUE)
 		else
@@ -1155,7 +1155,8 @@
 		stab_direction = turn(stabbing_xeno.dir, pick(90, -90))
 		stab_overlay = "slam"
 	else
-		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its razor sharp tail!"), SPAN_XENOWARNING("We skewer [target] through the [limb? limb.display_name : "chest"] with our razor sharp tail!"))
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("[stabbing_xeno] пронзает [limb ? declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name) : "грудь"] [target] своим острым, как бритва, хвостом!"), // SS220 EDIT ADDICTION
+		SPAN_XENOWARNING("Мы пронзаем [limb ? declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name) : "грудь"] [target] своим острым, как бритва, хвостом!")) // SS220 EDIT ADDICTION
 		playsound(target, "alien_bite", 50, TRUE)
 		// The xeno flips around for a second to impale the target with their tail. These look awsome.
 		stab_direction = turn(get_dir(stabbing_xeno, target), 180)

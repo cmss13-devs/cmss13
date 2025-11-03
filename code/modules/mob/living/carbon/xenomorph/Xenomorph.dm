@@ -1025,7 +1025,7 @@
 		caste.aura_strength = 0
 	if(aura_strength == 0 && current_aura)
 		current_aura = null
-		to_chat(src, SPAN_XENOWARNING("We lose our pheromones."))
+		to_chat(src, SPAN_XENOWARNING("Мы перестаём выделять феромоны."))
 
 	// Also recalculate received pheros now
 	for(var/capped_aura in received_phero_caps)

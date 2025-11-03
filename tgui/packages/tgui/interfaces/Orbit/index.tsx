@@ -838,7 +838,7 @@ const ObservableTooltip = (props: { readonly item: Observable }) => {
               background_icon={background_icon}
             />
           )}
-          {job}
+          {JobsRu(job)}
         </LabeledList.Item>
       )}
       {displayHealth && (

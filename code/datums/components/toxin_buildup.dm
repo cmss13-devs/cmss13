@@ -12,7 +12,7 @@
 	src.toxic_buildup = toxic_buildup
 	src.toxic_buildup_dissipation = toxic_buildup_dissipation
 	src.max_buildup = max_buildup
-	to_chat(parent, SPAN_XENOHIGHDANGER("The toxic substance damages our armor!"))
+	to_chat(parent, SPAN_XENOHIGHDANGER("Токсичное вещество повреждает нашу броню!"))
 
 /datum/component/status_effect/toxic_buildup/InheritComponent(datum/component/status_effect/toxic_buildup/C, i_am_original, toxic_buildup)
 	. = ..()

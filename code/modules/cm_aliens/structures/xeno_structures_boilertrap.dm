@@ -37,7 +37,7 @@
 	if(!isxeno(user))
 		return ..()
 	. = ..()
-	. += SPAN_XENOWARNING("A trap designed for a catching tallhosts and holding them still.")
+	. += SPAN_XENOWARNING("Ловушка, предназначенная для поимки и удержания жертв на месте.")
 
 /obj/effect/alien/resin/boilertrap/fire_act()
 	. = ..()
@@ -54,12 +54,12 @@
 		return
 	var/datum/effects/boiler_trap/F = new(M, bound_xeno, name)
 	QDEL_IN(F, root_duration)
-	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel one of your traps capture a tallhost!"))
-	to_chat(M, SPAN_XENOHIGHDANGER("You are caught by a trap made of foul resin!"))
+	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Вы чувствуете, как в одну из ваших ловушек попала жертва!"))
+	to_chat(M, SPAN_XENOHIGHDANGER("Вы были пойманы в ловушку из липкой смолы!"))
 	qdel(src)
 
 /obj/effect/alien/resin/boilertrap/attack_alien(mob/living/carbon/xenomorph/X)
-	to_chat(X, SPAN_XENOWARNING("Best not to meddle with that trap."))
+	to_chat(X, SPAN_XENOWARNING("Лучше не лезть туда."))
 	return XENO_NO_DELAY_ACTION
 
 /obj/effect/alien/resin/boilertrap/Crossed(atom/A)

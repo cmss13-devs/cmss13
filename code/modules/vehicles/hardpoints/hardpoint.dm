@@ -640,7 +640,7 @@
 /obj/item/hardpoint/proc/click_empty(mob/user)
 	playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 	if(user)
-		to_chat(user, SPAN_WARNING("<b>*click*</b>"))
+		to_chat(user, SPAN_WARNING("<b>*щелчок*</b>"))
 
 /// Selects and plays a firing sound from the list.
 /obj/item/hardpoint/proc/play_firing_sounds()

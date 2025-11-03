@@ -121,15 +121,15 @@
 
 	var/area/current_area = get_area(current_turf)
 	if(current_area.flags_area & AREA_NOTUNNEL)
-		to_chat(src, SPAN_XENOWARNING("There's no way to burrow here."))
+		to_chat(src, SPAN_XENOWARNING("Здесь нет возможности выкопать туннель."))
 		return
 
 	if(istype(current_turf, /turf/open/floor/almayer/research/containment) || istype(current_turf, /turf/closed/wall/almayer/research/containment))
-		to_chat(src, SPAN_XENOWARNING("We can't escape this cell!"))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем выбраться из этой камеры!"))
 		return
 
 	if(clone) //Prevents burrowing on stairs
-		to_chat(src, SPAN_XENOWARNING("We can't burrow here!"))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем выкопать туннель здесь!"))
 		return
 
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
@@ -137,12 +137,12 @@
 
 	used_burrow = TRUE
 
-	to_chat(src, SPAN_XENOWARNING("We begin burrowing ourselves into the ground."))
+	to_chat(src, SPAN_XENOWARNING("Мы начинаем зарываться в землю."))
 	if(!do_after(src, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 		return
 	// TODO Make immune to all damage here.
-	to_chat(src, SPAN_XENOWARNING("We burrow ourselves into the ground."))
+	to_chat(src, SPAN_XENOWARNING("Мы зарываемся в землю."))
 	QDEL_NULL(observed_atom)
 	invisibility = 101
 	alpha = 100
@@ -236,20 +236,20 @@
 		return
 
 	if(target.density)
-		to_chat(src, SPAN_XENOWARNING("We can't tunnel into a solid wall!"))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем прокопать туннель в сплошной стене!"))
 		return
 
 	if(istype(target, /turf/open/space))
-		to_chat(src, SPAN_XENOWARNING("We make tunnels, not wormholes!"))
+		to_chat(src, SPAN_XENOWARNING("Мы выкапываем туннели, а не червоточины!"))
 		return
 
 	if(clone) //Prevents tunnels in Z transition areas
-		to_chat(src, SPAN_XENOWARNING("We make tunnels, not wormholes!"))
+		to_chat(src, SPAN_XENOWARNING("Мы выкапываем туннели, а не червоточины!"))
 		return
 
 	var/area/area_to_get = get_area(target)
 	if(area_to_get.flags_area & AREA_NOTUNNEL || get_dist(src, target) > 15)
-		to_chat(src, SPAN_XENOWARNING("There's no way to tunnel over there."))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем прокопать туннель здесь."))
 		return
 
 	for(var/obj/objects_in_turf in target.contents)
@@ -313,11 +313,11 @@
 	var/mob/living/carbon/xenomorph/burrower_tremor = owner
 
 	if(HAS_TRAIT(burrower_tremor, TRAIT_ABILITY_BURROWED))
-		to_chat(burrower_tremor, SPAN_XENOWARNING("We must be above ground to do this."))
+		to_chat(burrower_tremor, SPAN_XENOWARNING("Мы должны быть над землёй, чтобы сделать это."))
 		return
 
 	if(burrower_tremor.is_ventcrawling)
-		to_chat(burrower_tremor, SPAN_XENOWARNING("We must be above ground to do this."))
+		to_chat(burrower_tremor, SPAN_XENOWARNING("Мы должны быть над землёй, чтобы сделать это."))
 		return
 
 	if(!action_cooldown_check())
@@ -330,7 +330,7 @@
 		return
 
 	playsound(burrower_tremor, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
-	to_chat(burrower_tremor, SPAN_XENOWARNING("We dig ourselves into the ground and cause tremors."))
+	to_chat(burrower_tremor, SPAN_XENOWARNING("Мы зарываемся, чем вызываем дрожь земли."))
 	burrower_tremor.create_stomp()
 
 
@@ -353,32 +353,32 @@
 		return
 
 	if(xenomorph.action_busy)
-		to_chat(xenomorph, SPAN_XENOWARNING("We should finish up what we're doing before digging."))
+		to_chat(xenomorph, SPAN_XENOWARNING("Нам следует закончить то, что мы делаем, прежде чем копать."))
 		return
 
 	var/turf/turf = xenomorph.loc
 	if(!istype(turf)) //logic
-		to_chat(xenomorph, SPAN_XENOWARNING("We can't do that from there."))
+		to_chat(xenomorph, SPAN_XENOWARNING("Мы не можем сделать это отсюда."))
 		return
 
 	if(!turf.can_dig_xeno_tunnel() || !is_ground_level(turf.z))
-		to_chat(xenomorph, SPAN_XENOWARNING("We scrape around, but we can't seem to dig through that kind of floor."))
+		to_chat(xenomorph, SPAN_XENOWARNING("Мы скребёмся, но не можем выкопать туннель через этот пол."))
 		return
 
 	if(locate(/obj/structure/tunnel) in xenomorph.loc)
-		to_chat(xenomorph, SPAN_XENOWARNING("There already is a tunnel here."))
+		to_chat(xenomorph, SPAN_XENOWARNING("Здесь уже есть туннель."))
 		return
 
 	if(locate(/obj/structure/machinery/sentry_holder/landing_zone) in xenomorph.loc)
-		to_chat(xenomorph, SPAN_XENOWARNING("We can't dig a tunnel with this object in the way."))
+		to_chat(xenomorph, SPAN_XENOWARNING("Мы не можем выкопать туннель, пока нам мешает объект на пути."))
 		return
 
 	if(xenomorph.tunnel_delay)
-		to_chat(xenomorph, SPAN_XENOWARNING("We are not ready to dig a tunnel again."))
+		to_chat(xenomorph, SPAN_XENOWARNING("Мы ещё не готовы выкопать новый туннель."))
 		return
 
 	if(xenomorph.get_active_hand())
-		to_chat(xenomorph, SPAN_XENOWARNING("We need an empty claw for this!"))
+		to_chat(xenomorph, SPAN_XENOWARNING("Нам нужен свободный коготь для этого!"))
 		return
 
 	if(!xenomorph.check_plasma(plasma_cost))
@@ -388,20 +388,20 @@
 
 	if(isnull(AR) || !(AR.is_resin_allowed))
 		if(!AR || AR.flags_area & AREA_UNWEEDABLE)
-			to_chat(xenomorph, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			to_chat(xenomorph, SPAN_XENOWARNING("Эта область не подходит для размещения улья!"))
 			return
-		to_chat(xenomorph, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		to_chat(xenomorph, SPAN_XENOWARNING("Ещё слишком рано распространять улей так далеко."))
 		return
 
-	xenomorph.visible_message(SPAN_XENONOTICE("[xenomorph] begins digging out a tunnel entrance."),
-	SPAN_XENONOTICE("We begin digging out a tunnel entrance."), null, 5)
+	xenomorph.visible_message(SPAN_XENONOTICE("[xenomorph] начинает выкапывать вход в туннель."), // SS220 EDIT ADDICTION
+	SPAN_XENONOTICE("Мы начинаем выкапывать вход в туннель."), null, 5)
 	if(!do_after(xenomorph, 10 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		to_chat(xenomorph, SPAN_WARNING("Our tunnel caves in as we stop digging it."))
+		to_chat(xenomorph, SPAN_WARNING("Наш туннель обрушивается, когда мы перестаем его копать."))
 		return
 	if(!xenomorph.check_plasma(plasma_cost))
 		return
-	xenomorph.visible_message(SPAN_XENONOTICE("\The [xenomorph] digs out a tunnel entrance."),
-	SPAN_XENONOTICE("We dig out an entrance to the tunnel network."), null, 5)
+	xenomorph.visible_message(SPAN_XENONOTICE("[xenomorph] выкапывает вход в туннель."), // SS220 EDIT ADDICTION
+	SPAN_XENONOTICE("Мы выкапываем вход в сеть туннелей."), null, 5)
 
 	var/obj/structure/tunnel/tunnelobj = new(turf, xenomorph.hivenumber)
 	xenomorph.tunnel_delay = 1
@@ -420,7 +420,7 @@
 		for(var/mob/living/carbon/xenomorph/target_for_message as anything in xenomorph.hive.totalXenos)
 			var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
 			var/overwatch_src = XENO_OVERWATCH_SRC_HREF
-			to_chat(target_for_message, SPAN_XENOANNOUNCE("Hive: A new tunnel[description ? " ([description])" : ""] has been created by [xenomorph] (<a href='byond://?src=\ref[target_for_message];[overwatch_target]=\ref[xenomorph];[overwatch_src]=\ref[target_for_message]'>watch</a>) at <b>[get_area_name(tunnelobj)]</b>."))
+			to_chat(target_for_message, SPAN_XENOANNOUNCE("Улей: новый туннель «[description ? " ([description])" : ""]» был создан [xenomorph] около <b>[get_area_name(tunnelobj)]</b> (<a href='byond://?src=\ref[target_for_message];[overwatch_target]=\ref[xenomorph];[overwatch_src]=\ref[target_for_message]'>Посмотреть</a>).")) // SS220 EDIT ADDICTION
 
 	xenomorph.use_plasma(plasma_cost)
 	to_chat(xenomorph, SPAN_NOTICE("We will be ready to dig a new tunnel in 4 minutes."))

@@ -110,7 +110,7 @@ K9 SCANNER
 		SStgui.close_user_uis(user, src)
 		last_scan = last_health_display.ui_data(user, DETAIL_LEVEL_HEALTHANALYSER)
 		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)
-	to_chat(user, SPAN_NOTICE("[user] has analyzed [target_mob]'s vitals."))
+	to_chat(user, SPAN_NOTICE("[user] проанализировал показатели [target_mob].")) // SS220 EDIT ADDICTION
 	playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
 	src.add_fingerprint(user)
 	return
@@ -556,4 +556,3 @@ K9 SCANNER
 	else
 		to_chat(user, SPAN_BOLDNOTICE("[src] lights up: <b>--><--</b>"))
 	playsound(src, 'sound/machines/ping.ogg', 15, TRUE)
-

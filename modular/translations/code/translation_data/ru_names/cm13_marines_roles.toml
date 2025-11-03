@@ -1,0 +1,497 @@
+# ВНИМАНИЕ!!! Если вы собираетесь меня перевод, синхронизируйте перевод
+# tgui/packages/tgui/interfaces/BandaMarines/MarineJobs.tsx
+
+["Rifleman"]
+nominative = "Стрелок"
+genitive = "Стрелок"
+dative = "Стрелок"
+accusative = "Стрелок"
+instrumental = "Стрелок"
+prepositional = "Стрелок"
+gender = "male"
+
+["Squad Leader"]
+nominative = "Командир отряда"
+genitive = "Командир отряда"
+dative = "Командир отряда"
+accusative = "Командир отряда"
+instrumental = "Командир отряда"
+prepositional = "Командир отряда"
+gender = "male"
+
+["Combat Technician"]
+nominative = "Полевой техник"
+genitive = "Полевой техник"
+dative = "Полевой техник"
+accusative = "Полевой техник"
+instrumental = "Полевой техник"
+prepositional = "Полевой техник"
+gender = "male"
+
+["Hospital Corpsman"]
+nominative = "Полевой санитар"
+genitive = "Полевой санитар"
+dative = "Полевой санитар"
+accusative = "Полевой санитар"
+instrumental = "Полевой санитар"
+prepositional = "Полевой санитар"
+gender = "male"
+
+["Weapons Specialist"]
+nominative = "Оружейный специалист"
+genitive = "Оружейный специалист"
+dative = "Оружейный специалист"
+accusative = "Оружейный специалист"
+instrumental = "Оружейный специалист"
+prepositional = "Оружейный специалист"
+gender = "male"
+
+["Fireteam Leader"]
+nominative = "Командир группы"
+genitive = "Командир группы"
+dative = "Командир группы"
+accusative = "Командир группы"
+instrumental = "Командир группы"
+prepositional = "Командир группы"
+gender = "male"
+
+["Smartgunner"]
+nominative = "Смартганнер"
+genitive = "Смартганнер"
+dative = "Смартганнер"
+accusative = "Смартганнер"
+instrumental = "Смартганнер"
+prepositional = "Смартганнер"
+gender = "male"
+
+["Colonist"]
+nominative = "Колонист"
+genitive = "Колонист"
+dative = "Колонист"
+accusative = "Колонист"
+instrumental = "Колонист"
+prepositional = "Колонист"
+gender = "male"
+
+["Passenger"]
+nominative = "Пассажир"
+genitive = "Пассажир"
+dative = "Пассажир"
+accusative = "Пассажир"
+instrumental = "Пассажир"
+prepositional = "Пассажир"
+gender = "male"
+
+["Survivor"]
+nominative = "Выживший"
+genitive = "Выживший"
+dative = "Выживший"
+accusative = "Выживший"
+instrumental = "Выживший"
+prepositional = "Выживший"
+gender = "male"
+
+["Synth Survivor"]
+nominative = "Выживший-cинтетик"
+genitive = "Выживший-cинтетик"
+dative = "Выживший-cинтетик"
+accusative = "Выживший-cинтетик"
+instrumental = "Выживший-cинтетик"
+prepositional = "Выживший-cинтетик"
+gender = "male"
+
+["CO Survivor"]
+nominative = "Выживший КО"
+genitive = "Выживший КО"
+dative = "Выживший КО"
+accusative = "Выживший КО"
+instrumental = "Выживший КО"
+prepositional = "Выживший КО"
+gender = "male"
+
+["Chief Medical Officer"]
+nominative = "Главврач"
+genitive = "Главврач"
+dative = "Главврач"
+accusative = "Главврач"
+instrumental = "Главврач"
+prepositional = "Главврач"
+gender = "male"
+
+["Doctor"]
+nominative = "Доктор"
+genitive = "Доктор"
+dative = "Доктор"
+accusative = "Доктор"
+instrumental = "Доктор"
+prepositional = "Доктор"
+gender = "male"
+
+["Surgeon"]
+nominative = "Хирург"
+genitive = "Хирург"
+dative = "Хирург"
+accusative = "Хирург"
+instrumental = "Хирург"
+prepositional = "Хирург"
+gender = "male"
+
+["Field Doctor"]
+nominative = "Полевой врач"
+genitive = "Полевой врач"
+dative = "Полевой врач"
+accusative = "Полевой врач"
+instrumental = "Полевой врач"
+prepositional = "Полевой врач"
+gender = "male"
+
+["Nurse"]
+nominative = "Медработник"
+genitive = "Медработник"
+dative = "Медработник"
+accusative = "Медработник"
+instrumental = "Медработник"
+prepositional = "Медработник"
+gender = "male"
+
+["Researcher"]
+nominative = "Исследователь"
+genitive = "Исследователь"
+dative = "Исследователь"
+accusative = "Исследователь"
+instrumental = "Исследователь"
+prepositional = "Исследователь"
+gender = "male"
+
+["Corporate Liaison"]
+nominative = "Связной корпорации"
+genitive = "Связной корпорации"
+dative = "Связной корпорации"
+accusative = "Связной корпорации"
+instrumental = "Связной корпорации"
+prepositional = "Связной корпорации"
+gender = "male"
+
+["Combat Correspondent"]
+nominative = "Полевой корреспондент"
+genitive = "Полевой корреспондент"
+dative = "Полевой корреспондент"
+accusative = "Полевой корреспондент"
+instrumental = "Полевой корреспондент"
+prepositional = "Полевой корреспондент"
+gender = "male"
+
+["Mess Technician"]
+nominative = "Кок"
+genitive = "Кок"
+dative = "Кок"
+accusative = "Кок"
+instrumental = "Кок"
+prepositional = "Кок"
+gender = "male"
+
+["Synthetic"]
+nominative = "Синтетик"
+genitive = "Синтетик"
+dative = "Синтетик"
+accusative = "Синтетик"
+instrumental = "Синтетик"
+prepositional = "Синтетик"
+gender = "male"
+
+["Synthetic K9"]
+nominative = "Синтетик K9"
+genitive = "Синтетик K9"
+dative = "Синтетик K9"
+accusative = "Синтетик K9"
+instrumental = "Синтетик K9"
+prepositional = "Синтетик K9"
+gender = "male"
+
+["Working Joe"]
+nominative = "Рабочий Джо"
+genitive = "Рабочий Джо"
+dative = "Рабочий Джо"
+accusative = "Рабочий Джо"
+instrumental = "Рабочий Джо"
+prepositional = "Рабочий Джо"
+gender = "male"
+
+["Commanding Officer"]
+nominative = "Командующий офицер"
+genitive = "Командующий офицер"
+dative = "Командующий офицер"
+accusative = "Командующий офицер"
+instrumental = "Командующий офицер"
+prepositional = "Командующий офицер"
+gender = "male"
+
+["Executive Officer"]
+nominative = "Исполнительный офицер"
+genitive = "Исполнительный офицер"
+dative = "Исполнительный офицер"
+accusative = "Исполнительный офицер"
+instrumental = "Исполнительный офицер"
+prepositional = "Исполнительный офицер"
+gender = "male"
+
+["Staff Officer"]
+nominative = "Штаб-офицер"
+genitive = "Штаб-офицер"
+dative = "Штаб-офицер"
+accusative = "Штаб-офицер"
+instrumental = "Штаб-офицер"
+prepositional = "Штаб-офицер"
+gender = "male"
+
+["Auxiliary Support Officer"]
+nominative = "Офицер поддержки"
+genitive = "Офицер поддержки"
+dative = "Офицер поддержки"
+accusative = "Офицер поддержки"
+instrumental = "Офицер поддержки"
+prepositional = "Офицер поддержки"
+gender = "male"
+
+["Gunship Pilot"]
+nominative = "Пилот боевого корабля"
+genitive = "Пилот боевого корабля"
+dative = "Пилот боевого корабля"
+accusative = "Пилот боевого корабля"
+instrumental = "Пилот боевого корабля"
+prepositional = "Пилот боевого корабля"
+gender = "male"
+
+["Dropship Pilot"]
+nominative = "Пилот десантного корабля"
+genitive = "Пилот десантного корабля"
+dative = "Пилот десантного корабля"
+accusative = "Пилот десантного корабля"
+instrumental = "Пилот десантного корабля"
+prepositional = "Пилот десантного корабля"
+gender = "male"
+
+["Tank Crew"]
+nominative = "Танкист"
+genitive = "Танкист"
+dative = "Танкист"
+accusative = "Танкист"
+instrumental = "Танкист"
+prepositional = "Танкист"
+gender = "male"
+
+["Dropship Crew Chief"]
+nominative = "Офицер десантного корабля"
+genitive = "Офицер десантного корабля"
+dative = "Офицер десантного корабля"
+accusative = "Офицер десантного корабля"
+instrumental = "Офицер десантного корабля"
+prepositional = "Офицер десантного корабля"
+gender = "male"
+
+["Intelligence Officer"]
+nominative = "Офицер разведки"
+genitive = "Офицер разведки"
+dative = "Офицер разведки"
+accusative = "Офицер разведки"
+instrumental = "Офицер разведки"
+prepositional = "Офицер разведки"
+gender = "male"
+
+["Military Police"]
+nominative = "Военная полиция"
+genitive = "Военная полиция"
+dative = "Военная полиция"
+accusative = "Военная полиция"
+instrumental = "Военная полиция"
+prepositional = "Военная полиция"
+gender = "male"
+
+["Military Warden"]
+nominative = "Военный смотритель"
+genitive = "Военный смотритель"
+dative = "Военный смотритель"
+accusative = "Военный смотритель"
+instrumental = "Военный смотритель"
+prepositional = "Военный смотритель"
+gender = "male"
+
+["Chief MP"]
+nominative = "Шеф военной полиции"
+genitive = "Шеф военной полиции"
+dative = "Шеф военной полиции"
+accusative = "Шеф военной полиции"
+instrumental = "Шеф военной полиции"
+prepositional = "Шеф военной полиции"
+gender = "male"
+
+["Senior Enlisted Advisor"]
+nominative = "Старший инструктор"
+genitive = "Старшего инструктора"
+dative = "Старшему инструктору"
+accusative = "Старшего инструктора"
+instrumental = "Старшим инструктором"
+prepositional = "Старшем инструкторе"
+gender = "male"
+
+["Chief Engineer"]
+nominative = "Главный инженер"
+genitive = "Главного инженера"
+dative = "Главному инженеру"
+accusative = "Главного инженера"
+instrumental = "Главным инженером"
+prepositional = "Главном инженере"
+gender = "male"
+
+["Maintenance Technician"]
+nominative = "Техник-ремонтник"
+genitive = "Техник-ремонтник"
+dative = "Техник-ремонтник"
+accusative = "Техник-ремонтник"
+instrumental = "Техник-ремонтник"
+prepositional = "Техник-ремонтник"
+gender = "male"
+
+["Ordnance Technician"]
+nominative = "Орудийный техник"
+genitive = "Орудийный техник"
+dative = "Орудийный техник"
+accusative = "Орудийный техник"
+instrumental = "Орудийный техник"
+prepositional = "Орудийный техник"
+gender = "male"
+
+["Quartermaster"]
+nominative = "Квартирмейстер"
+genitive = "Квартирмейстер"
+dative = "Квартирмейстер"
+accusative = "Квартирмейстер"
+instrumental = "Квартирмейстер"
+prepositional = "Квартирмейстер"
+gender = "male"
+
+["Cargo Technician"]
+nominative = "Грузовой техник"
+genitive = "Грузового техника"
+dative = "Грузовому технику"
+accusative = "Грузового техника"
+instrumental = "Грузовым техником"
+prepositional = "Грузовом технике"
+gender = "male"
+
+["Marine Raider"]
+nominative = "Рейдер"
+genitive = "Рейдер"
+dative = "Рейдер"
+accusative = "Рейдер"
+instrumental = "Рейдер"
+prepositional = "Рейдер"
+gender = "male"
+
+["Marine Raider Team Lead"]
+nominative = "Комотряда-рейдер"
+genitive = "Комотряда-рейдер"
+dative = "Комотряда-рейдер"
+accusative = "Комотряда-рейдер"
+instrumental = "Комотряда-рейдер"
+prepositional = "Комотряда-рейдер"
+gender = "male"
+
+["Marine Raider Platoon Lead"]
+nominative = "Комгруппы-рейдер"
+genitive = "Комгруппы-рейдер"
+dative = "Комгруппы-рейдер"
+accusative = "Комгруппы-рейдер"
+instrumental = "Комгруппы-рейдер"
+prepositional = "Комгруппы-рейдер"
+gender = "male"
+
+["Stowaway"]
+nominative = "Безбилетник"
+genitive = "Безбилетник"
+dative = "Безбилетник"
+accusative = "Безбилетник"
+instrumental = "Безбилетник"
+prepositional = "Безбилетник"
+gender = "male"
+
+["USCM Marine"]
+nominative = "Морпех ККМП"
+genitive = "Морпех ККМП"
+dative = "Морпех ККМП"
+accusative = "Морпех ККМП"
+instrumental = "Морпех ККМП"
+prepositional = "Морпех ККМП"
+gender = "male"
+
+["USCM Colonel"]
+nominative = "Полковник ККМП"
+genitive = "Полковник ККМП"
+dative = "Полковник ККМП"
+accusative = "Полковник ККМП"
+instrumental = "Полковник ККМП"
+prepositional = "Полковник ККМП"
+gender = "male"
+
+["USCM Observer"]
+nominative = "Наблюдатель ККМП"
+genitive = "Наблюдатель ККМП"
+dative = "Наблюдатель ККМП"
+accusative = "Наблюдатель ККМП"
+instrumental = "Наблюдатель ККМП"
+prepositional = "Наблюдатель ККМП"
+gender = "male"
+
+["USCM General"]
+nominative = "Генерал ККМП"
+genitive = "Генерал ККМП"
+dative = "Генерал ККМП"
+accusative = "Генерал ККМП"
+instrumental = "Генерал ККМП"
+prepositional = "Генерал ККМП"
+gender = "male"
+
+["Assistant Commandant of the Marine Corps"]
+nominative = "Заместитель коменданта КМП"
+genitive = "Заместитель коменданта КМП"
+dative = "Заместитель коменданта КМП"
+accusative = "Заместитель коменданта КМП"
+instrumental = "Заместитель коменданта КМП"
+prepositional = "Заместитель коменданта КМП"
+gender = "male"
+
+["Commandant of the Marine Corps"]
+nominative = "Комендант КМП"
+genitive = "Комендант КМП"
+dative = "Комендант КМП"
+accusative = "Комендант КМП"
+instrumental = "Комендант КМП"
+prepositional = "Комендант КМП"
+gender = "male"
+
+["Platoon Corpsman"]
+nominative = "Санитар отряда"
+genitive = "Санитар отряда"
+dative = "Санитар отряда"
+accusative = "Санитар отряда"
+instrumental = "Санитар отряда"
+prepositional = "Санитар отряда"
+gender = "male"
+
+["Platoon Squad Leader"]
+nominative = "Командир отряда"
+genitive = "Командир отряда"
+dative = "Командир отряда"
+accusative = "Командир отряда"
+instrumental = "Командир отряда"
+prepositional = "Командир отряда"
+gender = "male"
+
+["Reconnaissance Support Technician"]
+nominative = "Специалист по рекогносцировке"
+genitive = "Специалист по рекогносцировке"
+dative = "Специалист по рекогносцировке"
+accusative = "Специалист по рекогносцировке"
+instrumental = "Специалист по рекогносцировке"
+prepositional = "Специалист по рекогносцировке"
+gender = "male"

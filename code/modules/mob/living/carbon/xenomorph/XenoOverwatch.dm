@@ -74,7 +74,7 @@
 		UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
 
 		if(oldXeno)
-			to_chat(src, SPAN_XENOWARNING("We stop watching [oldXeno]."))
+			to_chat(src, SPAN_XENOWARNING("Мы перестаём наблюдать за [oldXeno].")) // SS220 EDIT ADDICTION
 			UnregisterSignal(oldXeno, COMSIG_PARENT_QDELETING)
 			if(!QDELETED(oldXeno))
 				oldXeno.hud_set_queen_overwatch()
@@ -87,19 +87,19 @@
 			return
 
 		if(targetXeno == src)
-			to_chat(src, SPAN_XENOWARNING("We can't watch ourselves!"))
+			to_chat(src, SPAN_XENOWARNING("Мы не можем наблюдать за самим собой!"))
 			return
 
 		if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
-			to_chat(src, SPAN_XENOWARNING("Our psychic connection is cut off!"))
+			to_chat(src, SPAN_XENOWARNING("Наша психическая связь с ульем была прервана!"))
 			return
 
 		if(HAS_TRAIT(targetXeno, TRAIT_HIVEMIND_INTERFERENCE))
-			to_chat(src, SPAN_XENOWARNING("Our sister's psychic connection is cut off!"))
+			to_chat(src, SPAN_XENOWARNING("Психическая связь нашей сестры была прервана!"))
 			return
 
 		if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-			to_chat(src, SPAN_XENOWARNING("We cannot do this in our current state!"))
+			to_chat(src, SPAN_XENOWARNING("Мы не можем сделать это в текущем состоянии!"))
 			return
 
 		if(caste_type != XENO_CASTE_QUEEN && is_zoomed)
@@ -209,16 +209,16 @@
 		var/input = href_list["target"]
 		var/obj/effect/alien/resin/marker/target = locate(input)
 		if(!istype(target, /obj/effect/alien/resin/marker)|| !target.loc)
-			to_chat(src, SPAN_XENONOTICE("That resin mark no longer exists."))
+			to_chat(src, SPAN_XENONOTICE("Этой смоляной метки больше не существует."))
 			return
 		else
-			to_chat(src, SPAN_XENONOTICE("We psychically observe the [target.mark_meaning.name] resin mark in [get_area_name(target)]."))
+			to_chat(src, SPAN_XENONOTICE("Вы наблюдаете за смоляной меткой [target.mark_meaning.name] около «[get_area_name(target)]».")) // SS220 EDIT ADDICTION
 			overwatch(target)
 	if(href_list["track"])
 		var/input2 = href_list["target"]
 		var/obj/effect/alien/resin/marker/target2 = locate(input2)
 		if(!istype(target2, /obj/effect/alien/resin/marker) || !target2.loc)
-			to_chat(src, SPAN_XENONOTICE("That resin mark no longer exists."))
+			to_chat(src, SPAN_XENONOTICE("Этой смоляной метки больше не существует."))
 			return
 		else
 			start_tracking_resin_mark(target2)
@@ -227,4 +227,3 @@
 
 
 	..()
-

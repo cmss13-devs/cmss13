@@ -8,7 +8,7 @@
 	//Can open sound
 	var/open_sound = 'sound/effects/canopen.ogg'
 	//Can open message
-	var/open_message = "You open the drink with an audible pop!"
+	var/open_message = "Вы открываете напиток с громким щелчком!"
 	//Eating sound
 	var/consume_sound = 'sound/items/drink.ogg'
 	//What this object is, used during interactions
@@ -116,16 +116,17 @@
 		to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 		return
 	var/datum/reagents/R = src.reagents
+	var/ru_name = declent_ru(GENITIVE) // SS220 EDIT ADDICTION
 
 	if(!R.total_volume || !R)
 		if(M == user && M.a_intent == INTENT_HARM && M.zone_selected == "head" && crushable)
 			crush_can(M)
 			return
-		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
+		to_chat(user, SPAN_DANGER("Содержимое [ru_name] закончилось!")) // SS220 EDIT ADDICTION
 		return 0
 
 	if(M == user)
-		to_chat(M, SPAN_NOTICE("You swallow a gulp of [src]."))
+		to_chat(M, SPAN_NOTICE("Вы делаете глоток [ru_name]")) // SS220 EDIT ADDICTION
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, gulp_size)

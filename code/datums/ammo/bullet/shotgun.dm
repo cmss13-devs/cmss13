@@ -30,7 +30,7 @@
 /datum/ammo/bullet/shotgun/slug/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
-		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
+		to_chat(target, SPAN_XENODANGER("Вы были потрясены и замедлены внезапным ударом!"))
 		target.KnockDown(0.5) // If you ask me the KD should be left out, but players like their visual cues
 		target.Stun(0.5)
 		target.apply_effect(1, SUPERSLOW)
@@ -307,7 +307,7 @@
 /datum/ammo/bullet/shotgun/heavy/slug/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
-		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
+		to_chat(target, SPAN_XENODANGER("Вы были потрясены и замедлены внезапным ударом!"))
 		target.KnockDown(0.5) // If you ask me the KD should be left out, but players like their visual cues
 		target.Stun(0.5)
 		target.apply_effect(2, SUPERSLOW)
@@ -460,16 +460,16 @@
 	M.Stun(2)
 	M.apply_effect(4, SLOW)
 	if(iscarbonsizexeno(M))
-		to_chat(M, SPAN_XENODANGER("The impact knocks you off your feet!"))
+		to_chat(M, SPAN_XENODANGER("Удар сбил вас с ног!"))
 	else //This will hammer a Yautja as hard as a human.
-		to_chat(M, SPAN_HIGHDANGER("The impact knocks you off your feet!"))
+		to_chat(M, SPAN_HIGHDANGER("Удар сбил вас с ног!"))
 
 	step(M, get_dir(P.firer, M))
 
 /datum/ammo/bullet/shotgun/twobore/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
-		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
+		to_chat(target, SPAN_XENODANGER("Вы были потрясены и замедлены внезапным ударом!"))
 		target.KnockDown(0.5) // If you ask me the KD should be left out, but players like their visual cues
 		target.Stun(0.5)
 		target.apply_effect(2, SUPERSLOW)

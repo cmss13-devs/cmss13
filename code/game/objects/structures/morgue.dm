@@ -281,7 +281,7 @@
 				if(!C.cremating)
 					C.cremate(user)
 	else
-		to_chat(user, SPAN_DANGER("Access denied."))
+		to_chat(user, SPAN_DANGER("Доступ запрещён."))
 
 
 

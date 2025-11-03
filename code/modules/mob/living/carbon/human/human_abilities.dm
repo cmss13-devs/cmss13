@@ -84,11 +84,11 @@
 	var/mob/living/carbon/human/human_owner = owner
 
 	if(human_owner.client.prefs.muted & MUTE_IC)
-		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted)."))
+		to_chat(human_owner, SPAN_DANGER("Вы не можете шептать (вы заглушены)."))
 		return FALSE
 
 	if(human_owner.stat == DEAD)
-		to_chat(human_owner, SPAN_WARNING("You cannot talk while dead."))
+		to_chat(human_owner, SPAN_WARNING("Вы не можете говорить, будучи мёртвым."))
 		return FALSE
 
 	var/list/target_list = list()
@@ -115,11 +115,11 @@
 	var/mob/living/carbon/human/human_owner = owner
 
 	if(human_owner.client.prefs.muted & MUTE_IC)
-		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted)."))
+		to_chat(human_owner, SPAN_DANGER("Вы не можете шептать (вы заглушены)."))
 		return FALSE
 
 	if(human_owner.stat == DEAD)
-		to_chat(human_owner, SPAN_WARNING("You cannot talk while dead."))
+		to_chat(human_owner, SPAN_WARNING("Вы не можете говорить, будучи мёртвым."))
 		return FALSE
 
 	human_owner.psychic_radiance()

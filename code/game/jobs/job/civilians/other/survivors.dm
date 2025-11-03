@@ -28,12 +28,15 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 
 /datum/job/civilian/survivor/announce_entry_message(mob/living/carbon/human/survivor, datum/money_account/account, whitelist_status) //The actual message that is displayed to the mob when they enter the game as a new player.
 	if(survivor?.loc && survivor.client)
-		//Document syntax cannot have tabs for proper formatting.	// SS220 EDIT TRANSLATE
-		var/entrydisplay = " \
+		//Document syntax cannot have tabs for proper formatting.
+		// SS220 START EDIT ADDICTION
+		var/entrydisplay = boxed_message("\
 			[SPAN_ROLE_BODY("|______________________|")] \n\
-			[SPAN_ROLE_BODY("[generate_entry_message(survivor)]<br>[account ? "Ваш номер аккаунта: <b>[account.account_number]</b>. Ваш пинкод: <b>[account.remote_access_pin]</b>." : "У вас нет банковского счета."]")] \n\
+			[SPAN_ROLE_BODY("[generate_entry_message(survivor)]<br>")] \n\
+			[account ? SPAN_ROLE_BODY("Номер вашего банковского счёта: <b>[account.account_number]</b>. Пин-код: <b>[account.remote_access_pin]</b>.") : SPAN_ROLE_BODY("У вас нет банковского счёта.")] \n\
 			[SPAN_ROLE_BODY("|______________________|")] \
-		"
+		")
+		// SS220 END EDIT ADDICTION
 		to_chat_spaced(survivor, html = entrydisplay)
 
 /datum/job/civilian/survivor/can_play_role_in_scenario(client/client)
@@ -96,10 +99,10 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 		for(var/line in intro_text)
 			to_chat(survivor, line)
 	else
-		to_chat(survivor, "<h2>Вы - выживший!</h2>")	// SS220 EDIT TRANSLATE
+		to_chat(survivor, SPAN_NOTICE("<h2>Вы - выживший!</h2>")) // SS220 EDIT ADDITION
 		to_chat(survivor, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-		to_chat(survivor, SPAN_NOTICE("Вы полностью осознаете угрозу ксеноморфов и можете использовать эти знания по своему усмотрению."))
-		to_chat(survivor, SPAN_NOTICE("Вы НЕ знаете о морпехах и их намерениях."))
+		to_chat(survivor, SPAN_NOTICE("Вы полностью осознаете угрозу ксеноморфов и можете использовать эти знания по своему усмотрению.")) // SS220 EDIT ADDITION
+		to_chat(survivor, SPAN_NOTICE("Вы НЕ знаете о морпехах и их намерениях.")) // SS220 EDIT ADDITION
 
 	if(story_text)
 		to_chat(survivor, story_text)
@@ -108,11 +111,11 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 		tell_survivor_story(survivor)
 
 	if(hostile)
-		to_chat(survivor, SPAN_HIGHDANGER("Вы ВРАЖДЕБНЫ к ККМП!"))	// SS220 EDIT TRANSLATE
+		to_chat(survivor, SPAN_HIGHDANGER("Вы ВРАЖДЕБНЫ к ККМП!")) // SS220 EDIT ADDITION
 	else if(survivor.faction == FACTION_CLF)
-		to_chat(survivor, SPAN_HIGHDANGER("Вы ВРАЖДЕБНЫ к ККМП, но НЕ к другим выжившим!"))
+		to_chat(survivor, SPAN_HIGHDANGER("Вы ВРАЖДЕБНЫ к ККМП, но НЕ к другим выжившим!")) // SS220 EDIT ADDITION
 	else
-		to_chat(survivor, SPAN_XENOHIGHDANGER("Вы НЕ ВРАЖДЕБНЫ к ККМП!"))
+		to_chat(survivor, SPAN_XENOHIGHDANGER("Вы НЕ ВРАЖДЕБНЫ к ККМП!")) // SS220 EDIT ADDITION
 
 /datum/job/civilian/survivor/proc/tell_survivor_story(mob/living/carbon/human/H)	// SS220 EDIT TRANSLATE
 	var/list/survivor_story = list(

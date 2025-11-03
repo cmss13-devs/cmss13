@@ -184,7 +184,7 @@ const SleeperOccupant = (props) => {
                   good: [0.6, Infinity],
                 }}
               >
-                {occupant.bloodPercent}%, {occupant.bloodLevel} мл
+                {occupant.bloodPercent}%, {round(occupant.bloodLevel, 2)} мл
               </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item label="Пульс" verticalAlign="middle">

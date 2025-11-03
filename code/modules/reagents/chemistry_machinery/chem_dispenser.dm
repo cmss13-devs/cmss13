@@ -134,7 +134,7 @@
 /obj/structure/machinery/chem_dispenser/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "ChemDispenser", capitalize(declent_ru())) // SS220 - EDIT ADDITTION
+		ui = new(user, src, "ChemDispenser", capitalize(declent_ru())) // SS220 EDIT ADDICTION
 		ui.open()
 
 /obj/structure/machinery/chem_dispenser/ui_static_data(mob/user)

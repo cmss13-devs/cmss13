@@ -25,7 +25,7 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 	if(isxeno(user))
 		return FALSE
 	if(!allowed(user))
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Доступ запрещён."))
 		flick(initial(icon_state) + "-denied", src)
 		return FALSE
 

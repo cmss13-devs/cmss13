@@ -173,7 +173,7 @@
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	playsound(xeno, 'sound/voice/deep_alien_screech2.ogg', 75, 0, status = 0)
-	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a raspy guttural roar!"))
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] издаёт скрежещущий горловой рёв!")) // SS220 EDIT ADDICTION
 	xeno.create_shriekwave()
 
 	var/datum/effect_system/smoke_spread/king_doom/smoke_gas = new()
@@ -287,48 +287,48 @@
 	XENO_ACTION_CHECK(xeno)
 
 	if(get_dist(owner, target) > range)
-		to_chat(xeno, SPAN_XENONOTICE("We cannot leap that far!"))
+		to_chat(xeno, SPAN_XENONOTICE("Мы не можем прыгнуть так далеко!"))
 		return
 
 	var/turf/target_turf = get_turf(target)
 
 	if(!target_turf || target_turf.density)
-		to_chat(xeno, SPAN_XENONOTICE("We cannot leap to that!"))
+		to_chat(xeno, SPAN_XENONOTICE("Мы не можем прыгнуть в эту область!"))
 		return
 
 	if(istype(target_turf, /turf/open/space))
-		to_chat(xeno, SPAN_XENONOTICE("It would not be wise to try to leap there..."))
+		to_chat(xeno, SPAN_XENONOTICE("Было бы неразумно пытаться прыгнуть эту область..."))
 		return
 
 	if(istype(target, /obj/vehicle/multitile))
-		to_chat(xeno, SPAN_XENONOTICE("It would not be wise to try to leap there..."))
+		to_chat(xeno, SPAN_XENONOTICE("Было бы неразумно пытаться прыгнуть эту область..."))
 		return
 
 	var/area/target_area = get_area(target_turf)
 	if(target_area.flags_area & AREA_NOTUNNEL)
-		to_chat(xeno, SPAN_XENONOTICE("We cannot leap to that area!"))
+		to_chat(xeno, SPAN_XENONOTICE("Мы не можем прыгнуть в эту область!"))
 
 	var/list/leap_line = get_line(xeno, target)
 	for(var/turf/jump_turf in leap_line)
 		if(jump_turf.density)
-			to_chat(xeno, SPAN_XENONOTICE("We don't have a clear path to leap to that location!"))
+			to_chat(xeno, SPAN_XENONOTICE("Мы не можем прыгнуть в эту область, пока нам что-то мешает на пути к ней!"))
 			return
 
 		for(var/obj/structure/possible_blocker in jump_turf)
 			if(possible_blocker.density && !possible_blocker.throwpass)
-				to_chat(xeno, SPAN_XENONOTICE("There's something blocking us from leaping."))
+				to_chat(xeno, SPAN_XENONOTICE("Что-то мешает нам совершить прыжок."))
 				return
 
 	if(!check_and_use_plasma_owner())
-		to_chat(xeno, SPAN_XENONOTICE("We don't have enough plasma to use [name]."))
+		to_chat(xeno, SPAN_XENONOTICE("У нас недостаточно плазмы, чтобы использовать [name].")) // SS220 EDIT ADDICTION
 		return
 
 	var/turf/template_turf = get_step(target_turf, SOUTHWEST)
 
-	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourself for a giant leap."))
+	to_chat(xeno, SPAN_XENONOTICE("Наши мышцы напрягаются, когда мы готовимся к гигантскому прыжку."))
 	xeno.make_jittery(2 SECONDS)
 	if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		to_chat(xeno, SPAN_XENONOTICE("We relax our muslces and end our leap."))
+		to_chat(xeno, SPAN_XENONOTICE("Наши мышцы расслабляются, когда мы приземляемся на землю."))
 		return
 	if(leaping || !target)
 		return

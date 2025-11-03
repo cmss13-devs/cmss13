@@ -173,8 +173,9 @@
 	if((dropped != user) || !isxeno(user))
 		return
 
+	var/ru_name = declent_ru(INSTRUMENTAL) // SS220 EDIT ADDICTION
 	if(health > 0)
-		to_chat(user, SPAN_XENO("We can't jump over [src] until it is destroyed!"))
+		to_chat(user, SPAN_XENO("Мы не можем перепрыгнуть через [ru_name], пока он не разрушен!")) // SS220 EDIT ADDICTION
 		return
 
 	var/turf/current_turf = get_turf(user)
@@ -185,22 +186,22 @@
 			break
 
 		if(current_turf.density)
-			to_chat(user, SPAN_XENO("The path over [src] is obstructed!"))
+			to_chat(user, SPAN_XENO("Путь через [ru_name] заблокирован!")) // SS220 EDIT ADDICTION
 			return
 
 	// Now we check to make sure the turf on the other side of the tank isn't dense too
 	current_turf = get_step(current_turf, dir_to_go)
 	if(current_turf.density)
-		to_chat(user, SPAN_XENO("The path over [src] is obstructed!"))
+		to_chat(user, SPAN_XENO("Путь через [ru_name] заблокирован!")) // SS220 EDIT ADDICTION
 		return
 
-	to_chat(user, SPAN_XENO("We begin to jump over [src]..."))
+	to_chat(user, SPAN_XENO("Мы начинаем перепрыгивать через [ru_name]...")) // SS220 EDIT ADDICTION
 	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		to_chat(user, SPAN_XENO("We stop jumping over [src]."))
+		to_chat(user, SPAN_XENO("Мы перестаем перепрыгивать через [ru_name].")) // SS220 EDIT ADDICTION
 		return
 
 	user.forceMove(current_turf)
-	to_chat(user, SPAN_XENO("We jump to the other side of [src]."))
+	to_chat(user, SPAN_XENO("Мы перепрыгиваем на другую сторону [declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 /*
 ** PRESETS SPAWNERS
 */

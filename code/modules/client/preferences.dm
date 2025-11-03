@@ -1493,7 +1493,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 				if("xeno_prefix")
 					if(xeno_name_ban)
-						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You are banned from xeno name picking.")))
+						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Вам запрещено выбирать имя для роли Ксено")))
 						xeno_prefix = ""
 						return
 
@@ -1503,16 +1503,16 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					var/prefix_length = length_char(new_xeno_prefix) //SS220 EDIT CHANGE - Cyrillic Fixes
 
 					if(prefix_length>3)
-						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Invalid Xeno Prefix. Your Prefix can only be up to 3 letters long.")))
+						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Недопустимый префикс. Ваш префикс может состоять только из 3 букв.")))
 						return
 
 					if(prefix_length==3)
 						var/playtime = user.client.get_total_xeno_playtime()
 						if(playtime < 124 HOURS)
-							to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [time_left_until(124 HOURS, playtime, 1 HOURS)] more hours to unlock xeno three letter prefix.")))
+							to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Вам нужно сыграть ещё [time_left_until(124 HOURS, playtime, 1 HOURS)] часов, чтобы разблокировать смену префикса."))) // SS220 EDIT ADDICTION
 							return
 						if(xeno_postfix)
-							to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
+							to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Нельзя использовать трёхбуквенный префикс с настраиваемым постфиксом.")))
 							return
 
 					if(length_char(new_xeno_prefix)==0) //SS220 EDIT CHANGE - Cyrillic Fixes
@@ -1532,22 +1532,22 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 				if("xeno_postfix")
 					if(xeno_name_ban)
-						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You are banned from xeno name picking.")))
+						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Вам запрещено выбирать имя для роли Ксено")))
 						xeno_postfix = ""
 						return
 					var/playtime = user.client.get_total_xeno_playtime()
 					if(playtime < 24 HOURS)
-						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [time_left_until(24 HOURS, playtime, 1 HOURS)] more hours to unlock xeno postfix.")))
+						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Вам нужно сыграть ещё [time_left_until(24 HOURS, playtime, 1 HOURS)] часов, чтобы разблокировать смену постфикса."))) // SS220 EDIT ADDICTION
 						return
 
 					if(length_char(xeno_prefix)==3) //SS220 EDIT CHANGE - Cyrillic Fixes
-						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
+						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Нельзя использовать трёхбуквенный префикс с настраиваемым постфиксом.")))
 						return
 
 					var/new_xeno_postfix = input(user, "Choose your xenomorph postfix. One capital letter with or without a digit at the end. Put empty text if you want to remove postfix", "Xenomorph Postfix") as text|null
 					new_xeno_postfix = uppertext(new_xeno_postfix)
 					if(length_char(new_xeno_postfix)>2) //SS220 EDIT CHANGE - Cyrillic Fixes
-						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Invalid Xeno Postfix. Your Postfix can only be up to 2 letters long.")))
+						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Недопустимый постфикс. Ваш постфикс может состоять только из 2 букв.")))
 						return
 					else if(length_char(new_xeno_postfix)==0) //SS220 EDIT CHANGE - Cyrillic Fixes
 						xeno_postfix = ""
@@ -1562,11 +1562,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 								if(65 to 90, 1040 to 1071, 1025) //Uppercase Letters will work on first char  //SS220 EDIT CHANGE - Cyrillic Fixes
 
 									if(length_char(xeno_prefix)!=2) //SS220 EDIT CHANGE - Cyrillic Fixes
-										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
+										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Нельзя использовать трёхбуквенный префикс с настраиваемым постфиксом.")))
 										return
 
 									if(!first_char && playtime < 300 HOURS)
-										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You need to play [time_left_until(300 HOURS, playtime, 1 HOURS)] more hours to unlock double letter xeno postfix.")))
+										to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Вам нужно сыграть ещё [time_left_until(300 HOURS, playtime, 1 HOURS)] часов, чтобы разблокировать двухбуквенный постфикс.")))
 										all_ok = FALSE
 								// 0  .. 9
 								if(48 to 57) //Numbers will work if not the first char

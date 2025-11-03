@@ -115,8 +115,8 @@ of predators), but can be added to include variant game modes (like humans vs. h
 //Spawns a larva in an appropriate location
 /datum/game_mode/proc/spawn_latejoin_larva()
 	var/mob/living/carbon/xenomorph/larva/new_xeno = new /mob/living/carbon/xenomorph/larva(get_turf(pick(GLOB.xeno_spawns)))
-	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
-	SPAN_XENODANGER("You burrow out of the ground and awaken from your slumber. For the Hive!"))
+	new_xeno.visible_message(SPAN_XENODANGER("Из земли внезапно появляется грудолом!"),
+	SPAN_XENODANGER("Вы вырываетесь из-под земли, просыпаясь от сна. Во имя Улья!"))
 	new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
 // Open podlocks with the given ID if they aren't already opened.

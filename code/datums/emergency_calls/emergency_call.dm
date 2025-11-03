@@ -141,8 +141,8 @@
 
 	for(var/mob/dead/observer/M in GLOB.observer_list)
 		if(M.client)
-			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("\n[ert_message]. &gt; <a href='byond://?src=\ref[M];joinresponseteam=1;'><b>Join Response Team</b></a> &lt; </span>")))
-			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")))
+			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("<br>[ert_message]. &gt; <a href=\"byond://?src=\ref[M];joinresponseteam=1;\"><b>Присоединиться к команде реагирования</b></a> &lt; </span>"))) // SS220 EDIT ADDICTION
+			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("Вы не можете присоединиться, если недавно были в режиме призрака. Нажмите на ссылку в чате или используйте команду во вкладке «Ghost», чтобы присоединиться.</span><br>"))) // SS220 EDIT ADDICTION
 
 			give_action(M, /datum/action/join_ert, src)
 

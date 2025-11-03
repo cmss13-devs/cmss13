@@ -785,7 +785,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(!hacked || ignore_hack)
 		if(!allowed(user))
 			if(display)
-				to_chat(user, SPAN_WARNING("Access denied."))
+				to_chat(user, SPAN_WARNING("Доступ запрещён."))
 				vend_fail()
 			return FALSE
 
@@ -824,7 +824,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 //-----------TGUI PROCS------------------------
 /obj/structure/machinery/cm_vending/ui_static_data(mob/user)
 	. = list()
-	.["vendor_name"] = capitalize(declent_ru(NOMINATIVE)) // SS220 - EDIT ADDITTION
+	.["vendor_name"] = capitalize(declent_ru()) // SS220 EDIT ADDICTION
 	.["vendor_type"] = "base"
 	.["theme"] = vendor_theme
 	if(vend_flags & VEND_FACTION_THEMES)

@@ -191,9 +191,9 @@ Contains most of the procs that are called when a mob is attacked by something
 		return FALSE
 
 	if(LAZYLEN(I.attack_verb))
-		visible_message(SPAN_DANGER("<B>[src] has been [pick(I.attack_verb)] in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
+		visible_message(SPAN_DANGER_BOLD("[user] [ru_attacked_verb(pick(I.attack_verb))] [declent_ru()] в [affecting.declent_ru(ACCUSATIVE)], используя [I.declent_ru()]."), null, null, 5) // SS220 EDIT ADDICTION
 	else
-		visible_message(SPAN_DANGER("<B>[src] has been attacked in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
+		visible_message(SPAN_DANGER_BOLD("[user] атакует [declent_ru()] в [affecting.declent_ru(ACCUSATIVE)], используя [I.declent_ru()]."), null, null, 5) // SS220 EDIT ADDICTION
 
 	var/armor = getarmor(affecting, ARMOR_MELEE)
 

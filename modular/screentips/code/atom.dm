@@ -20,7 +20,7 @@
 
 	var/extra_lines = 0
 	var/extra_context = ""
-	var/used_name = declent_ru(NOMINATIVE)
+	var/used_name = declent_ru()
 
 	//We inline a MAPTEXT() here, because there's no good way to statically add to a string like this
 	var/new_maptext = "<span class='context' style='text-align: center; color: [active_hud.screentip_color]'>[used_name][extra_context]</span>"

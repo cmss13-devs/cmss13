@@ -73,9 +73,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(!hive.living_xeno_queen && castepick != XENO_CASTE_QUEEN && !islarva(src) && !hive.allow_no_queen_evo)
 		if(hive.xeno_queen_timer > world.time)
-			to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. We can't find the strength to evolve."))
+			to_chat(src, SPAN_WARNING("Улей потрясён смертью последней Королевы. Без Королевы у нас нет возможности эволюционировать."))
 		else
-			to_chat(src, SPAN_XENONOTICE("The hive currently has no Queen! We can't find the strength to evolve."))
+			to_chat(src, SPAN_XENONOTICE("В улье сейчас нет Королевы! Без Королевы у нас нет возможности эволюционировать."))
 		return
 
 	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
@@ -113,16 +113,16 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(!can_evolve(castepick, potential_queens))
 		return
-	to_chat(src, SPAN_XENONOTICE("It looks like the hive can support our evolution to [SPAN_BOLD(castepick)]!"))
+	to_chat(src, SPAN_XENONOTICE("Похоже, что улей может поддержать нашу эволюцию в [SPAN_BOLD(castepick)]!")) // SS220 EDIT ADDICTION
 
-	visible_message(SPAN_XENONOTICE("[src] begins to twist and contort."),
-	SPAN_XENONOTICE("We begin to twist and contort."))
+	visible_message(SPAN_XENONOTICE("[declent_ru()] начинает извиваться и дрожать."), // SS220 EDIT ADDICTION
+	SPAN_XENONOTICE("Мы начинаем извиваться и дрожать."))
 	xeno_jitter(25)
 	evolving = TRUE
 	var/level_to_switch_to = get_vision_level()
 
 	if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE)) // Can evolve while moving, resist or rest to cancel it.
-		to_chat(src, SPAN_WARNING("We quiver, but nothing happens. Our evolution has ceased for now..."))
+		to_chat(src, SPAN_WARNING("Мы дрожим, но ничего не происходит. Похоже, что наша эволюция была приостановлена..."))
 		evolving = FALSE
 		return
 
@@ -197,8 +197,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	built_structures = null
 
-	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of [src]."),
-	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For the hive!"))
+	new_xeno.visible_message(SPAN_XENODANGER("Из панциря [declent_ru()] появляется [new_xeno.caste.caste_type]."), // SS220 EDIT ADDICTION
+	SPAN_XENODANGER("Мы эволюционируем в более совершенную форму из оболочки старого панциря. Во имя улья!"))
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.overwatch(new_xeno)
@@ -237,15 +237,15 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return FALSE
 
 	if(is_ventcrawling)
-		to_chat(src, SPAN_WARNING("This place is too constraining to evolve."))
+		to_chat(src, SPAN_WARNING("Мы не можем эволюционировать в этом месте."))
 		return FALSE
 
 	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("We can't evolve here."))
+		to_chat(src, SPAN_WARNING("Мы не можем эволюционировать в этом месте."))
 		return FALSE
 
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
-		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		to_chat(src, SPAN_WARNING("Наша связь с ульем подавляется... Мы должны немного подождать."))
 		return FALSE
 
 	if(hardcore)
@@ -254,9 +254,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(lock_evolve)
 		if(banished)
-			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+			to_chat(src, SPAN_WARNING("Мы изгнаны и не можем поддерживать связь с ульем."))
 		else
-			to_chat(src, SPAN_WARNING("We can't evolve."))
+			to_chat(src, SPAN_WARNING("Мы не можем эволюционировать."))
 		return FALSE
 
 	if(jobban_isbanned(src, JOB_XENOMORPH))//~who so genius to do this is?
@@ -272,11 +272,11 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return FALSE
 
 	if(health < maxHealth)
-		to_chat(src, SPAN_WARNING("We must be at full health to evolve."))
+		to_chat(src, SPAN_WARNING("Мы слишком слабы, чтобы эволюционировать... Мы должны восстановить здоровье."))
 		return FALSE
 
 	if(agility || fortify || crest_defense || stealth)
-		to_chat(src, SPAN_WARNING("We cannot evolve while in this stance."))
+		to_chat(src, SPAN_WARNING("Мы не можем эволюционировать."))
 		return FALSE
 
 	if(ROUND_TIME < XENO_ROUNDSTART_BOOSTED_EVO_TIME)
@@ -296,28 +296,28 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!check_state())
 		return
 	if(is_ventcrawling)
-		to_chat(src, SPAN_XENOWARNING("We can't transmute here."))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем изменить форму в этом месте."))
 		return
 	if(!isturf(loc))
-		to_chat(src, SPAN_XENOWARNING("We can't transmute here."))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем изменить форму в этом месте."))
 		return
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
-		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		to_chat(src, SPAN_WARNING("Наша связь с ульем подавляется... Мы должны немного подождать."))
 		return FALSE
 	if(health < maxHealth)
-		to_chat(src, SPAN_XENOWARNING("We are too weak to transmute, we must regain our health first."))
+		to_chat(src, SPAN_XENOWARNING("Мы слишком слабы, чтобы изменить форму... Мы должны восстановить здоровье."))
 		return
 	if(tier == 0 || tier == 4)
-		to_chat(src, SPAN_XENOWARNING("We can't transmute."))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем изменить форму."))
 		return
 	if(agility || fortify || crest_defense || stealth)
-		to_chat(src, SPAN_XENOWARNING("We can't transmute while in this stance."))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем изменить форму."))
 		return
 	if(lock_evolve)
 		if(banished)
-			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+			to_chat(src, SPAN_WARNING("Мы изгнаны и не можем поддерживать связь с ульем."))
 		else
-			to_chat(src, SPAN_WARNING("We can't transmute."))
+			to_chat(src, SPAN_WARNING("Мы не можем изменить форму."))
 		return FALSE
 
 	var/newcaste
@@ -337,12 +337,12 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!client.prefs.no_radial_labels_preference)
 		newcaste = show_radial_menu(src, src, option_images["[tier]"])
 	else
-		newcaste = tgui_input_list(src, "Choose a caste you want to transmute to.", "Transmute", options, theme="hive_status")
+		newcaste = tgui_input_list(src, "Выберите касту в которую хотите перейти.", "Изменение формы", options, theme="hive_status")
 
 	if(!newcaste)
 		return
 
-	transmute(newcaste, "We transmute into a new form.")
+	transmute(newcaste, "Мы изменяемся в новую форму.")
 
 // The queen de-evo, but on yourself.
 /mob/living/carbon/xenomorph/verb/Deevolve()
@@ -353,30 +353,30 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!check_state())
 		return
 	if(is_ventcrawling)
-		to_chat(src, SPAN_XENOWARNING("You can't deevolve here."))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем регрессировать в этом месте."))
 		return
 	if(!isturf(loc))
-		to_chat(src, SPAN_XENOWARNING("You can't deevolve here."))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем регрессировать в этом месте."))
 		return
 	if(health < maxHealth)
-		to_chat(src, SPAN_XENOWARNING("We are too weak to deevolve, we must regain our health first."))
+		to_chat(src, SPAN_XENOWARNING("Мы слишком слабы, чтобы регрессировать... Мы должны восстановить здоровье."))
 		return
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
-		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		to_chat(src, SPAN_WARNING("Наша связь с ульем подавляется... Мы должны немного подождать."))
 		return FALSE
 	if(length(caste.deevolves_to) < 1)
-		to_chat(src, SPAN_XENOWARNING("We can't deevolve any further."))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем регрессировать дальше."))
 		return
 	if(lock_evolve)
 		if(banished)
-			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+			to_chat(src, SPAN_WARNING("Мы изгнаны и не можем поддерживать связь с ульем."))
 		else
-			to_chat(src, SPAN_WARNING("We can't deevolve."))
+			to_chat(src, SPAN_WARNING("Мы не можем регрессировать."))
 		return FALSE
 
 	var/alleged_queens = hive.get_potential_queen_count()
 	if(hive.allow_queen_evolve && !hive.living_xeno_queen && alleged_queens < 2 && isdrone(src))
-		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
+		to_chat(src, SPAN_XENONOTICE("В улье сейчас нет сестры, которая могла бы стать Королевой! Вы должны стать дроном, чтобы улей выжил!"))
 		return FALSE
 
 	var/newcaste
@@ -401,7 +401,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(health <= 0)
 		return
 	if(lock_evolve)
-		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
+		to_chat(src, SPAN_WARNING("Мы изгнаны и не можем поддерживать связь с ульем."))
 		return
 
 
@@ -414,7 +414,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(new_xeno.ckey)
 		GLOB.deevolved_ckeys += new_xeno.ckey
 
-/mob/living/carbon/xenomorph/proc/transmute(newcaste, message="We regress into our previous form.")
+/mob/living/carbon/xenomorph/proc/transmute(newcaste, message="Мы регрессируем в нашу предыдущую форму.")
 	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initalize()
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
@@ -464,7 +464,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!(/mob/living/carbon/xenomorph/verb/Deevolve in verbs))
 		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
 
-	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."),
+	new_xeno.visible_message(SPAN_XENODANGER("Из панциря [declent_ru()] появляется [new_xeno.caste.caste_type]."), // SS220 EDIT ADDICTION
 	SPAN_XENODANGER(message))
 
 	transfer_observers_to(new_xeno)
@@ -513,7 +513,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
 		return FALSE
 	else if(hive.allow_queen_evolve && !hive.living_xeno_queen && potential_queens == 1 && islarva(src) && castepick != XENO_CASTE_DRONE)
-		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
+		to_chat(src, SPAN_XENONOTICE("В улье сейчас нет сестры, которая могла бы стать Королевой! Вы должны стать дроном, чтобы улей выжил!"))
 		return FALSE
 
 	return TRUE

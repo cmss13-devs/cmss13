@@ -61,7 +61,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		return
 
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return 1
 
 	if(disabled)
@@ -298,8 +298,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 
 					to_chat(Q, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
-					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
-					xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain burrowed larva over time."),2,Q.hivenumber)
+					xeno_message(SPAN_XENOANNOUNCE("Королева приказала металлической птице отправиться к металлическому улью в небе! Возрадуемся!"),3,Q.hivenumber)
+					xeno_message(SPAN_XENOANNOUNCE("Улей наполняется силой! Теперь мы будем периодически получать новых грудоломов."),2,Q.hivenumber)
 
 					// Notify the yautja too so they stop the hunt
 					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")

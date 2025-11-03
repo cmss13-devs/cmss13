@@ -769,8 +769,8 @@
 			if(!(NO_BLOOD in human_occupant.species.flags))
 				occupantData["pulse"] = human_occupant.get_pulse(GETPULSE_TOOL)
 				occupantData["hasBlood"] = 1
-				occupantData["bloodType"] = occupant.blood_type // SS220 - EDIT ADDITTION
-				occupantData["bloodLevel"] = floor(occupant.blood_volume * 10) // SS220 - EDIT ADDITTION
+				occupantData["bloodType"] = occupant.blood_type // SS220 EDIT ADDICTION
+				occupantData["bloodLevel"] = floor(occupant.blood_volume * 10) // SS220 EDIT ADDICTION
 				occupantData["bloodMax"] = occupant.max_blood
 				occupantData["bloodPercent"] = round(100*(occupant.blood_volume/occupant.max_blood), 0.01)
 			if(!isnull(connected.generated_surgery_list) && connected.generated_surgery_list.len > 0)

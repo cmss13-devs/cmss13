@@ -60,7 +60,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 	if(!ishuman(target) || user.a_intent == INTENT_HARM)
 		return
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		to_chat(user, SPAN_WARNING("You don't know how to [description_verb] [user == target ? "yourself" : target] with \the [suturing_item]!"))
+		to_chat(user, SPAN_WARNING("Вы не знаете, как лечить [user == target ? "себя" : target], используя [suturing_item.declent_ru()]!"))
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(suture), suturing_item, user, target, target.get_limb(check_zone(user.zone_selected))) //do_after sleeps.
@@ -70,14 +70,15 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 	if(user.action_busy || user.a_intent == INTENT_HARM || QDELETED(target))
 		return
 
+	var/ru_name_target_limb = declent_ru_initial(target_limb.display_name, PREPOSITIONAL, target_limb.display_name) // SS220 EDIT ADDICTION
 	if(!target_limb || target_limb.status & LIMB_DESTROYED)
-		to_chat(user, SPAN_WARNING("[user == target ? "You have" : "\The [target] has"] no [target_limb.display_name]!"))
+		to_chat(user, SPAN_WARNING("У [user == target ? "вас" : target] нет [declent_ru_initial(target_limb.display_name, GENITIVE, target_limb.display_name)]!")) // SS220 EDIT ADDICTION
 		return
 	if(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-		to_chat(user, SPAN_WARNING("You can't repair a robotic limb with \the [suturing_item]!"))
+		to_chat(user, SPAN_WARNING("Вы не можете починить роботизированную конечность, используя [suturing_item.declent_ru()]!")) // SS220 EDIT ADDICTION
 		return
 	if(target_limb.get_incision_depth())
-		to_chat(user, SPAN_WARNING("[user == target ? "Your" : "\The [target]'s"] [target_limb.display_name] has been cut open and needs to be closed surgically!"))
+		to_chat(user, SPAN_WARNING("У [user == target ? "вас" : target] был сделан разрез на [ru_name_target_limb] и необходима хирургическая операция!")) // SS220 EDIT ADDICTION
 		return
 
 	//Figure out how much damage we can suture.
@@ -85,10 +86,10 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 
 	switch(suturable_damage) //SEND_SIGNAL returns 0 by default if there's no signal to answer.
 		if(CANNOT_SUTURE) //Datum exists, no suturable damage types.
-			to_chat(user, SPAN_WARNING("There are no [description_wounds] on [user == target ? "your" : "\the [target]'s"] [target_limb.display_name]."))
+			to_chat(user, SPAN_WARNING("У [user == target ? "вас" : target] нет [description_wounds == "wounds" ? "ран" : "ожогов"] на [user == target ? "вашей" : ""] [ru_name_target_limb].")) // SS220 EDIT ADDICTION
 			return
 		if(FULLY_SUTURED) //Datum exist, all suturable damage types have been fully sutured.
-			to_chat(user, SPAN_WARNING("The [description_wounds] on [user == target ? "your" : "\the [target]'s"] [target_limb.display_name] have already been treated."))
+			to_chat(user, SPAN_WARNING("[user == target ? "Ваши [description_wounds == "wounds" ? "раны" : "ожоги"]" : "[description_wounds == "wounds" ? "Раны" : "Ожоги"]"] на [ru_name_target_limb] [user == target ? "" : target] уже были обработаны.")) // SS220 EDIT ADDICTION
 			return
 		if(0) //No datum.
 			//Stitch in 10 damage increments. Balance between flexibility, spam, performance, and opportunities for people to mess about during do_afters.
@@ -97,7 +98,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 			if(suture_burn)
 				suturable_damage += min(10, target_limb.burn_dam * 0.5)
 			if(!suturable_damage) //This stuff would be much tidier if datum stuff is moved to the limb.
-				to_chat(user, SPAN_WARNING("There are no [description_wounds] on [user == target ? "your" : "\the [target]'s"] [target_limb.display_name]."))
+				to_chat(user, SPAN_WARNING("У [user == target ? "вас" : target] нет [description_wounds == "wounds" ? "ран" : "ожогов"] на [user == target ? "вашей" : ""] [ru_name_target_limb].")) // SS220 EDIT ADDICTION
 				return
 
 	//Select user feedback and get a time-per-point mult.
@@ -105,40 +106,40 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 	var/skill_msg
 	switch(user.skills.get_skill_level(SKILL_MEDICAL))
 		if(SKILL_MEDICAL_MEDIC) //Numbers are centered around medics.
-			skill_msg = " with [pick("steady", "careful", "practiced")] [pick("skill", "motions", "hands")]"
+			skill_msg = "[pick("как по учебнику", "осторожно", "аккуратно")]"
 		if(SKILL_MEDICAL_DOCTOR) //Who?
 			suture_time *= 0.75
-			skill_msg = " with [pick("swift", "precise", "smooth")] [pick("skill", "care", "motions", "competence")]"
+			skill_msg = "[pick("на опыте", "точно", "плавно")]"
 		if(SKILL_MEDICAL_MASTER) //I hand my munted biker jacket to the synth. "Hey, Sewing Machine. Need this fixed real quick, hot date tonight."
 			suture_time *= 0.5
-			skill_msg = " with [pick("mechanical", "inhuman", "absolute")] [pick("perfection", "precision", "certainty")]"
+			skill_msg = "[pick("методично", "уверено", "мастерски")]"
 
-	var/possessive
-	var/possessive_their
+	//var/possessive // SS220 EDIT ADDICTION
+	//var/possessive_their // SS220 EDIT ADDICTION
 	if(user == target)
 		suture_time *= 1.5 //Stitching yourself up is badass but awkward.
-		possessive = "your"
-		possessive_their = user.p_their()
+		//possessive = "your" // SS220 EDIT ADDICTION
+		//possessive_their = user.p_their() // SS220 EDIT ADDICTION
 		if(!looping) //start message.
 			skill_msg = pick("awkwardly", "slowly and carefully")
-			user.visible_message(SPAN_NOTICE("[user] begins to [skill_msg] [description_verb] the [description_wounds] on \his [target_limb.display_name]."),
-				SPAN_HELPFUL("You <b>begin to [skill_msg] [description_verb]</b> the [description_wounds] on your <b>[target_limb.display_name]</b>."))
-			target.custom_pain("It feels like your [target_limb.display_name] is [description_pain]!")
+			user.visible_message(SPAN_NOTICE("[user] начинает [skill_msg] лечить [description_wounds == "wounds" ? "раны" : "ожоги"] на [ru_name_target_limb]."), // SS220 EDIT ADDICTION
+				SPAN_HELPFUL("Вы начинаете [skill_msg] лечить [description_wounds == "wounds" ? "раны" : "ожоги"] на своей [ru_name_target_limb].")) // SS220 EDIT ADDICTION
+			target.custom_pain("Вы чувствуете как затягиваются [description_wounds == "wounds" ? "раны" : "ожоги"] на [ru_name_target_limb]!") // SS220 EDIT ADDICTION
 	else
-		possessive = "\the [target]'s"
-		possessive_their = "\the [target]'s"
+		//possessive = "\the [target]'s" // SS220 EDIT ADDICTION
+		//possessive_their = "\the [target]'s" // SS220 EDIT ADDICTION
 		if(!looping)
 			user.affected_message(target,
-				SPAN_HELPFUL("You <b>begin to [description_verb]</b> the [description_wounds] on [possessive_their] <b>[target_limb.display_name]</b>[skill_msg]."),
-				SPAN_HELPFUL("[user] <b>begins to [description_verb]</b> the [description_wounds] on your <b>[target_limb.display_name]</b>[skill_msg]."),
-				SPAN_NOTICE("[user] begins to [description_verb] the [description_wounds] on [possessive_their] [target_limb.display_name][skill_msg]."))
-			target.custom_pain("It feels like your [target_limb.display_name] is [description_pain]!")
+				SPAN_HELPFUL("Вы начинаете [skill_msg] лечить [description_wounds == "wounds" ? "раны" : "ожоги"] на [ru_name_target_limb] [target]."), // SS220 EDIT ADDICTION
+				SPAN_HELPFUL("[user] начинает [skill_msg] лечить [description_wounds == "wounds" ? "раны" : "ожоги"] на вашей [ru_name_target_limb]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[user] начинает [skill_msg] лечить [description_wounds == "wounds" ? "раны" : "ожоги"] на [ru_name_target_limb] [target].")) // SS220 EDIT ADDICTION
+			target.custom_pain("Вы чувствуете как затягиваются [description_wounds == "wounds" ? "раны" : "ожоги"] на [ru_name_target_limb]!") // SS220 EDIT ADDICTION
 
 	if(target.pain?.feels_pain && target.stat == CONSCIOUS && target.pain.reduction_pain < PAIN_REDUCTION_HEAVY && prob(max(0, PAIN_REDUCTION_HEAVY - target.pain.reduction_pain))) //This is based on surgery pain failure code but more lenient.
 		do_after(user, max(rand(suture_time * 0.1, suture_time * 0.5), 0.5), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)
 		if(user != target)
-			to_chat(user, SPAN_DANGER("[target] couldn't hold still through the pain of the [description_verbing]!"))
-		to_chat(target, SPAN_DANGER("The pain was too much, you couldn't hold still!"))
+			to_chat(user, SPAN_DANGER("[target] уже не может терпеть боль от [description_wounds == "wounds" ? "ран" : "ожогов"]!"))
+		to_chat(target, SPAN_DANGER("Боль стала невыносимой, вы уже не можете её терпеть!"))
 		INVOKE_ASYNC(target, TYPE_PROC_REF(/mob, emote), "pain")
 		return
 
@@ -149,7 +150,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 	//Timer and redo checks in case something funny happened during the do_after().
 	if(!do_after(user, suture_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)\
 		|| target_limb.status & (LIMB_DESTROYED|LIMB_ROBOT|LIMB_SYNTHSKIN) || target_limb.get_incision_depth())
-		to_chat(user, SPAN_WARNING("You were interrupted before you could finish!"))
+		to_chat(user, SPAN_WARNING("Вам помешали, прежде чем вы смогли закончить!"))
 		return
 
 	//Add the sutures.
@@ -160,14 +161,14 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 
 	if(added_sutures & SUTURED_FULLY)
 		user.affected_message(target,
-			SPAN_HELPFUL("You <b>finish [description_verbing]</b> the [description_wounds] on [possessive] <b>[target_limb.display_name]</b>."),
-			SPAN_HELPFUL("[user] <b>finishes [description_verbing]</b> the [description_wounds] on your <b>[target_limb.display_name]</b>."),
-			SPAN_NOTICE("[user] finishes [description_verbing] the [description_wounds] on [possessive_their] [target_limb.display_name]."))
+			SPAN_HELPFUL("Вы заканчиваете лечить [description_wounds == "wounds" ? "раны" : "ожоги"] на [ru_name_target_limb] [target]."),
+			SPAN_HELPFUL("[user] заканчивает лечить [description_wounds == "wounds" ? "раны" : "ожоги"] на вашей [ru_name_target_limb]."),
+			SPAN_NOTICE("[user] заканчивает лечить [description_wounds == "wounds" ? "раны" : "ожоги"] на [ru_name_target_limb] [target]."))
 	else
 		user.affected_message(target,
-			SPAN_HELPFUL("You [description_verb] some of the [description_wounds] on [possessive] [target_limb.display_name]."),
-			SPAN_HELPFUL("[user] [description_verb]s some of the [description_wounds] on your [target_limb.display_name]."),
-			SPAN_NOTICE("[user] [description_verb]s some of the [description_wounds] on [possessive_their] [target_limb.display_name]."))
+			SPAN_HELPFUL("Вы вылечиваете часть повреждений от [description_wounds == "wounds" ? "ран" : "ожогов"] на [ru_name_target_limb] [target]."),
+			SPAN_HELPFUL("[user] вылечивает часть повреждений от [description_wounds == "wounds" ? "ран" : "ожогов"] на вашей [ru_name_target_limb]."),
+			SPAN_NOTICE("[user] вылечивает часть повреждений от [description_wounds == "wounds" ? "ран" : "ожогов"] на [ru_name_target_limb] [target]."))
 
 		suture(suturing_item, user, target, target_limb, TRUE) //Loop - untreated wounds remain.
 

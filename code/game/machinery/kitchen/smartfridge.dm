@@ -285,10 +285,10 @@
 				return FALSE
 			if(is_secure_fridge)
 				if(locked == FRIDGE_LOCK_COMPLETE)
-					to_chat(usr, SPAN_DANGER("Access denied."))
+					to_chat(usr, SPAN_DANGER("Доступ запрещён."))
 					return FALSE
 				if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
-					to_chat(usr, SPAN_DANGER("Access denied."))
+					to_chat(usr, SPAN_DANGER("Доступ запрещён."))
 					return FALSE
 			var/index=params["index"]
 			var/amount=params["amount"]
@@ -319,10 +319,10 @@
 				return FALSE
 			if(is_secure_fridge)
 				if(locked == FRIDGE_LOCK_COMPLETE)
-					to_chat(usr, SPAN_DANGER("Access denied."))
+					to_chat(usr, SPAN_DANGER("Доступ запрещён."))
 					return FALSE
 				if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
-					to_chat(usr, SPAN_DANGER("Access denied."))
+					to_chat(usr, SPAN_DANGER("Доступ запрещён."))
 					return FALSE
 			var/index=params["index"]
 			var/amount=params["amount"]

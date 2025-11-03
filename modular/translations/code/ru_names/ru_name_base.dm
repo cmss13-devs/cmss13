@@ -40,6 +40,9 @@ GLOBAL_LIST_EMPTY(ru_names)
 		var/list/tomls_path = flist(root)
 		if(!length(tomls_path))
 			return .
+#ifdef UNIT_TESTS
+		var/list/duplicate_list = list()
+#endif
 		for(var/toml_file in tomls_path)
 			var/full_path = root + toml_file
 			if(!fexists(full_path))
@@ -48,7 +51,14 @@ GLOBAL_LIST_EMPTY(ru_names)
 			for(var/key in file_data)
 				if(GLOB.ru_names[key])
 					continue
+#ifdef UNIT_TESTS
+					duplicate_list += key
+#endif
 				GLOB.ru_names[key] = file_data[key]
+#ifdef UNIT_TESTS
+		if(length(duplicate_list))
+			CRASH("Multiple ru_names entries detected. Keys are: [english_list(duplicate_list)]")
+#endif
 	if(GLOB.ru_names[formatted_name])
 		var/list/entry = GLOB.ru_names[formatted_name]
 
@@ -69,6 +79,42 @@ GLOBAL_LIST_EMPTY(ru_names)
 			"[prefix][prepositional_form][suffix]",
 			gender = "[entry["gender"] || null]",
 		)
+
+// see proc/apply_label()
+// change prefix and postfix in current ru_names
+/proc/ru_names_toml_rename(list/ru_names, prefix = "", postfix = "")
+	if(!length(ru_names) || !GLOB.ru_names[ru_names["base"]])
+		return
+
+	return list(
+		base = "[prefix][ru_names["base"]][postfix]",
+		NOMINATIVE = "[prefix][ru_names[NOMINATIVE]][postfix]",
+		GENITIVE = "[prefix][ru_names[GENITIVE]][postfix]",
+		DATIVE = "[prefix][ru_names[DATIVE]][postfix]",
+		ACCUSATIVE = "[prefix][ru_names[ACCUSATIVE]][postfix]",
+		INSTRUMENTAL = "[prefix][ru_names[INSTRUMENTAL]][postfix]",
+		PREPOSITIONAL = "[prefix][ru_names[PREPOSITIONAL]][postfix]",
+		gender = "[ru_names["gender"]]",
+	)
+
+// see proc/clear_label()
+// clearing ru_names, base name must be original
+/proc/ru_names_toml_clear(list/ru_names)
+	if(!length(ru_names) || !GLOB.ru_names[ru_names["base"]])
+		return
+
+	var/list/entry = GLOB.ru_names[ru_names["base"]]
+
+	return list(
+		base = "[ru_names["base"]]",
+		NOMINATIVE = "[entry["nominative"]]",
+		GENITIVE = "[entry["genitive"]]",
+		DATIVE = "[entry["dative"]]",
+		ACCUSATIVE = "[entry["accusative"]]",
+		INSTRUMENTAL = "[entry["instrumental"]]",
+		PREPOSITIONAL = "[entry["prepositional"]]",
+		gender = "[ru_names["gender"]]",
+	)
 
 /atom/Initialize(mapload, ...)
 	. = ..()

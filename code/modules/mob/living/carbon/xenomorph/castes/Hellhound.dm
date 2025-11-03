@@ -167,7 +167,7 @@
 	var/mob/living/carbon = target_living
 	var/mob/living/carbon/xenomorph/hellhound/hellhound_gorger = owner
 
-	hellhound_gorger.visible_message(SPAN_XENODANGER("[hellhound_gorger] gorges at [carbon] with it's spikes."))
+	hellhound_gorger.visible_message(SPAN_XENODANGER("[hellhound_gorger] набрасывается на [carbon] своими шипами.")) // SS220 EDIT ADDICTION
 	carbon.apply_armoured_damage(gorge_damage, BRUTE)
 	playsound(hellhound_gorger, "giant_lizard_growl", 30)
 	playsound(carbon, "alien_bite", 30)
@@ -181,17 +181,17 @@
 	direction = Get_Compass_Dir(xeno, hound_owner.pred_owner)
 
 	if(!hound_owner.pred_owner)
-		to_chat(xeno, SPAN_XENOWARNING("You do not have an owner."))
+		to_chat(xeno, SPAN_XENOWARNING("У вас нет хозяина."))
 		return
 
 	if(hound_owner.pred_owner.z != xeno.z)
-		to_chat(xeno, SPAN_XENOWARNING("You do not sense your owner in this place."))
+		to_chat(xeno, SPAN_XENOWARNING("Вы не чувствуете своего хозяина в этом месте."))
 		return
 
 	for(var/mob/living/carbon/viewer in orange(xeno, 5))
-		to_chat(viewer, SPAN_WARNING("[xeno] sniffs the ground in a hurry."))
-		to_chat(xeno, SPAN_XENOWARNING("You sniff the ground in a hurry to find where your master is."))
-		to_chat(xeno, SPAN_XENOWARNING("Your owner is [dist] meters to the [dir2text(direction)]"))
+		to_chat(viewer, SPAN_WARNING("[xeno] бегло обнюхивает землю, чтобы найти своего хозяина.")) // SS220 EDIT ADDICTION
+		to_chat(xeno, SPAN_XENOWARNING("Вы бегло обнюхиваете землю, чтобы найти своего хозяина."))
+		to_chat(xeno, SPAN_XENOWARNING("Ваш хозяин в [dist] метрах к [dir2text(direction)]")) // SS220 EDIT ADDICTION
 
 	apply_cooldown()
 	..()

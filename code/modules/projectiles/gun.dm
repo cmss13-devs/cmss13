@@ -590,9 +590,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return .
 	var/dat = ""
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
-		dat += "The safety's on!<br>"
+		dat += "Предохранитель поставлен.<br>"
 	else
-		dat += "The safety's off!<br>"
+		dat += "Предохранитель cнят.<br>"
 
 	for(var/slot in attachments)
 		var/obj/item/attachable/R = attachments[slot]
@@ -789,7 +789,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			return
 
 	flags_item ^= WIELDED
-	name += " (Wielded)"
+	//name += " (Wielded)" // SS220 EDIT ADDICTION
 	item_state += "_w"
 	slowdown = initial(slowdown) + aim_slowdown
 	place_offhand(user, initial(name))
@@ -919,8 +919,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(!in_chamber)
 		ready_in_chamber()
 		cock_gun(user)
-	user.visible_message(SPAN_NOTICE("[user] loads [magazine] into [src]!"),
-		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
+	user.visible_message(SPAN_NOTICE("[user] заряжает [magazine.declent_ru()] в [declent_ru(ACCUSATIVE)]!"), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("Вы заряжаете [magazine.declent_ru()] в [declent_ru(ACCUSATIVE)]!"), null, 3, CHAT_TYPE_COMBAT_ACTION) // SS220 EDIT ADDICTION
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
 
@@ -1664,7 +1664,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 				return FALSE
 
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)
-			to_chat(user, SPAN_WARNING("The safety is on!"))
+			to_chat(user, SPAN_WARNING("Предохранитель поставлен."))
 			gun_user.balloon_alert(gun_user, "safety on")
 			return
 
@@ -1731,7 +1731,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(istype(current_gun, /obj/item/weapon/gun/flamer))
 		dry_fire_text = "<b>*pshhhh*</b>"
 	else
-		dry_fire_text = "<b>*click*</b>"
+		dry_fire_text = "<b>*щелчок*</b>"
 
 	if(user)
 		to_chat(user, SPAN_WARNING(dry_fire_text))
@@ -1753,7 +1753,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
 			return
 		var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
+		to_chat(user, SPAN_DANGER("ОСТАЛОСЬ [current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ПАТРОНОВ")) // SS220 EDIT ADDICTION
 
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
 /obj/item/weapon/gun/proc/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)
@@ -1970,7 +1970,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(slashed_light)
 		playsound(loc, "alien_claw_metal", 25, 1)
 		xeno.animation_attack_on(src)
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] slashes the lights on [src]!"), SPAN_XENONOTICE("You slash the lights on [src]!"))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] ломает свет на [declent_ru()]!"), SPAN_XENONOTICE("Вы ломаете свет на [declent_ru()]!")) // SS220 EDIT ADDICTION
 	return XENO_ATTACK_ACTION
 
 /// Setter proc to toggle burst firing

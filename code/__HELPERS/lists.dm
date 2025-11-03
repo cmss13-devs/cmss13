@@ -11,25 +11,22 @@
  */
 
 //Returns a list in plain english as a string
-/proc/english_list(list/input, nothing_text = "ничего", and_text = " и ", comma_text = ", ", final_comma_text = "" )
+// SS220 START EDIT ADDICTION
+/proc/english_list(list/input, nothing_text = "ничего", and_text = " и ", comma_text = ", ", final_comma_text = "", declent = NOMINATIVE)
 	var/total = length(input)
-	if (!total)
-		return "[nothing_text]"
-	else if (total == 1)
-		return "[input[1]]"
-	else if (total == 2)
-		return "[input[1]][and_text][input[2]]"
-	else
-		var/output = ""
-		var/index = 1
-		while (index < total)
-			if (index == total - 1)
-				comma_text = final_comma_text
-
-			output += "[input[index]][comma_text]"
-			index++
-
-		return "[output][and_text][input[index]]"
+	switch(total)
+		if(0)
+			return "[nothing_text]"
+		if(1)
+			return "[declent_ru_initial(input[1], declent, input[1])]"
+		if(2)
+			return "[declent_ru_initial(input[1], declent, input[1])][and_text][declent_ru_initial(input[2], declent, input[2])]"
+		else
+			var/output = ""
+			for(var/i = 1 to total - 1)
+				output += "[declent_ru_initial(input[i], declent, input[i])][i == total - 1 ? final_comma_text : comma_text]"
+			return "[output][and_text][declent_ru_initial(input[total], declent, input[total])]"
+// SS220 END EDIT ADDICTION
 
 //Returns list element or null. Should prevent "index out of bounds" error.
 /proc/listgetindex(list/list,index)

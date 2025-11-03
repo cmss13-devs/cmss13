@@ -159,7 +159,7 @@
 				combo_counter = 0
 				user.flick_attack_overlay(target, "slam")
 				playsound(target, sound_to_play, 50, 1)
-				target.visible_message(SPAN_XENOHIGHDANGER("[user] grabs [target] by the back of the head and slams them on the ground!"))
+				target.visible_message(SPAN_XENOHIGHDANGER("[user] хватает [target] за голову и швыряет на землю!")) // SS220 EDIT ADDICTION
 				if(isxeno(target))
 					target.apply_damage(50, ARMOR_MELEE, BRUTE, "chest", 5)
 				playsound(target, 'sound/effects/hit_punch.ogg', 50)
@@ -183,7 +183,7 @@
 					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, throw_carbon), target, reverse_facing, 5, SPEED_VERY_FAST), 0.5 SECONDS)
 					user.spin_circle()
 				user.throw_carbon(target, facing, punch_knockback, SPEED_VERY_FAST,)
-				target.visible_message(SPAN_XENOHIGHDANGER("[user] hits [target] with an extremely strong punch, sending them flying!"))
+				target.visible_message(SPAN_XENOHIGHDANGER("[user] наносит [target] чрезвычайно сильный удар, подбрасывая над землёй!")) // SS220 EDIT ADDICTION
 				combo_counter = 0
 			user.flick_attack_overlay(target, "slam")
 			playsound(target, sound_to_play, 50, 1)
@@ -200,7 +200,7 @@
 
 			if(!executing)
 				executing = TRUE
-				user.visible_message(SPAN_XENOHIGHDANGER("[user] grabs [target] and slowly lifts them above their head before smashing them down!"))
+				user.visible_message(SPAN_XENOHIGHDANGER("[user] хватает [target] и медленно поднимает над головой, прежде чем швырнуть на землю!")) // SS220 EDIT ADDICTION
 				playsound(target, 'sound/effects/bone_break1.ogg', 50, 1)
 				playsound(user, 'sound/voice/pred_roar5.ogg', 50, 1)
 				target.apply_damage(60, ARMOR_MELEE, BRUTE, "chest", 5)

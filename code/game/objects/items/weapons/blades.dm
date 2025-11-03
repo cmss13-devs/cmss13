@@ -175,8 +175,8 @@
 			to_chat(user, SPAN_NOTICE("You were interrupted!"))
 			return
 	else
-		user.visible_message(SPAN_NOTICE("[user] starts checking \his body for shrapnel."),
-			SPAN_NOTICE("You begin searching your body for shrapnel."))
+		user.visible_message(SPAN_NOTICE("[user] осматривает своё тело в поисках осколков."),
+			SPAN_NOTICE("Вы осматриваете своё тело в поисках осколков."))
 		address_mode = "out of your"
 		if(!do_after(embedded_human, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			to_chat(user, SPAN_NOTICE("You were interrupted!"))
@@ -216,7 +216,7 @@
 		SEND_SIGNAL(embedded_human, COMSIG_HUMAN_SHRAPNEL_REMOVED)
 
 	else
-		to_chat(user, SPAN_NOTICE("You couldn't find any shrapnel."))
+		to_chat(user, SPAN_NOTICE("Вы не нашли осколков в своём теле."))
 
 // Demo and example of a 64x64 weapon.
 /obj/item/weapon/ritual
@@ -378,4 +378,3 @@
 
 	human_user.apply_damage(rand(1,5), BRUTE, "head", src)
 	human_user.update_hair()
-

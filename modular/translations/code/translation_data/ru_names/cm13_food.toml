@@ -396,6 +396,24 @@ instrumental = "лапшой"
 prepositional = "лапше"
 gender = "female"
 
+["Tomato soup"]
+nominative = "томатный суп"
+genitive = "томатного супа"
+dative = "томатному супу"
+accusative = "томатный суп"
+instrumental = "томатным супом"
+prepositional = "томатном супе"
+gender = "male"
+
+["Hot Chili"]
+nominative = "суп-чили"
+genitive = "супа-чили"
+dative = "супу-чили"
+accusative = "суп-чили"
+instrumental = "супом-чили"
+prepositional = "супе-чили"
+gender = "male"
+
 ["feijoada"]
 nominative = "фейжоада"
 genitive = "фейжоады"
@@ -506,47 +524,47 @@ gender = "male"
 
 ["electrolyte beverage powder packet (grape)"]
 nominative = "электролитный напиток (виноград)"
-genitive = "электролитного напитка (винограда)"
-dative = "электролитному напитку (винограду)"
+genitive = "электролитного напитка (виноград)"
+dative = "электролитному напитку (виноград)"
 accusative = "электролитный напиток (виноград)"
-instrumental = "электролитным напитком (виноградом)"
-prepositional = "электролитном напитке (винограде)"
+instrumental = "электролитным напитком (виноград)"
+prepositional = "электролитном напитке (виноград)"
 gender = "male"
 
 ["electrolyte beverage powder packet (orange)"]
 nominative = "электролитный напиток (апельсин)"
-genitive = "электролитного напитка (апельсина)"
-dative = "электролитному напитку (апельсину)"
+genitive = "электролитного напитка (апельсин)"
+dative = "электролитному напитку (апельсин)"
 accusative = "электролитный напиток (апельсин)"
-instrumental = "электролитным напитком (апельсином)"
-prepositional = "электролитном напитке (апельсине)"
+instrumental = "электролитным напитком (апельсин)"
+prepositional = "электролитном напитке (апельсин)"
 gender = "male"
 
 ["electrolyte beverage powder packet (lemon-lime)"]
 nominative = "электролитный напиток (лимон и лайм)"
-genitive = "электролитного напитка (лимона и лайма)"
-dative = "электролитному напитку (лимону и лайму)"
+genitive = "электролитного напитка (лимон и лайм)"
+dative = "электролитному напитку (лимон и лайм)"
 accusative = "электролитный напиток (лимон и лайм)"
-instrumental = "электролитным напитком (лимоном и лаймом)"
-prepositional = "электролитном напитке (лимоне и лайме)"
+instrumental = "электролитным напитком (лимон и лайм)"
+prepositional = "электролитном напитке (лимон и лайм)"
 gender = "male"
 
 ["protein drink beverage powder packet (milk chocolate)"]
 nominative = "протеиновый напиток (молочный шоколад)"
-genitive = "протеинового напитка (молочного шоколада)"
-dative = "протеиновому напитку (молочному шоколаду)"
+genitive = "протеинового напитка (молочный шоколад)"
+dative = "протеиновому напитку (молочный шоколад)"
 accusative = "протеиновый напиток (молочный шоколад)"
-instrumental = "протеиновым напитком (молочным шоколадом)"
-prepositional = "протеиновом напитке (молочном шоколаде)"
+instrumental = "протеиновым напитком (молочный шоколад)"
+prepositional = "протеиновом напитке (молочный шоколад)"
 gender = "male"
 
 ["protein drink beverage powder packet (chocolate hazelnut)"]
 nominative = "протеиновый напиток (фундук и шоколад)"
-genitive = "протеинового напитка (фундука и шоколада)"
-dative = "протеиновому напитку (фундуку и шоколаду)"
+genitive = "протеинового напитка (фундук и шоколад)"
+dative = "протеиновому напитку (фундук и шоколад)"
 accusative = "протеиновый напиток (фундук и шоколад)"
-instrumental = "протеиновым напитком (фундучным и шоколадом)"
-prepositional = "протеиновом напитке (фундучном и шоколаде)"
+instrumental = "протеиновым напитком (фундук и шоколад)"
+prepositional = "протеиновом напитке (фундук и шоколад)"
 gender = "male"
 
 ["fortune cookie"]
@@ -784,30 +802,48 @@ prepositional = "бутилированной воде Вейланд-Ютани
 gender = "female"
 
 ["Packaged Cheeseburger"]
-nominative = "чизбургер в упаковке"
-genitive = "чизбургера в упаковке"
-dative = "чизбургеру в упаковке"
-accusative = "чизбургер в упаковке"
-instrumental = "чизбургером в упаковке"
-prepositional = "чизбургере в упаковке"
+nominative = "чизбургер"
+genitive = "чизбургера"
+dative = "чизбургеру"
+accusative = "чизбургер"
+instrumental = "чизбургером"
+prepositional = "чизбургере"
+gender = "male"
+
+["cheeseburger"]
+nominative = "чизбургер"
+genitive = "чизбургера"
+dative = "чизбургеру"
+accusative = "чизбургер"
+instrumental = "чизбургером"
+prepositional = "чизбургере"
 gender = "male"
 
 ["Packaged Burrito"]
-nominative = "буррито в упаковке"
-genitive = "буррито в упаковке"
-dative = "буррито в упаковке"
-accusative = "буррито в упаковке"
-instrumental = "буррито в упаковке"
-prepositional = "буррито в упаковке"
+nominative = "буррито"
+genitive = "буррито"
+dative = "буррито"
+accusative = "буррито"
+instrumental = "буррито"
+prepositional = "буррито"
 gender = "male"
 
 ["Packaged Hotdog"]
-nominative = "хот-дог в упаковке"
-genitive = "хот-дога в упаковке"
-dative = "хот-догу в упаковке"
-accusative = "хот-дог в упаковке"
-instrumental = "хот-догом в упаковке"
-prepositional = "хот-доге в упаковке"
+nominative = "хот-дог"
+genitive = "хот-дога"
+dative = "хот-догу"
+accusative = "хот-дог"
+instrumental = "хот-догом"
+prepositional = "хот-доге"
+gender = "male"
+
+["hotdog"]
+nominative = "хот-дог"
+genitive = "хот-дога"
+dative = "хот-догу"
+accusative = "хот-дог"
+instrumental = "хот-догом"
+prepositional = "хот-доге"
 gender = "male"
 
 ["Burrito wrapper"]
@@ -846,6 +882,15 @@ instrumental = "чипсами «Кеплер»"
 prepositional = "чипсах «Кеплер»"
 gender = "plural"
 
+["Kepler wrapper"]
+nominative = "упаковка от чипсов «Кеплер»"
+genitive = "упаковки от чипсов «Кеплер»"
+dative = "упаковке от чипсов «Кеплер»"
+accusative = "упаковку от чипсов «Кеплер»"
+instrumental = "упаковкой от чипсов «Кеплер»"
+prepositional = "упаковке от чипсов «Кеплер»"
+gender = "female"
+
 ["Kepler Flamehot"]
 nominative = "острые чипсы «Кеплер»"
 genitive = "острых чипсов «Кеплер»"
@@ -856,12 +901,12 @@ prepositional = "острых чипсах «Кеплер»"
 gender = "plural"
 
 ["Kepler Flamehot wrapper"]
-nominative = "упаковка от чипсов «Кеплер»"
-genitive = "упаковки от чипсов «Кеплер»"
-dative = "упаковке от чипсов «Кеплер»"
-accusative = "упаковку от чипсов «Кеплер»"
-instrumental = "упаковкой от чипсов «Кеплер»"
-prepositional = "упаковке от чипсов «Кеплер»"
+nominative = "упаковка от острых чипсов «Кеплер»"
+genitive = "упаковки от острых чипсов «Кеплер»"
+dative = "упаковке от острых чипсов «Кеплер»"
+accusative = "упаковку от острых чипсов «Кеплер»"
+instrumental = "упаковкой от острых чипсов «Кеплер»"
+prepositional = "упаковке от острых чипсов «Кеплер»"
 gender = "female"
 
 ["Weyland-Yutani Pepper Chips"]
@@ -1320,6 +1365,15 @@ instrumental = "универсальным ферментом"
 prepositional = "универсальном ферменте"
 gender = "male"
 
+["Dr. Gibb"]
+nominative = "Доктор Гибб"
+genitive = "Доктор Гибб"
+dative = "Доктор Гибб"
+accusative = "Доктор Гибб"
+instrumental = "Доктор Гибб"
+prepositional = "Доктор Гибб"
+gender = "male"
+
 ["Dry Ramen"]
 nominative = "сухой рамэн"
 genitive = "сухого рамэна"
@@ -1592,12 +1646,12 @@ gender = "male"
 
 ["Doublebeard Bearded Special Wine"]
 nominative = "вино «Особое для двубородых и усатых»"
-genitive = "текилы «Гарант качества Каккаво»"
-dative = "текиле «Гарант качества Каккаво»"
-accusative = "текилу «Гарант качества Каккаво»"
-instrumental = "текилой «Гарант качества Каккаво»"
-prepositional = "текиле «Гарант качества Каккаво»"
-gender = "female"
+genitive = "вина «Особого для двубородых и усатых»"
+dative = "вину «Особому для двубородых и усатых»"
+accusative = "вино «Особое для двубородых и усатых»"
+instrumental = "вином «Особым для двубородых и усатых»"
+prepositional = "вине «Особом для двубородых и усатых»"
+gender = "neuter"
 
 ["surplus boxes of ingredients(x6 boxes)"] # Unique Vendor Name
 nominative = "ящик для коробок с едой (обеспечение)"

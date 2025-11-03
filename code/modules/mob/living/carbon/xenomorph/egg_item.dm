@@ -95,7 +95,7 @@
 	if(!proximity)
 		return // no message because usual behavior is not to show any
 	if(!user.hive)
-		to_chat(user, SPAN_XENOWARNING("Your hive cannot procreate."))
+		to_chat(user, SPAN_XENOWARNING("Ваш улей не может размножаться."))
 		return
 	if(!user.check_alien_construction(T, ignore_nest = TRUE))
 		return
@@ -116,15 +116,15 @@
 
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(!any_weeds && !hive_weeds) //you need at least some weeds to plant on.
-		to_chat(user, SPAN_XENOWARNING("[src] must be planted on [lowertext(hive.prefix)]weeds."))
+		to_chat(user, SPAN_XENOWARNING("[declent_ru()] должен быть посажен на lowertext(hive.prefix)-траву.")) // SS220 EDIT ADDICTION
 		return
 
 	if(!hive_weeds && needs_hive_weeds)
-		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
+		to_chat(user, SPAN_XENOWARNING("[declent_ru()] можно посадить только на [lowertext(hive.prefix)]-траву улья.")) // SS220 EDIT ADDICTION
 		return
 
 	if(istype(get_area(T), /area/interior))
-		to_chat(user, SPAN_XENOWARNING("[src] cannot be planted inside a vehicle."))
+		to_chat(user, SPAN_XENOWARNING("[declent_ru()] нельзя посадить внутри транспортного средства.")) // SS220 EDIT ADDICTION
 		return
 
 	for(var/obj/object in T.contents)
@@ -132,10 +132,10 @@
 			continue
 		var/obj/effect/alien/egg/xeno_egg = /obj/effect/alien/egg
 		if(object.layer > initial(xeno_egg.layer))
-			to_chat(user, SPAN_XENOWARNING("[src] cannot be planted below objects that would obscure it."))
+			to_chat(user, SPAN_XENOWARNING("[declent_ru()] нельзя посадить под объекты, которые будут его перекрывать собой.")) // SS220 EDIT ADDICTION
 			return
 
-	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), SPAN_XENONOTICE("You start planting [src]."), null, 5)
+	user.visible_message(SPAN_XENONOTICE("[user] начинает сажать [declent_ru()]."), SPAN_XENONOTICE("Вы начинаете сажать [declent_ru()]."), null, 5) // SS220 EDIT ADDICTION
 
 	var/plant_time = 35
 	if(isdrone(user))
@@ -159,7 +159,7 @@
 			else if(weed.weed_strength >= WEED_LEVEL_STANDARD)
 				newegg = new /obj/effect/alien/egg/carrier_egg(T,hivenumber, user)
 			else
-				to_chat(user, SPAN_XENOWARNING("[src] can't be planted on these weeds."))
+				to_chat(user, SPAN_XENOWARNING("[declent_ru()] нельзя посадить на эту траву.")) // SS220 EDIT ADDICTION
 				return
 
 			newegg.flags_embryo = flags_embryo
@@ -192,7 +192,7 @@
 		return XENO_NO_DELAY_ACTION
 	if(user.caste.can_hold_eggs == CAN_HOLD_TWO_HANDS)
 		if(user.r_hand || user.l_hand)
-			to_chat(user, SPAN_XENOWARNING("You need two hands to hold [src]."))
+			to_chat(user, SPAN_XENOWARNING("Вам нужны оба свободных когтя, чтобы держать [declent_ru()].")) // SS220 EDIT ADDICTION
 		else
 			attack_hand(user)
 		return XENO_NO_DELAY_ACTION

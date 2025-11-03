@@ -432,13 +432,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	AddElement(/datum/element/corp_label/armat)
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
-		var/suffix = "" // SS220 - EDIT ADDITTION
+		var/suffix = "" // SS220 EDIT ADDICTION
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 			name += " snow helmet"
-			suffix = " (Зимний камуфляж)" // SS220 - EDIT ADDITTION
+			suffix = " (Зимний камуфляж)" // SS220 EDIT ADDICTION
 		else
 			name += " helmet"
-		ru_names_rename(ru_names_toml(replacetext(name," snow",""), suffix = suffix, override_base = name)) // SS220 - EDIT ADDITTION
+		ru_names_rename(ru_names_toml(replacetext(name," snow",""), suffix = suffix, override_base = name)) // SS220 EDIT ADDICTION
 
 	if(!(flags_atom & NO_GAMEMODE_SKIN))
 		select_gamemode_skin(type, null, new_protection)

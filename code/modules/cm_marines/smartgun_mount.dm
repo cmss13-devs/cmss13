@@ -825,7 +825,7 @@
 	if(!operator)
 		return
 	if(!rounds)
-		to_chat(operator, SPAN_WARNING("<b>*click*</b>"))
+		to_chat(operator, SPAN_WARNING("<b>*щелчок*</b>"))
 		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 		return
 
@@ -1082,7 +1082,7 @@
 
 	if(display_ammo)
 		var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(operator, SPAN_DANGER("[rounds][chambered ? "+1" : ""] / [rounds_max] ROUNDS REMAINING"))
+		to_chat(operator, SPAN_DANGER("ОСТАЛОСЬ [rounds][chambered ? "+1" : ""] / [rounds_max] ПАТРОНОВ")) // SS220 EDIT ADDICTION
 
 /// Toggles the gun's firemode one down the list
 /obj/structure/machinery/m56d_hmg/proc/do_toggle_firemode(mob/user, new_firemode)

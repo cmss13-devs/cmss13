@@ -109,7 +109,7 @@
 	data["local_current_menu"] = current_menu
 	data["local_last_page"] = last_menu
 	data["local_logged_in"] = last_login
-	data["local_access_text"] = "access level [authentication], [ares_auth_to_text(authentication)]."
+	data["local_access_text"] = "уровень доступа [authentication], [ares_auth_to_text(authentication)]." // SS220 EDIT ADDICTION
 	data["local_access_level"] = authentication
 	data["local_notify_sounds"] = notify_sounds
 
@@ -152,7 +152,7 @@
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(authentication)
-				datacore.apollo_login_list += "[last_login] at [worldtime2text()], Access Level [authentication] - [ares_auth_to_text(authentication)]."
+				datacore.apollo_login_list += "[last_login] ([worldtime2text()]), уровень доступа [authentication] - [ares_auth_to_text(authentication)]." // SS220 EDIT ADDICTION
 			current_menu = "main"
 			last_menu = "main"
 			update_icon()

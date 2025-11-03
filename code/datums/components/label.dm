@@ -19,7 +19,7 @@
 		return COMPONENT_INCOMPATIBLE
 
 	label_name = _label_name
-	apply_label()
+	apply_label(_label_name) // SS220 EDIT ADDICTION
 
 /datum/component/label/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(OnAttackby))
@@ -85,15 +85,26 @@
 	examine_list += SPAN_NOTICE("It has a label with some words written on it. Use a hand labeler to remove it.")
 
 /// Applies a label to the name of the parent in the format of: "parent_name (label)"
-/datum/component/label/proc/apply_label()
+/datum/component/label/proc/apply_label(old_label = "") // SS220 EDIT ADDICTION
 	var/atom/owner = parent
 	owner.name += " ([label_name])"
+	// SS220 START EDIT ADDICTION
+	if(length(owner.ru_names))
+		if (old_label)
+			owner.ru_names["base"] = replacetext(owner.ru_names["base"], " ([old_label])", "")
+		owner.ru_names = ru_names_toml_rename(owner.ru_names, postfix = " ([label_name])")
+	// SS220 END EDIT ADDICTION
 
 /// Clears the label from the parent's name (but doesn't delete it)
 /datum/component/label/proc/clear_label()
 	var/atom/owner = parent
 	owner.name = replacetext(owner.name, "([label_name])", "") // Remove the label text from the parent's name, wherever it's located.
 	owner.name = trim(owner.name) // Shave off any white space from the beginning or end of the parent's name.
+	// SS220 START EDIT ADDICTION
+	if(length(owner.ru_names))
+		owner.ru_names["base"] = trim(replacetext(owner.ru_names["base"], "([label_name])", ""))
+		owner.ru_names = ru_names_toml_clear(owner.ru_names)
+	// SS220 END EDIT ADDICTION
 
 /// Returns the position of the label in the name if applied, otherwise 0
 /datum/component/label/proc/has_label()

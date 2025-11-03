@@ -1,0 +1,19 @@
+# Uncategorized vehicle
+
+["M540-B Armored Recon Carrier"]
+nominative = "разведывательный бронетранспортёр M540-B"
+genitive = "разведывательного бронетранспортёра M540-B"
+dative = "разведывательному бронетранспортёру M540-B"
+accusative = "разведывательный бронетранспортёр M540-B"
+instrumental = "разведывательным бронетранспортёром M540-B"
+prepositional = "разведывательном бронетранспортёре M540-B"
+gender = "male"
+
+["M34A2 Longstreet Light Tank"]
+nominative = "лёгкий танк M34A2 «Лонгстрит»"
+genitive = "лёгкого танка M34A2 «Лонгстрит»"
+dative = "лёгкому танку M34A2 «Лонгстрит»"
+accusative = "лёгкий танк M34A2 «Лонгстрит»"
+instrumental = "лёгким танком M34A2 «Лонгстрит»"
+prepositional = "лёгком танке M34A2 «Лонгстрит»"
+gender = "male"

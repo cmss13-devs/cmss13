@@ -50,7 +50,7 @@
 
 /datum/surgery_step/cut_muscle
 	name = "Cut Muscular Tissue"
-	desc = "begin an amputation"
+	desc = "начать ампутацию"
 	tools = SURGERY_TOOLS_INCISION
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'

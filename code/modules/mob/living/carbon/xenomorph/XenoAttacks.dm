@@ -225,7 +225,7 @@
 	//Responding to a raised head
 	if(target.flags_emote & EMOTING_HEADBUTT && do_after(src, 5, INTERRUPT_MOVED, EMOTE_ICON_HEADBUTT))
 		if(!(target.flags_emote & EMOTING_HEADBUTT)) //Additional check for if the target moved or was already headbutted.
-			to_chat(src, SPAN_NOTICE("Too slow!"))
+			to_chat(src, SPAN_NOTICE("Слишком медленно!"))
 			return
 		target.flags_emote &= ~EMOTING_HEADBUTT
 		visible_message(SPAN_NOTICE("[src] slams their head into [target]!"),
@@ -239,21 +239,21 @@
 
 	//Initiate headbutt
 	if(recent_audio_emote)
-		to_chat(src, "You just did an audible emote. Wait a while.")
+		to_chat(src, "Вы только что использовали эмоцию. Подождите немного.")
 		return
 
 	visible_message(SPAN_NOTICE("[src] raises their head for a headbutt from [target]."),
 		SPAN_NOTICE("We raise our head for a headbutt from [target]."), null, 4)
 	flags_emote |= EMOTING_HEADBUTT
 	if(do_after(src, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_HEADBUTT) && flags_emote & EMOTING_HEADBUTT)
-		to_chat(src, SPAN_NOTICE("You were left hanging!"))
+		to_chat(src, SPAN_NOTICE("Вам не ответили взаимностью!"))
 	flags_emote &= ~EMOTING_HEADBUTT
 
 /mob/living/carbon/xenomorph/proc/attempt_tailswipe(mob/living/carbon/xenomorph/target)
 	//Responding to a raised tail
 	if(target.flags_emote & EMOTING_TAIL_SWIPE && do_after(src, 5, INTERRUPT_MOVED, EMOTE_ICON_TAILSWIPE))
 		if(!(target.flags_emote & EMOTING_TAIL_SWIPE)) //Additional check for if the target moved or was already tail swiped.
-			to_chat(src, SPAN_NOTICE("Too slow!"))
+			to_chat(src, SPAN_NOTICE("Слишком медленно!"))
 			return
 		target.flags_emote &= ~EMOTING_TAIL_SWIPE
 		visible_message(SPAN_NOTICE("[src] clashes their tail with [target]!"),
@@ -267,12 +267,12 @@
 
 	//Initiate tail swipe
 	if(recent_audio_emote)
-		to_chat(src, "You just did an audible emote. Wait a while.")
+		to_chat(src, "Вы только что использовали эмоцию. Подождите немного.")
 		return
 
 	visible_message(SPAN_NOTICE("[src] raises their tail out for a swipe from [target]."),
 		SPAN_NOTICE("We raise our tail out for a tail swipe from [target]."), null, 4)
 	flags_emote |= EMOTING_TAIL_SWIPE
 	if(do_after(src, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_TAILSWIPE) && flags_emote & EMOTING_TAIL_SWIPE)
-		to_chat(src, SPAN_NOTICE("You were left hanging!"))
+		to_chat(src, SPAN_NOTICE("Вам не ответили взаимностью!"))
 	flags_emote &= ~EMOTING_TAIL_SWIPE

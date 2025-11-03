@@ -192,7 +192,7 @@
 	to_unhide.apply_effect(2, SLOW)
 	hiding_humans -= to_unhide
 	UnregisterSignal(to_unhide, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_RESISTED, COMSIG_MOB_ANIMATING))
-	to_chat(to_unhide, SPAN_WARNING("You couldn't sit still so you stop leaning on the wall!"))
+	to_chat(to_unhide, SPAN_WARNING("Вы перестали прислоняться к стене."))
 	to_unhide.remove_filter("cutout")
 
 /turf/closed/wall/Destroy()

@@ -152,13 +152,13 @@
 
 	switch(message_option)
 		if("Voice in head")
-			to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [msg]"))
+			to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE("Вы слышите голос в своей голове... [msg]")) // SS220 EDIT ADDICTION
 
 		if("QM Psychic Whisper")
 			if(isxeno(M))
-				to_chat(M, SPAN_XENONOTICE("You hear the voice of the Queen Mother... [msg]"))
+				to_chat(M, SPAN_XENONOTICE("Вы слышите голос Королевы-матери... [msg]")) // SS220 EDIT ADDICTION
 			else
-				to_chat(M, SPAN_XENONOTICE("You hear a strange, distant, alien voice in your head... [msg]"))
+				to_chat(M, SPAN_XENONOTICE("Вы слышите странный, далекий, чужой голос в своей голове... [msg]")) // SS220 EDIT ADDICTION
 		else
 			var/mob/living/carbon/human/H = M
 
@@ -169,7 +169,7 @@
 			if(!H.get_type_in_ears(/obj/item/device/radio/headset))
 				to_chat(usr, "The person you are trying to contact is not wearing a headset")
 				return
-			to_chat(H, SPAN_ANNOUNCEMENT_HEADER_BLUE("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
+			to_chat(H, SPAN_ANNOUNCEMENT_HEADER_BLUE("Сообщение получено через гарнитуру. Передача от [message_option]: <b>[msg]</b>")) // SS220 EDIT ADDICTION
 
 	var/message = WRAP_STAFF_LOG(usr, SPAN_STAFF_IC("subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."))
 	message_admins(message, M.x, M.y, M.z)

@@ -213,10 +213,10 @@
 
 /obj/effect/alien/resin/design/proc/check_hivenumber_match()
 	if(!bound_weed || !bound_xeno)
-		visible_message(SPAN_XENOWARNING("The node shudders and decays back into the weeds."))
+		visible_message(SPAN_XENOWARNING("Узел содрогается и распадается обратно в траву."))
 		qdel(src)
 	else if(bound_weed.hivenumber != bound_xeno.hivenumber)
-		visible_message(SPAN_XENOWARNING("The node withers away."))
+		visible_message(SPAN_XENOWARNING("Узел увядает."))
 		qdel(src)
 
 /obj/effect/alien/resin/design/proc/unregister_weed_expiration_signal_design()
@@ -735,8 +735,8 @@
 
 		var/obj/effect/alien/weeds/target_weeds = node_loc.weeds
 		if(target_weeds && target_weeds.hivenumber == xeno.hivenumber)
-			xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"),
-				SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
+			xeno.visible_message(SPAN_XENODANGER("[xeno] создаёт слабую смоляную стену!"), // SS220 EDIT ADDICTION
+				SPAN_XENONOTICE("Мы создаём слабую смоляную стену!"), null, 5)
 
 			node_loc.PlaceOnTop(/turf/closed/wall/resin/reflective/weak)
 			var/turf/closed/wall/resin/reflective/weak/good_wall = node_loc
@@ -787,7 +787,7 @@
 /datum/action/xeno_action/activable/place_design/use_ability(atom/target_atom, mods, use_plasma = TRUE, message = TRUE)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!can_remote_build())
-		to_chat(owner, SPAN_XENONOTICE("We must be standing on weeds to channel our nutrients and influence."))
+		to_chat(owner, SPAN_XENONOTICE("Мы должны стоять на траве, чтобы распространять наши питательные вещества и влияние."))
 		return
 
 	if(!action_cooldown_check())
@@ -801,7 +801,7 @@
 
 	if(ismob(target_atom))
 		if(!can_see(xeno, target_atom, max_reach))
-			to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
+			to_chat(xeno, SPAN_XENODANGER("Мы не видим эту область!"))
 			return
 	else
 		if(get_dist(xeno, target_atom) > max_reach)
@@ -828,14 +828,14 @@
 
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/upgrade))
 		if(!(istype(target_atom, /turf/closed/wall/resin) || istype(target_atom, /turf/closed/wall/resin/membrane) || istype(target_atom, /obj/structure/mineral_door/resin)))
-			to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin walls, membrane and doors!"))
+			to_chat(xeno, SPAN_XENOWARNING("Мы можем улучшать только смоляные стены, мембраны и двери!"))
 			return
 
 		if(istype(target_atom, /turf/closed/wall/resin) || istype(target_atom, /turf/closed/wall/resin/membrane))
 			var/turf/closed/wall/resin/wall = target_atom
 
 			if(wall.hivenumber != xeno.hivenumber)
-				to_chat(xeno, SPAN_XENOWARNING("[wall] does not belong to our hive!"))
+				to_chat(xeno, SPAN_XENOWARNING("[wall] не принадлежит нашему улью!")) // SS220 EDIT ADDICTION
 				return
 
 			if(wall.upgrading_now) //<--- Prevent spam and waste of plasma
@@ -862,7 +862,7 @@
 				qdel(thick_membrane)
 				wall.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
 			else
-				to_chat(xeno, SPAN_XENOWARNING("[wall] can't be made thicker."))
+				to_chat(xeno, SPAN_XENOWARNING("[capitalize(wall.declent_ru(ACCUSATIVE))] нельзя сделать ещё плотнее.")) // SS220 EDIT ADDICTION
 				return
 
 			wall.upgrading_now = FALSE
@@ -871,7 +871,7 @@
 			var/obj/structure/mineral_door/resin/door = target_atom
 
 			if(door.hivenumber != xeno.hivenumber)
-				to_chat(xeno, SPAN_XENOWARNING("[door] does not belong to your hive!"))
+				to_chat(xeno, SPAN_XENOWARNING("[door] не принадлежит вашему улью!")) // SS220 EDIT ADDICTION
 				return
 
 			if(door.upgrading_now)
@@ -897,14 +897,14 @@
 				return
 
 		else
-			to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin structures!"))
+			to_chat(xeno, SPAN_XENOWARNING("Мы можем улучшать только смоляные структуры!"))
 			return
 
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
 
-		xeno.visible_message(SPAN_XENONOTICE("Weeds around [target_atom] start to twitch and pump substance towards it, thickening it in process!"),
-			SPAN_XENONOTICE("We start to channel nutrients towards [target_atom], using [plasma_cost] plasma."), null, 5)
+		xeno.visible_message(SPAN_XENONOTICE("Трава вокруг [target_atom] начинает дергаться и перекачивать субстанцию к нему, уплотняя её в процессе!"), // SS220 EDIT ADDICTION
+			SPAN_XENONOTICE("Мы начинаем направлять питательные вещества к [target_atom], используя [plasma_cost] плазмы."), null, 5) // SS220 EDIT ADDICTION
 		playsound(target_atom, "alien_resin_build", 25)
 
 		target_atom.add_hiddenprint(xeno) //Tracks who reinforced it for admins
@@ -918,24 +918,24 @@
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/remove))
 		var/obj/effect/alien/resin/design/target_node = locate(/obj/effect/alien/resin/design) in target_turf
 		if(!target_node)
-			to_chat(xeno, SPAN_XENOWARNING("There is no resin node here to remove!"))
+			to_chat(xeno, SPAN_XENOWARNING("Здесь нет смоляного узла, чтобы его удалить!"))
 			return
 
 		if(target_node.hivenumber != xeno.hivenumber)
-			to_chat(xeno, SPAN_XENOWARNING("This node does not belong to your hive!"))
+			to_chat(xeno, SPAN_XENOWARNING("Этот узел не принадлежит вашему улью!"))
 			return
 
 		if(target_node.bound_xeno != xeno)
-			to_chat(xeno, SPAN_XENOWARNING("You cannot remove a node placed by another sister!"))
+			to_chat(xeno, SPAN_XENOWARNING("Вы не можете удалить узел, размещённый другой сестрой!"))
 			return
 
 		qdel(target_node)
-		to_chat(xeno, SPAN_XENONOTICE("We sever the bond to the node, causing it to dissolve into the ground."))
+		to_chat(xeno, SPAN_XENONOTICE("Мы разрываем связь с узлом, заставляя его раствориться."))
 		playsound(xeno.loc, "alien_resin_move2", 25)
 		return
 
 	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than lenght that was defined
-		to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another node, one will wither away to allow this one to live!"))
+		to_chat(xeno, SPAN_XENOWARNING("Мы не можем поддерживать ещё один узел, последний узел завял, чтобы дать жизнь этому!"))
 		var/obj/effect/alien/resin/design/old_design = xeno.current_design[1] //Check with node is first for deletion on list
 		xeno.current_design.Remove(old_design) //Removes first node stored inside list
 		qdel(old_design) //Delete node.
@@ -952,14 +952,14 @@
 			return
 		qdel(speed_warn) //Delete again just in case overlay don't get deleted
 		if(!is_turf_clean(target_turf)) //Recheck the turf again just in case
-			to_chat(xeno, SPAN_XENOWARNING("Something else has taken root here before us."))
+			to_chat(xeno, SPAN_XENOWARNING("Здесь до нас что-то уже укоренилось."))
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] channel nutrients and shape it into a node!"))
+		xeno.visible_message(SPAN_XENONOTICE("[xeno] направляет питательные вещества и формирует их в узел!")) // SS220 EDIT ADDICTION
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno) //Create node you selected from list
 		if(!design)
-			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
+			to_chat(xeno, SPAN_XENOHIGHDANGER("Не удалось найти узел для размещения! Свяжитесь с кодером!"))
 			return
 		playsound(xeno.loc, "alien_resin_build", 25)
 		xeno.current_design.Add(design) //Add Node to list.
@@ -974,14 +974,14 @@
 			return
 		qdel(cost_warn)
 		if(!is_turf_clean(target_turf))
-			to_chat(xeno, SPAN_XENOWARNING("Something else has taken root here before us."))
+			to_chat(xeno, SPAN_XENOWARNING("Здесь до нас что-то уже укоренилось."))
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("The [xeno] channel nutrients and shape it into a node!"))
+		xeno.visible_message(SPAN_XENONOTICE("[xeno] направляет питательные вещества и формирует их в узел!")) // SS220 EDIT ADDICTION
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno)
 		if(!design)
-			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
+			to_chat(xeno, SPAN_XENOHIGHDANGER("Не удалось найти узел для размещения! Свяжитесь с кодером!"))
 			return
 		playsound(xeno.loc, "alien_resin_build", 25)
 		xeno.current_design.Add(design)
@@ -998,14 +998,14 @@
 			return
 		qdel(const_warn)
 		if(!is_turf_clean(target_turf))
-			to_chat(xeno, SPAN_XENOWARNING("Something else has taken root here before us."))
+			to_chat(xeno, SPAN_XENOWARNING("Здесь до нас что-то уже укоренилось."))
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("The [xeno] channel nutrients and shape it into a node!"))
+		xeno.visible_message(SPAN_XENONOTICE("[xeno] направляет питательные вещества и формирует их в узел!")) // SS220 EDIT ADDICTION
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno)
 		if(!design)
-			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
+			to_chat(xeno, SPAN_XENOHIGHDANGER("Не удалось найти узел для размещения! Свяжитесь с кодером!"))
 			return
 		playsound(xeno.loc, "alien_resin_build", 25)
 		xeno.current_design.Add(design)
@@ -1024,14 +1024,14 @@
 	var/obj/structure/mineral_door/resin/resin_door = target_atom
 
 	if(resin_door.hivenumber != hivenumber)
-		to_chat(src, SPAN_XENOWARNING("This door does not belong to our hive!"))
+		to_chat(src, SPAN_XENOWARNING("Эти двери не принадлежат нашему улью!"))
 		return TRUE
 
 	if(resin_door.TryToSwitchState(src))
 		if(resin_door.open)
-			to_chat(src, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
+			to_chat(src, SPAN_XENONOTICE("Мы фокусируем нашу связь со смолой и удалённо закрываем смоляные двери."))
 		else
-			to_chat(src, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
+			to_chat(src, SPAN_XENONOTICE("Мы фокусируем нашу связь со смолой и удалённо открываем смоляные двери."))
 
 	return TRUE
 

@@ -1,15 +1,15 @@
-Detour
-Exercise
-Mission
-Operation
-Patrol
-Investigation
-Sortie
-Recon
-Inspection
-Manoeuvre
-Task Force
-Program
-Strategic Response Program
-Project
-Peacekeeping Mission
+Обход
+Расчёт
+Миссия
+Операция
+Патруль
+Исследование
+Вылазка
+Разведка
+Наблюдение
+Манёвр
+Тактическая задача
+Программа
+Стратегический удар
+Проект
+Миротворческая миссия

@@ -294,7 +294,7 @@
 					locked = !locked
 					updateDialog()
 				else
-					to_chat(usr, SPAN_DANGER("Access denied."))
+					to_chat(usr, SPAN_DANGER("Доступ запрещён."))
 					return
 			if("power")
 				if (src.on)

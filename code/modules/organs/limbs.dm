@@ -486,10 +486,11 @@ This function completely restores a damaged organ to perfect condition.
 	if(!is_ff && type != BURN && !(status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 		take_damage_internal_bleeding(damage)
 
+	var/ru_name = (type == BRUISE) ? "" : declent_ru(PREPOSITIONAL) // SS220 EDIT ADDICTION
 	if(!(status & LIMB_SPLINTED_INDESTRUCTIBLE) && (status & LIMB_SPLINTED) && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
 		playsound(get_turf(loc), 'sound/items/splintbreaks.ogg', 20)
-		to_chat(owner, SPAN_HIGHDANGER("The splint on your [display_name] comes apart!"))
+		to_chat(owner, SPAN_HIGHDANGER("Шина на вашей [ru_name] разваливается!"))
 		owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 		owner.update_med_icon()
 
@@ -511,9 +512,9 @@ This function completely restores a damaged organ to perfect condition.
 					owner.add_splatter_floor(get_turf(loc))
 				if(prob(25))
 					//maybe have a separate message for BRUISE type damage?
-					owner.visible_message(SPAN_WARNING("The wound on [owner.name]'s [display_name] widens with a nasty ripping noise."),
-					SPAN_WARNING("The wound on your [display_name] widens with a nasty ripping noise."),
-					SPAN_WARNING("You hear a nasty ripping noise, as if flesh is being torn apart."))
+					owner.visible_message(SPAN_WARNING("Рана на [ru_name] [owner.name] расширяется с неприятным звуком."), // SS220 EDIT ADDICTION
+					SPAN_WARNING("Рана на вашей [ru_name] расширяется с неприятным звуком."), // SS220 EDIT ADDICTION
+					SPAN_WARNING("Вы слышите неприятный звук, как будто плоть разрывается."))
 				return
 
 	//Creating wound
@@ -1149,9 +1150,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		owner.recalculate_move_delay = TRUE
 		if(status & (LIMB_ROBOT))
 			owner.visible_message(
-				SPAN_WARNING("You see sparks coming from [owner]'s [display_name]!"),
-				SPAN_HIGHDANGER("Something feels like it broke in your [display_name] as it spits out sparks!"),
-				SPAN_HIGHDANGER("You hear electrical sparking!"))
+				SPAN_WARNING("Вы видите как искриться [display_name] у [owner]!"),
+				SPAN_HIGHDANGER("Кажется у вас искриться [display_name]!"),
+				SPAN_HIGHDANGER("Вы слышите как что-то искрит!"))
 			var/datum/effect_system/spark_spread/spark_system = new()
 			spark_system.set_up(5, 0, owner)
 			spark_system.attach(owner)
@@ -1159,9 +1160,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			QDEL_IN(spark_system, 1 SECONDS)
 		else
 			owner.visible_message(
-				SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
-				SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
-				SPAN_HIGHDANGER("You hear a sickening crack!"))
+				SPAN_WARNING("Вы слышите громкий хруст у [owner]!"), // SS220 EDIT ADDICTION
+				SPAN_HIGHDANGER("Кажется у вас перелом [display_name]!"), // SS220 EDIT ADDICTION
+				SPAN_HIGHDANGER("Вы слышите отвратительный хруст костей!"))
 			playsound(owner, "bone_break", 45, TRUE)
 		start_processing()
 		if(status & LIMB_ROBOT)
@@ -1255,7 +1256,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(!W || QDELETED(W) || (W.flags_item & (NODROP|DELONDROP)) || W.embeddable == FALSE)
 		return
 	if(!silent)
-		owner.visible_message(SPAN_DANGER("\The [W] sticks in the wound!"))
+		owner.visible_message(SPAN_DANGER("[capitalize(W.declent_ru())] застревает в ране!")) // SS220 EDIT ADDICTION
 	implants += W
 	start_processing()
 

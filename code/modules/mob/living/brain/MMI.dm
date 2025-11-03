@@ -55,7 +55,7 @@
 			locked = !locked
 			to_chat(user, SPAN_NOTICE(" You [locked ? "lock" : "unlock"] the brain holder."))
 		else
-			to_chat(user, SPAN_DANGER("Access denied."))
+			to_chat(user, SPAN_DANGER("Доступ запрещён."))
 		return
 	if(brainmob)
 		O.attack(brainmob, user)//Oh noooeeeee

@@ -18,6 +18,18 @@ type Data = {
   admin_stealthed_additional: { total_admins: AdminPayload };
 };
 
+const CATEGORIES_RU = {
+  Management: 'Менеджеры',
+  Maintainers: 'Основатели',
+  Administrators: 'Администраторы',
+  Moderators: 'Модераторы',
+  Mentors: 'Менторы',
+};
+
+function CategoriesRu(value: string) {
+  return CATEGORIES_RU[value] || value;
+}
+
 export const StaffWho = (props, context) => {
   const { data } = useBackend<Data>();
   const { base_data, admin_additional, admin_stealthed_additional } = data;
@@ -76,7 +88,7 @@ const CategoryDropDown = (props, context) => {
   const { category, category_admins } = props;
   return (
     <StaffWhoCollapsible
-      title={`${category.category} - ${category_admins.length}`}
+      title={`${CategoriesRu(category.category)} - ${category_admins.length}`}
       color={category.category_color}
     >
       <FilterAdmins category_admins={category_admins} />

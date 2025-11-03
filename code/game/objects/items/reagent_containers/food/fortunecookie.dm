@@ -7,7 +7,7 @@
 /obj/item/paper/fortune/premade
 
 /obj/item/paper/fortune/premade/proc/assign_fortunes()
-	var/list/fortunelist = file2list("strings/fortunes_ru.txt") // SS220 - EDIT ADDITTION
+	var/list/fortunelist = file2list("strings/fortunes_ru.txt") // SS220 EDIT ADDICTION
 	return(pick(fortunelist))
 
 /obj/item/paper/fortune/premade/proc/get_lucky_numbers()
@@ -88,7 +88,7 @@
 		cookie_broken = TRUE
 		playsound(user,'sound/effects/pillbottle.ogg',10,TRUE)
 		name = "broken fortune cookie"
-		ru_names_rename(ru_names_toml(name)) // SS220 - EDIT ADDITTION
+		ru_names_rename(ru_names_toml(name)) // SS220 EDIT ADDICTION
 		update_icon()
 		if(cookiefortune)
 			to_chat(user,SPAN_NOTICE("You break open the fortune cookie, revealing a fortune inside!"))
@@ -105,7 +105,7 @@
 		cookie_broken = TRUE
 		playsound(user,'sound/effects/pillbottle.ogg',10,TRUE)
 		name = "broken fortune cookie"
-		ru_names_rename(ru_names_toml(name)) // SS220 - EDIT ADDITTION
+		ru_names_rename(ru_names_toml(name)) // SS220 EDIT ADDICTION
 		update_icon()
 		if(cookiefortune)
 			to_chat(user,SPAN_NOTICE("You break open the fortune cookie, revealing a fortune inside!"))

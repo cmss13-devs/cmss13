@@ -43,6 +43,15 @@ instrumental = "наплечным подсумком"
 prepositional = "наплечном подсумке"
 gender = "male"
 
+["black drop pouch"]
+nominative = "чёрный наплечный подсумок"
+genitive = "чёрного наплечного подсумка"
+dative = "чёрному наплечному подсумку"
+accusative = "чёрный наплечный подсумок"
+instrumental = "чёрным наплечным подсумком"
+prepositional = "чёрном наплечном подсумке"
+gender = "male"
+
 ["light general pouch"]
 nominative = "лёгкий подсумок общего назначения"
 genitive = "лёгкого подсумка общего назначения"
@@ -118,7 +127,7 @@ instrumental = "подсумком для инструментов"
 prepositional = "подсумке для инструментов"
 gender = "male"
 
-["First-Aid Pouch (Refillable Injectors)"] # Unique Vendor Name
+["First-Aid Pouch (Refillable Autoinjectors)"] # Unique Vendor Name
 nominative = "медицинский подсумок (инжекторы)"
 
 ["First-Aid Pouch (Splints, Gauze, Ointment)"] # Unique Vendor Name
@@ -368,4 +377,28 @@ dative = "подсумку для пробирок"
 accusative = "подсумок для пробирок"
 instrumental = "подсумком для пробирок"
 prepositional = "подсумке для пробирок"
+gender = "male"
+
+["Leg Pouch "] # Unique Vendor Name
+nominative = "набедренный подсумок"
+
+["Leg Pouch"]
+nominative = "набедренный подсумок"
+genitive = "набедренного подсумка"
+dative = "набедренному подсумку"
+accusative = "набедренный подсумок"
+instrumental = "набедренным подсумком"
+prepositional = "набедренном подсумке"
+gender = "male"
+
+["Leg Pouch (Black)"] # Unique Vendor Name
+nominative = "чёрный набедренный подсумок"
+
+["Black Leg Pouch"]
+nominative = "чёрный набедренный подсумок"
+genitive = "чёрного набедренного подсумка"
+dative = "чёрному набедренному подсумку"
+accusative = "чёрный набедренный подсумок"
+instrumental = "чёрным набедренным подсумком"
+prepositional = "чёрном набедренном подсумке"
 gender = "male"

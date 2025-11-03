@@ -12,7 +12,7 @@
 			if(equip_to_slot_if_possible(I, I.last_equipped_slot, FALSE, FALSE, TRUE))
 				return
 		if(!H.equip_to_appropriate_slot(I, 0))
-			to_chat(H, SPAN_DANGER("You are unable to equip that."))
+			to_chat(H, SPAN_DANGER("Вы не можете надеть это."))
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
 	for (var/slot in slots)

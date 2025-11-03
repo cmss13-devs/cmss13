@@ -127,7 +127,7 @@
 		return
 
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access Denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return
 
 	use_power(5)

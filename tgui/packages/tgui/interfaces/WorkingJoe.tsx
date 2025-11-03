@@ -58,12 +58,14 @@ const Login = (props) => {
       mt="-3rem"
       bold
     >
-      <Box fontFamily="monospace">APOLLO Maintenance Controller</Box>
+      <Box fontFamily="monospace">Терминал обслуживания «АПОЛЛО»</Box>
       <Box mb="2rem" fontFamily="monospace">
-        WY-DOS Executive
+        ВейЮ-DOS
       </Box>
-      <Box fontFamily="monospace">Version 12.8.3</Box>
-      <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
+      <Box fontFamily="monospace">Версия 12.8.3</Box>
+      <Box fontFamily="monospace">
+        Все права защищены © 2182, Вейланд-Ютани Корп.
+      </Box>
 
       <Button
         icon="id-card"
@@ -74,7 +76,7 @@ const Login = (props) => {
         mt="5rem"
         onClick={() => act('login')}
       >
-        Login
+        Авторизация
       </Button>
     </Flex>
   );
@@ -92,9 +94,9 @@ const MainMenu = (props) => {
     faction_options,
     sentry_setting,
   } = data;
-  let can_request_access = 'Yes';
+  let can_request_access = true;
   if (local_access_level > 2) {
-    can_request_access = 'No';
+    can_request_access = false;
   }
   let soundicon = 'volume-high';
   if (!local_notify_sounds) {
@@ -110,14 +112,14 @@ const MainMenu = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
-              tooltip="Go back"
+              tooltip="Назад"
               onClick={() => act('go_back')}
               disabled={local_last_page === local_current_menu}
             />
             <Button
               icon="house"
               ml="auto"
-              tooltip="Navigation Menu"
+              tooltip="Главное меню"
               onClick={() => act('home')}
               disabled={local_current_menu === 'main'}
             />
@@ -125,7 +127,11 @@ const MainMenu = (props) => {
               icon={soundicon}
               ml="auto"
               mr="1rem"
-              tooltip="Mute/Un-Mute notifcation sounds."
+              tooltip={
+                soundicon === 'volume-high'
+                  ? 'Включить звук уведомлений'
+                  : 'Выключить звук уведомлений'
+              }
               onClick={() => act('toggle_sound')}
             />
           </Box>
@@ -141,21 +147,21 @@ const MainMenu = (props) => {
             bold
             onClick={() => act('logout')}
           >
-            Logout
+            Выход
           </Button.Confirm>
         </Flex>
       </Section>
 
       <Section>
-        <h1 style={{ textAlign: 'center' }}>Navigation Menu</h1>
+        <h1 style={{ textAlign: 'center' }}>Главное меню</h1>
         <Stack>
           <Stack.Item grow>
-            <h3>Request Submission</h3>
+            <h3>Запросы</h3>
           </Stack.Item>
-          {can_request_access === 'Yes' && (
+          {can_request_access && (
             <Stack.Item>
               <Button
-                tooltip="Request an access ticket to visit ARES."
+                tooltip="Запрос доступа к системе АРЕС."
                 icon="bullhorn"
                 ml="auto"
                 px="2rem"
@@ -163,14 +169,14 @@ const MainMenu = (props) => {
                 bold
                 onClick={() => act('page_request')}
               >
-                Request Access Ticket
+                Запрос доступов
               </Button>
             </Stack.Item>
           )}
           {local_access_level === 3 && (
             <Stack.Item>
               <Button.Confirm
-                tooltip="Return your temporary access."
+                tooltip="Это действие анулирует ваш временный доступ."
                 icon="eye"
                 ml="auto"
                 px="2rem"
@@ -178,13 +184,13 @@ const MainMenu = (props) => {
                 bold
                 onClick={() => act('return_access')}
               >
-                Surrender Access Ticket
+                Сдать временный доступ
               </Button.Confirm>
             </Stack.Item>
           )}
           <Stack.Item>
             <Button
-              tooltip="View or Report any maintenance problems."
+              tooltip="Управление заявками на обслуживание."
               icon="comments"
               ml="auto"
               px="2rem"
@@ -192,7 +198,7 @@ const MainMenu = (props) => {
               bold
               onClick={() => act('page_report')}
             >
-              Maintenance Tickets
+              Сервис-заявки
             </Button>
           </Stack.Item>
         </Stack>
@@ -200,11 +206,11 @@ const MainMenu = (props) => {
         {local_access_level >= 4 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Certified Personnel</h3>
+              <h3>Журналы</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
-                tooltip="Read the Apollo Link logs."
+                tooltip="Просмотр журнала подключений к АПОЛЛО."
                 icon="clipboard"
                 ml="auto"
                 px="2rem"
@@ -212,12 +218,12 @@ const MainMenu = (props) => {
                 bold
                 onClick={() => act('page_apollo')}
               >
-                View Apollo Log
+                Журнал АПОЛЛО
               </Button>
             </Stack.Item>
             <Stack.Item>
               <Button
-                tooltip="View the recent logins."
+                tooltip="Просмотр журнала входов в систему."
                 icon="users"
                 ml="auto"
                 px="2rem"
@@ -225,7 +231,7 @@ const MainMenu = (props) => {
                 bold
                 onClick={() => act('page_logins')}
               >
-                View Access Log
+                Входы в систему
               </Button>
             </Stack.Item>
           </Stack>
@@ -233,11 +239,11 @@ const MainMenu = (props) => {
         {local_access_level >= 5 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Task Management</h3>
+              <h3>Главное управление</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
-                tooltip="Approve, or deny, temporary visitation access to personnel."
+                tooltip="Управление временным доступом к системе."
                 icon="user-shield"
                 ml="auto"
                 px="2rem"
@@ -245,12 +251,12 @@ const MainMenu = (props) => {
                 bold
                 onClick={() => act('page_tickets')}
               >
-                Manage Access Tickets
+                Доступ к системе
               </Button>
             </Stack.Item>
             <Stack.Item>
               <Button
-                tooltip="Claim, Complete, Prioritise or Cancel Maintenance Tickets."
+                tooltip="Управление Maintenance Tickets."
                 icon="cart-shopping"
                 ml="auto"
                 px="2rem"
@@ -258,7 +264,7 @@ const MainMenu = (props) => {
                 bold
                 onClick={() => act('page_maintenance')}
               >
-                Manage Maintenance Tickets
+                Сервис-запросы
               </Button>
             </Stack.Item>
           </Stack>
@@ -266,12 +272,12 @@ const MainMenu = (props) => {
       </Section>
       {local_access_level >= 5 && (
         <Section>
-          <h1 style={{ textAlign: 'center' }}>Core Security Protocols</h1>
+          <h1 style={{ textAlign: 'center' }}>Протоколы безопасности</h1>
           <Stack>
             <Stack.Item grow>
               <Button
                 align="center"
-                tooltip="Release stored CN20-X nerve gas from security vents."
+                tooltip="Выпуск накопленного нервно-паралитического газа CN20-X из вентиляции."
                 icon="wind"
                 color="red"
                 ml="auto"
@@ -280,13 +286,13 @@ const MainMenu = (props) => {
                 bold
                 onClick={() => act('page_core_gas')}
               >
-                Nerve Gas Control
+                Управление газовой системой
               </Button>
             </Stack.Item>
             <Stack.Item grow>
               <Button.Confirm
                 align="center"
-                tooltip="Activate/Deactivate the AI Core Lockdown."
+                tooltip="Активировать/деактивировать блокировку ядра ИИ."
                 icon="lock"
                 color="red"
                 ml="auto"
@@ -295,7 +301,7 @@ const MainMenu = (props) => {
                 bold
                 onClick={() => act('security_lockdown')}
               >
-                AI Core Lockdown
+                Блокировка ядра ИИ
               </Button.Confirm>
             </Stack.Item>
             <Stack.Item ml="0" mr="0">
@@ -336,7 +342,7 @@ const ApolloLog = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
-              tooltip="Go back"
+              tooltip="Назад"
               onClick={() => act('go_back')}
               disabled={local_last_page === local_current_menu}
             />
@@ -344,7 +350,7 @@ const ApolloLog = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
-              tooltip="Navigation Menu"
+              tooltip="Главное меню"
               onClick={() => act('home')}
             />
           </Box>
@@ -360,13 +366,13 @@ const ApolloLog = (props) => {
             bold
             onClick={() => act('logout')}
           >
-            Logout
+            Выход
           </Button.Confirm>
         </Flex>
       </Section>
 
       <Section>
-        <h1 style={{ textAlign: 'center' }}>Apollo Log</h1>
+        <h1 style={{ textAlign: 'center' }}>Журнал АПОЛЛО</h1>
 
         {apollo_log.map((apollo_message, i) => {
           return (
@@ -399,7 +405,7 @@ const LoginRecords = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
-              tooltip="Go back"
+              tooltip="Назад"
               onClick={() => act('go_back')}
               disabled={local_last_page === local_current_menu}
             />
@@ -407,7 +413,7 @@ const LoginRecords = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
-              tooltip="Navigation Menu"
+              tooltip="Главное меню"
               onClick={() => act('home')}
             />
           </Box>
@@ -423,13 +429,13 @@ const LoginRecords = (props) => {
             bold
             onClick={() => act('logout')}
           >
-            Logout
+            Выход
           </Button.Confirm>
         </Flex>
       </Section>
 
       <Section>
-        <h1 style={{ textAlign: 'center' }}>Login Records</h1>
+        <h1 style={{ textAlign: 'center' }}>Журнал входа в систему</h1>
 
         {apollo_access_log.map((login, i) => {
           return (
@@ -461,7 +467,7 @@ const MaintReports = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
-              tooltip="Go back"
+              tooltip="Назад"
               onClick={() => act('go_back')}
               disabled={local_last_page === local_current_menu}
             />
@@ -469,7 +475,7 @@ const MaintReports = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
-              tooltip="Navigation Menu"
+              tooltip="Главное меню"
               onClick={() => act('home')}
             />
           </Box>
@@ -485,13 +491,13 @@ const MaintReports = (props) => {
             bold
             onClick={() => act('logout')}
           >
-            Logout
+            Выход
           </Button.Confirm>
         </Flex>
       </Section>
 
       <Section>
-        <h1 style={{ textAlign: 'center' }}>Maintenance Reports</h1>
+        <h1 style={{ textAlign: 'center' }}>Заявки на обслуживание</h1>
         <Flex
           direction="column"
           justify="center"
@@ -523,40 +529,41 @@ const MaintReports = (props) => {
             fontSize="1.25rem"
           >
             <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
-              ID
+              №
             </Flex.Item>
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
-              Time
+              Время
             </Flex.Item>
             <Flex.Item width="12rem" bold>
-              Category
+              Категория
             </Flex.Item>
             <Flex.Item width="40rem" bold>
-              Details
+              Описание
             </Flex.Item>
           </Flex>
         )}
         {maintenance_tickets.map((ticket, i) => {
-          let view_status = 'Ticket is pending assignment.';
+          let view_status = 'Заявка на стадии рассмотрения.';
           let view_icon = 'circle-question';
           if (ticket.status === 'assigned') {
-            view_status = 'Ticket is assigned.';
+            view_status = 'Заявка принята.';
             view_icon = 'circle-plus';
           } else if (ticket.status === 'rejected') {
-            view_status = 'Ticket has been rejected.';
+            view_status = 'Заявка отклонена.';
             view_icon = 'circle-xmark';
           } else if (ticket.status === 'cancelled') {
-            view_status = 'Ticket was cancelled by reporter.';
+            view_status = 'Заявка отменена.';
             view_icon = 'circle-stop';
           } else if (ticket.status === 'completed') {
-            view_status = 'Ticket has been successfully resolved.';
+            view_status = 'Заявка решена.';
             view_icon = 'circle-check';
           }
-          let can_cancel = 'Yes';
-          if (ticket.submitter !== local_logged_in) {
-            can_cancel = 'No';
-          } else if (ticket.lock_status === 'CLOSED') {
-            can_cancel = 'No';
+          let can_cancel = true;
+          if (
+            ticket.submitter !== local_logged_in ||
+            ticket.lock_status === 'CLOSED'
+          ) {
+            can_cancel = false;
           }
 
           return (
@@ -580,12 +587,12 @@ const MaintReports = (props) => {
               <Flex.Item width="40rem" shrink="0" textAlign="left">
                 {ticket.details}
               </Flex.Item>
-              <Flex.Item width="8rem" ml="1rem">
+              <Flex.Item width="12rem" ml="1rem">
                 <Button icon={view_icon} tooltip={view_status} />
                 <Button.Confirm
                   icon="file-circle-xmark"
-                  tooltip="Cancel Ticket"
-                  disabled={can_cancel === 'No'}
+                  tooltip="Отменить заявку"
+                  disabled={!can_cancel}
                   onClick={() => act('cancel_ticket', { ticket: ticket.ref })}
                 />
               </Flex.Item>
@@ -615,7 +622,7 @@ const MaintManagement = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
-              tooltip="Go back"
+              tooltip="Назад"
               onClick={() => act('go_back')}
               disabled={local_last_page === local_current_menu}
             />
@@ -623,7 +630,7 @@ const MaintManagement = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
-              tooltip="Navigation Menu"
+              tooltip="Главное меню"
               onClick={() => act('home')}
             />
           </Box>
@@ -639,13 +646,15 @@ const MaintManagement = (props) => {
             bold
             onClick={() => act('logout')}
           >
-            Logout
+            Выход
           </Button.Confirm>
         </Flex>
       </Section>
 
       <Section>
-        <h1 style={{ textAlign: 'center' }}>Maintenance Reports Management</h1>
+        <h1 style={{ textAlign: 'center' }}>
+          Управление заявками на обслуживание
+        </h1>
 
         {!!maintenance_tickets.length && (
           <Flex
@@ -656,50 +665,49 @@ const MaintManagement = (props) => {
             fontSize="1.25rem"
           >
             <Flex.Item bold width="5rem" shrink="0">
-              ID
+              №
             </Flex.Item>
             <Flex.Item bold width="6rem" shrink="0" ml="1rem">
-              Time
+              Время
             </Flex.Item>
             <Flex.Item width="12rem" bold>
-              Category
+              Категория
             </Flex.Item>
             <Flex.Item width="20rem" bold>
-              Details
+              Описание
             </Flex.Item>
             <Flex.Item width="10rem" bold>
-              Submit By
+              Принят
             </Flex.Item>
             <Flex.Item width="10rem" bold ml="0.5rem">
-              Assigned To
+              Ответственный
             </Flex.Item>
           </Flex>
         )}
         {maintenance_tickets.map((ticket, i) => {
-          let view_status = 'Ticket is pending assignment.';
+          let view_status = 'Заявка на стадии рассмотрения.';
           let view_icon = 'circle-question';
           if (ticket.status === 'assigned') {
-            view_status = 'Ticket is assigned.';
+            view_status = 'Заявка принята.';
             view_icon = 'circle-plus';
           } else if (ticket.status === 'rejected') {
-            view_status = 'Ticket has been rejected.';
+            view_status = 'Заявка отклонена.';
             view_icon = 'circle-xmark';
           } else if (ticket.status === 'cancelled') {
-            view_status = 'Ticket was cancelled by reporter.';
+            view_status = 'Заявка отменена.';
             view_icon = 'circle-stop';
           } else if (ticket.status === 'completed') {
-            view_status = 'Ticket has been successfully resolved.';
+            view_status = 'Заявка решена.';
             view_icon = 'circle-check';
           }
-          let can_claim = 'Yes';
+          let can_claim = true;
+          let can_mark = true;
           if (ticket.lock_status === 'CLOSED') {
-            can_claim = 'No';
+            can_claim = false;
+            can_mark = false;
           }
-          let can_mark = 'Yes';
-          if (ticket.assignee !== local_logged_in && ticket.assignee !== null) {
-            can_mark = 'No';
-          } else if (ticket.lock_status === 'CLOSED') {
-            can_mark = 'No';
+          if (ticket.assignee !== null && ticket.assignee !== local_logged_in) {
+            can_mark = false;
           }
 
           return (
@@ -731,14 +739,14 @@ const MaintManagement = (props) => {
                 <Button icon={view_icon} tooltip={view_status} />
                 <Button.Confirm
                   icon="user-lock"
-                  tooltip="Claim Ticket"
-                  disabled={can_claim === 'No'}
+                  tooltip="Принять тикет"
+                  disabled={!can_claim}
                   onClick={() => act('claim_ticket', { ticket: ticket.ref })}
                 />
                 <Button.Confirm
                   icon="user-gear"
-                  tooltip="Mark Ticket"
-                  disabled={can_mark === 'No'}
+                  tooltip="Отметить заявку"
+                  disabled={can_mark}
                   onClick={() => act('mark_ticket', { ticket: ticket.ref })}
                 />
               </Flex.Item>
@@ -769,7 +777,7 @@ const AccessRequests = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
-              tooltip="Go back"
+              tooltip="Назад"
               onClick={() => act('go_back')}
               disabled={local_last_page === local_current_menu}
             />
@@ -777,7 +785,7 @@ const AccessRequests = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
-              tooltip="Navigation Menu"
+              tooltip="Главное меню"
               onClick={() => act('home')}
             />
           </Box>
@@ -793,13 +801,13 @@ const AccessRequests = (props) => {
             bold
             onClick={() => act('logout')}
           >
-            Logout
+            Выход
           </Button.Confirm>
         </Flex>
       </Section>
 
       <Section>
-        <h1 style={{ textAlign: 'center' }}>Request Access</h1>
+        <h1 style={{ textAlign: 'center' }}>Заявки на доступ</h1>
         <Flex
           direction="column"
           justify="center"
@@ -819,7 +827,7 @@ const AccessRequests = (props) => {
             onClick={() => act('new_access')}
             disabled={local_access_level > 2}
           >
-            Create Ticket
+            Создать
           </Button>
         </Flex>
 
@@ -832,46 +840,47 @@ const AccessRequests = (props) => {
             fontSize="1.25rem"
           >
             <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
-              ID
+              №
             </Flex.Item>
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
-              Time
+              Время
             </Flex.Item>
             <Flex.Item width="8rem" mr="1rem" bold>
-              For
+              Пользователь
             </Flex.Item>
             <Flex.Item width="40rem" bold>
-              Details
+              Описание
             </Flex.Item>
           </Flex>
         )}
         {access_tickets.map((ticket, i) => {
-          let view_status = 'Access Ticket is pending assignment.';
+          let view_status = 'Заявка на стадии рассмотрения.';
           let view_icon = 'circle-question';
           if (ticket.status === 'assigned') {
-            view_status = 'Access Ticket is assigned.';
+            view_status = 'Заявка принята.';
             view_icon = 'circle-plus';
           } else if (ticket.status === 'rejected') {
-            view_status = 'Access Ticket has been rejected.';
+            view_status = 'Заявка отклонена.';
             view_icon = 'circle-xmark';
           } else if (ticket.status === 'cancelled') {
-            view_status = 'Access Ticket was cancelled by reporter.';
+            view_status = 'Заявка отменена.';
             view_icon = 'circle-stop';
           } else if (ticket.status === 'granted') {
-            view_status = 'Access ticket has been granted.';
+            view_status = 'Доступ предоставлен.';
             view_icon = 'circle-check';
           } else if (ticket.status === 'revoked') {
-            view_status = 'Access ticket has been revoked.';
+            view_status = 'Доступ отменён.';
             view_icon = 'circle-minus';
           } else if (ticket.status === 'returned') {
-            view_status = 'Access ticket has been returned.';
+            view_status = 'Доступ возвращён.';
             view_icon = 'circle-minus';
           }
-          let can_cancel = 'Yes';
-          if (ticket.submitter !== local_logged_in) {
-            can_cancel = 'No';
-          } else if (ticket.lock_status === 'CLOSED') {
-            can_cancel = 'No';
+          let can_cancel = true;
+          if (
+            ticket.submitter !== local_logged_in ||
+            ticket.lock_status === 'CLOSED'
+          ) {
+            can_cancel = false;
           }
 
           return (
@@ -895,12 +904,12 @@ const AccessRequests = (props) => {
               <Flex.Item width="40rem" shrink="0" textAlign="left">
                 {ticket.details}
               </Flex.Item>
-              <Flex.Item width="8rem" ml="1rem">
+              <Flex.Item width="12rem" ml="1rem">
                 <Button icon={view_icon} tooltip={view_status} />
                 <Button.Confirm
                   icon="file-circle-xmark"
-                  tooltip="Cancel Ticket"
-                  disabled={can_cancel === 'No'}
+                  tooltip="Отменить заявку"
+                  disabled={!can_cancel}
                   onClick={() => act('cancel_ticket', { ticket: ticket.ref })}
                 />
               </Flex.Item>
@@ -931,7 +940,7 @@ const AccessTickets = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
-              tooltip="Go back"
+              tooltip="Назад"
               onClick={() => act('go_back')}
               disabled={local_last_page === local_current_menu}
             />
@@ -939,7 +948,7 @@ const AccessTickets = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
-              tooltip="Navigation Menu"
+              tooltip="Главное меню"
               onClick={() => act('home')}
             />
           </Box>
@@ -955,13 +964,13 @@ const AccessTickets = (props) => {
             bold
             onClick={() => act('logout')}
           >
-            Logout
+            Выход
           </Button.Confirm>
         </Flex>
       </Section>
 
       <Section>
-        <h1 style={{ textAlign: 'center' }}>Access Ticket Management</h1>
+        <h1 style={{ textAlign: 'center' }}>Управление заявками на доступ</h1>
         {!!access_tickets.length && (
           <Flex
             mt="2rem"
@@ -971,60 +980,54 @@ const AccessTickets = (props) => {
             fontSize="1.25rem"
           >
             <Flex.Item bold width="5rem" shrink="0" mr="1.5rem">
-              ID
+              №
             </Flex.Item>
             <Flex.Item bold width="6rem" shrink="0" mr="1rem">
-              Time
+              Время
             </Flex.Item>
             <Flex.Item width="8rem" mr="1rem" bold>
-              Submitter
+              Автор
             </Flex.Item>
             <Flex.Item width="8rem" mr="1rem" bold>
-              For
+              Пользователь
             </Flex.Item>
             <Flex.Item width="30rem" bold>
-              Reason
+              Описание
             </Flex.Item>
           </Flex>
         )}
         {access_tickets.map((ticket, i) => {
-          let can_claim = 'Yes';
-          if (ticket.assignee === local_logged_in) {
-            can_claim = 'No';
-          } else if (ticket.lock_status === 'CLOSED') {
-            can_claim = 'No';
-          }
-          let can_update = 'Yes';
+          let can_update = true;
           if (ticket.lock_status === 'CLOSED') {
-            can_update = 'No';
+            can_update = false;
           }
-          let view_status = 'Ticket is pending assignment.';
+          let view_status = 'Заявка на стадии рассмотрения.';
           let view_icon = 'circle-question';
           let update_tooltip = 'Grant Access';
           if (ticket.status === 'rejected') {
-            view_status = 'Ticket has been rejected.';
+            view_status = 'Заявка отклонена.';
             view_icon = 'circle-xmark';
-            update_tooltip = 'Ticket rejected. No further changes possible.';
-          } else if (ticket.status === 'cancelled') {
-            view_status = 'Ticket was cancelled by reporter.';
-            view_icon = 'circle-stop';
-            update_tooltip = 'Ticket cancelled. No further changes possible.';
-          } else if (ticket.status === 'granted') {
-            view_status = 'Access ticket has been granted.';
-            view_icon = 'circle-check';
-            update_tooltip = 'Revoke Access';
-          } else if (ticket.status === 'revoked') {
-            view_status = 'Access ticket has been revoked.';
-            view_icon = 'circle-minus';
-            update_tooltip = 'Access revoked. No further changes possible.';
-          } else if (ticket.status === 'returned') {
-            view_status = 'Access ticket has been returned.';
-            view_icon = 'circle-minus';
             update_tooltip =
-              'Access self-returned. No further changes possible.';
+              'Заявка была отклонена. Это окончательное решение.';
+          } else if (ticket.status === 'cancelled') {
+            view_status = 'Заявка отменена.';
+            view_icon = 'circle-stop';
+            update_tooltip = 'Заявка была отменена. Это окончательное решение.';
+          } else if (ticket.status === 'granted') {
+            view_status = 'Доступ предоставлен.';
+            view_icon = 'circle-check';
+            update_tooltip = 'Отозвать доступ';
+          } else if (ticket.status === 'revoked') {
+            view_status = 'Доступ отозван.';
+            view_icon = 'circle-minus';
+            update_tooltip = 'Доступ был отозван. Это окончательное решение.';
+          } else if (ticket.status === 'returned') {
+            view_status = 'Доступ возвращён.';
+            view_icon = 'circle-minus';
+            update_tooltip = 'Доступ возвращён. Это окончательное решение.';
           }
           let can_reject = true;
-          if (can_update === 'No') {
+          if (!can_update) {
             can_reject = false;
           }
           if (ticket.status !== 'pending') {
@@ -1053,13 +1056,13 @@ const AccessTickets = (props) => {
                 <Button.Confirm
                   icon="user-gear"
                   tooltip={update_tooltip}
-                  disabled={can_update === 'No'}
+                  disabled={!can_update}
                   onClick={() => act('auth_access', { ticket: ticket.ref })}
                 />
                 {can_reject && (
                   <Button.Confirm
                     icon="user-minus"
-                    tooltip="Reject Ticket"
+                    tooltip="Отклонить заявку"
                     disabled={!can_reject}
                     onClick={() => act('reject_access', { ticket: ticket.ref })}
                   />
@@ -1093,7 +1096,7 @@ const CoreSecGas = (props) => {
               icon="arrow-left"
               px="2rem"
               textAlign="center"
-              tooltip="Go back"
+              tooltip="Назад"
               onClick={() => act('go_back')}
               disabled={local_last_page === local_current_menu}
             />
@@ -1101,7 +1104,7 @@ const CoreSecGas = (props) => {
               icon="house"
               ml="auto"
               mr="1rem"
-              tooltip="Navigation Menu"
+              tooltip="Главное меню"
               onClick={() => act('home')}
             />
           </Box>
@@ -1117,20 +1120,22 @@ const CoreSecGas = (props) => {
             bold
             onClick={() => act('logout')}
           >
-            Logout
+            Выход
           </Button.Confirm>
         </Flex>
       </Section>
 
       <Section>
-        <h1 style={{ textAlign: 'center' }}>Nerve Gas Release</h1>
+        <h1 style={{ textAlign: 'center' }}>
+          Выброс нервно-паралитического газа
+        </h1>
         {security_vents.map((vent, i) => {
           return (
             <Button.Confirm
               key={i}
               align="center"
               icon="wind"
-              tooltip="Release Gas"
+              tooltip="Выпустить газ"
               width="100%"
               disabled={local_access_level < 5 || !vent.available}
               onClick={() => act('trigger_vent', { vent: vent.ref })}

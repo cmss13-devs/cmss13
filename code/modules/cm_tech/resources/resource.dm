@@ -134,10 +134,10 @@
 		return
 
 	if(!active)
-		to_chat(H, SPAN_WARNING("[src] isn't active right now!"))
+		to_chat(H, SPAN_WARNING("[declent_ru()] сейчас неактивен!"))
 		return
 	if(H.action_busy)
-		to_chat(H, SPAN_WARNING("You're already performing an action!"))
+		to_chat(H, SPAN_WARNING("Вы уже заняты чем-то другим."))
 		return
 
 	H.visible_message(SPAN_DANGER("[H] starts to set up [src]."),
@@ -154,26 +154,26 @@
 
 /obj/structure/resource_node/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!isxeno_builder(M))
-		to_chat(M, SPAN_XENOWARNING("You can't build onto [src]."))
+		to_chat(M, SPAN_XENOWARNING("Вы не можете строить на [declent_ru()].")) // SS220 EDIT ADDICTION
 		return XENO_NO_DELAY_ACTION
 
 	if(!active)
-		to_chat(M, SPAN_XENOWARNING("[src] isn't active right now!"))
+		to_chat(M, SPAN_XENOWARNING("[declent_ru()] сейчас неактивен!")) // SS220 EDIT ADDICTION
 		return XENO_NO_DELAY_ACTION
 
 	if(M.action_busy)
-		to_chat(M, SPAN_WARNING("You're already performing an action!"))
+		to_chat(M, SPAN_WARNING("Вы уже заняты чем-то другим."))
 		return XENO_NO_DELAY_ACTION
 
-	M.visible_message(SPAN_DANGER("[M] starts secreting resin over [src]."),
-	SPAN_XENONOTICE("You begin to connect [src] to the hive."), max_distance = 3)
+	M.visible_message(SPAN_DANGER("[M] начинает подключать [declent_ru()] к улью."), // SS220 EDIT ADDICTION
+	SPAN_XENONOTICE("Вы начинаете подключать [declent_ru()] к улью."), max_distance = 3) // SS220 EDIT ADDICTION
 	xeno_attack_delay(M)
 
 	if(!do_after(M, time_to_build, BEHAVIOR_IMMOBILE|INTERRUPT_ALL, BUSY_ICON_BUILD, src, INTERRUPT_ALL))
-		to_chat(M, SPAN_XENOWARNING("You decide not to connect [src] to the hive."))
+		to_chat(M, SPAN_XENOWARNING("Вы прекращаете подключать [declent_ru()] к улью.")) // SS220 EDIT ADDICTION
 		return XENO_NO_DELAY_ACTION
 
-	M.visible_message(SPAN_DANGER("[M] secretes resin over [src]."),
-	SPAN_XENONOTICE("You connect [src] to the hive."), max_distance = 3)
+	M.visible_message(SPAN_DANGER("[M] подключает [declent_ru()] к улью."), // SS220 EDIT ADDICTION
+	SPAN_XENONOTICE("Вы подключаете [declent_ru()] к улью."), max_distance = 3) // SS220 EDIT ADDICTION
 
 	return XENO_NO_DELAY_ACTION

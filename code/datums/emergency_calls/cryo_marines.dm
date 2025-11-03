@@ -17,9 +17,9 @@
 	var/datum/squad/marine/cryo/cryo_squad = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
 	leaders = cryo_squad.roles_in[JOB_SQUAD_LEADER]
 	. = ..()
-	shipwide_ai_announcement("Было успешно развернуто [mob_max] морпехов Фокстрота, готовых к службе: [length(members)].")
+	shipwide_ai_announcement("Было успешно развернуто [mob_max] морпехов отряда «Фокстрот», из которых [length(members)] готовы к бою.")
 	if(mob_max > length(members))
-		announce_dchat("Some cryomarines were not taken, use the Join As Freed Mob verb to take one of them.")
+		announce_dchat("некоторые криомарины ещё свободны, используйте команду «Join As Freed Mob», чтобы занять одного из них.")
 
 /datum/emergency_call/cryo_squad/create_member(datum/mind/mind, turf/override_spawn_loc)
 	set waitfor = 0

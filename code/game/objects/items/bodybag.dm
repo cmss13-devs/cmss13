@@ -365,7 +365,7 @@
 	if (href_list["scanreport"])
 		if(hasHUD(usr,"medical"))
 			if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-				to_chat(usr, SPAN_WARNING("You're not trained to use this."))
+				to_chat(usr, SPAN_WARNING("Вы не знаете как использовать это."))
 				return
 			if(get_dist(usr, src) > 7)
 				to_chat(usr, SPAN_WARNING("[src] is too far away."))

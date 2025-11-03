@@ -380,7 +380,7 @@ export const JOBS_RU = {
   Observer: 'Наблюдатель',
 
   // Other
-  Infected: 'Зараженные',
+  Infected: 'Заражённые',
 
   Unemployed: 'Неизвестно',
 };

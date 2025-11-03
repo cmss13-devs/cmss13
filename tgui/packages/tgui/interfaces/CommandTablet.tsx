@@ -33,25 +33,25 @@ export const CommandTablet = () => {
 
   let distress_reason;
   if (AlertLevel === 3) {
-    distress_reason = 'Self-destruct in progress. Beacon disabled.';
+    distress_reason = 'Начат процесс самоуничтожения. Аварийный маяк отключён.';
   } else if (AlertLevel !== 2) {
-    distress_reason = 'Ship is not under an active emergency.';
+    distress_reason = 'Уровень угрозы не соответствует аварийной ситуации.';
   } else if (distressCooldown) {
-    distress_reason = 'Beacon is currently recharging.';
+    distress_reason = 'Аварийный маяк перезаряжается.';
   } else if (!minimumTimeElapsed) {
-    distress_reason = "It's too early to launch a distress beacon.";
+    distress_reason = 'Ещё слишком рано запускать аварийный маяк.';
   }
 
   return (
     <Window width={350} height={350}>
       <Window.Content scrollable>
-        <Section title="Command">
+        <Section title="Меню">
           <Flex height="100%" direction="column">
             <Flex.Item>
               {!canAnnounce && (
                 <Button color="bad" fluid icon="ban">
-                  Announcement recharging:{' '}
-                  {Math.ceil((data.endtime - data.worldtime) / 10)} secs
+                  Защита от спама:{' '}
+                  {Math.ceil((data.endtime - data.worldtime) / 10)} сек.
                 </Button>
               )}
               {!!canAnnounce && (
@@ -61,26 +61,26 @@ export const CommandTablet = () => {
                   onClick={() => act('announce')}
                   disabled={!canAnnounce}
                 >
-                  Make an announcement
+                  Сделать оповещение
                 </Button>
               )}
             </Flex.Item>
             <Flex.Item>
               <Button fluid icon="medal" onClick={() => act('award')}>
-                Give a medal
+                Выдать медаль
               </Button>
             </Flex.Item>
             <Flex.Item>
               <Button fluid icon="globe-africa" onClick={() => act('mapview')}>
-                View tactical map
+                Тактическая карта
               </Button>
             </Flex.Item>
             {data.faction === 'USCM' && (
-              <Section title="Evacuation">
+              <Section title="Эвакуация">
                 {AlertLevel < 2 && (
                   <NoticeBox color="bad" warning textAlign="center">
-                    The ship must be under red alert in order to enact
-                    evacuation procedures.
+                    Перед оповещением об эвакуации должна быть объявлен
+                    «Красный» уровень угрозы.
                   </NoticeBox>
                 )}
                 <Flex.Item>
@@ -91,7 +91,7 @@ export const CommandTablet = () => {
                       fluid
                       icon="ban"
                     >
-                      {'Distress Beacon disabled'}
+                      {'Аварийный маяк отключён'}
                     </Button>
                   )}
                   {canDistress && (
@@ -104,7 +104,7 @@ export const CommandTablet = () => {
                       confirmIcon="question"
                       onClick={() => act('distress')}
                     >
-                      {'Send Distress Beacon'}
+                      {'Включить аварийный маяк'}
                     </Button.Confirm>
                   )}
                 </Flex.Item>
@@ -115,28 +115,28 @@ export const CommandTablet = () => {
                       color="orange"
                       icon="door-open"
                       confirmColor="bad"
-                      confirmContent="Confirm?"
+                      confirmContent="Подтвердить"
                       confirmIcon="question"
                       onClick={() => act('evacuation_start')}
                       disabled={!canEvac}
                     >
-                      {'Initiate Evacuation'}
+                      {'Объявить эвакуацию'}
                     </Button.Confirm>
                   </Flex.Item>
                 )}
                 {evacstatus === 1 && (
                   <NoticeBox color="good" info textAlign="center">
-                    Evacuation ongoing.
+                    Начат процесс эвакуации.
                   </NoticeBox>
                 )}
                 {evacstatus === 2 && (
                   <NoticeBox color="good" info textAlign="center">
-                    Escape pods launching.
+                    Запуск спасательных капсул.
                   </NoticeBox>
                 )}
                 {evacstatus === 3 && (
                   <NoticeBox color="good" success textAlign="center">
-                    Evacuation complete.
+                    Эвакуация завершена.
                   </NoticeBox>
                 )}
               </Section>

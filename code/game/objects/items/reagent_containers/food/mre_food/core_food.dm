@@ -16,7 +16,7 @@
 	if(!no_packet_label)
 		var/obj/item/reagent_container/food/snacks/food = contents_food
 		name += " ([food?.name])"
-		ru_names_rename(ru_names_toml(src::name, suffix = " ([declent_ru_initial(food?.name, NOMINATIVE, food?.name)])", override_base = name)) // SS220 - EDIT ADDITTION
+		ru_names_rename(ru_names_toml(src::name, suffix = " ([declent_ru_initial(food?.name, NOMINATIVE, food?.name)])", override_base = name)) // SS220 EDIT ADDICTION
 
 /obj/item/mre_food_packet/ex_act()
 	deconstruct(FALSE)

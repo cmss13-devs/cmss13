@@ -52,7 +52,7 @@
 		return
 
 	if(!isqueen(usr) && !allowed(usr))
-		to_chat(usr, SPAN_DANGER("Access denied."))
+		to_chat(usr, SPAN_DANGER("Доступ запрещён."))
 		return TRUE
 
 	if(href_list["move"])
@@ -482,7 +482,7 @@
 			lifeboat.playing_launch_announcement_alarm = FALSE
 			var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
 			lifeboat_dock.open_dock()
-			xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("Мы получили контроль над металлической птицей! У них больше нет пути к побегу!"), 3, xeno.hivenumber)
 			launch_initiated = FALSE
 			remaining_time = initial(remaining_time)
 		return XENO_NO_DELAY_ACTION

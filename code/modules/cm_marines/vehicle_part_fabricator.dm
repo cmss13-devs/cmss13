@@ -208,7 +208,7 @@
 
 /obj/structure/machinery/part_fabricator/attack_hand(mob/user)
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return TRUE
 	tgui_interact(user)
 

@@ -119,6 +119,7 @@
 // MARK: Xeno Abilities
 #include "code/xeno/castes_age.dm"
 #include "code/xeno/hive_status.dm"
+#include "code/xeno/strains.dm"
 #include "code/xeno/xeno_abilities/general_abilities.dm"
 #include "code/xeno/xeno_abilities/xeno_action.dm"
 #include "code/xeno/xeno_abilities/xeno_projectiles.dm"

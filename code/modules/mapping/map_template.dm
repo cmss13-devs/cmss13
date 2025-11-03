@@ -2,6 +2,7 @@
 	var/name = "Default Template Name"
 	var/width = 0
 	var/height = 0
+	var/levels = 0
 	var/mappath = null
 	var/loaded = 0 // Times loaded this round
 	var/datum/parsed_map/cached_map
@@ -35,6 +36,7 @@
 	if(bounds)
 		width = bounds[MAP_MAXX] // Assumes all templates are rectangular, have a single Z level, and begin at 1,1,1
 		height = bounds[MAP_MAXY]
+		levels = bounds[MAP_MAXZ]
 		if(cache)
 			cached_map = parsed
 	return bounds

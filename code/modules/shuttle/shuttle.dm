@@ -29,6 +29,8 @@
 	var/width = 0
 	///size of covered area, parallel to dir
 	var/height = 0
+	///how tall should the shuttle is
+	var/levels = 0
 	///position relative to covered area, perpendicular to dir
 	var/dwidth = 0
 	///position relative to covered area, parallel to dir
@@ -144,16 +146,16 @@
 			sin = -1
 
 	. = list()
-
-	for(var/dx in 0 to width-1)
-		var/compX = dx-dwidth
-		for(var/dy in 0 to height-1)
-			var/compY = dy-dheight
-			// realX = _x + compX*cos - compY*sin
-			// realY = _y + compY*cos - compX*sin
-			// locate(realX, realY, _z)
-			var/turf/T = locate(_x + compX*cos - compY*sin, _y + compY*cos + compX*sin, _z)
-			.[T] = NONE
+	for(var/dz in 0 to levels-1)
+		for(var/dx in 0 to width-1)
+			var/compX = dx-dwidth
+			for(var/dy in 0 to height-1)
+				var/compY = dy-dheight
+				// realX = _x + compX*cos - compY*sin
+				// realY = _y + compY*cos - compX*sin
+				// locate(realX, realY, _z)
+				var/turf/T = locate(_x + compX*cos - compY*sin, _y + compY*cos + compX*sin, _z + dz)
+				.[T] = NONE
 
 #ifdef DOCKING_PORT_HIGHLIGHT
 //Debug proc used to highlight bounding area

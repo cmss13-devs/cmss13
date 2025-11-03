@@ -501,7 +501,7 @@ SUBSYSTEM_DEF(shuttle)
 	preview_reservation = SSmapping.request_turf_block_reservation(
 		loading_template.width,
 		loading_template.height,
-		1,
+		loading_template.levels,
 		reservation_type = /datum/turf_reservation/transit,
 	)
 	if(!preview_reservation)

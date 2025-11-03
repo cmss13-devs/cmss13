@@ -38,30 +38,26 @@
 	///technology stored on this disk, goes through one to whatever levels of upgrades there are.
 	var/value
 
+// Upgrade for autodoc T1: Internal bleeding
 /obj/item/research_upgrades/autodoc
 	name = "Research Upgrade (AutoDoc)"
+	desc = "Research upgrade for an AutoDoc. The technology on this disk is used for stitching up internal bleedings. Insert it in an AutoDoc to use it."
 	value = RESEARCH_UPGRADE_TIER_1
 
-/obj/item/research_upgrades/autodoc/Initialize(mapload, value)
-	. = ..()
-	src.value = value
-	update_description()
+// Upgrade for autodoc T2: Broken bones
+/obj/item/research_upgrades/autodoc/tier2
+	desc = "Research upgrade for an AutoDoc. The technology on this disk is used for fixing broken bones. Insert it in an AutoDoc to use it."
+	value = RESEARCH_UPGRADE_TIER_2
 
-/obj/item/research_upgrades/autodoc/proc/update_description()
-	var/upgrade_text
-	switch(value)
-		if(RESEARCH_UPGRADE_TIER_1)
-			upgrade_text = "for stitching up internal bleedings"
-		if(RESEARCH_UPGRADE_TIER_2)
-			upgrade_text = "for fixing broken bones"
-		if(RESEARCH_UPGRADE_TIER_3)
-			upgrade_text = "for treating internal organ damage"
-		if(RESEARCH_UPGRADE_TIER_4)
-			upgrade_text = "for extracting unknown parasites"
-		else
-			stack_trace("Unimplemented research value '[value]' for [src]!")
-			upgrade_text = "for ERROR"
-	desc = "Research upgrade for an AutoDoc. The technology on this disk is used [upgrade_text]. Insert it in an AutoDoc to use it."
+// Upgrade for autodoc T3: Internal organ damage
+/obj/item/research_upgrades/autodoc/tier3
+	desc = "Research upgrade for an AutoDoc. The technology on this disk is used for treating internal organ damage. Insert it in an AutoDoc to use it."
+	value = RESEARCH_UPGRADE_TIER_3
+
+// Upgrade for autodoc T4: Larva removal
+/obj/item/research_upgrades/autodoc/tier4
+	desc = "Research upgrade for an AutoDoc. The technology on this disk is used for extracting unknown parasites. Insert it in an AutoDoc to use it."
+	value = RESEARCH_UPGRADE_TIER_4
 
 /obj/item/research_upgrades/sleeper
 	name = "Research Upgrade (Sleeper)"

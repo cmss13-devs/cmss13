@@ -140,7 +140,7 @@
 					overwatch_insert = " (<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>посмотреть</a>)" // SS220 EDIT ADDICTION
 
 				if(isqueen(src) || hive.leading_cult_sl == src)
-					rendered = SPAN_XENO("Разум улья, [ru_name][overwatch_insert] [ru_say_verb("hisses")], <span class='normal'>'[message]'</span>") // SS220 EDIT ADDICTION
+					rendered = SPAN_XENOQUEEN("Разум улья, [ru_name][overwatch_insert] [ru_say_verb("hisses")], <span class='normal'>'[message]'</span>") // SS220 EDIT ADDICTION
 				else if(istype(X) && IS_XENO_LEADER(X))
 					rendered = SPAN_XENOLEADER("Разум улья, лидер [ru_name][overwatch_insert] [ru_say_verb("hisses")], <span class='normal'>'[message]'</span>") // SS220 EDIT ADDICTION
 				else

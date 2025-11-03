@@ -42,22 +42,26 @@
 	name = "Research Upgrade (AutoDoc)"
 	value = RESEARCH_UPGRADE_TIER_1
 
-
 /obj/item/research_upgrades/autodoc/Initialize(mapload, value)
 	. = ..()
 	src.value = value
-	desc = "Research upgrade for an AutoDoc. The technology on this disk is used [get_upgrade_text()]. Insert it in an AutoDoc to use it."
+	update_description()
 
-/obj/item/research_upgrades/autodoc/proc/get_upgrade_text()
+/obj/item/research_upgrades/autodoc/proc/update_description()
+	var/upgrade_text
 	switch(value)
 		if(RESEARCH_UPGRADE_TIER_1)
-			return "for stitching up internal bleedings"
+			upgrade_text = "for stitching up internal bleedings"
 		if(RESEARCH_UPGRADE_TIER_2)
-			return "for fixing broken bones"
+			upgrade_text = "for fixing broken bones"
 		if(RESEARCH_UPGRADE_TIER_3)
-			return "for treating internal organ damage"
+			upgrade_text = "for treating internal organ damage"
 		if(RESEARCH_UPGRADE_TIER_4)
-			return "for extracting unknown parasites"
+			upgrade_text = "for extracting unknown parasites"
+		else
+			stack_trace("Unimplemented research value '[value]' for [src]!")
+			upgrade_text = "for ERROR"
+	desc = "Research upgrade for an AutoDoc. The technology on this disk is used [upgrade_text]. Insert it in an AutoDoc to use it."
 
 /obj/item/research_upgrades/sleeper
 	name = "Research Upgrade (Sleeper)"

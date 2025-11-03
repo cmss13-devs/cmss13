@@ -699,6 +699,9 @@
 /obj/structure/machinery/autodoc_console/attackby(obj/item/with, mob/user)
 	if(istype(with, /obj/item/research_upgrades/autodoc))
 		var/obj/item/research_upgrades/autodoc/upgrd = with
+		if(!upgrd.value)
+			to_chat(user, SPAN_NOTICE("There is no data loaded in [upgrd]!"))
+			return
 		for(var/iter in upgrades)
 			if(iter == upgrd.value)
 				to_chat(user, SPAN_NOTICE("This data is already present in [src]!"))

@@ -37,19 +37,19 @@
 	..()
 	if(carved)
 		if(store)
-			to_chat(user, SPAN_NOTICE("[store] falls out of [title]!"))
+			to_chat(user, SPAN_NOTICE("[store] выпадает из [title]!")) //SS220 -EDIT TRANSLATE
 			store.forceMove(get_turf(src.loc))
 			store = null
 			return
 		else
-			to_chat(user, SPAN_NOTICE("The pages of [title] have been cut out!"))
+			to_chat(user, SPAN_NOTICE("Некоторые страницы [title] были вырваны!")) //SS220 -EDIT TRANSLATE
 			return
 	if(src.dat)
-		show_browser(user, "<body class='paper'><TT><I>Author: [author].</I></TT> <BR>[dat]</body>","[title]", "window=book", width = 800, height = 600)
-		user.visible_message("[user] opens \"[src.title]\".")
+		show_browser(user, "<body class='paper'><TT><I>Автор: [author].</I></TT> <BR>[dat]</body>","[title]", "window=book", width = 800, height = 600) //SS220 -EDIT TRANSLATE
+		user.visible_message("[user] открывает \"[src.title]\".")
 		onclose(user, "book")
 	else
-		to_chat(user, "This book is completely blank!")
+		to_chat(user, "Эта книга абсолютно пуста!") //SS220 -EDIT TRANSLATE
 
 /obj/item/book/attackby(obj/item/W as obj, mob/user as mob)
 	if(carved)

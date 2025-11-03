@@ -4745,14 +4745,14 @@
 /turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "ald" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/antre/border{
 	dir = 8
 	},
 /turf/open/floor/antre/metal/black,
 /area/white_antre/indoors/main_level/west_corridor)
 "ale" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -5312,7 +5312,7 @@
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/white_antre/indoors/main_level/engineering)
 "amf" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/prison/bright_clean,
 /area/white_antre/indoors/main_level/engineering)
@@ -9767,7 +9767,7 @@
 /turf/open/antre/plating/direction_north,
 /area/white_antre/indoors/main_level/west_corridor)
 "avN" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/antre/border/corner,
 /turf/open/floor/antre/metal/black/northwest,
@@ -10269,7 +10269,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/north_containment)
 "awJ" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light/double,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/north_containment)
@@ -11071,7 +11071,7 @@
 /turf/open/floor/prison/red/east,
 /area/white_antre/indoors/main_level/north_containment)
 "ayu" = (
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/north_containment)
 "ayv" = (
@@ -11948,7 +11948,7 @@
 /area/white_antre/indoors/main_level/north_containment)
 "aBk" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/reagent_dispensers/fueltank/oxygentank,
+/obj/structure/reagent_dispensers/tank/oxygentank,
 /turf/open/floor/shiva/radiator_tile2,
 /area/white_antre/indoors/main_level/north_containment)
 "aBl" = (
@@ -11971,7 +11971,7 @@
 	icon_state = "igniter0";
 	name = "floor panel"
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/shiva/radiator_tile2,
 /area/white_antre/indoors/main_level/north_containment)
@@ -14787,7 +14787,7 @@
 "aHq" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light/double{
 	dir = 1;
 	layer = 2.9;
@@ -15160,7 +15160,7 @@
 /area/white_antre/indoors/main_level/east_corridor)
 "aId" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -15168,7 +15168,7 @@
 /area/white_antre/indoors/main_level/east_corridor)
 "aIe" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/antre/border{
 	dir = 8
 	},
@@ -19443,7 +19443,7 @@
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "aUY" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	anchored = 1
 	},
 /obj/structure/machinery/light/double{
@@ -25941,7 +25941,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "bmO" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	anchored = 1
 	},
 /turf/open/floor/strata/floor2,
@@ -28904,7 +28904,7 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 35
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat,
 /area/white_antre/indoors/upper_level/east_overwatch)
@@ -29115,7 +29115,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/xenobio)
 "bve" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/xenobio)
 "bvf" = (
@@ -29504,7 +29504,7 @@
 /turf/open/floor/almayer_hull/outerhull_dir/east,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bwb" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/white_antre/indoors/upper_level/ancillery_storage)
 "bwc" = (
@@ -32443,7 +32443,7 @@
 /turf/open/floor/corsat/plate,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bDf" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat/squares,
 /area/white_antre/indoors/upper_level/south_overwatch)
 "bDg" = (
@@ -33522,7 +33522,7 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "bGa" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/landmark/lv624/door_blocker,
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_overwatch)
@@ -33555,12 +33555,12 @@
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "bGf" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/landmark/lv624/door_blocker,
 /turf/open/floor/almayer_hull/outerhull_dir/east,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "bGg" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 850
 	},
@@ -34784,7 +34784,7 @@
 /turf/open/antre/plating/west_corner_dir/south_east,
 /area/white_antre/indoors/upper_level/west_corridor)
 "bIA" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/white_antre/indoors/upper_level/simian_storage)
 "bIB" = (
@@ -34918,7 +34918,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/white_antre/indoors/upper_level/simian_storage)
 "bIO" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/dark_sterile,
 /area/white_antre/indoors/upper_level/simian_storage)
 "bIP" = (
@@ -35857,13 +35857,13 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bKL" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	anchored = 1
 	},
 /turf/open/floor/corsat/plate,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bKM" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat/squares,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bKN" = (
@@ -41664,7 +41664,7 @@
 	dir = 1;
 	pixel_x = 5
 	},
-/obj/structure/reagent_dispensers/fueltank/spacecraft{
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft{
 	layer = 4.2;
 	pixel_x = 10;
 	pixel_y = 26
@@ -51306,7 +51306,7 @@
 /turf/closed/wall/hybrisa/research,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "cvT" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 850
 	},
@@ -54090,7 +54090,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "lKA" = (
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/shiva/radiator_tile2,
 /area/white_antre/landing_zone)
 "lKF" = (
@@ -56265,7 +56265,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/white_antre/outdoors/north_field)
 "tht" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	anchored = 1
 	},
 /turf/open/floor/strata/floor2,

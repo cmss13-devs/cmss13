@@ -149,6 +149,10 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 			if(machine.is_on != is_on)
 				machine.set_is_on(is_on)
 
+/obj/structure/machinery/colony_floodlight_switch/proc/toggle_machines()
+	for(var/obj/structure/machinery/machine as anything in machinery_list)
+		addtimer(CALLBACK(machine, TYPE_PROC_REF(/obj/structure/machinery, toggle_is_on)), rand(0, 5 SECONDS))
+
 /obj/structure/machinery/colony_floodlight_switch/attack_hand(mob/user as mob)
 	if(!ishuman(user))
 		to_chat(user, "Nice try.")

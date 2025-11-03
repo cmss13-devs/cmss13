@@ -49,7 +49,6 @@
 	mob_flags = NOBIOSCAN
 	mob_size = MOB_SIZE_XENO_VERY_SMALL
 	life_value = 0
-	default_honor_value = 0
 	show_only_numbers = TRUE
 	counts_for_slots = FALSE
 	counts_for_roundend = FALSE

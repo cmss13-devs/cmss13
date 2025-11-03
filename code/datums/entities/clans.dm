@@ -38,7 +38,6 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 		"clan_rank" = DB_FIELDTYPE_BIGINT,
 		"permissions" = DB_FIELDTYPE_BIGINT,
 		"clan_id" = DB_FIELDTYPE_BIGINT,
-		"honor" = DB_FIELDTYPE_BIGINT,
 		"player_name" = DB_FIELDTYPE_STRING_MEDIUM,
 		"clan_ancillary" = DB_FIELDTYPE_STRING_MEDIUM,
 	)
@@ -76,7 +75,6 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 	var/clan_rank
 	var/permissions
 	var/clan_name
-	var/honor
 	var/player_name
 	var/clan_ancillary
 
@@ -88,7 +86,6 @@ BSQL_PROTECT_DATUM(/datum/entity/clan)
 		"player_id",
 		"clan_rank",
 		"permissions",
-		"honor",
 		"clan_player_id" = "id",
 		"clan_name" = "clan.name",
 		"ckey" = "player.ckey",

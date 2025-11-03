@@ -40,7 +40,6 @@
 	mob_size = MOB_SIZE_SMALL
 	death_fontsize = 2
 	life_value = 0
-	default_honor_value = 0
 	show_only_numbers = TRUE
 	counts_for_slots = FALSE
 	counts_for_roundend = FALSE

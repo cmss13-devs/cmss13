@@ -449,6 +449,8 @@ SUBSYSTEM_DEF(yautja_panel)
 		yautja["clan_id"] = (CP.clan_id)
 
 		var/datum/entity/player/player = get_player_from_key(CP.ckey)
+		if(!player)
+			continue
 		if(player.check_whitelist_status(WHITELIST_PREDATOR))
 			yautja["active_whitelist"] = TRUE
 		else

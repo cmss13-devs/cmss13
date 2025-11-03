@@ -62,7 +62,6 @@
 			clan_keys = list(),\
 			\
 			player_delete_clan = FALSE,\
-			player_sethonor_clan = FALSE,\
 			player_rename_clan = FALSE,\
 			player_setdesc_clan = FALSE,\
 			player_modify_ranks = FALSE,\

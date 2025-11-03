@@ -304,7 +304,7 @@
 		var/mob/dead/observer/cur_obs = candidates[i]
 
 		// Generate the messages
-		var/cached_message = "Вы сейчас [i-dequeued]-ый в очереди на грудолома." // SS220 EDIT ADDICTION
+		var/cached_message = "Вы сейчас [i-dequeued]-й в очереди на грудолома." // SS220 EDIT ADDICTION
 		cur_obs.larva_pool_cached_message = cached_message
 		if(!cache_only)
 			var/chat_message = dequeued ? replacetext(cached_message, "сейчас", "теперь") : cached_message // SS220 EDIT ADDICTION

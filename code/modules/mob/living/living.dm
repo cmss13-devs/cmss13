@@ -357,7 +357,7 @@
 		now_pushing = FALSE
 		return
 
- 	// Small xenos can be pushed by other xenos or preds
+	// Small xenos can be pushed by other xenos or preds
 	if(isxeno(living_mob) && !islarva(living_mob))
 		var/mob/living/carbon/xenomorph/xenomorph = living_mob
 		if(xenomorph.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isyautja(src)))

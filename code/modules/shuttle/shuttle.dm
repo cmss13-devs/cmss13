@@ -29,8 +29,8 @@
 	var/width = 0
 	///size of covered area, parallel to dir
 	var/height = 0
-	///how tall should the shuttle is
-	var/levels = 0
+	///how tall should the shuttle be I quess
+	var/levels = 1
 	///position relative to covered area, perpendicular to dir
 	var/dwidth = 0
 	///position relative to covered area, parallel to dir
@@ -146,7 +146,7 @@
 			sin = -1
 
 	. = list()
-	for(var/dz in 0 to levels-1)
+	for(var/dz in 0 to levels)
 		for(var/dx in 0 to width-1)
 			var/compX = dx-dwidth
 			for(var/dy in 0 to height-1)

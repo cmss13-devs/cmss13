@@ -34,7 +34,7 @@
 	var/datum/parsed_map/parsed = new(file(path))
 	var/bounds = parsed?.bounds
 	if(bounds)
-		width = bounds[MAP_MAXX] // Assumes all templates are rectangular, have a single Z level, and begin at 1,1,1
+		width = bounds[MAP_MAXX] // Assumes all templates are rectangular, have a single Z level, and begin at 1,1,1 not anymore they, do have more z levels
 		height = bounds[MAP_MAXY]
 		levels = bounds[MAP_MAXZ]
 		if(cache)

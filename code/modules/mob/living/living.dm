@@ -357,9 +357,10 @@
 		now_pushing = FALSE
 		return
 
+ 	// Small xenos can be pushed by other xenos or preds
 	if(isxeno(living_mob) && !islarva(living_mob))
 		var/mob/living/carbon/xenomorph/xenomorph = living_mob
-		if(xenomorph.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isyautja(src))) // Small xenos can be pushed by other xenos or preds
+		if(xenomorph.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isyautja(src)))
 			now_pushing = FALSE
 			return
 
@@ -379,11 +380,14 @@
 
 	if(!living_mob.buckled && !living_mob.anchored)
 		var/mob_swap
-		//the puller can always swap with its victim if on grab intent
+		// the puller can always swap with its victim if on grab intent
 		if(living_mob.pulledby == src && a_intent == INTENT_GRAB)
 			mob_swap = 1
-		//restrained people act if they were on 'help' intent to prevent a person being pulled from being separated from their puller
+		// restrained people act if they were on 'help' intent to prevent a person being pulled from being separated from their puller
 		else if((living_mob.is_mob_restrained() || living_mob.a_intent == INTENT_HELP) && (is_mob_restrained() || a_intent == INTENT_HELP))
+			mob_swap = 1
+		// Large mobs (ex.: T3 xeno) can ignore pushes from normal creatures using the help intent
+		else if(a_intent == INTENT_HELP && mob_size >= MOB_SIZE_BIG && living_mob.mob_size <= MOB_SIZE_XENO)
 			mob_swap = 1
 		if(mob_swap)
 			//switch our position with L

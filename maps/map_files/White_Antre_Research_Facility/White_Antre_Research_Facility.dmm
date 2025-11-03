@@ -11946,11 +11946,6 @@
 	},
 /turf/closed/wall/hybrisa/research/reinforced,
 /area/white_antre/indoors/main_level/north_containment)
-"aBk" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/reagent_dispensers/tank/oxygentank,
-/turf/open/floor/shiva/radiator_tile2,
-/area/white_antre/indoors/main_level/north_containment)
 "aBl" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/showcase{
@@ -24526,6 +24521,14 @@
 	},
 /turf/open/antre/plating/direction_north/west_edge,
 /area/white_antre/indoors/upper_level/central_corridor)
+"biB" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison/red/west,
+/area/white_antre/landing_zone)
 "biC" = (
 /obj/structure/machinery/power/apc/power/west{
 	start_charge = 20
@@ -99756,7 +99759,7 @@ bXB
 bXz
 bAf
 bXs
-bWZ
+biB
 bWZ
 aYK
 aYK
@@ -123238,7 +123241,7 @@ euM
 ozb
 aOP
 bZr
-aBk
+aAR
 aBf
 aAX
 byk

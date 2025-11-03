@@ -83,12 +83,6 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
-"ai" = (
-/obj/structure/bed/bedroll{
-	color = "#6b675e"
-	},
-/turf/closed/wall/huntership,
-/area/yautja/lower_deck)
 "aj" = (
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 1
@@ -181,6 +175,18 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/predship/hull/non_weedable_hull/southwest,
 /area/yautja)
+"aq" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/item/reagent_container/food/snacks/meat{
+	pixel_y = -10;
+	pixel_x = -10
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/prop/hunter/hellhound,
+/turf/open/floor/corsat,
+/area/yautja/lower_deck)
 "ar" = (
 /obj/structure/platform_decoration/metal/hunter,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -199,6 +205,17 @@
 	},
 /turf/open/floor/corsat,
 /area/yautja)
+"at" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/structure/prop/hunter/hellhound,
+/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/area/yautja/lower_deck)
 "au" = (
 /obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -230,6 +247,17 @@
 	},
 /turf/open/floor/predship/hull,
 /area/yautja)
+"ax" = (
+/obj/effect/hunter/bridge_border/brown{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 3.2;
+	color = "#bccab4"
+	},
+/obj/structure/prop/hunter/hellhound,
+/turf/open/floor/corsat,
+/area/yautja/lower_deck)
 "ay" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
 /obj/structure/prop/hunter/fake_platform/hunter/east,
@@ -1621,9 +1649,11 @@
 	color = "#bccab4"
 	},
 /obj/item/reagent_container/food/snacks/meat{
-	pixel_y = 5
+	pixel_y = -10;
+	pixel_x = -10
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/structure/prop/hunter/hellhound,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja/lower_deck)
 "fl" = (
@@ -2304,11 +2334,18 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
-/obj/item/explosive/grenade/spawnergrenade/hellhound,
+/obj/item/weapon/yautja/chain{
+	name = "Houndmaster's Discipline Whip";
+	pixel_x = 3
+	},
+/obj/item/weapon/yautja/chain{
+	name = "Houndmaster's Discipline Whip";
+	pixel_x = 5
+	},
+/obj/item/device/flashlight/lantern/yautja{
+	pixel_x = -7;
+	pixel_y = 4
+	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja/lower_deck)
 "hA" = (
@@ -3499,16 +3536,6 @@
 	},
 /turf/open/shuttle/bright_red/glow,
 /area/yautja)
-"lH" = (
-/obj/effect/hunter/bridge_border/brown/corner{
-	dir = 4
-	},
-/obj/item/reagent_container/food/snacks/meat{
-	pixel_y = 5
-	},
-/obj/effect/decal/cleanable/blood,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
-/area/yautja/lower_deck)
 "lJ" = (
 /obj/effect/hunter/bridge_border/brown{
 	dir = 4;
@@ -4216,7 +4243,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja/lower_deck)
 "of" = (
-/obj/structure/reagent_dispensers/fueltank/yautja,
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "oj" = (
@@ -5970,7 +5997,7 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_2/west,
 /area/yautja)
 "up" = (
-/obj/structure/reagent_dispensers/fueltank/yautja,
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja/hangar)
 "uv" = (
@@ -8345,27 +8372,13 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/yautja/chain{
-	name = "Houndmaster's Discipline Whip";
-	pixel_y = 14
-	},
-/obj/item/weapon/chainofcommand{
-	name = "Houndmaster's Discipline Whip";
-	desc = "A segmented, lightweight whip used to discipline unruly hounds. Designed for control, not combat.";
-	pixel_x = -1;
-	pixel_y = 13
-	},
-/obj/item/device/flashlight/lantern/yautja{
-	pixel_x = -7;
-	pixel_y = 4
-	},
-/obj/item/device/houndcam{
-	pixel_x = 10
-	},
 /obj/item/device/houndcam{
 	pixel_x = 5
 	},
 /obj/item/device/houndcam,
+/obj/item/device/houndcam{
+	pixel_x = -5
+	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja/lower_deck)
 "Ck" = (
@@ -9676,7 +9689,7 @@
 /obj/structure/window/reinforced/toughened{
 	color = "#912727"
 	},
-/obj/structure/reagent_dispensers/fueltank/yautja,
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
 /obj/effect/hunter/rune/stripes_arrow,
 /turf/open/floor/corsat,
 /area/yautja)
@@ -10889,10 +10902,9 @@
 /turf/open/floor/corsat/squares,
 /area/yautja/hangar)
 "Li" = (
-/obj/structure/machinery/door/airlock/yautja/secure/elder{
-	name = "\improper Houndmasters Quarters";
-	dir = 1;
-	req_one_access = list(391,392,393)
+/obj/structure/machinery/door/airlock/yautja/secure{
+	dir = 2;
+	name = "\improper Houndmasters Quarters"
 	},
 /turf/open/shuttle/dropship/predship/tile/red,
 /area/yautja/lower_deck)
@@ -11005,6 +11017,7 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
 	},
+/obj/structure/prop/hunter/hellhound,
 /turf/open/floor/corsat,
 /area/yautja/lower_deck)
 "LN" = (
@@ -11300,7 +11313,7 @@
 /turf/open/floor/predship/hull/non_weedable_hull/southwest,
 /area/yautja/hangar)
 "MM" = (
-/obj/structure/reagent_dispensers/watertank/yautja{
+/obj/structure/reagent_dispensers/tank/water/yautja{
 	pixel_x = 1
 	},
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
@@ -13863,6 +13876,7 @@
 	pixel_x = -6;
 	pixel_y = 6
 	},
+/obj/structure/prop/hunter/hellhound,
 /turf/open/floor/corsat,
 /area/yautja/lower_deck)
 "Vp" = (
@@ -14430,7 +14444,7 @@
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "WW" = (
-/obj/structure/reagent_dispensers/fueltank/yautja,
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja/hangar)
 "WX" = (
@@ -14686,7 +14700,7 @@
 /turf/open/floor/predship/hull,
 /area/yautja)
 "XO" = (
-/obj/structure/reagent_dispensers/watertank/yautja,
+/obj/structure/reagent_dispensers/tank/water/yautja,
 /turf/open/floor/corsat/box,
 /area/yautja)
 "XQ" = (
@@ -14851,7 +14865,7 @@
 /obj/item/weapon/gun/energy/yautja/plasmarifle{
 	pixel_y = 8
 	},
-/obj/structure/reagent_dispensers/fueltank/yautja,
+/obj/structure/reagent_dispensers/tank/fuel/yautja,
 /turf/open/shuttle/dropship/predship/tile/red4/glow,
 /area/yautja)
 "Yz" = (
@@ -27144,7 +27158,7 @@ hk
 iz
 LN
 mU
-ai
+rP
 nK
 QX
 yg
@@ -27468,7 +27482,7 @@ uP
 kR
 tO
 yf
-if
+at
 ZX
 rP
 dI
@@ -27670,7 +27684,7 @@ rP
 uP
 uP
 eL
-tO
+ax
 yf
 if
 ZX
@@ -27775,7 +27789,7 @@ AS
 zI
 Jl
 he
-ZX
+aq
 rP
 dI
 "}
@@ -27876,7 +27890,7 @@ uP
 zy
 mi
 nL
-lH
+Ss
 PO
 rP
 dI

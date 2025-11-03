@@ -160,6 +160,10 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
+/obj/item/clothing/under/hybrisa/kelland_mining/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
+
 // Weymart
 
 /obj/item/clothing/under/hybrisa/weymart
@@ -496,6 +500,10 @@
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 
+/obj/item/clothing/head/helmet/hybrisa/kelland_mining_helmet/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
+
 // Pizza-Galaxy (Rare Helmet)
 
 /obj/item/clothing/head/helmet/hybrisa/pizza_galaxy
@@ -530,6 +538,10 @@
 	icon_state = "sci_expedition_helmet"
 	item_state = "sci_expedition_helmet"
 
+/obj/item/clothing/head/bio_hood/wy_bio/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/head/bio_hood/wy_bio/alt
 	name = "WY-TSS MK I - bio hood"
 	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants."
@@ -547,6 +559,10 @@
 	item_state = "sci_expedition"
 	slowdown = 0
 	uniform_restricted = null
+
+/obj/item/clothing/suit/bio_suit/wy_bio/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 // Synth Bio
 
@@ -568,7 +584,7 @@
 
 /obj/item/clothing/suit/storage/synthbio/wy_bio
 	name = "WY-TSS MK I - bio suit"
-	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. A Synthetic compliant bio-hazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
+	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. A Synthetic compliant biohazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -757,6 +773,10 @@
 		/obj/item/storage/belt/gun/xm51,
 	)
 
+/obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
+
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt
 	name = "\improper Kelland-Mining utility uniform"
 	desc = "A set of standard issue Kelland-Mining utility fatigues, a yellow pair of utility work slacks and a black collard heavy padded jacket, which protects against various environmental hazards."
@@ -797,6 +817,10 @@
 		/obj/item/storage/belt/gun/m39,
 		/obj/item/storage/belt/gun/xm51,
 	)
+
+/obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
 
 // EMT - Paramedic
 

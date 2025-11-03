@@ -22,6 +22,9 @@
 /// Called from /mob/Login() after a client logs into a mob: (mob)
 #define COMSIG_CLIENT_MOB_LOGGED_IN "client_mob_logged_in"
 
+/// Called when escape menu is opened CLIENT_VERB(open_escape_menu)
+#define COMSIG_CLIENT_ESCAPE_MENU_OPEN "client_escape_menu_opened"
+
 /// Called when something is added to a client's screen : /client/proc/add_to_screen(screen_add)
 #define COMSIG_CLIENT_SCREEN_ADD "client_screen_add"
 

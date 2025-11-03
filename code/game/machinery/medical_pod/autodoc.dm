@@ -925,7 +925,7 @@
 		RESEARCH_UPGRADE_TIER_2,
 		RESEARCH_UPGRADE_TIER_3,
 		RESEARCH_UPGRADE_TIER_4,
-		)
+	)
 
 /obj/structure/machinery/medical_pod/autodoc/unskilled
 	name = "advanced autodoc emergency medical system"

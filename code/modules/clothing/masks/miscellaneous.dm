@@ -10,7 +10,7 @@
 
 /obj/item/clothing/mask/surgical
 	name = "sterile mask"
-	desc = "A sterile mask designed to help prevent the spread of diseases and to offer general biological protection."
+	desc = "A sterile mask designed to help prevent the spread of diseases and to offer a pretty small biological protection."
 	icon_state = "sterile"
 	item_state = "sterile"
 	w_class = SIZE_SMALL
@@ -22,7 +22,7 @@
 	armor_laser = CLOTHING_ARMOR_NONE
 	armor_energy = CLOTHING_ARMOR_NONE
 	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_VERYLOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 

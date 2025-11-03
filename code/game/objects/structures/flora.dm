@@ -806,3 +806,72 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
+
+/*
+
+	Canyon Bushes
+
+*/
+
+/obj/structure/flora/bush/canyon
+	name = "bush"
+	icon = 'icons/obj/structures/props/natural/vegetation/canyon_flora.dmi'
+	desc = "A small, leafy bush."
+	icon_state = "green_small_bush"
+	cut_level = PLANT_CUT_KNIFE
+	layer = ABOVE_XENO_LAYER
+
+/obj/structure/flora/bush/canyon/bush
+	icon_state = "green_small_bush"
+
+/obj/structure/flora/bush/canyon/bush/alt1
+	icon_state = "orange_small_bush"
+
+/obj/structure/flora/bush/canyon/bush/alt2
+	icon_state = "yellow_small_bush"
+
+/obj/structure/flora/bush/canyon/tree
+	name = "small tree"
+	desc = "A small, leafy tree."
+	icon_state = "green_small_tree"
+
+/obj/structure/flora/bush/canyon/tree/alt1
+	icon_state = "orange_small_tree"
+
+/obj/structure/flora/bush/canyon/tree/alt2
+	icon_state = "yellow_small_tree"
+
+/obj/structure/flora/bush/canyon/grass_green
+	name = "grass"
+	desc = "A small patch of grass."
+	icon_state = "green_grass_1"
+
+/obj/structure/flora/bush/canyon/grass_green/alt1
+	icon_state = "green_grass_2"
+
+/obj/structure/flora/bush/canyon/grass_green/alt2
+	icon_state = "green_grass_3"
+
+/obj/structure/flora/bush/canyon/grass_orange
+	name = "grass"
+	desc = "A small patch of grass."
+	icon_state = "orange_grass_1"
+
+/obj/structure/flora/bush/canyon/grass_orange/alt1
+	icon_state = "orange_grass_2"
+
+/obj/structure/flora/bush/canyon/grass_orange/alt2
+	icon_state = "orange_grass_3"
+
+/obj/structure/flora/bush/canyon/grass_yellow
+	name = "grass"
+	desc = "A small patch of grass."
+	icon_state = "yellow_grass_1"
+
+/obj/structure/flora/bush/canyon/grass_yellow/alt1
+	icon_state = "yellow_grass_2"
+
+/obj/structure/flora/bush/canyon/grass_yellow/alt2
+	icon_state = "yellow_grass_3"
+
+

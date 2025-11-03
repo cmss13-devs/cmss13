@@ -404,6 +404,7 @@
 /area/caperiver/outdoors/scrublands/south)
 "KD" = (
 /obj/effect/decal/sand_overlay/sand1,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/caperiver/outdoors/scrublands/south/antiweed)
 "La" = (
@@ -512,7 +513,6 @@
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/south)
 "Ug" = (
-/obj/structure/reagent_dispensers/fueltank,
 /obj/structure/sign/poster/corporate{
 	pixel_y = 32
 	},

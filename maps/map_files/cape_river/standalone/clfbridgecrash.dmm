@@ -88,10 +88,6 @@
 "bI" = (
 /turf/open/auto_turf/sand/layer2,
 /area/caperiver/outdoors/scrublands/central)
-"bJ" = (
-/obj/structure/machinery/floodlight,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/central)
 "bO" = (
 /obj/structure/machinery/power/power_generator/port_gen,
 /turf/open/desert/rock,
@@ -115,11 +111,14 @@
 /area/caperiver/indoors/clf_dropship)
 "cB" = (
 /obj/structure/platform/metal/strata/west,
+/obj/structure/prop/invuln/dense/cliff_wall/short{
+	layer = 4.10
+	},
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/gm/river/desert/deep,
+/turf/open/auto_turf/sand/layer0,
 /area/caperiver/outdoors/chasm)
 "cI" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -168,15 +167,9 @@
 /obj/item/trash/cigbutt,
 /turf/open/desert/rock/deep/transition/east,
 /area/caperiver/outdoors/scrublands/central)
-"dr" = (
-/turf/open/desert/desert_shore/shore_corner2/east,
-/area/caperiver/outdoors/scrublands/central)
 "dt" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/desert/rock/deep,
-/area/caperiver/outdoors/scrublands/central)
-"dx" = (
-/turf/open/floor/prison/cell_stripe/east,
 /area/caperiver/outdoors/scrublands/central)
 "dF" = (
 /obj/structure/machinery/light/dropship/red{
@@ -197,7 +190,7 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 1
 	},
-/turf/open/floor/prison/cell_stripe/west,
+/turf/open/floor/prison/cell_stripe,
 /area/caperiver/outdoors/scrublands/central)
 "ee" = (
 /obj/effect/spawner/gibspawner/xeno,
@@ -299,9 +292,10 @@
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/scrublands/central)
 "fo" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
-	icon_state = "97"
+/obj/structure/prop/invuln/dense/cliff_wall/short{
+	layer = 4.10
 	},
+/turf/closed/wall/strata_ice/rock,
 /area/caperiver/indoors/clf_dropship)
 "fC" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -396,14 +390,6 @@
 	icon_state = "103"
 	},
 /area/caperiver/indoors/clf_dropship)
-"ha" = (
-/obj/structure/machinery/light/spot/blue,
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "101"
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/desert/deep,
-/area/caperiver/indoors/clf_dropship)
 "hb" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -434,11 +420,6 @@
 /obj/item/trash/cigbutt,
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/caperiver/outdoors/scrublands/central)
-"hG" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
-	icon_state = "98"
-	},
-/area/caperiver/indoors/clf_dropship)
 "hM" = (
 /turf/closed/wall/strata_ice/rock,
 /area/caperiver/oob)
@@ -512,9 +493,6 @@
 	},
 /turf/open/floor/corsat/officetiles,
 /area/caperiver/indoors/clf_dropship)
-"jj" = (
-/turf/open/desert/desert_shore/shore_corner2,
-/area/caperiver/outdoors/scrublands/central)
 "jz" = (
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/caperiver/outdoors/scrublands/central)
@@ -643,7 +621,7 @@
 	alpha = 0
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/gm/river/desert/shallow_edge,
+/turf/open/auto_turf/sand/layer0,
 /area/caperiver/outdoors/chasm)
 "lr" = (
 /obj/item/stack/sheet/metal,
@@ -667,11 +645,7 @@
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/caperiver/outdoors/scrublands/central)
 "lW" = (
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/gm/river/desert/shallow_edge,
+/turf/closed/wall/strata_ice/rock,
 /area/caperiver/outdoors/chasm)
 "mn" = (
 /obj/structure/barricade/sandbags/wired{
@@ -679,12 +653,6 @@
 	},
 /obj/structure/barricade/sandbags/wired,
 /turf/open/desert/dirt/desert_transition_edge1/west,
-/area/caperiver/outdoors/scrublands/central)
-"mp" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 1
-	},
-/turf/open/floor/prison/cell_stripe/east,
 /area/caperiver/outdoors/scrublands/central)
 "mq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -738,7 +706,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/caperiver/outdoors/scrublands/central)
 "nw" = (
-/turf/open/floor/prison/cell_stripe/west,
+/turf/open/floor/prison/rampbottom,
 /area/caperiver/outdoors/scrublands/north)
 "nz" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_S,
@@ -1056,13 +1024,6 @@
 /obj/item/tool/shovel/etool,
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/scrublands/central)
-"sI" = (
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/gm/river/desert/shallow,
-/area/caperiver/outdoors/chasm)
 "sK" = (
 /turf/closed/shuttle/dropship5/CLF/Fire{
 	icon_state = "wy_rightengine"
@@ -1117,20 +1078,6 @@
 "tE" = (
 /turf/open/desert/dirt/desert_transition_edge1/north,
 /area/caperiver/outdoors/scrublands/central)
-"tK" = (
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "102"
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/desert/deep,
-/area/caperiver/indoors/clf_dropship)
-"tM" = (
-/obj/structure/shuttle/part/dropship_clf{
-	icon_state = "95"
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/desert/deep,
-/area/caperiver/indoors/clf_dropship)
 "tP" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 1;
@@ -1185,16 +1132,13 @@
 /area/caperiver/outdoors/scrublands/central)
 "uY" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/desert/desert_shore/shore_edge1/west,
-/area/caperiver/outdoors/scrublands/central)
+/turf/template_noop,
+/area/template_noop)
 "vm" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/scrublands/central)
-"vo" = (
-/turf/open/floor/prison,
-/area/caperiver/outdoors/scrublands/north)
 "vs" = (
 /obj/item/reagent_container/food/snacks/meat,
 /obj/item/reagent_container/food/snacks/meat{
@@ -1271,9 +1215,6 @@
 	icon_state = "brokendropshipconsole1"
 	},
 /area/caperiver/indoors/clf_dropship)
-"wf" = (
-/turf/open/gm/river/desert/shallow_edge/north,
-/area/caperiver/outdoors/chasm)
 "wh" = (
 /obj/effect/decal/sand_overlay/sand2,
 /turf/open/floor/asteroidwarning,
@@ -1291,13 +1232,6 @@
 /turf/closed/shuttle/dropship5/CLF/Fire/transparent{
 	icon_state = "110"
 	},
-/area/caperiver/indoors/clf_dropship)
-"wL" = (
-/obj/structure/shuttle/part/dropship_clf{
-	icon_state = "99"
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/desert/deep,
 /area/caperiver/indoors/clf_dropship)
 "wM" = (
 /obj/item/stack/sandbags_empty/half,
@@ -1331,13 +1265,6 @@
 /obj/structure/flora/grass/desert/heavygrass_3,
 /turf/open/desert/dirt/desert_transition_edge1/southeast,
 /area/caperiver/outdoors/scrublands/central)
-"xm" = (
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/gm/river/desert/shallow_edge/north,
-/area/caperiver/outdoors/chasm)
 "xs" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt/desert_transition_edge1/west,
@@ -1398,15 +1325,19 @@
 "yP" = (
 /turf/open/desert/rock/deep/transition/northeast,
 /area/caperiver/outdoors/scrublands/central)
-"yU" = (
-/turf/open/floor/prison,
-/area/caperiver/outdoors/scrublands/central)
 "zb" = (
-/turf/open/desert/desert_shore/desert_shore1,
-/area/caperiver/outdoors/scrublands/central)
+/obj/structure/prop/invuln/dense/cliff_wall/left_short{
+	pixel_y = 8
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/chasm)
 "ze" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/prison/cell_stripe/west,
+/turf/open/floor/prison/rampbottom,
 /area/caperiver/outdoors/scrublands/north)
 "zg" = (
 /obj/structure/flora/grass/desert/lightgrass_7,
@@ -1433,13 +1364,6 @@
 	icon_state = "78"
 	},
 /area/caperiver/indoors/clf_dropship)
-"zp" = (
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/gm/river/desert/shallow_corner,
-/area/caperiver/outdoors/chasm)
 "zr" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_N{
 	pixel_y = 1
@@ -1483,15 +1407,15 @@
 /area/caperiver/outdoors/scrublands/central)
 "Ap" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/prison/cell_stripe/west,
+/turf/open/floor/prison/rampbottom,
 /area/caperiver/outdoors/scrublands/central)
 "Aw" = (
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/desert/desert_shore/shore_corner2,
-/area/caperiver/outdoors/chasm)
+/turf/template_noop,
+/area/template_noop)
 "AB" = (
 /obj/item/trash/cigbutt,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -1607,11 +1531,6 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/central)
-"BJ" = (
-/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
-	icon_state = "96"
-	},
-/area/caperiver/indoors/clf_dropship)
 "BU" = (
 /obj/structure/flora/grass/desert/lightgrass_1,
 /obj/item/stack/rods{
@@ -1772,9 +1691,6 @@
 	},
 /turf/open/desert/rock/deep,
 /area/caperiver/indoors/clf_dropship)
-"FG" = (
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/caperiver/outdoors/scrublands/north)
 "FJ" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -1881,11 +1797,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/caperiver/outdoors/scrublands/central)
 "Hh" = (
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/gm/river/desert/shallow_edge/northeast,
+/turf/template_noop,
 /area/caperiver/outdoors/chasm)
 "Hm" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1905,10 +1817,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/west,
 /area/caperiver/outdoors/scrublands/central)
-"HG" = (
-/obj/structure/platform/metal/strata/east,
-/turf/open/desert/desert_shore/desert_shore1,
-/area/caperiver/outdoors/scrublands/central)
 "HH" = (
 /turf/closed/shuttle/dropship5/CLF/Fire{
 	icon_state = "24"
@@ -1927,7 +1835,7 @@
 /area/caperiver/outdoors/scrublands/central)
 "HT" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/open/floor/prison/rampbottom,
 /area/caperiver/outdoors/scrublands/north)
 "Ic" = (
 /obj/effect/decal/sand_overlay/sand1{
@@ -1995,19 +1903,12 @@
 	icon_state = "36_alt"
 	},
 /area/caperiver/indoors/clf_dropship)
-"Kb" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/caperiver/outdoors/scrublands/central)
 "Kk" = (
 /obj/structure/shuttle/part/dropship_clf/transparent{
 	icon_state = "5"
 	},
 /turf/open/desert/rock/deep,
 /area/caperiver/indoors/clf_dropship)
-"Kz" = (
-/turf/open/floor/prison/cell_stripe/east,
-/area/caperiver/outdoors/scrublands/north)
 "KA" = (
 /obj/structure/flora/grass/desert/heavygrass_9,
 /turf/open/desert/dirt/desert_transition_edge1/west,
@@ -2054,9 +1955,6 @@
 "Lf" = (
 /obj/structure/flora/grass/desert/lightgrass_8,
 /turf/open/desert/rock,
-/area/caperiver/outdoors/scrublands/central)
-"Lp" = (
-/turf/open/desert/desert_shore/shore_edge1,
 /area/caperiver/outdoors/scrublands/central)
 "LB" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -2126,9 +2024,6 @@
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/caperiver/indoors/clf_dropship)
-"Mi" = (
-/turf/open/floor/prison/cell_stripe/west,
-/area/caperiver/outdoors/scrublands/central)
 "Mj" = (
 /turf/template_noop,
 /area/template_noop)
@@ -2321,12 +2216,6 @@
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/central)
-"PD" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 1
-	},
-/turf/open/floor/prison,
-/area/caperiver/outdoors/scrublands/central)
 "PL" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 9
@@ -2366,7 +2255,7 @@
 /area/caperiver/indoors/clf_dropship)
 "Qp" = (
 /obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/prison,
+/turf/open/floor/prison/rampbottom,
 /area/caperiver/outdoors/scrublands/central)
 "Qq" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -2380,15 +2269,8 @@
 	},
 /area/caperiver/indoors/clf_dropship)
 "QG" = (
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "100"
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/gm/river/desert/deep,
+/turf/closed/wall/strata_ice/rock,
 /area/caperiver/indoors/clf_dropship)
-"QI" = (
-/turf/open/auto_turf/sand/layer0,
-/area/caperiver/outdoors/scrublands/central)
 "QR" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_W,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
@@ -2462,7 +2344,7 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
 /area/caperiver/indoors/clf_dropship)
 "SI" = (
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/open/floor/prison/rampbottom,
 /area/caperiver/outdoors/scrublands/central)
 "SO" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -2590,9 +2472,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/ramptop,
 /area/caperiver/indoors/clf_dropship)
-"VR" = (
-/turf/open/gm/river/desert/shallow_corner,
-/area/caperiver/outdoors/chasm)
 "VV" = (
 /turf/closed/shuttle/dropship5/CLF/Fire{
 	icon_state = "37_alt"
@@ -2731,7 +2610,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/caperiver/outdoors/scrublands/central)
 "Yj" = (
-/turf/open/gm/river/desert/deep,
+/turf/open/desert/rock/deep,
 /area/caperiver/outdoors/chasm)
 "Yk" = (
 /obj/item/weapon/gun/rifle/mar40{
@@ -2934,7 +2813,7 @@ Mj
 Mj
 Mj
 Mj
-zb
+Mj
 pZ
 wQ
 Hm
@@ -2967,7 +2846,7 @@ Mj
 Mj
 Mj
 Aw
-Lp
+Mj
 jz
 Hg
 Ov
@@ -2998,8 +2877,8 @@ Mj
 Mj
 Mj
 Mj
-sI
-zb
+Aw
+Mj
 Nr
 lP
 mn
@@ -3030,8 +2909,8 @@ Mj
 Mj
 Mj
 Mj
-sI
-zb
+Aw
+Mj
 gf
 kJ
 rD
@@ -3062,7 +2941,7 @@ Mj
 Mj
 Mj
 Mj
-dr
+Mj
 uY
 iz
 GY
@@ -3094,8 +2973,8 @@ Mj
 Mj
 Mj
 Mj
-HG
-bJ
+Mj
+tk
 Ig
 vE
 bO
@@ -3123,8 +3002,8 @@ Mj
 nw
 ze
 nw
-Mi
-Mi
+SI
+SI
 Ap
 dM
 to
@@ -3152,13 +3031,13 @@ lv
 "}
 (12,1,1) = {"
 Mj
-FG
-FG
-vo
-yU
+nw
+nw
+nw
 SI
 SI
-PD
+SI
+dM
 to
 XQ
 HE
@@ -3184,13 +3063,13 @@ qh
 "}
 (13,1,1) = {"
 Mj
-FG
+nw
 HT
-vo
+nw
 Qp
 SI
 SI
-PD
+dM
 GO
 Wv
 hy
@@ -3216,13 +3095,13 @@ bI
 "}
 (14,1,1) = {"
 Mj
-FG
-FG
-vo
-yU
-Kb
+nw
+nw
+nw
 SI
-PD
+Ap
+SI
+dM
 to
 Rh
 JF
@@ -3248,13 +3127,13 @@ qh
 "}
 (15,1,1) = {"
 Mj
-Kz
-Kz
-Kz
-dx
-dx
-dx
-mp
+nw
+nw
+nw
+SI
+SI
+SI
+dM
 to
 NX
 Iy
@@ -3280,11 +3159,11 @@ ee
 "}
 (16,1,1) = {"
 Mj
-Mj
+lq
+lq
 cB
-cB
-cB
-cB
+lq
+lq
 lq
 zb
 tk
@@ -3312,10 +3191,10 @@ DJ
 "}
 (17,1,1) = {"
 Mj
-Mj
 Yj
 Yj
-Yj
+lW
+lW
 QG
 KR
 qA
@@ -3344,11 +3223,11 @@ Cs
 "}
 (18,1,1) = {"
 Mj
-Mj
 Yj
 Yj
-Yj
-ha
+lW
+lW
+QG
 zn
 qI
 QR
@@ -3376,9 +3255,9 @@ tk
 "}
 (19,1,1) = {"
 Mj
-Mj
-zp
-tM
+Yj
+lW
+QG
 hQ
 Dy
 zn
@@ -3408,9 +3287,9 @@ hM
 "}
 (20,1,1) = {"
 Mj
-Mj
-xm
-BJ
+Yj
+lW
+QG
 wc
 OZ
 zn
@@ -3440,9 +3319,9 @@ tk
 "}
 (21,1,1) = {"
 Mj
-Mj
-xm
-fo
+Yj
+lW
+QG
 Zh
 Po
 Ie
@@ -3472,8 +3351,8 @@ Rd
 "}
 (22,1,1) = {"
 Mj
-Mj
-xm
+Yj
+lW
 fo
 Zh
 kM
@@ -3504,9 +3383,9 @@ tk
 "}
 (23,1,1) = {"
 Mj
-Mj
-xm
-hG
+Yj
+lW
+QG
 gY
 SF
 zn
@@ -3536,9 +3415,9 @@ tV
 "}
 (24,1,1) = {"
 Mj
-Mj
-xm
-wL
+Yj
+lW
+QG
 Cx
 TA
 zn
@@ -3568,11 +3447,11 @@ tk
 "}
 (25,1,1) = {"
 Mj
-Mj
-xm
 Yj
 Yj
-ha
+lW
+lW
+QG
 zn
 gN
 aL
@@ -3600,11 +3479,11 @@ ky
 "}
 (26,1,1) = {"
 Mj
-Mj
-xm
 Yj
 Yj
-tK
+lW
+lW
+QG
 ne
 qt
 qt
@@ -3632,11 +3511,11 @@ tk
 "}
 (27,1,1) = {"
 Mj
-Mj
 Hh
-VR
-Yj
-Yj
+Hh
+lW
+lW
+lW
 lW
 hM
 hM
@@ -3666,11 +3545,11 @@ hM
 Mj
 Mj
 Mj
-wf
-Yj
-Yj
-lW
-zb
+Mj
+Mj
+Mj
+Aw
+Mj
 hM
 ZH
 nN
@@ -3698,11 +3577,11 @@ Mj
 Mj
 Mj
 Mj
-wf
-Yj
-Yj
-lW
-zb
+Mj
+Mj
+Mj
+Aw
+Mj
 jQ
 Wd
 jA
@@ -3730,11 +3609,11 @@ Mj
 Mj
 Mj
 Mj
-wf
-Yj
-Yj
-lW
-zb
+Mj
+Mj
+Mj
+Aw
+Mj
 Ei
 tk
 rU
@@ -3762,11 +3641,11 @@ Mj
 Mj
 Mj
 Mj
-wf
-Yj
-Yj
-lW
-zb
+Mj
+Mj
+Mj
+Aw
+Mj
 mQ
 tk
 tk
@@ -3794,12 +3673,12 @@ Mj
 Mj
 Mj
 Mj
-wf
-Yj
-Yj
-lW
-zb
-QI
+Mj
+Mj
+Mj
+Aw
+Mj
+Mj
 tk
 tV
 tk
@@ -3826,12 +3705,12 @@ Mj
 Mj
 Mj
 Mj
-wf
-Yj
-Yj
-lW
-jj
-Lp
+Mj
+Mj
+Mj
+Aw
+Mj
+Mj
 tk
 tk
 Up

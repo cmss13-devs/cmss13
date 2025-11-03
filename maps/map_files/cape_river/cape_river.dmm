@@ -1928,7 +1928,7 @@
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/caperiver/outdoors/scrublands/south)
 "agk" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/colors/orange,
 /area/caperiver/telecomms/telecomm_1)
@@ -5834,7 +5834,7 @@
 "atd" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/lattice,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/engine,
 /area/caperiver/indoors/conambase/support)
 "ate" = (
@@ -11495,7 +11495,7 @@
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north_east)
 "aKY" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
@@ -32734,7 +32734,7 @@
 /turf/open/desert/rock/deep/rock3,
 /area/caperiver/outdoors/scrublands/north_west)
 "ipr" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/plating/prison,
 /area/caperiver/indoors/conambase/recreational)
@@ -35160,7 +35160,7 @@
 /area/caperiver/telecomms/telecomm_3)
 "kuA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/caperiver/indoors/miningbase/engi)
@@ -38561,7 +38561,7 @@
 	light_color = "#BB3F3F";
 	color = "#BB3F3F"
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/engine,
 /area/caperiver/indoors/conambase/delivery)
 "nIf" = (
@@ -40671,7 +40671,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/caperiver/outdoors/bushlands)
 "pKA" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	dir = 4;
 	pixel_y = 6
@@ -41229,7 +41229,7 @@
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/caperiver/outdoors/scrublands/central)
 "qpC" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/poster/safety{
 	pixel_x = -4;
@@ -42321,7 +42321,7 @@
 "riE" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/lattice,
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/engine,
 /area/caperiver/indoors/conambase/support)
 "riH" = (
@@ -43341,7 +43341,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/caperiver/indoors/caves/ne)
 "sdZ" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/kutjevo/grey,
 /area/caperiver/telecomms/telecomm_4)
@@ -43882,7 +43882,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/caperiver/outdoors/landing_zone_1)
 "sEF" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/engine,
 /area/caperiver/indoors/conambase/medical)
 "sFm" = (
@@ -43969,7 +43969,7 @@
 /turf/open/floor/asteroidfloor,
 /area/caperiver/outdoors/mining_base_exterior/south)
 "sMj" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrowncorners2,
 /area/caperiver/indoors/conambase/recreational)
 "sMy" = (

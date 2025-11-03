@@ -1246,7 +1246,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Join the Hunt"
 	set desc = "If you are whitelisted, and it is the right type of round, join in."
 
-	if (!client)
+	if(!client)
+		log_debug("Yautja Joining: join_as_yautja called without a client.")
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)

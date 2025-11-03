@@ -183,6 +183,7 @@ Additional game mode variables.
 /datum/game_mode/proc/attempt_to_join_as_predator(mob/pred_candidate)
 	var/mob/living/carbon/human/new_predator = transform_predator(pred_candidate) //Initialized and ready.
 	if(!new_predator)
+		log_debug("Yautja Joining: attempt_to_join_as_predator failed transform.")
 		return
 
 	msg_admin_niche("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
@@ -195,6 +196,7 @@ Additional game mode variables.
 
 /datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = TRUE)
 	if(!pred_candidate?.client)
+		log_debug("Yautja Joining: check_predator_late_join called without a client.")
 		return
 
 	var/datum/job/pred_job = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
@@ -237,23 +239,22 @@ Additional game mode variables.
 
 	if(!pred_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_predator")
-		return
+		return FALSE
 
 	pred_candidate.client.prefs.find_assigned_slot(JOB_PREDATOR) // Probably does not do anything relevant, predator preferences are not tied to specific slot.
 
 	var/clan_id = CLAN_SHIP_PUBLIC
 	var/datum/entity/clan_player/clan_info = pred_candidate?.client?.clan_info
 	clan_info?.sync()
-	SSpredships.load_new(clan_id)
 	var/turf/spawn_point = SAFEPICK(SSpredships.get_clan_spawnpoints(clan_id))
 	if(!isturf(spawn_point))
 		log_debug("Failed to find spawn point for pred ship in transform_predator - clan_id=[clan_id]")
 		to_chat(pred_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
-		return
+		return FALSE
 	if(!pred_candidate?.mind) // Legacy check
 		log_debug("Tried to spawn invalid pred player in transform_predator - new_player name=[pred_candidate]")
 		to_chat(pred_candidate, SPAN_WARNING("Could not setup character - you might want to tell someone about this."))
-		return
+		return FALSE
 
 	var/mob/living/carbon/human/yautja/new_predator = new(spawn_point)
 	pred_candidate.mind.transfer_to(new_predator, TRUE)

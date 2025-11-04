@@ -230,11 +230,11 @@
 /obj/item/tool/surgery/bonegel/update_icon(mob/user)
 	. = ..()
 	switch(remaining_gel)
-		if(100 to INFINITY)
+		if(80 to INFINITY)
 			icon_state = base_icon_state
-		if(60 to 99)
+		if(55 to 79)
 			icon_state = "[base_icon_state]_75"
-		if(30 to 59)
+		if(30 to 54)
 			icon_state = "[base_icon_state]_50"
 		if(5 to 29)
 			icon_state = "[base_icon_state]_25"

@@ -212,7 +212,7 @@ SUBSYSTEM_DEF(cmtv)
 /// Takes a new mob to observe. If there is already a queued up mob, or a current perspective, they will be notified and dropped. This will become the new perspective in 10 seconds.
 /// If set to instant, we immediately switch to observe nothing. If set_showtime is set, the camera will stay on the new perspective for at least this long,
 /// unless they die or something.
-/datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective, instant_switch_away = FALSE, instant_switch_to = FALSE, set_showtime = FALSE)
+/datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective, instant_switch_away = FALSE, instant_switch_to = FALSE, set_showtime = FALSE, change_reason = FALSE)
 	if(temporarily_observing_turf)
 		log_debug("CMTV: Cannot change perspective, currently observing a turf.")
 		return
@@ -224,7 +224,7 @@ SUBSYSTEM_DEF(cmtv)
 	log_debug("CMTV: Swapping to perspective [new_perspective].")
 
 	if(current_perspective)
-		terminate_current_perspective()
+		terminate_current_perspective(change_reason)
 
 	if(instant_switch_away)
 		camera_mob.clean_observe_target()

@@ -24,7 +24,7 @@
 /turf/open/space/transit/proc/handle_crosser(atom/movable/crosser)
 	if(QDELETED(crosser))
 		return
-	if(crosser.can_paradrop()) //let's not delete people who arent meant to be deleted... This shouldn't happen normally, but if it does, congratulations, you gamed the system
+	if(crosser.can_paradrop()) //let's not delete people who aren't meant to be deleted... This shouldn't happen normally, but if it does, congratulations, you gamed the system
 		return
 	qdel(crosser)
 

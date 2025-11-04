@@ -8,7 +8,7 @@
 	screen_loc = "LEFT,TOP-3"
 
 	letters_per_update = 2
-	fade_out_delay = 6 SECONDS
+	fade_out_delay = 10 SECONDS
 	style_open = "<span class='langchat' style=font-size:24pt;text-align:center valign='top'>"
 	style_close = "</span>"
 
@@ -32,7 +32,7 @@
 	if(owner.stat != CONSCIOUS)
 		return FALSE
 	if(TIMER_COOLDOWN_CHECK(owner, COOLDOWN_HUD_ORDER))
-		to_chat(owner, SPAN_WARNING("You have to wait until you can send another HUD announcement!"))
+		to_chat(owner, SPAN_WARNING("You have to wait [DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(owner, COOLDOWN_HUD_ORDER))] until you can send another HUD announcement!"))
 		return FALSE
 	if(!(HAS_TRAIT(owner, TRAIT_LEADERSHIP)))
 		return FALSE
@@ -55,8 +55,12 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 	if(color_mix == null)
 		if(owner.job in GLOB.ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION)
 			button.overlays += colour_blend //special roles get it regardless of overwatching a squad
+			button.icon_state = "template_on"
+		else
+			button.icon_state = "template"
 	else
 		button.overlays += colour_blend
+		button.icon_state = "template_on"
 
 
 /proc/mix_color_from_overwatched_squads(mob/living/carbon/human/owner)
@@ -163,7 +167,7 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 	if(TIMER_COOLDOWN_CHECK(owner, COOLDOWN_HUD_ORDER))
 		return
 	log_game("[key_name(human_owner)] has broadcasted the hud message [text] at [AREACOORD(human_owner)]")
-	TIMER_COOLDOWN_START(owner, COOLDOWN_HUD_ORDER, 30 SECONDS)
+	S_TIMER_COOLDOWN_START(owner, COOLDOWN_HUD_ORDER, 30 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), 30 SECONDS + 1, TIMER_STOPPABLE)
 	alert_receivers += GLOB.observer_list
 

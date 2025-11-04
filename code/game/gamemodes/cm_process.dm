@@ -139,13 +139,39 @@ GLOBAL_VAR_INIT(next_predator_bioscan, 5 MINUTES)
 // 30 minutes in
 GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
-/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle/dropship/flight/lz1/console)
+/// Asks the user (optional) to pick the primary LZ if both LZ1 and LZ2 exist and it hasn't been set yet
+/// If only one, or no user, it will pick the first available
+/datum/game_mode/proc/pick_a_lz(mob/user)
+	if(active_lz)
+		return
+
+	var/lz1 = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1)
+	var/lz2 = locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2)
+
+	if(lz1 && lz2 && user)
+		var/lz_choices = list("LZ 1", "LZ 2")
+		var/new_lz = tgui_input_list(user, "Select primary LZ", "LZ Select", lz_choices)
+		if(!new_lz)
+			return
+		if(new_lz == "LZ 1")
+			select_lz(lz1)
+		else
+			select_lz(lz2)
+		return
+
+	if(lz1 || lz2)
+		select_lz(lz1 || lz2)
+		return
+
+	CRASH("No /obj/structure/machinery/computer/shuttle/dropship/flight/lz1 or lz2 found!")
+
+/datum/game_mode/proc/select_lz(obj/structure/machinery/computer/shuttle/dropship/flight/console)
 	if(active_lz)
 		return
 	active_lz = console
 	// The announcement to all Humans.
 	var/name = "[MAIN_AI_SYSTEM] Operation Staging Order"
-	var/input = "Command Order Issued.\n\n[active_lz.loc.loc] has been designated as the primary landing zone."
+	var/input = "Command Order Issued.\n\n[get_area(active_lz)] has been designated as the primary landing zone."
 	marine_announcement(input, name)
 
 /datum/game_mode/proc/announce_bioscans()

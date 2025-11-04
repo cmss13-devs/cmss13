@@ -35,11 +35,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/faction = FACTION_MARINE
 	var/obj/structure/orbital_cannon/current_orbital_cannon
 
-	var/datum/tacmap/tacmap
-	var/minimap_type = MINIMAP_FLAG_USCM
-
-	var/list/possible_options = list("Blue" = "crtblue", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")
-	var/list/chosen_theme = list("Blue", "Green", "Yellow", "Red")
+	var/minimap_flag = MINIMAP_FLAG_USCM
+	var/list/possible_options = list("Blue" = "crtblue", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred", "Purple" = "crtpurple")
+	var/list/chosen_theme = list("Blue", "Green", "Yellow", "Red", "Purple")
 	var/command_channel_key = ":v"
 
 	var/freq = CRYO_FREQ
@@ -64,8 +62,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	COOLDOWN_DECLARE(cooldown_message)
 	/// making a shipside announcement
 	COOLDOWN_DECLARE(cooldown_shipside_message)
-	/// 10 minute cooldown between calls for 'general quarters'
-	COOLDOWN_DECLARE(general_quarters)
 
 /obj/structure/machinery/computer/overwatch/groundside_operations
 	name = "Groundside Operations Console"
@@ -83,12 +79,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		GLOB.active_overwatch_consoles += src
 		current_orbital_cannon = GLOB.almayer_orbital_cannon
 		ob_cannon_safety = GLOB.ob_cannon_safety
-		tacmap = new /datum/tacmap/drawing(src, minimap_type)
-	else
-		tacmap = new(src, minimap_type) // Non-drawing version
+
+	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE)
 
 /obj/structure/machinery/computer/overwatch/Destroy()
-	QDEL_NULL(tacmap)
 	GLOB.active_overwatch_consoles -= src
 	current_orbital_cannon = null
 	concurrent_users = null
@@ -101,7 +95,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	for(var/datum/squad/root_squad in GLOB.RoleAuthority.squads)
 		root_squad.release_overwatch()
 		break
-	QDEL_NULL(tacmap)
+
 	GLOB.active_overwatch_consoles -= src
 	current_orbital_cannon = null
 	concurrent_users = null
@@ -175,29 +169,18 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/ui_static_data(mob/user)
 	var/list/data = list()
-	data["mapRef"] = tacmap.map_holder.map_ref
 
 	return data
 
 /obj/structure/machinery/computer/overwatch/groundside_operations/ui_static_data(mob/user)
 	var/list/data = list()
 	data["distress_time_lock"] = DISTRESS_TIME_LOCK
-	data["mapRef"] = tacmap.map_holder.map_ref
 
 	return data
 
-
 /obj/structure/machinery/computer/overwatch/tgui_interact(mob/user, datum/tgui/ui)
-
-	if(!tacmap.map_holder)
-		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
-		if(!level[1])
-			return
-		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
-
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		user.client.register_map_obj(tacmap.map_holder.map)
 		if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
 			ui = new(user, src, "CentralOverwatchConsole", "Groundside Operations Console")
 		else
@@ -741,7 +724,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					z_hidden = HIDE_NONE
 					to_chat(user, "[icon2html(src, usr)] [SPAN_NOTICE("No location is ignored anymore.")]")
 		if("tacmap_unpin")
-			tacmap.tgui_interact(user)
+			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+			if(user in tacmap_component.interactees)
+				tacmap_component.on_unset_interaction(user)
+			else
+				tacmap_component.show_tacmap(user)
 		if("dropbomb")
 			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
 				return
@@ -935,16 +922,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
 
 		if("selectlz")
-			if(SSticker.mode.active_lz)
-				return
-			var/lz_choices = list("lz1", "lz2")
-			var/new_lz = tgui_input_list(usr, "Select primary LZ", "LZ Select", lz_choices)
-			if(!new_lz)
-				return
-			if(new_lz == "lz1")
-				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
-			else
-				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
+			SSticker.mode.pick_a_lz(usr)
 
 		if("messageUSCM")
 			if(!COOLDOWN_FINISHED(src, cooldown_central))
@@ -1043,17 +1021,21 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_ares_security("Cancel Evacuation", "Cancelled the emergency evacuation.", user)
 
 		if("general_quarters")
-			if(!COOLDOWN_FINISHED(src, general_quarters))
+			var/datum/ares_datacore/datacore = GLOB.ares_datacore
+			if(GLOB.security_level < SEC_LEVEL_RED)
+				log_game("[key_name(user)] set red alert via the groundside operations console.")
+				message_admins("[key_name_admin(user)] set red alert via the groundside operations console.")
+				log_ares_security("Manual Security Update", "Changed the security level to red.", user)
+				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
+			if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
 				to_chat(user, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			if(GLOB.security_level < SEC_LEVEL_RED)
-				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
+			COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
 			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 			log_game("[key_name(user)] has called for general quarters via the groundside operations console.")
 			message_admins("[key_name_admin(user)] has called for general quarters via the groundside operations console.")
 			log_ares_security("General Quarters", "Called for general quarters via the groundside operations console.", user)
-			COOLDOWN_START(src, general_quarters, 10 MINUTES)
 			. = TRUE
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
@@ -1181,6 +1163,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(!isRemoteControlling(user))
 		concurrent_users += WEAKREF(user)
 		if(cam)
+			if(user.client.view != GLOB.world_view_size)
+				to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
+				return
 			user.reset_view(cam)
 			user.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
 
@@ -1196,6 +1181,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	..()
 	if(user.interactee == src)
 		user.unset_interaction()
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.on_unset_interaction(user)
 
 /// checks if the human has an overwatch camera at all
 /obj/structure/machinery/computer/overwatch/proc/marine_has_camera(mob/living/carbon/human/marine)
@@ -1493,10 +1480,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF
 	freq = CLF_FREQ
+
 /obj/structure/machinery/computer/overwatch/upp
 	faction = FACTION_UPP
 	freq = UPP_FREQ
-	minimap_type = MINIMAP_FLAG_UPP
+	minimap_flag = MINIMAP_FLAG_UPP
 	command_channel_key = "#v"
 	ui_theme = "crtupp"
 	possible_options = list("UPP" = "crtupp", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")

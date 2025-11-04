@@ -96,6 +96,14 @@
 	can_hold = list(/obj/item/clothing/mask/surgical)
 	w_class = SIZE_SMALL
 
+/obj/item/storage/box/bloodbag
+	name = "empty box of blood bags"
+	desc = "This box can hold all kinds of blood bags."
+	icon_state = "blood"
+	item_state = "blood"
+	can_hold = list(/obj/item/reagent_container/blood/)
+	w_class = SIZE_MEDIUM
+
 /obj/item/storage/box/masks/fill_preset_inventory()
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
@@ -140,6 +148,22 @@
 	new /obj/item/reagent_container/glass/beaker(src)
 	new /obj/item/reagent_container/glass/beaker(src)
 	new /obj/item/reagent_container/glass/beaker(src)
+
+/obj/item/storage/box/vials
+	name = "box of vials"
+	icon_state = "vial"
+	item_state = "vial"
+	can_hold = list(/obj/item/reagent_container/glass/beaker)
+	w_class = SIZE_SMALL
+
+/obj/item/storage/box/vials/fill_preset_inventory()
+	new /obj/item/reagent_container/glass/beaker/vial(src)
+	new /obj/item/reagent_container/glass/beaker/vial(src)
+	new /obj/item/reagent_container/glass/beaker/vial(src)
+	new /obj/item/reagent_container/glass/beaker/vial(src)
+	new /obj/item/reagent_container/glass/beaker/vial(src)
+	new /obj/item/reagent_container/glass/beaker/vial(src)
+	new /obj/item/reagent_container/glass/beaker/vial(src)
 
 /obj/item/storage/box/sprays
 	name = "box of empty spray bottles"
@@ -536,6 +560,15 @@
 	desc = "It has pictures of pill bottles on its front."
 	icon_state = "pillbox"
 	item_state = "pillbox"
+
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_GATHER_SIMULTAENOUSLY
+	can_hold = list(
+		/obj/item/storage/pill_bottle,
+	)
+
+	//multiplier to time required to empty the box into chem master
+	var/time_to_empty = 3
+
 
 /obj/item/storage/box/pillbottles/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle( src )

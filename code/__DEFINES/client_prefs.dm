@@ -1,6 +1,6 @@
 //=================================================
-#define BE_ALIEN_AFTER_DEATH (1<<0)
-#define BE_AGENT (1<<1)
+#define BE_ALIEN (1<<0)
+// 1<<1 was BE_AGENT
 #define BE_KING (1<<2)
 //=================================================
 

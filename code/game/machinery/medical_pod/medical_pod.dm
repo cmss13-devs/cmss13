@@ -181,7 +181,7 @@
 				to_chat(user, SPAN_WARNING("\The [C] is empty!"))
 				return
 			to_put_in = C.stasis_mob
-			C.open()
+			C.open(user)
 			user.start_pulling(to_put_in)
 		else if(ismob(G.grabbed_thing))
 			to_put_in = G.grabbed_thing

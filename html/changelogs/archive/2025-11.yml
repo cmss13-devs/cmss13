@@ -1,0 +1,64 @@
+2025-11-01:
+  FebrezeNinja:
+  - bugfix: Fixes an instance of medical item duping
+  Puckaboo2:
+  - bugfix: Removed an autoinjector fill overlay on Thwei.
+  realforest2001:
+  - rscadd: Moved the preference for using playtime perks to settings tab instead
+      of xenos tab.
+  - code_imp: Added backend functionality for SDTimeAward community award to function
+      without being in the staff list.
+  - admin: Added a preference for staff to decide if they use their own playtime for
+      ranks or not.
+  - bugfix: Fixes an inverted check on who can hear ship announcements such as hijack.
+2025-11-02:
+  Blundir:
+  - imageadd: voice level action buttons sprites improved a bit
+  Drathek:
+  - bugfix: Fixed bracing for impact preventing hijack
+  - bugfix: Fixed mobs only on the same Z as the crashing shuttle being affected by
+      the crash
+  Labeo0:
+  - qol: auto-toggle "Aimed Shot"/"Spot Target" with sniper rifle/spotter designator
+      in hands
+  Nihisohel:
+  - qol: Abovehead emotes can now appear for deaf people.
+  Puckaboo2:
+  - bugfix: Oxycodone pills are now 10u instead of 15u
+  - bugfix: Oxycodone pill bottles now have a lock on them.
+  - bugfix: Oxycodone pill bottles can be found in pill bottle loot spawners.
+  - bugfix: Dexalin Plus's chemical color has been updated to CM-SS13 standards.
+  - bugfix: Ultrazine autoinjectors have fill indicators.
+  - bugfix: Stim chemical colors have been updated to CM-SS13 standards.
+  - bugfix: Field Doctors and Nurses can now view and print medical records
+  - imageadd: added fill indicators for stimpack-type autoinjectors for future reference.
+  byondsucks:
+  - bugfix: The solaris PMC CO surv now has his proper skills.
+  halander1:
+  - qol: Players now have the option to take pills directly from bottles for certain
+      pouches.
+  jupyterkat:
+  - rscadd: humans now block emissives
+  - bugfix: fixed emissives
+  - refactor: made some emissives code faster
+  matttheficus:
+  - balance: you can no longer get IB or Organ Damage while on the Hunting Preserve
+      as a FACTION_LIST_HUNTED
+  realforest2001:
+  - bugfix: Fixed missing rank for Generalised synth.
+  - rscadd: Added MP Synth option, again.
+  zzzmike:
+  - spellcheck: fixed a spelling mistake
+2025-11-03:
+  Nihisohel:
+  - bugfix: Flamer tanks can refill from other flamer tanks again
+  Nomoresolvalou, Crowford:
+  - ui: bracer style selector added to yautja preferences
+  - bugfix: retro caster can now be selected in yautja preferences
+  - bugfix: bracer lock/unlock verb now correctly displays a to_chat, and plays a
+      sound
+  - imageadd: added new bracer sprites
+  - imageadd: replaced old bracer sprite with new retro sprite.
+2025-11-04:
+  Zenith:
+  - bugfix: fixed the clf kutjevo insert by reverting it back to the correct version.

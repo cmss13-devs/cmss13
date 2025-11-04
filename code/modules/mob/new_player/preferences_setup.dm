@@ -1,10 +1,15 @@
 //The mob should have a gender you want before running this proc. Will run fine without H
 /datum/preferences/proc/randomize_appearance(mob/living/carbon/human/H)
 	if(H)
-		if(H.gender == MALE)
-			gender = MALE
-		else
-			gender = FEMALE
+		switch(H.gender)
+			if(MALE)
+				gender = MALE
+			if(FEMALE)
+				gender = FEMALE
+			if(PLURAL)
+				gender = PLURAL
+			else
+				gender = pick(MALE, FEMALE)
 
 	skin_color = random_skin_color()
 	body_type = random_body_type()
@@ -189,7 +194,7 @@
 	if(isnull(preview_dummy))
 		preview_dummy = new()
 
-	preview_dummy.blocks_emissive = FALSE
+	preview_dummy.blocks_emissive = EMISSIVE_BLOCK_NONE
 	preview_dummy.update_emissive_block()
 
 	clear_equipment()

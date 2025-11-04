@@ -96,7 +96,7 @@
 				continue
 
 		if(!istype(possible_turf) || is_blocked_turf(possible_turf) || istype(possible_turf, /turf/open/space))
-			continue // couldnt find one in 10 loops, check another area
+			continue // couldn't find one in 10 loops, check another area
 
 		// we found a good turf, lets drop em
 		if(crosser.can_paradrop())

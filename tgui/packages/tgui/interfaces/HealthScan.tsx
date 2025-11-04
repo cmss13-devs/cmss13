@@ -528,7 +528,7 @@ const ScannerChems = (props) => {
               <Box inline width={'5px'} />
               {chemical.od ? (
                 <Box inline color={'red'} bold>
-                  {'OD'}
+                  {'Overdose'}
                 </Box>
               ) : null}
             </Box>

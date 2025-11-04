@@ -14677,6 +14677,10 @@
 	pixel_x = -11;
 	pixel_y = 16
 	},
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 30;
+	pixel_x = -7
+	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
 "aMe" = (
@@ -73434,6 +73438,10 @@
 /area/almayer/medical/lower_medical_lobby)
 "qyK" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 30;
+	pixel_x = -7
+	},
 /turf/open/floor/almayer/orange/southeast,
 /area/almayer/engineering/lower/workshop/hangar)
 "qyP" = (

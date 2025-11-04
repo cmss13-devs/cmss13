@@ -470,6 +470,8 @@ Additional game mode variables.
 		candidate_observer = xeno_candidate
 
 	for(var/mob/living/carbon/xenomorph/cur_xeno in GLOB.living_xeno_list)
+		if(QDELING(cur_xeno))
+			continue
 		if(cur_xeno.aghosted)
 			continue //aghosted xenos don't count
 		var/area/area = get_area(cur_xeno)
@@ -607,7 +609,7 @@ Additional game mode variables.
 		if(tgui_alert(xeno_candidate, "Are you sure you want to transfer yourself into [new_xeno]?", "Confirm Transfer", list("Yes", "No")) != "Yes")
 			return FALSE
 
-		if(new_xeno.away_timer < required_leave_time || new_xeno.stat == DEAD || !(new_xeno in GLOB.living_xeno_list) || !xeno_candidate) // Do it again, just in case
+		if(QDELETED(new_xeno) || new_xeno.away_timer < required_leave_time || new_xeno.stat == DEAD || !(new_xeno in GLOB.living_xeno_list) || !xeno_candidate) // Do it again, just in case
 			to_chat(xeno_candidate, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
 			return FALSE
 

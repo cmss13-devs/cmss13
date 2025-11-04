@@ -247,6 +247,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_OCULOPEUTIC = 2)
 	preferred_delivery = CONTROLLED_INGESTION | INJECTION | TOUCH // eye drops, assuming people use it for that anyway
+	undesired_delivery = NO_DELIVERY
 
 /datum/reagent/medical/peridaxon
 	name = "Peridaxon"

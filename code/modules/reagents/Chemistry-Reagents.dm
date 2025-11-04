@@ -195,11 +195,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		//A level of 1 == 0.5 potency, which is equal to REM (0.2/0.4) in the old system
 		//That means the level of the property by default is the number of REMs the effect had in the old system
 		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * LEVEL_TO_POTENCY_MULTIPLIER)
-		var/delivery_outcome = calc_delivery_spectrum(delivery_method)
-
-#ifdef DEBUG
-		to_chat(M, "DEBUG: [name]: delivery_method=[delivery_method], preferred_delivery=[preferred_delivery], undesired_delivery=[undesired_delivery], delivery_outcome=[delivery_outcome], initial_potency=[potency]")
-#endif
+		var/delivery_outcome = calc_delivery_spectrum(delivery_method) // let me know if this needs to be moved out, this might be processing intensive - nihi
 
 		switch(delivery_outcome)
 			if(DELIVERY_LESSER_EFFECT)
@@ -214,10 +210,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				var/overdose_message = "improper delivery of [istype(src, /datum/reagent/generated) ? "custom chemical" : initial(name)]"
 				M.last_damage_data = create_cause_data(overdose_message, last_source_mob?.resolve())
 				potency = 0 // Don't apply normal effects
-
-#ifdef DEBUG
-		to_chat(M, "DEBUG: [name]: final_potency=[potency]")
-#endif
 
 		if(potency <= 0)
 			continue
@@ -447,3 +439,27 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /datum/reagent/proc/process_non_property_effects(mob/living/M, list/mods, delta_time)
 	return
+
+/// convert delivery method to a string for healthscan displays
+/datum/reagent/proc/delivery_method_to_string(delivery_method)
+	if(!delivery_method || delivery_method == NO_DELIVERY)
+		return "Unknown"
+
+	var/list/methods = list()
+	switch(delivery_method)
+		if(CONTROLLED_INGESTION)
+			methods += "Controlled Ingestion"
+		if(INGESTION)
+			methods += "Ingestion"
+		if(INHALATION)
+			methods += "Inhalation"
+		if(TOUCH)
+			methods += "Touch"
+		if(ABSORPTION)
+			methods += "Absorption"
+		if(INJECTION)
+			methods += "Injection"
+		if(IMPLANTATION)
+			methods += "Implantation"
+
+	return " - Delivery Method: [english_list(methods)])"

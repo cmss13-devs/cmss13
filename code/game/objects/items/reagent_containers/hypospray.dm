@@ -178,17 +178,17 @@
 		. += SPAN_INFO("It is set to precise injection mode.")
 	if(mode == INJECTOR_MODE_FAST)
 		. += SPAN_INFO("It is set to fast injection mode.")
-	if(mode == INJECTOR_MODE_SKILLESS)
-		. += SPAN_INFO("It is set to EZ-assisted injection mode.")
 
 /obj/item/reagent_container/hypospray/proc/hyposwitch(mob/user)
 	switch(mode)
 		if(INJECTOR_MODE_PRECISE)
 			mode = INJECTOR_MODE_FAST
 			to_chat(user, SPAN_INFO("You switch \the [src] to fast injection mode."))
+			playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
 		if(INJECTOR_MODE_FAST)
 			mode = INJECTOR_MODE_PRECISE
 			to_chat(user, SPAN_INFO("You switch \the [src] to precise injection mode."))
+			playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
 		if(INJECTOR_MODE_SKILLESS) // for all intents and purposes, we do need EZ injectors to exist as an upgrade item
 			to_chat(user, SPAN_WARNING("[src] beeps: The injection mode is locked and cannot be toggled."))
 			return
@@ -286,7 +286,7 @@
 			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 		if(INJECTOR_MODE_PRECISE)
-			var/injection_duration = 10 SECONDS // change this and rebalance the skills in the rebalancing PRR
+			var/injection_duration = 7.5 SECONDS
 			injection_duration = (injection_duration * user.get_skill_duration_multiplier(SKILL_MEDICAL)) // for some reason, moving while injecting speeds up the duration
 
 			if(M == user) // spamming do_afters results in the null units injected bug which does nothing, but its really fucking annoying and ive got no fucking clue how to fix it, so try not to spam your injector more than the required amount - nihi

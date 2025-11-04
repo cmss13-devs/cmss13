@@ -101,6 +101,7 @@
 	desc = "An EZ autoinjector loaded with 3 doses of 15u of Tricordrazine, a weak general use medicine for treating damage. You can refill it at Wey-Med vending machines and it does not require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	mode = INJECTOR_MODE_SKILLESS
 	maptext_label = "EzTc"
 
 /obj/item/reagent_container/hypospray/autoinjector/adrenaline
@@ -153,6 +154,7 @@
 	desc = "An EZ autoinjector loaded with 3 doses of 15u of Tramadol, a weak but effective painkiller for normal wounds. You can refill it at Wey-Med vending machines and it doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	mode = INJECTOR_MODE_SKILLESS
 	maptext_label = "EzTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use
@@ -189,6 +191,7 @@
 	desc = "An EZ autoinjector loaded with 3 doses of 15u of Kelotane, a common burn medicine. Doesn't require any training to use. You can refill it at Wey-Med vending machines."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	mode = INJECTOR_MODE_SKILLESS
 	display_maptext = TRUE
 	maptext_label = "EzKl"
 
@@ -217,6 +220,7 @@
 	desc = "An EZ autoinjector loaded with 3 doses of 15u of Bicaridine, a common brute and circulatory damage medicine. Doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	mode = INJECTOR_MODE_SKILLESS
 	display_maptext = TRUE
 	maptext_label = "EzBi"
 
@@ -245,6 +249,7 @@
 	desc = "An EZ autoinjector loaded with 3 doses of 15u of Dylovene, a common toxin damage medicine. Doesn't require any training to use. You can refill it at Wey-Med vending machines."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	mode = INJECTOR_MODE_SKILLESS
 	display_maptext = TRUE
 	maptext_label = "EzDy"
 
@@ -472,6 +477,7 @@
 	icon_state = "empty_research_oneuse"
 	autoinjector_type = "autoinjector_oneuse"
 	skilllock = SKILL_MEDICAL_DEFAULT
+	mode = INJECTOR_MODE_SKILLESS
 	amount_per_transfer_from_this = 15
 	volume = 15
 	uses_left = 0

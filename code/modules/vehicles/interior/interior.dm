@@ -348,5 +348,5 @@
 			count += 1
 
 	if(count > 0)
-		exterior.visible_message(SPAN_NOTICE("The sudden jolt throws \the [count == 1 ? "body" : "bodies"] out of \the [src]"))
+		exterior.visible_message(SPAN_NOTICE("The sudden jolt throws \the [count == 1 ? "body" : "bodies"] out of \the [exterior]"))
 		update_passenger_count()

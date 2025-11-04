@@ -165,6 +165,7 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 	if(!text)
 		return
 	if(TIMER_COOLDOWN_CHECK(owner, COOLDOWN_HUD_ORDER))
+		to_chat(owner, SPAN_WARNING("You have to wait [DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(owner, COOLDOWN_HUD_ORDER))] until you can send another HUD announcement!"))
 		return
 	log_game("[key_name(human_owner)] has broadcasted the hud message [text] at [AREACOORD(human_owner)]")
 	S_TIMER_COOLDOWN_START(owner, COOLDOWN_HUD_ORDER, 30 SECONDS)

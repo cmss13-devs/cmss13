@@ -58,7 +58,8 @@ SUBSYSTEM_DEF(cmtv)
 	var/api_url = CONFIG_GET(string/cmtv_api)
 	var/api_comms_key = CONFIG_GET(string/cmtv_api_key)
 	if(api_url && api_comms_key)
-		var/datum/http_request/request = new(RUSTG_HTTP_METHOD_POST, "[api_url]/role_icons", json_encode(list("auth_key" = api_comms_key, "role_icons" = GLOB.minimap_icons)))
+		var/datum/http_request/request = new
+		request.prepare(RUSTG_HTTP_METHOD_POST, "[api_url]/role_icons", json_encode(list("auth_key" = api_comms_key, "role_icons" = GLOB.minimap_icons)))
 		request.execute_blocking()
 
 	perspective_display = new

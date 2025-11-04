@@ -164,9 +164,8 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 	var/text = tgui_input_text(human_owner, "Maximum message length [MAX_COMMAND_MESSAGE_LEN]", "Send message to [choice ? choice : squads_being_overwatched_by_me[0]]",  max_length = MAX_COMMAND_MESSAGE_LEN, multiline = TRUE)
 	if(!text)
 		return
-	if(TIMER_COOLDOWN_CHECK(owner, COOLDOWN_HUD_ORDER))
-		to_chat(owner, SPAN_WARNING("You have to wait [DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(owner, COOLDOWN_HUD_ORDER))] until you can send another HUD announcement!"))
-		return
+	if(!can_use_action())
+		return //dead or timer or whatever
 	log_game("[key_name(human_owner)] has broadcasted the hud message [text] at [AREACOORD(human_owner)]")
 	S_TIMER_COOLDOWN_START(owner, COOLDOWN_HUD_ORDER, 30 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), 30 SECONDS + 1, TIMER_STOPPABLE)

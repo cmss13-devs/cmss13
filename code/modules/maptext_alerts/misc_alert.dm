@@ -97,7 +97,9 @@
 	var/atom/movable/holding_movable = new
 	holding_movable.appearance_flags = APPEARANCE_UI|KEEP_TOGETHER
 	holding_movable.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-
+	if(!mugshottee)
+		debug_log("Mob based HUD portrait alert was called without a mob.")
+		return
 	var/mutable_appearance/mugshot = mutable_appearance()
 	mugshot.appearance = mugshottee.appearance
 	mugshot.pixel_x = image_to_play_offset_x + 17

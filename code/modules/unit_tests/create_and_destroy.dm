@@ -32,7 +32,7 @@ GLOBAL_VAR_INIT(create_and_destroy_ignore_paths, generate_ignore_paths())
 	. += typesof(/obj/vehicle)
 	. += typesof(/obj/effect/vehicle_spawner)
 	//Screen objects don't play nicely when spawned manually.
-	//. += typesof(/atom/movable/screen)
+	. += typesof(/atom/movable/screen)
 	// Always ought to have an associated escape menu. Any references it could possibly hold would need one regardless.
 	. += subtypesof(/atom/movable/screen/escape_menu)
 	. += typesof(/obj/effect/timed_event)

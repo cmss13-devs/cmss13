@@ -865,10 +865,49 @@
 		L = L.loc
 	return loc
 
+/atom/movable/proc/create_showoff_bubble(atom/pointed_atom)
+	var/mutable_appearance/thought_bubble = mutable_appearance(
+		'icons/effects/effects.dmi',
+		"thought_bubble",
+		// offset_spokesman = src,
+		// plane = POINT_PLANE,
+		appearance_flags = KEEP_APART,
+	)
+
+	var/mutable_appearance/pointed_atom_appearance = new(pointed_atom.appearance)
+	pointed_atom_appearance.blend_mode = BLEND_INSET_OVERLAY
+	pointed_atom_appearance.plane = FLOAT_PLANE
+	pointed_atom_appearance.layer = FLOAT_LAYER
+	pointed_atom_appearance.pixel_x = 0
+	pointed_atom_appearance.pixel_y = 0
+	thought_bubble.overlays += pointed_atom_appearance
+	// pointed_atom_appearance.remove_filter(HOVER_OUTLINE_FILTER)
+
+	thought_bubble.pixel_w = 16
+	thought_bubble.pixel_z = 32
+	thought_bubble.alpha = 200
+
+	var/mutable_appearance/point_visual = mutable_appearance(
+		'icons/mob/hud/screen1.dmi',
+		"arrow"
+	)
+
+	thought_bubble.overlays += point_visual
+
+	// add_overlay(thought_bubble)
+	loc.overlays += thought_bubble
+	// LAZYADD(update_overlays_on_z, thought_bubble)
+	addtimer(CALLBACK(src, PROC_REF(clear_point_bubble), thought_bubble), 2.5 SECONDS)
+
+/atom/movable/proc/clear_point_bubble(mutable_appearance/thought_bubble)
+	// LAZYREMOVE(update_overlays_on_z, thought_bubble)
+	// cut_overlay(thought_bubble)
+	loc.overlays -= thought_bubble
 
 /obj/item/proc/showoff(mob/user)
 	var/list/viewers = get_mobs_in_view(GLOB.world_view_size, user)
-	user.langchat_speech("holds up [src].", viewers, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+	// user.langchat_speech("holds up [src].", viewers, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+	create_showoff_bubble(src)
 	for (var/mob/M in viewers)
 		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>", SHOW_MESSAGE_VISIBLE)
 

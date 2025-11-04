@@ -393,6 +393,8 @@
 			else
 				background = human.assigned_equipment_preset?.minimap_background
 
+			minimap_icon = human.assigned_equipment_preset?.minimap_icon || "private"
+
 		mobs += list(
 			list("name" = living_mob.real_name, "job" = minimap_icon, "background" = background)
 		)

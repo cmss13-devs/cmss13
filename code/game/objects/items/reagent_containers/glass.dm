@@ -372,7 +372,7 @@
 
 /obj/item/reagent_container/glass/beaker/bluespace
 	name = "high-capacity beaker"
-	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 300 units."
+	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 500 units."
 	icon_state = "beakerbluespace"
 	item_state = "beakerbluespace"
 	matter = list("glass" = 30000)

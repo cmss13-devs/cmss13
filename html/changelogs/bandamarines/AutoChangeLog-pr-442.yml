@@ -1,0 +1,4 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - rscadd: "Добавлены склонения для каст ксеносов"

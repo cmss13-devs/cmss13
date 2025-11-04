@@ -462,4 +462,4 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		if(IMPLANTATION)
 			methods += "Implantation"
 
-	return " - Delivery Method: [english_list(methods)])"
+	return " - Delivery Method: [english_list(methods)]"

@@ -95,7 +95,7 @@ Additional game mode variables.
 	var/bioscan_current_interval = 5 MINUTES//5 minutes in
 	var/bioscan_ongoing_interval = 1 MINUTES//every 1 minute
 
-	var/lz_selection_timer = 25 MINUTES //25 minutes in
+	var/lz_selection_timer = 15 MINUTES
 
 	///Time for when resin placing is allowed close to LZs
 	var/round_time_resin = 40 MINUTES
@@ -214,7 +214,7 @@ Additional game mode variables.
 			to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
 		return FALSE
 
-	if(pred_candidate.ckey in predators)
+	if(pred_candidate.key in predators)
 		if(show_warning)
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
 		return FALSE
@@ -782,6 +782,8 @@ Additional game mode variables.
 	SSround_recording.recorder.update_key(new_xeno)
 	if(new_xeno.client)
 		new_xeno.client.change_view(GLOB.world_view_size)
+		if(isnewplayer(xeno_candidate))
+			send_tacmap_assets_latejoin(new_xeno)
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	if(isxeno(new_xeno)) //Dear lord

@@ -345,6 +345,7 @@
 /obj/item/reagent_container/food/drinks/flask/weylandyutani/Initialize()
 	. = ..()
 	reagents.add_reagent("fruit_beer", 60)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/flask/canteen
 	name = "canteen"
@@ -405,6 +406,10 @@
 	desc = "A matte gray coffee mug bearing the Weyland-Yutani logo on its front. Either issued as corporate standard, or bought as a souvenir for people who love the Company oh so dearly. Probably the former."
 	icon_state = "wycup"
 	item_state = "wycup"
+
+/obj/item/reagent_container/food/drinks/coffeecup/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 // Hybrisa
 

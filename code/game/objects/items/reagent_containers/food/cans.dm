@@ -413,6 +413,7 @@
 /obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
 	. = ..()
 	reagents.add_reagent("water", 30)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle/upp
 	name = "\improper Gerolsteiner Bottled Sparkling Water"
@@ -420,6 +421,10 @@
 	desc_lore = "After Gerolsteiner company becoming an intergrated state enterprise, their products became a common thing in military rations and in other places."
 	icon_state = "upp_water"
 	crushed_icon = "upp_water_crushed"
+
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp/Initialize()
+	. = ..()
+	RemoveElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/coconutmilk
 	name = "\improper Weyland-Yutani Bottled Coconut Milk"
@@ -436,6 +441,7 @@
 /obj/item/reagent_container/food/drinks/cans/coconutmilk/Initialize()
 	. = ..()
 	reagents.add_reagent("coconutmilk", 30)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/soylent
 	name = "\improper Weyland-Yutani Premium Choco Soylent"
@@ -456,6 +462,7 @@
 	reagents.add_reagent("nutriment", 10)
 	reagents.add_reagent("soymilk", 10)
 	reagents.add_reagent("coco_drink", 10)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/bugjuice
 	name = "\improper Weyland-Yutani Bug Juice Protein Drink"
@@ -474,6 +481,7 @@
 /obj/item/reagent_container/food/drinks/cans/bugjuice/Initialize()
 	. = ..()
 	reagents.add_reagent("bugjuice", 30)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/beer
 	name = "\improper Weyland-Yutani Lite"
@@ -484,6 +492,7 @@
 /obj/item/reagent_container/food/drinks/cans/beer/Initialize()
 	. = ..()
 	reagents.add_reagent("beer", 30)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/drinks/cans/ale
 	name = "\improper Weyland-Yutani IPA"
@@ -495,6 +504,7 @@
 /obj/item/reagent_container/food/drinks/cans/ale/Initialize()
 	. = ..()
 	reagents.add_reagent("ale", 30)
+	AddElement(/datum/element/corp_label/wy)
 
 //SOUTO
 
@@ -505,6 +515,10 @@
 	item_state = "souto_classic"
 	center_of_mass = "x=16;y=10"
 	embeddable = 1
+
+/obj/item/reagent_container/food/drinks/cans/souto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet
 	name = "\improper Diet Souto"
@@ -712,3 +726,4 @@
 /obj/item/reagent_container/food/drinks/cans/aspen/Initialize()
 	. = ..()
 	reagents.add_reagent("beer", 50)
+	AddElement(/datum/element/corp_label/wy)

@@ -162,6 +162,8 @@
 /// Reagent doesn't randomly generate in chemicals
 #define REAGENT_NO_GENERATION (1<<5)
 
+#define REAGENT_TYPE_SPECIALIST (1<<6)
+
 /*
 	properties defines
 */

@@ -33,6 +33,7 @@ that said, the icon_states in the dmi files aren't culled for use by mappers - n
 	actual_casing = image(icon, icon_state)
 	actual_casing.appearance_flags = PIXEL_SCALE
 	actual_casing.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	actual_casing.layer = ABOVE_WEED_LAYER
 
 /obj/effect/decal/ammo_casing/cartridge
 	name = "spent cartridge"

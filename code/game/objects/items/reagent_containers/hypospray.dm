@@ -33,6 +33,12 @@
 /obj/item/reagent_container/hypospray/unique_action(mob/user)
 	hyposwitch(user)
 
+/obj/item/reagent_container/hypospray/pickup(mob/user)
+	. = ..()
+	if(.)
+		mode = initial(mode)
+		to_chat(user, SPAN_INFO("You pick up \the [src]. It's mode is defaulted to [mode == INJECTOR_MODE_PRECISE ? "precise" : mode == INJECTOR_MODE_FAST ? "fast" : "skilless"] injection mode."))
+
 /obj/item/reagent_container/hypospray/Destroy()
 	QDEL_NULL(mag)
 	. = ..()

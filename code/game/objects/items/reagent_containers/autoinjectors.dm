@@ -122,7 +122,7 @@
 	volume = 3
 	display_maptext = TRUE
 	maptext_label = "D+"
-	mode = INJECTOR_MODE_SKILLESS
+	mode = INJECTOR_MODE_FAST // look, its still gonna be just as good as injecting normally
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate
 	name = "anesthetic autoinjector"

@@ -2,7 +2,7 @@
 //*****************************HARD DRUGS AND NARCOTICS*****************************************************/
 //*****************************************************************************************************/
 
-/datum/reagent/narcotics/
+/datum/reagent/narcotics // parent
 	name = "Generic Narcotics"
 	description = "Generic mess of narcotics. Probably shouldn't have this."
 	reagent_state = LIQUID

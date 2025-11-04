@@ -11,12 +11,16 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 #define APC_COVER_REMOVED 2
 
 // APC charging status:
-/// The APC is not charging.
 #define APC_NOT_CHARGING 0
-/// The APC is charging.
 #define APC_CHARGING 1
-/// The APC is fully charged.
 #define APC_FULLY_CHARGED 2
+
+// APC main status:
+#define APC_MAIN_FAULTED 0
+#define APC_MAIN_NO_EXTERNAL 1
+#define APC_MAIN_LOW_EXTERNAL 2
+#define APC_MAIN_EXTERNAL 3
+#define APC_MAIN_LOCAL 4
 
 //update_state
 #define UPSTATE_CELL_IN 1
@@ -527,9 +531,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	if(stat & MAINT)
 		update_state |= UPSTATE_MAINT
 	if(opened)
-		if(opened == 1)
+		if(opened == APC_COVER_OPEN)
 			update_state |= UPSTATE_OPENED1
-		if(opened == 2)
+		else if(opened == APC_COVER_REMOVED)
 			update_state |= UPSTATE_OPENED2
 	else if(wiresexposed)
 		update_state |= UPSTATE_WIREEXP
@@ -543,14 +547,15 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(locked)
 			update_overlay |= APC_UPOVERLAY_LOCKED
 
-		if(!charging)
-			update_overlay |= APC_UPOVERLAY_CHARGEING0
-		else if(charging == APC_CHARGING)
-			update_overlay |= APC_UPOVERLAY_CHARGEING1
-		else if(charging == APC_FULLY_CHARGED)
-			update_overlay |= APC_UPOVERLAY_CHARGEING2
+		switch(charging)
+			if(APC_NOT_CHARGING)
+				update_overlay |= APC_UPOVERLAY_CHARGEING0
+			if(APC_CHARGING)
+				update_overlay |= APC_UPOVERLAY_CHARGEING1
+			if(APC_FULLY_CHARGED)
+				update_overlay |= APC_UPOVERLAY_CHARGEING2
 
-		if (!equipment)
+		if(!equipment)
 			update_overlay |= APC_UPOVERLAY_EQUIPMENT0
 		else if(equipment == 1)
 			update_overlay |= APC_UPOVERLAY_EQUIPMENT1
@@ -805,7 +810,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			qdel(W)
 			beenhit = 0
 			stat &= ~BROKEN
-			if(opened == 2)
+			if(opened == APC_COVER_REMOVED)
 				opened = APC_COVER_OPEN
 			update_icon()
 	else
@@ -824,7 +829,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 /obj/structure/machinery/power/apc/deconstruct(disassembled = TRUE)
 	if(disassembled)
-		if((stat & BROKEN) || opened == 2)
+		if((stat & BROKEN) || opened == APC_COVER_REMOVED)
 			new /obj/item/stack/sheet/metal(loc)
 		else
 			new /obj/item/frame/apc(loc)
@@ -1193,14 +1198,14 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 		//Set external power status
 		if(!power_drawn)
-			main_status = 0
+			main_status = APC_MAIN_NO_EXTERNAL
 		else if(power_excess < 0)
-			main_status = 1
+			main_status = APC_MAIN_LOW_EXTERNAL
 		else
-			main_status = 2
+			main_status = APC_MAIN_EXTERNAL
 
-		if (got_power_from_local_grid)
-			main_status = 3
+		if(got_power_from_local_grid)
+			main_status = APC_MAIN_LOCAL
 
 		//Set channels depending on how much charge we have left
 		// Allow the APC to operate as normal if the cell can charge
@@ -1267,7 +1272,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 					chargecount++
 				else
 					chargecount = 0
-					charging = APC_NOT_CHARGING
 
 				if(chargecount >= 10)
 					chargecount = 0
@@ -1288,6 +1292,10 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		environ = autoset(environ, 0)
 		area.poweralert(0, src)
 		autoflag = 0
+		if(shorted)
+			main_status = APC_MAIN_FAULTED
+		else
+			main_status = APC_MAIN_NO_EXTERNAL
 
 	//Update icon & area power if anything changed
 
@@ -1301,7 +1309,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 //on 0 = off, 1 = auto-on, 2 = auto-off
 
 /proc/autoset(val, on)
-
 	if(on == 0) //Turn things off
 		if(val == 2) //If on, return off
 			return 0
@@ -1569,4 +1576,44 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	pixel_x = -30
 	dir = 8
 
+#undef APC_COVER_CLOSED
+#undef APC_COVER_OPEN
+#undef APC_COVER_REMOVED
+
+#undef APC_NOT_CHARGING
+#undef APC_CHARGING
+#undef APC_FULLY_CHARGED
+
+#undef APC_MAIN_FAULTED
+#undef APC_MAIN_NO_EXTERNAL
+#undef APC_MAIN_LOW_EXTERNAL
+#undef APC_MAIN_EXTERNAL
+#undef APC_MAIN_LOCAL
+
+#undef UPSTATE_CELL_IN
+#undef UPSTATE_OPENED1
+#undef UPSTATE_OPENED2
+#undef UPSTATE_MAINT
+#undef UPSTATE_BROKE
+#undef UPSTATE_BLUESCREEN
+#undef UPSTATE_WIREEXP
+#undef UPSTATE_ALLGOOD
+
+#undef APC_UPOVERLAY_CHARGEING0
+#undef APC_UPOVERLAY_CHARGEING1
+#undef APC_UPOVERLAY_CHARGEING2
+#undef APC_UPOVERLAY_EQUIPMENT0
+#undef APC_UPOVERLAY_EQUIPMENT1
+#undef APC_UPOVERLAY_EQUIPMENT2
+#undef APC_UPOVERLAY_LIGHTING0
+#undef APC_UPOVERLAY_LIGHTING1
+#undef APC_UPOVERLAY_LIGHTING2
+#undef APC_UPOVERLAY_ENVIRON0
+#undef APC_UPOVERLAY_ENVIRON1
+#undef APC_UPOVERLAY_ENVIRON2
+#undef APC_UPOVERLAY_LOCKED
+#undef APC_UPOVERLAY_OPERATING
+
 #undef APC_UPDATE_ICON_COOLDOWN
+
+#undef MAXIMUM_GIVEN_POWER_TO_LOCAL_APC

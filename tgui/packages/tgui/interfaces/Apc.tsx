@@ -53,24 +53,39 @@ export const Apc = (props) => {
 };
 
 const powerStatusMap = {
-  3: {
+  4: {
     color: 'average',
     externalPowerText: 'Local Power',
-    chargingText: 'Charging',
   },
-  2: {
+  3: {
     color: 'good',
     externalPowerText: 'External Power',
+  },
+  2: {
+    color: 'average',
+    externalPowerText: 'Low External Power',
+  },
+  1: {
+    color: 'bad',
+    externalPowerText: 'No External Power',
+  },
+  0: {
+    color: 'bad',
+    externalPowerText: 'Electrical Fault',
+  },
+};
+
+const chargeStatusMap = {
+  2: {
+    color: 'good',
     chargingText: 'Fully Charged',
   },
   1: {
     color: 'average',
-    externalPowerText: 'Low External Power',
     chargingText: 'Charging',
   },
   0: {
     color: 'bad',
-    externalPowerText: 'No External Power',
     chargingText: 'Not Charging',
   },
 };
@@ -81,7 +96,7 @@ const ApcContent = (props) => {
   const externalPowerStatus =
     powerStatusMap[data.externalPower] || powerStatusMap[0];
   const chargingStatus =
-    powerStatusMap[data.chargingStatus] || powerStatusMap[0];
+    chargeStatusMap[data.chargingStatus] || chargeStatusMap[0];
   const channelArray = data.powerChannels || [];
   const adjustedCellChange = data.powerCellStatus
     ? data.powerCellStatus / 100

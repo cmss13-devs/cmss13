@@ -15,9 +15,9 @@
 	var/clearance_req = 5
 	///The change of price for item per purchase, recommended for mass producing stuff or limited upgrade.
 	var/change_purchase = 0
-	///the minimum price which we cant go any cheaper usually dont need to set this if change price is 0 or positive
+	///the minimum price which we cant go any cheaper usually don't need to set this if change price is 0 or positive
 	var/minimum_price = 0
-	///the maximum price which we cant go any more expensive, usually dont need to set this if change price is 0 or negative
+	///the maximum price which we cant go any more expensive, usually don't need to set this if change price is 0 or negative
 	var/maximum_price = INFINITY
 
 ///gets called once the product is purchased, override if you need to pass any special arguments or have special behavior on purchase.

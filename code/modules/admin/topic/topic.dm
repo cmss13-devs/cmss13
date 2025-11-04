@@ -2111,7 +2111,7 @@
 			dat += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
 			counter++
 
-		if(counter >= 5) //So things dont get squiiiiished!
+		if(counter >= 5) //So things don't get squiiiiished!
 			dat += "</tr><tr>"
 			counter = 0
 	dat += "</tr></table>"

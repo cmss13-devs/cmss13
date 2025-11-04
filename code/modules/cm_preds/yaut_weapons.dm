@@ -210,7 +210,7 @@
 				playsound(target, 'sound/effects/bang.ogg', 25, 0)
 				playsound(target,"slam", 50, 1)
 				animate(target, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
-				sleep(10) // This is so people dont spam click and lineup 300 executions, i know its probably not the best way to do it.
+				sleep(10) // This is so people don't spam click and lineup 300 executions, i know its probably not the best way to do it.
 				executing = FALSE
 
 		if((INTENT_HARM)) // This is how you farm combo counters, so there's no special interaction.

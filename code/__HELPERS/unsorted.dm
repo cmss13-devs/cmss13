@@ -1375,7 +1375,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 			switch(CONFIG_GET(number/explosive_antigrief))
 				if(ANTIGRIEF_DISABLED)
 					return FALSE
-				if(ANTIGRIEF_NEW_PLAYERS) //if they have less than 10 hours, dont let them prime nades
+				if(ANTIGRIEF_NEW_PLAYERS) //if they have less than 10 hours, don't let them prime nades
 					if(user.client && user.client.get_total_human_playtime() < JOB_PLAYTIME_TIER_1)
 						return TRUE
 				else //ANTIGRIEF_ENABLED

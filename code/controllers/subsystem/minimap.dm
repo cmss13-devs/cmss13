@@ -200,7 +200,7 @@ SUBSYSTEM_DEF(minimaps)
  * Holder datum for a zlevels data, concerning the overlays and the drawn level itself
  * The individual image trackers have a raw and a normal list
  * raw lists just store the images, while the normal ones are assoc list of [tracked_atom] = image
- * the raw lists are to speed up the Fire() of the subsystem so we dont have to filter through
+ * the raw lists are to speed up the Fire() of the subsystem so we don't have to filter through
  */
 /datum/hud_displays
 	///Actual icon of the drawn zlevel with all of it's atoms

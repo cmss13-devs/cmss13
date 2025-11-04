@@ -1,5 +1,5 @@
 ///*****************************LV-522 Force Recon Survivors*******************************************************/
-//Nanu told me to put them here so they dont clutter up survivors.dm
+//Nanu told me to put them here so they don't clutter up survivors.dm
 /datum/equipment_preset/survivor/forecon
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag

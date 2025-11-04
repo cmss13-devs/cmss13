@@ -52,7 +52,7 @@
 
 /datum/action/human_action/cycle_voice_level/action_activate()
 	. = ..()
-	if(!ishuman(owner)) // i actually dont know if this is necessary
+	if(!ishuman(owner)) // i actually don't know if this is necessary
 		return
 	var/mob/living/carbon/human/my_voice = owner
 	my_voice.cycle_voice_level()

@@ -1,6 +1,6 @@
 #define WO_MAX_WAVE 15
 
-//Global proc for checking if the game is whiskey outpost so I dont need to type if(gamemode == whiskey outpost) 50000 times
+//Global proc for checking if the game is whiskey outpost so I don't need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
 	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return 1

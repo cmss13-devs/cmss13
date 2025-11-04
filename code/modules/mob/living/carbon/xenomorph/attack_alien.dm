@@ -405,7 +405,7 @@
 //Default "structure" proc. This should be overwritten by sub procs.
 //If we sent it to monkey we'd get some weird shit happening.
 /obj/structure/attack_alien(mob/living/carbon/xenomorph/M)
-	// fuck off dont destroy my unslashables
+	// fuck off don't destroy my unslashables
 	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(M, SPAN_WARNING("We stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION

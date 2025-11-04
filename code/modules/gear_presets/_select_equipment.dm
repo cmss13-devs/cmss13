@@ -885,7 +885,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 /**
  * Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet.
  * For the most part you will stil get a shotgun but there is an off chance you get something unique.
- * If you dont like the weapon deal with it. Cursed ammo for shotguns is intentional for scarcity reasons.
+ * If you don't like the weapon deal with it. Cursed ammo for shotguns is intentional for scarcity reasons.
  * Some weapons may not appear at all in a colony so they will need the extra ammo.
  * MERC, and DB needed a handfull of shells to compete with the normal CMB.
  */

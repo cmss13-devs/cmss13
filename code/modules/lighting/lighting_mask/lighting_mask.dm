@@ -39,7 +39,7 @@
 	var/list/mutable_appearance/shadows
 	var/times_calculated = 0
 
-	//Please dont change these
+	//Please don't change these
 	var/calculated_position_x
 	var/calculated_position_y
 

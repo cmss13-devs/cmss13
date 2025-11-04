@@ -113,7 +113,7 @@
 	rotated_matrix *= transform
 	//Overlays cannot be edited while applied, meaning their transform cannot be changed.
 	//Disconnect the shadows from the overlay, apply the transform and then reapply them as an overlay.
-	//Oh also since the matrix is really weird standard rotation matrices wont work here.
+	//Oh also since the matrix is really weird standard rotation matrices won't work here.
 	overlays.Cut()
 	//Disconnect from parent matrix, become a global position
 	for(var/mutable_appearance/shadow as anything in shadows)	//Mutable appearances are children of icon

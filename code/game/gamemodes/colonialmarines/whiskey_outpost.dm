@@ -40,7 +40,7 @@
 
 	latejoin_larva_drop = 0 //You never know
 
-	//var/mob/living/carbon/human/Commander //If there is no Commander, marines wont get any supplies
+	//var/mob/living/carbon/human/Commander //If there is no Commander, marines won't get any supplies
 	//No longer relevant to the game mode, since supply drops are getting changed.
 	var/checkwin_counter = 0
 	var/finished = 0

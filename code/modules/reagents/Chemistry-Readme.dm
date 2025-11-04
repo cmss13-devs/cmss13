@@ -81,7 +81,7 @@ About the Holder:
 
 		add_reagent(reagent, amount, data)
 			Attempts to add X of the matching reagent to the holder.
-			You wont use this much. Mostly in new procs for pre-filled
+			You won't use this much. Mostly in new procs for pre-filled
 			objects.
 
 		remove_reagent(reagent, amount)

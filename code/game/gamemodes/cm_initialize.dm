@@ -747,7 +747,7 @@ Additional game mode variables.
 
 	return TRUE
 
-/datum/game_mode/proc/transfer_xeno(xeno_candidate, mob/living/new_xeno)
+/datum/game_mode/proc/transfer_xeno(xeno_candidate, mob/living/carbon/xenomorph/new_xeno)
 	if(!xeno_candidate || !isxeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE
 
@@ -770,7 +770,7 @@ Additional game mode variables.
 	else
 		CRASH("ERROR: transfer_xeno called without mob or mind input: [xeno_candidate]")
 
-	new_xeno.ghostize(FALSE) //Make sure they're not getting a free respawn.
+	new_xeno.ghostize(can_reenter_corpse=FALSE, aghosted=FALSE, transfer=TRUE) //Make sure they're not getting a free respawn.
 	xeno_candidate_mind.transfer_to(new_xeno, TRUE)
 	new_xeno.SetSleeping(0) // ghosting sleeps, but they got a new mind! wake up! (/mob/living/verb/ghost())
 
@@ -786,11 +786,9 @@ Additional game mode variables.
 			send_tacmap_assets_latejoin(new_xeno)
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
-	if(isxeno(new_xeno)) //Dear lord
-		var/mob/living/carbon/xenomorph/X = new_xeno
-		X.generate_name()
-		if(X.is_ventcrawling)
-			X.update_pipe_icons(X.loc) //If we are in a vent, fetch a fresh vent map
+	new_xeno.generate_name()
+	if(new_xeno.is_ventcrawling)
+		new_xeno.update_pipe_icons(new_xeno.loc) //If we are in a vent, fetch a fresh vent map
 	return TRUE
 
 /// Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup

@@ -474,44 +474,57 @@
 /mob/living/carbon/xenomorph/queen/generate_name()
 	if(!nicknumber)
 		generate_and_set_nicknumber()
+	// BANDAMARINES EDIT START
 	var/name_prefix = hive.prefix_fem || hive.prefix
+	var/queen_status = "Queen"
 	if(queen_aged)
 		age_xeno()
 		switch(age)
-			if(XENO_YOUNG)
-				name = "[name_prefix]Молодая [declent_ru_initial("Queen", NOMINATIVE, "Queen")]" //Young
-				ru_names_rename(ru_names_toml("Queen", "[name_prefix]Молодая ", override_base = name))
-			if(XENO_NORMAL)
-				name = "[name_prefix][declent_ru_initial("Queen", NOMINATIVE, "Queen")]"  //Regular
-				ru_names_rename(ru_names_toml("Queen", "[name_prefix]", override_base = name))
-			if(XENO_MATURE)
-				name = "[name_prefix]Старшая [declent_ru_initial("Queen", NOMINATIVE, "Queen")]"  //Mature
-				ru_names_rename(ru_names_toml("Queen", "[name_prefix]Старшая ", override_base = name))
-			if(XENO_ELDER)
-				name = "[name_prefix]Старшая [declent_ru_initial("Empress", NOMINATIVE, "Empress")]"  //Elite
-				ru_names_rename(ru_names_toml("Empress", "[name_prefix]Старшая ", override_base = name))
-			if(XENO_ANCIENT)
-				name = "[name_prefix]Древняя [declent_ru_initial("Empress", NOMINATIVE, "Empress")]" //Ancient
-				ru_names_rename(ru_names_toml("Empress", "[name_prefix]Древняя ", override_base = name))
-			if(XENO_PRIME)
-				name = "[name_prefix]Прайм [declent_ru_initial("Empress", NOMINATIVE, "Empress")]" //Primordial
-				ru_names_rename(ru_names_toml("Empress", "[name_prefix]Прайм ", override_base = name))
+			if(XENO_YOUNG) //Young
+				age_prefix = "Молодая "
+			if(XENO_NORMAL) //Regular
+				age_prefix = ""
+			if(XENO_MATURE) //Mature
+				age_prefix = "Старшая "
+			if(XENO_ELDER) //Elite
+				age_prefix = "Старшая "
+				queen_status = "Empress"
+			if(XENO_ANCIENT) //Ancient
+				age_prefix = "Древняя "
+				queen_status = "Empress"
+			if(XENO_PRIME)  //Primordial
+				age_prefix = "Прайм "
+				queen_status = "Empress"
 	else
 		age = XENO_NORMAL
 		if(client)
 			hud_update()
 
-		name = "[name_prefix]Неокрепшая [declent_ru_initial("Queen", NOMINATIVE, "Queen")]"
-		ru_names_rename(ru_names_toml("Queen", "[name_prefix]Неокрепшая ", override_base = name))
+		age_prefix = "Неокрепшая "
+
+	name = "[name_prefix][age_prefix][declent_ru_initial(queen_status, NOMINATIVE, queen_status)]"
 
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
+	var/name_postfix = ""
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 		if(client?.prefs?.show_queen_name)
-			name += " (" + replacetext((name_client_prefix + name_client_postfix), "-","") + ")"
+			name_postfix = " (" + replacetext((name_client_prefix + name_client_postfix), "-","") + ")"
+			name += name_postfix
 
+	ru_names_rename(ru_names_list(
+		base = name,
+		nominative = "[name_prefix][declent_ru_initial(age_prefix, NOMINATIVE, age_prefix)][declent_ru_initial(queen_status, NOMINATIVE, queen_status)][name_postfix]",
+		genitive = "[name_prefix][declent_ru_initial(age_prefix, GENITIVE, age_prefix)][declent_ru_initial(queen_status, GENITIVE, queen_status)][name_postfix]",
+		dative = "[name_prefix][declent_ru_initial(age_prefix, DATIVE, age_prefix)][declent_ru_initial(queen_status, DATIVE, queen_status)][name_postfix]",
+		accusative = "[name_prefix][declent_ru_initial(age_prefix, ACCUSATIVE, age_prefix)][declent_ru_initial(queen_status, ACCUSATIVE, queen_status)][name_postfix]",
+		instrumental = "[name_prefix][declent_ru_initial(age_prefix, INSTRUMENTAL, age_prefix)][declent_ru_initial(queen_status, INSTRUMENTAL, queen_status)][name_postfix]",
+		prepositional = "[name_prefix][declent_ru_initial(age_prefix, PREPOSITIONAL, age_prefix)][declent_ru_initial(queen_status, PREPOSITIONAL, queen_status)][name_postfix]",
+		gender = "[declent_ru_initial(queen_status, "gender", queen_status)]",
+	))
+	// BANDAMARINES EDIT END
 
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
 	color = hive.color

@@ -4,28 +4,28 @@
 nominative = "Грудолом"
 genitive = "Грудолома"
 dative = "Грудолому"
-accusative = "Грудолом"
+accusative = "Грудолома"
 instrumental = "Грудоломом"
 prepositional = "Грудоломе"
-gender = "female"
+gender = "male"
 
 ["Predalien Larva"]
 nominative = "Грудолом чужехищника"
 genitive = "Грудолома чужехищника"
 dative = "Грудолому чужехищника"
-accusative = "Грудолом чужехищника"
+accusative = "Грудолома чужехищника"
 instrumental = "Грудоломом чужехищника"
 prepositional = "Грудоломе чужехищника"
-gender = "female"
+gender = "male"
 
 ["Facehugger"]
 nominative = "Лицехват"
 genitive = "Лицехвата"
 dative = "Лицехвату"
-accusative = "Лицехват"
+accusative = "Лицехвата"
 instrumental = "Лицехватом"
 prepositional = "Лицехвате"
-gender = "female"
+gender = "male"
 
 ["Lesser Drone"]
 nominative = "Трутень"
@@ -34,16 +34,16 @@ dative = "Трутню"
 accusative = "Трутня"
 instrumental = "Трутнем"
 prepositional = "Трутне"
-gender = "female"
+gender = "male"
 
 ["Drone"]
 nominative = "Дрон"
 genitive = "Дрона"
 dative = "Дрону"
-accusative = "Дрон"
+accusative = "Дрона"
 instrumental = "Дроном"
 prepositional = "Дроне"
-gender = "female"
+gender = "male"
 
 ["Runner"]
 nominative = "Бегун"
@@ -52,7 +52,7 @@ dative = "Бегуну"
 accusative = "Бегуна"
 instrumental = "Бегуном"
 prepositional = "Бегуне"
-gender = "female"
+gender = "male"
 
 ["Sentinel"]
 nominative = "Страж"
@@ -61,7 +61,7 @@ dative = "Стражу"
 accusative = "Стража"
 instrumental = "Стражем"
 prepositional = "Страже"
-gender = "female"
+gender = "male"
 
 ["Defender"]
 nominative = "Защитник"
@@ -70,7 +70,7 @@ dative = "Защитнику"
 accusative = "Защитника"
 instrumental = "Защитником"
 prepositional = "Защитнике"
-gender = "female"
+gender = "male"
 
 ["Burrower"]
 nominative = "Копатель"
@@ -79,7 +79,7 @@ dative = "Копателю"
 accusative = "Копателя"
 instrumental = "Копателем"
 prepositional = "Копателе"
-gender = "female"
+gender = "male"
 
 ["Carrier"]
 nominative = "Носитель"
@@ -88,7 +88,7 @@ dative = "Носителю"
 accusative = "Носителя"
 instrumental = "Носителем"
 prepositional = "Носителе"
-gender = "female"
+gender = "male"
 
 ["Hivelord"]
 nominative = "Владыка улья"
@@ -97,7 +97,7 @@ dative = "Владыке улья"
 accusative = "Владыку улья"
 instrumental = "Владыкой улья"
 prepositional = "Владыке улья"
-gender = "female"
+gender = "male"
 
 ["Lurker"]
 nominative = "Охотник"
@@ -106,7 +106,7 @@ dative = "Охотнику"
 accusative = "Охотника"
 instrumental = "Охотником"
 prepositional = "Охотнике"
-gender = "female"
+gender = "male"
 
 ["Warrior"]
 nominative = "Воин"
@@ -115,7 +115,7 @@ dative = "Воину"
 accusative = "Воина"
 instrumental = "Воином"
 prepositional = "Воине"
-gender = "female"
+gender = "male"
 
 ["Spitter"]
 nominative = "Плевун"
@@ -124,16 +124,16 @@ dative = "Плевуну"
 accusative = "Плевуна"
 instrumental = "Плевуном"
 prepositional = "Плевуне"
-gender = "female"
+gender = "male"
 
 ["Boiler"]
 nominative = "Бойлер"
 genitive = "Бойлера"
 dative = "Бойлеру"
-accusative = "Бойлер"
+accusative = "Бойлера"
 instrumental = "Бойлером"
 prepositional = "Бойлере"
-gender = "female"
+gender = "male"
 
 ["Praetorian"]
 nominative = "Преторианец"
@@ -142,7 +142,7 @@ dative = "Преторианцу"
 accusative = "Преторианца"
 instrumental = "Преторианцем"
 prepositional = "Преторианце"
-gender = "female"
+gender = "male"
 
 ["Crusher"]
 nominative = "Крушитель"
@@ -151,7 +151,7 @@ dative = "Крушителю"
 accusative = "Крушителя"
 instrumental = "Крушителем"
 prepositional = "Крушителе"
-gender = "female"
+gender = "male"
 
 ["Ravager"]
 nominative = "Опустошитель"
@@ -160,7 +160,7 @@ dative = "Опустошителю"
 accusative = "Опустошителя"
 instrumental = "Опустошителем"
 prepositional = "Опустошителе"
-gender = "female"
+gender = "male"
 
 ["King"]
 nominative = "Король"
@@ -187,7 +187,7 @@ dative = "Чужехищнику"
 accusative = "Чужехищника"
 instrumental = "Чужехищником"
 prepositional = "Чужехищнике"
-gender = "female"
+gender = "male"
 
 ["Hellhound"]
 nominative = "Адская гончая"
@@ -214,4 +214,130 @@ dative = "Императрице"
 accusative = "Императрицу"
 instrumental = "Императрицей"
 prepositional = "Императрице"
+gender = "female"
+
+["Молодой "]
+nominative = "Молодой "
+genitive = "Молодого "
+dative = "Молодому "
+accusative = "Молодого "
+instrumental = "Молодым "
+prepositional = "Молодом "
+gender = "male"
+
+["Взрослый "]
+nominative = "Взрослый "
+genitive = "Взрослого "
+dative = "Взрослому "
+accusative = "Взрослого "
+instrumental = "Взрослым "
+prepositional = "Взрослом "
+gender = "male"
+
+["Старший "]
+nominative = "Старший "
+genitive = "Старшего "
+dative = "Старшему "
+accusative = "Старшего "
+instrumental = "Старшим "
+prepositional = "Старшем "
+gender = "male"
+
+["Древний "]
+nominative = "Древний "
+genitive = "Древнего "
+dative = "Древнему "
+accusative = "Древнего "
+instrumental = "Древним "
+prepositional = "Древнем "
+gender = "male"
+
+["Прайм "]
+nominative = "Прайм "
+genitive = "Прайм "
+dative = "Прайм "
+accusative = "Прайм "
+instrumental = "Прайм "
+prepositional = "Прайм "
+gender = "male"
+
+["Юный "]
+nominative = "Юный "
+genitive = "Юного "
+dative = "Юному "
+accusative = "Юного "
+instrumental = "Юным "
+prepositional = "Юном "
+gender = "male"
+
+["Бывалый "]
+nominative = "Бывалый "
+genitive = "Бывалого "
+dative = "Бывалому "
+accusative = "Бывалого "
+instrumental = "Бывалым "
+prepositional = "Бывалом "
+gender = "male"
+
+["Губительный "]
+nominative = "Губительный "
+genitive = "Губительного "
+dative = "Губительному "
+accusative = "Губительного "
+instrumental = "Губительным "
+prepositional = "Губительном "
+gender = "male"
+
+["Королевский "]
+nominative = "Королевский "
+genitive = "Королевского "
+dative = "Королевскому "
+accusative = "Королевского "
+instrumental = "Королевским "
+prepositional = "Королевском "
+gender = "male"
+
+["Адский "]
+nominative = "Адский "
+genitive = "Адского "
+dative = "Адскому "
+accusative = "Адского "
+instrumental = "Адским "
+prepositional = "Адском "
+gender = "male"
+
+["Молодая "]
+nominative = "Молодая "
+genitive = "Молодой "
+dative = "Молодой "
+accusative = "Молодую "
+instrumental = "Молодой "
+prepositional = "Молодой "
+gender = "female"
+
+["Старшая "]
+nominative = "Старшая "
+genitive = "Старшей "
+dative = "Старшей "
+accusative = "Старшую "
+instrumental = "Старшей "
+prepositional = "Старшей "
+gender = "female"
+
+["Древняя "]
+nominative = "Древняя "
+genitive = "Древней "
+dative = "Древней "
+accusative = "Древнюю "
+instrumental = "Древней "
+prepositional = "Древней "
+gender = "female"
+
+["Неокрепшая "]
+nominative = "Неокрепшая "
+genitive = "Неокрепшей "
+dative = "Неокрепшей "
+accusative = "Неокрепшую "
+instrumental = "Неокрепшей "
+prepositional = "Неокрепшей "
 gender = "female"

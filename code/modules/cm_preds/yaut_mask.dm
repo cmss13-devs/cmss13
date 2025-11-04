@@ -224,9 +224,10 @@
 		if(YAUTJA_MASK_LIGHTS_OFF)
 			set_light_mode(YAUTJA_MASK_LIGHTS_ON, hunter)
 		if(YAUTJA_MASK_LIGHTS_ON)
-			set_light_mode(YAUTJA_MASK_LIGHTS_GHOST, hunter)
-		if(YAUTJA_MASK_LIGHTS_GHOST)
+			//set_light_mode(YAUTJA_MASK_LIGHTS_GHOST, hunter)
 			set_light_mode(YAUTJA_MASK_LIGHTS_OFF, hunter)
+		//if(YAUTJA_MASK_LIGHTS_GHOST)
+		//	set_light_mode(YAUTJA_MASK_LIGHTS_OFF, hunter)
 
 /obj/item/clothing/mask/gas/yautja/proc/set_light_mode(new_mode, mob/living/carbon/human/hunter)
 	var/mob/living/carbon/human/user = hunter
@@ -245,8 +246,8 @@
 	switch(new_mode)
 		if(YAUTJA_MASK_LIGHTS_ON)
 			to_chat(user, SPAN_NOTICE("You activate your mask lights."))
-		if(YAUTJA_MASK_LIGHTS_GHOST)
-			to_chat(user, SPAN_NOTICE("Your mask lights will now bypass your cloak."))
+		//if(YAUTJA_MASK_LIGHTS_GHOST)
+		//	to_chat(user, SPAN_NOTICE("Your mask lights will now bypass your cloak."))
 		if(YAUTJA_MASK_LIGHTS_OFF)
 			to_chat(user, SPAN_NOTICE("You deactivate your mask lights."))
 

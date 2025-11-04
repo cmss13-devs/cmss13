@@ -1,14 +1,3 @@
-/mob/living/carbon/human/proc/get_armor_slowdown(obj/item/clothing/armor, obj/item/clothing/accessory/storage/exoskeleton/exo)
-	if(!istype(armor))
-		return 0
-
-	var/slowdown = armor.slowdown
-	if(exo)
-		var/replacement = exo.armor_slowdown_replacements["[slowdown]"]
-		if(!isnull(replacement))
-			slowdown = replacement
-	return slowdown
-
 /mob/living/carbon/human/movement_delay()
 	. = ..()
 
@@ -60,29 +49,13 @@
 		reducible_tally += hungry/50 //Goes from a slowdown of 1 all the way to 2 for total starvation
 
 	//Equipment slowdowns
-	var/list/all_accessories = list()
 	if(w_uniform)
-		all_accessories += w_uniform.accessories
-	if(wear_suit)
-		all_accessories += wear_suit.accessories
-
-	var/obj/item/clothing/accessory/storage/exoskeleton
-	if(all_accessories.len)
-		for(var/obj/item/clothing/accessory/accessory as anything in all_accessories)
-			if(istype(accessory, /obj/item/clothing/accessory/storage/exoskeleton))
-				exoskeleton = accessory
-				break
-
-	var/total_armor_slowdown = 0
-	total_armor_slowdown += get_armor_slowdown(w_uniform, exoskeleton)
-	total_armor_slowdown += get_armor_slowdown(wear_suit, exoskeleton)
-
-	if(w_uniform)
+		reducible_tally += w_uniform.slowdown
 		wear_slowdown_reduction += w_uniform.movement_compensation
-	if(wear_suit)
-		wear_slowdown_reduction += wear_suit.movement_compensation
 
-	reducible_tally += total_armor_slowdown
+	if(wear_suit)
+		reducible_tally += wear_suit.slowdown
+		wear_slowdown_reduction += wear_suit.movement_compensation
 
 
 	if(bodytemperature < species.cold_level_1 && !isyautja(src))
@@ -116,10 +89,7 @@
 	. += CONFIG_GET(number/human_delay)
 	var/list/movedata = list("move_delay" = .)
 	SEND_SIGNAL(src, COMSIG_HUMAN_POST_MOVE_DELAY, movedata)
-	var/new_delay = movedata["move_delay"]
-	if(move_delay != new_delay)
-		to_chat(src, "DEBUG: New move delay: [new_delay]", type = MESSAGE_TYPE_DEBUG)
-	move_delay = new_delay
+	move_delay = movedata["move_delay"]
 
 /mob/living/carbon/human/yautja/movement_delay()
 	. = ..()

@@ -2458,6 +2458,7 @@
 #include "code\modules\reagents\chemistry_reagents\drink.dm"
 #include "code\modules\reagents\chemistry_reagents\drugs.dm"
 #include "code\modules\reagents\chemistry_reagents\food.dm"
+#include "code\modules\reagents\chemistry_reagents\hydro_grown.dm"
 #include "code\modules\reagents\chemistry_reagents\medical.dm"
 #include "code\modules\reagents\chemistry_reagents\other.dm"
 #include "code\modules\reagents\chemistry_reagents\periodic_table.dm"

@@ -23,6 +23,7 @@
 	overdose = HIGH_REAGENTS_OVERDOSE
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	preferred_delivery = INGESTION
+	undesired_delivery = INHALATION
 	///higher numbers mean the booze will have an effect faster.
 	var/boozepwr = 5
 	///If it's a normal drink, let them drink a bit before they start feeling it.

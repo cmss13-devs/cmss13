@@ -246,6 +246,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_OCULOPEUTIC = 2)
+	preferred_delivery = CONTROLLED_INGESTION | INJECTION | TOUCH // eye drops, assuming people use it for that anyway
 
 /datum/reagent/medical/peridaxon
 	name = "Peridaxon"

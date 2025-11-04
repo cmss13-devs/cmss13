@@ -44,11 +44,11 @@
 #define INHALATION (1<<3)
 /// Delivery through surface-level touching
 #define TOUCH (1<<4)
-/// Delivery through absorption (e.g., skin contact, mucosal uptake, or non-vascular injection)
+/// Delivery through absorption such as subcutaneous injections (e.g., prolonged skin contact, mucosal uptake, or non-vascular injection)
 #define ABSORPTION (1<<5)
-/// Delivery through intravenous injections
+/// Delivery through intravenous or/and intramuscular injections
 #define INJECTION (1<<6)
-/// Delivery through implanted devices
+/// Delivery through implanted devices, for gameplay purposes, IV bags reflect this
 #define IMPLANTATION (1<<7)
 /// If any delivery method is acceptable
 #define ANY_DELIVERY (1<<8)

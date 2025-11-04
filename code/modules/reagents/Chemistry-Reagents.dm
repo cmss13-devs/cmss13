@@ -419,7 +419,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /datum/reagent/proc/calc_delivery_spectrum(method=TOUCH)
 	if(undesired_delivery & method || undesired_delivery == ANY_DELIVERY) // check the unpreferred first since we wanna fuck over any kind of bug abusers if they find a way to game this shit
 		return DELIVERY_NEGATIVE_EFFECT
-	if(preferred_delivery == NO_DELIVERY || preferred_delivery & method || preferred_delivery == ANY_DELIVERY) // we deliver the preferred effect for no_delivery as it would be better to assume that a future contrib forgot to set it, than to not have it
+	if(preferred_delivery == NO_DELIVERY || preferred_delivery & method || preferred_delivery == ANY_DELIVERY) // we deliver the preferred effect for no_delivery as it would be better to assume that a future contrib forgot to set it, than to not have it - nihi
 		return DELIVERY_PREFERRED_EFFECT
 
 	var/preferred_indices = list()

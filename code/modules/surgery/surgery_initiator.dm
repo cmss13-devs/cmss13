@@ -143,7 +143,7 @@
 		if(surgery_limb)
 			var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
 			if(blocker)
-				to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+				to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site! Take it off!"))
 				return
 
 		if(affecting)

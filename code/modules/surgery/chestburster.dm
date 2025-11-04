@@ -69,6 +69,7 @@
 		SPAN_NOTICE("[user] starts to carefully cut the tubes connecting the alien larva to your vital organs with \the [tool]."),
 		SPAN_NOTICE("[user] starts to carefully cut the tubes connecting the alien larva to [target]'s vital organs with \the [tool]."))
 
+	target.custom_pain("The larva is flailing and struggling in your [surgery.affected_limb.display_name] It hurts so much!", 1)
 	log_interact(user, target, "[key_name(user)] began cutting the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], attempting to begin [surgery].")
 
 /datum/surgery_step/cut_larval_pseudoroots/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -137,7 +138,7 @@
 			SPAN_NOTICE("[user] tries to forcefully rip the larva from your chest."),
 			SPAN_NOTICE("[user] tries to forcefully rip the larva from [target]'s chest."))
 
-	target.custom_pain("Something hurts horribly in your chest!",1)
+	target.custom_pain("IT'S COMING OUT! IT'S COMING OUT! AAAAAAARGH!",1)
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")
 
 /datum/surgery_step/remove_larva/success(mob/living/carbon/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -145,14 +146,14 @@
 	if(A)
 		if(tool)
 			user.affected_message(target,
-				SPAN_WARNING("You pull a wriggling parasite out of [target]'s ribcage!"),
-				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage!"),
+				SPAN_WARNING("You pull a wriggling parasite out of [target]'s ribcage! It's a girl!"),
+				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage! It's a girl! You feel monumentally better."),
 				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage!"))
 		else
 			user.affected_message(target,
-				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage!"),
-				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage!"),
-				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage!"))
+				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage! It's a girl!"),
+				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage! It's a girl! The heaviness in your chest is gone. You feel monumentally better."),
+				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage! It's a girl!"))
 			var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
 			impacted_organ.take_damage(5, FALSE)
 			if(target.stat == CONSCIOUS)

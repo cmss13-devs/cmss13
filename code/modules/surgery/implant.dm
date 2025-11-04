@@ -60,7 +60,7 @@
 		SPAN_NOTICE("[user] begins to open a pocket in your [surgery.affected_limb.cavity] wall with \the [tool]."),
 		SPAN_NOTICE("[user] begins to open a pocket in [target]'s [surgery.affected_limb.cavity] wall with \the [tool]."))
 
-	target.custom_pain("[user] is literally drilling a hole in your [surgery.affected_limb.display_name]!", 1)
+	target.custom_pain("AARGH! [user] is literally drilling a hole in your [surgery.affected_limb.display_name]! The vibrations! The pain!", 1)
 	log_interact(user, target, "[key_name(user)] started to make some space in [key_name(target)]'s [surgery.affected_limb.cavity] with \the [tool].")
 
 /datum/surgery_step/create_cavity/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -118,7 +118,7 @@
 		SPAN_NOTICE("[user] begins implanting \the [tool] into your [surgery.affected_limb.cavity]."),
 		SPAN_NOTICE("[user] begins implanting \the [tool] into [target]'s [surgery.affected_limb.cavity]."))
 
-	target.custom_pain("The pain in your [surgery.affected_limb.cavity] is living hell!", 1)
+	target.custom_pain("The pain in your [surgery.affected_limb.cavity] is a living hell!", 1)
 	log_interact(user, target, "[key_name(user)] started to put \the [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
 
 /datum/surgery_step/place_item/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -131,7 +131,7 @@
 
 	if(tool.w_class >= SIZE_SMALL)
 		to_chat(user, SPAN_WARNING("You tear some blood vessels trying to fit such a bulky object in the cavity."))
-		log_interact(user, target, "[key_name(user)] damaged some blood vessels while putting \the [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
+		log_interact(user, target, "[key_name(user)] damages some blood vessels while putting \the [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity] and they start bleeding.")
 
 		var/datum/wound/internal_bleeding/I = new (0)
 		surgery.affected_limb.add_bleeding(I, TRUE)

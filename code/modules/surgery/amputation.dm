@@ -61,10 +61,10 @@
 	var/muscle_type = target.get_muscle_type() //Uses the proc in surgery_steps.dm to fetch the correct type for the species.
 	user.affected_message(target,
 		SPAN_NOTICE("You begin to sever the [muscle_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_WARNING("[user] begins to sever the [muscle_type] in your [surgery.affected_limb.display_name]!"),
+		SPAN_WARNING("[user] begins to sever the [muscle_type] in your [surgery.affected_limb.display_name]! Somebody, help!"),
 		SPAN_NOTICE("[user] begins to sever the [muscle_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
-	target.custom_pain("Your [surgery.affected_limb.display_name] is being ripped apart!", 1)
+	target.custom_pain("It feels as if your [surgery.affected_limb.display_name] is being ripped apart!", 1)
 
 	if(tool.hitsound)
 		playsound(target.loc, tool.hitsound, 25, TRUE)
@@ -74,7 +74,7 @@
 	var/muscle_type = target.get_muscle_type()
 	user.affected_message(target,
 		SPAN_NOTICE("You finish severing the [muscle_type] in [target]'s [surgery.affected_limb.display_name]. They can be reattached if you've changed your mind, but once you start to cut through the bone you'll have to see it through to the end."),
-		SPAN_WARNING("[user] has severed the [muscle_type] in your [surgery.affected_limb.display_name]!"),
+		SPAN_WARNING("[user] has severed the [muscle_type] in your [surgery.affected_limb.display_name]! YOU CAN'T MOVE IT, ANYMORE! HELP!"),
 		SPAN_NOTICE("[user] has severed the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
 
 	log_interact(user, target, "[key_name(user)] successfully began an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool ? "\the [tool]" : "their hands"], starting [surgery].")
@@ -110,7 +110,7 @@
 		SPAN_NOTICE("[user] begins to stitch the [muscle_type] in your [surgery.affected_limb.display_name] back together with \the [tool]."),
 		SPAN_NOTICE("[user] begins to stitch the [muscle_type] in [target]'s [surgery.affected_limb.display_name] back together \the [tool]."))
 
-	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is unbearable!", 1)
+	target.custom_pain("The tightening of the stitches in your[surgery.affected_limb.display_name] feels unbearable!", 1)
 
 	log_interact(user, target, "[key_name(user)] attempted to abort an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 
@@ -118,7 +118,7 @@
 	var/muscle_type = target.get_muscle_type()
 	user.affected_message(target,
 		SPAN_NOTICE("You finish reconnecting the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] has reconnected the [muscle_type] in your [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] has reconnected the [muscle_type] in your [surgery.affected_limb.display_name]. You can move it your limb again. Great!"),
 		SPAN_NOTICE("[user] has reconnected the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
 
 	complete(target, surgery)
@@ -155,11 +155,11 @@
 	var/bone_type = target.get_bone_type()
 	user.affected_message(target,
 		SPAN_NOTICE("You start cutting through the [bone_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_WARNING("[user] starts cutting through the [bone_type] in your [surgery.affected_limb.display_name]!"),
+		SPAN_WARNING("[user] starts cutting through the [bone_type] in your [surgery.affected_limb.display_name]! SOMEBODY, PLEASE HELP!"),
 		SPAN_NOTICE("[user] starts cutting through the [bone_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
-	target.custom_pain("Your [surgery.affected_limb.display_name] is being hacked away!", 1)
-
+	target.custom_pain("Your [surgery.affected_limb.display_name] is being hacked away! ", 1)
+	target.emote("scream") //MY! ARRRRRRMMMM! -Scout from Team Fortress 2
 	if(tool.hitsound)
 		playsound(target.loc, tool.hitsound, 25, TRUE)
 
@@ -180,9 +180,9 @@
 
 	if(tool_type in cannot_hack) //Some tools are not cool enough to instantly hack off a limb.
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name]!"),
-			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of your [surgery.affected_limb.display_name]!"),
-			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name]!"))
+			SPAN_WARNING("Your hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name]! You broke it..."),
+			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of your [surgery.affected_limb.display_name], breaking it!"),
+			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], breaking it!"))
 
 		surgery.affected_limb.fracture()
 		target.apply_damage(20, BRUTE, surgery.affected_limb)
@@ -259,15 +259,15 @@
 		SPAN_NOTICE("[user] begins to mend torn [vasculature_type] in your stump with \the [tool]."),
 		SPAN_NOTICE("[user] begins to mend torn [vasculature_type] in [target]'s stump with \the [tool]."))
 
-	target.custom_pain("The pain in the stump of your [surgery.affected_limb.display_name] is bizarre and horrifying!", 1)
+	target.custom_pain("The stinging and tingling sensation in your [surgery.affected_limb.display_name] is bizarre and horrifying!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to mend torn [vasculature_type] in the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 
 /datum/surgery_step/close_ruptured_veins/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/vasculature_type = target.get_vasculature_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You finish repairing the [vasculature_type] in [target]'s stump."),
-		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in your stump."),
-		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in [target]'s stump."))
+		SPAN_NOTICE("You finish repairing the [vasculature_type] in [target]'s stump, stopping any bleeding."),
+		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in your stump. You stopped bleeding, if you were bleeding."),
+		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in [target]'s stump, stopping any bleeding."))
 
 	surgery.affected_limb.remove_all_bleeding()
 	log_interact(user, target, "[key_name(user)] mended [vasculature_type] in the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
@@ -314,7 +314,7 @@
 /datum/surgery_step/close_amputation/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You finish repairing the stump of [target]'s [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] finishes repairing the stump of your [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] finishes repairing the stump of your [surgery.affected_limb.display_name]. The pain stops. You feel much better."),
 		SPAN_NOTICE("[user] finishes repairing the stump of [target]'s [surgery.affected_limb.display_name]."))
 
 	surgery.affected_limb.setAmputatedTree()
@@ -343,7 +343,7 @@
 
 /datum/surgery_step/sever_prosthetic_clamps/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You start carefully cutting through the jammed clamps holding what's left of [target]'s prosthesic [surgery.affected_limb.display_name] on with \the [tool]."),
+		SPAN_NOTICE("You start carefully cutting through the jammed clamps holding what's left of [target]'s prosthetic [surgery.affected_limb.display_name] on with \the [tool]."),
 		SPAN_NOTICE("[user] starts carefully cutting through the jammed clamps holding what's left of your prosthetic [surgery.affected_limb.display_name] on with \the [tool]."),
 		SPAN_NOTICE("[user] starts carefully cutting through the jammed clamps holding what's left of [target]'s prosthetic [surgery.affected_limb.display_name] on with \the [tool]."))
 

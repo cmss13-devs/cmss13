@@ -34,7 +34,7 @@
 		SPAN_NOTICE("[user] starts to patch the damaged vein in your [surgery.affected_limb.display_name] with \the [tool]."),
 		SPAN_NOTICE("[user] starts to patch the damaged vein in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
-	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is unbearable!", 1)
+	target.custom_pain("The searing pain in your [surgery.affected_limb.display_name] is unbearable!", 1)
 	log_interact(user, target, "[key_name(user)] began repairing internal bleeding in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
 /datum/surgery_step/fix_vein/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -44,7 +44,7 @@
 
 	user.affected_message(target,
 		SPAN_NOTICE("You finish repairing [target]'s damaged vein."),
-		SPAN_NOTICE("[user] finishes repairing your damaged vein."),
+		SPAN_NOTICE("[user] finishes repairing your damaged vein. The discomfort in your limb fades."),
 		SPAN_NOTICE("[user] finishes repairing [target]'s damaged vein."))
 
 	for(var/datum/wound/W as anything in surgery.affected_limb.wounds)

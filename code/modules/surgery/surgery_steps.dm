@@ -148,14 +148,14 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 		switch(tool_modifier) //Implicitly means tool exists as accept_any_item item or accept_hand would = 1x. No message for 1x - that's the default.
 			if(SURGERY_TOOL_MULT_SUBOPTIMAL)
-				message += "this tool is[pick("n't ideal", " not the best")]"
+				message += "this tool is [pick("suitable, but there are better tools", "leaves something to be desired", "a bit unorthodox for this step")]"
 			if(SURGERY_TOOL_MULT_SUBSTITUTE)
-				message += "this tool is[pick("n't suitable", " a bad fit", " difficult to use")]"
+				message += "this tool [pick("has a better use for something else", "is not very practical for surgery ", "feels difficult to use")]"
 			if(SURGERY_TOOL_MULT_BAD_SUBSTITUTE)
-				message += "this tool is [pick("awful", "barely usable")]"
+				message += "this tool [pick("feels terrible to use in your hands", "makes you feel bad for using it", "unsuitable for surgery")]"
 				failure_penalties += 1
 			if(SURGERY_TOOL_MULT_AWFUL)
-				message += "this tool is [pick("awful", "barely usable")]"
+				message += "this tool [pick("is the worst thing you could use for this step", "comes with a pink slip", "makes you wish you were using anything else")]"
 				failure_penalties += 2
 
 		switch(surface_modifier)

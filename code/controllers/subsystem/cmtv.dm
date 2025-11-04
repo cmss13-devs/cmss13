@@ -357,7 +357,10 @@ SUBSYSTEM_DEF(cmtv)
 
 	if(successful)
 		opted_out_ckeys[trying_to_handoff.ckey] = world.time
-		to_chat(future_perspective, boxed_message("[SPAN_BIGNOTICE("Opted out of observation.")]\n\n [SPAN_NOTICE("You have successfully opted out of CMTV.")]"))
+		to_chat(trying_to_handoff, boxed_message("[SPAN_BIGNOTICE("Opted out of observation.")]\n\n [SPAN_NOTICE("You have successfully opted out of CMTV.")]"))
+
+		remove_action(trying_to_handoff, /datum/action/stop_cmtv)
+		remove_verb(trying_to_handoff, /mob/proc/handoff_cmtv)
 
 /datum/controller/subsystem/cmtv/proc/spectate_event(event, turf/where_to_look, how_long_for = 20 SECONDS, zoom_out = FALSE, when_start = 0)
 	if(!online())

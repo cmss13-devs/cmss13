@@ -109,8 +109,8 @@
 	if(stored_item && src.loc == mobber && !mobber.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
 		if(mobber.put_in_active_hand(stored_item))
 			mobber.visible_message(
-				SPAN_DANGER("[mobber] вынимает [stored_item.declent_ru()] из [declent_ru(GENITIVE)]."), // SS220 EDIT ADDICTION
-				SPAN_NOTICE("Вы вынимаете [stored_item.declent_ru()] из [declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
+				SPAN_DANGER("[capitalize(mobber.declent_ru(NOMINATIVE))] вынимает [stored_item.declent_ru(ACCUSATIVE)] из [declent_ru(GENITIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("Вы вынимаете [stored_item.declent_ru(ACCUSATIVE)] из [declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 			playsound(mobber, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 			stored_item = null
 			update_icon()
@@ -131,7 +131,7 @@
 					return
 				stored_item = object
 				mobber.drop_inv_item_to_loc(object, src)
-				to_chat(mobber, SPAN_NOTICE("Вы засовываете [object.declent_ru()] в [declent_ru()].")) // SS220 EDIT ADDICTION
+				to_chat(mobber, SPAN_NOTICE("Вы засовываете [object.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 				playsound(mobber, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 				update_icon()
 				break

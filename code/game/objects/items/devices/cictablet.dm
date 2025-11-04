@@ -84,7 +84,7 @@
 /obj/item/device/cotablet/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "CommandTablet", capitalize(declent_ru())) // SS220 EDIT ADDICTION
+		ui = new(user, src, "CommandTablet", capitalize(declent_ru(NOMINATIVE))) // SS220 EDIT ADDICTION
 		ui.open()
 
 /obj/item/device/cotablet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

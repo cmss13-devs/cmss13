@@ -84,7 +84,7 @@
 /obj/structure/machinery/sleep_console/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Sleeper", capitalize(declent_ru()), 550, 775) // BANDAMARINES EDIT - Translation
+		ui = new(user, src, "Sleeper", capitalize(declent_ru(NOMINATIVE)), 550, 775) // BANDAMARINES EDIT - Translation
 		ui.open()
 
 /obj/structure/machinery/sleep_console/ui_state(mob/user)

@@ -118,14 +118,14 @@
 	if(user.skills && !noskill)
 		if(!skillcheck(user, skill_to_check, skill_level))
 			if(!skill_to_check_alt || (!skillcheck(user, skill_to_check_alt, skill_level_alt)))
-				to_chat(user, SPAN_WARNING("Вы не знаете как использовать [declent_ru()]..."))
+				to_chat(user, SPAN_WARNING("Вы не знаете, как использовать [declent_ru(ACCUSATIVE)]..."))
 				return
 
 	defib_cooldown = world.time + 10 //1 second cooldown every time the defib is toggled
 	ready = !ready
-	var/ru_name_fluff_tool = declent_ru_initial(fluff_tool, NOMINATIVE, fluff_tool) // SS220 EDIT ADDICTION
+	var/ru_name_fluff_tool = declent_ru_initial(fluff_tool, ACCUSATIVE, fluff_tool) // SS220 EDIT ADDICTION
 	var/ru_name = declent_ru(GENITIVE) // SS220 EDIT ADDICTION
-	user.visible_message(SPAN_NOTICE("[ready? "[user] включает [ru_name] и вынимает [ru_name_fluff_tool]" : "[user] выключает [ru_name] и вставляет [ru_name_fluff_tool]"]."), // SS220 EDIT ADDICTION
+	user.visible_message(SPAN_NOTICE("[ready? "[capitalize(user.declent_ru(NOMINATIVE))] включает [ru_name] и вынимает [ru_name_fluff_tool]" : "[capitalize(user.declent_ru(NOMINATIVE))] выключает [ru_name] и вставляет [ru_name_fluff_tool]"]."), // SS220 EDIT ADDICTION
 	SPAN_NOTICE("[ready? "Вы включаете [ru_name] и вынимаете [ru_name_fluff_tool]" : "Вы выключаете [ru_name] и вставляете [ru_name_fluff_tool]"].")) // SS220 EDIT ADDICTION
 	if(should_spark)
 		playsound(get_turf(src), "sparks", 15, 1, 0)
@@ -159,13 +159,13 @@
 	return TRUE
 
 /obj/item/device/defibrillator/proc/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
-	var/ru_name_fluff_tool = declent_ru_initial(fluff_tool, NOMINATIVE, fluff_tool) // SS220 EDIT ADDICTION
-	var/ru_name = capitalize(declent_ru()) // SS220 EDIT ADDICTION
+	var/ru_name_fluff_tool = declent_ru_initial(fluff_tool, ACCUSATIVE, fluff_tool) // SS220 EDIT ADDICTION
+	var/ru_name = capitalize(declent_ru(NOMINATIVE)) // SS220 EDIT ADDICTION
 	if(!ishuman(H) || isyautja(H))
-		to_chat(user, SPAN_WARNING("Вы не можете провести дефибрилляцию [H], потому что непонятно куда приложить [ru_name_fluff_tool]!")) // SS220 EDIT ADDICTION
+		to_chat(user, SPAN_WARNING("Вы не можете провести дефибрилляцию [H.declent_ru(GENITIVE)], потому что непонятно куда приложить [ru_name_fluff_tool]!")) // SS220 EDIT ADDICTION
 		return
 	if(issynth(H))
-		to_chat(user, SPAN_WARNING("Вы не можете провести дефибрилляцию [H], потому что для синтетиков необходим ключ перезапуска!")) // SS220 EDIT ADDICTION
+		to_chat(user, SPAN_WARNING("Вы не можете провести дефибрилляцию [H.declent_ru(GENITIVE)], потому что для синтетиков необходим ключ перезапуска!")) // SS220 EDIT ADDICTION
 		return
 	if(!ready)
 		balloon_alert(user, "выньте [ru_name_fluff_tool]") // SS220 EDIT ADDICTION
@@ -202,8 +202,8 @@
 		return FALSE
 
 	//job knowledge requirement
-	var/ru_name_fluff_tool = declent_ru_initial(fluff_tool, NOMINATIVE, fluff_tool) // SS220 EDIT ADDICTION
-	var/ru_name = declent_ru() // SS220 EDIT ADDICTION
+	var/ru_name_fluff_tool = declent_ru_initial(fluff_tool, ACCUSATIVE, fluff_tool) // SS220 EDIT ADDICTION
+	var/ru_name = declent_ru(ACCUSATIVE) // SS220 EDIT ADDICTION
 	if(user.skills && !noskill)
 		if(!skillcheck(user, skill_to_check, skill_level))
 			if(!skill_to_check_alt || (!skillcheck(user, skill_to_check_alt, skill_level_alt)))
@@ -218,8 +218,8 @@
 		playsound_client(G.client, 'sound/effects/adminhelp_new.ogg')
 		to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Кто-то пытается оживить ваше тело. Вернитесь в него, если хотите возродиться!<br>(Откройте вкладку «Ghost» и выберите «Re-enter corpse» или <a href='byond://?src=\ref[G];reentercorpse=1'>нажмите здесь!</a>)"))) // SS220 EDIT ADDICTION
 
-	user.visible_message(SPAN_NOTICE("[user] начинает устанавливать [ru_name_fluff_tool] [fluff_target_part == "chest" ? "на груди" : "в порт перезапуска"] <b>[target]</b>."), // SS220 EDIT ADDICTION
-		SPAN_HELPFUL("Вы начинаете устанавливать [ru_name_fluff_tool] на [fluff_target_part == "chest" ? "на груди" : "в порт перезапуска"] <b>[target]</b>.")) // SS220 EDIT ADDICTION
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает устанавливать [ru_name_fluff_tool] [fluff_target_part == "chest" ? "на груди" : "в порт перезапуска"] <b>[target.declent_ru(GENITIVE)]</b>."), // SS220 EDIT ADDICTION
+		SPAN_HELPFUL("Вы начинаете устанавливать [ru_name_fluff_tool] на [fluff_target_part == "chest" ? "на груди" : "в порт перезапуска"] <b>[target.declent_ru(GENITIVE)]</b>.")) // SS220 EDIT ADDICTION
 	if(user.get_skill_duration_multiplier(SKILL_MEDICAL) == 0.35)
 		playsound(get_turf(src), sound_charge_skill4, 25, 0)
 	else if(user.get_skill_duration_multiplier(SKILL_MEDICAL) == 0.75)
@@ -229,8 +229,8 @@
 
 	//Taking square root not to make defibs too fast...
 	if(!do_after(user, (4 + (3 * user.get_skill_duration_multiplier(SKILL_MEDICAL))) SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-		user.visible_message(SPAN_WARNING("[user] убирает [ru_name_fluff_tool] [fluff_target_part == "chest" ? "с груди" : "из порта перезапуска"] <b>[target]</b>."), // SS220 EDIT ADDICTION
-		SPAN_WARNING("Вы убираете [ru_name_fluff_tool] [fluff_target_part == "chest" ? "с груди" : "из порта перезапуска"] <b>[target]</b>.")) // SS220 EDIT ADDICTION
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] убирает [ru_name_fluff_tool] [fluff_target_part == "chest" ? "с груди" : "из порта перезапуска"] <b>[target.declent_ru(GENITIVE)]</b>."), // SS220 EDIT ADDICTION
+		SPAN_WARNING("Вы убираете [ru_name_fluff_tool] [fluff_target_part == "chest" ? "с груди" : "из порта перезапуска"] <b>[target.declent_ru(GENITIVE)]</b>.")) // SS220 EDIT ADDICTION
 		return FALSE
 
 	if(!check_revive(target, user))
@@ -246,12 +246,12 @@
 	sparks.start()
 	dcell.use(charge_cost)
 	update_icon()
-	var/ru_name_fluff_tool = declent_ru_initial(fluff_tool, NOMINATIVE, fluff_tool) // SS220 EDIT ADDICTION
-	var/ru_name = capitalize(declent_ru()) // SS220 EDIT ADDICTION
+	var/ru_name_fluff_tool = declent_ru_initial(fluff_tool, ACCUSATIVE, fluff_tool) // SS220 EDIT ADDICTION
+	var/ru_name = capitalize(declent_ru(NOMINATIVE)) // SS220 EDIT ADDICTION
 	playsound(get_turf(src), sound_release, 25, 1)
-	user.visible_message(SPAN_NOTICE("[user] активирует [ru_name_fluff_tool] на <b>[target]</b>."), // SS220 EDIT ADDICTION
-		SPAN_HELPFUL("Вы активируете [ru_name_fluff_tool] на <b>[target]</b>.")) // SS220 EDIT ADDICTION
-	target.visible_message(SPAN_DANGER("Тело [target] слегка дёргается."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] активирует [ru_name_fluff_tool] на <b>[target.declent_ru(PREPOSITIONAL)]</b>."), // SS220 EDIT ADDICTION
+		SPAN_HELPFUL("Вы активируете [ru_name_fluff_tool] на <b>[target.declent_ru(PREPOSITIONAL)]</b>.")) // SS220 EDIT ADDICTION
+	target.visible_message(SPAN_DANGER("Тело [target.declent_ru(GENITIVE)] слегка дёргается."))
 	shock_cooldown = world.time + 10 //1 second cooldown before you can shock again
 
 	var/datum/internal_organ/heart/heart = target.internal_organs_by_name["heart"]
@@ -401,26 +401,25 @@
 		. += SPAN_NOTICE("You need some knowledge of electronics and circuitry to use this.")
 
 /obj/item/device/defibrillator/synthetic/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
-	var/ru_name = declent_ru() // SS220 EDIT ADDICTION
 	if(!issynth(H))
-		to_chat(user, SPAN_WARNING("Вы не можете использовать [ru_name] на живом существе!"))
+		to_chat(user, SPAN_WARNING("Вы не можете использовать [declent_ru(ACCUSATIVE)] на живом существе!"))
 		return FALSE
 	if(!ready)
 		balloon_alert(user, "activate it first!")
-		to_chat(user, SPAN_WARNING("Сначала вам нужно активировать [ru_name]."))
+		to_chat(user, SPAN_WARNING("Сначала вам нужно активировать [declent_ru(ACCUSATIVE)]."))
 		return FALSE
 	if(synthetic_type_locked && !istype(H.assigned_equipment_preset, synthetic_type_locked))
-		to_chat(user, SPAN_WARNING("Вы не можете использовать [ru_name] на этом типе синтетика!"))
+		to_chat(user, SPAN_WARNING("Вы не можете использовать [declent_ru(ACCUSATIVE)] на этом типе синтетика!"))
 		return FALSE
 	if(dcell.charge < charge_cost)
-		user.visible_message(SPAN_WARNING("[capitalize(ru_name)] издаёт звуковой сигнал: «Устройство разряжено! Необходимо подзарядка...»"))
+		user.visible_message(SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] издаёт звуковой сигнал: «Устройство разряжено! Необходимо подзарядка...»"))
 		return FALSE
 	if(H.stat != DEAD)
-		user.visible_message(SPAN_WARNING("[capitalize(ru_name)] издаёт звуковой сигнал: «Жизненные показатели в норме. Отмена...»"))
+		user.visible_message(SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] издаёт звуковой сигнал: «Жизненные показатели в норме. Отмена...»"))
 		return FALSE
 
 	if(!H.is_revivable())
-		user.visible_message(SPAN_WARNING("[capitalize(ru_name)] издаёт звуковой сигнал: «Процедура провалилась. Состояние устройства не позволяет восстановить его функционирование...»"))
+		user.visible_message(SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] издаёт звуковой сигнал: «Процедура провалилась. Состояние устройства не позволяет восстановить его функционирование...»"))
 		return FALSE
 
 	return TRUE

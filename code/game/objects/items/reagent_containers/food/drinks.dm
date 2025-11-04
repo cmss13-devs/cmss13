@@ -276,7 +276,7 @@
 /obj/item/reagent_container/food/drinks/cup/attack_self(mob/user)
 	. = ..()
 	if(user.a_intent == INTENT_HARM)
-		user.visible_message(SPAN_WARNING("[user] раздавливает [declent_ru()]!"), SPAN_WARNING("Вы раздавливаете [declent_ru()]!"))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] раздавливает [declent_ru(ACCUSATIVE)]!"), SPAN_WARNING("Вы раздавливаете [declent_ru(ACCUSATIVE)]!"))
 		if(reagents.total_volume > 0)
 			reagents.clear_reagents()
 			playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)

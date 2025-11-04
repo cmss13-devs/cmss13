@@ -290,7 +290,7 @@
 			var/reason = "Причина: Выздоровление пациента."
 			if(dead)
 				reason = "Причина: Смерть пациента."
-			ai_silent_announcement("Пациент [occupant.declent_ru()] был[genderize_ru(occupant.gender, "", "а", "о", "ы")] автоматически выписан из [declent_ru(GENITIVE)] в: [sanitize_area((get_area(occupant))?.name)]. [reason]", ":m")
+			ai_silent_announcement("Пациент [occupant.declent_ru(NOMINATIVE)] был[genderize_ru(occupant.gender, "", "а", "о", "ы")] автоматически выписан из [declent_ru(GENITIVE)] в: [sanitize_area((get_area(occupant))?.name)]. [reason]", ":m")
 	occupant = null
 	update_use_power(USE_POWER_IDLE)
 	update_icon()

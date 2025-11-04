@@ -21,7 +21,7 @@
 	. = ..()
 	if(W && !.)
 		if(!(W.flags_item & NOBLUDGEON))
-			visible_message(SPAN_DANGER("[user] ударил [declent_ru()] [W.declent_ru(INSTRUMENTAL)]!"), null, null, 5, CHAT_TYPE_MELEE_HIT) // SS220 EDIT ADDICTION
+			visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] ударя[pluralize_ru(user.gender, "ет", "ют")] [declent_ru(ACCUSATIVE)] [W.declent_ru(INSTRUMENTAL)]!"), null, null, 5, CHAT_TYPE_MELEE_HIT) // SS220 EDIT ADDICTION
 			user.animation_attack_on(src)
 			user.flick_attack_overlay(src, "punch")
 			return ATTACKBY_HINT_UPDATE_NEXT_MOVE

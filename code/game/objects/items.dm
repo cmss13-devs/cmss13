@@ -316,7 +316,7 @@
 			size = "огромного размера" // SS220 EDIT ADDICTION
 		if(SIZE_MASSIVE)
 			size = "гигантского размера" // SS220 EDIT ADDICTION
-	. += "Это [blood_color ? blood_color == COLOR_OIL ? "замасленн[genderize_ru(gender, "ый", "ая", "ое", "ые")] " : "окровавленн[genderize_ru(gender, "ый", "ая", "ое", "ые")] " : ""][icon2html(src, user)][declent_ru()]. Это предмет [size]." // SS220 EDIT ADDICTION
+	. += "Это [blood_color ? blood_color == COLOR_OIL ? "замасленн[genderize_ru(gender, "ый", "ая", "ое", "ые")] " : "окровавленн[genderize_ru(gender, "ый", "ая", "ое", "ые")] " : ""][icon2html(src, user)][declent_ru(NOMINATIVE)]. Это предмет [size]." // SS220 EDIT ADDICTION
 	if(desc)
 		. += desc
 	if(desc_lore)

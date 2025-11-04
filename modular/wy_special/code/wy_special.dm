@@ -22,21 +22,21 @@
 	if(overwrite)
 		. = FALSE
 		if(!issynth(H))
-			to_chat(user, SPAN_WARNING("Вы не можете использовать [src.declent_ru()] на живом существе!"))
+			to_chat(user, SPAN_WARNING("Вы не можете использовать [declent_ru(ACCUSATIVE)] на живом существе!"))
 			return
 		if(!ready)
 			balloon_alert(user, "сначала активируйте ключ!")
-			to_chat(user, SPAN_WARNING("Сначала активируйте [src.declent_ru()]."))
+			to_chat(user, SPAN_WARNING("Сначала активируйте [declent_ru(ACCUSATIVE)]."))
 			return
 		if(dcell.charge < charge_cost)
 			balloon_alert(user, "недостаточно заряда!")
-			to_chat(user, SPAN_WARNING("У [src.declent_ru()] недостаточно заряда!"))
+			to_chat(user, SPAN_WARNING("У [declent_ru(GENITIVE)] недостаточно заряда!"))
 			return
 		if(!H.client || !H.mind)
 			balloon_alert(user, "матрица личности не обнаружена!")
 			return
 
-		user.visible_message(SPAN_WARNING("[user.declent_ru()] подносит [src.declent_ru()] к небольшому разъему за ухом [H.declent_ru(GENITIVE)] и нажимает на неприметный переключатель"))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] подносит [declent_ru(ACCUSATIVE)] к небольшому разъему за ухом [H.declent_ru(GENITIVE)] и нажимает на неприметный переключатель"))
 		playsound(src, 'sound/items/synth_reset_key/shortbeep.ogg', 30)
 
 		to_chat(H, SPAN_ALERTWARNING(FONT_SIZE_LARGE("ВНИМАНИЕ! Зафиксировано вмешательство в системные процессы.")))
@@ -59,7 +59,7 @@
 		H.apply_effect(5 SECONDS, STUN)
 		H.apply_effect(5 SECONDS, WEAKEN)
 		overwrite(H, user)
-		user.visible_message(SPAN_WARNING("[src.declent_ru()] рассыпается в прах в руках [user.declent_ru(GENITIVE)]."))
+		user.visible_message(SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] рассыпается в прах в руках [user.declent_ru(GENITIVE)]."))
 		new /obj/effect/decal/cleanable/ash(get_turf(user))
 		qdel(src)
 	else

@@ -725,7 +725,7 @@
 /obj/structure/machinery/autodoc_console/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Autodoc", capitalize(declent_ru())) // BANDAMARINES EDIT - Translation
+		ui = new(user, src, "Autodoc", capitalize(declent_ru(NOMINATIVE))) // BANDAMARINES EDIT - Translation
 		ui.open()
 
 /obj/structure/machinery/autodoc_console/ui_state(mob/user)

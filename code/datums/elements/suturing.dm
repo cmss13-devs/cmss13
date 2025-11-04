@@ -60,7 +60,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 	if(!ishuman(target) || user.a_intent == INTENT_HARM)
 		return
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		to_chat(user, SPAN_WARNING("Вы не знаете, как лечить [user == target ? "себя" : target], используя [suturing_item.declent_ru()]!"))
+		to_chat(user, SPAN_WARNING("Вы не знаете, как лечить [user == target ? "себя" : target], используя [suturing_item.declent_ru(ACCUSATIVE)]!"))
 		return
 
 	INVOKE_ASYNC(src, PROC_REF(suture), suturing_item, user, target, target.get_limb(check_zone(user.zone_selected))) //do_after sleeps.
@@ -75,10 +75,10 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 		to_chat(user, SPAN_WARNING("У [user == target ? "вас" : target] нет [declent_ru_initial(target_limb.display_name, GENITIVE, target_limb.display_name)]!")) // SS220 EDIT ADDICTION
 		return
 	if(target_limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-		to_chat(user, SPAN_WARNING("Вы не можете починить роботизированную конечность, используя [suturing_item.declent_ru()]!")) // SS220 EDIT ADDICTION
+		to_chat(user, SPAN_WARNING("Вы не можете починить роботизированную конечность, используя [suturing_item.declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
 		return
 	if(target_limb.get_incision_depth())
-		to_chat(user, SPAN_WARNING("У [user == target ? "вас" : target] был сделан разрез на [ru_name_target_limb] и необходима хирургическая операция!")) // SS220 EDIT ADDICTION
+		to_chat(user, SPAN_WARNING("У [user == target ? "вас" : target] был сделан разрез на [ru_name_target_limb], и необходима хирургическая операция!")) // SS220 EDIT ADDICTION
 		return
 
 	//Figure out how much damage we can suture.

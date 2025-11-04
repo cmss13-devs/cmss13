@@ -212,7 +212,7 @@
 		playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 		return 0
 
-	to_chat(user, SPAN_NOTICE("Вы делаете укол [M], используя [declent_ru()].")) // SS220 EDIT ADDICTION
+	to_chat(user, SPAN_NOTICE("Вы делаете укол [M.declent_ru(DATIVE)], используя [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 	to_chat(M, SPAN_WARNING("Вы чувствуете лёгкий укол!"))
 	playsound(loc, injectSFX, injectVOL, 1)
 	SEND_SIGNAL(M, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)

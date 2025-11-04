@@ -73,7 +73,7 @@
 		return
 	if(anes_tank)
 		user.put_in_active_hand(anes_tank)
-		to_chat(user, SPAN_NOTICE("Вы вытащили [anes_tank.declent_ru()] из [declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
+		to_chat(user, SPAN_NOTICE("Вы вытащили [anes_tank.declent_ru(ACCUSATIVE)] из [declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 		anes_tank = null
 
 // Removing marines connected to anesthetic
@@ -253,7 +253,7 @@
 		if(!anes_tank)
 			user.drop_inv_item_to_loc(W, src)
 			anes_tank = W
-			to_chat(user, SPAN_NOTICE("Вы подключили [anes_tank.declent_ru()] к [declent_ru(DATIVE)]")) // SS220 EDIT ADDICTION
+			to_chat(user, SPAN_NOTICE("Вы подключили [anes_tank.declent_ru(ACCUSATIVE)] к [declent_ru(DATIVE)]")) // SS220 EDIT ADDICTION
 			return
 	if (istype(W, /obj/item/grab) && ishuman(user))
 		var/obj/item/grab/G = W

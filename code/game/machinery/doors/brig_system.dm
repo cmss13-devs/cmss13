@@ -153,7 +153,7 @@
 	// Sentence complete.
 	var/datum/crime_incident/incident = active_report.incident
 	if(REALTIMEOFDAY > incident.time_to_release)
-		ai_silent_announcement("ОТЧЁТНАЯ СИСТЕМА БРИГА: Срок отбыт: [incident.criminal_name]. Камера: [declent_ru()]. Требуется освобождение.", ":p")
+		ai_silent_announcement("ОТЧЁТНАЯ СИСТЕМА БРИГА: Срок отбыт: [incident.criminal_name]. Камера: [declent_ru(NOMINATIVE)]. Требуется освобождение.", ":p")
 		timer_end()
 
 	update_icon()

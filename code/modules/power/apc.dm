@@ -275,16 +275,16 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	return data
 
-/obj/structure/machinery/power/apc/ui_act(action, params)
+/obj/structure/machinery/power/apc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
-	if(. || !can_use(usr, 1))
+	if(. || !can_use(ui.user, 1))
 		return
 	var/target_wire = params["wire"]
 	if(locked && !target_wire) //wire cutting etc does not require the apc to be unlocked
-		to_chat(usr, SPAN_WARNING("\The [src] is locked! Unlock it by swiping an ID card or dogtag."))
+		to_chat(ui.user, SPAN_WARNING("\The [src] is locked! Unlock it by swiping an ID card or dogtag."))
 		return
-	add_fingerprint(usr)
+	add_fingerprint(ui.user)
 	switch(action)
 		if("lock")
 			locked = !locked
@@ -294,7 +294,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			coverlocked = !coverlocked
 			. = TRUE
 		if("breaker")
-			toggle_breaker(usr)
+			toggle_breaker(ui.user)
 			. = TRUE
 		if("charge")
 			chargemode = !chargemode
@@ -321,28 +321,28 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			. = TRUE
 			CHECK_TICK
 		if("overload")
-			if(isRemoteControlling(usr) && !aidisabled)
+			if(isRemoteControlling(ui.user) && !aidisabled)
 				overload_lighting()
 				. = TRUE
 		if("cut")
-			var/obj/item/held_item = usr.get_held_item()
+			var/obj/item/held_item = ui.user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(usr, SPAN_WARNING("You need wirecutters!"))
+				to_chat(ui.user, SPAN_WARNING("You need wirecutters!"))
 				return TRUE
 
 			if(isWireCut(target_wire))
-				mend(target_wire, usr)
+				mend(target_wire, ui.user)
 			else
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				cut(target_wire, usr)
+				cut(target_wire, ui.user)
 			. = TRUE
 		if("pulse")
-			var/obj/item/held_item = usr.get_held_item()
+			var/obj/item/held_item = ui.user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(usr, SPAN_WARNING("You need a multitool!"))
+				to_chat(ui.user, SPAN_WARNING("You need a multitool!"))
 				return TRUE
 			playsound(src.loc, 'sound/effects/zzzt.ogg', 25, 1)
-			pulse(target_wire, usr)
+			pulse(target_wire, ui.user)
 			. = TRUE
 	return TRUE
 

@@ -168,7 +168,7 @@
 			if(combo_counter >= 4 && target != user)
 				var/facing = get_dir(user, target)
 				var/reverse_facing = get_dir(target, user)
-				if(has_chain) // Generating the chain for the effect, its a bullet so it looks like youre "throwing it / it looks like its travelling"
+				if(has_chain) // Generating the chain for the effect, its a bullet so it looks like you're "throwing it / it looks like its travelling"
 					var/obj/projectile/hook_projectile = new /obj/projectile(user.loc, create_cause_data("hook"), user)
 					var/datum/ammo/ammoDatum = GLOB.ammo_list[/datum/ammo/yautja/gauntlet_hook]
 					hook_projectile.generate_bullet(ammoDatum, bullet_generator = user)

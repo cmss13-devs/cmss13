@@ -1289,7 +1289,7 @@ SUBSYSTEM_DEF(minimaps)
 ///async mousedown for the actual label placement handling
 /atom/movable/screen/minimap_tool/label/proc/async_mousedown(mob/source, atom/object, location, control, params)
 	// this is really [/atom/movable/screen/minimap/proc/get_coords_from_click] copypaste since we
-	// want to also cancel the click if they click src and I cant be bothered to make it even more generic rn
+	// want to also cancel the click if they click src and I can't be bothered to make it even more generic rn
 	var/atom/movable/screen/plane_master/minimap/plane_master = source.hud_used.plane_masters["[TACMAP_PLANE]"]
 
 	if(!plane_master)

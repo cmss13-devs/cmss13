@@ -478,13 +478,13 @@
 	name = "Faux Bicaridine"
 	id = "faux_bicaridine"
 	description = "An edible version of bicaridine engineered by the pharmaceutical industry as a way to mimic the taste of the real drug. Tastes like cherry cough syrup."
-	color = "#46271e" // rgb: 231, 85, 74
+	color = "#e7554a" // rgb: 231, 85, 74
 	properties = list(PROPERTY_NUTRITIOUS = 2, PROPERTY_NEOGENETIC = 1)
 
 /datum/reagent/nutriment/faux/tramadol
 	name = "Faux Tramadol"
 	id = "faux_tramadol"
 	description = "An edible version of tramadol engineered by the pharmaceutical industry as a way to mimic the taste of the real drug. Tastes like vanilla pudding."
-	color = "#46271e" // rgb: 215, 199, 224
+	color = "#d7c7e0" // rgb: 215, 199, 224
 	properties = list(PROPERTY_NUTRITIOUS = 2, PROPERTY_PAINKILLING = 1.5)
 

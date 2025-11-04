@@ -286,6 +286,13 @@
 
 			prefs.predator_cape_color = sanitize_hexcolor(color)
 
+		if("light_color")
+			var/selected = params["selected"]
+			if(!selected || !(selected in PRED_LIGHT_COLORS))
+				return
+
+			prefs.predator_light_color = selected
+
 	prefs.update_preview_icon()
 	return TRUE
 

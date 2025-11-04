@@ -36,20 +36,23 @@
 
 	if(faction_to_display == FACTION_MARINE)
 		for(var/mob/current_mob in targets)
+			var/turf/current_turf = get_turf(current_mob)
+			var/is_shipside = is_mainship_level(current_turf?.z)
+
 			if(isobserver(current_mob)) //observers see everything
-				continue // Valid target w/o garble
+				if(!is_shipside && !(current_turf.z in coms_zs))
+					targets_to_garble += current_mob
+				continue // Valid target
 
 			var/mob/living/carbon/human/current_human = current_mob
 			if(!istype(current_human) || current_human.stat != CONSCIOUS || isyautja(current_human)) //base human checks
 				targets -= current_human
 				continue // Invalid target
 
-			var/turf/current_turf = get_turf(current_human)
-			var/is_shipside = is_mainship_level(current_turf?.z)
 			if(is_shipside && !(istype(GLOB.master_mode, /datum/game_mode/extended/faction_clash))) // People on ship see everything, unless it is faction clash
 				continue // Valid target w/o garble
 
-			if(!is_shipside && !(current_human.z in coms_zs))
+			if(!is_shipside && !(current_turf.z in coms_zs))
 				targets_to_garble += current_human
 
 			// If they have iff AND a marine headset they will recieve announcements
@@ -74,23 +77,31 @@
 
 	else if(faction_to_display == "Everyone (-Yautja)")
 		for(var/mob/current_mob in targets)
+			var/turf/current_turf = get_turf(current_mob)
+			var/is_shipside = is_mainship_level(current_turf?.z)
+
 			if(isobserver(current_mob)) //observers see everything
-				continue // Valid target w/o garble
+				if(!is_shipside && !(current_turf.z in coms_zs))
+					targets_to_garble += current_mob
+				continue // Valid target
 
 			var/mob/living/carbon/human/current_human = current_mob
 			if(!istype(current_human) || current_human.stat != CONSCIOUS || isyautja(current_human))
 				targets -= current_human
 				continue // Invalid target
 
-			var/turf/current_turf = get_turf(current_human)
-			var/is_shipside = is_mainship_level(current_turf?.z)
-			if(!is_shipside && !(current_human.z in coms_zs))
+			if(!is_shipside && !(current_turf.z in coms_zs))
 				targets_to_garble += current_human
 
 	else
 		for(var/mob/current_mob in targets)
+			var/turf/current_turf = get_turf(current_mob)
+			var/is_shipside = is_mainship_level(current_turf?.z)
+
 			if(isobserver(current_mob)) //observers see everything
-				continue // Valid target w/o garble
+				if(!is_shipside && !(current_turf.z in coms_zs))
+					targets_to_garble += current_mob
+				continue // Valid target
 
 			var/mob/living/carbon/human/current_human = current_mob
 			if(!istype(current_human) || current_human.stat != CONSCIOUS || isyautja(current_human))
@@ -101,9 +112,7 @@
 				targets -= current_human
 				continue // Invalid target
 
-			var/turf/current_turf = get_turf(current_human)
-			var/is_shipside = is_mainship_level(current_turf?.z)
-			if(!is_shipside && !(current_human.z in coms_zs))
+			if(!is_shipside && !(current_turf.z in coms_zs))
 				targets_to_garble += current_human
 
 	if(!isnull(signature))

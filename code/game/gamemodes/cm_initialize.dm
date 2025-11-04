@@ -464,51 +464,51 @@ Additional game mode variables.
 
 /datum/game_mode/proc/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = FALSE)
 	var/list/available_xenos = list()
-	var/list/available_xenos_non_ssd = list()
 
 	var/mob/dead/observer/candidate_observer = null
 	if(isobserver(xeno_candidate))
 		candidate_observer = xeno_candidate
 
-	for(var/mob/living/carbon/xenomorph/cur_xeno as anything in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/cur_xeno in GLOB.living_xeno_list)
 		if(cur_xeno.aghosted)
 			continue //aghosted xenos don't count
 		var/area/area = get_area(cur_xeno)
 		if(should_block_game_interaction(cur_xeno) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
 			continue //xenos on admin z level don't count
-		if(!istype(cur_xeno))
+		if(cur_xeno.stat == DEAD)
 			continue
-		var/required_time = islarva(cur_xeno) ? XENO_LEAVE_TIMER_LARVA - cur_xeno.away_timer : XENO_LEAVE_TIMER - cur_xeno.away_timer
-		if(required_time > XENO_AVAILABLE_TIMER)
+		if(cur_xeno.health <= 0)
 			continue
-		if(!cur_xeno.client)
-			available_xenos += cur_xeno
-		else
-			available_xenos_non_ssd += cur_xeno
+		var/required_leave_time = islarva(cur_xeno) ? XENO_LEAVE_TIMER_LARVA : XENO_LEAVE_TIMER
+		var/min_time = instant_join ? 0 : XENO_AVAILABLE_TIMER
+		if(required_leave_time - cur_xeno.away_timer > min_time)
+			continue
+		available_xenos += cur_xeno
 
-	var/datum/hive_status/hive
-	for(var/hivenumber in GLOB.hive_datum)
-		hive = GLOB.hive_datum[hivenumber]
-		if(hive.hardcore)
-			continue
-		if(!hive.stored_larva)
-			continue
-		// Only offer buried larva if there is no queue because we are instead relying on the hive cores/larva pops to handle their larva:
-		// Technically this should be after a get_alien_candidates() call to be accurate, but we are intentionally trying to not call that proc as much as possible
-		if(hive.hive_location && GLOB.larva_pool_candidate_count > 0)
-			continue
-		if(!hive.hive_location && (world.time > XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time))
-			continue
+	if(!instant_join)
+		var/datum/hive_status/hive
+		for(var/hivenumber in GLOB.hive_datum)
+			hive = GLOB.hive_datum[hivenumber]
+			if(hive.hardcore)
+				continue
+			if(!hive.stored_larva)
+				continue
+			// Only offer buried larva if there is no queue because we are instead relying on the hive cores/larva pops to handle their larva:
+			// Technically this should be after a get_alien_candidates() call to be accurate, but we are intentionally trying to not call that proc as much as possible
+			if(hive.hive_location && GLOB.larva_pool_candidate_count > 0)
+				continue
+			if(!hive.hive_location && (world.time > XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time))
+				continue
 
-		if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
-			available_xenos |= "any buried larva"
-			LAZYADD(available_xenos["any buried larva"], hive)
-		else
-			var/larva_option = "buried larva ([hive])"
-			available_xenos += larva_option
-			available_xenos[larva_option] = list(hive)
+			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
+				available_xenos |= "any buried larva"
+				LAZYADD(available_xenos["any buried larva"], hive)
+			else
+				var/larva_option = "buried larva ([hive])"
+				available_xenos += larva_option
+				available_xenos[larva_option] = list(hive)
 
-	if(!length(available_xenos) || (instant_join && !length(available_xenos_non_ssd)))
+	if(!length(available_xenos))
 		var/is_new_player = isnewplayer(xeno_candidate)
 		if(!xeno_candidate.client?.prefs || (!(xeno_candidate.client.prefs.be_special & BE_ALIEN) && !is_new_player))
 			to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. \
@@ -535,9 +535,9 @@ Additional game mode variables.
 
 	var/mob/living/carbon/xenomorph/new_xeno
 	if(instant_join)
-		new_xeno = pick(available_xenos_non_ssd) //Just picks something at random.
+		new_xeno = pick(available_xenos) //Just picks something at random.
 	else
-		var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
+		var/userInput = tgui_input_list(xeno_candidate, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
 
 		if(available_xenos[userInput]) //Free xeno mobs have no associated value and skip this. "Pooled larva" strings have a list of hives.
 			var/datum/hive_status/picked_hive = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.

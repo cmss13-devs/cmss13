@@ -960,7 +960,6 @@
 		/obj/item/stack/cable_coil,
 		/obj/item/device/multitool,
 		/obj/item/tool/shovel/etool,
-		/obj/item/device/lightreplacer,
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/device/defibrillator/synthetic,
 		/obj/item/stack/rods,

@@ -20,9 +20,9 @@
 
 /obj/item/reagent_container/dropper/industrial // did you know this used to be its own DM file, and it was a literal copy of the parent??
 	name = "Industrial Dropper"
-	desc = "A larger dropper. Transfers 10 units."
+	desc = "A robust-looking dropper for measuring and transfering small units of liquid. Transfers up to 10 units."
 	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "dropper0"
+	icon_state = "robodropper"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(1,2,3,4,5,6,7,8,9,10)
 	volume = 10

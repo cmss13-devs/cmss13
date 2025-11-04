@@ -324,3 +324,251 @@
 	durationmod = 0.5
 	burncolor = "#ff9900"
 	chemclass = CHEM_CLASS_RARE
+
+
+// Chemfire supplements
+
+/datum/reagent/napalm
+	name = "Napalm"
+	id = "napalm"
+	description = "This will probably ignite before you get to read this."
+	reagent_state = LIQUID
+	color = "#ffb300"
+	chemfiresupp = TRUE
+	burncolor = "#D05006"
+	burn_sprite = "red"
+	properties = list(PROPERTY_OXIDIZING = 6, PROPERTY_FUELING = 7, PROPERTY_FLOWING = 1)
+
+/datum/reagent/napalm/sticky
+	name = "Sticky-Napalm"
+	id = "stickynapalm"
+	description = "A custom napalm mix, stickier and lasts longer but lower damage"
+	reagent_state = LIQUID
+	color = "#f8e3b2"
+	burncolor = "#f8e3b2"
+	burn_sprite = "dynamic"
+	intensitymod = -1.5
+	durationmod = -5
+	radiusmod = -0.5
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_5,
+		PROPERTY_RADIUS = 5,
+	)
+
+/datum/reagent/napalm/high_damage
+	name = "High-Combustion Napalm Fuel"
+	id = "highdamagenapalm"
+	description = "A custom napalm mix, higher damage but not as sticky"
+	reagent_state = LIQUID
+	color = "#c51c1c"
+	burncolor = "#c51c1c"
+	burn_sprite = "dynamic"
+	intensitymod = -4.5
+	durationmod = -1
+	radiusmod = -0.5
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_8,
+		PROPERTY_DURATION = BURN_TIME_TIER_1,
+		PROPERTY_RADIUS = 5,
+	)
+
+// This is the regular flamer fuel and pyro regular flamer fuel.
+/datum/reagent/napalm/ut
+	name = "UT-Napthal Fuel"
+	id = "utnapthal"
+	description = "Known as Ultra Thick Napthal Fuel, a sticky combustible liquid chemical, typically used with flamethrowers."
+	burncolor = "#EE6515"
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_5,
+		PROPERTY_DURATION = BURN_TIME_TIER_2,
+		PROPERTY_RADIUS = 5,
+	)
+
+// This is gellie fuel. Green Flames.
+/datum/reagent/napalm/gel
+	name = "Napalm B-Gel"
+	id = "napalmgel"
+	description = "Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess, while reacting with inorganic materials to ignite them."
+	flameshape = FLAMESHAPE_LINE
+	color = COLOR_GREEN
+	burncolor = COLOR_GREEN
+	burn_sprite = "green"
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_5,
+		PROPERTY_RADIUS = 7,
+	)
+	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
+
+// This is the blue flamer fuel for the pyro.
+/datum/reagent/napalm/blue
+	name = "Napalm X"
+	id = "napalmx"
+	description = "A sticky combustible liquid chemical that burns extremely hot."
+	color = "#00b8ff"
+	burncolor = "#00b8ff"
+	burn_sprite = "blue"
+	flags = REAGENT_TYPE_SPECIALIST
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_7,
+		PROPERTY_DURATION = BURN_TIME_TIER_4,
+		PROPERTY_RADIUS = 6,
+	)
+
+// This is the green flamer fuel for the pyro.
+/datum/reagent/napalm/green
+	name = "Napalm B"
+	id = "napalmb"
+	description = "A special variant of napalm that's unable to cling well to anything, but disperses over a wide area while burning slowly. The composition reacts with inorganic materials to ignite them, causing severe damage."
+	flameshape = FLAMESHAPE_TRIANGLE
+	color = COLOR_GREEN
+	burncolor = COLOR_GREEN
+	burn_sprite = "green"
+	flags = REAGENT_TYPE_SPECIALIST
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_5,
+		PROPERTY_RADIUS = 6,
+	)
+	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
+
+/datum/reagent/napalm/penetrating
+	name = "Napalm E"
+	id = "napalme"
+	description = "A sticky combustible liquid chemical that penetrates the best fire retardants."
+	color = COLOR_PURPLE
+	burncolor = COLOR_PURPLE
+	burn_sprite = "dynamic"
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_5,
+		PROPERTY_RADIUS = 6,
+		PROPERTY_FIRE_PENETRATING = 1,
+	)
+
+/datum/reagent/napalm/deathsquad //version of fuel for dsquad flamers.
+	name = "Napalm EX"
+	id = "napalmex"
+	description = "A sticky combustible liquid chemical made up of a combonation of rare and dangerous reagents both that penetrates the best fire retardants, and burns extremely hot."
+	color = "#641dd6"
+	burncolor = "#641dd6"
+	burn_sprite = "dynamic"
+	properties = list(
+		PROPERTY_INTENSITY 			= BURN_LEVEL_TIER_7,
+		PROPERTY_DURATION 			= BURN_TIME_TIER_4,
+		PROPERTY_RADIUS 			= 6,
+		PROPERTY_FIRE_PENETRATING	= 1
+	)
+
+/datum/reagent/napalm/upp
+	name = "R189"
+	id = "R189"
+	description = "A UPP chemical, it burns at an extremely high tempature and is designed to melt directly through fortified positions or bunkers."
+	color = "#ffe49c"
+	burncolor = "#ffe49c"
+	burn_sprite = "dynamic"
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_9,
+		PROPERTY_DURATION = BURN_TIME_TIER_3,
+		PROPERTY_RADIUS = 6,
+		PROPERTY_FIRE_PENETRATING = 1,
+	)
+
+/datum/reagent/chlorinetrifluoride
+	name = "Chlorine Trifluoride"
+	id = "chlorine trifluoride"
+	description = "A highly reactive interhalogen compound capaple of self ignition. A very strong oxidizer and is extremely reactive with most organic and inorganic materials."
+	reagent_state = LIQUID
+	color = COLOR_CYAN
+	custom_metabolism = 100
+	chemfiresupp = TRUE
+	burncolor = "#ff9300"
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_CORROSIVE = 6, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9, PROPERTY_IGNITING = 1)
+
+/datum/reagent/methane
+	name = "Methane"
+	id = "methane"
+	description = "An easily combustible hydrocarbon that can very rapidly expand a fire, even explosively at the right concentrations. It is used primarily as fuel to make heat and light or manufacturing of organic chemicals."
+	reagent_state = LIQUID
+	color = "#0064C8"
+	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
+	chemfiresupp = TRUE
+	burncolor = "#00a5ff"
+	burncolormod = 1.5
+	explosive = TRUE
+	power = 0.15
+	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_TOXIC = 2, PROPERTY_FLOWING = 3, PROPERTY_VISCOUS = 3, PROPERTY_FUELING = 2)
+
+//*****************************************************************************************************/
+//*****************************************Explosives**************************************************/
+//*****************************************************************************************************/
+
+/datum/reagent/potassium_hydroxide
+	name = "Potassium hydroxide"
+	id = "potassium_hydroxide"
+	description = "This will probably explode before you manage to read this."
+	explosive = TRUE
+	power = 0.5
+
+/datum/reagent/ammoniumnitrate
+	name = "Ammonium Nitrate"
+	id = "ammonium_nitrate"
+	description = "A white crystalline compound that is used in agriculture as a high-nitrogen fertilizer. On its own, ammonium nitrate is not explosive, but rapidly becomes so when mixed with fuel oil."
+	reagent_state = SOLID
+	color = "#E5E5E5"
+	explosive = TRUE
+	power = 0.4
+	falloff_modifier = 1.5
+	chemfiresupp = TRUE
+	durationmod = -0.2
+	intensitymod = 0.5
+	burncolor = "#ff9900"
+
+/datum/reagent/anfo
+	name = "Ammonium nitrate fuel oil"
+	id = "anfo"
+	color = "#E0E0E0"
+	description = "Ammonium nitrate fuel oil (ANFO) is a low cost bulk explosive commonly used for mining and construction operations."
+	explosive = TRUE
+	power = 1
+	falloff_modifier = -0.6
+
+/datum/reagent/nitroglycerin
+	name = "Nitroglycerin"
+	id = "nitroglycerin"
+	description = "Nitroglycerin is a heavy, colorless, oily, explosive liquid obtained by nitrating glycerol. Despite being a highly volatile material, it is used for many medical purposes."
+	reagent_state = LIQUID
+	color = COLOR_GRAY
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
+	explosive = TRUE
+	power = 1
+	falloff_modifier = -0.5
+
+/datum/reagent/cyclonite
+	name = "Cyclonite"
+	id = "cyclonite"
+	description = "Cyclonite is a low sensitivity highly explosive compound, commonly known as RDX. It is considered as one of the most energetic military high explosives. It is also sometimes used as a rat poison by civilians."
+	reagent_state = SOLID
+	color = "#E3E0BA"
+	explosive = TRUE
+	power = 1.5
+	falloff_modifier = -0.4
+
+/datum/reagent/cyclonite/on_mob_life(mob/living/M)
+	. = ..()
+	M.apply_damage(1, TOX)
+
+/datum/reagent/octogen
+	name = "Octogen"
+	id = "octogen"
+	description = "Octogen, also known as HMX or Her Majesty's Explosive, is a powerful and relatively insensitive explosive. It is one of the most potent chemical explosives available, exceeding that of cyclonite (RDX)."
+	reagent_state = SOLID
+	color = "#F5F5F5"
+	explosive = TRUE
+	power = 2
+	falloff_modifier = -0.2
+	chemfiresupp = TRUE
+	properties = list(PROPERTY_OXIDIZING = 2)

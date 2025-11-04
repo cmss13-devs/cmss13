@@ -192,8 +192,13 @@
 				var/datum/reagents/current_reagent = current_beaker.reagents
 				var/space = current_reagent.maximum_volume - current_reagent.total_volume
 
-				current_reagent.add_reagent(reagent_name, min(amount, chem_storage.energy * 10, space))
-				chem_storage.energy = max(chem_storage.energy - min(amount, chem_storage.energy * 10, space) / 10, 0)
+				if(reagent_name == "water")
+					current_reagent.add_reagent(reagent_name, min(amount, space))
+				else
+					var/dispense_amount = min(amount, chem_storage.energy * 10, space)
+					if (dispense_amount > 0)
+						current_reagent.add_reagent(reagent_name, dispense_amount)
+						chem_storage.energy = max(chem_storage.energy - dispense_amount / 10, 0)
 
 			. = TRUE
 

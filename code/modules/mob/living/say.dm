@@ -171,7 +171,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(not_dead_speaker)
 			langchat_speech(message, listening, speaking)
 		for(var/mob/M as anything in listening)
-			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
+			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol, message_mode)
 
 		for(var/obj/hearing_obj as anything in listening_obj)
 			if(hearing_obj) //It's possible that it could be deleted in the meantime.

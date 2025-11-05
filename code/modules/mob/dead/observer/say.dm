@@ -17,14 +17,14 @@
 
 	. = say_dead(message)
 
-/mob/dead/observer/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
+/mob/dead/observer/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol, message_mode)
 	if(!client)
 		return
 
 	if(!speaker)
 		return
 
-	if(italics && (client.prefs?.toggles_chat & CHAT_GHOSTRADIO) && verb == "says")
+	if(italics && (client.prefs?.toggles_chat & CHAT_GHOSTRADIO) && message_mode)
 		return
 
 	if(!speaker.client && (speaker.z != z || get_dist(speaker, src) > GLOB.world_view_size))

@@ -1,0 +1,5 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "contraband weapons box in hangar now has: R4T rifle, db shotgun, L54 pistol , NP92 pistol"
+  - rscdel: "L42A been removed from pool due to huge surplus of it in maints"

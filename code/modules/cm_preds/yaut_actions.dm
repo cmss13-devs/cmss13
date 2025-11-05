@@ -136,7 +136,7 @@
 	name = "Toggle Mask Lights"
 	action_icon_state = "mask_eyes"
 	require_bracers = TRUE //Needs bracer power to operate
-	listen_signal = COMSIG_KB_YAUTJA_MASK_TOGGLESIGHT
+	listen_signal = COMSIG_KB_YAUTJA_MASK_TOGGLELIGHTS
 
 /datum/action/predator_action/mask/lights/action_activate()
 	. = ..()

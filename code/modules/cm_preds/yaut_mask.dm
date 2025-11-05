@@ -228,10 +228,9 @@
 		if(YAUTJA_MASK_LIGHTS_OFF)
 			set_light_mode(YAUTJA_MASK_LIGHTS_ON, hunter)
 		if(YAUTJA_MASK_LIGHTS_ON)
-			//set_light_mode(YAUTJA_MASK_LIGHTS_GHOST, hunter)
+			set_light_mode(YAUTJA_MASK_LIGHTS_GHOST, hunter)
+		if(YAUTJA_MASK_LIGHTS_GHOST)
 			set_light_mode(YAUTJA_MASK_LIGHTS_OFF, hunter)
-		//if(YAUTJA_MASK_LIGHTS_GHOST)
-		//	set_light_mode(YAUTJA_MASK_LIGHTS_OFF, hunter)
 
 /obj/item/clothing/mask/gas/yautja/proc/set_light_mode(new_mode, mob/living/carbon/human/hunter, force = FALSE)
 	var/mob/living/carbon/human/user = hunter
@@ -250,8 +249,8 @@
 	switch(new_mode)
 		if(YAUTJA_MASK_LIGHTS_ON)
 			to_chat(user, SPAN_NOTICE("You activate your mask lights."))
-		//if(YAUTJA_MASK_LIGHTS_GHOST)
-		//	to_chat(user, SPAN_NOTICE("Your mask lights will now bypass your cloak."))
+		if(YAUTJA_MASK_LIGHTS_GHOST)
+			to_chat(user, SPAN_NOTICE("Your mask lights will now bypass your cloak."))
 		if(YAUTJA_MASK_LIGHTS_OFF)
 			to_chat(user, SPAN_NOTICE("You deactivate your mask lights."))
 
@@ -269,8 +268,11 @@
 
 	switch(mask_light_mode)
 		if(YAUTJA_MASK_LIGHTS_ON)
+			the_mask.overlays += light_overlay
 			the_mask.overlays += emissive_appearance(icon = 'icons/mob/humans/onmob/hunter/mask_light.dmi', icon_state = "[base_state]_light")
 		if(YAUTJA_MASK_LIGHTS_GHOST)
+			light_overlay = overlay_image('icons/mob/humans/onmob/hunter/mask_light.dmi', "[base_state]_light", mask_light_color, RESET_ALPHA|KEEP_APART)
+			the_mask.overlays += light_overlay
 			the_mask.overlays += emissive_appearance(icon = 'icons/mob/humans/onmob/hunter/mask_light.dmi', icon_state = "[base_state]_light")
 	return the_mask
 

@@ -98,8 +98,8 @@
 	flags_ammo_behavior = AMMO_SPECIAL_EMBED|AMMO_NO_DEFLECT|AMMO_STRIKES_SURFACE_ONLY|AMMO_HITS_TARGET_TURF
 	icon_state = "sharp_explosive_dart"
 	handful_state = "sharp_explosive"
-
-
+	hud_state = "sharp_he"
+	hud_state_empty = "sharp_empty"
 	shrapnel_chance = 100
 	accuracy = HIT_ACCURACY_TIER_MAX
 	accurate_range = 12
@@ -173,6 +173,7 @@
 /datum/ammo/rifle/sharp/incendiary
 	name = "9X-T sticky incendiary dart"
 	icon_state = "sharp_incendiary_dart"
+	hud_state = "sharp_incen"
 	handful_state = "sharp_incendiary"
 	embed_object = /obj/item/sharp/incendiary
 
@@ -214,6 +215,7 @@
 /datum/ammo/rifle/sharp/flechette
 	name = "9X-F flechette dart"
 	icon_state = "sharp_flechette_dart"
+	hud_state = "sharp_flech"
 	handful_state = "sharp_flechette"
 	embed_object = /obj/item/sharp/flechette
 	shrapnel_type = /datum/ammo/bullet/shotgun/flechette_spread

@@ -6,6 +6,8 @@
 
 /datum/ammo/bullet/sniper
 	name = "sniper bullet"
+	hud_state = "sniper"
+	hud_state_empty = "sniper_empty"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER
@@ -28,6 +30,7 @@
 
 /datum/ammo/bullet/sniper/incendiary
 	name = "incendiary sniper bullet"
+	hud_state = "sniper_fire"
 	damage_type = BRUTE
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER
@@ -56,6 +59,7 @@
 
 /datum/ammo/bullet/sniper/flak
 	name = "flak sniper bullet"
+	hud_state = "sniper_flak"
 	damage_type = BRUTE
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER
 
@@ -96,12 +100,13 @@
 
 /datum/ammo/bullet/sniper/upp
 	name = "armor-piercing sniper bullet"
+	hud_state = "sniper_ap"
 	damage = 80
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/sniper/anti_materiel
 	name = "anti-materiel sniper bullet"
-
+	hud_state = "sniper_heavy"
 	shrapnel_chance = 0 // This isn't leaving any shrapnel.
 	accuracy = HIT_ACCURACY_TIER_8
 	damage = 125
@@ -289,6 +294,7 @@
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target
 	name = "holo-targeting anti-materiel sniper bullet"
+	hud_state = "sniper_heavy_ht"
 	damage = 60 // it's a big bullet but its purpose is to support marines, not to kill enemies by itself
 	/// inflicts this many holo stacks per bullet hit
 	var/holo_stacks = 333
@@ -311,7 +317,7 @@
 
 /datum/ammo/bullet/sniper/elite
 	name = "supersonic sniper bullet"
-
+	hud_state = "sniper_supersonic"
 	shrapnel_chance = 0 // This isn't leaving any shrapnel.
 	accuracy = HIT_ACCURACY_TIER_8
 	damage = 150

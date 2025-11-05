@@ -49,7 +49,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/get_ammo_count()
 	if(!current_mag)
-		return 0
+		return FALSE
 	else
 		return current_mag.current_rounds
 

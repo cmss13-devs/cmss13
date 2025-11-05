@@ -142,7 +142,7 @@
 	w_class = SIZE_MEDIUM
 	gun_category = GUN_CATEGORY_HANDGUN
 	flags_equip_slot = SLOT_WAIST
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_ONE_HAND_WIELDED
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	ammo = /datum/ammo/energy/rxfm_eva
 	attachable_allowed = list(/obj/item/attachable/scope/variable_zoom/eva, /obj/item/attachable/eva_doodad)
 	starting_attachment_types = list(/obj/item/attachable/scope/variable_zoom/eva, /obj/item/attachable/eva_doodad)
@@ -246,7 +246,7 @@
 	charge_icon = "+taser"
 	black_market_value = 20
 	actions_types = list(/datum/action/item_action/taser/change_mode)
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK|GUN_CANT_EXECUTE
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK|GUN_CANT_EXECUTE|GUN_AMMO_COUNTER
 	/// Determines if the taser will hit any target, or if it checks for wanted status. Default is wanted only.
 	var/mode = TASER_MODE_P
 	var/skilllock = SKILL_POLICE_SKILLED

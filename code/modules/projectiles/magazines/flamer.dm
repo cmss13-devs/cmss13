@@ -26,8 +26,9 @@
 	var/max_range = 5
 	var/max_duration = 30
 
-	hud_state = "flame"
-	hud_state_empty = "flame_empty"
+	///Hud icon state for the flamethrower fuel type
+	var/hud_state = "flame"
+	var/hud_state_empty = "flame_empty"
 
 	var/fuel_pressure = 1 //How much fuel is used per tile fired
 	var/max_pressure = 10
@@ -239,8 +240,7 @@
 	desc = "A large fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through most flame-resistant materials, for use in the M240-T incinerator unit. Handle with extreme caution."
 	caliber = "Napalm EX"
 	flamer_chem = "napalmex"
-	hud_state = "flame_blue"
-
+	hud_state = "flame_ultra"
 	max_range = 7
 
 //Custom pyro tanks
@@ -309,5 +309,6 @@
 	name = "FW3 heavy incinerator tank (EX)"
 	desc = "A heavy fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through most flame-resistant materials, utilized by the Flammenwerfer 3 Heavy Incineration Unit. This has a blue, heat-resistant Weyland-Yutani logo on it. Handle with care."
 	caliber = "Napalm EX"
+	hud_state = "flame_ultra"
 	flamer_chem = "napalmex"
 	stripe_icon = TRUE

@@ -190,6 +190,7 @@
 	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the hornet shell shoots off holo-targeting .22lr rounds. The equivalent to buckshot at-range."
 	icon_state = "grenade_hornet"
 	item_state = "grenade_hornet_active"
+	hud_state = "grenade_agm_h"
 	shrapnel_count = 15
 	shrapnel_type = /datum/ammo/bullet/shrapnel/hornet_rounds
 	direct_hit_shrapnel = 5
@@ -200,6 +201,7 @@
 	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the star shells bursts into burning phosphor that illuminates the area."
 	icon_state = "grenade_starshell"
 	item_state = "grenade_starshell_active"
+	hud_state = "grenade_star"
 	shrapnel_count = 8
 	shrapnel_type = /datum/ammo/flare/starshell
 	direct_hit_shrapnel = 5
@@ -491,6 +493,7 @@
 		A bounding landmine mode is available for this weapon which activates a small drill to self-bury itself when planted. Simply plant it at your feet and walk away."
 	icon_state = "grenade_sebb"
 	item_state = "grenade_sebb"
+	hud_offset = "grenade_sebb"
 	det_time = 3 SECONDS
 	underslug_launchable = TRUE
 	/// Maximum range of effect
@@ -725,6 +728,7 @@
 	desc = "M74 - Airburst Grenade Munition - Smoke. This grenade must be launched with a grenade launcher, and detonates once it reaches its destination. Upon detonation, instantly combines multiple chemicals inside its casing to form a smoke cloud."
 	icon_state = "grenade_m74_airburst_s"
 	item_state = "grenade_m74_airburst_s_active"
+	hud_state = "grenade_agm_s"
 	det_time = 0 // Unused, because we don't use prime.
 	hand_throwable = FALSE
 	smoke_radius = 2
@@ -887,6 +891,7 @@
 	desc = "Cousin to the M15 Rubber pellet, the HIRR baton slug was recalled from military and civilian police forces due to over-packed propellant in the sabot casing. Now it is utilized as a less-than-lethal option in engagements with human, and sometimes non-human, forces. Historically, the HIRR was incredibly popular during the Arcturus conflict, as the impact force was found to reliably incapacitate Arcturian resistance forces by breaking their ribs into their lungs."
 	icon_state = "baton_slug"
 	item_state = "rubber_grenade"
+	hud_state = "grenade_rubber"
 	hand_throwable = FALSE
 	antigrief_protection = FALSE
 

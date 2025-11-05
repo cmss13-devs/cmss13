@@ -7,7 +7,8 @@
 /datum/ammo/bullet/rifle
 	name = "rifle bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
-
+	hud_state = "rifle"
+	hud_state_empty = "rifle_empty"
 	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_1
 	accurate_range = 16
@@ -20,6 +21,7 @@
 
 /datum/ammo/bullet/rifle/holo_target
 	name = "holo-targeting rifle bullet"
+	hud_state = "rifle_ht"
 	damage = 30
 	/// inflicts this many holo stacks per bullet hit
 	var/holo_stacks = 10
@@ -39,7 +41,7 @@
 
 /datum/ammo/bullet/rifle/explosive
 	name = "explosive rifle bullet"
-
+	hud_state = "rifle_heap"
 	damage = 25
 	accurate_range = 22
 	accuracy = 0
@@ -58,13 +60,14 @@
 
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
-
+	hud_state = "rifle_ap"
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_8
 
 // Basically AP but better. Focused at taking out armour temporarily
 /datum/ammo/bullet/rifle/ap/toxin
 	name = "toxic rifle bullet"
+	hud_state = "rifle_tox"
 	var/acid_per_hit = 7
 	var/organic_damage_mult = 3
 
@@ -98,14 +101,14 @@
 
 /datum/ammo/bullet/rifle/le
 	name = "armor-shredding rifle bullet"
-
+	hud_state = "rifle_ht"
 	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_4
 	pen_armor_punch = 5
 
 /datum/ammo/bullet/rifle/heap
 	name = "high-explosive armor-piercing rifle bullet"
-
+	hud_state = "rifle_heap"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage = 55//big damage, doesn't actually blow up because thats stupid.
 	penetration = ARMOR_PENETRATION_TIER_8
@@ -113,13 +116,14 @@
 /datum/ammo/bullet/rifle/rubber
 	name = "rubber rifle bullet"
 	sound_override = 'sound/weapons/gun_c99.ogg'
-
+	hud_state = "rifle_light"
 	damage = 0
 	stamina_damage = 15
 	shrapnel_chance = 0
 
 /datum/ammo/bullet/rifle/incendiary
 	name = "incendiary rifle bullet"
+	hud_state = "rifle_fire"
 	damage_type = BURN
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -137,6 +141,7 @@
 
 /datum/ammo/bullet/rifle/m4ra
 	name = "A19 high velocity bullet"
+	hud_state = "rifle_light"
 	shrapnel_chance = 0
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -149,6 +154,7 @@
 
 /datum/ammo/bullet/rifle/m4ra/incendiary
 	name = "A19 high velocity incendiary bullet"
+	hud_state = "rifle_fire"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	damage = 40
@@ -165,6 +171,7 @@
 
 /datum/ammo/bullet/rifle/m4ra/impact
 	name = "A19 high velocity impact bullet"
+	hud_state = "rifle_ht"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	damage = 40
@@ -193,12 +200,12 @@
 
 /datum/ammo/bullet/rifle/mar40
 	name = "heavy rifle bullet"
-
+	hud_state = "rifle_heavy"
 	damage = 55
 
 /datum/ammo/bullet/rifle/type71
 	name = "heavy rifle bullet"
-
+	hud_state = "rifle_heavy"
 	damage = 55
 	penetration = ARMOR_PENETRATION_TIER_3
 
@@ -209,14 +216,14 @@
 
 /datum/ammo/bullet/rifle/type71/ap
 	name = "heavy armor-piercing rifle bullet"
-
+	hud_state = "rifle_heavy_ap"
 	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_10
 
 
 /datum/ammo/bullet/rifle/type71/heap
 	name = "heavy high-explosive armor-piercing rifle bullet"
-
+	hud_state = "rifle_heavy_heap"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage = 65
 	penetration = ARMOR_PENETRATION_TIER_10
@@ -232,19 +239,20 @@
 
 /datum/ammo/bullet/rifle/l23/ap
 	name = "8.88mm armor-piercing rifle bullet"
-
+	hud_state = "rifle_ap"
 	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/rifle/l23/heap
 	name = "8.88mm high-explosive armor-piercing rifle bullet"
-
+	hud_state = "rifle_heap"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage = 65
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/rifle/l23/incendiary
 	name = "incendiary rifle bullet"
+	hud_state = "rifle_fire"
 	damage_type = BURN
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -262,6 +270,7 @@
 
 /datum/ammo/bullet/rifle/l23/ap/toxin
 	name = "toxic rifle bullet"
+	hud_state = "rifle_tox"
 	var/acid_per_hit = 7
 	var/organic_damage_mult = 3
 
@@ -282,7 +291,7 @@
 /datum/ammo/bullet/rifle/l23/rubber
 	name = "8.88mm rubber rifle bullet"
 	sound_override = 'sound/weapons/gun_c99.ogg'
-
+	hud_state = "rifle_light"
 	damage = 0
 	stamina_damage = 22
 	shrapnel_chance = 0
@@ -296,6 +305,6 @@
 
 /datum/ammo/bullet/rifle/l64/ap
 	name = "8.88x51 armour piercing squash-head bullet"
-
+	hud_state = "rifle_ap"
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_8

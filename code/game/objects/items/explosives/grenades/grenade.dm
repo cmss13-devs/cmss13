@@ -22,6 +22,7 @@
 	var/has_arm_sound = TRUE
 	var/underslug_launchable = FALSE
 	var/hand_throwable = TRUE
+	///Hud icon state for ammo counter
 	var/hud_state = "grenade_he"
 	var/hud_state_empty = "grenade_empty"
 	harmful = TRUE //Is it harmful? Are they banned for synths?

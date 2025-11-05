@@ -176,7 +176,7 @@
 				return
 		fire_grenade(target,user)
 
-		var/atom/movable/screen/gun_ammo_counter/counter = user.hud_used.gun_ammo_counter
+		var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
 		counter.update_hud(user)
 
 /obj/item/weapon/gun/launcher/grenade/proc/fire_grenade(atom/target, mob/user)

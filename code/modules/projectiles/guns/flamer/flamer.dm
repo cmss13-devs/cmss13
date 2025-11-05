@@ -412,7 +412,7 @@
 	if(current_mag)
 		to_chat(user, SPAN_WARNING("The gauge reads: <b>[floor(current_mag.get_ammo_percent())]</b>% fuel remains!"))
 
-	var/atom/movable/screen/gun_ammo_counter/counter = user.hud_used.gun_ammo_counter
+	var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
 	counter.update_hud(user)
 
 /obj/item/weapon/gun/flamer/get_ammo_type()
@@ -424,7 +424,7 @@
 
 /obj/item/weapon/gun/flamer/get_ammo_count()
 	if(!current_mag)
-		return 0
+		return FALSE
 	else
 		return round(current_mag.get_ammo_percent())
 

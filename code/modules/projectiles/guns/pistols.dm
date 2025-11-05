@@ -44,7 +44,7 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/pistol/unique_action(mob/user)
-		cock(user)
+	cock(user)
 
 /obj/item/weapon/gun/pistol/get_ammo_type()
 	if(!ammo)
@@ -74,7 +74,7 @@
 	icon_state = "m4a3"
 	item_state = "m4a3"
 	current_mag = /obj/item/ammo_magazine/pistol
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
@@ -191,10 +191,10 @@
 
 /obj/item/weapon/gun/pistol/m1911/custom
 	name = "\improper M1911C service pistol"
-	desc = "A variant of the legendary M1911 pistol in use by USCM command elements. Based off the modernized M48A4, it has been modified to more closely resemble a classic M1911 in shape, while retaining modern technology features like a discreet ammo counter. Chambered in .45 ACP."
+	desc = "A variant of the legendary M1911 pistol in use by USCM command elements. Based off the modernized M48A4, it has been modified to more closely resemble a classic M1911 in shape, while retaining modern materials and techniques used during production. Chambered in .45 ACP."
 	icon_state = "m1911c"
 	item_state = "m4a3"
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	current_mag = /obj/item/ammo_magazine/pistol/m1911/highimpact
 
 /obj/item/weapon/gun/pistol/m1911/custom/set_gun_config_values()
@@ -337,7 +337,7 @@
 	item_state = "np92"
 	fire_sound = "88m4"
 	current_mag = /obj/item/ammo_magazine/pistol/np92
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,
@@ -847,7 +847,7 @@
 	unload_sound = 'sound/weapons/gun_vp78_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/vp78
 	force = 8
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,

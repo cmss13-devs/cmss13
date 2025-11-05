@@ -808,7 +808,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		else //Max level skill of firearms.
 			wield_time -= 2*2
 
-	var/atom/movable/screen/gun_ammo_counter/counter = user.hud_used.gun_ammo_counter
+	var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
 	counter.add_hud(user)
 	counter.update_hud(user)
 	update_mouse_pointer(user, TRUE)
@@ -1762,7 +1762,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(current_mag)
 			var/chambered = in_chamber ? TRUE : FALSE
 			to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
-		var/atom/movable/screen/gun_ammo_counter/counter = user.hud_used.gun_ammo_counter
+		var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
 		counter.update_hud(user)
 
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
@@ -2054,7 +2054,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(gun_firemode == GUN_FIREMODE_AUTOMATIC)
 		reset_fire()
-		display_ammo()
+		display_ammo(gun_user)
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
 /obj/item/weapon/gun/proc/set_gun_user(mob/to_set)

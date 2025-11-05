@@ -136,6 +136,24 @@
 	QDEL_NULL(battery)
 	. = ..()
 
+/obj/item/weapon/gun/smartgun/get_ammo_type()
+	if(!ammo)
+		return list("smartgun", "smartgun_empty")
+	else //for clarity's sake, smartguns will not return the chamber ammo but the magazine ammo
+		return list(ammo.hud_state, ammo.hud_state_empty)
+
+/obj/item/weapon/gun/smartgun/get_ammo_count()
+	if(!current_mag)
+		return FALSE
+	else
+		return current_mag.current_rounds
+
+/obj/item/weapon/gun/smartgun/display_ammo(mob/user)
+	if(flags_gun_features & GUN_AMMO_COUNTER)
+		var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
+		counter.update_hud(user)
+	return //no text warn, would clutter chat
+
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
 

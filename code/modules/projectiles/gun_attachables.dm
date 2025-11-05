@@ -3032,7 +3032,7 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/attached_gun/proc/update_ammo_hud(mob/living/user)
-	var/atom/movable/screen/gun_ammo_counter/counter = user.hud_used.gun_ammo_counter
+	var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
 	counter.update_hud(user)
 
 /obj/item/attachable/attached_gun/proc/get_attachment_ammo_type()

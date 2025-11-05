@@ -62,7 +62,7 @@
 	if(flags_gun_features & GUN_AMMO_COUNTER)
 		if(current_mag && !(flags_gun_features & GUN_BURST_FIRING))
 			to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING"))
-		var/atom/movable/screen/gun_ammo_counter/counter = user.hud_used.gun_ammo_counter
+		var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
 		counter.update_hud(user)
 
 /obj/item/weapon/gun/revolver/get_ammo_type()

@@ -236,7 +236,7 @@
 
 /datum/chem_property/neutral/antispasmodic
 	name = PROPERTY_ANTISPASMODIC
-	code = "RLX"
+	code = "ASP"
 	description = "Relaxes smooth muscles and treats muscle spasms by blocking the neurotransmitter, acetylcholine. High concentrations can cause respiratory failure and cardiac arrest."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
@@ -337,7 +337,7 @@
 
 /datum/chem_property/neutral/atrichogenic
 	name = PROPERTY_ATRICHOGENIC
-	code = "BLD"
+	code = "ATR"
 	description = "Damages the hair follicles in the skin to disrupt the hair growth cycle, causing extreme alopecia, also referred to as baldness."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
@@ -361,7 +361,7 @@
 
 /datum/chem_property/neutral/trichogenic
 	name = PROPERTY_TRICHOGENIC
-	code = "FLF"
+	code = "TRI"
 	description = "Accelerates cell division in the hair follicles resulting in random and excessive hair growth. Found to increase yields in plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
@@ -544,7 +544,7 @@
 
 /datum/chem_property/neutral/hypnotic
 	name = PROPERTY_HYPNOTIC
-	code = "SDT"
+	code = "HYP"
 	description = "Causes the body to release melatonin resulting in increased sleepiness."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT

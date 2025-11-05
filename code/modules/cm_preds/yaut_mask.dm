@@ -130,10 +130,10 @@
 	update_zoom_action(src, user)
 	if(zoom)
 		RegisterSignal(src, COMSIG_ITEM_UNZOOM, PROC_REF(update_zoom_action))
-		playsound_client(user.client, 'sound/effects/pred_zoom_on.ogg', 50, 1)
+		playsound_client(user.client, 'sound/effects/pred_zoom_on.ogg', user, 50, 1)
 		return
 	else
-		playsound_client(user.client, 'sound/effects/pred_zoom_off.ogg', 50, 1)
+		playsound_client(user.client, 'sound/effects/pred_zoom_off.ogg', user, 50, 1)
 
 /obj/item/clothing/mask/gas/yautja/proc/update_zoom_action(source, mob/living/user)
 	UnregisterSignal(src, COMSIG_ITEM_UNZOOM)
@@ -189,7 +189,7 @@
 		if(VISION_MODE_OFF)
 			to_chat(user, SPAN_NOTICE("You deactivate your visor."))
 
-	playsound_client(user.client, 'sound/effects/pred_vision.ogg', 40, 1)
+	playsound_client(user.client, 'sound/effects/pred_vision.ogg', user, 40, 1)
 	user.update_inv_glasses()
 
 	var/datum/action/predator_action/mask/visor/visor_action
@@ -254,7 +254,7 @@
 		if(YAUTJA_MASK_LIGHTS_OFF)
 			to_chat(user, SPAN_NOTICE("You deactivate your mask lights."))
 
-	playsound_client(user.client, "pred_light_toggle", 40, 1)
+	playsound_client(user.client, "pred_light_toggle", hunter, 40, 1)
 	user.update_inv_wear_mask()
 
 /obj/item/clothing/mask/gas/yautja/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")

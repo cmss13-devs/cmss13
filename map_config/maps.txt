@@ -24,7 +24,7 @@ map prison_station_fop
 endmap
 
 map fiorina_sciannex
-	minplayers 130
+	minplayers 100
 endmap
 
 map corsat
@@ -34,7 +34,7 @@ map corsat
 endmap
 
 map desert_dam
-	minplayers 130
+	minplayers 110
 endmap
 
 map ice_colony_v2
@@ -50,14 +50,14 @@ map kutjevo
 endmap
 
 map sorokyne_strata
-	minplayers 110
+	minplayers 90
 endmap
 
 map lv522_chances_claim
 endmap
 
 map lv759_hybrisa_prospera
-	minplayers 130
+	minplayers 110
 endmap
 
 map new_varadero

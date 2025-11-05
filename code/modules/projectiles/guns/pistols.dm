@@ -46,6 +46,20 @@
 /obj/item/weapon/gun/pistol/unique_action(mob/user)
 		cock(user)
 
+/obj/item/weapon/gun/pistol/get_ammo_type()
+	if(!ammo)
+		return list("pistol", "pistol_empty")
+	else if(!in_chamber)
+		return list(ammo.hud_state, ammo.hud_state_empty)
+	else
+		return list(in_chamber.ammo.hud_state, in_chamber.ammo.hud_state_empty)
+
+/obj/item/weapon/gun/pistol/get_ammo_count()
+	if(!current_mag)
+		return in_chamber ? 1 : 0
+	else
+		return in_chamber ? (current_mag.current_rounds + 1) : current_mag.current_rounds
+
 /obj/item/weapon/gun/pistol/set_gun_config_values()
 	..()
 	movement_onehanded_acc_penalty_mult = 3
@@ -728,7 +742,7 @@
 	unload_sound = 'sound/weapons/gun_88m4_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/mod88
 	force = 8
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor/sleek,

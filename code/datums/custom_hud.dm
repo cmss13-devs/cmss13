@@ -69,6 +69,15 @@
 	var/UI_TEMP_LOC = "hud:3:2,9:19"
 	var/UI_NUTRITION_LOC = "EAST-1:28,5:11"
 
+	//Surgery mode button
+	var/ui_ammo_counter = "hud:3:64,8:1"
+
+	//Surgery mode button
+	var/ui_surgery_mode = "hud:1:-5,7:65"
+
+	//Minimap button
+	var/ui_minimap_button = "hud:3:60,7:-2"
+
 	//Backhud
 	var/ui_backhud = "hud:1,1"
 

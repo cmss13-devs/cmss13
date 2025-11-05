@@ -94,6 +94,9 @@
 	/// Whether or not this ammo ignores mobs that are lying down
 	var/hits_lying_mobs = FALSE
 
+	var/hud_state
+	var/hud_state_empty
+
 /datum/ammo/New()
 	set_bullet_traits()
 

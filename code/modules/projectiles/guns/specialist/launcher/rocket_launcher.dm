@@ -28,7 +28,7 @@
 		/obj/item/attachable/magnetic_harness,
 	)
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_INTERNAL_MAG
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
 	var/datum/effect_system/smoke_spread/smoke
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
@@ -38,6 +38,20 @@
 	. = ..()
 	smoke = new()
 	smoke.attach(src)
+
+/obj/item/weapon/gun/launcher/rocket/get_ammo_type()
+	if(!ammo)
+		return list("rocket_he", "rocket_empty")
+	else if(!in_chamber)
+		return list(ammo.hud_state, ammo.hud_state_empty)
+	else
+		return list(in_chamber.ammo.hud_state, in_chamber.ammo.hud_state_empty)
+
+/obj/item/weapon/gun/launcher/rocket/get_ammo_count()
+	if(!current_mag)
+		return 0
+	else
+		return current_mag.current_rounds
 
 /obj/item/weapon/gun/launcher/rocket/Destroy()
 	QDEL_NULL(smoke)

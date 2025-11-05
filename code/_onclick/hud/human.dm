@@ -92,89 +92,14 @@
 
 	if(!iszombie(owner))
 		draw_nutrition(ui_datum)
+		draw_surgery_mode(ui_datum)
 	draw_locator_spot(ui_datum)
 	draw_zone_sel(ui_datum)
 	draw_gun_related(ui_datum)
-
+	draw_minimap_button(ui_datum)
 	draw_backhud(ui_datum)
 	draw_screen_border(ui_datum)
-
-/mob/living/carbon/human/verb/toggle_hotkey_verbs()
-	set category = "OOC"
-	set name = "Toggle hotkey buttons"
-	set desc = "This disables or enables the user interface buttons which can be used with hotkeys."
-
-	if(hud_used.hotkey_ui_hidden)
-		client.add_to_screen(hud_used.hotkeybuttons)
-		hud_used.hotkey_ui_hidden = 0
-	else
-		client.remove_from_screen(hud_used.hotkeybuttons)
-		hud_used.hotkey_ui_hidden = TRUE
-
-/datum/hud/human/hidden_inventory_update(mob/viewer)
-	if(!mymob || !ui_datum)
-		return
-	var/mob/living/carbon/human/H = mymob
-	var/mob/screenmob = viewer || H
-
-	if(!screenmob?.client)
-		return
-
-	if(!length(gear))
-		inventory_shown = FALSE
-		return //species without inv slots don't show items.
-
-	if(H.hud_used.inventory_shown && H.hud_used.hud_shown)
-		if(H.shoes)
-			H.shoes.screen_loc = ui_datum.ui_shoes
-			screenmob.client.add_to_screen(H.shoes)
-		if(H.gloves)
-			H.gloves.screen_loc = ui_datum.ui_gloves
-			screenmob.client.add_to_screen(H.gloves)
-		if(H.wear_l_ear)
-			H.wear_l_ear.screen_loc = ui_datum.ui_wear_l_ear
-			screenmob.client.add_to_screen(H.wear_l_ear)
-		if(H.wear_r_ear)
-			H.wear_r_ear.screen_loc = ui_datum.ui_wear_r_ear
-			screenmob.client.add_to_screen(H.wear_r_ear)
-		if(H.glasses)
-			H.glasses.screen_loc = ui_datum.ui_glasses
-			screenmob.client.add_to_screen(H.glasses)
-		if(H.w_uniform)
-			H.w_uniform.screen_loc = ui_datum.ui_iclothing
-			screenmob.client.add_to_screen(H.w_uniform)
-		if(H.wear_suit)
-			H.wear_suit.screen_loc = ui_datum.ui_oclothing
-			screenmob.client.add_to_screen(H.wear_suit)
-		if(H.wear_mask)
-			H.wear_mask.screen_loc = ui_datum.ui_mask
-			screenmob.client.add_to_screen(H.wear_mask)
-		if(H.head)
-			H.head.screen_loc = ui_datum.ui_head
-			screenmob.client.add_to_screen(H.head)
-	else
-		if(H.shoes)
-			screenmob.client.remove_from_screen(H.shoes)
-		if(H.gloves)
-			screenmob.client.remove_from_screen(H.gloves)
-		if(H.wear_r_ear)
-			screenmob.client.remove_from_screen(H.wear_r_ear)
-		if(H.wear_l_ear)
-			screenmob.client.remove_from_screen(H.wear_l_ear)
-		if(H.glasses)
-			screenmob.client.remove_from_screen(H.glasses)
-		if(H.w_uniform)
-			screenmob.client.remove_from_screen(H.w_uniform)
-		if(H.wear_suit)
-			screenmob.client.remove_from_screen(H.wear_suit)
-		if(H.wear_mask)
-			screenmob.client.remove_from_screen(H.wear_mask)
-		if(H.head)
-			screenmob.client.remove_from_screen(H.head)
-
-	if(screenmob == mymob)
-		for(var/M in mymob.observers)
-			hidden_inventory_update(M)
+	draw_ammo_counter(ui_datum)
 
 /datum/hud/human/persistent_inventory_update(mob/viewer)
 	if(!mymob)
@@ -253,6 +178,7 @@
 		inv_box.screen_loc =  slot_data["loc"]
 		inv_box.slot_id =  slot_data["slot"]
 		inv_box.icon_state =  slot_data["state"]
+		inv_box.icon_full = "template"
 
 		if(slot_data["dir"])
 			inv_box.setDir(slot_data["dir"])
@@ -287,6 +213,24 @@
 	locate_leader.icon = ui_datum.ui_style_icon
 	locate_leader.screen_loc = ui_datum.UI_SL_LOCATOR_LOC
 	infodisplay += locate_leader
+
+/datum/hud/human/proc/draw_ammo_counter(datum/custom_hud/ui_datum)
+	gun_ammo_counter = new /atom/movable/screen/gun_ammo_counter()
+	gun_ammo_counter.icon = 'icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi'
+	gun_ammo_counter.screen_loc = ui_datum.ui_ammo_counter
+	infodisplay += gun_ammo_counter
+
+/datum/hud/human/proc/draw_surgery_mode(datum/custom_hud/ui_datum)
+	surgery_mode = new /atom/movable/screen/surgery_mode()
+	surgery_mode.icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
+	surgery_mode.screen_loc = ui_datum.ui_surgery_mode
+	infodisplay += surgery_mode
+
+/datum/hud/human/proc/draw_minimap_button(datum/custom_hud/ui_datum)
+	minimap_button = new /atom/movable/screen/minimap_button()
+	minimap_button.icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
+	minimap_button.screen_loc = ui_datum.ui_minimap_button
+	infodisplay += minimap_button
 
 /datum/hud/human/proc/draw_gun_related(datum/custom_hud/ui_datum)
 	use_attachment = new /atom/movable/screen/gun/attachment()

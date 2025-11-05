@@ -808,6 +808,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		else //Max level skill of firearms.
 			wield_time -= 2*2
 
+	var/atom/movable/screen/gun_ammo_counter/counter = user.hud_used.gun_ammo_counter
+	counter.add_hud(user)
+	counter.update_hud(user)
 	update_mouse_pointer(user, TRUE)
 	if(user.client)
 		RegisterSignal(user.client, COMSIG_CLIENT_RESET_VIEW, PROC_REF(handle_view))
@@ -821,6 +824,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(user.client)
 			UnregisterSignal(user.client, COMSIG_CLIENT_RESET_VIEW)
 		slowdown = initial(slowdown)
+	var/atom/movable/screen/gun_ammo_counter/counter = user.hud_used?.gun_ammo_counter
+	if(counter)
+		counter.remove_hud(user)
 
 /// SIGNAL_HANDLER for COMSIG_CLIENT_RESET_VIEW to ensure the mouse_pointer is set correctly
 /obj/item/weapon/gun/proc/handle_view(client/user, atom/target)
@@ -941,14 +947,15 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		current_mag.forceMove(get_turf(src))//Drop it on the ground.
 	else
 		user.put_in_hands(current_mag)
+		user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
+		SPAN_NOTICE("You unload [current_mag] from [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 
 	playsound(user, unload_sound, 25, 1, 5)
-	user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
-	SPAN_NOTICE("You unload [current_mag] from [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 	current_mag.update_icon()
 	current_mag = null
 
 	update_icon()
+	display_ammo(user)
 
 ///Unload a chambered round, if one exists, and empty the chamber.
 /obj/item/weapon/gun/proc/unload_chamber(mob/user)
@@ -1302,7 +1309,7 @@ and you're good to go.
 		if(fire_delay_group && delay_left > 0)
 			LAZYSET(user.fire_delay_next_fire, src, world.time + delay_left)
 	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src)
-
+	display_ammo(user)
 	shots_fired++
 
 	if(dual_wield && !fired_by_akimbo)
@@ -1414,6 +1421,7 @@ and you're good to go.
 			QDEL_NULL(projectile_to_fire)
 			in_chamber = null
 			reload_into_chamber(user) //Reload the sucker.
+			display_ammo(user)
 		else
 			click_empty(user)//If there's no projectile, we can't do much.
 			if(istype(current_revolver) && current_revolver.russian_roulette && current_revolver.current_mag && current_revolver.current_mag.current_rounds)
@@ -1734,6 +1742,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		dry_fire_text = "<b>*click*</b>"
 
 	if(user)
+		display_ammo(user)
 		to_chat(user, SPAN_WARNING(dry_fire_text))
 		playsound(user, actual_sound, 25, 1, 5) //5 tile range
 	else
@@ -1742,18 +1751,19 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/display_ammo(mob/user)
 	// Do not display ammo if you have an attachment
 	// currently activated
-	if(active_attachable)
-		return
 
 	if(!user)
 		user = gun_user
 
-	if(flags_gun_features & GUN_AMMO_COUNTER && current_mag)
+	if(flags_gun_features & GUN_AMMO_COUNTER)
 		// toggleable spam control.
 		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
 			return
-		var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
+		if(current_mag)
+			var/chambered = in_chamber ? TRUE : FALSE
+			to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
+		var/atom/movable/screen/gun_ammo_counter/counter = user.hud_used.gun_ammo_counter
+		counter.update_hud(user)
 
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
 /obj/item/weapon/gun/proc/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)
@@ -2111,7 +2121,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if((gun_firemode == GUN_FIREMODE_SEMIAUTO) || active_attachable)
 		Fire(object, gun_user, modifiers)
 		reset_fire()
-		display_ammo()
+		display_ammo(gun_user)
 		return
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE)
 

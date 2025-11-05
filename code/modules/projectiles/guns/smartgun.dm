@@ -36,7 +36,7 @@
 	unacidable = TRUE
 	explo_proof = TRUE
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	gun_category = GUN_CATEGORY_HEAVY
 	auto_retrieval_slot = WEAR_J_STORE
 	start_semiauto = FALSE
@@ -480,6 +480,7 @@
 	balloon_alert(user, "firing [secondary_toggled ? "armor piercing" : "highly precise"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
+	display_ammo(user)
 	var/datum/action/item_action/smartgun/toggle_ammo_type/TAT = locate(/datum/action/item_action/smartgun/toggle_ammo_type) in actions
 	TAT.update_icon()
 
@@ -949,7 +950,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/machineguns.dmi'
 	icon_state = "l56d"
 	item_state = "l56d"
-	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY
 	drum_cover_overlay = FALSE
 	gun_faction = FACTION_PMC
 	has_cover = FALSE
@@ -1157,7 +1158,7 @@
 	ammo_secondary_def = /datum/ammo/bullet/smartgun/holo_target/ap
 	ammo_primary_alt = /datum/ammo/bullet/smartgun/holo_target/alt
 	ammo_secondary_alt = /datum/ammo/bullet/smartgun/holo_target/ap/alt
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/machineguns.dmi'
 	icon_state = "la56"
 	item_state = "la56"
@@ -1171,7 +1172,7 @@
 	name = "\improper RFVS37 smartgun"
 	desc = "The actual firearm in the 2-piece RFVS37 Smartgun System. This experimental variant is used by the Union of Progressive Peoples units."
 	desc_lore = "Seeing the successful use of the M56 and L56 by the UA and 3WE Militaries during military conflicts such as the linna 349 campaign and the the australia wars, the UPP SOF saw a need for a similar self aiming LMG for their own units, following extensive trials the NORCOMM RFVS-37 was chosen, fulfilling all of the SOF's criteria."
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/machineguns.dmi'
 	icon_state = "rfvs37"
 	item_state = "rfvs37"

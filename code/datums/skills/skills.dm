@@ -102,16 +102,14 @@
 	if(!ishuman(owner))
 		return
 
-	// Give/remove surgery toggle action
-	var/datum/action/surgery_toggle/surgery_action = locate() in owner.actions
+	// Show/hide surgery toggle button
+	var/atom/movable/screen/surgery_mode/surgery_button = owner?.hud_used.surgery_mode
 	if(is_skilled(SKILL_SURGERY_NOVICE))
-		if(!surgery_action)
-			give_action(owner, /datum/action/surgery_toggle)
-		else
-			surgery_action.update_surgery_skill()
+		surgery_button.alpha = 255
+		surgery_button.mouse_opacity = MOUSE_OPACITY_ICON
 	else
-		if(surgery_action)
-			surgery_action.remove_from(owner)
+		surgery_button.alpha = 0
+		surgery_button.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /datum/skill/research
 	skill_name = SKILL_RESEARCH

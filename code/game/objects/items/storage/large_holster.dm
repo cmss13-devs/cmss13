@@ -391,6 +391,9 @@
 	linked_flamer.current_mag = active_fuel
 	linked_flamer.update_icon()
 
+	var/atom/movable/screen/gun_ammo_counter/counter = user.hud_used.gun_ammo_counter
+	counter.update_hud(user)
+
 	return TRUE
 
 /obj/item/storage/large_holster/fuelpack/verb/toggle_fuel()

@@ -16,7 +16,6 @@
 }
 
 SHOW_ON_STATUSBAR(/mob)
-SHOW_ON_STATUSBAR(/obj/item)
 SHOW_ON_STATUSBAR(/obj/structure)
 SHOW_ON_STATUSBAR(/obj/effect)
 SHOW_ON_STATUSBAR(/atom/movable/screen/action_button)

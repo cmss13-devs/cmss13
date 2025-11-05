@@ -317,7 +317,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/shotguns.dmi'
 	icon_state = "mk221"
 	item_state = "mk221"
-
 	fire_sound = "gun_shotgun_tactical"
 	firesound_volume = 20
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
@@ -412,7 +411,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
 	auto_retrieval_slot = WEAR_J_STORE
 	start_automatic = TRUE
 
@@ -655,6 +654,20 @@ can cause issues with ammo types getting mixed up during the burst.
 		unwield(user)
 	open_chamber(user)
 
+/obj/item/weapon/gun/shotgun/get_ammo_type()
+	if(!ammo)
+		return list("shotgun_slug", "shotgun_empty")
+	else if(!in_chamber)
+		return list(ammo.hud_state, ammo.hud_state_empty)
+	else
+		return list(in_chamber.ammo.hud_state, in_chamber.ammo.hud_state_empty)
+
+/obj/item/weapon/gun/shotgun/get_ammo_count()
+	if(!current_mag)
+		return in_chamber ? 1 : 0
+	else
+		return in_chamber ? (current_mag.current_rounds + 1) : current_mag.current_rounds
+
 /obj/item/weapon/gun/shotgun/double/check_chamber_position()
 	if(!current_mag)
 		return
@@ -872,7 +885,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	fire_sound = 'sound/weapons/gun_mou53.ogg'
 	reload_sound = 'sound/weapons/handling/gun_mou_reload.ogg'//unique shell insert
 	flags_equip_slot = SLOT_BACK
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/mou53 //Take care, she comes loaded!
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,

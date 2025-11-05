@@ -28,6 +28,7 @@
 	var/atom/movable/screen/locate_marker
 	var/atom/movable/screen/locate_nuke
 	var/atom/movable/screen/pred_power_icon
+
 	var/atom/movable/screen/alien_backhud
 	var/atom/movable/screen/alien_health_doll
 
@@ -59,10 +60,10 @@
 	var/atom/movable/screen/healths
 	var/atom/movable/screen/bodytemp_icon
 
-	var/atom/movable/screen/gun_setting_icon
-	var/atom/movable/screen/gun_item_use_icon
-	var/atom/movable/screen/gun_move_icon
-	var/atom/movable/screen/gun_run_icon
+	var/atom/movable/screen/gun_ammo_counter
+
+	var/atom/movable/screen/surgery_mode
+	var/atom/movable/screen/minimap_button
 
 	var/list/atom/movable/screen/plane_master/plane_masters = list() // see "appearance_flags" in the ref, assoc list of "[plane]" = object
 	///Assoc list of controller groups, associated with key string group name with value of the plane master controller ref
@@ -135,6 +136,7 @@
 	locate_leader = null
 	locate_marker = null
 	pred_power_icon = null
+
 	alien_backhud = null
 	alien_health_doll = null
 
@@ -166,10 +168,10 @@
 	healths = null
 	bodytemp_icon = null
 
-	gun_setting_icon = null
-	gun_item_use_icon = null
-	gun_move_icon = null
-	gun_run_icon = null
+	gun_ammo_counter = null
+
+	surgery_mode = null
+	minimap_button = null
 
 	QDEL_LIST_ASSOC_VAL(plane_masters)
 	QDEL_LIST_ASSOC_VAL(plane_master_controllers)

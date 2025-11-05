@@ -25,7 +25,7 @@
 	var/has_charge_meter = FALSE//do we use the charging overlay system or just have an empty overlay
 	var/charge_icon = "+stunrevolver_empty"//define on a per gun basis, used for the meter and empty icon on non meter guns
 
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	gun_category = GUN_CATEGORY_HANDGUN
 
 /obj/item/weapon/gun/energy/Initialize(mapload, spawn_empty)
@@ -65,6 +65,20 @@
 				overlays += charge_icon + "_25"
 			else
 				overlays += charge_icon + "_0"
+
+/obj/item/weapon/gun/energy/taser/get_ammo_type()
+	if(!ammo)
+		return list("unknown", "unknown")
+	else if(!in_chamber)
+		return list(ammo.hud_state, ammo.hud_state_empty)
+	else
+		return list(in_chamber.ammo.hud_state, in_chamber.ammo.hud_state_empty)
+
+/obj/item/weapon/gun/energy/taser/get_ammo_count()
+	if(!cell)
+		return 0
+	else
+		return FLOOR(cell.charge / max(charge_cost, 1),1)
 
 /obj/item/weapon/gun/energy/emp_act(severity)
 	. = ..()

@@ -45,6 +45,8 @@ They're all essentially identical when it comes to getting the job done.
 	var/ammo_band_icon
 	/// Is the greyscale icon used for the ammo band when it's empty of bullets.
 	var/ammo_band_icon_empty
+	var/hud_state
+	var/hud_state_empty
 
 
 /obj/item/ammo_magazine/Initialize(mapload, spawn_empty)

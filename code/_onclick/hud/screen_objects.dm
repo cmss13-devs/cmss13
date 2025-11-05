@@ -27,12 +27,83 @@
 	icon_state = "intro_ship"
 
 /atom/movable/screen/inventory
-	var/slot_id //The indentifier for the slot. It has nothing to do with ID cards.
+	var/slot_id
+	//The indentifier for the slot. It has nothing to do with ID cards.
+	var/icon_empty
+	/// Icon when contains an item. For now used only by humans.
+	var/icon_full
+	/// The overlay when hovering over with an item in your hand
 
 /atom/movable/screen/inventory/Initialize(mapload, ...)
 	. = ..()
 
 	RegisterSignal(src, COMSIG_ATOM_DROPPED_ON, PROC_REF(handle_dropped_on))
+
+/atom/movable/screen/inventory/MouseEntered()
+	SHOULD_CALL_PARENT(TRUE)
+	. = ..()
+	add_stored_outline()
+
+/atom/movable/screen/inventory/MouseExited()
+	SHOULD_CALL_PARENT(TRUE)
+	. = ..()
+	remove_stored_outline()
+
+/atom/movable/screen/inventory/proc/add_stored_outline()
+	// if(!slot_id || !usr.client.prefs.outline_enabled)
+	// 	return
+	var/obj/item/inv_item = usr.get_item_by_slot(slot_id)
+	if(!inv_item)
+		return
+	if(usr.is_mob_incapacitated())
+		inv_item.apply_outline(COLOR_RED_GRAY)
+	else
+		inv_item.apply_outline()
+
+/atom/movable/screen/inventory/proc/remove_stored_outline()
+	if(!slot_id)
+		return
+	var/obj/item/inv_item = usr.get_item_by_slot(slot_id)
+	if(!inv_item)
+		return
+	inv_item.remove_outline()
+
+/atom/movable/proc/remove_outline()
+	usr.client.images -= usr.client.outlined_item[src]
+	usr.client.outlined_item -= src
+
+/client/var/list/image/outlined_item = list()
+
+/atom/movable/proc/apply_outline(color)
+	// if(anchored || !usr.client.prefs.outline_enabled)
+	// 	return
+	// if(!color)
+	// 	color = usr.client.prefs.outline_color || COLOR_BLUE_LIGHT
+	if(anchored)
+		return
+	if(!color)
+		color = COLOR_HUD_BLUE
+	if(usr.client.outlined_item[src])
+		return
+
+	if(usr.client.outlined_item.len)
+		remove_outline()
+
+	var/image/IMG = image(null, src, layer = layer, pixel_x = -pixel_x, pixel_y = -pixel_y)
+	IMG.appearance_flags |= KEEP_TOGETHER | RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+	IMG.vis_contents += src
+
+	IMG.filters += filter(type = "outline", size = 1, color = color)
+	usr.client.images |= IMG
+	usr.client.outlined_item[src] = IMG
+
+/atom/movable/screen/inventory/update_icon()
+	if(!icon_empty)
+		icon_empty = icon_state
+
+	if(hud?.mymob && slot_id && icon_full)
+		icon_state = hud.mymob.get_item_by_slot(slot_id) ? icon_full : icon_empty
+	return ..()
 
 /atom/movable/screen/close
 	name = "close"
@@ -369,35 +440,41 @@
 
 	return FALSE
 
-
-/atom/movable/screen/inventory/clicked(mob/user)
-	if (..())
-		return 1
+/atom/movable/screen/inventory/clicked(mob/user, list/mods)
+	if(..())
+		return TRUE
 	if(user.is_mob_incapacitated(TRUE))
-		return 1
+		return TRUE
+	//If there is an item in the slot you are clicking on, this will relay the click to the item within the slot
+	///REMOVE THIS COMMENT WHEN IT STARTS TO WORK PROPERLY
+	if(user?.hud_used && slot_id)
+		var/atom/item_in_slot = user.get_item_by_slot(slot_id)
+		if(item_in_slot)
+			return item_in_slot.clicked(user, mods)
+	///REMOVE THIS COMMENT WHEN IT STARTS TO WORK PROPERLY
 	switch(name)
 		if("r_hand")
 			if(iscarbon(user))
 				var/mob/living/carbon/carbon = user
 				carbon.activate_hand("r")
-			return 1
+			return TRUE
 		if("l_hand")
 			if(iscarbon(user))
 				var/mob/living/carbon/carbon = user
 				carbon.activate_hand("l")
-			return 1
+			return TRUE
 		if("swap")
 			user.swap_hand()
-			return 1
+			return TRUE
 		if("hand")
 			user.swap_hand()
-			return 1
+			return TRUE
 		else
 			if(user.attack_ui(slot_id))
 				user.update_inv_l_hand(0)
 				user.update_inv_r_hand(0)
-				return 1
-	return 0
+				return TRUE
+	return FALSE
 
 /atom/movable/screen/inventory/proc/handle_dropped_on(atom/dropped_on, atom/dropping, client/user)
 	SIGNAL_HANDLER
@@ -757,3 +834,155 @@
 /atom/movable/screen/vulture_scope // The part of the vulture's scope that drifts over time
 	icon_state = "vulture_unsteady"
 	screen_loc = "CENTER,CENTER"
+
+/atom/movable/screen/surgery_mode
+	name = "toggle surgery mode"
+	icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
+	icon_state = "surgery_off"
+	screen_loc = "hud:1:9,7:55"
+
+// /atom/movable/screen/surgery_mode/give_to(mob/living/L)
+// 	..()
+// 	update_surgery_skill()
+
+// /atom/movable/screen/surgery_mode/remove_from(mob/living/carbon/human/H)
+// 	usr.mob_flags &= ~SURGERY_MODE_ON
+// 	..()
+
+// /atom/movable/screen/surgery_mode/proc/update_surgery_skill()
+// 	if(skillcheck(usr, SKILL_SURGERY, SKILL_SURGERY_TRAINED) && !(usr.mob_flags & SURGERY_MODE_ON))
+// 		icon_state = "surgery_on"
+// 		usr.mob_flags |= SURGERY_MODE_ON
+
+// Called when the action is clicked on.
+/atom/movable/screen/surgery_mode/clicked()
+	. = ..()
+	if(usr.mob_flags & SURGERY_MODE_ON)
+		icon_state = "surgery_off"
+		usr.mob_flags &= ~SURGERY_MODE_ON
+	else
+		icon_state = "surgery_on"
+		usr.mob_flags |= SURGERY_MODE_ON
+		to_chat(usr, "You prepare to perform surgery.")
+
+/atom/movable/screen/minimap_button
+	name = "open minimap"
+	icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
+	icon_state = "minimap_off"
+
+/atom/movable/screen/minimap_button/clicked(mob/user, list/mods)
+	. = ..()
+	if(!istype(user))
+		return
+	for(var/datum/action/minimap/user_map in user.actions)
+		user_map.action_activate()
+	return TRUE
+
+
+/atom/movable/screen/gun_ammo_counter
+	name = "ammo"
+	icon = 'icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi'
+	icon_state = "ammo"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/warned = FALSE
+	var/is_warning = FALSE
+
+/atom/movable/screen/gun_ammo_counter/proc/add_hud(mob/living/user)
+	if(!user?.client)
+		return
+
+	var/obj/item/weapon/gun/G = user.get_held_item()
+
+	if(!(G.flags_gun_features & GUN_AMMO_COUNTER) && !G.active_attachable)
+		return
+
+	user.client.screen += src
+
+/atom/movable/screen/gun_ammo_counter/proc/remove_hud(mob/living/user)
+	user?.client?.screen -= src
+
+/atom/movable/screen/gun_ammo_counter/proc/update_hud(mob/living/user)
+	if(!user?.client?.screen.Find(src))
+		return
+	var/obj/item/weapon/gun/G = user.get_held_item()
+
+	if(!istype(G))
+		remove_hud(user)
+		return
+
+	if(!(G.flags_gun_features & GUN_AMMO_COUNTER) || !G.get_ammo_type() || isnull(G.get_ammo_count()) && !G.active_attachable)
+		remove_hud(user)
+		return
+
+	if(G.active_attachable)
+		update_attachable_hud(user, G)
+		return
+
+	var/list/ammo_type = G.get_ammo_type()
+	var/rounds = G.get_ammo_count()
+
+	var/hud_state = ammo_type[1]
+	var/hud_state_empty = ammo_type[2]
+
+	overlays.Cut()
+
+	var/empty = image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "[hud_state_empty]")
+
+	if(rounds == 0)
+		overlays += empty
+	else
+		overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "[hud_state]")
+
+	rounds = num2text(rounds)
+
+	//Handle the amount of rounds
+	switch(length(rounds))
+		if(1)
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "o[rounds[1]]")
+		if(2)
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "o[rounds[2]]")
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "t[rounds[1]]")
+		if(3)
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "o[rounds[3]]")
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "t[rounds[2]]")
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "h[rounds[1]]")
+		else //"0" is still length 1 so this means it's over 999
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "o9")
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "t9")
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "h9")
+
+/atom/movable/screen/gun_ammo_counter/proc/update_attachable_hud(mob/living/user, obj/item/weapon/gun/G)
+	var/obj/item/attachable/attached_gun/AG = G.active_attachable
+
+	var/list/ammo_type = AG.get_attachment_ammo_type()
+	var/rounds = AG.get_attachment_ammo_count()
+
+	var/hud_state = ammo_type[1]
+	var/hud_state_empty = ammo_type[2]
+
+	overlays.Cut()
+
+	var/empty = image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "[hud_state_empty]")
+
+	if(rounds == 0)
+		overlays += empty
+	else
+		overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "[hud_state]")
+
+	rounds = num2text(rounds)
+
+	//Handle the amount of rounds
+	switch(length(rounds))
+		if(1)
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "o[rounds[1]]")
+		if(2)
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "o[rounds[2]]")
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "t[rounds[1]]")
+		if(3)
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "o[rounds[3]]")
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "t[rounds[2]]")
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "h[rounds[1]]")
+		else //"0" is still length 1 so this means it's over 999
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "o9")
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "t9")
+			overlays += image('icons/mob/hud/cm_hud/cm_hud_ammo_counter.dmi', src, "h9")

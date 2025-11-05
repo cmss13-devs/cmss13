@@ -360,7 +360,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	update_undergarments()
 	update_inv_wear_id()
 
-
 /mob/living/carbon/human/update_inv_wear_id()
 	remove_overlay(ID_LAYER)
 	if(!wear_id)
@@ -418,8 +417,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		overlays_standing[GLASSES_LAYER] = I
 		apply_overlay(GLASSES_LAYER)
 
-
-
 /mob/living/carbon/human/update_inv_ears()
 	remove_overlay(EARS_LAYER)
 	if(wear_l_ear || wear_r_ear)
@@ -442,8 +439,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 		overlays_standing[EARS_LAYER] = standing_image
 		apply_overlay(EARS_LAYER)
 
-
-
 /mob/living/carbon/human/update_inv_shoes()
 	remove_overlay(SHOES_LAYER)
 	var/image/I
@@ -465,7 +460,6 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	I.layer = -SHOES_LAYER
 	overlays_standing[SHOES_LAYER] = I
 	apply_overlay(SHOES_LAYER)
-
 
 /mob/living/carbon/human/update_inv_s_store()
 	remove_overlay(SUIT_STORE_LAYER)

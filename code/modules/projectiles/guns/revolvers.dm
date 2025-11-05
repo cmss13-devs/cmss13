@@ -59,8 +59,20 @@
 		. += message
 
 /obj/item/weapon/gun/revolver/display_ammo(mob/user) // revolvers don't *really* have a chamber, at least in a way that matters for ammo displaying
-	if(flags_gun_features & GUN_AMMO_COUNTER && !(flags_gun_features & GUN_BURST_FIRING) && current_mag)
-		to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING"))
+	if(flags_gun_features & GUN_AMMO_COUNTER)
+		if(current_mag && !(flags_gun_features & GUN_BURST_FIRING))
+			to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING"))
+		var/atom/movable/screen/gun_ammo_counter/counter = user.hud_used.gun_ammo_counter
+		counter.update_hud(user)
+
+/obj/item/weapon/gun/revolver/get_ammo_type()
+	if(!ammo)
+		return list("revolver", "revolver_empty")
+	else
+		return list(ammo.hud_state, ammo.hud_state_empty)
+
+/obj/item/weapon/gun/revolver/get_ammo_count()
+	return current_mag ? current_mag.current_rounds : 0
 
 /obj/item/weapon/gun/revolver/proc/rotate_cylinder(mob/user) //Cylinder moves backward.
 	if(current_mag)
@@ -312,7 +324,7 @@
 	item_state = "m44r"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44
 	force = 8
-	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,

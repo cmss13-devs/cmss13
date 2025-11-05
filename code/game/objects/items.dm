@@ -1167,6 +1167,12 @@
 /obj/item/proc/unique_action(mob/user)
 	return
 
+/obj/item/weapon/gun/proc/get_ammo_type()
+	return null //usually a list
+
+/obj/item/weapon/gun/proc/get_ammo_count()
+	return FALSE
+
 /obj/item/verb/use_unique_action()
 	set category = "Object"
 	set name = "Unique Action"

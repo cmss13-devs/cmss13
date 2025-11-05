@@ -1,0 +1,4 @@
+author: "Ingakem"
+delete-after: True
+changes:
+  - config: "Требуемое количество игроков для некоторых карт было немного снижено"

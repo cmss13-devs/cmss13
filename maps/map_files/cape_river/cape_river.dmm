@@ -370,7 +370,9 @@
 "abp" = (
 /obj/structure/platform/stone/soro,
 /obj/structure/platform/stone/soro/west,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "abq" = (
@@ -624,7 +626,9 @@
 /area/caperiver/outdoors/chasm)
 "abX" = (
 /obj/structure/platform/stone/soro,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "abY" = (
@@ -638,7 +642,9 @@
 "aca" = (
 /obj/structure/platform/stone/soro/west,
 /obj/structure/platform/stone/soro,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "acb" = (
@@ -2402,7 +2408,9 @@
 "ahK" = (
 /obj/structure/platform/stone/soro,
 /obj/structure/platform/stone/soro/east,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "ahL" = (
@@ -3196,7 +3204,9 @@
 /area/caperiver/outdoors/landing_zone_1)
 "aks" = (
 /obj/structure/platform/metal/kutjevo,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "akt" = (
@@ -3363,7 +3373,9 @@
 /area/caperiver/outdoors/scrublands/north_west)
 "akV" = (
 /obj/structure/platform_decoration/metal/kutjevo,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/caperiver/outdoors/chasm)
 "akW" = (
@@ -3824,7 +3836,9 @@
 /area/caperiver/telecomms/telecomm_4)
 "amv" = (
 /obj/structure/platform/metal/kutjevo,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/caperiver/outdoors/chasm)
 "amw" = (
@@ -4301,7 +4315,9 @@
 /area/caperiver/outdoors/scrublands/central)
 "anT" = (
 /obj/structure/platform_decoration/metal/kutjevo/north,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/caperiver/outdoors/chasm)
 "anU" = (
@@ -5545,7 +5561,9 @@
 /turf/open/floor/dark,
 /area/caperiver/indoors/conambase/recreational)
 "arV" = (
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/outdoors/chasm)
 "arW" = (
@@ -5723,7 +5741,9 @@
 "asz" = (
 /obj/structure/platform/stone/soro/east,
 /obj/structure/platform/stone/soro,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "asA" = (
@@ -7743,6 +7763,13 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/north)
+"ayR" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/turf/open/desert/rock,
+/area/caperiver/oob)
 "ayS" = (
 /turf/open/desert/rock,
 /area/caperiver/outdoors/scrublands/lz_cave)
@@ -7771,6 +7798,15 @@
 "ayW" = (
 /turf/open/gm/river/desert/shallow_corner/east,
 /area/caperiver/outdoors/chasm)
+"ayX" = (
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/turf/open/desert/rock,
+/area/caperiver/oob)
 "ayY" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#FF9D5C"
@@ -9047,6 +9083,13 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/strata/fake_wood,
 /area/caperiver/outdoors/landing_zone_2/cave)
+"aCT" = (
+/obj/structure/flora/bush/canyon/grass_orange/alt2,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/turf/open/desert/rock,
+/area/caperiver/oob)
 "aCU" = (
 /turf/open/desert/dirt,
 /area/caperiver/outdoors/road/west)
@@ -9106,6 +9149,16 @@
 	},
 /turf/open/desert/rock,
 /area/caperiver/outdoors/landing_zone_2)
+"aDe" = (
+/obj/structure/flora/bush/canyon/tree/alt2{
+	pixel_x = 12;
+	pixel_y = 18
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
+/turf/open/desert/rock,
+/area/caperiver/oob)
 "aDf" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -12475,6 +12528,9 @@
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "aNR" = (
@@ -14544,7 +14600,9 @@
 	pixel_x = -32;
 	pixel_y = -5
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "aUG" = (
@@ -23107,7 +23165,9 @@
 	pixel_x = -18;
 	pixel_y = 27
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "bvA" = (
@@ -23589,6 +23649,9 @@
 	pixel_x = 4;
 	pixel_y = -6
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bxf" = (
@@ -23611,7 +23674,9 @@
 	pixel_x = -3;
 	pixel_y = 9
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/outdoors/chasm)
 "bxl" = (
@@ -23959,6 +24024,9 @@
 	pixel_x = -224;
 	pixel_y = 23
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
 "byF" = (
@@ -23989,24 +24057,33 @@
 	pixel_x = 12;
 	pixel_y = 23
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "byR" = (
 /obj/structure/platform/metal/kutjevo/east,
 /obj/structure/platform/metal/kutjevo,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "byS" = (
 /obj/structure/platform/stone/soro,
 /obj/structure/platform_decoration/metal/kutjevo,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "byU" = (
 /obj/structure/platform/stone/soro,
 /obj/structure/platform/metal/strata/east,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "byV" = (
@@ -24015,7 +24092,9 @@
 	pixel_x = -14;
 	pixel_y = -5
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "byX" = (
@@ -24032,7 +24111,9 @@
 	pixel_x = -14;
 	pixel_y = -5
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "bzc" = (
@@ -24067,6 +24148,9 @@
 	pixel_x = -9;
 	pixel_y = 9
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
 "bzn" = (
@@ -24098,7 +24182,9 @@
 "bzx" = (
 /obj/structure/platform/metal/kutjevo,
 /obj/structure/platform/metal/strata/east,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/caperiver/outdoors/chasm)
 "bzy" = (
@@ -24117,12 +24203,17 @@
 "bzA" = (
 /obj/structure/platform/metal/kutjevo,
 /obj/structure/platform/metal/strata/west,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/caperiver/outdoors/chasm)
 "bzB" = (
 /obj/structure/prop/invuln/dense/cliff_wall{
 	pixel_y = -3
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -24131,7 +24222,9 @@
 /area/caperiver/outdoors/chasm)
 "bzJ" = (
 /obj/structure/platform_decoration/metal/kutjevo,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/shallow_corner,
 /area/caperiver/outdoors/chasm)
 "bzT" = (
@@ -24154,12 +24247,16 @@
 /area/caperiver/outdoors/chasm)
 "bzW" = (
 /obj/structure/platform/metal/strata/east,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "bzZ" = (
 /obj/structure/platform/metal/strata/west,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "bAa" = (
@@ -24174,11 +24271,17 @@
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bAj" = (
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
 "bAm" = (
 /obj/structure/prop/invuln/dense/cliff_wall{
 	pixel_y = 10
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
@@ -24186,7 +24289,9 @@
 /obj/structure/platform/metal/strata/east{
 	layer = 4.12
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
 "bAq" = (
@@ -24197,7 +24302,9 @@
 /obj/structure/platform/metal/strata/west{
 	layer = 4.12
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
 "bAr" = (
@@ -24205,12 +24312,18 @@
 	pixel_x = -4;
 	pixel_y = 18
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
 "bAs" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush{
 	pixel_x = -8;
 	pixel_y = 5
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
@@ -24222,6 +24335,9 @@
 	dir = 1;
 	pixel_x = -7;
 	pixel_y = -3
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -24283,6 +24399,9 @@
 /obj/structure/prop/invuln/dense/cliff_wall/left_short{
 	pixel_y = 8
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bBl" = (
@@ -24318,6 +24437,9 @@
 	pixel_x = -2;
 	pixel_y = 2
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bBu" = (
@@ -24329,7 +24451,9 @@
 /area/caperiver/indoors/miningbase/admin)
 "bBv" = (
 /obj/structure/platform/metal/strata/east,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/outdoors/chasm)
 "bBw" = (
@@ -24337,7 +24461,9 @@
 /area/caperiver/outdoors/scrublands/north)
 "bBx" = (
 /obj/structure/platform/metal/strata/west,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/outdoors/chasm)
 "bBz" = (
@@ -24359,6 +24485,9 @@
 	pixel_x = 7;
 	pixel_y = 13
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/caperiver/oob)
 "bBD" = (
@@ -24367,11 +24496,17 @@
 	pixel_x = 4;
 	pixel_y = 16
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bBG" = (
 /obj/structure/flora/bush/canyon/grass_yellow/alt1{
 	pixel_y = 13
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/caperiver/oob)
@@ -24386,6 +24521,9 @@
 /obj/structure/flora/bush/canyon/tree/alt1{
 	pixel_x = -1;
 	pixel_y = 24
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/caperiver/oob)
@@ -24562,7 +24700,9 @@
 "bCz" = (
 /obj/structure/platform/metal/kutjevo/west,
 /obj/structure/platform/metal/kutjevo,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "bCA" = (
@@ -24572,19 +24712,25 @@
 "bCB" = (
 /obj/structure/platform/stone/soro,
 /obj/structure/platform/metal/kutjevo/east,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "bCC" = (
 /obj/structure/platform/stone/soro,
 /obj/structure/platform/metal/strata/west,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "bCD" = (
 /obj/structure/platform/stone/soro,
 /obj/structure/platform/metal/kutjevo/west,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "bCE" = (
@@ -24655,6 +24801,9 @@
 	pixel_x = -224;
 	pixel_y = -5
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bCQ" = (
@@ -24670,12 +24819,18 @@
 	pixel_x = -8;
 	pixel_y = 3
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bCR" = (
 /obj/structure/flora/bush/canyon/bush/alt2{
 	pixel_x = 4;
 	pixel_y = 10
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -24688,6 +24843,9 @@
 	pixel_x = 11;
 	pixel_y = 2
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bCT" = (
@@ -24695,11 +24853,17 @@
 	pixel_x = -19;
 	pixel_y = 9
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bCU" = (
 /obj/structure/flora/bush/canyon/grass_yellow/alt1{
 	dir = 1
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -24708,6 +24872,9 @@
 	dir = 4;
 	pixel_x = -12;
 	pixel_y = 1
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -24721,6 +24888,9 @@
 	pixel_x = 4;
 	pixel_y = 3
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bCX" = (
@@ -24728,11 +24898,17 @@
 	pixel_x = 10;
 	pixel_y = 10
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bCY" = (
 /obj/structure/prop/invuln/dense/cliff_wall{
 	pixel_y = 11
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
@@ -24741,6 +24917,9 @@
 	pixel_x = 1;
 	pixel_y = 16
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
 "bDa" = (
@@ -24748,11 +24927,17 @@
 	pixel_x = -13;
 	pixel_y = 7
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
 "bDb" = (
 /obj/structure/prop/invuln/dense/cliff_wall/left_short{
 	pixel_y = 21
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/oob)
@@ -24934,6 +25119,9 @@
 /obj/structure/flora/bush/canyon/grass_yellow/alt1{
 	pixel_x = 6
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bDy" = (
@@ -25051,12 +25239,18 @@
 	pixel_x = -224;
 	pixel_y = 8
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bDP" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush{
 	pixel_x = 10;
 	pixel_y = -3
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -25066,12 +25260,18 @@
 	pixel_x = -18;
 	pixel_y = 16
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bDR" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush{
 	pixel_x = -7;
 	pixel_y = -2
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -25084,18 +25284,25 @@
 /area/caperiver/outdoors/chasm)
 "bDU" = (
 /obj/structure/platform/metal/strata/east,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/caperiver/outdoors/chasm)
 "bDV" = (
 /obj/structure/platform/metal/strata/west,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/shallow_edge/north,
 /area/caperiver/outdoors/chasm)
 "bDW" = (
 /obj/structure/prop/invuln/dense/cliff_wall/right_short{
 	pixel_x = -224;
 	pixel_y = 7
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/desert_shore/shore_edge1/east,
 /area/caperiver/oob)
@@ -25111,6 +25318,9 @@
 	pixel_x = -13;
 	pixel_y = 16
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bDY" = (
@@ -25123,6 +25333,9 @@
 	pixel_x = 2;
 	pixel_y = -6
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bDZ" = (
@@ -25131,12 +25344,18 @@
 	pixel_x = 14;
 	pixel_y = 16
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bEa" = (
 /obj/structure/flora/bush/canyon/grass_yellow{
 	pixel_x = 14;
 	pixel_y = 15
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -25145,11 +25364,17 @@
 	pixel_x = -4;
 	pixel_y = 23
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bEc" = (
 /obj/structure/prop/invuln/dense/cliff_wall/left_short{
 	pixel_y = 7
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -25184,6 +25409,9 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bEj" = (
@@ -25194,12 +25422,18 @@
 	pixel_x = 3;
 	pixel_y = 11
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bEk" = (
 /obj/structure/flora/bush/canyon/bush/alt2{
 	pixel_x = 8;
 	pixel_y = 12
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -25208,12 +25442,18 @@
 	pixel_x = 5;
 	pixel_y = 6
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bEm" = (
 /obj/structure/flora/bush/canyon/tree/alt1{
 	pixel_x = -19;
 	pixel_y = 10
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -25225,6 +25465,9 @@
 /obj/structure/flora/bush/canyon/grass_yellow/alt2{
 	pixel_x = -11;
 	pixel_y = -2
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -25411,6 +25654,9 @@
 	pixel_x = 2;
 	pixel_y = 8
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bEL" = (
@@ -25434,6 +25680,9 @@
 /obj/structure/flora/bush/canyon/grass_orange/alt1{
 	pixel_y = -15;
 	pixel_x = 5
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -25572,6 +25821,9 @@
 	pixel_x = 14;
 	pixel_y = 3
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/auto_turf/sand/layer0,
 /area/caperiver/oob)
 "bFj" = (
@@ -25627,6 +25879,9 @@
 	pixel_x = -3;
 	pixel_y = -16
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/caperiver/oob)
 "bFp" = (
@@ -25681,6 +25936,9 @@
 /obj/structure/flora/bush/canyon/grass_orange/alt1{
 	pixel_x = 10;
 	pixel_y = -6
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -25748,12 +26006,18 @@
 	pixel_x = 3;
 	pixel_y = 12
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bFI" = (
 /obj/structure/flora/bush/canyon/grass_orange/alt2{
 	pixel_x = 1;
 	pixel_y = 5
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -25763,11 +26027,17 @@
 	pixel_x = 10;
 	pixel_y = 6
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bFK" = (
 /obj/structure/flora/bush/canyon/bush/alt1{
 	pixel_y = 12
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -25818,6 +26088,9 @@
 	pixel_x = 8;
 	pixel_y = -7
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bFQ" = (
@@ -25825,11 +26098,17 @@
 	pixel_x = -2;
 	pixel_y = -7
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bFR" = (
 /obj/structure/flora/bush/canyon/grass_orange/alt2{
 	dir = 1
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /obj/structure/blocker/forcefield/all{
 	alpha = 0
@@ -25906,11 +26185,17 @@
 /obj/structure/flora/bush/canyon/grass_orange/alt2{
 	pixel_x = 1
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bGb" = (
 /obj/structure/prop/invuln/dense/cliff_wall{
 	pixel_y = -4
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/dirt,
 /area/caperiver/oob)
@@ -25918,6 +26203,9 @@
 /obj/structure/flora/bush/canyon/bush/alt2{
 	pixel_x = 4;
 	pixel_y = 22
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/caperiver/oob)
@@ -25927,12 +26215,18 @@
 	pixel_y = 23;
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bGe" = (
 /obj/structure/flora/bush/canyon/grass_orange/alt2{
 	pixel_x = -18;
 	pixel_y = 14
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -25944,11 +26238,17 @@
 	pixel_x = 2;
 	pixel_y = 23
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bGg" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush{
 	pixel_x = -7
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -25983,6 +26283,9 @@
 	pixel_x = 10;
 	pixel_y = 13
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/auto_turf/sand/layer0,
 /area/caperiver/oob)
 "bGk" = (
@@ -25990,6 +26293,9 @@
 	dir = 1;
 	pixel_x = 10;
 	pixel_y = 16
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/caperiver/oob)
@@ -26001,12 +26307,18 @@
 	pixel_x = 2;
 	pixel_y = 17
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/auto_turf/sand/layer0,
 /area/caperiver/oob)
 "bGm" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush{
 	pixel_x = -3;
 	pixel_y = -3
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/caperiver/oob)
@@ -26015,12 +26327,18 @@
 	pixel_x = 3;
 	pixel_y = 23
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bGo" = (
 /obj/structure/flora/bush/canyon/grass_yellow/alt1{
 	pixel_y = 14;
 	pixel_x = 6
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -26045,6 +26363,9 @@
 /obj/structure/flora/bush/canyon/grass_orange/alt2{
 	pixel_x = -2;
 	pixel_y = -9
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -26086,6 +26407,9 @@
 	pixel_x = 3;
 	pixel_y = -17
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bGw" = (
@@ -26098,12 +26422,18 @@
 	pixel_x = -1;
 	pixel_y = -6
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/caperiver/oob)
 "bGx" = (
 /obj/structure/flora/bush/canyon/bush/alt1{
 	pixel_x = 11;
 	pixel_y = 19
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/caperiver/oob)
@@ -26112,12 +26442,18 @@
 	pixel_x = 16;
 	pixel_y = 18
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bGz" = (
 /obj/structure/flora/bush/canyon/grass_yellow/alt2{
 	pixel_x = 10;
 	pixel_y = 14
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -26126,6 +26462,9 @@
 	dir = 1;
 	pixel_x = -7;
 	pixel_y = 13
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -26144,6 +26483,9 @@
 /obj/structure/flora/bush/canyon/grass_yellow{
 	pixel_y = 13
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/shore_edge1/east,
 /area/caperiver/oob)
 "bGD" = (
@@ -26153,6 +26495,9 @@
 /obj/structure/flora/bush/canyon/bush/alt2{
 	pixel_x = 3;
 	pixel_y = 18
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -26165,12 +26510,18 @@
 	pixel_x = -2;
 	pixel_y = -7
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bGF" = (
 /obj/structure/flora/bush/canyon/grass_yellow/alt2{
 	pixel_x = 14;
 	pixel_y = 11
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -26179,6 +26530,9 @@
 	pixel_x = -20;
 	pixel_y = 17
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bGH" = (
@@ -26186,6 +26540,9 @@
 	dir = 1;
 	pixel_x = 6;
 	pixel_y = 10
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -26198,10 +26555,16 @@
 	pixel_x = 15;
 	pixel_y = 13
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bGJ" = (
 /obj/structure/flora/bush/canyon/grass_yellow/alt2,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bGK" = (
@@ -26289,6 +26652,9 @@
 /obj/structure/flora/bush/canyon/grass_orange/alt2{
 	pixel_x = 19;
 	pixel_y = -7
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -26875,6 +27241,9 @@
 	pixel_x = 1;
 	pixel_y = -11
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bIj" = (
@@ -26903,14 +27272,18 @@
 	pixel_x = -5;
 	pixel_y = 21
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/outdoors/chasm)
 "bIn" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush{
 	pixel_y = 7
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/outdoors/chasm)
 "bIo" = (
@@ -26918,14 +27291,18 @@
 	pixel_x = 1;
 	pixel_y = 20
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/outdoors/chasm)
 "bIp" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush{
 	pixel_y = -6
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/desert_shore/shore_edge1/east,
 /area/caperiver/outdoors/chasm)
 "bIq" = (
@@ -26968,6 +27345,9 @@
 	pixel_x = 3;
 	pixel_y = 12
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bIw" = (
@@ -26985,12 +27365,18 @@
 	pixel_x = 3;
 	pixel_y = 17
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bIy" = (
 /obj/structure/flora/bush/canyon/grass_orange/alt2{
 	pixel_x = 8;
 	pixel_y = 9
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -26999,6 +27385,9 @@
 	pixel_y = 8;
 	pixel_x = 12
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bIA" = (
@@ -27006,12 +27395,18 @@
 	pixel_x = 12;
 	pixel_y = 17
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bIB" = (
 /obj/structure/flora/bush/canyon/grass_yellow{
 	dir = 1;
 	pixel_y = 10
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -27293,11 +27688,17 @@
 	pixel_x = -2;
 	pixel_y = -10
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bJh" = (
 /obj/structure/prop/invuln/dense/cliff_wall{
 	pixel_y = -8
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -27305,6 +27706,9 @@
 /obj/structure/flora/bush/canyon/tree/alt2{
 	pixel_x = 5;
 	pixel_y = 18
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -27316,6 +27720,9 @@
 	pixel_x = -16;
 	pixel_y = 9
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bJk" = (
@@ -27326,12 +27733,18 @@
 	pixel_x = 3;
 	pixel_y = 18
 	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
 "bJl" = (
 /obj/structure/flora/bush/canyon/bush/alt1{
 	pixel_x = 16;
 	pixel_y = 18
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -27346,6 +27759,9 @@
 /obj/structure/flora/bush/canyon/grass_yellow/alt1{
 	pixel_y = 10;
 	pixel_x = -22
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -29346,6 +29762,9 @@
 "cJx" = (
 /obj/structure/flora/bush/canyon/grass_yellow/alt1{
 	pixel_y = 10
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -32884,7 +33303,9 @@
 	},
 /obj/structure/platform/stone/soro,
 /obj/structure/platform/metal/kutjevo/west,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "gcc" = (
@@ -37931,7 +38352,9 @@
 "kCn" = (
 /obj/structure/platform/stone/soro,
 /obj/structure/platform_decoration/metal/kutjevo/north,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "kCK" = (
@@ -44375,7 +44798,9 @@
 	pixel_x = 17;
 	pixel_y = 27
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "qPo" = (
@@ -47000,7 +47425,9 @@
 	pixel_x = -16;
 	pixel_y = -5
 	},
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "tkw" = (
@@ -48218,6 +48645,9 @@
 	dir = 1;
 	pixel_x = -2;
 	pixel_y = 14
+	},
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
 	},
 /turf/open/desert/rock,
 /area/caperiver/oob)
@@ -50894,7 +51324,9 @@
 "xgz" = (
 /obj/structure/platform/metal/strata/west,
 /obj/structure/platform/stone/soro,
-/obj/structure/blocker/invisible_wall/water,
+/obj/structure/blocker/forcefield/all{
+	alpha = 0
+	},
 /turf/open/gm/river/desert/deep,
 /area/caperiver/outdoors/chasm)
 "xgS" = (
@@ -52550,7 +52982,7 @@ aWQ
 aWQ
 bKA
 bJF
-bxu
+aqQ
 bGQ
 apK
 wmO
@@ -52754,7 +53186,7 @@ aWQ
 aWQ
 bKB
 bJG
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -53570,7 +54002,7 @@ aWQ
 aWQ
 bxu
 bJH
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -53978,7 +54410,7 @@ aWQ
 aWQ
 bxu
 bJI
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -54182,7 +54614,7 @@ aWQ
 aWQ
 bxu
 bJJ
-bxu
+aqQ
 bEt
 afk
 bzc
@@ -54590,9 +55022,9 @@ aWQ
 aWQ
 aqQ
 aqQ
-aqQ
+ayX
 bGU
-bxu
+aqQ
 bEr
 apK
 wmO
@@ -55000,7 +55432,7 @@ bKF
 bJL
 bIC
 bGW
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -55408,7 +55840,7 @@ bKI
 apd
 bIC
 bxu
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -55816,7 +56248,7 @@ bKK
 apd
 bIC
 bGZ
-bxu
+aqQ
 bCF
 afk
 alo
@@ -56020,7 +56452,7 @@ bKL
 apd
 bIC
 bHa
-bxu
+aqQ
 bEu
 bCE
 afk
@@ -56428,8 +56860,8 @@ apd
 apd
 bIC
 aqQ
+ayX
 aqQ
-bxu
 bDx
 byB
 apK
@@ -63976,7 +64408,7 @@ wCz
 bJU
 bII
 bHt
-bxu
+aqQ
 bEM
 aad
 aVT
@@ -64180,7 +64612,7 @@ atS
 bJU
 bBS
 bHu
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -64384,7 +64816,7 @@ atS
 kgD
 bIJ
 bHv
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -64588,7 +65020,7 @@ atS
 bJV
 aqQ
 bHw
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -64792,7 +65224,7 @@ atS
 bJU
 bIL
 bHx
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -64996,7 +65428,7 @@ atS
 gyx
 aqQ
 bHy
-bxu
+aqQ
 bEN
 afk
 bzc
@@ -66018,7 +66450,7 @@ apd
 asR
 bFT
 bES
-bxu
+aqQ
 bDd
 amv
 tQt
@@ -66222,7 +66654,7 @@ apd
 bHB
 bFU
 bET
-bxu
+aqQ
 bCF
 amv
 tQt
@@ -66426,7 +66858,7 @@ aWQ
 aWQ
 arn
 bxu
-bxu
+aqQ
 bCF
 amv
 tQt
@@ -66630,7 +67062,7 @@ aWQ
 aWQ
 bxu
 bEU
-bxu
+aqQ
 bCF
 amv
 tQt
@@ -66834,7 +67266,7 @@ aWQ
 aWQ
 bxu
 bxu
-bxu
+aqQ
 bCF
 amv
 tQt
@@ -67446,7 +67878,7 @@ aWQ
 aWQ
 bFY
 bEX
-bxu
+aqQ
 bDe
 amv
 tQt
@@ -67854,7 +68286,7 @@ aWQ
 aWQ
 bFZ
 bEZ
-bxu
+aqQ
 bCF
 amv
 tQt
@@ -68262,7 +68694,7 @@ aWQ
 aWQ
 bxu
 bxu
-bxu
+aqQ
 aJC
 amv
 pGO
@@ -68466,7 +68898,7 @@ aWQ
 aWQ
 bxu
 bFa
-bxu
+aqQ
 bCF
 amv
 pGO
@@ -68670,7 +69102,7 @@ aWQ
 aWQ
 bFV
 bFc
-bxu
+aqQ
 bCF
 amv
 tQt
@@ -69688,7 +70120,7 @@ anp
 bJZ
 aqQ
 bHF
-bxu
+aqQ
 bCF
 aad
 aWu
@@ -70504,7 +70936,7 @@ taQ
 bJZ
 aqQ
 bHI
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -70912,7 +71344,7 @@ aHT
 bJZ
 vDc
 bzU
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -71320,7 +71752,7 @@ acW
 vFu
 aqQ
 bHK
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -71524,7 +71956,7 @@ aAa
 bKa
 aqQ
 bHL
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -71728,7 +72160,7 @@ aNw
 bKb
 aqQ
 bHN
-bxu
+aqQ
 bIl
 apK
 wmO
@@ -73768,7 +74200,7 @@ acW
 bJZ
 bIU
 bHS
-bBI
+avc
 bCF
 apK
 wmO
@@ -73972,7 +74404,7 @@ acW
 bJZ
 bIV
 bHT
-bBI
+avc
 bCF
 apK
 wmO
@@ -74380,7 +74812,7 @@ aIe
 vFu
 avc
 bHV
-bBI
+avc
 bCF
 apK
 wmO
@@ -75808,7 +76240,7 @@ akB
 aWQ
 bxu
 bHZ
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -76012,7 +76444,7 @@ aWQ
 aWQ
 bGs
 bIa
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -76216,7 +76648,7 @@ aWQ
 aWQ
 bIZ
 bIb
-bxu
+aqQ
 bCF
 afk
 alo
@@ -77238,7 +77670,7 @@ aWQ
 aWQ
 bGs
 bFk
-bxu
+aqQ
 bzV
 apK
 wmO
@@ -77646,7 +78078,7 @@ aWQ
 aWQ
 bGu
 bFm
-bxu
+aqQ
 bCF
 apK
 abX
@@ -77850,7 +78282,7 @@ aWQ
 aWQ
 bGs
 bxu
-bxu
+aqQ
 bCF
 bzn
 bCB
@@ -79072,7 +79504,7 @@ aWQ
 aWQ
 bJe
 bIg
-bxu
+aqQ
 bCF
 aad
 aWu
@@ -80090,7 +80522,7 @@ aJB
 mJN
 aqQ
 bKh
-bxu
+aqQ
 bIj
 bCG
 aad
@@ -80498,7 +80930,7 @@ buG
 bLp
 bKS
 bCk
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -80906,7 +81338,7 @@ buv
 bLp
 aSo
 bKj
-bxu
+aqQ
 bIk
 apK
 wmO
@@ -81110,7 +81542,7 @@ bwa
 bLp
 aqQ
 bKk
-bxu
+aqQ
 bCF
 apK
 ayW
@@ -81722,7 +82154,7 @@ bLy
 bLp
 aqQ
 bKl
-bxu
+aqQ
 bxf
 apK
 ayH
@@ -81926,7 +82358,7 @@ bLy
 bLp
 bKT
 bxu
-bxu
+aqQ
 bxl
 apK
 bFt
@@ -82334,7 +82766,7 @@ buJ
 bLp
 bKV
 bxu
-bJm
+aDe
 bCF
 apK
 wmO
@@ -82538,7 +82970,7 @@ buK
 bLp
 aqQ
 bKm
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -87435,7 +87867,7 @@ aWQ
 bLg
 aWQ
 bDB
-bDB
+aCT
 bGC
 bCE
 apK
@@ -87844,7 +88276,7 @@ aWQ
 aWQ
 bJB
 bIr
-bxu
+aqQ
 bFw
 apK
 wmO
@@ -88456,7 +88888,7 @@ aWQ
 aWQ
 aWQ
 bIt
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -89682,7 +90114,7 @@ aWQ
 aWQ
 bGK
 bFA
-bxu
+aqQ
 bDl
 apK
 wmO
@@ -90294,7 +90726,7 @@ aWQ
 aWQ
 bGN
 bxu
-bxu
+aqQ
 bCF
 afk
 bzc
@@ -90703,7 +91135,7 @@ aWQ
 aWQ
 aWQ
 bEn
-bxu
+aqQ
 bCP
 bCF
 apK
@@ -91112,7 +91544,7 @@ aWQ
 aWQ
 bEo
 bDo
-bxu
+aqQ
 bCH
 apK
 wmO
@@ -91724,7 +92156,7 @@ aWQ
 aWQ
 aWQ
 bDq
-bxu
+aqQ
 bCF
 apK
 wmO
@@ -92948,7 +93380,7 @@ aWQ
 aWQ
 aWQ
 bAi
-bAi
+ayR
 bzg
 lij
 anz

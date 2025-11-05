@@ -176,7 +176,7 @@
 /proc/all_hands_on_deck(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/sound_misc_boatswain.ogg'))
 	shipwide_ai_announcement(message, title, sound_to_play, null, ARES_LOG_MAIN, FALSE)
 
-/proc/announcement_helper(message, title, list/targets, sound_to_play, quiet, list/targets_to_garble, clarity=80)
+/proc/announcement_helper(message, title, list/targets, sound_to_play, quiet, list/targets_to_garble, clarity=75)
 	if(!message || !title || !targets) //Shouldn't happen
 		return
 

@@ -127,7 +127,7 @@
 
 			for(var/mob/living/carbon/xenomorph/xeno as anything in permit_recipients)
 				if(QDELETED(xeno) || xeno.stat == DEAD) //Xenos might die before the admin picks them.
-					to_chat(usr, SPAN_HIGHDANGER("[xeno] died before their firearms permit could be issued!"))
+					to_chat(usr, SPAN_HIGHDANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] died before their firearms permit could be issued!"))
 					continue
 				if(HAS_TRAIT(xeno, TRAIT_OPPOSABLE_THUMBS))
 					if(grant == "Revoke")
@@ -183,7 +183,7 @@
 
 			for(var/mob/living/carbon/xenomorph/xeno as anything in permit_recipients)
 				if(QDELETED(xeno) || xeno.stat == DEAD) //Xenos might die before the admin picks them.
-					to_chat(usr, SPAN_HIGHDANGER("[xeno] died before they could get a royal flush!"))
+					to_chat(usr, SPAN_HIGHDANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] died before they could get a royal flush!"))
 					continue
 				if(HAS_TRAIT(xeno, TRAIT_CARDPLAYING_THUMBS))
 					if(grant == "Revoke")

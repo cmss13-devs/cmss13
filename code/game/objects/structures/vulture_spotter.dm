@@ -95,7 +95,7 @@
 	user.overlay_fullscreen("vulture_spotter", /atom/movable/screen/fullscreen/vulture/spotter)
 	ADD_TRAIT(user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Vulture spotter"))
 	user.status_flags |= IMMOBILE_ACTION
-	user.visible_message(SPAN_NOTICE("[user] looks through [src]."),SPAN_NOTICE("You look through [src], ready to go!"))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] looks through [src]."),SPAN_NOTICE("You look through [src], ready to go!"))
 	user.forceMove(loc)
 	user.setDir(dir)
 	scope_user = WEAKREF(user)
@@ -105,7 +105,7 @@
 
 /obj/structure/vulture_spotter_tripod/on_unset_interaction(mob/living/user)
 	user.status_flags &= ~IMMOBILE_ACTION
-	user.visible_message(SPAN_NOTICE("[user] looks up from [src]."),SPAN_NOTICE("You look up from [src]."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] looks up from [src]."),SPAN_NOTICE("You look up from [src]."))
 	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Vulture spotter"))
 	user.reset_view(null)
 	user.Move(get_step(src, reverse_direction(src.dir)))
@@ -129,7 +129,7 @@
 		return FALSE
 
 	playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
-	user.visible_message("[user] rotates [src].","You rotate [src].")
+	user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] rotates [src].","You rotate [src].")
 	setDir(turn(dir, -90))
 	update_pixels(TRUE)
 
@@ -166,7 +166,7 @@
 	if(istype(scope, /obj/item/device/vulture_spotter_scope/skillless))
 		skillless = TRUE
 
-	user.visible_message(SPAN_NOTICE("[user] attaches [scope] to [src]."), SPAN_NOTICE("You attach [scope] to [src]."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] attaches [scope] to [src]."), SPAN_NOTICE("You attach [scope] to [src]."))
 	icon_state = "vulture_scope_deployed" //BANDAMARINES EDIT
 	setDir(user.dir)
 	bound_rifle = scope.bound_rifle
@@ -179,7 +179,7 @@
 	if(!scope_attached)
 		to_chat(user, SPAN_NOTICE("You don't need a screwdriver to pick this up!"))
 		return
-	user.visible_message(SPAN_NOTICE("[user] unscrews the scope from [src] before detaching it."), SPAN_NOTICE("You unscrew the scope from [src], detaching it."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] unscrews the scope from [src] before detaching it."), SPAN_NOTICE("You unscrew the scope from [src], detaching it."))
 	icon_state = initial(icon_state)
 	unscope()
 	scope_attached = FALSE
@@ -191,7 +191,7 @@
 
 /// Handler for user folding up the tripod, picking it up
 /obj/structure/vulture_spotter_tripod/proc/fold_up(mob/user)
-	user.visible_message(SPAN_NOTICE("[user] folds up [src]."), SPAN_NOTICE("You fold up [src]."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] folds up [src]."), SPAN_NOTICE("You fold up [src]."))
 	var/obj/item/device/vulture_spotter_tripod/tripod = new(get_turf(src))
 	user.put_in_hands(tripod, TRUE)
 	qdel(src)

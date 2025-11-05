@@ -136,8 +136,8 @@
 	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/R = O
 		R.take_damage_type(40 / A.acid_delay, "acid", src)
-		visible_message(SPAN_XENOWARNING("[declent_ru()] плюётся отвратительной субстанцией на [O], которая тут же начинает шипеть и растворяться от кислоты!"), // SS220 EDIT ADDICTION
-			SPAN_XENOWARNING("Мы плюёмся отвратительной субстанцией на [O], которая тут же начинает шипеть и растворяться от кислоты!"), null, 5) // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] плюётся отвратительной субстанцией на [O.declent_ru(ACCUSATIVE)], которая тут же начинает шипеть и растворяться от кислоты!"), // SS220 EDIT ADDICTION
+			SPAN_XENOWARNING("Мы плюёмся отвратительной субстанцией на [O.declent_ru(ACCUSATIVE)], которая тут же начинает шипеть и растворяться от кислоты!"), null, 5) // SS220 EDIT ADDICTION
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 		QDEL_IN(A, 20)
 		return
@@ -156,8 +156,8 @@
 	if(!isturf(O))
 		msg_admin_attack("[src.name] ([src.ckey]) spat acid on [O] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 		attack_log += text("\[[time_stamp()]\] <font color='green'>Spat acid on [O]</font>")
-	visible_message(SPAN_XENOWARNING("[declent_ru()] плюётся отвратительной субстанцией на [O], которая тут же начинает шипеть и растворяться от кислоты!"), // SS220 EDIT ADDICTION
-	SPAN_XENOWARNING("Мы плюёмся отвратительной субстанцией на [O], которая тут же начинает шипеть и растворяться от кислоты!"), null, 5) // SS220 EDIT ADDICTION
+	visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] плюётся отвратительной субстанцией на [O.declent_ru(ACCUSATIVE)], которая тут же начинает шипеть и растворяться от кислоты!"), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Мы плюёмся отвратительной субстанцией на [O.declent_ru(ACCUSATIVE)], которая тут же начинает шипеть и растворяться от кислоты!"), null, 5) // SS220 EDIT ADDICTION
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
 /proc/unroot_human(mob/living/carbon/H, trait_source)
@@ -333,8 +333,8 @@
 	use_plasma(amount)
 	target.gain_plasma(amount)
 	target.xeno_jitter(1 SECONDS)
-	to_chat(target, SPAN_XENOWARNING("[declent_ru()] передал нам [amount] единиц плазмы. Теперь у нас [target.plasma_stored] единиц плазмы.")) // SS220 EDIT ADDICTION
-	to_chat(src, SPAN_XENOWARNING("Мы передали [amount] единиц плазмы [target]. У нас осталось [plasma_stored] единиц плазмы.")) // SS220 EDIT ADDICTION
+	to_chat(target, SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] передаёт нам [amount] ед. плазмы. Теперь у нас [target.plasma_stored] ед. плазмы.")) // SS220 EDIT ADDICTION
+	to_chat(src, SPAN_XENOWARNING("Мы передаём [amount] ед. плазмы [target.declent_ru(DATIVE)]. У нас осталось [plasma_stored] ед. плазмы.")) // SS220 EDIT ADDICTION
 	playsound(src, "alien_drool", 25)
 
 /mob/living/carbon/xenomorph/proc/check_can_transfer_plasma(mob/living/carbon/xenomorph/target, max_range)

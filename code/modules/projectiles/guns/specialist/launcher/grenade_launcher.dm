@@ -103,7 +103,7 @@
 	else
 		user.put_in_hands(nade)
 
-	user.visible_message(SPAN_NOTICE("[user] unloads [nade] from [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] unloads [nade] from [src]."),
 	SPAN_NOTICE("You unload [nade] from [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 	playsound(user, unload_sound, 30, 1)
 
@@ -145,7 +145,7 @@
 	if(!cylinder.can_be_inserted(I, user)) //Technically includes whether there's room for it, but the above gives a tailored message.
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] loads [I] into [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] loads [I] into [src]."),
 	SPAN_NOTICE("You load [I] into the grenade launcher."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 	playsound(usr, reload_sound, 75, 1)
 	if(internal_slots > 1)
@@ -184,7 +184,7 @@
 	var/to_firer = "You fire the [name]!"
 	if(internal_slots > 1)
 		to_firer += " [length(cylinder.contents)-1]/[internal_slots] grenades remaining."
-	user.visible_message(SPAN_DANGER("[user] fired a grenade!"),
+	user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] fired a grenade!"),
 	SPAN_WARNING("[to_firer]"), message_flags = CHAT_TYPE_WEAPON_USE)
 	playsound(user.loc, fire_sound, 50, 1)
 

@@ -41,7 +41,7 @@
 		//Hugger explosion, like a carrier
 		var/obj/item/clothing/mask/facehugger/F
 		var/chance = 60
-		visible_message(SPAN_XENOWARNING("Шумная масса крошечных чужих пытается вырваться из [declent_ru()]!")) // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENOWARNING("Шумная масса крошечных чужих пытается вырваться из [declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 		for(var/i in 1 to stored_huggers)
 			if(prob(chance))
 				F = new(loc, linked_hive.hivenumber)
@@ -73,14 +73,14 @@
 		var/obj/item/clothing/mask/facehugger/hugger = item
 		if(hugger.stat != DEAD)
 			if(stored_huggers >= huggers_max_amount)
-				to_chat(user, SPAN_XENOWARNING("[declent_ru()] уже занят дитём.")) // SS220 EDIT ADDICTION
+				to_chat(user, SPAN_XENOWARNING("Дитя уже имеется в [declent_ru(PREPOSITIONAL)].")) // SS220 EDIT ADDICTION
 				return
 			if(user)
-				visible_message(SPAN_XENOWARNING("[user] помещает [hugger] обратно в [declent_ru()]."), // SS220 EDIT ADDICTION
-					SPAN_XENONOTICE("Вы помещаете дитя обратно в [declent_ru()].")) // SS220 EDIT ADDICTION
+				visible_message(SPAN_XENOWARNING("[capitalize(user.declent_ru(NOMINATIVE))] помещает [hugger.declent_ru(ACCUSATIVE)] обратно в [declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+					SPAN_XENONOTICE("Вы помещаете дитя обратно в [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 				user.temp_drop_inv_item(hugger)
 			else
-				visible_message(SPAN_XENOWARNING("[hugger] заползает обратно в [declent_ru()]!")) // SS220 EDIT ADDICTION
+				visible_message(SPAN_XENOWARNING("[capitalize(hugger.declent_ru(NOMINATIVE))] заползает обратно в [declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
 			stored_huggers = min(huggers_max_amount, stored_huggers + 1)
 			qdel(hugger)
 		else
@@ -91,11 +91,11 @@
 	if(istype(item, /obj/item/xeno_egg))
 		var/obj/item/xeno_egg/egg = item
 		if(stored_huggers >= huggers_max_amount)
-			to_chat(user, SPAN_XENOWARNING("[declent_ru()] уже занят дитём.")) // SS220 EDIT ADDICTION
+			to_chat(user, SPAN_XENOWARNING("Дитя уже имеется в [declent_ru(PREPOSITIONAL)].")) // SS220 EDIT ADDICTION
 			return
 		if(user)
-			visible_message(SPAN_XENOWARNING("[user] извлекает лицехвата из [egg] и помещает его в [declent_ru()]."), // SS220 EDIT ADDICTION
-				SPAN_XENONOTICE("Вы извлекаете дитя из яйца и помещаете его в [declent_ru()].")) // SS220 EDIT ADDICTION
+			visible_message(SPAN_XENOWARNING("[capitalize(user.declent_ru(NOMINATIVE))] извлекает лицехвата из [egg.declent_ru(GENITIVE)] и помещает его в [declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_XENONOTICE("Вы извлекаете дитя из яйца и помещаете его в [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 			user.temp_drop_inv_item(egg)
 		stored_huggers = min(huggers_max_amount, stored_huggers + 1)
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)

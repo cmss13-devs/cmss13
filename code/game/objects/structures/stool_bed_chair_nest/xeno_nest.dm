@@ -162,7 +162,7 @@
 	if(ishuman(buckled_mob) && isxeno(user))
 		var/mob/living/carbon/human/H = buckled_mob
 		if(H.recently_nested)
-			to_chat(user, SPAN_WARNING("[H] was nested recently. Wait a bit."))
+			to_chat(user, SPAN_WARNING("[capitalize(H.declent_ru(NOMINATIVE))] was nested recently. Wait a bit."))
 			return
 		if(H.stat != DEAD)
 			if(alert(user, "[H] is still alive and kicking! Are we sure we want to remove them from the nest?", "Confirmation", "Yes", "No") != "Yes")
@@ -230,8 +230,8 @@
 	if(ishuman_strict(mob))
 		securing_time = 75
 
-	user.visible_message(SPAN_WARNING("[user] pins [mob] into [src], preparing the securing resin."),
-	SPAN_WARNING("[user] pins [mob] into [src], preparing the securing resin."))
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] pins [mob] into [src], preparing the securing resin."),
+	SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] pins [mob] into [src], preparing the securing resin."))
 	var/M_loc = mob.loc
 	if(!do_after(user, securing_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
@@ -267,8 +267,8 @@
 	return TRUE
 
 /obj/structure/bed/nest/send_buckling_message(mob/M, mob/user)
-	M.visible_message(SPAN_XENONOTICE("[user] выделяет густую, отвратительную смолу, закрепляя [M] в [src]!"), // SS220 EDIT ADDICTION
-	SPAN_XENONOTICE("[user] обрызгивает вас зловонной смолой, запирая вас в [src]!"), // SS220 EDIT ADDICTION
+	M.visible_message(SPAN_XENONOTICE("[capitalize(user.declent_ru(NOMINATIVE))] выделяет густую, отвратительную смолу, закрепляя [M.declent_ru(ACCUSATIVE)] в [declent_ru(PREPOSITIONAL)]!"), // SS220 EDIT ADDICTION
+	SPAN_XENONOTICE("[capitalize(user.declent_ru(NOMINATIVE))] обрызгивает вас зловонной смолой, запирая вас в [declent_ru(PREPOSITIONAL)]!"), // SS220 EDIT ADDICTION
 	SPAN_NOTICE("You hear squelching."))
 	playsound(loc, "alien_resin_move", 50)
 
@@ -329,7 +329,7 @@
 		return
 	if(M.a_intent == INTENT_HARM && !buckled_mob) //can't slash nest with an occupant.
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_DANGER("[M] царапает [declent_ru(ACCUSATIVE)]!"),
+		M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] царапает [declent_ru(ACCUSATIVE)]!"),
 		SPAN_DANGER("Мы царапаем [declent_ru(ACCUSATIVE)]."))
 		playsound(loc, "alien_resin_break", 25)
 		health -= (M.melee_damage_upper + 25) //Beef up the damage a bit

@@ -35,7 +35,7 @@
 /obj/structure/attack_animal(mob/living/user)
 	if(breakable)
 		if(user.wall_smash)
-			visible_message(SPAN_DANGER("[user] smashes [src] apart!"))
+			visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] уничтожает [declent_ru(ACCUSATIVE)] на части!"))
 			deconstruct(FALSE)
 
 /obj/structure/attackby(obj/item/W, mob/user)
@@ -125,7 +125,7 @@
 	var/ru_name = declent_ru(ACCUSATIVE) // SS220 EDIT ADDICTION
 
 	var/climb_over_string = final_climb_delay < 1 SECONDS ? "перепрыгивать через" : "залезать на"
-	user.visible_message(SPAN_WARNING("[user] начинает [flags_atom & ON_BORDER ? "перепрыгивать через" : climb_over_string] [ru_name]!")) // SS220 EDIT ADDICTION
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] начинает [flags_atom & ON_BORDER ? "перепрыгивать через" : climb_over_string] [ru_name]!")) // SS220 EDIT ADDICTION
 
 	if(!do_after(user, final_climb_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, numticks = 2))
 		return FALSE
@@ -139,11 +139,11 @@
 		if(user.loc == TT)
 			TT = get_turf(src)
 
-	var/climb_string = final_climb_delay < 1 SECONDS ? "[user] перепрыгивает через [ru_name]!" : "[user] залезает на [ru_name]!" // SS220 EDIT ADDICTION
+	var/climb_string = final_climb_delay < 1 SECONDS ? "[capitalize(user.declent_ru(NOMINATIVE))] перепрыгивает через [ru_name]!" : "[capitalize(user.declent_ru(NOMINATIVE))] залезает на [ru_name]!" // SS220 EDIT ADDICTION
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(skillcheck(H, SKILL_ENDURANCE, SKILL_ENDURANCE_MASTER))
-			climb_string = "[user] тактикульно перепрыгивает через [ru_name]!" // SS220 EDIT ADDICTION
+			climb_string = "[capitalize(user.declent_ru(NOMINATIVE))] тактикульно перепрыгивает через [ru_name]!" // SS220 EDIT ADDICTION
 	user.visible_message(SPAN_WARNING(climb_string))
 
 	var/list/grabbed_things = list()
@@ -227,11 +227,11 @@
 			anchored = !anchored
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			if(anchored)
-				user.visible_message(SPAN_NOTICE("[user] anchors [src] into place."),SPAN_NOTICE("You anchor [src] into place."))
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] anchors [src] into place."),SPAN_NOTICE("You anchor [src] into place."))
 				for(var/obj/medlink in loc)
 					SEND_SIGNAL(medlink, COMSIG_STRUCTURE_WRENCHED, src)
 			else
-				user.visible_message(SPAN_NOTICE("[user] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
 				for(var/obj/medlink in loc)
 					SEND_SIGNAL(medlink, COMSIG_STRUCTURE_UNWRENCHED, src)
 			return TRUE

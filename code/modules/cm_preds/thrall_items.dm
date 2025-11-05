@@ -189,7 +189,7 @@
 	// Let's go
 	playsound(src,'sound/ambience/signal.ogg', 25, 1, sound_range = 6)
 	teleporting = TRUE
-	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
+	user.visible_message(SPAN_INFO("[capitalize(user.declent_ru(NOMINATIVE))] starts becoming shimmery and indistinct..."))
 
 	if(!do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, "You were interrupted!")

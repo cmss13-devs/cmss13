@@ -836,19 +836,19 @@
 		return
 	var/translated_value = holocard_translations[newcolor] // SS220 EDIT ADDICTION
 	if(get_dist(user, src) > 7)
-		to_chat(user, SPAN_WARNING("[declent_ru()] слишком далеко от вас.")) // SS220 EDIT ADDICTION
+		to_chat(user, SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] слишком далеко от вас.")) // SS220 EDIT ADDICTION
 		return
 	if(newcolor == "none")
 		if(!holo_card_color)
 			return
 		holo_card_color = null
-		to_chat(user, SPAN_NOTICE("Вы убираете статус из медголокарты [declent_ru()].")) // SS220 EDIT ADDICTION
+		to_chat(user, SPAN_NOTICE("Вы убираете статус из медголокарты [declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 	else if(newcolor != holo_card_color)
 		if(newcolor == "black" && is_revivable() && check_tod())
 			to_chat(user, SPAN_WARNING("Пациента ещё можно спасти!"))
 			return
 		holo_card_color = newcolor
-		to_chat(user, SPAN_NOTICE("Вы устанавливаете статус «[translated_value]» в медголокарте [src].")) // SS220 EDIT ADDICTION
+		to_chat(user, SPAN_NOTICE("Вы устанавливаете статус «[translated_value]» в медголокарте [declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 	hud_set_holocard()
 
 /mob/living/carbon/human/tgui_interact(mob/user, datum/tgui/ui) // I'M SORRY, SO FUCKING SORRY
@@ -932,7 +932,7 @@
 	apply_effect(5, STUN)
 	if(stat == 2) //One last corpse check
 		return
-	src.visible_message(SPAN_WARNING("[declent_ru()] блюёт!"), SPAN_WARNING("Вы блюёте!"), null, 5)
+	src.visible_message(SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] блюёт!"), SPAN_WARNING("Вы блюёте!"), null, 5)
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1, 7)
 
 	var/turf/location = loc
@@ -1549,7 +1549,7 @@
 					if(new_splint.amount == 0)
 						qdel(new_splint) //we only removed nano splints
 					msg = "[user == target ? "their own":"\proper [target]'s"]"
-					target.visible_message(SPAN_NOTICE("[user] removes [msg] [amount_removed>1 ? "splints":"splint"]."),
+					target.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] removes [msg] [amount_removed>1 ? "splints":"splint"]."),
 						SPAN_NOTICE("Your [amount_removed>1 ? "splints are":"splint is"] removed."))
 					target.update_med_icon()
 			else

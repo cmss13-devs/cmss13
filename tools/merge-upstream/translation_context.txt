@@ -87,7 +87,7 @@ Autolathe – Автолат
 Protolathe – Протолат
 Cloning Pod – Капсула клонирования
 Borg Charger – Зарядное устройство для боргов
-APC (Area Power Controller) – Локальный контроллер питания (АПЦ/ЛКП)
+APC (Area Power Controller) – Локальный контроллер питания (ЛКП)
 SMES (Substation Energy Storage) – Энергетический накопитель (СМЕС)
 Tcomms (Telecommunications) – Телекоммуникации
 Bolts (Airlock Bolts) – Болты шлюза

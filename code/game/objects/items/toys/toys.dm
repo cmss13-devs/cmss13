@@ -232,7 +232,7 @@
 				for(var/atom/T in get_turf(D))
 					D.reagents.reaction(T)
 					if(ismob(T) && T:client)
-						to_chat(T:client, SPAN_WARNING("[user] has sprayed you with water!"))
+						to_chat(T:client, SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] has sprayed you with water!"))
 				sleep(4)
 			qdel(D)
 
@@ -381,7 +381,7 @@
 	else if(sides == 20 && result == 1)
 		comment = "Ouch, bad luck."
 	icon_state = "[name][result]"
-	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] has thrown [src]. It lands on [result]. [comment]"),
 						SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"),
 						SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))
 
@@ -501,7 +501,7 @@
 	..()
 	if(!COOLDOWN_FINISHED(src, last_hug_time))
 		return
-	user.visible_message(SPAN_NOTICE("[user] hugs [src] tightly!"), SPAN_NOTICE("You hug [src]."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] hugs [src] tightly!"), SPAN_NOTICE("You hug [src]."))
 	playsound(user, "plush", 25, TRUE)
 	COOLDOWN_START(src, last_hug_time, 2.5 SECONDS)
 

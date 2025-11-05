@@ -62,11 +62,11 @@
 					to_chat(user, SPAN_WARNING("You need five lengths of cable to add them to the frame."))
 					return
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] starts adding cables to [src]."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts adding cables to [src]."),
 				SPAN_NOTICE("You start adding cables to [src]."))
 				if(do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 0)
 					if(C && istype(C) && C.use(5))
-						user.visible_message(SPAN_NOTICE("[user] adds cables to [src]."),
+						user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] adds cables to [src]."),
 						SPAN_NOTICE("You add cables to [src]."))
 						state = CONSTRUCTION_STATE_PROGRESS
 						anchored = TRUE

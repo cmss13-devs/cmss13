@@ -36,7 +36,7 @@
 		to_chat(user, SPAN_DANGER("You are out of breath after using [src]! Wait [COOLDOWN_SECONDSLEFT(src, spam_cooldown)] second\s."))
 		return
 
-	user.visible_message(SPAN_WARNING("[user] blows into [src]!"))
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] blows into [src]!"))
 	playsound(get_turf(src), 'sound/items/whistle.ogg', volume, 1, vary = 0)
 
 	COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)

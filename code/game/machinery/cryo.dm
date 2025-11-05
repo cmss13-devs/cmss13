@@ -172,7 +172,7 @@
 		msg_admin_niche("[key_name(user)] put \a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) [ADMIN_JMP(src.loc)].", 1)
 
 		if(user.drop_inv_item_to_loc(W, src))
-			user.visible_message("[user] adds \a [W] to [src]!", "You add \a [W] to [src]!")
+			user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] adds \a [W] to [src]!", "You add \a [W] to [src]!")
 	else if(istype(W, /obj/item/grab))
 		if(isxeno(user))
 			return

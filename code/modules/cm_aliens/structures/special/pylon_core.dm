@@ -264,7 +264,7 @@
 	if(linked_hive)
 		for(var/mob/living/carbon/xenomorph/larva/worm in range(2, src))
 			if((!worm.ckey || worm.stat == DEAD) && worm.burrowable && (worm.hivenumber == linked_hive.hivenumber) && !QDELETED(worm))
-				visible_message(SPAN_XENODANGER("[worm] быстро зарывается в [declent_ru()].")) // SS220 EDIT ADDICTION
+				visible_message(SPAN_XENODANGER("[capitalize(worm.declent_ru(NOMINATIVE))] быстро зарывается в [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 				if(!worm.banished)
 					// Goob job bringing her back home, but no doubling please
 					linked_hive.stored_larva++
@@ -316,8 +316,8 @@
 		if(isnull(new_xeno))
 			return FALSE
 
-		new_xeno.visible_message(SPAN_XENODANGER("Грудолом внезапно вылезает из [declent_ru()]!"), // SS220 EDIT ADDICTION
-		SPAN_XENODANGER("Мы вылезаем из [declent_ru()] и пробуждаемся от сна. Во имя улья!")) // SS220 EDIT ADDICTION
+		new_xeno.visible_message(SPAN_XENODANGER("Грудолом внезапно вылезает из [declent_ru(GENITIVE)]!"), // SS220 EDIT ADDICTION
+		SPAN_XENODANGER("Мы вылезаем из [declent_ru(GENITIVE)] и пробуждаемся от сна. Во имя улья!")) // SS220 EDIT ADDICTION
 		msg_admin_niche("[key_name(new_xeno)] emerged from \a [src]. [ADMIN_JMP(src)]")
 		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 		if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
@@ -411,7 +411,7 @@
 
 /obj/effect/alien/resin/special/pylon/core/Destroy()
 	if(linked_hive)
-		visible_message(SPAN_XENOHIGHDANGER("Смоляная крыша увядает, когда [declent_ru()] умирает!"), max_distance = WEED_RANGE_CORE) // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENOHIGHDANGER("Смоляная крыша увядает, когда [declent_ru(NOMINATIVE)] умирает!"), max_distance = WEED_RANGE_CORE) // SS220 EDIT ADDICTION
 		linked_hive.hive_location = null
 		if(world.time < XENOMORPH_PRE_SETUP_CUTOFF && !hardcore)
 			. = ..()
@@ -426,20 +426,20 @@
 			xeno_announcement("Ядро улья '[linked_hive.name]' погибло!", "everything", HIGHER_FORCE_ANNOUNCE)
 
 		if(linked_hive.hijack_burrowed_surge)
-			visible_message(SPAN_XENODANGER("Мы слышим что-то похожее на крик из [declent_ru()], когда оно уничтожается!")) // SS220 EDIT ADDICTION
-			xeno_message(SPAN_XENOANNOUNCE("Пси-боль охватывает улей, когда [declent_ru()] уничтожается! Мы больше не будем получать новых грудоломов."), 3, linked_hive.hivenumber) // SS220 EDIT ADDICTION
+			visible_message(SPAN_XENODANGER("Мы слышим что-то похожее на крик из [declent_ru(GENITIVE)], когда оно уничтожается!")) // SS220 EDIT ADDICTION
+			xeno_message(SPAN_XENOANNOUNCE("Пси-боль охватывает улей, когда [declent_ru(NOMINATIVE)] уничтожается! Мы больше не будем получать новых грудоломов."), 3, linked_hive.hivenumber) // SS220 EDIT ADDICTION
 			linked_hive.hijack_burrowed_surge = FALSE
 
 	SSminimaps.remove_marker(src)
 	. = ..()
 
 /obj/effect/alien/resin/special/pylon/core/proc/startDestroying(mob/living/carbon/xenomorph/M)
-	xeno_message(SPAN_XENOANNOUNCE("[M] уничтожает [declent_ru()]!"), 3, linked_hive.hivenumber) // SS220 EDIT ADDICTION
-	visible_message(SPAN_DANGER("[M] начинает уничтожать [declent_ru()]!")) // SS220 EDIT ADDICTION
+	xeno_message(SPAN_XENOANNOUNCE("[capitalize(M.declent_ru(NOMINATIVE))] начинает уничтожать [declent_ru(ACCUSATIVE)]!"), 3, linked_hive.hivenumber) // SS220 EDIT ADDICTION
+	visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] начинает уничтожать [declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
 	last_attempt = world.time //spamcheck
 	if(!do_after(M, 5 SECONDS , INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		to_chat(M,SPAN_WARNING("Вы перестаёте уничтожать [declent_ru()].")) // SS220 EDIT ADDICTION
-		visible_message(SPAN_WARNING("[M] перестал уничтожать [declent_ru()].")) // SS220 EDIT ADDICTION
+		to_chat(M,SPAN_WARNING("Вы перестаёте уничтожать [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
+		visible_message(SPAN_WARNING("[capitalize(M.declent_ru(NOMINATIVE))] перестаёт уничтожать [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 		last_attempt = world.time // update the spam check
 		return XENO_NO_DELAY_ACTION
 	qdel(src)

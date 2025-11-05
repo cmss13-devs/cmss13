@@ -139,7 +139,7 @@
 	var/sound = null
 	if(being.stat == DEAD || (being.status_flags & FAKEDEATH))
 		sound = "can't hear anything at all, they must have kicked the bucket"
-		user.visible_message("[user] places [src] against [being]'s [body_part] and listens attentively.", "You place [src] against [being.p_their()] [body_part] and... you [sound].")
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] places [src] against [being]'s [body_part] and listens attentively.", "You place [src] against [being.p_their()] [body_part] and... you [sound].")
 		return
 
 	switch(body_part)
@@ -181,7 +181,7 @@
 			sound = "can't hear anything. Maybe that isn't the smartest idea"
 		else
 			sound = "hear a sound here and there, but none of them give you any good information"
-	user.visible_message("[user] places [src] against [being]'s [body_part] and listens attentively.", "You place [src] against [being.p_their()] [body_part] and... you [sound].")
+	user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] places [src] against [being]'s [body_part] and listens attentively.", "You place [src] against [being.p_their()] [body_part] and... you [sound].")
 
 
 //Medals
@@ -235,11 +235,11 @@
 		if(user == H)
 			to_chat(user, SPAN_WARNING("You aren't wearing anything you can pin [src] to."))
 		else
-			to_chat(user, SPAN_WARNING("[H] isn't wearing anything you can pin [src] to."))
+			to_chat(user, SPAN_WARNING("[capitalize(H.declent_ru(NOMINATIVE))] isn't wearing anything you can pin [src] to."))
 		return
 
 	if(user == H)
-		user.visible_message(SPAN_NOTICE("[user] pins [src] to \his [U.name]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] pins [src] to \his [U.name]."),
 		SPAN_NOTICE("You pin [src] to your [U.name]."))
 
 	else
@@ -248,32 +248,32 @@
 		if(user.a_intent != INTENT_HARM)
 			user.affected_message(H,
 			SPAN_NOTICE("You start to pin [src] onto [H]."),
-			SPAN_NOTICE("[user] starts to pin [src] onto you."),
-			SPAN_NOTICE("[user] starts to pin [src] onto [H]."))
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts to pin [src] onto you."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts to pin [src] onto [H]."))
 			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, H))
 				return
 			if(!(U == H.w_uniform || U == H.wear_suit))
-				to_chat(user, SPAN_WARNING("[H] took off \his [U.name] before you could finish pinning [src] to it."))
+				to_chat(user, SPAN_WARNING("[capitalize(H.declent_ru(NOMINATIVE))] took off \his [U.name] before you could finish pinning [src] to it."))
 				return
 			user.affected_message(H,
 			SPAN_NOTICE("You pin [src] to [H]'s [U.name]."),
-			SPAN_NOTICE("[user] pins [src] to your [U.name]."),
-			SPAN_NOTICE("[user] pins [src] to [H]'s [U.name]."))
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] pins [src] to your [U.name]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] pins [src] to [H]'s [U.name]."))
 
 		else
 			user.affected_message(H,
 			SPAN_ALERT("You start to pin [src] to [H]."),
-			SPAN_ALERT("[user] starts to pin [src] to you."),
-			SPAN_ALERT("[user] starts to pin [src] to [H]."))
+			SPAN_ALERT("[capitalize(user.declent_ru(NOMINATIVE))] starts to pin [src] to you."),
+			SPAN_ALERT("[capitalize(user.declent_ru(NOMINATIVE))] starts to pin [src] to [H]."))
 			if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE, H))
 				return
 			if(!(U == H.w_uniform || U == H.wear_suit))
-				to_chat(user, SPAN_WARNING("[H] took off \his [U.name] before you could finish pinning [src] to \him."))
+				to_chat(user, SPAN_WARNING("[capitalize(H.declent_ru(NOMINATIVE))] took off \his [U.name] before you could finish pinning [src] to \him."))
 				return
 			user.affected_message(H,
 			SPAN_DANGER("You slam the [src.name]'s pin through [H]'s [U.name] and into \his chest."),
-			SPAN_DANGER("[user] slams the [src.name]'s pin through your [U.name] and into your chest!"),
-			SPAN_DANGER("[user] slams the [src.name]'s pin through [H]'s [U.name] and into \his chest."))
+			SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] slams the [src.name]'s pin through your [U.name] and into your chest!"),
+			SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] slams the [src.name]'s pin through [H]'s [U.name] and into \his chest."))
 
 			/*Some duplication from punch code due to attack message and damage stats.
 			This does cut damage and awarding multiple medals like this to the same person will cause bleeding.*/
@@ -1014,7 +1014,7 @@
 				break
 			ST.remove_from_storage(I)
 			attempt_item_insertion(I, TRUE, user)
-		user.visible_message("[user] transfers the tools from \the [ST] to the surgical webbing vest.", SPAN_NOTICE("You transfer the tools from \the [ST] to the surgical webbing vest."), max_distance = 3)
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] transfers the tools from \the [ST] to the surgical webbing vest.", SPAN_NOTICE("You transfer the tools from \the [ST] to the surgical webbing vest."), max_distance = 3)
 		return
 	return ..()
 
@@ -1290,7 +1290,7 @@
 		to_chat(user, "Waving around a badge before swiping an ID would be pretty pointless.")
 		return
 	if(isliving(user))
-		user.visible_message(SPAN_DANGER("[user] displays their Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."),SPAN_DANGER("You display your Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] displays their Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."),SPAN_DANGER("You display your Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."))
 
 /obj/item/clothing/accessory/holobadge/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/card/id))
@@ -1312,7 +1312,7 @@
 
 /obj/item/clothing/accessory/holobadge/attack(mob/living/carbon/human/M, mob/living/user)
 	if(isliving(user))
-		user.visible_message(SPAN_DANGER("[user] invades [M]'s personal space, thrusting [src] into their face insistently."),SPAN_DANGER("You invade [M]'s personal space, thrusting [src] into their face insistently. You are the law."))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] invades [M]'s personal space, thrusting [src] into their face insistently."),SPAN_DANGER("You invade [M]'s personal space, thrusting [src] into their face insistently. You are the law."))
 
 /obj/item/storage/box/holobadge // re-org this out in the future
 	name = "holobadge box"

@@ -153,7 +153,7 @@
 			return
 
 		user.visible_message(SPAN_NOTICE("You show the paper to [M]."),
-		SPAN_NOTICE("[user] holds up a paper and shows it to [M]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] holds up a paper and shows it to [M]."))
 		examine(M)
 
 	else if(user.zone_selected == "mouth") // lipstick wiping
@@ -164,10 +164,10 @@
 				H.lip_style = null
 				H.update_body()
 			else
-				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."),
+				user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] begins to wipe [H]'s face paint off with \the [src]."),
 									SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
 				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //user needs to keep their active hand, H does not.
-					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."),
+					user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] wipes [H]'s face paint off with \the [src]."),
 										SPAN_NOTICE("You wipe off [H]'s face paint."))
 					H.lip_style = null
 					H.update_body()
@@ -492,7 +492,7 @@
 			return
 
 		// SS220 START EDIT ADDICTION
-		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>На этом документе стоит [P.declent_ru()].</i>"
+		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>На этом документе стоит [P.declent_ru(NOMINATIVE)].</i>"
 		stamps_list += list(list(
 			"name" = P.icon_state,
 			"position" = list("x" = rand(20, 80), "y" = rand(0, 100)),

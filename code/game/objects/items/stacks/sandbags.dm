@@ -117,7 +117,7 @@
 	if(user.action_busy)
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] starts assembling a sandbag barricade."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts assembling a sandbag barricade."),
 	SPAN_NOTICE("You start assembling a sandbag barricade."))
 
 	if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -133,7 +133,7 @@
 		build_stack = 5
 
 	var/obj/structure/barricade/sandbags/SB = new(user.loc, user, user.dir, build_stack)
-	user.visible_message(SPAN_NOTICE("[user] assembles a sandbag barricade."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] assembles a sandbag barricade."),
 	SPAN_NOTICE("You assemble a sandbag barricade."))
 	SB.setDir(user.dir)
 	SB.add_fingerprint(user)

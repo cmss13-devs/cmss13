@@ -44,9 +44,9 @@
 	//Repair the desk bell if its broken and we're using a screwdriver.
 	if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 		if(broken_ringer)
-			user.visible_message(SPAN_NOTICE("[user] begins repairing [src]..."), SPAN_NOTICE("You begin repairing [src]..."))
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins repairing [src]..."), SPAN_NOTICE("You begin repairing [src]..."))
 			if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				user.visible_message(SPAN_NOTICE("[user] repairs [src]."), SPAN_NOTICE("You repair [src]."))
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] repairs [src]."), SPAN_NOTICE("You repair [src]."))
 				playsound(src, 'sound/items/Screwdriver.ogg', 50)
 				broken_ringer = FALSE
 				times_rang = 0
@@ -60,19 +60,19 @@
 	//Wrenching down and unwrenching.
 	if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 		if(user.a_intent == INTENT_HARM)
-			visible_message(SPAN_NOTICE("[user] begins taking apart [src]..."), SPAN_NOTICE("You begin taking apart [src]..."))
+			visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins taking apart [src]..."), SPAN_NOTICE("You begin taking apart [src]..."))
 			playsound(src, 'sound/items/deconstruct.ogg', 35)
 			if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				visible_message(SPAN_NOTICE("[user] takes apart [src]."), SPAN_NOTICE("You take apart [src]."))
+				visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] takes apart [src]."), SPAN_NOTICE("You take apart [src]."))
 				new /obj/item/stack/sheet/metal(get_turf(src))
 				qdel(src)
 				return TRUE
 		else
-			user.visible_message(SPAN_NOTICE("[user] begins [anchored ? "un" : ""]securing [src]..."), SPAN_NOTICE("You begin [anchored ? "un" : ""]securing [src]..."))
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins [anchored ? "un" : ""]securing [src]..."), SPAN_NOTICE("You begin [anchored ? "un" : ""]securing [src]..."))
 			playsound(src, 'sound/items/Ratchet.ogg', 35, TRUE)
 			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return FALSE
-			user.visible_message(SPAN_NOTICE("[user] [anchored ? "un" : ""]secures [src]."), SPAN_NOTICE("You [anchored ? "un" : ""]secure [src]."))
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] [anchored ? "un" : ""]secures [src]."), SPAN_NOTICE("You [anchored ? "un" : ""]secure [src]."))
 			anchored = !anchored
 			return TRUE
 

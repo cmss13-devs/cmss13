@@ -62,7 +62,7 @@
 
 	if(has_label())
 		log_admin("[key_name(usr)] has removed label from [parent].")
-		user.visible_message(SPAN_NOTICE("[user] removes label from [parent]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] removes label from [parent]."),
 							SPAN_NOTICE("You remove the label from [parent]."))
 		clear_label()
 		playsound(parent, 'sound/items/poster_ripped.ogg', 20, TRUE)

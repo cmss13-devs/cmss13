@@ -481,7 +481,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 	if(!can_hold_type(W.type, user))
 		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("В [declent_ru(PREPOSITIONAL)] нельзя поместить [W.declent_ru()].")) // SS220 EDIT ADDICTION
+			to_chat(usr, SPAN_NOTICE("В [declent_ru(PREPOSITIONAL)] нельзя поместить [W.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 		return
 
 	var/w_limit_bypassed = 0
@@ -574,8 +574,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		add_fingerprint(user)
 		if(!prevent_warning)
 			var/visidist = W.w_class >= 3 ? 3 : 1
-			user.visible_message(SPAN_NOTICE("[user] помещает [W.declent_ru()] в [declent_ru()]"), // SS220 EDIT ADDICTION
-								SPAN_NOTICE("Вы помещаете [W.declent_ru()] в [declent_ru()]"), // SS220 EDIT ADDICTION
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] помещает [W.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]"), // SS220 EDIT ADDICTION
+								SPAN_NOTICE("Вы помещаете [W.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]"), // SS220 EDIT ADDICTION
 								null, visidist)
 	orient2hud()
 	for(var/mob/M in can_see_content())
@@ -732,7 +732,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		return
 
 	if (!(storage_flags & STORAGE_QUICK_EMPTY))
-		user.visible_message(SPAN_NOTICE("[user] начинает опустошать [ru_name]..."), // SS220 EDIT ADDICTION
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает опустошать [ru_name]..."), // SS220 EDIT ADDICTION
 			SPAN_NOTICE("Вы начинате опустошать [ru_name]...")) // SS220 EDIT ADDICTION
 		if (!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			return
@@ -740,7 +740,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	storage_close(user)
 	for (var/obj/item/I in contents)
 		remove_from_storage(I, T, user)
-	user.visible_message(SPAN_NOTICE("[user] опустошает [ru_name]..."), // SS220 EDIT ADDICTION
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] опустошает [ru_name]..."), // SS220 EDIT ADDICTION
 		SPAN_NOTICE("Вы опустошаете [ru_name]...")) // SS220 EDIT ADDICTION
 	if (use_sound)
 		playsound(loc, use_sound, 25, TRUE, 3)
@@ -771,20 +771,20 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(!length(contents))
 		if(prob(25) && isxeno(user))
 			user.drop_inv_item_to_loc(src, tile)
-			user.visible_message(SPAN_NOTICE("[user] shakes \the [src] off."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] shakes \the [src] off."),
 				SPAN_NOTICE("You shake \the [src] off."))
 		else
-			user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] shakes \the [src] but nothing falls out."),
 				SPAN_NOTICE("You shake \the [src] but nothing falls out. It feels empty."))
 		return
 
 	if(!can_storage_interact(user))
-		user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] shakes \the [src] but nothing falls out."),
 			SPAN_NOTICE("You shake \the [src] but nothing falls out. Access denied."))
 		return
 
 	if(!prob(75))
-		user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] shakes \the [src] but nothing falls out."),
 			SPAN_NOTICE("You shake \the [src] but nothing falls out."))
 		return
 
@@ -797,7 +797,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(!istype(item_obj))
 		return
 	remove_from_storage(item_obj, tile, user)
-	user.visible_message(SPAN_NOTICE("[user] shakes \the [src] and \a [item_obj] falls out."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] shakes \the [src] and \a [item_obj] falls out."),
 		SPAN_NOTICE("You shake \the [src] and \a [item_obj] falls out."))
 
 /obj/item/storage/proc/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, amount_to_dump = 5) //amount_to_dump should never actually need to be used as default value

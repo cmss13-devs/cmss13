@@ -35,13 +35,13 @@
 	if(!forward.fishing_allowed)
 		to_chat(user, SPAN_WARNING("You can not fish here!"))
 		return
-	
-	user.visible_message(SPAN_NOTICE("[user] starts setting up \the [src]..."))
-	
+
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts setting up \the [src]..."))
+
 	if(!do_after(user, 3 SECONDS, show_busy_icon = BUSY_ICON_BUILD))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] finishes setting up \the [src]!"), SPAN_NOTICE("You finish setting up \the [src]!"))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes setting up \the [src]!"), SPAN_NOTICE("You finish setting up \the [src]!"))
 	var/obj/structure/prop/fishing/pole_interactive/deployed_pole = new deploy_type(get_turf(src))
 	transfer_to_pole(deployed_pole, user)
 
@@ -52,7 +52,7 @@
 			return
 		if(user.drop_inv_item_to_loc(I, src))
 			loaded_bait = I
-			user.visible_message(SPAN_NOTICE("[user] loads \the [I] onto \the [src]'s hook."), SPAN_NOTICE("You load \the [I] onto \the [src]'s hook."))
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] loads \the [I] onto \the [src]'s hook."), SPAN_NOTICE("You load \the [I] onto \the [src]'s hook."))
 			return
 	return ..()
 

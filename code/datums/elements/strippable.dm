@@ -96,8 +96,8 @@
 /// Returns TRUE/FALSE depending on if it is allowed.
 /datum/strippable_item/proc/start_equip(atom/source, obj/item/equipping, mob/user)
 	source.visible_message(
-		SPAN_NOTICE("[user] tries to put [equipping] on [source]."),
-		SPAN_NOTICE("[user] tries to put [equipping] on you.")
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] tries to put [equipping] on [source]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] tries to put [equipping] on you.")
 	)
 
 	if (ismob(source))
@@ -157,8 +157,8 @@
 		return FALSE
 
 	source.visible_message(
-		SPAN_WARNING("[user] tries to remove [source]'s [item]."),
-		SPAN_DANGER("[user] tries to remove your [item].")
+		SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] tries to remove [source]'s [item]."),
+		SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] tries to remove your [item].")
 	)
 
 	if (ismob(source))

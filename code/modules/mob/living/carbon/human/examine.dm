@@ -14,7 +14,7 @@
 
 		if(icon)
 			msg += "[icon2html(icon, user)] "
-		msg += SPAN_XENOWARNING("<EM>[declent_ru()]</EM>!<br>") // SS220 EDIT ADDICTION
+		msg += SPAN_XENOWARNING("<EM>[declent_ru(NOMINATIVE)]</EM>!<br>") // SS220 EDIT ADDICTION
 
 		if(species && species.flags & IS_SYNTHETIC)
 			msg += SPAN_XENOWARNING("Вы чувствуете, что это существо неорганическое.<br>") // SS220 EDIT ADDICTION
@@ -82,7 +82,7 @@
 
 	if(id_paygrade)
 		msg += "<EM>[rank_display] </EM>"
-	msg += SPAN_NOTICE("<EM>[declent_ru()]</EM>!<br>") // SS220 EDIT ADDICTION
+	msg += SPAN_NOTICE("<EM>[declent_ru(NOMINATIVE)]</EM>!<br>") // SS220 EDIT ADDICTION
 
 	//uniform
 	if(w_uniform && !skipjumpsuit)
@@ -230,7 +230,7 @@
 		if(paralyzed > 1 && distance <= 3)
 			msg += SPAN_WARNING("[t_He] совершенно неподвижен.\n")
 		if(ishuman(user) && !user.stat && Adjacent(user))
-			user.visible_message("[SPAN_BOLD("[capitalize(user.declent_ru())]")] проверяет [t_his] пульс.", "Вы проверили [t_his] пульс.", null, 4)
+			user.visible_message("[SPAN_BOLD("[capitalize(user.declent_ru(NOMINATIVE))]")] проверяет [t_his] пульс.", "Вы проверили [t_his] пульс.", null, 4)
 		spawn(15)
 			if(user && src && distance <= 1)
 				get_pulse(GETPULSE_HAND) // to update it
@@ -264,7 +264,7 @@
 		if(temp)
 			if(temp.status & LIMB_DESTROYED)
 				is_destroyed["[temp.display_name]"] = 1
-				wound_flavor_text["[temp.display_name]"] = SPAN_WARNING(SPAN_BOLD("У [t_theirs] отсутствует [temp.declent_ru()].\n"))
+				wound_flavor_text["[temp.display_name]"] = SPAN_WARNING(SPAN_BOLD("У [t_theirs] отсутствует [temp.declent_ru(NOMINATIVE)].\n"))
 				continue
 			if(temp.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 				if(!(temp.brute_dam + temp.burn_dam))

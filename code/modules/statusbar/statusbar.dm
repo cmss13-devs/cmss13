@@ -6,7 +6,7 @@
 		winset(client, "mapwindow.status_bar", "is-visible=false");\
 		return;\
 	}\
-	winset(client, "mapwindow.status_bar", "text=\"[declent_ru()]\"");\
+	winset(client, "mapwindow.status_bar", "text=\"[declent_ru(NOMINATIVE)]\"");\
 };\
 ##type/MouseExited(location, control, params){\
 	. = ..();\

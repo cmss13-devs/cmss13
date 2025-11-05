@@ -240,7 +240,7 @@
 			living_hives++
 			last_living_hive = H
 		else if (H in current_hives)
-			xeno_announcement("[H] был стёрт с лица земли.", "everything", HIGHER_FORCE_ANNOUNCE)
+			xeno_announcement("Улей [H] был стёрт с лица земли.", "everything", HIGHER_FORCE_ANNOUNCE)
 			current_hives -= H
 
 

@@ -89,7 +89,7 @@
 					health = maxHealth
 				add_fingerprint(user)
 				for(var/mob/W in viewers(user, null))
-					W.show_message(text(SPAN_DANGER("[user] has spot-welded some of the damage to [src]!")), SHOW_MESSAGE_VISIBLE)
+					W.show_message(text(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] has spot-welded some of the damage to [src]!")), SHOW_MESSAGE_VISIBLE)
 			else
 				to_chat(user, SPAN_NOTICE(" [src] is undamaged!"))
 		else
@@ -130,7 +130,7 @@
 			to_chat(usr, SPAN_DANGER("This weapon is ineffective, it does no damage."))
 			for(var/mob/M as anything in viewers(src, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_DANGER("[user] gently taps [src] with \the [O]."), SHOW_MESSAGE_VISIBLE)
+					M.show_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] gently taps [src] with \the [O]."), SHOW_MESSAGE_VISIBLE)
 
 /mob/living/simple_animal/spiderbot/proc/transfer_personality(obj/item/device/mmi/M as obj)
 	src.mind = M.brainmob.mind

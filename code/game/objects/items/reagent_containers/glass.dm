@@ -185,7 +185,7 @@
 		if(!tmp_label)
 			if(prior_label_text)
 				log_admin("[key_name(usr)] has removed label from [src].")
-				user.visible_message(SPAN_NOTICE("[user] removes label from [src]."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] removes label from [src]."),
 									SPAN_NOTICE("You remove the label from [src]."))
 				labelcomponent.clear_label()
 			return
@@ -195,7 +195,7 @@
 		if(prior_label_text == tmp_label)
 			to_chat(user, SPAN_WARNING("The label already says \"[tmp_label]\"."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] labels [src] as \"[tmp_label]\"."),
 		SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 		AddComponent(/datum/component/label, tmp_label)
 		playsound(src, "paper_writing", 15, TRUE)
@@ -725,7 +725,7 @@
 	if(!proximity)
 		return
 	if(istype(AM) && (src in user))
-		user.visible_message("[user] starts to wipe down [AM] with [src]!")
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] starts to wipe down [AM] with [src]!")
 		if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			user.visible_message("[user] finishes wiping off [AM]!")
+			user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] finishes wiping off [AM]!")
 			AM.clean_blood()

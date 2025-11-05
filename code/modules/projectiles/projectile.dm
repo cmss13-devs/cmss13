@@ -1256,8 +1256,8 @@
 	if(!P)
 		return
 	if(damaging && COOLDOWN_FINISHED(src, shot_cooldown))
-		visible_message(SPAN_DANGER("[declent_ru()] был поражён [declent_ru_initial(P.name, INSTRUMENTAL, P.name)] в [declent_ru_initial(parse_zone(P.def_zone), ACCUSATIVE, parse_zone(P.def_zone))]!"), // SS220 EDIT ADDICTION
-			SPAN_HIGHDANGER("[isxeno(src) ? "Мы" : "Вы"] были поражены [declent_ru_initial(P.name, INSTRUMENTAL, P.name)] в [declent_ru_initial(parse_zone(P.def_zone), ACCUSATIVE, parse_zone(P.def_zone))]!"), null, 4, CHAT_TYPE_TAKING_HIT) // SS220 EDIT ADDICTION
+		visible_message(SPAN_DANGER("[capitalize(P.declent_ru(NOMINATIVE))] попадает по [declent_ru(DATIVE)] в [declent_ru_initial(parse_zone(P.def_zone), ACCUSATIVE, parse_zone(P.def_zone))]!"), // SS220 EDIT ADDICTION
+			SPAN_HIGHDANGER("[capitalize(P.declent_ru(NOMINATIVE))] попадает по [isxeno(src) ? "нам" : "вам"] в [declent_ru_initial(parse_zone(P.def_zone), ACCUSATIVE, parse_zone(P.def_zone))]!"), null, 4, CHAT_TYPE_TAKING_HIT) // SS220 EDIT ADDICTION
 		COOLDOWN_START(src, shot_cooldown, 1 SECONDS)
 
 	var/shot_from = P.shot_from ? " from \a [P.shot_from]" : ""

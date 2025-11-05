@@ -31,12 +31,12 @@
 	var/target_vocal = "vocal cords"
 
 /datum/surgery_step/tune_vocal_cords/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message("[user] begins to tune [target]'s vocals.", span_notice("You begin to tune [target]'s vocals..."))
+	user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] begins to tune [target]'s vocals.", span_notice("You begin to tune [target]'s vocals..."))
 	..()
 
 /datum/surgery_step/tune_vocal_cords/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.change_tts_seed(user, FALSE, TRUE)
-	user.visible_message("[user] tunes [target]'s vocals completely!", span_notice("You tune [target]'s vocals completely."))
+	user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] tunes [target]'s vocals completely!", span_notice("You tune [target]'s vocals completely."))
 	return TRUE
 
 /datum/surgery_step/tune_vocal_cords/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

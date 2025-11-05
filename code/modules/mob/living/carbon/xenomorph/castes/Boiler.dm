@@ -118,7 +118,7 @@
 			return
 
 		xeno.create_empower()
-		xeno.visible_message(SPAN_XENODANGER("[xeno] начинает накапливать кислоту для мощного взрыва!"), SPAN_XENODANGER("Мы начинаем накапливать кислоту для мощного взрыва!")) // SS220 EDIT ADDICTION
+		xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] начинает накапливать кислоту для мощного взрыва!"), SPAN_XENODANGER("Мы начинаем накапливать кислоту для мощного взрыва!")) // SS220 EDIT ADDICTION
 		activated_once = TRUE
 		stack()
 		addtimer(CALLBACK(src, PROC_REF(timeout)), max_stacks*stack_time + time_after_max_before_end)
@@ -155,7 +155,7 @@
 
 			new /obj/effect/xenomorph/acid_damage_delay(turf, damage, 7, FALSE, "В вас выпустили струю кислоты!", xeno)
 
-		xeno.visible_message(SPAN_XENODANGER("[xeno] выпускает мощный кислотный взрыв в сторону [affected_atom]!"), SPAN_XENODANGER("Мы выпускаем мощный кислотный взрыв в сторону [affected_atom]!")) // SS220 EDIT ADDICTION
+		xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] выпускает мощный кислотный взрыв в сторону [affected_atom.declent_ru(GENITIVE)]!"), SPAN_XENODANGER("Мы выпускаем мощный кислотный взрыв в сторону [affected_atom.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 		remove_stack_effects("Мы чувствуем, что наша скорость передвижения снижается!")
 		return TRUE
 
@@ -329,7 +329,7 @@
 	target.set_state(RESIN_TRAP_GAS)
 
 	playsound(target, 'sound/effects/refill.ogg', 25, 1)
-	visible_message(SPAN_XENOWARNING("[declent_ru()] наполняет смоляную ловушку газом!"), // SS220 EDIT ADDICTION
+	visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] наполняет смоляную ловушку газом!"), // SS220 EDIT ADDICTION
 	SPAN_XENOWARNING("Вы наполняете смоляную ловушку газом!"), null, 5)
 	return TRUE
 

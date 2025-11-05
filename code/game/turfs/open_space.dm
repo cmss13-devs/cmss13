@@ -65,13 +65,13 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	if(user.action_busy)
 		return
-	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] starts climbing down."), SPAN_WARNING("You start climbing down."))
 
 	if(!do_after(user, climb_down_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
 
-	user.visible_message(SPAN_WARNING("[user] climbs down."), SPAN_WARNING("You climb down."))
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] climbs down."), SPAN_WARNING("You climb down."))
 
 	var/turf/below = SSmapping.get_turf_below(current_turf)
 	while(istype(below, /turf/open_space))

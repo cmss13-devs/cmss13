@@ -33,7 +33,7 @@
 	if(!reagents.total_volume)
 		if(M == usr)
 			to_chat(usr, SPAN_NOTICE("Вы полностью доели [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
-		M.visible_message(SPAN_NOTICE("[M] полностью доедает [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
+		M.visible_message(SPAN_NOTICE("[capitalize(M.declent_ru(NOMINATIVE))] полностью доедает [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 		usr.drop_inv_item_on_ground(src) //so icons update :[
 
 		if(trash)
@@ -67,7 +67,7 @@
 		if(user == M)
 			to_chat(M, SPAN_WARNING("Как вы собираетесь есть это через упаковку?"))
 		else
-			to_chat(M, SPAN_WARNING("[user] made an endearing attempt to force feed you a snack with the packaging still on."))
+			to_chat(M, SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] made an endearing attempt to force feed you a snack with the packaging still on."))
 		return FALSE
 
 	if(istype(M, /mob/living/carbon))
@@ -102,8 +102,8 @@
 			if (fullness <= NUTRITION_HIGH)
 				user.affected_message(M,
 					SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
-					SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
-					SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
+					SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>starts feeding</b> you <b>[src]</b>."),
+					SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
 
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M))
 				return
@@ -116,8 +116,8 @@
 
 			user.affected_message(M,
 				SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
-				SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
-				SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
+				SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>fed</b> you <b>[src]</b>."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] fed [user == M ? "themselves" : "[M]"] [src]."))
 
 		if(reagents) //Handle ingestion of the reagent.
 			playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)
@@ -212,12 +212,12 @@
 	var/slices_lost = 0
 	if (!inaccurate)
 		user.visible_message(
-			SPAN_NOTICE("[user] slices \the [src]!"),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] slices \the [src]!"),
 			SPAN_NOTICE("You slice \the [src]!")
 		)
 	else
 		user.visible_message(
-			SPAN_NOTICE("[user] crudely slices \the [src] with [W]!"),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] crudely slices \the [src] with [W]!"),
 			SPAN_NOTICE("You crudely slice \the [src] with your [W]!")
 		)
 		slices_lost = rand(1,max(1,floor(slices_num/2)))
@@ -3457,7 +3457,7 @@
 	..()
 
 	if(package)
-		to_chat(user, SPAN_NOTICE("Вы распаковываете [declent_ru()]")) // SS220 EDIT ADDICTION
+		to_chat(user, SPAN_NOTICE("Вы распаковываете [declent_ru(ACCUSATIVE)]")) // SS220 EDIT ADDICTION
 		playsound(loc,'sound/effects/pageturn2.ogg', 15, 1)
 
 		if(wrapper)

@@ -119,7 +119,7 @@
 /obj/effect/alien/egg/attack_alien(mob/living/carbon/xenomorph/M)
 	if(status == EGG_BURST || status == EGG_DESTROYED)
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENONOTICE("[M] очищает вылупившееся яйцо."), // SS220 EDIT ADDICTION
+		M.visible_message(SPAN_XENONOTICE("[capitalize(M.declent_ru(NOMINATIVE))] очищает вылупившееся яйцо."), // SS220 EDIT ADDICTION
 		SPAN_XENONOTICE("Мы очищаем вылупившееся яйцо."))
 		playsound(src.loc, "alien_resin_break", 25)
 		qdel(src)
@@ -127,8 +127,8 @@
 
 	if(M.hivenumber != hivenumber)
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENOWARNING("[M] раздавливает [declent_ru()]."), // SS220 EDIT ADDICTION
-			SPAN_XENOWARNING("Мы раздавливаем [declent_ru()]")) // SS220 EDIT ADDICTION
+		M.visible_message(SPAN_XENOWARNING("[capitalize(M.declent_ru(NOMINATIVE))] раздавливает [declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_XENOWARNING("Мы раздавливаем [declent_ru(ACCUSATIVE)]")) // SS220 EDIT ADDICTION
 		Burst(TRUE)
 		return XENO_ATTACK_ACTION
 
@@ -265,11 +265,11 @@
 		switch(status)
 			if(EGG_BURST)
 				if(user)
-					visible_message(SPAN_XENOWARNING("[user] помещает [F] обратно в [declent_ru()]."), // SS220 EDIT ADDICTION
-						SPAN_XENONOTICE("Мы помещаем дитя обратно в [declent_ru()].")) // SS220 EDIT ADDICTION
+					visible_message(SPAN_XENOWARNING("[capitalize(user.declent_ru(NOMINATIVE))] помещает [F.declent_ru(ACCUSATIVE)] обратно в [declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+						SPAN_XENONOTICE("Мы помещаем дитя обратно в [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 					user.temp_drop_inv_item(F)
 				else
-					visible_message(SPAN_XENOWARNING("[F] заползает обратно в [declent_ru()]!")) //Not sure how, but let's roll with it for now. SS220 EDIT ADDICTION
+					visible_message(SPAN_XENOWARNING("[capitalize(F.declent_ru(NOMINATIVE))] заползает обратно в [declent_ru(ACCUSATIVE)]!")) //Not sure how, but let's roll with it for now. SS220 EDIT ADDICTION
 				status = EGG_GROWN
 				icon_state = "Egg"
 

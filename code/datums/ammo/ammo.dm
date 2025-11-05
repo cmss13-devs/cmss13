@@ -215,8 +215,8 @@
 		if(P.firer == M)
 			continue
 		if(show_message)
-			var/msg = "были поражены отдачей от <b>[P.name]</b>!" // SS220 EDIT ADDICTION
-			M.visible_message(SPAN_DANGER("[M] был поражён отдачей от [P.name]!"),isxeno(M) ? SPAN_XENODANGER("Мы [msg]"):SPAN_HIGHDANGER("Вы [msg]")) // SS220 EDIT ADDICTION
+			var/msg = "были поражены отдачей от <b>[P.declent_ru(GENITIVE)]</b>!" // SS220 EDIT ADDICTION
+			M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] поражается от отдачи [P.declent_ru(GENITIVE)]!"),isxeno(M) ? SPAN_XENODANGER("Мы [msg]"):SPAN_HIGHDANGER("Вы [msg]")) // SS220 EDIT ADDICTION
 		var/damage = P.damage/damage_div
 
 		var/mob/living/carbon/xenomorph/XNO = null

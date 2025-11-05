@@ -189,7 +189,7 @@
 		return
 
 	for(var/mob/living/carbon/viewer in orange(xeno, 5))
-		to_chat(viewer, SPAN_WARNING("[xeno] бегло обнюхивает землю, чтобы найти своего хозяина.")) // SS220 EDIT ADDICTION
+		to_chat(viewer, SPAN_WARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] бегло обнюхивает землю, чтобы найти своего хозяина.")) // SS220 EDIT ADDICTION
 		to_chat(xeno, SPAN_XENOWARNING("Вы бегло обнюхиваете землю, чтобы найти своего хозяина."))
 		to_chat(xeno, SPAN_XENOWARNING("Ваш хозяин в [dist] метрах к [dir2text(direction)]")) // SS220 EDIT ADDICTION
 

@@ -86,7 +86,7 @@
 		if(isliving(M))
 			var/mob/living/living_M = M
 			if(living_M.mobility_flags & MOBILITY_MOVE)
-				M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
+				M.visible_message(SPAN_WARNING("[capitalize(M.declent_ru(NOMINATIVE))] suddenly gets out of [src]!"),
 				SPAN_WARNING("You get out of [src] and get your bearings!"))
 
 /// Attempts to open this closet by user, skipping checks that prevent opening if forced
@@ -206,7 +206,7 @@
 
 /obj/structure/closet/attack_animal(mob/living/user)
 	if(user.wall_smash)
-		visible_message(SPAN_DANGER("[user] destroys [src]."))
+		visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] destroys [src]."))
 		deconstruct(FALSE)
 
 /obj/structure/closet/attackby(obj/item/W, mob/living/user)
@@ -246,7 +246,7 @@
 				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 				new /obj/item/stack/sheet/wood(src.loc)
-				user.visible_message(SPAN_NOTICE("[user] has pried apart [src] with [W]."), "You pry apart [src].")
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] has pried apart [src] with [W]."), "You pry apart [src].")
 				qdel(src)
 				return
 		user.drop_inv_item_to_loc(W,loc)
@@ -312,7 +312,7 @@
 		return
 	else
 		step_towards(O, loc)
-		user.visible_message(SPAN_DANGER("[user] stuffs [O] into [src]!"))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] stuffs [O] into [src]!"))
 
 
 
@@ -325,7 +325,7 @@
 
 	var/obj/item/I = user.get_active_hand()
 	if(istype(I) && (I.pry_capable == IS_PRY_CAPABLE_FORCE))
-		visible_message(SPAN_DANGER("[user] smashes out of the locker!"))
+		visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] smashes out of the locker!"))
 		playsound(loc, 'sound/effects/metal_crash.ogg', 75)
 		deconstruct(FALSE)
 		return

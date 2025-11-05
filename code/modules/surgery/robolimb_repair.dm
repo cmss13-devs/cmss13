@@ -35,16 +35,16 @@
 	var/nerves = (target.species && (target.species.flags & IS_SYNTHETIC)) ? "control wiring" : "nervous system"
 	user.affected_message(target,
 		SPAN_NOTICE("You start recalibrating [target]'s prosthesis to \his [nerves]."),
-		SPAN_NOTICE("[user] starts recalibrating your prosthesis to your [nerves]."),
-		SPAN_NOTICE("[user] starts recalibrating [target]'s prosthesis to \his [nerves]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts recalibrating your prosthesis to your [nerves]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts recalibrating [target]'s prosthesis to \his [nerves]."))
 
 	log_interact(user, target, "[key_name(user)] began recalibrating a prosthesis on [key_name(target)]'s [surgery.affected_limb.display_name].")
 
 /datum/surgery_step/recalibrate_prosthesis/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You finish recalibrating [target]'s prosthesis, and it now moves as \he commands once again."),
-		SPAN_NOTICE("[user] finishes recalibrating your prosthesis, and it now moves as you command once again."),
-		SPAN_NOTICE("[user] finishes recalibrating [target]'s prosthesis, and it now moves as \he commands once again."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes recalibrating your prosthesis, and it now moves as you command once again."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes recalibrating [target]'s prosthesis, and it now moves as \he commands once again."))
 
 	log_interact(user, target, "[key_name(user)] recalibrated a prosthesis on [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 	if(surgery.affected_limb.parent.status & LIMB_UNCALIBRATED_PROSTHETIC)
@@ -61,8 +61,8 @@
 
 	user.affected_message(target,
 		SPAN_WARNING("You make a mistake recalibrating the prosthetic [parse_zone(target_zone)], and it [failure_mode]!"),
-		SPAN_WARNING("[user] makes a mistake recalibrating the prosthetic [parse_zone(target_zone)], and it [failure_mode]!"),
-		SPAN_WARNING("[user] makes a mistake recalibrating the prosthetic [parse_zone(target_zone)], and it [failure_mode]!"))
+		SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] makes a mistake recalibrating the prosthetic [parse_zone(target_zone)], and it [failure_mode]!"),
+		SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] makes a mistake recalibrating the prosthetic [parse_zone(target_zone)], and it [failure_mode]!"))
 
 	log_interact(user, target, "[key_name(user)] failed to recalibrate a prosthesis on [key_name(target)]'s [surgery.affected_limb.display_name].")
 	return FALSE

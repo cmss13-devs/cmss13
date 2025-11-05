@@ -133,7 +133,7 @@
 			to_chat(user, SPAN_WARNING("[src] immediately rejects [grabbed_mob]. \He passed away!"))
 			return FALSE
 
-		visible_message(SPAN_WARNING("[user] starts putting [grabbed_mob.name] into the cryo pod."), null, null, 3)
+		visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] starts putting [grabbed_mob.name] into the cryo pod."), null, null, 3)
 
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(!grabbed_mob || !the_grab || !the_grab.grabbed_thing || !the_grab.grabbed_thing.loc || the_grab.grabbed_thing != grabbed_mob)
@@ -191,7 +191,7 @@
 		to_chat(user, SPAN_WARNING("The cryo pod is not responding to commands!"))
 		return FALSE
 
-	visible_message(SPAN_WARNING("[user] starts climbing into the cryo pod."), null, null, 3)
+	visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] starts climbing into the cryo pod."), null, null, 3)
 
 	if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		user.stop_pulling()
@@ -209,7 +209,7 @@
 
 	being_forced = !being_forced
 	xeno_attack_delay(user)
-	visible_message(SPAN_WARNING("[user] begins to pry \the [src]'s cover!"), null, null, 3)
+	visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] begins to pry \the [src]'s cover!"), null, null, 3)
 	playsound(src,'sound/effects/metal_creaking.ogg', 25, 1)
 	if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		go_out() //Force the occupant out.

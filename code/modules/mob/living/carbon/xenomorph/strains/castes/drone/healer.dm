@@ -132,8 +132,8 @@
 	new /datum/effects/heal_over_time(target_xeno, heal_amount = amount)
 	target_xeno.xeno_jitter(1 SECONDS)
 	target_xeno.flick_heal_overlay(5 SECONDS, "#00be6f")
-	to_chat(target_xeno, SPAN_XENOWARNING("[declent_ru()] покрывает наши раны исцеляющей смолой. Мы чувствуем себя обновлёнными!")) // SS220 EDIT ADDICTION
-	to_chat(src, SPAN_XENOWARNING("Мы извергаем нашу специальную жидкость и немного плазмы, чтобы создать исцеляющую смолу, используя её на ранах [target_xeno]. Мы чувствуем себя ослабленными...")) // SS220 EDIT ADDICTION
+	to_chat(target_xeno, SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] покрывает наши раны исцеляющей смолой. Мы чувствуем себя обновлёнными!")) // SS220 EDIT ADDICTION
+	to_chat(src, SPAN_XENOWARNING("Мы извергаем нашу специальную жидкость и немного плазмы, чтобы создать исцеляющую смолу, используя её на ранах [target_xeno.declent_ru(GENITIVE)]. Мы чувствуем себя ослабленными...")) // SS220 EDIT ADDICTION
 	playsound(src, "alien_drool", 25)
 	var/datum/behavior_delegate/drone_healer/healer_delegate = behavior_delegate
 	healer_delegate.salve_applied_recently = TRUE
@@ -275,8 +275,8 @@
 	target.xeno_jitter(1 SECONDS)
 	target.flick_heal_overlay(3 SECONDS, "#44253d")
 
-	target.visible_message(SPAN_XENONOTICE("[xeno] взрывается, покрывая [target] потоком исцеляющей смолы!")) // SS220 EDIT ADDICTION
-	xeno_message(SPAN_XENOANNOUNCE("[xeno] жертвует собой, чтобы исцелить [target]!"), 2, target.hive.hivenumber) // SS220 EDIT ADDICTION
+	target.visible_message(SPAN_XENONOTICE("[capitalize(xeno.declent_ru(NOMINATIVE))] взрывается, покрывая [target.declent_ru(ACCUSATIVE)] потоком исцеляющей смолы!")) // SS220 EDIT ADDICTION
+	xeno_message(SPAN_XENOANNOUNCE("[capitalize(xeno.declent_ru(NOMINATIVE))] жертвует собой, чтобы исцелить [target.declent_ru(ACCUSATIVE)]!"), 2, target.hive.hivenumber) // SS220 EDIT ADDICTION
 
 	var/datum/behavior_delegate/drone_healer/behavior_delegate = xeno.behavior_delegate
 	if(istype(behavior_delegate) && behavior_delegate.transferred_amount >= behavior_delegate.required_transferred_amount && xeno.client && xeno.hive)

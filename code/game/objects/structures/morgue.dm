@@ -101,7 +101,7 @@
 		if(!tmp_label)
 			if(prior_label_text)
 				log_admin("[key_name(usr)] has removed label from [src].")
-				user.visible_message(SPAN_NOTICE("[user] removes label from [src]."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] removes label from [src]."),
 									SPAN_NOTICE("You remove the label from [src]."))
 				labelcomponent.clear_label()
 			return
@@ -111,7 +111,7 @@
 		if(prior_label_text == tmp_label)
 			to_chat(user, SPAN_WARNING("The label already says \"[tmp_label]\"."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] labels [src] as \"[tmp_label]\"."),
 		SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 		AddComponent(/datum/component/label, tmp_label)
 		playsound(src, "paper_writing", 15, TRUE)
@@ -125,7 +125,7 @@
 	if(exit_stun)
 		user.apply_effect(exit_stun, STUN)
 		if(user.mobility_flags & MOBILITY_MOVE)
-			user.visible_message(SPAN_WARNING("[user] suddenly gets out of [src]!"),
+			user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] suddenly gets out of [src]!"),
 			SPAN_WARNING("You get out of [src] and get your bearings!"))
 		toggle_morgue(user)
 
@@ -167,7 +167,7 @@
 	O.forceMove(loc)
 	if(user != O)
 		for(var/mob/B in viewers(user, 3))
-			B.show_message(SPAN_DANGER("[user] stuffs [O] into [src]!"), SHOW_MESSAGE_VISIBLE)
+			B.show_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] stuffs [O] into [src]!"), SHOW_MESSAGE_VISIBLE)
 			if(B.stat==DEAD)
 				bloody = TRUE
 				update_icon()

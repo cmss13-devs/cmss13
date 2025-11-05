@@ -65,7 +65,7 @@
 	if(node)
 		to_convert = node.children.Copy()
 
-	xeno.visible_message(SPAN_XENONOTICE("[xeno] извергает пульсирующий узел и сажает его в землю!"), // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_XENONOTICE("[capitalize(xeno.declent_ru(NOMINATIVE))] извергает пульсирующий узел и сажает его в землю!"), // SS220 EDIT ADDICTION
 	SPAN_XENONOTICE("Мы извергаем пульсирующий узел и сажаем его в землю!"), null, 5)
 	var/obj/effect/alien/weeds/node/new_node = new node_type(xeno.loc, src, xeno)
 
@@ -385,7 +385,7 @@
 	target.set_state(RESIN_TRAP_ACID1 + acid_level - 1)
 
 	playsound(target, 'sound/effects/refill.ogg', 25, 1)
-	visible_message(SPAN_XENOWARNING("[declent_ru()] наполняет смоляную ловушку кислотой!"), // SS220 EDIT ADDICTION
+	visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] наполняет смоляную ловушку кислотой!"), // SS220 EDIT ADDICTION
 	SPAN_XENOWARNING("Вы наполняете смоляную ловушку кислотой!"), null, 5)
 	return TRUE
 
@@ -409,7 +409,7 @@
 	if(!pheromone)
 		if(current_aura)
 			current_aura = null
-			visible_message(SPAN_XENOWARNING("[declent_ru()] перестаёт выделять феромоны."), // SS220 EDIT ADDICTION
+			visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] перестаёт выделять феромоны."), // SS220 EDIT ADDICTION
 			SPAN_XENOWARNING("Мы перестаём выделять феромоны."), null, 5)
 		else
 			if(!check_plasma(emit_cost))
@@ -439,7 +439,7 @@
 			return
 		use_plasma(emit_cost)
 		current_aura = pheromone
-		visible_message(SPAN_XENOWARNING("[declent_ru()] начинает выделять [pheromone]-феромоны."), // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] начинает выделять [pheromone]-феромоны."), // SS220 EDIT ADDICTION
 		SPAN_XENOWARNING("Мы начинаем выделять [pheromone]-феромоны."), null, 5) // SS220 EDIT ADDICTION
 		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
@@ -895,9 +895,9 @@
 		spitting = TRUE
 		if(xeno.ammo.pre_spit_warn)
 			playsound(xeno.loc,"alien_drool", 55, 1)
-		to_chat(xeno, SPAN_WARNING("We begin to prepare a large spit!"))
-		xeno.visible_message(SPAN_WARNING("[xeno] prepares to spit a massive glob!"),
-		SPAN_WARNING("We begin to spit [xeno.ammo.name]!"))
+		to_chat(xeno, SPAN_WARNING("Мы начинаем готовить большой плевок!"))
+		xeno.visible_message(SPAN_WARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] начинает готовить большой плевок!"),
+		SPAN_WARNING("Мы начинаем выплевывать [xeno.ammo.name]!"))
 		if (!do_after(xeno, xeno.ammo.spit_windup, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("Мы отменяем кислотный плевок."))
 			spitting = FALSE
@@ -908,8 +908,8 @@
 		spitting = FALSE
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] плюёт в [atom]!"), // SS220 EDIT ADDICTION
-	SPAN_XENOWARNING("Мы плюём [xeno.ammo.name] в [atom]!")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] плюёт в [atom.declent_ru(ACCUSATIVE)]!"), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Мы плюём [xeno.ammo.name] в [atom.declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	var/obj/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
@@ -948,7 +948,7 @@
 	if (!xeno.can_bombard_turf(turf, range, bombard_source))
 		return FALSE
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] зарывается на месте!"), SPAN_XENODANGER("Мы зарываемся на месте!")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] зарывается на месте!"), SPAN_XENODANGER("Мы зарываемся на месте!")) // SS220 EDIT ADDICTION
 	if (!do_after(xeno, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
 		to_chat(xeno, SPAN_XENODANGER("Мы отменяем дальнобойный плевок."))
 		return FALSE
@@ -961,7 +961,7 @@
 
 	apply_cooldown()
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] запускает огромный шар кислоты в [atom]!"), SPAN_XENODANGER("Вы запускаете огромный шар кислоты в [atom]!")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] запускает огромный шар кислоты в [atom.declent_ru(ACCUSATIVE)]!"), SPAN_XENODANGER("Вы запускаете огромный шар кислоты в [atom.declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
 	playsound(get_turf(xeno), 'sound/effects/blobattack.ogg', 25, 1)
 
 	recursive_spread(turf, effect_range, effect_range)
@@ -1101,7 +1101,7 @@
 		return ..()
 
 	if(!isxeno_human(targetted_atom))
-		stabbing_xeno.visible_message(SPAN_XENOWARNING("[stabbing_xeno] размахивает хвостом в воздухе!"), SPAN_XENOWARNING("Мы размахиваем хвостом в воздухе!")) // SS220 EDIT ADDICTION
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("[capitalize(stabbing_xeno.declent_ru(NOMINATIVE))] размахивает хвостом в воздухе!"), SPAN_XENOWARNING("Мы размахиваем хвостом в воздухе!")) // SS220 EDIT ADDICTION
 		apply_cooldown(cooldown_modifier = 0.1)
 		xeno_attack_delay(stabbing_xeno)
 		playsound(stabbing_xeno, "alien_tail_swipe", 50, TRUE)
@@ -1117,7 +1117,7 @@
 
 	var/obj/limb/limb = target.get_limb(check_zone(stabbing_xeno.zone_selected))
 	if (ishuman(target) && (!limb || (limb.status & LIMB_DESTROYED)))
-		to_chat(stabbing_xeno, (SPAN_WARNING("What [limb.display_name]?")))
+		to_chat(stabbing_xeno, (SPAN_WARNING("Какую [limb.declent_ru(ACCUSATIVE)]?")))
 		return FALSE
 
 	if(!check_and_use_plasma_owner())
@@ -1145,8 +1145,8 @@
 	var/stab_overlay
 
 	if(blunt_stab)
-		stabbing_xeno.visible_message(SPAN_XENOWARNING("[stabbing_xeno] бьёт хвостом по [limb ? declent_ru_initial(limb.display_name, DATIVE, limb.display_name) : "груди"] [target], сильно повреждая её!"), // SS220 EDIT ADDICTION
-		SPAN_XENOWARNING("Мы бьём хвостом по [limb ? declent_ru_initial(limb.display_name, DATIVE, limb.display_name) : "груди"] [target], сильно повреждая её!")) // SS220 EDIT ADDICTION
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("[capitalize(stabbing_xeno.declent_ru(NOMINATIVE))] бьёт хвостом по [limb ? declent_ru_initial(limb.display_name, DATIVE, limb.display_name) : "груди"] [target.declent_ru(GENITIVE)], сильно повреждая её!"), // SS220 EDIT ADDICTION
+		SPAN_XENOWARNING("Мы бьём хвостом по [limb ? declent_ru_initial(limb.display_name, DATIVE, limb.display_name) : "груди"] [target.declent_ru(GENITIVE)], сильно повреждая её!")) // SS220 EDIT ADDICTION
 		if(prob(1))
 			playsound(target, 'sound/effects/comical_bonk.ogg', 50, TRUE)
 		else
@@ -1155,8 +1155,8 @@
 		stab_direction = turn(stabbing_xeno.dir, pick(90, -90))
 		stab_overlay = "slam"
 	else
-		stabbing_xeno.visible_message(SPAN_XENOWARNING("[stabbing_xeno] пронзает [limb ? declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name) : "грудь"] [target] своим острым, как бритва, хвостом!"), // SS220 EDIT ADDICTION
-		SPAN_XENOWARNING("Мы пронзаем [limb ? declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name) : "грудь"] [target] своим острым, как бритва, хвостом!")) // SS220 EDIT ADDICTION
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("[capitalize(stabbing_xeno.declent_ru(NOMINATIVE))] пронзает [limb ? declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name) : "грудь"] [target.declent_ru(GENITIVE)] своим острым, как бритва, хвостом!"), // SS220 EDIT ADDICTION
+		SPAN_XENOWARNING("Мы пронзаем [limb ? declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name) : "грудь"] [target.declent_ru(GENITIVE)] своим острым, как бритва, хвостом!")) // SS220 EDIT ADDICTION
 		playsound(target, "alien_bite", 50, TRUE)
 		// The xeno flips around for a second to impale the target with their tail. These look awsome.
 		stab_direction = turn(get_dir(stabbing_xeno, target), 180)

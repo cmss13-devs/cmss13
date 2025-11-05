@@ -385,7 +385,7 @@
 
 /obj/effect/xenomorph/acid/proc/handle_barricade()
 	if(prob(in_weather))
-		visible_message(SPAN_XENOWARNING("Кислота на [acid_t] перестаёт шипеть!")) // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENOWARNING("Кислота на [acid_t.declent_ru(PREPOSITIONAL)] перестаёт шипеть!")) // SS220 EDIT ADDICTION
 		return NONE
 	var/obj/structure/barricade/cade = acid_t
 	cade.take_acid_damage(barricade_damage)
@@ -424,13 +424,13 @@
 
 	switch(ticks_left)
 		if(6)
-			visible_message(SPAN_XENOWARNING("[acid_t] скоро разрушиться из-за действия кислоты!")) // SS220 EDIT ADDICTION
+			visible_message(SPAN_XENOWARNING("[capitalize(acid_t.declent_ru(NOMINATIVE))] скоро разрушится из-за действия кислоты!")) // SS220 EDIT ADDICTION
 		if(4)
-			visible_message(SPAN_XENOWARNING("[acid_t] сильно повреждается из-за действия кислоты!")) // SS220 EDIT ADDICTION
+			visible_message(SPAN_XENOWARNING("[capitalize(acid_t.declent_ru(NOMINATIVE))] сильно повреждается из-за действия кислоты!")) // SS220 EDIT ADDICTION
 		if(2)
-			visible_message(SPAN_XENOWARNING("[acid_t] повреждается из-за действия кислоты!")) // SS220 EDIT ADDICTION
+			visible_message(SPAN_XENOWARNING("[capitalize(acid_t.declent_ru(NOMINATIVE))] повреждается из-за действия кислоты!")) // SS220 EDIT ADDICTION
 		if(0 to 1)
-			visible_message(SPAN_XENOWARNING("[acid_t] начинает разрушаться под действием кислоты!")) // SS220 EDIT ADDICTION
+			visible_message(SPAN_XENOWARNING("[capitalize(acid_t.declent_ru(NOMINATIVE))] начинает разрушаться под действием кислоты!")) // SS220 EDIT ADDICTION
 
 /obj/effect/xenomorph/acid/proc/finish_melting()
 	playsound(src, "acid_hit", 25, TRUE)
@@ -438,14 +438,14 @@
 	if(istype(acid_t, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/acid_gun = acid_t
 		if(acid_gun.has_second_wind)
-			visible_message(SPAN_XENODANGER("[acid_t] теряет свой блеск, когда кислота начинает пузырится на нём.")) // SS220 EDIT ADDICTION
+			visible_message(SPAN_XENODANGER("[capitalize(acid_t.declent_ru(NOMINATIVE))] теряет свой блеск, когда кислота начинает пузыриться на [genderize_ru(acid_t.gender, "нём", "ней", "нём", "них")].")) // SS220 EDIT ADDICTION
 			acid_gun.has_second_wind = FALSE
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
 			qdel(src)
 			return
 
 	if(istype(acid_t, /turf))
-		visible_message(SPAN_XENODANGER("[acid_t] сильно повреждается покрывающей его кислотой!")) // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENODANGER("[capitalize(acid_t.declent_ru(NOMINATIVE))] сильно повреждается покрывающей [genderize_ru(acid_t.gender, "его", "её", "его", "их")] кислотой!")) // SS220 EDIT ADDICTION
 		if(istype(acid_t, /turf/closed/wall))
 			var/turf/closed/wall/wall = acid_t
 			new /obj/effect/acid_hole(wall)
@@ -455,22 +455,22 @@
 
 	else if (istype(acid_t, /obj/structure/girder))
 		var/obj/structure/girder/girder = acid_t
-		visible_message(SPAN_XENODANGER("[acid_t] рушится и падает, когда кислота полностью разъедает его каркас!")) // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENODANGER("[capitalize(acid_t.declent_ru(NOMINATIVE))] рушится и падает, когда кислота полностью разъедает [genderize_ru(acid_t.gender, "его", "её", "его", "их")] каркас!")) // SS220 EDIT ADDICTION
 		girder.dismantle()
 
 	else if(istype(acid_t, /obj/structure/window/framed))
 		var/obj/structure/window/framed/window = acid_t
-		visible_message(SPAN_XENODANGER("[acid_t] громко трещит, когда кислота начинает пузырится на нём!")) // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENODANGER("[capitalize(acid_t.declent_ru(NOMINATIVE))] громко трещит, когда кислота начинает пузыриться на [genderize_ru(acid_t.gender, "нём", "ней", "нём", "них")]!")) // SS220 EDIT ADDICTION
 		window.deconstruct(disassembled = FALSE)
 
 	else if(istype(acid_t, /obj/structure/barricade))
-		visible_message(SPAN_XENODANGER("[acid_t] трещит и рассыпается, когда кислота полностью разъедает его!")) // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENODANGER("[capitalize(acid_t.declent_ru(NOMINATIVE))] трещит и рассыпается, когда кислота полностью разъедает [genderize_ru(acid_t.gender, "его", "её", "его", "их")]!")) // SS220 EDIT ADDICTION
 		pass() // Don't delete it, just damaj
 
 	else
 		for(var/mob/mob in acid_t)
 			mob.forceMove(loc)
-		visible_message(SPAN_XENODANGER("[acid_t] обрушивается под собственной тяжестью в лужу из слизи и не разъевшихся обломков!")) // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENODANGER("[capitalize(acid_t.declent_ru(NOMINATIVE))] обрушивается под собственной тяжестью в лужу из слизи и не разъевшихся обломков!")) // SS220 EDIT ADDICTION
 		qdel(acid_t)
 	qdel(src)
 
@@ -482,10 +482,10 @@
 	if(istype(acid_t, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/acid_gun = acid_t
 		if(!acid_gun.has_second_wind)
-			visible_message(SPAN_XENODANGER("[acid_t] кажется невредимым, но продолжает деформироваться!")) // SS220 EDIT ADDICTION
+			visible_message(SPAN_XENODANGER("[capitalize(acid_t.declent_ru(NOMINATIVE))] кажется невредимым, но продолжает деформироваться!")) // SS220 EDIT ADDICTION
 			return FALSE
 		else
-			visible_message(SPAN_XENODANGER("Шипение на [acid_t] затихает, когда кислота смывается с него!")) // SS220 EDIT ADDICTION
+			visible_message(SPAN_XENODANGER("Шипение на [acid_t.declent_ru(PREPOSITIONAL)] затихает, когда кислота смывается с него!")) // SS220 EDIT ADDICTION
 			qdel(src)
 			return TRUE
 

@@ -88,11 +88,11 @@
 		if(sheet.get_amount() < 2)
 			to_chat(user, SPAN_WARNING("You need more [W.name] to install a new window."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] starts installing a new glass window on the frame."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts installing a new glass window on the frame."),
 		SPAN_NOTICE("You start installing a new window on the frame."))
 		playsound(src, 'sound/items/Deconstruct.ogg', 25, 1)
 		if(do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_NOTICE("[user] installs a new glass window on the frame."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] installs a new glass window on the frame."),
 			SPAN_NOTICE("You install a new window on the frame."))
 			sheet.use(2)
 			new window_type(loc) //This only works on Almayer windows!
@@ -117,17 +117,17 @@
 			var/mob/living/M = G.grabbed_thing
 			if(user.grab_level >= GRAB_AGGRESSIVE)
 				if(get_dist(src, M) > 1)
-					to_chat(user, SPAN_WARNING("[M] needs to be next to [src]."))
+					to_chat(user, SPAN_WARNING("[capitalize(M.declent_ru(NOMINATIVE))] needs to be next to [src]."))
 				else
 					if(user.action_busy)
 						return
-					user.visible_message(SPAN_NOTICE("[user] starts pulling [M] onto [src]."),
+					user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts pulling [M] onto [src]."),
 					SPAN_NOTICE("You start pulling [M] onto [src]!"))
 					var/oldloc = loc
 					if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC, M) || loc != oldloc)
 						return
 					M.apply_effect(2, WEAKEN)
-					user.visible_message(SPAN_WARNING("[user] pulls [M] onto [src]."),
+					user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] pulls [M] onto [src]."),
 					SPAN_NOTICE("You pull [M] onto [src]."))
 					M.forceMove(loc)
 			else

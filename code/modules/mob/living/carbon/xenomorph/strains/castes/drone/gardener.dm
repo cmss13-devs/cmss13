@@ -99,7 +99,7 @@
 			xeno.current_fruits.Remove(old_fruit)
 			qdel(old_fruit)
 
-		xeno.visible_message(SPAN_XENONOTICE("[xeno] выделяет какую-то жидкость, чтобы сформировать плод!"), // SS220 EDIT ADDICTION
+		xeno.visible_message(SPAN_XENONOTICE("[capitalize(xeno.declent_ru(NOMINATIVE))] выделяет какую-то жидкость, чтобы сформировать плод!"), // SS220 EDIT ADDICTION
 		SPAN_XENONOTICE("Мы выделяем часть наших жизненных сил, чтобы сформировать плод!"), null, 5)
 
 		var/obj/effect/alien/resin/fruit/fruit = new xeno.selected_fruit(target_weeds.loc, target_weeds, xeno)
@@ -263,7 +263,7 @@
 	var/door_present = istype(door) && door.hivenumber == xeno.hivenumber
 	// Is my tile either a wall or a door
 	if(door_present || wall_present)
-		var/structure_to_buff = door || wall
+		var/atom/structure_to_buff = door || wall // BANDAMARINES EDIT - it's a type
 		var/buff_already_present = FALSE
 		if(door_present)
 			for(var/datum/effects/xeno_structure_reinforcement/sf in door.effects_list)
@@ -276,23 +276,23 @@
 
 		if(!buff_already_present)
 			new /datum/effects/xeno_structure_reinforcement(structure_to_buff, xeno, ttl = 15 SECONDS)
-			xeno.visible_message(SPAN_XENODANGER("[xeno] наполняет смолой [structure_to_buff], делая структуру почти неразрушимой на некоторое время!"), // SS220 EDIT ADDICTION
-			SPAN_XENONOTICE("Мы наполняем смолой [structure_to_buff], делая структуру почти неразрушимой на некоторое время!"), null, 5) // SS220 EDIT ADDICTION
+			xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] наполняет смолой [structure_to_buff.declent_ru(ACCUSATIVE)], делая структуру почти неразрушимой на некоторое время!"), // SS220 EDIT ADDICTION
+			SPAN_XENONOTICE("Мы наполняем смолой [structure_to_buff.declent_ru(ACCUSATIVE)], делая структуру почти неразрушимой на некоторое время!"), null, 5) // SS220 EDIT ADDICTION
 		else
-			to_chat(xeno, SPAN_XENONOTICE("Мы не смогли наполнить смолой [structure_to_buff], поскольку структура уже была укреплена. Теперь нам понадобится некоторое время на восстановление.")) // SS220 EDIT ADDICTION
+			to_chat(xeno, SPAN_XENONOTICE("Мы не смогли наполнить смолой [structure_to_buff.declent_ru(ACCUSATIVE)], поскольку структура уже была укреплена. Теперь нам понадобится некоторое время на восстановление.")) // SS220 EDIT ADDICTION
 			xeno_cooldown *= 0.5
 
 	else if(F && F.hivenumber == xeno.hivenumber)
 		if(F.mature)
-			to_chat(xeno, SPAN_XENONOTICE("[F] уже созрел, поэтому [declent_ru()] не приводит ни к какому результату.")) // SS220 EDIT ADDICTION
+			to_chat(xeno, SPAN_XENONOTICE("[capitalize(F.declent_ru(NOMINATIVE))] в пике созревания, потому [declent_ru(NOMINATIVE)] не приводит ни к какому результату.")) // SS220 EDIT ADDICTION
 			xeno_cooldown *= 0.5
 		else
-			to_chat(xeno, SPAN_XENONOTICE("Мы вкладываем всю нашу энергию, ускоряя рост [F] и доводя его до полного созревания!")) // SS220 EDIT ADDICTION
+			to_chat(xeno, SPAN_XENONOTICE("Мы вкладываем всю нашу энергию, ускоряя рост [F.declent_ru(GENITIVE)] и доводя до полного созревания!")) // SS220 EDIT ADDICTION
 			F.reduce_timer(60 SECONDS) //We want surge to mature any fruit instantly, but you receive dynamic cooldown depending on fruit growth time.
 			xeno_cooldown *= dynamic_fruit_surge_cooldown(F)
 
 	else if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
-		xeno.visible_message(SPAN_XENODANGER("[xeno] создаёт слабую смоляную стену!"), // SS220 EDIT ADDICTION
+		xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] создаёт слабую смоляную стену!"), // SS220 EDIT ADDICTION
 		SPAN_XENONOTICE("Мы создаём слабую смоляную стену!"), null, 5)
 		target_turf.PlaceOnTop(/turf/closed/wall/resin/weak)
 		var/turf/closed/wall/resin/weak_wall = target_turf
@@ -307,7 +307,7 @@
 			channel_in_progress = FALSE
 			return
 		channel_in_progress = FALSE
-		xeno.visible_message(SPAN_XENODANGER("[xeno] наполняет небольшой участок липкой смолой!"), // SS220 EDIT ADDICTION
+		xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] наполняет небольшой участок липкой смолой!"), // SS220 EDIT ADDICTION
 		SPAN_XENONOTICE("Мы наполняем небольшой участок липкой смолой!"), null, 5)
 		for(var/turf/targetTurf in orange(1, target_turf))
 			if(!locate(/obj/effect/alien/resin/sticky) in targetTurf)

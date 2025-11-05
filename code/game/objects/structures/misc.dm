@@ -20,7 +20,7 @@
 			return
 		xeno.animation_attack_on(src)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
-		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
+		xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] slices [src] apart!"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		deconstruct(FALSE)
 		return XENO_ATTACK_ACTION
@@ -119,7 +119,7 @@
 	if(picked_option)
 		practice_mode = sorted_options[picked_option]
 		practice_health = practice_mode[1]
-		user.visible_message(SPAN_NOTICE("[user] adjusted the difficulty of [src]."), SPAN_NOTICE("You adjusted the difficulty of [src] to [lowertext(picked_option)]"))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] adjusted the difficulty of [src]."), SPAN_NOTICE("You adjusted the difficulty of [src] to [lowertext(picked_option)]"))
 
 /obj/structure/target/proc/start_practice_health_reset()
 	animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_IN)
@@ -623,7 +623,7 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 		if(unslashable)
 			return
 		xeno.animation_attack_on(src)
-		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"))
+		xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] slices [src] apart!"))
 		playsound(src, 'sound/effects/woodhit.ogg')
 		to_chat(xeno, SPAN_WARNING("We slice the [src] apart!"))
 		deconstruct(FALSE)
@@ -692,7 +692,7 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 
 /obj/structure/dartboard/attack_hand(mob/user)
 	if(length(contents))
-		user.visible_message(SPAN_NOTICE("[user] starts recovering items from [src]..."), SPAN_NOTICE("You start recovering items from [src]..."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts recovering items from [src]..."), SPAN_NOTICE("You start recovering items from [src]..."))
 		if(do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			flush_contents()
 	else
@@ -726,7 +726,7 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 	visible_message(SPAN_DANGER("[thrown_item] embeds into [src], striking [band] for [score] point\s."))
 
 /obj/structure/dartboard/attackby(obj/item/item, mob/user)
-	user.visible_message(SPAN_DANGER("[user] hits [src] with [item], collapsing it!"), SPAN_DANGER("You collapse [src] with [item]!"))
+	user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] hits [src] with [item], collapsing it!"), SPAN_DANGER("You collapse [src] with [item]!"))
 	collapse()
 
 /obj/structure/dartboard/MouseDrop(over_object, src_location, over_location)

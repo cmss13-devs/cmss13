@@ -88,10 +88,10 @@
 		if(door.heavy)
 			to_chat(usr, SPAN_DANGER("[door] is too heavy to be forced open."))
 			return FALSE
-		user.visible_message(SPAN_DANGER("[user] jams their [name] into [door] and strains to rip it open..."), SPAN_DANGER("You jam your [name] into [door] and strain to rip it open..."))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] jams their [name] into [door] and strains to rip it open..."), SPAN_DANGER("You jam your [name] into [door] and strain to rip it open..."))
 		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
-			user.visible_message(SPAN_DANGER("[user] forces [door] open with the [name]!"), SPAN_DANGER("You force [door] open with the [name]."))
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] forces [door] open with the [name]!"), SPAN_DANGER("You force [door] open with the [name]."))
 			door.open(TRUE)
 
 	else if(istype(attacked_target, /obj/structure/mineral_door/resin))
@@ -99,16 +99,16 @@
 		if(door.isSwitchingStates || user.a_intent == INTENT_HARM)
 			return
 		if(door.density)
-			user.visible_message(SPAN_DANGER("[user] jams their [name] into [door] and strains to rip it open..."), SPAN_DANGER("You jam your [name] into [door] and strain to rip it open..."))
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] jams their [name] into [door] and strains to rip it open..."), SPAN_DANGER("You jam your [name] into [door] and strain to rip it open..."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
-				user.visible_message(SPAN_DANGER("[user] forces [door] open using the [name]!"), SPAN_DANGER("You force [door] open with your [name]."))
+				user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] forces [door] open using the [name]!"), SPAN_DANGER("You force [door] open with your [name]."))
 				door.open()
 		else
-			user.visible_message(SPAN_DANGER("[user] pushes [door] with their [name] to force it closed..."), SPAN_DANGER("You push [door] with your [name] to force it closed..."))
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] pushes [door] with their [name] to force it closed..."), SPAN_DANGER("You push [door] with your [name] to force it closed..."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !door.density)
-				user.visible_message(SPAN_DANGER("[user] forces [door] closed using the [name]!"), SPAN_DANGER("You force [door] closed with your [name]."))
+				user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] forces [door] closed using the [name]!"), SPAN_DANGER("You force [door] closed with your [name]."))
 				door.close()
 
 /obj/item/weapon/bracer_attachment/attack_self(mob/living/carbon/human/user)
@@ -159,7 +159,7 @@
 				combo_counter = 0
 				user.flick_attack_overlay(target, "slam")
 				playsound(target, sound_to_play, 50, 1)
-				target.visible_message(SPAN_XENOHIGHDANGER("[user] хватает [target] за голову и швыряет на землю!")) // SS220 EDIT ADDICTION
+				target.visible_message(SPAN_XENOHIGHDANGER("[capitalize(user.declent_ru(NOMINATIVE))] хватает [target.declent_ru(ACCUSATIVE)] за голову и швыряет на землю!")) // SS220 EDIT ADDICTION
 				if(isxeno(target))
 					target.apply_damage(50, ARMOR_MELEE, BRUTE, "chest", 5)
 				playsound(target, 'sound/effects/hit_punch.ogg', 50)
@@ -183,7 +183,7 @@
 					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, throw_carbon), target, reverse_facing, 5, SPEED_VERY_FAST), 0.5 SECONDS)
 					user.spin_circle()
 				user.throw_carbon(target, facing, punch_knockback, SPEED_VERY_FAST,)
-				target.visible_message(SPAN_XENOHIGHDANGER("[user] наносит [target] чрезвычайно сильный удар, подбрасывая над землёй!")) // SS220 EDIT ADDICTION
+				target.visible_message(SPAN_XENOHIGHDANGER("[capitalize(user.declent_ru(NOMINATIVE))] наносит [target.declent_ru(DATIVE)] чрезвычайно сильный удар, подбрасывая над землёй!")) // SS220 EDIT ADDICTION
 				combo_counter = 0
 			user.flick_attack_overlay(target, "slam")
 			playsound(target, sound_to_play, 50, 1)
@@ -200,7 +200,7 @@
 
 			if(!executing)
 				executing = TRUE
-				user.visible_message(SPAN_XENOHIGHDANGER("[user] хватает [target] и медленно поднимает над головой, прежде чем швырнуть на землю!")) // SS220 EDIT ADDICTION
+				user.visible_message(SPAN_XENOHIGHDANGER("[capitalize(user.declent_ru(NOMINATIVE))] хватает [target.declent_ru(ACCUSATIVE)] и медленно поднимает над головой, прежде чем швырнуть на землю!")) // SS220 EDIT ADDICTION
 				playsound(target, 'sound/effects/bone_break1.ogg', 50, 1)
 				playsound(user, 'sound/voice/pred_roar5.ogg', 50, 1)
 				target.apply_damage(60, ARMOR_MELEE, BRUTE, "chest", 5)
@@ -293,9 +293,9 @@
 		if(door.heavy)
 			to_chat(usr, SPAN_DANGER("[door] is too heavy to be forced open."))
 			return FALSE
-		user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip the [door] by the gap and strain to force it open..."))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip the [door] by the gap and strain to force it open..."))
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
-			user.visible_message(SPAN_DANGER("[user] forces [door] open with the [name]!"), SPAN_DANGER("You force [door] open with the [name]."))
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] forces [door] open with the [name]!"), SPAN_DANGER("You force [door] open with the [name]."))
 			door.open(TRUE)
 			door.ex_act(100)
 			playsound(user, 'sound/effects/metal_crash.ogg', 75)
@@ -305,16 +305,16 @@
 		if(door.isSwitchingStates || user.a_intent == INTENT_HARM)
 			return
 		if(door.density)
-			user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip the [door] by the gap and strain to force it open..."))
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip the [door] by the gap and strain to force it open..."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
-				user.visible_message(SPAN_DANGER("[user] forces [door] open using the [name]!"), SPAN_DANGER("You force [door] open with your [name]."))
+				user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] forces [door] open using the [name]!"), SPAN_DANGER("You force [door] open with your [name]."))
 				door.open()
 		else
-			user.visible_message(SPAN_DANGER("[user] pushes [door] with their [name] to force it closed..."), SPAN_DANGER("You push [door] with your [name] to force it closed..."))
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] pushes [door] with their [name] to force it closed..."), SPAN_DANGER("You push [door] with your [name] to force it closed..."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !door.density)
-				user.visible_message(SPAN_DANGER("[user] forces [door] closed using the [name]!"), SPAN_DANGER("You force [door] closed with your [name]."))
+				user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] forces [door] closed using the [name]!"), SPAN_DANGER("You force [door] closed with your [name]."))
 				door.close()
 
 
@@ -702,7 +702,7 @@
 
 /obj/item/weapon/yautja/chained/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		user.visible_message(SPAN_DANGER("[user] starts to untangle the chain on \the [src]..."), SPAN_NOTICE("You start to untangle the chain on \the [src]..."))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] starts to untangle the chain on \the [src]..."), SPAN_NOTICE("You start to untangle the chain on \the [src]..."))
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			..()
 	else ..()
@@ -988,7 +988,7 @@
 		if(!T.fishing_allowed)
 			return
 		busy_fishing = TRUE
-		user.visible_message(SPAN_NOTICE("[user] starts aiming \the [src] at the water..."), SPAN_NOTICE("You prepare to catch something in the water..."), max_distance = 3)
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts aiming \the [src] at the water..."), SPAN_NOTICE("You prepare to catch something in the water..."), max_distance = 3)
 		if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(prob(60)) // fishing rods are prefered
 				busy_fishing = FALSE
@@ -997,7 +997,7 @@
 			user.animation_attack_on(T)
 			var/obj/item/caught_item = get_fishing_loot(T, get_area(T), common_weight, uncommon_weight, rare_weight, ultra_rare_weight)
 			if(user.put_in_inactive_hand(caught_item))
-				user.visible_message(SPAN_NOTICE("[user] quickly stabs \the [T] and pulls out \a <b>[caught_item]</b> with their free hand!"), SPAN_NOTICE("You quickly stab \the [T] and pull out \a <b>[caught_item]</b> with your free hand!"), max_distance = 3)
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] quickly stabs \the [T] and pulls out \a <b>[caught_item]</b> with their free hand!"), SPAN_NOTICE("You quickly stab \the [T] and pull out \a <b>[caught_item]</b> with your free hand!"), max_distance = 3)
 				var/image/trick = image(caught_item.icon, user, caught_item.icon_state, BIG_XENO_LAYER)
 				switch(pick(1,2))
 					if(1)
@@ -1017,7 +1017,7 @@
 				trick = null
 				caught_item.invisibility = 0
 			else
-				user.visible_message(SPAN_NOTICE("[user] quickly stabs \the [T] and \a <b>[caught_item]</b> drifts to the surface!"), SPAN_NOTICE("You quickly stab \the [T] and \a <b>[caught_item]</b> drifts to the surface!"), max_distance = 3)
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] quickly stabs \the [T] and \a <b>[caught_item]</b> drifts to the surface!"), SPAN_NOTICE("You quickly stab \the [T] and \a <b>[caught_item]</b> drifts to the surface!"), max_distance = 3)
 				caught_item.sway_jitter(3, 6)
 		busy_fishing = FALSE
 
@@ -1075,7 +1075,7 @@
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("Why would you want to do this!?."))
 		return
-	user.visible_message(SPAN_NOTICE("[user] mounts the [skull] with [src]."), SPAN_NOTICE("You mount [skull] to [src]."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] mounts the [skull] with [src]."), SPAN_NOTICE("You mount [skull] to [src]."))
 	user.drop_inv_item_to_loc(skull, src)
 	skull_attached = TRUE
 	update_icon()

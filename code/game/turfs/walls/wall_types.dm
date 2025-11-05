@@ -434,7 +434,7 @@
 	baseturfs = /turf/open/floor/sandstone/runed
 
 /turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
-	visible_message("[user] scrapes uselessly against [src] with their claws.")
+	visible_message("[capitalize(user.declent_ru(NOMINATIVE))] scrapes uselessly against [src] with their claws.")
 	return
 
 /turf/closed/wall/mineral/sandstone/runed/decor
@@ -1184,7 +1184,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
-	M.visible_message(SPAN_XENONOTICE("[M] царапает [declent_ru(ACCUSATIVE)]!"), // SS220 EDIT ADDICTION
+	M.visible_message(SPAN_XENONOTICE("[capitalize(M.declent_ru(NOMINATIVE))] царапает [declent_ru(ACCUSATIVE)]!"), // SS220 EDIT ADDICTION
 	SPAN_XENONOTICE("Вы царапаете [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 	playsound(src, "alien_resin_break", 25)
 	if (M.hivenumber == hivenumber)
@@ -1400,8 +1400,8 @@
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
-	M.visible_message(SPAN_XENONOTICE("[M] царапает [declent_ru(ACCUSATIVE)]!"), // SS220 EDIT ADDICTION
-	SPAN_XENONOTICE("Мы царапаем [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
+	M.visible_message(SPAN_XENONOTICE("[capitalize(M.declent_ru(NOMINATIVE))] царапает [declent_ru(ACCUSATIVE)]!"), // SS220 EDIT ADDICTION
+	SPAN_XENONOTICE("Вы царапаете [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 	playsound(src, "alien_resin_break", 25)
 	if (M.hivenumber == hivenumber)
 		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
@@ -1411,8 +1411,8 @@
 
 
 /turf/closed/wall/resin/attack_animal(mob/living/M)
-	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"),
-	SPAN_DANGER("You tear \the [name]."))
+	M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] [ru_attack_verb("tears")] [declent_ru(ACCUSATIVE)]!"),
+	SPAN_DANGER("Вы [ru_attack_verb("tear")] [declent_ru(ACCUSATIVE)]."))
 	playsound(src, "alien_resin_break", 25)
 	M.animation_attack_on(src)
 	take_damage(80)

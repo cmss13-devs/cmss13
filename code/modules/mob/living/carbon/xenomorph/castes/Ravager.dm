@@ -140,7 +140,7 @@
 		if (!check_and_use_plasma_owner())
 			return
 
-		xeno.visible_message(SPAN_XENODANGER("[xeno] начинает усиливаться!"), SPAN_XENODANGER("Мы начинаем усиливаться!")) // SS220 EDIT ADDICTION
+		xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] начинает усиливаться!"), SPAN_XENODANGER("Мы начинаем усиливаться!")) // SS220 EDIT ADDICTION
 		activated_once = TRUE
 		button.icon_state = "template_active"
 		get_inital_shield()
@@ -156,7 +156,7 @@
 
 	activated_once = FALSE
 	button.icon_state = "template_xeno_xeno"
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] светиться от окружающих его врагов!"), SPAN_XENOWARNING("Мы чувствуем прилив сил от окружающих нас врагов!"))
+	xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] светится от окружающих его врагов!"), SPAN_XENOWARNING("Мы чувствуем прилив сил от окружающих нас врагов!"))
 	xeno.create_empower()
 
 	var/list/mobs_in_range = oviewers(empower_range, xeno)
@@ -188,7 +188,7 @@
 		super_empower(xeno, empower_targets, behavior)
 
 /datum/action/xeno_action/onclick/empower/proc/super_empower(mob/living/carbon/xenomorph/xeno, empower_targets, datum/behavior_delegate/ravager_base/behavior)
-	xeno.visible_message(SPAN_DANGER("[xeno] светится жутким красным светом, упиваясь [empower_targets] врагами!"), SPAN_XENOHIGHDANGER("Мы начинаем светиться жутким красным светом, упиваясь [empower_targets] врагами!")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] светится жутким красным светом, упиваясь [empower_targets] врагами!"), SPAN_XENOHIGHDANGER("Мы начинаем светиться жутким красным светом, упиваясь [empower_targets] врагами!")) // SS220 EDIT ADDICTION
 	xeno.emote("roar")
 
 
@@ -214,7 +214,7 @@
 /datum/action/xeno_action/onclick/empower/proc/remove_superbuff(mob/living/carbon/xenomorph/xeno, datum/behavior_delegate/ravager_base/behavior)
 	behavior.empower_targets = 0
 
-	xeno.visible_message(SPAN_DANGER("Сияние [xeno] медленно ослабевает."), SPAN_XENOHIGHDANGER("Наше сияние ослабевает, силы покидают нас!")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_DANGER("Сияние [xeno.declent_ru(GENITIVE)] медленно ослабевает."), SPAN_XENOHIGHDANGER("Наше сияние ослабевает, силы покидают нас!")) // SS220 EDIT ADDICTION
 	xeno.remove_filter("empower_rage")
 
 /datum/action/xeno_action/onclick/empower/proc/get_inital_shield()
@@ -250,7 +250,7 @@
 	if(behavior.empower_targets < behavior.super_empower_threshold)
 		return
 	behavior.mid_charge = TRUE
-	xeno.visible_message(SPAN_XENODANGER("[xeno] использует удар щитом, когда он мчится на [human]!"), SPAN_XENODANGER("Мы используем удар щитом, когда мчимся на [human]!")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] использует удар щитом, когда он мчится на [human.declent_ru(ACCUSATIVE)]!"), SPAN_XENODANGER("Мы используем удар щитом, когда мчимся на [human]!")) // SS220 EDIT ADDICTION
 	human.apply_effect(behavior.knockdown_amount, WEAKEN)
 	human.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
 	behavior.mid_charge = FALSE
@@ -323,7 +323,7 @@
 	// Hmm today I will kill a marine while looking away from them
 	ravager_user.face_atom(target_atom)
 	ravager_user.emote("roar")
-	ravager_user.visible_message(SPAN_XENODANGER("[ravager_user] размахивает когтями перед собой!"), SPAN_XENODANGER("Мы размахиваем когтями перед собой!")) // SS220 EDIT ADDICTION
+	ravager_user.visible_message(SPAN_XENODANGER("[capitalize(ravager_user.declent_ru(NOMINATIVE))] размахивает когтями перед собой!"), SPAN_XENODANGER("Мы размахиваем когтями перед собой!")) // SS220 EDIT ADDICTION
 
 	// Loop through our turfs, finding any humans there and dealing damage to them
 	for (var/turf/target_turf in target_turfs)

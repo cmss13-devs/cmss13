@@ -74,7 +74,7 @@
 			to_chat(user, SPAN_WARNING("The label already says \"[label]\"."))
 			return
 
-	user.visible_message(SPAN_NOTICE("[user] labels [A] as \"[label]\"."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] labels [A] as \"[label]\"."),
 	SPAN_NOTICE("You label [A] as \"[label]\"."))
 
 	log_admin("[user] has labeled [A.name] with label \"[label]\". (CKEY: ([user.ckey]))")
@@ -114,7 +114,7 @@
 /obj/item/tool/hand_labeler/proc/remove_label(atom/target, mob/user)
 	var/datum/component/label/label = target.GetComponent(/datum/component/label)
 	if(label && label.has_label())
-		user.visible_message(SPAN_NOTICE("[user] removes label from [target]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] removes label from [target]."),
 						SPAN_NOTICE("You remove the label from [target]."))
 		log_admin("[key_name(usr)] has removed label from [target].")
 		label.clear_label()

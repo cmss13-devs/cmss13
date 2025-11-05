@@ -115,7 +115,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 	to_chat(src, SPAN_XENONOTICE("Похоже, что улей может поддержать нашу эволюцию в [SPAN_BOLD(castepick)]!")) // SS220 EDIT ADDICTION
 
-	visible_message(SPAN_XENONOTICE("[declent_ru()] начинает извиваться и дрожать."), // SS220 EDIT ADDICTION
+	visible_message(SPAN_XENONOTICE("[capitalize(declent_ru(NOMINATIVE))] начинает извиваться и дрожать."), // SS220 EDIT ADDICTION
 	SPAN_XENONOTICE("Мы начинаем извиваться и дрожать."))
 	xeno_jitter(25)
 	evolving = TRUE
@@ -197,7 +197,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	built_structures = null
 
-	new_xeno.visible_message(SPAN_XENODANGER("Из панциря [declent_ru()] появляется [new_xeno.caste.caste_type]."), // SS220 EDIT ADDICTION
+	new_xeno.visible_message(SPAN_XENODANGER("Из панциря [declent_ru(GENITIVE)] появляется [declent_ru_initial(new_xeno.caste.caste_type, NOMINATIVE, new_xeno.caste.caste_type)]."), // SS220 EDIT ADDICTION
 	SPAN_XENODANGER("Мы эволюционируем в более совершенную форму из оболочки старого панциря. Во имя улья!"))
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
@@ -464,7 +464,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!(/mob/living/carbon/xenomorph/verb/Deevolve in verbs))
 		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
 
-	new_xeno.visible_message(SPAN_XENODANGER("Из панциря [declent_ru()] появляется [new_xeno.caste.caste_type]."), // SS220 EDIT ADDICTION
+	new_xeno.visible_message(SPAN_XENODANGER("Из панциря [declent_ru(GENITIVE)] появляется [declent_ru_initial(new_xeno.caste.caste_type, NOMINATIVE, new_xeno.caste.caste_type)]."), // SS220 EDIT ADDICTION
 	SPAN_XENODANGER(message))
 
 	transfer_observers_to(new_xeno)

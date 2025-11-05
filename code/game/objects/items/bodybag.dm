@@ -117,7 +117,7 @@
 		if(prior_label_text == tmp_label)
 			to_chat(user, SPAN_WARNING("The label already says \"[tmp_label]\"."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] labels [src] as \"[tmp_label]\"."),
 		SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 		msg_admin_niche("[key_name(usr)] changed [src]'s name to [tmp_label] [ADMIN_JMP(src)]")
 		AddComponent(/datum/component/label, tmp_label)
@@ -129,7 +129,7 @@
 		var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
 		if(labelcomponent && labelcomponent.has_label())
 			log_admin("[key_name(usr)] has removed label from [src].")
-			user.visible_message(SPAN_NOTICE("[user] cuts the tag off of the [name]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] cuts the tag off of the [name]."),
 								SPAN_NOTICE("You cut the tag off the [name]."))
 			labelcomponent.clear_label()
 		return
@@ -168,7 +168,7 @@
 	if(opened && open_cooldown > world.time)
 		to_chat(user, SPAN_WARNING("\The [src] has been opened too recently!"))
 		return
-	user.visible_message(SPAN_WARNING("[user] opens [src]."), SPAN_NOTICE("You open [src]."))
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] opens [src]."), SPAN_NOTICE("You open [src]."))
 	. = ..()
 
 

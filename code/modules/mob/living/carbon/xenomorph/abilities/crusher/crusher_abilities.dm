@@ -182,8 +182,8 @@
 
 	for(var/mob/living/carbon/human/Mob in Xeno.loc)
 		if(Mob.body_position == LYING_DOWN && Mob.stat != DEAD)
-			Xeno.visible_message(SPAN_DANGER("[Xeno] runs [Mob] over!"),
-				SPAN_DANGER("We run [Mob] over!")
+			Xeno.visible_message(SPAN_DANGER("[capitalize(Xeno.declent_ru(NOMINATIVE))] переезжает [Mob.declent_ru(ACCUSATIVE)]!"),
+				SPAN_DANGER("Мы переезжаем [Mob.declent_ru(ACCUSATIVE)]!")
 			)
 			var/ram_dir = pick(get_perpen_dir(Xeno.dir))
 			var/dist = 1
@@ -217,7 +217,7 @@
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/Xeno = owner
 	if(momentum == max_momentum)
-		Xeno.visible_message(SPAN_DANGER("[Xeno] тормозит!")) // SS220 EDIT ADDICTION
+		Xeno.visible_message(SPAN_DANGER("[capitalize(Xeno.declent_ru(NOMINATIVE))] тормозит!")) // SS220 EDIT ADDICTION
 
 	REMOVE_TRAIT(Xeno, TRAIT_CHARGING, TRAIT_SOURCE_XENO_ACTION_CHARGE)
 	steps_taken = 0
@@ -269,7 +269,7 @@
 
 /datum/action/xeno_action/activable/tumble/proc/handle_mob_collision(mob/living/carbon/Mob)
 	var/mob/living/carbon/xenomorph/Xeno = owner
-	Xeno.visible_message(SPAN_XENODANGER("[Xeno] делает взмах хвостом в сторону, сбивая с ног [Mob]!"), SPAN_XENODANGER("Мы делаем взмах хвостом в сторону, сбивая с ног [Mob]!")) // SS220 EDIT ADDICTION
+	Xeno.visible_message(SPAN_XENODANGER("[capitalize(Xeno.declent_ru(NOMINATIVE))] делает взмах хвостом в сторону, сбивая с ног [Mob.declent_ru(ACCUSATIVE)]!"), SPAN_XENODANGER("Мы делаем взмах хвостом в сторону, сбивая с ног [Mob.declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
 	var/turf/target_turf = get_turf(Mob)
 	playsound(Mob,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	Mob.apply_damage(15,BRUTE)

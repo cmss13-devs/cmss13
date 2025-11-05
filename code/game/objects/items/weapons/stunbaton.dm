@@ -25,7 +25,7 @@
 	var/has_user_lock = TRUE //whether the baton prevents people without correct access from using it.
 
 /obj/item/weapon/baton/suicide_act(mob/user)
-	user.visible_message(SPAN_SUICIDE("[user] is putting the live [name] in \his mouth! It looks like \he's trying to commit suicide."))
+	user.visible_message(SPAN_SUICIDE("[capitalize(user.declent_ru(NOMINATIVE))] is putting the live [name] in \his mouth! It looks like \he's trying to commit suicide."))
 	return (FIRELOSS)
 
 /obj/item/weapon/baton/Initialize(mapload, ...)

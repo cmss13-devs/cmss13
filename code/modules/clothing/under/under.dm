@@ -175,16 +175,16 @@
 		switch(sensor_mode)
 			if(SENSOR_MODE_OFF)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message(SPAN_DANGER("[user] disables [src.loc]'s remote sensing equipment."), SHOW_MESSAGE_VISIBLE)
+					V.show_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] disables [src.loc]'s remote sensing equipment."), SHOW_MESSAGE_VISIBLE)
 			if(SENSOR_MODE_BINARY)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message("[user] turns [src.loc]'s remote sensors to binary.", SHOW_MESSAGE_VISIBLE)
+					V.show_message("[capitalize(user.declent_ru(NOMINATIVE))] turns [src.loc]'s remote sensors to binary.", SHOW_MESSAGE_VISIBLE)
 			if(SENSOR_MODE_DAMAGE)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message("[user] sets [src.loc]'s sensors to track vitals.", SHOW_MESSAGE_VISIBLE)
+					V.show_message("[capitalize(user.declent_ru(NOMINATIVE))] sets [src.loc]'s sensors to track vitals.", SHOW_MESSAGE_VISIBLE)
 			if(SENSOR_MODE_LOCATION)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message("[user] sets [src.loc]'s sensors to maximum.", SHOW_MESSAGE_VISIBLE)
+					V.show_message("[capitalize(user.declent_ru(NOMINATIVE))] sets [src.loc]'s sensors to maximum.", SHOW_MESSAGE_VISIBLE)
 
 /obj/item/clothing/under/verb/toggle()
 	set name = "Toggle Suit Sensors"
@@ -258,7 +258,7 @@
 		update_rollsuit_status()
 		update_removejacket_status()
 		if(show_message && item_using)
-			user.visible_message("[user] slices up \the [src]'s sleeves with \the [item_using].")
+			user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] slices up \the [src]'s sleeves with \the [item_using].")
 
 /obj/item/clothing/under/proc/update_rollsuit_status()
 	var/human_bodytype

@@ -168,14 +168,14 @@
 	if(user != embedded_human)
 		user.affected_message(embedded_human,
 			SPAN_NOTICE("You begin examining [embedded_human]'s body for shrapnel."),
-			SPAN_NOTICE("[user] begins to examine your body for shrapnel to dig out. Hold still, this will probably hurt..."),
-			SPAN_NOTICE("[user] begins to examine [embedded_human]'s body for shrapnel."))
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to examine your body for shrapnel to dig out. Hold still, this will probably hurt..."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to examine [embedded_human]'s body for shrapnel."))
 		address_mode = "out of [embedded_human]'s" //includes "out of " to prevent capital-T 'The unknown'.
 		if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, embedded_human, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			to_chat(user, SPAN_NOTICE("You were interrupted!"))
 			return
 	else
-		user.visible_message(SPAN_NOTICE("[user] осматривает своё тело в поисках осколков."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] осматривает своё тело в поисках осколков."),
 			SPAN_NOTICE("Вы осматриваете своё тело в поисках осколков."))
 		address_mode = "out of your"
 		if(!do_after(embedded_human, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
@@ -204,7 +204,7 @@
 		var/duglimbs = english_list(removed_limbs, final_comma_text = ",")
 		user.affected_message(embedded_human,
 			SPAN_NOTICE("You dig the shrapnel [address_mode] [duglimbs] with your [src.name]."),
-			SPAN_NOTICE("[user] digs the shrapnel out of your [duglimbs] with \his [src.name]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] digs the shrapnel out of your [duglimbs] with \his [src.name]."),
 			SPAN_NOTICE(user != embedded_human ? "[user] uses \his [src.name] to dig the shrapnel out of [embedded_human]'s [duglimbs]." : "[user] digs the shrapnel out of \his [duglimbs] with \his [src.name]."))
 
 		if(!embedded_human.stat && embedded_human.pain.feels_pain && embedded_human.pain.reduction_pain < PAIN_REDUCTION_HEAVY)

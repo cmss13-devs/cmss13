@@ -57,17 +57,17 @@
 /datum/surgery_step/create_cavity/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin opening a pocket in [target]'s [surgery.affected_limb.cavity] wall with \the [tool]."),
-		SPAN_NOTICE("[user] begins to open a pocket in your [surgery.affected_limb.cavity] wall with \the [tool]."),
-		SPAN_NOTICE("[user] begins to open a pocket in [target]'s [surgery.affected_limb.cavity] wall with \the [tool]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to open a pocket in your [surgery.affected_limb.cavity] wall with \the [tool]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to open a pocket in [target]'s [surgery.affected_limb.cavity] wall with \the [tool]."))
 
-	target.custom_pain("[user] is literally drilling a hole in your [surgery.affected_limb.display_name]!", 1)
+	target.custom_pain("[capitalize(user.declent_ru(NOMINATIVE))] is literally drilling a hole in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] started to make some space in [key_name(target)]'s [surgery.affected_limb.cavity] with \the [tool].")
 
 /datum/surgery_step/create_cavity/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You open an implant cavity inside [target]'s [surgery.affected_limb.cavity]."),
-		SPAN_NOTICE("[user] opens an implant cavity inside your [surgery.affected_limb.cavity]."),
-		SPAN_NOTICE("[user] opens an implant cavity inside [target]'s [surgery.affected_limb.cavity]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] opens an implant cavity inside your [surgery.affected_limb.cavity]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] opens an implant cavity inside [target]'s [surgery.affected_limb.cavity]."))
 
 	log_interact(user, target, "[key_name(user)] made some space in [key_name(target)]'s [surgery.affected_limb.cavity] with \the [tool], beginning [surgery].")
 
@@ -115,8 +115,8 @@
 /datum/surgery_step/place_item/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin implanting \the [tool] into [target]'s [surgery.affected_limb.cavity]."),
-		SPAN_NOTICE("[user] begins implanting \the [tool] into your [surgery.affected_limb.cavity]."),
-		SPAN_NOTICE("[user] begins implanting \the [tool] into [target]'s [surgery.affected_limb.cavity]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins implanting \the [tool] into your [surgery.affected_limb.cavity]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins implanting \the [tool] into [target]'s [surgery.affected_limb.cavity]."))
 
 	target.custom_pain("The pain in your [surgery.affected_limb.cavity] is living hell!", 1)
 	log_interact(user, target, "[key_name(user)] started to put \the [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
@@ -124,8 +124,8 @@
 /datum/surgery_step/place_item/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You implant \the [tool] into [target]'s [surgery.affected_limb.cavity]."),
-		SPAN_NOTICE("[user] implants \the [tool] into your [surgery.affected_limb.cavity]."),
-		SPAN_NOTICE("[user] implants \the [tool] into [target]'s [surgery.affected_limb.cavity]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] implants \the [tool] into your [surgery.affected_limb.cavity]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] implants \the [tool] into [target]'s [surgery.affected_limb.cavity]."))
 
 	log_interact(user, target, "[key_name(user)] put \the [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
 
@@ -166,13 +166,13 @@
 	if(surgery.affected_limb.hidden) //Perhaps it self-deleted in the meantime.
 		user.affected_message(target,
 			SPAN_NOTICE("You attempt to get a grip on \the [surgery.affected_limb.hidden] implanted in [target]'s [surgery.affected_limb.cavity] with \the [tool]."),
-			SPAN_NOTICE("[user] attempt to get a grip on \the [surgery.affected_limb.hidden] implanted in your [surgery.affected_limb.cavity] with \the [tool]."),
-			SPAN_NOTICE("[user] attempt to get a grip on \the [surgery.affected_limb.hidden] implanted in [target]'s [surgery.affected_limb.cavity] with \the [tool]."))
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] attempt to get a grip on \the [surgery.affected_limb.hidden] implanted in your [surgery.affected_limb.cavity] with \the [tool]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] attempt to get a grip on \the [surgery.affected_limb.hidden] implanted in [target]'s [surgery.affected_limb.cavity] with \the [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You start poking around inside [target]'s [surgery.affected_limb.cavity] with \the [tool]."),
-			SPAN_NOTICE("[user] starts poking around inside your [surgery.affected_limb.cavity] with \the [tool]."),
-			SPAN_NOTICE("[user] starts poking around inside [target]'s [surgery.affected_limb.cavity] with \the [tool]."))
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts poking around inside your [surgery.affected_limb.cavity] with \the [tool]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts poking around inside [target]'s [surgery.affected_limb.cavity] with \the [tool]."))
 
 	target.custom_pain("The pinching and tugging in your [surgery.affected_limb.cavity] is agonizing!", 1)
 	log_interact(user, target, "[key_name(user)] started poking around inside the incision on [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
@@ -181,8 +181,8 @@
 	if(surgery.affected_limb.hidden)
 		user.affected_message(target,
 			SPAN_NOTICE("You extract \the [surgery.affected_limb.hidden] from [target]'s [surgery.affected_limb.cavity]."),
-			SPAN_NOTICE("[user] extracts \the [surgery.affected_limb.hidden] from your [surgery.affected_limb.cavity]."),
-			SPAN_NOTICE("[user] extracts \the [surgery.affected_limb.hidden] from [target]'s [surgery.affected_limb.cavity]."))
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] extracts \the [surgery.affected_limb.hidden] from your [surgery.affected_limb.cavity]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] extracts \the [surgery.affected_limb.hidden] from [target]'s [surgery.affected_limb.cavity]."))
 
 		log_interact(user, target, "[key_name(user)] removed something from [key_name(target)]'s [surgery.affected_limb.cavity] with \the [tool].")
 
@@ -193,8 +193,8 @@
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You could not find anything inside [target]'s [surgery.affected_limb.cavity]."),
-			SPAN_NOTICE("[user] could not find anything inside your [surgery.affected_limb.cavity]."),
-			SPAN_NOTICE("[user] could not find anything inside [target]'s [surgery.affected_limb.cavity]."))
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] could not find anything inside your [surgery.affected_limb.cavity]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] could not find anything inside [target]'s [surgery.affected_limb.cavity]."))
 
 		log_interact(user, target, "[key_name(user)] found nothing inside [key_name(target)]'s [surgery.affected_limb.cavity] with \the [tool].")
 
@@ -219,8 +219,8 @@
 /datum/surgery_step/cauterize/close_cavity/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin sealing the implant pocket in [target]'s [surgery.affected_limb.cavity] with \the [tool]."),
-		SPAN_NOTICE("[user] begins to seal the implant pocket in your [surgery.affected_limb.cavity] with \the [tool]."),
-		SPAN_NOTICE("[user] begins to seal the implant pocket in [target]'s [surgery.affected_limb.cavity] with \the [tool]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to seal the implant pocket in your [surgery.affected_limb.cavity] with \the [tool]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to seal the implant pocket in [target]'s [surgery.affected_limb.cavity] with \the [tool]."))
 
 	target.custom_pain("Your [surgery.affected_limb.cavity] is on fire!", 1)
 	log_interact(user, target, "[key_name(user)] started to mend [key_name(target)]'s [surgery.affected_limb.cavity] wall with \the [tool].")
@@ -228,8 +228,8 @@
 /datum/surgery_step/cauterize/close_cavity/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You mend [target]'s [surgery.affected_limb.cavity] wall."),
-		SPAN_NOTICE("[user] mends your [surgery.affected_limb.cavity] wall."),
-		SPAN_NOTICE("[user] mends [target]'s [surgery.affected_limb.cavity] wall."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] mends your [surgery.affected_limb.cavity] wall."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] mends [target]'s [surgery.affected_limb.cavity] wall."))
 
 	log_interact(user, target, "[key_name(user)] mended [key_name(target)]'s [surgery.affected_limb.cavity] wall with \the [tool], ending [surgery].")
 
@@ -273,8 +273,8 @@
 /datum/surgery_step/remove_embedded/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You start poking around inside the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_NOTICE("[user] starts poking around inside the incision on your [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_NOTICE("[user] starts poking around inside the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts poking around inside the incision on your [surgery.affected_limb.display_name] with \the [tool]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts poking around inside the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
 	target.custom_pain("The poking and prying inside your [surgery.affected_limb.display_name] is unpleasant.")
 	log_interact(user, target, "[key_name(user)] started poking around inside the incision on [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
@@ -288,8 +288,8 @@
 		if(length(shrapnel))
 			user.affected_message(target,
 				SPAN_NOTICE("You extract the shrapnel from [target]'s [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] extracts the shrapnel from your [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] extracts the shrapnel from [target]'s [surgery.affected_limb.display_name]."))
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] extracts the shrapnel from your [surgery.affected_limb.display_name]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] extracts the shrapnel from [target]'s [surgery.affected_limb.display_name]."))
 			for(var/obj/item/shard/S as anything in shrapnel)
 				S.forceMove(target.loc)
 				surgery.affected_limb.implants -= S
@@ -305,8 +305,8 @@
 
 			user.affected_message(target,
 				SPAN_NOTICE("You extract \the [obj] from [target]'s [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] extracts \the [obj] from your [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] extracts \the [obj] from [target]'s [surgery.affected_limb.display_name]."))
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] extracts \the [obj] from your [surgery.affected_limb.display_name]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] extracts \the [obj] from [target]'s [surgery.affected_limb.display_name]."))
 
 			surgery.affected_limb.implants -= obj
 			obj.forceMove(get_turf(target))
@@ -324,8 +324,8 @@
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You could not find anything inside [target]'s [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] could not find anything inside your [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] could not find anything inside [target]'s [surgery.affected_limb.display_name]."))
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] could not find anything inside your [surgery.affected_limb.display_name]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] could not find anything inside [target]'s [surgery.affected_limb.display_name]."))
 
 		log_interact(user, target, "[key_name(user)] found nothing inside [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], ending [surgery].")
 

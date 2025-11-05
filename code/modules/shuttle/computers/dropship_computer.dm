@@ -284,7 +284,7 @@
 		if(dropship.playing_launch_announcement_alarm)
 			stop_playing_launch_announcement_alarm()
 			xeno.animation_attack_on(src)
-			to_chat(xeno, SPAN_XENONOTICE("Мы атакуем [declent_ru()], заставляя его замолчать!"))  // SS220 EDIT ADDICTION
+			to_chat(xeno, SPAN_XENONOTICE("Мы атакуем [declent_ru(ACCUSATIVE)], заставляя его замолчать!"))  // SS220 EDIT ADDICTION
 			playsound(loc, 'sound/machines/terminal_shutdown.ogg', 20)
 		else
 			to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))

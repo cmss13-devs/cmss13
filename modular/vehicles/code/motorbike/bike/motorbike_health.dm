@@ -40,6 +40,6 @@
 			unbuckle()
 			affected_mob.apply_effect(1, WEAKEN)
 			affected_mob.throw_atom(src, 1, VEHICLE_SPEED_FASTER, M, TRUE)
-			M.visible_message(SPAN_DANGER("[M] сшибает [src]!"), SPAN_DANGER("Мы сшибаем [src]!"))
+			M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] сшибает [declent_ru(ACCUSATIVE)]!"), SPAN_DANGER("Мы сшибаем [declent_ru(ACCUSATIVE)]!"))
 		affected_mob.attack_alien(M)	// Шанс попасть и по сидящему
 	. = ..()

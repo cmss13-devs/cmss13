@@ -1256,7 +1256,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(!W || QDELETED(W) || (W.flags_item & (NODROP|DELONDROP)) || W.embeddable == FALSE)
 		return
 	if(!silent)
-		owner.visible_message(SPAN_DANGER("[capitalize(W.declent_ru())] застревает в ране!")) // SS220 EDIT ADDICTION
+		owner.visible_message(SPAN_DANGER("[capitalize(W.declent_ru(NOMINATIVE))] застревает в ране!")) // SS220 EDIT ADDICTION
 	implants += W
 	start_processing()
 
@@ -1277,7 +1277,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
 		var/time_to_take = 5 SECONDS
 		if (target == user)
-			user.visible_message(SPAN_WARNING("[user] fumbles with [splint]"), SPAN_WARNING("You fumble with [splint]..."))
+			user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] fumbles with [splint]"), SPAN_WARNING("You fumble with [splint]..."))
 			time_to_take = 15 SECONDS
 
 		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
@@ -1285,8 +1285,8 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			var/possessive_their = "[user == target ? user.gender == MALE ? "his" : "her" : "\the [target]'s"]"
 			user.affected_message(target,
 				SPAN_HELPFUL("You finish applying <b>[splint]</b> to [possessive] [display_name]."),
-				SPAN_HELPFUL("[user] finishes applying <b>[splint]</b> to your [display_name]."),
-				SPAN_NOTICE("[user] finishes applying [splint] to [possessive_their] [display_name]."))
+				SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] finishes applying <b>[splint]</b> to your [display_name]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes applying [splint] to [possessive_their] [display_name]."))
 			status |= LIMB_SPLINTED
 			SEND_SIGNAL(src, COMSIG_LIVING_LIMB_SPLINTED, user)
 			if(indestructible_splints)

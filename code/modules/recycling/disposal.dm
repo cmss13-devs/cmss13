@@ -161,19 +161,19 @@
 			if(!user.grab_level >= GRAB_AGGRESSIVE)
 				to_chat(user, SPAN_WARNING("You need a better grip to force [grabbed_mob] in there!"))
 				return FALSE
-			user.visible_message(SPAN_WARNING("[user] starts putting [grabbed_mob] into [src]."),
+			user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] starts putting [grabbed_mob] into [src]."),
 			SPAN_WARNING("You start putting [grabbed_mob] into [src]."))
 			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-				user.visible_message(SPAN_WARNING("[user] stops putting [grabbed_mob] into [src]."),
+				user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] stops putting [grabbed_mob] into [src]."),
 				SPAN_WARNING("You stop putting [grabbed_mob] into [src]."))
 				return FALSE
 
 			grabbed_mob.forceMove(src)
-			user.visible_message(SPAN_WARNING("[user] puts [grabbed_mob] into [src]."),
-			SPAN_WARNING("[user] puts [grabbed_mob] into [src]."))
+			user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] puts [grabbed_mob] into [src]."),
+			SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] puts [grabbed_mob] into [src]."))
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [key_name(grabbed_mob)] in disposals.</font>")
 			grabbed_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user] ([user.ckey])</font>")
-			msg_admin_attack("[user] ([user.ckey]) placed [key_name(grabbed_mob)] in a disposals unit in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+			msg_admin_attack("[capitalize(user.declent_ru(NOMINATIVE))] ([user.ckey]) placed [key_name(grabbed_mob)] in a disposals unit in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 			flush(TRUE)//Forcibly flushing someone if forced in by another player.
 			return TRUE
 		return FALSE
@@ -182,7 +182,7 @@
 		return
 
 	if(user.drop_inv_item_to_loc(I, src))
-		user.visible_message(SPAN_NOTICE("[user] places [I] into [src]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] places [I] into [src]."),
 		SPAN_NOTICE("You place [I] into [src]."))
 		//Something to dispose!
 		start_processing()
@@ -205,7 +205,7 @@
 	var/target_loc = target.loc
 
 	if(target == user)
-		visible_message(SPAN_NOTICE("[user] starts climbing into the disposal."))
+		visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts climbing into the disposal."))
 
 	if(!do_after(user, 40, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return FALSE
@@ -216,7 +216,7 @@
 		return FALSE
 
 	if(target == user)
-		user.visible_message(SPAN_NOTICE("[user] climbs into [src]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] climbs into [src]."),
 		SPAN_NOTICE("You climb into [src]."))
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>[key_name(user)] climbed into a disposals bin!</font>")
 
@@ -240,7 +240,7 @@
 	user.forceMove(loc)
 	user.apply_effect(2, STUN)
 	if(user.mobility_flags & MOBILITY_MOVE)
-		user.visible_message(SPAN_WARNING("[user] suddenly climbs out of [src]!"),
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] suddenly climbs out of [src]!"),
 		SPAN_WARNING("You climb out of [src] and get your bearings!"))
 		update()
 
@@ -812,7 +812,7 @@
 			//Check if anything changed over 2 seconds
 			var/turf/uloc = user.loc
 			var/atom/wloc = W.loc
-			user.visible_message(SPAN_NOTICE("[user] starts slicing [src]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts slicing [src]."),
 			SPAN_NOTICE("You start slicing [src]."))
 			sleep(30)
 			if(!W.isOn())
@@ -1308,7 +1308,7 @@
 			//Check if anything changed over 2 seconds
 			var/turf/uloc = user.loc
 			var/atom/wloc = W.loc
-			user.visible_message(SPAN_NOTICE("[user] starts slicing [src]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts slicing [src]."),
 			SPAN_NOTICE("You start slicing [src]."))
 			sleep(30)
 			if(!W.isOn())

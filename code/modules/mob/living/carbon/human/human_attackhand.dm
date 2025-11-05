@@ -219,21 +219,21 @@
 			sleeping = max(0,src.sleeping-5)
 		if(!sleeping)
 			if(is_dizzy)
-				to_chat(M, SPAN_WARNING("Похоже у [src] кружится голова. Не стоит [t_him] сейчас беспокоить."))
+				to_chat(M, SPAN_WARNING("Похоже у [declent_ru(GENITIVE)] кружится голова. Не стоит [t_him] сейчас беспокоить."))
 			else
 				set_resting(FALSE)
-		M.visible_message(SPAN_NOTICE("[M] трясёт [src], пытаясь разбудить [t_him]!"), // SS220 EDIT ADDICTION
-			SPAN_NOTICE("Вы трясёте [declent_ru()], пытаясь разбудить [t_him]!"), null, 4) // SS220 EDIT ADDICTION
+		M.visible_message(SPAN_NOTICE("[capitalize(M.declent_ru(NOMINATIVE))] трясёт [declent_ru(ACCUSATIVE)], пытаясь разбудить [t_him]!"), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("Вы трясёте [declent_ru(ACCUSATIVE)], пытаясь разбудить [t_him]!"), null, 4) // SS220 EDIT ADDICTION
 	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
-		M.visible_message(SPAN_NOTICE("[M] трясёт [src], пытаясь вывести [t_him] из ступора!"),
-			SPAN_NOTICE("Вы трясёте [src], пытаясь вывести [t_him] из ступора!"), null, 4)
+		M.visible_message(SPAN_NOTICE("[capitalize(M.declent_ru(NOMINATIVE))] трясёт [declent_ru(ACCUSATIVE)], пытаясь вывести [t_him] из ступора!"),
+			SPAN_NOTICE("Вы трясёте [declent_ru(ACCUSATIVE)], пытаясь вывести [t_him] из ступора!"), null, 4)
 	else
 		var/mob/living/carbon/human/H = M
 		if(istype(H))
 			H.species.hug(H, src, H.zone_selected)
 		else
-			M.visible_message(SPAN_NOTICE("[M] похлопывает [src] по спине, чтобы [t_him] стало лучше!"),
-				SPAN_NOTICE("Вы похлопываете [src] по спине, чтобы [t_him] стало лучше!"), null, 4)
+			M.visible_message(SPAN_NOTICE("[capitalize(M.declent_ru(NOMINATIVE))] похлопывает [declent_ru(ACCUSATIVE)] по спине, чтобы [t_him] стало лучше!"),
+				SPAN_NOTICE("Вы похлопываете [declent_ru(ACCUSATIVE)] по спине, чтобы [t_him] стало лучше!"), null, 4)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
 
@@ -244,7 +244,7 @@
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
 /mob/living/carbon/human/proc/check_for_injuries()
-	visible_message(SPAN_NOTICE("[capitalize(declent_ru())] осматривает себя."), // SS220 EDIT ADDICTION
+	visible_message(SPAN_NOTICE("[capitalize(declent_ru(NOMINATIVE))] осматривает себя."), // SS220 EDIT ADDICTION
 	SPAN_NOTICE("Вы осматриваете своё тело в поисках ран."), null, 3)
 
 	var/list/limb_message = list()
@@ -317,7 +317,7 @@
 			postscript += " <b>(ШИНА)</b>"
 
 		if(postscript)
-			limb_message += "\t [capitalize(org.declent_ru())] [SPAN_WARNING("[english_list(status)].[postscript]")]"
+			limb_message += "\t [capitalize(org.declent_ru(NOMINATIVE))] [SPAN_WARNING("[english_list(status)].[postscript]")]"
 		else
-			limb_message += "\t [capitalize(org.declent_ru())] [status[1] == "OK" ? SPAN_NOTICE("в полном порядке.") : SPAN_WARNING("[english_list(status)].")]"
+			limb_message += "\t [capitalize(org.declent_ru(NOMINATIVE))] [status[1] == "OK" ? SPAN_NOTICE("в полном порядке.") : SPAN_WARNING("[english_list(status)].")]"
 	to_chat(src, boxed_message(limb_message.Join("\n")))

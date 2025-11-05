@@ -90,12 +90,12 @@
 			if(D.get_amount() < 1)
 				to_chat(user, SPAN_WARNING("You need one plank of wood to repair [src]."))
 				return
-			visible_message(SPAN_NOTICE("[user] begins to repair [src]."))
+			visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to repair [src]."))
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src) && health < maxhealth)
 				if (D.use(1))
 					update_health(-0.5*maxhealth)
 					update_damage_state()
-					visible_message(SPAN_NOTICE("[user] clumsily repairs [src]."))
+					visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] clumsily repairs [src]."))
 		return
 
 	if(try_nailgun_usage(W, user))

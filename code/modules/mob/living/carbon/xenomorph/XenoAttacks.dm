@@ -70,13 +70,13 @@
 			//friendly lessers, huggers and larva can be pushed around
 			if(M.ally_of_hivenumber(hivenumber) && mob_size < MOB_SIZE_XENO_SMALL && prob(85))
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-				M.visible_message(SPAN_DANGER("[M] shoves [src]!"), null, null, 5, CHAT_TYPE_COMBAT_ACTION)
+				M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] shoves [src]!"), null, null, 5, CHAT_TYPE_COMBAT_ACTION)
 				apply_effect(1, WEAKEN)
 				return
 
 			var/shove_sound = pick('sound/weapons/punchmiss.ogg', 'sound/weapons/thudswoosh.ogg')
 			playsound(loc, shove_sound, 25, 1, 7)
-			visible_message(SPAN_DANGER("[M] tries to shove [src]!"), null, null, 5, CHAT_TYPE_COMBAT_ACTION)
+			visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] tries to shove [src]!"), null, null, 5, CHAT_TYPE_COMBAT_ACTION)
 
 		if(INTENT_HARM)
 			var/datum/unarmed_attack/attack = M.species.unarmed
@@ -94,7 +94,7 @@
 
 				playsound(loc, attack.attack_sound, 25, 1)
 				var/picked_verb = pick(attack.attack_verb)
-				visible_message(SPAN_DANGER("[M] [picked_verb]ed [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
+				visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] [picked_verb]ed [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
 				log_attack("[key_name(M)] [picked_verb]ed [key_name(src)] at [get_area_name(M)]")
 				attack_log += text("\[[time_stamp()]\] <font color='orange'>was [picked_verb]ed by [key_name(M)]</font>")
 				M.attack_log += text("\[[time_stamp()]\] <font color='red'>[picked_verb]ed [key_name(src)]</font>")
@@ -102,7 +102,7 @@
 				updatehealth()
 			else
 				playsound(loc, attack.miss_sound, 25, 1)
-				visible_message(SPAN_DANGER("[M] tried to [pick(attack.attack_verb)] [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
+				visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] tried to [pick(attack.attack_verb)] [src]!"), null, null, 5, CHAT_TYPE_MELEE_HIT)
 
 	return
 
@@ -116,7 +116,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(islarva(xeno)) //Larvas can't eat people
-		xeno.visible_message(SPAN_DANGER("[xeno] nudges its head against \the [src]."),
+		xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] nudges its head against \the [src]."),
 		SPAN_DANGER("We nudge our head against \the [src]."), null, null, CHAT_TYPE_XENO_FLUFF)
 		return
 
@@ -147,7 +147,7 @@
 			if(Adjacent(xeno)) //Logic!
 				xeno.start_pulling(src)
 
-				xeno.visible_message(SPAN_WARNING("[xeno] grabs \the [src]!"),
+				xeno.visible_message(SPAN_WARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] grabs \the [src]!"),
 				SPAN_WARNING("You grab \the [src]!"), null, 5, CHAT_TYPE_XENO_FLUFF)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 

@@ -66,14 +66,14 @@
 /datum/surgery_step/cut_larval_pseudoroots/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You start carefully cutting the larva's pseudoroots away from [target]'s vital organs with \the [tool]."),
-		SPAN_NOTICE("[user] starts to carefully cut the tubes connecting the alien larva to your vital organs with \the [tool]."),
-		SPAN_NOTICE("[user] starts to carefully cut the tubes connecting the alien larva to [target]'s vital organs with \the [tool]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts to carefully cut the tubes connecting the alien larva to your vital organs with \the [tool]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts to carefully cut the tubes connecting the alien larva to [target]'s vital organs with \the [tool]."))
 
 	log_interact(user, target, "[key_name(user)] began cutting the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], attempting to begin [surgery].")
 
 /datum/surgery_step/cut_larval_pseudoroots/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/scalpel/pict_system)
-		user.visible_message(SPAN_NOTICE("[user] severs the last of the pseudoroots with \the [tool], without spilling any of the larva's acid blood."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] severs the last of the pseudoroots with \the [tool], without spilling any of the larva's acid blood."),
 			SPAN_NOTICE("You sever the last of the pseudoroots with \the [tool], without spilling any of the larva's acid blood."))
 	else
 		user.visible_message(SPAN_WARNING("Pressurised acid sprays everywhere as [user] severs the larva's tubes!"),
@@ -129,13 +129,13 @@
 	if(tool)
 		user.affected_message(target,
 			SPAN_NOTICE("You try to extract the larva from [target]'s chest with \the [tool]."),
-			SPAN_NOTICE("[user] tries to extract the larva from your chest with \the [tool]."),
-			SPAN_NOTICE("[user] tries to extract the larva from [target]'s chest with \the [tool]."))
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] tries to extract the larva from your chest with \the [tool]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] tries to extract the larva from [target]'s chest with \the [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You try to forcefully rip the larva from [target]'s chest with your bare hand."),
-			SPAN_NOTICE("[user] tries to forcefully rip the larva from your chest."),
-			SPAN_NOTICE("[user] tries to forcefully rip the larva from [target]'s chest."))
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] tries to forcefully rip the larva from your chest."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] tries to forcefully rip the larva from [target]'s chest."))
 
 	target.custom_pain("Something hurts horribly in your chest!",1)
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")
@@ -146,8 +146,8 @@
 		if(tool)
 			user.affected_message(target,
 				SPAN_WARNING("You pull a wriggling parasite out of [target]'s ribcage!"),
-				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage!"),
-				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage!"))
+				SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] pulls a wriggling parasite out of [target]'s ribcage!"),
+				SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] pulls a wriggling parasite out of [target]'s ribcage!"))
 		else
 			user.affected_message(target,
 				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage!"),

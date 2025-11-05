@@ -33,7 +33,7 @@
 			if(!N.grant)
 				return
 			GLOB.chemical_data.update_credits(N.grant)
-			visible_message(SPAN_NOTICE("[user] scans the [N.name] on [src], collecting the [N.grant] research credits."))
+			visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] scans the [N.name] on [src], collecting the [N.grant] research credits."))
 			N.grant = 0
 			qdel(N)
 			return
@@ -61,14 +61,14 @@
 	if(istype(B, /obj/item/research_upgrades/reroll))
 		var/obj/item/research_upgrades/reroll/reroll = B
 		GLOB.chemical_data.reroll_chemicals()
-		visible_message(SPAN_NOTICE("[user] inserts [reroll] in [src], Rerolling contract chemicals."))
+		visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] inserts [reroll] in [src], Rerolling contract chemicals."))
 		qdel(reroll)
 	//Clearance Card Updating
 	if(!istype(B, /obj/item/card/id))
 		return
 	var/obj/item/card/id/silver/clearance_badge/card = B
 	if(!istype(card))
-		visible_message(SPAN_NOTICE("[user] swipes their ID card on [src], but it is refused."))
+		visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] swipes their ID card on [src], but it is refused."))
 		return
 	if(!card.check_biometrics(user))
 		visible_message(SPAN_WARNING("WARNING: ILLEGAL CLEARANCE USER DETECTED. ABORTING."))
@@ -79,7 +79,7 @@
 		GLOB.chemical_data.update_credits(credits_to_add)
 		GLOB.chemical_data.credits_gained += credits_to_add
 
-	visible_message(SPAN_NOTICE("[user] swipes their ID card on [src], granting [credits_to_add] credits."))
+	visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] swipes their ID card on [src], granting [credits_to_add] credits."))
 	msg_admin_niche("[key_name(user)] has swiped a clearance card to give [credits_to_add] credits to research.")
 	return
 

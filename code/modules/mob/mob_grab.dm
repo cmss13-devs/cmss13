@@ -99,12 +99,12 @@
 
 	user.grab_level = GRAB_AGGRESSIVE
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-	user.visible_message(SPAN_WARNING("[user] сильно хватает [victim]."), null, null, 5) // SS220 EDIT ADDICTION
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] сильно хватает [victim.declent_ru(ACCUSATIVE)]."), null, null, 5) // SS220 EDIT ADDICTION
 
 /obj/item/grab/proc/progress_aggressive(mob/living/carbon/human/user, mob/living/victim)
 	user.grab_level = GRAB_CHOKE
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-	user.visible_message(SPAN_WARNING("[user] хватает [victim] за шею и душит!"), null, null, 5) // SS220 EDIT ADDICTION
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] хватает [victim.declent_ru(ACCUSATIVE)] за шею и начинает душить!"), null, null, 5) // SS220 EDIT ADDICTION
 	msg_admin_attack("[key_name(user)] started to choke [key_name(victim)] at [get_area_name(victim)]", victim.loc.x, victim.loc.y, victim.loc.z)
 	victim.Move(user.loc, get_dir(victim.loc, user.loc))
 	victim.update_transform(TRUE)
@@ -118,19 +118,19 @@
 		if(!istype(pulled))
 			return
 		if(isxeno(pulled) || issynth(pulled))
-			to_chat(xeno, SPAN_WARNING("That wouldn't serve a purpose."))
+			to_chat(xeno, SPAN_WARNING("Это не имеет смысла."))
 			return 0
 		if(pulled.buckled)
-			to_chat(xeno, SPAN_WARNING("[pulled] is buckled to something."))
+			to_chat(xeno, SPAN_WARNING("[capitalize(pulled.declent_ru(NOMINATIVE))] привязан[genderize_ru(pulled.gender, "", "а", "", "ы")] к чему-то."))
 			return 0
 		if(pulled.stat == DEAD && !pulled.chestburst)
-			to_chat(xeno, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
+			to_chat(xeno, SPAN_WARNING("Фу, [pulled.declent_ru(NOMINATIVE)] начинает уже гнить."))
 			return 0
 		if(xeno.hauled_mob?.resolve()) // We can't carry more than one mob
-			to_chat(xeno, SPAN_WARNING("You already are carrying something, there's no way that will work."))
+			to_chat(xeno, SPAN_WARNING("Вы можете тащить только одну цель."))
 			return 0
 		if(HAS_TRAIT(pulled, TRAIT_HAULED))
-			to_chat(xeno, SPAN_WARNING("They are already being hauled by someone else."))
+			to_chat(xeno, SPAN_WARNING("Кто-то уже тащит эту цель."))
 			return 0
 			/* Saving this in case we want to allow hauling of dead bodies UNLESS their client is still online somewhere
 			if(pulled.client) //The client is still inside the body
@@ -143,13 +143,13 @@
 			to_chat(xeno, SPAN_WARNING("Мы уже заняты чем-то другим."))
 			return
 		SEND_SIGNAL(xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-		xeno.visible_message(SPAN_DANGER("[xeno] starts to restrain [pulled]!"),
-		SPAN_DANGER("We start restraining [pulled]!"), null, 5)
+		xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] пытается связать [pulled.declent_ru(ACCUSATIVE)]!"),
+		SPAN_DANGER("Мы начинаем связывать [pulled.declent_ru(ACCUSATIVE)]!"), null, 5)
 		if(HAS_TRAIT(xeno, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
-			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno] пытается вас связать!"))) // SS220 EDIT ADDICTION
+			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] пытается вас связать!"))) // SS220 EDIT ADDICTION
 		if(do_after(xeno, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			if((isxeno(pulled.loc) && !xeno.hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
-				to_chat(xeno, SPAN_WARNING("Someone already took \the [pulled]."))
+				to_chat(xeno, SPAN_WARNING("Кто-то уже схватил [pulled.declent_ru(ACCUSATIVE)]."))
 				return 0
 			if(xeno.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !xeno.hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
 				if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, xeno) & COMPONENT_CANCEL_HAUL)

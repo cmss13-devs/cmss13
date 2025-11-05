@@ -152,11 +152,11 @@
 		carbon.apply_armoured_damage(damage)
 		carbon.last_damage_data = create_cause_data(initial(xeno.name), xeno)
 		xeno.flick_attack_overlay(carbon, "slash")
-		to_chat(carbon, SPAN_DANGER("[xeno] slices into you with its razor sharp talons."))
+		to_chat(carbon, SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] slices into you with its razor sharp talons."))
 		log_attack("[key_name(xeno)] hit [key_name(carbon)] with [name]")
 		playsound(carbon, pick(slash_sounds), 30, TRUE)
 
-	xeno.visible_message(SPAN_DANGER("[xeno] slices around itself!"), SPAN_NOTICE("We slice around ourself!"))
+	xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] slices around itself!"), SPAN_NOTICE("We slice around ourself!"))
 	apply_cooldown()
 	..()
 
@@ -173,7 +173,7 @@
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	playsound(xeno, 'sound/voice/deep_alien_screech2.ogg', 75, 0, status = 0)
-	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] издаёт скрежещущий горловой рёв!")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] издаёт скрежещущий горловой рёв!")) // SS220 EDIT ADDICTION
 	xeno.create_shriekwave()
 
 	var/datum/effect_system/smoke_spread/king_doom/smoke_gas = new()

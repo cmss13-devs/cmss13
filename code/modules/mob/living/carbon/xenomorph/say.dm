@@ -117,7 +117,7 @@
 
 		if(!QDELETED(S) && (isxeno(S) || S.stat == DEAD || hear_hivemind) && !istype(S,/mob/new_player))
 			var/mob/living/carbon/xenomorph/X = src
-			var/ru_name = declent_ru() // SS220 EDIT ADDICTION
+			var/ru_name = declent_ru(NOMINATIVE) // SS220 EDIT ADDICTION
 			if(istype(S,/mob/dead/observer))
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>посмотреть</a>)" // SS220 EDIT ADDICTION

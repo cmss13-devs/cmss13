@@ -73,7 +73,7 @@
 				to_chat(H, SPAN_DANGER("You can't eat [fluff_text]s."))
 				return
 
-		M.visible_message(SPAN_NOTICE("[user] swallows [src]."),
+		M.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] swallows [src]."),
 		SPAN_HELPFUL("You swallow [src]."))
 		var/list/reagents_in_pill = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
@@ -96,8 +96,8 @@
 
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [M] a [fluff_text]."),
-			SPAN_HELPFUL("[user] <b>starts feeding</b> you a [fluff_text]."),
-			SPAN_NOTICE("[user] starts feeding [M] a [fluff_text]."))
+			SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>starts feeding</b> you a [fluff_text]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts feeding [M] a [fluff_text]."))
 
 		var/ingestion_time = 30
 		if(user.skills)
@@ -112,8 +112,8 @@
 
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>fed</b> [M] a [fluff_text]."),
-			SPAN_HELPFUL("[user] <b>fed</b> you a [fluff_text]."),
-			SPAN_NOTICE("[user] fed [M] a [fluff_text]."))
+			SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>fed</b> you a [fluff_text]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] fed [M] a [fluff_text]."))
 		user.count_niche_stat(STATISTICS_NICHE_PILLS)
 
 		var/rgt_list_text = get_reagent_list_text()
@@ -148,7 +148,7 @@
 
 		reagents.trans_to(target, reagents.total_volume)
 		for(var/mob/O in viewers(2, user))
-			O.show_message(SPAN_DANGER("[user] puts something in \the [target]."), SHOW_MESSAGE_VISIBLE)
+			O.show_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] puts something in \the [target]."), SHOW_MESSAGE_VISIBLE)
 
 		QDEL_IN(src, 5)
 

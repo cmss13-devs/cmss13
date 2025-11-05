@@ -85,8 +85,8 @@
 
 /obj/vehicle/powerloader/attack_hand(mob/user)
 	if(buckled_mob && user != buckled_mob)
-		buckled_mob.visible_message(SPAN_WARNING("[user] tries to move [buckled_mob] out of [src]."),
-		SPAN_DANGER("[user] tries to move you out of [src]!"))
+		buckled_mob.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] tries to move [buckled_mob] out of [src]."),
+		SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] tries to move you out of [src]!"))
 		var/oldloc = loc
 		var/olddir = dir
 		var/old_buckled_mob = buckled_mob
@@ -239,7 +239,7 @@
 							to_chat(user, SPAN_WARNING("You can't drop \the [loaded] here, \the [AM] blocks the way."))
 							return
 
-				user.visible_message(SPAN_NOTICE("[user] drops \the [loaded] on [T] with \the [src]."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] drops \the [loaded] on [T] with \the [src]."),
 				SPAN_NOTICE("You drop \the [loaded] on [T] with \the [src]."))
 				loaded.forceMove(T)
 				playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
@@ -351,7 +351,7 @@
 
 	attacking_xeno.animation_attack_on(src)
 
-	attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
+	attacking_xeno.visible_message(SPAN_DANGER("[capitalize(attacking_xeno.declent_ru(NOMINATIVE))] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
 	playsound(attacking_xeno, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 
 	var/damage = (attacking_xeno.melee_vehicle_damage + rand(-5,5))

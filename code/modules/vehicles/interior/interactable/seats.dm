@@ -397,7 +397,7 @@
 
 /obj/structure/bed/chair/vehicle/attack_alien(mob/living/user)
 	if(!unslashable)
-		user.visible_message(SPAN_WARNING("[user] smashes \the [src]!"),
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] smashes \the [src]!"),
 		SPAN_WARNING("You smash \the [src]!"))
 		playsound(loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 		if(!broken)
@@ -414,10 +414,10 @@
 		var/obj/item/tool/weldingtool/C = W
 		if(C.remove_fuel(0,user))
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
-			user.visible_message(SPAN_WARNING("[user] begins repairing \the [src]."),
+			user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] begins repairing \the [src]."),
 			SPAN_WARNING("You begin repairing \the [src]."))
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && broken)
-				user.visible_message(SPAN_WARNING("[user] repairs \the [src]."),
+				user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] repairs \the [src]."),
 				SPAN_WARNING("You repair \the [src]."))
 				repair_seat()
 				return

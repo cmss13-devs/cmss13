@@ -56,7 +56,7 @@
 			switch(over_object.name)
 				if("r_hand")
 					if(master_item.time_to_unequip)
-						user.visible_message(SPAN_NOTICE("[user] starts taking off \the [master_item]."))
+						user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts taking off \the [master_item]."))
 						if(!do_after(user, master_item.time_to_unequip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 							to_chat(user, SPAN_WARNING("You stop taking off \the [master_item]!"))
 						else
@@ -71,7 +71,7 @@
 					return
 				if("l_hand")
 					if(master_item.time_to_unequip)
-						user.visible_message(SPAN_NOTICE("[user] starts taking off \the [master_item]."))
+						user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts taking off \the [master_item]."))
 						if(!do_after(user, master_item.time_to_unequip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 							to_chat(user, SPAN_WARNING("You stop taking off \the [master_item]!"))
 						else

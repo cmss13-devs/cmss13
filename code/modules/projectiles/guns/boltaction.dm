@@ -135,8 +135,8 @@
 	user.drop_inv_item_to_loc(magazine, src) //Click!
 	current_mag = magazine
 	replace_ammo(user,magazine)
-	user.visible_message(SPAN_NOTICE("[user] заряжает [magazine.declent_ru()] в [declent_ru(ACCUSATIVE)]!"), // SS220 EDIT ADDICTION
-		SPAN_NOTICE("Вы заряжаете [magazine.declent_ru()] в [declent_ru(ACCUSATIVE)]!"), null, 3, CHAT_TYPE_COMBAT_ACTION) // SS220 EDIT ADDICTION
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] заряжает [magazine.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]!"), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("Вы заряжаете [magazine.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]!"), null, 3, CHAT_TYPE_COMBAT_ACTION) // SS220 EDIT ADDICTION
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
 
@@ -269,7 +269,7 @@
 	var/direction = REVERSE_DIR(user.dir)
 	if(direction && !step(user, direction))
 		user.animation_attack_on(get_step(user, direction))
-		user.visible_message(SPAN_DANGER("[user] врезается в препятствие!"), SPAN_HIGHDANGER("Вы врезаетесь в препятствие!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] врезается в препятствие!"), SPAN_HIGHDANGER("Вы врезаетесь в препятствие!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		user.apply_damage(MELEE_FORCE_TIER_2)
 
 	shake_camera(user, 7, 6) // Around 2x worse than getting hit with a heavy round

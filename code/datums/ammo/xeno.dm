@@ -40,7 +40,7 @@
 
 /proc/apply_neuro(mob/living/M, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE)
 	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
-		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+		M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -48,7 +48,7 @@
 			for(var/datum/reagent/generated/stim in H.reagents.reagent_list)
 				H.reagents.remove_reagent(stim.id, drain, TRUE)
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+			H.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] shrugs off the neurotoxin!"))
 			return //species like zombies or synths are immune to neurotoxin
 		if(drain_medchems)
 			for(var/datum/reagent/medical/med in H.reagents.reagent_list)
@@ -76,21 +76,21 @@
 			if(M.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
 				M.KnockDown(power)
 				M.Stun(power)
-				M.visible_message(SPAN_DANGER("[M] falls prone."))
+				M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] falls prone."))
 
 /proc/apply_scatter_neuro(mob/living/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
-			M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+			M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] withstands the neurotoxin!"))
 			return //endurance 5 makes you immune to weak neuro
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+			H.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] shrugs off the neurotoxin!"))
 			return
 
 		M.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
 		M.Stun(0.7)
-		M.visible_message(SPAN_DANGER("[M] falls prone."))
+		M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] falls prone."))
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
 	if(ishuman(M))

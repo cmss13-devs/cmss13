@@ -60,7 +60,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn()) //Badasses dont get blinded by lighting their candle with a blowtorch
-			light(SPAN_NOTICE("[user] casually lights [src] with [W]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] casually lights [src] with [W]."))
 	else if(W.heat_source > 400)
 		light()
 	else
@@ -236,7 +236,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn())//Badasses dont get blinded while lighting their cig with a blowtorch
-			light(SPAN_NOTICE("[user] casually lights the [name] with [W]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] casually lights the [name] with [W]."))
 
 	else if(istype(W, /obj/item/tool/lighter/zippo))
 		var/obj/item/tool/lighter/zippo/Z = W
@@ -246,33 +246,33 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else if(istype(W, /obj/item/device/flashlight/flare))
 		var/obj/item/device/flashlight/flare/FL = W
 		if(FL.heat_source)
-			light(SPAN_NOTICE("[user] lights their [name] with [W]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with [W]."))
 
 	else if(istype(W, /obj/item/tool/lighter))
 		var/obj/item/tool/lighter/L = W
 		if(L.heat_source)
-			light(SPAN_NOTICE("[user] manages to light their [name] with [W]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] manages to light their [name] with [W]."))
 
 	else if(istype(W, /obj/item/tool/match))
 		var/obj/item/tool/match/M = W
 		if(M.heat_source)
-			light(SPAN_NOTICE("[user] lights their [name] with their [W]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with their [W]."))
 
 	else if(istype(W, /obj/item/weapon/energy/sword))
 		var/obj/item/weapon/energy/sword/S = W
 		if(S.active)
-			light(SPAN_WARNING("[user] swings their [W], barely missing their nose. They light their [name] in the process."))
+			light(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] swings their [W], barely missing their nose. They light their [name] in the process."))
 
 	else if(istype(W, /obj/item/device/assembly/igniter))
-		light(SPAN_NOTICE("[user] fiddles with [W], and manages to light their [name]."))
+		light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] fiddles with [W], and manages to light their [name]."))
 
 	else if(istype(W, /obj/item/attachable/attached_gun/flamer))
-		light(SPAN_NOTICE("[user] lights their [name] with [W]."))
+		light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with [W]."))
 
 	else if(istype(W, /obj/item/weapon/gun/flamer))
 		var/obj/item/weapon/gun/flamer/F = W
 		if(!(F.flags_gun_features & GUN_TRIGGER_SAFETY))
-			light(SPAN_NOTICE("[user] lights their [name] with the pilot light of [F]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with the pilot light of [F]."))
 		else
 			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
 
@@ -280,20 +280,20 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		var/obj/item/weapon/gun/G = W
 		for(var/slot in G.attachments)
 			if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
-				light(SPAN_NOTICE("[user] lights their [name] with [G.attachments[slot]]."))
+				light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with [G.attachments[slot]]."))
 				break
 
 	else if(istype(W, /obj/item/tool/surgery/cautery))
-		light(SPAN_NOTICE("[user] lights their [name] with [W]."))
+		light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with [W]."))
 
 	else if(istype(W, /obj/item/clothing/mask/cigarette))
 		var/obj/item/clothing/mask/cigarette/C = W
 		if(C.item_state == icon_on)
-			light(SPAN_NOTICE("[user] lights their [name] with [C] after a few attempts."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with [C] after a few attempts."))
 
 	else if(istype(W, /obj/item/tool/candle))
 		if(W.heat_source > 200)
-			light(SPAN_NOTICE("[user] lights their [name] with [W] after a few attempts."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with [W] after a few attempts."))
 
 	return
 
@@ -316,20 +316,20 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else if(isturf(target))
 		var/turf/T = target
 		if(locate(/obj/flamer_fire) in T.contents)
-			light(SPAN_NOTICE("[user] lights their [src] with the burning ground."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [src] with the burning ground."))
 
 	else if(isliving(target))
 		var/mob/living/M = target
 		if(M.on_fire)
 			if(user == M)
-				light(SPAN_NOTICE("[user] lights their [src] from their own burning body, that's crazy!"))
+				light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [src] from their own burning body, that's crazy!"))
 			else
-				light(SPAN_NOTICE("[user] lights their [src] from the burning body of [M], that's stone cold."))
+				light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [src] from the burning body of [M], that's stone cold."))
 
 	else if(istype(target, /obj/structure/machinery/light))
 		var/obj/structure/machinery/light/fixture = target
 		if(fixture.is_broken())
-			light(SPAN_NOTICE("[user] lights their [src] from the broken light."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [src] from the broken light."))
 
 /obj/item/clothing/mask/cigarette/proc/light(flavor_text)
 	SIGNAL_HANDLER
@@ -535,7 +535,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn())
-			light(SPAN_NOTICE("[user] insults [name] by lighting it with [W]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] insults [name] by lighting it with [W]."))
 
 	else if(istype(W, /obj/item/tool/lighter/zippo))
 		var/obj/item/tool/lighter/zippo/Z = W
@@ -545,33 +545,33 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else if(istype(W, /obj/item/device/flashlight/flare))
 		var/obj/item/device/flashlight/flare/FL = W
 		if(FL.heat_source)
-			light(SPAN_NOTICE("[user] lights their [name] with [W]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with [W]."))
 
 	else if(istype(W, /obj/item/tool/lighter))
 		var/obj/item/tool/lighter/L = W
 		if(L.heat_source)
-			light(SPAN_NOTICE("[user] manages to offend their [name] by lighting it with [W]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] manages to offend their [name] by lighting it with [W]."))
 
 	else if(istype(W, /obj/item/tool/match))
 		var/obj/item/tool/match/M = W
 		if(M.heat_source)
-			light(SPAN_NOTICE("[user] lights their [name] with their [W]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with their [W]."))
 
 	else if(istype(W, /obj/item/weapon/energy/sword))
 		var/obj/item/weapon/energy/sword/S = W
 		if(S.active)
-			light(SPAN_WARNING("[user] swings their [W], barely missing their nose. They light their [name] in the process."))
+			light(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] swings their [W], barely missing their nose. They light their [name] in the process."))
 
 	else if(istype(W, /obj/item/device/assembly/igniter))
-		light(SPAN_NOTICE("[user] fiddles with [W], and manages to light their [name] with the power of science."))
+		light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] fiddles with [W], and manages to light their [name] with the power of science."))
 
 	else if(istype(W, /obj/item/attachable/attached_gun/flamer))
-		light(SPAN_NOTICE("[user] lights their [name] with [W], bet that would have looked cooler if it was attached to something first!"))
+		light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with [W], bet that would have looked cooler if it was attached to something first!"))
 
 	else if(istype(W, /obj/item/weapon/gun/flamer))
 		var/obj/item/weapon/gun/flamer/F = W
 		if(!(F.flags_gun_features & GUN_TRIGGER_SAFETY))
-			light(SPAN_NOTICE("[user] lights their [name] with the pilot light of [F], the glint of pyromania in their eye."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with the pilot light of [F], the glint of pyromania in their eye."))
 		else
 			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
 
@@ -579,20 +579,20 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		var/obj/item/weapon/gun/G = W
 		for(var/slot in G.attachments)
 			if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
-				light(SPAN_NOTICE("[user] lights their [src] with [G.attachments[slot]] like a complete badass."))
+				light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [src] with [G.attachments[slot]] like a complete badass."))
 				break
 
 	else if(istype(W, /obj/item/tool/surgery/cautery))
-		light(SPAN_NOTICE("[user] lights their [name] with [W], that can't be sterile!"))
+		light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with [W], that can't be sterile!"))
 
 	else if(istype(W, /obj/item/clothing/mask/cigarette))
 		var/obj/item/clothing/mask/cigarette/C = W
 		if(C.item_state == icon_on)
-			light(SPAN_NOTICE("[user] lights their [name] with [C] after a few attempts."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with [C] after a few attempts."))
 
 	else if(istype(W, /obj/item/tool/candle))
 		if(W.heat_source > 200)
-			light(SPAN_NOTICE("[user] lights their [name] with [W] after a few attempts."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with [W] after a few attempts."))
 
 /////////////////
 //SMOKING PIPES//
@@ -626,7 +626,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /// Refills the pipe. Can be changed to an attackby later, if loose tobacco is added to vendors or something.
 /obj/item/clothing/mask/cigarette/pipe/attack_self(mob/user)
 	if(ash)
-		user.visible_message("[user] empties the ash out of \the [src].", "You empty the ash out of \the [src].")
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] empties the ash out of \the [src].", "You empty the ash out of \the [src].")
 		new /obj/effect/decal/cleanable/ash(get_turf(user))
 		ash = FALSE
 	else if(smoketime <= 0)
@@ -638,7 +638,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn())//
-			light(SPAN_NOTICE("[user] recklessly lights [name] with [W]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] recklessly lights [name] with [W]."))
 
 	else if(istype(W, /obj/item/tool/lighter/zippo))
 		var/obj/item/tool/lighter/zippo/Z = W
@@ -648,20 +648,20 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else if(istype(W, /obj/item/device/flashlight/flare))
 		var/obj/item/device/flashlight/flare/FL = W
 		if(FL.heat_source)
-			light(SPAN_NOTICE("[user] lights their [name] with [W]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with [W]."))
 
 	else if(istype(W, /obj/item/tool/lighter))
 		var/obj/item/tool/lighter/L = W
 		if(L.heat_source)
-			light(SPAN_NOTICE("[user] manages to light their [name] with [W]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] manages to light their [name] with [W]."))
 
 	else if(istype(W, /obj/item/tool/match))
 		var/obj/item/tool/match/M = W
 		if(M.heat_source)
-			light(SPAN_NOTICE("[user] lights their [name] with their [W]."))
+			light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lights their [name] with their [W]."))
 
 	else if(istype(W, /obj/item/device/assembly/igniter))
-		light(SPAN_NOTICE("[user] fiddles with \the [W], and manages to light their [name] with the power of science."))
+		light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] fiddles with \the [W], and manages to light their [name] with the power of science."))
 
 /obj/item/clothing/mask/cigarette/pipe/light()
 	if(smoketime > 0)
@@ -888,8 +888,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			cig.attackby(src, user)
 		else
 			if(istype(src, /obj/item/tool/lighter/zippo))
-				cig.light(SPAN_ROSE("[user] whips the [name] out and holds it for [M]."))
+				cig.light(SPAN_ROSE("[capitalize(user.declent_ru(NOMINATIVE))] whips the [name] out and holds it for [M]."))
 			else
-				cig.light(SPAN_NOTICE("[user] holds the [name] out for [M], and lights the [cig.name]."))
+				cig.light(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] holds the [name] out for [M], and lights the [cig.name]."))
 	else
 		..()

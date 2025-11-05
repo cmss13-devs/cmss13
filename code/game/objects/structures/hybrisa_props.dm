@@ -20,11 +20,11 @@
 	take_damage( rand(user.melee_damage_lower, user.melee_damage_upper) * brute_multiplier)
 	playsound(src, 'sound/effects/metalscrape.ogg', 20, 1)
 	if(health <= 0)
-		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
-		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] разрезает [declent_ru(ACCUSATIVE)] на части!"),
+		SPAN_DANGER("Вы разрезаете [declent_ru(ACCUSATIVE)] на части!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"),
-		SPAN_DANGER("We [user.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] [ru_attack_verb(user.slashes_verb)] [declent_ru(ACCUSATIVE)]!"),
+		SPAN_DANGER("Вы [ru_attack_verb(user.slash_verb)] [declent_ru(ACCUSATIVE)]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_icon()
 	return XENO_ATTACK_ACTION
 

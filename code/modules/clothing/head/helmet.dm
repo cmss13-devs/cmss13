@@ -526,17 +526,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/attackby(obj/item/attacking_item, mob/user)
 	if(istype(attacking_item, /obj/item/ammo_magazine) && world.time > helmet_bash_cooldown && user)
 		var/obj/item/ammo_magazine/M = attacking_item
-		var/ammo_level = "more than half full."
+		var/ammo_level = "больше половины."
 		playsound(user, 'sound/items/trayhit1.ogg', 15, FALSE)
 		if(M.current_rounds == (M.max_rounds/2))
-			ammo_level = "half full."
+			ammo_level = "половина."
 		if(M.current_rounds < (M.max_rounds/2))
-			ammo_level = "less than half full."
+			ammo_level = "меньше половины."
 		if(M.current_rounds < (M.max_rounds/6))
-			ammo_level = "almost empty."
+			ammo_level = "почти пусто."
 		if(M.current_rounds == 0)
-			ammo_level = "empty. Uh oh."
-		user.visible_message("[user] bashes [M] against their helmet", "You bash [M] against your helmet. It is [ammo_level]")
+			ammo_level = "пусто. Ой-ой."
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] [ru_attack_verb("bashes")] [M.declent_ru(ACCUSATIVE)] об свой шлем.", "Вы [ru_attack_verb("bash")] [M.declent_ru(ACCUSATIVE)] об свой шлем. Внутри [ammo_level].")
 		helmet_bash_cooldown = world.time + 20 SECONDS
 		return
 

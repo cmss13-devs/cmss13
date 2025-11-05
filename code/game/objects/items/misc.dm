@@ -50,13 +50,13 @@
 /obj/item/weapon/pole/attack_self(mob/living/user)
 	..()
 	if(!gripped)
-		user.visible_message(SPAN_NOTICE("[user] grips [src] tightly."), SPAN_NOTICE("You grip [src] tightly."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] grips [src] tightly."), SPAN_NOTICE("You grip [src] tightly."))
 		flags_item |= NODROP|FORCEDROP_CONDITIONAL
 		ADD_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM)
 		user.AddComponent(/datum/component/footstep, 6, 35, 4, 1, "cane_step")
 		gripped = TRUE
 	else
-		user.visible_message(SPAN_NOTICE("[user] loosens \his grip on [src]."), SPAN_NOTICE("You loosen your grip on [src]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] loosens \his grip on [src]."), SPAN_NOTICE("You loosen your grip on [src]."))
 		flags_item &= ~(NODROP|FORCEDROP_CONDITIONAL)
 		REMOVE_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM)
 		// Ideally, this would be something like a component added onto every mob that prioritizes certain sounds, such as stomping over canes.
@@ -213,7 +213,7 @@
 		to_chat(user, SPAN_NOTICE("[src] already has something inside it."))
 		return
 
-	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",
+	user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] puts [I] into [src]", "You put [I] inside [src].",
 	"You hear a rustle as someone puts something into a plastic bag.")
 
 	icon_state = "evidence"
@@ -244,7 +244,7 @@
 
 	if(length(contents))
 		var/obj/item/I = contents[1]
-		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] takes [I] out of [src]", "You take [I] out of [src].",
 		"You hear someone rustle around in a plastic bag, and remove something.")
 		overlays.Cut() //remove the overlays
 

@@ -316,8 +316,8 @@
 	if(xeno.is_zoomed)
 		xeno.zoom_out() // will call on_zoom_out()
 		return
-	xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."),
-		SPAN_NOTICE("We start focusing our sight to look off into the distance."), null, 5)
+	xeno.visible_message(SPAN_NOTICE("[capitalize(xeno.declent_ru(NOMINATIVE))] начинает смотреть вдаль."),
+		SPAN_NOTICE("Мы начинаем фокусировать наш взгляд вдаль."), null, 5)
 	if (should_delay)
 		if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			return
@@ -334,8 +334,8 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_out()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."),
-	SPAN_NOTICE("We stop looking off into the distance."), null, 5)
+	xeno.visible_message(SPAN_NOTICE("[capitalize(xeno.declent_ru(NOMINATIVE))] перестаёт смотреть вдаль."),
+	SPAN_NOTICE("Мы перестаём фокусировать наш взгляд вдаль."), null, 5)
 	if(movement_slowdown)
 		xeno.speed_modifier -= movement_slowdown
 		xeno.recalculate_speed()

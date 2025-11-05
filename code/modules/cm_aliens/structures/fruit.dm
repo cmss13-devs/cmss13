@@ -447,13 +447,13 @@
 	if(cant_consume)
 		user.affected_message(affected_xeno,
 			SPAN_HELPFUL("You <b>fail to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]</b>."),
-			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."),
-			SPAN_NOTICE("[user] fails to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]."))
+			SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>fails to feed</b> you <b>[current_fruit]</b>."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] fails to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]."))
 		return
 	user.affected_message(affected_xeno,
 		SPAN_HELPFUL("You <b>start [user == affected_xeno ? "eating" : "feeding [affected_xeno]"] [current_fruit]</b>."),
-		SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[current_fruit]</b>."),
-		SPAN_NOTICE("[user] starts [user == affected_xeno ? "eating" : "feeding [affected_xeno]"] <b>[current_fruit]</b>."))
+		SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>starts feeding</b> you <b>[current_fruit]</b>."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts [user == affected_xeno ? "eating" : "feeding [affected_xeno]"] <b>[current_fruit]</b>."))
 
 	var/pick_delay = consume_delay
 	var/mob/living/carbon/xenomorph/x_user = user
@@ -467,14 +467,14 @@
 	if(cant_consume) //Check again after the timer incase they ate another fruit
 		user.affected_message(affected_xeno,
 			SPAN_HELPFUL("You <b>fail to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]</b>."),
-			SPAN_HELPFUL("[user] <b>fails to feed</b> you <b>[current_fruit]</b>."),
-			SPAN_NOTICE("[user] fails to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]."))
+			SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>fails to feed</b> you <b>[current_fruit]</b>."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] fails to [user == affected_xeno ? "eat" : "feed [affected_xeno]"] [current_fruit]."))
 		return
 
 	user.affected_message(affected_xeno,
 		SPAN_HELPFUL("You [user == affected_xeno ? "<b>eat</b>" : "<b>fed</b> [affected_xeno]"] <b>[current_fruit]</b>."),
-		SPAN_HELPFUL("[user] <b>fed</b> you <b>[current_fruit]</b>."),
-		SPAN_NOTICE("[user] [user == affected_xeno ? "ate" : "fed [affected_xeno]"] <b>[current_fruit]</b>."))
+		SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>fed</b> you <b>[current_fruit]</b>."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] [user == affected_xeno ? "ate" : "fed [affected_xeno]"] <b>[current_fruit]</b>."))
 	current_fruit.mature = TRUE
 	current_fruit.consume_effect(affected_xeno)
 

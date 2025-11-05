@@ -127,7 +127,7 @@
 	for(var/datum/internal_organ/I as anything in internal_organs)
 		if(I.damage > 2 && prob(2))
 			parent = get_limb(I.parent_limb)
-			custom_pain("Вы чувствуете острую боль в [parent.declent_ru()]!", 1) // SS220 EDIT ADDICTION
+			custom_pain("Вы чувствуете острую боль в [parent.declent_ru(PREPOSITIONAL)]!", 1) // SS220 EDIT ADDICTION
 
 	var/toxDamageMessage = null
 	var/toxMessageProb = 1

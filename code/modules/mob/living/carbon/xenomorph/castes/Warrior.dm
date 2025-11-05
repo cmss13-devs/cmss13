@@ -118,8 +118,8 @@
 			living_mob.Stun(duration)
 			if(living_mob.pulledby != src)
 				return // Grab was broken, probably as Stun side effect (eg. target getting knocked away from a manned M56D)
-			visible_message(SPAN_XENOWARNING("[declent_ru()] хватает [living_mob] за горло!"), // SS220 EDIT ADDICTION
-			SPAN_XENOWARNING("Мы хватаем [living_mob] за горло!")) // SS220 EDIT ADDICTION
+			visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] хватает [living_mob.declent_ru(ACCUSATIVE)] за горло!"), // SS220 EDIT ADDICTION
+			SPAN_XENOWARNING("Мы хватаем [living_mob.declent_ru(ACCUSATIVE)] за горло!")) // SS220 EDIT ADDICTION
 			warrior_delegate.lunging = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 2) SECONDS + 1 SECONDS)
 
@@ -216,7 +216,7 @@
 	if(limb.body_part == BODY_FLAG_HEAD)
 		limb_time = rand(90,110)
 
-	visible_message(SPAN_XENOWARNING("[declent_ru()] начинает отрывать [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob] с невероятной силой!"), // SS220 EDIT ADDICTION
+	visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] начинает отрывать [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob.declent_ru(GENITIVE)] с невероятной силой!"), // SS220 EDIT ADDICTION
 	SPAN_XENOWARNING("Мы начинаем отрывать [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob] с невероятной силой!")) // SS220 EDIT ADDICTION
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE) || mob.stat == DEAD || mob.status_flags & XENO_HOST)
@@ -232,10 +232,10 @@
 
 	if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		limb.take_damage(rand(30,40), 0, 0) // just do more damage
-		visible_message(SPAN_XENOWARNING("Вы слышите, как начинает отрываться [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob] с чавкающим звуком!"), // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENOWARNING("Вы слышите, как начинает отрываться [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob.declent_ru(GENITIVE)] с чавкающим звуком!"), // SS220 EDIT ADDICTION
 		SPAN_XENOWARNING("[declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob] начинает отрываться с приятным чавкающим звуком!")) // SS220 EDIT ADDICTION
 	else
-		visible_message(SPAN_XENOWARNING("Мы слышим, как начинает отрываться [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob] с отвратительным хрустом костей!"), // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENOWARNING("Мы слышим, как начинает отрываться [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob.declent_ru(GENITIVE)] с отвратительным хрустом костей!"), // SS220 EDIT ADDICTION
 		SPAN_XENOWARNING("[capitalize(declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name))] [mob] начинает отрываться с приятным хрустом костей!")) // SS220 EDIT ADDICTION
 		limb.take_damage(rand(15,25), 0, 0)
 		limb.fracture(100)
@@ -249,13 +249,13 @@
 		return FALSE
 
 	if(mob.status_flags & XENO_HOST)
-		to_chat(src, SPAN_NOTICE("Мы чувствуем маленького ксеноморфа внутри хоста [mob], не стоит причинять ему боль.")) // SS220 EDIT ADDICTION
+		to_chat(src, SPAN_NOTICE("Мы чувствуем маленького ксеноморфа внутри [mob.declent_ru(GENITIVE)], не стоит причинять им боль.")) // SS220 EDIT ADDICTION
 		return FALSE
 
 	if(limb.status & LIMB_DESTROYED)
 		return FALSE
 
-	visible_message(SPAN_XENOWARNING("[declent_ru()] отрывает [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob] от тела!"), // SS220 EDIT ADDICTION
+	visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] отрывает [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob.declent_ru(GENITIVE)] от тела!"), // SS220 EDIT ADDICTION
 	SPAN_XENOWARNING("[capitalize(declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name))] [mob] отрывается от тела!")) // SS220 EDIT ADDICTION
 	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 2/2 progress</font>")
 	mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [limb.display_name] ripped off by [src.name] ([src.ckey]) 2/2 progress</font>")
@@ -270,7 +270,7 @@
 
 	if (!action_cooldown_check())
 		if(twitch_message_cooldown < world.time )
-			lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user] пытается безуспешно схватить цель."), SPAN_XENOWARNING("Мы безуспешно пытаемся схватить цель, из-за нехватки сил. Подождите немного, прежде чем попробовать снова.")) // SS220 EDIT ADDICTION
+			lunge_user.visible_message(SPAN_XENOWARNING("[capitalize(lunge_user.declent_ru(NOMINATIVE))] пытается безуспешно схватить цель."), SPAN_XENOWARNING("Мы безуспешно пытаемся схватить цель, из-за нехватки сил. Подождите немного, прежде чем попробовать снова.")) // SS220 EDIT ADDICTION
 			twitch_message_cooldown = world.time + 5 SECONDS
 		return //this gives a little feedback on why your lunge didn't hit other than the lunge button going grey. Plus, it might spook marines that almost got lunged if they know why the message appeared, and extra spookiness is always good.
 
@@ -298,7 +298,7 @@
 	apply_cooldown()
 	..()
 
-	lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user] наносит удар по [carbon]!"), SPAN_XENOWARNING("Мы наносим удар по [carbon]!")) // SS220 EDIT ADDICTION
+	lunge_user.visible_message(SPAN_XENOWARNING("[capitalize(lunge_user.declent_ru(NOMINATIVE))] наносит удар по [carbon.declent_ru(DATIVE)]!"), SPAN_XENOWARNING("Мы наносим удар по [carbon.declent_ru(DATIVE)]!")) // SS220 EDIT ADDICTION
 
 	lunge_user.throw_atom(get_step_towards(affected_atom, lunge_user), grab_range, SPEED_FAST, lunge_user, tracking=TRUE)
 
@@ -307,7 +307,7 @@
 		if(ishuman(carbon))
 			INVOKE_ASYNC(carbon, TYPE_PROC_REF(/mob, emote), "scream")
 	else
-		lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user] пытается безуспешно схватить цель."), SPAN_XENOWARNING("Мы безуспешно пытаемся схватить цель, из-за нехватки сил. Подождите немного, прежде чем попробовать снова.")) // SS220 EDIT ADDICTION
+		lunge_user.visible_message(SPAN_XENOWARNING("[capitalize(lunge_user.declent_ru(NOMINATIVE))] пытается безуспешно схватить цель."), SPAN_XENOWARNING("Мы безуспешно пытаемся схватить цель, из-за нехватки сил. Подождите немного, прежде чем попробовать снова.")) // SS220 EDIT ADDICTION
 
 	return TRUE
 

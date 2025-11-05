@@ -60,13 +60,13 @@
 						cell = C
 						C.add_fingerprint(usr)
 
-						user.visible_message(SPAN_NOTICE("[user] inserts a power cell into [src]."), SPAN_NOTICE("You insert the power cell into [src]."))
+						user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] inserts a power cell into [src]."), SPAN_NOTICE("You insert the power cell into [src]."))
 		else
 			to_chat(user, "The hatch must be open to insert a power cell.")
 			return
 	else if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		open = !open
-		user.visible_message(SPAN_NOTICE("[user] [open ? "opens" : "closes"] the hatch on [src]."), SPAN_NOTICE("You [open ? "open" : "close"] the hatch on [src]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] [open ? "opens" : "closes"] the hatch on [src]."), SPAN_NOTICE("You [open ? "open" : "close"] the hatch on [src]."))
 		update_icon()
 		if(!open && user.interactee == src)
 			close_browser(user, "spaceheater")
@@ -107,7 +107,7 @@
 			start_processing()
 		else
 			stop_processing()
-		user.visible_message(SPAN_NOTICE("[user] switches [on ? "on" : "off"] [src]."),SPAN_NOTICE("You switch [on ? "on" : "off"] [src]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] switches [on ? "on" : "off"] [src]."),SPAN_NOTICE("You switch [on ? "on" : "off"] [src]."))
 		update_icon()
 	return
 

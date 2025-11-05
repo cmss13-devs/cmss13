@@ -46,7 +46,7 @@
 			return
 	if(src.dat)
 		show_browser(user, "<body class='paper'><TT><I>Автор: [author].</I></TT> <BR>[dat]</body>","[title]", "window=book", width = 800, height = 600) //SS220 -EDIT TRANSLATE
-		user.visible_message("[user] открывает \"[src.title]\".")
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] открывает \"[src.title]\".")
 		onclose(user, "book")
 	else
 		to_chat(user, "Эта книга абсолютно пуста!") //SS220 -EDIT TRANSLATE

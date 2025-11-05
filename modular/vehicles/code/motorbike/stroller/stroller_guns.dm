@@ -81,12 +81,12 @@
 	if(!mounted)
 		return
 	if(user != buckled_mob)
-		. += SPAN_NOTICE("На [name] установлен [mounted.name].")
+		. += SPAN_NOTICE("На [declent_ru(INSTRUMENTAL)] имеется [mounted.declent_ru(ACCUSATIVE)].")
 		return
 	if(isxeno(user))
 		. += SPAN_WARNING("Вы видите установленную огнепалку на этой железяке...")
 		return
-	. += SPAN_NOTICE("В [mounted.name] боекомплект [mounted.rounds]/[mounted.rounds_max]")
+	. += SPAN_NOTICE("В [mounted.declent_ru(INSTRUMENTAL)] боекомплект [mounted.rounds]/[mounted.rounds_max]")
 
 /obj/structure/bed/chair/stroller/attackby(obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
@@ -115,7 +115,7 @@
 
 // Сборка
 /obj/structure/bed/chair/stroller/proc/assembly(obj/item/O, mob/user)
-	to_chat(user, "Вы устанавливаете [mounted] на коляску...")
+	to_chat(user, "Вы устанавливаете [mounted.declent_ru(ACCUSATIVE)] на [declent_ru(ACCUSATIVE)]...")
 	if(!do_after(user, mounted_time_to_assembly * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return FALSE
 
@@ -125,7 +125,7 @@
 		//var/obj/structure/machinery/m56d_post/post = new(src)
 		var/obj/item/device/m56d_gun/D = O
 		if(D.has_mount)
-			to_chat(user, SPAN_NOTICE("Вы отсоединили станок от [D.name]."))
+			to_chat(user, SPAN_NOTICE("Вы отсоединяете станок от [D.declent_ru(GENITIVE)]."))
 			new /obj/item/device/m56d_post(user.loc)
 		var/obj/structure/machinery/m56d_hmg/low/G = new(src)
 		mounted = G
@@ -145,7 +145,7 @@
 		mounted.health = O.health // retain damage
 		mounted.anchored = TRUE
 		O.transfer_label_component(mounted)
-		to_chat(user, SPAN_NOTICE("Вы установили [mounted.name] на коляску."))
+		to_chat(user, SPAN_NOTICE("Вы устанавливаете [mounted.declent_ru(ACCUSATIVE)] на [declent_ru(ACCUSATIVE)]."))
 		update_overlay()
 		update_mob_gun_signal() // вдруг уже кто-то сидит
 		update_bike_permutated() // Не хотим чтобы он застрелил того кто сидит
@@ -156,13 +156,13 @@
 	if(!mounted)
 		return FALSE
 	if(mounted.locked)
-		to_chat(user, "Установленное [mounted.name] невозможно отсоединить...")
+		to_chat(user, "Не получается отсоединить [mounted.declent_ru(ACCUSATIVE)]...")
 		return FALSE
-	to_chat(user, "Вы отсоединяете [mounted.name] на коляске...")
+	to_chat(user, "Вы начинаете отсоединять [mounted.declent_ru(ACCUSATIVE)] от [declent_ru(GENITIVE)]...")
 	if(!do_after(user, mounted_time_to_disassembly * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		to_chat(user, SPAN_DANGER("Вы прекратили отсоединение [mounted.name] на коляске."))
+		to_chat(user, SPAN_DANGER("Вы прекратили отсоединять [mounted.declent_ru(ACCUSATIVE)] от [declent_ru(GENITIVE)]."))
 		return FALSE
-	user.visible_message(SPAN_NOTICE("[user] отсоединил [mounted.name] от [src.name]!"), SPAN_NOTICE("Вы отсоединили [mounted.name] от [src.name]!"))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] отсоединяет [mounted.declent_ru(ACCUSATIVE)] от [declent_ru(GENITIVE)]!"), SPAN_NOTICE("Вы отсоединили [mounted.name] от [src.name]!"))
 	playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 
 	var/obj/item/device/m56d_gun/HMG = new mounted_type(loc)
@@ -180,7 +180,7 @@
 // Перезарядка
 /obj/structure/bed/chair/stroller/proc/reload(obj/item/O, mob/user)
 	if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
-		to_chat(user, SPAN_WARNING("Вы недостаточно натренированы чтобы работать с этим калибром!"))
+		to_chat(user, SPAN_WARNING("Вы недостаточно натренированы, чтобы работать с этим калибром!"))
 		return
 	// Тыкаем магазином в них же и совершаем "перезарядку"
 	// Он должен тыканьем заполненного магазина менять магазин внутри.
@@ -233,7 +233,7 @@
 	user.setDir(dir)
 	user.reset_view(src)
 	user.status_flags |= IMMOBILE_ACTION
-	user.visible_message(SPAN_NOTICE("[user] mans [src]."), SPAN_NOTICE("You man [src], locked and loaded!"))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] mans [src]."), SPAN_NOTICE("You man [src], locked and loaded!"))
 
 	RegisterSignal(user, list(COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_LIVING_SET_BODY_POSITION), PROC_REF(exit_interaction))
 	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(start_fire))
@@ -251,7 +251,7 @@
 	user.setDir(dir) //set the direction of the player to the direction the gun is facing
 	user.reset_view(null)
 	user.status_flags &= ~IMMOBILE_ACTION
-	user.visible_message(SPAN_NOTICE("[user] lets go of [src]."), SPAN_NOTICE("You let go of [src], letting the gun rest."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] lets go of [src]."), SPAN_NOTICE("You let go of [src], letting the gun rest."))
 	user.remove_temp_pass_flags(PASS_MOB_THRU) // this is necessary because being knocked over while using the gun makes you incorporeal
 
 	SEND_SIGNAL(src, COMSIG_GUN_INTERRUPT_FIRE)

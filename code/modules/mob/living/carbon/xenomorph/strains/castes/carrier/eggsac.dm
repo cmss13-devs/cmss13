@@ -79,7 +79,7 @@
 		remove_egg_owner(my_egg)
 		my_egg.start_unstoppable_decay()
 
-	M.visible_message(SPAN_XENOWARNING("[M] мучается, когда яйценос превращается в кислотную кашу!")) // SS220 EDIT ADDICTION
+	M.visible_message(SPAN_XENOWARNING("[capitalize(M.declent_ru(NOMINATIVE))] мучается, когда яйценос превращается в кислотную кашу!")) // SS220 EDIT ADDICTION
 	playsound(M.loc, 'sound/effects/alien_egg_burst.ogg', 25, TRUE)
 
 ///Remove all references to src in eggs_sustained

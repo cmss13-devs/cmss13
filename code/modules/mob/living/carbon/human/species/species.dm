@@ -277,7 +277,7 @@
 				winner_text = "Победитель [H]!" // SS220 EDIT ADDICTION
 			else
 				winner_text = "Победитель [target]!" // SS220 EDIT ADDICTION
-		H.visible_message(SPAN_NOTICE("[H] выбрасывает <b>[protagonist_plays]</b>![winner_text]"), SPAN_NOTICE("Вы выбрасываете <b>«[protagonist_plays]»</b>! [winner_text]"), max_distance = 5)
+		H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] выбрасывает <b>[protagonist_plays]</b>![winner_text]"), SPAN_NOTICE("Вы выбрасываете <b>«[protagonist_plays]»</b>! [winner_text]"), max_distance = 5)
 		target.visible_message(SPAN_NOTICE("[target] выбрасывает <b>[antagonist_plays]</b>![winner_text]"), SPAN_NOTICE("Вы выбрасываете <b>«[antagonist_plays]»</b>! [winner_text]"), max_distance = 5)
 		playsound(target, "clownstep", 35, TRUE)
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(do_after), H, 8, INTERRUPT_NONE, play_to_emote[protagonist_plays])
@@ -294,7 +294,7 @@
 		return
 
 	H.visible_message(
-		SPAN_NOTICE("[H] вызывает [target] на игру в камень, ножницы, бумага!"), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] вызывает [target.declent_ru(ACCUSATIVE)] на игру в камень, ножницы, бумага!"), // SS220 EDIT ADDICTION
 		SPAN_NOTICE("Вы вызываете [target] на игру в камень, ножницы, бумага!"), null, 4) // SS220 EDIT ADDICTION
 	H.flags_emote |= EMOTING_ROCK_PAPER_SCISSORS
 	if(do_after(H, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_ROCK_PAPER_SCISSORS) && H.flags_emote & EMOTING_ROCK_PAPER_SCISSORS)
@@ -319,7 +319,7 @@
 		var/extra_quip = ""
 		if(prob(10))
 			extra_quip = pick("низом!", "верхом!") // SS220 EDIT ADDICTION
-		H.visible_message(SPAN_NOTICE("[H] даёт [target] пять [extra_quip]"), // SS220 EDIT ADDICTION
+		H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] даёт [target.declent_ru(DATIVE)] пять [extra_quip]"), // SS220 EDIT ADDICTION
 			SPAN_NOTICE("Вы даёте [target] пять [extra_quip]"), null, 4) // SS220 EDIT ADDICTION
 		playsound(target, 'sound/effects/snap.ogg', 25, 1)
 		H.animation_attack_on(target)
@@ -342,7 +342,7 @@
 	//		h_his = "her"
 	// SS220 END EDIT ADDICTION
 
-	H.visible_message(SPAN_NOTICE("[H] поднимает руку, чтобы дать пять [target]."), // SS220 EDIT ADDICTION
+	H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] поднимает руку, чтобы дать пять [target.declent_ru(DATIVE)]."), // SS220 EDIT ADDICTION
 		SPAN_NOTICE("Вы поднимаете руку, чтобы дать пять [target]."), null, 4) // SS220 EDIT ADDICTION
 	H.flags_emote |= EMOTING_HIGH_FIVE
 	if(do_after(H, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_HIGHFIVE) && H.flags_emote & EMOTING_HIGH_FIVE)
@@ -364,8 +364,8 @@
 			to_chat(H, SPAN_NOTICE("Слишком медленно!"))
 			return
 		target.flags_emote &= ~EMOTING_FIST_BUMP
-		H.visible_message(SPAN_NOTICE("[H] ударяет своим кулаком о кулак [target]!"), // SS220 EDIT ADDICTION
-			SPAN_NOTICE("Вы ударяете своим кулаком о кулак [target]!"), null, 4)  // SS220 EDIT ADDICTION
+		H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] ударяет своим кулаком о кулак [target.declent_ru(GENITIVE)]!"), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("Вы ударяете своим кулаком о кулак [target.declent_ru(GENITIVE)]!"), null, 4)  // SS220 EDIT ADDICTION
 		playsound(target, 'sound/effects/thud.ogg', 40, 1)
 		H.animation_attack_on(target)
 		target.animation_attack_on(H)
@@ -387,8 +387,8 @@
 	//		h_his = "her"
 	// SS220 END EDIT ADDICTION
 
-	H.visible_message(SPAN_NOTICE("[H] поднимает кулак, чтобы ударить кулаком о кулак [target]."), // SS220 EDIT ADDICTION
-		SPAN_NOTICE("Вы поднимаете кулак, чтобы ударить кулаком о кулак [target]."), null, 4) // SS220 EDIT ADDICTION
+	H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] поднимает кулак, чтобы ударить кулаком о кулак [target.declent_ru(GENITIVE)]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("Вы поднимаете кулак, чтобы ударить кулаком о кулак [target.declent_ru(GENITIVE)]."), null, 4) // SS220 EDIT ADDICTION
 	H.flags_emote |= EMOTING_FIST_BUMP
 	if(do_after(H, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_FISTBUMP) && H.flags_emote & EMOTING_FIST_BUMP)
 		to_chat(H, SPAN_NOTICE("Вам не ответили взаимностью!"))

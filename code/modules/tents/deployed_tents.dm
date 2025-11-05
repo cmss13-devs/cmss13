@@ -103,7 +103,7 @@
 	health -= rand(M.melee_damage_lower, M.melee_damage_upper)
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
 
-	M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"),
+	M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] [ru_attack_verb(M.slashes_verb)] [declent_ru(ACCUSATIVE)]!"),
 	SPAN_DANGER("You [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 	if(health <= 0)
@@ -116,13 +116,13 @@
 	var/obj/item/tool/shovel/shovel = item
 	if(!istype(shovel) || shovel.folded || user.action_busy)
 		return
-	visible_message(SPAN_HIGHDANGER("[user] is trying to tear down [src]"))
+	visible_message(SPAN_HIGHDANGER("[capitalize(user.declent_ru(NOMINATIVE))] is trying to tear down [src]"))
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
 
 	if(!do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, src) || QDELETED(src))
 		return
 
-	visible_message(SPAN_HIGHDANGER("[user] tears down [src]"))
+	visible_message(SPAN_HIGHDANGER("[capitalize(user.declent_ru(NOMINATIVE))] tears down [src]"))
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
 	qdel(src)
 

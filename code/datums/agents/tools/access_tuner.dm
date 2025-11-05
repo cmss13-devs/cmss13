@@ -1,7 +1,7 @@
 /obj/item/device/multitool/antag
 	hack_speed = 1 SECONDS
 
-#define SHOW_HACK_MESSAGE user.visible_message(SPAN_DANGER("[user] hacks [target]."), SPAN_NOTICE("You hack [target]."))
+#define SHOW_HACK_MESSAGE user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] hacks [target]."), SPAN_NOTICE("You hack [target]."))
 
 /obj/item/device/multitool/antag/afterattack(atom/target, mob/user, flag)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
@@ -13,13 +13,13 @@
 		if(!D.density || D.unacidable)
 			return . = ..()
 
-		user.visible_message(SPAN_DANGER("[user] begins to hack open [target]!"), SPAN_NOTICE("You start to hack open [target]."))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] begins to hack open [target]!"), SPAN_NOTICE("You start to hack open [target]."))
 
 		if(!do_after(user, hack_speed, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target, INTERRUPT_ALL))
 			to_chat(user, SPAN_WARNING("You decide not to hack [target]."))
 			return
 
-		user.visible_message(SPAN_DANGER("[user] hacks open [target]."), SPAN_NOTICE("You hack open [target]."))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] hacks open [target]."), SPAN_NOTICE("You hack open [target]."))
 
 		D.unlock()
 		D.open()

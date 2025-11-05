@@ -208,10 +208,10 @@
 	set waitfor = 0
 	playsound(user, spin_sound, 25, 1)
 	if(double)
-		user.visible_message("[user] deftly flicks and spins [src] and [double]!", SPAN_NOTICE("You flick and spin [src] and [double]!"),  null, 3)
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] deftly flicks and spins [src] and [double]!", SPAN_NOTICE("You flick and spin [src] and [double]!"),  null, 3)
 		animation_wrist_flick(double, 1)
 	else
-		user.visible_message("[user] deftly flicks and spins [src]!",SPAN_NOTICE("You flick and spin [src]!"),  null, 3)
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] deftly flicks and spins [src]!",SPAN_NOTICE("You flick and spin [src]!"),  null, 3)
 
 	animation_wrist_flick(src, direction)
 	sleep(3)
@@ -220,7 +220,7 @@
 
 /obj/item/weapon/gun/revolver/proc/revolver_throw_catch(mob/living/carbon/human/user)
 	set waitfor = 0
-	user.visible_message("[user] deftly flicks [src] and tosses it into the air!", SPAN_NOTICE("You flick and toss [src] into the air!"), null, 3)
+	user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] deftly flicks [src] and tosses it into the air!", SPAN_NOTICE("You flick and toss [src] into the air!"), null, 3)
 	var/img_layer = MOB_LAYER+0.1
 	var/image/trick = image(icon,user,icon_state,img_layer)
 	switch(pick(1,2))
@@ -247,9 +247,9 @@
 	if(loc && user)
 		playsound(user, thud_sound, 25, 1)
 		if(user.get_inactive_hand())
-			user.visible_message("[user] catches [src] with the same hand!", SPAN_NOTICE("You catch [src] as it spins in to your hand!"), null, 3)
+			user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] catches [src] with the same hand!", SPAN_NOTICE("You catch [src] as it spins in to your hand!"), null, 3)
 		else
-			user.visible_message("[user] catches [src] with \his other hand!", SPAN_NOTICE("You snatch [src] with your other hand! Awesome!"), null, 3)
+			user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] catches [src] with \his other hand!", SPAN_NOTICE("You snatch [src] with your other hand! Awesome!"), null, 3)
 			user.temp_drop_inv_item(src)
 			user.put_in_inactive_hand(src)
 			user.swap_hand()
@@ -651,7 +651,7 @@
 	if(istype(I, /obj/item/weapon/mateba_key) && can_change_barrel)
 		if(attachments["special"])
 			var/obj/item/attachable/R = attachments["special"]
-			visible_message(SPAN_NOTICE("[user] begins stripping [R] from [src]."),
+			visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins stripping [R] from [src]."),
 			SPAN_NOTICE("You begin stripping [R] from [src]."), null, 4)
 
 			if(!do_after(usr, 35, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
@@ -660,7 +660,7 @@
 			if(!(R == attachments[R.slot]))
 				return
 
-			visible_message(SPAN_NOTICE("[user] unlocks and removes [R] from [src]."),
+			visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] unlocks and removes [R] from [src]."),
 			SPAN_NOTICE("You unlocks removes [R] from [src]."), null, 4)
 			R.Detach(user, src)
 			if(attachments["muzzle"])

@@ -151,13 +151,13 @@
 
 	being_restocked = TRUE
 
-	user.visible_message(SPAN_NOTICE("[user] starts stocking a bunch of supplies into \the [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts stocking a bunch of supplies into \the [src]."),
 	SPAN_NOTICE("You start stocking a bunch of supplies into \the [src]."))
 
 	//done this way because for obj in range creates a list and goes through list even if items themselves being picked up or moved.
 	while(being_restocked)
 		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
-			user.visible_message(SPAN_NOTICE("[user] stopped stocking \the [src] with supplies."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] stopped stocking \the [src] with supplies."),
 			SPAN_NOTICE("You stop stocking \the [src] with supplies."))
 			being_restocked = FALSE
 			return
@@ -168,7 +168,7 @@
 				being_restocked = TRUE
 				break
 
-	user.visible_message(SPAN_NOTICE("[user] finishes stocking \the [src] with supplies."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes stocking \the [src] with supplies."),
 	SPAN_NOTICE("You finish stocking \the [src] with supplies."))
 	return
 
@@ -375,7 +375,7 @@
 				qdel(item_to_stock)
 
 			if(user)
-				user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [R[1]]."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] stocks \the [src] with \a [R[1]]."),
 				SPAN_NOTICE("You stock \the [src] with \a [R[1]]."))
 
 			updateUsrDialog()

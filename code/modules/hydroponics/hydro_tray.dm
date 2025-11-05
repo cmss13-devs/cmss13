@@ -531,7 +531,7 @@
 	else if (istype(O, /obj/item/tool/minihoe))  // The minihoe
 
 		if(weedlevel > 0)
-			user.visible_message(SPAN_DANGER("[user] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from [src]."))
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from [src]."))
 			weedlevel = 0
 			update_icon()
 		else
@@ -540,7 +540,7 @@
 	else if (istype(O, /obj/item/tool/shovel/spade))
 		if(isnull(seed))
 			return
-		user.visible_message(SPAN_DANGER("[user] starts to uproot the plant."), SPAN_DANGER("You begin removing plant from [src]..."))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] starts to uproot the plant."), SPAN_DANGER("You begin removing plant from [src]..."))
 		if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY))
 			return
 		to_chat(user, SPAN_NOTICE("You remove the plant from [src]."))
@@ -607,27 +607,27 @@
 
 	var/obj/item/held_item = user.get_active_hand()
 	if(!held_item)
-		user.visible_message(SPAN_NOTICE("[user] runs their hand along \the [src]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] runs their hand along \the [src]."))
 		return TRUE
 
 	// Check if it's a reagent container
 	var/obj/item/reagent_container/RG = held_item
 	if(!istype(RG))
-		user.visible_message(SPAN_NOTICE("[user] taps \the [held_item] against \the [src]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] taps \the [held_item] against \the [src]."))
 		return TRUE
 
 	if(!RG.is_open_container() || !RG.reagents || RG.reagents.total_volume <= 0)
-		user.visible_message(SPAN_WARNING("[user] tries to pour \the [RG] into \the [src], but it's empty or sealed."))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] tries to pour \the [RG] into \the [src], but it's empty or sealed."))
 		return TRUE
 
 	var/available_space = reagents.maximum_volume - reagents.total_volume
 	if(available_space <= 0)
-		user.visible_message(SPAN_WARNING("[user] tries to pour \the [RG] into \the [src], but it's completely full."))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] tries to pour \the [RG] into \the [src], but it's completely full."))
 		return TRUE
 
 	var/transfer_amount = min(RG.reagents.total_volume, available_space)
 	RG.reagents.trans_to(src, transfer_amount)
-	user.visible_message(SPAN_NOTICE("[user] pours \the [RG] into \the [src]."), SPAN_NOTICE("You pour \the [RG] into \the [src]."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] pours \the [RG] into \the [src]."), SPAN_NOTICE("You pour \the [RG] into \the [src]."))
 
 	if(transfer_amount < RG.reagents.total_volume)
 		to_chat(user, SPAN_WARNING("The hydroponics tray is full."))

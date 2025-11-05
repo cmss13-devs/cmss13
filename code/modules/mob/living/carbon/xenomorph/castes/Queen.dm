@@ -209,7 +209,7 @@
 
 		next_point = world.time + point_delay
 
-		var/message = SPAN_XENONOTICE("<b>[declent_ru_initial(Q::name, ACCUSATIVE, Q::name)]</b> указывает на [declent_ru_initial(A::name, ACCUSATIVE, A::name)].") // SS220 EDIT ADDICTION
+		var/message = SPAN_XENONOTICE("<b>[capitalize(Q.declent_ru(NOMINATIVE))]</b> указывает на [A.declent_ru(ACCUSATIVE)].") // SS220 EDIT ADDICTION
 
 		to_chat(Q, message)
 		for(var/mob/living/carbon/xenomorph/X in viewers(7, src))
@@ -1040,8 +1040,8 @@
 	if(!check_plasma(200))
 		return FALSE
 
-	visible_message(SPAN_XENOWARNING("[declent_ru()] начинает медленно поднимать [victim] в воздух."), // SS220 EDIT ADDICTION
-	SPAN_XENOWARNING("Вы начинаете сосредотачивать свою ярость, медленно поднимая [victim] в воздух.")) // SS220 EDIT ADDICTION
+	visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] начинает медленно поднимать [victim.declent_ru(ACCUSATIVE)] в воздух."), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Вы начинаете сосредотачивать свою ярость, медленно поднимая [victim.declent_ru(ACCUSATIVE)] в воздух.")) // SS220 EDIT ADDICTION
 	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 		if(!victim)
 			return FALSE
@@ -1052,8 +1052,8 @@
 
 		use_plasma(200)
 
-		visible_message(SPAN_XENODANGER("[declent_ru()] яростно разбивает и разрывает [victim] на части!"), // SS220 EDIT ADDICTION
-		SPAN_XENODANGER("Вы внезапно выпускаете чистую ярость на [victim], мгновенно разрывая его на части!")) // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENODANGER("[capitalize(declent_ru(NOMINATIVE))] яростно разбивает и разрывает [victim.declent_ru(ACCUSATIVE)] на части!"), // SS220 EDIT ADDICTION
+		SPAN_XENODANGER("Вы внезапно выпускаете чистую ярость на [victim.declent_ru(ACCUSATIVE)], мгновенно разрывая его на части!")) // SS220 EDIT ADDICTION
 		emote("roar")
 
 		attack_log += text("\[[time_stamp()]\] <font color='red'>gibbed [key_name(victim)]</font>")
@@ -1234,7 +1234,7 @@
 	var/obj/effect/overlay/temp/point/big/greyscale/point = new(target_turf, src, target_atom)
 	point.color = "#a800a8"
 
-	visible_message(SPAN_XENOQUEEN("<b>[declent_ru()]</b> указывает на [target_atom.declent_ru(ACCUSATIVE)]"), null, null, 5) // SS220 EDIT ADDICTION
+	visible_message(SPAN_XENOQUEEN("<b>[capitalize(declent_ru(NOMINATIVE))]</b> указывает на [target_atom.declent_ru(ACCUSATIVE)]."), null, null, 5) // SS220 EDIT ADDICTION
 
 #undef XENO_QUEEN_AGE_TIME
 #undef XENO_QUEEN_TEMP_AGE_DURATION

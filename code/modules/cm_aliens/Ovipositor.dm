@@ -85,7 +85,7 @@
 	return XENO_ATTACK_ACTION
 
 /obj/ovipositor/attack_larva(mob/living/carbon/xenomorph/larva/M)
-	M.visible_message(SPAN_DANGER("[M] nudges its head against [src]."),
+	M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] nudges its head against [src]."),
 	SPAN_DANGER("You nudge your head against [src]."))
 
 // Density override

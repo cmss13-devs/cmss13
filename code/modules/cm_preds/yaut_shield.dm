@@ -48,7 +48,7 @@
 /obj/item/weapon/shield/riot/yautja/attackby(obj/item/attacking_item, mob/user)
 	if(cooldown < world.time - 25)
 		if(istype(attacking_item, /obj/item/weapon) && (attacking_item.flags_item & ITEM_PREDATOR))
-			user.visible_message(SPAN_WARNING("[user] bashes [src] with [attacking_item]!"))
+			user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] [ru_attack_verb("bashes")] [declent_ru(ACCUSATIVE)] [attacking_item.declent_ru(INSTRUMENTAL)]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			cooldown = world.time
 	else

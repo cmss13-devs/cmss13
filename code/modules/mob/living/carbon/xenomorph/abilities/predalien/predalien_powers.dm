@@ -11,7 +11,7 @@
 		return
 
 	playsound(xeno.loc, pick(predalien_roar), 75, 0, status = 0)
-	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] издаёт гортанный рёв!")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] издаёт гортанный рёв!")) // SS220 EDIT ADDICTION
 	xeno.create_shriekwave(7) //Adds the visual effect. Wom wom wom, 7 shriekwaves
 	FOR_DVIEW(var/mob/living/carbon/carbon, 7, xeno, HIDE_INVISIBLE_OBSERVER)
 		if(ishuman(carbon))
@@ -45,7 +45,7 @@
 	if(!istype(predalienbehavior))
 		return
 	if(targeting == AOETARGETGUT)
-		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] начинает вскапывать землю, готовясь к мощному удару!"), SPAN_XENOHIGHDANGER("Мы начинаем вскапывать землю, готовясь к мощному удару!")) // SS220 EDIT ADDICTION
+		xeno.visible_message(SPAN_XENOHIGHDANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] начинает вскапывать землю, готовясь к мощному удару!"), SPAN_XENOHIGHDANGER("Мы начинаем вскапывать землю, готовясь к мощному удару!")) // SS220 EDIT ADDICTION
 		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
 		xeno.anchored = TRUE
 		if (do_after(xeno, (activation_delay_aoe), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
@@ -62,7 +62,7 @@
 				if(!check_clear_path_to_target(xeno, carbon))
 					continue
 
-				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] разрывает внутренности [carbon]!"), SPAN_XENOHIGHDANGER("Мы разрываем внутренности [carbon]!")) // SS220 EDIT ADDICTION
+				xeno.visible_message(SPAN_XENOHIGHDANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] разрывает внутренности [carbon.declent_ru(GENITIVE)]!"), SPAN_XENOHIGHDANGER("Мы разрываем внутренности [carbon.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 				carbon.spawn_gibs()
 				xeno.animation_attack_on(carbon)
 				xeno.spin_circle()
@@ -86,13 +86,13 @@
 		return
 
 	if(get_dist_sqrd(target, xeno) > 2)
-		to_chat(xeno, SPAN_XENOWARNING("[target] слишком далеко!")) // SS220 EDIT ADDICTION
+		to_chat(xeno, SPAN_XENOWARNING("[capitalize(target.declent_ru(NOMINATIVE))] слишком далеко!")) // SS220 EDIT ADDICTION
 		return
 
 	var/mob/living/carbon/carbon = target
 
 	if(carbon.stat == DEAD)
-		to_chat(xeno, SPAN_XENOWARNING("[carbon] мёртв, зачем нам его трогать?")) // SS220 EDIT ADDICTION
+		to_chat(xeno, SPAN_XENOWARNING("[capitalize(carbon.declent_ru(NOMINATIVE))] мертво, зачем нам это трогать?")) // SS220 EDIT ADDICTION
 		return
 	if(targeting == SINGLETARGETGUT) // single target
 		ADD_TRAIT(carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Devastate"))
@@ -102,7 +102,7 @@
 		xeno.anchored = TRUE
 
 		if(do_after(xeno, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-			xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] разрывает внутренности [carbon]!"), SPAN_XENOHIGHDANGER("Мы разрываем внутренности [carbon]!")) // SS220 EDIT ADDICTION
+			xeno.visible_message(SPAN_XENOHIGHDANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] разрывает внутренности [carbon.declent_ru(GENITIVE)]!"), SPAN_XENOHIGHDANGER("Мы разрываем внутренности [carbon.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 			carbon.spawn_gibs()
 			playsound(get_turf(carbon), 'sound/effects/gibbed.ogg', 50, 1)
 			carbon.apply_effect(get_xeno_stun_duration(carbon, 0.5), WEAKEN)
@@ -205,7 +205,7 @@
 
 	if(!action_cooldown_check())
 		if(twitch_message_cooldown < world.time )
-			predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash] пытается безуспешно схватить цель."), SPAN_XENOWARNING("Мы безуспешно пытаемся схватить цель, из-за нехватки сил. Подождите немного, прежде чем попробовать снова.")) // SS220 EDIT ADDICTION
+			predalien_smash.visible_message(SPAN_XENOWARNING("[capitalize(predalien_smash.declent_ru(NOMINATIVE))] пытается безуспешно схватить цель."), SPAN_XENOWARNING("Мы безуспешно пытаемся схватить цель, из-за нехватки сил. Подождите немного, прежде чем попробовать снова.")) // SS220 EDIT ADDICTION
 			twitch_message_cooldown = world.time + 5 SECONDS
 		return //this gives a little feedback on why your lunge didn't hit other than the lunge button going grey. Plus, it might spook marines that almost got lunged if they know why the message appeared, and extra spookiness is always good.
 
@@ -247,7 +247,7 @@
 		animate(carbon, pixel_y = 0, time = 4, easing = BOUNCE_EASING) //animates the smash
 		carbon.apply_armoured_damage(get_xeno_damage_slash(carbon, smash_damage + smash_scale * predalienbehavior.kills), ARMOR_MELEE, BRUTE, "chest", 20)
 	else
-		predalien_smash.visible_message(SPAN_XENOWARNING("[predalien_smash] пытается безуспешно схватить цель."), SPAN_XENOWARNING("Мы безуспешно пытаемся схватить цель, из-за нехватки сил. Подождите немного, прежде чем попробовать снова.")) // SS220 EDIT ADDICTION
+		predalien_smash.visible_message(SPAN_XENOWARNING("[capitalize(predalien_smash.declent_ru(NOMINATIVE))] пытается безуспешно схватить цель."), SPAN_XENOWARNING("Мы безуспешно пытаемся схватить цель, из-за нехватки сил. Подождите немного, прежде чем попробовать снова.")) // SS220 EDIT ADDICTION
 
 	return ..()
 
@@ -278,8 +278,8 @@
 				return
 
 		if(should_neckgrab && living_mob.mob_size < MOB_SIZE_BIG)
-			visible_message(SPAN_XENOWARNING("[declent_ru()] хватает [living_mob] за ногу и швыряет на землю!"), // SS220 EDIT ADDICTION
-			SPAN_XENOWARNING("Мы хватаем [living_mob] за ногу и швыряем на землю!")) // more flair // SS220 EDIT ADDICTION
+			visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] хватает [living_mob.declent_ru(ACCUSATIVE)] за ногу и швыряет на землю!"), // SS220 EDIT ADDICTION
+			SPAN_XENOWARNING("Мы хватаем [living_mob.declent_ru(ACCUSATIVE)] за ногу и швыряем на землю!")) // more flair // SS220 EDIT ADDICTION
 			smashing = TRUE
 			living_mob.drop_held_items()
 			var/duration = get_xeno_stun_duration(living_mob, 1)

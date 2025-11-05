@@ -612,7 +612,7 @@
 			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		var/xeno_name = xeno.declent_ru()
+		var/xeno_name = xeno.declent_ru(NOMINATIVE)
 		// goddamn fucking larvas with their weird ass maturing system
 		// its name updates with its icon, unlike other castes which only update the mature/elder, etc. prefix on evolve
 		if(istype(xeno, /mob/living/carbon/xenomorph/larva))
@@ -629,7 +629,7 @@
 	if(!C || C == hive_location)
 		return
 	var/area/A = get_area(C)
-	xeno_message(SPAN_XENOANNOUNCE("Королева назначила новое местоположение улья в [A]."), 3, hivenumber) // SS220 EDIT ADDICTION
+	xeno_message(SPAN_XENOANNOUNCE("Королева назначила новое местоположение улья в [A.declent_ru(PREPOSITIONAL)]."), 3, hivenumber) // SS220 EDIT ADDICTION
 	hive_location = C
 	hive_ui.update_hive_location()
 
@@ -1380,7 +1380,7 @@
 	banned_allies = FACTION_LIST_XENOMORPH
 
 /datum/hive_status/corrupted/renegade/can_spawn_as_hugger(mob/dead/observer/user)
-	to_chat(user, SPAN_WARNING("The [name] cannot support facehuggers."))
+	to_chat(user, SPAN_WARNING("[name] не может иметь лицехватов."))
 	return FALSE
 
 /datum/hive_status/corrupted/renegade/proc/iff_protection_check(mob/living/carbon/xenomorph/xeno, mob/living/carbon/attempt_harm_mob)
@@ -1442,10 +1442,10 @@
 		if(!target_hive.living_xeno_queen && !target_hive.allow_no_queen_actions)
 			return
 		if(allies[faction])
-			xeno_message(SPAN_XENOANNOUNCE("Мы чувствуем, что [living_xeno_queen ? "Королева " : ""] [name] заключила союз с нами!"), 3, target_hive.hivenumber) // SS220 EDIT ADDICTION
+			xeno_message(SPAN_XENOANNOUNCE("Мы чувствуем, что [name] заключает союз с нами[living_xeno_queen ? " волей их Королевы" : ""]!"), 3, target_hive.hivenumber) // SS220 EDIT ADDICTION
 			return
 
-		xeno_message(SPAN_XENOANNOUNCE("Мы чувствуем, что [living_xeno_queen ? "Королева " : ""] [name] разорвала союз с нами!"), 3, target_hive.hivenumber) // SS220 EDIT ADDICTION
+		xeno_message(SPAN_XENOANNOUNCE("Мы чувствуем, что [name] разрывает союз с нами[living_xeno_queen ? " волей их Королевы" : ""]!"), 3, target_hive.hivenumber) // SS220 EDIT ADDICTION
 		if(target_hive.allies[name]) //autobreak alliance on betrayal
 			target_hive.change_stance(name, FALSE)
 
@@ -1478,7 +1478,7 @@
 		to_chat(xeno, SPAN_XENOANNOUNCE("Вы потеряли связь с ульем. Теперь у вас нет Королевы, только ваши хозяева."))
 		to_chat(xeno, SPAN_NOTICE("Ваши инстинкты изменились, вы чувствуете необходимость защищать [english_list(xeno.iff_tag.faction_groups, "no one")].")) // SS220 EDIT ADDICTION
 		return
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] вырывает [xeno.iff_tag]!"), SPAN_XENOWARNING("Мы вырываем из своего тела [xeno.iff_tag]! Во имя улья!")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] вырывает [xeno.iff_tag.declent_ru(ACCUSATIVE)]!"), SPAN_XENOWARNING("Мы вырываем из своего тела [xeno.iff_tag]! Во имя улья!")) // SS220 EDIT ADDICTION
 	xeno.adjustBruteLoss(50)
 	xeno.iff_tag.forceMove(get_turf(xeno))
 	xeno.iff_tag = null
@@ -1491,7 +1491,7 @@
 			continue
 		if(!(faction in xeno.iff_tag.faction_groups))
 			continue
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] вырывает [xeno.iff_tag]!"), SPAN_XENOWARNING("Мы вырываем из своего тела [xeno.iff_tag]! Во имя улья!")) // SS220 EDIT ADDICTION
+		xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] вырывает [xeno.iff_tag.declent_ru(ACCUSATIVE)]!"), SPAN_XENOWARNING("Мы вырываем из своего тела [xeno.iff_tag]! Во имя улья!")) // SS220 EDIT ADDICTION
 		xeno.adjustBruteLoss(50)
 		xeno.iff_tag.forceMove(get_turf(xeno))
 		xeno.iff_tag = null

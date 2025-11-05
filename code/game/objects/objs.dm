@@ -268,13 +268,13 @@
 			var/ru_name = declent_ru(GENITIVE) // SS220 EDIT ADDICTION
 			if(buckled_mob == user)
 				buckled_mob.visible_message(
-					SPAN_NOTICE("[buckled_mob.name] отстёгивается!"), // SS220 EDIT ADDICTION
+					SPAN_NOTICE("[capitalize(buckled_mob.declent_ru(NOMINATIVE))] отстёгивается!"), // SS220 EDIT ADDICTION
 					SPAN_NOTICE("Вы отстёгиваетесь от [ru_name]."), // SS220 EDIT ADDICTION
 					SPAN_NOTICE("Вы слышите металлический щелчок."))
 			else
 				buckled_mob.visible_message(
-					SPAN_NOTICE("[user] отстёгивает [buckled_mob.name] от [ru_name]."), // SS220 EDIT ADDICTION
-					SPAN_NOTICE("[user] отстёгивает вас от [ru_name]."), // SS220 EDIT ADDICTION
+					SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] отстёгивает [buckled_mob.declent_ru(ACCUSATIVE)] от [ru_name]."), // SS220 EDIT ADDICTION
+					SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] отстёгивает вас от [ru_name]."), // SS220 EDIT ADDICTION
 					SPAN_NOTICE("Вы слышите металлический щелчок."))
 			unbuckle(buckled_mob)
 			add_fingerprint(user)
@@ -318,10 +318,10 @@
 		if(istype(src, /obj/structure/bed/roller))
 			var/obj/structure/bed/roller/roller = src
 			if(!roller.can_carry_big)
-				to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
+				to_chat(user, SPAN_WARNING("[capitalize(M.declent_ru(NOMINATIVE))] is too big to buckle in."))
 				return
 			if(M.stat != DEAD)
-				to_chat(user, SPAN_WARNING("[M] resists your attempt to buckle!"))
+				to_chat(user, SPAN_WARNING("[capitalize(M.declent_ru(NOMINATIVE))] resists your attempt to buckle!"))
 				return
 		if(M.stat != DEAD)
 			return
@@ -345,13 +345,13 @@
 	var/ru_name = declent_ru(DATIVE) // SS220 EDIT ADDICTION
 	if (M == user)
 		M.visible_message(
-			SPAN_NOTICE("[M] пристёгивается!"), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(M.declent_ru(NOMINATIVE))] пристёгивается!"), // SS220 EDIT ADDICTION
 			SPAN_NOTICE("Вы пристёгиваетесь к [ru_name]."), // SS220 EDIT ADDICTION
 			SPAN_NOTICE("Вы слышите металлический щелчок."))
 	else
 		M.visible_message(
-			SPAN_NOTICE("[user] пристёгивает [M] к [ru_name]!"), // SS220 EDIT ADDICTION
-			SPAN_NOTICE("[user] пристёгивает вас к [ru_name]."),  // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] пристёгивает [M.declent_ru(ACCUSATIVE)] к [ru_name]!"), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] пристёгивает вас к [ru_name]."),  // SS220 EDIT ADDICTION
 			SPAN_NOTICE("Вы слышите металлический щелчок."))
 
 /obj/Move(NewLoc, direct)

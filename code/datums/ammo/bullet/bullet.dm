@@ -44,8 +44,8 @@
 /datum/ammo/bullet/proc/attempt_battlefield_execution(datum/ammo/firing_ammo, mob/living/carbon/human/execution_target, obj/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
 	user.affected_message(execution_target,
 		SPAN_HIGHDANGER("You aim \the [fired_from] at [execution_target]'s head!"),
-		SPAN_HIGHDANGER("[user] aims \the [fired_from] directly at your head!"),
-		SPAN_DANGER("[user] aims \the [fired_from] at [execution_target]'s head!"))
+		SPAN_HIGHDANGER("[capitalize(user.declent_ru(NOMINATIVE))] aims \the [fired_from] directly at your head!"),
+		SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] aims \the [fired_from] at [execution_target]'s head!"))
 
 	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
 

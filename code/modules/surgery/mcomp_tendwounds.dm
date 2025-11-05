@@ -51,13 +51,13 @@
 
 /datum/surgery_step/mstabilize_wounds/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] begins to stabilize wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to stabilize wounds on their body with [tool]."),
 		SPAN_HELPFUL("You begin to stabilize your wounds with [tool]."))
 	else
 		user.affected_message(target,
 		SPAN_HELPFUL("You begin to stabilize the wounds on [target]'s body with [tool]."),
-		SPAN_HELPFUL("[user] begins to stabilize the wounds on your body with [tool]."),
-		SPAN_NOTICE("[user] begins to stabilize the wounds on [target]'s body with [tool]."))
+		SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] begins to stabilize the wounds on your body with [tool]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to stabilize the wounds on [target]'s body with [tool]."))
 
 /datum/surgery_step/mstabilize_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(40,40)
@@ -70,13 +70,13 @@
 		target.emote("pain")
 
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] finishes stabilizing the wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes stabilizing the wounds on their body with [tool]."),
 			SPAN_HELPFUL("You finish stabilizing your wounds with [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You finish stabilizing [target]'s wounds with [tool]."),
-			SPAN_HELPFUL("[user] finished stabilizing your wounds with [tool]."),
-			SPAN_NOTICE("[user] finished treating [target]'s wounds with [tool]."))
+			SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] finished stabilizing your wounds with [tool]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finished treating [target]'s wounds with [tool]."))
 
 	log_interact(user, target, "[key_name(user)] stabilized some of [key_name(target)]'s wounds with [tool].")
 
@@ -104,13 +104,13 @@
 	playsound(target,'sound/misc/heal_gun.ogg',25)
 
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] begins to treat the stabilized wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to treat the stabilized wounds on their body with [tool]."),
 		SPAN_HELPFUL("You begin to treat your stabilized wounds with [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You begin to treat the stabilized wounds on [target]'s body with [tool]."),
-			SPAN_HELPFUL("[user] begins to treat the stabilized wounds on your body with [tool]."),
-			SPAN_NOTICE("[user] begins to treat the stabilized wounds on [target]'s body with [tool]."))
+			SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] begins to treat the stabilized wounds on your body with [tool]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to treat the stabilized wounds on [target]'s body with [tool]."))
 
 	target.custom_pain("It feels like your body is being stabbed with needles - because it is!")
 	log_interact(user, target, "[key_name(user)] began tending wounds on [key_name(target)] with [tool], starting [surgery].")
@@ -129,13 +129,13 @@
 		target.emote("pain")
 
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] finishes treating the stabilized wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes treating the stabilized wounds on their body with [tool]."),
 			SPAN_HELPFUL("You finish treating the stabilized wounds on your body with [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You finish treating [target]'s stabilized wounds with [tool]."),
-			SPAN_HELPFUL("[user] finished treating your stabilized wounds with [tool]."),
-			SPAN_NOTICE("[user] finished treating [target]'s stabilized wounds with [tool]."))
+			SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] finished treating your stabilized wounds with [tool]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finished treating [target]'s stabilized wounds with [tool]."))
 
 	if(!istype(tool, /obj/item/tool/surgery/healing_gun))
 		return
@@ -161,13 +161,13 @@
 
 /datum/surgery_step/cauterize/mclamp_wound/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] begins to close the treated wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to close the treated wounds on their body with [tool]."),
 			SPAN_HELPFUL("You begin to close your treated wounds with [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You begin to close the treated wounds on [target]'s body with [tool]."),
-			SPAN_HELPFUL("[user] begins to clamp the treated wounds on your body with [tool]."),
-			SPAN_NOTICE("[user] begns to clamp the treated wounds on [target]'s body with [tool]."))
+			SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] begins to clamp the treated wounds on your body with [tool]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begns to clamp the treated wounds on [target]'s body with [tool]."))
 
 /datum/surgery_step/cauterize/mclamp_wound/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(125,125) //makes sure that all damage is healed
@@ -175,13 +175,13 @@
 	target.SetSuperslow(0 SECONDS)
 
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finshes closing the treated wounds on their body with [tool]."),
 			SPAN_HELPFUL("You finish closing the treated wounds on your body with [tool]"))
 	else
 		user.affected_message(target,
 			SPAN_HELPFUL("You finish closing [target]'s treated wounds with [tool]."),
-			SPAN_HELPFUL("[user] finished closing your treated wounds with [tool]."),
-			SPAN_NOTICE("[user] finished closing [target]'s treated wounds with [tool]."))
+			SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] finished closing your treated wounds with [tool]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finished closing [target]'s treated wounds with [tool]."))
 
 	if(isyautja(target))
 		target.emote("loudroar")

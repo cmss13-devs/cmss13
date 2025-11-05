@@ -190,6 +190,6 @@
 	if(scanning)
 		playsound(loc, "alien_claw_metal", 25, 1)
 		xeno.animation_attack_on(src)
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] атакует [declent_ru()], отключая его!"), SPAN_XENONOTICE("Вы атакуете [declent_ru()], отключая его!")) // SS220 EDIT ADDICTION
+		xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] атакует [declent_ru(ACCUSATIVE)], отключая его!"), SPAN_XENONOTICE("Вы атакуете [declent_ru(ACCUSATIVE)], отключая его!")) // SS220 EDIT ADDICTION
 		toggle_scan()
 	return XENO_ATTACK_ACTION

@@ -42,7 +42,7 @@
 			var/turf/closed/wall/resin/wall = target
 
 			if(istype(target, /turf/closed/wall/resin/weak))
-				to_chat(src, SPAN_XENOWARNING("[capitalize(wall.declent_ru())] слишком хлипкая, чтобы её можно было укрепить.")) // SS220 EDIT ADDICTION
+				to_chat(src, SPAN_XENOWARNING("Хлипкость [wall.declent_ru(GENITIVE)] не позволяет укрепление.")) // SS220 EDIT ADDICTION
 				return SECRETE_RESIN_FAIL
 
 			for(var/datum/effects/xeno_structure_reinforcement/sf in wall.effects_list)
@@ -50,7 +50,7 @@
 				return SECRETE_RESIN_FAIL
 
 			if (wall.hivenumber != hivenumber)
-				to_chat(src, SPAN_XENOWARNING("[capitalize(wall.declent_ru())] не принадлежит вашему улью!")) // SS220 EDIT ADDICTION
+				to_chat(src, SPAN_XENOWARNING("[capitalize(wall.declent_ru(NOMINATIVE))] не принадлежит вашему улью!")) // SS220 EDIT ADDICTION
 				return SECRETE_RESIN_FAIL
 
 			if(wall.type == /turf/closed/wall/resin)
@@ -67,7 +67,7 @@
 		else if(istype(target, /obj/structure/mineral_door/resin))
 			var/obj/structure/mineral_door/resin/door = target
 			if (door.hivenumber != hivenumber)
-				to_chat(src, SPAN_XENOWARNING("[capitalize(door.declent_ru())] не принадлежит вашему улью!")) // SS220 EDIT ADDICTION
+				to_chat(src, SPAN_XENOWARNING("[capitalize(door.declent_ru(NOMINATIVE))] не принадлежит вашему улью!")) // SS220 EDIT ADDICTION
 				return SECRETE_RESIN_FAIL
 
 			for(var/datum/effects/xeno_structure_reinforcement/sf in door.effects_list)
@@ -86,7 +86,7 @@
 
 		if(thickened)
 			if(message)
-				visible_message(SPAN_XENONOTICE("[capitalize(declent_ru())] извергает густую субстанцию и уплотняет [target.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				visible_message(SPAN_XENONOTICE("[capitalize(declent_ru(NOMINATIVE))] извергает густую субстанцию и уплотняет [target.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
 					SPAN_XENONOTICE("Мы извергаем немного смолы и уплотняем [target.declent_ru(ACCUSATIVE)], используя [total_resin_cost] плазмы."), null, 5) // SS220 EDIT ADDICTION
 				if(use_plasma)
 					use_plasma(total_resin_cost)
@@ -144,8 +144,8 @@
 		if(use_plasma)
 			use_plasma(total_resin_cost)
 		if(message)
-			visible_message(SPAN_XENONOTICE("[capitalize(declent_ru())] извергает густую субстанцию и формирует её в [resin_construct.construction_name]!"), // SS220 EDIT ADDICTION
-				SPAN_XENONOTICE("Мы извергаем немного смолы и формируем её в [resin_construct.construction_name][use_plasma ? ", используя [total_resin_cost] плазмы" : ""]."), null, 5) // SS220 EDIT ADDICTION
+			visible_message(SPAN_XENONOTICE("[capitalize(declent_ru(NOMINATIVE))] извергает густую субстанцию и формирует её в [declent_ru_initial(resin_construct.construction_name, ACCUSATIVE, resin_construct.construction_name)]!"), // SS220 EDIT ADDICTION
+				SPAN_XENONOTICE("Мы извергаем немного смолы и формируем её в [declent_ru_initial(resin_construct.construction_name, ACCUSATIVE, resin_construct.construction_name)][use_plasma ? ", используя [total_resin_cost] ед. плазмы" : ""]."), null, 5) // SS220 EDIT ADDICTION
 			playsound(loc, "alien_resin_build", 25)
 		return SECRETE_RESIN_SUCCESS
 
@@ -155,8 +155,8 @@
 	if(use_plasma)
 		use_plasma(total_resin_cost)
 	if(message)
-		visible_message(SPAN_XENONOTICE("[capitalize(declent_ru())] извергает густую субстанцию и формирует её в [resin_construct.construction_name]!"), // SS220 EDIT ADDICTION
-			SPAN_XENONOTICE("Мы извергаем немного смолы и формируем её в [resin_construct.construction_name][use_plasma ? ", используя [total_resin_cost] плазмы" : ""]."), null, 5) // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENONOTICE("[capitalize(declent_ru(NOMINATIVE))] извергает густую субстанцию и формирует её в [declent_ru_initial(resin_construct.construction_name, ACCUSATIVE, resin_construct.construction_name)]!"), // SS220 EDIT ADDICTION
+			SPAN_XENONOTICE("Мы извергаем немного смолы и формируем её в [declent_ru_initial(resin_construct.construction_name, ACCUSATIVE, resin_construct.construction_name)][use_plasma ? ", используя [total_resin_cost] ед. плазмы" : ""]."), null, 5) // SS220 EDIT ADDICTION
 		playsound(loc, "alien_resin_build", 25)
 
 	var/atom/new_resin = resin_construct.build(current_turf, hivenumber, src)
@@ -276,6 +276,6 @@
 		var/current_area_name = get_area_name(target_turf)
 
 		for(var/mob/living/carbon/xenomorph/X in hive.totalXenos)
-			to_chat(X, SPAN_XENOANNOUNCE("[capitalize(declent_ru())] объявил: [NM.mark_meaning.desc] около «[sanitize_area(current_area_name)]»! (<a href='byond://?src=\ref[X];overwatch=1;target=\ref[NM]'>Посмотреть</a>) (<a href='byond://?src=\ref[X];track=1;target=\ref[NM]'>Отслеживать</a>)")) // SS220 EDIT ADDICTION
+			to_chat(X, SPAN_XENOANNOUNCE("[capitalize(declent_ru(NOMINATIVE))] объявляет: [NM.mark_meaning.desc] около «[sanitize_area(current_area_name)]»! (<a href='byond://?src=\ref[X];overwatch=1;target=\ref[NM]'>Посмотреть</a>) (<a href='byond://?src=\ref[X];track=1;target=\ref[NM]'>Отслеживать</a>)")) // SS220 EDIT ADDICTION
 			//this is killing the tgui chat and I dont know why
 	return TRUE

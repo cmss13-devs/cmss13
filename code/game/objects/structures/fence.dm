@@ -38,7 +38,7 @@
 		return
 	if(health <= 0)
 		if(user)
-			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] smashes through [src][AM ? " with [AM]":""]!"))
 		playsound(loc, 'sound/effects/fencehit.ogg', 25, 1)
 		cut_grille()
 	if(make_hit_sound)
@@ -100,7 +100,7 @@
 /obj/structure/fence/proc/attack_generic(mob/living/user, damage = 0)
 	health -= damage
 	user.animation_attack_on(src)
-	user.visible_message(SPAN_DANGER("[user] smashes into [src]!"))
+	user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] smashes into [src]!"))
 	healthcheck(1, 1, user)
 
 /obj/structure/fence/attack_animal(mob/user as mob)
@@ -122,7 +122,7 @@
 		if(health)
 			amount_needed = 1
 		if(wire.amount >= amount_needed)
-			user.visible_message(SPAN_NOTICE("[user] starts repairing [src] with [wire]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts repairing [src] with [wire]."),
 			SPAN_NOTICE("You start repairing [src] with [wire]."))
 			playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
@@ -135,7 +135,7 @@
 				density = TRUE
 				update_icon()
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] repairs [src] with [wire]."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] repairs [src] with [wire]."),
 				SPAN_NOTICE("You repair [src] with [wire]."))
 				return
 		else
@@ -143,12 +143,12 @@
 			return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && cut)
-		user.visible_message(SPAN_NOTICE("[user] starts cutting away the remains of [src] with [W]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts cutting away the remains of [src] with [W]."),
 		SPAN_NOTICE("You start cutting away the remains of [src] with [W]."))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] cuts away the remains of [src] with [W]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] cuts away the remains of [src] with [W]."),
 			SPAN_NOTICE("You cut away the remains of [src] with [W]."))
 			deconstruct()
 			return
@@ -164,17 +164,17 @@
 			user.drop_held_item()
 			switch(state)
 				if(GRAB_PASSIVE)
-					grabbed_mob.visible_message(SPAN_WARNING("[user] slams [grabbed_mob] against \the [src]!"))
+					grabbed_mob.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] slams [grabbed_mob] against \the [src]!"))
 					grabbed_mob.apply_damage(7)
 					health -= 10
 				if(GRAB_AGGRESSIVE)
-					grabbed_mob.visible_message(SPAN_DANGER("[user] bashes [grabbed_mob] against \the [src]!"))
+					grabbed_mob.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] bashes [grabbed_mob] against \the [src]!"))
 					if(prob(50))
 						grabbed_mob.apply_effect(1, WEAKEN)
 					grabbed_mob.apply_damage(10)
 					health -= 25
 				if(GRAB_CHOKE)
-					grabbed_mob.visible_message(SPAN_DANGER("[user] crushes [grabbed_mob] against \the [src]!"))
+					grabbed_mob.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] crushes [grabbed_mob] against \the [src]!"))
 					grabbed_mob.apply_effect(5, WEAKEN)
 					grabbed_mob.apply_damage(20)
 					health -= 50
@@ -190,7 +190,7 @@
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || istype(W, /obj/item/attachable/bayonet) || istype(W, /obj/item/weapon/bracer_attachment))
-		user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [W]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts cutting through [src] with [W]."),
 		SPAN_NOTICE("You start cutting through [src] with [W]."))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 
@@ -201,7 +201,7 @@
 
 		if(do_after(user, duration, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] cuts through [src] with [W]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] cuts through [src] with [W]."),
 			SPAN_NOTICE("You cut through [src] with [W]."))
 			cut_grille()
 		return

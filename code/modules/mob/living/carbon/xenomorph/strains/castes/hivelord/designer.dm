@@ -735,7 +735,7 @@
 
 		var/obj/effect/alien/weeds/target_weeds = node_loc.weeds
 		if(target_weeds && target_weeds.hivenumber == xeno.hivenumber)
-			xeno.visible_message(SPAN_XENODANGER("[xeno] создаёт слабую смоляную стену!"), // SS220 EDIT ADDICTION
+			xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] создаёт слабую смоляную стену!"), // SS220 EDIT ADDICTION
 				SPAN_XENONOTICE("Мы создаём слабую смоляную стену!"), null, 5)
 
 			node_loc.PlaceOnTop(/turf/closed/wall/resin/reflective/weak)
@@ -956,7 +956,7 @@
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("[xeno] направляет питательные вещества и формирует их в узел!")) // SS220 EDIT ADDICTION
+		xeno.visible_message(SPAN_XENONOTICE("[capitalize(xeno.declent_ru(NOMINATIVE))] направляет питательные вещества и формирует их в узел!")) // SS220 EDIT ADDICTION
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno) //Create node you selected from list
 		if(!design)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Не удалось найти узел для размещения! Свяжитесь с кодером!"))
@@ -978,7 +978,7 @@
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("[xeno] направляет питательные вещества и формирует их в узел!")) // SS220 EDIT ADDICTION
+		xeno.visible_message(SPAN_XENONOTICE("[capitalize(xeno.declent_ru(NOMINATIVE))] направляет питательные вещества и формирует их в узел!")) // SS220 EDIT ADDICTION
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno)
 		if(!design)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Не удалось найти узел для размещения! Свяжитесь с кодером!"))
@@ -1002,7 +1002,7 @@
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("[xeno] направляет питательные вещества и формирует их в узел!")) // SS220 EDIT ADDICTION
+		xeno.visible_message(SPAN_XENONOTICE("[capitalize(xeno.declent_ru(NOMINATIVE))] направляет питательные вещества и формирует их в узел!")) // SS220 EDIT ADDICTION
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno)
 		if(!design)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Не удалось найти узел для размещения! Свяжитесь с кодером!"))

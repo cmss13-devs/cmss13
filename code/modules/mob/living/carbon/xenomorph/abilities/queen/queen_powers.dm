@@ -141,7 +141,7 @@
 	if(!xeno.check_plasma(plasma_cost))
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] начинает создавать яйцеклад..."), // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] начинает создавать яйцеклад..."), // SS220 EDIT ADDICTION
 	SPAN_XENOWARNING("Вы начинаете создавать яйцеклад... (это займёт 20 секунд, не двигайтесь)"))
 	if(!do_after(xeno, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && xeno.check_plasma(plasma_cost))
 		return
@@ -150,8 +150,8 @@
 	if(!locate(/obj/effect/alien/weeds) in current_turf)
 		return
 	xeno.use_plasma(plasma_cost)
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] создала яйцеклад!"), // SS220 EDIT ADDICTION
-	SPAN_XENOWARNING("Вы создали яйцеклад!"))
+	xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] создаёт яйцеклад!"), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Вы создаёте яйцеклад!"))
 	xeno.mount_ovipositor()
 	return ..()
 
@@ -179,12 +179,12 @@
 			if(targeted_xeno.stat == DEAD)
 				to_chat(xeno, SPAN_XENOWARNING("Вы не можете сделать лидером мёртвых."))
 				return
-			to_chat(xeno, SPAN_XENONOTICE("Вы выбрали [targeted_xeno] в качестве лидера улья.")) // SS220 EDIT ADDICTION
-			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[xeno] выбрала вас в качестве лидера улья. Другие ксеноморфы должны слушаться вас. Вы также будете служить маяком для феромонов Королевы.")) // SS220 EDIT ADDICTION
+			to_chat(xeno, SPAN_XENONOTICE("Вы выбрали [targeted_xeno.declent_ru(ACCUSATIVE)] в качестве лидера улья.")) // SS220 EDIT ADDICTION
+			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[capitalize(xeno.declent_ru(NOMINATIVE))] выбрала вас в качестве лидера улья. Другие ксеноморфы должны слушаться вас. Вы также будете служить маяком для феромонов Королевы.")) // SS220 EDIT ADDICTION
 		else
 			hive.remove_hive_leader(targeted_xeno)
-			to_chat(xeno, SPAN_XENONOTICE("Вы сняли [targeted_xeno] с должности лидера улья.")) // SS220 EDIT ADDICTION
-			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[xeno] сняла вас с должности лидера улья. Ваши права и способности лидера отозваны.")) // SS220 EDIT ADDICTION
+			to_chat(xeno, SPAN_XENONOTICE("Вы сняли [targeted_xeno.declent_ru(ACCUSATIVE)] с должности лидера улья.")) // SS220 EDIT ADDICTION
+			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[capitalize(xeno.declent_ru(NOMINATIVE))] сняла вас с должности лидера улья. Ваши права и способности лидера отозваны.")) // SS220 EDIT ADDICTION
 	else
 		var/list/possible_xenos = list()
 		for(var/mob/living/carbon/xenomorph/targeted_xeno in hive.xeno_leader_list)
@@ -827,7 +827,7 @@
 			hugger.die()
 
 	playsound(xeno.loc, pick(xeno.screech_sound_effect_list), 75, 0, status = 0)
-	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] издаёт оглушительный хриплый рёв!")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] издаёт оглушительный хриплый рёв!")) // SS220 EDIT ADDICTION
 	xeno.create_shriekwave(14) //Adds the visual effect. Wom wom wom, 14 shriekwaves
 
 	FOR_DVIEW(var/mob/mob, world.view, owner, HIDE_INVISIBLE_OBSERVER)

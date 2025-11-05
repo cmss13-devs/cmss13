@@ -67,12 +67,12 @@
 		return
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-	user.visible_message(SPAN_NOTICE("[user] begins unfastening [src]."), SPAN_NOTICE("You begin unfastening [src]."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins unfastening [src]."), SPAN_NOTICE("You begin unfastening [src]."))
 	if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-	user.visible_message(SPAN_NOTICE("[user] unfastens [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] unfastens [src]."),
 	SPAN_NOTICE("You unfasten [src]."))
 	new /obj/item/pipe(loc, null, null, src)
 	qdel(src)
@@ -143,7 +143,7 @@
 		animate_ventcrawl_reset()
 		user.remove_ventcrawl()
 		user.forceMove(src.loc)
-		user.visible_message(SPAN_HIGHDANGER("[user] climbs out of [src]."), SPAN_NOTICE("You climb out of [src]."))
+		user.visible_message(SPAN_HIGHDANGER("[capitalize(user.declent_ru(NOMINATIVE))] climbs out of [src]."), SPAN_NOTICE("You climb out of [src]."))
 		playsound(user, pick('sound/effects/alien_ventpass1.ogg', 'sound/effects/alien_ventpass2.ogg'), 35, 1)
 
 		return

@@ -33,7 +33,7 @@
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 			to_chat(user, SPAN_WARNING("You do not know how to collapse [src] using a crowbar..."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts collapsing [src]."),
 			SPAN_NOTICE("You begin collapsing [src]..."))
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 		if(do_after(user, 1.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src))
@@ -67,7 +67,7 @@
 	folding.stack_health = list(health)
 	folding.maxhealth = maxhealth
 	if(istype(user))
-		user.visible_message(SPAN_NOTICE("[user] collapses [src]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] collapses [src]."),
 			SPAN_NOTICE("You collapse [src]."))
 		user.put_in_active_hand(folding)
 	qdel(src)
@@ -147,7 +147,7 @@
 		to_chat(usr, SPAN_WARNING("[singular_name] cannot be built here!"))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] begins deploying [singular_name]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins deploying [singular_name]."),
 			SPAN_NOTICE("You begin deploying [singular_name]."))
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -161,7 +161,7 @@
 			to_chat(user, SPAN_WARNING("There is already \a [B] in this direction!"))
 			return
 
-	user.visible_message(SPAN_NOTICE("[user] has finished deploying [singular_name]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] has finished deploying [singular_name]."),
 			SPAN_NOTICE("You finish deploying [singular_name]."))
 
 	var/obj/structure/barricade/deployable/cade = new(user.loc)
@@ -221,7 +221,7 @@
 		if(!(welder.remove_fuel(2, user)))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins repairing damage to [src]."),
 		SPAN_NOTICE("You begin repairing the damage to [src]."))
 		playsound(loc, 'sound/items/Welder2.ogg', 25, TRUE)
 
@@ -234,7 +234,7 @@
 			if(!do_after(user, welding_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_FRIENDLY, src, INTERRUPT_DIFF_LOC)) //you can move while repairing if you have cade in hand
 				return
 
-		user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] repairs some damage on [src]."),
 		SPAN_NOTICE("You repair [src]."))
 		user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
 

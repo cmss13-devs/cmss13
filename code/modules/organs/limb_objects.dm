@@ -169,14 +169,14 @@
 			if(0)
 				user.visible_message(SPAN_WARNING("[brainmob] is beginning to have \his head cut open with [W] by [user]."),
 									SPAN_WARNING("You cut [brainmob]'s head open with [W]!"))
-				to_chat(brainmob, SPAN_WARNING("[user] begins to cut open your head with [W]!"))
+				to_chat(brainmob, SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] begins to cut open your head with [W]!"))
 
 				brain_op_stage = 1
 
 			if(2)
 				user.visible_message(SPAN_WARNING("[brainmob] is having \his connections to the brain delicately severed with [W] by [user]."),
 									SPAN_WARNING("You cut [brainmob]'s head open with [W]!"))
-				to_chat(brainmob, SPAN_WARNING("[user] begins to cut open your head with [W]!"))
+				to_chat(brainmob, SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] begins to cut open your head with [W]!"))
 
 				brain_op_stage = 3
 			else
@@ -186,16 +186,16 @@
 			if(1)
 				user.visible_message(SPAN_WARNING("[brainmob] has \his head sawed open with [W] by [user]."),
 							SPAN_WARNING("You saw [brainmob]'s head open with [W]!"))
-				to_chat(brainmob, SPAN_WARNING("[user] saw open your head with [W]!"))
+				to_chat(brainmob, SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] saw open your head with [W]!"))
 				brain_op_stage = 2
 			if(3)
 				user.visible_message(SPAN_WARNING("[brainmob] has \his spine's connection to the brain severed with [W] by [user]."),
 									SPAN_WARNING("You sever [brainmob]'s brain's connection to the spine with [W]!"))
-				to_chat(brainmob, SPAN_WARNING("[user] severs your brain's connection to the spine with [W]!"))
+				to_chat(brainmob, SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] severs your brain's connection to the spine with [W]!"))
 
 				user.attack_log += "\[[time_stamp()]\]<font color='red'> Debrained [brainmob.name] ([brainmob.ckey]) with [W.name] (INTENT: [uppertext(intent_text(user.a_intent))])</font>"
 				brainmob.attack_log += "\[[time_stamp()]\]<font color='orange'> Debrained by [user.name] ([user.ckey]) with [W.name] (INTENT: [uppertext(intent_text(user.a_intent))])</font>"
-				msg_admin_attack("[user] ([user.ckey]) debrained [brainmob] ([brainmob.ckey]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+				msg_admin_attack("[capitalize(user.declent_ru(NOMINATIVE))] ([user.ckey]) debrained [brainmob] ([brainmob.ckey]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 				//TODO: ORGAN REMOVAL UPDATE.
 				var/obj/item/organ/brain/B = new brain_item_type(loc)

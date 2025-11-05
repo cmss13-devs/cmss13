@@ -27,6 +27,15 @@ instrumental = "Лицехватом"
 prepositional = "Лицехвате"
 gender = "male"
 
+["facehugger"]
+nominative = "лицехват"
+genitive = "лицехвата"
+dative = "лицехвату"
+accusative = "лицехвата"
+instrumental = "лицехватом"
+prepositional = "лицехвате"
+gender = "male"
+
 ["Lesser Drone"]
 nominative = "Трутень"
 genitive = "Трутня"

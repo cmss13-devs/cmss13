@@ -442,7 +442,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	// Let's go
 	playsound(src,'sound/ambience/signal.ogg', 25, 1, sound_range = 6)
 	timer = 1
-	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
+	user.visible_message(SPAN_INFO("[capitalize(user.declent_ru(NOMINATIVE))] starts becoming shimmery and indistinct..."))
 
 	if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		// Display fancy animation for you and the person you might be pulling (Legacy)
@@ -1153,15 +1153,15 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 ///Actual action of using the vial on an item.
 /obj/item/tool/yautja_cleaner/proc/handle_dissolve(obj/item/target, mob/user)
-	user.visible_message(SPAN_DANGER("[user] uncaps a vial and begins to pour out a vibrant blue liquid over [target]!"),
+	user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] uncaps a vial and begins to pour out a vibrant blue liquid over [target]!"),
 					SPAN_NOTICE("You begin to spread dissolving gel onto [target]!"))
 	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		user.visible_message(SPAN_WARNING("[user] stops pouring liquid on to [target]!"),
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] stops pouring liquid on to [target]!"),
 					SPAN_NOTICE("You decide not to cover [target] with dissolving gel."))
 		return
 	if(get_dist(target, user) > 1) //Late check to ensure the item hasn't moved out of range.
 		return
-	user.visible_message(SPAN_DANGER("[user] pours blue liquid all over [target]!"),
+	user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] pours blue liquid all over [target]!"),
 				SPAN_NOTICE("You cover [target] with dissolving gel!"))
 	dissolving_image = image(icon, icon_state = "dissolving_gel")
 	target.overlays += dissolving_image

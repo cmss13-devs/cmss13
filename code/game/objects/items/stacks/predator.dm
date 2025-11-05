@@ -31,7 +31,7 @@
 	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
 		return TRUE
 
-	user.visible_message(SPAN_NOTICE("[user] starts to secure \his rope to the ceiling..."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts to secure \his rope to the ceiling..."),
 		SPAN_NOTICE("You start securing the rope to the ceiling..."))
 
 	if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
@@ -43,17 +43,17 @@
 		if(rarea.ceiling == CEILING_NONE && !(rarea.flags_area & AREA_YAUTJA_HANGABLE))
 			to_chat(user, SPAN_WARNING("There's nothing to hang them from!"))
 			return TRUE
-		user.visible_message(SPAN_NOTICE("[user] secures the rope."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] secures the rope."),
 			SPAN_NOTICE("You secure the rope."))
 		if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
 			return
-		user.visible_message(SPAN_WARNING("[user] begins hanging [victim] up by the rope..."),
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] begins hanging [victim] up by the rope..."),
 			SPAN_NOTICE("You start hanging [victim] up by the rope..."))
 		if(!do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
 			return
 		if(victim.anchored)
 			return // Just in case weed_food took them during this time
-		user.visible_message(SPAN_WARNING("[user] hangs [victim] from the ceiling!"), SPAN_NOTICE("You finish hanging [victim]."))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] hangs [victim] from the ceiling!"), SPAN_NOTICE("You finish hanging [victim]."))
 		user.stop_pulling()
 		victim.get_hung()
 		use(1)
@@ -90,7 +90,7 @@
 	if(user)
 		if(user.a_intent != INTENT_HELP)
 			return
-		user.visible_message(SPAN_WARNING("[user] cuts down [src] with \the [source]."), SPAN_WARNING("You cut down [src] with \the [source]."))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] cuts down [src] with \the [source]."), SPAN_WARNING("You cut down [src] with \the [source]."))
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/vegetation_hit.ogg', 25, TRUE)
 	else

@@ -77,8 +77,8 @@
 			return
 		user.affected_message(M,
 							SPAN_NOTICE("You start fitting \the [src] onto [M]'s chest."),
-							SPAN_WARNING("[user] starts fitting \the [src] onto your chest!"),
-							SPAN_NOTICE("[user] starts fitting \the [src] onto [M]'s chest."))
+							SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] starts fitting \the [src] onto your chest!"),
+							SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts fitting \the [src] onto [M]'s chest."))
 		if(!(do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)))
 			return
 		if(!mob_can_equip(M, WEAR_JACKET))
@@ -297,7 +297,7 @@
 			return
 
 		if(target == attached) //are we attached to the target?
-			user.visible_message("[user] detaches \the [src] from [attached].",
+			user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] detaches \the [src] from [attached].",
 			"You detach \the [src] from [attached].")
 			attached = null
 			filtering = FALSE
@@ -316,18 +316,18 @@
 
 			attaching = TRUE
 			update_icon()
-			to_chat(target, SPAN_DANGER("[user] is trying to attach \the [src] to you!"))
-			user.visible_message(SPAN_WARNING("[user] starts setting up \the [src]'s needle on [target]'s arm."),
+			to_chat(target, SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] is trying to attach \the [src] to you!"))
+			user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] starts setting up \the [src]'s needle on [target]'s arm."),
 				SPAN_WARNING("You start setting up \the [src]'s needle on [target]'s arm."))
 			if(!do_after(user, attach_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-				user.visible_message(SPAN_WARNING("[user] stops setting up \the [src]'s needle on [target]'s arm."),
+				user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] stops setting up \the [src]'s needle on [target]'s arm."),
 				SPAN_WARNING("You stop setting up \the [src]'s needle on [target]'s arm."))
 				visible_message("\The [src]'s tubing snaps back onto the machine frame.")
 				attaching = FALSE
 				update_icon()
 				return
 
-			user.visible_message("[user] attaches \the [src] to [target].",
+			user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] attaches \the [src] to [target].",
 			"You attach \the [src] to [target].")
 			attached = target
 			filtering = TRUE

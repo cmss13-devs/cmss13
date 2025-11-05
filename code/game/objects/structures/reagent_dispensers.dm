@@ -266,7 +266,7 @@
 			to_chat(user, SPAN_DANGER("There is another device in the way."))
 			return ..()
 
-		user.visible_message("[user] begins rigging [W] to \the [src].", "You begin rigging [W] to \the [src]")
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] begins rigging [W] to \the [src].", "You begin rigging [W] to \the [src]")
 
 		if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
 			return
@@ -275,7 +275,7 @@
 			to_chat(user, SPAN_DANGER("There is another device in the way."))
 			return ..()
 
-		user.visible_message(SPAN_NOTICE("[user] rigs [W] to \the [src]."), SPAN_NOTICE(" You rig [W] to \the [src]"))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] rigs [W] to \the [src]."), SPAN_NOTICE(" You rig [W] to \the [src]"))
 
 		var/obj/item/device/assembly_holder/H = W
 		if (istype(H.a_left,/obj/item/device/assembly/igniter) || istype(H.a_right,/obj/item/device/assembly/igniter))
@@ -293,7 +293,7 @@
 			to_chat(user, SPAN_WARNING("You don't have enough of [M] to reinforce [src]."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] begins reinforcing the exterior of [src] with [M]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins reinforcing the exterior of [src] with [M]."),
 		SPAN_NOTICE("You begin reinforcing [src] with [M]."))
 
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src, INTERRUPT_ALL) || reinforced)
@@ -303,7 +303,7 @@
 			to_chat(user, SPAN_WARNING("You don't have enough of [M] to reinforce [src]."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] reinforces the exterior of [src] with [M]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] reinforces the exterior of [src] with [M]."),
 		SPAN_NOTICE("You reinforce [src] with [M]."))
 
 		reinforced = TRUE
@@ -311,13 +311,13 @@
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 
-		user.visible_message(SPAN_DANGER("[user] begins to remove the shielding from [src]."),
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] begins to remove the shielding from [src]."),
 		SPAN_NOTICE("You begin to remove the shielding from [src]."))
 
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src, INTERRUPT_ALL) || !reinforced)
 			return
 
-		user.visible_message(SPAN_DANGER("[user] removes the shielding from [src]."),
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] removes the shielding from [src]."),
 		SPAN_NOTICE("You remove the shielding from [src]."))
 		new /obj/item/stack/sheet/plasteel(loc, STACK_10)
 

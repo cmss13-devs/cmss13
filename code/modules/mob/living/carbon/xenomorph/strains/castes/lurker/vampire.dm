@@ -52,7 +52,7 @@
 	if (!action_cooldown_check())
 		return
 
-	xeno.visible_message(SPAN_DANGER("[xeno] размахивает когтями по большой области перед собой!"), // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] размахивает когтями по большой области перед собой!"), // SS220 EDIT ADDICTION
 	SPAN_XENOWARNING("Мы выпускаем шквал рубящих ударов!"))
 	playsound(xeno, 'sound/effects/alien_tail_swipe2.ogg', 30)
 	apply_cooldown()
@@ -97,7 +97,7 @@
 			if (HAS_TRAIT(target, TRAIT_NESTED))
 				continue
 
-			xeno.visible_message(SPAN_DANGER("[xeno] атакует [target]!"), // SS220 EDIT ADDICTION
+			xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] атакует [target.declent_ru(ACCUSATIVE)]!"), // SS220 EDIT ADDICTION
 			SPAN_XENOWARNING("Мы атакуем [target] несколько раз!")) // SS220 EDIT ADDICTION
 			xeno.flick_attack_overlay(target, "slash")
 			target.last_damage_data = create_cause_data(xeno.caste_type, xeno)
@@ -143,7 +143,7 @@
 					return
 				playsound(get_turf(target_window),'sound/effects/glassbreak3.ogg', 30, TRUE)
 				target_window.shatter_window(TRUE)
-				xeno.visible_message(SPAN_XENOWARNING("[xeno] бьёт хвостом по окну!"), SPAN_XENOWARNING("Мы бьём хвостом по окну!")) // SS220 EDIT ADDICTION
+				xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] бьёт хвостом по окну!"), SPAN_XENOWARNING("Мы бьём хвостом по окну!")) // SS220 EDIT ADDICTION
 				apply_cooldown(cooldown_modifier = 0.5)
 				return
 			if(current_structure.density && !current_structure.throwpass)
@@ -163,7 +163,7 @@
 		else
 			to_chat(xeno, SPAN_XENODANGER("Мы атакуем [hit_target], используя хвост!")) // SS220 EDIT ADDICTION
 	else
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] размахивает хвостом в воздухе!"), SPAN_XENOWARNING("Мы размахиваем хвостом в воздухе!")) // SS220 EDIT ADDICTION
+		xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] размахивает хвостом в воздухе!"), SPAN_XENOWARNING("Мы размахиваем хвостом в воздухе!")) // SS220 EDIT ADDICTION
 		apply_cooldown(cooldown_modifier = 0.2)
 		playsound(xeno, 'sound/effects/alien_tail_swipe1.ogg', 50, TRUE)
 		return
@@ -243,8 +243,8 @@
 				to_chat(xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
 				return
 
-	xeno.visible_message(SPAN_DANGER("[xeno] агрессивно хватает [target_carbon] за голову."), // SS220 EDIT ADDICTION
-	SPAN_XENOWARNING("Мы агрессивно хватаем [target_carbon] за голову.")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] агрессивно хватает [target_carbon.declent_ru(ACCUSATIVE)] за голову."), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Мы агрессивно хватаем [target_carbon.declent_ru(ACCUSATIVE)] за голову.")) // SS220 EDIT ADDICTION
 
 	if(!do_after(xeno, 0.8 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks
 		return
@@ -258,9 +258,9 @@
 		to_chat(xeno, SPAN_XENODANGER("Цель умерла, прежде чем вы смогли пронзить её голову! Будьте осторожнее в следующий раз!"))
 		return
 
-	to_chat(xeno, SPAN_XENOHIGHDANGER("Мы пронзаем голову [target_carbon] своей внутренней челюстью!")) // SS220 EDIT ADDICTION
+	to_chat(xeno, SPAN_XENOHIGHDANGER("Мы пронзаем голову [target_carbon.declent_ru(GENITIVE)] своей внутренней челюстью!")) // SS220 EDIT ADDICTION
 	playsound(target_carbon,'sound/weapons/alien_bite2.ogg', 50, TRUE)
-	xeno.visible_message(SPAN_DANGER("[xeno] пронзает голову [target_carbon] своей внутренней челюстью!")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] пронзает голову [target_carbon.declent_ru(GENITIVE)] своей внутренней челюстью!")) // SS220 EDIT ADDICTION
 	xeno.flick_attack_overlay(target_carbon, "headbite")
 	xeno.animation_attack_on(target_carbon, pixel_offset = 16)
 	target_carbon.apply_armoured_damage(60, ARMOR_MELEE, BRUTE, "head", 5) //DIE

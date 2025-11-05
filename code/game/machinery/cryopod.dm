@@ -422,7 +422,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 		if(willing)
 
-			visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."),
+			visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts putting [M] into [src]."),
 			SPAN_NOTICE("You start putting [M] into [src]."))
 
 			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))

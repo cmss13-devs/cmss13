@@ -105,7 +105,7 @@
 						return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] removes [src]'s protection panel."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] removes [src]'s protection panel."),
 				SPAN_NOTICE("You remove [src]'s protection panels, exposing the anchor bolts."))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				build_state = BARRICADE_BSTATE_UNSECURED
@@ -117,10 +117,10 @@
 					return
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				if(linked)
-					user.visible_message(SPAN_NOTICE("[user] removes the linking on [src]."),
+					user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] removes the linking on [src]."),
 					SPAN_NOTICE("You remove the linking on [src]."))
 				else if(linkable)
-					user.visible_message(SPAN_NOTICE("[user] sets up [src] for linking."),
+					user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] sets up [src] for linking."),
 					SPAN_NOTICE("You set up [src] for linking."))
 				else
 					to_chat(user, SPAN_WARNING("[src] has no linking points..."))
@@ -141,7 +141,7 @@
 					return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] set [src]'s protection panel back."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] set [src]'s protection panel back."),
 				SPAN_NOTICE("You set [src]'s protection panel back."))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				build_state = BARRICADE_BSTATE_SECURED
@@ -156,7 +156,7 @@
 					return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] loosens [src]'s anchor bolts."),
 				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				anchored = FALSE
@@ -185,7 +185,7 @@
 					return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] secures [src]'s anchor bolts."),
 				SPAN_NOTICE("You secure [src]'s anchor bolts."))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				anchored = TRUE
@@ -200,12 +200,12 @@
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
-				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts unseating [src]'s panels."),
 				SPAN_NOTICE("You start unseating [src]'s panels."))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				busy = TRUE
 				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
-					user.visible_message(SPAN_NOTICE("[user] takes [src]'s panels apart."),
+					user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] takes [src]'s panels apart."),
 					SPAN_NOTICE("You take [src]'s panels apart."))
 					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 					deconstruct(TRUE) //Note : Handles deconstruction too !
@@ -222,7 +222,7 @@
 		if(recentlyflipped)
 			to_chat(user, SPAN_NOTICE("[src] has been flipped too recently!"))
 			return
-		user.visible_message(SPAN_NOTICE("[user] flips [src] closed."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] flips [src] closed."),
 		SPAN_NOTICE("You flip [src] closed."))
 		open(src)
 		recentlyflipped = TRUE
@@ -234,7 +234,7 @@
 		if(recentlyflipped)
 			to_chat(user, SPAN_NOTICE("[src] has been flipped too recently!"))
 			return
-		user.visible_message(SPAN_NOTICE("[user] flips [src] open."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] flips [src] open."),
 		SPAN_NOTICE("You flip [src] open."))
 		close(src)
 		recentlyflipped = TRUE

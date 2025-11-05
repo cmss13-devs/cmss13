@@ -412,12 +412,12 @@
 			return
 		else
 			if((prob(40)))
-				M.visible_message(SPAN_DANGER("[M] smashes through [src]."),
+				M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] smashes through [src]."),
 				SPAN_DANGER("You smash through the wall."))
 				dismantle_wall(1)
 				return
 			else
-				M.visible_message(SPAN_WARNING("[M] smashes against [src]."),
+				M.visible_message(SPAN_WARNING("[capitalize(M.declent_ru(NOMINATIVE))] smashes against [src]."),
 				SPAN_WARNING("You smash against the wall."))
 				take_damage(rand(25, 75), M)
 				return
@@ -525,47 +525,47 @@
 
 		if(WALL_STATE_SCREW)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
-				user.visible_message(SPAN_NOTICE("[user] begins removing the support lines."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins removing the support lines."),
 				SPAN_NOTICE("You begin removing the support lines."))
 				playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 				d_state = WALL_STATE_WIRECUTTER
-				user.visible_message(SPAN_NOTICE("[user] removes the support lines."), SPAN_NOTICE("You remove the support lines."))
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] removes the support lines."), SPAN_NOTICE("You remove the support lines."))
 				return
 
 		if(WALL_STATE_WIRECUTTER)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS))
-				user.visible_message(SPAN_NOTICE("[user] begins uncrimping the hydraulic lines."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins uncrimping the hydraulic lines."),
 				SPAN_NOTICE("You begin uncrimping the hydraulic lines."))
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
 				if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 				d_state = WALL_STATE_WRENCH
-				user.visible_message(SPAN_NOTICE("[user] finishes uncrimping the hydraulic lines."), SPAN_NOTICE("You finish uncrimping the hydraulic lines."))
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes uncrimping the hydraulic lines."), SPAN_NOTICE("You finish uncrimping the hydraulic lines."))
 				return
 
 		if(WALL_STATE_WRENCH)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
-				user.visible_message(SPAN_NOTICE("[user] starts loosening the anchoring bolts securing the support rods."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts loosening the anchoring bolts securing the support rods."),
 				SPAN_NOTICE("You start loosening the anchoring bolts securing the support rods."))
 				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 				d_state = WALL_STATE_CROWBAR
-				user.visible_message(SPAN_NOTICE("[user] removes the bolts anchoring the support rods."), SPAN_NOTICE("You remove the bolts anchoring the support rods."))
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] removes the bolts anchoring the support rods."), SPAN_NOTICE("You remove the bolts anchoring the support rods."))
 				return
 
 		if(WALL_STATE_CROWBAR)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
-				user.visible_message(SPAN_NOTICE("[user] struggles to pry apart the connecting rods."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] struggles to pry apart the connecting rods."),
 				SPAN_NOTICE("You struggle to pry apart the connecting rods."))
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 				if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 				if(!istype(src, /turf/closed/wall))
 					return
-				user.visible_message(SPAN_NOTICE("[user] pries apart the connecting rods."), SPAN_NOTICE("You pry apart the connecting rods."))
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] pries apart the connecting rods."), SPAN_NOTICE("You pry apart the connecting rods."))
 				new /obj/item/stack/rods(src)
 				dismantle_wall()
 				return
@@ -580,11 +580,11 @@
 
 	var/obj/item/tool/weldingtool/WT = W
 	if(WT.remove_fuel(0, user))
-		user.visible_message(SPAN_NOTICE("[user] starts repairing the damage to [src]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts repairing the damage to [src]."),
 		SPAN_NOTICE("You start repairing the damage to [src]."))
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)
 		if(do_after(user, max(5, floor(damage / 5) * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall) && WT && WT.isOn())
-			user.visible_message(SPAN_NOTICE("[user] finishes repairing the damage to [src]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes repairing the damage to [src]."),
 			SPAN_NOTICE("You finish repairing the damage to [src]."))
 			take_damage(-damage)
 	else
@@ -603,14 +603,14 @@
 		return
 
 	playsound(src, 'sound/items/Welder.ogg', 25, 1)
-	user.visible_message(SPAN_NOTICE("[user] begins slicing through the outer plating."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins slicing through the outer plating."),
 	SPAN_NOTICE("You begin slicing through the outer plating."))
 	if(!WT || !WT.isOn())
 		return
 	if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	d_state = WALL_STATE_SCREW
-	user.visible_message(SPAN_NOTICE("[user] slices through the outer plating."), SPAN_NOTICE("You slice through the outer plating."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] slices through the outer plating."), SPAN_NOTICE("You slice through the outer plating."))
 	return
 
 /turf/closed/wall/proc/try_nailgun_usage(obj/item/W, mob/user)

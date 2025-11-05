@@ -51,7 +51,7 @@
 
 			if(user.drop_inv_item_to_loc(W, src))
 				charging = W
-				user.visible_message("[user] inserts a cell into the charger.", "You insert a cell into the charger.")
+				user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] inserts a cell into the charger.", "You insert a cell into the charger.")
 				chargelevel = -1
 				start_processing()
 		updateicon()
@@ -71,7 +71,7 @@
 		charging.update_icon()
 
 		src.charging = null
-		user.visible_message("[user] removes the cell from the charger.", "You remove the cell from the charger.")
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] removes the cell from the charger.", "You remove the cell from the charger.")
 		chargelevel = -1
 		updateicon()
 		stop_processing()

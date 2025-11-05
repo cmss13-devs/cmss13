@@ -128,12 +128,12 @@
 		if(time_of_birth + 3 SECONDS > world.time)
 			return
 		if(morpher.linked_hive.hivenumber != hivenumber)
-			to_chat(src, SPAN_XENOWARNING("Этот овоморф не вашего улья!"))
+			to_chat(src, SPAN_XENOWARNING("[capitalize(morpher.declent_ru(NOMINATIVE))] не принадлежит вашему улью!"))
 			return
 		if(morpher.stored_huggers >= morpher.huggers_max_amount)
-			to_chat(src, SPAN_XENOWARNING("[morpher] уже занят дитём."))
+			to_chat(src, SPAN_XENOWARNING("[capitalize(morpher.declent_ru(NOMINATIVE))] уже полностью занят детьми."))
 			return
-		visible_message(SPAN_WARNING("[declent_ru()] заползает обратно в [morpher]."), SPAN_XENONOTICE("Вы заползаете обратно в [morpher].")) // SS220 EDIT ADDICTION
+		visible_message(SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] заползает обратно в [morpher.declent_ru(ACCUSATIVE)]."), SPAN_XENONOTICE("Вы заползаете обратно в [morpher].")) // SS220 EDIT ADDICTION
 		morpher.stored_huggers++
 		qdel(src)
 		return
@@ -141,19 +141,19 @@
 	if(ishuman(A))
 		var/mob/living/carbon/human/human = A
 		if((human.body_position != LYING_DOWN) && (!HAS_TRAIT(human, TRAIT_NESTED)))
-			to_chat(src, SPAN_WARNING("Вы не можете достать до хоста [human], он должен лежать или быть размещённым на смоляной стене.")) // SS220 EDIT ADDICTION
+			to_chat(src, SPAN_WARNING("Вы не можете достать до [human.declent_ru(GENITIVE)], они должны лежать или быть размещёнными на смоляной стене.")) // SS220 EDIT ADDICTION
 			return
 		if(!can_hug(human, hivenumber))
-			to_chat(src, SPAN_WARNING("Вы не можете заразить [human]...")) // SS220 EDIT ADDICTION
+			to_chat(src, SPAN_WARNING("Вы не можете заразить [human.declent_ru(ACCUSATIVE)]...")) // SS220 EDIT ADDICTION
 			return
-		visible_message(SPAN_WARNING("[declent_ru()] начинает заползать на лицо [human]..."), SPAN_XENONOTICE("Вы начинаете заползать на лицо [human]...")) // SS220 EDIT ADDICTION
+		visible_message(SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] начинает заползать на лицо [human.declent_ru(GENITIVE)]..."), SPAN_XENONOTICE("Вы начинаете заползать на лицо [human.declent_ru(GENITIVE)]...")) // SS220 EDIT ADDICTION
 		if(!do_after(src, FACEHUGGER_CLIMB_DURATION, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
 		if((human.body_position != LYING_DOWN) && (!HAS_TRAIT(human, TRAIT_NESTED)))
-			to_chat(src, SPAN_WARNING("Вы не можете достать до хоста [human], он должен лежать или быть размещённым на смоляной стене.")) // SS220 EDIT ADDICTION
+			to_chat(src, SPAN_WARNING("Вы не можете достать до [human.declent_ru(GENITIVE)], они должны лежать или быть размещёнными на смоляной стене.")) // SS220 EDIT ADDICTION
 			return
 		if(!can_hug(human, hivenumber))
-			to_chat(src, SPAN_WARNING("Вы не можете заразить [human]...")) // SS220 EDIT ADDICTION
+			to_chat(src, SPAN_WARNING("Вы не можете заразить [human.declent_ru(ACCUSATIVE)]...")) // SS220 EDIT ADDICTION
 			return
 		handle_hug(human)
 		return

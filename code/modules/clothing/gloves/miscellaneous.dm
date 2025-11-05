@@ -94,7 +94,7 @@
 				if (L.body_position == LYING_DOWN || L.stat == UNCONSCIOUS)//Can't beat 'em while they're down.
 					to_chat(M, SPAN_WARNING("You can't box with [A], they're already down!"))
 					return 1
-				M.visible_message(SPAN_DANGER("[M] [boxing_verb] [A]!"))
+				M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] [ru_attack_verb(boxing_verb)] [A.declent_ru(ACCUSATIVE)]!"))
 				L.apply_effect(painforce, AGONY)
 				M.animation_attack_on(L)
 				M.flick_attack_overlay(L, boxing_icon)

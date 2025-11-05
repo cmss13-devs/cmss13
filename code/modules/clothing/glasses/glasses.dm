@@ -97,7 +97,7 @@
 			offhand.prescription = TRUE
 			offhand.AddElement(/datum/element/poor_eyesight_correction)
 			offhand.desc += " Fitted with prescription lenses."
-			user.visible_message(SPAN_DANGER("[user] takes the lenses out of [src] and puts them in [offhand]."), SPAN_NOTICE("You take the lenses out of [src] and put them in [offhand]."))
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] takes the lenses out of [src] and puts them in [offhand]."), SPAN_NOTICE("You take the lenses out of [src] and put them in [offhand]."))
 			qdel(src)
 			return TRUE
 

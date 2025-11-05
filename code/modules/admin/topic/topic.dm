@@ -858,7 +858,7 @@
 			return
 
 		if(!M.client)
-			to_chat(usr, SPAN_WARNING("[M] doesn't seem to have an active client."))
+			to_chat(usr, SPAN_WARNING("[capitalize(M.declent_ru(NOMINATIVE))] doesn't seem to have an active client."))
 			return
 
 		if(alert(usr, "Send [key_name(M)] back to Lobby?", "Message", "Yes", "No") != "Yes")

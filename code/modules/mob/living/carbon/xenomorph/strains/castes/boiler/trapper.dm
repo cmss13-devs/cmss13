@@ -200,7 +200,7 @@
 	if(empowered)
 		acid_bolt_message = "мощную кислотную струю"
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] выпускает " + acid_bolt_message + " в сторону [affected_atom]!"), SPAN_XENODANGER("Мы выпускаем выстрелили " + acid_bolt_message + " в сторону [affected_atom]!")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] выпускает " + acid_bolt_message + " в сторону [affected_atom.declent_ru(GENITIVE)]!"), SPAN_XENODANGER("Мы выпускаем выстрелили " + acid_bolt_message + " в сторону [affected_atom]!")) // SS220 EDIT ADDICTION
 	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(turf, damage, delay, empowered, "В вас выпустили " + acid_bolt_message + "!", xeno) // SS220 EDIT ADDICTION
 
 	for (var/turf/target_turf in orange(1, turf))
@@ -224,7 +224,7 @@
 	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc) || !xeno.check_state())
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] выпускает кислотный взрыв в [affected_atom]!"), SPAN_XENOWARNING("Мы выпускаем кислотный взрыв в [affected_atom]!")) // SS220 EDIT ADDICTION
+	xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] выпускает кислотный взрыв в [affected_atom.declent_ru(ACCUSATIVE)]!"), SPAN_XENOWARNING("Мы выпускаем кислотный взрыв в [affected_atom.declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
 
 	var/turf/target_turf = locate(affected_atom.x, affected_atom.y, affected_atom.z)
 	var/obj/projectile/proj = new(xeno.loc, create_cause_data("acid shotgun", xeno))

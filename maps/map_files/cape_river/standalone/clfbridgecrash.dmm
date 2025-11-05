@@ -39,6 +39,48 @@
 	},
 /turf/open/floor/almayer/research/containment/floor2/west,
 /area/caperiver/outdoors/mining_base_exterior/south)
+"ae" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "101"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/caperiver/indoors/clf_dropship)
+"af" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "101"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/caperiver/indoors/clf_dropship)
+"ag" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "102"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
+/area/caperiver/indoors/clf_dropship)
+"ah" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "95"
+	},
+/turf/open/desert/desert_shore/desert_shore1/north,
+/area/caperiver/indoors/clf_dropship)
+"ai" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "96"
+	},
+/area/caperiver/indoors/clf_dropship)
+"aj" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "97"
+	},
+/area/caperiver/indoors/clf_dropship)
 "ak" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/warning/redandwhite_S,
@@ -46,6 +88,17 @@
 	pixel_y = 2
 	},
 /turf/open/floor/corsat/officetiles,
+/area/caperiver/indoors/clf_dropship)
+"al" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "98"
+	},
+/area/caperiver/indoors/clf_dropship)
+"am" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "99"
+	},
+/turf/open/desert/desert_shore/desert_shore1/north,
 /area/caperiver/indoors/clf_dropship)
 "aq" = (
 /obj/structure/bed/chair/vehicle{
@@ -109,17 +162,6 @@
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/caperiver/indoors/clf_dropship)
-"cB" = (
-/obj/structure/platform/metal/strata/west,
-/obj/structure/prop/invuln/dense/cliff_wall/short{
-	layer = 4.10
-	},
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/sand/layer0,
-/area/caperiver/outdoors/chasm)
 "cI" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 1
@@ -291,12 +333,6 @@
 /obj/effect/landmark/survivor_spawner/clf/caperiver,
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/caperiver/outdoors/scrublands/central)
-"fo" = (
-/obj/structure/prop/invuln/dense/cliff_wall/short{
-	layer = 4.10
-	},
-/turf/closed/wall/strata_ice/rock,
-/area/caperiver/indoors/clf_dropship)
 "fC" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#FF9D5C";
@@ -615,14 +651,6 @@
 /obj/structure/machinery/floodlight,
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/caperiver/outdoors/scrublands/central)
-"lq" = (
-/obj/structure/platform/metal/strata/west,
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/sand/layer0,
-/area/caperiver/outdoors/chasm)
 "lr" = (
 /obj/item/stack/sheet/metal,
 /turf/closed/shuttle/dropship5/CLF/Fire/transparent{
@@ -644,9 +672,6 @@
 /obj/effect/landmark/survivor_spawner/clf_engi/caperiver,
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/caperiver/outdoors/scrublands/central)
-"lW" = (
-/turf/closed/wall/strata_ice/rock,
-/area/caperiver/outdoors/chasm)
 "mn" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
@@ -705,9 +730,6 @@
 	},
 /turf/open/auto_turf/sand/layer2,
 /area/caperiver/outdoors/scrublands/central)
-"nw" = (
-/turf/open/floor/prison/rampbottom,
-/area/caperiver/outdoors/scrublands/north)
 "nz" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_S,
 /turf/open/floor/corsat/officetiles,
@@ -1325,20 +1347,6 @@
 "yP" = (
 /turf/open/desert/rock/deep/transition/northeast,
 /area/caperiver/outdoors/scrublands/central)
-"zb" = (
-/obj/structure/prop/invuln/dense/cliff_wall/left_short{
-	pixel_y = 8
-	},
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/desert/rock,
-/area/caperiver/outdoors/chasm)
-"ze" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/prison/rampbottom,
-/area/caperiver/outdoors/scrublands/north)
 "zg" = (
 /obj/structure/flora/grass/desert/lightgrass_7,
 /turf/open/desert/rock/deep/transition/northwest,
@@ -1405,17 +1413,6 @@
 /obj/structure/machinery/floodlight,
 /turf/open/asphalt/cement/cement2,
 /area/caperiver/outdoors/scrublands/central)
-"Ap" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/prison/rampbottom,
-/area/caperiver/outdoors/scrublands/central)
-"Aw" = (
-/obj/structure/blocker/forcefield/all{
-	alpha = 0
-	},
-/obj/structure/blocker/forcefield/vehicles,
-/turf/template_noop,
-/area/template_noop)
 "AB" = (
 /obj/item/trash/cigbutt,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -1796,9 +1793,6 @@
 /obj/structure/flora/grass/desert/lightgrass_1,
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/caperiver/outdoors/scrublands/central)
-"Hh" = (
-/turf/template_noop,
-/area/caperiver/outdoors/chasm)
 "Hm" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/desert/dirt,
@@ -1833,10 +1827,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/caperiver/outdoors/scrublands/central)
-"HT" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/prison/rampbottom,
-/area/caperiver/outdoors/scrublands/north)
 "Ic" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -2253,10 +2243,6 @@
 	},
 /turf/open/floor/prison/southwest,
 /area/caperiver/indoors/clf_dropship)
-"Qp" = (
-/obj/effect/spawner/gibspawner/xeno,
-/turf/open/floor/prison/rampbottom,
-/area/caperiver/outdoors/scrublands/central)
 "Qq" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -2269,7 +2255,11 @@
 	},
 /area/caperiver/indoors/clf_dropship)
 "QG" = (
-/turf/closed/wall/strata_ice/rock,
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "100"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/desert/deep,
 /area/caperiver/indoors/clf_dropship)
 "QR" = (
 /obj/effect/decal/hybrisa/warning/redandwhite_W,
@@ -2343,9 +2333,6 @@
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
 /area/caperiver/indoors/clf_dropship)
-"SI" = (
-/turf/open/floor/prison/rampbottom,
-/area/caperiver/outdoors/scrublands/central)
 "SO" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 1
@@ -2609,9 +2596,6 @@
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/desert/dirt/desert_transition_edge1/southwest,
 /area/caperiver/outdoors/scrublands/central)
-"Yj" = (
-/turf/open/desert/rock/deep,
-/area/caperiver/outdoors/chasm)
 "Yk" = (
 /obj/item/weapon/gun/rifle/mar40{
 	pixel_y = 6
@@ -2845,7 +2829,7 @@ Mj
 Mj
 Mj
 Mj
-Aw
+Mj
 Mj
 jz
 Hg
@@ -2877,7 +2861,7 @@ Mj
 Mj
 Mj
 Mj
-Aw
+Mj
 Mj
 Nr
 lP
@@ -2909,7 +2893,7 @@ Mj
 Mj
 Mj
 Mj
-Aw
+Mj
 Mj
 gf
 kJ
@@ -2999,12 +2983,12 @@ mT
 "}
 (11,1,1) = {"
 Mj
-nw
-ze
-nw
-SI
-SI
-Ap
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
 dM
 to
 pB
@@ -3031,12 +3015,12 @@ lv
 "}
 (12,1,1) = {"
 Mj
-nw
-nw
-nw
-SI
-SI
-SI
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
 dM
 to
 XQ
@@ -3063,12 +3047,12 @@ qh
 "}
 (13,1,1) = {"
 Mj
-nw
-HT
-nw
-Qp
-SI
-SI
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
 dM
 GO
 Wv
@@ -3095,12 +3079,12 @@ bI
 "}
 (14,1,1) = {"
 Mj
-nw
-nw
-nw
-SI
-Ap
-SI
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
 dM
 to
 Rh
@@ -3127,12 +3111,12 @@ qh
 "}
 (15,1,1) = {"
 Mj
-nw
-nw
-nw
-SI
-SI
-SI
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
 dM
 to
 NX
@@ -3159,13 +3143,13 @@ ee
 "}
 (16,1,1) = {"
 Mj
-lq
-lq
-cB
-lq
-lq
-lq
-zb
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
+sW
 tk
 BH
 rb
@@ -3191,10 +3175,10 @@ DJ
 "}
 (17,1,1) = {"
 Mj
-Yj
-Yj
-lW
-lW
+Mj
+Mj
+Mj
+Mj
 QG
 KR
 qA
@@ -3223,11 +3207,11 @@ Cs
 "}
 (18,1,1) = {"
 Mj
-Yj
-Yj
-lW
-lW
-QG
+Mj
+Mj
+Mj
+Mj
+ae
 zn
 qI
 QR
@@ -3255,9 +3239,9 @@ tk
 "}
 (19,1,1) = {"
 Mj
-Yj
-lW
-QG
+Mj
+Mj
+ah
 hQ
 Dy
 zn
@@ -3287,9 +3271,9 @@ hM
 "}
 (20,1,1) = {"
 Mj
-Yj
-lW
-QG
+Mj
+Mj
+ai
 wc
 OZ
 zn
@@ -3319,9 +3303,9 @@ tk
 "}
 (21,1,1) = {"
 Mj
-Yj
-lW
-QG
+Mj
+Mj
+aj
 Zh
 Po
 Ie
@@ -3351,9 +3335,9 @@ Rd
 "}
 (22,1,1) = {"
 Mj
-Yj
-lW
-fo
+Mj
+Mj
+aj
 Zh
 kM
 Ie
@@ -3383,9 +3367,9 @@ tk
 "}
 (23,1,1) = {"
 Mj
-Yj
-lW
-QG
+Mj
+Mj
+al
 gY
 SF
 zn
@@ -3415,9 +3399,9 @@ tV
 "}
 (24,1,1) = {"
 Mj
-Yj
-lW
-QG
+Mj
+Mj
+am
 Cx
 TA
 zn
@@ -3447,11 +3431,11 @@ tk
 "}
 (25,1,1) = {"
 Mj
-Yj
-Yj
-lW
-lW
-QG
+Mj
+Mj
+Mj
+Mj
+af
 zn
 gN
 aL
@@ -3479,11 +3463,11 @@ ky
 "}
 (26,1,1) = {"
 Mj
-Yj
-Yj
-lW
-lW
-QG
+Mj
+Mj
+Mj
+Mj
+ag
 ne
 qt
 qt
@@ -3511,12 +3495,12 @@ tk
 "}
 (27,1,1) = {"
 Mj
-Hh
-Hh
-lW
-lW
-lW
-lW
+Mj
+Mj
+Mj
+Mj
+Mj
+Mj
 hM
 hM
 hM
@@ -3548,7 +3532,7 @@ Mj
 Mj
 Mj
 Mj
-Aw
+Mj
 Mj
 hM
 ZH
@@ -3580,7 +3564,7 @@ Mj
 Mj
 Mj
 Mj
-Aw
+Mj
 Mj
 jQ
 Wd
@@ -3612,7 +3596,7 @@ Mj
 Mj
 Mj
 Mj
-Aw
+Mj
 Mj
 Ei
 tk
@@ -3644,7 +3628,7 @@ Mj
 Mj
 Mj
 Mj
-Aw
+Mj
 Mj
 mQ
 tk
@@ -3676,7 +3660,7 @@ Mj
 Mj
 Mj
 Mj
-Aw
+Mj
 Mj
 Mj
 tk
@@ -3708,7 +3692,7 @@ Mj
 Mj
 Mj
 Mj
-Aw
+Mj
 Mj
 Mj
 tk

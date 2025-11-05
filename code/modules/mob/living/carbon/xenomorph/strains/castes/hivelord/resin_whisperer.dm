@@ -12,7 +12,7 @@
 		/datum/action/xeno_action/active_toggle/toggle_speed,
 	)
 	actions_to_add = list(
-		/datum/action/xeno_action/activable/secrete_resin/remote, //third macro
+		/datum/action/xeno_action/activable/secrete_resin/remote/whisperer, //third macro
 		/datum/action/xeno_action/onclick/toggle_long_range/whisperer, //fourth macro
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // readding it so it gets at the end of the ability list
 		/datum/action/xeno_action/active_toggle/toggle_speed, // readding it so it gets at the end of the ability list
@@ -48,13 +48,19 @@
 
 	no_cooldown_msg = TRUE
 
-	build_speed_mod = 2.5 // the actual building part takes twice as long
+	build_speed_mod = 2.5
 
 	macro_path = /datum/action/xeno_action/verb/verb_coerce_resin
 	action_type = XENO_ACTION_CLICK
 
 	var/last_use = 0
 	var/care_about_adjacency = TRUE
+
+/datum/action/xeno_action/activable/secrete_resin/remote/whisperer
+	xeno_cooldown = 1.5 SECONDS // Slower than a drone, faster than a queen.
+	xeno_cooldown_interrupt_modifier = 1 // Spam penalty like value of xeno_cooldown
+	xeno_cooldown_fail = 0.5 // She specializes in this, which is why she adapts better after mistakes.
+	build_speed_mod = 1.5 // She builds the walls and then proceeds to the next ones as planned without any unnecessary waiting.
 
 /datum/action/xeno_action/activable/secrete_resin/remote/use_ability(atom/target_atom, mods)
 	if(!can_remote_build())

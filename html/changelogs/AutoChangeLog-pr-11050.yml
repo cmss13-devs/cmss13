@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - spellcheck: "Most TGUI interfaces will not have a uncapitalized name in the title now"

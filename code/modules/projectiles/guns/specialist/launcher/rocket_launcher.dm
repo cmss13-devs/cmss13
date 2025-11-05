@@ -28,21 +28,10 @@
 		/obj/item/attachable/magnetic_harness,
 	)
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_INTERNAL_MAG
-	var/datum/effect_system/smoke_spread/smoke
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_INTERNAL_MAG|GUN_SMOKE_PARTICLES_LARGE
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 	var/skill_locked = TRUE
-
-/obj/item/weapon/gun/launcher/rocket/Initialize(mapload, spawn_empty)
-	. = ..()
-	smoke = new()
-	smoke.attach(src)
-
-/obj/item/weapon/gun/launcher/rocket/Destroy()
-	QDEL_NULL(smoke)
-	return ..()
-
 
 /obj/item/weapon/gun/launcher/rocket/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 8, "rail_y" = 21, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
@@ -197,8 +186,13 @@
 		huser.SetEarDeafness(max(user.ear_deaf,10))
 
 	var/backblast_loc = get_turf(get_step(user.loc, turn(user.dir, 180)))
-	smoke.set_up(1, 0, backblast_loc, turn(user.dir, 180))
-	smoke.start()
+	var/angle = Get_Angle(loc, target)
+	var/x_component = sin(angle) * -30
+	var/y_component = cos(angle) * -30
+	var/obj/effect/abstract/particle_holder/backblast = new(get_turf(src), /particles/backblast)
+	backblast.particles.velocity = list(x_component, y_component)
+	addtimer(VARSET_CALLBACK(backblast.particles, count, 0), 5)
+	QDEL_IN(backblast, 0.7 SECONDS)
 	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, TRUE, 10)
 	for(var/mob/living/carbon/mob in backblast_loc)
 		if(mob.body_position != STANDING_UP || HAS_TRAIT(mob, TRAIT_EAR_PROTECTION)) //Have to be standing up to get the fun stuff
@@ -213,6 +207,21 @@
 		mob.apply_effect(6, STUTTER)
 		mob.emote("pain")
 
+/particles/backblast
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke"
+	width = 500
+	height = 500
+	count = 100
+	spawning = 100
+	lifespan = 0.7 SECONDS
+	fade = 8 SECONDS
+	grow = 0.1
+	drift = generator(GEN_CIRCLE, 0, 5)
+	scale = 0.3
+	spin = generator(GEN_NUM, -20, 20)
+	velocity = list(50, 0)
+	friction = generator(GEN_NUM, 0.1, 0.5)
 
 //-------------------------------------------------------
 //M5 RPG
@@ -245,7 +254,7 @@
 
 	current_mag = /obj/item/ammo_magazine/rocket/m57a4
 	aim_slowdown = SLOWDOWN_ADS_SUPERWEAPON
-	flags_gun_features = GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_SMOKE_PARTICLES_LARGE
 
 /obj/item/weapon/gun/launcher/rocket/m57a4/set_gun_config_values()
 	..()
@@ -275,7 +284,7 @@
 	attachable_allowed = list()
 
 	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
-	flags_gun_features = GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_SMOKE_PARTICLES_LARGE
 	flags_item = TWOHANDED
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/Initialize()
@@ -392,7 +401,7 @@
 	pixel_x = -7
 	hud_offset = -7
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_SMOKE_PARTICLES_LARGE
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
@@ -417,8 +426,13 @@
 		return
 
 	var/backblast_loc = get_turf(get_step(user.loc, turn(user.dir, 180)))
-	smoke.set_up(1, 0, backblast_loc, turn(user.dir, 180))
-	smoke.start()
+	var/angle = Get_Angle(loc, target)
+	var/x_component = sin(angle) * -30
+	var/y_component = cos(angle) * -30
+	var/obj/effect/abstract/particle_holder/backblast = new(get_turf(src), /particles/backblast)
+	backblast.particles.velocity = list(x_component, y_component)
+	addtimer(VARSET_CALLBACK(backblast.particles, count, 0), 5)
+	QDEL_IN(backblast, 0.7 SECONDS)
 	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, TRUE, 10)
 	for(var/mob/living/carbon/C in backblast_loc)
 		if(C.body_position == STANDING_UP && !HAS_TRAIT(C, TRAIT_EAR_PROTECTION)) //Have to be standing up to get the fun stuff

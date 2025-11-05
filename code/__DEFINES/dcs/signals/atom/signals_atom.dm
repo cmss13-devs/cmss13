@@ -56,5 +56,8 @@
 /// Called when an atom has emp_act called on it, from /atom/emp_act: (severity)
 #define COMSIG_ATOM_EMP_ACT "atom_emp_act"
 
+///from base of atom/bullet_act(): (/obj/projectile)
+#define COMSIG_ATOM_BULLET_ACT "atom_bullet_act"
+
 //from base of atom/Exited(): (atom/movable/exiting, direction)
 #define COMSIG_ATOM_EXITED "atom_exited"

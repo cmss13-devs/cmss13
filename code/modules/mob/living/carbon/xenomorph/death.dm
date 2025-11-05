@@ -175,6 +175,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 /mob/living/carbon/xenomorph/spawn_gibs()
 	xgibs(get_turf(src))
+	new /obj/effect/gib_particles(get_turf(src), get_blood_color())
 
 /mob/living/carbon/xenomorph/dust_animation()
 	new /obj/effect/overlay/temp/dust_animation(loc, src, "dust-a")

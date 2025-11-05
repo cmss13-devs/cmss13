@@ -545,6 +545,24 @@
 	. = ..()
 	set_fire_delay(FIRE_DELAY_TIER_7)
 
+/particles/flamer_fire
+	icon = 'icons/effects/particles/fire.dmi'
+	icon_state = "bonfire"
+	width = 100
+	height = 100
+	count = 5
+	spawning = 2
+	lifespan = 0.7 SECONDS
+	fade = 1 SECONDS
+	grow = -0.01
+	velocity = list(0, 0)
+	position = generator(GEN_BOX, list(-16, -16), list(16, 16), NORMAL_RAND)
+	drift = generator(GEN_VECTOR, list(0, -0.2), list(0, 0.2))
+	gravity = list(0, 0.95)
+	scale = generator(GEN_VECTOR, list(0.3, 0.3), list(1,1), NORMAL_RAND)
+	rotation = 30
+	spin = generator(GEN_NUM, -20, 20)
+
 /obj/flamer_fire
 	name = "fire"
 	desc = "Ouch!"
@@ -579,6 +597,8 @@
 
 	var/weather_smothering_strength = 0
 
+	var/flame_particle_key
+
 /obj/flamer_fire/Initialize(mapload, datum/cause_data/cause_data, datum/reagent/R, fire_spread_amount = 0, datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, atom/target = null, datum/callback/C, fuel_pressure = 1, fire_type = FIRE_VARIANT_DEFAULT)
 	. = ..()
 	if(!R)
@@ -598,6 +618,11 @@
 		color = R.burncolor
 	else
 		flame_icon = R.burn_sprite
+
+	var/obj/effect/abstract/shared_particle_holder/flame_holder = add_shared_particles(/particles/flamer_fire, R.burncolor)
+	if(R.burncolor != "red")
+		flame_holder.color = R.burncolor
+	flame_particle_key = R.burncolor
 
 	set_light(l_color = R.burncolor)
 
@@ -733,6 +758,7 @@
 	to_call = null
 	tied_reagent = null
 	tied_reagents = null
+	remove_shared_particles(flame_particle_key)
 	. = ..()
 
 /obj/flamer_fire/initialize_pass_flags(datum/pass_flags_container/PF)

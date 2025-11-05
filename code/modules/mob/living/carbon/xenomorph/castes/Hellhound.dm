@@ -132,8 +132,8 @@
 	SIGNAL_HANDLER
 	slowdata["movement_slowdown"] *= 0
 
-/mob/living/carbon/xenomorph/hellhound/handle_blood_splatter(splatter_dir)
-	new /obj/effect/bloodsplatter/hellhound(loc, splatter_dir)
+/mob/living/carbon/xenomorph/hellhound/handle_blood_splatter(angle)
+	new /obj/effect/temp_visual/dir_setting/bloodsplatter/hellhound(loc, angle)
 
 /datum/behavior_delegate/hellhound_base
 	name = "Base Hellhound Behavior Delegate"

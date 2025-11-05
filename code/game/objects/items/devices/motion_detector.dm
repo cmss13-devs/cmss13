@@ -14,24 +14,6 @@
 /obj/effect/detector_blip/m717
 	icon_state = "tracker_blip"
 
-/obj/effect/temp_visual//ported (pasted) from TG13
-	icon_state = null
-	anchored = TRUE
-	layer = ABOVE_MOB_LAYER
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	var/duration = 1 SECONDS
-	///if true, will pick a random direction when created.
-	var/randomdir = TRUE
-	///id of the deletion timer
-	var/timerid
-
-/obj/effect/temp_visual/Initialize(mapload)
-	. = ..()
-	if(randomdir)
-		setDir(pick(GLOB.cardinals))
-
-	timerid = QDEL_IN(src, duration)
-
 /obj/effect/temp_visual/minimap_pulse
 	icon = null
 	duration = 0.75 SECONDS

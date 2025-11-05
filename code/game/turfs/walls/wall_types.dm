@@ -558,6 +558,9 @@
 	walltype = WALL_WOOD
 	baseturfs = /turf/open/floor/wood
 
+/turf/closed/wall/wood/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_WOOD, -10, 5)
+
 /turf/closed/wall/wood/update_icon()
 	..()
 	if(special_icon)
@@ -586,6 +589,9 @@
 		var/turf/turf_to_check = get_step(src, direction)
 		if(!isnull(turf_to_check) && !turf_to_check.density && !(istype(turf_to_check, /turf/open/space)))
 			minimap_color = MINIMAP_SOLID
+
+/turf/closed/wall/desertcavewall/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_ROCK, -10, 5, 1)
 
 /turf/closed/wall/rock/brown
 	color = "#826161"
@@ -865,6 +871,8 @@
 		var/area/area = get_area(src)
 		area?.current_resin_count--
 
+/turf/closed/wall/resin/add_debris_element()
+	AddElement(/datum/element/debris, null, -15, 8, 0.7)
 
 /turf/closed/wall/resin/process()
 	. = ..()

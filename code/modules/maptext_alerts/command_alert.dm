@@ -22,7 +22,7 @@
 	style_open = "<span class='langchat' style=font-size:20pt;text-align:center valign='top'>"
 
 /datum/action/innate/message_squad
-	name = "Send Order"
+	name = "Send HUD Announcement"
 	action_icon_state = "screen_order_marine"
 
 /datum/action/innate/message_squad/can_use_action()
@@ -44,7 +44,6 @@
 
 
 GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_XO, JOB_CO, JOB_XO, JOB_UPP_KPT_OFFICER, JOB_UPP_CO_OFFICER, JOB_UPP_MAY_OFFICER, JOB_UPP_LTKOL_OFFICER))
-
 /datum/action/innate/message_squad/update_button_icon()
 	. = ..()
 	button.overlays.Cut()
@@ -69,7 +68,7 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 	for(var/datum/squad/marine/overwatched_squad in GLOB.RoleAuthority.squads)
 		if(overwatched_squad.overwatch_officer == owner)
 			if(overwatched_squad.minimap_color)
-				squad_colors += overwatched_squad.minimap_color
+				squad_colors += overwatched_squad.chat_color
 
 	// just gives white
 	if(!length(squad_colors))
@@ -113,6 +112,7 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 
 	var/list/squads_being_overwatched_by_me = list()
 	var/choice
+	var/check_again_for_cmd_headset
 	if(human_owner.assigned_squad)
 		if(human_owner.assigned_fireteam)
 			var/list/current_squad = human_owner.assigned_squad.marines_list
@@ -126,20 +126,24 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 			override_color = human_owner.assigned_squad.chat_color
 		sound_alert = 'sound/misc/notice2.ogg'
 	else
+		check_again_for_cmd_headset = TRUE
 		var/command_channel_found = FALSE
 		for(var/obj/item/device/radio/headset/headset_check in owner.contents)
 			for(var/channel in headset_check.channels)
 				if(findtext(channel, "command")) //it works
 					command_channel_found = TRUE
 		if(!command_channel_found)
-			to_chat(owner, SPAN_WARNING("You need to have a radio headset with the command frequency"))
+			to_chat(owner, SPAN_WARNING("You need to have a radio headset with the command frequency."))
 			return
 		for(var/datum/squad/marine/overwatched_squad in GLOB.RoleAuthority.squads)
 			if(overwatched_squad.overwatch_officer == human_owner)
 				squads_being_overwatched_by_me.Add(overwatched_squad.name)
+		if(squads_being_overwatched_by_me.len >= 2)
+			squads_being_overwatched_by_me.Add("All Squads") //special case
 		if(human_owner.job in GLOB.ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION)
-			squads_being_overwatched_by_me.Add(human_owner.faction)
+			squads_being_overwatched_by_me.Add(human_owner.faction) //mob internal faction is checked
 		if(!squads_being_overwatched_by_me.len)
+			to_chat(owner, SPAN_WARNING("You need to overwatch a squad to send a HUD announcement."))
 			return
 		else
 			if(squads_being_overwatched_by_me.len == 1)
@@ -152,6 +156,12 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 						if(alerted.faction == human_owner.faction)
 							alert_receivers += alerted
 				else
+					if(choice == "All Squads")
+						alert_receivers += human_owner
+						for(var/datum/squad/marine/alerted_squad in GLOB.RoleAuthority.squads)
+							if(alerted_squad.name in squads_being_overwatched_by_me)
+								alert_receivers += alerted_squad.marines_list
+								override_color = mix_color_from_overwatched_squads(human_owner)
 					for(var/datum/squad/marine/alerted_squad in GLOB.RoleAuthority.squads)
 						if(choice == alerted_squad.name)
 							alert_receivers += alerted_squad.marines_list
@@ -166,6 +176,15 @@ GLOBAL_LIST_INIT(ROLES_GLOBAL_FACTION_MESSAGE_EXCEPTION, list(JOB_WO_CO, JOB_WO_
 		return
 	if(!can_use_action())
 		return //dead or timer or whatever
+	if(check_again_for_cmd_headset)
+		var/command_channel_found = FALSE
+		for(var/obj/item/device/radio/headset/headset_check in owner.contents)
+			for(var/channel in headset_check.channels)
+				if(findtext(channel, "command")) //it works
+					command_channel_found = TRUE
+		if(!command_channel_found)
+			to_chat(owner, SPAN_WARNING("You need to have a radio headset with the command frequency"))
+			return
 	log_game("[key_name(human_owner)] has broadcasted the hud message [text] at [AREACOORD(human_owner)]")
 	S_TIMER_COOLDOWN_START(owner, COOLDOWN_HUD_ORDER, 30 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), 30 SECONDS + 1, TIMER_STOPPABLE)

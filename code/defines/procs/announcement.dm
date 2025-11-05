@@ -40,6 +40,8 @@
 			var/is_shipside = is_mainship_level(current_turf?.z)
 
 			if(isobserver(current_mob)) //observers see everything
+				if(current_mob.client?.prefs?.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
+					continue // Valid target w/o garble
 				if(!is_shipside && !(current_turf.z in coms_zs))
 					targets_to_garble += current_mob
 				continue // Valid target
@@ -81,6 +83,8 @@
 			var/is_shipside = is_mainship_level(current_turf?.z)
 
 			if(isobserver(current_mob)) //observers see everything
+				if(current_mob.client?.prefs?.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
+					continue // Valid target w/o garble
 				if(!is_shipside && !(current_turf.z in coms_zs))
 					targets_to_garble += current_mob
 				continue // Valid target
@@ -99,6 +103,8 @@
 			var/is_shipside = is_mainship_level(current_turf?.z)
 
 			if(isobserver(current_mob)) //observers see everything
+				if(current_mob.client?.prefs?.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
+					continue // Valid target w/o garble
 				if(!is_shipside && !(current_turf.z in coms_zs))
 					targets_to_garble += current_mob
 				continue // Valid target

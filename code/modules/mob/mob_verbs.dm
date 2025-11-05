@@ -257,7 +257,7 @@
 	if(!client)
 		return
 
-	if(client.view != 7)
+	if(client.view != world.view)
 		to_chat(src, SPAN_WARNING("You cannot look up while zoomed!"))
 		return
 

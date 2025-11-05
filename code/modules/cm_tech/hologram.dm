@@ -147,18 +147,18 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	. = ..()
 
 /mob/hologram/look_up/proc/update_view_blockers(mob/user)
-	if(!user.client)
+	if(!user || !user.client)
 		return
 
 	user.client.images -= view_blocker_images
 	view_blocker_images.Cut()
 	var/list/turf/visible_turfs = alist()
 
-	for(var/turf/cur_turf in view(user))
+	for(var/turf/cur_turf in view(world.view + 1, user))
 		visible_turfs["[cur_turf.x]-[cur_turf.y]"] = TRUE
 
-	for(var/x in user.x - world.view to user.x + world.view)
-		for(var/y in user.y - world.view to user.y + world.view)
+	for(var/x in user.x - world.view - 1 to user.x + world.view + 1)
+		for(var/y in user.y - world.view - 1 to user.y + world.view + 1)
 			if(visible_turfs["[x]-[y]"])
 				continue
 
@@ -196,7 +196,8 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 		view_registered = TRUE
 		linked_mob.reset_view()
 
-	update_view_blockers(linked_mob)
+	if(linked_mob)
+		update_view_blockers(linked_mob)
 
 /mob/hologram/look_up/movement_delay()
 	if(linked_mob)

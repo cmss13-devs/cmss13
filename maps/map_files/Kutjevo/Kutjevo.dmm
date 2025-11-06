@@ -188,7 +188,7 @@
 /area/kutjevo/exterior/lz_dunes)
 "aaU" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "lz1_alternative"
+	insert_tag = "lz1alternative"
 	},
 /turf/closed/shuttle{
 	dir = 1;

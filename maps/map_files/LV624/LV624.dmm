@@ -21312,7 +21312,7 @@
 /area/lv624/ground/river/west_river)
 "xJG" = (
 /obj/effect/landmark/nightmare{
-	insert_tag = "lv-skylight"
+	insert_tag = "laststand"
 	},
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/north_central_caves)

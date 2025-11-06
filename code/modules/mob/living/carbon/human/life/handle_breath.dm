@@ -44,8 +44,8 @@
 			if(!block)
 				for(var/obj/effect/particle_effect/smoke/chem/smoke in view(1, src))
 					if(smoke.reagents.total_volume)
-						smoke.reagents.reaction(src, method = INHALATION | TOUCH)
-						smoke.reagents.copy_to(src, 10, method = INHALATION | TOUCH) // reagents enter the blood stream through the lungs
+						smoke.reagents.reaction(src, method = INHALATION)
+						smoke.reagents.copy_to(src, 10, method = INHALATION) // reagents enter the blood stream through the lungs
 						break //If they breathe in the nasty stuff once, no need to continue checking
 
 	handle_breath(air_info)

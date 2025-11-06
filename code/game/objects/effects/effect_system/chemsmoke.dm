@@ -153,7 +153,7 @@
 										continue
 									if(human_in_smoke?.head?.flags_inventory & BLOCKGASEFFECT)
 										continue
-								R.reaction_mob(A, method = INHALATION | TOUCH, volume = R.volume * POTENCY_MULTIPLIER_VLOW / dist, permeable = FALSE)
+								R.reaction_mob(A, method = INHALATION, volume = R.volume * POTENCY_MULTIPLIER_VLOW / dist, permeable = FALSE)
 							else if(istype(A, /obj))
 								R.reaction_obj(A, R.volume)
 					sleep(3 SECONDS)
@@ -207,7 +207,7 @@
 /datum/effect_system/smoke_spread/chem/proc/spawnSmoke(turf/T, icon/I, dist = 1)
 	var/obj/effect/particle_effect/smoke/chem/smoke = new(location)
 	if(length(chemholder.reagents.reagent_list))
-		chemholder.reagents.copy_to(smoke, chemholder.reagents.total_volume / dist, safety = 1, method = INHALATION | TOUCH) //copy reagents to the smoke so mob/breathe() can handle inhaling the reagents
+		chemholder.reagents.copy_to(smoke, chemholder.reagents.total_volume / dist, safety = 1, method = INHALATION) //copy reagents to the smoke so mob/breathe() can handle inhaling the reagents
 	smoke.icon = I
 	smoke.layer = FLY_LAYER
 	smoke.setDir(pick(GLOB.cardinals))
@@ -288,5 +288,5 @@
 		if(human_in_smoke?.head?.flags_inventory & BLOCKGASEFFECT)
 			return FALSE
 	for(var/datum/reagent/reagent in reagents.reagent_list)
-		reagent.reaction_mob(affected_mob, method = INHALATION | TOUCH, volume = reagent.volume * POTENCY_MULTIPLIER_LOW, permeable = FALSE)
+		reagent.reaction_mob(affected_mob, method = INHALATION, volume = reagent.volume * POTENCY_MULTIPLIER_LOW, permeable = FALSE)
 	return TRUE

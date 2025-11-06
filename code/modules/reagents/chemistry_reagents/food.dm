@@ -473,6 +473,8 @@
 	color = "#46271e" // rgb: 70, 39, 30
 	chemclass = CHEM_CLASS_SPECIAL
 	flags = REAGENT_NO_GENERATION
+	preferred_delivery = INGESTION
+	undesired_delivery = ABSORPTION
 
 /datum/reagent/nutriment/faux/bicaridine
 	name = "Faux Bicaridine"

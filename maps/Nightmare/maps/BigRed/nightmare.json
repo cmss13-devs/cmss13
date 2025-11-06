@@ -49,6 +49,6 @@
 		"landmark": "clfmining",
 		"chance": 1.0,
 		"path": "standalone/clfmining.dmm",
-		"when": { "lvevent": "clf" }
+		"when": { "lvevent": "clf", "$population" : ["Midpop", "Highpop"] }
 	}
 ]

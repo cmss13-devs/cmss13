@@ -33,6 +33,6 @@
     "landmark": "rocinante",
     "chance": 1.0,
     "path": "standalone/rocinante.dmm",
-    "when": { "riot_in_progress": "rocinante" }
+    "when": { "riot_in_progress": "rocinante", "$population" : ["Midpop", "Highpop"] }
 }
 ]

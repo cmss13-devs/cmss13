@@ -59,6 +59,7 @@ SUBSYSTEM_DEF(nightmare)
 		if(stat != NIGHTMARE_STATUS_RUNNING)
 			return TRUE // Panic Abort
 		set_scenario_value("gamemode", GLOB.master_mode) // Architectural pitfall - Hope it doesn't change during setup :(
+		set_scenario_value("population", get_population_enum())
 		var/datum/nmcontext/context = contexts[context_name]
 		var/datum/nmnode/root = roots["[context_name]-[NIGHTMARE_ACT_BASE]"]
 		if(root)
@@ -73,6 +74,17 @@ SUBSYSTEM_DEF(nightmare)
 			log_debug("Nightmare: Failed tasks execution for [context_name]")
 	stat = NIGHTMARE_STATUS_DONE
 	return TRUE
+
+/datum/controller/subsystem/nightmare/proc/get_population_enum()
+	if(!SSticker)
+		message_admins("Nightmare subsystem is unable to determine player count!")
+	switch(SSticker?.totalPlayers)
+		if(0 to 70)
+			return "LowPop"
+		if(71 to 130)
+			return "MidPop"
+		else
+			return "HighPop"
 
 /// Load nightmare steps relevant to a map
 /datum/controller/subsystem/nightmare/proc/load_map_config(context_name, map_type)

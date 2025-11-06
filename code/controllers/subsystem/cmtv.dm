@@ -395,7 +395,7 @@ SUBSYSTEM_DEF(cmtv)
 /datum/controller/subsystem/cmtv/proc/handle_view_change(client/source_client, new_view)
 	SIGNAL_HANDLER
 
-	if(source_client.mob != current_perspective)
+	if(source_client != current_perspective)
 		return
 
 	var/y = (new_view * 2) + 1

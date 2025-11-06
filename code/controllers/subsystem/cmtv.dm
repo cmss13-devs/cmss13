@@ -478,21 +478,24 @@ SUBSYSTEM_DEF(cmtv)
 	if(!CONFIG_GET(string/cmtv_api) || !CONFIG_GET(string/cmtv_api_key))
 		return FALSE
 
+	WAIT_DB_READY
+
 	UNTIL(initialized)
 
 	if(!potential_subscriber)
 		return FALSE
 
-	var/datum/view_record/twitch_link/link = locate() in DB_VIEW(/datum/view_record/twitch_link, DB_AND(
+	var/list/datum/view_record/twitch_link/links = DB_VIEW(/datum/view_record/twitch_link, DB_AND(
 		DB_COMP("ckey", DB_EQUALS, potential_subscriber.ckey),
-		DB_COMP("twitch_id", DB_IS)
+		DB_COMP("twitch_id", DB_ISNOT)
 	))
 
-	if(!link)
+	if(!length(links))
 		return FALSE
 
-	if(link.twitch_id in subscribers)
-		return TRUE
+	for(var/datum/view_record/twitch_link/link as anything in links)
+		if(link.twitch_id in subscribers)
+			return TRUE
 
 	return FALSE
 

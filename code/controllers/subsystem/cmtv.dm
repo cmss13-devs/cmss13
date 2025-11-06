@@ -483,10 +483,13 @@ SUBSYSTEM_DEF(cmtv)
 	if(!potential_subscriber)
 		return FALSE
 
-	var/datum/view_record/twitch_link/link = locate() in DB_VIEW(DB_AND(
+	var/datum/view_record/twitch_link/link = locate() in DB_VIEW(/datum/view_record/twitch_link, DB_AND(
 		DB_COMP("ckey", DB_EQUALS, potential_subscriber.ckey),
 		DB_COMP("twitch_id", DB_IS)
 	))
+
+	if(!link)
+		return FALSE
 
 	if(link.twitch_id in subscribers)
 		return TRUE

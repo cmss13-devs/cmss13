@@ -231,7 +231,7 @@
 	var/max_constructions = hive.hive_structures_limit[structure_template.name]
 	var/remaining_constructions = max_constructions - hive.get_structure_count(structure_template.name)
 	visible_message(SPAN_XENONOTICE("Из земли появляется густая субстанция и формируется в [declent_ru_initial(structure_template.name, GENITIVE, structure_template.name)]."), // SS220 EDIT ADDICTION
-		SPAN_XENONOTICE("Мы обозначаем новую конструкцию [declent_ru_initial(structure_template.name, ACCUSATIVE, structure_template.name)] (осталось [remaining_constructions]/[max_constructions])."), null, 5) // SS220 EDIT ADDICTION
+		SPAN_XENONOTICE("Мы обозначаем новую конструкцию [declent_ru_initial(structure_template.name, GENITIVE, structure_template.name)] (осталось [remaining_constructions]/[max_constructions])."), null, 5) // SS220 EDIT ADDICTION
 	playsound(new_structure, "alien_resin_build", 25)
 
 	if(hive.living_xeno_queen)

@@ -173,7 +173,7 @@
 		var/list/entry = list()
 		var/datum/resin_construction/RC = GLOB.resin_constructions_list[type]
 
-		entry["name"] = RC.name
+		entry["name"] = capitalize(declent_ru_initial(RC.construction_name, NOMINATIVE, RC.name))
 		entry["desc"] = RC.desc
 		entry["image"] = replacetext(RC.construction_name, " ", "-")
 		entry["plasma_cost"] = RC.cost
@@ -195,7 +195,7 @@
 /datum/action/xeno_action/onclick/choose_resin/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "ChooseResin", "Choose Resin")
+		ui = new(user, src, "ChooseResin", "Выбор смолы")
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
@@ -233,7 +233,7 @@
 		return
 	var/datum/resin_construction/resin_construction = GLOB.resin_constructions_list[selected_type]
 	if(to_chat)
-		to_chat(usr, SPAN_NOTICE("We will now build <b>[resin_construction.construction_name]\s</b> when secreting resin."))
+		to_chat(usr, SPAN_NOTICE("Мы теперь будем строить <b>[declent_ru_initial(resin_construction.construction_name, ACCUSATIVE, resin_construction.construction_name)]</b> при выделении смолы."))
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, resin_construction.construction_name)
 
@@ -302,18 +302,18 @@
 			tally++
 	if(tally >= max_markers)
 		to_chat(X, SPAN_XENOWARNING("Мы достигли максимально возможного количества смоляных меток."))
-		var/list/promptlist = list("Yes", "No")
+		var/list/promptlist = list("Да", "Нет")
 		var/obj/effect/alien/resin/marker/Goober = null
 		var/promptuser = null
 		for(var/i=1, i<=length(X.hive.resin_marks))
 			Goober = X.hive.resin_marks[i]
 			if(Goober.createdby == X.nicknumber)
-				promptuser = tgui_input_list(X, "Remove oldest placed mark: '[Goober.mark_meaning.name]!'?", "Mark limit reached.", promptlist, theme="hive_status")
+				promptuser = tgui_input_list(X, "Удалить самую старую метку: '[Goober.mark_meaning.name]!'?", "Достигнут лимит меток.", promptlist, theme="hive_status")
 				break
 			i++
-		if(promptuser == "No")
+		if(promptuser == "Нет")
 			return
-		else if(promptuser == "Yes")
+		else if(promptuser == "Да")
 			qdel(Goober)
 			if(X.make_marker(target_turf))
 				apply_cooldown()
@@ -343,7 +343,7 @@
 		return FALSE
 
 	if(!acid_level)
-		to_chat(src, SPAN_XENONOTICE("Вы не можете наполнить [target] кислотой.")) // SS220 EDIT ADDICTION
+		to_chat(src, SPAN_XENONOTICE("Вы не можете наполнить [target.declent_ru(ACCUSATIVE)] кислотой.")) // SS220 EDIT ADDICTION
 		return FALSE
 
 	var/trap_acid_level = 0
@@ -406,6 +406,13 @@
 	if(!(locate(/datum/action/xeno_action/onclick/emit_pheromones) in actions))
 		to_chat(src, SPAN_XENOWARNING("Мы не можем выделять феромоны!"))
 		return
+	// BANDAMARINES EDIT START
+	var/static/list/phero_selections_en_to_ru = list("Help" = "Подсказка", "Frenzy" = "Безумие", "Warding" = "Защита", "Recovery" = "Восстанов.")
+	var/static/list/phero_selections_ru_to_en = list()
+	if(!length(phero_selections_ru_to_en))
+		for(var/key in phero_selections_en_to_ru)
+			phero_selections_ru_to_en[phero_selections_en_to_ru[key]] = key
+	// BANDAMARINES EDIT END
 	if(!pheromone)
 		if(current_aura)
 			current_aura = null
@@ -418,29 +425,36 @@
 			if(client.prefs && client.prefs.no_radials_preference)
 				pheromone = tgui_input_list(src, "Выберите какие феромоны вы хотите выделять", "Феромоны", caste.aura_allowed + "help" + "cancel", theme="hive_status")
 				if(pheromone == "help")
-					to_chat(src, SPAN_NOTICE("<br>Феромоны дают усиления всем ксеноморфам в большом радиусе за счёт запасов плазмы, а именно:<br><b>Безумие (красный)</b> - повышает скорость бега, урон и шанс сбить маски охотников за головами.<br><b>Охрана (зелёный)</b> - в критическом состоянии повышает порог отрицательного здоровья и замедляет кровотечение вне травы улья.<br><b>Восстановление (синий)</b> - повышает регенерацию плазмы и здоровья.<br>"))
+					to_chat(src, SPAN_NOTICE("<br>Феромоны дают усиления всем ксеноморфам в большом радиусе за счёт запасов плазмы, а именно:<br><b>Безумие (красный)</b> - повышает скорость бега, урон и шанс сбить маски охотников за головами.<br><b>Защита (зелёный)</b> - в критическом состоянии повышает порог отрицательного здоровья и замедляет кровотечение вне травы улья.<br><b>Восстановление (синий)</b> - повышает регенерацию плазмы и здоровья.<br>"))
 					return
 				if(!pheromone || pheromone == "cancel" || current_aura || !check_state(1)) //If they are stacking windows, disable all input
 					return
 			else
+				//BANDAMARINES EDIT START
 				var/static/list/phero_selections = list("Help" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_help"), "Frenzy" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_frenzy"), "Warding" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_warding"), "Recovery" = image(icon = 'icons/mob/radial.dmi', icon_state = "phero_recov"))
-				pheromone = lowertext(show_radial_menu(src, src.client?.eye, phero_selections))
+				var/static/list/phero_selections_ru = list()
+				if(!length(phero_selections_ru))
+					for(var/key in phero_selections)
+						phero_selections_ru[phero_selections_en_to_ru[key] || key] = phero_selections[key]
+				var/pheromone_ru = show_radial_menu(src, src.client?.eye, phero_selections_ru)
+				pheromone = lowertext(phero_selections_ru_to_en[pheromone_ru] || pheromone_ru)
+				// BANDAMARINES EDIT END
 				if(pheromone == "help")
-					to_chat(src, SPAN_XENONOTICE("<br>Феромоны дают усиления всем ксеноморфам в большом радиусе за счёт запасов плазмы, а именно:<br><b>Безумие (красный)</b> - повышает скорость бега, урон и шанс сбить маски охотников за головами.<br><b>Охрана (зелёный)</b> - в критическом состоянии повышает порог отрицательного здоровья и замедляет кровотечение вне травы улья.<br><b>Восстановление (синий)</b> - повышает регенерацию плазмы и здоровья.<br>"))
+					to_chat(src, SPAN_XENONOTICE("<br>Феромоны дают усиления всем ксеноморфам в большом радиусе за счёт запасов плазмы, а именно:<br><b>Безумие (красный)</b> - повышает скорость бега, урон и шанс сбить маски охотников за головами.<br><b>Защита (зелёный)</b> - в критическом состоянии повышает порог отрицательного здоровья и замедляет кровотечение вне травы улья.<br><b>Восстановление (синий)</b> - повышает регенерацию плазмы и здоровья.<br>"))
 					return
 				if(!pheromone || current_aura || !check_state(1)) //If they are stacking windows, disable all input
 					return
 	if(pheromone)
 		if(pheromone == current_aura)
-			to_chat(src, SPAN_XENOWARNING("Мы уже выделяем [pheromone]-феромоны!")) // SS220 EDIT ADDICTION
+			to_chat(src, SPAN_XENOWARNING("Мы уже выделяем феромоны '[lowertext(phero_selections_en_to_ru[capitalize(pheromone)]) || pheromone]'!")) // SS220 EDIT ADDICTION
 			return
 		if(!check_plasma(emit_cost))
 			to_chat(src, SPAN_XENOWARNING("У нас недостаточно плазмы!"))
 			return
 		use_plasma(emit_cost)
 		current_aura = pheromone
-		visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] начинает выделять [pheromone]-феромоны."), // SS220 EDIT ADDICTION
-		SPAN_XENOWARNING("Мы начинаем выделять [pheromone]-феромоны."), null, 5) // SS220 EDIT ADDICTION
+		visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] начинает выделять феромоны '[lowertext(phero_selections_en_to_ru[capitalize(pheromone)]) || pheromone]'."), // SS220 EDIT ADDICTION
+		SPAN_XENOWARNING("Мы начинаем выделять феромоны '[lowertext(phero_selections_en_to_ru[capitalize(pheromone)]) || pheromone]'."), null, 5) // SS220 EDIT ADDICTION
 		SEND_SIGNAL(src, COMSIG_XENO_START_EMIT_PHEROMONES, pheromone)
 		playsound(loc, "alien_drool", 25)
 
@@ -759,14 +773,19 @@
 		to_chat(xeno, SPAN_WARNING("The weeds are still recovering from the death of the hive core, wait until the weeds have recovered!"))
 		return FALSE
 	if(xeno.hive.has_structure(XENO_STRUCTURE_CORE) || !xeno.hive.can_build_structure(XENO_STRUCTURE_CORE))
-		choice = tgui_input_list(xeno, "Choose a structure to build", "Build structure", xeno.hive.hive_structure_types + "help", theme = "hive_status")
+		var/static/list/hive_structure_types_en_to_ru = list()
+		if(!length(hive_structure_types_en_to_ru))
+			for(var/structure_name in xeno.hive.hive_structure_types)
+				hive_structure_types_en_to_ru[structure_name] = capitalize(declent_ru_initial(structure_name, NOMINATIVE, structure_name))
+			hive_structure_types_en_to_ru["help"] = "Подсказка"
+		choice = tgui_input_list(xeno, "Выберите структуру для простойки", "Строительство структур", hive_structure_types_en_to_ru, theme = "hive_status", associative_list = TRUE)
 		if(!choice)
 			return
 		if(choice == "help")
 			var/message = "Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of plasma to construct the following:<br>"
 			for(var/structure_name in xeno.hive.hive_structure_types)
 				var/datum/construction_template/xenomorph/structure_type = xeno.hive.hive_structure_types[structure_name]
-				message += "<b>[capitalize_first_letters(structure_name)]</b> - [initial(structure_type.description)]<br>"
+				message += "<b>[capitalize(declent_ru_initial(structure_name, NOMINATIVE, structure_name))]</b> - [initial(structure_type.description)]<br>"
 			to_chat(xeno, SPAN_NOTICE(message))
 			return TRUE
 	if(!xeno.check_state(TRUE) || !xeno.check_plasma(400))

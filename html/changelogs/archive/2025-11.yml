@@ -59,3 +59,36 @@
       sound
   - imageadd: added new bracer sprites
   - imageadd: replaced old bracer sprite with new retro sprite.
+2025-11-04:
+  Zenith:
+  - bugfix: fixed the clf kutjevo insert by reverting it back to the correct version.
+2025-11-05:
+  Blundir:
+  - rscadd: 'contraband weapons box in hangar now has: R4T rifle, db shotgun, L54
+      pistol , NP92 pistol'
+  - rscdel: L42A been removed from pool due to huge surplus of it in maints
+  PhantornRU:
+  - balance: 'Hivelord Whisperer build cooldown: 2.5 => 1.5'
+  - balance: 'Hivelord Whisperer building penalty has been reduced: 8 => 2'
+2025-11-06:
+  Blundir:
+  - rscadd: 'Spearhead 2006M new CO gun, can perform revolver tricks and has a unique
+      sound set, comes in normal variant and three council variants: gold, gold with
+      black handle, silver'
+  - rscadd: golden Unica, golden Deagle returned as an option for CO council sidearm
+      selection
+  - rscadd: standard non camo comforting Unica been added to normal CO sidearm selection
+  - imageadd: slightly changed palette of a golden Deagle and sligtly improved inhands
+      and inbelt sprites of it
+  - code_imp: moves revolver tricks to a core revolver code, revolver tricks are now
+      given by a simple var
+  - code_imp: fixed some oddities in CO sidearm code for WO and FORECON
+  Drathek:
+  - spellcheck: Most TGUI interfaces will not have a uncapitalized name in the title
+      now
+  Puckaboo2:
+  - bugfix: Filled Thewi is shiny, again.
+  - code_imp: Forces Thwei to use a different overlay system than regular autoinjectors.
+  - bugfix: Iron is no longer pink.
+  jupyterkat:
+  - bugfix: emissions are bright again

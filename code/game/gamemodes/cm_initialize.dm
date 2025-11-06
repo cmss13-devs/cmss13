@@ -1053,6 +1053,12 @@ Additional game mode variables.
 		var/obj/structure/machinery/cm_vending/sorted/CVS = i
 		CVS.populate_product_list_and_boxes(gear_scale)
 
+	for(var/chem_storage_network in GLOB.chemical_data.chemical_networks)
+		var/obj/structure/machinery/chem_storage/chem_storage = GLOB.chemical_data.chemical_networks[chem_storage_network]
+		if(!chem_storage.dynamic_storage)
+			continue
+		chem_storage.calculate_dynamic_storage(gear_scale)
+
 	//Scale the amount of cargo points through a direct multiplier
 	GLOB.supply_controller.points += floor(GLOB.supply_controller.points_scale * gear_scale)
 

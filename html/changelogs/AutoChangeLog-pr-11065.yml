@@ -1,4 +1,0 @@
-author: "jupyterkat"
-delete-after: True
-changes:
-  - bugfix: "emissions are bright again"

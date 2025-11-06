@@ -190,6 +190,10 @@
 	item_state = "wypacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_wypack")
 
+/obj/item/storage/fancy/cigarettes/wypacket/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/storage/fancy/cigarettes/wypacket_4
 	name = "\improper Weyland-Yutani Gold mini packet"
 	desc = "Building Better Worlds, and rolling better cigarettes. Compact and ready for your executive ventures, protecting corporate assets never felt cooler."
@@ -198,6 +202,10 @@
 	item_state = "wypacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_wypack")
 	storage_slots = 4
+
+/obj/item/storage/fancy/cigarettes/wypacket_4/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/fancy/cigarettes/balaji
 	name = "\improper Balaji Imperial packet"
@@ -263,6 +271,10 @@
 	item_state = "kpacket"
 	item_state_slots = list(WEAR_AS_GARB = "cig_kpack")
 
+/obj/item/storage/fancy/cigarettes/kpack/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/koorlander)
+
 /obj/item/storage/fancy/cigarettes/arcturian_ace
 	name = "\improper Arcturian Ace packet"
 	desc = "An entry level brand of cigarettes with a bright blue packaging. You're guessing these aren't really good for you, but it doesn't matter when it's Arcturian baby!"
@@ -313,6 +325,10 @@
 		/obj/item/toy/trading_card,
 	)
 	var/obj/item/toy/trading_card/trading_card
+
+/obj/item/storage/fancy/cigarettes/trading_card/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/fancy/cigarettes/trading_card/fill_preset_inventory()
 	flags_atom |= NOREACT
@@ -451,6 +467,10 @@
 	desc = "A small book of cheap paper matches. Good luck getting them to light."
 	icon_state = "mpacket_kl"
 
+/obj/item/storage/fancy/cigar/matchbook/koorlander/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/koorlander)
+
 /obj/item/storage/fancy/cigar/matchbook/exec_select
 	name = "\improper Executive Select matchbook"
 	desc = "A small book of expensive paper matches. These ones light almost every time!"
@@ -471,6 +491,10 @@
 	icon_state = "mpacket_wy"
 	light_chance = 60
 	burn_chance = 40
+
+/obj/item/storage/fancy/cigar/matchbook/wy_gold/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 // VIAL BOX
 
@@ -499,7 +523,7 @@
 	if(is_random)
 		var/spawns = rand(1,4)
 		for(var/i=1; i <= storage_slots; i++)
-			if(i<=spawns)
+			if(i<=spawns && prob(40))
 				new /obj/item/reagent_container/glass/beaker/vial/random(src)
 			else
 				new /obj/item/reagent_container/glass/beaker/vial(src)
@@ -509,7 +533,8 @@
 
 /obj/item/storage/fancy/vials/random
 	unacidable = TRUE
-	is_random = 1
+	is_random = TRUE
+
 
 /obj/item/storage/fancy/vials/empty
 	start_vials = 0
@@ -578,7 +603,7 @@
 	name = "pack of [capitalize(collection_color)] WeyYu Military Trading Cards"
 	desc = "A 5 pack of [capitalize(collection_color)] Weyland Yutani Military Trading Cards."
 	icon_state = "trading_[collection_color]_pack_closed"
-
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/fancy/trading_card/fill_preset_inventory()
 

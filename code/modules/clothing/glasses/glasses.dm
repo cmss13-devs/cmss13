@@ -167,12 +167,13 @@
 	icon_state = "purple"
 	item_state = "glasses"
 	deactive_state = "purple_off"
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/hudgoggles)
 	toggleable = TRUE
 	flags_inventory = COVEREYES
 	req_skill = SKILL_RESEARCH
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
+	matter = list("glass" = 500,"plastic" = 500)
 
 /obj/item/clothing/glasses/science/prescription
 	name = "prescription reagent scanner HUD goggles"
@@ -899,6 +900,7 @@
 	darkness_view = -1
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
+	flags_inv_hide = HIDEEYES
 	eye_protection = EYE_PROTECTION_FLAVOR
 
 /obj/item/clothing/glasses/sunglasses/blindfold

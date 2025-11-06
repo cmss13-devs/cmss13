@@ -153,7 +153,7 @@ for it but just ignore it.
 		return "1"
 	else if (ending == "!")
 		return "2"
-	return "0"
+	return "4"
 
 //parses the message mode code (e.g. :h, :w) from text, such as that supplied to say.
 //returns the message mode string or null for no message mode.

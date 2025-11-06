@@ -12,7 +12,7 @@
 		/datum/action/xeno_action/active_toggle/toggle_speed,
 	)
 	actions_to_add = list(
-		/datum/action/xeno_action/activable/secrete_resin/remote, //third macro
+		/datum/action/xeno_action/activable/secrete_resin/remote/whisperer, //third macro
 		/datum/action/xeno_action/onclick/toggle_long_range/whisperer, //fourth macro
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord, // readding it so it gets at the end of the ability list
 		/datum/action/xeno_action/active_toggle/toggle_speed, // readding it so it gets at the end of the ability list

@@ -1,6 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - balance: "New xenomorph special structure \"Plasma Tree\""
-  - rscadd: "Adds a new xenomorph special structure named the \"Plasma Tree\" it replenishes plasma to nearby xenos every few seconds, works like the recovery node."
-  - code_imp: "Made \"health\" and \"plasma\" span their own color on examine for both structures"

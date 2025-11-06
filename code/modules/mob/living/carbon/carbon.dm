@@ -43,7 +43,7 @@
 		var/mob/living/carbon/xenomorph/larva/larva_burst = user
 		larva_burst.chest_burst(src)
 
-/mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
+/mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 	var/gibbing = FALSE
 
@@ -66,7 +66,7 @@
 		gib(last_damage_data)
 		return
 
-	apply_damage(severity, BRUTE)
+	apply_damage(severity, BRUTE, enviro=enviro)
 	updatehealth()
 
 	var/knock_value = min( round( severity*0.1 ,1) ,10)
@@ -223,7 +223,7 @@
 	if(shock_damage<1)
 		return FALSE
 
-	src.apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution")
+	apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution", enviro=TRUE)
 
 	playsound(loc, "sparks", 25, 1)
 	if(shock_damage > 10)
@@ -504,6 +504,9 @@
 
 // Adding traits, etc after xeno restrains and hauls us
 /mob/living/carbon/human/proc/handle_haul(mob/living/carbon/xenomorph/xeno)
+	SetStun(0, ignore_canstun=TRUE)
+	SetKnockDown(0, ignore_canstun=TRUE)
+
 	ADD_TRAIT(src, TRAIT_FLOORED, TRAIT_SOURCE_XENO_HAUL)
 	ADD_TRAIT(src, TRAIT_HAULED, TRAIT_SOURCE_XENO_HAUL)
 	ADD_TRAIT(src, TRAIT_NO_STRAY, TRAIT_SOURCE_XENO_HAUL)
@@ -546,9 +549,12 @@
 	remove_filter("hauled_shadow")
 	forceMove(location)
 	for(var/obj/object in location)
-		if(istype(object, /obj/effect/alien/resin/trap) || istype(object, /obj/effect/alien/egg))
+		if(istype(object, /obj/effect/alien/resin/trap) || istype(object, /obj/effect/alien/egg) || istype(object, /obj/effect/alien/resin/special/eggmorph))
 			object.HasProximity(src)
+		if(istype(object, /obj/effect/egg_trigger))
+			object.Crossed(src)
 	next_haul_resist = 0
+	SEND_SIGNAL(src, COMSIG_MOB_UNHAULED)
 
 
 /mob/living/carbon/proc/extinguish_mob(mob/living/carbon/C)

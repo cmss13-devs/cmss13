@@ -285,6 +285,8 @@
 // GUN TRAITS
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
 
+#define TRAIT_GUN_SILENCED_ALT "t_gun_silenced_alt" // Different sound
+
 #define TRAIT_GUN_BIPODDED "t_gun_bipodded"
 
 #define TRAIT_GUN_LIGHT_FORCE_DEACTIVATED "t_gun_light_deactivated"
@@ -294,6 +296,9 @@
 
 /// If this item can hear things from inside one level of contents.
 #define TRAIT_HEARS_FROM_CONTENTS "t_hears_from_contents"
+
+///if this item can allow reactions to occur "fully" in itself. missing this trait makes the reaction inert. it will still mix, but safely.
+#define TRAIT_REACTS_UNSAFELY "t_reacts_unsafely"
 
 // Miscellaneous item traits.
 // Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)

@@ -38,17 +38,20 @@
 /mob/living/carbon/xenomorph/proc/update_progression()
 	if(isnull(hive))
 		return
+	if(!caste)
+		return
+
 	var/progress_amount = 1
 	if(SSxevolution)
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
-	var/ovipositor_check = (hive.allow_no_queen_evo || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
-	if(caste && caste.evolution_allowed && (ovipositor_check || caste?.evolve_without_queen))
+	var/ovipositor_check = hive.allow_no_queen_evo || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor)
+	if(caste.evolution_allowed && (ovipositor_check || caste.evolve_without_queen))
 		if(evolution_stored >= evolution_threshold)
 			if(!got_evolution_message)
 				evolve_message()
 				got_evolution_message = TRUE
 
-			if(ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
+			if(ROUND_TIME < XENO_ROUNDSTART_BOOSTED_EVO_TIME)
 				evolution_stored += progress_amount
 				return
 
@@ -420,13 +423,15 @@ Make sure their actual health updates immediately.*/
 			queen_locator()
 		return
 
-	if(tracking_atom.loc.z != loc.z && SSinterior.in_interior(tracking_atom))
+	if(!SSmapping.same_z_map(tracking_atom.loc.z, loc.z) && SSinterior.in_interior(tracking_atom))
 		var/datum/interior/interior = SSinterior.get_interior_by_coords(tracking_atom.x, tracking_atom.y, tracking_atom.z)
 		var/atom/exterior = interior.exterior
 		if(exterior)
 			tracking_atom = exterior
 
-	if(tracking_atom.loc.z != loc.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
+	locator.overlays.Cut()
+
+	if( !SSmapping.same_z_map(tracking_atom.loc.z, loc.z) || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
 		locator.icon_state = "trackondirect"
 	else
 		var/area/our_area = get_area(loc)
@@ -434,6 +439,10 @@ Make sure their actual health updates immediately.*/
 		if(our_area.fake_zlevel == target_area.fake_zlevel)
 			locator.setDir(Get_Compass_Dir(src, tracking_atom))
 			locator.icon_state = "trackon"
+			if(tracking_atom.loc.z > loc.z)
+				locator.overlays |= image('icons/mob/hud/alien_standard.dmi', "up")
+			if(tracking_atom.loc.z < loc.z)
+				locator.overlays |= image('icons/mob/hud/alien_standard.dmi', "down")
 		else
 			locator.icon_state = "trackondirect"
 
@@ -450,7 +459,7 @@ Make sure their actual health updates immediately.*/
 
 	ML.overlays.Cut()
 
-	if(tracked_marker_z_level != loc.z) //different z levels
+	if(!SSmapping.same_z_map(tracked_marker_z_level, loc.z)) //different z levels
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "z_direction")
@@ -465,6 +474,12 @@ Make sure their actual health updates immediately.*/
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "direction")
+		/*if(tracked_marker_z_level > loc.z)
+			ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "up")
+		if(tracked_marker_z_level < loc.z)
+			ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "down")*/
+
+
 	else //same z level, different fake z levels (decks of almayer)
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")

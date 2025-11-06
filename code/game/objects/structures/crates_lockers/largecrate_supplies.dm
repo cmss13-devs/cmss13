@@ -110,8 +110,8 @@
 	supplies = list(/obj/item/weapon/gun/rifle/m41a = 10)
 
 /obj/structure/largecrate/supply/weapons/shotgun
-	name = "\improper M37A1 pump action shotgun weapons chest (x10)"
-	desc = "A weapons chest containing ten M37A1 pump shotguns."
+	name = "\improper M37A2 pump action shotgun weapons chest (x10)"
+	desc = "A weapons chest containing ten M37A2 pump shotguns."
 	supplies = list(/obj/item/weapon/gun/shotgun/pump/m37a = 10)
 
 /obj/structure/largecrate/supply/weapons/m39
@@ -298,7 +298,7 @@
 /obj/structure/largecrate/supply/generator
 	name = "\improper P.A.C.M.A.N. crate"
 	desc = "A crate containing a P.A.C.M.A.N. generator, some fuel, and some cable coil to get your power up and going."
-	supplies = list(/obj/structure/machinery/power/port_gen/pacman = 1, /obj/item/stack/sheet/mineral/phoron/medium_stack = 1, /obj/item/stack/cable_coil/yellow = 3)
+	supplies = list(/obj/structure/machinery/power/power_generator/port_gen/pacman = 1, /obj/item/stack/sheet/mineral/phoron/medium_stack = 1, /obj/item/stack/cable_coil/yellow = 3)
 
 /obj/structure/largecrate/supply/medicine
 	name = "medical crate"

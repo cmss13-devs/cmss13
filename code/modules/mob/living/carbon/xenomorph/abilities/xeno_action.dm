@@ -1,5 +1,6 @@
 /datum/action/xeno_action
 	icon_file = 'icons/mob/hud/actions_xeno.dmi'
+	button_icon_state = "template_xeno"
 	var/plasma_cost = 0
 	var/macro_path
 	var/action_type = XENO_ACTION_CLICK // Determines how macros interact with this action. Defines are in xeno.dm in the defines folder.
@@ -25,6 +26,9 @@
 	var/charge_timer_id = TIMER_ID_NULL
 
 	var/charges = NO_ACTION_CHARGES
+
+	/// Should the ability trigger an acid overlay for their respective caste upon action selection and deselection.
+	var/ability_uses_acid_overlay = FALSE
 
 /datum/action/xeno_action/New(Target, override_icon_state)
 	. = ..()
@@ -175,10 +179,12 @@
 		if(xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
 			return
 		to_chat(xeno, "You will no longer use [name] with [xeno.get_ability_mouse_name()].")
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 		xeno.set_selected_ability(null)
 		if(charge_time)
 			stop_charging_ability()
+		if(ability_uses_acid_overlay)
+			xeno.overlays -= xeno.acid_overlay
 	else
 		to_chat(xeno, "You will now use [name] with [xeno.get_ability_mouse_name()].")
 		if(xeno.selected_ability)
@@ -192,11 +198,17 @@
 			to_chat(xeno, SPAN_INFO("It has [charges] uses left."))
 		if(charge_time)
 			start_charging_ability()
+		if(ability_uses_acid_overlay && !xeno.resting && xeno.stat != DEAD)
+			if(!HAS_TRAIT(xeno, TRAIT_FLOORED))
+				xeno.overlays |= xeno.acid_overlay
+
 
 // Called when a different action is clicked on and this one is deselected.
 /datum/action/xeno_action/activable/proc/action_deselect()
-	button.icon_state = "template"
-
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(ability_uses_acid_overlay)
+		xeno.overlays -= xeno.acid_overlay
+	button.icon_state = "template_xeno"
 
 /datum/action/xeno_action/activable/remove_from(mob/living/carbon/xenomorph/xeno)
 	..()
@@ -447,7 +459,7 @@
 
 /datum/action/xeno_action/active_toggle/proc/disable_toggle()
 	action_active = FALSE
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"
 	if(action_end_message)
 		to_chat(owner, SPAN_WARNING(action_end_message))
 

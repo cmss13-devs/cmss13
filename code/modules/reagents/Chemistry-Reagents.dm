@@ -443,7 +443,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /// convert delivery method to a string for healthscan displays
 /datum/reagent/proc/delivery_method_to_string(delivery_method)
 	if(!delivery_method || delivery_method == NO_DELIVERY)
-		return "Unknown"
+		return " - DV: Unknown"
 
 	var/list/methods = list()
 	switch(delivery_method)

@@ -372,6 +372,8 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_UNKNOWN = 1)
+	preferred_delivery = ANY_DELIVERY
+	undesired_delivery = NO_DELIVERY
 
 /datum/reagent/medical/ethylredoxrazine // FUCK YOU, ALCOHOL
 	name = "Ethylredoxrazine"
@@ -437,4 +439,6 @@
 	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_CRITICALSTABILIZE = 1, PROPERTY_CROSSMETABOLIZING = 2)
 	flags = REAGENT_TYPE_MEDICAL | REAGENT_NO_GENERATION
+	preferred_delivery = IMPLANTATION // for all intents and purposes, yeah
+	undesired_delivery = NO_DELIVERY
 

@@ -380,8 +380,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			var/mob/living/carbon/C = loc
 
 			if(prob(15))
-				reagents.reaction(C, INHALATION | INGESTION)
-			reagents.trans_to(C, REAGENTS_METABOLISM)
+				reagents.reaction(C, INHALATION)
+			reagents.trans_to(C, REAGENTS_METABOLISM, method = INHALATION)
 		else // else just remove some of the reagents
 			reagents.remove_any(REAGENTS_METABOLISM)
 	return

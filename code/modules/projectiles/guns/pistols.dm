@@ -180,7 +180,7 @@
 	desc = "A variant of the legendary M1911 pistol in use by USCM command elements. Based off the modernized M48A4, it has been modified to more closely resemble a classic M1911 in shape, while retaining modern technology features like a discreet ammo counter. Chambered in .45 ACP."
 	icon_state = "m1911c"
 	item_state = "m4a3"
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER|GUN_AUTO_EJECT_CASINGS
 	current_mag = /obj/item/ammo_magazine/pistol/m1911/highimpact
 
 /obj/item/weapon/gun/pistol/m1911/custom/set_gun_config_values()

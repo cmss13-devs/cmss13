@@ -1289,7 +1289,7 @@ and you're good to go.
 	if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS)) //snowflake define for bolt actions or other weird guns that eject casings manually
 		empty_casings++ // accurate case ejections for these guns would be better
 
-	else if(prob(15)) // dont want to litter the ground too much
+	else if(prob(15) && flags_gun_features & GUN_AUTO_EJECT_CASINGS) // dont want to litter the ground too much, also dont want to unnecessarily increase the count for caseless weapons
 		empty_casings++
 
 	if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
@@ -1532,7 +1532,7 @@ and you're good to go.
 		if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
 			empty_casings++
 
-		else if(prob(15))
+		else if(prob(15) && flags_gun_features & GUN_AUTO_EJECT_CASINGS)
 			empty_casings++
 
 		if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
@@ -2179,6 +2179,15 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return
 
 	current_mag.current_rounds--
+
+	if(flags_gun_features & (GUN_INTERNAL_MAG|GUN_MANUAL_EJECT_CASINGS))
+		empty_casings++
+
+	else if (flags_gun_features & GUN_AUTO_EJECT_CASINGS) // drop a casing and prove a point
+		empty_casings++
+
+	if((flags_gun_features & GUN_AUTO_EJECT_CASINGS))
+		eject_casing()
 
 	if(gun_area.ceiling <= CEILING_GLASS)
 		gun_turf.ceiling_debris()

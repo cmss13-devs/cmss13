@@ -298,15 +298,3 @@
 	if(!XB)
 		XB = new(T)
 		XB.color = get_blood_color()
-
-
-/mob/living/silicon/robot/add_splatter_floor(turf/T, small_drip, b_color)
-	if(!T)
-		T = get_turf(src)
-
-	if(!T.can_bloody)
-		return
-
-	var/obj/effect/decal/cleanable/blood/oil/O = locate() in T.contents
-	if(!O)
-		O = new(T)

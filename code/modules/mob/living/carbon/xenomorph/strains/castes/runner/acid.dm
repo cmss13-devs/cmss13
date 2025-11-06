@@ -45,7 +45,10 @@
 	/// Determines whether the combat acid generation is on or off
 	var/combat_gen_active = FALSE
 
+	/// How much acid is required to melt something
 	var/melt_acid_cost = 100
+	/// How much acid is required to fill a trap
+	var/fill_acid_cost = 75
 
 	var/list/caboom_sound = list('sound/effects/runner_charging_1.ogg','sound/effects/runner_charging_2.ogg')
 	var/caboom_loop = 1
@@ -141,6 +144,7 @@
 /datum/behavior_delegate/runner_acider/handle_death(mob/M)
 	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
+	STOP_PROCESSING(SSfasteffects, src)
 
 /datum/behavior_delegate/runner_acider/proc/do_caboom()
 	if(!bound_xeno)
@@ -194,6 +198,12 @@
 		to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl when you are about to explode!"))
 		return FALSE
 	return ..()
+
+/mob/living/carbon/xenomorph/runner/get_examine_text(mob/user)
+	. = ..()
+	var/datum/behavior_delegate/runner_acider/behavior = behavior_delegate
+	if(istype(behavior) && isxeno(user))
+		. += "it has [SPAN_GREEN(behavior.acid_amount)] acid!"
 
 /datum/behavior_delegate/runner_acider/proc/combat_gen_end() //This proc is triggerd once the combat acid timer runs out.
 	combat_gen_active = FALSE //turns combat acid off

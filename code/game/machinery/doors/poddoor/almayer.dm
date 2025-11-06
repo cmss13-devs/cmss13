@@ -21,6 +21,7 @@
 /obj/structure/machinery/door/poddoor/almayer/blended
 	icon_state = "almayer_pdoor1"
 	base_icon_state = "almayer_pdoor"
+	plane = TURF_PLANE
 
 /obj/structure/machinery/door/poddoor/almayer/blended/open
 	density = FALSE
@@ -37,6 +38,7 @@
 	desc = "A metal wall used to separate rooms and make up the ship."
 	icon_state = "liaison_pdoor1"
 	base_icon_state = "liaison_pdoor"
+	id = "CLRoomDivider"
 
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison/open
 	density = FALSE

@@ -41,16 +41,20 @@
 	chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
 		/obj/item/reagent_container/hypospray/autoinjector/dexalinp,
-		/obj/item/reagent_container/hypospray/autoinjector/adrenaline,,
+		/obj/item/reagent_container/hypospray/autoinjector/antitoxin,
+		/obj/item/reagent_container/hypospray/autoinjector/adrenaline,
 		/obj/item/reagent_container/hypospray/autoinjector/inaprovaline,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane,
 		/obj/item/reagent_container/hypospray/autoinjector/oxycodone,
+		/obj/item/reagent_container/hypospray/autoinjector/peridaxon,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
+
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
@@ -67,13 +71,15 @@
 
 		list("AUTOINJECTORS", -1, null, null),
 		list("Autoinjector (Bicaridine)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/bicaridine, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Dylovene)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/antitoxin, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Dexalin+)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/dexalinp, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Epinephrine)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/adrenaline, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Inaprovaline)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Kelotane)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/kelotane, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Oxycodone)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/oxycodone, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Peridaxon)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/tramadol, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricord)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
 
 		list("MEDICAL UTILITIES", -1, null, null),
 		list("Surgical Line", floor(scale * 2), /obj/item/tool/surgery/surgical_line, VENDOR_ITEM_REGULAR),
@@ -170,7 +176,7 @@
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/populate_product_list(scale)
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
-		list("M37A2 Pump Shotgun", floor(scale * 3), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
+		list("M37A2 Pump Shotgun", floor(scale * 3), /obj/item/weapon/gun/shotgun/pump/m37a, VENDOR_ITEM_REGULAR),
 		list("M39 Submachinegun", floor(scale * 2.5), /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M41A Pulse Rifle MK2", floor(scale * 4), /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_REGULAR),
 		list("M4RA Battle Rifle", floor(scale * 2), /obj/item/weapon/gun/rifle/m4ra, VENDOR_ITEM_REGULAR),
@@ -223,6 +229,9 @@
 		list("A19 High Velocity Impact Magazine (10x24mm)", 0, /obj/item/ammo_magazine/rifle/m4ra/custom/impact, VENDOR_ITEM_REGULAR),
 		list("A19 High Velocity Incendiary Magazine (10x24mm)", 0, /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary, VENDOR_ITEM_REGULAR),
 		list("A19 High Velocity Magazine (10x24mm)", 0, /obj/item/ammo_magazine/rifle/m4ra/custom, VENDOR_ITEM_REGULAR),
+		list("SHARP 9X-E Sticky Explosive Dart magazine (darts)", 0, /obj/item/ammo_magazine/rifle/sharp/explosive, VENDOR_ITEM_REGULAR),
+		list("SHARP 9X-T Sticky Incendiary Dart magazine (darts)", 0, /obj/item/ammo_magazine/rifle/sharp/incendiary, VENDOR_ITEM_REGULAR),
+		list("SHARP 9X-F Flechette Dart Magazine (darts)", 0, /obj/item/ammo_magazine/rifle/sharp/flechette, VENDOR_ITEM_REGULAR),
 		list("M42A Flak Magazine (10x28mm)", 0, /obj/item/ammo_magazine/sniper/flak, VENDOR_ITEM_REGULAR),
 		list("M42A Incendiary Magazine (10x28mm)", 0, /obj/item/ammo_magazine/sniper/incendiary, VENDOR_ITEM_REGULAR),
 		list("M42A Marksman Magazine (10x28mm Caseless)", 0, /obj/item/ammo_magazine/sniper, VENDOR_ITEM_REGULAR),

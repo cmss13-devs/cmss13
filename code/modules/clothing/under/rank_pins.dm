@@ -12,7 +12,7 @@
 	)
 	var/rank = "Private"
 	var/rank_short = PAY_SHORT_ME1
-	slot = ACCESSORY_SLOT_RANK
+	worn_accessory_slot = ACCESSORY_SLOT_RANK
 	high_visibility = TRUE
 	gender = PLURAL
 	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
@@ -69,6 +69,16 @@
 /obj/item/clothing/accessory/ranks/marine/e9c
 	rank_short = PAY_SHORT_ME9C
 	icon_state = "ranks_snco"
+
+/obj/item/clothing/accessory/ranks/marine/wo
+	name = "rank boards"
+	rank_short = PAY_SHORT_MWO
+	icon_state = "ranks_warrant"
+
+/obj/item/clothing/accessory/ranks/marine/cwo
+	name = "rank boards"
+	rank_short = PAY_SHORT_MCWO
+	icon_state = "ranks_chiefwarrant"
 
 //OFFICERS
 /obj/item/clothing/accessory/ranks/marine/o1

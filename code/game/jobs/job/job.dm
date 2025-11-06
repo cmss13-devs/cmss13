@@ -118,11 +118,20 @@
 	else
 		return time_required - get_job_playtime(C, roles)
 
+/client/proc/can_skip_role_lock()
+	if(admin_holder && (admin_holder.rights & (R_NOLOCK | R_ADMIN)))
+		return TRUE
+	if(GLOB.community_awards[ckey])
+		for(var/award in GLOB.community_awards[ckey])
+			if(award == "SDTimeAward")
+				return TRUE
+	return FALSE
+
 /datum/job/proc/can_play_role(client/client)
 	if(!CONFIG_GET(flag/use_timelocks))
 		return TRUE
 
-	if(client.admin_holder && (client.admin_holder.rights & (R_NOLOCK | R_ADMIN)))
+	if(client.can_skip_role_lock())
 		return TRUE
 
 	if(get_job_playtime(client, title) > minimum_playtime_as_job)
@@ -283,6 +292,7 @@
 
 		if(flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 			GLOB.RoleAuthority.randomize_squad(human)
+		GLOB.RoleAuthority.prioritize_specialist(human)
 
 		if(Check_WO() && GLOB.job_squad_roles.Find(GET_DEFAULT_ROLE(human.job))) //activates self setting proc for marine headsets for WO
 			var/datum/game_mode/whiskey_outpost/WO = SSticker.mode

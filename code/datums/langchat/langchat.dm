@@ -62,6 +62,7 @@
 		langchat_image.layer = 20
 		langchat_image.plane = RUNECHAT_PLANE
 		langchat_image.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR|RESET_TRANSFORM
+		langchat_image.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 		langchat_image.maptext_y = langchat_height
 		langchat_image.maptext_height = 64
 		langchat_image.maptext_y -= LANGCHAT_MESSAGE_POP_Y_SINK
@@ -94,6 +95,7 @@
 	var/image/r_icon
 	var/use_mob_style = TRUE
 	var/text_to_display = message
+	var/is_emote = additional_styles && additional_styles.Find("emote")
 	if(length(text_to_display) > LANGCHAT_LONGEST_TEXT)
 		text_to_display = copytext_char(text_to_display, 1, LANGCHAT_LONGEST_TEXT + 1) + "..."
 	var/timer = (length(text_to_display) / LANGCHAT_LONGEST_TEXT) * 4 SECONDS + 2 SECONDS
@@ -114,7 +116,7 @@
 
 	langchat_listeners = listeners
 	for(var/mob/M in langchat_listeners)
-		if(langchat_client_enabled(M) && !M.ear_deaf && (skip_language_check || M.say_understands(src, language)))
+		if(langchat_client_enabled(M) && (is_emote || !M.ear_deaf) && (skip_language_check || M.say_understands(src, language)))
 			M.client.images += langchat_image
 
 	if(isturf(loc))

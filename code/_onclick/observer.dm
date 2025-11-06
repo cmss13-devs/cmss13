@@ -11,6 +11,14 @@
 	else
 		to_chat(src, SPAN_NOTICE(" You will no longer examine things you click on."))
 
+/mob/dead/observer/do_click(atom/A, location, params)
+	. = ..()
+	if(check_click_intercept(params, A))
+		return
+
+	if(SEND_SIGNAL(src, COMSIG_OBSERVER_CLICKON, A, params) & COMSIG_MOB_CLICK_CANCELED)
+		return
+
 /mob/dead/observer/click(atom/target, list/mods)
 	if(..())
 		return TRUE
@@ -30,8 +38,10 @@
 		if(ismob(target) || isVehicle(target))
 			if(isxeno(target) && SSticker.mode.check_xeno_late_join(src)) //if it's a xeno and all checks are alright, we are gonna try to take their body
 				var/mob/living/carbon/xenomorph/xeno = target
-				if(xeno.stat == DEAD || should_block_game_interaction(xeno) || xeno.aghosted)
-					to_chat(src, SPAN_WARNING("You cannot join as [xeno]."))
+				var/dead_or_ignored = xeno.stat == DEAD || should_block_game_interaction(xeno)
+				if(dead_or_ignored || xeno.aghosted)
+					if(dead_or_ignored)
+						to_chat(src, SPAN_WARNING("You cannot join as [xeno]."))
 					do_observe(xeno)
 					return FALSE
 
@@ -48,7 +58,7 @@
 
 				if(xeno.away_timer < required_leave_time)
 					var/to_wait = required_leave_time - xeno.away_timer
-					if(to_wait > 60 SECONDS) // don't spam for clearly non-AFK xenos
+					if(to_wait < 30) // don't spam for clearly non-AFK xenos
 						to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
 					do_observe(target)
 					return FALSE
@@ -116,21 +126,19 @@
 		user.forceMove(get_turf(target))
 
 /obj/structure/ladder/attack_ghost(mob/user as mob)
+	var/obj/structure/ladder/ladder_dest
 	if(up && down)
-		switch( alert("Go up or down the ladder?", "Ladder", "Up", "Down", "Cancel") )
-			if("Up")
-				user.forceMove(get_turf(up))
-			if("Down")
-				user.forceMove(get_turf(down))
-			if("Cancel")
-				return
-
+		ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = FALSE))
+		if(ladder_dest == "up")
+			user.forceMove(get_turf(up))
+		if(ladder_dest == "down")
+			user.forceMove(get_turf(down))
 	else if(up)
 		user.forceMove(get_turf(up))
-
 	else if(down)
 		user.forceMove(get_turf(down))
-
+	else
+		return FALSE //just in case
 // -------------------------------------------
 // This was supposed to be used by adminghosts
 // I think it is a *terrible* idea

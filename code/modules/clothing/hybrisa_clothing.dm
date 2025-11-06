@@ -63,8 +63,8 @@
 // Paramedic
 
 /obj/item/clothing/under/hybrisa/paramedic
-	name = "\improper Nova Medica - EMT - Paramedic uniform"
-	desc = "A set of Nova-Medica EMT - Paramedic fatigues, this one is green."
+	name = "\improper EMT - Paramedic uniform"
+	desc = "A set of EMT - Paramedic fatigues, this one is green."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/medical.dmi',
@@ -81,8 +81,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/hybrisa/paramedic/red
-	name = "\improper Nova Medica - EMT - Paramedic uniform"
-	desc = "A set of Nova-Medica EMT - Paramedic fatigues, this one is red."
+	name = "\improper EMT - Paramedic uniform"
+	desc = "A set of EMT - Paramedic fatigues, this one is red."
 	icon_state = "paramedic_redblack_uniform"
 	worn_state = "paramedic_redblack_uniform"
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -159,6 +159,10 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/under/hybrisa/kelland_mining/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
 
 // Weymart
 
@@ -331,6 +335,16 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = NO_FLAGS
 
+/obj/item/clothing/head/hybrisa/cmb_cap_new/riot
+	name = "\improper Police cap"
+	desc = "A dark cap enscribed with the powerful letters of 'POLICE' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
+	)
+	icon_state = "pol_cap"
+	item_state = "pol_cap"
+
 /obj/item/clothing/head/hybrisa/cmb_peaked_cap
 	name = "\improper Colonial Marshal Bureau cap"
 	desc = "A dark peaked cap enscribed with the powerful star shaped emblem of the 'Colonial Marshalls Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
@@ -486,6 +500,10 @@
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 
+/obj/item/clothing/head/helmet/hybrisa/kelland_mining_helmet/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
+
 // Pizza-Galaxy (Rare Helmet)
 
 /obj/item/clothing/head/helmet/hybrisa/pizza_galaxy
@@ -520,6 +538,10 @@
 	icon_state = "sci_expedition_helmet"
 	item_state = "sci_expedition_helmet"
 
+/obj/item/clothing/head/bio_hood/wy_bio/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/head/bio_hood/wy_bio/alt
 	name = "WY-TSS MK I - bio hood"
 	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants."
@@ -537,6 +559,10 @@
 	item_state = "sci_expedition"
 	slowdown = 0
 	uniform_restricted = null
+
+/obj/item/clothing/suit/bio_suit/wy_bio/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 // Synth Bio
 
@@ -558,7 +584,7 @@
 
 /obj/item/clothing/suit/storage/synthbio/wy_bio
 	name = "WY-TSS MK I - bio suit"
-	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. A Synthetic compliant bio-hazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
+	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. A Synthetic compliant biohazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -622,7 +648,6 @@
 		/obj/item/storage/belt/gun/m39,
 		/obj/item/storage/belt/gun/xm51,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_PONCHO)
 	slowdown = 1
 	flags_inventory = NOPRESSUREDMAGE
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
@@ -645,6 +670,65 @@
 		return
 
 	return COMPONENT_NO_IGNITE
+
+// UPP firefighter
+
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp
+	name = "T-20 fire response coat"
+	desc = "A rugged, no-frills fire-resistant overcoat issued to UPP industrial and emergency crews. Based on the PyroTex LT design but using cheaper, domestically produced materials, it offers basic protection against heat and debris at the cost of weight and comfort."
+	icon_state = "upp_firefighter_alt"
+	item_state = "upp_firefighter_alt"
+	uniform_restricted = FALSE
+
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp/alt
+	icon_state = "upp_firefighter"
+	item_state = "upp_firefighter"
+
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp/synth
+	name = "T-20 synthetic fire response coat"
+	desc = "A rugged, no-frills fire-resistant overcoat issued to UPP industrial and emergency crews. Based on the PyroTex LT design but using cheaper, domestically produced materials, it offers basic protection against heat and debris at the cost of weight and comfort."
+
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	storage_slots = 4
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
+
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp/synth/Initialize()
+	flags_atom |= NO_NAME_OVERRIDE
+	flags_marine_armor |= SYNTH_ALLOWED
+	return ..()
+
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp/synth/alt
+	name = "T-20 synthetic fire response coat"
+	desc = "A rugged, no-frills fire-resistant overcoat issued to UPP industrial and emergency crews. Based on the PyroTex LT design but using cheaper, domestically produced materials, it offers basic protection against heat and debris at the cost of weight and comfort."
+	icon_state = "upp_firefighter"
+	item_state = "upp_firefighter"
+
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	storage_slots = 4
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
+
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp/synth/alt/Initialize()
+	flags_atom |= NO_NAME_OVERRIDE
+	flags_marine_armor |= SYNTH_ALLOWED
+	return ..()
 
 // Kelland Mining
 
@@ -688,7 +772,10 @@
 		/obj/item/storage/belt/gun/m39,
 		/obj/item/storage/belt/gun/xm51,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_PONCHO)
+
+/obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
 
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt
 	name = "\improper Kelland-Mining utility uniform"
@@ -730,13 +817,16 @@
 		/obj/item/storage/belt/gun/m39,
 		/obj/item/storage/belt/gun/xm51,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_PONCHO)
+
+/obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/kelland)
 
 // EMT - Paramedic
 
 /obj/item/clothing/suit/hybrisa/EMT_green_utility
-	name = "\improper Nova Medica - EMT - Paramedic utility fatigues"
-	desc = "A set of Nova-Medica EMT - Paramedic utility fatigues, this one is green."
+	name = "\improper EMT - Paramedic utility fatigues"
+	desc = "A set of EMT - Paramedic utility fatigues, this one is green."
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -746,8 +836,8 @@
 	uniform_restricted = null
 
 /obj/item/clothing/suit/hybrisa/EMT_red_utility
-	name = "\improper Nova Medica - EMT - Paramedic utility fatigues"
-	desc = "A set of Nova-Medica EMT - Paramedic utility fatigues, this one is red."
+	name = "\improper EMT - Paramedic utility fatigues"
+	desc = "A set of EMT - Paramedic utility fatigues, this one is red."
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -852,11 +942,10 @@
 	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 /obj/item/clothing/suit/armor/vest/hybrisa/civilian_vest
 	name = "armored vest"
-	desc = "An civilian, unmarked armored vest that protects against some damage."
+	desc = "An general-use, unmarked armored vest that protects against some damage."
 	icon_state = "generic_ballistic_armor"
 	item_state = "generic_ballistic_armor"
 	uniform_restricted = null
@@ -868,7 +957,6 @@
 	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 // Hazard Vests
 
@@ -1024,8 +1112,8 @@
 	new /obj/item/clothing/suit/armor/vest/hybrisa/nspa_vest(src)
 	new /obj/item/clothing/under/hybrisa/nspa_officer(src)
 	new /obj/item/storage/backpack/security(src)
-	new /obj/item/storage/belt/security(src)
 	new /obj/item/clothing/shoes/jackboots(src)
+	new /obj/item/storage/belt/gun/l54(src)
 
 // Miner Closet
 
@@ -1078,6 +1166,11 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
+/obj/item/clothing/under/hybrisa/nspa_officer/warm_weather
+	desc = "A short-sleeved olive-green button-up shirt with matching trousers and black webbing straps; a standard NSPA warm weather patrol uniform, issued for use in hotter climates across the Neroid Sector, inspired by historic colonial policing attire for a practical yet sharp look."
+	icon_state = "nspa_police_warm"
+	worn_state = "nspa_police_warm"
+
 // Suits & Armor
 
 /obj/item/clothing/suit/armor/vest/hybrisa/nspa_vest
@@ -1098,7 +1191,6 @@
 	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_jacket
 	name = "\improper NSPA police jacket"

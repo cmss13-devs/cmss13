@@ -136,7 +136,7 @@
 /datum/game_mode/whiskey_outpost/proc/story_announce(time)
 	switch(time)
 		if(0)
-			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and likely wiped out by hostile local creatures as we've attempted to set our base up.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and were likely wiped out by hostile local creatures as we attempted to set up our base.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(1)
 			marine_announcement("Our scouts report increased activity in the area and given our intel, we're already preparing for the worst. We're setting up a comms relay to send out a distress call, but we're going to need time while our engineers get everything ready. All other stations should prepare accordingly and maximize combat readiness, effective immediately.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(2)
@@ -611,6 +611,7 @@
 	var/list/supplies = list(
 		"10x24mm, slugs, buckshot, and 10x20mm rounds",
 		"Explosives and grenades",
+		"SHARP ammo",
 		"Rocket ammo",
 		"Sniper ammo",
 		"Anti-Material Sniper ammo",
@@ -640,11 +641,14 @@
 		if("Explosives and grenades")
 			supply_drop = 5
 			to_chat(usr, SPAN_NOTICE("Explosives and grenades will now drop!"))
-		if("Pyrotechnician tanks")
+		if("SHARP ammo")
 			supply_drop = 6
+			to_chat(usr, SPAN_NOTICE("SHARP ammo will now drop!"))
+		if("Pyrotechnician tanks")
+			supply_drop = 7
 			to_chat(usr, SPAN_NOTICE("Pyrotechnician tanks will now drop!"))
 		if("Scout ammo")
-			supply_drop = 7
+			supply_drop = 8
 			to_chat(usr, SPAN_NOTICE("Scout ammo will now drop!"))
 		else
 			return
@@ -747,12 +751,17 @@
 		if(5) // Give them explosives + Grenades for the Grenade spec. Might be too many grenades, but we'll find out.
 			spawnitems = list(/obj/item/storage/box/explosive_mines,
 							/obj/item/storage/belt/grenade/full)
-		if(6) // Pyrotech
+		if(6) // SHARP ammo
+			spawnitems = list(/obj/item/ammo_magazine/rifle/sharp/explosive,
+							/obj/item/ammo_magazine/rifle/sharp/explosive,
+							/obj/item/ammo_magazine/rifle/sharp/incendiary,
+							/obj/item/ammo_magazine/rifle/sharp/flechette,)
+		if(7) // Pyrotech
 			var/fuel = pick(/obj/item/ammo_magazine/flamer_tank/large/B, /obj/item/ammo_magazine/flamer_tank/large/X)
 			spawnitems = list(/obj/item/ammo_magazine/flamer_tank/large,
 							/obj/item/ammo_magazine/flamer_tank/large,
 							fuel)
-		if(7) // Scout
+		if(8) // Scout
 			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra/custom,
 							/obj/item/ammo_magazine/rifle/m4ra/custom,
 							/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,

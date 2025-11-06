@@ -84,7 +84,7 @@
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
-		var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+		var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
 		switch(affecting.bandage())
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
@@ -132,7 +132,7 @@
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
-		var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+		var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
 		switch(affecting.salve())
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
@@ -180,7 +180,7 @@
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
-		var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+		var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
 		switch(affecting.bandage(TRUE))
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
@@ -213,11 +213,6 @@
 /obj/item/stack/medical/advanced/bruise_pack/upgraded/Initialize(mapload, ...)
 	. = ..()
 	heal_brute = initial(heal_brute) * 3 // 3x stronger
-
-/obj/item/stack/medical/advanced/bruise_pack/upgraded/low_amount/Initialize(mapload, ...)
-	. = ..()
-	amount = rand(1,4)
-	update_icon()
 
 /obj/item/stack/medical/advanced/bruise_pack/predator
 	name = "mending herbs"
@@ -261,7 +256,7 @@
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
-		var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+		var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
 		switch(affecting.salve(TRUE))
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
@@ -294,11 +289,6 @@
 /obj/item/stack/medical/advanced/ointment/upgraded/Initialize(mapload, ...)
 	. = ..()
 	heal_burn = initial(heal_burn) * 3 // 3x stronger
-
-/obj/item/stack/medical/advanced/ointment/upgraded/low_amount/Initialize(mapload, ...)
-	. = ..()
-	amount = rand(1,4)
-	update_icon()
 
 /obj/item/stack/medical/advanced/ointment/predator
 	name = "soothing herbs"
@@ -358,7 +348,7 @@
 
 		if(M != user)
 			var/possessive = "[user == M ? "your" : "\the [M]'s"]"
-			var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+			var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
 			user.affected_message(M,
 				SPAN_HELPFUL("You <b>start splinting</b> [possessive] <b>[affecting.display_name]</b>."),
 				SPAN_HELPFUL("[user] <b>starts splinting</b> your <b>[affecting.display_name]</b>."),
@@ -390,11 +380,6 @@
 	max_amount = 5
 
 	stack_id = "nano splint"
-
-/obj/item/stack/medical/splint/nano/low_amount/Initialize(mapload, ...)
-	. = ..()
-	amount = rand(1,2)
-	update_icon()
 
 /obj/item/stack/medical/splint/nano/research
 	desc = "Advanced technology allows these splints to hold bones in place while being flexible and damage-resistant. Those are made from durable carbon fiber and dont look cheap, better use them sparingly."

@@ -5,6 +5,7 @@
 	name = "limb"
 	appearance_flags = KEEP_TOGETHER | TILE_BOUND
 	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_DIR | VIS_INHERIT_PLANE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	var/icon_name = null
 	var/body_part = null
 	var/icon_position = 0
@@ -187,6 +188,9 @@
 
 /obj/limb/proc/take_damage_organ_damage(brute, sharp)
 	if(!owner)
+		return
+
+	if(owner.faction in FACTION_LIST_HUNTED) //Hunting Grounds
 		return
 
 	var/armor = owner.getarmor_organ(src, ARMOR_INTERNALDAMAGE)
@@ -455,6 +459,9 @@ This function completely restores a damaged organ to perfect condition.
 
 /obj/limb/proc/take_damage_internal_bleeding(damage)
 	if(!owner)
+		return
+
+	if(owner.faction in FACTION_LIST_HUNTED)//Hunting Grounds
 		return
 
 	var/armor = owner.getarmor_organ(src, ARMOR_INTERNALDAMAGE)
@@ -756,12 +763,20 @@ This function completely restores a damaged organ to perfect condition.
 		limb.icon = 'icons/mob/robotic.dmi'
 		limb.icon_state = "[icon_name]"
 		. += limb
+
+		if(blocks_emissive != EMISSIVE_BLOCK_NONE)
+			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, layer = limb.layer, alpha = limb.alpha)
+			. += limb_em_block
 		return
 
 	limb.icon = species.icobase
 	limb.icon_state = "[get_limb_icon_name(species, body_size, body_type, limb_gender, icon_name, skin_color)]"
 
 	. += limb
+
+	if(blocks_emissive != EMISSIVE_BLOCK_NONE)
+		var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, layer = limb.layer, alpha = limb.alpha)
+		. += limb_em_block
 
 	return
 

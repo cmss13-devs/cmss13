@@ -113,20 +113,24 @@
 	var/cur_z = mob.z
 	var/width
 	var/height
+	var/offset_x = 0
+	var/offset_y = 0
 	if(istype(SSmapping.z_list[cur_z], /datum/space_level))
 		var/datum/space_level/cur_level = SSmapping.z_list[cur_z]
-		cur_x += cur_level.bounds[MAP_MINX] - 1
-		cur_y += cur_level.bounds[MAP_MINY] - 1
+		offset_x = cur_level.bounds[MAP_MINX] - 1
+		cur_x += offset_x
+		offset_y = cur_level.bounds[MAP_MINY] - 1
+		cur_y += offset_y
 		width = cur_level.bounds[MAP_MAXX] - cur_level.bounds[MAP_MINX] - half_chunk_size + 3
 		height = cur_level.bounds[MAP_MAXY] - cur_level.bounds[MAP_MINY] - half_chunk_size + 3
 	else
 		width = world.maxx - half_chunk_size + 2
 		height = world.maxy - half_chunk_size + 2
-	var/width_inside = width - 1
-	var/height_inside = height - 1
+	var/width_inside = width - 1 + offset_x
+	var/height_inside = height - 1 + offset_y
 
-	while(cur_y < height)
-		while(cur_x < width)
+	while(cur_y < height + offset_y)
+		while(cur_x < width + offset_x)
 			mob.on_mob_jump()
 			mob.forceMove(locate(cur_x, cur_y, cur_z))
 			sleep(sleep_duration)
@@ -154,7 +158,7 @@
 	set name = "Delete Instance"
 
 	// to prevent REALLY stupid deletions
-	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/structure/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
+	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/structure/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/ai)
 	var/chosen_deletion = input(usr, "Type the path of the object you want to delete", "Delete:") as null|text
 	if(chosen_deletion)
 		chosen_deletion = text2path(chosen_deletion)
@@ -358,7 +362,9 @@
 		return
 
 	to_chat(src, SPAN_INFO("You can now right click to use inspect on browsers."))
-	winset(src, "", "browser-options=byondstorage,find,devtools,refresh")
+	winset(src, null, list("browser-options" = "+devtools"))
+	winset(src, null, list("browser-options" = "+find"))
+	winset(src, null, list("browser-options" = "+refresh"))
 
 #ifdef TESTING
 GLOBAL_LIST_EMPTY(dirty_vars)

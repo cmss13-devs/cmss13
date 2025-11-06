@@ -10,6 +10,7 @@
 	var/list/debris
 	var/unslashable = FALSE
 	var/wrenchable = FALSE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	health = STRUCTURE_HEALTH_BASE
 	anchored = TRUE
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
@@ -111,6 +112,12 @@
 /obj/structure/proc/do_climb(mob/living/user, mods)
 	if(!can_climb(user))
 		return FALSE
+
+	if(istype(loc, /turf/open_space) && user.a_intent != INTENT_HARM)
+		var/turf/open_space/open = loc
+		open.climb_down(user)
+		return FALSE
+
 
 	var/list/climbdata = list("climb_delay" = climb_delay)
 	SEND_SIGNAL(user, COMSIG_LIVING_CLIMB_STRUCTURE, climbdata)

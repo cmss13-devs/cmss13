@@ -21,22 +21,34 @@
 	name = "Reinforced Air Vent"
 	explodey = FALSE
 
-/// Vents that are linked to ARES Security Protocols, allowing the ARES Interface to trigger security measures.
 /obj/structure/pipes/vents/pump/no_boom/gas
 	name = "Security Air Vent"
-	var/datum/ares_link/link
 	var/vent_tag
 	COOLDOWN_DECLARE(vent_trigger_cooldown)
+	var/network_id
 
 /obj/structure/pipes/vents/pump/no_boom/gas/Initialize()
-	link_systems(override = FALSE)
+	GLOB.gas_vents += src
 	. = ..()
 
 /obj/structure/pipes/vents/pump/no_boom/gas/Destroy()
+	GLOB.gas_vents -= src
+	return ..()
+
+/// Vents that are linked to ARES Security Protocols, allowing the ARES Interface to trigger security measures.
+/obj/structure/pipes/vents/pump/no_boom/gas/ares
+	var/datum/ares_link/link
+	network_id = MAIN_AI_SYSTEM
+
+/obj/structure/pipes/vents/pump/no_boom/gas/ares/Initialize()
+	link_systems(override = FALSE)
+	. = ..()
+
+/obj/structure/pipes/vents/pump/no_boom/gas/ares/Destroy()
 	delink()
 	return ..()
 
-/obj/structure/pipes/vents/pump/no_boom/gas/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
+/obj/structure/pipes/vents/pump/no_boom/gas/ares/proc/link_systems(datum/ares_link/new_link = GLOB.ares_link, override)
 	if(link && !override)
 		return FALSE
 	delink()
@@ -45,7 +57,7 @@
 		new_link.linked_vents += src
 		return TRUE
 
-/obj/structure/pipes/vents/pump/no_boom/gas/proc/delink()
+/obj/structure/pipes/vents/pump/no_boom/gas/ares/proc/delink()
 	if(link)
 		link.linked_vents -= src
 		link = null

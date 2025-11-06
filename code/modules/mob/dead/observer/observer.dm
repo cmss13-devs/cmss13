@@ -61,8 +61,8 @@
 	var/own_orbit_size = 0
 	var/observer_actions = list(/datum/action/observer_action/join_xeno, /datum/action/observer_action/join_lesser_drone)
 	var/datum/action/minimap/observer/minimap
-	///The last message for this player with their larva queue information
-	var/larva_queue_cached_message
+	///The last message for this player with their larva pool information
+	var/larva_pool_cached_message
 	///Used to bypass time of death checks such as when being selected for larva
 	var/bypass_time_of_death_checks = FALSE
 	///Used to bypass time of death checks for a successful hug
@@ -205,6 +205,11 @@
 		/atom/movable/screen/escape_menu,
 		/atom/movable/screen/buildmode,
 		/obj/effect/detector_blip,
+		/atom/movable/screen/minimap_tool,
+		/atom/movable/screen/exit_map,
+		/atom/movable/screen/minimap,
+		/atom/movable/screen/exit_map,
+		/atom/movable/screen/minimap_locator,
 	))
 
 	if(!client)
@@ -374,9 +379,7 @@
 	if(href_list["join_xeno"])
 		join_as_alien()
 	if(href_list[NOTIFY_USCM_TACMAP])
-		GLOB.uscm_tacmap_status.tgui_interact(src)
-	if(href_list[NOTIFY_XENO_TACMAP])
-		GLOB.xeno_tacmap_status.tgui_interact(src)
+		view_tacmaps()
 
 /mob/dead/observer/proc/set_huds_from_prefs()
 	if(!client || !client.prefs)
@@ -416,6 +419,9 @@
 					the_hud.add_hud_to(src, src)
 				if(HUD_MENTOR_SIGHT)
 					the_hud = GLOB.huds[MOB_HUD_NEW_PLAYER]
+					the_hud.add_hud_to(src, src)
+				if("Faction Hyperdyne HUD")
+					the_hud= GLOB.huds[MOB_HUD_FACTION_HC]
 					the_hud.add_hud_to(src, src)
 
 	see_invisible = INVISIBILITY_OBSERVER
@@ -487,7 +493,7 @@ Works together with spawning an observer, noted above.
 
 	mind = null
 
-	// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+	// Larva pool: We use the larger of their existing time or the new timeofdeath except for facehuggers or lesser drone
 	var/exempt_tod = isfacehugger(src) || islesserdrone(src) || should_block_game_interaction(src, include_hunting_grounds=TRUE)
 	var/new_tod = exempt_tod ? 1 : ghost.timeofdeath
 
@@ -509,11 +515,11 @@ Works together with spawning an observer, noted above.
 			ghost.client.player_data.load_timestat_data()
 
 	if(ghost.client?.player_details)
-		ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+		ghost.client.player_details.larva_pool_time = max(ghost.client.player_details.larva_pool_time, new_tod)
 	else if(persistent_ckey)
 		var/datum/player_details/details = GLOB.player_details[persistent_ckey]
 		if(details)
-			details.larva_queue_time = max(details.larva_queue_time, new_tod)
+			details.larva_pool_time = max(details.larva_pool_time, new_tod)
 
 	ghost.set_huds_from_prefs()
 
@@ -560,18 +566,18 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(ghost && !should_block_game_interaction(src, include_hunting_grounds=TRUE))
 			ghost.timeofdeath = world.time
 
-			// Larva queue: We use the larger of their existing queue time or the new timeofdeath except for facehuggers or lesser drone
+			// Larva pool: We use the larger of their existing time or the new timeofdeath except for facehuggers or lesser drone
 			var/new_tod = (isfacehugger(src) || islesserdrone(src)) ? 1 : ghost.timeofdeath
 
 			// if they died as facehugger or lesser drone, bypass typical TOD checks
 			ghost.bypass_time_of_death_checks = (isfacehugger(src) || islesserdrone(src))
 
 			if(ghost.client)
-				ghost.client.player_details.larva_queue_time = max(ghost.client.player_details.larva_queue_time, new_tod)
+				ghost.client.player_details.larva_pool_time = max(ghost.client.player_details.larva_pool_time, new_tod)
 			else if(persistent_ckey)
 				var/datum/player_details/details = GLOB.player_details[persistent_ckey]
 				if(details)
-					details.larva_queue_time = max(details.larva_queue_time, new_tod)
+					details.larva_pool_time = max(details.larva_pool_time, new_tod)
 
 		if(is_nested && nest && !QDELETED(nest))
 			ghost.can_reenter_corpse = FALSE
@@ -911,6 +917,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost.View"
 	GLOB.crew_manifest.open_ui(src)
 
+/mob/dead/observer/verb/view_tacmaps()
+	set name = "View Tacmaps"
+	set category = "Ghost.View"
+	GLOB.tacmap_viewer.tgui_interact(src)
+
 /mob/dead/verb/hive_status()
 	set name = "Hive Status"
 	set desc = "Check the status of the hive."
@@ -938,23 +949,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			return
 
 		GLOB.hive_datum[hives[faction]].hive_ui.open_hive_status(src)
-
-/mob/dead/observer/verb/view_uscm_tacmap()
-	set name = "View USCM Tacmap"
-	set category = "Ghost.View"
-
-	GLOB.uscm_tacmap_status.tgui_interact(src)
-
-/mob/dead/observer/verb/view_xeno_tacmap()
-	set name = "View Xeno Tacmap"
-	set category = "Ghost.View"
-
-	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	if(!hive || !length(hive.totalXenos))
-		to_chat(src, SPAN_ALERT("There seems to be no living normal hive at the moment"))
-		return
-
-	GLOB.xeno_tacmap_status.tgui_interact(src)
 
 /mob/dead/observer/verb/view_faxes()
 	set name = "View Sent Faxes"
@@ -1390,9 +1384,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(SShijack.sd_unlocked)
 			. += "Self Destruct Goal: [SShijack.get_sd_eta()]"
 
-	if(client.prefs?.be_special & BE_ALIEN_AFTER_DEATH)
-		if(larva_queue_cached_message)
-			. += larva_queue_cached_message
+	if(client.prefs?.be_special & BE_ALIEN)
+		if(!larva_pool_cached_message)
+			// Try to refresh now
+			message_alien_candidate_observer(src, cache_only=TRUE)
+		if(larva_pool_cached_message)
+			. += larva_pool_cached_message
 			. += ""
 
 	if(timeofdeath)

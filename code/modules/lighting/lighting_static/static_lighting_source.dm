@@ -207,6 +207,7 @@
 
 /datum/static_light_source/proc/update_corners()
 	var/update = FALSE
+	var/update_fluff = FALSE
 	var/atom/source_atom = src.source_atom
 
 	if (QDELETED(source_atom))
@@ -215,11 +216,14 @@
 
 	if (source_atom.light_power != light_power)
 		light_power = source_atom.light_power
-		update = TRUE
+		update_fluff = TRUE
 
 	if (source_atom.light_range != light_range)
+		if(light_range > source_atom.light_range) // less range, can reuse corners
+			update_fluff = TRUE
+		else
+			update = TRUE
 		light_range = source_atom.light_range
-		update = TRUE
 
 	if (!top_atom)
 		top_atom = source_atom
@@ -255,19 +259,35 @@
 	if (source_atom.light_color != light_color)
 		light_color = source_atom.light_color
 		PARSE_LIGHT_COLOR(src)
-		update = TRUE
+		update_fluff = TRUE
 
 	else if (applied_lum_r != lum_r || applied_lum_g != lum_g || applied_lum_b != lum_b)
-		update = TRUE
+		update_fluff = TRUE
 
 	if (update)
-		needs_update = LIGHTING_CHECK_UPDATE
+		needs_update = LIGHTING_FORCE_UPDATE
 		applied = TRUE
 	else if (needs_update == LIGHTING_CHECK_UPDATE)
-		return //nothing's changed
+		if (update_fluff) //we dont need to find corners for color/power change 
+			needs_update = LIGHTING_CHECK_UPDATE
+		else
+			return //nothing's changed
 
-	var/list/datum/static_lighting_corner/corners = list()
-	if (source_turf)
+	LAZYINITLIST(src.effect_str)
+	var/list/effect_str = src.effect_str
+
+	var/list/datum/static_lighting_corner/corners
+	var/list/datum/static_lighting_corner/new_corners
+	var/list/datum/static_lighting_corner/gone_corners
+
+	if (needs_update == LIGHTING_CHECK_UPDATE)
+		to_world(SPAN_DEBUG("Running lightning fluff update."))
+		corners = effect_str
+		new_corners = list()
+		gone_corners = list()
+	else if (source_turf)
+		corners = list()
+
 		var/list/turf/impacted_turfs = list()
 		var/list/turf/check_below_turfs = list()
 		var/oldlum = source_turf.luminosity
@@ -311,11 +331,11 @@
 
 		source_turf.luminosity = oldlum
 
+		new_corners = corners - effect_str
+		gone_corners = effect_str - corners
+
 	SETUP_CORNERS_CACHE(src)
 
-	var/list/datum/static_lighting_corner/new_corners = (corners - src.effect_str)
-	LAZYINITLIST(src.effect_str)
-	var/list/effect_str = src.effect_str
 	if (needs_update == LIGHTING_VIS_UPDATE)
 		for (var/datum/static_lighting_corner/corner as anything in new_corners)
 			APPLY_CORNER(corner)
@@ -338,7 +358,7 @@
 				else
 					LAZYREMOVE(corner.affecting, src)
 					effect_str -= corner
-	var/list/datum/static_lighting_corner/gone_corners = effect_str - corners
+
 	for (var/datum/static_lighting_corner/corner as anything in gone_corners)
 		REMOVE_CORNER(corner)
 		LAZYREMOVE(corner.affecting, src)

@@ -292,7 +292,7 @@ SUBSYSTEM_DEF(cmtv)
 	current_perspective = future_perspective_mob
 	change_displayed_mob(current_perspective.real_name)
 
-	handle_view_change(current_perspective, current_perspective.client.view)
+	handle_view_change(current_perspective.client, current_perspective.client.view)
 	camera_operator.set_pixel_x(current_perspective.client.get_pixel_x())
 	camera_operator.set_pixel_y(current_perspective.client.get_pixel_y())
 
@@ -395,7 +395,7 @@ SUBSYSTEM_DEF(cmtv)
 /datum/controller/subsystem/cmtv/proc/handle_view_change(client/source_client, new_view)
 	SIGNAL_HANDLER
 
-	if(source_client != current_perspective)
+	if(source_client.mob != current_perspective)
 		return
 
 	var/y = (new_view * 2) + 1

@@ -281,7 +281,10 @@ SUBSYSTEM_DEF(cmtv)
 
 	current_perspective = future_perspective_mob
 	change_displayed_mob(current_perspective.real_name)
+
 	handle_view_change(current_perspective, current_perspective.client.view)
+	camera_operator.set_pixel_x(current_perspective.client.get_pixel_x())
+	camera_operator.set_pixel_y(current_perspective.client.get_pixel_y())
 
 	camera_operator.screen += give_escape_menu_details()
 

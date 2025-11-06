@@ -357,8 +357,8 @@
 
 	selected_command.pre_execute(input)
 
-	statuscode = 200
 	response = selected_command.execute(input)
+	statuscode = selected_command.successful ? 200 : 303
 
 	selected_command.post_execute(input)
 
@@ -379,12 +379,24 @@
 		if(!living_mob)
 			continue
 
-		var/minimap_icon = astype(living_mob, /mob/living/carbon/xenomorph)?.caste.minimap_icon
-		if(!minimap_icon)
-			minimap_icon = astype(living_mob, /mob/living/carbon/human)?.assigned_equipment_preset.minimap_icon
+		var/minimap_icon
+		var/background
+
+		if(isxeno(living_mob))
+			var/mob/living/carbon/xenomorph/xeno = living_mob
+			minimap_icon = xeno.caste.minimap_icon
+			background = xeno.caste.minimap_background
+		else if(ishuman(living_mob))
+			var/mob/living/carbon/human/human = living_mob
+			if(human.assigned_squad)
+				background = human.assigned_squad.background_icon
+			else
+				background = human.assigned_equipment_preset?.minimap_background
+
+			minimap_icon = human.assigned_equipment_preset?.minimap_icon || "private"
 
 		mobs += list(
-			list("name" = living_mob.real_name, "job" = minimap_icon)
+			list("name" = living_mob.real_name, "job" = minimap_icon, "background" = background)
 		)
 
 	data = mobs

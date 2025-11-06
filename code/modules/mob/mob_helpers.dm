@@ -330,8 +330,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	M.shakecamera = world.time + steps * time_per_step
 	strength = abs(strength)*PIXELS_PER_STRENGTH_VAL
-	var/old_X = M.client.pixel_x
-	var/old_y = M.client.pixel_y
+	var/old_X = M.client.get_pixel_x()
+	var/old_y = M.client.get_pixel_y()
 
 	animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = CUBIC_EASING | EASE_IN, time = time_per_step, flags = ANIMATION_PARALLEL)
 	var/i = 1

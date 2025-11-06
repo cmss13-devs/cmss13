@@ -144,7 +144,7 @@
 		return
 	var/mob/living/synth = occupant
 	if(synth.client)
-		synth.client.eye = synth.client.mob
+		synth.client.set_eye(synth.client.mob)
 		synth.client.perspective = MOB_PERSPECTIVE
 
 	synth.forceMove(loc)
@@ -168,7 +168,7 @@
 	M.stop_pulling()
 	if(M && M.client)
 		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
+		M.client.set_eye(src)
 	M.forceMove(src)
 	occupant = M
 	start_processing()

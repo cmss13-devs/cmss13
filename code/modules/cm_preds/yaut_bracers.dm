@@ -618,7 +618,7 @@
 		return
 
 	var/mob/living/carbon/human/hunter = user
-	var/atom/hunter_eye = hunter.client.eye
+	var/atom/hunter_eye = hunter.client.get_eye()
 
 	var/dead_on_planet = 0
 	var/dead_on_almayer = 0

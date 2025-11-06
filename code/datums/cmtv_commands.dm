@@ -20,7 +20,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 
 	/// If the [/datum/cmtv_command/proc/execute] function determines no cooldown should be applied,
 	/// this should be toggled to false. For instance, when a command fails.
-	var/apply_cooldown = TRUE
+	var/successful = TRUE
 
 /datum/cmtv_command/proc/cannot_run(list/arguments)
 	if(!SScmtv.online())
@@ -41,7 +41,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	return FALSE
 
 /datum/cmtv_command/proc/pre_execute(list/arguments)
-	apply_cooldown = TRUE
+	successful = TRUE
 
 /// The actual execution of the command. The returned text is what will be displayed in chat.
 /datum/cmtv_command/proc/execute(list/arguments)
@@ -52,7 +52,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 	if(arguments["is_moderator"])
 		return
 
-	if(!apply_cooldown)
+	if(!successful)
 		return
 
 	if(global_cooldown_time)
@@ -124,10 +124,10 @@ GLOBAL_REFERENCE_LIST_INDEXED(cmtv_commands, /datum/cmtv_command, name)
 				continue
 
 			if(active_mob.real_name == looking_for)
-				SScmtv.change_observed_mob(active_mob, set_showtime = 60 SECONDS)
+				SScmtv.change_observed_mob(active_mob, set_showtime = 60 SECONDS, change_reason = "Switching to [looking_for]...")
 				return "Player is still active, switching after delay..."
 
-	apply_cooldown = FALSE
+	successful = FALSE
 	return "Given name is not in active player list. Name must be retrieved from !getmobs"
 
 /datum/cmtv_command/getmobs

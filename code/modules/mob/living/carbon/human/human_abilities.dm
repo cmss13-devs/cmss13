@@ -579,8 +579,8 @@ CULT
 	H.cancel_camera()
 	H.reset_view()
 	H.client.change_view(GLOB.world_view_size, target)
-	H.client.pixel_x = 0
-	H.client.pixel_y = 0
+	H.client.set_pixel_x(0)
+	H.client.set_pixel_y(0)
 
 //Similar to a cancel-camera-view button, but for mobs that were buckled to special vehicle seats.
 //Unbuckles them, which handles the view and offsets resets and other stuff.
@@ -612,8 +612,8 @@ CULT
 
 	H.unset_interaction()
 	H.client.change_view(GLOB.world_view_size, target)
-	H.client.pixel_x = 0
-	H.client.pixel_y = 0
+	H.client.set_pixel_x(0)
+	H.client.set_pixel_y(0)
 	H.reset_view()
 	remove_from(H)
 

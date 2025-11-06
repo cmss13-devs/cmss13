@@ -162,6 +162,8 @@ SUBSYSTEM_DEF(cmtv)
 	camera_operator.prefs.auto_fit_viewport = TRUE
 	camera_operator.prefs.toggle_prefs |= TOGGLE_FULLSCREEN
 
+	camera_operator.perspective = EYE_PERSPECTIVE
+
 	camera_operator.update_fullscreen()
 
 	camera_operator.screen += give_escape_menu_details()
@@ -213,7 +215,7 @@ SUBSYSTEM_DEF(cmtv)
 /// Takes a new mob to observe. If there is already a queued up mob, or a current perspective, they will be notified and dropped. This will become the new perspective in 10 seconds.
 /// If set to instant, we immediately switch to observe nothing. If set_showtime is set, the camera will stay on the new perspective for at least this long,
 /// unless they die or something.
-/datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective, instant_switch_away = FALSE, instant_switch_to = FALSE, set_showtime = FALSE)
+/datum/controller/subsystem/cmtv/proc/change_observed_mob(mob/new_perspective, instant_switch_away = FALSE, instant_switch_to = FALSE, set_showtime = FALSE, change_reason = FALSE)
 	if(temporarily_observing_turf)
 		log_debug("CMTV: Cannot change perspective, currently observing a turf.")
 		return
@@ -225,7 +227,7 @@ SUBSYSTEM_DEF(cmtv)
 	log_debug("CMTV: Swapping to perspective [new_perspective].")
 
 	if(current_perspective)
-		terminate_current_perspective()
+		terminate_current_perspective(change_reason)
 
 	if(instant_switch_away)
 		camera_mob.clean_observe_target()
@@ -274,10 +276,14 @@ SUBSYSTEM_DEF(cmtv)
 	RegisterSignal(future_perspective_mob, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH), PROC_REF(handle_reset_signal))
 	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_ENTERED_OBJ, PROC_REF(handle_reset_signal_immediate))
 	RegisterSignal(future_perspective_mob, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(handle_z_change))
+	RegisterSignal(future_perspective_mob.client, COMSIG_CLIENT_EYE_CHANGED, PROC_REF(handle_eye_change))
+	RegisterSignal(future_perspective_mob.client, COMSIG_CLIENT_PIXEL_X_CHANGED, PROC_REF(handle_pixel_x_change))
+	RegisterSignal(future_perspective_mob.client, COMSIG_CLIENT_PIXEL_Y_CHANGED, PROC_REF(handle_pixel_y_change))
+	RegisterSignal(future_perspective_mob.client, COMSIG_CLIENT_VIEW_CHANGED, PROC_REF(handle_view_change))
 
 	current_perspective = future_perspective_mob
 	change_displayed_mob(current_perspective.real_name)
-	camera_operator.view = "20x15"
+	handle_view_change(new_view = current_perspective.client.view)
 
 	camera_operator.screen += give_escape_menu_details()
 
@@ -296,7 +302,23 @@ SUBSYSTEM_DEF(cmtv)
 /datum/controller/subsystem/cmtv/proc/terminate_current_perspective(ticker_text = "Finding player...")
 	to_chat(current_perspective, boxed_message("[SPAN_BIGNOTICE("You are no longer being observed.")]\n\n [SPAN_NOTICE("You have opted out or are no longer eligible to be displayed on CMTV.")]"))
 
-	UnregisterSignal(current_perspective, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_STAT_SET_DEAD, COMSIG_MOB_NESTED, COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH, COMSIG_MOVABLE_Z_CHANGED, COMSIG_MOVABLE_ENTERED_OBJ))
+	UnregisterSignal(current_perspective, list(
+		COMSIG_PARENT_QDELETING,
+		COMSIG_MOB_STAT_SET_DEAD,
+		COMSIG_MOB_NESTED,
+		COMSIG_MOB_LOGOUT,
+		COMSIG_MOB_DEATH,
+		COMSIG_MOVABLE_Z_CHANGED,
+		COMSIG_MOVABLE_ENTERED_OBJ,
+	))
+
+	if(current_perspective.client)
+		UnregisterSignal(current_perspective.client, list(
+			COMSIG_CLIENT_EYE_CHANGED,
+			COMSIG_CLIENT_PIXEL_X_CHANGED,
+			COMSIG_CLIENT_PIXEL_Y_CHANGED,
+			COMSIG_CLIENT_VIEW_CHANGED,
+		))
 
 	remove_verb(current_perspective, /mob/proc/handoff_cmtv)
 	remove_action(current_perspective, /datum/action/stop_cmtv)
@@ -333,6 +355,38 @@ SUBSYSTEM_DEF(cmtv)
 	SIGNAL_HANDLER
 
 	reset_perspective("Current perspective is no longer eligible (instant signal)", instant = TRUE)
+
+/datum/controller/subsystem/cmtv/proc/handle_eye_change(source_mob, new_eye)
+	SIGNAL_HANDLER
+
+	if(source_mob != current_perspective)
+		return
+
+	camera_operator.set_eye(new_eye)
+
+/datum/controller/subsystem/cmtv/proc/handle_pixel_x_change(source_mob, new_pixel)
+	SIGNAL_HANDLER
+
+	if(source_mob != current_perspective)
+		return
+
+	camera_operator.set_pixel_x(new_pixel)
+
+/datum/controller/subsystem/cmtv/proc/handle_pixel_y_change(source_mob, new_pixel)
+	SIGNAL_HANDLER
+
+	if(source_mob != current_perspective)
+		return
+
+	camera_operator.set_pixel_y(new_pixel)
+
+/datum/controller/subsystem/cmtv/proc/handle_view_change(source_mob, new_view)
+	SIGNAL_HANDLER
+
+	var/y = (new_view * 2) + 1
+	var/x = floor((y / 3) * 4)
+
+	camera_operator.view = "[x]x[y]"
 
 /// Generic signal handler for deaths, nestings, logouts, etc. Immediately queues up a new perspective to be switched to
 /datum/controller/subsystem/cmtv/proc/reset_perspective(reason, instant = FALSE)

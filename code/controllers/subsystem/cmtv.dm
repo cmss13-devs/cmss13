@@ -162,8 +162,6 @@ SUBSYSTEM_DEF(cmtv)
 	camera_operator.prefs.auto_fit_viewport = TRUE
 	camera_operator.prefs.toggle_prefs |= TOGGLE_FULLSCREEN
 
-	camera_operator.perspective = EYE_PERSPECTIVE
-
 	camera_operator.update_fullscreen()
 
 	camera_operator.screen += give_escape_menu_details()
@@ -356,32 +354,36 @@ SUBSYSTEM_DEF(cmtv)
 
 	reset_perspective("Current perspective is no longer eligible (instant signal)", instant = TRUE)
 
-/datum/controller/subsystem/cmtv/proc/handle_eye_change(source_mob, new_eye)
+/datum/controller/subsystem/cmtv/proc/handle_eye_change(client/source_client, new_eye)
 	SIGNAL_HANDLER
 
-	if(source_mob != current_perspective)
+	if(source_client.mob != current_perspective)
 		return
 
 	camera_operator.set_eye(new_eye)
+	camera_operator.perspective = EYE_PERSPECTIVE
 
-/datum/controller/subsystem/cmtv/proc/handle_pixel_x_change(source_mob, new_pixel)
+/datum/controller/subsystem/cmtv/proc/handle_pixel_x_change(client/source_client, new_pixel)
 	SIGNAL_HANDLER
 
-	if(source_mob != current_perspective)
+	if(source_client.mob != current_perspective)
 		return
 
 	camera_operator.set_pixel_x(new_pixel)
 
-/datum/controller/subsystem/cmtv/proc/handle_pixel_y_change(source_mob, new_pixel)
+/datum/controller/subsystem/cmtv/proc/handle_pixel_y_change(client/source_client, new_pixel)
 	SIGNAL_HANDLER
 
-	if(source_mob != current_perspective)
+	if(source_client.mob != current_perspective)
 		return
 
 	camera_operator.set_pixel_y(new_pixel)
 
-/datum/controller/subsystem/cmtv/proc/handle_view_change(source_mob, new_view)
+/datum/controller/subsystem/cmtv/proc/handle_view_change(client/source_client, new_view)
 	SIGNAL_HANDLER
+
+	if(source_client.mob != current_perspective)
+		return
 
 	var/y = (new_view * 2) + 1
 	var/x = floor((y / 3) * 4)

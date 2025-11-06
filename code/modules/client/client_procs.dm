@@ -472,6 +472,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		spawn if(src)
 			ip2country(address, src)
 
+	spawn(-1)
+		if(SScmtv.is_subscriber(src))
+			add_verb(src, /client/proc/set_ooc_color_self)
+
 	//////////////
 	//DISCONNECT//
 	//////////////

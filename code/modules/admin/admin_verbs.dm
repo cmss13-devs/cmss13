@@ -393,7 +393,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 /client/proc/set_ooc_color_self()
 	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
-	if(!admin_holder && !donator)
+	if(!admin_holder && !donator && !SScmtv.is_subscriber(src))
 		return
 	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
 	if(new_ooccolor)

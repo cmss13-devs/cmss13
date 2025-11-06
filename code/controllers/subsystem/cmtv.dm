@@ -49,6 +49,9 @@ SUBSYSTEM_DEF(cmtv)
 	/// Ckeys that have opted out -> when they opted outs. If within the last 5 minutes, they're excluded
 	var/alist/opted_out_ckeys = alist()
 
+	/// List of subscriber IDs, retrieved from the cmtv_api endpoint
+	var/list/subscribers
+
 /datum/controller/subsystem/cmtv/Initialize()
 	var/username = ckey(CONFIG_GET(string/cmtv_ckey))
 	if(!username || !CONFIG_GET(string/cmtv_link))
@@ -61,6 +64,13 @@ SUBSYSTEM_DEF(cmtv)
 		var/datum/http_request/request = new
 		request.prepare(RUSTG_HTTP_METHOD_POST, "[api_url]/role_icons", json_encode(list("auth_key" = api_comms_key, "role_icons" = GLOB.minimap_icons)))
 		request.execute_blocking()
+
+		request = new
+		request.prepare(RUSTG_HTTP_METHOD_GET, "[api_url]/active_subscribers", json_encode(list("auth_key" = api_comms_key)))
+		request.execute_blocking()
+
+		var/datum/http_response/response = request.into_response()
+		subscribers = json_decode(response.body)
 
 	perspective_display = new
 	RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_new_client))
@@ -463,6 +473,25 @@ SUBSYSTEM_DEF(cmtv)
 
 	if(zoom_out)
 		camera_operator.view = "32x24"
+
+/datum/controller/subsystem/cmtv/proc/is_subscriber(client/potential_subscriber)
+	if(!CONFIG_GET(string/cmtv_api) || !CONFIG_GET(string/cmtv_api_key))
+		return FALSE
+
+	UNTIL(initialized)
+
+	if(!potential_subscriber)
+		return FALSE
+
+	var/datum/view_record/twitch_link/link = locate() in DB_VIEW(DB_AND(
+		DB_COMP("ckey", DB_EQUALS, potential_subscriber.ckey),
+		DB_COMP("twitch_id", DB_IS)
+	))
+
+	if(link.twitch_id in subscribers)
+		return TRUE
+
+	return FALSE
 
 /datum/controller/subsystem/cmtv/proc/end_spectate_event()
 	camera_mob.hud_used.plane_masters["[HUD_PLANE]"].alpha = 255

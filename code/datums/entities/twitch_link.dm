@@ -20,7 +20,7 @@
 	var/id
 
 /datum/entity_view_meta/twitch_link
-	root_entity_meta = /datum/entity_meta/twitch_link
+	root_record_type = /datum/entity/twitch_link
 	destination_entity = /datum/view_record/twitch_link
 
 	fields = list(

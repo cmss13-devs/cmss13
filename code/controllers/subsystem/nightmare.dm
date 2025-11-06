@@ -79,9 +79,9 @@ SUBSYSTEM_DEF(nightmare)
 	if(!SSticker)
 		message_admins("Nightmare subsystem is unable to determine player count!")
 	switch(SSticker?.totalPlayers)
-		if(0 to 70)
+		if(0 to 79)
 			return "LowPop"
-		if(71 to 130)
+		if(80 to 130)
 			return "MidPop"
 		else
 			return "HighPop"

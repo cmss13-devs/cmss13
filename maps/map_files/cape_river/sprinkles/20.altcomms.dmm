@@ -1,0 +1,840 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/caperiver/telecomms/telecomm_2)
+"ab" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash,
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/caperiver/telecomms/telecomm_2)
+"ac" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2"
+	},
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/caperiver/telecomms/telecomm_2)
+"ad" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_y = 12
+	},
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/caperiver/telecomms/telecomm_2)
+"ae" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/mats/midchance,
+/turf/open/floor/kutjevo/tan/plate,
+/area/caperiver/telecomms/telecomm_2)
+"af" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"aJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/item/tool/wirecutters,
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/caperiver/telecomms/telecomm_2)
+"bg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/caperiver/telecomms/telecomm_2)
+"bs" = (
+/turf/open/floor/kutjevo/multi_tiles/southwest,
+/area/caperiver/telecomms/telecomm_2)
+"bR" = (
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/caperiver/outdoors/scrublands/south)
+"bY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/item/tool/warning_cone{
+	layer = 2;
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/caperiver/telecomms/telecomm_2)
+"cm" = (
+/obj/structure/window/framed/kutjevo/reinforced,
+/turf/open/floor/plating/kutjevo,
+/area/caperiver/telecomms/telecomm_2)
+"cW" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/caperiver/telecomms/telecomm_2)
+"dO" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_4"
+	},
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"em" = (
+/obj/structure/flora/grass/desert/lightgrass_5,
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/caperiver/outdoors/scrublands/south)
+"eH" = (
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/caperiver/telecomms/telecomm_2)
+"fg" = (
+/obj/structure/largecrate/supply/ammo/sentry{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/turf/open/floor/kutjevo/tan/plate,
+/area/caperiver/telecomms/telecomm_2)
+"go" = (
+/obj/structure/flora/grass/desert/lightgrass_7,
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/caperiver/outdoors/scrublands/south)
+"gt" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"gK" = (
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/caperiver/telecomms/telecomm_2)
+"hw" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/turf/open/floor/almayer/research/containment/floor1,
+/area/caperiver/outdoors/scrublands/south)
+"iQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/shotgun/lowchance,
+/turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/caperiver/telecomms/telecomm_2)
+"jy" = (
+/obj/structure/largecrate/random/barrel/purewhite,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/caperiver/telecomms/telecomm_2)
+"kZ" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"lm" = (
+/turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/caperiver/telecomms/telecomm_2)
+"lv" = (
+/obj/structure/window/framed/kutjevo/reinforced,
+/turf/open/space/basic,
+/area/caperiver/telecomms/telecomm_2)
+"lM" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/caperiver/outdoors/scrublands/south)
+"mt" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/largecrate/random/case,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/caperiver/telecomms/telecomm_2)
+"oz" = (
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"pc" = (
+/obj/structure/largecrate/random/barrel/black{
+	layer = 3.1;
+	pixel_y = 8;
+	pixel_x = 4
+	},
+/turf/open/floor/kutjevo/tan/plate,
+/area/caperiver/telecomms/telecomm_2)
+"pj" = (
+/obj/structure/sign/conam{
+	pixel_y = 32
+	},
+/obj/structure/machinery/big_computers/messaging_server/brown{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/plate,
+/area/caperiver/telecomms/telecomm_2)
+"pm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/caperiver/telecomms/telecomm_2)
+"pn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/rifle/lowchance,
+/turf/open/floor/kutjevo/tan/plate,
+/area/caperiver/telecomms/telecomm_2)
+"pJ" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/obj/effect/landmark/hunter_primary,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"ri" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/caperiver/outdoors/scrublands/south)
+"sn" = (
+/obj/structure/flora/grass/desert/heavygrass_3,
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/south)
+"ss" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"sx" = (
+/turf/open/floor/plating/kutjevo,
+/area/caperiver/telecomms/telecomm_2)
+"sL" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"tv" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 6
+	},
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/caperiver/outdoors/scrublands/south)
+"tQ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/communications/simple{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan/plate,
+/area/caperiver/telecomms/telecomm_2)
+"uq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 2;
+	pixel_x = 2
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/kutjevo/tan/grey_inner_edge/east,
+/area/caperiver/telecomms/telecomm_2)
+"vo" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/kutjevo/tan/plate,
+/area/caperiver/telecomms/telecomm_2)
+"vM" = (
+/turf/closed/wall/strata_ice/rock,
+/area/caperiver/oob)
+"vW" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/floor/almayer/research/containment/floor1,
+/area/caperiver/outdoors/scrublands/south)
+"wv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/caperiver/telecomms/telecomm_2)
+"wJ" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3"
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"wU" = (
+/obj/effect/spawner/random/mats/highchance,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/caperiver/telecomms/telecomm_2)
+"xm" = (
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/item/tool/pen{
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/caperiver/telecomms/telecomm_2)
+"xI" = (
+/obj/effect/landmark/static_comms/net_two,
+/turf/open/floor/kutjevo/plate,
+/area/caperiver/telecomms/telecomm_2)
+"yq" = (
+/obj/structure/flora/grass/desert/heavygrass_4,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"yC" = (
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"ze" = (
+/obj/structure/prop/dam/boulder/boulder2,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"zi" = (
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/caperiver/telecomms/telecomm_2)
+"zE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/caperiver/telecomms/telecomm_2)
+"zP" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 4
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"zR" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	icon_state = "ground_colorable_alt"
+	},
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"Ak" = (
+/obj/structure/flora/bush/desert/cactus/multiple{
+	icon_state = "cacti_9"
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"At" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/floor/almayer/research/containment/floor1,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"Au" = (
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"AF" = (
+/obj/structure/flora/tree/joshua,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"Bc" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"Bh" = (
+/obj/structure/prop/dam/large_boulder/boulder2,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"Bv" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"Do" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/big_computers/messaging_server/brown,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/caperiver/telecomms/telecomm_2)
+"DO" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/caperiver/telecomms/telecomm_2)
+"Ew" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/plate,
+/area/caperiver/telecomms/telecomm_2)
+"EL" = (
+/obj/structure/prop/dam/wide_boulder/boulder1,
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"EN" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 6
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"FH" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/turf/open/floor/almayer/research/containment/floor1,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"FN" = (
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"FV" = (
+/obj/effect/spawner/random/gun/pistol/midchance,
+/turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/caperiver/telecomms/telecomm_2)
+"Ic" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/south)
+"IG" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/caperiver/telecomms/telecomm_2)
+"KB" = (
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"KD" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/structure/reagent_dispensers/tank/fuel,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"La" = (
+/obj/structure/flora/grass/desert/lightgrass_5,
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/south)
+"Lt" = (
+/obj/structure/prop/hybrisa/signs/high_voltage{
+	pixel_y = 32
+	},
+/turf/open/floor/kutjevo/plate,
+/area/caperiver/telecomms/telecomm_2)
+"LM" = (
+/obj/structure/machinery/light,
+/obj/structure/largecrate/supply,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/caperiver/telecomms/telecomm_2)
+"MP" = (
+/turf/open/desert/dirt/desert_transition_edge1/northwest,
+/area/caperiver/outdoors/scrublands/south)
+"MT" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/floor/almayer/research/containment/floor1,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"Nc" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/kutjevo/tan/plate,
+/area/caperiver/telecomms/telecomm_2)
+"No" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/caperiver/telecomms/telecomm_2)
+"NJ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/disk_reader,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/conam{
+	pixel_y = 34;
+	pixel_x = 3
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/caperiver/telecomms/telecomm_2)
+"OC" = (
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/caperiver/outdoors/scrublands/south)
+"OT" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/kutjevo/tan/plate,
+/area/caperiver/telecomms/telecomm_2)
+"OU" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"Pe" = (
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/south)
+"Pn" = (
+/turf/open/desert/dirt/desert_transition_corner1/west,
+/area/caperiver/outdoors/scrublands/south)
+"Ps" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
+	},
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/caperiver/outdoors/scrublands/south)
+"PC" = (
+/turf/open/desert/dirt,
+/area/caperiver/outdoors/scrublands/south)
+"PI" = (
+/turf/open/floor/kutjevo/tan/alt_inner_edge,
+/area/caperiver/telecomms/telecomm_2)
+"Qa" = (
+/obj/effect/decal/sand_overlay/sand2,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"Si" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	dir = 5
+	},
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/caperiver/outdoors/scrublands/south)
+"Sz" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/plating/kutjevo,
+/area/caperiver/telecomms/telecomm_2)
+"SW" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#FF9D5C";
+	dir = 9
+	},
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/caperiver/outdoors/scrublands/south/antiweed)
+"Tr" = (
+/obj/structure/flora/grass/desert/lightgrass_7,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"Tv" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
+	},
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"Ug" = (
+/obj/structure/sign/poster/corporate{
+	pixel_y = 32
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/caperiver/telecomms/telecomm_2)
+"UQ" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname,
+/turf/open/floor/plating/kutjevo,
+/area/caperiver/telecomms/telecomm_2)
+"Vo" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	layer = 3.2
+	},
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/caperiver/telecomms/telecomm_2)
+"Wl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/alt_inner_edge/north,
+/area/caperiver/telecomms/telecomm_2)
+"Xh" = (
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/caperiver/telecomms/telecomm_2)
+"XH" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/plate,
+/area/caperiver/telecomms/telecomm_2)
+"YQ" = (
+/obj/structure/flora/grass/desert/lightgrass_8,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"YV" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 5
+	},
+/turf/open/floor/kutjevo/plate,
+/area/caperiver/outdoors/scrublands/south)
+"Zi" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/plate,
+/area/caperiver/outdoors/scrublands/south)
+"ZA" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/rock,
+/area/caperiver/outdoors/scrublands/south)
+"ZC" = (
+/obj/item/explosive/plastic,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/caperiver/telecomms/telecomm_2)
+
+(1,1,1) = {"
+Si
+sn
+Pe
+La
+oz
+zR
+dO
+Au
+Au
+Bv
+vM
+vM
+vM
+Bc
+Tv
+sL
+"}
+(2,1,1) = {"
+ss
+EN
+zP
+Tv
+af
+vM
+vM
+Au
+Au
+Au
+kZ
+vM
+vM
+vM
+vM
+go
+"}
+(3,1,1) = {"
+EN
+Bc
+Bc
+vM
+vM
+vM
+vM
+At
+At
+At
+DO
+DO
+vM
+ri
+Ic
+PC
+"}
+(4,1,1) = {"
+Bc
+Bc
+vM
+vM
+vM
+vM
+DO
+cm
+sx
+Sz
+DO
+DO
+DO
+ri
+PC
+PC
+"}
+(5,1,1) = {"
+Bc
+vM
+vM
+DO
+DO
+DO
+cW
+pc
+ab
+zE
+mt
+vo
+cm
+KD
+PC
+MP
+"}
+(6,1,1) = {"
+vM
+vM
+vM
+DO
+pj
+Do
+gK
+zi
+No
+Wl
+Xh
+Xh
+UQ
+Qa
+SW
+Pn
+"}
+(7,1,1) = {"
+vM
+vM
+vM
+DO
+NJ
+ae
+ad
+pn
+eH
+PI
+Vo
+wv
+sx
+Qa
+wJ
+KB
+"}
+(8,1,1) = {"
+vM
+vM
+vM
+DO
+IG
+aJ
+uq
+xm
+eH
+FV
+Ew
+jy
+lv
+EL
+KB
+pJ
+"}
+(9,1,1) = {"
+sL
+vM
+vM
+cW
+bs
+xI
+bY
+tQ
+No
+zE
+aa
+Nc
+lv
+bR
+KB
+OU
+"}
+(10,1,1) = {"
+Ak
+ze
+vM
+DO
+Lt
+bs
+pm
+bg
+No
+iQ
+fg
+wU
+lv
+em
+yq
+KB
+"}
+(11,1,1) = {"
+AF
+vM
+vM
+DO
+DO
+DO
+DO
+XH
+ac
+zE
+ZC
+OT
+DO
+tv
+Tv
+Tr
+"}
+(12,1,1) = {"
+KB
+KB
+vM
+vM
+vM
+vM
+DO
+Ug
+No
+lm
+OT
+LM
+cW
+vM
+Bc
+Tv
+"}
+(13,1,1) = {"
+yq
+KB
+KB
+KB
+Bh
+lM
+DO
+cm
+sx
+Sz
+cm
+DO
+DO
+vM
+vM
+Bc
+"}
+(14,1,1) = {"
+Tv
+ss
+KB
+KB
+KB
+YV
+hw
+FH
+FH
+FH
+MT
+vW
+Zi
+vM
+vM
+Bc
+"}
+(15,1,1) = {"
+gt
+KB
+KB
+ZA
+KB
+KB
+YQ
+KB
+yC
+FN
+OC
+PC
+PC
+vM
+vM
+Ps
+"}

@@ -386,9 +386,6 @@
 		if(!hive.living_xeno_queen.queen_aged)
 			hive.living_xeno_queen.make_combat_effective()
 	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
-	hive.hive_abilities += (/datum/action/xeno_action/onclick/human_hunt_hive_ability)
-	for(var/mob/living/carbon/xenomorph/hive_xenos in hive.totalXenos)
-		hive.give_hive_abilities(hive_xenos)
 
 	// Notify the yautja too so they stop the hunt
 	message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")

@@ -855,7 +855,7 @@
 	time_to_live = 6
 	spread_speed = 1
 	alpha = 60
-	var/remove_chem = 8
+	var/remove_chem = 3
 
 /obj/effect/particle_effect/smoke/decomposing_enzymes/affect(mob/living/carbon/affected_mob)
 	. = ..()

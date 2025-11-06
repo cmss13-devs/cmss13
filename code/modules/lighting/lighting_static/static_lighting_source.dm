@@ -268,10 +268,10 @@
 		needs_update = LIGHTING_FORCE_UPDATE
 		applied = TRUE
 	else if (needs_update == LIGHTING_CHECK_UPDATE)
-		if (update_fluff) //we dont need to find corners for color/power change 
-			needs_update = LIGHTING_CHECK_UPDATE
-		else
+		if (!update_fluff)
 			return //nothing's changed
+	else if (update_fluff)
+		needs_update = LIGHTING_FORCE_UPDATE //forces LIGHTING_VIS_UPDATE to update everything
 
 	LAZYINITLIST(src.effect_str)
 	var/list/effect_str = src.effect_str
@@ -280,7 +280,7 @@
 	var/list/datum/static_lighting_corner/new_corners
 	var/list/datum/static_lighting_corner/gone_corners
 
-	if (needs_update == LIGHTING_CHECK_UPDATE)
+	if (needs_update == LIGHTING_CHECK_UPDATE) //we dont need to find corners for color/power change only
 		to_world(SPAN_DEBUG("Running lightning fluff update."))
 		corners = effect_str
 		new_corners = list()

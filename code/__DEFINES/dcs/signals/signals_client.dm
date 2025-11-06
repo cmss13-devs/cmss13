@@ -27,3 +27,15 @@
 
 /// Called when something is removed from a client's screen : /client/proc/remove_from_screen(screen_remove)
 #define COMSIG_CLIENT_SCREEN_REMOVE "client_screen_remove"
+
+/// Called when the eye is modified through the set_eye() setter : /client/proc/set_eye(new_eye)
+#define COMSIG_CLIENT_EYE_CHANGED "client_eye_changed"
+
+/// Called when pixel_x is modified through the set_pixel_x() setter : /client/proc/set_pixel_x(new_pixel_x)
+#define COMSIG_CLIENT_PIXEL_X_CHANGED "client_pixel_x_changed"
+
+/// Called when pixel_y is modified through the set_pixel_y() setter : /client/proc/set_pixel_y(new_pixel_y)
+#define COMSIG_CLIENT_PIXEL_Y_CHANGED "client_pixel_y_changed"
+
+/// Called when view is modified through the change_view() setter : /client/proc/change_view(new_view)
+#define COMSIG_CLIENT_VIEW_CHANGED "client_changed_view"

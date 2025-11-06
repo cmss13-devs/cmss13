@@ -44,8 +44,8 @@
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
-			M.client.pixel_x = 0
-			M.client.pixel_y = 0
+			M.client.set_pixel_x(0)
+			M.client.set_pixel_y(0)
 			M.reset_view()
 	else
 		if(M.stat == DEAD)
@@ -181,8 +181,8 @@
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
-			M.client.pixel_x = 0
-			M.client.pixel_y = 0
+			M.client.set_pixel_x(0)
+			M.client.set_pixel_y(0)
 	else
 		if(M.stat != CONSCIOUS)
 			unbuckle()
@@ -261,8 +261,8 @@
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
 			M.client.change_view(GLOB.world_view_size, vehicle)
-			M.client.pixel_x = 0
-			M.client.pixel_y = 0
+			M.client.set_pixel_x(0)
+			M.client.set_pixel_y(0)
 			M.reset_view()
 	else
 		if(M.stat == DEAD)

@@ -246,9 +246,9 @@
 		M.client.perspective = EYE_PERSPECTIVE
 
 		if(is_watching)
-			M.client.eye = is_watching
+			M.client.set_eye(is_watching)
 		else
-			M.client.eye = src
+			M.client.set_eye(src)
 
 	return COMPONENT_OVERRIDE_VIEW
 

@@ -970,6 +970,39 @@ CLIENT_VERB(action_hide_menu)
 		winset(src, "default.Shift", "is-disabled=true")
 		winset(src, "default.ShiftUp", "is-disabled=true")
 
+#ifdef SPACEMAN_DMM
+/client/VAR_PRIVATE/eye
+/client/VAR_PRIVATE/pixel_x
+/client/VAR_PRIVATE/pixel_y
+#endif
+
+/client/proc/set_eye(new_eye)
+	SEND_SIGNAL(src, COMSIG_CLIENT_EYE_CHANGED, new_eye)
+
+	eye = new_eye
+
+/client/proc/get_eye() as /atom
+	RETURN_TYPE(/atom)
+
+	return eye
+
+/client/proc/set_pixel_x(new_pixel_x)
+	SEND_SIGNAL(src, COMSIG_CLIENT_PIXEL_X_CHANGED, new_pixel_x)
+
+	pixel_x = new_pixel_x
+
+/client/proc/get_pixel_x() as num
+	return pixel_x
+
+/client/proc/set_pixel_y(new_pixel_y)
+	SEND_SIGNAL(src, COMSIG_CLIENT_PIXEL_Y_CHANGED, new_pixel_y)
+
+	pixel_y = new_pixel_y
+
+/client/proc/get_pixel_y() as num
+	return pixel_y
+
+
 GLOBAL_VAR(ooc_rank_dmi)
 GLOBAL_LIST_INIT(ooc_rank_iconstates, setup_ooc_rank_icons())
 GLOBAL_LIST_INIT(community_awards, get_community_awards())

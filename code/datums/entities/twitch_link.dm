@@ -49,7 +49,7 @@ CLIENT_VERB(link_twitch)
 	if(length(DB_VIEW(/datum/view_record/twitch_link,
 		DB_AND(
 			DB_COMP("ckey", DB_EQUALS, ckey),
-			DB_COMP("twitch_id", DB_ISNOT)
+			DB_COMP("twitch_id", DB_IS)
 		))
 	))
 		to_chat(src, SPAN_WARNING("You have already linked this CKEY to Twitch. Contact support to remove this."))

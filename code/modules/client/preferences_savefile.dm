@@ -261,6 +261,7 @@
 	if(!path)
 		return 0
 	if(!fexists(path))
+		load_preferences_sanitize() // Ensure a new player gets same defaults as returning players
 		return 0
 	var/savefile/S = new /savefile(path)
 	if(!S)
@@ -317,6 +318,7 @@
 	S["xeno_postfix"] >> xeno_postfix
 	S["xeno_name_ban"] >> xeno_name_ban
 	S["playtime_perks"] >> playtime_perks
+	S["skip_playtime_ranks"] >> skip_playtime_ranks
 	S["show_queen_name"] >> show_queen_name
 	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
 	S["view_controller"] >> View_MC
@@ -326,6 +328,7 @@
 
 	S["synth_name"] >> synthetic_name
 	S["synth_type"] >> synthetic_type
+	S["synth_specialisation"] >> synth_specialisation
 	S["pred_name"] >> predator_name
 	S["pred_gender"] >> predator_gender
 	S["pred_age"] >> predator_age
@@ -340,6 +343,7 @@
 	S["pred_armor_mat"] >> predator_armor_material
 	S["pred_greave_mat"] >> predator_greave_material
 	S["pred_caster_mat"] >> predator_caster_material
+	S["pred_bracer_mat"] >> predator_bracer_material
 	S["pred_cape_color"] >> predator_cape_color
 	S["pred_h_style"] >> predator_h_style
 	S["pred_skin_color"] >> predator_skin_color
@@ -385,6 +389,7 @@
 
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
+	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 
 	S["lastchangelog"] >> lastchangelog
 
@@ -396,6 +401,35 @@
 	S["chem_presets"] >> chem_presets
 
 	//Sanitize
+	load_preferences_sanitize()
+
+	check_keybindings()
+	S["key_bindings"] << key_bindings
+
+	if(remembered_key_bindings)
+		for(var/i in GLOB.keybindings_by_name)
+			if(!(i in remembered_key_bindings))
+				var/datum/keybinding/instance = GLOB.keybindings_by_name[i]
+				// Classic
+				if(LAZYLEN(instance.classic_keys))
+					for(var/bound_key in instance.classic_keys)
+						LAZYADD(key_bindings[bound_key], list(instance.name))
+
+				// Hotkey
+				if(LAZYLEN(instance.hotkey_keys))
+					for(var/bound_key in instance.hotkey_keys)
+						LAZYADD(key_bindings[bound_key], list(instance.name))
+
+	S["remembered_key_bindings"] << GLOB.keybindings_by_name
+
+	if(toggles_chat & SHOW_TYPING)
+		owner.typing_indicators = FALSE
+	else
+		owner.typing_indicators = TRUE
+
+	return 1
+
+/datum/preferences/proc/load_preferences_sanitize()
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
 	UI_style = sanitize_inlist(UI_style, list("white", "dark", "midnight", "orange", "old"), initial(UI_style))
@@ -426,7 +460,8 @@
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
 	auto_observe = sanitize_integer(auto_observe, 0, 1, 1)
-	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
+	playtime_perks = sanitize_integer(playtime_perks, 0, 1, 1)
+	skip_playtime_ranks = sanitize_integer(skip_playtime_ranks, 0, 1, 1)
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
@@ -439,6 +474,7 @@
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
+	synth_specialisation = sanitize_inlist(synth_specialisation, list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command"), initial(synth_specialisation))
 	predator_name = predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender = sanitize_text(predator_gender, initial(predator_gender))
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
@@ -452,7 +488,8 @@
 	predator_mask_material = sanitize_inlist(predator_mask_material, PRED_MATERIALS, initial(predator_mask_material))
 	predator_armor_material = sanitize_inlist(predator_armor_material, PRED_MATERIALS, initial(predator_armor_material))
 	predator_greave_material = sanitize_inlist(predator_greave_material, PRED_MATERIALS, initial(predator_greave_material))
-	predator_caster_material = sanitize_inlist(predator_caster_material, PRED_MATERIALS + "retro", initial(predator_caster_material))
+	predator_caster_material = sanitize_inlist(predator_caster_material, PRED_RETRO_MATERIALS, initial(predator_caster_material))
+	predator_bracer_material = sanitize_inlist(predator_bracer_material, PRED_RETRO_MATERIALS, initial(predator_bracer_material))
 	predator_cape_color = sanitize_hexcolor(predator_cape_color, initial(predator_cape_color))
 	predator_h_style = sanitize_inlist(predator_h_style, GLOB.yautja_hair_styles_list, initial(predator_h_style))
 	predator_skin_color = sanitize_inlist(predator_skin_color, PRED_SKIN_COLOR, initial(predator_skin_color))
@@ -478,7 +515,6 @@
 	fax_name_clf = fax_name_clf ? sanitize_text(fax_name_clf, initial(fax_name_clf)) : generate_name(FACTION_CLF)
 
 	key_bindings = sanitize_keybindings(key_bindings)
-	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
 	hotkeys = sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
@@ -491,36 +527,10 @@
 
 	chem_presets = sanitize_islist(chem_presets, list())
 
-	check_keybindings()
-	S["key_bindings"] << key_bindings
-
-	if(remembered_key_bindings)
-		for(var/i in GLOB.keybindings_by_name)
-			if(!(i in remembered_key_bindings))
-				var/datum/keybinding/instance = GLOB.keybindings_by_name[i]
-				// Classic
-				if(LAZYLEN(instance.classic_keys))
-					for(var/bound_key in instance.classic_keys)
-						LAZYADD(key_bindings[bound_key], list(instance.name))
-
-				// Hotkey
-				if(LAZYLEN(instance.hotkey_keys))
-					for(var/bound_key in instance.hotkey_keys)
-						LAZYADD(key_bindings[bound_key], list(instance.name))
-
-	S["remembered_key_bindings"] << GLOB.keybindings_by_name
-
-	if(toggles_chat & SHOW_TYPING)
-		owner.typing_indicators = FALSE
-	else
-		owner.typing_indicators = TRUE
-
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE, HUD_MENTOR_SIGHT = FALSE)
 
 	volume_preferences = sanitize_volume_preferences(volume_preferences, list(1, 0.5, 1, 0.6)) // Game, music, admin midis, lobby music
-
-	return 1
 
 /datum/preferences/proc/save_preferences()
 	if(!path)
@@ -574,6 +584,7 @@
 	S["xeno_name_ban"] << xeno_name_ban
 	S["xeno_vision_level_pref"] << xeno_vision_level_pref
 	S["playtime_perks"] << playtime_perks
+	S["skip_playtime_ranks"] << skip_playtime_ranks
 	S["show_queen_name"] << show_queen_name
 
 	S["view_controller"] << View_MC
@@ -583,6 +594,7 @@
 
 	S["synth_name"] << synthetic_name
 	S["synth_type"] << synthetic_type
+	S["synth_specialisation"] << synth_specialisation
 	S["pred_name"] << predator_name
 	S["pred_gender"] << predator_gender
 	S["pred_age"] << predator_age
@@ -597,6 +609,7 @@
 	S["pred_armor_mat"] << predator_armor_material
 	S["pred_greave_mat"] << predator_greave_material
 	S["pred_caster_mat"] << predator_caster_material
+	S["pred_bracer_mat"] << predator_bracer_material
 	S["pred_cape_color"] << predator_cape_color
 	S["pred_h_style"] << predator_h_style
 	S["pred_skin_color"] << predator_skin_color

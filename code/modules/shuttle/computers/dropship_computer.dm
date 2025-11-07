@@ -104,7 +104,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-		var/name = shuttle?.name
+		var/name = capitalize(shuttle?.name)
 		if(can_change_shuttle)
 			name = "Remote"
 		ui = new(user, src, "DropshipFlightControl", "[name] Flight Computer")

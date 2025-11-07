@@ -101,6 +101,8 @@ GLOBAL_LIST_INIT(admin_verbs_admin, list(
 GLOBAL_LIST_INIT(admin_verbs_ban, list(
 	/client/proc/unban_panel,
 	/client/proc/stickyban_panel,
+	/client/proc/ipcheck_allow,
+	/client/proc/ipcheck_revoke,
 	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes.
 ))
 
@@ -521,12 +523,12 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 
 	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female", "Non-Binary")
 	if(new_gender)
-		if(new_gender == "Male")
-			M.gender = MALE
-		else if(new_gender == "Female")
+		if(new_gender == "Female")
 			M.gender = FEMALE
 		else if(new_gender == "Non-Binary")
 			M.gender = PLURAL
+		else
+			M.gender = MALE
 	M.update_hair()
 	M.update_body()
 

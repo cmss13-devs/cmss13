@@ -32,7 +32,7 @@
 // M44
 #define REVOLVER_TIP_COLOR_MARKSMAN "#FF744F"
 #define REVOLVER_TIP_COLOR_HEAVY AMMO_BAND_COLOR_IMPACT
-// Mateba
+// Mateba(Unica)
 #define REVOLVER_TIP_COLOR_HIGH_IMPACT AMMO_BAND_COLOR_HIGH_IMPACT
 #define REVOLVER_TIP_COLOR_AP AMMO_BAND_COLOR_AP
 #define REVOLVER_TIP_COLOR_HIAP AMMO_BAND_COLOR_HIGH_IMPACT_AP
@@ -51,13 +51,20 @@
 #define AUTOFIRE_SUCCESS (1<<1)
 
 ///Base CO special weapons options
-#define CO_GUNS list(CO_GUN_MATEBA, CO_GUN_MATEBA_SPECIAL, CO_GUN_M1911C, CO_GUN_DEAGLE)
+#define CO_GUNS list(CO_GUN_MATEBA, CO_GUN_MATEBA_CLASSIC, CO_GUN_MATEBA_SPECIAL, CO_GUN_M1911C, CO_GUN_DEAGLE, CO_GUN_2006M)
 
 ///Council CO special weapons options
-#define COUNCIL_CO_GUNS list(CO_GUN_MATEBA_COUNCIL)
+#define COUNCIL_CO_GUNS list(CO_GUN_MATEBA_COUNCIL, CO_GUN_MATEBA_COUNCIL_GOLDEN, CO_GUN_2006M_COUNCIL, CO_GUN_2006MB_COUNCIL, CO_GUN_2006MS_COUNCIL, CO_GUN_DEAGLE_COUNCIL)
 
-#define CO_GUN_MATEBA "Mateba"
-#define CO_GUN_MATEBA_SPECIAL "Mateba Special"
+#define CO_GUN_MATEBA "Unica (camo comforting)"
+#define CO_GUN_MATEBA_CLASSIC "Unica Classic"
+#define CO_GUN_MATEBA_SPECIAL "Unica Special"
+#define CO_GUN_2006M "2006M"
 #define CO_GUN_DEAGLE "Desert Eagle"
 #define CO_GUN_M1911C "M1911C"
-#define CO_GUN_MATEBA_COUNCIL "Colonel's Mateba"
+#define CO_GUN_MATEBA_COUNCIL "Colonel's silver Unica"
+#define CO_GUN_MATEBA_COUNCIL_GOLDEN "Colonel's golden Unica"
+#define CO_GUN_2006M_COUNCIL "Colonel's golden 2006M"
+#define CO_GUN_2006MB_COUNCIL "Colonel's golden 2006M black handle"
+#define CO_GUN_2006MS_COUNCIL "Colonel's silver 2006M"
+#define CO_GUN_DEAGLE_COUNCIL "Colonel's golden Desert Eagle"

@@ -59,7 +59,7 @@
 	else
 		maptext = ""
 
-	if(uses_left)
+	if(uses_left && autoinjector_type)
 		var/image/filling = image('icons/obj/items/syringe.dmi', src, "[autoinjector_type]_[uses_left]")
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -285,9 +285,9 @@
 /obj/item/reagent_container/hypospray/autoinjector/peridaxon
 	name = "peridaxon autoinjector"
 	chemname = "peridaxon"
-	desc = "An autoinjector loaded with 3 doses of 30u of Peridaxon, an emergency medicine used to stop most symptoms of organ damage. Does not fix organ damage. You can refill it at Wey-Med vending machines."
-	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
-	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	desc = "An autoinjector loaded with 3 doses of 7.5u of Peridaxon, an emergency medicine used to stop most symptoms of organ damage. Does not fix organ damage. You can refill it at Wey-Med vending machines."
+	amount_per_transfer_from_this = LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Pr"
 
@@ -340,12 +340,15 @@
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5
+	autoinjector_type = "+stimpack_custom"
 	icon_state = "stimpack"
+	autoinjector_type = null
 	skilllock = SKILL_MEDICAL_DEFAULT
-	display_maptext = TRUE
+	display_maptext = FALSE //corporate secret
 	maptext_label = "Uz"
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
+	. = ..()
 	icon_state = uses_left ? "stimpack" : "stimpack0"
 	if((isstorage(loc) || ismob(loc)) && display_maptext)
 		maptext = SPAN_LANGCHAT("[maptext_label]")
@@ -369,6 +372,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "crystal"
 	injectSFX = 'sound/items/pred_crystal_inject.ogg'
+	autoinjector_type = null
 	injectVOL = 15
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE
 	volume = REAGENTS_OVERDOSE
@@ -393,6 +397,7 @@
 	chemname = "tricordrazine"
 	desc = "An autoinjector loaded with a single dose of 15u of tricordrazine for marines to treat themselves with. You can refill it at Wey-Med vending machines."
 	icon_state = "tricord"
+	autoinjector_type = null
 	amount_per_transfer_from_this = 15
 	volume = 15
 	skilllock = SKILL_MEDICAL_DEFAULT

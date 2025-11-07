@@ -24,12 +24,13 @@
 
 
 	utility_under = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/marine/officer/command, /obj/item/clothing/under/marine/officer/boiler)
-	utility_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm/tan)
+	utility_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/cmcap/bridge, /obj/item/clothing/head/beret/cm/tan)
+	utility_gloves = list(/obj/item/clothing/gloves/marine, /obj/item/clothing/gloves/marine/brown, /obj/item/clothing/gloves/marine/grey, /obj/item/clothing/gloves/marine/fingerless)
 	utility_extra = list(/obj/item/clothing/glasses/sunglasses, /obj/item/clothing/glasses/sunglasses/big, /obj/item/clothing/glasses/sunglasses/aviator, /obj/item/clothing/glasses/mbcg)
 
 	service_under = list(/obj/item/clothing/under/marine/officer/formal/gray, /obj/item/clothing/under/marine/officer/formal/turtleneck)
 	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
-	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/patchless)
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/service, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/patchless)
 	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black, /obj/item/clothing/head/marine/peaked/service)
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)

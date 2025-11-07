@@ -172,6 +172,9 @@
 				border_rk = "command"
 			if(JOB_SYNTH)
 				marine_rk = "syn"
+				var/datum/equipment_preset/synth/preset = current_human.assigned_equipment_preset
+				if(preset?.subtype)
+					marine_rk = "syn_[preset.subtype]"
 			if(JOB_SYNTH_K9)
 				marine_rk = "syn_k9"
 			if(JOB_MESS_SERGEANT)

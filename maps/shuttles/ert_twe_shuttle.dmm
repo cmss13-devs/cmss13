@@ -81,6 +81,9 @@
 	opacity = 0
 	},
 /area/shuttle/ert)
+"w" = (
+/turf/open/shuttle/rooftop1,
+/area/shuttle/ert)
 "x" = (
 /turf/closed/shuttle/ert{
 	icon_state = "twe4"
@@ -156,6 +159,9 @@
 /obj/structure/bed/chair/dropship/passenger,
 /obj/effect/landmark/ert_spawns/distress_twe,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/ert)
+"Q" = (
+/turf/solid_open_space,
 /area/shuttle/ert)
 "T" = (
 /turf/closed/shuttle/ert{
@@ -297,4 +303,110 @@ J
 k
 v
 V
+"}
+
+(1,1,2) = {"
+O
+Q
+Q
+w
+Q
+Q
+Q
+w
+Q
+Q
+Q
+Q
+Q
+"}
+(2,1,2) = {"
+O
+Q
+w
+w
+w
+w
+w
+w
+w
+Q
+Q
+Q
+Q
+"}
+(3,1,2) = {"
+Q
+Q
+w
+w
+w
+w
+w
+w
+w
+w
+w
+w
+w
+"}
+(4,1,2) = {"
+Q
+w
+w
+w
+w
+w
+w
+w
+w
+w
+w
+w
+Q
+"}
+(5,1,2) = {"
+Q
+Q
+w
+w
+w
+w
+w
+w
+w
+w
+w
+w
+w
+"}
+(6,1,2) = {"
+O
+Q
+w
+w
+w
+w
+w
+w
+w
+Q
+Q
+Q
+Q
+"}
+(7,1,2) = {"
+O
+Q
+Q
+w
+Q
+Q
+Q
+w
+Q
+Q
+Q
+Q
+Q
 "}

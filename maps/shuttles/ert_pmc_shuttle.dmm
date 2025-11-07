@@ -190,6 +190,9 @@
 	icon_state = "wy9"
 	},
 /area/shuttle/ert)
+"O" = (
+/turf/solid_open_space,
+/area/shuttle/ert)
 "P" = (
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_2";
@@ -222,6 +225,9 @@
 /turf/closed/shuttle/ert{
 	icon_state = "wy1"
 	},
+/area/shuttle/ert)
+"V" = (
+/turf/open/shuttle/rooftop1,
 /area/shuttle/ert)
 "X" = (
 /turf/closed/shuttle/ert{
@@ -341,4 +347,110 @@ w
 S
 M
 a
+"}
+
+(1,1,2) = {"
+i
+O
+O
+V
+O
+O
+O
+V
+O
+O
+O
+O
+O
+"}
+(2,1,2) = {"
+i
+O
+V
+V
+V
+V
+V
+V
+V
+O
+O
+O
+O
+"}
+(3,1,2) = {"
+O
+O
+V
+V
+V
+V
+V
+V
+V
+V
+V
+V
+V
+"}
+(4,1,2) = {"
+O
+V
+V
+V
+V
+V
+V
+V
+V
+V
+V
+V
+O
+"}
+(5,1,2) = {"
+O
+O
+V
+V
+V
+V
+V
+V
+V
+V
+V
+V
+V
+"}
+(6,1,2) = {"
+i
+O
+V
+V
+V
+V
+V
+V
+V
+O
+O
+O
+O
+"}
+(7,1,2) = {"
+i
+O
+O
+V
+O
+O
+O
+V
+O
+O
+O
+O
+O
 "}

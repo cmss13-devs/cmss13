@@ -219,7 +219,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/datum/turf_reservation/proposal = SSmapping.request_turf_block_reservation(
 		transit_width,
 		transit_height,
-		z_size = 1, //if this is changed the turf uncontain code below has to be updated to support multiple zs
+		z_size = 2, //if this is changed the turf uncontain code below has to be updated to support multiple zs
 		reservation_type = /datum/turf_reservation/transit,
 		turf_type_override = transit_path,
 	)
@@ -501,7 +501,7 @@ SUBSYSTEM_DEF(shuttle)
 	preview_reservation = SSmapping.request_turf_block_reservation(
 		loading_template.width,
 		loading_template.height,
-		1,
+		loading_template.levels,
 		reservation_type = /datum/turf_reservation/transit,
 	)
 	if(!preview_reservation)

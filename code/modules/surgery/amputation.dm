@@ -159,7 +159,8 @@
 		SPAN_NOTICE("[user] starts cutting through the [bone_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
 	target.custom_pain("Your [surgery.affected_limb.display_name] is being hacked away! ", 1)
-	target.emote("scream") //MY! ARRRRRRMMMM! -Scout from Team Fortress 2
+	if(target.stat == CONSCIOUS)
+		target.emote("scream") //MY! ARRRRRRMMMM! -Scout from Team Fortress 2
 	if(tool.hitsound)
 		playsound(target.loc, tool.hitsound, 25, TRUE)
 

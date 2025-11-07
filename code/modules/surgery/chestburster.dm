@@ -147,7 +147,7 @@
 		if(tool)
 			user.affected_message(target,
 				SPAN_WARNING("You pull a wriggling parasite out of [target]'s ribcage! It's a girl!"),
-				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage! It's a girl! You feel monumentally better."),
+				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage! It's a girl! YThe heaviness in your chest is gone. You feel monumentally better."),
 				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage!"))
 		else
 			user.affected_message(target,

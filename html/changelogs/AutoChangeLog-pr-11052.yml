@@ -1,0 +1,4 @@
+author: "jupyterkat"
+delete-after: True
+changes:
+  - bugfix: "fixed character setup preview being black"

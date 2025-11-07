@@ -40,6 +40,10 @@
 	light_color = LIGHT_COLOR_FLARE
 	lamp_light_color = LIGHT_COLOR_FLARE
 
+/obj/item/clothing/suit/storage/marine/veteran/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/suit/storage/marine/veteran/pmc/no_lamp
 	flags_marine_armor = null
 	actions_types = null
@@ -170,3 +174,7 @@
 	item_state_slots = list(WEAR_JACKET = "heavy_armor")
 	flags_marine_armor = null
 	actions_types = null
+
+/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)

@@ -129,7 +129,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 /obj/structure/machinery/nuclearbomb/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "NuclearBomb", "[src.name]")
+		ui = new(user, src, "NuclearBomb", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/nuclearbomb/ui_state(mob/user)

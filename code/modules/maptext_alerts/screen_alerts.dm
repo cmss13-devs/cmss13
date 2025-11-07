@@ -295,6 +295,8 @@
 /atom/movable/screen/alert/multi_z
 	name = "Look Up"
 	desc = "There's an open space above you, Click the alert to look up."
+	override_screen_loc = TRUE
+	screen_loc = "hud:1:-32,7:57"
 	icon_state = "uphint1"
 	click_master = FALSE
 
@@ -337,15 +339,18 @@
 
 	// If the user is a xeno, show the generic version of the indicator.
 	if(istype(user, /mob/living/carbon/xenomorph))
+		icon = 'icons/mob/hud/cm_hud/cm_hud_xeno_buttons.dmi'
+		screen_loc = "hud:1:-29,7:55"
 		if(above && istransparentturf(above))
-			icon_state = "uphint1_xeno"
+			icon_state = "uphint1"
 			desc = "There's an open space above you, Click the alert to look up."
 		else
-			icon_state = "uphint0_xeno"
+			icon_state = "uphint0"
 			desc = "There's nothing to look up at right now."
 
 	// Otherwise, use the stylized marine version.
 	else
+		icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
 		if(above && istransparentturf(above))
 			icon_state = "uphint1"
 			desc = "There's an open space above you, Click the alert to look up."

@@ -55,12 +55,13 @@
 	var/UI_HEALTH_LOC = "EAST-1:28,7:15"
 	var/UI_TEMP_LOC = "hud:3:2,9:19"
 	var/UI_NUTRITION_LOC = "hud:3:-6,13:15"
+	var/UI_PULSE_LINE_LOC = "hud:3:20,13:6"
 
 	//Surgery mode button
 	var/ui_ammo_counter = "hud:3:64,8:1"
 
 	//Surgery mode button
-	var/ui_surgery_mode = "hud:1:-5,7:65"
+	var/ui_surgery_mode = "hud:4:28,7:64"
 
 	//Minimap button
 	var/ui_minimap_button = "hud:3:60,7:-2"
@@ -122,8 +123,6 @@
 	UI_NUTRITION_LOC = "EAST-2:33,NORTH-1:15"
 	UI_TEMP_LOC = "EAST-1:26,NORTH-0:-7"
 	UI_HEALTH_LOC = "EAST-1:27,NORTH-0:-8"
-	UI_SL_LOCATOR_LOC = "hud:1:20,12:13"
-	UI_PULSE_LINE_LOC = "hud:3:20,13:6"
 
 /datum/custom_hud/dark/get_status_loc(placement)
 	var/col = (placement-1)

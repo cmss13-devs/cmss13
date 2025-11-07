@@ -1,0 +1,4 @@
+author: "rattybag"
+delete-after: True
+changes:
+  - ui: "Added quick mode to dropship weapons console"

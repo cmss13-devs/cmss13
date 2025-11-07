@@ -260,7 +260,7 @@
 		return
 
 	if(refilling)
-		to_chat(user, SPAN_NOTICE("You are already refilling [src] from the [refilling_obj]."))
+		to_chat(user, SPAN_NOTICE("You are already refilling [src] from [refilling_obj]."))
 		return
 	refilling = TRUE
 

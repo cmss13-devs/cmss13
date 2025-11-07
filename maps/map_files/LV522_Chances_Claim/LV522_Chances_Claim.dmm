@@ -6211,7 +6211,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/op_centre)
 "djQ" = (
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	anchored = 1
 	},
 /obj/structure/prop/ice_colony/dense/planter_box{
@@ -7039,7 +7039,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "dFR" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/corsat,
 /area/lv522/atmos/cargo_intake)
 "dFT" = (
@@ -8126,7 +8126,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/colony_streets/containers)
 "ehr" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
@@ -10801,7 +10801,7 @@
 /turf/open/floor/corsat/brown/north,
 /area/lv522/atmos/reactor_garage)
 "fNp" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/hydro)
 "fNq" = (
@@ -10822,7 +10822,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/casino)
 "fOy" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/hydro)
@@ -11728,7 +11728,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/nw_rockies)
 "gpi" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
@@ -13837,7 +13837,7 @@
 /turf/closed/wall/strata_outpost,
 /area/lv522/indoors/a_block/fitness)
 "hzu" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
@@ -14789,7 +14789,7 @@
 /turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "hZg" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/atmos/reactor_garage)
 "hZC" = (
@@ -21840,7 +21840,7 @@
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/admin)
 "lHd" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/item/reagent_container/food/drinks/flask/marine{
 	layer = 3.1;
 	pixel_x = -6;
@@ -23672,7 +23672,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/lv522/indoors/a_block/medical/glass)
 "mEG" = (
-/obj/structure/reagent_dispensers/fueltank/gas,
+/obj/structure/reagent_dispensers/tank/fuel/gas,
 /obj/item/tool/weldpack{
 	layer = 3.1;
 	pixel_x = -5;
@@ -24785,7 +24785,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/garage)
 "ngo" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.9
 	},
 /turf/open/floor/corsat/marked,
@@ -24827,7 +24827,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
 "nhb" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/corsat/marked,
 /area/lv522/outdoors/colony_streets/north_street)
 "nhs" = (
@@ -25796,7 +25796,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "nIF" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.9
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -26625,7 +26625,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo/glass)
 "ocL" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
@@ -27337,7 +27337,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/kitchen)
 "ouO" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.9
 	},
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -31396,7 +31396,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.9
 	},
 /obj/structure/barricade/metal{
@@ -35881,7 +35881,7 @@
 /turf/open/floor/prison/whitegreenfull,
 /area/lv522/indoors/a_block/fitness)
 "sKS" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/item/prop/colony/canister{
 	pixel_y = 11
 	},
@@ -38668,7 +38668,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/c_block/mining)
 "uep" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.9
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -39288,7 +39288,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/c_block/t_comm)
 "utd" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/marked,
 /area/lv522/outdoors/colony_streets/north_street)
@@ -43363,7 +43363,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/bridge)
 "woi" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
 "woq" = (
@@ -45135,7 +45135,7 @@
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/bridges/corpo)
 "xlL" = (
-/obj/structure/reagent_dispensers/fueltank{
+/obj/structure/reagent_dispensers/tank/fuel{
 	layer = 2.9
 	},
 /obj/effect/decal/cleanable/liquid_fuel,

@@ -247,7 +247,13 @@
 			break
 
 	return blocked
-
+/obj/item/weapon/gun/rifle/sniper/equipped(mob/living/user, slot)
+	. = ..()
+	//Toggle Aimed Shot on equip in hands. Skips back and armour slot equips
+	if(slot == WEAR_R_HAND || slot == WEAR_L_HAND)
+		var /datum/action/toggling_action = locate(/datum/action/item_action/specialist/aimed_shot) in user.actions
+		if(toggling_action)
+			toggling_action.action_activate()
 // Snipers may enable or disable their laser tracker at will.
 /datum/action/item_action/specialist/toggle_laser
 
@@ -339,6 +345,7 @@
 /obj/item/weapon/gun/rifle/sniper/M42A/Initialize(mapload, spawn_empty)
 	. = ..()
 	select_gamemode_skin()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/rifle/sniper/M42A/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
@@ -418,6 +425,10 @@
 	pixel_x = -4
 	hud_offset = -4
 
+/obj/item/weapon/gun/rifle/sniper/XM43E1/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
+
 /obj/item/weapon/gun/rifle/sniper/XM43E1/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/scope/variable_zoom/S = new(src)
@@ -481,6 +492,10 @@
 	sniper_beam_type = /obj/effect/ebeam/laser/intense
 	sniper_beam_icon = "laser_beam_intense"
 	sniper_lockon_icon = "sniper_lockon_intense"
+
+/obj/item/weapon/gun/rifle/sniper/elite/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/rifle/sniper/elite/handle_starting_attachment()
 	..()

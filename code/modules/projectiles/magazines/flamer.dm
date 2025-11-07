@@ -18,6 +18,7 @@
 	gun_type = /obj/item/weapon/gun/flamer/m240
 	caliber = "UT-Napthal Fuel" //Ultra Thick Napthal Fuel, from the lore book.
 	var/custom = FALSE //accepts custom fuels if true
+	var/specialist = FALSE //for specialist fuels
 
 	var/flamer_chem = "utnapthal"
 	flags_magazine = AMMUNITION_HIDE_AMMO
@@ -85,7 +86,7 @@
 /obj/item/ammo_magazine/flamer_tank/afterattack(obj/target, mob/user , flag) //refuel at fueltanks when we run out of ammo.
 	if(get_dist(user,target) > 1)
 		return ..()
-	if(!istype(target, /obj/structure/reagent_dispensers/fueltank) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack))
+	if(!istype(target, /obj/structure/reagent_dispensers/tank/fuel) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack) && !istype(target, /obj/item/ammo_magazine/flamer_tank))
 		return ..()
 
 	if(!target.reagents || length(target.reagents.reagent_list) < 1)
@@ -103,6 +104,10 @@
 
 	if(istype(to_add, /datum/reagent/generated) && !custom)
 		to_chat(user, SPAN_WARNING("[src] cannot accept custom fuels!"))
+		return
+
+	if(to_add.flags & REAGENT_TYPE_SPECIALIST && !specialist)
+		to_chat(user, SPAN_WARNING("[src] cannot accept specialist fuels!"))
 		return
 
 	if(!to_add.intensityfire && to_add.id != "stablefoam" && !istype(src, /obj/item/ammo_magazine/flamer_tank/smoke))
@@ -203,6 +208,7 @@
 	item_state = "flametank_large"
 	max_rounds = 250
 	gun_type = /obj/item/weapon/gun/flamer/m240/spec
+	specialist = TRUE
 
 	max_intensity = 80
 	max_range = 5

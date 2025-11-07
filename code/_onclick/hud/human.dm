@@ -98,6 +98,7 @@
 	draw_screen_border(ui_datum)
 	draw_ammo_counter(ui_datum)
 	draw_pulseline(ui_datum)
+	draw_locator_spot(owner, ui_datum)
 
 /datum/hud/human/persistent_inventory_update(mob/viewer)
 	if(!mymob)
@@ -214,7 +215,7 @@
 	pulse_line.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	static_inventory += pulse_line
 
-/datum/hud/human/proc/draw_locator_spot(datum/custom_hud/ui_datum)
+/datum/hud/human/proc/draw_locator_spot(mob/living/carbon/human/owner, datum/custom_hud/ui_datum)
 	locate_leader = new /atom/movable/screen/squad_leader_locator()
 	locate_leader.icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
 	locate_leader.screen_loc = ui_datum.UI_SL_LOCATOR_LOC

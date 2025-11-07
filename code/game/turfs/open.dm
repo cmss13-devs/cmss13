@@ -71,7 +71,7 @@
 			overlays += I
 
 	if(scorchedness)
-		if(!icon_state_before_scorching) //I hate you mappers, stop var editting turfs
+		if(!icon_state_before_scorching) //I hate you mappers, stop var editing turfs
 			icon_state_before_scorching = icon_state
 		var/new_icon_state = "[icon_state_before_scorching]_scorched[scorchedness]"
 		if(icon_state != new_icon_state) //no point in updating the icon_state if it would be updated to be the same thing that it was
@@ -1570,3 +1570,17 @@
 
 /turf/open/shuttle/vehicle/floor_3_9_1
 	icon_state = "floor_3_9_1"
+
+//SHUTTLE 'ROOFTOP'
+
+/turf/open/shuttle/rooftop1
+	name = "rooftop"
+	icon_state = "rooftop1"
+
+/turf/open/shuttle/rooftop2
+	name = "rooftop"
+	icon_state = "rooftop2"
+
+/turf/open/shuttle/rooftop3
+	name = "rooftop"
+	icon_state = "rooftop3"

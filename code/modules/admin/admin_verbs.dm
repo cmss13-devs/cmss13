@@ -34,6 +34,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/toggledebuglogs,
 	/client/proc/togglestatpanelsplit,
 	/client/proc/togglenichelogs,
+	/datum/admins/proc/ticket_panel,
 	/datum/admins/proc/display_tags,
 	/datum/admins/proc/player_notes_show,
 	/datum/admins/proc/check_ckey,
@@ -313,7 +314,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	/client/proc/cmd_mentor_say,
 	/datum/admins/proc/imaginary_friend,
 	/client/proc/toggle_newplayer_ghost_hud,
-	/client/proc/toggle_newplayer_ic_hud
+	/client/proc/toggle_newplayer_ic_hud,
+	/datum/admins/proc/ticket_panel
 ))
 
 /client/proc/add_admin_verbs()

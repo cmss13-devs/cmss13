@@ -63,7 +63,7 @@
 	var/UI_STATUS_Y_OFFSET = 26
 
 	//Middle right (status indicators)
-	var/UI_SL_LOCATOR_LOC = "EAST-1:28,9:18"
+	var/UI_SL_LOCATOR_LOC = "hud:1:20,12:13"
 	var/UI_OXYGEN_LOC = "EAST-1:28,8:17"
 	var/UI_HEALTH_LOC = "EAST-1:28,7:15"
 	var/UI_TEMP_LOC = "hud:3:2,9:19"
@@ -138,7 +138,7 @@
 	UI_NUTRITION_LOC = "EAST-2:33,NORTH-1:15"
 	UI_TEMP_LOC = "EAST-1:26,NORTH-0:-7"
 	UI_HEALTH_LOC = "EAST-1:27,NORTH-0:-8"
-	UI_SL_LOCATOR_LOC = "EAST-1:27,12:22"
+	UI_SL_LOCATOR_LOC = "hud:1:20,12:13"
 
 /datum/custom_hud/dark/get_status_loc(placement)
 	var/col = (placement-1)

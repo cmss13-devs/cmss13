@@ -910,6 +910,7 @@
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
 	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
 	SPAN_NOTICE("You look up from [zoom_device]."))
+	user?.hud_used.screen_border.alpha = 255
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
@@ -946,6 +947,7 @@
 		user.set_interaction(src)
 	if(user.client)
 		user.client.change_view(viewsize, src)
+		user?.hud_used.screen_border.alpha = 0
 
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,

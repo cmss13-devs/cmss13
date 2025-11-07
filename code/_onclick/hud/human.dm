@@ -210,7 +210,7 @@
 
 /datum/hud/human/proc/draw_locator_spot(datum/custom_hud/ui_datum)
 	locate_leader = new /atom/movable/screen/squad_leader_locator()
-	locate_leader.icon = ui_datum.ui_style_icon
+	locate_leader.icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
 	locate_leader.screen_loc = ui_datum.UI_SL_LOCATOR_LOC
 	infodisplay += locate_leader
 

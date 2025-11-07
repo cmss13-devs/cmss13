@@ -636,7 +636,7 @@
 
 /atom/movable/screen/squad_leader_locator
 	name = "beacon tracker"
-	icon = 'icons/mob/hud/human_midnight.dmi'
+	icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
 	icon_state = "trackoff"
 	alpha = 0 //invisible
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

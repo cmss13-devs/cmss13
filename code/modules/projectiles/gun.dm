@@ -601,11 +601,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		dat += R.handle_attachment_description()
 
 	if(!(flags_gun_features & (GUN_INTERNAL_MAG|GUN_UNUSUAL_DESIGN))) //Internal mags and unusual guns have their own stuff set.
+		if(flags_gun_features & GUN_AMMO_COUNTER)
+			dat += "Ammo counter shows [get_ammo_count()] round\s remaining.<br>"
 		if(current_mag && current_mag.current_rounds > 0)
-			if(flags_gun_features & GUN_AMMO_COUNTER)
-				dat += "Ammo counter shows [current_mag.current_rounds] round\s remaining.<br>"
-			else
-				dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
+			dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
 		else
 			dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
 
@@ -1756,12 +1755,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		user = gun_user
 
 	if(flags_gun_features & GUN_AMMO_COUNTER)
-		// toggleable spam control.
-		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
-			return
-		if(current_mag)
-			var/chambered = in_chamber ? TRUE : FALSE
-			to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
 		var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
 		counter.update_hud(user)
 

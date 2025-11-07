@@ -1281,7 +1281,7 @@
 		return
 
 	var/mob/living/carbon/human/H
-	var/tracking_suffix = ""
+	var/locator_text = ""
 
 	hud_used.locate_leader.icon_state = "trackoff"
 
@@ -1306,49 +1306,56 @@
 			if(!C) //no LZ selected
 				hud_used.locate_leader.icon_state = "trackoff"
 			else if(!SSmapping.same_z_map(src.z, C.z) || get_dist(src,C) < 1)
-				hud_used.locate_leader.icon_state = "trackondirect_lz"
+				hud_used.locate_leader.icon_state = "trackondirect"
+				locator_text = "track_lz"
 			else
 				hud_used.locate_leader.setDir(Get_Compass_Dir(src,C))
-				hud_used.locate_leader.icon_state = "trackon_lz"
+				hud_used.locate_leader.icon_state = "trackon"
 				if(C.z > z)
-					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "up")
+					hud_used.locate_leader.overlays |= image('icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi', "up")
 				if(C.z < z)
-					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "down")
+					hud_used.locate_leader.overlays |= image('icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi', "down")
 			return
 		if(TRACKER_FTL)
 			if(assigned_squad)
 				if(assigned_fireteam)
 					H = assigned_squad.fireteam_leaders[assigned_fireteam]
-					tracking_suffix = "_tl"
+					locator_text = "track_tl"
 		if(TRACKER_CO)
 			H = GLOB.marine_leaders[JOB_CO]
-			tracking_suffix = "_co"
+			locator_text = "track_co"
 		if(TRACKER_XO)
 			H = GLOB.marine_leaders[JOB_XO]
-			tracking_suffix = "_xo"
+			locator_text = "track_xo"
 		if(TRACKER_CMP)
 			var/datum/job/command/warrant/cmp_job = GLOB.RoleAuthority.roles_for_mode[JOB_CHIEF_POLICE]
 			if(cmp_job?.active_cmp)
 				H = cmp_job.active_cmp
-			tracking_suffix = "_cmp"
+			locator_text = "track_cmp"
 		if(TRACKER_WARDEN)
 			var/datum/job/command/warden/warden_job = GLOB.RoleAuthority.roles_for_mode[JOB_WARDEN]
 			if(warden_job?.active_warden)
 				H = warden_job.active_warden
-			tracking_suffix = "_warden"
+			locator_text = "track_warden"
 		if(TRACKER_CL)
 			var/datum/job/civilian/liaison/liaison_job = GLOB.RoleAuthority.roles_for_mode[JOB_CORPORATE_LIAISON]
 			if(liaison_job?.active_liaison)
 				H = liaison_job.active_liaison
-			tracking_suffix = "_cl"
+			locator_text = "track_cl"
 		else
 			if(tracker_setting in squad_leader_trackers)
 				var/datum/squad/S = GLOB.RoleAuthority.squads_by_type[squad_leader_trackers[tracker_setting]]
 				H = S.squad_leader
-				tracking_suffix = tracker_setting
+				locator_text = tracker_setting
 
 	if(!H || H.w_uniform?.sensor_mode != SENSOR_MODE_LOCATION)
 		return
+
+	if(!locator_text)
+		locator_text = "track_sl"
+
+	var/locator_overlay = image('icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi', icon_state = locator_text)
+	hud_used.locate_leader.overlays |= locator_overlay
 
 	var/atom/tracking_atom = H
 	if(tracking_atom.z != z && SSinterior.in_interior(tracking_atom))
@@ -1358,14 +1365,14 @@
 			tracking_atom = exterior
 
 	if(!SSmapping.same_z_map(z, tracking_atom.z) || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
-		hud_used.locate_leader.icon_state = "trackondirect[tracking_suffix]"
+		hud_used.locate_leader.icon_state = "trackondirect"
 	else
 		hud_used.locate_leader.setDir(Get_Compass_Dir(src, tracking_atom))
-		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
+		hud_used.locate_leader.icon_state = "trackon"
 		if(tracking_atom.z > z)
-			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "up")
+			hud_used.locate_leader.overlays |= image('icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi', "up")
 		if(tracking_atom.z < z)
-			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "down")
+			hud_used.locate_leader.overlays |= image('icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi', "down")
 
 /mob/living/carbon/proc/locate_nearest_nuke()
 	if(!GLOB.bomb_set)

@@ -55,6 +55,14 @@ CLIENT_VERB(link_twitch)
 		to_chat(src, SPAN_WARNING("You have already linked this CKEY to Twitch. Contact support to remove this."))
 		return
 
+	var/datum/view_record/twitch_link/existing_link = locate() in DB_VIEW(
+		DB_COMP("ckey", DB_EQUALS, ckey)
+	)
+
+	if(existing_link)
+		to_chat(src, SPAN_LARGE(SPAN_NOTICE("Please click <a href='[url]?code=[existing_link.access_code]'>here</a> to link your CKEY to Twitch.")))
+		return
+
 	var/datum/entity/twitch_link/new_link = DB_ENTITY(/datum/entity/twitch_link)
 	new_link.access_code = generate_access_code()
 	new_link.ckey = ckey

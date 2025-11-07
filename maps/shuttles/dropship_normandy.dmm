@@ -49,7 +49,7 @@
 /turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
 /area/shuttle/drop2/sulaco)
 "dB" = (
-/turf/open/shuttle/rooftop1,
+/turf/open/shuttle/rooftop/normandy,
 /area/shuttle/drop2/sulaco)
 "eu" = (
 /turf/closed/shuttle/dropship2{
@@ -387,7 +387,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "EJ" = (
-/turf/solid_open_space,
+/turf/template_noop,
 /area/shuttle/drop2/sulaco)
 "Fq" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{

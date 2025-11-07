@@ -82,7 +82,7 @@
 	},
 /area/shuttle/ert)
 "w" = (
-/turf/open/shuttle/rooftop1,
+/turf/open/shuttle/rooftop/normandy,
 /area/shuttle/ert)
 "x" = (
 /turf/closed/shuttle/ert{
@@ -161,7 +161,7 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "Q" = (
-/turf/solid_open_space,
+/turf/template_noop,
 /area/shuttle/ert)
 "T" = (
 /turf/closed/shuttle/ert{

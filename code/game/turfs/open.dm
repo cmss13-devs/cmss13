@@ -1573,14 +1573,15 @@
 
 //SHUTTLE 'ROOFTOP'
 
-/turf/open/shuttle/rooftop1
+/turf/open/shuttle/rooftop
 	name = "rooftop"
-	icon_state = "rooftop1"
+	icon_state = "rooftop"
 
-/turf/open/shuttle/rooftop2
-	name = "rooftop"
-	icon_state = "rooftop2"
+/turf/open/shuttle/rooftop/alamo
+	color = "#968562"
 
-/turf/open/shuttle/rooftop3
-	name = "rooftop"
-	icon_state = "rooftop3"
+/turf/open/shuttle/rooftop/normandy
+	color = "#495257"
+
+/turf/open/shuttle/rooftop/upp
+	color = "#3D4529"

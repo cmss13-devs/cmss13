@@ -71,6 +71,7 @@
 	role_comm_title = "ILO"
 	minimap_icon = "cia_lo"
 	minimap_background = "background_ua"
+	selection_categories = list(FACTION_MARINE)
 
 /datum/equipment_preset/cia/officer/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
@@ -100,6 +101,7 @@
 	name = "Marine Raider Advisor (CIA Senior Agent)"
 	minimum_age = 30
 	skills = /datum/skills/cia/field_agent/senior
+	selection_categories = list(FACTION_MARINE)
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia/New()
 	. = ..()

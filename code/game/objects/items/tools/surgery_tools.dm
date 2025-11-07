@@ -230,13 +230,13 @@
 /obj/item/tool/surgery/bonegel/update_icon(mob/user)
 	. = ..()
 	switch(remaining_gel)
-		if(80 to INFINITY)
+		if(76 to INFINITY)
 			icon_state = base_icon_state
-		if(55 to 79)
+		if(51 to 75)
 			icon_state = "[base_icon_state]_75"
-		if(30 to 54)
+		if(26 to 50)
 			icon_state = "[base_icon_state]_50"
-		if(5 to 29)
+		if(5 to 25)
 			icon_state = "[base_icon_state]_25"
 		if(0 to 4)
 			icon_state = "[base_icon_state]_0"
@@ -254,8 +254,8 @@
 
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR)) //Know how much you will be using if you can use it
 		return
-	. += SPAN_NOTICE("You would need to use [fracture_fix_cost]% of the bone gel to repair a fracture.")
-	. += SPAN_NOTICE("You would need to use [mend_bones_fix_cost]% of the bone gel to mend bones.")
+	. += SPAN_NOTICE("You will need to use [fracture_fix_cost]% of the bone gel to repair a fracture.")
+	. += SPAN_NOTICE("You will need to use [mend_bones_fix_cost]% of the bone gel to mend bones.")
 
 /obj/item/tool/surgery/bonegel/proc/refill_gel(obj/refilling_obj, mob/user)
 	if(unlimited_gel)

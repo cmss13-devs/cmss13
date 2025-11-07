@@ -68,20 +68,17 @@
 	// Draw the various inventory equipment slots.
 	draw_inventory_slots(gear, ui_datum)
 
-	//Drawing frame HUD for specific HYD styles
-	ui_datum.special_behaviour(src)
-
 	// Draw the attack intent dialogue.
 	draw_act_intent(ui_datum, 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi')
-	draw_mov_intent(ui_datum, 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi', "hud:2:-14,11:19")
+	draw_mov_intent(ui_datum, 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi')
 	draw_resist(ui_datum, 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi')
 	if(!iszombie(owner))
 		draw_drop(ui_datum, 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi')
 		draw_throw(ui_datum, 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi')
 	draw_pull(ui_datum, ui_icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi')
 	draw_rest(ui_datum)
-	draw_right_hand(ui_datum, 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi')
-	draw_left_hand(ui_datum, 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi')
+	draw_right_hand(ui_datum, 'icons/mob/hud/cm_hud/cm_hud_marine_hands.dmi')
+	draw_left_hand(ui_datum, 'icons/mob/hud/cm_hud/cm_hud_marine_hands.dmi')
 	draw_swaphand("swap", "hud:3:-4,8:17", ui_datum, 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi')
 	//warnings
 	draw_oxygen(ui_datum)
@@ -100,6 +97,7 @@
 	draw_backhud(ui_datum)
 	draw_screen_border(ui_datum)
 	draw_ammo_counter(ui_datum)
+	draw_pulseline(ui_datum)
 
 /datum/hud/human/persistent_inventory_update(mob/viewer)
 	if(!mymob)
@@ -207,6 +205,14 @@
 	nutrition_icon.name = "nutrition"
 	nutrition_icon.screen_loc = ui_datum.UI_NUTRITION_LOC
 	infodisplay += nutrition_icon
+
+/datum/hud/human/proc/draw_pulseline(datum/custom_hud/ui_datum)
+	pulse_line = new /atom/movable/screen()
+	pulse_line.icon = 'icons/mob/hud/cm_hud/cm_hud_marine_pulse.dmi'
+	pulse_line.icon_state = "pulse_good"
+	pulse_line.screen_loc = ui_datum.UI_PULSE_LINE_LOC
+	pulse_line.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	static_inventory += pulse_line
 
 /datum/hud/human/proc/draw_locator_spot(datum/custom_hud/ui_datum)
 	locate_leader = new /atom/movable/screen/squad_leader_locator()

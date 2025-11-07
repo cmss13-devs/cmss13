@@ -487,7 +487,6 @@
 
 /atom/movable/screen/throw_catch
 	name = "throw/catch"
-	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "act_throw_off"
 
 /atom/movable/screen/throw_catch/clicked(mob/user, list/mods)
@@ -507,7 +506,6 @@
 
 /atom/movable/screen/drop
 	name = "drop"
-	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "act_drop"
 	layer = HUD_LAYER
 
@@ -518,7 +516,6 @@
 
 /atom/movable/screen/resist
 	name = "resist"
-	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "act_resist"
 	layer = HUD_LAYER
 
@@ -530,7 +527,6 @@
 
 /atom/movable/screen/rest
 	name = "rest"
-	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "act_rest"
 	layer = HUD_LAYER
 
@@ -543,7 +539,6 @@
 
 /atom/movable/screen/mov_intent
 	name = "run/walk toggle"
-	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "running"
 
 /atom/movable/screen/mov_intent/clicked(mob/living/user)
@@ -617,7 +612,6 @@
 
 /atom/movable/screen/pull
 	name = "stop pulling"
-	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "pull0"
 
 /atom/movable/screen/pull/clicked(mob/user)

@@ -200,7 +200,8 @@
 	if(client && hud_used)
 		hud_used.reorganize_alerts()
 	thealert.transform = matrix(32, 6, MATRIX_TRANSLATE)
-	animate(thealert, transform = matrix(), time = 2.5, easing = CUBIC_EASING)
+	if(!thealert.override_screen_loc)
+		animate(thealert, transform = matrix(), time = 2.5, easing = CUBIC_EASING)
 
 	if(thealert.timeout)
 		addtimer(CALLBACK(src, PROC_REF(alert_timeout), thealert, category), thealert.timeout)
@@ -239,6 +240,8 @@
 	var/override_alerts = FALSE
 	/// Alert owner
 	var/mob/owner
+	/// Allows for custom screen location
+	var/override_screen_loc = FALSE
 
 	/// Boolean. If TRUE, the Click() proc will attempt to Click() on the master first if there is a master.
 	var/click_master = TRUE
@@ -285,7 +288,10 @@
 /atom/movable/screen/alert/buckled
 	name = "Buckled"
 	desc = "You've been buckled to something. Click the alert to unbuckle unless you're handcuffed."
-	icon_state = ALERT_BUCKLED
+	icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
+	override_screen_loc = TRUE
+	screen_loc = "hud:1:6,11:25"
+	icon_state = "status_buckled"
 
 /atom/movable/screen/alert/restrained/handcuffed
 	name = "Handcuffed"

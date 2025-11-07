@@ -1,18 +1,11 @@
 /datum/custom_hud
-	var/ui_style_icon = 'icons/mob/hud/human_midnight.dmi'
-	var/ui_frame_icon = 'icons/mob/hud/human_dark_frame.dmi'
-
-	//Lower left, persistent menu
-	var/ui_inventory = "WEST:6,1:5"
+	var/ui_style_icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
 
 	//Lower center, persistent menu
 	var/ui_rhand = "hud:1:44,7:28"
 	var/ui_lhand = "hud:2:44,7:28"
 	var/ui_item_lhand = "hud:2:48,7:32"
 	var/ui_item_rhand = "hud:1:49,7:32"
-	var/ui_equip = "WEST+6:16,2:5"
-	var/ui_swaphand1 = "WEST+6:16,2:5"
-	var/ui_swaphand2 = "WEST+7:16,2:5"
 
 	//Inventory
 	var/ui_shoes = "hud:1:64,7:-128"
@@ -38,14 +31,8 @@
 	var/ui_resist = "hud:1:9,7:36"
 	var/ui_rest = "hud:1:9,6:55"
 	var/ui_acti = "hud:2:-4,9:26"
-	var/ui_movi = "EAST-3:24,1:5"
+	var/ui_movi = "hud:2:-14,11:19"
 	var/ui_zonesel = "EAST-1:28,1:5"
-
-	//Gun buttons
-	var/ui_gun1 = "EAST-2:26,3:7"
-	var/ui_gun2 = "EAST-1:28, 4:7"
-	var/ui_gun3 = "EAST-2:26,4:7"
-	var/ui_gun_select = "EAST-1:28,3:7"
 
 	var/ui_gun_burst = "hud:5:-4,9:30"
 	var/ui_gun_railtoggle = "hud:4:1,9:30"
@@ -64,10 +51,10 @@
 
 	//Middle right (status indicators)
 	var/UI_SL_LOCATOR_LOC = "hud:1:20,12:13"
-	var/UI_OXYGEN_LOC = "EAST-1:28,8:17"
+	var/UI_OXYGEN_LOC = "hud:3:10,13:15"
 	var/UI_HEALTH_LOC = "EAST-1:28,7:15"
 	var/UI_TEMP_LOC = "hud:3:2,9:19"
-	var/UI_NUTRITION_LOC = "EAST-1:28,5:11"
+	var/UI_NUTRITION_LOC = "hud:3:-6,13:15"
 
 	//Surgery mode button
 	var/ui_ammo_counter = "hud:3:64,8:1"
@@ -99,9 +86,6 @@
 	var/coords = splittext(ui_slot, ",")
 	var/coords_x = splittext(coords[1], ":")
 	return "hud:[coords_x[1]]:[text2num(coords_x[2])+A.hud_offset],[coords[2]]"
-
-/datum/custom_hud/proc/special_behaviour(datum/hud/element)
-	return
 
 /datum/custom_hud/old
 	ui_style_icon = 'icons/mob/hud/human_old.dmi'
@@ -139,6 +123,7 @@
 	UI_TEMP_LOC = "EAST-1:26,NORTH-0:-7"
 	UI_HEALTH_LOC = "EAST-1:27,NORTH-0:-8"
 	UI_SL_LOCATOR_LOC = "hud:1:20,12:13"
+	UI_PULSE_LINE_LOC = "hud:3:20,13:6"
 
 /datum/custom_hud/dark/get_status_loc(placement)
 	var/col = (placement-1)
@@ -149,23 +134,6 @@
 	var/coord_row = "[-1 - row]"
 	var/coord_row_offset = -8
 	return "EAST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
-
-/datum/custom_hud/dark/special_behaviour(datum/hud/element)
-	element.frame_hud = new /atom/movable/screen()
-	element.frame_hud.icon = ui_frame_icon
-	element.frame_hud.icon_state = "dark"
-	element.frame_hud.screen_loc = UI_FRAME_LOC
-	element.frame_hud.layer = ABOVE_HUD_LAYER
-	element.frame_hud.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	element.static_inventory += element.frame_hud
-
-	element.pulse_line = new /atom/movable/screen()
-	element.pulse_line.icon = ui_frame_icon
-	element.pulse_line.icon_state = "pulse_good"
-	element.pulse_line.screen_loc = UI_FRAME_LOC
-	element.pulse_line.layer = ABOVE_HUD_LAYER
-	element.pulse_line.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	element.static_inventory += element.pulse_line
 
 /datum/custom_hud/alien
 	ui_style_icon = 'icons/mob/hud/alien_standard.dmi'

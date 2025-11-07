@@ -462,20 +462,21 @@
 	for(var/category in alerts)
 		var/atom/movable/screen/alert/alert = alerts[category]
 		c++
-		switch(c)
-			if(1)
-				. = ui_alert1
-			if(2)
-				. = ui_alert2
-			if(3)
-				. = ui_alert3
-			if(4)
-				. = ui_alert4
-			if(5)
-				. = ui_alert5 // Right now there's 5 slots
-			else
-				. = ""
-		alert.screen_loc = .
+		if(!alert.override_screen_loc)
+			switch(c)
+				if(1)
+					. = ui_alert1
+				if(2)
+					. = ui_alert2
+				if(3)
+					. = ui_alert3
+				if(4)
+					. = ui_alert4
+				if(5)
+					. = ui_alert5 // Right now there's 5 slots
+				else
+					. = ""
+			alert.screen_loc = .
 		screenmob.client.add_to_screen(alert)
 	if(!viewmob)
 		for(var/obs in mymob.observers)

@@ -358,7 +358,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	GLOB.ahelp_tickets.resolved_tickets -= src
 	return ..()
 
-/datum/admin_help/proc/AddInteraction(formatted_message, plain_message = null, message_type = "admin")
+/datum/admin_help/proc/AddInteraction(formatted_message, plain_message = null, message_type = "admin", link_data = null)
 	var/ckey_to_use = null
 
 	// Safely get the user's ckey
@@ -372,6 +372,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(!formatted_message)
 		formatted_message = "[plain_message || "No message"]"
 
+	if(!plain_message && link_data && length(link_data))
+		plain_message = link_data[1]
+
 	var/timestamp = world.time
 	var/plain_text = plain_message || strip_html(formatted_message)
 	var/html_message = "[worldtime2text(timestamp)]: [formatted_message]"
@@ -384,9 +387,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/list/structured_data = list(
 		"timestamp" = worldtime2text(timestamp),
 		"author" = author,
-		"message" = plain_text,  // Store plain text in structured data
-		"html_message" = formatted_message,  // Store HTML version separately
-		"type" = message_type
+		"message" = html_encode(plain_text),
+		"html_message" = formatted_message,
+		"type" = message_type,
+		"islink" = link_data
 	)
 
 	ticket_interactions[html_message] = structured_data
@@ -517,13 +521,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(state != AHELP_ACTIVE)
 		return
 
-	if(marked_admin != usr.ckey)
-		if(marked_admin)
-			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
-		else
-			to_chat(usr, SPAN_WARNING("This ticket is not currently marked. Please mark it first to interact with this ticket!"))
+	if(marked_admin && marked_admin != usr.ckey)
+		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		return
 
+	marked_admin = null
 	RemoveActive()
 	state = AHELP_CLOSED
 	GLOB.ahelp_tickets.ListInsert(src)
@@ -539,13 +541,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(state != AHELP_ACTIVE)
 		return
 
-	if(marked_admin != usr.ckey)
-		if(marked_admin)
-			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
-		else
-			to_chat(usr, SPAN_WARNING("This ticket is not currently marked. Please mark it first to interact with this ticket!"))
+	if(marked_admin && marked_admin != usr.ckey)
+		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		return
 
+	marked_admin = null
 	RemoveActive()
 	state = AHELP_RESOLVED
 	GLOB.ahelp_tickets.ListInsert(src)
@@ -630,11 +630,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(state != AHELP_ACTIVE)
 		return
 
-	if(marked_admin != usr.ckey)
-		if(marked_admin)
-			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
-		else
-			to_chat(usr, SPAN_WARNING("This ticket is not currently marked. Please mark it first to interact with this ticket!"))
+	if(marked_admin && marked_admin != usr.ckey)
+		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		return
 
 	if(initiator)

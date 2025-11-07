@@ -1,10 +1,10 @@
+import { decodeHtmlEntities } from 'common/string';
 import { useEffect, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button,
   Icon,
-  Input,
   LabeledList,
   Section,
   Stack,
@@ -17,6 +17,7 @@ type TicketResponse = {
   author: string;
   message: string;
   type: 'admin' | 'mentor' | 'system' | 'legacy';
+  islink?: [string, string];
 };
 
 type Ticket = {
@@ -39,7 +40,6 @@ type Data = {
   is_mentor: boolean;
   selected_tab: string;
   selected_ticket: number | null;
-  entered_message: string;
   admin_open_tickets: Ticket[];
   admin_archived_tickets: Ticket[];
   mentor_open_tickets: Ticket[];
@@ -187,12 +187,16 @@ export const TicketPanel = (props) => {
                                   <Button
                                     icon="times"
                                     color={
+                                      ticket.claimed_by &&
                                       !ticket.viewer_is_claiming
                                         ? 'default'
                                         : 'bad'
                                     }
                                     tooltip="Close Ticket"
-                                    disabled={!ticket.viewer_is_claiming}
+                                    disabled={
+                                      !!ticket.claimed_by &&
+                                      !ticket.viewer_is_claiming
+                                    }
                                     onClick={(e) => {
                                       e.stopPropagation();
                                       act('close_ticket', {
@@ -221,7 +225,7 @@ export const TicketPanel = (props) => {
                                   >
                                     {ticket.author}
                                   </Box>
-                                  {ticket.subject ? (
+                                  {decodeHtmlEntities(ticket.subject) ? (
                                     <Box
                                       color={'average'}
                                       style={{
@@ -230,7 +234,11 @@ export const TicketPanel = (props) => {
                                         textOverflow: 'ellipsis',
                                       }}
                                     >
-                                      <b>{'[' + ticket.subject + ']'}</b>
+                                      <b>
+                                        {'[' +
+                                          decodeHtmlEntities(ticket.subject) +
+                                          ']'}
+                                      </b>
                                     </Box>
                                   ) : (
                                     ''
@@ -243,7 +251,7 @@ export const TicketPanel = (props) => {
                                       textOverflow: 'ellipsis',
                                     }}
                                   >
-                                    {ticket.latest_message}
+                                    {decodeHtmlEntities(ticket.latest_message)}
                                   </Box>
                                   <Box color="gray" fontSize="0.8em">
                                     {ticket.timestamp}
@@ -313,7 +321,7 @@ export const TicketPanel = (props) => {
                                   >
                                     {ticket.author}
                                   </Box>
-                                  {ticket.subject ? (
+                                  {decodeHtmlEntities(ticket.subject) ? (
                                     <Box
                                       color={'average'}
                                       style={{
@@ -322,7 +330,11 @@ export const TicketPanel = (props) => {
                                         textOverflow: 'ellipsis',
                                       }}
                                     >
-                                      <b>{'[' + ticket.subject + ']'}</b>
+                                      <b>
+                                        {'[' +
+                                          decodeHtmlEntities(ticket.subject) +
+                                          ']'}
+                                      </b>
                                     </Box>
                                   ) : (
                                     ''
@@ -335,7 +347,7 @@ export const TicketPanel = (props) => {
                                       textOverflow: 'ellipsis',
                                     }}
                                   >
-                                    {ticket.latest_message}
+                                    {decodeHtmlEntities(ticket.latest_message)}
                                   </Box>
                                   <Box color="gray" fontSize="0.8em">
                                     {ticket.timestamp}
@@ -356,7 +368,7 @@ export const TicketPanel = (props) => {
               <Stack.Item grow={1}>
                 {selectedTicketData ? (
                   <Section
-                    title={`${selectedTicketData.is_archived ? '[ARCHIVED] ' : ''}Ticket #${selectedTicketData.id} ${selectedTicketData.subject ? ': ' + selectedTicketData.subject : ''}`}
+                    title={`${selectedTicketData.is_archived ? '[ARCHIVED] ' : ''}Ticket #${selectedTicketData.id} ${selectedTicketData.subject ? ': ' + decodeHtmlEntities(selectedTicketData.subject) : ''}`}
                     buttons={
                       !selectedTicketData.is_archived ? (
                         <>
@@ -476,7 +488,7 @@ export const TicketPanel = (props) => {
                       </LabeledList.Item>
                       <LabeledList.Item label="Initial Message">
                         <Box style={{ whiteSpace: 'pre-wrap' }}>
-                          {selectedTicketData.message}
+                          {decodeHtmlEntities(selectedTicketData.message)}
                         </Box>
                       </LabeledList.Item>
                     </LabeledList>
@@ -497,90 +509,110 @@ export const TicketPanel = (props) => {
                           }}
                         >
                           {selectedTicketData.all_responses?.map(
-                            (response, index) => (
-                              <Box key={index} mb={2}>
-                                <Stack align="flex-start">
-                                  <Stack.Item
-                                    style={{
-                                      width: '120px',
-                                      fontSize: '0.85em',
-                                      color: 'gray',
-                                    }}
-                                  >
-                                    {response.timestamp || 'Unknown'}
-                                  </Stack.Item>
-                                  <Stack.Item grow>
-                                    <Box>
-                                      <Box
-                                        as="span"
-                                        color={
-                                          response.type === 'admin'
-                                            ? 'good'
-                                            : response.type === 'mentor'
-                                              ? 'average'
-                                              : response.type === 'system'
-                                                ? 'label'
-                                                : 'default'
-                                        }
-                                        bold={response.type !== 'system'}
-                                      >
-                                        {response.author}:{' '}
+                            (response, index) => {
+                              const link = response.islink;
+                              return (
+                                <Box key={index} mb={2}>
+                                  <Stack align="flex-start">
+                                    <Stack.Item
+                                      style={{
+                                        width: '120px',
+                                        fontSize: '0.85em',
+                                        color: 'gray',
+                                      }}
+                                    >
+                                      {response.timestamp || 'Unknown'}
+                                    </Stack.Item>
+                                    <Stack.Item grow>
+                                      <Box>
+                                        <Box
+                                          as="span"
+                                          color={
+                                            response.type === 'admin'
+                                              ? 'good'
+                                              : response.type === 'mentor'
+                                                ? 'average'
+                                                : response.type === 'system'
+                                                  ? 'label'
+                                                  : 'default'
+                                          }
+                                          bold={response.type !== 'system'}
+                                        >
+                                          {response.author}:{' '}
+                                        </Box>
+                                        <Box as="span">
+                                          {link ? (
+                                            <Button
+                                              content={link[0]}
+                                              onClick={() => {
+                                                window.location.href = link[1];
+                                              }}
+                                            />
+                                          ) : (
+                                            decodeHtmlEntities(response.message)
+                                          )}
+                                        </Box>
                                       </Box>
-                                      <Box as="span">{response.message}</Box>
-                                    </Box>
-                                  </Stack.Item>
-                                </Stack>
-                              </Box>
-                            ),
+                                    </Stack.Item>
+                                  </Stack>
+                                </Box>
+                              );
+                            },
                           )}
                         </Box>
                       </Section>
                     )}
                     {!selectedTicketData.is_archived ? (
-                      <>
-                        <Input
-                          placeholder="Type your message here..."
-                          width="100%"
-                          height="100px"
-                          value={data.entered_message}
-                          onChange={(e) =>
-                            act('update_message', {
-                              message: e.currentTarget.value,
-                            })
-                          }
-                        />
-                        <Button
-                          mt={2}
-                          onClick={() => {
-                            act('reply_ticket', {
-                              ticket_id: selectedTicketData.id,
-                            });
-                          }}
-                        >
-                          Send
-                        </Button>
-                        <Button
-                          mt={2}
-                          onClick={() =>
-                            act('close_ticket', {
-                              ticket_id: selectedTicketData.id,
-                            })
-                          }
-                        >
-                          Close
-                        </Button>
-                        <Button
-                          mt={2}
-                          icon="reply-all"
-                          onClick={() =>
-                            act('autoreply', {
-                              ticket_id: selectedTicketData.id,
-                            })
-                          }
-                        >
-                          Auto Reply
-                        </Button>
-                      </>
+                      <Stack vertical>
+                        <Stack.Item>
+                          <Button
+                            icon="reply"
+                            color="good"
+                            fontSize="1.2em"
+                            textAlign="center"
+                            lineHeight={2}
+                            fluid
+                            onClick={() => {
+                              act('reply_ticket', {
+                                ticket_id: selectedTicketData.id,
+                              });
+                            }}
+                          >
+                            Reply
+                          </Button>
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Stack>
+                            <Stack.Item grow>
+                              <Button
+                                icon="times"
+                                color="bad"
+                                fluid
+                                onClick={() =>
+                                  act('close_ticket', {
+                                    ticket_id: selectedTicketData.id,
+                                  })
+                                }
+                              >
+                                Close Ticket
+                              </Button>
+                            </Stack.Item>
+                            <Stack.Item grow>
+                              <Button
+                                icon="reply-all"
+                                fluid
+                                onClick={() =>
+                                  act('autoreply', {
+                                    ticket_id: selectedTicketData.id,
+                                  })
+                                }
+                              >
+                                Auto Reply
+                              </Button>
+                            </Stack.Item>
+                          </Stack>
+                        </Stack.Item>
+                      </Stack>
                     ) : (
                       <>
                         <Box color="label" italic mb={2}>

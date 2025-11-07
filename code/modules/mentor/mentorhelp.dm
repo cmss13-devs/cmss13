@@ -112,7 +112,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if(!plain_msg)
 		html_msg = "[SPAN_MENTORHELP("[from_key] -> [to_key]:")] [msg]"
 	else if(from_key && to_key)
-		html_msg = "[SPAN_MENTORHELP("[from_key] -> [to_key]:")] [html_encode(plain_text)]"
+		html_msg = "[SPAN_MENTORHELP("[from_key] -> [to_key]:")] [plain_text]"
 
 	if(from_key && to_key)
 		log_msg = "[from_key] -> [to_key]: [plain_text]"
@@ -252,21 +252,9 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if(sender == mentor)
 		target = author
 
-	var/message = input("Please enter your message:", "Mentor Help", null, null) as message|null
+	var/message = tgui_input_text(sender, "Please enter your message:", "Mentor Help", null, null, TRUE)
 	if(message)
 		message = strip_html(message)
-		var/formatted_message = "[sender.key]: [message]"
-		var/timestamp = time_stamp()
-		var/html_message = "[timestamp]: [formatted_message]"
-		var/list/structured_data = list(
-			"timestamp" = timestamp,
-			"author" = sender.key,
-			"message" = message,
-			"type" = CLIENT_IS_MENTOR(sender) ? "mentor" : "legacy"
-		)
-		ticket_interactions[html_message] = structured_data
-		if(sender == author)
-			latest_message = message
 		message_handlers(message, sender, target)
 	return
 
@@ -302,7 +290,19 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 
 	// Already marked
 	if(mentor)
-		to_chat(thread_mentor, SPAN_MENTORHELP("<b>NOTICE:</b> A mentor is already handling this thread!"))
+		if(mentor == thread_mentor)
+			to_chat(thread_mentor, SPAN_MENTORHELP("<b>NOTICE:</b> You are already handling this thread!"))
+			return
+		var/choice = tgui_alert(thread_mentor, "This mentorhelp is already claimed by [mentor.key]. Do you want to override and take over?", "Claim Mentorhelp", list("Override", "Cancel"))
+		if(choice != "Override")
+			return
+		var/client/prev_mentor = mentor
+		mentor = thread_mentor
+
+		log_mhelp("[mentor.key] has overridden [prev_mentor.key] on [author_key]'s mentorhelp")
+		notify(SPAN_MENTORHELP("[mentor.key] has overridden [prev_mentor.key] on [author_key]'s mentorhelp."),
+			unformatted_text = "[mentor.key] has overridden [prev_mentor.key] on [author_key]'s mentorhelp.")
+		to_chat(author, SPAN_MENTORHELP("NOTICE: [mentor.key] has taken over your thread and is preparing to respond."))
 		return
 
 	if(!thread_mentor)
@@ -315,9 +315,9 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	mentor = thread_mentor
 
 	log_mhelp("[mentor.key] has marked [author_key]'s mentorhelp")
-	notify("<font style='color:red;'>[mentor.key]</font> has marked <font style='color:red;'>[author_key]</font>'s mentorhelp.",
+	notify(SPAN_MENTORHELP("[mentor.key] has marked [author_key]'s mentorhelp."),
 		unformatted_text = "[mentor.key] has marked [author_key]'s mentorhelp.")
-	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has marked your thread and is preparing to respond."))
+	to_chat(author, SPAN_MENTORHELP("NOTICE: [mentor.key] has marked your thread and is preparing to respond."))
 
 // Unmarks the mentorhelp thread and notifies the author that the thread is no longer being handled by a mentor
 /datum/mentorhelp/proc/unmark(client/thread_mentor)
@@ -336,9 +336,9 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		return
 
 	log_mhelp("[mentor.key] has unmarked [author_key]'s mentorhelp")
-	notify("<font style='color:red;'>[mentor.key]</font> has unmarked <font style='color:red;'><a href='byond://?src=\ref[src];action=message'>[author_key]</a></font>'s mentorhelp.",
+	notify(SPAN_MENTORHELP("[mentor.key] has unmarked [author_key]'s mentorhelp."),
 		unformatted_text = "[mentor.key] has unmarked [author_key]'s mentorhelp.")
-	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has unmarked your thread and is no longer responding to it."))
+	to_chat(author, SPAN_MENTORHELP("NOTICE: [mentor.key] has unmarked your thread and is no longer responding to it."))
 	mentor = null
 
 /*
@@ -407,6 +407,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if(!open)
 		return
 
+	mentor = null
 	open = FALSE
 
 	if(GLOB.mentorhelp_manager.active_tickets["[id]"] == src)

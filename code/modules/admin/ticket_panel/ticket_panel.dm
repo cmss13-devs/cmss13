@@ -1,15 +1,10 @@
-GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
+
+#define ADMIN_TAB "admin"
+#define MENTOR_TAB "mentor"
 
 /datum/ticket_panel
-	var/selected_tab = "admin"
+	var/selected_tab = ADMIN_TAB
 	var/selected_ticket = null
-	var/entered_message = ""
-
-/datum/ticket_panel/New(mob/M)
-	. = ..()
-
-	if(CLIENT_IS_MENTOR(M.client))
-		selected_tab = "mentor"
 
 /datum/ticket_panel/Destroy(force, ...)
 	SStgui.close_uis(src)
@@ -35,7 +30,6 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 		"claimed_by" = AH.marked_admin,
 		"all_responses" = formatted_responses,
 		"viewer_is_claiming" = (AH.marked_admin == usr.ckey ? TRUE : FALSE),
-		"entered_message" = entered_message,
 		"is_archived" = (AH.state != AHELP_ACTIVE)
 	)
 
@@ -63,11 +57,18 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 	)
 
 /datum/ticket_panel/ui_data(mob/user)
+	if(!user?.client)
+		return
+
+	var/client/C = user.client
+	if(!C.ticket_panel)
+		C.ticket_panel = new /datum/ticket_panel()
+
 	var/list/data = list(
-		"is_admin" = CLIENT_IS_STAFF(user.client) ? TRUE: FALSE,
-		"is_mentor" = CLIENT_IS_MENTOR(user.client) ? TRUE : FALSE,
-		"selected_tab" = selected_tab,
-		"selected_ticket" = selected_ticket,
+		"is_admin" = CLIENT_IS_STAFF(C) ? TRUE: FALSE,
+		"is_mentor" = CLIENT_IS_MENTOR(C) ? TRUE : FALSE,
+		"selected_tab" = C.ticket_panel.selected_tab,
+		"selected_ticket" = C.ticket_panel.selected_ticket,
 		"admin_open_tickets" = list(),
 		"mentor_open_tickets" = list(),
 		"admin_archived_tickets" = list(),
@@ -104,19 +105,26 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 	var/client/C = usr.client
 	var/mob/M = C.mob
 
+	if(!CLIENT_IS_STAFF(C))
+		selected_tab = MENTOR_TAB
+
 	switch(action)
 		if("refresh")
 			return TRUE
 
 		if("select_tab")
-			if(params["tab"] == "admin" && !CLIENT_IS_STAFF(usr.client))
+			if(params["tab"] == ADMIN_TAB && !CLIENT_IS_STAFF(usr.client))
 				return FALSE
-			selected_tab = params["tab"]
-			selected_ticket = null
+			if(!C.ticket_panel)
+				C.ticket_panel = new /datum/ticket_panel()
+			C.ticket_panel.selected_tab = params["tab"]
+			C.ticket_panel.selected_ticket = null
 			return TRUE
 
 		if("select_ticket")
-			selected_ticket = text2num(params["ticket_id"])
+			if(!C.ticket_panel)
+				C.ticket_panel = new /datum/ticket_panel()
+			C.ticket_panel.selected_ticket = text2num(params["ticket_id"])
 			return TRUE
 
 		if("start_adminhelp")
@@ -139,8 +147,8 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 				return FALSE
 
 			if(istype(target.current_ticket) && target.current_ticket.state == AHELP_ACTIVE)
-				selected_tab = "admin"
-				selected_ticket = target.current_ticket.id
+				C.ticket_panel.selected_tab = ADMIN_TAB
+				C.ticket_panel.selected_ticket = target.current_ticket.id
 				to_chat(usr, "<span class='notice'>Switched to existing admin ticket for [target.key]</span>")
 				return TRUE
 
@@ -167,8 +175,8 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 				return FALSE
 
 			if(istype(target.current_mhelp) && target.current_mhelp.open)
-				selected_tab = "mentor"
-				selected_ticket = target.current_mhelp.id
+				C.ticket_panel.selected_tab = MENTOR_TAB
+				C.ticket_panel.selected_ticket = target.current_mhelp.id
 				to_chat(usr, "<span class='notice'>Switched to existing mentor ticket for [target.key]</span>")
 				return TRUE
 
@@ -198,14 +206,14 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 			var/ticket_id = text2num(params["ticket_id"])
 
 			switch(selected_tab)
-				if("admin")
+				if(ADMIN_TAB)
 					var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 					if(!istype(AH))
 						to_chat(usr, SPAN_WARNING("Invalid admin ticket selected."))
 						return FALSE
 					player = AH.initiator.mob
 
-				if("mentor")
+				if(MENTOR_TAB)
 					var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
 					if(!istype(MH))
 						to_chat(usr, SPAN_WARNING("Invalid mentor ticket selected."))
@@ -221,7 +229,7 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 
 		if("autoreply")
 			var/ticket_id = text2num(params["ticket_id"])
-			if(selected_tab == "admin")
+			if(selected_tab == ADMIN_TAB)
 				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 				if(AH)
 					AH.AutoReply()
@@ -234,7 +242,7 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 
 		if("reopen_ticket")
 			var/ticket_id = text2num(params["ticket_id"])
-			if(selected_tab == "admin")
+			if(selected_tab == ADMIN_TAB)
 				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 				if(!AH)
 					to_chat(usr, SPAN_WARNING("Invalid admin ticket selected."))
@@ -267,90 +275,87 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 
 		if("close_ticket")
 			var/ticket_id = text2num(params["ticket_id"])
-			if(selected_tab == "admin")
-				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
-				if(AH)
-					if(AH.marked_admin != usr.ckey)
-						to_chat(usr, SPAN_WARNING("You don't have permission to close this ticket."))
-						return
-					if(AH.state != AHELP_ACTIVE)
-						to_chat(usr, SPAN_WARNING("This ticket is already [AH.state == AHELP_RESOLVED ? "resolved" : "closed"]."))
-						return
-					AH.Resolve(usr.ckey, FALSE)
-					message_admins("[key_name_admin(usr)] closed ticket #[ticket_id]")
-					log_admin("Ticket #[ticket_id] closed by [key_name(usr)]")
-			else
-				var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
-				if(MH)
-					if(!MH.open)
-						to_chat(usr, SPAN_WARNING("This mentor ticket is already closed."))
-						return
+			switch(selected_tab)
+				if(ADMIN_TAB)
+					var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
+					if(AH)
+						if(AH.marked_admin && AH.marked_admin != usr.ckey)
+							to_chat(usr, SPAN_WARNING("You don't have permission to close this ticket."))
+							return
+						if(AH.state != AHELP_ACTIVE)
+							to_chat(usr, SPAN_WARNING("This ticket is already [AH.state == AHELP_RESOLVED ? "resolved" : "closed"]."))
+							return
+						AH.Resolve(usr.ckey, FALSE)
+						message_admins("[key_name_admin(usr)] closed ticket #[ticket_id]")
+						log_admin("Ticket #[ticket_id] closed by [key_name(usr)]")
+				if(MENTOR_TAB)
+					var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
+					if(MH)
+						if(!MH.open)
+							to_chat(usr, SPAN_WARNING("This mentor ticket is already closed."))
+							return
 
-					if(MH.mentor && MH.mentor.ckey != usr.ckey && !CLIENT_IS_STAFF(usr.client))
-						to_chat(usr, SPAN_WARNING("You don't have permission to close this ticket."))
-						return
+						if(MH.mentor && MH.mentor.ckey != usr.ckey && !CLIENT_IS_STAFF(usr.client))
+							to_chat(usr, SPAN_WARNING("You don't have permission to close this ticket."))
+							return
 
-					MH.close(usr.client)
-					message_mentors("[key_name_admin(usr)] closed mentor ticket from [MH.author_key]")
-					log_admin_private("Mentor ticket from [MH.author_key] closed by [key_name(usr)]")
-				else
-					to_chat(usr, SPAN_WARNING("This ticket does not exist or has been deleted."))
+						MH.close(usr.client)
+						message_mentors("[key_name_admin(usr)] closed mentor ticket from [MH.author_key]")
+						log_admin_private("Mentor ticket from [MH.author_key] closed by [key_name(usr)]")
+					else
+						to_chat(usr, SPAN_WARNING("This ticket does not exist or has been deleted."))
 			return TRUE
 
 		if("claim_ticket")
 			var/ticket_id = text2num(params["ticket_id"])
-			if(selected_tab == "admin")
-				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
-				if(AH)
-					if(AH.marked_admin)
-						if(AH.marked_admin == usr.ckey)
-							AH.unmark_ticket()
-							message_admins("[key_name_admin(usr)] unclaimed ticket #[ticket_id]")
+			switch(selected_tab)
+				if(ADMIN_TAB)
+					var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
+					if(AH)
+						if(AH.marked_admin)
+							if(AH.marked_admin == usr.ckey)
+								AH.unmark_ticket()
+								message_admins("[key_name_admin(usr)] unclaimed ticket #[ticket_id]")
+							else
+								AH.mark_ticket(M)
 						else
-							to_chat(usr, SPAN_WARNING("This ticket is already claimed by [AH.marked_admin]."))
-					else
-						AH.mark_ticket(M)
-						message_admins("[key_name_admin(usr)] claimed ticket #[ticket_id]")
-			else
-				var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
-				if(!MH)
-					return FALSE
-
-				if(MH.mentor)
-					if(MH.mentor.ckey == usr.ckey)
-						MH.unmark(usr.client)
-						message_mentors("[key_name_admin(usr)] unclaimed mentor ticket from [MH.author_key]")
-					else
-						to_chat(usr, SPAN_WARNING("This ticket is already claimed by [MH.mentor.ckey]."))
+							AH.mark_ticket(M)
+							message_admins("[key_name_admin(usr)] claimed ticket #[ticket_id]")
 				else
-					MH.mark(usr.client)
-					message_mentors("[key_name_admin(usr)] claimed mentor ticket from [MH.author_key]")
+					var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
+					if(!MH)
+						return FALSE
 
-			return TRUE
+					if(MH.mentor)
+						if(MH.mentor.ckey == usr.ckey)
+							MH.unmark(usr.client)
+							message_mentors("[key_name_admin(usr)] unclaimed mentor ticket from [MH.author_key]")
+						else
+							MH.mark(usr.client)
+					else
+						MH.mark(usr.client)
+						message_mentors("[key_name_admin(usr)] claimed mentor ticket from [MH.author_key]")
 
-		if("update_message")
-			var/updated_message = params["message"]
-			if(!updated_message)
-				return
-			entered_message = sanitize(updated_message)
 			return TRUE
 
 		if("reply_ticket")
 			var/ticket_id = text2num(params["ticket_id"])
-			if(!ticket_id || !entered_message)
+			if(!ticket_id)
 				return
 
-			if(selected_tab == "admin")
+			var/message = tgui_input_text(M, "Enter your response:", "Reply to Ticket", multiline = TRUE)
+			if(!message || !M.client)
+				return
+
+			if(selected_tab == ADMIN_TAB)
 				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 				if(AH)
-					M.client.cmd_admin_pm(AH.initiator, entered_message)
+					M.client.cmd_admin_pm(AH.initiator, message)
 
 			else
 				var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
 				if(MH)
-					MH.Respond(entered_message, M.client)
-
-			entered_message = ""
+					MH.Respond(message, M.client)
 
 			return TRUE
 
@@ -359,7 +364,7 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 			if(!ticket_id)
 				return
 
-			if(selected_tab == "admin")
+			if(selected_tab == ADMIN_TAB)
 				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 				if(AH)
 					var/new_subject = tgui_input_text(usr, "Enter a subject for this ticket:", "Set Ticket Subject", AH.subject, 100)
@@ -382,7 +387,7 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 				to_chat(usr, SPAN_NOTICE("You don't have permission to view author notes."))
 				return FALSE
 
-			if(!(selected_tab == "admin"))
+			if(!(selected_tab == ADMIN_TAB))
 				to_chat(usr, SPAN_WARNING("You can only view author notes from admin tickets."))
 				return FALSE
 
@@ -413,7 +418,7 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 				return FALSE
 
 			var/datum/admin_help/AH
-			if(selected_tab == "admin")
+			if(selected_tab == ADMIN_TAB)
 				AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 			else
 				to_chat(usr, SPAN_WARNING("Can only ban from admin tickets."))
@@ -463,5 +468,13 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 		to_chat(usr, SPAN_WARNING("You need to be an admin or mentor in order to access this panel..."))
 		return
 
-	GLOB.TICKETPANEL.tgui_interact(usr)
+	var/datum/ticket_panel/T = usr.client.ticket_panel
 
+	if(!T)
+		T = new()
+		usr.client.ticket_panel = T
+
+	T.tgui_interact(usr)
+
+#undef ADMIN_TAB
+#undef MENTOR_TAB

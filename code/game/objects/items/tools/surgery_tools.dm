@@ -16,7 +16,7 @@
  */
 /obj/item/tool/surgery/retractor
 	name = "retractor"
-	desc = "Retracts stuff."
+	desc = "A tool for surgery used to hold skin, tissues, or organs apart to expose and access the surgical site."
 	icon_state = "retractor"
 	matter = list("metal" = 10000, "glass" = 5000)
 	flags_atom = FPRINT|CONDUCT
@@ -24,7 +24,6 @@
 
 /obj/item/tool/surgery/retractor/predatorretractor
 	name = "opener"
-	desc = "Retracts stuff."
 	icon_state = "predator_retractor"
 
 /*
@@ -33,7 +32,7 @@
  */
 /obj/item/tool/surgery/hemostat
 	name = "hemostat"
-	desc = "You think you have seen this before."
+	desc = "A tool for surgery used to control bleeding by pinching blood vessels closed. It can also be used to remove foreign objects and manipulate and lift small organs and tissues."
 	icon_state = "hemostat"
 	matter = list("metal" = 5000, "glass" = 2500)
 	flags_atom = FPRINT|CONDUCT
@@ -43,7 +42,6 @@
 
 /obj/item/tool/surgery/hemostat/predatorhemostat
 	name = "pincher"
-	desc = "You think you have seen this before."
 	icon_state = "predator_hemostat"
 
 /*
@@ -52,7 +50,7 @@
  */
 /obj/item/tool/surgery/cautery
 	name = "cautery"
-	desc = "This stops bleeding."
+	desc = "A tool for surgery that uses extreme heat to stop bleeding, seal blood vessels, and remove unwanted tissue. Closes incisions by burning things, in this case."
 	icon_state = "cautery"
 	matter = list("metal" = 5000, "glass" = 2500)
 	flags_atom = FPRINT|CONDUCT
@@ -63,7 +61,6 @@
 
 /obj/item/tool/surgery/cautery/predatorcautery
 	name = "cauterizer"
-	desc = "This stops bleeding."
 	icon_state = "predator_cautery"
 	flags_item = NO_FLAGS
 
@@ -73,7 +70,7 @@
  */
 /obj/item/tool/surgery/surgicaldrill
 	name = "surgical drill"
-	desc = "You can drill using this item. You dig?"
+	desc = "A surgical tool used to drill through bone to make a cavity for implantation."
 	icon_state = "drill"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	matter = list("metal" = 15000, "glass" = 10000)
@@ -85,7 +82,6 @@
 
 /obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill
 	name = "bone drill"
-	desc = "You can drill using this item. You dig?"
 	icon_state = "predator_drill"
 
 /*
@@ -94,7 +90,7 @@
  */
 /obj/item/tool/surgery/scalpel
 	name = "scalpel"
-	desc = "Cut, cut, and once more cut."
+	desc = "A surgical tool used to create incisions, debride diseased flesh, and separate muscles and organs via a cutting motion. Can also remove foreign objects. Begins most surgeries."
 	icon_state = "scalpel"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
@@ -117,7 +113,6 @@
 
 /obj/item/tool/surgery/scalpel/predatorscalpel
 	name = "cutter"
-	desc = "Cut, cut, and once more cut."
 	icon_state = "predator_scalpel"
 
 /*
@@ -177,7 +172,7 @@
 
 /obj/item/tool/surgery/circular_saw
 	name = "circular saw"
-	desc = "For heavy-duty cutting."
+	desc = "A surgical tool used to saw through thick bone in the skull and ribcage prior to prying them apart, or for amputating diseased limbs."
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	flags_atom = FPRINT|CONDUCT
@@ -195,7 +190,6 @@
 
 /obj/item/tool/surgery/circular_saw/predatorbonesaw
 	name = "bone saw"
-	desc = "For heavy-duty cutting."
 	icon_state = "predator_bonesaw"
 	flags_item = NO_FLAGS
 
@@ -206,8 +200,8 @@
 
 /obj/item/tool/surgery/bonegel
 	name = "bottle of bone gel"
-	desc = "A container for bone gel that often needs to be refilled from a specialized machine."
-	desc_lore = "Bone gel is a biological synthetic bone-analogue with the consistency of clay. It is capable of fixing hairline fractures and complex fractures alike. Bone gel should not be used to fix missing bone, as it does not replace the body's bone marrow. Overuse in a short period may cause acute immunodeficiency or anemia."
+	desc = "A container for bone gel, a substance capable of fixing fractures using an analogue that mimics bone. It needs to be refilled from a specialized machine."
+	desc_lore = "Bone gel is a biological synthetic bone-analogue with the consistency of clay. It is capable of fixing hairline fractures and complex fractures alike by sealing cracks through adhesion to compact bone and solidifying; the gel then naturally erodes away as the bone remodels itself. Bone gel should not be used to fix missing bone, as it does not replace the body's bone marrow. Overuse in a short period may cause acute immunodeficiency or anemia."
 	icon_state = "bone-gel"
 	w_class = SIZE_SMALL
 	matter = list("plastic" = 7500)
@@ -266,7 +260,7 @@
 		return
 
 	if(refilling)
-		to_chat(user, SPAN_NOTICE("You are already refilling [src] from [refilling_obj]."))
+		to_chat(user, SPAN_NOTICE("You are already refilling [src] from the [refilling_obj]."))
 		return
 	refilling = TRUE
 
@@ -310,7 +304,7 @@
 /obj/item/tool/surgery/FixOVein
 	name = "FixOVein"
 	icon_state = "fixovein"
-	desc = "Used for fixing torn blood vessels. Could also be used to reconnect other tissues, in a pinch."
+	desc = "A recently-developed surgical tool used to repair broken blood vessels by secreting a membrane of synthetic connective tissue to provide a framework for the blood vessel until it naturally repairs itself. The substance can also be used to reconnect other tissues, in a pinch. Since it operates on a cellular level, it is practically infinite."
 
 	force = 0
 	throwforce = 1
@@ -348,8 +342,8 @@
 
 /obj/item/tool/surgery/synthgraft
 	name = "Synth-Graft"
-	desc = "An applicator for synthetic skin field grafts. The stuff reeks, itches like the dickens, hurts going on, and the color is \
-		a perfectly averaged multiethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay."
+	desc = "An applicator for synthetic skin field grafts. The stuff reeks, itches like the dickens, hurts when applied, and the color is \
+		a perfectly averaged multi-ethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay."
 	icon_state = "line_burn"
 	item_state = "line_burn"
 	force = 0
@@ -400,7 +394,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/drapes //Does nothing at present. Might be useful for increasing odds of success.
 	name = "surgical drapes"
-	desc = "Used to cover a limb prior to the beginning of a surgical procedure"
+	desc = "Used to cover a limb prior to the beginning of a surgical procedure."
 	icon_state = "drapes"
 	gender = PLURAL
 	w_class = SIZE_SMALL
@@ -478,7 +472,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/WYautopsy
 	name = "\improper Weyland Brand Automatic Autopsy System(TM)"
-	desc = "Putting the FUN back in Autopsy.  This little gadget performs an entire autopsy of whatever strange life form you've found in about 30 seconds."
+	desc = "Putting the FUN back in Autopsy. This little gadget performs an entire autopsy of whatever strange life form you've found in about 30 seconds."
 	icon_state = "scalpel_laser_2"
 	damtype = "fire"
 	force = 0
@@ -493,17 +487,17 @@ t. optimisticdude
 	set src in usr
 
 	if(!active)
-		to_chat(usr, "System appears to be working fine...")
+		to_chat(usr, "The system appears to be working fine...")
 		return
 	if(active)
 		resetting = 1
-		to_chat(usr, "Resetting tool, This will take a few seconds...  Do not attempt to use the tool during the reset or it may malfunction.")
+		to_chat(usr, "Resetting tool. This will take a few seconds...  Do not attempt to use the tool during the reset or it may malfunction.")
 		while(active) //While keep running until it's reset (in case of lag-spam)
 			active = 0 //Sets it to not active
 			to_chat(usr, "Processing...")
 			spawn(60) // runs a timer before the final check.  timer is longer than autopsy timers.
 				if(!active)
-					to_chat(usr, "System Reset completed")
+					to_chat(usr, "System Reset completed!")
 					resetting = 0
 
 /obj/item/tool/surgery/WYautopsy/attack(mob/living/carbon/xenomorph/T as mob, mob/living/user as mob)
@@ -511,27 +505,27 @@ t. optimisticdude
 	set name = "Perform Alien Autopsy"
 	set src in usr*/
 	if(resetting)
-		to_chat(usr, "Tool is currently returning to factory default.  If you have been waiting, try running the reset again.")
+		to_chat(usr, "This tool is currently returning to its factory default settings. If you have been waiting, try running the reset again.")
 	if(!isxeno(T))
 		to_chat(usr, "What are you, some sort of fucking MONSTER?")
 		return
 	if(T.health > 0)
-		to_chat(usr, "Nope.")
+		to_chat(usr, "The fuck are you doing!? Kill it!")
 		return
 	if(active)
-		to_chat(usr, "Your already performing an autopsy")
+		to_chat(usr, "You are already performing an autopsy.")
 		return
 	if(istype(T, /mob/living/carbon/xenomorph/larva))
-		to_chat(usr, "It's too young... (This will be in a future update)")
+		to_chat(usr, "The larva has not developed any useful biomass for you to extract.") //It will in a future update, I guess.
 		return
 	active = 1
 	var CHECK = user.loc
 	playsound(loc, 'sound/weapons/pierce.ogg', 25)
 	to_chat(usr, "You begin to cut into the alien... This might take some time...")
 	if(T.health >-100)
-		to_chat(usr, "HOLY SHIT IT'S STILL ALIVE.  It knocks you down as it jumps up.")
+		to_chat(usr, "HOLY SHIT! IT'S STILL ALIVE! It springs to life and uses its body weight to knock you down!")
 		usr.apply_effect(20, WEAKEN)
-		to_chat(T, "You feel TREMENDOUS pain and jump back up to use the last of your strength to kill [usr] with your final moments of life. (~10 seconds)")
+		to_chat(T, "Though you feel a monumental amount of pain, you jump back up to use the last of your strength to kill [usr] with your final moments of life.") ///~10 seconds
 		T.health = T.maxHealth*2 //It's hulk levels of angry.
 		active = 0
 		spawn (1000) //Around 10 seconds
@@ -542,9 +536,9 @@ t. optimisticdude
 		if(0)
 			spawn(50)
 				if(CHECK != user.loc)
-					to_chat(usr, "This is difficult, you probably shouldn't move")
+					to_chat(usr, "This procedure requires uninterrupted focus; you need to remain still.")
 					return
-				to_chat(usr, "You've cut through the outer layers of Chitin")
+				to_chat(usr, "You've cut through the outer layers of Chitin.")
 				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				T.butchery_progress++
@@ -552,26 +546,26 @@ t. optimisticdude
 		if(1)
 			spawn(50)
 				if(CHECK != user.loc)
-					to_chat(usr, "This is difficult, you probably shouldn't move.")
+					to_chat(usr, "This procedure requires uninterrupted focus; you need to remain still.")
 					return
-				to_chat(usr, "You've cut into the chest cavity and retreived a sample of blood.")
+				to_chat(usr, "You've cut into the chest cavity and retrieved a sample of blood.")
 				new /obj/item/oldresearch/Blood(T.loc)//This will be a sample of blood eventually
 				T.butchery_progress++
 				active = 0
 		if(2)
 			spawn(50)
 				if(CHECK != user.loc)
-					to_chat(usr, "This is difficult, you probably shouldn't move.")
+					to_chat(usr, "This procedure requires uninterrupted focus; you need to remain still.")
 					return
 				//to_chat(usr, "You've cut out an intact organ.")
-				to_chat(usr, "You've cut out some Biomass...")
+				to_chat(usr, "You've cut out some biomass...")
 				new /obj/item/oldresearch/Resin(T.loc)//This will be an organ eventually, based on the caste.
 				T.butchery_progress++
 				active = 0
 		if(3)
 			spawn(50)
 				if(CHECK != user.loc)
-					to_chat(usr, "This is difficult, you probably shouldn't move.")
+					to_chat(usr, "This procedure requires uninterrupted focus; you need to remain still.")
 					return
 				to_chat(usr, "You scrape out the remaining biomass.")
 				active = 0

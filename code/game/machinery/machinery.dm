@@ -166,7 +166,7 @@ Class Procs:
 		GLOB.processing_machines -= src
 		GLOB.power_machines -= src
 
-/obj/structure/machinery/process()//If you dont use process or power why are you here
+/obj/structure/machinery/process()//If you don't use process or power why are you here
 	return PROCESS_KILL
 
 /obj/structure/machinery/get_examine_text(mob/user)

@@ -1,0 +1,6 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added event mob spawn landmarks, and a ghost verb to spawn as them."
+  - rscadd: "You can only spawn as an event mob once per round, unless an admin overrides this."
+  - admin: "Admins have freedom to setup these landmarks either in a map insert or on-the-fly depending on which type is used. They're fairly customisable and will allow for overrides of a few features on the preset such as title and paygrade."

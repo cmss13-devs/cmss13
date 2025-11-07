@@ -127,7 +127,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/predator_light_color = "Yellow"
 	var/predator_flavor_text = ""
 	//CO-specific preferences
-	var/commander_sidearm = "Unica"
+	var/commander_sidearm = "Unica (camo comforting)"
 	var/co_career_path = "Infantry"
 	var/affiliation = "Unaligned"
 	//SEA specific preferences

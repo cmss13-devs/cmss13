@@ -4,7 +4,6 @@ import {
   Box,
   Button,
   Icon,
-  Input,
   LabeledList,
   Section,
   Stack,
@@ -39,7 +38,6 @@ type Data = {
   is_mentor: boolean;
   selected_tab: string;
   selected_ticket: number | null;
-  entered_message: string;
   admin_open_tickets: Ticket[];
   admin_archived_tickets: Ticket[];
   mentor_open_tickets: Ticket[];
@@ -537,50 +535,56 @@ export const TicketPanel = (props) => {
                       </Section>
                     )}
                     {!selectedTicketData.is_archived ? (
-                      <>
-                        <Input
-                          placeholder="Type your message here..."
-                          width="100%"
-                          height="100px"
-                          value={data.entered_message}
-                          onChange={(e) =>
-                            act('update_message', {
-                              message: e.currentTarget.value,
-                            })
-                          }
-                        />
-                        <Button
-                          mt={2}
-                          onClick={() => {
-                            act('reply_ticket', {
-                              ticket_id: selectedTicketData.id,
-                            });
-                          }}
-                        >
-                          Send
-                        </Button>
-                        <Button
-                          mt={2}
-                          onClick={() =>
-                            act('close_ticket', {
-                              ticket_id: selectedTicketData.id,
-                            })
-                          }
-                        >
-                          Close
-                        </Button>
-                        <Button
-                          mt={2}
-                          icon="reply-all"
-                          onClick={() =>
-                            act('autoreply', {
-                              ticket_id: selectedTicketData.id,
-                            })
-                          }
-                        >
-                          Auto Reply
-                        </Button>
-                      </>
+                      <Stack vertical>
+                        <Stack.Item>
+                          <Button
+                            icon="reply"
+                            color="good"
+                            fontSize="1.2em"
+                            textAlign="center"
+                            lineHeight={2}
+                            fluid
+                            onClick={() => {
+                              act('reply_ticket', {
+                                ticket_id: selectedTicketData.id,
+                              });
+                            }}
+                          >
+                            Reply
+                          </Button>
+                        </Stack.Item>
+                        <Stack.Item>
+                          <Stack>
+                            <Stack.Item grow>
+                              <Button
+                                icon="times"
+                                color="bad"
+                                fluid
+                                onClick={() =>
+                                  act('close_ticket', {
+                                    ticket_id: selectedTicketData.id,
+                                  })
+                                }
+                              >
+                                Close Ticket
+                              </Button>
+                            </Stack.Item>
+                            <Stack.Item grow>
+                              <Button
+                                icon="reply-all"
+                                fluid
+                                onClick={() =>
+                                  act('autoreply', {
+                                    ticket_id: selectedTicketData.id,
+                                  })
+                                }
+                              >
+                                Auto Reply
+                              </Button>
+                            </Stack.Item>
+                          </Stack>
+                        </Stack.Item>
+                      </Stack>
                     ) : (
                       <>
                         <Box color="label" italic mb={2}>

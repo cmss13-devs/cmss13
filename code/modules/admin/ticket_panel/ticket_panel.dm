@@ -3,13 +3,6 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 /datum/ticket_panel
 	var/selected_tab = "admin"
 	var/selected_ticket = null
-	var/entered_message = ""
-
-/datum/ticket_panel/New(mob/M)
-	. = ..()
-
-	if(CLIENT_IS_MENTOR(M.client))
-		selected_tab = "mentor"
 
 /datum/ticket_panel/Destroy(force, ...)
 	SStgui.close_uis(src)
@@ -35,7 +28,6 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 		"claimed_by" = AH.marked_admin,
 		"all_responses" = formatted_responses,
 		"viewer_is_claiming" = (AH.marked_admin == usr.ckey ? TRUE : FALSE),
-		"entered_message" = entered_message,
 		"is_archived" = (AH.state != AHELP_ACTIVE)
 	)
 
@@ -103,6 +95,9 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 
 	var/client/C = usr.client
 	var/mob/M = C.mob
+
+	if(!CLIENT_IS_STAFF(C))
+		selected_tab = "mentor"
 
 	switch(action)
 		if("refresh")
@@ -328,29 +323,24 @@ GLOBAL_DATUM_INIT(TICKETPANEL, /datum/ticket_panel, new)
 
 			return TRUE
 
-		if("update_message")
-			var/updated_message = params["message"]
-			if(!updated_message)
-				return
-			entered_message = sanitize(updated_message)
-			return TRUE
-
 		if("reply_ticket")
 			var/ticket_id = text2num(params["ticket_id"])
-			if(!ticket_id || !entered_message)
+			if(!ticket_id)
+				return
+
+			var/message = tgui_input_text(M, "Enter your response:", "Reply to Ticket", multiline = TRUE)
+			if(!message || !M.client)
 				return
 
 			if(selected_tab == "admin")
 				var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
 				if(AH)
-					M.client.cmd_admin_pm(AH.initiator, entered_message)
+					M.client.cmd_admin_pm(AH.initiator, message)
 
 			else
 				var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
 				if(MH)
-					MH.Respond(entered_message, M.client)
-
-			entered_message = ""
+					MH.Respond(message, M.client)
 
 			return TRUE
 

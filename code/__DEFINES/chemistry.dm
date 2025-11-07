@@ -106,9 +106,9 @@
 #define CHEM_CLASS_COMMON 2
 /// Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
 #define CHEM_CLASS_UNCOMMON 3
-/// Chemicals that are either cant be made or require rare or expandable components.
+/// Chemicals that are either can't be made or require rare or expandable components.
 #define CHEM_CLASS_RARE 4
-/// Chemicals that cant be made
+/// Chemicals that can't be made
 #define CHEM_CLASS_SPECIAL 5
 /// Randomly generated chemicals
 #define CHEM_CLASS_ULTRA 6

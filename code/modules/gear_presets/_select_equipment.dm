@@ -51,7 +51,8 @@
 
 	var/list/uniform_sets = null
 
-
+	/// All presets are in "All" and "Faction" (drawn from the faction variable)
+	var/selection_categories = list()
 
 /datum/equipment_preset/New()
 	if(!manifest_title)
@@ -735,7 +736,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
-/datum/equipment_preset/proc/add_random_survivor_medical_gear(mob/living/carbon/human/new_human) // Randomized medical gear. Survivors wont have their gear all kitted out once the outbreak began much like a doctor on a coffee break wont carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
+/datum/equipment_preset/proc/add_random_survivor_medical_gear(mob/living/carbon/human/new_human) // Randomized medical gear. Survivors won't have their gear all kitted out once the outbreak began much like a doctor on a coffee break won't carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
 	var/random_gear = rand(0,4)
 	switch(random_gear)
 		if(0)
@@ -750,7 +751,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/surgical(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 
-/datum/equipment_preset/proc/add_random_survivor_research_gear(mob/living/carbon/human/new_human) // Randomized medical gear. Survivors wont have their gear all kitted out once the outbreak began much like a doctor on a coffee break wont carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
+/datum/equipment_preset/proc/add_random_survivor_research_gear(mob/living/carbon/human/new_human) // Randomized medical gear. Survivors won't have their gear all kitted out once the outbreak began much like a doctor on a coffee break won't carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
 	var/random_gear = rand(0,3)
 	switch(random_gear)
 		if(0)
@@ -885,7 +886,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 /**
  * Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet.
  * For the most part you will stil get a shotgun but there is an off chance you get something unique.
- * If you dont like the weapon deal with it. Cursed ammo for shotguns is intentional for scarcity reasons.
+ * If you don't like the weapon deal with it. Cursed ammo for shotguns is intentional for scarcity reasons.
  * Some weapons may not appear at all in a colony so they will need the extra ammo.
  * MERC, and DB needed a handfull of shells to compete with the normal CMB.
  */

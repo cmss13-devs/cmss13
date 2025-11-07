@@ -68,13 +68,15 @@
 
 	if(tool.hitsound)
 		playsound(target.loc, tool.hitsound, 25, TRUE)
+	if(target.stat == CONSCIOUS)
+		target.emote("pain") //'Help me' doesn't exist, so this will have to do.
 	log_interact(user, target, "[key_name(user)] attempted an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool ? "\the [tool]" : "their hands"].")
 
 /datum/surgery_step/cut_muscle/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/muscle_type = target.get_muscle_type()
 	user.affected_message(target,
 		SPAN_NOTICE("You finish severing the [muscle_type] in [target]'s [surgery.affected_limb.display_name]. They can be reattached if you've changed your mind, but once you start to cut through the bone you'll have to see it through to the end."),
-		SPAN_WARNING("[user] has severed the [muscle_type] in your [surgery.affected_limb.display_name]! YOU CAN'T MOVE IT, ANYMORE! HELP!"),
+		SPAN_WARNING("[user] has severed the [muscle_type] in your [surgery.affected_limb.display_name]! YOU CAN'T MOVE YOUR [surgery.affected_limb.display_name] ANYMORE! HELP!"),
 		SPAN_NOTICE("[user] has severed the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
 
 	log_interact(user, target, "[key_name(user)] successfully began an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool ? "\the [tool]" : "their hands"], starting [surgery].")
@@ -118,7 +120,7 @@
 	var/muscle_type = target.get_muscle_type()
 	user.affected_message(target,
 		SPAN_NOTICE("You finish reconnecting the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] has reconnected the [muscle_type] in your [surgery.affected_limb.display_name]. You can move it your limb again. Great!"),
+		SPAN_NOTICE("[user] has reconnected the [muscle_type] in your [surgery.affected_limb.display_name]. You can move it your limb again. Whew."),
 		SPAN_NOTICE("[user] has reconnected the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
 
 	complete(target, surgery)

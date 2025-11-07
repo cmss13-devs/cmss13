@@ -49,7 +49,7 @@
 /datum/surgery_step/remove_bone_chips/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You finish extracting fragments of bone from [target]'s brain."),
-		SPAN_NOTICE("[user] finishes extracting fragments of bone from your brain. You feel yourself settling down, and the rattling and piercing feelings in your brain cease and your mind and ears feel much more clear."), //no more nervous, can hear and speak better.
+		SPAN_NOTICE("[user] finishes extracting fragments of bone from your brain. The rattling and piercing feelings in your brain cease and your mind and ears feel clearer."), //no more nervous, can hear and speak better.
 		SPAN_NOTICE("[user] finishes extracting fragments of bone from [target]'s brain."))
 
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BRAIN)
@@ -99,7 +99,7 @@
 /datum/surgery_step/treat_hematoma/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You finish mending the hematoma in [target]'s brain."),
-		SPAN_NOTICE("[user] finishes mending the hematoma in your brain. The agonizing pressure in your skull ceases. Your mind and ears feel much more clear."), //no more nervous, brain feels better
+		SPAN_NOTICE("[user] finishes mending the hematoma in your brain. The agonizing pressure in your skull ceases. Your mind and ears feel clearer."), //no more nervous, brain feels better
 		SPAN_NOTICE("[user] finishes mending the hematoma in [target]'s brain."))
 
 	log_interact(user, target, "[key_name(user)] finished mending a hematoma in [key_name(target)]'s brain with \the [tool], beginning [surgery].")

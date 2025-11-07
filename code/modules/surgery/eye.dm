@@ -9,7 +9,7 @@
 	possible_locs = list("eyes")
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
-	pain_reduction_required = PAIN_REDUCTION_MEDIUM //Eyes DO have pain receptors.
+	pain_reduction_required = PAIN_REDUCTION_HEAVY //Eyes DO have pain receptors... Almost more than any other organ. Ever been poked in the eye? Shit hurts.
 	steps = list(
 		/datum/surgery_step/separate_cornea,
 		/datum/surgery_step/lift_eyes,
@@ -115,18 +115,18 @@
 
 /datum/surgery_step/mend_eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You begin mending the nerves and lenses in [target]'s eyes with \the [tool]."),
-		SPAN_NOTICE("[user] begins to mend the nerves and lenses in your eyes with \the [tool]."),
-		SPAN_NOTICE("[user] begins to mend the nerves and lenses in [target]'s eyes with \the [tool]."))
+		SPAN_NOTICE("You begin mending the nerves, lenses, and retinas in [target]'s eyes with \the [tool]."),
+		SPAN_NOTICE("[user] begins to mend the nerves, lenses, and retinas in your eyes with \the [tool]."),
+		SPAN_NOTICE("[user] begins to mend the nerves, lenses, and retinas in [target]'s eyes with \the [tool]."))
 
 	target.custom_pain("The [tool] moving around in your eyeballs is painful and feels bizarre!",1)
-	log_interact(user, target, "[key_name(user)] started to mend the nerves and lenses in [key_name(target)]'s eyes with \the [tool].")
+	log_interact(user, target, "[key_name(user)] started to mend the nerves, lenses, and retinas in [key_name(target)]'s eyes with \the [tool].")
 
 /datum/surgery_step/mend_eyes/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You mend the nerves and lenses in [target]'s eyes."),
-		SPAN_NOTICE("[user] mends the nerves and lenses in your eyes."),
-		SPAN_NOTICE("[user] mends the nerves and lenses in [target]'s eyes."))
+		SPAN_NOTICE("You mend the nerves, lenses, and retinas in [target]'s eyes."),
+		SPAN_NOTICE("[user] mends the nerves, lenses, and retinas in your eyes."),
+		SPAN_NOTICE("[user] mends the nerves, lenses, and retinas in [target]'s eyes."))
 
 	log_interact(user, target, "[key_name(user)] mended the nerves and lenses in [key_name(target)]'s eyes with \the [tool].")
 

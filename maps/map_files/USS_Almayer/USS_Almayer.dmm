@@ -19311,9 +19311,6 @@
 /obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/paft)
-"aXD" = (
-/turf/open/shuttle/rooftop1,
-/area/almayer/middeck/medical)
 "aXE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -34845,10 +34842,6 @@
 "bGh" = (
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/middeck/maintenance/sf)
-"bGj" = (
-/obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/shuttle/rooftop1,
-/area/almayer/middeck/medical)
 "bGn" = (
 /obj/structure/barricade/plasteel/metal,
 /turf/open/floor/almayer/cargo,
@@ -169164,7 +169157,7 @@ bmU
 aOZ
 beB
 beB
-bGj
+beB
 beB
 aOD
 bdB
@@ -169474,7 +169467,7 @@ aOx
 bfM
 aOh
 baC
-aXD
+avN
 avN
 blO
 bcO

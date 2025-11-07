@@ -134,10 +134,6 @@
 "lm" = (
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/caperiver/telecomms/telecomm_2)
-"lv" = (
-/obj/structure/window/framed/kutjevo/reinforced,
-/turf/open/space/basic,
-/area/caperiver/telecomms/telecomm_2)
 "lM" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/caperiver/outdoors/scrublands/south)
@@ -707,7 +703,7 @@ eH
 FV
 Ew
 jy
-lv
+cm
 EL
 KB
 pJ
@@ -725,7 +721,7 @@ No
 zE
 aa
 Nc
-lv
+cm
 bR
 KB
 OU
@@ -743,7 +739,7 @@ No
 iQ
 fg
 wU
-lv
+cm
 em
 yq
 KB

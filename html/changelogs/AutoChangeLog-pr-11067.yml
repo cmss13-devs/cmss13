@@ -1,0 +1,4 @@
+author: "Comka"
+delete-after: True
+changes:
+  - ui: "Added `flexWrap: ‘wrap’` for tabs in the phone interface. Now they should fit in the window"

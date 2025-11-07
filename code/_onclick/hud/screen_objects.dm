@@ -445,13 +445,6 @@
 		return TRUE
 	if(user.is_mob_incapacitated(TRUE))
 		return TRUE
-	//If there is an item in the slot you are clicking on, this will relay the click to the item within the slot
-	///REMOVE THIS COMMENT WHEN IT STARTS TO WORK PROPERLY
-	if(user?.hud_used && slot_id)
-		var/atom/item_in_slot = user.get_item_by_slot(slot_id)
-		if(item_in_slot)
-			return item_in_slot.clicked(user, mods)
-	///REMOVE THIS COMMENT WHEN IT STARTS TO WORK PROPERLY
 	switch(name)
 		if("r_hand")
 			if(iscarbon(user))

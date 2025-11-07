@@ -438,7 +438,9 @@ export const TicketPanel = (props) => {
                             {selectedTicketData.subject}
                           </Box>
                         </LabeledList.Item>
-                      ) : ""}
+                      ) : (
+                        ''
+                      )}
                       <LabeledList.Item label="Author">
                         <Box
                           as="span"

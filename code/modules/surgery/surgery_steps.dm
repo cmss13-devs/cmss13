@@ -148,14 +148,14 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 		switch(tool_modifier) //Implicitly means tool exists as accept_any_item item or accept_hand would = 1x. No message for 1x - that's the default.
 			if(SURGERY_TOOL_MULT_SUBOPTIMAL)
-				message += "this tool [pick("is suitable, but there are better tools for this step", "leaves something to be desired", "is a bit unorthodox for this purpose")]"
+				message += "this tool [pick("is suitable, but there are better tools for this purpose", "is a bit different than what you're accustomed to using", "is a bit unorthodox for this purpose", "deviates your movements a little bit")]"
 			if(SURGERY_TOOL_MULT_SUBSTITUTE)
-				message += "this tool [pick("has a better uses elsewhere", "is not very practical for surgery ", "feels difficult to use")]"
+				message += "this tool [pick("will do in a pinch, but you really should find something else", "is better off used elsewhere", "is not very practical for executing this step,", "feels difficult to operate with")]"
 			if(SURGERY_TOOL_MULT_BAD_SUBSTITUTE)
-				message += "this tool [pick("feels terrible to use in your hands", "makes you feel bad for using it", "unsuitable for surgery")]"
+				message += "this tool [pick("is an unacceptable substitute", "is unsuitable for this method", "feels terrible to use in your hands", "makes you feel bad for using it")]"
 				failure_penalties += 1
 			if(SURGERY_TOOL_MULT_AWFUL)
-				message += "this tool [pick("is the worst thing you could use for this step", "may as well be a piece of garbage in your hands", "makes you wish you were using anything else")]"
+				message += "this tool [pick("is the worst thing you could use for this step", "should never be used for this purpose", "makes you wish you were using anything else", "will most likely cause harm for this step. Don't tell the Chief...")]"
 				failure_penalties += 2
 
 		switch(surface_modifier)

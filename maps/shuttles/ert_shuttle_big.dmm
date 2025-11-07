@@ -500,7 +500,7 @@
 /turf/open/floor/almayer/plate,
 /area/shuttle/ert)
 "HY" = (
-/turf/open/shuttle/rooftop1,
+/turf/open/shuttle/rooftop,
 /area/shuttle/ert)
 "Ik" = (
 /obj/structure/closet,

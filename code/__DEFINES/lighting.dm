@@ -43,7 +43,7 @@
 #define EMISSIVE_BLOCK_NONE 2
 
 #define _EMISSIVE_COLOR(val) list(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1, val,0,0,0)
-#define _EMISSIVE_COLOR_NO_BLOOM(val) list(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1, 0,val,0,0)
+#define _EMISSIVE_COLOR_NO_BLOOM(val) list(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1, 1,val,1,0)
 /// The color matrix applied to all emissive overlays. Should be solely dependent on alpha and not have RGB overlap with [EM_BLOCK_COLOR].
 #define EMISSIVE_COLOR _EMISSIVE_COLOR(1)
 #define EMISSIVE_COLOR_NO_BLOOM _EMISSIVE_COLOR_NO_BLOOM(1)

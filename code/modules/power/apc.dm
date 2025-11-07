@@ -192,10 +192,10 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		if(!opened && wiresexposed)
-			ui = new(user, src, "Wires", "[name] Wires")
+			ui = new(user, src, "Wires", "[capitalize(name)] Wires")
 			ui.open()
 		else
-			ui = new(user, src, "Apc", name)
+			ui = new(user, src, "Apc", capitalize(name))
 			ui.open()
 
 /obj/structure/machinery/power/apc/ui_status(mob/user)
@@ -264,7 +264,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			"cut" = isWireCut(wire),
 		)))
 	data["wires"] = payload
-	data["proper_name"] = name
+	data["proper_name"] = capitalize(name)
 
 	return data
 

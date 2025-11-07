@@ -136,18 +136,29 @@
 		. = ..()
 
 /obj/structure/window_frame/attack_alien(mob/living/carbon/xenomorph/user)
-	if(!reinforced && user.claw_type >= CLAW_TYPE_SHARP)
-		user.animation_attack_on(src)
-		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-		take_damage((max_health / XENO_HITS_TO_DESTROY_WINDOW_FRAME) + 1)
-		return XENO_ATTACK_ACTION
-	else if (reinforced && user.claw_type >= CLAW_TYPE_SHARP)
-		user.animation_attack_on(src)
-		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-		take_damage((max_health / XENO_HITS_TO_DESTROY_R_WINDOW_FRAME) + 1)
-		return XENO_ATTACK_ACTION
+	if(user.claw_type < CLAW_TYPE_SHARP)
+		return ..()
+	user.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	var/hits_divisor = reinforced ? XENO_HITS_TO_DESTROY_R_WINDOW_FRAME : XENO_HITS_TO_DESTROY_WINDOW_FRAME
+	take_damage((max_health / hits_divisor) + 1)
+	return XENO_ATTACK_ACTION
 
-	. = ..()
+/obj/structure/window_frame/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	if(xeno.claw_type < CLAW_TYPE_SHARP)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	var/hits_divisor = reinforced ? XENO_HITS_TO_DESTROY_R_WINDOW_FRAME : XENO_HITS_TO_DESTROY_WINDOW_FRAME
+	take_damage((max_health / hits_divisor) + 1)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/window_frame/bullet_act(obj/projectile/P)
 	bullet_ping(P)

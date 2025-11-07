@@ -216,6 +216,9 @@
 	being_forced = !being_forced
 	return XENO_NO_DELAY_ACTION
 
+/obj/structure/machinery/cryopod/evacuation/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/machinery/cryopod/evacuation/proc/move_mob_inside(mob/M)
 	if(occupant)
 		to_chat(M, SPAN_WARNING("The cryogenic pod is already in use. You will need to find another."))

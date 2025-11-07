@@ -73,7 +73,7 @@
 	GLOB.event_mob_landmarks_delayed += src
 
 /obj/effect/landmark/event_mob_spawn/proc/handle_setup()
-	if(!spawn_preset_path || !(spawn_preset_path in GLOB.gear_path_presets_list))
+	if(!spawn_preset_path || !(spawn_preset_path in GLOB.equipment_presets.gear_path_presets_list))
 		qdel(src)
 		return
 
@@ -84,7 +84,7 @@
 	if(custom_join_title)
 		name = "#[GLOB.event_mob_number] [custom_join_title]"
 	else
-		name = "#[GLOB.event_mob_number] [GLOB.gear_path_presets_list[spawn_preset_path].assignment]"
+		name = "#[GLOB.event_mob_number] [GLOB.equipment_presets.gear_path_presets_list[spawn_preset_path].assignment]"
 
 	GLOB.event_mob_number++
 	GLOB.event_mob_landmarks += src

@@ -87,7 +87,7 @@
 
 /obj/structure/target
 	name = "shooting target"
-	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, its not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo wont have any effect."
+	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, its not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo won't have any effect."
 	icon = 'icons/obj/structures/props/target_dummies.dmi'
 	icon_state = "target_a"
 	density = FALSE

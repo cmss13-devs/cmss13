@@ -464,7 +464,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 /obj/structure/machinery/door/airlock/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "Wires", "[name] Wires")
+		ui = new(user, src, "Wires", "[capitalize(name)] Wires")
 		ui.open()
 
 /obj/structure/machinery/door/airlock/ui_data(mob/user)
@@ -478,7 +478,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			"attached" = !isnull(getAssembly(wire)),
 		)))
 	.["wires"] = payload
-	.["proper_name"] = name
+	.["proper_name"] = capitalize(name)
 
 /obj/structure/machinery/door/airlock/ui_static_data(mob/user)
 	. = list()

@@ -1326,7 +1326,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/lightpack/black/grs_sniper
 	name = "\improper GRS Marksman Cloak"
-	desc = "A specially-designed claok with pockets for all your marksman needs."
+	desc = "A specially-designed cloak with pockets for all your marksman needs."
 	icon_state = "cia_cloak"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	item_icons = list(

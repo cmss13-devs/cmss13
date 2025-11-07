@@ -1155,3 +1155,26 @@
 		return FALSE
 	show_blurb(GLOB.player_list, duration, message, TRUE, "center", "center", "#bd2020", "ADMIN")
 	message_admins("[key_name(usr)] sent an admin blurb alert to all players. Alert reads: '[message]' and lasts [(duration / 10)] seconds.")
+
+/client/proc/setup_delayed_event_spawns()
+	set name = "Setup Delayed Event Spawns"
+	set desc = "Trigger setup for any midround placed event mob spawners."
+	set category = "Admin.Events"
+
+	if(!admin_holder)
+		return FALSE
+
+	if(!SSticker?.mode)
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		return FALSE
+
+	if(!length(GLOB.event_mob_landmarks_delayed))
+		return FALSE
+
+	var/count = 0
+	for(var/obj/effect/landmark/event_mob_spawn/spawner in GLOB.event_mob_landmarks_delayed)
+		spawner.handle_setup()
+		count++
+
+	to_chat(src, SPAN_NOTICE("Setup [count] landmarks."))
+	return TRUE

@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/lz2_fortress)
 "f" = (
 /turf/open/floor/shiva/multi_tiles/east,

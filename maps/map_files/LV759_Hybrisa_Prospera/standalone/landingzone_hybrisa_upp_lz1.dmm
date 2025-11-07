@@ -562,7 +562,7 @@
 /obj/structure/sign/safety/airlock{
 	pixel_x = 11
 	},
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/cargo)
 "bV" = (
 /obj/item/tool/warning_cone{
@@ -591,7 +591,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/lv759/indoors/spaceport/maintenance_east)
 "ce" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/cuppajoes)
 "ck" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
@@ -682,7 +682,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/spaceport/engineering)
 "cD" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/heavyequip)
 "cE" = (
 /turf/open/floor/hybrisa/metal/bluemetalcorner/east,
@@ -834,7 +834,7 @@
 /turf/open/floor/strata/blue3/north,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "dy" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/cargo)
 "dz" = (
 /obj/structure/machinery/light/blue,
@@ -1308,7 +1308,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "gq" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/janitor)
 "gs" = (
 /obj/structure/platform/metal/stair_cut/strata_right,
@@ -1790,7 +1790,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/spaceport/baggagehandling)
 "iG" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/communications_office)
 "iI" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
@@ -2083,7 +2083,7 @@
 /turf/open/floor/strata/floor3,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "jX" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/cargo_maintenance)
 "jY" = (
 /obj/structure/machinery/conveyor{
@@ -2365,7 +2365,7 @@
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
 "lN" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/baggagehandling)
 "lR" = (
 /obj/item/card/id/visa{
@@ -2657,7 +2657,7 @@
 /area/lv759/indoors/spaceport/flight_control_room)
 "nM" = (
 /obj/structure/sign/safety/maint,
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/janitor)
 "nQ" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
@@ -2870,7 +2870,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "pg" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/security)
 "ph" = (
 /turf/open/hybrisa/street/sidewalk/south,
@@ -3165,7 +3165,7 @@
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "ra" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "rd" = (
 /obj/structure/machinery/light/blue,
@@ -3840,7 +3840,7 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "uY" = (
 /obj/structure/prop/hybrisa/supermart/freezer/freezer4,
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/kitchen)
 "va" = (
 /obj/structure/reagent_dispensers/tank/water,
@@ -4162,7 +4162,7 @@
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/lv759/indoors/spaceport/flight_control_room)
 "wt" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "ww" = (
 /obj/structure/largecrate/empty,
@@ -4485,7 +4485,7 @@
 /turf/open/floor/hybrisa/misc/spaceport2,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "yE" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/flight_control_room)
 "yF" = (
 /obj/item/tool/wet_sign{
@@ -5129,7 +5129,7 @@
 /area/lv759/indoors/spaceport/communications_office)
 "Cs" = (
 /obj/structure/sign/safety/restrictedarea,
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/baggagehandling)
 "Ct" = (
 /obj/structure/window/framed/hybrisa/spaceport/reinforced,
@@ -5458,7 +5458,7 @@
 /obj/structure/sign/safety/airlock{
 	pixel_x = 11
 	},
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Eq" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
@@ -5569,7 +5569,7 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "EO" = (
 /obj/structure/sign/nosmoking_1,
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "ET" = (
 /obj/structure/window/reinforced{
@@ -5600,7 +5600,7 @@
 	pixel_y = -12;
 	layer = 2.9
 	},
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/cuppajoes)
 "Fa" = (
 /turf/closed/shuttle/dropship4/WY/StarGlider{
@@ -6045,7 +6045,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/lv759/indoors/spaceport/hallway_east)
 "Hf" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/kitchen)
 "Hj" = (
 /obj/structure/largecrate/random/mini/small_case{
@@ -6333,7 +6333,7 @@
 /area/lv759/indoors/spaceport/cuppajoes)
 "IH" = (
 /obj/structure/sign/safety/luggageclaim,
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/baggagehandling)
 "IK" = (
 /turf/open/floor/plating,
@@ -7061,7 +7061,7 @@
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/engineering)
 "Nh" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Nk" = (
 /obj/structure/largecrate/random/mini/small_case{
@@ -7289,7 +7289,7 @@
 /area/lv759/indoors/spaceport/heavyequip)
 "Oy" = (
 /obj/structure/sign/safety/opens_up,
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "OA" = (
 /obj/structure/machinery/light{
@@ -7309,7 +7309,7 @@
 /turf/open/floor/strata/floor3,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "OH" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/engineering)
 "OM" = (
 /obj/structure/pipes/standard/manifold/hidden/dark{
@@ -8726,7 +8726,7 @@
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/lv759/indoors/spaceport/cuppajoes)
 "YD" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/maintenance_east)
 "YE" = (
 /obj/item/trash/cigbutt{
@@ -8866,7 +8866,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Zw" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/security_office)
 "Zy" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
@@ -8911,7 +8911,7 @@
 	dir = 4;
 	pixel_x = -16
 	},
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/engineering)
 "ZD" = (
 /obj/structure/machinery/door/airlock/almayer/security/reinforced/colony{

@@ -61,13 +61,13 @@
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "kX" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigred/ground/security)
 "nY" = (
 /turf/open/asphalt/cement/cement3,
 /area/bigredv2/outside/filtration_cave_cas)
 "oT" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/filtration_cave_cas)
 "pI" = (
 /obj/structure/machinery/light{
@@ -260,7 +260,7 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "Qo" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigred/ground/security)
 "Rv" = (
 /obj/item/tool/warning_cone,

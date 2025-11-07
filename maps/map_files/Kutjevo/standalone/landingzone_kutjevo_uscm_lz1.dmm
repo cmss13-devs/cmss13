@@ -929,7 +929,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "CQ" = (
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/turf/closed/wall/kutjevo/colony/hull,
 /area/kutjevo/interior/oob)
 "CT" = (
 /obj/structure/barricade/deployable{
@@ -1442,7 +1442,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/Northwest_Security_Checkpoint)
 "QE" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
+/turf/closed/wall/r_wall/kutjevo/colony,
 /area/kutjevo/exterior/telecomm/lz2_south)
 "QF" = (
 /obj/structure/surface/table/almayer,
@@ -1493,7 +1493,7 @@
 /turf/open/desert/desert_shore/shore_edge1/east,
 /area/kutjevo/exterior/lz_pad)
 "So" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
+/turf/closed/wall/r_wall/kutjevo/colony,
 /area/kutjevo/interior/oob)
 "Sw" = (
 /obj/structure/barricade/metal/wired{

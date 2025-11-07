@@ -593,7 +593,7 @@
 /area/lv759/outdoors/landing_zone_2)
 "bH" = (
 /obj/structure/sign/safety/restrictedarea,
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
 "bI" = (
 /obj/effect/decal/hybrisa/road/lines2,
@@ -1058,7 +1058,7 @@
 	pixel_x = -13;
 	layer = 5
 	},
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
 "cT" = (
 /obj/effect/decal/hybrisa/bloodtrail,
@@ -1440,7 +1440,7 @@
 /obj/structure/sign/banners/colonial_marines_flag{
 	pixel_x = -15
 	},
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
 "dV" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -1768,7 +1768,7 @@
 	icon_state = "lattice4";
 	pixel_y = 16
 	},
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security)
 "hG" = (
 /obj/item/trash/cigbutt{
@@ -1955,7 +1955,7 @@
 	icon_state = "lattice8";
 	pixel_y = 16
 	},
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
 "kJ" = (
 /obj/structure/machinery/landinglight/ds1{
@@ -2333,7 +2333,7 @@
 	icon_state = "lattice2";
 	pixel_y = 19
 	},
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security)
 "pR" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -2567,10 +2567,10 @@
 	pixel_x = -14;
 	layer = 5
 	},
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
 "sW" = (
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_security)
 "tb" = (
 /obj/effect/sentry_landmark/lz_2/bottom_left,
@@ -2680,7 +2680,7 @@
 /turf/open/floor/hybrisa/tile/cementflat,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
 "ue" = (
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
 "ug" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -2702,7 +2702,7 @@
 /area/lv759/outdoors/mining_outpost/south_entrance)
 "un" = (
 /obj/structure/sign/safety/airtraffictower,
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
 "uK" = (
 /obj/item/tool/warning_cone{
@@ -2720,7 +2720,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/lv759/outdoors/landing_zone_2)
 "uL" = (
-/turf/closed/wall/hybrisa/colony/reinforced/hull,
+/turf/closed/wall/hybrisa/colony/hull,
 /area/lv759/oob)
 "uM" = (
 /obj/structure/machinery/door/airlock/hybrisa/personal/autoname,
@@ -3525,7 +3525,7 @@
 	pixel_y = -13;
 	layer = 4.1
 	},
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
 "EN" = (
 /obj/structure/machinery/door/airlock/hybrisa/personal/autoname,
@@ -3698,7 +3698,7 @@
 	icon_state = "lattice4";
 	pixel_y = 16
 	},
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/outdoors/landing_zone_2)
 "Ho" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
@@ -3718,7 +3718,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/landing_zone_2)
 "Hz" = (
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/outdoors/landing_zone_2)
 "HC" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
@@ -4134,7 +4134,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
 "Oc" = (
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
 "Of" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
@@ -4318,7 +4318,7 @@
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "Rf" = (
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
 "Rj" = (
 /turf/open/floor/plating,
@@ -4352,7 +4352,7 @@
 	dir = 6;
 	layer = 5.12
 	},
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
 "RR" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
@@ -4574,7 +4574,7 @@
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "UU" = (
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/turf/closed/wall/kutjevo/colony/hull,
 /area/lv759/oob)
 "Vm" = (
 /obj/effect/decal/hybrisa/road/lines3,
@@ -4911,7 +4911,7 @@
 "Zc" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
-/turf/closed/wall/hybrisa/colony/reinforced,
+/turf/closed/wall/r_wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
 "Zq" = (
 /obj/effect/decal/cleanable/blood/oil/streak,

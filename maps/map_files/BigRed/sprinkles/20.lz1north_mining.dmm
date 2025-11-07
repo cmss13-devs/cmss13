@@ -68,7 +68,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)
 "n" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/space_port)
 "o" = (
 /obj/item/tool/pickaxe,
@@ -103,7 +103,7 @@
 /area/bigredv2/outside/lz1_north_cas)
 "u" = (
 /obj/structure/sign/safety/hazard,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/space_port)
 "v" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{

@@ -346,7 +346,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "lm" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
+/turf/closed/wall/r_wall/kutjevo/colony,
 /area/kutjevo/exterior/lz_dunes)
 "lt" = (
 /obj/item/ammo_casing/cartridge,
@@ -459,7 +459,7 @@
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/kutjevo/exterior/lz_dunes)
 "om" = (
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/turf/closed/wall/kutjevo/colony/hull,
 /area/kutjevo/interior/oob)
 "ov" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -889,7 +889,7 @@
 /area/kutjevo/exterior/lz_dunes)
 "Cg" = (
 /obj/structure/sign/safety/flightcontrol,
-/turf/closed/wall/kutjevo/colony/reinforced,
+/turf/closed/wall/r_wall/kutjevo/colony,
 /area/kutjevo/exterior/lz_dunes)
 "Ch" = (
 /obj/structure/largecrate/random/barrel/brown,
@@ -941,11 +941,11 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "DK" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
+/turf/closed/wall/r_wall/kutjevo/colony,
 /area/kutjevo/interior/power/comms)
 "Eb" = (
 /obj/structure/sign/safety/bathmens,
-/turf/closed/wall/kutjevo/colony/reinforced,
+/turf/closed/wall/r_wall/kutjevo/colony,
 /area/kutjevo/exterior/lz_dunes)
 "EO" = (
 /obj/structure/stairs/perspective/kutjevo{
@@ -1094,7 +1094,7 @@
 /turf/open/floor/kutjevo/colors/red/edge/north,
 /area/kutjevo/exterior/lz_dunes)
 "HL" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
+/turf/closed/wall/r_wall/kutjevo/colony,
 /area/kutjevo/exterior/lz_river)
 "HQ" = (
 /obj/structure/surface/rack,
@@ -1677,7 +1677,7 @@
 /area/kutjevo/exterior/lz_dunes)
 "YP" = (
 /obj/structure/sign/safety/bathwomens,
-/turf/closed/wall/kutjevo/colony/reinforced,
+/turf/closed/wall/r_wall/kutjevo/colony,
 /area/kutjevo/exterior/lz_dunes)
 "YV" = (
 /obj/structure/platform/stone/kutjevo/north,

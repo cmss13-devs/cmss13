@@ -32,7 +32,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "l" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/lz2_fortress)
 "o" = (
 /obj/structure/machinery/door_control{
@@ -87,7 +87,7 @@
 	id = "slz_shutters";
 	pixel_x = -7
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/lz2_fortress)
 "S" = (
 /obj/item/lightstick/red/spoke/planted{

@@ -889,7 +889,7 @@
 /area/bigredv2/caves/mining)
 "nd" = (
 /obj/structure/sign/poster/ad,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/mining)
 "nh" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -1272,7 +1272,7 @@
 /area/bigredv2/caves/mining)
 "tO" = (
 /obj/structure/closet/medical_wall,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/mining)
 "tU" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1315,7 +1315,7 @@
 	name = "Access console";
 	pixel_y = -2
 	},
-/turf/closed/wall/solaris/reinforced/hull,
+/turf/closed/wall/solaris/hull,
 /area/bigredv2/caves/mining)
 "vp" = (
 /obj/structure/prop/almayer/missile_tube{
@@ -1372,7 +1372,7 @@
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 19
 	},
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/mining)
 "wj" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -1383,7 +1383,7 @@
 /area/bigredv2/caves/mining)
 "wk" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/mining)
 "wu" = (
 /obj/effect/decal/warning_stripes{
@@ -1644,7 +1644,7 @@
 /area/bigredv2/caves/mining)
 "AH" = (
 /obj/structure/sign/safety/high_voltage,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/mining)
 "AR" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -1971,7 +1971,7 @@
 /area/bigredv2/caves/mining)
 "Fe" = (
 /obj/structure/sign/poster/safety,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/mining)
 "Fg" = (
 /obj/vehicle/train/cargo/trolley,
@@ -2241,7 +2241,7 @@
 /area/bigredv2/caves/mining)
 "Jb" = (
 /obj/structure/sign/nosmoking_1,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/mining)
 "Jl" = (
 /obj/structure/cargo_container/hd/mid/alt,
@@ -2314,7 +2314,7 @@
 /obj/structure/sign/safety/one{
 	pixel_x = 16
 	},
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/mining)
 "KB" = (
 /obj/item/ore{
@@ -2412,7 +2412,7 @@
 /obj/structure/sign/safety/airlock{
 	pixel_x = 11
 	},
-/turf/closed/wall/solaris/reinforced/hull,
+/turf/closed/wall/solaris/hull,
 /area/bigredv2/caves/mining)
 "LY" = (
 /obj/structure/prop/invuln/minecart_tracks,
@@ -2547,7 +2547,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "NT" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/mining)
 "NU" = (
 /obj/structure/cable{
@@ -2664,7 +2664,7 @@
 /obj/structure/closet/secure_closet/medical_wall{
 	pixel_y = -5
 	},
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/mining)
 "Ps" = (
 /obj/structure/window_frame/solaris/reinforced,
@@ -2889,7 +2889,7 @@
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 8
 	},
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/mining)
 "Sw" = (
 /obj/structure/prop/almayer/computers/sensor_computer1{

@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ac" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/space_port)
 "ad" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -27,7 +27,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/space_port)
 "aP" = (
 /obj/structure/window/framed/solaris/reinforced,

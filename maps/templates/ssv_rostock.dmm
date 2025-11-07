@@ -227,7 +227,7 @@
 /turf/open/floor/strata/orange_edge/east,
 /area/rostock/lower_deck/prep)
 "aaL" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/medical/lobby)
 "aaM" = (
 /obj/effect/decal/warning_stripes{
@@ -700,7 +700,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/s_f)
 "acl" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/security/execution_room)
 "acm" = (
 /obj/structure/window/framed/upp_ship/reinforced,
@@ -750,7 +750,7 @@
 /turf/open/floor/strata,
 /area/rostock/security/execution_room)
 "acs" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/security/execution_storage)
 "act" = (
 /obj/effect/decal/cleanable/dirt,
@@ -931,10 +931,10 @@
 /turf/open/floor/plating,
 /area/rostock/upperdeck_maint/s_a)
 "acV" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/upperdeck_maint/s_a)
 "acW" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/upperdeck_maint/s_f)
 "acX" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -944,7 +944,7 @@
 /turf/open/floor/plating,
 /area/rostock/upperdeck_maint/s_f)
 "acZ" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/upperdeck_maint/s_m)
 "ada" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
@@ -1886,7 +1886,7 @@
 /turf/open/floor/corsat/arrow_west,
 /area/rostock/lower_deck/p_hallway)
 "aDN" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/security/headquarters_lobby)
 "aEM" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -1958,7 +1958,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/s_a_hallway)
 "aHY" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/engineering/starboard_aft_accessway)
 "aId" = (
 /obj/effect/spawner/random/toolbox{
@@ -2209,7 +2209,7 @@
 /area/rostock/upperdeck_maint/s_f)
 "aPH" = (
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/engineering/reactor)
 "aQo" = (
 /obj/effect/decal/heavy_cable/node_s_e,
@@ -2272,7 +2272,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/railgun/starboard)
 "aTk" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/railgun)
 "aTu" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -4180,7 +4180,7 @@
 /area/rostock/lower_deck/m_hallway)
 "cwJ" = (
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/lower_deck/engineering_lower_access)
 "cwM" = (
 /obj/effect/decal/warning_stripes{
@@ -4658,7 +4658,7 @@
 	icon_state = "pottedplant_29";
 	pixel_y = 7
 	},
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/command/cic)
 "cSU" = (
 /obj/effect/decal/warning_stripes{
@@ -5784,7 +5784,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/command/cic)
 "dOc" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/lowerdeck_maint/p_f)
 "dOy" = (
 /obj/structure/machinery/vending/snack,
@@ -5877,7 +5877,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "dRD" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/railgun/starboard)
 "dSo" = (
 /obj/structure/surface/table/reinforced/rostock_table,
@@ -6050,7 +6050,7 @@
 /area/rostock/lower_deck/s_a_hallway)
 "dWO" = (
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/upperdeck_maint/p_a)
 "dWR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6119,7 +6119,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/engineering/port_aft_accessway)
 "dYY" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/command/hallway)
 "dZs" = (
 /obj/structure/largecrate/random/barrel/yellow,
@@ -6713,7 +6713,7 @@
 /turf/closed/wall/upp_ship,
 /area/rostock/lower_deck/prep)
 "eyL" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/vehiclehangar)
 "eyN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6816,7 +6816,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/rostock/lower_deck/s_a_hallway)
 "eEu" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/ert_dock/starboard)
 "eEN" = (
 /obj/structure/pipes/vents/scrubber{
@@ -7702,7 +7702,7 @@
 /turf/open/floor/upp_hull_rostock/outerhull_dir/east,
 /area/rostock/lifeboat)
 "fje" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/security/brig_office)
 "fjh" = (
 /obj/effect/decal/warning_stripes{
@@ -7772,7 +7772,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/security/brig_office)
 "flA" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/engineering/main_area)
 "flF" = (
 /obj/structure/sign/flag/upp{
@@ -8029,7 +8029,7 @@
 /turf/open/floor/strata,
 /area/rostock/lower_deck/s_a_hallway)
 "fum" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/airoom)
 "fvD" = (
 /obj/effect/decal/warning_stripes{
@@ -8635,7 +8635,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/hangar/hangarbay)
 "gcb" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/lower_deck/starboard_umbilical)
 "gcm" = (
 /obj/structure/machinery/light{
@@ -9075,7 +9075,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/engineering/main_area)
 "guf" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/security/brig_holding_area)
 "gul" = (
 /obj/structure/bed/chair/comfy{
@@ -9138,7 +9138,7 @@
 /turf/open/floor/corsat/lightplate,
 /area/rostock/lower_deck/bathroom)
 "gwb" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/security/brig_accessway)
 "gxo" = (
 /obj/structure/machinery/light/small{
@@ -9493,7 +9493,7 @@
 /obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/stack/sheet/plasteel/large_stack,
 /obj/item/stack/sheet/plasteel/large_stack,
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/command/armory)
 "gOx" = (
 /obj/structure/disposalpipe/segment,
@@ -10048,7 +10048,7 @@
 /turf/closed/wall/upp_ship,
 /area/rostock/req)
 "hgp" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/lowerdeck_maint/p_a)
 "hgS" = (
 /obj/structure/barricade/handrail/medical,
@@ -10130,7 +10130,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/command/cic)
 "hke" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/hangar/repairbay)
 "hkf" = (
 /obj/structure/machinery/light{
@@ -11095,7 +11095,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_m)
 "hTD" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/command/polcom)
 "hTG" = (
 /obj/structure/machinery/power/apc/upp/north,
@@ -11242,7 +11242,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/rostock/hangar/hangarbay)
 "hZn" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/command/cic)
 "hZS" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -11680,7 +11680,7 @@
 /turf/open/gm/river/desert/deep/toxic,
 /area/space)
 "ion" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/lower_deck/ammunition_storage)
 "ioU" = (
 /obj/structure/disposalpipe/down/almayer{
@@ -11872,7 +11872,7 @@
 /turf/open/floor/strata,
 /area/rostock/command/astronavigation)
 "iwV" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/ert_dock/port)
 "iwZ" = (
 /obj/structure/machinery/cryopod{
@@ -12308,7 +12308,7 @@
 /turf/open/floor/strata/floor3,
 /area/rostock/hangar/hangarbay)
 "iOi" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/medical/storage)
 "iOl" = (
 /obj/structure/machinery/light,
@@ -12613,7 +12613,7 @@
 /turf/open/floor/wood/ship,
 /area/rostock/command/co)
 "jaP" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/engineering/lower_aft_corridor)
 "jaR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -13705,7 +13705,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "jPY" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/security/headquarters_bunk)
 "jQr" = (
 /obj/structure/closet,
@@ -13923,7 +13923,7 @@
 /turf/open/floor/corsat/purple/northwest,
 /area/rostock/command/cic)
 "jXB" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/upperdeck_maint/p_m)
 "jYv" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -14006,7 +14006,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lower_deck/kitchen)
 "kaF" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/stair_clone)
 "kaN" = (
 /obj/structure/machinery/camera/autoname/almayer{
@@ -14396,7 +14396,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/prep)
 "kqL" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/hangar/hangarbay)
 "krk" = (
 /obj/structure/machinery/prop/almayer/computer{
@@ -15331,7 +15331,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
 "kYI" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/command/astronavigation)
 "kZL" = (
 /turf/open/floor/plating/plating_catwalk/strata,
@@ -15586,7 +15586,7 @@
 /turf/closed/wall/upp_ship,
 /area/rostock/medical/accessway)
 "lmA" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/hangar/pilotbunk)
 "lnd" = (
 /obj/structure/machinery/pipedispenser,
@@ -15634,7 +15634,7 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/rostock/airoom)
 "lpK" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/railgun/starboard)
 "lqx" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -15722,7 +15722,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "ltN" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/command/cic)
 "ltW" = (
 /obj/structure/surface/table/almayer,
@@ -15766,7 +15766,7 @@
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/lobby)
 "lwL" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/upperdeck_maint/p_a)
 "lxh" = (
 /obj/structure/machinery/light{
@@ -15803,7 +15803,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "lyz" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/command/co)
 "lzs" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -16150,7 +16150,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_m)
 "lPy" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/security/brig_entryway)
 "lPO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -16201,7 +16201,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/command/astronavigation)
 "lRB" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/lowerdeck_maint/s_m)
 "lRG" = (
 /obj/structure/closet/toolcloset,
@@ -17231,7 +17231,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/lower_deck/prep)
 "mNT" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/engineering/port_aft_accessway)
 "mOy" = (
 /obj/effect/decal/warning_stripes{
@@ -17542,7 +17542,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
 "nbf" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/airoom)
 "nbN" = (
 /obj/structure/pipes/vents/scrubber{
@@ -17856,7 +17856,7 @@
 /turf/open/floor/plating/prison,
 /area/rostock/upperdeck_maint/p_m)
 "nsr" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/lower_deck/p_a_hallway)
 "nsI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18547,7 +18547,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/engineering_lower_access)
 "nYE" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/lower_deck/engineering_lower_access)
 "nYH" = (
 /obj/effect/decal/warning_stripes{
@@ -19277,7 +19277,7 @@
 	name = "Storage";
 	unacidable = 1
 	},
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/lower_deck/engineering_lower_access)
 "oFO" = (
 /obj/structure/sign/flag/upp{
@@ -19405,7 +19405,7 @@
 /area/rostock/command/cic)
 "oJJ" = (
 /obj/structure/machinery/cm_vending/sorted/attachments/upp_attachments/blend,
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/req)
 "oJT" = (
 /obj/structure/flora/pottedplant{
@@ -19425,7 +19425,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/turf/closed/wall/almayer/aicore/reinforced,
+/turf/closed/wall/r_wall/almayer/aicore,
 /area/rostock/airoom)
 "oKt" = (
 /obj/structure/machinery/door/airlock/upp/engi/autoname{
@@ -20419,7 +20419,7 @@
 /turf/open/floor/strata/red3/north,
 /area/rostock/security/brig_entryway)
 "pvT" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/security/headquarters_armory)
 "pvX" = (
 /obj/structure/machinery/light/small{
@@ -20851,7 +20851,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/command/cic)
 "pNi" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/command/armory)
 "pNp" = (
 /obj/structure/machinery/vending/cola,
@@ -21705,7 +21705,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/command/astronavigation)
 "qvE" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/security/headquarters_interrogation)
 "qwB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -21986,7 +21986,7 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/rostock/lifeboat)
 "qHf" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/medical/chemistry)
 "qHv" = (
 /obj/item/prop/colony/usedbandage{
@@ -22539,7 +22539,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/hangar/hangarbay)
 "rcY" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/lower_deck/s_a_hallway)
 "rda" = (
 /obj/effect/step_trigger/clone_cleaner,
@@ -22730,7 +22730,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/hangar/hangarbay)
 "rkL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -22738,7 +22738,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/s_m)
 "rkR" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/stair_clone)
 "rkU" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -24280,7 +24280,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/hangar/hangarbay)
 "sCS" = (
 /turf/closed/wall/upp_ship,
@@ -24496,7 +24496,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lower_deck/m_hallway)
 "sNZ" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/upperdeck_maint/p_f)
 "sOQ" = (
 /turf/open/floor/prison,
@@ -24977,7 +24977,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/s_f)
 "tlF" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/command/xo)
 "tlO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -25438,7 +25438,7 @@
 /turf/open/floor/corsat/squares,
 /area/rostock/lower_deck/p_hallway)
 "tEy" = (
-/turf/closed/wall/almayer/aicore/reinforced,
+/turf/closed/wall/r_wall/almayer/aicore,
 /area/rostock/airoom)
 "tFf" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -26753,7 +26753,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/turf/closed/wall/almayer/aicore/reinforced,
+/turf/closed/wall/r_wall/almayer/aicore,
 /area/rostock/airoom)
 "uKj" = (
 /obj/effect/decal/warning_stripes{
@@ -26981,7 +26981,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_m)
 "uRe" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/command/so)
 "uRW" = (
 /turf/open/floor/strata/orange_icorner,
@@ -27885,7 +27885,7 @@
 /turf/open/floor/strata/cyan3/northwest,
 /area/rostock/lower_deck/briefing)
 "vzz" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/command/dining)
 "vzK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -28350,7 +28350,7 @@
 /turf/open/floor/plating,
 /area/rostock/command/astronavigation)
 "vRQ" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/lifeboat)
 "vSh" = (
 /obj/structure/machinery/vending/coffee/simple,
@@ -29334,7 +29334,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "wAQ" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/upperdeck_maint/s_m)
 "wAT" = (
 /obj/structure/medical_supply_link,
@@ -29617,10 +29617,10 @@
 /turf/open/floor/strata/blue3,
 /area/rostock/upper_deck/hallway)
 "wNt" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/command/astronavigation)
 "wNx" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/security/headquarters_storage)
 "wNH" = (
 /obj/effect/decal/cleanable/dirt,
@@ -30048,7 +30048,7 @@
 /turf/open/floor/almayer/tcomms,
 /area/rostock/upperdeck_maint/p_a)
 "xfY" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/lowerdeck_maint/s_a)
 "xgw" = (
 /obj/structure/morgue{
@@ -30445,7 +30445,7 @@
 /turf/open/floor/strata/cyan4/east,
 /area/rostock/lower_deck/m_hallway)
 "xyz" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/engineering/main_area)
 "xyA" = (
 /obj/effect/decal/warning_stripes{
@@ -30617,7 +30617,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/rostock/lower_deck/engineering_lower_access)
 "xDI" = (
-/turf/closed/wall/upp_ship/reinforced,
+/turf/closed/wall/r_wall/upp_ship,
 /area/rostock/command/armory)
 "xEi" = (
 /obj/effect/decal/warning_stripes{
@@ -30952,7 +30952,7 @@
 /turf/open/floor/strata/cyan4,
 /area/rostock/lower_deck/prep)
 "xTh" = (
-/turf/closed/wall/upp_ship/reinforced/outer,
+/turf/closed/wall/upp_ship/outer,
 /area/rostock/lowerdeck_maint/s_f)
 "xUA" = (
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast{

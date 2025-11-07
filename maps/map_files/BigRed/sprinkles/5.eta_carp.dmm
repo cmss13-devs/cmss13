@@ -5,7 +5,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/xenobiology)
 "b" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/eta/xenobiology)
 "c" = (
 /turf/closed/wall/solaris,

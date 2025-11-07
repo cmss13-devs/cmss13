@@ -621,7 +621,7 @@
 	name = "Command Shutters Button";
 	id = "upp_command"
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/adminlevel/ert_station/upp_station)
 "lg" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
@@ -832,7 +832,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/upp_station)
 "po" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/adminlevel/ert_station/upp_station)
 "pu" = (
 /obj/effect/decal/cleanable/blood{
@@ -1521,7 +1521,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/adminlevel/ert_station/upp_station)
 "El" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost/hull,
 /area/adminlevel/ert_station/upp_station)
 "EA" = (
 /turf/open/floor/strata/green3/west,
@@ -2097,7 +2097,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/adminlevel/ert_station/upp_station)
 "Sa" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,

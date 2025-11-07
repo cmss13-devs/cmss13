@@ -329,7 +329,7 @@
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			var/turf/T = get_turf(src)
 			if(is_mainship_level(z))
-				T.PlaceOnTop(/turf/closed/wall/almayer/reinforced)
+				T.PlaceOnTop(/turf/closed/wall/r_wall/almayer)
 			else
 				T.PlaceOnTop(/turf/closed/wall/r_wall)
 			var/obj/effect/alien/weeds/weeds_in_tile = locate(/obj/effect/alien/weeds) in T

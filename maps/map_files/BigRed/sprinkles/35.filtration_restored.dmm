@@ -28,7 +28,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "aY" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/filtration_plant)
 "bf" = (
 /obj/structure/machinery/light{
@@ -38,7 +38,7 @@
 /area/bigredv2/outside/filtration_plant)
 "bt" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/solaris/reinforced/hull,
+/turf/closed/wall/solaris/hull,
 /area/bigredv2/outside/filtration_plant)
 "bv" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/chan,
@@ -46,7 +46,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "bw" = (
-/turf/closed/wall/solaris/reinforced/hull,
+/turf/closed/wall/solaris/hull,
 /area/bigredv2/outside/filtration_plant)
 "bA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -71,7 +71,7 @@
 /obj/structure/sign/safety/distribution_pipes{
 	pixel_x = 32
 	},
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/filtration_plant)
 "cd" = (
 /obj/structure/dispenser/oxygen,

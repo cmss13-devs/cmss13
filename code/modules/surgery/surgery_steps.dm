@@ -148,24 +148,24 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 		switch(tool_modifier) //Implicitly means tool exists as accept_any_item item or accept_hand would = 1x. No message for 1x - that's the default.
 			if(SURGERY_TOOL_MULT_SUBOPTIMAL)
-				message += "this tool is [pick("suitable, but there are better tools", "leaves something to be desired", "a bit unorthodox for this step")]"
+				message += "this tool [pick("is suitable, but there are better tools for this step", "leaves something to be desired", "is a bit unorthodox for this purpose")]"
 			if(SURGERY_TOOL_MULT_SUBSTITUTE)
-				message += "this tool [pick("has a better use for something else", "is not very practical for surgery ", "feels difficult to use")]"
+				message += "this tool [pick("has a better uses elsewhere", "is not very practical for surgery ", "feels difficult to use")]"
 			if(SURGERY_TOOL_MULT_BAD_SUBSTITUTE)
 				message += "this tool [pick("feels terrible to use in your hands", "makes you feel bad for using it", "unsuitable for surgery")]"
 				failure_penalties += 1
 			if(SURGERY_TOOL_MULT_AWFUL)
-				message += "this tool [pick("is the worst thing you could use for this step", "comes with a pink slip", "makes you wish you were using anything else")]"
+				message += "this tool [pick("is the worst thing you could use for this step", "may as well be a piece of garbage in your hands", "makes you wish you were using anything else")]"
 				failure_penalties += 2
 
 		switch(surface_modifier)
 			if(SURGERY_SURFACE_MULT_ADEQUATE)
 				message += "[pick("it isn't easy, working", "it's tricky to perform complex surgeries", "this would be quicker if you weren't working")] [pick("in the field", "under these conditions", "without a proper surgical theatre")]"
 			if(SURGERY_SURFACE_MULT_UNSUITED)
-				message += "[pick("it's difficult to work", "it's slow going, working", "you need to take your time")] in these [pick("primitive", "rough", "crude")] conditions"
+				message += "[pick("it's difficult to work", "it's slow going, working", "you need to take your time")] in these [pick("primitive", "unsafe", "unsavory")] conditions"
 				failure_penalties += 1
 			if(SURGERY_SURFACE_MULT_AWFUL)
-				message += "[pick("you need to work slowly and carefully", "you need to be very careful", "this is delicate work, especially")] [pick("in these", "under such")] [pick("terrible", "awful", "utterly unsuitable")] conditions"
+				message += "[pick("you need to work slowly and carefully", "you need to be very careful", "you need an unbreakable focus", "this is delicate work, especially")] [pick("in these", "under such")] [pick("terrible", "horrifying", "unsanitary", "abhorrent")] conditions"
 				failure_penalties += 2
 
 		if(length(message))

@@ -44,7 +44,7 @@
 
 	user.affected_message(target,
 		SPAN_NOTICE("You finish repairing [target]'s damaged vein."),
-		SPAN_NOTICE("[user] finishes repairing your damaged vein. The discomfort in your limb fades."),
+		SPAN_NOTICE("[user] finishes repairing your damaged vein. The discomfort in your [surgery.affected_limb.display_name] fades."),
 		SPAN_NOTICE("[user] finishes repairing [target]'s damaged vein."))
 
 	for(var/datum/wound/W as anything in surgery.affected_limb.wounds)

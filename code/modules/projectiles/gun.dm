@@ -931,7 +931,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 					QDEL_NULL(bullet)
 				playsound(src, 'sound/weapons/handling/gun_boltaction_close.ogg', 15)
 		else
-			to_chat(user, SPAN_WARNING("The [bullet] doesn't match [src]'s caliber!"))
+			to_chat(user, SPAN_WARNING("\The [bullet] doesn't match [src]'s caliber!"))
 
 /obj/item/weapon/gun/proc/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	user.drop_inv_item_to_loc(magazine, src) //Click!
@@ -1008,8 +1008,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	cock_cooldown = world.time + cock_delay
 	cock_gun(user)
 	if(in_chamber)
-		if(user.client?.prefs?.toggle_prefs & TOGGLE_COCKING_TO_HAND)
-			user.visible_message(SPAN_NOTICE("[user] cocks [src], catching the [in_chamber.name] after leaving its chamber!"),
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_COCKING_TO_HAND && !user.get_inactive_hand())
+			user.visible_message(SPAN_NOTICE("[user] cocks [src], catching the [in_chamber.name] after it leaves its chamber!"),
 			SPAN_NOTICE("You cock [src], catching the [in_chamber.name] after leaving its chamber!"), null, 4, CHAT_TYPE_COMBAT_ACTION)
 		else
 			user.visible_message(SPAN_NOTICE("[user] cocks [src], clearing a [in_chamber.name] from its chamber."),

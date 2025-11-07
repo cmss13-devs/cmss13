@@ -223,8 +223,10 @@
 /obj/item/weapon/gun/revolver/unique_action(mob/user)
 	if(current_mag && !current_mag.chamber_closed)
 		close_chamber(user)
+		return
 	if(trickster_gun && user.a_intent == INTENT_DISARM)
 		perform_tricks(user)
+		return
 	else
 		spin_cylinder(user)
 

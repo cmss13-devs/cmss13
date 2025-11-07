@@ -56,14 +56,15 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_CMO "Chief Medical Officer"
 #define JOB_DOCTOR "Doctor"
 #define JOB_SURGEON "Surgeon"
+#define JOB_PHARMACIST "Pharmaceutical Physician"
 #define JOB_FIELD_DOCTOR "Field Doctor"
 
 #define JOB_NURSE "Nurse"
 #define JOB_RESEARCHER "Researcher"
 #define JOB_MEDIC_ROLES /datum/timelock/medic
-#define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_NURSE, JOB_RESEARCHER, JOB_SURGEON)
+#define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_NURSE, JOB_RESEARCHER, JOB_SURGEON, JOB_PHARMACIST)
 #define JOB_DOCTOR_ROLES /datum/timelock/doctor
-#define JOB_DOCTOR_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_SURGEON, JOB_FIELD_DOCTOR)
+#define JOB_DOCTOR_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_SURGEON, JOB_PHARMACIST, JOB_FIELD_DOCTOR)
 #define JOB_RESEARCH_ROLES /datum/timelock/research
 #define JOB_RESEARCH_ROLES_LIST list(JOB_RESEARCHER)
 
@@ -79,6 +80,14 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_SYNTH "Synthetic"
 #define JOB_SYNTH_K9 "Synthetic K9"
 #define JOB_WORKING_JOE "Working Joe"
+
+// Synthetic Specialisations
+
+#define JOB_SYNTH_ENG "Engineering Synthetic"
+#define JOB_SYNTH_MED "Medical Synthetic"
+#define JOB_SYNTH_INTEL "Intelligence Synthetic"
+#define JOB_SYNTH_MP "Military Police Synthetic"
+#define JOB_SYNTH_CMD "Command Support Synthetic"
 
 #define JOB_CO "Commanding Officer"
 #define JOB_XO "Executive Officer"
@@ -159,7 +168,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 }
 
 /// Role lists for Marine roles
-#define CHAIN_OF_COMMAND_ROLES list(JOB_CO, JOB_XO, JOB_AUXILIARY_OFFICER, JOB_CHIEF_POLICE, JOB_CMO, JOB_SO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL)
+#define CHAIN_OF_COMMAND_ROLES list(JOB_CO, JOB_XO, JOB_AUXILIARY_OFFICER, JOB_CHIEF_POLICE, JOB_CMO, JOB_SO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL, JOB_FIELD_DOCTOR, JOB_SURGEON, JOB_DOCTOR, JOB_CHIEF_REQUISITION)
 
 //-------------WO roles---------------
 

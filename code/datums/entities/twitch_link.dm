@@ -27,7 +27,7 @@
 		"ckey",
 		"access_code",
 		"twitch_id",
-		"id"
+		"id",
 	)
 
 /datum/config_entry/string/twitch_link_url

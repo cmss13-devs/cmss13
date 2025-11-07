@@ -3,6 +3,14 @@
 /obj/item/flag/plantable/clf,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/clf_lz)
+"ab" = (
+/obj/effect/landmark/survivor_spawner/clf_synth/kutjevo,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/clf_lz)
+"ac" = (
+/obj/effect/landmark/survivor_spawner/clf_coordinator/kutjevo,
+/turf/open/floor/almayer,
+/area/kutjevo/interior/colony/clf_shuttle)
 "am" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname,
 /turf/open/floor/almayer,
@@ -732,10 +740,6 @@
 "Kn" = (
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/stonyfields)
-"Kp" = (
-/obj/effect/landmark/survivor_spawner/clf_synth/kutjevo,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/clf_lz)
 "KC" = (
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_south)
@@ -771,10 +775,6 @@
 /obj/item/stack/sheet/metal/med_large_stack,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/clf_lz)
-"Mz" = (
-/obj/effect/landmark/survivor_spawner/clf_coordinator/kutjevo,
-/turf/open/floor/almayer,
-/area/kutjevo/interior/colony/clf_shuttle)
 "MK" = (
 /obj/structure/machinery/light,
 /turf/open/floor/kutjevo/colors/orange/edge,
@@ -2359,7 +2359,7 @@ qP
 cf
 cf
 cf
-Kp
+ab
 cf
 zp
 Ok
@@ -2791,7 +2791,7 @@ SV
 QI
 YQ
 Nk
-Mz
+ac
 Qy
 Ni
 YQ

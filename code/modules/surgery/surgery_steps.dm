@@ -150,7 +150,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			if(SURGERY_TOOL_MULT_SUBOPTIMAL)
 				message += "this tool [pick("is suitable, but there are better tools for this purpose", "is a bit different than what you're accustomed to using", "is a bit unorthodox for this purpose", "deviates your movements a little bit")]"
 			if(SURGERY_TOOL_MULT_SUBSTITUTE)
-				message += "this tool [pick("will do in a pinch, but you really should find something else", "is better off used elsewhere", "is not very practical for executing this step,", "feels difficult to operate with")]"
+				message += "this tool [pick("will do in a pinch, but you really should find something else", "is better off used elsewhere", "is not very practical for executing this step", "feels difficult to operate with")]"
 			if(SURGERY_TOOL_MULT_BAD_SUBSTITUTE)
 				message += "this tool [pick("is an unacceptable substitute", "is unsuitable for this method", "feels terrible to use in your hands", "makes you feel bad for using it")]"
 				failure_penalties += 1

@@ -19,6 +19,7 @@
 	var/drying_time = 30 SECONDS
 	var/dry_start_time // If this dries, track the dry start time for footstep drying
 	var/randomized = TRUE
+	allow_this_to_overlap = TRUE
 	garbage = FALSE // Keep for atmosphere
 
 /obj/effect/decal/cleanable/blood/Destroy()
@@ -43,6 +44,7 @@
 			return
 		dry_start_time = world.time
 		addtimer(CALLBACK(src, PROC_REF(dry)), drying_time * (amount+1))
+
 	if(randomized)
 		pixel_x = rand(-16, 16)
 		pixel_y = rand(-16, 16)
@@ -108,7 +110,6 @@
 	random_icon_states = list("1","2","3","4","5")
 	amount = 0
 	cleanable_type = CLEANABLE_BLOOD_DRIP
-	allow_this_to_overlap = TRUE
 	var/drips
 
 /obj/effect/decal/cleanable/blood/writing

@@ -162,7 +162,7 @@
 
 	target.custom_pain("Your [surgery.affected_limb.display_name] is being hacked away! ", 1)
 	if(target.stat == CONSCIOUS)
-		target.emote("scream") //MY! ARRRRRRMMMM! -Scout from Team Fortress 2
+		target.emote("scream") //MY! ARRRRRRMMMM! - Scout from Team Fortress 2
 	if(tool.hitsound)
 		playsound(target.loc, tool.hitsound, 25, TRUE)
 
@@ -171,7 +171,7 @@
 /datum/surgery_step/saw_off_limb/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You cut [target]'s [surgery.affected_limb.display_name] off."),
-		SPAN_WARNING("[user] cuts your [surgery.affected_limb.display_name] off!"),
+		SPAN_WARNING("[user] cuts your [surgery.affected_limb.display_name] off! Your [surgery.affected_limb.display_name], noooo! Now you need a robotic one."),
 		SPAN_NOTICE("[user] cuts [target]'s [surgery.affected_limb.display_name] off."))
 
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)
@@ -188,6 +188,8 @@
 			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], breaking it!"))
 
 		surgery.affected_limb.fracture()
+		if(target.stat == CONSCIOUS)
+			target.emote("pain")
 		target.apply_damage(20, BRUTE, surgery.affected_limb)
 		log_interact(user, target, "[key_name(user)] failed to cut [key_name(target)]'s [surgery.affected_limb.display_name] off with \the [tool].")
 		return FALSE
@@ -195,7 +197,7 @@
 	else
 		user.affected_message(target,
 			SPAN_WARNING("You hack [target]'s [surgery.affected_limb.display_name] off!"),
-			SPAN_WARNING("[user] hacks your [surgery.affected_limb.display_name] off!"),
+			SPAN_WARNING("[user] hacks your [surgery.affected_limb.display_name] off! Your [surgery.affected_limb.display_name], noooo! Now you need a robotic one."),
 			SPAN_WARNING("[user] hacks [target]'s [surgery.affected_limb.display_name] off!"))
 
 		user.animation_attack_on(target)
@@ -343,7 +345,7 @@
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/saw.ogg'
-	success_sound = 'sound/items/Wirecutter.ogg'
+	success_sound = 'sound/effects/buckle.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/sever_prosthetic_clamps/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -380,9 +382,9 @@
 	desc = "remove the damaged prosthesis"
 	accept_hand = TRUE
 	time = 3 SECONDS
-	preop_sound = 'sound/surgery/saw.ogg'
-	success_sound = 'sound/effects/buckle.ogg'
-	failure_sound = 'sound/items/parry.ogg'
+	preop_sound = 'sound/handling/armorequip_2'
+	success_sound = 'sound/handling/attachment_remove.ogg'
+	failure_sound = 'sound/effects/metal_close.ogg' //oop your hand slipped
 
 /datum/surgery_step/remove_old_prosthetic/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

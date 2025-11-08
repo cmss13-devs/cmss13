@@ -24,7 +24,7 @@
 	desc = "mend the damaged blood vessel"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
-	preop_sound = 'sound/surgery/hemostat1.ogg'
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
 	success_sound = 'sound/surgery/organ1.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 

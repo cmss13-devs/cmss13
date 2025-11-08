@@ -152,7 +152,7 @@
 		else
 			user.affected_message(target,
 				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage! It's a girl!"),
-				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage! It's a girl! The heaviness in your chest is gone. You feel monumentally better."),
+				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage! It's a girl! The heaviness in your chest is gone, but your organs burn like hell!"),
 				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage! It's a girl!"))
 			var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
 			impacted_organ.take_damage(5, FALSE)

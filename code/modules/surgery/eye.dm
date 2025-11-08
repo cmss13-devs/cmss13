@@ -36,6 +36,10 @@
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 
+	preop_sound = 'sound/surgery/scalpel1.ogg'
+	success_sound = 'sound/surgery/scalpel2.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
+
 /datum/surgery_step/separate_cornea/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You start to separate the corneas of [target]'s eyes with \the [tool]."),
@@ -76,6 +80,10 @@
 	tools = SURGERY_TOOLS_PRY_DELICATE
 	time = 2 SECONDS
 
+	preop_sound = 'sound/surgery/retractor1.ogg'
+	success_sound = 'sound/surgery/retractor2.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
+
 /datum/surgery_step/lift_eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin lifting the corneas from [target]'s eyes with \the [tool]."),
@@ -112,6 +120,11 @@
 	desc = "mend the eyes"
 	tools = SURGERY_TOOLS_PINCH
 	time = 4 SECONDS
+
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
+
 
 /datum/surgery_step/mend_eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

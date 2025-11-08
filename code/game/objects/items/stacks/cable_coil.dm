@@ -80,7 +80,7 @@
 		to_chat(usr, SPAN_NOTICE("You wind some cable together to make some restraints."))
 		src.use(15)
 	else
-		to_chat(usr, SPAN_NOTICE("You cannot do that."))
+		to_chat(usr, SPAN_NOTICE("\blue You cannot do that."))
 
 /obj/item/stack/cable_coil/attackby(obj/item/W, mob/user)
 	if( HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && src.amount > 1)

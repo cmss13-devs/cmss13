@@ -71,7 +71,7 @@
 	smokeFlow(location, targetTurfs, wallList)
 
 	//set the density of the cloud - for diluting reagents
-	density = max(1, length(targetTurfs) / 4) //clamp the cloud density minimum to 1 so it cant multiply the reagents
+	density = max(1, length(targetTurfs) / 4) //clamp the cloud density minimum to 1 so it can't multiply the reagents
 
 	//Admin messaging
 	var/contained = ""

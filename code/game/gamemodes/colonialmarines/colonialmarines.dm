@@ -401,7 +401,7 @@
 
 	if(LAZYFIND(role_needs_comms, role_in_charge))
 		//If the role needs comms we let them know about the headset.
-		announce_addendum += "\nA Command headset is availible in the CIC Command Tablet cabinet."
+		announce_addendum += "\nA Command headset is available in the CIC Command Tablet cabinet."
 
 	if(LAZYFIND(role_needs_id, role_in_charge))
 		//If the role needs senior command access, we need to add it to the ID card.

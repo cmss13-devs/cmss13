@@ -281,7 +281,6 @@
 	var/list/datum/static_lighting_corner/gone_corners
 
 	if (needs_update == LIGHTING_CHECK_UPDATE) //we dont need to find corners for color/power change only
-		to_world(SPAN_DEBUG("Running lightning fluff update."))
 		corners = effect_str
 		new_corners = list()
 		gone_corners = list()

@@ -120,7 +120,7 @@
 	var/muscle_type = target.get_muscle_type()
 	user.affected_message(target,
 		SPAN_NOTICE("You finish reconnecting the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] has reconnected the [muscle_type] in your [surgery.affected_limb.display_name]. You can move it your limb again. Whew."),
+		SPAN_NOTICE("[user] has reconnected the [muscle_type] in your [surgery.affected_limb.display_name]. You can move your [surgery.affected_limb.display_name] again. Whew."),
 		SPAN_NOTICE("[user] has reconnected the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
 
 	complete(target, surgery)

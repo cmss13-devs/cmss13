@@ -99,10 +99,13 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/ghost_vision_pref = GHOST_VISION_LEVEL_MID_NVG
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/dual_wield_pref = DUAL_WIELD_FIRE
+	var/playtime_perks = TRUE
+	var/skip_playtime_ranks = FALSE
 
 	//Synthetic specific preferences
 	var/synthetic_name = "Undefined"
 	var/synthetic_type = SYNTH_GEN_THREE
+	var/synth_specialisation = "Generalised"
 	//Predator specific preferences.
 	var/predator_name = "Undefined"
 	var/predator_gender = MALE
@@ -120,10 +123,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/predator_mask_material = "ebony"
 	var/predator_greave_material = "ebony"
 	var/predator_caster_material = "ebony"
+	var/predator_bracer_material = "ebony"
 	var/predator_cape_color = "#654321"
 	var/predator_flavor_text = ""
 	//CO-specific preferences
-	var/commander_sidearm = "Mateba"
+	var/commander_sidearm = "Unica (camo comforting)"
 	var/co_career_path = "Infantry"
 	var/affiliation = "Unaligned"
 	//SEA specific preferences
@@ -243,7 +247,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/xeno_postfix = ""
 	var/xeno_name_ban = FALSE
 	var/xeno_vision_level_pref = XENO_VISION_LEVEL_MID_NVG
-	var/playtime_perks = TRUE
 	var/show_queen_name = FALSE
 
 	var/stylesheet = "Modern"
@@ -524,7 +527,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Xeno prefix:</b> <a href='byond://?_src_=prefs;preference=xeno_prefix;task=input'><b>[display_prefix]</b></a><br>"
 			dat += "<b>Xeno postfix:</b> <a href='byond://?_src_=prefs;preference=xeno_postfix;task=input'><b>[display_postfix]</b></a><br>"
 
-			dat += "<b>Enable Playtime Perks:</b> <a href='byond://?_src_=prefs;preference=playtime_perks'><b>[playtime_perks? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Show Queen Name:</b> <a href='byond://?_src_=prefs;preference=show_queen_name'><b>[show_queen_name? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Xeno Night Vision Level:</b> <a href='byond://?_src_=prefs;preference=xeno_vision_level_pref;task=input'><b>[xeno_vision_level_pref]</b></a><br>"
 
@@ -555,6 +557,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				dat += "<b>Synthetic Name:</b> <a href='byond://?_src_=prefs;preference=synth_name;task=input'><b>[synthetic_name]</b></a><br>"
 				dat += "<b>Synthetic Type:</b> <a href='byond://?_src_=prefs;preference=synth_type;task=input'><b>[synthetic_type]</b></a><br>"
 				dat += "<b>Synthetic Whitelist Status:</b> <a href='byond://?_src_=prefs;preference=synth_status;task=input'><b>[synth_status]</b></a><br>"
+				dat += "<b>Synthetic Specialisation:</b> <a href='byond://?_src_=prefs;preference=synth_specialisation;task=input'><b>[synth_specialisation]</b></a><br>"
 				dat += "</div>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
@@ -629,6 +632,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 			dat += "<div id='column3'>"
 			dat += "<h2><b><u>Gameplay Toggles:</u></b></h2>"
+			dat += "<b>Enable Playtime Perks:</b> <a href='byond://?_src_=prefs;preference=playtime_perks'><b>[playtime_perks? "Yes" : "No"]</b></a><br>"
+			if(user.client.can_skip_role_lock())
+				dat += "<b>Skip Playtime Ranks:</b> <a href='byond://?_src_=prefs;preference=skip_playtime_ranks'><b>[skip_playtime_ranks? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Toggle Being Able to Hurt Yourself: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "Off" : "On"]</b></a><br>"
 			dat += "<b>Toggle Help Intent Safety: \
@@ -1262,6 +1268,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							var/datum/action/human_action/activable/ability = human.selected_ability
 							human.set_selected_ability(null)
 							human.set_selected_ability(ability)
+
 				if("synth_name")
 					var/raw_name = input(user, "Choose your Synthetic's name:", "Character Preference")  as text|null
 					if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
@@ -1274,6 +1281,16 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					var/new_synth_type = tgui_input_list(user, "Choose your model of synthetic:", "Make and Model", PLAYER_SYNTHS)
 					if(new_synth_type)
 						synthetic_type = new_synth_type
+				if("synth_specialisation")
+					var/list/options = list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command")
+
+					var/new_specialisation = tgui_input_list(user, "Choose your new Specialisation.", "Specialisation", options)
+
+					if(!new_specialisation)
+						return
+
+					synth_specialisation = new_specialisation
+
 				if("pred_name")
 					var/raw_name = input(user, "Choose your Predator's name:", "Character Preference")  as text|null
 					if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
@@ -1335,10 +1352,15 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						return
 					predator_greave_material = new_pred_greave_mat
 				if("pred_caster_mat")
-					var/new_pred_caster_mat = tgui_input_list(user, "Choose your caster material:", "Caster Material", PRED_MATERIALS + "retro")
+					var/new_pred_caster_mat = tgui_input_list(user, "Choose your caster material:", "Caster Material", PRED_RETRO_MATERIALS)
 					if(!new_pred_caster_mat)
 						return
 					predator_caster_material = new_pred_caster_mat
+				if("pred_bracer_mat")
+					var/new_pred_bracer_mat = tgui_input_list(user, "Choose your bracer material:", "Bracer Material", PRED_RETRO_MATERIALS)
+					if(!new_pred_bracer_mat)
+						return
+					predator_bracer_material = new_pred_bracer_mat
 				if("pred_cape_color")
 					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color", predator_cape_color) as color|null
 					if(!new_cape_color)
@@ -1825,6 +1847,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 				if("playtime_perks")
 					playtime_perks = !playtime_perks
+
+				if("skip_playtime_ranks")
+					skip_playtime_ranks = !skip_playtime_ranks
 
 				if("show_queen_name")
 					show_queen_name = !show_queen_name

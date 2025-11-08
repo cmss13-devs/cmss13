@@ -90,6 +90,11 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
+	/// In addition to the cooldown on building, you also get an increased cooldown after canceling that building.
+	var/xeno_cooldown_interrupt_modifier = 3
+	/// Something went wrong, for example, you can't build here
+	var/xeno_cooldown_fail = 1
+	/// Placement time increase modifier
 	var/build_speed_mod = 1
 
 	plasma_cost = 1
@@ -335,7 +340,7 @@
 	if(movement_slowdown)
 		xeno.speed_modifier -= movement_slowdown
 		xeno.recalculate_speed()
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_in()
 	return
@@ -411,7 +416,7 @@
 	UnregisterSignal(xeno, COMSIG_MOB_STATCHANGE)
 	if(xeno.layer == XENO_HIDING_LAYER)
 		xeno.layer = initial(xeno.layer)
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 		xeno.update_wounds()
 		xeno.update_layer()
 	apply_cooldown(4) //2 second cooldown after attacking

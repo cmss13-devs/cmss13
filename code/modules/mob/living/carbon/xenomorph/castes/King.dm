@@ -80,6 +80,10 @@
 	. = ..()
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(post_move))
+	hive = GLOB.hive_datum[hivenumber]
+	hive.banned_allies = list("All")
+	if(hive.break_all_alliances())
+		xeno_message(SPAN_XENOANNOUNCE("With the arrival of the King, all alliances have been broken."), 3, hivenumber)
 
 /mob/living/carbon/xenomorph/king/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	. = ..()
@@ -122,6 +126,11 @@
 /mob/living/carbon/xenomorph/king/rogue
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
 	icon = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
+
+/mob/living/carbon/xenomorph/king/death(cause, gibbed)
+	. = ..()
+	if(hive)
+		hive.setup_banned_allies()
 
 /*
 	REND ABILITY

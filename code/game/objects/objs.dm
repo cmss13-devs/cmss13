@@ -249,8 +249,16 @@
 	SEND_SIGNAL(src, COMSIG_OBJ_AFTER_BUCKLE, buckled_mob)
 	if(!buckled_mob)
 		UnregisterSignal(M, COMSIG_PARENT_QDELETING)
+		if(isliving(M))
+			var/mob/living/living_M
+			if(living_M.tank_on_top_of)
+				living_M.tank_on_top_of.clear_on_top(living_M)
 	else
 		RegisterSignal(buckled_mob, COMSIG_PARENT_QDELETING, PROC_REF(unbuckle))
+		if(isliving(M))
+			var/mob/living/living_M
+			if(src.is_atop_vehicle)
+				src.tank_on_top_of.mark_on_top(living_M)
 	return buckled_mob
 
 /obj/proc/unbuckle()

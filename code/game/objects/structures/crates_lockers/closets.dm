@@ -79,6 +79,11 @@
 
 	for(var/obj/I in src)
 		I.forceMove(loc)
+		// closets can't go atop vehicles, but this sets behavior for bodybags, which can.
+		if(is_atop_vehicle)
+			tank_on_top_of.obj_mark_on_top(I)
+		else if (I.tank_on_top_of)
+			tank_on_top_of.obj_clear_on_top(I)
 
 	for(var/mob/M in src)
 		M.forceMove(loc)
@@ -89,6 +94,11 @@
 			if(living_M.mobility_flags & MOBILITY_MOVE)
 				M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
 				SPAN_WARNING("You get out of [src] and get your bearings!"))
+			// closets can't go atop vehicles, but this sets behavior for bodybags, which can.
+			if(is_atop_vehicle)
+				tank_on_top_of.mark_on_top(living_M)
+			else if (living_M.tank_on_top_of)
+				living_M.tank_on_top_of.clear_on_top(living_M)
 
 /obj/structure/closet/proc/open()
 	if(opened)

@@ -60,14 +60,20 @@
 /obj/structure/bed/afterbuckle(mob/M)
 	. = ..()
 	if(. && buckled_mob == M)
-		M.pixel_y = buckling_y
+		if(is_atop_vehicle)
+			M.pixel_y = buckling_y + 12 // Magic number bad. TODO: Make tank pixel offset its own variable.
+		else
+			M.pixel_y = buckling_y
 		M.old_y = buckling_y
 		M.pixel_x = buckling_x
 		M.old_x = buckling_x
 		if(base_bed_icon)
 			density = TRUE
 	else
-		M.pixel_y = initial(buckled_mob.pixel_y)
+		if(is_atop_vehicle)
+			M.pixel_y = initial(buckled_mob.pixel_y) + 12 // Magic number bad. TODO: Make tank pixel offset its own variable.
+		else
+			M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
 		M.pixel_x = initial(buckled_mob.pixel_x)
 		M.old_x = initial(buckled_mob.pixel_x)
@@ -85,7 +91,10 @@
 	buckled_bodybag = B
 	density = TRUE
 	update_icon()
-	if(buckling_y)
+	if(is_atop_vehicle)
+		tank_on_top_of.obj_mark_on_top(buckled_bodybag)
+		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + 12 // Magic number bad. TODO: Make tank pixel offset its own variable.
+	else if(buckling_y)
 		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + buckling_y
 	add_fingerprint(user)
 	var/mob/living/carbon/human/contained_mob = locate() in B.contents
@@ -94,7 +103,10 @@
 
 /obj/structure/bed/unbuckle()
 	if(buckled_bodybag)
-		buckled_bodybag.pixel_y = initial(buckled_bodybag.pixel_y)
+		if(is_atop_vehicle)
+			buckled_bodybag.pixel_y = initial(buckled_bodybag.pixel_y) + 12 // Magic number bad. TODO: Make tank pixel offset its own variable.
+		else
+			buckled_bodybag.pixel_y = initial(buckled_bodybag.pixel_y)
 		buckled_bodybag.roller_buckled = null
 		buckled_bodybag = null
 		density = FALSE

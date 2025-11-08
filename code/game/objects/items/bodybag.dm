@@ -217,7 +217,8 @@
 
 /obj/structure/closet/bodybag/forceMove(atom/destination)
 	if(roller_buckled)
-		roller_buckled.unbuckle()
+		if(!is_atop_vehicle && !roller_buckled.is_atop_vehicle)
+			roller_buckled.unbuckle()
 	. = ..()
 
 
@@ -281,10 +282,16 @@
 	overlays.Cut()	// makes sure any previous triage cards are removed
 
 	if(!stasis_mob)
-		layer = initial(layer)
+		if(is_atop_vehicle)
+			layer = TANK_RIDER_OBJ_LAYER
+		else
+			layer = initial(layer)
 		return
 
-	layer = LYING_BETWEEN_MOB_LAYER
+	if(is_atop_vehicle)
+		layer = TANK_RIDER_OBJ_LAYER
+	else
+		layer = LYING_BETWEEN_MOB_LAYER
 
 	if(stasis_mob.holo_card_color && !opened)
 		var/image/holo_card_icon = image('icons/obj/bodybag.dmi', src, "cryocard_[stasis_mob.holo_card_color]")
@@ -299,6 +306,10 @@
 	if(stasis_mob)
 		stasis_mob.in_stasis = FALSE
 		UnregisterSignal(stasis_mob, COMSIG_HUMAN_TRIAGE_CARD_UPDATED)
+		if(src.is_atop_vehicle)
+			src.tank_on_top_of.mark_on_top(stasis_mob)
+		else if (stasis_mob.tank_on_top_of)
+			stasis_mob.tank_on_top_of.clear_on_top(stasis_mob)
 		stasis_mob = null
 	STOP_PROCESSING(SSobj, src)
 	if(used > max_uses)

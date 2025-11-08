@@ -419,11 +419,18 @@
 	if(O.tank_on_top_of == src)
 		O.layer = TANK_RIDER_OBJ_LAYER // prevents a visual bug with layering
 		return
-	on_top_obj |= O
-	O.tank_on_top_of = src
+	on_top_obj       |= O
+	O.tank_on_top_of  = src
 	O.is_atop_vehicle = TRUE
-	O.pixel_y = initial(O.pixel_y) + 12
-	O.layer = TANK_RIDER_OBJ_LAYER
+	O.layer           = TANK_RIDER_OBJ_LAYER
+	if(istype(O, /obj/structure/closet/bodybag))
+		var/obj/structure/closet/bodybag/BB = O
+		if(BB.roller_buckled)
+			BB.pixel_y = BB.buckle_offset + 12
+		else
+			BB.pixel_y = initial(O.pixel_y) + 12
+	else
+		O.pixel_y = initial(O.pixel_y) + 12
 
 /**
  * clear_on_top removes rider effects from a mob who was previously atop the tank.
@@ -438,11 +445,11 @@
 /obj/vehicle/multitile/tank/proc/clear_on_top(mob/living/M)
 	if(!istype(M))
 		return
-	on_top_mobs -= M
-	M.tank_on_top_of = null
-	M.layer   = initial(M.layer)
-	M.plane   = initial(M.plane)
-	M.pixel_y = initial(M.pixel_y)
+	on_top_mobs      -= M
+	M.tank_on_top_of  = null
+	M.layer           = initial(M.layer)
+	M.plane           = initial(M.plane)
+	M.pixel_y         = initial(M.pixel_y)
 
 /**
  * obj_clear_on_top removes rider effects from an obj atop the tank.
@@ -452,11 +459,18 @@
 /obj/vehicle/multitile/tank/proc/obj_clear_on_top(obj/O)
 	if(!istype(O))
 		return
-	on_top_obj -= O
-	O.tank_on_top_of = null
-	O.is_atop_vehicle = FALSE
-	O.pixel_y = initial(O.pixel_y)
-	O.layer   = initial(O.layer)
+	on_top_obj         -= O
+	O.tank_on_top_of    = null
+	O.is_atop_vehicle   = FALSE
+	O.layer             = initial(O.layer)
+	if(istype(O, /obj/structure/closet/bodybag))
+		var/obj/structure/closet/bodybag/BB = O
+		if(BB.roller_buckled)
+			BB.pixel_y = BB.buckle_offset
+		else
+			BB.pixel_y = initial(O.pixel_y)
+	else
+		O.pixel_y = initial(O.pixel_y)
 
 /**
  * Destroy proc. This shouldn't normally be called, but just in case.

@@ -238,6 +238,12 @@
 			obj_clear_on_top(O)
 			continue
 
+		// Don't move body bags atop roller beds. We will handle those when we move the roller beds themselves.
+		if(istype(O, /obj/structure/closet/bodybag))
+			var/obj/structure/closet/bodybag/BB = O
+			if(BB.roller_buckled)
+				continue
+
 		var/turf/from = get_turf(O)
 		if(!from)
 			obj_clear_on_top(O)
@@ -249,6 +255,11 @@
 		if(target && (target in src.locs) && target != from)
 			O.forceMove(target)
 			obj_mark_on_top(O)
+			if(istype(O, /obj/structure/bed/roller))
+				var/obj/structure/bed/roller/R = O
+				if(R.buckled_bodybag)
+					R.buckled_bodybag.forceMove(target)
+					obj_mark_on_top(R.buckled_bodybag)
 		else if(from in src.locs)
 			obj_mark_on_top(O)
 		else
@@ -331,6 +342,7 @@
  * You'll pull the marine you're grabbing up with you as soon as YOUR climb_onto finishes.
  * The marine pulled up will get a 2 second weaken, but they can be shaked out of it.
  *
+ * !!!! The order of the operations of clearing, marking and moving is not arbitrary !!!!
  *
  * Arguments:
  * * mob/living/user = Mob doing the pulling.
@@ -346,36 +358,83 @@
 		if(isliving(thing))
 			var/mob/living/L = thing
 			L.apply_effect(2, WEAKEN)
-			// Edge case: We're hauling a mob atop the tank who is buckled to a roller bed. (Grab is on mob)
-			// In that case, also bring the roller to the top of the tank.
-			if(L.buckled && istype(L.buckled, /obj/structure/bed/roller))
-				var/obj/structure/bed/roller/R = L.buckled
-				R.forceMove(dest)
-				obj_mark_on_top(R)
+			_add_to_top_buckled_to(L, dest)
 			L.forceMove(dest)
 			mark_on_top(L)
 
 		else if(isobj(thing))
 			var/obj/O = thing
 			if(O.is_allowed_atop_vehicle)
-				O.forceMove(dest)
-				obj_mark_on_top(O)
-				// Edge case: We're hauling a roller bed atop the tank with a mob buckled to it. (Grab is on roller bed)
-				// In that case, also bring the mob atop to the top of the tank.
-				if(istype(O, /obj/structure/bed/roller))
-					var/obj/structure/bed/roller/R = O
-					if(R.buckled_mob)
-						var/mob/living/L = R.buckled_mob
-						L.forceMove(dest)
-						mark_on_top(L)
+				_add_to_top_buckled_entity(O, dest)
 
 	user.forceMove(dest)
 	mark_on_top(user)
 
 /**
+ * Handles the addition of a roller bed whom a Mob is buckled to onto the top of the tank
+ *
+ * Mobs can be buckled to roller beds and pulled atop the tank. If this happens, we need to take the roller bed up with us
+ *
+ * Arguments:
+ * * mob/living/L     = The mob that may be buckled to a roller bed.
+ * * turf/dest        = Which turf onto the tank we're moving to
+ */
+
+/obj/vehicle/multitile/tank/proc/_add_to_top_buckled_to(mob/living/L, turf/dest)
+	if(L.buckled && istype(L.buckled, /obj/structure/bed/roller))
+		var/obj/structure/bed/roller/R = L.buckled
+		R.forceMove(dest)
+		obj_mark_on_top(R)
+
+/**
+ * Handles the addition of entities buckled to an obj to atop the tank
+ *
+ * Roller beds can have mobs and body or stasis bags attached to it. If we are pulling a roller bed onhto the tank with an attached...
+ * bag or mob, we should ensure those go up with it correctly.
+ *
+ * Arguments:
+ * * obj/object      = The object that may have living beings buckled to it
+ * * turf/dest       = Which turf onto the tank we're moving to
+ */
+
+/obj/vehicle/multitile/tank/proc/_add_to_top_buckled_entity(obj/object, turf/dest)
+	if(istype(object, /obj/structure/bed/roller))
+		var/obj/structure/bed/roller/R = object
+
+		R.forceMove(dest)
+		obj_mark_on_top(R)
+		if(R.buckled_mob)
+			var/mob/living/L = R.buckled_mob
+			L.forceMove(dest)
+			mark_on_top(L)
+		else if (R.buckled_bodybag)
+			var/obj/structure/closet/bodybag/BB = R.buckled_bodybag
+			BB.forceMove(dest)
+			obj_mark_on_top(BB)
+	else if (istype(object, /obj/structure/closet/bodybag)) // Grab is on a bodybag, possibly atop a roller.
+		var/obj/structure/closet/bodybag/BB = object
+
+		if (BB.roller_buckled)
+			var/obj/structure/bed/roller/R = BB.roller_buckled
+			R.forceMove(dest)
+			obj_mark_on_top(R) // mark ASAP to prevent bodybag from unbuckling
+			BB.forceMove(dest)
+			obj_mark_on_top(BB)
+
+		else // lone bodybag
+			BB.forceMove(dest)
+			obj_mark_on_top(BB)
+
+	else // any other obj
+		object.forceMove(dest)
+		obj_mark_on_top(object)
+
+/**
  * This proc allows a marine to pull another one DOWN the tank once he finishes climbing down.
  *
  * Opposite of carry_move_with_grabs. This one does the same thing but for climbing DOWN.
+ *
+ * !!!! The order of the operations of clearing, marking and moving is not arbitrary !!!!
  *
  * Arguments:
  * * mob/living/user = Mob doing the pulling.
@@ -388,34 +447,85 @@
 			grabbed_things += G.grabbed_thing
 
 	for(var/atom/movable/thing as anything in grabbed_things)
-		if(isliving(thing))
+		if(isliving(thing)) // GRAB is on MOB
 			var/mob/living/L = thing
-			L.apply_effect(2, WEAKEN)
-			// Edge case: We're hauling a mob down the tank who is buckled to a roller bed. (Grab is on mob)
-			// In that case, also bring the roller down the top of the tank.
-			if(L.buckled && istype(L.buckled, /obj/structure/bed/roller))
-				var/obj/structure/bed/roller/R = L.buckled
-				R.forceMove(dest)
-				obj_clear_on_top(R)
-			L.forceMove(dest)
+			_remove_from_top_buckled_to(L, dest)
 			clear_on_top(L)
+			L.forceMove(dest)
 
-		else if(isobj(thing))
+		else if(isobj(thing)) // GRAB is on OBJ
 			var/obj/O = thing
 			if(O.is_allowed_atop_vehicle)
-				O.forceMove(dest)
-				obj_clear_on_top(O)
-				// Edge case: We're hauling a roller bed down the tank with a mob buckled to it. (Grab is on roller bed)
-				// In that case, also bring the mob down the top of the tank.
-				if(istype(O, /obj/structure/bed/roller))
-					var/obj/structure/bed/roller/R = O
-					if(R.buckled_mob)
-						var/mob/living/L = R.buckled_mob
-						L.forceMove(dest)
-						clear_on_top(L)
+				_remove_from_top_buckled_entity(O, dest)
 
-	user.forceMove(dest)
 	clear_on_top(user)
+	user.forceMove(dest)
+
+/**
+ * Handles the removal of a roller bed whom a Mob is buckled to off the top of the tank
+ *
+ * Mobs can be buckled to roller beds and pulled off of the tank. If this happens, we need to take the roller bed down with us
+ *
+ * Arguments:
+ * * mob/living/L     = The mob that may be buckled to a roller bed.
+ * * turf/dest        = Which turf off the tank we're moving to
+ */
+
+/obj/vehicle/multitile/tank/proc/_remove_from_top_buckled_to(mob/living/L, turf/dest)
+	if(L.buckled && istype(L.buckled, /obj/structure/bed/roller))
+		var/obj/structure/bed/roller/R = L.buckled
+		R.forceMove(dest)
+		obj_clear_on_top(R)
+
+/**
+ * Handles the removal of entities buckled to an obj from atop the tank
+ *
+ * Roller beds can have mobs and body or stasis bags attached to it. If we are pulling a roller bed down the tank with an attached...
+ * bag or mob, we should ensure those go down with it correctly.
+ *
+ * Arguments:
+ * * obj/object      = The object that may have living beings buckled to it
+ * * turf/dest       = Which turf off the tank we're moving to
+ */
+
+/obj/vehicle/multitile/tank/proc/_remove_from_top_buckled_entity(obj/object, turf/dest)
+	if(istype(object, /obj/structure/bed/roller))
+		var/obj/structure/bed/roller/R = object
+
+		if(R.buckled_mob)
+			var/mob/living/L = R.buckled_mob
+			obj_clear_on_top(object) // clear first then move to prevent buckled mobs from getting debuffed for improperly dismounting.
+			object.forceMove(dest)
+			clear_on_top(L)
+
+		else if (R.buckled_bodybag)
+			var/obj/structure/closet/bodybag/BB = R.buckled_bodybag
+			object.forceMove(dest)
+			obj_clear_on_top(object)
+			BB.forceMove(dest) // must be moved last to avoid unbuckling
+			obj_clear_on_top(BB)
+
+		else // empty roller bed
+			object.forceMove(dest)
+			obj_clear_on_top(object)
+
+	else if (istype(object, /obj/structure/closet/bodybag)) // Grab is on a bodybag, possibly atop a roller.
+		var/obj/structure/closet/bodybag/BB = object
+
+		if (BB.roller_buckled)
+			var/obj/structure/bed/roller/R = BB.roller_buckled
+			R.forceMove(dest)
+			obj_clear_on_top(R)
+			BB.forceMove(dest) // must be moved last to avoid unbuckling
+			obj_clear_on_top(BB)
+
+		else // lone bodybag
+			object.forceMove(dest)
+			obj_clear_on_top(object)
+
+	else // any other item
+		object.forceMove(dest)
+		obj_clear_on_top(object)
 
 // --- blocking helpers. Checks if turf is blocked, etc.
 

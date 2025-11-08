@@ -1,5 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - bugfix: "Filled Thewi is shiny, again."
-  - code_imp: "Forces Thwei to use a different overlay system than regular autoinjectors."

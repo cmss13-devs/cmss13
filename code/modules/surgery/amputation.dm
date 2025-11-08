@@ -382,7 +382,7 @@
 	desc = "remove the damaged prosthesis"
 	accept_hand = TRUE
 	time = 3 SECONDS
-	preop_sound = 'sound/handling/armorequip_2'
+	preop_sound = 'sound/handling/armorequip_2.ogg'
 	success_sound = 'sound/handling/attachment_remove.ogg'
 	failure_sound = 'sound/effects/metal_close.ogg' //oop your hand slipped
 

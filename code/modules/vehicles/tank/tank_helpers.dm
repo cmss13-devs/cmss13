@@ -56,21 +56,17 @@
 			throw_dir = pick(GLOB.cardinals)
 
 		var/turf/next_out = get_step(start, throw_dir)
-		var/successfully_moved = FALSE
 
 		if(next_out && !(next_out in src_locs) && !next_out.density)
-			successfully_moved = step(M, throw_dir)
-			if(successfully_moved)
-				clear_on_top(M)
-
-		if(!successfully_moved)
+			M.forceMove(next_out)
+			clear_on_top(M)
+		else
 			step_away(M, src, sweep_range, 3)
 			var/turf/cur = get_turf(M)
 			var/turf/next2 = get_step(cur, throw_dir)
 			if(next2 && !(next2 in src_locs) && !next2.density)
-				successfully_moved = step(M, throw_dir)
-				if(successfully_moved)
-					clear_on_top(M)
+				M.forceMove(next2)
+				clear_on_top(M)
 
 		to_chat(M, SPAN_WARNING("You're thrown from [src]!"))
 		playsound(M, "punch", 25, TRUE)
@@ -91,9 +87,7 @@
 
 		if(hull_neighbors.len)
 			var/turf/spot = pick(hull_neighbors)
-			var/ndir = get_dir(final_pos, spot)
-			if(ndir)
-				step(M, ndir)
+			M.forceMove(spot)
 			M.apply_effect(1.5, WEAKEN)
 			mark_on_top(M)
 

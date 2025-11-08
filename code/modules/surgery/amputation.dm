@@ -112,7 +112,7 @@
 		SPAN_NOTICE("[user] begins to stitch the [muscle_type] in your [surgery.affected_limb.display_name] back together with \the [tool]."),
 		SPAN_NOTICE("[user] begins to stitch the [muscle_type] in [target]'s [surgery.affected_limb.display_name] back together \the [tool]."))
 
-	target.custom_pain("The tightening of the stitches in your[surgery.affected_limb.display_name] feels unbearable!", 1)
+	target.custom_pain("The tightening of the stitches in your [surgery.affected_limb.display_name] feels unbearable!", 1)
 
 	log_interact(user, target, "[key_name(user)] attempted to abort an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 

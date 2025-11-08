@@ -10,6 +10,7 @@
 	icon_state = "mfloor1"
 	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
 	cleanable_type = CLEANABLE_BLOOD
+	appearance_flags = PIXEL_SCALE
 	overlay_on_initialize = FALSE
 	var/base_icon = 'icons/effects/blood.dmi'
 	var/list/viruses
@@ -17,6 +18,7 @@
 	var/amount = 3
 	var/drying_time = 30 SECONDS
 	var/dry_start_time // If this dries, track the dry start time for footstep drying
+	var/randomized = TRUE
 	garbage = FALSE // Keep for atmosphere
 
 /obj/effect/decal/cleanable/blood/Destroy()
@@ -41,6 +43,12 @@
 			return
 		dry_start_time = world.time
 		addtimer(CALLBACK(src, PROC_REF(dry)), drying_time * (amount+1))
+	if(randomized)
+		pixel_x = rand(-16, 16)
+		pixel_y = rand(-16, 16)
+		var/matrix/rotate = matrix()
+		rotate.Turn(rand(0, 359))
+		transform = rotate
 
 /obj/effect/decal/cleanable/blood/Crossed(atom/movable/AM)
 	. = ..()
@@ -100,6 +108,7 @@
 	random_icon_states = list("1","2","3","4","5")
 	amount = 0
 	cleanable_type = CLEANABLE_BLOOD_DRIP
+	allow_this_to_overlap = TRUE
 	var/drips
 
 /obj/effect/decal/cleanable/blood/writing
@@ -108,6 +117,7 @@
 	gender = NEUTER
 	random_icon_states = list("writing1","writing2","writing3","writing4","writing5")
 	amount = 0
+	randomized = FALSE
 	var/message
 
 /obj/effect/decal/cleanable/blood/writing/New()

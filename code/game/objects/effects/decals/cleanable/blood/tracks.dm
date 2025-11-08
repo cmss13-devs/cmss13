@@ -4,6 +4,7 @@
 	icon_state = ""
 	amount = 0
 	random_icon_states = null
+	randomized = FALSE
 	var/coming_state="blood1"
 	var/going_state="blood2"
 	cleanable_type = CLEANABLE_TRACKS

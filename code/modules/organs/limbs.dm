@@ -550,8 +550,6 @@ This function completely restores a damaged organ to perfect condition.
 		if(!internal)
 			for(var/datum/effects/bleeding/external/B in bleeding_effects_list)
 				B.add_on(damage_amount ? damage_amount : W.damage)
-				if(prob(1))
-					owner.custom_pain("You feel blood dripping down your [display_name].") //sticky icky blood
 				return
 		else
 			for(var/datum/effects/bleeding/internal/B in bleeding_effects_list)

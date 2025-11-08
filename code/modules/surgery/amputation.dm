@@ -252,8 +252,9 @@
 	desc = "mend the torn blood vessels"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
-	success_sound = 'sound/surgery/organ1.ogg'
-	failure_sound =	'sound/surgery/organ2.ogg'
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	success_sound = 'sound/handling/bandage.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/close_ruptured_veins/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/vasculature_type = target.get_vasculature_type()
@@ -341,7 +342,8 @@
 	desc = "cut through the jammed clamps holding the prosthesis' stump on"
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 5 SECONDS
-	success_sound = 'sound/surgery/saw.ogg'
+	preop_sound = 'sound/surgery/saw.ogg'
+	success_sound = 'sound/items/Wirecutter.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/sever_prosthetic_clamps/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -378,8 +380,9 @@
 	desc = "remove the damaged prosthesis"
 	accept_hand = TRUE
 	time = 3 SECONDS
-	success_sound = 'sound/surgery/organ1.ogg'
-	failure_sound = 'sound/surgery/organ2.ogg'
+	preop_sound = 'sound/surgery/saw.ogg'
+	success_sound = 'sound/effects/buckle.ogg'
+	failure_sound = 'sound/items/parry.ogg'
 
 /datum/surgery_step/remove_old_prosthetic/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

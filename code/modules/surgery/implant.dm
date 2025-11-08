@@ -54,6 +54,10 @@
 	)
 	time = 6 SECONDS
 
+	preop_sound = 'sound/surgery/saw.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
+	failure_sound = 'sound/effects/bone_break2.ogg'
+
 /datum/surgery_step/create_cavity/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin opening a pocket in [target]'s [surgery.affected_limb.cavity] wall with \the [tool]."),
@@ -88,6 +92,10 @@
 	desc = "implant an object"
 	accept_any_item = TRUE //Any item except a surgery tool or substitute for such.
 	time = 5 SECONDS
+
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/place_item/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
@@ -158,6 +166,10 @@
 	desc = "remove an implant"
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
+
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/remove_implant/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
@@ -269,6 +281,10 @@
 	desc = "extract a foreign body"
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
+
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/remove_embedded/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

@@ -36,6 +36,9 @@
 	desc = "remove the shards of bone"
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/remove_bone_chips/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -86,6 +89,10 @@
 	desc = "repair the hematoma"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
+
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	success_sound = 'sound/handling/bandage.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/treat_hematoma/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added categories to Select Equipment."
-  - code_imp: "Cleaned up backend duplication."

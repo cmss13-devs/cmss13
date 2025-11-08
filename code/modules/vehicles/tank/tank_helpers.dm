@@ -20,14 +20,11 @@
 		return
 
 	var/sweep_range = 3
-
-	// Obj throwing is handled differently for performance
-	// there's still a lot to optimize in case this is performance intensive. (I don't expect joustling to happen that often)
-	// First order of business would be finding a way to do those calculations outside of the for loop ...
-	// and use one single cur,throw_dir and start for all objs but that might produce throws with inconsistent directions
+	var/src_z = src.z
+	var/list/src_locs = src.locs
 
 	for(var/obj/O in on_top_obj.Copy())
-		if(!O || O.z != src.z)
+		if(!O || O.z != src_z)
 			obj_clear_on_top(O)
 			continue
 
@@ -37,17 +34,19 @@
 			throw_dir = pick(GLOB.cardinals)
 
 		var/turf/target = get_step(start, throw_dir)
-		if(!target || (target in src.locs))
+		if(!target || (target in src_locs) || target.density)
 			step_away(O, src, sweep_range, 3)
 			var/turf/cur = get_turf(O)
 			target = get_step(cur, throw_dir)
 
-		if(target && !(target in src.locs))
+		if(target && !(target in src_locs) && !target.density)
 			obj_clear_on_top(O)
 			O.throw_atom(target, sweep_range, SPEED_FAST)
+		else if(!(start in src_locs))
+			obj_clear_on_top(O)
 
 	for(var/mob/living/M in on_top_mobs.Copy())
-		if(!M || M.z != src.z)
+		if(!M || M.z != src_z)
 			clear_on_top(M)
 			continue
 
@@ -57,36 +56,42 @@
 			throw_dir = pick(GLOB.cardinals)
 
 		var/turf/next_out = get_step(start, throw_dir)
-		if(next_out && !(next_out in src.locs))
-			clear_on_top(M)
-			step(M, throw_dir)
-		else
-			step_away(M, src, sweep_range, 3)
+		var/successfully_moved = FALSE
 
+		if(next_out && !(next_out in src_locs) && !next_out.density)
+			successfully_moved = step(M, throw_dir)
+			if(successfully_moved)
+				clear_on_top(M)
+
+		if(!successfully_moved)
+			step_away(M, src, sweep_range, 3)
 			var/turf/cur = get_turf(M)
 			var/turf/next2 = get_step(cur, throw_dir)
-			if(next2 && !(next2 in src.locs))
-				clear_on_top(M)
-				step(M, throw_dir)
+			if(next2 && !(next2 in src_locs) && !next2.density)
+				successfully_moved = step(M, throw_dir)
+				if(successfully_moved)
+					clear_on_top(M)
 
 		to_chat(M, SPAN_WARNING("You're thrown from [src]!"))
 		playsound(M, "punch", 25, TRUE)
 		shake_camera(M, 2, 1)
 
-		if(!(get_turf(M) in src.locs))
+		var/turf/final_pos = get_turf(M)
+
+		if(!(final_pos in src_locs))
 			M.apply_effect(3, WEAKEN)
 			clear_on_top(M)
 			continue
 
-		var/turf/current = get_turf(M)
 		var/list/hull_neighbors = list()
 		for(var/d in GLOB.cardinals)
-			var/turf/H = get_step(current, d)
-			if(H && (H in src.locs))
+			var/turf/H = get_step(final_pos, d)
+			if(H && (H in src_locs) && !H.density)
 				hull_neighbors += H
+
 		if(hull_neighbors.len)
 			var/turf/spot = pick(hull_neighbors)
-			var/ndir = get_dir(current, spot)
+			var/ndir = get_dir(final_pos, spot)
 			if(ndir)
 				step(M, ndir)
 			M.apply_effect(1.5, WEAKEN)
@@ -231,10 +236,12 @@
  */
 /obj/vehicle/multitile/tank/proc/_update_riders_after_motion(old_cx, old_cy, old_dir, new_cx, new_cy, new_dir)
 	var/k = _quarter_turns(old_dir, new_dir) // -1,0,1,2
+	var/src_z = src.z
+	var/list/src_locs = src.locs
 
 	// simpler version for objs
 	for(var/obj/O in on_top_obj.Copy())
-		if(!O || O.z != src.z)
+		if(!O || O.z != src_z)
 			obj_clear_on_top(O)
 			continue
 
@@ -250,9 +257,9 @@
 			continue
 
 		var/list/rd = _rotated_offset(from.x - old_cx, from.y - old_cy, k)
-		var/turf/target = locate(new_cx + rd[1], new_cy + rd[2], src.z)
+		var/turf/target = locate(new_cx + rd[1], new_cy + rd[2], src_z)
 
-		if(target && (target in src.locs) && target != from)
+		if(target && (target in src_locs) && target != from)
 			O.forceMove(target)
 			obj_mark_on_top(O)
 			if(istype(O, /obj/structure/bed/roller))
@@ -260,53 +267,46 @@
 				if(R.buckled_bodybag)
 					R.buckled_bodybag.forceMove(target)
 					obj_mark_on_top(R.buckled_bodybag)
-		else if(from in src.locs)
+		else if(from in src_locs)
 			obj_mark_on_top(O)
 		else
 			obj_clear_on_top(O)
 
 	for(var/mob/living/M in on_top_mobs.Copy())
-		if(!M || M.z != src.z)
-			clear_on_top(M)
-			continue
-
-		var/turf/from = get_turf(M)
-		if(!from)
+		if(!M || M.z != src_z)
 			clear_on_top(M)
 			continue
 
 		// If the mob is buckled to something, we'll skip it, because the buckled obj has already moved with it.
 		if(M.buckled)
 			continue
+		var/turf/from = get_turf(M)
+		if(!from)
+			clear_on_top(M)
+			continue
 
 		// Offset from OLD center -> rotate by k -> translate to NEW center
-		var/odx = from.x - old_cx
-		var/ody = from.y - old_cy
-		var/list/rd = _rotated_offset(odx, ody, k)
-		var/ndx = rd[1]
-		var/ndy = rd[2]
-		var/turf/target = locate(new_cx + ndx, new_cy + ndy, src.z)
+		var/list/rd = _rotated_offset(from.x - old_cx, from.y - old_cy, k)
+		var/turf/target = locate(new_cx + rd[1], new_cy + rd[2], src_z)
 
 		// this shouldn't happen, but just to be safe.
-		if(!target || !(target in src.locs))
-			if(from in src.locs)
+		if(!target || !(target in src_locs))
+			if(from in src_locs)
 				mark_on_top(M)
 			else
 				clear_on_top(M)
 			continue
 
 		// If target is blocked by a non-rider dense atom, (shouldn't happen cuz tank runs over shit) keep if possible
-		var/blocked = FALSE
-		if(target.density)
-			blocked = TRUE
-		else
+		var/blocked = target.density  // Start with turf density check
+		if(!blocked)
 			for(var/atom/A in target)
 				if(A != src && A.density && (!ismob(A) || !(A in on_top_mobs)))
 					blocked = TRUE
 					break
 
 		if(blocked)
-			if(from in src.locs)
+			if(from in src_locs)
 				mark_on_top(M)
 			else
 				clear_on_top(M)

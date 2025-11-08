@@ -63,25 +63,3 @@
 		return
 	user.mob.button_pressed_F12()
 	return TRUE
-
-/datum/keybinding/client/rmb_menu_toggle
-	hotkey_keys = list("")
-	classic_keys = list("F4")
-	name = "rmb_menu_toggle"
-	full_name = "Toggle RMB menu"
-	description = "Toggle menu showing up when you press RMB"
-	keybind_signal = COMSIG_KB_CLIENT_RMB_TOGGLE_DOWN
-
-/datum/keybinding/client/rmb_menu_toggle/down(client/user)
-	. = ..()
-	if(.)
-		return
-	if(user.show_popup_menus)
-		user.show_popup_menus = FALSE
-		user.prefs.toggle_right_click_menu = FALSE
-		to_chat(user, SPAN_NOTICE("Right click no longer opens a menu."))
-	else
-		user.show_popup_menus = TRUE
-		user.prefs.toggle_right_click_menu = TRUE
-		to_chat(user, SPAN_NOTICE("Right click now opens a menu."))
-	return TRUE

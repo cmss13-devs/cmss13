@@ -20,8 +20,6 @@
 
 	update_Login_details()
 
-	if(!client.prefs.toggle_right_click_menu)
-		client.show_popup_menus = FALSE
 
 	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)
 
@@ -64,7 +62,10 @@
 			CB.Invoke()
 
 	client.init_verbs()
-	client.set_right_click_menu_mode(shift_only = FALSE)
+	if(client.prefs.toggle_right_click_menu)
+		client.set_right_click_menu_mode(shift_only = FALSE)
+	else
+		client.set_right_click_menu_mode(shift_only = TRUE)
 	client.tgui_say?.load()
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGGED_IN, src)

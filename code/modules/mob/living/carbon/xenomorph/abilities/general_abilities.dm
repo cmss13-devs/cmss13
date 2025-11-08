@@ -10,7 +10,8 @@
 /mob/living/carbon/xenomorph/proc/set_selected_ability(datum/action/xeno_action/activable/ability)
 	if(!ability)
 		selected_ability = null
-		client?.set_right_click_menu_mode(shift_only = FALSE)
+		if(client?.prefs.toggle_right_click_menu)
+			client?.set_right_click_menu_mode(shift_only = FALSE)
 		return
 	selected_ability = ability
 	if(get_ability_mouse_key() == XENO_ABILITY_CLICK_RIGHT)

@@ -420,7 +420,7 @@
 			T.obj_mark_on_top(src)
 		else if (!T && src.is_atop_vehicle) // only remove from vehicle if it is atop a vehicle to begin with
 			src.tank_on_top_of.obj_clear_on_top(src)
-		else if (T && !src.is_atop_vehicle) // User on tank AND already marked
+		else if (T && src.is_atop_vehicle) // User on tank AND already marked
 			src.pixel_y = initial(src.pixel_y) + 12 // Just refresh the pixel offset and layer to avoid a visual bug with animations
 			src.layer = TANK_RIDER_OBJ_LAYER
 

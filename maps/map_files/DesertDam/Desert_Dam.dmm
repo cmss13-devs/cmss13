@@ -40026,7 +40026,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/dorms/hallway_westwing)
 "eaC" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/wood,
 /area/desert_dam/building/dorms/hallway_westwing)
 "eaG" = (
@@ -41606,8 +41606,8 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_civilian)
 "fsP" = (
-/obj/structure/surface/table/gamblingtable,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/wood,
 /area/desert_dam/building/dorms/hallway_westwing)
 "ftF" = (

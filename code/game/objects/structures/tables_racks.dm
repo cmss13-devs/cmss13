@@ -2,6 +2,7 @@
  * Contains:
  * Tables
  * Wooden tables
+ * Metal tables
  * Reinforced tables
  * Racks
  */
@@ -27,6 +28,7 @@
 	var/table_prefix = "" //used in update_icon()
 	var/reinforced = FALSE
 	var/flipped = 0
+	var/flipped_direction = null
 	var/flip_cooldown = 0 //If flip cooldown exists, don't allow flipping or putting back. This carries a WORLD.TIME value
 	health = 100
 	projectile_coverage = 20 //maximum chance of blocking a projectile
@@ -47,6 +49,11 @@
 
 	update_adjacent()
 	update_icon()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/surface/table/LateInitialize()
+	if(flipped_direction && !flipped)
+		flip(flipped_direction, TRUE)
 
 /obj/structure/surface/table/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -135,7 +142,7 @@
 						dir_sum += 16
 					if(direction == 6)
 						dir_sum += 32
-					if(direction == 8) //Aherp and Aderp.  Jezes I am stupid.  -- SkyMarshal
+					if(direction == 8) //Aherp and Aderp. Jezes I am stupid.  -- SkyMarshal
 						dir_sum += 8
 					if(direction == 10)
 						dir_sum += 64
@@ -147,7 +154,7 @@
 		table_type = 1 //endtable
 		dir_sum %= 16
 	if((dir_sum%16) in list(3, 12))
-		table_type = 2 //1 tile thick, streight table
+		table_type = 2 //1 tile thick, straight table
 		if(dir_sum%16 == 3) //3 doesn't exist as a dir
 			dir_sum = 2
 		if(dir_sum%16 == 12) //12 doesn't exist as a dir.
@@ -156,7 +163,7 @@
 		if(locate(/obj/structure/surface/table, get_step(src.loc, dir_sum%16)))
 			table_type = 3 //full table (not the 1 tile thick one, but one of the 'tabledir' tables)
 		else
-			table_type = 2 //1 tile thick, corner table (treated the same as streight tables in code later on)
+			table_type = 2 //1 tile thick, corner table (treated the same as straight tables in code later on)
 		dir_sum %= 16
 	if((dir_sum%16) in list(13, 14, 7, 11)) //Three-way intersection
 		table_type = 5 //full table as three-way intersections are not sprited, would require 64 sprites to handle all combinations.  TOO BAD -- SkyMarshal
@@ -429,7 +436,7 @@
 
 	flip_cooldown = world.time + 5 SECONDS
 
-/**
+/*
  * Flip a table along a certain direction. By default checks whether table is flippable along axis perpendicular to flip direction.
  */
 /obj/structure/surface/table/proc/flip(direction, skip_straight_check=FALSE)
@@ -497,8 +504,25 @@
 	return TRUE
 
 /*
- * Wooden tables
+ * Wooden Tables
  */
+/obj/structure/surface/table/flipped
+	icon_state = "flip0"
+	dir = SOUTH
+	flipped_direction = SOUTH
+
+/obj/structure/surface/table/flipped/north
+	dir = NORTH
+	flipped_direction = NORTH
+
+/obj/structure/surface/table/flipped/east
+	dir = EAST
+	flipped_direction = EAST
+
+/obj/structure/surface/table/flipped/west
+	dir = WEST
+	flipped_direction = WEST
+
 /obj/structure/surface/table/woodentable
 	name = "wooden table"
 	desc = "A square wood surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
@@ -508,12 +532,46 @@
 	table_prefix = "wood"
 	health = 50
 
+/obj/structure/surface/table/woodentable/flipped
+	icon_state = "woodflip0"
+	dir = SOUTH
+	flipped_direction = SOUTH
+
+/obj/structure/surface/table/woodentable/flipped/north
+	dir = NORTH
+	flipped_direction = NORTH
+
+/obj/structure/surface/table/woodentable/flipped/east
+	dir = EAST
+	flipped_direction = EAST
+
+/obj/structure/surface/table/woodentable/flipped/west
+	dir = WEST
+	flipped_direction = WEST
+
 /obj/structure/surface/table/woodentable/poor
 	name = "poor wooden table"
 	desc = "A semi-poorly constructed wood surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
 	icon_state = "pwoodtable"
 	parts = /obj/item/frame/table/wood/poor
 	table_prefix = "pwood"
+
+/obj/structure/surface/table/woodentable/poor/flipped
+	icon_state = "pwoodflip0"
+	dir = SOUTH
+	flipped_direction = SOUTH
+
+/obj/structure/surface/table/woodentable/poor/flipped/north
+	dir = NORTH
+	flipped_direction = NORTH
+
+/obj/structure/surface/table/woodentable/poor/flipped/east
+	dir = EAST
+	flipped_direction = EAST
+
+/obj/structure/surface/table/woodentable/poor/flipped/west
+	dir = WEST
+	flipped_direction = WEST
 
 /obj/structure/surface/table/woodentable/fancy
 	name = "fancy wooden table"
@@ -524,19 +582,58 @@
 
 /obj/structure/surface/table/woodentable/fancy/flip(direction)
 	return 0 //That is mahogany!
-/*
- * Gambling tables
- */
-/obj/structure/surface/table/gamblingtable
+
+/obj/structure/surface/table/woodentable/gamblingtable
 	name = "gambling table"
 	desc = "A curved wood and carpet surface resting on four legs. Used for gambling games. Can be flipped in emergencies to act as cover."
 	icon_state = "gambletable"
-	sheet_type = /obj/item/stack/sheet/wood
-	parts = /obj/item/frame/table/gambling
+	parts = /obj/item/frame/table/wood/gambling
 	table_prefix = "gamble"
-	health = 50
+
+/obj/structure/surface/table/woodentable/gamblingtable/flipped
+	icon_state = "gambleflip0"
+	dir = SOUTH
+	flipped_direction = SOUTH
+
+/obj/structure/surface/table/woodentable/gamblingtable/flipped/north
+	dir = NORTH
+	flipped_direction = NORTH
+
+/obj/structure/surface/table/woodentable/gamblingtable/flipped/east
+	dir = EAST
+	flipped_direction = EAST
+
+/obj/structure/surface/table/woodentable/gamblingtable/flipped/west
+	dir = WEST
+	flipped_direction = WEST
+
 /*
- * Reinforced tables
+ * Metal Tables
+ */
+/obj/structure/surface/table/almayer
+	icon_state = "almtable"
+	table_prefix = "alm"
+	parts = /obj/item/frame/table/almayer
+
+/obj/structure/surface/table/almayer/flipped
+	icon_state = "almflip0"
+	dir = SOUTH
+	flipped_direction = SOUTH
+
+/obj/structure/surface/table/almayer/flipped/north
+	dir = NORTH
+	flipped_direction = NORTH
+
+/obj/structure/surface/table/almayer/flipped/east
+	dir = EAST
+	flipped_direction = EAST
+
+/obj/structure/surface/table/almayer/flipped/west
+	dir = WEST
+	flipped_direction = WEST
+
+/*
+ * Reinforced Tables
  */
 /obj/structure/surface/table/reinforced
 	name = "reinforced table"
@@ -586,10 +683,44 @@
 
 	. = ..()
 
+/obj/structure/surface/table/reinforced/flipped
+	icon_state = "reinfflip0"
+	dir = SOUTH
+	flipped_direction = SOUTH
+
+/obj/structure/surface/table/reinforced/flipped/north
+	dir = NORTH
+	flipped_direction = NORTH
+
+/obj/structure/surface/table/reinforced/flipped/east
+	dir = EAST
+	flipped_direction = EAST
+
+/obj/structure/surface/table/reinforced/flipped/west
+	dir = WEST
+	flipped_direction = WEST
+
 /obj/structure/surface/table/reinforced/prison
 	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
 	icon_state = "prisontable"
 	table_prefix = "prison"
+
+/obj/structure/surface/table/reinforced/prison/flipped
+	icon_state = "prisonflip0"
+	dir = SOUTH
+	flipped_direction = SOUTH
+
+/obj/structure/surface/table/reinforced/prison/flipped/north
+	dir = NORTH
+	flipped_direction = NORTH
+
+/obj/structure/surface/table/reinforced/prison/flipped/east
+	dir = EAST
+	flipped_direction = EAST
+
+/obj/structure/surface/table/reinforced/prison/flipped/west
+	dir = WEST
+	flipped_direction = WEST
 
 /obj/structure/surface/table/reinforced/rostock_blend
 	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
@@ -658,11 +789,6 @@
 /obj/structure/surface/table/reinforced/black/flip(direction)
 	return FALSE
 
-/obj/structure/surface/table/almayer
-	icon_state = "almtable"
-	table_prefix = "alm"
-	parts = /obj/item/frame/table/almayer
-
 /obj/structure/surface/table/reinforced/cloth
 	name = "cloth table"
 	desc = "A fancy cloth-topped wooden table, bolted to the floor. Fit for formal occasions."
@@ -674,7 +800,7 @@
  */
 /obj/structure/surface/rack
 	name = "rack"
-	desc = "A bunch of metal shelves stacked on top of eachother. Excellent for storage purposes, less so as cover."
+	desc = "A bunch of metal shelves stacked on top of each other. Excellent for storage purposes, less so as cover."
 	icon = 'icons/obj/structures/tables.dmi'
 	icon_state = "rack"
 	density = TRUE

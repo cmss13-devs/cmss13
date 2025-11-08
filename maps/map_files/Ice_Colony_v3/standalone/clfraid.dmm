@@ -352,7 +352,7 @@
 /area/shiva/interior/colony/clf_shuttle)
 "hx" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_2";
+	icon_state = "folding_plasteel_2";
 	density = 1;
 	closed = 0
 	},
@@ -612,11 +612,8 @@
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
 "qd" = (
-/obj/structure/surface/table/woodentable{
-	dir = 1;
-	flipped = 1
-	},
 /obj/structure/machinery/computer/objective,
+/obj/structure/surface/table/woodentable/flipped/north,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "qE" = (
@@ -787,13 +784,10 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/s_admin)
 "tP" = (
-/obj/structure/surface/table/woodentable{
-	dir = 1;
-	flipped = 1
-	},
 /obj/item/tool/stamp,
 /obj/effect/landmark/objective_landmark/close,
 /obj/item/paper_bin,
+/obj/structure/surface/table/woodentable/flipped/north,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "tS" = (

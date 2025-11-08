@@ -5960,8 +5960,7 @@
 /area/bigredv2/caves/lambda/research)
 "aAR" = (
 /obj/structure/barricade/metal{
-	dir = 4;
-	icon_state = "barricade"
+	dir = 4
 	},
 /turf/open/floor/whitepurple/northeast,
 /area/bigredv2/caves/lambda/research)
@@ -6300,11 +6299,10 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/lambda/research)
 "aCu" = (
-/obj/structure/barricade/metal{
-	dir = 4;
-	icon_state = "barricade"
-	},
 /obj/structure/ore_box,
+/obj/structure/barricade/metal{
+	dir = 4
+	},
 /turf/open/floor/whitepurple/east,
 /area/bigredv2/caves/lambda/research)
 "aCv" = (
@@ -6479,8 +6477,7 @@
 /area/bigredv2/caves/lambda/research)
 "aDm" = (
 /obj/structure/barricade/metal{
-	dir = 4;
-	icon_state = "barricade"
+	dir = 4
 	},
 /turf/open/floor/whitepurple/southeast,
 /area/bigredv2/caves/lambda/research)
@@ -10267,6 +10264,7 @@
 /area/bigredv2/caves/lambda/virology)
 "aUM" = (
 /obj/structure/machinery/computer/operating,
+/obj/structure/surface/table,
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aUO" = (
@@ -18937,10 +18935,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/surface/table/woodentable{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/woodentable/flipped/west,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "dnV" = (
@@ -22941,10 +22936,7 @@
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "hAa" = (
-/obj/structure/surface/table/woodentable{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/woodentable/flipped/west,
 /turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "hAj" = (
@@ -23134,9 +23126,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/surface/table/woodentable{
-	flipped = 1
-	},
+/obj/structure/surface/table/woodentable/flipped,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "hKl" = (
@@ -24040,11 +24030,8 @@
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
 "iKK" = (
-/obj/structure/surface/table/woodentable{
-	dir = 8;
-	flipped = 1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/woodentable/flipped/west,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "iKU" = (
@@ -26525,11 +26512,8 @@
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "lvO" = (
-/obj/structure/surface/table/woodentable{
-	dir = 4;
-	flipped = 1
-	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/surface/table/woodentable/flipped/east,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "lwt" = (
@@ -29270,9 +29254,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/lambda_cave_cas)
 "ooC" = (
-/obj/structure/surface/table{
-	flipped = 1
-	},
+/obj/structure/surface/table/flipped,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "ooJ" = (
@@ -29527,10 +29509,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves_virology)
 "ozy" = (
-/obj/structure/surface/table/woodentable{
-	dir = 4;
-	flipped = 1
-	},
+/obj/structure/surface/table/woodentable/flipped/east,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "ozO" = (
@@ -33370,8 +33349,8 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
 "smw" = (
-/obj/effect/landmark/hunter_primary,
 /obj/structure/flora/grass/desert/lightgrass_7,
+/obj/effect/landmark/hunter_primary,
 /turf/open/mars,
 /area/bigredv2/outside/n)
 "smy" = (
@@ -34297,10 +34276,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "tiL" = (
-/obj/structure/surface/table/woodentable{
-	dir = 1;
-	flipped = 1
-	},
+/obj/structure/surface/table/woodentable/flipped/north,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "tju" = (
@@ -36623,10 +36599,7 @@
 /area/bigredv2/outside/dorms)
 "vAI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/woodentable{
-	dir = 1;
-	flipped = 1
-	},
+/obj/structure/surface/table/woodentable/flipped/north,
 /turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "vBs" = (

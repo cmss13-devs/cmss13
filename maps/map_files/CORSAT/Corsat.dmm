@@ -34778,7 +34778,7 @@
 /turf/open/floor/corsat/retrosquares,
 /area/corsat/gamma/airlock/south)
 "lqR" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/toy/deck/uno,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat/squareswood/north,
@@ -34832,7 +34832,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/gamma/biodome/complex)
 "lue" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/toy/dice/d20,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat/squareswood/north,
@@ -37902,7 +37902,7 @@
 /turf/open/floor/corsat,
 /area/corsat/sigma/cargo)
 "oGe" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat/squareswood/north,
 /area/corsat/gamma/rnr/arcade)

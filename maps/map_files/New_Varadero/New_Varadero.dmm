@@ -12545,9 +12545,7 @@
 /area/varadero/interior/comms1)
 "jSN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/surface/table/woodentable{
-	flipped = 1
-	},
+/obj/structure/surface/table/woodentable/flipped,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "jSP" = (

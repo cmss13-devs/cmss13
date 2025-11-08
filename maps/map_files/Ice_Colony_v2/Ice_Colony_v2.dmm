@@ -8572,11 +8572,6 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/command/checkpoint)
 "aEq" = (
-/obj/structure/surface/table{
-	dir = 4;
-	flipped = 1;
-	icon_state = "tableflip0"
-	},
 /turf/open/floor/darkyellow2/southwest,
 /area/ice_colony/surface/garage/repair)
 "aEr" = (
@@ -8698,17 +8693,11 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/surface/table{
-	flipped = 1;
-	icon_state = "tableflip0"
-	},
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/darkblue2/north,
 /area/ice_colony/surface/command/control)
 "aER" = (
-/obj/structure/surface/table{
-	flipped = 1;
-	icon_state = "tableflip0"
-	},
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/darkblue2/north,
 /area/ice_colony/surface/command/control)
 "aES" = (
@@ -10443,11 +10432,11 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aMb" = (
-/obj/structure/surface/table/gamblingtable,
-/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
@@ -10468,11 +10457,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aMe" = (
-/obj/structure/surface/table/gamblingtable{
-	dir = 4;
-	flipped = 1;
-	icon_state = "gambleflip0"
-	},
+/obj/structure/surface/table/woodentable/gamblingtable/flipped/east,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aMf" = (
@@ -10953,7 +10938,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aOe" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/effect/landmark/good_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
@@ -23780,7 +23765,7 @@
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "bOR" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "bOS" = (
@@ -23860,10 +23845,10 @@
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "bPk" = (
-/obj/structure/surface/table/gamblingtable,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "bPl" = (
@@ -25165,14 +25150,6 @@
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
-"bTH" = (
-/obj/structure/surface/table{
-	dir = 4;
-	flipped = 1;
-	icon_state = "tableflip0"
-	},
-/turf/open/floor/plating,
-/area/ice_colony/underground/maintenance/south)
 "bTI" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
@@ -26872,10 +26849,10 @@
 /turf/open/floor/darkbrown2/southwest,
 /area/ice_colony/surface/hangar/hallway)
 "pjQ" = (
-/obj/structure/surface/table/gamblingtable,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "poh" = (
@@ -54507,9 +54484,9 @@ bPg
 bPg
 bPg
 bPg
-bTH
-bTH
-bTH
+bPg
+bPg
+bPg
 bPg
 bPg
 bPg

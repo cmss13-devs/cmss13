@@ -2928,10 +2928,7 @@
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/fiorina/tumor/aux_engi)
 "bZI" = (
-/obj/structure/surface/table/reinforced/prison{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/research_cells/west)
@@ -5135,9 +5132,7 @@
 /turf/open/floor/prison/panelscorched,
 /area/fiorina/tumor/civres)
 "dOt" = (
-/obj/structure/surface/table/reinforced/prison{
-	flipped = 1
-	},
+/obj/structure/surface/table/reinforced/prison/flipped,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "dOE" = (
@@ -6118,10 +6113,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "ezU" = (
-/obj/structure/surface/table/reinforced/prison{
-	dir = 4;
-	flipped = 1
-	},
+/obj/structure/surface/table/reinforced/prison/flipped/east,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "ezV" = (
@@ -11028,9 +11020,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring/reactor)
 "inA" = (
-/obj/structure/surface/table/reinforced/prison{
-	flipped = 1
-	},
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/device/cassette_tape/hiphop,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
@@ -12447,10 +12437,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
 "jsu" = (
-/obj/structure/surface/table/reinforced/prison{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/ids,
 /obj/item/reagent_container/food/drinks/cans/souto/grape{
 	pixel_x = 14;
@@ -13428,10 +13415,7 @@
 /obj/item/ammo_casing{
 	icon_state = "casing_8"
 	},
-/obj/structure/surface/table/reinforced/prison{
-	dir = 4;
-	flipped = 1
-	},
+/obj/structure/surface/table/reinforced/prison/flipped/east,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/station/medbay)
 "kii" = (
@@ -13518,9 +13502,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "klC" = (
-/obj/structure/surface/table/reinforced/prison{
-	flipped = 1
-	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "klN" = (
@@ -19535,10 +19517,8 @@
 /turf/open/floor/almayer,
 /area/fiorina/tumor/ship)
 "oJN" = (
-/obj/structure/surface/table/reinforced/prison{
-	flipped = 1
-	},
 /obj/item/reagent_container/food/snacks/eat_bar,
+/obj/structure/surface/table/reinforced/prison/flipped,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "oJY" = (
@@ -21227,9 +21207,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/fiorina/station/park)
 "qeX" = (
-/obj/structure/surface/table/reinforced/prison{
-	flipped = 1
-	},
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/device/cassette_tape/hiphop,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)

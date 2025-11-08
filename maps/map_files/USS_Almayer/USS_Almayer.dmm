@@ -7323,7 +7323,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
 "arQ" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/spacecash/c10,
 /obj/item/spacecash/c10{
 	pixel_y = 3
@@ -7338,7 +7338,7 @@
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/cic)
 "arS" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/toy/dice,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices/flight)
@@ -7474,7 +7474,7 @@
 /turf/open/floor/almayer/silver/west,
 /area/almayer/hallways/lower/repair_bay)
 "asj" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/toy/deck,
 /obj/item/toy/deck/uno{
 	pixel_x = 13
@@ -7482,7 +7482,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices/flight)
 "ask" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/reagent_container/food/drinks/cans/beer,
 /obj/item/reagent_container/food/drinks/bottle/sake{
 	pixel_y = 7;

@@ -500,8 +500,8 @@
 /// Minimum Y height up to which we keep dividing the tree (meaning cells can be half that)
 #define QUADTREE_BOUNDARY_MINIMUM_HEIGHT 12
 
-
-#define QTREE_EXCLUDE_OBSERVER 1
+/// Whether to filter to only living mobs
+#define QTREE_FILTER_LIVING 1
 
 /// Return mob list instead of client list.
 #define QTREE_SCAN_MOBS 2

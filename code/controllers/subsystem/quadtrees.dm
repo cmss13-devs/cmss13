@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(quadtree)
 		p_coords.x_pos = mob_turf.x
 		p_coords.y_pos = mob_turf.y
 		p_coords.z_pos = mob_turf.z
-		p_coords.is_observer = !isliving(cur_client.mob)
+		p_coords.non_living_mob = !isliving(cur_client.mob)
 		p_coords.weak_mob = WEAKREF(cur_client.mob)
 		var/datum/quadtree/quad = new_quadtrees[mob_turf.z]
 		quad.insert_player(p_coords)

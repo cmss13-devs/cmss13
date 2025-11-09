@@ -266,13 +266,13 @@
 
 	range_bounds.set_shape(cur_turf.x, cur_turf.y, detector_range * 2)
 
-	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
+	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
 	var/turf/above = SSmapping.get_turf_above(cur_turf)
 	var/turf/below = SSmapping.get_turf_below(cur_turf)
 	if(above)
-		ping_candidates += SSquadtree.players_in_range(range_bounds, above.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
+		ping_candidates += SSquadtree.players_in_range(range_bounds, above.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
 	if(below)
-		ping_candidates += SSquadtree.players_in_range(range_bounds, below.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
+		ping_candidates += SSquadtree.players_in_range(range_bounds, below.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
 
 	for(var/mob/living/current_mob as anything in ping_candidates)
 		if(current_mob == loc)

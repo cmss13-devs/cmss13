@@ -40,8 +40,8 @@
 /datum/coords/qtplayer
 	/// Relevant client the coords are associated to
 	var/client/player
-	/// Truthy if player is an observer
-	var/is_observer = FALSE
+	/// Truthy if player.mob is not a living mob
+	var/non_living_mob = FALSE
 	/// Weakref to the player.mob to determine if this is stale
 	var/datum/weakref/weak_mob
 
@@ -217,7 +217,7 @@
 	for(var/datum/coords/qtplayer/quad_player as anything in player_coords)
 		if(!quad_player.player) // Basically client is gone
 			continue
-		if((flags & QTREE_EXCLUDE_OBSERVER) && quad_player.is_observer)
+		if((flags & QTREE_FILTER_LIVING) && quad_player.non_living_mob)
 			continue
 		if(range.contains_coords(quad_player))
 			if(flags & QTREE_SCAN_MOBS)

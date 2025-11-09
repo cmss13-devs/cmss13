@@ -523,6 +523,7 @@ Make sure their actual health updates immediately.*/
 	if(stat <= CONSCIOUS && !gibbing)
 		set_stat(UNCONSCIOUS)
 		SEND_SIGNAL(src, COMSIG_XENO_ENTER_CRIT)
+		AddElement(/datum/element/blood_trail, get_blood_color())
 
 /mob/living/carbon/xenomorph/adjustBruteLoss(amount)
 	if(status_flags & GODMODE)
@@ -537,6 +538,8 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/xenomorph/set_stat(new_stat)
 	. = ..()
 	// Temporarily force triggering HUD updates so they apply immediately rather than on Life tick.
+	if(stat == CONSCIOUS && . >= UNCONSCIOUS || stat == DEAD)
+		SEND_SIGNAL(src, COMSIG_XENO_REVIVED_FROM_CRIT)
 	// Remove this once effects have been ported to trait signals (blinded, dazed, etc)
 	if(stat != .)
 		handle_regular_hud_updates()

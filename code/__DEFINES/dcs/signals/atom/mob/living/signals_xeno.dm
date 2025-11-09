@@ -79,6 +79,9 @@
 /// From /mob/living/carbon/xenomorph/proc/handle_crit()
 #define COMSIG_XENO_ENTER_CRIT "xeno_entering_critical"
 
+/// From /mob/living/carbon/xenomorph/set_stat(new_stat)
+#define COMSIG_XENO_REVIVED_FROM_CRIT "xeno_revived_from_critical"
+
 /// From /mob/living/carbon/xenomorph/proc/hivemind_talk(): (message)
 #define COMSIG_XENO_TRY_HIVEMIND_TALK "xeno_try_hivemind_talk"
 	#define COMPONENT_OVERRIDE_HIVEMIND_TALK (1<<0)

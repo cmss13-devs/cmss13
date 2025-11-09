@@ -71,9 +71,9 @@
 	coming_state = "wheels"
 	going_state  = ""
 
-/*/obj/effect/decal/cleanable/blood/tracks/dragged
+/obj/effect/decal/cleanable/blood/tracks/dragged
 	name = "drag prints"
 	desc = "Some poor sod seem to have been dragged here."
 	coming_state = "drag"
-	going_state  = ""
-*/
+	going_state  = "drag"
+

@@ -652,8 +652,15 @@
 	body_position_changed = world.time
 	SEND_SIGNAL(src, COMSIG_LIVING_SET_BODY_POSITION, new_value, .)
 	if(new_value == LYING_DOWN) // From standing to lying down.
+		var/is_bleeding = FALSE
+		for(var/datum/effects/bleeding/E in effects_list)
+			is_bleeding = TRUE
+			break
+		if(is_bleeding)
+			AddElement(/datum/element/blood_trail, get_blood_color())
 		on_lying_down()
 	else // From lying down to standing up.
+		RemoveElement(/datum/element/blood_trail, get_blood_color())
 		on_standing_up()
 
 /// Proc to append behavior related to lying down.

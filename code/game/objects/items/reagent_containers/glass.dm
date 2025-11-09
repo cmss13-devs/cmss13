@@ -349,7 +349,7 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120)
 
-/obj/item/reagent_container/glass/beaker/large/silver
+/obj/item/reagent_container/glass/beaker/catalyst/silver
 	name = "large silver beaker"
 	desc = "A large silver beaker. Can hold up to 240 units. The beaker itself acts as a silver catalyst."
 	icon_state = "beakersilver"
@@ -359,6 +359,27 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240)
 	pixel_y = 5
+
+/obj/item/reagent_container/glass/beaker/catalyst/update_icon()
+	overlays.Cut()
+
+	if(reagents && reagents.total_volume)
+		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "beakerlarge-10") //If we make another type of large beaker that acts as a catalyst for reagents, it will always use the beakerlarge fill icon.
+
+		var/percent = floor((reagents.total_volume / volume) * 100)
+		switch(percent)
+			if(0)
+				filling.icon_state = null
+			if(1 to 20)
+				filling.icon_state = "beakerlarge-20"
+			if(21 to 40)
+				filling.icon_state = "beakerlarge-40"
+			if(41 to 60)
+				filling.icon_state = "beakerlarge-60"
+			if(61 to 80)
+				filling.icon_state = "beakerlarge-80"
+			if(81 to INFINITY)
+				filling.icon_state = "beakerlarge-100"
 
 /obj/item/reagent_container/glass/beaker/noreact
 	name = "cryostasis beaker"
@@ -379,7 +400,6 @@
 	volume = 300
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,300)
-
 
 /obj/item/reagent_container/glass/beaker/vial
 	name = "vial"

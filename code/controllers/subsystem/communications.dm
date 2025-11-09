@@ -390,6 +390,10 @@ SUBSYSTEM_DEF(radio)
 		last_command_zs = target_zs
 	return target_zs
 
+/// Call this when a cached frequency changed (e.g. tcoms going down/up)
+/datum/controller/subsystem/radio/proc/update_cache()
+	get_available_tcomm_zs(COMM_FREQ)
+
 /datum/controller/subsystem/radio/proc/add_tcomm_machine(obj/machine)
 	if(is_ground_level(machine.z))
 		addToListNoDupe(tcomm_machines_ground, machine)

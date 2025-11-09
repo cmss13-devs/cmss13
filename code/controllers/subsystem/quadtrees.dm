@@ -42,8 +42,7 @@ SUBSYSTEM_DEF(quadtree)
 		p_coords.x_pos = T.x
 		p_coords.y_pos = T.y
 		p_coords.z_pos = T.z
-		if(isobserver(C.mob))
-			p_coords.is_observer = TRUE
+		p_coords.is_observer = !isliving(C.mob)
 		var/datum/quadtree/QT = new_quadtrees[T.z]
 		QT.insert_player(p_coords)
 		if(MC_TICK_CHECK)

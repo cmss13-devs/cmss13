@@ -77,9 +77,9 @@
 #define CHEM_CLASS_COMMON 2
 /// Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
 #define CHEM_CLASS_UNCOMMON 3
-/// Chemicals that are either cant be made or require rare or expandable components.
+/// Chemicals that are either can't be made or require rare or expandable components.
 #define CHEM_CLASS_RARE 4
-/// Chemicals that cant be made
+/// Chemicals that can't be made
 #define CHEM_CLASS_SPECIAL 5
 /// Randomly generated chemicals
 #define CHEM_CLASS_ULTRA 6
@@ -132,6 +132,8 @@
 
 /// Reagent doesn't randomly generate in chemicals
 #define REAGENT_NO_GENERATION (1<<5)
+
+#define REAGENT_TYPE_SPECIALIST (1<<6)
 
 /*
 	properties defines
@@ -357,7 +359,7 @@
 /// The minimum amount of chems required to turn shrapnel into a special type
 #define EXPLOSION_PHORON_THRESHOLD 10
 #define EXPLOSION_ACID_THRESHOLD 10
-#define EXPLOSION_NEURO_THRESHOLD 30
+#define EXPLOSION_NEURO_THRESHOLD 10
 
 #define EXPLOSION_MIN_FALLOFF 25
 #define EXPLOSION_BASE_SHARDS 4

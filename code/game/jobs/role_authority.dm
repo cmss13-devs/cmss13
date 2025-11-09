@@ -523,6 +523,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	new_human.sec_hud_set_ID()
 	new_human.hud_set_squad()
 
+	// comm_title is probably available at this point.
+	var/datum/highlight_keywords_payload/payload = new(new_mob)
+	new_mob.client.tgui_panel.window.send_message("settings/updateHighlightKeywords", payload.to_list())
+
 	SEND_SIGNAL(new_human, COMSIG_POST_SPAWN_UPDATE)
 	SSround_recording.recorder.track_player(new_human)
 
@@ -687,6 +691,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				break
 
 		transfer_marine.hud_set_squad()
+	SEND_SIGNAL(transfer_marine, COMSIG_HUMAN_SQUAD_CHANGED)
 
 // returns TRUE if transfer_marine's role is at max capacity in the new squad
 /datum/authority/branch/role/proc/check_squad_capacity(mob/living/carbon/human/transfer_marine, datum/squad/new_squad)

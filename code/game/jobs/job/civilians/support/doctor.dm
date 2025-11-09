@@ -11,13 +11,13 @@
 	spawn_positions = 5
 	allow_additional = 1
 	scaled = 1
-	supervisors = "the chief medical officer"
+	supervisors = "the Chief Medical Officer and the Commander"
 	selection_class = "job_doctor"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor
 
 	// job option
-	job_options = list(DOCTOR_VARIANT = "Doc", PHARMACIST_VARIANT = "Phm", SURGEON_VARIANT = "Sur")
+	job_options = list(DOCTOR_VARIANT = "Doc", PHARMACIST_VARIANT = "Pharm", SURGEON_VARIANT = "Surg")
 	/// The doctor variant of the doctor role that was selected in handle_job_options
 	var/doctor_variant
 
@@ -36,11 +36,11 @@
 /datum/job/civilian/doctor/generate_entry_message(mob/living/carbon/human/target)
 	switch(doctor_variant)
 		if(SURGEON_VARIANT)
-			. = {"You're a commissioned officer of the USCM. <a href='[generate_wiki_link()]'>You are a doctor with a special interest in surgery.</a> Your primary job is keeping marines healthy and strong by fixing broken bones, blood vessels, and organs and performing foreign object extractions based on case severity. You are also very capable in medicine and pharmacology; if the pharmacy and triage bays are understaffed, and you have nobody left to operate on, it is also your job to develop chemicals and medicate patients. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
+			. = {"As a surgeon, your job inclines much more to <a href='[generate_wiki_link()]'>surgically operating patients</a> than any other task inside your workspace. Fix broken bones, blood vessels, organs and perform all kinds of extractions based on case severity. Remember to coordinate with your peers inside and outside of surgery, nothing is more helpful than a well coordinated extra pair of hands. You still, though, have the same skills as a doctor, and you should be using that to fill the gaps within your team where needed. If you need help regarding what you should be doing, be sure to ask the Chief Medical Officer."}
 		if(PHARMACIST_VARIANT)
-			. = {"You're a commissioned officer of the USCM. <a href='[generate_wiki_link()]'>You are a doctor with a special interest in chemistry and medicine.</a> Your primary job is providing the medical bay and marines with medicine and chemicals, and your secondary job is administering these medications to patients based on case severity. You are also very capable in surgery; if there are not enough doctors to operate on patients after you have met your quota, you must head to the surgery bay. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
+			. = {"You are a pharmacist, and your job is to <a href='[generate_wiki_link()]'>provide to medical personnel the drugs they need to do their work proper</a>. Coordinate with the research team and make sure their newly developed chemicals are not being wasted. You still, though, have the same skills as a doctor, and you should be using that to fill the gaps within your team where needed. If you need help regarding what you should be doing, be sure to ask the Chief Medical Officer."}
 		else
-			. = {"You're a commissioned officer of the USCM. <a href='[generate_wiki_link()]'>You are a doctor.</a> You are not specialized in any department, but you are nonetheless a jack of all trades with extensive knowledge in pharmacology, medicine, triage, and surgery. Your primary job is to assess and treat patients with medicine based on case severity, but you are also responsible for manufacturing chemicals and operating on patients if the pharmacy and surgery bays are understaffed. If you do not know what you are doing, mentorhelp so a mentor can assist you."}
+			. = {"As a doctor, you should consider yourself a <a href='[generate_wiki_link()]'>jack of all trades within the medical department, with knowledge in medicine, triage, surgery and pharmacology</a>. Your responsabilities are vast and you should be making sure that you are coordinating well with your peers. If you need help regarding what you should be doing, be sure to ask the Chief Medical Officer."}
 
 /datum/job/civilian/doctor/set_spawn_positions(count)
 	spawn_positions = doc_slot_formula(count)

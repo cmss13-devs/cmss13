@@ -3,11 +3,11 @@
 	title = JOB_CMO
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the acting commanding officer"
+	supervisors = "the Commander and the Unites States Colonial Marines High Command"
 	selection_class = "job_cmo"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/cmo
-	entry_message_body = "You're a commissioned officer of the USCM. <a href='"+WIKI_PLACEHOLDER+"'>You have authority and knowledge over everything related to Medbay and Research</a>. All personnel within the medical and research bay must answer to you, while you only answer to the XO and CO. You are in charge of medical staff, surgery, chemistry, stimulants and keeping the marines healthy overall by ensuring all departments are running smoothly. You are also responsible for filling the role of a doctor, surgeon, pharmacist, or researcher if their respective departments are understaffed. "
+	entry_message_body = "As the primary representative of the medical knowledge and practice onboard this vessel, your job is to <a href='"+WIKI_PLACEHOLDER+"'>supervise the medical and research teams and ensure that they are well behaved and coordinated</a>. Your authority is ample, even though your real knowledge is not necessarily so, and you should have this in mind when supervising your subordinates. You answer to the Commander and, if necessity call you to take the ship's lead, High Command. You are also encouraged to fill the gaps where your teams are innefective or understaffed."
 	var/mob/living/carbon/human/active_cmo
 
 /datum/job/civilian/professor/generate_entry_conditions(mob/living/cmo, whitelist_status)

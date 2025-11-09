@@ -2,7 +2,7 @@
 	title = JOB_NURSE
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the chief medical officer"
+	supervisors = "the Chief Medical Officer"
 	selection_class = "job_doctor"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/nurse

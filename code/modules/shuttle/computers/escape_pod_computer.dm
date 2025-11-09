@@ -233,11 +233,13 @@
 
 /obj/structure/machinery/door/airlock/evacuation
 	name = "\improper Evacuation Airlock"
-	icon = 'icons/obj/structures/doors/pod_doors.dmi'
+	icon = 'icons/obj/structures/doors/escapepoddoor_yellow.dmi'
 	unslashable = TRUE
 	unacidable = TRUE
 	var/obj/docking_port/mobile/crashable/escape_shuttle/linked_shuttle
 	var/start_locked = TRUE
+	opacity = FALSE
+	layer = ABOVE_MOB_LAYER
 
 /obj/structure/machinery/door/airlock/evacuation/Initialize()
 	. = ..()

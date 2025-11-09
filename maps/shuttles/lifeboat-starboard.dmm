@@ -105,7 +105,7 @@
 	id = "Boat2-D4";
 	throw_dir = 2
 	},
-/turf/open/shuttle/lifeboat,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/shuttle/lifeboat)
 "mt" = (
 /turf/closed/shuttle/lifeboat/transparent{
@@ -164,7 +164,7 @@
 	id = "Boat2-D2";
 	throw_dir = 1
 	},
-/turf/open/shuttle/lifeboat/test_floor4,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/shuttle/lifeboat)
 "vG" = (
 /obj/docking_port/mobile/crashable/lifeboat/starboard,
@@ -186,7 +186,7 @@
 	id = "Boat2-D1";
 	throw_dir = 1
 	},
-/turf/open/shuttle/lifeboat/test_floor4,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/shuttle/lifeboat)
 "zv" = (
 /turf/closed/shuttle/lifeboat{
@@ -251,7 +251,7 @@
 	id = "Boat2-D3";
 	throw_dir = 2
 	},
-/turf/open/shuttle/lifeboat,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/shuttle/lifeboat)
 "EI" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -370,7 +370,7 @@
 	},
 /area/shuttle/lifeboat)
 "Qj" = (
-/turf/open/shuttle/lifeboat/test_floor4,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/shuttle/lifeboat)
 "Rk" = (
 /turf/closed/shuttle/lifeboat{
@@ -548,7 +548,7 @@ OO
 VZ
 OO
 AF
-OO
+Qj
 "}
 (11,1,1) = {"
 Qj
@@ -557,7 +557,7 @@ OO
 VZ
 OO
 AF
-OO
+Qj
 "}
 (12,1,1) = {"
 em
@@ -593,7 +593,7 @@ OO
 VZ
 OO
 AF
-OO
+Qj
 "}
 (16,1,1) = {"
 Qj
@@ -602,7 +602,7 @@ OO
 VZ
 OO
 AF
-OO
+Qj
 "}
 (17,1,1) = {"
 em

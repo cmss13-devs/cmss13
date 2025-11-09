@@ -401,6 +401,14 @@
 	name = "\improper Reinforced Secure Airlock"
 	masterkey_resist = TRUE
 
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced
+	name = "\improper Evacuation Airlock"
+	icon = 'icons/obj/structures/doors/escapepoddoor_black.dmi'
+	masterkey_resist = TRUE
+	req_access = null
+	opacity = FALSE
+	layer = ABOVE_MOB_LAYER
+
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced/colony
 	req_access = null
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)

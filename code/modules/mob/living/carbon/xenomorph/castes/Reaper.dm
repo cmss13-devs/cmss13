@@ -83,9 +83,15 @@
 	// Reaper vars
 	var/flesh_plasma = 0
 	var/flesh_plasma_max = 600
-	var/corpse_buildup = 0 /// How much flesh plasma is generated from nearby corpses
-	var/maximum_corpse_buildup = 30 /// The maximum amount of flesh plasma you can gain from being around dead bodies
-	var/nearby_corpse_range = 3 /// Within how many tiles of you do corpses need to be for you to generate flesh plasma off them
+
+	/// List of dead bodies logged on this tick and added to valid_corpses
+	var/list/currently_nearby_corpses = list()
+	/// List of dead bodies that were logged the previous tick
+	var/list/previously_nearby_corpses = list()
+	/// List of corpses that are valid for generating Flesh Plasma, number gathered through length()
+	var/list/valid_corpses = list()
+	/// Within how many tiles of you do corpses need to be for you to generate flesh plasma off them
+	var/nearby_corpse_range = 3
 
 	var/transferred_healing = 0
 
@@ -103,22 +109,41 @@
 
 /mob/living/carbon/xenomorph/reaper/proc/corpse_generation()
 	var/obj/effect/alien/weeds/our_weeds = locate() in loc
-	if(our_weeds && our_weeds.hivenumber == hivenumber) // We must be on weeds belonging to our hive to generate flesh plasma from nearby corpses
+	// We must be on weeds belonging to our hive to generate flesh plasma from nearby corpses
+	if(our_weeds && our_weeds.hivenumber == hivenumber)
 		for(var/mob/living/carbon/dead_mob in view(nearby_corpse_range, src))
-			if(corpse_buildup == maximum_corpse_buildup) // At max, no need to search more
-				break
-
+			// If they are not dead, they are not valid
 			if(dead_mob.stat != DEAD)
 				continue
 
+			// Synths are not organic, they are not valid
+			if(issynth(dead_mob))
+				continue
+
 			var/obj/effect/alien/weeds/their_weeds = locate() in dead_mob.loc
+			// If they are not on weeds belonging to our hive, they are not valid
 			if(!their_weeds || (their_weeds && their_weeds.hivenumber != hivenumber))
 				continue
 
-			corpse_buildup += 3
+			// Add them to list of currently nearby corpses for referancing later
+			currently_nearby_corpses.Add(dead_mob)
+			// If they are not already in valid_corpses, add them
+			if(!(dead_mob in valid_corpses))
+				valid_corpses.Add(dead_mob)
 
-	modify_flesh_plasma(corpse_buildup)
-	corpse_buildup = 0
+	// Now we check for corpses that aren't in range anymore
+	for(var/mob/living/carbon/dead_mob in valid_corpses)
+		// If the mob is in previously_nearby and not in currently_nearby, it's not nearby anymore
+		if((dead_mob in previously_nearby_corpses) && !(dead_mob in currently_nearby_corpses))
+			valid_corpses.Remove(dead_mob)
+		// Same thing if it's not in either
+		if(!(dead_mob in previously_nearby_corpses) && !(dead_mob in currently_nearby_corpses))
+			valid_corpses.Remove(dead_mob)
+
+	var/final_corpse_gen_number = length(valid_corpses)
+	modify_flesh_plasma(final_corpse_gen_number)
+	previously_nearby_corpses = currently_nearby_corpses
+	currently_nearby_corpses.Cut()
 
 /mob/living/carbon/xenomorph/reaper/try_fill_trap(obj/effect/alien/resin/trap/target)
 	if(!istype(target))

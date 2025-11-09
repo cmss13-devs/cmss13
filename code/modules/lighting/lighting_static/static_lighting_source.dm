@@ -289,9 +289,12 @@
 
 		var/list/turf/impacted_turfs = list()
 		var/list/turf/check_below_turfs = list()
+		// half or more corners from these tiles is further than _range_divisor and others are in closer turfs
+		var/turf_light_range = max(CEILING(light_range - 1.5, 1), 0)
+
 		var/oldlum = source_turf.luminosity
-		source_turf.luminosity = CEILING(light_range, 1)
-		for(var/turf/T in view(CEILING(light_range, 1), source_turf))
+		source_turf.luminosity = turf_light_range
+		for(var/turf/T in view(turf_light_range, source_turf))
 			if(!IS_OPAQUE_TURF(T))
 				impacted_turfs += T
 			if(istransparentturf(T))

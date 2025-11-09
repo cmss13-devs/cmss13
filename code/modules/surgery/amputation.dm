@@ -75,9 +75,9 @@
 /datum/surgery_step/cut_muscle/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/muscle_type = target.get_muscle_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You finish severing the [muscle_type] in [target]'s [surgery.affected_limb.display_name]. They can be reattached if you've changed your mind, but once you start to cut through the bone you'll have to see it through to the end."),
-		SPAN_WARNING("[user] has severed the [muscle_type] in your [surgery.affected_limb.display_name]! YOU CAN'T MOVE YOUR [surgery.affected_limb.display_name] ANYMORE! HELP!"),
-		SPAN_NOTICE("[user] has severed the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
+		SPAN_NOTICE("You finish severing the [muscle_type] in [target]'s [surgery.affected_limb.display_name]. Please ask if this is what your patient wants before you continue. It can be reattached if you've changed your mind, but once you start to cut through the bone you'll have to see it through to the end."),
+		SPAN_WARNING("[user] has severed the [muscle_type] in your [surgery.affected_limb.display_name]! This is an amputation! If this is not what you want, tell your doctor to stop!"),
+		SPAN_NOTICE("[user] has severed the [muscle_type] in [target]'s [surgery.affected_limb.display_name]. This is an amputation! Is this what the patient wants?"))
 
 	log_interact(user, target, "[key_name(user)] successfully began an amputation on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool ? "\the [tool]" : "their hands"], starting [surgery].")
 
@@ -119,8 +119,8 @@
 /datum/surgery_step/abort_amputation/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/muscle_type = target.get_muscle_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You finish reconnecting the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] has reconnected the [muscle_type] in your [surgery.affected_limb.display_name]. You can move your [surgery.affected_limb.display_name] again. Whew."),
+		SPAN_NOTICE("You finish reconnecting the [muscle_type] in [target]'s [surgery.affected_limb.display_name]. You feel better about yourself."),
+		SPAN_NOTICE("[user] has reconnected the [muscle_type] in your [surgery.affected_limb.display_name]. Your [surgery.affected_limb.display_name] is saved. Whew."),
 		SPAN_NOTICE("[user] has reconnected the [muscle_type] in [target]'s [surgery.affected_limb.display_name]."))
 
 	complete(target, surgery)
@@ -156,9 +156,9 @@
 /datum/surgery_step/saw_off_limb/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/bone_type = target.get_bone_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You start cutting through the [bone_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_WARNING("[user] starts cutting through the [bone_type] in your [surgery.affected_limb.display_name]! SOMEBODY, PLEASE HELP!"),
-		SPAN_NOTICE("[user] starts cutting through the [bone_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+		SPAN_NOTICE("You start cutting through the [bone_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]! Here goes nothing..."),
+		SPAN_WARNING("[user] starts cutting through the [bone_type] in your [surgery.affected_limb.display_name]! If you have changed your mind, it is too late!"),
+		SPAN_NOTICE("[user] starts cutting through the [bone_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]! Is this what the patient wants?"))
 
 	target.custom_pain("Your [surgery.affected_limb.display_name] is being hacked away! ", 1)
 	if(target.stat == CONSCIOUS)
@@ -170,9 +170,9 @@
 
 /datum/surgery_step/saw_off_limb/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You cut [target]'s [surgery.affected_limb.display_name] off."),
+		SPAN_NOTICE("You cut [target]'s [surgery.affected_limb.display_name] off! If there was nothing wrong with [target]'s [surgery.affected_limb.display_name], you should feel VERY ashamed of yourself."),
 		SPAN_WARNING("[user] cuts your [surgery.affected_limb.display_name] off! Your [surgery.affected_limb.display_name], noooo! Now you need a robotic one."),
-		SPAN_NOTICE("[user] cuts [target]'s [surgery.affected_limb.display_name] off."))
+		SPAN_NOTICE("[user] cuts [target]'s [surgery.affected_limb.display_name] off! Hope the medbay has some metal on hand for a new [surgery.affected_limb.display_name]."))
 
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)
 	surgery.affected_limb.droplimb(amputation = TRUE, surgery_in_progress = TRUE)
@@ -183,9 +183,9 @@
 
 	if(tool_type in cannot_hack) //Some tools are not cool enough to instantly hack off a limb.
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name]! You broke it..."),
-			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of your [surgery.affected_limb.display_name], breaking it!"),
-			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], breaking it!"))
+			SPAN_WARNING("Your hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering it!"),
+			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of your [surgery.affected_limb.display_name], shattering it! Now's your chance to tell the doc to stop!"),
+			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering it!"))
 
 		surgery.affected_limb.fracture()
 		if(target.stat == CONSCIOUS)
@@ -196,9 +196,9 @@
 
 	else
 		user.affected_message(target,
-			SPAN_WARNING("You hack [target]'s [surgery.affected_limb.display_name] off!"),
+			SPAN_WARNING("You hack [target]'s [surgery.affected_limb.display_name] off! If there was nothing wrong with [target]'s [surgery.affected_limb.display_name], you should feel VERY ashamed of yourself."),
 			SPAN_WARNING("[user] hacks your [surgery.affected_limb.display_name] off! Your [surgery.affected_limb.display_name], noooo! Now you need a robotic one."),
-			SPAN_WARNING("[user] hacks [target]'s [surgery.affected_limb.display_name] off!"))
+			SPAN_WARNING("[user] hacks [target]'s [surgery.affected_limb.display_name] off! Hope the medbay has some metal on hand for a new [surgery.affected_limb.display_name]."))
 
 		user.animation_attack_on(target)
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_AMPUTATE)

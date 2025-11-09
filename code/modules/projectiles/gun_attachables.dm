@@ -3352,8 +3352,8 @@ Defined in conflicts.dm of the #defines folder.
 
 		var/datum/reagent/to_remove = fuel_holder.reagents.reagent_list[1]
 
-		var/flamer_chem = "utnapthal"
-		if(!istype(to_remove) || flamer_chem != to_remove.id || length(fuel_holder.reagents.reagent_list) > 1)
+		var/list/flamer_chem = list("utnapthal","fuel")
+		if(!istype(to_remove) ||  !(to_remove.id in flamer_chem) || length(fuel_holder.reagents.reagent_list) > 1)
 			to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
 			return
 

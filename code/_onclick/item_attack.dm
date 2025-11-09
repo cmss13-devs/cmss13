@@ -67,8 +67,7 @@
 
 	var/showname = "Неизвестный" // SS220 EDIT ADDICTION
 	if(user)
-		if(M == user)
-			showname = "[capitalize(user.declent_ru(NOMINATIVE))]" // SS220 EDIT ADDICTION
+		showname = "[capitalize(user.declent_ru(NOMINATIVE))]" // SS220 EDIT ADDICTION
 	if(!(user in viewers(M, null)))
 		showname = "Неизвестный" // SS220 EDIT ADDICTION
 

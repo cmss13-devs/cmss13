@@ -68,7 +68,7 @@
 	var/turf/T_in = target.loc
 	var/turf/T_out = oldLoc
 
-	var/track_type = ishuman(target) ? /obj/effect/decal/cleanable/blood/tracks/footprints : /obj/effect/decal/cleanable/blood/tracks/claws // hardcoded for now, but theres probably gonna be some necessitation for a more dynamic type for other mobs, like dogs and stuff - nihi
+	var/track_type = ishuman(target) ? /obj/effect/decal/cleanable/blood/tracks/footprints : /obj/effect/decal/cleanable/blood/tracks/claws // hardcoded for now, but theres probably gonna be some necessitation for a more dynamic implementation for other mobs, like dogs and stuff (THIS ALSO DOES NOT ACCOUNT FOR THE LARVA) - nihi
 
 	if(istype(T_in))
 		var/obj/effect/decal/cleanable/blood/tracks/FP = LAZYACCESS(T_in.cleanables, CLEANABLE_TRACKS)

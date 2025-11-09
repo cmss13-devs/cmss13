@@ -153,6 +153,7 @@
 /turf/closed/wall/almayer/research/containment/wall/divide
 	icon_state = "containment_wall_divide"
 	var/operating = FALSE
+	var/remote_id
 
 /turf/closed/wall/almayer/research/containment/wall/divide/proc/open()
 	if(operating)

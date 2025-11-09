@@ -42,6 +42,8 @@
 	var/client/player
 	/// Truthy if player is an observer
 	var/is_observer = FALSE
+	/// Weakref to the player.mob to determine if this is stale
+	var/datum/weakref/weak_mob
 
 // Related scheme to above
 /datum/coords/qtplayer/Destroy()
@@ -212,14 +214,16 @@
 		se_branch.query_range(range, found_players, flags)
 	if(!player_coords)
 		return
-	for(var/datum/coords/qtplayer/P as anything in player_coords)
-		if(!P.player) // Basically client is gone
+	for(var/datum/coords/qtplayer/quad_player as anything in player_coords)
+		if(!quad_player.player) // Basically client is gone
 			continue
-		if((flags & QTREE_EXCLUDE_OBSERVER) && P.is_observer)
+		if((flags & QTREE_EXCLUDE_OBSERVER) && quad_player.is_observer)
 			continue
-		if(range.contains_coords(P))
+		if(range.contains_coords(quad_player))
 			if(flags & QTREE_SCAN_MOBS)
-				found_players.Add(P.player.mob)
+				if(quad_player.player.mob != quad_player.weak_mob.resolve())
+					continue
+				found_players.Add(quad_player.player.mob)
 			else
-				found_players.Add(P.player)
+				found_players.Add(quad_player.player)
 

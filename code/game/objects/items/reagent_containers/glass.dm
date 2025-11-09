@@ -349,7 +349,7 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120)
 
-/obj/item/reagent_container/glass/beaker/silver
+/obj/item/reagent_container/glass/beaker/large/silver
 	name = "large silver beaker"
 	desc = "A large silver beaker. Can hold up to 240 units. The beaker itself acts as a silver catalyst."
 	icon_state = "beakersilver"

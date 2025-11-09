@@ -143,7 +143,10 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
  */
 /proc/stars_decode_html(message, clear_char_probability = 25)
 	if(!length(message))
-		return
+		return ""
+
+	if(clear_char_probability >= 100)
+		return message
 
 	// boolean value to know if the current indexed element needs to be scrambled.
 	var/parsing_message = TRUE
@@ -202,6 +205,27 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		output_message += scrambled_string
 
 	return output_message
+
+/// The min length of a message before ANNOUNCEMENT_CLARITY_MIN
+#define ANNOUNCEMENT_CLARITY_MAX_BOUND 200
+/// The max length of a message for ANNOUNCEMENT_CLARITY_MAX
+#define ANNOUNCEMENT_CLARITY_MIN_BOUND 10
+/// The clarity percent for messages >= ANNOUNCEMENT_CLARITY_MAX_BOUND
+#define ANNOUNCEMENT_CLARITY_MIN 40
+/// The clarity percent for messages <= ANNOUNCEMENT_CLARITY_MIN_BOUND
+#define ANNOUNCEMENT_CLARITY_MAX 90
+
+/// Gets a stars_decode_html result with a variable clarity based on message length using the ANNOUNCEMENT_CLARITY defines
+/proc/get_garbled_announcement(message)
+	var/clamped_length = clamp(length(message), ANNOUNCEMENT_CLARITY_MIN_BOUND, ANNOUNCEMENT_CLARITY_MAX_BOUND)
+	var/scalar = SCALE(clamped_length, ANNOUNCEMENT_CLARITY_MIN_BOUND, ANNOUNCEMENT_CLARITY_MAX_BOUND)
+	var/clarity = round(lerp(ANNOUNCEMENT_CLARITY_MAX, ANNOUNCEMENT_CLARITY_MIN, scalar), 1)
+	return stars_decode_html(message, clarity)
+
+#undef ANNOUNCEMENT_CLARITY_MAX_BOUND
+#undef ANNOUNCEMENT_CLARITY_MIN_BOUND
+#undef ANNOUNCEMENT_CLARITY_MIN
+#undef ANNOUNCEMENT_CLARITY_MAX
 
 /proc/slur(phrase)
 	phrase = html_decode(phrase)

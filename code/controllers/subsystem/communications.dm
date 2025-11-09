@@ -286,6 +286,9 @@ SUBSYSTEM_DEF(radio)
 	var/list/tcomm_machines_ground = list()
 	var/list/tcomm_machines_almayer = list()
 
+	/// The last cached result for get_available_tcomm_zs(COMM_FREQ)
+	var/list/last_command_zs = list()
+
 	var/static/list/freq_to_span = list(
 		"[COMM_FREQ]" = "comradio",
 		"[AI_FREQ]" = "airadio",
@@ -383,6 +386,8 @@ SUBSYSTEM_DEF(radio)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
 			target_zs += SSmapping.levels_by_trait(ZTRAIT_RESERVED)
 			break
+	if(frequency == COMM_FREQ)
+		last_command_zs = target_zs
 	return target_zs
 
 /datum/controller/subsystem/radio/proc/add_tcomm_machine(obj/machine)

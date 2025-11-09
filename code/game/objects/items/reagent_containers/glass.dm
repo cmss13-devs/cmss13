@@ -616,7 +616,7 @@
 	matter = list("metal" = 2000)
 	w_class = SIZE_MEDIUM
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(10,20,30,60,120)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,100,120)
 	volume = 120
 	flags_atom = FPRINT|OPENCONTAINER
 
@@ -685,7 +685,7 @@
 	matter = list("metal" = 4000)
 	w_class = SIZE_LARGE
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(10,20,30,60,120,240)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,100,120,150,240)
 	volume = 240
 	flags_atom = FPRINT|OPENCONTAINER
 

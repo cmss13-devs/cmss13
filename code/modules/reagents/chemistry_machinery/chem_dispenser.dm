@@ -22,7 +22,7 @@
 	var/accept_beaker_only = TRUE
 	var/obj/item/reagent_container/beaker = null
 	var/ui_check = 0
-	var/static/list/possible_transfer_amounts = list(5,10,20,30,40)
+	var/static/list/possible_transfer_amounts = list(5,10,15,20,30,40,60)
 	/// List of typepaths for reagent containers that a chem dispenser will accept; all containers allowed if empty.
 	var/list/whitelisted_containers = list()
 	var/list/dispensable_reagents = list(

@@ -54,16 +54,19 @@
 
 /obj/effect/decal/cleanable/blood/Crossed(atom/movable/AM)
 	. = ..()
-	// Check if the blood is dry and only humans
-	// can make footprints
-	if(!amount || !ishuman(AM) || QDELETED(AM))
+	// check if the blood is dry and only for carbons
+	if(!amount || !iscarbon(AM) || QDELETED(AM))
 		return
 
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
 		return
 
-	var/mob/living/carbon/human/H = AM
-	H.add_blood(basecolor, BLOOD_FEET)
+	var/mob/living/carbon/H = AM
+	var/obj/item/clothing/shoes/S
+	if(ishuman(H))
+		var/mob/living/carbon/human/P = H
+		S = P.shoes
+		P.add_blood(basecolor, BLOOD_FEET)
 
 	var/dry_time_left = 0
 	if(drying_time)
@@ -73,7 +76,7 @@
 		return
 
 	if(!H.bloody_footsteps)
-		H.AddElement(/datum/element/bloody_feet, dry_time_left, H.shoes, amount, basecolor)
+		H.AddElement(/datum/element/bloody_feet, dry_time_left, S, amount, basecolor)
 	else
 		SEND_SIGNAL(H, COMSIG_HUMAN_BLOOD_CROSSED, amount, basecolor, dry_time_left)
 

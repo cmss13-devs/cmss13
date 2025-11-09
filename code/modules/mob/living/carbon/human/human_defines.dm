@@ -128,14 +128,17 @@
 	var/marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
 	var/marine_buyable_categories = MARINE_CAN_BUY_ALL
 
-	var/spawned_corpse = FALSE // For the corpse spawner
-	//taken from blood.dm
-	var/hands_blood_color = "" //color of the blood on our hands if there's any.
+	/// For the corpse spawner
+	var/spawned_corpse = FALSE
+
+	// taken from blood.dm //
+
+	/// color of the blood on our hands if there's any.
+	var/hands_blood_color = ""
 	var/hands_blood_amt = 0
-	var/feet_blood_color = "" //color of the blood on our feet if there's any
-	var/feet_blood_amt = 0
-	/// The number of bloody foot steps left to make
-	var/bloody_footsteps = 0
+	/// color of the blood on our feet if there's any
+	var/feet_blood_color = ""
+	//var/feet_blood_amt = 0 // this has never even been used
 
 	//taken from random files
 	var/last_chew = 0

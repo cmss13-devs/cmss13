@@ -14,13 +14,13 @@
 
 /datum/element/bloody_feet/Attach(datum/target, dry_time, obj/item/clothing/shoes, steps, bcolor)
 	. = ..()
-	if(!ishuman(target))
+	if(!iscarbon(target))
 		return ELEMENT_INCOMPATIBLE
 
 	steps_to_take = steps
 	color = bcolor
 
-	var/mob/living/carbon/human/H = target
+	var/mob/living/carbon/H = target
 	H.bloody_footsteps = steps_to_take
 	LAZYADD(entered_bloody_turf, target)
 
@@ -45,17 +45,17 @@
 		UnregisterSignal(target_shoes[target], COMSIG_ITEM_DROPPED)
 		LAZYREMOVE(target_shoes, target)
 
-	var/mob/living/carbon/human/H = target
-	if(ishuman(H))
+	var/mob/living/carbon/H = target
+	if(iscarbon(H))
 		H.bloody_footsteps = 0
 
 	return ..()
 
-/datum/element/bloody_feet/proc/on_moved(mob/living/carbon/human/target, oldLoc, direction)
+/datum/element/bloody_feet/proc/on_moved(mob/living/carbon/target, oldLoc, direction)
 	SIGNAL_HANDLER
 	INVOKE_ASYNC(src, PROC_REF(add_tracks), target, oldLoc, direction)
 
-/datum/element/bloody_feet/proc/add_tracks(mob/living/carbon/human/target, oldLoc, direction)
+/datum/element/bloody_feet/proc/add_tracks(mob/living/carbon/target, oldLoc, direction)
 	if(GLOB.perf_flags & PERF_TOGGLE_NOBLOODPRINTS)
 		Detach(target)
 		return
@@ -68,24 +68,26 @@
 	var/turf/T_in = target.loc
 	var/turf/T_out = oldLoc
 
+	var/track_type = ishuman(target) ? /obj/effect/decal/cleanable/blood/tracks/footprints : /obj/effect/decal/cleanable/blood/tracks/claws // hardcoded for now, but theres probably gonna be some necessitation for a more dynamic type for other mobs, like dogs and stuff - nihi
+
 	if(istype(T_in))
-		var/obj/effect/decal/cleanable/blood/tracks/footprints/FP = LAZYACCESS(T_in.cleanables, CLEANABLE_TRACKS)
+		var/obj/effect/decal/cleanable/blood/tracks/FP = LAZYACCESS(T_in.cleanables, CLEANABLE_TRACKS)
 		if(FP)
 			var/image/I = LAZYACCESS(FP.steps_in, "[direction]")
 			if(!I)
 				FP.add_tracks(direction, color, FALSE)
 		else
-			FP = new(T_in)
+			FP = new track_type(T_in)
 			FP.add_tracks(direction, color, FALSE)
 
 	if(istype(T_out))
-		var/obj/effect/decal/cleanable/blood/tracks/footprints/FP = LAZYACCESS(T_out.cleanables, CLEANABLE_TRACKS)
+		var/obj/effect/decal/cleanable/blood/tracks/FP = LAZYACCESS(T_out.cleanables, CLEANABLE_TRACKS)
 		if(FP)
 			var/image/I = LAZYACCESS(FP.steps_out, "[direction]")
 			if(!I)
 				FP.add_tracks(direction, color, TRUE)
 		else
-			FP = new(T_out)
+			FP = new track_type(T_out)
 			FP.add_tracks(direction, color, TRUE)
 
 	if(--target.bloody_footsteps <= 0)

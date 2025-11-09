@@ -1213,6 +1213,10 @@
 	if(!check_state())
 		return
 
+	if(huggers_max == 0)
+		to_chat(src, SPAN_XENOMINORWARNING("We can't carry any facehuggers!"))
+		return
+
 	//target a hugger on the ground to store it directly
 	if(istype(target, /obj/item/clothing/mask/facehugger))
 		var/obj/item/clothing/mask/facehugger/huggie = target
@@ -1278,6 +1282,10 @@
 		return
 
 	if(!check_state())
+		return
+
+	if(eggs_max == 0)
+		to_chat(src, SPAN_XENOMINORWARNING("We can't carry any eggs!"))
 		return
 
 	//target a hugger on the ground to store it directly

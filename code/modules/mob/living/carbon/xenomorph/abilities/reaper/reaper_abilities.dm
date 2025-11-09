@@ -8,7 +8,7 @@
 	plasma_cost = 50
 
 	var/range = 2
-	var/flesh_plasma_reap = 5
+	var/flesh_plasma_from_plagued_target = 10
 
 /datum/action/xeno_action/activable/replenish
 	name = "Replenish"
@@ -24,13 +24,14 @@
 	var/plas_mod = 0.5 // Cost multiplier for adjacent healing
 	var/flesh_plas_mod = 1 // For weed interaciton
 
-/datum/action/xeno_action/onclick/emit_mist
-	name = "Emit Mist"
+/datum/action/xeno_action/activable/breath_miasma
+	name = "Breath Miasma"
 	action_icon_state = "gas_mine"
-	macro_path = /datum/action/xeno_action/verb/verb_mist
+	macro_path = /datum/action/xeno_action/verb/verb_breath_miasma
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	xeno_cooldown = 20 SECONDS
 	plasma_cost = 100
 
 	var/flesh_plasma_cost = 150
+	var/breath_range = 5

@@ -65,7 +65,7 @@
 		/datum/action/xeno_action/onclick/set_hugger_reserve,
 		/datum/action/xeno_action/activable/reap, //second macro
 		/datum/action/xeno_action/activable/replenish, //third macro
-		/datum/action/xeno_action/onclick/emit_mist, //fourth macro
+		/datum/action/xeno_action/activable/breath_miasma, //fourth macro
 	)
 
 	inherent_verbs = list(
@@ -77,8 +77,8 @@
 	weed_food_states = list("Reaper_1","Reaper_2","Reaper_3")
 	weed_food_states_flipped = list("Reaper_1","Reaper_2","Reaper_3")
 
-	huggers_max = 12
-	eggs_max = 12
+	huggers_max = 20
+	eggs_max = 4
 
 	// Reaper vars
 	var/flesh_plasma = 0
@@ -93,6 +93,7 @@
 	/// Within how many tiles of you do corpses need to be for you to generate flesh plasma off them
 	var/nearby_corpse_range = 3
 
+	// Let them know how much they've healed over Xenos for
 	var/transferred_healing = 0
 
 /mob/living/carbon/xenomorph/reaper/get_status_tab_items()
@@ -253,7 +254,10 @@
 	var/damage = (xeno.melee_damage_upper + xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 	carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
 	carbon.apply_effect(1, DAZE)
-	xeno.modify_flesh_plasma(flesh_plasma_reap)
+
+	for(var/datum/reagent/toxin/sepsicine/sepsis in carbon.reagents.reagent_list)
+		xeno.modify_flesh_plasma(flesh_plasma_from_plagued_target)
+
 	shake_camera(target, 2, 1)
 	apply_cooldown()
 	return ..()
@@ -385,34 +389,59 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/onclick/emit_mist/use_ability(atom/target)
+/datum/action/xeno_action/activable/breath_miasma/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
-	var/datum/effect_system/smoke_spread/reaper_mist/cloud = new /datum/effect_system/smoke_spread/reaper_mist
 
-	if(!isxeno(owner))
-		return
-
-	if(!action_cooldown_check())
-		return
-
-	if(!xeno.check_state())
-		return
-
-	if(!check_plasma_owner())
+	if(!action_cooldown_check() || !xeno.check_state())
 		return
 
 	if(xeno.flesh_plasma < flesh_plasma_cost)
 		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh plasma, we need [flesh_plasma_cost - xeno.flesh_plasma] more!"))
 		return
 
-	use_plasma_owner()
-	var/datum/cause_data/cause_data = create_cause_data("reaper mist", owner)
-	cloud.set_up(4, 0, get_turf(xeno), null, 10, new_cause_data = cause_data)
-	cloud.start()
+	if(!check_and_use_plasma_owner())
+		return
+
 	xeno.emote("hiss")
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] belches a sickly greenish mist!"), \
-		SPAN_XENOWARNING("We breath a cloud of mist of evaporated flesh plasma!"))
+		SPAN_XENOWARNING("We breath a cloud of evaporated flesh plasma!"))
 
 	xeno.modify_flesh_plasma(-flesh_plasma_cost)
 	apply_cooldown()
+
+	INVOKE_ASYNC(src, PROC_REF(handle_miasma_travel), target)
+
 	return ..()
+
+/datum/action/xeno_action/activable/breath_miasma/proc/handle_miasma_travel(atom/target)
+	// Credit to iloveloopers for Flamer Smoke code which I have modified for this to work
+	var/datum/cause_data/cause_data = create_cause_data("reaper mist", owner)
+	var/source_turf = get_turf(owner)
+	var/distance_travelled = 0
+	var/turf/turfs[] = get_line(owner, target, FALSE)
+	var/turf/first_turf = turfs[1]
+	var/turf/second_turf = turfs[2]
+	for(var/turf/turf in turfs)
+		if(distance_travelled >= breath_range)
+			break
+
+		if(turf.density)
+			break
+		else
+			var/obj/effect/particle_effect/smoke/checker = new()
+			var/atom/blocked = LinkBlocked(checker, source_turf, turf)
+			if(blocked)
+				break
+
+		// playsound(turf, '', 5, 1) Put in some nice sounding hiss soundeffect
+		if(turf != first_turf && turf != second_turf)
+			var/datum/effect_system/smoke_spread/reaper_mist/miasma = new()
+			miasma.set_up(2, 0, turf, null, 10, new_cause_data = cause_data)
+			miasma.start()
+		if(turf == second_turf)
+			var/datum/effect_system/smoke_spread/reaper_mist/miasma = new()
+			miasma.set_up(2, 0, turf, null, 10, new_cause_data = cause_data)
+			miasma.start()
+		sleep(5)
+
+		distance_travelled++

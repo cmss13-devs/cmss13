@@ -420,8 +420,6 @@
 	var/source_turf = get_turf(owner)
 	var/distance_travelled = 0
 	var/turf/turfs[] = get_line(owner, target, FALSE)
-	var/turf/first_turf = turfs[1]
-	var/turf/second_turf = turfs[2]
 	for(var/turf/turf in turfs)
 		if(distance_travelled >= breath_range)
 			break
@@ -434,15 +432,10 @@
 			if(blocked)
 				break
 
-		// playsound(turf, '', 5, 1) Put in some nice sounding hiss soundeffect
-		if(turf != first_turf && turf != second_turf)
-			var/datum/effect_system/smoke_spread/reaper_mist/miasma = new()
-			miasma.set_up(2, 0, turf, null, 10, new_cause_data = cause_data)
-			miasma.start()
-		if(turf == second_turf)
-			var/datum/effect_system/smoke_spread/reaper_mist/miasma = new()
-			miasma.set_up(2, 0, turf, null, 10, new_cause_data = cause_data)
-			miasma.start()
+		// playsound(turf, '', 5, 1) Put in some nice sounding hiss soundeffect later
+		var/datum/effect_system/smoke_spread/reaper_mist/miasma = new()
+		miasma.set_up(1, 0, turf, null, 10, new_cause_data = cause_data)
+		miasma.start()
 		sleep(5)
 
 		distance_travelled++

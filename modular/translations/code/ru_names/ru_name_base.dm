@@ -28,6 +28,7 @@ GLOBAL_LIST_EMPTY(ru_names)
 		"gender" = gender,
 	)
 
+/// Берёт значения из toml файлов перевода (склонения). Можно передать prefix и suffix, которые так же будут применены к base значению
 /proc/ru_names_toml(name, prefix, suffix, override_base)
 	. = list()
 	var/formatted_name = format_text(name)
@@ -79,42 +80,6 @@ GLOBAL_LIST_EMPTY(ru_names)
 			"[prefix][prepositional_form][suffix]",
 			gender = "[entry["gender"] || null]",
 		)
-
-// see proc/apply_label()
-// change prefix and postfix in current ru_names
-/proc/ru_names_toml_rename(list/ru_names, prefix = "", postfix = "")
-	if(!length(ru_names) || !GLOB.ru_names[ru_names["base"]])
-		return
-
-	return list(
-		base = "[prefix][ru_names["base"]][postfix]",
-		NOMINATIVE = "[prefix][ru_names[NOMINATIVE]][postfix]",
-		GENITIVE = "[prefix][ru_names[GENITIVE]][postfix]",
-		DATIVE = "[prefix][ru_names[DATIVE]][postfix]",
-		ACCUSATIVE = "[prefix][ru_names[ACCUSATIVE]][postfix]",
-		INSTRUMENTAL = "[prefix][ru_names[INSTRUMENTAL]][postfix]",
-		PREPOSITIONAL = "[prefix][ru_names[PREPOSITIONAL]][postfix]",
-		gender = "[ru_names["gender"]]",
-	)
-
-// see proc/clear_label()
-// clearing ru_names, base name must be original
-/proc/ru_names_toml_clear(list/ru_names)
-	if(!length(ru_names) || !GLOB.ru_names[ru_names["base"]])
-		return
-
-	var/list/entry = GLOB.ru_names[ru_names["base"]]
-
-	return list(
-		base = "[ru_names["base"]]",
-		NOMINATIVE = "[entry["nominative"]]",
-		GENITIVE = "[entry["genitive"]]",
-		DATIVE = "[entry["dative"]]",
-		ACCUSATIVE = "[entry["accusative"]]",
-		INSTRUMENTAL = "[entry["instrumental"]]",
-		PREPOSITIONAL = "[entry["prepositional"]]",
-		gender = "[ru_names["gender"]]",
-	)
 
 /atom/Initialize(mapload, ...)
 	. = ..()

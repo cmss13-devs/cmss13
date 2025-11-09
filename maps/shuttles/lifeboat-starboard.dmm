@@ -1,4 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/shuttle/lifeboat)
 "ce" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "17,5"
@@ -369,9 +372,6 @@
 	icon_state = "12,0"
 	},
 /area/shuttle/lifeboat)
-"Qj" = (
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/shuttle/lifeboat)
 "Rk" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "25,5"
@@ -542,22 +542,22 @@ AF
 Ep
 "}
 (10,1,1) = {"
-Qj
+aa
 SA
 OO
 VZ
 OO
 AF
-Qj
+aa
 "}
 (11,1,1) = {"
-Qj
+aa
 SA
 OO
 VZ
 OO
 AF
-Qj
+aa
 "}
 (12,1,1) = {"
 em
@@ -587,22 +587,22 @@ AF
 lS
 "}
 (15,1,1) = {"
-Qj
+aa
 SA
 OO
 VZ
 OO
 AF
-Qj
+aa
 "}
 (16,1,1) = {"
-Qj
+aa
 SA
 OO
 VZ
 OO
 AF
-Qj
+aa
 "}
 (17,1,1) = {"
 em

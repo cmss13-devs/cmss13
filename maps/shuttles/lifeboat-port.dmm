@@ -1,4 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/shuttle/lifeboat)
 "aF" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "1,6"
@@ -335,9 +338,6 @@
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/shuttle/lifeboat)
-"Nm" = (
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/shuttle/lifeboat)
 "Ob" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "17,6"
@@ -542,22 +542,22 @@ pH
 EW
 "}
 (10,1,1) = {"
-Nm
+aa
 dt
 Ro
 Jg
 Ro
 pH
-Nm
+aa
 "}
 (11,1,1) = {"
-Nm
+aa
 dt
 Ro
 Jg
 Ro
 pH
-Nm
+aa
 "}
 (12,1,1) = {"
 Rs
@@ -587,22 +587,22 @@ pH
 xS
 "}
 (15,1,1) = {"
-Nm
+aa
 dt
 Ro
 Jg
 Ro
 pH
-Nm
+aa
 "}
 (16,1,1) = {"
-Nm
+aa
 dt
 Ro
 Jg
 Ro
 pH
-Nm
+aa
 "}
 (17,1,1) = {"
 Rs

@@ -1,4 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/shuttle/lifeboat)
 "ao" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "6,0"
@@ -168,9 +171,6 @@
 	id = "Boat1-D2";
 	throw_dir = 1
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
-/area/shuttle/lifeboat)
-"xu" = (
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/shuttle/lifeboat)
 "ya" = (
@@ -538,22 +538,22 @@ qt
 pi
 "}
 (10,1,1) = {"
-xu
+aa
 zO
 zc
 eW
 zc
 qt
-xu
+aa
 "}
 (11,1,1) = {"
-xu
+aa
 zO
 zc
 eW
 zc
 qt
-xu
+aa
 "}
 (12,1,1) = {"
 hr
@@ -583,22 +583,22 @@ qt
 lQ
 "}
 (15,1,1) = {"
-xu
+aa
 zO
 zc
 eW
 zc
 qt
-xu
+aa
 "}
 (16,1,1) = {"
-xu
+aa
 zO
 zc
 eW
 zc
 qt
-xu
+aa
 "}
 (17,1,1) = {"
 hr

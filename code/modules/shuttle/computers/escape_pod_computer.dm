@@ -239,7 +239,9 @@
 	var/obj/docking_port/mobile/crashable/escape_shuttle/linked_shuttle
 	var/start_locked = TRUE
 	opacity = FALSE
-	layer = ABOVE_MOB_LAYER
+	glass = TRUE
+	open_layer = ABOVE_MOB_LAYER
+	closed_layer = ABOVE_MOB_LAYER
 
 /obj/structure/machinery/door/airlock/evacuation/Initialize()
 	. = ..()

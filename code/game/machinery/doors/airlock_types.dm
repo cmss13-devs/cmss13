@@ -407,7 +407,9 @@
 	masterkey_resist = TRUE
 	req_access = null
 	opacity = FALSE
-	layer = ABOVE_MOB_LAYER
+	glass = TRUE
+	open_layer = ABOVE_MOB_LAYER
+	closed_layer = ABOVE_MOB_LAYER
 
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced/colony
 	req_access = null

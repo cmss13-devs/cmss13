@@ -42,7 +42,7 @@
 			if(isobserver(current_mob)) //observers see everything
 				if(current_mob.client?.prefs?.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
 					continue // Valid target w/o garble
-				if(!is_shipside && !(current_turf.z in coms_zs))
+				if(!is_shipside && !(current_turf?.z in coms_zs))
 					targets_to_garble += current_mob
 				continue // Valid target
 
@@ -54,7 +54,7 @@
 			if(is_shipside && !(istype(GLOB.master_mode, /datum/game_mode/extended/faction_clash))) // People on ship see everything, unless it is faction clash
 				continue // Valid target w/o garble
 
-			if(!is_shipside && !(current_turf.z in coms_zs))
+			if(!is_shipside && !(current_turf?.z in coms_zs))
 				targets_to_garble += current_human
 
 			// If they have iff AND a marine headset they will recieve announcements
@@ -85,7 +85,7 @@
 			if(isobserver(current_mob)) //observers see everything
 				if(current_mob.client?.prefs?.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
 					continue // Valid target w/o garble
-				if(!is_shipside && !(current_turf.z in coms_zs))
+				if(!is_shipside && !(current_turf?.z in coms_zs))
 					targets_to_garble += current_mob
 				continue // Valid target
 
@@ -94,7 +94,7 @@
 				targets -= current_human
 				continue // Invalid target
 
-			if(!is_shipside && !(current_turf.z in coms_zs))
+			if(!is_shipside && !(current_turf?.z in coms_zs))
 				targets_to_garble += current_human
 
 	else
@@ -105,7 +105,7 @@
 			if(isobserver(current_mob)) //observers see everything
 				if(current_mob.client?.prefs?.toggles_chat & CHAT_GHOSTANNOUNCECLARITY)
 					continue // Valid target w/o garble
-				if(!is_shipside && !(current_turf.z in coms_zs))
+				if(!is_shipside && !(current_turf?.z in coms_zs))
 					targets_to_garble += current_mob
 				continue // Valid target
 
@@ -118,7 +118,7 @@
 				targets -= current_human
 				continue // Invalid target
 
-			if(!is_shipside && !(current_turf.z in coms_zs))
+			if(!is_shipside && !(current_turf?.z in coms_zs))
 				targets_to_garble += current_human
 
 	if(!isnull(signature))

@@ -116,7 +116,7 @@
 		if(assigned_squad.primary_objective || assigned_squad.secondary_objective)
 			var/turf/current_turf = get_turf(src)
 			var/is_shipside = is_mainship_level(current_turf?.z)
-			var/garbled = !is_shipside && !(current_turf.z in SSradio.last_command_zs)
+			var/garbled = !is_shipside && !(current_turf?.z in SSradio.last_command_zs)
 			if(!garbled) // They've now gotten a connection
 				squad_primary_objective_ungarbled = TRUE
 				squad_secondary_objective_ungarbled = TRUE

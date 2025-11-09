@@ -562,7 +562,7 @@
 	for(var/mob/current_mob in targets)
 		var/turf/current_turf = get_turf(current_mob)
 		var/is_shipside = is_mainship_level(current_turf?.z)
-		if(!is_shipside && !(current_turf.z in coms_zs))
+		if(!is_shipside && !(current_turf?.z in coms_zs))
 			targets_to_garble += current_mob
 
 	return targets_to_garble

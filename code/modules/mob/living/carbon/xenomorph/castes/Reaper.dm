@@ -402,6 +402,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
+	xeno.face_atom(target)
 	xeno.emote("hiss")
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] belches a sickly greenish mist!"), \
 		SPAN_XENOWARNING("We breath a cloud of evaporated flesh plasma!"))

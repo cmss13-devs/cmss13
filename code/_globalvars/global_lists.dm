@@ -174,8 +174,15 @@ GLOBAL_LIST_INIT(surgical_tools, setup_surgical_tools())
 GLOBAL_LIST_INIT(surgical_init_tools, GLOB.surgical_tools - typecacheof(SURGERY_TOOLS_NO_INIT_MSG))
 GLOBAL_LIST_INIT(surgical_patient_types, setup_surgical_patient_types())
 
-GLOBAL_LIST_INIT_TYPED(gear_path_presets_list, /datum/equipment_preset, setup_gear_path_presets())
-GLOBAL_LIST_INIT_TYPED(gear_name_presets_list, /datum/equipment_preset, setup_gear_name_presets())
+/datum/equip_preset_folder
+	var/list/categories
+	var/list/datum/equipment_preset/gear_path_presets_list
+	var/list/datum/equipment_preset/gear_name_presets_list
+
+/datum/equip_preset_folder/New()
+	setup_gear_categories()
+
+GLOBAL_DATUM_INIT(equipment_presets, /datum/equip_preset_folder, new)
 
 GLOBAL_LIST_EMPTY(active_areas)
 GLOBAL_LIST_EMPTY(all_areas)
@@ -403,28 +410,35 @@ GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 		resin_meanings_list[T] = XMD
 	return sortAssoc(resin_meanings_list)
 
-/proc/setup_gear_path_presets()
-	var/list/gear_path_presets_list = list()
-	for(var/T in typesof(/datum/equipment_preset))
-		var/datum/equipment_preset/EP = T
-		if (!initial(EP.flags))
-			continue
-		EP = new T
-		gear_path_presets_list[EP.type] = EP
-	return sortAssoc(gear_path_presets_list)
+// Ideally I need to TGUI this.
+/datum/equip_preset_folder/proc/setup_gear_categories()
+	var/list/all_categories = list()
+	var/list/path_presets_list = list()
 
-/proc/setup_gear_name_presets()
-	var/list/gear_path_presets_list = list()
-	for(var/T in typesof(/datum/equipment_preset))
-		var/datum/equipment_preset/EP = T
-		if (!initial(EP.flags))
+	for(var/type in typesof(/datum/equipment_preset))
+		var/datum/equipment_preset/preset = type
+		if (!initial(preset.flags))
 			continue
-		EP = new T
-		var/datum/equipment_preset/existing = gear_path_presets_list[EP.name]
-		if(existing)
-			stack_trace("[EP.name] from [T] overlaps with [existing.type]! It must have a unique name for lookup!")
-		gear_path_presets_list[EP.name] = EP
-	return sortAssoc(gear_path_presets_list)
+		preset = new type
+		path_presets_list[preset.type] = preset
+
+		var/list/categories_to_check = list("All", preset.faction)
+		categories_to_check += preset.selection_categories
+		for(var/category in categories_to_check)
+			if(!(category in all_categories))
+				all_categories[category] = list()
+
+			if(!(preset.name in all_categories[category]))
+				all_categories[category][preset.name] = preset
+			else
+				var/datum/equipment_preset/existing = all_categories[category][preset.name]
+				stack_trace("[preset.name] from [type] overlaps with [existing.type]! It must have a unique name for lookup!")
+
+	for(var/category_list in all_categories)
+		all_categories[category_list] = sortAssoc(all_categories[category_list])
+
+	gear_path_presets_list = sortAssoc(path_presets_list)
+	categories = all_categories
 
 /proc/setup_language_keys()
 	var/list/language_keys = list()

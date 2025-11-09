@@ -292,6 +292,14 @@
 	to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
 	playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
 
+	// Inform observers to grab some popcorn if it isn't nested
+	if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
+		var/area/burst_area = get_area(src)
+		var/area_text = burst_area ? " at <b>[burst_area]</b>" : ""
+		notify_ghosts(header = "Burst Imminent", message = "A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b>[area_text]!", source = affected_mob)
+
+	stage = 7 // Begin the autoburst countdown
+
 /mob/living/carbon/xenomorph/larva/proc/cause_unbearable_pain(mob/living/carbon/victim)
 	if(loc != victim)
 		return

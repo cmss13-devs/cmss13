@@ -536,6 +536,23 @@
 		for(var/mob/living/carbon/human/marine in marines_list)
 			marine.squad_secondary_objective_ungarbled = !(marine in targets_to_garble)
 
+/datum/squad/proc/remind_objective(transmitter=null, primary=TRUE)
+	var/prefix = "Your primary objective is '"
+	var/postfix = "'. See Status pane for details."
+	var/maptext_title = "Primary Objective:"
+	var/text = primary_objective
+	var/garbled_text = primary_objective_garbled
+	if(!primary)
+		prefix = "Your secondary objective is '"
+		maptext_title = "Secondary Objective:"
+		text = secondary_objective
+		garbled_text = secondary_objective_garbled
+
+	var/list/targets_to_garble = get_garbled_targets(only_leader=FALSE)
+
+	send_message("[prefix][text][postfix]", transmitter, FALSE, targets_to_garble, "[prefix][garbled_text][postfix]")
+	send_maptext(text, maptext_title, FALSE, targets_to_garble, garbled_text)
+
 /// Returns a list of squad members that are without coms
 /datum/squad/proc/get_garbled_targets(only_leader=FALSE)
 	var/list/targets = only_leader ? list(squad_leader) : marines_list

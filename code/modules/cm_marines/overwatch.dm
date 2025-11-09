@@ -662,17 +662,17 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message '[input]' sent to Squad Leader [current_squad.squad_leader] of squad '[current_squad]'.")]")
 					log_overwatch("[key_name(user)] sent '[input]' to Squad Leader [current_squad.squad_leader] of squad [current_squad].")
 
-		if("check_primary")
+		if("remind_primary")
 			if(current_squad) //This is already checked, but ehh.
 				if(current_squad.primary_objective)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Reminding '[current_squad]' of primary objectives: [current_squad.primary_objective].")]")
-					current_squad.transmit_alert("Your primary objective is '", current_squad.primary_objective, "'. See Status pane for details.", "Primary Objective:")
+					current_squad.remind_objective(primary=TRUE)
 
-		if("check_secondary")
+		if("remind_secondary")
 			if(current_squad) //This is already checked, but ehh.
 				if(current_squad.secondary_objective)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Reminding '[current_squad]' of secondary objectives: [current_squad.secondary_objective].")]")
-					current_squad.transmit_alert("Your secondary objective is '", current_squad.secondary_objective, "'. See Status pane for details.", "Secondary Objective:")
+					current_squad.remind_objective(primary=FALSE)
 
 		if("set_primary")
 			var/input = sanitize_control_chars(tgui_input_text(user, "What will be the squad's primary objective?", "Primary Objective"))

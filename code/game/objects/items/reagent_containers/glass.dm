@@ -442,6 +442,14 @@
 	reagents.add_reagent("cryoxadone", 30)
 	update_icon()
 
+/obj/item/reagent_container/glass/beaker/phoron
+	name = "phoron beaker"
+
+/obj/item/reagent_container/glass/beaker/phoron/Initialize()
+	. = ..()
+	reagents.add_reagent("phoron", 30)
+	update_icon()
+
 /obj/item/reagent_container/glass/beaker/cryopredmix
 	name = "cryomix beaker"
 

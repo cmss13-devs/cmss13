@@ -49,7 +49,7 @@
 	dir = 1;
 	pixel_x = 16
 	},
-/obj/structure/reagent_dispensers/fueltank/oxygentank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "aak" = (
@@ -1851,7 +1851,7 @@
 	pixel_y = 22;
 	pixel_x = 2
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/strata/multi_tiles,
 /area/navalis/indoors/logistic/mech_bay)
 "aeY" = (
@@ -9621,7 +9621,7 @@
 	health = 600;
 	name = "reinforced wooden barricade"
 	},
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	layer = 2.9
 	},
 /turf/open/floor/prison/green/east,
@@ -14786,7 +14786,7 @@
 /turf/open/floor/plating/plating_catwalk/prison/dark,
 /area/navalis/indoors/industrial/power)
 "aQD" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "aQE" = (
@@ -17675,7 +17675,7 @@
 /turf/open/floor/plating,
 /area/navalis/indoors/residential/access)
 "aZK" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrownfull2,
 /area/navalis/indoors/logistic/primary_storage)
 "aZL" = (
@@ -23333,7 +23333,7 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/navalis/indoors/logistic/upper_deck/entrance)
 "dDK" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/darkbrown2,
 /area/navalis/indoors/logistic/primary_storage)
 "dDQ" = (
@@ -27476,7 +27476,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/navalis/indoors/residential/cafeteria)
 "gEA" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/south,
 /area/navalis/indoors/command/tertiary_comms)
 "gEK" = (
@@ -33350,7 +33350,7 @@
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/upper_deck/workshop)
 "loI" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrown3/southwest,
 /area/navalis/indoors/logistic/upper_deck/workshop)
 "lpP" = (
@@ -37488,7 +37488,7 @@
 /area/navalis/indoors/command/command_kitchen)
 "oCH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrown3,
 /area/navalis/indoors/logistic/upper_deck/workshop)
 "oDf" = (
@@ -38031,7 +38031,7 @@
 /area/navalis/indoors/command/port_hallway)
 "oWS" = (
 /obj/structure/platform/metal/strata/north,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/north,
 /area/navalis/indoors/command/tertiary_comms)
 "oXd" = (
@@ -43609,7 +43609,7 @@
 /turf/open/floor/hybrisa/metal/bluemetal1,
 /area/navalis/indoors/command/upper_deck/air_traffic_control)
 "sYZ" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/kutjevo/grey,
 /area/navalis/outdoors/landing_zone_2)
 "sZk" = (
@@ -44389,7 +44389,7 @@
 /area/navalis/indoors/command/upper_deck/starboard)
 "tEz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/darkbrown3,
 /area/navalis/indoors/logistic/upper_deck/workshop)
 "tEB" = (
@@ -45536,7 +45536,7 @@
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/indoors/charon/surface_deck/rear_deck)
 "uvV" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/prison/darkpurplefull2,
 /area/navalis/indoors/med_sci/upper_level/sci_scan)
 "uvY" = (
@@ -46489,7 +46489,7 @@
 /turf/open/floor/prison/green/southwest,
 /area/navalis/indoors/med_sci/upper_level/entrance)
 "vcL" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/power/apc,
 /turf/open/floor/prison/whitegreen,
 /area/navalis/indoors/med_sci/pharmacy)
@@ -47459,7 +47459,7 @@
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/navalis/indoors/residential/starboard)
 "vSb" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/southeast,
 /area/navalis/indoors/command/tertiary_comms)
 "vSh" = (
@@ -47553,9 +47553,6 @@
 /turf/open_space,
 /area/navalis/oob/empty_space)
 "vVA" = (
-/obj/structure/barricade/handrail/strata/navalis{
-	dir = 8
-	},
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 8
 	},

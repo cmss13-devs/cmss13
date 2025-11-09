@@ -1003,7 +1003,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_RIOT_CHIEF = 32,
 				JOB_RIOT = 33,
 				JOB_POLICE = 34,
-				JOB_PROVOST_ADVISOR = 35,
+				JOB_SYNTH_MP = 35,
+				JOB_PROVOST_ADVISOR = 36,
 				// 40-49: MedSci
 				JOB_CMO = 40,
 				JOB_RESEARCHER = 41,

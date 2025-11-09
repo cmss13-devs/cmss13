@@ -131,3 +131,6 @@
   - rscadd: Added categories to Select Equipment.
   - code_imp: Cleaned up backend duplication.
   - bugfix: Fixes spec token boxes not working
+2025-11-09:
+  Detective-Google:
+  - code_imp: tweaks a comment to be documented better.

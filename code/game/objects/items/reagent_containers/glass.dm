@@ -380,6 +380,8 @@
 				filling.icon_state = "beakerlarge-80"
 			if(81 to INFINITY)
 				filling.icon_state = "beakerlarge-100"
+			filling.color = mix_color_from_reagents(reagents.reagent_list)
+			overlays += filling
 
 /obj/item/reagent_container/glass/beaker/noreact
 	name = "cryostasis beaker"

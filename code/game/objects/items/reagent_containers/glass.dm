@@ -604,7 +604,7 @@
 
 
 /obj/item/reagent_container/glass/bucket
-	desc = "It's a bucket. Holds 100 units."
+	desc = "It's a bucket. Holds 120 units."
 	name = "bucket"
 	icon = 'icons/obj/janitor.dmi'
 	item_icons = list(
@@ -617,7 +617,7 @@
 	w_class = SIZE_MEDIUM
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
-	volume = 100
+	volume = 120
 	flags_atom = FPRINT|OPENCONTAINER
 
 /obj/item/reagent_container/glass/bucket/attackby(obj/item/I, mob/user)
@@ -679,14 +679,14 @@
 
 /obj/item/reagent_container/glass/bucket/mopbucket
 	name = "mop bucket"
-	desc = "A larger bucket, typically used with a mop. Holds 200 units"
+	desc = "A larger bucket, typically used with a mop. Holds 240 units"
 	icon_state = "mopbucket"
 	item_state = "mopbucket"
 	matter = list("metal" = 4000)
 	w_class = SIZE_LARGE
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120,240)
-	volume = 200
+	volume = 240
 	flags_atom = FPRINT|OPENCONTAINER
 
 /obj/item/reagent_container/glass/bucket/janibucket

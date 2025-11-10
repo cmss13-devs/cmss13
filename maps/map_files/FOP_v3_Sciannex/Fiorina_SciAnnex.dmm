@@ -3196,7 +3196,7 @@
 /area/fiorina/station/chapel)
 "cmy" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/prison,
 /area/fiorina/station/central_ring)
@@ -4275,7 +4275,7 @@
 /area/fiorina/tumor/aux_engi)
 "dec" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/prison,
 /area/fiorina/tumor/servers)
@@ -6034,6 +6034,12 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/prison/whitepurple/northwest,
 /area/fiorina/station/research_cells/west)
+"ezn" = (
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/station/telecomm/lz1_cargo)
 "ezO" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/prison/redfull,
@@ -6638,6 +6644,12 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
+"eWP" = (
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/tumor/ice_lab)
 "eWV" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
@@ -12211,6 +12223,12 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/lowsec)
+"jpN" = (
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/station/research_cells/west)
 "jpQ" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -14559,7 +14577,7 @@
 /area/fiorina/lz/near_lzII)
 "lhY" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/prison,
 /area/fiorina/station/power_ring)
@@ -16525,7 +16543,7 @@
 /area/fiorina/maintenance)
 "mHR" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/oob)
@@ -22101,6 +22119,12 @@
 /obj/item/toy/beach_ball/holoball,
 /turf/open/floor/prison/whitepurple/southeast,
 /area/fiorina/station/research_cells/east)
+"qRg" = (
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/tumor/servers)
 "qRi" = (
 /obj/structure/machinery/door/airlock/prison/horizontal{
 	density = 0;
@@ -24371,6 +24395,12 @@
 "sJH" = (
 /turf/open/floor/prison/whitepurple/southeast,
 /area/fiorina/station/research_cells/east)
+"sJN" = (
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/lz/near_lzI)
 "sJP" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison/floor_plate,
@@ -31171,6 +31201,12 @@
 	},
 /turf/open/floor/prison/whitepurple/southeast,
 /area/fiorina/station/research_cells/west)
+"yhR" = (
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/station/medbay)
 "yif" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/prison,
@@ -31236,6 +31272,12 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/telecomm/lz2_maint)
+"yli" = (
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/station/central_ring)
 "ylr" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4;

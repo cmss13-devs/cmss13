@@ -1466,7 +1466,7 @@
 /area/fiorina/tumor/servers)
 "ZH" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/prison,
 /area/fiorina/tumor/servers)

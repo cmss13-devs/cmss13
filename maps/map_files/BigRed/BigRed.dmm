@@ -531,9 +531,7 @@
 /area/bigredv2/outside/general_offices)
 "abY" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /turf/open/mars_cave/mars_cave_7,
 /area/bigredv2/caves_north)
@@ -551,9 +549,8 @@
 /area/bigredv2/outside/space_port)
 "acb" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 4;
-	health = 25000
+	
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
@@ -3884,9 +3881,7 @@
 /area/bigredv2/outside/n)
 "aqN" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /obj/structure/barricade/wooden,
 /turf/open/floor/asteroidwarning,
@@ -4132,22 +4127,16 @@
 /area/bigredv2/outside/n)
 "asg" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 1;
-	health = 25000
+	dir = 1
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/n)
 "ash" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 1;
-	health = 25000
+	dir = 1
 	},
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/n)
@@ -4962,9 +4951,7 @@
 /area/bigredv2/outside/general_offices)
 "avJ" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -5724,9 +5711,7 @@
 "azJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
-	health = 25000;
 	pixel_y = 3;
 	pixel_x = 17
 	},
@@ -8320,7 +8305,7 @@
 /obj/structure/machinery/door_control{
 	id = "viro_q";
 	layer = 4;
-	name = "Qurantine Lockdown";
+	name = "Quarantine Lockdown";
 	normaldoorcontrol = 1;
 	pixel_x = -25;
 	req_access_txt = "7";
@@ -8506,9 +8491,7 @@
 /area/bigredv2/outside/virology)
 "aNk" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 1;
-	health = 25000
+	dir = 1
 	},
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
@@ -8530,9 +8513,7 @@
 /area/bigredv2/outside/general_store)
 "aNq" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 1;
-	health = 25000
+	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_store)
@@ -8810,9 +8791,7 @@
 /area/bigredv2/outside/virology)
 "aOv" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
@@ -9844,17 +9823,11 @@
 /turf/open/floor/whitegreen/northeast,
 /area/bigredv2/caves/lambda/virology)
 "aSu" = (
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	health = 25000
-	},
+/obj/structure/barricade/wooden,
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aSv" = (
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	health = 25000
-	},
+/obj/structure/barricade/wooden,
 /turf/open/floor/plating,
 /area/bigredv2/outside/virology)
 "aSw" = (
@@ -10112,9 +10085,7 @@
 /area/bigredv2/caves/lambda/virology)
 "aTK" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
@@ -10706,9 +10677,8 @@
 	dir = 4
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
-	health = 25000
+	
 	},
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
@@ -11429,9 +11399,8 @@
 	dir = 5
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 1;
-	health = 25000
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -11574,9 +11543,8 @@
 /area/bigredv2/outside/cargo)
 "bbi" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 4;
-	health = 25000
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -11909,17 +11877,15 @@
 /area/bigredv2/outside/virology)
 "bct" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
-	health = 25000
+	
 	},
 /turf/open/floor/loadingarea/east,
 /area/bigredv2/outside/cargo)
 "bcu" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
-	health = 25000
+	
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/cargo)
@@ -12900,7 +12866,7 @@
 "bgZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/explosive/grenade/high_explosive/frag{
-	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. This one seems to have weird insciptions all over it. You can barely make out 'PrAIs3 thE H3f@ G0d'"
+	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. This one seems to have weird inscriptions all over it. You can barely make out 'PrAIs3 thE H3f@ G0d'"
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -13054,9 +13020,8 @@
 	dir = 4
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 4;
-	health = 25000
+	
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/cargo)
@@ -13458,18 +13423,12 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bli" = (
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	health = 25000
-	},
+/obj/structure/barricade/wooden,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "blj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	health = 25000
-	},
+/obj/structure/barricade/wooden,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bll" = (
@@ -17750,9 +17709,8 @@
 /area/bigredv2/outside/medical)
 "bVX" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
-	health = 25000
+	
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_13,
@@ -18198,9 +18156,8 @@
 	pixel_y = -5
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
-	health = 25000
+	
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
@@ -18542,9 +18499,8 @@
 /area/bigredv2/outside/engineering)
 "cOc" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 4;
-	health = 25000
+	
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/c)
@@ -18944,9 +18900,8 @@
 /area/bigredv2/outside/filtration_plant)
 "dot" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
-	health = 25000
+	
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -19047,9 +19002,8 @@
 /area/bigredv2/outside/medical)
 "dtX" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 4;
-	health = 25000
+	
 	},
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves_north)
@@ -20258,9 +20212,8 @@
 /area/bigredv2/caves_research)
 "eGb" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 4;
-	health = 25000
+	
 	},
 /obj/item/weapon/twohanded/spear{
 	pixel_x = 5
@@ -20341,9 +20294,7 @@
 /area/bigredv2/outside/office_complex)
 "eKe" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
-	health = 25000;
 	pixel_y = 4;
 	pixel_x = 22
 	},
@@ -20625,9 +20576,7 @@
 /area/bigredv2/outside/dorms)
 "eWE" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/caves_north)
@@ -21003,9 +20952,7 @@
 /area/bigredv2/caves_virology)
 "fwD" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /turf/open/floor/loadingarea/west,
 /area/bigredv2/outside/cargo)
@@ -21228,9 +21175,7 @@
 /area/bigredv2/outside/marshal_office)
 "fKO" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_5,
@@ -21765,9 +21710,7 @@
 /area/bigredv2/outside/nw)
 "gkD" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/cargo)
@@ -22493,9 +22436,7 @@
 "gYI" = (
 /obj/structure/machinery/light,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
@@ -23692,9 +23633,7 @@
 /area/bigredv2/caves/mining)
 "ipo" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves_north)
@@ -23836,9 +23775,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/whitegreencorner/north,
 /area/bigredv2/outside/medical)
@@ -24119,7 +24056,7 @@
 "iTD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/buritto{
+/obj/item/trash/burrito{
 	pixel_y = 12;
 	pixel_x = -7
 	},
@@ -24715,9 +24652,7 @@
 "jFq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
-	health = 25000;
 	pixel_y = 6;
 	pixel_x = 7
 	},
@@ -25315,9 +25250,7 @@
 /area/bigredv2/caves/lambda/research)
 "kfg" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
@@ -25942,9 +25875,7 @@
 "kMt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
@@ -27196,9 +27127,7 @@
 /area/bigredv2/outside/engineering/reactor)
 "mgr" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
-	health = 25000;
 	layer = 2.9;
 	pixel_x = -7;
 	pixel_y = 4
@@ -27617,10 +27546,7 @@
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/outside/lz1_north_cas)
 "mEg" = (
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	health = 25000
-	},
+/obj/structure/barricade/wooden,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/bigredv2/outside/c)
 "mEx" = (
@@ -28858,9 +28784,7 @@
 /area/bigredv2/outside/dorms)
 "nTF" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
@@ -29592,9 +29516,7 @@
 /area/bigredv2/outside/medical)
 "oFj" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_2,
@@ -30159,9 +30081,7 @@
 "pix" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/whiteblue/southwest,
 /area/bigredv2/outside/medical)
@@ -30308,9 +30228,7 @@
 /area/bigredv2/outside/engineering/reactor)
 "pri" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/caves_north)
@@ -30448,9 +30366,7 @@
 /area/bigredv2/caves/mining)
 "pxv" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /obj/item/weapon/twohanded/spear{
 	pixel_x = 5
@@ -30527,9 +30443,7 @@
 /area/bigredv2/outside/space_port)
 "pCR" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/landmark/corpsespawner/miner,
@@ -30901,9 +30815,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
-	health = 25000;
 	layer = 2.8
 	},
 /obj/structure/machinery/vending/snack{
@@ -30943,9 +30855,7 @@
 /area/bigredv2/caves/mining)
 "qaF" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
@@ -31262,9 +31172,7 @@
 /area/bigredv2/outside/nw)
 "qqa" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
@@ -31404,9 +31312,7 @@
 /area/bigredv2/outside/ne)
 "qxD" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/c)
@@ -32106,9 +32012,7 @@
 /area/bigredv2/outside/lz2_south_cas)
 "rem" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood{
@@ -32452,9 +32356,7 @@
 "rxK" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
@@ -34301,9 +34203,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/w)
@@ -34520,9 +34420,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /turf/open/floor/loadingarea/west,
 /area/bigredv2/outside/cargo)
@@ -34563,9 +34461,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
@@ -34902,9 +34798,7 @@
 "tNa" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 1;
-	health = 25000;
 	pixel_y = 20
 	},
 /obj/structure/machinery/vending/cigarette/koorlander{
@@ -35335,7 +35229,7 @@
 "ujU" = (
 /obj/item/ammo_magazine/handful/shotgun/custom_color{
 	color = "#6666ff";
-	desc = "A handful of ulta rare 12 gauge HE/FRAG ammunition to seriously fuck shit up with.  Too bad its behind this indestructable window.....";
+	desc = "A handful of ulta rare 12 gauge HE/FRAG ammunition to seriously fuck shit up with.  Too bad its behind this indestructible window.....";
 	name = "handful of HE/FRAG shells (12g)";
 	pixel_y = 3
 	},
@@ -38247,9 +38141,7 @@
 /area/bigredv2/outside/lz1_telecomm_cas)
 "xnf" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /obj/structure/largecrate/random/mini{
 	pixel_x = 5;
@@ -38367,9 +38259,7 @@
 /area/bigredv2/caves/mining)
 "xrO" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /obj/item/weapon/twohanded/spear{
 	pixel_x = 5
@@ -38498,9 +38388,7 @@
 /area/bigredv2/outside/medical)
 "xya" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /obj/item/weapon/twohanded/spear{
 	pixel_x = 5
@@ -39020,9 +38908,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "xZm" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves/mining)

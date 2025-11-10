@@ -1282,7 +1282,7 @@
 /obj/structure/prop/almayer/missile_tube{
 	icon_state = "missiletubesouth";
 	name = "\improper AT-87 ASAT launcher system";
-	desc = "Cold launch tubes that can fire a few varieties of missiles out of them, the most common being the AT-87 ASAT 11K223 ?Spigot? missile used against satellites and other spacecraft and the 11K221 ?Konkurs? missile which is used for ground attack."
+	desc = "Cold launch tubes that can fire a few varieties of missiles out of them, the most common being the AT-87 ASAT 11K223 Spigot missile used against satellites and other spacecraft and the 11K221 Konkurs missile which is used for ground attack."
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/adminlevel/ert_station/upp_station)

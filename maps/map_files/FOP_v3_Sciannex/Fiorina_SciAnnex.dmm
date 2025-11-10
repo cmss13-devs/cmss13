@@ -2754,7 +2754,7 @@
 /area/fiorina/tumor/ship)
 "bRc" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food{
-	desc = "Prison meal vendor, containing preprepared meals fit for the dregs of society.";
+	desc = "Prison meal vendor, containing pre-prepared meals fit for the dregs of society.";
 	name = "\improper Fiorina Purple Block Canteen Vendor"
 	},
 /turf/open/floor/plating/prison,
@@ -3232,7 +3232,7 @@
 /area/fiorina/station/chapel)
 "cmy" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
 /turf/closed/wall/prison,
 /area/fiorina/station/central_ring)
@@ -3611,7 +3611,7 @@
 /area/fiorina/station/chapel)
 "cCO" = (
 /obj/item/clothing/accessory/armband/cargo{
-	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occured.";
+	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occurred.";
 	name = "HEFA Order milita armband"
 	},
 /turf/open/floor/prison/floor_plate,
@@ -4193,7 +4193,7 @@
 /area/fiorina/station/central_ring)
 "daA" = (
 /obj/item/clothing/accessory/armband/cargo{
-	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occured.";
+	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occurred.";
 	name = "HEFA Order milita armband"
 	},
 /turf/open/floor/prison/chapel_carpet/doubleside,
@@ -4318,7 +4318,7 @@
 /area/fiorina/tumor/aux_engi)
 "dec" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
 /turf/closed/wall/prison,
 /area/fiorina/tumor/servers)
@@ -5206,7 +5206,7 @@
 	dir = 4
 	},
 /turf/closed/wall/r_wall/prison_unmeltable{
-	desc = "A huge chunk of metal used to seperate rooms.";
+	desc = "A huge chunk of metal used to separate rooms.";
 	name = "metal wall"
 	},
 /area/fiorina/oob)
@@ -5778,7 +5778,7 @@
 /area/fiorina/station/telecomm/lz1_tram)
 "eov" = (
 /turf/closed/wall/r_wall/prison_unmeltable{
-	desc = "A huge chunk of metal used to seperate rooms.";
+	desc = "A huge chunk of metal used to separate rooms.";
 	name = "metal wall"
 	},
 /area/fiorina/station/research_cells/west)
@@ -5980,11 +5980,11 @@
 /area/fiorina/station/security/wardens)
 "ewE" = (
 /obj/item/clothing/accessory/armband/cargo{
-	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occured.";
+	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occurred.";
 	name = "HEFA Order milita armband"
 	},
 /obj/item/clothing/accessory/armband/cargo{
-	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occured.";
+	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occurred.";
 	name = "HEFA Order milita armband"
 	},
 /obj/structure/surface/rack,
@@ -6104,7 +6104,7 @@
 /area/fiorina/station/research_cells/west)
 "ezn" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/telecomm/lz1_cargo)
@@ -6711,7 +6711,7 @@
 /area/fiorina/tumor/civres)
 "eWP" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/ice_lab)
@@ -7574,7 +7574,7 @@
 /area/fiorina/lz/near_lzII)
 "fIL" = (
 /obj/item/clothing/accessory/armband/cargo{
-	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occured.";
+	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occurred.";
 	name = "HEFA Order milita armband"
 	},
 /turf/open/floor/prison/blue/east,
@@ -8770,7 +8770,7 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "gGn" = (
 /turf/closed/wall/r_wall/prison_unmeltable{
-	desc = "A huge chunk of metal used to seperate rooms.";
+	desc = "A huge chunk of metal used to separate rooms.";
 	name = "metal wall"
 	},
 /area/fiorina/station/research_cells/east)
@@ -11291,7 +11291,7 @@
 "iyY" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/clothing/accessory/armband/cargo{
-	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occured.";
+	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occurred.";
 	name = "HEFA Order milita armband"
 	},
 /turf/open/floor/prison/greenfull/east,
@@ -12357,7 +12357,7 @@
 /area/fiorina/station/lowsec)
 "jpN" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/research_cells/west)
@@ -14718,7 +14718,7 @@
 /area/fiorina/lz/near_lzII)
 "lhY" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
 /turf/closed/wall/prison,
 /area/fiorina/station/power_ring)
@@ -16707,7 +16707,7 @@
 /area/fiorina/maintenance)
 "mHR" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/aux_engi)
@@ -20385,7 +20385,7 @@
 /area/fiorina/station/park)
 "pvD" = (
 /turf/closed/wall/r_wall/prison_unmeltable{
-	desc = "A huge chunk of metal used to seperate rooms.";
+	desc = "A huge chunk of metal used to separate rooms.";
 	name = "metal wall"
 	},
 /area/fiorina/oob)
@@ -20697,9 +20697,7 @@
 "pKJ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 1;
-	health = 25000;
 	layer = 2.9;
 	pixel_y = 17
 	},
@@ -22390,9 +22388,7 @@
 	layer = 3.5
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 1;
-	health = 25000;
 	layer = 2.9;
 	pixel_y = 17
 	},
@@ -23544,9 +23540,7 @@
 "rVM" = (
 /obj/structure/closet/crate/miningcar,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 1;
-	health = 25000;
 	layer = 2.9;
 	pixel_y = 17
 	},
@@ -24599,7 +24593,7 @@
 /area/fiorina/station/research_cells/east)
 "sJN" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/lz/near_lzI)
@@ -25555,7 +25549,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/tumor/servers)
 "trl" = (
-/obj/item/trash/buritto,
+/obj/item/trash/burrito,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "trJ" = (
@@ -29934,9 +29928,7 @@
 /area/fiorina/station/power_ring)
 "wSc" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 1;
-	health = 25000;
 	pixel_y = 19
 	},
 /obj/item/stack/sheet/wood,
@@ -31496,7 +31488,7 @@
 /area/fiorina/station/research_cells/west)
 "yhR" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/medbay)
@@ -31567,7 +31559,7 @@
 /area/fiorina/station/telecomm/lz2_maint)
 "yli" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/central_ring)

@@ -2874,7 +2874,7 @@
 	pixel_y = 0
 	},
 /obj/structure/prop/holidays/string_lights{
-	desc = "A set of last years christmas lights, a coworker refused to take them down and as punishement they got strung up outside, how merry.";
+	desc = "A set of last years christmas lights, a coworker refused to take them down and as punishment they got strung up outside, how merry.";
 	name = "festive bulb strings";
 	pixel_y = -16
 	},

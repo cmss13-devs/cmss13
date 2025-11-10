@@ -450,7 +450,7 @@
 "kP" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -553,7 +553,7 @@
 "oV" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	dir = 4
 	},
 /turf/open/floor/platingdmg1,
@@ -1425,7 +1425,7 @@
 "JL" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	dir = 4
 	},
 /turf/open/floor/plating/platingdmg3,
@@ -1715,7 +1715,7 @@
 "Sr" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	dir = 4
 	},
 /turf/open/floor/platingdmg3,

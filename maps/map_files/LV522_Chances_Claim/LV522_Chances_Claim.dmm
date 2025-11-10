@@ -1675,7 +1675,7 @@
 /area/lv522/indoors/c_block/mining)
 "aGE" = (
 /obj/structure/closet/crate/trashcart,
-/obj/item/trash/buritto,
+/obj/item/trash/burrito,
 /obj/item/trash/wy_chips_pepper,
 /obj/item/trash/syndi_cakes,
 /obj/item/trash/kepler/flamehot,
@@ -4052,7 +4052,7 @@
 "ceG" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash/chips,
-/obj/item/trash/buritto,
+/obj/item/trash/burrito,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "cfd" = (
@@ -39328,7 +39328,7 @@
 /area/lv522/oob/w_y_vault)
 "uvC" = (
 /obj/structure/closet/crate/trashcart,
-/obj/item/trash/buritto,
+/obj/item/trash/burrito,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "uvF" = (

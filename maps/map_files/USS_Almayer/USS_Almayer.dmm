@@ -8519,7 +8519,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1;
 	explo_proof = 1;
 	emp_proof = 1
@@ -8911,7 +8911,7 @@
 /area/almayer/command/cichallway)
 "awA" = (
 /obj/structure/prop/almayer/computers/sensor_computer3{
-	name = "weapon targetting computer"
+	name = "weapon targeting computer"
 	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
@@ -12051,7 +12051,7 @@
 	pixel_x = -3
 	},
 /obj/item/dogtag{
-	desc = "A blank marine's information dog tag. The word Ranger and a pawprint is scratched into it."
+	desc = "A blank marine's information dog tag. The word Ranger and a paw print is scratched into it."
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/auxiliary_officer_office)
@@ -39920,7 +39920,7 @@
 	pixel_x = -25;
 	pixel_y = 10
 	},
-/obj/item/trash/buritto,
+/obj/item/trash/burrito,
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
@@ -43004,7 +43004,7 @@
 "efk" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1;
 	explo_proof = 1;
 	emp_proof = 1
@@ -54801,7 +54801,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/chunk,
 /obj/item/trash/burger,
-/obj/item/trash/buritto,
+/obj/item/trash/burrito,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "iXV" = (
@@ -67695,7 +67695,7 @@
 "okd" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "n_umbilical";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1;
 	explo_proof = 1;
 	emp_proof = 1

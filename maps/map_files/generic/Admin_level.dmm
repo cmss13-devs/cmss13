@@ -1582,7 +1582,7 @@
 	pixel_y = 28
 	},
 /obj/structure/bed/sofa/south/grey/right,
-/obj/item/trash/buritto,
+/obj/item/trash/burrito,
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station)
 "TX" = (

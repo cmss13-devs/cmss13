@@ -156,7 +156,7 @@
 "ax" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock"
+	name = "\improper Umbilical Airlock"
 	},
 /turf/open/floor/plating,
 /area/fiorina/station/clf_ship)
@@ -260,7 +260,7 @@
 "dq" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock"
+	name = "\improper Umbilical Airlock"
 	},
 /turf/open/floor/delivery,
 /area/fiorina/station/clf_ship)
@@ -1040,7 +1040,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock"
+	name = "\improper Umbilical Airlock"
 	},
 /turf/open/floor/delivery,
 /area/fiorina/station/clf_ship)
@@ -1860,7 +1860,7 @@
 /turf/open/floor/almayer/emerald/southeast,
 /area/fiorina/station/clf_ship)
 "Wq" = (
-/obj/item/trash/buritto,
+/obj/item/trash/burrito,
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/station/clf_ship)
 "Wr" = (

@@ -34614,7 +34614,7 @@
 /area/prison/cellblock/highsec/south/north)
 "kep" = (
 /obj/structure/surface/rack,
-/obj/item/reagent_container/food/snacks/boiledspagetti,
+/obj/item/reagent_container/food/snacks/boiledspaghetti,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "keX" = (
@@ -34712,7 +34712,7 @@
 /area/prison/hallway/central/south)
 "kzI" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "Maintainance"
+	name = "Maintenance"
 	},
 /turf/open/floor/plating,
 /area/prison/security/checkpoint/vip)
@@ -34848,7 +34848,7 @@
 /area/prison/research)
 "lks" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/reagent_container/food/snacks/boiledspagetti,
+/obj/item/reagent_container/food/snacks/boiledspaghetti,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/canteen)
 "llz" = (

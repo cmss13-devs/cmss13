@@ -129,7 +129,7 @@
 	},
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison/darkbrown2/west,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "bJ" = (
 /turf/closed/shuttle/dropship3/tornado{
 	icon_state = "18"
@@ -364,7 +364,7 @@
 /obj/item/cell/high/empty,
 /obj/structure/machinery/cell_charger,
 /turf/open/floor/prison/darkbrown2/west,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "fC" = (
 /obj/docking_port/stationary/trijent_elevator/occupied{
 	id = "trijent_lz1";
@@ -521,7 +521,7 @@
 /obj/item/tool/lighter/zippo,
 /obj/item/tool/lighter/zippo,
 /turf/open/floor/prison/darkbrown2/northwest,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "it" = (
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/hanger)
@@ -710,7 +710,7 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison/darkbrown2/west,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "lz" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/faxmachine,
@@ -781,7 +781,7 @@
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/darkbrown2/east,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "mO" = (
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
@@ -856,7 +856,7 @@
 "nP" = (
 /obj/structure/window/framed/hangar/reinforced,
 /turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "nQ" = (
 /turf/open/floor/darkredcorners2/east,
 /area/desert_dam/building/administration/lobby)
@@ -1177,7 +1177,7 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison/darkbrown2/west,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "tc" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
@@ -1189,7 +1189,7 @@
 /obj/item/cell/high/empty,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/darkbrown2/east,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "tj" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 10
@@ -1254,7 +1254,7 @@
 "vh" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison/darkbrown2/north,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "vk" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 4
@@ -1307,7 +1307,7 @@
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "wf" = (
 /turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "wk" = (
 /turf/open/floor/prison/blue/southeast,
 /area/desert_dam/building/administration/control_room)
@@ -1401,7 +1401,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "xX" = (
 /turf/open/floor/prison/bluecorner,
 /area/desert_dam/building/administration/lobby)
@@ -1719,7 +1719,7 @@
 /area/desert_dam/exterior/valley/valley_northwest)
 "DM" = (
 /turf/open/floor/prison/darkbrown2/east,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "DO" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -1754,7 +1754,7 @@
 /obj/item/trash/kepler,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown2/west,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "En" = (
 /turf/closed/shuttle/dropship3/tornado{
 	icon_state = "99"
@@ -2186,7 +2186,7 @@
 "KG" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "KS" = (
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel)
@@ -2273,7 +2273,7 @@
 	},
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/prison/darkbrown2/east,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "Mj" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -2561,7 +2561,7 @@
 "QR" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison/darkbrown2/northeast,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "QU" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/bright_clean2,
@@ -2681,7 +2681,7 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/darkbrown2/east,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "SF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -2720,7 +2720,7 @@
 /obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "TD" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/wood,
@@ -2809,7 +2809,7 @@
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "Vp" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/landing_pad_one)
@@ -2980,7 +2980,7 @@
 /obj/structure/surface/table,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison/darkbrown2/north,
-/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
 "Yp" = (
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/exterior/valley/valley_northwest)

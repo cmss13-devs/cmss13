@@ -1562,7 +1562,7 @@
 /area/rostock/command/dining)
 "art" = (
 /obj/structure/machinery/door/poddoor/almayer{
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1
 	},
 /turf/open/floor/corsat/spiralplate,
@@ -16404,7 +16404,7 @@
 /area/rostock/lower_deck/m_hallway)
 "lZD" = (
 /obj/structure/prop/almayer/computers/sensor_computer3{
-	name = "weapon targetting computer"
+	name = "weapon targeting computer"
 	},
 /turf/open/floor/strata/blue3,
 /area/rostock/command/cic)
@@ -18848,7 +18848,7 @@
 "ols" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/obj/item/trash/buritto{
+/obj/item/trash/burrito{
 	pixel_x = 5;
 	pixel_y = 7
 	},
@@ -19048,7 +19048,7 @@
 	dir = 2;
 	req_one_access = null;
 	req_access = list(230);
-	name = "Ancillery Engineering Storage"
+	name = "Ancillary Engineering Storage"
 	},
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/s_a_hallway)
@@ -24046,7 +24046,7 @@
 /area/rostock/lower_deck/m_hallway)
 "spy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/buritto,
+/obj/item/trash/burrito,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/s_f)
 "spJ" = (
@@ -25976,7 +25976,7 @@
 /area/rostock/medical/morgue)
 "tZD" = (
 /obj/structure/machinery/door/poddoor/almayer{
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1
 	},
 /turf/open/floor/corsat/spiralplate,
@@ -31049,7 +31049,7 @@
 "xXY" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "rostock_umbilical";
-	name = "\improper Umbillical Airlock";
+	name = "\improper Umbilical Airlock";
 	unacidable = 1
 	},
 /turf/open/floor/corsat/plate,

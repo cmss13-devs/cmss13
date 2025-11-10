@@ -824,7 +824,7 @@
 /area/corsat/sigma/airlock/control)
 "uk" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "Maintainence";
+	name = "Maintenance";
 	req_one_access = list()
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -944,7 +944,7 @@
 "xM" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	name = "Maintainance";
+	name = "Maintenance";
 	req_one_access = list()
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -977,7 +977,7 @@
 /area/corsat/emergency_access)
 "yj" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "Maintainence";
+	name = "Maintenance";
 	req_one_access = list()
 	},
 /turf/open/floor/corsat/squares,

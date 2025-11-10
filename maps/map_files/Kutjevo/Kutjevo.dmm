@@ -1503,9 +1503,7 @@
 	dir = 1
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/power)
@@ -5198,9 +5196,7 @@
 /area/kutjevo/interior/colony_northeast)
 "fYr" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/spring)
@@ -9235,9 +9231,7 @@
 	pixel_y = 13
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/spring)
@@ -11266,9 +11260,7 @@
 /area/kutjevo/interior/complex/med/operating)
 "pvL" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/power)
@@ -12079,7 +12071,7 @@
 /area/kutjevo/interior/complex/botany)
 "qPc" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/snacks/meatballspagetti,
+/obj/item/reagent_container/food/snacks/meatballspaghetti,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction/north)
 "qPz" = (

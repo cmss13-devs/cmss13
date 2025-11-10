@@ -348,7 +348,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "ov" = (
-/obj/item/trash/buritto,
+/obj/item/trash/burrito,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "oH" = (

@@ -161,7 +161,7 @@
 "aC" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock"
+	name = "\improper Umbilical Airlock"
 	},
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
@@ -895,7 +895,7 @@
 "vf" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock"
+	name = "\improper Umbilical Airlock"
 	},
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
@@ -998,7 +998,7 @@
 "xG" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock"
+	name = "\improper Umbilical Airlock"
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
@@ -1152,7 +1152,7 @@
 "CO" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock"
+	name = "\improper Umbilical Airlock"
 	},
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)

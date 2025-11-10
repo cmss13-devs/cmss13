@@ -11276,7 +11276,7 @@
 /area/shiva/interior/colony/botany)
 "irk" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/boiledspagetti,
+/obj/item/reagent_container/food/snacks/boiledspaghetti,
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/colony/central)
 "irt" = (

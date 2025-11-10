@@ -280,11 +280,11 @@
 /area/ice_colony/exterior/surface/cliff)
 "abl" = (
 /turf/closed/wall/r_wall/unmeltable,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "abm" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "abn" = (
 /turf/closed/ice/end,
 /area/ice_colony/exterior/surface/cliff)
@@ -356,16 +356,16 @@
 /area/shuttle/elevator4/ground)
 "abD" = (
 /turf/closed/wall/r_wall,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "abE" = (
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "abF" = (
 /obj/structure/barricade/metal{
 	dir = 8
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "abG" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 8
@@ -449,7 +449,7 @@
 "abY" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "abZ" = (
 /turf/closed/ice_rock/singleEnd{
 	dir = 1
@@ -480,19 +480,19 @@
 	dir = 6
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "acg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "ach" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "aci" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 8
@@ -510,7 +510,7 @@
 "ack" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "acl" = (
 /obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer3,
@@ -602,14 +602,14 @@
 "acF" = (
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access/freight,
 /turf/open/floor/plating/icefloor/warnplate/west,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "acG" = (
 /turf/open/floor/plating/icefloor/warnplate/east,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "acH" = (
 /obj/structure/machinery/light,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "acI" = (
 /obj/structure/ice/thin/junction{
 	dir = 4
@@ -687,39 +687,39 @@
 	dir = 1
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "acU" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "acV" = (
 /obj/item/lightstick/planted,
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "acW" = (
 /turf/open/floor/plating/icefloor/warnplate/southwest,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "acX" = (
 /turf/open/floor/plating/icefloor/warnplate,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "acY" = (
 /obj/effect/landmark/corpsespawner/miner,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/icefloor/warnplate,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "acZ" = (
 /turf/open/floor/plating/icefloor/warnplate/southeast,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "ada" = (
 /obj/item/lightstick/planted,
 /obj/structure/machinery/computer/shuttle_control/ice_colony/elevator4{
 	pixel_y = 30
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adb" = (
 /obj/structure/ice/thin/junction{
 	dir = 1
@@ -769,7 +769,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -790,11 +790,11 @@
 	dir = 1
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adp" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adq" = (
 /obj/structure/ice/ice_rock/cornerOverlay,
 /obj/structure/ice/ice_rock/cornerOverlay{
@@ -866,14 +866,14 @@
 /obj/item/tool/shovel/snow,
 /obj/item/storage/toolbox/emergency,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adD" = (
 /obj/structure/machinery/door_control{
 	name = "Storage Unit Control";
 	pixel_x = 24
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adE" = (
 /obj/structure/machinery/conveyor{
 	icon_state = "switch-off"
@@ -883,10 +883,10 @@
 	pixel_x = -24
 	},
 /turf/open/floor/plating/icefloor/warnplate/north,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adF" = (
 /turf/open/floor/plating/icefloor/warnplate/northeast,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adG" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "burst_l"
@@ -901,10 +901,10 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adI" = (
 /turf/open/floor/plating/icefloor/warnplate/northwest,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adJ" = (
 /obj/structure/machinery/conveyor{
 	icon_state = "switch-off"
@@ -914,7 +914,7 @@
 	pixel_x = 24
 	},
 /turf/open/floor/plating/icefloor/warnplate/north,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adK" = (
 /obj/structure/machinery/door_control{
 	name = "Storage Unit Control";
@@ -922,13 +922,13 @@
 	},
 /obj/effect/landmark/hunter_primary,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adL" = (
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adM" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 8
@@ -980,7 +980,7 @@
 	icon_state = "conveyor-1"
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adW" = (
 /obj/structure/machinery/conveyor{
 	dir = 4;
@@ -988,7 +988,7 @@
 	},
 /obj/item/stack/sheet/mineral/phoron,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adX" = (
 /obj/structure/machinery/conveyor{
 	dir = 4;
@@ -996,7 +996,7 @@
 	},
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adY" = (
 /obj/structure/machinery/conveyor{
 	dir = 4;
@@ -1004,14 +1004,14 @@
 	},
 /obj/structure/plasticflaps,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "adZ" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "aea" = (
 /turf/open/floor/plating/icefloor/warnplate/west,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "aeb" = (
 /turf/closed/ice_rock/singlePart,
 /area/ice_colony/exterior/surface/cliff)
@@ -1054,13 +1054,13 @@
 	dir = 8
 	},
 /turf/open/floor/plating/icefloor/warnplate,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "ael" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/plating/icefloor/warnplate,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "aem" = (
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/northwest)
@@ -1162,18 +1162,18 @@
 /obj/effect/landmark/survivor_spawner,
 /obj/effect/landmark/queen_spawn,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "aeE" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "aeF" = (
 /obj/item/lightstick/planted,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "aeG" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 1
@@ -1279,34 +1279,34 @@
 "aeY" = (
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "aeZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "afa" = (
 /obj/vehicle/train/cargo/engine,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "afb" = (
 /obj/structure/machinery/door_control{
 	name = "Storage Unit Control";
 	pixel_x = -24
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "afc" = (
 /obj/item/tool/shovel/snow,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "afd" = (
 /obj/structure/largecrate/random,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "afe" = (
 /turf/closed/ice,
 /area/ice_colony/exterior/surface/valley/northwest)
@@ -1498,7 +1498,7 @@
 "afM" = (
 /obj/item/storage/toolbox/emergency,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "afN" = (
 /obj/item/lightstick/planted,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1604,7 +1604,7 @@
 "agc" = (
 /obj/item/stack/sheet/mineral/phoron,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "agd" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -1724,16 +1724,16 @@
 	dir = 8
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "agA" = (
 /obj/item/lightstick/planted,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "agB" = (
 /obj/item/stack/sheet/mineral/phoron,
 /obj/item/stack/sheet/mineral/phoron,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "agC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -2015,19 +2015,19 @@
 "ahB" = (
 /obj/structure/barricade/metal,
 /turf/open/floor/plating/icefloor/warnplate,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "ahC" = (
 /obj/structure/barricade/metal,
 /turf/open/floor/plating/icefloor/warnplate/southeast,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "ahD" = (
 /obj/structure/barricade/metal,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "ahE" = (
 /obj/structure/barricade/metal,
 /turf/open/floor/plating/icefloor/warnplate/southwest,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "ahF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -15002,7 +15002,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Underground Requesitions Freezer"
+	name = "\improper Underground Requisitions Freezer"
 	},
 /turf/open/floor/freezerfloor,
 /area/ice_colony/underground/requesition/storage)
@@ -15324,7 +15324,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
-	name = "\improper Underground Requesitions Office"
+	name = "\improper Underground Requisitions Office"
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition/lobby)
@@ -15527,7 +15527,7 @@
 "biz" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "req_sec_storage";
-	name = "\improper Requesitions Storage Shutters"
+	name = "\improper Requisitions Storage Shutters"
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition/sec_storage)
@@ -15538,7 +15538,7 @@
 "biC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Requesitions Bay"
+	name = "\improper Underground Requisitions Bay"
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition)
@@ -15556,11 +15556,11 @@
 	dir = 1;
 	icon_state = "leftsecure";
 	id = null;
-	name = "Requesitions Desk"
+	name = "Requisitions Desk"
 	},
 /obj/structure/machinery/door/window/northright{
 	dir = 2;
-	name = "Requesitions Desk"
+	name = "Requisitions Desk"
 	},
 /obj/item/tool/pen/blue{
 	pixel_x = -6
@@ -15931,7 +15931,7 @@
 /area/ice_colony/underground/maintenance/north)
 "bkn" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Requesitions Lobby"
+	name = "\improper Underground Requisitions Lobby"
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition/lobby)
@@ -19983,7 +19983,7 @@
 /area/ice_colony/underground/crew/canteen)
 "bAo" = (
 /obj/structure/surface/table,
-/obj/item/reagent_container/food/snacks/boiledspagetti,
+/obj/item/reagent_container/food/snacks/boiledspaghetti,
 /turf/open/floor/dark2,
 /area/ice_colony/underground/crew/canteen)
 "bAp" = (

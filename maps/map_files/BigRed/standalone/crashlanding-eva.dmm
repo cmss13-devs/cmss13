@@ -277,9 +277,7 @@
 /area/bigredv2/outside/general_offices)
 "bb" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
@@ -594,9 +592,7 @@
 /area/bigredv2/outside/general_offices)
 "cP" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -699,9 +695,7 @@
 /area/bigredv2/outside/general_offices)
 "iM" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/general_offices)

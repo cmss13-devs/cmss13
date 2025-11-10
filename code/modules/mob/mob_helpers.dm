@@ -206,26 +206,47 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	return output_message
 
-/// The min length of a message before ANNOUNCEMENT_CLARITY_MIN
-#define ANNOUNCEMENT_CLARITY_MAX_BOUND 200
-/// The max length of a message for ANNOUNCEMENT_CLARITY_MAX
-#define ANNOUNCEMENT_CLARITY_MIN_BOUND 50
-/// The clarity percent for messages >= ANNOUNCEMENT_CLARITY_MAX_BOUND
-#define ANNOUNCEMENT_CLARITY_MIN 40
-/// The clarity percent for messages <= ANNOUNCEMENT_CLARITY_MIN_BOUND
-#define ANNOUNCEMENT_CLARITY_MAX 90
+/// The length of an announcement for CLARITY_MIN
+#define LENGTH_MAX_BOUND 100
+/// The max length of an announcement for CLARITY_MAX
+#define LENGTH_MIN_BOUND 10
+/// The duration between announcements for CLARITY_MIN
+#define DURATION_MIN_BOUND 30 SECONDS
+/// The duration between announcements for CLARITY_MAX
+#define DURATION_MAX_BOUND 3 MINUTES
+/// The clarity percent for messages >= LENGTH_MAX_BOUND or duration <= DURATION_MIN_BOUND
+#define CLARITY_MIN 50
+/// The clarity percent for messages <= LENGTH_MIN_BOUND or duration >= DURATION_MAX_BOUND
+#define CLARITY_MAX 95
 
-/// Gets a stars_decode_html result with a variable clarity based on message length using the ANNOUNCEMENT_CLARITY defines
-/proc/get_garbled_announcement(message)
-	var/clamped_length = clamp(length(message), ANNOUNCEMENT_CLARITY_MIN_BOUND, ANNOUNCEMENT_CLARITY_MAX_BOUND)
-	var/scalar = SCALE(clamped_length, ANNOUNCEMENT_CLARITY_MIN_BOUND, ANNOUNCEMENT_CLARITY_MAX_BOUND)
-	var/clarity = round(lerp(ANNOUNCEMENT_CLARITY_MAX, ANNOUNCEMENT_CLARITY_MIN, scalar), 1)
+GLOBAL_LIST_INIT(last_announcement_time, list(FACTION_MARINE = 0))
+
+/**
+ * Gets a stars_decode_html result with a variable clarity based on message length and optionally the time since last announcement
+ *
+ * Arguments:
+ * * message - The message to garble (its length is used for clarity calculation)
+ * * length_modifier - An optional number to subtract against message length
+ * * faction_for_cooldown - An optional faction define that is used to check for clarity calculation and set in GLOB.last_announcement_time for that faction
+ */
+/proc/get_garbled_announcement(message, length_modifier, faction_for_cooldown)
+	var/length_clamped = clamp(length(message) - length_modifier, LENGTH_MIN_BOUND, LENGTH_MAX_BOUND)
+	var/length_scalar = SCALE(length_clamped, LENGTH_MIN_BOUND, LENGTH_MAX_BOUND)
+	var/duration_scalar = 1
+	if(faction_for_cooldown)
+		var/duration_clamped = clamp(world.time - GLOB.last_announcement_time[faction_for_cooldown], DURATION_MIN_BOUND, DURATION_MAX_BOUND)
+		duration_scalar = 1 - SCALE(duration_clamped, DURATION_MIN_BOUND, DURATION_MAX_BOUND)
+		GLOB.last_announcement_time[faction_for_cooldown] = world.time
+	// Clarity is the better of the two (either a short message, or after a long duration)
+	var/clarity = round(lerp(CLARITY_MAX, CLARITY_MIN, min(length_scalar, duration_scalar)), 1)
 	return stars_decode_html(message, clarity)
 
-#undef ANNOUNCEMENT_CLARITY_MAX_BOUND
-#undef ANNOUNCEMENT_CLARITY_MIN_BOUND
-#undef ANNOUNCEMENT_CLARITY_MIN
-#undef ANNOUNCEMENT_CLARITY_MAX
+#undef LENGTH_MAX_BOUND
+#undef LENGTH_MIN_BOUND
+#undef DURATION_MIN_BOUND
+#undef DURATION_MAX_BOUND
+#undef CLARITY_MIN
+#undef CLARITY_MAX
 
 /proc/slur(phrase)
 	phrase = html_decode(phrase)

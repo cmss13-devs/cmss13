@@ -121,10 +121,11 @@
 			if(!is_shipside && !(current_turf?.z in coms_zs))
 				targets_to_garble += current_human
 
+	var/postfix = ""
 	if(!isnull(signature))
-		message += "<br><br><i> Signed by, <br> [signature]</i>"
+		postfix = "<br><br><i> Signed by, <br> [signature]</i>"
 
-	announcement_helper(message, title, targets, sound_to_play, FALSE, targets_to_garble)
+	announcement_helper(message, title, targets, sound_to_play, FALSE, postfix, targets_to_garble, FACTION_MARINE)
 
 //AI announcement that uses talking into comms
 /proc/ai_announcement(message, sound_to_play = sound('sound/misc/interference.ogg'), logging = ARES_LOG_MAIN)
@@ -182,13 +183,14 @@
 /proc/all_hands_on_deck(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/sound_misc_boatswain.ogg'))
 	shipwide_ai_announcement(message, title, sound_to_play, null, ARES_LOG_MAIN, FALSE)
 
-/proc/announcement_helper(message, title, list/targets, sound_to_play, quiet, list/targets_to_garble)
+/proc/announcement_helper(message, title, list/targets, sound_to_play, quiet, postfix, list/targets_to_garble, faction_to_garble)
 	if(!message || !title || !targets) //Shouldn't happen
 		return
 
+	message += postfix
 	var/garbled_message
 	if(length(targets_to_garble))
-		garbled_message = get_garbled_announcement(message)
+		garbled_message = get_garbled_announcement(message, length(postfix), faction_to_garble)
 
 	for(var/mob/target in targets)
 		if(istype(target, /mob/new_player))

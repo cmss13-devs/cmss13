@@ -291,7 +291,7 @@
  * climb_onto is called by Collided to allow a mob to climb onto the tank.
  *
  * We run a number of edge case checks first, then we begin the process of climbing properly.
- * It takes 1.5 seconds, and, after that, if the spot is still reachable (AKA, if the tank hasn't driven away)
+ * It takes a few seconds or less, and, after that, if the spot is still reachable (AKA, if the tank hasn't driven away)
  * then we'll climb up!
  *
  * We also call _carry_move_with_grabs to pull grabbed mobs in with us.
@@ -305,23 +305,43 @@
 /obj/vehicle/multitile/tank/proc/climb_onto(mob/living/user, turf/preferred)
 	if(!istype(user))
 		return
+
 	if(user.action_busy)
 		return
-	if(!_validate_climb_target(user, preferred, TRUE)) {
+
+	if(!_validate_climb_target(user, preferred, TRUE))
 		to_chat(user, SPAN_WARNING("You can't climb there."))
 		return
-	}
+
 	user.visible_message(
 		SPAN_WARNING("[user] starts climbing onto [src]."),
 		SPAN_WARNING("You start climbing onto [src]."))
-	if(!do_after(user, 1.5 SECONDS, INTERRUPT_MOVED, BUSY_ICON_CLIMBING)) {
+
+	var/climb_speed_factor = (move_momentum / move_max_momentum) // % of our max speed attained.
+
+	to_chat(world, SPAN_WARNING("user = [user] climbing up with move_momentum=[move_momentum]"))
+
+	if(health == 0) // When broken, everyone takes 0.20 seconds to climb up. Keep in mind that the real perceived value is around 2-3x higher when you take in account lag.
+		if(!do_after (user, 0.20 SECONDS, INTERRUPT_MOVED, BUSY_ICON_CLIMBING, numticks = 1))
+			to_chat(user, SPAN_WARNING("You stop climbing onto [src]."))
+			return
+
+	else if(isxeno(user)) // Xenos take longer to climb to avoid accidentally getting on top while slashing inside boiler gas.
+		// takes between 0.8 seconds when still and 2 seconds when at full speed. (You'd have to climb through one of the sides) OR pounce on it.
+		if(!do_after(user, max((2 * climb_speed_factor), 0.80) SECONDS, INTERRUPT_MOVED, BUSY_ICON_CLIMBING, numticks = 4))
+			to_chat(user, SPAN_WARNING("You stop climbing onto [src]."))
+			return
+
+	// Humans and preds climb up faster. Humans can't climb down instantly.
+	// takes between 0.25 seconds when still and 1.20 second when at full speed (You'd have to climb through one of the sides)
+	else if(!do_after(user, max((1.20 * climb_speed_factor), 0.30) SECONDS, INTERRUPT_MOVED, BUSY_ICON_CLIMBING, numticks = 3))
 		to_chat(user, SPAN_WARNING("You stop climbing onto [src]."))
 		return
-	}
-	if(!_validate_climb_target(user, preferred, TRUE)) {
+
+	if(!_validate_climb_target(user, preferred, TRUE))
 		to_chat(user, SPAN_WARNING("The spot on [src] is no longer reachable."))
 		return
-	}
+
 	_carry_move_with_grabs(user, preferred, TRUE)
 	user.visible_message(
 		SPAN_WARNING("[user] climbs onto [src]."),
@@ -346,23 +366,33 @@
 	if(user.action_busy)
 		return
 
-	if(!_validate_climb_target(user, target, FALSE)) {
+	if(!_validate_climb_target(user, target, FALSE))
 		return
-	}
+
+	var/climb_speed_factor = (move_momentum / move_max_momentum) // % of our max speed attained.
 
 	user.visible_message(
 		SPAN_WARNING("[user] starts climbing down from [src]."),
 		SPAN_WARNING("You start climbing down from [src]."))
 
-	if(!do_after(user, 1 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_GENERIC)) {
+	to_chat(world, SPAN_WARNING("user = [user] climbing down with move_momentum=[move_momentum]"))
+
+	if(!ishuman(user)) // Xenos and preds can always climb down with almost no delay to avoid situations where they get stuck atop the tank.
+		// The tiny delay here is meant to prevent fast castes from accidentally disembarking from a misinput
+		if(!do_after(user,  0.20 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_GENERIC, numticks = 1))
+			to_chat(user, SPAN_WARNING("You stop climbing down from [src]."))
+			return
+
+	// Humans take at most 0.9 seconds to climb down from a tank at full speed, and 0.30 when standing still.
+	else if(!do_after(user, max((0.9 * climb_speed_factor), 0.30) SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_GENERIC, numticks = 3))
 		to_chat(user, SPAN_WARNING("You stop climbing down from [src]."))
 		return
-	}
+
+
 	// edge case where tank moves while we're climbing down
-	if(!_validate_climb_target(user, target, FALSE)) {
+	if(!_validate_climb_target(user, target, FALSE))
 		to_chat(user, SPAN_WARNING("The spot is no longer reachable."))
 		return
-	}
 	_carry_remove_with_grabs(user, target)
 	user.visible_message(
 		SPAN_WARNING("[user] climbs down from [src]."),

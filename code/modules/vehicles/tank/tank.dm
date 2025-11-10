@@ -408,6 +408,8 @@
  * It adds the tank to a mob's tank_on_top_of var
  * It calls _apply_rider_visuals() to set the layer atop the tank's
  *
+ * If a xeno is hidden, it gets un-hidden.
+ *
  * Arguments:
  * * mob/living/M - The mob being marked ontop.
  */
@@ -423,6 +425,13 @@
 	on_top_mobs |= M
 	M.tank_on_top_of = src
 	_apply_rider_visuals(M)
+
+	if(isxeno(M))
+		var/mob/living/carbon/xenomorph/X = M
+		if(X.layer == XENO_HIDING_LAYER)
+			var/datum/action/xeno_action/onclick/xenohide/hide = get_action(X, /datum/action/xeno_action/onclick/xenohide)
+			if(hide)
+				hide.remove_hide_status() // prevents cheesing the layer system
 
 /**
  * obj_mark_on_top WOULD be an ad-hoc polymorph of mark_on_top. It does the same thing, but with an obj/ type.

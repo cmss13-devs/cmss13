@@ -363,6 +363,10 @@
 		ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, PROC_REF(unfreeze_pounce)), pounceAction.freeze_time, TIMER_STOPPABLE)
 	pounceAction.additional_effects(M)
+	if(L.tank_on_top_of)
+		var/obj/vehicle/multitile/tank/T = L.tank_on_top_of
+		src.forceMove(get_turf(L))
+		T.mark_on_top(src)
 
 	if(pounceAction.slash)
 		M.attack_alien(src, pounceAction.slash_bonus_damage)

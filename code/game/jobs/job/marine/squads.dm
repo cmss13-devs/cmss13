@@ -25,7 +25,7 @@
 /datum/squad
 	/// Name of the squad
 	var/name
-	/// Equivalent name so that lobby prefered squad gets used for other factions
+	/// Equivalent name so that lobby preferred squad gets used for other factions
 	var/equivalent_name
 	/// Squads ID that is set on New()
 	var/tracking_id = null //Used for the tracking subsystem
@@ -64,7 +64,7 @@
 	// Whether the squad is available for squad management
 	var/locked = FALSE
 	/// Whether it is visible in overwatch
-	var/active = TRUE //this var in fact looks COMPLEATLY useless as visibility in overwatch is also determined by faction
+	var/active = TRUE //this var in fact looks COMPLETELY useless as visibility in overwatch is also determined by faction
 	/// Which faction the squad is in
 	var/faction = FACTION_MARINE
 
@@ -380,7 +380,7 @@
 	RegisterSignal(overwatch_officer, COMSIG_PARENT_QDELETING, PROC_REF(personnel_deleted), override = TRUE)
 	return TRUE
 
-/// Explicitely relinquish overwatch control
+/// Explicitly relinquish overwatch control
 /datum/squad/proc/release_overwatch()
 	if(!overwatch_officer)
 		return FALSE
@@ -647,7 +647,7 @@
 
 	count--
 	marines_list -= target_mob
-	personnel_deleted(target_mob, zap = TRUE) // Free all refs and Zap it entierly as this is on purpose
+	personnel_deleted(target_mob, zap = TRUE) // Free all refs and Zap it entirely as this is on purpose
 	clear_ref_tracking(target_mob)
 	update_free_mar()
 	target_mob.assigned_squad = null

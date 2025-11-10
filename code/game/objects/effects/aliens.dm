@@ -215,7 +215,7 @@
 
 		var/buffed_splash = FALSE
 		var/datum/effects/acid/acid_effect = locate() in hooman.effects_list
-		if(acid_effect && acid_effect.acid_enhanced == FALSE) // can't stack the bonus every splash. thatd be nuts!
+		if(acid_effect && acid_effect.acid_enhanced == FALSE) // can't stack the bonus every splash. that'd be nuts!
 			buffed_splash = TRUE
 			damage += bonus_damage
 
@@ -505,7 +505,7 @@
 	var/mob/living/carbon/xenomorph/source_xeno = null
 
 /obj/effect/xenomorph/boiler_bombard/New(loc, source_xeno = null)
-	// Hopefully we don't get insantiated in these places anyway..
+	// Hopefully we don't get instantiated in these places anyway..
 	if (isxeno(source_xeno))
 		src.source_xeno = source_xeno
 

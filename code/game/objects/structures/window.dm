@@ -481,7 +481,7 @@
 
 /obj/structure/window/shuttle
 	name = "shuttle window"
-	desc = "A shuttle glass window with a rod matrix specialised for heat resistance. It looks rather strong. Might take a few good hits to shatter it."
+	desc = "A shuttle glass window with a rod matrix specialized for heat resistance. It looks rather strong. Might take a few good hits to shatter it."
 	icon = 'icons/turf/podwindows.dmi'
 	icon_state = "window"
 	basestate = "window"
@@ -507,7 +507,7 @@
 	layer = TABLE_LAYER
 	static_frame = 1
 	flags_atom = FPRINT
-	var/window_frame //For perspective windows,so the window frame doesn't magically dissapear
+	var/window_frame //For perspective windows,so the window frame doesn't magically disappear
 	var/list/tiles_special = list(/obj/structure/machinery/door/airlock,
 		/obj/structure/window/framed,
 		/obj/structure/girder,

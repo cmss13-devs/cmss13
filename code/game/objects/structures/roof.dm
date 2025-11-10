@@ -6,7 +6,7 @@
 	density = FALSE
 	layer = ABOVE_XENO_LAYER
 	health = 6000
-	var/image/under_image //immage that is used when there is mob on connected node, displayed only to mobs under it not others
+	var/image/under_image //image that is used when there is mob on connected node, displayed only to mobs under it not others
 	var/image/normal_image
 	var/datum/roof_master_node/linked_master
 	var/lazy_nodes = TRUE //if roof should create nodes that watch around it on spawn
@@ -25,7 +25,7 @@
 
 	for(var/icon in GLOB.player_list)
 		add_default_image(SSdcs, icon)
-	if(lazy_nodes) //creates new node on each surounding tile if there is not one already
+	if(lazy_nodes) //creates new node on each surrounding tile if there is not one already
 		var/obj/effect/roof_node/neighbor = locate() in loc
 		if(!neighbor)
 			neighbor = new(loc)

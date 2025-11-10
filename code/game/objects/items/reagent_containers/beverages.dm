@@ -10,7 +10,7 @@
 	ground_offset_x = 0
 	ground_offset_y = 0
 	reagent_desc_override = FALSE
-	identificable = FALSE
+	identifiable = FALSE
 	pill_desc = null
 	pill_initial_reagents = list("tea_leaves" = 15)
 	fluff_text = "tea bag"

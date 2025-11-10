@@ -388,7 +388,7 @@
 				SEND_SIGNAL(src, COMSIG_DESIGNATOR_LASE_OFF)
 				break
 
-//IMPROVED LASER DESIGNATER, faster cooldown, faster target acquisition, can be found only in scout spec kit
+//IMPROVED LASER DESIGNATOR, faster cooldown, faster target acquisition, can be found only in scout spec kit
 /obj/item/device/binoculars/range/designator/scout
 	name = "scout laser designator"
 	desc = "An improved laser designator, issued to USCM scouts, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
@@ -547,7 +547,7 @@
 		var /datum/action/toggling_action = locate(/datum/action/item_action/specialist/spotter_target) in user.actions
 		if(toggling_action)
 			toggling_action.action_activate()
-//ADVANCED LASER DESIGNATER, was used for WO.
+//ADVANCED LASER DESIGNATOR, was used for WO.
 /obj/item/device/binoculars/designator
 	name = "advanced laser designator" // Make sure they know this will kill people in the desc below.
 	gender = NEUTER
@@ -729,7 +729,7 @@
 			addtimer(VARSET_CALLBACK(src, las_b, FALSE), 5 MINUTES)
 			return
 
-/obj/item/device/binoculars/designator/afterattack(atom/targeted_atom as mob|obj|turf, mob/user as mob, params) // This is actually WAY better, espically since its fucken already in the code.
+/obj/item/device/binoculars/designator/afterattack(atom/targeted_atom as mob|obj|turf, mob/user as mob, params) // This is actually WAY better, especially since its fucken already in the code.
 	lasering(user, targeted_atom, params)
 	return
 

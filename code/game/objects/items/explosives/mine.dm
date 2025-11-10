@@ -28,7 +28,7 @@
 	var/triggered = FALSE
 	var/hard_iff_lock = FALSE
 	var/obj/effect/mine_tripwire/tripwire
-	/// Whether this mine will ignore MOB_SIZE_XENO_VERY_SMALL or smaller xenos - only configureable if customizeable
+	/// Whether this mine will ignore MOB_SIZE_XENO_VERY_SMALL or smaller xenos - only configurable if customizable
 	var/ignore_small_xeno = FALSE
 	/// How many times a xeno projectile has hit this mine
 	var/spit_hit_count = 0
@@ -368,7 +368,7 @@
 	icon_state = "grenade_sebb_planted"
 	desc = "A G2 electroshock grenade planted as a landmine."
 	pixel_y = -5
-	anchored = TRUE // this is supposed to be planeted already when spawned
+	anchored = TRUE // this is supposed to be planted already when spawned
 
 /obj/item/explosive/mine/sebb/disarm()
 	. = ..()

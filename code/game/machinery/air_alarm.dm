@@ -560,7 +560,7 @@
 <style>
 .dl0 { color: green; }
 .dl1 { color: orange; }
-.dl2 { color: red; font-weght: bold;}
+.dl2 { color: red; font-weight: bold;}
 </style>
 "}
 
@@ -745,14 +745,14 @@ Nitrous Oxide
 <a href='byond://?src=\ref[src];screen=[AALARM_SCREEN_MAIN]'>Main menu</a><br>
 <b>Alarm thresholds:</b><br>
 Partial pressure for gases
-<style>/* some CSS woodoo here. Does not work perfect in ie6 but who cares? */
+<style>/* some CSS voodoo here. Does not work perfect in ie6 but who cares? */
 table td { border-left: 1px solid black; border-top: 1px solid black;}
 table tr:first-child th { border-left: 1px solid black;}
 table th:first-child { border-top: 1px solid black; font-weight: normal;}
 table tr:first-child th:first-child { border: none;}
 .dl0 { color: green; }
 .dl1 { color: orange; }
-.dl2 { color: red; font-weght: bold;}
+.dl2 { color: red; font-weight: bold;}
 </style>
 <table cellspacing=0>
 <TR><th></th><th class=dl2>min2</th><th class=dl1>min1</th><th class=dl1>max1</th><th class=dl2>max2</th></TR>
@@ -813,7 +813,7 @@ table tr:first-child th:first-child { border: none;}
 		var/list/selected = TLV["temperature"]
 		var/max_temperature = min(selected[3] - T0C, MAX_TEMPERATURE)
 		var/min_temperature = max(selected[2] - T0C, MIN_TEMPERATURE)
-		var/input_temperature = tgui_input_number(usr, "What temperature would you like the system to mantain? (Capped between [min_temperature]C and [max_temperature]C)", "Thermostat Controls", min_temperature, max_temperature, min_temperature)
+		var/input_temperature = tgui_input_number(usr, "What temperature would you like the system to maintain? (Capped between [min_temperature]C and [max_temperature]C)", "Thermostat Controls", min_temperature, max_temperature, min_temperature)
 		if(!input_temperature || input_temperature > max_temperature || input_temperature < min_temperature)
 			to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C")
 		else
@@ -951,7 +951,7 @@ table tr:first-child th:first-child { border: none;}
 	switch(buildstage)
 		if(2)
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))  // Opening that Air Alarm up.
-				//to_chat(user, "You pop the Air Alarm's maintence panel open.")
+				//to_chat(user, "You pop the Air Alarm's maintenance panel open.")
 				wiresexposed = !wiresexposed
 				to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"]")
 				update_icon()

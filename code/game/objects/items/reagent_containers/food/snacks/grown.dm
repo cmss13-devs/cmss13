@@ -91,11 +91,11 @@
 	attack_verb = list("stung")
 	hitsound = ""
 
-	var/potency_divisior = 5
+	var/potency_divisor = 5
 
 /obj/item/reagent_container/food/snacks/grown/nettle/Initialize()
 	. = ..()
-	force = round((5+potency/potency_divisior), 1)
+	force = round((5+potency/potency_divisor), 1)
 
 /obj/item/reagent_container/food/snacks/grown/nettle/pickup(mob/living/carbon/human/user, silent)
 	. = ..()
@@ -113,11 +113,11 @@
 	name = "deathnettle"
 	icon_state = "deathnettle"
 
-	potency_divisior = 2.5
+	potency_divisor = 2.5
 
 /obj/item/reagent_container/food/snacks/grown/nettle/death/On_Consume(mob/living/carbon/human/user)
 	. = ..()
-	user.apply_internal_damage(potency/potency_divisior, user.internal_organs_by_name["liver"])
+	user.apply_internal_damage(potency/potency_divisor, user.internal_organs_by_name["liver"])
 
 /obj/item/reagent_container/food/snacks/grown/nettle/death/pickup(mob/living/carbon/human/user)
 

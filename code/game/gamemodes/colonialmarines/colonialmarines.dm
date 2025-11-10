@@ -145,7 +145,7 @@
 	clear_lz_hazards() // This shouldn't normally do anything, but is here just in case
 
 	// Assumption: Shuttle origin is its center
-	// Assumption: dwidth is atleast 2 and dheight is atleast 4 otherwise there will be overlap
+	// Assumption: dwidth is at least 2 and dheight is at least 4 otherwise there will be overlap
 	var/list/options = list()
 	var/list/structures_to_break = list(/obj/structure/barricade, /obj/structure/surface/table, /obj/structure/bed)
 	var/bottom = marine_dropship.y - marine_dropship.dheight - 2

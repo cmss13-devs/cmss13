@@ -51,7 +51,7 @@
 		update_health(0, TRUE)
 	if(user)
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
-	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)
+	update_icon()
 	starting_maxhealth = maxhealth
 
 /obj/structure/barricade/metal/Initialize(mapload, mob/user)

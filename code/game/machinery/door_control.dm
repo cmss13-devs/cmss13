@@ -246,7 +246,7 @@
 
 /obj/structure/machinery/door_control/cl
 	req_access_txt = "200"
-// seperating quarter and office because we might want to allow more access to the office than quarter in the future.
+// separating quarter and office because we might want to allow more access to the office than quarter in the future.
 /obj/structure/machinery/door_control/cl/office
 /obj/structure/machinery/door_control/cl/office/door
 	name = "Office Door Shutter"

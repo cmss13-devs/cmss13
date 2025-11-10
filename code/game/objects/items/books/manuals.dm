@@ -12,12 +12,12 @@
 //Engineering related manuals
 
 /obj/item/book/manual/engineering_guide
-	name = "Tools, Radiowaves And Electrical Grids"
+	name = "Tools, Radio Waves And Electrical Grids"
 	desc = "A book containing basic and yet important information regarding engineering procedures."
 	icon_state = "book_engineering"
 	item_state = "book_engineering"
 	author = "Colonial Marines Engineer Association"
-	title = "Tools, Radiowaves And Electrical Grids"
+	title = "Tools, Radio Waves And Electrical Grids"
 
 	dat = {"
 
@@ -98,7 +98,7 @@
 
 /obj/item/book/manual/comms
 	name = "Subspace Telecommunications And You"
-	desc = "An instructions manual regarding the use of communication channels and advice on how to be properly heard over the radiowaves while speaking all kinds of languages."
+	desc = "An instructions manual regarding the use of communication channels and advice on how to be properly heard over the radio waves while speaking all kinds of languages."
 	icon_state = "book_particle"
 	item_state = "book_particle"
 	author = "Colonial Marines Engineer Association"
@@ -227,27 +227,27 @@
 				<li><b>Width:</b> 1.8m</li>
 				<li><b>Top speed:</b> 5km/hour</li>
 				<li><b>Operation in vacuum/hostile environment:</b> Possible</b>
-				<li><b>Airtank volume:</b> 500 liters</li>
+				<li><b>Air tank volume:</b> 500 liters</li>
 				<li><b>Devices:</b>
 					<ul class="a">
 					<li>Hydraulic clamp</li>
 					<li>High-speed drill</li>
 					</ul>
 				</li>
-				<li><b>Propulsion device:</b> Powercell-powered electro-hydraulic system</li>
-				<li><b>Powercell capacity:</b> Varies</li>
+				<li><b>Propulsion device:</b> Power cell-powered electro-hydraulic system</li>
+				<li><b>Power cell capacity:</b> Varies</li>
 				</ul>
 
 				<h2>Construction:</h2>
 				<ol>
 					<li>Connect all exosuit parts to the chassis frame.</li>
 					<li>Connect all hydraulic fittings and tighten them up with a wrench.</li>
-					<li>Adjust the servohydraulics with a screwdriver.</li>
+					<li>Adjust the servo hydraulics with a screwdriver.</li>
 					<li>Wire the chassis (Cable is not included).</li>
 					<li>Use the wirecutters to remove the excess cable if needed.</li>
-					<li>Install the central control module (Not included. Use supplied datadisk to create one).</li>
+					<li>Install the central control module (Not included. Use supplied data disk to create one).</li>
 					<li>Secure the mainboard with a screwdriver.</li>
-					<li>Install the peripherals control module (Not included. Use supplied datadisk to create one).</li>
+					<li>Install the peripherals control module (Not included. Use supplied data disk to create one).</li>
 					<li>Secure the peripherals control module with a screwdriver.</li>
 					<li>Install the internal armor plating (Not included due to Weyland-Yutani regulations. Can be made using 5 metal sheets).</li>
 					<li>Secure the internal armor plating with a wrench.</li>
@@ -892,7 +892,7 @@
 				</head>
 				<body>
 				<h1>The Nuclear Explosive</h1>
-				Hello and thank you for choosing the Nuclear Regulatory Comission archive for your nuclear information needs. Today's crash course will deal with the operation of a 'Blockbuster' Large Atomic Fission Demolition Device (ELAFDD), designed and manufactured by the Colonial Marines Engineer Association with the purpose of allowing USCM patrol vessels to carry and utilize atomic ordnance without having the capabilities of remotely launching them.<br><br>
+				Hello and thank you for choosing the Nuclear Regulatory Commission archive for your nuclear information needs. Today's crash course will deal with the operation of a 'Blockbuster' Large Atomic Fission Demolition Device (ELAFDD), designed and manufactured by the Colonial Marines Engineer Association with the purpose of allowing USCM patrol vessels to carry and utilize atomic ordnance without having the capabilities of remotely launching them.<br><br>
 
 				First and foremost, YOU CAN'T DO ANYTHING UNTIL THE BOMB IS IN PLACE. A specific button exists to allow for the deployment and anchoring of the device into place. If this is done, to unbolt it, you must utilize the same button you used to anchor.<br>
 

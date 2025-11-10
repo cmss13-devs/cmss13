@@ -201,7 +201,7 @@
 								reaction = "notice that [being.p_their()] eyes are <font color='yellow'>reacting to the light</font>, but [being.p_their()] pupils seen to <font color='yellow'>react sluggishly and with small delays</font>, [being.p_their()] vision is probably <font color='yellow'>a little impaired</font>"
 							if(ORGAN_BRUISED)
 								being.flash_eyes()
-								reaction = "observe that [being.p_their()] eyes are <font color='orange'>unrealiably reacting to the light</font>, with [being.p_their()] pupils <font color='orange'>reacting very sluggishly and with noticeable delays</font>, it is probable that [being.p_their()] vision is <font color='orange'>remarkably impaired</font>"
+								reaction = "observe that [being.p_their()] eyes are <font color='orange'>unreliably reacting to the light</font>, with [being.p_their()] pupils <font color='orange'>reacting very sluggishly and with noticeable delays</font>, it is probable that [being.p_their()] vision is <font color='orange'>remarkably impaired</font>"
 							if(ORGAN_BROKEN)
 								reaction = "notice that [being.p_their()] eyes are <font color='red'>not reacting to the light</font>, and the pupils of both eyes are <font color='red'>not constricting with the light</font> shine at all, [being.p_they()] is probably <font color='red'>blind</font>"
 							else
@@ -218,7 +218,7 @@
 								being.flash_eyes()
 								reaction += "notice that the pupils are <font color='orange'>not consensually constricting</font> when light is separately applied to each eye, meaning possible <font color='orange'>brain damage</font>"
 							if(ORGAN_BROKEN)
-								reaction += "notice that the pupils <font color='red'>have different sizes and are assymmetric</font>, [being.p_they()] possibly have <font color='red'>severe brain damage</font>"
+								reaction += "notice that the pupils <font color='red'>have different sizes and are asymmetric</font>, [being.p_they()] possibly have <font color='red'>severe brain damage</font>"
 							else
 								being.flash_eyes()
 								reaction += "notice that the pupils are <font color='green'>consensually and normally constricting</font> when light is separately applied to each eye, [being.p_their()] brain is <font color='green'>probably fine</font>"
@@ -385,7 +385,7 @@
 	if(fuel <= 0 || !on)
 		burn_out()
 
-/obj/item/device/flashlight/flare/proc/flare_burn_down() //Controls the way in which flares slowly die out. Needs to be overriden by children, or they will be forced to use this light behavior.
+/obj/item/device/flashlight/flare/proc/flare_burn_down() //Controls the way in which flares slowly die out. Needs to be overridden by children, or they will be forced to use this light behavior.
 	switch(fuel) //The code belows controls the timing on a flares burn out, and the corresponding reduction in effective range.
 		if(15.25 MINUTES to 16 MINUTES)
 			set_light_range(7)
@@ -567,7 +567,7 @@
 	item_state = "slime"
 	w_class = SIZE_TINY
 	light_range = 6
-	// Bio-luminesence has one setting, on.
+	// Bio-luminescence has one setting, on.
 	on = TRUE
 	raillight_compatible = FALSE
 	// Bio-luminescence does not toggle.

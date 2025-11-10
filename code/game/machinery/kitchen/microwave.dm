@@ -23,7 +23,7 @@
 // see code/modules/food/recipes_microwave.dm for recipes
 
 //*******************
-//*   Initialising
+//*   Initializing
 //********************/
 
 /obj/structure/machinery/microwave/Initialize()
@@ -305,13 +305,13 @@
 	src.updateUsrDialog()
 
 /obj/structure/machinery/microwave/proc/abort()
-	src.operating = 0 // Turn it off again aferwards
+	src.operating = 0 // Turn it off again afterwards
 	src.icon_state = "mw"
 	src.updateUsrDialog()
 
 /obj/structure/machinery/microwave/proc/stop()
 	playsound(src.loc, 'sound/machines/ding.ogg', 25, 1)
-	src.operating = 0 // Turn it off again aferwards
+	src.operating = 0 // Turn it off again afterwards
 	src.icon_state = "mw"
 	src.updateUsrDialog()
 
@@ -334,7 +334,7 @@
 	dirty = 100 // Make it dirty so it can't be used util cleaned
 	flags_atom = null //So you can't add condiments
 	icon_state = "mwbloody" // Make it look dirty too
-	operating = 0 // Turn it off again aferwards
+	operating = 0 // Turn it off again afterwards
 	updateUsrDialog()
 
 /obj/structure/machinery/microwave/proc/broke()
@@ -345,7 +345,7 @@
 	visible_message(SPAN_DANGER("The microwave breaks!")) //Let them know they're stupid
 	broken = 2 // Make it broken so it can't be used util fixed
 	flags_atom = null //So you can't add condiments
-	operating = 0 // Turn it off again aferwards
+	operating = 0 // Turn it off again afterwards
 	updateUsrDialog()
 
 /obj/structure/machinery/microwave/proc/fail()

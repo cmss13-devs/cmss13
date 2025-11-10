@@ -17,7 +17,7 @@
 	var/static/list/users_in_sim = list()
 
 	/*
-	unarmoured humans are unnencessary clutter as they tend to explode easily
+	unarmoured humans are unnecessary clutter as they tend to explode easily
 	and litter the sim room with body parts, best left out.
 	*/
 	var/static/list/target_types = list(

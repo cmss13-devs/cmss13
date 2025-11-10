@@ -2,8 +2,8 @@
 ERROR CODES AND WHAT THEY MEAN:
 
 
-ERROR CODE A1: null ammo while reloading. <------------ Only appears when initialising or reloading a weapon and switching the ammo. Somehow the argument passed a null ammo.
-ERROR CODE A2: null caliber while reloading. <------------ Only appears when initialising or reloading a weapon and switching the calibre. Somehow the argument passed a null caliber.
+ERROR CODE A1: null ammo while reloading. <------------ Only appears when initializing or reloading a weapon and switching the ammo. Somehow the argument passed a null ammo.
+ERROR CODE A2: null caliber while reloading. <------------ Only appears when initializing or reloading a weapon and switching the calibre. Somehow the argument passed a null caliber.
 ERROR CODE I1: projectile malfunctioned while firing. <------------ Right before the bullet is fired, the actual bullet isn't present or isn't a bullet.
 ERROR CODE I2: null ammo while load_into_chamber() <------------- Somehow the ammo datum is missing or something. We need to figure out how that happened.
 ERROR CODE R1: negative current_rounds on examine. <------------ Applies to ammunition only. Ammunition should never have negative rounds after spawn.

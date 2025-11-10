@@ -101,7 +101,7 @@
 		else if(isSilicon(M))
 			M.apply_effect(rand(5,10), WEAKEN)
 
-		else //if not carbon or sillicn
+		else //if not carbon or silicon
 			flashfail = TRUE
 
 		if(!flashfail)

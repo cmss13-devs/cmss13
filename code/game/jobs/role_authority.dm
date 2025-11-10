@@ -33,10 +33,10 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 /datum/authority/branch/role
 	var/name = "Role Authority"
 
-	var/list/datum/job/roles_by_path //Master list generated when role aithority is created, listing every role by path, including variable roles. Great for manually equipping with.
+	var/list/datum/job/roles_by_path //Master list generated when role authority is created, listing every role by path, including variable roles. Great for manually equipping with.
 	var/list/datum/job/roles_by_name //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.
 	var/list/roles_for_mode //Derived list of roles only for the game mode, generated when the round starts.
-	var/list/castes_by_path //Master list generated when role aithority is created, listing every caste by path.
+	var/list/castes_by_path //Master list generated when role authority is created, listing every caste by path.
 	var/list/castes_by_name //Master list generated when role authority is created, listing every default caste by name.
 
 	/// List of mapped roles that should be used in place of usual ones
@@ -147,7 +147,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	/*===============================================================*/
 
 	//===============================================================\\
-	//PART II: Setting up our player variables and lists, to see if we have anyone to destribute.
+	//PART II: Setting up our player variables and lists, to see if we have anyone to distribute.
 
 	unassigned_players = list()
 	for(var/mob/new_player/M in GLOB.player_list) //Get all players who are ready.
@@ -260,7 +260,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	/*===============================================================*/
 
 /**
-* Assign roles to the players. Return roles that are still avialable.
+* Assign roles to the players. Return roles that are still available.
 * If count is true, return role balancing weight instead.
 */
 /datum/authority/branch/role/proc/assign_roles(list/roles_for_mode, list/unassigned_players, count = FALSE)

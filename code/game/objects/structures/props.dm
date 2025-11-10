@@ -391,7 +391,7 @@
 	icon = 'icons/obj/resin_objects.dmi'
 	icon_state = "watertank"
 
-//industructible props
+//indestructible props
 /obj/structure/prop/invuln
 	name = "instanceable object"
 	desc = "this needs to be defined by a coder"
@@ -802,7 +802,7 @@
 
 /obj/structure/prop/vehicles/tank/twe
 	name = "\improper FV150 Shobo MKII"
-	desc = "The FV150 Shobo MKII is a Combat Reconnaissance Vehicle Tracked, abbreviated to CVR(T) in official documentation. It was co-developed in 2175 by Weyland-Yutani and Gallar Co., a Titan based heavy vehicle manufacturer. Taking into account lessons learned from the MkI's performance in the Australian Wars, major structual changes were made, and the MKII went into production in 2178. It is armed with a twin 30mm cannon and a L56A2 10x28mm coaxial, complimented by its ammunition stores of 170 rounds of 30mm and 1600 rounds of 10x28mm. The maximum speed of the Shobo is 60 mph, but on a standard deployment after the ammo stores are fully loaded and the terrain is taken into account, it consistently sits at 55mph."
+	desc = "The FV150 Shobo MKII is a Combat Reconnaissance Vehicle Tracked, abbreviated to CVR(T) in official documentation. It was co-developed in 2175 by Weyland-Yutani and Gallar Co., a Titan based heavy vehicle manufacturer. Taking into account lessons learned from the MkI's performance in the Australian Wars, major structural changes were made, and the MKII went into production in 2178. It is armed with a twin 30mm cannon and a L56A2 10x28mm coaxial, complimented by its ammunition stores of 170 rounds of 30mm and 1600 rounds of 10x28mm. The maximum speed of the Shobo is 60 mph, but on a standard deployment after the ammo stores are fully loaded and the terrain is taken into account, it consistently sits at 55mph."
 	icon = 'icons/obj/vehicles/twe_tank.dmi'
 	icon_state = "twe_tank"
 	density = TRUE
@@ -902,7 +902,7 @@
 	icon = 'icons/obj/structures/props/ice_colony/fabs_greebles.dmi'
 	icon_state = "antenna"
 	layer = ABOVE_MOB_LAYER
-	desc = "Windsocks, Air-Con units, solarpanels, oh my!"
+	desc = "Windsocks, Air-Con units, solar panels, oh my!"
 	density = FALSE
 
 

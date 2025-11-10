@@ -51,7 +51,7 @@
 	transceiver = new /obj/item/device/radio/motion
 	transceiver.forceMove(src)
 	transceiver.subspace_transmission = TRUE
-	update_tranceiver(assigned_network)
+	update_transceiver(assigned_network)
 	update_icon()
 
 /obj/item/device/motion_sensor/Destroy()
@@ -131,7 +131,7 @@
 			if(!new_net || new_net == "None")
 				to_chat(user, SPAN_WARNING("No new network selected!"))
 				return FALSE
-			update_tranceiver(new_net)
+			update_transceiver(new_net)
 			return TRUE
 
 	else if(HAS_TRAIT(hit_item, TRAIT_TOOL_MULTITOOL))
@@ -181,7 +181,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/device/motion_sensor/proc/update_tranceiver(new_network = "MP")
+/obj/item/device/motion_sensor/proc/update_transceiver(new_network = "MP")
 	switch(new_network)
 		if("MP")
 			assigned_channel = RADIO_CHANNEL_MP

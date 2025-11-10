@@ -153,7 +153,7 @@
 			deconstruct()
 			return
 
-	if(cut) //Cut/brokn grilles can't be messed with further than this
+	if(cut) //Cut/broken grilles can't be messed with further than this
 		return
 
 	if(istype(W, /obj/item/grab) && get_dist(src, user) < 2)

@@ -80,7 +80,7 @@
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 
-// 2 pistol amory closet maybe to replace with full pistol belt...
+// 2 pistol armory closet maybe to replace with full pistol belt...
 /obj/structure/closet/secure_closet/guncabinet/red/armory_m4a3_pistol
 
 /obj/structure/closet/secure_closet/guncabinet/red/armory_m4a3_pistol/Initialize()

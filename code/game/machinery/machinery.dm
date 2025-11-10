@@ -342,7 +342,7 @@ Class Procs:
 /obj/structure/machinery/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
-//made into "prop" from an old destilery project abandon 9 year ago.
+//made into "prop" from an old distillery project abandon 9 year ago.
 
 /obj/structure/machinery/mill
 	name = "\improper Mill"

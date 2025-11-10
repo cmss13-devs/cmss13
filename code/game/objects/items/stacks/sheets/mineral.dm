@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/sandstone/runed
 	name = "runed sandstone brick"
-	desc = "Sandstone is sand cemented into stone. A common building material for primitive civilizations, but it can still make a good enough wall. This one has strange runes embued into the brick."
+	desc = "Sandstone is sand cemented into stone. A common building material for primitive civilizations, but it can still make a good enough wall. This one has strange runes imbued into the brick."
 	singular_name = "runed sandstone brick"
 	icon_state = "sheet-runedsandstone"
 	amount_sprites = FALSE
@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/diamond
 	name = "diamond"
-	desc = "Diamond is highly-pressurized and heated carbon in a diamond cubic crystal lattice. It is highly-valued for its look and hardness, despite being artifically-manufactured, these days."
+	desc = "Diamond is highly-pressurized and heated carbon in a diamond cubic crystal lattice. It is highly-valued for its look and hardness, despite being artificially-manufactured, these days."
 	singular_name = "diamond gem"
 	icon_state = "sheet-diamond"
 
@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/chitin
 	name = "chitin"
-	desc = "Chitin is the building block of an arthropod--such as an insect or crustracean's--exoskeleton. This sheet, in particular, came from aliens."
+	desc = "Chitin is the building block of an arthropod--such as an insect or crustacean's--exoskeleton. This sheet, in particular, came from aliens."
 	singular_name = "chitin brick"
 	icon_state = "sheet-chitin"
 

@@ -121,8 +121,8 @@
 //=ROYAL MARINES=\\
 
 /obj/item/clothing/mask/gas/pmc/royal_marine
-	name = "\improper L7 gasmask"
-	desc = "The L7 Gasmask used by members of the three world empires royal marines commando."
+	name = "\improper L7 gas mask"
+	desc = "The L7 gas mask used by members of the three world empires royal marines commando."
 	icon_state = "rmc_mask"
 	icon = 'icons/obj/items/clothing/masks/masks_by_faction/TWE.dmi'
 	item_icons = list(
@@ -133,8 +133,8 @@
 //= UPP =\\
 
 /obj/item/clothing/mask/gas/upp_pfb
-	name = "\improper ShMB/4 gasmask"
-	desc = "The standard issue gasmask utilized by the UPP Armed Collective and many UPP civilian organizations."
+	name = "\improper ShMB/4 gas mask"
+	desc = "The standard issue gas mask utilized by the UPP Armed Collective and many UPP civilian organizations."
 	icon_state = "pfb"
 	item_state = "pfb"
 	icon = 'icons/obj/items/clothing/masks/masks_by_faction/UPP.dmi'
@@ -148,7 +148,7 @@
 
 /obj/item/clothing/mask/gas/riot
 	name = "riot mask"
-	desc = "A mask of colonial riot control department, with red laser shield lenses for eye protection due a somewhat often use of RXF-M5 EVA by colonial rioteers. Riot gear is also often seen in hands of CLF terrorists, due to large surplus of it being captured in colonial rebellions."
+	desc = "A mask of colonial riot control department, with red laser shield lenses for eye protection due a somewhat often use of RXF-M5 EVA by colonial rioters. Riot gear is also often seen in hands of CLF terrorists, due to large surplus of it being captured in colonial rebellions."
 	icon_state = "carbon_mask"
 	item_state = "balaclava"
 	icon = 'icons/obj/items/clothing/masks/masks_by_faction/CLF.dmi'

@@ -217,7 +217,7 @@
 			return
 		//If the dispenser has a whitelist with stuff in it, and the attacking object ain't in there, don't accept it.
 		if(length(whitelisted_containers) && !(attacking_object.type in whitelisted_containers))
-			//Currently this is only used for pressurized disepnsers
+			//Currently this is only used for pressurized dispensers
 			to_chat(user, SPAN_WARNING("This machine doesn't accept that container."))
 			return
 		if(user.drop_inv_item_to_loc(attacking_object, src))
@@ -302,7 +302,7 @@
 
 	var/base_state = "mixer"
 
-/obj/structure/machinery/chem_dispenser/yauja
+/obj/structure/machinery/chem_dispenser/yautja
 
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	breakable = FALSE

@@ -239,7 +239,7 @@
 					qdel(NC)
 
 			return
-	else if(C.d1 == 0) // exisiting cable doesn't point at our position, so see if it's a stub
+	else if(C.d1 == 0) // existing cable doesn't point at our position, so see if it's a stub
 							// if so, make it a full cable pointing from it's old direction to our dirn
 		var/nd1 = C.d2 // these will be the new directions
 		var/nd2 = dirn

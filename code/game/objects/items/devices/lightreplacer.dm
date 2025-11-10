@@ -5,7 +5,7 @@
 //
 // This is a device supposedly to be used by Janitors and Janitor Cyborgs which will
 // allow them to easily replace lights. This was mostly designed for Janitor Cyborgs since
-// they don't have hands or a way to replace lightbulbs.
+// they don't have hands or a way to replace light bulbs.
 //
 // HOW IT WORKS
 //
@@ -41,7 +41,7 @@
 /obj/item/device/lightreplacer
 
 	name = "light replacer"
-	desc = "A device to automatically replace lights. Can be refill with working lightbulbs and sheets of glass, and can recycle broken lightbulbs."
+	desc = "A device to automatically replace lights. Can be refill with working light bulbs and sheets of glass, and can recycle broken light bulbs."
 
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "lightreplacer0"

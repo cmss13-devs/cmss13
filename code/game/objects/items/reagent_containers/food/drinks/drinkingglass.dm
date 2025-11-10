@@ -108,7 +108,7 @@
 			if("vodka")
 				icon_state = "ginvodkaglass"
 				name = "Glass of vodka"
-				desc = "The glass contain wodka. Xynta."
+				desc = "The glass contain vodka. Xynta."
 				center_of_mass = "x=16;y=12"
 			if("sake")
 				icon_state = "ginvodkaglass"
@@ -188,7 +188,7 @@
 			if("vodkamartini")
 				icon_state = "martiniglass"
 				name = "Vodka martini"
-				desc ="A bastardisation of the classic martini. Still great."
+				desc ="A bastardization of the classic martini. Still great."
 				center_of_mass = "x=17;y=8"
 			if("gargleblaster")
 				icon_state = "gargleblasterglass"
@@ -617,7 +617,7 @@
 			if("mojito")
 				icon_state = "mojitoglass"
 				name = "Glass of Mojito"
-				desc = "A Cuban classic, this drink will never dissapoint you."
+				desc = "A Cuban classic, this drink will never disappoint you."
 				center_of_mass = "x=16;y=5"
 			else
 				//a common drinking reagent that makes more than half of the total volume

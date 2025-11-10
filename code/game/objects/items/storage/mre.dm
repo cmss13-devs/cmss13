@@ -29,7 +29,7 @@
 	var/should_have_matches = TRUE
 	var/should_have_spread = TRUE
 	var/should_have_beverage = TRUE
-	var/should_have_utencil = TRUE
+	var/should_have_utensil = TRUE
 	//If mre should include name of entree in its own name
 	var/has_main_name = TRUE
 	var/isopened = FALSE
@@ -61,8 +61,8 @@
 	if(should_have_beverage)
 		choose_beverage()
 		storage_slots += 1
-	if(should_have_utencil)
-		choose_utencil()
+	if(should_have_utensil)
+		choose_utensil()
 		storage_slots += 1
 	if(should_have_drink)
 		choose_drink()
@@ -106,7 +106,7 @@
 		if(5)
 			new /obj/item/reagent_container/food/drinks/beverage_drink/chocolate_hazelnut(src)
 
-/obj/item/storage/box/mre/proc/choose_utencil()
+/obj/item/storage/box/mre/proc/choose_utensil()
 	new /obj/item/tool/kitchen/utensil/mre_spork(src)
 
 /obj/item/storage/box/mre/proc/choose_matches()
@@ -161,7 +161,7 @@
 	trash_item = /obj/item/trash/pmc_mre
 	should_have_spread = FALSE
 	should_have_beverage = FALSE
-	should_have_utencil = FALSE
+	should_have_utensil = FALSE
 	entree = /obj/item/mre_food_packet/entree/wy
 	side = /obj/item/mre_food_packet/wy/side
 	snack = /obj/item/mre_food_packet/wy/snack
@@ -217,7 +217,7 @@
 /obj/item/storage/box/mre/twe/choose_beverage()
 	new /obj/item/reagent_container/pill/teabag(src)
 
-/obj/item/storage/box/mre/twe/choose_utencil()
+/obj/item/storage/box/mre/twe/choose_utensil()
 	new /obj/item/reagent_container/food/drinks/sillycup(src)
 
 /obj/item/storage/box/mre/twe/choose_cigarettes()
@@ -248,7 +248,7 @@
 
 /obj/item/storage/box/mre/fsr
 	name = "\improper FSR combat ration"
-	desc = "First Strike Ration, produced by the same manufacturere that produces MREs for UA militaries, but oriented on a civillian and private markets."
+	desc = "First Strike Ration, produced by the same manufacturer that produces MREs for UA militaries, but oriented on a civilian and private markets."
 	icon_state = "merc_mealpack"
 	icon_closed = "merc_mealpack"
 	icon_opened = "merc_mealpackopened"
@@ -261,7 +261,7 @@
 	should_have_cigarettes = FALSE
 	should_have_matches = FALSE
 
-/obj/item/storage/box/mre/fsr/choose_utencil()
+/obj/item/storage/box/mre/fsr/choose_utensil()
 	new /obj/item/tool/kitchen/utensil/mre_spork/fsr(src)
 
 /obj/item/storage/box/mre/wy
@@ -281,7 +281,7 @@
 	should_have_matches = FALSE
 	should_have_spread = FALSE
 	should_have_cookie = FALSE
-	should_have_utencil = FALSE
+	should_have_utensil = FALSE
 
 /obj/item/storage/box/mre/wy/Initialize()
 	. = ..()
@@ -322,13 +322,13 @@
 	should_have_matches = FALSE
 	should_have_spread = FALSE
 	should_have_cookie = FALSE
-	should_have_utencil = TRUE
+	should_have_utensil = TRUE
 
 /obj/item/storage/box/mre/upp/Initialize()
 	. = ..()
 	AddElement(/datum/element/corp_label/norcomm)
 
-/obj/item/storage/box/mre/upp/choose_utencil()
+/obj/item/storage/box/mre/upp/choose_utensil()
 	new /obj/item/tool/kitchen/utensil/pspoon(src)
 
 /obj/item/storage/box/mre/upp/choose_drink()

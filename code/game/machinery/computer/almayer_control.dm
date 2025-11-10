@@ -220,7 +220,7 @@
 
 			COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
 			shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
-			message_admins("[key_name(user)] has made a shipwide annoucement.")
+			message_admins("[key_name(user)] has made a shipwide announcement.")
 			log_announcement("[key_name(user)] has announced the following to the ship: [input]")
 			. = TRUE
 

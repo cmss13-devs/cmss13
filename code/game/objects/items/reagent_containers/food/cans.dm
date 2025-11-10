@@ -31,7 +31,7 @@
 /obj/item/reagent_container/food/drinks/cans/attackby(obj/item/opening_tool as obj, mob/user as mob)
 	var/opening_time
 	var/opening_sound
-	var/hiss = pick("Nice hiss!", "No hiss.", "A small hiss.") //i couldn't not include stevemre reference
+	var/hiss = pick("Nice hiss!", "No hiss.", "A small hiss.") //i couldn't not include SteveMRE reference
 	if(user.action_busy || open || !needs_can_opener || !(opening_tool.type in CAN_OPENER_EFFECTIVE) && !(opening_tool.type in CAN_OPENER_CRUDE))
 		return
 
@@ -418,7 +418,7 @@
 /obj/item/reagent_container/food/drinks/cans/waterbottle/upp
 	name = "\improper Gerolsteiner Bottled Sparkling Water"
 	desc = "German bottled, sparkling water popular among germanic population of UPP."
-	desc_lore = "After Gerolsteiner company becoming an intergrated state enterprise, their products became a common thing in military rations and in other places."
+	desc_lore = "After Gerolsteiner company becoming an integrated state enterprise, their products became a common thing in military rations and in other places."
 	icon_state = "upp_water"
 	crushed_icon = "upp_water_crushed"
 
@@ -562,7 +562,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/souto/diet/cherry
 	name = "\improper Diet Cherry Souto"
-	desc = "It's neither diet nor cherry flavored. Canned in Havanna."
+	desc = "It's neither diet nor cherry flavored. Canned in Havana."
 	icon_state = "souto_diet_cherry"
 	item_state = "souto_diet_cherry"
 

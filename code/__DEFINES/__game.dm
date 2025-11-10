@@ -347,12 +347,12 @@
 #define BARRICADE_SANDBAG_4 4
 #define BARRICADE_SANDBAG_5 5
 
-// Defines for sandbag tresholds
-#define BARRICADE_SANDBAG_TRESHOLD_1 75
-#define BARRICADE_SANDBAG_TRESHOLD_2 150
-#define BARRICADE_SANDBAG_TRESHOLD_3 225
-#define BARRICADE_SANDBAG_TRESHOLD_4 300
-#define BARRICADE_SANDBAG_TRESHOLD_5 450
+// Defines for sandbag thresholds
+#define BARRICADE_SANDBAG_THRESHOLD_1 75
+#define BARRICADE_SANDBAG_THRESHOLD_2 150
+#define BARRICADE_SANDBAG_THRESHOLD_3 225
+#define BARRICADE_SANDBAG_THRESHOLD_4 300
+#define BARRICADE_SANDBAG_THRESHOLD_5 450
 
 // Defines for wall types
 #define WALL_METAL "metal"
@@ -566,7 +566,7 @@
 /// To be used with delta_time. Multiplied by 10 to convert from deciseconds to seconds
 #define AMOUNT_PER_TIME(amount, time) (((amount) / (time))*10)
 
-// Local message mode. Used to decide wheter message should be dispatched on the radio.
+// Local message mode. Used to decide whether message should be dispatched on the radio.
 #define MESSAGE_MODE_LOCAL 1
 // The number of channels you can multibroadcast at a time
 #define MULTIBROADCAST_MAX_CHANNELS 4

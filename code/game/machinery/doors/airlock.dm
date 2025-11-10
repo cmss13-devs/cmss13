@@ -251,7 +251,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	switch(wire)
 		if(AIRLOCK_WIRE_MAIN_POWER)
-			//Cutting either one disables the main door power, but unless backup power is also cut, the backup power re-powers the door in 10 seconds. While unpowered, the door may be crowbarred open, but bolts-raising will not work. Cutting these wires may electocute the user.
+			//Cutting either one disables the main door power, but unless backup power is also cut, the backup power re-powers the door in 10 seconds. While unpowered, the door may be crowbarred open, but bolts-raising will not work. Cutting these wires may electrocute the user.
 			loseMainPower()
 			shock(usr, 50)
 
@@ -260,7 +260,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			lock()
 
 		if(AIRLOCK_WIRE_BACKUP_POWER)
-			//Cutting either one disables the backup door power (allowing it to be crowbarred open, but disabling bolts-raising), but may electocute the user.
+			//Cutting either one disables the backup door power (allowing it to be crowbarred open, but disabling bolts-raising), but may electrocute the user.
 			loseBackupPower()
 			shock(usr, 50)
 

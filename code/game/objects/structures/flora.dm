@@ -13,7 +13,7 @@ Example:
 If you want to make plant cuttable, change it's cut_level var
 
 PLANT_NO_CUT = 1 = Can't be cut down
-PLANT_CUT_KNIFE = 2 = Needs at least a bootknife to be cut down
+PLANT_CUT_KNIFE = 2 = Needs at least a boot knife to be cut down
 PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 
 
@@ -683,7 +683,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	icon = 'icons/obj/structures/props/natural/vegetation/jungleplants.dmi'
 	icon_state = "bush_1"
 	layer = BUSH_LAYER
-	var/indestructable = 0
+	var/indestructible = 0
 	var/stump = 0
 	health = 100
 
@@ -735,11 +735,11 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 					if(8 to 9)
 						var/new_slowdown = H.next_move_slowdown + rand(8,11)
 						H.next_move_slowdown = new_slowdown
-						to_chat(H, SPAN_WARNING("You got tangeled in [src]!"))
+						to_chat(H, SPAN_WARNING("You got tangled in [src]!"))
 					if(10)
 						var/new_slowdown = H.next_move_slowdown + rand(12,20)
 						H.next_move_slowdown = new_slowdown
-						to_chat(H, SPAN_WARNING("You got completely tangeled in [src]! Oh boy..."))
+						to_chat(H, SPAN_WARNING("You got completely tangled in [src]! Oh boy..."))
 
 /obj/structure/flora/jungle/thickbush/attackby(obj/item/I as obj, mob/user as mob)
 	//hatchets and shiet can clear away undergrowth
@@ -747,7 +747,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 		var/damage = rand(2,5)
 		if(istype(I,/obj/item/weapon/sword))
 			damage = rand(8,18)
-		if(indestructable)
+		if(indestructible)
 			//this bush marks the edge of the map, you can't destroy it
 			to_chat(user, SPAN_DANGER("You flail away at the undergrowth, but it's too thick here."))
 		else

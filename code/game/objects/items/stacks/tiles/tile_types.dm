@@ -1,4 +1,4 @@
-/* Diffrent misc types of tiles
+/* Different misc types of tiles
  * Contains:
  * Grass
  * Wood

@@ -62,7 +62,7 @@
 
 /obj/structure/machinery/computer/dropship_weapons/on_unset_interaction(mob/user)
 	. = ..()
-	
+
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.on_unset_interaction(user)
 
@@ -941,5 +941,5 @@
 	if(!simulation.sim_camera)
 		to_chat(user, SPAN_WARNING("The simulator has malfunctioned!"))
 
-	//acutal firemission
+	//actual firemission
 	configuration.simulate_execute_firemission(src, get_turf(simulation.sim_camera), user)

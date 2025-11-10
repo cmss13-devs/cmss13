@@ -475,7 +475,7 @@
 
 	toggle_xeno_hostilehud()
 	recalculate_everything()
-	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
+	toggle_xeno_mobhud() //This is a verb, but fuck it, it just works
 
 	. = ..()
 
@@ -870,7 +870,7 @@
 /mob/living/carbon/xenomorph/get_eye_protection()
 	return EYE_PROTECTION_WELDING
 
-/mob/living/carbon/xenomorph/get_pull_miltiplier()
+/mob/living/carbon/xenomorph/get_pull_multiplier()
 	return pull_multiplier
 
 /mob/living/carbon/xenomorph/proc/set_faction(new_faction = FACTION_XENOMORPH)

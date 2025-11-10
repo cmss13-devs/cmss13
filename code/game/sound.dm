@@ -1,5 +1,5 @@
 /sound
-	echo = SOUND_ECHO_REVERB_OFF //disable enviroment reverb by default, soundOutput re-enables for positional sounds
+	echo = SOUND_ECHO_REVERB_OFF //disable environment reverb by default, soundOutput re-enables for positional sounds
 
 /datum/sound_template //Basically a sound datum, but only serves as a way to carry info to soundOutput
 	var/file //The sound itself
@@ -110,7 +110,7 @@
 				template.z = new_turf_source.z
 			else
 				sound_range = 0
-	// Range for 'nearby interiors' aswell
+	// Range for 'nearby interiors' as well
 	for(var/datum/interior/vehicle_interior in SSinterior.interiors)
 		if(vehicle_interior?.ready && vehicle_interior.exterior?.z == turf_source.z && get_dist(vehicle_interior.exterior, turf_source) <= sound_range)
 			extra_interiors |= vehicle_interior

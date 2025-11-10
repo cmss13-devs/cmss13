@@ -243,7 +243,7 @@
 
 	if(turf_flags & TURF_HULL)
 		.+= SPAN_WARNING("You don't think you have any tools able to even scratch this.")
-		return //If it's indestructable, we don't want to give the wrong impression by saying "you can decon it with a welder"
+		return //If it's indestructible, we don't want to give the wrong impression by saying "you can decon it with a welder"
 
 	if(!damage)
 		if (acided_hole)

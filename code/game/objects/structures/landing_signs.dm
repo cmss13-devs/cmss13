@@ -57,7 +57,7 @@
 
 /obj/structure/lz_sign/chigusa_sign //Relocated from Desert Dam code files.
 	name = "Chigusa Shipyard Sign"
-	desc = "A large sign that reads 'Chigusa Shipyard - Subsidary of Weyland-Yutani Corporation'. Acid burns checker the sign like buckshot."
+	desc = "A large sign that reads 'Chigusa Shipyard - Subsidiary of Weyland-Yutani Corporation'. Acid burns checker the sign like buckshot."
 	icon_state = "laz_sign" //TODO make unique icon.
 
 /obj/structure/lz_sign/hybrisa_sign

@@ -113,7 +113,7 @@
 
 /obj/item/reagent_container/food/snacks/fishable/squid/sock
 	name = "sock squid"
-	desc = "Small shelled squids are a common occurance on New Varadero. While using the term 'squid' to describe this form of creature would make a biologist fuming mad, the name has stuck given their relative apperance. Sock squids are renowned for their robust taste."
+	desc = "Small shelled squids are a common occurrence on New Varadero. While using the term 'squid' to describe this form of creature would make a biologist fuming mad, the name has stuck given their relative appearance. Sock squids are renowned for their robust taste."
 	icon_state = "squid_sock"
 	gut_icon_state = "squid_sock_gutted"
 	guttable = TRUE
@@ -150,7 +150,7 @@
 	icon_state = "quadtopus"
 	bitesize = 2
 //--------------------//
-// SHELLED CRITTERS, you have to pry them open with a SHARP object to get the guts out. Maybe should be bool hasshell = TRUE and overrite gutting proc?
+// SHELLED CRITTERS, you have to pry them open with a SHARP object to get the guts out. Maybe should be bool hasshell = TRUE and overwrite gutting proc?
 /obj/item/reagent_container/food/snacks/fishable/shell/clam
 	name = "clam"
 	desc = "A sea critter contained inside of a shell."

@@ -98,7 +98,7 @@
 
 /datum/gamemode_modifier/lz_mortar_protection
 	modifier_name = "Landing Zone Mortar Protection"
-	modifier_desc = "Prevents mortars from targetting the primary landing zone."
+	modifier_desc = "Prevents mortars from targeting the primary landing zone."
 
 /datum/gamemode_modifier/lz_roundstart_miasma
 	modifier_name = "Roundstart Landing Zone Miasma"
@@ -148,4 +148,4 @@
 
 /datum/gamemode_modifier/ceasefire
 	modifier_name = "Ceasefire"
-	modifier_desc = "Prevents firing guns and throwing granades."
+	modifier_desc = "Prevents firing guns and throwing grenades."

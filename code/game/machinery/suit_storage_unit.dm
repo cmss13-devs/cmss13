@@ -94,8 +94,8 @@
 	if(stat & NOPOWER)
 		dat+= "<HR><BR><A href='byond://?src=\ref[user];mach_close=suit_storage_unit'>Close panel</A>"
 		return
-	if(isUV) //The thing is running its cauterisation cycle. You have to wait.
-		dat += SET_CLASS("<B>Unit is cauterising contents with UV ray. Please wait.</B>", INTERFACE_RED)
+	if(isUV) //The thing is running its cauterization cycle. You have to wait.
+		dat += SET_CLASS("<B>Unit is cauterizing contents with UV ray. Please wait.</B>", INTERFACE_RED)
 		dat += "<BR>"
 
 	else
@@ -217,7 +217,7 @@
 	if(!inserted_helmet && !inserted_mask && !inserted_suit) //shit's empty yo
 		to_chat(user, "<font color='red'>Unit storage bays empty. Nothing to disinfect -- Aborting.</font>")
 		return
-	to_chat(user, SPAN_NOTICE("You start the Unit's cauterisation cycle."))
+	to_chat(user, SPAN_NOTICE("You start the Unit's cauterization cycle."))
 	isUV = 1
 	update_icon()
 	updateUsrDialog()

@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	var/list/mob/hudmobs = list() //list of all mobs which display this hud
 	var/list/mob/hudusers = list() //list with all mobs who can see the hud
 	var/list/hud_icons = list() //these will be the indices for the atom's hud_list
-								// which is the list of the images maintenenced by this HUD
+								// which is the list of the images maintained by this HUD
 								// Actually managing those images is left up to clients.
 
 /// Stop displaying a HUD to a specific person (e.g. took off medical glasses)

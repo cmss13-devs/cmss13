@@ -54,16 +54,16 @@
 					return
 				var/obj/item/tool/weldingtool/WT = W
 				if (WT.remove_fuel(0,user))
-					user.visible_message("[user] dissassembles the windoor assembly.", "You start to dissassemble the windoor assembly.")
+					user.visible_message("[user] disassembles the windoor assembly.", "You start to disassemble the windoor assembly.")
 					playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 
 					if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						if(!src || !WT.isOn())
 							return
-						to_chat(user, SPAN_NOTICE(" You dissasembled the windoor assembly!"))
+						to_chat(user, SPAN_NOTICE(" You disassembled the windoor assembly!"))
 						deconstruct()
 				else
-					to_chat(user, SPAN_NOTICE(" You need more welding fuel to dissassemble the windoor assembly."))
+					to_chat(user, SPAN_NOTICE(" You need more welding fuel to disassemble the windoor assembly."))
 					return
 
 			//Wrenching an unsecure assembly anchors it in place. Step 4 complete
@@ -276,7 +276,7 @@
 	update_icon()
 	return
 
-//Flips the windoor assembly, determines whather the door opens to the left or the right
+//Flips the windoor assembly, determines whether the door opens to the left or the right
 /obj/structure/windoor_assembly/verb/flip()
 	set name = "Flip Windoor Assembly"
 	set category = "Object"

@@ -226,13 +226,13 @@
 		G.reagents.trans_to(src, G.reagents.total_volume)
 		i--
 		if(reagents && i <= 1)
-			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last container
+			reagents.trigger_volatiles = TRUE //So it doesn't explode before transferring the last container
 	if(reagents)
 		reagents.trigger_volatiles = FALSE
 
 
 	if(!QDELETED(src)) //the possible reactions didn't qdel src
-		if(reagents.total_volume) //The possible reactions didnt use up all reagents.
+		if(reagents.total_volume) //The possible reactions didn't use up all reagents.
 			var/datum/effect_system/steam_spread/steam = new /datum/effect_system/steam_spread()
 			steam.set_up(10, 0, get_turf(src))
 			steam.attach(src)

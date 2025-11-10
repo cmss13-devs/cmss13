@@ -138,7 +138,7 @@
 						dir_to_set = 4
 			else
 				to_chat(user, SPAN_NOTICE("You can't reach."))
-				return //Only works for cardinal direcitons, diagonals aren't supposed to work like this.
+				return //Only works for cardinal directions, diagonals aren't supposed to work like this.
 		for(var/obj/structure/window/WINDOW in loc)
 			if(WINDOW.dir == dir_to_set)
 				to_chat(user, SPAN_NOTICE("There is already a window facing this way there."))

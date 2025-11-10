@@ -2,7 +2,7 @@
 	name = "stack-receipts"
 
 /datum/asset/spritesheet/stack_receipts/register()
-	// initialising the list of items we need
+	// initializing the list of items we need
 	var/target_items = list()
 
 	//This list should contain stack receipts to render them on UI

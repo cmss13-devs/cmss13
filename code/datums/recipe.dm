@@ -4,8 +4,8 @@
  * This is powerful and flexible recipe system.
  * It exists not only for food.
  * supports both reagents and objects as prerequisites.
- * In order to use this system you have to define a deriative from /datum/recipe
- * * reagents are reagents. Acid, milc, booze, etc.
+ * In order to use this system you have to define a derivative from /datum/recipe
+ * * reagents are reagents. Acid, milk, booze, etc.
  * * items are objects. Fruits, tools, circuit boards.
  * * result is type to create as new object
  * * time is optional parameter, you shall use in in your machine,
@@ -18,7 +18,7 @@
  * transfers reagents from prerequisite objects,
  * deletes all prerequisite objects (even not needed for recipe at the moment).
  *
- *  /proc/select_recipe(list/datum/recipe/avaiable_recipes, obj/obj as obj, exact = 1)
+ *  /proc/select_recipe(list/datum/recipe/available_recipes, obj/obj as obj, exact = 1)
  * Wonderful function that select suitable recipe for you.
  * obj is a machine (or magik hat) with prerequisites,
  * exact = 0 forces algorithm to ignore superfluous stuff.
@@ -501,34 +501,34 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/omelette
 
-//Spaghetti the base is spagetti and 5 water.
+//Spaghetti the base is spaghetti and 5 water.
 
-/datum/recipe/spagetti
+/datum/recipe/spaghetti
 	reagents = list("water" = 5)
 
-/datum/recipe/spagetti/boiledspagetti
+/datum/recipe/spaghetti/boiledspaghetti
 	items = list(
-		/obj/item/reagent_container/food/snacks/spagetti,
+		/obj/item/reagent_container/food/snacks/spaghetti,
 	)
-	result = /obj/item/reagent_container/food/snacks/boiledspagetti
+	result = /obj/item/reagent_container/food/snacks/boiledspaghetti
 
-/datum/recipe/spagetti/pastatomato
+/datum/recipe/spaghetti/pastatomato
 	items = list(
-		/obj/item/reagent_container/food/snacks/spagetti,
+		/obj/item/reagent_container/food/snacks/spaghetti,
 		/obj/item/reagent_container/food/snacks/grown/tomato,
 	)
 	result = /obj/item/reagent_container/food/snacks/pastatomato
 
-/datum/recipe/spagetti/meatballspagetti
+/datum/recipe/spaghetti/meatballspaghetti
 	items = list(
-		/obj/item/reagent_container/food/snacks/spagetti,
+		/obj/item/reagent_container/food/snacks/spaghetti,
 		/obj/item/reagent_container/food/snacks/meatball,
 	)
-	result = /obj/item/reagent_container/food/snacks/meatballspagetti
+	result = /obj/item/reagent_container/food/snacks/meatballspaghetti
 
-/datum/recipe/spagetti/spesslaw
+/datum/recipe/spaghetti/spesslaw
 	items = list(
-		/obj/item/reagent_container/food/snacks/spagetti,
+		/obj/item/reagent_container/food/snacks/spaghetti,
 		/obj/item/reagent_container/food/snacks/meatball,
 		/obj/item/reagent_container/food/snacks/meatball,
 	)

@@ -578,7 +578,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				if(can_buy_flags)
 					if(can_buy_flags == MARINE_CAN_BUY_ESSENTIALS)
 						if(vendor_role.Find(JOB_SQUAD_SPECIALIST))
-							// handle specalist essential gear assignment
+							// handle specialist essential gear assignment
 							if(user.job != JOB_SQUAD_SPECIALIST)
 								to_chat(user, SPAN_WARNING("Only specialists can take specialist sets."))
 								vend_fail()

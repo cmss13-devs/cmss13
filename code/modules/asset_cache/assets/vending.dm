@@ -2,7 +2,7 @@
 	name = "goods-vending"
 
 /datum/asset/spritesheet/vending/register()
-	// initialising the list of items we need
+	// initializing the list of items we need
 	var/target_items = list()
 	for(var/obj/structure/machinery/vending/vendor as anything in typesof(/obj/structure/machinery/vending))
 		vendor = new vendor() // It seems `initial(list var)` has nothing. need to make a type.

@@ -1,7 +1,7 @@
 
 /obj/item/reagent_container/robodropper
 	name = "industrial dropper"
-	desc = "A robust-looking dropper for measuring and transfering small units of liquid. Transfers up to 10 units."
+	desc = "A robust-looking dropper for measuring and transferring small units of liquid. Transfers up to 10 units."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "robodropper"
 	amount_per_transfer_from_this = 10

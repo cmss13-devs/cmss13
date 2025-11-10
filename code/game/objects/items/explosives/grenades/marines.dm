@@ -482,11 +482,11 @@
 	var/range = 5
 	/// Maximum possible damage before falloff.
 	var/damage = 110
-	/// Factor to mutiply the effect range has on damage.
+	/// Factor to multiply the effect range has on damage.
 	var/falloff_dam_reduction_mult = 20
 	/// Post falloff calc damage is divided by this to get xeno slowdown
 	var/xeno_slowdown_numerator = 11
-	/// Post falloff calc damage is multipled by this to get human stamina damage
+	/// Post falloff calc damage is multiplied by this to get human stamina damage
 	var/human_stam_dam_factor = 0.5
 
 /obj/item/explosive/grenade/sebb/Initialize()
@@ -576,14 +576,14 @@
 		sentry_stun.sentry_range = 0 // Temporarily "disable" the sentry by killing its range then setting it back.
 		new /obj/effect/overlay/temp/elec_arc(get_turf(sentry_stun))  // sprites are meh but we need visual indication that the sentry was messed up
 		addtimer(VARSET_CALLBACK(sentry_stun, sentry_range, initial(sentry_stun.sentry_range)), 5 SECONDS) // assure to set it back
-		sentry_stun.visible_message(SPAN_DANGER("[src]'s screen flickes violently as it's shocked!"))
-		sentry_stun.visible_message(SPAN_DANGER("[src] says \"ERROR: Fire control system resetting due to critical voltage flucuation!\""))
+		sentry_stun.visible_message(SPAN_DANGER("[src]'s screen flickers violently as it's shocked!"))
+		sentry_stun.visible_message(SPAN_DANGER("[src] says \"ERROR: Fire control system resetting due to critical voltage fluctuation!\""))
 		sparka.set_up(1, 1, sentry_stun)
 		sparka.start()
 
 	for(var/turf/turf in full_range)
 		if(prob(8))
-			var/datum/effect_system/spark_spread/sparkTurf = new //using a different spike system because the spark system doesn't like when you reuse it for differant things
+			var/datum/effect_system/spark_spread/sparkTurf = new //using a different spike system because the spark system doesn't like when you reuse it for different things
 			sparkTurf.set_up(1, 1, turf)
 			sparkTurf.start()
 		if(prob(10))
@@ -611,7 +611,7 @@
 				damage_applied *= 1.5
 				new /obj/effect/overlay/temp/elec_arc(get_turf(shocked_human))
 				to_chat(mob, SPAN_HIGHDANGER("All of your systems jam up as your main bus is overvolted by [damage_applied*2] volts."))
-				mob.visible_message(SPAN_WARNING("[mob] seizes up from the elctric shock"))
+				mob.visible_message(SPAN_WARNING("[mob] seizes up from the electric shock"))
 			shocked_human.take_overall_armored_damage(damage_applied, ARMOR_ENERGY, BURN, 90) // 90% chance to be on additional limbs
 			shocked_human.make_dizzy(damage_applied)
 			mob.apply_stamina_damage(damage_applied*human_stam_dam_factor) // Stamina damage

@@ -153,7 +153,7 @@
 	var/synthetic = issynth(occupant)
 	use_power(1000)
 	if(synthetic)
-		visible_message(SPAN_BOLDWARNING("[src] begins to emitt sparks out the top as a banging noise can be heard!"), SPAN_BOLDWARNING("You hear a myriad of loud bangs!"))
+		visible_message(SPAN_BOLDWARNING("[src] begins to emit sparks out the top as a banging noise can be heard!"), SPAN_BOLDWARNING("You hear a myriad of loud bangs!"))
 	else
 		visible_message(SPAN_DANGER("You hear a loud squelchy grinding sound."))
 	operating = TRUE

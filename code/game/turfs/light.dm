@@ -15,7 +15,7 @@
 
 /turf/open/floor/light/get_examine_text(mob/user)
 	. = ..()
-	. += "[src] is [turf_flags & TURF_BROKEN ? "broken, and requires a replacement lightbulb":"[on ? "on" : "off"]"]."
+	. += "[src] is [turf_flags & TURF_BROKEN ? "broken, and requires a replacement light bulb":"[on ? "on" : "off"]"]."
 
 /turf/open/floor/light/is_light_floor()
 	return TRUE
@@ -64,7 +64,7 @@
 			playsound(src, 'sound/machines/click.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE("You replace the light bulb."))
 		else
-			to_chat(user, SPAN_NOTICE("The lightbulb seems fine, no need to replace it."))
+			to_chat(user, SPAN_NOTICE("The light bulb seems fine, no need to replace it."))
 		return
 
 	if(istype(item_in_hand, /obj/item/device/multitool)) //changing the light color with multitool, can't do if bulb broken, can do while it's off

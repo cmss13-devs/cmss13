@@ -131,7 +131,7 @@
 			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 	else
-		//copied from human_defense.dm - human defence code should really be refactored some time.
+		//copied from human_defense.dm - human defense code should really be refactored some time.
 		if (ishuman(human_target))
 
 			if(!target_zone) //shouldn't ever happen

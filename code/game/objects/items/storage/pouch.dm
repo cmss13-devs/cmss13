@@ -577,7 +577,7 @@
 
 /obj/item/storage/pouch/magazine/large/pmc_sg
 	name = "smartgun drum pouch"
-	desc = "A heavy pouch designed for carrying a surplus of smargun drums."
+	desc = "A heavy pouch designed for carrying a surplus of smartgun drums."
 	icon_state = "wy_sgdrums_ammo"
 	storage_slots = 3
 	can_hold = list(
@@ -845,7 +845,7 @@
 
 /obj/item/storage/pouch/first_responder
 	name = "first responder pouch"
-	desc = "A pouch designed for carrying supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, stasis bags, and health analysers."
+	desc = "A pouch designed for carrying supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, stasis bags, and health analyzers."
 	icon_state = "frt_med"
 	storage_slots = 4
 
@@ -1088,11 +1088,11 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
 	name = "Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stablizing and minimizing damage to defibrillated patients."
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stabilizing and minimizing damage to defibrillated patients."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
 	name = "Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stablize patients and stave off symptoms of post-defibrillation heart damage."
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stabilize patients and stave off symptoms of post-defibrillation heart damage."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
@@ -1103,11 +1103,11 @@
 		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src)
 	update_icon()
 
-/obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(ragent)
-	inner.reagents.add_reagent(ragent, inner.volume)
+/obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_with(reagent)
+	inner.reagents.add_reagent(reagent, inner.volume)
 	if(length(contents) > 0)
 		var/obj/item/reagent_container/hypospray/autoinjector/empty/A = contents[1]
-		A.reagents.add_reagent(ragent, A.volume)
+		A.reagents.add_reagent(reagent, A.volume)
 		A.update_uses_left()
 		A.update_icon()
 	update_icon()

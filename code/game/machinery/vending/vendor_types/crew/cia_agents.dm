@@ -3,7 +3,7 @@
 GLOBAL_LIST_INIT(cm_vending_clothing_cia, list(
 	list("SUITS AND UNDERSHIRTS (CHOOSE 5)", 0, null, null, null),
 	list("Black Suit Pants", 0, /obj/item/clothing/under/liaison_suit/black, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
-	list("Black Suitskirt", 0, /obj/item/clothing/under/liaison_suit/black/skirt, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
+	list("Black Suit Skirt", 0, /obj/item/clothing/under/liaison_suit/black/skirt, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
 	list("Blue Suit Pants", 0, /obj/item/clothing/under/liaison_suit/blue, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Brown Suit Pants", 0, /obj/item/clothing/under/liaison_suit/brown, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("White Suit Pants", 0, /obj/item/clothing/under/liaison_suit/corporate_formal, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),

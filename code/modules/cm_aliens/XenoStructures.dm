@@ -419,6 +419,10 @@
 	else
 		return attack_hand(user)
 
+/obj/structure/mineral_door/resin/proc/take_damage(damage)
+	update_health(damage)
+	healthcheck()
+
 /obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
 	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/xeno_user = user

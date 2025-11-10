@@ -168,6 +168,13 @@
 
 	var/move_on_turn = FALSE
 
+	// Structures that we should collide with, but that aren't being collided with when we call T.Enter in multitile_movement
+	// associative list should guarantee an O(1) lookup in case this needs to be expanded.
+	var/static/list/blocking_structures = list(
+    /obj/structure/shuttle/part = TRUE,
+    /obj/structure/mineral_door/resin = TRUE,
+	/obj/structure/mineral_door/resin/thick = TRUE
+	)
 /obj/vehicle/multitile/Initialize()
 	. = ..()
 

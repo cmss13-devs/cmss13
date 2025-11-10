@@ -171,8 +171,15 @@
 			update_next_move()
 			return FALSE
 
-		if(!T.Enter(src) || locate(/obj/structure/shuttle/part) in T)
+		if(!T.Enter(src))
 			can_move = FALSE
+			break
+
+		// any other tile-blocking items that weren't caught by !T.Enter
+		for(var/atom/A in T)
+			if(blocking_structures[A.type])
+				can_move = FALSE
+				break
 
 	// Crashed with something that stopped us
 	if(!can_move)

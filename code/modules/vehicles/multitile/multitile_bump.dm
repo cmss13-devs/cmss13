@@ -46,6 +46,12 @@
 		return TRUE
 	return FALSE
 
+/obj/structure/mineral_door/resin/handle_vehicle_bump(obj/vehicle/multitile/V)
+	take_damage(V.wall_ram_damage)
+	visible_message(SPAN_DANGER("\The [V] rams [src]!"))
+	playsound(V, 'sound/effects/metal_crash.ogg', 20)
+	return FALSE
+
 /obj/structure/barricade/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!(V.vehicle_flags & VEHICLE_CLASS_WEAK))
 		take_damage(maxhealth)

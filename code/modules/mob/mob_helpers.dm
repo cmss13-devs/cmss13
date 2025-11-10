@@ -207,15 +207,15 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	return output_message
 
 /// The length of an announcement for CLARITY_MIN
-#define LENGTH_MAX_BOUND 100
+#define LENGTH_MAX_BOUND 120
 /// The max length of an announcement for CLARITY_MAX
-#define LENGTH_MIN_BOUND 10
+#define LENGTH_MIN_BOUND 20
 /// The duration between announcements for CLARITY_MIN
 #define DURATION_MIN_BOUND 30 SECONDS
 /// The duration between announcements for CLARITY_MAX
 #define DURATION_MAX_BOUND 3 MINUTES
 /// The clarity percent for messages >= LENGTH_MAX_BOUND or duration <= DURATION_MIN_BOUND
-#define CLARITY_MIN 50
+#define CLARITY_MIN 45
 /// The clarity percent for messages <= LENGTH_MIN_BOUND or duration >= DURATION_MAX_BOUND
 #define CLARITY_MAX 95
 

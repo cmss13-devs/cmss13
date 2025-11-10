@@ -134,3 +134,10 @@
 2025-11-09:
   Detective-Google:
   - code_imp: tweaks a comment to be documented better.
+2025-11-10:
+  Ediblebomb:
+  - spellcheck: Removes a mention of most penal battalions supposedly coming from
+      New Argentina from a prop sign, also fixes a misspelling of populations on said
+      sign.
+  jupyterkat:
+  - bugfix: fixed character preview hairs always being black

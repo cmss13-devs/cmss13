@@ -176,7 +176,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	//IF there is an override, use that, otherwise, check if selected zone is valid, if it is, use that, otherwise use chest
 
 	if(!target_zone) //this should NEVER happen
-		visible_message(SPAN_DANGER("[user] misses [src] with \the [I]!"), null, null, 5)
+		visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] промахивается по [declent_ru(DATIVE)] [I.declent_ru(INSTRUMENTAL)]!"), null, null, 5)
 		return FALSE
 
 	var/obj/limb/affecting = get_limb(target_zone)
@@ -191,9 +191,9 @@ Contains most of the procs that are called when a mob is attacked by something
 		return FALSE
 
 	if(LAZYLEN(I.attack_verb))
-		visible_message(SPAN_DANGER("<B>[src] has been [pick(I.attack_verb)] in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
+		visible_message(SPAN_DANGER_BOLD("[capitalize(user.declent_ru(NOMINATIVE))] [ru_attack_verb(pick(I.attack_verb))] [declent_ru(ACCUSATIVE)] в [affecting.declent_ru(ACCUSATIVE)], используя [I.declent_ru(ACCUSATIVE)]."), null, null, 5) // SS220 EDIT ADDICTION
 	else
-		visible_message(SPAN_DANGER("<B>[src] has been attacked in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
+		visible_message(SPAN_DANGER_BOLD("[capitalize(user.declent_ru(NOMINATIVE))] атакует [declent_ru(ACCUSATIVE)] в [affecting.declent_ru(ACCUSATIVE)], используя [I.declent_ru(ACCUSATIVE)]."), null, null, 5) // SS220 EDIT ADDICTION
 
 	var/armor = getarmor(affecting, ARMOR_MELEE)
 

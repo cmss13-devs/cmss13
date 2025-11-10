@@ -107,7 +107,7 @@
 	for(var/turf/turf in deployment_area)
 		turf_overlay += new /obj/effect/overlay/temp/tent_deployment_area/casting(turf)
 
-	user.visible_message(SPAN_INFO("[user] starts deploying [src]..."),
+	user.visible_message(SPAN_INFO("[capitalize(user.declent_ru(NOMINATIVE))] starts deploying [src]..."),
 		SPAN_WARNING("You start assembling [src]... Stand still, it might take a bit to figure it out..."))
 	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
@@ -121,7 +121,7 @@
 		return
 
 	unfold(user, deploy_turf)
-	user.visible_message(SPAN_INFO("[user] finishes deploying [src]!"), SPAN_INFO("You finish deploying [src]!"))
+	user.visible_message(SPAN_INFO("[capitalize(user.declent_ru(NOMINATIVE))] finishes deploying [src]!"), SPAN_INFO("You finish deploying [src]!"))
 	for(var/gfx in turf_overlay)
 		qdel(gfx)
 	qdel(src) // Success!

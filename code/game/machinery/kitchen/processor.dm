@@ -119,7 +119,7 @@
 		return 1
 	if(!P.can_use(user))
 		return 1
-	user.visible_message("[user] put [what] into [src].",
+	user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] put [what] into [src].",
 		"You put [what] into [src].")
 	user.drop_held_item()
 	what.forceMove(src)
@@ -139,7 +139,7 @@
 			log_admin("DEBUG: [O] in processor does not have a suitable recipe. How do you put it in?") //-rastaf0
 			continue
 		src.processing = 1
-		user.visible_message(SPAN_NOTICE("[user] turns on [src]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] turns on [src]."),
 			"You turn on [src].",
 			"You hear a food processor.")
 		playsound(src.loc, 'sound/machines/blender.ogg', 25, 1)

@@ -85,26 +85,26 @@
 		return
 
 	if(locate(/obj/effect/alien/resin/trap) in range(0, target_turf))
-		to_chat(xeno, SPAN_XENOWARNING("We cannot plant our fruit over a resin hole!"))
+		to_chat(xeno, SPAN_XENOWARNING("Мы не можем посадить наш плод поверх смоляной ямы!"))
 		return
 
 	if(locate(/obj/effect/alien/resin/fruit) in target_turf)
-		to_chat(xeno, SPAN_XENOWARNING("Our fruit has already taken root in this space!"))
+		to_chat(xeno, SPAN_XENOWARNING("Наш плод уже укоренился в этом месте!"))
 		return
 
 	if(check_and_use_plasma_owner())
 		if(length(xeno.current_fruits) >= xeno.max_placeable)
-			to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another fruit, one will wither away to allow this one to live!"))
+			to_chat(xeno, SPAN_XENOWARNING("Мы не можем поддерживать больше плодов, последнему плоду пришлось погибнуть, чтобы дать жизнь этому!"))
 			var/obj/effect/alien/resin/fruit/old_fruit = xeno.current_fruits[1]
 			xeno.current_fruits.Remove(old_fruit)
 			qdel(old_fruit)
 
-		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] secretes fluids and shape it into a fruit!"),
-		SPAN_XENONOTICE("We secrete a portion of our vital fluids and shape them into a fruit!"), null, 5)
+		xeno.visible_message(SPAN_XENONOTICE("[capitalize(xeno.declent_ru(NOMINATIVE))] выделяет какую-то жидкость, чтобы сформировать плод!"), // SS220 EDIT ADDICTION
+		SPAN_XENONOTICE("Мы выделяем часть наших жизненных сил, чтобы сформировать плод!"), null, 5)
 
 		var/obj/effect/alien/resin/fruit/fruit = new xeno.selected_fruit(target_weeds.loc, target_weeds, xeno)
 		if(!fruit)
-			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find the fruit to place! Contact a coder!"))
+			to_chat(xeno, SPAN_XENOHIGHDANGER("Не удалось найти плод для размещения! Свяжитесь с кодером!"))
 			return
 		xeno.adjustBruteLoss(health_cost)
 		xeno.updatehealth()
@@ -242,7 +242,7 @@
 
 	if(ismob(target_atom)) // to prevent using thermal vision to bypass clickcatcher
 		if(!can_see(xeno, target_atom, max_range))
-			to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
+			to_chat(xeno, SPAN_XENODANGER("Мы не видим эту область!"))
 			return
 	else
 		if(get_dist(xeno, target_atom) > max_range)
@@ -263,7 +263,7 @@
 	var/door_present = istype(door) && door.hivenumber == xeno.hivenumber
 	// Is my tile either a wall or a door
 	if(door_present || wall_present)
-		var/structure_to_buff = door || wall
+		var/atom/structure_to_buff = door || wall // BANDAMARINES EDIT - it's a type
 		var/buff_already_present = FALSE
 		if(door_present)
 			for(var/datum/effects/xeno_structure_reinforcement/sf in door.effects_list)
@@ -276,24 +276,24 @@
 
 		if(!buff_already_present)
 			new /datum/effects/xeno_structure_reinforcement(structure_to_buff, xeno, ttl = 15 SECONDS)
-			xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin around [structure_to_buff], making it temporarily nigh unbreakable!"),
-			SPAN_XENONOTICE("We surge the resin around [structure_to_buff], making it temporarily nigh unbreakable!"), null, 5)
+			xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] наполняет смолой [structure_to_buff.declent_ru(ACCUSATIVE)], делая структуру почти неразрушимой на некоторое время!"), // SS220 EDIT ADDICTION
+			SPAN_XENONOTICE("Мы наполняем смолой [structure_to_buff.declent_ru(ACCUSATIVE)], делая структуру почти неразрушимой на некоторое время!"), null, 5) // SS220 EDIT ADDICTION
 		else
-			to_chat(xeno, SPAN_XENONOTICE("We haplessly try to surge resin around [structure_to_buff], but it's already reinforced. It'll take a moment for us to recover."))
+			to_chat(xeno, SPAN_XENONOTICE("Мы не смогли наполнить смолой [structure_to_buff.declent_ru(ACCUSATIVE)], поскольку структура уже была укреплена. Теперь нам понадобится некоторое время на восстановление.")) // SS220 EDIT ADDICTION
 			xeno_cooldown *= 0.5
 
 	else if(F && F.hivenumber == xeno.hivenumber)
 		if(F.mature)
-			to_chat(xeno, SPAN_XENONOTICE("The [F] is already mature. The [src.name] does nothing."))
+			to_chat(xeno, SPAN_XENONOTICE("[capitalize(F.declent_ru(NOMINATIVE))] в пике созревания, потому [declent_ru(NOMINATIVE)] не приводит ни к какому результату.")) // SS220 EDIT ADDICTION
 			xeno_cooldown *= 0.5
 		else
-			to_chat(xeno, SPAN_XENONOTICE("We pour all our energy equal to [F] growth, bringing it to swift maturity!"))
+			to_chat(xeno, SPAN_XENONOTICE("Мы вкладываем всю нашу энергию, ускоряя рост [F.declent_ru(GENITIVE)] и доводя до полного созревания!")) // SS220 EDIT ADDICTION
 			F.reduce_timer(60 SECONDS) //We want surge to mature any fruit instantly, but you receive dynamic cooldown depending on fruit growth time.
 			xeno_cooldown *= dynamic_fruit_surge_cooldown(F)
 
 	else if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
-		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"),
-		SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
+		xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] создаёт слабую смоляную стену!"), // SS220 EDIT ADDICTION
+		SPAN_XENONOTICE("Мы создаём слабую смоляную стену!"), null, 5)
 		target_turf.PlaceOnTop(/turf/closed/wall/resin/weak)
 		var/turf/closed/wall/resin/weak_wall = target_turf
 		weak_wall.hivenumber = xeno.hivenumber
@@ -307,8 +307,8 @@
 			channel_in_progress = FALSE
 			return
 		channel_in_progress = FALSE
-		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges deep resin, creating an unstable sticky resin patch!"),
-		SPAN_XENONOTICE("We surge the deep resin, creating an unstable sticky resin patch!"), null, 5)
+		xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] наполняет небольшой участок липкой смолой!"), // SS220 EDIT ADDICTION
+		SPAN_XENONOTICE("Мы наполняем небольшой участок липкой смолой!"), null, 5)
 		for(var/turf/targetTurf in orange(1, target_turf))
 			if(!locate(/obj/effect/alien/resin/sticky) in targetTurf)
 				new /obj/effect/alien/resin/sticky/thin/weak(targetTurf, xeno.hivenumber)

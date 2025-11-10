@@ -76,9 +76,17 @@
 
 	update_icon()
 
+// SS220 ADD Start
+/obj/structure/bed/set_glide_size(target)
+	. = ..()
+
+	if(buckled_bodybag)
+		buckled_bodybag.set_glide_size(target)
+// SS220 ADD End
+
 //Unsafe proc
 /obj/structure/bed/proc/do_buckle_bodybag(obj/structure/closet/bodybag/B, mob/user)
-	B.visible_message(SPAN_NOTICE("[user] buckles [B] to [src]!"))
+	B.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] buckles [B] to [src]!"))
 	B.roller_buckled = src
 	B.forceMove(loc)
 	B.setDir(dir)
@@ -160,7 +168,7 @@
 			if (H==usr && !H.is_mob_incapacitated() && Adjacent(H) && in_range(src, over_object))
 				var/obj/item/I = new foldabletype(get_turf(src))
 				H.put_in_hands(I)
-				H.visible_message(SPAN_WARNING("[H] grabs [src] from the floor!"),
+				H.visible_message(SPAN_WARNING("[capitalize(H.declent_ru(NOMINATIVE))] grabs [src] from the floor!"),
 				SPAN_WARNING("You grab [src] from the floor!"))
 				qdel(src)
 
@@ -178,12 +186,12 @@
 			var/mob/M = G.grabbed_thing
 			var/atom/blocker = LinkBlocked(user, user.loc, loc)
 			if(!Adjacent(M))
-				visible_message(SPAN_DANGER("[M] is too far to place onto [src]."))
+				visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] слишком далеко, чтобы переместить [M.ru_p_them()] на [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 				return FALSE
 			if(blocker)
-				to_chat(user, SPAN_WARNING("\The [blocker] is in the way!"))
+				to_chat(user, SPAN_WARNING("Вам мешает [blocker.declent_ru(NOMINATIVE)]!")) // SS220 EDIT ADDICTION
 				return FALSE
-			to_chat(user, SPAN_NOTICE("You place [M] on [src]."))
+			to_chat(user, SPAN_NOTICE("Вы перемещаете [M.declent_ru(ACCUSATIVE)] на [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 			M.forceMove(loc)
 		return TRUE
 
@@ -225,7 +233,7 @@
 			return
 		if (user == usr && !user.is_mob_incapacitated() && Adjacent(user) && in_range(src, over_object))
 			user.put_in_hands(rollerholder)
-			user.visible_message(SPAN_INFO("[user] grabs [src] from the floor!"),
+			user.visible_message(SPAN_INFO("[capitalize(user.declent_ru(NOMINATIVE))] grabs [src] from the floor!"),
 			SPAN_INFO("You grab [src] from the floor!"))
 			forceMove(rollerholder)
 
@@ -291,7 +299,7 @@
 		new rollertype(src)
 	var/obj/structure/bed/roller/roller = locate(rollertype) in contents
 	roller.forceMove(location)
-	to_chat(user, SPAN_NOTICE("You deploy [roller]."))
+	to_chat(user, SPAN_NOTICE("Вы раскладываете [roller.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 	roller.add_fingerprint(user)
 	user.temp_drop_inv_item(src)
 	forceMove(roller)

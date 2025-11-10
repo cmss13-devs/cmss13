@@ -189,12 +189,12 @@
 		var/mob/living/carbon/human/human = target
 
 		if(locate(/datum/disease/black_goo) in human.viruses)
-			to_chat(user, SPAN_XENOWARNING("<b>You sense your target is infected.</b>"))
+			to_chat(user, SPAN_XENOWARNING("<b>Вы чувствуете, что ваша цель заражена.</b>"))
 		else
 			var/bio_protected = max(CLOTHING_ARMOR_HARDCORE - human.getarmor(user.zone_selected, ARMOR_BIO), 0)
 			if(prob(bio_protected))
 				target.AddDisease(new /datum/disease/black_goo)
-				to_chat(user, SPAN_XENOWARNING("<b>You sense your target is now infected.</b>"))
+				to_chat(user, SPAN_XENOWARNING("<b>Вы чувствуете, что ваша цель теперь заражена.</b>"))
 
 	target.apply_effect(2, SLOW)
 
@@ -211,14 +211,14 @@
 		if(user.action_busy || user.a_intent == INTENT_HARM)
 			return
 
-		user.visible_message(SPAN_DANGER("[user] jams their [name] into [O] and strains to rip it open."),
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] jams their [name] into [O] and strains to rip it open."),
 		SPAN_DANGER("You jam your [name] into [O] and strain to rip it open."))
 		playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, 1)
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(!D.density)
 				return
 
-			user.visible_message(SPAN_DANGER("[user] forces [O] open with their [name]."),
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] forces [O] open with their [name]."),
 			SPAN_DANGER("You force [O] open with your [name]."))
 			D.open(1)
 
@@ -228,11 +228,11 @@
 			return
 		if(!D.density || user.action_busy || user.a_intent == INTENT_HARM)
 			return
-		user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] jams their [name] into [D] and strains to rip it open."),
 		SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
 		playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
-			user.visible_message(SPAN_DANGER("[user] forces [D] open with their [name]."),
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] forces [D] open with their [name]."),
 			SPAN_DANGER("You force [D] open with your [name]."))
 			D.open()
 

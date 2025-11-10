@@ -445,7 +445,7 @@ t. optimisticdude
 		if(loaded)
 			to_chat(user, SPAN_WARNING("There's already a capsule inside the healing gun!"))
 			return
-		user.visible_message(SPAN_NOTICE("[user] loads \the [src] with \a [O].") ,SPAN_NOTICE("You load \the [src] with \a [O]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] loads \the [src] with \a [O].") ,SPAN_NOTICE("You load \the [src] with \a [O]."))
 		playsound(loc, 'sound/items/air_release.ogg',25)
 		loaded = TRUE
 		update_icon()

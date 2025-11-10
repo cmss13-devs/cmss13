@@ -92,7 +92,7 @@
 			if(open)
 				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
 			else
-				to_chat(user, SPAN_WARNING("Access denied."))
+				to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		src.updateUsrDialog()
 	else
 		. = ..()

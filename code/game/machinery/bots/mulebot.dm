@@ -134,11 +134,11 @@
 
 		open = !open
 		if(open)
-			src.visible_message("[user] opens the maintenance hatch of [src]", SPAN_NOTICE("You open [src]'s maintenance hatch."))
+			src.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] opens the maintenance hatch of [src]", SPAN_NOTICE("You open [src]'s maintenance hatch."))
 			on = 0
 			icon_state="mulebot-hatch"
 		else
-			src.visible_message("[user] closes the maintenance hatch of [src]", SPAN_NOTICE("You close [src]'s maintenance hatch."))
+			src.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] closes the maintenance hatch of [src]", SPAN_NOTICE("You close [src]'s maintenance hatch."))
 			icon_state = "mulebot0"
 
 		updateDialog()
@@ -146,7 +146,7 @@
 		if (src.health < maxhealth)
 			src.health = min(maxhealth, src.health+25)
 			user.visible_message(
-				SPAN_DANGER("[user] repairs [src]!"),
+				SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] repairs [src]!"),
 				SPAN_NOTICE("You repair [src]!")
 			)
 		else
@@ -154,7 +154,7 @@
 	else if(load && ismob(load))  // chance to knock off rider
 		if(prob(1+I.force * 2))
 			unload(0)
-			user.visible_message(SPAN_DANGER("[user] knocks [load] off [src] with \the [I]!"), SPAN_DANGER("You knock [load] off [src] with \the [I]!"))
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] knocks [load] off [src] with \the [I]!"), SPAN_DANGER("You knock [load] off [src] with \the [I]!"))
 		else
 			to_chat(user, "You hit [src] with \the [I] but to no effect.")
 	else
@@ -294,7 +294,7 @@
 					locked = !locked
 					updateDialog()
 				else
-					to_chat(usr, SPAN_DANGER("Access denied."))
+					to_chat(usr, SPAN_DANGER("Доступ запрещён."))
 					return
 			if("power")
 				if (src.on)

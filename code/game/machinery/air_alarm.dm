@@ -970,7 +970,7 @@ table tr:first-child th:first-child { border: none;}
 						to_chat(user, SPAN_NOTICE(" You [locked ? "lock" : "unlock"] the Air Alarm interface."))
 						updateUsrDialog()
 					else
-						to_chat(user, SPAN_DANGER("Access denied."))
+						to_chat(user, SPAN_DANGER("Доступ запрещён."))
 			return
 
 		if(1)
@@ -987,11 +987,11 @@ table tr:first-child th:first-child { border: none;}
 					return
 
 			else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-				user.visible_message(SPAN_NOTICE("[user] starts prying out [src]'s circuits."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts prying out [src]'s circuits."),
 				SPAN_NOTICE("You start prying out [src]'s circuits."))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					user.visible_message(SPAN_NOTICE("[user] pries out [src]'s circuits."),
+					user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] pries out [src]'s circuits."),
 					SPAN_NOTICE("You pry out [src]'s circuits."))
 					var/obj/item/circuitboard/airalarm/circuit = new()
 					circuit.forceMove(user.loc)
@@ -1044,5 +1044,3 @@ table tr:first-child th:first-child { border: none;}
 
 //Almayer version
 /obj/structure/machinery/alarm/almayer
-
-

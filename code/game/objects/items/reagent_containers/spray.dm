@@ -64,7 +64,7 @@
 		return
 
 	if(safety)
-		to_chat(user, SPAN_WARNING("The safety is on!"))
+		to_chat(user, SPAN_WARNING("Предохранитель поставлен."))
 		return
 
 	last_use = world.time
@@ -150,7 +150,7 @@
 /obj/item/reagent_container/spray/pepper/get_examine_text(mob/user)
 	. = ..()
 	if(get_dist(user,src) <= 1)
-		. += "The safety is [safety ? "on" : "off"]."
+		. += "[safety ? "Предохранитель поставлен." : "Предохранитель cнят."]."
 
 /obj/item/reagent_container/spray/pepper/attack_self(mob/user)
 	..()

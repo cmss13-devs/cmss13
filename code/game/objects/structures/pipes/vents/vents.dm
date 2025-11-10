@@ -77,7 +77,7 @@
 			weldtime = 60
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(1, user))
-			user.visible_message(SPAN_NOTICE("[user] starts welding \the [src] with \the [WT]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts welding \the [src] with \the [WT]."),
 			SPAN_NOTICE("You start welding \the [src] with \the [WT]."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 			if(do_after(user, weldtime * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -85,14 +85,14 @@
 					return 0
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 25, 1)
 				if(!welded)
-					user.visible_message(SPAN_NOTICE("[user] welds \the [src] shut."),
+					user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] welds \the [src] shut."),
 					SPAN_NOTICE("You weld \the [src] shut."))
 					welded = 1
 					update_icon()
 					msg_admin_niche("[key_name(user)] welded a vent pump.")
 					return 1
 				else
-					user.visible_message(SPAN_NOTICE("[user] welds \the [src] open."),
+					user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] welds \the [src] open."),
 					SPAN_NOTICE("You weld \the [src] open."))
 					welded = 0
 					msg_admin_niche("[key_name(user)] un-welded a vent pump.")
@@ -113,11 +113,11 @@
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-	user.visible_message(SPAN_NOTICE("[user] begins unfastening [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins unfastening [src]."),
 	SPAN_NOTICE("You begin unfastening [src]."))
 	if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		user.visible_message(SPAN_NOTICE("[user] unfastens [src]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] unfastens [src]."),
 		SPAN_NOTICE("You unfasten [src]."))
 		new /obj/item/pipe(loc, null, null, src)
 		qdel(src)

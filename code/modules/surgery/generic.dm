@@ -23,7 +23,7 @@
 
 /datum/surgery_step/incision
 	name = "Make Incision"
-	desc = "make an incision"
+	desc = "сделать разрез"
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
@@ -31,80 +31,93 @@
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	if(tool_type == /obj/item/tool/surgery/scalpel/manager)
-		user.affected_message(target,
-			SPAN_NOTICE("You start to construct a prepared incision in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] starts to construct a prepared incision in your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] starts to construct a prepared incision in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 
-		target.custom_pain("You feel a horrible, searing pain in your [surgery.affected_limb.display_name] as it is pushed apart!", 1)
-	else
-		user.affected_message(target,
-			SPAN_NOTICE("You start to make an incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] starts making an incision on your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] starts making an incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+	switch(tool_type)
+		if(/obj/item/tool/surgery/scalpel/manager)
+			user.affected_message(target,
+				SPAN_NOTICE("Вы начинаете делать программный разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает делать программный разрез на вашей [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает делать программный разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 
-		target.custom_pain("You feel a horrible sharp pain in your [surgery.affected_limb.display_name]!", 1)
+			target.custom_pain("Вы чувствуете ужасно острую боль в [ru_name_affected_limb]!", 1) // SS220 EDIT ADDICTION
+		if(/obj/item/tool/surgery/scalpel/laser)
+			user.affected_message(target,
+				SPAN_NOTICE("Вы начинаете делать лазерный разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает делать лазерный разрез на вашей [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает делать лазерный разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
+
+			target.custom_pain("Вы чувствуете ужасно жгучую боль в [ru_name_affected_limb]!", 1) // SS220 EDIT ADDICTION
+		else
+			user.affected_message(target,
+				SPAN_NOTICE("Вы начинаете делать разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает делать разрез на вашей [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает делать разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
+
+			target.custom_pain("Вы чувствуете ужасно рвущую боль в [ru_name_affected_limb]!", 1) // SS220 EDIT ADDICTION
 
 	log_interact(user, target, "[key_name(user)] began making an incision in [key_name(target)]'s [surgery.affected_limb.display_name].")
 
 /datum/surgery_step/incision/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	var/obj/item/tool/surgery/scalpel/laser/las_scalpel = tool
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 
-	if(tool_type == /obj/item/tool/surgery/scalpel/manager)
-		user.affected_message(target,
-			SPAN_NOTICE("You have constructed a prepared incision in [target]'s [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] has constructed a prepared incision in your [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] has constructed a prepared incision in [target]'s [surgery.affected_limb.display_name]."))
+	switch(tool_type)
+		if(/obj/item/tool/surgery/scalpel/manager)
+			user.affected_message(target,
+				SPAN_NOTICE("Вы завершаете делать программный разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает делать программный разрез на вашей [ru_name_affected_limb]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает делать программный разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 
-		surgery.status += 2 //IMS completes all steps.
-	else if(tool_type == /obj/item/tool/surgery/scalpel/laser && prob(las_scalpel.bloodlessprob))
-		user.affected_message(target,
-			SPAN_NOTICE("You finish making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] finishes making a bloodless incision on your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] finishes making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+			surgery.status += 2 //IMS completes all steps.
+		if(/obj/item/tool/surgery/scalpel/laser)
+			user.affected_message(target,
+				SPAN_NOTICE("Вы завершаете делать лазерный разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает делать лазерный разрез на вашей [ru_name_affected_limb]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает делать лазерный разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 
-		surgery.status++ //A laser scalpel may cauterise as it cuts.
-	else
-		user.affected_message(target,
-			SPAN_NOTICE("You finish the incision on [target]'s [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] finishes the incision on your [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] finishes the incision on [target]'s [surgery.affected_limb.display_name]."))
-
-		if(!(surgery.affected_limb.status & LIMB_SYNTHSKIN))
-			var/datum/effects/bleeding/external/incision_bleed = new(target, surgery.affected_limb, 10)
-			incision_bleed.duration = 10 MINUTES //A weak bleed, but it doesn't stop on its own.
-			surgery.affected_limb.bleeding_effects_list += incision_bleed
+			surgery.status++ //A laser scalpel may cauterise as it cuts.
 		else
-			surgery.status++ // synth skin doesn't cause bleeders
+			user.affected_message(target,
+				SPAN_NOTICE("Вы завершаете делать разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."), //SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает делать разрез на вашей [ru_name_affected_limb]."), //SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает делать разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)].")) //SS220 EDIT ADDICTION
+
+			if(!(surgery.affected_limb.status & LIMB_SYNTHSKIN))
+				var/datum/effects/bleeding/external/incision_bleed = new(target, surgery.affected_limb, 10)
+				incision_bleed.duration = 10 MINUTES //A weak bleed, but it doesn't stop on its own.
+				surgery.affected_limb.bleeding_effects_list += incision_bleed
+			else
+				surgery.status++ // synth skin doesn't cause bleeders
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW //Descriptionwise this is done by the retractor, but putting it here means people can examine to see if an unfinished surgery has been done.
 	user.add_blood(target.get_blood_color(), BLOOD_HANDS)
 	log_interact(user, target, "[key_name(user)] made an incision in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
 /datum/surgery_step/incision/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
+
 	switch(tool_type)
 		if(/obj/item/tool/surgery/scalpel/manager)
 			user.affected_message(target,
-				SPAN_WARNING("Your hand jolts as the system sparks, ripping a gruesome hole in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"),
-				SPAN_WARNING("[user]'s hand jolts as the system sparks, ripping a gruesome hole in your [surgery.affected_limb.display_name] with \the [tool]!"),
-				SPAN_WARNING("[user]'s hand jolts as the system sparks, ripping a gruesome hole in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"))
+				SPAN_WARNING("Ваша рука дёргается, когда система искрит, проделывая ужасную дыру в [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"), //SS220 EDIT ADDICTION
+				SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, когда система искрит, проделывая ужасную дыру в вашей [ru_name_affected_limb]!"), //SS220 EDIT ADDICTION
+				SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, когда система искрит, проделывая ужасную дыру в [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!")) //SS220 EDIT ADDICTION
 
 			target.apply_damage(15, BRUTE, target_zone)
 			target.apply_damage(15, BURN, target_zone)
 		if(/obj/item/tool/surgery/scalpel/laser)
 			user.affected_message(target,
-				SPAN_WARNING("Your hand slips as \the [tool]'s blade sputters, searing a long gash in [target]'s [surgery.affected_limb.display_name]!"),
-				SPAN_WARNING("[user]'s hand slips as \the [tool]'s blade sputters, searing a long gash in your [surgery.affected_limb.display_name]!"),
-				SPAN_WARNING("[user]'s hand slips as \the [tool]'s blade sputters, searing a long gash in [target]'s [surgery.affected_limb.display_name]!"))
+				SPAN_WARNING("Ваша рука дёргается, когда лазерный скальпель искрит, оставляя большой ожог на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"), //SS220 EDIT ADDICTION
+				SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, когда лазерный скальпель искрит, оставляя большой ожог на вашей [ru_name_affected_limb]!"), //SS220 EDIT ADDICTION
+				SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, когда лазерный скальпель искрит, оставляя большой ожог на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!")) //SS220 EDIT ADDICTION
 
 			target.apply_damage(7.5, BRUTE, target_zone)
 			target.apply_damage(12.5, BURN, target_zone)
 		else
 			user.affected_message(target,
-				SPAN_WARNING("Your hand slips, slicing [target]'s [surgery.affected_limb.display_name] in the wrong place!"),
-				SPAN_WARNING("[user]'s hand slips, slicing your [surgery.affected_limb.display_name] in the wrong place!"),
-				SPAN_WARNING("[user]'s hand slips, slicing [target]'s [surgery.affected_limb.display_name] in the wrong place!"))
+				SPAN_WARNING("Ваша рука дёргается, оставляя большой разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"), //SS220 EDIT ADDICTION
+				SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, оставляя большой разрез на вашей [ru_name_affected_limb]!"), //SS220 EDIT ADDICTION
+				SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, оставляя большой разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!")) //SS220 EDIT ADDICTION
 
 			target.apply_damage(10, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to make an incision in [key_name(target)]'s [surgery.affected_limb.display_name], aborting [surgery].")
@@ -132,7 +145,7 @@
 
 /datum/surgery_step/clamp_bleeders_step
 	name = "Clamp Bleeders"
-	desc = "clamp the bleeders"
+	desc = "остановить кровотечение"
 	//Tools used to clamp bleeders by either clamping them shut or tying them shut. Fixovein is a substitute but also a real surgery tool.
 	tools = list(
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
@@ -150,31 +163,33 @@
 	return TRUE //This step is optional.
 
 /datum/surgery_step/clamp_bleeders_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	if(tool_type in ligation_tools)
 		user.affected_message(target,
-			SPAN_NOTICE("You begin ligating bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to tie off bleeders in your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to tie off bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+			SPAN_NOTICE("Вы начинаете зашивать кровеносные сосуды на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает зашивать кровеносные сосуды на вашей [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает зашивать кровеносные сосуды на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You begin clamping bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to clamp bleeders in your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to clamp bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+			SPAN_NOTICE("Вы начинаете зажимать кровеносные сосуды на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает зажимать кровеносные сосуды на вашей [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает зажимать кровеносные сосуды на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 
-	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is maddening!", 1)
+	target.custom_pain("Вы чувствуете, как что-то пульсирует под вашей [ru_name_affected_limb]!", 1) // SS220 EDIT ADDICTION
 	log_interact(user, target, "[key_name(user)] began clamping bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly beginning [surgery].")
 
 /datum/surgery_step/clamp_bleeders_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	if(tool_type in ligation_tools)
 		user.affected_message(target,
-			SPAN_NOTICE("You ligate bleeders in [target]'s [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] finishes tying off bleeders in your [parse_zone(target_zone)]."),
-			SPAN_NOTICE("[user] finishes tying off bleeders in [target]'s [parse_zone(target_zone)]."))
+			SPAN_NOTICE("Вы завершаете зашивать кровеносные сосуды на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает зашивать кровеносные сосуды на вашей [ru_name_affected_limb]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает зашивать кровеносные сосуды на [ru_name_affected_limb] [target.declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You clamp bleeders in [target]'s [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] clamps bleeders in your [parse_zone(target_zone)]."),
-			SPAN_NOTICE("[user] clamps bleeders in [target]'s [parse_zone(target_zone)]."))
+			SPAN_NOTICE("Вы завершаете зажимать кровеносные сосуды на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает зажимать кровеносные сосуды на вашей [ru_name_affected_limb]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает зажимать кровеносные сосуды на [ru_name_affected_limb] [target.declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 
 	log_interact(user, target, "[key_name(user)] clamped bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
 
@@ -192,14 +207,15 @@
 	var/bleeding_multiplier_bad_surface = surface_modifier - 1
 	for(var/datum/effects/bleeding/external/external_bleed in surgery.affected_limb.bleeding_effects_list)
 		external_bleed.blood_loss *= bleeding_multiplier_bad_surface
-		to_chat(user, SPAN_WARNING("Stopping blood loss is less effective in these conditions."))
+		to_chat(user, SPAN_WARNING("Остановка кровотечения займёт больше времени."))
 
 
 /datum/surgery_step/clamp_bleeders_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing massive bleeding!"),
-		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in your [surgery.affected_limb.display_name] and causing massive bleeding!"),
-		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing massive bleeding!"))
+		SPAN_WARNING("Ваша рука дёргается, рвя кровеносные сосуды на [ru_name_affected_limb] [target.declent_ru(GENITIVE)] и вызывая сильное кровотечение!"), // SS220 EDIT ADDICTION
+		SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, рвя кровеносные сосуды на вашей [ru_name_affected_limb] и вызывая сильное кровотечение!"), // SS220 EDIT ADDICTION
+		SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, рвя кровеносные сосуды на [ru_name_affected_limb] [target.declent_ru(GENITIVE)] и вызывая сильное кровотечение!")) // SS220 EDIT ADDICTION
 
 	target.apply_damage(4, BRUTE, target_zone)
 	surgery.affected_limb.add_bleeding(null, FALSE, 15)
@@ -210,7 +226,7 @@
 
 /datum/surgery_step/retract_skin
 	name = "Widen Incision"
-	desc = "widen the incision"
+	desc = "расширить разрез"
 	time = 2 SECONDS
 	//Tools used to pry open specifically incisions. Contains INCISION tools at lengthy delays, mainly so surgeons can dramatically slash open incisions with them.
 	tools = list(\
@@ -231,88 +247,95 @@
 	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/retract_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	if(target_zone == "groin")
 		user.affected_message(target,
-			SPAN_NOTICE("You begin prying open the incision and rearranging the organs in [target]'s lower abdomen with \the [tool]."),
-			SPAN_NOTICE("[user] begins to pry open the incision and rearrange the organs in your lower abdomen with \the [tool]."),
-			SPAN_NOTICE("[user] begins to pry open the incision and rearrange the organs in [target]'s lower abdomen with \the [tool]."))
+			SPAN_NOTICE("Вы начинаете оттягивать кожу и ткани вокруг разреза на нижней части живота [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает оттягивать кожу и ткани вокруг разреза на нижней части вашего живота, используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает оттягивать кожу и ткани вокруг разреза на нижней части живота [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You begin drawing back the skin and tissue around the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins drawing back the skin and tissue around the incision on your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins drawing back the skin and tissue around the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+			SPAN_NOTICE("Вы начинаете оттягивать кожу и ткани вокруг разреза на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает оттягивать кожу и ткани вокруг разреза на вашей [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает оттягивать кожу и ткани вокруг разреза на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 
-	target.custom_pain("It feels like the skin on your [surgery.affected_limb.display_name] is on fire!", 1)
+	target.custom_pain("Вы чувствуете, как растягивается и натягивается кожа на вашей [ru_name_affected_limb]!", 1) // SS220 EDIT ADDICTION
 	log_interact(user, target, "[key_name(user)] began retracting skin in [key_name(target)]'s [surgery.affected_limb.display_name].")
 
 /datum/surgery_step/retract_skin/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	var/h_his = "their" //[tool] doesn't have a gender.
-	switch(target.gender)
-		if(MALE)
-			h_his = "his"
-		if(FEMALE)
-			h_his = "her"
+	// SS220 START EDIT ADDICTION
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name)
+	var/h_his = target.ru_p_them()
+	//switch(target.gender)
+	//	if(MALE)
+	//		h_his = "his"
+	//	if(FEMALE)
+	//		h_his = "her"
+	// SS220 END EDIT ADDICTION
 
 	switch(target_zone)
 		if("chest")
 			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 			user.affected_message(target,
-				SPAN_NOTICE("You hold the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]."),
-				SPAN_NOTICE("[user] holds the incision on your [surgery.affected_limb.display_name] open with \the [tool]."),
-				SPAN_NOTICE("[user] holds the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]."))
+				SPAN_NOTICE("Вы оттягиваете кожу и ткани вокруг разреза на груди [target.declent_ru(GENITIVE)], обнажая [h_his] грудную клетку."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] оттягивает кожу и ткани вокруг разреза на вашей груди, обнажая грудную клетку."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] оттягивает кожу и ткани вокруг разреза на груди [target.declent_ru(GENITIVE)], обнажая [h_his] грудную клетку.")) // SS220 EDIT ADDICTION
 		if("head")
 			user.affected_message(target,
-				SPAN_NOTICE("You hold the incision on [target]'s head open with \the [tool], exposing [h_his] skull."),
-				SPAN_NOTICE("[user] holds the incision on your head open with \the [tool], exposing your skull."),
-				SPAN_NOTICE("[user] holds the incision on [target]'s head open with \the [tool], exposing [h_his] skull."))
+				SPAN_NOTICE("Вы оттягиваете кожу и ткани вокруг разреза на голове [target.declent_ru(GENITIVE)], обнажая [h_his] череп."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] оттягивает кожу и ткани вокруг разреза на вашей голове, обнажая череп."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] оттягивает кожу и ткани вокруг разреза на голове [target.declent_ru(GENITIVE)], обнажая [h_his] череп.")) // SS220 EDIT ADDICTION
 			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
 		if("groin")
 			user.affected_message(target,
-				SPAN_NOTICE("You hold the incision on [target]'s lower abdomen open with \the [tool], exposing [h_his] viscera."),
-				SPAN_NOTICE("[user] holds the incision on your lower abdomen open with \the [tool], exposing your viscera."),
-				SPAN_NOTICE("[user] holds the incision on [target]'s lower abdomen open with \the [tool], exposing [h_his] viscera."))
+				SPAN_NOTICE("Вы оттягиваете кожу и ткани вокруг разреза на нижней части живота [target.declent_ru(GENITIVE)], обнажая [h_his] внутренние органы."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] оттягивает кожу и ткани вокруг разреза на нижней части вашего живота, обнажая внутренние органы."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] оттягивает кожу и ткани вокруг разреза на нижней части живота [target.declent_ru(GENITIVE)], обнажая [h_his] внутренние органы.")) // SS220 EDIT ADDICTION
 		else
 			user.affected_message(target,
-				SPAN_NOTICE("You hold the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]."),
-				SPAN_NOTICE("[user] holds the incision on your [surgery.affected_limb.display_name] open with \the [tool]."),
-				SPAN_NOTICE("[user] holds the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]."))
+				SPAN_NOTICE("Вы оттягиваете кожу и ткани вокруг разреза на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] оттягивает кожу и ткани вокруг разреза на вашей [ru_name_affected_limb]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] оттягивает кожу и ткани вокруг разреза на [ru_name_affected_limb] [target.declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 
 	log_interact(user, target, "[key_name(user)] retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 
 /datum/surgery_step/retract_skin/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	var/h_his = "their" //[tool] doesn't have a gender.
-	switch(target.gender)
-		if(MALE)
-			h_his = "his"
-		if(FEMALE)
-			h_his = "her"
+	// SS220 START EDIT ADDICTION
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
+	var/h_his = target.ru_p_them()
+	//switch(target.gender)
+	//	if(MALE)
+	//		h_his = "his"
+	//	if(FEMALE)
+	//		h_his = "her"
+	// SS220 END EDIT ADDICTION
 
 	switch(target_zone)
 		if("head")
 			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
 			user.affected_message(target,
-				SPAN_WARNING("You tear open the incision on [target]'s head with \the [tool], exposing [h_his] skull!"),
-				SPAN_WARNING("[user] holds the incision on your head open with \the [tool], exposing your skull!"),
-				SPAN_WARNING("[user] holds the incision on [target]'s head open with \the [tool], exposing [h_his] skull!"))
+				SPAN_WARNING("Вы разрываете кожу и ткани вокруг разреза на голове [target.declent_ru(GENITIVE)], обнажая [h_his] череп!"), // SS220 EDIT ADDICTION
+				SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] разрывает кожу и ткани вокруг разреза на вашей голове, обнажая череп!"), // SS220 EDIT ADDICTION
+				SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] разрывает кожу и ткани вокруг разреза на голове [target.declent_ru(GENITIVE)], обнажая [h_his] череп!")) // SS220 EDIT ADDICTION
 
 		if("groin")
 			user.affected_message(target,
-				SPAN_WARNING("You tear open the incision on [target]'s lower abdomen with \the [tool], exposing [h_his] viscera!"),
-				SPAN_WARNING("[user] tears the incision on your lower abdomen open with \the [tool], exposing your viscera!"),
-				SPAN_WARNING("[user] tears the incision on [target]'s lower abdomen open with \the [tool], exposing [h_his] viscera!"))
+				SPAN_WARNING("Вы разрываете кожу и ткани вокруг разреза на нижней части живота [target.declent_ru(GENITIVE)], обнажая [h_his] внутренние органы!"), // SS220 EDIT ADDICTION
+				SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] разрывает кожу и ткани вокруг разреза на нижней части вашего живота, обнажая внутренние органы!"), // SS220 EDIT ADDICTION
+				SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] разрывает кожу и ткани вокруг разреза на нижней части живота [target.declent_ru(GENITIVE)], обнажая [h_his] внутренние органы!")) // SS220 EDIT ADDICTION
 
 		if("chest")
 			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 			user.affected_message(target,
-				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]!"),
-				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with \the [tool]!"),
-				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]!"))
+				SPAN_WARNING("Вы разрываете кожу и ткани вокруг разреза на груди [target.declent_ru(GENITIVE)], обнажая [h_his] грудную клетку!"), // SS220 EDIT ADDICTION
+				SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] разрывает кожу и ткани вокруг разреза на вашей груди, обнажая вашу грудную клетку!"), // SS220 EDIT ADDICTION
+				SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] разрывает кожу и ткани вокруг разреза на груди [target.declent_ru(GENITIVE)], обнажая [h_his] грудную клетку!")) // SS220 EDIT ADDICTION
 
 		else
 			user.affected_message(target,
-				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]!"),
-				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with \the [tool]!"),
-				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]!"))
+				SPAN_WARNING("Вы разрываете кожу и ткани вокруг разреза на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"), // SS220 EDIT ADDICTION
+				SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] разрывает кожу и ткани вокруг разреза на вашей [ru_name_affected_limb]!"), // SS220 EDIT ADDICTION
+				SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] разрывает кожу и ткани вокруг разреза на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] violently retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
@@ -334,7 +357,7 @@
 
 /datum/surgery_step/cauterize
 	name = "Close Incision"
-	desc = "cauterize the incision"
+	desc = "прижечь разрез"
 	tools = SURGERY_TOOLS_CAUTERIZE
 	time = 2.5 SECONDS
 	var/tools_lit = list(
@@ -352,19 +375,21 @@
 		return FALSE
 
 /datum/surgery_step/cauterize/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	user.affected_message(target,
-		SPAN_NOTICE("You start cauterizing the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_NOTICE("[user] starts to cauterize the incision on your [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_NOTICE("[user] starts to cauterize the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+		SPAN_NOTICE("Вы начинаете прижигать разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает прижигать разрез на вашей [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает прижигать разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 
-	target.custom_pain("Your [surgery.affected_limb.display_name] is being burned!", 1)
+	target.custom_pain("Вы чувствуете, как пригорает кожа на вашей [ru_name_affected_limb]!", 1) // SS220 EDIT ADDICTION
 	log_interact(user, target, "[key_name(user)] began cauterizing an incision in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
 /datum/surgery_step/cauterize/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	user.affected_message(target,
-		SPAN_NOTICE("You cauterize the incision on [target]'s [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] cauterizes the incision on your [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] cauterizes the incision on [target]'s [surgery.affected_limb.display_name]."))
+		SPAN_NOTICE("Вы завершаете прижигать разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает прижигать разрез на вашей [ru_name_affected_limb]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает прижигать разрез на [ru_name_affected_limb] [target.declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 	switch(target_zone)
 		if("head")
 			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
@@ -379,10 +404,11 @@
 	log_interact(user, target, "[key_name(user)] cauterized an incision in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 
 /datum/surgery_step/cauterize/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, leaving a small burn on [target]'s [surgery.affected_limb.display_name]!"),
-		SPAN_WARNING("[user]'s hand slips, leaving a small burn on your [surgery.affected_limb.display_name]!"),
-		SPAN_WARNING("[user]'s hand slips, leaving a small burn on [target]'s [surgery.affected_limb.display_name]!"))
+		SPAN_WARNING("Ваша рука дёргается, оставляя небольшой ожог на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"), // SS220 EDIT ADDICTION
+		SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, оставляя небольшой ожог на вашей [ru_name_affected_limb]!"), // SS220 EDIT ADDICTION
+		SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, оставляя небольшой ожог на [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 
 	target.apply_damage(3, BURN, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to cauterize an incision in [key_name(target)]'s [surgery.affected_limb.display_name], aborting [surgery].")
@@ -408,7 +434,7 @@
 
 /datum/surgery_step/saw_encased
 	name = "Saw Bone"
-	desc = "cut through the bone"
+	desc = "разрезать кость"
 	/*Tools used to cut ribs/skull. Same tools as SEVER_BONE, but with sawing tools being better than chopping ones.
 	You're trying to cut through, but keep it and what's behind it intact.*/
 	tools = list(
@@ -430,38 +456,41 @@
 		return TRUE //Don't need the saw if it's already fractured.
 
 /datum/surgery_step/saw_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.encased, ACCUSATIVE, surgery.affected_limb.encased) // SS220 EDIT ADDICTION
 	user.affected_message(target,
-		SPAN_NOTICE("You begin to cut through [target]'s [surgery.affected_limb.encased] with \the [tool]."),
-		SPAN_NOTICE("[user] begins to cut through your [surgery.affected_limb.encased] with \the [tool]."),
-		SPAN_NOTICE("[user] begins to cut through [target]'s [surgery.affected_limb.encased] with \the [tool]."))
+		SPAN_NOTICE("Вы начинаете отпиливать [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает отпиливать вашу [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает отпиливать [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 
-	target.custom_pain("Your [surgery.affected_limb.display_name] hurts horribly!", 1)
+	target.custom_pain("Вы чувствуете, как давление нарастает в костях вашей [ru_name_affected_limb]!", 1) // SS220 EDIT ADDICTION
 
 	if(surgery.affected_limb.status & LIMB_BROKEN)
-		to_chat(user, SPAN_NOTICE("It's already broken, though, so you could just pry it open."))
+		to_chat(user, SPAN_NOTICE("Кость уже сломана, поэтому вы можете просто извлечь её."))
 	log_interact(user, target, "[key_name(user)] began cutting through [key_name(target)]'s [surgery.affected_limb.encased], attempting [surgery].")
 
 /datum/surgery_step/saw_encased/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.encased, ACCUSATIVE, surgery.affected_limb.encased) // SS220 EDIT ADDICTION
 	user.affected_message(target,
-		SPAN_NOTICE("You finish cutting through [target]'s [surgery.affected_limb.encased]."),
-		SPAN_NOTICE("[user] finishes cutting through your [surgery.affected_limb.encased]."),
-		SPAN_NOTICE("[user] finishes cutting through [target]'s [surgery.affected_limb.encased]."))
+		SPAN_NOTICE("Вы завершаете отпиливать [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает отпиливать вашу [ru_name_affected_limb]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] завершает отпиливать [ru_name_affected_limb] [target.declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 
 	log_interact(user, target, "[key_name(user)] cut through [key_name(target)]'s [surgery.affected_limb.encased], beginning [surgery].")
 
 /datum/surgery_step/saw_encased/failure(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.encased, ACCUSATIVE, surgery.affected_limb.encased) // SS220 EDIT ADDICTION
 	if(surgery.affected_limb.status & LIMB_BROKEN) //Can't shatter what is already broken.
-		var/affected_bone = surgery.affected_limb.name == "chest" ? "ribs" : "skull"
+		//var/affected_bone = surgery.affected_limb.name == "chest" ? "ribs" : "skull" // SS220 EDIT ADDICTION
 		user.affected_message(target,
-			SPAN_WARNING("You hack through [target]'s broken [affected_bone]!"),
-			SPAN_WARNING("[user] hacks through your broken [affected_bone]!"),
-			SPAN_WARNING("[user] hacks through [target]'s broken [affected_bone]!"))
+			SPAN_WARNING("Вы разрезаете сломанную [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] разрезает вашу сломанную [ru_name_affected_limb]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] разрезает сломанную [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 
 	else
 		user.affected_message(target,
-			SPAN_WARNING("You shatter [target]'s [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user] shatters your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("Вы ломаете [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] ломает вашу [ru_name_affected_limb]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] ломает [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 
 		surgery.affected_limb.fracture(100)
 
@@ -478,7 +507,7 @@
 //In rib-closing surgery, it can be skipped to finish closing the ribcage, or completed to abort the operation.
 /datum/surgery_step/open_encased_step
 	name = "Open Bone"
-	desc = "prise the bones open"
+	desc = "раздвинуть кости"
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -489,20 +518,23 @@
 	return TRUE
 
 /datum/surgery_step/open_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.encased, ACCUSATIVE, surgery.affected_limb.encased) // SS220 EDIT ADDICTION
 	user.affected_message(target,
-		SPAN_NOTICE("You start forcing [target]'s [surgery.affected_limb.encased] open with \the [tool]."),
-		SPAN_NOTICE("[user] begins to force your [surgery.affected_limb.encased] open with \the [tool]."),
-		SPAN_NOTICE("[user] begins to force [target]'s [surgery.affected_limb.encased] open with \the [tool]."))
+		SPAN_NOTICE("Вы начинаете вынимать [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вынимать вашу [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вынимать [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 
-	target.custom_pain("Something hurts horribly in your [surgery.affected_limb.display_name]!", 1)
+	target.custom_pain("Вы чувствуете, как ткани отходят от костей вашей [ru_name_affected_limb]!", 1) // SS220 EDIT ADDICTION
 	log_interact(user, target, "[key_name(user)] began opening [key_name(target)]'s [surgery.affected_limb.encased], possibly beginning [surgery].")
 
 /datum/surgery_step/open_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.encased, ACCUSATIVE, surgery.affected_limb.encased) // SS220 EDIT ADDICTION
 	var/brain = surgery.affected_limb.body_part == BODY_FLAG_HEAD ? TRUE : FALSE
+	var/h_him = target.ru_p_them()
 	user.affected_message(target,
-		SPAN_NOTICE("You use \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
-		SPAN_NOTICE("[user] uses \the [tool] to hold your [surgery.affected_limb.encased] open, exposing your [brain ? "brain" : "vital organs"]."),
-		SPAN_NOTICE("[user] uses \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."))
+		SPAN_NOTICE("Вы держите [ru_name_affected_limb] [target.declent_ru(GENITIVE)] открытым, обнажая [brain ? "мозг" : "внутренние органы"]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] держит вашу [ru_name_affected_limb] открытой, обнажая [brain ? "мозг" : "внутренние органы"]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] держит [ru_name_affected_limb] [target.declent_ru(GENITIVE)] открытым, обнажая [h_him] [brain ? "мозг" : "внутренние органы"].")) // SS220 EDIT ADDICTION
 	switch(target_zone)
 		if("head")
 			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
@@ -519,16 +551,17 @@
 	log_interact(user, target, "[key_name(user)] opened [key_name(target)]'s [surgery.affected_limb.encased], ending [surgery].")
 
 /datum/surgery_step/open_encased_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.encased, ACCUSATIVE, surgery.affected_limb.encased) // SS220 EDIT ADDICTION
 	if(surgery.affected_limb.status & LIMB_BROKEN)
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"),
-			SPAN_WARNING("[user]'s hand slips, damaging your [surgery.affected_limb.encased] even more!"),
-			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
+			SPAN_WARNING("Ваша рука дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая вашу [ru_name_affected_limb]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("Ваша рука дёргается, ломая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ломая вашу [ru_name_affected_limb]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ломая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 
 	surgery.affected_limb.fracture(100)
 	target.apply_damage(15, BRUTE, target_zone)
@@ -553,7 +586,7 @@
 
 /datum/surgery_step/close_encased_step
 	name = "Close Bone"
-	desc = "bend the bones back into place"
+	desc = "вправить кости"
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -561,19 +594,21 @@
 	failure_sound = 'sound/effects/bone_break7.ogg'
 
 /datum/surgery_step/close_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.encased, ACCUSATIVE, surgery.affected_limb.encased) // SS220 EDIT ADDICTION
 	user.affected_message(target,
-		SPAN_NOTICE("You start bending [target]'s [surgery.affected_limb.encased] back into place with \the [tool]."),
-		SPAN_NOTICE("[user] starts bending your [surgery.affected_limb.encased] back into place with \the [tool]."),
-		SPAN_NOTICE("[user] starts bending [target]'s [surgery.affected_limb.encased] back into place with \the [tool]."))
+		SPAN_NOTICE("Вы начинаете вправлять [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вправлять вашу [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вправлять [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 
-	target.custom_pain("Something hurts horribly in your [surgery.affected_limb.display_name]!", 1)
+	target.custom_pain("Вы чувствуете, как давление нарастает в костях вашей [ru_name_affected_limb]!", 1) // SS220 EDIT ADDICTION
 	log_interact(user, target, "[key_name(user)] began closing [key_name(target)]'s [surgery.affected_limb.encased], attempting to begin [surgery].")
 
 /datum/surgery_step/close_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.encased, ACCUSATIVE, surgery.affected_limb.encased) // SS220 EDIT ADDICTION
 	user.affected_message(target,
-		SPAN_NOTICE("You close [target]'s [surgery.affected_limb.encased]."),
-		SPAN_NOTICE("[user] closes your [surgery.affected_limb.encased]."),
-		SPAN_NOTICE("[user] closes [target]'s [surgery.affected_limb.encased]."))
+		SPAN_NOTICE("Вы вправляете [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] вправляет вашу [ru_name_affected_limb]."), // SS220 EDIT ADDICTION
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] вправляет [ru_name_affected_limb] [target.declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 	switch(target_zone)
 		if("head")
 			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
@@ -586,16 +621,17 @@
 	log_interact(user, target, "[key_name(user)] closed [key_name(target)]'s [surgery.affected_limb.encased], beginning [surgery].")
 
 /datum/surgery_step/close_encased_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.encased, ACCUSATIVE, surgery.affected_limb.encased) // SS220 EDIT ADDICTION
 	if(surgery.affected_limb.status & LIMB_BROKEN)
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"),
-			SPAN_WARNING("[user]'s hand slips, damaging your [surgery.affected_limb.encased] even more!"),
-			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
+			SPAN_WARNING("Ваша рука дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая вашу [ru_name_affected_limb]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("Ваша рука дёргается, ломая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ломая вашу [ru_name_affected_limb]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ломая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 
 	surgery.affected_limb.fracture(100)
 	target.apply_damage(15, BRUTE, target_zone)
@@ -605,7 +641,7 @@
 
 /datum/surgery_step/mend_encased
 	name = "Mend Bone"
-	desc = "repair the damaged bones"
+	desc = "восстановить поврежденные кости"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
@@ -615,68 +651,72 @@
 //Use materials to mend bones, same as /datum/surgery_step/mend_bones
 /datum/surgery_step/mend_encased/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	. = ..()
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	if(istype(tool, /obj/item/tool/surgery/bonegel)) //If bone gel, use some of the gel
 		var/obj/item/tool/surgery/bonegel/gel = tool
 		if(!gel.use_gel(gel.mend_bones_fix_cost))
-			to_chat(user, SPAN_BOLDWARNING("[gel] is empty!"))
+			to_chat(user, SPAN_BOLDWARNING("Внутри [tool.declent_ru(GENITIVE)] пусто!")) // SS220 EDIT ADDICTION
 			return FALSE
 
 	else //Otherwise, use metal rods
 		var/obj/item/stack/rods/rods = user.get_inactive_hand()
 		if(!istype(rods))
-			to_chat(user, SPAN_BOLDWARNING("You need metal rods in your offhand to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			to_chat(user, SPAN_BOLDWARNING("У вас должны быть металлические прутья, чтобы починить [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 			return FALSE
 		if(!rods.use(2)) //Refunded on failure
-			to_chat(user, SPAN_BOLDWARNING("You need more metal rods to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			to_chat(user, SPAN_BOLDWARNING("У вас должно быть больше металлических прутьев, чтобы починить [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 			return FALSE
 
 /datum/surgery_step/mend_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.encased, ACCUSATIVE, surgery.affected_limb.encased) // SS220 EDIT ADDICTION
 	if(tool_type == /obj/item/tool/surgery/bonegel)
 		user.affected_message(target,
-			SPAN_NOTICE("You start applying \the [tool] to [target]'s [surgery.affected_limb.encased]."),
-			SPAN_NOTICE("[user] starts to apply \the [tool] to your [surgery.affected_limb.encased]."),
-			SPAN_NOTICE("[user] starts to apply \the [tool] to [target]'s [surgery.affected_limb.encased]."))
+			SPAN_NOTICE("Вы начинаете лечить [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает лечить вашу [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает лечить [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 
-		target.custom_pain("Something stings inside your [surgery.affected_limb.display_name]!", 1)
+		target.custom_pain("Вы чувствуете, как что-то жжёт внутри вашей [ru_name_affected_limb]!", 1) // SS220 EDIT ADDICTION
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You begin screwing a reinforcing plate to [target]'s [surgery.affected_limb.encased] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to screw a reinforcing plate to your [surgery.affected_limb.encased] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to screw a reinforcing plate to [target]'s [surgery.affected_limb.encased] with \the [tool]."))
+			SPAN_NOTICE("Вы начинаете устанавливать металлическую пластину на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает устанавливать металлическую пластину на вашу [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает устанавливать металлическую пластину на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 
-		target.custom_pain("You can feel something grinding in your [surgery.affected_limb.encased]!", 1)
+		target.custom_pain("Вы чувствуете, как что-то закручивается внутрь вашей [ru_name_affected_limb]!", 1) // SS220 EDIT ADDICTION
 		playsound(target.loc, 'sound/items/Screwdriver.ogg', 25, TRUE)
 
 	log_interact(user, target, "[key_name(user)] began mending [key_name(target)]'s [surgery.affected_limb.encased].")
 
 /datum/surgery_step/mend_encased/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.encased, ACCUSATIVE, surgery.affected_limb.encased) // SS220 EDIT ADDICTION
 	if(tool_type == /obj/item/tool/surgery/bonegel)
 		user.affected_message(target,
-			SPAN_NOTICE("You mend [target]'s [surgery.affected_limb.encased]."),
-			SPAN_NOTICE("[user] mends your [surgery.affected_limb.encased]."),
-			SPAN_NOTICE("[user] mends [target]'s [surgery.affected_limb.encased]."))
+			SPAN_NOTICE("Вы вылечили [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] вылечил вашу [ru_name_affected_limb]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] вылечил [ru_name_affected_limb] [target.declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 	else
-		var/improvised_desc = pick("paleolithic surgeon", "UPP torturer", "mad carpenter")
+		var/improvised_desc = pick("древний хирург", "палач СПН", "сумасшедший цирюльник")
 		user.affected_message(target,
-			SPAN_NOTICE("You haphazardly repair [target]'s [surgery.affected_limb.encased] like some kind of [improvised_desc]."),
-			SPAN_NOTICE("[user] haphazardly repairs your [surgery.affected_limb.encased] like some kind of [improvised_desc]."),
-			SPAN_NOTICE("[user] haphazardly repairs [target]'s [surgery.affected_limb.encased] like some kind of [improvised_desc]."))
+			SPAN_NOTICE("Вы наспех укрепляете кости [ru_name_affected_limb] [target.declent_ru(GENITIVE)], словно какой-то [improvised_desc]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] наспех укрепляет кости вашей [ru_name_affected_limb], словно какой-то [improvised_desc]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] наспех укрепляет кости [ru_name_affected_limb] [target.declent_ru(GENITIVE)], словно какой-то [improvised_desc].")) // SS220 EDIT ADDICTION
 
 	if(surgery.affected_limb.status & LIMB_BROKEN)
-		to_chat(user, SPAN_NOTICE("You've repaired the damage done by prying it open, but it's still fractured."))
+		to_chat(user, SPAN_NOTICE("Вы вылечили повреждения, нанесённые при извлечении органов, однако кость всё ещё сломана."))
 	log_interact(user, target, "[key_name(user)] mended [key_name(target)]'s [surgery.affected_limb.encased], ending [surgery].")
 
 /datum/surgery_step/mend_encased/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.encased, ACCUSATIVE, surgery.affected_limb.encased) // SS220 EDIT ADDICTION
 	if(surgery.affected_limb.status & LIMB_BROKEN)
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"),
-			SPAN_WARNING("[user]'s hand slips, damaging your [surgery.affected_limb.encased] even more!"),
-			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
+			SPAN_WARNING("Ваша рука дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая вашу [ru_name_affected_limb]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("Ваша рука дёргается, ломая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ломая вашу [ru_name_affected_limb]!"), // SS220 EDIT ADDICTION
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ломая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 
 		surgery.affected_limb.fracture(100)
 
@@ -684,7 +724,7 @@
 	log_interact(user, target, "[key_name(user)] failed to mend [key_name(target)]'s [surgery.affected_limb.encased].")
 
 	if(tool_type != /obj/item/tool/surgery/bonegel)
-		to_chat(user, SPAN_NOTICE("The metal rods used on [target]'s [surgery.affected_limb.display_name] fall loose from their [surgery.affected_limb]."))
+		to_chat(user, SPAN_NOTICE("Металлические прутья, использованные на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], отваливаются.")) // SS220 EDIT ADDICTION
 		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(get_turf(target))
 		rods.amount = 2 //Refund 2 rods on failure
 		rods.update_icon()
@@ -716,16 +756,16 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 /datum/surgery_step/test_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You start to make an incision on [target]'s [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] starts making an incision on your [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] starts making an incision on [target]'s [parse_zone(target_zone)] with \the [tool]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts making an incision on your [parse_zone(target_zone)] with \the [tool]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts making an incision on [target]'s [parse_zone(target_zone)] with \the [tool]."))
 
 	log_interact(user, target, "[key_name(user)] began making an incision in [key_name(target)]'s [parse_zone(target_zone)].")
 
 /datum/surgery_step/test_incision/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You finish the incision on [target]'s [parse_zone(target_zone)]."),
-		SPAN_NOTICE("[user] finishes the incision on your [parse_zone(target_zone)]."),
-		SPAN_NOTICE("[user] finishes the incision on [target]'s [parse_zone(target_zone)]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes the incision on your [parse_zone(target_zone)]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes the incision on [target]'s [parse_zone(target_zone)]."))
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
 	user.add_blood(target.get_blood_color(), BLOOD_HANDS)
@@ -769,8 +809,8 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 /datum/surgery_step/mend_test_organ_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin attempting to treat [target]'s heart with [tool]."),
-		SPAN_NOTICE("[user] begins an attempt to treat your heart with [tool]."),
-		SPAN_NOTICE("[user] begins an attempt to treat [target]'s heart with [tool]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins an attempt to treat your heart with [tool]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins an attempt to treat [target]'s heart with [tool]."))
 
 	playsound(target.loc, 'sound/handling/bandage.ogg', 25, TRUE)
 	log_interact(user, target, "[key_name(user)] began mending organs in [key_name(target)]'s [parse_zone(target_zone)], beginning [surgery].")
@@ -778,8 +818,8 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 /datum/surgery_step/mend_test_organ_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_WARNING("Despite all your training, all you can find is a small shriveled chunk of black stone where [target]'s heart should be!"),
-		SPAN_WARNING("[user] searches desperately, but can't find your heart."),
-		SPAN_WARNING("[user] searches desperately, but can't find [target]'s heart!"))
+		SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] searches desperately, but can't find your heart."),
+		SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] searches desperately, but can't find [target]'s heart!"))
 
 	target.universal_speak = TRUE
 	target.say("You can't find what never existed, you two-legged fool.")
@@ -816,16 +856,16 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 /datum/surgery_step/cauterize/close_test_incision_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You start cauterizing the incision on [target]'s [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] starts to cauterize the incision on your [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] starts to cauterize the incision on [target]'s [parse_zone(target_zone)] with \the [tool]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts to cauterize the incision on your [parse_zone(target_zone)] with \the [tool]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts to cauterize the incision on [target]'s [parse_zone(target_zone)] with \the [tool]."))
 
 	log_interact(user, target, "[key_name(user)] began cauterizing an incision in [key_name(target)]'s [parse_zone(target_zone)], beginning [surgery].")
 
 /datum/surgery_step/cauterize/close_test_incision_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You cauterize the incision on [target]'s [parse_zone(target_zone)]."),
-		SPAN_NOTICE("[user] cauterizes the incision on your [parse_zone(target_zone)]."),
-		SPAN_NOTICE("[user] cauterizes the incision on [target]'s [parse_zone(target_zone)]."))
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] cauterizes the incision on your [parse_zone(target_zone)]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] cauterizes the incision on [target]'s [parse_zone(target_zone)]."))
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	log_interact(user, target, "[key_name(user)] cauterized an incision in [key_name(target)]'s [parse_zone(target_zone)], ending [surgery].")

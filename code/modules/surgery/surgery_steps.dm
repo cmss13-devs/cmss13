@@ -144,28 +144,28 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		var/list/message = new() //Duration hint messages.
 
 		if(self_surgery)
-			message += "[pick("performing surgery", "working")] on [pick("yourself", "your own body")] is [pick("awkward", "tricky")]"
+			message += "[pick("проводить операцию", "делать это")] [pick("на себе", "на собственном теле")] [pick("неудобно", "непросто")]" // SS220 EDIT ADDICTION
 
 		switch(tool_modifier) //Implicitly means tool exists as accept_any_item item or accept_hand would = 1x. No message for 1x - that's the default.
 			if(SURGERY_TOOL_MULT_SUBOPTIMAL)
-				message += "this tool is[pick("n't ideal", " not the best")]"
+				message += "[pick("этому инструменту далеко до идеала", "можно было найти инструмент по-лучше")]" // SS220 EDIT ADDICTION
 			if(SURGERY_TOOL_MULT_SUBSTITUTE)
-				message += "this tool is[pick("n't suitable", " a bad fit", " difficult to use")]"
+				message += "[pick("этот инструмент не подходит для этого", "этот инструмент не приспособлен для этого", "этот инструмент трудно использовать")]" // SS220 EDIT ADDICTION
 			if(SURGERY_TOOL_MULT_BAD_SUBSTITUTE)
-				message += "this tool is [pick("awful", "barely usable")]"
+				message += "[pick("этот инструмент ужасен", "этот инструмент едва пригоден для использования")]" // SS220 EDIT ADDICTION
 				failure_penalties += 1
 			if(SURGERY_TOOL_MULT_AWFUL)
-				message += "this tool is [pick("awful", "barely usable")]"
+				message += "[pick("этот инструмент ужасен", "этот инструмент едва пригоден для использования")]" // SS220 EDIT ADDICTION
 				failure_penalties += 2
 
 		switch(surface_modifier)
 			if(SURGERY_SURFACE_MULT_ADEQUATE)
-				message += "[pick("it isn't easy, working", "it's tricky to perform complex surgeries", "this would be quicker if you weren't working")] [pick("in the field", "under these conditions", "without a proper surgical theatre")]"
+				message += "[pick("нелегко работать в полевых условиях", "нелегко работать в таких условиях", "нелегко работать без операционной", "сложно проводить операции в полевых условиях", "сложно проводить операции в таких условиях", "сложно проводить операции без операционной", "было бы быстрее, если бы вы не работали в полевых условиях", "было бы быстрее, если бы вы не работали в таких условиях", "было бы быстрее, если бы вы работали в операционной")]" // SS220 EDIT ADDICTION
 			if(SURGERY_SURFACE_MULT_UNSUITED)
-				message += "[pick("it's difficult to work", "it's slow going, working", "you need to take your time")] in these [pick("primitive", "rough", "crude")] conditions"
+				message += "[pick("трудно ускориться в этих полевых условиях", "трудно ускориться в этих суровых условиях", "трудно ускориться в этих кустарных условиях", "работа в полевых условиях будет медленной", "работа в суровых условиях будет медленной", "работа в кустарных условиях будет медленной", "нельзя торопиться в этих полевых условиях", "нельзя торопиться в этих суровых условиях", "нельзя торопиться в этих кустарных условиях")]" // SS220 EDIT ADDICTION
 				failure_penalties += 1
 			if(SURGERY_SURFACE_MULT_AWFUL)
-				message += "[pick("you need to work slowly and carefully", "you need to be very careful", "this is delicate work, especially")] [pick("in these", "under such")] [pick("terrible", "awful", "utterly unsuitable")] conditions"
+				message += "[pick("в этих ужасных условиях нужно работать медленно и осторожно", "в этих сложных условиях нужно работать медленно и осторожно", "в этих неподходящих условиях нужно работать медленно и осторожно", "в этих ужасных условиях нужно быть очень осторожным", "в этих сложных условиях нужно быть очень осторожным", "в этих неподходящих условиях нужно быть очень осторожным", "эта работа превращается в деликатную в таких ужасных условиях", "эта работа превращается в деликатную в таких сложных условиях", "эта работа превращается в деликатную в таких неподходящих условиях")]" // SS220 EDIT ADDICTION
 				failure_penalties += 2
 
 		if(length(message))
@@ -201,8 +201,8 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	else if(target.stat == CONSCIOUS && prob(pain_failure_chance)) //Pain can cause a step to fail.
 		do_after(user, max(rand(step_duration * 0.1, step_duration * 0.5), 0.5), INTERRUPT_ALL|INTERRUPT_DIFF_INTENT,
 				BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL) //Brief do_after so that the pain interrupt doesn't happen instantly.
-		to_chat(user, SPAN_DANGER("[target] moved during the surgery! Use anesthetics or painkillers!"))
-		to_chat(target, SPAN_DANGER("The pain was too much, you couldn't hold still!"))
+		to_chat(user, SPAN_DANGER("[target] пошевелился во время операции! Используйте анестетики или обезболивающее!")) // SS220 EDIT ADDICTION
+		to_chat(target, SPAN_DANGER("Боль cтала невыносимой, вы не можете её терпеть!"))
 		if(failure(user, target, target_zone, tool, tool_type, surgery)) //Failure returns TRUE if the step should complete anyway.
 			advance = TRUE
 		target.emote("pain")
@@ -211,13 +211,13 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	else if(prob(surgery_failure_chance))
 		do_after(user, max(rand(step_duration * 0.1, step_duration * 0.5), 0.5), INTERRUPT_ALL|INTERRUPT_DIFF_INTENT,
 				BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL) //Brief do_after so that the interrupt doesn't happen instantly.
-		user.visible_message(SPAN_DANGER("[user] is struggling to perform surgery."),
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] is struggling to perform surgery."),
 		SPAN_DANGER("You are struggling to perform the surgery with these tools and conditions!"))
 		if(failure(user, target, target_zone, tool, tool_type, surgery)) //Failure returns TRUE if the step should complete anyway.
 			advance = TRUE
 		target.emote("pain")
 		play_failure_sound(user, target, target_zone, tool, surgery)
-		msg_admin_niche("[user] failed a [surgery] step on [target] because of [failure_penalties] failure possibility penalties ([surgery_failure_chance]%)")
+		msg_admin_niche("[capitalize(user.declent_ru(NOMINATIVE))] failed a [surgery] step on [target] because of [failure_penalties] failure possibility penalties ([surgery_failure_chance]%)")
 
 	else //Help intent.
 		if(do_after(user, step_duration, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_FRIENDLY,target,INTERRUPT_MOVED,BUSY_ICON_MEDICAL))
@@ -252,7 +252,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 ///This is used for beginning-step narration. tool_type may be a typepath or simply '1'.
 /datum/surgery_step/proc/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] begins to perform surgery on [target]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to perform surgery on [target]."),
 		SPAN_NOTICE("You begin to perform surgery on [target]..."))
 
 /// Plays Preop Sounds
@@ -263,7 +263,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 ///This is used for end-step narration and relevant success changes - whatever the step is meant to do, if it isn't just flavour. tool_type may be a typepath or simply '1'.
 /datum/surgery_step/proc/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] succeeds!"),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] succeeds!"),
 			SPAN_NOTICE("You succeed."))
 
 /// Plays the selected success sound
@@ -275,7 +275,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 /**This is used for failed-step narration and relevant failure changes, often damage etc. If it returns TRUE, the step succeeds anyway.
 tool_type may be a typepath or simply '1'. Note that a first step done on help-intent doesn't call failure(), it just ends harmlessly.**/
 /datum/surgery_step/proc/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] fails to finish the surgery"),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] fails to finish the surgery"),
 			SPAN_NOTICE("You fail to finish the surgery"))
 	return FALSE
 

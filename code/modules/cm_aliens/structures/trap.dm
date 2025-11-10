@@ -44,13 +44,13 @@
 	. = ..()
 	switch(trap_type)
 		if(RESIN_TRAP_EMPTY)
-			. += "It's empty."
+			. += "Внутри пусто."
 		if(RESIN_TRAP_HUGGER)
-			. += "There's a little one inside."
+			. += "Внутри находится лицехват."
 		if(RESIN_TRAP_GAS)
-			. += "It's filled with pressurised gas."
+			. += "Внутри содержится газ под давлением."
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
-			. += "It's filled with pressurised acid."
+			. += "Внутри содержится кислота под давлением"
 
 /obj/effect/alien/resin/trap/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -214,14 +214,14 @@
 			set_state()
 			var/obj/item/clothing/mask/facehugger/hugger = new (loc, hivenumber)
 			xeno.put_in_active_hand(hugger)
-			to_chat(xeno, SPAN_XENONOTICE("You remove the facehugger from [src]."))
+			to_chat(xeno, SPAN_XENONOTICE("Вы убираете лицехвата из [declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 			return XENO_NONCOMBAT_ACTION
 		else
-			to_chat(xeno, SPAN_XENONOTICE("[src] is occupied by a child."))
+			to_chat(xeno, SPAN_XENONOTICE("Дитя уже имеется в [declent_ru(PREPOSITIONAL)].")) // SS220 EDIT ADDICTION
 			return XENO_NO_DELAY_ACTION
 
 	if((!xeno.acid_level || trap_type == RESIN_TRAP_GAS) && trap_type != RESIN_TRAP_EMPTY)
-		to_chat(xeno, SPAN_XENONOTICE("Better not risk setting this off."))
+		to_chat(xeno, SPAN_XENONOTICE("Лучше не рисковать, чтобы ловушка не сработала."))
 		return XENO_NO_DELAY_ACTION
 
 	if(xeno.try_fill_trap(src))
@@ -240,29 +240,29 @@
 	if(!(istype(W, /obj/item/clothing/mask/facehugger) && isxeno(user)))
 		return ..()
 	if(trap_type != RESIN_TRAP_EMPTY)
-		to_chat(user, SPAN_XENOWARNING("You can't put a hugger in this trap!"))
+		to_chat(user, SPAN_XENOWARNING("Вы не можете поместить лицехвата в эту ловушку!"))
 		return
 	var/obj/item/clothing/mask/facehugger/FH = W
 	if(FH.stat == DEAD)
-		to_chat(user, SPAN_XENOWARNING("You can't put a dead facehugger in [src]."))
+		to_chat(user, SPAN_XENOWARNING("Вы не можете поместить мёртвого лицехвата в [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 	else
 		var/mob/living/carbon/xenomorph/X = user
 		if (!istype(X))
 			return
 
 		if (X.hivenumber != hivenumber)
-			to_chat(user, SPAN_XENOWARNING("This resin trap doesn't belong to your hive!"))
+			to_chat(user, SPAN_XENOWARNING("Эта смоляная ловушка не принадлежит вашему улью!"))
 			return
 
 		if (FH.hivenumber != hivenumber)
-			to_chat(user, SPAN_XENOWARNING("This facehugger is tainted."))
+			to_chat(user, SPAN_XENOWARNING("Этот лицехват заражён!"))
 			return
 
 		if (!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DAZED, BUSY_ICON_HOSTILE))
 			return
 
 		set_state(RESIN_TRAP_HUGGER)
-		to_chat(user, SPAN_XENONOTICE("You place a facehugger in [src]."))
+		to_chat(user, SPAN_XENONOTICE("Вы помещаете лицехвата в [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 		qdel(FH)
 
 /obj/effect/alien/resin/trap/healthcheck()

@@ -10,7 +10,7 @@
 
 /obj/structure/machinery/portable_atmospherics/attackby(obj/item/W, mob/user)
 	if((istype(W, /obj/item/device/analyzer)) && Adjacent(user))
-		visible_message(SPAN_DANGER("[user] has used [W] on [icon2html(icon, viewers(src))]"))
+		visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] has used [W] on [icon2html(icon, viewers(src))]"))
 		to_chat(user, SPAN_NOTICE(" Results of analysis of [icon2html(icon, user)]"))
 		to_chat(user, SPAN_NOTICE(" Tank is empty!"))
 
@@ -34,7 +34,7 @@
 		if(user.drop_inv_item_to_loc(C, src))
 			C.add_fingerprint(user)
 			cell = C
-			user.visible_message(SPAN_NOTICE("[user] opens the panel on [src] and inserts [C]."), SPAN_NOTICE("You open the panel on [src] and insert [C]."))
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] opens the panel on [src] and inserts [C]."), SPAN_NOTICE("You open the panel on [src] and insert [C]."))
 		return
 
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
@@ -42,7 +42,7 @@
 			to_chat(user, SPAN_DANGER("There is no power cell installed."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] opens the panel on [src] and removes [cell]."), SPAN_NOTICE("You open the panel on [src] and remove [cell]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] opens the panel on [src] and removes [cell]."), SPAN_NOTICE("You open the panel on [src] and remove [cell]."))
 		cell.add_fingerprint(user)
 		cell.forceMove(loc)
 		cell = null

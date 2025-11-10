@@ -41,7 +41,7 @@
 		//Hugger explosion, like a carrier
 		var/obj/item/clothing/mask/facehugger/F
 		var/chance = 60
-		visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
+		visible_message(SPAN_XENOWARNING("Шумная масса крошечных чужих пытается вырваться из [declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 		for(var/i in 1 to stored_huggers)
 			if(prob(chance))
 				F = new(loc, linked_hive.hivenumber)
@@ -73,29 +73,29 @@
 		var/obj/item/clothing/mask/facehugger/hugger = item
 		if(hugger.stat != DEAD)
 			if(stored_huggers >= huggers_max_amount)
-				to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
+				to_chat(user, SPAN_XENOWARNING("Дитя уже имеется в [declent_ru(PREPOSITIONAL)].")) // SS220 EDIT ADDICTION
 				return
 			if(user)
-				visible_message(SPAN_XENOWARNING("[user] slides [hugger] back into \the [src]."),
-					SPAN_XENONOTICE("You place the child back into \the [src]."))
+				visible_message(SPAN_XENOWARNING("[capitalize(user.declent_ru(NOMINATIVE))] помещает [hugger.declent_ru(ACCUSATIVE)] обратно в [declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+					SPAN_XENONOTICE("Вы помещаете дитя обратно в [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 				user.temp_drop_inv_item(hugger)
 			else
-				visible_message(SPAN_XENOWARNING("[hugger] crawls back into \the [src]!"))
+				visible_message(SPAN_XENOWARNING("[capitalize(hugger.declent_ru(NOMINATIVE))] заползает обратно в [declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
 			stored_huggers = min(huggers_max_amount, stored_huggers + 1)
 			qdel(hugger)
 		else
-			to_chat(user, SPAN_XENOWARNING("This child is dead."))
+			to_chat(user, SPAN_XENOWARNING("Это дитя мертво."))
 		return
 
 	//refill egg morpher from an egg
 	if(istype(item, /obj/item/xeno_egg))
 		var/obj/item/xeno_egg/egg = item
 		if(stored_huggers >= huggers_max_amount)
-			to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
+			to_chat(user, SPAN_XENOWARNING("Дитя уже имеется в [declent_ru(PREPOSITIONAL)].")) // SS220 EDIT ADDICTION
 			return
 		if(user)
-			visible_message(SPAN_XENOWARNING("[user] slides a facehugger out of \the [egg] into \the [src]."),
-				SPAN_XENONOTICE("You place the child from an egg into \the [src]."))
+			visible_message(SPAN_XENOWARNING("[capitalize(user.declent_ru(NOMINATIVE))] извлекает лицехвата из [egg.declent_ru(GENITIVE)] и помещает его в [declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_XENONOTICE("Вы извлекаете дитя из яйца и помещаете его в [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 			user.temp_drop_inv_item(egg)
 		stored_huggers = min(huggers_max_amount, stored_huggers + 1)
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
@@ -169,7 +169,7 @@
 		if(stored_huggers == huggers_to_grow_max)
 			COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 
-		to_chat(M, SPAN_XENONOTICE("You retrieve a child."))
+		to_chat(M, SPAN_XENONOTICE("Вы извлекаете дитя."))
 		stored_huggers = max(0, stored_huggers - 1)
 		var/obj/item/clothing/mask/facehugger/hugger = new(loc, linked_hive.hivenumber)
 		SEND_SIGNAL(M, COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER, hugger)
@@ -213,6 +213,6 @@
 
 	morpher.huggers_reserved = tgui_input_number(usr, "How many facehuggers would you like to keep safe from Observers wanting to join as facehuggers?", "How many to reserve?", 0, morpher.huggers_max_amount, morpher.huggers_reserved)
 
-	to_chat(usr, SPAN_XENONOTICE("You reserved [morpher.huggers_reserved] facehuggers for your sisters."))
+	to_chat(usr, SPAN_XENONOTICE("Вы зарезервировали [morpher.huggers_reserved] лицехватов для своих сестёр.")) // SS220 EDIT ADDICTION
 
 #undef EGGMORPG_RANGE

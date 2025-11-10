@@ -487,16 +487,16 @@ Defined in conflicts.dm of the #defines folder.
 	if(istype(W, /obj/item/co2_cartridge))
 		if(!filled)
 			filled = TRUE
-			user.visible_message(SPAN_NOTICE("[user] slots a CO2 cartridge into [src]. A second later, \he apparently looks dismayed."), SPAN_WARNING("You slot a fresh CO2 cartridge into [src] and snap the slot cover into place. Only then do you realize [W]'s valve broke inside [src]. Fuck."))
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] slots a CO2 cartridge into [src]. A second later, \he apparently looks dismayed."), SPAN_WARNING("You slot a fresh CO2 cartridge into [src] and snap the slot cover into place. Only then do you realize [W]'s valve broke inside [src]. Fuck."))
 			playsound(src, 'sound/machines/click.ogg')
 			qdel(W)
 			update_icon()
 			return
 		else
-			user.visible_message(SPAN_WARNING("[user] fiddles with [src]. \He looks frustrated."), SPAN_NOTICE("No way man! You can't seem to pry the existing container out of [src]... try a screwdriver?"))
+			user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] fiddles with [src]. \He looks frustrated."), SPAN_NOTICE("No way man! You can't seem to pry the existing container out of [src]... try a screwdriver?"))
 			return
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-		user.visible_message(SPAN_WARNING("[user] screws with [src], using \a [W]. \He looks very frustrated."), SPAN_NOTICE("You try to pry the cartridge out of [src], but it's stuck damn deep. Piece of junk..."))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] screws with [src], using \a [W]. \He looks very frustrated."), SPAN_NOTICE("You try to pry the cartridge out of [src], but it's stuck damn deep. Piece of junk..."))
 		return
 	..()
 
@@ -3184,7 +3184,7 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		user.put_in_hands(nade)
 
-	user.visible_message(SPAN_NOTICE("[user] unloads \a [nade] from \the [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] unloads \a [nade] from \the [src]."),
 	SPAN_NOTICE("You unload \a [nade] from \the [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 	playsound(user, unload_sound, 30, 1)
 
@@ -3914,7 +3914,7 @@ Defined in conflicts.dm of the #defines folder.
 		var/obj/item/weapon/gun/gun = loc
 		gun.update_attachable(slot)
 		for(var/datum/action/item_action as anything in gun.actions)
-			if(!istype(item_action, /datum/action/item_action/bipod/toggle_full_auto_switch))
+			if(!istype(item_action, /datum/action/item_action/bipod/toggle_full_auto_switch) && !istype(item_action, /datum/action/item_action/stock/vulture/stock_iff)) //BANDAMARINES EDIT
 				item_action.update_button_icon()
 
 /obj/item/attachable/bipod/proc/handle_drop(obj/item/weapon/gun/gun, mob/living/carbon/human/user)

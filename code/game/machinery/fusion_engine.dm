@@ -212,11 +212,11 @@
 	if(buildstate || require_fusion_cell && !HasFuel())
 		if(is_on)
 			to_chat(user, SPAN_NOTICE("You press [src]'s emergency shutdown button."))
-			visible_message(SPAN_NOTICE("[user] presses [src]'s emergency shutdown button."))
+			visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] presses [src]'s emergency shutdown button."))
 			start_functioning(FALSE)
 			return
 
-		visible_message(SPAN_NOTICE("[user] starts to hold [src]'s emergency start lever."))
+		visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts to hold [src]'s emergency start lever."))
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
 			to_chat(user, SPAN_NOTICE("You let go of the emergency start lever."))
 			return FALSE
@@ -244,7 +244,7 @@
 	if(overloaded)
 		xeno.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src], stopping its overload process!"),
+		xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] [xeno.slashes_verb] [src], stopping its overload process!"),
 		SPAN_DANGER("You [xeno.slash_verb] [src], stopping its overload process!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		set_overloading(FALSE)
 		return
@@ -257,7 +257,7 @@
 			break
 		xeno.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src], [is_on ? "disabling" : "damaging"] it!"))
+		xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] [xeno.slashes_verb] [src], [is_on ? "disabling" : "damaging"] it!"))
 		switch(buildstate)
 			if(BUILDSTATE_FUNCTIONAL)
 				visible_message(SPAN_DANGER("[src] starts to fall apart!"))

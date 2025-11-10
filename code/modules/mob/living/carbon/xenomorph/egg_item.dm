@@ -46,10 +46,10 @@
 /obj/item/xeno_egg/get_examine_text(mob/user)
 	. = ..()
 	if(isxeno(user))
-		. += "A queen egg, it needs to be planted on weeds to start growing."
+		. += "Королевское яйцо, которое должно быть посажено на траве для роста."
 		if(hivenumber != XENO_HIVE_NORMAL)
 			var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-			. += "This one appears to belong to the [hive.name]"
+			. += "Яйцо принадлежит [hive.name]"
 
 /obj/item/xeno_egg/afterattack(atom/target, mob/user, proximity)
 	if(istype(target, /obj/effect/alien/resin/special/eggmorph))
@@ -67,14 +67,14 @@
 /obj/item/xeno_egg/proc/plant_egg_human(mob/living/carbon/human/user, turf/T)
 	if(user.hivenumber != hivenumber)
 		if(!istype(T, /turf/open/floor/almayer/research/containment))
-			to_chat(user, SPAN_WARNING("Best not to plant this thing outside of a containment cell."))
+			to_chat(user, SPAN_WARNING("Лучше не садить [declent_ru(ACCUSATIVE)] вне камеры содержания."))
 			return
 		for (var/obj/O in T)
 			if (!istype(O, /obj/structure/machinery/light))
-				to_chat(user, SPAN_WARNING("The floor needs to be clear to plant this!"))
+				to_chat(user, SPAN_WARNING("На полу должно быть пусто, чтобы посадить [declent_ru(ACCUSATIVE)]!"))
 				return
 
-	user.visible_message(SPAN_NOTICE("[user] starts planting [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает садить [declent_ru(ACCUSATIVE)]."),
 					SPAN_NOTICE("You start planting [src]."), null, 5)
 	if(!do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
@@ -95,7 +95,7 @@
 	if(!proximity)
 		return // no message because usual behavior is not to show any
 	if(!user.hive)
-		to_chat(user, SPAN_XENOWARNING("Your hive cannot procreate."))
+		to_chat(user, SPAN_XENOWARNING("Ваш улей не может размножаться."))
 		return
 	if(!user.check_alien_construction(T, ignore_nest = TRUE))
 		return
@@ -116,15 +116,15 @@
 
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(!any_weeds && !hive_weeds) //you need at least some weeds to plant on.
-		to_chat(user, SPAN_XENOWARNING("[src] must be planted on [lowertext(hive.prefix)]weeds."))
+		to_chat(user, SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] должен быть посажен на [lowertext(hive.prefix)]-траву.")) // SS220 EDIT ADDICTION
 		return
 
 	if(!hive_weeds && needs_hive_weeds)
-		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
+		to_chat(user, SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] можно посадить только на [lowertext(hive.prefix)]-траву улья.")) // SS220 EDIT ADDICTION
 		return
 
 	if(istype(get_area(T), /area/interior))
-		to_chat(user, SPAN_XENOWARNING("[src] cannot be planted inside a vehicle."))
+		to_chat(user, SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] нельзя посадить внутри транспортного средства.")) // SS220 EDIT ADDICTION
 		return
 
 	for(var/obj/object in T.contents)
@@ -132,10 +132,10 @@
 			continue
 		var/obj/effect/alien/egg/xeno_egg = /obj/effect/alien/egg
 		if(object.layer > initial(xeno_egg.layer))
-			to_chat(user, SPAN_XENOWARNING("[src] cannot be planted below objects that would obscure it."))
+			to_chat(user, SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] нельзя посадить под объекты, которые будут его перекрывать собой.")) // SS220 EDIT ADDICTION
 			return
 
-	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), SPAN_XENONOTICE("You start planting [src]."), null, 5)
+	user.visible_message(SPAN_XENONOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает сажать [declent_ru(ACCUSATIVE)]."), SPAN_XENONOTICE("Вы начинаете сажать [declent_ru(ACCUSATIVE)]."), null, 5) // SS220 EDIT ADDICTION
 
 	var/plant_time = 35
 	if(isdrone(user))
@@ -159,7 +159,7 @@
 			else if(weed.weed_strength >= WEED_LEVEL_STANDARD)
 				newegg = new /obj/effect/alien/egg/carrier_egg(T,hivenumber, user)
 			else
-				to_chat(user, SPAN_XENOWARNING("[src] can't be planted on these weeds."))
+				to_chat(user, SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] нельзя посадить на эту траву.")) // SS220 EDIT ADDICTION
 				return
 
 			newegg.flags_embryo = flags_embryo
@@ -192,7 +192,7 @@
 		return XENO_NO_DELAY_ACTION
 	if(user.caste.can_hold_eggs == CAN_HOLD_TWO_HANDS)
 		if(user.r_hand || user.l_hand)
-			to_chat(user, SPAN_XENOWARNING("You need two hands to hold [src]."))
+			to_chat(user, SPAN_XENOWARNING("Вам нужны обе свободные лапы, чтобы держать [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 		else
 			attack_hand(user)
 		return XENO_NO_DELAY_ACTION

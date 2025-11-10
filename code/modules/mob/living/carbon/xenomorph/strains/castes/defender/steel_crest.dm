@@ -70,7 +70,7 @@
 
 	steelcrest.balloon_alert(steelcrest, "begins to tank incoming damage!")
 
-	to_chat(steelcrest, SPAN_XENONOTICE("We begin to tank incoming damage!"))
+	to_chat(steelcrest, SPAN_XENONOTICE("Мы начинаем поглощать входящий урон!"))
 
 	steelcrest.add_filter("steelcrest_enraging", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
 
@@ -91,14 +91,14 @@
 	UnregisterSignal(owner, COMSIG_XENO_TAKE_DAMAGE)
 
 	damage_accumulated = 0
-	to_chat(owner, SPAN_XENONOTICE("We stop taking incoming damage."))
+	to_chat(owner, SPAN_XENONOTICE("Мы перестаём поглощать входящий урон."))
 	owner.remove_filter("steelcrest_enraging")
 
 /datum/action/xeno_action/onclick/soak/proc/enraged()
 
 	owner.remove_filter("steelcrest_enraging")
 	owner.add_filter("steelcrest_enraged", 1, list("type" = "outline", "color" = "#ad1313", "size" = 1))
-	owner.visible_message(SPAN_XENOWARNING("[owner] gets enraged after being damaged enough!"), SPAN_XENOWARNING("We feel enraged after taking in oncoming damage! Our tail slam's cooldown is reset and we heal!"))
+	owner.visible_message(SPAN_XENOWARNING("[owner] приходит в ярость после того, как получил достаточно урона!"), SPAN_XENOWARNING("Мы чувствуем как ярость переполняет нас после того, как мы получили достаточно урона! Время восстановления нашего удара хвостом сбрасывается и мы исцеляемся!")) // SS220 EDIT ADDICTION
 
 	var/mob/living/carbon/xenomorph/enraged_mob = owner
 	enraged_mob.gain_health(75) // pretty reasonable amount of health recovered
@@ -115,4 +115,3 @@
 
 /datum/action/xeno_action/onclick/soak/proc/remove_enrage()
 	owner.remove_filter("steelcrest_enraged")
-

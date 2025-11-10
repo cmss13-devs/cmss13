@@ -175,7 +175,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		else
 			product_records += product
 
-		product.product_name = initial(temp_path.name)
+		product.product_name = capitalize(declent_ru_initial(temp_path::name, NOMINATIVE, temp_path::name)) // BANDAMARINES EDIT - Translation
 
 /obj/structure/machinery/vending/get_repair_move_text(include_name = TRUE)
 	if(!stat)
@@ -309,9 +309,9 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			switch (anchored)
 				if (0)
 					anchored = TRUE
-					user.visible_message("[user] tightens the bolts securing [src] to the floor.", "You tighten the bolts securing [src] to the floor.")
+					user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] tightens the bolts securing [src] to the floor.", "You tighten the bolts securing [src] to the floor.")
 				if (1)
-					user.visible_message("[user] unfastens the bolts securing [src] to the floor.", "You unfasten the bolts securing [src] to the floor.")
+					user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] unfastens the bolts securing [src] to the floor.", "You unfasten the bolts securing [src] to the floor.")
 					anchored = FALSE
 		return
 	else if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
@@ -426,9 +426,9 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	if(is_tipped_over)
 		if(user.action_busy)
 			return
-		user.visible_message(SPAN_NOTICE("[user] begins to heave [src] back into place!"), SPAN_NOTICE("You start heaving [src] back into place..."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to heave [src] back into place!"), SPAN_NOTICE("You start heaving [src] back into place..."))
 		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_NOTICE("[user] rights [src]!"), SPAN_NOTICE("You right [src]!"))
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] rights [src]!"), SPAN_NOTICE("You right [src]!"))
 			flip_back()
 		return
 
@@ -445,7 +445,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 /obj/structure/machinery/vending/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Vending", name)
+		ui = new(user, src, "Vending", capitalize(declent_ru(NOMINATIVE))) // BANDAMARINES EDIT - Translation
 		ui.open()
 
 /obj/structure/machinery/vending/ui_act(action, params)
@@ -563,7 +563,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			user_id = human_user.get_idcard()
 
 		if(!allowed(user))
-			speak("Access denied.")
+			speak("Доступ запрещён.")
 			flick(icon_deny, src)
 			vend_ready = TRUE
 			return
@@ -606,9 +606,9 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	record.amount--
 	playsound(src, "sound/machines/vending.ogg", 40, TRUE)
 	if(user.Adjacent(src) && user.put_in_hands(vended_item))
-		to_chat(user, SPAN_NOTICE("You take \the [record.product_name] out of the slot."))
+		to_chat(user, SPAN_NOTICE("Вы достаёте из автомата [vended_item.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 	else
-		to_chat(user, SPAN_WARNING("\The [record.product_name] falls onto the floor!"))
+		to_chat(user, SPAN_WARNING("[record.product_name] падает на пол!")) // SS220 EDIT ADDICTION
 	if(ripped_off)
 		flick(icon_deny, src)
 		addtimer(VARSET_CALLBACK(src, vend_ready, TRUE), 1 SECONDS)
@@ -886,7 +886,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 				S.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
-			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [product.product_name]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] stocks [src] with \a [product.product_name]."),
 			SPAN_NOTICE("You stock [src] with \a [product.product_name]."))
 			product.amount++
 			return //We found our item, no reason to go on.

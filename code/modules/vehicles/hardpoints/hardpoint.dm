@@ -445,7 +445,7 @@
 	//skill level adjustment: instead of reducing welding time, we increase amount fixed.
 	//Uses skill duration multiplier proc in order to not create a bicycle.
 	var/amount_fixed_adjustment = user.get_skill_duration_multiplier(SKILL_ENGINEER)
-	user.visible_message(SPAN_NOTICE("[user] starts repairing \the [name]."), SPAN_NOTICE("You start repairing \the [name]."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts repairing \the [name]."), SPAN_NOTICE("You start repairing \the [name]."))
 	playsound(get_turf(user), 'sound/items/weldingtool_weld.ogg', 25)
 	while(WT.get_fuel() > 1)
 		if(!(world.time % 3))
@@ -467,13 +467,13 @@
 		health += initial(health)/100 * (amount_fixed / amount_fixed_adjustment)
 		if(health >= initial(health))
 			health = initial(health)
-			user.visible_message(SPAN_NOTICE("[user] finishes repairing \the [name]."), SPAN_NOTICE("You finish repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(floor(get_integrity_percent()))]%."))
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes repairing \the [name]."), SPAN_NOTICE("You finish repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(floor(get_integrity_percent()))]%."))
 			being_repaired = FALSE
 			return
 		to_chat(user, SPAN_NOTICE("The integrity of \the [src] is now at [SPAN_HELPFUL(floor(get_integrity_percent()))]%."))
 
 	being_repaired = FALSE
-	user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(floor(get_integrity_percent()))]%."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]. The integrity of the module is at [SPAN_HELPFUL(floor(get_integrity_percent()))]%."))
 	return
 
 /// Setter proc for the automatic firing flag.
@@ -640,7 +640,7 @@
 /obj/item/hardpoint/proc/click_empty(mob/user)
 	playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 	if(user)
-		to_chat(user, SPAN_WARNING("<b>*click*</b>"))
+		to_chat(user, SPAN_WARNING("<b>*щелчок*</b>"))
 
 /// Selects and plays a firing sound from the list.
 /obj/item/hardpoint/proc/play_firing_sounds()

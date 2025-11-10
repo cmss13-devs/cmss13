@@ -76,7 +76,7 @@
 				return
 			M.forceMove(loc)
 			M.apply_effect(5, WEAKEN)
-			user.visible_message(SPAN_DANGER("[user] puts [M] on the table."))
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] puts [M] on the table."))
 		return
 
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
@@ -146,7 +146,7 @@
 				if(X.id == id)
 					X.score(side, 3)// 3 points for dunking a mob
 					// no break, to update multiple scoreboards
-			visible_message(SPAN_DANGER("[user] dunks [M] into [src]!"))
+			visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] dunks [M] into [src]!"))
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
 		user.drop_inv_item_to_loc(W, loc)
@@ -154,7 +154,7 @@
 			if(X.id == id)
 				X.score(side)
 				// no break, to update multiple scoreboards
-		visible_message(SPAN_NOTICE("[user] dunks [W] into [src]!"))
+		visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] dunks [W] into [src]!"))
 		return
 
 /obj/structure/holohoop/BlockedPassDirs(atom/movable/mover, target_dir)

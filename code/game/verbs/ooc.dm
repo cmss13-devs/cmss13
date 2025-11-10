@@ -169,11 +169,11 @@ CLIENT_VERB(looc, msg as text)
 			continue //they are handled after that
 
 		if(C.prefs.toggles_chat & CHAT_LOOC)
-			to_chat(C, "<font color='#f557b8'><span class='ooc linkify'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
+			to_chat(C, "<font color='#6699cc'><span class='ooc linkify'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>") // BANDAMARINES EDIT color #f557b8->#6699cc
 
 	if(mob.looc_overhead || GLOB.ooc_allowed)
 		var/transmit_language = isxeno(mob) ? LANGUAGE_XENOMORPH : LANGUAGE_ENGLISH
-		mob.langchat_speech(msg, heard, GLOB.all_languages[transmit_language], "#ff47d7")
+		mob.langchat_speech("LOOC: [msg]", heard, GLOB.all_languages[transmit_language], "#6699cc") // BANDAMARINES EDIT add LOOC: and color #f557b8->#6699cc
 
 	// Now handle admins
 	display_name = S.key
@@ -188,13 +188,13 @@ CLIENT_VERB(looc, msg as text)
 			var/prefix = "(R)LOOC"
 			if (C.mob in heard)
 				prefix = "LOOC"
-			to_chat(C, "<font color='#f557b8'><span class='ooc linkify'><span class='prefix'>[prefix]:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
+			to_chat(C, "<font color='#6699cc'><span class='ooc linkify'><span class='prefix'>[prefix]:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>") // BANDAMARINES EDIT color #f557b8->#6699cc
 
 CLIENT_VERB(round_info)
 	set name = "Current Map" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set desc = "Information about the current round"
 	set category = "OOC"
-	to_chat_spaced(usr, html = FONT_SIZE_LARGE(SPAN_NOTICE("The current map is [SSmapping.configs[GROUND_MAP].map_name]")))
+	to_chat_spaced(usr, html = FONT_SIZE_LARGE(SPAN_NOTICE("Текущая карта: [SSmapping.configs[GROUND_MAP].map_name]"))) // SS220 EDIT ADDICTION
 
 // Sometimes the game fails to close NanoUIs, seemingly at random. This makes it impossible to open new ones
 // If this happens, let the player manually close them all

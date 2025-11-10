@@ -1,4 +1,4 @@
-#define COMMAND_SHIP_ANNOUNCE "Command Ship Announcement"
+#define COMMAND_SHIP_ANNOUNCE "Оповещение командования корабля"
 
 /obj/structure/machinery/computer/almayer_control
 	name = "almayer control console"
@@ -28,7 +28,7 @@
 		return
 
 	if(!allowed(user))
-		to_chat(usr, SPAN_WARNING("Access denied."))
+		to_chat(usr, SPAN_WARNING("Доступ запрещён."))
 		return FALSE
 
 	if(!istype(loc.loc, /area/almayer/command/cic)) //Has to be in the CIC. Can also be a generic CIC area to communicate, if wanted.
@@ -210,7 +210,7 @@
 			if(!COOLDOWN_FINISHED(src, cooldown_message))
 				to_chat(user, SPAN_WARNING("Please allow at least [COOLDOWN_TIMELEFT(src, cooldown_message)/10] second\s to pass between announcements."))
 				return FALSE
-			var/input = stripped_multiline_input(user, "Please write a message to announce to the station crew.", "Priority Announcement", "")
+			var/input = stripped_multiline_input(user, "Пожалуйста, напишите сообщение для экипажа станции.", "Приоритетное оповещение", "")
 			if(!input || !COOLDOWN_FINISHED(src, cooldown_message) || !(user in dview(1, src)))
 				return FALSE
 

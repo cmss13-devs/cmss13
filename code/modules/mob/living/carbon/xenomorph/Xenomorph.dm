@@ -176,7 +176,7 @@
 
 	/// List of actions (typepaths) that a
 	/// xenomorph type is given upon spawn
-	var/base_actions
+	var/list/base_actions = list() // BANDASTATION EDIT - Bump Attacks. it's a list!
 
 	/// this is the resin mark that is currently being tracked by the xeno
 	var/obj/effect/alien/resin/marker/tracked_marker
@@ -478,6 +478,7 @@
 	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
 
 	. = ..()
+	generate_name() // BANDASTATION ADDITION
 
 					//Set leader to the new mob
 	if(old_xeno && hive && IS_XENO_LEADER(old_xeno))
@@ -633,10 +634,20 @@
 	var/name_display = ""
 	// Rare easter egg
 	if(nicknumber == 666)
-		number_decorator = "Infernal "
+		number_decorator = "Адский "
 	if(show_name_numbers)
 		name_display = show_only_numbers ? " ([nicknumber])" : " ([name_client_prefix][nicknumber][name_client_postfix])"
-	name = "[name_prefix][number_decorator][age_display][caste.display_name || caste.caste_type][name_display]"
+	name = "[name_prefix][number_decorator][age_display][declent_ru_initial(caste.display_name || caste.caste_type, NOMINATIVE, caste.display_name || caste.caste_type)][name_display]"
+	ru_names_rename(ru_names_list(
+		base = name,
+		nominative = "[name_prefix][declent_ru_initial(number_decorator, NOMINATIVE, number_decorator)][declent_ru_initial(age_display, NOMINATIVE, age_display)][declent_ru_initial(caste.display_name || caste.caste_type, NOMINATIVE, caste.display_name || caste.caste_type)][name_display]",
+		genitive = "[name_prefix][declent_ru_initial(number_decorator, GENITIVE, number_decorator)][declent_ru_initial(age_display, GENITIVE, age_display)][declent_ru_initial(caste.display_name || caste.caste_type, GENITIVE, caste.display_name || caste.caste_type)][name_display]",
+		dative = "[name_prefix][declent_ru_initial(number_decorator, DATIVE, number_decorator)][declent_ru_initial(age_display, DATIVE, age_display)][declent_ru_initial(caste.display_name || caste.caste_type, DATIVE, caste.display_name || caste.caste_type)][name_display]",
+		accusative = "[name_prefix][declent_ru_initial(number_decorator, ACCUSATIVE, number_decorator)][declent_ru_initial(age_display, ACCUSATIVE, age_display)][declent_ru_initial(caste.display_name || caste.caste_type, ACCUSATIVE, caste.display_name || caste.caste_type)][name_display]",
+		instrumental = "[name_prefix][declent_ru_initial(number_decorator, INSTRUMENTAL, number_decorator)][declent_ru_initial(age_display, INSTRUMENTAL, age_display)][declent_ru_initial(caste.display_name || caste.caste_type, INSTRUMENTAL, caste.display_name || caste.caste_type)][name_display]",
+		prepositional = "[name_prefix][declent_ru_initial(number_decorator, PREPOSITIONAL, number_decorator)][declent_ru_initial(age_display, PREPOSITIONAL, age_display)][declent_ru_initial(caste.display_name || caste.caste_type, PREPOSITIONAL, caste.display_name || caste.caste_type)][name_display]",
+		gender = "[declent_ru_initial(caste.display_name || caste.caste_type, "gender", caste.display_name || caste.caste_type)]",
+	))
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -1023,7 +1034,7 @@
 		caste.aura_strength = 0
 	if(aura_strength == 0 && current_aura)
 		current_aura = null
-		to_chat(src, SPAN_XENOWARNING("We lose our pheromones."))
+		to_chat(src, SPAN_XENOWARNING("Мы перестаём выделять феромоны."))
 
 	// Also recalculate received pheros now
 	for(var/capped_aura in received_phero_caps)

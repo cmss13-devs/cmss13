@@ -54,7 +54,7 @@
 	if (!bound_xeno)
 		return
 
-	to_chat(bound_xeno, SPAN_XENODANGER("You have shed your spikes and cannot gain any more for [shard_lock_duration/10] seconds!"))
+	to_chat(bound_xeno, SPAN_XENODANGER("Вы сбросили свои шипы и не можете отрастить новые в течение [shard_lock_duration/10] секунд!")) // SS220 EDIT ADDICTION
 
 	bound_xeno.speed_modifier -= shard_lock_speed_mod
 	bound_xeno.recalculate_speed()
@@ -68,7 +68,7 @@
 	if (!bound_xeno)
 		return
 
-	to_chat(bound_xeno, SPAN_XENODANGER("You feel your ability to gather shards return!"))
+	to_chat(bound_xeno, SPAN_XENODANGER("Вы чувствуете, что снова готовы отращивать шипы!"))
 
 	bound_xeno.speed_modifier += shard_lock_speed_mod
 	bound_xeno.recalculate_speed()
@@ -144,7 +144,7 @@
 		return
 	behavior.use_shards(shard_cost)
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] ruffles its bone-shard quills, forming a defensive shell!"), SPAN_XENODANGER("We ruffle our bone-shard quills, forming a defensive shell!"))
+	xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] образует защитную оболочку из костяных шипов!"), SPAN_XENODANGER("Мы образуем защитную оболочку из костяных шипов!")) // SS220 EDIT ADDICTION
 
 	// Add our shield
 	var/datum/xeno_shield/hedgehog_shield/shield = xeno.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_HEDGE_RAV, /datum/xeno_shield/hedgehog_shield)
@@ -185,7 +185,7 @@
 			qdel(shield)
 			break
 
-	to_chat(xeno, SPAN_XENODANGER("We feel our shard shield dissipate!"))
+	to_chat(xeno, SPAN_XENODANGER("Мы чувствуем, что щит из осколков распадается!"))
 	xeno.overlay_shields()
 	return
 
@@ -204,7 +204,7 @@
 		return
 	behavior.use_shards(shard_cost)
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires their spikes at [affected_atom]!"), SPAN_XENOWARNING("We fire our spikes at [affected_atom]!"))
+	xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] fires their spikes at [affected_atom]!"), SPAN_XENOWARNING("We fire our spikes at [affected_atom]!"))
 
 	var/turf/target = locate(affected_atom.x, affected_atom.y, affected_atom.z)
 	var/obj/projectile/projectile = new /obj/projectile(xeno.loc, create_cause_data(initial(xeno.caste_type), xeno))
@@ -247,7 +247,7 @@
 	behavior.use_shards(shard_cost)
 	behavior.lock_shards()
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] sheds their spikes, firing them in all directions!"), SPAN_XENOWARNING("We shed our spikes, firing them in all directions!!"))
+	xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] sheds their spikes, firing them in all directions!"), SPAN_XENOWARNING("We shed our spikes, firing them in all directions!!"))
 	xeno.spin_circle()
 	create_shrapnel(get_turf(xeno), shrapnel_amount, null, null, ammo_type, create_cause_data(initial(xeno.caste_type), owner), TRUE)
 	playsound(xeno, 'sound/effects/spike_spray.ogg', 25, 1)

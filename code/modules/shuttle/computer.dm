@@ -52,7 +52,7 @@
 		return
 
 	if(!isqueen(usr) && !allowed(usr))
-		to_chat(usr, SPAN_DANGER("Access denied."))
+		to_chat(usr, SPAN_DANGER("Доступ запрещён."))
 		return TRUE
 
 	if(href_list["move"])
@@ -387,7 +387,7 @@
 			return
 		to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
 		override_being_removed = TRUE
-		user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts to type on [src]."),
 			SPAN_NOTICE("You try to take back control over the lifeboat. It will take around [remaining_time / 10] seconds."))
 		while(remaining_time > 20 SECONDS)
 			if(!do_after(user, 20 SECONDS, INTERRUPT_ALL|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE, numticks = 20))
@@ -440,7 +440,7 @@
 					if ("Yes")
 						launch_initiated = TRUE
 						to_chat(user, "[src]'s screen blinks and says \"Launch command accepted\".")
-						shipwide_ai_announcement("Launch command received. [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat doors will close in 10 seconds.")
+						shipwide_ai_announcement("Команда на запуск получена. Шлюзы [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "западного" : "восточного"] спасательного пода будут закрыты через 10 секунд.")
 						addtimer(CALLBACK(lifeboat, TYPE_PROC_REF(/obj/docking_port/mobile/crashable/lifeboat, evac_launch)), 10 SECONDS)
 						lifeboat.alarm_sound_loop.start()
 						lifeboat.playing_launch_announcement_alarm = TRUE
@@ -450,7 +450,7 @@
 						launch_initiated = TRUE
 						to_chat(user, "[src]'s screen blinks and says \"Emergency Launch command accepted\".")
 						lifeboat.evac_launch()
-						shipwide_ai_announcement("Emergency Launch command received. Launching [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "Port" : "Starboard"] Lifeboat.")
+						shipwide_ai_announcement("Команда на запуск получена. Запуск [lifeboat.id == MOBILE_SHUTTLE_LIFEBOAT_PORT ? "западного" : "восточного"] спасательного пода.")
 						return
 
 			if(SHUTTLE_IGNITING)
@@ -482,7 +482,7 @@
 			lifeboat.playing_launch_announcement_alarm = FALSE
 			var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
 			lifeboat_dock.open_dock()
-			xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("Мы получили контроль над металлической птицей! У них больше нет пути к побегу!"), 3, xeno.hivenumber)
 			launch_initiated = FALSE
 			remaining_time = initial(remaining_time)
 		return XENO_NO_DELAY_ACTION

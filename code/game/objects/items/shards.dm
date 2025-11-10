@@ -123,7 +123,7 @@
 
 /obj/item/large_shrapnel/at_rocket_dud/try_to_throw(mob/living/user)
 	to_chat(user, SPAN_NOTICE("You heft \the [src] up, preparing to throw it."))
-	user.visible_message(SPAN_DANGER("[user] strains to lift up \the [src]. It looks like they're trying to throw it!"))
+	user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] strains to lift up \the [src]. It looks like they're trying to throw it!"))
 	throw_range = 5
 	throw_channel = 2 SECONDS
 	if(HAS_TRAIT(user, TRAIT_SUPER_STRONG))
@@ -179,7 +179,7 @@
 /obj/item/large_shrapnel/at_rocket_dud/proc/manual_detonate(atom/target, mob/living/user, melee = 1, direction = null)
 	detonating = 1
 	if(user && (cause == "manually triggered"))
-		user.visible_message(SPAN_DANGER("[user] [melee?"slams \the [src] into":"throws \the [src] at"] [target]!"))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] [melee?"slams \the [src] into":"throws \the [src] at"] [target]!"))
 	if((!direction) && target && user)
 		direction = get_dir(user, target)
 	cell_explosion(get_turf(target), 200, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, create_cause_data("[cause] UXO detonation", user))

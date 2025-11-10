@@ -12,7 +12,7 @@
 	src.interference = interference
 	src.max_buildup = max_buildup
 	src.dissipation = dissipation
-	to_chat(parent, SPAN_XENOHIGHDANGER("Our awareness dims to a small area!"))
+	to_chat(parent, SPAN_XENOHIGHDANGER("Наше поле обзора сужается до небольшой области!"))
 
 /datum/component/status_effect/interference/InheritComponent(datum/component/status_effect/interference/inter, i_am_original, amount, max_buildup)
 	. = ..()

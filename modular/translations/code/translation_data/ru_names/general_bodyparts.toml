@@ -1,0 +1,134 @@
+["chest"]
+nominative = "грудь"
+genitive = "груди"
+dative = "груди"
+accusative = "грудь"
+instrumental = "грудью"
+prepositional = "груди"
+gender = "female"
+
+["head"]
+nominative = "голова"
+genitive = "головы"
+dative = "голове"
+accusative = "голову"
+instrumental = "головой"
+prepositional = "голове"
+gender = "female"
+
+["right arm"]
+nominative = "правая рука"
+genitive = "правой руки"
+dative = "правой руке"
+accusative = "правую руку"
+instrumental = "правой рукой"
+prepositional = "правой руке"
+gender = "female"
+
+["right hand"]
+nominative = "правое запястье"
+genitive = "правого запястья"
+dative = "правому запястью"
+accusative = "правое запястье"
+instrumental = "правым запястьем"
+prepositional = "правом запястье"
+gender = "neuter"
+
+["left arm"]
+nominative = "левая рука"
+genitive = "левой руки"
+dative = "левой руке"
+accusative = "левую руку"
+instrumental = "левой рукой"
+prepositional = "левой руке"
+gender = "female"
+
+["left hand"]
+nominative = "левое запястье"
+genitive = "левого запястья"
+dative = "левому запястью"
+accusative = "левое запястье"
+instrumental = "левым запястьем"
+prepositional = "левом запястье"
+gender = "neuter"
+
+["left leg"]
+nominative = "левая нога"
+genitive = "левой ноги"
+dative = "левой ноге"
+accusative = "левую ногу"
+instrumental = "левой ногой"
+prepositional = "левой ноге"
+gender = "female"
+
+["left foot"]
+nominative = "левая стопа"
+genitive = "левой стопы"
+dative = "левой стопе"
+accusative = "левую стопу"
+instrumental = "левой стопой"
+prepositional = "левой стопе"
+gender = "female"
+
+["right leg"]
+nominative = "правая нога"
+genitive = "правой ноги"
+dative = "правой ноге"
+accusative = "правую ногу"
+instrumental = "правой ногой"
+prepositional = "правой ноге"
+gender = "female"
+
+["right foot"]
+nominative = "правая стопа"
+genitive = "правой стопы"
+dative = "правой стопе"
+accusative = "правую стопу"
+instrumental = "правой стопой"
+prepositional = "правой стопе"
+gender = "female"
+
+["groin"]
+nominative = "паховая область"
+genitive = "паховой области"
+dative = "паховой области"
+accusative = "паховую область"
+instrumental = "паховой областью"
+prepositional = "паховой области"
+gender = "female"
+
+["ribcage"]
+nominative = "грудная клетка"
+genitive = "грудной клетки"
+dative = "грудной клетке"
+accusative = "грудную клетку"
+instrumental = "грудной клеткой"
+prepositional = "грудной клетке"
+gender = "female"
+
+["ribs"]
+nominative = "рёбра"
+genitive = "рёбер"
+dative = "рёбрам"
+accusative = "рёбра"
+instrumental = "рёбрами"
+prepositional = "рёбрах"
+gender = "plural"
+
+["pelvis"]
+nominative = "таз"
+genitive = "таза"
+dative = "тазу"
+accusative = "таз"
+instrumental = "тазом"
+prepositional = "тазе"
+gender = "male"
+
+["skull"]
+nominative = "череп"
+genitive = "черепа"
+dative = "черепу"
+accusative = "череп"
+instrumental = "черепом"
+prepositional = "черепе"
+gender = "male"

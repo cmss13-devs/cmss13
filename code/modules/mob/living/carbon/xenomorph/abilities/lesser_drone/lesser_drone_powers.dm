@@ -7,7 +7,7 @@
 			mother_node = node_to_check
 			break
 	if(!mother_node)
-		to_chat(xeno, SPAN_XENOWARNING("We can only plant weed nodes near other weed nodes our hive owns!"))
+		to_chat(xeno, SPAN_XENOWARNING("Мы можем сажать узлы травы рядом с другими!"))
 		return
 
 	. = ..()

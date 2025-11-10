@@ -25,7 +25,7 @@
 			var/obj/item/clothing/mask/cigarette/cig = W
 			if(cig.type_butt)
 				if(cig.heat_source)
-					user.visible_message("[user] crushes \the [cig] in \the [src], putting it out.", "You crush \the [cig] in \the [src], putting it out.")
+					user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] crushes \the [cig] in \the [src], putting it out.", "You crush \the [cig] in \the [src], putting it out.")
 					var/obj/item/butt = cig.go_out(user, TRUE)
 					butt.forceMove(src)
 					drop = FALSE
@@ -35,13 +35,13 @@
 				drop = FALSE
 				var/obj/item/clothing/mask/cigarette/pipe/P = W
 				if(P.ash)
-					user.visible_message("[user] empties the ash out of \the [P] into \the [src].", "You empty the ash out of \the [P] into \the [src].")
+					user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] empties the ash out of \the [P] into \the [src].", "You empty the ash out of \the [P] into \the [src].")
 					P.ash = FALSE
 				else
 					to_chat(user, "There is no ash in \the [P].")
 
 		if(drop)
-			user.visible_message("[user] places \the [W] into \the [src].", "You place \the [W] into \the [src].")
+			user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] places \the [W] into \the [src].", "You place \the [W] into \the [src].")
 			user.drop_inv_item_to_loc(W, src)
 		user.update_inv_l_hand(0)
 		user.update_inv_r_hand()

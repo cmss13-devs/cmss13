@@ -66,8 +66,8 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 							qdel(new_xeno)
 							break
 
-						new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
-						SPAN_XENODANGER("You burrow out of the ground after feeling an immense tremor through the hive, which quickly fades into complete silence..."))
+						new_xeno.visible_message(SPAN_XENODANGER("Из земли внезапно появляется грудолом!"),
+						SPAN_XENODANGER("Вырываясь из-под земли, вы чувствуете быстро затихающую дрожь улья. Через некоторое время вы остаётесь в полной тишине..."))
 
 						GLOB.hive_datum[hivenumber].stored_larva--
 						GLOB.hive_datum[hivenumber].hive_ui.update_burrowed_larva()
@@ -76,7 +76,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 			if(hive && hive.living_xeno_queen == src)
 				notify_ghosts(header = "Queen Death", message = "The Queen has been slain!", source = src, action = NOTIFY_ORBIT)
-				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"), 3, hivenumber)
+				xeno_message(SPAN_XENOANNOUNCE("Внезапная дрожь пробегает по улью... Королева была убита! МЫ ДОЛЖНЫ ОТОМСТИТЬ!"), 3, hivenumber)
 				if(!hive.hive_flags_locked)
 					hive.hive_flags = initial(hive.hive_flags)
 				hive.set_living_xeno_queen(null)
@@ -105,7 +105,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 	if(hive && IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)
 		if(hive.living_xeno_queen)
-			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
+			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("Лидер пал!")) //alert queens so they can choose another leader
 
 	hud_update() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
 	SSminimaps.remove_marker(src)
@@ -134,13 +134,13 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 				var/mob/living/carbon/xenomorph/xeno = LAZYACCESS(hive.totalXenos, 1)
 				GLOB.last_ares_callout = world.time
 				// Tell the marines where the last one is.
-				var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-				var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(xeno)]."
+				var/name = "[MAIN_AI_SYSTEM]: Статус биосканирования"
+				var/input = "Биосканирование завершено.\n\nСенсоры отмечают одну оставшуюся неизвестную сигнатуру формы жизни в [get_area(xeno)]."
 				log_ares_bioscan(name, input)
 				marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
 				// Tell the xeno she is the last one, heal her and make her fight to the death
 				if(xeno.client)
-					to_chat(xeno, SPAN_XENOANNOUNCE("Your carapace rattles with RAGE. You are all that remains of the hive! Go out fighting, kill them all!"))
+					to_chat(xeno, SPAN_XENOANNOUNCE("Ваш панцирь дрожит от ЯРОСТИ. Вы - всё, что осталось от улья! Сражайтесь до конца, убейте их всех!"))
 					xeno.rejuvenate()
 					if(!isqueen(xeno))
 						xeno.can_heal = FALSE

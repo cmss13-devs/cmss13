@@ -428,7 +428,7 @@
 	else
 		fuel.forceMove(get_turf(user))
 		fuel = new_fuel
-	visible_message("[user] swaps out the fuel tank in [src].","You swap out the fuel tank in [src] and drop the old one.")
+	visible_message("[capitalize(user.declent_ru(NOMINATIVE))] swaps out the fuel tank in [src].","You swap out the fuel tank in [src] and drop the old one.")
 	to_chat(user, "The newly inserted [new_fuel.caliber] contains: [floor(new_fuel.get_ammo_percent())]% fuel.")
 	user.temp_drop_inv_item(new_fuel)
 	new_fuel.moveToNullspace() //necessary to not confuse the storage system

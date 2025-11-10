@@ -37,7 +37,7 @@
 	if(stored_shield < max_shield)
 		return
 	X.add_xeno_shield(max_shield, XENO_SHIELD_SOURCE_GENERIC)
-	X.visible_message(SPAN_XENOWARNING("[X] roars as it mauls its target, its exoskeleton shimmering for a second!"), SPAN_XENOHIGHDANGER("You feel your rage increase your resiliency to damage!"))
+	X.visible_message(SPAN_XENOWARNING("[X] истошно ревёт, калеча свою цель, а его панцирь начинает мерцать!"), SPAN_XENOHIGHDANGER("Вы чувствуете, что ваша устойчивость к урону была повышена!")) // SS220 EDIT ADDICTION
 	X.xeno_jitter(1 SECONDS)
 	X.flick_heal_overlay(2 SECONDS, "#FFA800")
 	X.emote("roar")

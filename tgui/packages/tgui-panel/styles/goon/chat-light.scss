@@ -461,6 +461,11 @@ h2.alert {
 
 .boldwarning {
   color: hsl(0, 100%, 50%);
+  font-weight: bold;
+}
+
+.bolditalicwarning {
+  color: hsl(0, 100%, 50%);
   font-style: italic;
   font-weight: bold;
 }
@@ -491,6 +496,11 @@ h2.alert {
 
 .info {
   color: hsl(240, 100%, 40%);
+}
+
+.infobold {
+  color: hsl(240, 100%, 40%);
+  font-weight: bold;
 }
 
 .notice {
@@ -1627,4 +1637,9 @@ h2.alert {
     width: 165px !important;
     height: 60px !important;
   }
+}
+
+// BANDAMARINES ADDITION START
+.looc {
+  color: #6699cc;
 }

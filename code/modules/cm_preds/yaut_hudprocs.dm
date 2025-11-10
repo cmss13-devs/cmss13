@@ -96,7 +96,7 @@
 	if(!M)
 		return
 	if(M.hunter_data.hunter)
-		to_chat(src, SPAN_YAUTJABOLD("[M] is already being hunted by [M.hunter_data.hunter.real_name]!"))
+		to_chat(src, SPAN_YAUTJABOLD("[capitalize(M.declent_ru(NOMINATIVE))] is already being hunted by [M.hunter_data.hunter.real_name]!"))
 		return
 	hunter_data.prey = M
 	M.hunter_data.hunter = src

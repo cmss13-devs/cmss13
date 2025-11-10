@@ -45,7 +45,7 @@
 			SS.update_appearance() //updates the name
 
 	to_chat(user, SPAN_INFO("Variety #[seed.uid] renamed to \"[new_name]\""))
-	msg_admin_niche("[user] renamed seed variety #[seed.uid] to \"[new_name]\"")
+	msg_admin_niche("[capitalize(user.declent_ru(NOMINATIVE))] renamed seed variety #[seed.uid] to \"[new_name]\"")
 
 
 //Grabs the appropriate seed datum from the global list.

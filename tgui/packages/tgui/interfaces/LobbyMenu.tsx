@@ -103,7 +103,7 @@ export const LobbyMenu = () => {
           />
         }
         p={3}
-        title={'Confirm'}
+        title={'Системное сообщение'}
       >
         <Box>
           <Stack vertical>
@@ -117,7 +117,7 @@ export const LobbyMenu = () => {
           </Stack>
           <Stack justify="center">
             <Stack.Item>
-              <Button onClick={() => act('confirm')}>Confirm</Button>
+              <Button onClick={() => act('confirm')}>Принять</Button>
             </Stack.Item>
           </Stack>
         </Box>
@@ -180,7 +180,7 @@ export const LobbyMenu = () => {
                   <Box className="styledText">
                     <Section
                       p={5}
-                      title="Lobby Settings"
+                      title="Настройки"
                       buttons={
                         <Button icon="xmark" onClick={() => setModal(false)} />
                       }
@@ -198,9 +198,9 @@ export const LobbyMenu = () => {
                               setFilterDisabled(!filterDisabled);
                               setModal(false);
                             }}
-                            tooltip="Removes the CRT filter background"
+                            tooltip="Переключатель состояния эффекта ЭЛТ-монитора у фона"
                           >
-                            {`${filterDisabled ? 'Enable' : 'Disable'} Cinema Mode`}
+                            {`${filterDisabled ? 'Включить' : 'Отключить'} эффект ЭЛТ-монитора`}
                           </Button>
                         </Stack.Item>
                         <Stack.Item>
@@ -214,9 +214,9 @@ export const LobbyMenu = () => {
                               setThemeDisabled(!themeDisabled);
                               setModal(false);
                             }}
-                            tooltip="Totally removes the CRT theme, including the filter"
+                            tooltip="Переключатель состояния главной темы лобби"
                           >
-                            {`${themeDisabled ? 'Enable' : 'Disable'} CRT Theme`}
+                            {`${themeDisabled ? 'Включить' : 'Отключить'} тему ЭЛТ-монитора`}
                           </Button>
                         </Stack.Item>
                       </Stack>
@@ -252,7 +252,7 @@ export const LobbyMenu = () => {
           >
             <Stack vertical justify="flex-end" fill>
               {preference_issues.map((issue, index) => (
-                <Section key={index} className="sectionLoad">
+                <Section key={index} className="messageSectionLoad">
                   <Box>{issue}</Box>
                 </Section>
               ))}
@@ -275,7 +275,7 @@ const ModalConfirm = (props: PropsWithChildren) => {
     <Section
       buttons={<Button mb={5} onClick={() => setModal!(false)} icon={'x'} />}
       p={3}
-      title={'Confirm'}
+      title={'Системное сообщение'}
     >
       {children}
     </Section>
@@ -317,7 +317,7 @@ const LobbyButtons = (props: {
       }}
     >
       <Stack vertical>
-        <Stack.Item>
+        <Stack.Item className="sectionLoadStack">
           <Stack>
             <Stack.Item>
               <Stack vertical justify="space-around" height="100%">
@@ -342,7 +342,7 @@ const LobbyButtons = (props: {
                 <Stack.Item>
                   <Stack justify="center">
                     <Stack.Item>
-                      <Box className="typeEffect styledText">Welcome,</Box>
+                      <Box className="typeEffect styledText">Здравствуйте,</Box>
                     </Stack.Item>
                   </Stack>
                 </Stack.Item>
@@ -387,27 +387,27 @@ const LobbyButtons = (props: {
           disabled={!tutorials_ready}
           tooltip={
             !tutorials_ready
-              ? 'Tutorials can only be started after the game is running.'
+              ? 'Обучение можно запустить только после старта раунда.'
               : ''
           }
           icon="book-open"
         >
-          Tutorial
+          Обучение
         </LobbyButton>
         <LobbyButton
           index={2}
           onClick={() => act('preferences')}
           icon="file-lines"
         >
-          Setup Character
+          Настройка персонажа
         </LobbyButton>
 
         <LobbyButton index={3} icon="check-to-slot" onClick={() => act('poll')}>
-          Polls
+          Голосование
         </LobbyButton>
 
         <LobbyButton index={4} onClick={() => act('playtimes')} icon="list-ul">
-          View Playtimes
+          Игровая активность
         </LobbyButton>
 
         <TimedDivider />
@@ -420,18 +420,21 @@ const LobbyButtons = (props: {
               <ModalConfirm>
                 <Box>
                   <Stack vertical>
-                    <Stack.Item>Are you sure you wish to observe?</Stack.Item>
                     <Stack.Item>
-                      When you observe, you will not be able to join as marine.
+                      Вы уверены, что хотите стать наблюдателем?
                     </Stack.Item>
                     <Stack.Item>
-                      It might also take some time to become a xeno or
-                      responder!
+                      Наблюдатели не могут присоединиться к раунду в качестве
+                      морпеха.
+                    </Stack.Item>
+                    <Stack.Item>
+                      А для ксено и факс-администратора потребуется некоторое
+                      время в очереди!
                     </Stack.Item>
                   </Stack>
                   <Stack justify="center">
                     <Stack.Item>
-                      <Button onClick={() => act('observe')}>Confirm</Button>
+                      <Button onClick={() => act('observe')}>Принять</Button>
                     </Stack.Item>
                   </Stack>
                 </Box>
@@ -439,7 +442,7 @@ const LobbyButtons = (props: {
             );
           }}
         >
-          Observe
+          Наблюдать
         </LobbyButton>
 
         {round_start ? (
@@ -453,7 +456,7 @@ const LobbyButtons = (props: {
                 xenomorph_enabled ? 'Ready with Xenomorph enabled' : undefined
               }
             >
-              {readied ? 'Unready' : 'Ready'}
+              {readied ? 'Не готов/а' : 'Готов/а'}
             </LobbyButton>
           </Stack.Item>
         ) : (
@@ -466,13 +469,13 @@ const LobbyButtons = (props: {
                     onClick={() => act('late_join')}
                     icon="users"
                   >
-                    Join the USCM
+                    Присоединиться за ККМП
                   </LobbyButton>
                 </Stack.Item>
                 <Stack.Item>
                   <LobbyButton
                     icon="list"
-                    tooltip="View Crew Manifest"
+                    tooltip="Просмотр списка экипажа"
                     index={6 + SMALL_BUTTON_DELAY}
                     onClick={() => act('manifest')}
                   />
@@ -487,13 +490,13 @@ const LobbyButtons = (props: {
                     icon="viruses"
                     onClick={() => act('late_join_xeno')}
                   >
-                    Join the Hive
+                    Присоединиться за Улей
                   </LobbyButton>
                 </Stack.Item>
                 <Stack.Item>
                   <LobbyButton
                     icon="users-rays"
-                    tooltip="View Hive Leaders"
+                    tooltip="Просмотр списка лидеров улья"
                     index={7 + SMALL_BUTTON_DELAY}
                     onClick={() => act('hiveleaders')}
                   />
@@ -507,7 +510,7 @@ const LobbyButtons = (props: {
                   onClick={() => act('late_join_upp')}
                   icon="users-between-lines"
                 >
-                  Join the UPP
+                  Присоединиться за СПН
                 </LobbyButton>
               </Stack.Item>
             )}
@@ -521,14 +524,14 @@ const LobbyButtons = (props: {
                         <Box>
                           <Stack vertical>
                             <Stack.Item>
-                              Are you sure want to attempt joining as a
-                              Predator?
+                              Вы уверены, что хотите присоединиться к раунду в
+                              качестве Хищника?
                             </Stack.Item>
                           </Stack>
                           <Stack justify="center">
                             <Stack.Item>
                               <Button onClick={() => act('late_join_pred')}>
-                                Confirm
+                                Принять
                               </Button>
                             </Stack.Item>
                           </Stack>
@@ -541,7 +544,7 @@ const LobbyButtons = (props: {
                     <Flex.Item>
                       <Box className="pred" inline />
                     </Flex.Item>
-                    <Flex.Item>Join the Hunt</Flex.Item>
+                    <Flex.Item>Присоединиться за Хищника</Flex.Item>
                   </Flex>
                 </LobbyButton>
               </Stack.Item>
@@ -557,14 +560,14 @@ const LobbyButtons = (props: {
                         <Box>
                           <Stack vertical>
                             <Stack.Item>
-                              Are you sure want to attempt joining as a Fax
-                              Responder?
+                              Вы уверены, что хотите присоединиться к раунду в
+                              качестве факс-администратора?
                             </Stack.Item>
                           </Stack>
                           <Stack justify="center">
                             <Stack.Item>
                               <Button onClick={() => act('late_join_faxes')}>
-                                Confirm
+                                Принять
                               </Button>
                             </Stack.Item>
                           </Stack>
@@ -573,7 +576,7 @@ const LobbyButtons = (props: {
                     );
                   }}
                 >
-                  Respond to Faxes
+                  Отвечать на факсы
                 </LobbyButton>
               </Stack.Item>
             )}
@@ -634,6 +637,7 @@ const LobbyButton = (props: LobbyButtonProps) => {
         animationDelay: context.animationsDisable
           ? '0s'
           : `${1.5 + index * 0.2}s`,
+        zIndex: '15',
       }}
     >
       <Button fluid className={'distinctButton ' + className} {...rest}>

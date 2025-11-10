@@ -111,7 +111,7 @@
 	hive.hive_structure_types[XENO_STRUCTURE_NEST] = /datum/construction_template/xenomorph/nest
 	hive.hive_structures_limit[XENO_STRUCTURE_NEST]++
 
-	xeno_message(SPAN_XENOANNOUNCE("The hive senses that a headhunter has been infected! The thick resin nest is now available in the special structures list!"),hivenumber = hive.hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("Улей чувствует, что охотник за головами был заражён! Густое смоляное гнездо теперь доступно в списке специальных построек!"),hivenumber = hive.hivenumber)
 
 /datum/species/yautja/handle_death(mob/living/carbon/human/H, gibbed)
 	if(gibbed)

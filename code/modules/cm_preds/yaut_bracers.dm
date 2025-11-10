@@ -773,7 +773,7 @@
 
 		log_game("[key_name_admin(user)] has enabled their cloaking device.")
 		if(!silent)
-			M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
+			M.visible_message(SPAN_WARNING("[capitalize(M.declent_ru(NOMINATIVE))] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
 			var/sound_to_use
 			if(invisibility_sound == PRED_TECH_MODERN)
 				sound_to_use = 'sound/effects/pred_cloakon_modern.ogg'
@@ -829,7 +829,7 @@
 
 	REMOVE_TRAIT(user, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 	log_game("[key_name_admin(user)] has disabled their cloaking device.")
-	user.visible_message(SPAN_WARNING("[user] shimmers into existence!"), SPAN_WARNING("Your cloaking device deactivates."))
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] shimmers into existence!"), SPAN_WARNING("Your cloaking device deactivates."))
 	var/sound_to_use
 	if(invisibility_sound == PRED_TECH_MODERN)
 		sound_to_use = 'sound/effects/pred_cloakoff_modern.ogg'
@@ -1338,6 +1338,22 @@
 		message = replacetext(message, "o", "0")
 		message = replacetext(message, "s", "5")
 		message = replacetext(message, "l", "1")
+		// BANDAMARINES ADD - START
+		message = replacetext(message, "а", "@")
+		message = replacetext(message, "е", "3")
+		message = replacetext(message, "ч", "4")
+		message = replacetext(message, "о", "0")
+		message = replacetext(message, "з", "3")
+		message = replacetext(message, "г", "r")
+		message = replacetext(message, "ь", "b")
+		message = replacetext(message, "в", "8")
+		message = replacetext(message, "и", "u")
+		message = replacetext(message, "к", "k")
+		message = replacetext(message, "ш", "w")
+		message = replacetext(message, "м", "m")
+		message = replacetext(message, "п", "n")
+		message = replacetext(message, "ы", "Ьl")
+		// BANDAMARINES ADD - END
 
 	user.langchat_speech(message, heard, GLOB.all_languages, overhead_color, TRUE)
 
@@ -1442,7 +1458,7 @@
 
 	if(user.get_active_hand() == held_mob && victim && victim.gloves == bracer)
 		log_interact(user, victim, "[key_name(user)] unlocked the [bracer.name] of [key_name(victim)].")
-		user.visible_message(SPAN_WARNING("[user] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You unlock the bracer."))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You unlock the bracer."))
 		bracer.toggle_lock_internal(victim)
 		return TRUE
 

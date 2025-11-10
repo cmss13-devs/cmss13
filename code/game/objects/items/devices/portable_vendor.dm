@@ -61,7 +61,7 @@
 		return
 
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return
 
 	var/obj/item/card/id/idcard = human_user.get_idcard()
@@ -150,7 +150,7 @@
 	user.set_interaction(src)
 
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return
 
 	var/mob/living/carbon/human/human_user = user

@@ -6,8 +6,8 @@
 	name = "Weyland Whiteout Operators (!DEATHSQUAD!)"
 	mob_max = 8
 	mob_min = 5
-	arrival_message = "'!`2*%slau#*jer t*h$em a!l%. le&*ve n(o^ w&*nes%6es.*v$e %#d ou^'"
-	objectives = "Whiteout protocol is in effect for the target. Ensure there are no traces of the infestation or any witnesses."
+	arrival_message = "'!`2*%уб#*ить и*х$## вс!ех%. ни&*как(их^ с&ви*де%те##й.'"
+	objectives = "Для объекта введён протокол \"Белое пятно\". Убедитесь, что нет ни следов заражения, ни свидетелей."
 	probability = 0
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	home_base = /datum/lazy_template/ert/weyland_station
@@ -48,7 +48,7 @@
 		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout, TRUE, TRUE)
 
-	to_chat(person, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM")))
+	to_chat(person, SPAN_WARNING(FONT_SIZE_HUGE("Вы [hostility? "ВРАЖДЕБНЫ":"ДРУЖЕЛЮБНЫ"] к ККМП!")))
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), person, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
@@ -85,7 +85,7 @@
 		to_chat(person, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
 		arm_equipment(person, /datum/equipment_preset/pmc/w_y_whiteout/low_threat, TRUE, TRUE)
 
-	to_chat(person, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM")))
+	to_chat(person, SPAN_WARNING(FONT_SIZE_HUGE("Вы [hostility? "ВРАЖДЕБНЫ":"ДРУЖЕЛЮБНЫ"] к ККМП!")))
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), person, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
@@ -116,14 +116,14 @@
 
 	if(!leader && HAS_FLAG(member.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(member.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = member
-		to_chat(member, SPAN_WARNING(FONT_SIZE_BIG("You are a Marine Raider Team Leader, better than all the rest.")))
+		to_chat(member, SPAN_WARNING(FONT_SIZE_BIG("Вы комотряда-рейдер, лучший, чем все остальные.")))
 		arm_equipment(member, leader_preset, TRUE, TRUE)
 	else if(smartgunners < max_smartgunners && HAS_FLAG(member.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(member.client, JOB_SQUAD_SMARTGUN))
 		smartgunners++
 		to_chat(member, SPAN_ROLE_HEADER("You are a Marine Raider Smartgunner!"))
 		arm_equipment(member, sg_preset, TRUE, TRUE)
 	else
-		to_chat(member, SPAN_WARNING(FONT_SIZE_BIG("You are an elite Marine Raider Operative, the best of the best.")))
+		to_chat(member, SPAN_WARNING(FONT_SIZE_BIG("Вы комгруппы-рейдер, лучший из лучших.")))
 		arm_equipment(member, member_preset, TRUE, TRUE)
 	to_chat(member, SPAN_BOLDNOTICE("You are absolutely loyal to High Command and must follow their directives."))
 	to_chat(member, SPAN_BOLDNOTICE("Execute the mission assigned to you with extreme prejudice!"))

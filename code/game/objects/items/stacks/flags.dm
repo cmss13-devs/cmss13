@@ -103,14 +103,14 @@
 	if(user.action_busy)
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] starts taking [src] down..."), SPAN_NOTICE("You start taking [src] down..."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts taking [src] down..."), SPAN_NOTICE("You start taking [src] down..."))
 
 	playsound(loc, 'sound/effects/flag_raising.ogg', 30)
 	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC) || QDELETED(src))
 		return
 
 	playsound(loc, 'sound/effects/flag_raised.ogg', 30)
-	user.visible_message(SPAN_NOTICE("[user] starts takes [src] down!"), SPAN_NOTICE("You take [src] down!"))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts takes [src] down!"), SPAN_NOTICE("You take [src] down!"))
 	var/obj/item/flag/plantable/flag_item = new flag_type(loc)
 	user.put_in_hands(flag_item)
 	COOLDOWN_START(flag_item, warcry_cooldown_item, COOLDOWN_TIMELEFT(src, warcry_cooldown_struc))
@@ -142,7 +142,7 @@
 			return
 		xeno.animation_attack_on(src)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
-		xeno.visible_message(SPAN_DANGER("[xeno] slashes [src]!"), SPAN_DANGER("We slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] [ru_attack_verb("slashes")] [declent_ru(ACCUSATIVE)]!"), SPAN_DANGER("Вы [ru_attack_verb("slash")] [declent_ru(ACCUSATIVE)]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		update_health(rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
 		return XENO_ATTACK_ACTION
 	else
@@ -170,7 +170,7 @@
 
 /obj/structure/flag/plantable/attackby(obj/item/weapon, mob/living/user)
 	if(!explo_proof)
-		visible_message(SPAN_DANGER("[src] has been hit by [user] with [weapon]!"), null, 5, CHAT_TYPE_MELEE_HIT)
+		visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] ударяет [declent_ru(ACCUSATIVE)] [weapon.declent_ru(INSTRUMENTAL)]!"), null, 5, CHAT_TYPE_MELEE_HIT) // SS220 EDIT ADDICTION
 		user.animation_attack_on(src)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 		update_health(weapon.force * weapon.demolition_mod)
@@ -237,12 +237,12 @@
 			to_chat(usr, SPAN_WARNING("You need a clear, open area to plant [src], something is blocking the way in front of you!"))
 			return
 
-	user.visible_message(SPAN_NOTICE("[user] starts planting [src] into the ground..."), SPAN_NOTICE("You start planting [src] into the ground..."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts planting [src] into the ground..."), SPAN_NOTICE("You start planting [src] into the ground..."))
 	playsound(user, 'sound/effects/flag_raising.ogg', 30)
 	if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] plants [src] into the ground!"), SPAN_NOTICE("You plant [src] into the ground!"))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] plants [src] into the ground!"), SPAN_NOTICE("You plant [src] into the ground!"))
 	var/obj/structure/flag/plantable/planted_flag = new flag_type(turf_to_plant)
 
 	// If there are more than 14 allies nearby, play a stronger rallying cry.

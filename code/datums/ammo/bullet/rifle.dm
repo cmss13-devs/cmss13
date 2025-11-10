@@ -179,7 +179,7 @@
 /datum/ammo/bullet/rifle/m4ra/impact/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
-		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
+		to_chat(target, SPAN_XENODANGER("Вы были потрясены и замедлены внезапным ударом!"))
 		target.KnockDown(0.5-fired_projectile.distance_travelled/100) // purely for visual effect, noone actually cares
 		target.Stun(0.5-fired_projectile.distance_travelled/100)
 		target.apply_effect(2-fired_projectile.distance_travelled/20, SUPERSLOW)

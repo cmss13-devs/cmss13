@@ -3,7 +3,7 @@
 #define TASER_MODE_P "precision"
 #define TASER_MODE_F "free"
 
-#define MOU_ACTION_COOLDOWN 1.1 SECONDS
+#define MOU_ACTION_COOLDOWN 0.5 SECONDS    // SS220 EDIT
 
 // Common
 #define AMMO_BAND_COLOR_AP "#1F951F"

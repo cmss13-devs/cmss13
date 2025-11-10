@@ -263,7 +263,7 @@ DEFINES in setup.dm, referenced here.
 	if(istype(attack_item, /obj/item/prop/helmetgarb/gunoil))
 		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
 		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
+			user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
 			src.clean_blood()
 		else
 			return
@@ -387,14 +387,14 @@ DEFINES in setup.dm, referenced here.
 	if(!can_attach_to_gun(user, attachment))
 		return FALSE
 
-	user.visible_message(SPAN_NOTICE("[user] begins attaching [attachment] to [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins attaching [attachment] to [src]."),
 	SPAN_NOTICE("You begin attaching [attachment] to [src]."), null, 4)
 	var/attach_delay = 1.5 SECONDS
 	if(istype(attachment, /obj/item/attachable/bayonet))
 		attach_delay = 0.3 SECONDS
 	if(do_after(user, attach_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 2))
 		if(attachment && attachment.loc)
-			user.visible_message(SPAN_NOTICE("[user] attaches [attachment] to [src]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] attaches [attachment] to [src]."),
 			SPAN_NOTICE("You attach [attachment] to [src]."), null, 4)
 			user.temp_drop_inv_item(attachment)
 			attachment.Attach(src, user)
@@ -608,7 +608,7 @@ DEFINES in setup.dm, referenced here.
 						return
 
 		if(!equip_to_appropriate_slot(active_hand, 0))
-			to_chat(src, SPAN_DANGER("You are unable to equip that."))
+			to_chat(src, SPAN_DANGER("Вы не можете надеть это."))
 	else //empty hand, start checking slots and holsters
 
 		//default order: suit, belt, back, pockets, uniform, shoes, wear_mask

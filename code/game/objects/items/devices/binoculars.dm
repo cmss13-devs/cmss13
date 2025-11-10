@@ -114,7 +114,7 @@
 
 /obj/item/device/binoculars/range/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE(FONT_SIZE_LARGE("The rangefinder reads: LONGITUDE [last_x], LATITUDE [last_y], HEIGHT [last_z]."))
+	. += SPAN_NOTICE(FONT_SIZE_LARGE("Показатели дальномера: ДОЛГОТА [last_x], ШИРОТА [last_y], ВЫСОТА [last_z]")) // SS220 EDIT ADDICTION
 
 /obj/item/device/binoculars/range/verb/toggle_rangefinder_popup()
 	set name = "Toggle Rangefinder Display"
@@ -216,7 +216,7 @@
 	if(rangefinder_popup)
 		tgui_interact(user)
 	else
-		to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [last_x]. LATITUDE [last_y].")))
+		to_chat(user, SPAN_NOTICE(FONT_SIZE_LARGE("УПРОЩЁННЫЕ КООРДИНАТЫ ЦЕЛИ. ДОЛГОТА [last_x]. ШИРОТА [last_y]"))) // SS220 EDIT ADDICTION
 
 /obj/item/device/binoculars/range/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

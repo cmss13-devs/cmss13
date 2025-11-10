@@ -17,7 +17,7 @@
 			return
 		xeno.animation_attack_on(src)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
-		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
+		xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] slices [src] apart!"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		deconstruct(FALSE)
 		return XENO_ATTACK_ACTION
@@ -56,7 +56,7 @@
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY, src))
-			user.visible_message("[user] deconstructs [src].",
+			user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] deconstructs [src].",
 				"You deconstruct [src].", "You hear a noise.")
 			deconstruct(FALSE)
 	else

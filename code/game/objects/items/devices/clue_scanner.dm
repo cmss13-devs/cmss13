@@ -34,7 +34,7 @@
 
 	scanning = TRUE
 	update_icon()
-	user.visible_message(SPAN_NOTICE("[user] starts scanning the surroundings for prints..."), SPAN_NOTICE("You scan the surroundings for prints..."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts scanning the surroundings for prints..."), SPAN_NOTICE("You scan the surroundings for prints..."))
 	if(!do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		scanning = FALSE
 		update_icon()

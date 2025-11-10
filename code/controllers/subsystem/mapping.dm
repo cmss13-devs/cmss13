@@ -200,7 +200,7 @@ SUBSYSTEM_DEF(mapping)
 	// =============== END CM Change =================
 
 	if(!silent)
-		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
+		INIT_ANNOUNCE("Загрузка карты «[name]» заняла [round((REALTIMEOFDAY - start_time)/10, 0.01)] секунд") // SS220 EDIT ADDICTION
 	return parsed_maps
 
 /datum/controller/subsystem/mapping/proc/Loadship(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, override_map_path = "maps/")
@@ -220,7 +220,7 @@ SUBSYSTEM_DEF(mapping)
 	ground_start = world.maxz + 1
 
 	var/datum/map_config/ground_map = configs[GROUND_MAP]
-	INIT_ANNOUNCE("Loading [ground_map.map_name]...")
+	INIT_ANNOUNCE("Загрузка карты «[ground_map.map_name]»...") // SS220 EDIT ADDICTION
 	var/ground_base_path = "maps/"
 	if(ground_map.override_map)
 		ground_base_path = "data/"
@@ -231,7 +231,7 @@ SUBSYSTEM_DEF(mapping)
 		var/ship_base_path = "maps/"
 		if(ship_map.override_map)
 			ship_base_path = "data/"
-		INIT_ANNOUNCE("Loading [ship_map.map_name]...")
+		INIT_ANNOUNCE("Загрузка карты «[ship_map.map_name]»...") // SS220 EDIT ADDICTION
 		Loadship(FailedZs, ship_map.map_name, ship_map.map_path, ship_map.map_file, ship_map.traits, ZTRAITS_MAIN_SHIP, override_map_path = ship_base_path)
 
 	// loads the UPP ship if the game mode is faction clash (Generally run by the Prepare event under prep event verb)

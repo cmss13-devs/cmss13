@@ -140,7 +140,7 @@
 	/// color of the blood on us if there's any.
 	var/blood_color = ""
 	/// taken from blood.dm
-	appearance_flags = KEEP_TOGETHER
+	// appearance_flags = KEEP_TOGETHER // SS220 REMOVE
 	/// lets us know if the item is an objective or not
 	var/is_objective = FALSE
 
@@ -305,18 +305,18 @@
 	var/size
 	switch(w_class)
 		if(SIZE_TINY)
-			size = "tiny"
+			size = "крохотного размера" // SS220 EDIT ADDICTION
 		if(SIZE_SMALL)
-			size = "small"
+			size = "маленького размера" // SS220 EDIT ADDICTION
 		if(SIZE_MEDIUM)
-			size = "normal-sized"
+			size = "обычного размера" // SS220 EDIT ADDICTION
 		if(SIZE_LARGE)
-			size = "bulky"
+			size = "громоздкого размера" // SS220 EDIT ADDICTION
 		if(SIZE_HUGE)
-			size = "huge"
+			size = "огромного размера" // SS220 EDIT ADDICTION
 		if(SIZE_MASSIVE)
-			size = "massive"
-	. += "[p_are() == "are" ? "These are " : "This is a "][blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. [p_they(TRUE)] [p_are()] a [size] item."
+			size = "гигантского размера" // SS220 EDIT ADDICTION
+	. += "Это [blood_color ? blood_color == COLOR_OIL ? "замасленн[genderize_ru(gender, "ый", "ая", "ое", "ые")] " : "окровавленн[genderize_ru(gender, "ый", "ая", "ое", "ые")] " : ""][icon2html(src, user)][declent_ru(NOMINATIVE)]. Это предмет [size]." // SS220 EDIT ADDICTION
 	if(desc)
 		. += desc
 	if(desc_lore)
@@ -868,9 +868,9 @@
 
 /obj/item/proc/showoff(mob/user)
 	var/list/viewers = get_mobs_in_view(GLOB.world_view_size, user)
-	user.langchat_speech("holds up [src].", viewers, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+	user.langchat_speech("держит в руках [declent_ru(ACCUSATIVE)]", viewers, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote")) // SS220 EDIT ADDICTION
 	for (var/mob/M in viewers)
-		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>", SHOW_MESSAGE_VISIBLE)
+		M.show_message(SPAN_INFO("[capitalize(user.declent_ru(NOMINATIVE))] держит в руках [declent_ru(ACCUSATIVE)]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Посмотреть.</a>"), SHOW_MESSAGE_VISIBLE) // SS220 EDIT ADDICTION
 
 /mob/living/carbon/verb/showoff()
 	set name = "Show Held Item"
@@ -908,7 +908,7 @@
 	if(user.interactee == src)
 		user.unset_interaction()
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] looks up from [zoom_device]."),
 	SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
@@ -975,7 +975,7 @@
 
 	SEND_SIGNAL(src, COMSIG_ITEM_ZOOM, user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	user.visible_message(SPAN_NOTICE("[user] peers through [zoom_device]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] peers through [zoom_device]."),
 	SPAN_NOTICE("You peer through [zoom_device]."))
 	zoom = !zoom
 

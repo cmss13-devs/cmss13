@@ -205,7 +205,7 @@
 			return
 
 		if(push_in_timer)
-			visible_message(SPAN_NOTICE("[user] starts putting [to_put_in] into \the [src]."), null, null, 3)
+			visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts putting [to_put_in] into \the [src]."), null, null, 3)
 			if(!do_after(usr, push_in_timer, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 				return
 			if(src.occupant)

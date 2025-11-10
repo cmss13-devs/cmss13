@@ -45,7 +45,7 @@
 	/// Used for different descriptions and other fluff text.
 	var/fluff_tool = "paddles"
 	var/fluff_target_part = "chest"
-	var/fluff_revive_message = "Defibrillation successful"
+	var/fluff_revive_message = "Дефибрилляция прошла успешно" // SS220 EDIT ADDICTION
 
 	/// Sound sets for different defibs.
 	var/sound_charge = 'sound/items/defib_charge.ogg'
@@ -104,9 +104,9 @@
 	maxuses = floor(dcell.maxcharge / charge_cost)
 	currentuses = floor(dcell.charge / charge_cost)
 	if(maxuses != 1)
-		. += SPAN_INFO("It has [currentuses] out of [maxuses] uses left in its internal battery.")
+		. += SPAN_INFO("Батареи устройства хватит ещё на [currentuses] использований из [maxuses].") // SS220 EDIT ADDICTION
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/defib_past_armor) || !blocked_by_suit  && !istype(src, /obj/item/device/defibrillator/synthetic))
-		. += SPAN_NOTICE("This defibrillator will ignore worn armor.")
+		. += SPAN_NOTICE("Этот дефибриллятор игнорирует броню.")
 
 /obj/item/device/defibrillator/attack_self(mob/living/carbon/human/user)
 	..()
@@ -118,13 +118,15 @@
 	if(user.skills && !noskill)
 		if(!skillcheck(user, skill_to_check, skill_level))
 			if(!skill_to_check_alt || (!skillcheck(user, skill_to_check_alt, skill_level_alt)))
-				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+				to_chat(user, SPAN_WARNING("Вы не знаете, как использовать [declent_ru(ACCUSATIVE)]..."))
 				return
 
 	defib_cooldown = world.time + 10 //1 second cooldown every time the defib is toggled
 	ready = !ready
-	user.visible_message(SPAN_NOTICE("[user] turns [src] [ready? "on and takes the [fluff_tool] out" : "off and puts the [fluff_tool] back in"]."),
-	SPAN_NOTICE("You turn [src] [ready? "on and take the [fluff_tool] out" : "off and put the [fluff_tool] back in"]."))
+	var/ru_name_fluff_tool = declent_ru_initial(fluff_tool, ACCUSATIVE, fluff_tool) // SS220 EDIT ADDICTION
+	var/ru_name = declent_ru(GENITIVE) // SS220 EDIT ADDICTION
+	user.visible_message(SPAN_NOTICE("[ready? "[capitalize(user.declent_ru(NOMINATIVE))] включает [ru_name] и вынимает [ru_name_fluff_tool]" : "[capitalize(user.declent_ru(NOMINATIVE))] выключает [ru_name] и вставляет [ru_name_fluff_tool]"]."), // SS220 EDIT ADDICTION
+	SPAN_NOTICE("[ready? "Вы включаете [ru_name] и вынимаете [ru_name_fluff_tool]" : "Вы выключаете [ru_name] и вставляете [ru_name_fluff_tool]"].")) // SS220 EDIT ADDICTION
 	if(should_spark)
 		playsound(get_turf(src), "sparks", 15, 1, 0)
 	if(ready)
@@ -157,33 +159,35 @@
 	return TRUE
 
 /obj/item/device/defibrillator/proc/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
+	var/ru_name_fluff_tool = declent_ru_initial(fluff_tool, ACCUSATIVE, fluff_tool) // SS220 EDIT ADDICTION
+	var/ru_name = capitalize(declent_ru(NOMINATIVE)) // SS220 EDIT ADDICTION
 	if(!ishuman(H) || isyautja(H))
-		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the [fluff_tool]!"))
+		to_chat(user, SPAN_WARNING("Вы не можете провести дефибрилляцию [H.declent_ru(GENITIVE)], потому что непонятно куда приложить [ru_name_fluff_tool]!")) // SS220 EDIT ADDICTION
 		return
 	if(issynth(H))
-		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You need a synthetic reset key for reboot!"))
+		to_chat(user, SPAN_WARNING("Вы не можете провести дефибрилляцию [H.declent_ru(GENITIVE)], потому что для синтетиков необходим ключ перезапуска!")) // SS220 EDIT ADDICTION
 		return
 	if(!ready)
-		balloon_alert(user, "take out the [fluff_tool]")
-		to_chat(user, SPAN_WARNING("Take [src]'s [fluff_tool] out first."))
+		balloon_alert(user, "выньте [ru_name_fluff_tool]") // SS220 EDIT ADDICTION
+		to_chat(user, SPAN_WARNING("Сначала выньте [ru_name_fluff_tool] из [declent_ru(GENITIVE)]")) // SS220 EDIT ADDICTION
 		return
 	if(dcell.charge < charge_cost)
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src]'s battery is too low! It needs to recharge."))
+		user.visible_message(SPAN_WARNING("[ru_name] издаёт звуковой сигнал: «Батарея разряжена! Необходима подзарядка...»")) // SS220 EDIT ADDICTION
 		return
 	if(H.stat != DEAD)
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Vital signs detected. Aborting."))
+		user.visible_message(SPAN_WARNING("[ru_name] издаёт звуковой сигнал: «Жизненные показатели в норме. Отмена...»")) // SS220 EDIT ADDICTION
 		return
 
 	if(!H.is_revivable())
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's general condition does not allow reviving."))
+		user.visible_message(SPAN_WARNING("[ru_name] издаёт звуковой сигнал: «Состояние пациента не позволяет провести реанимацию...»")) // SS220 EDIT ADDICTION
 		return
 
 	if((!MODE_HAS_MODIFIER(/datum/gamemode_modifier/defib_past_armor) && blocked_by_suit) && H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interfering."))
+		user.visible_message(SPAN_WARNING("[ru_name] издаёт звуковой сигнал: «Электроды регистрируют сопротивление более 100 кОм, возможно причина в костюме или броне пациента...»")) // SS220 EDIT ADDICTION
 		return
 
 	if(!H.check_tod())
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient is braindead."))
+		user.visible_message(SPAN_WARNING("[ru_name] издаёт звуковой сигнал: «У пациента наступила смерть мозга...»")) // SS220 EDIT ADDICTION
 		return
 
 	return TRUE
@@ -198,10 +202,12 @@
 		return FALSE
 
 	//job knowledge requirement
+	var/ru_name_fluff_tool = declent_ru_initial(fluff_tool, ACCUSATIVE, fluff_tool) // SS220 EDIT ADDICTION
+	var/ru_name = declent_ru(ACCUSATIVE) // SS220 EDIT ADDICTION
 	if(user.skills && !noskill)
 		if(!skillcheck(user, skill_to_check, skill_level))
 			if(!skill_to_check_alt || (!skillcheck(user, skill_to_check_alt, skill_level_alt)))
-				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+				to_chat(user, SPAN_WARNING("Вы не знаете как использовать [ru_name]..."))
 				return
 
 	if(!check_revive(target, user))
@@ -210,11 +216,10 @@
 	var/mob/dead/observer/G = target.get_ghost()
 	if(istype(G) && G.client)
 		playsound_client(G.client, 'sound/effects/adminhelp_new.ogg')
-		to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Someone is trying to revive your body. Return to it if you want to be resurrected! \
-			(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[G];reentercorpse=1'>click here!</a>)")))
+		to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Кто-то пытается оживить ваше тело. Вернитесь в него, если хотите возродиться!<br>(Откройте вкладку «Ghost» и выберите «Re-enter corpse» или <a href='byond://?src=\ref[G];reentercorpse=1'>нажмите здесь!</a>)"))) // SS220 EDIT ADDICTION
 
-	user.visible_message(SPAN_NOTICE("[user] starts setting up the [fluff_tool] on [target]'s [fluff_target_part]"),
-		SPAN_HELPFUL("You start <b>setting up</b> the [fluff_tool] on <b>[target]</b>'s [fluff_target_part]."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает устанавливать [ru_name_fluff_tool] [fluff_target_part == "chest" ? "на груди" : "в порт перезапуска"] <b>[target.declent_ru(GENITIVE)]</b>."), // SS220 EDIT ADDICTION
+		SPAN_HELPFUL("Вы начинаете устанавливать [ru_name_fluff_tool] на [fluff_target_part == "chest" ? "на груди" : "в порт перезапуска"] <b>[target.declent_ru(GENITIVE)]</b>.")) // SS220 EDIT ADDICTION
 	if(user.get_skill_duration_multiplier(SKILL_MEDICAL) == 0.35)
 		playsound(get_turf(src), sound_charge_skill4, 25, 0)
 	else if(user.get_skill_duration_multiplier(SKILL_MEDICAL) == 0.75)
@@ -224,8 +229,8 @@
 
 	//Taking square root not to make defibs too fast...
 	if(!do_after(user, (4 + (3 * user.get_skill_duration_multiplier(SKILL_MEDICAL))) SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-		user.visible_message(SPAN_WARNING("[user] stops setting up the [fluff_tool] on [target]'s [fluff_target_part]."),
-		SPAN_WARNING("You stop setting up the [fluff_tool] on [target]'s [fluff_target_part]."))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] убирает [ru_name_fluff_tool] [fluff_target_part == "chest" ? "с груди" : "из порта перезапуска"] <b>[target.declent_ru(GENITIVE)]</b>."), // SS220 EDIT ADDICTION
+		SPAN_WARNING("Вы убираете [ru_name_fluff_tool] [fluff_target_part == "chest" ? "с груди" : "из порта перезапуска"] <b>[target.declent_ru(GENITIVE)]</b>.")) // SS220 EDIT ADDICTION
 		return FALSE
 
 	if(!check_revive(target, user))
@@ -241,10 +246,12 @@
 	sparks.start()
 	dcell.use(charge_cost)
 	update_icon()
+	var/ru_name_fluff_tool = declent_ru_initial(fluff_tool, ACCUSATIVE, fluff_tool) // SS220 EDIT ADDICTION
+	var/ru_name = capitalize(declent_ru(NOMINATIVE)) // SS220 EDIT ADDICTION
 	playsound(get_turf(src), sound_release, 25, 1)
-	user.visible_message(SPAN_NOTICE("[user] shocks [target] with the [fluff_tool]."),
-		SPAN_HELPFUL("You shock <b>[target]</b> with the [fluff_tool]."))
-	target.visible_message(SPAN_DANGER("[target]'s body convulses a bit."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] активирует [ru_name_fluff_tool] на <b>[target.declent_ru(PREPOSITIONAL)]</b>."), // SS220 EDIT ADDICTION
+		SPAN_HELPFUL("Вы активируете [ru_name_fluff_tool] на <b>[target.declent_ru(PREPOSITIONAL)]</b>.")) // SS220 EDIT ADDICTION
+	target.visible_message(SPAN_DANGER("Тело [target.declent_ru(GENITIVE)] слегка дёргается."))
 	shock_cooldown = world.time + 10 //1 second cooldown before you can shock again
 
 	var/datum/internal_organ/heart/heart = target.internal_organs_by_name["heart"]
@@ -252,15 +259,15 @@
 	if(!target.is_revivable())
 		playsound(get_turf(src), sound_failed, 25, 0)
 		if(heart && heart.organ_status >= ORGAN_BROKEN)
-			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised."))
+			user.visible_message(SPAN_WARNING("[ru_name] издаёт звуковой сигнал: «Процедура провалилась. Сердце пациента слишком повреждено. Рекомендуется провести срочную операцию...»"))
 			msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(target)] with [src] because of heart damage.")
 			return
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving."))
+		user.visible_message(SPAN_WARNING("[ru_name] издаёт звуковой сигнал: «Процедура провалилась. Состояние пациента не позволяет восстановить сердечный ритм...»"))
 		msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(target)] with [src].")
 		return
 
 	if(!target.client && !(target.status_flags & FAKESOUL)) //Freak case, no client at all. This is a braindead mob (like a colonist)
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: No soul detected, Attempting to revive..."))
+		user.visible_message(SPAN_WARNING("[ru_name] издаёт звуковой сигнал: «Душа не обнаружена, попытка возрождения...»"))
 
 	if(isobserver(target.mind?.current) && !target.client) //Let's call up the correct ghost! Also, bodies with clients only, thank you.
 		target.mind.transfer_to(target, TRUE)
@@ -282,7 +289,7 @@
 				target.reagents.remove_reagent(R.id, 1)
 				break
 	if(target.health > HEALTH_THRESHOLD_DEAD)
-		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: [fluff_revive_message]."))
+		user.visible_message(SPAN_NOTICE("[ru_name] издаёт звуковой сигнал: «[fluff_revive_message]»..."))
 		msg_admin_niche("[key_name_admin(user)] successfully revived [key_name_admin(target)] with [src].")
 		playsound(get_turf(src), sound_success, 25, 0)
 		user.track_life_saved(user.job)
@@ -292,11 +299,11 @@
 		if(heart)
 			heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences
 
-		to_chat(target, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
+		to_chat(target, SPAN_NOTICE("Внезапно вы чувствуете удар, вы в сознании и возвращаетесь в мир живых."))
 		if(target.client?.prefs.toggles_flashing & FLASH_CORPSEREVIVE)
 			window_flash(target.client)
 	else
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.")) //Freak case
+		user.visible_message(SPAN_WARNING("[ru_name] издаёт звуковой сигнал: «Процедура провалилась. Жизненные показатели ещё слишком слабы, устраните повреждения и попробуйте ещё раз...»")) //Freak case
 		msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(target)] with [src] because of weak vitals.")
 		playsound(get_turf(src), sound_failed, 25, 0)
 		if(heart && prob(25))
@@ -362,7 +369,7 @@
 
 	fluff_tool = "electrodes"
 	fluff_target_part = "insertion port"
-	fluff_revive_message = "Reset complete"
+	fluff_revive_message = "Перезапуск прошёл успешно" // SS220 EDIT ADDICTION
 
 	sound_charge = 'sound/mecha/powerup.ogg'
 	sound_charge_skill4 = 'sound/mecha/powerup.ogg'
@@ -395,24 +402,24 @@
 
 /obj/item/device/defibrillator/synthetic/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!issynth(H))
-		to_chat(user, SPAN_WARNING("You can't use a [src] on a living being!"))
+		to_chat(user, SPAN_WARNING("Вы не можете использовать [declent_ru(ACCUSATIVE)] на живом существе!"))
 		return FALSE
 	if(!ready)
 		balloon_alert(user, "activate it first!")
-		to_chat(user, SPAN_WARNING("You need to activate [src] first."))
+		to_chat(user, SPAN_WARNING("Сначала вам нужно активировать [declent_ru(ACCUSATIVE)]."))
 		return FALSE
 	if(synthetic_type_locked && !istype(H.assigned_equipment_preset, synthetic_type_locked))
-		to_chat(user, SPAN_WARNING("You can't use [src] on this type of synthetic!"))
+		to_chat(user, SPAN_WARNING("Вы не можете использовать [declent_ru(ACCUSATIVE)] на этом типе синтетика!"))
 		return FALSE
 	if(dcell.charge < charge_cost)
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] has already been used! It needs to be recharged."))
+		user.visible_message(SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] издаёт звуковой сигнал: «Устройство разряжено! Необходимо подзарядка...»"))
 		return FALSE
 	if(H.stat != DEAD)
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Function signs detected. Aborting."))
+		user.visible_message(SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] издаёт звуковой сигнал: «Жизненные показатели в норме. Отмена...»"))
 		return FALSE
 
 	if(!H.is_revivable())
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Unit's general condition does not allow reactivation."))
+		user.visible_message(SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] издаёт звуковой сигнал: «Процедура провалилась. Состояние устройства не позволяет восстановить его функционирование...»"))
 		return FALSE
 
 	return TRUE

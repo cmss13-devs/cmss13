@@ -489,7 +489,7 @@
 
 	//Topical damage (neurotoxin on exposed skin)
 	if(xeno_creature)
-		to_chat(xeno_creature, SPAN_XENODANGER("You are struggling to move, it's as if you're paralyzed!"))
+		to_chat(xeno_creature, SPAN_XENODANGER("Вы изо всех сил пытаетесь двинуться, но вы парализованы!"))
 	else
 		to_chat(creature, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
 	if(prob(60 + floor(amount*15))) //Highly likely to drop items due to arms/hands seizing up

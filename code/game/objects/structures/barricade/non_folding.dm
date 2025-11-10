@@ -80,7 +80,7 @@
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] removes [src]'s protection panel."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] removes [src]'s protection panel."),
 				SPAN_NOTICE("You remove [src]'s protection panels, exposing the anchor bolts."))
 				build_state = BARRICADE_BSTATE_UNSECURED
 				return
@@ -181,7 +181,7 @@
 					return
 				if(!do_after(user, 5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] strips off [src]'s upgrade."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] strips off [src]'s upgrade."),
 					SPAN_NOTICE("You strip off [src]'s upgrade, making it a normal cade."))
 				upgraded = null
 				explosive_multiplier = initial(explosive_multiplier)
@@ -203,7 +203,7 @@
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] set [src]'s protection panel back."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] set [src]'s protection panel back."),
 				SPAN_NOTICE("You set [src]'s protection panel back."))
 				build_state = BARRICADE_BSTATE_SECURED
 				return
@@ -217,7 +217,7 @@
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] loosens [src]'s anchor bolts."),
 				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
 				anchored = FALSE
 				build_state = BARRICADE_BSTATE_MOVABLE
@@ -249,7 +249,7 @@
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] secures [src]'s anchor bolts."),
 				SPAN_NOTICE("You secure [src]'s anchor bolts."))
 				build_state = BARRICADE_BSTATE_UNSECURED
 				anchored = TRUE
@@ -262,11 +262,11 @@
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
 					return
-				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts unseating [src]'s panels."),
 				SPAN_NOTICE("You start unseating [src]'s panels."))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
-					user.visible_message(SPAN_NOTICE("[user] takes [src]'s panels apart."),
+					user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] takes [src]'s panels apart."),
 					SPAN_NOTICE("You take [src]'s panels apart."))
 					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 					deconstruct(TRUE) //Note : Handles deconstruction too !

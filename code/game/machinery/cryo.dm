@@ -172,7 +172,7 @@
 		msg_admin_niche("[key_name(user)] put \a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) [ADMIN_JMP(src.loc)].", 1)
 
 		if(user.drop_inv_item_to_loc(W, src))
-			user.visible_message("[user] adds \a [W] to [src]!", "You add \a [W] to [src]!")
+			user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] adds \a [W] to [src]!", "You add \a [W] to [src]!")
 	else if(istype(W, /obj/item/grab))
 		if(isxeno(user))
 			return
@@ -287,10 +287,10 @@
 	if(auto_eject) //Turn off and announce if auto-ejected because patient is recovered or dead.
 		on = FALSE
 		if(release_notice) //If auto-release notices are on as it should be, let the doctors know what's up
-			var/reason = "Reason for release: Patient recovery."
+			var/reason = "Причина: Выздоровление пациента."
 			if(dead)
-				reason = "Reason for release: Patient death."
-			ai_silent_announcement("Patient [occupant] has been automatically released from [src] at: [sanitize_area((get_area(occupant))?.name)]. [reason]", ":m")
+				reason = "Причина: Смерть пациента."
+			ai_silent_announcement("Пациент [occupant.declent_ru(NOMINATIVE)] был[genderize_ru(occupant.gender, "", "а", "о", "ы")] автоматически выписан из [declent_ru(GENITIVE)] в: [sanitize_area((get_area(occupant))?.name)]. [reason]", ":m")
 	occupant = null
 	update_use_power(USE_POWER_IDLE)
 	update_icon()

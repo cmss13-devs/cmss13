@@ -175,7 +175,7 @@
 	//If it's emagged, crowbar can pry electronics out.
 	if (operating == -1 && HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-		user.visible_message("[user] removes the electronics from the windoor.", "You start to remove electronics from the windoor.")
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] removes the electronics from the windoor.", "You start to remove electronics from the windoor.")
 		if (do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			to_chat(user, SPAN_NOTICE(" You removed the windoor electronics!"))
 

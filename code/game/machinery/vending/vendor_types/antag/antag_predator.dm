@@ -162,7 +162,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
 	if(!allowed(user))
 		if(display)
-			to_chat(user, SPAN_WARNING("Access denied."))
+			to_chat(user, SPAN_WARNING("Доступ запрещён."))
 			vend_fail()
 		return FALSE
 
@@ -216,7 +216,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 /obj/structure/machinery/cm_vending/clothing/yautja/young_blood/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
 	if(!allowed(user))
 		if(display)
-			to_chat(user, SPAN_WARNING("Access denied."))
+			to_chat(user, SPAN_WARNING("Доступ запрещён."))
 			vend_fail()
 		return FALSE
 
@@ -256,11 +256,11 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	if(!hacked || ignore_hack)
 		if(!allowed(user))
 			if(display)
-				to_chat(user, SPAN_WARNING("Access denied."))
+				to_chat(user, SPAN_WARNING("Доступ запрещён."))
 				vend_fail()
 			return FALSE
 	if(!isthrall(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		vend_fail()
 	return FALSE
 
@@ -293,11 +293,11 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	if(!hacked || ignore_hack)
 		if(!allowed(user))
 			if(display)
-				to_chat(user, SPAN_WARNING("Access denied."))
+				to_chat(user, SPAN_WARNING("Доступ запрещён."))
 				vend_fail()
 			return FALSE
 	if(isyautja(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		vend_fail()
 	return FALSE
 

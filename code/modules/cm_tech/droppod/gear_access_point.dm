@@ -21,7 +21,7 @@
 		return
 
 	if(!ishuman(user) || !get_access_permission(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return
 
 	var/list/list_of_techs = list()

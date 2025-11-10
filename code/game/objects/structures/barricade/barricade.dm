@@ -247,7 +247,7 @@
 	if(istype(item, /obj/item/stack/barbed_wire))
 		var/obj/item/stack/barbed_wire/barbed_wire = item
 		if(can_wire)
-			user.visible_message(SPAN_NOTICE("[user] starts setting up [item.name] on [src]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts setting up [item.name] on [src]."),
 			SPAN_NOTICE("You start setting up [item.name] on [src]."))
 			if(do_after(user, 20, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) && can_wire)
 				// Make sure there's still enough wire in the stack
@@ -255,7 +255,7 @@
 					return
 
 				playsound(src.loc, 'sound/effects/barbed_wire_movement.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] sets up [item.name] on [src]."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] sets up [item.name] on [src]."),
 				SPAN_NOTICE("You set up [item.name] on [src]."))
 
 				maxhealth += 50
@@ -270,14 +270,14 @@
 
 	if(HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
 		if(is_wired)
-			user.visible_message(SPAN_NOTICE("[user] begin removing the barbed wire on [src]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begin removing the barbed wire on [src]."),
 			SPAN_NOTICE("You begin removing the barbed wire on [src]."))
 			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				if(!is_wired)
 					return
 
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] removes the barbed wire on [src]."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] removes the barbed wire on [src]."),
 				SPAN_NOTICE("You remove the barbed wire on [src]."))
 				maxhealth -= 50
 				update_health(50)
@@ -419,7 +419,7 @@
 	if(!(welder.remove_fuel(2, user)))
 		return FALSE
 
-	user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins repairing damage to [src]."),
 	SPAN_NOTICE("You begin repairing the damage to [src]."))
 	playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
 
@@ -427,7 +427,7 @@
 	if(!do_after(user, welding_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 		return FALSE
 
-	user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] repairs some damage on [src]."),
 	SPAN_NOTICE("You repair [src]."))
 	user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
 	update_health(-200)

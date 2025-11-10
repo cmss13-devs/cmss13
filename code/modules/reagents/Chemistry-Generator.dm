@@ -165,9 +165,9 @@
 		modifier = 6
 	var/list/numprefix = list("Mono","Di","Tri","Tetra","Penta","Hexa")*/
 	//PLEASE KEEP THE LISTS BELOW ALPHABETICALLY SORTED FOR CONVENIENCE (wordroot is sorted by start and end vowels)
-	var/list/prefix = list("Alph","At","Aw","Az","Bar","Bet","Bren","Bor","Cak","Cal","Cath","Cet","Con","Dal","De","Dean","Delt","Dox","Em","Ep","Ethr","Far","Feth","Fohs","Het","Hydr","Hyper","Ian","In","Iot","Jam","Kan","Kap","Kil","Kl","Kol","Lar","Lin","Loz","Meg","Meth","Mn","Mnem","Mit","Mor","Mut","Nath","Neth","Nov","Nux","Pas","Pax","Per","Ph","Phr","Quaz","Rath","Ret","Rol","Sal","Sig","Stim","Super","Tau","Te","Th","Thet","Throx","Ul","Up","Ven","Vic","Xen","Xeon","Xit","Xir","Zar","Zet","Zol")
-	var/list/wordroot = list("a","adia","agha","ama","amma","anthra","ara","ata","ade","alde","ale","ange","arpe","anthe","aze","azide","adefi","ami","ari","assi","athi","avi","azi","ado","alope","arpo","alto","aquo","agu","alnu","aphnu","axu","adhy","any","aphy","awy","e","ea","ega","enna","epina","era","erma","etha","eva","exa","edre","etre","epe","ephe","exe","efi","emni","esli","eno","elto","eto","evo","elnu","epu","ethu","equ","edry","ely","ety","evy","i","ia","ie","iqua","ipha","ista","ira","itra","iphe","imne","ine","isse","ihi","ini","itri","izi","ico","iglo","iho","ino","isto","immu","inu","ixu","izu","idy","immy","ithy","ity","isty","o","oga","olna","omna","ora","oxa","oghe","one","ore","oste","ove","oi","ogi","oni","orphi","owni","oxi","ocho","ommo","osto","odru","oru","owu","oxu","odry","omny","oxy","u","ua","uga","unga","uppa","ura","ugre","une","use","uve","udri","uli","unni","utri","uthri","uo","uclo","uno","uto","uu","uphu","umnu","uru","udry","uly","upy","urvy","y","ya","ydra","yla","ytha","yna","yxa","ye","ylfe","ymne","ylre","yse","ytre","yani","yphi","ypi","yvi","yo","ylo","ypho","yro","ydro","ynu","ysto","ytro","yxu","yru","ydy")
-	var/list/suffix = list("cin","cene","cin","cine","cone","din","dine","dol","done","drate","drine","fen","fene","fic","gar","gen","l","lem","lin","line","lis","mel","mide","mite","mol","n","ne","nt","phrine","r","rene","rine","ry","ride","rium","rus","sene","sine","sone","sp","stol","tane","tant","tene","tine","thol","tic","um","vene","vone","x","xene","xin","xine","zene","zine","zone")
+	var/list/prefix = list("Альф","Ат","Оу","Аз","Бар","Бет","Брен","Бор","Как","Кал","Каф","Кет","Кон","Дал","Де","Дин","Делт","Докс","Эм","Эп","Этр","Фар","Фет","Фос","Хет","Гидр","Гипер","Иан","Ин","Йот","Джем","Кан","Кап","Кил","Кл","Кол","Лар","Лин","Лоз","Мег","Мет","Мн","Мнем","Мит","Мор","Мут","Нат","Нет","Нов","Нукс","Пас","Пакс","Пер","Ф","Фр","Кваз","Рат","Рет","Рол","Сал","Сиг","Стим","Супер","Тау","Те","Т","Тет","Трокс","Ул","Ап","Вен","Вик","Ксен","Ксеон","Ксит","Ксир","Зар","Зет","Зол") // SS220 ADDITION
+	var/list/wordroot = list("а","адия","ага","ама","амма","антра","ара","ата","аде","альде","але","анже","арпе","анте","азе","азид","адефи","ами","ари","асси","ати","ави","ази","адо","алопе","арпо","альто","акуо","агу","алну","афну","аксу","адхи","ани","афи","ави","эви","е","иа","эга","энна","эпина","эра","эрма","эта","эва","экса","эдре","этре","эпе","эфе","эксе","эфи","эмни","если","эно","эльто","это","эво","эльну","эпу","эту","эку","эдри","эли","эти","эви","и","иа","ие","иква","ифа","иста","ира","итра","ифе","имне","ине","иссе","ихи","ини","итри","изи","ико","игло","ихо","ино","исто","имму","ину","иксу","изу","иди","имми","ити","исти","о","ога","олна","омна","ора","окса","оге","оне","оре","осте","ове","ои","оги","они","орфи","оуни","окси","очо","оммо","осто","одру","ору","ову","оксу","одри","омни","окси","у","уа","уга","унга","уппа","ура","угре","уне","усе","уве","удри","ули","унни","утри","утхри","уо","укло","уно","уто","уу","уфу","умну","уру","удри","ули","упи","урви","ы","я","идра","ила","ита","ина","икса","е","ильфе","имне","ильре","исе","итре","яни","ифе","ипи","иви","йо","йло","йфо","йро","идро","ину","исто","итро","иксу","йру","иды") // SS220 ADDITION
+	var/list/suffix = list("цин","цен","цон","кон","ден","дин","дон","дол","драт","дрин","фен","фин","фик","гар","ген","л","лем","лин","лон","лис","мел","мид","мит","мол","н","нт","фрин","р","рен","рин","ри","райд","риум","рус","сен","син","сон","сп","стол","тан","тант","тен","тин","тол","тик","ум","вен","вон","кс","ксен","ксин","ксон","зен","зин","зон") // SS220 ADDITION
 	var/gen_name = ""
 	//Assemble name
 	while(!gen_name)
@@ -400,11 +400,11 @@
 /datum/reagent/proc/generate_description()
 	var/info
 	for(var/datum/chem_property/P in properties)
-		info += "<BR><B>[capitalize(P.name)] Level [P.level]</B> - [P.description]<BR>"
+		info += "<BR><B>[capitalize(P.name)] (Уровень [P.level])</B> - [P.description]<BR>" // SS220 EDIT ADDICTION
 		if(P == PROPERTY_HYPERTHERMIC)
-			info += "<I>WARNING: Mixing too much at a time can cause spontanous ignition! Beware mixing more than the OD threshold!</I>"
+			info += "<I>ПРЕДУПРЕЖДЕНИЕ: Смешивание слишком большого количества за раз может привести к возгоранию! Остерегайтесь смешивать больше, чем порог передозировки!</I>" // SS220 EDIT ADDICTION
 		else if(P == PROPERTY_EXPLOSIVE)
-			info += "<I>WARNING: Mixing too much at a time can cause spontanous explosion! Do not mix more than the OD threshold!</I>"
+			info += "<I>ПРЕДУПРЕЖДЕНИЕ: Смешивание слишком большого количества за раз может привести к взрыву! Остерегайтесь смешивать больше, чем порог передозировки!</I>" // SS220 EDIT ADDICTION
 	description = info
 
 /datum/reagent/proc/generate_assoc_recipe(list/complexity, list/required_reagents_to_add)
@@ -435,4 +435,3 @@
 			return FALSE
 		GLOB.generated_properties["neutral"] += P
 	return TRUE
-

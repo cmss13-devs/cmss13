@@ -9,8 +9,8 @@
 
 /obj/item/cpr_dummy/get_examine_text(mob/user)
 	. = ..()
-	. += "Successful CPRs: [SPAN_GREEN(successful_cprs)]."
-	. += "Failed CPRs: [SPAN_RED(failed_cprs)]."
+	. += SPAN_GREEN("Успешные СЛР: [successful_cprs].") // SS220 EDIT ADDICTION
+	. += SPAN_RED("Проваленные СЛР: [failed_cprs].") // SS220 EDIT ADDICTION
 
 /obj/item/cpr_dummy/update_icon()
 	if(anchored)
@@ -21,7 +21,7 @@
 
 /obj/item/cpr_dummy/attack_self(mob/user)
 	. = ..()
-	user.visible_message(SPAN_NOTICE("[user] sets up \the [src] for use!"), SPAN_NOTICE("You set up \the [src] for use."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] устанавливает [declent_ru(ACCUSATIVE)]!"), SPAN_NOTICE("Вы устанавливаете [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 	user.drop_inv_item_on_ground(src)
 	anchored = TRUE
 	update_icon()
@@ -53,19 +53,21 @@
 	if(H.action_busy)
 		return FALSE
 	if(H.a_intent != INTENT_HELP)
-		to_chat(H, SPAN_WARNING("You need to be on help intent to do CPR!"))
+		to_chat(H, SPAN_WARNING("Вам нужно быть в ЗЕЛЁНОМ интенте, чтобы начать СЛР!"))
 		return
 	if((H.head && (H.head.flags_inventory & COVERMOUTH)) || (H.wear_mask && (H.wear_mask.flags_inventory & COVERMOUTH) && !(H.wear_mask.flags_inventory & ALLOWCPR)))
-		to_chat(H, SPAN_BOLDNOTICE("Remove your mask!"))
+		to_chat(H, SPAN_BOLDNOTICE("Снимите свою маску!"))
 		return FALSE
-	H.visible_message(SPAN_NOTICE("<b>[H]</b> starts performing <b>CPR</b> on <b>[src]</b>."), SPAN_HELPFUL("You start <b>performing CPR</b> on <b>[src]</b>."))
+	var/is_male = H.gender == MALE ? "" : "а" // SS220 EDUT ADDICTION
+	var/ru_name = declent_ru(PREPOSITIONAL)
+	H.visible_message(SPAN_NOTICE("<b>[H]</b> начал[is_male] проводить <b>СЛР</b> на <b>[ru_name]</b>."), SPAN_HELPFUL("Вы начали проводить <b>СЛР</b> на <b>[ru_name]</b>.")) // SS220 EDIT ADDICTION
 	if(!do_after(H, HUMAN_STRIP_DELAY * H.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 		return
 	if(cpr_cooldown < world.time)
-		H.visible_message(SPAN_NOTICE("<b>[H]</b> performs <b>CPR</b> on <b>[src]</b>."), SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>."))
+		H.visible_message(SPAN_NOTICE("<b>[H]</b> выполнил[is_male] проведение <b>СЛР</b> на <b>[ru_name]</b>."), SPAN_HELPFUL("Вы выполнили проведение <b>СЛР</b> на <b>[ru_name]</b>.")) // SS220 EDIT ADDICTION
 		successful_cprs++
 	else
-		H.visible_message(SPAN_NOTICE("<b>[H]</b> fails to perform CPR on <b>[src]</b>."), SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))
+		H.visible_message(SPAN_NOTICE("<b>[H]</b> провалил[is_male] проведение <b>СЛР</b> на <b>[ru_name]</b>."), SPAN_WARNING("Вы провалили проведение <b>СЛР</b> на <b>[ru_name]</b>. Не проводите <b>СЛР</b> слишком часто. Подождите перед следующей попыткой.")) // SS220 EDIT ADDICTION
 		failed_cprs++
 	cpr_cooldown = world.time + 7 SECONDS
 
@@ -75,8 +77,8 @@
 	set src in oview(1)
 
 	if(!isSEA(usr))
-		to_chat(usr, SPAN_WARNING("Only Senior Enlisted Advisors can reset the counter on this dummy!"))
+		to_chat(usr, SPAN_WARNING("Только старший инструктор может сбросить статистику этого тренажёра!"))
 		return
 	successful_cprs = 0
 	failed_cprs = 0
-	to_chat(usr, SPAN_NOTICE("You reset the counter on \the [src]."))
+	to_chat(usr, SPAN_NOTICE("Вы сбросили статистику [declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION

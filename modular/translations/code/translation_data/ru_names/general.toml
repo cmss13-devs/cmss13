@@ -1,0 +1,19 @@
+# system windows and other general stuff
+
+["APOLLO Maintenance Controller"]
+nominative = "терминал обслуживания «АПОЛЛО»"
+genitive = "терминала обслуживания «АПОЛЛО»"
+dative = "терминалу обслуживания «АПОЛЛО»"
+accusative = "терминал обслуживания «АПОЛЛО»"
+instrumental = "терминалом обслуживания «АПОЛЛО»"
+prepositional = "терминале обслуживания «АПОЛЛО»"
+gender = "male"
+
+["command tablet"]
+nominative = "командный планшет"
+genitive = "командного планшета"
+dative = "командному планшету"
+accusative = "командный планшет"
+instrumental = "командным планшетом"
+prepositional = "командном планшете"
+gender = "male"

@@ -401,8 +401,8 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		else
 			relative_dir = Get_Compass_Dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("The sky erupts into flames [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_VISIBLE, \
-			SPAN_HIGHDANGER("You hear a very loud sound coming from above to the [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_AUDIBLE \
+			SPAN_HIGHDANGER("Небо вспыхивает огнём [SPAN_UNDERLINE(relative_dir ? ("на " + dir2text_ru(relative_dir, PREPOSITIONAL) + " от вас") : "прямо над вами!")]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("Вы слышите очень громкий звук где-то [SPAN_UNDERLINE(relative_dir ? ("на " + dir2text_ru(relative_dir, PREPOSITIONAL) + " от вас") : "прямо над вами")]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
@@ -412,15 +412,15 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		else
 			relative_dir = Get_Compass_Dir(M, target)
 		M.show_message( \
-			SPAN_HIGHDANGER("The sky roars louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_VISIBLE, \
-			SPAN_HIGHDANGER("The sound becomes louder [SPAN_UNDERLINE(relative_dir ? ("to the " + dir2text(relative_dir)) : "right above you")]!"), SHOW_MESSAGE_AUDIBLE \
+			SPAN_HIGHDANGER("Небо грохочет всё сильнее [SPAN_UNDERLINE(relative_dir ? ("на " + dir2text_ru(relative_dir, PREPOSITIONAL) + " от вас") : "прямо над вами!")]!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("Звук становится всё громче [SPAN_UNDERLINE(relative_dir ? ("на " + dir2text_ru(relative_dir, PREPOSITIONAL) + " от вас") : "прямо над вами")]!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
 	for(var/mob/M in long_range(15, target))
 		M.show_message( \
-			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), SHOW_MESSAGE_VISIBLE, \
-			SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), SHOW_MESSAGE_AUDIBLE \
+			SPAN_HIGHDANGER("О БОЖЕ, НЕБО СЕЙЧАС ВЗОРВЁТСЯ!!!"), SHOW_MESSAGE_VISIBLE, \
+			SPAN_HIGHDANGER("НУЖНО УХОДИТЬ ОТСЮДА!"), SHOW_MESSAGE_AUDIBLE \
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 

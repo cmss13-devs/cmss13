@@ -6,7 +6,7 @@
 
 	if (src.client)
 		if (src.client.prefs.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("You cannot whisper (muted)."))
+			to_chat(src, SPAN_DANGER("Вы не можете шептать (вы заглушены)."))
 			return
 
 		if (src.client.handle_spam_prevention(message,MUTE_IC))
@@ -26,7 +26,7 @@
 	//parse the language code and consume it
 	var/datum/language/speaking = parse_language(message)
 	if(speaking)
-		message = copytext(message,3)
+		message = copytext_char(message,3) // SS220 EDIT - RU fix
 	else
 		speaking = get_default_language()
 		message = strip_language(message)

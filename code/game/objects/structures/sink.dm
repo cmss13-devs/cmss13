@@ -51,7 +51,7 @@
 	if(ishuman(user))
 		user:update_inv_gloves()
 	for(var/mob/V in viewers(src, null))
-		V.show_message(SPAN_NOTICE("[user] washes their hands using \the [src]."), SHOW_MESSAGE_VISIBLE)
+		V.show_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] washes their hands using \the [src]."), SHOW_MESSAGE_VISIBLE)
 
 
 /obj/structure/sink/attackby(obj/item/O as obj, mob/user as mob)
@@ -62,7 +62,7 @@
 	var/obj/item/reagent_container/RG = O
 	if (istype(RG) && RG.is_open_container())
 		RG.reagents.add_reagent("water", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
-		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] using \the [src]."),SPAN_NOTICE("You fill \the [RG] using \the [src]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] fills \the [RG] using \the [src]."),SPAN_NOTICE("You fill \the [RG] using \the [src]."))
 		return
 
 	else if (istype(O, /obj/item/weapon/baton))
@@ -75,7 +75,7 @@
 				user.apply_effect(10, WEAKEN)
 				B.deductcharge(B.hitcost)
 				user.visible_message(
-					SPAN_DANGER("[user] was stunned by \his wet [O]!"),
+					SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] was stunned by \his wet [O]!"),
 					SPAN_DANGER("You were stunned by your wet [O]!"))
 				return
 
@@ -102,7 +102,7 @@
 
 	O.clean_blood()
 	user.visible_message(
-		SPAN_NOTICE("[user] washes \a [I] using \the [src]."),
+		SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] washes \a [I] using \the [src]."),
 		SPAN_NOTICE("You wash \a [I] using \the [src]."))
 
 
@@ -112,7 +112,7 @@
 
 	var/obj/item/held_item = user.get_active_hand()
 	if(!held_item)
-		user.visible_message(SPAN_NOTICE("[user] runs their hand along \the [src]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] runs their hand along \the [src]."))
 		return TRUE
 
 	// Check if it's a reagent container
@@ -123,9 +123,9 @@
 	var/remaining_space = RG.volume - RG.reagents.total_volume
 	if(remaining_space > 0)
 		RG.reagents.add_reagent("water", remaining_space)
-		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] completely using \the [src]."), SPAN_NOTICE("You fill \the [RG] completely using \the [src]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] fills \the [RG] completely using \the [src]."), SPAN_NOTICE("You fill \the [RG] completely using \the [src]."))
 	else
-		user.visible_message(SPAN_NOTICE("[user] tries to fill \the [RG] but it's already full."), SPAN_NOTICE("The [RG] is already full."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] tries to fill \the [RG] but it's already full."), SPAN_NOTICE("The [RG] is already full."))
 
 	return TRUE
 

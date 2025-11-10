@@ -20,14 +20,14 @@
 			var/obj/limb/hand_target = H.get_limb(H.hand ? "l_hand" : "r_hand")
 			if(shattered)
 				playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
-				user.visible_message(SPAN_DANGER("[user] punches [src], but it's already broken!"), SPAN_DANGER("You punch [src], but it's already broken!"))
+				user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] punches [src], but it's already broken!"), SPAN_DANGER("You punch [src], but it's already broken!"))
 				hand_target.take_damage(5)
 				return
 			if(prob(30) || H.species.can_shred(H))
-				user.visible_message(SPAN_DANGER("[user] punches [src], smashing it!"), SPAN_DANGER("You punch [src], smashing it!"))
+				user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] punches [src], smashing it!"), SPAN_DANGER("You punch [src], smashing it!"))
 				shatter(user)
 			else
-				user.visible_message(SPAN_DANGER("[user] punches [src] and bounces off!"), SPAN_DANGER("You punch [src] and bounce off!"))
+				user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] punches [src] and bounces off!"), SPAN_DANGER("You punch [src] and bounce off!"))
 				hand_target.take_damage(5)
 				playsound(loc, 'sound/effects/glassbash.ogg', 25, 1)
 			return
@@ -111,27 +111,27 @@
 		var/mob/living/carbon/human/target = target_grab.grabbed_thing
 		var/obj/limb/head_target = target.get_limb("head")
 		if(shattered)
-			user.visible_message(SPAN_WARNING("[user] smashes [src] with [target]'s skull, but [src] is already broken!"), SPAN_WARNING("You smash [src] with [target]'s skull, but [src] is already broken!"))
+			user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] smashes [src] with [target]'s skull, but [src] is already broken!"), SPAN_WARNING("You smash [src] with [target]'s skull, but [src] is already broken!"))
 			head_target.take_damage(5)
 			playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
 			return
 		if(prob(30))
-			user.visible_message(SPAN_WARNING("[user] smashes [src] with [target]'s skull, breaking [src]!"), SPAN_WARNING("You smash [src] with [target]'s skull, breaking [src]!"))
+			user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] smashes [src] with [target]'s skull, breaking [src]!"), SPAN_WARNING("You smash [src] with [target]'s skull, breaking [src]!"))
 			shatter(target, TRUE)
 			return
-		user.visible_message(SPAN_WARNING("[user] smashes [src] with [target]'s skull!"), SPAN_WARNING("You smash [src] with [target]'s skull!"))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] smashes [src] with [target]'s skull!"), SPAN_WARNING("You smash [src] with [target]'s skull!"))
 		head_target.take_damage(5)
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		return
 	if(shattered)
 		playsound(loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
-		user.visible_message(SPAN_WARNING("[user] hits [src] with [I],  but it's already broken!"), SPAN_WARNING("You hit [src] with [I], but it's already broken!"))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] hits [src] with [I],  but it's already broken!"), SPAN_WARNING("You hit [src] with [I], but it's already broken!"))
 		return
 	if(prob(I.force * I.demolition_mod * 2))
-		user.visible_message(SPAN_WARNING("[user] smashes [src] with [I]!"), SPAN_WARNING("You smash [src] with [I]!"))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] smashes [src] with [I]!"), SPAN_WARNING("You smash [src] with [I]!"))
 		shatter()
 	else
-		user.visible_message(SPAN_WARNING("[user] hits [src] with [I]!"), SPAN_WARNING("You hit [src] with [I]!"))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] hits [src] with [I]!"), SPAN_WARNING("You hit [src] with [I]!"))
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 
 /obj/structure/mirror/attack_animal(mob/user as mob)
@@ -143,5 +143,5 @@
 	if(shattered)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
 		return
-	user.visible_message(SPAN_DANGER("[user] smashes [src]!"))
+	user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] smashes [src]!"))
 	shatter()

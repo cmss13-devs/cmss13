@@ -75,11 +75,11 @@
 		return ..()
 
 	if(LAZYISIN(M.implants, implant_type))
-		to_chat(user, SPAN_WARNING("[M] already have this implant!"))
+		to_chat(user, SPAN_WARNING("[capitalize(M.declent_ru(NOMINATIVE))] already have this implant!"))
 		return
 
 	if(LAZYLEN(M.implants) >= M.max_implants)
-		to_chat(user, SPAN_WARNING("[M] can't take any more implants!"))
+		to_chat(user, SPAN_WARNING("[capitalize(M.declent_ru(NOMINATIVE))] can't take any more implants!"))
 		return
 
 	var/self_inject = TRUE

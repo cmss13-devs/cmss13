@@ -166,7 +166,7 @@
 		return TRUE
 
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return TRUE
 
 	// if the dropship has crashed don't allow more interactions
@@ -214,12 +214,17 @@
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/groundside_alien_action(mob/living/carbon/xenomorph/xeno)
 	if(SSticker.mode.active_lz != src)
-		to_chat(xeno, SPAN_NOTICE("This terminal is inactive."))
+		to_chat(xeno, SPAN_NOTICE("Этот терминал неактивен."))
 		return
 
 	if(!SSobjectives.first_drop_complete)
-		to_chat(xeno, SPAN_NOTICE("This terminal is inactive."))
+		to_chat(xeno, SPAN_NOTICE("Этот терминал неактивен."))
 		return
+
+	//BANDAMARINES ADD START - Queen Minor
+	if(!SSticker.mode.queen_minor_choice(xeno) || SSticker.mode.round_finished)
+		return
+	//BANDAMARINES ADD END - Queen Minor
 
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(linked_lz)
@@ -227,7 +232,7 @@
 		var/obj/docking_port/mobile/maybe_dropship = landing_zone.get_docked()
 
 		if(maybe_dropship)
-			to_chat(xeno, SPAN_NOTICE("A metal bird already is here."))
+			to_chat(xeno, SPAN_NOTICE("Металлическая птица уже здесь."))
 			return
 
 		var/conflicting_transit = FALSE
@@ -237,17 +242,17 @@
 				break
 
 		if(conflicting_transit)
-			to_chat(xeno, SPAN_NOTICE("A metal bird is already coming."))
+			to_chat(xeno, SPAN_NOTICE("Металлическая птица уже летит в это место."))
 			return
 
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 		if(shuttle.mode == SHUTTLE_IDLE && !is_ground_level(shuttle.z))
 			var/result = SSshuttle.moveShuttle(shuttleId, linked_lz, TRUE)
 			if(result != DOCKING_SUCCESS)
-				to_chat(xeno, SPAN_WARNING("The metal bird can not land here. It might be currently occupied!"))
+				to_chat(xeno, SPAN_WARNING("Металлическая птица не может приземлиться здесь. Возможно, это место сейчас занято!"))
 				return
 			to_chat(xeno, SPAN_NOTICE("You command the metal bird to come down. Clever girl."))
-			xeno_announcement(SPAN_XENOANNOUNCE("Our Queen has commanded the metal bird to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Наша Королева направила металлическую птицу к улью около «[linked_lz]»."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE) // SS220 EDIT ADDICTION
 			log_ares_flight("Unknown", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			log_ares_security("Security Alert", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
 			return
@@ -279,7 +284,7 @@
 		if(dropship.playing_launch_announcement_alarm)
 			stop_playing_launch_announcement_alarm()
 			xeno.animation_attack_on(src)
-			to_chat(xeno, SPAN_XENONOTICE("We slash at [src], silencing its squawking!"))
+			to_chat(xeno, SPAN_XENONOTICE("Мы атакуем [declent_ru(ACCUSATIVE)], заставляя его замолчать!"))  // SS220 EDIT ADDICTION
 			playsound(loc, 'sound/machines/terminal_shutdown.ogg', 20)
 		else
 			to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but we can't comprehend their meaning."))
@@ -312,7 +317,7 @@
 			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 		stop_playing_launch_announcement_alarm()
 
-		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
+		to_chat(xeno, SPAN_XENONOTICE("Вы взламываете двери."))
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
 		message_admins("[key_name(xeno)] has locked the dropship '[dropship]'", xeno.x, xeno.y, xeno.z)
 		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
@@ -330,7 +335,7 @@
 				playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, 1)
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 		if(world.time < SHUTTLE_LOCK_TIME_LOCK)
-			to_chat(xeno, SPAN_XENODANGER("You can't mobilize the strength to hijack the shuttle yet. Please wait another [time_left_until(SHUTTLE_LOCK_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
+			to_chat(xeno, SPAN_XENODANGER("Вы не можете мобилизовать силы для захвата шаттла. Пожалуйста, подождите ещё [time_left_until(SHUTTLE_LOCK_TIME_LOCK, world.time, 1 MINUTES)] минут, прежде чем пытаться снова.")) // SS220 EDIT ADDICTION
 			return
 		hijack(xeno)
 		return
@@ -370,15 +375,15 @@
 	hijack.fire()
 	GLOB.alt_ctrl_disabled = TRUE
 
-	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
+	marine_announcement("Обнаружен незапланированный вылет дропшипа из оперативной зоны. Вероятен захват. Автопилот отключен.", "Оповещение дропшипа", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY, announcer = TTS_SILENT_ANNOUNCER) // BANDAMARINES EDIT - ORIGINAL: marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 	log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 	addtimer(CALLBACK(src, PROC_REF(hijack_general_quarters)), 10 SECONDS)
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/hivenumber = XENO_HIVE_NORMAL
 	if(istype(xeno))
 		hivenumber = xeno.hivenumber
-	xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"), 3, hivenumber)
-	xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain pooled larva over time."), 2, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("Королева приказала металлической птице отправиться к металлическому улью в небе! Возрадуемся!"), 3, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("Улей наполняется силой! Теперь мы будем периодически получать новых грудоломов."), 2, hivenumber)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, abandon_on_hijack)), DROPSHIP_WARMUP_TIME, TIMER_UNIQUE)
 	var/original_evilution = hive.evolution_bonus
@@ -405,7 +410,7 @@
 	if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
 		return FALSE
 	COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
-	shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
+	shipwide_ai_announcement("ВНИМАНИЕ! ОБЩАЯ ТРЕВОГА. ВСЕМУ ЛИЧНОМУ СОСТАВУ ОРГАНИЗОВАТЬ БОЕВЫЕ МЕСТА.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 	return TRUE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()

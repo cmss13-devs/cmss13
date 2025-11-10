@@ -227,7 +227,7 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_TUTORIAL = new /datum/hive_status/tutorial()
 ))
 
-GLOBAL_VAR_INIT(king_acquisition_time, 1 HOURS + 30 MINUTES + rand(0, 25) MINUTES)
+GLOBAL_VAR_INIT(king_acquisition_time, 1 HOURS + 30 MINUTES + rand(0, 20) MINUTES) // SS220 EDIT 25->20
 GLOBAL_LIST_INIT(xeno_evolve_times, setup_xeno_evolve_times())
 
 /proc/setup_xeno_evolve_times()
@@ -652,3 +652,4 @@ GLOBAL_PROTECT(topic_tokens)
 
 GLOBAL_LIST_EMPTY(topic_commands)
 GLOBAL_PROTECT(topic_commands)
+GLOBAL_LIST_EMPTY(mentorhelp_tickets) //SS220 - EDIT

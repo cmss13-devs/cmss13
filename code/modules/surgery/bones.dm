@@ -34,7 +34,7 @@
 
 /datum/surgery_step/mend_bones
 	name = "Mend Broken Bones"
-	desc = "repair the fractured bones"
+	desc = "восстановить раздробленные кости"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
@@ -44,6 +44,7 @@
 //Use materials to repair bones, same as /datum/surgery_step/mend_encased
 /datum/surgery_step/mend_bones/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	. = ..()
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	if(istype(tool, /obj/item/tool/surgery/bonegel)) //If bone gel, use some of the gel
 		var/obj/item/tool/surgery/bonegel/gel = tool
 		if(!gel.use_gel(gel.fracture_fix_cost))
@@ -52,94 +53,98 @@
 	else //Otherwise, use metal rods
 		var/obj/item/stack/rods/rods = user.get_inactive_hand()
 		if(!istype(rods))
-			to_chat(user, SPAN_BOLDWARNING("You need metal rods in your offhand to repair [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			to_chat(user, SPAN_BOLDWARNING("У вас должны быть металлические прутья, чтобы починить [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 			return FALSE
 		if(!rods.use(2)) //Refunded on failure
-			to_chat(user, SPAN_BOLDWARNING("You need more metal rods to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			to_chat(user, SPAN_BOLDWARNING("У вас должно быть больше металлических прутьев, чтобы починить [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 			return FALSE
 
 /datum/surgery_step/mend_bones/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	if(surgery.affected_bone)
+		var/ru_name_affected_bone = declent_ru_initial(surgery.affected_bone, GENITIVE, surgery.affected_bone) // SS220 EDIT ADDICTION
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,
-				SPAN_NOTICE("You start applying \the [tool] to [target]'s broken [surgery.affected_bone]."),
-				SPAN_NOTICE("[user] starts to apply \the [tool] to your broken [surgery.affected_bone]."),
-				SPAN_NOTICE("[user] starts to apply \the [tool] to [target]'s broken [surgery.affected_bone]."))
+				SPAN_NOTICE("Вы начинаете наносить гель на [ru_name_affected_bone] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает наносить гель на вашу [ru_name_affected_bone], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает наносить гель на [ru_name_affected_bone] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 
-			target.custom_pain("Something stings inside your [surgery.affected_limb.display_name]!", 1)
+			target.custom_pain("Вы чувствуете, как что-то жжёт внутри вашей [ru_name_affected_bone]!", 1)
 		else
 			user.affected_message(target,
-				SPAN_NOTICE("You begin driving reinforcing pins into [target]'s [surgery.affected_bone] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to drive reinforcing pins into your [surgery.affected_bone] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to drive reinforcing pins into [target]'s [surgery.affected_bone] with \the [tool]."))
+				SPAN_NOTICE("Вы начинаете вкручивать металлические штифты в сломанные кости на [ru_name_affected_bone] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вкручивать металлические штифты в сломанные кости на вашей [ru_name_affected_bone], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вкручивать металлические штифты в сломанные кости на [ru_name_affected_bone] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 
-			target.custom_pain("You can feel something grinding in your [surgery.affected_bone]!", 1)
+			target.custom_pain("Вы чувствуете, как что-то закручивается внутрь вашей [ru_name_affected_bone]!", 1)
 			playsound(target.loc, 'sound/items/Screwdriver.ogg', 25, TRUE)
 	else
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,
-				SPAN_NOTICE("You start applying \the [tool] to the broken bones in [target]'s [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] starts to apply \the [tool] to the broken bones in your [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] starts to apply \the [tool] to the broken bones in [target]'s [surgery.affected_limb.display_name]."))
+				SPAN_NOTICE("Вы начинаете наносить гель на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает наносить гель на вашу [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает наносить гель на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 
-			target.custom_pain("Something stings inside your [surgery.affected_limb.display_name]!", 1)
+			target.custom_pain("Вы чувствуете, как что-то жжёт внутри вашей [ru_name_affected_limb]!", 1) // SS220 EDIT ADDICTION
 		else
 			user.affected_message(target,
-				SPAN_NOTICE("You begin driving reinforcing pins into the broken bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to drive reinforcing pins into the broken bones in your [surgery.affected_limb.display_name] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to drive reinforcing pins into the broken bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+				SPAN_NOTICE("Вы начинаете вкручивать металлические штифты в сломанные кости на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вкручивать металлические штифты в сломанные кости на вашей [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вкручивать металлические штифты в сломанные кости на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 
-			target.custom_pain("You can feel something grinding in your [surgery.affected_limb.display_name]'s bones!", 1)
+			target.custom_pain("Вы чувствуете, как что-то закручивается внутрь вашей [ru_name_affected_limb]!", 1)
 
 	log_interact(user, target, "[key_name(user)] attempted to begin repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 
 /datum/surgery_step/mend_bones/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
-	var/improvised_desc = pick("an organlegger", "a DIY enthusiast", "a cryo-preserved 20th Century witch-doctor", "an escaped chimpanzee")
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, ACCUSATIVE, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
+	var/improvised_desc = pick("костоправ", "медик-самоучка", "доктор-шаман", "сумасшедшая обезьяна")
 
 	if(surgery.affected_bone)
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,
-				SPAN_NOTICE("You slather \the [tool] on [target]'s broken [surgery.affected_bone]."),
-				SPAN_NOTICE("[user] slathers \the [tool] on your broken [surgery.affected_bone]."),
-				SPAN_NOTICE("[user] slathers \the [tool] on [target]'s broken [surgery.affected_bone]."))
+				SPAN_NOTICE("Вы наносите гель на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] наносит гель на вашу [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] наносит гель на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."))
 		else
 			user.affected_message(target,
-				SPAN_NOTICE("You crudely reinforce [target]'s [surgery.affected_bone] like [improvised_desc]."),
-				SPAN_NOTICE("[user] crudely reinforces your [surgery.affected_bone] like [improvised_desc]."),
-				SPAN_NOTICE("[user] crudely reinforces [target]'s [surgery.affected_bone] like [improvised_desc]."))
+				SPAN_NOTICE("Вы наспех укрепляете кости [ru_name_affected_limb] [target.declent_ru(GENITIVE)], словно какой-то [improvised_desc]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] наспех укрепляет кости вашей [ru_name_affected_limb], словно какой-то [improvised_desc]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] наспех укрепляет кости [ru_name_affected_limb] [target.declent_ru(GENITIVE)], словно какой-то [improvised_desc].")) // SS220 EDIT ADDICTION
 	else
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,
-				SPAN_NOTICE("You slather \the [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in your [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."))
+				SPAN_NOTICE("Вы наносите гель на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] наносит гель на вашу [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] наносит гель на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."))
 			user.update_inv_l_hand()
 			user.update_inv_r_hand()
 		else
 			user.affected_message(target,
-				SPAN_NOTICE("You crudely reinforce the bones in [target]'s [surgery.affected_limb.display_name] like [improvised_desc]."),
-				SPAN_NOTICE("[user] crudely reinforces the bones in your [surgery.affected_limb.display_name] like [improvised_desc]."),
-				SPAN_NOTICE("[user] crudely reinforces the bones in [target]'s [surgery.affected_limb.display_name] like [improvised_desc]."))
+				SPAN_NOTICE("Вы наспех укрепляете кости [ru_name_affected_limb] [target.declent_ru(GENITIVE)], словно какой-то [improvised_desc]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] наспех укрепляет кости вашей [ru_name_affected_limb], словно какой-то [improvised_desc]."), // SS220 EDIT ADDICTION
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] наспех укрепляет кости [ru_name_affected_limb] [target.declent_ru(GENITIVE)], словно какой-то [improvised_desc].")) // SS220 EDIT ADDICTION
 
 	log_interact(user, target, "[key_name(user)] successfully began repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], starting [surgery].")
 
 /datum/surgery_step/mend_bones/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	if(surgery.affected_bone)
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_bone] even more!"),
-			SPAN_WARNING("[user]'s hand slips, damaging your [surgery.affected_bone] even more!"),
-			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_bone] even more!"))
+			SPAN_WARNING("Ваша рука дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"),
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая вашу [ru_name_affected_limb]!"),
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, damaging the bones in [target]'s [surgery.affected_limb.display_name] even more!"),
-			SPAN_WARNING("[user]'s hand slips, damaging the bones in your [surgery.affected_limb.display_name] even more!"),
-			SPAN_WARNING("[user]'s hand slips, damaging the bones in [target]'s [surgery.affected_limb.display_name] even more!"))
+			SPAN_WARNING("Ваша рука дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"),
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая вашу [ru_name_affected_limb]!"),
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"))
 
 	target.apply_damage(10, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to begin repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], aborting [surgery].")
 
 	if(tool_type != /obj/item/tool/surgery/bonegel)
-		to_chat(user, SPAN_NOTICE("The metal rods used on [target]'s [surgery.affected_limb.display_name] fall loose from their [surgery.affected_limb]."))
+		to_chat(user, SPAN_NOTICE("Металлические прутья, использованные на [ru_name_affected_limb] [target.declent_ru(GENITIVE)], отваливаются."))
 		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(get_turf(target))
 		rods.amount = 2 //Refund 2 rods on failure
 		rods.update_icon()
@@ -162,42 +167,44 @@
 	failure_sound = 'sound/effects/bone_break1.ogg'
 
 /datum/surgery_step/set_bones/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	switch(surgery.affected_limb.name) //Yet another set of different messages because I just have to be Like This.
 		if("head")
 			user.affected_message(target,
-				SPAN_NOTICE("You begin to piece [target]'s skull together with \the [tool]."),
-				SPAN_NOTICE("[user] begins to piece your skull together with \the [tool]."),
-				SPAN_NOTICE("[user] begins to piece [target]'s skull together with \the [tool]."))
+				SPAN_NOTICE("Вы начинаете собирать кусочки черепа [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает собирать кусочки вашего черепа, используя [tool.declent_ru(ACCUSATIVE)]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает собирать кусочки черепа [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."))
 		if("chest")
 			user.affected_message(target,
-				SPAN_NOTICE("You begin to set [target]'s broken ribs with \the [tool]."),
-				SPAN_NOTICE("[user] begins to set your broken ribs with \the [tool]."),
-				SPAN_NOTICE("[user] begins to set [target]'s broken ribs with \the [tool]."))
+				SPAN_NOTICE("Вы начинаете вправлять сломанные рёбра [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вправлять ваши сломанные рёбра, используя [tool.declent_ru(ACCUSATIVE)]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вправлять сломанные рёбра [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."))
 		if("groin")
 			user.affected_message(target,
-				SPAN_NOTICE("You begin to set [target]'s fractured pelvis with \the [tool]."),
-				SPAN_NOTICE("[user] begins to set your fractured pelvis with \the [tool]."),
-				SPAN_NOTICE("[user] begins to set [target]'s fractured pelvis with \the [tool]."))
+				SPAN_NOTICE("Вы начинаете вправлять сломанный таз [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вправлять ваш сломанный таз, используя [tool.declent_ru(ACCUSATIVE)]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вправлять сломанный таз [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."))
 		else
 			user.affected_message(target,
-				SPAN_NOTICE("You begin to set the broken bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to set the broken bones in your [surgery.affected_limb.display_name] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to set the broken bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+				SPAN_NOTICE("Вы начинаете вправлять сломанные кости [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вправлять сломанные кости в вашей [ru_name_affected_limb], используя [tool.declent_ru(ACCUSATIVE)]."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает вправлять сломанные кости [ru_name_affected_limb] [target.declent_ru(GENITIVE)], используя [tool.declent_ru(ACCUSATIVE)]."))
 
-	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is going to make you pass out!", 1)
+	target.custom_pain("Вы вот-вот потеряете сознание от боли в вашей [ru_name_affected_limb]!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to begin setting bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 
 /datum/surgery_step/set_bones/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, PREPOSITIONAL, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	if(surgery.affected_bone)
 		user.affected_message(target,
-			SPAN_NOTICE("You set [target]'s [surgery.affected_bone]."),
-			SPAN_NOTICE("[user] sets your [surgery.affected_bone]."),
-			SPAN_NOTICE("[user] sets [target]'s [surgery.affected_bone]."))
+			SPAN_NOTICE("Вы вправляете [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] вправляет вашу [ru_name_affected_limb]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] вправляет [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."))
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You set the bones in [target]'s [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] sets the bones in your [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] sets the bones in [target]'s [surgery.affected_limb.display_name]."))
+			SPAN_NOTICE("Вы вправляете [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] вправляет вашу [ru_name_affected_limb]."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] вправляет [ru_name_affected_limb] [target.declent_ru(GENITIVE)]."))
 
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BONES)
 	if(surgery.affected_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
@@ -208,16 +215,17 @@
 	log_interact(user, target, "[key_name(user)] successfully set bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], ending [surgery].")
 
 /datum/surgery_step/set_bones/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
+	var/ru_name_affected_limb = declent_ru_initial(surgery.affected_limb.display_name, ACCUSATIVE, surgery.affected_limb.display_name) // SS220 EDIT ADDICTION
 	if(surgery.affected_bone)
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_bone] with \the [tool]!"),
-			SPAN_WARNING("[user]'s hand slips, damaging your [surgery.affected_bone] with \the [tool]!"),
-			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_bone] with \the [tool]!"))
+			SPAN_WARNING("Ваша рука дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"),
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая вашу [ru_name_affected_limb]!"),
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, damaging the bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"),
-			SPAN_WARNING("[user]'s hand slips, damaging the bones in your [surgery.affected_limb.display_name] with \the [tool]!"),
-			SPAN_WARNING("[user]'s hand slips, damaging the bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"))
+			SPAN_WARNING("Ваша рука дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"),
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая вашу [ru_name_affected_limb]!"),
+			SPAN_WARNING("Рука [user.declent_ru(GENITIVE)] дёргается, ещё больше повреждая [ru_name_affected_limb] [target.declent_ru(GENITIVE)]!"))
 
 	target.apply_damage(10, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to set bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")

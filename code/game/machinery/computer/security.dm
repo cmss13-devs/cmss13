@@ -97,7 +97,7 @@
 		return
 
 	if(!allowed(usr))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return
 
 	if(!is_mainship_level(z))
@@ -161,7 +161,7 @@
 
 	var/mob/user = ui.user
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return
 
 	playsound(src, get_sfx("terminal_button"), 25, FALSE)
@@ -432,7 +432,7 @@
 			"type" = "string",
 			"max_length" = 49,
 			"required" = TRUE,
-			"regex" = regex(@"^[a-zA-Z' ]+$"), // Allow letters, spaces, and single quotes
+			"regex" = regex(@"^[a-zA-Zа-яёА-ЯЁ' ]+$"), // Allow letters, spaces, and single quotes
 		),
 		"general_rank" = list(
 			"type" = "string",

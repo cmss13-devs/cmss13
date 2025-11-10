@@ -14,7 +14,7 @@
 	src.daze = daze
 	src.max_buildup = max_buildup
 	src.dissipation = dissipation
-	to_chat(parent, SPAN_XENOHIGHDANGER("We feel weak and dazed!"))
+	to_chat(parent, SPAN_XENOHIGHDANGER("Мы чувствуем себя слабыми и ошеломлёнными!"))
 
 /datum/component/status_effect/daze/InheritComponent(datum/component/status_effect/daze/daze_new, i_am_original, amount, max_buildup)
 	. = ..()

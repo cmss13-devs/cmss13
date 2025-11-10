@@ -271,7 +271,7 @@
 			to_chat(user, SPAN_WARNING("\The [src] is currently encrypted by [linked_laptop]. To deconstruct \the [src] it must first be unlinked."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] begins disassembling \the [src]."), SPAN_NOTICE("You begin disassembling \the [src]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins disassembling \the [src]."), SPAN_NOTICE("You begin disassembling \the [src]."))
 
 		if(!do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			return
@@ -280,7 +280,7 @@
 			to_chat(user, SPAN_WARNING("\The [src] is too damaged to pick up!"))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] disassembles [src]."), SPAN_NOTICE("You disassemble [src]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] disassembles [src]."), SPAN_NOTICE("You disassemble [src]."))
 
 		playsound(loc, 'sound/mecha/mechmove04.ogg', 30, 1)
 		var/turf/T = get_turf(src)
@@ -303,12 +303,12 @@
 				to_chat(user, SPAN_WARNING("[src] is currently active. The motors will prevent you from unanchoring it safely."))
 				return
 
-			user.visible_message(SPAN_NOTICE("[user] begins unanchoring [src] from the ground."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins unanchoring [src] from the ground."),
 			SPAN_NOTICE("You begin unanchoring [src] from the ground."))
 
 			if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				return
-			user.visible_message(SPAN_NOTICE("[user] unanchors [src] from the ground."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] unanchors [src] from the ground."),
 			SPAN_NOTICE("You unanchor [src] from the ground."))
 			anchored = FALSE
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -322,12 +322,12 @@
 			if(!floor.allow_construction)
 				to_chat(user, SPAN_WARNING("You cannot secure \the [src] here, find a more secure surface!"))
 				return FALSE
-			user.visible_message(SPAN_NOTICE("[user] begins securing [src] to the ground."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins securing [src] to the ground."),
 			SPAN_NOTICE("You begin securing [src] to the ground."))
 
 			if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				return
-			user.visible_message(SPAN_NOTICE("[user] secures [src] to the ground."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] secures [src] to the ground."),
 			SPAN_NOTICE("You secure [src] to the ground."))
 			anchored = TRUE
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -347,10 +347,10 @@
 			return
 
 		if(WT.remove_fuel(0, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing [src]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins repairing [src]."),
 			SPAN_NOTICE("You begin repairing [src]."))
 			if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
-				user.visible_message(SPAN_NOTICE("[user] repairs [src]."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] repairs [src]."),
 				SPAN_NOTICE("You repair [src]."))
 				if(stat == DEFENSE_DAMAGED)
 					stat &= ~DEFENSE_DAMAGED
@@ -381,7 +381,7 @@
 		if(locked)
 			to_chat(user, SPAN_WARNING("The control panel on [src] is locked to non-engineers."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] begins switching [src] [turned_on? "off" : "on"]."), SPAN_NOTICE("You begin switching [src] [turned_on? "off" : "on"]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins switching [src] [turned_on? "off" : "on"]."), SPAN_NOTICE("You begin switching [src] [turned_on? "off" : "on"]."))
 		if(!(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src)))
 			return
 

@@ -138,11 +138,11 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 			return
 
 		if(WT.remove_fuel(0, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins repairing damage to [src]."),
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
-				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
 				update_health(-150)
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -227,7 +227,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/get_examine_text(mob/user)
 	. = ..()
 	if(isxeno(user) && !COOLDOWN_FINISHED(src, corruption_delay))
-		. += SPAN_XENO("Corruption cooldown: [(COOLDOWN_TIMELEFT(src, corruption_delay) / (1 SECONDS))] seconds.")
+		. += SPAN_XENO("Время восстановления после повреждения: [(COOLDOWN_TIMELEFT(src, corruption_delay) / (1 SECONDS))] секунд.") // SS220 EDIT ADDICTION
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/attack_hand(mob/user)
 	if(user.action_busy)

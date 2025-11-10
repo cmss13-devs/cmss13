@@ -72,7 +72,7 @@
 
 /obj/structure/bed/chair/janicart/send_buckling_message(mob/M, mob/user)
 	M.visible_message(
-		SPAN_NOTICE("[M] climbs onto the [callme]!"),
+		SPAN_NOTICE("[capitalize(M.declent_ru(NOMINATIVE))] climbs onto the [callme]!"),
 		SPAN_NOTICE("You climb onto the [callme]!"))
 
 

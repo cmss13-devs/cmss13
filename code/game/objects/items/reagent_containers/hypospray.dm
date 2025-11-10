@@ -186,7 +186,7 @@
 		return
 
 	if(skilllock == SKILL_MEDICAL_TRAINED && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		user.visible_message(SPAN_WARNING("[user] fumbles with [src]..."), SPAN_WARNING("You fumble with [src]..."))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] fumbles with [src]..."), SPAN_WARNING("You fumble with [src]..."))
 		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			return
 	else if(!skillcheck(user, SKILL_MEDICAL, skilllock))
@@ -212,8 +212,8 @@
 		playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 		return 0
 
-	to_chat(user, SPAN_NOTICE(" You inject [M] with [src]."))
-	to_chat(M, SPAN_WARNING("You feel a tiny prick!"))
+	to_chat(user, SPAN_NOTICE("Вы делаете укол [M.declent_ru(DATIVE)], используя [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
+	to_chat(M, SPAN_WARNING("Вы чувствуете лёгкий укол!"))
 	playsound(loc, injectSFX, injectVOL, 1)
 	SEND_SIGNAL(M, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)
 
@@ -230,9 +230,9 @@
 
 		var/trans = reagents.trans_to(M, amount_per_transfer_from_this)
 		if(mag)
-			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]'s [mag.name]."))
+			to_chat(user, SPAN_NOTICE("Введено [trans] единиц. В [declent_ru(PREPOSITIONAL)] осталось [reagents.total_volume] единиц ([mag.name]).")) // SS220 EDIT ADDICTION
 		else
-			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]."))
+			to_chat(user, SPAN_NOTICE("Введено [trans] единиц. В [declent_ru(PREPOSITIONAL)] осталось [reagents.total_volume] единиц.")) // SS220 EDIT ADDICTION
 	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 /obj/item/reagent_container/hypospray/Initialize()

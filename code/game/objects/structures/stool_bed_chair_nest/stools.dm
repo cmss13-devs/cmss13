@@ -24,7 +24,7 @@
 /obj/item/stool/proc/deploy_stool(mob/user)
 	new /obj/structure/bed/stool(get_turf(user))
 	user.temp_drop_inv_item(src)
-	user.visible_message(SPAN_NOTICE("[user] puts [src] down."), SPAN_NOTICE("You put [src] down."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] puts [src] down."), SPAN_NOTICE("You put [src] down."))
 	qdel(src)
 
 /obj/item/stool/attack_self(mob/user)

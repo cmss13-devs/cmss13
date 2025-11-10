@@ -489,7 +489,7 @@
 			return
 
 		if(target.squad_status == "K.I.A.")
-			to_chat(sl, "[FONT_SIZE_BIG("<font color='red'>You can't assign K.I.A. marines to fireteams.</font>")]")
+			to_chat(sl, "[FONT_SIZE_BIG("<font color='red'>Вы не можете назначать погибших в бою морпехов в группы.</font>")]")
 			return
 
 		target.assigned_squad.manage_fireteams(target)
@@ -771,7 +771,7 @@
 	if(href_list["scanreport"])
 		if(hasHUD(usr,"medical"))
 			if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-				to_chat(usr, SPAN_WARNING("You're not trained to use this."))
+				to_chat(usr, SPAN_WARNING("Вы не знаете как использовать это."))
 				return
 			if(!has_species(src, "Human"))
 				to_chat(usr, SPAN_WARNING("This only works on humans."))
@@ -810,34 +810,45 @@
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		// Removing your own holocard when you are not trained
 		if(user == src && holo_card_color)
-			if(tgui_alert(user, "Are you sure you want to reset your own holocard?", "Resetting Holocard", list("Yes", "No")) != "Yes")
+			if(tgui_alert(user, "Вы уверены, что хотите сбросить статус своей медголокарты?", "Сброс статуса медголокарты", list("Да", "Нет")) == "Нет") // SS220 EDIT ADDICTION
 				return
 			holo_card_color = null
-			to_chat(user, SPAN_NOTICE("You reset your holocard."))
+			to_chat(user, SPAN_NOTICE("Вы сбрасываете статус своей медголокарты."))
 			hud_set_holocard()
 			return
-		to_chat(user, SPAN_WARNING("You're not trained to use this."))
+		to_chat(user, SPAN_WARNING("Вы не знаете как использовать это."))
 		return
 	if(!has_species(src, "Human"))
-		to_chat(user, SPAN_WARNING("Triage holocards only works on humans."))
+		to_chat(user, SPAN_WARNING("Статус медголокарты можно изменить только у людей."))
 		return
-	var/newcolor = tgui_input_list(user, "Choose a triage holo card to add to the patient:", "Triage holo card", list("black", "red", "orange", "purple", "none"))
+
+	// SS220 START EDIT ADDICTION
+	var/holocard_translations = list(
+		"black" = "Скончался",
+		"red" = "Необходима срочная помощь",
+		"orange" = "Необходима операция",
+		"purple" = "Заражён паразитом XX-121",
+		"none" = "Нет данных"
+	)
+	var/newcolor = tgui_input_list(user, "Укажите причину болезни пациента:", "Медголокарта", holocard_translations, associative_list = TRUE)
+	// SS220 EDIT ADDICTION
 	if(!newcolor)
 		return
+	var/translated_value = holocard_translations[newcolor] // SS220 EDIT ADDICTION
 	if(get_dist(user, src) > 7)
-		to_chat(user, SPAN_WARNING("[src] is too far away."))
+		to_chat(user, SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] слишком далеко от вас.")) // SS220 EDIT ADDICTION
 		return
 	if(newcolor == "none")
 		if(!holo_card_color)
 			return
 		holo_card_color = null
-		to_chat(user, SPAN_NOTICE("You remove the holo card on [src]."))
+		to_chat(user, SPAN_NOTICE("Вы убираете статус из медголокарты [declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 	else if(newcolor != holo_card_color)
 		if(newcolor == "black" && is_revivable() && check_tod())
-			to_chat(user, SPAN_WARNING("They are yet saveable."))
+			to_chat(user, SPAN_WARNING("Пациента ещё можно спасти!"))
 			return
 		holo_card_color = newcolor
-		to_chat(user, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
+		to_chat(user, SPAN_NOTICE("Вы устанавливаете статус «[translated_value]» в медголокарте [declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 	hud_set_holocard()
 
 /mob/living/carbon/human/tgui_interact(mob/user, datum/tgui/ui) // I'M SORRY, SO FUCKING SORRY
@@ -921,7 +932,7 @@
 	apply_effect(5, STUN)
 	if(stat == 2) //One last corpse check
 		return
-	src.visible_message(SPAN_WARNING("[src] throws up!"), SPAN_WARNING("You throw up!"), null, 5)
+	src.visible_message(SPAN_WARNING("[capitalize(declent_ru(NOMINATIVE))] блюёт!"), SPAN_WARNING("Вы блюёте!"), null, 5)
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1, 7)
 
 	var/turf/location = loc
@@ -998,6 +1009,8 @@
 	for(var/obj/item/W in embedded_items)
 		if(!istype(W, /obj/item/shard/shrapnel))
 			visible_objects += W
+			// временно отключаю перевод до выяснения обстоятельств крашей
+			// visible_objects[capitalize(W.declent_ru())] = W // SS220 EDIT ADDICTION
 	return visible_objects
 
 
@@ -1033,35 +1046,35 @@
 	var/msg
 	///Is the target the user or somebody else?
 	var/self = (target == src)
-	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself." : "start analyzing [target.name]."]"))
+	to_chat(usr, SPAN_NOTICE("Используя свои медицинские навыки вы проверяете [self ? "своё состояние." : "состояние [target.name]."]")) // SS220 EDIT ADDICTION
 
 	if(self)
 		var/list/broken_limbs = target.get_broken_limbs() - list("chest","head","groin")
 		if(length(broken_limbs))
-			msg += "Your [english_list(broken_limbs)] [length(broken_limbs) > 1 ? "are" : "is"] broken.\n"
+			msg += "У вас перелом [english_list(broken_limbs, declent = GENITIVE)].\n" // SS220 EDIT ADDICTION
 	if(target.toxloss > 20)
-		msg += "[self ? "Your" : "Their"] skin is slightly green.\n"
+		msg += "[self ? "Ваша" : target.ru_p_them(TRUE)] кожа слегка позеленела.\n" // SS220 EDIT ADDICTION
 
 	if(target.is_bleeding())
-		msg += "[self ? "You" : "They"] have bleeding wounds on [self ? "your" : "their"] body.\n"
+		msg += "У [self ? "вас" : target.ru_p_theirs()] кровотечение.\n" // SS220 EDIT ADDICTION
 
 	if(!self && skillcheck(usr, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
 		for(var/datum/effects/bleeding/internal/internal_bleed in target.effects_list)
-			msg += "They have bloating and discoloration on their [internal_bleed.limb.display_name].\n"
+			msg += "У [target.ru_p_theirs()] изменился цвет кожи и наблюдается припухлость в [declent_ru_initial(internal_bleed.limb.display_name, DATIVE, internal_bleed.limb.display_name)].\n" // SS220 EDIT ADDICTION
 
 	switch(target.stat)
 		if(DEAD)
 			if(target.check_tod() && target.is_revivable())
-				msg += "They're not breathing."
+				msg += "[target.ru_p_they(TRUE)] не дышит." // SS220 EDIT ADDICTION
 			else
 				if(has_limb("head"))
-					msg += "Their eyes have gone blank, there are no signs of life."
+					msg += "[target.ru_p_them(TRUE)] взгляд потускнел и [target.ru_p_they()] не подаёт признаков жизни." // SS220 EDIT ADDICTION
 				else
-					msg += "They are definitely dead."
+					msg += "[target.ru_p_they(TRUE)] определённо [target.gender == MALE ? "мёртв" : "мертва"]." // SS220 EDIT ADDICTION
 		if(UNCONSCIOUS)
-			msg += "They seem to be unconscious.\n"
+			msg += "[target.ru_p_they(TRUE)], похоже, без сознания.\n" // SS220 EDIT ADDICTION
 		if(CONSCIOUS)
-			msg += "[self ? "You're" : "They're"] alive and breathing."
+			msg += "У [self ? "вас" : target.ru_p_theirs()], в целом, всё в порядке." // SS220 EDIT ADDICTION
 
 	to_chat(src, SPAN_WARNING(msg))
 
@@ -1536,7 +1549,7 @@
 					if(new_splint.amount == 0)
 						qdel(new_splint) //we only removed nano splints
 					msg = "[user == target ? "their own":"\proper [target]'s"]"
-					target.visible_message(SPAN_NOTICE("[user] removes [msg] [amount_removed>1 ? "splints":"splint"]."),
+					target.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] removes [msg] [amount_removed>1 ? "splints":"splint"]."),
 						SPAN_NOTICE("Your [amount_removed>1 ? "splints are":"splint is"] removed."))
 					target.update_med_icon()
 			else
@@ -1873,4 +1886,3 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
-

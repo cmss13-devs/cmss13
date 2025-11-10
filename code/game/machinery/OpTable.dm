@@ -73,13 +73,13 @@
 		return
 	if(anes_tank)
 		user.put_in_active_hand(anes_tank)
-		to_chat(user, SPAN_NOTICE("You remove \the [anes_tank] from \the [src]."))
+		to_chat(user, SPAN_NOTICE("Вы вытащили [anes_tank.declent_ru(ACCUSATIVE)] из [declent_ru(GENITIVE)].")) // SS220 EDIT ADDICTION
 		anes_tank = null
 
 // Removing marines connected to anesthetic
 /obj/structure/machinery/optable/attack_alien(mob/living/carbon/xenomorph/alien, mob/living/user)
 	if(buckled_mob)
-		to_chat(alien, SPAN_XENONOTICE("You rip the tubes away from the host, releasing it!"))
+		to_chat(alien, SPAN_XENONOTICE("Вы вырываете трубки из тела пациента, отключая анестезию!"))
 		playsound(alien, "alien_claw_flesh", 25, 1)
 		unbuckle(user)
 	else
@@ -90,29 +90,29 @@
 		return
 
 	if(H.loc != loc)
-		to_chat(user, SPAN_WARNING("The patient needs to be on the table first."))
+		to_chat(user, SPAN_WARNING("Для начала операции пациент должен быть на столе."))
 		return
 
 	if(!H.has_limb("head"))
-		to_chat(user, SPAN_WARNING("The patient has no head."))
+		to_chat(user, SPAN_WARNING("У пациента нет головы."))
 		return
 
 	if(!anes_tank)
-		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
+		to_chat(user, SPAN_WARNING("К столу не подключён анестезийный баллон, подключите его."))
 		return
-	H.visible_message(SPAN_NOTICE("[user] begins to connect [H] to the anesthetic system."))
+	H.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает подключать [H.declent_ru(ACCUSATIVE)] к системе анестезии.")) // SS220 EDIT ADDICTION
 	if(!do_after(user, 25, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-		to_chat(user, SPAN_NOTICE("You stop placing the mask on [H]'s face."))
+		to_chat(user, SPAN_NOTICE("Вы перестаете одевать маску на лицо [H.declent_ru(GENITIVE)]."))
 		return
 
 	if(H.buckled || buckled_mob || H.loc != loc)
 		return
 
 	if(!anes_tank)
-		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
+		to_chat(user, SPAN_WARNING("К столу не подключён анестезийный баллон, подключите его."))
 		return
 	if(!H.has_limb("head"))
-		to_chat(user, SPAN_WARNING("The patient has no head."))
+		to_chat(user, SPAN_WARNING("У пациента нет головы."))
 		return
 
 	if(H.wear_mask)
@@ -135,8 +135,8 @@
 		return
 	var/mob/living/carbon/human/H = target
 	H.internal = anes_tank
-	H.visible_message(SPAN_NOTICE("[user] fits the mask over [H]'s face and turns on the anesthetic."))
-	to_chat(H, SPAN_INFO("You begin to feel sleepy."))
+	H.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] одевает маску на лицо [H.declent_ru(GENITIVE)] и включает анестезию.")) // SS220 EDIT ADDICTION
+	to_chat(H, SPAN_INFO("Вы чувствуете себя сонливо."))
 	H.setDir(SOUTH)
 	start_processing()
 	update_icon()
@@ -151,9 +151,9 @@
 		H.drop_inv_item_on_ground(M)
 		qdel(M)
 		if(ishuman(user)) //Checks for whether a xeno is unbuckling from the operating table
-			H.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [H]."))
+			H.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] выключает систему анестезии и снимает маску с [H].")) // SS220 EDIT ADDICTION
 		else
-			H.visible_message(SPAN_WARNING("The anesthesia mask is ripped away from [H]'s face!"))
+			H.visible_message(SPAN_WARNING("Маска срывается с [H.declent_ru(GENITIVE)]!")) // SS220 EDIT ADDICTION
 		stop_processing()
 		patient_exam = 0
 		..()
@@ -228,7 +228,7 @@
 
 /obj/structure/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
 	if (C == user)
-		user.visible_message(SPAN_NOTICE("[user] climbs on the operating table."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] climbs on the operating table."),
 			SPAN_NOTICE("You climb on the operating table."), null, null, 4)
 	else
 		visible_message(SPAN_NOTICE("[C] has been laid on the operating table by [user]."), null, 4)
@@ -253,7 +253,7 @@
 		if(!anes_tank)
 			user.drop_inv_item_to_loc(W, src)
 			anes_tank = W
-			to_chat(user, SPAN_NOTICE("You connect \the [anes_tank] to \the [src]."))
+			to_chat(user, SPAN_NOTICE("Вы подключили [anes_tank.declent_ru(ACCUSATIVE)] к [declent_ru(DATIVE)]")) // SS220 EDIT ADDICTION
 			return
 	if (istype(W, /obj/item/grab) && ishuman(user))
 		var/obj/item/grab/G = W
@@ -264,7 +264,7 @@
 		if(ishuman(G.grabbed_thing))
 			M = G.grabbed_thing
 			if(M.buckled)
-				to_chat(user, SPAN_WARNING("Unbuckle first!"))
+				to_chat(user, SPAN_WARNING("Сначала отстегните ремни!"))
 				return
 		else if(istype(G.grabbed_thing,/obj/structure/closet/bodybag/cryobag))
 			var/obj/structure/closet/bodybag/cryobag/C = G.grabbed_thing

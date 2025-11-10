@@ -136,7 +136,7 @@
 					if(M == user)
 						continue
 					for(var/mob/O in viewers(GLOB.world_view_size, D))
-						O.show_message(SPAN_DANGER("[M] was hit by the foam dart!"), SHOW_MESSAGE_VISIBLE)
+						O.show_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] was hit by the foam dart!"), SHOW_MESSAGE_VISIBLE)
 					new /obj/item/toy/crossbow_ammo(M.loc)
 					qdel(D)
 					return
@@ -159,7 +159,7 @@
 	else if (bullets == 0)
 		user.apply_effect(5, WEAKEN)
 		for(var/mob/O in viewers(GLOB.world_view_size, user))
-			O.show_message(SPAN_DANGER("[user] realized they were out of ammo and starting scrounging for some!"), SHOW_MESSAGE_VISIBLE)
+			O.show_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] realized they were out of ammo and starting scrounging for some!"), SHOW_MESSAGE_VISIBLE)
 
 
 /obj/item/toy/crossbow/attack(mob/living/M as mob, mob/user as mob)
@@ -170,7 +170,7 @@
 		for(var/mob/O in viewers(M, null))
 			if(O.client)
 				O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head and pulls the trigger!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear the sound of foam against skull!"), SHOW_MESSAGE_AUDIBLE)
-				O.show_message(SPAN_DANGER("[M] was hit in the head by the foam dart!"), SHOW_MESSAGE_VISIBLE)
+				O.show_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] was hit in the head by the foam dart!"), SHOW_MESSAGE_VISIBLE)
 
 		playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
 		new /obj/item/toy/crossbow_ammo(M.loc)

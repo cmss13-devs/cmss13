@@ -123,16 +123,16 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 /datum/bioscan_data/proc/ares_bioscan(forced = FALSE, variance = 2)
 	if(!forced && !ares_can_bioscan())
 		message_admins("An ARES Bioscan has failed.")
-		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-		var/input = "Bioscan failed. \n\nInvestigation into Bioscan subsystem recommended."
+		var/name = "[MAIN_AI_SYSTEM]: Статус биосканирования"
+		var/input = "Биосканирование не удалось. \n\nРекомендуется провести проверку подсистемы Биосканирования."
 		log_ares_bioscan(name, input, forced)
 		if(ares_can_interface() || forced)
 			marine_announcement(input, name, 'sound/misc/interference.ogg', logging = ARES_LOG_NONE)
 		return
 	//Adjust the randomness there so everyone gets the same thing
 	var/fake_xenos_on_planet = max(0, xenos_on_planet + rand(-variance, variance))
-	var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-	var/input = "Bioscan complete.\n\nSensors indicate [xenos_on_ship_uncontained ? "[xenos_on_ship_uncontained]" : "no"] unknown lifeform signature[!xenos_on_ship_uncontained || xenos_on_ship_uncontained > 1 ? "s":""] present on the ship[xenos_on_ship_uncontained && xenos_ship_location ? ", including one in [xenos_ship_location]," : ""] and [fake_xenos_on_planet ? "approximately [fake_xenos_on_planet]" : "no"] signature[!fake_xenos_on_planet || fake_xenos_on_planet > 1 ? "s":""] located elsewhere[fake_xenos_on_planet && xenos_planet_location ? ", including one in [xenos_planet_location]":""]."
+	var/name = "[MAIN_AI_SYSTEM]: Статус биосканирования"
+	var/input = "Биосканирование завершено.\n\n[xenos_on_ship_uncontained ? "Зафиксировано присутствие [xenos_on_ship_uncontained]" : "Присутствие"] неизвестных форм жизни на корабле [xenos_on_ship_uncontained ? (xenos_ship_location ? ", включая одного в [xenos_ship_location]" : "") : "не зафиксировано"]. Зафиксировано [fake_xenos_on_planet ? "возможное присутствие [fake_xenos_on_planet]" : "отсутствие"] сигнатур, расположенных где-либо ещё[fake_xenos_on_planet && xenos_planet_location ? ", включая одного в [xenos_planet_location]":""]."
 
 	log_game("BIOSCAN: ARES bioscan completed. [input]")
 
@@ -146,14 +146,14 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 /datum/bioscan_data/proc/qm_bioscan(variance = 2)
 	/// Adjust the randomness there so everyone gets the same thing
 	var/fake_marines_on_ship = max(0, marines_on_ship + rand(-variance, variance))
-	var/metalhive_hosts = "[fake_marines_on_ship ? "approximately [fake_marines_on_ship]":"no"]"
-	var/plural = "[!fake_marines_on_ship || fake_marines_on_ship > 1 ? "s":""]"
-	var/metalhive_location = "[fake_marines_on_ship && marine_ship_location?", including one in [marine_ship_location]," : ""]"
-	var/planet_hosts = "[marines_on_planet ? "[marines_on_planet]" : "none"]"
-	var/planet_location = "[marines_on_planet && marine_planet_location ? ", including one in [marine_planet_location]" : ""]"
+	//var/metalhive_hosts = "[fake_marines_on_ship ? "approximately [fake_marines_on_ship]":"no"]" // SS220 EDIT ADDICTION
+	//var/plural = "[!fake_marines_on_ship || fake_marines_on_ship > 1 ? "s":""]" // SS220 EDIT ADDICTION
+	var/metalhive_location = "[fake_marines_on_ship && marine_ship_location?", включая одного в области «[marine_ship_location]»" : ""]" // SS220 EDIT ADDICTION
+	//var/planet_hosts = "[marines_on_planet ? "[marines_on_planet]" : "none"]" // SS220 EDIT ADDICTION
+	var/planet_location = "[marines_on_planet && marine_planet_location ? ", включая одного в области «[marine_planet_location]»" : ""]" // SS220 EDIT ADDICTION
 
-	var/title = SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away.")
-	var/content = SPAN_XENOANNOUNCE("To my children and their Queen: I sense [metalhive_hosts] host[plural] in the metal hive[metalhive_location] and [planet_hosts] scattered elsewhere[planet_location].")
+	var/title = SPAN_XENOANNOUNCE("Королева-мать проникает в ваш разум издалека.")
+	var/content = SPAN_XENOANNOUNCE("Моим детям и их Королеве: я чувствую около [fake_marines_on_ship] хостов в металлическом улье[metalhive_location], а также около [marines_on_planet] хостов в других местах[planet_location].") // SS220 EDIT ADDICTION
 
 	log_game("BIOSCAN: Queen Mother bioscan completed. [content]")
 	/// Shout it at everyone

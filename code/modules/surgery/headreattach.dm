@@ -45,14 +45,14 @@
 
 /datum/surgery_step/peel_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	//No need for to-patient messages on this one, they're ghosted or in the head.
-	user.visible_message(SPAN_NOTICE("[user] begins to peel [target]'s neck stump open with \the [tool].") ,
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to peel [target]'s neck stump open with \the [tool].") ,
 	SPAN_NOTICE("You begin to peel [target]'s neck stump open with \the [tool]."))
 
 	log_interact(user, target, "[key_name(user)] began to peel back tattered artificial skin around [key_name(target)]'s neck with \the [tool].")
 
 /datum/surgery_step/peel_skin/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	//we could fetch the synth's flesh type, but because this surgery is only for synths, I'm too lazy to do it.
-	user.visible_message(SPAN_NOTICE("[user] draws back the ragged synthetic flesh of [target]'s neck stump."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] draws back the ragged synthetic flesh of [target]'s neck stump."),
 	SPAN_NOTICE("You draw back the ragged synthetic flesh of [target]'s neck stump."))
 
 	surgery.affected_limb.setAmputatedTree()
@@ -76,12 +76,12 @@
 	time = 10 SECONDS
 
 /datum/surgery_step/reattach_head/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] begins to reattach [tool] to [target]'s neck."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to reattach [tool] to [target]'s neck."),
 	SPAN_NOTICE("You begin reattaching [tool] to [target]'s neck."))
 	log_interact(user, target, "[key_name(user)] started to attach [tool] to [key_name(target)]'s reshaped neck.")
 
 /datum/surgery_step/reattach_head/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/head_reattach/surgery)
-	user.visible_message(SPAN_NOTICE("[user] reattaches [target]'s head to the carbon fiber skeleton and silicon musculature of \his body."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] reattaches [target]'s head to the carbon fiber skeleton and silicon musculature of \his body."),
 	SPAN_NOTICE("You reattach [target]'s head to the carbon fiber skeleton and silicon musculature of \his body."))
 	log_interact(user, target, "[key_name(user)] attached [tool] to [key_name(target)]'s neck.")
 
@@ -114,13 +114,13 @@
 	time = 4 SECONDS
 
 /datum/surgery_step/mend_connections/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] begins to shape the synthetic flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins to shape the synthetic flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."),
 	SPAN_NOTICE("You begin to shape the synthetic flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."))
 
 	log_interact(user, target, "[key_name(user)] started to reshape [key_name(target)]'s head esophagal and vocal region with \the [tool].")
 
 /datum/surgery_step/mend_connections/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] finishes reconstructing [target]'s throat."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes reconstructing [target]'s throat."),
 	SPAN_NOTICE("You finish reconstructing [target]'s throat."))
 
 	log_interact(user, target, "[key_name(user)] reshaped [key_name(target)]'s head esophagal and vocal region with \the [tool].")
@@ -140,12 +140,12 @@
 	time = 6 SECONDS
 
 /datum/surgery_step/cauterize/reposition_flesh/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] begins making final adjustments to the area around [target]'s neck with \the [tool]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins making final adjustments to the area around [target]'s neck with \the [tool]."),
 	SPAN_NOTICE("You begin making final adjustments to the area around [target]'s neck with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] started to adjust the area around [key_name(target)]'s neck with \the [tool].")
 
 /datum/surgery_step/cauterize/reposition_flesh/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/head_reattach/surgery)
-	user.visible_message(SPAN_NOTICE("[user] finishes adjusting [target]'s neck."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes adjusting [target]'s neck."),
 	SPAN_NOTICE("You finish adjusting [target]'s neck."))
 	log_interact(user, target, "[key_name(user)] adjusted the area around [key_name(target)]'s neck with \the [tool].")
 

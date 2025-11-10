@@ -29,8 +29,8 @@
 		to_chat(user, SPAN_WARNING("You must be behind your target!"))
 		return
 
-	user.visible_message(SPAN_DANGER("[user] grabs [M] and smothers their face with [src]."), SPAN_DANGER("You cover [M]'s face with [src]."))
-	to_chat(M, SPAN_HIGHDANGER("[user] grabs you and smothers [src] onto your face."))
+	user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] grabs [M] and smothers their face with [src]."), SPAN_DANGER("You cover [M]'s face with [src]."))
+	to_chat(M, SPAN_HIGHDANGER("[capitalize(user.declent_ru(NOMINATIVE))] grabs you and smothers [src] onto your face."))
 
 	grab_stun(M, user)
 
@@ -38,7 +38,7 @@
 		remove_stun(M)
 		return
 
-	to_chat(M, SPAN_HIGHDANGER("[user] knocks you out!"))
+	to_chat(M, SPAN_HIGHDANGER("[capitalize(user.declent_ru(NOMINATIVE))] knocks you out!"))
 	M.apply_effect(knockout_strength, PARALYZE)
 
 	remove_stun(M)

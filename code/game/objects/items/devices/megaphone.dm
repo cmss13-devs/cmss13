@@ -47,8 +47,9 @@
 		var/list/mob/langchat_long_listeners = list()
 		for(var/mob/listener in listeners)
 			if(!ishumansynth_strict(listener) && !isobserver(listener))
-				listener.show_message("[user] says something on the microphone, but you can't understand it.")
+				listener.show_message("[capitalize(user.declent_ru(NOMINATIVE))] says something on the microphone, but you can't understand it.")
 				continue
+			user.cast_tts(listener, message, user, TTS_LOCALYZE_LOCAL, 4)	// SS220 ADD - TTS
 			listener.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
 			langchat_long_listeners += listener
 		playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)

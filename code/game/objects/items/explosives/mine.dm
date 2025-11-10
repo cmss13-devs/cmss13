@@ -90,10 +90,10 @@
 		msg_admin_niche("[key_name(user)] attempted to plant \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts deploying [src]."),
 		SPAN_NOTICE("You start deploying [src]."))
 	if(!do_after(user, 40, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		user.visible_message(SPAN_NOTICE("[user] stops deploying [src]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] stops deploying [src]."),
 			SPAN_NOTICE("You stop deploying \the [src]."))
 		return
 
@@ -103,7 +103,7 @@
 	if(check_for_obstacles(user))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes deploying [src]."),
 		SPAN_NOTICE("You finish deploying [src]."))
 
 	deploy_mine(user)
@@ -128,13 +128,13 @@
 			if(user.action_busy)
 				return
 			if(user.faction == iff_signal)
-				user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts disarming [src]."),
 				SPAN_NOTICE("You start disarming [src]."))
 			else
-				user.visible_message(SPAN_NOTICE("[user] starts fiddling with [src], trying to disarm it."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts fiddling with [src], trying to disarm it."),
 				SPAN_NOTICE("You start disarming [src], but you don't know its IFF data. This might end badly..."))
 			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."),
+				user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] stops disarming [src]."),
 					SPAN_WARNING("You stop disarming [src]."))
 				return
 			if(user.faction != iff_signal) //ow!
@@ -147,7 +147,7 @@
 					prime()
 			if(!active)//someone beat us to it
 				return
-			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes disarming [src]."),
 			SPAN_NOTICE("You finish disarming [src]."))
 			disarm()
 	else if(HAS_TRAIT(tool, TRAIT_TOOL_WIRECUTTERS))
@@ -261,7 +261,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(xeno.a_intent == INTENT_HELP)
-		to_chat(xeno, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
+		to_chat(xeno, SPAN_XENONOTICE("Если ударить достаточно сильно, оно, вероятно, взорвётся."))
 		return XENO_NO_DELAY_ACTION
 
 	if(tripwire)
@@ -270,7 +270,7 @@
 			return XENO_NO_DELAY_ACTION
 
 	xeno.animation_attack_on(src)
-	xeno.visible_message(SPAN_DANGER("[xeno] has slashed [src]!"),
+	xeno.visible_message(SPAN_DANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] has slashed [src]!"),
 		SPAN_DANGER("You slash [src]!"))
 	playsound(loc, 'sound/weapons/slice.ogg', 25, 1)
 
@@ -407,15 +407,15 @@
 	if(user.action_busy)
 		return
 	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
-		user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts disarming [src]."), \
 		SPAN_NOTICE("You start disarming [src]."))
 		if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
+			user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] stops disarming [src]."), \
 			SPAN_WARNING("You stop disarming [src]."))
 			return
 		if(!active)//someone beat us to it
 			return
-	user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes disarming [src]."), \
 	SPAN_NOTICE("You finish disarming [src]."))
 	disarm()
 	return

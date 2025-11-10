@@ -1,0 +1,404 @@
+# Uncategorized clothing
+# pouches and holsters <- everything character wears
+
+["marine's holster"]
+nominative = "кобура морпеха"
+genitive = "кобуры морпеха"
+dative = "кобуре морпеха"
+accusative = "кобуру морпеха"
+instrumental = "кобурой морпеха"
+prepositional = "кобуре морпеха"
+gender = "female"
+
+["Flare Pouch (Full)"] # Unique Vendor Name
+nominative = "подсумок для осветительных огней (полный)"
+
+["flare pouch"]
+nominative = "подсумок для осветительных огней"
+genitive = "подсумка для осветительных огней"
+dative = "подсумку для осветительных огней"
+accusative = "подсумок для осветительных огней"
+instrumental = "подсумком для осветительных огней"
+prepositional = "подсумке для осветительных огней"
+gender = "male"
+
+["cassette pouch"]
+nominative = "сумка для кассет"
+genitive = "сумки для кассет"
+dative = "сумке для кассет"
+accusative = "сумку для кассет"
+instrumental = "сумкой для кассет"
+prepositional = "сумке для кассет"
+gender = "female"
+
+["Drop Pouch Crate (x4)"] # Unique Vendor Name
+nominative = "ящик для экипировки (наплечный подсумок x 4)"
+
+["drop pouch"]
+nominative = "наплечный подсумок"
+genitive = "наплечного подсумка"
+dative = "наплечному подсумку"
+accusative = "наплечный подсумок"
+instrumental = "наплечным подсумком"
+prepositional = "наплечном подсумке"
+gender = "male"
+
+["black drop pouch"]
+nominative = "чёрный наплечный подсумок"
+genitive = "чёрного наплечного подсумка"
+dative = "чёрному наплечному подсумку"
+accusative = "чёрный наплечный подсумок"
+instrumental = "чёрным наплечным подсумком"
+prepositional = "чёрном наплечном подсумке"
+gender = "male"
+
+["light general pouch"]
+nominative = "лёгкий подсумок общего назначения"
+genitive = "лёгкого подсумка общего назначения"
+dative = "лёгкому подсумку общего назначения"
+accusative = "лёгкий подсумок общего назначения"
+instrumental = "лёгким подсумком общего назначения"
+prepositional = "лёгком подсумке общего назначения"
+gender = "male"
+
+["medium general pouch"]
+nominative = "подсумок общего назначения"
+genitive = "подсумка общего назначения"
+dative = "подсумку общего назначения"
+accusative = "подсумок общего назначения"
+instrumental = "подсумком общего назначения"
+prepositional = "подсумке общего назначения"
+gender = "male"
+
+["construction pouch"]
+nominative = "подсумок строителя"
+genitive = "подсумка строителя"
+dative = "подсумку строителя"
+accusative = "подсумок строителя"
+instrumental = "подсумком строителя"
+prepositional = "подсумке строителя"
+gender = "male"
+
+["Bayonet Sheath (Full)"] # Unique Vendor Name
+nominative = "подсумок для ножей"
+
+["bayonet sheath"]
+nominative = "подсумок для ножей"
+genitive = "подсумка для ножей"
+dative = "подсумку для ножей"
+accusative = "подсумок для ножей"
+instrumental = "подсумком для ножей"
+prepositional = "подсумке для ножей"
+gender = "male"
+
+["explosive pouch"]
+nominative = "подсумок для взрывчатки"
+genitive = "подсумка для взрывчатки"
+dative = "подсумку для взрывчатки"
+accusative = "подсумок для взрывчатки"
+instrumental = "подсумком для взрывчатки"
+prepositional = "подсумке для взрывчатки"
+gender = "male"
+
+["Electronics Pouch (Full)"] # Unique Vendor Name
+nominative = "подсумок электрика (полный)"
+
+["electronics pouch"]
+nominative = "подсумок электрика"
+genitive = "подсумка электрика"
+dative = "подсумку электрика"
+accusative = "подсумок электрика"
+instrumental = "подсумком электрика"
+prepositional = "подсумке электрика"
+gender = "male"
+
+["Tools Pouch (Full)"] # Unique Vendor Name
+nominative = "подсумок для инструментов (полный)"
+
+["Tools Pouch (Empty)"] # Unique Vendor Name
+nominative = "подсумок для инструментов (пустой)"
+
+["tools pouch"]
+nominative = "подсумок для инструментов"
+genitive = "подсумка для инструментов"
+dative = "подсумку для инструментов"
+accusative = "подсумок для инструментов"
+instrumental = "подсумком для инструментов"
+prepositional = "подсумке для инструментов"
+gender = "male"
+
+["First-Aid Pouch (Refillable Autoinjectors)"] # Unique Vendor Name
+nominative = "медицинский подсумок (инжекторы)"
+
+["First-Aid Pouch (Splints, Gauze, Ointment)"] # Unique Vendor Name
+nominative = "медицинский подсумок (шины, бинты, мазь)"
+
+["First-Aid Pouch (Pill Packets)"] # Unique Vendor Name
+nominative = "медицинский подсумок (таблетки)"
+
+["first-aid pouch"]
+nominative = "медицинский подсумок"
+genitive = "медицинского подсумка"
+dative = "медицинскому подсумку"
+accusative = "медицинский подсумок"
+instrumental = "медицинским подсумком"
+prepositional = "медицинском подсумке"
+gender = "male"
+
+["Autoinjector Pouch (Full)"] # Unique Vendor Name
+nominative = "подсумок для инжекторов (полный)"
+
+["Autoinjector Pouch"] # Unique Vendor Name
+nominative = "подсумок для инжекторов"
+
+["auto-injector pouch"]
+nominative = "подсумок для инжекторов"
+genitive = "подсумка для инжекторов"
+dative = "подсумку для инжекторов"
+accusative = "подсумок для инжекторов"
+instrumental = "подсумком для инжекторов"
+prepositional = "подсумке для инжекторов"
+gender = "male"
+
+["Document Pouch"] # Unique Vendor Name
+nominative = "сумка для документов"
+
+["small document pouch"]
+nominative = "сумка для документов"
+genitive = "сумки для документов"
+dative = "сумке для документов"
+accusative = "сумку для документов"
+instrumental = "сумкой для документов"
+prepositional = "сумке для документов"
+gender = "female"
+
+["large document pouch"]
+nominative = "подсумок для документов"
+genitive = "подсумка для документов"
+dative = "подсумку для документов"
+accusative = "подсумок для документов"
+instrumental = "подсумком для документов"
+prepositional = "подсумке для документов"
+gender = "male"
+
+["fuel tank strap pouch"]
+nominative = "подсумок для резервуаров к огнемёту"
+genitive = "подсумка для резервуаров к огнемёту"
+dative = "подсумку для резервуаров к огнемёту"
+accusative = "подсумок для резервуаров к огнемёту"
+instrumental = "подсумком для резервуаров к огнемёту"
+prepositional = "подсумке для резервуаров к огнемёту"
+gender = "male"
+
+["engineer kit pouch"]
+nominative = "подсумок с инженерным набором"
+genitive = "подсумка с инженерным набором"
+dative = "подсумку с инженерным набором"
+accusative = "подсумок с инженерным набором"
+instrumental = "подсумком с инженерным набором"
+prepositional = "подсумке с инженерным набором"
+gender = "male"
+
+["first responder pouch"]
+nominative = "подсумок первой помощи"
+genitive = "подсумка первой помощи"
+dative = "подсумку первой помощи"
+accusative = "подсумок первой помощи"
+instrumental = "подсумком первой помощи"
+prepositional = "подсумке первой помощи"
+gender = "male"
+
+["syringe pouch"]
+nominative = "подсумок для шприцов"
+genitive = "подсумка для шприцов"
+dative = "подсумку для шприцов"
+accusative = "подсумок для шприцов"
+instrumental = "подсумком для шприцов"
+prepositional = "подсумке для шприцов"
+gender = "male"
+
+["medical pouch"]
+nominative = "подсумок для медицины"
+genitive = "подсумка для медицины"
+dative = "подсумку для медицины"
+accusative = "подсумок для медицины"
+instrumental = "подсумком для медицины"
+prepositional = "подсумке для медицины"
+gender = "male"
+
+["Sling Pouch"] # Unique Vendor Name
+nominative = "ременная сумка"
+
+["sling strap"]
+nominative = "ременная сумка"
+genitive = "ременной сумки"
+dative = "ременной сумке"
+accusative = "ременную сумку"
+instrumental = "ременной сумкой"
+prepositional = "ременной сумке"
+gender = "female"
+
+["medical kit pouch"]
+nominative = "подсумок с набором санитара"
+genitive = "подсумка с набором санитара"
+dative = "подсумку с набором санитара"
+accusative = "подсумок с набором санитара"
+instrumental = "подсумком с набором санитара"
+prepositional = "подсумке с набором санитара"
+gender = "male"
+
+["large general pouch"]
+nominative = "большой подсумок общего назначения"
+genitive = "большого подсумка общего назначения"
+dative = "большому подсумку общего назначения"
+accusative = "большой подсумок общего назначения"
+instrumental = "большим подсумком общего назначения"
+prepositional = "большом подсумке общего назначения"
+gender = "male"
+
+["magazine pouch"]
+nominative = "подсумок для магазинов"
+genitive = "подсумка для магазинов"
+dative = "подсумку для магазинов"
+accusative = "подсумок для магазинов"
+instrumental = "подсумком для магазинов"
+prepositional = "подсумке для магазинов"
+gender = "male"
+
+["Large Pouch 2x(pistol,magazine,general)"] # Unique Vendor Name
+nominative = "ящик для экипировки (большие подсумки x 6)"
+
+["medical pouches crate (1x firstaid, medical, syringe, medkit, autoinjector)"] # Unique Vendor Name
+nominative = "ящик для экипировки (медицинские подсумки x 5)"
+
+["large magazine pouch"]
+nominative = "большой подсумок для магазинов"
+genitive = "большого подсумка для магазинов"
+dative = "большому подсумку для магазинов"
+accusative = "большой подсумок для магазинов"
+instrumental = "большим подсумком для магазинов"
+prepositional = "большом подсумке для магазинов"
+gender = "male"
+
+["pistol magazine pouch"]
+nominative = "подсумок для пистолетных магазинов"
+genitive = "подсумка для пистолетных магазинов"
+dative = "подсумку для пистолетных магазинов"
+accusative = "подсумок для пистолетных магазинов"
+instrumental = "подсумком для пистолетных магазинов"
+prepositional = "подсумке для пистолетных магазинов"
+gender = "male"
+
+["large pistol magazine pouch"]
+nominative = "большой подсумок для пистолетных магазинов"
+genitive = "большого подсумка для пистолетных магазинов"
+dative = "большому подсумку для пистолетных магазинов"
+accusative = "большой подсумок для пистолетных магазинов"
+instrumental = "большим подсумком для пистолетных магазинов"
+prepositional = "большом подсумке для пистолетных магазинов"
+gender = "male"
+
+["Machete Pouch (Full)"] # Unique Vendor Name
+nominative = "ножны H6B для мачете M2132"
+
+["H6B pattern M2132 machete scabbard"]
+nominative = "ножны H6B для мачете M2132"
+genitive = "ножен H6B для мачете M2132"
+dative = "ножнам H6B для мачете M2132"
+accusative = "ножны H6B для мачете M2132"
+instrumental = "ножнами H6B для мачете M2132"
+prepositional = "ножнах H6B для мачете M2132"
+gender = "plural"
+
+["Pistol Pouch"] # Unique Vendor Name
+nominative = "кобура для пистолета"
+
+["sidearm pouch"]
+nominative = "кобура для пистолета"
+genitive = "кобуры для пистолета"
+dative = "кобуре для пистолета"
+accusative = "кобуру для пистолета"
+instrumental = "кобурой для пистолета"
+prepositional = "кобуре для пистолета"
+gender = "female"
+
+["shotgun shell pouch"]
+nominative = "подсумок-патронташ для дробовика"
+genitive = "подсумка-патронташа для дробовика"
+dative = "подсумку-патронташу для дробовика"
+accusative = "подсумок-патронташ для дробовика"
+instrumental = "подсумком-патронташем для дробовика"
+prepositional = "подсумке-патронташе для дробовика"
+gender = "male"
+
+["large shotgun shell pouch"]
+nominative = "большой подсумок-патронташ для дробовика"
+genitive = "большого подсумок-патронташа для дробовика"
+dative = "большому подсумок-патронташу для дробовика"
+accusative = "большой подсумок-патронташ для дробовика"
+instrumental = "большим подсумок-патронташем для дробовика"
+prepositional = "большом подсумок-патронташе для дробовика"
+gender = "male"
+
+["Pressurized Reagent Canister Pouch (Bicaridine)"] # Unique Vendor Name
+nominative = "подсумок с капсулой для реагентов (Bicaridine)"
+
+["Pressurized Reagent Canister Pouch (Kelotane)"] # Unique Vendor Name
+nominative = "подсумок с капсулой для реагентов (Kelotane)"
+
+["Pressurized Reagent Canister Pouch (Revival Mix - Tricordrazine)"] # Unique Vendor Name
+nominative = "подсумок с капсулой для реагентов (Epinephrine, Inaprovaline, Tricordrazine)"
+
+["Pressurized Reagent Canister Pouch (Revival Mix - Peridaxon)"] # Unique Vendor Name
+nominative = "подсумок с капсулой для реагентов (Epinephrine, Inaprovaline, Peridaxon)"
+
+["Pressurized Reagent Canister Pouch (Tricordrazine)"] # Unique Vendor Name
+nominative = "подсумок с капсулой для реагентов (Tricordrazine)"
+
+["Pressurized Reagent Canister Pouch (EMPTY)"] # Unique Vendor Name
+nominative = "подсумок с капсулой для реагентов (Пустой)"
+
+["Pressurized Reagent Canister Pouch"]
+nominative = "подсумок с капсулой для реагентов"
+genitive = "подсумка с капсулой для реагентов"
+dative = "подсумку с капсулой для реагентов"
+accusative = "подсумок с капсулой для реагентов"
+instrumental = "подсумком с капсулой для реагентов"
+prepositional = "подсумке с капсулой для реагентов"
+gender = "male"
+
+["Vial Pouch (Full)"] # Unique Vendor Name
+nominative = "подсумок для пробирок (полный)"
+
+["vial pouch"]
+nominative = "подсумок для пробирок"
+genitive = "подсумка для пробирок"
+dative = "подсумку для пробирок"
+accusative = "подсумок для пробирок"
+instrumental = "подсумком для пробирок"
+prepositional = "подсумке для пробирок"
+gender = "male"
+
+["Leg Pouch "] # Unique Vendor Name
+nominative = "набедренный подсумок"
+
+["Leg Pouch"]
+nominative = "набедренный подсумок"
+genitive = "набедренного подсумка"
+dative = "набедренному подсумку"
+accusative = "набедренный подсумок"
+instrumental = "набедренным подсумком"
+prepositional = "набедренном подсумке"
+gender = "male"
+
+["Leg Pouch (Black)"] # Unique Vendor Name
+nominative = "чёрный набедренный подсумок"
+
+["Black Leg Pouch"]
+nominative = "чёрный набедренный подсумок"
+genitive = "чёрного набедренного подсумка"
+dative = "чёрному набедренному подсумку"
+accusative = "чёрный набедренный подсумок"
+instrumental = "чёрным набедренным подсумком"
+prepositional = "чёрном набедренном подсумке"
+gender = "male"

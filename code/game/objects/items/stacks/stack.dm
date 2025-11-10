@@ -203,7 +203,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(user.action_busy)
 			return FALSE
 		var/time_mult = skillcheck(user, SKILL_CONSTRUCTION, 2) ? 1 : 2
-		user.visible_message(SPAN_NOTICE("[user] starts assembling \a [recipe.title]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts assembling \a [recipe.title]."),
 			SPAN_NOTICE("You start assembling \a [recipe.title]."))
 		if(!do_after(user, max(recipe.time * time_mult, recipe.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return FALSE
@@ -228,7 +228,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	else
 		new_item = new recipe.result_type(user.loc, user)
 
-	user.visible_message(SPAN_NOTICE("[user] assembles \a [new_item]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] assembles \a [new_item]."),
 	SPAN_NOTICE("You assemble \a [new_item]."))
 	new_item.setDir(user.dir)
 	if(recipe.max_res_amount > 1)

@@ -20,6 +20,7 @@
 /obj/item/clothing/accessory/ranks/New()
 	..()
 	name = "[initial(name)] ([rank_short])"
+	ru_names_rename(ru_names_toml(src::name, suffix = " ([declent_ru_initial(rank_short, NOMINATIVE, rank_short)])", override_base = name)) // SS220 EDIT ADDICTION
 	desc = "[initial(desc)] This one is for the rank <b>[get_paygrades(rank_short)]</b>."
 
 /*################################################

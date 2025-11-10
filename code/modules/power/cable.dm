@@ -121,7 +121,7 @@
 
 		deconstruct()
 		for(var/mob/O in viewers(src, null))
-			O.show_message(SPAN_WARNING("[user] cuts the cable."), SHOW_MESSAGE_VISIBLE)
+			O.show_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] cuts the cable."), SHOW_MESSAGE_VISIBLE)
 		// wires are irrelevant so I have disabled this message for now
 		//message_admins("[key_name(user)] cut a wire at ([x],[y],[z]) [ADMIN_JMP(src)]")
 

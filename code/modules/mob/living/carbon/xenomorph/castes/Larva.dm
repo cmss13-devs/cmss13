@@ -121,7 +121,7 @@
 	hud_set_hunter()
 
 /mob/living/carbon/xenomorph/larva/evolve_message()
-	to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will. <a href='byond://?src=\ref[src];evolve=1;'>Evolve</a>"))
+	to_chat(src, SPAN_XENODANGER("Сила пронизывает вашу маленькую форму. Вы готовы <a href='byond://?src=\ref[src];evolve=1;'>эволюционировать</a> по воле Королевы.")) // SS220 EDIT ADDICTION
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
@@ -225,11 +225,12 @@ Also handles the "Mature / Bloody naming convention. Call this to update the nam
 		color = hive.color
 
 	if(larva_state == LARVA_STATE_MATURE)
-		progress = "Mature "
+		progress = "Взрослый "
 	else if(larva_state == LARVA_STATE_BLOODY)
-		progress = "Bloody "
+		progress = "Кровавый "
 
-	name = "[name_prefix][progress]Larva ([nicknumber])"
+	name = "[name_prefix][progress][declent_ru_initial("Larva", NOMINATIVE, "Larva")] ([nicknumber])"
+	ru_names_rename(ru_names_toml("Larva", prefix = "[name_prefix][progress]", suffix = " ([nicknumber])", override_base = name))
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)

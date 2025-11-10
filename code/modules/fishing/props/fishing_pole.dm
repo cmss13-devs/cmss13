@@ -44,7 +44,7 @@
 			return
 		if(user.drop_inv_item_to_loc(I, src))
 			loaded_bait = I
-			user.visible_message(SPAN_NOTICE("[user] loads \the [I] onto \the [src]'s hook."), SPAN_NOTICE("You load \the [I] onto \the [src]'s hook."))
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] loads \the [I] onto \the [src]'s hook."), SPAN_NOTICE("You load \the [I] onto \the [src]'s hook."))
 			return
 	return ..()
 
@@ -54,7 +54,7 @@
 		if(waiting_for_fish || fish_check_progress)
 			to_chat(user, SPAN_WARNING("It is EXTREMELY disrespectful to pack up a rod while someone's fishing!"))
 			return
-		user.visible_message(SPAN_NOTICE("[user] starts packing up \the [src]..."), SPAN_NOTICE("You start packing up \the [src]..."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts packing up \the [src]..."), SPAN_NOTICE("You start packing up \the [src]..."))
 		if(do_after(user, 3 SECONDS, show_busy_icon = BUSY_ICON_BUILD))
 			var/obj/item/fishing_pole/FP = new pole_type(loc)
 			FP.transfer_to_user(src, user)
@@ -87,7 +87,7 @@
 	if(do_after(user, rand(0.5 SECONDS, 2 SECONDS)) && fish_check_progress)
 		fish_check_progress = FALSE
 		playsound(src, fishing_failure, 50, 1)
-		user.visible_message(SPAN_NOTICE("[user] fails to fish up anything."), SPAN_NOTICE("You don't seem to catch much of anything..."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] fails to fish up anything."), SPAN_NOTICE("You don't seem to catch much of anything..."))
 		remove_filter("fish_ready")
 
 /obj/structure/prop/fishing/pole_interactive/proc/spawn_loot(mob/M)
@@ -97,7 +97,7 @@
 	var/obj/item/caught_item = get_fishing_loot(T, A, get_common_weight(), get_uncommon_weight(), get_rare_weight(), get_ultra_rare_weight())
 	caught_item.throw_atom(get_turf(M), 2, 2, spin = TRUE, launch_type = HIGH_LAUNCH)
 	playsound(src, fishing_success, 50, 1)
-	M.visible_message(SPAN_NOTICE("[M] fishes up \the [caught_item]!"), SPAN_NOTICE("You fish up \the [caught_item]!"))
+	M.visible_message(SPAN_NOTICE("[capitalize(M.declent_ru(NOMINATIVE))] fishes up \the [caught_item]!"), SPAN_NOTICE("You fish up \the [caught_item]!"))
 
 	QDEL_NULL(loaded_bait)
 

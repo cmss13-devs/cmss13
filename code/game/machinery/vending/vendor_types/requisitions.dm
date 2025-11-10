@@ -210,7 +210,7 @@
 				S.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
-			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] stocks [src] with \a [R[1]]."),
 			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
 			R[2]++
 			if(vend_flags & VEND_LOAD_AMMO_BOXES)
@@ -364,7 +364,7 @@
 				S.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
-			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] stocks [src] with \a [R[1]]."),
 			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
 			R[2]++
 			if(vend_flags & VEND_LOAD_AMMO_BOXES)
@@ -554,7 +554,7 @@
 		list("United Americas Shoulder patch", 10, /obj/item/clothing/accessory/patch/ua, VENDOR_ITEM_REGULAR),
 		list("United Americas Flag Shoulder patch", 10, /obj/item/clothing/accessory/patch/uasquare, VENDOR_ITEM_REGULAR),
 		list("Bedroll", 30, /obj/item/roller/bedroll, VENDOR_ITEM_REGULAR),
-		list("M5 Camera Gear", 5, /obj/item/device/overwatch_camera, VENDOR_ITEM_REGULAR),
+		list("M5 Camera Gear", 15, /obj/item/device/overwatch_camera, VENDOR_ITEM_REGULAR),	// SS220 EDIT
 		)
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/ui_state(mob/user)
@@ -593,7 +593,7 @@
 				S.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
-			user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [R[1]]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] stocks \the [src] with \a [R[1]]."),
 			SPAN_NOTICE("You stock \the [src] with \a [R[1]]."))
 			R[2]++
 			if(vend_flags & VEND_LOAD_AMMO_BOXES)

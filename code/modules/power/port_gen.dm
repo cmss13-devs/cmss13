@@ -102,20 +102,20 @@ display floor(lastgen) and phorontank amount
 /obj/structure/machinery/power/power_generator/port_gen/get_examine_text(mob/user)
 	. = ..()
 	if(is_on)
-		. += SPAN_NOTICE("The generator is on.")
+		. += SPAN_NOTICE("Генератор выключен.")
 	else
-		. += SPAN_NOTICE("The generator is off.")
+		. += SPAN_NOTICE("Генератор включен.")
 
 /obj/structure/machinery/power/power_generator/port_gen/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
 	if(!is_on && !anchored)
 		return ..()
 
 	if(attacking_xeno.mob_size < MOB_SIZE_XENO)
-		to_chat(attacking_xeno, SPAN_XENOWARNING("You're too small to do any significant damage to affect this!"))
+		to_chat(attacking_xeno, SPAN_XENOWARNING("Вы слишком малы, чтобы нанести какой-то значимый урон!"))
 		return XENO_NO_DELAY_ACTION
 
 	attacking_xeno.animation_attack_on(src)
-	attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
+	attacking_xeno.visible_message(SPAN_DANGER("[capitalize(attacking_xeno.declent_ru(NOMINATIVE))] [ru_attack_verb("slashes")] [declent_ru(ACCUSATIVE)]!"), SPAN_DANGER("Вы [ru_attack_verb("slash")] [declent_ru(ACCUSATIVE)]!"))
 	playsound(attacking_xeno, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 
 	if(is_on)

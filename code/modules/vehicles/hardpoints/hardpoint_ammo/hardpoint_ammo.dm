@@ -22,10 +22,10 @@
 		to_chat(user, SPAN_WARNING("Wrong ammo type."))
 		return
 
-	user.visible_message(SPAN_WARNING("[user] starts refilling [src]."), SPAN_WARNING("You start refilling [src]."))
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] starts refilling [src]."), SPAN_WARNING("You start refilling [src]."))
 
 	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		user.visible_message(SPAN_WARNING("[user] stops refilling [src]."), SPAN_WARNING("You stop refilling [src]."))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] stops refilling [src]."), SPAN_WARNING("You stop refilling [src]."))
 		return
 
 	var/S = min(max_rounds - current_rounds, source.current_rounds)
@@ -34,4 +34,4 @@
 	current_rounds += S
 	source.update_icon()
 	update_icon()
-	user.visible_message(SPAN_WARNING("[user] finishes refilling [src]."), SPAN_WARNING("You finish refilling [src]. Ammo count: [current_rounds]."))
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] finishes refilling [src]."), SPAN_WARNING("You finish refilling [src]. Ammo count: [current_rounds]."))

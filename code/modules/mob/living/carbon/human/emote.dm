@@ -173,7 +173,7 @@
 	if(!ishuman_strict(user))
 		return
 
-	var/medic_message = pick("Corpsman!", "Doc!", "Help!")
+	var/medic_message = pick("Санитар!", "Доктор!", "Врач!", "Медик!", "Помогите!")
 	user.langchat_speech(medic_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_bolded"))
 	user.show_speech_bubble(group, "medic")
 
@@ -194,7 +194,7 @@
 
 /datum/emote/living/carbon/human/pain
 	key = "pain"
-	message = "cries out in pain!"
+	message = "кричит от боли!"
 	alt_message = "cries out"
 	species_type_allowed_typecache = list(/datum/species/human, /datum/species/synthetic, /datum/species/yautja, /datum/species/synthetic/colonial/wy_droid)
 	species_type_blacklist_typecache = list(/datum/species/synthetic)
@@ -222,7 +222,7 @@
 	if(!ishuman_strict(user))
 		return
 
-	var/pain_message = pick("OW!!", "AGH!!", "ARGH!!", "OUCH!!", "ACK!!", "OUF!")
+	var/pain_message = pick("АУ!!", "АГХ!!", "МГХ!!", "АУЧ!!", "АХ!!", "УФ!")
 	user.langchat_speech(pain_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_yell"))
 	user.show_speech_bubble(group, "pain")
 
@@ -261,7 +261,7 @@
 	if(!ishuman_strict(user))
 		return
 
-	var/scream_message = pick("FUCK!!!", "AGH!!!", "ARGH!!!", "AAAA!!!", "HGH!!!", "NGHHH!!!", "NNHH!!!", "SHIT!!!")
+	var/scream_message = pick("БЛЯТЬ!!!", "АЙ!!!", "АРГХ!!!", "АААА!!!", "ГХХ!!!", "МГХ!!!", "РРХ!!!", "ЧЁРТ!!!")
 	user.langchat_speech(scream_message, group, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_PANIC_POP, additional_styles = list("langchat_yell"))
 	user.show_speech_bubble(group, "scream")
 

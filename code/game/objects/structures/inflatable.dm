@@ -75,10 +75,10 @@
 	health -= damage
 	user.animation_attack_on(src)
 	if(health <= 0)
-		user.visible_message(SPAN_DANGER("[user] tears open [src]!"))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] tears open [src]!"))
 		deflate(1)
 	else //for nicer text~
-		user.visible_message(SPAN_DANGER("[user] tears at [src]!"))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] tears at [src]!"))
 
 /obj/structure/inflatable/attack_animal(mob/user as mob)
 	if(!isanimal(user))

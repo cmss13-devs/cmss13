@@ -575,7 +575,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 	if(stash.w_class == SIZE_TINY)
 		user.drop_inv_item_to_loc(stash, src)
 		stashed_item = stash
-		user.visible_message("[user] puts something in [src].", "You hide [stash] in [src].")
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] puts something in [src].", "You hide [stash] in [src].")
 		return
 
 	to_chat(user, SPAN_WARNING("[stash] is too big to fit into [src]!"))
@@ -751,7 +751,7 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 			//this bush marks the edge of the map, you can't destroy it
 			to_chat(user, SPAN_DANGER("You flail away at the undergrowth, but it's too thick here."))
 		else
-			user.visible_message(SPAN_DANGER("[user] flails away at [src] with [I]."), SPAN_DANGER("You flail away at [src] with [I]."))
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] flails away at [src] with [I]."), SPAN_DANGER("You flail away at [src] with [I]."))
 			playsound(src.loc, 'sound/effects/vegetation_hit.ogg', 25, 1)
 			health -= damage
 			if(health < 0)

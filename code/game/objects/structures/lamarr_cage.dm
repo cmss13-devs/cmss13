@@ -65,7 +65,7 @@
 		to_chat(user, SPAN_NOTICE("You kick the lab cage."))
 		for(var/mob/O in oviewers())
 			if ((O.client && !( O.blinded )))
-				to_chat(O, SPAN_DANGER("[user] kicks the lab cage."))
+				to_chat(O, SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] kicks the lab cage."))
 		src.health -= 2
 		healthcheck()
 		return

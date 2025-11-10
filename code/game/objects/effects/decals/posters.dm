@@ -60,7 +60,7 @@
 		if("Yes")
 			if(user.loc != temp_loc)
 				return
-			visible_message(SPAN_WARNING("[user] rips [src] in a single, decisive motion!") )
+			visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] rips [src] in a single, decisive motion!") )
 			playsound(src.loc, 'sound/items/poster_ripped.ogg', 25, 1)
 			ruined = 1
 			icon_state = "poster_ripped"

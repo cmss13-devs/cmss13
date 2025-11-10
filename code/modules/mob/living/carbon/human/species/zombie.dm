@@ -102,14 +102,14 @@
 		var/obj/limb/head/head = zombie.get_limb("head")
 		if(!QDELETED(head) && !(head.status & LIMB_DESTROYED))
 			if(zombie.client)
-				zombie.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You are dead...</u></span><br>You will rise again in one minute.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
+				zombie.play_screen_text("<span class='langchat_notification' style=text-align:center valign='top'><u>You are dead...</u></span><br>You will rise again in one minute.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200)) // SS220 EDIT: font
 			to_chat(zombie, SPAN_XENOWARNING("You fall... but your body is slowly regenerating itself."))
 			var/weak_ref = WEAKREF(zombie)
 			to_revive[weak_ref] = addtimer(CALLBACK(src, PROC_REF(revive_from_death), zombie, "[REF(zombie)]"), ZOMBIE_REVIVE_TIME, TIMER_STOPPABLE|TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 			revive_times[weak_ref] = world.time + 1 MINUTES
 		else
 			if(zombie.client)
-				zombie.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You are dead...</u></span><br>You lost your head. No reviving for you.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
+				zombie.play_screen_text("<span class='langchat_notification' style=text-align:center valign='top'><u>You are dead...</u></span><br>You lost your head. No reviving for you.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200)) // SS220 EDIT: font
 			to_chat(zombie, SPAN_XENOWARNING("You fall... headless, you will no longer rise."))
 			zombie.undefibbable = TRUE // really only for weed_food
 			SEND_SIGNAL(zombie, COMSIG_HUMAN_SET_UNDEFIBBABLE)
@@ -135,7 +135,7 @@
 	var/mob/dead/observer/ghost = zombie.get_ghost()
 	if(ghost?.client)
 		playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
-		to_chat(ghost, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Your body has risen! (Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)")))
+		to_chat(ghost, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Вы восстали! (Откройте вкладку «Ghost» и выберите «Re-enter corpse» или <a href=\"byond://?src=\ref[ghost];reentercorpse=1\">нажмите здесь!</a>)"))) // SS220 EDIT ADDICTION
 
 /datum/species/zombie/proc/remove_from_revive(mob/living/carbon/human/zombie)
 	var/weak_ref = WEAKREF(zombie)
@@ -166,5 +166,5 @@
 			if(ghost)
 				receiving_client = ghost.client
 		if(receiving_client)
-			receiving_client.mob.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Beheaded...</u></span><br>Your corpse will no longer rise.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
-			to_chat(receiving_client, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("You've been beheaded! Your body will no longer rise.")))
+			receiving_client.mob.play_screen_text("<span class='langchat_notification' style=text-align:center valign='top'><u>Beheaded...</u></span><br>Your corpse will no longer rise.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200)) // SS220 EDIT: font
+			to_chat(receiving_client, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Вы были обезглавлены! Ваше тело больше не может восстать.")))

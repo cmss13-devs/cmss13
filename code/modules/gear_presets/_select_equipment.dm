@@ -53,6 +53,7 @@
 
 	/// All presets are in "All" and "Faction" (drawn from the faction variable)
 	var/selection_categories = list()
+	var/remove_tts = FALSE // BANDAMARINES ADD
 
 /datum/equipment_preset/New()
 	if(!manifest_title)

@@ -159,7 +159,7 @@ SUBSYSTEM_DEF(weather)
 	weather_event_instance = new weather_event_type()
 
 	if(!weather_event_instance)
-		message_admins(SPAN_BLUE("Bad weather event of type [weather_event_type]."))
+		message_admins(SPAN_BLUE("Плохая погода типа «[weather_event_type]».")) // SS220 EDIT ADDICTION
 		return
 
 	weather_event_instance.start_weather_event()
@@ -172,9 +172,9 @@ SUBSYSTEM_DEF(weather)
 	current_event_start_time = world.time
 
 	if (weather_event_instance.display_name)
-		message_admins(SPAN_BLUE("Weather Event of type [weather_event_instance.display_name] starting with duration of [DisplayTimeText(weather_event_instance.length)]."))
+		message_admins(SPAN_BLUE("В ближайшее время ожидается погода типа «[weather_event_instance.display_name]» продолжительностью [DisplayTimeText(weather_event_instance.length)].")) // SS220 EDIT ADDICTION
 	else
-		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] starting with duration of [DisplayTimeText(weather_event_instance.length)]."))
+		message_admins(SPAN_BLUE("В ближайшее время ожидается неизвестная погода типа «[weather_event_type]» продолжительностью [DisplayTimeText(weather_event_instance.length)].")) // SS220 EDIT ADDICTION
 
 	curr_master_turf_overlay.icon_state = weather_event_instance.turf_overlay_icon_state
 	curr_master_turf_overlay.alpha = weather_event_instance.turf_overlay_alpha
@@ -196,9 +196,9 @@ SUBSYSTEM_DEF(weather)
 	controller_state_lock = TRUE
 
 	if (weather_event_instance.display_name)
-		message_admins(SPAN_BLUE("Weather Event of type [weather_event_instance.display_name] ending after [DisplayTimeText(world.time - current_event_start_time)]."))
+		message_admins(SPAN_BLUE("Погода типа «[weather_event_instance.display_name]» закончится через [DisplayTimeText(world.time - current_event_start_time)].")) // SS220 EDIT ADDICTION
 	else
-		message_admins(SPAN_BLUE("Weather Event of unknown type [weather_event_type] ending after [DisplayTimeText(world.time - current_event_start_time)]."))
+		message_admins(SPAN_BLUE("Неизвестная погода типа «[weather_event_type]» закончится через [DisplayTimeText(world.time - current_event_start_time)].")) // SS220 EDIT ADDICTION
 
 	for(var/area/area as anything in weather_areas)
 		area.overlays -= curr_master_turf_overlay

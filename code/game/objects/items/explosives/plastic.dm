@@ -81,11 +81,11 @@
 		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 		return
 
-	user.visible_message(SPAN_WARNING("[user] is trying to plant [name] on [target]!"),
-	SPAN_WARNING("You are trying to plant [name] on [target]!"))
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] пытается установить [declent_ru(ACCUSATIVE)] на [target.declent_ru(ACCUSATIVE)]!"),
+	SPAN_WARNING("Вы пытаетесь установить [declent_ru(ACCUSATIVE)] на [target.declent_ru(ACCUSATIVE)]!"))
 	if(ismob(target))
 		var/mob/M = target
-		to_chat(M, FONT_SIZE_HUGE(SPAN_DANGER("[user] is trying to plant [name] on you!")))
+		to_chat(M, FONT_SIZE_HUGE(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] пытается установить [declent_ru(ACCUSATIVE)] на вас!"))) // SS220 EDIT ADDICTION
 
 	if(!do_after(user, deploying_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		if(!ismob(target))
@@ -110,7 +110,7 @@
 
 	if(ismob(target))
 		var/mob/M = target
-		to_chat(M, FONT_SIZE_HUGE(SPAN_DANGER("[user] plants [name] on you!")))
+		to_chat(M, FONT_SIZE_HUGE(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] устанавливает [declent_ru(ACCUSATIVE)] на вас!"))) // SS220 EDIT ADDICTION
 		user.attack_log += "\[[time_stamp()]\] <font color='red'> [key_name(user)] successfully planted [name] on [key_name(target)]</font>"
 		msg_admin_niche("[key_name(user, user.client)] planted [src.name] on [key_name(target)] with [timer] second fuse")
 		log_game("[key_name(user)] planted [src.name] on [key_name(target)] with [timer] second fuse")
@@ -119,14 +119,14 @@
 		log_game("[key_name(user)] planted [src.name] on [target.name] at ([target.x],[target.y],[target.z]) with [timer] second fuse")
 
 	if(customizable)
-		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
-		SPAN_WARNING("You plant [name] on [target]!"))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] устанавливает [declent_ru(ACCUSATIVE)] на [target.declent_ru(ACCUSATIVE)]!"),
+		SPAN_WARNING("Вы устанавливаете [declent_ru(ACCUSATIVE)] на [target.declent_ru(ACCUSATIVE)]!"))
 		activate_sensors()
 		if(!istimer(detonator.a_right) && !istimer(detonator.a_left))
 			icon_state = overlay_image
 	else
-		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
-		SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] устанавливает [declent_ru(ACCUSATIVE)] на [target.declent_ru(ACCUSATIVE)]!"),
+		SPAN_WARNING("Вы устанавливаете [declent_ru(ACCUSATIVE)] на [target.declent_ru(ACCUSATIVE)]! Таймер обратного отсчёта установлен на [timer] секунд."))
 		active = TRUE
 		anchored = TRUE
 		addtimer(CALLBACK(src, PROC_REF(prime)), timer * 10)
@@ -136,15 +136,15 @@
 		if(active)
 			if(user.action_busy)
 				return
-			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts disarming [src]."),
 			SPAN_NOTICE("You start disarming [src]."))
 			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."),
+				user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] stops disarming [src]."),
 					SPAN_WARNING("You stop disarming [src]."))
 				return
 			if(!active)//someone beat us to it
 				return
-			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] finishes disarming [src]."),
 			SPAN_NOTICE("You finish disarming [src]."))
 			disarm()
 	else

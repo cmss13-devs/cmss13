@@ -78,7 +78,7 @@
 /obj/effect/decal/mecha_wreckage/attack_alien(mob/living/carbon/xenomorph/M)
 	playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
 	M.animation_attack_on(src)
-	M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"))
+	M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"))
 	deconstruct(TRUE)
 	return XENO_ATTACK_ACTION
 

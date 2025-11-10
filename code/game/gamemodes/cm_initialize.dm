@@ -185,6 +185,7 @@ Additional game mode variables.
 	if(!new_predator)
 		return
 
+	INVOKE_ASYNC(new_predator, TYPE_PROC_REF(/mob/living/carbon, change_tts_seed_ask)) // BANDAMARINES ADD
 	msg_admin_niche("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
 
 	if(pred_candidate)
@@ -233,7 +234,7 @@ Additional game mode variables.
 	return TRUE
 
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
-	set waitfor = FALSE
+	// set waitfor = FALSE // BANDAMARINES REMOVE
 
 	if(!pred_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_predator")
@@ -268,7 +269,7 @@ Additional game mode variables.
 	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
 	if(new_predator.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER) && (tgui_alert(new_predator, "Do you wish to announce your presence?", "Announce Arrival", list("Yes","No"), 10 SECONDS) != "No"))
-		elder_overseer_message("[new_predator.real_name] has joined the hunting party.")
+		elder_overseer_message("[new_predator.real_name] присоединяется к охоте.")
 
 	return new_predator
 
@@ -818,13 +819,13 @@ Additional game mode variables.
 
 	original.sight = BLIND
 
-	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
+	var/selected_spawn = tgui_input_list(original, "Где вы хотите появиться вместе с вашим ульем?", "Появление Королевы", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status") // SS220 EDIT ADDICTION
 	if(hive.living_xeno_queen)
-		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, a queen has already evolved before you."))
+		to_chat(original, SPAN_XENOANNOUNCE("Вы слишком долго выбирали место для появления, Королева уже эволюционировала."))
 		player.send_to_lobby()
 	if(!selected_spawn)
 		selected_spawn = pick(spawn_list_map)
-		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, one has been chosen for you."))
+		to_chat(original, SPAN_XENOANNOUNCE("Вы слишком долго выбирали место для появления, оно было выбрано за вас."))
 
 	var/turf/QS
 	var/obj/effect/landmark/queen_spawn/QSI
@@ -937,10 +938,10 @@ Additional game mode variables.
 					to_chat(H, line)
 		else
 			spawn(4)
-				to_chat(H, "<h2>You are a survivor!</h2>")
+				to_chat(H, "<h2>Вы - выживший!</h2>")
 				to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-				to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-				to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
+				to_chat(H, SPAN_NOTICE("Вы полностью осознаете угрозу ксеноморфов и можете использовать эти знания по своему усмотрению."))
+				to_chat(H, SPAN_NOTICE("Вы НЕ знаете о морпехах и их намерениях."))
 		if(spawner.story_text)
 			. = 1
 			spawn(6)
@@ -960,10 +961,10 @@ Additional game mode variables.
 	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
 		new /datum/cm_objective/move_mob/almayer/survivor(H)
 		spawn(4)
-			to_chat(H, "<h2>You are a survivor!</h2>")
+			to_chat(H, "<h2>Вы - выживший!</h2>")
 			to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-			to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-			to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions."))
+			to_chat(H, SPAN_NOTICE("Вы полностью осознаете угрозу ксеноморфов и можете использовать эти знания по своему усмотрению."))
+			to_chat(H, SPAN_NOTICE("Вы НЕ знаете о морпехах и их намерениях."))
 		return 1
 
 /datum/game_mode/proc/tell_survivor_story()

@@ -84,8 +84,8 @@
 		return original_damage
 
 	if (next_slash_buffed)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [target_carbon]!"))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Мы значительно усиливаем нашу атаку, замедляя [target_carbon]!")) // SS220 EDIT ADDICTION
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("Вы чувствуете резкую боль, когда [bound_xeno] атакует и замедляет вас!")) // SS220 EDIT ADDICTION
 		original_damage *= buffed_slash_damage_ratio
 		target_carbon.set_effect(get_xeno_stun_duration(target_carbon, 3), SUPERSLOW)
 		next_slash_buffed = FALSE
@@ -190,7 +190,7 @@
 	if(HAS_TRAIT(bumped_into, TRAIT_CLOAKED)) //ignore invisible scouts and preds
 		return
 
-	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We bumped into someone and lost our invisibility!"))
+	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Мы столкнулись с кем-то и потеряли свою невидимость!"))
 	lurker_invisibility_action.invisibility_off(0.5) // partial refund of remaining time
 
 
@@ -275,7 +275,7 @@
 		invis_timer_id = TIMER_ID_NULL
 
 	animate(xeno, alpha = initial(xeno.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
-	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our invisibility end!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("Мы чувствуем, что перестали быть невидимым!"))
 
 	button.icon_state = "template_xeno"
 	xeno.update_icons()
@@ -298,7 +298,7 @@
 
 /datum/action/xeno_action/onclick/lurker_invisibility/ability_cooldown_over()
 	if(owner.client?.prefs.show_cooldown_messages)
-		to_chat(owner, SPAN_XENOHIGHDANGER("We are ready to use our invisibility again!"))
+		to_chat(owner, SPAN_XENOHIGHDANGER("Мы снова полны сил, чтобы стать невидимым!"))
 	..()
 
 /datum/action/xeno_action/onclick/lurker_assassinate/use_ability(atom/targeted_atom)
@@ -317,7 +317,7 @@
 	if (istype(behavior))
 		behavior.next_slash_buffed = TRUE
 
-	to_chat(xeno, SPAN_XENOHIGHDANGER("Our next slash will deal increased damage!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("Наша следующая атака нанесёт повышенный урон!"))
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 	xeno.next_move = world.time + 1 // Autoattack reset
@@ -336,4 +336,4 @@
 			return
 		behavior.next_slash_buffed = FALSE
 
-	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer deal increased damage!"))
+	to_chat(xeno, SPAN_XENODANGER("Мы слишком долго ждали, наша атака больше не наносит повышенный урон!"))

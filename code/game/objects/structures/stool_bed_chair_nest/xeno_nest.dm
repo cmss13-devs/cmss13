@@ -100,7 +100,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon = user
 		if(HIVE_ALLIED_TO_HIVE(carbon.hivenumber, hivenumber))
-			to_chat(user, SPAN_XENOWARNING("We shouldn't interfere with the nest, leave that to the drones."))
+			to_chat(user, SPAN_XENOWARNING("Мы не должны вмешиваться в гнездо, оставьте это дронам."))
 			return
 	if(buckled_mob)
 		if(iswelder(W))
@@ -151,18 +151,18 @@
 	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/X = user
 		if((X.hive.hive_flags & XENO_UNNESTING_RESTRICTED) && !isxeno_builder(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
-			to_chat(X, SPAN_XENOWARNING("We shouldn't interfere with the nest, leave that to the drones."))
+			to_chat(X, SPAN_XENOWARNING("Мы не должны вмешиваться в гнездо, оставьте это дронам."))
 			return
 	else if(iscarbon(user))
 		var/mob/living/carbon/H = user
 		if(HIVE_ALLIED_TO_HIVE(H.hivenumber, hivenumber))
-			to_chat(H, SPAN_XENOWARNING("We shouldn't interfere with the nest, leave that to the drones."))
+			to_chat(H, SPAN_XENOWARNING("Мы не должны вмешиваться в гнездо, оставьте это дронам."))
 			return
 
 	if(ishuman(buckled_mob) && isxeno(user))
 		var/mob/living/carbon/human/H = buckled_mob
 		if(H.recently_nested)
-			to_chat(user, SPAN_WARNING("[H] was nested recently. Wait a bit."))
+			to_chat(user, SPAN_WARNING("[capitalize(H.declent_ru(NOMINATIVE))] was nested recently. Wait a bit."))
 			return
 		if(H.stat != DEAD)
 			if(alert(user, "[H] is still alive and kicking! Are we sure we want to remove them from the nest?", "Confirmation", "Yes", "No") != "Yes")
@@ -230,8 +230,8 @@
 	if(ishuman_strict(mob))
 		securing_time = 75
 
-	user.visible_message(SPAN_WARNING("[user] pins [mob] into [src], preparing the securing resin."),
-	SPAN_WARNING("[user] pins [mob] into [src], preparing the securing resin."))
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] pins [mob] into [src], preparing the securing resin."),
+	SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] pins [mob] into [src], preparing the securing resin."))
 	var/M_loc = mob.loc
 	if(!do_after(user, securing_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
@@ -267,8 +267,8 @@
 	return TRUE
 
 /obj/structure/bed/nest/send_buckling_message(mob/M, mob/user)
-	M.visible_message(SPAN_XENONOTICE("[user] secretes a thick, vile resin, securing [M] into [src]!"),
-	SPAN_XENONOTICE("[user] drenches you in a foul-smelling resin, trapping you in [src]!"),
+	M.visible_message(SPAN_XENONOTICE("[capitalize(user.declent_ru(NOMINATIVE))] выделяет густую, отвратительную смолу, закрепляя [M.declent_ru(ACCUSATIVE)] в [declent_ru(PREPOSITIONAL)]!"), // SS220 EDIT ADDICTION
+	SPAN_XENONOTICE("[capitalize(user.declent_ru(NOMINATIVE))] обрызгивает вас зловонной смолой, запирая вас в [declent_ru(PREPOSITIONAL)]!"), // SS220 EDIT ADDICTION
 	SPAN_NOTICE("You hear squelching."))
 	playsound(loc, "alien_resin_move", 50)
 
@@ -297,7 +297,7 @@
 	if(!istype(ghost_mob) || !istype(ghost_mind) || buckled_human.mind || ghost_mind.original != buckled_human)
 		return // Zealous checking as most is handled by ghost code
 
-	to_chat(ghost_mob, FONT_SIZE_HUGE(SPAN_DANGER("You have been freed from your nest and may go back to your body! (Look for 'Re-enter Corpse' in Ghost verbs, or <a href='byond://?src=\ref[ghost_mob];reentercorpse=1'>click here</a>!)")))
+	to_chat(ghost_mob, FONT_SIZE_HUGE(SPAN_DANGER("Вы были освобождены из вашего гнезда и можете вернуться в своё тело! (Откройте вкладку «Ghost» и выберите «Re-enter corpse» или <a href='byond://?src=\ref[ghost_mob];reentercorpse=1'>нажмите здесь!</a>)"))) // SS220 EDIT ADDICTION
 	sound_to(ghost_mob, 'sound/effects/attackblob.ogg')
 
 	ghost_mob.can_reenter_corpse = TRUE
@@ -329,8 +329,8 @@
 		return
 	if(M.a_intent == INTENT_HARM && !buckled_mob) //can't slash nest with an occupant.
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_DANGER("\The [M] claws at \the [src]!"),
-		SPAN_DANGER("We claw at \the [src]."))
+		M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] царапает [declent_ru(ACCUSATIVE)]!"),
+		SPAN_DANGER("Мы царапаем [declent_ru(ACCUSATIVE)]."))
 		playsound(loc, "alien_resin_break", 25)
 		health -= (M.melee_damage_upper + 25) //Beef up the damage a bit
 		healthcheck()

@@ -4,7 +4,7 @@
 	name = "UPP Commandos (!DEATHSQUAD!)"
 	mob_max = 6
 	probability = 0
-	objectives = "Stealthily assault the ship. Use your silenced weapons, tranquilizers, and night vision to get the advantage on the enemy. Take out the power systems, comms and engine. Stick together and keep a low profile."
+	objectives = "Незаметно атакуйте корабль. Используйте оружие с глушителем, транквилизаторы и приборы ночного видения, чтобы получить преимущество над противником. Выведите из строя энергетические системы, средства связи и двигатель. Держитесь вместе и не высовывайтесь."
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT3
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_upp
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_upp/item
@@ -20,9 +20,9 @@
 	to_chat(M, SPAN_BOLD("As MV-35 and Altai Station are the only UPP-held zones in the Neroid Sector for many lightyears, you have spent most of your military career holed up in crammed quarters in near darkness, waiting for supply shipments and transport escort deployments."))
 	to_chat(M, SPAN_BOLD("With the recent arrival of the enemy USCM battalion the 'Falling Falcons' and their flagship, the [MAIN_SHIP_NAME], the UPP has felt threatened in the sector."))
 	to_chat(M, SPAN_BOLD("In an effort to protect the vunerable MV-35 from the emproaching UA/USCM imperialists, the leadership of your battalion has opted this the best opportunity to strike at the Falling Falcons to catch them off guard."))
-	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to Podpolkovnik Ganbaatar.")))
-	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the Smoldering Sons.")))
-	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to the UPP.")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Слава подполковнику Ганбаатару.")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Слава Сынам Тлена.")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Слава СПН.")))
 	to_chat(M, SPAN_NOTICE(" Use say :3 <text> to speak in your native tongue."))
 	to_chat(M, SPAN_NOTICE(" This allows you to speak privately with your fellow UPP allies."))
 	to_chat(M, SPAN_NOTICE(" Utilize it with your radio to prevent enemy radio interceptions."))

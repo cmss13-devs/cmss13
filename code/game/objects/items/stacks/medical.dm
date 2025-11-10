@@ -38,7 +38,7 @@
 		return TRUE
 
 	if(!affecting)
-		to_chat(user, SPAN_WARNING("[H] has no [parse_zone(user.zone_selected)]!"))
+		to_chat(user, SPAN_WARNING("[capitalize(H.declent_ru(NOMINATIVE))] has no [parse_zone(user.zone_selected)]!"))
 		return 1
 
 	if(affecting.display_name == "head")
@@ -89,8 +89,8 @@
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
 					SPAN_HELPFUL("You <b>bandage</b> [possessive] <b>[affecting.display_name]</b>."),
-					SPAN_HELPFUL("[user] <b>bandages</b> your <b>[affecting.display_name]</b>."),
-					SPAN_NOTICE("[user] bandages [possessive_their] [affecting.display_name]."))
+					SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>bandages</b> your <b>[affecting.display_name]</b>."),
+					SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] bandages [possessive_their] [affecting.display_name]."))
 				use(1)
 				playsound(user, 'sound/handling/bandage.ogg', 25, 1, 2)
 			if(WOUNDS_ALREADY_TREATED)
@@ -137,8 +137,8 @@
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
 					SPAN_HELPFUL("You <b>salve the burns</b> on [possessive] <b>[affecting.display_name]</b>."),
-					SPAN_HELPFUL("[user] <b>salves the burns</b> on your <b>[affecting.display_name]</b>."),
-					SPAN_NOTICE("[user] salves the burns on [possessive_their] [affecting.display_name]."))
+					SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>salves the burns</b> on your <b>[affecting.display_name]</b>."),
+					SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] salves the burns on [possessive_their] [affecting.display_name]."))
 				affecting.heal_damage(burn = heal_burn)
 				use(1)
 				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
@@ -185,8 +185,8 @@
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
 					SPAN_HELPFUL("You <b>clean and seal</b> the wounds on [possessive] <b>[affecting.display_name]</b> with bioglue."),
-					SPAN_HELPFUL("[user] <b>cleans and seals</b> the wounds on your <b>[affecting.display_name]</b> with bioglue."),
-					SPAN_NOTICE("[user] cleans and seals the wounds on [possessive_their] [affecting.display_name] with bioglue."))
+					SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>cleans and seals</b> the wounds on your <b>[affecting.display_name]</b> with bioglue."),
+					SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] cleans and seals the wounds on [possessive_their] [affecting.display_name] with bioglue."))
 				//If a suture datum exists, apply half the damage as sutures. This ensures consistency in healing amounts.
 				if(SEND_SIGNAL(affecting, COMSIG_LIMB_ADD_SUTURES, TRUE, FALSE, heal_amt * 0.5))
 					heal_amt *= 0.5
@@ -261,8 +261,8 @@
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
 					SPAN_HELPFUL("You <b>cover the burns</b> on [possessive] <b>[affecting.display_name]</b> with regenerative membrane."),
-					SPAN_HELPFUL("[user] <b>covers the burns</b> on your <b>[affecting.display_name]</b> with regenerative membrane."),
-					SPAN_NOTICE("[user] covers the burns on [possessive_their] [affecting.display_name] with regenerative membrane."))
+					SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>covers the burns</b> on your <b>[affecting.display_name]</b> with regenerative membrane."),
+					SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] covers the burns on [possessive_their] [affecting.display_name] with regenerative membrane."))
 				//If a suture datum exists, apply half the damage as grafts. This ensures consistency in healing amounts.
 				if(SEND_SIGNAL(affecting, COMSIG_LIMB_ADD_SUTURES, FALSE, TRUE, heal_amt * 0.5))
 					heal_amt *= 0.5
@@ -351,8 +351,8 @@
 			var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
 			user.affected_message(M,
 				SPAN_HELPFUL("You <b>start splinting</b> [possessive] <b>[affecting.display_name]</b>."),
-				SPAN_HELPFUL("[user] <b>starts splinting</b> your <b>[affecting.display_name]</b>."),
-				SPAN_NOTICE("[user] starts splinting [possessive_their] [affecting.display_name]."))
+				SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>starts splinting</b> your <b>[affecting.display_name]</b>."),
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts splinting [possessive_their] [affecting.display_name]."))
 		else
 			if((!user.hand && (affecting.name in list("r_arm", "r_hand"))) || (user.hand && (affecting.name in list("l_arm", "l_hand"))))
 				to_chat(user, SPAN_WARNING("You can't apply a splint to the \
@@ -362,7 +362,7 @@
 			user.affected_message(M,
 				SPAN_HELPFUL("You <b>start splinting</b> your <b>[affecting.display_name]</b>."),
 				,
-				SPAN_NOTICE("[user] starts splinting \his [affecting.display_name]."))
+				SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts splinting \his [affecting.display_name]."))
 
 		if(affecting.apply_splints(src, user, M, indestructible_splints)) // Referenced in external organ helpers.
 			use(1)

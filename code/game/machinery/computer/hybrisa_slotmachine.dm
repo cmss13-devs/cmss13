@@ -174,7 +174,7 @@
 	if(!can_spin(user))
 		return
 
-	user.visible_message(SPAN_WARNING("[user] pulls the lever and [src] starts spinning!"), max_distance = 1)
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] pulls the lever and [src] starts spinning!"), max_distance = 1)
 
 	balance -= SPIN_PRICE
 	prize_money += SPIN_PRICE

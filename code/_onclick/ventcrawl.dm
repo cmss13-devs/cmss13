@@ -78,7 +78,7 @@
 
 	if(length(vent_found.connected_to))
 		if(src.action_busy)
-			to_chat(src, SPAN_WARNING("We are already busy with something."))
+			to_chat(src, SPAN_WARNING("Мы уже заняты чем-то другим."))
 			return
 
 		visible_message(SPAN_NOTICE("[src] begins climbing into [vent_found]."), SPAN_NOTICE("We begin climbing into [vent_found]."))

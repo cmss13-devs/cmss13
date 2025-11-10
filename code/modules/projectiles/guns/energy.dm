@@ -89,7 +89,7 @@
 		var/to_firer = "You fire the [name]!"
 		if(has_charge_meter)
 			to_firer = "[round((cell.charge / charge_cost), 1)] / [max_shots] SHOTS REMAINING"
-		user.visible_message(SPAN_DANGER("[user] fires \the [src]!"),
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] стреляет из [declent_ru(GENITIVE)]!"),
 		SPAN_DANGER("[to_firer]"), message_flags = CHAT_TYPE_WEAPON_USE)
 		return AUTOFIRE_CONTINUE
 

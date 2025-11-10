@@ -111,7 +111,7 @@
 		if(F.stat == CONSCIOUS)
 			count++
 		if(count > 2) //Was 5, our rules got much tighter
-			visible_message(SPAN_XENOWARNING("The facehugger is furiously cannibalized by the nearby horde of other ones!"))
+			visible_message(SPAN_XENOWARNING("Лицехват яростно поедается ордой других лицехватов!"))
 			qdel(src)
 			return
 
@@ -128,7 +128,7 @@
 /obj/item/clothing/mask/facehugger/attack_alien(mob/living/carbon/xenomorph/user)
 	if(user.hivenumber != hivenumber)
 		user.animation_attack_on(src)
-		user.visible_message(SPAN_XENOWARNING("[user] crushes \the [src]"), SPAN_XENOWARNING("You crush \the [src]"))
+		user.visible_message(SPAN_XENOWARNING("[capitalize(user.declent_ru(NOMINATIVE))] раздавливает [declent_ru(ACCUSATIVE)]."), SPAN_XENOWARNING("Вы раздавливаете [declent_ru(ACCUSATIVE)]")) // SS220 EDIT ADDICTION
 		die()
 		return XENO_ATTACK_ACTION
 
@@ -425,14 +425,14 @@
 			return
 		var/obj/effect/alien/resin/trap/T = locate() in loc
 		if(T && T.trap_type == RESIN_TRAP_EMPTY)
-			visible_message(SPAN_XENOWARNING("[src] crawls into [T]!"))
+			visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] заползает в [T.declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
 			T.hivenumber = hivenumber
 			T.set_state(RESIN_TRAP_HUGGER)
 			qdel(src)
 			return
 		var/obj/effect/alien/resin/special/eggmorph/M = locate() in loc
 		if(istype(M) && M.stored_huggers < M.huggers_max_amount)
-			visible_message(SPAN_XENOWARNING("[src] crawls back into [M]!"))
+			visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] заползает обратно в [M.declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
 			M.stored_huggers++
 			qdel(src)
 			return
@@ -507,7 +507,7 @@
 	die()
 
 /obj/item/clothing/mask/facehugger/proc/return_to_egg(obj/effect/alien/egg/E)
-	visible_message(SPAN_XENOWARNING("[src] crawls back into [E]!"))
+	visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] заползает обратно в [E.declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
 	E.status = EGG_GROWN
 	E.icon_state = "Egg"
 	E.deploy_egg_triggers()

@@ -182,7 +182,7 @@
 	if(current_rounds <= 0)
 		to_chat(user, SPAN_NOTICE("You begin taking apart the empty tube frame..."))
 		if(do_after(user,10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message("[user] deconstructs the rocket tube frame.",SPAN_NOTICE("You take apart the empty frame."))
+			user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] deconstructs the rocket tube frame.",SPAN_NOTICE("You take apart the empty frame."))
 			var/obj/item/stack/sheet/metal/M = new(get_turf(user))
 			M.amount = 2
 			user.drop_held_item()

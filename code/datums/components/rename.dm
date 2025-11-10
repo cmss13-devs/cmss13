@@ -49,8 +49,10 @@
 	original_desc = owner.desc
 	if(HAS_TRAIT(owner, TRAIT_ITEM_RENAME_SPECIAL))
 		owner.name = "[initial(owner.name)] ([custom_name])"
+		ru_names_rename(ru_names_toml(initial(owner.name), suffix = " ([custom_name])"))
 	else
 		owner.name = custom_name
+		ru_names_rename(ru_names_toml(owner.name))
 	owner.desc = custom_desc
 
 ///Reverts the name and description to the state before they were changed.

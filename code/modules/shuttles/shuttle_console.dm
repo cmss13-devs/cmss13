@@ -61,7 +61,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		return
 
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("Доступ запрещён."))
 		return 1
 
 	if(disabled)
@@ -79,7 +79,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	if(!isxeno(user) && (onboard || is_ground_level(z)) && !shuttle.iselevator)
 		if(shuttle.queen_locked)
 			if(onboard && skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
-				user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts to type on [src]."),
 					SPAN_NOTICE("You try to take back the control over the shuttle. It will take around 3 minutes."))
 				if(do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					shuttle.last_locked = world.time
@@ -293,13 +293,13 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					if(GLOB.round_statistics)
 						GLOB.round_statistics.track_hijack()
 
-					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
+					marine_announcement("Обнаружен незапланированный вылет дропшипа из оперативной зоны. Вероятен захват. Автопилот отключен.", "Оповещение дропшипа", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 					shuttle.alerts_allowed--
 					log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 
 					to_chat(Q, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
-					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
-					xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain burrowed larva over time."),2,Q.hivenumber)
+					xeno_message(SPAN_XENOANNOUNCE("Королева приказала металлической птице отправиться к металлическому улью в небе! Возрадуемся!"),3,Q.hivenumber)
+					xeno_message(SPAN_XENOANNOUNCE("Улей наполняется силой! Теперь мы будем периодически получать новых грудоломов."),2,Q.hivenumber)
 
 					// Notify the yautja too so they stop the hunt
 					message_all_yautja("The serpent Queen has commanded the landing shuttle to depart.")

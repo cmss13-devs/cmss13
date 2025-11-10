@@ -662,7 +662,7 @@
 
 /obj/item/weapon/gun/pistol/highpower/unique_action(mob/user)
 	if(!manually_slided)
-		user.visible_message(SPAN_NOTICE("[user] racks \the [src]'s slide."), SPAN_NOTICE("You rack \the [src]'s slide, loading the next bullet in."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] racks \the [src]'s slide."), SPAN_NOTICE("You rack \the [src]'s slide, loading the next bullet in."))
 		manually_slided = TRUE
 		cock_gun(user, TRUE)
 		return

@@ -221,7 +221,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	init_stage_completed = 0
 	var/mc_started = FALSE
 
-	to_chat(world, SPAN_BOLDANNOUNCE("Initializing subsystems..."))
+	to_chat(world, SPAN_BOLDANNOUNCE("Инициализация подсистем...")) // SS220 EDIT ADDICTION
 
 	var/list/stage_sorted_subsystems = new(INITSTAGE_MAX)
 	for (var/i in 1 to INITSTAGE_MAX)
@@ -256,11 +256,11 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			// Loop.
 			Master.StartProcessing(0)
 
-	var/time = (REALTIMEOFDAY - start_timeofday) / 10
+	var/time = round((REALTIMEOFDAY - start_timeofday) / 10, 0.01) // SS220 EDIT ADDICTION
 
 
 
-	var/msg = "Initializations complete within [time] second[time == 1 ? "" : "s"]!"
+	var/msg = "Инициализация завершена за [time] секунд!" // SS220 EDIT ADDICTION
 	to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
 	log_world(msg)
 
@@ -335,19 +335,19 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	switch(result)
 		if(SS_INIT_FAILURE)
-			message_prefix = "Failed to initialize [subsystem.name] subsystem after"
+			message_prefix = "Ошибка инициализации подсистемы «[subsystem.name]»" // SS220 EDIT ADDICTION
 			chat_warning = TRUE
 		if(SS_INIT_SUCCESS)
-			message_prefix = "Initialized [subsystem.name] subsystem within"
+			message_prefix = "Инициализация подсистемы «[subsystem.name]»" // SS220 EDIT ADDICTION
 		if(SS_INIT_NO_NEED)
 			// This SS is disabled or is otherwise shy.
 			return
 		else
 			// SS_INIT_NONE or an invalid value.
-			message_prefix = "Initialized [subsystem.name] subsystem with errors within"
+			message_prefix = "Инициализация подсистемы «[subsystem.name]» произошла с ошибками" // SS220 EDIT ADDICTION
 			chat_warning = TRUE
 
-	var/message = "[message_prefix] [seconds] second[seconds == 1 ? "" : "s"]!"
+	var/message = "[message_prefix] ([seconds] сек.)" // SS220 EDIT ADDICTION
 	var/chat_message = chat_warning ? SPAN_WARNING(message) : SPAN_BOLDANNOUNCE(message)
 
 	to_chat(world, chat_message)

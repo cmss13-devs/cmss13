@@ -159,7 +159,7 @@ const MainMenu = (props) => {
 
         <Stack>
           <Stack.Item grow>
-            <h3>Access Level 1</h3>
+            <h3>Уровень доступа 1</h3>
           </Stack.Item>
           <Stack.Item>
             <Button
@@ -191,7 +191,7 @@ const MainMenu = (props) => {
         {local_access_level >= 2 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 2</h3>
+              <h3>Уровень доступа 2</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -237,7 +237,7 @@ const MainMenu = (props) => {
         {local_access_level >= 3 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 3</h3>
+              <h3>Уровень доступа 3</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -270,7 +270,7 @@ const MainMenu = (props) => {
         {local_access_level >= 5 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 5</h3>
+              <h3>Уровень доступа 5</h3>
             </Stack.Item>
             <Stack.Item>
               <Button.Confirm
@@ -317,7 +317,7 @@ const MainMenu = (props) => {
         {local_access_level >= 6 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 6</h3>
+              <h3>Уровень доступа 6</h3>
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -337,7 +337,7 @@ const MainMenu = (props) => {
         {local_access_level >= 9 && (
           <Stack>
             <Stack.Item grow>
-              <h3>Access Level 9</h3>
+              <h3>Уровень доступа 9</h3>
             </Stack.Item>
             <Stack.Item>
               <Button

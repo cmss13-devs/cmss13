@@ -118,8 +118,8 @@
 			living_mob.Stun(duration)
 			if(living_mob.pulledby != src)
 				return // Grab was broken, probably as Stun side effect (eg. target getting knocked away from a manned M56D)
-			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the throat!"),
-			SPAN_XENOWARNING("We grab [living_mob] by the throat!"))
+			visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] хватает [living_mob.declent_ru(ACCUSATIVE)] за горло!"), // SS220 EDIT ADDICTION
+			SPAN_XENOWARNING("Мы хватаем [living_mob.declent_ru(ACCUSATIVE)] за горло!")) // SS220 EDIT ADDICTION
 			warrior_delegate.lunging = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 2) SECONDS + 1 SECONDS)
 
@@ -157,7 +157,7 @@
 // This part is then outside the for loop
 		if(final_lifesteal >= max_lifesteal)
 			bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 1, "alpha" = 90))
-			bound_xeno.visible_message(SPAN_DANGER("[bound_xeno.name] glows as it heals even more from its injuries!"), SPAN_XENODANGER("We glow as we heal even more from our injuries!"))
+			bound_xeno.visible_message(SPAN_DANGER("[capitalize(bound_xeno.declent_ru(NOMINATIVE))] светится, исцеляясь ещё быстрее от своих ран!"), SPAN_XENODANGER("Мы светимся, исцеляясь ещё быстрее от своих ран!"))
 			bound_xeno.flick_heal_overlay(2 SECONDS, "#00B800")
 		if(istype(bound_xeno) && world.time > emote_cooldown && bound_xeno)
 			bound_xeno.emote("roar")
@@ -185,7 +185,7 @@
 /mob/living/carbon/xenomorph/warrior/pull_power(mob/mob)
 	if(!ripping_limb && mob.stat != DEAD)
 		if(mob.status_flags & XENO_HOST)
-			to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
+			to_chat(src, SPAN_XENOWARNING("Это навредит маленькому ксеноморфу!"))
 			return
 		ripping_limb = TRUE
 		if(rip_limb(mob))
@@ -205,26 +205,26 @@
 	var/obj/limb/limb = human.get_limb(check_zone(zone_selected))
 
 	if(can_not_harm(human))
-		to_chat(src, SPAN_XENOWARNING("We can't harm this host!"))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем навредить этому хосту!"))
 		return
 
 	if(!limb || limb.body_part == BODY_FLAG_CHEST || limb.body_part == BODY_FLAG_GROIN || (limb.status & LIMB_DESTROYED)) //Only limbs and head.
-		to_chat(src, SPAN_XENOWARNING("We can't rip off that limb."))
+		to_chat(src, SPAN_XENOWARNING("Мы не можем оторвать эту конечность."))
 		return FALSE
 
 	var/limb_time = rand(40,60)
 	if(limb.body_part == BODY_FLAG_HEAD)
 		limb_time = rand(90,110)
 
-	visible_message(SPAN_XENOWARNING("[src] begins pulling on [mob]'s [limb.display_name] with incredible strength!"),
-	SPAN_XENOWARNING("We begin to pull on [mob]'s [limb.display_name] with incredible strength!"))
+	visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] начинает отрывать [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob.declent_ru(GENITIVE)] с невероятной силой!"), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Мы начинаем отрывать [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob] с невероятной силой!")) // SS220 EDIT ADDICTION
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE) || mob.stat == DEAD || mob.status_flags & XENO_HOST)
-		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
+		to_chat(src, SPAN_NOTICE("Мы перестаём отрывать конечность."))
 		return FALSE
 
 	if(mob.status_flags & XENO_HOST)
-		to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
+		to_chat(src, SPAN_NOTICE("Мы чувствуем маленького ксеноморфа внутри хоста [mob], не стоит причинять ему боль.")) // SS220 EDIT ADDICTION
 		return FALSE
 
 	if(limb.status & LIMB_DESTROYED)
@@ -232,11 +232,11 @@
 
 	if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		limb.take_damage(rand(30,40), 0, 0) // just do more damage
-		visible_message(SPAN_XENOWARNING("You hear [mob]'s [limb.display_name] being pulled beyond its load limits!"),
-		SPAN_XENOWARNING("[mob]'s [limb.display_name] begins to tear apart!"))
+		visible_message(SPAN_XENOWARNING("Вы слышите, как начинает отрываться [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob.declent_ru(GENITIVE)] с чавкающим звуком!"), // SS220 EDIT ADDICTION
+		SPAN_XENOWARNING("[declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob] начинает отрываться с приятным чавкающим звуком!")) // SS220 EDIT ADDICTION
 	else
-		visible_message(SPAN_XENOWARNING("We hear the bones in [mob]'s [limb.display_name] snap with a sickening crunch!"),
-		SPAN_XENOWARNING("[mob]'s [limb.display_name] bones snap with a satisfying crunch!"))
+		visible_message(SPAN_XENOWARNING("Мы слышим, как начинает отрываться [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob.declent_ru(GENITIVE)] с отвратительным хрустом костей!"), // SS220 EDIT ADDICTION
+		SPAN_XENOWARNING("[capitalize(declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name))] [mob] начинает отрываться с приятным хрустом костей!")) // SS220 EDIT ADDICTION
 		limb.take_damage(rand(15,25), 0, 0)
 		limb.fracture(100)
 	mob.last_damage_data = create_cause_data(initial(caste_type), src)
@@ -245,18 +245,18 @@
 	log_attack("[src.name] ([src.ckey]) ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 1/2 progress")
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE)  || mob.stat == DEAD || iszombie(mob))
-		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
+		to_chat(src, SPAN_NOTICE("Мы перестаём отрывать конечность."))
 		return FALSE
 
 	if(mob.status_flags & XENO_HOST)
-		to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
+		to_chat(src, SPAN_NOTICE("Мы чувствуем маленького ксеноморфа внутри [mob.declent_ru(GENITIVE)], не стоит причинять им боль.")) // SS220 EDIT ADDICTION
 		return FALSE
 
 	if(limb.status & LIMB_DESTROYED)
 		return FALSE
 
-	visible_message(SPAN_XENOWARNING("[src] rips [mob]'s [limb.display_name] away from their body!"),
-	SPAN_XENOWARNING("[mob]'s [limb.display_name] rips away from their body!"))
+	visible_message(SPAN_XENOWARNING("[capitalize(declent_ru(NOMINATIVE))] отрывает [declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name)] [mob.declent_ru(GENITIVE)] от тела!"), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("[capitalize(declent_ru_initial(limb.display_name, ACCUSATIVE, limb.display_name))] [mob] отрывается от тела!")) // SS220 EDIT ADDICTION
 	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 2/2 progress</font>")
 	mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [limb.display_name] ripped off by [src.name] ([src.ckey]) 2/2 progress</font>")
 	log_attack("[src.name] ([src.ckey]) ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 2/2 progress")
@@ -270,7 +270,7 @@
 
 	if (!action_cooldown_check())
 		if(twitch_message_cooldown < world.time )
-			lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we try to lunge but lack the strength. Wait a moment to try again."))
+			lunge_user.visible_message(SPAN_XENOWARNING("[capitalize(lunge_user.declent_ru(NOMINATIVE))] пытается безуспешно схватить цель."), SPAN_XENOWARNING("Мы безуспешно пытаемся схватить цель, из-за нехватки сил. Подождите немного, прежде чем попробовать снова.")) // SS220 EDIT ADDICTION
 			twitch_message_cooldown = world.time + 5 SECONDS
 		return //this gives a little feedback on why your lunge didn't hit other than the lunge button going grey. Plus, it might spook marines that almost got lunged if they know why the message appeared, and extra spookiness is always good.
 
@@ -278,7 +278,7 @@
 		return
 
 	if (!isturf(lunge_user.loc))
-		to_chat(lunge_user, SPAN_XENOWARNING("We can't lunge from here!"))
+		to_chat(lunge_user, SPAN_XENOWARNING("Мы не можем нанести удар отсюда!"))
 		return
 
 	if (!lunge_user.check_state() || lunge_user.agility)
@@ -298,7 +298,7 @@
 	apply_cooldown()
 	..()
 
-	lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user] lunges towards [carbon]!"), SPAN_XENOWARNING("We lunge at [carbon]!"))
+	lunge_user.visible_message(SPAN_XENOWARNING("[capitalize(lunge_user.declent_ru(NOMINATIVE))] наносит удар по [carbon.declent_ru(DATIVE)]!"), SPAN_XENOWARNING("Мы наносим удар по [carbon.declent_ru(DATIVE)]!")) // SS220 EDIT ADDICTION
 
 	lunge_user.throw_atom(get_step_towards(affected_atom, lunge_user), grab_range, SPEED_FAST, lunge_user, tracking=TRUE)
 
@@ -307,7 +307,7 @@
 		if(ishuman(carbon))
 			INVOKE_ASYNC(carbon, TYPE_PROC_REF(/mob, emote), "scream")
 	else
-		lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lunge but are unable to grab onto our target. Wait a moment to try again."))
+		lunge_user.visible_message(SPAN_XENOWARNING("[capitalize(lunge_user.declent_ru(NOMINATIVE))] пытается безуспешно схватить цель."), SPAN_XENOWARNING("Мы безуспешно пытаемся схватить цель, из-за нехватки сил. Подождите немного, прежде чем попробовать снова.")) // SS220 EDIT ADDICTION
 
 	return TRUE
 
@@ -337,13 +337,13 @@
 		fling_user.stop_pulling()
 
 	if(carbon.mob_size >= MOB_SIZE_BIG)
-		to_chat(fling_user, SPAN_XENOWARNING("[carbon] is too big for us to fling!"))
+		to_chat(fling_user, SPAN_XENOWARNING("[carbon] слишком большой, чтобы мы могли его откинуть!")) // SS220 EDIT ADDICTION
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	fling_user.visible_message(SPAN_XENOWARNING("[fling_user] effortlessly flings [carbon] to the side!"), SPAN_XENOWARNING("We effortlessly fling [carbon] to the side!"))
+	fling_user.visible_message(SPAN_XENOWARNING("[fling_user] без усилий отбрасывает [carbon] в сторону!"), SPAN_XENOWARNING("Мы без усилий отбрасываем [carbon] в сторону!")) // SS220 EDIT ADDICTION
 	playsound(carbon,'sound/weapons/alien_claw_block.ogg', 75, 1)
 	if(stun_power)
 		carbon.Stun(get_xeno_stun_duration(carbon, stun_power))
@@ -402,8 +402,8 @@
 
 	carbon.last_damage_data = create_cause_data(initial(punch_user.caste_type), punch_user)
 
-	punch_user.visible_message(SPAN_XENOWARNING("[punch_user] hits [carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"),
-	SPAN_XENOWARNING("We hit [carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"))
+	punch_user.visible_message(SPAN_XENOWARNING("[punch_user] бьёт по [target_limb ? declent_ru_initial(target_limb.display_name, DATIVE, target_limb.display_name) : "груди"] [carbon] разрушительно мощным ударом!"), // SS220 EDIT ADDICTION
+	SPAN_XENOWARNING("Мы бьём по [target_limb ? declent_ru_initial(target_limb.display_name, DATIVE, target_limb.display_name) : "груди"] [carbon] разрушительно мощным ударом!")) // SS220 EDIT ADDICTION
 	var/sound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg',)
 	playsound(carbon, sound, 50, 1)
 	do_base_warrior_punch(carbon, target_limb)

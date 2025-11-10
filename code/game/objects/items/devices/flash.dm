@@ -76,7 +76,7 @@
 	if(aoe)
 		playsound(src.loc, 'sound/weapons/flash.ogg', 25, 1)
 		flick("[icon_state]_flashing", src)
-		user.visible_message(SPAN_DANGER("[user] activates \the [src]'s bulb, emitting a brilliant light!"))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] activates \the [src]'s bulb, emitting a brilliant light!"))
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] in hand to flash everyone around them in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
 		msg_admin_attack("[key_name(user)] used the [src.name] to flash everyone around them in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 		for(var/mob/living/carbon/human/victim in oviewers(3, null))
@@ -106,11 +106,11 @@
 
 		if(!flashfail)
 			if(!isSilicon(M))
-				user.visible_message(SPAN_DANGER("[user] blinds [M] with \the [src]!"))
+				user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] blinds [M] with \the [src]!"))
 			else
-				user.visible_message(SPAN_WARNING("[user] overloads [M]'s sensors with \the [src]!"))
+				user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] overloads [M]'s sensors with \the [src]!"))
 		else
-			user.visible_message(SPAN_WARNING("[user] fails to blind [M] with \the [src]!"))
+			user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] fails to blind [M] with \the [src]!"))
 
 		if(!flashfail)
 			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been flashed (attempt) with [src.name] by [key_name(user)]</font>")
@@ -164,5 +164,5 @@
 				var/mob/living/carbon/M = loc
 				if(M.flash_eyes())
 					M.apply_effect(10, WEAKEN)
-					M.visible_message(SPAN_DISARM("[M] is blinded by \the [src]!"))
+					M.visible_message(SPAN_DISARM("[capitalize(M.declent_ru(NOMINATIVE))] is blinded by \the [src]!"))
 

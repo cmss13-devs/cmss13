@@ -84,7 +84,7 @@
 		bound_xeno.explosivearmor_modifier += 1.5*XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
 		bound_xeno.recalculate_armor()
 		new_shield.explosive_armor_amount = 1.5*XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
-		to_chat(praetorian, SPAN_XENOHIGHDANGER("We feel our defensive shell regenerate! It will block one hit!"))
+		to_chat(praetorian, SPAN_XENOHIGHDANGER("Мы чувствуем, как наша защитная оболочка восстанавливается! Она блокирует один удар!"))
 
 	var/datum/action/xeno_action/activable/cleave/caction = get_action(bound_xeno, /datum/action/xeno_action/activable/cleave)
 	if (istype(caction))
@@ -147,7 +147,7 @@
 				if(!(mob_to_act in target_mobs))
 					target_mobs += mob_to_act
 
-	pierce_user.visible_message(SPAN_XENODANGER("[pierce_user] slashes its claws through the area in front of it!"), SPAN_XENODANGER("We slash our claws through the area in front of us!"))
+	pierce_user.visible_message(SPAN_XENODANGER("[pierce_user] размахивает когтями перед собой!"), SPAN_XENODANGER("Мы размахиваем когтями перед собой!")) // SS220 EDIT ADDICTION
 	pierce_user.animation_attack_on(targetted_atom, 15)
 
 	pierce_user.emote("roar")
@@ -227,7 +227,7 @@
 		dash_user.flick_attack_overlay(targets_in_range, "slash")
 		targets_in_range.apply_armoured_damage(get_xeno_damage_slash(targets_in_range, damage), ARMOR_MELEE, BRUTE)
 		playsound(get_turf(targets_in_range), "alien_claw_flesh", 30, 1)
-	dash_user.visible_message(SPAN_XENODANGER("[dash_user] slashes its claws through the area around it!"), SPAN_XENODANGER("We slash our claws through the area around us!"))
+	dash_user.visible_message(SPAN_XENODANGER("[dash_user] размахивает когтями вокруг себя!"), SPAN_XENODANGER("Мы размахиваем когтями вокруг себя!")) // SS220 EDIT ADDICTION
 	dash_user.spin_circle()
 
 
@@ -248,7 +248,7 @@
 		return
 
 	if (!isxeno_human(target_atom) || cleave_user.can_not_harm(target_atom))
-		to_chat(cleave_user, SPAN_XENODANGER("We must target a hostile!"))
+		to_chat(cleave_user, SPAN_XENODANGER("Мы должны выбрать враждебную цель!"))
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
@@ -258,7 +258,7 @@
 		return
 
 	if (target_carbon.stat == DEAD)
-		to_chat(cleave_user, SPAN_XENODANGER("[target_carbon] is dead, why would we want to touch it?"))
+		to_chat(cleave_user, SPAN_XENODANGER("[target_carbon] мёртв, зачем нам его трогать?")) // SS220 EDIT ADDICTION
 		return
 
 	// Flick overlay and play sound
@@ -270,7 +270,7 @@
 	if (root_toggle)
 		var/root_duration = buffed ? root_duration_buffed : root_duration_unbuffed
 
-		cleave_user.visible_message(SPAN_XENODANGER("[cleave_user] slams [target_atom] into the ground!"), SPAN_XENOHIGHDANGER("We slam [target_atom] into the ground!"))
+		cleave_user.visible_message(SPAN_XENODANGER("[cleave_user] прижимает [target_atom] к земле!"), SPAN_XENOHIGHDANGER("Мы прижимаем [target_atom] к земле!")) // SS220 EDIT ADDICTION
 		ADD_TRAIT(target_carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cleave"))
 
 		if (ishuman(target_carbon))
@@ -278,7 +278,7 @@
 			Hu.update_xeno_hostile_hud()
 
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon, TRAIT_SOURCE_ABILITY("Cleave")), get_xeno_stun_duration(target_carbon, root_duration))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[cleave_user] has pinned you to the ground! You cannot move!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[cleave_user] прижал вас к земле из-за чего вы обездвижены!")) // SS220 EDIT ADDICTION
 		cleave_user.flick_attack_overlay(target_carbon, "punch")
 
 	else
@@ -286,7 +286,7 @@
 
 		if(target_carbon.mob_size >= MOB_SIZE_BIG)
 			fling_distance *= 0.1
-		cleave_user.visible_message(SPAN_XENODANGER("[cleave_user] deals [target_atom] a massive blow, sending them flying!"), SPAN_XENOHIGHDANGER("We deal [target_atom] a massive blow, sending them flying!"))
+		cleave_user.visible_message(SPAN_XENODANGER("[cleave_user] наносит мощный удар, подбрасывая [target_atom] над землёй!"), SPAN_XENOHIGHDANGER("Мы наносим мощный удар, подбрасывая [target_atom] над землёй!")) // SS220 EDIT ADDICTION
 		cleave_user.flick_attack_overlay(target_carbon, "slam")
 		cleave_user.throw_carbon(target_atom, null, fling_distance)
 
@@ -295,4 +295,3 @@
 
 /datum/action/xeno_action/activable/cleave/proc/remove_buff()
 	buffed = FALSE
-

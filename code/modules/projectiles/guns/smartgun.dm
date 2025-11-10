@@ -207,7 +207,7 @@
 /obj/item/weapon/gun/smartgun/attackby(obj/item/attacking_object, mob/user)
 	if(istype(attacking_object, /obj/item/smartgun_battery))
 		var/obj/item/smartgun_battery/new_cell = attacking_object
-		visible_message(SPAN_NOTICE("[user] swaps out the power cell in [src]."),
+		visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] swaps out the power cell in [src]."),
 			SPAN_NOTICE("You swap out the power cell in [src] and drop the old one."))
 		to_chat(user, SPAN_NOTICE("The new cell contains: [new_cell.power_cell.charge] power."))
 		battery.update_icon()

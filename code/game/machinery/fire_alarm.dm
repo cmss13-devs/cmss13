@@ -98,11 +98,11 @@ FIRE ALARM
 				if (HAS_TRAIT(held_object, TRAIT_TOOL_MULTITOOL))
 					src.detecting = !( src.detecting )
 					if (src.detecting)
-						user.visible_message(SPAN_DANGER("[user] has reconnected [src]'s detecting unit!"), "You have reconnected [src]'s detecting unit.")
+						user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] has reconnected [src]'s detecting unit!"), "You have reconnected [src]'s detecting unit.")
 					else
-						user.visible_message(SPAN_DANGER("[user] has disconnected [src]'s detecting unit!"), "You have disconnected [src]'s detecting unit.")
+						user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] has disconnected [src]'s detecting unit!"), "You have disconnected [src]'s detecting unit.")
 				else if (HAS_TRAIT(held_object, TRAIT_TOOL_WIRECUTTERS))
-					user.visible_message(SPAN_DANGER("[user] has cut the wires inside \the [src]!"), "You have cut the wires inside \the [src].")
+					user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] has cut the wires inside \the [src]!"), "You have cut the wires inside \the [src].")
 					playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 					buildstage = 1
 					update_icon()
@@ -153,10 +153,10 @@ FIRE ALARM
 	var/area/area = get_area(src)
 
 	if (area.flags_alarm_state & ALARM_WARNING_FIRE)
-		user.visible_message("[user] deactivates [src].", "You deactivate [src].")
+		user.visible_message(SPAN_INFO("[capitalize(user.declent_ru(NOMINATIVE))] выключает [declent_ru(ACCUSATIVE)]."), SPAN_INFO("Вы выключаете [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 		reset()
 	else
-		user.visible_message("[user] activates [src].", "You activate [src].")
+		user.visible_message(SPAN_INFO("[capitalize(user.declent_ru(NOMINATIVE))] включает [declent_ru(ACCUSATIVE)]."), SPAN_INFO("Вы включаете [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 		alarm()
 
 	return

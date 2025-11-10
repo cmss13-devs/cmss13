@@ -57,7 +57,7 @@ SUBSYSTEM_DEF(techtree)
 				node.on_tree_insertion(tree)
 
 		tree.generate_tree()
-		var/msg = "Loaded [tree.name]!"
+		var/msg = "Загрузка [tree.name], завершена!" // SS220 EDIT ADDICTION
 		to_chat(world, SPAN_BOLDANNOUNCE("[msg]"))
 
 	return SS_INIT_SUCCESS

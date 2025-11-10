@@ -67,7 +67,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	if(target.job)
 		assignment = target.job
 	else
-		assignment = "Unassigned"
+		assignment = "Неназначен"	// SS220 EDIT TRANSLATE
 
 	var/manifest_title
 	if(target?.assigned_equipment_preset.manifest_title)

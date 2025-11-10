@@ -8,7 +8,7 @@
 	//Can open sound
 	var/open_sound = 'sound/effects/canopen.ogg'
 	//Can open message
-	var/open_message = "You open the drink with an audible pop!"
+	var/open_message = "Вы открываете напиток с громким щелчком!"
 	//Eating sound
 	var/consume_sound = 'sound/items/drink.ogg'
 	//What this object is, used during interactions
@@ -116,16 +116,17 @@
 		to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 		return
 	var/datum/reagents/R = src.reagents
+	var/ru_name = declent_ru(GENITIVE) // SS220 EDIT ADDICTION
 
 	if(!R.total_volume || !R)
 		if(M == user && M.a_intent == INTENT_HARM && M.zone_selected == "head" && crushable)
 			crush_can(M)
 			return
-		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
+		to_chat(user, SPAN_DANGER("Содержимое [ru_name] закончилось!")) // SS220 EDIT ADDICTION
 		return 0
 
 	if(M == user)
-		to_chat(M, SPAN_NOTICE("You swallow a gulp of [src]."))
+		to_chat(M, SPAN_NOTICE("Вы делаете глоток [ru_name]")) // SS220 EDIT ADDICTION
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, gulp_size)
@@ -139,14 +140,14 @@
 
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
-			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
-			SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
+			SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>starts feeding</b> you <b>[src]</b>."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
 		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M))
 			return
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
-			SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
-			SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
+			SPAN_HELPFUL("[capitalize(user.declent_ru(NOMINATIVE))] <b>fed</b> you <b>[src]</b>."),
+			SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] fed [user == M ? "themselves" : "[M]"] [src]."))
 
 		var/rgt_list_text = get_reagent_list_text()
 
@@ -241,7 +242,7 @@
 		icon_state = "[icon_state]_crushed"
 	else
 		icon_state = crushed_icon
-	user.visible_message(SPAN_BOLDNOTICE("[user] crushed the [name] [message]"), null, null, CHAT_TYPE_FLUFF_ACTION)
+	user.visible_message(SPAN_BOLDNOTICE("[capitalize(user.declent_ru(NOMINATIVE))] crushed the [name] [message]"), null, null, CHAT_TYPE_FLUFF_ACTION)
 	playsound(src,"sound/items/can_crush.ogg", 20, FALSE, 15)
 
 /obj/item/reagent_container/food/drinks/cans/on_reagent_change()

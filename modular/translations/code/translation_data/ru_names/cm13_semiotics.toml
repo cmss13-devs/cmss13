@@ -1,0 +1,478 @@
+# Colonial Marines semiotics (signs, ikons, blocks in the wall)
+
+["NO SMOKING"]
+nominative = "НЕ КУРИТЬ"
+genitive = "НЕ КУРИТЬ"
+dative = "НЕ КУРИТЬ"
+accusative = "НЕ КУРИТЬ"
+instrumental = "НЕ КУРИТЬ"
+prepositional = "НЕ КУРИТЬ"
+gender = "neuter"
+
+["ammunition storage semiotic"]
+nominative = "«Хранилище боеприпасов»"
+genitive = "«Хранилище боеприпасов»"
+dative = "«Хранилище боеприпасов»"
+accusative = "«Хранилище боеприпасов»"
+instrumental = "«Хранилище боеприпасов»"
+prepositional = "«Хранилище боеприпасов»"
+gender = "neuter"
+
+["hazard semiotic"]
+nominative = "«Опасность»"
+genitive = "«Опасность»"
+dative = "«Опасность»"
+accusative = "«Опасность»"
+instrumental = "«Опасность»"
+prepositional = "«Опасность»"
+gender = "neuter"
+
+["unisex bathroom semiotic"]
+nominative = "«Общий санузел»"
+genitive = "«Общий санузел»"
+dative = "«Общий санузел»"
+accusative = "«Общий санузел»"
+instrumental = "«Общий санузел»"
+prepositional = "«Общий санузел»"
+gender = "neuter"
+
+["HVAC semiotic"]
+nominative = "«ОВиК»"
+genitive = "«ОВиК»"
+dative = "«ОВиК»"
+accusative = "«ОВиК»"
+instrumental = "«ОВиК»"
+prepositional = "«ОВиК»"
+gender = "neuter"
+
+["cryogenic vault semiotic"]
+nominative = "«Криогенное хранилище»"
+genitive = "«Криогенное хранилище»"
+dative = "«Криогенное хранилище»"
+accusative = "«Криогенное хранилище»"
+instrumental = "«Криогенное хранилище»"
+prepositional = "«Криогенное хранилище»"
+gender = "neuter"
+
+["distribution pipes semiotic"]
+nominative = "«Распределительные трубы»"
+genitive = "«Распределительные трубы»"
+dative = "«Распределительные трубы»"
+accusative = "«Распределительные трубы»"
+instrumental = "«Распределительные трубы»"
+prepositional = "«Распределительные трубы»"
+gender = "neuter"
+
+["stairs semiotic"]
+nominative = "«Лестница»"
+genitive = "«Лестница»"
+dative = "«Лестница»"
+accusative = "«Лестница»"
+instrumental = "«Лестница»"
+prepositional = "«Лестница»"
+gender = "neuter"
+
+["North semiotic"]
+nominative = "«Север»"
+genitive = "«Север»"
+dative = "«Север»"
+accusative = "«Север»"
+instrumental = "«Север»"
+prepositional = "«Север»"
+gender = "neuter"
+
+["West semiotic"]
+nominative = "«Запад»"
+genitive = "«Запад»"
+dative = "«Запад»"
+accusative = "«Запад»"
+instrumental = "«Запад»"
+prepositional = "«Запад»"
+gender = "neuter"
+
+["East semiotic"]
+nominative = "«Восток»"
+genitive = "«Восток»"
+dative = "«Восток»"
+accusative = "«Восток»"
+instrumental = "«Восток»"
+prepositional = "«Восток»"
+gender = "neuter"
+
+["South semiotic"]
+nominative = "«Юг»"
+genitive = "«Юг»"
+dative = "«Юг»"
+accusative = "«Юг»"
+instrumental = "«Юг»"
+prepositional = "«Юг»"
+gender = "neuter"
+
+["one semiotic"]
+nominative = "«Один»"
+genitive = "«Один»"
+dative = "«Один»"
+accusative = "«Один»"
+instrumental = "«Один»"
+prepositional = "«Один»"
+gender = "neuter"
+
+["two semiotic"]
+nominative = "«Два»"
+genitive = "«Два»"
+dative = "«Два»"
+accusative = "«Два»"
+instrumental = "«Два»"
+prepositional = "«Два»"
+gender = "neuter"
+
+["three semiotic"]
+nominative = "«Три»"
+genitive = "«Три»"
+dative = "«Три»"
+accusative = "«Три»"
+instrumental = "«Три»"
+prepositional = "«Три»"
+gender = "neuter"
+
+["four semiotic"]
+nominative = "«Четыре»"
+genitive = "«Четыре»"
+dative = "«Четыре»"
+accusative = "«Четыре»"
+instrumental = "«Четыре»"
+prepositional = "«Четыре»"
+gender = "neuter"
+
+["five semiotic"]
+nominative = "«Пять»"
+genitive = "«Пять»"
+dative = "«Пять»"
+accusative = "«Пять»"
+instrumental = "«Пять»"
+prepositional = "«Пять»"
+gender = "neuter"
+
+["six semiotic"]
+nominative = "«Шесть»"
+genitive = "«Шесть»"
+dative = "«Шесть»"
+accusative = "«Шесть»"
+instrumental = "«Шесть»"
+prepositional = "«Шесть»"
+gender = "neuter"
+
+["escape pod semiotic"]
+nominative = "«Спасательная капсула»"
+genitive = "«Спасательная капсула»"
+dative = "«Спасательная капсула»"
+accusative = "«Спасательная капсула»"
+instrumental = "«Спасательная капсула»"
+prepositional = "«Спасательная капсула»"
+gender = "neuter"
+
+["storage semiotic"]
+nominative = "«Хранилище»"
+genitive = "«Хранилище»"
+dative = "«Хранилище»"
+accusative = "«Хранилище»"
+instrumental = "«Хранилище»"
+prepositional = "«Хранилище»"
+gender = "neuter"
+
+["airlock semiotic"]
+nominative = "«Шлюз»"
+genitive = "«Шлюз»"
+dative = "«Шлюз»"
+accusative = "«Шлюз»"
+instrumental = "«Шлюз»"
+prepositional = "«Шлюз»"
+gender = "neuter"
+
+["rewire system semiotic"]
+nominative = "«Электропроводка»"
+genitive = "«Электропроводка»"
+dative = "«Электропроводка»"
+accusative = "«Электропроводка»"
+instrumental = "«Электропроводка»"
+prepositional = "«Электропроводка»"
+gender = "neuter"
+
+["medical semiotic"]
+nominative = "«Медицинский сектор»"
+genitive = "«Медицинский сектор»"
+dative = "«Медицинский сектор»"
+accusative = "«Медицинский сектор»"
+instrumental = "«Медицинский сектор»"
+prepositional = "«Медицинский сектор»"
+gender = "neuter"
+
+["outpatient clinic semiotic"]
+nominative = "«Амбулатория»"
+genitive = "«Амбулатория»"
+dative = "«Амбулатория»"
+accusative = "«Амбулатория»"
+instrumental = "«Амбулатория»"
+prepositional = "«Амбулатория»"
+gender = "neuter"
+
+["restricted area semiotic"]
+nominative = "«Запретная зона»"
+genitive = "«Запретная зона»"
+dative = "«Запретная зона»"
+accusative = "«Запретная зона»"
+instrumental = "«Запретная зона»"
+prepositional = "«Запретная зона»"
+gender = "neuter"
+
+["outpatient autodoc semiotic"]
+nominative = "«АвтоДок»"
+genitive = "«АвтоДок»"
+dative = "«АвтоДок»"
+accusative = "«АвтоДок»"
+instrumental = "«АвтоДок»"
+prepositional = "«АвтоДок»"
+gender = "neuter"
+
+["autodoc semiotic"]
+nominative = "«АвтоДок»"
+genitive = "«АвтоДок»"
+dative = "«АвтоДок»"
+accusative = "«АвтоДок»"
+instrumental = "«АвтоДок»"
+prepositional = "«АвтоДок»"
+gender = "neuter"
+
+["reception semiotic"]
+nominative = "«Стойка регистрации»"
+genitive = "«Стойка регистрации»"
+dative = "«Стойка регистрации»"
+accusative = "«Стойка регистрации»"
+instrumental = "«Стойка регистрации»"
+prepositional = "«Стойка регистрации»"
+gender = "neuter"
+
+["maintenance semiotic"]
+nominative = "«Техническая зона»"
+genitive = "«Техническая зона»"
+dative = "«Техническая зона»"
+accusative = "«Техническая зона»"
+instrumental = "«Техническая зона»"
+prepositional = "«Техническая зона»"
+gender = "neuter"
+
+["computer terminal semiotic"]
+nominative = "«Компьютерный терминал»"
+genitive = "«Компьютерный терминал»"
+dative = "«Компьютерный терминал»"
+accusative = "«Компьютерный терминал»"
+instrumental = "«Компьютерный терминал»"
+prepositional = "«Компьютерный терминал»"
+gender = "neuter"
+
+["water semiotic"]
+nominative = "«Вода»"
+genitive = "«Вода»"
+dative = "«Вода»"
+accusative = "«Вода»"
+instrumental = "«Вода»"
+prepositional = "«Вода»"
+gender = "neuter"
+
+["water hazard semiotic"]
+nominative = "«Гидрологическая опасность»"
+genitive = "«Гидрологическая опасность"
+dative = "«Гидрологическая опасность»"
+accusative = "«Гидрологическая опасность»"
+instrumental = "«Гидрологическая опасность»"
+prepositional = "«Гидрологическая опасность»"
+gender = "neuter"
+
+["Stairs"]
+nominative = "«Лестница»"
+genitive = "«Лестница»"
+dative = "«Лестница»"
+accusative = "«Лестница»"
+instrumental = "«Лестница»"
+prepositional = "«Лестница»"
+gender = "neuter"
+
+["Bathroom"]
+nominative = "«Санузел»"
+genitive = "«Санузел»"
+dative = "«Санузел»"
+accusative = "«Санузел»"
+instrumental = "«Санузел»"
+prepositional = "«Санузел»"
+gender = "neuter"
+
+["refrigerated biological storage semiotic"]
+nominative = "«Холодильное хранилище биоматериалов»"
+genitive = "«Холодильное хранилище биоматериалов»"
+dative = "«Холодильное хранилище биоматериалов»"
+accusative = "«Холодильное хранилище биоматериалов»"
+instrumental = "«Холодильное хранилище биоматериалов»"
+prepositional = "«Холодильное хранилище биоматериалов»"
+gender = "neuter"
+
+["medical cryostasis vault semiotic"]
+nominative = "«Медицинское кригоенное хранилище»"
+genitive = "«Медицинское кригоенное хранилище»"
+dative = "«Медицинское кригоенное хранилище»"
+accusative = "«Медицинское кригоенное хранилище»"
+instrumental = "«Медицинское кригоенное хранилище»"
+prepositional = "«Медицинское кригоенное хранилище»"
+gender = "neuter"
+
+["security semiotic"]
+nominative = "«Охраняемая зона»"
+genitive = "«Охраняемая зона»"
+dative = "«Охраняемая зона»"
+accusative = "«Охраняемая зона»"
+instrumental = "«Охраняемая зона»"
+prepositional = "«Охраняемая зона»"
+gender = "neuter"
+
+["intercom semiotic"]
+nominative = "«Внутренняя связь»"
+genitive = "«Внутренняя связь»"
+dative = "«Внутренняя связь»"
+accusative = "«Внутренняя связь»"
+instrumental = "«Внутренняя связь»"
+prepositional = "«Внутренняя связь»"
+gender = "neuter"
+
+["ladder semiotic"]
+nominative = "«Лестница»"
+genitive = "«Лестница»"
+dative = "«Лестница»"
+accusative = "«Лестница»"
+instrumental = "«Лестница»"
+prepositional = "«Лестница»"
+gender = "neuter"
+
+["fire hazard semiotic"]
+nominative = "«Пожарная опасность»"
+genitive = "«Пожарная опасность»"
+dative = "«Пожарная опасность»"
+accusative = "«Пожарная опасность»"
+instrumental = "«Пожарная опасность»"
+prepositional = "«Пожарная опасность»"
+gender = "neuter"
+
+["Warning: Hazardous Environment"]
+nominative = "«Аварийная зона»"
+genitive = "«Аварийная зона»"
+dative = "«Аварийная зона»"
+accusative = "«Аварийная зона»"
+instrumental = "«Аварийная зона»"
+prepositional = "«Аварийная зона»"
+gender = "neuter"
+
+["conference room semiotic"]
+nominative = "«Конференц-зал»"
+genitive = "«Конференц-зал»"
+dative = "«Конференц-зал»"
+accusative = "«Конференц-зал»"
+instrumental = "«Конференц-зал»"
+prepositional = "«Конференц-зал»"
+gender = "neuter"
+
+["synthetic storage semiotic"]
+nominative = "«Хранилище синтетика»"
+genitive = "«Хранилище синтетика»"
+dative = "«Хранилище синтетика»"
+accusative = "«Хранилище синтетика»"
+instrumental = "«Хранилище синтетика»"
+prepositional = "«Хранилище синтетика»"
+gender = "neuter"
+
+["bridge semiotic"]
+nominative = "«Мостик»"
+genitive = "«Мостик»"
+dative = "«Мостик»"
+accusative = "«Мостик»"
+instrumental = "«Мостик»"
+prepositional = "«Мостик»"
+gender = "neuter"
+
+["coffee semiotic"]
+nominative = "«Кофе»"
+genitive = "«Кофе»"
+dative = "«Кофе»"
+accusative = "«Кофе»"
+instrumental = "«Кофе»"
+prepositional = "«Кофе»"
+gender = "neuter"
+
+["firing range semiotic"]
+nominative = "«Полигон»"
+genitive = "«Полигон»"
+dative = "«Полигон»"
+accusative = "«Полигон»"
+instrumental = "«Полигон»"
+prepositional = "«Полигон»"
+gender = "neuter"
+
+["bulkhead door semiotic"]
+nominative = "«Запорный шлюз»"
+genitive = "«Запорный шлюз»"
+dative = "«Запорный шлюз»"
+accusative = "«Запорный шлюз»"
+instrumental = "«Запорный шлюз»"
+prepositional = "«Запорный шлюз»"
+gender = "neuter"
+
+["high voltage semiotic"]
+nominative = "«Высокое напряжение»"
+genitive = "«Высокое напряжение»"
+dative = "«Высокое напряжение»"
+accusative = "«Высокое напряжение»"
+instrumental = "«Высокое напряжение»"
+prepositional = "«Высокое напряжение»"
+gender = "neuter"
+
+["biological laboratory semiotic"]
+nominative = "«Биолаборатория»"
+genitive = "«Биолаборатория»"
+dative = "«Биолаборатория»"
+accusative = "«Биолаборатория»"
+instrumental = "«Биолаборатория»"
+prepositional = "«Биолаборатория»"
+gender = "neuter"
+
+["chemical laboratory semiotic"]
+nominative = "«Химлаборатория»"
+genitive = "«Химлаборатория»"
+dative = "«Химлаборатория»"
+accusative = "«Химлаборатория»"
+instrumental = "«Химлаборатория»"
+prepositional = "«Химлаборатория»"
+gender = "neuter"
+
+["biohazard semiotic"]
+nominative = "«Биологическая опасность»"
+genitive = "«Биологическая опасность»"
+dative = "«Биологическая опасность»"
+accusative = "«Биологическая опасность»"
+instrumental = "«Биологическая опасность»"
+prepositional = "«Биологическая опасность»"
+gender = "neuter"
+
+["refrigeration semiotic"]
+nominative = "«Холодильная зона»"
+genitive = "«Холодильная зона»"
+dative = "«Холодильная зона»"
+accusative = "«Холодильная зона»"
+instrumental = "«Холодильная зона»"
+prepositional = "«Холодильная зона»"
+gender = "neuter"
+
+["manual opener/closer semiotic"]
+nominative = "«Ручное управление»"
+genitive = "«Ручное управление»"
+dative = "«Ручное управление»"
+accusative = "«Ручное управление»"
+instrumental = "«Ручное управление»"
+prepositional = "«Ручное управление»"
+gender = "neuter"

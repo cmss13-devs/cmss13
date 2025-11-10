@@ -34,10 +34,14 @@
 /obj/item/clothing/under/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT), override_icon_state[] = null)
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
+		var/suffix = "" // SS220 EDIT ADDICTION
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+			snow_name = replacetext(snow_name,"snow ","") // VERY IMPORTANT SS220 EDIT ADDICTION
 			name += snow_name
+			suffix = " (Зимний камуфляж)" // SS220 EDIT ADDICTION
 		else
 			name += " uniform"
+		ru_names_rename(ru_names_toml(name, suffix = suffix, override_base = name)) // SS220 EDIT ADDICTION
 	if(!(flags_atom & NO_GAMEMODE_SKIN))
 		select_gamemode_skin(type, override_icon_state, new_protection)
 	return ..() //Done after above in case gamemode skin is missing sprites.
@@ -2114,4 +2118,3 @@
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 	hood_type = /obj/item/clothing/head/helmet/marine/cbrn_hood/advanced
-

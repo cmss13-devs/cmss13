@@ -58,16 +58,16 @@
 	var/announcement_areas = english_list(notification_areas[type]["[time_to_grab]"])
 
 	var/marine_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
-		? "Structural collapse detected in [announcement_areas]. Be advised that new routes may be accessible." \
-		: "Geological shifts detected in [announcement_areas]. Be advised that new routes may be accessible."
+		? "Обнаружено структурное обрушение в [announcement_areas]. Возможно открылся доступ к новым маршрутам." \
+		: "Обнаружены геологические сдвиги в [announcement_areas]. Возможно открылся доступ к новым маршрутам."
 
-	marine_announcement(marine_announcement_text, "Priority Announcement")
+	marine_announcement(marine_announcement_text, "Приоритетное оповещение") // SS220 EDIT ADDICTION
 
 	var/xeno_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
-		? "The shattered metal of this place has collapsed, providing new routes in [announcement_areas]." \
-		: "The ground of this world trembles, and new routes are accessible in [announcement_areas]."
+		? "Металл этого места обрушился, предоставляя новые маршруты в [announcement_areas]." \
+		: "Земля этого мира содрогается, открывая новые пути в [announcement_areas]."
 
-	xeno_announcement(SPAN_XENOANNOUNCE(xeno_announcement_text), "everything", XENO_GENERAL_ANNOUNCE)
+	xeno_announcement(SPAN_XENOANNOUNCE(xeno_announcement_text), "everything", XENO_GENERAL_ANNOUNCE) // SS220 EDIT ADDICTION
 
 	qdel(src)
 
@@ -87,16 +87,16 @@
 	var/announcement_areas = english_list(notification_areas[type]["[time_to_grab]"])
 
 	var/marine_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
-		? "Structural collapse detected in [announcement_areas], allowing dismantlement. Be advised that new routes may be created." \
-		: "Geological shifts detected in [announcement_areas], allowing excavation. Be advised that new routes may be created."
+		? "Обнаружено структурное обрушение в [announcement_areas], позволяющее демонтировать конструкции. Возможно открылся доступ к новым маршрутам." \
+		: "Обнаружены геологические сдвиги в [announcement_areas], позволяющие проводить раскопки. Возможно открылся доступ к новым маршрутам."
 
-	marine_announcement(marine_announcement_text, "Priority Announcement")
+	marine_announcement(marine_announcement_text, "Приоритетное оповещение") // SS220 EDIT ADDICTION
 
 	var/xeno_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
-		? "The shattered metal of this place has collapsed, and we can create routes through [announcement_areas]." \
-		: "The ground of this world trembles, and new routes may be created through [announcement_areas]."
+		? "Металл этого места обрушился, и мы можем создать новые маршруты через [announcement_areas]." \
+		: "Земля этого мира содрогается, и мы можем создать новые маршруты через [announcement_areas]."
 
-	xeno_announcement(SPAN_XENOANNOUNCE(xeno_announcement_text), "everything", XENO_GENERAL_ANNOUNCE)
+	xeno_announcement(SPAN_XENOANNOUNCE(xeno_announcement_text), "everything", XENO_GENERAL_ANNOUNCE) // SS220 EDIT ADDICTION
 
 	qdel(src)
 

@@ -111,13 +111,13 @@
 			for(var/datum/surgery_step/current_step as anything in valid_steps)
 				if(hint_msg)
 					if(current_step == valid_steps[length(valid_steps)])
-						hint_msg += ", or [current_step.desc]"
+						hint_msg += " или [current_step.desc]" // SS220 EDIT ADDICTION
 					else
-						hint_msg += ", [current_step.desc]"
+						hint_msg += ", [current_step.desc]" // SS220 EDIT ADDICTION
 				else
-					hint_msg = "You can't [current_step.desc] with \the [tool]"
+					hint_msg = "Вы не можете [current_step.desc] with [tool.declent_ru(ACCUSATIVE)]" // SS220 EDIT ADDICTION
 			if(!isnull(hint_msg))
-				to_chat(user, SPAN_WARNING("[hint_msg]."))
+				to_chat(user, SPAN_WARNING("[hint_msg].")) // SS220 EDIT ADDICTION
 		return FALSE
 
 	var/datum/surgery/surgeryinstance

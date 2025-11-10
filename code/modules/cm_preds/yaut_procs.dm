@@ -1,23 +1,33 @@
+#define TTS_YAUTJA_ANNOUNCER new /datum/announcer/yautja // SS220 EDIT - TTS
+
 // Notify all preds with the bracer icon
 /proc/message_all_yautja(msg, soundeffect = TRUE)
 	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		// Send message to the bracer; appear multiple times if we have more bracers
 		for(var/obj/item/clothing/gloves/yautja/hunter/G in Y.contents)
-			to_chat(Y, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beeps: [msg]"))
+			to_chat(Y, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> мигнул: [msg]"))
 			if(G.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-/proc/elder_overseer_message(text = "", title_text = "Elder Overseer", elder_user = "AutomatedMessage") // you can override the title_text if you want.
+/proc/elder_overseer_message(text = "", title_text = "Древний Смотритель", elder_user = "AutomatedMessage") // you can override the title_text if you want.
 	for(var/mob/living/carbon/human/hunter as anything in GLOB.yautja_mob_list)
 		if(!hunter.client)
 			continue
 		if(hunter.stat == DEAD)
 			continue
 		text = "[SPAN_YAUTJABOLDBIG("<b>[text]<b>")]"
-		hunter.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order/yautja, override_color = "#af0614")
+		hunter.play_screen_text("<span class='langchat_notification' style=text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order/yautja, override_color = "#af0614") // SS220 EDIT: font
 		var/elder_picked = pick('sound/voice/pred_elder_overseer_1.ogg', 'sound/voice/pred_elder_overseer_2.ogg', 'sound/voice/pred_elder_overseer_3.ogg', 'sound/voice/pred_elder_overseer_4.ogg')
 		playsound_client(hunter.client, elder_picked, 25)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat_spaced), hunter, "[SPAN_YAUTJABOLDBIG("Overseer Message Log")]<br><br>[SPAN_YAUTJABOLDBIG("[title_text]")]<br><br>[SPAN_YAUTJABOLD(text)]", MESSAGE_TYPE_RADIO), 12 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat_spaced), hunter, "[SPAN_YAUTJABOLDBIG("Прием Сообщения Смотрителя")]<br><br>[SPAN_YAUTJABOLDBIG("[title_text]")]<br><br>[SPAN_YAUTJABOLD(text)]", MESSAGE_TYPE_RADIO), 12 SECONDS)
+
+		// SS220 ADD START - TTS
+		var/datum/announcer/announcer = TTS_YAUTJA_ANNOUNCER
+		if(isobserver(hunter) && !(hunter.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
+			continue
+		announcer.Message(message = text, receivers = list(hunter))
+		// SS220 ADD END - TTS
+
 	if(elder_user != "AutomatedMessage")
 		message_admins("[elder_user] has created a Yautja Elder Overseer message")
 		log_admin("[elder_user] created a predator council message: [text]")

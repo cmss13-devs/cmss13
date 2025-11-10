@@ -63,7 +63,7 @@
 	if(!check_and_use_plasma_owner())
 		return FALSE
 
-	stabbing_xeno.visible_message(SPAN_XENODANGER("\The [stabbing_xeno] uncoils and wildly throws out its tail!"), SPAN_XENODANGER("We uncoil our tail wildly in front of us!"))
+	stabbing_xeno.visible_message(SPAN_XENODANGER("[stabbing_xeno] разворачивает хвост и дико размахивает им!"), SPAN_XENODANGER("Мы разворачиваем хвост и дико размахиваем им!")) // SS220 EDIT ADDICTION
 
 	var/obj/projectile/hook_projectile = new /obj/projectile(stabbing_xeno.loc, create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno))
 
@@ -129,17 +129,17 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turf, windup)
 
 	if(!length(turflist))
-		to_chat(abduct_user, SPAN_XENOWARNING("We don't have any room to do our abduction!"))
+		to_chat(abduct_user, SPAN_XENOWARNING("Нам не хватает места, чтобы развернуть хвост!"))
 		return
 
-	abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user]'s segmented tail starts coiling..."), SPAN_XENODANGER("We begin coiling our tail, aiming towards \the [atom]..."))
+	abduct_user.visible_message(SPAN_XENODANGER("Сегментированный хвост [abduct_user] начинает сворачиваться..."), SPAN_XENODANGER("Мы начинаем сворачивать хвост, целясь в [atom]...")) // SS220 EDIT ADDICTION
 	abduct_user.emote("roar")
 
 	var/throw_target_turf = get_step(abduct_user, facing)
 
 	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 	if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
-		to_chat(abduct_user, SPAN_XENOWARNING("You relax your tail."))
+		to_chat(abduct_user, SPAN_XENOWARNING("Вы расслабляете хвост."))
 		apply_cooldown()
 
 		for (var/obj/effect/xenomorph/xeno_telegraph/xenotelegraph in telegraph_atom_list)
@@ -156,7 +156,7 @@
 	REMOVE_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 
 	playsound(get_turf(abduct_user), 'sound/effects/bang.ogg', 25, 0)
-	abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user] suddenly uncoils its tail, firing it towards [atom]!"), SPAN_XENODANGER("We uncoil our tail, sending it out towards \the [atom]!"))
+	abduct_user.visible_message(SPAN_XENODANGER("[abduct_user] молниеносно разворачивает хвост и выпускает его в сторону [atom]!"), SPAN_XENODANGER("Мы молниеносно разворачиваем хвост и выпускаем его в сторону [atom]!")) // SS220 EDIT ADDICTION
 
 	var/list/targets = list()
 	for (var/turf/target_turf in turflist)
@@ -175,7 +175,7 @@
 	apply_cooldown()
 
 	for (var/mob/living/carbon/target in targets)
-		abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user]'s hooked tail coils itself around [target]!"), SPAN_XENODANGER("Our hooked tail coils itself around [target]!"))
+		abduct_user.visible_message(SPAN_XENODANGER("Сегментированный хвост [abduct_user] обвивается вокруг [target]!"), SPAN_XENODANGER("Наш хвост обвивается вокруг [target]!")) // SS220 EDIT ADDICTION
 
 		target.apply_effect(0.2, WEAKEN)
 
@@ -188,12 +188,12 @@
 				var/mob/living/carbon/human/target_human = target
 				target_human.update_xeno_hostile_hud()
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Abduct")), get_xeno_stun_duration(target, 2.5 SECONDS))
-			to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] has pinned you to the ground! You cannot move!"))
+			to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] прижал вас к земле из-за чего вы обездвижены!")) // SS220 EDIT ADDICTION
 
 			target.set_effect(2, DAZE)
 		else if (LAZYLEN(targets) >= 3)
 			target.apply_effect(get_xeno_stun_duration(target, 1.3), WEAKEN)
-			to_chat(target, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [abduct_user]!"))
+			to_chat(target, SPAN_XENOHIGHDANGER("Вы врезаетесь в других жертв [abduct_user]!")) // SS220 EDIT ADDICTION
 
 
 		shake_camera(target, 10, 1)
@@ -242,7 +242,7 @@
 
 	target_carbon.last_damage_data = create_cause_data(oppressor_user.caste_type, oppressor_user)
 
-	oppressor_user.visible_message(SPAN_XENOWARNING("\The [oppressor_user] hits [target_carbon] in the [target_limb? target_limb.display_name : "chest"] with a devastatingly powerful punch!"),
+	oppressor_user.visible_message(SPAN_XENOWARNING("\The [oppressor_user] hits [target_carbon] in the [target_limb? target_limb.display_name : "chest"] with a devastatingly powerful punch!"), // SS220 EDIT ADDICTION
 	SPAN_XENOWARNING("We hit [target_carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"))
 	var/hitsound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 	playsound(target_carbon,hitsound, 50, 1)
@@ -260,7 +260,7 @@
 			human_to_update.update_xeno_hostile_hud()
 
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon, TRAIT_SOURCE_ABILITY("Oppressor Punch")), get_xeno_stun_duration(target_carbon, 1.2 SECONDS))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user] has pinned you to the ground! You cannot move!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user] прижал вас к земле из-за чего вы обездвижены!")) // SS220 EDIT ADDICTION
 	else
 		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, target_limb? target_limb.name : "chest")
 		step_away(target_carbon, oppressor_user, 2)
@@ -342,7 +342,7 @@
 
 	apply_cooldown()
 
-	lash_user.visible_message(SPAN_XENODANGER("[lash_user] lashes its tail furiously, hitting everything in front of it!"), SPAN_XENODANGER("We lash our tail furiously, hitting everything in front of us!"))
+	lash_user.visible_message(SPAN_XENODANGER("[lash_user] яростно хлыщет хвостом по области перед собой!"), SPAN_XENODANGER("Мы яростно хлыщем хвостом по области перед собой!")) // SS220 EDIT ADDICTION
 	lash_user.spin_circle()
 	lash_user.emote("tail")
 

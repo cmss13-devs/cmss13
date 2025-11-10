@@ -9,8 +9,10 @@
 
 	SEND_SIGNAL(attacking_mob, COMSIG_LIVING_ATTACKHAND_HUMAN, src)
 
+	var/is_male = attacking_mob.gender == MALE ? "" : "а" // SS220 EDUT ADDICTION
+	var/ru_name = declent_ru(GENITIVE)
 	if((attacking_mob != src) && check_shields(0, attacking_mob.name))
-		visible_message(SPAN_DANGER("<B>[attacking_mob] attempted to touch [src]!</B>"), null, null, 5)
+		visible_message(SPAN_DANGER("<B>[attacking_mob] попытался прикоснуться к [ru_name]!</B>"), null, null, 5)
 		return FALSE
 
 	switch(attacking_mob.a_intent)
@@ -19,11 +21,11 @@
 			if(on_fire && attacking_mob != src)
 				adjust_fire_stacks(-10, min_stacks = 0)
 				playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] tries to put out the fire on [src]!"),
-					SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
+				attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] пытается потушить огонь на [ru_name]!"),
+					SPAN_WARNING("Вы пытаетесь потушить огонь на [ru_name]!"), null, 5)
 				if(fire_stacks <= 0)
-					attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] has successfully extinguished the fire on [src]!"),
-						SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
+					attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] потушил огонь на [ru_name]!"),
+						SPAN_NOTICE("Вы потушили огонь на [ru_name]."), null, 5)
 				return 1
 
 			// If unconscious with oxygen damage, do CPR. If dead, we do CPR
@@ -32,19 +34,19 @@
 				return 1
 
 			if(species.flags & IS_SYNTHETIC)
-				to_chat(attacking_mob, SPAN_DANGER("Your hands compress the metal chest uselessly... "))
+				to_chat(attacking_mob, SPAN_DANGER("Синтетикам бесполезно проводить <b>СЛР</b>..."))
 				return 0
 
 			if(cpr_attempt_timer >= world.time)
-				to_chat(attacking_mob, SPAN_NOTICE("<B>CPR is already being performed on [src]!</B>"))
+				to_chat(attacking_mob, SPAN_NOTICE("<B>Кто-то уже проводит <b>СЛР</b> на [ru_name]!</B>"))
 				return 0
 
 			//CPR
 			if(attacking_mob.action_busy)
 				return 1
 
-			attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> starts performing <b>CPR</b> on <b>[src]</b>."),
-				SPAN_HELPFUL("You start <b>performing CPR</b> on <b>[src]</b>."))
+			attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> начал[is_male] проводить <b>СЛР</b> на <b>[ru_name]</b>."), // SS220 EDIT ADDICTION
+				SPAN_HELPFUL("Вы начали проводить <b>СЛР</b> на <b>[ru_name]</b>.")) // SS220 EDIT ADDICTION
 
 			cpr_attempt_timer = world.time + HUMAN_STRIP_DELAY * attacking_mob.get_skill_duration_multiplier(SKILL_MEDICAL)
 			if(do_after(attacking_mob, HUMAN_STRIP_DELAY * attacking_mob.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
@@ -53,19 +55,19 @@
 					apply_damage(-suff, OXY)
 					updatehealth()
 					src.affected_message(attacking_mob,
-						SPAN_HELPFUL("You feel a <b>breath of fresh air</b> enter your lungs. It feels good."),
-						SPAN_HELPFUL("You <b>perform CPR</b> on <b>[src]</b>. Repeat at least every <b>7 seconds</b>."),
-						SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."))
+						SPAN_HELPFUL("Вы чувствуете, как <b>свежий воздух</b> проникает в ваши легкие, приятно, однако."),
+						SPAN_HELPFUL("Вы выполнили проведение <b>СЛР</b> на <b>[ru_name]</b>. Повторяйте его каждые 7 секунд."), // SS220 EDIT ADDICTION
+						SPAN_NOTICE("<b>[attacking_mob]</b> выполнил[is_male] проведение <b>СЛР</b> на <b>[ru_name]</b>.")) // SS220 EDIT ADDICTION
 				if(is_revivable() && stat == DEAD)
 					if(cpr_cooldown < world.time)
 						revive_grace_period += 7 SECONDS
-						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."),
-							SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>."))
-						balloon_alert(attacking_mob, "you perform cpr")
+						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> выполнил[is_male] проведение <b>СЛР</b> на <b>[ru_name]</b>."), // SS220 EDIT ADDICTION
+							SPAN_HELPFUL("Вы выполнили проведение <b>СЛР</b> на <b>[ru_name]</b>.")) // SS220 EDIT ADDICTION
+						balloon_alert(attacking_mob, "СЛР успешно проведено")
 					else
-						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> fails to perform CPR on <b>[src]</b>."),
-							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))
-						balloon_alert(attacking_mob, "incorrect rhythm, do it slower")
+						attacking_mob.visible_message(SPAN_WARNING("<b>[attacking_mob]</b> провалил[is_male] проведение <b>СЛР</b> на <b>[ru_name]</b>."), // SS220 EDIT ADDICTION
+							SPAN_WARNING("Вы провалили проведение <b>СЛР</b> на <b>[ru_name]</b>. Не проводите <b>СЛР</b> слишком часто. Подождите перед следующей попыткой.")) // SS220 EDIT ADDICTION
+						balloon_alert(attacking_mob, "Подождите перед следующей попыткой")
 					cpr_cooldown = world.time + 7 SECONDS
 			cpr_attempt_timer = 0
 			return 1
@@ -169,8 +171,8 @@
 				KnockDown(strength)
 				Stun(strength)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				var/shove_text = attacker_skill_level > 1 ? "tackled" : pick("pushed", "shoved")
-				visible_message(SPAN_DANGER("<B>[attacking_mob] has [shove_text] [src]!</B>"), null, null, 5)
+				var/shove_text = attacker_skill_level > 1 ? "сбивает с ног" : pick("толкает", "отталкивает")
+				visible_message(SPAN_DANGER_BOLD("[attacking_mob] [shove_text] [src]!"), null, null, 5) // SS220 EDIT ADDICTION
 				return
 
 			if(disarm_chance <= 60)
@@ -180,12 +182,12 @@
 					stop_pulling()
 				else
 					drop_held_item()
-					visible_message(SPAN_DANGER("<B>[attacking_mob] has disarmed [src]!</B>"), null, null, 5)
+					visible_message(SPAN_DANGER_BOLD("[attacking_mob] обезоруживает [src]!"), null, null, 5)
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, 7)
 				return
 
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, 7)
-			visible_message(SPAN_DANGER("<B>[attacking_mob] attempted to disarm [src]!</B>"), null, null, 5)
+			visible_message(SPAN_DANGER_BOLD("[attacking_mob] пытается обезоружить [src]!"), null, null, 5) // SS220 EDIT ADDICTION
 
 /mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)
 	return
@@ -197,14 +199,17 @@
 		return
 
 	//Target is not us
-	var/t_him = "it"
-	switch(gender)
-		if(MALE)
-			t_him = "him"
-		if(FEMALE)
-			t_him = "her"
-		if(PLURAL)
-			t_him = "them"
+	// SS220 START EDIT ADDICTION
+	var/t_him = ru_p_them()
+	//var/t_him = "it"
+	//switch(gender)
+	//	if(MALE)
+	//		t_him = "him"
+	//	if(FEMALE)
+	//		t_him = "her"
+	//	if(PLURAL)
+	//		t_him = "them"
+	// SS220 END EDIT ADDICTION
 
 	if (w_uniform)
 		w_uniform.add_fingerprint(M)
@@ -214,21 +219,21 @@
 			sleeping = max(0,src.sleeping-5)
 		if(!sleeping)
 			if(is_dizzy)
-				to_chat(M, SPAN_WARNING("[src] looks dizzy. Maybe you should let [t_him] rest a bit longer."))
+				to_chat(M, SPAN_WARNING("Похоже у [declent_ru(GENITIVE)] кружится голова. Не стоит [t_him] сейчас беспокоить."))
 			else
 				set_resting(FALSE)
-		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"),
-			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
+		M.visible_message(SPAN_NOTICE("[capitalize(M.declent_ru(NOMINATIVE))] трясёт [declent_ru(ACCUSATIVE)], пытаясь разбудить [t_him]!"), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("Вы трясёте [declent_ru(ACCUSATIVE)], пытаясь разбудить [t_him]!"), null, 4) // SS220 EDIT ADDICTION
 	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
-		M.visible_message(SPAN_NOTICE("[M] shakes [src], trying to shake [t_him] out of his stupor!"),
-			SPAN_NOTICE("You shake [src], trying to shake [t_him] out of his stupor!"), null, 4)
+		M.visible_message(SPAN_NOTICE("[capitalize(M.declent_ru(NOMINATIVE))] трясёт [declent_ru(ACCUSATIVE)], пытаясь вывести [t_him] из ступора!"),
+			SPAN_NOTICE("Вы трясёте [declent_ru(ACCUSATIVE)], пытаясь вывести [t_him] из ступора!"), null, 4)
 	else
 		var/mob/living/carbon/human/H = M
 		if(istype(H))
 			H.species.hug(H, src, H.zone_selected)
 		else
-			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"),
-				SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
+			M.visible_message(SPAN_NOTICE("[capitalize(M.declent_ru(NOMINATIVE))] похлопывает [declent_ru(ACCUSATIVE)] по спине, чтобы [t_him] стало лучше!"),
+				SPAN_NOTICE("Вы похлопываете [declent_ru(ACCUSATIVE)] по спине, чтобы [t_him] стало лучше!"), null, 4)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
 
@@ -239,8 +244,8 @@
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
 /mob/living/carbon/human/proc/check_for_injuries()
-	visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."),
-	SPAN_NOTICE("You check yourself for injuries."), null, 3)
+	visible_message(SPAN_NOTICE("[capitalize(declent_ru(NOMINATIVE))] осматривает себя."), // SS220 EDIT ADDICTION
+	SPAN_NOTICE("Вы осматриваете своё тело в поисках ран."), null, 3)
 
 	var/list/limb_message = list()
 	for(var/obj/limb/org in limbs)
@@ -248,71 +253,71 @@
 		var/brutedamage = org.brute_dam
 		var/burndamage = org.burn_dam
 		if(org.status & LIMB_DESTROYED)
-			status += "MISSING!"
+			status += "ОТСУТСТВУЕТ!"
 		else if(org.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			switch(brutedamage)
 				if(1 to 20)
-					status += "dented"
+					status += "помята"
 				if(20 to 40)
-					status += "battered"
+					status += "деформирована"
 				if(40 to INFINITY)
-					status += "mangled"
+					status += "сильно деформирована"
 
 			switch(burndamage)
 				if(1 to 10)
-					status += "singed"
+					status += "обгорела"
 				if(10 to 40)
-					status += "scorched"
+					status += "обуглена"
 				if(40 to INFINITY)
-					status += "charred"
+					status += "сильно обуглена"
 
 		else
 			if(org.status & LIMB_MUTATED)
-				status += "weirdly shaped"
+				status += "странной формы"
 			if(halloss > 0)
-				status += "tingling"
+				status += "покалывает"
 			switch(brutedamage)
 				if(1 to 20)
-					status += "bruised"
+					status += "ушиблена"
 				if(20 to 40)
-					status += "battered"
+					status += "избита"
 				if(40 to INFINITY)
-					status += "mangled"
+					status += "сильно избита"
 
 			switch(burndamage)
 				if(1 to 10)
-					status += "numb"
+					status += "онемела"
 				if(10 to 40)
-					status += "blistered"
+					status += "покрыта волдырями"
 				if(40 to INFINITY)
-					status += "peeling away"
+					status += "облезает"
 
 		if(org.get_incision_depth()) //Unindented because robotic and severed limbs may also have surgeries performed upon them.
-			status += "cut open"
+			status += "вскрыта"
 
 		for(var/datum/effects/bleeding/external/E in org.bleeding_effects_list)
-			status += "bleeding"
+			status += "кровоточит"
 			break
 
 		var/limb_surgeries = org.get_active_limb_surgeries()
 		if(limb_surgeries)
-			status += "undergoing [limb_surgeries]"
+			status += "находится в процессе [limb_surgeries]"
 
 		if(!length(status))
 			status += "OK"
 
 		var/postscript
 		if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
-			postscript += " <b>(NONFUNCTIONAL)</b>"
+			postscript += " <b>(НЕ ФУНКЦИОНИРУЕТ)</b>"
 		if(org.status & LIMB_BROKEN)
-			postscript += " <b>(BROKEN)</b>"
+			postscript += " <b>(ПЕРЕЛОМ)</b>"
 		if(org.status & LIMB_SPLINTED_INDESTRUCTIBLE)
-			postscript += " <b>(NANOSPLINTED)</b>"
+			postscript += " <b>(НАНОШИНА)</b>"
 		else if(org.status & LIMB_SPLINTED)
-			postscript += " <b>(SPLINTED)</b>"
+			postscript += " <b>(ШИНА)</b>"
 
 		if(postscript)
-			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]"
+			limb_message += "\t [capitalize(org.declent_ru(NOMINATIVE))] [SPAN_WARNING("[english_list(status)].[postscript]")]"
 		else
-			limb_message += "\t My [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]"
+			limb_message += "\t [capitalize(org.declent_ru(NOMINATIVE))] [status[1] == "OK" ? SPAN_NOTICE("в полном порядке.") : SPAN_WARNING("[english_list(status)].")]"
 	to_chat(src, boxed_message(limb_message.Join("\n")))

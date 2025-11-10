@@ -160,7 +160,8 @@
 	trans_to_datum(V, amount, reaction = FALSE)
 	if(issynth(target))
 		return
-	to_chat(target, SPAN_NOTICE("You taste [pick(V.reagent_list)]."))
+	var/datum/reagent/picked = pick(V.reagent_list) // SS220 EDIT ADDICTION
+	to_chat(target, SPAN_NOTICE("Вы чувствуете вкус [picked.declent_reagent_ru_from_obj(picked, GENITIVE, picked.name)].")) // SS220 EDIT ADDICTION
 
 	for(var/datum/reagent/RG in V.reagent_list) // If it can't be ingested, remove it.
 		if(RG.flags & REAGENT_NOT_INGESTIBLE)

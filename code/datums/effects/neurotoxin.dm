@@ -164,11 +164,11 @@
 
 /datum/effects/neurotoxin/proc/hallucination_fakecas_sequence(mob/living/carbon/human/victim)
 
-	playsound_client(victim.client,'sound/weapons/dropship_sonic_boom.ogg', vol = 5)
+	playsound_client(victim.client,'modular/aesthetics_sounds/sound/dropship_sonic_boom.ogg', vol = 5) // BANDAMARINES EDIT - Dropship soundeffects update
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), victim,"A DROPSHIP FIRES [pick(SPAN_UNDERLINE("TOWARDS THE [pick("WEST","EAST","SOUTH","NORTH")]"),SPAN_UNDERLINE("RIGHT ONTOP OF YOU!"))]!"), 3.5 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/rocketpod_fire.ogg', null, 5), 4 SECONDS)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gau.ogg', null, 5), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'modular/aesthetics_sounds/sound/dropship_gau.ogg', null, 5), 5 SECONDS) // BANDAMARINES EDIT - Dropship soundeffects update
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/rocketpod_fire.ogg', null, 5), 5.5 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg', null, 5), 5.5 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg', null, 5), 5.5 SECONDS)

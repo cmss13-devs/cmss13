@@ -59,16 +59,16 @@
 		to_chat(H, SPAN_WARNING("No internal storage found."))
 		return
 
-	H.visible_message(SPAN_NOTICE("[H] starts to empty \the [src]..."), SPAN_NOTICE("You start to empty \the [src]..."))
+	H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] starts to empty \the [src]..."), SPAN_NOTICE("You start to empty \the [src]..."))
 	if(!do_after(H, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		H.visible_message(SPAN_WARNING("[H] stops emptying \the [src]..."), SPAN_WARNING("You stop emptying \the [src]..."))
+		H.visible_message(SPAN_WARNING("[capitalize(H.declent_ru(NOMINATIVE))] stops emptying \the [src]..."), SPAN_WARNING("You stop emptying \the [src]..."))
 		return
 
 	for(var/mob/M in container.content_watchers)
 		container.storage_close(M)
 	for (var/obj/item/I in container.contents)
 		container.remove_from_storage(I, T)
-	H.visible_message(SPAN_NOTICE("[H] empties \the [src]."), SPAN_NOTICE("You empty \the [src]."))
+	H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] empties \the [src]."), SPAN_NOTICE("You empty \the [src]."))
 
 	container.empty(H, get_turf(H))
 
@@ -267,9 +267,9 @@
 		to_chat(H, SPAN_WARNING("The surgical tray was already removed!"))
 		return
 
-	H.visible_message(SPAN_NOTICE("[H] starts removing the surgical tray from \the [src]."), SPAN_NOTICE("You start removing the surgical tray from \the [src]."))
+	H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] starts removing the surgical tray from \the [src]."), SPAN_NOTICE("You start removing the surgical tray from \the [src]."))
 	if(!do_after(H, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		H.visible_message(SPAN_NOTICE("[H] stops removing the surgical tray from \the [src]."), SPAN_WARNING("You stop removing the surgical tray from \the [src]."))
+		H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] stops removing the surgical tray from \the [src]."), SPAN_WARNING("You stop removing the surgical tray from \the [src]."))
 		return
 
 	var/obj/item/storage/surgical_tray/empty/tray = new(loc)
@@ -282,16 +282,16 @@
 	update_icon()
 	H.put_in_hands(tray)
 	container.storage_close(H)
-	H.visible_message(SPAN_NOTICE("[H] removes the surgical tray from \the [src]."), SPAN_NOTICE("You remove the surgical tray from \the [src]."))
+	H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] removes the surgical tray from \the [src]."), SPAN_NOTICE("You remove the surgical tray from \the [src]."))
 
 /obj/structure/vehicle_locker/med/proc/add_tray(mob/living/carbon/human/H, obj/item/storage/surgical_tray/tray)
 	if(has_tray)
 		to_chat(H, SPAN_WARNING("\The [src] already has a surgical tray installed!"))
 		return
 
-	H.visible_message(SPAN_NOTICE("[H] starts installing \the [tray] into \the [src]."), SPAN_NOTICE("You start installing \the [tray] into \the [src]."))
+	H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] starts installing \the [tray] into \the [src]."), SPAN_NOTICE("You start installing \the [tray] into \the [src]."))
 	if(!do_after(H, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		H.visible_message(SPAN_NOTICE("[H] stops installing \the [tray] into \the [src]."), SPAN_WARNING("You stop installing \the [tray] into \the [src]."))
+		H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] stops installing \the [tray] into \the [src]."), SPAN_WARNING("You stop installing \the [tray] into \the [src]."))
 		return
 
 	var/turf/T = get_turf(src)
@@ -302,7 +302,7 @@
 	qdel(tray)
 	has_tray = TRUE
 	update_icon()
-	H.visible_message(SPAN_NOTICE("[H] installs \the [tray] into \the [src]."), SPAN_NOTICE("You install \the [tray] into \the [src]."))
+	H.visible_message(SPAN_NOTICE("[capitalize(H.declent_ru(NOMINATIVE))] installs \the [tray] into \the [src]."), SPAN_NOTICE("You install \the [tray] into \the [src]."))
 
 /obj/structure/vehicle_locker/pmc
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'

@@ -44,15 +44,15 @@
 				src.req_access = list()
 				src.req_access += pick(get_access(ACCESS_LIST_MARINE_MAIN))
 
-/obj/structure/closet/secure_closet/proc/togglelock(mob/living/user)
+/obj/structure/closet/secure_closet/proc/togglelock(mob/living/user) // SS220 EDIT ADDICTION
 	if(opened && !locked)
-		to_chat(user, SPAN_NOTICE("Close the locker first."))
+		to_chat(user, SPAN_NOTICE("Сначала закройте шкафчик."))
 		return
 	if(broken)
-		to_chat(user, SPAN_WARNING("The locker appears to be broken."))
+		to_chat(user, SPAN_WARNING("Похоже, что шкафчик сломан."))
 		return
 	if(user.loc == src)
-		to_chat(user, SPAN_NOTICE("You can't reach the lock from inside."))
+		to_chat(user, SPAN_NOTICE("Вы не можете дотянуться до замка шкафчика находясь внутри."))
 		return
 	if(allowed(user))
 		if(slotlocked && ishuman(user))
@@ -75,10 +75,10 @@
 		locked = !locked
 		for(var/mob/mob in viewers(user, 3))
 			if((mob.client && !( mob.blinded )))
-				to_chat(mob, SPAN_NOTICE("The locker has been [locked ? null : "un"]locked by [user]."))
+				to_chat(mob, SPAN_NOTICE("[locked ? "[capitalize(user.declent_ru(NOMINATIVE))] запирает [declent_ru(ACCUSATIVE)]" : "[capitalize(user.declent_ru(NOMINATIVE))] отпирает [declent_ru(ACCUSATIVE)]"].")) // SS220 EDIT ADDICTION
 		update_icon()
 	else
-		to_chat(user, SPAN_NOTICE("Access Denied"))
+		to_chat(user, SPAN_NOTICE("Доступ запрещён."))
 
 /obj/structure/closet/secure_closet/attackby(obj/item/W, mob/living/user)
 	if(src.opened)

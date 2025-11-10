@@ -134,7 +134,7 @@
 /obj/structure/machinery/chem_dispenser/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "ChemDispenser", name)
+		ui = new(user, src, "ChemDispenser", capitalize(declent_ru(NOMINATIVE))) // SS220 EDIT ADDICTION
 		ui.open()
 
 /obj/structure/machinery/chem_dispenser/ui_static_data(mob/user)
@@ -152,7 +152,12 @@
 	var/beakerCurrentVolume = 0
 	if(beaker && beaker.reagents && length(beaker.reagents.reagent_list))
 		for(var/datum/reagent/current_reagent in beaker.reagents.reagent_list)
-			beakerContents += list(list("name" = current_reagent.name, "volume" = current_reagent.volume))  // list in a list because Byond merges the first list...
+			// SS220 EDIT START ADDICTION
+			if(length(current_reagent.ru_names))
+				beakerContents += list(list("name" = current_reagent.declent_reagent_ru_from_obj(current_reagent, GENITIVE, current_reagent.name), "volume" = current_reagent.volume))
+			else
+				beakerContents += list(list("name" = current_reagent.name, "volume" = current_reagent.volume))  // list in a list because Byond merges the first list...
+			// SS220 EDIT END ADDICTION
 			beakerCurrentVolume += current_reagent.volume
 	.["beakerContents"] = beakerContents
 
@@ -168,7 +173,10 @@
 		var/datum/reagent/temp = GLOB.chemical_reagents_list[re]
 		if(temp)
 			var/chemname = temp.name
+			if (!isnull(network) && network != "Misc" && length(temp.ru_names))  // SS220 EDIT ADDICTION DONT TRANSLATE CHEM AND MEDIC REAGENTS
+				chemname = temp.ru_names["base"]  // SS220 EDIT ADDICTION
 			chemicals.Add(list(list("title" = chemname, "id" = temp.id)))
+	.["network"] = network // SS220 EDIT ADDICTION
 	.["chemicals"] = chemicals
 
 /obj/structure/machinery/chem_dispenser/ui_act(action, list/params)
@@ -237,11 +245,11 @@
 			if(DISPENSER_UNHACKABLE)
 				to_chat(user, SPAN_NOTICE("[src] cannot be hacked."))
 			if(DISPENSER_NOT_HACKED)
-				user.visible_message("[user] modifies [src] with [attacking_object], turning a light on.", "You enable a light in [src].")
+				user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] modifies [src] with [attacking_object], turning a light on.", "You enable a light in [src].")
 				dispensable_reagents += hacked_reagents
 				hacked_check = DISPENSER_HACKED
 			if(DISPENSER_HACKED)
-				user.visible_message("[user] modifies [src] with [attacking_object], turning a light off.", "You disable a light in [src].")
+				user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] modifies [src] with [attacking_object], turning a light off.", "You disable a light in [src].")
 				dispensable_reagents -= hacked_reagents
 				hacked_check = DISPENSER_NOT_HACKED
 
@@ -258,10 +266,10 @@
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		anchored = !anchored
 		if(anchored)
-			user.visible_message("[user] tightens the bolts securing [src] to the surface.", "You tighten the bolts securing [src] to the surface.")
+			user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] tightens the bolts securing [src] to the surface.", "You tighten the bolts securing [src] to the surface.")
 			return
 
-		user.visible_message("[user] unfastens the bolts securing [src] to the surface.", "You unfasten the bolts securing [src] to the surface.")
+		user.visible_message("[capitalize(user.declent_ru(NOMINATIVE))] unfastens the bolts securing [src] to the surface.", "You unfasten the bolts securing [src] to the surface.")
 
 /obj/structure/machinery/chem_dispenser/attack_remote(mob/user as mob)
 	return src.attack_hand(user)

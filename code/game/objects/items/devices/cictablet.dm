@@ -43,7 +43,7 @@
 	if(allowed(user) && card?.check_biometrics(user))
 		tgui_interact(user)
 	else
-		to_chat(user, SPAN_DANGER("Access denied."))
+		to_chat(user, SPAN_DANGER("Доступ запрещён."))
 
 /obj/item/device/cotablet/ui_close(mob/user)
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
@@ -84,7 +84,7 @@
 /obj/item/device/cotablet/tgui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "CommandTablet", "Command Tablet")
+		ui = new(user, src, "CommandTablet", capitalize(declent_ru(NOMINATIVE))) // SS220 EDIT ADDICTION
 		ui.open()
 
 /obj/item/device/cotablet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -102,7 +102,7 @@
 				to_chat(user, SPAN_WARNING("Please wait [COOLDOWN_TIMELEFT(src, announcement_cooldown)/10] second\s before making your next announcement."))
 				return FALSE
 
-			var/input = stripped_multiline_input(user, "Please write a message to announce to the [MAIN_SHIP_NAME]'s crew and all groundside personnel.", "Priority Announcement", "")
+			var/input = stripped_multiline_input(user, "Пожалуйста, напишите сообщение, чтобы сделать объявление [MAIN_SHIP_NAME] и всему наземному персоналу.", "Приоритетное оповещение", "")
 			if(!input || !COOLDOWN_FINISHED(src, announcement_cooldown) || !(user in dview(1, src)))
 				return FALSE
 

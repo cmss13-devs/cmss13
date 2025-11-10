@@ -25,4 +25,4 @@
 	else
 		button.icon_state = "template_on"
 		owner.mob_flags |= SURGERY_MODE_ON
-		to_chat(owner, "You prepare to perform surgery.")
+		to_chat(owner, "Вы готовитесь к проведению операции.")

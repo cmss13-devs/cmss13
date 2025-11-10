@@ -106,7 +106,7 @@
 			var/obj/item/implant/I = locate(href_list["warn"])
 			if((I)&&(I.imp_in))
 				var/mob/living/carbon/R = I.imp_in
-				to_chat(R, SPAN_XENOWARNING(" You hear a voice in your head saying: '[warning]'"))
+				to_chat(R, SPAN_XENOWARNING("Вы слышите голос в своей голове: '[warning]'")) // SS220 EDIT ADDICTION
 
 		src.add_fingerprint(usr)
 	src.updateUsrDialog()

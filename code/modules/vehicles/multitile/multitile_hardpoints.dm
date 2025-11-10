@@ -94,7 +94,7 @@
 		to_chat(user, SPAN_WARNING("You don't know what to do with [HP] on \the [src]."))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] begins installing \the [HP] on the [HP.slot] hardpoint slot of \the [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins installing \the [HP] on the [HP.slot] hardpoint slot of \the [src]."),
 		SPAN_NOTICE("You begin installing \the [HP] on the [HP.slot] hardpoint slot of \the [src]."))
 
 	var/num_delays = 1
@@ -112,7 +112,7 @@
 			num_delays = 7
 
 	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
-		user.visible_message(SPAN_WARNING("[user] stops installing \the [HP] on \the [src]."), SPAN_WARNING("You stop installing \the [HP] on \the [src]."))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] stops installing \the [HP] on \the [src]."), SPAN_WARNING("You stop installing \the [HP] on \the [src]."))
 		return
 
 	//check to prevent putting two modules on same slot
@@ -121,7 +121,7 @@
 			to_chat(user, SPAN_WARNING("There is already something installed there!"))
 			return
 
-	user.visible_message(SPAN_NOTICE("[user] installs \the [HP] on \the [src]."), SPAN_NOTICE("You install \the [HP] on \the [src]."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] installs \the [HP] on \the [src]."), SPAN_NOTICE("You install \the [HP] on \the [src]."))
 
 	if(ispowerclamp(O))
 		var/obj/item/powerloader_clamp/PC = O
@@ -174,7 +174,7 @@
 				update_icon()
 				return
 
-	user.visible_message(SPAN_NOTICE("[user] begins removing [old] on the [old.slot] hardpoint slot on \the [src]."),
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] begins removing [old] on the [old.slot] hardpoint slot on \the [src]."),
 		SPAN_NOTICE("You begin removing [old] on the [old.slot] hardpoint slot on \the [src]."))
 
 	var/num_delays = 1
@@ -192,10 +192,10 @@
 			num_delays = 7
 
 	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays, target_flags = INTERRUPT_DIFF_LOC, target = old))
-		user.visible_message(SPAN_WARNING("[user] stops removing \the [old] on \the [src]."), SPAN_WARNING("You stop removing \the [old] on \the [src]."))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] stops removing \the [old] on \the [src]."), SPAN_WARNING("You stop removing \the [old] on \the [src]."))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] removes \the [old] on \the [src]."), SPAN_NOTICE("You remove \the [old] on \the [src]."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] removes \the [old] on \the [src]."), SPAN_NOTICE("You remove \the [old] on \the [src]."))
 
 	remove_hardpoint(old, user)
 

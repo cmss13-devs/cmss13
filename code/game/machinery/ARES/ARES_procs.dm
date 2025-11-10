@@ -1,19 +1,21 @@
 GLOBAL_DATUM_INIT(ares_datacore, /datum/ares_datacore, new)
 GLOBAL_DATUM_INIT(ares_link, /datum/ares_link, new)
+// SS220 START EDIT ADDICTION
 GLOBAL_LIST_INIT(maintenance_categories, list(
-	"Broken Light",
-	"Shattered Glass",
-	"Minor Structural Damage",
-	"Major Structural Damage",
-	"Janitorial",
-	"Chemical Spill",
-	"Fire",
-	"Communications Failure",
-	"Power Generation Failure",
-	"Electrical Fault",
-	"Support",
-	"Other"
+	"Неисправный свет",
+	"Разбитое стекло",
+	"Незначительные повреждения",
+	"Значительные повреждения",
+	"Уборка",
+	"Разлив химических веществ",
+	"Пожар",
+	"Сбой связи",
+	"Сбой энергоснабжения",
+	"Неисправность электрооборудования",
+	"Техническая поддержка",
+	"Прочее"
 	))
+// SS220 END EDIT ADDICTION
 
 /datum/ares_link
 	/// All motion triggers for the link
@@ -308,7 +310,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	ares_apollo_talk("APOLLO sub-system shutting down. STOP CODE: 0x000000f4|CRITICAL_PROCESS_DIED")
 
 	//GENERAL CREW
-	shipwide_ai_announcement("A Problem has been detected and the [MAIN_AI_SYSTEM] system has been shutdown. \nTechnical Information: \n\n*** STOP CODE: 0x000000f4|CRITICAL_PROCESS_DIED\n\nPossible caused by: Rapid Unscheduled Disassembly\nContact an AI Service Technician for further assistance.", title = ":(", ares_logging = null)
+	shipwide_ai_announcement("Была обнаружена неисправность, и система [MAIN_AI_SYSTEM] была остановлена. \nТехническая информация: \n\n*** STOP CODE: 0x000000f4|CRITICAL_PROCESS_DIED\n\nВозможная причина: Быстрая незапланированная разборка\nСвяжитесь с техническим специалистом ИИ для получения дальнейшей помощи.", title = ":(", ares_logging = null)
 
 /obj/structure/machinery/computer/working_joe/get_ares_access(obj/item/card/id/card)
 	if(ACCESS_ARES_DEBUG in card.access)
@@ -330,19 +332,19 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 /obj/structure/machinery/computer/working_joe/ares_auth_to_text(access_level)
 	switch(access_level)
 		if(APOLLO_ACCESS_LOGOUT)//0
-			return "Logged Out"
+			return "Выход из системы" // SS220 EDIT ADDICTION
 		if(APOLLO_ACCESS_REQUEST)//1
-			return "Unauthorized Personnel"
+			return "Неавторизованный пользователь" // SS220 EDIT ADDICTION
 		if(APOLLO_ACCESS_REPORTER)//2
-			return "Validated Incident Reporter"
+			return "Авторизованный инцидент-репортер" // SS220 EDIT ADDICTION
 		if(APOLLO_ACCESS_TEMP)//3
-			return "Authorized Visitor"
+			return "Авторизованный посетитель" // SS220 EDIT ADDICTION
 		if(APOLLO_ACCESS_AUTHED)//4
-			return "Certified Personnel"
+			return "Авторизованный персонал" // SS220 EDIT ADDICTION
 		if(APOLLO_ACCESS_JOE)//5
-			return "Working Joe"
+			return "Рабочий Джо" // SS220 EDIT ADDICTION
 		if(APOLLO_ACCESS_DEBUG)//6
-			return "AI Service Technician"
+			return "ИИ-инженер" // SS220 EDIT ADDICTION
 
 /obj/item/device/working_joe_pda/proc/get_ares_access(obj/item/card/id/card)
 	if(ACCESS_ARES_DEBUG in card.access)
@@ -364,16 +366,16 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 /obj/item/device/working_joe_pda/proc/ares_auth_to_text(access_level)
 	switch(access_level)
 		if(APOLLO_ACCESS_LOGOUT)//0
-			return "Logged Out"
+			return "Выход из системы" // SS220 EDIT ADDICTION
 		if(APOLLO_ACCESS_REQUEST)//1
-			return "Unauthorized Personnel"
+			return "Неавторизованный пользователь" // SS220 EDIT ADDICTION
 		if(APOLLO_ACCESS_REPORTER)//2
-			return "Validated Incident Reporter"
-		if(APOLLO_ACCESS_TEMP)//3
-			return "Authorized Visitor"
+			return "Проверенный инцидент-репортер" // SS220 EDIT ADDICTION
+		if(APOLLO_ACCESS_TEMP)//3 // SS220 EDIT ADDICTION
+			return "Авторизованный посетитель" // SS220 EDIT ADDICTION
 		if(APOLLO_ACCESS_AUTHED)//4
-			return "Certified Personnel"
+			return "Авторизованный персонал" // SS220 EDIT ADDICTION
 		if(APOLLO_ACCESS_JOE)//5
-			return "Working Joe"
+			return "Рабочий Джо" // SS220 EDIT ADDICTION
 		if(APOLLO_ACCESS_DEBUG)//6
-			return "AI Service Technician"
+			return "ИИ-инженер" // SS220 EDIT ADDICTION

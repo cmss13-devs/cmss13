@@ -1,0 +1,3 @@
+#include "_queen_minor.dm"
+
+#include "code/queen_minor.dm"

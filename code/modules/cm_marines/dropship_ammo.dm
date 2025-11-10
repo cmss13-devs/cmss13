@@ -212,8 +212,8 @@
 			impact_tile.ceiling_debris_check(1)
 			debriscooldown = 6
 		debriscooldown--
-	sleep(11) //speed of sound simulation
-	playsound(impact, 'sound/effects/gau.ogg',100,1,60)
+	// sleep(11) //speed of sound simulation // BANDAMARINES REMOVAL - Dropship soundeffects update
+	playsound(impact, 'modular/aesthetics_sounds/sound/dropship_gau.ogg', 100, 1, 60) // BANDAMARINES EDIT - Dropship soundeffects update
 
 
 /obj/structure/ship_ammo/heavygun/antitank

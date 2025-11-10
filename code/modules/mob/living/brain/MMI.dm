@@ -30,7 +30,7 @@
 			return
 
 		for(var/mob/V in viewers(src, null))
-			V.show_message(text(SPAN_NOTICE("[user] sticks \a [O] into \the [src].")), SHOW_MESSAGE_VISIBLE)
+			V.show_message(text(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] sticks \a [O] into \the [src].")), SHOW_MESSAGE_VISIBLE)
 
 		brainmob = O:brainmob
 		O:brainmob = null
@@ -55,7 +55,7 @@
 			locked = !locked
 			to_chat(user, SPAN_NOTICE(" You [locked ? "lock" : "unlock"] the brain holder."))
 		else
-			to_chat(user, SPAN_DANGER("Access denied."))
+			to_chat(user, SPAN_DANGER("Доступ запрещён."))
 		return
 	if(brainmob)
 		O.attack(brainmob, user)//Oh noooeeeee

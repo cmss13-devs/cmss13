@@ -61,7 +61,7 @@
 		sleep(5)
 
 		var/mob_pain_msg = "Excruciating pain shoots through [part ? "your [part.display_name]" : "you"]!"
-		M.visible_message(SPAN_DANGER("[M] convulses in pain!"), SPAN_DANGER(mob_pain_msg))
+		M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] convulses in pain!"), SPAN_DANGER(mob_pain_msg))
 		M.flash_eyes(EYE_PROTECTION_FLAVOR, TRUE)
 		M.apply_effect(10, STUN)
 		M.apply_effect(10, WEAKEN)

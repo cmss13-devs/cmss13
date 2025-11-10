@@ -55,18 +55,18 @@ const powerStatusMap = {
   },
   2: {
     color: 'good',
-    externalPowerText: 'External Power',
-    chargingText: 'Fully Charged',
+    externalPowerText: 'Внешнее питание',
+    chargingText: 'Полная зарядка',
   },
   1: {
     color: 'average',
     externalPowerText: 'Low External Power',
-    chargingText: 'Charging',
+    chargingText: 'Зарядка',
   },
   0: {
     color: 'bad',
     externalPowerText: 'No External Power',
-    chargingText: 'Not Charging',
+    chargingText: 'Не заряжать',
   },
 };
 
@@ -84,7 +84,7 @@ const ApcContent = (props) => {
   return (
     <>
       <InterfaceLockNoticeBox />
-      <Section title="Power Status">
+      <Section title="Статус">
         <LabeledList>
           <LabeledList.Item
             label="Main Breaker"
@@ -96,17 +96,17 @@ const ApcContent = (props) => {
                 disabled={locked}
                 onClick={() => act('breaker')}
               >
-                {data.isOperating ? 'On' : 'Off'}
+                {data.isOperating ? 'вкл.' : 'откл.'}
               </Button>
             }
           >
             [ {externalPowerStatus.externalPowerText} ]
           </LabeledList.Item>
-          <LabeledList.Item label="Power Cell">
+          <LabeledList.Item label="Заряд">
             <ProgressBar color="good" value={adjustedCellChange} />
           </LabeledList.Item>
           <LabeledList.Item
-            label="Charge Mode"
+            label="Снабжение"
             color={chargingStatus.color}
             buttons={
               <Button
@@ -114,7 +114,7 @@ const ApcContent = (props) => {
                 disabled={locked}
                 onClick={() => act('charge')}
               >
-                {data.chargeMode ? 'Auto' : 'Off'}
+                {data.chargeMode ? 'авт.' : 'откл.'}
               </Button>
             }
           >
@@ -122,7 +122,7 @@ const ApcContent = (props) => {
           </LabeledList.Item>
         </LabeledList>
       </Section>
-      <Section title="Power Channels">
+      <Section title="Питание">
         <LabeledList>
           {channelArray.map((channel) => {
             const { topicParams } = channel;
@@ -173,13 +173,13 @@ const ApcContent = (props) => {
               </LabeledList.Item>
             );
           })}
-          <LabeledList.Item label="Total Load">
+          <LabeledList.Item label="Общее">
             <b>{data.totalLoad}</b>
           </LabeledList.Item>
         </LabeledList>
       </Section>
       <Section
-        title="Misc"
+        title="Дополнительно"
         buttons={
           !!data.siliconUser /* }&& (
             <>
@@ -205,7 +205,7 @@ const ApcContent = (props) => {
             label="Cover Lock"
             buttons={
               <Button
-                tooltip="APC cover can be pried open with a crowbar."
+                tooltip="Крышку ЛКП можно вскрыть с помощью лома."
                 icon={data.coverLocked ? 'lock' : 'unlock'}
                 disabled={locked}
                 onClick={() => act('cover')}

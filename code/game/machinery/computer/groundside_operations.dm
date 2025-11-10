@@ -249,9 +249,9 @@
 				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 				return FALSE
 			if(announcement_faction != FACTION_MARINE && usr.faction != announcement_faction)
-				to_chat(usr, SPAN_WARNING("Access denied."))
+				to_chat(usr, SPAN_WARNING("Доступ запрещён."))
 				return
-			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
+			var/input = stripped_multiline_input(usr, "Пожалуйста, напишите сообщение для экипажа станции.", "Приоритетное оповещение", "")
 			if(!input || !is_announcement_active || !(usr in dview(1, src)))
 				return FALSE
 
@@ -312,7 +312,7 @@
 				if(new_holder)
 					new_cam = new_holder.get_camera()
 				if(!new_cam || !new_cam.can_use())
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Searching for camera. No camera found for this marine! Tell your squad to put their cameras on!")]")
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Поиск камеры... Камера не обнаружена! Сообщите отряду о необходимости включить камеры!")]")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping camera view of [cam_target].")]")
 					usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)

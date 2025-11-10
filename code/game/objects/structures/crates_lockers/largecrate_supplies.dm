@@ -366,7 +366,7 @@
 		if(alert(user, "Are you sure you want to unpack \the [src] here?", "Confirmation", "Yes", "No") != "Yes")
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), SPAN_NOTICE("You pry open \the [src]."))
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] pries \the [src] open."), SPAN_NOTICE("You pry open \the [src]."))
 		unpack()
 	else
 		return attack_hand(user)

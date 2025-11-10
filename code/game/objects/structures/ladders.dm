@@ -130,14 +130,14 @@
 		return FALSE
 
 	step(user, get_dir(user, src))
-	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),
-	SPAN_NOTICE("You start climbing [ladder_dir_name] [src]."))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] начинает [ladder_dir_name == "up" ? "забираться вверх" : "спускаться вниз"] по [declent_ru(DATIVE)]."),
+	SPAN_NOTICE("Вы начинаете [ladder_dir_name] по [src]."))
 	busy = TRUE
 	if(do_after(user, 20, INTERRUPT_INCAPACITATED|INTERRUPT_OUT_OF_RANGE|INTERRUPT_RESIST, BUSY_ICON_GENERIC, src, INTERRUPT_NONE))
 		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && user.body_position != LYING_DOWN && !user.buckled && !user.anchored)
-			visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src].")) //Hack to give a visible message to the people here without duplicating user message
-			user.visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src]."),
-			SPAN_NOTICE("You climb [ladder_dir_name] [src]."))
+			visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] [ladder_dir_name == "up" ? "забирается вверх" : "спускается вниз"] по [declent_ru(DATIVE)].")) //Hack to give a visible message to the people here without duplicating user message
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] [ladder_dir_name == "up" ? "забирается вверх" : "спускается вниз"] по [declent_ru(DATIVE)]."), // SS220 EDIT ADDICTION
+			SPAN_NOTICE("Вы [ladder_dir_name == "up" ? "поднялись" : "спустились"] по [declent_ru(DATIVE)]."))
 			ladder_dest.add_fingerprint(user)
 			user.trainteleport(ladder_dest.loc)
 	busy = FALSE
@@ -294,11 +294,11 @@
 			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 			return FALSE
 
-	user.visible_message(SPAN_WARNING("[user] takes position to throw [item] [ladder_dir_name] [src]."),
+	user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] takes position to throw [item] [ladder_dir_name] [src]."),
 	SPAN_WARNING("You take position to throw [item] [ladder_dir_name] [src]."))
 
 	if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		user.visible_message(SPAN_WARNING("[user] throws [item] [ladder_dir_name] [src]!"),
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] throws [item] [ladder_dir_name] [src]!"),
 		SPAN_WARNING("You throw [item] [ladder_dir_name] [src]"))
 		user.drop_held_item()
 		item.forceMove(ladder_dest.loc)

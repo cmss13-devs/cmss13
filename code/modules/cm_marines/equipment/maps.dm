@@ -16,7 +16,7 @@
 
 /obj/item/map/attack_self(mob/user) //Open the map
 	..()
-	user.visible_message(SPAN_NOTICE("[user] opens the [src.name]. "))
+	user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] открывает [declent_ru(ACCUSATIVE)]. "))
 	initialize_map()
 
 /obj/item/map/attack()

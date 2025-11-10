@@ -71,7 +71,7 @@
 		return
 
 	if(mode == SYRINGE_BROKEN)
-		to_chat(user, SPAN_DANGER("This syringe is broken!"))
+		to_chat(user, SPAN_DANGER("Шприц сломался!"))
 		return
 
 	if (user.a_intent == INTENT_HARM && ismob(target))
@@ -125,7 +125,7 @@
 
 					on_reagent_change()
 					reagents.handle_reactions()
-					user.visible_message(SPAN_WARNING("[user] takes a blood sample from [target]."),
+					user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] takes a blood sample from [target]."),
 						SPAN_NOTICE("You take a blood sample from [target]."), null, 4)
 
 			else //if not mob
@@ -183,7 +183,7 @@
 					if(!do_after(user, injection_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 						return
 
-					user.visible_message(SPAN_DANGER("[user] injects [target] with the syringe!"))
+					user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] injects [target] with the syringe!"))
 
 					var/list/injected = list()
 					for(var/datum/reagent/R in src.reagents.reagent_list)
@@ -383,7 +383,7 @@
 				user.visible_message(SPAN_DANGER("<B>[user] is trying to inject [target] with a giant syringe!</B>"))
 				if(!do_after(user, 300, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 					return
-				user.visible_message(SPAN_DANGER("[user] injects [target] with a giant syringe!"))
+				user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] injects [target] with a giant syringe!"))
 				src.reagents.reaction(target, INGEST)
 			if(ismob(target) && target == user)
 				src.reagents.reaction(target, INGEST)

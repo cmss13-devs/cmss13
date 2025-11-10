@@ -17,7 +17,7 @@
 
 /obj/item/stack/revival_jelly/proc/can_revive(required_jelly, mob/living/carbon/xenomorph/X, mob/living/user)
 	if(user.action_busy)
-		to_chat(user, SPAN_WARNING("You're already performing an action!"))
+		to_chat(user, SPAN_WARNING("Вы уже заняты чем-то другим."))
 		return FALSE
 
 	if(!X.caste.can_be_revived)

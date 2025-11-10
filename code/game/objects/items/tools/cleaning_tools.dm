@@ -64,7 +64,7 @@
 		var/cleaning_duration = 1.5 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC)
 
 		var/turf/cleaning_turf = get_turf(A)
-		user.visible_message(SPAN_WARNING("[user] begins to clean \the [cleaning_turf]."))
+		user.visible_message(SPAN_WARNING("[capitalize(user.declent_ru(NOMINATIVE))] begins to clean \the [cleaning_turf]."))
 		user.animation_attack_on(cleaning_turf)
 		user.flick_attack_overlay(cleaning_turf, "cleaning_sparkles", cleaning_duration)
 

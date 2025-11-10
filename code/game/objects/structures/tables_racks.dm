@@ -296,11 +296,11 @@
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
-		user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."),
+		user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts disassembling [src]."),
 		SPAN_NOTICE("You start disassembling [src]."))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
+			user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] disassembles [src]."),
 			SPAN_NOTICE("You disassemble [src]."))
 			deconstruct(TRUE)
 		return
@@ -311,7 +311,7 @@
 	if(istype(W, /obj/item/weapon/bracer_attachment))
 		if(rand(0, 2) == 0)
 			playsound(src.loc, 'sound/weapons/wristblades_hit.ogg', 25, 1)
-			user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
+			user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] slices [src] apart!"),
 				SPAN_DANGER("You slice [src] apart!"))
 			deconstruct(FALSE)
 		else
@@ -559,23 +559,23 @@
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
 			if(status == RTABLE_NORMAL)
-				user.visible_message(SPAN_NOTICE("[user] starts weakening [src]."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts weakening [src]."),
 				SPAN_NOTICE("You start weakening [src]"))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if (do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !WT.isOn())
 						return
-					user.visible_message(SPAN_NOTICE("[user] weakens [src]."),
+					user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] weakens [src]."),
 					SPAN_NOTICE("You weaken [src]"))
 					src.status = RTABLE_WEAKENED
 			else
-				user.visible_message(SPAN_NOTICE("[user] starts welding [src] back together."),
+				user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts welding [src] back together."),
 				SPAN_NOTICE("You start welding [src] back together."))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !WT.isOn())
 						return
-					user.visible_message(SPAN_NOTICE("[user] welds [src] back together."),
+					user.visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] welds [src] back together."),
 					SPAN_NOTICE("You weld [src] back together."))
 					status = RTABLE_NORMAL
 			return

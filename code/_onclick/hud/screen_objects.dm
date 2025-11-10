@@ -499,7 +499,7 @@
 		if(user.observed_xeno == user.tracked_marker)
 			user.overwatch(user.tracked_marker, TRUE) //passing in an obj/effect into a proc that expects mob/xenomorph B)
 		else
-			to_chat(user, SPAN_XENONOTICE("We psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))
+			to_chat(user, SPAN_XENONOTICE("Вы наблюдаете за смоляной меткой [user.tracked_marker.mark_meaning.name] около «[get_area_name(user.tracked_marker)]».")) // SS220 EDIT ADDICTION
 			user.overwatch(user.tracked_marker) //this is so scuffed, sorry if this causes errors
 		return
 	if(mods[ALT_CLICK] && user.tracked_marker)

@@ -5,8 +5,8 @@
 	mob_max = 35
 	mob_min = 10
 	max_heavies = 10
-	arrival_message = "'Deus le volt. Deus le volt! DEUS LE VOLT!!'"
-	objectives = "Clense the place of all that is unholy! Die in glory!"
+	arrival_message = "'Деус Вульт. Деус Вульт! ДЕУС ВУЛЬТ!!!'"
+	objectives = "Очистите место от всего нечестивого! Погибните славной смертью!"
 	probability = 0
 	hostility = TRUE
 
@@ -38,6 +38,6 @@
 		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from the Higher Power!"))
 
 
-	to_chat(M, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM")))
+	to_chat(M, SPAN_WARNING(FONT_SIZE_HUGE("Вы [hostility? "ВРАЖДЕБНЫ":"ДРУЖЕЛЮБНЫ"] к ККМП!")))
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

@@ -49,7 +49,8 @@
 	for(var/atom/deduped_type as anything in types_in_contents)
 		pack_contents += list(
 			list(
-				"name" = deduped_type::name,
+				"name" = capitalize(declent_ru_initial(deduped_type::name) || deduped_type::name),
+				"english_name" = deduped_type::name,
 				"quantity" = types_in_contents[deduped_type],
 				"icon" = list(
 					"icon" = deduped_type::icon,
@@ -59,13 +60,16 @@
 		)
 
 	var/atom/container = containertype
+	var/group_translated = GLOB.supply_controller?.translated_all_supply_groups[group] || group
 
 	return list(
-		"name" = name,
+		"name" = capitalize(declent_ru_initial(name) || name),
+		"english_name" = name,
 		"cost" = cost,
 		"dollar_cost" = dollar_cost,
 		"contains" = pack_contents,
-		"category" = group,
+		"category" = group_translated || group,
+		"english_category" = group,
 		"type" = type,
 		"icon" = container ? list(
 			"icon" = container::icon,

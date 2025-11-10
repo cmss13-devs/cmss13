@@ -112,7 +112,7 @@
 /obj/item/device/motion_sensor/attackby(obj/item/hit_item, mob/user)
 	if(istype(hit_item, /obj/item/card/id))
 		if(!allowed(user))
-			to_chat(user, SPAN_WARNING("Access Denied."))
+			to_chat(user, SPAN_WARNING("Доступ запрещён."))
 			return FALSE
 		if(anchored)
 			to_chat(user, SPAN_WARNING("You cannot update this device while it is active!"))

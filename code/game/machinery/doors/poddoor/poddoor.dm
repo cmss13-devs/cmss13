@@ -55,17 +55,17 @@
 	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/door/poddoor/proc/pry_open(mob/living/carbon/xenomorph/X, time = 4 SECONDS)
-	X.visible_message(SPAN_DANGER("[X] begins prying [src] open."),
-	SPAN_XENONOTICE("You start prying [src] open."), max_distance = 3)
+	X.visible_message(SPAN_DANGER("[capitalize(X.declent_ru(NOMINATIVE))] начинает взламывать [declent_ru(ACCUSATIVE)]."),
+	SPAN_XENONOTICE("Вы начинаете взламывать [declent_ru(ACCUSATIVE)]."), max_distance = 3) // SS220 EDIT ADDICTION
 
 	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
 
 	if(!do_after(X, time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
-		to_chat(X, "You stop prying [src] open.")
+		to_chat(X, "Вы прекращаете взламывать [declent_ru(ACCUSATIVE)].")
 		return
 
-	X.visible_message(SPAN_DANGER("[X] pries open [src]."),
-	SPAN_XENONOTICE("You pry open [src]."), max_distance = 3)
+	X.visible_message(SPAN_DANGER("[capitalize(X.declent_ru(NOMINATIVE))] взламывает [declent_ru(ACCUSATIVE)]."),
+	SPAN_XENONOTICE("Вы взламываете [declent_ru(ACCUSATIVE)]."), max_distance = 3) // SS220 EDIT ADDICTION
 
 	open()
 	return TRUE

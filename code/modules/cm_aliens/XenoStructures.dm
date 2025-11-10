@@ -86,8 +86,8 @@
 		return XENO_NO_DELAY_ACTION
 	else
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"),
-		SPAN_XENONOTICE("We claw \the [src]."))
+		M.visible_message(SPAN_XENONOTICE("[capitalize(M.declent_ru(NOMINATIVE))] царапает [declent_ru(ACCUSATIVE)]!"), // SS220 EDIT ADDICTION
+		SPAN_XENONOTICE("Мы царапаем [declent_ru(ACCUSATIVE)].")) // SS220 EDIT ADDICTION
 		if(istype(src, /obj/effect/alien/resin/sticky))
 			playsound(loc, "alien_resin_move", 25)
 		else
@@ -103,8 +103,8 @@
 	return XENO_ATTACK_ACTION
 
 /obj/effect/alien/resin/attack_animal(mob/living/M as mob)
-	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"),
-	SPAN_DANGER("You tear \the [name]."))
+	M.visible_message(SPAN_DANGER("[capitalize(M.declent_ru(NOMINATIVE))] [ru_attack_verb("tears")] [declent_ru(ACCUSATIVE)]!"),
+	SPAN_DANGER("Вы [ru_attack_verb("tear")] [declent_ru(ACCUSATIVE)]."))
 	if(istype(src, /obj/effect/alien/resin/sticky))
 		playsound(loc, "alien_resin_move", 25)
 	else
@@ -859,8 +859,8 @@
 /obj/effect/alien/resin/resin_pillar/attack_alien(mob/living/carbon/xenomorph/M)
 	if(!brittle)
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src], but the slash bounces off!"),
-		SPAN_XENONOTICE("You claw \the [src], but the slash bounces off!"))
+		M.visible_message(SPAN_XENONOTICE("[capitalize(M.declent_ru(NOMINATIVE))] царапает [declent_ru(ACCUSATIVE)], но удар отскакивает!"), // SS220 EDIT ADDICTION
+		SPAN_XENONOTICE("Вы царапаете [declent_ru(ACCUSATIVE)], но удар отскакивает!")) // SS220 EDIT ADDICTION
 		return XENO_ATTACK_ACTION
 
 	return ..()
@@ -868,8 +868,8 @@
 /obj/effect/alien/resin/resin_pillar/attackby(obj/item/W, mob/living/user)
 	user.animation_attack_on(src)
 	if(!brittle)
-		user.visible_message(SPAN_DANGER("[user] hits \the [src], but \the [W] bounces off!"),
-			SPAN_DANGER("You hit \the [name], but \the [W] bounces off!"))
+		user.visible_message(SPAN_DANGER("[capitalize(user.declent_ru(NOMINATIVE))] [ru_attack_verb("hits")] [declent_ru(ACCUSATIVE)], но [W.declent_ru(NOMINATIVE)] отскакивает!"),
+			SPAN_DANGER("Вы [ru_attack_verb("hit")] [declent_ru(ACCUSATIVE)], но [W.declent_ru(NOMINATIVE)] отскакивает!"))
 		return
 
 	return ..()
@@ -906,17 +906,17 @@
 
 /obj/effect/alien/resin/king_cocoon/Destroy()
 	if(!hatched)
-		marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN STOPPED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-		elder_overseer_message("The Serpent King's hatchery was destroyed.")
+		marine_announcement("ВНИМАНИЕ.\n\nНЕОБЫЧНОЕ НАКОПЛЕНИЕ ЭНЕРГИИ В [uppertext(get_area_name(loc))] БЫЛО ОСТАНОВЛЕНО.", "[MAIN_AI_SYSTEM]: Биологический сканер", 'sound/misc/notice1.ogg')
+		elder_overseer_message("Гнездо Короля Змей было уничтожено.")
 		var/datum/hive_status/hive
 		for(var/cur_hive_num in GLOB.hive_datum)
 			hive = GLOB.hive_datum[cur_hive_num]
 			if(!length(hive.totalXenos))
 				continue
 			if(cur_hive_num == hive_number)
-				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! VENGEANCE!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("НАШЕ ГНЕЗДО УНИЧТОЖЕНО! МЫ ДОЛЖНЫ ОТОМСТИТЬ!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 			else
-				xeno_announcement(SPAN_XENOANNOUNCE("THE HATCHERY WAS DESTROYED! REJOICE!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("НАШЕ ГНЕЗДО УНИЧТОЖЕНО!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 	var/datum/hive_status/hive = GLOB.hive_datum[hive_number]
 	hive.has_hatchery = FALSE
@@ -947,17 +947,17 @@
 
 	START_PROCESSING(SSobj, src)
 
-	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 10 MINUTES. RECOMMEND TERMINATION OF XENOMORPH STRUCTURE AT THIS LOCATION, OR TERMINATION OF XENOMORPH PYLON AT EITHER COMMUNICATIONS RELAY.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-	elder_overseer_message("The Serpent King is now growing at [get_area_name(loc)].")
+	marine_announcement("ВНИМАНИЕ.\n\nБЫЛО ОБНАРУЖЕНО НЕОБЫЧНОЕ НАКОПЛЕНИЕ ЭНЕРГИИ В [uppertext(get_area_name(loc))].\n\nРАСЧЕТНОЕ ВРЕМЯ ДО ЗАВЕРШЕНИЯ - 10 МИНУТ. РЕКОМЕНДУЕТСЯ ЛИКВИДИРОВАТЬ СООРУЖЕНИЯ КСЕНОМОРФОВ В ЭТОМ УЧАСТКЕ, ИЛИ ЛИКВИДИРОВАТЬ ПИЛОН КСЕНОМОРФОВ НА ЛЮБОМ ИЗ КОММУНИКАЦИОННЫХ РЕЛЕ.", "[MAIN_AI_SYSTEM]: Биологический сканер", 'sound/misc/notice1.ogg')
+	elder_overseer_message("Король Змей растёт около «[get_area_name(loc)]».")
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("The King is growing at [get_area_name(loc)]. Protect it, as well as our pylons at their communications relays, at all costs!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Король растёт около «[get_area_name(loc)]». Защитите его, а также наши пилоны у их коммуникационных реле, любой ценой!"), cur_hive_num, XENO_GENERAL_ANNOUNCE) // SS220 EDIT ADDICTION
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King is growing at [get_area_name(loc)]. We must destroy the hatchery!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Король другого улья растёт около [get_area_name(loc)]. Нам необходимо уничтожить инкубатор!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 
 #define STAGE_GROWING 1
@@ -973,15 +973,15 @@
 	if(length(hive.active_endgame_pylons) < 2)
 		if(!announced_paused)
 			marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN PAUSED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-			elder_overseer_message("The progress of the Serpent King's hatchery has been paused.")
+			elder_overseer_message("Рост Короля Змей приостановлен.")
 			for(var/cur_hive_num in GLOB.hive_datum)
 				hive = GLOB.hive_datum[cur_hive_num]
 				if(!length(hive.totalXenos))
 					continue
 				if(cur_hive_num == hive_number)
-					xeno_announcement(SPAN_XENOANNOUNCE("One of our pylons was destroyed, the hatchery has paused its progress!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+					xeno_announcement(SPAN_XENOANNOUNCE("Один из наших пилонов был уничтожен, гнездо приостановило свой рост!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 				else
-					xeno_announcement(SPAN_XENOANNOUNCE("One of another hive's pylons was destroyed, the hatchery has paused its progress!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+					xeno_announcement(SPAN_XENOANNOUNCE("Один из пилонов другого улья был уничтожен, гнездо приостановило свой рост!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 			announced_paused = TRUE
 			icon_state = "static"
@@ -992,10 +992,10 @@
 			if(!length(hive.totalXenos))
 				continue
 			if(cur_hive_num == hive_number)
-				xeno_announcement(SPAN_XENOANNOUNCE("The hatchery's progress has resumed!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("Рост гнезда возобновлён!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 			else
-				xeno_announcement(SPAN_XENOANNOUNCE("Another hive's hatchery progress has resumed! We must stop it!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
-		elder_overseer_message("The progress of the Serpent King's hatchery has resumed.")
+				xeno_announcement(SPAN_XENOANNOUNCE("Рост гнезда другого улья возобновлён! Мы должны остановить их!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+		elder_overseer_message("Рост Короля Змей возобновлён.")
 		marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN RESUMED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 		announced_paused = FALSE
 		icon_state = "growing"
@@ -1058,17 +1058,17 @@
 
 /// Causes the halfway announcements and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/announce_halfway()
-	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 5 MINUTES. RECOMMEND TERMINATION OF XENOMORPH STRUCTURE AT THIS LOCATION, OR TERMINATION OF XENOMORPH PYLON AT EITHER COMMUNICATIONS RELAY.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
-	elder_overseer_message("The Serpent King will hatch in 5 minutes.")
+	marine_announcement("ВНИМАНИЕ.\n\nБЫЛО ОБНАРУЖЕНО НЕОБЫЧНОЕ НАКОПЛЕНИЕ ЭНЕРГИИ В [uppertext(get_area_name(loc))].\n\nРАСЧЕТНОЕ ВРЕМЯ ДО ЗАВЕРШЕНИЯ - 5 МИНУТ. РЕКОМЕНДУЕТСЯ ЛИКВИДИРОВАТЬ СООРУЖЕНИЯ КСЕНОМОРФОВ В ЭТОМ УЧАСТКЕ, ИЛИ ЛИКВИДИРОВАТЬ ПИЛОН КСЕНОМОРФОВ НА ЛЮБОМ ИЗ КОММУНИКАЦИОННЫХ РЕЛЕ.", "[MAIN_AI_SYSTEM]: Биологический сканер", 'sound/misc/notice1.ogg')
+	elder_overseer_message("Король Змей появится через 5 минут.")
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately 5 minutes."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Король появится примерно через 5 минут."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately 5 minutes. We must stop it!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Король другого улья должен появиться на свет примерно через 5 минут. Мы должны остановить их!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 #define KING_PLAYTIME_HOURS (50 HOURS)
 
@@ -1232,34 +1232,34 @@
 		animate_hatch_king()
 		return
 
-	elder_overseer_message("The Serpent King will hatch in twenty seconds.")
-	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - 20 SECONDS. RECOMMEND TERMINATION OF XENOMORPH STRUCTURE AT THIS LOCATION, OR TERMINATION OF XENOMORPH PYLON AT EITHER COMMUNICATIONS RELAY.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+	elder_overseer_message("Король Змей появится через 20 секунд.")
+	marine_announcement("ВНИМАНИЕ.\n\nБЫЛО ОБНАРУЖЕНО НЕОБЫЧНОЕ НАКОПЛЕНИЕ ЭНЕРГИИ В [get_area_name(loc)].\n\nРАСЧЕТНОЕ ВРЕМЯ ДО ЗАВЕРШЕНИЯ - 20 СЕКУНД. РЕКОМЕНДУЕТСЯ ЛИКВИДИРОВАТЬ СООРУЖЕНИЯ КСЕНОМОРФОВ В ЭТОМ УЧАСТКЕ, ИЛИ ЛИКВИДИРОВАТЬ ПИЛОН КСЕНОМОРФОВ НА ЛЮБОМ ИЗ КОММУНИКАЦИОННЫХ РЕЛЕ.", "[MAIN_AI_SYSTEM]: Биологический сканер", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("The King will hatch in approximately twenty seconds."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Король появится примерно через 20 секунд."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King will hatch in approximately twenty seconds. STOP IT!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Король другого улья появится примерно 20 секунд. ОСТАНОВИТЕ ИХ!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 /// Causes the cocoon to change visually for hatching and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/animate_hatch_king()
 	flick("hatching", src)
 	addtimer(CALLBACK(src, PROC_REF(hatch_king)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 
-	elder_overseer_message("The Serpent King has hatched; I advise caution.")
-	marine_announcement("ALERT.\n\nEXTREME ENERGY INFLUX DETECTED IN [get_area_name(loc)].\n\nCAUTION IS ADVISED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+	elder_overseer_message("Король Змей появился, советую проявлять осторожность.")
+	marine_announcement("ВНИМАНИЕ.\n\nЗАФИКСИРОВАН ЭКСТРЕМАЛЬНЫЙ ПОТОК ЭНЕРГИИ В [get_area_name(loc)].\n\nБУДЬТЕ БДИТЕЛЬНЫ.", "[MAIN_AI_SYSTEM]: Биологический сканер", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
 		if(!length(hive.totalXenos))
 			continue
 		if(cur_hive_num == hive_number)
-			xeno_announcement(SPAN_XENOANNOUNCE("All hail the King."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Да здравствует Король!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		else
-			xeno_announcement(SPAN_XENOANNOUNCE("Another hive's King has hatched! We must bring it down!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Король другого улья появился! Мы должны сравнять его с землей!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 /// Actually hatches the King transferring the candidate into the spawned mob and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/hatch_king()
@@ -1334,7 +1334,7 @@
 		to_chat(user, SPAN_WARNING("You don't know how to activate this!"))
 		return FALSE
 
-	to_chat(user, SPAN_XENOWARNING("You need to throw this to activate it!"))
+	to_chat(user, SPAN_XENOWARNING("Вам нужно бросить это, чтобы активировать!"))
 	return FALSE
 
 /obj/item/explosive/grenade/alien/update_icon()
@@ -1352,7 +1352,7 @@
 	if(!active)
 		attack_hand(M)
 	else
-		to_chat(M, SPAN_XENOWARNING("It's about to burst!"))
+		to_chat(M, SPAN_XENOWARNING("Сейчас оно вот-вот лопнет!"))
 	return XENO_NO_DELAY_ACTION
 
 /obj/item/explosive/grenade/alien/acid

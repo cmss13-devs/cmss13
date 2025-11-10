@@ -165,11 +165,11 @@ GLOBAL_VAR_INIT(maint_all_access, TRUE)
 
 /proc/make_maint_all_access()
 	GLOB.maint_all_access = TRUE
-	ai_announcement("The maintenance access requirement has been removed on all airlocks.")
+	ai_announcement("Требование доступа для технического обслуживания было снято со всех шлюзов.")
 
 /proc/revoke_maint_all_access()
 	GLOB.maint_all_access = FALSE
-	ai_announcement("The maintenance access requirement has been added on all airlocks.")
+	ai_announcement("Требование доступа для технического обслуживания было возвращено на все шлюзы.")
 
 GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 
@@ -185,7 +185,7 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 	desc = "This device is used override the security lockdown."
 	channel = "map_lockdown"
 	var/window_desc = "This device is used to override the security lockdown. It requires both of the authentication disks."
-	var/announce_title = "Station Security Authority automated announcement"
+	var/announce_title = "Автоматическое оповещение систем безопасности станции"
 	var/card_type
 	var/podlock_id = "map_lockdown"
 	var/obj/item/card/data/stored_id
@@ -281,22 +281,22 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 			return
 		gCM.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
 
-	var/text_timeleft = "[timeleft * 0.01] minutes"
+	var/text_timeleft = "[timeleft * 0.01] минут" // SS220 EDIT ADDICTION
 	var/next_interval = 1 MINUTES
 	if(timeleft <= 1 MINUTES)
 		next_interval = 55 SECONDS
-		text_timeleft = "[timeleft] minute"
+		text_timeleft = "[timeleft] минут" // SS220 EDIT ADDICTION
 	if(timeleft <= 5 SECONDS)
 		next_interval = timeleft
-		text_timeleft = "[timeleft] seconds"
-	var/input = "Station shutter locks lifting in [text_timeleft] per manual override."
+		text_timeleft = "[timeleft] секунд" // SS220 EDIT ADDICTION
+	var/input = "Подъем затвора станции через [text_timeleft] при ручном управлении."
 	var/title = announce_title
 	marine_announcement(input, title, 'sound/AI/commandreport.ogg')
 	for(var/mob/M in GLOB.player_list)
 		if(isxeno(M))
 			sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
-			to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
-			to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in [text_timeleft]."))
+			to_chat(M, SPAN_XENOANNOUNCE("Королева-мать проникает в ваш разум издалека."))
+			to_chat(M, SPAN_XENOANNOUNCE("Моим детям и их Королеве: я чувствую, что большие двери, которые нас сдерживают, откроются через [text_timeleft].")) // SS220 EDIT ADDICTION
 	var/new_timeleft = timeleft - next_interval
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/keycard_auth/lockdown, timed_countdown), new_timeleft), next_interval)
 

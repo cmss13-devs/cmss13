@@ -279,7 +279,7 @@
 			to_chat(user, SPAN_NOTICE("The [name] is already occupied!"))
 			return
 
-		visible_message(SPAN_NOTICE("[user] starts putting [G.grabbed_thing] into the [name]."), null, null, 3)
+		visible_message(SPAN_NOTICE("[capitalize(user.declent_ru(NOMINATIVE))] starts putting [G.grabbed_thing] into the [name]."), null, null, 3)
 
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(occupant)

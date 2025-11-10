@@ -90,7 +90,7 @@
 	if(!trap_ability.empowered && trap_ability.empowering_charge_counter >= trap_ability.empower_charge_max)
 		trap_ability.empowered = TRUE
 		trap_ability.button.overlays += image('icons/mob/hud/actions_xeno.dmi', "+empowered")
-		to_chat(bound_xeno, SPAN_XENODANGER("You have gained sufficient insight in your prey to empower your next [trap_ability.name]."))
+		to_chat(bound_xeno, SPAN_XENODANGER("Вы достаточно изучили свою добычу, чтобы усилить свой следующий [trap_ability.name].")) // SS220 EDIT ADDICTION
 
 	if(trap_ability.empowering_charge_counter > trap_ability.empower_charge_max)
 		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
@@ -98,7 +98,7 @@
 /datum/behavior_delegate/boiler_trapper/on_life()
 	if ((temp_movespeed_time_used + temp_movespeed_cooldown) < world.time)
 		if (!temp_movespeed_messaged)
-			to_chat(bound_xeno, SPAN_XENODANGER("You feel your adrenaline glands refill! Your speedboost will activate again."))
+			to_chat(bound_xeno, SPAN_XENODANGER("Вы чувствуете, как ваши адреналиновые железы наполняются, ускоряя ваше передвижение."))
 			temp_movespeed_messaged = TRUE
 		temp_movespeed_usable = TRUE
 		return
@@ -123,7 +123,7 @@
 		return
 
 	if (!can_see(xeno, affected_atom, TRAPPER_VIEWRANGE))
-		to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
+		to_chat(xeno, SPAN_XENODANGER("Мы не видим эту область!"))
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -168,7 +168,7 @@
 		if(!mine.empowered)
 			mine.empowered = TRUE
 			mine.button.overlays += image('icons/mob/hud/actions_xeno.dmi', "+empowered")
-			to_chat(xeno, SPAN_XENODANGER("We tap into our reserves to prepare a stronger [mine.name]!"))
+			to_chat(xeno, SPAN_XENODANGER("Мы используем все наши резервы, чтобы подготовить более сильный [mine.name]!")) // SS220 EDIT ADDICTION
 
 	apply_cooldown()
 	return ..()
@@ -189,22 +189,22 @@
 		return
 
 	if(!check_clear_path_to_target(xeno, affected_atom, TRUE, TRAPPER_VIEWRANGE))
-		to_chat(xeno, SPAN_XENOWARNING("Something is in the way!"))
+		to_chat(xeno, SPAN_XENOWARNING("Что-то мешает на пути!"))
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
 	var/turf/turf = get_turf(affected_atom)
-	var/acid_bolt_message = "a bolt of acid"
+	var/acid_bolt_message = "кислотную струю"
 	if(empowered)
-		acid_bolt_message = "a powerful bolt of acid"
+		acid_bolt_message = "мощную кислотную струю"
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] fires " + acid_bolt_message + " at [affected_atom]!"), SPAN_XENODANGER("We fire " + acid_bolt_message + " at [affected_atom]!"))
-	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(turf, damage, delay, empowered, "You are blasted with " + acid_bolt_message + "!", xeno)
+	xeno.visible_message(SPAN_XENODANGER("[capitalize(xeno.declent_ru(NOMINATIVE))] выпускает " + acid_bolt_message + " в сторону [affected_atom.declent_ru(GENITIVE)]!"), SPAN_XENODANGER("Мы выпускаем выстрелили " + acid_bolt_message + " в сторону [affected_atom]!")) // SS220 EDIT ADDICTION
+	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(turf, damage, delay, empowered, "В вас выпустили " + acid_bolt_message + "!", xeno) // SS220 EDIT ADDICTION
 
 	for (var/turf/target_turf in orange(1, turf))
-		new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(target_turf, damage, delay, empowered, "You are blasted with a " + acid_bolt_message + "!", xeno)
+		new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(target_turf, damage, delay, empowered, "В вас выпустили " + acid_bolt_message + "!", xeno) // SS220 EDIT ADDICTION
 
 	if(empowered)
 		empowered = FALSE
@@ -224,7 +224,7 @@
 	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc) || !xeno.check_state())
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a blast of acid at [affected_atom]!"), SPAN_XENOWARNING("We fire a blast of acid at [affected_atom]!"))
+	xeno.visible_message(SPAN_XENOWARNING("[capitalize(xeno.declent_ru(NOMINATIVE))] выпускает кислотный взрыв в [affected_atom.declent_ru(ACCUSATIVE)]!"), SPAN_XENOWARNING("Мы выпускаем кислотный взрыв в [affected_atom.declent_ru(ACCUSATIVE)]!")) // SS220 EDIT ADDICTION
 
 	var/turf/target_turf = locate(affected_atom.x, affected_atom.y, affected_atom.z)
 	var/obj/projectile/proj = new(xeno.loc, create_cause_data("acid shotgun", xeno))

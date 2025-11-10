@@ -31,6 +31,9 @@
 /obj/structure/machinery/medical_pod/attack_alien(mob/living/carbon/xenomorph/M)
 	eject()
 
+/obj/structure/machinery/medical_pod/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/machinery/medical_pod/update_icon()
 	if(occupant)
 		icon_state = "[base_icon_state]_closed"
@@ -181,7 +184,7 @@
 				to_chat(user, SPAN_WARNING("\The [C] is empty!"))
 				return
 			to_put_in = C.stasis_mob
-			C.open()
+			C.open(user)
 			user.start_pulling(to_put_in)
 		else if(ismob(G.grabbed_thing))
 			to_put_in = G.grabbed_thing

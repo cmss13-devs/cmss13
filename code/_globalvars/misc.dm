@@ -104,10 +104,6 @@ GLOBAL_VAR_INIT(xeno_flatten_map_icon_cooldown, 0)
 GLOBAL_VAR(uscm_unannounced_map)
 GLOBAL_VAR(xeno_unannounced_map)
 
-//global tacmaps for action button access
-GLOBAL_DATUM_INIT(uscm_tacmap_status, /datum/tacmap/drawing/status_tab_view, new)
-GLOBAL_DATUM_INIT(xeno_tacmap_status, /datum/tacmap/drawing/status_tab_view/xeno, new)
-
 /// List of roles that can be setup for each gamemode
 GLOBAL_LIST_EMPTY(gamemode_roles)
 
@@ -122,8 +118,8 @@ GLOBAL_VAR_INIT(time_offset, setup_offset())
 /proc/setup_offset()
 	return rand(10 MINUTES, 24 HOURS)
 
-/// The last count of possible candidates in the xeno larva queue (updated via get_alien_candidates)
-GLOBAL_VAR(xeno_queue_candidate_count)
+/// The last count of possible candidates in the xeno larva pool (updated via get_alien_candidates)
+GLOBAL_VAR(larva_pool_candidate_count)
 
 //Coordinate obsfucator
 //Used by the rangefinders and linked systems to prevent coords collection/prefiring

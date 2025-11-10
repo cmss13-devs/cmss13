@@ -45,6 +45,9 @@
 /obj/item/clothing/shoes/marine/jungle/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
+/obj/item/clothing/shoes/marine/jungle/pistol
+	spawn_item_type = /obj/item/weapon/gun/pistol/action
+
 /obj/item/clothing/shoes/marine/brown
 	icon_state = "marine_brown"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time. These are brown."
@@ -170,6 +173,10 @@
 	siemens_coefficient = 0.2
 	unacidable = TRUE
 
+/obj/item/clothing/shoes/veteran/pmc/commando/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/clothing/shoes/veteran/pmc/commando/knife
 	spawn_item_type = /obj/item/attachable/bayonet/wy
 
@@ -182,6 +189,10 @@
 	siemens_coefficient = 0.2
 	unacidable = TRUE
 	spawn_item_type = /obj/item/attachable/bayonet/wy
+
+/obj/item/clothing/shoes/veteran/pmc/combat_android/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/shoes/veteran/pmc/combat_android/dark
 	name = "\improper M7X Mark II greaves"

@@ -459,11 +459,16 @@
 	else
 		overlay_img = overlay_image(mob_icon, mob_state, color, RESET_COLOR)
 
-	var/inhands = slot == (WEAR_L_HAND || WEAR_R_HAND)
+	var/inhands
+
+	if(slot == WEAR_L_HAND || slot == WEAR_R_HAND)
+		inhands = TRUE
+	else
+		inhands = FALSE
 
 	var/offset_x = worn_x_dimension
 	var/offset_y = worn_y_dimension
-	if(inhands == 1 || inhands == 0)
+	if(inhands)
 		offset_x = inhand_x_dimension
 		offset_y = inhand_y_dimension
 

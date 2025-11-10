@@ -16,6 +16,7 @@
 	alpha = 0 // We want this thing to be transparent when it drops on a turf because it will be on the user's turf. We then want to make it opaque as it travels.
 	layer = FLY_LAYER
 	animate_movement = NO_STEPS //disables gliding because it fights against what animate() is doing
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 	var/datum/ammo/ammo //The ammo data which holds most of the actual info.
 
@@ -978,7 +979,7 @@
 	. = TRUE
 	bullet_message(P, damaging = damage)
 	if(damage)
-		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P)
+		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P, enviro=P.ammo.damage_enviro)
 		P.play_hit_effect(src)
 
 	SEND_SIGNAL(P, COMSIG_BULLET_ACT_LIVING, src, damage, damage)
@@ -1070,7 +1071,7 @@
 		handle_blood_splatter(splatter_dir)
 
 		. = TRUE
-		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer = P.firer)
+		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer=P.firer, enviro=P.ammo.damage_enviro)
 
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + floor(damage / 10)))
 			if(ammo_flags & AMMO_SPECIAL_EMBED)
@@ -1142,6 +1143,7 @@
 			"armor_integrity" = armor_integrity,
 			"direction" = P.dir,
 			"armour_type" = GLOB.xeno_ranged,
+			"enviro" = P.ammo.damage_enviro,
 		)
 		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, damagedata)
 		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damagedata["damage"],
@@ -1169,7 +1171,7 @@
 		//only apply the blood splatter if we do damage
 		handle_blood_splatter(get_dir(P.starting, loc))
 
-		apply_damage(damage_result,P.ammo.damage_type, P.def_zone) //Deal the damage.
+		apply_damage(damage_result,P.ammo.damage_type, P.def_zone, enviro=P.ammo.damage_enviro) //Deal the damage.
 		if(length(xeno_shields))
 			P.play_shielded_hit_effect(src)
 		else

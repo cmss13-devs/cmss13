@@ -35,7 +35,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		return
 
 	SSminimaps.remove_marker(src)
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "nuke[timing ? "_on" : "_off"]", 'icons/ui_icons/map_blips_large.dmi')
+	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image(icon='icons/UI_icons/map_blips_large.dmi', icon_state="nuke[timing ? "_on" : "_off"]", layer=VERY_HIGH_FLOAT_LAYER))
 
 /obj/structure/machinery/nuclearbomb/update_icon()
 	overlays.Cut()
@@ -91,6 +91,9 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), M)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/machinery/nuclearbomb/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
 	if(anchored && timing && GLOB.bomb_set && HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 		user.visible_message(SPAN_INFO("[user] begins to defuse \the [src]."), SPAN_INFO("You begin to defuse \the [src]. This will take some time..."))
@@ -129,7 +132,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 /obj/structure/machinery/nuclearbomb/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "NuclearBomb", "[src.name]")
+		ui = new(user, src, "NuclearBomb", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/nuclearbomb/ui_state(mob/user)
@@ -434,12 +437,12 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 					qdel(embryo)
 
 	for(var/mob/current_mob in alive_mobs)
-		if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
+		if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer))
 			continue
 		current_mob.death(create_cause_data("nuclear explosion"))
 
 	for(var/mob/living/current_mob in (alive_mobs + dead_mobs))
-		if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer/fridge))
+		if(istype(current_mob.loc, /obj/structure/closet/secure_closet/freezer))
 			continue
 		for(var/obj/item/alien_embryo/embryo in current_mob)
 			qdel(embryo)

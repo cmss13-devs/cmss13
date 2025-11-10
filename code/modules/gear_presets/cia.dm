@@ -10,8 +10,8 @@
 
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CIV"
-	minimap_background = "background_civillian"
 	minimap_icon = "cia_ia"
+	minimap_background = "background_civillian"
 	idtype = /obj/item/card/id/adaptive
 
 /datum/equipment_preset/cia/New()
@@ -139,6 +139,7 @@
 /datum/equipment_preset/clf/engineer/cia
 	name = "CIA Spy (CLF Engineer)"
 	skills = /datum/skills/cia
+	selection_categories = list("CIA")
 
 /datum/equipment_preset/clf/engineer/cia/New()
 	. = ..()
@@ -178,6 +179,7 @@
 /datum/equipment_preset/upp/soldier/dressed/cia
 	name = "CIA Spy (UPP Soldier)"
 	skills = /datum/skills/cia
+	selection_categories = list("CIA")
 
 /datum/equipment_preset/upp/soldier/dressed/cia/New()
 	. = ..()
@@ -191,6 +193,7 @@
 /datum/equipment_preset/upp/officer/senior/dressed/cia
 	name = "CIA Spy (UPP Senior Officer)"
 	skills = /datum/skills/cia_senior
+	selection_categories = list("CIA")
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia/New()
 	. = ..()

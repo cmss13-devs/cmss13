@@ -59,6 +59,8 @@
 #define XENO_CORROSIVE_ACID 6 //Macro for covering things in acid, universal ability
 #define XENO_SCREECH 7 //Macro for queen screech
 #define XENO_TAIL_STAB 8 //macro for tail stabs
+#define XENO_BECOME_SEETHROUGH 9 // macro to become seethrough, only used by queen as of implementation
+
 
 #define NO_ACTION_CHARGES -1 // This ability does not have a limit to how many times it can be used
 
@@ -81,15 +83,14 @@
 
 #define IGNORE_BUILD_DISTANCE -1
 
-#define XENO_LEADER_HIVE_POS(X)   (X + 1)
-#define GET_XENO_LEADER_NUM(X)  (X.hive_pos - 1)
-#define IS_XENO_LEADER(X)    (X.hive_pos > 1)
+#define XENO_LEADER_HIVE_POS(X) (X + 1)
+#define GET_XENO_LEADER_NUM(X) (X.hive_pos - 1)
+#define IS_XENO_LEADER(X) (X.hive_pos >= XENO_LEADER)
+#define IS_NORMAL_XENO(X) (X.hive_pos == NORMAL_XENO)
 
 #define NORMAL_XENO  0
 #define XENO_QUEEN   1
 #define XENO_LEADER  2
-/// Nobody can create constructions. (Feral)
-#define XENO_NOBODY  3
 
 #define XENO_HIVE_AREA_SIZE 21 //The turf size from the centrepiece of a hive in which special things can be done (like building structures)
 
@@ -106,8 +107,37 @@
 
 #define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
 
-#define XENO_SLASH_ALLOWED 0
-#define XENO_SLASH_FORBIDDEN 1
+// Queen permission toggles
+#define COOLDOWN_TOGGLE_SLASH "cooldown_toggle_slash"
+#define COOLDOWN_TOGGLE_CONSTRUCTION "cooldown_toggle_construction"
+#define COOLDOWN_TOGGLE_DECONSTRUCTION "cooldown_toggle_deconstruction"
+#define COOLDOWN_TOGGLE_UNNESTING "cooldown_toggle_unnesting"
+
+/// Whether you can harm non-infected
+#define XENO_SLASH_NORMAL (1<<0)
+/// Whether you can harm infected
+#define XENO_SLASH_INFECTED (1<<1)
+/// Multi-flag to indicate all harming is allowed
+#define XENO_SLASH_ALLOW_ALL (XENO_SLASH_NORMAL|XENO_SLASH_INFECTED)
+/// Whether only drone castes can unnest hosts
+#define XENO_UNNESTING_RESTRICTED (1<<2)
+/// Whether normal xenos can make special structures
+#define XENO_CONSTRUCTION_NORMAL (1<<3)
+/// Whether leader xenos can make special structures
+#define XENO_CONSTRUCTION_LEADERS (1<<4)
+/// Whether queen can make special structures
+#define XENO_CONSTRUCTION_QUEEN (1<<5)
+/// Multi-flag to indicate all special structures construction is allowed
+#define XENO_CONSTRUCTION_ALLOW_ALL (XENO_CONSTRUCTION_QUEEN|XENO_CONSTRUCTION_LEADERS|XENO_CONSTRUCTION_NORMAL)
+/// Whether normal xenos can destroy special structures
+#define XENO_DECONSTRUCTION_NORMAL (1<<6)
+/// Whether leader xenos can destroy special structures
+#define XENO_DECONSTRUCTION_LEADERS (1<<7)
+/// Whether queen can destroy special structures
+#define XENO_DECONSTRUCTION_QUEEN (1<<8)
+/// Multi-flag to indicate all special structures deconstruction is allowed
+#define XENO_DECONSTRUCTION_ALLOW_ALL (XENO_DECONSTRUCTION_QUEEN|XENO_DECONSTRUCTION_LEADERS|XENO_DECONSTRUCTION_NORMAL)
+
 // Holds defines for /datum/caste_datum, which is the primary datum for the caste system,
 // /datum/hive_status (self explanatory)
 // and some of the var defines for the Xenomorph base type.

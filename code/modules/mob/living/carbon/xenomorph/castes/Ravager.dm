@@ -59,7 +59,6 @@
 		/datum/action/xeno_action/activable/pounce/charge,
 		/datum/action/xeno_action/onclick/empower,
 		/datum/action/xeno_action/activable/scissor_cut,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/ravager.dmi'
@@ -156,7 +155,7 @@
 	var/datum/behavior_delegate/ravager_base/behavior = xeno.behavior_delegate
 
 	activated_once = FALSE
-	button.icon_state = "template"
+	button.icon_state = "template_xeno_xeno"
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] gets empowered by the surrounding enemies!"), SPAN_XENOWARNING("We feel a rush of power from the surrounding enemies!"))
 	xeno.create_empower()
 

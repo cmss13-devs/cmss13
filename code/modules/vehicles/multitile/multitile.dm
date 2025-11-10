@@ -179,7 +179,6 @@
 	var/static/list/blocking_structures = list(
 	/obj/structure/shuttle/part = TRUE,
 	/obj/structure/mineral_door/resin = TRUE,
-	/obj/structure/mineral_door/resin/thick = TRUE
 	)
 
 	var/momentum_decay_active = FALSE  // Track if momentum decay loop is running
@@ -476,3 +475,9 @@
 	SIGNAL_HANDLER
 
 	forceMove(get_turf(mover))
+
+/obj/vehicle/multitile/proc/is_blocking_structure(atom/A)
+	for(var/blocked_type in blocking_structures)
+		if(ispath(A.type, blocked_type))
+			return TRUE
+	return FALSE

@@ -243,6 +243,15 @@ instrumental = "Взрослым "
 prepositional = "Взрослом "
 gender = "male"
 
+["Кровавый "]
+nominative = "Кровавый "
+genitive = "Кровавого "
+dative = "Кровавому "
+accusative = "Кровавого "
+instrumental = "Кровавым "
+prepositional = "Кровавом "
+gender = "male"
+
 ["Старший "]
 nominative = "Старший "
 genitive = "Старшего "

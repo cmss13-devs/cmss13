@@ -230,7 +230,16 @@ Also handles the "Mature / Bloody naming convention. Call this to update the nam
 		progress = "Кровавый "
 
 	name = "[name_prefix][progress][declent_ru_initial("Larva", NOMINATIVE, "Larva")] ([nicknumber])"
-	ru_names_rename(ru_names_toml("Larva", prefix = "[name_prefix][progress]", suffix = " ([nicknumber])", override_base = name))
+	ru_names_rename(ru_names_list(
+		base = name,
+		nominative = "[name_prefix][declent_ru_initial(progress, NOMINATIVE, progress)][declent_ru_initial("Larva", NOMINATIVE, "Larva")] ([nicknumber])",
+		genitive = "[name_prefix][declent_ru_initial(progress, GENITIVE, progress)][declent_ru_initial("Larva", GENITIVE, "Larva")] ([nicknumber])",
+		dative = "[name_prefix][declent_ru_initial(progress, DATIVE, progress)][declent_ru_initial("Larva", DATIVE, "Larva")] ([nicknumber])",
+		accusative = "[name_prefix][declent_ru_initial(progress, ACCUSATIVE, progress)][declent_ru_initial("Larva", ACCUSATIVE, "Larva")] ([nicknumber])",
+		instrumental = "[name_prefix][declent_ru_initial(progress, INSTRUMENTAL, progress)][declent_ru_initial("Larva", INSTRUMENTAL, "Larva")] ([nicknumber])",
+		prepositional = "[name_prefix][declent_ru_initial(progress, PREPOSITIONAL, progress)][declent_ru_initial("Larva", PREPOSITIONAL, "Larva")] ([nicknumber])",
+		gender = "[declent_ru_initial("Larva", "gender", MALE)]",
+	))
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)

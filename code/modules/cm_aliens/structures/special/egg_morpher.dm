@@ -199,8 +199,8 @@
 	stored_huggers--
 
 /mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher(obj/effect/alien/resin/special/eggmorph/morpher in oview(1))
-	set name = "Set Hugger Reserve"
-	set desc = "Set Hugger Reserve"
+	set name = "Резервация лицехватов"
+	set desc = "Резервация лицехватов"
 	set category = null
 
 	if(!istype(morpher))
@@ -208,11 +208,9 @@
 
 	if(morpher.linked_hive)
 		if(hivenumber != morpher.linked_hive.hivenumber)
-			to_chat(usr, SPAN_WARNING("This belongs to another Hive! Yuck!"))
+			to_chat(usr, SPAN_WARNING("Это принадлежит другому Улью! Гадость!"))
 			return
-
-	morpher.huggers_reserved = tgui_input_number(usr, "How many facehuggers would you like to keep safe from Observers wanting to join as facehuggers?", "How many to reserve?", 0, morpher.huggers_max_amount, morpher.huggers_reserved)
-
-	to_chat(usr, SPAN_XENONOTICE("Вы зарезервировали [morpher.huggers_reserved] лицехватов для своих сестёр.")) // SS220 EDIT ADDICTION
+	morpher.huggers_reserved = tgui_input_number(usr, "Как много лицехватов вы хотите зарезервировать от Наблюдателей, которые хотят присоединиться за лицехвата?", "Сколько резервировать?", 0, morpher.huggers_max_amount, morpher.huggers_reserved)
+	to_chat(usr, SPAN_XENONOTICE("Вы зарезервировали [morpher.huggers_reserved] лицехват[declension_ru(morpher.huggers_reserved, "а", "а", "ов")] для своих сестёр.")) // SS220 EDIT ADDICTION
 
 #undef EGGMORPG_RANGE

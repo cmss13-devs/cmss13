@@ -133,12 +133,12 @@ prepositional = "зимней куртке врача"
 gender = "female"
 
 ["M68 Thermal Cloak"]
-nominative = "камуфляжный плащ-неведимка M68"
-genitive = "камуфляжного плаща-неведимки M68"
-dative = "камуфляжному плащу-неведимке M68"
-accusative = "камуфляжный плащ-неведимку M68"
-instrumental = "камуфляжным плащом-неведимкой M68"
-prepositional = "камуфляжном плаще-неведимке M68"
+nominative = "камуфляжный плащ-невидимка M68"
+genitive = "камуфляжного плаща-невидимки M68"
+dative = "камуфляжному плащу-невидимке M68"
+accusative = "камуфляжный плащ-невидимку M68"
+instrumental = "камуфляжным плащом-невидимкой M68"
+prepositional = "камуфляжном плаще-невидимке M68"
 gender = "male"
 
 ["M3 sniper's smock"]

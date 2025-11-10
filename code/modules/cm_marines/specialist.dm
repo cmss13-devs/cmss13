@@ -111,7 +111,7 @@
 	redeemer.hud_set_squad()
 	var/obj/item/card/id/idcard = redeemer.get_idcard()
 	if(idcard)
-		idcard.set_assignment(JOB_SQUAD_SPECIALIST_RU + " " + (redeemer.assigned_squad ? (redeemer.assigned_squad.get_name_ru() + " ") : "") + " ([role_name_ru])")	// SS220 EDIT TRANSLATE
+		idcard.set_assignment(JOB_SQUAD_SPECIALIST_RU + (redeemer.assigned_squad ? " [redeemer.assigned_squad.get_name_ru()]" : "") + " ([role_name_ru])")	// SS220 EDIT TRANSLATE
 		idcard.minimap_icon_override = rank_icon
 		redeemer.update_minimap_icon()
 		GLOB.data_core.manifest_modify(redeemer.real_name, WEAKREF(redeemer), idcard.assignment)

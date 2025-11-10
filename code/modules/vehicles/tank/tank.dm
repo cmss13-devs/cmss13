@@ -35,6 +35,7 @@
 	move_max_momentum = 3
 	move_momentum_build_factor = 1.8
 	move_turn_momentum_loss_factor = 0.6
+	idle_time_required = 20
 
 	vehicle_light_range = 7
 
@@ -235,15 +236,13 @@
 /**
  * Applies a jousting effect when crashing above a certain speed.
  *
- * This is a somewhat hacky implementation, since the maximum momentum of vehicles
- * can change based on the type of wheels used. IE: Reinforced treads make it easier to attain
- * the needed 1.6 momentum, while it's a bit harder with normal treads.
+ * Because momentum defines how close a vehicle is to its top speed, 0.5 should mean that the tank will joust its riders...
+ * ...After it crashes at anything while above half of its max speed.
  *
- * 1.6, while a magic number and a code smell, was the value that worked best to prevent riders from being scattered
- * at low speeds, while also ensuring they were scattered after the tank accelerated 2 tiles on normal treads.
+ * Keep in mind that momentum decays while standing still, and it can be negative in case we are moving backwards.
  */
 /obj/vehicle/multitile/tank/on_crash()
-	if(abs(move_momentum) < 1.6)
+	if(abs(move_momentum) < move_max_momentum * 0.5)
 		return
 	_scatter_riders_on_crash()
 	revalidate_on_top()

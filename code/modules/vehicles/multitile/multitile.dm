@@ -53,7 +53,13 @@
 	// Determines how much slower the vehicle is when it lacks its full momentum
 	// When the vehicle has 0 momentum, it's movement delay will be move_delay * momentum_build_factor
 	// The movement delay gradually reduces up to move_delay when momentum increases
+	//// This is mostly vestigial and it looks like it cancels itself out when calculating movement delay??? -bwsb
 	var/move_momentum_build_factor = 1.3
+	// How fast momentum decays when you stop moving.
+	var/move_momentum_loss_factor = 1
+	// How long do you have to go without moving for momentum decay to start
+	// Slower moving vehicles like the tank require more time, or else they won't get past minimum speed.
+	var/idle_time_required = 10 // 10 seconds. Tested to be OK on APC and Van.
 
 	//Sound to play when moving
 	var/movement_sound
@@ -175,6 +181,10 @@
     /obj/structure/mineral_door/resin = TRUE,
 	/obj/structure/mineral_door/resin/thick = TRUE
 	)
+
+	var/momentum_decay_active = FALSE  // Track if momentum decay loop is running
+	var/last_input_time = 0  // Track when last movement input was received
+
 /obj/vehicle/multitile/Initialize()
 	. = ..()
 

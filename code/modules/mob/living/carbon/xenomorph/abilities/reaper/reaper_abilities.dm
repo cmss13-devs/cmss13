@@ -10,11 +10,24 @@
 	var/range = 2
 	var/flesh_plasma_from_plagued_target = 10
 
+/datum/action/xeno_action/activable/breath_miasma
+	name = "Breath Miasma"
+	action_icon_state = "gas_mine"
+	macro_path = /datum/action/xeno_action/verb/verb_breath_miasma
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	xeno_cooldown = 20 SECONDS
+	plasma_cost = 100
+
+	var/flesh_plasma_cost = 150
+	var/breath_range = 5
+	var/cloud_duration = 6
+
 /datum/action/xeno_action/activable/replenish
 	name = "Replenish"
 	action_icon_state = "warden_heal"
 	macro_path = /datum/action/xeno_action/verb/verb_replenish
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_4
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 5 SECONDS
 	plasma_cost = 100
@@ -23,15 +36,3 @@
 	var/flesh_plasma_cost = 100
 	var/plas_mod = 0.5 // Cost multiplier for adjacent healing
 	var/flesh_plas_mod = 1 // For weed interaciton
-
-/datum/action/xeno_action/activable/breath_miasma
-	name = "Breath Miasma"
-	action_icon_state = "gas_mine"
-	macro_path = /datum/action/xeno_action/verb/verb_breath_miasma
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_4
-	xeno_cooldown = 20 SECONDS
-	plasma_cost = 100
-
-	var/flesh_plasma_cost = 150
-	var/breath_range = 5

@@ -64,8 +64,8 @@
 		/datum/action/xeno_action/activable/retrieve_hugger_egg,
 		/datum/action/xeno_action/onclick/set_hugger_reserve,
 		/datum/action/xeno_action/activable/reap, //second macro
-		/datum/action/xeno_action/activable/replenish, //third macro
-		/datum/action/xeno_action/activable/breath_miasma, //fourth macro
+		/datum/action/xeno_action/activable/breath_miasma, //third macro
+		/datum/action/xeno_action/activable/replenish, //fourth macro
 	)
 
 	inherent_verbs = list(
@@ -177,8 +177,8 @@
 /datum/behavior_delegate/base_reaper
 	name = "Base Reaper Behavior Delegate"
 
-	var/flesh_plasma_slash = 2 /// How much flesh plasma is generated on a slash
-	var/flesh_plasma_kill = 10 /// How much flesh plasma is generated on a kill
+	var/flesh_plasma_slash = 5 /// How much flesh plasma is generated on a slash
+	var/flesh_plasma_kill = 20 /// How much flesh plasma is generated on a kill
 
 /datum/behavior_delegate/base_reaper/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
 	var/mob/living/carbon/xenomorph/reaper/reaper = bound_xeno
@@ -262,133 +262,6 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/replenish/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/reaper/xeno = owner
-
-	if(!action_cooldown_check() || !xeno.check_state() || target == xeno)
-		return
-
-	if(!check_plasma_owner())
-		return
-
-	var/obj/effect/alien/weeds/user_weeds_loc = locate() in xeno.loc
-	var/obj/effect/alien/weeds/target_weeds_loc = locate() in target.loc
-	var/plasma_cost_mult = plas_mod
-	var/flesh_cost_mult = flesh_plas_mod
-	var/mob/living/carbon/xenomorph/xeno_carbon = target
-	var/current_target_is_xeno = FALSE
-	var/current_target_is_Weeds = FALSE
-
-	var/distance = get_dist(xeno, target)
-
-	if(istype(target, /mob/living/carbon/xenomorph))
-		if(distance > range)
-			return
-
-		if(!xeno.Adjacent(target))
-			plasma_cost_mult = 1  // We want xenos not within touching distance to cost more plasma
-
-		if(!xeno.can_not_harm(xeno_carbon))
-			to_chat(xeno, SPAN_XENODANGER("We must target one of our sisters!"))
-			return
-
-		if(xeno_carbon.stat == DEAD)
-			to_chat(xeno, SPAN_XENODANGER("We cannot heal the dead!"))
-			return
-
-		if(xeno_carbon.health >= xeno_carbon.maxHealth)
-			to_chat(xeno, SPAN_XENOWARNING("[xeno_carbon] is already at max health!"))
-			return
-
-		if(SEND_SIGNAL(xeno_carbon, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
-			to_chat(xeno, SPAN_XENOWARNING("We cannot help [xeno_carbon] when they're on fire!"))
-			return
-
-		current_target_is_xeno = TRUE
-		current_target_is_Weeds = FALSE
-
-	else if(istype(target, /obj/effect/alien/weeds))
-		if(distance > ceil(range * 1.5))
-			return
-
-		flesh_cost_mult = 0.5
-		plasma_cost_mult = 0.25 // Weeds can be cheap no matter how far
-
-		current_target_is_xeno = FALSE
-		current_target_is_Weeds = TRUE
-
-	else // If the target isn't weeds or plasma, return
-		return
-
-	if(xeno.flesh_plasma < (flesh_plasma_cost * flesh_cost_mult))
-		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh plasma, we need [(flesh_plasma_cost * flesh_cost_mult) - xeno.flesh_plasma] more!"))
-		return
-
-	if((!user_weeds_loc || !target_weeds_loc))
-		if(current_target_is_xeno)
-			to_chat(xeno, SPAN_XENOWARNING("We must either be adjacent to our target or both of us must be on allied weeds!"))
-		return
-
-	if(!(HIVE_ALLIED_TO_HIVE(xeno.hive, user_weeds_loc.linked_hive)) && !(HIVE_ALLIED_TO_HIVE(xeno.hive, target_weeds_loc.linked_hive)))
-		if(current_target_is_xeno)
-			to_chat(xeno, SPAN_XENOWARNING("Both us and our target must be on allied weeds!"))
-		return
-
-	if(current_target_is_xeno) // If the target is a fellow xeno, heal them for % heal over time
-		var/recovery_amount = xeno_carbon.maxHealth * 0.15 // 15% of the Xeno's max health feels like a good value for semi-ranged healing
-
-		if(islarva(xeno_carbon) && islesserdrone(xeno_carbon))
-			recovery_amount = xeno_carbon.maxHealth * 0.3 // 15% on these ones ain't much, so let them get 30% instead
-
-		else if(isqueen(xeno_carbon) || isking(xeno_carbon))
-			recovery_amount = xeno_carbon.maxHealth * 0.10 // Reduced to 10% since a mature Queen has 1k health
-
-		else if(isfacehugger(xeno_carbon))
-			recovery_amount = xeno_carbon.maxHealth // Can as well just fully heal huggers if you choose to waste the flesh plasma on them
-
-		if(xeno_carbon.health < 0)
-			recovery_amount = (xeno_carbon.maxHealth * 0.05) + abs(xeno_carbon.health) // If they're in crit, get them out of it but heal less
-
-		if(isfacehugger(xeno_carbon))
-			xeno_carbon.gain_health(recovery_amount) // Can also as well just instantly heal the Hugger
-			xeno_carbon.updatehealth()
-		else
-			// For a Drone target: 75 health, 15 per second
-			// For a Ravager target: 97.5 health, 19.5 per second
-			// For a Crusher target: 105 health, 21 per second
-
-			// Healer Drone is still better at large amounts of healing thanks to 10x shorter CD
-			// Valkyrie is better for groups fighting off weeds thanks to AOE healing with every slash
-			// With the semi-ranged nature and not needing to lose health to give it, this should be good for prolonging lifespans steadily and stably
-			new /datum/effects/heal_over_time(xeno_carbon, heal_amount = recovery_amount)
-		xeno_carbon.xeno_jitter(1 SECONDS)
-		xeno_carbon.flick_heal_overlay(2.5 SECONDS, "#c5bc81")
-		xeno.transferred_healing += recovery_amount
-
-		if(xeno.Adjacent(xeno_carbon))
-			xeno.visible_message(SPAN_XENOWARNING("[xeno] smears a foul-smelling ooze onto [xeno_carbon]s wounds, causing them to rapidly close!"), \
-			SPAN_XENOWARNING("We use flesh plasma to heal [xeno_carbon]s wounds!"))
-			to_chat(xeno_carbon, SPAN_XENOWARNING("[xeno] smears a pale ooze onto our wounds, causing them to close up faster!"))
-		else if(!xeno.Adjacent(xeno_carbon))
-			xeno.visible_message(SPAN_XENOWARNING("The weeds between [xeno] and [xeno_carbon] ripple and emit a foul scent as [xeno_carbon]s wounds to rapidly close!"), \
-			SPAN_XENOWARNING("We channel flesh plasma to heal [xeno_carbon]s wounds from afar!"))
-			to_chat(xeno_carbon, SPAN_XENOWARNING("The weeds beneath us shudder as a pale ooze forms on our wounds, causing them to close up faster!"))
-
-	if(current_target_is_Weeds) // If targeting weeds, spread glorious gas!
-		var/obj/effect/alien/weeds/target_weeds = target
-		var/datum/effect_system/smoke_spread/reaper_mist/cloud = new /datum/effect_system/smoke_spread/reaper_mist
-		var/datum/cause_data/cause_data = create_cause_data("reaper mist", owner)
-		target_weeds.visible_message(SPAN_XENOWARNING("[target_weeds] ripple rapidly and emit a foul greenish mist!"))
-		to_chat(xeno, SPAN_XENOWARNING("We channel flesh plasma to rejuvenate the weeds and cause them to emit a cloud of evaporated flesh plasma!"))
-		cloud.set_up(2, 0, get_turf(target_weeds), null, 5, new_cause_data = cause_data)
-		cloud.start()
-
-	xeno.face_atom(xeno_carbon)
-	use_plasma_owner(plasma_cost * plasma_cost_mult)
-	xeno.modify_flesh_plasma(-(flesh_plasma_cost * flesh_cost_mult))
-	apply_cooldown()
-	return ..()
-
 /datum/action/xeno_action/activable/breath_miasma/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
 
@@ -434,8 +307,101 @@
 
 		// playsound(turf, '', 5, 1) Put in some nice sounding hiss soundeffect later
 		var/datum/effect_system/smoke_spread/reaper_mist/miasma = new()
-		miasma.set_up(1, 0, turf, null, 10, new_cause_data = cause_data)
+		miasma.set_up(2, 0, turf, null, cloud_duration, new_cause_data = cause_data)
 		miasma.start()
 		sleep(5)
 
 		distance_travelled++
+
+/datum/action/xeno_action/activable/replenish/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/reaper/xeno = owner
+
+	if(!action_cooldown_check() || !xeno.check_state() || target == xeno)
+		return
+
+	if(!check_plasma_owner())
+		return
+
+	var/obj/effect/alien/weeds/user_weeds_loc = locate() in xeno.loc
+	var/obj/effect/alien/weeds/target_weeds_loc = locate() in target.loc
+	var/plasma_cost_mult = plas_mod
+	var/flesh_cost_mult = flesh_plas_mod
+	var/mob/living/carbon/xenomorph/xeno_carbon = target
+
+	var/distance = get_dist(xeno, target)
+
+	if(distance > range)
+		return
+
+	if(!xeno.Adjacent(target))
+		plasma_cost_mult = 1  // We want xenos not within touching distance to cost more plasma
+
+	if(!xeno.can_not_harm(xeno_carbon))
+		to_chat(xeno, SPAN_XENODANGER("We must target one of our sisters!"))
+		return
+
+	if(xeno_carbon.stat == DEAD)
+		to_chat(xeno, SPAN_XENODANGER("We cannot heal the dead!"))
+		return
+
+	if(xeno_carbon.health >= xeno_carbon.maxHealth)
+		to_chat(xeno, SPAN_XENOWARNING("[xeno_carbon] is already at max health!"))
+		return
+
+	if(SEND_SIGNAL(xeno_carbon, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+		to_chat(xeno, SPAN_XENOWARNING("We cannot help [xeno_carbon] when they're on fire!"))
+		return
+
+	if(xeno.flesh_plasma < (flesh_plasma_cost * flesh_cost_mult))
+		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh plasma, we need [(flesh_plasma_cost * flesh_cost_mult) - xeno.flesh_plasma] more!"))
+		return
+
+	if(!xeno.Adjacent(target) && (!user_weeds_loc || !target_weeds_loc || (!(HIVE_ALLIED_TO_HIVE(xeno.hive, user_weeds_loc.linked_hive)) && !(HIVE_ALLIED_TO_HIVE(xeno.hive, target_weeds_loc.linked_hive)))))
+		to_chat(xeno, SPAN_XENOWARNING("We must either be adjacent to our target or both of us must be on allied weeds!"))
+		return
+
+	var/recovery_amount = xeno_carbon.maxHealth * 0.15 // 15% of the Xeno's max health feels like a good value for semi-ranged healing
+
+	if(islarva(xeno_carbon) && islesserdrone(xeno_carbon))
+		recovery_amount = xeno_carbon.maxHealth * 0.3 // 15% on these ones ain't much, so let them get 30% instead
+
+	else if(isqueen(xeno_carbon) || isking(xeno_carbon))
+		recovery_amount = xeno_carbon.maxHealth * 0.10 // Reduced to 10% since a mature Queen has 1k health
+
+	else if(isfacehugger(xeno_carbon))
+		recovery_amount = xeno_carbon.maxHealth // Can as well just fully heal huggers if you choose to waste the flesh plasma on them
+
+	if(xeno_carbon.health < 0)
+		recovery_amount = (xeno_carbon.maxHealth * 0.05) + abs(xeno_carbon.health) // If they're in crit, get them out of it but heal less
+
+	if(isfacehugger(xeno_carbon))
+		xeno_carbon.gain_health(recovery_amount) // Can also as well just instantly heal the Hugger
+		xeno_carbon.updatehealth()
+	else
+		// For a Drone target: 75 health, 15 per second
+		// For a Ravager target: 97.5 health, 19.5 per second
+		// For a Crusher target: 105 health, 21 per second
+
+		// Healer Drone is still better at large amounts of healing thanks to 10x shorter CD
+		// Valkyrie is better for groups fighting off weeds thanks to AOE healing with every slash
+		// With the semi-ranged nature and not needing to lose health to give it, this should be good for prolonging lifespans steadily and stably
+		new /datum/effects/heal_over_time(xeno_carbon, heal_amount = recovery_amount)
+	xeno_carbon.xeno_jitter(1 SECONDS)
+	xeno_carbon.flick_heal_overlay(2.5 SECONDS, "#c5bc81")
+	xeno.transferred_healing += recovery_amount
+
+	if(xeno.Adjacent(xeno_carbon))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] smears a foul-smelling ooze onto [xeno_carbon]s wounds, causing them to rapidly close!"), \
+		SPAN_XENOWARNING("We use flesh plasma to heal [xeno_carbon]s wounds!"))
+		to_chat(xeno_carbon, SPAN_XENOWARNING("[xeno] smears a pale ooze onto our wounds, causing them to close up faster!"))
+
+	else if(!xeno.Adjacent(xeno_carbon))
+		xeno.visible_message(SPAN_XENOWARNING("The weeds between [xeno] and [xeno_carbon] ripple and emit a foul scent as [xeno_carbon]s wounds to rapidly close!"), \
+		SPAN_XENOWARNING("We channel flesh plasma to heal [xeno_carbon]s wounds from afar!"))
+		to_chat(xeno_carbon, SPAN_XENOWARNING("The weeds beneath us shudder as a pale ooze forms on our wounds, causing them to close up faster!"))
+
+	xeno.face_atom(xeno_carbon)
+	use_plasma_owner(plasma_cost * plasma_cost_mult)
+	xeno.modify_flesh_plasma(-(flesh_plasma_cost * flesh_cost_mult))
+	apply_cooldown()
+	return ..()

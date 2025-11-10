@@ -772,8 +772,8 @@
 	alpha = 60
 
 	var/hivenumber = XENO_HIVE_NORMAL
-	var/tox_damage = 1
-	var/tox_amount = 1
+	var/immediate_toxin_damage = 0.5
+	var/toxin_reagent_amount = 1
 
 /obj/effect/particle_effect/smoke/reaper_mist/Initialize(mapload, amount, datum/cause_data/cause_data)
 	if(istype(cause_data))
@@ -810,8 +810,8 @@
 	var/mob/living/carbon/xenomorph/affected_xeno = affected_mob
 	if(isxeno(affected_mob) && !isreaper(affected_xeno)) // Reapers get to ignore effects for sovl
 		if(isqueen(affected_xeno))
-			if(prob(10))
-				to_chat(affected_xeno, SPAN_XENODANGER("We feel lethargic, but manage to push through!"))
+			if(prob(50))
+				to_chat(affected_xeno, SPAN_XENODANGER("We feel lethargy approach but manage to shrug it off!"))
 			affected_xeno.set_effect(1, SLOW)
 		else
 			if(prob(10))
@@ -821,24 +821,24 @@
 	if(!issynth(affected_mob))
 		affected_xeno.set_effect(2, SLOW)
 		affected_mob.apply_damage(2, OXY)
-		affected_mob.apply_damage(tox_damage, TOX)
-		affected_mob.reagents.add_reagent("sepsicine", tox_amount)
+		affected_mob.apply_damage(immediate_toxin_damage, TOX)
+		affected_mob.reagents.add_reagent("sepsicine", toxin_reagent_amount)
 		affected_mob.reagents.set_source_mob(src, /datum/reagent/toxin/sepsicine)
 
 		if(affected_mob.coughedtime < world.time && !affected_mob.stat)
 			affected_mob.coughedtime = world.time + 2 SECONDS
 			if(ishuman(affected_mob))
-				if(prob(30))
+				if(prob(40))
 					if(prob(50))
 						affected_mob.emote("cough")
 					else
 						affected_mob.emote("gasp")
-				else if(prob(30))
+				else if(prob(20))
 					to_chat(affected_mob, SPAN_DANGER("You feel lightheaded!"))
 					affected_mob.set_effect(2, DAZE)
-				else if(prob(30))
+				else if(prob(20))
 					to_chat(affected_mob, SPAN_DANGER("The smell makes you feel sick!"))
-					affected_mob.apply_damage(tox_damage, TOX)
+					affected_mob.apply_damage(immediate_toxin_damage, TOX)
 
 	affected_mob.last_damage_data = cause_data
 	return TRUE

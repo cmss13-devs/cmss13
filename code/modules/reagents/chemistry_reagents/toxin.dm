@@ -377,8 +377,8 @@
 /datum/reagent/toxin/sepsicine
 	name = "Sepsicine"
 	id = "sepsicine"
-	description = "A xenotoxin with a cadaverous odor, theorized to have a microbial origin. It has neurotoxic properties that noticably affect pain receptors."
+	description = "A xenotoxin with a cadaverous odor, theorized to be of microbial origin."
 	color = "#c5bc81"
 	reagent_state = LIQUID
 	chemclass = CHEM_CLASS_NONE
-	properties = list(PROPERTY_TOXIC = 2, PROPERTY_PAINING = 4, PROPERTY_CROSSMETABOLIZING = 3)
+	properties = list(PROPERTY_TOXIC = 2, PROPERTY_CROSSMETABOLIZING = 3)

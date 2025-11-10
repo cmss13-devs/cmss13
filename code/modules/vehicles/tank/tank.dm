@@ -75,6 +75,7 @@
 	)
 
 	explosive_resistance = 400
+	minimap_icon_state = "tank"
 
 	var/list/on_top_mobs = list() /// keeps track of all mobs currently atop the tank
 	var/list/on_top_obj = list() /// keeps track of all objs currently atop the tank

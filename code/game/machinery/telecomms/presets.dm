@@ -22,7 +22,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-	//We dont want anyone to mess with it
+	//We don't want anyone to mess with it
 /obj/structure/machinery/telecomms/relay/preset/ice_colony/attackby()
 	return
 
@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	GLOB.all_static_telecomms_towers += src
 	. = ..()
 	if(z)
-		SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "supply")
+		SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null, "supply"))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/Destroy()
 	GLOB.all_static_telecomms_towers -= src
@@ -208,6 +208,9 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	/// Tower has been taken over by xenos, is not usable
 	var/corrupted = FALSE
+	/// Tower has been taken before, this gives xenos an extra resin point on capture for the first time.
+	var/captured_before = FALSE
+
 
 	/// Held image for the current overlay on the tower from xeno corruption
 	var/image/corruption_image
@@ -367,6 +370,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	flick_overlay(src, corruption_image, (2 SECONDS))
 	addtimer(CALLBACK(src, PROC_REF(switch_to_idle_corruption)), (2 SECONDS))
+
+	if(!captured_before)
+		captured_before = TRUE
+		new_pylon.linked_hive.buff_points += 1
 
 	new_pylon.comms_relay_connection()
 

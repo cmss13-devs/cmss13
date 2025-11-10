@@ -819,13 +819,13 @@
 		var/datum/hive_status/hive = hives[hive_name]
 
 		if(href_list["makecultist"])
-			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
+			var/datum/equipment_preset/preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
 			preset.load_race(H)
 			preset.load_status(H, hive.hivenumber)
 			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist for [hive.name].")
 
 		else if(href_list["makecultistleader"])
-			var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
+			var/datum/equipment_preset/preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
 			preset.load_race(H)
 			preset.load_status(H, hive.hivenumber)
 			message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive.name].")
@@ -1269,7 +1269,7 @@
 					return
 
 				fax_message = new(generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, "Editor in Chief", organization_type))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1321,7 +1321,7 @@
 					sent_title = "USCM High Command"
 
 				fax_message = new(generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1369,7 +1369,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1417,7 +1417,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "THREE WORLD EMPIRE - ROYAL MILITARY COMMAND", subject, addressed_to, message_body, sent_by, "Office of Military Communications", "Three World Empire"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1465,7 +1465,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "UNION OF PROGRESSIVE PEOPLES - MILITARY HIGH KOMMAND", subject, addressed_to, message_body, sent_by, "Military High Kommand", "Union of Progressive Peoples"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1513,7 +1513,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "COLONIAL LIBERATION FRONT - COLONIAL COUNCIL OF LIBERATION", subject, addressed_to, message_body, sent_by, "Guerilla Forces Command", "Colonial Liberation Front"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1561,7 +1561,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "COLONIAL MARSHAL BUREAU INCIDENT COMMAND CENTER - ANCHORPOINT STATION", subject, addressed_to, message_body, sent_by, "Supervisory Deputy Marshal", "Colonial Marshal Bureau"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", width = 500, height = 400)
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -2111,7 +2111,7 @@
 			dat += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[job.title];jobban4=\ref[M]'>[replacetext(job.title, " ", "&nbsp")]</a></td>"
 			counter++
 
-		if(counter >= 5) //So things dont get squiiiiished!
+		if(counter >= 5) //So things don't get squiiiiished!
 			dat += "</tr><tr>"
 			counter = 0
 	dat += "</tr></table>"

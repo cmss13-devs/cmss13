@@ -823,7 +823,7 @@
 /turf/open/floor/shiva/yellow/west,
 /area/shiva/interior/colony/research_hab)
 "aex" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/shiva/yellow/southwest,
 /area/shiva/interior/colony/research_hab)
 "aez" = (
@@ -1138,7 +1138,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard)
 "agz" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/platebot,
 /area/shiva/interior/colony/research_hab)
 "agA" = (
@@ -3199,7 +3199,7 @@
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "axK" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/garage)
 "axM" = (
@@ -3462,7 +3462,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_lz2)
 "azF" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "azH" = (
@@ -3483,7 +3483,7 @@
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/garage)
 "azM" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/caves/cp_camp)
 "azO" = (
@@ -4678,7 +4678,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/s_admin)
 "aQg" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aerodrome)
 "aQi" = (
@@ -5442,7 +5442,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/bar)
 "bau" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/bar)
 "baN" = (
@@ -6203,7 +6203,7 @@
 /turf/open/gm/river,
 /area/shiva/exterior/valley)
 "bTC" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/shiva/interior/telecomm/lz1_biceps)
 "bTV" = (
@@ -6946,7 +6946,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/cp_camp)
 "cRq" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
 "cRs" = (
@@ -11731,7 +11731,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/lz1_valley)
 "iQP" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/shiva/yellow/east,
 /area/shiva/interior/colony/medseceng)
 "iRa" = (
@@ -11897,7 +11897,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "iYC" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/interior/plastic/alt,
 /area/shiva/interior/warehouse)
 "iYF" = (
@@ -12187,7 +12187,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/valley)
 "jxJ" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/warnplate/northwest,
 /area/shiva/interior/colony/medseceng)
 "jyk" = (
@@ -12628,7 +12628,7 @@
 /turf/open/floor/shiva/wred/southwest,
 /area/shiva/interior/colony/medseceng)
 "kbl" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/light/double{
 	dir = 1;
 	pixel_y = 9
@@ -13589,7 +13589,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "kXx" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_lz2)
 "kXM" = (
@@ -14225,7 +14225,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_s_research)
 "lLv" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating,
 /area/shiva/exterior/lz1_valley)
 "lMC" = (
@@ -15108,7 +15108,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_s_research)
 "mKF" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/research_caves)
 "mLo" = (
@@ -15173,7 +15173,7 @@
 /turf/open/floor/shiva/yellow,
 /area/shiva/interior/colony/research_hab)
 "mOY" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/shiva,
 /area/shiva/interior/aerodrome)
 "mPu" = (
@@ -15586,7 +15586,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/interior/colony/medseceng)
 "npM" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
 "npY" = (
@@ -15786,7 +15786,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/warehouse/caves)
 "nED" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/shiva/yellowfull/west,
 /area/shiva/interior/aux_power)
 "nEQ" = (
@@ -15985,7 +15985,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
 "nTu" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/interior/plastic,
 /area/shiva/interior/warehouse)
 "nTv" = (
@@ -17502,7 +17502,7 @@
 	dir = 1;
 	pixel_y = 9
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/colony/medseceng)
 "pLy" = (
@@ -17635,7 +17635,7 @@
 /turf/open/floor/interior/plastic,
 /area/shiva/interior/warehouse)
 "pTC" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "pTG" = (
@@ -18022,7 +18022,7 @@
 /turf/open/floor/interior/plastic,
 /area/shiva/interior/warehouse)
 "qpq" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/shiva/yellow/southwest,
 /area/shiva/interior/colony/medseceng)
 "qps" = (
@@ -18983,7 +18983,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "rKq" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_s_research)
 "rKJ" = (
@@ -19435,7 +19435,7 @@
 /turf/closed/wall/shiva/prefabricated/orange,
 /area/shiva/exterior/cp_s_research)
 "sjh" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/interior/plastic,
 /area/shiva/interior/warehouse)
 "sjo" = (
@@ -21437,7 +21437,7 @@
 /area/shiva/interior/aerodrome)
 "uyJ" = (
 /obj/structure/machinery/light,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/shiva/yellow,
 /area/shiva/interior/colony/medseceng)
 "uzf" = (
@@ -23393,7 +23393,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
 "xdk" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "xdT" = (
@@ -23817,7 +23817,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/bar)
 "xMQ" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "xMS" = (

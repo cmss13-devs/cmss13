@@ -118,11 +118,20 @@
 	else
 		return time_required - get_job_playtime(C, roles)
 
+/client/proc/can_skip_role_lock()
+	if(admin_holder && (admin_holder.rights & (R_NOLOCK | R_ADMIN)))
+		return TRUE
+	if(GLOB.community_awards[ckey])
+		for(var/award in GLOB.community_awards[ckey])
+			if(award == "SDTimeAward")
+				return TRUE
+	return FALSE
+
 /datum/job/proc/can_play_role(client/client)
 	if(!CONFIG_GET(flag/use_timelocks))
 		return TRUE
 
-	if(client.admin_holder && (client.admin_holder.rights & (R_NOLOCK | R_ADMIN)))
+	if(client.can_skip_role_lock())
 		return TRUE
 
 	if(get_job_playtime(client, title) > minimum_playtime_as_job)
@@ -152,29 +161,29 @@
 /datum/job/proc/get_access()
 	if(!gear_preset)
 		return null
-	if(GLOB.gear_path_presets_list[gear_preset])
-		return GLOB.gear_path_presets_list[gear_preset].access
+	if(GLOB.equipment_presets.gear_path_presets_list[gear_preset])
+		return GLOB.equipment_presets.gear_path_presets_list[gear_preset].access
 	return null
 
 /datum/job/proc/get_skills()
 	if(!gear_preset)
 		return null
-	if(GLOB.gear_path_presets_list[gear_preset])
-		return GLOB.gear_path_presets_list[gear_preset].skills
+	if(GLOB.equipment_presets.gear_path_presets_list[gear_preset])
+		return GLOB.equipment_presets.gear_path_presets_list[gear_preset].skills
 	return null
 
 /datum/job/proc/get_paygrade()
 	if(!gear_preset)
 		return ""
-	if(GLOB.gear_path_presets_list[gear_preset])
-		return GLOB.gear_path_presets_list[gear_preset].paygrades[1]
+	if(GLOB.equipment_presets.gear_path_presets_list[gear_preset])
+		return GLOB.equipment_presets.gear_path_presets_list[gear_preset].paygrades[1]
 	return ""
 
 /datum/job/proc/get_comm_title()
 	if(!gear_preset)
 		return ""
-	if(GLOB.gear_path_presets_list[gear_preset])
-		return GLOB.gear_path_presets_list[gear_preset].role_comm_title
+	if(GLOB.equipment_presets.gear_path_presets_list[gear_preset])
+		return GLOB.equipment_presets.gear_path_presets_list[gear_preset].role_comm_title
 	return ""
 
 /datum/job/proc/set_spawn_positions(count)

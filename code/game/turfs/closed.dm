@@ -12,6 +12,10 @@
 	if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
 		return
 
+	if(istype(above_current, /turf/open/slippery))
+		to_chat(user, "The roof is too sloped to stand on it.")
+		return
+
 	while(above_current.density)
 		above_current = SSmapping.get_turf_above(get_turf(above_current))
 		above_user = SSmapping.get_turf_above(get_turf(above_user))
@@ -22,6 +26,11 @@
 	for(var/atom/possible_blocker in above_current)
 		if(possible_blocker.density)
 			return
+
+	var/obj/item/held_item = user.get_held_item()
+	if(istype(held_item, /obj/item/explosive/plastic))
+		to_chat(user, SPAN_DANGER("You cannot climb while holding [held_item]!"))
+		return
 
 	if(user.action_busy)
 		return

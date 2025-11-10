@@ -3234,6 +3234,14 @@
 /obj/structure/sign/prop3{
 	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
+	},
 /turf/closed/wall/prison,
 /area/fiorina/station/central_ring)
 "cmE" = (
@@ -4319,6 +4327,14 @@
 "dec" = (
 /obj/structure/sign/prop3{
 	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/prison,
 /area/fiorina/tumor/servers)
@@ -6106,6 +6122,14 @@
 /obj/structure/sign/prop3{
 	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
+	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/telecomm/lz1_cargo)
 "ezO" = (
@@ -6712,6 +6736,14 @@
 "eWP" = (
 /obj/structure/sign/prop3{
 	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/ice_lab)
@@ -12359,6 +12391,14 @@
 /obj/structure/sign/prop3{
 	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
+	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/research_cells/west)
 "jpQ" = (
@@ -14720,6 +14760,14 @@
 /obj/structure/sign/prop3{
 	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
+	},
 /turf/closed/wall/prison,
 /area/fiorina/station/power_ring)
 "lic" = (
@@ -16708,6 +16756,14 @@
 "mHR" = (
 /obj/structure/sign/prop3{
 	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/aux_engi)
@@ -22304,7 +22360,7 @@
 /area/fiorina/station/research_cells/east)
 "qRg" = (
 /obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/servers)
@@ -24594,6 +24650,14 @@
 "sJN" = (
 /obj/structure/sign/prop3{
 	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/lz/near_lzI)
@@ -31490,6 +31554,14 @@
 /obj/structure/sign/prop3{
 	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
 	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
+	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/medbay)
 "yif" = (
@@ -31560,6 +31632,14 @@
 "yli" = (
 /obj/structure/sign/prop3{
 	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies. Mostly New Argentina though."
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate populations across the colonies."
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/central_ring)

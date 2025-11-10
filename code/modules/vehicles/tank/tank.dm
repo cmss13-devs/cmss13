@@ -318,8 +318,6 @@
 
 	var/climb_speed_factor = (move_momentum / move_max_momentum) // % of our max speed attained.
 
-	to_chat(world, SPAN_WARNING("user = [user] climbing up with move_momentum=[move_momentum]"))
-
 	if(health == 0) // When broken, everyone takes 0.20 seconds to climb up. Keep in mind that the real perceived value is around 2-3x higher when you take in account lag.
 		if(!do_after (user, 0.20 SECONDS, INTERRUPT_MOVED, BUSY_ICON_CLIMBING, numticks = 1))
 			to_chat(user, SPAN_WARNING("You stop climbing onto [src]."))
@@ -373,8 +371,6 @@
 	user.visible_message(
 		SPAN_WARNING("[user] starts climbing down from [src]."),
 		SPAN_WARNING("You start climbing down from [src]."))
-
-	to_chat(world, SPAN_WARNING("user = [user] climbing down with move_momentum=[move_momentum]"))
 
 	if(!ishuman(user)) // Xenos and preds can always climb down with almost no delay to avoid situations where they get stuck atop the tank.
 		// The tiny delay here is meant to prevent fast castes from accidentally disembarking from a misinput

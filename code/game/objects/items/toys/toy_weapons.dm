@@ -7,7 +7,7 @@
 
 
 /*
- * Toy gun: Why isnt this an /obj/item/weapon/gun?
+ * Toy gun: Why isn't this an /obj/item/weapon/gun?
  */
 /obj/item/toy/gun
 	name = "cap gun"

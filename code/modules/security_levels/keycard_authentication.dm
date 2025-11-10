@@ -21,7 +21,7 @@
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = POWER_CHANNEL_ENVIRON
-	// so that folks dont constantly spam their ID, and play an 'id rejected' noise over and over
+	// so that folks don't constantly spam their ID, and play an 'id rejected' noise over and over
 	COOLDOWN_DECLARE(id_scan_cooldown)
 
 /obj/structure/machinery/keycard_auth/attack_remote(mob/user as mob)

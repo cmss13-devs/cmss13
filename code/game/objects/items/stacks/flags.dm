@@ -149,6 +149,19 @@
 		to_chat(xeno, SPAN_WARNING("We stare at [src] cluelessly."))
 		return XENO_NONCOMBAT_ACTION
 
+/obj/structure/flag/plantable/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(xeno.melee_damage_upper)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/flag/plantable/bullet_act(obj/projectile/bullet)
 	bullet_ping(bullet)
 	visible_message(SPAN_DANGER("[src] is hit by [bullet]!"), null, 4, CHAT_TYPE_TAKING_HIT)

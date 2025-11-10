@@ -96,7 +96,7 @@
 	. = ..()
 
 	. += ""
-	if(ishumansynth_strict(src)) // So that yautja or other species dont see the ships security alert
+	if(ishumansynth_strict(src)) // So that yautja or other species don't see the ships security alert
 		. += "Security Level: [uppertext(get_security_level())]"
 
 	if(species?.has_species_tab_items)

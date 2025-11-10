@@ -104,7 +104,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-		var/name = shuttle?.name
+		var/name = capitalize(shuttle?.name)
 		if(can_change_shuttle)
 			name = "Remote"
 		ui = new(user, src, "DropshipFlightControl", "[name] Flight Computer")
@@ -339,6 +339,9 @@
 			return
 		hijack(xeno)
 		return
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/update_icon()
 	. = ..()

@@ -276,6 +276,6 @@
 		var/current_area_name = get_area_name(target_turf)
 
 		for(var/mob/living/carbon/xenomorph/X in hive.totalXenos)
-			to_chat(X, SPAN_XENOANNOUNCE("[capitalize(declent_ru(NOMINATIVE))] объявляет: [NM.mark_meaning.desc] около «[sanitize_area(current_area_name)]»! (<a href='byond://?src=\ref[X];overwatch=1;target=\ref[NM]'>Посмотреть</a>) (<a href='byond://?src=\ref[X];track=1;target=\ref[NM]'>Отслеживать</a>)")) // SS220 EDIT ADDICTION
-			//this is killing the tgui chat and I dont know why
+			to_chat(X, SPAN_XENOANNOUNCE("[capitalize(declent_ru(NOMINATIVE))] объявляет: [NM.mark_meaning.desc] около «[sanitize_area(current_area_name)]»! (<a href='byond://?src=\ref[X];overwatch=1;target=\ref[NM]'>Посмотреть</a>) (<a href='byond://?src=\ref[X];track=1;target=\ref[NM]'>Отслеживать</a>)"))
+			//this is killing the tgui chat and I don't know why
 	return TRUE

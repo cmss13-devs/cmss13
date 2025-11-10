@@ -62,7 +62,7 @@ All ShuttleMove procs go here
 	if(newT == src) // In case of in place shuttle rotation shenanigans.
 		return
 	//Destination turf changes
-	//Baseturfs is definitely a list or this proc wouldnt be called
+	//Baseturfs is definitely a list or this proc wouldn't be called
 	var/shuttle_boundary = baseturfs.Find(/turf/baseturf_skipover/shuttle)
 	if(!shuttle_boundary)
 		CRASH("A turf queued to move via shuttle somehow had no skipover in baseturfs. [src]([type]):[loc]")

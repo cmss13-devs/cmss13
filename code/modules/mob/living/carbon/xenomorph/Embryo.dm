@@ -284,7 +284,7 @@
 		to_chat(new_xeno, SPAN_XENO("Для общения в Разуме улья, используйте символ <strong>;</strong> (например, ';Жизнь за Королеву!')"))
 		playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
 
-	// Inform observers to grab some popcorn if it isnt nested
+	// Inform observers to grab some popcorn if it isn't nested
 	if(!HAS_TRAIT(affected_mob, TRAIT_NESTED))
 		var/area/burst_area = get_area(src)
 		var/area_text = burst_area ? " at <b>[burst_area]</b>" : ""

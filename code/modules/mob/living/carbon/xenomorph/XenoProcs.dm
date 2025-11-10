@@ -702,7 +702,7 @@
 	to_chat(src, SPAN_XENONOTICE("Мы начинаем наблюдать за смоляной меткой «[target.mark_meaning.name]».")) // SS220 EDIT ADDICTION
 	to_chat(src, SPAN_INFO("Нажмите «Shift» и кликните по компасу, чтобы наблюдать за меткой. Нажмите «Alt» и кликните по компасу, чтобы прекратить наблюдение."))
 
-/mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
+/mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldn't be nulled outside this PROC!! >:C
 	if(QDELETED(src))
 		return
 

@@ -269,6 +269,9 @@
 		update_icon()
 		looping = TRUE
 
+/obj/structure/machinery/power/power_generator/reactor/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/machinery/power/power_generator/reactor/attackby(obj/item/attacking_item, mob/user)
 	//Fuel Cells
 	if(user.action_busy)

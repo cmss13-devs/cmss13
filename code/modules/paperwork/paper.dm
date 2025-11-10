@@ -931,7 +931,7 @@
 	picked_property = pick(PROPERTY_LEGENDARY_LIST)
 	hint = GLOB.combining_properties[picked_property]
 	if(length(hint) < LEGENDARY_COMBINE_PROPERTIES)
-		return INITIALIZE_HINT_QDEL //shouldnt happen, will happen.
+		return INITIALIZE_HINT_QDEL //shouldn't happen, will happen.
 
 
 /obj/item/paper/research_notes/grant

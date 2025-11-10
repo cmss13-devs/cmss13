@@ -192,10 +192,10 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		if(!opened && wiresexposed)
-			ui = new(user, src, "Wires", "[name] Wires")
+			ui = new(user, src, "Wires", "[capitalize(name)] Wires")
 			ui.open()
 		else
-			ui = new(user, src, "Apc", name)
+			ui = new(user, src, "Apc", capitalize(name))
 			ui.open()
 
 /obj/structure/machinery/power/apc/ui_status(mob/user)
@@ -264,7 +264,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			"cut" = isWireCut(wire),
 		)))
 	data["wires"] = payload
-	data["proper_name"] = name
+	data["proper_name"] = capitalize(name)
 
 	return data
 
@@ -345,7 +345,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	msg_admin_niche("[capitalize(user.declent_ru(NOMINATIVE))] turned [operating ? "on" : "off"] \the [src] in [AREACOORD(src)] [ADMIN_JMP(loc)].")
 	update_icon()
 
-// the very fact that i have to override this screams to me that apcs shouldnt be under machinery - spookydonut
+// the very fact that i have to override this screams to me that apcs shouldn't be under machinery - spookydonut
 /obj/structure/machinery/power/apc/power_change()
 	update_icon()
 	return

@@ -123,10 +123,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/predator_mask_material = "ebony"
 	var/predator_greave_material = "ebony"
 	var/predator_caster_material = "ebony"
+	var/predator_bracer_material = "ebony"
 	var/predator_cape_color = "#654321"
 	var/predator_flavor_text = ""
 	//CO-specific preferences
-	var/commander_sidearm = "Unica"
+	var/commander_sidearm = "Unica (camo comforting)"
 	var/co_career_path = "Infantry"
 	var/affiliation = "Unaligned"
 	//SEA specific preferences
@@ -1363,10 +1364,15 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						return
 					predator_greave_material = new_pred_greave_mat
 				if("pred_caster_mat")
-					var/new_pred_caster_mat = tgui_input_list(user, "Choose your caster material:", "Caster Material", PRED_MATERIALS + "retro")
+					var/new_pred_caster_mat = tgui_input_list(user, "Choose your caster material:", "Caster Material", PRED_RETRO_MATERIALS)
 					if(!new_pred_caster_mat)
 						return
 					predator_caster_material = new_pred_caster_mat
+				if("pred_bracer_mat")
+					var/new_pred_bracer_mat = tgui_input_list(user, "Choose your bracer material:", "Bracer Material", PRED_RETRO_MATERIALS)
+					if(!new_pred_bracer_mat)
+						return
+					predator_bracer_material = new_pred_bracer_mat
 				if("pred_cape_color")
 					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color", predator_cape_color) as color|null
 					if(!new_cape_color)

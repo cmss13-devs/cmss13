@@ -1032,7 +1032,7 @@
 
 	return TRUE
 
-/mob/living/carbon/xenomorph/proc/can_bombard_turf(atom/target, range = 5, atom/bombard_source) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
+/mob/living/carbon/xenomorph/proc/can_bombard_turf(atom/target, range = 5, atom/bombard_source) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
 	if(!bombard_source || !isturf(bombard_source.loc))
 		to_chat(src, SPAN_XENODANGER("Эта область заблокирована!"))
 		return FALSE
@@ -1086,9 +1086,15 @@
 		return FALSE
 
 	if(stabbing_xeno.z != targetted_atom.z)
-		return
+		var/turf/xeno_turf = get_turf(stabbing_xeno)
+		var/turf/xeno_turf_above = SSmapping.get_turf_above(xeno_turf)
+		var/turf/xeno_turf_below = SSmapping.get_turf_below(xeno_turf)
+		if(xeno_turf_above?.z != targetted_atom.z && xeno_turf_below?.z != targetted_atom.z)
+			return
 
 	var/distance = get_dist(stabbing_xeno, targetted_atom)
+	if(stabbing_xeno.z != targetted_atom.z)
+		distance++
 	if(distance > stab_range)
 		return FALSE
 

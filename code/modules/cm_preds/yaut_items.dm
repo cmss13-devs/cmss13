@@ -509,7 +509,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	unacidable = TRUE
 	///List of where they can choose to go to
 	var/static/list/potential_hunting_grounds = list()
-	///If one has already been spawned, dont let more be spawned
+	///If one has already been spawned, don't let more be spawned
 	var/static/hunting_ground_activated = FALSE
 
 /obj/structure/machinery/hunting_ground_selection/Initialize(mapload, ...)

@@ -409,8 +409,8 @@
 		if(apc_in_area.current_area != current_area)
 			LAZYREMOVE(apc_in_area.connected_power_sources, src)
 			apc_in_area = null
-		else
-			return
+		else if(current_area.requires_power)
+			return // In the off chance somehow theres an APC where power isn't required it wouldn't handle gens
 	else
 		apc_in_area = current_area.get_apc()
 		if(apc_in_area)

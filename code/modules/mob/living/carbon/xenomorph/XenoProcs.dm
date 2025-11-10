@@ -367,6 +367,8 @@
 		var/obj/vehicle/multitile/tank/T = L.tank_on_top_of
 		src.forceMove(get_turf(L))
 		T.mark_on_top(src)
+	else if(src.tank_on_top_of)
+		src.tank_on_top_of.clear_on_top(src)
 
 	if(pounceAction.slash)
 		M.attack_alien(src, pounceAction.slash_bonus_damage)
@@ -391,12 +393,15 @@
 	var/obj/vehicle/multitile/tank/T = null
 	if(istype(O, /obj/vehicle/multitile/tank))
 		T = O
-	if(T)
-		var/turf/current = get_turf(src)
-		var/turf/facing = get_step(current, dir)
-		if(facing && (facing in T.locs))
-			forceMove(facing)
-			T.mark_on_top(src)
+		if(T)
+			var/turf/current = get_turf(src)
+			var/turf/facing = get_step(current, dir)
+			if(facing && (facing in T.locs))
+				forceMove(facing)
+				T.mark_on_top(src)
+	else if(src.tank_on_top_of)
+		if(!(locate(/obj/vehicle/multitile/tank) in get_turf(src)))
+			src.tank_on_top_of.clear_on_top(src) // if we're not atop the tank still, clear us from it.
 
 	if (pounceAction.should_destroy_objects)
 		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))

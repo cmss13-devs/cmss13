@@ -214,7 +214,15 @@
 		sleep(delay)
 
 	//done throwing, either because it hit something or it finished moving
-	src.layer = initial(src.layer)
+	// prevents xeno pounces from layering under the tank, as well as other species with pounces.
+	if (isliving(src))
+		var/mob/living/L = src
+		L.update_layer()
+		if(L.tank_on_top_of)
+			if(!(locate(/obj/vehicle/multitile/tank) in get_turf(L)))
+				L.tank_on_top_of.clear_on_top(L) // if we're not atop the tank still, clear us from it.
+	else
+		src.layer = initial(src.layer)
 	if ((isobj(src) || ismob(src)) && throwing && !early_exit)
 		var/turf/T = get_turf(src)
 		if(!istype(T))

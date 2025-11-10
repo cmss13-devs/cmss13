@@ -720,11 +720,20 @@
 /mob/living/proc/update_layer()
 	//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
 	if(pulledby && pulledby.grab_level == GRAB_CARRY)
-		layer = ABOVE_MOB_LAYER
-	else if (body_position == LYING_DOWN && stat == DEAD && !is_on_tank_hull())
-		layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
+		if(is_on_tank_hull())
+			layer = TANK_ABOVE_RIDER_LAYER
+		else
+			layer = ABOVE_MOB_LAYER
+	else if (body_position == LYING_DOWN && stat == DEAD)
+		if(is_on_tank_hull())
+			layer = TANK_BELOW_RIDER_LAYER
+		else
+			layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
 	else if(body_position == LYING_DOWN && layer == initial(layer)) //to avoid things like hiding larvas. //i have no idea what this means
-		layer = LYING_LIVING_MOB_LAYER
+		if(is_on_tank_hull())
+			layer = TANK_LYING_RIDER_LAYER
+		else
+			layer = LYING_LIVING_MOB_LAYER
 
 /// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.
 /mob/living/proc/on_fall()

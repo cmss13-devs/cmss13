@@ -13,17 +13,21 @@
 
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
 	RegisterSignal(target, COMSIG_XENO_REVIVED_FROM_CRIT, PROC_REF(clear_trail))
+	RegisterSignal(target, COMSIG_MOB_STAT_SET_DEAD, PROC_REF(clear_trail))
 
 /datum/element/blood_trail/Detach(datum/target, force)
 	UnregisterSignal(target, list(
 		COMSIG_MOVABLE_MOVED,
-		COMSIG_XENO_REVIVED_FROM_CRIT
+		COMSIG_XENO_REVIVED_FROM_CRIT,
+		COMSIG_MOB_STAT_SET_DEAD
 	))
 
 	return ..()
 
 /datum/element/blood_trail/proc/on_moved(mob/living/carbon/target, oldLoc, direction)
 	SIGNAL_HANDLER
+	if(HAS_TRAIT(target, TRAIT_HAULED) || HAS_TRAIT(target, TRAIT_CARRIED)  || HAS_TRAIT_FROM(target,  TRAIT_IMMOBILIZED, BUCKLED_TRAIT))
+		return
 	INVOKE_ASYNC(src, PROC_REF(add_tracks), target, oldLoc, direction)
 
 /datum/element/blood_trail/proc/add_tracks(mob/living/carbon/target, oldLoc, direction)

@@ -223,6 +223,7 @@
 
 	if(pulling)
 		REMOVE_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
+		REMOVE_TRAIT(pulling, TRAIT_CARRIED, TRAIT_SOURCE_CARRY)
 		var/mob/M = pulling
 		pulling.pulledby = null
 		pulling = null

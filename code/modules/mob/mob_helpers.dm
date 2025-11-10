@@ -209,7 +209,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 /// The min length of a message before ANNOUNCEMENT_CLARITY_MIN
 #define ANNOUNCEMENT_CLARITY_MAX_BOUND 200
 /// The max length of a message for ANNOUNCEMENT_CLARITY_MAX
-#define ANNOUNCEMENT_CLARITY_MIN_BOUND 10
+#define ANNOUNCEMENT_CLARITY_MIN_BOUND 50
 /// The clarity percent for messages >= ANNOUNCEMENT_CLARITY_MAX_BOUND
 #define ANNOUNCEMENT_CLARITY_MIN 40
 /// The clarity percent for messages <= ANNOUNCEMENT_CLARITY_MIN_BOUND

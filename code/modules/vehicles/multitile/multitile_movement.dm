@@ -178,7 +178,7 @@
 
 		// any other tile-blocking items that weren't caught by !T.Enter
 		for(var/atom/A in T)
-			if(blocking_structures[A.type])
+			if(is_blocking_structure(A))
 				can_move = FALSE
 				break
 

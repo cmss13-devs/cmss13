@@ -218,7 +218,7 @@ There are several things that need to be remembered:
 			facial_s.layer = -FACIAL_LAYER
 			if(facial_hair_style.do_coloration)
 				facial_s.color = list(null, null, null, null, rgb(r_facial, g_facial, b_facial))
-			if(blocks_emissive != EMISSIVE_BLOCK_NONE)
+			if(head_organ.blocks_emissive != EMISSIVE_BLOCK_NONE)
 				facial_s.overlays += emissive_blocker(facial_s.icon, facial_s.icon_state, alpha = facial_s.alpha)
 			overlays_standing[FACIAL_LAYER] = facial_s
 			apply_overlay(FACIAL_LAYER)
@@ -244,7 +244,7 @@ There are several things that need to be remembered:
 					overlays_standing[HAIR_GRADIENT_LAYER] = gradient_overlay
 					apply_overlay(HAIR_GRADIENT_LAYER)
 
-			if(blocks_emissive != EMISSIVE_BLOCK_NONE)
+			if(head_organ.blocks_emissive != EMISSIVE_BLOCK_NONE)
 				hair_s.overlays += emissive_blocker(hair_s.icon, hair_s.icon_state, alpha = hair_s.alpha)
 			overlays_standing[HAIR_LAYER] = hair_s
 			apply_overlay(HAIR_LAYER)

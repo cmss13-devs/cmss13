@@ -530,6 +530,17 @@
 	playsound(V, 'sound/effects/metal_crash.ogg', 35)
 	return FALSE
 
+// legacy cargo train gets ran over and crushed without a fuss by medium and heavy vehicles
+/obj/vehicle/train/cargo/handle_vehicle_bump(obj/vehicle/multitile/V)
+	if(V.vehicle_flags & VEHICLE_CLASS_MEDIUM || V.vehicle_flags & VEHICLE_CLASS_HEAVY)
+		health = 0
+		healthcheck()
+
+		visible_message(SPAN_DANGER("\The [V] crushes into \the [src]!"))
+		playsound(V, 'sound/effects/metal_crash.ogg', 35)
+		return TRUE
+	. = ..()
+
 //-----------------------------------------------------------
 //-------------------------MOBS------------------------------
 //-----------------------------------------------------------

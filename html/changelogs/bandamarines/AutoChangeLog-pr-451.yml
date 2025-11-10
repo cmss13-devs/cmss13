@@ -1,4 +1,0 @@
-author: "larentoun"
-delete-after: True
-changes:
-  - bugfix: "Теперь корректно отображается, кто бьет кого в ближнем бою."

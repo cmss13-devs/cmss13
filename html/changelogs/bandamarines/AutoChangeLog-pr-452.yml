@@ -1,4 +1,0 @@
-author: "larentoun"
-delete-after: True
-changes:
-  - refactor: "Переименование ручкой и лейблером теперь работает лучше."

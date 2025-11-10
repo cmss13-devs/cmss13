@@ -177,8 +177,8 @@
 /datum/behavior_delegate/base_reaper
 	name = "Base Reaper Behavior Delegate"
 
-	var/flesh_plasma_slash = 5 /// How much flesh plasma is generated on a slash
-	var/flesh_plasma_kill = 20 /// How much flesh plasma is generated on a kill
+	var/flesh_plasma_slash = 3 /// How much flesh plasma is generated on a slash
+	var/flesh_plasma_kill = 15 /// How much flesh plasma is generated on a kill
 
 /datum/behavior_delegate/base_reaper/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
 	var/mob/living/carbon/xenomorph/reaper/reaper = bound_xeno

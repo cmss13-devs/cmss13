@@ -465,6 +465,11 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	matter = list("plastic" = 5000, "metal" = 5000)
 
 /obj/item/roller/medevac/deploy_roller(mob/user, atom/location)
+	if(isliving(user))
+		var/mob/living/L = user
+		if(L.is_on_tank_hull())
+			to_chat(user, SPAN_WARNING("You can't set up \the [src] here."))
+			return
 	var/obj/structure/bed/medevac_stretcher/medevac_stretcher = new rollertype(location)
 	medevac_stretcher.add_fingerprint(user)
 	user.temp_drop_inv_item(src)

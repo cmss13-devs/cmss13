@@ -114,7 +114,7 @@
 
 	return XENO_ATTACK_ACTION
 
-/obj/structure/mortar/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/mortar/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || fixed || firing)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -122,6 +122,7 @@
 	SPAN_DANGER("We smash [src] with our tail knocking it over!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	var/obj/item/mortar_kit/kit = new /obj/item/mortar_kit(loc)
 	kit.name = name
+	xeno.tail_stab_animation(src, blunt_stab)
 	qdel(src)
 	return TAILSTAB_COOLDOWN_NORMAL
 

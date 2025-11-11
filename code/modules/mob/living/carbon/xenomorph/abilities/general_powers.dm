@@ -1092,7 +1092,7 @@
 
 		var/atom/barrier = path_turf.handle_barriers(stabbing_xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
 		if(barrier != path_turf)
-			var/tail_stab_cooldown_multiplier = barrier.handle_tail_stab(stabbing_xeno)
+			var/tail_stab_cooldown_multiplier = barrier.handle_tail_stab(stabbing_xeno, blunt_stab)
 			if(!tail_stab_cooldown_multiplier)
 				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
 			else
@@ -1100,7 +1100,7 @@
 				xeno_attack_delay(stabbing_xeno)
 			return FALSE
 
-	var/tail_stab_cooldown_multiplier = targetted_atom.handle_tail_stab(stabbing_xeno)
+	var/tail_stab_cooldown_multiplier = targetted_atom.handle_tail_stab(stabbing_xeno, blunt_stab)
 	if(tail_stab_cooldown_multiplier)
 		stabbing_xeno.animation_attack_on(targetted_atom)
 		apply_cooldown(cooldown_modifier = tail_stab_cooldown_multiplier)
@@ -1140,14 +1140,33 @@
 /datum/action/xeno_action/activable/tail_stab/proc/pre_ability_act(mob/living/carbon/xenomorph/stabbing_xeno, atom/targetted_atom)
 	return
 
+// This proc plays a tail stab 'animation' by changing the xenomorph's direction, and resets the xenomorph's direction after a short delay.
+/mob/living/carbon/xenomorph/proc/tail_stab_animation(target, blunt = FALSE)
+	// This is the direction the xenomorph is reset to afterwards.
+	var/last_dir = dir
+	/// Direction var to make the tail stab look cool and immersive.
+	var/stab_direction
+
+	if(blunt)
+		// The xeno smashes the target with their tail, moving it to the side and thus their direction as well.
+		stab_direction = turn(dir, pick(90, -90))
+	else
+		// The xeno flips around for a second to impale the target with their tail. These look awsome.
+		stab_direction = turn(get_dir(src, target), 180)
+
+	if(last_dir != stab_direction)
+		setDir(stab_direction)
+		emote("tail")
+		addtimer(CALLBACK(src, PROC_REF(reset_direction), src, last_dir, dir), 0.5 SECONDS)
+
+// Reset the xenomorph's direction after the tail stab 'animation', unless they've moved since then
+/mob/living/carbon/xenomorph/proc/reset_direction(mob/living/carbon/xenomorph/stabbing_xeno, last_dir, new_dir)
+	if(new_dir == dir)
+		setDir(last_dir)
+
 /datum/action/xeno_action/activable/tail_stab/proc/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
-
-	/// To reset the direction if they haven't moved since then in below callback.
-	var/last_dir = stabbing_xeno.dir
-	/// Direction var to make the tail stab look cool and immersive.
-	var/stab_direction
 
 	var/stab_overlay
 
@@ -1157,26 +1176,16 @@
 			playsound(target, 'sound/effects/comical_bonk.ogg', 50, TRUE)
 		else
 			playsound(target, "punch", 50, TRUE)
-		// The xeno smashes the target with their tail, moving it to the side and thus their direction as well.
-		stab_direction = turn(stabbing_xeno.dir, pick(90, -90))
 		stab_overlay = "slam"
 	else
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its razor sharp tail!"), SPAN_XENOWARNING("We skewer [target] through the [limb? limb.display_name : "chest"] with our razor sharp tail!"))
 		playsound(target, "alien_bite", 50, TRUE)
-		// The xeno flips around for a second to impale the target with their tail. These look awsome.
-		stab_direction = turn(get_dir(stabbing_xeno, target), 180)
 		stab_overlay = "tail"
 	log_attack("[key_name(stabbing_xeno)] tailstabbed [key_name(target)] at [get_area_name(stabbing_xeno)]")
 	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was tailstabbed by [key_name(stabbing_xeno)]</font>")
 	stabbing_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>tailstabbed [key_name(target)]</font>")
 
-	if(last_dir != stab_direction)
-		stabbing_xeno.setDir(stab_direction)
-		stabbing_xeno.emote("tail")
-		/// Ditto.
-		var/new_dir = stabbing_xeno.dir
-		addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
-
+	stabbing_xeno.tail_stab_animation(target, blunt_stab)
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
 
@@ -1197,7 +1206,3 @@
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
 	return target
 
-/datum/action/xeno_action/activable/tail_stab/proc/reset_direction(mob/living/carbon/xenomorph/stabbing_xeno, last_dir, new_dir)
-	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
-	if(new_dir == stabbing_xeno.dir)
-		stabbing_xeno.setDir(last_dir)

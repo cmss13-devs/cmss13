@@ -91,7 +91,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/atom, attack_hand), M)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/machinery/nuclearbomb/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/nuclearbomb/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)

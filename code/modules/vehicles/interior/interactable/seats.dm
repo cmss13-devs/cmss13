@@ -131,7 +131,7 @@
 		manual_unbuckle(user)
 		return
 
-/obj/structure/bed/chair/comfy/vehicle/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/bed/chair/comfy/vehicle/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(!buckled_mob)
 		return TAILSTAB_COOLDOWN_NONE
 	manual_unbuckle(xeno)
@@ -413,7 +413,7 @@
 		else
 			deconstruct(FALSE)
 
-/obj/structure/bed/chair/vehicle/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/bed/chair/vehicle/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -423,6 +423,7 @@
 		break_seat()
 	else
 		deconstruct(FALSE)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/bed/chair/vehicle/attackby(obj/item/W, mob/living/user)

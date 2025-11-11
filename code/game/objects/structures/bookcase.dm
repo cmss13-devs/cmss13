@@ -25,7 +25,7 @@
 		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 
-/obj/structure/bookcase/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/bookcase/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)

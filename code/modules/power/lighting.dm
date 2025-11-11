@@ -168,7 +168,7 @@
 /obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
-/obj/structure/machinery/light/containment/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/light/containment/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/light/blue
@@ -644,11 +644,12 @@
 		sleep(1)
 		qdel(src)
 
-/obj/structure/machinery/light/handle_tail_stab(mob/living/carbon/xenomorph/stabbing_xeno)
+/obj/structure/machinery/light/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(is_broken())
-		to_chat(stabbing_xeno, SPAN_WARNING("\The [src] is already broken!"))
+		to_chat(xeno, SPAN_WARNING("\The [src] is already broken!"))
 		return
-	stabbing_xeno.visible_message(SPAN_DANGER("\The [stabbing_xeno] smashes \the [src] with its tail!"), SPAN_DANGER("You smash \the [src] with your tail!"), null, 5)
+	xeno.visible_message(SPAN_DANGER("\The [xeno] smashes \the [src] with its tail!"), SPAN_DANGER("You smash \the [src] with your tail!"), null, 5)
+	xeno.tail_stab_animation(src, blunt_stab)
 	broken() //Smashola!
 	return TAILSTAB_COOLDOWN_VERY_LOW
 

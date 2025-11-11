@@ -81,12 +81,6 @@
 		list("Autoinjector (Tramadol)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/tramadol, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tricordrazine)", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
 
-		list("REAGENT POUCH AUTOINJECTORS", -1, null, null),
-		list("5u Reagent Pouch Autoinjector", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall, VENDOR_ITEM_REGULAR),
-		list("10u Reagent Pouch Autoinjector", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/small, VENDOR_ITEM_REGULAR),
-		list("15u Reagent Pouch Autoinjector", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic, VENDOR_ITEM_REGULAR),
-		list("30u Reagent Pouch Autoinjector", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large, VENDOR_ITEM_REGULAR),
-
 		list("MEDICAL UTILITIES", -1, null, null),
 		list("Surgical Line", floor(scale * 2), /obj/item/tool/surgery/surgical_line, VENDOR_ITEM_REGULAR),
 		list("Synth-Graft", floor(scale * 2), /obj/item/tool/surgery/synthgraft, VENDOR_ITEM_REGULAR),

@@ -307,7 +307,7 @@
 					var/created_volume = reaction.result_amount*multiplier
 
 					if(reaction.result)
-						multiplier = max(multiplier, 1) //this shouldnt happen ...
+						multiplier = max(multiplier, 1) //this shouldn't happen ...
 						set_data(reaction.result, preserved_data)
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_CALM) && !CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_ENDOTHERMIC)) //mix the chemicals
 						if(endothermic_reaction_occuring)
@@ -751,7 +751,7 @@
 				shards += floor(reagent.volume)
 			else if(reagent.id == "phoron" && reagent.volume >= EXPLOSION_PHORON_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
-			else if(reagent.id == "sulphuric acid" && reagent.volume >= EXPLOSION_ACID_THRESHOLD)
+			else if(reagent.id == "pacid" && reagent.volume >= EXPLOSION_ACID_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/hornet_rounds
 			else if(reagent.id == "neurotoxinplasma" && reagent.volume >= EXPLOSION_NEURO_THRESHOLD)
 				shard_type = /datum/ammo/bullet/shrapnel/neuro

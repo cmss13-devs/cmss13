@@ -96,7 +96,7 @@
 	. = ..()
 
 	. += ""
-	if(ishumansynth_strict(src)) // So that yautja or other species dont see the ships security alert
+	if(ishumansynth_strict(src)) // So that yautja or other species don't see the ships security alert
 		. += "Security Level: [uppertext(get_security_level())]"
 
 	if(species?.has_species_tab_items)
@@ -117,9 +117,6 @@
 			. += "Primary Objective: [html_decode(assigned_squad.primary_objective)]"
 		if(assigned_squad.secondary_objective)
 			. += "Secondary Objective: [html_decode(assigned_squad.secondary_objective)]"
-	if(faction == FACTION_MARINE)
-		. += ""
-		. += "<a href='byond://?MapView=1'>View Tactical Map</a>"
 	if(mobility_aura)
 		. += "Active Order: MOVE"
 	if(protection_aura)
@@ -134,7 +131,7 @@
 		if(SShijack.sd_unlocked)
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
-/mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
+/mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
@@ -262,7 +259,7 @@
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 		var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
 		var/obj/limb/affecting = get_limb(rand_zone(dam_zone))
-		apply_damage(damage, BRUTE, affecting)
+		apply_damage(damage, BRUTE, affecting, enviro=TRUE)
 
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
@@ -1076,6 +1073,16 @@
 		return
 	GLOB.crew_manifest.open_ui(src)
 
+/mob/living/carbon/human/verb/view_tacmaps()
+	set name = "View Tacmap"
+	set category = "IC"
+
+	if(faction != FACTION_MARINE && !(FACTION_MARINE in faction_group))
+		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] tactical map."))
+		return
+
+	GLOB.tacmap_viewer.tgui_interact(src)
+
 /mob/living/carbon/human/verb/view_objective_memory()
 	set name = "View intel objectives"
 	set category = "IC"
@@ -1205,30 +1212,38 @@
 	var/legs_exposed = 1
 	var/hands_exposed = 1
 	var/feet_exposed = 1
+	var/armor_on = 0
+	var/helmet_on = 0
 
 	for(var/obj/item/clothing/C in equipment)
-		if(C.flags_armor_protection & BODY_FLAG_HEAD)
+		if(C.flags_bodypart_hidden & BODY_FLAG_HEAD)
 			head_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_FACE)
+		if(C.flags_inv_hide & HIDEFACE)
 			face_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_EYES)
+		if(C.flags_inv_hide & HIDEEYES)
 			eyes_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_CHEST)
+		if(C.flags_bodypart_hidden & BODY_FLAG_CHEST)
 			torso_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_ARMS)
+		if(C.flags_bodypart_hidden & BODY_FLAG_ARMS)
 			arms_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_HANDS)
+		if(C.flags_bodypart_hidden & BODY_FLAG_HANDS)
 			hands_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_LEGS)
+		if(C.flags_bodypart_hidden & BODY_FLAG_LEGS)
 			legs_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_FEET)
+		if(C.flags_bodypart_hidden & BODY_FLAG_FEET)
 			feet_exposed = 0
+		if(istype(C, /obj/item/clothing/suit/storage/marine))
+			armor_on = 1
+		if(istype(C, /obj/item/clothing/head/helmet/marine))
+			helmet_on = 1
 
 	flavor_text = flavor_texts["general"]
 	flavor_text += "\n\n"
 	for(var/T in flavor_texts)
 		if(flavor_texts[T] && flavor_texts[T] != "")
-			if((T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed))
+			if((T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed) || (T == "armor" && armor_on) || (T == "helmet" && helmet_on))
+				flavor_text += "[capitalize(T)]: "
+				flavor_text += "\n\n"
 				flavor_text += flavor_texts[T]
 				flavor_text += "\n\n"
 
@@ -1379,17 +1394,15 @@
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_UPDATE_SIGHT) & COMPONENT_OVERRIDE_UPDATE_SIGHT)
 		return
 
-	sight &= ~BLIND // Never have blind on by default
-
 	lighting_alpha = default_lighting_alpha
-	sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_BLACKNESS)
+	sight &= ~(SEE_MOBS|SEE_OBJS|BLIND)
+
 	see_in_dark = species.darksight
 	sight |= species.flags_sight
-	if(glasses)
-		process_glasses(glasses)
 
-	if(!(sight & SEE_TURFS) && !(sight & SEE_MOBS) && !(sight & SEE_OBJS))
-		sight |= SEE_BLACKNESS
+	process_glasses(glasses)
+
+	sight |= (SEE_BLACKNESS|SEE_TURFS)
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_POST_UPDATE_SIGHT)
 	sync_lighting_plane_alpha()
@@ -1740,6 +1753,9 @@
 	HTML += "<a href='byond://?src=\ref[src];flavor_change=feet'>Feet:</a> "
 	HTML += TextPreview(flavor_texts["feet"])
 	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=armor'>Armor:</a> "
+	HTML += TextPreview(flavor_texts["armor"])
+	HTML += "<br>"
 	HTML += "<hr />"
 	HTML +="<a href='byond://?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
@@ -1752,6 +1768,13 @@
 			to_chat(src, SPAN_DANGER("You are currently unable to throw harmful items."))
 			return
 	. = ..()
+
+/mob/living/carbon/human/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
+	var/turf/above = SSmapping.get_turf_above(thrower)
+	if(above && above.z == target.z)
+		to_chat(thrower, SPAN_WARNING("You can't throw someone that high!"))
+		return
+	..()
 
 /mob/living/carbon/human/equip_to_slot_if_possible(obj/item/equipping_item, slot, ignore_delay = 1, del_on_fail = 0, disable_warning = 0, redraw_mob = 1, permanent = 0)
 
@@ -1848,5 +1871,4 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
-
 

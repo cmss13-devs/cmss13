@@ -234,26 +234,26 @@
 	M.apply_damage(0.5 * potency * delta_time, BRAIN)
 	M.apply_effect(20, PARALYZE)
 
-/datum/chem_property/neutral/relaxing
-	name = PROPERTY_RELAXING
-	code = "RLX"
-	description = "Has a sedative effect on neuromuscular junctions depressing the force of muscle contractions. High concentrations can cause respiratory failure and cardiac arrest."
+/datum/chem_property/neutral/antispasmodic
+	name = PROPERTY_ANTISPASMODIC
+	code = "ASP"
+	description = "Relaxes smooth muscles and treats muscle spasms by blocking the neurotransmitter acetylcholine. High concentrations can cause respiratory failure and cardiac arrest."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
-/datum/chem_property/neutral/relaxing/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/antispasmodic/process(mob/living/M, potency = 1, delta_time)
 	M.reagent_move_delay_modifier += potency
 	if(prob(5 * delta_time))
 		M.emote("yawn")
 	M.recalculate_move_delay = TRUE
 
-/datum/chem_property/neutral/relaxing/process_overdose(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/antispasmodic/process_overdose(mob/living/M, potency = 1, delta_time)
 	//heart beats slower
 	M.reagent_move_delay_modifier += POTENCY_MULTIPLIER_MEDIUM * potency
 	if(prob(10))
 		to_chat(M, SPAN_WARNING("You feel incredibly weak!"))
 
-/datum/chem_property/neutral/relaxing/process_critical(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/antispasmodic/process_critical(mob/living/M, potency = 1, delta_time)
 	//heart stops beating, lungs stop working
 	if(prob(7.5 * potency * delta_time))
 		M.apply_effect(potency, PARALYZE)
@@ -335,16 +335,16 @@
 /datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(20, PARALYZE)
 
-/datum/chem_property/neutral/balding
-	name = PROPERTY_BALDING
-	code = "BLD"
-	description = "Damages the hair follicles in the skin causing extreme alopecia, also refered to as baldness."
+/datum/chem_property/neutral/atrichogenic
+	name = PROPERTY_ATRICHOGENIC
+	code = "ATR"
+	description = "Damages the hair follicles in the skin to disrupt the hair growth cycle, causing extreme alopecia, also referred to as baldness."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
 	max_level = 2
 
-/datum/chem_property/neutral/balding/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/atrichogenic/process(mob/living/M, potency = 1, delta_time)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if((H.h_style != "Bald" || H.f_style != "Shaved"))
@@ -353,21 +353,21 @@
 			H.f_style = "Shaved"
 			H.update_hair()
 
-/datum/chem_property/neutral/balding/process_overdose(mob/living/M, potency = 1)
+/datum/chem_property/neutral/atrichogenic/process_overdose(mob/living/M, potency = 1)
 	M.adjustCloneLoss(POTENCY_MULTIPLIER_LOW * potency)
 
-/datum/chem_property/neutral/balding/process_critical(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/atrichogenic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.adjustCloneLoss(0.5 * potency * delta_time)
 
-/datum/chem_property/neutral/fluffing
-	name = PROPERTY_FLUFFING
-	code = "FLF"
-	description = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth. Found to increase yeilds in plants."
+/datum/chem_property/neutral/trichogenic
+	name = PROPERTY_TRICHOGENIC
+	code = "TRI"
+	description = "Accelerates cell division in the hair follicles resulting in random and excessive hair growth. Found to increase yields in plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
 
-/datum/chem_property/neutral/fluffing/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/trichogenic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(2.5 * potency * delta_time) && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.h_style = "Bald"
@@ -378,16 +378,16 @@
 		H.update_hair()
 		to_chat(M, SPAN_NOTICE("Your head feels different..."))
 
-/datum/chem_property/neutral/fluffing/process_overdose(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/trichogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(prob(2.5 * potency * delta_time))
 		to_chat(M, SPAN_WARNING("You feel itchy all over!"))
 		M.take_limb_damage(potency) //Hair growing inside your body
 
-/datum/chem_property/neutral/fluffing/process_critical(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/trichogenic/process_critical(mob/living/M, potency = 1, delta_time)
 	to_chat(M, SPAN_WARNING("You feel like something is penetrating your skull!"))
 	M.apply_damage(0.5 * potency * delta_time, BRAIN) //Hair growing into brain
 
-/datum/chem_property/neutral/fluffing/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+/datum/chem_property/neutral/trichogenic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
 	if(!processing_tray.seed)
 		return
@@ -503,7 +503,7 @@
 /datum/chem_property/neutral/antihallucinogenic
 	name = PROPERTY_ANTIHALLUCINOGENIC
 	code = "AHL"
-	description = "Stabilizes perseptive abnormalities such as hallucinations caused by mindbreaker toxin."
+	description = "Stabilizes perceptive abnormalities such as hallucinations caused by mindbreaker toxin."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
@@ -542,14 +542,14 @@
 		return
 	processing_tray.metabolism_adjust += clamp(20*potency, 0, 130)
 
-/datum/chem_property/neutral/sedative
-	name = PROPERTY_SEDATIVE
-	code = "SDT"
+/datum/chem_property/neutral/hypnotic
+	name = PROPERTY_HYPNOTIC
+	code = "HYP"
 	description = "Causes the body to release melatonin resulting in increased sleepiness."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 
-/datum/chem_property/neutral/sedative/process(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/hypnotic/process(mob/living/M, potency = 1, delta_time)
 	if(M.confused < 25 && M.sleeping < 20)
 		M.confused += POTENCY_MULTIPLIER_MEDIUM * potency
 	if(M.confused > 25)
@@ -558,10 +558,10 @@
 	else if(prob(25))
 		M.emote("yawn")
 
-/datum/chem_property/neutral/sedative/process_overdose(mob/living/M, potency = 1, delta_time)
+/datum/chem_property/neutral/hypnotic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.adjust_effect(0.5 * potency * delta_time, PARALYZE)
 
-/datum/chem_property/neutral/sedative/process_critical(mob/living/M, potency = 1)
+/datum/chem_property/neutral/hypnotic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
 
 /datum/chem_property/neutral/hyperthrottling

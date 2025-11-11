@@ -9,6 +9,7 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_FRENCH, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_TSL) //Synths after all.
 	skills = /datum/skills/everything //They are Synths, programmed for Everything.
 	minimap_icon = "whiteout"
+	minimap_background = "background_mp"
 	idtype = /obj/item/card/id/pmc/ds
 	paygrades = list(PAY_SHORT_CDNM = JOB_PLAYTIME_TIER_0)
 	var/new_bubble_icon = "machine"
@@ -30,9 +31,9 @@
 	new_human.gender = pick(MALE)
 	var/random_name
 	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.greek_letters)]"
+		random_name = capitalize(pick(GLOB.greek_letters))
 	else
-		random_name = "[pick(GLOB.greek_letters)]"
+		random_name = capitalize(pick(GLOB.greek_letters))
 	new_human.change_real_name(new_human, random_name)
 	new_human.bubble_icon = new_bubble_icon
 	new_human.age = rand(3, 5)

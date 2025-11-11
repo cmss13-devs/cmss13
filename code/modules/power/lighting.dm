@@ -142,12 +142,12 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 20
-	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they don't need to be in the machine list
 	light_system = STATIC_LIGHT
 	light_color = LIGHT_COLOR_TUNGSTEN
 	var/on = 0 // 1 if on, 0 if off
 	var/on_gs = 0
-	var/brightness = 6 // luminosity when on, also used in power calculation
+	var/brightness = 8 // luminosity when on, also used in power calculation
 	var/status = LIGHT_OK // LIGHT_OK, _EMPTY, _BURNED or _BROKEN
 	var/flickering = 0
 	var/light_type = /obj/item/light_bulb/tube // the type of light item
@@ -168,6 +168,9 @@
 /obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
+/obj/structure/machinery/light/containment/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/machinery/light/blue
 	icon_state = "btube1"
 	base_state = "btube"
@@ -178,6 +181,7 @@
 	icon_state = "rtube1"
 	base_state = "rtube"
 	desc = "A lighting fixture. Its glass covering is a bright, fluorescent red."
+	brightness = 4
 
 // the smaller bulb light fixture
 
@@ -273,11 +277,9 @@
 	. = ..()
 	switch(fitting)
 		if("tube")
-			brightness = 8
 			if(prob(2))
 				broken(1)
 		if("bulb")
-			brightness = 4
 			if(prob(5))
 				broken(1)
 
@@ -400,10 +402,10 @@
 			to_chat(user, "There is a [fitting] already inserted.")
 			return
 		else
-			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			src.add_fingerprint(user)
 			var/obj/item/light_bulb/L = W
 			if(istype(L, light_type))
+				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				status = L.status
 				to_chat(user, "You insert the [L.name].")
 				switchcount = L.switchcount
@@ -425,11 +427,7 @@
 		return
 
 	// attempt to remove light via screwdriver
-	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
-		if(status == LIGHT_EMPTY)
-			to_chat(user, "There is no [fitting] in this light.")
-			return
-
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && status != LIGHT_EMPTY)
 		to_chat(user, "You remove the light [fitting].")
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		// create a light tube/bulb item and put it in the user's hand
@@ -786,7 +784,7 @@
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 20
-	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they don't need to be in the machine list
 	unslashable = TRUE
 	unacidable = TRUE
 	light_color = LIGHT_COLOR_FLARE

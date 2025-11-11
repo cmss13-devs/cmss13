@@ -155,8 +155,6 @@
 	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
 	var/time_of_birth
 
-	var/pslash_delay = 0
-
 	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents queen evolution and deactivates dchat death messages
 
 	///Can the xeno rest and passively heal?
@@ -182,6 +180,9 @@
 
 	/// this is the resin mark that is currently being tracked by the xeno
 	var/obj/effect/alien/resin/marker/tracked_marker
+	///The type of minimap this xeno has access too
+	var/datum/action/minimap/minimap_type = /datum/action/minimap/xeno
+	var/datum/weakref/minimap_ref
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -318,6 +319,8 @@
 
 	var/icon_xeno
 	var/icon_xenonid
+	/// Stores the overlay icon for spitting/drooling when acid-based abilities are selected
+	var/acid_overlay
 
 	bubble_icon = "alien"
 
@@ -424,7 +427,7 @@
 		caste = GLOB.xeno_datum_list[caste_type]
 
 		//Fire immunity signals
-		if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
+		if (HAS_FLAG(caste.fire_immunity, FIRE_IMMUNITY_NO_DAMAGE | FIRE_IMMUNITY_NO_IGNITE | FIRE_IMMUNITY_XENO_FRENZY))
 			if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
 				RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
 
@@ -490,11 +493,11 @@
 	time_of_birth = world.time
 
 	//Minimap
-	if(z && hivenumber != XENO_HIVE_TUTORIAL)
+	if(hivenumber != XENO_HIVE_TUTORIAL)
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	//Sight
-	sight |= SEE_MOBS
+	sight |= (SEE_MOBS|SEE_BLACKNESS|SEE_TURFS)
 	see_invisible = SEE_INVISIBLE_LIVING
 	see_in_dark = 12
 
@@ -519,12 +522,27 @@
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
 
+	if(hive.hivenumber != XENO_HIVE_NORMAL)
+		remove_verb(src, /mob/living/carbon/xenomorph/verb/view_tacmaps)
+	minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
+	var/datum/action/minimap/ref = minimap_ref.resolve()
+	ref.give_to(src, ref)
+	RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
+
 	creation_time = world.time
 
 	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
+
+/mob/living/carbon/xenomorph/proc/update_minimap_see_humans()
+	var/datum/action/minimap/ref = minimap_ref.resolve()
+	ref.remove_from(src)
+
+	minimap_ref = WEAKREF(new /datum/action/minimap/xeno/see_humans)
+	ref = minimap_ref.resolve()
+	ref.give_to(src, ref)
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	SIGNAL_HANDLER
@@ -536,10 +554,16 @@
 /mob/living/carbon/xenomorph/proc/add_minimap_marker(flags)
 	if(!flags)
 		flags = get_minimap_flag_for_faction(hivenumber)
+
+	var/image/background = image('icons/ui_icons/map_blips.dmi', null, caste.minimap_background)
+	var/image/xeno = image('icons/ui_icons/map_blips.dmi', null, caste.minimap_icon)
+	background.overlays += xeno
 	if(IS_XENO_LEADER(src))
-		SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
+		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, "xenoleader")
+		background.overlays += overlay
+		SSminimaps.add_marker(src, flags, background)
 		return
-	SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon())
+	SSminimaps.add_marker(src, flags, background)
 
 /mob/living/carbon/xenomorph/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -777,13 +801,18 @@
 /mob/living/carbon/xenomorph/pull_response(mob/puller)
 	if(stat == DEAD)
 		return TRUE
+	if(legcuffed)
+		return TRUE
 	if(has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
-		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
+		if(stealth)
+			puller.apply_effect(caste.tacklestrength_min, WEAKEN)
+			return FALSE
+		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		return FALSE
 	if(issynth(puller) && (mob_size >= 4 || istype(src, /mob/living/carbon/xenomorph/warrior)))
 		var/mob/living/carbon/human/synthetic/puller_synth = puller
@@ -1087,6 +1116,11 @@
 	. = ..()
 	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !should_block_game_interaction(src))
 		handle_ghost_message()
+	if(selected_ability)
+		selected_ability.action_deselect()
+		if(selected_ability.charge_time)
+			selected_ability.stop_charging_ability()
+		set_selected_ability(null)
 
 /mob/living/carbon/xenomorph/proc/handle_ghost_message()
 	notify_ghosts("[src] ([get_strain_name()] [caste_type]) has ghosted and their body is up for grabs!", source = src)

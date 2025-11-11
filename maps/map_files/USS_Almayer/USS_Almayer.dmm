@@ -2116,9 +2116,13 @@
 /obj/structure/machinery/door/window/eastleft{
 	dir = 8
 	},
+/obj/item/book/manual/chemistry{
+	pixel_x = 4;
+	pixel_y = 0
+	},
 /obj/item/book/manual/medical_diagnostics_manual{
-	pixel_x = 6;
-	pixel_y = 3
+	pixel_x = 7;
+	pixel_y = 6
 	},
 /turf/open/floor/almayer/sterile_green2,
 /area/almayer/medical/lower_medical_medbay)
@@ -3154,6 +3158,7 @@
 	pixel_x = -4;
 	pixel_y = 6
 	},
+/obj/item/book/manual/chemistry,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
 "ahh" = (
@@ -21663,9 +21668,18 @@
 	pixel_x = -3;
 	pixel_y = 10
 	},
-/obj/item/book/manual/surgery,
-/obj/item/book/manual/chemistry,
-/obj/item/book/manual/medical_diagnostics_manual,
+/obj/item/book/manual/surgery{
+	pixel_x = 9;
+	pixel_y = -4
+	},
+/obj/item/book/manual/chemistry{
+	pixel_x = 0;
+	pixel_y = -4
+	},
+/obj/item/book/manual/medical_diagnostics_manual{
+	pixel_x = -9;
+	pixel_y = -4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
 "bcW" = (
@@ -59363,7 +59377,10 @@
 	pixel_y = 31;
 	pixel_x = -1
 	},
-/obj/structure/surface/table/almayer,
+/obj/structure/surface/table/almayer{
+	pixel_x = 0;
+	pixel_y = 0
+	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_17";
 	pixel_x = -6;

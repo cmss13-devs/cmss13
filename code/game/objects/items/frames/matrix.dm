@@ -28,10 +28,6 @@
 				if(upgrade_reagent.get_property(PROPERTY_PHOTOSENSITIVE) && !upgrade_reagent.get_property(PROPERTY_CRYSTALLIZATION))
 					var/datum/chem_property/upgrade_property = upgrade_reagent.get_property(PROPERTY_PHOTOSENSITIVE)
 					power = upgrade_property.level
-					if(power <= 3)
-						matrixcol = "#19c519"
-					else if (power >= 4)
-						matrixcol= "#7aff7a"
 					upgrade = MATRIX_NVG
 					return
 				else if (upgrade_reagent.get_property(PROPERTY_CRYSTALLIZATION))

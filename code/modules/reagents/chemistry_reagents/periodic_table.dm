@@ -31,7 +31,7 @@
 /datum/reagent/periodic_table/safe/oxygen
 	name = "Oxygen"
 	id = "oxygen"
-	description = "Chemical element of atomic number 8. It is an oxidizing agent that forms oxides with most elements and many other compounds. Dioxygen is used in cellular respiration and is nessesary to sustain organic life."
+	description = "Chemical element of atomic number 8. It is an oxidizing agent that forms oxides with most elements and many other compounds. Dioxygen is used in cellular respiration and is necessary to sustain organic life."
 	reagent_state = GAS
 	color = COLOR_GRAY
 	chemfiresupp = TRUE
@@ -57,7 +57,7 @@
 /datum/reagent/periodic_table/safe/phosphorus
 	name = "Phosphorus"
 	id = "phosphorus"
-	description = "Chemical element of atomic number 15. A highly reactive element, that is essential for life as a component of DNA, RNA and ATP. White phospherous is used in many types of tracer and incendiary munitions due to its smoke production and high flammability."
+	description = "Chemical element of atomic number 15. A highly reactive element, that is essential for life as a component of DNA, RNA and ATP. White phosphorus is used in many types of tracer and incendiary munitions due to its smoke production and high flammability."
 	reagent_state = SOLID
 	color = "#832828" // rgb: 131, 40, 40
 	chemfiresupp = TRUE
@@ -83,7 +83,7 @@
 /datum/reagent/periodic_table/safe/copper // believe it or not, humans are able to ingest copper in trace amounts
 	name = "Copper"
 	id = "copper"
-	description = "Chemical element of atomic number 29. A solfe malleable red metal with high thermal and electrical conductivity."
+	description = "Chemical element of atomic number 29. A soft, red malleable metal with high thermal and electrical conductivity."
 	color = "#6E3B08" // rgb: 110, 59, 8
 	chemfiresupp = TRUE
 	burncolor = "#78be5a"

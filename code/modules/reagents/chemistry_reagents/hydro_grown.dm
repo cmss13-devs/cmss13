@@ -29,10 +29,10 @@
 	color = "#badb9e" // rgb: 139, 166, 233
 	properties = list(PROPERTY_ANTIPARASITIC = 0.5)
 
-/datum/reagent/hydro/psoralen //cabbage, doesnt make sense but eh
+/datum/reagent/hydro/psoralen //cabbage, doesn't make sense but eh
 	name = "Psoralen"
 	id = "psoralen"
-	description = "Naturally occuring carcinogenic, used commonly as mutagen for DNA research."
+	description = "Naturally occurring  carcinogenic, used commonly as mutagen for DNA research."
 	color = "#c9ca75" // rgb: 139, 166, 233
 	properties = list(PROPERTY_CARCINOGENIC = 6)
 
@@ -43,7 +43,7 @@
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	color = "#8f947b" // rgb: 139, 166, 233
-	properties = list(PROPERTY_SEDATIVE = 5)
+	properties = list(PROPERTY_HYPNOTIC = 5)
 
 /datum/reagent/hydro/zygacine
 	name = "Zygacine"
@@ -61,12 +61,12 @@
 	overdose = LOWM_REAGENTS_OVERDOSE
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	color = "#9ec265" // rgb: 139, 166, 233
-	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_FLUFFING = 1)
+	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_TRICHOGENIC = 1)
 
 /datum/reagent/hydro/urishiol
 	name = "Urishiol"
 	id = "urishiol"
-	description = "Potent skin and tissue irratant causing burns which lasts weeks after the contact is made, commonly encountered in plants like Poision Ivy, Poison Oak, and simular"
+	description = "Potent skin and tissue irritant causing burns which lasts weeks after the contact is made, commonly encountered in plants like Poison Ivy, Poison Oak, and similar toxicodendrons."
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	custom_metabolism = AMOUNT_PER_TIME(15, 20 MINUTES)

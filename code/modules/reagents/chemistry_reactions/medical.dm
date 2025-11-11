@@ -9,8 +9,8 @@
 
 /datum/chemical_reaction/adrenaline
 	name = "Epinephrine"
-	id = "adrenaline"
-	result = "adrenaline"
+	id = "epinephrine"
+	result = "epinephrine"
 	required_reagents = list("carbon" = 1, "nitrogen" = 1, "oxygen" = 1)
 	result_amount = 2
 

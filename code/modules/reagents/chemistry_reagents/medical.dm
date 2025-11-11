@@ -275,7 +275,7 @@
 
 /datum/reagent/medical/adrenaline
 	name = "Epinephrine"
-	id = "adrenaline"
+	id = "epinephrine"
 	description = "Known commonly as the natural muscle and heart stimulant 'adrenaline,' low doses of this medication help restart the heart after defibrillation. It also acts as a mild painkiller. Overdosing on epinephrine will stress the heart and cause tissue damage."
 	reagent_state = LIQUID
 	color = "#FFF0B9"  // rgb: 255, 240, 185

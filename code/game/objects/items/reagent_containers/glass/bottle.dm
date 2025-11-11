@@ -410,5 +410,5 @@
 
 /obj/item/reagent_container/glass/bottle/epinephrine/Initialize()
 	. = ..()
-	reagents.add_reagent("adrenaline", 60)
+	reagents.add_reagent("epinephrine", 60)
 	update_icon()

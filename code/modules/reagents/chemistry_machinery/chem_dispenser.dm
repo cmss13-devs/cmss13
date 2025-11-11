@@ -293,7 +293,7 @@
 		"dexalin",
 		"dexalinp",
 		"inaprovaline",
-		"adrenaline",
+		"epinephrine",
 		"peridaxon",
 		"tramadol",
 		"oxycodone",

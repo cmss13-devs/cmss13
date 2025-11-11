@@ -416,7 +416,7 @@
 
 /obj/item/reagent_container/glass/beaker/vial/epinephrine/Initialize()
 	. = ..()
-	reagents.add_reagent("adrenaline", 30)
+	reagents.add_reagent("epinephrine", 30)
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/vial/tricordrazine

@@ -189,8 +189,10 @@
 
 	message += postfix
 	var/garbled_message
-	if(length(targets_to_garble))
+	var/garbled_count = length(targets_to_garble)
+	if(garbled_count)
 		garbled_message = get_garbled_announcement(message, length(postfix), faction_to_garble)
+		log_garble("[garbled_count] received '[garbled_message]' for faction [faction_to_garble].")
 
 	for(var/mob/target in targets)
 		if(istype(target, /mob/new_player))

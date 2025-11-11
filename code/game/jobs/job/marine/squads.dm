@@ -510,6 +510,10 @@
 	send_message("[prefix][text][postfix]", transmitter, only_leader, targets_to_garble, "[prefix][garbled_text][postfix]")
 	send_maptext(text, maptext_title, only_leader, targets_to_garble, garbled_text)
 
+	var/garbled_count = length(targets_to_garble)
+	if(garbled_count)
+		log_garble("[garbled_count] received '[garbled_text]' in squad [src].")
+
 /// Displays and sets an objective for squad members in chat and directly on the game map with potential coms garble for only the text argument
 /datum/squad/proc/transmit_objective(text="", transmitter=null, primary=TRUE)
 	var/prefix = "Your primary objective has been changed to '"
@@ -524,6 +528,10 @@
 
 	send_message("[prefix][text][postfix]", transmitter, FALSE, targets_to_garble, "[prefix][garbled_text][postfix]")
 	send_maptext(text, maptext_title, FALSE, targets_to_garble, garbled_text)
+
+	var/garbled_count = length(targets_to_garble)
+	if(garbled_count)
+		log_garble("[garbled_count] received '[garbled_text]' in squad [src].")
 
 	if(primary)
 		primary_objective = "[text] ([worldtime2text()])"

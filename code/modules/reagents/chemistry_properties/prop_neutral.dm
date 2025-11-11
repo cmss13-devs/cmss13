@@ -237,7 +237,7 @@
 /datum/chem_property/neutral/antispasmodic
 	name = PROPERTY_ANTISPASMODIC
 	code = "ASP"
-	description = "Relaxes smooth muscles and treats muscle spasms by blocking the neurotransmitter, acetylcholine. High concentrations can cause respiratory failure and cardiac arrest."
+	description = "Relaxes smooth muscles and treats muscle spasms by blocking the neurotransmitter acetylcholine. High concentrations can cause respiratory failure and cardiac arrest."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 

@@ -507,7 +507,7 @@
 	volume = 60
 	amount_per_transfer_from_this = 60
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic //specifically for reagent canister pouches with three chemicals inside.
 	name = "15u reagent pouch autoinjector"
 	desc = "An autoinjector specifically designed to fit inside and refill from Pressurized Reagent Canister Pouches. Has a similar lock to pill bottles, and fits up to 6 injections."
 	skilllock = SKILL_MEDICAL_MEDIC
@@ -517,17 +517,17 @@
 	icon_state = "empty_medic"
 	uses_left = 0
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall //specifically for reagent canister pouches with only one
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall //specifically for reagent canister pouches with only one chemical inside.
 	name = "5u reagent pouch autoinjector"
 	volume = 30
 	amount_per_transfer_from_this = 5
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic/small
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic/small //specifically for reagent canister pouches with two chemicals inside.
 	name = "10u reagent pouch autoinjector"
 	volume = 60
 	amount_per_transfer_from_this = 60
 
-/obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic/large //haven't seen anyone use this yet.
 	name = "30u reagent pouch autoinjector"
 	volume = 180
 	amount_per_transfer_from_this = 30

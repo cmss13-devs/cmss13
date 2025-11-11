@@ -90,8 +90,8 @@
 		if(istype(src, /obj/item/storage/belt/medical))
 			if(ishuman(user))
 				var/obj/item/storage/belt/medical/med_belt = src
-				med_belt.mode = !med_belt.mode
-				to_chat(user, SPAN_NOTICE("You will now [med_belt.mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
+				med_belt.instant_pill_grabbable = !med_belt.instant_pill_grabbable
+				to_chat(user, SPAN_NOTICE("You will now [med_belt.instant_pill_grabbable ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
 		else
 			to_chat(user, SPAN_NOTICE("This item isn't a medical belt."))
 

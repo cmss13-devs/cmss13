@@ -12,6 +12,45 @@
 	loadout_points = 120
 	entry_message_body = "You are a <a href='"+WIKI_PLACEHOLDER+"'>Synthetic!</a> You are held to a higher standard and are required to obey not only the Server Rules but Marine Law and Synthetic Rules. Failure to do so may result in your White-list Removal. Your primary job is to support and assist all USCM Departments and Personnel on-board. In addition, being a Synthetic gives you knowledge in every field and specialization possible on-board the ship. As a Synthetic you answer to the acting commanding officer. Special circumstances may change this!"
 
+/datum/job/civilian/synthetic/proc/check_specialisation(client/player)
+	switch(player.prefs.synth_specialisation)
+		if("Generalised")
+			gear_preset_whitelist = list(
+			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm,
+			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/councillor,
+			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/councillor
+			)
+		if("Engineering")
+			gear_preset_whitelist = list(
+			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/engineering,
+			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/engineering/council,
+			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/engineering/council
+			)
+		if("Medical")
+			gear_preset_whitelist = list(
+			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/medical,
+			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/medical/council,
+			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/medical/council
+			)
+		if("Intel")
+			gear_preset_whitelist = list(
+			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/intel,
+			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/intel/council,
+			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/intel/council
+			)
+		if("Military Police")
+			gear_preset_whitelist = list(
+			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/mp,
+			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/mp/council,
+			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/mp/council
+			)
+		if("Command")
+			gear_preset_whitelist = list(
+			"[JOB_SYNTH][WHITELIST_NORMAL]" = /datum/equipment_preset/synth/uscm/command,
+			"[JOB_SYNTH][WHITELIST_COUNCIL]" = /datum/equipment_preset/synth/uscm/command/council,
+			"[JOB_SYNTH][WHITELIST_LEADER]" = /datum/equipment_preset/synth/uscm/command/council
+			)
+
 /datum/job/civilian/synthetic/New()
 	. = ..()
 	gear_preset_whitelist = list(
@@ -24,7 +63,7 @@
 	. = ..()
 	if(!.)
 		return
-
+	check_specialisation(player)
 	if(player.check_whitelist_status(WHITELIST_SYNTHETIC_LEADER))
 		return get_desired_status(player.prefs.synth_status, WHITELIST_LEADER)
 	if(player.check_whitelist_status(WHITELIST_SYNTHETIC_COUNCIL|WHITELIST_SYNTHETIC_COUNCIL_LEGACY))

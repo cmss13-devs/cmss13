@@ -276,7 +276,7 @@ directive is properly returned.
 	for(var/atom/A in contents)
 		A.ex_act(severity)
 
-/atom/proc/ex_act(severity)
+/atom/proc/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	if(explo_proof)
 		return
 
@@ -813,3 +813,6 @@ Parameters are passed from New.
 	var/refid = REF(src)
 	. += "[VV_HREF_TARGETREF(refid, VV_HK_AUTO_RENAME, "<b id='name'>[src]</b>")]"
 	. += "<br><font size='1'><a href='byond://?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=left'><<</a> <a href='byond://?_src_=vars;[HrefToken()];datumedit=[refid];varnameedit=dir' id='dir'>[dir2text(dir) || dir]</a> <a href='byond://?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=right'>>></a></font>"
+
+/atom/Exited(atom/movable/AM, direction)
+	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, AM, direction)

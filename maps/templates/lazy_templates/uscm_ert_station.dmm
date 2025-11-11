@@ -31,7 +31,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "af" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
@@ -723,7 +723,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/uscm_station)
 "ip" = (
-/obj/structure/machinery/power/port_gen/pacman/mrs,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/mrs,
 /turf/open/floor/almayer/plating_striped/north,
 /area/adminlevel/ert_station/uscm_station)
 "iq" = (
@@ -797,7 +797,7 @@
 /turf/open/floor/almayer/sterile_green_side/northeast,
 /area/adminlevel/ert_station/uscm_station)
 "iW" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "iY" = (
@@ -983,7 +983,7 @@
 /turf/open/floor/plating/warnplate/east,
 /area/adminlevel/ert_station/uscm_station)
 "lE" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "lG" = (
@@ -1279,7 +1279,7 @@
 /turf/open/floor/plating/warnplate/west,
 /area/adminlevel/ert_station/uscm_station)
 "om" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "ot" = (
@@ -1410,7 +1410,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "qc" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "qi" = (
@@ -1879,7 +1879,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "wc" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating_striped/north,
 /area/adminlevel/ert_station/uscm_station)
@@ -2120,7 +2120,7 @@
 /turf/open/floor/almayer/plating_striped/north,
 /area/adminlevel/ert_station/uscm_station)
 "yO" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -2659,7 +2659,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "EA" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/plating_striped/north,
 /area/adminlevel/ert_station/uscm_station)
 "EG" = (
@@ -2730,7 +2730,7 @@
 /turf/open/floor/almayer/orange,
 /area/adminlevel/ert_station/uscm_station)
 "Fo" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -3185,7 +3185,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "KS" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
@@ -4151,7 +4151,7 @@
 /turf/open/floor/engine,
 /area/adminlevel/ert_station/uscm_station)
 "YY" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/sign/safety/life_support{
 	pixel_x = 8;
 	pixel_y = -32

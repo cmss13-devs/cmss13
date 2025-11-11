@@ -104,9 +104,8 @@
 /obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
-/obj/structure/machinery/camera/autoname/almayer/containment/hidden
-	network = list(CAMERA_NET_CONTAINMENT_HIDDEN)
-	owner_factions = FACTION_LIST_WY
+/obj/structure/machinery/camera/autoname/almayer/containment/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/camera/autoname/almayer/containment/ares
 	name = "ares core camera"
@@ -187,3 +186,29 @@
 	view_range = 14
 	use_power = USE_POWER_NONE
 	invisibility = INVISIBILITY_MAXIMUM
+
+/obj/structure/machinery/camera/wey_yu
+	name = "weyland-yutani camera"
+	network = list(CAMERA_NET_WY)
+	owner_factions = FACTION_LIST_WY
+
+/obj/structure/machinery/camera/wey_yu/autoname
+	autoname = TRUE
+
+/obj/structure/machinery/camera/wey_yu/unbreakable
+	name = "reinforced weyland-yutani camera"
+
+/obj/structure/machinery/camera/wey_yu/unbreakable/attack_alien(mob/living/carbon/xenomorph/M)
+	return
+
+/obj/structure/machinery/camera/wey_yu/unbreakable/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
+/obj/structure/machinery/camera/wey_yu/unbreakable/liaison_cell
+	network = list(CAMERA_NET_CONTAINMENT_HIDDEN)
+	owner_factions = FACTION_LIST_WY
+
+/// To be removed once not a conflict risk
+/obj/structure/machinery/camera/autoname/almayer/containment/hidden
+	network = list(CAMERA_NET_CONTAINMENT_HIDDEN)
+	owner_factions = FACTION_LIST_WY

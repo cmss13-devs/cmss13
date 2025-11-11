@@ -72,6 +72,11 @@ SUBSYSTEM_DEF(ticker)
 			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, margin_top = 0, html = SPAN_ROUNDBODY("Please, setup your character and select ready. Game will start in [floor(time_left / 10) || CONFIG_GET(number/lobby_countdown)] seconds."))
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PREGAME_LOBBY)
 			current_state = GAME_STATE_PREGAME
+
+			#ifdef QUICK_START
+			request_start()
+			#endif
+
 			fire()
 
 		if(GAME_STATE_PREGAME)

@@ -21,8 +21,8 @@
 
 	var/datum/component/orbiter/orbiting
 
-	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
-	var/blocks_emissive = FALSE
+	/// Either [EMISSIVE_BLOCK_NONE], [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
+	var/blocks_emissive = EMISSIVE_BLOCK_NONE
 	///Internal holder for emissive blocker object, do not use directly use blocks_emissive
 	var/atom/movable/emissive_blocker/em_block
 
@@ -81,10 +81,46 @@
 		return src.master.attack_hand(a, b, c)
 	return
 
+/mutable_appearance/emissive_blocker
+
+/mutable_appearance/emissive_blocker/New()
+	. = ..()
+	// Need to do this here because it's overridden by the parent call
+	// This is a microop which is the sole reason why this child exists, because its static this is a really cheap way to set color without setting or checking it every time we create an atom
+	color = EM_BLOCK_COLOR
+
 /atom/movable/Initialize(mapload, ...)
 	. = ..()
 
-	update_emissive_block()
+#if EMISSIVE_BLOCK_GENERIC != 0
+	#error EMISSIVE_BLOCK_GENERIC is expected to be 0 to facilitate a weird optimization hack where we rely on it being the most common.
+	#error Read the comment in code/game/atoms_movable.dm for details.
+#endif
+
+	// This one is incredible.
+	// `if (x) else { /* code */ }` is surprisingly fast, and it's faster than a switch, which is seemingly not a jump table.
+	// From what I can tell, a switch case checks every single branch individually, although sane, is slow in a hot proc like this.
+	// So, we make the most common `blocks_emissive` value, EMISSIVE_BLOCK_GENERIC, 0, getting to the fast else branch quickly.
+	// If it fails, then we can check over every value it can be (here, EMISSIVE_BLOCK_UNIQUE is the only one that matters).
+	// This saves several hundred milliseconds of init time.
+	if (blocks_emissive)
+		if (blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
+			render_target = ref(src)
+			em_block = new(null, src)
+			overlays += em_block
+	else
+		var/static/mutable_appearance/emissive_blocker/blocker = new()
+		blocker.icon = icon
+		blocker.icon_state = icon_state
+		blocker.dir = dir
+		blocker.appearance_flags = appearance_flags | EMISSIVE_APPEARANCE_FLAGS
+		blocker.plane = EMISSIVE_PLANE // Takes a light path through the normal macro for a microop
+		// Ok so this is really cursed, but I want to set with this blocker cheaply while
+		// Still allowing it to be removed from the overlays list later
+		// So I'm gonna flatten it, then insert the flattened overlay into overlays AND the managed overlays list, directly
+		// I'm sorry
+		var/mutable_appearance/flat = blocker.appearance
+		overlays += flat
 
 	if(opacity)
 		AddElement(/datum/element/light_blocking)
@@ -94,22 +130,24 @@
 		AddComponent(/datum/component/overlay_lighting, is_directional = TRUE)
 
 /atom/movable/proc/update_emissive_block()
-	if(emissive_overlay)
-		overlays -= emissive_overlay
-
-	switch(blocks_emissive)
-		if(EMISSIVE_BLOCK_GENERIC)
-			var/mutable_appearance/gen_emissive_blocker = mutable_appearance(icon, icon_state, plane = EMISSIVE_PLANE, alpha = src.alpha)
-			gen_emissive_blocker.color = GLOB.em_block_color
-			gen_emissive_blocker.dir = dir
-			gen_emissive_blocker.appearance_flags |= appearance_flags
-			emissive_overlay = gen_emissive_blocker
-			overlays += gen_emissive_blocker
-		if(EMISSIVE_BLOCK_UNIQUE)
-			render_target = ref(src)
-			em_block = new(src, render_target)
-			emissive_overlay = em_block
-			overlays += list(em_block)
+	// This one is incredible.
+	// `if (x) else { /* code */ }` is surprisingly fast, and it's faster than a switch, which is seemingly not a jump table.
+	// From what I can tell, a switch case checks every single branch individually, although sane, is slow in a hot proc like this.
+	// So, we make the most common `blocks_emissive` value, EMISSIVE_BLOCK_GENERIC, 0, getting to the fast else branch quickly.
+	// If it fails, then we can check over every value it can be (here, EMISSIVE_BLOCK_UNIQUE is the only one that matters).
+	// This saves several hundred milliseconds of init time.
+	if (blocks_emissive)
+		if (blocks_emissive == EMISSIVE_BLOCK_UNIQUE)
+			if(em_block)
+				em_block.plane = EMISSIVE_PLANE
+			else if(!QDELETED(src))
+				render_target = ref(src)
+				em_block = new(null, src)
+			return em_block
+		// Implied else if (blocks_emissive == EMISSIVE_BLOCK_NONE) -> return
+	// EMISSIVE_BLOCK_GENERIC == 0
+	else
+		return fast_emissive_blocker(src)
 
 /atom/movable/vv_get_dropdown()
 	. = ..()

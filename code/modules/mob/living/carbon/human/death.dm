@@ -50,7 +50,7 @@
 
 	if(!gibbed)
 		if(HAS_TRAIT(src, TRAIT_HARDCORE) || MODE_HAS_MODIFIER(/datum/gamemode_modifier/permadeath))
-			if(!(species.flags & IS_SYNTHETIC)) // Synths wont perma
+			if(!(species.flags & IS_SYNTHETIC)) // Synths won't perma
 				status_flags |= PERMANENTLY_DEAD
 		if(HAS_TRAIT(src, TRAIT_INTENT_EYES)) //their eyes need to be 'offline'
 			r_eyes = 0
@@ -100,6 +100,7 @@
 			main_hive.see_humans_on_tacmap = TRUE
 			main_hive.tacmap_requires_queen_ovi = FALSE
 			SEND_SIGNAL(main_hive, COMSIG_XENO_REVEAL_TACMAP)
+
 		if(last_living_human && shipside_humans_count == 1)
 			if((GLOB.last_qm_callout + 2 MINUTES) < world.time)
 				GLOB.last_qm_callout = world.time

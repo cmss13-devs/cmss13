@@ -158,7 +158,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	contract_chems = list()
 	for(var/i in 1 to RESEARCH_CONTRACT_CHEM_AMOUNT)
 		var/datum/reagent/generated/contract_chemical = new /datum/reagent/generated
-		contract_chemical.id = "contract-chem-[i]"// we dont actually create the recipe for it or give it a proper id, frankly that would be too much pain to remove when we reroll them
+		contract_chemical.id = "contract-chem-[i]"// we don't actually create the recipe for it or give it a proper id, frankly that would be too much pain to remove when we reroll them
 		contract_chemical.generate_name()
 		contract_chemical.gen_tier = rand(1,3) //easy, hard and medium
 		contract_chemical.generate_stats()

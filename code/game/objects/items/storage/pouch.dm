@@ -39,17 +39,6 @@
 	. = ..()
 	. += "Can be worn by attaching it to a pocket."
 
-
-/obj/item/storage/pouch/equipped(mob/user, slot)
-	if(slot == WEAR_L_STORE || slot == WEAR_R_STORE)
-		mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
-	..()
-
-/obj/item/storage/pouch/dropped(mob/user)
-	mouse_opacity = initial(mouse_opacity)
-	..()
-
-
 /obj/item/storage/pouch/general
 	name = "light general pouch"
 	desc = "A general-purpose pouch used to carry a small item, or two tiny ones."

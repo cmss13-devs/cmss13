@@ -525,7 +525,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic/small //specifically for reagent canister pouches with two chemicals inside.
 	name = "10u reagent pouch autoinjector"
 	volume = 60
-	amount_per_transfer_from_this = 60
+	amount_per_transfer_from_this = 10
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large //haven't seen anyone use this yet.
 	name = "30u reagent pouch autoinjector"

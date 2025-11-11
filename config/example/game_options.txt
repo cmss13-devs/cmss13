@@ -52,6 +52,25 @@ METROID_DELAY 0
 ANIMAL_DELAY 0
 
 
+### Announcement Garbling ###
+## The length of an announcement for ANNOUNCEMENT_MIN_CLARITY
+ANNOUNCEMENT_MAX_BOUND 120
+
+## The max length of an announcement for ANNOUNCEMENT_MAX_CLARITY
+ANNOUNCEMENT_MIN_BOUND 20
+
+## The duration between announcements for ANNOUNCEMENT_MIN_CLARITY
+ANNOUNCEMENT_DURATION_MIN_BOUND 300
+
+## The duration between announcements for ANNOUNCEMENT_MAX_CLARITY
+ANNOUNCEMENT_DURATION_MAX_BOUND 1800
+
+## The clarity percent for messages >= ANNOUNCEMENT_MAX_BOUND or duration <= ANNOUNCEMENT_DURATION_MIN_BOUND
+ANNOUNCEMENT_MIN_CLARITY 45
+
+## The clarity percent for messages <= ANNOUNCEMENT_MIN_BOUND or duration >= ANNOUNCEMENT_DURATION_MAX_BOUND
+ANNOUNCEMENT_MAX_CLARITY 95
+
 ### Miscellaneous ###
 
 ## Config options which, of course, don't fit into previous categories.
@@ -60,4 +79,5 @@ ANIMAL_DELAY 0
 #USE_LOYALTY_IMPLANTS
 
 ## Block nuclear device invocation until more marines than this percentage are alive. (0-100)
-nuclear_lock_marines_percentage 0
+NUCLEAR_LOCK_MARINES_PERCENTAGE 0
+

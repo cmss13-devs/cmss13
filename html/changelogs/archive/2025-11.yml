@@ -92,3 +92,52 @@
   - bugfix: Iron is no longer pink.
   jupyterkat:
   - bugfix: emissions are bright again
+2025-11-08:
+  Comka:
+  - ui: "Added `flexWrap: \u2018wrap\u2019` for tabs in the phone interface. Now they\
+      \ should fit in the window"
+  Drathek:
+  - balance: Xeno tailstab can be used cross-z if it is an adjacent z at the cost
+      of 1 distance (effectively means you need to be visually adjacent to something
+      cross z assuming the tailstab distance is 2)
+  - balance: Most obj/structures have similar behavior if attacked with a tailstab
+      like attacking with claws
+  Killfish:
+  - rscadd: Adds Tool Drop Pouch, the cooler engineering-themed sibling of Tool Webbing,
+      and makes it an option at vendors that provide the Tool Webbing.
+  - imageadd: Adds sprites for aforementioned Tool Drop Pouch.
+  Puckaboo2:
+  - spellcheck: Adds apostrophes to contractions where there are none.
+  Red-byte3D:
+  - bugfix: Healing / Plasma recovery nodes now properly add overlays to the effected
+      xenomorphs
+  Steelpoint:
+  - maptweak: The windows overlooking the emergency response team landing docks on
+      the USS Almayer are now hull windows. This will protect the shuttle and its
+      occupants from being fired on through the roof of the shuttle.
+  carlarctg:
+  - spellcheck: fix a typo in warrior slash healing
+  jupyterkat:
+  - bugfix: fixed character setup preview being black
+  rattybag:
+  - ui: Added quick mode to dropship weapons console
+  realforest2001:
+  - rscadd: Added event mob spawn landmarks, and a ghost verb to spawn as them.
+  - rscadd: You can only spawn as an event mob once per round, unless an admin overrides
+      this.
+  - admin: Admins have freedom to setup these landmarks either in a map insert or
+      on-the-fly depending on which type is used. They're fairly customisable and
+      will allow for overrides of a few features on the preset such as title and paygrade.
+  - rscadd: Added categories to Select Equipment.
+  - code_imp: Cleaned up backend duplication.
+  - bugfix: Fixes spec token boxes not working
+2025-11-09:
+  Detective-Google:
+  - code_imp: tweaks a comment to be documented better.
+2025-11-10:
+  Ediblebomb:
+  - spellcheck: Removes a mention of most penal battalions supposedly coming from
+      New Argentina from a prop sign, also fixes a misspelling of populations on said
+      sign.
+  jupyterkat:
+  - bugfix: fixed character preview hairs always being black

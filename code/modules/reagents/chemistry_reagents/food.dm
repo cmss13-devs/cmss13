@@ -251,7 +251,7 @@
 /datum/reagent/nutriment/frostoil
 	name = "Frost Oil"
 	id = "frostoil"
-	description = "A special oil that noticably chills the body. Extracted from Ice Peppers."
+	description = "A special oil that noticeably chills the body. Extracted from Ice Peppers."
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_RARE
@@ -343,7 +343,7 @@
 /datum/reagent/nutriment/enzyme
 	name = "Universal Enzyme"
 	id = "enzyme"
-	description = "A universal enzyme used in the preperation of certain chemicals and foods."
+	description = "A universal enzyme used in the preparation of certain chemicals and foods."
 	reagent_state = LIQUID
 	color = "#365E30" // rgb: 54, 94, 48
 	overdose = REAGENTS_OVERDOSE

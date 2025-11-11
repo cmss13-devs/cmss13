@@ -36,7 +36,7 @@
 	adj_temp = 0
 
 
-//FRIUT JUICE//
+//FRUIT JUICE//
 
 /datum/reagent/drink/orangejuice
 	name = "Orange juice"
@@ -181,7 +181,7 @@
 /datum/reagent/drink/milk/coconut
 	name = "Coconut Milk"
 	id = "coconutmilk"
-	description = "A very light, half opague milk from coconuts, barely has any taste on its own."
+	description = "A very light, half opaque milk from coconuts, barely has any taste on its own."
 	color = "#DFDFC7" // rgb: 223, 223, 199
 	chemclass = CHEM_CLASS_NONE
 	flags = REAGENT_NO_GENERATION
@@ -224,7 +224,7 @@
 /datum/reagent/drink/souto
 	name = "Souto Classic"
 	id = "souto_classic"
-	description = "A tangerine flavored soda that's canned in Havana"
+	description = "A tangerine flavored soda that's canned in Havana."
 	color = "#802b00"
 	adj_drowsy = -10
 	chemclass = CHEM_CLASS_RARE
@@ -232,37 +232,37 @@
 /datum/reagent/drink/souto/cherry
 	name = "Cherry Souto"
 	id = "souto_cherry"
-	description = "A cherry flavored soda that's canned in Havanna"
+	description = "A cherry flavored soda that's canned in Havana."
 	color = COLOR_MAROON
 
 /datum/reagent/drink/souto/lime
 	name = "Lime Souto"
 	id = "souto_lime"
-	description = "A lime flavored soda that's canned in Havanna"
+	description = "A lime flavored soda that's canned in Havana."
 	color = "#878F00"
 
 /datum/reagent/drink/souto/grape
 	name = "Grape Souto"
 	id = "souto_grape"
-	description = "A grape flavored soda that's canned in Havanna"
+	description = "A grape flavored soda that's canned in Havana."
 	color = "#421C52"
 
 /datum/reagent/drink/souto/blueraspberry
 	name = "Blue Raspberry Souto"
 	id = "souto_blueraspberry"
-	description = "A blue fruit flavored soda that's canned in Havana"
+	description = "A blue fruit flavored soda that's canned in Havana."
 	color = "#005B96"
 
 /datum/reagent/drink/souto/peach
 	name = "Peach Souto"
 	id = "souto_peach"
-	description = "A peach flavored soda with flecks of peach pit floating inside that's canned in Havana"
+	description = "A peach flavored soda with flecks of peach pit floating inside that's canned in Havana."
 	color = "#FFE5B4"
 
 /datum/reagent/drink/souto/cranberry
 	name = "Cranberry Souto"
 	id = "souto_cranberry"
-	description = "A cranberry flavored soda that's canned in Havana"
+	description = "A cranberry flavored soda that's canned in Havana."
 	color = "#950714"
 
 /datum/reagent/drink/souto/vanilla
@@ -680,7 +680,7 @@
 	color = "#FF8CFF" // rgb: 255, 140, 255
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	properties = list(PROPERTY_NEOGENETIC = 0.5, PROPERTY_ANTICORROSIVE = 0.5, PROPERTY_ANTITOXIC = 0.5, PROPERTY_OXYGENATING = 0.5, PROPERTY_RELAXING = 1)
+	properties = list(PROPERTY_NEOGENETIC = 0.5, PROPERTY_ANTICORROSIVE = 0.5, PROPERTY_ANTITOXIC = 0.5, PROPERTY_OXYGENATING = 0.5, PROPERTY_ANTISPASMODIC = 1)
 	adj_dizzy = -3
 	chemclass = CHEM_CLASS_RARE
 

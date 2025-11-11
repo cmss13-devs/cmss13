@@ -237,7 +237,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_PAINING = 2, PROPERTY_MUSCLESTIMULATING = 6)
+	properties = list(PROPERTY_NEUROPATHIC = 2, PROPERTY_MUSCLESTIMULATING = 6)
 
 /datum/reagent/plasma/egg
 	name = "Egg Plasma"

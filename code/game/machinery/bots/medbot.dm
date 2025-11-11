@@ -33,7 +33,7 @@
 	var/treatment_brute = "bicaridine"
 	var/treatment_oxy = "dexalin"
 	var/treatment_fire = "kelotane"
-	var/treatment_tox = "anti_toxin"
+	var/treatment_tox = "dylovene"
 	var/treatment_virus = "spaceacillin"
 	var/declare_treatment = 0 //When attempting to treat a patient, should it notify everyone wearing medhuds?
 	var/shut_up = 0 //self explanatory :)
@@ -45,7 +45,7 @@
 	treatment_oxy = "dexalinp"
 	treatment_brute = "bicaridine"
 	treatment_fire = "kelotane"
-	treatment_tox = "anti_toxin"
+	treatment_tox = "dylovene"
 
 
 

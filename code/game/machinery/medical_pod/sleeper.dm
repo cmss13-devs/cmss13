@@ -257,10 +257,10 @@
 
 	entry_timer = 2 SECONDS
 
-	var/list/available_chemicals = list("inaprovaline", "paracetamol", "anti_toxin", "dexalin", "tricordrazine")
-	var/list/upgraded_chemicals = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
-	var/list/emergency_chems = list("inaprovaline", "paracetamol", "anti_toxin", "dexalin", "tricordrazine", "oxycodone", "bicaridine", "kelotane")
-	var/list/upgraded_emergency_chems = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "oxycodone", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
+	var/list/available_chemicals = list("inaprovaline", "paracetamol", "dylovene", "dexalin", "tricordrazine")
+	var/list/upgraded_chemicals = list("inaprovaline", "tramadol", "dylovene", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
+	var/list/emergency_chems = list("inaprovaline", "paracetamol", "dylovene", "dexalin", "tricordrazine", "oxycodone", "bicaridine", "kelotane")
+	var/list/upgraded_emergency_chems = list("inaprovaline", "tramadol", "dylovene", "dexalinp", "tricordrazine", "oxycodone", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
 	var/list/amounts = list(5, 10)
 	var/filtering = FALSE
 	var/obj/structure/machinery/sleep_console/connected
@@ -428,7 +428,7 @@
 
 /obj/structure/machinery/medical_pod/sleeper/yautja
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
-	available_chemicals = list("thwei", "inaprovaline", "oxycodone", "anti_toxin", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
-	emergency_chems = list("thwei", "inaprovaline", "oxycodone", "anti_toxin", "dexalinp", "tricordrazine", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
+	available_chemicals = list("thwei", "inaprovaline", "oxycodone", "dylovene", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
+	emergency_chems = list("thwei", "inaprovaline", "oxycodone", "dylovene", "dexalinp", "tricordrazine", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
 	reagent_removed_per_second = AMOUNT_PER_TIME(8, 1 SECONDS)
 	upgraded = TRUE

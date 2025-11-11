@@ -433,7 +433,7 @@
 
 /obj/item/reagent_container/syringe/antitoxin/Initialize()
 	. = ..()
-	reagents.add_reagent("anti_toxin", 15)
+	reagents.add_reagent("dylovene", 15)
 	mode = SYRINGE_INJECT
 	update_icon()
 
@@ -486,7 +486,7 @@
 
 /obj/item/reagent_container/syringe/robot/antitoxin/Initialize()
 	. = ..()
-	reagents.add_reagent("anti_toxin", 15)
+	reagents.add_reagent("dylovene", 15)
 	mode = SYRINGE_INJECT
 	update_icon()
 
@@ -507,6 +507,6 @@
 /obj/item/reagent_container/syringe/robot/mixed/Initialize()
 	. = ..()
 	reagents.add_reagent("inaprovaline", 7)
-	reagents.add_reagent("anti_toxin", 8)
+	reagents.add_reagent("dylovene", 8)
 	mode = SYRINGE_INJECT
 	update_icon()

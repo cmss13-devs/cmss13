@@ -144,7 +144,7 @@
 
 /obj/item/reagent_container/glass/bottle/antitoxin/Initialize()
 	. = ..()
-	reagents.add_reagent("anti_toxin", 60)
+	reagents.add_reagent("dylovene", 60)
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/mutagen

@@ -1605,7 +1605,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	products = list(/obj/item/reagent_container/food/snacks/grown/kudzupod)
 	plant_icon = "kudzu"
 	product_color = "#96D278"
-	chems = list("plantmatter" = list(1,50), "anti_toxin" = list(1,25))
+	chems = list("plantmatter" = list(1,50), "dylovene" = list(1,25))
 
 	lifespan = 20
 	maturation = 6

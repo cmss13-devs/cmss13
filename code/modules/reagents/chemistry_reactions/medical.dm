@@ -3,7 +3,7 @@
 	name = "Tricordrazine"
 	id = "tricordrazine"
 	result = "tricordrazine"
-	required_reagents = list("inaprovaline" = 1, "anti_toxin" = 1)
+	required_reagents = list("inaprovaline" = 1, "dylovene" = 1)
 	result_amount = 2
 	mob_react = FALSE
 
@@ -18,7 +18,7 @@
 	name = "Alkysine"
 	id = "alkysine"
 	result = "alkysine"
-	required_reagents = list("chlorine" = 1, "nitrogen" = 1, "anti_toxin" = 1)
+	required_reagents = list("chlorine" = 1, "nitrogen" = 1, "dylovene" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/dexalin
@@ -90,14 +90,14 @@
 	name = "imidazoline"
 	id = "imidazoline"
 	result = "imidazoline"
-	required_reagents = list("carbon" = 1, "hydrogen" = 1, "anti_toxin" = 1)
+	required_reagents = list("carbon" = 1, "hydrogen" = 1, "dylovene" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/ethylredoxrazine
 	name = "Ethylredoxrazine"
 	id = "ethylredoxrazine"
 	result = "ethylredoxrazine"
-	required_reagents = list("oxygen" = 1, "anti_toxin" = 1, "carbon" = 1)
+	required_reagents = list("oxygen" = 1, "dylovene" = 1, "carbon" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/ethanoloxidation
@@ -111,7 +111,7 @@
 	name = "Sterilizine"
 	id = "sterilizine"
 	result = "sterilizine"
-	required_reagents = list("ethanol" = 1, "anti_toxin" = 1, "chlorine" = 1)
+	required_reagents = list("ethanol" = 1, "dylovene" = 1, "chlorine" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/inaprovaline
@@ -123,8 +123,8 @@
 
 /datum/chemical_reaction/anti_toxin
 	name = "Dylovene"
-	id = "anti_toxin"
-	result = "anti_toxin"
+	id = "dylovene"
+	result = "dylovene"
 	required_reagents = list("silicon" = 1, "potassium" = 1, "nitrogen" = 1)
 	result_amount = 3
 
@@ -163,7 +163,7 @@
 	name = "Arithrazine"
 	id = "arithrazine"
 	result = "arithrazine"
-	required_reagents = list("anti_toxin" = 1, "phosphorus" = 1)
+	required_reagents = list("dylovene" = 1, "phosphorus" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/kelotane

@@ -289,7 +289,7 @@
 	dispensable_reagents = list(
 		"bicaridine",
 		"kelotane",
-		"anti_toxin",
+		"dylovene",
 		"dexalin",
 		"dexalinp",
 		"inaprovaline",

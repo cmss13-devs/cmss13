@@ -374,7 +374,7 @@
 	name = "Mindbreaker Toxin"
 	id = "mindbreaker"
 	result = "mindbreaker"
-	required_reagents = list("silicon" = 1, "hydrogen" = 1, "anti_toxin" = 1)
+	required_reagents = list("silicon" = 1, "hydrogen" = 1, "dylovene" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/lipozine
@@ -532,7 +532,7 @@
 	name = "Anti-Neurotoxin"
 	id = "antineurotoxin"
 	result = "antineurotoxin"
-	required_reagents = list("neurotoxinplasma" = 1, "anti_toxin" = 1)
+	required_reagents = list("neurotoxinplasma" = 1, "dylovene" = 1)
 	result_amount = 1
 
 /datum/chemical_reaction/eggplasma

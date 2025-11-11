@@ -22,9 +22,9 @@
 	name = "internal anti-toxin bottle"
 	desc = "A small bottle of Anti-toxins. Counters poisons, and repairs damage, a wonder drug."
 	icon = 'icons/obj/items/chemistry.dmi'
-	reagent = "anti_toxin"
+	reagent = "dylovene"
 
 /obj/item/reagent_container/glass/bottle/robot/antitoxin/Initialize()
 	. = ..()
-	reagents.add_reagent("anti_toxin", 60)
+	reagents.add_reagent("dylovene", 60)
 	return

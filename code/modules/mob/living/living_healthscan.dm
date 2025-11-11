@@ -363,8 +363,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						"icon" = "syringe",
 						"color" = "green"
 						))
-					if(chemicals_lists["anti_toxin"])
-						if(chemicals_lists["anti_toxin"]["amount"] < 5)
+					if(chemicals_lists["dylovene"])
+						if(chemicals_lists["dylovene"]["amount"] < 5)
 							advice += temp_advice
 					else
 						advice += temp_advice
@@ -711,7 +711,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			var/advice = ""
 			if(blood_volume <= 500 && !reagents_in_body["nutriment"])
 				advice += "<span class='scanner'>Administer food or recommend the patient eat.</span>\n"
-			if(H.getToxLoss() > 10 && reagents_in_body["anti_toxin"] < 5)
+			if(H.getToxLoss() > 10 && reagents_in_body["dylovene"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of dylovene.</span>\n"
 			if((H.getToxLoss() > 50 || (H.getOxyLoss() > 50 && blood_volume > 400) || H.getBrainLoss() >= 10) && reagents_in_body["peridaxon"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of peridaxon.</span>\n"

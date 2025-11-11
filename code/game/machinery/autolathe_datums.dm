@@ -397,12 +397,20 @@
 	name = "EZ autoinjector (E-XL) (60x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
 
+/datum/autolathe/recipe/medilathe/autoinjector/s5x6
+	name = "Medic autoinjector (M-XS) (5x6)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall
+
+/datum/autolathe/recipe/medilathe/autoinjector/s10x6
+	name = "Medic autoinjector (M-S) (10x6)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/small
+
 /datum/autolathe/recipe/medilathe/autoinjector/s15x6
 	name = "Medic autoinjector (M-M) (15x6)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic
 
 /datum/autolathe/recipe/medilathe/autoinjector/s30x6
-	name = "Medic Autoinjector (M-L) (30x6)"
+	name = "Medic autoinjector (M-L) (30x6)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
 
 /datum/autolathe/recipe/medilathe/hypospray

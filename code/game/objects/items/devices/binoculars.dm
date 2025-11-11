@@ -75,14 +75,14 @@
 	if(user.client?.prefs?.night_vision_preference)
 		matrix_color = user.client.prefs.nv_color_list[user.client.prefs.night_vision_preference]
 	user.add_client_color_matrix("nvg_binos", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string(matrix_color)))
-	user.overlay_fullscreen("nvg_binosr", /atom/movable/screen/fullscreen/flash/noise/nvg)
+	user.overlay_fullscreen("nvg_binos", /atom/movable/screen/fullscreen/flash/noise/nvg)
 	user.overlay_fullscreen("nvg_binos_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
 	user.update_sight()
 
 /obj/item/device/binoculars/proc/disable_nvgs(mob/living/carbon/human/user)
 	UnregisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT)
 
-	user.remove_client_color_matrix("nvg_visor", 1 SECONDS)
+	user.remove_client_color_matrix("nvg_binos", 1 SECONDS)
 	user.clear_fullscreen("nvg_binos", 0.5 SECONDS)
 	user.clear_fullscreen("nvg_binos_blur", 0.5 SECONDS)
 	user.update_sight()
@@ -116,7 +116,7 @@
 			desc += "\nThis one seems to be upgraded with IR night vision."
 
 		if(MATRIX_DEFAULT) // so you have something to do with the empty matrixes
-			new /obj/item/device/binoculars/range/designator(loc)
+			new /obj/item/device/binoculars/range/designator(get_turf(src))
 			qdel(src)
 
 /obj/item/device/binoculars/proc/set_raised(to_raise, mob/living/carbon/human/user)

@@ -15,12 +15,12 @@
 //Matrix NVG - guidance camera gets NVG filter depending on the potency of the property
 //Matrix wide - gives a wider view which depends on the potency of the proeprty
 
-/obj/item/frame/matrix_frame/attackby(obj/item/W, mob/user as mob)
+/obj/item/frame/matrix_frame/attackby(obj/item/attack_item, mob/user as mob)
 	switch(state)
 		if(ASSEMBLY_EMPTY)
-			if(istype(W, /obj/item/reagent_container/glass/beaker/vial) && W.reagents.total_volume == 30 && length(W.reagents.reagent_list) == 1)
-				user.drop_held_item(W)
-				W.forceMove(src)
+			if(istype(attack_item, /obj/item/reagent_container/glass/beaker/vial) && attack_item.reagents.total_volume == 30 && length(attack_item.reagents.reagent_list) == 1)
+				user.drop_held_item(attack_item)
+				attack_item.forceMove(src)
 				state = ASSEMBLY_UNLOCKED
 				to_chat(user, SPAN_NOTICE("You add the vial to the matrix, and the testing indicator lights up with green"))
 				desc = initial(desc) + "\nThe vial is installed but is not screwed."
@@ -30,28 +30,28 @@
 					power = upgrade_property.level
 					upgrade = MATRIX_NVG
 					return
-				else if (S.get_property(PROPERTY_CRYSTALLIZATION))
-					var/datum/chem_property/G = S.get_property(PROPERTY_CRYSTALLIZATION)
-					power = G.level
+				else if (upgrade_reagent.get_property(PROPERTY_CRYSTALLIZATION))
+					var/datum/chem_property/upgrade_property = upgrade_reagent.get_property(PROPERTY_CRYSTALLIZATION)
+					power = upgrade_property.level
 					upgrade = MATRIX_WIDE
 					return
 				else
 					upgrade = MATRIX_DEFAULT
 					return
-			else if(W.reagents.total_volume < 30)
+			else if(attack_item.reagents.total_volume < 30)
 				to_chat(user, SPAN_WARNING("The testing indicator lights up with red! The container requires to be fully filled!"))
 				return
-			else if (length(W.reagents.reagent_list) > 1)
+			else if (length(attack_item.reagents.reagent_list) > 1)
 				to_chat(user, SPAN_WARNING("The testing indicator lights up with red! The container requires a pure sample!"))
 
 		if(ASSEMBLY_UNLOCKED)
-			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+			if(HAS_TRAIT(attack_item, TRAIT_TOOL_SCREWDRIVER))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				state = ASSEMBLY_LOCKED
 				to_chat(user, SPAN_NOTICE("You lock the matrix assembly"))
 				desc = initial(desc) + "\n The vial is installed and screwed in place."
 		if(ASSEMBLY_LOCKED)
-			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+			if(HAS_TRAIT(attack_item, TRAIT_TOOL_SCREWDRIVER))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				state = ASSEMBLY_UNLOCKED
 				to_chat(user, SPAN_NOTICE("You unlock the matrix assembly"))

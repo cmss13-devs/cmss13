@@ -141,6 +141,10 @@
 	var/_applied_lum_g = lighting_source.applied_lum_g; \
 	var/_applied_lum_b = lighting_source.applied_lum_b;
 
+#define SETUP_CORNERS_UPDATE_CACHE(lighting_source, range_divisor_old, light_power_old) \
+	var/_light_update_shift = _light_power * (1 - range_divisor_old / _range_divisor); \
+	var/_light_update_mult = _light_power * range_divisor_old / (_range_divisor * light_power_old);
+
 #define LUM_FALLOFF(C) (1 - CLAMP01(sqrt((C.x - _turf_x) ** 2 + (C.y - _turf_y) ** 2 + LIGHTING_HEIGHT) / _range_divisor))
 #define LUM_FALLOFF_MULTIZ(C) (1 - CLAMP01(sqrt((C.x - _turf_x) ** 2 + (C.y - _turf_y) ** 2 + (C.z - _turf_z) ** 2 + LIGHTING_HEIGHT) / _range_divisor))
 
@@ -153,6 +157,16 @@
 	}                                            \
 	. *= _light_power;                            \
 	var/OLD = effect_str[C];                     \
+	C.update_lumcount                            \
+	(                                            \
+		(. * _lum_r) - (OLD * _applied_lum_r),     \
+		(. * _lum_g) - (OLD * _applied_lum_g),     \
+		(. * _lum_b) - (OLD * _applied_lum_b)      \
+	);
+
+#define UPDATE_CORNER(C)                          \
+	var/OLD = effect_str[C];                     \
+	. = max(_light_update_mult * OLD + _light_update_shift, 0);\
 	C.update_lumcount                            \
 	(                                            \
 		(. * _lum_r) - (OLD * _applied_lum_r),     \
@@ -208,6 +222,9 @@
 /datum/static_light_source/proc/update_corners()
 	var/update = FALSE
 	var/update_fluff = FALSE
+	var/update_range = FALSE
+	var/old_range
+	var/old_power
 	var/atom/source_atom = src.source_atom
 
 	if (QDELETED(source_atom))
@@ -215,6 +232,7 @@
 		return
 
 	if (source_atom.light_power != light_power)
+		old_power = light_power
 		light_power = source_atom.light_power
 		update_fluff = TRUE
 
@@ -222,7 +240,8 @@
 		if(light_range > source_atom.light_range) // less range, can reuse corners
 			update_fluff = TRUE
 		else
-			update = TRUE
+			update_range = TRUE
+		old_range = light_range
 		light_range = source_atom.light_range
 
 	if (!top_atom)
@@ -264,7 +283,7 @@
 	else if (applied_lum_r != lum_r || applied_lum_g != lum_g || applied_lum_b != lum_b)
 		update_fluff = TRUE
 
-	if (update)
+	if (update || update_range)
 		needs_update = LIGHTING_FORCE_UPDATE
 		applied = TRUE
 	else if (needs_update == LIGHTING_CHECK_UPDATE)
@@ -353,13 +372,29 @@
 
 		// New corners are a subset of corners. so if they're both the same length, there are NO old corners!
 		if(length(corners) != length(new_corners))
-			for (var/datum/static_lighting_corner/corner as anything in corners - new_corners) // Existing corners
-				APPLY_CORNER(corner)
-				if (. != 0)
-					effect_str[corner] = .
-				else
-					LAZYREMOVE(corner.affecting, src)
-					effect_str -= corner
+			var/list/datum/static_lighting_corner/to_remove_corners = list()
+			if(update) // full update of corners
+				for (var/datum/static_lighting_corner/corner as anything in corners - new_corners) // Existing corners
+					APPLY_CORNER(corner)
+					if (. != 0)
+						effect_str[corner] = .
+					else
+						LAZYREMOVE(corner.affecting, src)
+						to_remove_corners += corner
+			else // same as above, but without distance recalculation
+				if(isnull(old_range))
+					old_range = light_range
+				if(isnull(old_power))
+					old_power = light_power
+				SETUP_CORNERS_UPDATE_CACHE(src, max(1, old_range), old_power)
+				for (var/datum/static_lighting_corner/corner as anything in corners - new_corners) // Existing corners
+					UPDATE_CORNER(corner)
+					if (. != 0)
+						effect_str[corner] = .
+					else
+						LAZYREMOVE(corner.affecting, src)
+						to_remove_corners += corner
+			effect_str -= to_remove_corners
 
 	for (var/datum/static_lighting_corner/corner as anything in gone_corners)
 		REMOVE_CORNER(corner)

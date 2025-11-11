@@ -307,7 +307,7 @@
 					var/created_volume = reaction.result_amount*multiplier
 
 					if(reaction.result)
-						multiplier = max(multiplier, 1) //this shouldnt happen ...
+						multiplier = max(multiplier, 1) //this shouldn't happen ...
 						set_data(reaction.result, preserved_data)
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_CALM) && !CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_ENDOTHERMIC)) //mix the chemicals
 						if(endothermic_reaction_occuring)

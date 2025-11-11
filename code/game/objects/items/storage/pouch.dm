@@ -1092,7 +1092,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
 	name = "Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one carries a heavy 15u custom autoinjector and came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stablize patients and stave off symptoms of post-defibrillation heart damage."
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one carries a heavy 15u custom autoinjector and came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stabilize patients and stave off symptoms of post-defibrillation heart damage."
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
@@ -1131,8 +1131,11 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/Initialize()
 	. = ..()
-	if(length(contents) == 0)
-		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src) // 15u autoinjector to inject 5u of each chemical at once.
+	if(length(contents))
+		for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector in contents)
+			qdel(autoinjector) //delete current autoinjector because parent spawned a 5u one and we want a 15u one here. If there's a better way of doing this, let me know, please.
+			new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src) // If it has one chemical, it is 5u (medic/extrasmall) 2 chemicals, 10u (medic/small); 3 chemicals, 15u (/medic), for consistency's sake.
+	update_icon()
 
 	//we don't call fill_with because of the complex mix of chemicals we have
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)
@@ -1149,8 +1152,11 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri/Initialize()
 	. = ..()
-	if(length(contents) == 0)
-		new /obj/item/reagent_container/hypospray/autoinjector/empty/medic(src) // 15u autoinjector to inject 5u of each chemical at once.
+	if(length(contents))
+		for(var/obj/item/reagent_container/hypospray/autoinjector/empty/autoinjector in contents)
+			qdel(autoinjector) //delete current autoinjector because parent spawned a 5u one and we want a 15u one here. If there's a better way of doing this, let me know, please.
+			new /obj/item/reagent_container/hypospray/autoinjector/empty/medic/(src) // If it has one chemical, it is 5u (medic/extrasmall) 2 chemicals, 10u (medic/small); 3 chemicals, 15u (/medic), for consistency's sake.
+	update_icon()
 
 	//we don't call fill_with because of the complex mix of chemicals we have
 	inner.reagents.add_reagent("adrenaline", inner.volume/3)

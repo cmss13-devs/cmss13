@@ -966,7 +966,6 @@
 	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer. Supercharges photosynthesis, treated plants able to be harvested repeatedly "
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
-	max_level = 1
 
 /datum/chem_property/positive/photosensitive/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
@@ -997,7 +996,6 @@
 	description = "The chemical structure of the chemical forms itself in a lens. passing light wider, while also keeping focus. Not safe to administer. Hardens root structure of plants, improving survivability during repeat harvests."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
-	max_level = 1
 
 /datum/chem_property/positive/crystallization/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_WARNING("You feel like many razor sharp blades cut through your insides!"))

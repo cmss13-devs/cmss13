@@ -526,6 +526,12 @@
 		list("Autoinjector (Tramadol)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tramadol, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tricordrazine)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
 
+		list("REAGENT POUCH AUTOINJECTORS", -1, null, null),
+		list("5u Reagent Pouch Autoinjector", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall, VENDOR_ITEM_REGULAR),
+		list("10u Reagent Pouch Autoinjector", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/small, VENDOR_ITEM_REGULAR),
+		list("15u Reagent Pouch Autoinjector", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic, VENDOR_ITEM_REGULAR),
+		list("30u Reagent Pouch Autoinjector", floor(scale * 3), /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large, VENDOR_ITEM_REGULAR),
+
 		list("LIQUID BOTTLES", -1, null, null),
 		list("Bottle (Bicaridine)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),
 		list("Bottle (Dylovene)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),

@@ -387,6 +387,7 @@
 	volume = REAGENTS_OVERDOSE
 	uses_left = 1
 	black_market_value = 25
+	mode = INJECTOR_MODE_SKILLESS // obviously
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/attack(mob/M as mob, mob/user as mob)
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))

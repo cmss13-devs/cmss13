@@ -391,7 +391,7 @@
 
 /obj/item/clothing/head/hybrisa/wy_po_cap
 	name = "\improper Weyland-Yutani Pilot cap"
-	desc = "A dark peaked cap enscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civillian Pilots, akin to old Earth formal Pilots-wear."
+	desc = "A dark peaked cap enscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civilian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi',
@@ -880,7 +880,7 @@
 
 /obj/item/clothing/suit/storage/hybrisa/wy_Pilot
 	name = "\improper Weyland-Yutani Pilot formal-jacket"
-	desc = "A suit-style jacket with a fur lined collar and golden epaulettes signifying rank. Worn by Weyland-Yutani qualified civillian Pilots, akin to old Earth formal Pilots-wear."
+	desc = "A suit-style jacket with a fur lined collar and golden epaulettes signifying rank. Worn by Weyland-Yutani qualified civilian Pilots, akin to old Earth formal Pilots-wear."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'

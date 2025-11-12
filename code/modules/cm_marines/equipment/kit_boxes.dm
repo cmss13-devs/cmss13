@@ -11,6 +11,7 @@
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	max_w_class = 0
 	foldable = null
+	unacidable = TRUE
 	/// For statistics tracking. The kit's name
 	var/kit_name = ""
 

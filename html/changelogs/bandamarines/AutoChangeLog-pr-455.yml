@@ -1,0 +1,4 @@
+author: "Golub4ik-Official"
+delete-after: True
+changes:
+  - bugfix: "Исправление бага с перемещением на байке через стрелочки"

@@ -26403,7 +26403,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "csl" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -26433,7 +26433,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "dfj" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f5"
@@ -26529,7 +26529,7 @@
 	name = "Colony Requesitions Storage Pod"
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "fkY" = (
 /obj/structure/machinery/light,
 /turf/open/shuttle/can_surgery/red,
@@ -26885,7 +26885,7 @@
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/requesitions)
+/area/ice_colony/surface/requisitions)
 "qJe" = (
 /obj/structure/machinery/light{
 	dir = 4

@@ -76,6 +76,13 @@ CIA
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
+/datum/skills/cia/global_response/survivor
+	additional_skills = list(
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		)
+
 /datum/skills/cia/global_response/medic
 	name = JOB_CIA_GRS_MED
 	skills = list(
@@ -93,6 +100,13 @@ CIA
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
+
+/datum/skills/cia/global_response/medic/survivor
+	additional_skills = list(
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		)
 
 /datum/skills/cia/global_response/engineer
 	name = JOB_CIA_GRS_ENG
@@ -112,6 +126,14 @@ CIA
 		SKILL_PILOT = SKILL_PILOT_EXPERT,
 	)
 
+/datum/skills/cia/global_response/engineer/survivor
+	additional_skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		)
+
 /datum/skills/cia/global_response/heavy
 	name = JOB_CIA_GRS_HVY
 	skills = list(
@@ -130,6 +152,13 @@ CIA
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
+/datum/skills/cia/global_response/heavy/survivor
+	additional_skills = list(
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		)
+
 /datum/skills/cia/global_response/sniper
 	name = JOB_CIA_GRS_SNP
 	skills = list(
@@ -147,6 +176,13 @@ CIA
 		SKILL_SPEC_WEAPONS = SKILL_SPEC_SNIPER,
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
+
+/datum/skills/cia/global_response/sniper/survivor
+	additional_skills = list(
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		)
 
 /datum/skills/cia/global_response/leader
 	name = JOB_CIA_GRS_TL
@@ -167,6 +203,13 @@ CIA
 		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
 		SKILL_PILOT = SKILL_PILOT_TRAINED,
 	)
+
+/datum/skills/cia/global_response/leader/survivor
+	additional_skills = list(
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		)
 
 /datum/skills/cia/global_response/commander
 	name = JOB_CIA_GRS_CDR
@@ -189,5 +232,21 @@ CIA
 		SKILL_EXECUTION = SKILL_EXECUTION_TRAINED,
 	)
 
+/datum/skills/cia/global_response/commander/survivor
+	additional_skills = list(
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		SKILL_EXECUTION = SKILL_EXECUTION_DEFAULT,
+		)
+
 /datum/skills/cia/global_response/commander/deputy
 	name = JOB_CIA_GRS_DCDR
+
+/datum/skills/cia/global_response/commander/deputy/survivor
+	additional_skills = list(
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		SKILL_EXECUTION = SKILL_EXECUTION_DEFAULT,
+		)

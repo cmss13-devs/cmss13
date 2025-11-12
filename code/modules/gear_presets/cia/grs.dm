@@ -107,6 +107,7 @@
 
 /datum/equipment_preset/cia_global_response/standard/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
+	skills = /datum/skills/cia/global_response/survivor
 
 /datum/equipment_preset/cia_global_response/standard/load_gear(mob/living/carbon/human/new_human)
 	load_standard_gear(new_human)
@@ -205,6 +206,7 @@
 
 /datum/equipment_preset/cia_global_response/heavy/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
+	skills = /datum/skills/cia/global_response/heavy/survivor
 
 /datum/equipment_preset/cia_global_response/heavy/load_gear(mob/living/carbon/human/new_human)
 	load_standard_gear(new_human)
@@ -276,6 +278,7 @@
 
 /datum/equipment_preset/cia_global_response/sniper/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
+	skills = /datum/skills/cia/global_response/sniper/survivor
 
 /datum/equipment_preset/cia_global_response/sniper/load_gear(mob/living/carbon/human/new_human)
 	load_standard_gear(new_human)
@@ -367,6 +370,7 @@
 
 /datum/equipment_preset/cia_global_response/engineer/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
+	skills = /datum/skills/cia/global_response/engineer/survivor
 
 /datum/equipment_preset/cia_global_response/engineer/load_gear(mob/living/carbon/human/new_human)
 	load_standard_gear(new_human)
@@ -451,6 +455,7 @@
 
 /datum/equipment_preset/cia_global_response/medic/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
+	skills = /datum/skills/cia/global_response/medic/survivor
 
 /datum/equipment_preset/cia_global_response/medic/load_gear(mob/living/carbon/human/new_human)
 	load_standard_gear(new_human)
@@ -537,6 +542,7 @@
 
 /datum/equipment_preset/cia_global_response/leader/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
+	skills = /datum/skills/cia/global_response/leader/survivor
 
 /datum/equipment_preset/cia_global_response/leader/load_gear(mob/living/carbon/human/new_human)
 	load_standard_gear(new_human)
@@ -635,6 +641,7 @@
 
 /datum/equipment_preset/cia_global_response/commander/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
+	skills = /datum/skills/cia/global_response/commander/survivor
 
 /datum/equipment_preset/cia_global_response/commander/load_gear(mob/living/carbon/human/new_human)
 	load_standard_gear(new_human)
@@ -727,6 +734,7 @@
 
 /datum/equipment_preset/cia_global_response/commander/deputy/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
+	skills = /datum/skills/cia/global_response/commander/deputy/survivor
 
 
 //*****************************************************************************************************/

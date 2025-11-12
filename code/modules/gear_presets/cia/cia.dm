@@ -101,7 +101,7 @@
 	name = "Marine Raider Advisor (CIA Senior Agent)"
 	minimum_age = 30
 	skills = /datum/skills/cia/field_agent/senior
-	selection_categories = list(FACTION_MARINE)
+	selection_categories = list(FACTION_CIA)
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia/New()
 	. = ..()

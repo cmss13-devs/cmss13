@@ -209,6 +209,17 @@
 /obj/item/clothing/accessory/ranks/army/e9c
 	rank_short = PAY_SHORT_AE9C
 	icon_state = "ranks_ae7"
+
+/obj/item/clothing/accessory/ranks/army/wo
+	name = "rank boards"
+	rank_short = PAY_SHORT_AWO
+	icon_state = "ranks_warrant"
+
+/obj/item/clothing/accessory/ranks/army/cwo
+	name = "rank boards"
+	rank_short = PAY_SHORT_ACWO
+	icon_state = "ranks_chiefwarrant"
+
 //OFFICERS
 /obj/item/clothing/accessory/army/o1
 	name = "rank boards"

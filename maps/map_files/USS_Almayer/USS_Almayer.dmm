@@ -17547,6 +17547,10 @@
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/containment)
 "aUR" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101
+	},
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/containment)
 "aUS" = (
@@ -34245,6 +34249,10 @@
 "bHn" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 5
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
 	},
 /turf/open/floor/almayer/sterile_green_side/southwest,
 /area/almayer/medical/containment)

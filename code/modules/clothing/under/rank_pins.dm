@@ -159,6 +159,10 @@
 /*################################################
 ################ ARMY  #####################
 ################################################*/
+
+// Comented out until someone adds the faction file.
+
+/*
 //ENLISTED
 /obj/item/clothing/accessory/ranks/army/e1
 	rank_short = PAY_SHORT_AE1
@@ -290,6 +294,8 @@
 	name = "officer rank pins"
 	rank_short = PAY_SHORT_AO10S
 	icon_state = "ranks_o11"
+
+*/
 
 /*################################################
 ################ NAVY  #####################

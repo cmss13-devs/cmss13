@@ -11,12 +11,16 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 #define APC_COVER_REMOVED 2
 
 // APC charging status:
-/// The APC is not charging.
 #define APC_NOT_CHARGING 0
-/// The APC is charging.
 #define APC_CHARGING 1
-/// The APC is fully charged.
 #define APC_FULLY_CHARGED 2
+
+// APC main status:
+#define APC_MAIN_FAULTED 0
+#define APC_MAIN_NO_EXTERNAL 1
+#define APC_MAIN_LOW_EXTERNAL 2
+#define APC_MAIN_EXTERNAL 3
+#define APC_MAIN_LOCAL 4
 
 //update_state
 #define UPSTATE_CELL_IN 1
@@ -94,6 +98,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/lastused_environ = 0
 	var/lastused_oneoff = 0
 	var/lastused_total = 0
+	var/lastused_total_actual = 0
+	var/lastgenerated_total = 0
+	var/lastgenerated_total_surplus = 0
 	var/main_status = 0
 
 	var/wiresexposed = 0
@@ -218,7 +225,11 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		"powerCellStatus" = cell ? cell.percent() : null,
 		"chargeMode" = chargemode,
 		"chargingStatus" = charging,
-		"totalLoad" = display_power(lastused_total),
+		"totalLoad" = display_power(lastused_total_actual),
+		"totalLoadDemanded" = display_power(lastused_total),
+		"totalGenerated" = display_power(lastgenerated_total),
+		"totalGeneratedSurplus" = display_power(lastgenerated_total_surplus),
+		"generatorCount" = length(connected_power_sources),
 		"coverLocked" = coverlocked,
 		"siliconUser" = FALSE,
 
@@ -268,16 +279,16 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	return data
 
-/obj/structure/machinery/power/apc/ui_act(action, params)
+/obj/structure/machinery/power/apc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
-	if(. || !can_use(usr, 1))
+	if(. || !can_use(ui.user, 1))
 		return
 	var/target_wire = params["wire"]
 	if(locked && !target_wire) //wire cutting etc does not require the apc to be unlocked
-		to_chat(usr, SPAN_WARNING("\The [src] is locked! Unlock it by swiping an ID card or dogtag."))
+		to_chat(ui.user, SPAN_WARNING("\The [src] is locked! Unlock it by swiping an ID card or dogtag."))
 		return
-	add_fingerprint(usr)
+	add_fingerprint(ui.user)
 	switch(action)
 		if("lock")
 			locked = !locked
@@ -287,7 +298,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			coverlocked = !coverlocked
 			. = TRUE
 		if("breaker")
-			toggle_breaker(usr)
+			toggle_breaker(ui.user)
 			. = TRUE
 		if("charge")
 			chargemode = !chargemode
@@ -314,28 +325,28 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			. = TRUE
 			CHECK_TICK
 		if("overload")
-			if(isRemoteControlling(usr) && !aidisabled)
+			if(isRemoteControlling(ui.user) && !aidisabled)
 				overload_lighting()
 				. = TRUE
 		if("cut")
-			var/obj/item/held_item = usr.get_held_item()
+			var/obj/item/held_item = ui.user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(usr, SPAN_WARNING("You need wirecutters!"))
+				to_chat(ui.user, SPAN_WARNING("You need wirecutters!"))
 				return TRUE
 
 			if(isWireCut(target_wire))
-				mend(target_wire, usr)
+				mend(target_wire, ui.user)
 			else
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				cut(target_wire, usr)
+				cut(target_wire, ui.user)
 			. = TRUE
 		if("pulse")
-			var/obj/item/held_item = usr.get_held_item()
+			var/obj/item/held_item = ui.user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(usr, SPAN_WARNING("You need a multitool!"))
+				to_chat(ui.user, SPAN_WARNING("You need a multitool!"))
 				return TRUE
 			playsound(src.loc, 'sound/effects/zzzt.ogg', 25, 1)
-			pulse(target_wire, usr)
+			pulse(target_wire, ui.user)
 			. = TRUE
 	return TRUE
 
@@ -520,9 +531,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	if(stat & MAINT)
 		update_state |= UPSTATE_MAINT
 	if(opened)
-		if(opened == 1)
+		if(opened == APC_COVER_OPEN)
 			update_state |= UPSTATE_OPENED1
-		if(opened == 2)
+		else if(opened == APC_COVER_REMOVED)
 			update_state |= UPSTATE_OPENED2
 	else if(wiresexposed)
 		update_state |= UPSTATE_WIREEXP
@@ -536,14 +547,15 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(locked)
 			update_overlay |= APC_UPOVERLAY_LOCKED
 
-		if(!charging)
-			update_overlay |= APC_UPOVERLAY_CHARGEING0
-		else if(charging == APC_CHARGING)
-			update_overlay |= APC_UPOVERLAY_CHARGEING1
-		else if(charging == APC_FULLY_CHARGED)
-			update_overlay |= APC_UPOVERLAY_CHARGEING2
+		switch(charging)
+			if(APC_NOT_CHARGING)
+				update_overlay |= APC_UPOVERLAY_CHARGEING0
+			if(APC_CHARGING)
+				update_overlay |= APC_UPOVERLAY_CHARGEING1
+			if(APC_FULLY_CHARGED)
+				update_overlay |= APC_UPOVERLAY_CHARGEING2
 
-		if (!equipment)
+		if(!equipment)
 			update_overlay |= APC_UPOVERLAY_EQUIPMENT0
 		else if(equipment == 1)
 			update_overlay |= APC_UPOVERLAY_EQUIPMENT1
@@ -800,7 +812,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			qdel(attacking_item)
 			beenhit = 0
 			stat &= ~BROKEN
-			if(opened == 2)
+			if(opened == APC_COVER_REMOVED)
 				opened = APC_COVER_OPEN
 			update_icon()
 	else
@@ -819,7 +831,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 /obj/structure/machinery/power/apc/deconstruct(disassembled = TRUE)
 	if(disassembled)
-		if((stat & BROKEN) || opened == 2)
+		if((stat & BROKEN) || opened == APC_COVER_REMOVED)
 			new /obj/item/stack/sheet/metal(loc)
 		else
 			new /obj/item/frame/apc(loc)
@@ -1098,10 +1110,18 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	if(!area.requires_power)
 		return
 
+	lastused_total_actual = 0
 	lastused_light = area.usage(POWER_CHANNEL_LIGHT)
+	if(lighting && operating)
+		lastused_total_actual += lastused_light
 	lastused_equip = area.usage(POWER_CHANNEL_EQUIP)
+	if(equipment && operating)
+		lastused_total_actual += lastused_equip
 	lastused_environ = area.usage(POWER_CHANNEL_ENVIRON)
+	if(environ && operating)
+		lastused_total_actual += lastused_environ
 	lastused_oneoff = area.usage(POWER_CHANNEL_ONEOFF, TRUE) //getting the one-off power usage and resetting it to 0 for the next processing tick
+	lastused_total_actual += lastused_oneoff
 	lastused_total = lastused_light + lastused_equip + lastused_environ + lastused_oneoff
 
 	//store states to update icon if any change
@@ -1124,7 +1144,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		var/cell_maxcharge = cell.maxcharge
 
 		//Calculate how much power the APC will try to get from the grid.
-		var/target_draw = lastused_total
+		var/target_draw = lastused_total_actual
 
 		if(attempt_charging())
 			target_draw += min((cell_maxcharge - cell.charge), (cell_maxcharge * CHARGELEVEL))/CELLRATE
@@ -1135,32 +1155,26 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 		//Try to draw from local grid
 		var/got_power_from_local_grid = FALSE
+		lastgenerated_total = 0
+		lastgenerated_total_surplus = 0
 		if(length(connected_power_sources) > 0)
-			var/total_power_generated = 0
+			for(var/obj/structure/machinery/power/power_generator/generator in connected_power_sources)
+				if(generator.current_area != current_area)
+					generator.apc_in_area = null
+					LAZYREMOVE(connected_power_sources, generator)
+					continue
+				if(generator.is_on)
+					lastgenerated_total += (generator.power_gen_percent / 100) * generator.power_gen
 
-			for(var/power_system in connected_power_sources)
-				if(istype(power_system, /obj/structure/machinery/power/power_generator))
-					var/obj/structure/machinery/power/power_generator/generator = power_system
-					if(!generator)
-						LAZYREMOVE(connected_power_sources, power_system)
-						continue
-					if(generator.current_area != current_area)
-						generator.apc_in_area = null
-						LAZYREMOVE(connected_power_sources, power_system)
-						continue
-					if(generator.is_on)
-						total_power_generated += (generator.power_gen_percent / 100) * generator.power_gen
-				else
-					LAZYREMOVE(connected_power_sources, power_system)
-
-			if(total_power_generated > 0)
-				power_drawn = min(total_power_generated, max(target_draw, MAXIMUM_GIVEN_POWER_TO_LOCAL_APC))
+			if(lastgenerated_total > 0)
+				power_drawn = min(lastgenerated_total, max(target_draw, MAXIMUM_GIVEN_POWER_TO_LOCAL_APC))
 				target_draw = max(target_draw - power_drawn, 0)
-				total_power_generated -= power_drawn
-				add_avail(total_power_generated)
+				lastgenerated_total_surplus = lastgenerated_total - power_drawn
+				add_avail(lastgenerated_total_surplus)
 
 				got_power_from_local_grid = target_draw <= 0
-				charging = APC_CHARGING
+				if(chargemode && operating)
+					charging = APC_CHARGING
 
 		//Try to draw from powernet
 		if(avail())
@@ -1170,7 +1184,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		power_excess = power_drawn - lastused_total
 
 		if(power_excess < 0) //Couldn't get enough power from the grid, we will need to take from the power cell.
-
 			charging = APC_NOT_CHARGING
 
 			var/required_power = -power_excess
@@ -1187,14 +1200,14 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 		//Set external power status
 		if(!power_drawn)
-			main_status = 0
+			main_status = APC_MAIN_NO_EXTERNAL
 		else if(power_excess < 0)
-			main_status = 1
+			main_status = APC_MAIN_LOW_EXTERNAL
 		else
-			main_status = 2
+			main_status = APC_MAIN_EXTERNAL
 
-		if (got_power_from_local_grid)
-			main_status = 3
+		if(got_power_from_local_grid)
+			main_status = APC_MAIN_LOCAL
 
 		//Set channels depending on how much charge we have left
 		// Allow the APC to operate as normal if the cell can charge
@@ -1238,12 +1251,16 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		//Now trickle-charge the cell
 		if(attempt_charging())
 			if(power_excess > 0) //Check to make sure we have enough to charge
-				var/surplus = max(power_excess - cell.give(power_excess * CELLRATE) / CELLRATE, 0) //Actually recharge the cell
-				//Giving surplus to the powernet
-				add_avail(surplus)
+				var/surplus = floor(max(power_excess - cell.give(power_excess * CELLRATE) / CELLRATE, 0)) //Actually recharge the cell
+				if(got_power_from_local_grid)
+					add_avail(surplus)
+					lastgenerated_total_surplus += surplus
 			else
 				charging = APC_NOT_CHARGING //Stop charging
 				chargecount = 0
+		else if(power_excess > 0 && got_power_from_local_grid)
+			add_avail(power_excess)
+			lastgenerated_total_surplus += power_excess
 
 		//Show cell as fully charged if so
 		if(cell.percent() >= 98)
@@ -1257,13 +1274,15 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 					chargecount++
 				else
 					chargecount = 0
-					charging = APC_NOT_CHARGING
 
 				if(chargecount >= 10)
 					chargecount = 0
-					charging = 1
+					charging = APC_CHARGING
 
 		else //Chargemode off
+			charging = APC_NOT_CHARGING
+			chargecount = 0
+		if(!operating)
 			charging = APC_NOT_CHARGING
 			chargecount = 0
 
@@ -1275,6 +1294,10 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		environ = autoset(environ, 0)
 		area.poweralert(0, src)
 		autoflag = 0
+		if(shorted)
+			main_status = APC_MAIN_FAULTED
+		else
+			main_status = APC_MAIN_NO_EXTERNAL
 
 	//Update icon & area power if anything changed
 
@@ -1288,7 +1311,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 //on 0 = off, 1 = auto-on, 2 = auto-off
 
 /proc/autoset(val, on)
-
 	if(on == 0) //Turn things off
 		if(val == 2) //If on, return off
 			return 0
@@ -1556,4 +1578,44 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	pixel_x = -30
 	dir = 8
 
+#undef APC_COVER_CLOSED
+#undef APC_COVER_OPEN
+#undef APC_COVER_REMOVED
+
+#undef APC_NOT_CHARGING
+#undef APC_CHARGING
+#undef APC_FULLY_CHARGED
+
+#undef APC_MAIN_FAULTED
+#undef APC_MAIN_NO_EXTERNAL
+#undef APC_MAIN_LOW_EXTERNAL
+#undef APC_MAIN_EXTERNAL
+#undef APC_MAIN_LOCAL
+
+#undef UPSTATE_CELL_IN
+#undef UPSTATE_OPENED1
+#undef UPSTATE_OPENED2
+#undef UPSTATE_MAINT
+#undef UPSTATE_BROKE
+#undef UPSTATE_BLUESCREEN
+#undef UPSTATE_WIREEXP
+#undef UPSTATE_ALLGOOD
+
+#undef APC_UPOVERLAY_CHARGEING0
+#undef APC_UPOVERLAY_CHARGEING1
+#undef APC_UPOVERLAY_CHARGEING2
+#undef APC_UPOVERLAY_EQUIPMENT0
+#undef APC_UPOVERLAY_EQUIPMENT1
+#undef APC_UPOVERLAY_EQUIPMENT2
+#undef APC_UPOVERLAY_LIGHTING0
+#undef APC_UPOVERLAY_LIGHTING1
+#undef APC_UPOVERLAY_LIGHTING2
+#undef APC_UPOVERLAY_ENVIRON0
+#undef APC_UPOVERLAY_ENVIRON1
+#undef APC_UPOVERLAY_ENVIRON2
+#undef APC_UPOVERLAY_LOCKED
+#undef APC_UPOVERLAY_OPERATING
+
 #undef APC_UPDATE_ICON_COOLDOWN
+
+#undef MAXIMUM_GIVEN_POWER_TO_LOCAL_APC

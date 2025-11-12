@@ -12,6 +12,11 @@
 
 	hostility = FALSE
 	var/is_deathsquad = FALSE
+	var/synthetics = 0
+	var/max_synths = 1
+
+/datum/emergency_call/cia_grs/random_chance
+	probability = 5
 
 /datum/emergency_call/cia_grs/hostile
 	name = "CIA Strike Team (Hostile)"
@@ -80,6 +85,17 @@
 			arm_equipment(H, /datum/equipment_preset/cia_global_response/leader/deathsquad, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the Global Response Team Leader!"))
 
+	else if(synthetics < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && H.client.check_whitelist_status(WHITELIST_SYNTHETIC))
+		synthetics++
+		if(!is_deathsquad)
+			if(!hostility)
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/synth, TRUE, TRUE)
+			else
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/synth/no_iff, TRUE, TRUE)
+		else
+			arm_equipment(H, /datum/equipment_preset/cia_global_response/synth/deathsquad, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Global Response Synthetic!"))
+
 	else if(smartgunners < max_smartgunners && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		smartgunners++
 		if(!is_deathsquad)
@@ -132,6 +148,52 @@
 				arm_equipment(H, /datum/equipment_preset/cia_global_response/standard/no_iff, TRUE, TRUE)
 		else
 			arm_equipment(H, /datum/equipment_preset/cia_global_response/standard/deathsquad, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Global Response Operator!"))
+	print_backstory(H)
+
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+
+/datum/emergency_call/cia_grs/random_chance/create_member(datum/mind/M, turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
+
+	var/mob/living/carbon/human/H = new(spawn_loc)
+	M.transfer_to(H, TRUE)
+
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
+		leader = H
+		arm_equipment(H, /datum/equipment_preset/cia_global_response/leader/weak, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are the Global Response Team Leader!"))
+
+	else if(synthetics < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && H.client.check_whitelist_status(WHITELIST_SYNTHETIC))
+		synthetics++
+		arm_equipment(H, /datum/equipment_preset/cia_global_response/synth/weak, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Global Response Synthetic!"))
+
+	else if(smartgunners < max_smartgunners && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
+		smartgunners++
+		arm_equipment(H, /datum/equipment_preset/cia_global_response/heavy/weak, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Global Response Heavy Operator!"))
+
+	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
+		heavies++
+		arm_equipment(H, /datum/equipment_preset/cia_global_response/sniper/weak, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Global Response Advanced Marksman!"))
+
+	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
+		medics++
+		arm_equipment(H, /datum/equipment_preset/cia_global_response/medic/weak, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Global Response Medic!"))
+
+	else if(engineers < max_engineers && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
+		engineers++
+		arm_equipment(H, /datum/equipment_preset/cia_global_response/engineer/weak, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Global Response Technician!"))
+
+	else
+		arm_equipment(H, /datum/equipment_preset/cia_global_response/standard/weak, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Global Response Operator!"))
 	print_backstory(H)
 

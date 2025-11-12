@@ -7,7 +7,7 @@
 /area/yautja_grounds/temple)
 "ab" = (
 /obj/structure/stairs/multiz/down{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/temple)

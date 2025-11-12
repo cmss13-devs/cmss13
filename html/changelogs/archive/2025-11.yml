@@ -141,3 +141,9 @@
       sign.
   jupyterkat:
   - bugfix: fixed character preview hairs always being black
+2025-11-12:
+  Puckaboo2:
+  - spellcheck: Renames some chemical properties to sound more scientifi. Balding,
+      Fluffing, Paining, Relaxing, and Sedating have been changed to Atrichogenic,
+      Trichogenic, Neuropathic, Antispasmodic, and Hypnotic,  with their codes being
+      ATR. TRI, NPT, ASP. And HYP.

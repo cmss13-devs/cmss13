@@ -403,7 +403,7 @@
 	chemname = "tricordrazine"
 	desc = "An autoinjector loaded with a single dose of 15u of tricordrazine for marines to treat themselves with. You can refill it at Wey-Med vending machines."
 	icon_state = "tricord"
-	autoinjector_type = null
+	autoinjector_type = "marine_oneuse"
 	amount_per_transfer_from_this = 15
 	volume = 15
 	skilllock = SKILL_MEDICAL_DEFAULT

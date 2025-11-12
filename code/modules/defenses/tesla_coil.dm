@@ -77,6 +77,8 @@
 		if(HAS_TRAIT(M, TRAIT_CHARGING))
 			to_chat(M, SPAN_WARNING("You ignore some weird noises as you charge."))
 			continue
+		if(M.status_flags & INCORPOREAL)
+			continue
 
 		if(M.get_target_lock(faction_group))
 			continue

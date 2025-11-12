@@ -61,7 +61,7 @@
 	ranking = 6
 	pay_multiplier = 2.4
 
-/datum/paygrade/marine/e7
+/datum/paygrade/army/e7
 	paygrade = PAY_SHORT_AE7
 	name = "Sergeant First Class"
 	prefix = "Sgt1C"
@@ -129,7 +129,7 @@
 
 // COMMISSIONED PAYGRADES
 
-/datum/paygrade/marine/o1
+/datum/paygrade/army/o1
 	paygrade = PAY_SHORT_MO1
 	name = "Second Lieutenant"
 	prefix = "2ndLt"
@@ -138,7 +138,7 @@
 	pay_multiplier = 3
 	officer_grade = GRADE_OFFICER
 
-/datum/paygrade/marine/o2
+/datum/paygrade/army/o2
 	paygrade = PAY_SHORT_MO2
 	name = "First Lieutenant"
 	prefix = "1stLt"
@@ -147,7 +147,7 @@
 	pay_multiplier = 3.2
 	officer_grade = GRADE_OFFICER
 
-/datum/paygrade/marine/o3
+/datum/paygrade/army/o3
 	paygrade = PAY_SHORT_MO3
 	name = "Captain"
 	prefix = "Capt"
@@ -165,7 +165,7 @@
 	pay_multiplier = 4
 	officer_grade = GRADE_OFFICER
 
-/datum/paygrade/marine/o5
+/datum/paygrade/army/o5
 	paygrade = PAY_SHORT_MO5
 	name = "Lieutenant Colonel"
 	prefix = "LtCol"
@@ -175,7 +175,7 @@
 	officer_grade = GRADE_OFFICER
 
 //Platoon Commander
-/datum/paygrade/marine/o6
+/datum/paygrade/army/o6
 	paygrade = PAY_SHORT_MO6
 	name = "Colonel"
 	prefix = "Col"
@@ -184,7 +184,7 @@
 	pay_multiplier = 4.4
 	officer_grade = GRADE_OFFICER
 
-/datum/paygrade/marine/o6e
+/datum/paygrade/army/o6e
 	paygrade = PAY_SHORT_MO6E
 	name = "Senior Colonel"
 	prefix = "Snr Col."
@@ -193,7 +193,7 @@
 	pay_multiplier = 4.6
 	officer_grade = GRADE_OFFICER
 
-/datum/paygrade/marine/o6c
+/datum/paygrade/army/o6c
 	paygrade = PAY_SHORT_MO6C
 	name = "Division Colonel"
 	prefix = "Div Col."
@@ -212,7 +212,7 @@
 	pay_multiplier = 6
 	officer_grade = GRADE_FLAG
 
-/datum/paygrade/marine/o8
+/datum/paygrade/army/o8
 	paygrade = PAY_SHORT_MO8
 	name = "Major General"
 	prefix = "MajGen"
@@ -221,7 +221,7 @@
 	pay_multiplier = 6.2
 	officer_grade = GRADE_FLAG
 
-/datum/paygrade/marine/o9
+/datum/paygrade/army/o9
 	paygrade = PAY_SHORT_MO9
 	name = "Lieutenant General"
 	prefix = "LtGen"
@@ -230,7 +230,7 @@
 	pay_multiplier = 6.4
 	officer_grade = GRADE_FLAG
 
-/datum/paygrade/marine/o10
+/datum/paygrade/army/o10
 	paygrade = PAY_SHORT_MO10
 	name = "General"
 	prefix = "Gen"
@@ -239,16 +239,16 @@
 	pay_multiplier = 6.6
 	officer_grade = GRADE_FLAG
 
-/datum/paygrade/marine/o10c
+/datum/paygrade/army/o10c
 	paygrade = PAY_SHORT_MO10C
-	name = "Assistant Commandant of the Marine Corps"
+	name = "Assistant Commandant of the army Corps"
 	prefix = "ACMC"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/o10c
 	ranking = 27
 	pay_multiplier = 6.8
 	officer_grade = GRADE_FLAG
 
-/datum/paygrade/marine/o10s
+/datum/paygrade/army/o10s
 	paygrade = PAY_SHORT_MO10S
 	name = "Commandant of the Army"
 	prefix = "CMC"

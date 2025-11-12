@@ -1,3 +1,6 @@
+// Commented out untill the faction gets merged.
+
+/*
 /datum/paygrade/army
 	name = "Army Paygrade"
 	rank_pin = /obj/item/clothing/accessory/ranks/army
@@ -256,3 +259,4 @@
 	ranking = 28
 	pay_multiplier = 7
 	officer_grade = GRADE_FLAG
+*/

@@ -266,26 +266,26 @@
 
 	range_bounds.set_shape(cur_turf.x, cur_turf.y, detector_range * 2)
 
-	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
-	if(SSmapping.get_turf_above(cur_turf))
-		ping_candidates += SSquadtree.players_in_range(range_bounds, cur_turf.z+1, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
-	if(SSmapping.get_turf_below(cur_turf))
-		ping_candidates += SSquadtree.players_in_range(range_bounds, cur_turf.z-1, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
+	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
+	var/turf/above = SSmapping.get_turf_above(cur_turf)
+	var/turf/below = SSmapping.get_turf_below(cur_turf)
+	if(above)
+		ping_candidates += SSquadtree.players_in_range(range_bounds, above.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
+	if(below)
+		ping_candidates += SSquadtree.players_in_range(range_bounds, below.z, QTREE_FILTER_LIVING | QTREE_SCAN_MOBS)
 
-	for(var/A in ping_candidates)
-		var/mob/living/M = A //do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
-		if(M == loc)
+	for(var/mob/living/current_mob as anything in ping_candidates)
+		if(current_mob == loc)
 			continue //device user isn't detected
-		if(M.get_target_lock(iff_signal))
-			continue
-		if(world.time > M.l_move_time + 20)
+		if(world.time > current_mob.l_move_time + 20)
 			continue //hasn't moved recently
+		if(current_mob.get_target_lock(iff_signal))
+			continue
 
-
-		apply_debuff(M)
+		apply_debuff(current_mob)
 		ping_count++
 		if(human_user)
-			show_blip(human_user, M)
+			show_blip(human_user, current_mob)
 
 	for(var/mob/hologram/holo as anything in GLOB.hologram_list)
 		if(!holo.motion_sensed)

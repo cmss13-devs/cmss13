@@ -130,7 +130,7 @@
 // COMMISSIONED PAYGRADES
 
 /datum/paygrade/army/o1
-	paygrade = PAY_SHORT_MO1
+	paygrade = PAY_SHORT_AO1
 	name = "Second Lieutenant"
 	prefix = "2ndLt"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/o1
@@ -139,7 +139,7 @@
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/army/o2
-	paygrade = PAY_SHORT_MO2
+	paygrade = PAY_SHORT_AO2
 	name = "First Lieutenant"
 	prefix = "1stLt"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/o2
@@ -148,7 +148,7 @@
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/army/o3
-	paygrade = PAY_SHORT_MO3
+	paygrade = PAY_SHORT_AO3
 	name = "Captain"
 	prefix = "Capt"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/o3
@@ -166,7 +166,7 @@
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/army/o5
-	paygrade = PAY_SHORT_MO5
+	paygrade = PAY_SHORT_AO5
 	name = "Lieutenant Colonel"
 	prefix = "LtCol"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/o5
@@ -176,7 +176,7 @@
 
 //Platoon Commander
 /datum/paygrade/army/o6
-	paygrade = PAY_SHORT_MO6
+	paygrade = PAY_SHORT_AO6
 	name = "Colonel"
 	prefix = "Col"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/o6
@@ -185,7 +185,7 @@
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/army/o6e
-	paygrade = PAY_SHORT_MO6E
+	paygrade = PAY_SHORT_AO6E
 	name = "Senior Colonel"
 	prefix = "Snr Col."
 	rank_pin = /obj/item/clothing/accessory/ranks/army/o6e
@@ -194,7 +194,7 @@
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/army/o6c
-	paygrade = PAY_SHORT_MO6C
+	paygrade = PAY_SHORT_AO6C
 	name = "Division Colonel"
 	prefix = "Div Col."
 	rank_pin = /obj/item/clothing/accessory/ranks/army/o6c
@@ -213,7 +213,7 @@
 	officer_grade = GRADE_FLAG
 
 /datum/paygrade/army/o8
-	paygrade = PAY_SHORT_MO8
+	paygrade = PAY_SHORT_AO8
 	name = "Major General"
 	prefix = "MajGen"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/o8
@@ -222,7 +222,7 @@
 	officer_grade = GRADE_FLAG
 
 /datum/paygrade/army/o9
-	paygrade = PAY_SHORT_MO9
+	paygrade = PAY_SHORT_AO9
 	name = "Lieutenant General"
 	prefix = "LtGen"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/o9
@@ -231,7 +231,7 @@
 	officer_grade = GRADE_FLAG
 
 /datum/paygrade/army/o10
-	paygrade = PAY_SHORT_MO10
+	paygrade = PAY_SHORT_AO10
 	name = "General"
 	prefix = "Gen"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/o10
@@ -240,7 +240,7 @@
 	officer_grade = GRADE_FLAG
 
 /datum/paygrade/army/o10c
-	paygrade = PAY_SHORT_MO10C
+	paygrade = PAY_SHORT_AO10C
 	name = "Assistant Commandant of the army Corps"
 	prefix = "ACMC"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/o10c
@@ -249,7 +249,7 @@
 	officer_grade = GRADE_FLAG
 
 /datum/paygrade/army/o10s
-	paygrade = PAY_SHORT_MO10S
+	paygrade = PAY_SHORT_AO10S
 	name = "Commandant of the Army"
 	prefix = "CMC"
 	rank_pin = /obj/item/clothing/accessory/ranks/army/o10c

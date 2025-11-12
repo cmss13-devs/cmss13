@@ -58,7 +58,6 @@
 
 /obj/vehicle/motorbike/proc/on_move()
 	SIGNAL_HANDLER
-	handle_acceleration()
 	play_move_sound()
 	set_glide_size(DELAY_TO_GLIDE_SIZE(move_delay)) // плавность
 
@@ -99,6 +98,9 @@
 	// Движение вперед
 	set_glide_size(DELAY_TO_GLIDE_SIZE(move_delay + 1))
 	. = ..()
+	if(.)
+		forward_dir = dir // Обновление направления движения при любом успешном перемещении
+		handle_acceleration() // Обновление ускорения после поворота
 
 // ==========================================
 // ================ Скорость ================

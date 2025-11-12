@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed various material exploits when deconstructing walls, reinforced floors, computer frames, airlocks, tcoms, closets, fences, tables, windoors, window frames, desk bell, apcs, power monitors, and SMES"
+  - code_imp: "Cleaned up and reworked some logic in various attackby procs that handle deconstruction"

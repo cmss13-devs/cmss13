@@ -133,16 +133,12 @@
 	..()
 	read_paper(user)
 
-/obj/item/paper/attack_remote(mob/living/silicon/ai/user as mob)
-	var/dist
-	dist = get_dist(src, user)
+/obj/item/paper/attack_remote(mob/living/silicon/ai/user)
+	var/dist = get_dist(src, user)
 	if(dist < 2)
 		read_paper(user)
 	else
-		//Show scrambled paper
-		show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
-		onclose(user, name)
-	return
+		read_paper(user, scramble=TRUE)
 
 /obj/item/paper/attack(mob/living/carbon/human/M, mob/living/carbon/user)
 

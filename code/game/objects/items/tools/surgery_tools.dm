@@ -150,8 +150,9 @@
  */
 
 /obj/item/tool/surgery/scalpel/pict_system
-	name = "\improper PICT system"
-	desc = "The Precision Incision and Carving Tool uses a high-frequency vibrating blade, and suction liquid control system to precisely sever target tissues while preventing all fluid leakage. Despite its troubled development program and horrifying price tag, outside of complex experimental surgeries it isn't any better than an ordinary twenty-dollar scalpel and can't create a full-length incision bloodlessly."
+	name = "\improper PRISE system"
+	desc = "The Perivascular Incision, Suction, and Evisceration Tool, formerly known as the Precision Incision and Cautery Tool, uses a high-frequency vibrating blade and suction liquid control system to precisely target and destroy the lymphatic and vascular systems feeding tumors while suctioning fluids that may contain traveling cancerous cells."
+	desc_lore = "The PRISE system had humble origins as yet another tool developed for cancer research. Designed to identify, sever and cauterize the lymphatic and vascular systems feeding tumors, the cauterization feature was considered too costly to implement and was abandoned. Nonetheless, it accomplishes its other goals with aplomb and is the standard tool for cutting off nutrient supplies to tumors before extraction. Due to its mechanisms of targeting specific types of cells while incising and suctioning, it struggles to create a full-length incision bloodlessly."
 	icon_state = "pict_system"
 	w_class = SIZE_SMALL
 	force = 7.5

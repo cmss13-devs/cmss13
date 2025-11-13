@@ -43,7 +43,13 @@
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.resting)
-		button.icon_state = "template_active"
+		button.icon_state = "template_xeno_active"
+
+/datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.lay_down()
+	button.icon_state = xeno.resting ? "template_xeno_active" : "template_xeno"
+	return ..()
 
 // Shift Spits
 /datum/action/xeno_action/onclick/shift_spits
@@ -302,7 +308,7 @@
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.is_zoomed)
-		button.icon_state = "template_active"
+		button.icon_state = "template_xeno_active"
 
 /datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -329,7 +335,7 @@
 		xeno.speed_modifier += movement_slowdown
 		xeno.recalculate_speed()
 	xeno.zoom_in()
-	button.icon_state = "template_active"
+	button.icon_state = "template_xeno_active"
 	return ..()
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_out()
@@ -424,7 +430,7 @@
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.layer == XENO_HIDING_LAYER)
-		button.icon_state = "template_active"
+		button.icon_state = "template_xeno_active"
 
 /datum/action/xeno_action/onclick/place_trap
 	name = "Place resin hole (200)"

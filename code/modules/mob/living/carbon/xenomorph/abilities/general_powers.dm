@@ -100,24 +100,6 @@
 
 	return ..()
 
-/mob/living/carbon/xenomorph/set_lying_down()
-	if(selected_ability && selected_ability.ability_uses_acid_overlay)
-		overlays -= acid_overlay
-
-	return ..()
-
-/mob/living/carbon/xenomorph/get_up()
-	if(selected_ability && selected_ability.ability_uses_acid_overlay && !(acid_overlay in overlays))
-		overlays += acid_overlay
-
-	return ..()
-
-/datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.lay_down()
-	button.icon_state = xeno.resting ? "template_active" : "template_xeno"
-	return ..()
-
 // Shift spits
 /datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner
@@ -593,7 +575,7 @@
 	if(xeno.layer != XENO_HIDING_LAYER)
 		xeno.layer = XENO_HIDING_LAYER
 		to_chat(xeno, SPAN_NOTICE("We are now hiding."))
-		button.icon_state = "template_active"
+		button.icon_state = "template_xeno_active"
 		RegisterSignal(xeno, COMSIG_MOB_STATCHANGE, PROC_REF(unhide_on_stat))
 	else
 		xeno.layer = initial(xeno.layer)

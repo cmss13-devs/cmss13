@@ -242,8 +242,9 @@
 				hud_used.healths.icon_state = "health_dead"
 			if(hud_used.alien_plasma_display)
 				hud_used.alien_plasma_display.icon_state = "power_display_empty"
-			if(hud_used.alien_armor_display)
-				hud_used.alien_armor_display.icon_state = "armor_00"
+			if(hud_used.alien_evo_display)
+				hud_used.alien_evo_display.icon_state = "power_display_empty"
+
 		return TRUE
 
 	var/severity = HUD_PAIN_STATES_XENO - ceil(((max(health, 0) / maxHealth) * HUD_PAIN_STATES_XENO))
@@ -272,6 +273,28 @@
 			hud_used.healths.icon_state = "health_full"
 		else if(health_stacks <= 0)
 			hud_used.healths.icon_state = "health_critical"
+
+	if(hud_used.alien_evo_display)
+		if(stat != DEAD)
+			var/amount = 0
+			if(caste.evolution_threshold)
+				amount = round(evolution_stored * 100 / caste.evolution_threshold, 10)
+				if(amount >= 100)
+					hud_used.alien_evo_display.icon_state = "evo_100"
+				else
+					hud_used.alien_evo_display.icon_state = "evo_[amount]"
+			else
+				hud_used.alien_evo_display.icon_state = "evo_0"
+		else
+
+	if(hud_used.alien_health_doll)
+		if(stat != DEAD)
+			var/amount = 0
+			amount = (255 - (round(health * 255 / caste.max_health, 25)))
+			if(health < caste.max_health)
+				hud_used.alien_health_doll.overlays.Cut()
+				hud_used.alien_health_doll.overlays += mutable_appearance('icons/mob/hud/cm_hud/cm_hud_xeno_health_doll.dmi', "grayscale_overlay", layer = HUD_LAYER, alpha = amount + 25)
+				hud_used.alien_health_doll.overlays += mutable_appearance('icons/mob/hud/cm_hud/cm_hud_xeno_health_doll.dmi', "damage_color_overlay", layer = ABOVE_HUD_LAYER, alpha = amount)
 
 	if(hud_used.alien_plasma_display)
 		if(plasma_max == 0)
@@ -440,9 +463,9 @@ Make sure their actual health updates immediately.*/
 			locator.setDir(Get_Compass_Dir(src, tracking_atom))
 			locator.icon_state = "trackon"
 			if(tracking_atom.loc.z > loc.z)
-				locator.overlays |= image('icons/mob/hud/alien_standard.dmi', "up")
+				locator.overlays |= image('icons/mob/hud/cm_hud/cm_hud_xeno_buttons.dmi', "up")
 			if(tracking_atom.loc.z < loc.z)
-				locator.overlays |= image('icons/mob/hud/alien_standard.dmi', "down")
+				locator.overlays |= image('icons/mob/hud/cm_hud/cm_hud_xeno_buttons.dmi', "down")
 		else
 			locator.icon_state = "trackondirect"
 

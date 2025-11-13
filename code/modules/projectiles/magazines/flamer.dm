@@ -27,6 +27,10 @@
 	var/max_range = 5
 	var/max_duration = 30
 
+	///Hud icon state for the flamethrower fuel type
+	var/hud_state = "flame"
+	var/hud_state_empty = "flame_empty"
+
 	var/fuel_pressure = 1 //How much fuel is used per tile fired
 	var/max_pressure = 10
 
@@ -160,6 +164,7 @@
 	desc_lore = "Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess. The gel reacts violently with inorganic materials to break them down, forming an extremely sticky crytallized goo."
 	caliber = "Napalm Gel"
 	flamer_chem = "napalmgel"
+	hud_state = "flame_green"
 	max_rounds = 200
 
 	max_range = 7
@@ -224,6 +229,8 @@
 
 	max_range = 6
 
+	hud_state = "flame_green"
+
 // This is the blue flamer fuel for the pyro.
 /obj/item/ammo_magazine/flamer_tank/large/X
 	name = "M240 large incinerator tank (X)"
@@ -232,13 +239,14 @@
 	flamer_chem = "napalmx"
 
 	max_range = 6
+	hud_state = "flame_blue"
 
 /obj/item/ammo_magazine/flamer_tank/large/EX
 	name = "M240 large incinerator tank (EX)"
 	desc = "A large fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through most flame-resistant materials, for use in the M240-T incinerator unit. Handle with extreme caution."
 	caliber = "Napalm EX"
 	flamer_chem = "napalmex"
-
+	hud_state = "flame_ultra"
 	max_range = 7
 
 //Custom pyro tanks
@@ -307,5 +315,6 @@
 	name = "FW3 heavy incinerator tank (EX)"
 	desc = "A heavy fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through most flame-resistant materials, utilized by the Flammenwerfer 3 Heavy Incineration Unit. This has a blue, heat-resistant Weyland-Yutani logo on it. Handle with care."
 	caliber = "Napalm EX"
+	hud_state = "flame_ultra"
 	flamer_chem = "napalmex"
 	stripe_icon = TRUE

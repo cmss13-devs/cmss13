@@ -42,7 +42,6 @@
 	organ_value = 1000
 
 	base_actions = list(
-		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab/slam,
@@ -121,7 +120,7 @@
 		xeno.ability_speed_modifier += speed_debuff
 		xeno.armor_deflection_buff += armor_buff
 		xeno.mob_size = MOB_SIZE_BIG //knockback immune
-		button.icon_state = "template_active"
+		button.icon_state = "template_xeno_active"
 		xeno.update_icons()
 	else
 		to_chat(xeno, SPAN_XENOWARNING("We raise our crest."))
@@ -271,7 +270,7 @@
 		RegisterSignal(owner, COMSIG_MOB_DEATH, PROC_REF(unconscious_check))
 		fortify_switch(xeno, TRUE)
 		if(xeno.selected_ability != src)
-			button.icon_state = "template_active"
+			button.icon_state = "template_xeno_active"
 	else
 		UnregisterSignal(owner, COMSIG_XENO_ENTER_CRIT)
 		UnregisterSignal(owner, COMSIG_MOB_DEATH)
@@ -287,13 +286,13 @@
 	..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.fortify && xeno.selected_ability != src)
-		button.icon_state = "template_active"
+		button.icon_state = "template_xeno_active"
 
 /datum/action/xeno_action/activable/fortify/action_deselect()
 	..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.fortify)
-		button.icon_state = "template_active"
+		button.icon_state = "template_xeno_active"
 
 /datum/action/xeno_action/activable/fortify/proc/fortify_switch(mob/living/carbon/xenomorph/xeno, fortify_state)
 	if(xeno.fortify == fortify_state)

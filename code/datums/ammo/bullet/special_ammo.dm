@@ -7,6 +7,8 @@
 /datum/ammo/bullet/smartgun
 	name = "smartgun tracer bullet"
 	icon_state = "bullet_iff"
+	hud_state = "smartgun"
+	hud_state_empty = "smartgun_empty"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
@@ -32,7 +34,7 @@
 /datum/ammo/bullet/smartgun/armor_piercing
 	name = "\improper AP smartgun tracer bullet"
 	icon_state = "bullet_ap_iff"
-
+	hud_state = "smartgun_ap"
 	damage_falloff = DAMAGE_FALLOFF_TIER_9_5
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_2
@@ -50,6 +52,7 @@
 /datum/ammo/bullet/smartgun/dirty
 	name = "irradiated smartgun tracer bullet"
 	icon_state = "bullet_iff"
+	hud_state = "smartgun_radioactive"
 	debilitate = list(0,0,0,3,0,0,0,1)
 
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
@@ -69,6 +72,7 @@
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
 	name = "irradiated AP smartgun tracer bullet"
 	icon_state = "bullet_ap_iff"
+	hud_state = "smartgun_radioactive_ap"
 	debilitate = list(0,0,0,3,0,0,0,1)
 
 	accurate_range = 22
@@ -88,7 +92,7 @@
 /datum/ammo/bullet/smartgun/holo_target //Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
 	name = "holo-targeting smartgun tracer bullet"
 	icon_state = "bullet_iff"
-
+	hud_state = "smartgun_ht"
 	damage = 30
 	/// inflicts this many holo stacks per bullet hit
 	var/holo_stacks = 15
@@ -111,7 +115,7 @@
 /datum/ammo/bullet/smartgun/holo_target/ap
 	name = "holo-targeting AP smartgun tracer bullet"
 	icon_state = "bullet_ap_iff"
-
+	hud_state = "smartgun_ap"
 	// Same as /datum/ammo/bullet/smartgun/armor_piercing
 	damage_falloff = DAMAGE_FALLOFF_TIER_9_5
 	accurate_range = 12
@@ -131,7 +135,7 @@
 /datum/ammo/bullet/smartgun/heap
 	name = "high-explosive armor-piercing smartgun bullet"
 	icon_state = "bullet"
-
+	hud_state = "smartgun_heap"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage = 50//big damage, doesn't actually blow up because thats stupid.
 	penetration = ARMOR_PENETRATION_TIER_8
@@ -230,6 +234,8 @@
 
 /datum/ammo/bullet/minigun
 	name = "minigun bullet"
+	hud_state = "minigun"
+	hud_state_empty = "minigun_empty"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = -HIT_ACCURACY_TIER_3

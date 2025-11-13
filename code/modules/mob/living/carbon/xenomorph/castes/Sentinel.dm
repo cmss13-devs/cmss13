@@ -41,7 +41,6 @@
 	tier = 1
 	organ_value = 800
 	base_actions = list(
-		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
@@ -101,7 +100,7 @@
 	if(!next_slash_buffed)
 		var/datum/action/xeno_action/onclick/paralyzing_slash/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/paralyzing_slash)
 		if (ability && istype(ability))
-			ability.button.icon_state = "template"
+			ability.button.icon_state = "template_xeno"
 	return original_damage
 
 #undef NEURO_TOUCH_DELAY
@@ -203,7 +202,7 @@
 		behavior.next_slash_buffed = TRUE
 
 	to_chat(paraslash_user, SPAN_XENOHIGHDANGER("Our next slash will apply neurotoxin!"))
-	button.icon_state = "template_active"
+	button.icon_state = "template_xeno_active"
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 

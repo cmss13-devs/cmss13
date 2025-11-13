@@ -667,7 +667,7 @@
 		RegisterSignal(Xeno, COMSIG_MOVABLE_ENTERED_RIVER, PROC_REF(handle_river))
 		RegisterSignal(Xeno, COMSIG_LIVING_PRE_COLLIDE, PROC_REF(handle_collision))
 		RegisterSignal(Xeno, COMSIG_XENO_START_CHARGING, PROC_REF(start_charging))
-		button.icon_state = "template_active"
+		button.icon_state = "template_xeno_active"
 	else
 		stop_momentum()
 		UnregisterSignal(Xeno, list(

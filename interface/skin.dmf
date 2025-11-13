@@ -30,9 +30,11 @@ window "mainwindow"
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = "splitter"
-		left = "mapwindow"
+		left = "gamewindow"
 		right = "infowindow"
 		is-vert = true
+		lock = left
+		splitter = 71
 	elem "asset_cache_browser"
 		type = BROWSER
 		pos = 0,0
@@ -59,6 +61,57 @@ window "mainwindow"
 		is-disabled = true
 		background-color = #222222
 
+window "gamewindow"
+	elem "gamewindow"
+		type = MAIN
+		pos = 281,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Game"
+		is-pane = true
+	elem "game"
+		type = CHILD
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		saved-params = "splitter"
+		left = "hudwindow"
+		right = "mapwindow"
+		is-vert = true
+		splitter = 25
+		show-splitter = false
+	elem "lobby_browser"
+		type = BROWSER
+		pos = 0,0
+		size = 640,480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-visible = false
+		is-disabled = true
+		background-color = #222222
+
+window "hudwindow"
+	elem "hudwindow"
+		type = MAIN
+		pos = 281,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;"
+		is-pane = true
+	elem "hud"
+		type = MAP
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		font-family = "Arial"
+		font-size = 7
+		saved-params = "icon-size;text-mode"
+
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
@@ -78,15 +131,6 @@ window "mapwindow"
 		font-size = 7
 		is-default = true
 		saved-params = "zoom;letterbox;zoom-mode;icon-size;text-mode"
-	elem "lobby_browser"
-		type = BROWSER
-		pos = 0,0
-		size = 640,480
-		anchor1 = 0,0
-		anchor2 = 100,100
-		is-visible = false
-		is-disabled = true
-		background-color = #222222
 	elem "status_bar"
 		type = LABEL
 		pos = 0,464

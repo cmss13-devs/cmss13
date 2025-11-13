@@ -140,7 +140,7 @@
 		return
 
 	behavior.dodge_activated = TRUE
-	button.icon_state = "template_active"
+	button.icon_state = "template_xeno_active"
 	to_chat(dodge_user, SPAN_XENOHIGHDANGER("We can now dodge through mobs!"))
 	dodge_user.speed_modifier -= speed_buff_amount
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)

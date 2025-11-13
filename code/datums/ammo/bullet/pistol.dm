@@ -7,6 +7,8 @@
 // Used by M4A3, M4A4, M4A3 Custom and B92FS
 /datum/ammo/bullet/pistol
 	name = "pistol bullet"
+	hud_state = "pistol"
+	hud_state_empty = "pistol_empty"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
@@ -22,9 +24,11 @@
 
 /datum/ammo/bullet/pistol/tiny
 	name = "light pistol bullet"
+	hud_state = "pistol_light"
 
 /datum/ammo/bullet/pistol/tranq
 	name = "tranquilizer bullet"
+	hud_state = "pistol_tranq"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
 	stamina_damage = 60
 	damage = 15
@@ -34,7 +38,7 @@
 
 /datum/ammo/bullet/pistol/hollow
 	name = "hollowpoint pistol bullet"
-
+	hud_state = "pistol_hollow"
 	damage = 55 //hollowpoint is strong
 	penetration = 0 //hollowpoint can't pierce armor!
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_3 //hollowpoint causes shrapnel
@@ -42,7 +46,7 @@
 // Used by M4A3 AP and mod88
 /datum/ammo/bullet/pistol/ap
 	name = "armor-piercing pistol bullet"
-
+	hud_state = "pistol_ap"
 	damage = 25
 	accuracy = HIT_ACCURACY_TIER_2
 	penetration= ARMOR_PENETRATION_TIER_8
@@ -99,6 +103,7 @@
 /datum/ammo/bullet/pistol/rubber/es4
 	name = "stun pistol bullet"
 	icon_state = "cm_laser"
+	hud_state = "pistol_ht"
 	sound_override = null
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
 	sound_hit = "energy_hit"
@@ -240,6 +245,7 @@
 
 /datum/ammo/bullet/pistol/squash/penetrating
 	name = "wall-penetrating squash-head pistol bullet"
+	hud_state = "pistol_ap"
 	shrapnel_chance = 0
 	penetration = ARMOR_PENETRATION_TIER_10
 
@@ -251,6 +257,7 @@
 
 /datum/ammo/bullet/pistol/squash/incendiary
 	name = "incendiary squash-head pistol bullet"
+	hud_state = "pistol_fire"
 	damage_type = BURN
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -265,6 +272,7 @@
 
 /datum/ammo/bullet/pistol/squash/rubber
 	name = "rubber squash-head pistol bullet"
+	hud_state = "pistol_ht"
 	damage_type = BURN
 	shrapnel_chance = 0
 	sound_override = 'sound/weapons/gun_c99.ogg'
@@ -274,6 +282,8 @@
 /datum/ammo/bullet/pistol/mankey
 	name = "live monkey"
 	icon_state = "monkey1"
+	hud_state = "monkey"
+	hud_state_empty = "monkey_empty"
 	ping = null //no bounce off.
 	damage_type = BURN
 	debilitate = list(4,4,0,0,0,0,0,0)
@@ -321,7 +331,7 @@
 
 /datum/ammo/bullet/pistol/m10/ap
 	name = "armor-piercing auto-pistol bullet"
-
+	hud_state = "pistol_ap"
 	damage = 24
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_5

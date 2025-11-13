@@ -183,7 +183,7 @@
 		. = ..()
 		if(.)
 			activated_once = TRUE
-			button.icon_state = "template_active"
+			button.icon_state = "template_xeno_active"
 			addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
 	else
 		damage_nearby_targets()
@@ -205,7 +205,7 @@
 		return
 
 	activated_once = FALSE
-	button.icon_state = dash_user.selected_ability == src ? "template_on" : "template_xeno"
+	button.icon_state = dash_user.selected_ability == src ? "template_xeno_active" : "template_xeno"
 
 	var/list/target_mobs = list()
 	var/list/list_of_targets = orange(1, dash_user)

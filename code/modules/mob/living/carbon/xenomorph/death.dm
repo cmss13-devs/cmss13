@@ -32,6 +32,8 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 			hud_used.healths.icon_state = "health_dead"
 		if(hud_used && hud_used.alien_plasma_display)
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
+		if(hud_used && hud_used.alien_evo_display)
+			hud_used.alien_evo_display.icon_state = "evo_0"
 		update_icons()
 
 	if(!should_block_game_interaction(src)) //so xeno players don't get death messages from admin tests

@@ -910,6 +910,7 @@
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
 	INVOKE_ASYNC(user, TYPE_PROC_REF(/atom, visible_message), SPAN_NOTICE("[user] looks up from [zoom_device]."),
 	SPAN_NOTICE("You look up from [zoom_device]."))
+	user?.hud_used.screen_border.alpha = 255
 	zoom = !zoom
 	COOLDOWN_START(user, zoom_cooldown, 20)
 	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
@@ -946,6 +947,7 @@
 		user.set_interaction(src)
 	if(user.client)
 		user.client.change_view(viewsize, src)
+		user?.hud_used.screen_border.alpha = 0
 
 		RegisterSignal(src, list(
 			COMSIG_ITEM_DROPPED,
@@ -1117,6 +1119,9 @@
 		teardown()
 		usr.put_in_any_hand_if_possible(src, disable_warning = TRUE)
 
+	if(src != over_object)
+		remove_outline()
+
 /atom/movable/proc/do_item_attack_animation(atom/attacked_atom, visual_effect_icon, obj/item/used_item)
 	var/image/attack_image
 	if(visual_effect_icon)
@@ -1164,6 +1169,12 @@
 /obj/item/proc/unique_action(mob/user)
 	return
 
+/obj/item/weapon/gun/proc/get_ammo_type()
+	return null //usually a list
+
+/obj/item/weapon/gun/proc/get_ammo_count()
+	return FALSE
+
 /obj/item/verb/use_unique_action()
 	set category = "Object"
 	set name = "Unique Action"
@@ -1189,3 +1200,24 @@
 		src = gun.active_attachable
 
 	unique_action(usr)
+
+/obj/item/MouseEntered()
+	SHOULD_CALL_PARENT(TRUE)
+	. = ..()
+	apply_outline()
+	var/client/client = usr.client
+	if(client.prefs?.hide_statusbar){
+		winset(client, "mapwindow.status_bar", "is-visible=false")
+		return
+	}
+	winset(client, "mapwindow.status_bar", "text=\"[name]\"")
+
+/obj/item/MouseExited()
+	SHOULD_CALL_PARENT(TRUE)
+	. = ..()
+	remove_outline()
+	var/client/client = usr.client
+	if(client.prefs?.hide_statusbar){
+		return
+	}
+	winset(client, "mapwindow.status_bar", "text=\"\"")

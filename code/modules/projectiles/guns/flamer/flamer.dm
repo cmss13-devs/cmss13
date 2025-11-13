@@ -40,7 +40,7 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/flamer_nozzle
 	)
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_TRIGGER_SAFETY
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_TRIGGER_SAFETY|GUN_AMMO_COUNTER
 	gun_category = GUN_CATEGORY_HEAVY
 
 
@@ -412,6 +412,23 @@
 	if(current_mag)
 		to_chat(user, SPAN_WARNING("The gauge reads: <b>[floor(current_mag.get_ammo_percent())]</b>% fuel remains!"))
 
+	var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used.gun_ammo_counter
+	counter.update_hud(user)
+
+/obj/item/weapon/gun/flamer/get_ammo_type()
+	if(!current_mag)
+		return list("empty", "empty")
+	else
+		var/obj/item/ammo_magazine/flamer_tank/flame_tank = current_mag
+		return list(flame_tank.hud_state, flame_tank.hud_state_empty)
+
+/obj/item/weapon/gun/flamer/get_ammo_count()
+	if(!current_mag)
+		return FALSE
+	else
+		return round(current_mag.get_ammo_percent())
+
+
 /obj/item/weapon/gun/flamer/m240
 	name = "\improper M240A1 incinerator unit"
 	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
@@ -439,7 +456,7 @@
 		/obj/item/attachable/attached_gun/extinguisher,
 	)
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro)
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
 /obj/item/weapon/gun/flamer/m240/spec/unique_action(mob/user)
@@ -1002,7 +1019,7 @@
 	flags_equip_slot = SLOT_BACK | SLOT_WAIST
 	auto_retrieval_slot = WEAR_WAIST
 	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer/whiteout
-	flags_gun_features = GUN_WY_RESTRICTED|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad/handle_starting_attachment()
 	..()
@@ -1013,7 +1030,7 @@
 	update_attachable(Integrated.slot)
 
 /obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad/nolock
-	flags_gun_features = GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad/standard
 	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer

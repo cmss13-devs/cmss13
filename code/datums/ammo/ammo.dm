@@ -94,6 +94,11 @@
 	/// Whether or not this ammo ignores mobs that are lying down
 	var/hits_lying_mobs = FALSE
 
+	/// HUD icon state for ammo type, used for ammo counter
+	var/hud_state = "unknown"
+	/// HUD icon state for empty ammo type, used for ammo counter
+	var/hud_state_empty = "empty"
+
 /datum/ammo/New()
 	set_bullet_traits()
 

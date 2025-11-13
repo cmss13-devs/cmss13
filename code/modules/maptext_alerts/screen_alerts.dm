@@ -200,7 +200,8 @@
 	if(client && hud_used)
 		hud_used.reorganize_alerts()
 	thealert.transform = matrix(32, 6, MATRIX_TRANSLATE)
-	animate(thealert, transform = matrix(), time = 2.5, easing = CUBIC_EASING)
+	if(!thealert.override_screen_loc)
+		animate(thealert, transform = matrix(), time = 2.5, easing = CUBIC_EASING)
 
 	if(thealert.timeout)
 		addtimer(CALLBACK(src, PROC_REF(alert_timeout), thealert, category), thealert.timeout)
@@ -240,6 +241,8 @@
 	var/override_alerts = FALSE
 	/// Alert owner
 	var/mob/owner
+	/// Allows for custom screen location
+	var/override_screen_loc = FALSE
 
 	/// Boolean. If TRUE, the Click() proc will attempt to Click() on the master first if there is a master.
 	var/click_master = TRUE
@@ -292,6 +295,8 @@
 /atom/movable/screen/alert/multi_z
 	name = "Look Up"
 	desc = "There's an open space above you, Click the alert to look up."
+	override_screen_loc = TRUE
+	screen_loc = "hud:1:-32,7:57"
 	icon_state = "uphint1"
 	click_master = FALSE
 
@@ -334,15 +339,18 @@
 
 	// If the user is a xeno, show the generic version of the indicator.
 	if(istype(user, /mob/living/carbon/xenomorph))
+		icon = 'icons/mob/hud/cm_hud/cm_hud_xeno_buttons.dmi'
+		screen_loc = "hud:1:-29,7:55"
 		if(above && istransparentturf(above))
-			icon_state = "uphint1_xeno"
+			icon_state = "uphint1"
 			desc = "There's an open space above you, Click the alert to look up."
 		else
-			icon_state = "uphint0_xeno"
+			icon_state = "uphint0"
 			desc = "There's nothing to look up at right now."
 
 	// Otherwise, use the stylized marine version.
 	else
+		icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
 		if(above && istransparentturf(above))
 			icon_state = "uphint1"
 			desc = "There's an open space above you, Click the alert to look up."
@@ -354,7 +362,10 @@
 /atom/movable/screen/alert/buckled
 	name = "Buckled"
 	desc = "You've been buckled to something. Click the alert to unbuckle unless you're handcuffed."
-	icon_state = ALERT_BUCKLED
+	icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
+	override_screen_loc = TRUE
+	screen_loc = "hud:1:6,11:25"
+	icon_state = "status_buckled"
 
 /atom/movable/screen/alert/restrained/handcuffed
 	name = "Handcuffed"

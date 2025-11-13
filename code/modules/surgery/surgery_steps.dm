@@ -144,7 +144,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 		var/list/message = new() //Duration hint messages.
 
 		if(self_surgery)
-			message += "[pick("performing surgery", "working")] on [pick("yourself", "your own body")] is [pick("awkward", "tricky")]"
+			message += "[pick("performing surgery", "working", "operating")] on [pick("yourself", "your own body")] is [pick("awkward", "tricky")]"
 
 		switch(tool_modifier) //Implicitly means tool exists as accept_any_item item or accept_hand would = 1x. No message for 1x - that's the default.
 			if(SURGERY_TOOL_MULT_SUBOPTIMAL)
@@ -155,17 +155,17 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 				message += "this tool [pick("is an unacceptable substitute", "is unsuitable for this method", "feels terrible to use in your hands", "makes you feel bad for using it")]"
 				failure_penalties += 1
 			if(SURGERY_TOOL_MULT_AWFUL)
-				message += "this tool [pick("is the worst thing you could use for this step", "should never be used for this purpose", "makes you wish you were using anything else", "will most likely cause harm for this step. Don't tell the Chief...")]"
+				message += "this tool [pick("is the worst thing you could use for this step", "should never be used for this purpose", "makes you wish you were using anything else", "will most likely cause harm for this step. Don't tell the Chief")]"
 				failure_penalties += 2
 
 		switch(surface_modifier)
 			if(SURGERY_SURFACE_MULT_ADEQUATE)
-				message += "[pick("it isn't easy, working", "it's tricky to perform complex surgeries", "this would be quicker if you weren't working")] [pick("in the field", "under these conditions", "without a proper surgical theatre")]"
+				message += "[pick("you feel the need to double check your steps while working", "it's tricky to perform complex surgeries", "you would feel more confident of your pacing if you weren't working")] [pick("in the field", "outside of your element", "without a proper surgical theatre")]"
 			if(SURGERY_SURFACE_MULT_UNSUITED)
-				message += "[pick("it's difficult to work", "it's slow going, working", "you need to take your time")] in these [pick("primitive", "unsafe", "unsavory")] conditions"
+				message += "[pick("you feel nervous as you manipulate your tools", "You feel insecure and unsure of yourself", "You feel the need to triple check your steps")] while operating [pick("on non-sterile surfaces", "on a non-surgical bed", "in an unsanitary environment")]"
 				failure_penalties += 1
 			if(SURGERY_SURFACE_MULT_AWFUL)
-				message += "[pick("you need to work slowly and carefully", "you need to be very careful", "you need an unbreakable focus", "this is delicate work, especially")] [pick("in these", "under such")] [pick("terrible", "horrifying", "unsanitary", "abhorrent")] conditions"
+				message += "[pick("one wrong move and you could cause serious harm", "you have never felt more aware of your slow, careful, deliberate movements", "you are terrified of these conditions, but you keep an unbreakable focus and the steadiest of hands", "you compulsively quadruple check your body and hand positioning")] while using your tools [pick("on a patient not lying on a bed", "on an unstable surface", "in an unsanitary environment", "in the worst conditions imaginable")]"
 				failure_penalties += 2
 
 		if(length(message))

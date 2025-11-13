@@ -41,8 +41,7 @@
 
 /datum/equipment_preset/cia_global_response/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA, ACCESS_CIA_GRS)
-
+	access = get_access(ACCESS_LIST_UA) + list(ACCESS_CIA, ACCESS_CIA_GRS)
 	switch(strength_type)
 		if(STRENGTH_WEAK)
 			name = "[name] (Weakened)"
@@ -54,6 +53,8 @@
 			name = "Survivor - [name]"
 			faction_group = FACITON_LIST_SURVIVOR_CIA
 			headset_type = /obj/item/device/radio/headset/almayer/cia_grs/survivor
+			access = get_access(ACCESS_LIST_COLONIAL_ALL) + list(ACCESS_CIA, ACCESS_CIA_GRS)
+			selection_categories += FACTION_SURVIVOR
 		if(STRENGTH_DEATH)
 			name = "[name] (!DEATHSQUAD!)"
 			faction_group = FACTION_LIST_CIA

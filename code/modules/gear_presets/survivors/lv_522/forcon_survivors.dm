@@ -114,6 +114,7 @@
 /datum/equipment_preset/survivor/forecon/standard/cia
 	name = "Survivor - USCM Reconnaissance Marine (CIA)"
 	skills = /datum/skills/military/survivor/forecon_standard/cia
+	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR, FACTION_CIA)
 
 /datum/equipment_preset/survivor/forecon/standard/cia/load_gear(mob/living/carbon/human/new_human)
 	..()

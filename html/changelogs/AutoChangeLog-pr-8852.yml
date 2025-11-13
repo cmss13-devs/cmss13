@@ -1,0 +1,7 @@
+author: "Nihisohel"
+delete-after: True
+changes:
+  - rscadd: "You can now tactically reload with shotguns and revolvers, looping until the magazine is filled or interrupted."
+  - qol: "You can close a revolvers cylinder with the unique action. Provided it is open."
+  - qol: "You can now insert bullet handfuls back into the chamber, provided it is empty."
+  - qol: "Cocking the bullet now tries to put it to your hand, if empty."

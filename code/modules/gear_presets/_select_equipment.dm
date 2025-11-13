@@ -415,7 +415,7 @@
 		/obj/item/clothing/accessory/storage/webbing = null,
 		/obj/item/clothing/accessory/storage/webbing = null,
 		/obj/item/storage/belt/marine = null,
-		/obj/item/storage/pill_bottle/skillless/tramadol = null,
+		/obj/item/storage/pill_bottle/tramadol/skillless = null,
 		/obj/item/explosive/grenade/phosphorus = null,
 		/obj/item/clothing/glasses/welding = null,
 		/obj/item/reagent_container/ld50_syringe/choral = null,

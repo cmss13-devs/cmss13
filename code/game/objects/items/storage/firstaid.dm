@@ -905,7 +905,7 @@
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 	maptext_label = "Tr"
 
-/obj/item/storage/pill_bottle/skillless/tramadol
+/obj/item/storage/pill_bottle/tramadol/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/oxycodone

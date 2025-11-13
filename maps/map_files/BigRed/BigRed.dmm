@@ -549,8 +549,7 @@
 /area/bigredv2/outside/space_port)
 "acb" = (
 /obj/structure/barricade/wooden{
-	dir = 4;
-	
+	dir = 4
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
@@ -10677,8 +10676,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/wooden{
-	dir = 8;
-	
+	dir = 8
 	},
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
@@ -11399,8 +11397,7 @@
 	dir = 5
 	},
 /obj/structure/barricade/wooden{
-	dir = 1;
-	
+	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -11543,8 +11540,7 @@
 /area/bigredv2/outside/cargo)
 "bbi" = (
 /obj/structure/barricade/wooden{
-	dir = 4;
-	
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -11877,15 +11873,13 @@
 /area/bigredv2/outside/virology)
 "bct" = (
 /obj/structure/barricade/wooden{
-	dir = 8;
-	
+	dir = 8
 	},
 /turf/open/floor/loadingarea/east,
 /area/bigredv2/outside/cargo)
 "bcu" = (
 /obj/structure/barricade/wooden{
-	dir = 8;
-	
+	dir = 8
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/cargo)
@@ -13020,8 +13014,7 @@
 	dir = 4
 	},
 /obj/structure/barricade/wooden{
-	dir = 4;
-	
+	dir = 4
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/cargo)
@@ -17709,8 +17702,7 @@
 /area/bigredv2/outside/medical)
 "bVX" = (
 /obj/structure/barricade/wooden{
-	dir = 8;
-	
+	dir = 8
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_13,
@@ -18156,8 +18148,7 @@
 	pixel_y = -5
 	},
 /obj/structure/barricade/wooden{
-	dir = 8;
-	
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
@@ -18499,8 +18490,7 @@
 /area/bigredv2/outside/engineering)
 "cOc" = (
 /obj/structure/barricade/wooden{
-	dir = 4;
-	
+	dir = 4
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
 /area/bigredv2/outside/c)
@@ -18900,8 +18890,7 @@
 /area/bigredv2/outside/filtration_plant)
 "dot" = (
 /obj/structure/barricade/wooden{
-	dir = 8;
-	
+	dir = 8
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -19002,8 +18991,7 @@
 /area/bigredv2/outside/medical)
 "dtX" = (
 /obj/structure/barricade/wooden{
-	dir = 4;
-	
+	dir = 4
 	},
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves_north)
@@ -20212,8 +20200,7 @@
 /area/bigredv2/caves_research)
 "eGb" = (
 /obj/structure/barricade/wooden{
-	dir = 4;
-	
+	dir = 4
 	},
 /obj/item/weapon/twohanded/spear{
 	pixel_x = 5
@@ -35229,7 +35216,7 @@
 "ujU" = (
 /obj/item/ammo_magazine/handful/shotgun/custom_color{
 	color = "#6666ff";
-	desc = "A handful of ulta rare 12 gauge HE/FRAG ammunition to seriously fuck shit up with.  Too bad its behind this indestructible window.....";
+	desc = "A handful of ulta rare 12 gauge HE/FRAG ammunition to seriously fuck shit up with. Too bad its behind this indestructible window.....";
 	name = "handful of HE/FRAG shells (12g)";
 	pixel_y = 3
 	},

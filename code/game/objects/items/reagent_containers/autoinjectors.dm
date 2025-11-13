@@ -258,18 +258,6 @@
 
 
 //ONE-USE EZ AUTOINJECTORS
-/obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/tramadol
-	name = "single-use tramadol EZ autoinjector"
-	chemname = "tramadol"
-	desc = "An EZ autoinjector loaded with a single dose of 15u of Tramadol, a weak but effective painkiller for normal wounds. You can only refill it wih a MS-11 Smart Refill Tank, but it doesn't require any training to use."
-	icon_state = "empty_oneuse"
-	autoinjector_type = "autoinjector_oneuse"
-	display_maptext = TRUE
-	skilllock = SKILL_MEDICAL_DEFAULT
-	volume = 15
-	amount_per_transfer_from_this = 15
-	uses_left = 1
-	maptext_label = "OuTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/kelotane
 	name = "single-use kelotane EZ autoinjector"
@@ -325,32 +313,17 @@
 	display_maptext = TRUE
 	maptext_label = "OuTc"
 
-/obj/item/reagent_container/hypospray/autoinjector/skillless/marine/attack(mob/M as mob, mob/user as mob)
-	. = ..()
-	if(.)
-		if(!uses_left) //We can refill these! They just have different icon states when expended.
-			icon_state += "0"
-			name += " expended"
-			flags_atom &= ~OPENCONTAINER
-
-/obj/item/reagent_container/hypospray/autoinjector/skillless/marine/attackby()
-	return
-
-/obj/item/reagent_container/hypospray/autoinjector/skillless/marine/get_examine_text(mob/user)
-	. = ..()
-	if(reagents && length(reagents.reagent_list))
-		. += SPAN_NOTICE("It is currently loaded.")
-	else if(!uses_left)
-		. += SPAN_NOTICE("It is spent.")
-	else
-		. += SPAN_NOTICE("It is empty.")
-
 /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol
 	name = "pain-stop autoinjector"
 	chemname = "tramadol"
-	icon_state = "tramadol"
 	desc = "An autoinjector loaded with a single dose of 15u tramadol to self-administer for pain management. You can refill it at Wey-Med vending machines. Thankfully, there's no lock on it, so anyone can use it!"
-	maptext_label = "OuPs" //hehe 'I need an oops'
+	maptext_label = "OuPs"
+	icon_state = "tramadol" //hehe 'I need an oops'
+
+///obj/item/reagent_container/hypospray/autoinjector/skillless/marine/attack(mob/M as mob, mob/user as mob) is no longer necessary because these autoinjectors have proper fill overlays and are also SUPPOSED to be refilled, now.
+
+///obj/item/reagent_container/hypospray/autoinjector/skillless/marine/get_examine_text(mob/user) is not necessary, either.
+
 
 
 //MIXED CHEMS

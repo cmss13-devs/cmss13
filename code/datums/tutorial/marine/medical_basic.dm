@@ -83,7 +83,7 @@
 /datum/tutorial/marine/medical_basic/proc/pain_tutorial()
 	message_to_player("<b>Tramadol</b> is used to reduce your pain. Inject yourself with the <b>tramadol EZ autoinjector</b>.")
 	update_objective("Inject yourself with the tramadol injector.")
-	var/obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/tramadol/pain_injector = new(loc_from_corner(0, 4))
+	var/obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol/pain_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(pain_injector)
 	add_highlight(pain_injector)
 	RegisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED, PROC_REF(on_pain_inject))
@@ -91,11 +91,11 @@
 /datum/tutorial/marine/medical_basic/proc/on_pain_inject(datum/source, obj/item/reagent_container/hypospray/injector)
 	SIGNAL_HANDLER
 
-	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/tramadol))
+	if(!istype(injector, /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol))
 		return
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_HYPOSPRAY_INJECTED)
-	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/tramadol, pain_injector)
+	TUTORIAL_ATOM_FROM_TRACKING(/obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol, pain_injector)
 	remove_highlight(pain_injector)
 	message_to_player("Good. Keep in mind that you can overdose on chemicals, so don't inject yourself with the same chemical too much too often. In the field, injectors have 3 uses.")
 	update_objective("Don't overdose! Generally, 3 injections of a chemical will overdose you.")

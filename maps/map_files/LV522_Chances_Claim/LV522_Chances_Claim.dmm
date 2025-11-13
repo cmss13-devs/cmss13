@@ -1170,7 +1170,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthethic potted plant";
+	name = "synthetic potted plant";
 	pixel_x = -7;
 	pixel_y = 9
 	},
@@ -2714,7 +2714,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthethic potted plant";
+	name = "synthetic potted plant";
 	pixel_y = 14
 	},
 /obj/effect/decal/cleanable/cobweb2,
@@ -7808,7 +7808,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthethic potted plant";
+	name = "synthetic potted plant";
 	pixel_y = 14
 	},
 /obj/item/prop/alien/hugger,
@@ -9406,7 +9406,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthethic potted plant";
+	name = "synthetic potted plant";
 	pixel_y = 28
 	},
 /turf/open/floor/plating/platebot,
@@ -14257,7 +14257,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthethic potted plant";
+	name = "synthetic potted plant";
 	pixel_x = -2;
 	pixel_y = 10
 	},
@@ -18105,7 +18105,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthethic potted plant";
+	name = "synthetic potted plant";
 	pixel_x = -2;
 	pixel_y = 16
 	},
@@ -18908,7 +18908,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthethic potted plant";
+	name = "synthetic potted plant";
 	pixel_y = 12
 	},
 /turf/open/floor/corsat/plate,
@@ -19075,7 +19075,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthethic potted plant";
+	name = "synthetic potted plant";
 	pixel_y = 14
 	},
 /obj/structure/machinery/light,
@@ -26040,7 +26040,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthethic potted plant";
+	name = "synthetic potted plant";
 	pixel_y = 14
 	},
 /turf/open/floor/prison/darkredfull2,
@@ -27151,7 +27151,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthethic potted plant";
+	name = "synthetic potted plant";
 	pixel_x = -17;
 	pixel_y = 9
 	},
@@ -35450,7 +35450,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthethic potted plant";
+	name = "synthetic potted plant";
 	pixel_y = 14
 	},
 /turf/open/floor/prison/darkpurplefull2,
@@ -43833,7 +43833,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthethic potted plant";
+	name = "synthetic potted plant";
 	pixel_y = 14
 	},
 /turf/open/floor/prison/darkpurplefull2,

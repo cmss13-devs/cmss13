@@ -20,7 +20,7 @@ src.path_list = reverselist(src.pathlist)
 
 Then to start on the path, all you need to do it:
 Step_to(src, src.path_list[1])
-src.path_list -= src.path_list[1] or equivilent to remove that node from the list.
+src.path_list -= src.path_list[1] or equivalent to remove that node from the list.
 
 Optional extras to add on (in order):
 MaxNodes: The maximum number of nodes the returned path can be (0 = infinite)

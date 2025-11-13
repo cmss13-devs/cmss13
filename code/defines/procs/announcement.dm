@@ -42,7 +42,7 @@
 			if(is_mainship_level(receiver.z) && !(istype(GLOB.master_mode, /datum/game_mode/extended/faction_clash))) // People on ship see everything, unless it is faction clash
 				continue
 
-			// If they have iff AND a marine headset they will recieve announcements
+			// If they have iff AND a marine headset they will receive announcements
 			var/obj/item/card/id/card = receiver.get_idcard()
 			if ((FACTION_MARINE in card?.faction_group) && (istype(receiver.wear_l_ear, /obj/item/device/radio/headset/almayer) || istype(receiver.wear_r_ear, /obj/item/device/radio/headset/almayer)))
 				continue

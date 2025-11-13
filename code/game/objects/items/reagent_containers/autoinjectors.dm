@@ -246,7 +246,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/antitoxin
 	name = "dylovene EZ autoinjector"
-	chemname = "dylovene"
+	chemname = "anti_toxin"
 	desc = "An EZ autoinjector loaded with 3 doses of 15u of Dylovene, a common toxin damage medicine. You can refill it at Wey-Med vending machines and it doesn't require any training to use."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
@@ -261,7 +261,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/tramadol
 	name = "single-use tramadol EZ autoinjector"
 	chemname = "tramadol"
-	desc = "An EZ autoinjector loaded with a single dose of 15u of Tramadol, a weak but effective painkiller for normal wounds. You cannot refill it, but it doesn't require any training to use."
+	desc = "An EZ autoinjector loaded with a single dose of 15u of Tramadol, a weak but effective painkiller for normal wounds. You can only refill it wih a MS-11 Smart Refill Tank, but it doesn't require any training to use."
 	icon_state = "empty_oneuse"
 	autoinjector_type = "autoinjector_oneuse"
 	display_maptext = TRUE
@@ -274,7 +274,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/kelotane
 	name = "single-use kelotane EZ autoinjector"
 	chemname = "kelotane"
-	desc = "An EZ autoinjector loaded with a single dose of 15u of Kelotane, a common burn medicine. You cannot refill it, but it doesn't require any training to use."
+	desc = "An EZ autoinjector loaded with a single dose of 15u of Kelotane, a common burn medicine. ou can only refill it wih a MS-11 Smart Refill Tank, but it doesn't require any training to use."
 	icon_state = "empty_oneuse"
 	autoinjector_type = "autoinjector_oneuse"
 	display_maptext = TRUE
@@ -287,7 +287,7 @@
 /obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/bicaridine
 	name = "single-use bicaridine EZ autoinjector"
 	chemname = "bicaridine"
-	desc = "An EZ autoinjector loaded with a single dose of 15u of Bicaridine, a common brute and circulatory damage medicine. You cannot refill it, but it doesn't require any training to use."
+	desc = "An EZ autoinjector loaded with a single dose of 15u of Bicaridine, a common brute and circulatory damage medicine. ou can only refill it wih a MS-11 Smart Refill Tank, but it doesn't require any training to use."
 	icon_state = "empty_oneuse"
 	autoinjector_type = "autoinjector_oneuse"
 	display_maptext = TRUE
@@ -299,7 +299,8 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/antitoxin
 	name = "single-use dylovene EZ autoinjector"
-	desc = "An EZ autoinjector loaded with a single dose of 15u of Dylovene, a common toxin damage medicine. You cannot refill it, but it doesn't require any training to use."
+	chemname = "anti_toxin"
+	desc = "An EZ autoinjector loaded with a single dose of 15u of Dylovene, a common toxin damage medicine. You can only refill it wih a MS-11 Smart Refill Tank, but it doesn't require any training to use."
 	icon_state = "empty_oneuse"
 	autoinjector_type = "autoinjector_oneuse"
 	display_maptext = TRUE
@@ -350,6 +351,7 @@
 	icon_state = "tramadol"
 	desc = "An autoinjector loaded with a single dose of 15u tramadol to self-administer for pain management. You can refill it at Wey-Med vending machines. Thankfully, there's no lock on it, so anyone can use it!"
 	maptext_label = "OuPs" //hehe 'I need an oops'
+
 
 //MIXED CHEMS
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate

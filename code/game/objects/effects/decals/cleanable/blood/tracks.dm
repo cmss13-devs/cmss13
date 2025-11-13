@@ -74,6 +74,6 @@
 /obj/effect/decal/cleanable/blood/tracks/dragged
 	name = "drag prints"
 	desc = "Some poor sod seem to have been dragged here."
-	coming_state = "drag"
-	going_state  = "drag"
+	coming_state = "drag1"
+	going_state  = "drag2"
 

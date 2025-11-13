@@ -68,7 +68,12 @@
 	var/turf/T_in = target.loc
 	var/turf/T_out = oldLoc
 
-	var/track_type = ishuman(target) ? /obj/effect/decal/cleanable/blood/tracks/footprints : /obj/effect/decal/cleanable/blood/tracks/claws // hardcoded for now, but theres probably gonna be some necessitation for a more dynamic implementation for other mobs, like dogs and stuff (THIS ALSO DOES NOT ACCOUNT FOR THE LARVA) - nihi
+	var/track_type = /obj/effect/decal/cleanable/blood/tracks/footprints
+	if(islarva(target))
+		track_type = /obj/effect/decal/cleanable/blood/tracks/dragged
+	else if(isxeno(target))
+		track_type = /obj/effect/decal/cleanable/blood/tracks/claws
+
 
 	if(istype(T_in))
 		var/obj/effect/decal/cleanable/blood/tracks/FP = LAZYACCESS(T_in.cleanables, CLEANABLE_TRACKS)
@@ -100,7 +105,10 @@
 /datum/element/bloody_feet/proc/blood_crossed(mob/living/carbon/human/target, amount, bcolor, dry_time_left)
 	SIGNAL_HANDLER
 	Detach(target)
-	target.AddElement(/datum/element/bloody_feet, dry_time_left, target.shoes, amount, bcolor)
+	if(ishuman(target)) // runtime check needed cause xenos dont actually use shoes lol
+		target.AddElement(/datum/element/bloody_feet, dry_time_left, target.shoes, amount, bcolor)
+	else
+		target.AddElement(/datum/element/bloody_feet, dry_time_left, amount, bcolor)
 
 /datum/element/bloody_feet/proc/clear_blood(datum/target)
 	SIGNAL_HANDLER

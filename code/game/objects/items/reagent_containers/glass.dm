@@ -257,7 +257,7 @@
 
 /obj/item/reagent_container/glass/minitank
 	name = "\improper MS-11 Smart Refill Tank"
-	desc = "A robust little tank capable of refilling autoinjectors that previously required a nanomed system to refill. Using the wonders of microchips, it automatically sorts the correct chemicals into most single reagent autoinjectors. It is unable to partially fill them however. A valve exists on the top to transfer reagents to another container or to flush it entirely."
+	desc = "A robust little tank capable of refilling autoinjectors that previously required a nanomed system to refill. Using the wonders of microchips, it automatically sorts the correct chemicals into most single reagent autoinjectors. A valve exists on the top to transfer reagents to another container or to flush it entirely."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "mini_reagent_tank"
 	matter = list("metal" = 500)
@@ -287,20 +287,60 @@
 		/obj/structure/machinery/autodispenser,
 		/obj/structure/machinery/constructable_frame,
 	)
+	/// The starting volume of the chem refill tank
+	/// A list of item types that allow reagent refilling
+	var/list/chem_refill = list(
+		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
+		/obj/item/reagent_container/hypospray/autoinjector/dexalinp,
+		/obj/item/reagent_container/hypospray/autoinjector/antitoxin,
+		/obj/item/reagent_container/hypospray/autoinjector/adrenaline,
+		/obj/item/reagent_container/hypospray/autoinjector/inaprovaline,
+		/obj/item/reagent_container/hypospray/autoinjector/kelotane,
+		/obj/item/reagent_container/hypospray/autoinjector/oxycodone,
+		/obj/item/reagent_container/hypospray/autoinjector/peridaxon,
+		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/tricord,
 
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol,
+
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/antitoxin,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tricord,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/bicaridine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/antitoxin,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/kelotane,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/tricord,
+
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/tramadol,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/kelotane,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/bicaridine,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/antitoxin,
+	)
 /obj/item/reagent_container/glass/minitank/on_reagent_change()
 	update_icon()
-
 
 /obj/item/reagent_container/glass/minitank/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
 		var/obj/item/reagent_container/hypospray/autoinjector/A = W
 		if(A.mixed_chem)
-			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into [src]'s valve. It's probably not compatible."))
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [A] is not compatible with [src]'s valve because it uses a mix of chemicals instead of a single chemical."))
 			return
+		if((!chem_refill) || !(A.type in chem_refill))
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [src] cannot refill [A] because the valves are incompatible."))
+			return FALSE
+		if(src.reagents.total_volume <= 0)
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [src] is empty! It cannot refill [A]!"))
+			return FALSE
 		if(reagents.has_reagent(A.chemname, A.volume))
 			reagents.trans_id_to(A, A.chemname, A.volume)
-			A.uses_left = 3
+			if(istype(A, /obj/item/reagent_container/hypospray/autoinjector/skillless/one_use) || istype(A, /obj/item/reagent_container/hypospray/autoinjector/skillless/marine))
+				A.uses_left = 1
+			else
+				A.uses_left = 3
 			A.update_icon()
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		else

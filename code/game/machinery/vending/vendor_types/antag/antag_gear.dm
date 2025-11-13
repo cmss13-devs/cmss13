@@ -87,9 +87,9 @@
 
 /obj/effect/essentials_set/random/clf_bonus_item
 	spawned_gear_list = list(
-		/obj/item/storage/pill_bottle/tramadol/skillless,
-		/obj/item/storage/pill_bottle/tramadol/skillless,
-		/obj/item/storage/pill_bottle/tramadol/skillless,
+		/obj/item/storage/pill_bottle/skillless/tramadol,
+		/obj/item/storage/pill_bottle/skillless/tramadol,
+		/obj/item/storage/pill_bottle/skillless/tramadol,
 		/obj/item/tool/hatchet,
 		/obj/item/tool/hatchet,
 		/obj/item/weapon/twohanded/spear,

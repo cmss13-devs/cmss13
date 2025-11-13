@@ -244,9 +244,9 @@
 				prob(4);/obj/item/storage/pill_bottle/mystery/skillless,\
 				prob(3);/obj/item/storage/pill_bottle/alkysine/skillless,\
 				prob(3);/obj/item/storage/pill_bottle/imidazoline/skillless,\
-				prob(3);/obj/item/storage/pill_bottle/tramadol/skillless,\
-				prob(3);/obj/item/storage/pill_bottle/bicaridine/skillless,\
-				prob(3);/obj/item/storage/pill_bottle/kelotane/skillless,\
+				prob(3);/obj/item/storage/pill_bottle/skillless/tramadol,\
+				prob(3);/obj/item/storage/pill_bottle/skillless/bicaridine,\
+				prob(3);/obj/item/storage/pill_bottle/skillless/kelotane,\
 				prob(3);/obj/item/storage/pill_bottle/peridaxon/skillless,\
 				prob(2);/obj/item/storage/pill_bottle/oxycodone/skillless,\
 				prob(2);/obj/item/storage/pill_bottle/packet/oxycodone)

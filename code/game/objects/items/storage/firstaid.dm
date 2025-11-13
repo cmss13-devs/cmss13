@@ -108,7 +108,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol(src)
 
 /obj/item/storage/firstaid/fire/empty/fill_preset_inventory()
 	return
@@ -120,8 +120,8 @@
 
 /obj/item/storage/firstaid/regular/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless/marine/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/ointment(src)
@@ -871,7 +871,7 @@
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
 	maptext_label = "Kl"
 
-/obj/item/storage/pill_bottle/kelotane/skillless
+/obj/item/storage/pill_bottle/skillless/kelotane
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/antitox
@@ -905,7 +905,7 @@
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 	maptext_label = "Tr"
 
-/obj/item/storage/pill_bottle/tramadol/skillless
+/obj/item/storage/pill_bottle/skillless/tramadol
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/oxycodone
@@ -938,7 +938,7 @@
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 	maptext_label = "Bi"
 
-/obj/item/storage/pill_bottle/bicaridine/skillless
+/obj/item/storage/pill_bottle/skillless/bicaridine
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/dexalin

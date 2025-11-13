@@ -209,32 +209,17 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 GLOBAL_LIST_INIT(last_announcement_time, list(FACTION_MARINE = 0))
 
 /**
- * Gets a stars_decode_html result with a variable clarity based on message length and optionally the time since last announcement
+ * Gets a stars_decode_html result with a variable clarity based the faction's current comms clarity
  *
  * Arguments:
  * * message - The message to garble (its length is used for clarity calculation)
- * * length_modifier - An optional number to subtract against message length
- * * faction_for_cooldown - An optional faction define that is used to check for clarity calculation and set in GLOB.last_announcement_time for that faction
+ * * faction - An optional faction define to check (otherwise announcement_max_clarity config value)
  */
-/proc/get_garbled_announcement(message, length_modifier, faction_for_cooldown)
-	var/length_max_bound = CONFIG_GET(number/announcement_max_bound)
-	var/length_min_bound = CONFIG_GET(number/announcement_min_bound)
-	var/clarity_min = CONFIG_GET(number/announcement_min_clarity)
-	var/clarity_max = CONFIG_GET(number/announcement_max_clarity)
+/proc/get_garbled_announcement(message, faction)
+	var/clarity = SSradio.faction_coms_clarity[faction]
+	if(!clarity)
+		clarity = CONFIG_GET(number/announcement_max_clarity)
 
-	var/length_clamped = clamp(length(message) - length_modifier, length_min_bound, length_max_bound)
-	var/length_scalar = SCALE(length_clamped, length_min_bound, length_max_bound)
-	var/duration_scalar = 1
-	if(faction_for_cooldown)
-		var/duration_min_bound = CONFIG_GET(number/announcement_duration_min_bound)
-		var/duration_max_bound = CONFIG_GET(number/announcement_duration_max_bound)
-
-		var/duration_clamped = clamp(world.time - GLOB.last_announcement_time[faction_for_cooldown], duration_min_bound, duration_max_bound)
-		duration_scalar = 1 - SCALE(duration_clamped, duration_min_bound, duration_max_bound)
-		GLOB.last_announcement_time[faction_for_cooldown] = world.time
-
-	// Clarity is the better of the two (either a short message, or after a long duration)
-	var/clarity = round(lerp(clarity_max, clarity_min, min(length_scalar, duration_scalar)), 1)
 	return stars_decode_html(message, clarity)
 
 /proc/slur(phrase)

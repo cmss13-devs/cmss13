@@ -53,23 +53,23 @@ ANIMAL_DELAY 0
 
 
 ### Announcement Garbling ###
-## The length of an announcement for ANNOUNCEMENT_MIN_CLARITY
-ANNOUNCEMENT_MAX_BOUND 120
+## The rate of comms clarity percent decay per fire of SSradio (30 SECONDS)
+ANNOUNCEMENT_CLARITY_DECAY 2.5
 
-## The max length of an announcement for ANNOUNCEMENT_MAX_CLARITY
-ANNOUNCEMENT_MIN_BOUND 20
+## The grace period in deciseconds given to solve encryption challenges (before they decay)
+ANNOUNCEMENT_CHALLENGE_GRACE 600
 
-## The duration between announcements for ANNOUNCEMENT_MIN_CLARITY
-ANNOUNCEMENT_DURATION_MIN_BOUND 300
+## String challenges that should all be similar in length.
+## Any non-alpha character will be treated as a -. Any longer than the first will be trimmed.
+ANNOUNCEMENT_CHALLENGES WEYLAND
+ANNOUNCEMENT_CHALLENGES -YUTANI
 
-## The duration between announcements for ANNOUNCEMENT_MAX_CLARITY
-ANNOUNCEMENT_DURATION_MAX_BOUND 1800
-
-## The clarity percent for messages >= ANNOUNCEMENT_MAX_BOUND or duration <= ANNOUNCEMENT_DURATION_MIN_BOUND
+## The minimum clarity percent for overwatch and announcements if transmitted to a z without coms
 ANNOUNCEMENT_MIN_CLARITY 45
 
-## The clarity percent for messages <= ANNOUNCEMENT_MIN_BOUND or duration >= ANNOUNCEMENT_DURATION_MAX_BOUND
+## The maximum clarity percent for overwatch and announcements if transmitted to a z without coms
 ANNOUNCEMENT_MAX_CLARITY 95
+
 
 ### Miscellaneous ###
 

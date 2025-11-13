@@ -191,7 +191,7 @@
 	var/garbled_message
 	var/garbled_count = length(targets_to_garble)
 	if(garbled_count)
-		garbled_message = get_garbled_announcement(message, length(postfix), faction_to_garble)
+		garbled_message = get_garbled_announcement(message, faction_to_garble)
 		log_garble("[garbled_count] received '[garbled_message]' for faction [faction_to_garble].")
 
 	for(var/mob/target in targets)

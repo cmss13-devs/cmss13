@@ -317,7 +317,6 @@
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tricord,
 
 		//We're special. We can only be refilled with the refill tank!
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/kelotane,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/bicaridine,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/one_use/antitoxin,

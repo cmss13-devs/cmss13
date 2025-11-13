@@ -1015,6 +1015,7 @@
 "ed" = (
 /obj/structure/platform/stone/kutjevo,
 /obj/structure/stairs/multiz/down{
+	dir = 8;
 	layer = 1
 	},
 /turf/open/auto_turf/sand/layer0,
@@ -1054,6 +1055,7 @@
 "em" = (
 /obj/structure/platform/stone/kutjevo/north,
 /obj/structure/stairs/multiz/down{
+	dir = 8;
 	layer = 1
 	},
 /turf/open/auto_turf/sand/layer0,
@@ -1709,14 +1711,9 @@
 "hz" = (
 /turf/open/mars_cave/mars_cave_15,
 /area/yautja_grounds/caves/east)
-"hA" = (
-/obj/structure/stairs/multiz/up{
-	layer = 1
-	},
-/turf/open/mars_cave/mars_dirt_4,
-/area/yautja_grounds/caves/south_west)
 "hB" = (
 /obj/structure/stairs/multiz/up{
+	dir = 8;
 	layer = 1
 	},
 /turf/open/mars_cave/mars_dirt_4,
@@ -1727,17 +1724,12 @@
 	},
 /turf/open/mars_cave/mars_dirt_4,
 /area/yautja_grounds/caves/north_west)
-"hD" = (
-/obj/structure/stairs/multiz/down{
-	layer = 1
-	},
-/turf/open/auto_turf/sand/layer0,
-/area/yautja_grounds/desert/south_west)
 "hE" = (
 /turf/open/mars_cave/mars_dirt_5,
 /area/yautja_grounds/caves/west)
 "hF" = (
 /obj/structure/stairs/multiz/down{
+	dir = 8;
 	layer = 1
 	},
 /turf/open/auto_turf/sand/layer0,
@@ -2647,6 +2639,13 @@
 	},
 /turf/open/mars_cave/mars_dirt_6,
 /area/yautja_grounds/caves/south_west)
+"kY" = (
+/obj/structure/stairs/multiz/up{
+	dir = 1;
+	layer = 1
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/yautja_grounds/caves/south_west)
 "kZ" = (
 /obj/item/ore/glass,
 /turf/open/mars_cave/mars_cave_2,
@@ -2726,6 +2725,13 @@
 "lo" = (
 /turf/closed/wall/kutjevo/rock,
 /area/yautja_grounds/temple)
+"lp" = (
+/obj/structure/stairs/multiz/down{
+	dir = 1;
+	layer = 1
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/yautja_grounds/desert/south_west)
 "lq" = (
 /obj/structure/prop/dam/wide_boulder/boulder1,
 /turf/open/mars_cave/mars_dirt_4,
@@ -2761,10 +2767,18 @@
 /obj/structure/prop/hybrisa/misc/blood/blood3,
 /turf/open/mars_cave/mars_cave_14,
 /area/yautja_grounds/caves/central)
+"ly" = (
+/obj/structure/blocker/preserve_edge,
+/turf/open/auto_turf/sand/layer1,
+/area/yautja_grounds/desert/north_west)
 "lz" = (
 /obj/item/ore/slag,
 /turf/open/mars_cave/mars_cave_2,
 /area/yautja_grounds/caves/east)
+"lA" = (
+/obj/structure/blocker/preserve_edge,
+/turf/open/auto_turf/sand/layer2,
+/area/yautja_grounds/desert/north_west)
 "lB" = (
 /obj/effect/glowshroom,
 /turf/open/mars_cave/mars_dirt_5,
@@ -2968,7 +2982,7 @@
 /turf/open/mars_cave/mars_dirt_6,
 /area/yautja_grounds/caves/north_east)
 "mj" = (
-/obj/structure/prop/brazier/frame/full/campfire,
+/obj/structure/prop/brazier/frame/full/campfire/smolder,
 /turf/open/mars_cave/mars_cave_3,
 /area/yautja_grounds/caves/north_west)
 "mk" = (
@@ -3025,6 +3039,64 @@
 /obj/effect/glowshroom,
 /turf/open/mars_cave/mars_dirt_4,
 /area/yautja_grounds/caves/north_west)
+"mu" = (
+/obj/structure/flora/grass/desert/lightgrass_11,
+/turf/open/auto_turf/sand/layer1,
+/area/yautja_grounds/desert/north_west)
+"mv" = (
+/obj/structure/prop/brazier/frame/full/campfire/smolder,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 13;
+	pixel_y = 20
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/yautja_grounds/desert/north_west)
+"mw" = (
+/obj/structure/blocker/preserve_edge,
+/turf/open/auto_turf/sand/layer0,
+/area/yautja_grounds/desert/north_west)
+"mx" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/sand/layer1,
+/area/yautja_grounds/desert/north_west)
+"my" = (
+/obj/structure/platform/stone/kutjevo/west,
+/turf/open_space,
+/area/yautja_grounds/desert/north_west)
+"mz" = (
+/turf/open_space,
+/area/yautja_grounds/desert/north_west)
+"mA" = (
+/obj/structure/prop/wooden_cross{
+	pixel_y = 7
+	},
+/obj/item/clothing/head/helmet/marine/veteran/dutch{
+	pixel_y = 10
+	},
+/obj/item/weapon/gun/minigun{
+	pixel_y = -14;
+	name = "\improper battle-scarred Ol' Painless";
+	current_mag = null;
+	desc = "An enormous multi-barreled rotating gatling gun. This thing will no doubt pack a punch. This one is stained with green blood, it has seen some battles."
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/yautja_grounds/desert/north_west)
+"mB" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/auto_turf/sand/layer1,
+/area/yautja_grounds/desert/north_west)
+"mC" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/sand/layer2,
+/area/yautja_grounds/desert/north_west)
+"mD" = (
+/obj/structure/prop/dam/boulder/boulder1,
+/turf/open/auto_turf/sand/layer1,
+/area/yautja_grounds/desert/north_west)
+"mE" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/sand/layer0,
+/area/yautja_grounds/desert/north_west)
 "mU" = (
 /turf/closed/wall/kutjevo/rock,
 /area/yautja_grounds/temple/entrance/desert)
@@ -3280,12 +3352,6 @@
 "Es" = (
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/desert/north)
-"Eu" = (
-/obj/structure/platform/stone/kutjevo/east,
-/obj/structure/platform/stone/kutjevo/north,
-/obj/structure/platform/stone/kutjevo,
-/turf/open_space,
-/area/yautja_grounds/caves)
 "EE" = (
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 1
@@ -4032,7 +4098,7 @@ fr
 fr
 fr
 kB
-aq
+kY
 aq
 fx
 am
@@ -4131,7 +4197,7 @@ fr
 fr
 fr
 ki
-hA
+kY
 aq
 ao
 an
@@ -4230,11 +4296,11 @@ fr
 fr
 fr
 kB
-hA
+kY
+aq
+fx
 kB
 kB
-kB
-fr
 fr
 gQ
 hh
@@ -4330,9 +4396,9 @@ fr
 fr
 kB
 kB
-fr
-fr
-fr
+kB
+kB
+kB
 fr
 fr
 fx
@@ -5138,7 +5204,7 @@ fr
 gs
 hQ
 gK
-gs
+gw
 gs
 gs
 gs
@@ -5237,7 +5303,7 @@ fr
 gs
 kG
 gi
-gw
+gx
 gs
 gs
 gs
@@ -15138,8 +15204,8 @@ aB
 op
 op
 op
-op
-op
+mw
+ly
 op
 op
 op
@@ -15218,8 +15284,8 @@ aB
 aB
 aB
 aB
-aB
-aB
+aF
+lp
 OD
 wU
 wU
@@ -15237,8 +15303,8 @@ aB
 op
 op
 op
-op
-op
+ly
+lA
 op
 op
 op
@@ -15318,7 +15384,7 @@ aB
 aR
 aF
 aF
-hD
+lp
 OD
 wU
 wU
@@ -15336,8 +15402,8 @@ aB
 op
 op
 op
-op
-op
+ly
+ly
 op
 op
 op
@@ -15417,10 +15483,10 @@ aB
 aF
 XY
 XY
-hD
-Eu
-aB
-aB
+lp
+OD
+wU
+wU
 aB
 aB
 aB
@@ -15434,9 +15500,9 @@ aB
 (8,1,2) = {"
 op
 op
-op
-op
-op
+mA
+im
+ec
 op
 op
 op
@@ -15533,9 +15599,9 @@ aB
 (9,1,2) = {"
 op
 op
-op
-op
-op
+ec
+dZ
+mu
 op
 op
 op
@@ -15631,10 +15697,10 @@ aB
 "}
 (10,1,2) = {"
 op
-op
-op
-op
-op
+mD
+im
+im
+mv
 op
 op
 op
@@ -15730,9 +15796,9 @@ aB
 "}
 (11,1,2) = {"
 op
-op
-op
-op
+im
+mB
+ec
 op
 op
 op
@@ -15829,9 +15895,9 @@ aB
 "}
 (12,1,2) = {"
 op
-op
-op
-op
+mE
+mC
+mx
 op
 op
 op
@@ -15928,9 +15994,9 @@ aB
 "}
 (13,1,2) = {"
 op
-op
-op
-op
+my
+my
+my
 op
 op
 op
@@ -16027,9 +16093,9 @@ aB
 "}
 (14,1,2) = {"
 op
-op
-op
-op
+mz
+mz
+mz
 op
 op
 op
@@ -16126,9 +16192,9 @@ aB
 "}
 (15,1,2) = {"
 op
-op
-op
-op
+mz
+mz
+mz
 op
 op
 op
@@ -18882,7 +18948,7 @@ aN
 KO
 qJ
 qJ
-qJ
+KO
 KO
 qJ
 qJ
@@ -18983,7 +19049,7 @@ qJ
 qJ
 aN
 aK
-qJ
+KO
 qJ
 qJ
 qJ
@@ -19081,7 +19147,7 @@ KO
 qJ
 qJ
 KO
-qJ
+KO
 qJ
 qJ
 qJ
@@ -19181,7 +19247,7 @@ qJ
 qJ
 aK
 KO
-qJ
+aK
 qJ
 qJ
 qJ
@@ -19280,7 +19346,7 @@ qJ
 qJ
 qJ
 KO
-qJ
+aK
 qJ
 qJ
 qJ
@@ -19379,7 +19445,7 @@ qJ
 qJ
 aK
 KO
-qJ
+KO
 qJ
 qJ
 qJ
@@ -19477,7 +19543,7 @@ KO
 qJ
 qJ
 KO
-qJ
+KO
 qJ
 qJ
 qJ
@@ -19924,8 +19990,8 @@ qF
 qF
 qF
 qF
-qF
-qF
+wU
+wU
 wU
 wU
 qF
@@ -20023,8 +20089,8 @@ qF
 qF
 qF
 qF
-qF
-qF
+wU
+wU
 wU
 wU
 Cw
@@ -20122,8 +20188,8 @@ qF
 qF
 qF
 qF
-qF
-qF
+wU
+wU
 wU
 wU
 Cw
@@ -20221,8 +20287,8 @@ qF
 qF
 qF
 qF
-qF
-qF
+wU
+wU
 wU
 wU
 Cw
@@ -20320,8 +20386,8 @@ qF
 qF
 qF
 qF
-qF
-qF
+wU
+wU
 wU
 wU
 Cw
@@ -20419,8 +20485,8 @@ qF
 qF
 qF
 qF
-qF
-qF
+wU
+wU
 wU
 wU
 qF

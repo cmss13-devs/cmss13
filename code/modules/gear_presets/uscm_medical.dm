@@ -213,6 +213,6 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/unique/tier_one(new_human),  WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/syringe(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)

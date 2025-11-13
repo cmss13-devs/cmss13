@@ -1,1 +1,1 @@
-/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless : /obj/item/reagent_container/hypospray/autoinjector/skillless/tricord/{@OLD} 
+/obj/item/reagent_container/hypospray/autoinjector/skillless : /obj/item/reagent_container/hypospray/autoinjector/skillless/tricord{@OLD} 

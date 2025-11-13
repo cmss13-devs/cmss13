@@ -13,7 +13,7 @@
 	storage_slots = 19
 	max_storage_space = 24
 	use_sound = "ruffle"
-	matter = list("plastic" = 3500)
+	matter = list("plastic" = 3000)
 	// Set in init
 	can_hold = list()
 	var/list/types_and_overlays = list(

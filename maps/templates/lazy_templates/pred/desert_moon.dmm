@@ -1398,7 +1398,9 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/yautja_grounds/caves/central)
 "fO" = (
-/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/platform/stone/kutjevo/west{
+	density = 0
+	},
 /turf/open_space,
 /area/yautja_grounds/caves)
 "fP" = (
@@ -3339,7 +3341,9 @@
 /turf/open/floor/strata/grey_multi_tiles/southwest,
 /area/yautja_grounds/temple)
 "Cw" = (
-/obj/structure/platform/stone/kutjevo,
+/obj/structure/platform/stone/kutjevo{
+	density = 0
+	},
 /turf/open_space,
 /area/yautja_grounds/caves)
 "Dc" = (
@@ -3483,7 +3487,9 @@
 /turf/open/auto_turf/sand/layer1,
 /area/yautja_grounds/temple/entrance/desert)
 "OD" = (
-/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform/stone/kutjevo/north{
+	density = 0
+	},
 /turf/open_space,
 /area/yautja_grounds/caves)
 "OU" = (

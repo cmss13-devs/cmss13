@@ -177,7 +177,7 @@
 	icon_state = "ranks_ae3"
 
 /obj/item/clothing/accessory/ranks/army/e4s
-	rank_short = PAY_SHORT_AE4S
+	rank_short = PAY_SHORT_AE4E
 	icon_state = "ranks_ae4s"
 
 /obj/item/clothing/accessory/ranks/army/e4
@@ -203,11 +203,15 @@
 	icon_state = "ranks_ae7"
 
 /obj/item/clothing/accessory/ranks/army/e8c
-	rank_short = PAY_SHORT_AE8C
+	rank_short = PAY_SHORT_AE8E
 	icon_state = "ranks_ae7"
 
 /obj/item/clothing/accessory/ranks/army/e9
 	rank_short = PAY_SHORT_AE9
+	icon_state = "ranks_ae7"
+
+/obj/item/clothing/accessory/ranks/army/e9e
+	rank_short = PAY_SHORT_AE9E
 	icon_state = "ranks_ae7"
 
 /obj/item/clothing/accessory/ranks/army/e9c
@@ -226,7 +230,7 @@
 
 //OFFICERS
 /obj/item/clothing/accessory/army/o1
-	name = "rank boards"
+	name = "officer rank pins"
 	rank_short = PAY_SHORT_AO1
 	icon_state = "ranks_o1"
 
@@ -261,7 +265,7 @@
 	icon_state = "ranks_o6"
 
 /obj/item/clothing/accessory/ranks/army/o6c
-	name = "rank boards"
+	name = "officer rank pins"
 	rank_short = PAY_SHORT_AO6C
 	icon_state = "ranks_o6"
 

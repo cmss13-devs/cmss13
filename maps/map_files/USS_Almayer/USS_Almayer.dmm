@@ -48800,7 +48800,7 @@
 /obj/structure/closet/hydrant{
 	pixel_x = 30
 	},
-/obj/item/reagent_container/hypospray/autoinjector/skillless/tricord,
+/obj/item/reagent_container/hypospray/autoinjector/skillless,
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "gzM" = (

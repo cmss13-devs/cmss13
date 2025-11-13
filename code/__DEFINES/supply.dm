@@ -1,5 +1,5 @@
 //We use the cost to determine the spawn chance this equals out the crates that spawn later in the round.
-#define ASRS_HIGHEST_WEIGHT 0 //warning this weight wont change.
+#define ASRS_HIGHEST_WEIGHT 0 //warning this weight won't change.
 #define ASRS_VERY_HIGH_WEIGHT 5
 #define ASRS_HIGH_WEIGHT 15
 #define ASRS_MEDIUM_WEIGHT 25

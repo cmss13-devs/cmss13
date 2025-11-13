@@ -287,7 +287,6 @@
 		/obj/structure/machinery/autodispenser,
 		/obj/structure/machinery/constructable_frame,
 	)
-	/// The starting volume of the chem refill tank
 	/// A list of item types that allow reagent refilling
 	var/list/chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,

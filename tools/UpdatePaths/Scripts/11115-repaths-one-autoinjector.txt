@@ -1,1 +1,1 @@
-/obj/item/reagent_container/hypospray/autoinjector/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/skillless/tricord/@SUBTYPES{@OLD} 
+/obj/item/reagent_container/hypospray/autoinjector/skillless/@SUBTYPES : /obj/item/reagent_container/hypospray/autoinjector/skillless/marine@SUBTYPES{@OLD} 

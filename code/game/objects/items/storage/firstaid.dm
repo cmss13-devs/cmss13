@@ -871,7 +871,7 @@
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
 	maptext_label = "Kl"
 
-/obj/item/storage/pill_bottle/skillless/kelotane
+/obj/item/storage/pill_bottle/kelotane/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/antitox
@@ -938,7 +938,7 @@
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
 	maptext_label = "Bi"
 
-/obj/item/storage/pill_bottle/skillless/bicaridine
+/obj/item/storage/pill_bottle/bicaridine/skillless
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/storage/pill_bottle/dexalin

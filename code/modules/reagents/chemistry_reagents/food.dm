@@ -271,7 +271,7 @@
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	color = "#8f947b" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_HYDRO
-	properties = list(PROPERTY_SEDATIVE = 5)
+	properties = list(PROPERTY_HYPNOTIC = 5)
 
 /datum/reagent/zygacine
 	name = "Zygacine"
@@ -293,12 +293,12 @@
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	color = "#9ec265" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_HYDRO
-	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_FLUFFING = 1)
+	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_TRICHOGENIC = 1)
 
 /datum/reagent/urishiol
 	name = "Urishiol"
 	id = "urishiol"
-	description = "Potent skin and tissue irritant causing burns which lasts weeks after the contact is made, commonly encountered in plants like Poison Ivy, Poison Oak, and similar"
+	description = "Potent skin and tissue irritant causing burns which lasts weeks after the contact is made, commonly encountered in plants like Poison Ivy, Poison Oak, and similar toxicodendrons."
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	custom_metabolism = AMOUNT_PER_TIME(15, 20 MINUTES)

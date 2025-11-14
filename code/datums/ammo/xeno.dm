@@ -249,9 +249,9 @@
 	var/turf/spread_location
 	for(var/direction in directions)
 		spread_location = get_step(location, direction)
-		if(istype(location,/turf/closed))
+		if(istype(spread_location,/turf/closed))
 			continue
-	new/obj/effect/xenomorph/spray/no_stun/venator(spread_location)
+		new/obj/effect/xenomorph/spray/no_stun/venator(spread_location)
 
 
 

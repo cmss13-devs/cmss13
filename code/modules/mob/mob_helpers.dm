@@ -142,11 +142,16 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
  * returns the parsed and modified html output with the text content being partially scrambled with asteriks
  */
 /proc/stars_decode_html(message, clear_char_probability = 25)
-	if(!length(message))
+	var/message_length = length(message)
+	if(!message_length)
 		return ""
 
 	if(clear_char_probability >= 100)
 		return message
+
+	// Big htmls are currently too expensive - just look for fields instead
+	var/fields_only = message_length > 40000
+	var/current_tag_index = 0
 
 	// boolean value to know if the current indexed element needs to be scrambled.
 	var/parsing_message = TRUE
@@ -164,14 +169,25 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	// output string after parse
 	var/output_message = ""
-	for(var/character_index in 1 to length(message))
+	for(var/character_index = 1, character_index <= message_length, character_index++)
+		if(fields_only && !current_tag_index)
+			current_tag_index = findtext(message, "<span class=\"paper_field\">", character_index)
+			if(current_tag_index == 0) // No fields found, all done
+				if(length(current_string_to_scramble))
+					output_message += stars(current_string_to_scramble, clear_char_probability)
+				output_message += copytext(message, character_index)
+				return output_message
+			parsing_message = TRUE
+			output_message += copytext(message, character_index, current_tag_index + 26)
+			character_index = current_tag_index + 26
+
 		var/current_char = message[character_index]
 
 		// Apparent edge case safety, we only want to check the < and > on the edges of the tag.
 		if(!parsing_message)
 			if(current_char == "'")
 				in_single_quote = !in_single_quote
-			if(current_char == "\"")
+			else if(current_char == "\"")
 				in_double_quote = !in_double_quote
 			if(in_single_quote || in_double_quote)
 				output_message += current_char
@@ -181,17 +197,18 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 			parsing_message = TRUE
 			output_message += current_char
 			current_tag += current_char
-			if(findtext(current_tag, "<style>") == 1 || findtext(current_tag, "<style ") == 1) // findtext because HTML doesn't care about anything after whitespace
+			if(!escaped_tag && findtext(current_tag, "<style(>| )", 1, 8)) // findtext because HTML doesn't care about anything after whitespace
 				escaped_tag = TRUE
-			else if(escaped_tag && (findtext(current_tag, "</style>") == 1 || findtext(current_tag, "</style ") == 1)) // 1 for findtext because we only care about the start of the string matching
+			else if(escaped_tag && (findtext(current_tag, "</style(>| )", 1, 9))) // we only care about the start of the string matching
 				escaped_tag = FALSE
+			else if(fields_only && findtext(current_tag, "</span>", 1, 8))
+				current_tag_index = 0 // Time to look for another field
 			continue
 		if(current_char == "<")
 			parsing_message = FALSE
 			current_tag = ""
 			if(length(current_string_to_scramble))
-				var/scrambled_string = stars(current_string_to_scramble, clear_char_probability)
-				output_message += scrambled_string
+				output_message += stars(current_string_to_scramble, clear_char_probability)
 				current_string_to_scramble = ""
 
 		if(parsing_message && !escaped_tag)
@@ -201,8 +218,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 			current_tag += current_char
 
 	if(length(current_string_to_scramble))
-		var/scrambled_string = stars(current_string_to_scramble, clear_char_probability)
-		output_message += scrambled_string
+		output_message += stars(current_string_to_scramble, clear_char_probability)
 
 	return output_message
 

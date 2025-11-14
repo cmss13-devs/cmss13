@@ -7,19 +7,19 @@
  * enqueues it if a screen text is running and plays i otherwise
  * Arguments:
  * * text: text we want to be displayed
- * * alert_type: typepath for screen text type we want to play here
+ * * alert_type: typepath OR atom for screen text type we want to play here
  * * override_color: the color of the text to use
  */
 /mob/proc/play_screen_text(text, alert_type = /atom/movable/screen/text/screen_text, override_color = "#FFFFFF")
-	var/atom/movable/screen/text/screen_text/text_box = new alert_type()
+	var/atom/movable/screen/text/screen_text/text_box = isatom(alert_type) ? alert_type : new alert_type()
 	text_box.text_to_play = text
 	text_box.player = client
 	if(override_color)
 		text_box.color = override_color
-
-	LAZYADD(client.screen_texts, text_box)
-	if(LAZYLEN(client.screen_texts) == 1) //lets only play one at a time, for thematic effect and prevent overlap
-		INVOKE_ASYNC(text_box, TYPE_PROC_REF(/atom/movable/screen/text/screen_text, play_to_client))
+	if(client)
+		LAZYADD(client.screen_texts, text_box)
+		if(LAZYLEN(client.screen_texts) == 1) //lets only play one at a time, for thematic effect and prevent overlap
+			INVOKE_ASYNC(text_box, TYPE_PROC_REF(/atom/movable/screen/text/screen_text, play_to_client))
 
 /atom/movable/screen/text/screen_text
 	icon = null
@@ -51,44 +51,6 @@
 	var/text_to_play
 	///The client that this text is for
 	var/client/player
-
-/atom/movable/screen/text/screen_text/command_order
-	maptext_height = 64
-	maptext_width = 480
-	maptext_x = 0
-	maptext_y = 0
-	screen_loc = "LEFT,TOP-3"
-
-	letters_per_update = 2
-	fade_out_delay = 4.5 SECONDS
-	style_open = "<span class='langchat' style=font-size:16pt;text-align:center valign='top'>"
-	style_close = "</span>"
-
-/atom/movable/screen/text/screen_text/command_order/tutorial
-	letters_per_update = 4 // overall, pretty fast while not immediately popping in
-	play_delay = 0.1
-	fade_out_delay = 2.5 SECONDS
-	fade_out_time = 0.5 SECONDS
-
-/atom/movable/screen/text/screen_text/command_order/tutorial/end_play()
-	if(!player)
-		qdel(src)
-		return
-
-	if(player.mob || HAS_TRAIT(player.mob, TRAIT_IN_TUTORIAL))
-		return ..()
-
-	for(var/atom/movable/screen/text/screen_text/command_order/tutorial/tutorial_message in player.screen_texts)
-		LAZYREMOVE(player.screen_texts, tutorial_message)
-		qdel(tutorial_message)
-
-	return ..()
-
-/atom/movable/screen/text/screen_text/command_order/yautja
-	letters_per_update = 2
-	play_delay = 0.3
-	fade_out_delay = 10 SECONDS
-	fade_out_time = 3 SECONDS
 
 ///proc for actually playing this screen_text on a mob.
 /atom/movable/screen/text/screen_text/proc/play_to_client()

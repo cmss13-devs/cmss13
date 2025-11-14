@@ -44,6 +44,10 @@
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_ALL)
 
+/datum/equipment_preset/wo/commander/load_status(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	give_action(new_human, /datum/action/innate/message_squad)
+
 /datum/equipment_preset/wo/commander/load_gear(mob/living/carbon/human/new_human)
 	var/sidearm = "Unica (camo comforting)"
 	var/kit = null
@@ -125,6 +129,10 @@
 /datum/equipment_preset/wo/xo/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_MAIN)
+
+/datum/equipment_preset/wo/xo/load_status(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	give_action(new_human, /datum/action/innate/message_squad)
 
 /datum/equipment_preset/wo/xo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel

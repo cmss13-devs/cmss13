@@ -45,6 +45,11 @@
 	)
 	var/datum/ammo/xeno/ammo
 
+/datum/action/xeno_action/activable/xeno_spit/bombard/benator/can_use_action()
+	. = ..()
+	if(owner.action_busy)
+		return FALSE
+
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/use_ability(atom/affected_atom)
 	var/mob/living/carbon/xenomorph/spitter/xeno = owner
 	var/datum/behavior_delegate/delegate = xeno.behavior_delegate
@@ -103,8 +108,6 @@
 	. = ..()
 
 	if(!.)
-		return FALSE
-	if(owner.action_busy)
 		return FALSE
 
 	var/mob/living/carbon/xenomorph/xeno = owner

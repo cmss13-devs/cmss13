@@ -202,7 +202,7 @@
 	spit_cost = 55
 	damage = 10
 	bonus_projectiles_amount = 4
-	scatter = SCATTER_AMOUNT_NEURO
+	scatter = SCATTER_AMOUNT_VENATOR
 	bonus_projectiles_type = /datum/ammo/xeno/acid/spatter/venator_enzymatic_breath/spread
 	spit_windup = 1 SECONDS
 

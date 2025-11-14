@@ -419,7 +419,7 @@
 			old_xeno.iff_tag = null
 
 	if(hive)
-		for(var/trait in hive.hive_inherant_traits)
+		for(var/trait in hive.hive_inherited_traits)
 			ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	//Set caste stuff
@@ -887,7 +887,7 @@
 
 	new_hive.add_xeno(src)
 
-	for(var/trait in new_hive.hive_inherant_traits)
+	for(var/trait in new_hive.hive_inherited_traits)
 		ADD_TRAIT(src, trait, TRAIT_SOURCE_HIVE)
 
 	generate_name()

@@ -77,7 +77,7 @@
 	weed_food_states = list("Reaper_1","Reaper_2","Reaper_3")
 	weed_food_states_flipped = list("Reaper_1","Reaper_2","Reaper_3")
 
-	huggers_max = 20
+	huggers_max = 16
 	eggs_max = 4
 
 	// Reaper vars

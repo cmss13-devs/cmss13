@@ -176,7 +176,6 @@
 	. = ..()
 	if(. == FALSE)
 		return
-
 	new /datum/effects/acid(M, P.firer)
 
 /datum/ammo/xeno/acid/spatter/venator_corrosive_spit
@@ -185,6 +184,18 @@
 	damage = 45
 	max_range = 8
 	spit_windup = 0.8 SECONDS
+
+/datum/ammo/xeno/acid/spatter/venator_corrosive_spit/on_hit_mob(mob/M, obj/projectile/P)
+	. = ..()
+	new/obj/effect/xenomorph/spray/no_stun/venator(M.loc)
+
+/datum/ammo/xeno/acid/spatter/venator_corrosive_spit/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
+	. = ..()
+	new/obj/effect/xenomorph/spray/no_stun/venator(target_object.loc)
+
+/datum/ammo/xeno/acid/spatter/venator_corrosive_spit/on_hit_turf(turf/T, obj/projectile/P)
+	. = ..()
+	new/obj/effect/xenomorph/spray/no_stun/venator(T.loc)
 
 /datum/ammo/xeno/acid/spatter/venator_enzymatic_breath
 	name = "Enzymatic breath"
@@ -204,15 +215,45 @@
 	spit_cost = 65
 	spit_windup = 1.2 SECONDS
 	shell_speed = AMMO_SPEED_TIER_2
-	var/direct_stun = 1.5 SECONDS
+	var/direct_stun = 1.5
+	var/list/indirect_spreads = list(list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST),list(NORTH, WEST, EAST, SOUTH))
+	var/list/direct_spread = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
+
 
 /datum/ammo/xeno/acid/venator_acid_blob/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
+	spread_acid(M.loc, direct_spread)
 	if(!istype(M,/mob/living/carbon/human))
 		return
 
 	var/mob/living/carbon/human/human = M
 	human.KnockDown(direct_stun)
+
+
+/datum/ammo/xeno/acid/venator_acid_blob/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
+	. = ..()
+	spread_acid(target_object.loc, pick(indirect_spreads))
+
+/datum/ammo/xeno/acid/venator_acid_blob/on_hit_turf(turf/T, obj/projectile/P)
+	. = ..()
+	spread_acid(T.loc, pick(indirect_spreads))
+
+/datum/ammo/xeno/acid/venator_acid_blob/do_at_max_range(obj/projectile/P)
+	. = ..()
+	spread_acid(P.loc, pick(indirect_spreads))
+
+/datum/ammo/xeno/acid/venator_acid_blob/proc/spread_acid(location, list/directions)
+	if(istype(location, /turf/closed))
+		return
+	new/obj/effect/xenomorph/spray/no_stun/venator(location)
+	var/turf/spread_location
+	for(var/direction in directions)
+		spread_location = get_step(location, direction)
+		if(istype(location,/turf/closed))
+			continue
+	new/obj/effect/xenomorph/spray/no_stun/venator(spread_location)
+
+
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"

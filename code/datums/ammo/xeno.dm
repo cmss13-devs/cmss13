@@ -215,7 +215,8 @@
 	spit_cost = 65
 	spit_windup = 1.2 SECONDS
 	shell_speed = AMMO_SPEED_TIER_2
-	flags_ammo_behavior = AMMO_HITS_TARGET_TURF|AMMO_ACIDIC
+	flags_ammo_behavior = AMMO_HITS_TARGET_TURF|AMMO_ACIDIC|AMMO_STRIKES_SURFACE
+	hits_lying_mobs = TRUE
 	var/direct_stun = 1.5
 	var/list/indirect_spreads = list(list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST),list(NORTH, WEST, EAST, SOUTH))
 	var/list/direct_spread = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)

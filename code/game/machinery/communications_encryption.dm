@@ -108,11 +108,15 @@
 /// Internal: Finalizes printing a punch card from print() with chances for a single failed punch.
 /obj/structure/machinery/computer/almayer_encryption/proc/finish_print(list/data, mob/living/user)
 	var/obj/item/paper/punch_card/card = new(loc)
-	card.data = data
+
+	// Mis-punch?
 	for(var/i in 1 to length(data))
 		if(prob(10))
-			card.data[i] = 0 // It tried
+			data[i] = 0 // It tried
 			break
+
+	card.update_punch_data(data, encoding=32)
+
 	if(ishuman(user) && get_dist(user, src) < 2)
 		user.put_in_hands(card)
 
@@ -120,12 +124,13 @@
 /// Will try_restock_punch_card if card is unused, otherwise tgui_interact, consume the card, and input its data after delay.
 /obj/structure/machinery/computer/almayer_encryption/proc/insert_punch_card(obj/item/paper/punch_card/card, mob/living/user)
 	if(QDELETED(card))
-		return FALSE
+		return TRUE
 	if(user.action_busy)
-		return FALSE
+		return TRUE
 
 	if(!card.data)
-		return try_restock_punch_card(card, user)
+		try_restock_punch_card(card, user)
+		return TRUE
 
 	if(!do_after(user, 1 SECONDS, show_busy_icon=BUSY_ICON_GENERIC, target=src))
 		return TRUE
@@ -135,12 +140,30 @@
 	if(!do_after(user, 5 DECISECONDS, show_busy_icon=BUSY_ICON_GENERIC, target=src))
 		return TRUE
 
-	user.drop_inv_item_to_loc(card, src)
-	if(length(card?.data) == cipher_length)
+	user.drop_inv_item_to_loc(card, loc)
+
+	if(length(card.data) == cipher_length)
 		ui.send_update(list(
 			"punch_card" = card.data
 		))
-	qdel(card)
+	else
+		var/trimmed_data = list()
+		var/card_data_length = length(card.data)
+		for(var/i in 1 to cipher_length)
+			var/current = card.data[i]
+			if(i <= card_data_length)
+				if(!islist(current))
+					trimmed_data += current // Single number
+				else if(length(current) == 1)
+					trimmed_data += current[1] // List with single number
+				else
+					trimmed_data += 0 // Multiple punch on the same row
+			else
+				trimmed_data += 0 // No data present for this row
+		ui.send_update(list(
+			"punch_card" = trimmed_data
+		))
+
 	playsound(user, 'sound/machines/outputclick1.ogg', 25, vary=TRUE)
 	return TRUE
 
@@ -251,7 +274,16 @@
 			return TRUE
 
 /obj/structure/machinery/computer/almayer_encryption/decoder/insert_punch_card(obj/item/paper/punch_card/card, mob/living/user)
-	return FALSE // Refuse it
+	if(QDELETED(card))
+		return TRUE
+	if(user.action_busy)
+		return TRUE
+
+	if(!card.data)
+		try_restock_punch_card(card, user)
+		return TRUE
+
+	return FALSE
 
 /// Creates a new challenge in SSradio.faction_coms_codes[faction] if there wasn't one made already recently.
 /obj/structure/machinery/computer/almayer_encryption/decoder/proc/generate_challenge()
@@ -294,21 +326,5 @@
 		var/zero_indexed_char = phrase_ascii - 65
 		solution += zero_indexed_char
 		challenge += (zero_indexed_char + offset) % (MAX_OFFSET + 1) // Wrap the offset value
-
-
-// ----- Encryption Punch Cards -----
-
-/obj/item/paper/punch_card
-	name = "\improper IBM punch card"
-	desc = "A stiff piece of paper starting to yellow with a bunch of numbers on it."
-	/// The punched out numbers on this card, though if null can be used for restocking
-	var/list/data
-
-/obj/item/paper/punch_card/Initialize(mapload, photo_list)
-	. = ..()
-	// TODO
-
-/obj/item/paper/punch_card/proc/clearpaper()
-	return
 
 #undef MAX_OFFSET

@@ -3,8 +3,6 @@
  * also scraps of paper
  */
 
-#define MAX_FIELDS 51
-
 /obj/item/paper
 	name = "paper"
 	gender = PLURAL
@@ -29,16 +27,24 @@
 	ground_offset_x = 9
 	ground_offset_y = 8
 
-	var/info //What's actually written on the paper.
-	var/info_links //A different version of the paper which includes html links at fields and EOF
-	var/stamps //The (text for the) stamps on the paper.
-	var/fields //Amount of user created fields
+	///What's actually written on the paper.
+	var/info
+	///A different version of the paper which includes html links at fields and EOF
+	var/info_links
+	///Optional additional stylesheets in the form name=filename
+	var/list/extra_stylesheets
+	///Optional additional header content
+	var/list/extra_headers
+	///The (text for the) stamps on the paper.
+	var/stamps
+	///Amount of user created fields
+	var/fields
 	var/list/stamped
 	var/ico[0] //Icons and
 	var/offset_x[0] //offsets stored for later
 	var/offset_y[0] //usage by the photocopier
 
-	// any photos that might be attached to the paper
+	/// any photos that might be attached to the paper
 	var/list/photo_list
 
 	var/deffont = "Verdana"
@@ -114,7 +120,7 @@
 	var/paper_info = info
 	if(scramble)
 		paper_info = stars_decode_html(info)
-	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width=DEFAULT_PAPER_WIDTH, height=DEFAULT_PAPER_HEIGHT, extra_stylesheets=extra_stylesheets, extra_headers=extra_headers)
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -215,8 +221,8 @@
 
 /obj/item/paper/proc/updateinfolinks()
 	info_links = info
-	for(var/i=1,  i<=min(fields, MAX_FIELDS), i++)
-		addtofield(i, "<font face=\"[deffont]\"><A href='byond://?src=\ref[src];write=[i]'>write</A></font>", 1)
+	for(var/i=1, i<=min(fields, PAPER_MAX_FIELDS), i++)
+		addtofield(i, "<font face=\"[deffont]\"><A href='byond://?src=\ref[src];write=[i]'>write</A></font>", links=TRUE)
 	info_links = info_links + "<font face=\"[deffont]\"><A href='byond://?src=\ref[src];write=end'>write</A></font>"
 
 
@@ -319,7 +325,7 @@
 		if(i==0)
 			break
 		laststart = i+1
-		fields = min(fields+1, MAX_FIELDS)
+		fields = min(fields+1, PAPER_MAX_FIELDS)
 		//NOTE: The max here will include the auto-created field when hitting a paper with a pen. So it should be [your_desired_number]+1.
 
 /obj/item/paper/proc/openhelp(mob/user as mob)
@@ -441,7 +447,7 @@
 			info += t // Oh, he wants to edit to the end of the file, let him.
 			updateinfolinks()
 
-		show_browser(usr, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
+		show_browser(usr, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name, extra_stylesheets=extra_stylesheets, extra_headers=extra_headers) // Update the window
 
 		update_icon()
 		playsound(src, "paper_writing", 15, TRUE)
@@ -476,7 +482,7 @@
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
 				return
-		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name, width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT) // Update the window
+		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name, width=DEFAULT_PAPER_WIDTH, height=DEFAULT_PAPER_HEIGHT, extra_stylesheets=extra_stylesheets, extra_headers=extra_headers) // Update the window
 		//openhelp(user)
 		return
 
@@ -1179,8 +1185,6 @@
 
 	info = parsepencode(template, null, null, FALSE)
 	update_icon()
-
-#undef MAX_FIELDS
 
 /obj/item/paper/colonial_grunts
 	icon = 'icons/obj/items/paper.dmi'

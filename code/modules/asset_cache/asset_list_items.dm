@@ -135,6 +135,9 @@
 		"background_dark2.jpg" = 'html/paper_assets/background_dark2.jpg',
 		"background_dark_fractal.png" = 'html/paper_assets/background_dark_fractal.png',
 		"colonialspacegruntsEZ.png" = 'html/paper_assets/colonialspacegruntsEZ.png',
+		"logo_wy_carbon.png" = 'html/paper_assets/logo_wy_carbon.png',
+		"wy_punch_card.png" = 'html/paper_assets/wy_punch_card.png',
+		"punch_card_punch.png" = 'html/paper_assets/punch_card_punch.png',
 	)
 
 /datum/asset/spritesheet/chat

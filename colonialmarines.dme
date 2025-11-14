@@ -2350,6 +2350,7 @@
 #include "code\modules\paperwork\photocopier.dm"
 #include "code\modules\paperwork\photography.dm"
 #include "code\modules\paperwork\prefab_papers.dm"
+#include "code\modules\paperwork\punch_card.dm"
 #include "code\modules\paperwork\prefab_papers\uacqs.dm"
 #include "code\modules\paperwork\prefab_papers\provost\high_command\arrest_warrant.dm"
 #include "code\modules\paperwork\prefab_papers\provost\high_command\custody_transfer.dm"

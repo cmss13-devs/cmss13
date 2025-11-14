@@ -82,7 +82,7 @@
 			return
 
 	if(!info)
-		icon_state = "paper"
+		icon_state = initial(icon_state)
 		return
 
 	switch(icon_state)

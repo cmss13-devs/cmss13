@@ -836,3 +836,11 @@
 	SetRoot(0)
 	SetEyeBlur(0)
 	updatehealth()
+
+
+/mob/living/carbon/xenomorph/proc/do_dash_smoke()
+
+	var/datum/effect_system/smoke_spread/dash_dust/dash_smoke = new()
+	dash_smoke.set_up(0, 0, get_turf(src), null, 6)
+	dash_smoke.start()
+	new /obj/effect/particle_effect/dash_dust (get_turf(src))

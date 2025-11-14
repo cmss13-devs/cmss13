@@ -1,4 +1,0 @@
-author: "Zenith"
-delete-after: True
-changes:
-  - bugfix: "fixed vehicle back door sprites & CLF van door pathing. Now you can click the full tile."

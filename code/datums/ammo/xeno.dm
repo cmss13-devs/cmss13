@@ -238,7 +238,7 @@
 
 /datum/ammo/xeno/acid/venator_acid_blob/on_hit_turf(turf/T, obj/projectile/P)
 	. = ..()
-	spread_acid(T.loc, pick(indirect_spreads))
+	spread_acid(T, pick(indirect_spreads))
 
 /datum/ammo/xeno/acid/venator_acid_blob/do_at_max_range(obj/projectile/P)
 	. = ..()

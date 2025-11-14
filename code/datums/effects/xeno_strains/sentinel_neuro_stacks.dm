@@ -85,21 +85,21 @@
 	last_increment_time = world.time
 
 /particles/neuro_particles
-    icon = 'icons/effects/particles/generic_particles.dmi'
-    icon_state = "x"
-    width = 100
-    height = 100
-    count = 1000
-    spawning = 4
-    lifespan = 9
-    fade = 10
-    grow = 0.2
-    velocity = list(0, 0)
-    position = generator(GEN_CIRCLE, 10, 10, NORMAL_RAND)
-    drift = generator(GEN_VECTOR, list(0, -0.15), list(0, 0.15))
-    gravity = list(0, 0.4)
-    scale = generator(GEN_VECTOR, list(0.3, 0.3), list(0.9,0.9), NORMAL_RAND)
-    rotation = 0
-    spin = generator(GEN_NUM, 10, 20)
-    color = "#7DCC00"
+	icon = 'icons/effects/particles/generic_particles.dmi'
+	icon_state = "x"
+	width = 100
+	height = 100
+	count = 1000
+	spawning = 4
+	lifespan = 9
+	fade = 10
+	grow = 0.2
+	velocity = list(0, 0)
+	position = generator(GEN_CIRCLE, 10, 10, NORMAL_RAND)
+	drift = generator(GEN_VECTOR, list(0, -0.15), list(0, 0.15))
+	gravity = list(0, 0.4)
+	scale = generator(GEN_VECTOR, list(0.3, 0.3), list(0.9,0.9), NORMAL_RAND)
+	rotation = 0
+	spin = generator(GEN_NUM, 10, 20)
+	color = "#7DCC00"
 

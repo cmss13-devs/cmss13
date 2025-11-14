@@ -26,6 +26,8 @@
 	spitter.health_modifier -= XENO_HEALTH_MOD_SMALL_MED // 500 hp
 
 	spitter.speed_modifier += XENO_SPEED_TIER_2
+	spitter.melee_damage_upper = XENO_DAMAGE_TIER_2
+	spitter.plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	spitter.recalculate_everything()
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor

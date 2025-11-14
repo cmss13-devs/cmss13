@@ -659,8 +659,7 @@ SUBSYSTEM_DEF(cmtv)
 
 /datum/action/stop_cmtv
 	name = "Stop CMTV"
-	icon_file = 'icons/obj/structures/machinery/monitors.dmi'
-	action_icon_state = "camera"
+	action_icon_state = "cmtv_observe"
 
 /datum/action/stop_cmtv/action_activate()
 	. = ..()

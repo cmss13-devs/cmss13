@@ -35,6 +35,9 @@
 		Detach(target)
 		return
 
+	if(prob(15)) // dont want to leave a trail everytime
+		return
+
 	var/turf/T_in = target.loc
 	var/turf/T_out = oldLoc
 

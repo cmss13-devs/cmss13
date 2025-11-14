@@ -184,6 +184,7 @@
 	damage = 45
 	max_range = 8
 	spit_windup = 0.8 SECONDS
+	hits_lying_mobs = TRUE
 
 /datum/ammo/xeno/acid/spatter/venator_corrosive_spit/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -216,7 +217,6 @@
 	spit_windup = 1.2 SECONDS
 	shell_speed = AMMO_SPEED_TIER_2
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF|AMMO_ACIDIC|AMMO_STRIKES_SURFACE
-	hits_lying_mobs = TRUE
 	var/direct_stun = 1.5
 	var/list/indirect_spreads = list(list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST),list(NORTH, WEST, EAST, SOUTH))
 	var/list/direct_spread = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)

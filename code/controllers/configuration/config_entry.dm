@@ -25,7 +25,7 @@
 
 /datum/config_entry/New()
 	if(type == abstract_type)
-		CRASH("Abstract config entry [type] instatiated!")
+		CRASH("Abstract config entry [type] instantiated!")
 	name = lowertext(type2top(type))
 	if(islist(config_entry_value))
 		var/list/L = config_entry_value

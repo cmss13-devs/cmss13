@@ -30,7 +30,7 @@ Bonus
 		var/mob/living/carbon/M = A.affected_mob
 		switch(A.stage)
 			if(1, 2, 3, 4)
-				to_chat(M, SPAN_NOTICE("[pick("You notice someone in the corner of your eye.", "Are that footsteps you hear?")]"))
+				to_chat(M, SPAN_NOTICE("[pick("You notice someone in the corner of your eye.", "Are those footsteps you hear?")]"))
 			else
 				M.hallucination += 5
 

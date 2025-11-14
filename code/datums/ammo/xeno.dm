@@ -179,6 +179,28 @@
 
 	new /datum/effects/acid(M, P.firer)
 
+/datum/ammo/xeno/acid/spatter/venator_corrosive_spit
+	name = "Corrosive spit"
+	spit_cost =  45
+	damage = 45
+	max_range = 8
+	spit_windup = 0.8 SECONDS
+
+/datum/ammo/xeno/acid/spatter/venator_enzymatic_breath
+	name = "Enzymatic breath"
+	spit_cost = 55
+	damage = 10
+	bonus_projectiles_amount = 4
+	bonus_projectiles_type = /datum/ammo/xeno/acid/spatter/venator_enzymatic_breath/spread
+
+/datum/ammo/xeno/acid/spatter/venator_enzymatic_breath/spread
+	bonus_projectiles_amount = 0
+	scatter = SCATTER_AMOUNT_TIER_1
+
+/datum/ammo/xeno/acid/venator_acid_blob
+	name = "Acid blob"
+	spit_cost = 65
+
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
 	icon_state = "xeno_acid_strong"

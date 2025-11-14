@@ -1,7 +1,7 @@
 /datum/xeno_strain/venator
 	name = SPITTER_VENATOR
-	description = ""
-	flavor_description = ""
+	description = " fill in later"
+	flavor_description = " fill in later"
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/tail_stab/spitter,
 		/datum/action/xeno_action/activable/xeno_spit/spitter,
@@ -79,17 +79,17 @@
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/corosive_spit
 	name = "corosive spit"
 	plasma_cost = 45
-	ammo = /datum/ammo/xeno/boiler_gas/acid
+	ammo = /datum/ammo/xeno/acid/spatter/venator_corrosive_spit
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/acid_blob
 	name = "acid blob"
 	plasma_cost = 65
-	ammo = /datum/ammo/xeno/boiler_gas
+	ammo = /datum/ammo/xeno/acid/spatter/venator_enzymatic_breath
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/enzymatic_breath
 	name = "enzymatic breath"
 	plasma_cost = 55
-	ammo = /datum/ammo/xeno/toxin
+	ammo = /datum/ammo/xeno/acid/venator_acid_blob
 
 /datum/action/xeno_action/onclick/store_acid
 	name = "store acid"

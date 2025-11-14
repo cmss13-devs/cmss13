@@ -113,8 +113,51 @@
 
 		var/blocked = FALSE
 		var/allow_one_more_step = FALSE
-		for(var/obj/structure/structure in temp)
+		for(var/obj/structure in temp)
 			if(!structure.density && !structure.opacity)
+				continue
+			if(istype(structure, /obj/structure/machinery/portable_atmospherics/hydroponics))
+				continue
+			if(istype(structure, /obj/structure/window_frame))
+				continue
+			if(istype(structure, /obj/structure/closet/crate))
+				continue
+			if(istype(structure, /obj/structure/prop/hybrisa/misc/firehydrant))
+				continue
+			if(istype(structure, /obj/structure/machinery/line_nexter))
+				continue
+			if(istype(structure, /obj/structure/platform))
+				continue
+			if(istype(structure, /obj/structure/prop/hybrisa/misc/trash))
+				continue
+			if(istype(structure, /obj/structure/machinery/disposal))
+				continue
+			if(istype(structure, /obj/structure/janitorialcart))
+				continue
+			if(istype(structure, /obj/structure/largecrate/empty/case/double) || istype(structure, /obj/structure/largecrate/random/case/double))
+				blocked = TRUE
+				continue
+			if(istype(structure, /obj/structure/largecrate/empty/case) || istype(structure, /obj/structure/largecrate/random/case))
+				continue
+			if(istype(structure, /obj/vehicle/multitile))
+				blocked = TRUE
+				continue
+			if(istype(structure, /obj/structure/window/reinforced))
+				var/obj/structure/window/reinforced/pane_glass = structure
+				var/pane_facing = pane_glass.dir
+				if(pane_facing == turn(facing, 180))
+					blocked = TRUE
+				else if(pane_facing == facing)
+					allow_one_more_step = TRUE
+				continue
+			if(istype(structure, /obj/structure/surface/table))
+				var/obj/structure/surface/table/flip_table = structure
+				var/table_facing = flip_table.dir
+				if(flip_table.flipped)
+					if(table_facing == turn(facing, 180))
+						blocked = TRUE
+					else if(table_facing == facing)
+						allow_one_more_step = TRUE
 				continue
 			if(istype(structure, /obj/structure/barricade))
 				var/obj/structure/barricade/cade = structure

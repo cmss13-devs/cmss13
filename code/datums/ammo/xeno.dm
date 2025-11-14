@@ -191,15 +191,28 @@
 	spit_cost = 55
 	damage = 10
 	bonus_projectiles_amount = 4
+	scatter = SCATTER_AMOUNT_NEURO
 	bonus_projectiles_type = /datum/ammo/xeno/acid/spatter/venator_enzymatic_breath/spread
+	spit_windup = 1 SECONDS
 
 /datum/ammo/xeno/acid/spatter/venator_enzymatic_breath/spread
 	bonus_projectiles_amount = 0
-	scatter = SCATTER_AMOUNT_TIER_1
 
 /datum/ammo/xeno/acid/venator_acid_blob
 	name = "Acid blob"
+	damage = 25
 	spit_cost = 65
+	spit_windup = 1.2 SECONDS
+	shell_speed = AMMO_SPEED_TIER_2
+	var/direct_stun = 1.5 SECONDS
+
+/datum/ammo/xeno/acid/venator_acid_blob/on_hit_mob(mob/M, obj/projectile/P)
+	. = ..()
+	if(!istype(M,/mob/living/carbon/human))
+		return
+
+	var/mob/living/carbon/human/human = M
+	human.KnockDown(direct_stun)
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"

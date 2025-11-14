@@ -348,7 +348,7 @@
 
 /datum/action/item_action/toggle/m56goggles/update_button_icon()
 	var/obj/item/clothing/glasses/night = holder_item
-	if(!night.deactive_state || night.active)
+	if(!night.deactivated_state || night.active)
 		action_icon_state = "sg_nv_off"
 	else
 		action_icon_state = "sg_nv"
@@ -382,7 +382,7 @@
 	else
 		base_icon = "healthhud"
 
-	if(!hud_goggles.deactive_state || hud_goggles.active)
+	if(!hud_goggles.deactivated_state || hud_goggles.active)
 		action_icon_state = base_icon
 	else
 		action_icon_state = deactivate_state

@@ -10,7 +10,7 @@
 
 /// Simulates the Requisitions Line experience for newcomers
 /datum/tutorial/marine/reqs_line
-	name = "Marine - Requistions Line"
+	name = "Marine - Requisition Line"
 	desc = "Learn how to tend to the requisitions line as a Cargo Technician."
 	icon_state = "cargotech"
 	tutorial_id = "marine_req_1"

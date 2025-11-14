@@ -23,7 +23,7 @@
 	hostility = pick(50;FALSE,50;TRUE)
 	arrival_message = "[MAIN_SHIP_NAME] t*is i* UP* d^sp^*ch`. STr*&e teaM, #*u are cLe*% for a*pr*%^h. Pr*mE a*l wE*p^ns and pR*epr# t% r@nd$r a(tD."
 	if(hostility)
-		objectives = "Eliminate the UA Forces to ensure the UPP prescence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."
+		objectives = "Eliminate the UA Forces to ensure the UPP presence in this sector is continued. Listen to your superior officers and take over the [MAIN_SHIP_NAME] at all costs."
 	else
 		objectives = "Render assistance towards the UA Forces, do not engage UA forces. Listen to your superior officers."
 

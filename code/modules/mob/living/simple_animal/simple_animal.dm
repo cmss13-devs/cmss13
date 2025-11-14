@@ -435,12 +435,12 @@
 	if (isliving(target_mob))
 		var/mob/living/L = target_mob
 		if(!L.stat)
-			return (0)
+			return TRUE
 	if (istype(target_mob,/obj/structure/machinery/bot))
 		var/obj/structure/machinery/bot/B = target_mob
 		if(B.health > 0)
-			return (0)
-	return (1)
+			return TRUE
+	return FALSE
 
 /mob/living/simple_animal/say(message)
 	if(stat)
@@ -460,7 +460,8 @@
 
 	message = capitalize(trim_left(message))
 
-	..(message, null, verb, nolog = !ckey) //if the animal has a ckey then it will log the message
+	var/datum/language/speaking = GLOB.all_languages[LANGUAGE_SIMPLEMOB]
+	..(message, speaking, verb, nolog = !ckey) //if the animal has a ckey then it will log the message
 
 /mob/living/simple_animal/on_immobilized_trait_gain(datum/source)
 	. = ..()

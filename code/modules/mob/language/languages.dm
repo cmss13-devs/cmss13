@@ -220,3 +220,14 @@
 	exclaim_verb = "screeches"
 	color = "monkey"
 	key = "_"
+
+/datum/language/simplemob
+	name = LANGUAGE_SIMPLEMOB
+	color = "monkey"
+	desc = "The common tongue of simple fauna."
+	speech_verb = "hisses"
+	ask_verb = "hisses"
+	exclaim_verb = "hisses"
+	key = "]"
+	syllables = list("sss", "sSs", "SSS")
+	flags = RESTRICTED

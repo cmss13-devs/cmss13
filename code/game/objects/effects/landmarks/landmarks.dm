@@ -142,7 +142,7 @@
 	GLOB.monkey_spawns -= src
 	return ..()
 
-#define MAXIMUM_LIZARD_AMOUNT 4
+#define MAXIMUM_FAUNA_AMOUNT 6
 
 /obj/effect/landmark/lizard_spawn
 	name = "lizard spawn"
@@ -151,12 +151,12 @@
 /obj/effect/landmark/lizard_spawn/Initialize(mapload, ...)
 	. = ..()
 	if(prob(66))
-		new /mob/living/simple_animal/hostile/retaliate/giant_lizard(loc)
+		new /mob/living/simple_animal/hostile/retaliate/playable/giant_lizard(loc)
 		addtimer(CALLBACK(src, PROC_REF(latespawn_lizard)), rand(35 MINUTES, 50 MINUTES))
 
 /obj/effect/landmark/lizard_spawn/proc/latespawn_lizard()
 	//if there's already a ton of lizards alive, try again later
-	if(length(GLOB.giant_lizards_alive) > MAXIMUM_LIZARD_AMOUNT)
+	if(length(GLOB.giant_fauna_alive) > MAXIMUM_FAUNA_AMOUNT)
 		addtimer(CALLBACK(src, PROC_REF(latespawn_lizard)), rand(15 MINUTES, 25 MINUTES))
 		return
 	//if there's a living mob that can witness the spawn then try again later
@@ -165,9 +165,9 @@
 			continue
 		addtimer(CALLBACK(src, PROC_REF(latespawn_lizard)), 1 MINUTES)
 		return
-	new /mob/living/simple_animal/hostile/retaliate/giant_lizard(loc)
+	new /mob/living/simple_animal/hostile/retaliate/playable/giant_lizard(loc)
 
-#undef MAXIMUM_LIZARD_AMOUNT
+#undef MAXIMUM_FAUNA_AMOUNT
 
 /obj/effect/landmark/latewhiskey
 	name = "Whiskey Outpost Late join"

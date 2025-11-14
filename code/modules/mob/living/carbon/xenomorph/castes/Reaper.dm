@@ -325,7 +325,6 @@
 	var/obj/effect/alien/weeds/user_weeds_loc = locate() in xeno.loc
 	var/obj/effect/alien/weeds/target_weeds_loc = locate() in target.loc
 	var/plasma_cost_mult = plas_mod
-	var/flesh_cost_mult = flesh_plas_mod
 	var/mob/living/carbon/xenomorph/xeno_carbon = target
 
 	var/distance = get_dist(xeno, target)
@@ -352,8 +351,8 @@
 		to_chat(xeno, SPAN_XENOWARNING("We cannot help [xeno_carbon] when they're on fire!"))
 		return
 
-	if(xeno.flesh_plasma < (flesh_plasma_cost * flesh_cost_mult))
-		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh plasma, we need [(flesh_plasma_cost * flesh_cost_mult) - xeno.flesh_plasma] more!"))
+	if(xeno.flesh_plasma < flesh_plasma_cost)
+		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh plasma, we need [flesh_plasma_cost - xeno.flesh_plasma] more!"))
 		return
 
 	if(!xeno.Adjacent(target) && (!user_weeds_loc || !target_weeds_loc || (!(HIVE_ALLIED_TO_HIVE(xeno.hive, user_weeds_loc.linked_hive)) && !(HIVE_ALLIED_TO_HIVE(xeno.hive, target_weeds_loc.linked_hive)))))
@@ -402,6 +401,6 @@
 
 	xeno.face_atom(xeno_carbon)
 	use_plasma_owner(plasma_cost * plasma_cost_mult)
-	xeno.modify_flesh_plasma(-(flesh_plasma_cost * flesh_cost_mult))
+	xeno.modify_flesh_plasma(-flesh_plasma_cost)
 	apply_cooldown()
 	return ..()

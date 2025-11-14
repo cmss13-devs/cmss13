@@ -35,4 +35,3 @@
 	var/range = 3
 	var/flesh_plasma_cost = 100
 	var/plas_mod = 0.5 // Cost multiplier for adjacent healing
-	var/flesh_plas_mod = 1 // For weed interaciton

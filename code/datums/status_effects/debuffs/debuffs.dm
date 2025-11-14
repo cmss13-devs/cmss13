@@ -30,8 +30,8 @@
 	var/last_amount = 0
 //	alert_type = /atom/movable/screen/alert/status_effect/stun
 
-/datum/status_effect/incapacitating/stun/on_creation(mob/living/new_owner, set_duration, resistable=FALSE)
-	if(!resistable)
+/datum/status_effect/incapacitating/stun/on_creation(mob/living/new_owner, set_duration, resistible=FALSE)
+	if(!resistible)
 		if(new_owner)
 			last_amount = set_duration / new_owner.GetStunDuration(1)
 		return ..()
@@ -40,7 +40,7 @@
 	var/capped_amount = min(set_duration, MAX_RESISTABLE_STUN)
 	if(new_owner)
 		last_amount = capped_amount / new_owner.GetStunDuration(1)
-	return ..(new_owner, capped_amount, resistable)
+	return ..(new_owner, capped_amount, resistible)
 
 /datum/status_effect/incapacitating/stun/on_apply()
 	. = ..()
@@ -53,8 +53,8 @@
 	owner?.remove_traits(list(TRAIT_INCAPACITATED, TRAIT_IMMOBILIZED /*, TRAIT_HANDS_BLOCKED*/), TRAIT_STATUS_EFFECT(id))
 	return ..()
 
-/datum/status_effect/incapacitating/stun/update_duration(amount, increment, resistable=FALSE)
-	if(!resistable)
+/datum/status_effect/incapacitating/stun/update_duration(amount, increment, resistible=FALSE)
+	if(!resistible)
 		if(owner)
 			last_amount = amount / owner.GetStunDuration(1)
 		return ..()
@@ -67,8 +67,8 @@
 		last_amount = capped_amount / owner.GetStunDuration(1)
 	return ..(capped_amount, increment)
 
-/datum/status_effect/incapacitating/stun/adjust_duration(amount, resistable=FALSE)
-	if(!resistable)
+/datum/status_effect/incapacitating/stun/adjust_duration(amount, resistible=FALSE)
+	if(!resistible)
 		if(owner)
 			last_amount = amount / owner.GetStunDuration(1)
 		return ..()

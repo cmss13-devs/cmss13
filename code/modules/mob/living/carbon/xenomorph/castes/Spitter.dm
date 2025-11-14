@@ -13,6 +13,8 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_5
 
+	available_strains = list(/datum/xeno_strain/venator)
+
 	caste_desc = "Ptui!"
 	spit_types = list(/datum/ammo/xeno/acid, /datum/ammo/xeno/acid/spatter)
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_BOILER)

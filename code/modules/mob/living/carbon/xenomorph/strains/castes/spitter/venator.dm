@@ -87,12 +87,13 @@
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/acid_blob
 	name = "acid blob"
 	plasma_cost = 65
-	ammo = /datum/ammo/xeno/acid/spatter/venator_enzymatic_breath
+	ammo = /datum/ammo/xeno/acid/venator_acid_blob
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/enzymatic_breath
 	name = "enzymatic breath"
 	plasma_cost = 55
-	ammo = /datum/ammo/xeno/acid/venator_acid_blob
+	ammo = /datum/ammo/xeno/acid/spatter/venator_enzymatic_breath
+
 
 /datum/action/xeno_action/onclick/store_acid
 	name = "store acid"

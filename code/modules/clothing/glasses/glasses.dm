@@ -128,6 +128,7 @@
 	..()
 
 /obj/item/clothing/glasses/dropped(mob/living/carbon/human/user)
+	var/was_active = active
 	if(istype(user) && src == user.glasses)
 		if(hud_type && active)
 			var/datum/mob_hud/H = GLOB.huds[hud_type]
@@ -135,6 +136,8 @@
 		user.glasses = null
 		user.update_inv_glasses()
 	user.update_sight()
+	if(was_active && ishuman(user))
+		user.update_tint()
 	return ..()
 
 /obj/item/clothing/glasses/attack_self(mob/user)

@@ -63,6 +63,7 @@
 		return ..()
 
 	var/mob/living/carbon/human/human = affected_atom
+	QDEL_NULL(particle_holder)
 	if(!QDELETED(human))
 		addtimer(CALLBACK(human, TYPE_PROC_REF(/mob/living/carbon/human, update_xeno_hostile_hud)), 3)
 

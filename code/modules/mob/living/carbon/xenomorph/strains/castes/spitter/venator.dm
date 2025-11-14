@@ -54,17 +54,18 @@
 		if(venator_delegate.acid_stored > 0)
 			cooldown_duration = stored_cooldown
 	. = ..()
+	if(!.)
+		return FALSE
 	cooldown_duration = initial(cooldown_duration)
 
 
-	if(!action_cooldown_check()) // activate c/d only if we already spit
-		if(venator_delegate)
-			venator_delegate.use_acid()
-		for (var/action_type in action_types_to_secondary_cd)
-			var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
-			if (!istype(xeno_action))
-				continue
-			xeno_action.apply_cooldown_override(second_cooldown_duration)
+	if(venator_delegate)
+		venator_delegate.use_acid()
+	for (var/action_type in action_types_to_secondary_cd)
+		var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
+		if (!istype(xeno_action))
+			continue
+		xeno_action.apply_cooldown_override(second_cooldown_duration)
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/action_activate()
 	. = ..()
@@ -111,6 +112,8 @@
 /datum/action/xeno_action/onclick/store_acid/use_ability(atom/target)
 	. = ..()
 	if(!.)
+		return FALSE
+	if(!action_cooldown_check())
 		return FALSE
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/datum/behavior_delegate/spitter_venator/delegate = xeno.behavior_delegate

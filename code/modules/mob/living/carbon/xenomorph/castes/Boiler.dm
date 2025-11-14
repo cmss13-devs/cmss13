@@ -206,6 +206,8 @@
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/use_ability(atom/affected_atom)
 	. = ..()
+	if(!.)
+		return FALSE
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!action_cooldown_check()) // activate c/d only if we already spit
 		for (var/action_type in action_types_to_cd)

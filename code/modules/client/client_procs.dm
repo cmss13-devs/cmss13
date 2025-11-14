@@ -58,6 +58,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/set_crit_type,
 	/client/proc/set_flashing_lights_pref,
 	/client/proc/toggle_leadership_spoken_orders,
+	/client/proc/toggle_cocking_to_hand,
 ))
 
 /client/proc/reduce_minute_count()
@@ -171,14 +172,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
-
 	else if(href_list["tacmaps_panel"])
 		GLOB.tacmap_admin_panel.tgui_interact(mob)
-
-	else if(href_list["MapView"])
-		if(isxeno(mob))
-			return
-		GLOB.uscm_tacmap_status.tgui_interact(mob)
 
 	//NOTES OVERHAUL
 	if(href_list["add_merit_info"])
@@ -400,6 +395,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 /client/proc/PostLogin()
 	add_verb(src, collect_client_verbs())
+
+	check_ip_vpn()
 
 	acquire_dpi()
 

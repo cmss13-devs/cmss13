@@ -64,7 +64,7 @@
 			playsound(T.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
 //Update the power display thing. This is called in Life()
-/mob/living/carbon/human/proc/update_power_display(perc)
+/mob/living/carbon/human/proc/update_power_display(perc, material)
 	if(hud_used?.pred_power_icon)
 		switch(perc)
 			if(91 to INFINITY)
@@ -87,6 +87,8 @@
 				hud_used.pred_power_icon.icon_state = "powerbar20"
 			else
 				hud_used.pred_power_icon.icon_state = "powerbar10"
+		if(material)
+			hud_used.pred_power_icon.icon_state = hud_used.pred_power_icon.icon_state + "_" + material
 
 /mob/living/carbon/human/proc/butcher()
 	set category = "Yautja.Misc"
@@ -270,6 +272,7 @@
 	//music = "signal"
 	ambience_exterior = AMBIENCE_YAUTJA
 	ceiling = CEILING_METAL
+	powernet_name = "yautja_ship"
 	requires_power = FALSE
 	base_lighting_alpha = 155
 	base_lighting_color = "#ffc49c"

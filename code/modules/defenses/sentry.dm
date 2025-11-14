@@ -53,6 +53,9 @@
 		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
+	///Minimap iconstate to use for this sentry
+	var/minimap_icon_state = "sentry"
+
 /obj/structure/machinery/defenses/sentry/Initialize()
 	. = ..()
 	spark_system = new /datum/effect_system/spark_spread
@@ -62,9 +65,11 @@
 		start_processing()
 		set_range()
 	update_icon()
+	update_minimap_icon()
 	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(unset_range))
 
 /obj/structure/machinery/defenses/sentry/Destroy() //Clear these for safety's sake.
+	SSminimaps.remove_marker(src)
 	targets = null
 	other_targets = null
 	target = null
@@ -81,7 +86,7 @@
 
 	if(!range_bounds)
 		set_range()
-	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
 	if(!targets)
 		return FALSE
 
@@ -184,12 +189,14 @@
 
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] hums to life and emits several beeps.")]")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] buzzes in a monotone voice: 'Default systems initiated'")]")
+	update_minimap_icon()
 	start_processing()
 	set_range()
 
 /obj/structure/machinery/defenses/sentry/power_off_action()
 	set_light(0)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] powers down and goes silent.")]")
+	update_minimap_icon(off = TRUE)
 	stop_processing()
 	unset_range()
 
@@ -219,6 +226,7 @@
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] rotates [src]."), SPAN_NOTICE("You rotate [src]."))
 		setDir(turn(dir, -90))
+		update_minimap_icon()
 		return
 
 	if(istype(O, ammo))
@@ -255,6 +263,7 @@
 	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
 	for(var/i = 1 to 6)
 		setDir(pick(NORTH, EAST, SOUTH, WEST))
+		update_minimap_icon()
 		sleep(2)
 
 	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("sentry explosion", owner_mob))
@@ -286,6 +295,7 @@
 
 	if(omni_directional)
 		setDir(get_dir(src, A))
+		update_minimap_icon()
 	for(var/i in 1 to burst)
 		if(actual_fire(A))
 			break
@@ -315,6 +325,7 @@
 	GIVE_BULLET_TRAIT(new_projectile, /datum/element/bullet_trait_iff, faction_group)
 	new_projectile.fire_at(target, owner_mob, src, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
 	muzzle_flash(Get_Angle(get_turf(src), target))
+	update_minimap_icon(TRUE)
 	ammo.current_rounds--
 	track_shot()
 	if(ammo.current_rounds == 0)
@@ -464,9 +475,29 @@
 		target = pick(unconscious_targets)
 
 	if(!target) //No targets, don't bother firing
+		update_minimap_icon()
 		return
 
 	fire(target)
+
+///Updates the vehicles minimap icon
+/obj/structure/machinery/defenses/sentry/proc/update_minimap_icon(firing, off)
+	if(!minimap_icon_state)
+		return
+	SSminimaps.remove_marker(src)
+	if(off)
+		return
+	var/minimap_flags = NO_FLAGS
+	for(var/faction in faction_group)
+		minimap_flags |= get_minimap_flag_for_faction(faction)
+	if(!minimap_flags)
+		return
+	minimap_icon_state = initial(minimap_icon_state)
+	if(firing)
+		minimap_icon_state += "_firing"
+	else
+		minimap_icon_state += "_passive"
+	SSminimaps.add_marker(src, minimap_flags, image('icons/ui_icons/map_blips_larger.dmi', null, minimap_icon_state, HIGH_FLOAT_LAYER, dir = src.dir), -28.25, -28.25)
 
 /obj/structure/machinery/defenses/sentry/premade
 	name = "\improper UA-577 Gauss Turret"
@@ -580,6 +611,7 @@
 	desc = "A fully-automated defence turret with mid-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed and modified for UA warship use."
 	fire_delay = 0.4 SECONDS
 	omni_directional = TRUE
+	minimap_icon_state = "sentry_omni"
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini
 	name = "\improper UA 512-S mini sentry"
@@ -626,6 +658,11 @@
 		if(TURRET_BATTERY_STATE_DEAD)
 			. += SPAN_INFO("It appears to be offline.")
 
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/handle_vehicle_bump(obj/vehicle/multitile/bumping_vehicle)
+	var/mob/driver = bumping_vehicle.seats[VEHICLE_DRIVER]
+	to_chat(driver, SPAN_WARNING("[src] is in the way!"))
+	return FALSE // Prevent movement over
+
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/proc/set_battery_state(state)
 	battery_state = state
 	switch(state)
@@ -665,6 +702,7 @@
 	omni_directional = TRUE
 	choice_categories = list()
 	selected_categories = list()
+	minimap_icon_state = "sentry_omni"
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 	var/obj/structure/machinery/camera/cas/linked_cam
 
@@ -866,6 +904,7 @@
 	omni_directional = TRUE
 	handheld_type = /obj/item/defenses/handheld/sentry/wy
 	ammo = new /obj/item/ammo_magazine/sentry/wy
+	minimap_icon_state = "sentry_omni"
 	selected_categories = list(
 		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
 	)
@@ -930,6 +969,7 @@
 	disassemble_time = 2 SECONDS
 	sentry_range = 3
 	omni_directional = TRUE
+	minimap_icon_state = "sentry_omni"
 	handheld_type = /obj/item/defenses/handheld/sentry/upp/light
 
 /obj/structure/machinery/defenses/sentry/omni
@@ -937,6 +977,7 @@
 	omni_directional = TRUE
 	damage_mult = 0.7
 	sentry_range = 4
+	minimap_icon_state = "sentry_omni"
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE

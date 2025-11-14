@@ -8799,11 +8799,6 @@
 	},
 /turf/open/floor/corsat/brown,
 /area/corsat/omega/cargo)
-"aHJ" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat/retrosquareslight,
-/area/corsat/sigma/south/complex)
 "aHK" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/corsat/red/west,
@@ -10529,18 +10524,18 @@
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/south/complex)
 "aOI" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat/purplewhite/southwest,
 /area/corsat/sigma/south/complex)
 "aOJ" = (
 /turf/open/floor/corsat/sigma,
 /area/corsat/sigma/hangar)
 "aOK" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat/purplewhite,
 /area/corsat/sigma/south/complex)
 "aOL" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/corsat/purplewhite/west,
 /area/corsat/sigma/south/complex)
 "aOM" = (
@@ -16225,7 +16220,7 @@
 /turf/open/floor/corsat/retrosquares,
 /area/corsat/omega/hallways)
 "biZ" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/plate,
 /area/corsat/gamma/hydroponics)
@@ -17353,7 +17348,7 @@
 /turf/closed/wall/biodome,
 /area/corsat/gamma/canteen)
 "bns" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/gamma/engineering)
 "bnw" = (
@@ -22802,7 +22797,7 @@
 /turf/open/floor/corsat/yellow/southeast,
 /area/corsat/omega/maint)
 "bMb" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/omega/maint)
 "bMc" = (
@@ -27300,7 +27295,7 @@
 /turf/open/gm/river/desert/shallow/pool,
 /area/corsat/gamma/residential/showers)
 "dxB" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/corsat/plate,
 /area/corsat/sigma/south/robotics)
 "dxS" = (
@@ -40707,11 +40702,6 @@
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/corsat/plate,
 /area/corsat/omega/complex)
-"rJo" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/gm/grass/grass1/weedable,
-/area/corsat/theta/biodome)
 "rJu" = (
 /obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -72284,7 +72274,7 @@ aKk
 prI
 rwo
 dOo
-rJo
+jqz
 pnQ
 osY
 geN
@@ -92885,7 +92875,7 @@ wfK
 wfK
 wfK
 wfK
-aHJ
+wfK
 wfK
 wfK
 wfK

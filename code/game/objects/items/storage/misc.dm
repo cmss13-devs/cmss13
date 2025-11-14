@@ -51,14 +51,14 @@
 	startswith = 0
 
 /*
- * Mateba Case
+ * Mateba(Unica) Case
  */
 
 /obj/item/storage/mateba_case
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "matebacase"
-	name = "mateba case"
-	desc = "A wooden case used for storing the tools and parts needed to customize a Mateba revolver. Comes with three barrel lengths and the necessary key to swap them out, as well as room for the gun itself."
+	name = "Unica spare barrels case"
+	desc = "A wooden case used for storing the tools and parts needed to customize a Unica autorevolver. Comes with three barrel lengths and the necessary key to swap them out, as well as room for the gun itself."
 	storage_slots = 5
 	can_hold = list(/obj/item/attachable/mateba, /obj/item/weapon/gun/revolver/mateba, /obj/item/weapon/mateba_key)
 
@@ -70,8 +70,8 @@
 
 /obj/item/storage/mateba_case/captain/council
 	icon_state = "c_matebacase"
-	name = "senior officer's mateba case"
-	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver, as well as room for the gun itself. This variant is custom-made for senior officers and comes with silver barrel attachments."
+	name = "senior officer's Unica spare barrels case"
+	desc = "A black-ebony case used for storing the tools and parts needed to customize a Unica autorevolver, as well as room for the gun itself. This variant is custom-made for senior officers and comes with silver barrel attachments."
 
 /obj/item/storage/mateba_case/captain/council/fill_preset_inventory()
 	new /obj/item/attachable/mateba/short/silver(src)
@@ -79,10 +79,21 @@
 	new /obj/item/attachable/mateba/long/silver(src)
 	new /obj/item/weapon/mateba_key(src)
 
+/obj/item/storage/mateba_case/captain/council_gold
+	icon_state = "c_matebacase"
+	name = "senior officer's Unica spare barrels case"
+	desc = "A black-ebony case used for storing the tools and parts needed to customize a Unica autorevolver, as well as room for the gun itself. This variant is custom-made for senior officers and comes with golden barrel attachments."
+
+/obj/item/storage/mateba_case/captain/council_gold/fill_preset_inventory()
+	new /obj/item/attachable/mateba/short/gold(src)
+	new /obj/item/attachable/mateba/gold(src)
+	new /obj/item/attachable/mateba/long/gold(src)
+	new /obj/item/weapon/mateba_key(src)
+
 /obj/item/storage/mateba_case/general
 	icon_state = "c_matebacase"
-	name = "luxurious mateba customization kit case"
-	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is made for general-grade golden Matebas and comes with golden barrel attachments."
+	name = "luxurious Unica customization kit case"
+	desc = "A black-ebony case used for storing the tools and parts needed to customize a Unica autorevolver. This variant is made for general-grade golden Unicas and comes with golden barrel attachments."
 
 /obj/item/storage/mateba_case/general/fill_preset_inventory()
 	new /obj/item/attachable/mateba/short/gold(src)

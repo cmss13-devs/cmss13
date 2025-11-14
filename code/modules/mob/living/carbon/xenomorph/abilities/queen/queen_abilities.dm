@@ -37,7 +37,6 @@
 	no_cooldown_msg = FALSE // Needed for onclick actions
 	ability_primacy = XENO_SCREECH
 
-
 /datum/action/xeno_action/activable/queen_give_plasma
 	name = "Give Plasma (400)"
 	action_icon_state = "queen_give_plasma"

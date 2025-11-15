@@ -46,7 +46,7 @@
 				H.UpdateDamageIcon()
 			H.updatehealth()
 	else if(ismouse(target))
-		var/mob/living/simple_animal/mouse/M = target
+		var/mob/living/simple_animal/small/mouse/M = target
 		visible_message(SPAN_DANGER("<b>SPLAT!</b>"))
 		M.splat()
 	if(!target)

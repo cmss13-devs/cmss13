@@ -1,4 +1,4 @@
-/mob/living/simple_animal/bat
+/mob/living/simple_animal/small/bat
 	name = "bat"
 	desc = "It's a spooky bat!"
 	icon = 'icons/mob/animal.dmi'
@@ -10,12 +10,7 @@
 	speak_emote = list("screeches")
 	emote_hear = list("screeches")
 
-/mob/living/simple_animal/bat/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
-		PF.flags_pass = PASS_OVER|PASS_FLAGS_CRAWLER
-
-/mob/living/simple_animal/bat/Life(delta_time)
+/mob/living/simple_animal/small/bat/Life(delta_time)
 	. = ..()
 	if(!ckey && stat == CONSCIOUS && prob(5))
 		if(locate(/turf/closed,get_step(src, NORTH)))

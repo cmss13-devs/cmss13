@@ -1,4 +1,4 @@
-/mob/living/simple_animal/mouse/rat
+/mob/living/simple_animal/small/mouse/rat
 	name = "rat"
 	real_name = "rat"
 	desc = "It's a big, disease-ridden rodent."
@@ -14,17 +14,17 @@
  * Rat types
  */
 
-/mob/living/simple_animal/mouse/rat/gray
+/mob/living/simple_animal/small/mouse/rat/gray
 	body_color = "gray"
 	icon_state = "rat_gray"
 	holder_type = /obj/item/holder/rat/gray
 
-/mob/living/simple_animal/mouse/rat/brown
+/mob/living/simple_animal/small/mouse/rat/brown
 	body_color = "brown"
 	icon_state = "rat_brown"
 	holder_type = /obj/item/holder/rat/brown
 
-/mob/living/simple_animal/mouse/rat/brown/Old_Timmy
+/mob/living/simple_animal/small/mouse/rat/brown/Old_Timmy
 	name = "Old Timmy"
 	desc = "An ancient looking rat from the old days of the colony."
 	response_help = "pets"
@@ -32,18 +32,18 @@
 	response_harm = "splats"
 	holder_type = /obj/item/holder/rat/brown/Old_Timmy
 
-/mob/living/simple_animal/mouse/rat/black
+/mob/living/simple_animal/small/mouse/rat/black
 	body_color = "black"
 	icon_state = "rat_black"
 	holder_type = /obj/item/holder/rat/black
 
-/mob/living/simple_animal/mouse/rat/white
+/mob/living/simple_animal/small/mouse/rat/white
 	body_color = "white"
 	icon_state = "rat_white"
 	desc = "It's a small laboratory rat."
 	holder_type = /obj/item/holder/rat/white
 
-/mob/living/simple_animal/mouse/rat/white/Milky
+/mob/living/simple_animal/small/mouse/rat/white/Milky
 	name = "Milky"
 	desc = "An escaped test rat from the Weyland-Yutani Research Facility. Hope it doesn't have some sort of genetically engineered disease or something..."
 	gender = MALE
@@ -55,19 +55,19 @@
 
 //Specific Pets for Frozen's Rat Collecting Competition
 
-/mob/living/simple_animal/mouse/rat/pet
+/mob/living/simple_animal/small/mouse/rat/pet
 	name = "Pet Rat"
 	desc = "This is someone's pet rat. I wonder what it's doing here."
 	holder_type = /obj/item/holder/rat/pet
 
-/mob/living/simple_animal/mouse/rat/pet/marvin
+/mob/living/simple_animal/small/mouse/rat/pet/marvin
 	name = "Marvin"
 	desc = "A sleek well kept rat with a tiny collar around its neck, it must belong to someone. For a rodent it appears remarkably clean and hygenic."
 	body_color = "black"
 	icon_state = "rat_black"
 	holder_type = /obj/item/holder/rat/pet/marvin
 
-/mob/living/simple_animal/mouse/rat/pet/ikit
+/mob/living/simple_animal/small/mouse/rat/pet/ikit
 	name = "Ikit"
 	desc = "An albino rat with a tiny collar around its neck, it must belong to someone. Hope it doesn't have some sort of genetically engineered disease or something..."
 	body_color = "white"

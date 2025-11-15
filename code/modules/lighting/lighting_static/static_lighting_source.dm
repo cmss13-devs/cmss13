@@ -136,14 +136,14 @@
 	var/_lum_g = lighting_source.lum_g; \
 	var/_lum_b = lighting_source.lum_b; \
 
+#define SETUP_CORNERS_UPDATE_CACHE(lighting_source, range_divisor_old, light_power_old) \
+	var/_light_update_shift = _light_power * (1 - range_divisor_old / _range_divisor); \
+	var/_light_update_mult = _light_power * range_divisor_old / (_range_divisor * light_power_old);
+
 #define SETUP_CORNERS_REMOVAL_CACHE(lighting_source) \
 	var/_applied_lum_r = lighting_source.applied_lum_r; \
 	var/_applied_lum_g = lighting_source.applied_lum_g; \
 	var/_applied_lum_b = lighting_source.applied_lum_b;
-
-#define SETUP_CORNERS_UPDATE_CACHE(lighting_source, range_divisor_old, light_power_old) \
-	var/_light_update_shift = _light_power * (1 - range_divisor_old / _range_divisor); \
-	var/_light_update_mult = _light_power * range_divisor_old / (_range_divisor * light_power_old);
 
 #define LUM_FALLOFF(C) (1 - CLAMP01(sqrt((C.x - _turf_x) ** 2 + (C.y - _turf_y) ** 2 + LIGHTING_HEIGHT) / _range_divisor))
 #define LUM_FALLOFF_MULTIZ(C) (1 - CLAMP01(sqrt((C.x - _turf_x) ** 2 + (C.y - _turf_y) ** 2 + (C.z - _turf_z) ** 2 + LIGHTING_HEIGHT) / _range_divisor))
@@ -411,7 +411,9 @@
 #undef LUM_FALLOFF
 #undef GET_LUM_DIST
 #undef REMOVE_CORNER
+#undef UPDATE_CORNER
 #undef APPLY_CORNER
 #undef SETUP_CORNERS_REMOVAL_CACHE
+#undef SETUP_CORNERS_UPDATE_CACHE
 #undef SETUP_CORNERS_CACHE
 #undef GENERATE_MISSING_CORNERS

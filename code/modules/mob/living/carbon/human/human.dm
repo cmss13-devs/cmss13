@@ -1886,7 +1886,19 @@
 	LAZYSET(death_variables, CORPSE_OXYGEN_DAMAGE, getOxyLoss())
 	LAZYSET(death_variables, CORPSE_BROKEN_BONES, count_broken_bones())
 	LAZYSET(death_variables, CORPSE_PAIN_DAMAGE, pain.get_pain_percentage())
-	//code for larva parasitization and organ damage?
+	//code for larva parasitization
+	if(chestburst == 2)
+		LAZYSET(death_variables, CORPSE_PARASITIZATION, 100)
+	else
+		// Check if corpse has a larvae inside
+		var/obj/item/alien_embryo/embryo = locate(/obj/item/alien_embryo) in src
+		if(embryo)
+			// Calculate parasitization percentage based on embryo development
+			// counter increases to about 450 before bursting, so we scale to 100%
+			var/parasitization_percent = min((embryo.counter / 450) * 100, 100)
+			LAZYSET(death_variables, CORPSE_PARASITIZATION, parasitization_percent)
+		else
+			LAZYSET(death_variables, CORPSE_PARASITIZATION, 0)
 
 
 /mob/living/carbon/human/proc/phase_create()

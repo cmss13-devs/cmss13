@@ -5,6 +5,7 @@
 #define CORPSE_OXYGEN_DAMAGE "oxygen"
 #define CORPSE_PAIN_DAMAGE "pain"
 #define CORPSE_BROKEN_BONES "broken Bones"
+#define CORPSE_PARASITIZATION "parasitic"
 
 
 SUBSYSTEM_DEF(objectives)
@@ -35,6 +36,7 @@ var/list/wave_dict = list(
 	CORPSE_OXYGEN_DAMAGE = list(),
 	CORPSE_BROKEN_BONES = list(),
 	CORPSE_PAIN_DAMAGE = list(),
+	CORPSE_PARASITIZATION = list(),
 	//CORPSE_ORGAN_DAMAGE = list(),
 
 	//CORPSE_PARASITIC_DAMAGE = list()
@@ -44,7 +46,7 @@ var/list/wave_dict = list(
 /datum/controller/subsystem/objectives/proc/initialize_sinusoidal_waves()
 	SHOULD_NOT_SLEEP(TRUE)
 	// Generate waves for each damage type
-	var/list/damage_types = list(CORPSE_BRUTE_DAMAGE, CORPSE_BURN_DAMAGE, CORPSE_TOXIN_DAMAGE, CORPSE_OXYGEN_DAMAGE, CORPSE_BROKEN_BONES, CORPSE_PAIN_DAMAGE) // "organ",  "parasitic")
+	var/list/damage_types = list(CORPSE_BRUTE_DAMAGE, CORPSE_BURN_DAMAGE, CORPSE_TOXIN_DAMAGE, CORPSE_OXYGEN_DAMAGE, CORPSE_BROKEN_BONES, CORPSE_PAIN_DAMAGE, CORPSE_PARASITIZATION) // "organ",  "parasitic")
 	for(var/damage_type in damage_types)
 		var/list/wave_data = list(
 			"amplitude" = 1.0,
@@ -82,7 +84,7 @@ var/list/wave_dict = list(
 				wave_data["color"] = "#3399ff"
 				wave_data["name"] = "Oxygen Deprivation Wave"
 			if(CORPSE_BROKEN_BONES)
-				wave_data["amplitude"] = 1.
+				wave_data["amplitude"] = 1.0
 				wave_data["phase"] = rand(0,10)/10
 				wave_data["frequency"] = 1 + rand(0,10)/10 //frequency is in radians
 				wave_data["color"] = "#aaaaaa"
@@ -93,6 +95,12 @@ var/list/wave_dict = list(
 				wave_data["frequency"] = 1 + rand(0,10)/10 //frequency is in radians
 				wave_data["color"] = "#ff77ff"
 				wave_data["name"] = "Pain Wave"
+			if(CORPSE_PARASITIZATION)
+				wave_data["amplitude"] = rand(5,15)/10
+				wave_data["phase"] = rand(0,10)/10
+				wave_data["frequency"] = 1 + rand(0,10)/10 //frequency is in radians
+				wave_data["color"] = "#77ff77"
+				wave_data["name"] = "Parasitic Infection Wave"
 			else
 				// Default case for any unhandled damage types
 				wave_data["name"] = "[damage_type] Wave"

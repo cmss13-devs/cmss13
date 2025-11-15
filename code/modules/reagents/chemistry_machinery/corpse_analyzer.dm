@@ -31,10 +31,17 @@
 		CORPSE_TOXIN_DAMAGE,	 // Index 2
 		CORPSE_OXYGEN_DAMAGE,	// Index 3
 		CORPSE_BROKEN_BONES,	 // Index 4
-		CORPSE_PAIN_DAMAGE	   // Index 5
+		CORPSE_PAIN_DAMAGE,	   // Index 5
+		CORPSE_PARASITIZATION   // Index 6
 	)
 	var/analysis_duration = 10.0 // Duration of analysis in seconds
 	var/resolution = 200		 // Number of data points in the analysis
+
+	// Analysis state tracking
+	var/analysis_active = FALSE  // Whether analysis is currently running
+	var/analysis_time_remaining = 0  // Time remaining in seconds
+	var/analysis_max_time = 120  // Total time allowed for analysis (2 minutes)
+	var/analysis_start_time = 0  // When analysis started
 
 
 // Universal Mathematical Function Base
@@ -118,13 +125,18 @@
 	.["filter_mode"] = 1
 	.["sensitivity"] = 50
 
+	// Analysis state
+	.["analysis_active"] = analysis_active
+	.["analysis_time_remaining"] = analysis_time_remaining
+	.["analysis_max_time"] = analysis_max_time
+
 	// Add corpse information
 	if(loaded_corpse)
 		.["loaded_corpse"] = TRUE
 		.["corpse_name"] = loaded_corpse.real_name || "Unknown"
 
-		// Calculate how close player is to target
-		if(length(corpse_amplitude_modifiers))
+		// Only show target data if analysis is active
+		if(analysis_active && length(corpse_amplitude_modifiers))
 			.["has_target"] = TRUE
 			.["match_percentage"] = calculate_match_percentage()
 		else
@@ -251,8 +263,8 @@
 		"color" = "#00ff00",  // Green for player's attempt
 		"name" = "Your Signal"
 	))
-	// Generate TARGET line from corpse data (if corpse is loaded)
-	if(loaded_corpse && length(corpse_amplitude_modifiers))
+	// Generate TARGET line from corpse data (if corpse is loaded AND analysis is active)
+	if(loaded_corpse && analysis_active && length(corpse_amplitude_modifiers))
 		var/list/target_sum_points = list()
 		for(var/i = 0; i <= resolution; i++)
 			var/time = i * time_step
@@ -365,6 +377,14 @@
 			unload_corpse(usr)
 			. = TRUE
 
+		if("start_analysis")
+			start_analysis(usr)
+			. = TRUE
+
+		if("stop_analysis")
+			stop_analysis(usr)
+			. = TRUE
+
 // Load a corpse into the analyzer
 /obj/structure/machinery/corpse_analyzer/proc/load_corpse(mob/living/carbon/human/corpse, mob/user)
 	if(loaded_corpse)
@@ -401,6 +421,9 @@
 	if(!loaded_corpse)
 		to_chat(user, SPAN_WARNING("[src] doesn't have a corpse loaded."))
 		return FALSE
+	if(analysis_active)
+		to_chat(user, SPAN_WARNING("Stop the analysis before unloading the corpse."))
+		return FALSE
 	if(!isturf(user.loc))
 		to_chat(user, SPAN_WARNING("You need to be standing on the floor to unload the corpse."))
 		return FALSE
@@ -411,6 +434,51 @@
 	loaded_corpse.forceMove(user.loc)
 	loaded_corpse = null
 	to_chat(user, SPAN_NOTICE("You unload [corpse_name]'s corpse from [src]."))
+	return TRUE
+
+// Start analysis
+/obj/structure/machinery/corpse_analyzer/proc/start_analysis(mob/user)
+	if(!loaded_corpse)
+		to_chat(user, SPAN_WARNING("No corpse loaded to analyze."))
+		return FALSE
+
+	if(analysis_active)
+		to_chat(user, SPAN_WARNING("Analysis is already running."))
+		return FALSE
+
+	if(!length(corpse_amplitude_modifiers))
+		to_chat(user, SPAN_WARNING("No death data available for analysis."))
+		return FALSE
+
+	analysis_active = TRUE
+	analysis_time_remaining = analysis_max_time
+	analysis_start_time = world.time
+	to_chat(user, SPAN_NOTICE("Analysis started. You have [analysis_max_time] seconds to match the target signal."))
+	playsound(loc, 'sound/machines/terminal_processing.ogg', 25, FALSE)
+	return TRUE
+
+// Stop analysis
+/obj/structure/machinery/corpse_analyzer/proc/stop_analysis(mob/user)
+	if(!analysis_active)
+		to_chat(user, SPAN_WARNING("No analysis is running."))
+		return FALSE
+
+	var/match_percent = calculate_match_percentage()
+	analysis_active = FALSE
+	analysis_time_remaining = 0
+
+	to_chat(user, SPAN_NOTICE("Analysis stopped. Final match: [match_percent]%"))
+
+	if(match_percent >= 90)
+		to_chat(user, SPAN_BOLDNOTICE("Excellent match! Death signature successfully analyzed."))
+		playsound(loc, 'sound/machines/terminal_success.ogg', 25, FALSE)
+	else if(match_percent >= 70)
+		to_chat(user, SPAN_NOTICE("Good match. Death signature partially analyzed."))
+		playsound(loc, 'sound/machines/terminal_success.ogg', 25, FALSE)
+	else
+		to_chat(user, SPAN_WARNING("Poor match. Analysis incomplete."))
+		playsound(loc, 'sound/machines/terminal_error.ogg', 25, FALSE)
+
 	return TRUE
 // Get the human mob from the loaded corpse
 /obj/structure/machinery/corpse_analyzer/proc/get_loaded_human()
@@ -432,66 +500,80 @@
 	return TRUE
 // Add this proc to convert death variables to wave amplitudes
 /obj/structure/machinery/corpse_analyzer/proc/process_corpse_data()
-    if(!loaded_corpse || !loaded_corpse.death_variables)
-        return FALSE
+	if(!loaded_corpse || !loaded_corpse.death_variables)
+		return FALSE
 
-    var/list/death_data = loaded_corpse.death_variables
+	var/list/death_data = loaded_corpse.death_variables
 
-    // Get the main damage values
-    var/brute = death_data[CORPSE_BRUTE_DAMAGE] || 0
-    var/burn = death_data[CORPSE_BURN_DAMAGE] || 0
-    var/toxin = death_data[CORPSE_TOXIN_DAMAGE] || 0
-    var/oxygen = death_data[CORPSE_OXYGEN_DAMAGE] || 0
+	// Get the main damage values
+	var/brute = death_data[CORPSE_BRUTE_DAMAGE] || 0
+	var/burn = death_data[CORPSE_BURN_DAMAGE] || 0
+	var/toxin = death_data[CORPSE_TOXIN_DAMAGE] || 0
+	var/oxygen = death_data[CORPSE_OXYGEN_DAMAGE] || 0
 
-    // Calculate total damage for normalization
-    var/total_damage = brute + burn + toxin + oxygen
+	// Calculate total damage for normalization
+	var/total_damage = brute + burn + toxin + oxygen
 
-    if(total_damage <= 0)
-        corpse_amplitude_modifiers["0"] = 0.0
-        corpse_amplitude_modifiers["1"] = 0.0
-        corpse_amplitude_modifiers["2"] = 0.0
-        corpse_amplitude_modifiers["3"] = 0.0
-    else
-        // Round to nearest 0.1 (1 decimal place)
-        corpse_amplitude_modifiers["0"] = round((brute / total_damage) * 10) / 10
-        corpse_amplitude_modifiers["1"] = round((burn / total_damage) * 10) / 10
-        corpse_amplitude_modifiers["2"] = round((toxin / total_damage) * 10) / 10
-        corpse_amplitude_modifiers["3"] = round((oxygen / total_damage) * 10) / 10
+	if(total_damage <= 0)
+		corpse_amplitude_modifiers["0"] = 0.0
+		corpse_amplitude_modifiers["1"] = 0.0
+		corpse_amplitude_modifiers["2"] = 0.0
+		corpse_amplitude_modifiers["3"] = 0.0
+	else
+		// Round to nearest 0.1 (1 decimal place)
+		corpse_amplitude_modifiers["0"] = round((brute / total_damage) * 10) / 10
+		corpse_amplitude_modifiers["1"] = round((burn / total_damage) * 10) / 10
+		corpse_amplitude_modifiers["2"] = round((toxin / total_damage) * 10) / 10
+		corpse_amplitude_modifiers["3"] = round((oxygen / total_damage) * 10) / 10
+	process_bone_amplitude(death_data)
+	process_pain_amplitude(death_data)
+	corpse_amplitude_modifiers["6"] = round((death_data[CORPSE_PARASITIZATION] ? 1.0 : 0.0)/10)/10 //round to the nearest whole number, then get to 0.1 scale
+	// Check for phase data and generate if missing
+	if(!length(loaded_corpse.death_phase_waves))
+		SEND_SIGNAL(loaded_corpse, COMSIG_DEATH_DATA_PHASE_GENERATION)
 
-    process_bone_amplitude(death_data)
-    process_pain_amplitude(death_data)
-
-    // Check for phase data and generate if missing
-    if(!length(loaded_corpse.death_phase_waves))
-        SEND_SIGNAL(loaded_corpse, COMSIG_DEATH_DATA_PHASE_GENERATION)
-
-    // Process phase data if it exists
-    if(length(loaded_corpse.death_phase_waves))
-        corpse_phase_modifiers["0"] = loaded_corpse.death_phase_waves[CORPSE_BRUTE_DAMAGE] || 0.0
-        corpse_phase_modifiers["1"] = loaded_corpse.death_phase_waves[CORPSE_BURN_DAMAGE] || 0.0
-        corpse_phase_modifiers["2"] = loaded_corpse.death_phase_waves[CORPSE_TOXIN_DAMAGE] || 0.0
-        corpse_phase_modifiers["3"] = loaded_corpse.death_phase_waves[CORPSE_OXYGEN_DAMAGE] || 0.0
-        corpse_phase_modifiers["4"] = loaded_corpse.death_phase_waves[CORPSE_BROKEN_BONES] || 0.0
-        corpse_phase_modifiers["5"] = loaded_corpse.death_phase_waves[CORPSE_PAIN_DAMAGE] || 0.0
-
-    return TRUE
+	// Process phase data if it exists
+	if(length(loaded_corpse.death_phase_waves))
+		corpse_phase_modifiers["0"] = loaded_corpse.death_phase_waves[CORPSE_BRUTE_DAMAGE] || 0.0
+		corpse_phase_modifiers["1"] = loaded_corpse.death_phase_waves[CORPSE_BURN_DAMAGE] || 0.0
+		corpse_phase_modifiers["2"] = loaded_corpse.death_phase_waves[CORPSE_TOXIN_DAMAGE] || 0.0
+		corpse_phase_modifiers["3"] = loaded_corpse.death_phase_waves[CORPSE_OXYGEN_DAMAGE] || 0.0
+		corpse_phase_modifiers["4"] = loaded_corpse.death_phase_waves[CORPSE_BROKEN_BONES] || 0.0
+		corpse_phase_modifiers["5"] = loaded_corpse.death_phase_waves[CORPSE_PAIN_DAMAGE] || 0.0
+		corpse_phase_modifiers["6"] = loaded_corpse.death_phase_waves[CORPSE_PARASITIZATION] || 0.0
+	return TRUE
 
 // Process broken bones amplitude (scale by severity)
 /obj/structure/machinery/corpse_analyzer/proc/process_bone_amplitude(list/death_data)
-    var/broken_bones = death_data[CORPSE_BROKEN_BONES] || 0
+	var/broken_bones = death_data[CORPSE_BROKEN_BONES] || 0
 
-    // Assuming max of 10 limbs (head, chest, arms, legs)
-    var/max_possible_breaks = 10
-    var/bone_amplitude = clamp(broken_bones / max_possible_breaks, 0.0, 1.0)
+	// Assuming max of 10 limbs (head, chest, arms, legs)
+	var/max_possible_breaks = 10
+	var/bone_amplitude = clamp(broken_bones / max_possible_breaks, 0.0, 1.0)
 
-    // Round to nearest 0.1 (1 decimal place)
-    corpse_amplitude_modifiers["4"] = round(bone_amplitude * 10) / 10
+	// Round to nearest 0.1 (1 decimal place)
+	corpse_amplitude_modifiers["4"] = round(bone_amplitude * 10) / 10
 
 // Process pain amplitude (scale by pain percentage)
 /obj/structure/machinery/corpse_analyzer/proc/process_pain_amplitude(list/death_data)
-    var/pain_percentage = death_data[CORPSE_PAIN_DAMAGE] || 0
-    // Pain percentage should already be 0-100, convert to 0-1
-    var/pain_amplitude = clamp(pain_percentage / 100.0, 0.0, 1.0)
+	var/pain_percentage = death_data[CORPSE_PAIN_DAMAGE] || 0
+	// Pain percentage should already be 0-100, convert to 0-1
+	var/pain_amplitude = clamp(pain_percentage / 100.0, 0.0, 1.0)
 
-    // Round to nearest 0.1 (1 decimal place)
-    corpse_amplitude_modifiers["5"] = round(pain_amplitude * 10) / 10
+	// Round to nearest 0.1 (1 decimal place)
+	corpse_amplitude_modifiers["5"] = round(pain_amplitude * 10) / 10
+
+// Process tick - countdown analysis timer
+/obj/structure/machinery/corpse_analyzer/process(delta_time)
+	if(!analysis_active)
+		return
+
+	// Decrease time remaining
+	analysis_time_remaining -= delta_time
+
+	// Check if time ran out
+	if(analysis_time_remaining <= 0)
+		analysis_time_remaining = 0
+		analysis_active = FALSE
+		visible_message(SPAN_WARNING("[src] beeps loudly as the analysis timer expires!"))
+		playsound(loc, 'sound/machines/terminal_error.ogg', 50, FALSE)

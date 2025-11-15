@@ -15,6 +15,8 @@
 /datum/equipment_preset/corpse/load_languages(mob/living/carbon/human/new_human)
 	return
 
+
+
 /datum/equipment_preset/corpse/load_status(mob/living/carbon/human/new_human)
 	. = ..(new_human)
 
@@ -24,9 +26,37 @@
 		new_human.chestburst = 2
 
 	new_human.death(create_cause_data("existing"), TRUE) //Kills the new mob
-	new_human.apply_damage(100, BRUTE)
-	new_human.apply_damage(100, BRUTE)
-	new_human.apply_damage(100, BRUTE)
+	var/tox_damage = rand(10, 40)
+	var/burn_damage = rand(30, 60)
+	var/brute_damage = rand(60, 120)
+	new_human.setToxLoss(tox_damage)
+	new_human.apply_damage(burn_damage, BURN)
+	new_human.apply_damage(brute_damage, BRUTE)
+	// Ensure total damage is at least 200 to guarantee death
+	// Break random bones (0-3 broken bones)
+	var/broken_bones = rand(1, 3)
+	var/list/limb_names = list("l_leg", "r_leg", "l_arm", "r_arm", "chest", "head", "groin", "r_hand", "l_hand", "r_foot", "l_foot")
+	for(var/i = 1 to broken_bones)
+		if(!length(limb_names))
+			break
+		var/limb_to_break = pick(limb_names)
+		limb_names -= limb_to_break
+		var/obj/limb/L = new_human.get_limb(limb_to_break)
+		if(L && !(L.status & LIMB_DESTROYED))
+			L.fracture(100) // Guaranteed fracture
+			// Apply brute damage to the broken limb
+			L.take_damage(rand(20, 40), 0)
+	// Apply extra organ damage (internal injuries from crushing/piercing)
+		if(limb_to_break in list("chest", "groin","head"))
+			new_human.apply_internal_damage(rand(10, 30), limb_to_break)
+	var/total_damage = new_human.getBruteLoss() + new_human.getToxLoss() + new_human.getFireLoss()
+	if(total_damage < 200)
+		var/deficit = 200 - total_damage
+	// Add the deficit as additional oxygen damage (from crit wounds)
+		new_human.adjustOxyLoss(deficit)
+
+
+
 	if(xenovictim)
 		var/datum/internal_organ/organ
 		var/i
@@ -46,12 +76,22 @@
 	new_human.updatehealth()
 	new_human.pulse = PULSE_NONE
 
+	// Send death data signal for logging
+	SEND_SIGNAL(new_human, COMSIG_DEATH_DATA_UPDATE)
+
 /datum/equipment_preset/corpse/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
 	add_random_survivor_equipment(new_human)
 	add_survivor_weapon_pistol(new_human)
+
+
+
+
+
+
+
 
 //*****************************************************************************************************/
 

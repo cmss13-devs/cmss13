@@ -123,6 +123,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 /mob/hologram/look_up
 	flags_atom = NO_ZFALL
 	var/view_registered = TRUE
+	var/list/view_blocker_images = list()
 
 /mob/hologram/look_up/Initialize(mapload, mob/viewer)
 	. = ..()
@@ -131,6 +132,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 		UnregisterSignal(viewer, COMSIG_CLIENT_MOB_MOVE)
 		RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
 		RegisterSignal(viewer, COMSIG_MOB_GHOSTIZE, PROC_REF(end_lookup))
+		update_view_blockers(viewer)
 
 /mob/hologram/look_up/Destroy()
 	if(linked_mob)
@@ -139,10 +141,36 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 			var/mob/living/linked_living = linked_mob
 			linked_living.observed_atom = null
 
+		if(linked_mob.client)
+			linked_mob.client.images -= view_blocker_images
+	view_blocker_images.Cut()
 	. = ..()
 
-/mob/hologram/look_up/handle_move(mob/M, oldLoc, direct)
+/mob/hologram/look_up/proc/update_view_blockers(mob/user)
+	if(!user || !user.client)
+		return
 
+	user.client.images -= view_blocker_images
+	view_blocker_images.Cut()
+	var/list/turf/visible_turfs = alist()
+
+	for(var/turf/cur_turf in view(world.view + 1, user))
+		visible_turfs["[cur_turf.x]-[cur_turf.y]"] = TRUE
+
+	for(var/x in user.x - world.view - 1 to user.x + world.view + 1)
+		for(var/y in user.y - world.view - 1 to user.y + world.view + 1)
+			if(visible_turfs["[x]-[y]"])
+				continue
+
+			var/turf/cur_turf = locate(x, y, user.z + 1)
+
+			if(istransparentturf(cur_turf))
+				var/image/view_blocker = image('icons/turf/floors/floors.dmi', cur_turf, "full_black", 100000)
+				view_blocker.plane = GAME_PLANE
+				view_blocker_images += view_blocker
+				user.client.images += view_blocker
+
+/mob/hologram/look_up/handle_move(mob/M, oldLoc, direct)
 	if(!isturf(M.loc) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		qdel(src)
 		return
@@ -167,6 +195,9 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 		RegisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW, PROC_REF(end_lookup))
 		view_registered = TRUE
 		linked_mob.reset_view()
+
+	if(linked_mob)
+		update_view_blockers(linked_mob)
 
 /mob/hologram/look_up/movement_delay()
 	if(linked_mob)

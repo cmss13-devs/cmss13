@@ -360,3 +360,7 @@
 	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenoarchaeologist/burst
 
 //*****************************************************************************************************/
+
+/obj/effect/landmark/corpsespawner/grs
+	name = "Global Response Staff Operator"
+	equip_path = /datum/equipment_preset/corpse/grs

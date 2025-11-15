@@ -183,7 +183,7 @@
 		"TACHYON",
 		"WARSHIP",
 		"ROSTOCK",
-		)
+	)
 
 /datum/config_entry/str_list/announcement_challenges/ValidateAndSet(str_val)
 	// Force captialized

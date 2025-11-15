@@ -717,6 +717,7 @@
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	info = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
+	icon_state = initial(icon_state)
 
 /obj/item/paper/uscm
 	icon_state = "paper_uscm"
@@ -726,6 +727,7 @@
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	info = "<center><img src = [asset.get_url_mappings()["logo_uscm.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
+	icon_state = initial(icon_state)
 
 /obj/item/paper/research_notes
 	icon_state = "paper_wy_words"

@@ -118,9 +118,9 @@
 					I.layer = layer + 0.001 + bleed_layer * 0.0001
 					overlays += I
 
+
 		//a bit odd to have it here but weedability should be linked to visual show of snow
 		is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
-
 
 //Explosion act
 /turf/open/snow/ex_act(severity)

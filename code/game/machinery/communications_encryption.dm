@@ -30,6 +30,13 @@
 	. = ..()
 	var/phrases = CONFIG_GET(str_list/announcement_challenges)
 	cipher_length = length(phrases[1])
+	RegisterSignal(SSdcs, COMSIG_GLOB_CONFIG_LOADED, PROC_REF(on_config_load))
+
+/// Called by COMSIG_GLOB_CONFIG_LOADED
+/obj/structure/machinery/computer/almayer_encryption/proc/on_config_load()
+	SIGNAL_HANDLER
+	var/phrases = CONFIG_GET(str_list/announcement_challenges)
+	cipher_length = length(phrases[1])
 
 /obj/structure/machinery/computer/almayer_encryption/update_icon()
 	icon_state = initial(icon_state)

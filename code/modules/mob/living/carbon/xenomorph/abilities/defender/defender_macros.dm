@@ -33,4 +33,3 @@
 	set hidden = TRUE
 	var/action_name = "Soak"
 	handle_xeno_macro(src, action_name)
-

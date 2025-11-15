@@ -72,7 +72,7 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/closet/phonebox/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/closet/phonebox/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
@@ -83,6 +83,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 // Not currently working fully (don't use)

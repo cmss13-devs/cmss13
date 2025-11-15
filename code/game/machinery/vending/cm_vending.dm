@@ -420,7 +420,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		tip_over()
 	return XENO_NO_DELAY_ACTION
 
-/obj/structure/machinery/cm_vending/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/machinery/cm_vending/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(stat & TIPPED_OVER || unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	if(prob(xeno.melee_damage_upper))
@@ -433,6 +433,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		xeno.visible_message(SPAN_DANGER("[xeno] slashes [src] with its tail!"),
 		SPAN_DANGER("You slash [src] with your tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/machinery/cm_vending/attack_hand(mob/user)

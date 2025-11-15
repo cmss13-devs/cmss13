@@ -505,6 +505,7 @@
 /obj/structure/window/framed
 	name = "theoretical window"
 	layer = TABLE_LAYER
+	plane = TURF_PLANE
 	static_frame = 1
 	flags_atom = FPRINT
 	var/window_frame //For perspective windows,so the window frame doesn't magically dissapear
@@ -582,7 +583,6 @@
 	reinf = 1
 	dir = NORTHEAST
 	window_frame = /obj/structure/window_frame/almayer
-	plane = TURF_PLANE
 
 /obj/structure/window/framed/almayer/hull
 	name = "hull window"

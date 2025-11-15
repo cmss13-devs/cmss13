@@ -99,7 +99,6 @@
 
 /obj/item/storage/backpack/equipped(mob/user, slot, silent)
 	if(slot == WEAR_BACK)
-		mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
 		if(use_sound && !silent)
 			playsound(loc, use_sound, 15, TRUE, 6)
 		if(!worn_accessible) //closes it if it's open.
@@ -910,16 +909,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
 			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
 			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/urban.dmi'
-
-/obj/item/storage/backpack/general_belt/equipped(mob/user, slot)
-	switch(slot)
-		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armors.
-			mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
-	..()
-
-/obj/item/storage/backpack/general_belt/dropped(mob/user)
-	mouse_opacity = initial(mouse_opacity)
-	..()
 
 // Scout Cloak
 /obj/item/storage/backpack/marine/satchel/scout_cloak

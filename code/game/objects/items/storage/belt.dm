@@ -19,16 +19,6 @@
 	/// Indiciates whether the _half and _full overlays should be applied in update_icon
 	var/skip_fullness_overlays = FALSE
 
-/obj/item/storage/belt/equipped(mob/user, slot)
-	switch(slot)
-		if(WEAR_WAIST, WEAR_J_STORE, WEAR_BACK)
-			mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
-	..()
-
-/obj/item/storage/belt/dropped(mob/user)
-	mouse_opacity = initial(mouse_opacity)
-	..()
-
 /obj/item/storage/belt/update_icon()
 	overlays.Cut()
 

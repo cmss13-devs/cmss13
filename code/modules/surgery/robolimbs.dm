@@ -24,19 +24,20 @@
 	desc = "attach a prosthesis"
 	tools = list(/obj/item/robot_parts = SURGERY_TOOL_MULT_IDEAL)
 	time = 2 SECONDS
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/handling/clothingrustle5.ogg'
+	preop_sound = 'sound/handling/armorequip_1.ogg'
+	success_sound = 'sound/handling/armorequip_2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
+
 /datum/surgery_step/connect_prosthesis/tool_check(mob/user, obj/item/robot_parts/tool, datum/surgery/surgery)
 	. = ..()
 	if(. && (!tool.part || !(user.zone_selected in tool.part)))
-		to_chat(user, SPAN_WARNING("\The [tool] cannot be used to replaced a missing [parse_zone(user.zone_selected)]"))
+		to_chat(user, SPAN_WARNING("\The [tool] cannot be used to replace a missing [parse_zone(user.zone_selected)]"))
 		return FALSE
 
 /datum/surgery_step/connect_prosthesis/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/robot_parts/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin connecting \the [tool] to the prepared stump of [target]'s [parse_zone(target_zone)]."),
-		SPAN_NOTICE("[user] begins connect \the [tool] to the prepared stump of your [parse_zone(target_zone)]."),
+		SPAN_NOTICE("[user] begins to connect \the [tool] to the prepared stump of your [parse_zone(target_zone)]."),
 		SPAN_NOTICE("[user] begins to connect \the [tool] to the prepared stump of [target]'s [parse_zone(target_zone)]."))
 
 	log_interact(user, target, "[key_name(user)] attempted to begin attaching a prosthesis to [key_name(target)]'s [surgery.affected_limb.display_name].")
@@ -103,6 +104,8 @@
 		SPAN_WARNING("[user] slips while trying to tighten the prosthesis, pinching your [nerves_type][pain]!"),
 		SPAN_WARNING("[user] slips while trying to tighten [target]'s prosthesis, pinching \his [nerves_type][pain]!"))
 
+	if(target.stat == CONSCIOUS)
+		target.emote("pain")
 	log_interact(user, target, "[key_name(user)] failed to tighten a prosthesis to [key_name(target)]'s [surgery.affected_limb.display_name].")
 	return FALSE
 

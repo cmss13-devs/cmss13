@@ -66,7 +66,7 @@
 				SPAN_NOTICE("[user] starts to apply \the [tool] to your broken [surgery.affected_bone]."),
 				SPAN_NOTICE("[user] starts to apply \the [tool] to [target]'s broken [surgery.affected_bone]."))
 
-			target.custom_pain("Something stings inside your [surgery.affected_limb.display_name]!", 1)
+			target.custom_pain("Something stings, and feels cold and gooey inside your [surgery.affected_limb.display_name]!", 1)
 		else
 			user.affected_message(target,
 				SPAN_NOTICE("You begin driving reinforcing pins into [target]'s [surgery.affected_bone] with \the [tool]."),
@@ -82,7 +82,7 @@
 				SPAN_NOTICE("[user] starts to apply \the [tool] to the broken bones in your [surgery.affected_limb.display_name]."),
 				SPAN_NOTICE("[user] starts to apply \the [tool] to the broken bones in [target]'s [surgery.affected_limb.display_name]."))
 
-			target.custom_pain("Something stings inside your [surgery.affected_limb.display_name]!", 1)
+			target.custom_pain("Something stings, and feels cold and gooey inside your [surgery.affected_limb.display_name]!", 1)
 		else
 			user.affected_message(target,
 				SPAN_NOTICE("You begin driving reinforcing pins into the broken bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
@@ -100,7 +100,7 @@
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,
 				SPAN_NOTICE("You slather \the [tool] on [target]'s broken [surgery.affected_bone]."),
-				SPAN_NOTICE("[user] slathers \the [tool] on your broken [surgery.affected_bone]."),
+				SPAN_NOTICE("[user] slathers \the [tool] on your broken [surgery.affected_bone]. The gel feels cold and gooey."),
 				SPAN_NOTICE("[user] slathers \the [tool] on [target]'s broken [surgery.affected_bone]."))
 		else
 			user.affected_message(target,
@@ -184,7 +184,7 @@
 				SPAN_NOTICE("[user] begins to set the broken bones in your [surgery.affected_limb.display_name] with \the [tool]."),
 				SPAN_NOTICE("[user] begins to set the broken bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
-	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is going to make you pass out!", 1)
+	target.custom_pain("You feel your bones in your [surgery.affected_limb.display_name] shifting around! It feels horrible!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to begin setting bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 
 /datum/surgery_step/set_bones/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
@@ -196,7 +196,7 @@
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You set the bones in [target]'s [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] sets the bones in your [surgery.affected_limb.display_name]."),
+			SPAN_NOTICE("[user] sets the bones in your [surgery.affected_limb.display_name]. You can move it, now. You feel much better."),
 			SPAN_NOTICE("[user] sets the bones in [target]'s [surgery.affected_limb.display_name]."))
 
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BONES)

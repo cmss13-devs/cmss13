@@ -36,6 +36,9 @@ and organ transplant code which may come in handy in future but haven't been edi
 	)
 	time = 3 SECONDS
 	repeat_step = TRUE
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	//success handled in repeat code
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
@@ -69,7 +72,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 			SPAN_NOTICE("[user] begins to treat your damaged [damaged_organs[1]] with [toolname]."),
 			SPAN_NOTICE("[user] begins to treat [target]'s damaged [damaged_organs[1]] with [toolname]."))
 
-	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is living hell!", 1)
+	target.custom_pain("You feel the [toolname] moving around the organs in your [surgery.affected_limb.display_name] The pressure is maddening!", 1)
 	playsound(target.loc, 'sound/handling/bandage.ogg', 25, TRUE)
 	log_interact(user, target, "[key_name(user)] began mending organs in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
@@ -82,6 +85,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 				SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
 				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
 
+			to_chat(target, SPAN_NOTICE("Every organ in your [surgery.affected_limb.display_name] feels so much better."))
 			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
 			I.rejuvenate()
 			target.pain.recalculate_pain()

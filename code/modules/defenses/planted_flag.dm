@@ -94,7 +94,7 @@
 	if(!range_bounds)
 		range_bounds = SQUARE(x, y, area_range)
 
-	var/list/targets = SSquadtree.players_in_range(SQUARE(x, y, area_range), z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	var/list/targets = SSquadtree.players_in_range(SQUARE(x, y, area_range), z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
 	if(!targets)
 		return
 
@@ -222,7 +222,7 @@
 	if(!M.x && !M.y && !M.z)
 		return
 
-	var/list/targets = SSquadtree.players_in_range(SQUARE(M.x, M.y, area_range), M.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+	var/list/targets = SSquadtree.players_in_range(SQUARE(M.x, M.y, area_range), M.z, QTREE_SCAN_MOBS | QTREE_FILTER_LIVING)
 	targets |= M
 
 	for(var/mob/living/carbon/human/H in targets)

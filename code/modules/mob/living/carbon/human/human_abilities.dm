@@ -52,7 +52,7 @@
 
 /datum/action/human_action/cycle_voice_level/action_activate()
 	. = ..()
-	if(!ishuman(owner)) // i actually dont know if this is necessary
+	if(!ishuman(owner)) // i actually don't know if this is necessary
 		return
 	var/mob/living/carbon/human/my_voice = owner
 	my_voice.cycle_voice_level()
@@ -409,7 +409,7 @@ CULT
 		to_chat(H, SPAN_XENOMINORWARNING("You decide not to convert [chosen]."))
 		return
 
-	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
+	var/datum/equipment_preset/preset = GLOB.equipment_presets.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
 	preset.load_race(chosen)
 	preset.load_status(chosen, H.hivenumber)
 
@@ -606,8 +606,8 @@ CULT
 	H.cancel_camera()
 	H.reset_view()
 	H.client.change_view(GLOB.world_view_size, target)
-	H.client.pixel_x = 0
-	H.client.pixel_y = 0
+	H.client.set_pixel_x(0)
+	H.client.set_pixel_y(0)
 
 //Similar to a cancel-camera-view button, but for mobs that were buckled to special vehicle seats.
 //Unbuckles them, which handles the view and offsets resets and other stuff.
@@ -639,8 +639,8 @@ CULT
 
 	H.unset_interaction()
 	H.client.change_view(GLOB.world_view_size, target)
-	H.client.pixel_x = 0
-	H.client.pixel_y = 0
+	H.client.set_pixel_x(0)
+	H.client.set_pixel_y(0)
 	H.reset_view()
 	remove_from(H)
 

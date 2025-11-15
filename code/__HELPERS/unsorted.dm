@@ -585,7 +585,7 @@
 	return toReturn
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()
-/proc/can_see(atom/source, atom/target, length=5) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
+/proc/can_see(atom/source, atom/target, length=5) // I couldn't be arsed to do actual raycasting :I This is horribly inaccurate.
 	var/turf/current = get_turf(source)
 	var/turf/target_turf = get_turf(target)
 	var/steps = 0
@@ -1375,7 +1375,7 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 			switch(CONFIG_GET(number/explosive_antigrief))
 				if(ANTIGRIEF_DISABLED)
 					return FALSE
-				if(ANTIGRIEF_NEW_PLAYERS) //if they have less than 10 hours, dont let them prime nades
+				if(ANTIGRIEF_NEW_PLAYERS) //if they have less than 10 hours, don't let them prime nades
 					if(user.client && user.client.get_total_human_playtime() < JOB_PLAYTIME_TIER_1)
 						return TRUE
 				else //ANTIGRIEF_ENABLED
@@ -1512,7 +1512,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			var/mob/living/carbon/human/H = user
 			if(H.selected_ability)
 				return FALSE
-	if(user.client.eye == user && !user.is_mob_incapacitated(TRUE))
+	if(user.client.get_eye() == user && !user.is_mob_incapacitated(TRUE))
 		user.face_atom(src)
 	return TRUE
 

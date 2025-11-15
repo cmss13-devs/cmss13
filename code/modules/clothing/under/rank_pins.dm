@@ -154,7 +154,7 @@
 /obj/item/clothing/accessory/ranks/marine/o10s
 	name = "officer rank pins"
 	rank_short = PAY_SHORT_MO10S
-	icon_state = "ranks_o11"
+	icon_state = "ranks_o10"
 
 /*################################################
 ################ ARMY  #####################

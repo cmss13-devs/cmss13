@@ -375,6 +375,13 @@
 	full_name = "Toggle mask visors"
 	keybind_signal = COMSIG_KB_YAUTJA_MASK_TOGGLESIGHT
 
+/datum/keybinding/yautja/mask/togglelights
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "togglelights"
+	full_name = "Toggle mask lights"
+	keybind_signal = COMSIG_KB_YAUTJA_MASK_TOGGLELIGHTS
+
 // teleporter
 
 /datum/keybinding/yautja/tele_loc/can_use(client/user)

@@ -22,3 +22,7 @@
 #define YAUTJA_THRALL_GEAR_RAPIER "The Dancing Rapier"
 #define YAUTJA_THRALL_GEAR_CLAYMORE "The Broad Claymore"
 #define YAUTJA_THRALL_GEAR_FIREAXE "The Purposeful Fireaxe"
+
+#define YAUTJA_MASK_LIGHTS_OFF 0
+#define YAUTJA_MASK_LIGHTS_ON 1
+#define YAUTJA_MASK_LIGHTS_GHOST 2

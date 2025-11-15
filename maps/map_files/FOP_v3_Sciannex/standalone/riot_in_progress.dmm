@@ -117,7 +117,7 @@
 "eK" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating/prison,
-/area/fiorina/station/security)
+/area/fiorina/oob)
 "fd" = (
 /obj/structure/window/framed/prison/reinforced,
 /turf/open/floor/prison,
@@ -1217,7 +1217,7 @@
 /area/fiorina/lz/near_lzII)
 "XV" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/station/security)
+/area/fiorina/oob)
 "Yt" = (
 /turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/station/security)

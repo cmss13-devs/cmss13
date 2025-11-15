@@ -150,7 +150,7 @@
 	name = "shattered synthetic head";
 	pixel_x = 9;
 	pixel_y = 3;
-	icon_state = "scandinavian_head_m"
+	icon_state = "pale0_head"
 	},
 /obj/item/robot_parts/arm/l_arm,
 /turf/open/floor/green/northwest,

@@ -1915,9 +1915,6 @@
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/north)
-"afY" = (
-/turf/open/floor/plating,
-/area/prison/research/secret/containment)
 "aga" = (
 /obj/structure/machinery/smartfridge/secure/virology,
 /turf/open/floor/prison/whitepurple/southwest,
@@ -5281,7 +5278,7 @@
 /area/prison/medbay)
 "arX" = (
 /obj/structure/machinery/cryo_cell,
-/obj/structure/pipes/standard/cap,
+/obj/structure/pipes/standard/cap/hidden,
 /turf/open/floor/prison,
 /area/prison/medbay)
 "arY" = (
@@ -5526,9 +5523,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/prison/medbay)
 "asU" = (
-/obj/item/roller{
-	icon_state = "down"
-	},
+/obj/structure/bed/roller,
 /turf/open/floor/prison/whitegreen/east,
 /area/prison/medbay)
 "asV" = (
@@ -6558,10 +6553,8 @@
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/maxsec)
 "axj" = (
-/obj/item/roller{
-	icon_state = "down"
-	},
 /obj/structure/machinery/power/apc/no_power/east,
+/obj/structure/bed/roller,
 /turf/open/floor/prison/whitegreen/east,
 /area/prison/medbay)
 "axk" = (
@@ -70242,7 +70235,7 @@ acE
 acF
 acF
 acF
-afY
+acF
 acF
 acF
 aal

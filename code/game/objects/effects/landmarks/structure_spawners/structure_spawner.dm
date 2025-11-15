@@ -2,7 +2,7 @@
 /obj/effect/landmark/structure_spawner
 	name = "structure spawner"
 	icon_state = "x2"
-	/// Typepath to effectively instanciate
+	/// Typepath to effectively instantiate
 	var/path_to_spawn
 	/// Truthy if a turf to use turf placement operations
 	var/is_turf = FALSE

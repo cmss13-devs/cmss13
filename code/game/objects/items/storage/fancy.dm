@@ -596,7 +596,7 @@
 
 /obj/item/storage/fancy/trading_card/Initialize()
 	if(!collection_color)
-		collection_color = pick("red", "green", "blue") // because of vodoo shenanigans with fill_preset_inventory happening during parent's initalize this'll have to run prior to that
+		collection_color = pick("red", "green", "blue") // because of vodoo shenanigans with fill_preset_inventory happening during parent's initialize this'll have to run prior to that
 
 	. = ..()
 

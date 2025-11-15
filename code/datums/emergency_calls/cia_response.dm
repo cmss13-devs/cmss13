@@ -16,6 +16,7 @@
 	var/max_synths = 1
 
 /datum/emergency_call/cia_grs/random_chance
+	name = "CIA Strike Team (FRIENDLY) (AutoChance)"
 	probability = 5
 
 /datum/emergency_call/cia_grs/hostile

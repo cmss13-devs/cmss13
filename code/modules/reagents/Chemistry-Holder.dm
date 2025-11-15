@@ -282,7 +282,7 @@
 					total_matching_reagents++
 					multipliers += floor(get_reagent_amount(required_reagent) / reaction.required_reagents[required_reagent])
 				for(var/catalyst in reaction.required_catalysts)
-					if(catalyst == "silver" && istype(my_atom, /obj/item/reagent_container/glass/beaker/silver))
+					if(catalyst == "silver" && istype(my_atom, /obj/item/reagent_container/glass/beaker/catalyst/silver))
 						total_matching_catalysts++
 						continue
 					if(!has_reagent(catalyst, reaction.required_catalysts[catalyst]))

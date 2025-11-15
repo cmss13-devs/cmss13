@@ -476,6 +476,7 @@
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_CARGO)
 	vendor_theme = VENDOR_THEME_USCM
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND | VEND_UNIFORM_AUTOEQUIP
 
 	listed_products = list(
 		list("UNIFORM", -1, null, null),

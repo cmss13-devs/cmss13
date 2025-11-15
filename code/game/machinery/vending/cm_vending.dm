@@ -866,7 +866,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	icon_state = "gear"
 	use_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
-	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_UNIFORM_AUTOEQUIP
+	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_TO_HAND|VEND_UNIFORM_AUTOEQUIP
 
 /obj/structure/machinery/cm_vending/gear/ui_static_data(mob/user)
 	. = ..(user)
@@ -883,7 +883,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	use_points = TRUE
 	show_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
-	vend_flags = VEND_CLUTTER_PROTECTION | VEND_UNIFORM_RANKS | VEND_UNIFORM_AUTOEQUIP | VEND_CATEGORY_CHECK
+	vend_flags = VEND_CLUTTER_PROTECTION | VEND_UNIFORM_RANKS | VEND_UNIFORM_AUTOEQUIP | VEND_CATEGORY_CHECK | VEND_TO_HAND
 
 /obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)
 	. = ..(user)
@@ -1443,6 +1443,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 					underclothes.attach_accessory(user, rank_insignia)
 					underclothes.attach_accessory(user, uscmpatch)
 
+
+	if(vend_flags & VEND_TO_HAND)
+		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
+			if(Adjacent(user) && !(istype(new_item, /obj/item/clothing/accessory) && (vend_flags & VEND_UNIFORM_AUTOEQUIP))) //istype accessory check is required as its going to duplicate with autoequip otherwise, also means it cant be put in hand if the slot is full, but at this point some sacrifices have gotta be done - nihi
+				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
+
 	if(vend_flags & VEND_UNIFORM_AUTOEQUIP)
 		// autoequip
 		if(istype(new_item, /obj/item) && new_item.flags_equip_slot != NO_FLAGS) //auto-equipping feature here
@@ -1454,11 +1460,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			else
 				user.equip_to_appropriate_slot(new_item)
 				new_item.update_icon()
-
-	if(vend_flags & VEND_TO_HAND)
-		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
-			if(Adjacent(user))
-				user.put_in_any_hand_if_possible(new_item, disable_warning = TRUE)
 
 	new_item.post_vendor_spawn_hook(user)
 

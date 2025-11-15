@@ -400,7 +400,7 @@
 
 ///Is this mob important enough to point with big arrows?
 /mob/proc/check_improved_pointing()
-	if(HAS_TRAIT(src, TRAIT_LEADERSHIP) || HAS_TRAIT(src, TRAIT_ACTING_LEAD))
+	if(HAS_TRAIT(src, TRAIT_LEADERSHIP))
 		return TRUE
 	if(skillcheck(src, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED))
 		return TRUE

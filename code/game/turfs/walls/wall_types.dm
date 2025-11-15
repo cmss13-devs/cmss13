@@ -114,7 +114,6 @@
 
 /turf/closed/wall/almayer/white/hull
 	name = "ultra reinforced hull"
-	.
 	icon_state = "hull"
 	turf_flags = TURF_HULL
 

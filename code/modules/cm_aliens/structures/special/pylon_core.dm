@@ -238,7 +238,7 @@
 
 	plane = FLOOR_PLANE
 
-	protection_level = TURF_PROTECTION_OB
+	protection_level = TURF_PROTECTION_CORE
 
 	lesser_drone_spawn_limit = 10
 

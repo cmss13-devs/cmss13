@@ -1841,6 +1841,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(skill_accuracy)
 			gun_accuracy_mult += skill_accuracy * HIT_ACCURACY_MULT_TIER_3 // Accuracy mult increase/decrease per level is equal to attaching/removing a red dot sight
 
+		var/mob/living/carbon/human/focused_human = user
+		if(focused_human.marksman_aura >= 1) //adjust scatter based on focus aura
+			var/focus_mult = focused_human.marksman_aura * 1.5 //Flat decrease of 3 % scatter per aura level
+			gun_scatter -= focus_mult
+
 	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * gun_accuracy_mult) // Apply gun accuracy multiplier to projectile accuracy
 	projectile_to_fire.scatter += gun_scatter
 
@@ -1948,6 +1953,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			total_recoil -= 1.5*RECOIL_AMOUNT_TIER_5
 		else // Max level skill of firearms.
 			total_recoil -= 2*RECOIL_AMOUNT_TIER_5
+
+		var/mob/living/carbon/human/focused_human = user
+		if(focused_human.marksman_aura >= 1) //adjust recoil based on focus aura
+			var/focus_mult = focused_human.marksman_aura * 0.5 //set this by a lot and you wont be getting any camera recoil whatsoever, in fact leadership level 3 is pretty cracked as is
+			total_recoil -= focus_mult
 
 	if(total_recoil > 0 && (ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)))
 		if(total_recoil >= 4)

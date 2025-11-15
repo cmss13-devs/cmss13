@@ -666,7 +666,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		to_chat(user, SPAN_DANGER("The console refuses [attacking_item]."))
 		return
 	to_chat(user, SPAN_DANGER("You hold [attacking_item] up to the console, and it begins to scan..."))
-	message_all_yautja("Prey is trying to escape the hunting grounds.")
+	message_all_yautja("Prey is trying to escape the hunting grounds at [get_area(user)] console.")
 
 	if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_DANGER("The strange console stops scanning abruptly."))

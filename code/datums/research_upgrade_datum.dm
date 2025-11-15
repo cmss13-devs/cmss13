@@ -15,9 +15,9 @@
 	var/clearance_req = 5
 	///The change of price for item per purchase, recommended for mass producing stuff or limited upgrade.
 	var/change_purchase = 0
-	///the minimum price which we cant go any cheaper usually dont need to set this if change price is 0 or positive
+	///the minimum price which we can't go any cheaper usually don't need to set this if change price is 0 or positive
 	var/minimum_price = 0
-	///the maximum price which we cant go any more expensive, usually dont need to set this if change price is 0 or negative
+	///the maximum price which we can't go any more expensive, usually don't need to set this if change price is 0 or negative
 	var/maximum_price = INFINITY
 
 ///gets called once the product is purchased, override if you need to pass any special arguments or have special behavior on purchase.
@@ -148,7 +148,7 @@
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 
 /datum/research_upgrades/item/nanosplints/on_purchase(turf/machine_loc)
-	new /obj/item/stack/medical/splint/nano/research(machine_loc, 5)//adjust this to change amount of nanosplints in a stack, cant be higher than five, go change max_amount in the nanosplint itself, then change it.
+	new /obj/item/stack/medical/splint/nano/research(machine_loc, 5)//adjust this to change amount of nanosplints in a stack, can't be higher than five, go change max_amount in the nanosplint itself, then change it.
 
 /datum/research_upgrades/item/flamer_tank
 	name = "Upgraded Incinerator Tank"

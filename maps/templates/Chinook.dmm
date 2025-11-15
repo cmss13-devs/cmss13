@@ -616,7 +616,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/chinook/medical)
 "bQ" = (
@@ -1665,7 +1665,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/chinook)
 "fW" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/orange/northwest,
 /area/adminlevel/chinook/offices)
 "fX" = (
@@ -1993,7 +1993,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
 "hm" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/green/north,
 /area/adminlevel/chinook/event)
 "ho" = (
@@ -6986,7 +6986,7 @@
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "CQ" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "CR" = (
@@ -8026,7 +8026,7 @@
 /turf/open/floor/almayer/orange,
 /area/adminlevel/chinook/engineering)
 "Hl" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/almayer/orange/northwest,
 /area/adminlevel/chinook/engineering)
 "Hm" = (
@@ -9330,7 +9330,7 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "MH" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "MI" = (
@@ -9472,7 +9472,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/orange/west,
 /area/adminlevel/chinook/engineering)
 "Nr" = (
@@ -9643,7 +9643,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
 "Od" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/chinook/medical)
 "Of" = (
@@ -9676,7 +9676,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/sec)
 "Or" = (
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
 "Os" = (
@@ -9777,7 +9777,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
 "OL" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/item/reagent_container/glass/bucket,
 /obj/structure/machinery/light{
 	dir = 1
@@ -11717,7 +11717,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/sec)
 "WK" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/engineering)
 "WL" = (
@@ -11739,7 +11739,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/chinook/medical)
 "WO" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/engineering)
@@ -12503,7 +12503,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -12535,7 +12535,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/reagent_dispensers/fueltank/custom,
+/obj/structure/reagent_dispensers/tank/fuel/custom,
 /turf/open/floor/almayer/plating_striped/east,
 /area/adminlevel/chinook/engineering)
 "ZV" = (

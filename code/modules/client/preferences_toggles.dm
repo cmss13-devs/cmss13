@@ -286,6 +286,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set Crit Type</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flashing_lights_pref'>Set Flashing Lights</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_leadership_spoken_orders'>Toggle Leadership Spoken Orders</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_cocking_to_hand'>Toggle Bullet Cocking to hand</a><br>",
 	)
 
 	var/dat = ""
@@ -389,6 +390,15 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		to_chat(src, SPAN_BOLDNOTICE("Your leadership orders will no longer be verbally spoken."))
 	else
 		to_chat(src, SPAN_BOLDNOTICE("Your leadership orders will now be verbally spoken."))
+	prefs.save_preferences()
+
+/// Toggles whether cocking a gun should drop its bullet or moves it to your empty hand
+/client/proc/toggle_cocking_to_hand()
+	prefs.toggle_prefs ^= TOGGLE_COCKING_TO_HAND
+	if(prefs.toggle_prefs & TOGGLE_COCKING_TO_HAND)
+		to_chat(src, SPAN_BOLDNOTICE("You will attempt to catch the ejected bullet when cocking a gun."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE("You will now drop the ejected bullet when cocking a gun."))
 	prefs.save_preferences()
 
 ///Toggle whether dual-wielding fires both guns at once or swaps between them.

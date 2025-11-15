@@ -16,9 +16,9 @@ GLOBAL_LIST_EMPTY(bug_reports)
 GLOBAL_LIST_EMPTY(uscm_flat_tacmap_data)
 GLOBAL_LIST_EMPTY(xeno_flat_tacmap_data)
 
-//datum containing the svg overlay coords in array format.
-GLOBAL_LIST_EMPTY(uscm_svg_tacmap_data)
-GLOBAL_LIST_EMPTY(xeno_svg_tacmap_data)
+//datum containing the drawing overlay coords in array format.
+GLOBAL_LIST_EMPTY(uscm_drawing_tacmap_data)
+GLOBAL_LIST_EMPTY(xeno_drawing_tacmap_data)
 
 GLOBAL_LIST_EMPTY(failed_fultons) //A list of fultoned items which weren't collected and fell back down
 GLOBAL_LIST_EMPTY(larva_burst_by_hive)
@@ -120,13 +120,13 @@ GLOBAL_LIST(chemical_reactions_list) //List of all /datum/chemical_reaction datu
 GLOBAL_LIST(chemical_reagents_list) //List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
 GLOBAL_LIST(chemical_properties_list) //List of all /datum/chem_property datums indexed by property name
 //list of all properties that conflict with each other.
-GLOBAL_LIST_INIT_TYPED(conflicting_properties, /list, list( PROPERTY_NUTRITIOUS = PROPERTY_HEMORRAGING, PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC, PROPERTY_TOXIC = PROPERTY_ANTITOXIC,\
+GLOBAL_LIST_INIT_TYPED(conflicting_properties, /list, list( PROPERTY_NUTRITIOUS = PROPERTY_HEMORRHAGING, PROPERTY_NUTRITIOUS = PROPERTY_HEMOLYTIC, PROPERTY_TOXIC = PROPERTY_ANTITOXIC,\
 											PROPERTY_CORROSIVE = PROPERTY_ANTICORROSIVE, PROPERTY_BIOCIDIC = PROPERTY_NEOGENETIC, PROPERTY_HYPERTHERMIC = PROPERTY_HYPOTHERMIC,\
-											PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC, PROPERTY_PAINING = PROPERTY_PAINKILLING, PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,\
+											PROPERTY_NUTRITIOUS = PROPERTY_KETOGENIC, PROPERTY_NEUROPATHIC = PROPERTY_PAINKILLING, PROPERTY_HALLUCINOGENIC = PROPERTY_ANTIHALLUCINOGENIC,\
 											PROPERTY_HEPATOTOXIC = PROPERTY_HEPATOPEUTIC, PROPERTY_NEPHROTOXIC = PROPERTY_NEPHROPEUTIC, PROPERTY_PNEUMOTOXIC = PROPERTY_PNEUMOPEUTIC,\
 											PROPERTY_OCULOTOXIC = PROPERTY_OCULOPEUTIC, PROPERTY_CARDIOTOXIC = PROPERTY_CARDIOPEUTIC, PROPERTY_NEUROTOXIC = PROPERTY_NEUROPEUTIC,\
-											PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_RELAXING = PROPERTY_MUSCLESTIMULATING, PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,\
-											PROPERTY_HEMOGENIC = PROPERTY_HEMORRAGING, PROPERTY_NUTRITIOUS = PROPERTY_EMETIC,\
+											PROPERTY_FLUXING = PROPERTY_REPAIRING, PROPERTY_ANTISPASMODIC = PROPERTY_MUSCLESTIMULATING, PROPERTY_HEMOGENIC = PROPERTY_HEMOLYTIC,\
+											PROPERTY_HEMOGENIC = PROPERTY_HEMORRHAGING, PROPERTY_NUTRITIOUS = PROPERTY_EMETIC,\
 											PROPERTY_HYPERGENETIC = PROPERTY_NEOGENETIC, PROPERTY_HYPERGENETIC = PROPERTY_HEPATOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_NEPHROPEUTIC,\
 											PROPERTY_HYPERGENETIC = PROPERTY_PNEUMOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_OCULOPEUTIC, PROPERTY_HYPERGENETIC = PROPERTY_CARDIOPEUTIC,\
 											PROPERTY_HYPERGENETIC = PROPERTY_NEUROPEUTIC, PROPERTY_ADDICTIVE = PROPERTY_ANTIADDICTIVE, PROPERTY_NEUROSHIELDING = PROPERTY_NEUROTOXIC,\
@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT_TYPED(combining_properties, /list, list( PROPERTY_DEFIBRILLATIN
 											PROPERTY_THANATOMETABOL = list(PROPERTY_HYPOXEMIC, PROPERTY_CRYOMETABOLIZING, PROPERTY_NEUROCRYOGENIC),\
 											PROPERTY_HYPERDENSIFICATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_BONEMENDING, PROPERTY_CARCINOGENIC),\
 											PROPERTY_HYPERTHROTTLING = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_HALLUCINOGENIC),\
-											PROPERTY_NEUROSHIELDING = list(PROPERTY_ALCOHOLIC, PROPERTY_BALDING),\
+											PROPERTY_NEUROSHIELDING = list(PROPERTY_ALCOHOLIC, PROPERTY_ATRICHOGENIC),\
 											PROPERTY_ANTIADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_ANTIHALLUCINOGENIC),\
 											PROPERTY_ADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_NEUROTOXIC),\
 											PROPERTY_CIPHERING_PREDATOR = list(PROPERTY_CIPHERING, PROPERTY_CROSSMETABOLIZING),\
@@ -174,8 +174,15 @@ GLOBAL_LIST_INIT(surgical_tools, setup_surgical_tools())
 GLOBAL_LIST_INIT(surgical_init_tools, GLOB.surgical_tools - typecacheof(SURGERY_TOOLS_NO_INIT_MSG))
 GLOBAL_LIST_INIT(surgical_patient_types, setup_surgical_patient_types())
 
-GLOBAL_LIST_INIT_TYPED(gear_path_presets_list, /datum/equipment_preset, setup_gear_path_presets())
-GLOBAL_LIST_INIT_TYPED(gear_name_presets_list, /datum/equipment_preset, setup_gear_name_presets())
+/datum/equip_preset_folder
+	var/list/categories
+	var/list/datum/equipment_preset/gear_path_presets_list
+	var/list/datum/equipment_preset/gear_name_presets_list
+
+/datum/equip_preset_folder/New()
+	setup_gear_categories()
+
+GLOBAL_DATUM_INIT(equipment_presets, /datum/equip_preset_folder, new)
 
 GLOBAL_LIST_EMPTY(active_areas)
 GLOBAL_LIST_EMPTY(all_areas)
@@ -402,28 +409,35 @@ GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 		resin_meanings_list[T] = XMD
 	return sortAssoc(resin_meanings_list)
 
-/proc/setup_gear_path_presets()
-	var/list/gear_path_presets_list = list()
-	for(var/T in typesof(/datum/equipment_preset))
-		var/datum/equipment_preset/EP = T
-		if (!initial(EP.flags))
-			continue
-		EP = new T
-		gear_path_presets_list[EP.type] = EP
-	return sortAssoc(gear_path_presets_list)
+// Ideally I need to TGUI this.
+/datum/equip_preset_folder/proc/setup_gear_categories()
+	var/list/all_categories = list()
+	var/list/path_presets_list = list()
 
-/proc/setup_gear_name_presets()
-	var/list/gear_path_presets_list = list()
-	for(var/T in typesof(/datum/equipment_preset))
-		var/datum/equipment_preset/EP = T
-		if (!initial(EP.flags))
+	for(var/type in typesof(/datum/equipment_preset))
+		var/datum/equipment_preset/preset = type
+		if (!initial(preset.flags))
 			continue
-		EP = new T
-		var/datum/equipment_preset/existing = gear_path_presets_list[EP.name]
-		if(existing)
-			stack_trace("[EP.name] from [T] overlaps with [existing.type]! It must have a unique name for lookup!")
-		gear_path_presets_list[EP.name] = EP
-	return sortAssoc(gear_path_presets_list)
+		preset = new type
+		path_presets_list[preset.type] = preset
+
+		var/list/categories_to_check = list("All", preset.faction)
+		categories_to_check += preset.selection_categories
+		for(var/category in categories_to_check)
+			if(!(category in all_categories))
+				all_categories[category] = list()
+
+			if(!(preset.name in all_categories[category]))
+				all_categories[category][preset.name] = preset
+			else
+				var/datum/equipment_preset/existing = all_categories[category][preset.name]
+				stack_trace("[preset.name] from [type] overlaps with [existing.type]! It must have a unique name for lookup!")
+
+	for(var/category_list in all_categories)
+		all_categories[category_list] = sortAssoc(all_categories[category_list])
+
+	gear_path_presets_list = sortAssoc(path_presets_list)
+	categories = all_categories
 
 /proc/setup_language_keys()
 	var/list/language_keys = list()

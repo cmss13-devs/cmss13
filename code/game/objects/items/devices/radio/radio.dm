@@ -283,10 +283,14 @@
 	var/filter_type = RADIO_FILTER_TYPE_INTERCOM_AND_BOUNCER
 	if(subspace_transmission)
 		filter_type = RADIO_FILTER_TYPE_ALL
-		if(!src.ignore_z)
+		if(!ignore_z)
 			target_zs = get_target_zs(connection.frequency)
-			if (isnull(target_zs))
-				//We don't have a radio connection on our Z-level, abort!
+			if(isnull(target_zs))
+				//We don't have a radio connection on our Z-level, abort for all but maybe ghosts
+				for(var/mob/dead/observer as anything in GLOB.observer_list)
+					// Ghosts that listen to radio normally ignore radio whispers, but this radio transmission failed
+					if(CHECK_MULTIPLE_BITFIELDS(observer?.client?.prefs?.toggles_chat, CHAT_GHOSTEARS|CHAT_GHOSTRADIO))
+						observer.hear_say(message, verb, speaking, italics=TRUE, speaker=M) // Intentionally omitting message_mode
 				return
 
 	/* --- Intercoms can only broadcast to other intercoms, but shortwave radios can broadcast to shortwave radios and intercoms --- */

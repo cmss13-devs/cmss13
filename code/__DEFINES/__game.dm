@@ -575,7 +575,7 @@
 /// Set conservative MC timings on game start
 // perf_flags
 #define PERF_TOGGLE_LAZYSS (1<<0)
-/// Disable bloody footprints
+/// Disable bloody footprints and blood trails
 #define PERF_TOGGLE_NOBLOODPRINTS (1<<1)
 /// Disable file-based attacklogs
 #define PERF_TOGGLE_ATTACKLOGS (1<<2)

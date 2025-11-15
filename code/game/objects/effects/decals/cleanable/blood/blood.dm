@@ -104,6 +104,13 @@
 	amount = 1
 	cleanable_type = CLEANABLE_BLOOD_SPLATTER
 
+/obj/effect/decal/cleanable/blood/splatter/Initialize(mapload, b_color)
+	. = ..()
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
+		return
+	else
+		amount = rand(2, 5)
+
 /obj/effect/decal/cleanable/blood/drip
 	name = "drips of blood"
 	desc = "Some small drips of blood."
@@ -111,9 +118,16 @@
 	icon = 'icons/effects/drip.dmi'
 	icon_state = "1"
 	random_icon_states = list("1","2","3","4","5")
-	amount = 0
+	amount = 1
 	cleanable_type = CLEANABLE_BLOOD_DRIP
 	var/drips
+
+/obj/effect/decal/cleanable/blood/drip/Initialize(mapload, b_color)
+	. = ..()
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
+		return
+	else
+		amount = rand(1, 2)
 
 /obj/effect/decal/cleanable/blood/writing
 	icon_state = "tracks"

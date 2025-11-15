@@ -1881,6 +1881,7 @@
 /mob/living/carbon/human
 	var/list/death_variables = list()
 	var/list/death_phase_waves = list()
+	var/corpse_already_analyzed = FALSE  // Track if this corpse has been analyzed
 /mob/living/carbon/human/proc/on_death_signal()
 	SIGNAL_HANDLER
 

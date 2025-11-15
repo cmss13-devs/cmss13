@@ -37,6 +37,9 @@ type Data = {
   corpse_name: string | null;
   has_target: boolean;
   match_percentage: number;
+  analysis_active: boolean;
+  analysis_time_remaining: number;
+  analysis_max_time: number;
 };
 
 export const CorpseAnalyzer = () => {
@@ -136,7 +139,7 @@ export const CorpseAnalyzer = () => {
   ]);
 
   return (
-    <Window width={900} height={1210} theme={'weyland'}>
+    <Window width={900} height={1270} theme={'weyland'}>
       <Window.Content>
         {/* Corpse Information Section - Always show */}
         <Section
@@ -191,6 +194,36 @@ export const CorpseAnalyzer = () => {
               </div>
               <div style={{ fontSize: '12px', lineHeight: '1.4' }}>
                 <div>
+                  <strong>Analysis Status:</strong>{' '}
+                  <span
+                    style={{
+                      color: data.analysis_active ? '#00ff00' : '#888888',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    {data.analysis_active ? 'ACTIVE' : 'INACTIVE'}
+                  </span>
+                </div>
+                <div>
+                  <strong>Time Remaining:</strong>{' '}
+                  <span
+                    style={{
+                      color:
+                        data.analysis_active && data.analysis_time_remaining > 0
+                          ? data.analysis_time_remaining > 30
+                            ? '#00ff00'
+                            : data.analysis_time_remaining > 10
+                              ? '#ffff00'
+                              : '#ff0000'
+                          : '#888888',
+                    }}
+                  >
+                    {data.analysis_active && data.analysis_time_remaining > 0
+                      ? `${Math.floor(data.analysis_time_remaining)}s`
+                      : 'N/A'}
+                  </span>
+                </div>
+                <div>
                   <strong>Target Match:</strong>{' '}
                   <span
                     style={{
@@ -210,9 +243,11 @@ export const CorpseAnalyzer = () => {
                 </div>
                 <div>
                   <strong>Objective:</strong>{' '}
-                  {data.has_target
-                    ? 'Match green line to red target'
-                    : 'Load a corpse to begin analysis'}
+                  {data.analysis_active
+                    ? 'Match green line to red target before time runs out'
+                    : data.has_target
+                      ? 'Click Start Analysis to begin'
+                      : 'Load a corpse to begin analysis'}
                 </div>
               </div>
             </div>
@@ -443,11 +478,22 @@ export const CorpseAnalyzer = () => {
               />
               <Button
                 content={
+                  data.analysis_active ? 'Stop Analysis' : 'Start Analysis'
+                }
+                icon={data.analysis_active ? 'stop' : 'play'}
+                color={data.analysis_active ? 'red' : 'green'}
+                disabled={!data.loaded_corpse}
+                onClick={() =>
+                  act(data.analysis_active ? 'stop_analysis' : 'start_analysis')
+                }
+              />
+              <Button
+                content={
                   data.loaded_corpse ? 'Unload Corpse' : 'No Corpse Loaded'
                 }
                 icon="eject"
-                color={data.loaded_corpse ? 'red' : 'grey'}
-                disabled={!data.loaded_corpse}
+                color={data.loaded_corpse ? 'orange' : 'grey'}
+                disabled={!data.loaded_corpse || data.analysis_active}
                 onClick={() => act('unload_corpse')}
               />
             </div>

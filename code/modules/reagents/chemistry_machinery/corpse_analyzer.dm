@@ -40,7 +40,7 @@
 	// Analysis state tracking
 	var/analysis_active = FALSE  // Whether analysis is currently running
 	var/analysis_time_remaining = 0  // Time remaining in seconds
-	var/analysis_max_time = 120  // Total time allowed for analysis (2 minutes)
+	var/analysis_max_time = 120  // Total time allowed for analysis in seconds
 	var/analysis_start_time = 0  // When analysis started
 
 
@@ -73,7 +73,6 @@
 	if(!ui)
 		ui = new(user, src, "CorpseAnalyzer", name)
 		ui.open()
-
 /obj/structure/machinery/corpse_analyzer/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
@@ -399,6 +398,10 @@
 		to_chat(user, SPAN_WARNING("[corpse] is still alive! The analyzer only works on corpses."))
 		return FALSE
 
+	if(corpse.corpse_already_analyzed)
+		to_chat(user, SPAN_WARNING("[corpse]'s death signature has already been analyzed. The data has been corrupted."))
+		return FALSE
+
 	// Check if the corpse is permanently dead (REQUIRED)
 	//if((corpse.check_tod()))
 		//to_chat(user, SPAN_WARNING("[corpse] has not been declared permanently dead. The analyzer requires finalized death data."))
@@ -433,6 +436,11 @@
 		return FALSE
 	loaded_corpse.forceMove(user.loc)
 	loaded_corpse = null
+
+	// Clear corpse data
+	corpse_amplitude_modifiers.Cut()
+	corpse_phase_modifiers.Cut()
+
 	to_chat(user, SPAN_NOTICE("You unload [corpse_name]'s corpse from [src]."))
 	return TRUE
 
@@ -453,6 +461,7 @@
 	analysis_active = TRUE
 	analysis_time_remaining = analysis_max_time
 	analysis_start_time = world.time
+
 	to_chat(user, SPAN_NOTICE("Analysis started. You have [analysis_max_time] seconds to match the target signal."))
 	playsound(loc, 'sound/machines/terminal_processing.ogg', 25, FALSE)
 	return TRUE
@@ -467,18 +476,28 @@
 	analysis_active = FALSE
 	analysis_time_remaining = 0
 
+
 	to_chat(user, SPAN_NOTICE("Analysis stopped. Final match: [match_percent]%"))
 
 	if(match_percent >= 90)
 		to_chat(user, SPAN_BOLDNOTICE("Excellent match! Death signature successfully analyzed."))
 		playsound(loc, 'sound/machines/terminal_success.ogg', 25, FALSE)
+		// Mark corpse as analyzed on excellent match
+		if(loaded_corpse)
+			loaded_corpse.corpse_already_analyzed = TRUE
 	else if(match_percent >= 70)
 		to_chat(user, SPAN_NOTICE("Good match. Death signature partially analyzed."))
 		playsound(loc, 'sound/machines/terminal_success.ogg', 25, FALSE)
+		// Mark corpse as analyzed on good match
+		if(loaded_corpse)
+			loaded_corpse.corpse_already_analyzed = TRUE
 	else
-		to_chat(user, SPAN_WARNING("Poor match. Analysis incomplete."))
+		to_chat(user, SPAN_WARNING("Poor match. Analysis failed."))
 		playsound(loc, 'sound/machines/terminal_error.ogg', 25, FALSE)
+		loaded_corpse.corpse_already_analyzed = TRUE
 
+	// Auto-eject corpse after analysis completes
+	auto_eject_corpse()
 	return TRUE
 // Get the human mob from the loaded corpse
 /obj/structure/machinery/corpse_analyzer/proc/get_loaded_human()
@@ -527,7 +546,11 @@
 		corpse_amplitude_modifiers["3"] = round((oxygen / total_damage) * 10) / 10
 	process_bone_amplitude(death_data)
 	process_pain_amplitude(death_data)
-	corpse_amplitude_modifiers["6"] = round((death_data[CORPSE_PARASITIZATION] ? 1.0 : 0.0)/10)/10 //round to the nearest whole number, then get to 0.1 scale
+
+	// Process parasitization amplitude (0-100% from death data -> 0.0-1.0 for amplitude)
+	var/parasitization_percent = death_data[CORPSE_PARASITIZATION] || 0
+	corpse_amplitude_modifiers["6"] = round((parasitization_percent / 100.0) * 10) / 10
+
 	// Check for phase data and generate if missing
 	if(!length(loaded_corpse.death_phase_waves))
 		SEND_SIGNAL(loaded_corpse, COMSIG_DEATH_DATA_PHASE_GENERATION)
@@ -564,16 +587,61 @@
 	corpse_amplitude_modifiers["5"] = round(pain_amplitude * 10) / 10
 
 // Process tick - countdown analysis timer
-/obj/structure/machinery/corpse_analyzer/process(delta_time)
+/obj/structure/machinery/corpse_analyzer/process()
 	if(!analysis_active)
 		return
 
-	// Decrease time remaining
-	analysis_time_remaining -= delta_time
+	// Calculate actual time elapsed since analysis started
+	var/time_elapsed = (world.time - analysis_start_time) / 10  // world.time is in deciseconds, convert to seconds
+	analysis_time_remaining = analysis_max_time - time_elapsed
+
+	// Force UI update so timer counts down visually
+	SStgui.update_uis(src)
 
 	// Check if time ran out
 	if(analysis_time_remaining <= 0)
 		analysis_time_remaining = 0
 		analysis_active = FALSE
+
+		// Disable auto-update for all UIs
+		for(var/datum/tgui/ui in SStgui.open_uis)
+			if(ui.src_object == src)
+				ui.set_autoupdate(FALSE)
+
+		// Mark corpse as analyzed even on timeout (they attempted analysis)
+		if(loaded_corpse)
+			loaded_corpse.corpse_already_analyzed = TRUE
 		visible_message(SPAN_WARNING("[src] beeps loudly as the analysis timer expires!"))
 		playsound(loc, 'sound/machines/terminal_error.ogg', 50, FALSE)
+
+		// Auto-eject corpse when timer expires
+		auto_eject_corpse()
+
+// Auto-eject corpse to adjacent turf
+/obj/structure/machinery/corpse_analyzer/proc/auto_eject_corpse()
+	if(!loaded_corpse)
+		return FALSE
+
+	var/turf/eject_location = get_step(src, pick(NORTH, SOUTH, EAST, WEST))
+
+	if(!eject_location || eject_location.density)
+		// Try to find any valid adjacent turf
+		for(var/direction in list(NORTH, SOUTH, EAST, WEST))
+			var/turf/check_turf = get_step(src, direction)
+			if(check_turf && !check_turf.density)
+				eject_location = check_turf
+				break
+
+	if(!eject_location)
+		// No valid location found, just drop it on our location
+		eject_location = get_turf(src)
+
+	loaded_corpse.forceMove(eject_location)
+	visible_message(SPAN_NOTICE("[src] ejects [loaded_corpse]'s corpse."))
+	playsound(loc, 'sound/machines/hydraulics_1.ogg', 25, FALSE)
+
+	loaded_corpse = null
+	corpse_amplitude_modifiers.Cut()
+	corpse_phase_modifiers.Cut()
+
+	return TRUE

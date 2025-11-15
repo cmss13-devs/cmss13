@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "ce" = (
 /turf/closed/shuttle/lifeboat{
@@ -108,7 +108,7 @@
 	id = "Boat2-D2";
 	throw_dir = 2
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "mt" = (
 /turf/closed/shuttle/lifeboat/transparent{
@@ -240,7 +240,7 @@
 	id = "Boat2-D1";
 	throw_dir = 2
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "EI" = (
 /obj/structure/surface/table/reinforced/almayer_B,

@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "ao" = (
 /turf/closed/shuttle/lifeboat{
@@ -58,7 +58,7 @@
 	id = "Boat1-D4";
 	throw_dir = 2
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "lW" = (
 /turf/closed/shuttle/lifeboat{
@@ -125,7 +125,7 @@
 	id = "Boat1-D3";
 	throw_dir = 2
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "qb" = (
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
@@ -171,14 +171,14 @@
 	id = "Boat1-D2";
 	throw_dir = 1
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "ya" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
 	id = "Boat1-D1";
 	throw_dir = 1
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "zc" = (
 /turf/open/shuttle/lifeboat,

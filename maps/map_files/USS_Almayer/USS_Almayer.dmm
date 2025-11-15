@@ -425,7 +425,7 @@
 	name = "\improper Evacuation Airlock SU-3";
 	dir = 1
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "abb" = (
 /turf/open/floor/almayer/plating_stripedcorner/west,
@@ -3160,7 +3160,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock SU-2"
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "ahj" = (
 /obj/structure/machinery/light{
@@ -9615,7 +9615,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock PU-2"
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "ayp" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/intelligence_officer{
@@ -36573,7 +36573,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock PL-3"
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "bTx" = (
 /turf/open/floor/almayer/plating_stripedcorner/east,
@@ -36932,7 +36932,7 @@
 	name = "\improper Evacuation Airlock SU-4";
 	dir = 1
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "bWn" = (
 /obj/structure/machinery/light/red{
@@ -37611,7 +37611,7 @@
 	name = "\improper Evacuation Airlock PU-3";
 	dir = 1
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "ceE" = (
 /turf/closed/wall/almayer,
@@ -37980,7 +37980,7 @@
 	name = "\improper Evacuation Airlock PU-4";
 	dir = 1
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "ciB" = (
 /obj/structure/disposalpipe/segment{
@@ -38430,7 +38430,7 @@
 	name = "\improper Evacuation Airlock SL-1";
 	dir = 1
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "cmK" = (
 /obj/structure/pipes/vents/pump{
@@ -38472,7 +38472,7 @@
 	name = "\improper Evacuation Airlock PL-1";
 	dir = 1
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "cnm" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -44743,7 +44743,7 @@
 	name = "\improper Evacuation Airlock PU-6";
 	dir = 1
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "eON" = (
 /obj/effect/decal/warning_stripes{
@@ -57075,7 +57075,7 @@
 	name = "\improper Evacuation Airlock SL-2";
 	dir = 1
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "jUF" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -64721,7 +64721,7 @@
 	name = "\improper Evacuation Airlock PU-CL";
 	dir = 8
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "nef" = (
 /obj/effect/decal/warning_stripes{
@@ -66491,7 +66491,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock PU-1"
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "nNY" = (
 /turf/open/floor/almayer/plating_stripedcorner/south,
@@ -73859,7 +73859,7 @@
 	name = "\improper Evacuation Airlock SU-6";
 	dir = 1
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "qHD" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -83207,7 +83207,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock SU-1"
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "uuD" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
@@ -84997,7 +84997,7 @@
 	name = "\improper Evacuation Airlock PL-2";
 	dir = 1
 	},
-/turf/open/floor/hybrisa/metal/red_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "vfx" = (
 /obj/structure/pipes/standard/simple/hidden/supply{

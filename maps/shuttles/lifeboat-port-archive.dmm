@@ -234,7 +234,7 @@
 	id = "Boat1-D1";
 	throw_dir = 1
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "CI" = (
 /turf/template_noop,
@@ -316,10 +316,10 @@
 	id = "Boat1-D2";
 	throw_dir = 1
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "Nm" = (
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/lifeboat)
 "Ob" = (
 /turf/closed/shuttle/lifeboat{

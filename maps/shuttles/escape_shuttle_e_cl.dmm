@@ -40,7 +40,7 @@
 	name = "\improper Evacuation Airlock CL-1";
 	id_tag = "cl_evac"
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/escape_pod)
 "E" = (
 /turf/closed/shuttle/escapepod{

@@ -16,7 +16,7 @@
 /obj/structure/machinery/door/airlock/evacuation{
 	name = "\improper Evacuation Airlock SU-1"
 	},
-/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/escape_pod)
 "k" = (
 /turf/closed/shuttle/escapepod{

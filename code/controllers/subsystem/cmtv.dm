@@ -659,7 +659,7 @@ SUBSYSTEM_DEF(cmtv)
 
 /datum/action/stop_cmtv
 	name = "Stop CMTV"
-	action_icon_state = "cmtv_observe"
+	action_icon_state = "twitch_observe"
 
 /datum/action/stop_cmtv/action_activate()
 	. = ..()

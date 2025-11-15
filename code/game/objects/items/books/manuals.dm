@@ -506,8 +506,8 @@
 /obj/item/book/manual/surgery
 	name = "Surgical Reference Manual"
 	desc = "A detailed reference manual for surgical procedures. To be read mid-surgery when you forget a simple surgical step."
-	icon_state = "book_medical"
-	item_state = "book_medical"
+	icon_state = "book_surgery"
+	item_state = "book_surgery"
 	author = "Colonial Marines Bureau of Medicine and Surgery"
 	title = "Surgical Reference Manual"
 

@@ -453,6 +453,8 @@
 				sound = pick('sound/voice/wy_droid/wy_droid_death1.ogg', 'sound/voice/wy_droid/wy_droid_death2.ogg', 'sound/voice/wy_droid/wy_droid_death3.ogg', 'sound/voice/wy_droid/wy_droid_death4.ogg', 'sound/voice/wy_droid/wy_droid_death5.ogg', 'sound/voice/wy_droid/wy_droid_death6.ogg', 'sound/voice/wy_droid/wy_droid_death7.ogg')
 			if("wy_droid_cloaker_death")
 				sound = pick('sound/voice/wy_droid/wy_stealth_droid_death1.ogg', 'sound/voice/wy_droid/wy_stealth_droid_death2.ogg')
+			if("zombie_sound")
+				sound = pick('sound/hallucinations/far_noise.ogg', 'sound/hallucinations/veryfar_noise.ogg')
 	return sound
 
 /client/proc/generate_sound_queues()

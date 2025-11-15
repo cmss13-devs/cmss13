@@ -16,7 +16,7 @@
 
 /obj/structure/machinery/computer/research/Initialize()
 	. = ..()
-	photocopier = locate(/obj/structure/machinery/photocopier,get_step(src, NORTH))
+	photocopier = locate(/obj/structure/machinery/photocopier,get_step(src, SOUTHWEST))
 	GLOB.chemical_data.research_computers += src
 
 /obj/structure/machinery/computer/research/Destroy()

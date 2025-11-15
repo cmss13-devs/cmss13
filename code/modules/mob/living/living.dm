@@ -653,7 +653,7 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_SET_BODY_POSITION, new_value, .)
 	if(new_value == LYING_DOWN) // From standing to lying down.
 		var/is_bleeding = FALSE
-		for(var/datum/effects/bleeding/E in effects_list)
+		for(var/datum/effects/bleeding/external/visible_bleeding in effects_list)
 			is_bleeding = TRUE
 			break
 		if(is_bleeding)

@@ -714,6 +714,9 @@
 /obj/item/weapon/gun/revolver/mateba/pmc
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/ap
 
+/obj/item/weapon/gun/revolver/mateba/impact
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
+
 /obj/item/weapon/gun/revolver/mateba/general
 	name = "\improper golden Spearhead Unica-6 autorevolver custom"
 	desc = "Boasting a gold-plated frame and grips made of a critically-endangered rosewood tree, this heavily-customized Unica 6 autorevolver's pretentious design rivals only the power of its wielder. Fit for a king. Or a general."
@@ -842,7 +845,7 @@
 	usually comes with authentic wooden grips, engravings, or gold plating finish."
 	icon_state = "mateba_2006m"
 	item_state = "mateba_2006m"
-
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	fire_sound = 'sound/weapons/gun_mateba_2006m.ogg'
 	chamber_close_sound = 'sound/weapons/gun_mateba_2006m_close_chamber.ogg'
 	unload_sound = 'sound/weapons/gun_mateba_2006m_open_chamber.ogg'

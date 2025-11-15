@@ -139,6 +139,7 @@
 		/obj/item/clothing/mask/breath/medical,
 		/obj/item/storage/box/masks,
 		/obj/item/storage/box/gloves,
+		/obj/item/storage/box/bloodbag,
 		/obj/item/tool/wrench,
 		/obj/item/tool/crowbar,
 	)

@@ -511,16 +511,20 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		if(istype(papers[content], /obj/item/paper))
 			var/obj/item/paper/faxed_paper = papers[content]
 			fax_paper_copy.info += faxed_paper.info
+			if(faxed_paper.extra_headers)
+				LAZYOR(fax_paper_copy.extra_headers, faxed_paper.extra_headers)
+			if(faxed_paper.extra_stylesheets)
+				LAZYOR(fax_paper_copy.extra_stylesheets, faxed_paper.extra_stylesheets)
 		else // type photo
 			var/obj/item/photo/faxed_photo = papers[content]
 			if(!isicon(faxed_photo.img))
 				return
 			photo_list += list("tmp_photo[content].png" = (faxed_photo.img))
-			fax_paper_copy.info  += "<img src='tmp_photo[content].png' width='192'/>"
+			fax_paper_copy.info += "<img src='tmp_photo[content].png' width='192'/>"
 
 /obj/structure/machinery/faxmachine/proc/outgoing_fax_message(mob/user, sending_priority)
 
-	var/datum/fax/faxcontents = new(fax_paper_copy.info, photo_list, fax_paper_copy.name, target_department, machine_id_tag)
+	var/datum/fax/faxcontents = new(fax_paper_copy.info, photo_list, fax_paper_copy.name, target_department, machine_id_tag, fax_paper_copy.extra_stylesheets, fax_paper_copy.extra_headers)
 
 	GLOB.fax_contents += faxcontents
 
@@ -887,14 +891,16 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	var/data
 	var/list/photo_list
 	var/paper_name
-
 	/// Where this fax was sent to
 	var/department
-
 	/// The ID tag of the fax machine that sent this
 	var/fax_id_tag
+	///Optional additional stylesheets in the form name=filename
+	var/list/extra_stylesheets
+	///Optional additional header content
+	var/list/extra_headers
 
-/datum/fax/New(new_data, new_photo_list, new_name, department, fax_id_tag)
+/datum/fax/New(new_data, new_photo_list, new_name, department, fax_id_tag, list/extra_stylesheets, list/extra_headers)
 	. = ..()
 	data = new_data
 	photo_list = new_photo_list
@@ -903,7 +909,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 	src.department = department
 	src.fax_id_tag = fax_id_tag
-
+	src.extra_stylesheets = extra_stylesheets.Copy()
+	src.extra_headers = extra_headers.Copy()
+	LAZYADD(src.extra_headers, "<style>body {--bg-color: white;}</style>")
 
 /obj/structure/machinery/faxmachine/proc/is_department_responder_awake(target_department)
 	if(!(target_department in FAX_HIGHCOM_DEPARTMENTS))

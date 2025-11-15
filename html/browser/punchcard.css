@@ -1,9 +1,15 @@
 :root {
 	--bg-color: #272727;
 }
+
 body.paper {
 	background-color: var(--bg-color);
 }
+
+div.punchcard-container {
+	position: relative;
+}
+
 table.punchcard {
 	position: absolute;
 	left: 40px;
@@ -12,25 +18,30 @@ table.punchcard {
 	table-layout: fixed;
 	width: max-content;
 }
+
 tr.punchcard {
 	height: 8.8px;
 }
+
 td.punchspacer {
 	width: 5.5px;
 }
+
 td.punchslot {
 	width: 25px;
 }
+
 td.punched {
 	background-color: var(--bg-color);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
+
 td.punchmargin {
-	width: 80px;
+	width: 60px;
+	max-width: 60px;
+	overflow: clip;
+	vertical-align: top;
 	writing-mode: vertical-rl;
 	text-orientation: mixed;
-}
-div.punchcard-container {
-	position: relative;
 }

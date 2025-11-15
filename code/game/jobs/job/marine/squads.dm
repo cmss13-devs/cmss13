@@ -733,6 +733,10 @@
 	old_lead.update_inv_wear_suit()
 	to_chat(old_lead, FONT_SIZE_BIG(SPAN_BLUE("You're no longer the [squad_type] Leader for [src]!")))
 
+	var/obj/item/device/radio/headset/earpiece = old_lead.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_SL
+
 //Not a safe proc. Returns null if squads or jobs aren't set up.
 //Mostly used in the marine squad console in marine_consoles.dm.
 /proc/get_squad_by_name(text)
@@ -776,9 +780,6 @@
 		if(fireteam_leaders[fireteam]) //if TL exists -> FT group, otherwise -> SL group
 			SStracking.start_tracking(fireteam, H)
 			if(H.stat == CONSCIOUS)
-				var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
-				if(earpiece)
-					earpiece.locate_setting = TRACKER_FTL
 				to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam]. Report to your Fireteam Leader ASAP.")))
 			to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was assigned to your fireteam.")))
 		else
@@ -794,13 +795,15 @@
 			SStracking.stop_tracking(tracking_id, H) //remove from previous FT group
 			SStracking.start_tracking(fireteam, H)
 			if(H.stat == CONSCIOUS)
-				var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
-				if(earpiece)
-					earpiece.locate_setting = TRACKER_FTL
 				to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam]. Report to your Fireteam Leader ASAP.")))
 			to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was assigned to your fireteam.")))
 		if(H.stat == CONSCIOUS)
 			to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam].")))
+
+	var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_FTL
+
 	H.hud_set_squad()
 
 /datum/squad/proc/unassign_fireteam(mob/living/carbon/human/H, upd_ui = TRUE)
@@ -815,6 +818,10 @@
 		to_chat(fireteam_leaders[ft], FONT_SIZE_HUGE(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was unassigned from your fireteam.")))
 	if(!H.stat)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were unassigned from [ft].")))
+
+	var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_SL
 	H.hud_set_squad()
 
 /datum/squad/proc/assign_ft_leader(fireteam, mob/living/carbon/human/H, upd_ui = TRUE)
@@ -828,6 +835,10 @@
 	if(H.stat == CONSCIOUS)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned as [fireteam] Team Leader.")))
 
+	var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_SL
+
 /datum/squad/proc/unassign_ft_leader(fireteam, clear_group_id, upd_ui = TRUE)
 	if(!fireteam_leaders[fireteam])
 		return
@@ -840,6 +851,11 @@
 	if(!H.stat)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were unassigned as [fireteam] Team Leader.")))
 
+	var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_FTL
+
+// this proc is defunct too
 /datum/squad/proc/unassign_all_ft_leaders()
 	for(var/team in fireteam_leaders)
 		if(fireteam_leaders[team])

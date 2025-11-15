@@ -1139,6 +1139,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	selected_sl.update_inv_head() //updating marine helmet leader overlays
 	selected_sl.update_inv_wear_suit()
 
+	var/obj/item/device/radio/headset/earpiece = selected_sl.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_LZ
 
 /obj/structure/machinery/computer/overwatch/check_eye(mob/user)
 	if(user.is_mob_incapacitated(TRUE) || ui_status(user) == UI_CLOSE || user.blinded) //user can't see - not sure why canmove is here.

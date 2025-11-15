@@ -273,13 +273,13 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/patchless
 	name = "commanding officer's jacket"
-	desc = "A patchless version of the officer jacket, its presence is still domineering"
+	desc = "A patchless version of the officer jacket, its presence is still domineering."
 	icon_state = "co_plain"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander
 
 	name = "commanding officer's jacket"
-	desc = "The thought of looking even at the rank pins scare you with a court martial"
+	desc = "The thought of looking even at the rank pins scare you with a court martial."
 	icon_state = "co_falcon"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon

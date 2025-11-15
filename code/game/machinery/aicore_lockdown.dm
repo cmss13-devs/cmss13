@@ -23,7 +23,7 @@
 	if(isxeno(user))
 		return FALSE
 	if(!allowed(user))
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied!"))
 		flick(initial(icon_state) + "-denied", src)
 		return FALSE
 

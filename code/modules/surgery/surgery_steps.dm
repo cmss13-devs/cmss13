@@ -275,8 +275,8 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 /**This is used for failed-step narration and relevant failure changes, often damage etc. If it returns TRUE, the step succeeds anyway.
 tool_type may be a typepath or simply '1'. Note that a first step done on help-intent doesn't call failure(), it just ends harmlessly.**/
 /datum/surgery_step/proc/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] fails to finish the surgery"),
-			SPAN_NOTICE("You fail to finish the surgery"))
+	user.visible_message(SPAN_NOTICE("[user] fails to finish the surgery!"),
+			SPAN_NOTICE("You fail to finish the surgery."))
 	return FALSE
 
 /// Plays the failure sound

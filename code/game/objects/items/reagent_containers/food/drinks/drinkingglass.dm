@@ -28,17 +28,17 @@
 			if("beer")
 				icon_state = "beerglass"
 				name = "Beer glass"
-				desc = "A freezing pint of beer"
+				desc = "A freezing pint of beer."
 				center_of_mass = "x=16;y=8"
 			if("beer2")
 				icon_state = "beerglass"
 				name = "Beer glass"
-				desc = "A freezing pint of beer"
+				desc = "A freezing pint of beer."
 				center_of_mass = "x=16;y=8"
 			if("ale")
 				icon_state = "aleglass"
 				name = "Ale glass"
-				desc = "A freezing pint of delicious Ale"
+				desc = "A freezing pint of delicious Ale."
 				center_of_mass = "x=16;y=8"
 			if("milk")
 				icon_state = "glass_white"
@@ -47,32 +47,32 @@
 				center_of_mass = "x=16;y=10"
 			if("cream")
 				icon_state  = "glass_white"
-				name = "Glass of cream"
+				name = "Glass of cream."
 				desc = "Ewwww..."
 				center_of_mass = "x=16;y=10"
 			if("chocolate")
 				icon_state  = "chocolateglass"
-				name = "Glass of chocolate"
-				desc = "Tasty"
+				name = "Glass of chocolate."
+				desc = "Tasty!"
 				center_of_mass = "x=16;y=10"
 			if("lemonjuice")
 				icon_state  = "lemonglass"
-				name = "Glass of lemonjuice"
+				name = "Glass of lemonjuice."
 				desc = "Sour..."
 				center_of_mass = "x=16;y=10"
 			if("cola")
 				icon_state  = "glass_brown"
 				name = "Glass of Space Cola"
-				desc = "A glass of refreshing Space Cola"
+				desc = "A glass of refreshing Space Cola."
 				center_of_mass = "x=16;y=10"
 			if("nuka_cola")
 				icon_state = "nuka_colaglass"
 				name = "Nuka Cola"
-				desc = "Don't cry, Don't raise your eye, It's only nuclear wasteland"
+				desc = "Don't cry, Don't raise your eye, It's only nuclear wasteland."
 				center_of_mass = "x=16;y=6"
 			if("orangejuice")
 				icon_state = "glass_orange"
-				name = "Glass of Orange juice"
+				name = "Glass of Orange juice."
 				desc = "Vitamins! Yay!"
 				center_of_mass = "x=16;y=10"
 			if("tomatojuice")
@@ -133,7 +133,7 @@
 			if ("kahlua")
 				icon_state = "kahluaglass"
 				name = "Glass of RR coffee Liquor"
-				desc = "DAMN, THIS THING LOOKS ROBUST"
+				desc = "DAMN, THIS THING LOOKS ROBUST!"
 				center_of_mass = "x=15;y=7"
 			if("vermouth")
 				icon_state = "vermouthglass"
@@ -317,7 +317,7 @@
 			if("thirteenloko")
 				icon_state = "thirteen_loko_glass"
 				name = "Glass of Thirteen Loko"
-				desc = "This is a glass of Thirteen Loko, it appears to be of the highest quality. The drink, not the glass"
+				desc = "This is a glass of Thirteen Loko, it appears to be of the highest quality. The drink, not the glass."
 				center_of_mass = "x=16;y=10"
 			if("dr_gibb")
 				icon_state = "dr_gibb_glass"
@@ -362,7 +362,7 @@
 			if("bahama_mama")
 				icon_state = "bahama_mama"
 				name = "Bahama Mama"
-				desc = "Tropic cocktail"
+				desc = "Tropic cocktail."
 				center_of_mass = "x=16;y=5"
 			if("singulo")
 				icon_state = "singulo"
@@ -382,7 +382,7 @@
 			if("barefoot")
 				icon_state = "b&p"
 				name = "Barefoot"
-				desc = "Barefoot and pregnant"
+				desc = "Barefoot and pregnant."
 				center_of_mass = "x=17;y=8"
 			if("demonsblood")
 				icon_state = "demonsblood"

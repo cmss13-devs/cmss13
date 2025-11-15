@@ -4,7 +4,7 @@
 //Blue
 /obj/item/lightstick
 	name = "blue lightstick"
-	desc = "You can stick them in the ground"
+	desc = "You can stick them in the ground."
 	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "lightstick_blue0"
 	light_range = 2

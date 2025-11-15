@@ -717,7 +717,7 @@
 /obj/structure/prop/hybrisa/supermart
 	name = "long rack"
 	icon_state = "longrack1"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	density = TRUE
 	projectile_coverage = 20
@@ -779,37 +779,37 @@
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack1
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack1"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack2
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack2"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack3
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack3"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack4
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack4"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack5
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack5"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack6
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack6"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack7
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs"
+	desc = "A long shelf filled with various foodstuffs."
 	icon_state = "longrack7"
 
 /obj/structure/prop/hybrisa/supermart/supermartbelt
@@ -1026,7 +1026,7 @@
 
 /obj/structure/bed/chair/comfy/hybrisa
 	name = "expensive chair"
-	desc = "A expensive looking chair"
+	desc = "A expensive looking chair."
 
 /obj/structure/bed/chair/comfy/hybrisa/black
 	icon_state = "comfychair_hybrisablack"
@@ -2809,7 +2809,7 @@
 
 /obj/structure/bed/sofa/hybrisa/sofa/black
 	name = "Couch"
-	desc = "Just like Space Ikea would have wanted"
+	desc = "Just like Space Ikea would have wanted."
 	icon_state = "sofa_black"
 	anchored = TRUE
 	can_buckle = FALSE
@@ -2818,7 +2818,7 @@
 
 /obj/structure/bed/sofa/hybrisa/sofa/red
 	name = "Couch"
-	desc = "Just like Space Ikea would have wanted"
+	desc = "Just like Space Ikea would have wanted."
 	icon_state = "sofa_red"
 	anchored = TRUE
 	can_buckle = FALSE

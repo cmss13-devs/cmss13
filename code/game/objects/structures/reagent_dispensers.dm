@@ -99,9 +99,9 @@
 
 	dispensing = !dispensing
 	if(dispensing)
-		to_chat(usr, SPAN_NOTICE("[src] is now dispensing"))
+		to_chat(usr, SPAN_NOTICE("[src] is now dispensing."))
 	else
-		to_chat(usr, SPAN_NOTICE("[src] is now filling"))
+		to_chat(usr, SPAN_NOTICE("[src] is now filling."))
 	update_icon()
 
 /obj/structure/reagent_dispensers/ex_act(severity)
@@ -139,9 +139,9 @@
 	if(mods[ALT_CLICK])
 		dispensing = !dispensing
 		if(dispensing)
-			to_chat(user, SPAN_NOTICE("[src] is now dispensing"))
+			to_chat(user, SPAN_NOTICE("[src] is now dispensing."))
 		else
-			to_chat(user, SPAN_NOTICE("[src] is now filling"))
+			to_chat(user, SPAN_NOTICE("[src] is now filling."))
 		update_icon()
 		return TRUE
 	return ..()
@@ -508,7 +508,7 @@
 
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
-	desc = "A beer keg"
+	desc = "A beer keg."
 	icon = 'icons/obj/structures/kegs.dmi'
 	icon_state = "beertankTEMP"
 	amount_per_transfer_from_this = 10

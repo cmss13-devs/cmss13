@@ -61,7 +61,7 @@
 	flags_armor_protection = BODY_FLAG_FEET
 
 /obj/item/clothing/shoes/galoshes
-	desc = "Rubber boots"
+	desc = "Rubber boots."
 	name = "galoshes"
 	icon_state = "galoshes"
 
@@ -97,7 +97,7 @@
 
 /obj/item/clothing/shoes/cyborg
 	name = "cyborg boots"
-	desc = "Shoes for a cyborg costume"
+	desc = "Shoes for a cyborg costume."
 	icon_state = "boots"
 
 /obj/item/clothing/shoes/slippers
@@ -143,7 +143,7 @@
 
 /obj/item/clothing/shoes/souto
 	name = "Souto Man boots"
-	desc = "\improper Souto Man's boots. Harder than the kick of Souto Red"
+	desc = "\improper Souto Man's boots. Harder than the kick of Souto Red."
 	icon_state = "souto_man"
 	item_state = "souto_man"
 	flags_inventory = CANTSTRIP|NOSLIPPING

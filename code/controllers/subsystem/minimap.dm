@@ -1344,7 +1344,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/update
 	icon_state = "update"
-	desc = "Send a tacmap update"
+	desc = "Send a tacmap update."
 	screen_loc = "15,7"
 	COOLDOWN_DECLARE(update_cooldown)
 
@@ -1488,7 +1488,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/up
 	icon_state = "up"
-	desc = "Move up a level"
+	desc = "Move up a level."
 	screen_loc = "15,6"
 
 /atom/movable/screen/minimap_tool/up/clicked(location, list/modifiers)
@@ -1499,7 +1499,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/down
 	icon_state = "down"
-	desc = "Move down a level"
+	desc = "Move down a level."
 	screen_loc = "15,5"
 
 /atom/movable/screen/minimap_tool/down/clicked(location, list/modifiers)

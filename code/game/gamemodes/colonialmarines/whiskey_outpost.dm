@@ -507,7 +507,7 @@
 	var/icon_on = "grinder-o1"
 
 	name = "Recycler"
-	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care"
+	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care."
 	density = FALSE
 	anchored = TRUE
 	unslashable = TRUE
@@ -536,7 +536,7 @@
 				if(istype(O,/obj/structure/closet/crate))
 					var/obj/structure/closet/crate/C = O
 					if(length(C.contents))
-						to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
+						to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled."))
 						continue
 					new /obj/item/stack/sheet/metal(get_step(src,dir))
 					O.forceMove(get_turf(locate(84,237,2))) //z.2

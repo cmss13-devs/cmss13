@@ -1,6 +1,6 @@
 /obj/item/device/whistle
 	name = "\improper whistle"
-	desc = "A metal pea-whistle. Can be blown while held, or worn in the mouth"
+	desc = "A metal pea-whistle. Can be blown while held, or worn in the mouth."
 	icon_state = "whistle"
 	icon = 'icons/obj/items/tools.dmi'
 	w_class = SIZE_TINY

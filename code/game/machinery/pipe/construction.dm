@@ -45,7 +45,7 @@ Buildable meters
 
 /obj/item/pipe
 	name = "pipe"
-	desc = "A pipe"
+	desc = "A pipe."
 	var/pipe_type = 0
 	//var/pipe_dir = 0
 	var/pipename
@@ -595,7 +595,7 @@ Buildable meters
 
 /obj/item/pipe_meter
 	name = "meter"
-	desc = "A meter that can be laid on pipes"
+	desc = "A meter that can be laid on pipes."
 	icon = 'icons/obj/pipes/pipe_item.dmi'
 	icon_state = "meter"
 	item_state = "buildpipe"
@@ -612,7 +612,7 @@ Buildable meters
 		return 1
 	new/obj/structure/machinery/meter( src.loc )
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-	to_chat(user, SPAN_NOTICE(" You have fastened the meter to the pipe"))
+	to_chat(user, SPAN_NOTICE(" You have fastened the meter to the pipe."))
 	qdel(src)
 //not sure why these are necessary
 #undef PIPE_SIMPLE_STRAIGHT

@@ -1,6 +1,6 @@
 /obj/item/reagent_container/food/snacks/meat
 	name = "meat"
-	desc = "A slab of meat"
+	desc = "A slab of meat."
 	icon_state = "meat"
 	icon = 'icons/obj/items/food/meat.dmi'
 	health = 180

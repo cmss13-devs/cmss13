@@ -249,7 +249,7 @@
 
 /obj/item/reagent_container/food/drinks/bottle/bottleofnothing
 	name = "Bottle of Nothing"
-	desc = "A bottle filled with nothing"
+	desc = "A bottle filled with nothing."
 	icon_state = "bottleofnothing"
 	center_of_mass = "x=17;y=5"
 

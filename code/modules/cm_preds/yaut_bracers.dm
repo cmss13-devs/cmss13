@@ -463,7 +463,7 @@
 
 /obj/item/bracer_attachments/wristblades
 	name = "wristblade bracer attachment"
-	desc = "A pair of huge, serrated blades"
+	desc = "A pair of huge, serrated blades."
 	icon_state = "wrist"
 	item_state = "wristblade"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/wristblades
@@ -472,7 +472,7 @@
 
 /obj/item/bracer_attachments/scimitars
 	name = "scimitar bracer attachment"
-	desc = "A pair of huge, serrated blades"
+	desc = "A pair of huge, serrated blades."
 	icon_state = "scim"
 	item_state = "scim"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/scimitar
@@ -481,7 +481,7 @@
 
 /obj/item/bracer_attachments/scimitars_alt
 	name = "scimitar bracer attachment"
-	desc = "A pair of huge, serrated blades"
+	desc = "A pair of huge, serrated blades."
 	icon_state = "scim_alt"
 	item_state = "scim_alt"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/scimitar/alt

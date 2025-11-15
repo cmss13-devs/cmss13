@@ -320,7 +320,7 @@
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_INFO("ALT-Clicking the plate will toggle overdose protection")
+	. += SPAN_INFO("ALT-Clicking the plate will toggle overdose protection.")
 	. += SPAN_INFO("Overdose protection seems to be [od_protection_mode == 1 ? "ON" : od_protection_mode == 2 ? "DYNAMIC" : "OFF"]")
 	if(used)
 		. += SPAN_WARNING("It is already used!")

@@ -373,3 +373,188 @@
 	reagent_state = LIQUID
 	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_CORROSIVE = 2, PROPERTY_TOXIC = 1, PROPERTY_CROSSMETABOLIZING = 3)
+
+/datum/reagent/toxin/xeno/neurotoxin
+	name = "Neurotoxin"
+	id = REAGENT_XENO_NEUROTOXIN
+	description = "A paralytic cocktail secreted by xenomorph castes. Rapidly overwhelms the nervous system when metabolized."
+	reagent_state = LIQUID
+	color = "#cfa32a"
+	flags = REAGENT_NO_GENERATION | REAGENT_SCANNABLE
+	custom_metabolism = AMOUNT_PER_TIME(1, 10 SECONDS)
+
+	var/default_msg = "Your whole body is feeling numb as you quickly tire out!"
+	var/stamina_damage = 7
+	var/stim_drain = 2
+
+	var/tmp/current_strength = 0
+	var/tmp/chat_cd_counter = 0
+	var/tmp/next_stumble_time = 0
+	var/tmp/next_hallucination_time = 0
+
+/datum/reagent/toxin/xeno/neurotoxin/on_mob_life(mob/living/M, alien, delta_time)
+	var/pre_volume = volume
+
+	// Adjust metabolism rate based on mob state (like the old effect)
+	var/original_metabolism = custom_metabolism
+
+	. = ..()
+	custom_metabolism = original_metabolism  // Reset to original rate
+
+	if(!. || deleted)
+		return
+	if(!iscarbon(M))
+		return
+
+	var/mob/living/carbon/affected_mob = M
+	if(affected_mob.stat == DEAD)
+		return
+	if(issynth(affected_mob))
+		return
+
+	affected_mob.last_damage_data = create_cause_data("xenomorph neurotoxin", last_source_mob?.resolve())
+
+	var/stam_amount = stamina_damage * delta_time
+	if(stam_amount > 0)
+		affected_mob.apply_stamina_damage(stam_amount)
+
+	affected_mob.make_dizzy(max(1, round(8 * delta_time)))
+	if(affected_mob.reagents)
+		for(var/datum/reagent/generated/stim in affected_mob.reagents.reagent_list)
+			affected_mob.reagents.remove_reagent(stim.id, stim_drain * delta_time, TRUE)
+
+	// Use current volume to determine effect intensity (like other reagents)
+	var/intensity = volume  // Use actual volume with decimals for more precise scaling
+	var/bloodcough_prob = 0
+	var/stumble_prob = 0
+	var/msg = default_msg
+
+	// Effect levels (shit that doesn't stack)
+
+	switch(intensity)
+		if(0 to 0.9)
+			msg = default_msg
+		if(1 to 1.4)
+			msg = SPAN_DANGER("You body starts feeling numb, you can't feel your fingers!")
+			bloodcough_prob = 10
+		if(1.5 to 1.9)
+			msg = pick(SPAN_BOLDNOTICE("Why am I here?"), SPAN_HIGHDANGER("Your entire body feels numb!"), SPAN_HIGHDANGER("You notice your movement is erratic!"), SPAN_HIGHDANGER("You panic as numbness takes over your body!"))
+			bloodcough_prob = 20
+			stumble_prob = 5
+		if(2 to 2.4)
+			msg = SPAN_DANGER("Your eyes sting, you can't see!")
+			bloodcough_prob = 25
+			stumble_prob = 25
+		if(2.5 to INFINITY)
+			msg = pick(SPAN_BOLDNOTICE("What am I doing?"), SPAN_DANGER("Your hearing fades away, you can't hear anything!"), SPAN_HIGHDANGER("A sharp pain eminates from your abdomen!"), SPAN_HIGHDANGER("EVERYTHING IS HURTING!! AGH!!!"), SPAN_HIGHDANGER("Your entire body is numb, you can't feel anything!"), SPAN_HIGHDANGER("You can't feel your limbs at all!"), SPAN_HIGHDANGER("Your mind goes blank, you can't think of anything!"))
+			stumble_prob = 40
+			bloodcough_prob = 30
+
+	var/strength = current_strength
+
+	// Stacking effects below
+
+	if(intensity >= 1)
+		affected_mob.apply_effect(10, pick(SLUR, STUTTER))
+		affected_mob.apply_effect(max(affected_mob.eye_blurry, strength), EYE_BLUR)
+
+	if(intensity >= 1.4)
+		affected_mob.apply_effect(5, AGONY)
+		affected_mob.make_jittery(15)
+		if(affected_mob.client && ishuman(affected_mob) && world.time >= next_hallucination_time)
+			var/mob/living/carbon/human/human_target = affected_mob
+			process_hallucination(human_target)
+			next_hallucination_time = world.time + rand(4 SECONDS, 10 SECONDS)
+
+	if(intensity >= 1.9)
+		affected_mob.eye_blind = max(affected_mob.eye_blind, floor(strength / 4))
+
+	if(intensity >= 2.7)
+		affected_mob.apply_effect(1, DAZE)
+		affected_mob.apply_damage(2 * delta_time, TOX)
+		affected_mob.SetEarDeafness(max(affected_mob.ear_deaf, floor(strength * 1.5)))
+
+	if(intensity >= 5)
+		affected_mob.apply_internal_damage(10 * delta_time, "liver")
+		affected_mob.apply_damage(150, OXY)
+
+	if(stumble_prob && prob(stumble_prob) && world.time >= next_stumble_time)
+		if(!affected_mob.is_mob_incapacitated())
+			affected_mob.visible_message(SPAN_DANGER("[affected_mob] misteps in their confusion!"), SPAN_HIGHDANGER("You stumble!"))
+			step(affected_mob, pick(CARDINAL_ALL_DIRS))
+			affected_mob.apply_effect(5, DAZE)
+			affected_mob.make_jittery(25)
+			affected_mob.make_dizzy(55)
+			affected_mob.emote("pain")
+			next_stumble_time = world.time + 3 SECONDS
+			if(holder)
+				holder.add_reagent(id, custom_metabolism * delta_time, null, TRUE)
+
+	if(bloodcough_prob && prob(bloodcough_prob))
+		affected_mob.emote("cough")
+		affected_mob.Slow(1)
+		affected_mob.apply_damage(5, BRUTE, "chest")
+
+	if(chat_cd_counter <= 0)
+		chat_cd_counter = 1
+	else
+		chat_cd_counter = max(chat_cd_counter - 1, 0)
+
+/datum/reagent/toxin/xeno/neurotoxin/proc/register_exposure(strength)
+	if(isnum(strength) && strength > 0)
+		current_strength = strength
+
+/datum/reagent/toxin/xeno/neurotoxin/proc/process_hallucination(mob/living/carbon/human/victim)
+	switch(rand(0, 100))
+		if(0 to 5)
+			playsound_client(victim?.client, pick('sound/voice/alien_pounce.ogg','sound/voice/alien_pounce.ogg'))
+			victim.KnockDown(3)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, "alien_claw_flesh"), 1 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, "bonebreak"), 1 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, "alien_claw_flesh"), 1.5 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, "alien_claw_flesh"), 2 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, "bonebreak"), 2.5 SECONDS)
+			victim.apply_effect(AGONY, 10)
+			victim.emote("pain")
+		if(6 to 10)
+			playsound_client(victim.client, 'sound/effects/ob_alert.ogg')
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/weapons/gun_orbital_travel.ogg'), 2 SECONDS)
+		if(11 to 16)
+			playsound_client(victim.client, 'sound/voice/alien_queen_screech.ogg')
+			victim.KnockDown(1)
+		if(17 to 24)
+			hallucination_fakecas_sequence(victim)
+		if(25 to 42)
+			to_chat(victim, SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [pick(SPAN_UNDERLINE("TOWARDS THE [pick("WEST","EAST","SOUTH","NORTH")]") , SPAN_UNDERLINE("RIGHT ONTOP OF YOU!"))]!"))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/weapons/gun_mortar_travel.ogg'), 1 SECONDS)
+		if(43 to 69)
+			victim.emote(pick("twitch","drool","moan","giggle"))
+			victim.hallucination = 3
+			victim.druggy = 3
+		if(70 to 100)
+			playsound_client(client = victim.client, soundin = pick('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg','sound/voice/alien_queen_breath1.ogg', 'sound/voice/4_xeno_roars.ogg','sound/misc/notice2.ogg',"bone_break","gun_pulse","metalbang","pry","shatter"), vol = 65)
+
+/datum/reagent/toxin/xeno/neurotoxin/proc/hallucination_fakecas_sequence(mob/living/carbon/human/victim)
+	playsound_client(victim.client, 'sound/weapons/dropship_sonic_boom.ogg', vol = 5)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), victim, "A DROPSHIP FIRES [pick(SPAN_UNDERLINE("TOWARDS THE [pick("WEST","EAST","SOUTH","NORTH")]") , SPAN_UNDERLINE("RIGHT ONTOP OF YOU!"))]!"), 3.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/rocketpod_fire.ogg', null, 5), 4 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/gau.ogg', null, 5), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/rocketpod_fire.ogg', null, 5), 5.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/gauimpact.ogg', null, 5), 5.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/gauimpact.ogg', null, 5), 5.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, "explosion", null, 5), 6.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/gauimpact.ogg', null, 5), 6.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/rocketpod_fire.ogg', null, 5), 7.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/gauimpact.ogg', null, 5), 7.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, "explosion", null, 5), 8.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/gauimpact.ogg', null, 5), 8.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/gauimpact.ogg', null, 5), 8.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, "bigboom", null, 5), 9 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/gauimpact.ogg', null, 5), 9 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/rocketpod_fire.ogg', null, 5), 9.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/gauimpact.ogg', null, 5), 10 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, "explosion", null, 5), 10 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/gauimpact.ogg', null, 5), 10.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, "explosion", null, 5), 11 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client, 'sound/effects/gauimpact.ogg', null, 5), 11 SECONDS)
+	victim.emote("pain")

@@ -40,7 +40,8 @@
 			/atom/movable/screen/minimap_tool/label,
 			/atom/movable/screen/minimap_tool/clear,
 			/atom/movable/screen/minimap_tool/up,
-			/atom/movable/screen/minimap_tool/down
+			/atom/movable/screen/minimap_tool/down,
+			/atom/movable/screen/minimap_tool/popout,
 		)
 
 	if(has_update)
@@ -115,7 +116,11 @@
 /datum/component/tacmap/ui_data(mob/user)
 	. = ..()
 
-	.["mapRef"] = map_holder?.map_ref
+	if (map_holder != null)
+		.["mapRef"] = map_holder.map_ref
+
+	.["isXeno"] = isxeno(user)
+	.["canChangeZ"] = FALSE
 
 /datum/component/tacmap/ui_close(mob/user)
 	. = ..()

@@ -28,12 +28,29 @@
 #define AALARM_WIRE_AI_CONTROL 4
 #define AALARM_WIRE_AALARM 5
 
+GLOBAL_LIST_INIT(aalarm_wire_descriptions, flatten_numeric_alist(alist(
+		AALARM_WIRE_IDSCAN = "ID scanner",
+		AALARM_WIRE_POWER = "Main power",
+		AALARM_WIRE_SYPHON = "Siphon",
+		AALARM_WIRE_AI_CONTROL = "AI Control",
+		AALARM_WIRE_AALARM = "Air Alarm",
+	)))
+
 #define AALARM_MODE_SCRUBBING 1
 #define AALARM_MODE_REPLACEMENT 2 //like scrubbing, but faster.
 #define AALARM_MODE_PANIC 3 //constantly sucks all air
 #define AALARM_MODE_CYCLE 4 //sucks off all air, then refill and switches to scrubbing
 #define AALARM_MODE_FILL 5 //emergency fill
 #define AALARM_MODE_OFF 6 //Shuts it all down.
+
+GLOBAL_LIST_INIT(aalarm_mode_descriptions, flatten_numeric_alist(alist(
+		AALARM_MODE_SCRUBBING = "Filtering - Scrubs out contaminants",
+		AALARM_MODE_REPLACEMENT = SET_CLASS("Replace Air - Siphons out air while replacing", INTERFACE_BLUE),
+		AALARM_MODE_PANIC = SET_CLASS("Panic - Siphons air out of the room", INTERFACE_RED),
+		AALARM_MODE_CYCLE = SET_CLASS("Cycle - Siphons air before replacing", INTERFACE_RED),
+		AALARM_MODE_FILL = SET_CLASS("Fill - Shuts off scrubbers and opens vents", INTERFACE_GREEN),
+		AALARM_MODE_OFF = SET_CLASS("Off - Shuts off vents and scrubbers", INTERFACE_BLUE),
+	)))
 
 #define AALARM_SCREEN_MAIN 1
 #define AALARM_SCREEN_VENT 2
@@ -726,18 +743,11 @@ Nitrous Oxide
 
 		if (AALARM_SCREEN_MODE)
 			output += "<a href='byond://?src=\ref[src];screen=[AALARM_SCREEN_MAIN]'>Main menu</a><br><b>Air machinery mode for the area:</b><ul>"
-			var/list/modes = list(AALARM_MODE_SCRUBBING   = "Filtering - Scrubs out contaminants",\
-				AALARM_MODE_REPLACEMENT = SET_CLASS("Replace Air - Siphons out air while replacing", INTERFACE_BLUE),\
-				AALARM_MODE_PANIC    = SET_CLASS("Panic - Siphons air out of the room", INTERFACE_RED),\
-				AALARM_MODE_CYCLE    = SET_CLASS("Cycle - Siphons air before replacing", INTERFACE_RED),\
-				AALARM_MODE_FILL = SET_CLASS("Fill - Shuts off scrubbers and opens vents", INTERFACE_GREEN),\
-				AALARM_MODE_OFF  = SET_CLASS("Off - Shuts off vents and scrubbers", INTERFACE_BLUE)
-			)
-			for (var/m=1,m<=length(modes),m++)
+			for (var/m=1,m<=length(GLOB.aalarm_mode_descriptions),m++)
 				if (mode==m)
-					output += "<li><A href='byond://?src=\ref[src];mode=[m]'><b>[modes[m]]</b></A> (selected)</li>"
+					output += "<li><A href='byond://?src=\ref[src];mode=[m]'><b>[GLOB.aalarm_mode_descriptions[m]]</b></A> (selected)</li>"
 				else
-					output += "<li><A href='byond://?src=\ref[src];mode=[m]'>[modes[m]]</A></li>"
+					output += "<li><A href='byond://?src=\ref[src];mode=[m]'>[GLOB.aalarm_mode_descriptions[m]]</A></li>"
 			output += "</ul>"
 
 		if (AALARM_SCREEN_SENSORS)

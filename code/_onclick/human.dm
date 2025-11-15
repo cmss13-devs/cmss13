@@ -156,6 +156,7 @@
 		return . = ..()
 
 	grab_level = GRAB_CARRY
+	ADD_TRAIT(target, TRAIT_CARRIED, TRAIT_SOURCE_CARRY)
 
 	target.Move(user.loc, get_dir(target.loc, user.loc))
 	target.update_transform(TRUE)

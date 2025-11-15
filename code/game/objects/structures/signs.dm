@@ -768,3 +768,12 @@
 	icon_state = "calendar_ua"
 	desc = "Classic office decoration and a place to stare at maniacally, has a vertically placed UA flag and some army symbolics."
 	calendar_faction = FACTION_MARINE
+
+//===================//
+//      Con-Am Faction Symbol     //
+//=================//
+
+/obj/structure/sign/conam
+	name = "\improper Con-Am Poster"
+	desc = "A symbol of the Con-Am corporation. Oozes a proud confidence of Con-Am, despite its mounting real world troubles."
+	icon_state = "conam_symbol"

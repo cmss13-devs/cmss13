@@ -511,3 +511,8 @@ Template
 	icon_state="poster100"
 	name = "We Forge A Path Into the Stars"
 	desc = "The head of a man in a UPPAC EVA suit smiles looking not at you, but up to the right of the poster."
+
+/datum/poster/poster_101
+	icon_state="poster101"
+	name = "Con-Amalagated poster"
+	desc = "A poster for the con-am corporation. It looks far more colorful than the drab looking station it is found on."

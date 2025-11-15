@@ -32,6 +32,12 @@
 	default_ammo = /datum/ammo/bullet/smg/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
+/obj/item/ammo_magazine/smg/m39/practice_ap
+	name = "\improper M39 training magazine (10x20mm)"
+	desc = "A 10x20mm caseless training submachinegun magazine. They use less gunpowder, resulting in way less stopping power and less recoil punch. They count as regular AP magazines on practice targets."
+	default_ammo = /datum/ammo/bullet/smg/practice_ap
+	ammo_band_color = AMMO_BAND_COLOR_TRAINING
+
 /obj/item/ammo_magazine/smg/m39/le
 	name = "\improper M39 LE magazine (10x20mm)"
 	desc = "A 10x20mm caseless light-explosive submachinegun magazine containing special light explosive rounds, designed to rapidly decimate armor, at the cost of vastly reduced damage and penetration."

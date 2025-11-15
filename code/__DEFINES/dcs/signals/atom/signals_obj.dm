@@ -64,3 +64,9 @@
 // from /obj/item/device/binoculars/range/designator/acquire_target()
 #define COMSIG_DESIGNATOR_LASE "comsig_designator_lase"
 #define COMSIG_DESIGNATOR_LASE_OFF "comsig_designator_lase_off"
+
+// from /obj/structure/target/proc/start_practice_health_reset()
+#define COMSIG_SHOOTING_TARGET_DOWN "comsig_shooting_target_down"
+
+// from /obj/structure/shooting_target_rail/Initialize()
+#define COMSIG_TARGET_RAIL_CONNECT_MANAGERS "comsig_target_rail_connect_managers"

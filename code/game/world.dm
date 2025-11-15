@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 	if(!GLOB.RoleAuthority)
 		GLOB.RoleAuthority = new /datum/authority/branch/role()
-		to_world(SPAN_DANGER("\b Job setup complete"))
+		to_world(SPAN_DANGER("\b Job setup complete."))
 
 	initiate_minimap_icons()
 

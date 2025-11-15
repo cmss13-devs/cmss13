@@ -46,21 +46,21 @@
 			if(anchored)
 				var/temp = ""
 				if(width == 1)
-					temp += "It looks like a [SPAN_HELPFUL("wrench")] will unsecure it. "
-				helpmessage += "[temp]You can insert an [SPAN_HELPFUL("airlock circuit")]. "
+					temp += "It looks like a [SPAN_HELPFUL("wrench")] will unsecure it."
+				helpmessage += "[temp]You can insert an [.)]. "
 				if(!glass)
-					helpmessage += "Insert some [SPAN_HELPFUL("glass sheets")] to add windows to it. "
+					helpmessage += "Insert some [SPAN_HELPFUL("glass sheets")] to add windows to it."
 				else if(glass == AIRLOCK_GLASSIN)
-					helpmessage += "You can take out the windows with a [SPAN_HELPFUL("screwdriver")]. "
+					helpmessage += "You can take out the windows with a [SPAN_HELPFUL("screwdriver")]."
 			else
-				helpmessage += "It looks like a [SPAN_HELPFUL("wrench")] will secure it. "
+				helpmessage += "It looks like a [SPAN_HELPFUL("wrench")] will secure it."
 		if(STATE_CIRCUIT)
-			helpmessage += "Add [SPAN_HELPFUL("cable coil")] to the circuit. "
+			helpmessage += "Add [SPAN_HELPFUL("cable coil")] to the circuit."
 		if(STATE_WIRES)
-			helpmessage += "Secure the circuit with a [SPAN_HELPFUL("screwdriver")]. "
+			helpmessage += "Secure the circuit with a [SPAN_HELPFUL("screwdriver")] "
 		if(STATE_SCREWDRIVER)
-			helpmessage += "Use a [SPAN_HELPFUL("Multitool")] to change its type. "
-			helpmessage += "You can [SPAN_HELPFUL("Weld")] it all in place. "
+			helpmessage += "Use a [SPAN_HELPFUL("Multitool")] to change its type "
+			helpmessage += "You can [SPAN_HELPFUL("Weld")] it all in place."
 	helpmessage += "You can name it with a [SPAN_HELPFUL("pen")]."
 	. += SPAN_NOTICE(helpmessage)
 
@@ -206,7 +206,7 @@
 		if(STATE_WIRES)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE("You start securing the circuit"))
+				to_chat(user, SPAN_NOTICE("You start securing the circuit."))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -224,7 +224,7 @@
 				if(airlock_type)
 					update_icon()
 				else
-					to_chat(user, SPAN_WARNING("You must choose a type"))
+					to_chat(user, SPAN_WARNING("You must choose a type."))
 					return
 			if(iswelder(attacking_item))
 				if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))

@@ -117,7 +117,7 @@
 /obj/item/storage/box/syringes
 	name = "box of syringes"
 	desc = "A box full of syringes."
-	desc = "A biohazard alert warning is printed on the box"
+	desc = "A biohazard alert warning is printed on the box."
 	can_hold = list(/obj/item/reagent_container/syringe)
 	icon_state = "syringe"
 	item_state = "syringe"

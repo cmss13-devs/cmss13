@@ -72,7 +72,7 @@
 				//
 			else
 				for(var/mob/O in hearers(src, null))
-					O.show_message(SPAN_NOTICE("Locked In"), SHOW_MESSAGE_AUDIBLE)
+					O.show_message(SPAN_NOTICE("Locked In!"), SHOW_MESSAGE_AUDIBLE)
 				src.locked = L
 				one_time_use = 1
 
@@ -135,7 +135,7 @@
 
 	src.locked = L[desc]
 	for(var/mob/O in hearers(src, null))
-		O.show_message(SPAN_NOTICE("Locked In"), SHOW_MESSAGE_AUDIBLE)
+		O.show_message(SPAN_NOTICE("Locked In!"), SHOW_MESSAGE_AUDIBLE)
 	src.add_fingerprint(usr)
 	return
 

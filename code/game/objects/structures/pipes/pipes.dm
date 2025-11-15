@@ -123,7 +123,7 @@
 			if(W)
 				var/mob/living/carbon/xenomorph/X = user
 				if(!istype(X) || X.hivenumber != W.linked_hive.hivenumber)
-					to_chat(user, SPAN_WARNING("The weeds are blocking the exit of this vent"))
+					to_chat(user, SPAN_WARNING("The weeds are blocking the exit of this vent."))
 					return
 
 		if(ventcrawl_message_busy > world.time)

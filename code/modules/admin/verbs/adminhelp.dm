@@ -292,7 +292,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/send_message_to_external(message, urgent = FALSE)
 	if(urgent)
 		var/extra_message = CONFIG_GET(string/urgent_ahelp_message)
-		to_chat(initiator, SPAN_BOLDNOTICE("Notified admins to prioritize your ticket"))
+		to_chat(initiator, SPAN_BOLDNOTICE("Notified admins to prioritize your ticket."))
 		var/datum/discord_embed/embed = format_embed_discord(message)
 		embed.content = extra_message
 		embed.footer = "This player requested an admin"

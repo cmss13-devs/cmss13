@@ -2,7 +2,7 @@
 /client/proc/toggle_hear_radio()
 	set name = "Show/Hide Radio Chatter"
 	set category = "Preferences.Chat"
-	set desc = "Toggle seeing radio chatter from radios and speakers"
+	set desc = "Toggle seeing radio chatter from radios and speakers."
 	if(!admin_holder)
 		return
 	prefs.toggles_chat ^= CHAT_RADIO
@@ -12,7 +12,7 @@
 /client/proc/toggleadminhelpsound()
 	set name = "Hear/Silence Adminhelps"
 	set category = "Preferences.Sound"
-	set desc = "Toggle hearing a notification when admin PMs are received"
+	set desc = "Toggle hearing a notification when admin PMs are received."
 	if(!admin_holder)
 		return
 	prefs.toggles_sound ^= SOUND_ADMINHELP

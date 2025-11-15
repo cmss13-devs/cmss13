@@ -46,7 +46,7 @@
 				to_chat(O, SPAN_NOTICE("The crate has been [locked ? null : "un"]locked by [user]."))
 		icon_state = locked ? icon_locked : icon_unlocked
 	else
-		to_chat(user, SPAN_NOTICE("Access Denied"))
+		to_chat(user, SPAN_NOTICE("Access Denied!"))
 
 /obj/structure/closet/crate/secure/verb/verb_togglelock()
 	set src in oview(1) // One square distance

@@ -108,7 +108,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			topiclimiter[SECOND_COUNT] = 0
 		topiclimiter[SECOND_COUNT] += 1
 		if (topiclimiter[SECOND_COUNT] > stl)
-			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second"))
+			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second."))
 			return
 
 	// Tgui Topic middleware

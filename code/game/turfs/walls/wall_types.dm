@@ -381,7 +381,7 @@
 
 /turf/closed/wall/mineral
 	name = "mineral wall"
-	desc = "This shouldn't exist"
+	desc = "This shouldn't exist."
 	icon = 'icons/turf/walls/stone.dmi'
 	icon_state = "stone"
 	walltype = WALL_STONE

@@ -290,7 +290,7 @@
 
 /obj/effect/spawner/random/sentry
 	name = "sentry Loot Spawner"
-	desc = "This is a random sentry, for survivors. Remember to set spawn nothing percentage chance in instancing.PriorityQueue"
+	desc = "This is a random sentry, for survivors. Remember to set spawn nothing percentage chance in instancing.PriorityQueue."
 	icon_state = "loot_sentry"
 
 /obj/effect/spawner/random/sentry/item_to_spawn()

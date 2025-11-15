@@ -418,7 +418,7 @@
 					var/obj/item/card/id/dogtag/DT = wear_id
 					if(!DT.dogtag_taken)
 						if(stat == DEAD)
-							to_chat(usr, SPAN_NOTICE("You take [src]'s information tag, leaving the ID tag"))
+							to_chat(usr, SPAN_NOTICE("You take [src]'s information tag, leaving the ID tag."))
 							DT.dogtag_taken = TRUE
 							DT.icon_state = DT.tags_taken_icon
 							var/obj/item/dogtag/D = new(loc)

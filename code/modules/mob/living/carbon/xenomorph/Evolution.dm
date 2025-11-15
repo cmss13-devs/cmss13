@@ -130,7 +130,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			to_chat(src, SPAN_WARNING("There already is a Queen."))
 			return
 		if(!hive.allow_queen_evolve)
-			to_chat(src, SPAN_WARNING("We can't find the strength to evolve into a Queen"))
+			to_chat(src, SPAN_WARNING("We can't find the strength to evolve into a Queen!"))
 			return
 	else if(!can_evolve(castepick, potential_queens))
 		return

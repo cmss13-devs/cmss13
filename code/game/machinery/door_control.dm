@@ -128,7 +128,7 @@
 		return
 
 	if(!allowed(user) && (wires & 1) && !force )
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied!"))
 		flick(initial(icon_state) + "-denied",src)
 		return
 
@@ -175,7 +175,7 @@
 		return
 
 	if(!allowed(user) && (wires & 1) && !force)
-		to_chat(user, SPAN_DANGER("Access Denied"))
+		to_chat(user, SPAN_DANGER("Access Denied!"))
 		flick(initial(icon_state) + "-denied",src)
 		return
 

@@ -1,0 +1,6 @@
+author: "hry-gh"
+delete-after: True
+changes:
+  - server: "added the ability to configure a ckey that will be automatically moved to observe the most interesting players"
+  - server: "added additional world/Topic endpoints to interface with CMTV"
+  - server: "added the ability to link your Twitch account to the game"

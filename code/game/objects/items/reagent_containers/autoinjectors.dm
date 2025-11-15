@@ -340,13 +340,15 @@
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5
+	autoinjector_type = "+stimpack_custom"
 	icon_state = "stimpack"
 	autoinjector_type = null
 	skilllock = SKILL_MEDICAL_DEFAULT
-	display_maptext = TRUE
+	display_maptext = FALSE //corporate secret
 	maptext_label = "Uz"
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/update_icon()
+	. = ..()
 	icon_state = uses_left ? "stimpack" : "stimpack0"
 	if((isstorage(loc) || ismob(loc)) && display_maptext)
 		maptext = SPAN_LANGCHAT("[maptext_label]")
@@ -370,7 +372,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "crystal"
 	injectSFX = 'sound/items/pred_crystal_inject.ogg'
-	autoinjector_type = null
+	autoinjector_type = "thwei"
 	injectVOL = 15
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE
 	volume = REAGENTS_OVERDOSE
@@ -389,6 +391,12 @@
 /obj/item/reagent_container/hypospray/autoinjector/yautja/proc/remove_crystal()
 	visible_message(SPAN_DANGER("[src] collapses into nothing."))
 	qdel(src)
+
+/obj/item/reagent_container/hypospray/autoinjector/yautja/update_icon()
+	if(uses_left && autoinjector_type) //does not apply a colored fill overlay like the rest of the autoinjectors
+		var/image/filling = image('icons/obj/items/hunter/pred_gear.dmi', src, "[autoinjector_type]_[uses_left]")
+		overlays += filling
+		return
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless
 	name = "first-aid autoinjector"

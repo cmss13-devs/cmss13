@@ -1,4 +1,0 @@
-author: "FebrezeNinja"
-delete-after: True
-changes:
-  - bugfix: "Fixes an instance of medical item duping"

@@ -209,80 +209,80 @@
 		visible_message(SPAN_DANGER("[user] destroys [src]."))
 		deconstruct(FALSE)
 
-/obj/structure/closet/attackby(obj/item/W, mob/living/user)
-	if(src.opened)
-		if(istype(W, /obj/item/grab))
+/obj/structure/closet/attackby(obj/item/attacking_item, mob/living/user, list/mods)
+	if(opened)
+		if(istype(attacking_item, /obj/item/grab))
 			if(isxeno(user))
-				return
-			var/obj/item/grab/G = W
-			if(G.grabbed_thing)
-				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet
-			return
-		if(W.flags_item & ITEM_ABSTRACT)
-			return 0
+				return FALSE
+			var/obj/item/grab/grab = attacking_item
+			if(grab.grabbed_thing)
+				MouseDrop_T(grab.grabbed_thing, user) //act like they were dragged onto the closet
+			return FALSE
+		if(attacking_item.flags_item & ITEM_ABSTRACT)
+			return FALSE
 		if(material == MATERIAL_METAL)
-			if(iswelder(W))
-				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+			if(iswelder(attacking_item))
+				if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
 					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-					return
-				var/obj/item/tool/weldingtool/WT = W
-				if(!WT.isOn())
-					to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
-					return
-				if(!WT.remove_fuel(0 ,user))
+					return FALSE
+				var/obj/item/tool/weldingtool/torch = attacking_item
+				if(!torch.isOn())
+					to_chat(user, SPAN_WARNING("[torch] needs to be on!"))
+					return FALSE
+				if(!torch.remove_fuel(0 ,user))
 					to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
-					return
+					return FALSE
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
-				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					return
-				new /obj/item/stack/sheet/metal(src.loc)
-				for(var/mob/M as anything in viewers(src))
-					M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), SHOW_MESSAGE_VISIBLE, "You hear welding.", SHOW_MESSAGE_AUDIBLE)
+				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return FALSE
+				new /obj/item/stack/sheet/metal(loc)
+				visible_message(SPAN_NOTICE("[src] has been cut apart by [user] with [torch]."),
+				SPAN_NOTICE("You hear welding."))
 				qdel(src)
-				return
+				return FALSE
 		if(material == MATERIAL_WOOD)
-			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
 				playsound(src, 'sound/effects/woodhit.ogg')
-				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					return
-				new /obj/item/stack/sheet/wood(src.loc)
-				user.visible_message(SPAN_NOTICE("[user] has pried apart [src] with [W]."), "You pry apart [src].")
+				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+					return FALSE
+				new /obj/item/stack/sheet/wood(loc)
+				user.visible_message(SPAN_NOTICE("[user] has pried apart [src] with [attacking_item]."), "You pry apart [src].")
 				qdel(src)
-				return
-		user.drop_inv_item_to_loc(W,loc)
+				return FALSE
+		user.drop_inv_item_to_loc(attacking_item,loc)
 
 	//If we're trying to label a crate, label it, don't open it. The code that lets a hand labeler label crates but not lockers is in misc_tools.dm
-	else if(istype(W, /obj/item/tool/hand_labeler))
-		return
-	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))
-		return
-	else if(iswelder(W))
+	else if(istype(attacking_item, /obj/item/tool/hand_labeler))
+		return FALSE
+	else if(istype(attacking_item, /obj/item/packageWrap) || istype(attacking_item, /obj/item/explosive/plastic))
+		return FALSE
+	else if(iswelder(attacking_item))
 		if(material != MATERIAL_METAL && material != MATERIAL_PLASTEEL)
 			to_chat(user, SPAN_WARNING("You cannot weld [material]!"))
 			return FALSE//Can't weld wood/plastic.
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+		if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return FALSE
-		var/obj/item/tool/weldingtool/WT = W
-		if(!WT.isOn())
-			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
+		var/obj/item/tool/weldingtool/torch = attacking_item
+		if(!torch.isOn())
+			to_chat(user, SPAN_WARNING("[torch] needs to be on!"))
 			return FALSE
-		if(!WT.remove_fuel(0, user))
-			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
+		if(!torch.remove_fuel(1, user))
+			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return FALSE
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)
 		if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return FALSE
 		welded = !welded
 		update_icon()
-		for(var/mob/M as anything in viewers(src))
-			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), SHOW_MESSAGE_VISIBLE, "You hear welding.", SHOW_MESSAGE_AUDIBLE)
+		visible_message(SPAN_NOTICE("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."),
+		SPAN_NOTICE("You hear welding."))
 	else
 		if(isxeno(user))
 			var/mob/living/carbon/xenomorph/opener = user
-			src.attack_alien(opener)
+			attack_alien(opener)
 			return FALSE
-		src.attack_hand(user)
+		attack_hand(user)
 	return TRUE
 
 /obj/structure/closet/MouseDrop_T(atom/movable/O, mob/user)

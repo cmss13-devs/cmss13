@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Moved the preference for using playtime perks to settings tab instead of xenos tab."
-  - code_imp: "Added backend functionality for SDTimeAward community award to function without being in the staff list."
-  - admin: "Added a preference for staff to decide if they use their own playtime for ranks or not."

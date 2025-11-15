@@ -109,7 +109,8 @@
 
 	if(!.)
 		return FALSE
-
+	if(owner.action_busy)
+		return FALSE
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/datum/behavior_delegate/spitter_venator/delegate = xeno.behavior_delegate
 	if(delegate.acid_stored >= delegate.max_acid_stored)

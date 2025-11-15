@@ -614,6 +614,12 @@
 		if(JOB_SQUAD_TEAM_LEADER)
 			assignment = JOB_SQUAD_TEAM_LEADER
 			target_mob.important_radio_channels += radio_freq
+			for(var/lead in 1 to roles_cap[JOB_SQUAD_TEAM_LEADER])
+				if(!fireteam_leaders["FT[lead]"])
+					assign_fireteam("FT[lead]", target_mob)
+					assign_ft_leader("FT[lead]", target_mob)
+					break
+
 		if(JOB_SQUAD_SMARTGUN)
 			assignment = JOB_SQUAD_SMARTGUN
 		if(JOB_SQUAD_LEADER)
@@ -814,6 +820,10 @@
 	old_lead.update_inv_wear_suit()
 	to_chat(old_lead, FONT_SIZE_BIG(SPAN_BLUE("You're no longer the [squad_type] Leader for [src]!")))
 
+	var/obj/item/device/radio/headset/earpiece = old_lead.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_SL
+
 //Not a safe proc. Returns null if squads or jobs aren't set up.
 //Mostly used in the marine squad console in marine_consoles.dm.
 /proc/get_squad_by_name(text)
@@ -876,6 +886,11 @@
 			to_chat(fireteam_leaders[fireteam], FONT_SIZE_BIG(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was assigned to your fireteam.")))
 		if(H.stat == CONSCIOUS)
 			to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned to [fireteam].")))
+
+	var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_FTL
+
 	H.hud_set_squad()
 
 /datum/squad/proc/unassign_fireteam(mob/living/carbon/human/H, upd_ui = TRUE)
@@ -890,6 +905,10 @@
 		to_chat(fireteam_leaders[ft], FONT_SIZE_HUGE(SPAN_BLUE("[H.mind ? H.comm_title : ""] [H] was unassigned from your fireteam.")))
 	if(!H.stat)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were unassigned from [ft].")))
+
+	var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_SL
 	H.hud_set_squad()
 
 /datum/squad/proc/assign_ft_leader(fireteam, mob/living/carbon/human/H, upd_ui = TRUE)
@@ -903,6 +922,10 @@
 	if(H.stat == CONSCIOUS)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were assigned as [fireteam] Team Leader.")))
 
+	var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_SL
+
 /datum/squad/proc/unassign_ft_leader(fireteam, clear_group_id, upd_ui = TRUE)
 	if(!fireteam_leaders[fireteam])
 		return
@@ -915,6 +938,11 @@
 	if(!H.stat)
 		to_chat(H, FONT_SIZE_HUGE(SPAN_BLUE("You were unassigned as [fireteam] Team Leader.")))
 
+	var/obj/item/device/radio/headset/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset)
+	if(earpiece)
+		earpiece.locate_setting = TRACKER_FTL
+
+// this proc is defunct too
 /datum/squad/proc/unassign_all_ft_leaders()
 	for(var/team in fireteam_leaders)
 		if(fireteam_leaders[team])
@@ -1001,6 +1029,7 @@
 	return
 
 //Managing MIA and KIA statuses for marines
+//this is currently defunct, but theres probably something to salvage here
 /datum/squad/proc/change_squad_status(mob/living/carbon/human/target_mob)
 	if(target_mob == squad_leader)
 		return //you can't mark yourself KIA

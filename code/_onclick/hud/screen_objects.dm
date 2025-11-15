@@ -471,8 +471,7 @@
 	if(!istype(user))
 		return
 	var/obj/item/device/radio/headset/earpiece = user.get_type_in_ears(/obj/item/device/radio/headset)
-	var/has_access = earpiece.misc_tracking || (user.assigned_squad && user.assigned_squad.radio_freq == earpiece.frequency)
-	if(!istype(earpiece) || !earpiece.has_hud || !has_access)
+	if(!istype(earpiece) || !earpiece.has_hud)
 		to_chat(user, SPAN_WARNING("Unauthorized access detected."))
 		return
 	if(mods[SHIFT_CLICK])

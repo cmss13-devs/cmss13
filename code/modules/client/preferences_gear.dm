@@ -1253,39 +1253,36 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	category = "Civilian only (restricted)"
 	allowed_origins = list(ORIGIN_CIVILIAN)
 
-/datum/gear/civilian/patch
-	display_name = "Weyland-Yutani shoulder patch, black"
-	path = /obj/item/clothing/accessory/patch/wy
-	fluff_cost = 1
-	slot = WEAR_IN_ACCESSORY
+///Commented out until we have a factional system to restrict these properly
+// /datum/gear/civilian/patch
+// 	display_name = "Weyland-Yutani shoulder patch, black"
+// 	path = /obj/item/clothing/accessory/patch/wy
+// 	fluff_cost = 1
+// 	slot = WEAR_IN_ACCESSORY
 
-/datum/gear/civilian/patch/wysquare
-	display_name = "Weyland-Yutani shoulder patch"
-	path = /obj/item/clothing/accessory/patch/wysquare
+// /datum/gear/civilian/patch/wysquare
+// 	display_name = "Weyland-Yutani shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/wysquare
 
-/datum/gear/civilian/patch/wy_white
-	display_name = "Weyland-Yutani shoulder patch, white"
-	path = /obj/item/clothing/accessory/patch/wy_white
+// /datum/gear/civilian/patch/wy_white
+// 	display_name = "Weyland-Yutani shoulder patch, white"
+// 	path = /obj/item/clothing/accessory/patch/wy_white
 
-/datum/gear/civilian/patch/wy_fury
-	display_name = "Weyland-Yutani Fury '161' patch"
-	path = /obj/item/clothing/accessory/patch/wyfury
+// /datum/gear/civilian/patch/wy_fury
+// 	display_name = "Weyland-Yutani Fury '161' patch"
+// 	path = /obj/item/clothing/accessory/patch/wyfury
 
-/datum/gear/civilian/patch/twepatch
-	display_name = "Three World Empire shoulder patch"
-	path = /obj/item/clothing/accessory/patch/twe
+// /datum/gear/civilian/patch/twepatch
+// 	display_name = "Three World Empire shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/twe
 
-/datum/gear/civilian/patch/cec
-	display_name = "Cosmos Exploration Corps shoulder patch"
-	path = /obj/item/clothing/accessory/patch/cec_patch
+// /datum/gear/civilian/patch/cec
+// 	display_name = "Cosmos Exploration Corps shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/cec_patch
 
-/datum/gear/civilian/patch/clf
-	display_name = "Colonial Liberation Front shoulder patch"
-	path = /obj/item/clothing/accessory/patch/clf_patch
-
-/datum/gear/civilian/patch/hyperdyne
-	display_name = "Hyperdyne Corporation shoulder patch"
-	path = /obj/item/clothing/accessory/patch/hyperdyne_patch
+// /datum/gear/civilian/patch/hyperdyne
+// 	display_name = "Hyperdyne Corporation shoulder patch"
+// 	path = /obj/item/clothing/accessory/patch/hyperdyne_patch
 
 // Misc Headwear
 

@@ -590,7 +590,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(.)
 		return
 
-	var/mob/user = usr
+	var/mob/user = ui.user
 	switch(action)
 		if("pick_squad")
 			if(current_squad)
@@ -614,6 +614,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					current_squad.send_squad_message("Your Overwatch officer is: [operator.name].", displayed_icon = src)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Tactical data for squad '[current_squad]' loaded. All tactical functions initialized.")]")
 				return TRUE
+
 		if("logout")
 			if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
 				for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
@@ -647,88 +648,88 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("message")
 			if(current_squad)
-				var/input = sanitize_control_chars(stripped_input(user, "Please write a message to announce to the squad:", "Squad Message"))
+				var/input = sanitize_control_chars(tgui_input_text(user, "Please write a message to announce to the squad:", "Squad Message"))
 				if(input)
-					current_squad.send_message(input, 1) //message, adds username
-					current_squad.send_maptext(input, "Squad Message:")
+					current_squad.transmit_alert("", input, "", "Squad Message:", user) //message, adds username
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message '[input]' sent to all Marines of squad '[current_squad]'.")]")
 					log_overwatch("[key_name(user)] sent '[input]' to squad [current_squad].")
 
 		if("sl_message")
 			if(current_squad)
-				var/input = sanitize_control_chars(stripped_input(user, "Please write a message to announce to the squad leader:", "SL Message"))
+				var/input = sanitize_control_chars(tgui_input_text(user, "Please write a message to announce to the squad leader:", "SL Message"))
 				if(input)
-					current_squad.send_message(input, 1, 1) //message, adds username, only to leader
-					current_squad.send_maptext(input, "Squad Leader Message:", 1)
+					current_squad.transmit_alert("", input, "", "Squad Leader Message:", user, only_leader=TRUE) //message, adds username, only to leader
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message '[input]' sent to Squad Leader [current_squad.squad_leader] of squad '[current_squad]'.")]")
 					log_overwatch("[key_name(user)] sent '[input]' to Squad Leader [current_squad.squad_leader] of squad [current_squad].")
 
-		if("check_primary")
+		if("remind_primary")
 			if(current_squad) //This is already checked, but ehh.
 				if(current_squad.primary_objective)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Reminding '[current_squad]' of primary objectives: [current_squad.primary_objective].")]")
-					current_squad.send_message("Your primary objective is '[current_squad.primary_objective]'. See Status pane for details.")
-					current_squad.send_maptext(current_squad.primary_objective, "Primary Objective:")
+					current_squad.remind_objective(primary=TRUE)
 
-		if("check_secondary")
+		if("remind_secondary")
 			if(current_squad) //This is already checked, but ehh.
 				if(current_squad.secondary_objective)
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Reminding '[current_squad]' of secondary objectives: [current_squad.secondary_objective].")]")
-					current_squad.send_message("Your secondary objective is '[current_squad.secondary_objective]'. See Status pane for details.")
-					current_squad.send_maptext(current_squad.secondary_objective, "Secondary Objective:")
+					current_squad.remind_objective(primary=FALSE)
 
 		if("set_primary")
-			var/input = sanitize_control_chars(stripped_input(usr, "What will be the squad's primary objective?", "Primary Objective"))
+			var/input = sanitize_control_chars(tgui_input_text(user, "What will be the squad's primary objective?", "Primary Objective"))
 			var/datum/squad/target_squad = current_squad
 			if(params["target_squad_ref"])
 				target_squad = locate(params["target_squad_ref"])
 			if(target_squad && input)
-				target_squad.primary_objective = "[input] ([worldtime2text()])"
-				target_squad.send_message("Your primary objective has been changed to '[input]'. See Status pane for details.")
-				target_squad.send_maptext(input, "Primary Objective Updated:")
+				target_squad.transmit_objective(input, primary=TRUE)
 				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Primary objective of squad '[target_squad]' set to '[input]'.")]")
-				log_overwatch("[key_name(usr)] set [target_squad]'s primary objective to '[input]'.")
+				log_overwatch("[key_name(user)] set [target_squad]'s primary objective to '[input]'.")
 				return TRUE
 
 		if("set_secondary")
-			var/input = sanitize_control_chars(stripped_input(usr, "What will be the squad's secondary objective?", "Secondary Objective"))
+			var/input = sanitize_control_chars(tgui_input_text(user, "What will be the squad's secondary objective?", "Secondary Objective"))
 			var/datum/squad/target_squad = current_squad
 			if(params["target_squad_ref"])
 				target_squad = locate(params["target_squad_ref"])
-			if(input)
-				target_squad.secondary_objective = input + " ([worldtime2text()])"
-				target_squad.send_message("Your secondary objective has been changed to '[input]'. See Status pane for details.")
-				target_squad.send_maptext(input, "Secondary Objective Updated:")
+			if(target_squad && input)
+				target_squad.transmit_objective(input, primary=FALSE)
 				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Secondary objective of squad '[target_squad]' set to '[input]'.")]")
-				log_overwatch("[key_name(usr)] set [target_squad]'s secondary objective to '[input]'.")
+				log_overwatch("[key_name(user)] set [target_squad]'s secondary objective to '[input]'.")
 				return TRUE
+
 		if("replace_lead")
 			if(!params["ref"])
 				return
 			change_lead(user, params["ref"])
+			return TRUE
 
 		if("insubordination")
 			mark_insubordination()
+			return TRUE
+
 		if("transfer_marine")
 			transfer_squad()
+			return TRUE
 
 		if("change_locations_ignored")
 			switch(z_hidden)
 				if(HIDE_NONE)
 					z_hidden = HIDE_ALMAYER
-					to_chat(user, "[icon2html(src, usr)] [SPAN_NOTICE("Marines on the Almayer are now hidden.")]")
+					to_chat(user, "[icon2html(src, user)] [SPAN_NOTICE("Marines on the Almayer are now hidden.")]")
 				if(HIDE_ALMAYER)
 					z_hidden = HIDE_GROUND
-					to_chat(user, "[icon2html(src, usr)] [SPAN_NOTICE("Marines on the ground are now hidden.")]")
+					to_chat(user, "[icon2html(src, user)] [SPAN_NOTICE("Marines on the ground are now hidden.")]")
 				else
 					z_hidden = HIDE_NONE
-					to_chat(user, "[icon2html(src, usr)] [SPAN_NOTICE("No location is ignored anymore.")]")
+					to_chat(user, "[icon2html(src, user)] [SPAN_NOTICE("No location is ignored anymore.")]")
+			return TRUE
+
 		if("tacmap_unpin")
 			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 			if(user in tacmap_component.interactees)
 				tacmap_component.on_unset_interaction(user)
 			else
 				tacmap_component.show_tacmap(user)
+
 		if("dropbomb")
 			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
 				return
@@ -736,9 +737,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			y_bomb = text2num(params["y"])
 			z_bomb = text2num(params["z"])
 			if(current_orbital_cannon.is_disabled)
-				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
+				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
 			else if(!COOLDOWN_FINISHED(current_orbital_cannon, ob_firing_cooldown))
-				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
+				to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again! Please wait [COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)/10] seconds.")]")
 			else
 				handle_bombard(user)
 
@@ -761,6 +762,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				popleft(saved_coordinates)
 			saved_coordinates += list(list("x" = text2num(params["x"]), "y" = text2num(params["y"]), "z" = text2num(params["z"])))
 			return TRUE
+
 		if("change_coordinate_comment")
 			if(!params["index"] || !params["comment"])
 				return
@@ -817,6 +819,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 						disconnect_holder()
 					cam = new_cam
 					connect_holder(new_holder)
+
 		if("change_operator")
 			if(operator != user)
 				if(operator && isSilicon(operator))
@@ -830,13 +833,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(!current_squad || current_squad.assume_overwatch(user))
 					operator = user
 				if(isSilicon(user))
-					to_chat(user, "[icon2html(src, usr)] [SPAN_BOLDNOTICE("Overwatch system AI override protocol successful.")]")
+					to_chat(user, "[icon2html(src, user)] [SPAN_BOLDNOTICE("Overwatch system AI override protocol successful.")]")
 					current_squad?.send_squad_message("Attention. [operator.name] has engaged overwatch system control override.", displayed_icon = src)
 				else
 					var/mob/living/carbon/human/human = operator
 					var/obj/item/card/id/ID = human.get_idcard()
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.")]")
 					current_squad?.send_squad_message("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].", displayed_icon = src)
+				return TRUE
 
 		// groundside ops functions
 
@@ -874,7 +878,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				current_squad = locate(params["squad"])
 
 		if("announce")
-			var/mob/living/carbon/human/human_user = usr	// does not use operator, in case they are not operating, and cannot be operated by another operator, on behalf of the operator
+			var/mob/living/carbon/human/human_user = user	// does not use operator, in case they are not operating, and cannot be operated by another operator, on behalf of the operator
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			var/announcement_type = params["announcement_type"]
@@ -888,23 +892,23 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
 				return FALSE
 
-			if(usr.client.prefs.muted & MUTE_IC)
-				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+			if(user.client.prefs.muted & MUTE_IC)
+				to_chat(user, SPAN_DANGER("You cannot send Announcements (muted)."))
 				return
 
 			if((!COOLDOWN_FINISHED(src, cooldown_message) && announcement_type == "groundside") || (!COOLDOWN_FINISHED(src, cooldown_shipside_message) && announcement_type == "shipside"))
-				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
+				to_chat(user, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 				return FALSE
-			if(announcement_faction != FACTION_MARINE && usr.faction != announcement_faction)
-				to_chat(usr, SPAN_WARNING("Access denied."))
+			if(announcement_faction != FACTION_MARINE && user.faction != announcement_faction)
+				to_chat(user, SPAN_WARNING("Access denied."))
 				return
-			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-			if(!input || !(usr in dview(1, src)))
+			var/input = stripped_multiline_input(user, "Please write a message to announce to the station crew.", "Priority Announcement", "")
+			if(!input || !(user in dview(1, src)))
 				return FALSE
 
 			var/signed = null
-			if(ishuman(usr))
-				var/mob/living/carbon/human/human = usr
+			if(ishuman(user))
+				var/mob/living/carbon/human/human = user
 				var/obj/item/card/id/id = human.get_idcard()
 				if(id)
 					var/paygrade = get_paygrades(id.paygrade, FALSE, human.gender)
@@ -917,12 +921,12 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					COOLDOWN_START(src, cooldown_shipside_message, COOLDOWN_COMM_MESSAGE)
 				else
 					marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
-					message_admins("[key_name(usr)] has made a command announcement.")
-					log_announcement("[key_name(usr)] has announced the following: [input]")
+					message_admins("[key_name(user)] has made a command announcement.")
+					log_announcement("[key_name(user)] has announced the following: [input]")
 					COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
 
 		if("selectlz")
-			SSticker.mode.pick_a_lz(usr)
+			SSticker.mode.pick_a_lz(user)
 
 		if("messageUSCM")
 			if(!COOLDOWN_FINISHED(src, cooldown_central))
@@ -941,7 +945,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			open_medal_panel(user, src)
 
 		if("activate_echo")
-			var/mob/living/carbon/human/human_user = usr
+			var/mob/living/carbon/human/human_user = user
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
 			if(!istype(idcard))
@@ -954,16 +958,16 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
 				return FALSE
 
-			var/reason = strip_html(input(usr, "What is the purpose of Echo Squad?", "Activation Reason"))
+			var/reason = strip_html(input(user, "What is the purpose of Echo Squad?", "Activation Reason"))
 			if(!reason)
 				return
-			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return
+			if(alert(user, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return
 			var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 			if(!echo_squad)
 				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
 				return
 			echo_squad.engage_squad(TRUE)
-			message_admins("[key_name(usr)] activated Echo Squad for '[reason]'.")
+			message_admins("[key_name(user)] activated Echo Squad for '[reason]'.")
 
 		if("distress")
 			if(!SSticker.mode)
@@ -1402,6 +1406,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/ob_name = lowertext(current_orbital_cannon.tray.warhead.name)
 	var/mutable_appearance/warhead_appearance = mutable_appearance(current_orbital_cannon.tray.warhead.icon, current_orbital_cannon.tray.warhead.icon_state)
 	notify_ghosts(header = "Bombardment Inbound", message = "\A [ob_name] targeting [get_area(T)] has been fired!", source = T, alert_overlay = warhead_appearance, extra_large = TRUE)
+
+	SScmtv.spectate_event("Orbital Bombardment", T, 40 SECONDS, zoom_out = TRUE)
 
 	/// Project ARES interface log.
 	log_ares_bombardment(user.name, ob_name, "Bombardment fired at X[x_bomb], Y[y_bomb], Z[z_bomb] in [get_area(T)]")

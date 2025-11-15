@@ -141,3 +141,47 @@
       sign.
   jupyterkat:
   - bugfix: fixed character preview hairs always being black
+2025-11-12:
+  Puckaboo2:
+  - spellcheck: Renames some chemical properties to sound more scientifi. Balding,
+      Fluffing, Paining, Relaxing, and Sedating have been changed to Atrichogenic,
+      Trichogenic, Neuropathic, Antispasmodic, and Hypnotic,  with their codes being
+      ATR. TRI, NPT, ASP. And HYP.
+2025-11-13:
+  Drathek:
+  - bugfix: Fixed various material exploits when deconstructing walls, reinforced
+      floors, computer frames, airlocks, tcoms, closets, fences, tables, windoors,
+      window frames, desk bell, apcs, power monitors, and SMES
+  - code_imp: Cleaned up and reworked some logic in various attackby procs that handle
+      deconstruction
+  - rscadd: APC breakers can now stop idle power draw
+  - bugfix: Fixed hopefully all cases where areas would demand negative amounts of
+      power
+  - bugfix: Fixed a possibility of power generators adding double power to the grid
+  - bugfix: Fixed disabling charging not offering power put aside for charging back
+      to the grid
+  - bugfix: APCs no longer display charging when main breaker is off
+  - bugfix: Predator ship is now its own powenet
+  - bugfix: Power monitor computer now will connect to powernet on construction
+  - bugfix: Nightmare inserts that change area now perform Exited and Entered for
+      the area
+  - ui: Added power generation information and whether the APC is shorted to APC panel
+  - ui: Polished the legacy power monitor interface (ought to be TGUIfied before long)
+  - soundadd: Repairing generators now make soundeffects at the start of the do_after
+      too
+  - code_imp: Added additional unit testing for areas and APCs with negative power
+  - code_imp: Cleaned up defines in APC file
+2025-11-14:
+  MistChristmas:
+  - bugfix: Rangefinder non-TGUI mode includes Z level info
+  Nihisohel:
+  - rscadd: You can now tactically reload with shotguns and revolvers, looping until
+      the magazine is filled or interrupted.
+  - qol: You can close a revolvers cylinder with the unique action. Provided it is
+      open.
+  - qol: You can now insert bullet handfuls back into the chamber, provided it is
+      empty.
+  - qol: Cocking the bullet now tries to put it to your hand, if empty.
+  Zenith:
+  - bugfix: fixed vehicle back door sprites & CLF van door pathing. Now you can click
+      the full tile.

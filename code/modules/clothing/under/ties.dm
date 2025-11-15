@@ -472,7 +472,7 @@
 
 /obj/item/clothing/accessory/armband/mp
 	name = "MP armband"
-	desc = "An armband worn by USCM Military Police officers on military installations. It is usually also worn by those from the provost office"
+	desc = "An armband worn by USCM Military Police officers on military installations. It is usually also worn by those from the provost office."
 	icon_state = "armband_mp"
 
 //patches
@@ -1259,7 +1259,7 @@
 
 /obj/item/clothing/accessory/storage/holster/armpit
 	name = "shoulder holster"
-	desc = "A worn-out handgun holster. Perfect for concealed carry"
+	desc = "A worn-out handgun holster. Perfect for concealed carry."
 	icon_state = "holster"
 
 /obj/item/clothing/accessory/storage/holster/waist

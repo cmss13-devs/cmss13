@@ -121,7 +121,7 @@
 // Traffic
 /obj/structure/machinery/colony_floodlight/traffic
 	name = "traffic light"
-	desc = "A traffic light"
+	desc = "A traffic light."
 	icon = 'icons/obj/structures/props/streetlights.dmi'
 	icon_state = "trafficlight"
 	health = 200
@@ -190,7 +190,7 @@
 /obj/structure/machinery/colony_floodlight/engineer_circular
 	name = "circular light"
 	icon_state = "engineerlight_off"
-	desc = "A huge circular light"
+	desc = "A huge circular light."
 	icon = 'icons/obj/structures/props/engineers/light.dmi'
 	density = FALSE
 	unslashable = TRUE

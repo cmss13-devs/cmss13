@@ -147,7 +147,7 @@
 	AddElement(/datum/element/corp_label/souta)
 
 /obj/structure/machinery/vending/cola/research
-	desc = "A softdrink vendor provided by Souto Soda Company, Havana. This one is bound to the Research Budget card and doesn't require swiping"
+	desc = "A softdrink vendor provided by Souto Soda Company, Havana. This one is bound to the Research Budget card and doesn't require swiping.
 	products = list(
 		/obj/item/reagent_container/food/drinks/cans/souto/classic = 10,
 		/obj/item/reagent_container/food/drinks/cans/souto/cherry = 10,

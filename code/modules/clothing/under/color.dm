@@ -55,25 +55,25 @@
 
 /obj/item/clothing/under/color/lightbrown
 	name = "lightbrown jumpsuit"
-	desc = "lightbrown"
+	desc = "A light brown jumpsuit."
 	icon_state = "lightbrown"
 	worn_state = "lightbrown"
 
 /obj/item/clothing/under/color/brown
 	name = "brown jumpsuit"
-	desc = "brown"
+	desc = "A brown jumpsuit."
 	icon_state = "brown"
 	worn_state = "brown"
 
 /obj/item/clothing/under/color/lightred
 	name = "lightred jumpsuit"
-	desc = "lightred"
+	desc = "A bright, red jumpsuit."
 	icon_state = "lightred"
 	worn_state = "lightred"
 
 /obj/item/clothing/under/color/darkred
 	name = "darkred jumpsuit"
-	desc = "darkred"
+	desc = "A dark, red jumpsuit."
 	icon_state = "darkred"
 	worn_state = "darkred"
 

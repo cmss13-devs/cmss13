@@ -394,7 +394,7 @@
 //industructible props
 /obj/structure/prop/invuln
 	name = "instanceable object"
-	desc = "this needs to be defined by a coder"
+	desc = "this needs to be defined by a coder."
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "structure_lattice"
 	explo_proof = TRUE
@@ -921,7 +921,7 @@
 
 /obj/structure/prop/invuln/remote_console_pod
 	name = "Remote Console Pod"
-	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation"
+	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation."
 	icon = 'icons/obj/structures/droppod_32x64.dmi'
 	icon_state = "techpod_open"
 	layer = DOOR_CLOSED_LAYER

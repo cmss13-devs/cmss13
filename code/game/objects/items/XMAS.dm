@@ -3,7 +3,7 @@
 
 /obj/item/m_gift //Marine Gift
 	name = "Present"
-	desc = "One, standard issue USCM Present"
+	desc = "One, standard issue USCM Present."
 	icon = 'icons/obj/items/gifts.dmi'
 	icon_state = "gift1"
 	item_state = "gift1"

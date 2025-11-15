@@ -127,7 +127,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /obj/item/reagent_container/food/drinks/golden_cup
-	desc = "A golden cup"
+	desc = "A golden cup. You feel fancy holding this."
 	name = "golden cup"
 	icon_state = "golden_cup"
 	item_state = "golden_cup" //nope :(? nope my ass

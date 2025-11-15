@@ -2,7 +2,7 @@
 
 /obj/structure/machinery/computer/secure_data//TODO:SANITY
 	name = "Security Records"
-	desc = "Used to view and edit personnel's security records"
+	desc = "Used to view and edit personnel's security records."
 	icon_state = "security"
 	req_access = list(ACCESS_MARINE_BRIG)
 	circuit = /obj/item/circuitboard/computer/secure_data

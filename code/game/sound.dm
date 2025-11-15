@@ -478,7 +478,7 @@
 
 /client/proc/sound_debug_query()
 	set name = "Dump Playing Client Sounds"
-	set desc = "dumps info about locally, playing sounds"
+	set desc = "dumps info about locally, playing sounds."
 	set category = "Debug"
 
 	for(var/sound/soundin in SoundQuery())

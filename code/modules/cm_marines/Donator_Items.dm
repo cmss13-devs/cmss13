@@ -867,7 +867,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/ningajai
 	name = "Anthony's helmet"
-	desc = "COG helmet owned by Anthony Carmine"
+	desc = "COG helmet owned by Anthony Carmine."
 	icon_state = "anthonycarmine"
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
@@ -1607,7 +1607,7 @@
 
 /obj/item/clothing/glasses/fluff/sadokist //CKEY=sadokist
 	name = "Tanya's Optics"
-	desc = "Custom Optics, owned by Tanya Edenia"
+	desc = "Custom Optics, owned by Tanya Edenia."
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',

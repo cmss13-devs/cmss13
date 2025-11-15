@@ -12,7 +12,7 @@
 	/// Necessary because of how Crossed is called before Moved
 	var/list/entered_bloody_turf
 
-/datum/element/bloody_feet/Attach(datum/target, dry_time, obj/item/clothing/shoes, steps, bcolor)
+/datum/element/bloody_feet/Attach(datum/target, dry_time, steps, bcolor)
 	. = ..()
 	if(!iscarbon(target))
 		return ELEMENT_INCOMPATIBLE
@@ -27,9 +27,11 @@
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved), override = TRUE)
 	RegisterSignal(target, COMSIG_HUMAN_BLOOD_CROSSED, PROC_REF(blood_crossed), override = TRUE)
 	RegisterSignal(target, COMSIG_HUMAN_CLEAR_BLOODY_FEET, PROC_REF(clear_blood), override = TRUE)
-	if(shoes)
-		LAZYSET(target_shoes, target, shoes)
-		RegisterSignal(shoes, COMSIG_ITEM_DROPPED, PROC_REF(on_shoes_removed), override = TRUE)
+	if(ishuman(target))
+		var/mob/living/carbon/human/human_target = target
+		if(human_target.shoes)
+			LAZYSET(target_shoes, target, human_target.shoes)
+			RegisterSignal(human_target.shoes, COMSIG_ITEM_UNEQUIPPED, PROC_REF(on_shoes_removed), override = TRUE) // it might be better to remember bloodied shoes to a component or a variable to the shoe itself
 
 	if(dry_time)
 		addtimer(CALLBACK(src, PROC_REF(clear_blood), target), dry_time)
@@ -42,7 +44,7 @@
 	))
 	LAZYREMOVE(entered_bloody_turf, target)
 	if(LAZYACCESS(target_shoes, target))
-		UnregisterSignal(target_shoes[target], COMSIG_ITEM_DROPPED)
+		UnregisterSignal(target_shoes[target], COMSIG_ITEM_UNEQUIPPED)
 		LAZYREMOVE(target_shoes, target)
 
 	var/mob/living/carbon/H = target
@@ -102,13 +104,10 @@
 	SIGNAL_HANDLER
 	Detach(target)
 
-/datum/element/bloody_feet/proc/blood_crossed(mob/living/carbon/human/target, amount, bcolor, dry_time_left)
+/datum/element/bloody_feet/proc/blood_crossed(mob/living/carbon/target, amount, bcolor, dry_time_left)
 	SIGNAL_HANDLER
 	Detach(target)
-	if(ishuman(target)) // runtime check needed cause xenos dont actually use shoes lol
-		target.AddElement(/datum/element/bloody_feet, dry_time_left, target.shoes, amount, bcolor)
-	else
-		target.AddElement(/datum/element/bloody_feet, dry_time_left, amount, bcolor)
+	target.AddElement(/datum/element/bloody_feet, dry_time_left, amount, bcolor)
 
 /datum/element/bloody_feet/proc/clear_blood(datum/target)
 	SIGNAL_HANDLER

@@ -3,6 +3,8 @@
 	id_arg_index = 2
 	/// Color of the tracks left behind
 	var/color
+	/// Necessary because of how Crossed is called before Moved, from bloody_feet.dm
+	var/list/entered_bloody_turf
 
 /datum/element/blood_trail/Attach(datum/target, bcolor)
 	. = ..()
@@ -10,6 +12,7 @@
 		return ELEMENT_INCOMPATIBLE
 
 	color = bcolor
+	LAZYADD(entered_bloody_turf, target)
 
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
 	RegisterSignal(target, COMSIG_XENO_REVIVED_FROM_CRIT, PROC_REF(clear_trail))
@@ -21,7 +24,7 @@
 		COMSIG_XENO_REVIVED_FROM_CRIT,
 		COMSIG_MOB_STAT_SET_DEAD
 	))
-
+	LAZYREMOVE(entered_bloody_turf, target)
 	return ..()
 
 /datum/element/blood_trail/proc/on_moved(mob/living/carbon/target, oldLoc, direction)
@@ -36,6 +39,11 @@
 		return
 
 	if(prob(15)) // dont want to leave a trail everytime
+		return
+
+	// FIXME: This shit is silly and Entered should be refactored
+	if(LAZYISIN(entered_bloody_turf, target))
+		LAZYREMOVE(entered_bloody_turf, target)
 		return
 
 	var/turf/T_in = target.loc

@@ -457,7 +457,7 @@ GLOBAL_LIST(trait_name_map)
 //Status trait coming from being hauled by a xeno.
 #define TRAIT_SOURCE_XENO_HAUL "t_s_xeno_haul"
 ///Status trait coming from being carried, fireman or otherwise.
-#define TRAIT_SOURCE_CARRY "t_s_carried"
+#define TRAIT_SOURCE_CARRY "t_s_carry"
 ///Status trait coming from being assigned as [acting] squad leader.
 #define TRAIT_SOURCE_SQUAD_LEADER "t_s_squad_leader"
 ///Status trait coming from their job

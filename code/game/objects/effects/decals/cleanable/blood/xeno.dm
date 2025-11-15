@@ -6,7 +6,6 @@
 	desc = "It's yellow and acidic. It looks like... <i>blood?</i>"
 	icon = 'icons/effects/blood.dmi'
 	basecolor = BLOOD_COLOR_XENO
-	amount = 1
 
 /obj/effect/decal/cleanable/blood/gibs/xeno
 	name = "steaming gibs"
@@ -36,3 +35,4 @@
 
 /obj/effect/decal/cleanable/blood/xtracks
 	basecolor = BLOOD_COLOR_XENO
+	amount = 0 // i mean if its supposed to be xeno tracks, its probably dried up already

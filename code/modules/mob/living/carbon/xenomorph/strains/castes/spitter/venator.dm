@@ -45,9 +45,9 @@
 	)
 	var/datum/ammo/xeno/ammo
 
-/datum/action/xeno_action/activable/xeno_spit/bombard/benator/can_use_action()
+/datum/action/xeno_action/activable/xeno_spit/bombard/venetor/can_use_action()
 	. = ..()
-	if(owner.action_busy)
+	if(owner && owner.action_busy)
 		return FALSE
 
 /datum/action/xeno_action/activable/xeno_spit/bombard/venetor/use_ability(atom/affected_atom)

@@ -9642,7 +9642,7 @@
 	pixel_x = 17;
 	pixel_y = -6
 	},
-/obj/item/paper/punch_card,
+/obj/item/paper/punch_card/instructional,
 /obj/item/paper/punch_card,
 /obj/item/paper/punch_card,
 /obj/item/paper/punch_card,

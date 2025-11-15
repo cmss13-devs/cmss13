@@ -155,6 +155,11 @@
 /obj/item/paper/punch_card/clearpaper()
 	return
 
+/obj/item/paper/punch_card/instructional/Initialize(mapload, photo_list)
+	. = ..()
+	if(fields)
+		addtofield(1, "1. Decode current stream for rolling encryption challenge token.<BR>2. Decipher challenge token.<BR>3. Encode new challenge token with offset.")
+
 /obj/item/paper/punch_card/prefilled/Initialize(mapload, photo_list)
 	data = list()
 	for(var/i in 1 to 80)

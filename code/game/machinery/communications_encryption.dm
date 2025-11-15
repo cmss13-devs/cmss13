@@ -111,7 +111,7 @@
 
 	// Mis-punch?
 	for(var/i in 1 to length(data))
-		if(prob(10))
+		if(prob(1))
 			data[i] = 0 // It tried
 			break
 

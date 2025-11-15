@@ -127,7 +127,7 @@
 	if(mode == BLOOD_BAG_INJECTING)
 		if(volume > 0)
 			var/transfer_amount = REAGENTS_METABOLISM * 30
-			connected_to.inject_blood(src, transfer_amount)
+			connected_to.inject_blood(src, transfer_amount, IMPLANTATION)
 			return
 
 	// Take blood

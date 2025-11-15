@@ -46,6 +46,6 @@
 		"landmark": "clfpods",
 		"chance": 1.0,
 		"path": "standalone/clfpods.dmm",
-		"when": { "lvevent": "clfpods" }
+		"when": { "lvevent": "clfpods", "$population" : ["Midpop", "Highpop"] }
 	}
 ]

@@ -75,7 +75,7 @@
 
 /datum/food_processor_process/spaghetti
 	input = /obj/item/reagent_container/food/snacks/flour
-	output = /obj/item/reagent_container/food/snacks/spagetti
+	output = /obj/item/reagent_container/food/snacks/spaghetti
 
 /datum/food_processor_process/chocolatebar
 	input = /obj/item/reagent_container/food/snacks/grown/cocoapod

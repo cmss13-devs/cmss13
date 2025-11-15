@@ -345,7 +345,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cmo, list(
 
 
 
-//------------ EXECUTIVE OFFFICER ---------------
+//------------ EXECUTIVE OFFICER ---------------
 
 //------------WEAPON VENDOR---------------
 GLOBAL_LIST_INIT(cm_vending_gear_xo, list(

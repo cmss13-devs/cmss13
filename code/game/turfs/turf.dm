@@ -223,7 +223,7 @@
 
 /// Call to move a turf from its current area to a new one
 /turf/proc/change_area(area/old_area, area/new_area)
-	//dont waste our time
+	//don't waste our time
 	if(old_area == new_area)
 		return
 
@@ -465,7 +465,7 @@
 	return new_baseturfs
 
 // Creates a new turf
-// new_baseturfs can be either a single type or list of types, formated the same as baseturfs. see turf.dm
+// new_baseturfs can be either a single type or list of types, formatted the same as baseturfs. see turf.dm
 /turf/proc/ChangeTurf(path, list/new_baseturfs, flags)
 	switch(path)
 		if(null)
@@ -551,7 +551,7 @@
 		while(ispath(turf_type, /turf/baseturf_skipover))
 			amount++
 			if(amount > length(new_baseturfs))
-				CRASH("The bottomost baseturf of a turf is a skipover [src]([type])")
+				CRASH("The bottommost baseturf of a turf is a skipover [src]([type])")
 			turf_type = new_baseturfs[max(1, length(new_baseturfs) - amount + 1)]
 		new_baseturfs.len -= min(amount, length(new_baseturfs) - 1) // No removing the very bottom
 		if(length(new_baseturfs) == 1)

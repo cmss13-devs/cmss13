@@ -23,7 +23,7 @@
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
 	///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 	var/list/attack_verb
-	/// A multiplier to an object's force when used against a stucture.
+	/// A multiplier to an object's force when used against a structure.
 	var/demolition_mod = 1
 
 	health = null
@@ -364,7 +364,7 @@
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
-			if(S.storage_flags & STORAGE_GATHER_SIMULTAENOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
+			if(S.storage_flags & STORAGE_GATHER_SIMULTANEOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
 				var/success = 0
 				var/failure = 0
 
@@ -759,7 +759,7 @@
 			if(WEAR_IN_JACKET)
 				if(human.wear_suit)
 					var/obj/item/clothing/suit/storage/storage = human.wear_suit
-					if(istype(storage) && storage.pockets)//not all suits have pockits
+					if(istype(storage) && storage.pockets)//not all suits have pockets
 						var/obj/item/storage/internal/internal_storage = storage.pockets
 						if(internal_storage.can_be_inserted(src, human, TRUE))
 							return TRUE
@@ -767,7 +767,7 @@
 			if(WEAR_IN_HELMET)
 				if(human.head)
 					var/obj/item/clothing/head/helmet/marine/helmet = human.head
-					if(istype(helmet) && helmet.pockets)//not all helmuts have pockits
+					if(istype(helmet) && helmet.pockets)//not all helmets have pockets
 						var/obj/item/storage/internal/internal_storage = helmet.pockets
 						if(internal_storage.can_be_inserted(src, human, TRUE))
 							return TRUE

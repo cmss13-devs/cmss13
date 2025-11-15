@@ -554,7 +554,7 @@ t. optimisticdude
 				if(CHECK != user.loc)
 					to_chat(usr, "This is difficult, you probably shouldn't move.")
 					return
-				to_chat(usr, "You've cut into the chest cavity and retreived a sample of blood.")
+				to_chat(usr, "You've cut into the chest cavity and retrieved a sample of blood.")
 				new /obj/item/oldresearch/Blood(T.loc)//This will be a sample of blood eventually
 				T.butchery_progress++
 				active = 0

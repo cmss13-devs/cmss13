@@ -111,7 +111,7 @@
 	icon_state = "sec_key"
 	channels = list(RADIO_CHANNEL_MP = TRUE)
 
-// MARINE REQUISTIONS
+// MARINE REQUISITIONS
 
 /obj/item/device/encryptionkey/qm
 	name = "Requisition Officer's Encryption Key"

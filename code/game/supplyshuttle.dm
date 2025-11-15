@@ -813,13 +813,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /datum/controller/supply/Destroy(force, ...)
 	. = ..()
 	qdel(supply_elevator)
-	for(var/console in bound_supply_computer_list) //removal of this datum breakes the consoles anyway
+	for(var/console in bound_supply_computer_list) //removal of this datum breaks the consoles anyway
 		qdel(console)
 
 /datum/controller/supply/proc/start_processing()
 	START_PROCESSING(SSslowobj, src)
 
-//Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
+//Supply shuttle ticker - handles supply point regeneration and shuttle travelling between centcomm and the station
 /datum/controller/supply/process(delta_time)
 	iteration++
 	points += points_per_process
@@ -837,7 +837,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		add_random_crate(pool)
 
 //Here we calculate the amount of crates to spawn.
-//Marines get one crate for each the amount of XENOS on the surface devided by the amount of marines per crate.
+//Marines get one crate for each the amount of XENOS on the surface divided by the amount of marines per crate.
 //They always get the mincrates amount.
 /datum/controller/supply/proc/calculate_crate_amount(pool)
 	if(pool != ASRS_POOL_MAIN)
@@ -1276,7 +1276,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	play_sound_handler("m4a3", 7 SECONDS)
 	play_sound_handler("m4a3", 7.5 SECONDS)
 
-	//it didnt work.
+	//it didn't work.
 	play_sound_handler(pick("male_scream", "male_pain"), 8.5 SECONDS)
 	play_sound_handler(pick("male_scream", "male_pain"), 9 SECONDS)
 

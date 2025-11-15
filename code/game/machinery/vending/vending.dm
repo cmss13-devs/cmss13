@@ -548,13 +548,13 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	// The checking_id() proc is currently determining whether to pay or not, not exactly just ID
 	// So lets treat cash like an alternative ID for these greedy machines
-	var/sufficent_cash = FALSE
+	var/sufficient_cash = FALSE
 	var/ripped_off = FALSE
 	var/obj/item/spacecash/cash = user.get_active_hand()
 	if(!istype(cash))
 		cash = user.get_inactive_hand()
 	if(istype(cash))
-		sufficent_cash = cash.worth >= price_to_use
+		sufficient_cash = cash.worth >= price_to_use
 
 	var/obj/item/card/id/user_id
 	if(checking_id())
@@ -568,7 +568,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			vend_ready = TRUE
 			return
 
-		if(!user_id && !sufficent_cash)
+		if(!user_id && !sufficient_cash)
 			speak("No card found.")
 			flick(icon_deny, src)
 			vend_ready = TRUE
@@ -579,14 +579,14 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			if(user_id)
 				account = get_account(user_id.associated_account_number)
 
-			if(!account && !sufficent_cash)
+			if(!account && !sufficient_cash)
 				speak("No account found.")
 				flick(icon_deny, src)
 				vend_ready = TRUE
 				return
 
 			if(!account || !transfer_money(account, record))
-				if (!sufficent_cash)
+				if (!sufficient_cash)
 					speak("You do not possess the funds to purchase [record.product_name].")
 					flick(icon_deny, src)
 					vend_ready = TRUE

@@ -1296,14 +1296,14 @@
 	reagents.add_reagent("nutriment", 2)
 	bitesize = 2
 
-/obj/item/reagent_container/food/snacks/spagetti
+/obj/item/reagent_container/food/snacks/spaghetti
 	name = "Spaghetti"
 	desc = "A bundle of raw spaghetti."
 	icon_state = "spagetti"
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	filling_color = "#EDDD00"
 
-/obj/item/reagent_container/food/snacks/spagetti/Initialize()
+/obj/item/reagent_container/food/snacks/spaghetti/Initialize()
 	. = ..()
 	reagents.add_reagent("dough", 1)
 
@@ -1588,7 +1588,7 @@
 		package = 0
 
 /obj/item/reagent_container/food/snacks/monkeycube/On_Consume(mob/M)
-	to_chat(M, SPAN_WARNING("Something inside of you suddently expands!"))
+	to_chat(M, SPAN_WARNING("Something inside of you suddenly expands!"))
 
 	if (istype(M, /mob/living/carbon/human))
 		//Do not try to understand.
@@ -1891,7 +1891,7 @@
 	reagents.add_reagent("nutriment", 8)
 	bitesize = 2
 
-/obj/item/reagent_container/food/snacks/boiledspagetti
+/obj/item/reagent_container/food/snacks/boiledspaghetti
 	name = "Boiled Spaghetti"
 	desc = "A plain dish of noodles, this sucks."
 	icon_state = "spagettiboiled"
@@ -1899,7 +1899,7 @@
 	trash = /obj/item/trash/plate
 	filling_color = "#FCEE81"
 
-/obj/item/reagent_container/food/snacks/boiledspagetti/Initialize()
+/obj/item/reagent_container/food/snacks/boiledspaghetti/Initialize()
 	. = ..()
 	reagents.add_reagent("noodles", 2)
 	bitesize = 2
@@ -1945,7 +1945,7 @@
 	reagents.add_reagent("tomatojuice", 10)
 	bitesize = 4
 
-/obj/item/reagent_container/food/snacks/meatballspagetti
+/obj/item/reagent_container/food/snacks/meatballspaghetti
 	name = "Spaghetti & Meatballs"
 	desc = "Now thats a nic'e meatball!"
 	icon_state = "meatballspagetti"
@@ -1953,7 +1953,7 @@
 	trash = /obj/item/trash/plate
 	filling_color = "#DE4545"
 
-/obj/item/reagent_container/food/snacks/meatballspagetti/Initialize()
+/obj/item/reagent_container/food/snacks/meatballspaghetti/Initialize()
 	. = ..()
 	reagents.add_reagent("noodles", 4)
 	reagents.add_reagent("meatprotein", 4)
@@ -2090,7 +2090,7 @@
 	reagents.add_reagent("minttoxin", 1)
 
 /obj/item/reagent_container/food/snacks/mushroomsoup
-	name = "chantrelle soup"
+	name = "chanterelle soup"
 	desc = "A delicious and hearty mushroom soup."
 	icon_state = "mushroomsoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
@@ -2211,7 +2211,7 @@
 *Sliceable
 * All the food items that can be sliced into smaller bits like Meatbread and Cheesewheels
 * sliceable is just an organization type path, it doesn't have any additional code or variables tied to it.
-* Make it that every big items are cut down into six smaller slice as a standart.
+* Make it that every big items are cut down into six smaller slice as a standard.
 */
 
 /obj/item/reagent_container/food/snacks/sliceable
@@ -2905,7 +2905,7 @@
 
 		return
 	else
-		// Stupid code because byondcode sucks
+		// Stupid code because byond code sucks
 		var/doimgtag = 0
 		if( length(boxes) > 0 )
 			var/obj/item/pizzabox/topbox = boxes[length(boxes)]
@@ -3024,7 +3024,7 @@
 /obj/item/pizzabox/vegetable/Initialize()
 	. = ..()
 	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza(src)
-	boxtag = "Gourmet Vegatable"
+	boxtag = "Gourmet Vegetable"
 
 /obj/item/pizzabox/mushroom/Initialize()
 	. = ..()
@@ -3063,7 +3063,7 @@
 /obj/item/pizzabox/pizza_galaxy/vegetable/Initialize()
 	. = ..()
 	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza(src)
-	boxtag = "Gourmet Vegatable"
+	boxtag = "Gourmet Vegetable"
 
 /obj/item/pizzabox/pizza_galaxy/mushroom/Initialize()
 	. = ..()
@@ -3143,7 +3143,7 @@
 		to_chat(user, "You flatten the dough.")
 		qdel(src)
 
-// slicable into 3xdoughslices
+// sliceable into 3x dough slices
 /obj/item/reagent_container/food/snacks/sliceable/flatdough
 	name = "flat dough"
 	desc = "A flattened dough."
@@ -3340,7 +3340,7 @@
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
 		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
-		new /obj/item/trash/buritto (user.loc)
+		new /obj/item/trash/burrito (user.loc)
 		icon_state = "open-burrito"
 		item_state = "burrito"
 
@@ -3530,7 +3530,7 @@
 	reagents.add_reagent("bicaridine", 2) //The namesake of the bar.
 
 /obj/item/reagent_container/food/snacks/wrapped/twe_bar
-	name = "ORP oat bisuit"
+	name = "ORP oat biscuit"
 	desc = "A bar of oat biscuit, has some bits of dried fruits in it. Goes well with a cup of tea."
 	icon = 'icons/obj/items/food/mre_food/twe.dmi'
 	icon_state = "cookie_bar"

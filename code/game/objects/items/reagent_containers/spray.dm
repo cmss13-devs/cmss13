@@ -189,7 +189,7 @@
 //this is a big copypasta clusterfuck, but it's still better than it used to be!
 /obj/item/reagent_container/spray/chemsprayer/Spray_at(atom/A as mob|obj)
 	var/Sprays[3]
-	for(var/i=1, i<=3, i++) // intialize sprays
+	for(var/i=1, i<=3, i++) // initialize sprays
 		if(src.reagents.total_volume < 1)
 			break
 		var/obj/effect/decal/chempuff/D = new/obj/effect/decal/chempuff(get_turf(src))

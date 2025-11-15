@@ -309,7 +309,7 @@
 	update_icon()
 	return
 
-//Flips the windoor assembly, determines whather the door opens to the left or the right
+//Flips the windoor assembly, determines whether the door opens to the left or the right
 /obj/structure/windoor_assembly/verb/flip()
 	set name = "Flip Windoor Assembly"
 	set category = "Object"

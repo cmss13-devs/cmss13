@@ -72,7 +72,7 @@
 			categories |= recipe.category
 
 			var/obj/item/I = new recipe.path
-			if(I.matter && !recipe.resources) //This can be overidden in the datums.
+			if(I.matter && !recipe.resources) //This can be overridden in the datums.
 				recipe.resources = list()
 				for(var/material in I.matter)
 					if(!isnull(storage_capacity[material]))

@@ -74,7 +74,7 @@
 			if(A.roundstart_picked)
 				possible_survivors -= A
 
-		if(length(possible_survivors)) //We may have stripped out all the contendors, so check again.
+		if(length(possible_survivors)) //We may have stripped out all the contenders, so check again.
 			var/i = surv_starting_num
 			var/datum/mind/new_survivor
 			while(i > 0)

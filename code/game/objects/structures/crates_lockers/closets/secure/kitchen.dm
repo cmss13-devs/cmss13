@@ -1,4 +1,4 @@
-//standart fridge
+//standard fridge
 
 /obj/structure/closet/secure_closet/fridge
 	name = "Refrigerator"
@@ -27,7 +27,7 @@
 
 // Kitchen preparation room small quantity out of boxes...
 
-//standart organic storage.
+//standard organic storage.
 
 /obj/structure/closet/secure_closet/fridge/organic
 	name = "Organic"

@@ -30,12 +30,12 @@
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
 
-/obj/item/trash/buritto
+/obj/item/trash/burrito
 	name = "Burrito wrapper"
 	icon_state = "burrito"
 	desc = "A foul-smelling plastic film that once held a microwave burrito. Packaged by the Weyland-Yutani Corporation."
 
-/obj/item/trash/buritto/Initialize()
+/obj/item/trash/burrito/Initialize()
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
 
@@ -142,7 +142,7 @@
 
 /obj/item/trash/merc_mre
 	name = "\improper crumbled FSR ration"
-	desc = "Who left it in here? Civillians? Hikers? Military collectors? Undercover mercenaries?"
+	desc = "Who left it in here? Civilians? Hikers? Military collectors? Undercover mercenaries?"
 	icon = 'icons/obj/items/storage/mre.dmi'
 	icon_state = "mealpackempty"
 
@@ -158,7 +158,7 @@
 	desc = "An oily empty bag that once held Weyland-Yutani Pepper Chips."
 
 //////////////////////
-///Ciagarette Butts///
+///Cigarette Butts///
 //////////////////////
 
 /obj/item/trash/cigbutt

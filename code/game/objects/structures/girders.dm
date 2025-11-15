@@ -56,7 +56,7 @@
 			return
 		if(STATE_REINFORCED_WALL)
 			if(step_state == STATE_PLASTEEL)
-				. += SPAN_NOTICE("Plasteel added. Add [SPAN_HELPFUL("metal rods")] to stengthen.")
+				. += SPAN_NOTICE("Plasteel added. Add [SPAN_HELPFUL("metal rods")] to strengthen.")
 			else if(step_state == STATE_RODS)
 				. += SPAN_NOTICE("Metal rods added. [SPAN_HELPFUL("Screwdrivers")] to attach.")
 			else if(step_state == STATE_SCREWDRIVER)

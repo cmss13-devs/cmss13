@@ -221,7 +221,7 @@
 	name = "\improper Chemistry Lab"
 	icon_state = "chem"
 
-/area/bigred/uground/disection
+/area/bigred/uground/dissection
 	name = "\improper Dissection Lab"
 	icon_state = "observatory"
 
@@ -250,7 +250,7 @@
 	icon_state = "primarystorage"
 
 /area/bigred/uground/safe_room
-	name = "\improper Corporate Saferoom"
+	name = "\improper Corporate Safe Room"
 	icon_state = "vault"
 
 // Lambda areas below:

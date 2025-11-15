@@ -411,10 +411,10 @@
 	icon_state = "substation"
 
 /*
- * Surface - Requesitions
+ * Surface - Requisitions
  */
 
-/area/ice_colony/surface/requesitions
+/area/ice_colony/surface/requisitions
 	name = "\improper Surface Requesition Warehouse"
 	icon_state = "quartstorage"
 
@@ -683,19 +683,19 @@
  */
 
 /area/ice_colony/underground/requesition
-	name = "\improper Underground Requesitions"
+	name = "\improper Underground Requisitions"
 	icon_state = "quart"
 
 /area/ice_colony/underground/requesition/lobby
-	name = "\improper Underground Requesitions Lobby"
+	name = "\improper Underground Requisitions Lobby"
 	icon_state = "quartoffice"
 
 /area/ice_colony/underground/requesition/storage
-	name = "\improper Underground Requesitions Storage"
+	name = "\improper Underground Requisitions Storage"
 	icon_state = "quartstorage"
 
 /area/ice_colony/underground/requesition/sec_storage
-	name = "\improper Underground Requesitions Secure Storage"
+	name = "\improper Underground Requisitions Secure Storage"
 	icon_state = "storage"
 
 /*

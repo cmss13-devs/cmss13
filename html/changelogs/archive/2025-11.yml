@@ -171,3 +171,17 @@
       too
   - code_imp: Added additional unit testing for areas and APCs with negative power
   - code_imp: Cleaned up defines in APC file
+2025-11-14:
+  MistChristmas:
+  - bugfix: Rangefinder non-TGUI mode includes Z level info
+  Nihisohel:
+  - rscadd: You can now tactically reload with shotguns and revolvers, looping until
+      the magazine is filled or interrupted.
+  - qol: You can close a revolvers cylinder with the unique action. Provided it is
+      open.
+  - qol: You can now insert bullet handfuls back into the chamber, provided it is
+      empty.
+  - qol: Cocking the bullet now tries to put it to your hand, if empty.
+  Zenith:
+  - bugfix: fixed vehicle back door sprites & CLF van door pathing. Now you can click
+      the full tile.

@@ -55,7 +55,8 @@
 		if (stack_count <= 0)
 			qdel(src)
 			return
-	particle_holder.particles.spawning = 1 + round(stack_count / 2)
+	if(particle_holder)
+		particle_holder.particles.spawning = 1 + round(stack_count / 2)
 
 
 /datum/effects/sentinel_neuro_stacks/Destroy()

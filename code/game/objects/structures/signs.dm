@@ -174,7 +174,7 @@
 
 /obj/structure/sign/flag/upp
 	name = "\improper Union of Progressive Peoples Flag"
-	desc = "Unity through Strength, Freedom through Unity"
+	desc = "Unity through Strength, Freedom through Unity."
 	icon_state = "upp_flag"
 
 //=====================//

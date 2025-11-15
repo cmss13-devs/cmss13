@@ -47,7 +47,7 @@
 				var/temp = ""
 				if(width == 1)
 					temp += "It looks like a [SPAN_HELPFUL("wrench")] will unsecure it."
-				helpmessage += "[temp]You can insert an [.)]. "
+				helpmessage += "[temp]You can insert an [SPAN_HELPFUL("airlock circuit")]."
 				if(!glass)
 					helpmessage += "Insert some [SPAN_HELPFUL("glass sheets")] to add windows to it."
 				else if(glass == AIRLOCK_GLASSIN)

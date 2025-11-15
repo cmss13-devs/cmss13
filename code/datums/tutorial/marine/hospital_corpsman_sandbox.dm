@@ -169,8 +169,8 @@
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/end_supply_phase()
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prep_door)
-	var/turf/boundry = get_turf(loc_from_corner(4, 1))
-	if(tutorial_mob.x <= boundry.x)
+	var/turf/boundary = get_turf(loc_from_corner(4, 1))
+	if(tutorial_mob.x <= boundary.x)
 		message_to_player("Please exit the preparations room before progressing into the next round!")
 		return
 	prep_door.close(TRUE)

@@ -224,7 +224,7 @@
 			var/knocked_down
 			if(attacking_xeno.attempt_tackle(src, tackle_mult, tackle_min_offset, tackle_max_offset))
 				var/strength = rand(attacking_xeno.tacklestrength_min, attacking_xeno.tacklestrength_max)
-				var/datum/status_effect/incapacitating/stun/stun = Stun(strength, resistable=TRUE)
+				var/datum/status_effect/incapacitating/stun/stun = Stun(strength, resistible=TRUE)
 				var/stun_resisted = strength != stun.last_amount
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, stun_resisted ? 1.5 : 0)
 				KnockDown(stun.last_amount) // Purely for knockdown visuals. All the heavy lifting is done by Stun

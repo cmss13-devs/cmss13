@@ -1843,7 +1843,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 		var/mob/living/carbon/human/focused_human = user
 		if(focused_human.marksman_aura >= 1) //adjust scatter based on focus aura
-			var/focus_mult = focused_human.marksman_aura * 1.25
+			var/focus_mult = focused_human.marksman_aura * 1.25 // flat reducton by 1.25 percent per level
 			gun_scatter -= focus_mult
 
 	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * gun_accuracy_mult) // Apply gun accuracy multiplier to projectile accuracy

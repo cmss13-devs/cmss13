@@ -639,7 +639,7 @@
 	if(ishuman(firer))
 		var/mob/living/carbon/human/shooter_human = firer
 		if(shooter_human.marksman_aura)
-			effective_accuracy += shooter_human.marksman_aura * 1.25 //Flat buff of 3 % accuracy per aura level
+			effective_accuracy += shooter_human.marksman_aura * 1.25 //Flat buff of 1.25% accuracy per aura level
 			effective_accuracy += distance_travelled * 0.35 * shooter_human.marksman_aura //Flat buff to accuracy per tile travelled
 
 	#if DEBUG_HIT_CHANCE

@@ -528,6 +528,7 @@
 	skills = /datum/skills/cia/global_response/leader
 	minimap_icon = "leader"
 	role_comm_title = "TL"
+	helmet_type = /obj/item/clothing/head/helmet/marine/radio_helmet/grs
 
 /datum/equipment_preset/cia_global_response/leader/deathsquad
 	strength_type = STRENGTH_DEATH
@@ -539,7 +540,7 @@
 /datum/equipment_preset/cia_global_response/leader/weak
 	strength_type = STRENGTH_WEAK
 	suit_type = /obj/item/clothing/suit/storage/marine/sof/grs/damaged
-	helmet_type = /obj/item/clothing/head/helmet/marine/sof/grs/damaged
+	helmet_type = /obj/item/clothing/head/helmet/marine/radio_helmet/grs/damaged
 
 /datum/equipment_preset/cia_global_response/leader/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
@@ -627,6 +628,7 @@
 	skills = /datum/skills/cia/global_response/commander
 	minimap_icon = "pmc_sd"
 	role_comm_title = "CDR"
+	helmet_type = /obj/item/clothing/head/helmet/marine/radio_helmet/grs
 
 /datum/equipment_preset/cia_global_response/commander/deathsquad
 	strength_type = STRENGTH_DEATH
@@ -638,7 +640,7 @@
 /datum/equipment_preset/cia_global_response/commander/weak
 	strength_type = STRENGTH_WEAK
 	suit_type = /obj/item/clothing/suit/storage/marine/sof/grs/damaged
-	helmet_type = /obj/item/clothing/head/helmet/marine/sof/grs/damaged
+	helmet_type = /obj/item/clothing/head/helmet/marine/radio_helmet/grs/damaged
 
 /datum/equipment_preset/cia_global_response/commander/weak/survivor
 	strength_type = STRENGTH_SURVIVOR
@@ -731,7 +733,7 @@
 /datum/equipment_preset/cia_global_response/commander/deputy/weak
 	strength_type = STRENGTH_WEAK
 	suit_type = /obj/item/clothing/suit/storage/marine/sof/grs/damaged
-	helmet_type = /obj/item/clothing/head/helmet/marine/sof/grs/damaged
+	helmet_type = /obj/item/clothing/head/helmet/marine/radio_helmet/grs/damaged
 
 /datum/equipment_preset/cia_global_response/commander/deputy/weak/survivor
 	strength_type = STRENGTH_SURVIVOR

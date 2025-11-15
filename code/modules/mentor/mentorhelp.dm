@@ -1,5 +1,36 @@
+
+GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
+
+/datum/mentorhelp_manager
+	var/list/active_tickets = list()
+	var/list/archived_tickets = list()
+	var/ticket_counter = 1
+
+/datum/mentorhelp_manager/proc/get_ticket_by_id(id)
+	if(active_tickets["[id]"])
+		return active_tickets["[id]"]
+	return archived_tickets["[id]"]
+
+/datum/mentorhelp_manager/proc/get_active_ticket_by_ckey(ckey)
+	if(!ckey)
+		return null
+	for(var/id in active_tickets)
+		var/datum/mentorhelp/MH = active_tickets[id]
+		if(MH && MH.author_key == ckey)
+			return MH
+	return null
+
+/datum/mentorhelp_manager/proc/create_ticket(client/author, message)
+	var/datum/mentorhelp/MH = new(author)
+	MH.initial_message = message
+	MH.latest_message = message
+	author.current_mhelp = MH
+	return MH
+
 // Represents a mentorhelp thread
 /datum/mentorhelp
+	var/id = 0
+
 	// The client/player who initiated (authored) the mentorhelp thread
 	var/client/author = null
 	// The author's key
@@ -11,6 +42,15 @@
 
 	// If this thread is still open
 	var/open = TRUE
+	var/initial_message = ""
+	var/latest_message = ""
+	var/subject = ""
+	var/list/ticket_interactions = list()
+
+	var/opened_at = ""
+	var/closed_at = ""
+
+	var/time_activity = list("opened_at" = null, "closed_at" = null)
 
 /datum/mentorhelp/New(client/thread_author)
 	..()
@@ -19,15 +59,28 @@
 		qdel(src)
 		return
 
-	// They already have a thread open
-	if(thread_author.current_mhelp && thread_author.current_mhelp.open)
+	var/datum/mentorhelp/existing = GLOB.mentorhelp_manager.get_active_ticket_by_ckey(thread_author.ckey)
+	if(existing)
+		to_chat(thread_author, SPAN_WARNING("You already have an active mentor help ticket. Please wait for a mentor to respond."))
 		qdel(src)
 		return
 
+	opened_at = world.time
+	time_activity["opened_at"] = "[worldtime2text(opened_at)]"
+
 	author = thread_author
 	author_key = thread_author.key
+	id = GLOB.mentorhelp_manager.ticket_counter++
+
+	GLOB.mentorhelp_manager.active_tickets["[id]"] = src
 
 /datum/mentorhelp/Destroy()
+	if(open && GLOB.mentorhelp_manager.active_tickets["[id]"] == src)
+		GLOB.mentorhelp_manager.active_tickets -= "[id]"
+	else if(GLOB.mentorhelp_manager.archived_tickets["[id]"] == src)
+		GLOB.mentorhelp_manager.archived_tickets -= "[id]"
+
+	author.current_mhelp = null
 	author = null
 	mentor = null
 	return ..()
@@ -51,15 +104,35 @@
 		return FALSE
 	return TRUE
 
-// Logs the mentorhelp message to admin logs
-/datum/mentorhelp/proc/log_message(msg, from_key, to_key)
-	msg = strip_html(msg)
-	var/log_msg = msg
+/datum/mentorhelp/proc/log_message(msg, from_key, to_key, include_in_ticket = TRUE, plain_msg = null, message_type = "mentor")
+	var/plain_text = plain_msg || strip_html(msg)
+	var/log_msg = plain_text
+
+	var/html_msg = msg
+	if(!plain_msg)
+		html_msg = "[SPAN_MENTORHELP("[from_key] -> [to_key]:")] [msg]"
+	else if(from_key && to_key)
+		html_msg = "[SPAN_MENTORHELP("[from_key] -> [to_key]:")] [html_encode(plain_text)]"
+
 	if(from_key && to_key)
-		log_msg = "[SPAN_MENTORHELP("[from_key] -> [to_key]:")] [msg]"
+		log_msg = "[from_key] -> [to_key]: [plain_text]"
 	log_mhelp(log_msg)
 
-/datum/mentorhelp/proc/notify(text, to_thread_mentor = TRUE, to_mentors = TRUE, to_staff = TRUE)
+	if(include_in_ticket)
+		var/html_message = "[time_stamp()]: [html_msg]"
+		var/list/structured_data = list(
+			"timestamp" = worldtime2text(world.time),
+			"author" = from_key || "System",
+			"message" = plain_text,
+			"html_message" = html_msg,
+			"type" = message_type
+		)
+
+		ticket_interactions[html_message] = structured_data
+
+		latest_message = plain_text
+
+/datum/mentorhelp/proc/notify(text, to_thread_mentor = TRUE, to_mentors = TRUE, to_staff = TRUE, unformatted_text = null)
 	var/list/hitlist = list()
 	if(to_thread_mentor && mentor)
 		hitlist |= mentor
@@ -69,9 +142,20 @@
 		else if(to_staff && CLIENT_IS_STAFF(candidate))
 			hitlist |= candidate
 	var/displaymsg = "[SPAN_MENTORHELP("<span class='prefix'>MENTOR LOG:</span> <span class='message'>[text]</span>")]"
+	var/html_message = "[time_stamp()]: [text]"
+	var/list/structured_data = list(
+		"timestamp" = worldtime2text(world.time),
+		"author" = "System",
+		"message" = unformatted_text || text,
+		"type" = "system"
+	)
+	ticket_interactions[html_message] = structured_data
 	for(var/client/receiver in hitlist)
 		if(istype(receiver))
 			to_chat(receiver, displaymsg)
+
+	if(!to_mentors)
+		latest_message = unformatted_text
 
 /datum/mentorhelp/proc/broadcast_request(client/opener)
 	if(!opener || !open || !check_author())
@@ -79,9 +163,16 @@
 	if(mentor)
 		return TRUE // No need
 
-	var/message = strip_html(input("Please enter your message:", "MentorHelp", null, null) as message|null)
+	var/message = strip_html(
+			tgui_input_text(opener, "Please enter your message:", "MentorHelp", null, 500, TRUE)
+		)
 	if(!message)
 		return FALSE
+	if(!initial_message)
+		initial_message = message
+
+	latest_message = message
+
 	broadcast_unhandled(message, opener)
 	return TRUE
 
@@ -94,10 +185,16 @@
 	if(!sender || !check_author())
 		return
 
+	var/msg_type = "mentor"
+	if(sender == author)
+		msg_type = "legacy"
+	else if(!sender)
+		msg_type = "system"
+
 	if(recipient?.key)
-		log_message(msg, sender.key, recipient.key)
+		log_message(msg, sender.key, recipient.key, msg_type)
 	else
-		log_message(msg, sender.key, "All mentors")
+		log_message(msg, sender.key, "All mentors", msg_type)
 
 	// Sender feedback
 	to_chat(sender, "[SPAN_MENTORHELP("<span class='prefix'>MentorHelp:</span> Message to [(recipient?.key) ? "<a href='byond://?src=\ref[src];action=message'>[recipient.key]</a>" : "mentors"]:")] [SPAN_MENTORBODY(msg)]")
@@ -137,6 +234,7 @@
 /datum/mentorhelp/proc/input_message(client/sender)
 	if(!sender || !check_open(sender))
 		return
+
 	if(sender != author)
 		if(!CLIENT_IS_MENTOR(sender))
 			return
@@ -157,6 +255,18 @@
 	var/message = input("Please enter your message:", "Mentor Help", null, null) as message|null
 	if(message)
 		message = strip_html(message)
+		var/formatted_message = "[sender.key]: [message]"
+		var/timestamp = time_stamp()
+		var/html_message = "[timestamp]: [formatted_message]"
+		var/list/structured_data = list(
+			"timestamp" = timestamp,
+			"author" = sender.key,
+			"message" = message,
+			"type" = CLIENT_IS_MENTOR(sender) ? "mentor" : "legacy"
+		)
+		ticket_interactions[html_message] = structured_data
+		if(sender == author)
+			latest_message = message
 		message_handlers(message, sender, target)
 	return
 
@@ -205,7 +315,8 @@
 	mentor = thread_mentor
 
 	log_mhelp("[mentor.key] has marked [author_key]'s mentorhelp")
-	notify("<font style='color:red;'>[mentor.key]</font> has marked <font style='color:red;'>[author_key]</font>'s mentorhelp.")
+	notify("<font style='color:red;'>[mentor.key]</font> has marked <font style='color:red;'>[author_key]</font>'s mentorhelp.",
+		unformatted_text = "[mentor.key] has marked [author_key]'s mentorhelp.")
 	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has marked your thread and is preparing to respond."))
 
 // Unmarks the mentorhelp thread and notifies the author that the thread is no longer being handled by a mentor
@@ -225,13 +336,57 @@
 		return
 
 	log_mhelp("[mentor.key] has unmarked [author_key]'s mentorhelp")
-	notify("<font style='color:red;'>[mentor.key]</font> has unmarked <font style='color:red;'><a href='byond://?src=\ref[src];action=message'>[author_key]</a></font>'s mentorhelp.")
+	notify("<font style='color:red;'>[mentor.key]</font> has unmarked <font style='color:red;'><a href='byond://?src=\ref[src];action=message'>[author_key]</a></font>'s mentorhelp.",
+		unformatted_text = "[mentor.key] has unmarked [author_key]'s mentorhelp.")
 	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has unmarked your thread and is no longer responding to it."))
 	mentor = null
 
 /*
  * Misc.
  */
+
+/datum/mentorhelp/proc/reopen()
+	if(!check_author())
+		return
+
+	if(open)
+		to_chat(usr, SPAN_WARNING("This ticket is already open!"))
+		return
+
+	if(GLOB.mentorhelp_manager.get_active_ticket_by_ckey(author_key))
+		to_chat(usr, SPAN_WARNING("This user already has an open mentor ticket. Please close it first or use the existing one."), confidential = TRUE)
+		return FALSE
+
+
+	if(!author && author_key)
+		for(var/client/C in GLOB.clients)
+			if(C.ckey == author_key)
+				author = C
+				break
+
+	var/datum/mentorhelp/existing_mh = GLOB.mentorhelp_manager.get_active_ticket_by_ckey(author_key)
+	if(existing_mh && existing_mh != src)
+		if(tgui_alert(usr, "[author_key] already has an open mentorhelp thread. Would you like to close it and reopen this one?", "Existing Mentorhelp Found", list("Yes", "No")) == "Yes")
+			existing_mh.close(usr.client)
+		else
+			to_chat(usr, SPAN_NOTICE("Using the existing mentorhelp thread for [author_key]."), confidential = TRUE)
+			return FALSE
+
+	open = TRUE
+	closed_at = null
+	time_activity["closed_at"] = null
+
+
+	if(GLOB.mentorhelp_manager.archived_tickets["[id]"] == src)
+		GLOB.mentorhelp_manager.archived_tickets -= "[id]"
+		GLOB.mentorhelp_manager.active_tickets["[id]"] = src
+
+	if(author)
+		author.current_mhelp = src
+
+	log_mhelp("[usr.key] reopened [author_key]'s mentorhelp thread")
+	notify("<font style='color:green;'>[usr.key]</font> has reopened this mentorhelp thread.",
+		unformatted_text = "[usr.key] has reopened this mentorhelp thread.")
 
 // Closes the thread and notifies the author/mentor that it has been closed
 /datum/mentorhelp/proc/close(client/closer)
@@ -249,15 +404,45 @@
 		to_chat(closer, SPAN_MENTORHELP("<b>NOTICE:</b> Another mentor is handling this thread!"))
 		return
 
+	if(!open)
+		return
+
 	open = FALSE
+
+	if(GLOB.mentorhelp_manager.active_tickets["[id]"] == src)
+		GLOB.mentorhelp_manager.active_tickets -= "[id]"
+		GLOB.mentorhelp_manager.archived_tickets["[id]"] = src
+
 	if(closer)
 		log_mhelp("[closer.key] closed [author_key]'s mentorhelp")
 		if(closer == author)
 			to_chat(author, SPAN_NOTICE("You have closed your mentorhelp thread."))
-			notify("<font style='color:red;'>[author_key]</font> closed their mentorhelp thread.")
+			notify("<font style='color:red;'>[author_key]</font> closed their mentorhelp thread.",
+				unformatted_text = "[author_key] closed their mentorhelp thread.")
 			return
 	to_chat(author, SPAN_NOTICE("Your mentorhelp thread has been closed."))
-	notify("<font style='color:red;'>[author_key]</font>'s mentorhelp thread has been closed.")
+	notify("<font style='color:red;'>[author_key]</font>'s mentorhelp thread has been closed.",
+			unformatted_text = "[author_key]'s mentorhelp thread has been closed.")
+	closed_at = world.time
+	time_activity["closed_at"] = "[worldtime2text(closed_at)]"
+
+	// Clear the client reference if they're still connected
+	if(author && author.current_mhelp == src)
+		author.current_mhelp = null
+
+/datum/mentorhelp/proc/Respond(msg, client/mentor)
+	if(!check_author())
+		return
+
+	if(!check_open())
+		return
+
+	if(!CLIENT_IS_MENTOR(mentor))
+		return
+
+	message_handlers(msg, mentor, author)
+
+	return TRUE
 
 /datum/mentorhelp/Topic(href, list/href_list)
 	if(!usr)
@@ -325,7 +510,26 @@
 		to_chat(responder, SPAN_NOTICE("<b>NOTICE:</b> A mentor is already handling this thread!"))
 		return
 
-	var/msg = "[SPAN_ORANGE(SPAN_BOLD("- MentorHelp marked as [response.title]! -"))]<br>"
-	msg += "[SPAN_ORANGE(response.message)]"
+	var/msg = "- MentorHelp marked as [response.title]! -"
+	msg += "[response.message]"
 
 	message_handlers(msg, responder, author)
+
+
+/proc/message_mentors(message)
+	for(var/client/C in GLOB.clients)
+		if(CLIENT_IS_MENTOR(C))
+			to_chat(C, message)
+	return TRUE
+
+/proc/mentorhelp_by_id(id)
+	if(!id)
+		return null
+	return GLOB.mentorhelp_manager.get_ticket_by_id(id)
+
+
+/datum/mentorhelp/proc/set_subject(subject, client/responder)
+	if(!CLIENT_IS_MENTOR(responder))
+		return
+	src.subject = sanitize(subject)
+	return TRUE

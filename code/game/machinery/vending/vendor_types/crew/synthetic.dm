@@ -570,6 +570,63 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/helmet/marine_urban
 	path = /obj/item/clothing/head/helmet/marine/urban
 
+/datum/gear/synthetic/helmet/marine_medic
+	path = /obj/item/clothing/head/helmet/marine/medic
+
+/datum/gear/synthetic/helmet/marine_medic_grey
+	path = /obj/item/clothing/head/helmet/marine/medic/grey
+
+/datum/gear/synthetic/helmet/marine_medic_white
+	path = /obj/item/clothing/head/helmet/marine/medic/white
+
+/datum/gear/synthetic/helmet/marine_medic_jungle
+	path = /obj/item/clothing/head/helmet/marine/medic/jungle
+
+/datum/gear/synthetic/helmet/marine_medic_snow
+	path = /obj/item/clothing/head/helmet/marine/medic/snow
+
+/datum/gear/synthetic/helmet/marine_medic_desert
+	path = /obj/item/clothing/head/helmet/marine/medic/desert
+
+/datum/gear/synthetic/helmet/marine_medic_urban
+	path = /obj/item/clothing/head/helmet/marine/medic/urban
+
+/datum/gear/synthetic/helmet/marine_intel
+	path = /obj/item/clothing/head/helmet/marine/rto/intel
+
+/datum/gear/synthetic/helmet/marine_intel_grey
+	path = /obj/item/clothing/head/helmet/marine/rto/intel/grey
+
+/datum/gear/synthetic/helmet/marine_intel_jungle
+	path = /obj/item/clothing/head/helmet/marine/rto/intel/jungle
+
+/datum/gear/synthetic/helmet/marine_intel_snow
+	path = /obj/item/clothing/head/helmet/marine/rto/intel/snow
+
+/datum/gear/synthetic/helmet/marine_intel_desert
+	path = /obj/item/clothing/head/helmet/marine/rto/intel/desert
+
+/datum/gear/synthetic/helmet/marine_intel_urban
+	path = /obj/item/clothing/head/helmet/marine/rto/intel/urban
+
+/datum/gear/synthetic/helmet/marine_mp
+	path = /obj/item/clothing/head/helmet/marine/MP
+
+/datum/gear/synthetic/helmet/marine_mp_grey
+	path = /obj/item/clothing/head/helmet/marine/MP/grey
+
+/datum/gear/synthetic/helmet/marine_mp_jungle
+	path = /obj/item/clothing/head/helmet/marine/MP/jungle
+
+/datum/gear/synthetic/helmet/marine_mp_snow
+	path = /obj/item/clothing/head/helmet/marine/MP/snow
+
+/datum/gear/synthetic/helmet/marine_mp_desert
+	path = /obj/item/clothing/head/helmet/marine/MP/desert
+
+/datum/gear/synthetic/helmet/marine_mp_urban
+	path = /obj/item/clothing/head/helmet/marine/MP/urban
+
 /datum/gear/synthetic/mask
 	category = "Mask"
 
@@ -735,17 +792,27 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/backpack/marine_satchel
 	path = /obj/item/storage/backpack/marine/satchel
 
+/datum/gear/synthetic/backpack/marine_satchel_med
+	path = /obj/item/storage/backpack/marine/satchel/medic
+
 /datum/gear/synthetic/backpack/satchel
 	path = /obj/item/storage/backpack/satchel
 
-/datum/gear/synthetic/backpack/satchel_med
-	path = /obj/item/storage/backpack/satchel/med
+/datum/gear/synthetic/backpack/satchel_blue
+	path = /obj/item/storage/backpack/satchel/blue
+
+/datum/gear/synthetic/backpack/satchel_black
+	path = /obj/item/storage/backpack/satchel/black
 
 /datum/gear/synthetic/backpack/marine_engineer_satchel
 	path = /obj/item/storage/backpack/marine/engineerpack/satchel
 
 /datum/gear/synthetic/backpack/marine_engineer_chestrig
 	path = /obj/item/storage/backpack/marine/engineerpack/welder_chestrig
+
+/datum/gear/synthetic/backpack/marine_radio_telephone
+	path = /obj/item/storage/backpack/marine/satchel/rto
+	loadout_cost = 24
 
 /datum/gear/synthetic/armband
 	path = /obj/item/clothing/accessory/armband

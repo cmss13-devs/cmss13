@@ -392,3 +392,31 @@
 	else
 		bound_height = 96
 		bound_width = 192
+
+/obj/structure/prop/invuln/dense/cliff_wall
+	name = "Cliff Wall"
+	desc = "Massive cliff wall, seems impassable."
+	icon = 'icons/obj/structures/props/huge_canyon.dmi'
+	icon_state = "canyon_wall"
+	layer = BIG_XENO_LAYER
+
+/obj/structure/prop/invuln/dense/cliff_wall/alt
+	icon_state = "canyon_wall_alt"
+
+/obj/structure/prop/invuln/dense/cliff_wall/short
+	icon_state = "canyon_wall_short"
+
+/obj/structure/prop/invuln/dense/cliff_wall/short_alt
+	icon_state = "canyon_wall_short_alt"
+
+/obj/structure/prop/invuln/dense/cliff_wall/left_long
+	icon_state = "canyon_wall_long_left"
+
+/obj/structure/prop/invuln/dense/cliff_wall/left_short
+	icon_state = "canyon_wall_short_left"
+
+/obj/structure/prop/invuln/dense/cliff_wall/right_long
+	icon_state = "canyon_wall_long_right"
+
+/obj/structure/prop/invuln/dense/cliff_wall/right_short
+	icon_state = "canyon_wall_short_right"

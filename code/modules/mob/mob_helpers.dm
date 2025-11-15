@@ -132,16 +132,13 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	return output_message
 
 /**
- * Summary: proc that parses an html input string and scrambles the non-html string contents.
+ * Scrambles the non-html contents in the provided message using stars().
  *
  * Arguments:
- * * message - an html string value to be parsed and modified.
- * * clear_char_probability - the likelihood a character does not get converted into a *
- *
- * Return:
- * returns the parsed and modified html output with the text content being partially scrambled with asteriks
+ * * message - The string with potential html content to scramble
+ * * clear_char_probability - The likelihood a character does not get converted into a *
  */
-/proc/stars_decode_html(message, clear_char_probability = 25)
+/proc/stars_decode_html(message, clear_char_probability=25, fields_only=FALSE)
 	var/message_length = length(message)
 	if(!message_length)
 		return ""
@@ -149,80 +146,21 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	if(clear_char_probability >= 100)
 		return message
 
-	// Big htmls are currently too expensive - just look for fields instead
-	var/fields_only = message_length > 40000
-	var/current_tag_index = 0
-
-	// boolean value to know if the current indexed element needs to be scrambled.
-	var/parsing_message = TRUE
-
-	// boolean values to know if we are currently inside a double or single quotation.
-	var/in_single_quote = FALSE
-	var/in_double_quote = FALSE
-
-	// string of what tag we're currently in
-	var/current_tag = ""
-	var/escaped_tag = FALSE
-
-	// string that will be scrambled
-	var/current_string_to_scramble = ""
-
-	// output string after parse
+	var/regex/code_regex = regex(@#<head.*?>.*?</head>|<style.*?>.*?</style>|<.*?>#, "g")
 	var/output_message = ""
-	for(var/character_index = 1, character_index <= message_length, character_index++)
-		if(fields_only && !current_tag_index)
-			current_tag_index = findtext(message, "<span class=\"paper_field\">", character_index)
-			if(current_tag_index == 0) // No fields found, all done
-				if(length(current_string_to_scramble))
-					output_message += stars(current_string_to_scramble, clear_char_probability)
-				output_message += copytext(message, character_index)
-				return output_message
-			parsing_message = TRUE
-			output_message += copytext(message, character_index, current_tag_index + 26)
-			character_index = current_tag_index + 26
-
-		var/current_char = message[character_index]
-
-		// Apparent edge case safety, we only want to check the < and > on the edges of the tag.
-		if(!parsing_message)
-			if(current_char == "'")
-				in_single_quote = !in_single_quote
-			else if(current_char == "\"")
-				in_double_quote = !in_double_quote
-			if(in_single_quote || in_double_quote)
-				output_message += current_char
-				continue
-
-		if(current_char == ">")
-			parsing_message = TRUE
-			output_message += current_char
-			current_tag += current_char
-			if(!escaped_tag && findtext(current_tag, "<style(>| )", 1, 8)) // findtext because HTML doesn't care about anything after whitespace
-				escaped_tag = TRUE
-			else if(escaped_tag && (findtext(current_tag, "</style(>| )", 1, 9))) // we only care about the start of the string matching
-				escaped_tag = FALSE
-			else if(fields_only && findtext(current_tag, "</span>", 1, 8))
-				current_tag_index = 0 // Time to look for another field
-			continue
-		if(current_char == "<")
-			parsing_message = FALSE
-			current_tag = ""
-			if(length(current_string_to_scramble))
-				output_message += stars(current_string_to_scramble, clear_char_probability)
-				current_string_to_scramble = ""
-
-		if(parsing_message && !escaped_tag)
-			current_string_to_scramble += current_char
-		else
-			output_message += current_char
-			current_tag += current_char
-
-	if(length(current_string_to_scramble))
-		output_message += stars(current_string_to_scramble, clear_char_probability)
+	var/cur_index = 1
+	do
+		var/prev_index = cur_index
+		cur_index = code_regex.Find(message, code_regex.next)
+		if(prev_index != cur_index)
+			var/current_string = copytext(message, prev_index, cur_index)
+			output_message += stars(current_string, clear_char_probability)
+		if(cur_index)
+			output_message += code_regex.match
+			cur_index = code_regex.next
+	while(cur_index)
 
 	return output_message
-
-GLOBAL_LIST_INIT(last_announcement_time, list(FACTION_MARINE = 0))
 
 /**
  * Gets a stars_decode_html result with a variable clarity based the faction's current comms clarity

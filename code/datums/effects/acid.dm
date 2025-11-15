@@ -13,18 +13,22 @@
 	/// If it's been enhanced by a spit combo.
 	var/acid_enhanced = FALSE
 
-/datum/effects/acid/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest")
-	..(A, from, last_dmg_source, zone)
-	if(ishuman(A))
-		var/mob/living/carbon/human/H = A
-		H.update_effects()
+/datum/effects/acid/New(atom/target_atom, mob/from = null, last_dmg_source = null, zone = "chest")
+	..(target_atom, from, last_dmg_source, zone)
+	if(ishuman(target_atom))
+		var/mob/living/carbon/human/target_human = target_atom
+		target_human.update_effects()
 
-	if(isobj(A))
-		var/obj/O = A
-		if(istype(O, /obj/structure/barricade))
-			var/obj/structure/barricade/B = O
-			acid_multiplier = B.burn_multiplier
-		O.update_icon()
+	if(isobj(target_atom))
+		var/obj/target_object = target_atom
+		if(istype(target_object, /obj/structure/barricade))
+			var/obj/structure/barricade/target_barricade = target_object
+			acid_multiplier = target_barricade.burn_multiplier
+		if(istype(target_object, /obj/structure/barricade/handrail))
+			var/obj/structure/barricade/handrail/target_handrail = target_object
+			acid_multiplier = target_handrail.burn_multiplier
+			target_handrail.on_acid = TRUE
+		target_object.update_icon()
 
 	original_duration = duration
 
@@ -32,16 +36,16 @@
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 
-/datum/effects/acid/validate_atom(atom/A)
-	if(istype(A, /obj/structure/barricade))
+/datum/effects/acid/validate_atom(atom/target_atom)
+	if(istype(target_atom, /obj/structure/barricade))
 		return TRUE
 
-	if(isobj(A))
+	if(isobj(target_atom))
 		return FALSE
 
-	if(ishuman(A))
-		var/mob/living/carbon/human/H = A
-		if(H.status_flags & XENO_HOST && HAS_TRAIT(H, TRAIT_NESTED) || H.stat == DEAD || HAS_TRAIT(H, TRAIT_HAULED))
+	if(ishuman(target_atom))
+		var/mob/living/carbon/human/target_human = target_atom
+		if(target_human.status_flags & XENO_HOST && HAS_TRAIT(target_human, TRAIT_NESTED) || target_human.stat == DEAD || HAS_TRAIT(target_human, TRAIT_HAULED))
 			return FALSE
 
 	. = ..()
@@ -72,12 +76,12 @@
 		LAZYREMOVE(affected_atom.effects_list, src)
 
 	if(ishuman(affected_atom))
-		var/mob/living/carbon/human/H = affected_atom
-		H.update_effects()
+		var/mob/living/carbon/human/target_human = affected_atom
+		target_human.update_effects()
 
 	if(isobj(affected_atom))
-		var/obj/O = affected_atom
-		O.update_icon()
+		var/obj/target_object = affected_atom
+		target_object.update_icon()
 	return ..()
 
 /datum/effects/acid/proc/enhance_acid()

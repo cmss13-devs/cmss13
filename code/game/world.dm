@@ -326,7 +326,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 	SStimer.reset_buckets()
 
 /**
- * Handles incresing the world's maxx var and intializing the new turfs and assigning them to the global area.
+ * Handles incresing the world's maxx var and initializing the new turfs and assigning them to the global area.
  * If map_load_z_cutoff is passed in, it will only load turfs up to that z level, inclusive.
  * This is because maploading will handle the turfs it loads itself.
  */

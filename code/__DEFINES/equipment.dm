@@ -17,7 +17,7 @@
 #define NOBLOODY (1<<4)
 /// movable atom won't change direction when Moving()ing. Useful for items that have several dir states.
 #define DIRLOCK (1<<5)
-/// Reagents dont' react inside this container.
+/// Reagents don't react inside this container.
 #define NOREACT (1<<6)
 /// is an open container for chemistry purposes
 #define OPENCONTAINER (1<<7)
@@ -84,7 +84,7 @@
 #define NO_CRYO_STORE (1<<9)
 /// For backpacks if they should have unique layering functions
 #define ITEM_OVERRIDE_NORTHFACE (1<<10)
-/// whether activating it digs shrapnel out of the user and striking others with medical skills can dig shapnel out of other people.
+/// whether activating it digs shrapnel out of the user and striking others with medical skills can dig shrapnel out of other people.
 #define CAN_DIG_SHRAPNEL (1<<11)
 /// whether it has an animated icon state of "[icon_state]_on" to be used during surgeries.
 #define ANIMATED_SURGICAL_TOOL (1<<12)
@@ -424,7 +424,7 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 //defense zones for selecting them via the hud.
 #define DEFENSE_ZONES_LIVING list("head","eyes","mouth","chest","groin","l_arm","l_hand","r_arm","r_hand","l_leg","l_foot","r_leg","r_foot")
 
-// bitflags for the percentual amount of protection a piece of clothing which covers the body part offers.
+// bitflags for the percent amount of protection a piece of clothing which covers the body part offers.
 // Used with human/proc/get_flags_heat_protection() and human/proc/get_flags_cold_protection()
 // The values here should add up to 1.
 // Hands and feet have 2.5%, arms and legs 7.5%, each of the torso parts has 15% and the head has 30%

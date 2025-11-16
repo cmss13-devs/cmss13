@@ -64,7 +64,7 @@
  *
  * The item will be added to the late_loaders list, this is iterated over after
  * initialization of subsystems is complete and calls LateInitialize on the atom
- * see [this file for the LateIntialize proc](atom.html#proc/LateInitialize)
+ * see [this file for the LateInitialize proc](atom.html#proc/LateInitialize)
  */
 #define INITIALIZE_HINT_LATELOAD 1
 

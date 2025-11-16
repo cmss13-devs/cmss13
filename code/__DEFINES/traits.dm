@@ -143,7 +143,7 @@
 // #define TRAIT_X "t_x"
 
 //-- mob traits --
-/// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sources of undesity will still apply. Always define a unique source when adding a new instance of this!
+/// Apply this to make a mob not dense, and remove it when you want it to no longer make them undense, other sources of undensity will still apply. Always define a unique source when adding a new instance of this!
 #define TRAIT_UNDENSE "undense"
 /// Forces the user to stay unconscious.
 #define TRAIT_KNOCKEDOUT "knockedout"

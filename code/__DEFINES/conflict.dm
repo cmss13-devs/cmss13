@@ -46,7 +46,7 @@
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 
-/// Projectile is shrapanel which allow it to skip some collisions
+/// Projectile is shrapnel which allow it to skip some collisions
 #define PROJECTILE_SHRAPNEL  (1<<0)
 /// Apply additional effects upon hitting clicked target
 #define PROJECTILE_BULLSEYE  (1<<1)

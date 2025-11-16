@@ -38,7 +38,7 @@
 #define GAS_TYPE_NITROGEN "nitrogen"
 #define GAS_TYPE_N2O "anesthetic"
 #define GAS_TYPE_PHORON "phoron"
-#define GAS_TYPE_CO2 "carbon dioxyde"
+#define GAS_TYPE_CO2 "carbon dioxide"
 
 /// Used in /obj/structure/pipes/vents/proc/create_gas
 #define VENT_GAS_SMOKE "Smoke"

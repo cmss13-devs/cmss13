@@ -58,6 +58,9 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	var/damage_cap = HEALTH_DOOR // Airlock gets destroyed
 	var/autoname = FALSE
 
+	///Whether this is currently being manipulated to prevent doubling up
+	var/construction_busy = FALSE
+
 	var/list/obj/item/device/assembly/signaller/attached_signallers = list()
 
 	var/announce_hacked = TRUE
@@ -464,7 +467,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 /obj/structure/machinery/door/airlock/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "Wires", "[name] Wires")
+		ui = new(user, src, "Wires", "[capitalize(name)] Wires")
 		ui.open()
 
 /obj/structure/machinery/door/airlock/ui_data(mob/user)
@@ -478,7 +481,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			"attached" = !isnull(getAssembly(wire)),
 		)))
 	.["wires"] = payload
-	.["proper_name"] = name
+	.["proper_name"] = capitalize(name)
 
 /obj/structure/machinery/door/airlock/ui_static_data(mob/user)
 	. = list()
@@ -595,42 +598,50 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			open()
 			locked = 1
 
-		return
+		return TRUE
 
 	if((iswelder(attacking_item) && !operating && density))
-		var/obj/item/tool/weldingtool/W = attacking_item
+		var/obj/item/tool/weldingtool/welder = attacking_item
 		var/weldtime = 50
-		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
+		if(!HAS_TRAIT(welder, TRAIT_TOOL_BLOWTORCH))
 			weldtime = 70
 
 		if(not_weldable)
-			to_chat(user, SPAN_WARNING("\The [src] would require something a lot stronger than \the [W] to weld!"))
-			return
-		if(!W.isOn())
-			to_chat(user, SPAN_WARNING("\The [W] needs to be on!"))
-			return
-		if(W.remove_fuel(0,user))
-			user.visible_message(SPAN_NOTICE("[user] starts working on \the [src] with \the [W]."),
-			SPAN_NOTICE("You start working on \the [src] with \the [W]."),
+			to_chat(user, SPAN_WARNING("[src] would require something a lot stronger than [welder] to weld!"))
+			return TRUE
+		if(!welder.isOn())
+			to_chat(user, SPAN_WARNING("[welder] needs to be on!"))
+			return TRUE
+		if(construction_busy)
+			to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+			return TRUE
+		if(welder.remove_fuel(0,user))
+			user.visible_message(SPAN_NOTICE("[user] starts working on [src] with [welder]."),
+			SPAN_NOTICE("You start working on [src] with [welder]."),
 			SPAN_NOTICE("You hear welding."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
+			construction_busy = TRUE
 			if(do_after(user, weldtime, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && density)
 				if(!welded)
 					welded = 1
 				else
 					welded = null
 				update_icon()
-		return
+			construction_busy = FALSE
+		return TRUE
 
 	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
 		if(no_panel)
-			to_chat(user, SPAN_WARNING("\The [src] has no panel to open!"))
-			return
+			to_chat(user, SPAN_WARNING("[src] has no panel to open!"))
+			return TRUE
+		if(construction_busy)
+			to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+			return TRUE
 
 		panel_open = !panel_open
 		to_chat(user, SPAN_NOTICE("You [panel_open ? "open" : "close"] [src]'s panel."))
 		update_icon()
-		return
+		return TRUE
 
 	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS))
 		return attack_hand(user)
@@ -664,10 +675,15 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		if(attacking_item.pry_capable == IS_PRY_CAPABLE_CROWBAR && panel_open && welded)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to deconstruct machines."))
-				return
+				return TRUE
+			if(construction_busy)
+				to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+				return TRUE
 			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 			user.visible_message("[user] starts removing the electronics from the airlock assembly.", "You start removing electronics from the airlock assembly.")
-			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			construction_busy = TRUE
+			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+				construction_busy = FALSE
 				to_chat(user, SPAN_NOTICE(" You removed the airlock electronics!"))
 
 				var/obj/structure/airlock_assembly/doors_assembly = new assembly_type(loc)
@@ -707,7 +723,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				msg_admin_niche("[key_name(user)] deconstructed [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z])")
 				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_AIRLOCK, src)
 				deconstruct()
-				return
+			construction_busy = FALSE
+			return TRUE
 
 		else if(arePowerSystemsOn() && attacking_item.pry_capable != IS_PRY_CAPABLE_FORCE)
 			to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))

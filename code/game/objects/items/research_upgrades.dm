@@ -29,7 +29,7 @@
 //previously file holding left over stuff that never got finished from 8 years ago, it was boring though, so we change that.
 /obj/item/research_upgrades
 	name = "Research upgrade"
-	desc = "Somehow you got this, you shouldnt be able to, consider yourself special."
+	desc = "Somehow you got this, you shouldn't be able to, consider yourself special."
 	icon = 'icons/obj/items/disk.dmi'
 	w_class = SIZE_TINY
 	icon_state = "datadisk1" // doesnt HAVE to be a disk!

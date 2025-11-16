@@ -235,7 +235,7 @@
 ///Leave the disposal
 /obj/structure/machinery/disposal/proc/go_out(mob/living/user)
 	if(user.client)
-		user.client.eye = user.client.mob
+		user.client.set_eye(user.client.mob)
 		user.client.perspective = MOB_PERSPECTIVE
 	user.forceMove(loc)
 	user.apply_effect(2, STUN)
@@ -257,7 +257,7 @@
 /obj/structure/machinery/disposal/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Disposals", "[src.name]")
+		ui = new(user, src, "Disposals", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/disposal/ui_data(mob/user)
@@ -572,7 +572,7 @@
 		if(ismob(AM))
 			var/mob/M = AM
 			if(M.client) //If a client mob, update eye to follow this holder
-				M.client.eye = src
+				M.client.set_eye(src)
 
 	if(other.has_fat_guy)
 		has_fat_guy = 1
@@ -1461,7 +1461,7 @@
 /mob/pipe_eject(direction)
 	if(client)
 		client.perspective = MOB_PERSPECTIVE
-		client.eye = src
+		client.set_eye(src)
 
 /obj/effect/decal/cleanable/blood/gibs/pipe_eject(direction)
 	var/list/dirs

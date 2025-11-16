@@ -1340,6 +1340,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "\improper GRS R.T. Operator Helmet"
 	desc = "A GRS variant of the standard M10 pattern. The front plate is reinforced, fits tighter and also protects from flashbangs. This version has a built in radio-telephone."
 	icon_state = "cia_helmet_t"
+	item_state = "cia_helmet_t"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
@@ -1360,6 +1361,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	phone_category = "GRS"
 	networks_receive = FACTION_LIST_CIA
 	networks_transmit = FACTION_LIST_CIA_MARINE
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
 /obj/item/clothing/head/helmet/marine/sof/grs/damaged
 	name = "\improper damaged GRS Operator Helmet"

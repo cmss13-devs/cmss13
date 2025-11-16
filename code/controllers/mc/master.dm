@@ -493,7 +493,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		if (!skip_ticks)
 			var/checking_runlevel = current_runlevel
 			if(cached_runlevel != checking_runlevel)
-				//resechedule subsystems
+				//reschedule subsystems
 				cached_runlevel = checking_runlevel
 				current_runlevel_subsystems = runlevel_sorted_subsystems[cached_runlevel]
 				var/stagger = world.time

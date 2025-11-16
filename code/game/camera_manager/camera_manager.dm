@@ -236,7 +236,7 @@
 	for(var/turf/visible_turf in visible_things)
 		visible_turfs += visible_turf
 
-	var/list/bbox = get_bbox_of_atoms(visible_turfs)
+	var/list/bbox = get_box_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1
 	var/size_y = bbox[4] - bbox[2] + 1
 

@@ -188,7 +188,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	setup_view(RANGE_TURFS(3, drop))
 
 /datum/admin_podlauncher/proc/setup_view(list/visible_turfs)
-	var/list/bbox = get_bbox_of_atoms(visible_turfs)
+	var/list/bbox = get_box_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1
 	var/size_y = bbox[4] - bbox[2] + 1
 

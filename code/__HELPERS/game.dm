@@ -424,7 +424,7 @@
  *
  * Returns: list(x1, y1, x2, y2)
  */
-/proc/get_bbox_of_atoms(list/atoms)
+/proc/get_box_of_atoms(list/atoms)
 	var/list/list_x = list()
 	var/list/list_y = list()
 	for(var/_a in atoms)

@@ -121,7 +121,7 @@ GLOBAL_VAR_INIT(time_offset, setup_offset())
 /// The last count of possible candidates in the xeno larva pool (updated via get_alien_candidates)
 GLOBAL_VAR(larva_pool_candidate_count)
 
-//Coordinate obsfucator
+//Coordinate obfuscator
 //Used by the rangefinders and linked systems to prevent coords collection/prefiring
 /// A number between -500 and 500.
 GLOBAL_VAR(obfs_x)

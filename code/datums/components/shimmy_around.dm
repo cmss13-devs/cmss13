@@ -3,7 +3,7 @@
 
 /**
  * A component to act on the signal COMSIG_STRUCTURE_COLLIDED to shimmy around a dense structure
- * NOTE: If any part of the Collided proc chain is overriden from obj/structure you must ensure the signal is sent
+ * NOTE: If any part of the Collided proc chain is overridden from obj/structure you must ensure the signal is sent
  */
 /datum/component/shimmy_around
 	/// The structure that we are bound to

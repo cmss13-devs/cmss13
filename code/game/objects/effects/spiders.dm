@@ -104,7 +104,7 @@
 	health = 3
 	var/amount_grown = -1
 	var/obj/structure/pipes/vents/pump/entry_vent
-	var/travelling_in_vent = 0
+	var/traveling_in_vent = 0
 
 /obj/effect/spider/spiderling/Initialize(mapload, ...)
 	. = ..()

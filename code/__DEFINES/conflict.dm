@@ -31,7 +31,7 @@
 #define AMMO_SPECIAL_EMBED (1<<15)
 /// If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself
 #define AMMO_STRIKES_SURFACE (1<<16)
-/// Whether or not the bullet hits the target that was clicked or if it keeps travelling
+/// Whether or not the bullet hits the target that was clicked or if it keeps traveling
 #define AMMO_HITS_TARGET_TURF (1<<17)
 #define AMMO_ALWAYS_FF (1<<18)
 //                              (1<<19) unused, previously was AMMO_HOMING

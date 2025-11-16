@@ -11,7 +11,7 @@
 	/// Delay between firing steps
 	var/fire_mission_delay = 4
 	/// Time to impact in deciseconds
-	var/travelling_time = 100
+	var/traveling_time = 100
 	/// Type of dropship equipment that accepts this type of ammo.
 	var/obj/structure/dropship_equipment/equipment_type
 	/// Ammunition count remaining
@@ -220,7 +220,7 @@
 	name = "\improper PGU-105 30mm Anti-tank ammo crate"
 	icon_state = "30mm_crate_hv"
 	desc = "A crate full of PGU-105 Specialized 30mm APFSDS Titanium-Tungsten alloy penetrators, made for countering peer and near peer APCs, IFVs, and MBTs in CAS support. It is designed to penetrate up to the equivalent 1350mm of RHA when launched from a GAU-21. It is much less effective against soft targets however, in which case 30mm ball ammunition is recommended. WARNING: discarding petals from the ammunition can be harmful if the dropship does not pull out at the needed speeds. Please consult page 3574 of the manual, available for order at any Armat store. Can be loaded into the GAU-21 30mm cannon."
-	travelling_time = 60
+	traveling_time = 60
 	point_cost = 325
 	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at
 	directhit_damage = 80 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
@@ -232,7 +232,7 @@
 	name = "\improper BTU-17/LW Hi-Cap Laser Battery"
 	icon_state = "laser_battery"
 	desc = "A high-capacity laser battery used to power laser beam weapons.  Can be loaded into the LWU-6B Laser Cannon."
-	travelling_time = 10
+	traveling_time = 10
 	ammo_count = 100
 	max_ammo_count = 100
 	equipment_type = /obj/structure/dropship_equipment/weapon/laser_beam_gun
@@ -284,7 +284,7 @@
 	ammo_id = ""
 	bound_width = 64
 	bound_height = 32
-	travelling_time = 60 //faster than 30mm rounds
+	traveling_time = 60 //faster than 30mm rounds
 	max_inaccuracy = 5
 	point_cost = 0
 	fire_mission_delay = 4
@@ -297,7 +297,7 @@
 	name = "\improper AIM-224B 'Widowmaker'"
 	desc = "The AIM-224B missile is a retrofit of the latest in air-to-air missile technology. Earning the nickname of 'Widowmaker' from various dropship pilots after improvements to its guidance warhead prevents it from being jammed leading to its high kill rate. Not well suited for ground bombardment but its high velocity makes it reach its target quickly. This one has been modified to be a free-fall bomb as a result of dropship ammo shortages. Can be loaded into the LAU-444 Guided Missile Launcher."
 	icon_state = "single"
-	travelling_time = 30 //not powerful, but reaches target fast
+	traveling_time = 30 //not powerful, but reaches target fast
 	ammo_id = ""
 	point_cost = 300
 
@@ -323,7 +323,7 @@
 	name = "\improper GBU-67 'Keeper II'"
 	desc = "The GBU-67 'Keeper II' is the latest in a generation of laser guided weaponry that spans all the way back to the 20th century. Earning its nickname from a shortening of 'Peacekeeper' which comes from the program that developed its guidance system and the various uses of it during peacekeeping conflicts. Its payload is designed to devastate armored targets. Can be loaded into the LAU-444 Guided Missile Launcher."
 	icon_state = "paveway"
-	travelling_time = 20 //A fast payload due to its very tight blast zone
+	traveling_time = 20 //A fast payload due to its very tight blast zone
 	ammo_id = "k"
 	point_cost = 300
 
@@ -337,7 +337,7 @@
 	desc = "The AGM-184 Harpoon II is an Anti-Ship Missile, designed and used to effectively take down enemy ships with a huge blast wave with low explosive power. This one is modified to use ground signals and can be seen as a cheaper alternative to conventional ordnance. Can be loaded into the LAU-444 Guided Missile Launcher."
 	icon_state = "harpoon"
 	ammo_id = "s"
-	travelling_time = 50
+	traveling_time = 50
 	point_cost = 200
 	fire_mission_delay = 4
 
@@ -365,7 +365,7 @@
 	desc = "The BLU-200 'Dragon's Breath' is a thermobaric fuel-air bomb. The aerosolized fuel mixture creates a vacuum when ignited causing serious damage to those in its way. Can be loaded into the LAU-444 Guided Missile Launcher."
 	icon_state = "fatty"
 	ammo_id = "f"
-	travelling_time = 50
+	traveling_time = 50
 	point_cost = 300
 
 /obj/structure/ship_ammo/rocket/thermobaric/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
@@ -386,7 +386,7 @@
 	ammo_count = 6
 	max_ammo_count = 6
 	ammo_name = "minirocket"
-	travelling_time = 80 //faster than 30mm cannon, slower than real rockets
+	traveling_time = 80 //faster than 30mm cannon, slower than real rockets
 	transferable_ammo = TRUE
 	point_cost = 300
 	fire_mission_delay = 3 //high cooldown
@@ -434,7 +434,7 @@
 	ammo_count = 1
 	max_ammo_count = 1
 	ammo_name = "area denial sentry"
-	travelling_time = 0 // handled by droppod
+	traveling_time = 0 // handled by droppod
 	point_cost = 800 //handled by printer
 	accuracy_range = 0 // pinpoint
 	max_inaccuracy = 0

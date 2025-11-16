@@ -320,7 +320,7 @@
 
 /obj/item/pamphlet/language/japanese
 	name = "Pages of Turedobando Yohei Adobencha Zohuken"
-	desc = "These are some torn pages from a famous isekai manga named 'Turedobando Yohei Adobencha Zohuken' or Japanese Mercenary Adventure Sequel about a travelling band of Freelancers sent into a fantasy world. Why do you even know this?"
+	desc = "These are some torn pages from a famous isekai manga named 'Turedobando Yohei Adobencha Zohuken' or Japanese Mercenary Adventure Sequel about a traveling band of Freelancers sent into a fantasy world. Why do you even know this?"
 	trait = /datum/character_trait/language/japanese
 
 /obj/item/pamphlet/language/chinese

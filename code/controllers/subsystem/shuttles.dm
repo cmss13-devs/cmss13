@@ -199,7 +199,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/transit_width = SHUTTLE_TRANSIT_BORDER * 2
 	var/transit_height = SHUTTLE_TRANSIT_BORDER * 2
 
-	// Shuttles travelling on their side have their dimensions swapped
+	// Shuttles traveling on their side have their dimensions swapped
 	// from our perspective
 	switch(dock_dir)
 		if(NORTH, SOUTH)

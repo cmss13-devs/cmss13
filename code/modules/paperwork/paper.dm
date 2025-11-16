@@ -686,7 +686,7 @@
 
 /obj/item/paper/soro/clf
 	name = "TOP SECRET: FOR CELL LEAD ONLY"
-	info = "Your request for extraction has been recieved. We have no assets in the region available. Await further instruction."
+	info = "Your request for extraction has been received. We have no assets in the region available. Await further instruction."
 
 /obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
 	. = ..()

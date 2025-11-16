@@ -567,7 +567,7 @@
 /// To be used with delta_time. Multiplied by 10 to convert from deciseconds to seconds
 #define AMOUNT_PER_TIME(amount, time) (((amount) / (time))*10)
 
-// Local message mode. Used to decide wheter message should be dispatched on the radio.
+// Local message mode. Used to decide whether message should be dispatched on the radio.
 #define MESSAGE_MODE_LOCAL 1
 // The number of channels you can multibroadcast at a time
 #define MULTIBROADCAST_MAX_CHANNELS 4

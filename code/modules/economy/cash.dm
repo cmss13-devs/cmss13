@@ -118,7 +118,7 @@
 /obj/item/spacecash/c1
 	name = "1 dollar bill"
 	icon_state = "spacecash1"
-	desc = "A single US Government minted one dollar bill. It has a picture of George Washington printed on it. Makes most people of English origin cry, but isn't worth very much. Could probably get you half a hot-dog in some systems. "
+	desc = "A single US Government minted one dollar bill. It has a picture of George Washington printed on it. Makes most people of English origin cry, but isn't worth very much. Could probably get you half a hot-dog in some systems."
 	worth = 1
 
 /obj/item/spacecash/c10
@@ -154,7 +154,7 @@
 /obj/item/spacecash/c500
 	name = "500 dollars"
 	icon_state = "spacecash500"
-	desc = "Five US Government minted hundred-dollar bills. All of them have pictures of Ben Franklin on them. They all eagarly glare at you, making you feel as if you owe them something. "
+	desc = "Five US Government minted hundred-dollar bills. All of them have pictures of Ben Franklin on them. They all eagarly glare at you, making you feel as if you owe them something."
 	worth = 500
 
 /obj/item/spacecash/c500/counterfeit

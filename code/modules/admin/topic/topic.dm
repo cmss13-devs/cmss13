@@ -2189,7 +2189,7 @@
 			fax_stamp_print = "<HR><i>This paper has been stamped by the [FAX_NET_PRESS_HC].</i>"
 
 	var/msg_ghost = SPAN_NOTICE(faction_ghost_header)
-	msg_ghost += "Transmitting '[customname]' via secure connection ... "
+	msg_ghost += "Transmitting '[customname]' via secure connection ..."
 	msg_ghost += "<a href='byond://?FaxView=\ref[fax_message]'>view message</a>"
 	announce_fax( ,msg_ghost)
 

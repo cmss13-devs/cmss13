@@ -304,7 +304,7 @@
 
 /obj/item/prop/magazine/book/theartofwar
 	name = "The Art of War"
-	desc = "A treatise on war written by the legendary Sun Tzu, a great general, strategist, and philosopher from ancient Earth. This book is on the Commandant of the United States Colonial Marine Corps reading list and most officers can be found in possession of a copy. Most officers who've read it claim to know a little bit more about fighting than most who did not, but results may vary a lot. "
+	desc = "A treatise on war written by the legendary Sun Tzu, a great general, strategist, and philosopher from ancient Earth. This book is on the Commandant of the United States Colonial Marine Corps reading list and most officers can be found in possession of a copy. Most officers who've read it claim to know a little bit more about fighting than most who did not, but results may vary a lot."
 	icon_state = "book_red"
 	item_state = "book_red"
 

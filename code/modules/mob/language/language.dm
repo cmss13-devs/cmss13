@@ -78,7 +78,7 @@
 		scrambled_text += next
 		var/chance = rand(100)
 		if(chance <= sentence_chance)
-			scrambled_text += ". "
+			scrambled_text += "."
 			capitalize = TRUE
 		else if(chance > sentence_chance && chance <= space_chance)
 			scrambled_text += " "
@@ -118,7 +118,7 @@
 		scrambled_text += next
 		var/chance = rand(100)
 		if(chance <= sentence_chance)
-			scrambled_text += ". "
+			scrambled_text += "."
 			capitalize = TRUE
 		else if(chance > sentence_chance && chance <= space_chance)
 			scrambled_text += " "

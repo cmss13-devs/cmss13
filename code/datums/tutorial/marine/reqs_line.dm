@@ -243,7 +243,7 @@
 		request += pick(catalogue)
 		if(i < 6) // Only telescope catalogues the first 5 times as the chances compound
 			catalogue += request
-	spawn_agent(request, "Lv [survival_wave]. ")
+	spawn_agent(request, "Lv [survival_wave].")
 
 /// Called when an agent presents at the line window and needs to make a request
 /datum/tutorial/marine/reqs_line/proc/a_new_challenger_appears(turf/source, mob/living/carbon/human/challenger)

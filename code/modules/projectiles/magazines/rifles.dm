@@ -666,7 +666,7 @@
 
 /obj/item/ammo_magazine/rifle/l64
 	name = "\improper L64A3 squash-head magazine (8.88x51mm Caseless)"
-	desc = "A magazine of L10A7 squash-head match-grade 8.88x51mm ammo. "
+	desc = "A magazine of L10A7 squash-head match-grade 8.88x51mm ammo."
 	caliber = "8.88x51mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/marksman_rifles.dmi'
 	icon_state = "l64"

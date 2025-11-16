@@ -880,13 +880,13 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/goldtrimberet
 	name = "beret"
-	desc = "A maroon beret with gold trim"
+	desc = "A maroon beret with gold trim."
 	icon_state = "gtberet"
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/commandercookies //CKEY=commandercookies
 	name = "Elliots Beret"
-	desc = "A dark maroon beret"
+	desc = "A dark maroon beret."
 	icon_state = "eberet"
 	flags_inventory = BLOCKSHARPOBJ
 

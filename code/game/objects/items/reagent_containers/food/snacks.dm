@@ -6,7 +6,7 @@
 
 /obj/item/reagent_container/food/snacks
 	name = "snack"
-	desc = "yummy"
+	desc = "Yummy!"
 	icon = 'icons/obj/items/food/junkfood.dmi'
 	icon_state = null
 	item_icons = list(

@@ -444,7 +444,7 @@
 
 /obj/item/device/radio/headset/almayer/verb/enter_tree()
 	set name = "Enter Techtree"
-	set desc = "Enter the Marine techtree"
+	set desc = "Enter the Marine techtree."
 	set category = "Object.Techtree"
 	set src in usr
 
@@ -453,7 +453,7 @@
 
 /obj/item/device/radio/headset/almayer/verb/give_medal_recommendation()
 	set name = "Give Medal Recommendation"
-	set desc = "Send a medal recommendation for approval by the Commanding Officer"
+	set desc = "Send a medal recommendation for approval by the Commanding Officer."
 	set category = "Object.Medals"
 	set src in usr
 

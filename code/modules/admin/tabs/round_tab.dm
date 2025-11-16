@@ -173,7 +173,7 @@
 
 /datum/admins/proc/delay()
 	set name = "Delay Round Start/End"
-	set desc = "Delay the game start/end"
+	set desc = "Delay the game start/end."
 	set category = "Server.Round"
 
 	if(!check_rights(R_SERVER))

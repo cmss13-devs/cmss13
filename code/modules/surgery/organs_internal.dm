@@ -27,7 +27,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 /datum/surgery_step/repair_organs
 	name = "Repair Damaged Organs"
-	desc = "repair the organ damage"
+	desc = "Repair the organ damage."
 	//Tools used to fix damaged organs. Predator herbs may be herbal and organic, but are not as good for surgery.
 	tools = list(
 		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,

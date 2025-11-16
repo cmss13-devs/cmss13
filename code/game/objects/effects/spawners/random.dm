@@ -319,7 +319,7 @@
 
 /obj/effect/spawner/random/gun
 	name = "PARENT TYPE"
-	desc = "don't spawn this"
+	desc = "Don't spawn this."
 	icon_state = "map_hazard"
 	var/scatter = TRUE
 	var/mags_max = 5

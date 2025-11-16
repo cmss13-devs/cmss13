@@ -104,7 +104,7 @@
 
 /mob/living/carbon/xenomorph/verb/toggle_auto_shove()
 	set name = "Toggle Automatic Shove"
-	set desc = "Toggles whethever you will automatically shove people as the Queen"
+	set desc = "Toggles whethever you will automatically shove people as the Queen."
 	set category = "Alien"
 
 

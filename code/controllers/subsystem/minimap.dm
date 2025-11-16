@@ -925,7 +925,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/exit_map
 	name = "Close Minimap"
-	desc = "Close the minimap"
+	desc = "Close the minimap."
 	icon = 'icons/ui_icons/minimap_buttons.dmi'
 	icon_state = "close"
 	screen_loc = "RIGHT,TOP"
@@ -1512,7 +1512,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/popout
 	icon_state = "popout"
-	desc = "Pop the minimap to a window"
+	desc = "Pop the minimap to a window."
 	screen_loc = "15,4"
 
 /atom/movable/screen/minimap_tool/popout/clicked(location, list/modifiers)

@@ -156,7 +156,7 @@
 
 /datum/admins/proc/toggleaban()
 	set category = "Server"
-	set desc = "Respawn basically"
+	set desc = "Respawn, basically."
 	set name = "Toggle Respawn"
 	CONFIG_SET(flag/respawn, !CONFIG_GET(flag/respawn))
 	if (CONFIG_GET(flag/respawn))
@@ -171,7 +171,7 @@
 
 /datum/admins/proc/spawn_atom(object as text)
 	set category = "Debug"
-	set desc = "(atom path) Spawn an atom"
+	set desc = "(atom path) Spawn an atom."
 	set name = "Spawn"
 
 	if(!check_rights(R_SPAWN))

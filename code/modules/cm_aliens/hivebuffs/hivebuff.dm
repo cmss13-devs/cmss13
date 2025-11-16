@@ -26,7 +26,7 @@
 	///Name of the buff, short and to the point
 	var/name = "Hivebuff"
 	/// Description of what the buff does.
-	var/desc = "Base hivebuff"
+	var/desc = "Base hivebuff."
 	/// Path to .dmi with hivebuff radial icons
 	var/hivebuff_radial_dmi = 'icons/ui_icons/hivebuff_radial.dmi'
 	/// Image to display on radial menu
@@ -531,7 +531,7 @@
 
 /datum/hivebuff/attack
 	name = "Boon of Aggression"
-	desc = "Increases all xenomorph damage by 5 for 5 minutes"
+	desc = "Increases all xenomorph damage by 5 for 5 minutes."
 	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The Queen has imbued us with sharp claws."
@@ -549,7 +549,7 @@
 
 /datum/hivebuff/attack/major
 	name = "Major Boon of Aggression"
-	desc = "Increases all xenomorph damage by 10 for 10 minutes"
+	desc = "Increases all xenomorph damage by 10 for 10 minutes."
 	tier = HIVEBUFF_TIER_MAJOR
 
 	engage_flavourmessage = "The Queen has imbued us with razor-sharp claws."

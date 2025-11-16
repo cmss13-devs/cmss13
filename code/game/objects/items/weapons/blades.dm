@@ -316,7 +316,7 @@
 
 /obj/item/weapon/straight_razor/verb/change_hair_style()
 	set name = "Change Hair Style"
-	set desc = "Change your hair style"
+	set desc = "Change your hair style."
 	set category = "Object"
 	set src in usr
 

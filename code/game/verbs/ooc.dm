@@ -192,7 +192,7 @@ CLIENT_VERB(looc, msg as text)
 
 CLIENT_VERB(round_info)
 	set name = "Current Map" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
-	set desc = "Information about the current round"
+	set desc = "Information about the current round."
 	set category = "OOC"
 	to_chat_spaced(usr, html = FONT_SIZE_LARGE(SPAN_NOTICE("The current map is [SSmapping.configs[GROUND_MAP].map_name]")))
 
@@ -200,7 +200,7 @@ CLIENT_VERB(round_info)
 // If this happens, let the player manually close them all
 CLIENT_VERB(fixnanoui)
 	set name = "Fix Interfaces"
-	set desc = "Fixes all broken interfaces by forcing all existing ones to close"
+	set desc = "Fixes all broken interfaces by forcing all existing ones to close."
 	set category = "OOC.Fix"
 
 	if(!mob)
@@ -223,7 +223,7 @@ CLIENT_VERB(fixnanoui)
 CLIENT_VERB(fit_viewport)
 	set name = "Fit Viewport"
 	set category = "OOC"
-	set desc = "Fit the width of the map window to match the viewport"
+	set desc = "Fit the width of the map window to match the viewport."
 
 	// Fetch aspect ratio
 	var/view_size = getviewsize(view)

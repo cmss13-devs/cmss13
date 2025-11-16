@@ -42,7 +42,7 @@
 
 /datum/surgery_step/mstabilize_wounds
 	name = "stabilize wounds"
-	desc = "stabilize the wounds"
+	desc = "Stabilize the wounds."
 	tools = SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND
 	time = 5 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
@@ -86,7 +86,7 @@
 
 /datum/surgery_step/mtend_wounds
 	name = "Tend Wounds"
-	desc = "tend the wounds"
+	desc = "Tend the wounds."
 	tools = SURGERY_TOOLS_MEDICOMP_MEND_WOUND
 	time = 15 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -150,7 +150,7 @@
 
 /datum/surgery_step/cauterize/mclamp_wound
 	name = "Clamp Wounds"
-	desc = "clamp the wounds"
+	desc = "Clamp the wounds."
 	tools = SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND
 	time = 10 SECONDS
 

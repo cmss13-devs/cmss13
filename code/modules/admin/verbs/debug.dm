@@ -292,7 +292,7 @@
 
 /client/proc/cmd_assume_direct_control(mob/M in GLOB.mob_list)
 	set name = "Control Mob"
-	set desc = "Assume control of the mob"
+	set desc = "Assume control of the mob."
 	set category = null
 
 	if(!check_rights(R_DEBUG|R_ADMIN))
@@ -320,7 +320,7 @@
 /client/proc/cmd_debug_list_processing_items()
 	set category = "Debug.Controllers"
 	set name = "List Processing Items"
-	set desc = "For scheduler debugging"
+	set desc = "For scheduler debugging."
 
 	var/list/individual_counts = list()
 	for(var/datum/disease/M in SSdisease.all_diseases)
@@ -352,7 +352,7 @@
 /client/proc/allow_browser_inspect()
 	set category = "Debug"
 	set name = "Allow Browser Inspect"
-	set desc = "Allow browser debugging via inspect"
+	set desc = "Allow browser debugging via inspect."
 
 	if(!check_rights(R_DEBUG) || !isclient(src))
 		return

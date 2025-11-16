@@ -457,7 +457,7 @@
 
 /client/proc/generate_sound_queues()
 	set name = "Queue sounds"
-	set desc = "stress test this bich"
+	set desc = "Stress test this bitch."
 	set category = "Debug"
 
 	var/ammount = tgui_input_number(usr, "How many sounds to queue?")

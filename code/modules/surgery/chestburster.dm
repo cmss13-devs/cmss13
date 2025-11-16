@@ -26,7 +26,7 @@
 
 /datum/surgery_step/cut_larval_pseudoroots
 	name = "Cut Larval Pseudoroots"
-	desc = "sever the xenomorph larva's pseudoroots"
+	desc = "Sever the xenomorph larva's pseudoroots."
 	//Similar to INCISION, but including the PICT also. Using the PICT prevents acid spray.
 	tools = list(
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_IDEAL,
@@ -111,7 +111,7 @@
 
 /datum/surgery_step/remove_larva
 	name = "Remove Larva"
-	desc = "extract the xenomorph larva"
+	desc = "Extract the xenomorph larva."
 	accept_hand = TRUE
 	/*Using the hands to forcefully rip out the larva will be faster at the cost of damaging both the doctor and the patient, with the addition of organ damage.
 	Unlike before, the hemostat is now the best tool for removing removing the larva, as opposed to wirecutters and the fork.*/

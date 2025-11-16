@@ -481,7 +481,7 @@
 
 /obj/structure/machinery/defenses/verb/toggle_turret_locks_verb()
 	set name = "Toggle Turret Lock"
-	set desc = "Toggles allowing non-engineers to turn turrets on and off"
+	set desc = "Toggles allowing non-engineers to turn turrets on and off."
 	set category = "Object"
 	set src in view(1)
 	if(static)

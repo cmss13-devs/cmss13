@@ -1,0 +1,4 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - imageadd: "changes snow camo spec head rag sprite to be like other camo ones"

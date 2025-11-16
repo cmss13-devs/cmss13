@@ -136,6 +136,10 @@
 	QDEL_NULL(battery)
 	. = ..()
 
+/obj/item/weapon/gun/smartgun/cock(mob/user)
+	to_chat(user, SPAN_WARNING("You can't manually unload a smartgun's chamber!"))
+	return
+
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
 
@@ -966,6 +970,7 @@
 /obj/item/weapon/gun/smartgun/l56a2/Initialize(mapload, ...)
 	. = ..()
 	toggle_aim_assist(null, TRUE)
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/smartgun/l56a2/elite
 	name = "\improper L56A2D 'Dirty' smartgun"
@@ -1085,7 +1090,7 @@
 			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
 			jammed = FALSE
-			cock_cooldown += 1 SECONDS //so they dont accidentally cock a bullet away
+			cock_cooldown += 1 SECONDS //so they don't accidentally cock a bullet away
 			balloon_alert(user, "*unjammed!*")
 		else
 			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
@@ -1162,6 +1167,10 @@
 	item_state = "la56"
 	gun_faction = FACTION_TWE
 
+/obj/item/weapon/gun/smartgun/rmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/weapon/gun/smartgun/upp
 	name = "\improper RFVS37 smartgun"
 	desc = "The actual firearm in the 2-piece RFVS37 Smartgun System. This experimental variant is used by the Union of Progressive Peoples units."
@@ -1173,6 +1182,10 @@
 	current_mag = /obj/item/ammo_magazine/smartgun/upp
 	mouse_pointer = 'icons/effects/mouse_pointer/upp_smartgun_mouse.dmi'
 	gun_faction = FACTION_UPP
+
+/obj/item/weapon/gun/smartgun/upp/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 //  Solar devils SG, frontline mode only
 

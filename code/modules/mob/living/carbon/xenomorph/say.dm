@@ -123,7 +123,7 @@
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>F</a>)"
 					var/broadcast_tier = "normal"
 					if(xeno.is_hive_ruler())
-						var/mob/hologram/queen/queen_eye = client?.eye
+						var/mob/hologram/queen/queen_eye = client?.get_eye()
 						if(istype(queen_eye))
 							track += " (<a href='byond://?src=\ref[S];track=\ref[queen_eye]'>E</a>)"
 						broadcast_tier = "royal"

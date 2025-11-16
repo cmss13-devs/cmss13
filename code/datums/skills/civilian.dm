@@ -184,7 +184,7 @@ CIVILIAN
 
 /datum/skills/civilian/survivor/pmc/co_survivor // PMC Nightmare Variant of CMB CO Survivor for Solaris Ridge
 	name = "Survivor PMC Field Operations Leader"
-	skills = list(
+	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_EXPERT,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,

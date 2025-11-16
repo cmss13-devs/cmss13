@@ -20,20 +20,45 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 	var/list/machinery_type_whitelist = list(/obj/structure/machinery/colony_floodlight)
 	///The types of machinery we don't control (generated automatically)
 	var/list/machinery_type_blacklist = list()
+	///Possible lightswitch links in the case multiple switches control the same machines
+	var/list/linked_switches = list()
+
+/obj/structure/machinery/colony_floodlight_switch/update_icon()
+	if(!ispowered)
+		icon_state = "panelnopower"
+	else if(is_on)
+		icon_state = "panelon"
+	else
+		icon_state = "paneloff"
 
 /obj/structure/machinery/colony_floodlight_switch/Initialize(mapload, ...)
 	. = ..()
 	for(var/obj/structure/machinery/colony_floodlight_switch/other_switch as anything in GLOB.all_breaker_switches)
-		// blacklist anything other switches whitelist if theres subtype overlap
-		for(var/other_whitelisted in other_switch.machinery_type_whitelist)
-			if(is_path_in_list(other_whitelisted, machinery_type_whitelist))
-				machinery_type_blacklist |= other_whitelisted
-		for(var/our_whitelisted in machinery_type_whitelist)
-			if(is_path_in_list(our_whitelisted, other_switch.machinery_type_whitelist))
-				other_switch.machinery_type_blacklist |= our_whitelisted
+		// check if the whitelists are the same
+		var/whitelist_size = length(machinery_type_whitelist)
+		var/duplicate = whitelist_size != 0 && whitelist_size == length(other_switch.machinery_type_whitelist)
+		if(duplicate)
+			for(var/i in 1 to whitelist_size)
+				if(machinery_type_whitelist[i] != other_switch.machinery_type_whitelist[i])
+					duplicate = FALSE
+					break
+
+		if(duplicate)
+			// We're assuming the role of master switch
+			linked_switches |= other_switch
+			other_switch.linked_switches |= src
+			other_switch.machinery_type_blacklist |= machinery_type_whitelist
+		else
+			// blacklist anything other switches whitelist if theres subtype overlap
+			for(var/other_whitelisted in other_switch.machinery_type_whitelist)
+				if(is_path_in_list(other_whitelisted, machinery_type_whitelist))
+					machinery_type_blacklist |= other_whitelisted
+			for(var/our_whitelisted in machinery_type_whitelist)
+				if(is_path_in_list(our_whitelisted, other_switch.machinery_type_whitelist))
+					other_switch.machinery_type_blacklist |= our_whitelisted
 
 	GLOB.all_breaker_switches += src
-	return INITIALIZE_HINT_LATELOAD
+	return INITIALIZE_HINT_ROUNDSTART
 
 /obj/structure/machinery/colony_floodlight_switch/LateInitialize()
 	. = ..()
@@ -50,43 +75,79 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 	start_processing()
 
 /obj/structure/machinery/colony_floodlight_switch/Destroy()
+	// Find a new master
+	var/obj/structure/machinery/colony_floodlight_switch/new_master_switch = null
+	if(length(linked_switches))
+		new_master_switch = linked_switches[1]
+
+	// Assign new master
 	for(var/obj/structure/machinery/machine as anything in machinery_list)
 		if(machine.breaker_switch == src)
-			machine.breaker_switch = null
+			machine.breaker_switch = new_master_switch
+
+	// Clear any linked switches
+	for(var/obj/structure/machinery/colony_floodlight_switch/linked_switch as anything in linked_switches)
+		linked_switch.linked_switches -= src
+
+	// Update machines
+	if(length(machinery_list))
+		if(new_master_switch)
+			new_master_switch.machinery_list = machinery_list
+			new_master_switch.update_machines()
+		else
+			is_on = FALSE
+			update_machines()
+
+	linked_switches = null
 	machinery_list = null
 	GLOB.all_breaker_switches -= src
 	return ..()
 
-/obj/structure/machinery/colony_floodlight_switch/update_icon()
-	if(!ispowered)
-		icon_state = "panelnopower"
-	else if(is_on)
-		icon_state = "panelon"
-	else
-		icon_state = "paneloff"
-
 /obj/structure/machinery/colony_floodlight_switch/process()
 	var/machinepower = calculate_current_power_usage()
-	for(var/obj/structure/machinery/machine as anything in machinery_list)
-		if(!machine.is_on)
-			continue
-		machinepower += machine.active_power_usage
+
+	if(is_on)
+		// Make sure any linked switch isn't on simultaniously with us
+		for(var/obj/structure/machinery/colony_floodlight_switch/linked_switch as anything in linked_switches)
+			if(linked_switch.is_on)
+				linked_switch.set_is_on(FALSE)
+
+		// Calculate power from all machines
+		for(var/obj/structure/machinery/machine as anything in machinery_list)
+			machinepower += machine.idle_power_usage
+			if(machine.is_on && machine.operable())
+				machinepower += machine.active_power_usage
+		for(var/obj/structure/machinery/colony_floodlight_switch/linked_switch as anything in linked_switches)
+			for(var/obj/structure/machinery/machine as anything in linked_switch.machinery_list)
+				machinepower += machine.idle_power_usage
+				if(machine.is_on && machine.operable())
+					machinepower += machine.active_power_usage
+
 	use_power(machinepower)
 
 /obj/structure/machinery/colony_floodlight_switch/power_change()
 	..()
 	if((stat & NOPOWER))
-		if(ispowered && is_on)
-			toggle_machines()
+		var/was_on = is_on
 		ispowered = FALSE
 		set_is_on(FALSE)
+		if(was_on)
+			update_machines()
 	else
 		ispowered = TRUE
 		update_icon()
 
-/obj/structure/machinery/colony_floodlight_switch/proc/toggle_machines()
+/// Reads the current is_on setting, toggles off linked switches if on, and sets all machines to the new state if needed
+/obj/structure/machinery/colony_floodlight_switch/proc/update_machines()
 	for(var/obj/structure/machinery/machine as anything in machinery_list)
-		addtimer(CALLBACK(machine, TYPE_PROC_REF(/obj/structure/machinery, toggle_is_on)), rand(0, 5 SECONDS))
+		if(machine.is_on != is_on)
+			machine.set_is_on(is_on)
+	for(var/obj/structure/machinery/colony_floodlight_switch/linked_switch as anything in linked_switches)
+		if(linked_switch.is_on && is_on)
+			linked_switch.set_is_on(!is_on)
+		for(var/obj/structure/machinery/machine as anything in linked_switch.machinery_list)
+			if(machine.is_on != is_on)
+				machine.set_is_on(is_on)
 
 /obj/structure/machinery/colony_floodlight_switch/attack_hand(mob/user as mob)
 	if(!ishuman(user))
@@ -98,7 +159,7 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 	playsound(src,'sound/items/Deconstruct.ogg', 30, 1)
 	use_power(5)
 	toggle_is_on()
-	toggle_machines()
+	update_machines()
 	return TRUE
 
 
@@ -315,11 +376,20 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 		set_light(0)
 	update_icon()
 
-/obj/structure/machinery/colony_floodlight/toggle_is_on()
-	. = ..()
-	if(!damaged)
-		set_light(is_on ? lum_value : 0)
-	return .
+/obj/structure/machinery/colony_floodlight/set_is_on(is_on)
+	// intentionally not calling parent to delay update_icon call
+	src.is_on = is_on
+	addtimer(CALLBACK(src, PROC_REF(actually_change_light)), rand(0, 5 SECONDS), TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
+/obj/structure/machinery/colony_floodlight/proc/actually_change_light()
+	if(is_on && !damaged)
+		set_light(lum_value)
+	else
+		set_light(0)
+	update_icon()
+
+/obj/structure/machinery/colony_floodlight/inoperable(additional_flags)
+	return damaged
 
 #undef FLOODLIGHT_REPAIR_UNSCREW
 #undef FLOODLIGHT_REPAIR_CROWBAR

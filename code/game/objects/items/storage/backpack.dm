@@ -1120,6 +1120,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	camo_on_sound = 'sound/effects/pred_cloakon.ogg'
 	camo_off_sound = 'sound/effects/pred_cloakoff.ogg'
 
+/obj/item/storage/backpack/marine/satchel/scout_cloak/wy_invis_droid/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 // Welder Backpacks //
 
 /obj/item/storage/backpack/marine/engineerpack
@@ -1185,7 +1189,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	if(!proximity)
 		return
 	if(istype(target, /obj/structure/reagent_dispensers))
-		if(!(istypestrict(target, /obj/structure/reagent_dispensers/fueltank)))
+		if(!(istypestrict(target, /obj/structure/reagent_dispensers/tank/fuel)))
 			to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
 			return
 		if(reagents.total_volume < max_fuel)
@@ -1256,7 +1260,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
 		return
-	if (!(istype(target, /obj/structure/reagent_dispensers/fueltank)))
+	if (!(istype(target, /obj/structure/reagent_dispensers/tank/fuel)))
 		return
 
 	if (reagents.total_volume >= max_fuel)
@@ -1363,6 +1367,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_storage_space = 15
 
+/obj/item/storage/backpack/molle/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/alphatech)
+
 /obj/item/storage/backpack/molle/backpack
 	name = "\improper T16 MOLLE Backpack"
 	desc = "Tactical backpack manufactured by one of the Alphatech subsidiaries. Very lightweight backpack that utilizes UA standard MOLLE fastening systems, which allows easy access and optimal weight distribution. Can be often found in hands of colonial security and various private military groups."
@@ -1385,6 +1393,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	)
 	worn_accessible = TRUE
 	max_storage_space = 15
+
+/obj/item/storage/backpack/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/backpack/pmc/medic
 	name = "\improper W-Y medic combat pack"
@@ -1435,6 +1447,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_fuel = 180
 
+/obj/item/storage/backpack/marine/engineerpack/ert/pmc/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/item/storage/backpack/pmc/backpack/commando/apesuit
 	name = "Dog Catcher bag"
 	desc = "A heavy-duty bag carried by Weyland-Yutani Dog Catchers."
@@ -1449,6 +1465,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi'
 	)
 	worn_accessible = TRUE
+
+/obj/item/storage/backpack/combat_droid/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/storage/backpack/mcommander
 	name = "marine commanding officer backpack"
@@ -1503,6 +1523,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/internal_mag = new /obj/item/ammo_magazine/internal/souto
 	worn_accessible = TRUE
 
+/obj/item/storage/backpack/souto/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/souta)
 
 //----------UPP SECTION----------
 
@@ -1517,6 +1540,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_storage_space = 15
 
+/obj/item/storage/backpack/lightpack/upp/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
+
 //UPP engineer welderpack
 /obj/item/storage/backpack/marine/engineerpack/upp
 	name = "\improper UCP3-E technician welderpack"
@@ -1530,6 +1557,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_fuel = 180
 	max_storage_space = 12
+
+/obj/item/storage/backpack/marine/engineerpack/upp/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/norcomm)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/upp
 	name = "\improper V86 Thermal Cloak"

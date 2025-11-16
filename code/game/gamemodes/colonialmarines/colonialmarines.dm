@@ -293,6 +293,9 @@
 /datum/game_mode/colonialmarines/proc/clear_proximity_resin()
 	var/datum/cause_data/cause_data = create_cause_data(/obj/effect/particle_effect/smoke/weedkiller::name)
 
+	if(!active_lz)
+		pick_a_lz()
+
 	for(var/area/near_area as anything in GLOB.all_areas)
 		var/area_lz = near_area.linked_lz
 		if(!area_lz)
@@ -398,7 +401,7 @@
 
 	if(LAZYFIND(role_needs_comms, role_in_charge))
 		//If the role needs comms we let them know about the headset.
-		announce_addendum += "\nA Command headset is availible in the CIC Command Tablet cabinet."
+		announce_addendum += "\nA Command headset is available in the CIC Command Tablet cabinet."
 
 	if(LAZYFIND(role_needs_id, role_in_charge))
 		//If the role needs senior command access, we need to add it to the ID card.
@@ -450,9 +453,8 @@
 					xeno_message("The Hive is ready for a new Queen to evolve. The Hive can only survive for a limited time without a Queen!", 3, hive.hivenumber)
 
 
-
-		if(!active_lz && world.time > lz_selection_timer)
-			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+		if(!active_lz && ROUND_TIME > lz_selection_timer)
+			pick_a_lz()
 
 		// Automated bioscan / Queen Mother message
 		if(world.time > bioscan_current_interval) //If world time is greater than required bioscan time.
@@ -552,6 +554,13 @@
 // Resource Towers
 
 /datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
+	if(!active_lz)
+		var/dest_id = marine_dropship.destination?.id
+		if(dest_id == DROPSHIP_LZ1)
+			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+		else if (dest_id == DROPSHIP_LZ2)
+			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
+
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
 	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear), marine_dropship), DROPSHIP_DROP_FIRE_DELAY)
 	DB_ENTITY(/datum/entity/survivor_survival) // Record surv survival right now

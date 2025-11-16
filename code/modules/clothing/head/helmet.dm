@@ -429,6 +429,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 	. = ..()
 	AddComponent(/datum/component/overwatch_console_control)
+	AddElement(/datum/element/corp_label/armat)
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -1185,6 +1186,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	inserted_visors = list(new /obj/item/device/helmet_visor/po_visor)
 	max_inserted_visors = 1
 
+/obj/item/clothing/head/helmet/marine/pilot/novisor //For vendors that give sepreate visor options
+	inserted_visors = list()
+
 /obj/item/clothing/head/helmet/marine/pilot/tex
 	name = "\improper Tex's MK30 tactical helmet"
 	desc = "The MK30 tactical helmet has an eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."
@@ -1370,6 +1374,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	built_in_visors = list(new /obj/item/device/helmet_visor/security)
+
+/obj/item/clothing/head/helmet/marine/veteran/cmb/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/clothing/head/helmet/marine/veteran/cmb/engi
 	built_in_visors = list(new /obj/item/device/helmet_visor/security, new /obj/item/device/helmet_visor/welding_visor)
@@ -1900,6 +1908,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "generic_helm"
 	item_state = "generic_helm"
 	flags_marine_helmet = HELMET_GARB_OVERLAY
+
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine/generic/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/alphatech)
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/pilot
 	name = "\improper PH-4 'Spitfire' flight helmet"

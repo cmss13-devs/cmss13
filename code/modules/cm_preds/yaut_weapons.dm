@@ -168,7 +168,7 @@
 			if(combo_counter >= 4 && target != user)
 				var/facing = get_dir(user, target)
 				var/reverse_facing = get_dir(target, user)
-				if(has_chain) // Generating the chain for the effect, its a bullet so it looks like youre "throwing it / it looks like its travelling"
+				if(has_chain) // Generating the chain for the effect, its a bullet so it looks like you're "throwing it / it looks like its travelling"
 					var/obj/projectile/hook_projectile = new /obj/projectile(user.loc, create_cause_data("hook"), user)
 					var/datum/ammo/ammoDatum = GLOB.ammo_list[/datum/ammo/yautja/gauntlet_hook]
 					hook_projectile.generate_bullet(ammoDatum, bullet_generator = user)
@@ -210,7 +210,7 @@
 				playsound(target, 'sound/effects/bang.ogg', 25, 0)
 				playsound(target,"slam", 50, 1)
 				animate(target, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
-				sleep(10) // This is so people dont spam click and lineup 300 executions, i know its probably not the best way to do it.
+				sleep(10) // This is so people don't spam click and lineup 300 executions, i know its probably not the best way to do it.
 				executing = FALSE
 
 		if((INTENT_HARM)) // This is how you farm combo counters, so there's no special interaction.
@@ -360,6 +360,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
@@ -949,6 +950,7 @@
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
@@ -1177,6 +1179,7 @@
 	item_state = "spikelauncher"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/pred_guns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/back/guns_by_type/pred_guns.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_righthand.dmi'
 	)
@@ -1274,6 +1277,7 @@
 	muzzle_flash_color = COLOR_MAGENTA
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/pred_guns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/back/guns_by_type/pred_guns.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pred_guns_righthand.dmi'
 	)
@@ -1493,14 +1497,10 @@
 	var/base_item_state = "plasma_wear"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
-		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/suit_storage.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/suit_storage.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
-	)
-	item_state_slots = list(
-		WEAR_BACK = "plasma_wear_off",
-		WEAR_J_STORE = "plasma_wear_off"
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo = /datum/ammo/energy/yautja/caster/bolt/single_stun
@@ -1525,8 +1525,6 @@
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
 	icon_state = "[base_icon_state]_[caster_material]"
 	item_state = "[base_item_state]_[caster_material]"
-	item_state_slots[WEAR_BACK] = "[base_item_state]_off_[caster_material]"
-	item_state_slots[WEAR_J_STORE] = "[base_item_state]_off_[caster_material]"
 	. = ..()
 	source = loc
 	verbs -= /obj/item/weapon/gun/verb/field_strip

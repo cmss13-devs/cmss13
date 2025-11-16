@@ -10,7 +10,7 @@
 	/// How many units of reagent get transfered out of the container at a time
 	var/amount_per_transfer_from_this = 5
 	/// A list of possible amounts that can be transferred
-	var/possible_transfer_amounts = list(5, 10, 15, 25, 30)
+	var/possible_transfer_amounts = list(5, 10, 15, 20, 25, 30)
 	/// The maximum volume the container can hold
 	var/volume = 30
 	/// Can we see what's in it?

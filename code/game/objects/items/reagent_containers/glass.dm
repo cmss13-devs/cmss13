@@ -378,7 +378,7 @@
 	matter = list("glass" = 30000)
 	volume = 500
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,300)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,250,300,500)
 
 
 /obj/item/reagent_container/glass/beaker/vial

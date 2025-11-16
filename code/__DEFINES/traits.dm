@@ -494,7 +494,7 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_CLOTHING "t_s_clothing"
 
 /// trait associated to being buckled
-#define BUCKLED_TRAIT "buckled" // Yes the name doesn't conform. /tg/ appears to have changed naming style inbetween
+#define BUCKLED_TRAIT "buckled" // Yes the name doesn't conform. /tg/ appears to have changed naming style in between
 /// trait source when an effect is coming from a fakedeath effect (refactor this)
 #define FAKEDEATH_TRAIT "fakedeath"
 /// trait source where a condition comes from body state

@@ -227,7 +227,7 @@
 	id = "cl_office_door"
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/window
 	id = "cl_office_windows"
-//adding a subtype for CL quarter to use to secure access to cl quarter.(including seperation with the office)
+//adding a subtype for CL quarter to use to secure access to cl quarter.(including separation with the office)
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/backdoor
 	id = "cl_quarter_maintenance"

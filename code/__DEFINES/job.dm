@@ -515,7 +515,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_FAX_RESPONDER_WY "WY Communications Executive"
 #define JOB_FAX_RESPONDER_UPP "UPP Communications Officer"
 #define JOB_FAX_RESPONDER_TWE "TWE Communications Officer"
-#define JOB_FAX_RESPONDER_CLF "CLF Information Correspondant"
+#define JOB_FAX_RESPONDER_CLF "CLF Information Correspondent"
 #define JOB_FAX_RESPONDER_CMB "CMB Deputy Operations Officer"
 #define JOB_FAX_RESPONDER_PRESS "Free Press Relay Operator"
 

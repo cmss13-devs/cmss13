@@ -33,7 +33,7 @@
 ///This toggles whether guns with auto ejectors will cause you to unwield your gun and put the empty magazine in your hand
 #define TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND (1<<5)
 // MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE
-///This toggles whether manuallye jecting magazines from guns will cause you to unwield your gun and put the empty magazine in your hand
+///This toggles whether manuallye ejecting magazines from guns will cause you to unwield your gun and put the empty magazine in your hand
 #define TOGGLE_EJECT_MAGAZINE_TO_HAND (1<<6)
 ///Whether your sentences will automatically be punctuated with a period
 #define TOGGLE_AUTOMATIC_PUNCTUATION (1<<7)

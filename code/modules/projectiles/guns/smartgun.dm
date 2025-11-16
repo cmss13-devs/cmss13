@@ -1155,8 +1155,8 @@
 	name = "\improper L56A1 smartgun"
 	desc = "The actual firearm in the 2-piece L56A2 Smartgun System. This variant is used by the Three World Empires Royal Marines Commando units."
 	desc_lore = "The L56A1 is a W-Y licensed copy of the original M56 developed for the USMC, this version was marketed to the 3WE's Royal Marines as having a lighter weight construction and as being more reliable then the LMG's in service at the time."
-	current_mag = /obj/item/ammo_magazine/smartgun/holo_targetting
-	ammo = /obj/item/ammo_magazine/smartgun/holo_targetting
+	current_mag = /obj/item/ammo_magazine/smartgun/holo_targeting
+	ammo = /obj/item/ammo_magazine/smartgun/holo_targeting
 	ammo_primary_def = /datum/ammo/bullet/smartgun/holo_target
 	ammo_secondary_def = /datum/ammo/bullet/smartgun/holo_target/ap
 	ammo_primary_alt = /datum/ammo/bullet/smartgun/holo_target/alt

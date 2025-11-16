@@ -610,7 +610,7 @@ world
 /proc/generate_and_hash_rsc_file(file, dmi_file_path)
 	var/rsc_ref = fcopy_rsc(file)
 	var/hash
-	//if we have a valid dmi file path we can trust md5'ing the rsc file because we know it doesnt have the bug described in http://www.byond.com/forum/post/2611357
+	//if we have a valid dmi file path we can trust md5'ing the rsc file because we know it doesn't have the bug described in http://www.byond.com/forum/post/2611357
 	if(dmi_file_path)
 		hash = md5(rsc_ref)
 	else //otherwise, we need to do the expensive fcopy() workaround
@@ -791,7 +791,7 @@ world
 		if (isnull(icon_state))
 			icon_state = thing.icon_state
 			//Despite casting to atom, this code path supports mutable appearances, so let's be nice to them
-			if(isnull(icon_state) || (isatom(thing) && thing.flags_atom & HTML_USE_INITAL_ICON))
+			if(isnull(icon_state) || (isatom(thing) && thing.flags_atom & HTML_USE_INITIAL_ICON))
 				icon_state = initial(thing.icon_state)
 				if (isnull(dir))
 					dir = initial(thing.dir)

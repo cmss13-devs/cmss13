@@ -260,12 +260,12 @@ Template
 /datum/poster/poster_50
 	icon_state="poster50"
 	name = "Synthetic 'Daniel' poster"
-	desc = "An ominous forward facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something inbetween, suited for the needs of colonists. The poster is more art then an advertisement."
+	desc = "An ominous forward facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something in-between, suited for the needs of colonists. The poster is more art then an advertisement."
 
 /datum/poster/poster_51
 	icon_state="poster51"
 	name = "Synthetic 'Daniel' poster"
-	desc = "An ominous side facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something inbetween, suited for the needs of colonists. The poster is more art then an advertisement."
+	desc = "An ominous side facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something in-between, suited for the needs of colonists. The poster is more art then an advertisement."
 
 /datum/poster/poster_52
 	icon_state="poster52"
@@ -320,12 +320,12 @@ Template
 /datum/poster/poster_62
 	icon_state="poster62"
 	name = "Synthetic 'Daniel' poster"
-	desc = "An ominous forward facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something inbetween, suited for the needs of colonists. The poster is more art then an advertisement."
+	desc = "An ominous forward facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something in-between, suited for the needs of colonists. The poster is more art then an advertisement."
 
 /datum/poster/poster_63
 	icon_state="poster63"
 	name = "Synthetic 'Daniel' poster"
-	desc = "An ominous side facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something inbetween, suited for the needs of colonists. The poster is more art then an advertisement."
+	desc = "An ominous side facing profile of the Synthetic model 'Daniel'. Not quite a second generation model but something in-between, suited for the needs of colonists. The poster is more art then an advertisement."
 
 /datum/poster/poster_64
 	icon_state="poster64"

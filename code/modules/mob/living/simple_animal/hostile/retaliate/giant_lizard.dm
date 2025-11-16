@@ -641,7 +641,7 @@
 			AttackingTarget(obstacle)
 			return
 
-//no longer checks for distance with ListTargets(). thershold for losing targets is increased, due to needing range for skirmishing
+//no longer checks for distance with ListTargets(). threshold for losing targets is increased, due to needing range for skirmishing
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/AttackTarget()
 	stop_automated_movement = TRUE
 	var/mob/living/target_mob = target_mob_ref?.resolve()

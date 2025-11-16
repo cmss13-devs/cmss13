@@ -16,7 +16,7 @@
 #define COMSIG_HUMAN_BULLET_ACT "human_bullet_act"
 	#define COMPONENT_CANCEL_BULLET_ACT (1<<0)
 
-/// From /obj/effect/decal/cleanable/blood/Crossed(): (amount, bcolor, dry_time_left)
+/// From /obj/effect/decal/cleanable/blood/Crossed(): (amount, color, dry_time_left)
 #define COMSIG_HUMAN_BLOOD_CROSSED "human_blood_crossed"
 #define COMSIG_HUMAN_CLEAR_BLOODY_FEET "human_clear_bloody_feet"
 /// from /mob/living/carbon/human/attack_alien()

@@ -273,7 +273,7 @@
 	return res
 
 //Mergesort: any value in a list
-// /!\ doesnt seem to work for assoc lists. use sort_list instead
+// /!\ doesn't seem to work for assoc lists. use sort_list instead
 /proc/sortList(list/L)
 	RETURN_TYPE(/list)
 	if(!istype(L))

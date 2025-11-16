@@ -32,7 +32,7 @@
 	desc = "Somehow you got this, you shouldn't be able to, consider yourself special."
 	icon = 'icons/obj/items/disk.dmi'
 	w_class = SIZE_TINY
-	icon_state = "datadisk1" // doesnt HAVE to be a disk!
+	icon_state = "datadisk1" // doesn't HAVE to be a disk!
 	ground_offset_x = 8
 	ground_offset_y = 8
 	///technology stored on this disk, goes through one to whatever levels of upgrades there are.

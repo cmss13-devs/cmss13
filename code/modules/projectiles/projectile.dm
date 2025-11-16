@@ -869,7 +869,7 @@
 		)
 			return FALSE
 		if(mobility_aura)
-			. -= mobility_aura * 5
+			. -= mobility_aura * 4
 		var/mob/living/carbon/human/shooter_human = P.firer
 		if(istype(shooter_human))
 			if(is_ally_of(shooter_human) && !(ammo_flags & AMMO_ALWAYS_FF))

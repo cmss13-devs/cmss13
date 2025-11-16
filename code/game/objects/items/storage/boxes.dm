@@ -561,7 +561,7 @@
 	icon_state = "pillbox"
 	item_state = "pillbox"
 
-	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_GATHER_SIMULTAENOUSLY
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_GATHER_SIMULTANEOUSLY
 	can_hold = list(
 		/obj/item/storage/pill_bottle,
 	)

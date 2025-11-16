@@ -1,5 +1,5 @@
 /turf
-	var/tmp/lighting_corners_initialised = FALSE
+	var/tmp/lighting_corners_initialized = FALSE
 	var/tmp/datum/static_lighting_object/static_lighting_object
 
 	///Lighting Corner datums.

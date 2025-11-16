@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(reagents)
 
 
 /datum/controller/subsystem/reagents/proc/prepare_reagents()
-	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
+	//I dislike having these here but map-objects are initialized before world/New() is called. >_>
 	set waitfor = FALSE
 	//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
 	//Generated chemicals should be initialized last, hence the substract then readd.

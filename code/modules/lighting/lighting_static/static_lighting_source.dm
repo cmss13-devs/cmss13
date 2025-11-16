@@ -203,7 +203,7 @@
 	if (!gen_for.lighting_corner_NW) { \
 		gen_for.lighting_corner_NW = new /datum/static_lighting_corner(gen_for.x - 1, gen_for.y, gen_for.z); \
 	} \
-	gen_for.lighting_corners_initialised = TRUE;
+	gen_for.lighting_corners_initialized = TRUE;
 
 /datum/static_light_source/proc/update_corners()
 	var/update = FALSE
@@ -273,7 +273,7 @@
 		for(var/turf/T in view(CEILING(light_range, 1), source_turf))
 			if(IS_OPAQUE_TURF(T))
 				continue
-			if (!T.lighting_corners_initialised)
+			if (!T.lighting_corners_initialized)
 				GENERATE_MISSING_CORNERS(T)
 
 			corners[T.lighting_corner_NE] = 0
@@ -284,7 +284,7 @@
 			var/turf/above = SSmapping.get_turf_above(T)
 
 			while(above && istransparentturf(above))
-				if (!above.lighting_corners_initialised)
+				if (!above.lighting_corners_initialized)
 					GENERATE_MISSING_CORNERS(above)
 				corners[above.lighting_corner_NE] = 0
 				corners[above.lighting_corner_SE] = 0
@@ -297,7 +297,7 @@
 			var/turf/previous = T
 
 			while(below && istransparentturf(previous))
-				if (!below.lighting_corners_initialised)
+				if (!below.lighting_corners_initialized)
 					GENERATE_MISSING_CORNERS(below)
 				corners[below.lighting_corner_NE] = 0
 				corners[below.lighting_corner_SE] = 0

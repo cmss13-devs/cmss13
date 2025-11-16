@@ -160,7 +160,7 @@
 //*****************************************************************************************************/
 
 /datum/reagent/proc/generate_name()
-	/*We can't make use of this currently because reagents are initialised before reactions. Might fix this at a later date.
+	/*We can't make use of this currently because reagents are initialized before reactions. Might fix this at a later date.
 	if(modifier > 6)
 		modifier = 6
 	var/list/numprefix = list("Mono","Di","Tri","Tetra","Penta","Hexa")*/

@@ -43,7 +43,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence
 	name = "East Lab Maintenence"
 	icon_state = "maintcentral"
-	unoviable_timer = TRUE
+	unoviable_timer = 25 MINUTES
 
 /area/desert_dam/interior/lab_northeast/east_lab_containment
 	name = "East Lab Containment"

@@ -1793,6 +1793,7 @@
 	pixel_x = -9;
 	pixel_y = -3
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/darkyellow2,
 /area/desert_dam/interior/dam_interior/control_room)
 "afz" = (
@@ -1809,6 +1810,7 @@
 /obj/item/stool{
 	pixel_x = 7
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/break_room/upper)
 "afC" = (
@@ -1959,6 +1961,7 @@
 	pixel_y = 4;
 	pixel_x = 2
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/upper_stairwell)
 "afY" = (
@@ -2149,6 +2152,9 @@
 "agH" = (
 /obj/structure/surface/table,
 /obj/item/clipboard,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/control_room)
 "agI" = (
@@ -2208,6 +2214,9 @@
 "agQ" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/darkyellow2/northeast,
 /area/desert_dam/interior/dam_interior/control_room)
 "agR" = (
@@ -2240,6 +2249,9 @@
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/desert_dam/interior/dam_interior/break_room/upper)
 "agY" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/desert_dam/interior/dam_interior/break_room/upper)
 "agZ" = (
@@ -2344,6 +2356,9 @@
 /obj/item/weapon/dart/green{
 	pixel_x = 7;
 	pixel_y = 5
+	},
+/obj/structure/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
@@ -2580,6 +2595,9 @@
 	pixel_y = 32
 	},
 /obj/item/weapon/dart,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/desert_dam/interior/dam_interior/break_room/upper)
 "ahY" = (
@@ -10445,6 +10463,7 @@
 	name = "synthethic potted plant";
 	pixel_y = 5
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/prison/blue/southwest,
 /area/desert_dam/building/administration/breakroom)
 "aGS" = (
@@ -10492,6 +10511,7 @@
 	name = "synthethic potted plant";
 	pixel_y = 5
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/prison/blue/southeast,
 /area/desert_dam/building/administration/breakroom)
 "aHc" = (
@@ -10796,6 +10816,9 @@
 	pixel_x = 11;
 	pixel_y = 10
 	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/prison/blue/northwest,
 /area/desert_dam/building/administration/breakroom)
 "aHR" = (
@@ -10852,6 +10875,9 @@
 "aHW" = (
 /obj/structure/disposalpipe/trunk,
 /obj/structure/machinery/disposal,
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/building/administration/breakroom)
 "aHX" = (
@@ -10891,6 +10917,9 @@
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = 7;
 	pixel_y = 11
+	},
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/prison/blue/northeast,
 /area/desert_dam/building/administration/breakroom)
@@ -18094,9 +18123,29 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel)
+"bfc" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/blue,
+/area/desert_dam/building/administration/breakroom)
+"bfd" = (
+/obj/structure/machinery/light,
+/turf/open/floor/darkyellow2,
+/area/desert_dam/interior/dam_interior/control_room)
 "bfe" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/administration/overseer_office)
+"bff" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/break_room/upper)
+"bfg" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/break_room/upper)
 "bfx" = (
 /obj/structure/platform_decoration/metal/almayer/east,
 /obj/item/trash/chips,
@@ -29395,6 +29444,9 @@
 	icon_state = "trash_10";
 	pixel_x = 4;
 	pixel_y = 19
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/maint/east)
@@ -150041,7 +150093,7 @@ aHW
 aHK
 aHD
 aHn
-aGY
+bfc
 aGI
 hwQ
 nYv
@@ -220072,7 +220124,7 @@ agH
 agr
 aga
 dBg
-afo
+bfd
 vcr
 ipW
 ipW
@@ -223812,7 +223864,7 @@ ahu
 ahu
 aho
 afj
-agW
+bff
 afM
 agf
 afM
@@ -224977,7 +225029,7 @@ afj
 ahY
 agx
 agx
-agx
+bfg
 agx
 agx
 ahs

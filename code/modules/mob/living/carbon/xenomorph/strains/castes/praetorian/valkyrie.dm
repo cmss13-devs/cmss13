@@ -101,7 +101,7 @@
 
 /datum/behavior_delegate/praetorian_valkyrie/proc/use_internal_fury_ability(cost)
 	if (cost > base_fury)
-		to_chat(bound_xeno, SPAN_XENODANGER("We dont feel angry enough to do this!"))
+		to_chat(bound_xeno, SPAN_XENODANGER("We don't feel angry enough to do this!"))
 		return FALSE
 
 	add_base_fury(-cost)
@@ -164,7 +164,7 @@
 	raging_valkyrie.recalculate_armor()
 	RegisterSignal(raging_valkyrie, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE), PROC_REF(calculate_damage_mitigation_self))
 
-	if(istype(buffing_target.caste, /datum/caste_datum/crusher) || istype(buffing_target.caste, /datum/caste_datum/ravager)) // i wouldve made this a list() but for some reason it didnt work.
+	if(istype(buffing_target.caste, /datum/caste_datum/crusher) || istype(buffing_target.caste, /datum/caste_datum/ravager)) // i would've made this a list() but for some reason it didn't work.
 		playsound(get_turf(buffing_target), "alien_roar", 40)
 		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))

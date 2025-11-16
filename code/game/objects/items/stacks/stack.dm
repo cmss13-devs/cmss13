@@ -239,7 +239,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 	if(amount <= 0)
 		var/oldsrc = src
-		src = null //dont kill proc after qdel()
+		src = null  //don't kill proc after qdel()
 		user.drop_inv_item_on_ground(oldsrc)
 		qdel(oldsrc)
 

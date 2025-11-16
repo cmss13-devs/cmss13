@@ -216,7 +216,7 @@ GLOBAL_DATUM_INIT(sortInstance, /datum/sortInstance, new())
 	//ASSERT(len1 > 0 && len2 > 0)
 	//ASSERT(base1 + len1 == base2)
 
-	//Record the legth of the combined runs. If i is the 3rd last run now, also slide over the last run
+	//Record the length of the combined runs. If i is the 3rd last run now, also slide over the last run
 	//(which isn't involved in this merge). The current run (i+1) goes away in any case.
 	runLens[i] += runLens[i+1]
 	runLens.Cut(i+1, i+2)
@@ -418,7 +418,7 @@ GLOBAL_DATUM_INIT(sortInstance, /datum/sortInstance, new())
 			while((count1 | count2) < minGallop)
 
 
-			//one run is winning consistently so galloping may provide huge benifits
+			//one run is winning consistently so galloping may provide huge benefits
 			//so try galloping, until such time as the run is no longer consistently winning
 			do
 				//ASSERT(len1 > 1 && len2 > 0)
@@ -516,7 +516,7 @@ GLOBAL_DATUM_INIT(sortInstance, /datum/sortInstance, new())
 						break outer
 			while((count1 | count2) < minGallop)
 
-			//one run is winning consistently so galloping may provide huge benifits
+			//one run is winning consistently so galloping may provide huge benefits
 			//so try galloping, until such time as the run is no longer consistently winning
 			do
 				//ASSERT(len1 > 0 && len2 > 1)
@@ -644,7 +644,7 @@ GLOBAL_DATUM_INIT(sortInstance, /datum/sortInstance, new())
 			val2 = fetchElement(L,cursor2)
 
 
-	//Record the legth of the combined runs. If i is the 3rd last run now, also slide over the last run
+	//Record the length of the combined runs. If i is the 3rd last run now, also slide over the last run
 	//(which isn't involved in this merge). The current run (i+1) goes away in any case.
 	runLens[i] += runLens[i+1]
 	runLens.Cut(i+1, i+2)

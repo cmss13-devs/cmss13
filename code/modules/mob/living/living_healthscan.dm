@@ -449,7 +449,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		if(length(advice))
 			data["advice"] = advice
 		else
-			data["advice"] = null // interstingly even if we don't set data at all, re-using UI that had this data still has it
+			data["advice"] = null // interestingly even if we don't set data at all, re-using UI that had this data still has it
 
 		//diseases
 		var/list/diseases = list()
@@ -467,7 +467,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		if(length(diseases))
 			data["diseases"] = diseases
 		else
-			data["diseases"] = null // interstingly even if we don't set data at all, re-using UI that had this data still has it
+			data["diseases"] = null // interestingly even if we don't set data at all, re-using UI that had this data still has it
 
 	data["ssd"] = null //clear the data in case we have an old input from a previous scan
 	if(target_mob.getBrainLoss() >= 100 || !target_mob.has_brain())

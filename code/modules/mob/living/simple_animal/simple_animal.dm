@@ -14,7 +14,7 @@
 	melee_damage_upper = 0
 	attacktext = "attacks"
 	attack_sound = null
-	//Attacktext is the mob deal 0 damaage.
+	//Attacktext is the mob deal 0 damage.
 	friendly = "nuzzles"
 	can_crawl = FALSE
 	black_market_value = 25
@@ -38,7 +38,7 @@
 	universal_speak = FALSE //No, just no.
 	var/meat_amount = 0
 	var/meat_type
-	///Use this to temporarely stop random movement or to if you write special movement code for animals.
+	///Use this to temporarily stop random movement or to if you write special movement code for animals.
 	var/stop_automated_movement = 0
 	///Does the mob wander around when idle?
 	var/wander = 1
@@ -181,7 +181,7 @@
 
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
-		if(isturf(loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE) && !HAS_TRAIT(src, TRAIT_HAULED)) //This is so it only moves if it's not inside a closet, gentics machine, etc.
+		if(isturf(loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE) && !HAS_TRAIT(src, TRAIT_HAULED)) //This is so it only moves if it's not inside a closet, genetics machine, etc.
 			turns_since_move++
 			if(turns_since_move >= turns_per_move)
 				if(!(stop_automated_movement_when_pulled && pulledby)) //Soma animals don't move when pulled

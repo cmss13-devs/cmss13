@@ -195,7 +195,7 @@
 
 	setup_banned_allies()
 
-///Generate the image()'s requried for the evolution radial menu.
+///Generate the image()'s required for the evolution radial menu.
 /datum/hive_status/proc/generate_evo_menu_images()
 	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
 		evolution_menu_images[initial(caste.caste_type)] = image('icons/mob/xenos/radial_xenos.dmi', initial(caste.caste_type))
@@ -1577,7 +1577,7 @@
 			potential_hivebuffs -= possible_hivebuff
 			continue
 
-		//If this buff isn't combineable, check if any other active hivebuffs aren't combineable
+		//If this buff isn't combinable, check if any other active hivebuffs aren't combinable
 		if(!initial(possible_hivebuff.is_combineable))
 			var/found_conflict = FALSE
 			for(var/datum/hivebuff/active_hivebuff in active_hivebuffs)

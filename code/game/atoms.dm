@@ -546,7 +546,7 @@ Parameters are passed from New.
 		filters += filter(arglist(arguments))
 	UNSETEMPTY(filter_data)
 
-/** Update a filter's parameter and animate this change. If the filter doesnt exist we won't do anything.
+/** Update a filter's parameter and animate this change. If the filter doesn't exist we won't do anything.
  * Basically a [datum/proc/modify_filter] call but with animations. Unmodified filter parameters are kept.
  *
  * Arguments:

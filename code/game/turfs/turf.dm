@@ -223,7 +223,7 @@
 
 /// Call to move a turf from its current area to a new one
 /turf/proc/change_area(area/old_area, area/new_area)
-	//dont waste our time
+	 //don't waste our time
 	if(old_area == new_area)
 		return
 

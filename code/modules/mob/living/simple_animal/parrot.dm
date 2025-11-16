@@ -2,7 +2,7 @@
  * Contains
  * Defines
  * Inventory (headset stuff)
- * Attack responces
+ * Attack responses
  * AI
  * Procs / Verbs (usable by players)
  * Sub-types
@@ -50,7 +50,7 @@
 	universal_speak = 1
 
 	var/parrot_state = PARROT_WANDER //Hunt for a perch when created
-	var/parrot_sleep_max = 25 //The time the parrot sits while perched before looking around. Mosly a way to avoid the parrot's AI in life() being run every single tick.
+	var/parrot_sleep_max = 25 //The time the parrot sits while perched before looking around. Mostly a way to avoid the parrot's AI in life() being run every single tick.
 	var/parrot_sleep_dur = 25 //Same as above, this is the var that physically counts down
 	var/parrot_dam_zone = list("chest", "head", "l_arm", "l_leg", "r_arm", "r_leg") //For humans, select a bodypart to attack
 
@@ -67,8 +67,8 @@
 	//mobs it wants to attack or mobs that have attacked it
 	var/atom/movable/parrot_interest = null
 
-	//Parrots will generally sit on their pertch unless something catches their eye.
-	//These vars store their preffered perch and if they don't have one, what they can use as a perch
+	//Parrots will generally sit on their perch unless something catches their eye.
+	//These vars store their preferred perch and if they don't have one, what they can use as a perch
 	var/obj/parrot_perch = null
 	var/obj/desired_perches = list(/obj/structure/computerframe, /obj/structure/displaycase, \
 									/obj/structure/filingcabinet, /obj/structure/machinery/teleport, \
@@ -186,7 +186,7 @@
 
 
 /*
- * Attack responces
+ * Attack responses
  */
 //Humans, monkeys, aliens
 /mob/living/simple_animal/parrot/attack_hand(mob/living/carbon/M as mob)
@@ -274,8 +274,8 @@
 
 
 //-----SPEECH
-	/* Parrot speech mimickry!
-	   Phrases that the parrot hears in mob/living/say() get added to speach_buffer.
+	/* Parrot speech mimicry!
+	   Phrases that the parrot hears in mob/living/say() get added to speech_buffer.
 	   Every once in a while, the parrot picks one of the lines from the buffer and replaces an element of the 'speech' list.
 	   Then it clears the buffer to make sure they don't magically remember something from hours ago. */
 	if(length(speech_buffer) && prob(10))
@@ -288,7 +288,7 @@
 
 //-----SLEEPING
 	if(parrot_state == PARROT_PERCH)
-		if(parrot_perch && parrot_perch.loc != src.loc) //Make sure someone hasnt moved our perch on us
+		if(parrot_perch && parrot_perch.loc != src.loc) //Make sure someone hasn't moved our perch on us
 			if(parrot_perch in view(src))
 				parrot_state = PARROT_SWOOP|PARROT_RETURN
 				icon_state = "parrot_fly"
@@ -527,7 +527,7 @@
 				return O
 	return null
 
-//This proc was made to save on doing two 'in view' loops seperatly
+//This proc was made to save on doing two 'in view' loops separately
 /mob/living/simple_animal/parrot/proc/search_for_perch_and_item()
 	for(var/atom/movable/AM in view(src))
 		for(var/perch_path in desired_perches)

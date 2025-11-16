@@ -148,7 +148,7 @@
 					return
 				var/obj/item/stack/sheet/metal/M = item
 				playsound(src.loc, 'sound/items/Screwdriver2.ogg', 25, 1)
-				if(M.amount >= 1 && do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) //Shouldnt be possible, but doesnt hurt to check
+				if(M.amount >= 1 && do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // be possible, but doesn't hurt to check
 					if(!M.use(1))
 						return
 					build_state = BARRICADE_BSTATE_FORTIFIED

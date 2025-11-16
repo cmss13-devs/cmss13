@@ -365,7 +365,7 @@
 /obj/structure/machinery/cryo_cell/MouseDrop_T(mob/target, mob/user)
 	. = ..()
 	var/mob/living/living_mob = user
-	if(!istype(living_mob) || target != user) //cant make others get in. grab-click for this
+	if(!istype(living_mob) || target != user)  //can't make others get in. grab-click for this
 		return
 
 	put_mob(target)

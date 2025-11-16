@@ -307,7 +307,7 @@ SUBSYSTEM_DEF(objectives)
 			if(OBJECTIVE_ABSOLUTE_VALUE)
 				LAZYADD(absolute_value, O)
 
-	// Set up preqrequisites:
+	// Set up prerequisites:
 	// Low
 	for(var/datum/cm_objective/objective in low_value)
 		// Add at least one guaranteed clue for this objective to unlock.

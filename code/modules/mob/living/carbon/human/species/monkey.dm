@@ -53,7 +53,7 @@
 	var/monkey_turf = get_turf(monkey)
 	var/hauled = HAS_TRAIT(monkey, TRAIT_HAULED)
 
-	if(prob(33) && is_on_turf && !monkey.pulledby && (monkey.mobility_flags & MOBILITY_MOVE) && !monkey.is_mob_restrained() && !hauled) //won't move if being pulled
+	if(prob(33) && is_on_turf && !monkey.pulledby && (monkey.mobility_flags & MOBILITY_MOVE) && !monkey.is_mob_restrained() && !hauled)  //won't move if being pulled
 		step(monkey, pick(GLOB.cardinals))
 
 	var/obj/held = monkey.get_active_hand()

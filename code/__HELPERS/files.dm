@@ -44,7 +44,7 @@
 	It is just a timer that only permits a download every [FTPDELAY] ticks.
 	This can be changed by modifying FTPDELAY's value above.
 
-	PLEASE USE RESPONSIBLY, Some log files canr each sizes of 4MB! */
+	PLEASE USE RESPONSIBLY, Some log files can't reach sizes of 4MB! */
 /client/proc/file_spam_check()
 	var/time_to_wait = GLOB.fileaccess_timer - world.time
 	if(time_to_wait > 0)
@@ -62,7 +62,7 @@
 /// Used because md5ing files stored in the rsc sometimes gives incorrect md5 results.
 /proc/md5asfile(file)
 	var/static/notch = 0
-	// its importaint this code can handle md5filepath sleeping instead of hard blocking, if it's converted to use rust_g.
+	// its important this code can handle md5filepath sleeping instead of hard blocking, if it's converted to use rust_g.
 	var/filename = "tmp/md5asfile.[world.realtime].[world.timeofday].[world.time].[world.tick_usage].[notch]"
 	notch = WRAP(notch+1, 0, 2^15)
 	fcopy(file, filename)

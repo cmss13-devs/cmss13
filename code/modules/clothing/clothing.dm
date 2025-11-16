@@ -350,7 +350,7 @@
 	set src in usr
 
 	if(!(flags_inventory & ALLOWINTERNALS))
-		to_chat(usr, SPAN_NOTICE("This mask doesnt support internals."))
+		to_chat(usr, SPAN_NOTICE("This mask doesn't support internals."))
 		return
 
 	if(!iscarbon(usr))

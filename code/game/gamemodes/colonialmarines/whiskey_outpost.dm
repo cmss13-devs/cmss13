@@ -500,7 +500,7 @@
 			for(var/path in spawnitems)
 				new path(crate)
 
-//Whiskey Outpost Recycler Machine. Teleports objects to centcomm so it doesnt lag
+//Whiskey Outpost Recycler Machine. Teleports objects to centcomm so it doesn't lag
 /obj/structure/machinery/wo_recycler
 	icon = 'icons/obj/structures/machinery/recycling.dmi'
 	icon_state = "grinder-o0"

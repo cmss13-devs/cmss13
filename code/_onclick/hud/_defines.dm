@@ -1,5 +1,5 @@
 /*
-	These defines specificy screen locations.  For more information, see the byond documentation on the screen_loc var.
+	These defines specifically screen locations.  For more information, see the byond documentation on the screen_loc var.
 
 	The short version:
 

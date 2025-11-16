@@ -30,7 +30,7 @@ Another feature of this new system is that our lists are indexed. This means we 
 So we only regenerate icons when we need them to be updated! This is the main saving for this system.
 
 In practice this means that:
-	Everytime you do something minor like take a pen out of your pocket, we only update the in-hand overlay
+	Every time you do something minor like take a pen out of your pocket, we only update the in-hand overlay
 	etc...
 
 

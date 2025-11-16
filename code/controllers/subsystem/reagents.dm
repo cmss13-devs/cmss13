@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(reagents)
 	flags = SS_NO_FIRE
 
 /datum/controller/subsystem/reagents/Initialize()
-	// Initalize to create the global chemistry lists:
+	// Initialize to create the global chemistry lists:
 	// Must be before SSatoms.InitializeAtoms and SSmapping
 	prepare_properties()
 	prepare_reagents()
@@ -67,7 +67,7 @@ SUBSYSTEM_DEF(reagents)
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>
 	set waitfor = FALSE
 	//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
-	//Generated chemicals should be initialized last, hence the substract then readd.
+	//Generated chemicals should be initialized last, hence the subtract then readd.
 	var/list/paths = subtypesof(/datum/reagent) - typesof(/datum/reagent/generated) - subtypesof(/datum/reagent/generated) + subtypesof(/datum/reagent/generated)
 	GLOB.chemical_reagents_list = list()
 	for(var/path in paths)

@@ -298,7 +298,7 @@
 	clear_fullscreen("dazed")
 
 /*Heal 1/70th of your max health in brute per tick. 1 as a bonus, to help smaller pools.
-Additionally, recovery pheromones mutiply this base healing, up to 2.5 times faster at level 5
+Additionally, recovery pheromones multiply this base healing, up to 2.5 times faster at level 5
 Modified via m, to multiply the number of wounds healed.
 Heal from fire half as fast
 Xenos don't actually take oxyloss, oh well

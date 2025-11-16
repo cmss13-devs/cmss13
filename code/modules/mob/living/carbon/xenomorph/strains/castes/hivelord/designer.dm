@@ -934,7 +934,7 @@
 		playsound(xeno.loc, "alien_resin_move2", 25)
 		return
 
-	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than lenght that was defined
+	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than length that was defined
 		to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another node, one will wither away to allow this one to live!"))
 		var/obj/effect/alien/resin/design/old_design = xeno.current_design[1] //Check with node is first for deletion on list
 		xeno.current_design.Remove(old_design) //Removes first node stored inside list

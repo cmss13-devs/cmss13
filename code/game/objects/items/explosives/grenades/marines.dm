@@ -486,7 +486,7 @@
 	var/falloff_dam_reduction_mult = 20
 	/// Post falloff calc damage is divided by this to get xeno slowdown
 	var/xeno_slowdown_numerator = 11
-	/// Post falloff calc damage is multipled by this to get human stamina damage
+	/// Post falloff calc damage is multiplied by this to get human stamina damage
 	var/human_stam_dam_factor = 0.5
 
 /obj/item/explosive/grenade/sebb/Initialize()

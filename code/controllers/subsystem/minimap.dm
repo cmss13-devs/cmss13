@@ -13,7 +13,7 @@ GLOBAL_PROTECT(roles_allowed_minimap_draw)
  * Minimaps are a low priority subsystem that fires relatively often
  * the Initialize proc for this subsystem draws the maps as one of the last initializing subsystems
  *
- * Fire() for this subsystem doens't actually updates anything, and purely just reapplies the overlays that it already tracks
+ * Fire() for this subsystem doesn't actually updates anything, and purely just reapplies the overlays that it already tracks
  * actual updating of marker locations is handled by [/datum/controller/subsystem/minimaps/proc/on_move]
  * and zlevel changes are handled in [/datum/controller/subsystem/minimaps/proc/on_z_change]
  * tracking of the actual atoms you want to be drawn on is done by means of datums holding info pertaining to them with [/datum/hud_displays]
@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/image/images_by_source = list()
 	///the update target datums, sorted by update flag type
 	var/list/update_targets = list()
-	///Nonassoc list of updators we want to have their overlays reapplied
+	///Nonassoc list of updaters we want to have their overlays reapplied
 	var/list/datum/minimap_updator/update_targets_unsorted = list()
 	///Assoc list of removal callbacks to invoke to remove images from the raw lists
 	var/list/datum/callback/removal_cbs = list()
@@ -161,7 +161,7 @@ SUBSYSTEM_DEF(minimaps)
 	LAZYREMOVE(earlyadds, "[level]")
 
 /**
- * Adds an atom to the processing updators that will have blips drawn on them
+ * Adds an atom to the processing updaters that will have blips drawn on them
  * Arguments:
  * * target: the target we want to be updating the overlays on
  * * flags: flags for the types of blips we want to be updated
@@ -238,7 +238,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/ztarget = 0
 	/// list of overlays we update
 	var/raw_blips
-	/// does this updator showing map drawing
+	/// does this updater showing map drawing
 	var/drawing
 
 /datum/minimap_updator/New(minimap, ztarget, drawing)
@@ -482,7 +482,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/minimap_flags
 	/// Minimap target
 	var/target
-	/// Is drawing enbabled
+	/// Is drawing enabled
 	var/drawing
 	/// Max ratio to x_max/y_max you can scroll the map to
 	var/max_scroll_ratio = 0.8
@@ -670,7 +670,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/minimap_displayed = FALSE
 	///Minimap object we'll be displaying
 	var/atom/movable/screen/minimap/map
-	///Overrides what the locator tracks aswell what z the map displays as opposed to always tracking the minimap's owner. Default behavior when null.
+	///Overrides what the locator tracks as well what z the map displays as opposed to always tracking the minimap's owner. Default behavior when null.
 	var/atom/movable/locator_override
 	///Minimap "You are here" indicator for when it's up
 	var/atom/movable/screen/minimap_locator/locator
@@ -885,7 +885,7 @@ SUBSYSTEM_DEF(minimaps)
 	minimap_flags = MINIMAP_FLAG_UPP
 	marker_flags = MINIMAP_FLAG_UPP
 
-/datum/action/minimap/ai	//I'll keep this as seperate type despite being identical so it's easier if people want to make different aspects different.
+/datum/action/minimap/ai	//I'll keep this as separate type despite being identical so it's easier if people want to make different aspects different.
 	minimap_flags = MINIMAP_FLAG_USCM
 	marker_flags = MINIMAP_FLAG_USCM
 

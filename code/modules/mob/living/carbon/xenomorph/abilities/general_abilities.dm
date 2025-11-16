@@ -253,7 +253,7 @@
 	return
 
 /**
- * Effects to apply *inmediately* before pouncing.
+ * Effects to apply *immediately* before pouncing.
  */
 /datum/action/xeno_action/activable/pounce/proc/pre_pounce_effects()
 	return

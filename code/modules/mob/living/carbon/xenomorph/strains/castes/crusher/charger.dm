@@ -374,7 +374,7 @@
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno charged by [xeno] ([xeno.ckey])</font>")
 			xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src] ([ckey])</font>")
 			log_attack("[xeno] ([xeno.ckey]) xeno charged [src] ([ckey])")
-			apply_damage(charger_ability.momentum * 10, BRUTE) // half damage to avoid sillyness
+			apply_damage(charger_ability.momentum * 10, BRUTE) // half damage to avoid silliness
 		if(anchored) //Ovipositor queen can't be pushed
 			charger_ability.stop_momentum()
 			return
@@ -589,7 +589,7 @@
 		return
 	qdel(src)
 	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
-	return XENO_CHARGE_TRY_MOVE // bulldoze that shitty bed and keep going, should run over the buckled mob aswell unless crusher turns last second for some reason
+	return XENO_CHARGE_TRY_MOVE // bulldoze that shitty bed and keep going, should run over the buckled mob as well unless crusher turns last second for some reason
 
 // Filing Cabinets
 
@@ -610,8 +610,8 @@
 	charger_ability.stop_momentum()
 
 // Legacy Tank dispenser
-// Todo: Give this and other shitty fucking indestructible legacy items proper destruction mechanics. This includes being vunerable to bullets,explosions, etc and not just the charger.
-// For now this is fine since priority is charger, and I'm not willing to spend all day looking for bumfuck legacy item #382321 thats used a total of three times in the entireity of CM and adding health and everything to it.
+// Todo: Give this and other shitty fucking indestructible legacy items proper destruction mechanics. This includes being vulnerable to bullets,explosions, etc and not just the charger.
+// For now this is fine since priority is charger, and I'm not willing to spend all day looking for bumfuck legacy item #382321 thats used a total of three times in the entirety of CM and adding health and everything to it.
 
 /obj/structure/dispenser/handle_charge_collision(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/onclick/charger_charge/charger_ability)
 	if(!charger_ability.momentum)

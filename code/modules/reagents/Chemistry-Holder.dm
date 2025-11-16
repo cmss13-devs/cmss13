@@ -491,7 +491,7 @@
 
 	update_total()
 	if(total_volume + amount > maximum_volume)
-		amount = maximum_volume - total_volume //Doesnt fit in. Make it disappear. Shouldnt happen. Will happen.
+		amount = maximum_volume - total_volume //Doesn't fit in. Make it disappear.  happen. Will happen.
 
 	var/new_data = list("blood_type" = null, "blood_color" = "#A10808", "viruses" = null, "resistances" = null, "last_source_mob" = null)
 	if(data)
@@ -608,7 +608,7 @@
 
 	return res
 
-/datum/reagents/proc/remove_all_type(reagent_type, amount, strict = 0, safety = 1) // Removes all reagent of X type. @strict set to 1 determines whether the childs of the type are included.
+/datum/reagents/proc/remove_all_type(reagent_type, amount, strict = 0, safety = 1) // Removes all reagent of X type. @strict set to 1 determines whether the children of the type are included.
 	if(!isnum(amount))
 		return TRUE
 

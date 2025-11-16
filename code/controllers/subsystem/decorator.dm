@@ -6,7 +6,7 @@
 	if(!SSdecorator.decoratable)
 		return
 	if(SSdecorator.registered_decorators[type])
-		// Case 2: Deferable, usually non-init mapload - have SS do it later
+		// Case 2: Deferrable, usually non-init mapload - have SS do it later
 		if(deferable)
 			SSdecorator.decoratable += WEAKREF(src)
 			return

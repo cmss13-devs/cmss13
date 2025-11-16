@@ -50,7 +50,7 @@
 	if(operating)
 		return //emagged or busy doing something else
 
-	if ((isnull(cur_command) || inoperable()) && secondsElectrified == 0) //dont stop processing if electrified because we need to spark
+	if ((isnull(cur_command) || inoperable()) && secondsElectrified == 0)  //don't stop processing if electrified because we need to spark
 		//Nothing to do, stop processing!
 		//Or power out, in case we also stop doing stuff
 		stop_processing()

@@ -117,7 +117,7 @@
 // #define TGS_EVENT_WORLD_REBOOT 20
 /// Watchdog event when TgsInitializationComplete() is called. No parameters.
 #define TGS_EVENT_WORLD_PRIME 21
-// DMAPI also doesnt implement this
+// DMAPI also doesn't implement this
 // #define TGS_EVENT_DREAM_DAEMON_LAUNCH 22
 /// After a single submodule update is performed. Parameters: Updated submodule name.
 #define TGS_EVENT_REPO_SUBMODULE_UPDATE 23

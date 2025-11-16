@@ -32,7 +32,7 @@ The following is an incomplete list of pitfalls that come from byond snowflake t
 11. Displacement filter: The byond "displacement filter" does not, as the name would make you expect, use displacement maps, but instead uses normal maps.
 
 ## The rendering solution
-One of the main issues with making pretty effects is how objects can only render to one plane, and how filters can only be applied to single objects. Quite simply it means we cant apply effects to multiple planes at once, and an effect to one plane only by treating it as a single unit:
+One of the main issues with making pretty effects is how objects can only render to one plane, and how filters can only be applied to single objects. Quite simply it means we can'tapply effects to multiple planes at once, and an effect to one plane only by treating it as a single unit:
 
 ![](https://raw.githubusercontent.com/tgstation/documentation-assets/main/rendering/renderpipe_old.png)
 

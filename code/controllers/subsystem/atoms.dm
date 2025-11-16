@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(atoms)
 	flags = SS_NO_FIRE
 
 	var/old_initialized
-	/// A count of how many initalize changes we've made. We want to prevent old_initialize being overridden by some other value, breaking init code
+	/// A count of how many initialize changes we've made. We want to prevent old_initialize being overridden by some other value, breaking init code
 	var/initialized_changed = 0
 	var/init_start_time
 	var/processing_late_loaders = FALSE
@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(atoms)
 	InitializeLateLoaders()
 
 /// Processes all late_loaders, checking the length each iteration and prevents duplicate calls
-/// This is necessary because of an edge case where there might be simultanious calls to InitializeAtoms
+/// This is necessary because of an edge case where there might be simultaneous calls to InitializeAtoms
 /datum/controller/subsystem/atoms/proc/InitializeLateLoaders()
 	if(processing_late_loaders) // If we still manage to double this proc, try a ++ here, or solve the root of the problem
 		#ifdef TESTING
@@ -75,7 +75,7 @@ SUBSYSTEM_DEF(atoms)
 	late_loaders.Cut()
 	processing_late_loaders = FALSE
 
-/// Actually creates the list of atoms. Exists soley so a runtime in the creation logic doesn't cause initalized to totally break
+/// Actually creates the list of atoms. Exists solely so a runtime in the creation logic doesn't cause initialized to totally break
 /datum/controller/subsystem/atoms/proc/CreateAtoms(list/atoms, list/atoms_to_return = null)
 	if (atoms_to_return)
 		LAZYINITLIST(created_atoms)

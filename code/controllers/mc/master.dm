@@ -67,7 +67,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/current_runlevel //!for scheduling different subsystems for different stages of the round
 	var/sleep_offline_after_initializations = TRUE
 
-	/// During initialization, will be the instanced subsytem that is currently initializing.
+	/// During initialization, will be the instanced subsystem that is currently initializing.
 	/// Outside of initialization, returns null.
 	var/current_initializing_subsystem = null
 
@@ -462,7 +462,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 		//Anti-tick-contention heuristics:
 		if (init_stage == INITSTAGE_MAX)
-			//if there are mutiple sleeping procs running before us hogging the cpu, we have to run later.
+			//if there are multiple sleeping procs running before us hogging the cpu, we have to run later.
 			// (because sleeps are processed in the order received, longer sleeps are more likely to run first)
 			if (starting_tick_usage > TICK_LIMIT_MC) //if there isn't enough time to bother doing anything this tick, sleep a bit.
 				sleep_delta *= 2
@@ -493,7 +493,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		if (!skip_ticks)
 			var/checking_runlevel = current_runlevel
 			if(cached_runlevel != checking_runlevel)
-				//resechedule subsystems
+				//reschedule subsystems
 				cached_runlevel = checking_runlevel
 				current_runlevel_subsystems = runlevel_sorted_subsystems[cached_runlevel]
 				var/stagger = world.time
@@ -513,7 +513,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				error_level++
 				CRASH("MC: SoftReset() failed, exiting loop()")
 
-			if (error_level < 2) //except for the first strike, stop incrmenting our iteration so failsafe enters defcon
+			if (error_level < 2) //except for the first strike, stop incrementing our iteration so failsafe enters defcon
 				iteration++
 			else
 				cached_runlevel = null //3 strikes, Lets reset the runlevel lists
@@ -530,7 +530,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 						error_level++
 						CRASH("MC: SoftReset() failed, exiting loop()")
 
-					if (error_level <= 2) //after 3 strikes stop incrmenting our iteration so failsafe enters defcon
+					if (error_level <= 2) //after 3 strikes stop incrementing our iteration so failsafe enters defcon
 						iteration++
 					else
 						cached_runlevel = null //3 strikes, Lets also reset the runlevel lists
@@ -551,7 +551,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			skip_ticks--
 		src.sleep_delta = MC_AVERAGE_FAST(src.sleep_delta, sleep_delta)
 
-// Force any verbs into overtime, to test how they perfrom under load
+// Force any verbs into overtime, to test how they perform under load
 // For local ONLY
 #ifdef VERB_STRESS_TEST
 		/// Target enough tick usage to only allow time for our maptick estimate and verb processing, and nothing else
@@ -608,8 +608,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	. = 1
 
 
-/// RunQueue - Run thru the queue of subsystems to run, running them while balancing out their allocated tick precentage
-/// Returns 0 if runtimed, a negitive number for logic errors, and a positive number if the operation completed without errors
+/// RunQueue - Run thru the queue of subsystems to run, running them while balancing out their allocated tick percentage
+/// Returns 0 if runtimed, a negative number for logic errors, and a positive number if the operation completed without errors
 /datum/controller/master/proc/RunQueue()
 	. = 0
 	var/datum/controller/subsystem/queue_node
@@ -621,11 +621,11 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/tick_precentage
 	var/tick_remaining
 	var/ran = TRUE //this is right
-	var/bg_calc //have we swtiched current_tick_budget to background mode yet?
+	var/bg_calc //have we switched current_tick_budget to background mode yet?
 	var/tick_usage
 
 	//keep running while we have stuff to run and we haven't gone over a tick
-	// this is so subsystems paused eariler can use tick time that later subsystems never used
+	// this is so subsystems paused earlier can use tick time that later subsystems never used
 	while (ran && queue_head && TICK_USAGE < TICK_LIMIT_MC)
 		ran = FALSE
 		bg_calc = FALSE
@@ -657,7 +657,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			tick_remaining = TICK_LIMIT_RUNNING - TICK_USAGE
 
 			if (queue_node_priority >= 0 && current_tick_budget > 0 && current_tick_budget >= queue_node_priority)
-				//Give the subsystem a precentage of the remaining tick based on the remaining priority
+				//Give the subsystem a percentage of the remaining tick based on the remaining priority
 				tick_precentage = tick_remaining * (queue_node_priority / current_tick_budget)
 			else
 				//error state

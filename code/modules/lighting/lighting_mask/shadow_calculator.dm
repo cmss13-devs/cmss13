@@ -114,7 +114,7 @@
 		link_turf_to_light(thing)
 		//The turf is now affected by our light, make it luminous
 		thing.luminosity += 1
-		//Dont consider shadows about our turf.
+		//Don't consider shadows about our turf.
 		if(!is_on_closed_turf)
 			if(thing == our_turf)
 				continue

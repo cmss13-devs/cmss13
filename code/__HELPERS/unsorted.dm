@@ -15,22 +15,22 @@
 							HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || istype(W, /obj/item/tool/pen ) || istype(W, /obj/item/tool/shovel)) \
 						)
 
-//Offuscate x for coord system
+//obfuscate x for coord system
 #define obfuscate_x(x) ((x) + GLOB.obfs_x)
 
-//Offuscate y for coord system
+//obfuscate y for coord system
 #define obfuscate_y(y) ((y) + GLOB.obfs_y)
 
-//Offuscate z for the coord system
+//obfuscate z for the coord system
 #define obfuscate_z(z) ((z) + GLOB.obfs_z)
 
-//Deoffuscate x for coord system
+//Deobfuscate x for coord system
 #define deobfuscate_x(x) ((x) - GLOB.obfs_x)
 
-//Deoffuscate y for coord system
+//Deobfuscate y for coord system
 #define deobfuscate_y(y) ((y) - GLOB.obfs_y)
 
-//Deoffuscate z for the coord system
+//Deobfuscate z for the coord system
 #define deobfuscate_z(z) ((z) - GLOB.obfs_z)
 
 #define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
@@ -263,7 +263,7 @@
 	change_real_name(src, newname)
 
 	if(oldname)
-		//update the datacore records! This is goig to be a bit costly.
+		//update the datacore records! This is going to be a bit costly.
 		var/mob_ref = WEAKREF(src)
 		for(var/list/L in list(GLOB.data_core.general, GLOB.data_core.medical, GLOB.data_core.security, GLOB.data_core.locked))
 			for(var/datum/data/record/record_entry in L)
@@ -295,7 +295,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		// This thing doesnt want to be seen, a bit snowflake.
+		// This thing doesn't want to be seen, a bit snowflake.
 		if(M.invisibility == INVISIBILITY_MAXIMUM && M.alpha == 0)
 			continue
 
@@ -555,7 +555,7 @@
 		animation.master = target
 		flick(flick_anim, animation)
 
-///Will return the contents of an atom recursivly to a depth of 'searchDepth', not including starting atom
+///Will return the contents of an atom recursively to a depth of 'searchDepth', not including starting atom
 /atom/proc/GetAllContents(searchDepth = 5, list/toReturn = list())
 	for(var/atom/part as anything in contents)
 		toReturn += part
@@ -1554,8 +1554,8 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 /proc/stack_trace(msg)
 	CRASH(msg)
 
-// \ref behaviour got changed in 512 so this is necesary to replicate old behaviour.
-// If it ever becomes necesary to get a more performant REF(), this lies here in wait
+// \ref behaviour got changed in 512 so this is necessary to replicate old behaviour.
+// If it ever becomes necessary to get a more performant REF(), this lies here in wait
 // #define REF(thing) (thing && istype(thing, /datum) && (thing:datum_flags & DF_USE_TAG) && thing:tag ? "[thing:tag]" : "\ref[thing]")
 /proc/REF(input)
 	if(istype(input, /datum))

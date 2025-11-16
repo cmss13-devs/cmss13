@@ -73,7 +73,7 @@
 		for(var/obj/limb/affecting in H.limbs)
 			if(!affecting)
 				continue
-			if(affecting.take_damage(0, divided_damage+extradam)) //TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
+			if(affecting.take_damage(0, divided_damage+extradam)) //TODO: fix the extradam stuff. Or, better yet...rewrite this entire proc ~Carn
 				H.UpdateDamageIcon()
 		H.updatehealth()
 		return 1
@@ -227,7 +227,7 @@
 /mob/living/resist_grab(moving_resist)
 	if(!pulledby)
 		return
-	// vars for checks of strengh
+	// vars for checks of strength
 	var/pulledby_is_strong = HAS_TRAIT(pulledby, TRAIT_SUPER_STRONG)
 	var/src_is_strong = HAS_TRAIT(src, TRAIT_SUPER_STRONG)
 

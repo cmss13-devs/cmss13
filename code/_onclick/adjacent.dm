@@ -39,7 +39,7 @@
 		// Check for border blockages
 		return T0.ClickCross(get_dir(T0,src), border_only = 1, ignore_list = ignore_list) && src.ClickCross(get_dir(src,T0), border_only = 1, target_atom = target, ignore_list = ignore_list)
 
-	// Not orthagonal
+	// Not orthogonal
 	var/in_dir = get_dir(neighbor,src) // eg. northwest (1+8)
 	var/d1 = in_dir&(in_dir-1) // eg west (1+8)&(8) = 8
 	var/d2 = in_dir - d1 // eg north (1+8) - 8 = 1
@@ -78,7 +78,7 @@ Quick adjacency (to turf):
 	* Must be on a turf
 	* In the case of a multiple-tile object, all valid locations are checked for adjacency.
 
-	Note: Multiple-tile objects are created when the bound_width and bound_height are creater than the tile size.
+	Note: Multiple-tile objects are created when the bound_width and bound_height are creator than the tile size.
 	This is not used in stock /tg/station currently.
 */
 /atom/movable/Adjacent(atom/neighbor)
@@ -113,7 +113,7 @@ Quick adjacency (to turf):
 	return ..()
 
 /*
-	Special case: This allows you to reach a door when it is visally on top of,
+	Special case: This allows you to reach a door when it is visually on top of,
 	but technically behind, a fire door
 
 	You could try to rewrite this to be faster, but I'm not sure anything would be.

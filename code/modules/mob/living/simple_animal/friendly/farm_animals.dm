@@ -38,7 +38,7 @@
 /mob/living/simple_animal/hostile/retaliate/goat/Life(delta_time)
 	. = ..()
 	if(.)
-		//chance to go crazy and start wacking stuff
+		//chance to go crazy and start whacking stuff
 		if(!length(enemies) && prob(1))
 			Retaliate()
 

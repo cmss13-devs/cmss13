@@ -800,7 +800,7 @@
  * Pretty much a wrapper to [/atom/movable/proc/throw_atom] with extra handling
  *
  * * target - the target carbon mob that will be thrown
- * * direction - the direction the target will be thrown toward, or if null, infered from relative position with target
+ * * direction - the direction the target will be thrown toward, or if null, inferred from relative position with target
  * * distance - the total distance the throw will be made for
  * * speed - throw_atom relative speed of the throw, check [SPEED_AVERAGE] for details
  * * shake_camera - whether to shake the thrown mob camera on throw

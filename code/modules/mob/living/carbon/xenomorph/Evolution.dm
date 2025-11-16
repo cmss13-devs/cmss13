@@ -175,7 +175,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	new_xeno.generate_name()
 	if(new_xeno.client)
 		new_xeno.set_lighting_alpha(level_to_switch_to)
-	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
+	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //C'mon, don't kill the new one!  be possible though
 		new_xeno.bruteloss = bruteloss //Transfers the damage over.
 		new_xeno.fireloss = fireloss //Transfers the damage over.
 		new_xeno.updatehealth()
@@ -407,7 +407,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		GLOB.deevolved_ckeys += new_xeno.ckey
 
 /mob/living/carbon/xenomorph/proc/transmute(newcaste, message="We regress into our previous form.")
-	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initalize()
+	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initialize()
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
 		qdel(organ)

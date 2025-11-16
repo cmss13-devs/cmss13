@@ -235,8 +235,9 @@
 	var/clarity_max = CONFIG_GET(number/announcement_max_clarity)
 
 	if(solved)
-		var/solve_time = max(world.time - (solved.time + solve_grace_time), 0)
-		var/new_clarity = 100 - solve_time * decay_rate / SSradio.wait
+		var/next_fire = world.time - SSradio.next_fire
+		var/solve_time = max(world.time - (solved.time + solve_grace_time + next_fire), 0)
+		var/new_clarity = 100 - ceil(solve_time / SSradio.wait) * decay_rate
 		SSradio.faction_coms_clarity[faction] = clamp(new_clarity, clarity_min, clarity_max)
 		return TRUE
 

@@ -175,3 +175,19 @@
 				current += j
 		data += list(current)
 	return ..()
+
+/obj/effect/spawner/punch_cards/Initialize(mapload, ...)
+	. = ..()
+
+	// One blank
+	new /obj/item/paper/punch_card(loc)
+
+	// And an extra thats either blank or filled
+	if(prob(50)) // 50-50 for filled or not
+		new /obj/item/paper/punch_card(loc)
+	else if(prob(50)) // Filled: 50-50 one value per row or just completely random
+		new /obj/item/paper/punch_card/prefilled(loc)
+	else
+		new /obj/item/paper/punch_card/randomfilled(loc)
+
+	return INITIALIZE_HINT_QDEL

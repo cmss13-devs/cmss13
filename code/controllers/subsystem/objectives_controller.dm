@@ -165,13 +165,8 @@ SUBSYSTEM_DEF(objectives)
 	for(var/i=0;i<paper_scraps;i++)
 		var/dest = pick(20;"close", 5;"medium", 2;"far", 10;"science", 40*relative_document_ratio_close;"close_documents", 10*relative_document_ratio_medium;"medium_documents", 3*relative_document_ratio_far;"far_documents", 10*relative_document_ratio_science;"science_documents")
 		spawn_objective_at_landmark(dest, /obj/item/document_objective/paper)
-		if(prob(10)) // Seed punchcards in at 10% chance * paper_scraps
-			if(prob(50)) // 50-50 filled or 5 blank
-				spawn_objective_at_landmark(dest, /obj/item/paper/punch_card)
-			else if(prob(50)) // Filled: 50-50 one value per row or just completely random
-				spawn_objective_at_landmark(dest, /obj/item/paper/punch_card/prefilled)
-			else
-				spawn_objective_at_landmark(dest, /obj/item/paper/punch_card/randomfilled)
+		if(prob(10)) // Seed a couple punchcards in at 10% chance * paper_scraps
+			spawn_objective_at_landmark(dest, /obj/effect/spawner/punch_cards)
 	for(var/i=0;i<progress_reports;i++)
 		var/dest = pick(10;"close", 55;"medium", 3;"far", 10;"science", 20*relative_document_ratio_close;"close_documents", 30*relative_document_ratio_medium;"medium_documents", 3*relative_document_ratio_far;"far_documents", 10*relative_document_ratio_science;"science_documents")
 		spawn_objective_at_landmark(dest, /obj/item/document_objective/report)

@@ -207,14 +207,14 @@
 
 	switch(action)
 		if("submit")
-			submit_solution(params["solution"], params["offset"])
+			submit_solution(params["solution"], params["offset"], ui.user)
 			playsound(src, "keyboard_alt", 15, vary=TRUE)
 			return TRUE
 
 /// Called by ui_act when submitting a code to attempt to update comms clarity
-/obj/structure/machinery/computer/almayer_encryption/encoder/proc/submit_solution(list/attempt, offset)
+/obj/structure/machinery/computer/almayer_encryption/encoder/proc/submit_solution(list/attempt, offset, mob/user)
 	if(!islist(attempt))
-		CRASH("Non-list attempt submitted by [usr]!")
+		CRASH("Non-list attempt submitted by [user||usr]!")
 
 	// Try to see if the solution matches
 	var/datum/encryption_sequence/solved = null
@@ -238,9 +238,11 @@
 		var/next_fire = world.time - SSradio.next_fire
 		var/solve_time = max(world.time - (solved.time + solve_grace_time + next_fire), 0)
 		var/new_clarity = 100 - ceil(solve_time / SSradio.wait) * decay_rate
+		msg_admin_niche("Comms encryption success by [user] [SSradio.faction_coms_clarity[faction]] -> [new_clarity]")
 		SSradio.faction_coms_clarity[faction] = clamp(new_clarity, clarity_min, clarity_max)
 		return TRUE
 
+	msg_admin_niche("Comms encryption failure by [user] [SSradio.faction_coms_clarity[faction]] -> [clarity_min]")
 	SSradio.faction_coms_clarity[faction] = clarity_min
 	return FALSE
 

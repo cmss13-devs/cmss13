@@ -209,7 +209,7 @@ SUBSYSTEM_DEF(stickyban)
 
 /**
  * Returns a [/list] of [/datum/view_record/stickyban_matched_ip] where the impacted IP matches the IP provided.
- * Connections matchin this IP will be blocked - provided the linked stickyban is active.
+ * Connections matching this IP will be blocked - provided the linked stickyban is active.
  */
 /datum/controller/subsystem/stickyban/proc/get_impacted_ip_records(ip)
 	return DB_VIEW(/datum/view_record/stickyban_matched_ip,

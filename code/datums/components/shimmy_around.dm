@@ -174,7 +174,7 @@
 	if(mob.loc != destination)
 		if(layer_changing)
 			UnregisterSignal(mob, COMSIG_LIVING_SHIMMY_LAYER)
-		return // Merely checking the return value for Move is insufficent to detect a mob swap
+		return // Merely checking the return value for Move is insufficient to detect a mob swap
 
 	// Override their layer if needed
 	var/animate_time = min(mob.move_delay + extra_delay, MAX_ANIMATE_TIME)

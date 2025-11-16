@@ -91,7 +91,7 @@
 		caction.buffed = TRUE
 
 
-/datum/action/xeno_action/activable/pierce/use_ability(atom/targetted_atom)
+/datum/action/xeno_action/activable/pierce/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/xenomorph/pierce_user = owner
 	var/pierce_sounds = pick('sound/effects/pierce1.ogg', 'sound/effects/pierce2.ogg', 'sound/effects/pierce3.ogg')
 
@@ -101,14 +101,14 @@
 	if (!pierce_user.check_state())
 		return
 
-	if(!targetted_atom || targetted_atom.layer >= FLY_LAYER || !isturf(pierce_user.loc))
+	if(!targeted_atom || targeted_atom.layer >= FLY_LAYER || !isturf(pierce_user.loc))
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
 	//X = xeno user, A = target atom
-	var/list/turf/target_turfs = get_line(pierce_user, targetted_atom, include_start_atom = FALSE)
+	var/list/turf/target_turfs = get_line(pierce_user, targeted_atom, include_start_atom = FALSE)
 	var/length_of_line = LAZYLEN(target_turfs)
 	if(length_of_line > 3)
 		target_turfs = target_turfs.Copy(1, 4)
@@ -148,7 +148,7 @@
 					target_mobs += mob_to_act
 
 	pierce_user.visible_message(SPAN_XENODANGER("[pierce_user] slashes its claws through the area in front of it!"), SPAN_XENODANGER("We slash our claws through the area in front of us!"))
-	pierce_user.animation_attack_on(targetted_atom, 15)
+	pierce_user.animation_attack_on(targeted_atom, 15)
 
 	pierce_user.emote("roar")
 

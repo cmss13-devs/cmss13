@@ -234,7 +234,7 @@
 		// checks if the record is being viewed, and requires more data
 		if((id_number == currently_selected_record_id) && currently_selected_record_id)
 			records |= list(gather_record_data(user, general))
-			// sends photo data seperately from the records system, for ease of use
+			// sends photo data separately from the records system, for ease of use
 			var/icon/photo_icon = new /icon('icons/misc/buildmode.dmi', "buildhelp")
 			var/photo_data = icon2html(photo_icon, user.client, sourceonly = TRUE)
 

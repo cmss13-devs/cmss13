@@ -385,7 +385,7 @@
 	RegisterSignal(overwatch_officer, COMSIG_PARENT_QDELETING, PROC_REF(personnel_deleted), override = TRUE)
 	return TRUE
 
-/// Explicitely relinquish overwatch control
+/// explicitly relinquish overwatch control
 /datum/squad/proc/release_overwatch()
 	if(!overwatch_officer)
 		return FALSE

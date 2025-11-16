@@ -97,7 +97,7 @@
 /datum/design_mark
 	var/name = "xeno_declare"
 	var/icon_state = "empty"
-	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother"
+	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to each other"
 
 /datum/design_mark/resin_wall
 	name = "Resin Wall"

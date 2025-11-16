@@ -589,7 +589,7 @@
 		return
 	qdel(src)
 	playsound(src, "sound/effects/metal_crash.ogg", 25, TRUE)
-	return XENO_CHARGE_TRY_MOVE // bulldoze that shitty bed and keep going, should run over the buckled mob aswell unless crusher turns last second for some reason
+	return XENO_CHARGE_TRY_MOVE // bulldoze that shitty bed and keep going, should run over the buckled mob as well unless crusher turns last second for some reason
 
 // Filing Cabinets
 

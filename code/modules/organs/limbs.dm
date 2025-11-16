@@ -534,7 +534,7 @@ This function completely restores a damaged organ to perfect condition.
 
 ///Adds bleeding to the limb. Damage_amount lets you apply an amount worth of bleeding, otherwise it uses the given wound's damage.
 /obj/limb/proc/add_bleeding(datum/wound/W, internal = FALSE, damage_amount)
-	if(!(SSticker.current_state >= GAME_STATE_PLAYING)) //If the game hasnt started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
+	if(!(SSticker.current_state >= GAME_STATE_PLAYING)) //If the game hasn't started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
 		return
 
 	if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))

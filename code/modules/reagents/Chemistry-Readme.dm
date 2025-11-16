@@ -197,7 +197,7 @@ About Recipes:
 		required_reagents
 			This is a list of ids of the required reagents.
 			Each id also needs an associated value that gives us the minimum required amount
-			of that reagent. The handle_reaction proc can detect mutiples of the same recipes
+			of that reagent. The handle_reaction proc can detect multiples of the same recipes
 			so for most cases you want to set the required amount to 1.
 
 		required_catalysts (Added May 2011)

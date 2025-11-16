@@ -125,7 +125,7 @@ SUBSYSTEM_DEF(who)
 							else
 								counted_factions[client_mob.faction]++
 
-	//Bulky section with pre writen names and desc for counts
+	//Bulky section with prewritten names and desc for counts
 	factions_additional += list(list("content" = "In Lobby: [counted_additional["lobby"]]", "color" = "#777", "text" = "Player in lobby"))
 	factions_additional += list(list("content" = "Spectating Players: [counted_additional["observers"]]", "color" = "#777", "text" = "Spectating players"))
 	factions_additional += list(list("content" = "Spectating Admins: [counted_additional["admin_observers"]]", "color" = "#777", "text" = "Spectating administrators"))

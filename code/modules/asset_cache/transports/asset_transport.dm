@@ -1,4 +1,4 @@
-/// When sending mutiple assets, how many before we give the client a quaint little sending resources message
+/// When sending multiple assets, how many before we give the client a quaint little sending resources message
 #define ASSET_CACHE_TELL_CLIENT_AMOUNT 8
 
 /// Base browse_rsc asset transport
@@ -25,7 +25,7 @@
 /**
  * Register a browser asset with the asset cache system.
  * returns a /datum/asset_cache_item.
- * mutiple calls to register the same asset under the same asset_name return the same datum.
+ * multiple calls to register the same asset under the same asset_name return the same datum.
  *
  * Arguments:
  * * asset_name - the identifier of the asset.

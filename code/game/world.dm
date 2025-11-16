@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 
 	update_status()
 
-	//Scramble the coords obsfucator
+	//Scramble the coords obfuscator
 	GLOB.obfs_x = rand(-500, 500) //A number between -500 and 500
 	GLOB.obfs_y = rand(-500, 500) //A number between -500 and 500
 	GLOB.obfs_z = rand(-10, 10)   //A number between -10 and 10

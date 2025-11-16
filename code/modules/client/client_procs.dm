@@ -260,7 +260,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
 		return 0
 /* //Don't need this at the moment. But it's here if it's needed later.
-	//Helps prevent multiple files being uploaded at once. Or right after eachother.
+	//Helps prevent multiple files being uploaded at once. Or right after each other.
 	var/time_to_wait = fileaccess_timer - world.time
 	if(time_to_wait > 0)
 		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [floor(time_to_wait/10)] seconds.</font>")

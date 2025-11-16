@@ -217,6 +217,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/processing)
+"aaE" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/sterile_green_side/north,
+/area/almayer/medical/containment)
 "aaF" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer,
@@ -11876,14 +11886,6 @@
 	name = "ship-grade camera";
 	dir = 8
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/reagent_container/glass/beaker/bluespace{
-	pixel_y = 20
-	},
-/obj/structure/machinery/chem_dispenser/research,
 /turf/open/floor/almayer/sterile_green_corner/east,
 /area/almayer/medical/medical_science)
 "aFg" = (
@@ -14247,24 +14249,6 @@
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 32;
 	pixel_y = -5
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/filingcabinet/seeds{
-	density = 0;
-	pixel_x = 5;
-	pixel_y = 16
-	},
-/obj/structure/filingcabinet/disk{
-	density = 0;
-	pixel_x = -11;
-	pixel_y = 16
-	},
-/obj/item/reagent_container/glass/beaker/bluespace{
-	pixel_y = 30;
-	pixel_x = -7
 	},
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/medical/upper_medical)
@@ -36343,17 +36327,16 @@
 	pixel_x = 7;
 	pixel_y = -26
 	},
-/turf/open/floor/almayer/sterile_green_corner/east,
+/turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/containment)
 "bMG" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
-	name = "\improper Containment Airlock";
-	dir = 1
-	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 8
 	},
-/turf/open/floor/almayer/no_build/test_floor4,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/containment)
 "bMH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
@@ -36734,7 +36717,7 @@
 	pixel_x = 2;
 	pixel_y = 5
 	},
-/turf/open/floor/almayer/sterile_green_corner,
+/turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/containment)
 "bNz" = (
 /obj/effect/decal/warning_stripes{
@@ -37653,12 +37636,6 @@
 /obj/structure/prop/almayer/cannon_cable_connector,
 /turf/open/floor/almayer/tcomms,
 /area/almayer/shipboard/weapon_room)
-"bPp" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/turf/open/floor/almayer/sterile_green_corner/east,
-/area/almayer/medical/containment)
 "bPq" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
@@ -37676,13 +37653,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
-"bPt" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/research{
-	name = "\improper Containment Airlock";
-	dir = 1
-	},
-/turf/open/floor/almayer/no_build/test_floor4,
-/area/almayer/medical/containment)
 "bPu" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -37873,7 +37843,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 8
 	},
-/turf/open/floor/almayer/sterile_green_corner,
+/turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/containment)
 "bPN" = (
 /obj/effect/decal/warning_stripes{
@@ -40526,6 +40496,10 @@
 	pixel_y = 1;
 	explo_proof = 1
 	},
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 14;
+	pixel_x = -3
+	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "bVE" = (
@@ -40775,6 +40749,14 @@
 /obj/item/reagent_container/glass/beaker/large{
 	pixel_x = 4;
 	pixel_y = 3
+	},
+/obj/item/reagent_container/glass/beaker{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/obj/item/reagent_container/glass/beaker{
+	pixel_x = -7;
+	pixel_y = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/medical_science)
@@ -64512,13 +64494,12 @@
 /obj/structure/surface/table/reinforced/prison{
 	climbable = 0
 	},
-/obj/structure/machinery/faxmachine/uscm/almayer{
-	desc = "The not-so-beloved fax machine of the Medical department, for when you need to keep the local newspaper updated with the freshest mortuaries";
-	sub_name = "Medical";
-	gender = "female";
+/obj/structure/machinery/faxmachine/corporate{
+	department = "USS Almayer";
 	radio_alert_tag = ":m";
-	pixel_y = 3;
-	pixel_x = -1
+	sub_name = "Research";
+	pixel_x = -1;
+	pixel_y = 3
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
@@ -90995,31 +90976,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/vehiclehangar)
-"vWt" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/beaker/large,
-/obj/item/reagent_container/glass/beaker/large,
-/obj/item/reagent_container/glass/beaker{
-	pixel_x = 5
-	},
-/obj/item/reagent_container/glass/beaker{
-	pixel_x = 5
-	},
-/obj/item/reagent_container/dropper,
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
-/obj/item/reagent_container/glass/beaker/bluespace{
-	pixel_y = 12;
-	pixel_x = 6
-	},
-/turf/closed/wall/almayer/white/reinforced,
-/area/almayer/medical/medical_science)
 "vWB" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ashtray/plastic,
@@ -96255,17 +96211,6 @@
 	},
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/engineering/lower/workshop/hangar)
-"xXr" = (
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/item/reagent_container/glass/beaker/bluespace{
-	pixel_y = 20
-	},
-/obj/structure/machinery/chem_dispenser/research,
-/turf/closed/wall/almayer/white,
-/area/almayer/medical/medical_science)
 "xXs" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/underdeck)
@@ -175726,7 +175671,7 @@ aIk
 aRQ
 bLB
 bPM
-bPp
+aTt
 bLB
 bOD
 bOt
@@ -175828,14 +175773,14 @@ aRQ
 aRQ
 aRQ
 bLB
-bPE
-bPt
+aaE
+aTt
 bNX
 bga
 bgv
 bga
 bNX
-bdW
+bNJ
 bMG
 bLB
 aRQ
@@ -204882,7 +204827,7 @@ ncE
 ncE
 ncE
 ncE
-vWt
+vOy
 vOy
 vOy
 sqf
@@ -204986,7 +204931,7 @@ dwr
 rDV
 mTd
 gQF
-xXr
+tfH
 vOy
 niL
 bSk

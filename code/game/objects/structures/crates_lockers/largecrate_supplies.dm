@@ -279,7 +279,7 @@
 
 /obj/structure/largecrate/supply/supplies/water
 	name = "\improper WY Bottled Water crate (x50)"
-	desc = "A crate containing fifty Weyland-Yutani Bottled Spring Water bottles."
+	desc = "A crate containing fifty Weyland-Yutani Bottled SpingWater bottles."
 	supplies = list(/obj/item/reagent_container/food/drinks/cans/waterbottle = 50)
 
 /obj/structure/largecrate/supply/powerloader

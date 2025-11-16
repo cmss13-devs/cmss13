@@ -399,7 +399,7 @@
 	reagents.add_reagent("fruit_beer", 30)
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle
-	name = "\improper Weyland-Yutani Bottled Spring Water"
+	name = "\improper Weyland-Yutani Bottled SpingWater"
 	desc = "Overpriced 'Spring' water. Bottled by the Weyland-Yutani Corporation."
 	icon_state = "wy_water"
 	crushed_icon = "wy_water_crushed"

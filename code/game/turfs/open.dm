@@ -115,7 +115,7 @@
 			return
 
 		if(1) // 1 only singes
-			if(!scorchedness) // we only singe that which hasnt burned
+			if(!scorchedness) // we only singe that which hasn't burned
 				scorchedness = 1
 
 		if(2 to 30)

@@ -4,7 +4,7 @@
 In order to debug `qdel()` failures, there are several tools available.
 To enable these tools, define `TESTING` in [_compile_options.dm](https://github.com/tgstation/-tg-station/blob/master/code/_compile_options.dm).
 
-First is a verb called "Find References", which lists **every** refererence to an object in the world. This allows you to track down any indirect or obfuscated references that you might have missed.
+First is a verb called "Find References", which lists **every** reference to an object in the world. This allows you to track down any indirect or obfuscated references that you might have missed.
 
 Complementing this is another verb, "qdel() then Find References".
 This does exactly what you'd expect; it calls `qdel()` on the object and then it finds all references remaining.
@@ -352,7 +352,7 @@ SUBSYSTEM_DEF(garbage)
 			if (QDEL_HINT_IWILLGC)
 				D.gc_destroyed = world.time
 				return
-			if (QDEL_HINT_LETMELIVE) //qdel should let the object live after calling destory.
+			if (QDEL_HINT_LETMELIVE) //qdel should let the object live after calling destroy.
 				if(!force)
 					D.gc_destroyed = null //clear the gc variable (important!)
 					return
@@ -376,7 +376,7 @@ SUBSYSTEM_DEF(garbage)
 			#ifdef REFERENCE_TRACKING
 			if (QDEL_HINT_FINDREFERENCE) //qdel will, if REFERENCE_TRACKING is enabled, display all references to this object, then queue the object for deletion.
 				SSgarbage.Queue(D)
-				D.find_references() //This breaks ci. Consider it insurance against somehow pring reftracking on accident
+				D.find_references() //This breaks ci. Consider it insurance against somehow pingreftracking on accident
 			if (QDEL_HINT_IFFAIL_FINDREFERENCE) //qdel will, if REFERENCE_TRACKING is enabled and the object fails to collect, display all references to this object.
 				SSgarbage.Queue(D)
 				SSgarbage.reference_find_on_fail[text_ref(D)] = TRUE

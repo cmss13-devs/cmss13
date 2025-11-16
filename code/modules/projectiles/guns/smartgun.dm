@@ -662,27 +662,27 @@
 
 	var/mob/living/unconscious_target = null
 	var/mob/living/conscious_target = null
-	for(var/mob/living/targetted_mob in range(lock_range, target) & oviewers(user.get_maximum_view_range(), user))
-		if(targetted_mob.invisibility)
+	for(var/mob/living/targeted_mob in range(lock_range, target) & oviewers(user.get_maximum_view_range(), user))
+		if(targeted_mob.invisibility)
 			continue
-		if(HAS_TRAIT(targetted_mob, TRAIT_ABILITY_BURROWED))
+		if(HAS_TRAIT(targeted_mob, TRAIT_ABILITY_BURROWED))
 			continue
-		if(targetted_mob.is_ventcrawling)
+		if(targeted_mob.is_ventcrawling)
 			continue
-		if(targetted_mob.stat == DEAD)
+		if(targeted_mob.stat == DEAD)
 			continue // No dead or non living.
 
-		if(iff_enabled && targetted_mob.get_target_lock(user.faction_group))
+		if(iff_enabled && targeted_mob.get_target_lock(user.faction_group))
 			continue
 
-		var/dist = get_dist_sqrd(user, targetted_mob)
+		var/dist = get_dist_sqrd(user, targeted_mob)
 
-		if(targetted_mob.stat == UNCONSCIOUS && dist_unconscious > dist)
+		if(targeted_mob.stat == UNCONSCIOUS && dist_unconscious > dist)
 			dist_unconscious = dist
-			unconscious_target = targetted_mob
+			unconscious_target = targeted_mob
 		else if(dist_conscious > dist)
 			dist_conscious = dist
-			conscious_target = targetted_mob
+			conscious_target = targeted_mob
 
 	if(conscious_target)
 		set_autoshot_image(conscious_target)

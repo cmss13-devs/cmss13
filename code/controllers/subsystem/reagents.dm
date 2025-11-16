@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(reagents)
 	initialized = SSreagents.initialized
 
 /datum/controller/subsystem/reagents/proc/prepare_properties()
-	//Chemical Properties - Initialises all /datum/chem_property into a list indexed by property name
+	//Chemical Properties - Initializes all /datum/chem_property into a list indexed by property name
 	var/paths = typesof(/datum/chem_property)
 	GLOB.chemical_properties_list = list()
 	//Some filters
@@ -66,8 +66,8 @@ SUBSYSTEM_DEF(reagents)
 /datum/controller/subsystem/reagents/proc/prepare_reagents()
 	//I dislike having these here but map-objects are initialized before world/New() is called. >_>
 	set waitfor = FALSE
-	//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
-	//Generated chemicals should be initialized last, hence the substract then readd.
+	//Chemical Reagents - Initializes all /datum/reagent into a list indexed by reagent id
+	//Generated chemicals should be initialized last, hence the subtract then readd.
 	var/list/paths = subtypesof(/datum/reagent) - typesof(/datum/reagent/generated) - subtypesof(/datum/reagent/generated) + subtypesof(/datum/reagent/generated)
 	GLOB.chemical_reagents_list = list()
 	for(var/path in paths)
@@ -75,7 +75,7 @@ SUBSYSTEM_DEF(reagents)
 		chem.save_chemclass()
 		GLOB.chemical_reagents_list[chem.id] = chem
 
-	//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
+	//Chemical Reactions - Initializes all /datum/chemical_reaction into a list
 	// It is filtered into multiple lists within a list.
 	// For example:
 	// chemical_reaction_list["phoron"] is a list of all reactions relating to phoron

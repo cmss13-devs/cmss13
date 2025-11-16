@@ -706,7 +706,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	var/editing = FALSE
 	for(var/model_key in grid_models)
 		// We're going to split models by newline
-		// This guarentees that each entry will be of interest to us
+		// This guarantees that each entry will be of interest to us
 		// Then we'll process them step by step
 		// Hopefully this reduces the cost from read_list that we'd otherwise have
 		var/list/lines = splittext(grid_models[model_key], "\n")

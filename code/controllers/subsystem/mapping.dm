@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(mapping)
 
 	/// True when in the process of adding a new Z-level, global locking
 	var/adding_new_zlevel = FALSE
-	/// list of traits and their associated z leves
+	/// list of traits and their associated z levels
 	var/list/z_trait_levels = list()
 
 	/// list of lazy templates that have been loaded
@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(mapping)
 		return
 	clearing_reserved_turfs = TRUE
 	message_admins("Clearing dynamic reservation space.")
-	// /tg/ Shuttles have extra handling here to avoid them being desallocated
+	// /tg/ Shuttles have extra handling here to avoid them being deallocated
 	do_wipe_turf_reservations()
 	clearing_reserved_turfs = FALSE
 
@@ -345,7 +345,7 @@ SUBSYSTEM_DEF(mapping)
 		for(var/i in levels_by_trait(ZTRAIT_RESERVED))
 			if(reserve.reserve(width, height, z_size, i))
 				return reserve
-		//If we didn't return at this point, theres a good chance we ran out of room on the exisiting reserved z levels, so lets try a new one
+		//If we didn't return at this point, theres a good chance we ran out of room on the existing reserved z levels, so lets try a new one
 		var/datum/space_level/newReserved = add_reservation_zlevel()
 		initialize_reserved_level(newReserved.z_value)
 		if(reserve.reserve(width, height, z_size, newReserved.z_value))

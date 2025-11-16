@@ -13,7 +13,7 @@ GLOBAL_PROTECT(roles_allowed_minimap_draw)
  * Minimaps are a low priority subsystem that fires relatively often
  * the Initialize proc for this subsystem draws the maps as one of the last initializing subsystems
  *
- * Fire() for this subsystem doens't actually updates anything, and purely just reapplies the overlays that it already tracks
+ * Fire() for this subsystem doesn't actually updates anything, and purely just reapplies the overlays that it already tracks
  * actual updating of marker locations is handled by [/datum/controller/subsystem/minimaps/proc/on_move]
  * and zlevel changes are handled in [/datum/controller/subsystem/minimaps/proc/on_z_change]
  * tracking of the actual atoms you want to be drawn on is done by means of datums holding info pertaining to them with [/datum/hud_displays]
@@ -34,12 +34,12 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/image/images_by_source = list()
 	///the update target datums, sorted by update flag type
 	var/list/update_targets = list()
-	///Nonassoc list of updators we want to have their overlays reapplied
+	///Nonassoc list of updaters we want to have their overlays reapplied
 	var/list/datum/minimap_updator/update_targets_unsorted = list()
 	///Assoc list of removal callbacks to invoke to remove images from the raw lists
 	var/list/datum/callback/removal_cbs = list()
 	///list of holders for data relating to tracked zlevel and tracked atum
-	var/list/datum/minimap_updator/updators_by_datum = list()
+	var/list/datum/minimap_updator/updaters_by_datum = list()
 	///assoc list of hash = image of images drawn by players
 	var/list/image/drawn_images = list()
 	///list of callbacks we need to invoke late because Initialize happens early, or a Z-level was loaded after init
@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(minimaps)
 	update_targets = SSminimaps.update_targets
 	update_targets_unsorted = SSminimaps.update_targets_unsorted
 	removal_cbs = SSminimaps.removal_cbs
-	updators_by_datum = SSminimaps.updators_by_datum
+	updaters_by_datum = SSminimaps.updaters_by_datum
 	drawn_images = SSminimaps.drawn_images
 
 /datum/controller/subsystem/minimaps/fire(resumed)
@@ -161,7 +161,7 @@ SUBSYSTEM_DEF(minimaps)
 	LAZYREMOVE(earlyadds, "[level]")
 
 /**
- * Adds an atom to the processing updators that will have blips drawn on them
+ * Adds an atom to the processing updaters that will have blips drawn on them
  * Arguments:
  * * target: the target we want to be updating the overlays on
  * * flags: flags for the types of blips we want to be updated
@@ -180,7 +180,7 @@ SUBSYSTEM_DEF(minimaps)
 		holder.raw_blips += minimaps_by_z["[ztarget]"].images_raw["[flag]label"]
 		if(holder.drawing)
 			holder.raw_blips += drawn_images["[ztarget]-[flag]label"]
-	updators_by_datum[target] = holder
+	updaters_by_datum[target] = holder
 	update_targets_unsorted += holder
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_updator))
 
@@ -190,8 +190,8 @@ SUBSYSTEM_DEF(minimaps)
 /datum/controller/subsystem/minimaps/proc/remove_updator(atom/target)
 	SIGNAL_HANDLER
 	UnregisterSignal(target, COMSIG_PARENT_QDELETING)
-	var/datum/minimap_updator/holder = updators_by_datum[target]
-	updators_by_datum -= target
+	var/datum/minimap_updator/holder = updaters_by_datum[target]
+	updaters_by_datum -= target
 	for(var/key in update_targets)
 		LAZYREMOVE(update_targets[key], holder)
 	update_targets_unsorted -= holder
@@ -482,7 +482,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/minimap_flags
 	/// Minimap target
 	var/target
-	/// Is drawing enbabled
+	/// Is drawing enabled
 	var/drawing
 	/// Max ratio to x_max/y_max you can scroll the map to
 	var/max_scroll_ratio = 0.8
@@ -589,9 +589,9 @@ SUBSYSTEM_DEF(minimaps)
 	stop_polling -= user
 
 /**
- * Handles fetching the targetted coordinates when the mob tries to click on this map
+ * Handles fetching the targeted coordinates when the mob tries to click on this map
  * does the following:
- * turns map targetted pixel into a list(x, y)
+ * turns map targeted pixel into a list(x, y)
  * gets z level of this map
  * x and y minimap centering is reverted, then the x2 scaling of the map is removed
  * round up to correct if an odd pixel was clicked and make sure its valid
@@ -608,7 +608,7 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
-	var/zlevel = SSminimaps.updators_by_datum[src].ztarget
+	var/zlevel = SSminimaps.updaters_by_datum[src].ztarget
 	var/x = (pixel_coords[1] - SSminimaps.minimaps_by_z["[zlevel]"].x_offset + plane_master.cur_x_shift)  / MINIMAP_SCALE
 	var/y = (pixel_coords[2] - SSminimaps.minimaps_by_z["[zlevel]"].y_offset + plane_master.cur_y_shift)  / MINIMAP_SCALE
 	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)

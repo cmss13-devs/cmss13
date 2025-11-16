@@ -238,19 +238,19 @@
 	current_xeno.reset_strain()
 
 
-/datum/keybinding/xenomorph/toggle_seethrough
+/datum/keybinding/xenomorph/toggle_see_through
 	hotkey_keys = list("Shift+Z")
 	classic_keys = list("Unbound")
-	name = "become_seethrough"
+	name = "become_see_through"
 	full_name = "Become Seethrough"
 	keybind_signal = COMSIG_KB_XENO_BECOME_SEETHROUGH
 
-/datum/keybinding/xenomorph/toggle_seethrough/down(client/user)
+/datum/keybinding/xenomorph/toggle_see_through/down(client/user)
 	. = ..()
 	if(.)
 		return
 
 	var/mob/living/carbon/xenomorph/current_xeno = user?.mob
-	current_xeno.toggle_seethrough()
+	current_xeno.toggle_see_through()
 	return TRUE
 

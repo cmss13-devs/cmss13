@@ -501,7 +501,7 @@
 	icon_state = "cassette_aesthetic"
 	side1_icon = "cassette_aesthetic"
 
-//cassette tape that I thought was a good idea but doesnt fit for new maps.
+//cassette tape that I thought was a good idea but doesn't fit for new maps.
 /obj/item/device/cassette_tape/cargocrate
 	name = "weyland yutani cassette"
 	id = 13

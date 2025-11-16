@@ -193,10 +193,10 @@
 			break
 
 
-/mob/living/carbon/xenomorph/verb/toggle_seethrough()
+/mob/living/carbon/xenomorph/verb/toggle_see_through()
 
 	set category = "Alien"
-	set name = "Become seethrough"
+	set name = "Become see through"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 

@@ -1,5 +1,5 @@
 ///A component that lets you turn your character transparent in order to see and click through yourself.
-/datum/component/seethrough_mob
+/datum/component/see_through_mob
 	///The atom that enables our dark magic
 	var/atom/movable/render_source_atom
 	///The fake version of ourselves
@@ -10,14 +10,14 @@
 	var/animation_time
 	///Does this object let clicks from players its transparent to pass through it
 	var/clickthrough
-	///Is the seethrough effect currently active
+	///Is the see through effect currently active
 	var/is_active
 	///The mob's original render_target value
 	var/initial_render_target_value
 	///This component's personal uid
 	var/personal_uid
 
-/datum/component/seethrough_mob/Initialize(target_alpha = 100, animation_time = 0.5 SECONDS, clickthrough = TRUE)
+/datum/component/see_through_mob/Initialize(target_alpha = 100, animation_time = 0.5 SECONDS, clickthrough = TRUE)
 	. = ..()
 
 	if(!ismob(parent))
@@ -39,12 +39,12 @@
 
 	render_source_atom.render_source = "*transparent_bigmob[personal_uid]"
 
-/datum/component/seethrough_mob/Destroy(force, silent)
+/datum/component/see_through_mob/Destroy(force, silent)
 	QDEL_NULL(render_source_atom)
 	return ..()
 
 ///Set up everything we need to trick the client and keep it looking normal for everyone else
-/datum/component/seethrough_mob/proc/trick_mob()
+/datum/component/see_through_mob/proc/trick_mob()
 	SIGNAL_HANDLER
 
 	var/mob/fool = parent
@@ -74,7 +74,7 @@
 	RegisterSignal(fool, COMSIG_MOB_LOGOUT, PROC_REF(on_client_disconnect))
 
 ///Remove the screen object and make us appear solid to ourselves again
-/datum/component/seethrough_mob/proc/untrick_mob()
+/datum/component/see_through_mob/proc/untrick_mob()
 	var/mob/fool = parent
 	animate(trickery_image, alpha = 255, time = animation_time)
 	UnregisterSignal(fool, COMSIG_MOB_LOGOUT)
@@ -83,21 +83,21 @@
 	addtimer(CALLBACK(src, PROC_REF(clear_image), trickery_image, fool.client), animation_time)
 
 ///Remove the image and the trick atom
-/datum/component/seethrough_mob/proc/clear_image(image/removee, client/remove_from)
+/datum/component/see_through_mob/proc/clear_image(image/removee, client/remove_from)
 	var/atom/movable/atom_parent = parent
 	atom_parent.vis_contents -= render_source_atom
 	atom_parent.render_target = initial_render_target_value
 	remove_from?.images -= removee
 
 ///Effect is disabled when they log out because client gets deleted
-/datum/component/seethrough_mob/proc/on_client_disconnect()
+/datum/component/see_through_mob/proc/on_client_disconnect()
 	SIGNAL_HANDLER
 
 	var/mob/fool = parent
 	UnregisterSignal(fool, COMSIG_MOB_LOGOUT)
 	clear_image(trickery_image, fool.client)
 
-/datum/component/seethrough_mob/proc/toggle_active()
+/datum/component/see_through_mob/proc/toggle_active()
 	is_active = !is_active
 	if(is_active)
 		trick_mob()

@@ -311,7 +311,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/toggle_see_through,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/place_construction/not_primary, //normally fifth macro but not as important for queen
 		/datum/action/xeno_action/activable/corrosive_acid,
@@ -325,7 +325,7 @@
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
-		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/toggle_see_through,
 	)
 
 	inherent_verbs = list(
@@ -343,7 +343,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/toggle_see_through,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/place_construction/not_primary, //normally fifth macro but not as important for queen
 		/datum/action/xeno_action/activable/corrosive_acid,
@@ -365,7 +365,7 @@
 
 	// Abilities they get when they've successfully aged.
 	var/mobile_aged_abilities = list(
-		/datum/action/xeno_action/onclick/toggle_seethrough,
+		/datum/action/xeno_action/onclick/toggle_see_through,
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
@@ -453,7 +453,7 @@
 		make_combat_effective()
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
-	AddComponent(/datum/component/seethrough_mob)
+	AddComponent(/datum/component/see_through_mob)
 	if(hive.hivenumber == XENO_HIVE_NORMAL)
 		AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=get_minimap_flag_for_faction(hive.hivenumber), has_update=TRUE, drawing=TRUE)
 	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))

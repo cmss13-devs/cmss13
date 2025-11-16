@@ -348,7 +348,7 @@
 	if(istype(powerloader_clamp_used.loaded, /obj/structure/ship_ammo/sentry))
 		omnisentry_price -= omnisentry_price_scale
 	for(var/obj/thing as anything in powerloader_clamp_used.loaded)
-		thing.forceMove(loc) // no sentries popping out when we qdel please
+		thing.forceMove(loc) // no in between popping out when we qdel please
 		qdel(thing)
 	qdel(powerloader_clamp_used.loaded)
 	powerloader_clamp_used.loaded = null

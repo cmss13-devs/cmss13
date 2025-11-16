@@ -175,7 +175,7 @@
 #define SKILL_PILOT_EXPERT 2 // Pilot, Synth
 #define SKILL_PILOT_MAX 2
 
-//Navigations skill - for seting orbital alt
+//Navigations skill - for setting orbital alt
 #define SKILL_NAVIGATIONS_DEFAULT 0
 #define SKILL_NAVIGATIONS_TRAINED 1
 #define SKILL_NAVIGATIONS_MAX 1

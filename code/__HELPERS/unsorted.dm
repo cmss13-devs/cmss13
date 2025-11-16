@@ -295,7 +295,7 @@
 	var/list/creatures = list()
 	var/list/namecounts = list()
 	for(var/mob/M in mobs)
-		// This thing doesnt want to be seen, a bit snowflake.
+		// This thing doesn't want to be seen, a bit snowflake.
 		if(M.invisibility == INVISIBILITY_MAXIMUM && M.alpha == 0)
 			continue
 

@@ -255,8 +255,8 @@
 	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -15)
 	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -20)
 
-/atom/movable/screen/plane_master/seethrough
-	name = "seethrough plane"
+/atom/movable/screen/plane_master/see_through
+	name = "see through plane"
 	plane = SEETHROUGH_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 

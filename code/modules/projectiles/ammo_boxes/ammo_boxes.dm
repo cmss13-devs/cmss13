@@ -345,7 +345,7 @@
 				dumping = TRUE
 
 			var/transfering   = 0   // Amount of bullets we're trying to transfer
-			var/transferable  = 0   // Amount of bullets that can actually be transfered
+			var/transferable  = 0   // Amount of bullets that can actually be transferred
 			do
 				// General checking
 				if(dumping)

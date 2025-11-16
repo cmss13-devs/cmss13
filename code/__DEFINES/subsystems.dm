@@ -98,7 +98,7 @@
 /// The default return value which must be overridden. Will succeed with a warning.
 #define SS_INIT_NONE -1
 
-/// Subsystem initialized sucessfully.
+/// Subsystem initialized successfully.
 #define SS_INIT_SUCCESS 2
 
 /// Successful, but don't print anything. Useful if subsystem was disabled.

@@ -17741,9 +17741,6 @@
 /turf/open/floor/engine,
 /area/almayer/engineering/airmix)
 "aVq" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
@@ -17766,6 +17763,7 @@
 /obj/item/storage/toolbox/mechanical{
 	pixel_y = 23
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/containment)
 "aVr" = (
@@ -18444,9 +18442,6 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aWY" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
@@ -18454,6 +18449,7 @@
 	pixel_y = 6;
 	pixel_x = 1
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/containment)
 "aWZ" = (
@@ -18462,9 +18458,6 @@
 /turf/open/floor/plating,
 /area/almayer/engineering/airmix)
 "aXa" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
@@ -18480,6 +18473,7 @@
 	pixel_x = 4;
 	pixel_y = 2
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/containment)
 "aXb" = (
@@ -22382,9 +22376,6 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "bgs" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -22425,6 +22416,7 @@
 	pixel_x = 6;
 	pixel_y = 4
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/medical/containment)
 "bgt" = (
@@ -22688,9 +22680,6 @@
 /turf/open/floor/almayer/red,
 /area/almayer/squads/alpha)
 "bgZ" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -22706,6 +22695,7 @@
 	normaldoorcontrol = 4;
 	pixel_x = 5
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/medical/containment)
 "bha" = (
@@ -28313,9 +28303,6 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "btn" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -28330,6 +28317,7 @@
 	pixel_y = 22;
 	req_one_access_txt = "19;28"
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/flooredge/east,
 /area/almayer/medical/containment)
 "bto" = (
@@ -35927,7 +35915,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/containment)
 "bLR" = (
-/obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
@@ -35935,6 +35922,7 @@
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = 30
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/sterile_green2,
 /area/almayer/medical/containment)
 "bLS" = (
@@ -36854,9 +36842,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/sign/safety/rad_shield{
 	pixel_x = -23;
 	pixel_y = 7
@@ -36872,6 +36857,7 @@
 	pixel_x = 16;
 	pixel_y = 8
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/containment)
 "bNS" = (
@@ -36884,9 +36870,6 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/navigation)
 "bNT" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/machinery/door_display/research_cell{
 	dir = 1;
 	id = "Containment Cell 1";
@@ -36897,6 +36880,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/medical/containment)
 "bNU" = (
@@ -37342,9 +37326,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/transmitter/rotary{
 	name = "Research Containment Telephone";
 	phone_category = "Medical & Research Dept.";
@@ -37361,6 +37342,7 @@
 	pixel_x = -1;
 	layer = 3.2
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/containment)
 "bOQ" = (
@@ -37388,9 +37370,6 @@
 	icon_state = "NE-out";
 	pixel_y = 1
 	},
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/machinery/door_display/research_cell{
 	id = "Containment Cell 2";
 	name = "Cell 2 Control";
@@ -37405,6 +37384,7 @@
 	pixel_x = 3;
 	pixel_y = 0
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/medical/containment)
 "bOT" = (
@@ -39166,9 +39146,6 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "bSA" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/machinery/computer/research{
 	pixel_y = 3;
 	dir = 8;
@@ -39182,12 +39159,10 @@
 	pixel_x = 7;
 	pixel_y = -26
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "bSB" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/item/storage/toolbox/mechanical{
 	pixel_y = 8;
 	pixel_x = 1
@@ -39216,6 +39191,7 @@
 	name = "ship-grade camera";
 	dir = 1
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "bSC" = (
@@ -39452,9 +39428,6 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "bTe" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/machinery/centrifuge{
 	pixel_y = 8;
 	pixel_x = -1;
@@ -39468,17 +39441,16 @@
 	pixel_x = 13;
 	pixel_y = -10
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "bTf" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/machinery/computer/working_joe{
 	pixel_x = 2;
 	pixel_y = 4;
 	dir = 4
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "bTg" = (
@@ -40204,9 +40176,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "bUS" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/transmitter/rotary{
 	name = "Main Research Laboratory Telephone";
 	phone_category = "Medical & Research Dept.";
@@ -40214,6 +40183,7 @@
 	pixel_y = 8;
 	pixel_x = -11
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "bUT" = (
@@ -40727,9 +40697,6 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "bWi" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/item/storage/fancy/vials/empty{
 	pixel_y = 12;
 	start_vials = 2;
@@ -40758,6 +40725,7 @@
 	pixel_x = -7;
 	pixel_y = 1
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/medical_science)
 "bWj" = (
@@ -40850,15 +40818,13 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/hydroponics)
 "bWv" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/machinery/reagentgrinder{
 	pixel_y = 9
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
 "bWw" = (
@@ -56410,9 +56376,6 @@
 	pixel_y = 14;
 	layer = 2.96
 	},
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/item/prop/tableflag/uscm{
 	pixel_x = -8;
 	pixel_y = 1
@@ -56421,6 +56384,7 @@
 	pixel_x = -8;
 	pixel_y = -10
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/upper_medical)
 "hQc" = (
@@ -59227,9 +59191,7 @@
 	pixel_y = 5;
 	sub_name = "Chief Medical Officer"
 	},
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/upper_medical)
 "iYm" = (
@@ -64491,9 +64453,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/stern)
 "lid" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/machinery/faxmachine/corporate{
 	department = "USS Almayer";
 	radio_alert_tag = ":m";
@@ -64501,6 +64460,7 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "liJ" = (
@@ -68392,14 +68352,12 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "mTd" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/machinery/centrifuge{
 	pixel_y = 8;
 	pixel_x = -1;
 	layer = 3.1
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "mTi" = (
@@ -75618,9 +75576,6 @@
 	pixel_y = 3;
 	pixel_x = -2
 	},
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/sign/safety/terminal{
 	layer = 2.5;
 	pixel_x = 32;
@@ -75631,6 +75586,7 @@
 	pixel_y = -8;
 	pixel_x = 32
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "pQS" = (
@@ -76057,14 +76013,12 @@
 /turf/open/floor/almayer/silver/north,
 /area/almayer/shipboard/brig/cic_hallway)
 "qam" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/machinery/reagent_analyzer{
 	pixel_y = 11;
 	pixel_x = -1;
 	explo_proof = 1
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/medical_science)
 "qan" = (
@@ -80082,9 +80036,6 @@
 	pixel_x = 2;
 	pixel_y = 8
 	},
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/item/reagent_container/dropper{
 	pixel_y = -3
 	},
@@ -80095,6 +80046,7 @@
 	pixel_y = -8;
 	req_access_txt = "28"
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "rDX" = (
@@ -84402,9 +84354,6 @@
 /turf/open/floor/almayer/orange/southwest,
 /area/almayer/engineering/upper_engineering/starboard)
 "trF" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/item/paper_bin/wy{
 	pixel_x = 3;
 	pixel_y = 7
@@ -84425,6 +84374,7 @@
 	pixel_y = -3;
 	name = "Research department's rubber stamp"
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "trU" = (
@@ -85404,13 +85354,11 @@
 	pixel_y = 1;
 	pixel_x = 2
 	},
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/machinery/computer/research/main_terminal{
 	pixel_y = 1;
 	pixel_x = -15
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/upper_medical)
 "tOu" = (
@@ -86238,9 +86186,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "ueJ" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/ashtray/plastic{
 	pixel_x = 10;
 	pixel_y = -2
@@ -89954,9 +89900,6 @@
 	pixel_x = 7;
 	pixel_y = -26
 	},
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/structure/transmitter/rotary{
 	name = "CMO Office Telephone";
 	phone_category = "Offices";
@@ -89972,6 +89915,7 @@
 	pixel_y = -26;
 	pixel_x = 21
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/upper_medical)
 "vCt" = (
@@ -95049,9 +94993,6 @@
 /turf/open/floor/almayer/silver/east,
 /area/almayer/hallways/upper/midship_hallway)
 "xyt" = (
-/obj/structure/surface/table/reinforced/prison{
-	climbable = 0
-	},
 /obj/item/paper_bin/wy{
 	pixel_y = 8;
 	pixel_x = -6
@@ -95072,6 +95013,7 @@
 	req_one_access_txt = "28";
 	pixel_x = 9
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/upper_medical)
 "xyw" = (

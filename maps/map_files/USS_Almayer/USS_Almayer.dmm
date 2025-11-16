@@ -3218,7 +3218,9 @@
 /obj/structure/machinery/chem_dispenser/medbay{
 	pixel_x = -1
 	},
-/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 20
+	},
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera";
 	dir = 8
@@ -12224,7 +12226,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/lower)
 "aFf" = (
-/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 20
+	},
 /obj/structure/machinery/chem_dispenser/research,
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/medical_science)
@@ -14654,6 +14658,10 @@
 	density = 0;
 	pixel_x = -11;
 	pixel_y = 16
+	},
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 30;
+	pixel_x = -7
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
@@ -24000,7 +24008,9 @@
 /obj/structure/machinery/chem_dispenser/medbay{
 	pixel_x = -1
 	},
-/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 20
+	},
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/chemistry)
 "bir" = (
@@ -60845,16 +60855,15 @@
 /area/almayer/medical/hydroponics)
 "lab" = (
 /obj/structure/surface/rack,
-/obj/item/reagent_container/glass/bucket/janibucket{
-	pixel_y = 8;
-	layer = 3.04
-	},
-/obj/item/reagent_container/glass/bucket/janibucket{
-	pixel_y = -4
-	},
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
+	},
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = -5
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/workshop/hangar)
@@ -74459,6 +74468,9 @@
 /area/almayer/medical/lower_medical_lobby)
 "qyK" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 20
+	},
 /turf/open/floor/almayer/orange/southeast,
 /area/almayer/engineering/lower/workshop/hangar)
 "qyP" = (
@@ -82689,17 +82701,16 @@
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/hydroponics)
 "tOu" = (
-/obj/item/reagent_container/glass/bucket/janibucket{
-	layer = 3.04;
-	pixel_y = 14;
-	pixel_x = 6
-	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/door_control{
 	pixel_x = -6;
 	pixel_y = -4;
 	name = "Secure Storage Shutters";
 	id = "OTcenter"
+	},
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 12;
+	pixel_x = 6
 	},
 /turf/open/floor/almayer/orange/east,
 /area/almayer/engineering/lower/workshop/hangar)
@@ -88338,7 +88349,8 @@
 	pixel_x = -24
 	},
 /obj/item/reagent_container/glass/beaker/bluespace{
-	pixel_y = 12
+	pixel_y = 12;
+	pixel_x = 6
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
@@ -93697,7 +93709,9 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/engineering/lower/workshop/hangar)
 "xXr" = (
-/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 20
+	},
 /obj/structure/machinery/chem_dispenser/research,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)

@@ -256,20 +256,18 @@ SUBSYSTEM_DEF(objectives)
 	if(!picked_location)
 		CRASH("Unable to pick a location at [dest] for [it]")
 
-	var/generated = FALSE
-	for(var/obj/O in picked_location)
-		if(istype(O, /obj/structure/closet) || istype(O, /obj/structure/safe) || istype(O, /obj/structure/filingcabinet))
-			if(istype(O, /obj/structure/closet))
-				var/obj/structure/closet/c = O
-				if(c.opened)
-					continue //container is open, don't put stuff into it
-			var/obj/item/IT = new it(O)
-			O.contents += IT
-			generated = TRUE
-			break
+	for(var/obj/cur_obj in picked_location)
+		if(istype(cur_obj, /obj/structure/closet))
+			var/obj/structure/closet/cur_closet = cur_obj
+			if(cur_closet.opened)
+				continue //container is open, don't put stuff into it
+			new it(cur_obj)
+			return
+		if(istype(cur_obj, /obj/structure/safe) || istype(cur_obj, /obj/structure/filingcabinet))
+			new it(cur_obj)
+			return
 
-	if(!generated)
-		new it(picked_location)
+	new it(picked_location)
 
 /datum/controller/subsystem/objectives/proc/pre_round_start()
 	SIGNAL_HANDLER

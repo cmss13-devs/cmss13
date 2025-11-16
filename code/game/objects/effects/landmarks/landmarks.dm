@@ -461,7 +461,7 @@
 	icon_state = "chef_spawn"
 	job = /datum/job/civilian/chef //Need to create a WO variant in the future
 
-//****************************************** CIVILLIANS & MEDBAY ************************************************/
+//****************************************** CIVILIANS & MEDBAY ************************************************/
 
 /obj/effect/landmark/start/whiskey/liaison
 	icon_state = "cc_spawn"

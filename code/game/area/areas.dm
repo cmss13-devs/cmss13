@@ -79,7 +79,7 @@
 	var/used_environ = 0
 	var/used_oneoff = 0 //one-off power usage
 
-	/// If this area is outside the game's normal interactivity and should be excluded from things like EOR reports and crew monitors.
+	/// If this area is outside the game's normal interactability and should be excluded from things like EOR reports and crew monitors.
 	/// Doesn't need to be set for areas/Z levels that are marked as admin-only
 	var/block_game_interaction = FALSE
 

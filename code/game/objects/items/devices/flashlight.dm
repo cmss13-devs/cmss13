@@ -385,7 +385,7 @@
 	if(fuel <= 0 || !on)
 		burn_out()
 
-/obj/item/device/flashlight/flare/proc/flare_burn_down() //Controls the way in which flares slowly die out. Needs to be overriden by children, or they will be forced to use this light behavior.
+/obj/item/device/flashlight/flare/proc/flare_burn_down() //Controls the way in which flares slowly die out. Needs to be overridden by children, or they will be forced to use this light behavior.
 	switch(fuel) //The code belows controls the timing on a flares burn out, and the corresponding reduction in effective range.
 		if(15.25 MINUTES to 16 MINUTES)
 			set_light_range(7)

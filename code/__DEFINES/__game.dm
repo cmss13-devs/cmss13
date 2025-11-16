@@ -348,7 +348,7 @@
 #define BARRICADE_SANDBAG_4 4
 #define BARRICADE_SANDBAG_5 5
 
-// Defines for sandbag tresholds
+// Defines for sandbag thresholds
 #define BARRICADE_SANDBAG_TRESHOLD_1 75
 #define BARRICADE_SANDBAG_TRESHOLD_2 150
 #define BARRICADE_SANDBAG_TRESHOLD_3 225

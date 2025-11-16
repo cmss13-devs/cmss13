@@ -1,6 +1,6 @@
 // Transitional helper for old style messages
 //
-// This is PURPOSEDLY a to_chat wrapper, and not SPAN macros,
+// This is PURPORTEDLY a to_chat wrapper, and not SPAN macros,
 // so you CAN'T end up shoving result somewhere else,
 // as these things use display: block.
 //
@@ -9,7 +9,7 @@
 
 /proc/to_chat_spaced(target, html, type, text,
 		avoid_highlighting = FALSE,
-		margin_top = 1, 
+		margin_top = 1,
 		margin_bottom = 1,
 		margin_left = 0
 )

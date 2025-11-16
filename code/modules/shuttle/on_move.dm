@@ -153,7 +153,7 @@ All ShuttleMove procs go here
 	contents -= oldT
 	underlying_old_area.contents += oldT
 	oldT.change_area(src, underlying_old_area) //lighting
-	//The old turf has now been given back to the area that turf originaly belonged to
+	//The old turf has now been given back to the area that turf original;y belonged to
 
 	var/area/old_dest_area = newT.loc
 	//parallax_movedir = old_dest_area.parallax_movedir

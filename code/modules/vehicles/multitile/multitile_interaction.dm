@@ -262,7 +262,7 @@
 	if(X.caste == XENO_CASTE_RAVAGER || X.caste == XENO_CASTE_QUEEN)
 		damage_mult = 2
 
-	//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
+	//Frenzy auras stack in a way, then the raw value is multiplied by two to get the additive modifier
 	if(X.frenzy_aura > 0)
 		damage += (X.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 

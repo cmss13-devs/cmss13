@@ -139,7 +139,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
  * * clear_char_probability - the likelihood a character does not get converted into a *
  *
  * Return:
- * returns the parsed and modified html output with the text content being partially scrambled with asteriks
+ * returns the parsed and modified html output with the text content being partially scrambled with asterisks
  */
 /proc/stars_decode_html(message, clear_char_probability = 25)
 	if(!length(message))

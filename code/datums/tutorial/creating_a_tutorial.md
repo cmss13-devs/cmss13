@@ -53,7 +53,7 @@ The API for tutorials is designed to be very simple, so I'll go over all the bas
 -   `init_mob()`
     -   This proc is used to initialize the mob and set them up correctly.
 -   `init_map()`
-    -   This proc does nothing by default, but can be overriden to spawn any atoms necessary for the tutorial from the very start.
+    -   This proc does nothing by default, but can be overridden to spawn any atoms necessary for the tutorial from the very start.
 -   `tutorial_end_in(time = 5 SECONDS, completed = TRUE)`
     -   This proc will end the tutorial in the given time, defaulting to 5 seconds. Once the proc is called, the player will be booted back to the menu screen after the time is up. Will mark the tutorial as completed if `completed` is `TRUE`
 -   `loc_from_corner(offset_x = 0, offset_y = 0)`

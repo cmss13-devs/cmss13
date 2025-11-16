@@ -111,7 +111,7 @@
 
 /obj/item/ammo_magazine/smartgun/rusty/Initialize(mapload, spawn_empty)
 	. = ..()
-	current_rounds = rand(280, 500) //Scavenged surplus, so there is more suprise factors
+	current_rounds = rand(280, 500) //Scavenged surplus, so there is more surprise factors
 
 /obj/item/ammo_magazine/smartgun/dirty
 	name = "irradiated M56 smartgun drum"

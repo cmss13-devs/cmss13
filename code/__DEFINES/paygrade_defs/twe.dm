@@ -52,7 +52,7 @@
 /// RNO6, General
 #define PAY_SHORT_RNO9 "RNO9"
 
-/// EMP, Emperess, based off the mention of "her majesty" in the ARPG
+/// EMP, Empress, based off the mention of "her majesty" in the ARPG
 #define PAY_SHORT_EMP "EMP"
 
 /// IASF Ranks

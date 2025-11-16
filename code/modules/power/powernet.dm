@@ -9,7 +9,7 @@
 	var/viewload = 0
 	var/number = 0
 
-	var/perapc = 0 // per-apc avilability
+	var/perapc = 0 // per-apc availability
 	var/perapc_excess = 0
 	var/netexcess = 0
 

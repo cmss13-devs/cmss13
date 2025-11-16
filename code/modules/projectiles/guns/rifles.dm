@@ -923,7 +923,7 @@
 		/obj/item/attachable/scope/slavic,
 		/obj/item/attachable/magnetic_harness,
 	)
-	random_spawn_under = list() //prevents equiping invalid attachments from base
+	random_spawn_under = list() //prevents p invalid attachments from base
 	random_spawn_muzzle = list()
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY

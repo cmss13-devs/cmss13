@@ -266,7 +266,7 @@ bullets/shells. ~N
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
 	)
-	matter = list("metal" = 50) //This changes based on the ammo ammount. 5k is the base of one shell/bullet.
+	matter = list("metal" = 50) //This changes based on the ammo amount. 5k is the base of one shell/bullet.
 	flags_equip_slot = null // It only fits into pockets and such.
 	w_class = SIZE_SMALL
 	current_rounds = 1 // So it doesn't get autofilled for no reason.
@@ -338,7 +338,7 @@ Generated per the various mags, and then changed based on the number of
 casings. .dir is the main thing that controls the icon. It modifies
 the icon_state to look like more casings are hitting the ground.
 There are 8 directions, 8 bullets are possible so after that it tries to grab the next
-icon_state while reseting the direction. After 16 casings, it just ignores new
+icon_state while resetting the direction. After 16 casings, it just ignores new
 ones. At that point there are too many anyway. Shells and bullets leave different
 items, so they do not intersect. This is far more efficient than using Bl*nd() or
 Turn() or Shift() as there is virtually no overhead. ~N

@@ -28,7 +28,7 @@
 #define MAP_DMM "dmm"
 /**
  * TGM SPEC:
- * TGM is a derevation of DMM, with restrictions placed on it
+ * TGM is a derivative of DMM, with restrictions placed on it
  * to make it easier to parse and to reduce merge conflicts/ease their resolution
  *
  * Requirements:
@@ -207,7 +207,7 @@
 	var/stored_index = 1
 	var/list/regexOutput
 	//multiz lool
-	dmm_regex.next = stored_index // CM addition: Neccessary to reset start position in case of loading the same file concurrently. Putting it in Find() below is NOT enough!
+	dmm_regex.next = stored_index // CM addition: Necessary to reset start position in case of loading the same file concurrently. Putting it in Find() below is NOT enough!
 	while(dmm_regex.Find(tfile, stored_index))
 		stored_index = dmm_regex.next
 		// Datum var lookup is expensive, this isn't
@@ -422,7 +422,7 @@
 		x_delta_with = min(x_delta_with, world.maxx)
 
 	// We're gonna skip all the entries above the upper x, or maxx if cropMap is set
-	// The last column is guarenteed to have the highest x value we;ll encounter
+	// The last column is guarantees to have the highest x value we;ll encounter
 	// Even if z scales, this still works
 	var/datum/grid_set/last_column = gridSets[length(gridSets)]
 	var/final_x = last_column.xcrd + x_relative_to_absolute
@@ -481,7 +481,7 @@
 
 		// We're gonna track the first and last pairs of coords we find
 		// Since x is always incremented in steps of 1, we only need to deal in y
-		// The first x is guarenteed to be the lowest, the first y the highest, and vis versa
+		// The first x is guaranteed to be the lowest, the first y the highest, and vis versa
 		// This is faster then doing mins and maxes inside the hot loop below
 		var/first_found = FALSE
 		var/first_y = 0
@@ -523,7 +523,7 @@
 			bounds[MAP_MAXZ] = max(bounds[MAP_MAXZ], zcrd)
 	return TRUE
 
-/// Stanrdard loading, not used in production
+/// Standard loading, not used in production
 /// Doesn't take advantage of any tgm optimizations, which makes it slower but also more general
 /// Use this if for some reason your map format is messy
 /datum/parsed_map/proc/_dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, delete)
@@ -631,7 +631,7 @@
 			expanded_x = TRUE
 
 		// We're gonna track the first and last pairs of coords we find
-		// The first x is guarenteed to be the lowest, the first y the highest, and vis versa
+		// The first x is guarantees to be the lowest, the first y the highest, and vis versa
 		// This is faster then doing mins and maxes inside the hot loop below
 		var/first_found = FALSE
 		var/first_x = 0
@@ -706,7 +706,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	var/editing = FALSE
 	for(var/model_key in grid_models)
 		// We're going to split models by newline
-		// This guarentees that each entry will be of interest to us
+		// This guarantees that each entry will be of interest to us
 		// Then we'll process them step by step
 		// Hopefully this reduces the cost from read_list that we'd otherwise have
 		var/list/lines = splittext(grid_models[model_key], "\n")
@@ -904,7 +904,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	// We use static lists here because it's cheaper then passing them around
 	var/static/list/default_list = GLOB.map_model_default
 	////////////////
-	//Instanciation
+	//instantiation
 	////////////////
 
 	if(turf_blacklist?[crds])
@@ -1031,7 +1031,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 		var/left_constant = parse_constant(trim_left)
 		if(position)
 			old_position = position + length(text[position])
-		if(!left_constant) // damn newlines man. Exists to provide behavior consistency with the above loop. not a major cost becuase this path is cold
+		if(!left_constant) // damn newlines man. Exists to provide behavior consistency with the above loop. not a major cost because this path is cold
 			continue
 
 		if(equal_position && !isnum(left_constant))
@@ -1053,7 +1053,7 @@ GLOBAL_LIST_EMPTY(map_model_default)
 	if(text[1] == "\"")
 		// insert implied locate \" and length("\"") here
 		// It's a minimal timesave but it is a timesave
-		// Safe becuase we're guarenteed trimmed constants
+		// Safe becuase we're guarantees trimmed constants
 		return copytext(text, 2, -1)
 
 	// list

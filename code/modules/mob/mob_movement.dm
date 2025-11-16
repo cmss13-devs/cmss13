@@ -160,7 +160,7 @@ CLIENT_VERB(drop_item)
 		to_chat(src, SPAN_NOTICE("You cannot crawl while a xeno is grabbing you."))
 		return
 
-	//Check if you are being grabbed and if so attemps to break it
+	//Check if you are being grabbed and if so attempts to break it
 	if(mob.pulledby)
 		if(mob.is_mob_restrained(0))
 			next_movement = world.time + 20 //to reduce the spam
@@ -296,7 +296,7 @@ CLIENT_VERB(drop_item)
 		dense_object++
 
 	//Lastly attempt to locate any dense objects we could push off of
-	//TODO: If we implement objects drifing in space this needs to really push them
+	//TODO: If we implement objects drifting in space this needs to really push them
 	//Due to a few issues only anchored and dense objects will now work.
 	if(!dense_object)
 		for(var/obj/O in oview(1, src))
@@ -308,7 +308,7 @@ CLIENT_VERB(drop_item)
 
 
 /mob/proc/Process_Spaceslipping(prob_slip = 5)
-	//Setup slipage
+	//Setup slippage
 	//If knocked out we might just hit it and stop.  This makes it possible to get dead bodies and such.
 	if(stat)
 		prob_slip = 0  // Changing this to zero to make it line up with the comment.

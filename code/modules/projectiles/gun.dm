@@ -319,7 +319,7 @@
 
 /*
 * Called by the gun's New(), set the gun variables' values.
-* Each gun gets its own version of the proc instead of adding/substracting
+* Each gun gets its own version of the proc instead of adding/subtracting
 * amounts to get specific values in each gun subtype's New().
 * This makes reading each gun's values MUCH easier.
 */

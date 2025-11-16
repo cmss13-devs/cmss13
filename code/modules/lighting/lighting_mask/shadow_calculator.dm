@@ -16,7 +16,7 @@
 	}
 
 #ifdef SHADOW_DEBUG
-///Color coded atom debug, note will break when theres planetside lgihting
+///Color coded atom debug, note will break when theres planetside lighting
 #define DEBUG_HIGHLIGHT(x, y, colour) \
 	do { \
 		var/turf/T = locate(x, y, 3); \
@@ -48,7 +48,7 @@
 
 /**
  * Returns a list of matrices corresponding to the matrices that should be applied to triangles of
- * coordinates (0,0),(1,0),(0,1) to create a triangcalculate_shadows_matricesle that respresents the shadows
+ * coordinates (0,0),(1,0),(0,1) to create a triangcalculate_shadows_matricesle that represents the shadows
  * takes in the old turf to smoothly animate shadow movement
  */
 /atom/movable/lighting_mask/proc/calculate_lighting_shadows()

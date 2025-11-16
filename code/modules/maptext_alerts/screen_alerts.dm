@@ -38,7 +38,7 @@
 	var/fade_out_delay = 2 SECONDS
 	///Time taken when fading out after fade_out_delay
 	var/fade_out_time = 0.5 SECONDS
-	///delay between playing each letter. in general use 1 for fluff and 0.5 for time sensitive messsages
+	///delay between playing each letter. in general use 1 for fluff and 0.5 for time sensitive messages
 	var/play_delay = 0.5
 	///letters to update by per text to per play_delay
 	var/letters_per_update = 1

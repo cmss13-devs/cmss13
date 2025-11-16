@@ -72,7 +72,7 @@ About the Holder:
 			proc. The method var is used for reaction on mobs. It simply tells
 			us if the mob TOUCHed the reagent or if it INGESTed the reagent.
 			Since the volume can be checked in a reagents proc, you might want to
-			use the volume_modifier var to modifiy the passed value without actually
+			use the volume_modifier var to modify the passed value without actually
 			changing the volume of the reagents.
 			If you're not sure if you need to use this the answer is very most likely 'No'.
 			You'll want to use this proc whenever an atom first comes in
@@ -121,14 +121,14 @@ About Reagents:
 	rejuvs over water to ... iron. Each reagent also has a few procs - i'll explain those below.
 
 		reaction_mob(mob/M, method=TOUCH)
-			This is called by the holder's reation proc.
+			This is called by the holder's reaction proc.
 			This version is only called when the reagent
 			reacts with a mob. The method var can be either
 			TOUCH or INGEST. You'll want to put stuff like
 			acid-facemelting in here.
 
 		reaction_obj(obj/O)
-			This is called by the holder's reation proc.
+			This is called by the holder's reaction proc.
 			This version is called when the reagents reacts
 			with an object. You'll want to put stuff like
 			object melting in here ... or something. i dunno.

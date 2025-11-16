@@ -1779,11 +1779,11 @@ Defined in conflicts.dm of the #defines folder.
 		return
 
 	if(scoping)
-		scoper.client.pixel_x = x_off * pixels_per_tile
-		scoper.client.pixel_y = y_off * pixels_per_tile
+		scoper.client.set_pixel_x(x_off * pixels_per_tile)
+		scoper.client.set_pixel_y(y_off * pixels_per_tile)
 	else
-		scoper.client.pixel_x = 0
-		scoper.client.pixel_y = 0
+		scoper.client.set_pixel_x(0)
+		scoper.client.set_pixel_y(0)
 
 /// Handler for when the user begins scoping
 /obj/item/attachable/vulture_scope/proc/on_scope()
@@ -1856,8 +1856,8 @@ Defined in conflicts.dm of the #defines folder.
 	scope_user = null
 	scoping = FALSE
 	if(scoper.client)
-		scoper.client.pixel_x = 0
-		scoper.client.pixel_y = 0
+		scoper.client.set_pixel_x(0)
+		scoper.client.set_pixel_y(0)
 
 /// Handler for if the mob moves or changes look direction
 /obj/item/attachable/vulture_scope/proc/on_mob_move_look(mob/living/mover, actually_moving, direction, specific_direction)

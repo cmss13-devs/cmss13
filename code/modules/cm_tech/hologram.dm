@@ -73,7 +73,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 
 	if(M.client)
 		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
+		M.client.set_eye(src)
 
 	return COMPONENT_OVERRIDE_VIEW
 
@@ -177,7 +177,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 /mob/hologram/look_up/handle_view(mob/M, atom/target)
 	if(M.client)
 		M.client.perspective = EYE_PERSPECTIVE
-		M.client.eye = src
+		M.client.set_eye(src)
 
 	return COMPONENT_OVERRIDE_VIEW
 

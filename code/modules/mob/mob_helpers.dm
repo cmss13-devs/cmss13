@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
  * * message - The string with potential html content to scramble
  * * clear_char_probability - The likelihood a character does not get converted into a *
  */
-/proc/stars_decode_html(message, clear_char_probability=25, fields_only=FALSE)
+/proc/stars_decode_html(message, clear_char_probability=25)
 	var/message_length = length(message)
 	if(!message_length)
 		return ""

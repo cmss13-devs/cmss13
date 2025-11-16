@@ -635,8 +635,10 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 				else
 					P.name = "faxed message ([faxcontents.paper_name])"
 				P.info = "[faxcontents.data]"
-				P.extra_headers = faxcontents.extra_headers.Copy()
-				P.extra_stylesheets = faxcontents.extra_stylesheets.Copy()
+				if(faxcontents.extra_headers)
+					P.extra_headers = faxcontents.extra_headers.Copy()
+				if(faxcontents.extra_stylesheets)
+					P.extra_stylesheets = faxcontents.extra_stylesheets.Copy()
 				P.update_icon()
 				var/image/stampoverlay = image('icons/obj/items/paper.dmi')
 				var/encrypted = FALSE
@@ -911,8 +913,10 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 	src.department = department
 	src.fax_id_tag = fax_id_tag
-	src.extra_stylesheets = extra_stylesheets.Copy()
-	src.extra_headers = extra_headers.Copy()
+	if(extra_stylesheets)
+		src.extra_stylesheets = extra_stylesheets.Copy()
+	if(extra_headers)
+		src.extra_headers = extra_headers.Copy()
 	LAZYADD(src.extra_headers, "<style>body {--bg-color: white;}</style>")
 
 /obj/structure/machinery/faxmachine/proc/is_department_responder_awake(target_department)

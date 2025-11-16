@@ -261,7 +261,8 @@
 /obj/structure/machinery/computer/almayer_encryption/decoder/ui_data(mob/user)
 	. = list()
 
-	if(!length(SSradio.faction_coms_codes[faction]))
+	var/challenge_count = length(SSradio.faction_coms_codes[faction])
+	if(!challenge_count)
 		// No challenges, just plug in zeros
 		var/blank = list()
 		for(var/i in 1 to cipher_length)
@@ -269,7 +270,7 @@
 		.["challenge"] = blank
 	else
 		// Get the latest challenge
-		var/datum/encryption_sequence/sequence = SSradio.faction_coms_codes[faction][length(SSradio.faction_coms_codes[faction])]
+		var/datum/encryption_sequence/sequence = SSradio.faction_coms_codes[faction][challenge_count]
 		.["challenge"] = sequence.challenge
 
 /obj/structure/machinery/computer/almayer_encryption/decoder/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

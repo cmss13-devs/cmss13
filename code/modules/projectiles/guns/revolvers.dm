@@ -212,10 +212,21 @@
 		current_mag.current_rounds++
 	return TRUE
 
-// FLUFF
+// FLUFF kinda
+/obj/item/weapon/gun/revolver/proc/close_chamber(mob/user)
+	if(current_mag && !current_mag.chamber_closed)
+		current_mag.chamber_closed = TRUE
+		to_chat(user, SPAN_NOTICE("You close the cylinder of [src]."))
+		playsound(user, chamber_close_sound, 25, 1)
+		update_icon()
+
 /obj/item/weapon/gun/revolver/unique_action(mob/user)
-	if(trickster_gun)
+	if(current_mag && !current_mag.chamber_closed)
+		close_chamber(user)
+		return
+	if(trickster_gun && user.a_intent == INTENT_DISARM)
 		perform_tricks(user)
+		return
 	else
 		spin_cylinder(user)
 
@@ -703,6 +714,9 @@
 /obj/item/weapon/gun/revolver/mateba/pmc
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/ap
 
+/obj/item/weapon/gun/revolver/mateba/impact
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
+
 /obj/item/weapon/gun/revolver/mateba/general
 	name = "\improper golden Spearhead Unica-6 autorevolver custom"
 	desc = "Boasting a gold-plated frame and grips made of a critically-endangered rosewood tree, this heavily-customized Unica 6 autorevolver's pretentious design rivals only the power of its wielder. Fit for a king. Or a general."
@@ -831,7 +845,7 @@
 	usually comes with authentic wooden grips, engravings, or gold plating finish."
 	icon_state = "mateba_2006m"
 	item_state = "mateba_2006m"
-
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	fire_sound = 'sound/weapons/gun_mateba_2006m.ogg'
 	chamber_close_sound = 'sound/weapons/gun_mateba_2006m_close_chamber.ogg'
 	unload_sound = 'sound/weapons/gun_mateba_2006m_open_chamber.ogg'

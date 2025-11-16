@@ -113,7 +113,7 @@ SUBSYSTEM_DEF(ticker)
 				current_state = GAME_STATE_FINISHED
 				GLOB.ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
-				REDIS_PUBLISH("byond.round", "type" = "round-complete", "round_name" = GLOB.round_statistics.round_name)
+				REDIS_PUBLISH("byond.round", "type" = "round-complete", "round_name" = GLOB.round_statistics.round_name, "round_finished" = mode.round_finished)
 				flash_clients()
 				addtimer(CALLBACK(
 					SSvote,

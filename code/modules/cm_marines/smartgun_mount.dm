@@ -482,7 +482,7 @@
 	var/atom/target = null // required for shooting at things.
 	var/datum/ammo/bullet/machinegun/ammo = /datum/ammo/bullet/machinegun
 	var/obj/projectile/in_chamber = null
-	var/locked = 0 //1 means its locked inplace (this will be for sandbag MGs)
+	var/locked = 0 //1 means its locked in place (this will be for sandbag MGs)
 	var/muzzle_flash_lum = 4
 	var/icon_full = "M56D" // Put this system in for other MGs or just other mounted weapons in general, future proofing.
 	var/icon_empty = "M56D_e" //Empty

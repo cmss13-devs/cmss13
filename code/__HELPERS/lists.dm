@@ -525,7 +525,7 @@
 
 	return inserted_list
 
-//Copies a list, and all lists inside it recusively
+//Copies a list, and all lists inside it recursively
 //Does not copy any other reference type
 /proc/deep_copy_list(list/L)
 	if(!islist(L))

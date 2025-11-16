@@ -16,6 +16,8 @@
 
 /obj/effect/abstract/particle_holder/Initialize(mapload, particle_path, particle_flags = NONE)
 	. = ..()
+	if(!istype(particle_path))
+		return INITIALIZE_HINT_QDEL
 	if(!loc)
 		stack_trace("particle holder was created with no loc!")
 		return INITIALIZE_HINT_QDEL

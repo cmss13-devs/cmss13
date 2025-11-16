@@ -572,7 +572,7 @@ world
 	while (gap > 1 || swapped)
 		swapped = 0
 		if(gap > 1)
-			gap = floor(gap / 1.3) // 1.3 is the emperic comb sort coefficient
+			gap = floor(gap / 1.3) // 1.3 is the empiric comb sort coefficient
 		if(gap < 1)
 			gap = 1
 		for(var/i = 1; gap + i <= length(result); i++)
@@ -644,18 +644,18 @@ world
 		var/atom/atom_icon = icon
 		icon = atom_icon.icon
 		//atom icons compiled in from 'icons/path/to/dmi_file.dmi' are weird and not really icon objects that you generate with icon().
-		//if theyre unchanged dmi's then they're stringifiable to "icons/path/to/dmi_file.dmi"
+		//if they're unchanged dmi's then they're stringifiable to "icons/path/to/dmi_file.dmi"
 
 	if(isicon(icon) && isfile(icon))
 		//icons compiled in from 'icons/path/to/dmi_file.dmi' at compile time are weird and aren't really /icon objects,
-		///but they pass both isicon() and isfile() checks. theyre the easiest case since stringifying them gives us the path we want
+		///but they pass both isicon() and isfile() checks. they're the easiest case since stringifying them gives us the path we want
 		var/icon_ref = text_ref(icon)
 		var/locate_icon_string = "[locate(icon_ref)]"
 
 		icon_path = locate_icon_string
 
 	else if(isicon(icon) && "[icon]" == "/icon")
-		// icon objects generated from icon() at runtime are icons, but they ARENT files themselves, they represent icon files.
+		// icon objects generated from icon() at runtime are icons, but they AREN'T files themselves, they represent icon files.
 		// if the files they represent are compile time dmi files in the rsc, then
 		// the rsc reference returned by fcopy_rsc() will be stringifiable to "icons/path/to/dmi_file.dmi"
 		var/rsc_ref = fcopy_rsc(icon)

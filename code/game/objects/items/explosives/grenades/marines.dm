@@ -624,8 +624,8 @@
 			if(iswydroid(mob))
 				mob.emote("pain")
 
-		if(mob_dist < 1) // Range based stuff, standing ontop of the equivalent of a canned lighting bolt should mess you up.
-			mob.Superslow(3) // Note that humans will likely be in stamcrit so it's always worse for them when ontop of it and we can just balancing it on xenos.
+		if(mob_dist < 1) // Range based stuff, standing on top of the equivalent of a canned lighting bolt should mess you up.
+			mob.Superslow(3) // Note that humans will likely be in stamcrit so it's always worse for them when on top of it and we can just balancing it on xenos.
 			mob.eye_blurry = damage_applied/4
 			mob.Daze(1)
 		else if((mob_dist < (range-1)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL)) // Flicker stun humans that are closer to the grenade and larvas too.

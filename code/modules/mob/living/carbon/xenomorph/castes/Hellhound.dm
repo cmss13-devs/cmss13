@@ -126,7 +126,7 @@
 
 /mob/living/carbon/xenomorph/hellhound/resist_fire()
 	..()
-	SetKnockDown(0.5 SECONDS) // faster because theyre already slow as hell
+	SetKnockDown(0.5 SECONDS) // faster because they're already slow as hell
 
 /mob/living/carbon/xenomorph/hellhound/proc/handle_weed_slowdown(mob/user, list/slowdata)
 	SIGNAL_HANDLER

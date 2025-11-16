@@ -1287,7 +1287,7 @@
 		linked = O
 	update()
 
-//Override attackby so we disallow trunkremoval when somethings ontop
+//Override attackby so we disallow trunkremoval when somethings on top
 /obj/structure/disposalpipe/trunk/attackby(obj/item/I, mob/user)
 
 	//Disposal constructors

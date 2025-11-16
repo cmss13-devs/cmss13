@@ -300,7 +300,7 @@
 				return /datum
 	return text2path(copytext(string_type, 1, last_slash))
 
-//returns a string the last bit of a type, without the preceeding '/'
+//returns a string the last bit of a type, without the preceding '/'
 /proc/type2top(the_type)
 	//handle the builtins manually
 	if(!ispath(the_type))

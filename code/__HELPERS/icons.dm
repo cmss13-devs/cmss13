@@ -118,7 +118,7 @@ ColorTone(rgb, tone)
 /*
 Get Flat Icon DEMO by DarkCampainger
 
-This is a test for the get flat icon proc, modified approprietly for icons and their states.
+This is a test for the get flat icon proc, modified appropriately for icons and their states.
 Probably not a good idea to run this unless you want to see how the proc works in detail.
 mob
 	icon = 'old_or_unused.dmi'
@@ -745,7 +745,7 @@ world
  * * frame - what frame of the icon_state's animation for the icon being used
  * * moving - whether or not to use a moving state for the given icon
  * * sourceonly - if TRUE, only generate the asset and send back the asset url, instead of tags that display the icon to players
- * * extra_clases - string of extra css classes to use when returning the icon string
+ * * extra_classes - string of extra css classes to use when returning the icon string
  * * keyonly - if TRUE, only returns the asset key to use get_asset_url manually. Overrides sourceonly.
  */
 /proc/icon2html(atom/thing, client/target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, keyonly = FALSE, non_standard_size = FALSE)
@@ -849,7 +849,7 @@ world
 		var/icon/I = getFlatIcon(thing)
 		. = icon2html(I, target, sourceonly = sourceonly)
 
-	/* Debugguing due to gamebreaking performance in the Blend calls made by getFlatIcon (think 200ms+ per icon) and overtimes */
+	/* Debugging due to gamebreaking performance in the Blend calls made by getFlatIcon (think 200ms+ per icon) and overtimes */
 	if(istype(thing, /atom))
 		var/atom/D = thing
 		log_debug("costly_icon2html called on ref=[REF(D)], instance=[D], type=[D.type], with [length(D.overlays)] overlays, finished in [(REALTIMEOFDAY-start_time) / 10]s")
@@ -862,7 +862,7 @@ world
 
 /// Generate a filename for this asset
 /// The same asset will always lead to the same asset name
-/// (Generated names do not include file extention.)
+/// (Generated names do not include file extension.)
 /proc/generate_asset_name(file)
 	return "asset.[md5(fcopy_rsc(file))]"
 

@@ -169,7 +169,7 @@
 	var/middle = length(L) / 2 + 1
 	return mergeKey(sortKey(L.Copy(0,middle)), sortKey(L.Copy(middle)), order)
 
-//Mergsort: does the actual sorting and returns the results back to sortAtom
+//Mergesort: does the actual sorting and returns the results back to sortAtom
 /proc/mergeKey(list/client/L, list/client/R, order = 1)
 	var/Li=1
 	var/Ri=1
@@ -239,7 +239,7 @@
 	var/middle = length(L) / 2 + 1
 	return mergeRecordLists(sortRecord(L.Copy(0, middle), field, order), sortRecord(L.Copy(middle), field, order), field, order)
 
-//Mergsort: does the actual sorting and returns the results back to sortRecord
+//Mergesort: does the actual sorting and returns the results back to sortRecord
 /proc/mergeRecordLists(list/datum/data/record/L, list/datum/data/record/R, field = "name", order = 1)
 	var/Li=1
 	var/Ri=1
@@ -283,7 +283,7 @@
 	var/middle = length(L) / 2 + 1 // Copy is first,second-1
 	return mergeLists(sortList(L.Copy(0,middle)), sortList(L.Copy(middle))) //second parameter null = to end of list
 
-//Mergsorge: uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
+//Mergesort: uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
 /proc/sortNames(list/L)
 	var/list/Q = new()
 	for(var/atom/x in L)

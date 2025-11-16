@@ -122,7 +122,7 @@
 		else
 			Pixel_y = floor(cos(Angle) + world.icon_size*cos(Angle)*(N+world.icon_size/2) / world.icon_size)
 
-		//Position the effect so the beam is one continous line
+		//Position the effect so the beam is one continuous line
 		var/a
 		if(abs(Pixel_x)>world.icon_size)
 			a = Pixel_x > 0 ? floor(Pixel_x/32) : ceil(Pixel_x/world.icon_size)

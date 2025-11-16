@@ -670,7 +670,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/minimap_displayed = FALSE
 	///Minimap object we'll be displaying
 	var/atom/movable/screen/minimap/map
-	///Overrides what the locator tracks aswell what z the map displays as opposed to always tracking the minimap's owner. Default behavior when null.
+	///Overrides what the locator tracks as well what z the map displays as opposed to always tracking the minimap's owner. Default behavior when null.
 	var/atom/movable/locator_override
 	///Minimap "You are here" indicator for when it's up
 	var/atom/movable/screen/minimap_locator/locator
@@ -885,7 +885,7 @@ SUBSYSTEM_DEF(minimaps)
 	minimap_flags = MINIMAP_FLAG_UPP
 	marker_flags = MINIMAP_FLAG_UPP
 
-/datum/action/minimap/ai	//I'll keep this as seperate type despite being identical so it's easier if people want to make different aspects different.
+/datum/action/minimap/ai	//I'll keep this as separate type despite being identical so it's easier if people want to make different aspects different.
 	minimap_flags = MINIMAP_FLAG_USCM
 	marker_flags = MINIMAP_FLAG_USCM
 

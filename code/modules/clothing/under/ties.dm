@@ -172,7 +172,7 @@
 						if(ORGAN_BROKEN)
 							sound += "<font color='red'>barely hear any respiration sounds</font> and a lot of difficulty to breath, [being.p_their()] lungs are <font color='red'>heavily failing</font>"
 						else
-							sound += "hear <font color='green'>normal respiration sounds</font> aswell, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
+							sound += "hear <font color='green'>normal respiration sounds</font> as well, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
 				else
 					sound = "can't hear. Really, anything at all, how weird"
 			else

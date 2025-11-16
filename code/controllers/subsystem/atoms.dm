@@ -75,7 +75,7 @@ SUBSYSTEM_DEF(atoms)
 	late_loaders.Cut()
 	processing_late_loaders = FALSE
 
-/// Actually creates the list of atoms. Exists soley so a runtime in the creation logic doesn't cause initialized to totally break
+/// Actually creates the list of atoms. Exists solely so a runtime in the creation logic doesn't cause initialized to totally break
 /datum/controller/subsystem/atoms/proc/CreateAtoms(list/atoms, list/atoms_to_return = null)
 	if (atoms_to_return)
 		LAZYINITLIST(created_atoms)

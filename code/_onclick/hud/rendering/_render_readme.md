@@ -24,7 +24,7 @@ The following is an incomplete list of pitfalls that come from byond snowflake t
 3. render_target/source. Render_target/source will only copy certain rendering instructions, and these are only defined as "etc." in the byond reference. Known non copied appearance vars include: blend_mode, plane, layer, vis_contents, mouse_opacity...
 4. Large icons on the screen that peek over the edge will instead of only rendering partly like you would expect will instead stretch the screen while not adjusting the render buffer, which means that you can actively see as tiles and map objects are rendered. You can use this for an easy "offscreen" UI.
 5. Numerically large filters on objects of any size will torpedo performance, even though large objects with small filters will perform massively better. (ie blur(size=20) BAD)
-6. Texture Atlas: the texture atlas byond uses to render icons is very susceptible to corruption and can regularlly replace icons with other icons or just not render at all. This can be exasperated by alt tabbing or pausing the dreamseeker process.
+6. Texture Atlas: the texture atlas byond uses to render icons is very susceptible to corruption and can regularly replace icons with other icons or just not render at all. This can be exasperated by alt tabbing or pausing the dreamseeker process.
 7. The renderer is awful code and lummox said he will try changing a large part of it for 515 so keep an eye on that
 8. Byond uses DirectX 9 (Lummox said he wants to update to DirectX 11)
 9. Particles are just fancy overlays and are not independent of their owner

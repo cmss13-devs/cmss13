@@ -83,14 +83,12 @@
 
 	if(skillcheck(carbon_target, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))
 		carbon_target.visible_message(SPAN_DANGER("[carbon_target] withstands the neurotoxin!"))
-		buffed_slashes --
 		return original_damage //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(carbon_target))
 		var/mob/living/carbon/human/human = carbon_target
 		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || human.species.flags & NO_NEURO)
 			human.visible_message(SPAN_DANGER("[human] shrugs off the neurotoxin!"))
-			buffed_slashes --
-			return //species like zombies or synths are immune to neurotoxin
+			return original_damage //species like zombies or synths are immune to neurotoxin
 		if (buffed_slashes)
 			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Our slash applied a large amount of neurotoxin!"))
 			to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel your muscles, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
@@ -107,7 +105,7 @@
 	if(!buffed_slashes)
 		var/datum/action/xeno_action/onclick/paralyzing_slash/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/paralyzing_slash)
 		if (ability && istype(ability))
-			ability.button.icon_state = "template"
+			ability.button.icon_state = "template_xeno"
 	return original_damage
 
 /datum/behavior_delegate/sentinel_base/override_intent(mob/living/carbon/target_carbon)

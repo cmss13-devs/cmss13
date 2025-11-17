@@ -88,7 +88,7 @@ GLOBAL_LIST_INIT(medal_references, generate_medal_references())
 		if(WY_MEDAL_AWARD_1)
 			return /obj/item/clothing/accessory/medal/gold/corporate_award
 		if(WY_MEDAL_AWARD_2)
-			return /obj/item/clothing/accessory/medal/gold/corporate_medallion
+			return /obj/item/clothing/accessory/medal/gold/corporate_award2
 
 /proc/give_medal_award(medal_location, as_admin = FALSE, as_xo = FALSE)
 	if(as_admin && !check_rights(R_ADMIN))

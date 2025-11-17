@@ -503,7 +503,7 @@ Works together with spawning an observer, noted above.
 	if(ghost.client)
 		ghost.client.init_verbs()
 		ghost.client.change_view(GLOB.world_view_size) //reset view range to default
-		ghost.client.set_pixel_x(0) //recenters our view
+		ghost.client.set_pixel_x(0) //re-centers our view
 		ghost.client.set_pixel_y(0)
 		ghost.set_lighting_alpha_from_pref(ghost.client)
 		if(ghost.client.soundOutput)

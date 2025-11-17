@@ -94,9 +94,16 @@
 	qdel(src)
 	if(!my_turf)
 		return
+	if(amount <= 0)
+		return
+
+	// -10 to 0 based on ratio between amount and min_spread_amount
+	// An amount >= min_spread_amount results in 0 pressure
+	// An amount near zero results in almost -10 pressure (so near 0 duration for /datum/reagent/napalm/ut assuming its BURN_TIME_TIER_2)
+	var/pressure = clamp((amount / min_spread_amount - 1) * 10, -10, 0)
 
 	if(!locate(/obj/flamer_fire) in my_turf)
-		new /obj/flamer_fire(my_turf)
+		new /obj/flamer_fire(my_turf, null, null, 0, null, FLAMESHAPE_DEFAULT, null, null, pressure)
 
 	for(var/direction in GLOB.cardinals)
 		var/turf/target = get_step(my_turf, direction)
@@ -105,7 +112,7 @@
 			continue
 		if(locate(/obj/flamer_fire) in target)
 			continue
-		new /obj/flamer_fire(target) // This will invoke an ignite
+		new /obj/flamer_fire(target, null, null, 0, null, FLAMESHAPE_DEFAULT, null, null, pressure) // This will invoke an ignite
 
 /obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel
 	icon_state = "mustard"

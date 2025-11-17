@@ -20,10 +20,8 @@
 	var/faction = FACTION_MARINE
 	/// What tgui panel this computer will display
 	var/tgui_mode = "cipher"
-	/// How many punch cards are currently held
-	var/punchcards = 10
-	/// What kind of punch cards are currently held
-	var/punchcard_base_type_loaded = /obj/item/paper/punch_card // WY
+	/// How many punch cards to preload with
+	var/preload_punchcards = 10
 	/// The challenge length - set automatically via first entry for announcement_challenges
 	var/static/cipher_length = 7
 	COOLDOWN_DECLARE(print_cooldown)
@@ -33,6 +31,10 @@
 	var/phrases = CONFIG_GET(str_list/announcement_challenges)
 	cipher_length = length(phrases[1])
 	RegisterSignal(SSdcs, COMSIG_GLOB_CONFIG_LOADED, PROC_REF(on_config_load))
+
+	// Preload some blank WY cards
+	for(var/i in 1 to preload_punchcards)
+		new /obj/item/paper/punch_card(src)
 
 /// Called by COMSIG_GLOB_CONFIG_LOADED
 /obj/structure/machinery/computer/almayer_encryption/proc/on_config_load()
@@ -101,7 +103,7 @@
 	if(length(data) != cipher_length)
 		CRASH("Invalid print by [user]!")
 
-	if(punchcards <= 0)
+	if(length(contents) <= 0)
 		to_chat(user, SPAN_WARNING("It looks like [src] is out of blank punch cards."))
 		return
 
@@ -110,13 +112,15 @@
 		return
 
 	COOLDOWN_START(src, print_cooldown, 15 SECONDS)
-	punchcards--
 	playsound(src, 'sound/items/taperecorder/taperecorder_print.ogg', 15, vary=TRUE)
 	addtimer(CALLBACK(src, PROC_REF(finish_print), data, user), 1 SECONDS)
 
 /// Internal: Finalizes printing a punch card from print() with chances for a single failed punch.
 /obj/structure/machinery/computer/almayer_encryption/proc/finish_print(list/data, mob/living/user)
-	var/obj/item/paper/punch_card/card = new punchcard_base_type_loaded(loc)
+	if(length(contents) <= 0)
+		return
+
+	var/obj/item/paper/punch_card/card = contents[1]
 
 	// Mis-punch?
 	for(var/i in 1 to length(data))
@@ -128,6 +132,8 @@
 
 	if(ishuman(user) && get_dist(user, src) < 2)
 		user.put_in_hands(card)
+	else
+		card.forceMove(loc)
 
 /// Called by attackby when using a punch_card.
 /// Will try_restock_punch_card if card is unused, otherwise tgui_interact, consume the card, and input its data after delay.
@@ -178,17 +184,15 @@
 
 /// Called by insert_punch_card for unused punch_cards to restock if possible.
 /obj/structure/machinery/computer/almayer_encryption/proc/try_restock_punch_card(obj/item/paper/punch_card/card, mob/living/user)
-	if(punchcards >= 20)
+	if(length(contents) >= 20)
 		to_chat(user, SPAN_NOTICE("It looks like the card holder for [src] is already full."))
 		return FALSE
-	if(punchcards > 0 && card.base_type != punchcard_base_type_loaded)
-		to_chat(user, SPAN_NOTICE("It looks like a different card type is already loaded."))
+	if(card.data)
 		return FALSE
 
+	for(var/i in 1 to 4) // Give 4 extra blank
+		new card.base_type(src)
 	user.drop_inv_item_to_loc(card, src)
-	punchcards += 5
-	punchcard_base_type_loaded = card.base_type
-	qdel(card)
 	to_chat(user, SPAN_NOTICE("You load several punch cards for [src]."))
 	return TRUE
 
@@ -200,7 +204,7 @@
 	desc = "The IBM series 10 computer retrofitted to work as a encryption encoder computer for the ship. While somewhat dated it still serves its purpose."
 	icon_state = "sensor_comp1"
 	tgui_mode = "encoder"
-	punchcards = 0 // Nothing to print
+	preload_punchcards = 0 // Nothing to print
 
 /obj/structure/machinery/computer/almayer_encryption/encoder/ui_data(mob/user)
 	. = list()

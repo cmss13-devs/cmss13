@@ -453,14 +453,14 @@
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "PlayerPanel", "[targetMob.name] Player Panel")
+		ui = new(user, src, "PlayerPanel", "[capitalize(targetMob.name)] Player Panel")
 		ui.open()
 		ui.set_autoupdate(FALSE)
 
 // Player panel
 /datum/player_panel/ui_data(mob/user)
 	. = list()
-	.["mob_name"] = targetMob.name
+	.["mob_name"] = capitalize(targetMob.name)
 
 	if(istype(targetMob, /mob/living))
 		var/mob/living/livingTarget = targetMob

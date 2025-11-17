@@ -60,7 +60,7 @@
 		user.put_in_hands(new_accessory)
 
 	to_chat(user, SPAN_NOTICE("You will start wearing [src] as an accessory."))
-	// we dont want duplicates man
+	// we don't want duplicates man
 	qdel(src)
 
 /obj/item/clothing/proc/revert_from_accessory(mob/user)

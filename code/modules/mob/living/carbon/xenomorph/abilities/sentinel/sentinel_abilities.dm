@@ -25,7 +25,7 @@
 	action_icon_state = "para_slash"
 	macro_path = /datum/action/xeno_action/verb/verb_paralyzing_slash
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 10 SECONDS
 	plasma_cost = 100
 
@@ -76,7 +76,7 @@
 	name = "Draining bite"
 	action_icon_state = "draining_bite"
 	macro_path = /datum/action/xeno_action/verb/verb_headbite
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 12 SECONDS
 	plasma_cost = 100

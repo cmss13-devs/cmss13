@@ -20,7 +20,7 @@
 /datum/xeno_strain/hedgehog/apply_strain(mob/living/carbon/xenomorph/ravager/ravager)
 	ravager.plasma_max = 0
 	ravager.small_explosives_stun = TRUE
-	ravager.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
+	ravager.explosivearmor_modifier += XENO_EXPLOSIVEARMOR_MOD_SMALL
 	ravager.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 
 	ravager.recalculate_everything()

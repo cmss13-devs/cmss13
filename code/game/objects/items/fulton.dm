@@ -1,4 +1,4 @@
-// Fulton baloon deployment devices, used to gather and send crates, dead things, and other objective-based items into space for collection.
+// Fulton balloon deployment devices, used to gather and send crates, dead things, and other objective-based items into space for collection.
 
 /// A list of fultons currently airborne.
 GLOBAL_LIST_EMPTY(deployed_fultons)

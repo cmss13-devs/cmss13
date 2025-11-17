@@ -529,7 +529,7 @@
 	add_verb(user, /mob/living/carbon/human/proc/call_combi)
 	linked_to = user
 
-	var/list/tether_effects = apply_tether(user, src, range = 6, resistable = FALSE)
+	var/list/tether_effects = apply_tether(user, src, range = 6, resistible = FALSE)
 	chain = tether_effects["tetherer_tether"]
 	RegisterSignal(chain, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_chain))
 	RegisterSignal(src, COMSIG_ITEM_PICKUP, PROC_REF(on_pickup))
@@ -1659,7 +1659,7 @@
 
 /obj/item/weapon/gun/bow
 	name = "hunting bow"
-	desc = "An abnormal-sized weapon with an exeptionally tight string. Requires extraordinary strength to draw."
+	desc = "An abnormal-sized weapon with an exceptionally tight string. Requires extraordinary strength to draw."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "bow"
 	item_state = "bow"

@@ -89,7 +89,7 @@
 					user_id_card = I
 			if(authenticate(user, user_id_card))
 				return TRUE
-			// Well actualy we have no button for auth card ejection, so just spit it back in user's face
+			// Well actually we have no button for auth card ejection, so just spit it back in user's face
 			else
 				if(!user_id_card)
 					return

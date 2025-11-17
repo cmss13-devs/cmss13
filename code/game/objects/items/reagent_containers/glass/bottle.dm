@@ -207,13 +207,13 @@
 	reagents.add_reagent("blood", 20, data)
 	update_icon()
 
-/obj/item/reagent_container/glass/bottle/hullucigen_virion
-	name = "hullucigen virion culture bottle"
-	desc = "A small bottle. Contains hullucigen virion culture in synthblood medium."
+/obj/item/reagent_container/glass/bottle/hallucinogen_virion
+	name = "hallucinogen virion culture bottle"
+	desc = "A small bottle. Contains hallucinogen virion culture in synthblood medium."
 
-/obj/item/reagent_container/glass/bottle/hullucigen_virion/Initialize()
+/obj/item/reagent_container/glass/bottle/hallucinogen_virion/Initialize()
 	. = ..()
-	var/datum/disease/F = new /datum/disease/advance/hullucigen(0)
+	var/datum/disease/F = new /datum/disease/advance/hallucinogen(0)
 	var/list/data = list("viruses"= list(F))
 	reagents.add_reagent("blood", 20, data)
 	update_icon()

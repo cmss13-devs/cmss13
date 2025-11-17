@@ -68,7 +68,7 @@ Additional game mode variables.
 	//Some gameplay variables.
 	var/round_checkwin = 0
 	var/round_finished
-	var/round_started = 5 //This is a simple timer so we don't accidently check win conditions right in post-game
+	var/round_started = 5 //This is a simple timer so we don't accidentally check win conditions right in post-game
 	var/list/round_toxic_river = list() //List of all toxic river locations
 	var/round_time_lobby //Base time for the lobby, for fog dispersal.
 	var/round_time_river

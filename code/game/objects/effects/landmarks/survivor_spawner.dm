@@ -107,25 +107,25 @@
 	intro_text = list("<h2>You are a survivor of a colonial uprising!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
-	story_text = "You are a soldier fighting for the Colonial Liberation Front. Your cell has been embedded among the miners and workers of Solaris Ridge, instigating and agitating for a general strike. Your work was successful and there was a strike that turned violent against UA peacekeeping forces. Soon after in the chaos, however, you recieved word that unknown creatures were picking off fellow colonists. You hunkered down with your cell and have begun to prepare for the worst, not knowing what fate awaits you in these caves..."
+	story_text = "You are a soldier fighting for the Colonial Liberation Front. Your cell has been embedded among the miners and workers of Solaris Ridge, instigating and agitating for a general strike. Your work was successful and there was a strike that turned violent against UA peacekeeping forces. Soon after in the chaos, however, you received word that unknown creatures were picking off fellow colonists. You hunkered down with your cell and have begun to prepare for the worst, not knowing what fate awaits you in these caves..."
 
 /obj/effect/landmark/survivor_spawner/clf_lead/solaris
 	intro_text = list("<h2>You are a survivor of a colonial uprising!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
-	story_text = "You are an engineer fighting for the Colonial Liberation Front. Under your command, your cell has been embedded among the miners and workers of Solaris Ridge, instigating and agitating for a general strike. Your work was successful and there was a strike that turned violent against UA peacekeeping forces. Soon after in the chaos, however, you recieved word that unknown creatures were picking off fellow colonists. You ordered the men to hunker down and  to prepare for the worst, not knowing what fate awaits your team in these caves..."
+	story_text = "You are an engineer fighting for the Colonial Liberation Front. Under your command, your cell has been embedded among the miners and workers of Solaris Ridge, instigating and agitating for a general strike. Your work was successful and there was a strike that turned violent against UA peacekeeping forces. Soon after in the chaos, however, you received word that unknown creatures were picking off fellow colonists. You ordered the men to hunker down and  to prepare for the worst, not knowing what fate awaits your team in these caves..."
 
 /obj/effect/landmark/survivor_spawner/clf_engi/solaris
 	intro_text = list("<h2>You are a survivor of a colonial uprising!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
-	story_text = "You are an engineer fighting for the Colonial Liberation Front. Your cell has been embedded among the miners and workers of Solaris Ridge, instigating and agitating for a general strike. Your work was successful and there was a strike that turned violent against UA peacekeeping forces. Soon after in the chaos, however, you recieved word that unknown creatures were picking off fellow colonists. You hunkered down with your cell and have begun to prepare for the worst, not knowing what fate awaits you in these caves..."
+	story_text = "You are an engineer fighting for the Colonial Liberation Front. Your cell has been embedded among the miners and workers of Solaris Ridge, instigating and agitating for a general strike. Your work was successful and there was a strike that turned violent against UA peacekeeping forces. Soon after in the chaos, however, you received word that unknown creatures were picking off fellow colonists. You hunkered down with your cell and have begun to prepare for the worst, not knowing what fate awaits you in these caves..."
 
 /obj/effect/landmark/survivor_spawner/clf_medic/solaris
 	intro_text = list("<h2>You are a survivor of a colonial uprising!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
-	story_text = "You are doctor fighting for the Colonial Liberation Front. Your cell has been embedded among the miners and workers of Solaris Ridge, instigating and agitating for a general strike. Your work was successful and there was a strike that turned violent against UA peacekeeping forces. Soon after in the chaos, however, you recieved word that unknown creatures were picking off fellow colonists. You hunkered down with your cell and have begun to prepare for the worst, not knowing what fate awaits you in these caves..."
+	story_text = "You are doctor fighting for the Colonial Liberation Front. Your cell has been embedded among the miners and workers of Solaris Ridge, instigating and agitating for a general strike. Your work was successful and there was a strike that turned violent against UA peacekeeping forces. Soon after in the chaos, however, you received word that unknown creatures were picking off fellow colonists. You hunkered down with your cell and have begun to prepare for the worst, not knowing what fate awaits you in these caves..."
 
 //Trijent CLF survivors//
 
@@ -391,7 +391,7 @@
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.</span>")
-	story_text = "You are a PMC from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
+	story_text = "You are a PMC from Weyland-Yutani. Your ship was en route to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -406,7 +406,7 @@
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
-	story_text = "You are a PMC medic from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
+	story_text = "You are a PMC medic from Weyland-Yutani. Your ship was en route to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -421,7 +421,7 @@
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
-	story_text = "You are a PMC engineer from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
+	story_text = "You are a PMC engineer from Weyland-Yutani. Your ship was en route to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -436,7 +436,7 @@
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
-	story_text = "You are a PMC team leader from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
+	story_text = "You are a PMC team leader from Weyland-Yutani. Your ship was en route to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2

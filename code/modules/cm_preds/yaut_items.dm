@@ -934,7 +934,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	armed = FALSE
 	anchored = TRUE
 
-	var/list/tether_effects = apply_tether(src, C, range = tether_range, resistable = TRUE)
+	var/list/tether_effects = apply_tether(src, C, range = tether_range, resistible = TRUE)
 	tether_effect = tether_effects["tetherer_tether"]
 	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, PROC_REF(disarm))
 

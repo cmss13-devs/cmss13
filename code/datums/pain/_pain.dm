@@ -4,7 +4,7 @@
 	The threshold vars determine when the associated threshold procs should activate.
 	The threshold vars are percentage values, so if you want the mild effect to appear at 20% pain, you assign it 20.
 
-	Each mob should spawn with a pain datumn.
+	Each mob should spawn with a pain datum.
 
 	Can be customized for each mob, default procs are slow and messages appearing at mild.
 		discomforting-moderate, more slow, new message.
@@ -111,7 +111,7 @@
 	update_pain_level()
 
 /datum/pain/proc/apply_pain_reduction(amount = 0)
-	if(last_reduction_update > world.time || amount <= reduction_pain) // Needed so pain meds can't spam us, neccesary evil.
+	if(last_reduction_update > world.time || amount <= reduction_pain) // Needed so pain meds can't spam us, necessary evil.
 		return
 
 	last_reduction_update = world.time + 10 SECONDS

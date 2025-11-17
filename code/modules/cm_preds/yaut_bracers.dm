@@ -1125,7 +1125,7 @@
 #define YAUTJA_CREATE_CRYSTAL_COOLDOWN "yautja_create_crystal_cooldown"
 
 /obj/item/clothing/gloves/yautja/hunter/verb/injectors()
-	set name = "Create Stabilising Crystal"
+	set name = "Create Stabilizing Crystal"
 	set category = "Yautja.Utility"
 	set desc = "Create a focus crystal to energize your natural healing processes."
 	set src in usr

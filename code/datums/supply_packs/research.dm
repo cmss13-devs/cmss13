@@ -1,6 +1,6 @@
 // Contain all the crate related to research.
 
-//explosif related section
+//explosive related section
 
 /datum/supply_packs/assembly
 	name = "assembly crate"

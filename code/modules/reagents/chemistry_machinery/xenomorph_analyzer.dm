@@ -17,7 +17,7 @@
 	///normal list of typepaths containing a printing queue.
 	var/list/print_queue = list()
 	var/busy = FALSE
-	var/queue_proccessing = FALSE
+	var/queue_processing = FALSE
 	var/caste_of_organ = null
 
 /obj/structure/machinery/xenoanalyzer/Initialize(mapload, ...)
@@ -80,7 +80,7 @@
 	data["points"] = biomass_points
 	data["current_clearance"] = GLOB.chemical_data.clearance_level
 	data["is_x_level"] = GLOB.chemical_data.reached_x_access // why just why
-	data["is_processing"] = queue_proccessing
+	data["is_processing"] = queue_processing
 	if(organ)
 		data["organ"] = TRUE
 		data["caste"] = caste_of_organ
@@ -144,8 +144,8 @@
 					if(!add_to_queue_upgrade(text2path(params["ref"]), ui.user))
 						return
 		if("toggle_processing")
-			if(queue_proccessing)
-				queue_proccessing = FALSE
+			if(queue_processing)
+				queue_processing = FALSE
 			else
 				attempt_process_queue()
 		if("remove_from_queue")
@@ -173,11 +173,11 @@
 		return
 	if(!length(print_queue))
 		return
-	queue_proccessing = TRUE
+	queue_processing = TRUE
 	var/datum/research_upgrades/upgrade = print_queue[length(print_queue)]
 	if(clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[upgrade], upgrade.minimum_price, upgrade.maximum_price) > biomass_points)
 		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
-		queue_proccessing = FALSE
+		queue_processing = FALSE
 		return
 	flick("xeno_analyzer_printing", src)
 	biomass_points -= clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[upgrade], upgrade.minimum_price, upgrade.maximum_price)
@@ -186,7 +186,7 @@
 	if(length(print_queue) >= 1)
 		addtimer(CALLBACK(src, PROC_REF(print_upgrade), upgrade, user), 2 SECONDS)
 	else
-		queue_proccessing = FALSE
+		queue_processing = FALSE
 
 
 
@@ -225,7 +225,7 @@
 		playsound(loc, 'sound/machines/buzz-sigh.ogg', 15, 1)
 		return FALSE
 	LAZYADD(print_queue, upgrade)
-	if(!queue_proccessing)
+	if(!queue_processing)
 		attempt_process_queue(user)
 	return TRUE
 
@@ -234,8 +234,8 @@
 	var/datum/research_upgrades/item = new produce_path()
 	item.on_purchase(get_turf(src))
 	LAZYREMOVE(print_queue, produce_path)
-	if(!isnull(print_queue) && queue_proccessing)
+	if(!isnull(print_queue) && queue_processing)
 		attempt_process_queue(user)
 	else
-		queue_proccessing = FALSE
+		queue_processing = FALSE
 

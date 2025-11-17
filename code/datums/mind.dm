@@ -130,7 +130,7 @@
 /datum/mind/proc/wipe_entity()
 	player_entity = null
 
-//Initialisation procs
+//Initialization procs
 /mob/proc/mind_initialize()
 	if(mind)
 		mind.key = key

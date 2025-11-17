@@ -1,5 +1,5 @@
 //This file deals with distress beacons. It randomizes between a number of different types when activated.
-//There's also an admin commmand which lets you set one to your liking.
+//There's also an admin command which lets you set one to your liking.
 
 
 
@@ -98,12 +98,12 @@
 /datum/game_mode/proc/get_random_call()
 	var/add_prob = 0
 	var/datum/emergency_call/chosen_call
-	var/total_probablity = 0
+	var/total_probability = 0
 
 	//Ensure that if someone messed up the math we still get the good probability
 	for(var/datum/emergency_call/E in all_calls)
-		total_probablity += E.probability
-	var/chance = rand(1, total_probablity)
+		total_probability += E.probability
+	var/chance = rand(1, total_probability)
 
 	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
 		if(chance >= E.probability + add_prob) //Tally up probabilities till we find which one we landed on

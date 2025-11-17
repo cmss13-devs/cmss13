@@ -14,7 +14,7 @@
 
 /datum/construction_template/xenomorph/complete() //Override because we need to pass the hive ref
 	if(!owner || !get_turf(owner))
-		log_debug("Constuction template ([name]) completed construction without a build location")
+		log_debug("Construction template ([name]) completed construction without a build location")
 		return
 	if(hive_ref)
 		hive_ref.remove_construction(owner)
@@ -86,19 +86,19 @@
 	/// This will be used to orient the nest that will be built
 	var/direction_to_put_nest
 
-/datum/construction_template/xenomorph/nest/complete() //overrided for unique build logic
+/datum/construction_template/xenomorph/nest/complete() //overrode for unique build logic
 	if(!owner || !get_turf(owner))
-		log_debug("Constuction template ([name]) completed construction without a build location")
+		log_debug("Construction template ([name]) completed construction without a build location")
 		return
 	if(hive_ref)
 		hive_ref.remove_construction(owner)
 	build_loc = get_turf(owner)
-	var/obj/effect/alien/resin/special/nest/newly_builtor = new build_type(build_loc, hive_ref)
+	var/obj/effect/alien/resin/special/nest/newly_built = new build_type(build_loc, hive_ref)
 	playsound(build_loc, "alien_resin_build", 25)
-	if(newly_builtor)
-		newly_builtor.pred_nest.dir = direction_to_put_nest
-		newly_builtor.pred_nest.pixel_x = newly_builtor.pred_nest.buckling_x["[direction_to_put_nest]"]
-		newly_builtor.pred_nest.pixel_y = newly_builtor.pred_nest.buckling_y["[direction_to_put_nest]"]
+	if(newly_built)
+		newly_built.pred_nest.dir = direction_to_put_nest
+		newly_built.pred_nest.pixel_x = newly_built.pred_nest.buckling_x["[direction_to_put_nest]"]
+		newly_built.pred_nest.pixel_y = newly_built.pred_nest.buckling_y["[direction_to_put_nest]"]
 	qdel(owner)
 	qdel(src)
 

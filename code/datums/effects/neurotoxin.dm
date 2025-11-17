@@ -73,7 +73,7 @@
 			stumble_prob = 25
 
 		if(25 to INFINITY) // 5+ ticks in smoke
-			msg = pick(SPAN_BOLDNOTICE("What am I doing?"),SPAN_DANGER("Your hearing fades away, you can't hear anything!"),SPAN_HIGHDANGER("A sharp pain eminates from your abdomen!"),SPAN_HIGHDANGER("EVERYTHING IS HURTING!! AGH!!!"),SPAN_HIGHDANGER("Your entire body is numb, you can't feel anything!"),SPAN_HIGHDANGER("You can't feel your limbs at all!"),SPAN_HIGHDANGER("Your mind goes blank, you can't think of anything!"))
+			msg = pick(SPAN_BOLDNOTICE("What am I doing?"),SPAN_DANGER("Your hearing fades away, you can't hear anything!"),SPAN_HIGHDANGER("A sharp pain emanates from your abdomen!"),SPAN_HIGHDANGER("EVERYTHING IS HURTING!! AGH!!!"),SPAN_HIGHDANGER("Your entire body is numb, you can't feel anything!"),SPAN_HIGHDANGER("You can't feel your limbs at all!"),SPAN_HIGHDANGER("Your mind goes blank, you can't think of anything!"))
 
 // Stacking effects below
 
@@ -90,7 +90,7 @@
 			hallucinate = FALSE
 			addtimer(VARSET_CALLBACK(src,hallucinate,TRUE),rand(4 SECONDS,10 SECONDS))
 
-	if(duration > 19) // 4 ticks in smoke, neuro is affecting cereberal activity
+	if(duration > 19) // 4 ticks in smoke, neuro is affecting cerebral activity
 		affected_mob.eye_blind = max(affected_mob.eye_blind, floor(strength/4))
 
 	if(duration >= 27) // 5+ ticks in smoke, you are ODing now
@@ -101,7 +101,7 @@
 	if(duration >= 50) // 10+ ticks, apply some semi-perm damage and end their suffering if they are somehow still alive by now
 		affected_mob.apply_internal_damage(10,"liver")
 		affected_mob.apply_damage(150,OXY)
-	// Applying additonal effects and messages
+	// Applying additional effects and messages
 	if(prob(stumble_prob) && stumble)
 		if(affected_mob.is_mob_incapacitated())
 			return

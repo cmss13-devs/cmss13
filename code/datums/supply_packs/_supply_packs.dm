@@ -1,6 +1,6 @@
 //SUPPLY PACKS
 //NOTE: only secure crate types use the access var (and are lockable)
-//ANOTER NOTE: Contraband is obtainable through modified supplycomp circuitboards.
+//ANOTHER NOTE: Contraband is obtainable through modified supplycomp circuitboards.
 //BIG NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 //NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 

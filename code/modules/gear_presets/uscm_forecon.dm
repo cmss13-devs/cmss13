@@ -122,7 +122,7 @@
 	job_title = JOB_FORECON_SUPPORT
 	role_comm_title = "SuppTech"
 	minimap_icon = "engi"
-	skills = /datum/skills/military/survivor/forecon_techician
+	skills = /datum/skills/military/survivor/forecon_technician
 
 /datum/equipment_preset/uscm/forecon/tech/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()

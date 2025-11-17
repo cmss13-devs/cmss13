@@ -87,7 +87,7 @@
 
 /**
  * Checks if this mob has a status effect that shares the passed effect's ID
- * and has the passed sources are in its list of sources (ONLY works for grouped efects!)
+ * and has the passed sources are in its list of sources (ONLY works for grouped effects!)
  *
  * checked_effect - TYPEPATH of a status effect to check for. Checks for its ID, not it's typepath
  *

@@ -1,5 +1,5 @@
 //ARSR packs
-//These are non orderable packs that get in automaticly though the ARSR system.
+//These are non orderable packs that get in automatically though the ARSR system.
 //Note these should never show up to buy and some will only show up later in the round.
 //BIG NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 

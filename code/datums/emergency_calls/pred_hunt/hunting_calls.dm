@@ -251,7 +251,7 @@
 		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)
 
 /datum/emergency_call/young_bloods/inexperienced
-	name = "Hunting Grounds - Inexperienced Youngblood Party" //For completly new youngblood players
+	name = "Hunting Grounds - Inexperienced Youngblood Party" //For completely new youngblood players
 	blooding_name = "Inexperienced Youngblood Party (Three members)"
 	time_required_for_job = 5 HOURS
 	youngblood_time = 2 HOURS

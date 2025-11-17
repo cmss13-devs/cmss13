@@ -4,7 +4,7 @@
  * This is powerful and flexible recipe system.
  * It exists not only for food.
  * supports both reagents and objects as prerequisites.
- * In order to use this system you have to define a deriative from /datum/recipe
+ * In order to use this system you have to define a derivative from /datum/recipe
  * * reagents are reagents. Acid, milc, booze, etc.
  * * items are objects. Fruits, tools, circuit boards.
  * * result is type to create as new object
@@ -18,7 +18,7 @@
  * transfers reagents from prerequisite objects,
  * deletes all prerequisite objects (even not needed for recipe at the moment).
  *
- *  /proc/select_recipe(list/datum/recipe/avaiable_recipes, obj/obj as obj, exact = 1)
+ *  /proc/select_recipe(list/datum/recipe/available_recipes, obj/obj as obj, exact = 1)
  * Wonderful function that select suitable recipe for you.
  * obj is a machine (or magik hat) with prerequisites,
  * exact = 0 forces algorithm to ignore superfluous stuff.

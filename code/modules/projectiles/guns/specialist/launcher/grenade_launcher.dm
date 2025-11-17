@@ -398,7 +398,7 @@
 
 /obj/item/weapon/gun/launcher/grenade/m81/m85a1/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)//might not need this because of is_lobbing, but let's keep it just incase
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)//might not need this because of is_lobbing, but let's keep it just in case
 	))
 
 /obj/item/weapon/gun/launcher/grenade/m81/m85a1/m79

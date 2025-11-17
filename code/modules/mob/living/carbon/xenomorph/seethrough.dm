@@ -10,7 +10,7 @@
 	var/animation_time
 	///Does this object let clicks from players its transparent to pass through it
 	var/clickthrough
-	///Is the seethrough effect currently active
+	///Is the see-through effect currently active
 	var/is_active
 	///The mob's original render_target value
 	var/initial_render_target_value

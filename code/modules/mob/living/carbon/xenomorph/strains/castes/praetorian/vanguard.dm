@@ -81,9 +81,9 @@
 
 	else
 		var/datum/xeno_shield/vanguard/new_shield = praetorian.add_xeno_shield(800, XENO_SHIELD_SOURCE_VANGUARD_PRAE, /datum/xeno_shield/vanguard)
-		bound_xeno.explosivearmor_modifier += 1.5*XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
+		bound_xeno.explosivearmor_modifier += 1.5*XENO_EXPLOSIVEARMOR_MOD_VERY_LARGE
 		bound_xeno.recalculate_armor()
-		new_shield.explosive_armor_amount = 1.5*XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
+		new_shield.explosive_armor_amount = 1.5*XENO_EXPLOSIVEARMOR_MOD_VERY_LARGE
 		to_chat(praetorian, SPAN_XENOHIGHDANGER("We feel our defensive shell regenerate! It will block one hit!"))
 
 	var/datum/action/xeno_action/activable/cleave/caction = get_action(bound_xeno, /datum/action/xeno_action/activable/cleave)

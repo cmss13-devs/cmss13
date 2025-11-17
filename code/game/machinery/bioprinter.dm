@@ -154,7 +154,7 @@
 
 /obj/structure/machinery/bioprinter/proc/print_limb(limb_path)
 	if(inoperable())
-		//In case we lose power or anything between the print and the callback we don't want to permenantly break the printer
+		//In case we lose power or anything between the print and the callback we don't want to permanently break the printer
 		working = FALSE
 		return
 	new limb_path(get_turf(src))

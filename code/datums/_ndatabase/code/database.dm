@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //this is our database namespace.
-//noone can edit it or view it unless we change the thing. DEFINE is in the include.dm
+//no one can edit it or view it unless we change the thing. DEFINE is in the include.dm
 /datum/db
 
 BSQL_PROTECT_DATUM(/datum/db)

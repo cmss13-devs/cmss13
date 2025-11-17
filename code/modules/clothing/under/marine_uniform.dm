@@ -2050,7 +2050,7 @@
 	UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED)
 	UnregisterSignal(linked_hood, COMSIG_ITEM_UNEQUIPPED)
 	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living/carbon/human, drop_inv_item_to_loc), linked_hood, src), 1) //0.1s delay cause you can grab the hood
-	addtimer(CALLBACK(src, PROC_REF(check_remove_headgear)), 2) //Checks if it is still not in contents, incase it was dropped
+	addtimer(CALLBACK(src, PROC_REF(check_remove_headgear)), 2) //Checks if it is still not in contents, in case it was dropped
 
 	hood_enabled = FALSE
 	if(!forced)

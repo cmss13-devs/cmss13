@@ -25,7 +25,7 @@
 
 /datum/xeno_strain/oppressor/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
 	prae.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	prae.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
+	prae.explosivearmor_modifier += XENO_EXPLOSIVEARMOR_MOD_SMALL
 	prae.small_explosives_stun = FALSE
 	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	prae.plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_CHITIN)

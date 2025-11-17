@@ -37,14 +37,14 @@
 
 	else if(heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST))
 		heavies++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a FORECON Designated Marskman!"))
+		to_chat(mob, SPAN_ROLE_HEADER("You are a FORECON Designated Marksman!"))
 		arm_equipment(mob, /datum/equipment_preset/uscm/forecon/marksman, TRUE, TRUE)
 
 	else
 		arm_equipment(mob, /datum/equipment_preset/uscm/forecon/standard, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are a FORECON Rifleman!"))
 
-	to_chat(mob, SPAN_ROLE_BODY("You are a member of the USCM's Force Reconnisance. FORECON is a force that specializes in special operations behind enemy lines, or conducting reconnisance in situations regular Marines are not expected to handle."))
+	to_chat(mob, SPAN_ROLE_BODY("You are a member of the USCM's Force Reconnaissance. FORECON is a force that specializes in special operations behind enemy lines, or conducting reconnaissance in situations regular Marines are not expected to handle."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/forecon/platoon

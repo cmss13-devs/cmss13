@@ -1,4 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - bugfix: "fixed Unica 2006 and Unica 6 classic having normal ammo in them instead of impact like other CO guns"

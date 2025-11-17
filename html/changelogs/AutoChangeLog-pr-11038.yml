@@ -1,5 +1,0 @@
-author: "armsdealer9876"
-delete-after: True
-changes:
-  - spellcheck: "Set pose now says They are instead of They is"
-  - code_imp: "Added 2 new var's for human/examin.dm"

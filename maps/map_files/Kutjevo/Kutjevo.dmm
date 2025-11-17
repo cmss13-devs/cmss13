@@ -2854,7 +2854,7 @@
 /area/kutjevo/interior/power)
 "cvF" = (
 /obj/structure/reagent_dispensers/tank/water{
-	desc = "A watertank. The label has been written over with the sequence 2---"
+	desc = "A water tank. The label has been written over with the sequence 2---"
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles/north,
 /area/kutjevo/exterior/Northwest_Colony)

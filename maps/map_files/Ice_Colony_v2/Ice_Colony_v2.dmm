@@ -26526,7 +26526,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
-	name = "Colony Requesitions Storage Pod"
+	name = "Colony Requisitions Storage Pod"
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requisitions)

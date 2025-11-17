@@ -17266,7 +17266,7 @@
 /area/fiorina/station/central_ring)
 "nfe" = (
 /obj/effect/decal/cleanable/blood/writing{
-	icon_state = "u_psycopath_l";
+	icon_state = "u_psychopath_l";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/blood/writing{
@@ -24312,7 +24312,7 @@
 /area/fiorina/station/power_ring)
 "szs" = (
 /obj/item/clothing/accessory/armband/cargo{
-	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occured.";
+	desc = "Sworn to the shrapnel and the shards therein. So sayeth her command when the first detonation occurred.";
 	name = "HEFA Order milita armband"
 	},
 /turf/open/floor/prison/bluecorner/east,

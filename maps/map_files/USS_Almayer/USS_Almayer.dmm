@@ -85741,7 +85741,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "\improper Liasion's Bathroom"
+	name = "\improper Liaison's Bathroom"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)

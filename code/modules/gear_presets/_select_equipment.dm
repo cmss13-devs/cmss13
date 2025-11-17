@@ -53,6 +53,8 @@
 
 	/// All presets are in "All" and "Faction" (drawn from the faction variable)
 	var/selection_categories = list()
+	/// Doesn't automatically become included in the Faction category.
+	var/no_faction_category = FALSE
 
 /datum/equipment_preset/New()
 	if(!manifest_title)

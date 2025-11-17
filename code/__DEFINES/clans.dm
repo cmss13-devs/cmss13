@@ -26,6 +26,7 @@
 #define CLAN_RANK_UNBLOODED "Unblooded"
 /// Clanless
 #define CLAN_RANK_YOUNG "Young Blood"
+#define YAUTJA_YOUNG_NONWL_L "Young Blood Packleader"
 /// New to the clan
 #define CLAN_RANK_BLOODED "Blooded"
 #define CLAN_RANK_ELITE "Elite"
@@ -94,3 +95,21 @@
 #define ERT_JOB_YOUNGBLOOD "Young Blood"
 #define JOB_YOUNGBLOOD_ROLES /datum/timelock/young_blood
 #define JOB_YOUNGBLOOD_ROLES_LIST list(ERT_JOB_YOUNGBLOOD)
+
+#define JOB_BADBLOOD "Bad Blood"
+#define JOB_BADBLOOD_ROLES /datum/timelock/bad_blood
+#define JOB_BADBLOOD_ROLES_LIST list(JOB_PREDATOR)
+
+
+#define YAUTJA_ANCIENT "Yautja Ancient"
+#define YAUTJA_LEADER "Yautja Clan Leader"
+#define YAUTJA_ELDER "Yautja Elder"
+#define YAUTJA_ELITE "Yautja Elite"
+#define YAUTJA_BLOODED "Yautja Blooded"
+#define YAUTJA_YOUNGBLOOD "Yautja Young Blood"
+#define YAUTJA_UNBLOODED "Yautja Unblooded"
+
+#define YOUNGBLOOD_ERT_LEADER "Yautja Youngblood Pack Leader (non-WL)"
+#define YOUNGBLOOD_ERT_MEMBER "Yautja Youngblood (non-WL)"
+
+#define YAUTJA_BADBLOOD "Yautja Bad Blood"

@@ -150,16 +150,24 @@
 /datum/species/yautja/handle_cryo(mob/living/carbon/human/H)
 	set_predator_status(H, "Cryo")
 
-/datum/species/yautja/proc/set_predator_status(mob/living/carbon/human/H, status = "Alive")
-	if(!H.persistent_username)
+/datum/species/yautja/proc/set_predator_status(mob/living/carbon/human/predator, status = "Alive")
+	if(!predator.persistent_username)
 		return
 	var/datum/game_mode/GM
 	if(SSticker?.mode)
 		GM = SSticker.mode
-		if(H.persistent_username in GM.predators)
-			GM.predators[H.persistent_username]["Status"] = status
+		if(predator.persistent_username in GM.predators)
+			GM.predators[predator.persistent_username]["Status"] = status
+		else if(predator.persistent_username in GM.youngbloods)
+			GM.youngbloods[predator.persistent_username]["Status"] = status
+		else if(predator.persistent_username in GM.badbloods)
+			GM.badbloods[predator.persistent_username]["Status"] = status
+		else if(predator.faction == FACTION_YAUTJA_YOUNG)
+			GM.youngbloods[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
+		else if(predator.faction == FACTION_YAUTJA_BADBLOOD)
+			GM.badbloods[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
 		else
-			GM.predators[H.persistent_username] = list("Name" = H.real_name, "Status" = status)
+			GM.predators[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	..()

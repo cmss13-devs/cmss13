@@ -1232,6 +1232,18 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_TWE_REPRESENTATIVE = 201,
 				JOB_COLONEL = 201
 			)
+		if(FACTION_YAUTJA)
+			jobs = list(
+				CLAN_RANK_ADMIN = 00,
+				CLAN_RANK_LEADER = 10,
+				CLAN_RANK_ELDER = 20,
+				CLAN_RANK_ELITE = 30,
+				CLAN_RANK_BLOODED = 40,
+				YAUTJA_YOUNG_NONWL_L = 50,
+				CLAN_RANK_YOUNG = 51,
+				CLAN_RANK_UNBLOODED = 60,
+				YAUTJA_ASSIGNMENT_BADBLOOD = 70,
+			)
 		else
 			jobs = list()
 
@@ -1248,6 +1260,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 		if(faction != human_mob.faction)
 			continue
 
+		var/assignment_title = get_assignment_title(human_mob)
+
 		// Check if z-level is correct
 		var/turf/pos = get_turf(human_mob)
 		if(!pos)
@@ -1258,7 +1272,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 			"ref" = REF(human_mob),
 			"name" = human_mob.real_name,
 			"ijob" = UNKNOWN_JOB_ID,
-			"assignment" = "Hunter",
+			"assignment" = assignment_title,
 			"oxydam" = round(human_mob.getOxyLoss(), 1),
 			"toxdam" = round(human_mob.getToxLoss(), 1),
 			"burndam" = round(human_mob.getFireLoss(), 1),
@@ -1279,6 +1293,36 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 	last_update = world.time
 
 	return results
+
+/datum/crewmonitor/yautja/proc/get_assignment_title(mob/living/carbon/human/hunter)
+	var/assignment_title = "Yautja"
+	if(!hunter)
+		return assignment_title
+	var/preset_name = hunter.assigned_equipment_preset?.name
+	if(!preset_name)
+		return assignment_title
+
+	switch(preset_name)
+		if(YAUTJA_ANCIENT)
+			assignment_title = CLAN_RANK_ADMIN
+		if(YAUTJA_LEADER)
+			assignment_title = CLAN_RANK_LEADER
+		if(YAUTJA_ELDER)
+			assignment_title = CLAN_RANK_ELDER
+		if(YAUTJA_ELITE)
+			assignment_title = CLAN_RANK_ELITE
+		if(YAUTJA_BLOODED)
+			assignment_title = CLAN_RANK_BLOODED
+		if(YOUNGBLOOD_ERT_LEADER)
+			assignment_title = YAUTJA_YOUNG_NONWL_L
+		if(YAUTJA_YOUNGBLOOD, YOUNGBLOOD_ERT_MEMBER)
+			assignment_title = CLAN_RANK_YOUNG
+		if(YAUTJA_UNBLOODED)
+			assignment_title = CLAN_RANK_UNBLOODED
+		if(YAUTJA_BADBLOOD)
+			assignment_title = JOB_BADBLOOD
+
+	return assignment_title
 
 #undef SENSOR_LIVING
 #undef SENSOR_VITALS

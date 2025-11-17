@@ -383,6 +383,8 @@
 		if(JOB_PREDATOR)
 			var/datum/job/J = GLOB.RoleAuthority.roles_by_name[JOB_PREDATOR]
 			return J.gear_preset_whitelist["[JOB_PREDATOR][J.get_whitelist_status(owner)]"]
+		if(JOB_BADBLOOD)
+			return /datum/equipment_preset/yautja/bad_blood
 
 	return /datum/equipment_preset/uscm/private_equipped
 

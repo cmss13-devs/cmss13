@@ -47,6 +47,8 @@ Additional game mode variables.
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
 	var/list/dead_queens // A list of messages listing the dead queens
 	var/list/predators	= list()
+	var/list/youngbloods = list()
+	var/list/badbloods = list()
 	var/list/joes		= list()
 	var/list/fax_responders = list()
 
@@ -214,7 +216,7 @@ Additional game mode variables.
 			to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
 		return FALSE
 
-	if(pred_candidate.key in predators)
+	if(has_been_predator(pred_candidate.key))
 		if(show_warning)
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
 		return FALSE
@@ -231,6 +233,16 @@ Additional game mode variables.
 			return FALSE
 
 	return TRUE
+
+/datum/game_mode/proc/has_been_predator(key)
+	if(key in predators)
+		return TRUE
+	else if(key in youngbloods)
+		return TRUE
+	else if(key in badbloods)
+		return TRUE
+	else
+		return FALSE
 
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
 	set waitfor = FALSE

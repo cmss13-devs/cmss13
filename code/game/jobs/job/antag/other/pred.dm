@@ -86,3 +86,26 @@
 /datum/timelock/young_blood/New(name, time_required, list/roles)
 	. = ..()
 	src.roles = JOB_YOUNGBLOOD_ROLES_LIST
+
+
+/datum/job/antag/bad_blood
+	title = JOB_BADBLOOD
+	selection_class = "job_predator"
+	supervisors = "Ancients"
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN|ROLE_ADMIN_NOTIFY
+	flags_whitelist = WHITELIST_YAUTJA
+	gear_preset = /datum/equipment_preset/yautja/bad_blood
+	total_positions = 1
+	spawn_positions = 1
+	handle_spawn_and_equip = TRUE
+
+/datum/timelock/bad_blood
+	name = "Bad Blood Roles"
+
+/datum/timelock/bad_blood/New(name, time_required, list/roles)
+	. = ..()
+	src.roles = JOB_BADBLOOD_ROLES_LIST
+
+AddTimelock(/datum/job/antag/bad_blood, list(
+	JOB_BADBLOOD_ROLES_LIST = 10 HOURS,
+))

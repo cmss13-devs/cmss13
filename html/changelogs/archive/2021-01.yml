@@ -47,7 +47,7 @@
   - imageadd: Replaced CrewMonitoring NANOui with TGui
   - imageadd: Replaced StationAlert HTMLui with TGui
   - imageadd: Replaced IDMod+CrewManifest NANOui with TGui
-  - imageadd: Replaced Squad Distrub HTMLui with TGui
+  - imageadd: Replaced Squad Disturb HTMLui with TGui
   Firartix:
   - bugfix: Fix /obj/forceMove calling Move(), making shuttles fail to move things
       pulled by buckled mobs
@@ -63,7 +63,7 @@
   - rscadd: If you do not understand a language, it will be displayed as gibberish
       sounding like the language spoken.
   Waltermeldron:
-  - bugfix: Fixed sticky resin slowing down allys.
+  - bugfix: Fixed sticky resin slowing down allies.
   - bugfix: Fixed windoors being shootable over.
   spookydonut:
   - tweak: Ported tgui stat panels from tg, verb/stat tabs won't lag your client anymore
@@ -201,7 +201,7 @@
   - imageadd: Kitchen utensils.
   - imageadd: Beakers, bottles, and droppers.
   - imageadd: Advanced spectrometer.
-  - imageadd: Defibrilators.
+  - imageadd: Defibrillators.
   - imageadd: Resprited quite a few legacy sprites, including various decals and lights.
   - imageadd: Resprited WestonChem machine.
   - imageadd: Resprited Seed and Nutrient vendors in hydroponics.
@@ -259,10 +259,10 @@
   TheFlyingFlail:
   - tweak: Adjusted the access restriction of the WY Loyalty Implant Box
   - bugfix: Fixed an issue where the WY Implant case was unable to be opened by Corporation
-      Liason.
+      Liaison.
   TotalEpicness:
   - tweak: New sensors on the M20 claymore make it so dead non-IFF bodies no longer
-      trip them and cause horrific accidents. This also applies to custom mines aswell.
+      trip them and cause horrific accidents. This also applies to custom mines as well.
   Waltermeldron:
   - bugfix: Fixed a bug with the player panel not properly showing notes.
   - rscadd: Added a new interface for list inputs. Hasn't been applied to everything
@@ -292,9 +292,9 @@
       types of grenade now
   - tweak: Updated pouch.dm with different descriptions for large ammo pouches. Also
       changed "revolver magazines"
-  - tweak: Updated firstaid.dm with description changes and modernisations
-  - tweak: Updated pill.dm with description changes and modernisations
-  - tweak: Updated manual.dm with modernisations, including the many changes of NT
+  - tweak: Updated firstaid.dm with description changes and modernizations
+  - tweak: Updated pill.dm with description changes and modernizations
+  - tweak: Updated manual.dm with modernizations, including the many changes of NT
       to WY. Changed the "corporate regulations" book to "Standard operating procedure",
       as it linked to the SOP wiki page.
   TheDonkified:
@@ -724,7 +724,7 @@
   - rscadd: Added a new satchel to squad Engineers and requisitions. It's a welder-pack
       satchel.
   - tweak: Tweaks the welderpack backpack to have backpack storage.
-  - tweak: Buffs the welding fuel capacity from welderspack.
+  - tweak: Buffs the welding fuel capacity from welderpack.
   Segrain:
   - bugfix: Fortified Steelcrest Defenders actually no longer can slash mobs.
   - tweak: Steelcrest fortified Defenders can no longer slash mobs, but they can slash

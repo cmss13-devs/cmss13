@@ -85,7 +85,7 @@
 
 	if(damage_accumulated >= damage_threshold)
 		addtimer(CALLBACK(src, PROC_REF(enraged), owner))
-		UnregisterSignal(owner, COMSIG_XENO_TAKE_DAMAGE) // Two Unregistersignal because if the enrage proc doesnt happen, then it needs to stop counting
+		UnregisterSignal(owner, COMSIG_XENO_TAKE_DAMAGE) // Two UnregisterSignal because if the enrage proc doesn't happen, then it needs to stop counting
 
 /datum/action/xeno_action/onclick/soak/proc/stop_accumulating()
 	UnregisterSignal(owner, COMSIG_XENO_TAKE_DAMAGE)

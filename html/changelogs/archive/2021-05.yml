@@ -10,7 +10,7 @@
   - tweak: You can use the ceremonial dagger to flay things of a different species
       than yours, if you're strong enough.
   - rscadd: 'Ravager: Visual indicators for empowering, scissor cut and super-empowering
-      (Empowering with 3 or more tragets)'
+      (Empowering with 3 or more targets)'
   - rscadd: Slightly increased charge CD reduction per slash. (Experimental)
   - rscadd: 'Super-empowering and slash buff are now based on targets nearby instead
       of shields, and the former gives the following effects for 5 seconds:'
@@ -221,7 +221,7 @@
       is set between directional keys and left-mouse. There shouldn't be any impact,
       but notify me if going around barricade becomes weird.
   - rscadd: Added Xenomorph damage overlays. Xenomorph now shows damage when their
-      health drops belows 75%/50%/25% health, with them dissapearing if healed.
+      health drops belows 75%/50%/25% health, with them disappearing if healed.
 2021-05-11:
   Carlarc:
   - bugfix: Fixed inability to switch between activable abilities while incapacitated.
@@ -280,7 +280,7 @@
   Vanagandr:
   - rscadd: Alt-click now directly takes items from carried or worn inventory items
       which can have Storage Drawing Method toggled or have direct drawing set. This
-      includes webbings, machete/shotgun scabbards, gunbelts, pouches, labcoats, and
+      includes webbings, machete/shotgun scabbards, gunbelts, pouches, lab coats, and
       marine armour, among others.
   - rscadd: Alt-clicking a gunbelt with a gun in it will draw a non-gun item if possible.
       Includes smartgunner and mortar belts.
@@ -403,7 +403,7 @@
   - bugfix: Attaching clothing accessories to jacket items with inventories no longer
       tries to put them into storage, breaking the overlay sprite.
   - rscadd: A variety of jacket-type items can now have accessories attached to them.
-      For ex. detective/CMB jackets, pilot flak jacket, hazard vests, labcoats. Marine
+      For ex. detective/CMB jackets, pilot flak jacket, hazard vests, lab coats. Marine
       service/dress/officer jackets already had this. Exactly which categories an
       item can take depends on it, IE vests can't have armbands or patches, CMB/detective
       jacket already have badges where a medal would go, CO dress and bomber jackets

@@ -59,7 +59,7 @@
   - rscadd: Burrowers are stronger in combat so they can be backstabbing semi-combat
       caste, but they are slow above ground.
   - rscadd: Changed how many xeno-larva spawn from latejoin marines.
-  - rscadd: Queen heal and give plasma are made stronger to accomodate new HP values
+  - rscadd: Queen heal and give plasma are made stronger to accommodate new HP values
       for Xeno.
   - rscadd: Xeno progression is now fixed, so every caste progresses in a same way
   - rscadd: Runners, Drones, Sentinels, Boilers, Lurkers now have no armor and can't
@@ -278,7 +278,7 @@
   - imageadd: Updated the Squad HUD. For real this time.
   Vicacrov:
   - bugfix: Fixed the M82-F flare gun accepting dead flares.
-  - bugfix: Fixes synthetics getting permament pain damage from yanking out embedded
+  - bugfix: Fixes synthetics getting permanent pain damage from yanking out embedded
       objects from themselves.
   - bugfix: Fixed the nanopaste not being stackable.
   - bugfix: Fixed books having broken links.

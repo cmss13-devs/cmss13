@@ -310,7 +310,7 @@ DEFINES in setup.dm, referenced here.
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0)
 			to_chat(user, SPAN_WARNING("You don't know how to do tactical reloads."))
 			return
-		// unconventional tac reloads, yes, you can reload with one hand if you know what youre doing irl
+		// unconventional tac reloads, yes, you can reload with one hand if you know what you're doing irl
 		if(flags_gun_features & GUN_INTERNAL_MAG)
 			unconventional_reload(user, magazine)
 			return

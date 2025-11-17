@@ -307,7 +307,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if(usr.control_object && usr.name_archive) //if you have a name archived and if you are actually relassing an object
+	if(usr.control_object && usr.name_archive) //if you have a name archived and if you are actually releasing an object
 		usr.real_name = usr.name_archive
 		usr.name = usr.real_name
 		if(ishuman(usr))

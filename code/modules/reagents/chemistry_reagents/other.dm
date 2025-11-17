@@ -653,7 +653,7 @@
 /datum/reagent/foaming_agent// Metal foaming agent. This is lithium hydride. Add other recipes (e.g. LiH + H2O -> LiOH + H2) eventually.
 	name = "Foaming agent"
 	id = "foaming_agent"
-	description = "An agent that yeilds metallic foam when mixed with light metal and a strong acid."
+	description = "An agent that yields metallic foam when mixed with light metal and a strong acid."
 	reagent_state = SOLID
 	color = "#664B63" // rgb: 102, 75, 99
 	chemclass = CHEM_CLASS_UNCOMMON

@@ -629,7 +629,7 @@
 	name = "\improper Spearhead Unica 6 autorevolver"
 	desc = "The Spearhead Unica is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It fires heavy .454 rounds."
 	desc_lore = "Originally an Italian design, during the middle 21st century, Mateba company had many severe financial issues as well as violation of local firearm laws. \
-	After numerous court cases, they went bankrupt and few years later, Spearhead Armaments aquired the rights to the Mateba designs, and re-introduced the Unica 6 as the 'Spearhead Unica', \
+	After numerous court cases, they went bankrupt and few years later, Spearhead Armaments acquired the rights to the Mateba designs, and re-introduced the Unica 6 as the 'Spearhead Unica', \
 	as well as many other Mateba revolvers. The new design featured a few changes, like rechambered variation for .454 rounds, attachment rail and other attachments support, but overall, design intentionally remained the same, \
 	due to the iconic status in pop culture and high demand for the authentic piece. The gun is produced in limited numbers and is considered a luxury firearm, often seen in the hands of high-ranking officers, mercenaries and wealthy collectors, \
 	usually comes with authentic wooden grips, engravings, or gold plating finish."
@@ -836,7 +836,7 @@
 	name = "\improper Spearhead 2006M autorevolver"
 	desc = "The Spearhead 2006M is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It fires heavy .454 rounds. It is compatible with more commonly found Unica 6 speedloaders"
 	desc_lore = "Originally an Italian design, during the middle 21st century, Mateba company had many severe financial issues as well as violation of local firearm laws. \
-	After numerous court cases, they went bankrupt and few years later, Spearhead Armaments aquired the rights to the Mateba designs, and re-introduced the 2006M as the 'Spearhead 2006M', \
+	After numerous court cases, they went bankrupt and few years later, Spearhead Armaments acquired the rights to the Mateba designs, and re-introduced the 2006M as the 'Spearhead 2006M', \
 	as well as many other Mateba revolvers. The new design featured a few changes, like rechambered variation for .454 rounds, attachment rail and other attachments support, but overall, design intentionally remained the same, \
 	due to the iconic status in pop culture and high demand for the authentic piece. The gun is produced in limited numbers and is considered a luxury firearm, often seen in the hands of high-ranking officers, mercenaries and wealthy collectors, \
 	usually comes with authentic wooden grips, engravings, or gold plating finish."

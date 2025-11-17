@@ -20,7 +20,7 @@
  *
  *  /proc/select_recipe(list/datum/recipe/available_recipes, obj/obj as obj, exact = 1)
  * Wonderful function that select suitable recipe for you.
- * obj is a machine (or magik hat) with prerequisites,
+ * obj is a machine (or magic hat) with prerequisites,
  * exact = 0 forces algorithm to ignore superfluous stuff.
  *
  *

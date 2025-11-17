@@ -7,7 +7,7 @@
 	weight = 160
 	earliest_start = 0 MINUTES
 	min_players = 1
-	max_occurrences = INFINITE_EVENT_OCURRENCES
+	max_occurrences = INFINITE_EVENT_OCCURRENCES
 	alert_observers = FALSE
 
 /datum/round_event_control/nothing_happens/New()

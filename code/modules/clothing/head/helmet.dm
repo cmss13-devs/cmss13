@@ -1186,7 +1186,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	inserted_visors = list(new /obj/item/device/helmet_visor/po_visor)
 	max_inserted_visors = 1
 
-/obj/item/clothing/head/helmet/marine/pilot/novisor //For vendors that give sepreate visor options
+/obj/item/clothing/head/helmet/marine/pilot/novisor //For vendors that give separate visor options
 	inserted_visors = list()
 
 /obj/item/clothing/head/helmet/marine/pilot/tex
@@ -1217,7 +1217,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	. = ..()
 	if(SSmapping.configs[GROUND_MAP].camouflage_type == "urban"	|| "classic")
 		name = "\improper M10-LS pattern sniper helmet"
-		desc = "A lightweight version of M10 helmet with thermal signature dampering used by USCM snipers on urban recon missions."
+		desc = "A lightweight version of M10 helmet with thermal signature dampening used by USCM snipers on urban recon missions."
 
 /obj/item/clothing/head/helmet/marine/leader/CO
 	name = "\improper M11C pattern commanding officer helmet"
@@ -1730,7 +1730,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner
 	name = "\improper Y8 miner helmet"
-	desc = "A sturdy helmet, specialised for mining, worn by an unknown mercenary group."
+	desc = "A sturdy helmet, specialized for mining, worn by an unknown mercenary group."
 	icon_state = "mercenary_miner_helmet"
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	armor_melee = CLOTHING_ARMOR_VERYHIGH

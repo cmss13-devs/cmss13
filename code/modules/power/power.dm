@@ -312,7 +312,7 @@
 		else if(H.gloves)
 			var/obj/item/clothing/gloves/G = H.gloves
 			if(G.siemens_coefficient == 0)
-				return 0 //to avoid spamming with insulated glvoes on
+				return 0 //to avoid spamming with insulated gloves on
 
 	var/area/source_area
 	if(istype(power_source,/area))

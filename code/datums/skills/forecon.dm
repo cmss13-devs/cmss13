@@ -21,7 +21,7 @@ MILITARY SURVIVORS
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
 	)
 
-/datum/skills/military/survivor/forecon_techician
+/datum/skills/military/survivor/forecon_technician
 	name = "Reconnaissance Support Technician"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,

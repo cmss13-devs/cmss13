@@ -312,11 +312,11 @@
   - qol: Pill box can transfer its contents to the Chemmaster
   - qol: Pill box can collect pill bottles from the floor
   TheGamerdk:
-  - balance: Oxiding and Igniting now respects ignition immunity
+  - balance: Oxidizing and Igniting now respects ignition immunity
   - balance: CLF3 now does less burn damage, and doesn't strip xeno armor
   cuberound:
   - rscadd: Roofs that stuff can not stay on for multiz mapping
-  - rscadd: motion detector detects pings on higer and lower z level, uses arrows
+  - rscadd: motion detector detects pings on higher and lower z level, uses arrows
       to show their location
   - bugfix: fences no longer connect to electric fences
   - rscadd: Smokes spread up and down a z level
@@ -342,7 +342,7 @@
   Sergeys:
   - qol: Stack receipt list now supports entering a custom amount of produced items.
   - ui: Added icons for construction objects.
-  - ui: DmIcon no longer displays the previously rendered image instead of the setted
+  - ui: DmIcon no longer displays the previously rendered image instead of the set
       image.
   - ui: NumberInput can now be made focusable via Tab using a new variable.
   - ui: Glass construction now using proper UI instead of custom.
@@ -359,7 +359,7 @@
   Drathek:
   - bugfix: Orbit menu should no longer be finding null named mobs to crash on (also
       has fallback behavior to name them as Unknown)
-  - bugfix: 'New players (or atleast one that has never saved preferences before)
+  - bugfix: 'New players (or at least one that has never saved preferences before)
       now have their preferences sanitized immediately: For example this makes it
       so fax responder names are randomized to begin with'
   - bugfix: A few equipment presents (cmb, contractor, and royal marine) now will

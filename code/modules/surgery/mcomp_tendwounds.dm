@@ -167,7 +167,7 @@
 		user.affected_message(target,
 			SPAN_HELPFUL("You begin to close the treated wounds on [target]'s body with [tool]."),
 			SPAN_HELPFUL("[user] begins to clamp the treated wounds on your body with [tool]."),
-			SPAN_NOTICE("[user] begns to clamp the treated wounds on [target]'s body with [tool]."))
+			SPAN_NOTICE("[user] begins to clamp the treated wounds on [target]'s body with [tool]."))
 
 /datum/surgery_step/cauterize/mclamp_wound/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(125,125) //makes sure that all damage is healed
@@ -175,7 +175,7 @@
 	target.SetSuperslow(0 SECONDS)
 
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[user] finishes closing the treated wounds on their body with [tool]."),
 			SPAN_HELPFUL("You finish closing the treated wounds on your body with [tool]"))
 	else
 		user.affected_message(target,

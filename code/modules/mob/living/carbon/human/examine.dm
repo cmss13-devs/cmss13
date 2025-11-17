@@ -62,7 +62,7 @@
 		skipface |= wear_mask.flags_inv_hide & HIDEFACE
 
 	// crappy hacks because you can't do \his[src] etc. I'm sorry this proc is so unreadable, blame the text macros :<
-	var/t_He = "It" //capitalised for use at the start of each line.
+	var/t_He = "It" //capitalized for use at the start of each line.
 	var/t_his = "its"
 	var/t_him = "it"
 	var/t_has = "has"
@@ -317,12 +317,12 @@
 				if(length(wound_descriptors))
 					var/list/flavor_text = list()
 					var/list/no_exclude = list("gaping wound", "big gaping wound", "massive wound", "large bruise",\
-					"huge bruise", "massive bruise", "severe burn", "large burn", "deep burn", "carbonised area")
+					"huge bruise", "massive bruise", "severe burn", "large burn", "deep burn", "carbonized area")
 					for(var/wound in wound_descriptors)
 						switch(wound_descriptors[wound])
 							if(1)
 								if(!length(flavor_text))
-									flavor_text += SPAN_WARNING("[t_He] has[prob(10) && !(wound in no_exclude)  ? " what might be" : ""] a [wound]")
+									flavor_text += SPAN_WARNING("[t_He] has[prob(10) && !(wound in no_exclude) ? " what might be" : ""] a [wound]")
 								else
 									flavor_text += "[prob(10) && !(wound in no_exclude) ? " what might be" : ""] a [wound]"
 							if(2)
@@ -358,7 +358,7 @@
 				wound_flavor_text["[temp.display_name]"] = ""
 
 	//Handles the text strings being added to the actual description.
-	//If they have something that covers the limb, and it is not missing, put flavortext.  If it is covered but bleeding, add other flavortext.
+	//If they have something that covers the limb, and it is not missing, put flavortext. If it is covered but bleeding, add other flavortext.
 	var/display_head = 0
 	var/display_chest = 0
 	var/display_groin = 0
@@ -375,7 +375,7 @@
 		msg += wound_flavor_text["head"]
 	if(is_bleeding["head"])
 		display_head = 1
-	if(wound_flavor_text["chest"] && !w_uniform && !skipjumpsuit) //No need.  A missing chest gibs you.
+	if(wound_flavor_text["chest"] && !w_uniform && !skipjumpsuit) //No need. A missing chest gibs you.
 		msg += wound_flavor_text["chest"]
 	if(is_bleeding["chest"])
 		display_chest = 1
@@ -411,7 +411,7 @@
 		msg += wound_flavor_text["right leg"]
 	if(is_bleeding["right leg"])
 		display_leg_right = 1
-	if(wound_flavor_text["right foot"]&& (is_destroyed["right foot"] || (!shoes  && !skipshoes)))
+	if(wound_flavor_text["right foot"]&& (is_destroyed["right foot"] || (!shoes && !skipshoes)))
 		msg += wound_flavor_text["right foot"]
 	if(is_bleeding["right foot"])
 		display_foot_right = 1

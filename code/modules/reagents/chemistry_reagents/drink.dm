@@ -487,7 +487,7 @@
 /datum/reagent/machosauce
 	name = "Macho Sauce"
 	id = "machosauce"
-	description = "A backalley abomination born in the darkest corner of the brig. This cocktail of pepper spray and Souto is only drank by the craziest servicemen."
+	description = "A back-alley abomination born in the darkest corner of the brig. This cocktail of pepper spray and Souto is only drank by the craziest servicemen."
 	reagent_state = LIQUID
 	color = "#d1001c" // rgb: 209, 0, 28
 	chemclass = CHEM_CLASS_RARE

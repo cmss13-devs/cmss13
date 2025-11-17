@@ -30,7 +30,7 @@
 	return debug_variable(var_name, vars[var_name], 0, src)
 
 //please call . = ..() first and append to the result, that way parent items are always at the top and child items are further down
-//add separaters by doing . += "---"
+//add separators by doing . += "---"
 /datum/proc/vv_get_dropdown()
 	. = list()
 	VV_DROPDOWN_OPTION(VV_HK_CALLPROC, "Call Proc")

@@ -87,7 +87,7 @@
 2023-10-08:
   Kivts:
   - rscadd: You can partially protect yourself from flu and other disease by wearing
-      a mask and other PPE. Doesnt affect Black Goo.
+      a mask and other PPE. Doesn't affect Black Goo.
   Steelpoint:
   - rscadd: Black and white beret's have been added as loadout options for all characters
       as headwear.
@@ -372,7 +372,7 @@
   - rscadd: Added more attachments, and belts to the CO arsenal.
   - rscadd: CO now has an Essentials Kit like other roles, containing his Designator,
       and other useful tools.
-  - rscadd: Re-Adds Bridgecoat to some Officer Dress vendors. (Limited to CO(+) and
+  - rscadd: Re-Adds bridge coat to some Officer Dress vendors. (Limited to CO(+) and
       XO currently.)
   - rscdel: Removed Laser Designator from CO spawn Preset.
   - balance: CO can now vend welding Helmet visors.

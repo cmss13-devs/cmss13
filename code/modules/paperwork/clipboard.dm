@@ -72,7 +72,7 @@
 	else
 		dat += "<A href='byond://?src=\ref[src];addpen=1'>Add Pen</A><BR><HR>"
 
-	//The topmost paper. I don't think there's any way to organise contents in byond, so this is what we're stuck with. -Pete
+	//The topmost paper. I don't think there's any way to organize contents in byond, so this is what we're stuck with. -Pete
 	if(toppaper)
 		var/obj/item/paper/P = toppaper
 		dat += "<A href='byond://?src=\ref[src];write=\ref[P]'>Write</A> <A href='byond://?src=\ref[src];remove=\ref[P]'>Remove</A> - <A href='byond://?src=\ref[src];read=\ref[P]'>[P.name]</A><BR><HR>"

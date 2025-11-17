@@ -1,6 +1,6 @@
 ///Estimates the light power based on the alpha of the light and the range.
 ///Assumes a linear fallout at (0, alpha/255) to (range, 0)
-///Used for lightig mask lumcount calculations
+///Used for lighting mask lumcount calculations
 #define LIGHT_POWER_ESTIMATION(alpha, range, distance) max((alpha * (range - distance)) / (255 * range), 0)
 
 /// Causes any affecting light sources to be queued for a visibility update, for example a door got opened.

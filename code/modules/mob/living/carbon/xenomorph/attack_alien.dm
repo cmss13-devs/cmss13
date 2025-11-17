@@ -98,7 +98,7 @@
 			var/damage = rand(attacking_xeno.melee_damage_lower, attacking_xeno.melee_damage_upper) + dam_bonus
 			var/acid_damage = 0
 
-			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
+			//Frenzy auras stack in a way, then the raw value is multiplied by two to get the additive modifier
 			if(attacking_xeno.frenzy_aura > 0)
 				damage += (attacking_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 				if(acid_damage)
@@ -274,7 +274,7 @@
 			M.track_slashes(M.caste_type) //Adds to slash stat.
 			var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 
-			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
+			//Frenzy auras stack in a way, then the raw value is multiplied by two to get the additive modifier
 			if(M.frenzy_aura > 0)
 				damage += (M.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 

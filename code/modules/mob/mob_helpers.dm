@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
  * * message - an html string value to be parsed and modified.
  *
  * Return:
- * returns the parsed and modified html output with the text content being partially scrambled with asteriks
+ * returns the parsed and modified html output with the text content being partially scrambled with asterisk
  */
 /proc/stars_decode_html(message)
 	if(!length(message))

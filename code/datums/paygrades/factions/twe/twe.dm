@@ -3,7 +3,7 @@
 	pay_multiplier = 2 // less people = more to pay them
 	default_faction = FACTION_TWE
 
-//RMC Emlisted
+//RMC Enlisted
 /datum/paygrade/twe/e1
 	paygrade = PAY_SHORT_RMC1
 	name = "Marine"
@@ -33,7 +33,7 @@
 	prefix = "CSgt."
 	pay_multiplier = 2.7
 
-//TWE Warrent Officer
+//TWE Warrant Officer
 /datum/paygrade/twe/wo1
 	paygrade = PAY_SHORT_RNOW
 	name = "Warrant Officer Class 1"

@@ -25,7 +25,7 @@
 		set_frequency(S.frequency)
 
 		SStgui.update_uis(src)
-		to_chat(user, SPAN_NOTICE("You set the frequence of [src] to [frequency] and code to [code]."))
+		to_chat(user, SPAN_NOTICE("You set the frequency of [src] to [frequency] and code to [code]."))
 		return
 	. = ..()
 

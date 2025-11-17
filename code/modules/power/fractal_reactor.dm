@@ -5,7 +5,7 @@
 
 /obj/structure/machinery/power/fractal_reactor
 	name = "Fractal Energy Reactor"
-	desc = "This thing drains power from fractal-subspace. (DEBUG ITEM: INFINITE POWERSOURCE FOR MAP TESTING. CONTACT DEVELOPERS IF FOUND.)"
+	desc = "This thing drains power from fractal-subspace. (DEBUG ITEM: INFINITE POWER SOURCE FOR MAP TESTING. CONTACT DEVELOPERS IF FOUND.)"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "bbox_on"
 	anchored = TRUE

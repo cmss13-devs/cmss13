@@ -134,7 +134,7 @@
 		a_left.holder_movement()
 		a_right.holder_movement()
 
-/obj/item/device/assembly_holder/attack_hand()//Perhapse this should be a holder_pickup proc instead, can add if needbe I guess
+/obj/item/device/assembly_holder/attack_hand()//Perhaps this should be a holder_pickup proc instead, can add if need-be I guess
 	if(a_left && a_right)
 		a_left.holder_movement()
 		a_right.holder_movement()

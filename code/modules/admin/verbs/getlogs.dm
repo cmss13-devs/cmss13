@@ -10,7 +10,7 @@
 	Save it with the name of the revision your server uses (e.g. r3459.txt).
 	Game Masters will now be able to grant access any runtime logs you have archived this way!
 	This will allow us to gather information on bugs across multiple servers and make maintaining the TG
-	codebase for the entire /TG/station commuity a TONNE easier :3 Thanks for your help!
+	codebase for the entire /TG/station community a TONNE easier :3 Thanks for your help!
 */
 
 //This proc allows Game Masters to grant a client access to the .getruntimelog verb
@@ -75,7 +75,7 @@
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
 	src << ftp(file(path))
 
-//Other log stuff put here for the sake of organisation
+//Other log stuff put here for the sake of organization
 
 /**Shows this round's server log*/
 /datum/admins/proc/view_game_log()

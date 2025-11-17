@@ -71,6 +71,6 @@ You can find more information about all of these from their respective doc comme
 
 ## Final Notes
 
-- Writing tests before you attempt to fix the bug can actually speed up development a lot! It means you don't have to go in game and folllow the same exact steps manually every time. This process is known as "TDD" (test driven development). Write the test first, make sure it fails, *then* start work on the fix/feature, and you'll know you're done when your tests pass. If you do try this, do make sure to confirm in a non-testing environment just to double check.
+- Writing tests before you attempt to fix the bug can actually speed up development a lot! It means you don't have to go in game and follow the same exact steps manually every time. This process is known as "TDD" (test driven development). Write the test first, make sure it fails, *then* start work on the fix/feature, and you'll know you're done when your tests pass. If you do try this, do make sure to confirm in a non-testing environment just to double check.
 - Make sure that your tests don't accidentally call RNG functions like `prob`. Since RNG is seeded during tests, you may not realize you have until someone else makes a PR and the tests fail!
 - Do your best not to change the behavior of non-testing code during tests. While it may sometimes be necessary in the case of situations such as the above, it is still a slippery slope that can lead to the code you're testing being too different from the production environment to be useful.

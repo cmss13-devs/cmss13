@@ -135,7 +135,7 @@
       be weeded or not.
   - rscadd: 'Added the Eggsac Carrier strain, it cannot store huggers, but it can
       generate an egg every 30 seconds, at the cost of its entire plasma reserve.
-      Its list of abilities includes: Special Construction, Moderate Pheremones, Plant
+      Its list of abilities includes: Special Construction, Moderate Pheromones, Plant
       Weeds, Retrieve Egg, Generate Egg.'
 2021-10-09:
   Benbot16:
@@ -258,7 +258,7 @@
   - tweak: Ghosts now have their dead mobs icon again
   SpartanBobby:
   - maptweak: adds more random bigred tunnels
-  - bugfix: Makes hivetunnels consistant
+  - bugfix: Makes hive tunnels consistent
   - bugfix: Fixes Area problems with filt padlocks
   naut:
   - imageadd: Resprited a lot of legacy items to be up-to-speed with CMs artstyle.
@@ -401,7 +401,7 @@
   - tweak: Changed the beanbag fire sound.
   - rscadd: Blue Mk221 for beanbags only in riot lockers.
   - rscadd: Added a new default mode for the disabler, it will now only hit targetted
-      criminals unless chaged to free mode (unique_action)
+      criminals unless changed to free mode (unique_action)
   - tweak: Warden and CMP given level 1 medical skill to help look after prisoners,
       and recognise chemicals.
   - tweak: Warden and CMP given construction and engineering skills to repair walls.
@@ -425,7 +425,7 @@
       which weakens after half the duration (like base rav)
   Segrain:
   - tweak: Chemical smoke/fire/explosions no longer occur inside mobs.
-  - bugfix: Certain reagents no longer prevent reactions from occuring within living
+  - bugfix: Certain reagents no longer prevent reactions from occurring within living
       mobs.
   Stan_albatross:
   - maptweak: 'LV-624 : fixed a double fence tile south of internal affairs.'
@@ -439,7 +439,7 @@
       notably for areas, which carry lightning overlays
   - bugfix: fixed ranging implementation of hand-held cameras being a decade old portable
       hellscape, causing various performance problems and bugs
-  - bugfix: fix an internal timer error in loorker slash reset
+  - bugfix: fix an internal timer error in lurker slash reset
   - bugfix: fix an error when bumping objects into platforms
 2021-10-31:
   50RemAndCounting:

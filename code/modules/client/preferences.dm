@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/reload_cooldown = 0 //5s cooldown between loading slots
 
 	//game-preferences
-	var/lastchangelog = "" // Saved changlog filesize to detect if there was a change
+	var/lastchangelog = "" // Saved changelog filesize to detect if there was a change
 	var/ooccolor
 	var/be_special = BE_ALIEN|BE_KING // Special role selection
 	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_COMBAT_CLICKDRAG_OVERRIDE|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND|TOGGLE_LEADERSHIP_SPOKEN_ORDERS|TOGGLE_COCKING_TO_HAND // flags in #define/mode.dm
@@ -219,7 +219,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		//Jobs, uses bitflags
 	var/list/job_preference_list = list()
 
-	//Keeps track of preferrence for not getting any wanted jobs
+	//Keeps track of preference for not getting any wanted jobs
 	var/alternate_option = RETURN_TO_LOBBY //Be a marine.
 
 	// maps each organ to either null(intact), "cyborg" or "amputated"
@@ -273,7 +273,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/no_radials_preference = FALSE
 	var/no_radial_labels_preference = FALSE
 
-	var/bg_state = "blank" // the icon_state of the floortile background displayed behind the mannequin in character creation
+	var/bg_state = "blank" // the icon_state of the floor tile background displayed behind the mannequin in character creation
 	var/show_job_gear = TRUE // whether the job gear gets equipped to the mannequin in character creation
 
 	//Byond membership status
@@ -748,7 +748,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML += "<tt><center>"
 	HTML += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br><br>"
 	HTML += "<center><a href='byond://?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
-	HTML += "<table width='100%' cellpadding='1' cellspacing='0' style='color: black;'><tr><td valign='top' width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
+	HTML += "<table width='100%' cellpadding='1' cellspacing='0' style='color: black;'><tr><td valign='top' width='20%'>" // Table within a table for alignment, also allows you to easily add more columns.
 	HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
 	var/index = -1
 
@@ -827,7 +827,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML += "</td></tr></table>"
 	HTML += "</center></table>"
 
-	if(user.client?.prefs) //Just makin sure
+	if(user.client?.prefs) //Just making sure
 		var/b_color = "green"
 		var/msg = "Get random job if preferences unavailable"
 
@@ -868,7 +868,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML += "<tt><center>"
 	HTML += "<b>Assign character slots to jobs.</b><br>Unavailable occupations are crossed out.<br><br>"
 	HTML += "<center><a href='byond://?_src_=prefs;preference=job_slot;task=close'>Done</a></center><br>" // Easier to press up here.
-	HTML += "<table width='100%' cellpadding='1' cellspacing='0' style='color: black;'><tr><td valign='top' width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
+	HTML += "<table width='100%' cellpadding='1' cellspacing='0' style='color: black;'><tr><td valign='top' width='20%'>" // Table within a table for alignment, also allows you to easily add more columns.
 	HTML += "<table width='100%' cellpadding='1' cellspacing='0'>"
 	var/index = -1
 
@@ -1746,7 +1746,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(!choice)
 						return
 					if(choice == "Other")
-						var/raw_choice = input(user, "Please enter a religon.")  as text|null
+						var/raw_choice = input(user, "Please enter a religion.")  as text|null
 						if(raw_choice)
 							religion = strip_html(raw_choice) // This only updates itself in the UI when another change is made, eg. save slot or changing other char settings.
 						return

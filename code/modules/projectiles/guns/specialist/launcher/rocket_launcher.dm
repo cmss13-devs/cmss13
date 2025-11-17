@@ -263,7 +263,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank //reloadable
 	name = "\improper QH-4 Shoulder-Mounted Anti-Tank RPG"
-	desc = "Used to take out light-tanks and enemy structures, the QH-4 is a dangerous weapon specialised against vehicles. Requires direct hits to penetrate vehicle armor."
+	desc = "Used to take out light-tanks and enemy structures, the QH-4 is a dangerous weapon specialized against vehicles. Requires direct hits to penetrate vehicle armor."
 	icon_state = "m83a2"
 	item_state = "m83a2"
 	unacidable = FALSE

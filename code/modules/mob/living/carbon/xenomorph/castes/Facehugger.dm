@@ -128,7 +128,7 @@
 		if(time_of_birth + 3 SECONDS > world.time)
 			return
 		if(morpher.linked_hive.hivenumber != hivenumber)
-			to_chat(src, SPAN_XENOWARNING("This isn't your hive's eggmorpher!"))
+			to_chat(src, SPAN_XENOWARNING("This isn't your hive's egg morpher!"))
 			return
 		if(morpher.stored_huggers >= morpher.huggers_max_amount)
 			to_chat(src, SPAN_XENOWARNING("\The [morpher] is already full of children."))

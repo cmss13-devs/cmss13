@@ -84,7 +84,7 @@
   - rscdel: Removed useless trap items, including the purchasable underslung grenade
       launcher, the F2000 rifle, the VP78 pistol etc.
   Firartix:
-  - tweak: rewrote ammobox transfer to properly account for changes while transfering
+  - tweak: rewrote ammo box transfer to properly account for changes while transferring
   Jackie:
   - bugfix: Non-lethal guns can no longer be used to suicide.
   NeroCavalier:
@@ -104,7 +104,7 @@
   - rscadd: Added New Survivors Types For LV-624
   - rscadd: Added New Survivors Types For Solaris Ridge
   - rscadd: Added New Survivors Types For Trijent Dam
-  - rscadd: Created Separate Interstellar Human Rights Watcher for Fionna and Soro
+  - rscadd: Created Separate Interstellar Human Rights Watcher for Fiorina and Sorokyne
   - tweak: Tweaked Survivor Loadouts For Soro Doctor, Researcher, and Interstellar
       Human Rights Watcher
   - tweak: Gave several doctors their missing health huds
@@ -243,7 +243,7 @@
       duration)
   - tweak: Mini Rocket Stacks have been refitted, although there's no noticeable change.
       (200 explosion, 44 linear fall off)
-  - tweak: Incendiary Mini Rocket Stacks were found to be overfueled. The fire now
+  - tweak: Incendiary Mini Rocket Stacks were found to be overfuelled. The fire now
       affects a slightly smaller area. (200 explosion, 44 linear fall off, 20 burn
       intensity, 25 burn duration)
   - tweak: Laser Batteries have received some enhancements after extensive field testing.
@@ -285,7 +285,7 @@
   - maptweak: Removed a lattice in the "Fiberbush Infestation" area to make a pushing
       lane less congested.
   Vanagandr:
-  - bugfix: Restored original 0.3s attackspeed to medical stacks, nanopaste, and cable
+  - bugfix: Restored original 0.3s attack speed to medical stacks, nanopaste, and cable
       coil.
   - bugfix: Fixed a runtime error with pyro backpack and patrol cap.
 2021-06-17:
@@ -366,7 +366,7 @@
       used in the map making process. Should make maps in-editor more readable.
   - rscadd: Added squad colored flags. They can be found on Shivas Snowball, and maybe
       other maps in the future!
-  - bugfix: Fixed some broken typepaths on the USS Almayer and Sorokyne Strate.
+  - bugfix: Fixed some broken typepaths on the USS Almayer and Sorokyne Strata.
 2021-06-27:
   Cakey:
   - bugfix: The Walkman now plays musical notes when playing in-ear again.

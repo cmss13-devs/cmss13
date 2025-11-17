@@ -71,7 +71,7 @@
 
 	qdel(src)
 
-/// Mapping helper placed on turfs that toggles the destructiblity of the turf after a specified duration.
+/// Mapping helper placed on turfs that toggles the destructibility of the turf after a specified duration.
 /obj/effect/timed_event/destructible
 
 /obj/effect/timed_event/destructible/check_valid_type()

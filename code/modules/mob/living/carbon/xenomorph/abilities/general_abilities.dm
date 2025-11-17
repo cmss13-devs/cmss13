@@ -183,7 +183,7 @@
 	name = "Emit Pheromones (30)"
 	action_icon_state = "emit_pheromones"
 	plasma_cost = 30
-	macro_path = /datum/action/xeno_action/verb/verb_pheremones
+	macro_path = /datum/action/xeno_action/verb/verb_pheromones
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/onclick/emit_pheromones/can_use_action()
@@ -253,7 +253,7 @@
 	return
 
 /**
- * Effects to apply *inmediately* before pouncing.
+ * Effects to apply *immediately* before pouncing.
  */
 /datum/action/xeno_action/activable/pounce/proc/pre_pounce_effects()
 	return

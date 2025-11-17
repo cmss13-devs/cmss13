@@ -445,7 +445,7 @@
 		if(!P1)
 			P1 = get_player_from_key(M.ckey)
 
-		//get jobs for department if specified, otherwise just returnt he one job in a list.
+		//get jobs for department if specified, otherwise just return the one job in a list.
 		var/list/joblist = list()
 		switch(href_list["jobban3"])
 			if("CICdept")
@@ -1038,7 +1038,7 @@
 			M.skills = null //no skill restriction
 
 			M.change_real_name(M, y_name)
-			M.name = "Unknown" // Yautja names are not visible for oomans
+			M.name = "Unknown" // Yautja names are not visible for humans
 
 			if(H)
 				qdel(H) //May have to clear up round-end vars and such....
@@ -1147,18 +1147,18 @@
 			if("random fortune cookie")
 				snack = new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(H.loc)
 			if("custom fortune cookie")
-				var/fortune_text = tgui_input_list(usr, "Choose fortune:", "Cookie customisation", list("Random", "Custom", "None"))
+				var/fortune_text = tgui_input_list(usr, "Choose fortune:", "Cookie customization", list("Random", "Custom", "None"))
 				if(!fortune_text)
 					return
 				if(fortune_text == "Custom")
-					fortune_text = input(usr, "Enter the fortune text:", "Cookie customisation", "")
+					fortune_text = input(usr, "Enter the fortune text:", "Cookie customization", "")
 					if(!fortune_text)
 						return
-				var/fortune_numbers = tgui_input_list(usr, "Choose lucky numbers:", "Cookie customisation", list("Random", "Custom", "None"))
+				var/fortune_numbers = tgui_input_list(usr, "Choose lucky numbers:", "Cookie customization", list("Random", "Custom", "None"))
 				if(!fortune_numbers)
 					return
 				if(fortune_numbers == "Custom")
-					fortune_numbers = input(usr, "Enter the lucky numbers:", "Cookie customisation", "1, 2, 3, 4 and 5")
+					fortune_numbers = input(usr, "Enter the lucky numbers:", "Cookie customization", "1, 2, 3, 4 and 5")
 					if(!fortune_numbers)
 						return
 				if(fortune_text == "None" && fortune_numbers == "None")
@@ -1935,7 +1935,7 @@
 			return FALSE
 		marine_announcement("Your request for nuclear ordnance deployment has been reviewed and denied by USCM High Command for operational security and colonial preservation reasons. Have a good day.", "NUCLEAR ORDNANCE DENIED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has denied nuclear ordnance, requested by [key_name_admin(ref_person)]")
-		message_admins("[key_name_admin(usr)] has dnied nuclear ordnance, requested by [key_name_admin(ref_person)]")
+		message_admins("[key_name_admin(usr)] has denied nuclear ordnance, requested by [key_name_admin(ref_person)]")
 
 	if(href_list["sddeny"]) // CentComm-deny. The self-destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])

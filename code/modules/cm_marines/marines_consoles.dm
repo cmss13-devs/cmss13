@@ -89,7 +89,7 @@
 					user_id_card = I
 			if(authenticate(user, user_id_card))
 				return TRUE
-			// Well actualy we have no button for auth card ejection, so just spit it back in user's face
+			// Well actually we have no button for auth card ejection, so just spit it back in user's face
 			else
 				if(!user_id_card)
 					return
@@ -521,7 +521,7 @@
 
 //This console changes a marine's squad. It's very simple.
 //It also does not: change or increment the squad count (used in the login randomizer), nor does it check for jobs.
-//Which means you could get sillyiness like "Alpha Sulaco Chief Medical Officer" or "Delta Logistics Officer".
+//Which means you could get silliness like "Alpha Sulaco Chief Medical Officer" or "Delta Logistics Officer".
 //But in the long run it's not really a big deal.
 
 /obj/structure/machinery/computer/squad_changer

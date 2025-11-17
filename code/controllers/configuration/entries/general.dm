@@ -318,7 +318,7 @@ Master controller and performance related.
 	config_entry_value = 20
 	integer = FALSE
 	min_val = 1
-	max_val = 100   //byond will start crapping out at 50, so this is just ridic
+	max_val = 100   //byond will start crapping out at 50, so this is just ridiculous
 	var/sync_validate = FALSE
 
 /datum/config_entry/number/fps/ValidateAndSet(str_val)
@@ -546,7 +546,7 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /// InfluxDB v2 Host to connect to for sending statistics (over HTTP API)
 /datum/config_entry/string/influxdb_host
-/// InfluxDB v2 Bucket to send staistics to
+/// InfluxDB v2 Bucket to send statistics to
 /datum/config_entry/string/influxdb_bucket
 /// InfluxDB v2 Organization to access buckets of
 /datum/config_entry/string/influxdb_org

@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY(fax_contents) //List of fax contents to maintain it even if so
 // for all of our various bugs and runtimes
 GLOBAL_LIST_EMPTY(bug_reports)
 
-//datum containing a reference to the flattend map png url, the actual png is stored in the user's cache.
+//datum containing a reference to the flattened map png url, the actual png is stored in the user's cache.
 GLOBAL_LIST_EMPTY(uscm_flat_tacmap_data)
 GLOBAL_LIST_EMPTY(xeno_flat_tacmap_data)
 
@@ -160,9 +160,9 @@ GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title) //List of all jobstype
 
 /*Surgical lists.
 surgery_invasiveness_levels lists possible incision depths.
-surgeries_list lists individual operations as initialised datums. These are used for reference when beginning surgeries.
-surgeries_by_zone_and_depth links to initialised surgery datums, indexed by target zone and depth of incision.
-surgery_step_list lists the individual surgical steps as initialised datums.
+surgeries_list lists individual operations as initialized datums. These are used for reference when beginning surgeries.
+surgeries_by_zone_and_depth links to initialized surgery datums, indexed by target zone and depth of incision.
+surgery_step_list lists the individual surgical steps as initialized datums.
 surgical_tools lists all item paths that can be used in a surgery step.
 surgical_init_tools lists all item paths that can be used in a surgery step except those flagged to not message on failed init - ex. cable coil, trauma kits etc.
 surgical_patient_types is a list of typecaches indexed by surgery, used to test if a patient is a valid mobtype.*/
@@ -270,7 +270,7 @@ GLOBAL_LIST_INIT(key_mods, list("CTRL", "ALT", "SHIFT"))
 // A list storing the pass flags for specific types of atoms
 GLOBAL_LIST_EMPTY(pass_flags_cache)
 
-//Parameterss cache
+//Parameters cache
 GLOBAL_LIST_EMPTY(paramslist_cache)
 
 //Turf Edge info uberlist -- a list whos states contain GLOB.edgeinfo_X keyed as different icon_states

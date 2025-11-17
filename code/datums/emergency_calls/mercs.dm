@@ -41,7 +41,7 @@
 
 /datum/emergency_call/mercs/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, SPAN_BOLD("You started off in the Neroid Sector as a colonist seeking work at one of the established colonies."))
-	to_chat(H, SPAN_BOLD("The withdrawl of United American forces in the early 2180s, the system fell into disarray."))
+	to_chat(H, SPAN_BOLD("The withdrawal of United American forces in the early 2180s, the system fell into disarray."))
 	to_chat(H, SPAN_BOLD("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
 	to_chat(H, SPAN_BOLD("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in the Neroid Sector."))
 	if(hostility)
@@ -123,7 +123,7 @@
 
 /datum/emergency_call/heavy_mercs/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, SPAN_BOLD("You started off in the Neroid Sector as an experienced miner seeking work at one of the established colonies."))
-	to_chat(H, SPAN_BOLD("The withdrawl of United American forces in the early 2180s, the system fell into disarray."))
+	to_chat(H, SPAN_BOLD("The withdrawal of United American forces in the early 2180s, the system fell into disarray."))
 	to_chat(H, SPAN_BOLD("Taking up arms as a mercenary, the Freelancers have become a powerful force of order in the system."))
 	to_chat(H, SPAN_BOLD("While they are motivated primarily by money, many colonists see the Freelancers as the main forces of order in the Neroid Sector."))
 	if(hostility)

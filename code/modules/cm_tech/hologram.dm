@@ -182,7 +182,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	return COMPONENT_OVERRIDE_VIEW
 
 /mob/hologram/look_up/take_damage(mob/M, damage, damagetype)
-	return //no cancelation of looking up by taking damage
+	return //no cancellation of looking up by taking damage
 
 /mob/hologram/look_up/proc/end_lookup()
 	SIGNAL_HANDLER

@@ -74,7 +74,7 @@
   TobiNerd:
   - rscadd: Research can now transmit chemical data to the central WY database. This
       will make that chem exist in the following round, although with a new recipe,
-      name and clearance level. The new clearance level and transmisison cost is based
+      name and clearance level. The new clearance level and transmission cost is based
       off the properties of the chem, whereas negative and neutral properties lower
       the cost.
   - rscadd: The CL can now print research grants containing 4 research credits for
@@ -86,9 +86,9 @@
       for research credits. Higher level reports can be purchased at increased price
       when the respective clearance access has been reached.
   - rscadd: Added the research main terminal to the CMO office. This terminal has
-      the added ability to publish documents for all medical personel to see.
+      the added ability to publish documents for all medical personnel to see.
   - rscadd: Research publications can be viewed when wearing a Healthmate HUD.
-  - tweak: The CMO now spawns with a level 2 chemical report in their labcoat.
+  - tweak: The CMO now spawns with a level 2 chemical report in their lab coat.
   - tweak: All papers can now be added to the research database by clicking a research
       terminal with the paper. This means you can make your own hand-written publications!
   - tweak: You can now read papers from the research database without printing them.
@@ -128,7 +128,7 @@
   - bugfix: Added the missing door_open icon state for Strata specific doors.
   - rscadd: Increased the amount of nutriment in Boonie Bars, Barcardine Bars, EAT
       bars, packaged burgers, burritos, Kepler Crisps and Chunk Boxes.
-  - rscadd: Added more coco to Boonie Bars, Barcadine Bars, and Chunk Boxes.
+  - rscadd: Added more coco to Boonie Bars, Barcardine Bars, and Chunk Boxes.
   - rscadd: Directed some of the salt from Dchat into Kepler Crisps, which now contain
       12u per tube of chips.
   - spellcheck: Renamed EAT bars to MEAT bars, as per canon appearance.
@@ -162,7 +162,7 @@
   - tweak: Increased the damage of trapper boiler's landmine from 50 to 60.
   - tweak: Increased Boiler's view range when zoomed out by 1 tile.
   - tweak: Slightly decreased Crusher's speed at higher maturities.
-  - tweak: Increased the bonus damage base ravager recieves from shields from 5% to
+  - tweak: Increased the bonus damage base ravager receives from shields from 5% to
       10% of shield HP.
   - tweak: Increased the cooldown of Crusher's shield by 4 seconds at all maturities.
   - tweak: Increased the cooldown of Crusher's charge by 6 seconds at all maturities.
@@ -200,7 +200,7 @@
   - tweak: Increased the damage of the M41mk2 pulse rifle by 12%.
   - tweak: Increased the damage modifier of the M46C from 12% additional damage to
       21% additional damage.
-  - tweak: Changed the latejoin larva mechanic. Xenos now recieve 1 larva per 4 latejoin
+  - tweak: Changed the latejoin larva mechanic. Xenos now receive 1 larva per 4 latejoin
       marines.
   - tweak: Changed the Evolution rate mechanic.
   - tweak: Upgrade rate and Evolution rate are now the same number.
@@ -262,7 +262,7 @@
   - tweak: Dual-wielding SMGs now has a higher scatter than before (due to removing
       snowflake SMG skill check).
   - tweak: Shipside Synths will have a new role to play in this new skill system.
-      They will be more efficient at tasks with timers than even the specialised roles.
+      They will be more efficient at tasks with timers than even the specialized roles.
       This will mean they can prop up an entire department by themselves, so it will
       be up to the Command to apply them to the right place. Survivor Synthetics are
       not as well trained - they are only as good as a single trained individual,
@@ -274,7 +274,7 @@
       gear, generating names, appearances, etc. This means the generated colonists
       will appear more varied.
   - rscdel: The new USCM protocols have established that walking is now prohibited.
-      All personel must either run or stand still, no inbetween! This extends to every
+      All personnel must either run or stand still, no in-between! This extends to every
       person and creature in the area of operation, civilian or extraterrestrial.
       (Removed walk intent, it wasn't used anyway, now you will always be running
       and now have to worry about fat fingering walking intent and dying because of
@@ -301,7 +301,7 @@
       (11879)
   - bugfix: Fixed the Queen not being able to build nests. (12277)
   - tweak: The type of the two roundstart OB warheads are now random. You can start
-      with 2 HEs, 2 incediaries, 2 clusters or any of their variations. The number
+      with 2 HEs, 2 incendiaries, 2 clusters or any of their variations. The number
       of warheads did not change. (12101)
   thepiachu:
   - maptweak: CORSAT's door access has been tweaked a bit to focus more on civilian

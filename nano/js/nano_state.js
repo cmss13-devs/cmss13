@@ -6,37 +6,37 @@ function NanoStateClass() {
 		alert('ERROR: Tried to create a state with an invalid state key: ' + this.key);
 		return;
 	}
-	
+
     this.key = this.key.toLowerCase();
-	
+
 	NanoStateManager.addState(this);*/
 }
 
 NanoStateClass.prototype.key = null;
 NanoStateClass.prototype.layoutRendered = false;
 NanoStateClass.prototype.contentRendered = false;
-NanoStateClass.prototype.mapInitialised = false;
+NanoStateClass.prototype.mapInitialized = false;
 
 NanoStateClass.prototype.isCurrent = function () {
     return NanoStateManager.getCurrentState() == this;
 };
 
 NanoStateClass.prototype.onAdd = function (previousState) {
-    // Do not add code here, add it to the 'default' state (nano_state_defaut.js) or create a new state and override this function
+    // Do not add code here, add it to the 'default' state (nano_state_default.js) or create a new state and override this function
 
     NanoBaseCallbacks.addCallbacks();
     NanoBaseHelpers.addHelpers();
 };
 
 NanoStateClass.prototype.onRemove = function (nextState) {
-    // Do not add code here, add it to the 'default' state (nano_state_defaut.js) or create a new state and override this function
+    // Do not add code here, add it to the 'default' state (nano_state_default.js) or create a new state and override this function
 
     NanoBaseCallbacks.removeCallbacks();
     NanoBaseHelpers.removeHelpers();
 };
 
 NanoStateClass.prototype.onBeforeUpdate = function (data) {
-    // Do not add code here, add it to the 'default' state (nano_state_defaut.js) or create a new state and override this function
+    // Do not add code here, add it to the 'default' state (nano_state_default.js) or create a new state and override this function
 
     data = NanoStateManager.executeBeforeUpdateCallbacks(data);
 
@@ -44,7 +44,7 @@ NanoStateClass.prototype.onBeforeUpdate = function (data) {
 };
 
 NanoStateClass.prototype.onUpdate = function (data) {
-    // Do not add code here, add it to the 'default' state (nano_state_defaut.js) or create a new state and override this function
+    // Do not add code here, add it to the 'default' state (nano_state_default.js) or create a new state and override this function
 
     try
     {
@@ -60,7 +60,7 @@ NanoStateClass.prototype.onUpdate = function (data) {
         }
         if (NanoTemplate.templateExists('mapContent'))
         {
-            if (!this.mapInitialised)
+            if (!this.mapInitialized)
             {
                 // Add drag functionality to the map ui
                 $('#uiMap').draggable({
@@ -74,7 +74,7 @@ NanoStateClass.prototype.onUpdate = function (data) {
                         $(this).fadeOut(400);
                     });
 
-                this.mapInitialised = true;
+                this.mapInitialized = true;
             }
 
             $("#uiMapContent").html(NanoTemplate.parse('mapContent', data)); // render the 'mapContent' template to the #uiMapContent div
@@ -107,13 +107,13 @@ NanoStateClass.prototype.onUpdate = function (data) {
 };
 
 NanoStateClass.prototype.onAfterUpdate = function (data) {
-    // Do not add code here, add it to the 'default' state (nano_state_defaut.js) or create a new state and override this function
+    // Do not add code here, add it to the 'default' state (nano_state_default.js) or create a new state and override this function
 
     NanoStateManager.executeAfterUpdateCallbacks(data);
 };
 
 NanoStateClass.prototype.alertText = function (text) {
-    // Do not add code here, add it to the 'default' state (nano_state_defaut.js) or create a new state and override this function
+    // Do not add code here, add it to the 'default' state (nano_state_default.js) or create a new state and override this function
 
     alert(text);
 };

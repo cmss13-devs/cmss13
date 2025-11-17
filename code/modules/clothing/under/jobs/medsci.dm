@@ -1,7 +1,12 @@
 /*
+ * Contains:
  * Science
+ * Medical
  */
 
+/*
+ * Science
+ */
 /obj/item/clothing/under/rank/rd
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer is a Research Director."
 	name = "research director's uniform"

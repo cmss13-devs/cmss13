@@ -94,7 +94,7 @@
 #undef PASSIVE_BURN_DAM_CALC
 
 /mob/living/carbon/xenomorph/proc/handle_pheromones()
-	//Rollercoaster of fucking stupid because Xeno life ticks aren't synchronised properly and values reset just after being applied
+	//Rollercoaster of fucking stupid because Xeno life ticks aren't synchronized properly and values reset just after being applied
 	//At least it's more efficient since only Xenos with an aura do this, instead of all Xenos
 	//Basically, we use a special tally var so we don't reset the actual aura value before making sure they're not affected
 	//Now moved out of healthy only state, because crit xenos can def still be affected by pheros
@@ -298,7 +298,7 @@
 	clear_fullscreen("dazed")
 
 /*Heal 1/70th of your max health in brute per tick. 1 as a bonus, to help smaller pools.
-Additionally, recovery pheromones mutiply this base healing, up to 2.5 times faster at level 5
+Additionally, recovery pheromones multiply this base healing, up to 2.5 times faster at level 5
 Modified via m, to multiply the number of wounds healed.
 Heal from fire half as fast
 Xenos don't actually take oxyloss, oh well

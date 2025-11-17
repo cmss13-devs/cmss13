@@ -47,7 +47,7 @@
 		quantity = tgui_input_number(src, "How many?", "Don't go overboard. Please.", 1, 256, 1, 20 SECONDS)
 		targets = shipside_random_turf_picker(quantity)
 
-	var/delay = tgui_input_number(src, "Give delay between hits in diceseconds (1/10 of second). (0 async hits, can cause emotional damage)", "Don't make them wait too long!", 0, 600, 0, 20 SECONDS)
+	var/delay = tgui_input_number(src, "Give delay between hits in deciseconds (1/10 of second). (0 async hits, can cause emotional damage)", "Don't make them wait too long!", 0, 600, 0, 20 SECONDS)
 
 	if(tgui_alert(src, "Are you sure you want to open fire at the [MAIN_SHIP_NAME] with those parameters?", "Choose wisely!", list("Yes", "No")) != "Yes")
 		return

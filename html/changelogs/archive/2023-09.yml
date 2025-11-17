@@ -4,7 +4,7 @@
   Huffie56:
   - refactor: clean dmi file extract sprite hidden inside other sprites direction.
       removing sprite change from dmm files.
-  - bugfix: fix seing decimal in clothing vendor surplus.
+  - bugfix: fix seeing decimal in clothing vendor surplus.
   - mapadd: adding an an access to the exterior side of each lifeboats.
   JackieEstegado:
   - qol: Added in-hand activation for machetes, which will cause one to start cutting
@@ -14,7 +14,7 @@
   Private Tristan:
   - qol: Researchers now spawn with reagent scanner goggles.
   Steelpoint:
-  - bugfix: UPP survivors no longer have a small chance to accidently spawn with no
+  - bugfix: UPP survivors no longer have a small chance to accidentally spawn with no
       armour or external webbing.
   - maptweak: Hidden floor safe in LV-624 is now positioned correctly.
   harryob:
@@ -88,11 +88,11 @@
   - rscadd: Added the ability for lifeboats to crash if early launched
   - rscdel: Removed alcohol from emergency wall cabinets
   - bugfix: Should stop crashing shuttles from landing on each other
-  Triiodine, Frans, Warfan, SpartanBobby, Twomper, Roboticpotato, Tophat Penguin,forest2001:
+  Triiodine, Frans, Warfan, SpartanBobby, Thwomper, Roboticpotato, Tophat Penguin,forest2001:
   - rscadd: Added Royal Marines commando ERT and faction
   - rscadd: Updates Riot shield sprite, adds metal shield as well (sprites from trio)
   - rscadd: TWE ERT station
-  - rscadd: F903 Rifle, Royal marines commando armour sets, new smartgun with holotargetting
+  - rscadd: F903 Rifle, Royal marines commando armour sets, new smartgun with holotargeting
       rounds for royal marines commando
   - rscadd: Calico shotgun, pistol and SMG sprites to the codebase made by Triodine
   - rscadd: royal marines commando HEDP and HIDP grenades
@@ -202,7 +202,7 @@
   - imageadd: Changes the icon_state name of the WY stamp from centcom to weyyu.
   - rscadd: Changes EFTPOS stamp icon to use RD instead of weyyu.
   - bugfix: Changes the pre-spawned QMs stamp to use the proper stamp.
-  - spellcheck: Renames Requisiton Officer's stamp to Quartermaster's Stamp.
+  - spellcheck: Renames Requisition Officer's stamp to Quartermaster's Stamp.
   - maptweak: Renamed the spare Req Officer's stamp to spare Quartermaster's stamp.
   - rscadd: Codebooks are now faction based rather than individually unique.
 2023-09-15:
@@ -255,7 +255,7 @@
   - balance: Removed some PMC gear on maps
   SpartanBobby, GSDPathe:
   - maptweak: Changes to LV522 loot table surrounding metal spawns
-  - maptweak: Redectorates areas around LV522 that were underwhelming before
+  - maptweak: Redecorates areas around LV522 that were underwhelming before
   TheGamerdk, ihatethisengine:
   - rscadd: IOs start in their own squad now
   c4xmaniac2:
@@ -345,11 +345,11 @@
       by AmoryBlaine
   - rscadd: Resprites old dress uniform, renames it, adds to XO vendor as a uniform
       choice as it fits there now, sprites by AmoryBlaine
-  - rscadd: Adds new uniform, command boiler suit like gorman wears in the movie,
+  - rscadd: Adds new uniform, command boiler suit like Gorman wears in the movie,
       available in SO locker, SO vendor, XO vendor, CO vendor, sprites by AmoryBlaine
   - rscadd: Adds new brown versions of gloves and boot to custom loadout, also lowers
       the price of jungle boots to two, sprites by AmoryBlaine
-  - rscadd: Seperates officer cap and RO cap, officers get officer cap, QM gets RO
+  - rscadd: Separates officer cap and RO cap, officers get officer cap, QM gets RO
       cap, CTs get req cap, sprites once again by AmoryBlaine
   - rscadd: UPP boots and gloves use the new brown sprite, as it fits their color
       scheme and looks cool.
@@ -431,7 +431,7 @@
   - maptweak: fixed symmetry issue in north-south CIC hallway
   - maptweak: minor warning stripe decal additions around Almayer
   Steelpoint:
-  - rscadd: Synthetic equipment vendor now can vend fuel cannisters and all colour
+  - rscadd: Synthetic equipment vendor now can vend fuel canisters and all colour
       variants of the synthetic utility vest.
   - rscadd: Synthetic cosmetic vendor now can vend all colour variants of the standard
       Marine helmet, MP and Combat Technician uniforms, the welder chestrig and security
@@ -439,7 +439,7 @@
   Zonespace27:
   - bugfix: Picking up a dropped pred bracer will no longer leave it stuck to your
       hand.
-  - bugfix: Yautja can no longer mark xenoes as honorable
+  - bugfix: Yautja can no longer mark xenos as honorable
   - rscadd: You can now fold a combi-stick using the new "collapse combi-stick" verb
       and/or keybind. Defaults to the space bar.
   - bugfix: Using a Yautja relay beacon now properly decloaks you

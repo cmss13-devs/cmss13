@@ -39,7 +39,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 
 	var/list/fancytypes = make_types_fancy(types)
 
-	for(var/fancytype in fancytypes) //swap the assoication
+	for(var/fancytype in fancytypes) //swap the association
 		types[fancytypes[fancytype]] = fancytype
 
 	var/things = get_all_of_type(type, subtypes)
@@ -50,8 +50,8 @@ GLOBAL_PROTECT(VVpixelmovement)
 		i++
 		//try one of 3 methods to shorten the type text:
 		// fancy type,
-		// fancy type with the base type removed from the begaining,
-		// the type with the base type removed from the begaining
+		// fancy type with the base type removed from the beginning,
+		// the type with the base type removed from the beginning
 		var/fancytype = types[D.type]
 		if (findtext(fancytype, types[type]))
 			fancytype = copytext(fancytype, length(types[type]) + 1)

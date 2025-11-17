@@ -192,7 +192,7 @@
 	//equipping arg to differentiate when we equip/unequip a mask
 	if(!equipping && istype(I,/obj/item/clothing/mask/facehugger))
 		var/obj/item/clothing/mask/facehugger/F = I
-		if(F.stat != DEAD && !F.sterile && !(status_flags & XENO_HOST)) //Huggered but not impregnated, deal damage.
+		if(F.stat != DEAD && !F.sterile && !(status_flags & XENO_HOST)) //Hugged but not impregnated, deal damage.
 			visible_message(SPAN_DANGER("[F] frantically claws at [src]'s face!"),SPAN_DANGER("[F] frantically claws at your face! Auugh!"))
 			apply_damage(25, BRUTE, "head")
 	name = get_visible_name() // doing this without a check, still cheaper than doing it every Life() tick -spookydonut
@@ -418,7 +418,7 @@
 			r_store.update_icon()
 
 		else
-			to_chat(src, SPAN_DANGER("You are trying to eqip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."))
+			to_chat(src, SPAN_DANGER("You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."))
 			return
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_EQUIPPED_ITEM, equipping_item, slot)

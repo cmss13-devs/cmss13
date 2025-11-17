@@ -104,7 +104,7 @@
   Geevies:
   - rscadd: Added a xeno crit health indicator.
   - rscadd: Crushers now un-dirlock after their charge completes or gets interrupted.
-  - bugfix: Praetorians now say dashes instead of dashs when they dash.
+  - bugfix: Praetorians now say dashes instead of dashes when they dash.
   - rscadd: Bumped the body spawn count from corpsespawners to 25, up from 15.
   - balance: Synths now have a 35% increased acid blood dodge chance.
   - rscadd: Yautja thralls now refer to the thrallee as a mentor, not a master.
@@ -179,7 +179,7 @@
       bravo, charlie, etc.) radio channels.
   Diegoflores31:
   - rscadd: Adds Breaching Charge . A fast planting explosive that keeps the operator
-      safe while emiting deadly shrapnel towards the target . This new explosive is
+      safe while emitting deadly shrapnel towards the target . This new explosive is
       available at Squad Engineer , SL and REQ vendors.
   - rscadd: Adds Breaching Charge crate to ASRS
   Segrain:
@@ -243,7 +243,7 @@
       Will make you fly around mobs you orbit perfectly.
   - rscadd: Added ghost HUD buttons, one to orbit and one to reenter your body. More
       to come later.
-  - rscadd: Added backend support for doubleclicking.
+  - rscadd: Added backend support for double clicking.
   - rscadd: Reworked observing, it will now show the mob's hud to you while you remain
       orbiting. Only works with humans.
 2022-06-21:

@@ -249,15 +249,15 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/rmc/light, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular, WEAR_IN_BACK)
 	new_human.equip_to_slot(new /obj/item/smartgun_battery(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smartgun/holo_targetting, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smartgun/holo_targetting, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smartgun/holo_targeting, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smartgun/holo_targeting, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/rmc/incin, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/rmc/he, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/m94, WEAR_IN_BACK)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smartgun/holo_targetting, WEAR_IN_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smartgun/holo_targetting, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smartgun/holo_targeting, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smartgun/holo_targeting, WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_rmc_aid, WEAR_R_STORE)
 
 //*****************************************************************************************************/
@@ -364,7 +364,7 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/twe/royal_marine/lieuteant //they better say it Lef-tenant or they should be banned for LRP. More importantly this guy doesn't spawn in the ERT
+/datum/equipment_preset/twe/royal_marine/lieutenant //they better say it Lef-tenant or they should be banned for LRP. More importantly this guy doesn't spawn in the ERT
 	name = "TWE Royal Marine Commando (Officer)"
 	paygrades = list(PAY_SHORT_RNO1A = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC LT"
@@ -376,7 +376,7 @@
 
 	skills = /datum/skills/rmc/lieutenant
 
-/datum/equipment_preset/twe/royal_marine/lieuteant/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/twe/royal_marine/lieutenant/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/royal_marine/team_leader, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/royal_marine/lt, WEAR_BODY)
@@ -416,10 +416,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/rmc, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_rmc_officer_aid, WEAR_R_STORE)
 
-/datum/equipment_preset/twe/royal_marine/lieuteant/service
+/datum/equipment_preset/twe/royal_marine/lieutenant/service
 	name = "TWE Royal Marine Commando (SO)"
 
-/datum/equipment_preset/twe/royal_marine/lieuteant/service/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/twe/royal_marine/lieutenant/service/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/royal_marine, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/royal_marine, WEAR_BODY)
@@ -652,11 +652,11 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/royal_marine, WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_rmc_aid, WEAR_R_STORE)
 
-/datum/equipment_preset/twe/royal_marine/lieuteant/hunted
+/datum/equipment_preset/twe/royal_marine/lieutenant/hunted
 	name = "TWE Royal Marine Commando Officer (Hunted)"
 	faction = FACTION_HUNTED_TWE
 
-/datum/equipment_preset/twe/royal_marine/lieuteant/hunted/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/twe/royal_marine/lieutenant/hunted/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/royal_marine/team_leader, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/royal_marine/lt, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/royal_marine, WEAR_HANDS)

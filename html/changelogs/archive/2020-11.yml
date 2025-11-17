@@ -23,13 +23,13 @@
   - bugfix: Fixed being able to attach C4 to multitile vehicles and important interior
       objects.
   - tweak: Updated Vehicle Controls Guide.
-  - rscadd: Added Vehicle Rejuvination and Vehicle Remove Clamp verbs for admins.
+  - rscadd: Added Vehicle Rejuvenation and Vehicle Remove Clamp verbs for admins.
   - tweak: Small improvements for weapons loader.
   - experiment: 'APC, APC modules and ammo changes:'
   - tweak: 'APC base damage resistances multipliers changes: Acid from 1 to 1.5, Slash
       from 1 to 0.7, Bullet from 1 to 0.6, Explosive from 1 to 0.9, Blunt from 1 to
       0.9.'
-  - tweak: 'Changed APC modules damage distrubition: primary from 0.15 to 0.20, secondary
+  - tweak: 'Changed APC modules damage distribution: primary from 0.15 to 0.20, secondary
       from 1.25 to 1.1, support from 0.075 to 0.1, wheels from 0.15 to 0.075.'
   - tweak: APC ramming damage is reduced to 0.5 of what it was.
   - experiment: 'PARS-159 Boyars Dualcannon:'
@@ -143,7 +143,7 @@
   - tweak: Friendly fire logs won't be triggered in statistic exempt areas anymore,
       saving staff from headache during thunderdome shenanigans.
   - bugfix: Fixed void turfs being weedable, allowing weeds escape the bounds of vehicle
-      interios. No space magic allowed here.
+      interiors. No space magic allowed here.
   - bugfix: Fixed being able to build resin structures inside of vehicle interiors.
   - bugfix: Fixed being able to grow an ovipositor inside of vehicle interiors.
   - bugfix: Fixed several bugs with Vehicle Remove Clamp and Vehicle Rejuvenate verbs.
@@ -196,10 +196,10 @@
   - bugfix: CAS direct fire now properly takes into account max inaccuracy when both
       lase is held, and there is no targeting system
   - bugfix: fixed typo redirecting world log to random annoying files
-  - bugfix: synthethic brains in synthetic heads can now hear people around them again
+  - bugfix: synthetic brains in synthetic heads can now hear people around them again
       (chat window only)
   - bugfix: gibbing/reattaching a synth head now attempts to transfer observer mind
-      aswell (in case player ghosted) to avoid awkward situations
+      as well (in case player ghosted) to avoid awkward situations
   - tweak: 'gibbed synths can now ghost/re-enter as regular dead players, and get
       a snowflake brain sprite '
   - bugfix: grant synthvivors marine IFF as regular survivors
@@ -221,9 +221,9 @@
       target with a gun in your active hand. Requires a short windup.)'
   - bugfix: hotkeys-help verb now works properly even if you have Goonchat enabled.
   - bugfix: Dermaline now correctly counts as medical reagent and can be seen on health
-      analysers.
+      analyzers.
   - rscadd: Medical vendors can now restock stacks (bruise packs, trauma kits, splints
-      etc.) similarly to refilling autinjectors and bottles.
+      etc.) similarly to refilling autoinjectors and bottles.
   - bugfix: Experimental notes about properties of reagents are properly named and
       formatted again.
   - bugfix: Destroying a resin hole while it is being filled now correctly prevents
@@ -453,7 +453,7 @@
   - tweak: Tail lash in diagonal direction now has a 3-wide, 2-long effect area, same
       as cardinal variant.
   - bugfix: Diagonal tail lash no longer goes through walls.
-  - bugfix: Eggmorphers no longer can be fed the same corpse twice.
+  - bugfix: Egg morphers no longer can be fed the same corpse twice.
   Waltermeldron:
   - bugfix: Fixed explosions sometimes getting paused by objects.
   - tweak: Re-added concealing gloves.
@@ -517,7 +517,7 @@
       heal. Plasma fills up 50% of xenos max plasma instantly. Both of these affect
       a 5x5 AOE around the overwatched xeno.
   - tweak: Base Sentinel, removed evasion and increased health 350->450. Scatterspitter
-      Sentinel, removed armour and increaed health 350->400.
+      Sentinel, removed armour and increased health 350->400.
   - experiment: MARINE RELATED CHANGES
   - tweak: AP rounds are now 10 damage less than the normal round variant, but increased
       AP amount heavily.

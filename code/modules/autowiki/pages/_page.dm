@@ -50,7 +50,7 @@
 
 /// Takes an icon and uploads it to Autowiki-name.png.
 /// Do your best to make sure this is unique, so it doesn't clash with other autowiki icons.
-/// Specifying a center_width and center_height when centering (default) can pad/contrain the icon.
+/// Specifying a center_width and center_height when centering (default) can pad/constrain the icon.
 /datum/autowiki/proc/upload_icon(icon/icon, name, center=TRUE, center_width, center_height)
 	// Fuck you
 	if (IsAdminAdvancedProcCall())

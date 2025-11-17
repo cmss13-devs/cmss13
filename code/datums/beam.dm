@@ -81,7 +81,7 @@
  */
 /datum/beam/proc/Draw()
 	if(always_turn)
-		origin.setDir(get_dir(origin, target)) //Causes the source of the beam to rotate to continuosly face the BeamTarget.
+		origin.setDir(get_dir(origin, target)) //Causes the source of the beam to rotate to continuously face the BeamTarget.
 	var/Angle = floor(Get_Angle(origin,target))
 	var/matrix/rot_matrix = matrix()
 	var/turf/origin_turf = get_turf(origin)
@@ -122,7 +122,7 @@
 		else
 			Pixel_y = floor(cos(Angle) + world.icon_size*cos(Angle)*(N+world.icon_size/2) / world.icon_size)
 
-		//Position the effect so the beam is one continous line
+		//Position the effect so the beam is one continuous line
 		var/a
 		if(abs(Pixel_x)>world.icon_size)
 			a = Pixel_x > 0 ? floor(Pixel_x/32) : ceil(Pixel_x/world.icon_size)

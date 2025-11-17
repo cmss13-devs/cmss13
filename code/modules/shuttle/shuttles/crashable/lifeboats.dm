@@ -74,7 +74,7 @@
 	for(var/obj/structure/machinery/door/airlock/multi_tile/door in doors)
 		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat, unlock_and_open))
 
-// === STATIONARIES
+// === STATIONERIES
 
 /// Generic lifeboat dock
 /obj/docking_port/stationary/lifeboat_dock

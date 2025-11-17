@@ -44,7 +44,7 @@ function updateFilter(){
 
 	last_filter = filter;
 }
-// onkeyup because somereason updateFilter directly won't work
+// onkeyup because some reason updateFilter directly won't work
 function handle_filter() {
 	updateFilter();
 }

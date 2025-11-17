@@ -48,7 +48,7 @@
 			return H
 	return null
 
-//What to do if all ofthe installed modules have been broken
+//What to do if all of the installed modules have been broken
 /obj/vehicle/multitile/proc/handle_all_modules_broken()
 	update_minimap_icon(TRUE)
 	return

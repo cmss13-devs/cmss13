@@ -80,8 +80,8 @@
   - bugfix: fixes UPP ammo storage boxes
 2024-09-18:
   TheManWithNoHands:
-  - qol: added Grenade satchel in Comtec and req vendor, making it more accesible
-  - balance: Added Fix-o-vein in HM squad vendor. Allows surgicalline, synth grath,
+  - qol: added Grenade satchel in Comtech and req vendor, making it more accessible
+  - balance: Added Fix-o-vein in HM squad vendor. Allows surgical line, synth-graft,
       fix-o-vein, cautery to be stored in Hm surgical case.
   efzapa:
   - rscadd: All ColMarTech Food Vendors now have 15 MREs
@@ -127,7 +127,7 @@
   - rscadd: Adds USCM & Falling Falcons patches to Commanding Officer's vendor.
 2024-09-30:
   Venuska1117:
-  - maptweak: Sorokyne Strata - made most indestructable walls destructable.
+  - maptweak: Sorokyne Strata - made most indestructible walls destructible.
   - maptweak: Sorokyne Strata - changed rooms/hallways with have 1x1 hallways to be
       wider.
   - maptweak: Sorokyne Strata - replaced some small light fixtures with normal light

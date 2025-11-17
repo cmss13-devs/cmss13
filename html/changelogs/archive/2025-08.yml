@@ -19,7 +19,7 @@
   Willzadl:
   - bugfix: fixed chanterelle box not having a proper name in the galley vendor
   dryramen, chaussettes for original sprites:
-  - imageadd: add new suitskirts sprites
+  - imageadd: add new suit skirt sprites
   jupyterkat:
   - bugfix: alt iff now does not care about people on the same z as you if you're
       shooting at a turf above
@@ -44,7 +44,7 @@
   - balance: Scout helmet now has the same functions as an RTO pack, allowing you
       to call or be called. However, you cannot hand the telephone to anyone and you
       must give them the helmet if you want them to use it.
-  - rscadd: Adds radio backpack equivelant for helmets, nothing uses these right now
+  - rscadd: Adds radio backpack equivalent for helmets, nothing uses these right now
       other then scout.
   - imagedel: grenadier helmet no longer has an antenna, scout helmet does
   - soundadd: New sounds for the scout helmet-phone
@@ -88,7 +88,7 @@
   - bugfix: Gives GP Medbay Access
 2025-08-13:
   LTNTS:
-  - bugfix: gives CBRN rifleman skilless toxin bottles in their medikit pouch
+  - bugfix: gives CBRN rifleman skillless toxin bottles in their medkit pouch
   Puckaboo2:
   - rscadd: Added a secure personal field doctor crate pre-filled with a wrench and
       crowbar to Field Equipment Storage.
@@ -189,7 +189,7 @@
   - bugfix: Fixed a runtime with the Sorokyne hot water blockers
   - rscadd: Added a QOL warning to the overwatch console when no squads are available.
   - rscadd: Queen gets a tactical map on hijack end
-  - bugfix: G2 grenades can no longer open the umbillical podlocks.
+  - bugfix: G2 grenades can no longer open the umbilical podlocks.
   - bugfix: Kill feed now preserves the first letter of the killing weapon
   - balance: Scout is now force uncloaked when hauled/unhauled
   Thwomper:
@@ -272,7 +272,7 @@
   - bugfix: fixed a runtime caused by fulton name formatting
   TheGamerdk:
   - bugfix: Synth heads will no longer be shot at by sentries
-  - bugfix: The Overwatch console now properly adresses the ranks of Lt.Col+
+  - bugfix: The Overwatch console now properly addresses the ranks of Lt.Col+
   - qol: Forsaken ERT no longer pretends to be a distress beacon
   - bugfix: FORECON CO no longer gets 2 guns when they love the M1911C
   - bugfix: Further enforced adjacency requirements when planting C4 and subtypes
@@ -300,7 +300,7 @@
   - rscadd: HPR and RPG resprites, both now have full camo sets, RPG now has empty
       state
   - balance: HPR now has a functional folding stock which gives some stats
-  - balance: RPG now comes with interal magnetic harness
+  - balance: RPG now comes with internal magnetic harness
   - bugfix: fixed vulture breaking bipod color on use
   Gorap:
   - rscadd: Added PMC CO Variant for Solaris Ridge

@@ -37,7 +37,7 @@
       assignment is made
   realforest2001:
   - bugfix: Smods are now given the buttons unlocked for them in 1225
-  - admin: Reorganised staff verb lists and added Devs and Managers to Staffwho.
+  - admin: Reorganized staff verb lists and added Devs and Managers to Staffwho.
   - bugfix: Xenonid huggers are now visible again (player controlled)
   totalepicness5:
   - bugfix: Fixed plasteel rod to metal rod alchemy with reinforced floors
@@ -52,7 +52,7 @@
   usnpeepoo:
   - spellcheck: Playable hugger join message is more clearer
   - code_imp: Hugger is now called "facehugger" in the code
-  - bugfix: Pooling bodies into an eggmorpher disrupts grabs automatically
+  - bugfix: Pooling bodies into an egg morpher disrupts grabs automatically
 2022-11-03:
   Joelampost:
   - bugfix: Certain tiles on the pred ship now no longer stop you performing surgery.
@@ -169,7 +169,7 @@
   - rscadd: Added a few High-Capacity Power Cells to Requisitions so Smartgunners
       can get some spares easier
   - rscadd: Added a few clipboards around Requisitions to help keep all the papers
-      organised
+      organized
   - bugfix: Full Electronics Pouch is now actually full
   kugamo:
   - bugfix: Removed ability to do pushups while in a xeno or while buckled.
@@ -329,7 +329,7 @@
   - bugfix: fixes the topic limit message popping up on connect
 2022-11-17:
   BeagleGaming1:
-  - spellcheck: "corrected \u201Ctighly\u201D in metal and plasteel barricades to\
+  - spellcheck: "corrected \u201Ctightly\u201D in metal and plasteel barricades to\
       \ \u201Ctightly\u201D"
   Geevies:
   - rscadd: When you observe, your ghost will now look like your character creation
@@ -367,7 +367,7 @@
       vendors without hacking them first.
   - bugfix: Renamed the "Vehicle Modules and Ammo" category to "Vehicle Ammo" (since
       it doesn't contain actual Vehicle Modules) to avoid confusion.
-  - bugfix: Vehicle flamethrower ammo now comes in crates designated for flamable
+  - bugfix: Vehicle flamethrower ammo now comes in crates designated for flammable
       contents
   - spellcheck: Fixed spelling on TAA-AP Minigun magazine crate
   - bugfix: Made some vehicle crates a bit more accurate as to their content description
@@ -395,7 +395,7 @@
   - bugfix: fixed a xeno fun fact showing up in human fun facts
   ThePiachu:
   - rscdel: Removed old, unused radio bindings
-  - rscdel: Removed old radio bindings for cyrylic keyboards that were way outdated
+  - rscdel: Removed old radio bindings for cyrillic keyboards that were way outdated
   - code_imp: Small refactor of code around whisper / intercom radio channels
   - bugfix: Xeno blood is now a finite resource.
   - rscadd: Living xenos now regenerate blood just in case some unga has the idea
@@ -454,7 +454,7 @@
   - spellcheck: Ravager's abilities now have proper capitalization.
   - qol: Some Working Joe emotes have an alternative way of invoking them now to help
       you embody the character easier.
-  - code_imp: Moved stim reagent code in with the other reagents. Fixed an unnecesary
+  - code_imp: Moved stim reagent code in with the other reagents. Fixed an unnecessary
       variable casting.
   - code_imp: Fixed old style of comments in reagent files.
   - refactor: Removed snowflake initialize code for various napalms.
@@ -462,7 +462,7 @@
   - refactor: Changed xenomorph icon logic to use new var mutation_icon_state and
       not mutation_type
   carlarctg:
-  - bugfix: Marines can now shake eachother out of their stupor (They can shake stunned
+  - bugfix: Marines can now shake each other out of their stupor (They can shake stunned
       players that aren't lying down)
   fira:
   - admin: Added "Change Weather" verb (Major Event, Admin panel) that lets you stop
@@ -547,7 +547,7 @@
   - bugfix: Fancy Boxes (cigarettes, etc.) display proper information now when inspected.
   - bugfix: Marshall and armory doors on LV now have proper civilian access.
   - bugfix: Solaris Ridge Cargo Lockers now have proper civilian access.
-  - bugfix: Fiora Science Annex's UCF Uniform is no longer honked.
+  - bugfix: Fiorina Science Annex's UCF Uniform is no longer honked.
   - spellcheck: Fixed "defibrilator" to "defibrillator".
   - bugfix: Recharge Station now properly recharge themselves even if they don't have
       anyone in them.
@@ -621,7 +621,7 @@
   - bugfix: Ballistic goggles can now render above headbands.
   Huffie56:
   - rscadd: spesslaw require two meatball instead of five.
-  - rscadd: replace flour with flatbread for pumpkiepie
+  - rscadd: replace flour with flatbread for pumpkin pie
   - rscadd: Replace Flour for bun in roburger and roburger_unsafe
   - rscadd: Replace Flour for dough in cakes(orange,lemon,lime,chocolate,brain), appletart
       and creamcheesebread.
@@ -688,7 +688,7 @@
   - refactor: gear vendors now use tgui
   - refactor: complete rewrite of how vendors operate
   theselfish:
-  - bugfix: Fixes various obj sprites (mess tech, provost, armorvest, detective, pilot
+  - bugfix: Fixes various obj sprites (mess tech, provost, armor vest, detective, pilot
       and some CLF armours) having directions.
 2022-11-30:
   DexterDude:
@@ -719,7 +719,7 @@
       of bravo and charlie prep.
   ThePiachu:
   - qol: More vendors vend their contents to user's hands.
-  - qol: Vending to user's hands prioritises active hand if it is empty.
+  - qol: Vending to user's hands prioritizes active hand if it is empty.
   - qol: The three main Requisitions vendors vend their items straight to the table
       IF the dispensing person is in the correct spot. This should speed up Requisition
       lines a bit!

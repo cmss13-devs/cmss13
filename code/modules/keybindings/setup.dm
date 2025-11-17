@@ -11,7 +11,7 @@
 /// Erases macros set by the keybinding system
 /client/proc/erase_all_macros()
 	var/erase_output = ""
-	var/list/macro_set = params2list(winget(src, "default.*", "command")) // The third arg doesnt matter here as we're just removing them all
+	var/list/macro_set = params2list(winget(src, "default.*", "command")) // The third arg doesn't matter here as we're just removing them all
 	for(var/k in 1 to length(macro_set))
 		var/list/split_name = splittext(macro_set[k], ".")
 

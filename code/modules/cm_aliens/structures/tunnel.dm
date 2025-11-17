@@ -196,7 +196,7 @@
 		SPAN_XENONOTICE("We pop out through the other side!"))
 		return TRUE
 
-//Used for controling tunnel exiting and returning
+//Used for controlling tunnel exiting and returning
 /obj/structure/tunnel/clicked(mob/user, list/mods)
 	if(!isxeno(user))
 		return ..()

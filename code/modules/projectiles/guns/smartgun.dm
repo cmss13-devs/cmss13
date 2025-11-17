@@ -179,7 +179,7 @@
 		rounds = current_mag.current_rounds
 	var/message = "[rounds ? "Ammo counter shows [rounds] round\s remaining." : "It's dry."]"
 	. += message
-	. += "Frontline mode is [frontline_enabled ?  "<B>on</b>" : "<B>off</b>"]."
+	. += "Frontline mode is [frontline_enabled ? "<B>on</b>" : "<B>off</b>"]."
 	. += "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"]."
 
 	if(battery && get_dist(user, src) <= 1)
@@ -1004,9 +1004,9 @@
 	desc = "A smartgun abomination made from salvaged-parts sloppily wired and welded together, it appears to be rusted across it's frame. As whoever made this thing, clearly had no resources or proper tools to assemble it to an efficient usable state."
 	desc_lore = {"After long-fiery battles that partook within the Neroid Sector of the frontier, the United States Colonial Marines were pushed out by Colonial Liberation Front cells. Through a set of tactics, utilizing guerilla warfare mostly based around hit-and runs to compensate for the lack of proper logistics.
 
-		On it's aftermath gear unrecovered was left on the way, which the front proceeded to use to their own advantage. Taking what they could from the corpses of the infantry left behind to cover their needs, the mechanisms and electronics from the M56A2's were extracted from the broken-down exemplarys. Then placed into a makeshift frame although primitive and rudimentary due to no detailed schematics or resources at hand. Then issued out as  a desperate measure of giving an equal fire-support weapon to it's troops.
+		On it's aftermath gear unrecovered was left on the way, which the front proceeded to use to their own advantage. Taking what they could from the corpses of the infantry left behind to cover their needs, the mechanisms and electronics from the M56A2's were extracted from the broken-down exemplars. Then placed into a makeshift frame although primitive and rudimentary due to no detailed schematics or resources at hand. Then issued out as  a desperate measure of giving an equal fire-support weapon to it's troops.
 
-		After studys done on this frankenstein of a weapon by the USCM, it reportedly was using parts from the slightly outdated M56, mainly it's barrel to outfit it, as  an unintentioned flaw it jams constantly requiring extensive  and frequent maintenance making it almost unreliable. The M57 and L56A2 were also scrapped for spare-parts to put it together, as the rarity of parts themselves was a prominent fabrication issue for the insurgency cells."}
+		After studies done on this frankenstein of a weapon by the USCM, it reportedly was using parts from the slightly outdated M56, mainly it's barrel to outfit it, as an unintentional flaw it jams constantly requiring extensive and frequent maintenance making it almost unreliable. The M57 and L56A2 were also scrapped for spare-parts to put it together, as the rarity of parts themselves was a prominent fabrication issue for the insurgency cells."}
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
 	icon_state = "m56f"
 	item_state = "m56f"
@@ -1155,8 +1155,8 @@
 	name = "\improper L56A1 smartgun"
 	desc = "The actual firearm in the 2-piece L56A2 Smartgun System. This variant is used by the Three World Empires Royal Marines Commando units."
 	desc_lore = "The L56A1 is a W-Y licensed copy of the original M56 developed for the USMC, this version was marketed to the 3WE's Royal Marines as having a lighter weight construction and as being more reliable then the LMG's in service at the time."
-	current_mag = /obj/item/ammo_magazine/smartgun/holo_targetting
-	ammo = /obj/item/ammo_magazine/smartgun/holo_targetting
+	current_mag = /obj/item/ammo_magazine/smartgun/holo_targeting
+	ammo = /obj/item/ammo_magazine/smartgun/holo_targeting
 	ammo_primary_def = /datum/ammo/bullet/smartgun/holo_target
 	ammo_secondary_def = /datum/ammo/bullet/smartgun/holo_target/ap
 	ammo_primary_alt = /datum/ammo/bullet/smartgun/holo_target/alt
@@ -1190,7 +1190,7 @@
 //  Solar devils SG, frontline mode only
 
 /obj/item/weapon/gun/smartgun/pve
-	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit."
+	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. This is a variant used by the Solar Devils Battalion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit."
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
 		/datum/action/item_action/smartgun/toggle_ammo_type,

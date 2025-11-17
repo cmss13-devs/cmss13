@@ -736,7 +736,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
-/datum/equipment_preset/proc/add_random_survivor_medical_gear(mob/living/carbon/human/new_human) // Randomized medical gear. Survivors won't have their gear all kitted out once the outbreak began much like a doctor on a coffee break won't carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
+/datum/equipment_preset/proc/add_random_survivor_medical_gear(mob/living/carbon/human/new_human) // Randomized medical gear. Survivors won't have their gear all kitted out once the outbreak began much like a doctor on a coffee break won't carry their instruments around. This is a generation of items they may or may not get when the outbreak happens
 	var/random_gear = rand(0,4)
 	switch(random_gear)
 		if(0)
@@ -751,7 +751,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/surgical(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 
-/datum/equipment_preset/proc/add_random_survivor_research_gear(mob/living/carbon/human/new_human) // Randomized medical gear. Survivors won't have their gear all kitted out once the outbreak began much like a doctor on a coffee break won't carry their instruments around. This is a generation of items they may or maynot get when the outbreak happens
+/datum/equipment_preset/proc/add_random_survivor_research_gear(mob/living/carbon/human/new_human) // Randomized medical gear. Survivors won't have their gear all kitted out once the outbreak began much like a doctor on a coffee break won't carry their instruments around. This is a generation of items they may or may not get when the outbreak happens
 	var/random_gear = rand(0,3)
 	switch(random_gear)
 		if(0)
@@ -813,7 +813,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human.back), WEAR_R_HAND) //can't put in bag if not a medic
 
 // Random Survivor Weapon Spawners
-/datum/equipment_preset/proc/add_survivor_weapon_pistol(mob/living/carbon/human/new_human) // Pistols a survivor might come across in a colony. They may have gotten it from a code red gun cabinet or simply have one becuase of hostile natives.
+/datum/equipment_preset/proc/add_survivor_weapon_pistol(mob/living/carbon/human/new_human) // Pistols a survivor might come across in a colony. They may have gotten it from a code red gun cabinet or simply have one because of hostile natives.
 	var/random_weapon = rand(0,4)
 	switch(random_weapon)
 		if(0)
@@ -858,7 +858,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/merc(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/shotgun_ammo, WEAR_WAIST)
 
-/datum/equipment_preset/proc/add_pmc_survivor_weapon(mob/living/carbon/human/new_human) // Random Weapons a WY PMC may have during a deployment on a colony. They are not equiped with the elite weapons than their space station counterparts but they do bear some of the better weapons the outer rim has to offer.
+/datum/equipment_preset/proc/add_pmc_survivor_weapon(mob/living/carbon/human/new_human) // Random Weapons a WY PMC may have during a deployment on a colony. They are not equipped with the elite weapons than their space station counterparts but they do bear some of the better weapons the outer rim has to offer.
 	var/random_weapon = rand(0,19)
 	switch(random_weapon)
 		if(0 to 4)
@@ -885,10 +885,10 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 
 /**
  * Randomizes the primary weapon a survivor might find at the start of the outbreak in a gun cabinet.
- * For the most part you will stil get a shotgun but there is an off chance you get something unique.
+ * For the most part you will still get a shotgun but there is an off chance you get something unique.
  * If you don't like the weapon deal with it. Cursed ammo for shotguns is intentional for scarcity reasons.
  * Some weapons may not appear at all in a colony so they will need the extra ammo.
- * MERC, and DB needed a handfull of shells to compete with the normal CMB.
+ * MERC, and DB needed a handful of shells to compete with the normal CMB.
  */
 /datum/equipment_preset/proc/add_survivor_weapon_civilian(mob/living/carbon/human/new_human)
 	// a high chance to just not have a primary weapon

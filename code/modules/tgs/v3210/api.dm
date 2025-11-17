@@ -37,7 +37,7 @@
 	var/originmastercommit
 	var/commit
 	var/list/cached_custom_tgs_chat_commands
-	var/warned_revison = FALSE
+	var/warned_revision = FALSE
 	var/warned_custom_commands = FALSE
 
 /datum/tgs_api/v3210/ApiVersion()
@@ -77,7 +77,7 @@
 		if (logs.len >= 2)
 			originmastercommit = logs[2]
 		else
-			TGS_ERROR_LOG("Error parsing origin commmit logs")
+			TGS_ERROR_LOG("Error parsing origin commit logs")
 
 	if(world.system_type != MS_WINDOWS)
 		TGS_ERROR_LOG("This API version is only supported on Windows. Not running on Windows. Aborting initialization!")
@@ -177,10 +177,10 @@
 		. += tm
 
 /datum/tgs_api/v3210/Revision()
-	if(!warned_revison)
+	if(!warned_revision)
 		var/datum/tgs_version/api_version = ApiVersion()
 		TGS_WARNING_LOG("Use of TgsRevision on [api_version.deprefixed_parameter] origin_commit only points to master!")
-		warned_revison = TRUE
+		warned_revision = TRUE
 	var/datum/tgs_revision_information/ri = new
 	ri.commit = commit
 	ri.origin_commit = originmastercommit

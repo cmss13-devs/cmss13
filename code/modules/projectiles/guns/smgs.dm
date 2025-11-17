@@ -356,7 +356,7 @@
 
 /obj/item/weapon/gun/smg/mp27
 	name = "\improper MP27 submachinegun"
-	desc = "An archaic design going back almost a century, the MP27 was common in its day. Today it sees limited use as cheap computer-printed replicas or family heirlooms. An extremely ergonomic and lightweight design allows easy mass production and surpisingly good handling, but the cheap materials used hurt the weapon's scatter noticeably."
+	desc = "An archaic design going back almost a century, the MP27 was common in its day. Today it sees limited use as cheap computer-printed replicas or family heirlooms. An extremely ergonomic and lightweight design allows easy mass production and surprisingly good handling, but the cheap materials used hurt the weapon's scatter noticeably."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "mp7"
 	item_state = "mp7"

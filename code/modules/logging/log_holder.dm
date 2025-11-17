@@ -58,7 +58,7 @@ GLOBAL_PROTECT(logger)
 /// This is Log because log is a byond internal proc
 /datum/log_holder/proc/Log(category, message, list/data)
 	if(!initialized || shutdown)
-		CRASH("Attempted to perform logging before initializion or after shutdown!")
+		CRASH("Attempted to perform logging before initialization or after shutdown!")
 
 	if(disabled_categories[category])
 		return

@@ -154,7 +154,7 @@
 /obj/item/spacecash/c500
 	name = "500 dollars"
 	icon_state = "spacecash500"
-	desc = "Five US Government minted hundred-dollar bills. All of them have pictures of Ben Franklin on them. They all eagarly glare at you, making you feel as if you owe them something. "
+	desc = "Five US Government minted hundred-dollar bills. All of them have pictures of Ben Franklin on them. They all eagerly glare at you, making you feel as if you owe them something. "
 	worth = 500
 
 /obj/item/spacecash/c500/counterfeit

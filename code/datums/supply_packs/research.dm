@@ -29,7 +29,7 @@
 
 //Chemical section
 
-/datum/supply_packs/pyrotec
+/datum/supply_packs/pyrotech
 	name = "pyrotechnics crate"
 	contains = list(
 		/obj/item/reagent_container/glass/beaker/sulphuric,

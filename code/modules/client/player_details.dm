@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(player_details) // ckey -> /datum/player_details
 	var/list/post_logout_callbacks = list()
 	var/list/played_names = list() //List of names this key played under this round
 	var/byond_version = "Unknown"
-	/// The descriminator for larva pool ordering: Generally set to timeofdeath except for facehuggers/admin z-level play
+	/// The discriminator for larva pool ordering: Generally set to timeofdeath except for facehuggers/admin z-level play
 	var/larva_pool_time
 
 /datum/player_details/New()

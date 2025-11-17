@@ -18,9 +18,9 @@
       to generate eggs at an ongoing rate until full or out of plasma.
   - code_imp: Hivelord's Resin Walker now uses the same toggle structure.
   - bugfix: Hivelord's Resin Walker now deactivates properly when you run out of plasma.
-  - bugfix: Fixed a runtime around Shaman's ability initialisation.
+  - bugfix: Fixed a runtime around Shaman's ability initialization.
   carlarctg:
-  - rscadd: Added a preference for eye blurring. Can be defaut blur, vision impair,
+  - rscadd: Added a preference for eye blurring. Can be default blur, vision impair,
       or the legacy blurring effect.
   kugamo:
   - rscadd: Weather now effects acid, lasting shorter and damaging less.
@@ -33,7 +33,7 @@
   - ui: converted the turing dispenser to tgui
   thwompa:
   - imageadd: added new synth charging station sprites
-  - imagedel: removed old cyborg chaging sprites
+  - imagedel: removed old cyborg charging sprites
 2023-01-02:
   BeagleGaming1:
   - bugfix: Stops Janitorial Cart from deleting buckets
@@ -83,7 +83,7 @@
   - spellcheck: Changes mentions of RESS to TWE to keep consistent and lore accurate.
   stanalbatross:
   - balance: increased clothesline cooldown from 14s to 16s
-  - balance: beserker rav buffed slash will now slow instead of superslow, and its
+  - balance: berserker rav buffed slash will now slow instead of superslow, and its
       duration will be 3.5s as intended instead of 0.6s
   - balance: ravs can no longer heal from clothesline/eviscerate while on fire
   - rscdel: removed the airlock docking controller and embedded airlock controllers,
@@ -109,7 +109,7 @@
   ThePiachu:
   - rscadd: Added some rechargers and battery chargers to LV-522.
   - balance: ChemMaster's internal volume now matches that of a Bluespace Beaker so
-      you can more efficiently utilise it to its full pill making potential.
+      you can more efficiently utilize it to its full pill making potential.
   - qol: The Reagent Tanks now display the total volume used by all of their chemicals
       so you know exactly how full it is when containing a complex chemical mix.
   Zonespace27:
@@ -210,7 +210,7 @@
       that will endlessly break if frequencies change again.
   stanalbatross:
   - ui: added the match word and match case options back to highlight settings, match
-      word is overidden if regex is used
+      word is overridden if regex is used
   - ui: radio TGUI now shows channel prefixes again
   - code_imp: cleaned up radio code a bit, removed a deprecated var
   - bugfix: fixed a few runtimes with blockedpassdirs and blockedexitdirs
@@ -221,7 +221,7 @@
   - refactor: brig timer now uses TGUI
   ThePiachu, Iamtheguy:
   - rscadd: Added a flashlight and battery box to make the FOBs a little bit more
-      organised.
+      organized.
   carlarctg:
   - bugfix: FIxes some NV laser pistols having broken icons
   realforest2001:
@@ -247,7 +247,7 @@
 2023-01-09:
   QuickLode:
   - bugfix: removed unintended slowdown from the M4 light synthetic armor on nightmare
-  - spellcheck: fixes WWeyland-Yutani and Genadier
+  - spellcheck: fixes Weyland-Yutani and Grenadier
   ThePiachu:
   - bugfix: Fixed dme file order.
   stanalbatross:
@@ -383,10 +383,10 @@
   - rscadd: The MP5 is, effectively, a slightly slower firing but more damage dealing
       M39, with small-sized magazines.
   - rscadd: The FN FP9K is now a VERY robust, quick-shooting, long-ranged SMG that
-      mantains its AP bullets and small-sized 50 rounder mags. Keep an eye out for
+      maintains its AP bullets and small-sized 50 rounder mags. Keep an eye out for
       these.
   - rscadd: The MAC-15 and Uzi are now bursting inaccurate beasts, the latter a slightly
-      slower firing, slighty more damaging version. Both have recieved extended magazine
+      slower firing, slightly more damaging version. Both have received extended magazine
       sprites and overlays, the latter's also having a small jam chance..
   - imageadd: The PPSH has special codersprite stick magazines and inhands now! Fitting
       a drum magazine there will cause the gun to have worse handling, with more slowdown,
@@ -481,7 +481,7 @@
   - rscadd: Adds networks to phones. Phone A can only call other phones who receive
       one of Phone A's transmit networks.
   - rscadd: RTO packs set their category on initialize via a variable rather than
-      hardcode, allowing for customisation in maps.
+      hardcode, allowing for customization in maps.
   - rscadd: Added PMC faction radios.
   - rscadd: Changed all instances of PMC radios on maps to be hvh versions so they
       can't call the Almayer.
@@ -562,7 +562,7 @@
   - rscadd: Local Out of Character will appear above your mob if global OOC is enabled.
   - bugfix: Fixes runtimes related to Narnia.
   - rscadd: Added phones to Lazarus Landing. Also added phones to the CLF ship insert,
-      on an independant network.
+      on an independent network.
   - rscadd: Added phones to Solaris Ridge, split between the Colony, Lambda Labs and
       Eta Labs as categories. All share the same network however.
 2023-01-27:
@@ -598,7 +598,7 @@
       detector.
   - code_imp: motion detector description code was refactored and changed to a proc.
   Molto:
-  - spellcheck: Fixed perscription medication
+  - spellcheck: Fixed prescription medication
   NewyearnewmeUwu:
   - rscadd: made the M37 scabbard slightly larger so you can fit an M37 with attachments
       on it.
@@ -621,7 +621,7 @@
   - admin: Admins can now spawn a xeno cultist ERT for their events.
   - rscadd: Added a more serious version of a xeno cultist synthetic.
   TopHatPenguin:
-  - spellcheck: Changes beta queen to bravo queen and gamma to charlie | Decapitlises
+  - spellcheck: Changes beta queen to bravo queen and gamma to charlie | Decapitalizes
       typepaths in larva.dm and queen.dm
   Waseemq1235:
   - rscadd: SecTech vendors can now vend regulation tape.

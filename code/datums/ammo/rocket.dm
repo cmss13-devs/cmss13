@@ -31,7 +31,7 @@
 /datum/ammo/rocket/on_hit_mob(mob/mob, obj/projectile/projectile)
 	cell_explosion(get_turf(mob), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, get_turf(mob))
-	if(ishuman_strict(mob)) // No yautya or synths. Makes humans gib on direct hit.
+	if(ishuman_strict(mob)) // No yautja or synths. Makes humans gib on direct hit.
 		mob.ex_act(350, null, projectile.weapon_cause_data, 100)
 	smoke.start()
 
@@ -68,7 +68,7 @@
 	mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
 	mob.apply_effect(3, WEAKEN)
 	mob.apply_effect(3, PARALYZE)
-	if(ishuman_strict(mob)) // No yautya or synths. Makes humans gib on direct hit.
+	if(ishuman_strict(mob)) // No yautja or synths. Makes humans gib on direct hit.
 		mob.ex_act(300, null, projectile.weapon_cause_data, 100)
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)

@@ -6,7 +6,7 @@ Damage Converter
 	Little bit hidden.
 	Lowers resistance tremendously.
 	Decreases stage speed tremendously.
-	Reduced transmittablity
+	Reduced transmittability
 	Intense Level.
 
 Bonus

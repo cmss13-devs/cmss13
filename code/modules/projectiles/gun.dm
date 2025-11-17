@@ -187,7 +187,7 @@
 	var/list/starting_attachment_types = null
 
 	var/flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
-	///Only guns of the same category can be fired together while dualwielding.
+	///Only guns of the same category can be fired together while dual wielding.
 	var/gun_category
 
 	///the default gun icon_state. change to reskin the gun
@@ -319,7 +319,7 @@
 
 /*
 * Called by the gun's New(), set the gun variables' values.
-* Each gun gets its own version of the proc instead of adding/substracting
+* Each gun gets its own version of the proc instead of adding/subtracting
 * amounts to get specific values in each gun subtype's New().
 * This makes reading each gun's values MUCH easier.
 */
@@ -993,7 +993,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	QDEL_NULL(in_chamber)
 
-//Funny fix for smatrgun
+//Funny fix for smartgun
 /obj/item/weapon/gun/proc/get_ammo_type_chambered(mob/user)
 	return in_chamber.ammo.type
 
@@ -2095,7 +2095,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	set_gun_user(null)
 
-///Update the target if you draged your mouse
+///Update the target if you dragged your mouse
 /obj/item/weapon/gun/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	SIGNAL_HANDLER
 	set_target(get_turf_on_clickcatcher(over_object, gun_user, params))

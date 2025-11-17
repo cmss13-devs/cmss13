@@ -55,7 +55,7 @@
 		to_chat(hunted, SPAN_BOLD("Life was alright. Previously relocated from your noisier post on the frontier, you were now stationed just on the outer veil of Union territory. Combat patrols and sawdust rations turned into boring guard shifts and proper food, making your peacekeeping duty a much envied task. Then, your life came crumbling down. An unknown alien surprised you and the rest of your garrison, slaughtering effectively everyone. Just as you were about to escape, it caught you in a trap, and dragged you into the darkness. Now awake in a completely different place, still sore from the confrontation, you wonder what you'd have to do to get back home safe and sound."))
 	else if(royal_marines < max_royal_marines && HAS_FLAG(hunted.client.prefs.toggles_ert_pred, PLAY_TWE))
 		royal_marines++
-		var/list/hunted_types = list(/datum/equipment_preset/twe/royal_marine/standard/hunted, /datum/equipment_preset/twe/royal_marine/team_leader/hunted, /datum/equipment_preset/twe/royal_marine/lieuteant/hunted)
+		var/list/hunted_types = list(/datum/equipment_preset/twe/royal_marine/standard/hunted, /datum/equipment_preset/twe/royal_marine/team_leader/hunted, /datum/equipment_preset/twe/royal_marine/lieutenant/hunted)
 		var/hunted_type = pick(hunted_types)
 		arm_equipment(hunted, hunted_type , TRUE, TRUE)
 		to_chat(hunted, SPAN_BOLD("You were starting to get sick and tired of these Australians. Posted and wrangled around Oceania, you had spent the last half decade from refugee camp to metropolis, making sure order was maintained most of the time and partaking in a riot action now and then. You were ready to give about anything for your job to be more interesting, and like a monkey's paw, the wish came true. One night, your barracks got blown up before your very eyes while on guard duty, and to your dismay, it was not a terrorist. You attempted to gun the monster down, but failed, your friends torn apart before your very eyes. Being the last one alive, the thing takes you with it, shackles you, and throws you into a cell. You black out again, and wake up here, wherever you are. At least you hope things will be more interesting now, or so you tell yourself."))
@@ -251,7 +251,7 @@
 		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)
 
 /datum/emergency_call/young_bloods/inexperienced
-	name = "Hunting Grounds - Inexperienced Youngblood Party" //For completly new youngblood players
+	name = "Hunting Grounds - Inexperienced Youngblood Party" //For completely new youngblood players
 	blooding_name = "Inexperienced Youngblood Party (Three members)"
 	time_required_for_job = 5 HOURS
 	youngblood_time = 2 HOURS

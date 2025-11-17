@@ -2,7 +2,7 @@
 This is the style you must follow when writing code. It's important to note that large parts of the codebase do not consistently follow these rules, but this does not free you of the requirement to follow them.
 
 1. [General Guidelines](#general-guidelines)
-2. [Paths and Inheritence](#paths-and-inheritence)
+2. [Paths and Inheritance](#paths-and-inheritance)
 3. [Variables](#variables)
 4. [Procs](#procs)
 5. [Things that do not matter](#things-that-do-not-matter)
@@ -64,7 +64,7 @@ This does NOT mean that you can access it everywhere like a global var. Instead,
 
 Isn't that confusing?
 
-There is also an undocumented keyword called `static` that has the same behaviour as global but more correctly describes BYOND's behaviour. Therefore, we always use static instead of global where we need it, as it reduces suprise when reading BYOND code.
+There is also an undocumented keyword called `static` that has the same behaviour as global but more correctly describes BYOND's behaviour. Therefore, we always use static instead of global where we need it, as it reduces surprise when reading BYOND code.
 
 ### Use early returns
 Do not enclose a proc in an if-block when returning on a condition is more feasible
@@ -114,7 +114,7 @@ This is clearer and enhances readability of your code! Get used to doing it!
 
 ### Use our time defines
 
-The codebase contains some defines which will automatically multiply a number by the correct amount to get a number in deciseconds. Using these is preffered over using a literal amount in deciseconds.
+The codebase contains some defines which will automatically multiply a number by the correct amount to get a number in deciseconds. Using these is preferred over using a literal amount in deciseconds.
 
 The defines are as follows:
 * SECONDS
@@ -135,7 +135,7 @@ This is good:
 		mob.dothing()
 ````
 
-## Paths and Inheritence
+## Paths and Inheritance
 ### All BYOND paths must contain the full path
 (i.e. absolute pathing)
 
@@ -322,7 +322,7 @@ This is very bad:
 	new /atom/thing(null, enable_red = TRUE)
 ```
 
-Future coders using this code will have to remember two differently named variables which are near-synonyms of eachother. One of them is only used in Initialize for one line.
+Future coders using this code will have to remember two differently named variables which are near-synonyms of each other. One of them is only used in Initialize for one line.
 
 This is bad:
 ```DM

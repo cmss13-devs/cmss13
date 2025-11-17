@@ -2,7 +2,7 @@
   Foolosopher:
   - rscadd: Dropships can now be set to automatically depart some time after recharging
   monkeysfist:
-  - rscadd: Added Vietnam-style durags. (Mission colored and black)
+  - rscadd: Added Vietnam-style durags (mission colored and black).
   - tweak: Specialist durags are now known as skullcaps.
 2021-07-02:
   Pigeon352:
@@ -126,7 +126,7 @@
   - rscadd: Increased drone build distance to be the same as hivelord.
   GoldenDarkness55:
   - rscadd: Xenos can now slash filing cabinets and dispensers.
-  - rscadd: Xenos that could slash walls can now slash bolted and welded doors aswell
+  - rscadd: Xenos that could slash walls can now slash bolted and welded doors as well
       (10/15 hits)
   Segrain:
   - bugfix: Xenos can no longer waste healing abilities on already dead targets.
@@ -232,7 +232,7 @@
   - rscadd: Added a trait to use xenonid sprites. Issued by the hive datum.
 2021-07-28:
   Jeser:
-  - rscadd: Respawn verb now has a confirmation preventing staff accidently hitting
+  - rscadd: Respawn verb now has a confirmation preventing staff accidentally hitting
       it and respawning.
 2021-07-29:
   Nicboone:

@@ -86,7 +86,7 @@ unless the surgical tool is completely unsuited to what it's being used for.*/
 /////////////////////////////
 
 /**Tools used to open incisions or cut flesh. IMS listed separately as the generic incision surgery uses it to skip steps.
-PICT isn't as fast as standard to disincentivise using it instead of a normal scalpel.
+PICT isn't as fast as standard to disincentivize using it instead of a normal scalpel.
 See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract_skin.**/
 #define SURGERY_TOOLS_INCISION list(\
 	/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_IDEAL,\
@@ -134,7 +134,7 @@ See also /datum/surgery_step/cut_larval_pseudoroots, /datum/surgery_step/retract
 //    FLESH TEARS    //
 /////////////////////////////
 
-///Tools used to patch damaged bloodvessels. Same tools as SUTURE, but fixovein exists specifically for this work and is best at it.
+///Tools used to patch damaged blood vessels. Same tools as SUTURE, but fixovein exists specifically for this work and is best at it.
 #define SURGERY_TOOLS_MEND_BLOODVESSEL list(\
 	/obj/item/tool/surgery/FixOVein = SURGERY_TOOL_MULT_IDEAL,\
 	/obj/item/tool/surgery/surgical_line = SURGERY_TOOL_MULT_SUBSTITUTE,\

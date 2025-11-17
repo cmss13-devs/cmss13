@@ -503,7 +503,7 @@ Works together with spawning an observer, noted above.
 	if(ghost.client)
 		ghost.client.init_verbs()
 		ghost.client.change_view(GLOB.world_view_size) //reset view range to default
-		ghost.client.pixel_x = 0 //recenters our view
+		ghost.client.pixel_x = 0 //re-centers our view
 		ghost.client.pixel_y = 0
 		ghost.set_lighting_alpha_from_pref(ghost.client)
 		if(ghost.client.soundOutput)
@@ -1099,7 +1099,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(SSticker.mode.check_xeno_late_join(src))
 		SSticker.mode.attempt_to_join_as_lesser_drone(src)
 
-/mob/dead/verb/join_as_zombie() //Adapted from join as hellhoud
+/mob/dead/verb/join_as_zombie() //Adapted from join as hellhound
 	set category = "Ghost.Join"
 	set name = "Join as Zombie"
 	set desc = "Select an alive but logged-out Zombie to rejoin the game."

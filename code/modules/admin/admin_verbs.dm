@@ -4,7 +4,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/toggleadminhelpsound, /*toggles whether we hear a sound when adminhelps/PMs are used*/
 	/client/proc/becomelarva, /*lets you forgo your larva protection as staff member. */
 	/client/proc/deadmin_self, /*destroys our own admin datum so we can play as a regular player*/
-	/client/proc/open_STUI, // This proc can be used by all admins but depending on your rank you see diffrent stuff.
+	/client/proc/open_STUI, // This proc can be used by all admins but depending on your rank you see different stuff.
 	/client/proc/debug_variables, /*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
 	/client/proc/debug_global_variables,
 	/client/proc/xooc, // Xeno OOC
@@ -74,7 +74,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/toggle_admin_afk_safety,
 	/client/proc/add_known_alt,
 	/client/proc/remove_known_alt,
-	/client/proc/toogle_door_control,
+	/client/proc/toggle_door_control,
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(

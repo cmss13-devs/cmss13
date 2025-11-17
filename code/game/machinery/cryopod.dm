@@ -559,7 +559,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 /obj/structure/machinery/cryopod/MouseDrop_T(mob/target, mob/user)
 	. = ..()
 	var/mob/living/H = user
-	if(!istype(H) || target != user) //cant make others get in. they need to be willing so this is superflous to enable
+	if(!istype(H) || target != user) //can't make others get in. they need to be willing so this is superflous to enable
 		return
 
 	move_inside(target)

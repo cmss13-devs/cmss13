@@ -19,7 +19,7 @@
 
 /datum/xeno_strain/eggsac/apply_strain(mob/living/carbon/xenomorph/carrier/carrier)
 	carrier.plasma_types = list(PLASMA_EGG)
-	carrier.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
+	carrier.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheromones
 	carrier.recalculate_plasma()
 	carrier.recalculate_pheromones()
 
@@ -122,7 +122,7 @@
 				xeno.eggs_cur++
 				to_chat(xeno, SPAN_XENONOTICE("We generate an egg. Now sheltering: [xeno.eggs_cur] / [xeno.eggs_max]."))
 				xeno.update_icons()
-			
+
 #undef EGGSAC_OFF_WEED_EGGCAP
 #undef EGGSAC_EGG_SUSTAIN_DISTANCE
 

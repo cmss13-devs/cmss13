@@ -40,7 +40,7 @@
 /datum/emote/living/carbon/human/synthetic/colonial/wy_droid/status/military_target
 	key = "militarytarget"
 	sound = 'sound/voice/wy_droid/voicelines/military_target_aquired.ogg'
-	say_message = "Military target aquired."
+	say_message = "Military target acquired."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/colonial/wy_droid/status/hunter_speciman
@@ -52,7 +52,7 @@
 /datum/emote/living/carbon/human/synthetic/colonial/wy_droid/status/hunter_target
 	key = "huntertarget"
 	sound = 'sound/voice/wy_droid/voicelines/hunter_target_aquired.ogg'
-	say_message = "Hunter target aquired."
+	say_message = "Hunter target acquired."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/colonial/wy_droid/status/alert_weyland

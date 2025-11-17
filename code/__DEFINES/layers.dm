@@ -189,7 +189,7 @@
 
 //---------- EMISSIVES -------------
 //Layering order of these is not particularly meaningful.
-//Important part is the seperation of the planes for control via plane_master
+//Important part is the separation of the planes for control via plane_master
 
 /// This plane masks out lighting to create an "emissive" effect, ie for glowing lights in otherwise dark areas.
 #define EMISSIVE_PLANE 90
@@ -215,7 +215,7 @@
 
 #define LIGHTING_PRIMARY_LAYER 15	//The layer for the main lights of the station
 #define LIGHTING_PRIMARY_DIMMER_LAYER 15.1	//The layer that dims the main lights of the station
-#define LIGHTING_SECONDARY_LAYER 16	//The colourful, usually small lights that go on top
+#define LIGHTING_SECONDARY_LAYER 16	//The colorful, usually small lights that go on top
 
 #define LIGHTING_SHADOW_LAYER 17	//Where the shadows happen
 

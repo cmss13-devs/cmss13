@@ -12,7 +12,7 @@
 /**
  *
  *	HIVE BUFFS - XENOMORPH ENDGAME
- *	Contains all the class definitons and code for applying hivebuffs to xeno hives.
+ *	Contains all the class definitions and code for applying hivebuffs to xeno hives.
  *	Each buff consists of a /datum/hivebuff
  *	And associated on_engage and on_cease procs to handle behaviour of activating and ending the buffs
  *	Buffs are divided into 2 tiers, minor and major.
@@ -213,7 +213,7 @@
 	LAZYREMOVE(hive.cooldown_hivebuffs, src)
 	_timer_id_cooldown = TIMER_ID_NULL
 
-/// Checks the number of pylons required and if the hive posesses them
+/// Checks the number of pylons required and if the hive possesses them
 /datum/hivebuff/proc/_check_num_required_pylons()
 	return number_of_required_pylons >= hive.active_endgame_pylons
 
@@ -569,7 +569,7 @@
 
 /datum/hivebuff/boost_structure
 	name = "Boon of Fortification"
-	desc = "Gives buffs out to all the sturctures, not only do structures regenerate their own health slowly any recovery nodes of all sorts work twice as fast."
+	desc = "Gives buffs out to all the structures, not only do structures regenerate their own health slowly any recovery nodes of all sorts work twice as fast."
 	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The resin starts moving and shifting..."

@@ -61,7 +61,7 @@
   - bugfix: Weeds are no longer immune to fire.
 2020-08-06:
   Frans_Feiffer:
-  - imageadd: Resprited the CMOs labcoat, and the Researchers science jacket.
+  - imageadd: Resprited the CMOs lab coat, and the Researchers science jacket.
   - tweak: North sprite on the researchers uniform was off of the human sprite by
       a pixel, whoops!
   - imageadd: Resprited Detective1-2 jackets, as well as the CMB jacket.
@@ -101,7 +101,7 @@
   - bugfix: Boilers can bombard past resin membranes again.
   - tweak: Boilers can no longer bombard past resin membrane that doesn't belong to
       their hive.
-  - bugfix: Fixed harpoon damage being too high to be used honourably.
+  - bugfix: Fixed harpoon damage being too high to be used honorably.
   - rscadd: Yautja weapons can now be used more effectively by humans.
   - tweak: Chainwhip no longer has a unique check to stun.
   - rscadd: Reworked minigun. No longer stuck in burst fire, recoil now builds up
@@ -171,7 +171,7 @@
   - rscadd: Added a chem mixer to the OT workshop that can not make pills. Sprite
       by Bongosz.
   - maptweak: Added medical railings outside the medbay chemlab. Sprites by Bongosz.
-  - tweak: Increased the chem master UI size slightly.
+  - tweak: Increased the chemmaster UI size slightly.
   Vicacrov:
   - maptweak: LV - The medbay and hydroponics domes on LV got a makeover to make it
       less chokehold-y and more holdable.
@@ -222,7 +222,7 @@
   - bugfix: Fixed runtime with flameshapes
   - bugfix: Fixed flamers not reflaming fires that they pass through
   - tweak: Humans will now no longer be the larva from which they burst from if they
-      arent nested.
+      aren't nested.
   - bugfix: Fixed cancel option not appearing on some clan input menus
   - bugfix: Fixed not being able to target players as a clan leader
 2020-08-15:
@@ -419,7 +419,7 @@
       near LZs.
   - bugfix: Bashing your helmet with magazines now has a cooldown.
   - bugfix: Primed nades can no longer be put in bags.
-  - bugfix: Xeno corpses no longer cover eggmorphers.
+  - bugfix: Xeno corpses no longer cover egg morphers.
   - bugfix: Cluster OB will no longer overlap over Hive Core covered turfs.
   - bugfix: Deaf people can no longer see above head chat.
   - tweak: Warden Prae no longer gets self-heal when on fire.

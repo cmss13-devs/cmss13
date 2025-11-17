@@ -89,8 +89,8 @@
   - tweak: The following properties has been renamed... caustic to corrosive, anti-caustic
       to anti-corrosive, enjoyable to euphoric, neurosedative to relaxing, irritating
       to allergenic, gastrotoxic to emetic, biopeutic to neogenetic.
-  - tweak: Tweaked the normal and overdosis effects of several chemical properties.
-  - tweak: You can now put clipboards into filing cabinets and vialboxes into smartfridges.
+  - tweak: Tweaked the normal and overdoses effects of several chemical properties.
+  - tweak: You can now put clipboards into filing cabinets and vial boxes into smartfridges.
   - maptweak: Remapped the entirety of the Almayer Research department. Tweaked the
       Morgue, telecomms and computer lab to make space.
   - rscadd: Added a Chemical Centrifuge to Almayer Research. This research machine
@@ -139,7 +139,7 @@
       is Spike Spray, it flings out shrapnel towards the aimed direction and it does
       very little damage, but anyone hit is embedded with shrapnel and slowed for
       a short while.'
-  - tweak: Shrapnel has been changed. If humans move while embedded, they will recieve
+  - tweak: Shrapnel has been changed. If humans move while embedded, they will receive
       brute damage to a body part. It is suggested they get rid of shrapnel fast.
   - rscadd: Marines can now use their boot knife to remove shrapnel. Press Z in hotkey
       mode to use it and the equivalent in normal mode.
@@ -177,7 +177,7 @@
   - bugfix: Knives and other embedded big objects can now be properly yanked out.
   - bugfix: SL tracker now updates properly when the SL spawns in.
   - bugfix: You will now suffer in silence when moving with embedded shrapnel. Screaming
-      has a brute treshold now.
+      has a brute threshold now.
 2019-09-10:
   Aceluke:
   - bugfix: Fixed a badly located dropship location.
@@ -333,11 +333,11 @@
   - tweak: Dramatically increased the power of the HE OB.
   - tweak: Increased the duration of the cluster OB.
   - tweak: Increased the power of the individual explosions in the cluster OB.
-  - tweak: Removing shrapnel with your bootknife now removes ALL shrapnel in your
+  - tweak: Removing shrapnel with your boot knife now removes ALL shrapnel in your
       body in one go.
   - tweak: Decreased the explosive armor of Ravagers.
   - tweak: Reduced the stun associated with shocked doors.
-  - tweak: Nerfed Praetorain pheromones slightly.
+  - tweak: Nerfed Praetorian pheromones slightly.
   - tweak: Nerfed Ravager hitpoint total slightly.
   - tweak: Nerfed the pheromone increase from Royal Guard Praetorian .
   - tweak: Nerfed Praetorian speed slightly.
@@ -401,8 +401,8 @@
   - tweak: Lowered how many players it takes to unlock a researcher slot.
   Vampmare:
   - tweak: The transit time on a hijacked Dropship has been halved. This the time
-      it takes the Queen to go from planet to Alamyer.
-  - rscdel: LE ammo for various guns have been removed. You won't be able to aquire
+      it takes the Queen to go from planet to Almayer.
+  - rscdel: LE ammo for various guns have been removed. You won't be able to acquire
       it anymore.
   - tweak: Reduced wielded SMG slowdown a bit.
   - tweak: Spitters' acid spit has been changed. It will now apply a burn DoT to mobs

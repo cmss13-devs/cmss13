@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(sqrtTable, list(1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4,
 	// Rotate the point around the axis
 	phi += degrees
 
-	// Convert back to cartesian coordiantes
+	// Convert back to cartesian coordinates
 	var/list/rotated_point = list(radius * cos(phi), radius * sin(phi))
 	// Translate the rotated point back to its absolute coordinates
 	rotated_point[1] = rotated_point[1] + axis[1]

@@ -281,7 +281,7 @@
 	var/createdby = null
 	var/createdTime = null
 
-	//scuffed variables so the overwatch code doesnt have a fit
+	//scuffed variables so the overwatch code doesn't have a fit
 	var/interference = 0
 	var/stat = null
 
@@ -1281,7 +1281,7 @@
 
 	chosen_candidate = null
 
-	// Gives some time for the King to get their barings before it can be OBed
+	// Gives some time for the King to get their bearings before it can be OBed
 	addtimer(CALLBACK(src, PROC_REF(remove_ob_protection)), 1 MINUTES, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 
 /// The final step in the cocoon sequence: Resets pylon protection levels

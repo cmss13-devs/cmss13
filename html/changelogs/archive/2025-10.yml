@@ -363,10 +363,10 @@
   - rscadd: replaced the pilot helmet in the PO and DCC vendor with a version that
       has no pilot visor pre-installed.
   - rscadd: adds binoculars and some other minor items to the pilot vendors.
-  - rscadd: adds the tactical pilot officer flight suit and its armor as a free option
+  - rscadd: adds the tactical pilot officer flightsuit and its armor as a free option
       to the PO uniform vendor.
   - qol: sorts PO and DCC clothing vendor subcategories.
   forest2001, lagomorphica:
   - rscadd: Adds Synthetic Specialisation presets.
   neeshacark:
-  - spellcheck: fixed a typo in vendors for high-cut labcoats
+  - spellcheck: fixed a typo in vendors for high-cut lab coats

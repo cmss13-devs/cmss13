@@ -33,9 +33,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 #define UPSTATE_ALLGOOD 128
 
 //update_overlay
-#define APC_UPOVERLAY_CHARGEING0 1
-#define APC_UPOVERLAY_CHARGEING1 2
-#define APC_UPOVERLAY_CHARGEING2 4
+#define APC_UPOVERLAY_CHARGING0 1
+#define APC_UPOVERLAY_CHARGING1 2
+#define APC_UPOVERLAY_CHARGING2 4
 #define APC_UPOVERLAY_EQUIPMENT0 8
 #define APC_UPOVERLAY_EQUIPMENT1 16
 #define APC_UPOVERLAY_EQUIPMENT2 32
@@ -53,7 +53,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 #define MAXIMUM_GIVEN_POWER_TO_LOCAL_APC 20000 //20,000W ~ one pacman at maximum output
 
 //The Area Power Controller (APC), formerly Power Distribution Unit (PDU)
-//One per area, needs wire conection to power network
+//One per area, needs wire connection to power network
 
 //Controls power to devices in that area
 //May be opened to change power cell
@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/obj/item/cell/cell
 	/// Initial cell charge %
 	var/start_charge = 90
-	/// 0 = no cell, 1 = regular, 2 = high-cap (x5) <- old, now it's just 0 = no cell, otherwise dictate cellcapacity by changing this value. 1 used to be 1000, 2 was 2500
+	/// 0 = no cell, 1 = regular, 2 = high-cap (x5) <- old, now it's just 0 = no cell, otherwise dictate cell capacity by changing this value. 1 used to be 1000, 2 was 2500
 	var/cell_type = /obj/item/cell/apc/empty
 
 	var/opened = APC_COVER_CLOSED
@@ -137,7 +137,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	appearance_flags = TILE_BOUND
 
-	var/list/connected_power_sources = list() //list with all powersources that may power this APC
+	var/list/connected_power_sources = list() //list with all power sources that may power this APC
 
 /obj/structure/machinery/power/apc/Initialize(mapload, ndir, building=0)
 	. = ..()
@@ -549,11 +549,11 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 		switch(charging)
 			if(APC_NOT_CHARGING)
-				update_overlay |= APC_UPOVERLAY_CHARGEING0
+				update_overlay |= APC_UPOVERLAY_CHARGING0
 			if(APC_CHARGING)
-				update_overlay |= APC_UPOVERLAY_CHARGEING1
+				update_overlay |= APC_UPOVERLAY_CHARGING1
 			if(APC_FULLY_CHARGED)
-				update_overlay |= APC_UPOVERLAY_CHARGEING2
+				update_overlay |= APC_UPOVERLAY_CHARGING2
 
 		if(!equipment)
 			update_overlay |= APC_UPOVERLAY_EQUIPMENT0
@@ -867,7 +867,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 					var/datum/effect_system/spark_spread/spark = new()
 					spark.set_up(3, 1, src)
 					spark.start()
-					to_chat(grabber, SPAN_DANGER("The APC's power currents surge eratically, super-heating your bracer!"))
+					to_chat(grabber, SPAN_DANGER("The APC's power currents surge erratically, super-heating your bracer!"))
 					playsound(src.loc, 'sound/effects/sparks2.ogg', 25, 1)
 					grabber.apply_damage(10,0, BURN)
 					return FALSE
@@ -1217,7 +1217,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			longtermpower -= 2
 
 
-		if(cell.charge >= 1250 || longtermpower > 0) //Put most likely at the top so we don't check it last, effeciency 101
+		if(cell.charge >= 1250 || longtermpower > 0) //Put most likely at the top so we don't check it last, efficiency 101
 			if(autoflag != 3)
 				equipment = autoset(equipment, 1)
 				lighting = autoset(lighting, 1)
@@ -1601,9 +1601,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 #undef UPSTATE_WIREEXP
 #undef UPSTATE_ALLGOOD
 
-#undef APC_UPOVERLAY_CHARGEING0
-#undef APC_UPOVERLAY_CHARGEING1
-#undef APC_UPOVERLAY_CHARGEING2
+#undef APC_UPOVERLAY_CHARGING0
+#undef APC_UPOVERLAY_CHARGING1
+#undef APC_UPOVERLAY_CHARGING2
 #undef APC_UPOVERLAY_EQUIPMENT0
 #undef APC_UPOVERLAY_EQUIPMENT1
 #undef APC_UPOVERLAY_EQUIPMENT2

@@ -262,7 +262,7 @@
 	return parts
 
 //Heals ONE external organ, organ gets randomly selected from damaged ones.
-//It automatically updates damage overlays if necesary
+//It automatically updates damage overlays if necessary
 //It automatically updates health status
 /mob/living/carbon/human/heal_limb_damage(brute, burn)
 	var/list/obj/limb/parts = get_damaged_limbs(brute,burn)
@@ -281,7 +281,7 @@
 In most cases it makes more sense to use apply_damage() instead! And make sure to check armour if applicable.
 */
 //Damages ONE external organ, organ gets randomly selected from damagable ones.
-//It automatically updates damage overlays if necesary
+//It automatically updates damage overlays if necessary
 //It automatically updates health status
 /mob/living/carbon/human/take_limb_damage(brute, burn, sharp = 0, edge = 0)
 	var/list/obj/limb/parts = get_damageable_limbs()
@@ -414,7 +414,7 @@ This function restores all limbs.
 /*
 	Describes how human mobs get damage applied.
 	Less clear vars:
-	* permanent_kill: whether this attack causes human to become irrevivable
+	* permanent_kill: whether this attack causes human to become unrevivable
 */
 /mob/living/carbon/human/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, \
 	sharp = 0, edge = 0, obj/used_weapon = null, no_limb_loss = FALSE, \

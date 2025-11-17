@@ -1458,7 +1458,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92, WEAR_IN_BACK) //targeting unarmed medical personal is not a war crime in aliens(primarily because, off memory, warcrimes aren't really a thing, although this definately is bad manners), and the playerbase is HRP in this concern!(if you don't get the joke, the players regularly execute unarmed doctors in hvh events. :D)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/np92, WEAR_IN_BACK) //targeting unarmed medical personal is not a war crime in aliens(primarily because, off memory, warcrimes aren't really a thing, although this definitely is bad manners), and the playerbase is HRP in this concern!(if you don't get the joke, the players regularly execute unarmed doctors in hvh events. :D)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/np92, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/np92, WEAR_IN_BACK)
 	//face
@@ -3952,7 +3952,7 @@
 	)
 
 //*****************************************************************************************************/
-/datum/job/antag/upp/commisar
+/datum/job/antag/upp/commissar
 	title = JOB_UPP_COMMISSAR
 	selection_class = "job_cl"
 	gear_preset = /datum/equipment_preset/upp/commissar
@@ -4117,7 +4117,7 @@
 		new_human.equip_to_slot_or_del(new maybejacket, WEAR_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/vodka, WEAR_IN_JACKET)
-		//limit of snowcoat
+		//limit of snow coat
 		new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_JACKET)
 
 	//limbs

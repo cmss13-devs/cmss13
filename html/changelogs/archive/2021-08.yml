@@ -72,10 +72,10 @@
   - tweak: Surgical trays no longer have incision management systems. Instead, they
       have the PICT system.
   - rscadd: 'Added new surgical tools: drapes, which do nothing in this revision but
-      may come in handy, the PICT system, which is a specialised scalpel used by larva
+      may come in handy, the PICT system, which is a specialized scalpel used by larva
       surgery, and surgical line, used for sewing flesh together. Surgical line can
       substitute for fixovein, fixovein can substitute for surgical line, and cable
-      coil and headbands can be used (in extremis) in place of either. The specialised
+      coil and headbands can be used (in extremis) in place of either. The specialized
       tools are the best in their niche, though. At present, surgical line is only
       in the medic field surgery kit.'
   - rscadd: Added a new surgery for tending wounds, using the new surgical line tool
@@ -174,7 +174,7 @@
       species.
 2021-08-12:
   ghostsheet:
-  - tweak: Flaregun has been buffed to be faster and have less wield delay, similiar
+  - tweak: Flaregun has been buffed to be faster and have less wield delay, similar
       to a pistol.
 2021-08-16:
   Segrain:

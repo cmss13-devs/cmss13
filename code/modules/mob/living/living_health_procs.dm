@@ -145,7 +145,7 @@
 		S = apply_status_effect(/datum/status_effect/incapacitating/stun, amount)
 	return S
 
-/* ROOT (Immobilisation) */
+/* ROOT (Immobilization) */
 /// Overridable handler to adjust the numerical value of status effects. Expand as needed
 /mob/living/proc/GetRootDuration(amount)
 	return amount * GLOBAL_STATUS_MULTIPLIER

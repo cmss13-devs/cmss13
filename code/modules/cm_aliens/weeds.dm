@@ -77,7 +77,7 @@
 	if(turf)
 		turf.weeds = src
 		weeded_turf = turf
-		SEND_SIGNAL(turf, COMSIG_WEEDNODE_GROWTH) // Currently for weed_food wakeup
+		SEND_SIGNAL(turf, COMSIG_WEEDNODE_GROWTH) // Currently for weed_food wake up
 
 	RegisterSignal(src, list(
 		COMSIG_ATOM_TURF_CHANGE,

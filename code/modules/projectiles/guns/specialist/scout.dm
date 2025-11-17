@@ -2,7 +2,7 @@
 
 /obj/item/weapon/gun/rifle/m4ra_custom
 	name = "\improper M4RA custom battle rifle"
-	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armorers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
+	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armorers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titanium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "m4ra_custom"
 	item_state = "m4ra_custom"

@@ -1,7 +1,7 @@
 2019-02-01:
   Neth Iafin:
   - tweak: Buckshot secondary pellet spread increased so that most of shells land
-      2 tiles infort of you but quickly spread.
+      2 tiles infront of you but quickly spread.
   - tweak: Maximum and minimum buckshot damage variance has been reduced. It has less
       chance to instakill and less chance to do almost no damage.
   - tweak: No other changes were made to buckshot, so it still damages well even at
@@ -74,7 +74,7 @@
   - tweak: Bigger xenos take longer to enter tunnels. Larvas take less time.
   - tweak: Observers can now right-click and follow a mob.
   - bugfix: Forensic scanner should report proper DNA now.
-  - bugfix: Roudstart mob initialisation should be a touch faster since we're no longer
+  - bugfix: Roudstart mob initialization should be a touch faster since we're no longer
       reloading cache all the time.
   - bugfix: You shouldn't be able to latejoin as a PFC without a squad anymore.
   - bugfix: Supply Drop Console is now properly access-restricted.
@@ -109,7 +109,7 @@
   ThePiachu:
   - rscdel: As an ongoing effort to remove code we never use, a few things have been
       removed from the codebase. Syndicate, traitors, names of systems, religions,
-      factions, criminal organisations, have been removed. Magic has also been deleted
+      factions, criminal organizations, have been removed. Magic has also been deleted
       from the game.
   - tweak: Off-weed healing doesn't work if you are on Almayer and the Queen isn't.
   - tweak: Motion detector and whistle now come with a HUD icons.
@@ -121,7 +121,7 @@
   - tweak: Destroying a hugger trap now triggers it just like an acid or gas trap.
   - rscdel: As an ongoing effort to remove code we never use, a few things have been
       removed from the codebase. Syndicate, traitors, names of systems, religions,
-      factions, criminal organisations, have been removed. Magic has also been deleted
+      factions, criminal organizations, have been removed. Magic has also been deleted
       from the game.
 2019-02-06:
   MattAtlas:
@@ -179,7 +179,7 @@
       backpack. If you pick signal flare mid flight, Fire Mission will be aborted.'
   - tweak: Above changes made to prevent queen killing in Ovipositor and some unfair
       air raids on spawn points. These changes do not completely remove it, they just
-      make so that all parts of the marine forces has to cooperate to acheive game
+      make so that all parts of the marine forces has to cooperate to achieve game
       turning actions, and not just PO looking into every flare and jumping from offset
       to offset.
   - imageadd: PO's can now return their dropship home at any point from a Fly-By mission
@@ -212,7 +212,7 @@
       and see the situation planetside, change direction of the run and offset on
       that direction. You DO NOT NEED any additional attachments to do this.
   - imageadd: You can continue peeking thru the optical scope and see how your Fire
-      Mission resolves in real time. That lets you trully feel the Xeno salt... or
+      Mission resolves in real time. That lets you truly feel the Xeno salt... or
       in case of FF Strafing Run... oh boy.
   - imageadd: If any error happens during Fire Mission setup, watch the chat for messages.
   - imageadd: Every weapon has a delay in Fire Mission set up, so you can't fill every
@@ -307,7 +307,7 @@
   - tweak: Refactored attacks on simple animals. Such attacks now have the save audio/visual
       effects as attacks on regular mobs.
   - tweak: Quintupled line-of-sight embryo incubation bonus. As before, light is not
-      neccessary for it to work.
+      necessary for it to work.
   - tweak: Scary thing made scarier.
   - tweak: Adjusted skillsets of human factions:<br>- The CLF have poor firearms training,
       but make up for it with resourcefulness, plus diverse skillsets from their civilian
@@ -344,7 +344,7 @@
   ThePiachu:
   - tweak: Old Follow verb has been restored. New Follow functionality (for right-click
       follow) is now under Follow Them. Since there is no way of creating a right-click
-      verb without also creating a corresponging verb in the sidebar, it's there too
+      verb without also creating a corresponding verb in the sidebar, it's there too
       now.
 2019-02-13:
   MattAtlas:
@@ -468,8 +468,8 @@
   Miraviel and Cakey:
   - maptweak: Lower medical has been remapped. Ping me (Miraviel) on Discord if you
       have any feedback!
-  - maptweak: The brig has been moved to the lower deck, positioned inbetween medical
-      and briefing. The lower deck has been stretched slightly to accomodate.
+  - maptweak: The brig has been moved to the lower deck, positioned in between medical
+      and briefing. The lower deck has been stretched slightly to accommodate.
   - maptweak: Added a gym to the Almayer.
   - maptweak: Added a conference room to the fore of the CIC.
   - maptweak: The officer's mess has been made bigger.
@@ -509,9 +509,9 @@
   - tweak: DEFCON thresholds have been lowered overall.
   - rscadd: Added the Intelligence Officer role, for gathering DEFCON intel and point
       scores throughout the round.
-  - rscadd: Added the data detector, a devide that is given to Intelligence Officers
+  - rscadd: Added the data detector, a device that is given to Intelligence Officers
       to detect objective items, such as intel, xeno corpses, devices, and disks.
-  - tweak: DEFCON objective values have been tweaked. You now actually recieve points
+  - tweak: DEFCON objective values have been tweaked. You now actually receive points
       for recovering xenomorph corpses.
   - tweak: You no longer need the corresponding paper scrap to be able to interact
       with folders.

@@ -31,7 +31,7 @@ CLIENT_VERB(nanoclose, uiref as text)
 * ui_interact is currently defined for /atom/movable
 *
 * @param user /mob The mob who is interacting with this ui
-* @param ui_key string A string key to use for this ui. Allows for multiple unique uis on one obj/mob (defaut value "main")
+* @param ui_key string A string key to use for this ui. Allows for multiple unique uis on one obj/mob (default value "main")
 * @param ui /datum/nanoui This parameter is passed by the nanoui process() proc when updating an open ui
 * @param force_open boolean Force the UI to (re)open, even if it's already open
 *

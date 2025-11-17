@@ -112,11 +112,11 @@
 			var/obj/item/tool/weldingtool/W = I
 			if(W.remove_fuel(0, user))
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE("You start slicing the floorweld off the disposal unit."))
+				to_chat(user, SPAN_NOTICE("You start slicing the floor weld off the disposal unit."))
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !W.isOn())
 						return
-					to_chat(user, SPAN_NOTICE("You sliced the floorweld off the disposal unit."))
+					to_chat(user, SPAN_NOTICE("You sliced the floor weld off the disposal unit."))
 					var/obj/structure/disposalconstruct/C = new(loc)
 					transfer_fingerprints_to(C)
 					C.ptype = 6 //6 = disposal unit
@@ -697,7 +697,7 @@
 
 	var/turf/target
 
-	if(T.density) //Dense ouput turf, so stop holder
+	if(T.density) //Dense output turf, so stop holder
 		H.active = 0
 		H.forceMove(src)
 		return
@@ -1287,7 +1287,7 @@
 		linked = O
 	update()
 
-//Override attackby so we disallow trunkremoval when somethings ontop
+//Override attackby so we disallow trunk removal when somethings ontop
 /obj/structure/disposalpipe/trunk/attackby(obj/item/I, mob/user)
 
 	//Disposal constructors
@@ -1421,11 +1421,11 @@
 		var/obj/item/tool/weldingtool/W = I
 		if(W.remove_fuel(0, user))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-			to_chat(user, SPAN_NOTICE("You start slicing the floorweld off the disposal outlet."))
+			to_chat(user, SPAN_NOTICE("You start slicing the floor weld off the disposal outlet."))
 			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(!src || !W.isOn())
 					return
-				to_chat(user, SPAN_NOTICE("You sliced the floorweld off the disposal outlet."))
+				to_chat(user, SPAN_NOTICE("You sliced the floor weld off the disposal outlet."))
 				var/obj/structure/disposalconstruct/C = new(loc)
 				transfer_fingerprints_to(C)
 				C.ptype = 7 //7 =  outlet

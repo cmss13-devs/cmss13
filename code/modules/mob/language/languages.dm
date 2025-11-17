@@ -55,7 +55,7 @@
 	name = LANGUAGE_SPANISH
 	desc = "The second most common language spoken in the UA, brought from marines from the Latin American territories and in the former southern USA."
 	speech_verb = "states"
-	ask_verb = "quizes"
+	ask_verb = "quizzes"
 	exclaim_verb = "yells"
 	color = "spanish"
 	key = "5"
@@ -193,7 +193,7 @@
 	log_say("[speaker.name != "Unknown" ? speaker.name : "([speaker.real_name])"] \[APOLLO\]: [message] (CKEY: [speaker.key]) (JOB: [speaker.job]) (AREA: [get_area_name(speaker)])")
 	log_ares_apollo(speaker.real_name, message)
 	for (var/mob/dead in GLOB.dead_mob_list)
-		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
+		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-eavesdropping
 			var/dead_message = "<span class='[scale]'><span class='[color]'>[message_start](<a href='byond://?src=\ref[dead];track=\ref[speaker]'>F</a>) [message_body]</span></span>"
 			dead.show_message(dead_message, SHOW_MESSAGE_VISIBLE)
 

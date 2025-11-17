@@ -33,7 +33,7 @@ tank [un]loading stuff
 turn on/off
 
 /obj/structure/machinery/power/power_generator/port_gen/get_examine_text(mob/user)
-display floor(lastgen) and phorontank amount
+display floor(lastgen) and phoron tank amount
 
 */
 

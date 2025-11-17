@@ -34,7 +34,7 @@
   - bugfix: Fixed a bug where overriding xeno ability cooldowns wouldn't work properly.
   - rscadd: Rewrote pheromone code to be less strenuous on the server, while still
       working as it always has. Additionally, xenos between allied hives can now benefit
-      from eachother's pheromones.
+      from each other's pheromones.
   - bugfix: Smartpacks no longer modify the entire species when going into protective
       mode. All the effects are localized to the wearer.
   - tweak: Smartpack protective mode now also disables using firearms, in the event
@@ -236,9 +236,9 @@
       weapon received.
   - tweak: Removed weapons requiring specialist training to use in the black market
       crate and ammo crate respectively
-  - tweak: Russian weapons crate is now known as Hyperdine weapons crate
-  - tweak: 'Tweaked USMC and Hyperdine Weapon crate to include ammo for weapons '
-  - bugfix: Fixed black market ammo crate so it now properly appears in arsr
+  - tweak: Russian weapons crate is now known as Hyperdyne weapons crate
+  - tweak: 'Tweaked USMC and Hyperdyne Weapon crate to include ammo for weapons '
+  - bugfix: Fixed black market ammo crate so it now properly appears in ASRS
 2022-01-22:
   BlackCrystalic:
   - tweak: Who and staff who are now UI pop-up windows, rather than appearing in chat.
@@ -273,7 +273,7 @@
   - tweak: Weather layer updated, now weather have higher layer rather than have xenos
   Insertusername:
   - tweak: Scalpels can dig out shrapnel when not in surgery mode
-  - tweak: Doctors spawn with labcoats equipped
+  - tweak: Doctors spawn with lab coats equipped
   - rscadd: Adds Meralyne and it's recipe to the game
   Stan_Albatross:
   - bugfix: Fixes security record computers' access requirements not working.
@@ -282,7 +282,7 @@
       xeno slots than intended.
 2022-01-25:
   BlackCrystalic:
-  - bugfix: Added for telecom icon_state 9_0 and 9_1, no more invisible tcoms.
+  - bugfix: Added for telecom icon_state 9_0 and 9_1, no more invisible tcomms.
   TotalEpicness:
   - tweak: G8-A general pouch belt uses backpack-type storage now. It still holds
       3 normal-sized items maximum, however now you can hold smaller items.
@@ -298,11 +298,11 @@
       come in a later MR.
   - experiment: Almost entirely remapped Brig.
   - maptweak: The Brig is now more consistent in use of reinforced walls.
-  - maptweak: Brig Surgery can now be independantly accessed by doctors without MP
+  - maptweak: Brig Surgery can now be independently accessed by doctors without MP
       assistance. Corpsmen do not have access.
   - maptweak: Brig Interrogation now has an observation room beside it, with shutters
       toggleable to... maintain privacy.
-  - maptweak: Added an independantly operated Armory door for the CMP to open.
+  - maptweak: Added an independently operated Armory door for the CMP to open.
   - maptweak: Permanent Cells now attach to the Courtyard, however they do not have
       access beyond an ultra-reinforced window.
   - maptweak: Execution has been moved adjacent to the new Perma Cells.

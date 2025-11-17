@@ -19,7 +19,7 @@
 /datum/chem_property/neutral/thanatometabolizing
 	name = PROPERTY_THANATOMETABOL
 	code = "TMB"
-	description = "This chemical requires either low oxygen levels or low bloodflow to function. The potency of this property will affect the efficiency of other properties."
+	description = "This chemical requires either low oxygen levels or low blood flow to function. The potency of this property will affect the efficiency of other properties."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_METABOLITE
 	value = 1

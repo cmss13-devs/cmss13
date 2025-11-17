@@ -97,7 +97,7 @@
 	dat += "<p class=\"header-title\">Notice of Formal Apology</p>"
 	dat += "<p class=\"header-subtitle\">NJ910</p>"
 	dat += "<hr style=\"margin-top:-15px; margin-bottom:15px;\">"
-	dat += "</div> <!-- /Heasder Info -->"
+	dat += "</div> <!-- /Header Info -->"
 	dat += ""
 	dat += ""
 	dat += "<div class=\"message-body-text\">"

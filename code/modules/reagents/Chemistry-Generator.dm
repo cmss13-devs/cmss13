@@ -160,7 +160,7 @@
 //*****************************************************************************************************/
 
 /datum/reagent/proc/generate_name()
-	/*We can't make use of this currently because reagents are initialised before reactions. Might fix this at a later date.
+	/*We can't make use of this currently because reagents are initialized before reactions. Might fix this at a later date.
 	if(modifier > 6)
 		modifier = 6
 	var/list/numprefix = list("Mono","Di","Tri","Tetra","Penta","Hexa")*/
@@ -203,7 +203,7 @@
 			else if(gen_value == gen_tier * 2 + 2) //If we are balanced, don't add any more
 				break
 			else if(gen_tier < 3)
-				gen_value += add_property(0,0, gen_tier - gen_value - 1,specific_property,TRUE) //add property based on our offset from the prefered balance
+				gen_value += add_property(0,0, gen_tier - gen_value - 1,specific_property,TRUE) //add property based on our offset from the preferred balance
 			else
 				gen_value += add_property(0,0, gen_tier - gen_value - 1,specific_property)
 		while(LAZYLEN(properties) < gen_tier + 1) //We lost properties somewhere to conflicts, so add a random one until we're full
@@ -402,9 +402,9 @@
 	for(var/datum/chem_property/P in properties)
 		info += "<BR><B>[capitalize(P.name)] Level [P.level]</B> - [P.description]<BR>"
 		if(P == PROPERTY_HYPERTHERMIC)
-			info += "<I>WARNING: Mixing too much at a time can cause spontanous ignition! Beware mixing more than the OD threshold!</I>"
+			info += "<I>WARNING: Mixing too much at a time can cause spontaneous ignition! Beware mixing more than the OD threshold!</I>"
 		else if(P == PROPERTY_EXPLOSIVE)
-			info += "<I>WARNING: Mixing too much at a time can cause spontanous explosion! Do not mix more than the OD threshold!</I>"
+			info += "<I>WARNING: Mixing too much at a time can cause spontaneous explosion! Do not mix more than the OD threshold!</I>"
 	description = info
 
 /datum/reagent/proc/generate_assoc_recipe(list/complexity, list/required_reagents_to_add)

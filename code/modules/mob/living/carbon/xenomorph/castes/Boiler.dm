@@ -329,8 +329,8 @@
 	target.set_state(RESIN_TRAP_GAS)
 
 	playsound(target, 'sound/effects/refill.ogg', 25, 1)
-	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with acid gas!"),
-	SPAN_XENOWARNING("You pressurise the resin trap with acid gas!"), null, 5)
+	visible_message(SPAN_XENOWARNING("[src] pressurizes the resin trap with acid gas!"),
+	SPAN_XENOWARNING("You pressurize the resin trap with acid gas!"), null, 5)
 	return TRUE
 
 #undef ACID_COST_BOILER

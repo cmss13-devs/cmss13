@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	icon_state = "wall_phone"
 	desc = "It is a wall mounted telephone. The fine text reads: To log your details with the mainframe please insert your keycard into the slot below. Unfortunately the slot is jammed. You can still use the phone, however."
 
-	var/phone_category = "Uncategorised"
+	var/phone_category = "Uncategorized"
 	var/phone_color = "white"
 	var/phone_id = "Telephone"
 	var/phone_icon

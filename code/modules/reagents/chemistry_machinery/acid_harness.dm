@@ -266,7 +266,7 @@
 			if(ACID_VITALS_NOMINAL)
 				text += SPAN_NOTICE("Vital signs nominal.")
 			if(ACID_VITALS_DROPPING)
-				text += SPAN_WARNING("Vital signs dropping. Medical attention is adviced.")
+				text += SPAN_WARNING("Vital signs dropping. Medical attention is advised.")
 			if(ACID_VITALS_LOW)
 				text += SPAN_WARNING("Vital signs low. Seek medical attention.")
 			if(ACID_VITALS_CRITICAL)

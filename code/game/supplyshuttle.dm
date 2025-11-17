@@ -1254,7 +1254,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /datum/controller/supply/proc/kill_mendoza()
 	if(!mendoza_status)
-		return //cant kill him twice
+		return //can't kill him twice
 
 	mendoza_status = FALSE // he'll die soon enough, and in the meantime will be too busy to handle requests.
 

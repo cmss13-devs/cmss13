@@ -31,7 +31,7 @@
 	. = ..()
 	if(SSmapping.configs[GROUND_MAP].camouflage_type == "urban" || "classic")
 		name = "\improper M3-LS pattern sniper armor"
-		desc = "A lightweight version of M3 pattern armor, with an integrated thermal signature dampering device, used by USCM snipers on urban recon missions. Very lightweight, but doesn't protect much."
+		desc = "A lightweight version of M3 pattern armor, with an integrated thermal signature dampening device, used by USCM snipers on urban recon missions. Very lightweight, but doesn't protect much."
 
 /obj/item/clothing/suit/storage/marine/ghillie/verb/camouflage()
 	set name = "Prepare Position"

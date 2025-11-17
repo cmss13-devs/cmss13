@@ -22,7 +22,7 @@
 
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/sof
 	name = "\improper SOF elite combat harness"
-	desc = "A heavily customized smargunner harness. Used by Marine Raiders."
+	desc = "A heavily customized smartgunner harness. Used by Marine Raiders."
 	icon_state = "marsoc_harness"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
@@ -151,7 +151,7 @@
 
 /obj/item/clothing/suit/storage/marine/faction/UPP
 	name = "\improper UM5 personal armor"
-	desc = "Standard body armor of the UPP military, the UM5 (Union Medium MK5) is a medium body armor, roughly on par with the M3 pattern body armor in service with the USCM, specialized towards ballistics protection. Unlike the M3, however, the plate has a heavier neckplate. This has earned many UA members to refer to UPP soldiers as 'tin men'."
+	desc = "Standard body armor of the UPP military, the UM5 (Union Medium MK5) is a medium body armor, roughly on par with the M3 pattern body armor in service with the USCM, specialized towards ballistics protection. Unlike the M3, however, the plate has a heavier neck plate. This has earned many UA members to refer to UPP soldiers as 'tin men'."
 	icon_state = "upp_armor"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'
 	item_icons = list(
@@ -183,7 +183,7 @@
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/support/synth
 	name = "\improper UL6 Synthetic personal armor"
-	desc = "Modified variant of the UL6 personel armor system intended to be useable by Synthetic units. Offers no protection but very little movement impairment."
+	desc = "Modified variant of the UL6 personnel armor system intended to be useable by Synthetic units. Offers no protection but very little movement impairment."
 	flags_marine_armor = ARMOR_LAMP_OVERLAY|SYNTH_ALLOWED
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
@@ -519,13 +519,13 @@
 
 /obj/item/clothing/suit/storage/militia/full
 	name = "colonial militia full armor"
-	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled lether and more modern armor places, this one includes full set of armor for all limbs and full torso protection."
+	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled leather and more modern armor places, this one includes full set of armor for all limbs and full torso protection."
 	icon_state = "rebel_armor_full"
 	storage_slots = 3
 
 /obj/item/clothing/suit/storage/militia/full/smartgun
 	name = "colonial militia full armor harness"
-	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled lether and more modern armor places, this one includes full set of armor for all limbs and full torso protection. This one is even further modified with parts of M56 smargunner harness, allowing the use of smargun system electronics."
+	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled leather and more modern armor places, this one includes full set of armor for all limbs and full torso protection. This one is even further modified with parts of M56 smartgunner harness, allowing the use of smartgun system electronics."
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
 
 //===========================//CMB\\================================\\
@@ -533,7 +533,7 @@
 
 /obj/item/clothing/suit/storage/CMB
 	name = "\improper CMB Deputy jacket"
-	desc = "A thick and stylish black leather jacket with a Marshal's Deputy badge pinned to it. The back is enscribed with the powerful letters of 'DEPUTY' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A thick and stylish black leather jacket with a Marshal's Deputy badge pinned to it. The back is inscribed with the powerful letters of 'DEPUTY' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon_state = "CMB_jacket"
 	item_state = "CMB_jacket"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CMB.dmi'
@@ -587,7 +587,7 @@
 
 /obj/item/clothing/suit/storage/CMB/marshal
 	name = "\improper CMB Marshal jacket"
-	desc = "A thick and stylish black leather jacket with a Marshal's badge pinned to it. The back is enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "A thick and stylish black leather jacket with a Marshal's badge pinned to it. The back is inscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
 	icon_state = "CMB_jacket_marshal"
 	item_state = "CMB_jacket_marshal"
 
@@ -664,7 +664,7 @@
 /obj/item/clothing/suit/storage/marine/veteran/cmb/leader
 	name = "\improper M4R pattern CMB Marshal armor"
 	icon_state = "cmb_sheriff_armor"
-	desc = "A custom fit variation of the CMB Riot armor, intended to be worn the Marshals themselves, has a golden lining with rank insignia. Has additional layer of lightweigh protective materials."
+	desc = "A custom fit variation of the CMB Riot armor, intended to be worn the Marshals themselves, has a golden lining with rank insignia. Has additional layer of lightweight protective materials."
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
 
@@ -866,7 +866,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine
 	name = "kestrel armoured vest"
-	desc = "A customizable personal armor system used by the Three World Empire's Royal Marines Commandos. Designers from a Weyland Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor systemed to suit the unique needs of the Three World Empire's smaller but better equipped Royal Marines."
+	desc = "A customizable personal armor system used by the Three World Empire's Royal Marines Commandos. Designers from a Weyland Yutani subsidiary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor designed to suit the unique needs of the Three World Empire's smaller but better equipped Royal Marines."
 	icon_state = "rmc_light"
 	item_state = "rmc_light"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
@@ -920,7 +920,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/royal_marine/pointman //Pointman Spec Armor
 	name = "kestrel pointman armour"
-	desc = "A heavier version of the armor system used by the Three World Empire's Royal Marines Commandos. Designers from a Weyland Yutani subsidary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor systemed to suit the unique needs of the Three World Empire's smaller but better equipped Royal Marines."
+	desc = "A heavier version of the armor system used by the Three World Empire's Royal Marines Commandos. Designers from a Weyland Yutani subsidiary, Lindenthal-Ehrenfeld Militärindustrie, iterated on the USCMC's M3 pattern personal armor in their Tokonigara lab to create an armor designed to suit the unique needs of the Three World Empire's smaller but better equipped Royal Marines."
 	icon_state = "rmc_pointman"
 	item_state = "rmc_pointman"
 	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS|BODY_FLAG_ARMS

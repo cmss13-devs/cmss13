@@ -112,7 +112,7 @@
 	dat += "<p class=\"header-title\">Confidentiality Agreement</p>"
 	dat += "<p class=\"header-subtitle\">WY441</p>"
 	dat += "<hr style=\"margin-top:5px; margin-bottom:35px;\">"
-	dat += "</div> <!-- /Heasder Info -->"
+	dat += "</div> <!-- /Header Info -->"
 	dat += ""
 	dat += ""
 	dat += "<!-- Message -->"

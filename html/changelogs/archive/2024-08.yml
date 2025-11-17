@@ -6,7 +6,7 @@
       mobs make no throw sound (sniper, scout, yautja)
   - rscadd: throw animation pixel shifts for less pixels
   - rscadd: lowered throw sound range a bit
-  - soundadd: added mutiple unique sound for throwing things
+  - soundadd: added multiple unique sound for throwing things
   - soundadd: added numerous phone sounds for different phone interactions
   CapCamIII:
   - rscadd: UPP and CLF department channels now have distinct chat colors
@@ -118,7 +118,7 @@
   VileBeggar:
   - bugfix: butcher's knife inhands now display properly
   cuberound:
-  - bugfix: weeds do not cover preshure tanks
+  - bugfix: weeds do not cover pressure tanks
   - rscadd: acid spray scorches grass and melts snow
   - rscdel: Removes gravity :)
   mullenpaul:
@@ -214,10 +214,10 @@
   Blundir:
   - rscadd: plasteel non folding barricade
   Steelpoint:
-  - rscadd: A plantable UPP flag has been added to the game, an equilivant of the
+  - rscadd: A plantable UPP flag has been added to the game, an equivalent of the
       United Americas flag. Currently admin spawn only.
   - rscadd: A Command Tablet has been added that can be used by UPP Officers.
-  - rscadd: UPP Officers ranked O4 or greater (USCM Major Equilivant) are issued with
+  - rscadd: UPP Officers ranked O4 or greater (USCM Major Equivalent) are issued with
       a Command Tablet.
 2024-08-16:
   Doubleumc:
@@ -230,7 +230,7 @@
   - rscadd: Guns now support custom muzzle flash light color, some guns have a new
       color of it now, standard color is yellow tinted now instead of white
   cuberound:
-  - bugfix: two persons are needed to activate red, ert and emergency acces using
+  - bugfix: two persons are needed to activate red, ert and emergency access using
       cards
 2024-08-18:
   Zonespace27:
@@ -250,7 +250,7 @@
   - refactor: Refactored the corporate boots, making a version with and without a
       knife in it on spawn. All roles that should have the knife version, have it.
   - imageadd: Added new item sprites to the old 'complete' suits; that being the tan
-      and formal suits, aswell as the suspenders.
+      and formal suits, as well as the suspenders.
   - imageadd: Added a new item sprite for the black beret, in line with the rest of
       the modern berets.
   - maptweak: Swapped the CL's cabinet for the wardrobe vendor.
@@ -306,7 +306,7 @@
   - rscadd: Added flat icon support to spritesheets for boxes, ammo boxes, and reagent
       containers so they display their overlays in vendors
   - qol: remade list in req clothing vendor
-  - qol: lowered chance of ingridients crate to be sent by asrs
+  - qol: lowered chance of ingredients crate to be sent by asrs
   - qol: qm jacket is now identical in stats and capabilities to service jacket
   - balance: changed XM88 packets capacity from 90 to 100 (is it needed for correct
       ammo box calculations)
@@ -409,7 +409,7 @@
   kiVts:
   - code_imp: Research datum now supports more broad ideas in the future.
   private-tristan:
-  - qol: IOs now late join into their officer bunks instead of the general wakeup
+  - qol: IOs now late join into their officer bunks instead of the general wake up
       area
   - qol: Late joiners will no longer wake up in thin air in the main cryo area.
   zzzmike:
@@ -468,9 +468,9 @@
   Willzadl:
   - qol: changed reinforced treads item description
   cuberound:
-  - bugfix: taking apart plasteel baricade gives back 8 not 4 plasteel
+  - bugfix: taking apart plasteel barricade gives back 8 not 4 plasteel
   kiVts:
-  - bugfix: ERT no longer gets one extra free member in freed mobs if the beacon wasnt
+  - bugfix: ERT no longer gets one extra free member in freed mobs if the beacon wasn't
       completely taken
   zzzmike:
   - bugfix: CL intro text is more clear regarding legal orders

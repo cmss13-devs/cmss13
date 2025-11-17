@@ -94,7 +94,7 @@
       you now also automatically refill its autoinjector so you will be fully topped
       up in one click!
   - code_imp: Simplified a casting of an autoinjector to a too detailed type during
-      Pressurized Reagent Canister Pouch initialisation.
+      Pressurized Reagent Canister Pouch initialization.
   - spellcheck: All the ammo boxes and grenade packets are now properly labelled as
       "\improper".
   carlarctg:
@@ -141,7 +141,7 @@
   ThePiachu:
   - bugfix: Fixed a runtime error for new Carriers around checking if they can use
       their hugger ability.
-  - code_imp: Removed a double variable initialisation for Carriers.
+  - code_imp: Removed a double variable initialization for Carriers.
   carlarctg:
   - imageadd: Resprited the W-Y Flask. Removed the gold badge from the former detective's
       flask.
@@ -169,7 +169,7 @@
       to bun recipe.
   ThePiachu:
   - spellcheck: Made the message about the timer for joining as a facehugger clearer.
-  - bugfix: Empty cells now properly initialise with a correct charge indicator.
+  - bugfix: Empty cells now properly initialize with a correct charge indicator.
   - qol: Chargers and battery chargers now display a charge percentage. Chargers let
       you know the charge level if you're charging a battery.
   - code_imp: Gave batteries a little bit less snowflake initialization code and made
@@ -201,8 +201,8 @@
   - balance: Altered the prices of cigarette vending machines around to overall make
       them more expensive. PFCs will not be able to buy Executive Select with their
       starting cash.
-  - rscdel: Made cassetes and Souto from vendors more expensive. Buying food from
-      Hot Foods now costs money. Marine coffee now has an appropiate description.
+  - rscdel: Made cassettes and Souto from vendors more expensive. Buying food from
+      Hot Foods now costs money. Marine coffee now has an appropriate description.
       Souto vendors no longer vend water bottles.
   - bugfix: Fixed default parent type dollar items being worth 0 money...
   - bugfix: Fixed resin fruit disappearing magically from bloodstream.
@@ -227,7 +227,7 @@
       large xenomorphs.
   kugamo:
   - rscadd: You can now crush cans on harm intent with your head, hands, or feet!
-  - soundadd: New sound for crushin cans.
+  - soundadd: New sound for crushing cans.
   - imageadd: New sprites for crushed cans.
   realforest2001:
   - rscadd: StaffWho can now show multiple roles per staff member. This is purely
@@ -236,7 +236,7 @@
       round end and if they need to be wiped out or not. Color regards to xeno colours,
       not weeds or anything else.
   - code_imp: Examining xenos or structures now show the name of the hive they belong
-      to, rather than bastardising it by using [Hive.prefix] Hive
+      to, rather than bastardizing it by using [Hive.prefix] Hive
 2022-12-08:
   Carlarc, Mikola Wei:
   - imageadd: Resprited Oppressor, sprites made by Mikola Wei.
@@ -276,7 +276,7 @@
   - refactor: Added boldwarning span macro.
   - imageadd: 'Improved locator tube sprites: Now has a pop-out battery slot at the
       top that shows up if emptied. The main green stripe is now a battery indicator
-      with appropiately-faded-out yellow warning and blinking red danger sprites.
+      with appropriately-faded-out yellow warning and blinking red danger sprites.
       The small notch at the bottom is now a bracelet indicator that turns off without
       a battery and blinks red if the bracelet was somehow destroyed.'
   - qol: The locator tube and PDT bracelet now share a serial number, easily viewed
@@ -290,9 +290,9 @@
   Sleepynecrons:
   - imageadd: updated the rest of Oppressor's sprites to be the newer version
   SpartanBobby:
-  - balance: A-Block Droms north-south hallways are now 1 tile wider on each side
+  - balance: A-Block Dorms north-south hallways are now 1 tile wider on each side
       with a 2x3 destructible blocker in the middle to hinder snipers and boilers
-  - balance: A-Block Drom south hallway now has a door leading outside
+  - balance: A-Block Dorm south hallway now has a door leading outside
   - balance: Some of the man-made barricades on the map have now been destroyed prior
       to the Almayer landing
   - balance: 'LV522 Chances Claim: Removed a lot of 1x1 tunnels and redundant areas
@@ -395,7 +395,7 @@
   - bugfix: Projectiles no longer experience an unintended massive drop in accuracy
       immediately past their maximum accurate range.
   ThePiachu:
-  - rscadd: Added three more Recharge Stations to Fiora Science Annex
+  - rscadd: Added three more Recharge Stations to Fiorina Science Annex
   - rscadd: Added four Recharge Stations to Kutjevo Refinery
   - rscadd: Added one more Recharge Station to Solaris Ridge
   Unknownity:
@@ -407,9 +407,9 @@
   - balance: Spitter's Charge Spit's cooldown has been reduced from 15 to 12 seconds.
   - rscadd: Spitter Tail Stab injects 5u monomolecular acid.
   mullenpaul:
-  - bugfix: fixed bug in turing autodispensor so that pill bottles can be in local
-      smart fridge
-  - refactor: migrated smart fridge to tgui
+  - bugfix: fixed bug in turing autodispenser so that pill bottles can be in local
+      smartfridge
+  - refactor: migrated smartfridge to tgui
   - refactor: added common electrical panel for tgui components
   nauticall:
   - balance: Rebalanced the CO's Mateba and Desert Eagle so that each have their own
@@ -429,7 +429,7 @@
 2022-12-12:
   carlarctg:
   - rscadd: Queen eye shuffles weed sprites when passing over them.
-  - bugfix: Fixed some single letter vars so the mantainer agenda can't delay this
+  - bugfix: Fixed some single letter vars so the maintainer agenda can't delay this
       PR from merging.
 2022-12-13:
   NoKohi:
@@ -519,7 +519,7 @@
       a better bullet trail.
   - rscadd: Gun firing now takes into account click position. This can bend the bullet
       trajectory beyond the clicked point.
-  - rscadd: Projectiles now attempt to mimick a proper bullet stream by offsetting
+  - rscadd: Projectiles now attempt to mimic a proper bullet stream by offsetting
       slightly. This is purely visual.
   - code_imp: Removed rocket speed-up, and gave them full speed. Only really matters
       for offscreen admin-spawned thermobaric rockets.
@@ -533,7 +533,7 @@
   kugamo:
   - imageadd: Burnt grasses now have smoother borders on their sprites.
   realforest2001:
-  - bugfix: Fixes Queen body being invisible upon death while ovii'd.
+  - bugfix: Fixes Queen body being invisible upon death while ovied.
   - bugfix: Fixes Objective computers being blow-up-able, causing UI failures.
   - bugfix: Fixes Synthetic Infiltrator using the blaringly obvious Synthetic Paygrade
       from root.
@@ -624,7 +624,7 @@
   - bugfix: Fixes blood and footprints blocking weed clearing.
   - bugfix: Hitting a turf with any item will first check if the item has weeds on
       it, and attack them if so. You probably shouldn't be able to pry up floor tiles
-      while the floortile is covered in alien resin..
+      while the floor tile is covered in alien resin..
   harryob:
   - bugfix: you are now gentle with the reagent tanks.
   realforest2001:
@@ -638,7 +638,7 @@
   - bugfix: Terminals will now spawn on the correct side of SMESes
   - bugfix: Round start broken SMESes will now function as expected once repaired
   Morrow:
-  - balance: Removes groundside nanomeds refilling splints and skilless injectors.
+  - balance: Removes groundside nanomeds refilling splints and skillless injectors.
   - balance: Nerfs non-med APC nanomeds to basic groundside level.
   carlarctg:
   - bugfix: Fixes a runtime in specialist.dm
@@ -648,12 +648,12 @@
       style more focused into dealing damage and
 
       mobility.'
-  - rscadd: 'Active 1 : Rush . Pounces for a maximun of 4 tiles and slashes the objetive
+  - rscadd: 'Active 1 : Rush . Pounces for a maximum of 4 tiles and slashes the objective
       once on impact . applying a screenshake and daze to the target . Landing this
       ability reduces the cooldown by half. (cooldown 6 seconds)'
   - rscadd: 'Active 2 . Flurry : unleashes a 1X3 slash at the targeted direction that
       slows your enemies on impact healing you by 30 hp . (cooldown 3 seconds)'
-  - rscadd: 'Active 3 : Tail Jab : Attacks your enemies from a maximun of  2 tiles
+  - rscadd: 'Active 3 : Tail Jab : Attacks your enemies from a maximum of  2 tiles
       away while dealing a small amount of damage ( 20)  and knocking them down .
       if you attack a enemy that is on critical state it will deal 80 damage with
       penetration and heal you by 150 hp. (cooldown 7 seconds)'
@@ -756,7 +756,7 @@
       push back (not knock back) close targets when struck.
   - rscadd: The Deagle's normal shots (unobtainable by COs) throw back any hit targets
       like heavy m44, and deal great damage. However, the gun is very inaccurate.
-  - rscadd: The PK9 has recieved an accuracy buff as it was hitting nothing.
+  - rscadd: The PK9 has received an accuracy buff as it was hitting nothing.
   - rscadd: The KT-42 has been made into a cross between a mod88 and a VP, quickly
       firing strong, inaccurate AP bullets.
   - rscadd: The unfinished RXM5-EVA pistol has been finished! With its own unique
@@ -915,7 +915,7 @@
   ThePiachu:
   - bugfix: Fixed a runtime caused by fires being mid-smothering while weather changed.
   - bugfix: Fixed a Vanguard Praetorian runtime.
-  - refactor: Refactored Vanguard shield code a bit to remove unnecesary typecasting.
+  - refactor: Refactored Vanguard shield code a bit to remove unnecessary typecasting.
   - code_imp: Refactored the code around listing squad members for the Overwatch Console,
       Crew Monitor and the Groundside Operations Computer.
   carlarctg:
@@ -931,7 +931,7 @@
   - bugfix: Scatter is not applied to ground-targeted weaponry (like Flaregun) as
       it would cause projectiles to miss wide to max range.
   harryob:
-  - bugfix: a couple subsystems now report their initialisation correctly.
+  - bugfix: a couple subsystems now report their initialization correctly.
   stanalbatross:
   - ui: converted the rarely used gas tanks to tgui
 2022-12-29:
@@ -961,14 +961,14 @@
       art if you let it time out. If you let this happen, if will now pick a random
       spawn.
   - balance: you can no longer remove bullets from HPR mags
-  - bugfix: lockers no longer paralyse you when getting out of them
+  - bugfix: lockers no longer paralyze you when getting out of them
   - bugfix: berets no longer make the sounds of armour being taken off
 2022-12-31:
   Huffie56:
   - rscadd: Added emergency shutter and buttons to activate the alarm that where missing.
   - rscdel: Remove some shutters between canteen and squad prep.
   - bugfix: fixed some emergency shutters being in the wrong direction.
-  - rscadd: changed the all internal layout of PO quarter, standartize DCC/PO bunkroomsize
+  - rscadd: changed the all internal layout of PO quarter, standardize DCC/PO bunkroomsize
       added a new bathroom.
   Morrow:
   - bugfix: Fixes runtime with pre-mapped decapitated heads

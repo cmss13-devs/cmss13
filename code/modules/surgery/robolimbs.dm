@@ -3,11 +3,11 @@
 // ROBOLIMB SURGERY //
 //////////////////////////////////////////////////////////////////
 
-/datum/surgery/prosthetical_replacement
+/datum/surgery/prosthetic_replacement
 	name = "Attach Prosthetic Limb"
 	steps = list(
 		/datum/surgery_step/connect_prosthesis,
-		/datum/surgery_step/strenghten_prosthesis_connection,
+		/datum/surgery_step/strengthen_prosthesis_connection,
 		/datum/surgery_step/calibrate_prosthesis,
 	)
 	possible_locs = EXTREMITY_LIMBS
@@ -67,7 +67,7 @@
 
 //------------------------------------
 
-/datum/surgery_step/strenghten_prosthesis_connection
+/datum/surgery_step/strengthen_prosthesis_connection
 	name = "Tighten Prosthesis Connections"
 	desc = "tighten the prosthesis"
 	accept_hand = TRUE
@@ -77,7 +77,7 @@
 	success_sound = 'sound/surgery/retractor1.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
-/datum/surgery_step/strenghten_prosthesis_connection/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/strengthen_prosthesis_connection/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You start tightening [target]'s new prosthetic [parse_zone(target_zone)]'s connection to \his body."),
 		SPAN_NOTICE("[user] starts to tighten your new prosthetic [parse_zone(target_zone)]'s connection to your body."),
@@ -85,7 +85,7 @@
 
 	log_interact(user, target, "[key_name(user)] began tightening a prosthesis to [key_name(target)]'s [surgery.affected_limb.display_name].")
 
-/datum/surgery_step/strenghten_prosthesis_connection/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/strengthen_prosthesis_connection/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You firmly attach the prosthesis to [target]'s body."),
 		SPAN_NOTICE("[user] firmly attaches the prosthesis to your body."),
@@ -93,7 +93,7 @@
 
 	log_interact(user, target, "[key_name(user)] finished tightening a prosthesis to [key_name(target)]'s [surgery.affected_limb.display_name].")
 
-/datum/surgery_step/strenghten_prosthesis_connection/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/strengthen_prosthesis_connection/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/nerves_type = target.get_nerves_type()
 	if(nerves_type == "nervous system") //pinching someone's entire nervous system wouldn't make sense
 		nerves_type = "stump"

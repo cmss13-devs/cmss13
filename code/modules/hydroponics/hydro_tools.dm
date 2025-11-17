@@ -128,12 +128,12 @@
 
 	switch(grown_seed.carnivorous)
 		if(1)
-			dat += "<br>It is carniovorous and will eat tray pests for sustenance."
+			dat += "<br>It is carnivorous and will eat tray pests for sustenance."
 		if(2)
 			dat += "<br>It is carnivorous and poses a significant threat to living things around it."
 
 	if(grown_seed.parasite)
-		dat += "<br>It is capable of parisitizing and gaining sustenance from tray weeds."
+		dat += "<br>It is capable of parasitizing and gaining sustenance from tray weeds."
 	if(grown_seed.alter_temp)
 		dat += "<br>It will periodically alter the local temperature by [grown_seed.alter_temp] degrees Kelvin."
 

@@ -79,7 +79,7 @@
   - maptweak: WO now uses the new Tcomms relay tower.
   - tweak: Tweaked some WO gear for Smartgunners, Honor Guard Squad Leader, doctors
       - they should be more prepared for the round.
-  - bugfix: WO Requisition vendors should initialise properly now.
+  - bugfix: WO Requisition vendors should initialize properly now.
   - tweak: Reduced WO round end variance to be 1 hour 20 minutes plus a random amount
       up to a total of 1 hour 40 minutes.
   - tweak: WO Game Mode will now delete Almayer upon start of the game to remove unnecessary
@@ -158,7 +158,7 @@
   - bugfix: Fixed epinephrine (Electrogenetic) not working.
   Triiodine:
   - fix: Fixed the L42A Battle Rifle rail attachment offsets not actually putting
-      attachments on the rear sight mount (That lil protrustion off the back).
+      attachments on the rear sight mount (That lil protrusion off the back).
   - fix: Fixed the M46C rail attachment offsets not being set correctly.
   - spellcheck: Fixed the L42A Battle Rifle still being called the L42 Pulse Carbine
       MK1 in the requisitions vendors.
@@ -201,7 +201,7 @@
       (11879)
   - bugfix: Fixed the Queen not being able to build nests. (12277)
   - tweak: The type of the two roundstart OB warheads are now random. You can start
-      with 2 HEs, 2 incediaries, 2 clusters or any of their variations. The number
+      with 2 HEs, 2 incendiaries, 2 clusters or any of their variations. The number
       of warheads did not change. (12101)
   - rscadd: The Queen can now toggle between two unnesting modes. Default - only drone
       castes can unnest. Toggled - everyone can unnest.
@@ -388,12 +388,12 @@
   - tweak: To compensate for the now large amount of chemical dispensers on the Almayer,
       chemical dispensers now use a shared energy pool depending on their network
       (ground, medbay, research, misc). The Turing is not affected by this.
-  - tweak: The hypospray lock is now togglable by verb (Toggle Hypo Lock) rather than
+  - tweak: The hypospray lock is now toggleable by verb (Toggle Hypo Lock) rather than
       screwdriver.
   - rscadd: Added the medilathe to the research workshop, which can print medical
       related items. Some medical items have been removed from the autolathe.
   - imageadd: Added new science machinery sprites based off old sprites left behind
-      by NicBoone, modernised and animated by TobiNerd.
+      by NicBoone, modernized and animated by TobiNerd.
   Vampmare:
   - tweak: Synthetics and preds won't stutter by pain anymore.
   - tweak: Human pain thresholds increased. So you need more pain before falling into
@@ -403,7 +403,7 @@
   - tweak: Streamlined building of airlocks, walls and reinforced walls. Examining
       airlock assembly or girders will walk you through the steps. Girder for walls
       and reinforced walls. Airlock assembly + airlock circuit to make airlock.
-  - tweak: You can now build fences with metal rods. Wirecutting a fence twice will
+  - tweak: You can now build fences with metal rods. Wire cutting a fence twice will
       give you back the metal rods.
   - tweak: You can now build window frames with 10 metal.
   - tweak: Airlocks are now deconstructed by welding it, screwdriver to open panel
@@ -537,7 +537,7 @@
   - imageadd: Almost all Squad Prep Racks received new sprites.
   - tweak: Squad Requisitions Munition and Armaments Vendors will vend items on the
       desk now.
-  - experiment: 'Auxilliary Combat Support vendors changes:'
+  - experiment: 'Auxiliary Combat Support vendors changes:'
   - maptweak: 'Added Clothing Racks for Pilot Officers, Vehicle Crewmen and Intelligence
       Officers in their roundstart spawning locations: PO Bunks, VC bunks and Computer
       Lab.'
@@ -708,7 +708,7 @@
 2020-07-27:
   Vampmare:
   - tweak: Increased weed slowdown. Decreased hive weed slowdown.
-  - tweak: Creating weeds is no longer spamable, there's a short CD.
+  - tweak: Creating weeds is no longer spammable, there's a short CD.
   Waltermeldron:
   - bugfix: Predators can no longer make teleport locations whilst buckled to a nest
   - bugfix: Xenos can no longer build near special structures

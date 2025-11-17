@@ -216,7 +216,7 @@
 	if(mob_size == MOB_SIZE_IMMOBILE)
 		offset_y = 28
 
-	//the shockwave center is updated eachtime shockwave is called and offset relative to the mob_size.
+	//the shockwave center is updated each time shockwave is called and offset relative to the mob_size.
 	//due to the speed of the shockwaves, it isn't required to be tied to the exact mob movements
 	var/epicenter = loc //center of the shockwave, set at the center of the tile that the mob is currently standing on
 	var/easing = QUAD_EASING | EASE_OUT

@@ -65,14 +65,14 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/enable()
 	disabled = FALSE
 
-/obj/structure/machinery/computer/shuttle/dropship/flight/proc/update_equipment(optimised=FALSE, is_flyby=FALSE)
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/update_equipment(optimized=FALSE, is_flyby=FALSE)
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttleId)
 	if(!dropship)
 		return
 
 	// initial flight time
 	var/flight_duration =  is_flyby ? DROPSHIP_TRANSIT_DURATION : DROPSHIP_TRANSIT_DURATION * GLOB.ship_alt
-	if(optimised)
+	if(optimized)
 		if(is_flyby)
 			flight_duration = DROPSHIP_TRANSIT_DURATION * 1.5
 		else
@@ -81,7 +81,7 @@
 	// recharge time before dropship can take off
 	var/recharge_duration = SHUTTLE_RECHARGE
 
-	if(optimised)
+	if(optimized)
 		recharge_duration = SHUTTLE_RECHARGE * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE
 
 	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
@@ -502,17 +502,17 @@
 				to_chat(usr, SPAN_WARNING("You can't move to a new destination right now."))
 				return TRUE
 
-			var/is_optimised = FALSE
+			var/is_optimized = FALSE
 			// automatically apply optimisation if user is a pilot
 			if(skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
-				is_optimised = TRUE
+				is_optimized = TRUE
 
 			var/dock_id = params["target"]
 			if(dock_id == DROPSHIP_FLYBY_ID)
 				if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 					to_chat(user, SPAN_WARNING("You don't have the skill to perform a flyby."))
 					return FALSE
-				update_equipment(is_optimised, TRUE)
+				update_equipment(is_optimized, TRUE)
 				to_chat(user, SPAN_NOTICE("You begin the launch sequence for a flyby."))
 				if(shuttle.faction == FACTION_MARINE)
 					log_ares_flight(user.name, "Launched Dropship [shuttle.name] on a flyby.")
@@ -523,7 +523,7 @@
 				stop_playing_launch_announcement_alarm()
 				return TRUE
 
-			update_equipment(is_optimised, FALSE)
+			update_equipment(is_optimized, FALSE)
 			var/list/local_data = ui_data(user)
 			var/found = FALSE
 			playsound(loc, get_sfx("terminal_button"), 5, 1)

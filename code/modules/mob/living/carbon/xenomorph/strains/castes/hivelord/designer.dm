@@ -97,7 +97,7 @@
 /datum/design_mark
 	var/name = "xeno_declare"
 	var/icon_state = "empty"
-	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother"
+	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to each other"
 
 /datum/design_mark/resin_wall
 	name = "Resin Wall"
@@ -648,7 +648,7 @@
 /obj/effect/alien/resin/sticky/weak_nutriplasm/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += SPAN_NOTICE("On closer examination, this thin sticky substance remainds you of sticky resin.")
+		. += SPAN_NOTICE("On closer examination, this thin sticky substance reminds you of sticky resin.")
 	if(isxeno(user) || isobserver(user))
 		. += SPAN_NOTICE("We stare at the remains of weedbound walls - nutriplasm. As edible as it sounds, it's just another kind of sticky resin.")
 
@@ -661,7 +661,7 @@
 /obj/effect/alien/resin/sticky/strong_nutriplasm/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += SPAN_NOTICE("On closer examination, this thick sticky substance remainds you of sticky resin.")
+		. += SPAN_NOTICE("On closer examination, this thick sticky substance reminds you of sticky resin.")
 	if(isxeno(user) || isobserver(user))
 		. += SPAN_NOTICE("We stare at thick nutriplasm, the remains from weedbound resin, it sound delicious but you remember, its just different sticky resin.")
 
@@ -934,7 +934,7 @@
 		playsound(xeno.loc, "alien_resin_move2", 25)
 		return
 
-	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than lenght that was defined
+	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than length that was defined
 		to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another node, one will wither away to allow this one to live!"))
 		var/obj/effect/alien/resin/design/old_design = xeno.current_design[1] //Check with node is first for deletion on list
 		xeno.current_design.Remove(old_design) //Removes first node stored inside list
@@ -1145,7 +1145,7 @@
 
 	var/choice
 	if(owner.client.prefs.no_radials_preference)
-		choice = tgui_input_list(owner, "Choose Desing Option", "Pick", options, theme="hive_status")
+		choice = tgui_input_list(owner, "Choose Design Option", "Pick", options, theme="hive_status")
 	else
 		choice = show_radial_menu(owner, owner?.client.eye, options, radius = 50)
 

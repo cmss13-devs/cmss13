@@ -247,7 +247,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/level_omega_permissions
 	key = "levelomegaper"
 	sound = 'sound/voice/joe/level_omega_permissions.ogg'
-	say_message = "Biohazard containment level Omega, all permisisons rescinded."
+	say_message = "Biohazard containment level Omega, all permissions rescinded."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/quip/seegson_access

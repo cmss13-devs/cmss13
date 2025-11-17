@@ -2,7 +2,7 @@
  * Job related
  */
 
-//Botonist
+//Botanist
 /obj/item/clothing/suit/apron
 	name = "apron"
 	desc = "A basic blue apron."

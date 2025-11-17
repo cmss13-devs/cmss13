@@ -23,7 +23,7 @@ shuttle: The name of the shuttle in question. Synonymous with the name of the re
 Return: A list of coordinate datums indexed by turfs.
 
 Notes:
-The list size will vary dependind on which shuttle you used.
+The list size will vary depending on which shuttle you used.
 See the documentation of /datum/shuttle_area_info for more.
 
 
@@ -71,7 +71,7 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 	- the info_tag is how you identify the shuttle in the s_info assoc. list, that's the next step
 
 - Step three is the worst part: map out the s_info listing based on the physical shuttle.
-	- follow the examaples already here as a guideline and this should be fairly straightforward.
+	- follow the examples already here as a guideline and this should be fairly straightforward.
 	- keep in mind this is will be retrieved with info_tag on the shuttle datum so those need to EXACTLY match.
 
 - Step four: decide which subtype of landmark you need you need the shuttle to be placed into, or
@@ -79,7 +79,7 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 	(at ABSOLUTE MINIMUM) turfs in locs_move, locs_dock, and locs_land which map to the starting,
 	transit, and end locations of the shuttle respectively.
 
-- Step five: map the landmarks onto the map. These need to have the EXACT same name and be translateable
+- Step five: map the landmarks onto the map. These need to have the EXACT same name and be translatable
 	somehow to the master shuttle tag, the macros further down in this file are a good example
 	for the most part. Convention is to name the landmarks 1, 2, 3, etc. as necessary.
 
@@ -188,7 +188,7 @@ DOCUMENTATION ON HOW TO ADD A NEW SHUTTLE: Fourkhan, 6/7/19
 		target.icon_state = old_icon_state
 		target.icon = old_icon
 
-		if(istype(target, /turf/closed/shuttle)) //better than underlaying everyturf, just need the parts that have see through parts. Which are all closed turfs
+		if(istype(target, /turf/closed/shuttle)) //better than underlying everyturf, just need the parts that have see through parts. Which are all closed turfs
 			target.underlays.Cut()
 			target.underlays += mutable_appearance(reference.icon, reference.icon_state, TURF_LAYER, FLOOR_PLANE)
 

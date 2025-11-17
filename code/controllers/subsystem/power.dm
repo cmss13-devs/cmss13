@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(power)
 	wait   = 2 SECONDS
 
 	var/list/currentrun_cables = list()
-	var/list/currentrun_powerents = list()
+	var/list/currentrun_powernets = list()
 	var/list/currentrun_power_machines = list()
 	var/list/currentrun_areas = list()
 
@@ -23,15 +23,15 @@ SUBSYSTEM_DEF(power)
 
 /datum/controller/subsystem/power/fire(resumed = FALSE)
 	if (!resumed)
-		currentrun_powerents   = GLOB.powernets.Copy()
+		currentrun_powernets   = GLOB.powernets.Copy()
 		currentrun_areas = GLOB.active_areas.Copy()
 		currentrun_power_machines = GLOB.power_machines.Copy()
 
 	// First we reset the powernets.
 	// This is done first because we want the power machinery to have acted last on the powernet between intervals.
-	while(length(currentrun_powerents))
-		var/datum/powernet/Powernet = currentrun_powerents[length(currentrun_powerents)]
-		currentrun_powerents.len--
+	while(length(currentrun_powernets))
+		var/datum/powernet/Powernet = currentrun_powernets[length(currentrun_powernets)]
+		currentrun_powernets.len--
 		if(Powernet)
 			Powernet.process()
 		if (MC_TICK_CHECK)

@@ -33,9 +33,9 @@
   - maptweak: The north-east and south-east areas of Shivas Snowball start of pre-weeded,
       in addition to a few resin doors and walls near the main entrances to hive locations.
   ghostsheet:
-  - balance: Beserker Ravs no longer heals while on fire.
+  - balance: Berserker Ravs no longer heals while on fire.
   harryob:
-  - rscadd: the chem master ui is now tgui, and faster. hopefully better
+  - rscadd: the chemmaster ui is now tgui, and faster. hopefully better
   - server: server hosts can now configure a cobalt.tools api to provide media playing
       with "COBALT_BASE_API" and "COBALT_API_KEY"
   realforest2001:
@@ -145,12 +145,12 @@
 2024-11-07:
   Drathek:
   - balance: Fix XvX landmarks being used for roundstart oviable locations
-  - balance: Roundstart oviable locations are expanded on Kurjevo, Shivas, Trijent
+  - balance: Roundstart oviable locations are expanded on Kutjevo, Shivas, Trijent
       Dam, Chances's Claim, and Fiorina
   - bugfix: XvX now makes all areas oviable
   Joe Lampost:
   - code_imp: Makes using LOOC use your real name instead of unknown
-  - code_imp: Sding preds now have their name shown instead of unknown
+  - code_imp: SDing preds now have their name shown instead of unknown
   Joelampost:
   - rscadd: Added first names for spawned preds
   - rscadd: Added last names for spawned preds
@@ -175,7 +175,7 @@
   Nomoresolvalou, Thwomper:
   - rscadd: Adds a new predator mask accessory
   - ui: added a selection for mask accessories in yautja prefs
-  - bugfix: fixes one speicifc yautja mask having no sprite onmob
+  - bugfix: fixes one specific yautja mask having no sprite onmob
   - code_imp: infrastructure for adding in new mask accessories
   - imageadd: added Thwomp's cool as hell horn sprites
   Red-byte3D:
@@ -227,7 +227,7 @@
   - maptweak: Fixed misplaced areas on Shivas.
   - maptweak: Split the Telecoms Valley area to make a Security Valley area on Trijent.
   cuberound:
-  - bugfix: UPP CO joining from lobby should recive proper rank
+  - bugfix: UPP CO joining from lobby should receive proper rank
   harryob:
   - ui: added a new tgui to select character traits. it's quite similar to the old
       one
@@ -264,7 +264,7 @@
   - maptweak: Fixes a issue preventing the Saipan, a USCM dropship, from being spawned
       by admins for events.
   cuberound:
-  - bugfix: removes dupe definitions and corrects items i UPP Loudouts
+  - bugfix: removes dupe definitions and corrects items i UPP Loadouts
   - bugfix: makes UPP synth lobby joinable for events
   zzzmike:
   - rscadd: tip of the round regarding lesser known cryotube utility
@@ -295,7 +295,7 @@
   cuberound:
   - bugfix: emp act is called once on each limb not three time
   - balance: reduces g2 electroshock grenade stamina damage
-  - bugfix: yauta bracers get properly drained by emp
+  - bugfix: yautja bracers get properly drained by emp
   harryob:
   - ui: adds a search bar to the pred/wj emote panels
   zzzmike:
@@ -341,8 +341,8 @@
   - rscadd: UPP HUD icons get their squad color
   - balance: launchbay is now useable on transport run
   - balance: changes UPP rifleman, medic,engi and squad leader skills to be the same
-      as USCM coutnerparts for HvH events
-  - bugfix: UPP CO and synth whitelists work on lobby joning
+      as USCM counterparts for HvH events
+  - bugfix: UPP CO and synth whitelists work on lobby joining
   private-tristan:
   - bugfix: SOF Encryption Keys now properly give you SOF comms.
   realforest2001:
@@ -360,7 +360,7 @@
   SpypigDev:
   - bugfix: no longer forces pill bottles to begin emptying on a click
   stanalbatross:
-  - code_imp: slightly optimised how pulse is checked by checking it when required
+  - code_imp: slightly optimized how pulse is checked by checking it when required
       rather than every lifetick
 2024-11-22:
   Drathek:
@@ -423,7 +423,7 @@
       requires both comms to be held for 10 minutes. If any of the comms are lost
       or the cocoon itself is the destroyed it will despawn and will be on cooldown
       for 5-15 minutes. Can be rebought like most other buffs. All living xenos can
-      vote for a candidate after which one of the top 2 will be randomally picked,
+      vote for a candidate after which one of the top 2 will be randomly picked,
       otherwise a player is randomly selected from all living xenos > 50 hours (will
       fallbacks to ghosts and then again with no playtime requirements). Evacuating
       while the destroyer is hatching will cause it to instantly hatch.
@@ -437,7 +437,7 @@
   - balance: emp_pulse, flash_powder, and foam reactions are no longer possible in
       mobs
   - balance: flash_powder has been reworked to attach to its holder (so it can be
-      destroyed), and values retuned/capped.
+      destroyed), and values returned/capped.
   - refactor: Refactored the metabolize proc for chemistry reactors (removed required_other
       and changed required_container to use a path check instead)
   efzapa:
@@ -450,7 +450,7 @@
   - bugfix: now CEs can buy all of their essentials
 2024-11-27:
   cuberound:
-  - qol: when lobby joining as UPP you getassigned to equivalen of prefered USCM squad
+  - qol: when lobby joining as UPP you get assigned to equivalent of preferred USCM squad
       if possible
   - rscdel: removes navbeacon code
 2024-11-28:
@@ -501,7 +501,7 @@
       vended.
   - rscadd: UPP Commanders will have access to a set of custom vendors, similar to
       the vendors the USCM Commanders have access to.
-  - rscadd: UPP vendors have been added. Equilivants to the surplus marine vendor
+  - rscadd: UPP vendors have been added. Equivalents to the surplus marine vendor
       and cargo vendors.
   cuberound:
   - qol: HvH roundstart AI announcements

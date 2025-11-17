@@ -1,6 +1,6 @@
 #define VV_NUM "Number"
 #define VV_TEXT "Text"
-#define VV_MESSAGE "Mutiline Text"
+#define VV_MESSAGE "Multiline Text"
 #define VV_COLOR "Color"
 #define VV_COLOR_MATRIX "Color Matrix"
 #define VV_ICON "Icon"
@@ -58,7 +58,7 @@
 
 // VV HREF KEYS
 #define VV_HK_TARGET "target"
-#define VV_HK_VARNAME "targetvar" //name or index of var for 1 variable targetting hrefs.
+#define VV_HK_VARNAME "targetvar" //name or index of var for 1 variable targeting hrefs.
 
 // vv_do_list() keys
 #define VV_HK_LIST_ADD "listadd"

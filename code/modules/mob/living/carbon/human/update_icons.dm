@@ -44,7 +44,7 @@ There are several things that need to be remembered:
 		update_inv_gloves()
 		update_inv_shoes()
 		update_inv_w_uniform()
-		update_inv_glasse()
+		update_inv_glasses()
 		update_inv_l_hand()
 		update_inv_r_hand()
 		update_inv_belt()
@@ -62,7 +62,7 @@ There are several things that need to be remembered:
 
 
 > There are also these special cases:
-		UpdateDamageIcon() //handles damage overlays for brute/burn damage //(will rename this when I geta round to it)
+		UpdateDamageIcon() //handles damage overlays for brute/burn damage //(will rename this when I get around to it)
 		update_body() //Handles updating your mob's icon to reflect their gender/race/complexion etc
 		update_hair() //Handles updating your hair overlay (used to be update_face, but mouth and
 																			...eyes were merged into update_body)

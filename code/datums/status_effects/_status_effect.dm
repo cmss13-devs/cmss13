@@ -195,7 +195,7 @@
 /datum/status_effect/proc/nextmove_modifier()
 	return 1
 
-/// Adds nextmove adjustment additiviely to the owner while applied
+/// Adds nextmove adjustment additively to the owner while applied
 /datum/status_effect/proc/nextmove_adjust()
 	return 0
 

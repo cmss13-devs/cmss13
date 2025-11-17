@@ -260,7 +260,7 @@
 
 
 //-----------------SPEC KIT BOX------------------
-//For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
+//For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in global_lists.dm
 
 /obj/item/spec_kit
 	name = "specialist kit"

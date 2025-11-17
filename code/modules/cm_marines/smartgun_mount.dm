@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////
-//Mounted MG, Replacment for the current jury rig code.
+//Mounted MG, Replacement for the current jury rig code.
 
 // First thing we need is the ammo drum for this thing.
 /obj/item/ammo_magazine/m56d
@@ -460,7 +460,7 @@
 
 
 
-// The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similiar.
+// The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similar.
 /obj/structure/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
 	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to cycle through firemodes."
@@ -470,7 +470,7 @@
 	unslashable = TRUE
 	unacidable = TRUE //stop the xeno me(l)ta.
 	density = TRUE
-	layer = ABOVE_MOB_LAYER //no hiding the hmg beind corpse
+	layer = ABOVE_MOB_LAYER //no hiding the hmg behind corpse
 	use_power = USE_POWER_NONE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	var/rounds = 0 //Have it be empty upon spawn.
@@ -482,7 +482,7 @@
 	var/atom/target = null // required for shooting at things.
 	var/datum/ammo/bullet/machinegun/ammo = /datum/ammo/bullet/machinegun
 	var/obj/projectile/in_chamber = null
-	var/locked = 0 //1 means its locked inplace (this will be for sandbag MGs)
+	var/locked = 0 //1 means its locked in place (this will be for sandbag MGs)
 	var/muzzle_flash_lum = 4
 	var/icon_full = "M56D" // Put this system in for other MGs or just other mounted weapons in general, future proofing.
 	var/icon_empty = "M56D_e" //Empty
@@ -1035,7 +1035,7 @@
 /obj/structure/machinery/m56d_hmg/clicked(mob/user, list/mods)
 	if (mods[CTRL_CLICK])
 		if(operator != user)
-			return ..()//only the operatore can toggle fire mode
+			return ..()//only the operator can toggle fire mode
 		if(!CAN_PICKUP(user, src))
 			return ..()
 
@@ -1127,7 +1127,7 @@
 		display_ammo()
 	SEND_SIGNAL(src, COMSIG_GUN_STOP_FIRE)
 
-///Update the target if you draged your mouse
+///Update the target if you dragged your mouse
 /obj/structure/machinery/m56d_hmg/proc/change_target(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
 	SIGNAL_HANDLER
 	set_target(get_turf_on_clickcatcher(over_object, operator, params))

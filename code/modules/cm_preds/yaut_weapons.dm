@@ -144,7 +144,7 @@
 		. += "Stack up your combo meter by using [SPAN_RED("HARM")] intent, you can then use these combo stacks on different intents to do different finishers."
 		. += "Finish your combo on [SPAN_GREEN("HELP")] intent to slam the target to the ground, incapacitating them for a few seconds, if the target is a xenomorph you do extra damage as well."
 		. += "Finish your combo on [SPAN_BLUE("SHOVE")] intent to throw the target away from you, if you have some chains wrapped around the gauntlet, you'll pull them back towards you. If you are using the special ability, the throw range will be further."
-		. += "Finish your combo on [SPAN_ORANGE("GRAB")] intent to do an execution that instantly kills your target, they must already be unconcious or in critical state."
+		. += "Finish your combo on [SPAN_ORANGE("GRAB")] intent to do an execution that instantly kills your target, they must already be unconscious or in critical state."
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/living/carbon/target, mob/living/carbon/human/user)
 	. = ..()
@@ -966,7 +966,7 @@
 
 /obj/item/weapon/twohanded/yautja/spear
 	name = "hunter spear"
-	desc = "A spear of exquisite design, used by an ancient civilisation."
+	desc = "A spear of exquisite design, used by an ancient civilization."
 	icon_state = "spearhunter"
 	item_state = "spearhunter"
 	flags_item = NOSHIELD|TWOHANDED|ADJACENT_CLICK_DELAY
@@ -990,7 +990,7 @@
 		busy_fishing = TRUE
 		user.visible_message(SPAN_NOTICE("[user] starts aiming \the [src] at the water..."), SPAN_NOTICE("You prepare to catch something in the water..."), max_distance = 3)
 		if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			if(prob(60)) // fishing rods are prefered
+			if(prob(60)) // fishing rods are preferred
 				busy_fishing = FALSE
 				to_chat(user, SPAN_WARNING("You fail to catch anything!"))
 				return
@@ -1659,7 +1659,7 @@
 
 /obj/item/weapon/gun/bow
 	name = "hunting bow"
-	desc = "An abnormal-sized weapon with an exeptionally tight string. Requires extraordinary strength to draw."
+	desc = "An abnormal-sized weapon with an exceptionally tight string. Requires extraordinary strength to draw."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "bow"
 	item_state = "bow"

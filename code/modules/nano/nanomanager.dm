@@ -1,5 +1,5 @@
 // This is the window/UI manager for Nano UI
-// There should only ever be one (global) instance of nanomanger
+// There should only ever be one (global) instance of nanomanager
 /datum/nanomanager
 	// a list of current open /nanoui UIs, grouped by src_object and ui_key
 	var/open_uis[0]

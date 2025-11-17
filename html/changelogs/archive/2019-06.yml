@@ -27,7 +27,7 @@
       south) #6297.'
   - tweak: 'The vehicle repair bay workshop is now accessible by both TCs and MTs.
       The engineering vendors inside are now accessible by both POs and TCs. #6580.'
-  - tweak: 'Oxycodone and Iron are now scanable by the HF2. #6695.'
+  - tweak: 'Oxycodone and Iron are now scannable by the HF2. #6695.'
   - tweak: 'Added soap to the Almayer dorms #6472.'
   - tweak: 'Added a few more items to the gear loadout options #6680.'
   - tweak: Burrowers can no longer tunnel into LV Secure Storage.
@@ -88,7 +88,7 @@
       of laser sights, suppressors and reflex sights.
   - tweak: Increased the PPSh fire rate to be more SMG-like. It was slower than an
       M41...
-  - tweak: The CZ-81 Skorpion can now fit the reflex sight, laser sight and supressor
+  - tweak: The CZ-81 Skorpion can now fit the reflex sight, laser sight and suppressor
       attachments. The fire rate was increased and damage lowered, magazine size increased
       slightly.
   - tweak: Slightly increased MP27 fire rate, and additionally allowed attachment
@@ -97,7 +97,7 @@
   - tweak: The MP5 can now additionally fit laser sights, extended barrels, angled
       grips and miniscopes instead of normal scopes.
   - tweak: The UPP Type 71 and 71c can now fit reflex sights, red dot sights, laser
-      sights, vertical & angled grips, supressors, extended barrels and bayonets.
+      sights, vertical & angled grips, suppressors, extended barrels and bayonets.
       The commando variant can fit grips and laser sights.
   - tweak: The M16 can additionally fit a miniscope.
   - rscadd: Many of the above mentioned guns will have a chance to spawn with some
@@ -129,7 +129,7 @@
       pouch and a tank of Gellied Napalm A.
   - tweak: Every fuel type and flame thrower has had their stats adjusted. Generally,
       flames should be more dangerous to both sides.
-  - rscadd: Fuel tank strap pouchs have been added. They can be found in requisitions,
+  - rscadd: Fuel tank strap pouches have been added. They can be found in requisitions,
       PFC vendors (15 points), and SL vendors. They can store 2 fuel tanks of choice.
   - imageadd: The M39 SMG and associated components have been redrawn.
   - tweak: The M39 SMG now deals slightly more damage.
@@ -167,7 +167,7 @@
   - rscadd: Endurance is a useful skill now. Survivors have it super trained. Endurance
       helps you in avoiding IB and Organ Damage. It will help with bone breaks in
       future but not right now.
-  - rscadd: Some rarer armors protect you immensly from certain elements (like biohazzard
+  - rscadd: Some rarer armors protect you immensely from certain elements (like biohazard
       against xeno spit) but are terrible at everything else. Experiment but remember
       that MPs can arrest you for bad uniform.
   - rscadd: Light armor protects you against spit and gives you more speed "compensation"
@@ -225,7 +225,7 @@
   - soundadd: Added sounds for switching detectors on/off, pings for Motion Detector.
   - imageadd: Motion Detectors now show the amount of unidentified movement detected
       (up to 9). (#6578)
-  - spellcheck: Motion and Data Detectors description contains infromation regarding
+  - spellcheck: Motion and Data Detectors description contains information regarding
       these changes.
 2019-06-16:
   Fourkhan:
@@ -306,7 +306,7 @@
       mushrooms, glowshrooms and plasticshrooms.
   - tweak: Added general intercomms at the escape pods and morgue.
   - tweak: 'Made candy a small item. #6862'
-  - tweak: 'Put a watertank in hangar by the fire closets. #6824'
+  - tweak: 'Put a water tank in hangar by the fire closets. #6824'
   - tweak: Gave all evacuation pod airlocks unique names.
   - tweak: 'Increased the M276 flare belt capacity to 16 flares. #6827'
   - tweak: You can now fill appropriate pouches and belts directly with flare packs,
@@ -356,7 +356,7 @@
   - imageadd: Smartgunners now have two modes of fire. One that fires high Armor Breaking
       rounds with low damage and low accuracy, and second that fires no-AP high damage
       rounds that have 100% accuracy (most of the time). This is bound to unique-action.
-  - tweak: Smartgunners can toggle IFF by rightclicking on gun and toggling IFF. So
+  - tweak: Smartgunners can toggle IFF by right clicking on gun and toggling IFF. So
       please... don't shoot at others with IFF disabled. You literally can't do this
       on accident anymore.
   - tweak: Increased OB travel time.
@@ -446,7 +446,7 @@
       power the areas. SMESes have been returned to the maps.
   - rscdel: We have removed over 4000 wires from the maps since xenos can't interact
       with them. This also aligns with our effort to make the game run lighter by
-      removing unnecesary items / functionality.
+      removing unnecessary items / functionality.
   - tweak: Power-related machines have been moved to their own controller thread.
   Vicacrov:
   - rscadd: Added logging for hive orders and announcements for the staff.

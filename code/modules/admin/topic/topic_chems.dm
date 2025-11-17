@@ -64,14 +64,14 @@
 				to_chat(usr,SPAN_WARNING("No reaction with this ID could been found."))
 			return
 		if("sync_filter")
-			var/target = input(usr,"Enter the ID of the chemical reaction you wish to syncronize. This is only necessary if you edited a reaction through the debugger (VV).")
+			var/target = input(usr,"Enter the ID of the chemical reaction you wish to synchronize. This is only necessary if you edited a reaction through the debugger (VV).")
 			if(!target)
 				return
 			var/datum/chemical_reaction/R = GLOB.chemical_reactions_list[target]
 			if(R)
 				R.add_to_filtered_list(TRUE)
-				log_debug("[key_name(usr)] resyncronized [R.id]")
-				to_chat(usr,SPAN_WARNING("Resyncronized [R.id]."))
+				log_debug("[key_name(usr)] resynchronized [R.id]")
+				to_chat(usr,SPAN_WARNING("Resynchronized [R.id]."))
 			else
 				to_chat(usr,SPAN_WARNING("No reaction with this ID could been found."))
 			return

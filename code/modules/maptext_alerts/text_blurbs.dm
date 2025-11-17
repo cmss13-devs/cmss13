@@ -10,7 +10,7 @@
 	show_blurb(targets, duration, text, TRUE)
 
 /**Shows operation start blurb to living marines. Slightly different for squad marines, pilots, and deploying ship crew/passengers.
-exempt_ztraits = trait or list of traits of zlevels where any marines don't see the message, ex. marine faction survivors colonyside
+exempt_ztraits = trait or list of traits of zlevels where any marines don't see the message, ex. marine faction survivors colony side
 shouldn't see the ship marines' drop message. Ex. ZTRAIT_GROUND by default.
 unit = the unit the marines are from. FF, Dust Raiders etc. Military crew see this.
 base = the base the marines are staging from. The ship, Whiskey Outpost etc. Noncombat crew see this.**/

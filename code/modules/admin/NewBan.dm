@@ -23,7 +23,7 @@ GLOBAL_DATUM(Banlist, /savefile)
 				.["desc"] = "\nReason: [GLOB.Banlist["reason"]]\nExpires: [GetExp(GLOB.Banlist["minutes"])]\nBy: [GLOB.Banlist["bannedby"]][appeal]"
 		else
 			GLOB.Banlist.cd = "/base/[ckey][id]"
-			.["desc"] = "\nReason: [GLOB.Banlist["reason"]]\nExpires: <B>PERMENANT</B>\nBy: [GLOB.Banlist["bannedby"]][appeal]"
+			.["desc"] = "\nReason: [GLOB.Banlist["reason"]]\nExpires: <B>PERMANENT</B>\nBy: [GLOB.Banlist["bannedby"]][appeal]"
 		.["reason"] = "ckey/id"
 		return .
 	else
@@ -48,7 +48,7 @@ GLOBAL_DATUM(Banlist, /savefile)
 					else
 						.["desc"] = "\nReason: [GLOB.Banlist["reason"]]\nExpires: [GetExp(GLOB.Banlist["minutes"])]\nBy: [GLOB.Banlist["bannedby"]][appeal]"
 				else
-					.["desc"] = "\nReason: [GLOB.Banlist["reason"]]\nExpires: <B>PERMENANT</B>\nBy: [GLOB.Banlist["bannedby"]][appeal]"
+					.["desc"] = "\nReason: [GLOB.Banlist["reason"]]\nExpires: <B>PERMANENT</B>\nBy: [GLOB.Banlist["bannedby"]][appeal]"
 				.["reason"] = matches
 				return .
 	return 0

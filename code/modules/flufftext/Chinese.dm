@@ -47,14 +47,14 @@
 	zero_initial_changing = FALSE
 	//le funnyvar
 	var/syllable
-	//select intial
+	//select initial
 	var/IN = (pick(subtypesof(/datum/chinese_sound/initial/))) //assign a random consonant
 	var/list/possible_final_syllables = subtypesof(/datum/chinese_sound/final_syllable)
 	var/datum/chinese_sound/initial/initial = new IN
 	if(prob(CHINESE_SOUND_ZERO_INITIAL_CHANCE))
 		qdel(initial)
 		initial = new /datum/chinese_sound/initial/zero
-	//add intial to sound
+	//add initial to sound
 	else if(!(initial.initial_sound_flags & ZERO_INITIAL))
 		syllable += "[initial.sound]"
 		//narrow down final_syllable list (for NON zero initials)

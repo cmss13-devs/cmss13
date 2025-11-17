@@ -5,13 +5,13 @@
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_2
 	melee_vehicle_damage = XENO_DAMAGE_TIER_2
-	max_health = XENO_HEALTH_TIER_6
+	max_health = XENO_HEALTH_TIER_7
 	plasma_gain = XENO_PLASMA_GAIN_TIER_5
 	plasma_max = XENO_PLASMA_TIER_4
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_1
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_TIER_7
+	speed = XENO_SPEED_TIER_8
 
 	caste_desc = "A weak ranged combat alien."
 	evolves_to = list(XENO_CASTE_SPITTER)

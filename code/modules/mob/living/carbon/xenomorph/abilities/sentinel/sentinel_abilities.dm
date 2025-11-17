@@ -36,7 +36,7 @@
 	damage_multiplier = 1
 	var/duration = 35
 	var/speed_buff_amount = 0.8 // Go from shit slow to kindafast
-	var/armor_buff_amount = 10 // hopefully-minor buff so they can close the distance
+	var/armor_buff_amount = 25 // hopefully-minor buff so they can close the distance
 
 /datum/action/xeno_action/activable/tail_stab/sentinel/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
 	. = ..()

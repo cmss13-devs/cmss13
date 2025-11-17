@@ -16,7 +16,7 @@
 	throw_speed = SPEED_SLOW
 	throw_range = 10
 	amount_per_transfer_from_this = 5
-	possible_transfer_amounts = list(5,10) //Set to null instead of list, if there is only one.
+	possible_transfer_amounts = null //Set to null instead of list, if there is only one.
 	matter = list("plastic" = 500)
 	transparent = TRUE
 	volume = 150
@@ -129,7 +129,8 @@
 
 /obj/item/reagent_container/spray/cleaner/Initialize()
 	. = ..()
-	reagents.add_reagent("cleaner", src.volume)
+	reagents.add_reagent("cleaner", volume)
+
 //pepperspray
 /obj/item/reagent_container/spray/pepper
 	name = "pepperspray"
@@ -137,12 +138,13 @@
 	icon_state = "pepperspray"
 	item_state = "pepperspray"
 	possible_transfer_amounts = null
+	amount_per_transfer_from_this = 10
 	volume = 40
 	safety = TRUE
 
 /obj/item/reagent_container/spray/pepper/Initialize()
 	. = ..()
-	reagents.add_reagent("condensedcapsaicin", 40)
+	reagents.add_reagent("condensedcapsaicin", volume)
 
 /obj/item/reagent_container/spray/pepper/get_examine_text(mob/user)
 	. = ..()
@@ -167,7 +169,7 @@
 
 /obj/item/reagent_container/spray/waterflower/Initialize()
 	. = ..()
-	reagents.add_reagent("water", 10)
+	reagents.add_reagent("water", volume)
 
 //chemsprayer
 /obj/item/reagent_container/spray/chemsprayer
@@ -227,10 +229,9 @@
 	item_state = "plantbgone"
 	volume = 100
 
-
 /obj/item/reagent_container/spray/plantbgone/Initialize()
 	. = ..()
-	reagents.add_reagent("plantbgone", 100)
+	reagents.add_reagent("plantbgone", volume)
 
 
 /obj/item/reagent_container/spray/plantbgone/afterattack(atom/A, mob/user, proximity)
@@ -246,7 +247,7 @@
 
 /obj/item/reagent_container/spray/hydro/Initialize()
 	. = ..()
-	reagents.add_reagent("ammonia", src.volume)
+	reagents.add_reagent("ammonia", volume)
 
 /obj/item/reagent_container/spray/investigation
 	name = "forensic spray"

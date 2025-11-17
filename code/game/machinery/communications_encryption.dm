@@ -22,6 +22,8 @@
 	var/tgui_mode = "cipher"
 	/// How many punch cards are currently held
 	var/punchcards = 10
+	/// What kind of punch cards are currently held
+	var/punchcard_base_type_loaded = /obj/item/paper/punch_card // WY
 	/// The challenge length - set automatically via first entry for announcement_challenges
 	var/static/cipher_length = 7
 	COOLDOWN_DECLARE(print_cooldown)
@@ -114,7 +116,7 @@
 
 /// Internal: Finalizes printing a punch card from print() with chances for a single failed punch.
 /obj/structure/machinery/computer/almayer_encryption/proc/finish_print(list/data, mob/living/user)
-	var/obj/item/paper/punch_card/card = new(loc)
+	var/obj/item/paper/punch_card/card = new punchcard_base_type_loaded(loc)
 
 	// Mis-punch?
 	for(var/i in 1 to length(data))
@@ -122,7 +124,7 @@
 			data[i] = 0 // It tried
 			break
 
-	card.update_punch_data(data, encoding=32)
+	card.punch_data(data, encoding=32)
 
 	if(ishuman(user) && get_dist(user, src) < 2)
 		user.put_in_hands(card)
@@ -179,8 +181,13 @@
 	if(punchcards >= 20)
 		to_chat(user, SPAN_NOTICE("It looks like the card holder for [src] is already full."))
 		return FALSE
+	if(punchcards > 0 && card.base_type != punchcard_base_type_loaded)
+		to_chat(user, SPAN_NOTICE("It looks like a different card type is already loaded."))
+		return FALSE
+
 	user.drop_inv_item_to_loc(card, src)
 	punchcards += 5
+	punchcard_base_type_loaded = card.base_type
 	qdel(card)
 	to_chat(user, SPAN_NOTICE("You load several punch cards for [src]."))
 	return TRUE

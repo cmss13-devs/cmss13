@@ -1,12 +1,22 @@
 // ----- Encryption Punch Cards -----
 
 /obj/item/paper/punch_card
-	name = "\improper WY punch card"
+	name = "\improper Weyland-Yutani punch card"
 	desc = "A stiff piece of paper starting to yellow with a bunch of numbers on it."
 	icon_state = "punchcard"
 	extra_stylesheets = list("punchcard"="html/browser/punchcard.css")
+	/// The asset in /datum/asset/simple/paper for the punch card visuals corresponding to the company that produced it
+	var/punch_card_asset = "wy_punch_card.png"
 	/// The punched out numbers on this card, though if null can be used for restocking
 	var/list/data
+	/// The base type of this punch_card for printers to know what type is loaded even when handling subtypes
+	var/base_type = /obj/item/paper/punch_card
+
+/obj/item/paper/punch_card/hyperdyne
+	name = "\improper Hyperdyne punch card"
+	punch_card_asset = "hd_punch_card.png"
+	icon_state = "punchcard_hyperdyne"
+	base_type = /obj/item/paper/punch_card/hyperdyne
 
 /obj/item/paper/punch_card/Initialize(mapload, photo_list)
 	. = ..()
@@ -14,7 +24,7 @@
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	extra_headers = list("<style>td.punched{background-image: url('[asset.get_url_mappings()["punch_card_punch.png"]]');}</style>")
 	info = "<div class='punchcard-container'>\
-		<img class='punchcard' src='[asset.get_url_mappings()["wy_punch_card.png"]]'>\
+		<img class='punchcard' src='[asset.get_url_mappings()[punch_card_asset]]'>\
 		<table class='punchcard'>\
 		<tr class='punchcard' /><td class='punchslot cell-1-10' /><td class='punchspacer' /><td class='punchslot cell-1-9' /><td class='punchspacer' /><td class='punchslot cell-1-8' /><td class='punchspacer' /><td class='punchslot cell-1-7' /><td class='punchspacer' /><td class='punchslot cell-1-6' /><td class='punchspacer' /><td class='punchslot cell-1-5' /><td class='punchspacer' /><td class='punchslot cell-1-4' /><td class='punchspacer' /><td class='punchslot cell-1-3' /><td class='punchspacer' /><td class='punchslot cell-1-2' /><td class='punchspacer' /><td class='punchslot cell-1-1' /><td class='punchmargin' rowspan='80'><span class=\"paper_field\"></span></tr>\
 		<tr class='punchcard' /><td class='punchslot cell-2-10' /><td class='punchspacer' /><td class='punchslot cell-2-9' /><td class='punchspacer' /><td class='punchslot cell-2-8' /><td class='punchspacer' /><td class='punchslot cell-2-7' /><td class='punchspacer' /><td class='punchslot cell-2-6' /><td class='punchspacer' /><td class='punchslot cell-2-5' /><td class='punchspacer' /><td class='punchslot cell-2-4' /><td class='punchspacer' /><td class='punchslot cell-2-3' /><td class='punchspacer' /><td class='punchslot cell-2-2' /><td class='punchspacer' /><td class='punchslot cell-2-1' /></tr>\
@@ -100,22 +110,23 @@
 		</div>"
 
 	calculate_fields()
-	update_punch_data(data)
+	punch_data(data)
 
 /**
- * Sets data and updates info to actually punch the card.
+ * Sets data and updates info to actually punch the card (doesn't unpunch a card).
  *
  * Arguments:
  * * new_data - The new data to set (negative values or values larger than encoding will be ignored)
  * * encoding - How large the data value could be (16 aka hex for example will use two rows since they accomodate up to 20)
  */
-/obj/item/paper/punch_card/proc/update_punch_data(list/new_data, encoding=10)
+/obj/item/paper/punch_card/proc/punch_data(list/new_data, encoding=10)
 	if(encoding <= 0 || encoding > 800)
-		CRASH("Invalid encoding passed to update_punch_data!")
+		CRASH("Invalid encoding passed to punch_data!")
 
 	if(new_data)
 		data = new_data.Copy()
 	else
+		// No data so not doing anything (nor do we unpunch)
 		data = new_data
 		updateinfolinks()
 		return
@@ -125,15 +136,15 @@
 	for(var/data_index in 1 to length(data))
 		var/current = data[data_index]
 		if(!islist(current))
-			update_punch_data_item(interval, max_value, current, data_index)
+			punch_data_item(interval, max_value, current, data_index)
 		else
 			for(var/i in 1 to length(current))
-				update_punch_data_item(interval, max_value, current[i], data_index)
+				punch_data_item(interval, max_value, current[i], data_index)
 
 	updateinfolinks()
 
-/// Internal proc for update_punch_data()
-/obj/item/paper/punch_card/proc/update_punch_data_item(interval, max_value, data_value, data_index)
+/// Internal proc for punch_data()
+/obj/item/paper/punch_card/proc/punch_data_item(interval, max_value, data_value, data_index)
 	if(data_value <= 0 || data_value > max_value)
 		return
 	var/row_index = (data_index - 1) * interval + ceil(data_value / 10)
@@ -155,18 +166,35 @@
 /obj/item/paper/punch_card/clearpaper()
 	return
 
-/obj/item/paper/punch_card/instructional/Initialize(mapload, photo_list)
-	. = ..()
+/// Adds to first field some instructions
+/obj/item/paper/punch_card/proc/add_instructions()
 	if(fields)
 		addtofield(1, "1. Decode current stream for rolling encryption challenge token.<BR>2. Decipher challenge token.<BR>3. Encode new challenge token with offset.")
 
-/obj/item/paper/punch_card/prefilled/Initialize(mapload, photo_list)
+/obj/item/paper/punch_card/instructional/Initialize(mapload, photo_list)
+	. = ..()
+	add_instructions()
+
+/obj/item/paper/punch_card/hyperdyne/instructional/Initialize(mapload, photo_list)
+	. = ..()
+	add_instructions()
+
+/// Sets data with random data with 1 punch per row (doesn't perform punch_data())
+/obj/item/paper/punch_card/proc/prefill()
 	data = list()
 	for(var/i in 1 to 80)
 		data += rand(0, 10)
+
+/obj/item/paper/punch_card/prefilled/Initialize(mapload, photo_list)
+	prefill()
 	return ..()
 
-/obj/item/paper/punch_card/randomfilled/Initialize(mapload, photo_list)
+/obj/item/paper/punch_card/hyperdyne/prefilled/Initialize(mapload, photo_list)
+	prefill()
+	return ..()
+
+/// Resets data with random data with 1 punch per row (doesn't perform punch_data())
+/obj/item/paper/punch_card/proc/randomfill()
 	data = list()
 	for(var/i in 1 to 80)
 		var/list/current = list()
@@ -174,20 +202,40 @@
 			if(prob(50))
 				current += j
 		data += list(current)
+
+/obj/item/paper/punch_card/randomfilled/Initialize(mapload, photo_list)
+	randomfill()
 	return ..()
+
+/obj/item/paper/punch_card/hyperdyne/randomfilled/Initialize(mapload, photo_list)
+	randomfill()
+	return ..()
+
+
+// ----- Encryption Punch Card Spawners -----
 
 /obj/effect/spawner/punch_cards/Initialize(mapload, ...)
 	. = ..()
 
+	// Choose alternative variants based on map
+	var/blank = /obj/item/paper/punch_card
+	var/prefilled = /obj/item/paper/punch_card/prefilled
+	var/randomfilled = /obj/item/paper/punch_card/randomfilled
+	switch(SSmapping.configs[GROUND_MAP].map_name)
+		if(MAP_SOROKYNE_STRATA)
+			blank = /obj/item/paper/punch_card/hyperdyne
+			prefilled = /obj/item/paper/punch_card/hyperdyne/prefilled
+			randomfilled = /obj/item/paper/punch_card/hyperdyne/randomfilled
+
 	// One blank
-	new /obj/item/paper/punch_card(loc)
+	new blank(loc)
 
 	// And an extra thats either blank or filled
 	if(prob(50)) // 50-50 for filled or not
-		new /obj/item/paper/punch_card(loc)
+		new blank(loc)
 	else if(prob(50)) // Filled: 50-50 one value per row or just completely random
-		new /obj/item/paper/punch_card/prefilled(loc)
+		new prefilled(loc)
 	else
-		new /obj/item/paper/punch_card/randomfilled(loc)
+		new randomfilled(loc)
 
 	return INITIALIZE_HINT_QDEL

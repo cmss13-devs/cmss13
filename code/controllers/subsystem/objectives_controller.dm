@@ -125,12 +125,7 @@ SUBSYSTEM_DEF(objectives)
 	var/research_legendary_hints = 8
 
 	//A stub of tweaking item spawns based on map
-	switch(SSmapping.configs[GROUND_MAP])
-		if(MAP_LV_624)
-			paper_scraps = 35
-			progress_reports = 12
-			folders = 25
-			disks = 25
+	switch(SSmapping.configs[GROUND_MAP].map_name)
 		if(MAP_CORSAT)
 			research_papers = 30
 			experimental_devices = 20

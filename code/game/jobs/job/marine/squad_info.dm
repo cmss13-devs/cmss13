@@ -15,13 +15,24 @@
 		update_free_mar()
 		if(squad_leader && squad_info_data["sl"]["name"] != squad_leader.real_name)
 			update_squad_leader()
+
+	var/mob/living/carbon/human/human_user = user // Assumption: Only a human can use this UI
+	var/turf/current_turf = get_turf(user)
+	var/is_shipside = is_mainship_level(current_turf?.z)
+	var/garbled = !is_shipside && !(current_turf?.z in SSradio.last_command_zs)
+	if(!garbled) // They've now gotten a connection
+		human_user.squad_primary_objective_ungarbled = TRUE
+		human_user.squad_secondary_objective_ungarbled = TRUE
+	var/primary_garbled = garbled && !human_user.squad_primary_objective_ungarbled
+	var/secondary_garbled = garbled && !human_user.squad_secondary_objective_ungarbled
+
 	var/list/data = squad_info_data.Copy()
 	data["squad"] = name
 	data["squad_color"] = equipment_color
 	data["is_lead"] = get_leadership(user)
 	data["objective"] = list(
-		"primary" = primary_objective,
-		"secondary" = secondary_objective,
+		"primary" = primary_garbled ? primary_objective_garbled : primary_objective,
+		"secondary" = secondary_garbled ? secondary_objective_garbled : secondary_objective,
 	)
 	return data
 

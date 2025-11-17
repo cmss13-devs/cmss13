@@ -296,7 +296,7 @@
 	usr.forceMove(O)
 	usr.real_name = O.name
 	usr.name = O.name
-	usr.client.eye = O
+	usr.client.set_eye(O)
 	usr.control_object = O
 
 /client/proc/release(obj/O as obj in world)
@@ -316,7 +316,7 @@
 			H.change_real_name(H, usr.name_archive)
 
 	usr.forceMove(O.loc )// Appear where the object you were controlling is -- TLE
-	usr.client.eye = usr
+	usr.client.set_eye(usr)
 	usr.control_object = null
 
 /client/proc/cmd_admin_drop_everything(mob/M as mob in GLOB.mob_list)

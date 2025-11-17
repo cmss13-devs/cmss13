@@ -187,17 +187,17 @@
 	var/viewoffset = 32 * tileoffset
 	switch(dir)
 		if(NORTH)
-			client.pixel_x = 0
-			client.pixel_y = viewoffset
+			client.set_pixel_x(0)
+			client.set_pixel_y(viewoffset)
 		if(SOUTH)
-			client.pixel_x = 0
-			client.pixel_y = -viewoffset
+			client.set_pixel_x(0)
+			client.set_pixel_y(-viewoffset)
 		if(EAST)
-			client.pixel_x = viewoffset
-			client.pixel_y = 0
+			client.set_pixel_x(viewoffset)
+			client.set_pixel_y(0)
 		if(WEST)
-			client.pixel_x = -viewoffset
-			client.pixel_y = 0
+			client.set_pixel_x(-viewoffset)
+			client.set_pixel_y(0)
 
 	for (var/datum/action/xeno_action/onclick/toggle_long_range/action in actions)
 		action.on_zoom_in()
@@ -207,8 +207,8 @@
 	if(!client)
 		return
 	client.change_view(GLOB.world_view_size)
-	client.pixel_x = 0
-	client.pixel_y = 0
+	client.set_pixel_x(0)
+	client.set_pixel_y(0)
 	is_zoomed = 0
 	// Since theres several ways we can get here, we need to update the ability button state and handle action's specific effects
 	for (var/datum/action/xeno_action/onclick/toggle_long_range/action in actions)

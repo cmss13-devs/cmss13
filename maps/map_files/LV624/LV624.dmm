@@ -2367,7 +2367,6 @@
 /area/lv624/lazarus/comms)
 "ahe" = (
 /obj/effect/landmark/crap_item,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/east,
 /area/lv624/ground/jungle/north_jungle)
 "ahf" = (
@@ -2806,7 +2805,6 @@
 /area/lv624/lazarus/sushi)
 "aiv" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/west,
 /area/lv624/ground/jungle/north_jungle)
 "aiw" = (
@@ -2947,6 +2945,15 @@
 /obj/item/tool/kitchen/knife/butcher,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/jungle/west_jungle/swamp)
+"aiT" = (
+/obj/structure/flora/jungle/vines/light_1,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river,
+/area/lv624/lazarus/yggdrasil)
+"aiU" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/north,
+/area/lv624/ground/jungle/west_jungle/swamp)
 "aiV" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
@@ -2993,6 +3000,14 @@
 "ajb" = (
 /turf/open/floor/prison/darkbrowncorners3/west,
 /area/lv624/lazarus/comms)
+"ajc" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerinner/east,
+/area/lv624/ground/jungle/west_jungle/swamp)
+"ajd" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/jungle/west_jungle/swamp)
 "aje" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -3077,12 +3092,10 @@
 /area/lv624/ground/river/central_river)
 "ajr" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/central_river)
 "ajs" = (
 /obj/structure/flora/jungle/plantbot1,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/central_river)
 "ajt" = (
@@ -3093,16 +3106,20 @@
 	},
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/pumping_station)
+"aju" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/east,
+/area/lv624/ground/jungle/west_jungle/swamp)
 "ajv" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/central_river)
 "ajw" = (
 /obj/structure/platform/stone/runed_sandstone/north{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/east_river)
 "ajx" = (
@@ -3112,6 +3129,11 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/lv624/ground/caves/mining)
+"ajy" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/jungle/west_jungle/swamp)
 "ajz" = (
 /obj/structure/machinery/colony_floodlight{
 	density = 0;
@@ -3146,15 +3168,34 @@
 	},
 /turf/open/hunter_temple,
 /area/lv624/ground/river/east_river)
+"ajE" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/jungle/west_jungle/swamp)
+"ajF" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerinner/west,
+/area/lv624/ground/jungle/west_jungle/swamp)
+"ajG" = (
+/obj/structure/flora/jungle/vines/light_3,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/jungle/west_jungle/swamp)
 "ajH" = (
 /obj/effect/landmark/crap_item,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "ajI" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
+"ajJ" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_y = 6
+	},
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/lazarus/landing_zones/lz1)
 "ajK" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/barricade/handrail/strata{
@@ -3163,11 +3204,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/lazarus/comms)
 "ajL" = (
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/hunter_temple/mossy,
 /area/lv624/ground/river/east_river)
 "ajM" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/floor/plating/asteroidwarning/north,
 /area/lv624/ground/river/central_river)
 "ajN" = (
@@ -3211,18 +3251,38 @@
 /obj/structure/platform/metal/hybrisa/metalplatform6/north,
 /turf/open/gm/grass/grassmud/west,
 /area/lv624/ground/jungle/north_west_jungle)
+"ajS" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/jungle/west_jungle/swamp)
 "ajT" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/west,
 /area/lv624/ground/river/central_river)
+"ajU" = (
+/obj/structure/platform/metal/kutjevo{
+	layer = 2.97
+	},
+/turf/open/gm/river/soro,
+/area/lv624/ground/jungle/west_jungle/swamp)
 "ajV" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
+"ajW" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/west_river)
+"ajX" = (
+/turf/open/gm/mudcoast/greenwater/cornerinner/north,
+/area/lv624/ground/river/west_river)
 "ajY" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass/grassmud/corner/north_west,
 /area/lv624/ground/jungle/south_east_jungle)
+"ajZ" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/lv624/ground/river/west_river)
 "aka" = (
 /obj/structure/platform/stone/runed_sandstone/east{
 	color = "#34393C"
@@ -3230,13 +3290,16 @@
 /obj/structure/platform/stone/runed_sandstone{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
+"akb" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/north,
+/area/lv624/ground/river/west_river)
 "akc" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/platform/stone/hybrisa/rockdark,
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "akd" = (
@@ -3244,9 +3307,12 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/north{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
+"ake" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/mudcoast/greenwater/north,
+/area/lv624/ground/river/west_river)
 "akf" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
@@ -3283,15 +3349,26 @@
 "akk" = (
 /turf/open/floor/kutjevo/tan/grey_edge/northwest,
 /area/lv624/lazarus/main_hall)
+"akl" = (
+/turf/open/gm/mudcoast/greenwater/cornerinner/west,
+/area/lv624/ground/river/west_river)
+"akm" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/west_river)
+"akn" = (
+/obj/structure/flora/jungle/alienplant1,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/west_river)
 "ako" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/east,
 /area/lv624/ground/river/central_river)
 "akp" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "akq" = (
@@ -3300,7 +3377,6 @@
 /area/lv624/ground/jungle/west_central_jungle)
 "akr" = (
 /obj/structure/flora/bush/ausbushes/palebush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "aks" = (
@@ -3312,9 +3388,13 @@
 	},
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/east,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
+"aku" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/west_river)
 "akv" = (
 /obj/structure/platform/stone/runed_sandstone/north{
 	color = "#34393C"
@@ -3322,12 +3402,10 @@
 /obj/structure/platform/stone/runed_sandstone/west{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "akw" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "akx" = (
@@ -3349,11 +3427,25 @@
 	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv624/lazarus/diner)
+"akA" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/north,
+/area/lv624/ground/river/east_river)
+"akB" = (
+/turf/open/gm/mudcoast/greenwater/cornerouter/north,
+/area/lv624/ground/river/east_river)
+"akC" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerinner/east,
+/area/lv624/ground/river/east_river)
 "akD" = (
 /obj/structure/platform/stone/hybrisa/rockdark/east,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
+"akE" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/east_river)
 "akF" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	layer = 4.1
@@ -3380,24 +3472,34 @@
 /turf/open/floor/prison/darkbrown3/north,
 /area/lv624/lazarus/comms)
 "akJ" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/hunter_temple/corner/moss/east,
 /area/lv624/ground/river/central_river)
 "akK" = (
 /turf/open/floor/prison/darkbrowncorners3/east,
 /area/lv624/lazarus/comms)
+"akL" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/east_river)
+"akM" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/east_river)
 "akN" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "akO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrowncorners3/north,
 /area/lv624/lazarus/comms)
+"akP" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerouter/north,
+/area/lv624/ground/river/west_river)
 "akQ" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "akR" = (
@@ -3408,9 +3510,21 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison/darkbrown3/north,
 /area/lv624/lazarus/comms)
+"akT" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/east,
+/area/lv624/ground/river/west_river)
+"akU" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerouter/west,
+/area/lv624/ground/river/west_river)
+"akV" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/east,
+/area/lv624/ground/river/east_river)
 "akW" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/east,
 /area/lv624/ground/river/central_river)
 "akX" = (
@@ -3433,6 +3547,11 @@
 	},
 /turf/open/floor/cult,
 /area/lv624/lazarus/engineering)
+"akY" = (
+/obj/structure/flora/jungle/alienplant1,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/east_river)
 "akZ" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
@@ -3444,14 +3563,20 @@
 /obj/structure/platform/stone/runed_sandstone{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/east_river)
+"alb" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater,
+/area/lv624/ground/river/west_river)
 "alc" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/west,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
+"ald" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/east_river)
 "ale" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grassmud/corner/south_east,
@@ -3471,6 +3596,28 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle/swamp)
+"alh" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/structure/barricade/handrail/hybrisa/road/metal{
+	dir = 4;
+	layer = 3.01;
+	pixel_y = 5;
+	pixel_x = 2
+	},
+/obj/effect/landmark/big_fog_marker,
+/turf/open/hybrisa/street/asphalt,
+/area/lv624/ground/colony/west_medbay_road)
+"ali" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerouter/west,
+/area/lv624/ground/river/central_river)
+"alj" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/lv624/ground/river/central_river)
 "alk" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/emails{
@@ -3517,7 +3664,7 @@
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv624/lazarus/diner)
 "alo" = (
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner,
 /area/lv624/ground/river/central_river)
 "alp" = (
@@ -3550,7 +3697,6 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "als" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/east,
 /area/lv624/ground/river/east_river)
 "alt" = (
@@ -3581,12 +3727,10 @@
 /area/lv624/lazarus/comms)
 "alw" = (
 /obj/structure/flora/jungle/alienplant1,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "alx" = (
 /obj/effect/landmark/crap_item,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "aly" = (
@@ -3598,12 +3742,10 @@
 /area/lv624/lazarus/comms)
 "alz" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "alA" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "alB" = (
@@ -3611,16 +3753,18 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/lazarus/comms)
 "alC" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/east,
 /area/lv624/ground/river/west_river)
 "alD" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
+"alE" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/floor/plating/asteroidwarning,
+/area/lv624/ground/river/central_river)
 "alF" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/west,
 /area/lv624/ground/river/central_river)
 "alG" = (
@@ -3656,7 +3800,6 @@
 "alK" = (
 /obj/structure/platform/stone/hybrisa/rockdark/east,
 /obj/structure/platform/stone/hybrisa/rockdark,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/central_river)
 "alL" = (
@@ -3674,9 +3817,17 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/north{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/east,
 /area/lv624/ground/river/east_river)
+"alN" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerouter,
+/area/lv624/ground/river/west_river)
+"alO" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/west_river)
 "alP" = (
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/jungle/vines/light_2,
@@ -3689,9 +3840,17 @@
 	},
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/engineering)
+"alR" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/central_river)
+"alS" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/ground/river/central_river)
 "alT" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/west,
 /area/lv624/ground/river/central_river)
 "alU" = (
@@ -3719,11 +3878,13 @@
 /area/lv624/lazarus/engineering)
 "alW" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/central_river)
+"alX" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerouter/north,
+/area/lv624/ground/river/central_river)
 "alY" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/floor/plating/asteroidwarning,
 /area/lv624/ground/river/central_river)
 "alZ" = (
@@ -3814,6 +3975,10 @@
 "amk" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/north_west_caves)
+"aml" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/central_river)
 "amm" = (
 /obj/structure/bed{
 	pixel_y = 15
@@ -3852,6 +4017,9 @@
 	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv624/lazarus/diner)
+"amr" = (
+/turf/open/gm/mudcoast/greenwater/cornerinner/north,
+/area/lv624/ground/river/central_river)
 "ams" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -3878,7 +4046,6 @@
 /area/lv624/lazarus/diner)
 "amw" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "amx" = (
@@ -3917,6 +4084,9 @@
 	},
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
+"amD" = (
+/turf/open/hunter_temple/mossy,
+/area/lv624/ground/river/east_river)
 "amE" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grassmud/south,
@@ -3929,9 +4099,13 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "amG" = (
 /obj/structure/flora/jungle/alienplant1,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
+"amH" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/east_river)
 "amI" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 9
@@ -3949,7 +4123,7 @@
 /area/lv624/ground/jungle/west_jungle/swamp)
 "amL" = (
 /obj/structure/flora/bush/ausbushes/palebush,
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "amM" = (
@@ -4025,6 +4199,11 @@
 /obj/structure/prop/ice_colony/ground_wire,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/east_central_jungle)
+"amX" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/central_river)
 "amY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -4042,7 +4221,6 @@
 /area/lv624/lazarus/engineering)
 "amZ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/west,
 /area/lv624/ground/river/west_river)
 "ana" = (
@@ -4086,12 +4264,19 @@
 /area/lv624/lazarus/hydroponics)
 "and" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/east,
 /area/lv624/ground/river/east_river)
 "ane" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_west_caves)
+"anf" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/turf/open/gm/mudcoast/greenwater/north,
+/area/lv624/ground/river/central_river)
+"ang" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerinner/east,
+/area/lv624/ground/river/central_river)
 "anh" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
@@ -4133,7 +4318,6 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "anl" = (
 /obj/effect/landmark/crap_item,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "anm" = (
@@ -4225,6 +4409,11 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/lv624/ground/caves/central_caves)
+"anz" = (
+/obj/structure/flora/jungle/alienplant1,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/central_river)
 "anA" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /obj/structure/machinery/colony_floodlight{
@@ -4258,6 +4447,10 @@
 "anD" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/west,
 /area/lv624/lazarus/comms)
+"anE" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/east,
+/area/lv624/ground/river/central_river)
 "anF" = (
 /turf/closed/wall,
 /area/lv624/lazarus/medbay)
@@ -4340,6 +4533,9 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
+"anP" = (
+/turf/open/gm/mudcoast/greenwater/cornerinner,
+/area/lv624/ground/river/central_river)
 "anQ" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/flora/pottedplant{
@@ -4353,9 +4549,16 @@
 /area/lv624/lazarus/nexus_admin)
 "anR" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
+"anS" = (
+/turf/open/gm/mudcoast/greenwater/cornerouter/east,
+/area/lv624/ground/river/central_river)
+"anT" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/central_river)
 "anU" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/east,
 /area/lv624/lazarus/nexus_admin)
@@ -4390,6 +4593,20 @@
 "anY" = (
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/lv624/lazarus/diner)
+"anZ" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/central_river)
+"aoa" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerinner/west,
+/area/lv624/ground/river/central_river)
+"aob" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/central_river)
 "aoc" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
@@ -4495,7 +4712,7 @@
 /area/lv624/lazarus/diner)
 "aon" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "aoo" = (
@@ -4525,6 +4742,13 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/kutjevo/tan/grey_edge/east,
 /area/lv624/lazarus/main_hall)
+"aor" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater,
+/area/lv624/ground/river/central_river)
+"aos" = (
+/turf/open/gm/mudcoast/greenwater/west,
+/area/lv624/ground/jungle/north_jungle)
 "aot" = (
 /obj/structure/pipes/vents/pump,
 /obj/structure/machinery/light,
@@ -4555,9 +4779,17 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/medbay)
+"aox" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/east,
+/area/lv624/ground/jungle/north_jungle)
 "aoy" = (
 /turf/open/floor/redcorner/east,
 /area/lv624/lazarus/security)
+"aoz" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/jungle/north_jungle)
 "aoA" = (
 /turf/open/hybrisa/street/sidewalkcorner/north,
 /area/lv624/ground/jungle/north_jungle)
@@ -4598,6 +4830,10 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/whiteblue/west,
 /area/lv624/lazarus/medbay)
+"aoF" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerouter/north,
+/area/lv624/ground/jungle/north_jungle)
 "aoG" = (
 /turf/open/floor/red/north,
 /area/lv624/lazarus/security)
@@ -4619,6 +4855,10 @@
 "aoK" = (
 /turf/open/floor/whiteblue/east,
 /area/lv624/lazarus/medbay)
+"aoL" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerinner/east,
+/area/lv624/ground/jungle/north_jungle)
 "aoM" = (
 /obj/structure/bed/chair/comfy/hybrisa/red{
 	dir = 4;
@@ -4632,12 +4872,21 @@
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv624/lazarus/kitchen)
+"aoO" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/jungle/north_jungle)
 "aoP" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 2.01
 	},
 /turf/open/gm/river,
 /area/lv624/lazarus/hydroponics)
+"aoQ" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerinner/north,
+/area/lv624/ground/jungle/north_jungle)
 "aoR" = (
 /obj/structure/prop/ice_colony/dense/planter_box/hydro,
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -4660,6 +4909,11 @@
 "aoT" = (
 /turf/open/gm/grass/grassmud/corner/south_west,
 /area/lv624/lazarus/landing_zones/lz2)
+"aoU" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/lv624/ground/jungle/north_jungle)
 "aoV" = (
 /obj/item/tool/pickaxe/drill{
 	pixel_y = 8
@@ -4673,7 +4927,7 @@
 /area/lv624/lazarus/armory)
 "aoX" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
 /area/lv624/ground/river/east_river)
 "aoY" = (
@@ -4685,12 +4939,10 @@
 /area/lv624/lazarus/armory)
 "aoZ" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "apa" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/north,
 /area/lv624/ground/river/west_river)
 "apb" = (
@@ -4784,7 +5036,6 @@
 "apo" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/effect/landmark/crap_item,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "app" = (
@@ -4821,6 +5072,9 @@
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/lv624/lazarus/diner)
+"apt" = (
+/turf/open/gm/mudcoast/greenwater/cornerinner/west,
+/area/lv624/ground/jungle/north_jungle)
 "apu" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -4867,6 +5121,9 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv624/lazarus/kitchen)
+"apA" = (
+/turf/open/gm/mudcoast/greenwater/cornerouter,
+/area/lv624/ground/jungle/north_jungle)
 "apB" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
@@ -4876,6 +5133,10 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
+"apC" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/north,
+/area/lv624/ground/jungle/north_jungle)
 "apD" = (
 /turf/open/gm/grass/grassmud/corner2/south_east,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -4901,6 +5162,10 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/prison,
 /area/lv624/lazarus/security)
+"apH" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/mudcoast/greenwater/cornerouter/west,
+/area/lv624/ground/jungle/north_east_jungle)
 "apI" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1
@@ -4957,7 +5222,6 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "apO" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "apP" = (
@@ -4979,6 +5243,10 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/landing_zones/lz1)
+"apR" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/coast/south,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "apS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -5046,6 +5314,10 @@
 /obj/effect/spawner/random/gun/shotgun/midchance,
 /turf/open/floor/hybrisa/carpet/rug_colorable/blue/southeast,
 /area/lv624/lazarus/security)
+"apZ" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/coast/beachcorner2/east,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aqa" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/emails{
@@ -5186,11 +5458,27 @@
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grassmud/corner2/north_east,
 /area/lv624/ground/jungle/west_jungle/swamp)
+"aqr" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"aqs" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aqt" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/central_river)
+"aqu" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/coast/east,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"aqv" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aqw" = (
 /obj/structure/bed/chair/comfy/hybrisa/red{
 	dir = 8;
@@ -5274,6 +5562,11 @@
 "aqC" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/main_hall)
+"aqD" = (
+/obj/structure/flora/jungle/alienplant1,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/river,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aqE" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass2,
@@ -5287,9 +5580,26 @@
 	},
 /turf/open/floor/prison,
 /area/lv624/lazarus/secure_bunker)
+"aqG" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/coast/beachcorner/south_west,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"aqH" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/coast/west,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"aqI" = (
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/coast/north,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aqJ" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/river/east_river)
+"aqK" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/big_fog_marker,
+/turf/open/gm/coast/north,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aqL" = (
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv624/ground/jungle/west_central_jungle)
@@ -5390,7 +5700,6 @@
 /area/lv624/lazarus/main_hall)
 "arc" = (
 /obj/effect/landmark/hunter_secondary,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "ard" = (
@@ -5543,7 +5852,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "arO" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
 /area/lv624/ground/river/east_river)
 "arP" = (
@@ -5551,26 +5860,21 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle/swamp)
 "arQ" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/east_river)
 "arR" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/east_river)
 "arS" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/east,
 /area/lv624/ground/river/east_river)
 "arU" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "arV" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "arW" = (
@@ -5643,7 +5947,6 @@
 /area/lv624/lazarus/quartstorage/outdoors)
 "asl" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/east_river)
 "asm" = (
@@ -5659,7 +5962,6 @@
 /area/lv624/lazarus/main_hall)
 "asp" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "asq" = (
@@ -5706,7 +6008,7 @@
 /turf/open/gm/grass/grassmud/corner/north_east,
 /area/lv624/ground/jungle/west_jungle/swamp)
 "asz" = (
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/jungle/north_jungle)
 "asB" = (
@@ -5744,7 +6046,6 @@
 /area/lv624/lazarus/main_hall)
 "asF" = (
 /obj/structure/flora/bush/ausbushes/palebush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "asG" = (
@@ -5797,7 +6098,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "asR" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/west_river)
 "asS" = (
@@ -5991,7 +6292,6 @@
 /area/lv624/lazarus/disposals)
 "atJ" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/east,
 /area/lv624/ground/river/west_river)
 "atK" = (
@@ -6080,7 +6380,6 @@
 /turf/open/gm/dirt/brown/variant_1,
 /area/lv624/ground/caves/west_caves)
 "aud" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "aue" = (
@@ -6118,7 +6417,6 @@
 /area/lv624/lazarus/nexus_radio)
 "aul" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/north,
 /area/lv624/ground/river/west_river)
 "aum" = (
@@ -6247,7 +6545,6 @@
 /turf/open/floor/wood,
 /area/lv624/ground/jungle/west_jungle/shacks)
 "auP" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/west_river)
 "auQ" = (
@@ -6438,7 +6735,6 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
 "avK" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/west,
 /area/lv624/ground/river/west_river)
 "avL" = (
@@ -6498,6 +6794,7 @@
 /area/lv624/ground/jungle/west_jungle/swamp)
 "avX" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/jungle/west_jungle/swamp)
 "avY" = (
@@ -6587,7 +6884,7 @@
 /obj/structure/platform/metal/kutjevo_smooth{
 	layer = 2.97
 	},
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner,
 /area/lv624/ground/jungle/west_jungle/swamp)
 "awh" = (
@@ -7644,7 +7941,6 @@
 /area/lv624/ground/jungle/central_jungle)
 "aBn" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/west,
 /area/lv624/ground/river/west_river)
 "aBo" = (
@@ -9330,6 +9626,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "aHR" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/jungle/west_jungle/swamp)
 "aHS" = (
@@ -10205,6 +10502,7 @@
 /area/lv624/lazarus/yggdrasil)
 "aLK" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/river,
 /area/lv624/lazarus/yggdrasil)
 "aLL" = (
@@ -10448,6 +10746,7 @@
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_y = 6
 	},
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/lazarus/landing_zones/lz2)
 "aMH" = (
@@ -10733,6 +11032,7 @@
 /area/lv624/lazarus/yggdrasil)
 "aNC" = (
 /obj/structure/flora/jungle/vines/heavy,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/grass/grassbeach/west,
 /area/lv624/lazarus/yggdrasil)
 "aND" = (
@@ -11317,6 +11617,7 @@
 "aPV" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/flora/jungle/vines/light_1,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/river,
 /area/lv624/lazarus/yggdrasil)
 "aPW" = (
@@ -11749,7 +12050,6 @@
 /obj/structure/platform/metal/kutjevo{
 	layer = 2.97
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "aRz" = (
@@ -11792,7 +12092,6 @@
 /obj/structure/platform/metal/kutjevo_smooth{
 	layer = 2.97
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/jungle/west_jungle/swamp)
 "aRI" = (
@@ -11802,7 +12101,7 @@
 /obj/structure/platform/metal/kutjevo{
 	layer = 2.97
 	},
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/jungle/west_jungle/swamp)
 "aRK" = (
@@ -12513,7 +12812,6 @@
 /turf/open/gm/mudcoast/greenwater/cornerinner,
 /area/lv624/ground/jungle/west_jungle/swamp)
 "aUg" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/west,
 /area/lv624/ground/river/west_river)
 "aUi" = (
@@ -13536,7 +13834,6 @@
 /turf/closed/wall/cult,
 /area/lv624/ground/jungle/south_west_jungle/ceiling)
 "aXz" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
 /area/lv624/ground/river/west_river)
 "aXA" = (
@@ -13867,12 +14164,10 @@
 /turf/open/floor/tdome,
 /area/lv624/lazarus/nexus_admin)
 "aYK" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/east,
 /area/lv624/ground/river/west_river)
 "aYL" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/west,
 /area/lv624/ground/river/west_river)
 "aYN" = (
@@ -13885,21 +14180,19 @@
 /turf/open/floor/wood/wood_broken4,
 /area/lv624/ground/caves/north_central_caves)
 "aYQ" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/west_river)
 "aYR" = (
 /obj/structure/platform_decoration/metal/kutjevo,
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/east,
 /area/lv624/ground/river/west_river)
 "aYS" = (
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/west,
 /area/lv624/ground/river/west_river)
 "aYU" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/west_river)
 "aYX" = (
@@ -13913,11 +14206,9 @@
 /area/lv624/ground/caves/south_west_caves)
 "aYY" = (
 /obj/effect/landmark/hunter_secondary,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/west_river)
 "aZa" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter,
 /area/lv624/ground/river/west_river)
 "aZb" = (
@@ -14821,7 +15112,6 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "bcn" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter,
 /area/lv624/ground/river/west_river)
 "bco" = (
@@ -15924,7 +16214,6 @@
 /area/lv624/ground/jungle/central_jungle)
 "bfn" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/east,
 /area/lv624/ground/river/west_river)
 "bfo" = (
@@ -16256,7 +16545,7 @@
 /turf/open/hybrisa/street/sidewalk/southeast,
 /area/lv624/lazarus/hydroponics)
 "bgg" = (
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
 /area/lv624/ground/river/east_river)
 "bgh" = (
@@ -16270,7 +16559,6 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "bgj" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
 /area/lv624/ground/river/west_river)
 "bgl" = (
@@ -16314,7 +16602,6 @@
 /area/lv624/ground/caves/south_west_caves)
 "bgu" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/west,
 /area/lv624/ground/river/west_river)
 "bgv" = (
@@ -16471,7 +16758,6 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "bgY" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "bgZ" = (
@@ -16538,7 +16824,6 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/east_river)
 "bhi" = (
@@ -16634,14 +16919,12 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/east{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/east,
 /area/lv624/ground/river/east_river)
 "bhC" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "bhD" = (
@@ -16707,7 +16990,6 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "bhN" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
 /area/lv624/ground/river/central_river)
 "bhO" = (
@@ -16720,11 +17002,9 @@
 /area/lv624/ground/colony/phi_lab_road)
 "bhP" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "bhQ" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
 /area/lv624/ground/river/central_river)
 "bhR" = (
@@ -16759,7 +17039,6 @@
 /obj/structure/platform/stone/runed_sandstone/west{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/east,
 /area/lv624/ground/river/east_river)
 "bhW" = (
@@ -16813,24 +17092,22 @@
 "bie" = (
 /obj/structure/flora/jungle/alienplant1,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "bif" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "big" = (
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/north,
 /area/lv624/ground/river/central_river)
 "bii" = (
 /obj/structure/platform_decoration/stone/runed_sandstone{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/central_river)
 "bik" = (
@@ -16935,15 +17212,12 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_west_jungle)
 "bix" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/grass/gbcorner/south_west,
 /area/lv624/ground/jungle/north_west_jungle)
 "biy" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/grass/grassbeach/south,
 /area/lv624/ground/jungle/north_west_jungle)
 "biz" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/grass/gbcorner/south_east,
 /area/lv624/ground/jungle/north_west_jungle)
 "biA" = (
@@ -16953,21 +17227,17 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "biB" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "biC" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/central_river)
 "biD" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "biE" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/jungle/north_east_jungle)
 "biF" = (
@@ -16975,7 +17245,6 @@
 /obj/structure/platform/stone/runed_sandstone/west{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "biG" = (
@@ -17031,15 +17300,12 @@
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/south_west_caves)
 "biP" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/grass/grassbeach/west,
 /area/lv624/ground/jungle/north_west_jungle)
 "biQ" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river,
 /area/lv624/ground/jungle/north_west_jungle)
 "biR" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/grass/grassbeach/east,
 /area/lv624/ground/jungle/north_west_jungle)
 "biS" = (
@@ -17078,14 +17344,13 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/west_caves)
 "bjg" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/east,
 /area/lv624/ground/river/central_river)
 "bjh" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/east{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "bji" = (
@@ -17133,15 +17398,12 @@
 /mob/living/simple_animal/lizard{
 	dir = 4
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/grass/gbcorner/north_west,
 /area/lv624/ground/jungle/north_west_jungle)
 "bjp" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/grass/grassbeach/north,
 /area/lv624/ground/jungle/north_west_jungle)
 "bjq" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/grass/gbcorner/north_east,
 /area/lv624/ground/jungle/north_west_jungle)
 "bjr" = (
@@ -17171,18 +17433,15 @@
 "bjy" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/east,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "bjz" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/hunter_temple/corner/moss/north,
 /area/lv624/ground/river/east_river)
 "bjA" = (
 /obj/structure/platform/stone/runed_sandstone/west{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "bjB" = (
@@ -17240,7 +17499,6 @@
 /obj/structure/platform/stone/runed_sandstone/east{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "bjR" = (
@@ -17248,7 +17506,6 @@
 	dir = 8;
 	pixel_x = -8
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/hunter_temple/connection/moss/northeast,
 /area/lv624/ground/river/central_river)
 "bjS" = (
@@ -17256,7 +17513,6 @@
 	dir = 4;
 	pixel_x = 8
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/hunter_temple/connection/moss/northwest,
 /area/lv624/ground/river/east_river)
 "bjT" = (
@@ -17307,16 +17563,13 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "bkd" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/west_river)
 "bkg" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/west,
 /area/lv624/ground/river/central_river)
 "bkh" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/hunter_temple/corner/moss/west,
 /area/lv624/ground/river/east_river)
 "bkk" = (
@@ -17408,14 +17661,12 @@
 /obj/structure/platform_decoration/stone/runed_sandstone{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "bkL" = (
 /obj/structure/platform/stone/runed_sandstone{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "bkN" = (
@@ -17510,14 +17761,12 @@
 /area/lv624/ground/jungle/west_jungle/swamp)
 "blk" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter,
 /area/lv624/ground/river/central_river)
 "blo" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/west{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "blp" = (
@@ -17527,14 +17776,12 @@
 /obj/structure/platform/stone/runed_sandstone/east{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "blq" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/east{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/east_river)
 "blr" = (
@@ -17694,14 +17941,12 @@
 /area/lv624/ground/jungle/north_jungle)
 "blV" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/central_river)
 "blW" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/central_river)
 "blX" = (
@@ -17709,7 +17954,6 @@
 /obj/structure/platform/stone/runed_sandstone/east{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/central_river)
 "blY" = (
@@ -18267,7 +18511,6 @@
 /area/lv624/ground/jungle/west_central_jungle)
 "bnX" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
 /area/lv624/ground/river/central_river)
 "bnY" = (
@@ -18337,7 +18580,6 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
 /area/lv624/ground/jungle/north_east_jungle)
 "bol" = (
@@ -18484,7 +18726,6 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/east,
 /area/lv624/ground/jungle/north_east_jungle)
 "boP" = (
@@ -18633,7 +18874,6 @@
 /turf/open/hunter_temple/connection/moss/northwest,
 /area/lv624/ground/jungle/north_east_jungle)
 "bpz" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/west,
 /area/lv624/ground/jungle/north_east_jungle)
 "bpA" = (
@@ -18765,7 +19005,6 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter,
 /area/lv624/ground/jungle/north_east_jungle)
 "bqa" = (
@@ -19100,11 +19339,9 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "bqW" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/jungle/north_east_jungle)
 "bqX" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/east,
 /area/lv624/ground/jungle/north_east_jungle)
 "bqY" = (
@@ -20245,7 +20482,6 @@
 /area/lv624/lazarus/disposals)
 "bvx" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/jungle/north_east_jungle)
 "bvy" = (
@@ -23493,7 +23729,6 @@
 /area/lv624/ground/caves/east_caves)
 "bGb" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "bGc" = (
@@ -25365,7 +25600,6 @@
 /area/lv624/ground/caves/ancient_temple)
 "bKE" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner,
 /area/lv624/ground/river/east_river)
 "bKF" = (
@@ -32777,7 +33011,6 @@
 /area/lv624/ground/caves/west_caves)
 "csu" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/central_river)
 "csC" = (
@@ -33513,10 +33746,6 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/whiteyellow/east,
 /area/lv624/lazarus/customs_dome)
-"dgq" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/hunter_temple,
-/area/lv624/ground/river/central_river)
 "dhw" = (
 /obj/effect/landmark/corpsespawner/hybrisa/kelland_miner,
 /obj/item/ammo_casing/bullet{
@@ -33818,14 +34047,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/whiteyellow/southeast,
 /area/lv624/lazarus/customs_dome)
-"dwP" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2"
-	},
-/obj/effect/decal/hybrisa/road/lines4,
-/obj/effect/landmark/fog_marker,
-/turf/open/hybrisa/street/asphalt,
-/area/lv624/ground/colony/phi_lab_road)
 "dwQ" = (
 /obj/structure/flora/jungle/vines/light_2,
 /obj/structure/flora/jungle/vines/heavy,
@@ -33953,7 +34174,6 @@
 /area/lv624/lazarus/secure_bunker)
 "dGG" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/east,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/east,
 /area/lv624/ground/river/central_river)
 "dGQ" = (
@@ -34395,7 +34615,6 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/jungle/north_east_jungle)
 "efX" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/west,
 /area/lv624/ground/river/east_river)
 "egc" = (
@@ -34521,13 +34740,8 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "enU" = (
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
-/area/lv624/ground/river/central_river)
-"enZ" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/river/central_river)
 "eoo" = (
 /obj/structure/machinery/colony_floodlight,
@@ -34572,7 +34786,6 @@
 /area/lv624/ground/jungle/south_central_jungle)
 "eqF" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/central_river)
 "eqS" = (
@@ -34843,11 +35056,6 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_east_jungle)
-"eBx" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/lv624/ground/jungle/north_jungle)
 "eCx" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
@@ -34962,7 +35170,6 @@
 /area/lv624/lazarus/medbay)
 "eHq" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "eHr" = (
@@ -34983,11 +35190,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/bar,
 /area/lv624/lazarus/general_dorms)
-"eIr" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
-/turf/open/gm/mudcoast/greenwater/cornerouter/east,
-/area/lv624/ground/jungle/west_jungle/swamp)
 "eIR" = (
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble7,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -35160,7 +35362,6 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/west{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/jungle/north_east_jungle)
 "eSg" = (
@@ -35184,7 +35385,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv624/lazarus/landing_zones/lz1)
 "eUG" = (
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter,
 /area/lv624/ground/jungle/north_jungle)
 "eUI" = (
@@ -35195,10 +35396,6 @@
 /obj/item/storage/bag/plasticbag,
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/lv624/lazarus/corpo_apartments)
-"eVh" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/gm/grass/grassmud/east,
-/area/lv624/ground/jungle/north_jungle)
 "eVH" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/strata_decals/mud_corner{
@@ -35896,7 +36093,6 @@
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "fIn" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/east,
 /area/lv624/ground/jungle/north_jungle)
 "fIt" = (
@@ -35936,7 +36132,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/west_caves)
 "fLj" = (
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/west,
 /area/lv624/ground/jungle/north_jungle)
 "fLk" = (
@@ -36051,7 +36247,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/lv624/ground/jungle/north_east_jungle)
 "fQL" = (
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/north,
 /area/lv624/ground/river/west_river)
 "fRD" = (
@@ -36171,7 +36367,6 @@
 /area/lv624/ground/colony/south_nexus_road)
 "fXD" = (
 /obj/structure/flora/jungle/alienplant1,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner,
 /area/lv624/ground/river/east_river)
 "fXS" = (
@@ -36428,7 +36623,7 @@
 /area/lv624/ground/colony/west_tcomms_road)
 "glp" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/jungle/north_jungle)
 "glS" = (
@@ -36590,11 +36785,9 @@
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
 "gxd" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter,
 /area/lv624/ground/jungle/north_east_jungle)
 "gxP" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/jungle/north_jungle)
 "gyC" = (
@@ -36701,7 +36894,6 @@
 /obj/structure/platform/stone/runed_sandstone/north{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/north,
 /area/lv624/ground/jungle/north_east_jungle)
 "gFm" = (
@@ -36726,7 +36918,6 @@
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 10
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/east,
 /area/lv624/ground/caves/ancient_temple)
 "gFY" = (
@@ -36914,7 +37105,6 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv624/ground/jungle/central_jungle)
 "gQr" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/west,
 /area/lv624/ground/jungle/north_east_jungle)
 "gRb" = (
@@ -37345,10 +37535,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/west_caves)
-"hla" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/hunter_temple/mossy,
-/area/lv624/ground/river/central_river)
 "hlJ" = (
 /turf/open/gm/dirtmud/dirtmud_edge,
 /area/lv624/ground/colony/west_tcomms_road)
@@ -37587,7 +37773,6 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/ground/colony/phi_lab/dome)
 "hCg" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/jungle/north_jungle)
 "hCB" = (
@@ -37863,7 +38048,6 @@
 /turf/open/gm/dirtmud/dirtmud_corner_inner,
 /area/lv624/ground/colony/west_tcomms_road)
 "hPl" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/jungle/north_jungle)
 "hPV" = (
@@ -38434,10 +38618,6 @@
 	},
 /turf/open/gm/dirt/brown/variant_2,
 /area/lv624/ground/caves/west_caves)
-"iyM" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/lv624/ground/river/central_river)
 "izh" = (
 /obj/structure/sign/nosmoking_1{
 	pixel_x = 28
@@ -38502,7 +38682,6 @@
 /area/lv624/lazarus/medbay)
 "iCL" = (
 /obj/structure/flora/jungle/alienplant1,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/jungle/north_jungle)
 "iCN" = (
@@ -38817,10 +38996,6 @@
 /obj/structure/pipes/standard/simple/hidden,
 /turf/open/floor/plating,
 /area/lv624/ground/caves/mining)
-"iZV" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/gm/mudcoast/greenwater/west,
-/area/lv624/ground/river/central_river)
 "iZZ" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
 /obj/structure/flora/jungle/vines/light_1,
@@ -38846,7 +39021,7 @@
 /area/lv624/lazarus/customs_dome)
 "jaF" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/river/west_river)
 "jaM" = (
@@ -38991,10 +39166,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood/ship,
 /area/lv624/lazarus/general_dorms)
-"jkH" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/gm/grass/grassmud/corner2/south_west,
-/area/lv624/ground/jungle/north_jungle)
 "jlh" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/faxmachine{
@@ -39115,11 +39286,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/darkpurple2,
 /area/lv624/ground/colony/phi_lab/dome)
-"jvk" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/effect/landmark/fog_marker,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/lv624/ground/river/central_river)
 "jvr" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/north{
 	color = "#34393C"
@@ -39297,20 +39463,6 @@
 /obj/structure/machinery/faxmachine,
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/lv624/lazarus/corpo_apartments)
-"jCz" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2"
-	},
-/obj/effect/decal/hybrisa/road/lines4,
-/obj/structure/barricade/handrail/hybrisa/road/metal{
-	dir = 4;
-	layer = 3.01;
-	pixel_y = 5;
-	pixel_x = 2
-	},
-/obj/effect/landmark/fog_marker,
-/turf/open/hybrisa/street/asphalt,
-/area/lv624/ground/colony/west_medbay_road)
 "jCL" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/dirt_2,
@@ -39663,6 +39815,7 @@
 /area/lv624/ground/jungle/north_west_jungle)
 "jUE" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
 /area/lv624/ground/jungle/south_east_jungle)
 "jVm" = (
@@ -39675,7 +39828,6 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/mining)
 "jWB" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/north,
 /area/lv624/ground/jungle/north_jungle)
 "jXx" = (
@@ -39792,7 +39944,6 @@
 /area/lv624/ground/caves/ancient_temple)
 "kft" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "kfH" = (
@@ -39897,6 +40048,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/caves/mining)
 "klT" = (
+/obj/effect/landmark/big_fog_marker,
 /turf/open/floor/wood/wood_broken2,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "kmH" = (
@@ -40104,7 +40256,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "kyc" = (
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/east,
 /area/lv624/ground/river/central_river)
 "kyt" = (
@@ -40742,7 +40894,6 @@
 /area/lv624/lazarus/secure_bunker)
 "lju" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/north,
 /area/lv624/ground/river/central_river)
 "lke" = (
@@ -40908,10 +41059,6 @@
 "lrT" = (
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/lv624/lazarus/corpo_apartments)
-"lsK" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/gm/mudcoast/greenwater/cornerouter/west,
-/area/lv624/ground/river/central_river)
 "lsV" = (
 /turf/open/gm/dirtmud/dirtmud_corner_outer/south,
 /area/lv624/ground/colony/west_nexus_road)
@@ -41547,13 +41694,6 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/lv624/lazarus/corpo_apartments)
-"lYA" = (
-/obj/effect/decal/hybrisa/road/roadmiddle{
-	dir = 4
-	},
-/obj/effect/landmark/fog_marker,
-/turf/open/hybrisa/street/asphalt,
-/area/lv624/ground/colony/phi_lab_road)
 "lYI" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
@@ -42061,7 +42201,7 @@
 	pixel_y = 5;
 	pixel_x = 2
 	},
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv624/ground/colony/phi_lab_road)
 "mwX" = (
@@ -42079,10 +42219,6 @@
 /obj/effect/decal/hybrisa/road/lines1,
 /turf/open/hybrisa/street/asphalt,
 /area/lv624/lazarus/quartstorage/outdoors)
-"mxv" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/gm/grass/grassmud/corner2/south_east,
-/area/lv624/ground/jungle/north_jungle)
 "mxI" = (
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/jungle/east_central_jungle)
@@ -42334,7 +42470,6 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
 "mNx" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
 /area/lv624/ground/jungle/north_jungle)
 "mNz" = (
@@ -42531,11 +42666,6 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/west_jungle)
-"mYM" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/lv624/ground/river/west_river)
 "mZf" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 8
@@ -42692,7 +42822,6 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/jungle/west_jungle)
 "nju" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner,
 /area/lv624/ground/jungle/north_jungle)
 "njC" = (
@@ -42933,7 +43062,6 @@
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/colony/north_tcomms_road)
 "nuI" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/east,
 /area/lv624/ground/jungle/north_jungle)
 "nuU" = (
@@ -43057,11 +43185,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/pumping_station)
-"nAr" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/fog_marker,
-/turf/open/gm/grass/grassmud/east,
-/area/lv624/ground/jungle/north_jungle)
 "nAR" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/asphalt,
@@ -43171,12 +43294,7 @@
 /area/lv624/lazarus/medbay)
 "nHY" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/west,
-/area/lv624/ground/river/central_river)
-"nIh" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/gm/mudcoast/greenwater/east,
 /area/lv624/ground/river/central_river)
 "nIs" = (
 /obj/structure/machinery/light{
@@ -43485,7 +43603,6 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "obp" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/north,
 /area/lv624/ground/jungle/north_jungle)
 "obz" = (
@@ -43631,7 +43748,6 @@
 /area/lv624/ground/caves/south_west_caves)
 "ogZ" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/effect/landmark/fog_marker,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/river/central_river)
 "oha" = (
@@ -44003,7 +44119,6 @@
 /turf/open/gm/grass/grassmud/west,
 /area/lv624/ground/colony/north_tcomms_road)
 "oHu" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/east_river)
 "oHx" = (
@@ -44243,7 +44358,6 @@
 /area/lv624/ground/colony/south_nexus_road)
 "oTt" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/west,
 /area/lv624/ground/river/central_river)
 "oTx" = (
@@ -44398,7 +44512,6 @@
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/ground/jungle/central_jungle)
 "pcg" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/west,
 /area/lv624/ground/jungle/north_jungle)
 "pci" = (
@@ -44498,7 +44611,6 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/pumping_station)
 "pjk" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner,
 /area/lv624/ground/river/east_river)
 "pjw" = (
@@ -44508,10 +44620,6 @@
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"pkk" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/lv624/ground/river/east_river)
 "pkU" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 9
@@ -44539,7 +44647,6 @@
 /area/lv624/ground/colony/phi_lab/dome)
 "pmz" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/river/east_river)
 "pmZ" = (
@@ -44770,7 +44877,7 @@
 /obj/structure/platform/stone/runed_sandstone{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/central_river)
 "pxs" = (
@@ -45039,7 +45146,6 @@
 /area/lv624/ground/river/west_river)
 "pJt" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/jungle/north_jungle)
 "pKm" = (
@@ -45154,7 +45260,6 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/west{
 	color = "#34393C"
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/east,
 /area/lv624/ground/river/east_river)
 "pNI" = (
@@ -45495,7 +45600,6 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/comms)
 "qeW" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/west,
 /area/lv624/ground/jungle/north_east_jungle)
 "qeY" = (
@@ -45709,10 +45813,6 @@
 "quA" = (
 /turf/open/gm/dirt/brown/variant_2,
 /area/lv624/ground/jungle/east_central_jungle)
-"qvu" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/gm/grass/grassmud/corner2/north_west,
-/area/lv624/ground/jungle/north_jungle)
 "qvB" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/machinery/colony_floodlight{
@@ -45781,7 +45881,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "qCd" = (
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/jungle/north_east_jungle)
 "qCo" = (
@@ -45841,10 +45941,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/floor/delivery,
 /area/lv624/lazarus/engineering)
-"qGV" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/gm/mudcoast/greenwater/cornerouter,
-/area/lv624/ground/river/central_river)
 "qHd" = (
 /obj/structure/curtain/colorable_transparent{
 	color = "#5a5a5a";
@@ -46392,7 +46488,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "rit" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/central_river)
 "riG" = (
@@ -46501,15 +46597,6 @@
 	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
-"rrV" = (
-/obj/effect/decal/hybrisa/road/road_edge,
-/obj/effect/decal/hybrisa/road/lines1,
-/obj/structure/barricade/handrail/hybrisa/road/metal{
-	dir = 8
-	},
-/obj/effect/landmark/fog_marker,
-/turf/open/hybrisa/street/asphalt,
-/area/lv624/ground/colony/phi_lab_road)
 "rsp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo"
@@ -46956,13 +47043,6 @@
 "rRs" = (
 /turf/open/floor/hybrisa/carpet/carpetred,
 /area/lv624/lazarus/general_dorms)
-"rRS" = (
-/obj/effect/decal/hybrisa/road/roadmiddle{
-	dir = 4
-	},
-/obj/effect/landmark/fog_marker,
-/turf/open/hybrisa/street/asphalt,
-/area/lv624/ground/colony/west_medbay_road)
 "rTs" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -47002,7 +47082,6 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
 "rVR" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/east,
 /area/lv624/ground/jungle/north_jungle)
 "rWs" = (
@@ -47363,7 +47442,6 @@
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown,
 /area/lv624/lazarus/general_dorms)
 "sqj" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "sqs" = (
@@ -47453,7 +47531,6 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "syx" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/jungle/north_jungle)
 "szy" = (
@@ -47565,7 +47642,6 @@
 /area/lv624/ground/caves/north_east_caves)
 "sFc" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "sFj" = (
@@ -47643,10 +47719,6 @@
 /obj/effect/decal/remains/xeno,
 /turf/open/hunter_temple/mossy,
 /area/lv624/ground/caves/east_caves)
-"sJp" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/hunter_temple,
-/area/lv624/ground/river/east_river)
 "sLT" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -47848,7 +47920,6 @@
 /area/lv624/lazarus/corpo_apartments)
 "sTX" = (
 /obj/structure/flora/jungle/alienplant1,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "sUc" = (
@@ -48100,7 +48171,6 @@
 /area/lv624/lazarus/disposals)
 "tgV" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/west_river)
 "thk" = (
@@ -48140,15 +48210,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
-"tiV" = (
-/obj/effect/decal/hybrisa/road/lines1,
-/obj/effect/decal/hybrisa/road/road_edge,
-/obj/structure/barricade/handrail/hybrisa/road/metal{
-	dir = 8
-	},
-/obj/effect/landmark/fog_marker,
-/turf/open/hybrisa/street/asphalt,
-/area/lv624/ground/colony/west_medbay_road)
 "tjd" = (
 /obj/structure/girder,
 /obj/item/stack/sheet/metal{
@@ -48186,7 +48247,6 @@
 /area/lv624/ground/caves/west_caves)
 "tlD" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "tlE" = (
@@ -48255,7 +48315,6 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "toF" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/east,
 /area/lv624/ground/river/east_river)
 "toL" = (
@@ -48276,7 +48335,7 @@
 /turf/open/floor/kutjevo/tan,
 /area/lv624/lazarus/main_hall)
 "tpQ" = (
-/obj/effect/landmark/fog_marker,
+/obj/effect/landmark/big_fog_marker,
 /turf/open/gm/mudcoast/greenwater/west,
 /area/lv624/ground/jungle/north_jungle)
 "tpR" = (
@@ -48624,10 +48683,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
-"tKX" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/gm/mudcoast/greenwater/cornerinner,
-/area/lv624/ground/jungle/west_jungle/swamp)
 "tLp" = (
 /obj/item/clothing/shoes/jackboots{
 	pixel_y = 16;
@@ -48876,7 +48931,6 @@
 /area/lv624/ground/jungle/east_jungle)
 "ubb" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "ubJ" = (
@@ -49184,7 +49238,6 @@
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 8
 	},
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/west,
 /area/lv624/ground/river/east_river)
 "uxU" = (
@@ -49372,7 +49425,6 @@
 /area/lv624/ground/caves/mining)
 "uHI" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/central_river)
 "uHJ" = (
@@ -49439,10 +49491,6 @@
 	},
 /turf/open/floor/prison/darkpurple2/east,
 /area/lv624/ground/colony/phi_lab/dome)
-"uNN" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/lv624/ground/river/west_river)
 "uOl" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 5
@@ -50684,7 +50732,6 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "wdc" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "wdk" = (
@@ -50758,7 +50805,6 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "whR" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/floor/plating,
 /area/lv624/ground/river/central_river)
 "whU" = (
@@ -50803,7 +50849,6 @@
 	color = "#34393C"
 	},
 /obj/effect/decal/grass_overlay/grass1/inner,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/caves/ancient_temple)
 "wjD" = (
@@ -51175,7 +51220,6 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "wFp" = (
 /obj/structure/prop/brazier/frame,
-/obj/effect/landmark/fog_marker,
 /turf/open/hunter_temple/mossy,
 /area/lv624/ground/river/east_river)
 "wFR" = (
@@ -51231,10 +51275,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/jungle/north_west_jungle)
-"wIe" = (
-/obj/effect/landmark/fog_marker,
-/turf/open/gm/grass/grassmud/north,
-/area/lv624/ground/jungle/north_jungle)
 "wIp" = (
 /obj/item/ammo_casing/bullet{
 	pixel_y = -4;
@@ -51449,7 +51489,6 @@
 /turf/open/floor/whiteblue/west,
 /area/lv624/lazarus/customs_dome)
 "wPN" = (
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerinner/north,
 /area/lv624/ground/jungle/north_east_jungle)
 "wPR" = (
@@ -52479,7 +52518,6 @@
 /area/lv624/lazarus/fitness)
 "xTm" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/jungle/north_jungle)
 "xTM" = (
@@ -52588,7 +52626,6 @@
 /area/lv624/lazarus/pumping_station)
 "ybu" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/obj/effect/landmark/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/central_river)
 "ybQ" = (
@@ -53854,7 +53891,7 @@ aRb
 aYQ
 arU
 bGb
-aud
+ajW
 aud
 auP
 brn
@@ -54079,7 +54116,7 @@ bal
 oTJ
 aun
 aZa
-aYS
+akl
 aud
 aud
 bGb
@@ -54305,11 +54342,11 @@ baZ
 bkb
 aRL
 aYA
-uNN
+aRb
 aYQ
 bGb
 arV
-aud
+ajW
 aud
 fQL
 aUg
@@ -54535,7 +54572,7 @@ aun
 aZa
 aXz
 aYQ
-aud
+ajW
 aud
 amG
 bGb
@@ -54784,7 +54821,7 @@ brn
 bYD
 aye
 knd
-knd
+aju
 knd
 knd
 knd
@@ -54994,7 +55031,7 @@ aYS
 aud
 aud
 aud
-aud
+ajW
 auP
 brn
 brn
@@ -55017,7 +55054,7 @@ jga
 jga
 jga
 bBu
-knd
+aju
 knd
 knd
 axw
@@ -55222,7 +55259,7 @@ aud
 amG
 asF
 bGb
-fQL
+ajX
 aBn
 brn
 azb
@@ -55237,13 +55274,13 @@ bYD
 brn
 brn
 ayh
-axm
+ajF
 aBL
 lyj
 sTB
 aAQ
 jga
-nWJ
+ajy
 jga
 jga
 rWW
@@ -55445,10 +55482,10 @@ bbb
 aRb
 aun
 aZa
-aYS
+akl
 aud
 arU
-aud
+ajW
 aud
 auP
 xuK
@@ -55462,7 +55499,7 @@ aLE
 adg
 brn
 aye
-knd
+aju
 knd
 axm
 nWJ
@@ -55476,7 +55513,7 @@ jga
 azs
 jga
 qMX
-bBu
+ajc
 knd
 akZ
 bpq
@@ -55902,7 +55939,7 @@ aRb
 aRb
 tgV
 aud
-aud
+ajW
 aud
 aud
 bGb
@@ -55920,7 +55957,7 @@ aye
 ayV
 jga
 azs
-jga
+ajd
 aBl
 jga
 avO
@@ -55929,7 +55966,7 @@ auT
 avd
 jga
 bBu
-knd
+aju
 axw
 atK
 jga
@@ -56127,13 +56164,13 @@ bck
 psh
 bal
 aun
-uNN
+aRb
 aYQ
 aud
 aud
 amG
 aud
-aud
+ajW
 aud
 aRH
 aRk
@@ -56162,7 +56199,7 @@ bBu
 atL
 jga
 aGV
-dmf
+aiU
 bpq
 bpU
 bpU
@@ -56355,7 +56392,7 @@ txx
 pGD
 bal
 aRb
-uNN
+aRb
 aYQ
 amG
 aud
@@ -56369,10 +56406,10 @@ aOl
 aPG
 aOr
 knd
+aju
 knd
 knd
-knd
-axm
+ajF
 jga
 bBu
 axm
@@ -56383,7 +56420,7 @@ bcD
 aCa
 avd
 ayH
-jga
+ajd
 axd
 bcD
 auT
@@ -56585,9 +56622,9 @@ bal
 aRb
 aZa
 aYL
+ajW
 aud
-aud
-bGb
+akm
 arV
 bGb
 aud
@@ -56605,7 +56642,7 @@ jga
 qMX
 jga
 qMX
-avd
+ajG
 axd
 avW
 aCe
@@ -56816,10 +56853,10 @@ aud
 aud
 aoZ
 aud
-fQL
+ajX
 avK
-tKX
-aRJ
+ayc
+ajU
 aRk
 aQA
 aPG
@@ -56843,7 +56880,7 @@ ayd
 axl
 avW
 avd
-jga
+ajd
 jga
 jga
 dmf
@@ -57044,9 +57081,9 @@ sFc
 aud
 aud
 aud
-auP
-mYM
-eIr
+akb
+aun
+awC
 awg
 aRk
 buT
@@ -57054,18 +57091,18 @@ aPK
 aOz
 jga
 rWW
-aGg
+ajS
 jga
 lyj
 ayc
-azs
+ajE
 aBM
 jga
 azs
 jga
 azs
 rWW
-azs
+ajE
 dmf
 aye
 axm
@@ -57266,7 +57303,7 @@ psh
 bkb
 gzW
 oTJ
-uNN
+aRb
 aYQ
 aud
 aud
@@ -57297,7 +57334,7 @@ jga
 bBu
 axm
 jga
-jga
+ajd
 nWJ
 lyj
 sTB
@@ -57495,9 +57532,9 @@ aRL
 oTJ
 aun
 aZa
-aYS
+akl
 amG
-aud
+ajW
 aud
 bGb
 auP
@@ -57516,7 +57553,7 @@ jga
 azs
 jga
 azs
-jga
+ajd
 lyj
 sTB
 sTB
@@ -57729,7 +57766,7 @@ aud
 asp
 aud
 auP
-aRb
+ajZ
 amK
 oVR
 bpU
@@ -57950,8 +57987,8 @@ brB
 aZa
 aXz
 aZa
-aYS
-aud
+akl
+ajW
 aud
 aud
 aud
@@ -58183,7 +58220,7 @@ bGb
 aud
 aud
 aud
-amG
+akn
 auP
 aRb
 aLC
@@ -58404,7 +58441,7 @@ psh
 aJV
 bbe
 aUp
-uNN
+aRb
 aYQ
 aud
 aud
@@ -58412,7 +58449,7 @@ aud
 bGb
 aud
 aud
-asR
+ake
 aRb
 aLC
 aMC
@@ -58632,16 +58669,16 @@ psh
 psh
 aJV
 bbe
-uNN
+aRb
 aYQ
 aud
 aud
 aud
 amG
-aud
-fQL
+ajW
+ajX
 aUg
-aRb
+ajZ
 aLD
 aug
 aMC
@@ -58860,9 +58897,9 @@ aVU
 psh
 psh
 bal
-uNN
+aRb
 aYQ
-bGb
+akm
 amG
 aud
 aud
@@ -59088,7 +59125,7 @@ baZ
 bcP
 txx
 bal
-uNN
+aRb
 aYY
 aud
 aud
@@ -59316,14 +59353,14 @@ psh
 psh
 nuW
 bal
-mYM
+aun
 aYQ
 amG
 aud
-sFc
+aku
 aud
 aud
-auP
+akb
 aqS
 asw
 aLC
@@ -59544,7 +59581,7 @@ pGD
 psh
 bkb
 aRL
-uNN
+aRb
 aYQ
 aud
 aud
@@ -59772,9 +59809,9 @@ psh
 bkb
 bcE
 aUp
-uNN
+aRb
 aYQ
-bGb
+akm
 amG
 aud
 arU
@@ -60000,13 +60037,13 @@ psh
 bal
 aUp
 oTJ
-jaF
+xuK
 aYQ
 aud
 aud
 aud
 aud
-aud
+ajW
 auP
 ase
 tRE
@@ -60454,7 +60491,7 @@ kRg
 bkb
 aRL
 oTJ
-uNN
+ajZ
 aYQ
 aud
 aud
@@ -60463,7 +60500,7 @@ sFc
 aud
 arV
 aud
-auP
+akb
 aAl
 bbC
 qJe
@@ -60682,12 +60719,12 @@ beb
 aRL
 aZa
 aXz
-mYM
+aun
 aYQ
 aud
 bGb
 aud
-aud
+ajW
 bGb
 aud
 aud
@@ -60917,7 +60954,7 @@ aud
 aud
 amG
 aud
-amG
+akn
 aud
 auP
 aAl
@@ -61136,8 +61173,8 @@ cGb
 bal
 oTJ
 oTJ
-uNN
-uNN
+aRb
+aRb
 aYQ
 bGb
 aud
@@ -61147,7 +61184,7 @@ arc
 aud
 aud
 aud
-auP
+akb
 aQz
 jDY
 asa
@@ -61366,10 +61403,10 @@ oTJ
 aRb
 aZa
 alC
-aYS
+akl
 aud
 aud
-aud
+ajW
 aud
 aud
 aud
@@ -61591,19 +61628,19 @@ baZ
 bal
 aUp
 oTJ
-uNN
+aRb
 aYQ
-aud
+ajW
 aud
 aud
 amG
 aud
 aud
 bGb
-aud
+ajW
 bGb
 aud
-auP
+akb
 aAl
 aqS
 asg
@@ -61818,8 +61855,8 @@ bkb
 aQC
 aRL
 oTJ
-uNN
-jaF
+aRb
+xuK
 aYQ
 aud
 sFc
@@ -61830,7 +61867,7 @@ aud
 aud
 aud
 aud
-fQL
+ajX
 aUg
 aqR
 arn
@@ -62045,17 +62082,17 @@ psh
 bbb
 aZa
 alC
-aXz
+akP
 aZa
 alC
 aYS
 bGb
 aud
+ajW
 aud
 aud
-aud
-aud
-fQL
+ajW
+ajX
 avK
 avK
 aUg
@@ -62282,7 +62319,7 @@ amG
 aud
 bGb
 aoZ
-fQL
+ajX
 amZ
 aqR
 asa
@@ -62499,14 +62536,14 @@ bkb
 aQC
 aRL
 oTJ
-uNN
-mYM
+aRb
+aun
 aZa
-aYS
+akl
 anl
 aud
 aud
-aud
+ajW
 aud
 aud
 fQL
@@ -62728,15 +62765,15 @@ oTJ
 aUp
 oTJ
 aZa
-alC
-aYS
-aud
+akT
+akl
+ajW
 bGb
-aud
+ajW
 aud
 bGb
 apO
-fQL
+ajX
 aUg
 aqR
 arn
@@ -62964,7 +63001,7 @@ aud
 aoZ
 aud
 aud
-auP
+akb
 aAl
 aqS
 aro
@@ -63181,13 +63218,13 @@ bgX
 iJA
 oTJ
 aRb
-xuK
+jaF
 aZa
 aYL
 aud
 amG
 aud
-aud
+ajW
 aud
 amG
 aud
@@ -63409,7 +63446,7 @@ bkb
 aRL
 aZa
 bgj
-uNN
+aRb
 aYQ
 aud
 aud
@@ -63636,13 +63673,13 @@ psh
 bal
 aUp
 aYQ
-auP
-uNN
+akb
+aRb
 aYQ
-aud
+ajW
 aud
 bGb
-aud
+ajW
 aud
 aud
 apa
@@ -63865,7 +63902,7 @@ bal
 oTJ
 aYK
 aUg
-uNN
+aRb
 aYQ
 aud
 amG
@@ -63873,7 +63910,7 @@ aud
 sFc
 aud
 aud
-auP
+akb
 aRb
 bqa
 fbb
@@ -64093,13 +64130,13 @@ bal
 oTJ
 aUp
 aRb
-mYM
+aun
 aYQ
 bGb
 aud
 aud
 aud
-fQL
+ajX
 avK
 aUg
 qJE
@@ -64324,10 +64361,10 @@ oTJ
 aRb
 aYQ
 aud
-aud
+ajW
 aud
 amG
-auP
+akb
 aRb
 aRb
 qJE
@@ -65007,11 +65044,11 @@ bal
 oTJ
 aun
 aYQ
-bGb
+akm
 aud
 aud
 aud
-auP
+akb
 aRb
 aRb
 qUM
@@ -65690,11 +65727,11 @@ bal
 oTJ
 aRb
 aRb
-aYQ
+alb
 aud
 aud
 aud
-aud
+ajW
 auP
 aRb
 qJE
@@ -65918,7 +65955,7 @@ aRL
 aRb
 aun
 aZa
-aYS
+akl
 bGb
 amG
 aud
@@ -66148,7 +66185,7 @@ aRb
 aYQ
 aud
 sFc
-aud
+ajW
 aud
 aud
 auP
@@ -66379,7 +66416,7 @@ aud
 aud
 aud
 bGb
-auP
+akb
 xuK
 qUM
 cPV
@@ -66599,7 +66636,7 @@ oTJ
 asH
 aUp
 aZa
-aYS
+akl
 aud
 aud
 bGb
@@ -66822,19 +66859,19 @@ oTJ
 oTJ
 oTJ
 oTJ
-aZa
+alN
 alC
 alC
-alC
-aYS
+akT
+akl
 bGb
-aud
+ajW
 anl
 aud
+ajW
 aud
 aud
-aud
-fQL
+ajX
 aUg
 bqa
 bty
@@ -67061,7 +67098,7 @@ aud
 aud
 aud
 anR
-fQL
+ajX
 aUg
 bqa
 bty
@@ -67278,18 +67315,18 @@ aRb
 aun
 aRb
 aZa
-aYS
+akl
+ajW
+bGb
 aud
+ajW
+aud
+aud
+ajW
 bGb
 aud
 aud
-aud
-aud
-aud
-bGb
-aud
-aud
-auP
+akb
 bqa
 bty
 bbH
@@ -67515,7 +67552,7 @@ sFc
 bGb
 aud
 aud
-fQL
+ajX
 avK
 aUg
 qUM
@@ -67742,8 +67779,8 @@ aud
 aud
 aud
 aud
-fQL
-aUg
+ajX
+akU
 aun
 aRb
 qUM
@@ -67849,10 +67886,10 @@ adO
 adO
 aaX
 aaj
+aqH
 aaj
 aaj
-aaj
-aaj
+aqH
 aaA
 adO
 adO
@@ -67965,7 +68002,7 @@ aud
 aud
 aud
 bGb
-amG
+akn
 amw
 fQL
 avK
@@ -68083,7 +68120,7 @@ abb
 abi
 bYF
 aaj
-aaA
+aqG
 bZk
 adO
 aaz
@@ -68188,9 +68225,9 @@ bkw
 bkd
 bgY
 bgY
+alO
 bgY
-bgY
-bgY
+alO
 bgY
 bgY
 bgY
@@ -68308,7 +68345,7 @@ abb
 abi
 abb
 abi
-abb
+aqv
 abi
 abb
 aau
@@ -68414,13 +68451,13 @@ blK
 bld
 amA
 amA
-tiV
-tiV
-tiV
-tiV
-tiV
-tiV
-tiV
+amA
+amA
+amA
+amA
+amA
+amA
+amA
 amA
 amA
 bgv
@@ -68532,7 +68569,7 @@ adO
 bYf
 adO
 aaY
-abb
+aqv
 abb
 abb
 abb
@@ -68642,13 +68679,13 @@ aVd
 ble
 bgl
 bgl
-rRS
-rRS
-rRS
-rRS
-rRS
-rRS
-rRS
+bgl
+bgl
+bgl
+bgl
+bgl
+bgl
+bgl
 bgl
 bgl
 baV
@@ -68767,7 +68804,7 @@ abb
 abh
 abb
 abb
-aau
+apR
 adO
 adO
 bYn
@@ -68861,7 +68898,7 @@ bqJ
 pJt
 hPl
 hPl
-rVR
+aoL
 mNx
 bjP
 bnm
@@ -68870,13 +68907,13 @@ amT
 blf
 amT
 amT
-jCz
-jCz
-jCz
-jCz
-jCz
-jCz
 amT
+amT
+amT
+amT
+amT
+amT
+alh
 amT
 amT
 hJW
@@ -68991,7 +69028,7 @@ abb
 abb
 abb
 abb
-abb
+aqv
 abb
 abb
 abb
@@ -69100,7 +69137,7 @@ bkA
 ajv
 bhP
 bhP
-bhP
+amX
 bhP
 lju
 alT
@@ -69214,10 +69251,10 @@ adO
 aaU
 adO
 aaY
-abi
+aqr
 abb
 abb
-abb
+aqv
 abb
 abb
 abb
@@ -69311,7 +69348,7 @@ bjL
 bab
 bjP
 bjP
-eUG
+apA
 ahe
 nuI
 fLj
@@ -69319,10 +69356,10 @@ xTm
 hPl
 hPl
 rVR
+aox
 nuI
 nuI
-nuI
-nuI
+aox
 nuI
 nuI
 ajT
@@ -69330,8 +69367,8 @@ eHq
 sqj
 kft
 sqj
-enU
-enZ
+bht
+alU
 qDW
 aCD
 aBj
@@ -69448,11 +69485,11 @@ abb
 abb
 abb
 abb
-abb
+aqv
 abb
 abb
 abi
-aau
+apR
 adO
 adO
 aaK
@@ -69555,7 +69592,7 @@ hPl
 xTm
 sqj
 sqj
-sqj
+aml
 ajH
 wdc
 enU
@@ -69768,13 +69805,13 @@ bul
 bjP
 bjP
 fIn
-tpQ
-tpQ
+aos
+aos
 nju
+aoz
 hPl
 hPl
-hPl
-hPl
+aoz
 hPl
 xTm
 hPl
@@ -69786,7 +69823,7 @@ sqj
 sTX
 sqj
 tlD
-enU
+bht
 aAV
 aJr
 aLv
@@ -69899,10 +69936,10 @@ adO
 wrN
 adO
 aaY
-abh
+aqD
 abb
 abb
-abb
+aqv
 abb
 abb
 abb
@@ -69999,22 +70036,22 @@ bjP
 bjP
 bqJ
 fIn
-tpQ
-tpQ
+aos
+aos
 nju
 xTm
 hPl
 hPl
 jWB
+aos
+aos
 tpQ
-tpQ
-tpQ
-alo
+anP
 sqj
 kft
 sqj
 sqj
-enU
+bht
 aAV
 aqN
 aJr
@@ -70133,7 +70170,7 @@ abb
 abb
 abb
 abb
-abb
+aqv
 abb
 abb
 aau
@@ -70232,7 +70269,7 @@ bjP
 hCg
 hPl
 glp
-hPl
+aoz
 gxP
 bqJ
 bjP
@@ -70364,7 +70401,7 @@ abb
 abb
 abi
 abb
-aau
+apR
 adO
 adO
 bYm
@@ -70458,19 +70495,19 @@ bjP
 bqJ
 bjP
 fIn
-tpQ
-tpQ
-tpQ
+aos
+aos
+aos
 pcg
 bjP
 bez
 usE
-kyc
-iZV
+anS
+hwR
 alo
 kft
 sqj
-enU
+bht
 aAV
 aJr
 aJr
@@ -70584,10 +70621,10 @@ bZz
 adO
 aaY
 abb
+aqv
 abb
 abb
-abb
-abb
+aqv
 abb
 abb
 abb
@@ -70694,11 +70731,11 @@ bez
 cfN
 bkB
 aZZ
-eBx
+bqJ
 biC
-big
+amr
 nHY
-lsK
+bhu
 blR
 rbs
 aJr
@@ -70818,9 +70855,9 @@ abb
 abb
 abb
 abh
-abb
+aqv
 abi
-aau
+apR
 adO
 adO
 aaK
@@ -70922,11 +70959,11 @@ blL
 ldZ
 iXj
 aZX
-asz
+bjP
 biC
-enU
-iyM
-iyM
+bht
+alj
+bho
 bho
 blR
 rbs
@@ -71044,7 +71081,7 @@ bZS
 bZS
 bZS
 bZI
-abb
+aqv
 abb
 abb
 abb
@@ -71150,10 +71187,10 @@ iXj
 bey
 aZX
 ajq
-oXS
+anE
 ajT
-enU
-iyM
+bht
+bho
 bho
 alU
 bho
@@ -71276,7 +71313,7 @@ abb
 abb
 abb
 abi
-bYF
+apZ
 aaA
 adO
 aaz
@@ -71380,10 +71417,10 @@ akR
 ajT
 kft
 sqj
-enU
-enZ
-iyM
+bht
+alU
 bho
+alj
 bho
 aAV
 aqN
@@ -71502,7 +71539,7 @@ bZU
 bZK
 abb
 abb
-abb
+aqv
 abb
 abi
 aau
@@ -71604,12 +71641,12 @@ iXj
 csM
 bqJ
 bjP
-biC
+aor
 sqj
 ajH
 sqj
 akW
-nIh
+oXS
 bhQ
 bho
 qDW
@@ -71831,14 +71868,14 @@ tyG
 bab
 bjP
 bho
-qGV
+ajq
 ajT
 kft
 sqj
 sqj
 sqj
 sqj
-enU
+bht
 bho
 aAV
 aJr
@@ -71957,9 +71994,9 @@ bZW
 bZW
 bZL
 abb
+aqv
 abb
-abb
-abb
+aqv
 abb
 aau
 adO
@@ -72061,7 +72098,7 @@ alU
 bho
 biC
 sqj
-eHq
+anT
 sqj
 kft
 sqj
@@ -72133,7 +72170,7 @@ aMV
 ouy
 aOu
 aLN
-aLe
+aiT
 aQu
 aQo
 afd
@@ -72179,17 +72216,17 @@ adO
 adO
 aaX
 abe
+aqr
+abb
+abb
+abb
+aqv
+abb
+abb
+abb
+abb
 abi
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abi
-aau
+apR
 adO
 adO
 aaz
@@ -72291,10 +72328,10 @@ biC
 kft
 sqj
 sqj
-sqj
+aml
 sTX
 kft
-enU
+bht
 bho
 aAV
 aJr
@@ -72409,12 +72446,12 @@ aaY
 abi
 abb
 abb
+aqv
 abb
 abb
 abb
 abb
-abb
-abb
+aqv
 abb
 abb
 bYF
@@ -72634,7 +72671,7 @@ aaU
 adO
 adO
 aaY
-abb
+aqv
 abi
 abb
 abb
@@ -72644,7 +72681,7 @@ abb
 abb
 abh
 abb
-abb
+aqv
 abb
 bYF
 aaA
@@ -72744,14 +72781,14 @@ aZv
 aZv
 blN
 bhO
-rrV
-rrV
-rrV
-rrV
-rrV
-rrV
-rrV
-rrV
+bhO
+bhO
+bhO
+bhO
+bhO
+bhO
+bhO
+bhO
 bhO
 bha
 aZv
@@ -72867,7 +72904,7 @@ abb
 abh
 abb
 abb
-abb
+aqv
 abb
 abb
 abb
@@ -72972,14 +73009,14 @@ arr
 amS
 blO
 amS
-lYA
-lYA
-lYA
-lYA
-lYA
-lYA
-lYA
-lYA
+amS
+amS
+amS
+amS
+amS
+amS
+amS
+amS
 amS
 asr
 amS
@@ -73091,19 +73128,19 @@ adO
 adO
 aaZ
 cay
-abb
+aqv
 abi
 abb
 abb
 abb
 abb
 abb
-abb
+aqv
 abb
 abb
 abb
 abi
-abi
+aqr
 aau
 adO
 aaK
@@ -73200,14 +73237,14 @@ bhs
 bhs
 blP
 bhs
-dwP
-dwP
-dwP
-dwP
-dwP
-dwP
-dwP
-dwP
+bhs
+bhs
+bhs
+bhs
+bhs
+bhs
+bhs
+bhs
 bhs
 bhb
 bap
@@ -73322,7 +73359,7 @@ caq
 abb
 abb
 abb
-abb
+aqv
 abb
 abb
 abb
@@ -73427,15 +73464,15 @@ bbi
 bbi
 bbi
 blQ
+nPd
+nPd
 mwI
+nPd
+nPd
 mwI
-mwI
-mwI
-mwI
-mwI
-mwI
-mwI
-mwI
+nPd
+nPd
+nPd
 nPd
 bhc
 bbi
@@ -73497,7 +73534,7 @@ aKp
 aJv
 aLg
 aLO
-aLe
+aiT
 aNH
 aOw
 aLN
@@ -73546,7 +73583,7 @@ adO
 adO
 adO
 adO
-aaY
+aqI
 abb
 abb
 abb
@@ -73555,7 +73592,7 @@ abb
 abh
 abb
 abb
-abb
+aqv
 abb
 abb
 abi
@@ -73660,7 +73697,7 @@ ako
 bkg
 bhP
 bhP
-rit
+anf
 eqF
 bie
 bhP
@@ -73776,9 +73813,9 @@ adO
 adO
 aaY
 abi
+aqv
 abb
-abb
-abb
+aqv
 aat
 abf
 abf
@@ -73788,7 +73825,7 @@ abb
 abb
 abb
 abi
-bYF
+apZ
 aaA
 adO
 aaz
@@ -73884,13 +73921,13 @@ blT
 aZZ
 alU
 biC
-sqj
+aml
 sqj
 kft
-big
-lsK
+amr
+bhu
 biC
-kft
+alR
 sqj
 csu
 aAV
@@ -74013,7 +74050,7 @@ bZu
 aaZ
 abd
 abb
-abb
+aqv
 abb
 abb
 abb
@@ -74114,9 +74151,9 @@ aZZ
 biC
 kft
 sqj
-sqj
-enU
-enZ
+aml
+bht
+alU
 biC
 sqj
 kft
@@ -74339,16 +74376,16 @@ ldZ
 bmF
 tyG
 bab
-kyc
-alo
+anS
+anP
 sqj
 kft
-enU
-iyM
+bht
+bho
 kyc
 alF
 hwR
-bhu
+ali
 aAV
 aZQ
 vam
@@ -74459,21 +74496,21 @@ aaU
 adO
 adO
 aaY
-abi
+aqr
 abb
 abb
-aau
+apR
 bZM
 bZB
 bZz
 adO
 aaY
-abh
+aqD
 abb
 abb
 abi
 abb
-aau
+apR
 adO
 aaU
 aaK
@@ -74572,9 +74609,9 @@ biC
 sTX
 sqj
 bjg
-nIh
-nIh
-nIh
+oXS
+oXS
+oXS
 bhQ
 bho
 aAV
@@ -74700,7 +74737,7 @@ abb
 abb
 abb
 abi
-abi
+aqr
 aau
 adO
 bYf
@@ -74798,12 +74835,12 @@ iXj
 aZX
 biC
 sqj
-sqj
+aml
 sqj
 kft
 sqj
 sqj
-enU
+bht
 bho
 aAV
 aZQ
@@ -74913,7 +74950,7 @@ adW
 adO
 adO
 adO
-caq
+aqK
 abb
 abi
 abb
@@ -74921,7 +74958,7 @@ abb
 abb
 aaC
 aaj
-aaj
+aqH
 abe
 abb
 abb
@@ -75023,7 +75060,7 @@ tyG
 bns
 bmF
 bab
-qGV
+ajq
 ajT
 sqj
 kft
@@ -75144,16 +75181,16 @@ bYn
 aaY
 abb
 abb
+aqv
+abb
+aqv
 abb
 abb
 abb
 abb
+aqv
 abb
-abb
-abb
-abb
-abb
-abb
+aqv
 abi
 abb
 abi
@@ -75253,13 +75290,13 @@ tyG
 bab
 biC
 eHq
-sqj
+aml
 sqj
 sqj
 ubb
+aml
 sqj
-sqj
-enU
+bht
 amo
 aAV
 sOp
@@ -75370,7 +75407,7 @@ cbi
 adO
 adO
 caq
-abb
+aqv
 abb
 abb
 abb
@@ -75483,11 +75520,11 @@ biC
 kft
 sqj
 sTX
-sqj
+aml
 kft
 sqj
 ajH
-enU
+bht
 bho
 aAV
 aqN
@@ -75606,13 +75643,13 @@ abb
 abb
 abb
 abb
-abb
+aqv
 abb
 abb
 abb
 abi
 abb
-aat
+aqs
 aav
 adO
 adO
@@ -75715,8 +75752,8 @@ sqj
 sqj
 sqj
 sqj
-enU
-bho
+bht
+alj
 aAV
 aJr
 jGW
@@ -75829,14 +75866,14 @@ aaY
 abb
 abb
 abb
+aqv
+abb
+aqv
 abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
+aqv
 abb
 abb
 abb
@@ -75937,7 +75974,7 @@ tyG
 bab
 ajr
 biB
-biB
+anZ
 ybu
 sqj
 sqj
@@ -76053,7 +76090,7 @@ aef
 cbk
 adO
 adO
-caq
+aqK
 abb
 abb
 abb
@@ -76066,7 +76103,7 @@ abb
 abi
 abb
 bYY
-abf
+aqu
 abf
 aav
 adO
@@ -76150,11 +76187,11 @@ bju
 bju
 buv
 bqJ
-eUG
+apA
 nuI
 nuI
 mNx
-bqJ
+aoU
 bjP
 bgZ
 tyG
@@ -76168,7 +76205,7 @@ ajV
 ajV
 sqj
 kft
-sqj
+aml
 whR
 whR
 alY
@@ -76283,12 +76320,12 @@ adO
 adO
 aaY
 abi
-abb
+aqv
 abh
 abb
 abb
 abb
-abb
+aqv
 abi
 aat
 abf
@@ -76377,9 +76414,9 @@ bju
 bvr
 bju
 buv
-eUG
-fLj
-xTm
+apA
+apt
+aoO
 hPl
 rVR
 obp
@@ -76609,7 +76646,7 @@ hCg
 hPl
 syx
 hPl
-xTm
+aoO
 gxP
 bqJ
 bjP
@@ -76622,11 +76659,11 @@ bab
 ajM
 whR
 sqj
-kft
+alR
 sqj
 sqj
 whR
-ajV
+alS
 alY
 bho
 aAV
@@ -76740,7 +76777,7 @@ adO
 adO
 adO
 caq
-abb
+aqv
 abb
 abb
 bYY
@@ -76835,7 +76872,7 @@ bva
 bux
 hCg
 xTm
-hPl
+aoz
 xTm
 hPl
 rVR
@@ -76971,7 +77008,7 @@ aaY
 abi
 abb
 abi
-aau
+apR
 adO
 adO
 adO
@@ -77064,12 +77101,12 @@ bjP
 fIn
 nju
 jWB
-tpQ
+aos
 nju
-hPl
+aoz
 rVR
 mNx
-eBx
+bqJ
 bjP
 mVV
 bey
@@ -77079,11 +77116,11 @@ ajM
 whR
 whR
 sqj
-sqj
+aml
 ybu
 sqj
 sqj
-alY
+alE
 bho
 aAV
 aJr
@@ -77291,27 +77328,27 @@ bjP
 bjP
 btC
 hCg
-gxP
-eBx
+apC
+bqJ
 hCg
 iCL
 xTm
 rVR
 nuI
-mNx
+aoF
 bqJ
 bjP
 bjP
 ajp
 eqF
 bhP
-bhP
+amX
 sqj
 kft
 sqj
 sqj
 eHq
-enU
+bht
 bho
 aAV
 aqN
@@ -77523,23 +77560,23 @@ rVR
 mNx
 fIn
 nju
+aoz
 hPl
-hPl
-xTm
+aoO
 rVR
 nuI
 nuI
 nuI
 nuI
-ajT
+aoa
 sqj
 sTX
 sqj
 sqj
+aml
 sqj
 sqj
-sqj
-enU
+bht
 bho
 aAV
 aJr
@@ -77749,14 +77786,14 @@ bjP
 fIn
 nju
 rVR
-nuI
-fLj
+aox
+apt
 syx
 hPl
 hPl
 hPl
 xTm
-hPl
+aoz
 hPl
 hPl
 kft
@@ -77767,7 +77804,7 @@ sqj
 sqj
 kft
 big
-lsK
+bhu
 ams
 amE
 aLv
@@ -77974,27 +78011,27 @@ ivu
 bjP
 bjP
 bpe
-asz
+bjP
 fIn
 nju
 xTm
 hPl
 hPl
-jWB
-tpQ
-tpQ
+aoQ
+aos
+aos
 aiv
-tpQ
-tpQ
-tpQ
-iZV
-iZV
-alo
-sqj
+aos
+aos
+aos
+hwR
+hwR
+anP
+aml
 kft
 sTX
-big
-lsK
+amr
+bhu
 alU
 bho
 aAV
@@ -78202,27 +78239,27 @@ ivu
 bez
 aZZ
 bjP
-asz
-eBx
+bjP
+bqJ
 fIn
-tpQ
-tpQ
-tpQ
+aos
+aos
+aos
 pcg
-mxv
-eVh
-eVh
-eVh
-nAr
-eVh
-eVh
-jkH
+bez
+xzD
+xzD
+xzD
+tMB
+xzD
+xzD
+aZZ
 aqt
 sqj
 sqj
 sqj
 enU
-iyM
+bho
 bho
 bho
 aAV
@@ -78444,13 +78481,13 @@ bno
 tyG
 vqT
 bga
-wIe
+bab
 biC
 sqj
-big
-iZV
-lsK
-jvk
+amr
+hwR
+bhu
+amo
 alU
 bho
 aAV
@@ -78672,13 +78709,13 @@ tyG
 iXj
 bey
 bey
-qvu
+aZX
 biC
 sqj
 enU
-iyM
-iyM
-iyM
+bho
+bho
+bho
 bho
 bho
 aAV
@@ -78898,15 +78935,15 @@ tyG
 tyG
 tyG
 bmI
-qGV
-nIh
-nIh
-ajT
+ajq
+oXS
+oXS
+aoa
 sqj
-enU
-iyM
-enZ
-iyM
+bht
+bho
+alU
+bho
 amo
 bho
 bnZ
@@ -79133,7 +79170,7 @@ sqj
 sTX
 bjg
 bhQ
-iyM
+alj
 bho
 aUS
 omT
@@ -79356,7 +79393,7 @@ aiO
 brp
 biC
 sqj
-sqj
+aml
 sqj
 sqj
 kft
@@ -79587,9 +79624,9 @@ kft
 sqj
 sqj
 kft
-sqj
-big
-lsK
+aml
+amr
+bhu
 bnZ
 oUy
 dmZ
@@ -79813,11 +79850,11 @@ ajh
 ajs
 sqj
 sqj
+aml
 sqj
 sqj
-sqj
-enU
-iyM
+bht
+bho
 bnZ
 aKo
 abV
@@ -80042,10 +80079,10 @@ bZX
 sqj
 sqj
 sTX
-big
-iZV
-lsK
-iyM
+amr
+hwR
+ali
+bho
 bnZ
 oUy
 oUy
@@ -80271,9 +80308,9 @@ sqj
 sqj
 sqj
 enU
-enZ
-iyM
-jvk
+alU
+bho
+amo
 bnZ
 tBJ
 oUy
@@ -80498,10 +80535,10 @@ ajt
 kft
 sqj
 sqj
-enU
+bht
 ogZ
-iyM
-iyM
+bho
+bho
 bnZ
 dmZ
 oaL
@@ -80725,11 +80762,11 @@ bmL
 ajt
 sqj
 sqj
-ajH
+aob
 bjg
 bhQ
-iyM
-iyM
+bho
+bho
 bnZ
 oUy
 oUy
@@ -80955,9 +80992,9 @@ sqj
 sqj
 akr
 sqj
-bjg
+ang
 bnX
-iyM
+bho
 bnZ
 bbI
 qLc
@@ -81184,8 +81221,8 @@ sqj
 sqj
 sqj
 sqj
-enU
-iyM
+bht
+bho
 bnZ
 ock
 bbL
@@ -81409,7 +81446,7 @@ bZX
 blV
 sqj
 sTX
-sqj
+aml
 sqj
 sqj
 enU
@@ -81640,7 +81677,7 @@ sqj
 sqj
 kft
 akN
-enU
+bht
 aUS
 byC
 oUy
@@ -81864,11 +81901,11 @@ pjc
 brp
 biC
 sqj
+aml
 sqj
 sqj
 sqj
-sqj
-enU
+bht
 bnZ
 oUy
 bbI
@@ -82095,8 +82132,8 @@ sqj
 ybu
 sqj
 sqj
-sTX
-enU
+anz
+bht
 bnZ
 dmZ
 ock
@@ -82324,7 +82361,7 @@ kft
 sqj
 sqj
 sqj
-enU
+bht
 kvo
 tXO
 bhR
@@ -82548,13 +82585,13 @@ brp
 bZX
 biC
 ajH
-sqj
+aml
 sqj
 sqj
 sqj
 bjg
-nIh
-bhQ
+oXS
+alX
 bnZ
 aMD
 oUy
@@ -82780,7 +82817,7 @@ sqj
 sqj
 sqj
 kft
-sqj
+aml
 sqj
 uHI
 bQz
@@ -83459,11 +83496,11 @@ bod
 bnC
 bhz
 bhU
-hla
-hla
-dgq
-dgq
-hla
+bhU
+bhU
+ama
+ama
+bhU
 akt
 akD
 alK
@@ -83687,14 +83724,14 @@ bog
 bnD
 bhz
 ama
-dgq
-hla
-hla
-hla
-hla
-dgq
-hla
-dgq
+ama
+bhU
+bhU
+bhU
+bhU
+ama
+bhU
+ama
 bhU
 bcM
 bhf
@@ -83899,7 +83936,7 @@ poE
 btl
 gxd
 fgS
-qCd
+bol
 buB
 vSG
 vtt
@@ -83917,11 +83954,11 @@ bhz
 ajD
 akp
 akc
-ajL
-ajL
-sJp
-ajL
-ajL
+amD
+amD
+amf
+amD
+amD
 ajL
 amf
 aEy
@@ -84582,7 +84619,7 @@ aeg
 efJ
 eSb
 wPN
-gQr
+apH
 btl
 buB
 cwV
@@ -84601,12 +84638,12 @@ bmS
 bma
 oHu
 ajI
-alw
+akY
 ajI
 akQ
 ajI
 alA
-ajI
+akE
 bhC
 bhC
 bhh
@@ -84836,7 +84873,7 @@ ajI
 alA
 ajI
 alA
-ajI
+akE
 arQ
 bnZ
 dmZ
@@ -85059,7 +85096,7 @@ oHu
 ajI
 ajI
 ajI
-ajI
+akE
 alA
 ajI
 ajI
@@ -85517,9 +85554,9 @@ cib
 swt
 oHu
 ajI
-alz
+amH
 ajI
-ajI
+akE
 ajI
 arS
 als
@@ -85749,7 +85786,7 @@ ajI
 ajI
 ajI
 alA
-ajI
+akE
 ajI
 arQ
 bnZ
@@ -85974,7 +86011,7 @@ npt
 toF
 pjk
 ajI
-alA
+akL
 ajI
 ajI
 ajI
@@ -86204,7 +86241,7 @@ oHu
 ajI
 ajI
 ajI
-alA
+akL
 ajI
 akQ
 arS
@@ -86429,13 +86466,13 @@ wca
 npt
 btl
 oHu
-alA
+akL
 ajI
 ajI
 ajI
 ajI
 ajI
-ajI
+akE
 ajI
 arR
 btS
@@ -86696,7 +86733,7 @@ lIo
 arK
 apu
 aIZ
-nRi
+ajJ
 aJs
 aIF
 gvv
@@ -86888,12 +86925,12 @@ oHu
 alz
 ajI
 ajI
-ajI
+akE
 alx
 ajI
 ajI
 ajI
-arQ
+akA
 btS
 hmK
 xVk
@@ -87331,7 +87368,7 @@ gxd
 qeW
 bvx
 biE
-qCd
+bol
 btl
 btl
 hba
@@ -87342,7 +87379,7 @@ gRm
 btl
 oHu
 ajI
-alA
+akL
 alz
 alA
 ajI
@@ -87573,13 +87610,13 @@ pjk
 ajI
 ajI
 ajI
-ajI
+akE
 alA
 ajI
 alw
 arS
 als
-als
+akV
 als
 aoX
 btS
@@ -87798,13 +87835,13 @@ bae
 btl
 hba
 oHu
-aon
+akM
 ajI
 ajI
-amL
+ald
 ajI
 ajI
-ajI
+akE
 ajI
 ajI
 ajI
@@ -88027,17 +88064,17 @@ bqb
 nWe
 oHu
 ajI
-ajI
+akE
 ajI
 alw
-ajI
+akE
 ajI
 ajI
 alA
 ajI
 alw
 ajI
-arQ
+akA
 btS
 uYC
 eil
@@ -88263,7 +88300,7 @@ alA
 ajI
 ajI
 ajI
-ajI
+akE
 ajI
 arQ
 aRw
@@ -88486,7 +88523,7 @@ efX
 efX
 pjk
 ajI
-ajI
+akE
 ajI
 ajI
 ajI
@@ -88717,7 +88754,7 @@ ajI
 alw
 ajI
 alz
-ajI
+akE
 ajI
 ajI
 alA
@@ -88948,9 +88985,9 @@ pjk
 ajI
 alw
 ajI
+akE
 ajI
-ajI
-ajI
+akE
 arS
 als
 als
@@ -89178,9 +89215,9 @@ ajI
 ajI
 ajI
 ajI
-ajI
+akE
 alA
-ajI
+akE
 ajI
 arQ
 aRw
@@ -89402,9 +89439,9 @@ nWe
 btl
 btl
 oHu
+akE
 ajI
-ajI
-aon
+akM
 ajI
 apo
 ajI
@@ -89634,7 +89671,7 @@ alA
 ajI
 ajI
 ajI
-ajI
+akE
 ajI
 alA
 ajI
@@ -89859,16 +89896,16 @@ btl
 btl
 oHu
 ajI
-alw
+akY
 ajI
 ajI
 alA
 ajI
 ajI
-ajI
+akE
 ajI
 alA
-ajI
+akE
 arR
 btS
 fSX
@@ -90314,18 +90351,18 @@ bae
 nWe
 btl
 oHu
-ajI
+akE
 ajI
 alA
-ajI
+akE
 alz
 ajI
-alA
+akL
+ajI
+akE
 ajI
 ajI
-ajI
-ajI
-arQ
+akA
 aRw
 aQZ
 fSX
@@ -90543,7 +90580,7 @@ btl
 qYF
 toF
 pjk
-aon
+akM
 ajI
 ajI
 ajI
@@ -90554,7 +90591,7 @@ alA
 ajI
 ajI
 arQ
-pkk
+mqJ
 btS
 fSX
 dLY
@@ -90772,17 +90809,17 @@ btl
 hba
 toF
 pjk
+akE
+ajI
+alA
+akE
+akM
+ajI
 ajI
 ajI
 alA
-ajI
-aon
-ajI
-ajI
-ajI
-alA
-arS
-bgg
+akC
+akB
 auM
 hKk
 psc
@@ -91006,7 +91043,7 @@ ajI
 ajI
 ajI
 ajI
-ajI
+akE
 ajI
 ajI
 ajI
@@ -91228,7 +91265,7 @@ hba
 nWe
 btl
 hba
-pkk
+mqJ
 oHu
 ajI
 ajI
@@ -91236,7 +91273,7 @@ alA
 ajI
 ajI
 ajI
-ajI
+akE
 alA
 arS
 bgg
@@ -91456,9 +91493,9 @@ btl
 btl
 eNQ
 btl
-pkk
+mqJ
 oHu
-ajI
+akE
 alw
 ajI
 aon
@@ -91695,7 +91732,7 @@ ajI
 ajI
 alA
 ajI
-arQ
+akA
 btS
 lbX
 aXq
@@ -91913,7 +91950,7 @@ jXT
 pxs
 bqb
 mqJ
-pkk
+mqJ
 oHu
 alA
 eiP
@@ -92141,7 +92178,7 @@ cpY
 bfS
 wJG
 lJY
-pkk
+mqJ
 wkt
 eiP
 eiP

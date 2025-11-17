@@ -38,12 +38,21 @@
 		/obj/item/reagent_container/syringe = "tray_syringe",
 		/obj/item/reagent_container/glass/beaker/vial = "tray_vial",
 	)
+	/// Compact trays have a compact sprite
+	var/compact
 
 /obj/item/storage/surgical_tray/Initialize()
 	can_hold = types_and_overlays
 	return ..()
 
 /obj/item/storage/surgical_tray/update_icon()
+	if(compact)
+		if(length(contents))
+			icon_state = "compact_surgical_tray"
+		else
+			icon_state = "compact_surgical_tray_e"
+		return
+
 	overlays.Cut()
 	for(var/obj/item/overlayed_item in contents)
 		if(types_and_overlays[overlayed_item.type])
@@ -75,3 +84,8 @@
 
 /obj/item/storage/surgical_tray/empty/fill_preset_inventory()
 	return
+
+/obj/item/storage/surgical_tray/compact
+	name = "compact surgical tray"
+	desc = "A small metallic tray covered in sterile tarp. Intended to store surgical tools in a neat and clean fashion. This tray is noticeably compact."
+	icon_state = "compact_surgical_tray"

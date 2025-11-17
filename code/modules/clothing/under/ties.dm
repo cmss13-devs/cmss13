@@ -360,14 +360,14 @@
 
 /obj/item/clothing/accessory/medal/gold/corporate_award
 	name = WY_MEDAL_AWARD_1
-	desc = "A gold medal awarded for notable service in the interests of Weyland-Yutani."
+	desc = "A small gold corporate badge awarded for notable service in the interests of Weyland-Yutani."
 	icon_state = "corporate_award"
 	awarding_faction = FACTION_WY
 
-/obj/item/clothing/accessory/medal/gold/corporate_medallion
+/obj/item/clothing/accessory/medal/gold/corporate_award2
 	name = WY_MEDAL_AWARD_2
-	desc = "A gold medal awarded for notable service in the interests of Weyland-Yutani."
-	icon_state = "corporate_medallion"
+	desc = "A large gold corporate badge awarded for notable service in the interests of Weyland-Yutani."
+	icon_state = "corporate_award2"
 	awarding_faction = FACTION_WY
 
 /obj/item/clothing/accessory/medal/gold

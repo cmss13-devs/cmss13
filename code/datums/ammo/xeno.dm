@@ -122,6 +122,7 @@
 
 /datum/ammo/xeno/toxin/queen
 	name = "neurotoxic spit"
+	icon_state = "neurotoxin"
 	spit_cost = 50
 	effect_power = 2
 	drain_power = 4

@@ -777,3 +777,30 @@
 	name = "\improper Con-Am Poster"
 	desc = "A symbol of the Con-Am corporation. Oozes a proud confidence of Con-Am, despite its mounting real world troubles."
 	icon_state = "conam_symbol"
+
+/obj/structure/sign/conam/variant1
+	icon_state = "conam_logo_1"
+
+/obj/structure/sign/conam/variant1/damage1
+	icon_state = "conam_logo_1_damage"
+
+/obj/structure/sign/conam/variant1/damage2
+	icon_state = "conam_logo_1_damage_1"
+
+/obj/structure/sign/conam/variant2
+	icon_state = "conam_logo_2"
+
+/obj/structure/sign/conam/variant2/damage1
+	icon_state = "conam_logo_2_damage"
+
+/obj/structure/sign/conam/variant2/damage2
+	icon_state = "conam_logo_2_damage_1"
+
+/obj/structure/sign/conam/variant3
+	icon_state = "conam_logo_3"
+
+/obj/structure/sign/conam/variant3/damage1
+	icon_state = "conam_logo_3_damage"
+
+/obj/structure/sign/conam/variant3/damage2
+	icon_state = "conam_logo_3_damage_1"

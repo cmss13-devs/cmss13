@@ -156,3 +156,46 @@
 
 /obj/effect/decal/floor_symbol/uscm_3x3/westface/northwest
 	dir = NORTHWEST
+
+/obj/effect/decal/conam
+	icon = 'icons/effects/conam_logo_big.dmi'
+	icon_state = "full_conam"
+	layer = TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/decal/conam/big_logo
+	icon_state = "full_conam"
+
+/obj/effect/decal/conam/big_logo/damage
+	icon_state = "full_conam_damage"
+
+/obj/effect/decal/conam/big_logo/damage_1
+	icon_state = "full_conam_damage_1"
+
+/obj/effect/decal/conam/half_logo
+	icon_state = "half_conam"
+
+/obj/effect/decal/conam/half_logo/damage
+	icon_state = "half_conam_damage"
+
+/obj/effect/decal/conam/half_logo/damage_1
+	icon_state = "half_conam_damage_1"
+
+/obj/effect/decal/conam/long_logo_left
+	icon_state = "long_conam_left"
+
+/obj/effect/decal/conam/long_logo_left/damage
+	icon_state = "long_conam_left_damage"
+
+/obj/effect/decal/conam/long_logo_left/damage_1
+	icon_state = "long_conam_left_damage_1"
+
+/obj/effect/decal/conam/long_logo_right
+	icon_state = "long_conam_right"
+
+/obj/effect/decal/conam/long_logo_right/damage
+	icon_state = "long_conam_right_damage"
+
+/obj/effect/decal/conam/long_logo_right/damage_1
+	icon_state = "long_conam_right_damage_1"

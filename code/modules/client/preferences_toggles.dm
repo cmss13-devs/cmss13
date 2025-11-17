@@ -690,7 +690,7 @@ CLIENT_VERB(toggle_adaptive_zooming)
 /client/proc/toggle_ghost_ears()
 	set name = "Toggle GhostEars"
 	set category = "Preferences.Ghost"
-	set desc = "Toggle Between seeing all mob speech, and only speech of nearby mobs"
+	set desc = "Toggle between seeing all mob speech, and only speech of nearby mobs"
 	prefs.toggles_chat ^= CHAT_GHOSTEARS
 	to_chat(src, SPAN_BOLDNOTICE("As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"]."))
 	prefs.save_preferences()
@@ -698,7 +698,7 @@ CLIENT_VERB(toggle_adaptive_zooming)
 /client/proc/toggle_ghost_sight()
 	set name = "Toggle GhostSight"
 	set category = "Preferences.Ghost"
-	set desc = "Toggle Between seeing all mob emotes, and only emotes of nearby mobs"
+	set desc = "Toggle between seeing all mob emotes, and only emotes of nearby mobs"
 	prefs.toggles_chat ^= CHAT_GHOSTSIGHT
 	to_chat(src, SPAN_BOLDNOTICE("As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"]."))
 	prefs.save_preferences()
@@ -717,6 +717,14 @@ CLIENT_VERB(toggle_adaptive_zooming)
 	set desc = "Toggle between hearing listening devices or not."
 	prefs.toggles_chat ^= CHAT_LISTENINGBUG
 	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will [(prefs.toggles_chat & CHAT_LISTENINGBUG) ? "now" : "no longer"] hear listening devices as a ghost."))
+	prefs.save_preferences()
+
+/client/proc/toggle_ghost_announce_clarity()
+	set name = "Toggle Ghost Announce Clarity"
+	set category = "Preferences.Ghost"
+	set desc = "Toggle between seeing announcements always in full clarity, or with the current clarity for the observed z-level"
+	prefs.toggles_chat ^= CHAT_GHOSTANNOUNCECLARITY
+	to_chat(src, SPAN_BOLDNOTICE("As a ghost, you will now see announcements in [(prefs.toggles_chat & CHAT_GHOSTANNOUNCECLARITY) ? "full clarity always" : "partial clarity if applicable"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_ghost_hud()
@@ -871,6 +879,7 @@ GLOBAL_LIST_INIT(ghost_prefs_verbs, list(
 	/client/proc/toggle_ghost_sight,
 	/client/proc/toggle_ghost_radio,
 	/client/proc/toggle_ghost_spyradio,
+	/client/proc/toggle_ghost_announce_clarity,
 	/client/proc/toggle_ghost_hivemind,
 	/client/proc/deadchat,
 	/client/proc/toggle_ghost_hud,

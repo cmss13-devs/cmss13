@@ -30460,7 +30460,7 @@
 /area/strata/interior/administration)
 "bJF" = (
 /obj/structure/filingcabinet,
-/obj/item/pamphlet/skill/medical,
+/obj/item/pamphlet/upgradeable/medical,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/strata,
 /area/strata/interior/administration)

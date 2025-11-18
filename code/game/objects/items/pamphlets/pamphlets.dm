@@ -18,7 +18,7 @@
 	throw_speed = SPEED_FAST
 	throw_range = 20
 	var/datum/character_trait/trait = /datum/character_trait
-	var/flavour_text = "You read over the pamphlet a few times, learning a new skill."
+	var/flavour_text = "learning new skills and expertise."
 	var/bypass_pamphlet_limit = FALSE
 
 /obj/item/pamphlet/Initialize()
@@ -47,7 +47,7 @@
 	return TRUE
 
 /obj/item/pamphlet/proc/on_use(mob/living/carbon/human/user)
-	to_chat(user, SPAN_NOTICE(flavour_text))
+	to_chat(user, SPAN_NOTICE("You read over \the [name] a few times, [flavour_text]"))
 	trait.apply_trait(user)
 	if(!bypass_pamphlet_limit)
 		user.has_used_pamphlet = TRUE
@@ -68,7 +68,7 @@
 
 /obj/item/pamphlet/antag/skill/engineer
 	name = "suspicious looking pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge. This one has an engineering insignia. This one is written in code-speak."
+	desc = "A pamphlet used to quickly impart vital knowledge. This one is written in code-speak, but you can vaguely make out an engineering symbol."
 	trait = /datum/character_trait/skills/miniengie/antag
 	bypass_pamphlet_limit = TRUE
 
@@ -77,7 +77,7 @@
 //------//
 /obj/item/pamphlet/skill/spotter
 	name = "Spotter instructional pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a pair of binoculars on it."
+	desc = "A pamphlet used to quickly impart vital knowledge of being a spotter to a squad sniper. It also boosts your understanding on JTAC practices as well."
 	icon_state = "pamphlet_spotter"
 	trait = /datum/character_trait/skills/spotter
 	bypass_pamphlet_limit = TRUE
@@ -152,7 +152,7 @@
 
 /obj/item/pamphlet/skill/cosmartgun
 	name = "Cavalier instructional pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a smartgun on it."
+	desc = "A pamphlet used to quickly impart vital knowledge on the use of the Cavalier smartgun... You suppose this just teaches you where to find the power switch."
 	icon_state = "pamphlet_loader"
 	bypass_pamphlet_limit = TRUE
 	trait = /datum/character_trait/skills/cosmartgun
@@ -165,7 +165,7 @@
 
 /obj/item/pamphlet/skill/loader
 	name = "Loader instructional pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a rocket on it."
+	desc = "A pamphlet used to quickly impart vital knowledge. It also imparts some knowledge of demolitions and heavier-duty equipment, among other engineering devices."
 	icon_state = "pamphlet_loader"
 	trait = /datum/character_trait/skills/loader
 	bypass_pamphlet_limit = TRUE
@@ -206,7 +206,7 @@
 
 /obj/item/pamphlet/skill/mortar_operator
 	name = "Mortar Operator instructional pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a mortar on it."
+	desc = "A pamphlet used to quickly impart vital knowledge on the use of the mortar, among other engineering devices and JTAC practices."
 	icon_state = "pamphlet_mortar"
 	trait = /datum/character_trait/skills/mortar
 	bypass_pamphlet_limit = TRUE
@@ -239,7 +239,7 @@
 
 /obj/item/pamphlet/skill/k9_handler
 	name = "K9 handler instructional pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a Synthetic K9 Rescue unit on it."
+	desc = "A pamphlet used to quickly impart vital knowledge of taking care of K9 units, even if they aren't exactly real dogs."
 	icon_state = "pamphlet_k9_handler"
 	trait = /datum/character_trait/skills/k9_handler
 	bypass_pamphlet_limit = TRUE
@@ -275,17 +275,10 @@
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "K9 Handler")
 
 /obj/item/pamphlet/skill/vc
-	name = "vehicle training manual"
-	desc = "A manual used to quickly impart vital knowledge on driving vehicles."
+	name = "Vehicle Crewman instructional pamphlet"
+	desc = "A manual used to quickly impart vital knowledge of driving heavy-duty vehicles and its maintenance. It also imparts some deep knowledge on related engineering applications."
 	icon_state = "pamphlet_vehicle"
 	trait = /datum/character_trait/skills/vc
-	bypass_pamphlet_limit = TRUE
-
-/obj/item/pamphlet/skill/surgery // deprecate this somehow
-	name = "Surgery instructional pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge. This one has a medical insignia."
-	icon_state = "pamphlet_medical"
-	trait = /datum/character_trait/skills/surgery
 	bypass_pamphlet_limit = TRUE
 
 //-------//
@@ -316,7 +309,7 @@
 	return TRUE
 
 /obj/item/pamphlet/trait/on_use(mob/living/carbon/human/user)
-	to_chat(user, SPAN_NOTICE(flavour_text))
+	to_chat(user, SPAN_NOTICE("You read over \the [name] a few times, [flavour_text]"))
 	ADD_TRAIT(user, trait_to_give, "pamphlet")
 	if(!bypass_pamphlet_limit)
 		user.has_used_pamphlet = TRUE
@@ -325,4 +318,5 @@
 	name = "\improper M707 instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge of how to shoot big guns and spot for them."
 	icon_state = "pamphlet_vulture"
+	flavour_text = "strengthening your expertise on the famed M707 Vulture."
 	trait_to_give = TRAIT_VULTURE_USER

@@ -637,6 +637,8 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/pamphlet/language/chinese,
 		/obj/item/pamphlet/language/german,
 		/obj/item/pamphlet/language/spanish,
+		/obj/item/pamphlet/language/scandinavian,
+		/obj/item/pamphlet/language/french,
 	)
 	dollar_cost = 30
 	crate_heat = -2

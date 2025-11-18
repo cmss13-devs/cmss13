@@ -94,11 +94,3 @@
 	skill = SKILL_JTAC
 	secondary_skill = SKILL_ENGINEER //enables the handler to use standard synth reset keys as well as easier repairs for the dog
 	skill_cap = SKILL_ENGINEER_NOVICE
-
-/datum/character_trait/skills/surgery
-	trait_name = "Surgery Training"
-	trait_desc = "Boosts the surgery and research skills. Crewmember received training in surgery and advanced R&D."
-	skill = SKILL_SURGERY
-	secondary_skill = SKILL_RESEARCH
-	secondary_skill_cap = 3
-	skill_increment = 3

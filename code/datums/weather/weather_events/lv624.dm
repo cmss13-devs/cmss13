@@ -37,32 +37,6 @@ GLOBAL_LIST_INIT(fog_tiles, list())
 
 GLOBAL_LIST_INIT(big_fog_tiles, list())
 
-/obj/effect/landmark/fog_marker
-	name = "Fog marker"
-	var/active = FALSE
-	var/datum/effect_system/smoke_spread/fog/smoke
-	icon_state = "fog"
-
-/obj/effect/landmark/fog_marker/Initialize(mapload, ...)
-	. = ..()
-	GLOB.fog_tiles += src
-
-/obj/effect/landmark/fog_marker/proc/activate()
-	if(active)
-		return
-	active = TRUE
-	addtimer(CALLBACK(src, PROC_REF(set_off)), rand(0,59))
-
-/obj/effect/landmark/fog_marker/proc/set_off()
-	var/duration = rand(5,10)
-	smoke = new()
-	smoke.set_up(radius = 0, loca = loc,smoke_time = duration)
-	smoke.start()
-	addtimer(CALLBACK(src, PROC_REF(deactivate)), duration)
-
-/obj/effect/landmark/fog_marker/proc/deactivate()
-	active = FALSE
-
 /obj/effect/landmark/big_fog_marker
 	name = "Big fog spawner"
 	var/obj/effect/big_fog/linked_fog
@@ -79,7 +53,7 @@ GLOBAL_LIST_INIT(big_fog_tiles, list())
 
 /obj/effect/landmark/big_fog_marker/proc/spawn_fog()
 	linked_fog = new/obj/effect/big_fog(loc)
-	linked_fog.linked_maker = src
+	linked_fog.linked_marker = src
 
 /obj/effect/landmark/big_fog_marker/proc/despawn_fog()
 	QDEL_NULL(linked_fog)

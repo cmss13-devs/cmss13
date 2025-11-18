@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 /obj/item/reagent_container/food/drinks
 	name = "drink"
-	desc = "yummy."
+	desc = "Yummy."
 	icon = 'icons/obj/items/food/drinks.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',

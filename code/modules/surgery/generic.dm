@@ -23,7 +23,7 @@
 
 /datum/surgery_step/incision
 	name = "Make Incision"
-	desc = "make an incision."
+	desc = "Make an incision."
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
@@ -132,7 +132,7 @@
 
 /datum/surgery_step/clamp_bleeders_step
 	name = "Clamp Bleeders"
-	desc = "clamp the bleeders."
+	desc = "Clamp the bleeders."
 	//Tools used to clamp bleeders by either clamping them shut or tying them shut. Fixovein is a substitute but also a real surgery tool.
 	tools = list(
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
@@ -210,7 +210,7 @@
 
 /datum/surgery_step/retract_skin
 	name = "Widen Incision"
-	desc = "widen the incision."
+	desc = "Widen the incision."
 	time = 2 SECONDS
 	//Tools used to pry open specifically incisions. Contains INCISION tools at lengthy delays, mainly so surgeons can dramatically slash open incisions with them.
 	tools = list(\
@@ -334,7 +334,7 @@
 
 /datum/surgery_step/cauterize
 	name = "Close Incision"
-	desc = "cauterize the incision."
+	desc = "Cauterize the incision."
 	tools = SURGERY_TOOLS_CAUTERIZE
 	time = 2.5 SECONDS
 	var/tools_lit = list(
@@ -408,7 +408,7 @@
 
 /datum/surgery_step/saw_encased
 	name = "Saw Bone"
-	desc = "cut through the bone."
+	desc = "Cut through the bone."
 	/*Tools used to cut ribs/skull. Same tools as SEVER_BONE, but with sawing tools being better than chopping ones.
 	You're trying to cut through, but keep it and what's behind it intact.*/
 	tools = list(
@@ -478,7 +478,7 @@
 //In rib-closing surgery, it can be skipped to finish closing the ribcage, or completed to abort the operation.
 /datum/surgery_step/open_encased_step
 	name = "Open Bone"
-	desc = "prise the bones open."
+	desc = "Prise the bones open."
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -553,7 +553,7 @@
 
 /datum/surgery_step/close_encased_step
 	name = "Close Bone"
-	desc = "bend the bones back into place."
+	desc = "Bend the bones back into place."
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -605,7 +605,7 @@
 
 /datum/surgery_step/mend_encased
 	name = "Mend Bone"
-	desc = "repair the damaged bones."
+	desc = "Repair the damaged bones."
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
@@ -709,7 +709,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 
 /datum/surgery_step/test_incision
 	name = "Make Incision (Nonhuman)"
-	desc = "make an incision."
+	desc = "Make an incision."
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 
@@ -758,7 +758,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 
 /datum/surgery_step/mend_test_organ_step
 	name = "Repair Damaged Organs"
-	desc = "repair the organ damage."
+	desc = "Repair the organ damage."
 	tools = list(
 		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/stack/medical/advanced/bruise_pack/predator = SURGERY_TOOL_MULT_SUBSTITUTE,

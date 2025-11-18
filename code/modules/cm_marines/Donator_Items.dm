@@ -1211,7 +1211,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/killaninja12
 	name = "space cowboy hat"
-	desc = "the name 'Maurice' is written inside the hat...  UNIQUE DONOR ITEM"
+	desc = "The name 'Maurice' is written inside the hat...  UNIQUE DONOR ITEM"
 	icon_state = "killaninja12_u"
 	item_state = "killaninja12_u"
 

@@ -394,7 +394,7 @@
 //industructible props
 /obj/structure/prop/invuln
 	name = "instanceable object"
-	desc = "this needs to be defined by a coder."
+	desc = "This needs to be defined by a coder."
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "structure_lattice"
 	explo_proof = TRUE
@@ -763,7 +763,7 @@
 	projectile_coverage = 0
 	density = FALSE
 	icon = 'icons/obj/structures/props/holiday_props.dmi'
-	desc = "parent object for temporary holiday structures. If you are reading this, go find a mapper and tell them to search up error code: TOO MUCH EGGNOG"//hello future mapper. Next time use the sub types or instance the desc. Thanks -past mapper.
+	desc = "Parent object for temporary holiday structures. If you are reading this, go find a mapper and tell them to search up error code: TOO MUCH EGGNOG"//hello future mapper. Next time use the sub types or instance the desc. Thanks -past mapper.
 	layer = 4
 	health = 50
 	anchored = TRUE

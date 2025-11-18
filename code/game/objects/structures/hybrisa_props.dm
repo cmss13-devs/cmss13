@@ -1430,7 +1430,7 @@
 
 /obj/structure/prop/hybrisa/airport/dropshipenginedamage
 	name = "dropship damage"
-	desc = "the engine appears to have severe damage."
+	desc = "The engine appears to have severe damage."
 	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "dropship_engine_damage"
 	bound_height = 64
@@ -1442,7 +1442,7 @@
 
 /obj/structure/prop/hybrisa/airport/dropshipenginedamagenofire
 	name = "dropship damage"
-	desc = "the engine appears to have severe damage."
+	desc = "The engine appears to have severe damage."
 	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "dropship_engine_damage_nofire"
 	bound_height = 64
@@ -1643,7 +1643,7 @@
 
 /obj/structure/prop/hybrisa/misc/cabinet
 	name = "cabinet"
-	desc = "a small cabinet with drawers."
+	desc = "A small cabinet with drawers."
 	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 	icon_state = "sidecabinet"
 	projectile_coverage = 20
@@ -1651,7 +1651,7 @@
 
 /obj/structure/prop/hybrisa/misc/elevator_door
 	name = "broken elevator door"
-	desc = "completely broken, the elevator is not going to work."
+	desc = "Completely broken, the elevator is not going to work."
 	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "elevator_left"
 	opacity = FALSE
@@ -2318,7 +2318,7 @@
 
 /obj/structure/cargo_container/hybrisa/containersextended
 	name = "cargo container"
-	desc = "a cargo container."
+	desc = "A cargo container."
 	icon = 'icons/obj/structures/props/containers/containersextended.dmi'
 	icon_state = "blackwyleft"
 	bound_height = 32

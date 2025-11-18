@@ -1,6 +1,6 @@
 /datum/tech
 	var/name = "tech"
-	var/desc = "placeholder description."
+	var/desc = "Placeholder description."
 
 	var/icon = 'icons/effects/techtree/tech.dmi'
 	var/icon_state = "unknown"

@@ -490,7 +490,7 @@
 
 /obj/item/toy/plush
 	name = "generic plushie"
-	desc = "perfectly generic."
+	desc = "Perfectly generic."
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "debug"
 	w_class = SIZE_SMALL
@@ -535,12 +535,12 @@
 
 /obj/item/toy/plush/gnarp
 	name = "gnarp plush"
-	desc = "gnarp gnarp."
+	desc = "Gnarp gnarp."
 	icon_state = "gnarp"
 
 /obj/item/toy/plush/gnarp/alt
 	name = "gnarp plush"
-	desc = "gnarp gnarp."
+	desc = "Gnarp gnarp."
 	icon_state = "gnarp_alt"
 
 /obj/item/toy/plush/therapy

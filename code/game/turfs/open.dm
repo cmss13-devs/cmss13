@@ -1138,7 +1138,7 @@
 /turf/open/jungle/water
 	bushes_spawn = 0
 	name = "murky water"
-	desc = "thick, murky water."
+	desc = "Thick, murky water."
 	icon = 'icons/turf/floors/beach.dmi'
 	icon_state = "water"
 	icon_spawn_state = "water"

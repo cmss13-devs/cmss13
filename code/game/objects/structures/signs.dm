@@ -100,7 +100,7 @@
 
 /obj/structure/sign/uacqs
 	name = "\improper UACQS Plaque"
-	desc = "a UACQS sign."
+	desc = "A UACQS sign."
 	icon_state = "roplaque"
 	deconstructable = FALSE
 

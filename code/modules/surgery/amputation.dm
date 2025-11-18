@@ -50,7 +50,7 @@
 
 /datum/surgery_step/cut_muscle
 	name = "Cut Muscular Tissue"
-	desc = "begin an amputation."
+	desc = "Begin an amputation."
 	tools = SURGERY_TOOLS_INCISION
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
@@ -93,7 +93,7 @@
 
 /datum/surgery_step/abort_amputation
 	name = "Reconnect Muscular Tissue (Surgery Abort)"
-	desc = "reconnect the muscles and abort the amputation."
+	desc = "Reconnect the muscles and abort the amputation."
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -138,7 +138,7 @@
 
 /datum/surgery_step/saw_off_limb
 	name = "Sever Bone"
-	desc = "cut off the limb."
+	desc = "Cut off the limb."
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 6 SECONDS
 	///Tools which cannot instantly hack off a limb when amputating. Bayonet is for sawing, butcher/hatchet are smaller substitutes for machete/fire axe.
@@ -206,7 +206,7 @@
 
 /datum/surgery_step/carve_amputation
 	name = "Remove Excess Flesh"
-	desc = "cut excess flesh from the stump."
+	desc = "Cut excess flesh from the stump."
 	tools = SURGERY_TOOLS_INCISION
 	time = 3 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
@@ -246,7 +246,7 @@
 
 /datum/surgery_step/close_ruptured_veins
 	name = "Close Ruptured Veins"
-	desc = "mend the torn blood vessels."
+	desc = "Mend the torn blood vessels."
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
 	success_sound = 'sound/surgery/organ1.ogg'
@@ -293,7 +293,7 @@
 
 /datum/surgery_step/close_amputation
 	name = "Seal Stump"
-	desc = "stitch the stump closed."
+	desc = "Stitch the stump closed."
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -335,7 +335,7 @@
 
 /datum/surgery_step/sever_prosthetic_clamps
 	name = "Sever Damaged Prosthetic Clamps"
-	desc = "cut through the jammed clamps holding the prosthesis' stump on."
+	desc = "Cut through the jammed clamps holding the prosthesis' stump on."
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 5 SECONDS
 	success_sound = 'sound/surgery/saw.ogg'
@@ -372,7 +372,7 @@
 
 /datum/surgery_step/remove_old_prosthetic
 	name = "Remove Damaged Prosthetic"
-	desc = "remove the damaged prosthesis."
+	desc = "Remove the damaged prosthesis."
 	accept_hand = TRUE
 	time = 3 SECONDS
 	success_sound = 'sound/surgery/organ1.ogg'

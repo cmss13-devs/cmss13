@@ -120,7 +120,7 @@
 /obj/item/weapon/bracer_attachment/chain_gauntlets
 	name = "chain gauntlets"
 	plural_name = "wrist blades"
-	desc = "gauntlets made out of alien alloy, chains wrapped around it imply this was made for hand to hand combat, with some range."
+	desc = "Gauntlets made out of alien alloy, chains wrapped around it imply this was made for hand to hand combat, with some range."
 	icon_state = "metal_gauntlet"
 	hitsound = null
 	item_state = "gauntlet"

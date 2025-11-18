@@ -172,7 +172,7 @@
 
 /obj/item/weapon/twohanded/sledgehammer
 	name = "sledgehammer"
-	desc = "a large block of metal on the end of a pole. Smashing!"
+	desc = "A large block of metal on the end of a pole. Smashing!"
 	icon_state = "sledgehammer"
 	item_state = "sledgehammer"
 	icon = 'icons/obj/items/weapons/melee/hammers.dmi'

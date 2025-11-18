@@ -198,7 +198,7 @@
 			if("bravebull")
 				icon_state = "bravebullglass"
 				name = "Brave Bull"
-				desc = "tequila and Coffee liquor, brought together in a mouthwatering mixture. Drink up."
+				desc = "Tequila and Coffee liquor, brought together in a mouthwatering mixture. Drink up."
 				center_of_mass = "x=15;y=8"
 			if("tequilasunrise")
 				icon_state = "tequilasunriseglass"

@@ -319,7 +319,7 @@
 
 /obj/effect/spawner/random/gun
 	name = "PARENT TYPE"
-	desc = "don't spawn this."
+	desc = "Don't spawn this."
 	icon_state = "map_hazard"
 	var/scatter = TRUE
 	var/mags_max = 5
@@ -377,7 +377,7 @@
 
 /obj/effect/spawner/random/gun/pistol
 	name = "pistol loot spawner"
-	desc = "spawns a surv pistol and some ammo."
+	desc = "Spawns a surv pistol and some ammo."
 	icon_state = "loot_pistol"
 	mags_max = 4
 	mags_min = 1
@@ -414,7 +414,7 @@
 
 /obj/effect/spawner/random/gun/rifle
 	name = "rifle loot spawner"
-	desc = "spawns a surv rifle and some ammo."
+	desc = "Spawns a surv rifle and some ammo."
 	icon_state = "loot_rifle"
 	guns = list(
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
@@ -448,7 +448,7 @@
 
 /obj/effect/spawner/random/gun/shotgun
 	name = "shotgun loot spawner"
-	desc = "spawns a surv shotgun and some ammo."
+	desc = "Spawns a surv shotgun and some ammo."
 	icon_state = "loot_shotgun"
 	mags_min = 1
 	mags_max = 2
@@ -480,7 +480,7 @@
 
 /obj/effect/spawner/random/gun/smg
 	name = "smg loot spawner"
-	desc = "spawns a surv smg and some ammo."
+	desc = "Spawns a surv smg and some ammo."
 	icon_state = "loot_smg"
 	guns = list(
 		/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
@@ -513,7 +513,7 @@
 
 /obj/effect/spawner/random/gun/special
 	name = "special gun loot spawner"
-	desc = "spawns a surv special gun and some ammo."
+	desc = "Spawns a surv special gun and some ammo."
 	icon_state = "loot_special"
 	guns = list(
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,

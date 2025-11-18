@@ -6,7 +6,7 @@
 
 /obj/item/reagent_container/food/snacks
 	name = "snack"
-	desc = "yummy."
+	desc = "Yummy."
 	icon = 'icons/obj/items/food/junkfood.dmi'
 	icon_state = null
 	item_icons = list(
@@ -2080,7 +2080,7 @@
 
 /obj/item/reagent_container/food/snacks/mint
 	name = "mint"
-	desc = "it is only wafer thin."
+	desc = "It is only wafer thin."
 	icon_state = "mint"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#F2F2F2"

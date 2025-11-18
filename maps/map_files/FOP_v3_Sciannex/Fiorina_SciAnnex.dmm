@@ -596,7 +596,7 @@
 /turf/open/floor/wood,
 /area/fiorina/station/chapel)
 "anl" = (
-/obj/item/pamphlet/engineer,
+/obj/item/pamphlet/upgradeable/engineer,
 /obj/structure/closet,
 /obj/item/restraint/handcuffs,
 /obj/effect/landmark/objective_landmark/close,

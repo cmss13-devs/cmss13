@@ -250,7 +250,7 @@
 	icon_state = "primarystorage"
 
 /area/bigred/uground/safe_room
-	name = "\improper Corporate Saferoom"
+	name = "\improper Corporate Safe Room"
 	icon_state = "vault"
 
 // Lambda areas below:

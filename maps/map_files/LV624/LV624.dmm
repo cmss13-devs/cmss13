@@ -14944,9 +14944,6 @@
 /obj/structure/barricade/handrail{
 	layer = 4.20
 	},
-/obj/structure/barricade/handrail{
-	layer = 4.20
-	},
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /obj/structure/barricade/handrail{
 	dir = 1;
@@ -41254,9 +41251,6 @@
 /obj/structure/pipes/standard/simple/hidden{
 	dir = 8
 	},
-/obj/structure/pipes/standard/simple/hidden{
-	dir = 8
-	},
 /turf/open/floor/plating,
 /area/lv624/ground/caves/mining)
 "lDV" = (
@@ -49424,11 +49418,6 @@
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/engineering)
 "uGM" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 1;
-	pixel_y = 11;
-	layer = 3
-	},
 /obj/structure/barricade/handrail/strata{
 	dir = 1;
 	pixel_y = 11;

@@ -98,9 +98,9 @@
 		affected_mob.apply_damage(2,TOX)
 		affected_mob.SetEarDeafness(max(affected_mob.ear_deaf, floor(strength*1.5))) //Paralysis of hearing system, aka deafness
 
-	if(duration >= 50) // 10+ ticks, apply some semi-perm damage and end their suffering if they are somehow still alive by now
-		affected_mob.apply_internal_damage(10,"liver")
-		affected_mob.apply_damage(150,OXY)
+	if(duration >= 50) // 10+ ticks, apply organ damage
+		affected_mob.apply_internal_damage(3,"liver")
+		affected_mob.apply_damage(3, BRAIN)
 	// Applying additonal effects and messages
 	if(prob(stumble_prob) && stumble)
 		if(affected_mob.is_mob_incapacitated())

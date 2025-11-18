@@ -643,7 +643,8 @@
 	var/effect_amt = floor(6 + amount*6)
 	moob.eye_blurry = max(moob.eye_blurry, effect_amt)
 	moob.EyeBlur(max(moob.eye_blurry, effect_amt))
-	moob.apply_damage(5, OXY) //  Base "I can't breath oxyloss" Slightly more longer lasting then stamina damage
+	if(moob.getOxyLoss() <= 60)
+		moob.apply_damage(5, OXY) //  Base "I can't breath oxyloss" Slightly more longer lasting then stamina damage
 	// reworked code below
 	if(!issynth(moob))
 		var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list

@@ -235,6 +235,9 @@
 	if(xeno.can_not_harm(target_human))
 		return
 
+	if(target_human.stat == DEAD || HAS_TRAIT(target_human, TRAIT_NESTED))
+		return FALSE
+
 	if(!xeno.Adjacent(target_human))
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We can only drain bite an adjacent target!"))
 		return
@@ -261,5 +264,6 @@
 	target_human.KnockDown(stun_duration)
 	playsound(target_human,'sound/weapons/alien_bite2.ogg', 50, TRUE)
 	apply_cooldown()
+
 
 

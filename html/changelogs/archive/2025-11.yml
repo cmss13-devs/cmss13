@@ -206,3 +206,28 @@
       to observe the most interesting players
   - server: added additional world/Topic endpoints to interface with CMTV
   - server: added the ability to link your Twitch account to the game
+2025-11-17:
+  Blundir:
+  - bugfix: fixed Unica 2006 and Unica 6 classic having normal ammo in them instead
+      of impact like other CO guns
+  - imageadd: changes snow camo spec head rag sprite to be like other camo ones
+  Nihisohel:
+  - bugfix: Properly adds the smaller mop bucket to the autholathe
+  - balance: Janitorial buckets are now considered large items, volume reduced from
+      500u to 300u
+  - balance: High-cap beaker medilathe costs are increased from 10000 to 30000, volume
+      increased from 300u to 500u
+  - balance: OT has had their buckets replaced with high-cap beakers and OT and research
+      gets one extra high-cap beakers within their respective offices
+  Steelpoint:
+  - maptweak: The ERT docking ports on the USS Almayer have been remapped to appear
+      more thematic.
+  - maptweak: The windows overlooking the emergency response team landing docks on
+      the USS Almayer are now hull windows. This will protect the shuttle and its
+      occupants from being fired on through the roof of the shuttle
+  armsdealer9876:
+  - spellcheck: Set pose now says They are instead of They is
+  - code_imp: Added 2 new var's for human/examin.dm
+2025-11-18:
+  Detective-Google:
+  - bugfix: IASF survs no longer have almayer command radio.

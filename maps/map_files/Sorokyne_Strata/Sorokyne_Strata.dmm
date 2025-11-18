@@ -34746,7 +34746,7 @@
 	pixel_y = 14
 	},
 /obj/structure/barricade/handrail/strata,
-/obj/item/pamphlet/skill/police{
+/obj/item/pamphlet/upgradeable/police{
 	pixel_x = 6;
 	pixel_y = 13
 	},

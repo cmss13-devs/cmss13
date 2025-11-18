@@ -174,22 +174,25 @@
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/rifle/m4ra/impact/on_hit_mob(mob/M, obj/projectile/P)
-	knockback(M, P, 32) // Can knockback basically at max range max range is 24 tiles...
+	knockback(M, P, 24) // Can knockback basically at max range
 
 /datum/ammo/bullet/rifle/m4ra/impact/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
+	var/effectiveness = clamp(1.7-(fired_projectile.distance_travelled*0.1), 0.1, 1)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
-		target.KnockDown(0.5-fired_projectile.distance_travelled/100) // purely for visual effect, noone actually cares
-		target.Stun(0.5-fired_projectile.distance_travelled/100)
-		target.apply_effect(2-fired_projectile.distance_travelled/20, SUPERSLOW)
-		target.apply_effect(5-fired_projectile.distance_travelled/10, SLOW)
+		target.KnockDown(0.5 * effectiveness) // purely for visual effect, noone actually cares
+		target.Stun(0.5 * effectiveness)
+		target.Superslow(1 * effectiveness)
+		target.Slow(2 * effectiveness)
 	else
 		if(!isyautja(living_mob)) //Not predators.
-			living_mob.apply_effect(1, SUPERSLOW)
-			living_mob.apply_effect(2, SLOW)
-			to_chat(living_mob, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
+			living_mob.Superslow(1)
+			living_mob.Slow(2)
+		shake_camera(living_mob, 2, 1)
+		living_mob.sway_jitter(2,1)
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
+		to_chat(living_mob, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
 
 /datum/ammo/bullet/rifle/mar40
 	name = "heavy rifle bullet"

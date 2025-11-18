@@ -99,6 +99,12 @@
 	spawn_positions = 1
 	handle_spawn_and_equip = TRUE
 
+/datum/job/antag/bad_blood/generate_entry_conditions(mob/living/hunter)
+	. = ..()
+
+	if(SSticker.mode)
+		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)
+
 /datum/timelock/bad_blood
 	name = "Bad Blood Roles"
 

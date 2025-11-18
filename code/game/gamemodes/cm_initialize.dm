@@ -145,42 +145,14 @@ Additional game mode variables.
 //===================================================\\
 
 /datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, ignore_pred_num = FALSE)
-	predators[new_predator.username()] = list("Name" = new_predator.real_name, "Status" = "Alive")
-	if(!ignore_pred_num)
-		pred_current_num++
-
-/datum/game_mode/proc/get_whitelisted_predators(readied = 1)
-	// Assemble a list of active players who are whitelisted.
-	var/players[] = new
-
-	var/mob/new_player/new_pred
-	for(var/mob/player in GLOB.player_list)
-		if(!player.client)
-			continue //No client. DCed.
-		if(isyautja(player))
-			continue //Already a predator. Might be dead, who knows.
-		if(readied) //Ready check for new players.
-			new_pred = player
-			if(!istype(new_pred))
-				continue //Have to be a new player here.
-			if(!new_pred.ready)
-				continue //Have to be ready.
-		else
-			if(!istype(player,/mob/dead))
-				continue //Otherwise we just want to grab the ghosts.
-
-		if(player?.client.check_whitelist_status(WHITELIST_PREDATOR))  //Are they whitelisted?
-			if(!player.client.prefs)
-				player.client.prefs = new /datum/preferences(player.client) //Somehow they don't have one.
-
-			if(player.client.prefs.get_job_priority(JOB_PREDATOR) > 0) //Are their prefs turned on?
-				if(!player.mind) //They have to have a key if they have a client.
-					player.mind_initialize() //Will work on ghosts too, but won't add them to active minds.
-				player.mind.setup_human_stats()
-				player.faction = FACTION_YAUTJA
-				player.faction_group = FACTION_LIST_YAUTJA
-				players += player.mind
-	return players
+	if(new_predator.faction == FACTION_YAUTJA_YOUNG)
+		youngbloods[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+	else if(new_predator.faction == FACTION_YAUTJA_BADBLOOD)
+		badbloods[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+	else
+		predators[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+		if(!ignore_pred_num)//Only mainstream preds should contribute, exept where told not to.
+			pred_current_num++
 
 /datum/game_mode/proc/attempt_to_join_as_predator(mob/pred_candidate)
 	var/mob/living/carbon/human/new_predator = transform_predator(pred_candidate) //Initialized and ready.

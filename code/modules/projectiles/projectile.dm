@@ -639,7 +639,7 @@
 	if(ishuman(firer))
 		var/mob/living/carbon/human/shooter_human = firer
 		if(shooter_human.marksman_aura)
-			effective_accuracy += shooter_human.marksman_aura * 1.5 //Flat buff of 1.25% accuracy per aura level
+			effective_accuracy += shooter_human.marksman_aura * 1.5 //Flat buff of 3 % accuracy per aura level
 			effective_accuracy += distance_travelled * 0.35 * shooter_human.marksman_aura //Flat buff to accuracy per tile travelled
 
 	#if DEBUG_HIT_CHANCE
@@ -869,7 +869,7 @@
 		)
 			return FALSE
 		if(mobility_aura)
-			. -= mobility_aura * 4
+			. -= mobility_aura * 5
 		var/mob/living/carbon/human/shooter_human = P.firer
 		if(istype(shooter_human))
 			if(is_ally_of(shooter_human) && !(ammo_flags & AMMO_ALWAYS_FF))

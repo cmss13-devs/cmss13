@@ -14,8 +14,16 @@
 	if(!skills)
 		return FALSE
 	var/order_level = skills.get_skill_level(SKILL_LEADERSHIP)
-	if(!order_level)
-		order_level = SKILL_LEAD_TRAINED
+
+	switch(order_level)
+		if(SKILL_LEAD_TRAINED)
+			order_level = 1
+		if(SKILL_LEAD_SKILLED)
+			order_level = 1.5
+		if(SKILL_LEAD_EXPERT)
+			order_level = 2
+		if(SKILL_LEAD_MASTER)
+			order_level = 3
 
 	if(!order)
 		order = tgui_input_list(src, "Choose an order", "Order to send", list(COMMAND_ORDER_MOVE, COMMAND_ORDER_HOLD, COMMAND_ORDER_FOCUS, "help", "cancel"))

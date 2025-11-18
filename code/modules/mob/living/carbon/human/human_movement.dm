@@ -78,7 +78,7 @@
 		. += max(0, G.slowdown - wear_slowdown_reduction)
 
 	if(mobility_aura && . >= 1.5)
-		. = max(. - (0.1 + 0.075 * mobility_aura), 1.5)
+		. = max(. - (0.1 + 0.1 * mobility_aura), 1.5)
 
 	if(superslowed)
 		. += HUMAN_SUPERSLOWED_AMOUNT

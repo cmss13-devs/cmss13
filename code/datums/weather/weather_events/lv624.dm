@@ -33,8 +33,6 @@
 
 	fire_smothering_strength = 4
 
-GLOBAL_LIST_INIT(fog_tiles, list())
-
 GLOBAL_LIST_INIT(big_fog_tiles, list())
 
 /obj/effect/landmark/big_fog_marker
@@ -56,13 +54,15 @@ GLOBAL_LIST_INIT(big_fog_tiles, list())
 	linked_fog.linked_marker = src
 
 /obj/effect/landmark/big_fog_marker/proc/despawn_fog()
-	QDEL_NULL(linked_fog)
+	if(linked_fog)
+		QDEL_NULL(linked_fog)
 
 
 /obj/effect/landmark/big_fog_marker/Destroy()
 	. = ..()
-	GLOB.fog_tiles -= src
-	QDEL_NULL(linked_fog)
+	GLOB.big_fog_tiles -= src
+	if(linked_fog)
+		QDEL_NULL(linked_fog)
 
 /datum/weather_event/heavy_rain/fog
 	name = "Heavy Rain with fog"

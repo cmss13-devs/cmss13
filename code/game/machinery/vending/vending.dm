@@ -901,7 +901,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	if(seconds_electrified > 0)
 		seconds_electrified--
 
-	//Pitch to the people!  Really sell it!
+	//Pitch to the people! Really sell it!
 	if(((last_slogan + slogan_delay) <= world.time) && (length(slogan_list) > 0) && (!shut_up) && prob(5))
 		var/slogan = pick(slogan_list)
 		speak(slogan)
@@ -923,7 +923,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		mob.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>", SHOW_MESSAGE_AUDIBLE)
 	return
 
-//Oh no we're malfunctioning!  Dump out some product and break.
+//Oh no we're malfunctioning! Dump out some product and break.
 /obj/structure/machinery/vending/proc/malfunction()
 	if(stat & BROKEN)
 		return

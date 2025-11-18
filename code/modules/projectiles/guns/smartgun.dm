@@ -179,7 +179,7 @@
 		rounds = current_mag.current_rounds
 	var/message = "[rounds ? "Ammo counter shows [rounds] round\s remaining." : "It's dry."]"
 	. += message
-	. += "Frontline mode is [frontline_enabled ?  "<B>on</b>" : "<B>off</b>"]."
+	. += "Frontline mode is [frontline_enabled ? "<B>on</b>" : "<B>off</b>"]."
 	. += "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"]."
 
 	if(battery && get_dist(user, src) <= 1)

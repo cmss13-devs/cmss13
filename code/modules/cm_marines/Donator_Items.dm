@@ -246,7 +246,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/santa //CKEY=tophatpenguin
 	name = "Santa's suit"
-	desc = "Festive!  DONOR ITEM"
+	desc = "Festive! DONOR ITEM"
 	icon_state = "santa"
 	item_state = "santa"
 	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
@@ -508,7 +508,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/fickmacher2 //CKEY=fickmacher (UNIQUE)
 	name = "Corporal Hart's Armor"
-	desc = "It looks like the left arm is Robotic, wait what?  DONOR ITEM"
+	desc = "It looks like the left arm is Robotic, wait what? DONOR ITEM"
 	icon_state = "hartarmor"
 	item_state = "hartarmor"
 
@@ -581,7 +581,7 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/nickiskool //CKEY=nickiskool
 	name = "Starlord's Jacket"
-	desc = "Who?  DONOR ITEM"
+	desc = "Who? DONOR ITEM"
 	icon_state = "star_jacket"
 	item_state = "star_jacker"
 
@@ -1070,7 +1070,7 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/trblackdragon //CKEY=trblackdragon
 	name = "Spartan Helmet"
-	desc = "SPARTANS, WHAT IS YOUR PROFESSION?  DONOR ITEM"
+	desc = "SPARTANS, WHAT IS YOUR PROFESSION? DONOR ITEM"
 	icon_state = "blackdragon_helmet_u" //UNIQUE
 	item_state = "blackdragon_helmet_u"
 	flags_inventory = BLOCKSHARPOBJ
@@ -1500,7 +1500,7 @@
 
 /obj/item/clothing/mask/fluff/john56 //CKEY=johnkilla56
 	name = "Revan Mask"
-	desc = "A mask from a famous sith... Wait what?  DONOR ITEM."
+	desc = "A mask from a famous sith... Wait what? DONOR ITEM."
 	item_state = "revanmask"
 	icon_state = "revanmask"
 

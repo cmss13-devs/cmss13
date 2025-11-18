@@ -170,7 +170,7 @@ text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes
 			for(var/T in src.target_types)
 				if(isnull(D.targeted_by) && (D.type == T || D.parent_type == T) && D != src.oldtarget)   // If the mess isn't targeted
 					src.oldtarget = D  // or if it is but the bot is gone.
-					src.target = D  // and it's stuff we clean?  Clean it.
+					src.target = D  // and it's stuff we clean? Clean it.
 					D.targeted_by = src // Claim the mess we are targeting.
 					return
 

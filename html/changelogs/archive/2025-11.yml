@@ -228,3 +228,6 @@
   armsdealer9876:
   - spellcheck: Set pose now says They are instead of They is
   - code_imp: Added 2 new var's for human/examin.dm
+2025-11-18:
+  Detective-Google:
+  - bugfix: IASF survs no longer have almayer command radio.

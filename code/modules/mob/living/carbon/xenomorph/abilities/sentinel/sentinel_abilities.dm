@@ -79,6 +79,6 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 12 SECONDS
-	plasma_cost = 100
+	plasma_cost = 0
 	var/minimal_stun = 0.1
 

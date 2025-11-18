@@ -28,6 +28,15 @@
 		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 
+/obj/structure/showcase/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	deconstruct(FALSE)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/showcase/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -78,7 +87,7 @@
 
 /obj/structure/target
 	name = "shooting target"
-	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, its not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo wont have any effect."
+	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, its not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo won't have any effect."
 	icon = 'icons/obj/structures/props/target_dummies.dmi'
 	icon_state = "target_a"
 	density = FALSE
@@ -224,6 +233,18 @@
 	take_damage(25)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/xenoautopsy/tank/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/Glasshit.ogg', 25, 1)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+		SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	take_damage(xeno.melee_damage_upper)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/xenoautopsy/tank/ex_act(severity)
 	switch(severity)
@@ -484,8 +505,8 @@
 		for(var/turf/turf as anything in to_turfs)
 			if((dir == NORTH && turf.y <= stair.y) \
 			|| (dir == EAST && turf.x <= stair.x) \
-			|| (dir == SOUTH && turf.y > stair.y) \
-			|| (dir == WEST && turf.x > stair.x))
+			|| (dir == SOUTH && turf.y >= stair.y) \
+			|| (dir == WEST && turf.x >= stair.x))
 				continue
 
 			if(istransparentturf(turf))
@@ -505,7 +526,7 @@
 				var/cross_product = turf_to_stair.x * turf_to_target.y - turf_to_stair.y * turf_to_target.x
 
 				var/distance_to_target = sqrt(turf_to_target.x * turf_to_target.x + turf_to_target.y * turf_to_target.y)
-				if(distance_to_target && distance_to_stair && distance_to_target < distance_to_stair)
+				if(!distance_to_target || (distance_to_stair && distance_to_target < distance_to_stair))
 					continue
 
 				if(cross_product && abs(cross_product) / (distance_to_stair * distance_to_target) > 0.40)
@@ -579,6 +600,19 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 /obj/structure/stairs/multiz/down
 	direction = DOWN
 
+/obj/effect/stairs
+	var/direction
+
+/obj/effect/stairs/Initialize(mapload, ...)
+	. = ..()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "stairs_[direction]")
+
+/obj/effect/stairs/up
+	direction = "up"
+
+/obj/effect/stairs/down
+	direction = "down"
+
 /obj/structure/stairs/perspective //instance these for the required icons
 	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi'
 	icon_state = "np_stair"
@@ -619,6 +653,14 @@ GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdr
 		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 
+/obj/structure/ore_box/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
+	deconstruct(FALSE)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/computer3frame
 	density = TRUE

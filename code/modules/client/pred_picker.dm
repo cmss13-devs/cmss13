@@ -59,10 +59,13 @@
 	.["caster_icon"] = /obj/item/weapon/gun/energy/yautja/plasma_caster::icon
 	.["caster_prefix"] = /obj/item/weapon/gun/energy/yautja/plasma_caster::base_icon_state
 
+	.["bracer_icon"] = /obj/item/clothing/gloves/yautja::icon
+
 	.["mask_accessory_icon"] = /obj/item/clothing/accessory/mask::icon
 	.["mask_accessory_types"] = PRED_MASK_ACCESSORY_TYPE_MAX
 
 	.["materials"] = PRED_MATERIALS
+	.["retro_materials"] = PRED_RETRO_MATERIALS
 	.["translators"] = PRED_TRANSLATORS
 	.["invisibility_sounds"] = PRED_INVIS_SOUNDS
 	.["legacies"] = PRED_LEGACIES
@@ -99,6 +102,8 @@
 	.["mask_accessory_type"] = prefs.predator_accessory_type
 
 	.["caster_material"] = prefs.predator_caster_material
+
+	.["bracer_material"] = prefs.predator_bracer_material
 
 	.["cape_color"] = prefs.predator_cape_color
 
@@ -222,10 +227,17 @@
 
 		if("caster_material")
 			var/material = params["material"]
-			if(!material || !(material in PRED_MATERIALS))
+			if(!material || !(material in PRED_RETRO_MATERIALS))
 				return
 
 			prefs.predator_caster_material = material
+
+		if("bracer_material")
+			var/material = params["material"]
+			if(!material || !(material in PRED_RETRO_MATERIALS))
+				return
+
+			prefs.predator_bracer_material = material
 
 		if("mask_accessory")
 			var/accessory = params["type"]

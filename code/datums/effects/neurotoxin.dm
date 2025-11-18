@@ -95,12 +95,13 @@
 
 	if(duration >= 27) // 5+ ticks in smoke, you are ODing now
 		affected_mob.apply_effect(1, DAZE) // Unable to talk and weldervision
-		affected_mob.apply_damage(2,TOX)
+		affected_mob.apply_damage(1,TOX)
 		affected_mob.SetEarDeafness(max(affected_mob.ear_deaf, floor(strength*1.5))) //Paralysis of hearing system, aka deafness
 
 	if(duration >= 50) // 10+ ticks, apply organ damage
-		affected_mob.apply_internal_damage(3,"liver")
-		affected_mob.apply_damage(3, BRAIN)
+		affected_mob.apply_internal_damage(1,"liver")
+		affected_mob.apply_damage(1, BRAIN)
+		affected_mob.KnockOut(2) // sleepy time
 	// Applying additonal effects and messages
 	if(prob(stumble_prob) && stumble)
 		if(affected_mob.is_mob_incapacitated())

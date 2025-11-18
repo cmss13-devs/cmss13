@@ -16,6 +16,7 @@
 	var/trap_type = RESIN_TRAP_EMPTY
 	var/armed = 0
 	var/created_by // ckey
+	var/smoke_radius = 2
 	var/list/notify_list = list() // list of xeno mobs to notify on trigger
 	var/datum/effect_system/smoke_spread/smoke_system
 	var/datum/cause_data/cause_data
@@ -171,9 +172,17 @@
 			if(FH.stat == CONSCIOUS && FH.loc) //Make sure we're conscious and not idle or dead.
 				FH.leap_at_nearest_target()
 		if(RESIN_TRAP_GAS)
-			trap_type_name = "gas"
-			smoke_system.set_up(2, 0, src.loc)
-			smoke_system.start()
+			if(smoke_system)
+				if(smoke_system == /datum/effect_system/smoke_spread/xeno_weaken)
+					smoke_radius = 3
+				for(var/mob/living/carbon/humanus in range(1,loc))
+					humanus.Stun(1)
+					humanus.Superslow(2)
+					to_chat(humanus, SPAN_DANGER("You freeze in confusion as the trap hisses beneath your foot, releasing a cloud of gas."))
+				trap_type_name = "gas"
+				smoke_system.set_up(smoke_radius, 0, src.loc)
+				smoke_system.start()
+
 			set_state()
 			clear_tripwires()
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)

@@ -625,7 +625,7 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	if(moob.stat == DEAD)
+	if(moob.stat == DEAD || moob.stat == UNCONSCIOUS)
 		return FALSE
 	if(isxeno(moob))
 		return FALSE

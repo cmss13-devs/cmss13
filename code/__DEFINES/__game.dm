@@ -370,6 +370,8 @@
 #define WALL_THICKRESIN "thickresin"
 #define WALL_WEEDBOUND_RESIN "weedboundresin"
 #define WALL_THICK_WEEDBOUND_RESIN "thickweedboundresin"
+#define WALL_NODEBOUND_RESIN "nodeboundresin"
+#define WALL_THICK_NODEBOUND_RESIN "thicknodeboundresin"
 #define WALL_MEMBRANE "membrane"
 #define WALL_THICKMEMBRANE "thickmembrane"
 #define WALL_BONE_RESIN "bone_resin"

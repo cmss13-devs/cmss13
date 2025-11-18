@@ -37,3 +37,15 @@
 	icon = 'icons/obj/vehicles/interiors/van.dmi'
 	icon_state = "windshield_viewport_top"
 	alpha = 80
+
+/obj/structure/interior_viewport/humvee
+	name = "humvee window"
+	desc = "Nothing beats the good old sheet of glass."
+	icon = 'icons/obj/vehicles/interiors/humvee.dmi'
+	icon_state = "viewport_door"
+
+/obj/structure/interior_viewport/humvee/windshield/north
+	icon_state = "viewport_frontwindow_north"
+
+/obj/structure/interior_viewport/humvee/windshield/south
+	icon_state = "viewport_frontwindow_south"

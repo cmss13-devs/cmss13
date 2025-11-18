@@ -2644,6 +2644,7 @@
 #include "code\modules\vehicles\hardpoints\wheels\treads.dm"
 #include "code\modules\vehicles\hardpoints\wheels\van_wheels.dm"
 #include "code\modules\vehicles\humvee\humvee.dm"
+#include "code\modules\vehicles\humvee\interior.dm"
 #include "code\modules\vehicles\interior\areas.dm"
 #include "code\modules\vehicles\interior\interior.dm"
 #include "code\modules\vehicles\interior\interior_hull.dm"

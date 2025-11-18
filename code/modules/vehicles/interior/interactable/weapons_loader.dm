@@ -112,3 +112,6 @@
 
 /obj/structure/weapons_loader/wy
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
+
+/obj/structure/weapons_loader/humvee
+	icon = 'icons/obj/vehicles/interiors/humvee.dmi'

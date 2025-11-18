@@ -186,6 +186,9 @@
 	new /obj/item/tool/surgery/surgical_line(container)
 	new /obj/item/stack/nanopaste(container)
 
+/obj/structure/vehicle_locker/med/humvee
+	icon = 'icons/obj/vehicles/interiors/humvee.dmi'
+
 /obj/structure/vehicle_locker/med/get_examine_text(mob/user)
 	. = ..()
 	. += has_tray ? SPAN_HELPFUL("Right-click to remove the surgical tray from the locker.") : SPAN_WARNING("The surgical tray has been removed.")

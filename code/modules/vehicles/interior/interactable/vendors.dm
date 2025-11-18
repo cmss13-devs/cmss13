@@ -104,6 +104,10 @@
 	hackable = FALSE
 	density = FALSE
 
+//Humvee version
+/obj/structure/machinery/cm_vending/sorted/medical/blood/vehicle/humvee
+	icon = 'icons/obj/vehicles/interiors/humvee.dmi'
+
 //----------------------SUPPLY VENDORS--------------------
 
 //Combined vehicle version of req guns and ammo vendors. Starts, basically, empty, but can become a resupply point if marines bother to stock it with ammo and weapons.

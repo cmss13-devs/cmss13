@@ -286,6 +286,10 @@
 
 	///A list of all intrinsic bracer actions
 	var/list/bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/caster, /datum/action/predator_action/bracer/cloak, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct, /datum/action/predator_action/bracer/smartdisc)
+	var/badblood = FALSE
+
+/obj/item/clothing/gloves/yautja/hunter/badblood
+	badblood = TRUE
 
 /obj/item/clothing/gloves/yautja/hunter/get_examine_text(mob/user)
 	. = ..()
@@ -293,12 +297,17 @@
 		. += SPAN_NOTICE("The left bracer attachment is [left_bracer_attachment.attached_weapon].")
 	if(right_bracer_attachment)
 		. += SPAN_NOTICE("The right bracer attachment is [right_bracer_attachment.attached_weapon].")
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		. += SPAN_WARNING("This belongs to a bad-blood!")
 
 /obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_invis_sound, new_caster_material, new_owner_rank, new_bracer_material)
 	. = ..()
 	if(new_owner_rank)
 		owner_rank = new_owner_rank
-	embedded_id = new(src)
+	if(badblood)
+		embedded_id = new /obj/item/card/id/bracer_chip/badblood(src)
+	else
+		embedded_id = new(src)
 	if(new_translator_type)
 		translator_type = new_translator_type
 	if(new_invis_sound)

@@ -348,6 +348,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR, RADIO_VOLUME_IMPORTANT_STR, RADIO_VOLUME_CRITICAL_STR)
 	initial_keys = list(/obj/item/device/encryptionkey/yautja/overseer)
 
+/obj/item/device/radio/headset/yautja/badblood
+	name = "\improper Modified Communicator"
+	desc = "A strange Yautja device used for projecting the Yautja's voice to the others in its pack. Similar in function to a standard human radio. This one has been modified in some way."
+	frequency = BADBLOOD_FREQ
+
 /obj/item/device/encryptionkey/yautja
 	name = "\improper Yautja encryption key"
 	desc = "A complicated encryption device."
@@ -1100,11 +1105,23 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		switch(bracer.owner_rank)
 			if(CLAN_RANK_ELITE_INT)
 				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE)
-			if(CLAN_RANK_ELDER_INT, CLAN_RANK_LEADER_INT)
-				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER,)
+			if(CLAN_RANK_ELDER_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER)
+			if(CLAN_RANK_LEADER_INT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_LEADER)
 			if(CLAN_RANK_ADMIN_INT)
-				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_LEADER, ACCESS_YAUTJA_ANCIENT)
 	access = new_access
+
+/obj/item/card/id/bracer_chip/badblood/set_user_data(mob/living/carbon/human/human_user)
+	if(!istype(human_user))
+		return
+
+	registered_name = human_user.real_name
+	registered_ref = WEAKREF(human_user)
+	registered_gid = human_user.gid
+	blood_type = human_user.blood_type
+	access = list(ACCESS_YAUTJA_BADBLOOD)
 
 ///Able to dissolve anything not anchored to the ground or being held, while uncloaked.
 /obj/item/tool/yautja_cleaner

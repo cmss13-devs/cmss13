@@ -1232,7 +1232,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_TWE_REPRESENTATIVE = 201,
 				JOB_COLONEL = 201
 			)
-		if(FACTION_YAUTJA)
+		if(FACTION_YAUTJA, FACTION_YAUTJA_YOUNG)
 			jobs = list(
 				CLAN_RANK_ADMIN = 00,
 				CLAN_RANK_LEADER = 10,
@@ -1242,13 +1242,14 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				YAUTJA_YOUNG_NONWL_L = 50,
 				CLAN_RANK_YOUNG = 51,
 				CLAN_RANK_UNBLOODED = 60,
-				YAUTJA_ASSIGNMENT_BADBLOOD = 70,
+				JOB_BADBLOOD = 70,
 			)
 		else
 			jobs = list()
 
 /datum/crewmonitor/yautja
 	faction = FACTION_YAUTJA
+	extra_factions = list(FACTION_YAUTJA_YOUNG)
 
 /datum/crewmonitor/yautja/update_data()
 	var/list/results = list()
@@ -1279,6 +1280,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 			"brutedam" = round(human_mob.getBruteLoss(), 1),
 			"can_track" = TRUE,
 		)
+		if(assignment_title in jobs)
+			entry["ijob"] = jobs[assignment_title]
 
 		if(is_mainship_level(pos.z))
 			entry["side"] = "Almayer"

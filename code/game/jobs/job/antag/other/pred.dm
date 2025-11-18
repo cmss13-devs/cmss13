@@ -105,6 +105,12 @@
 	if(SSticker.mode)
 		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)
 
+/datum/job/antag/bad_blood/spawn_and_equip(mob/new_player/player)
+	player.spawning = TRUE
+	player.close_spawn_windows()
+
+	SSticker.mode.attempt_to_join_as_badblood(player)
+
 /datum/timelock/bad_blood
 	name = "Bad Blood Roles"
 

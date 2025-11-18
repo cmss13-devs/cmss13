@@ -164,6 +164,16 @@ Additional game mode variables.
 	if(pred_candidate)
 		pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
+/datum/game_mode/proc/attempt_to_join_as_badblood(mob/badblood_candidate)
+	var/mob/living/carbon/human/new_predator = transform_badblood(badblood_candidate) //Initialized and ready.
+	if(!new_predator)
+		return
+
+	msg_admin_niche("([new_predator.key]) joined as Yautja Bad-Blood, [new_predator.real_name].")
+
+	if(badblood_candidate)
+		badblood_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+
 /datum/game_mode/proc/calculate_pred_max()
 	return floor(length(GLOB.player_list) / pred_per_players) + pred_count_modifier + pred_start_count
 
@@ -255,6 +265,39 @@ Additional game mode variables.
 		elder_overseer_message("[new_predator.real_name] has joined the hunting party.")
 
 	return new_predator
+
+/datum/game_mode/proc/transform_badblood(mob/badblood_candidate)
+	set waitfor = FALSE
+
+	if(!badblood_candidate.client) // Legacy - probably due to spawn code sync sleeps
+		log_debug("Null client attempted to transform_badblood")
+		return
+
+	badblood_candidate.client.prefs.find_assigned_slot(JOB_BADBLOOD) // Probably does not do anything relevant, predator preferences are not tied to specific slot.
+
+	var/turf/spawn_point = pick(GLOB.badblood_spawns)
+	if(!isturf(spawn_point))
+		log_debug("Failed to find spawn point for pred ship in transform_badblood.")
+		to_chat(badblood_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
+		return
+	if(!badblood_candidate?.mind) // Legacy check
+		log_debug("Tried to spawn invalid pred player in transform_badblood - new_player name=[badblood_candidate]")
+		to_chat(badblood_candidate, SPAN_WARNING("Could not setup character - you might want to tell someone about this."))
+		return
+
+	var/mob/living/carbon/human/yautja/new_badblood = new(spawn_point)
+	badblood_candidate.mind.transfer_to(new_badblood, TRUE)
+	new_badblood.client = badblood_candidate.client
+
+	var/datum/job/badblood_job = GLOB.RoleAuthority.roles_by_name[JOB_BADBLOOD]
+
+	if(!badblood_job)
+		qdel(new_badblood)
+		return
+
+	GLOB.RoleAuthority.equip_role(new_badblood, badblood_job, new_badblood.loc)
+
+	return new_badblood
 
 //===================================================\\
 

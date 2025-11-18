@@ -233,7 +233,7 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 	desc = "A gear rack for hunting."
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_elder_left"
-	req_one_access = list(ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+	req_one_access = list(ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
 	vendor_role = list(JOB_PREDATOR)
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA
@@ -442,3 +442,21 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 
 	color = mob_client.prefs.predator_cape_color
 	user.update_inv_back()
+
+
+
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/badblood
+	name = "\improper Yautja Hunting Gear Rack"
+	desc = "A gear rack for hunting."
+	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
+	icon_state = "pred_vendor_elder_left"//placeholder
+	req_one_access = list(ACCESS_YAUTJA_BADBLOOD)
+	vendor_role = list(JOB_BADBLOOD)
+	show_points = FALSE
+	vendor_theme = VENDOR_THEME_YAUTJA
+
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/badblood/right
+	icon_state = "pred_vendor_elder_right"//placeholder
+
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/badblood/get_listed_products(mob/user)
+	return GLOB.cm_vending_equipment_badblood

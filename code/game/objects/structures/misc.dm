@@ -124,7 +124,7 @@
 /obj/structure/target/attack_hand(mob/user)
 	. = ..()
 	var/list/sorted_options = list("Very light target" = PRACTICE_LEVEL_LOW, "Light target" = PRACTICE_LEVEL_MEDIUM_LOW, "Standard target" = PRACTICE_LEVEL_MEDIUM, "Heavy target" = PRACTICE_LEVEL_HIGH, "Super-heavy target" = PRACTICE_LEVEL_VERY_HIGH, "Impossible" = PRACTICE_LEVEL_EXTREMELY_HIGH)
-	var/picked_option = tgui_input_list(user, "Select target difficulty.", "Target difficulty", sorted_options,  20 SECONDS)
+	var/picked_option = tgui_input_list(user, "Select target difficulty.", "Target difficulty", sorted_options, 20 SECONDS)
 	if(picked_option)
 		practice_mode = sorted_options[picked_option]
 		practice_health = practice_mode[1]

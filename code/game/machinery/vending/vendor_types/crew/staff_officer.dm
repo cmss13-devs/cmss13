@@ -63,7 +63,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_staff_officer, list(
 
 		list("OTHER SUPPLIES", 0, null, null, null),
 		list("Binoculars", 5,/obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
-		list("Rangefinder", 8, /obj/item/device/binoculars/range, null,  VENDOR_ITEM_REGULAR),
+		list("Rangefinder", 8, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
 		list("Laser Designator", 12, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_RECOMMENDED),
 		list("Flashlight", 1, /obj/item/device/flashlight, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED),
@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_staff_officer_armory, list(
 		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_RECOMMENDED),
 		list("Machete Scabbard (Full)", 5, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR),
 		list("Binoculars", 5,/obj/item/device/binoculars, null, VENDOR_ITEM_REGULAR),
-		list("Rangefinder", 8, /obj/item/device/binoculars/range, null,  VENDOR_ITEM_REGULAR),
+		list("Rangefinder", 8, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
 		list("Laser Designator", 12, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_RECOMMENDED),
 		list("Fulton Recovery Device", 5, /obj/item/stack/fulton, null, VENDOR_ITEM_REGULAR),
 		list("Space Cleaner", 2, /obj/item/reagent_container/spray/cleaner, null, VENDOR_ITEM_REGULAR),

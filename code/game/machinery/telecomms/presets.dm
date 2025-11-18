@@ -428,7 +428,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	network = "tcommsat"
 	autolinkers = list("hub", "relay", "s_relay", "medical",
 		"common", "command", "engineering", "squads", "security",
-		"receiverA", "receiverB",  "broadcasterA", "broadcasterB")
+		"receiverA", "receiverB", "broadcasterA", "broadcasterB")
 
 /obj/structure/machinery/telecomms/hub/preset_cent
 	id = "CentComm Hub"

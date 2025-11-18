@@ -236,7 +236,7 @@
 
 	switch(action)
 		if("set_target")
-			handle_target(user, text2num(params["target_x"]),  text2num(params["target_y"]), text2num(params["target_z"]))
+			handle_target(user, text2num(params["target_x"]), text2num(params["target_y"]), text2num(params["target_z"]))
 			return TRUE
 
 		if("set_offset")

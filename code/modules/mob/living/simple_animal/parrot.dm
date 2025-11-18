@@ -151,7 +151,7 @@
 						if(!item_to_add)
 							return
 
-						if( !istype(item_to_add,  /obj/item/device/radio/headset) )
+						if( !istype(item_to_add, /obj/item/device/radio/headset) )
 							to_chat(usr, SPAN_DANGER("This object won't fit."))
 							return
 

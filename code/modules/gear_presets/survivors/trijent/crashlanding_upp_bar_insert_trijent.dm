@@ -156,7 +156,7 @@
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_LEADER
 	job_title = JOB_UPP_LEADER
-	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 	role_comm_title = "173/RECON SL"
 
 	minimap_icon = "upp_sl"

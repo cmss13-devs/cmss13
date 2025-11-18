@@ -65,7 +65,7 @@
 	if(!map)
 		return
 	if(copytext("[map]", -4) != ".dmm")//4 == length(".dmm")
-		to_chat(usr,  SPAN_WARNING("Filename must end in '.dmm': [map]"), confidential = TRUE)
+		to_chat(usr, SPAN_WARNING("Filename must end in '.dmm': [map]"), confidential = TRUE)
 		return
 
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] is overriding the next '[map_type]' map with a custom one."))

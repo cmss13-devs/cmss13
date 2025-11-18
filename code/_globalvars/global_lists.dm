@@ -304,7 +304,7 @@ GLOBAL_LIST_INIT(edgeinfo_corner, list(
 								))
 
 GLOBAL_LIST_INIT(edgeinfo_corner2, list(
-								list(null, HALF_EDGE_LEFT, null,  HALF_EDGE_RIGHT),
+								list(null, HALF_EDGE_LEFT, null, HALF_EDGE_RIGHT),
 								list(HALF_EDGE_RIGHT, null, HALF_EDGE_RIGHT, null),
 								list(null, HALF_EDGE_RIGHT, HALF_EDGE_LEFT, null),
 								list(HALF_EDGE_LEFT, null, null, HALF_EDGE_LEFT)

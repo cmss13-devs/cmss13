@@ -7,7 +7,7 @@
 	job_title = JOB_SURVIVOR
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/military/survivor/upp_private
-	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	minimap_icon = "upp_pvt"
@@ -43,7 +43,7 @@
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 	assignment = JOB_UPP
 	job_title = JOB_UPP
-	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 	skills = /datum/skills/military/survivor/upp_private
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -59,7 +59,7 @@
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_ENGI
 	job_title = JOB_UPP_ENGI
-	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 
 	minimap_icon = "upp_sapper"
 
@@ -80,7 +80,7 @@
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_MEDIC
 	job_title = JOB_UPP_MEDIC
-	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 
 	minimap_icon = "upp_med"
 
@@ -102,7 +102,7 @@
 	name = "Survivor - UPP SOF Specialist"
 	assignment = JOB_UPP_SPECIALIST
 	job_title = JOB_UPP_SPECIALIST
-	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 	minimap_icon = "upp_spec"
 	paygrades = list(PAY_SHORT_UE4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/military/survivor/upp_spec/rocket
@@ -120,7 +120,7 @@
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_LEADER
 	job_title = JOB_UPP_LEADER
-	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 	role_comm_title = "121/RECON SL"
 
 	minimap_icon = "upp_sl"

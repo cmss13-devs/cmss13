@@ -851,7 +851,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	if(fail)
 		to_chat(user, SPAN_WARNING("You can't deploy [src] here, something is in the way."))
 		return
-	to_chat(user,  SPAN_NOTICE("You begin to deploy [src]..."))
+	to_chat(user, SPAN_NOTICE("You begin to deploy [src]..."))
 	if(do_after(user, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_NOTICE("You deploy [src]."))
 		var/obj/structure/machinery/faxmachine/backpack/deployedfax = new(deployturf, machine_id_tag)

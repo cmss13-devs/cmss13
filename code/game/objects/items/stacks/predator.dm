@@ -68,7 +68,7 @@
 	var/rand_swing = rand(6, 3)
 	//-6, -3
 	animate(src, pixel_x = (rand_swing * -1), time = 3 SECONDS, loop = -1, easing = SINE_EASING|EASE_OUT)
-	animate(pixel_x = rand_swing, time = 3 SECONDS,  easing = SINE_EASING|EASE_OUT)
+	animate(pixel_x = rand_swing, time = 3 SECONDS, easing = SINE_EASING|EASE_OUT)
 
 	anchored = TRUE
 	RegisterSignal(src, COMSIG_ATTEMPT_MOB_PULL, PROC_REF(deny_pull))

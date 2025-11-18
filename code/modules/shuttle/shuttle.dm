@@ -783,7 +783,7 @@
 			on_prearrival()
 			var/error = initiate_docking(destination, preferred_direction)
 			if(error && error & (DOCKING_NULL_DESTINATION | DOCKING_NULL_SOURCE))
-				//var/msg = "A mobile dock in transit exited initiate_docking() with an error. This is most likely a mapping problem: Error: [error],  ([src]) ([previous][ADMIN_JMP(previous)] -> [destination][ADMIN_JMP(destination)])"
+				//var/msg = "A mobile dock in transit exited initiate_docking() with an error. This is most likely a mapping problem: Error: [error], ([src]) ([previous][ADMIN_JMP(previous)] -> [destination][ADMIN_JMP(destination)])"
 				//WARNING(msg)
 				//message_admins(msg)
 				set_mode(SHUTTLE_IDLE)

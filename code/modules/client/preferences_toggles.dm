@@ -138,9 +138,9 @@ CLIENT_VERB(toggle_roundstart_flash)
 	prefs.toggles_flashing ^= FLASH_ROUNDSTART
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_ROUNDSTART)
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when the Tip of the Round is played right before the start of the round."))
+		to_chat(src, SPAN_BOLDNOTICE("The icon on your taskbar will now flash when the Tip of the Round is played right before the start of the round."))
 	else
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will no longer flash when the Tip of the Round is played right before the start of the round."))
+		to_chat(src, SPAN_BOLDNOTICE("The icon on your taskbar will no longer flash when the Tip of the Round is played right before the start of the round."))
 
 CLIENT_VERB(toggle_roundend_flash)
 	set name = "Toggle Roundend Flash"
@@ -150,7 +150,7 @@ CLIENT_VERB(toggle_roundend_flash)
 	prefs.toggles_flashing ^= FLASH_ROUNDEND
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_ROUNDEND)
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when the round ends."))
+		to_chat(src, SPAN_BOLDNOTICE("The icon on your taskbar will now flash when the round ends."))
 	else
 		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when the round ends."))
 
@@ -162,7 +162,7 @@ CLIENT_VERB(toggle_corpserevive_flash)
 	prefs.toggles_flashing ^= FLASH_CORPSEREVIVE
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_CORPSEREVIVE)
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when your corpse gets revived."))
+		to_chat(src, SPAN_BOLDNOTICE("The icon on your taskbar will now flash when your corpse gets revived."))
 	else
 		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when your corpse gets revived."))
 
@@ -174,7 +174,7 @@ CLIENT_VERB(toggle_unnest_flash)
 	prefs.toggles_flashing ^= FLASH_UNNEST
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_UNNEST)
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get unnested and can reenter your body."))
+		to_chat(src, SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get unnested and can reenter your body."))
 	else
 		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get unnested and can reenter your body."))
 
@@ -186,7 +186,7 @@ CLIENT_VERB(toggle_newlarva_flash)
 	prefs.toggles_flashing ^= FLASH_POOLSPAWN
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_POOLSPAWN)
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get spawned as a burrowed larva."))
+		to_chat(src, SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get spawned as a burrowed larva."))
 	else
 		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get spawned as a burrowed larva."))
 

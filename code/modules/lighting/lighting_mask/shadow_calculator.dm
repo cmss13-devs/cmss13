@@ -242,7 +242,7 @@
 	//Assumption that is incorrect
 	//Triangle points are
 	// (-4, -4)
-	// (-4,  4)
+	// (-4, 4)
 	// ( 4, -4)
 	//Would be much easier if it was (0, 0) instead of (-4, -4) but since we have 6 inputs and 6 unknowns
 	//we can solve the values of the matrix pretty easilly simultaneously.

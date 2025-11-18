@@ -240,7 +240,7 @@
 		locate_setting = initial(locate_setting)
 
 	for (var/ch_name in channels)
-		secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name],  RADIO_CHAT)
+		secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name], RADIO_CHAT)
 	SStgui.update_uis(src)
 
 /obj/item/device/radio/headset/set_frequency(new_frequency)
@@ -677,7 +677,7 @@
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom
 	name = "marine senior command headset"
-	desc = "Issued only to senior command staff. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel."
+	desc = "Issued only to senior command staff. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
 	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB)
@@ -716,7 +716,7 @@
 
 /obj/item/device/radio/headset/almayer/mcom/sea
 	name = "marine senior enlisted advisor headset"
-	desc = "Issued only to senior enlisted advisors. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel."
+	desc = "Issued only to senior enlisted advisors. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
 	volume = RADIO_VOLUME_CRITICAL
@@ -731,7 +731,7 @@
 
 /obj/item/device/radio/headset/almayer/mcom/synth
 	name = "marine synth headset"
-	desc = "Issued only to USCM synthetics. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel."
+	desc = "Issued only to USCM synthetics. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
 	icon_state = "ms_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/synth)
 	volume = RADIO_VOLUME_CRITICAL
@@ -1073,7 +1073,7 @@
 
 			set_frequency(frequency)
 			for(var/ch_name in channels)
-				secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name],  RADIO_CHAT)
+				secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name], RADIO_CHAT)
 			recalculateChannels()
 			if(H.mind && H.hud_used && H.hud_used.locate_leader) //make SL tracker visible
 				H.hud_used.locate_leader.alpha = 255
@@ -1377,7 +1377,7 @@
 
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"
-	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel,  :z - HighCom."
+	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel, :z - HighCom."
 	icon_state = "mhc_headset"
 	frequency = HC_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)

@@ -10,7 +10,7 @@
 
 	if (!hit_yet && damage > minimal_damage)
 		hit_yet = TRUE
-		addtimer(CALLBACK(src, PROC_REF(rapid_decay)),  0.4 SECONDS, TIMER_LOOP)
+		addtimer(CALLBACK(src, PROC_REF(rapid_decay)), 0.4 SECONDS, TIMER_LOOP)
 		return
 	else
 		. = ..()

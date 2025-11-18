@@ -1225,7 +1225,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
 
 				if("xeno_vision_level_pref")
-					var/static/list/vision_level_choices = list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG,  XENO_VISION_LEVEL_FULL_NVG)
+					var/static/list/vision_level_choices = list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG, XENO_VISION_LEVEL_FULL_NVG)
 					var/choice = tgui_input_list(user, "Choose your default xeno vision level", "Vision level", vision_level_choices, theme="hive_status")
 					if(!choice)
 						return

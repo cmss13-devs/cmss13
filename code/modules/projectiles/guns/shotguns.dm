@@ -763,7 +763,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 
 /obj/item/weapon/gun/shotgun/double/sawn/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14,  "stock_x" = 18, "stock_y" = 16)
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 20, "under_x" = 15, "under_y" = 14, "stock_x" = 18, "stock_y" = 16)
 
 /obj/item/weapon/gun/shotgun/double/sawn/set_gun_config_values()
 	..()

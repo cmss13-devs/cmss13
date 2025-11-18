@@ -17,7 +17,7 @@
 	/// Message displayed when emote is used.
 	var/message = ""
 	///Message displayed for audible emotes if someone's deaf. Only use this if key_third_person can't be acceptably used.
-	///ie. if someone says *medic and someone's deaf, they'd receive [X] calls for a medic! silently.,  which is not ideal.
+	///ie. if someone says *medic and someone's deaf, they'd receive [X] calls for a medic! silently., which is not ideal.
 	var/alt_message
 	/// Message with %t at the end to allow adding params to the message, like for mobs doing an emote relatively to something else.
 	var/message_param = ""

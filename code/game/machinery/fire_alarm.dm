@@ -14,7 +14,7 @@ FIRE ALARM
 	active_power_usage = 6
 	power_channel = POWER_CHANNEL_ENVIRON
 	var/wiresexposed = 0
-	var/buildstage = 2 // 2 = complete, 1 = no wires,  0 = circuit gone
+	var/buildstage = 2 // 2 = complete, 1 = no wires, 0 = circuit gone
 
 /obj/structure/machinery/firealarm/Initialize(mapload, dir, building)
 	. = ..()

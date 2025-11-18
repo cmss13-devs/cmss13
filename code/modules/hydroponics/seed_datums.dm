@@ -134,64 +134,64 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	potency = rand(5,30)
 
 	var/list/plant_icons = pick(list(
-		list("seed-chili",   "chili"),
-		list("seed-icepepper",   "chiliice"),
-		list("seed-berry",   "berry"),
-		list("seed-glowberry",   "glowberry"),
+		list("seed-chili",  "chili"),
+		list("seed-icepepper",  "chiliice"),
+		list("seed-berry",  "berry"),
+		list("seed-glowberry",  "glowberry"),
 		list("seed-poisonberry", "poisonberry"),
-		list("seed-deathberry",  "deathberry"),
-		list("seed-nettle",  "nettle"),
+		list("seed-deathberry", "deathberry"),
+		list("seed-nettle", "nettle"),
 		list("seed-deathnettle", "deathnettle"),
-		list("seed-tomato",  "tomato"),
+		list("seed-tomato", "tomato"),
 		list("seed-bloodtomato", "bloodtomato"),
-		list("seed-killertomato",    "killertomato"),
-		list("seed-bluetomato",  "bluetomato"),
+		list("seed-killertomato",   "killertomato"),
+		list("seed-bluetomato", "bluetomato"),
 		list("seed-bluespacetomato", "bluespacetomato"),
-		list("seed-eggplant",    "eggplant"),
-		list("seed-eggy",    "eggy"),
-		list("seed-apple",   "apple"),
-		list("seed-goldapple",   "goldapple"),
-		list("seed-ambrosiavulgaris",   "ambrosiavulgaris"),
-		list("seed-ambrosiadeus",    "ambrosiadeus"),
+		list("seed-eggplant",   "eggplant"),
+		list("seed-eggy",   "eggy"),
+		list("seed-apple",  "apple"),
+		list("seed-goldapple",  "goldapple"),
+		list("seed-ambrosiavulgaris",  "ambrosiavulgaris"),
+		list("seed-ambrosiadeus",   "ambrosiadeus"),
 		list("mycelium-chanter", "chanter"),
-		list("mycelium-plump",   "plump"),
-		list("mycelium-reishi",  "reishi"),
+		list("mycelium-plump",  "plump"),
+		list("mycelium-reishi", "reishi"),
 		list("mycelium-liberty", "liberty"),
 		list("mycelium-amanita", "amanita"),
-		list("mycelium-angel",   "angel"),
-		list("mycelium-tower",   "towercap"),
-		list("mycelium-glowshroom",  "glowshroom"),
+		list("mycelium-angel",  "angel"),
+		list("mycelium-tower",  "towercap"),
+		list("mycelium-glowshroom", "glowshroom"),
 		list("mycelium-walkingmushroom","walkingmushroom"),
-		list("mycelium-plast",   "plastellium"),
-		list("seed-harebell",    "harebell"),
-		list("seed-poppy",   "poppy"),
-		list("seed-sunflower",   "sunflower"),
-		list("seed-grapes",  "grape"),
+		list("mycelium-plast",  "plastellium"),
+		list("seed-harebell",   "harebell"),
+		list("seed-poppy",  "poppy"),
+		list("seed-sunflower",  "sunflower"),
+		list("seed-grapes", "grape"),
 		list("seed-greengrapes", "greengrape"),
-		list("seed-peanut",  "peanut"),
+		list("seed-peanut", "peanut"),
 		list("seed-cabbage", "cabbage"),
-		list("seed-shand",   "shand"),
-		list("seed-mtear",   "mtear"),
-		list("seed-banana",  "banana"),
-		list("seed-corn",    "corn"),
-		list("seed-potato",  "potato"),
+		list("seed-shand",  "shand"),
+		list("seed-mtear",  "mtear"),
+		list("seed-banana", "banana"),
+		list("seed-corn",   "corn"),
+		list("seed-potato", "potato"),
 		list("seed-soybean", "soybean"),
-		list("seed-wheat",   "wheat"),
-		list("seed-rice",    "rice"),
-		list("seed-carrot",  "carrot"),
-		list("seed-ambrosiavulgaris",   "weeds"),
-		list("seed-whitebeet",   "whitebeet"),
-		list("seed-sugarcane",   "sugarcane"),
-		list("seed-watermelon",  "watermelon"),
+		list("seed-wheat",  "wheat"),
+		list("seed-rice",   "rice"),
+		list("seed-carrot", "carrot"),
+		list("seed-ambrosiavulgaris",  "weeds"),
+		list("seed-whitebeet",  "whitebeet"),
+		list("seed-sugarcane",  "sugarcane"),
+		list("seed-watermelon", "watermelon"),
 		list("seed-pumpkin", "pumpkin"),
-		list("seed-lime",    "lime"),
-		list("seed-lemon",   "lemon"),
-		list("seed-orange",  "orange"),
-		list("seed-grass",   "grass"),
-		list("seed-cocoapod",    "cocoapod"),
-		list("seed-cherry",  "cherry"),
-		list("seed-kudzu",   "kudzu"),
-		list("seed-replicapod",  "replicapod")
+		list("seed-lime",   "lime"),
+		list("seed-lemon",  "lemon"),
+		list("seed-orange", "orange"),
+		list("seed-grass",  "grass"),
+		list("seed-cocoapod",   "cocoapod"),
+		list("seed-cherry", "cherry"),
+		list("seed-kudzu",  "kudzu"),
+		list("seed-replicapod", "replicapod")
 		))
 
 	packet_icon = plant_icons[1]
@@ -347,33 +347,33 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 				endurance = max(0,endurance-rand(10,20))
 				source_turf.visible_message(SPAN_DANGER("\The [display_name] withers rapidly!"))
 			if(2) //Gluttony!
-				nutrient_consumption =   max(0,  min(5,   nutrient_consumption + rand(-(degree*0.1),(degree*0.1))))
-				water_consumption =  max(0,  min(50,  water_consumption + rand(-degree,degree)))
+				nutrient_consumption =   max(0, min(5,  nutrient_consumption + rand(-(degree*0.1),(degree*0.1))))
+				water_consumption =  max(0, min(50, water_consumption + rand(-degree,degree)))
 			if(3) //Endurance
 				endurance =  max(10, min(100, endurance + (rand(-5,5)   * degree)))
 			if(4) //Light tolerance
-				ideal_light =    max(0,  min(30,  ideal_light   + (rand(-1,1)   * degree)))
-				light_tolerance =    max(0,  min(10,  light_tolerance   + (rand(-2,2)   * degree)))
+				ideal_light =    max(0, min(30, ideal_light   + (rand(-1,1)   * degree)))
+				light_tolerance =    max(0, min(10, light_tolerance   + (rand(-2,2)   * degree)))
 			if(5) //Toxin tolerance
-				toxins_tolerance =   max(0,  min(10,  weed_tolerance    + (rand(-2,2)   * degree)))
+				toxins_tolerance =   max(0, min(10, weed_tolerance    + (rand(-2,2)   * degree)))
 			if(6) //Weed tolerance
-				weed_tolerance  =    max(0,  min(10,  weed_tolerance    + (rand(-2,2)   * degree)))
+				weed_tolerance  =    max(0, min(10, weed_tolerance    + (rand(-2,2)   * degree)))
 				if(prob(degree*5))
-					carnivorous =    max(0,  min(2,   carnivorous   + rand(-degree,degree)))
+					carnivorous =    max(0, min(2,  carnivorous   + rand(-degree,degree)))
 					if(carnivorous)
 						source_turf.visible_message(SPAN_NOTICE("\The [display_name] shudders hungrily."))
 				else if(prob(degree*5))
 					parasite = !parasite
 			if(7) //Production
-				production = max(1,  min(10,  production    + (rand(-1,1)   * degree)))
+				production = max(1, min(10, production    + (rand(-1,1)   * degree)))
 			if(8) //Lifespan
-				lifespan =   max(10, min(30,  lifespan  + (rand(-2,2)   * degree)))
+				lifespan =   max(10, min(30, lifespan  + (rand(-2,2)   * degree)))
 				if(yield != -1)
-					yield =  max(0,  min(10,  yield + (rand(-2,2)   * degree)))
+					yield =  max(0, min(10, yield + (rand(-2,2)   * degree)))
 			if(9) //Potency
-				potency =    max(0,  min(200, potency   + (rand(-20,20) * degree)))
+				potency =    max(0, min(200, potency   + (rand(-20,20) * degree)))
 			if(10) //Maturity
-				maturation = max(0,  min(30,  maturation   + (rand(-1,1)   * degree)))
+				maturation = max(0, min(30, maturation   + (rand(-1,1)   * degree)))
 				if(prob(degree*5))
 					harvest_repeat = !harvest_repeat
 			if(11) //Bioluminecence

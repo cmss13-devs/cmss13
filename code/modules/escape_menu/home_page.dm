@@ -252,7 +252,7 @@
 	var/datum/admin_help/current_ticket = client?.current_ticket
 
 	// This is null with a closed ticket.
-	// This is okay since the View Latest Ticket panel already tells you if your ticket is closed,  intentionally.
+	// This is okay since the View Latest Ticket panel already tells you if your ticket is closed, intentionally.
 	if (isnull(current_ticket))
 		return FALSE
 

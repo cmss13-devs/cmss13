@@ -991,7 +991,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		return
 
 	RegisterSignal(H, COMSIG_GRENADE_PRE_PRIME, PROC_REF(cloak_grenade_callback))
-	RegisterSignal(H, list(COMSIG_HUMAN_EXTINGUISH,  COMSIG_MOB_HAULED, COMSIG_MOB_UNHAULED), PROC_REF(wrapper_fizzle_camouflage))
+	RegisterSignal(H, list(COMSIG_HUMAN_EXTINGUISH, COMSIG_MOB_HAULED, COMSIG_MOB_UNHAULED), PROC_REF(wrapper_fizzle_camouflage))
 	RegisterSignal(H, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(deactivate_camouflage))
 
 	camo_active = TRUE

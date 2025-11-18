@@ -412,7 +412,7 @@
 			if("female_upp_warcry")
 				sound = pick('sound/voice/upp_warcry/warcry_female_1.ogg', 'sound/voice/upp_warcry/warcry_female_2.ogg')
 			if("female_preburst")
-				sound = pick('sound/voice/human_female_preburst1.ogg', 'sound/voice/human_female_preburst2.ogg', 'sound/voice/human_female_preburst3.ogg', 'sound/voice/human_female_preburst4.ogg', 'sound/voice/human_female_preburst5.ogg',  'sound/voice/human_female_preburst6.ogg',  'sound/voice/human_female_preburst7.ogg')
+				sound = pick('sound/voice/human_female_preburst1.ogg', 'sound/voice/human_female_preburst2.ogg', 'sound/voice/human_female_preburst3.ogg', 'sound/voice/human_female_preburst4.ogg', 'sound/voice/human_female_preburst5.ogg', 'sound/voice/human_female_preburst6.ogg', 'sound/voice/human_female_preburst7.ogg')
 			if("female_hugged")
 				sound = pick("sound/voice/human_female_facehugged1.ogg", 'sound/voice/human_female_facehugged2.ogg')
 			if("rtb_handset")

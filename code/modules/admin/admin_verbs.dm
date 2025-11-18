@@ -16,11 +16,11 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/cmd_admin_changekey,
 	/client/proc/cmd_admin_subtle_message,
 	/client/proc/cmd_admin_object_narrate,
-	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
+	/client/proc/cmd_admin_xeno_report, //Allows creation of IC reports by the Queen Mother
 	/client/proc/cmd_admin_create_bioscan,
-	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
-	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
-	/client/proc/cmd_admin_create_AI_apollo_report,  //Allows creation of IC reports to the Apollo subprocessor, transmitting to Working Joes and Maintenance Drones.
+	/client/proc/cmd_admin_create_AI_report, //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
+	/client/proc/cmd_admin_create_AI_shipwide_report, //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
+	/client/proc/cmd_admin_create_AI_apollo_report, //Allows creation of IC reports to the Apollo subprocessor, transmitting to Working Joes and Maintenance Drones.
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command/other factions.
 	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
 	/client/proc/admin_ghost, /*allows us to ghost/reenter body at will*/
@@ -211,7 +211,7 @@ GLOBAL_LIST_INIT(admin_verbs_debug, list(
 	/client/proc/set_tree_points,
 	/client/proc/purge_data_tab,
 	/client/proc/getserverlog, /*allows us to fetch any server logs (diary) for other days*/
-	/client/proc/getruntimelog,  /*allows us to access any runtime logs (can be granted by giveruntimelog)*/
+	/client/proc/getruntimelog, /*allows us to access any runtime logs (can be granted by giveruntimelog)*/
 	/datum/admins/proc/view_game_log, /*shows the server game log (diary) for this round*/
 	/datum/admins/proc/view_runtime_log, /*shows the server runtime log for this round*/
 	/datum/admins/proc/view_href_log, /*shows the server HREF log for this round*/

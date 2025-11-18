@@ -437,7 +437,7 @@
 	secure_radio_connections = new
 	channels = op
 	for (var/ch_name in op)
-		secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name],  RADIO_CHAT)
+		secure_radio_connections[ch_name] = SSradio.add_object(src, GLOB.radiochannels[ch_name], RADIO_CHAT)
 
 /obj/item/device/radio/off
 	listening = 0

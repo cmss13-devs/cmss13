@@ -147,7 +147,7 @@ Can look good elsewhere as well.*/
 	A.density = FALSE
 	var/x_o = initial(A.pixel_x)
 	var/y_o = initial(A.pixel_y)
-	animate(A, transform = matrix() * 1.2,  alpha = 100, pixel_x = x_o + pick(x_n,-x_n), pixel_y = y_o + pick(y_n,-y_n), time = speed, easing = QUAD_EASING|EASE_IN)
+	animate(A, transform = matrix() * 1.2, alpha = 100, pixel_x = x_o + pick(x_n,-x_n), pixel_y = y_o + pick(y_n,-y_n), time = speed, easing = QUAD_EASING|EASE_IN)
 	animate(transform = matrix(rand(45,90) * pick(1,-1), MATRIX_ROTATE), alpha = 0, time = speed, easing = SINE_EASING|EASE_OUT)
 	return speed*2
 

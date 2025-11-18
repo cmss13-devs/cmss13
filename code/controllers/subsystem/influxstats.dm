@@ -26,7 +26,7 @@ SUBSYSTEM_DEF(influxstats)
 		return
 
 	checkpoint++
-	while(step < 5) // Yes, you could make one SS per stats category, and have proper scheduling and variable periods,  but...
+	while(step < 5) // Yes, you could make one SS per stats category, and have proper scheduling and variable periods, but...
 		switch(step++)
 			if(1) // Connected players statistics
 				run_player_statistics()

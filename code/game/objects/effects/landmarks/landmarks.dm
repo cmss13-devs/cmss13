@@ -455,7 +455,7 @@
 
 /obj/effect/landmark/start/whiskey/intel
 	icon_state = "io_spawn"
-	job = /datum/job/command/warden //Need to create a WO variant in the future,  IO's don't exist in code anymore?
+	job = /datum/job/command/warden //Need to create a WO variant in the future, IO's don't exist in code anymore?
 
 /obj/effect/landmark/start/whiskey/chef
 	icon_state = "chef_spawn"

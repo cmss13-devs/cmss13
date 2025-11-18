@@ -169,7 +169,7 @@
 		update_icon()
 	return TRUE
 
-/obj/item/weapon/gun/launcher/rocket/unload(mob/user,  reload_override = 0, drop_override = 0)
+/obj/item/weapon/gun/launcher/rocket/unload(mob/user, reload_override = 0, drop_override = 0)
 	if(user && current_mag)
 		if(current_mag.current_rounds <= 0)
 			to_chat(user, SPAN_WARNING("[src] is already empty!"))

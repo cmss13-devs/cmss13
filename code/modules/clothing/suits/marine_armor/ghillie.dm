@@ -62,7 +62,7 @@
 		hide_in_progress = FALSE
 		return
 	hide_in_progress = FALSE
-	RegisterSignal(H,  list(
+	RegisterSignal(H, list(
 		COMSIG_MOB_FIRED_GUN,
 		COMSIG_MOB_FIRED_GUN_ATTACHMENT)
 		, PROC_REF(fade_in))

@@ -1034,7 +1034,7 @@ table tr:first-child th:first-child { border: none;}
 	. = ..()
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
 	TLV["oxygen"] = list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
-	TLV["carbon dioxide"] = list(-1.0, -1.0,   5,  10) // Partial pressure, kpa
+	TLV["carbon dioxide"] = list(-1.0, -1.0,  5, 10) // Partial pressure, kpa
 	TLV["phoron"] = list(-1.0, -1.0, 0.2, 0.5) // Partial pressure, kpa
 	TLV["other"] = list(-1.0, -1.0, 0.5, 1.0) // Partial pressure, kpa
 	TLV["pressure"] = list(0,ONE_ATMOSPHERE*0.10,ONE_ATMOSPHERE*1.40,ONE_ATMOSPHERE*1.60) /* kpa */

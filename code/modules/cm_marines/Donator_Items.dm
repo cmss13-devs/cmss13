@@ -54,7 +54,7 @@
 	//AND THIS LINE
 //END HEAD TEMPLATE
 
-//MASK TEMPLATE (for masks)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE,  AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
+//MASK TEMPLATE (for masks)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE, AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
 /obj/item/clothing/mask/fluff
 	name = "ITEM NAME"
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
@@ -135,7 +135,7 @@
 	//AND THIS LINE
 //END SUIT TEMPLATE
 
-//FEET TEMPLATE (for shoes)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE,  AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
+//FEET TEMPLATE (for shoes)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE, AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
 /obj/item/clothing/shoes/marine/fluff
 	name = "ITEM NAME"
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
@@ -143,7 +143,7 @@
 	item_state = null
 //END FEET TEMPLATE
 
-//UNIFORM TEMPLATE (for uniforms/jumpsuits)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE,  AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
+//UNIFORM TEMPLATE (for uniforms/jumpsuits)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE, AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
 /obj/item/clothing/under/marine/fluff
 	name = "ITEM NAME"
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique

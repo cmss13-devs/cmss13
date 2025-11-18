@@ -234,10 +234,10 @@
 	set waitfor = 0
 	playsound(user, spin_sound, 25, 1)
 	if(double)
-		user.visible_message("[user] deftly flicks and spins [src] and [double]!", SPAN_NOTICE("You flick and spin [src] and [double]!"),  null, 3)
+		user.visible_message("[user] deftly flicks and spins [src] and [double]!", SPAN_NOTICE("You flick and spin [src] and [double]!"), null, 3)
 		animation_wrist_flick(double, 1)
 	else
-		user.visible_message("[user] deftly flicks and spins [src]!",SPAN_NOTICE("You flick and spin [src]!"),  null, 3)
+		user.visible_message("[user] deftly flicks and spins [src]!",SPAN_NOTICE("You flick and spin [src]!"), null, 3)
 
 	animation_wrist_flick(src, direction)
 	sleep(3)

@@ -207,7 +207,7 @@
 	damage_type = CUT
 
 /datum/wound/cut/massive
-	stages = list("massive wound" = 70, "massive healing wound" = 50, "massive angry scar" = 10,  "massive jagged scar" = 0)
+	stages = list("massive wound" = 70, "massive healing wound" = 50, "massive angry scar" = 10, "massive jagged scar" = 0)
 	damage_type = CUT
 
 /* BRUISES **/
@@ -231,7 +231,7 @@
 	damage_type = BURN
 
 /datum/wound/burn/deep
-	stages = list("ripped deep burn" = 45, "deep burn" = 40, "healing deep burn" = 15,  "large burn scar" = 0)
+	stages = list("ripped deep burn" = 45, "deep burn" = 40, "healing deep burn" = 15, "large burn scar" = 0)
 	damage_type = BURN
 
 /datum/wound/burn/carbonised

@@ -99,7 +99,7 @@
 	on = FALSE
 	icon_state = "sentrycomp_cl"
 	STOP_PROCESSING(SSobj, src)
-	playsound(src,  'sound/machines/terminal_off.ogg', 25, FALSE)
+	playsound(src, 'sound/machines/terminal_off.ogg', 25, FALSE)
 
 /obj/item/device/sentry_computer/emp_act(severity)
 	. = ..()
@@ -187,7 +187,7 @@
 	else
 		icon_state = "sentrycomp_op"
 		on = FALSE
-		playsound(src,  'sound/machines/terminal_off.ogg', 25, FALSE)
+		playsound(src, 'sound/machines/terminal_off.ogg', 25, FALSE)
 
 /obj/item/device/sentry_computer/attackby(obj/item/object, mob/user)
 	if(istype(object, /obj/item/cell))
@@ -273,7 +273,7 @@
 	var/areaname = get_area(sentry)
 	var/message = "[displayname]:[areaname] lost contact."
 	INVOKE_ASYNC(src, PROC_REF(send_message), message)
-	playsound(src,  'sound/machines/buzz-two.ogg', 25, FALSE)
+	playsound(src, 'sound/machines/buzz-two.ogg', 25, FALSE)
 
 /**
  * Links the target sentry gun to this laptop, linking signals and storing data.

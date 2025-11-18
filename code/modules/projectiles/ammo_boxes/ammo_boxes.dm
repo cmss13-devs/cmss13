@@ -69,7 +69,7 @@
 
 /obj/item/ammo_box/proc/explode(severity, datum/cause_data/flame_cause_data)
 	if(severity > 0)
-		explosion(get_turf(src),  -1, ((severity > 2) ? 0 : -1), severity - 1, severity + 1, 1, 0, 0, flame_cause_data)
+		explosion(get_turf(src), -1, ((severity > 2) ? 0 : -1), severity - 1, severity + 1, 1, 0, 0, flame_cause_data)
 	//just in case
 	if(!QDELETED(src))
 		qdel(src)

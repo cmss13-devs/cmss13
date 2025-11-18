@@ -33,7 +33,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("HEDP Grenade Pack", 15, /obj/item/storage/box/packet/high_explosive, null, VENDOR_ITEM_REGULAR),
 		list("HEFA Grenade Pack", 15, /obj/item/storage/box/packet/hefa, null, VENDOR_ITEM_REGULAR),
 		list("WP Grenade Pack", 15, /obj/item/storage/box/packet/phosphorus, null, VENDOR_ITEM_REGULAR),
-		list("G2 Electroshock Grenade Packet (x3 grenades)",  15, /obj/item/storage/box/packet/sebb, null, VENDOR_ITEM_REGULAR),
+		list("G2 Electroshock Grenade Packet (x3 grenades)", 15, /obj/item/storage/box/packet/sebb, null, VENDOR_ITEM_REGULAR),
 
 		list("HELMET VISORS", 0, null, null, null),
 		list("Night Vision Visor", 10, /obj/item/device/helmet_visor/night_vision, null, VENDOR_ITEM_RECOMMENDED),

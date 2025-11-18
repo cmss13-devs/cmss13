@@ -236,7 +236,7 @@
 			if(istype(cur_atom, /atom/movable))
 				xoff += cur_atom:step_x
 				yoff += cur_atom:step_y
-			res.Blend(cur_icon, blendMode2iconMode(cur_atom.blend_mode),  cur_atom.pixel_x + xoff, cur_atom.pixel_y + yoff)
+			res.Blend(cur_icon, blendMode2iconMode(cur_atom.blend_mode), cur_atom.pixel_x + xoff, cur_atom.pixel_y + yoff)
 
 		CHECK_TICK
 

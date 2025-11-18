@@ -155,8 +155,8 @@
 	var/OLD = effect_str[C];                     \
 	C.update_lumcount                            \
 	(                                            \
-		(. * _lum_r) - (OLD * _applied_lum_r),     \
-		(. * _lum_g) - (OLD * _applied_lum_g),     \
+		(. * _lum_r) - (OLD * _applied_lum_r),    \
+		(. * _lum_g) - (OLD * _applied_lum_g),    \
 		(. * _lum_b) - (OLD * _applied_lum_b)      \
 	);
 
@@ -164,8 +164,8 @@
 	. = -effect_str[C];                          \
 	C.update_lumcount                            \
 	(                                            \
-		. * _applied_lum_r,                       \
-		. * _applied_lum_g,                       \
+		. * _applied_lum_r,                      \
+		. * _applied_lum_g,                      \
 		. * _applied_lum_b                        \
 	);
 

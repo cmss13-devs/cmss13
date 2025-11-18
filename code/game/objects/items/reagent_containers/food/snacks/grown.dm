@@ -181,7 +181,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/plastellium
 	name = "clump of plastellium"
-	desc = "Hmm, needs some processing"
+	desc = "Hmm, needs some processing."
 	icon_state = "plastellium"
 	filling_color = "#C4C4C4"
 	plantname = "plastic"
@@ -513,7 +513,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/icepepper
 	name = "ice-pepper"
-	desc = "It's a mutant strain of chili"
+	desc = "It's a mutant strain of chili."
 	icon_state = "icepepper"
 	potency = 20
 	filling_color = "#66CEED"

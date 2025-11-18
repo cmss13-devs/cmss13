@@ -47,7 +47,7 @@
 
 /obj/item/device/encryptionkey/sentry_laptop
 	name = "Sentry Network Status Encryption Key"
-	desc = "Automated channel to broadcast sentry gun updates"
+	desc = "Automated channel to broadcast sentry gun updates."
 	icon_state = "eng_key"
 	channels = list(RADIO_CHANNEL_SENTRY = TRUE)
 

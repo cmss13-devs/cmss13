@@ -1,6 +1,6 @@
 /obj/item/hardpoint/primary
 	name = "primary hardpoint"
-	desc = "Main big gun"
+	desc = "Main big gun."
 
 	slot = HDPT_PRIMARY
 

@@ -387,7 +387,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/handheld_pump
 	name = "handheld surgical pump"
-	desc = "This sucks. Literally"
+	desc = "This sucks. Literally."
 	icon_state = "pump"
 	force = 0
 	throwforce = 9
@@ -400,7 +400,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/drapes //Does nothing at present. Might be useful for increasing odds of success.
 	name = "surgical drapes"
-	desc = "Used to cover a limb prior to the beginning of a surgical procedure"
+	desc = "Used to cover a limb prior to the beginning of a surgical procedure."
 	icon_state = "drapes"
 	gender = PLURAL
 	w_class = SIZE_SMALL

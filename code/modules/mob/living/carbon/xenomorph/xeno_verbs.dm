@@ -104,7 +104,7 @@
 
 /mob/living/carbon/xenomorph/verb/toggle_auto_shove()
 	set name = "Toggle Automatic Shove"
-	set desc = "Toggles whethever you will automatically shove people as the Queen"
+	set desc = "Toggles whethever you will automatically shove people as the Queen."
 	set category = "Alien"
 
 
@@ -162,7 +162,7 @@
 
 // /mob/living/carbon/xenomorph/verb/enter_tree()
 // set name = "Enter Techtree"
-// set desc = "Enter the Xenomorph techtree"
+// set desc = "Enter the Xenomorph techtree."
 // set category = "Alien.Techtree"
 
 // var/datum/techtree/T = GET_TREE(TREE_XENO)

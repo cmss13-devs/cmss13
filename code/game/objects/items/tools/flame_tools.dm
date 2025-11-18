@@ -22,7 +22,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/tool/candle
 	name = "red candle"
-	desc = "a candle"
+	desc = "a candle."
 	icon = 'icons/obj/items/candle.dmi'
 	icon_state = "candle1"
 	item_state = "candle1"

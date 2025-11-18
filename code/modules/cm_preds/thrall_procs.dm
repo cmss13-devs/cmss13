@@ -107,7 +107,7 @@
 
 /obj/item/clothing/gloves/yautja/hunter/verb/stun_thrall()
 	set name = "Stun Thrall"
-	set desc = "Stun your thrall when it misbehaves"
+	set desc = "Stun your thrall when it misbehaves."
 	set category = "Yautja.Thrall"
 	set src in usr
 

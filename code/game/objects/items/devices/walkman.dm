@@ -325,7 +325,7 @@
 */
 /obj/item/device/cassette_tape
 	name = "cassette Tape"
-	desc = "A cassette tape"
+	desc = "A cassette tape."
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "cassette_flip"
 	item_icons = list(

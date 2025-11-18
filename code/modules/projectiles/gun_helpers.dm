@@ -938,7 +938,7 @@ DEFINES in setup.dm, referenced here.
 /obj/item/weapon/gun/verb/toggle_auto_eject_verb()
 	set category = "Weapons"
 	set name = "Toggle Auto Eject"
-	set desc = "Enable/Disable the gun's magazine ejection system"
+	set desc = "Enable/Disable the gun's magazine ejection system."
 	set src = usr.contents
 
 	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr)

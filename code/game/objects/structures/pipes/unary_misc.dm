@@ -1,6 +1,6 @@
 /obj/structure/pipes/unary/freezer
 	name = "gas cooling system"
-	desc = "Cools gas when connected to pipe network"
+	desc = "Cools gas when connected to pipe network."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "freezer_0"
 	density = TRUE
@@ -36,7 +36,7 @@
 
 /obj/structure/pipes/unary/heat_exchanger
 	name = "heat exchanger"
-	desc = "Exchanges heat between two input gases. Setup for fast heat transfer"
+	desc = "Exchanges heat between two input gases. Setup for fast heat transfer."
 	icon = 'icons/obj/pipes/heat_exchanger.dmi'
 	icon_state = "intact"
 	density = TRUE
@@ -50,7 +50,7 @@
 
 /obj/structure/pipes/unary/heater
 	name = "gas heating system"
-	desc = "Heats gas when connected to a pipe network"
+	desc = "Heats gas when connected to a pipe network."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "heater_0"
 	density = TRUE

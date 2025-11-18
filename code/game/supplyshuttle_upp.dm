@@ -11,7 +11,7 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 
 /obj/structure/machinery/computer/supply/upp
 	name = "UPP supply console"
-	desc = "A console for the General Supply Storage"
+	desc = "A console for the General Supply Storage."
 	circuit = /obj/item/circuitboard/computer/supplycomp/upp
 	faction = FACTION_UPP
 

@@ -29,7 +29,7 @@
 
 /datum/surgery_step/xenomorph/cut_exoskeleton
 	name = "Cut Exoskeleton Carapace"
-	desc = "cut the carapace open"
+	desc = "cut the carapace open."
 	tools = list(
 		/obj/item/tool/surgery/scalpel/laser/advanced = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/surgery/circular_saw = SURGERY_TOOL_MULT_IDEAL,
@@ -80,7 +80,7 @@
 
 /datum/surgery_step/xenomorph/open_exoskeleton
 	name = "Pry exoskeleton open"
-	desc = "open the exoskeleton in the incision"
+	desc = "open the exoskeleton in the incision."
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -125,7 +125,7 @@
 
 /datum/surgery_step/xenomorph/severe_connections
 	name = "Sever Organ Connections"
-	desc = "detach tubes and connections from organ"
+	desc = "detach tubes and connections from organ."
 	tools = list(
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/surgery/scalpel/pict_system = SURGERY_TOOL_MULT_IDEAL,
@@ -176,7 +176,7 @@
 
 /datum/surgery_step/xenomorph/remove_organ
 	name = "Remove Xenomorph Organ"
-	desc = "grab a hold of it and pull the organ out"
+	desc = "grab a hold of it and pull the organ out."
 	accept_hand = TRUE
 	tools = list(
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,

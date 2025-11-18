@@ -2,7 +2,7 @@
 
 /obj/structure/machinery/computer/skills//TODO:SANITY
 	name = "Employment Records"
-	desc = "Used to view personnel's employment records"
+	desc = "Used to view personnel's employment records."
 	icon_state = "medlaptop"
 	req_one_access = list(ACCESS_MARINE_DATABASE)
 	circuit = /obj/item/circuitboard/computer/skills

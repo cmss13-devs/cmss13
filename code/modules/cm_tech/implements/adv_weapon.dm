@@ -1,7 +1,7 @@
 
 /obj/item/techtree_advanced_weapon_kit
 	name = "advanced weapon kit"
-	desc = "It seems to be a kit to choose an advanced weapon"
+	desc = "It seems to be a kit to choose an advanced weapon."
 
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
@@ -24,7 +24,7 @@
 
 /obj/item/techtree_advanced_weapon_kit/railgun
 	name = "advanced weapon kit"
-	desc = "It seems to be a kit to choose an advanced weapon"
+	desc = "It seems to be a kit to choose an advanced weapon."
 
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
@@ -36,7 +36,7 @@
 
 /obj/item/weapon/gun/rifle/techweb_railgun
 	name = "\improper Railgun"
-	desc = "A poggers hellbliterator"
+	desc = "A poggers hellbliterator."
 	icon_state = "m42a"
 	item_state = "m42a"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'

@@ -13,7 +13,7 @@
 
 /datum/surgery_step/suture_incision
 	name = "Suture Incision"
-	desc = "suture the incision"
+	desc = "suture the incision."
 	tools = SURGERY_TOOLS_SUTURE
 	//Suturing incisions closed is distinctly faster than cauterise-swaphand-suture, but slower than cautery alone, meaning it's only better if wanting to both close and suture the incision.
 	time = 3.5 SECONDS

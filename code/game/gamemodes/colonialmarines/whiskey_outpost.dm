@@ -507,7 +507,7 @@
 	var/icon_on = "grinder-o1"
 
 	name = "Recycler"
-	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care"
+	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care."
 	density = FALSE
 	anchored = TRUE
 	unslashable = TRUE

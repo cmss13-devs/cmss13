@@ -221,7 +221,7 @@
 // Demo and example of a 64x64 weapon.
 /obj/item/weapon/ritual
 	name = "cool knife"
-	desc = "It shines with awesome coding power"
+	desc = "It shines with awesome coding power."
 	icon_state = "dark_blade"
 	item_state = "dark_blade"
 	icon = 'icons/obj/items/weapons/melee/misc.dmi'
@@ -316,7 +316,7 @@
 
 /obj/item/weapon/straight_razor/verb/change_hair_style()
 	set name = "Change Hair Style"
-	set desc = "Change your hair style"
+	set desc = "Change your hair style."
 	set category = "Object"
 	set src in usr
 

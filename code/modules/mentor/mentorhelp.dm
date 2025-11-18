@@ -252,7 +252,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 	if(sender == mentor)
 		target = author
 
-	var/message = input("Please enter your message:", "Mentor Help", null, null) as message|null
+	var/message = tgui_input_text(sender, "Please enter your message:", "Mentor Help", null, null, TRUE)
 	if(message)
 		message = strip_html(message)
 		var/formatted_message = "[sender.key]: [message]"

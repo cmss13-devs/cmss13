@@ -169,7 +169,7 @@
 			if("change_id")
 				var/attempt_code = tgui_input_number(usr, "Re-enter the current EFTPOS access code", "Confirm EFTPOS code", 1000, 999999, 1000)
 				if(attempt_code == access_code)
-					eftpos_name = input("Enter a new terminal ID for this device", "Enter new EFTPOS ID") + " EFTPOS scanner"
+					eftpos_name = input("Enter a new terminal ID for this device", "Enter new EFTPOS ID") + "EFTPOS scanner"
 					print_reference()
 				else
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Incorrect code entered.")]")

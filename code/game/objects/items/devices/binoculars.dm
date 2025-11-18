@@ -600,7 +600,7 @@
 			return
 		if(2)
 			las_mode = 0
-			to_chat(usr, SPAN_WARNING(" System offline, now this is just a pair of binoculars but heavier."))
+			to_chat(usr, SPAN_WARNING("System offline, now this is just a pair of binoculars but heavier."))
 			update_icon()
 			return
 	return
@@ -616,11 +616,11 @@
 	switch(plane_toggle)
 		if(0)
 			plane_toggle = 1
-			to_chat(usr, SPAN_WARNING(" Airstrike plane is now N-S! If using mortars its now HE rounds!"))
+			to_chat(usr, SPAN_WARNING("Airstrike plane is now N-S! If using mortars its now HE rounds!"))
 			return
 		if(1)
 			plane_toggle = 0
-			to_chat(usr, SPAN_WARNING(" Airstrike plane is now E-W! If using mortars its now concussion rounds!"))
+			to_chat(usr, SPAN_WARNING("Airstrike plane is now E-W! If using mortars its now concussion rounds!"))
 			return
 	return
 
@@ -654,7 +654,7 @@
 		to_chat(user, SPAN_WARNING("The laser is currently cooling down. Please wait roughly 5 minutes from lasing the target."))
 		return 0
 
-	to_chat(user, SPAN_BOLDNOTICE(" You start lasing the target area."))
+	to_chat(user, SPAN_BOLDNOTICE("You start lasing the target area."))
 	message_admins("ALERT: [user] ([user.key]) IS CURRENTLY LASING A TARGET: CURRENT MODE [las_mode], at ([T.x],[T.y],[T.z]) [ADMIN_JMP(T)].") // Alert all the admins to this asshole. Added the jmp command from the explosion code.
 	var/obj/effect/las_target/lasertarget = new(T.loc)
 	if(las_mode == 1 && !las_r) // Heres our IR bomb code.

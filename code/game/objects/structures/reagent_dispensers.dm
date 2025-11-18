@@ -44,7 +44,7 @@
 		for(var/datum/reagent/R in reagents.reagent_list)
 			. += SPAN_NOTICE(" [R.volume] units of [R.name]")
 	else
-		. += SPAN_NOTICE(" Nothing.")
+		. += SPAN_NOTICE("Nothing.")
 	if(reagents)
 		. += SPAN_NOTICE("Total volume: [reagents.total_volume] / [reagents.maximum_volume].")
 	if(dispensing)
@@ -247,7 +247,7 @@
 	if(rig)
 		usr.visible_message("[usr] begins to detach [rig] from \the [src].", "You begin to detach [rig] from \the [src]")
 		if(do_after(usr, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			usr.visible_message(SPAN_NOTICE("[usr] detaches [rig] from \the [src]."), SPAN_NOTICE(" You detach [rig] from \the [src]"))
+			usr.visible_message(SPAN_NOTICE("[usr] detaches [rig] from \the [src]."), SPAN_NOTICE("You detach [rig] from \the [src]"))
 			rig.forceMove(get_turf(usr))
 			rig = null
 			update_icon()
@@ -275,7 +275,7 @@
 			to_chat(user, SPAN_DANGER("There is another device in the way."))
 			return ..()
 
-		user.visible_message(SPAN_NOTICE("[user] rigs [W] to \the [src]."), SPAN_NOTICE(" You rig [W] to \the [src]"))
+		user.visible_message(SPAN_NOTICE("[user] rigs [W] to \the [src]."), SPAN_NOTICE("You rig [W] to \the [src]"))
 
 		var/obj/item/device/assembly_holder/H = W
 		if (istype(H.a_left,/obj/item/device/assembly/igniter) || istype(H.a_right,/obj/item/device/assembly/igniter))

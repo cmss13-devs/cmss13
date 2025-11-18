@@ -285,7 +285,7 @@
 	if(istype(I,/obj/item/card/id))
 		if(check_access(I))
 			locked = !locked
-			to_chat(user, SPAN_NOTICE(" You [locked ? "" : "un"]lock the circuit controls."))
+			to_chat(user, SPAN_NOTICE("You [locked ? "" : "un"]lock the circuit controls."))
 		else
 			to_chat(user, SPAN_DANGER("Access denied."))
 	else if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))

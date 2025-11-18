@@ -129,7 +129,7 @@
 			updateDialog()
 	else if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		if(locked)
-			to_chat(user, SPAN_NOTICE(" The maintenance hatch cannot be opened or closed while the controls are locked."))
+			to_chat(user, SPAN_NOTICE("The maintenance hatch cannot be opened or closed while the controls are locked."))
 			return
 
 		open = !open
@@ -396,14 +396,14 @@
 					var/wirebit = text2num(href_list["wire"])
 					wires &= ~wirebit
 				else
-					to_chat(usr, SPAN_NOTICE(" You need wirecutters!"))
+					to_chat(usr, SPAN_NOTICE("You need wirecutters!"))
 			if("wiremend")
 				var/obj/item/held_item = usr.get_held_item()
 				if (held_item && HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 					var/wirebit = text2num(href_list["wire"])
 					wires |= wirebit
 				else
-					to_chat(usr, SPAN_NOTICE(" You need wirecutters!"))
+					to_chat(usr, SPAN_NOTICE("You need wirecutters!"))
 
 			if("wirepulse")
 				var/obj/item/held_item = usr.get_held_item()
@@ -420,7 +420,7 @@
 						else
 							to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] You hear a radio crackle."))
 				else
-					to_chat(usr, SPAN_NOTICE(" You need a multitool!"))
+					to_chat(usr, SPAN_NOTICE("You need a multitool!"))
 
 
 

@@ -133,9 +133,9 @@
 				if(user.drop_inv_item_to_loc(W, src))
 					state = 3
 			else
-				to_chat(user, SPAN_NOTICE(" You can't put the item in right now."))
+				to_chat(user, SPAN_NOTICE("You can't put the item in right now."))
 		else
-			to_chat(user, SPAN_NOTICE(" The washing machine is full."))
+			to_chat(user, SPAN_NOTICE("The washing machine is full."))
 	else
 		. = ..()
 	update_icon()

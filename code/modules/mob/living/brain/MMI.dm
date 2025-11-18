@@ -53,7 +53,7 @@
 	if((istype(O,/obj/item/card/id)) && brainmob)
 		if(allowed(user))
 			locked = !locked
-			to_chat(user, SPAN_NOTICE(" You [locked ? "lock" : "unlock"] the brain holder."))
+			to_chat(user, SPAN_NOTICE("You [locked ? "lock" : "unlock"] the brain holder."))
 		else
 			to_chat(user, SPAN_DANGER("Access denied."))
 		return
@@ -70,7 +70,7 @@
 	else if(locked)
 		to_chat(user, SPAN_DANGER("You upend the MMI, but the brain is clamped into place."))
 	else
-		to_chat(user, SPAN_NOTICE(" You upend the MMI, spilling the brain onto the floor."))
+		to_chat(user, SPAN_NOTICE("You upend the MMI, spilling the brain onto the floor."))
 		var/obj/item/organ/brain/brain = new(user.loc)
 		brainmob.container = null//Reset brainmob mmi var.
 		brainmob.forceMove(brain)//Throw mob into brain.
@@ -117,7 +117,7 @@
 		to_chat(brainmob, "Can't do that while incapacitated or dead.")
 
 	radio.broadcasting = radio.broadcasting==1 ? 0 : 1
-	to_chat(brainmob, SPAN_NOTICE(" Radio is [radio.broadcasting==1 ? "now" : "no longer"] broadcasting."))
+	to_chat(brainmob, SPAN_NOTICE("Radio is [radio.broadcasting==1 ? "now" : "no longer"] broadcasting."))
 
 /obj/item/device/mmi/radio_enabled/verb/Toggle_Listening()
 	set name = "Toggle Listening"
@@ -130,7 +130,7 @@
 		to_chat(brainmob, "Can't do that while incapacitated or dead.")
 
 	radio.listening = radio.listening==1 ? 0 : 1
-	to_chat(brainmob, SPAN_NOTICE(" Radio is [radio.listening==1 ? "now" : "no longer"] receiving broadcast."))
+	to_chat(brainmob, SPAN_NOTICE("Radio is [radio.listening==1 ? "now" : "no longer"] receiving broadcast."))
 
 /obj/item/device/mmi/emp_act(severity)
 	. = ..()

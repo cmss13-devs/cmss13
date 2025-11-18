@@ -960,7 +960,7 @@
 		return FALSE
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return FALSE
 
 	if(world.time < medevac_cooldown)
@@ -1000,7 +1000,7 @@
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return
 
 	if(world.time < medevac_cooldown)
@@ -1008,7 +1008,7 @@
 		return
 
 	if(selected_stretcher == linked_stretcher) //already linked to us, unlink it
-		to_chat(user, SPAN_NOTICE(" You move your dropship away from that stretcher's beacon."))
+		to_chat(user, SPAN_NOTICE("You move your dropship away from that stretcher's beacon."))
 		linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship is no longer overhead."))
 		linked_stretcher.linked_medevac = null
 		linked_stretcher = null
@@ -1064,7 +1064,7 @@
 	if(!ship_base) //not installed
 		return
 	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
-		to_chat(user, SPAN_WARNING(" You don't know how to use [src]."))
+		to_chat(user, SPAN_WARNING("You don't know how to use [src]."))
 		return
 
 	if(!linked_shuttle)
@@ -1075,7 +1075,7 @@
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return
 
 	if(!linked_stretcher)
@@ -1085,7 +1085,7 @@
 	if(!is_ground_level(linked_stretcher.z))
 		linked_stretcher.linked_medevac = null
 		linked_stretcher = null
-		to_chat(user, SPAN_WARNING(" There seems to be no medevac stretcher connected to [src]."))
+		to_chat(user, SPAN_WARNING("There seems to be no medevac stretcher connected to [src]."))
 		return
 
 	if(world.time < medevac_cooldown)
@@ -1237,14 +1237,14 @@
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return
 
 	if(world.time < fulton_cooldown)
 		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
 		return
 
-	to_chat(user, SPAN_NOTICE(" You move your dropship above the selected balloon's beacon."))
+	to_chat(user, SPAN_NOTICE("You move your dropship above the selected balloon's beacon."))
 
 	activate_winch(user, fult)
 
@@ -1258,7 +1258,7 @@
 		return FALSE
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return FALSE
 
 	if(world.time < fulton_cooldown)
@@ -1321,14 +1321,14 @@
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("The winch is already in motion."))
 		return
 
 	if(world.time < fulton_cooldown)
 		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
 		return
 
-	to_chat(user, SPAN_NOTICE(" You move your dropship above the selected balloon's beacon."))
+	to_chat(user, SPAN_NOTICE("You move your dropship above the selected balloon's beacon."))
 
 	activate_winch(user, fulton)
 

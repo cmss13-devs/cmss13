@@ -684,7 +684,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			construction_busy = TRUE
 			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				construction_busy = FALSE
-				to_chat(user, SPAN_NOTICE(" You removed the airlock electronics!"))
+				to_chat(user, SPAN_NOTICE("You removed the airlock electronics!"))
 
 				var/obj/structure/airlock_assembly/doors_assembly = new assembly_type(loc)
 				if(istype(doors_assembly, /obj/structure/airlock_assembly/multi_tile))

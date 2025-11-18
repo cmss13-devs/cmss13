@@ -160,9 +160,9 @@
 				chest = W
 				updateicon()
 		else if(!W:wires)
-			to_chat(user, SPAN_NOTICE(" You need to attach wires to it first!"))
+			to_chat(user, SPAN_NOTICE("You need to attach wires to it first!"))
 		else
-			to_chat(user, SPAN_NOTICE(" You need to attach a cell to it first!"))
+			to_chat(user, SPAN_NOTICE("You need to attach a cell to it first!"))
 
 	if(istype(W, /obj/item/robot_parts/head))
 		if(head)
@@ -172,7 +172,7 @@
 				head = W
 				updateicon()
 		else
-			to_chat(user, SPAN_NOTICE(" You need to attach a flash to it first!"))
+			to_chat(user, SPAN_NOTICE("You need to attach a flash to it first!"))
 
 	return
 
@@ -180,39 +180,39 @@
 	..()
 	if(istype(W, /obj/item/cell))
 		if(src.cell)
-			to_chat(user, SPAN_NOTICE(" You have already inserted a cell!"))
+			to_chat(user, SPAN_NOTICE("You have already inserted a cell!"))
 			return
 		else
 			if(user.drop_inv_item_to_loc(W, src))
 				cell = W
-				to_chat(user, SPAN_NOTICE(" You insert the cell!"))
+				to_chat(user, SPAN_NOTICE("You insert the cell!"))
 	if(istype(W, /obj/item/stack/cable_coil))
 		if(src.wires)
-			to_chat(user, SPAN_NOTICE(" You have already inserted wire!"))
+			to_chat(user, SPAN_NOTICE("You have already inserted wire!"))
 			return
 		else
 			var/obj/item/stack/cable_coil/coil = W
 			coil.use(1)
 			src.wires = 1
-			to_chat(user, SPAN_NOTICE(" You insert the wire!"))
+			to_chat(user, SPAN_NOTICE("You insert the wire!"))
 	return
 
 /obj/item/robot_parts/head/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/device/flash))
 		if(src.flash1 && src.flash2)
-			to_chat(user, SPAN_NOTICE(" You have already inserted the eyes!"))
+			to_chat(user, SPAN_NOTICE("You have already inserted the eyes!"))
 			return
 		else if(src.flash1)
 			if(user.drop_inv_item_to_loc(W, src))
 				flash2 = W
-				to_chat(user, SPAN_NOTICE(" You insert the flash into the eye socket!"))
+				to_chat(user, SPAN_NOTICE("You insert the flash into the eye socket!"))
 		else
 			user.drop_inv_item_to_loc(W, src)
 			flash1 = W
-			to_chat(user, SPAN_NOTICE(" You insert the flash into the eye socket!"))
+			to_chat(user, SPAN_NOTICE("You insert the flash into the eye socket!"))
 	else if(istype(W, /obj/item/stock_parts/manipulator))
-		to_chat(user, SPAN_NOTICE(" You install some manipulators and modify the head, creating a functional spider-bot!"))
+		to_chat(user, SPAN_NOTICE("You install some manipulators and modify the head, creating a functional spider-bot!"))
 		new /mob/living/simple_animal/spiderbot(get_turf(loc))
 		user.temp_drop_inv_item(W)
 		qdel(W)

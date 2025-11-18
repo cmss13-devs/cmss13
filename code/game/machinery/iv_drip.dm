@@ -200,10 +200,10 @@
 
 	if(beaker)
 		if(beaker.reagents && length(beaker.reagents.reagent_list))
-			. += SPAN_NOTICE(" Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid.")
+			. += SPAN_NOTICE("Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid.")
 		else
-			. += SPAN_NOTICE(" Attached is an empty [beaker].")
+			. += SPAN_NOTICE("Attached is an empty [beaker].")
 	else
-		. += SPAN_NOTICE(" No chemicals are attached.")
+		. += SPAN_NOTICE("No chemicals are attached.")
 
 	. += SPAN_NOTICE(" [attached ? attached : "No one"] is attached.")

@@ -48,6 +48,75 @@
 	if(!bypass_pamphlet_limit)
 		user.has_used_pamphlet = TRUE
 
+/obj/item/pamphlet/antag/attack_self(mob/living/carbon/human/user)
+	if(!user.skills || !user)
+		return
+
+	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
+		to_chat(user, SPAN_WARNING("This pamphlet is written in code-speak! You don't quite understand it."))
+		return
+
+	. = ..()
+
+/obj/item/pamphlet/antag/skill/engineer
+	name = "suspicious looking pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has an engineering insignia. This one is written in code-speak."
+	trait = /datum/character_trait/skills/miniengie/antag
+	bypass_pamphlet_limit = TRUE
+
+/obj/item/pamphlet/upgradeable
+	bypass_pamphlet_limit = TRUE
+	/// What skill should be upgraded?
+	var/skill_upgrade
+	/// How much the skill level is increased, ideally only 1 and only at 1
+	var/skill_increment = 1
+	/// The maximum level this can get the skill to
+	var/skill_cap = 1
+	flavour_text = "You review the pamphlet, further reinforcing your knowledge of the skill."
+
+/obj/item/pamphlet/upgradeable/can_use(mob/living/carbon/human/user)
+	if(!..())
+		return FALSE
+	if(!user.skills)
+		return FALSE
+	if(user.skills.get_skill_level(skill_upgrade) >= skill_cap)
+		to_chat(user, SPAN_WARNING("You won't learn anything new from this."))
+		return FALSE
+	return TRUE
+
+/obj/item/pamphlet/upgradeable/on_use(mob/living/carbon/human/user)
+	if(user.skills.get_skill_level(skill_upgrade) == 0)
+		to_chat(user, SPAN_NOTICE("You read over the pamphlet a few times, learning a new skill."))
+		user.skills.increment_skill(skill_upgrade, skill_increment, skill_cap)
+	else
+		to_chat(user, SPAN_NOTICE(flavour_text))
+		user.skills.increment_skill(skill_upgrade, skill_increment, skill_cap)
+
+/obj/item/pamphlet/upgradeable/medical
+	name = "medical instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has a medical insignia."
+	icon_state = "pamphlet_medical"
+	skill_upgrade = SKILL_MEDICAL
+
+/obj/item/pamphlet/upgradeable/science
+	name = "scientific instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has a scientific insignia."
+	icon_state = "pamphlet_science"
+	skill_upgrade = SKILL_RESEARCH
+
+/obj/item/pamphlet/upgradeable/engineer
+	name = "engineer instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has an engineering insignia."
+	icon_state = "pamphlet_construction"
+	skill_upgrade = SKILL_ENGINEER
+
+/obj/item/pamphlet/upgradeable/jtac
+	name = "JTAC instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a radio on it."
+	icon_state = "pamphlet_jtac"
+	skill_upgrade = SKILL_JTAC
+
+//-------//
 /obj/item/pamphlet/skill/medical
 	name = "medical instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has a medical insignia."
@@ -338,6 +407,15 @@
 	desc = "This pamphlet was designed for Intelligence Officers operating on Earth to interact with the local populaces of the Latin American states, but only for IOs who managed to sleep through Dialects and Mannerisms Class."
 	trait = /datum/character_trait/language/spanish
 
+/obj/item/pamphlet/language/scandinavian
+    name = "Treatise of the Scandinavian frontiers"
+    desc = "This appears to be a record of the Scandinavian frontiers, a shadowy region that is the subject of much controversy from the conflict between the Union of Progressive People and its separatists."
+    trait = /datum/character_trait/language/scandinavian
+
+/obj/item/pamphlet/language/french
+    name = "Records of the Napoleonic 22nd Century"
+    desc = "This document seems to contain a collection of records detailing the life of the latest descendant of the first and only french emperor, Napoléon Bonaparte. A quick skim of the pages seem to detail his descendants life and of his governance of the Neo-Francian Colonies. You can probably learn from his teachings."
+    trait = /datum/character_trait/language/french
 
 
 //Restricted languages, spawnable for events.
@@ -354,10 +432,14 @@
 
 /obj/item/pamphlet/language/monkey
 	name = "scribbled drawings"
-	gender = PLURAL
 	desc = "A piece of paper covered in crude depictions of bananas and various types of primates. Probably drawn by a three-year-old child - or an unusually intelligent marine."
 	trait = /datum/character_trait/language/primitive
 
+/obj/item/pamphlet/language/tactical_sign_language
+	name = "some OPSEC document"
+	desc = "A document containing the finer details of UA Operational Security. This particular document seems to detail the usage of Tactical Sign Language (TSL) among UA Special Operation Forces. It is quite bewildering to have found this in the wild."
+	desc_lore = "The TSL originated during Tientsin campaign, conjured up by UA contracted cryptographers due to a heightened paranoia concerning enemy espionage. Surprisingly enough, TSL draws a good ammount of inspiration from the American Sign Language system, and a deaf person could decypher atleast 20% of what is being said."
+	trait = /datum/character_trait/language/tactical_sign_language
 
 /obj/item/pamphlet/trait
 	bypass_pamphlet_limit = TRUE

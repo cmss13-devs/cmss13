@@ -27,8 +27,8 @@ GLOBAL_LIST_INIT(sandstone_recipes, list ( \
 	))
 
 GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \
-	new/datum/stack_recipe("temple door", /obj/structure/machinery/door/airlock/sandstone/runed, 15, time = 10, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("dark temple door", /obj/structure/machinery/door/airlock/sandstone/runed/dark, 15, time = 10, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("temple door", /obj/structure/machinery/door/airlock/sandstone/runed, 15, time = 10, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("dark temple door", /obj/structure/machinery/door/airlock/sandstone/runed/dark, 15, time = 10, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe_list("temple walls",list( \
 		new/datum/stack_recipe("temple wall", /turf/closed/wall/mineral/sandstone/runed, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 		new/datum/stack_recipe("runed temple wall", /turf/closed/wall/mineral/sandstone/runed/decor, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
@@ -38,19 +38,16 @@ GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \
 		), 5), \
 	new/datum/stack_recipe_list("temple floors",list( \
 		new/datum/stack_recipe("temple floor", /turf/open/floor/sandstone/runed, 1, on_floor = 1), \
-
 		new/datum/stack_recipe("temple floor deco square vertical", /turf/open/floor/ancient_temple/deco/deco_alt, 1, on_floor = 1), \
 		new/datum/stack_recipe("temple floor deco square horizontal", /turf/open/floor/ancient_temple/deco/deco_alt/east, 1, on_floor = 1), \
 		new/datum/stack_recipe("temple floor deco diamond pattern", /turf/open/floor/ancient_temple/deco/deco_1, 1, on_floor = 1), \
 		new/datum/stack_recipe("temple floor deco pattern vertical", /turf/open/floor/ancient_temple/deco, 1, on_floor = 1), \
 		new/datum/stack_recipe("temple floor deco pattern horizontal", /turf/open/floor/ancient_temple/deco/deco_0, 1, on_floor = 1), \
-
 		new/datum/stack_recipe("dark temple floor deco square vertical", /turf/open/floor/ancient_temple/deco/dark/deco_alt, 1, on_floor = 1), \
 		new/datum/stack_recipe("dark temple floor deco square horizontal", /turf/open/floor/ancient_temple/deco/dark/deco_alt/east, 1, on_floor = 1), \
 		new/datum/stack_recipe("dark temple floor deco diamond pattern", /turf/open/floor/ancient_temple/deco/dark/deco_1, 1, on_floor = 1), \
-		new/datum/stack_recipe("dark temple floor deco pattern vertical", /turf/open/floor/ancient_temple/deco/dark/deco, 1, on_floor = 1), \
+		new/datum/stack_recipe("dark temple floor deco pattern vertical", /turf/open/floor/ancient_temple/deco/dark, 1, on_floor = 1), \
 		new/datum/stack_recipe("dark temple floor deco pattern horizontal", /turf/open/floor/ancient_temple/deco/dark/deco_0, 1, on_floor = 1), \
-
 		new/datum/stack_recipe("engraved floor", /turf/open/floor/sandstone/cult, 1, on_floor = 1), \
 		new/datum/stack_recipe("dark red floor", /turf/open/floor/sandstone/red, 1, on_floor = 1), \
 		new/datum/stack_recipe("sun runed floor", /turf/open/floor/sandstone/red2, 1, on_floor = 1), \

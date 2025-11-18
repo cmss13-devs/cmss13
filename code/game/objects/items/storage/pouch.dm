@@ -603,6 +603,8 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun(src)
 
+// --------------------------------------------------------------------------------
+
 /obj/item/storage/pouch/magazine/large/m16/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16(src)
@@ -613,6 +615,88 @@
 
 /obj/item/storage/pouch/magazine/large/m16/ap/black
 	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/m16a5/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5(src)
+
+/obj/item/storage/pouch/magazine/large/m16a5/black
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/m16a5/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/ap(src)
+
+/obj/item/storage/pouch/magazine/large/m16a5/ap/black
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/m16a5/ext/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/ext(src)
+
+/obj/item/storage/pouch/magazine/large/m16a5/ext/black
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/m16a5/heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/heap(src)
+
+/obj/item/storage/pouch/magazine/large/m16a5/heap/black
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/m47
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/m47/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47(src)
+
+/obj/item/storage/pouch/magazine/large/m47/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47/ap(src)
+
+/obj/item/storage/pouch/magazine/large/m47/le/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47/le(src)
+
+/obj/item/storage/pouch/magazine/large/m47/heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47/heap(src)
+
+
+/obj/item/storage/pouch/magazine/large/mp5/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/mp5(src)
+
+/obj/item/storage/pouch/magazine/large/mp5/black
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/mp5/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/mp5/ap(src)
+
+/obj/item/storage/pouch/magazine/large/mp5/ap/black
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/mp5a5_heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/mp5/mp5a5_heap(src)
+
+/obj/item/storage/pouch/magazine/large/mp5a5_heap/black
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/grs/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smartgun/holo_targetting/grs(src)
+
+/obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/grs/near_empty/fill_preset_inventory()
+		new /obj/item/ammo_magazine/smartgun/holo_targetting/grs(src)
+
+/obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/grs/deathsquad/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smartgun/dirty/grs(src)
+
+// --------------------------------------------------------------------------------
 
 /obj/item/storage/pouch/magazine/large/rifle_heap
 	icon_state = "wy_ammo_mag"
@@ -678,6 +762,19 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/buckshot(src)
 
+
+/obj/item/storage/pouch/shotgun/large/es7_stun/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/beanbag/es7(src)
+
+/obj/item/storage/pouch/shotgun/large/es7_lethal/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
+
+/obj/item/storage/pouch/shotgun/large/es7_incendiary/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug/es7/incendiary(src)
+
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
 	desc = "It can carry grenades, plastic explosives, mine boxes, and other explosives."
@@ -701,6 +798,10 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/explosive/grenade/high_explosive(src)
 
+/obj/item/storage/pouch/explosive/super/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/explosive/grenade/high_explosive/super(src)
+
 /obj/item/storage/pouch/explosive/upp/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/explosive/grenade/high_explosive/upp(src)
@@ -708,6 +809,12 @@
 /obj/item/storage/pouch/explosive/C4/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/explosive/plastic(src)
+
+/obj/item/storage/pouch/explosive/C4_breaching/fill_preset_inventory()
+	for(var/i = 1 to (storage_slots/2))
+		new /obj/item/explosive/plastic(src)
+	for(var/i = 1 to (storage_slots/2))
+		new /obj/item/explosive/plastic/breaching_charge(src)
 
 /obj/item/storage/pouch/explosive/emp_dutch/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -807,6 +914,18 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant(src)
+
+/obj/item/storage/pouch/medical/socmed/no_stims/fill_preset_inventory() //Still got advanced stuff but no stim injectors
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
+	new /obj/item/tool/extinguisher/mini(src)
 
 /obj/item/storage/pouch/medical/socmed/not_op/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -1046,6 +1165,7 @@
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
+
 /obj/item/storage/pouch/medkit/wy
 	icon_state = "wy_medkit"
 
@@ -1057,6 +1177,15 @@
 	new /obj/item/stack/medical/advanced/ointment(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
 	new /obj/item/stack/medical/splint(src)
+
+/obj/item/storage/pouch/medkit/wy/full_elite/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/stack/medical/splint/nano(src)
 
 /obj/item/storage/pouch/pressurized_reagent_canister
 	name = "Pressurized Reagent Canister Pouch"
@@ -1453,6 +1582,9 @@
 	new /obj/item/stack/sheet/plasteel(src, 30)
 	new /obj/item/stack/sheet/metal(src, 50)
 	new /obj/item/stack/barbed_wire(src, 15)
+
+/obj/item/storage/pouch/construction/low_grade_full/wy
+	icon_state = "wy_construction"
 
 /obj/item/storage/pouch/tools
 	name = "tools pouch"

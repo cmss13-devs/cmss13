@@ -134,6 +134,26 @@
 /datum/ammo/bullet/pistol/heavy/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)
 
+/datum/ammo/bullet/pistol/heavy/highimpact/explosive //if you ever put this in normal gameplay, i am going to scream
+	name = ".high-impact explosive pistol bullet"
+	damage = 100
+	damage_var_low = PROJECTILE_VARIANCE_TIER_10
+	damage_var_high = PROJECTILE_VARIANCE_TIER_1
+	penetration = ARMOR_PENETRATION_TIER_10
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_BALLISTIC
+
+/datum/ammo/bullet/pistol/heavy/highimpact/explosive/on_hit_mob(mob/M, obj/projectile/P)
+	..()
+	cell_explosion(get_turf(M), 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+
+/datum/ammo/bullet/pistol/heavy/highimpact/explosive/on_hit_obj(obj/O, obj/projectile/P)
+	..()
+	cell_explosion(get_turf(O), 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+
+/datum/ammo/bullet/pistol/heavy/highimpact/explosive/on_hit_turf(turf/T, obj/projectile/P)
+	..()
+	cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+
 /datum/ammo/bullet/pistol/deagle //Commander's variant
 	name = ".50 heavy pistol bullet"
 	damage = 60

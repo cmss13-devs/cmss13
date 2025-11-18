@@ -79,14 +79,16 @@ GLOBAL_LIST_INIT(big_fog_tiles, list())
 
 /obj/effect/landmark/big_fog_marker/proc/spawn_fog()
 	linked_fog = new/obj/effect/big_fog(loc)
+	linked_fog.linked_maker = src
 
 /obj/effect/landmark/big_fog_marker/proc/despawn_fog()
 	QDEL_NULL(linked_fog)
 
 
-/obj/effect/landmark/fog_marker/Destroy()
+/obj/effect/landmark/big_fog_marker/Destroy()
 	. = ..()
 	GLOB.fog_tiles -= src
+	QDEL_NULL(linked_fog)
 
 /datum/weather_event/heavy_rain/fog
 	name = "Heavy Rain with fog"
@@ -111,8 +113,14 @@ GLOBAL_LIST_INIT(big_fog_tiles, list())
 	icon = 'icons/effects/192x192.dmi'
 	icon_state = "massive_fog"
 	alpha = 0
+	var/obj/effect/landmark/big_fog_marker/linked_marker
 
 /obj/effect/big_fog/New(loc, ...)
 	. = ..()
 	animate(src, time = 2 SECONDS ,loop = 0, alpha = 256)
+
+/obj/effect/big_fog/Destroy(force)
+	. = ..()
+	if(linked_marker)
+		QDEL_NULL(linked_marker)
 

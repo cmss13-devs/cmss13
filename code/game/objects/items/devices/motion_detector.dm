@@ -320,14 +320,14 @@
 		var/view_x_offset = 0
 		var/view_y_offset = 0
 		if(c_view > 7)
-			if(user.client.pixel_x >= 0)
-				view_x_offset = floor(user.client.pixel_x/32)
+			if(user.client.get_pixel_x() >= 0)
+				view_x_offset = floor(user.client.get_pixel_x()/32)
 			else
-				view_x_offset = ceil(user.client.pixel_x/32)
-			if(user.client.pixel_y >= 0)
-				view_y_offset = floor(user.client.pixel_y/32)
+				view_x_offset = ceil(user.client.get_pixel_x()/32)
+			if(user.client.get_pixel_y() >= 0)
+				view_y_offset = floor(user.client.get_pixel_y()/32)
 			else
-				view_y_offset = ceil(user.client.pixel_y/32)
+				view_y_offset = ceil(user.client.get_pixel_y()/32)
 
 		var/diff_dir_x = 0
 		var/diff_dir_y = 0

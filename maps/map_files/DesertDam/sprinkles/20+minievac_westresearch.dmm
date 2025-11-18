@@ -15,9 +15,7 @@
 	dir = 1
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/template_noop,
 /area/template_noop)
@@ -42,9 +40,8 @@
 /area/template_noop)
 "O" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 8;
-	health = 25000
+	
 	},
 /turf/template_noop,
 /area/template_noop)

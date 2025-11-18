@@ -256,11 +256,8 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "kP" = (
-/obj/structure/surface/table/woodentable{
-	dir = 1;
-	flipped = 1
-	},
 /obj/structure/machinery/computer/objective,
+/obj/structure/surface/table/woodentable/flipped/north,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "kT" = (

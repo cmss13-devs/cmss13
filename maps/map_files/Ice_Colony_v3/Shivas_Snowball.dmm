@@ -1335,10 +1335,7 @@
 /turf/closed/shuttle/elevator/gears,
 /area/shiva/interior/aerodrome)
 "ahZ" = (
-/obj/structure/surface/table{
-	dir = 4;
-	flipped = 1
-	},
+/obj/structure/surface/table/flipped/east,
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "aia" = (
@@ -8404,10 +8401,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/junkyard/fortbiceps)
 "eRG" = (
-/obj/structure/surface/table{
-	dir = 4;
-	flipped = 1
-	},
+/obj/structure/surface/table/flipped/east,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "eSf" = (
@@ -9010,12 +9004,9 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
 "fGw" = (
-/obj/structure/surface/table/woodentable{
-	dir = 1;
-	flipped = 1
-	},
 /obj/item/tool/stamp,
 /obj/item/weapon/gun/rifle/lmg,
+/obj/structure/surface/table/woodentable/flipped/north,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "fGG" = (
@@ -12615,11 +12606,8 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/colony/research_hab)
 "kaT" = (
-/obj/structure/surface/table/woodentable{
-	dir = 1;
-	flipped = 1
-	},
 /obj/structure/machinery/computer/objective,
+/obj/structure/surface/table/woodentable/flipped/north,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "kbf" = (
@@ -14092,10 +14080,8 @@
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/bar)
 "lEJ" = (
-/obj/structure/surface/table/woodentable{
-	flipped = 1
-	},
 /obj/effect/spawner/random/technology_scanner,
+/obj/structure/surface/table/woodentable,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/bar)
 "lEY" = (
@@ -17919,10 +17905,7 @@
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "qkR" = (
-/obj/structure/surface/table{
-	dir = 4;
-	flipped = 1
-	},
+/obj/structure/surface/table/flipped/east,
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva/floor3,
@@ -19245,11 +19228,8 @@
 /turf/open/floor/shiva/yellow/southeast,
 /area/shiva/interior/aux_power)
 "rZq" = (
-/obj/structure/surface/table/reinforced/prison{
-	dir = 4;
-	flipped = 1
-	},
 /obj/item/weapon/gun/rifle/m41aMK1,
+/obj/structure/surface/table/flipped/east,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "rZt" = (

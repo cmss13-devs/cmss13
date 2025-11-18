@@ -1002,7 +1002,7 @@
 "VR" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbillical Airlock"
+	name = "\improper Umbilical Airlock"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony/clf_shuttle)

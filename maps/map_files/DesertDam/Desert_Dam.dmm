@@ -6608,9 +6608,7 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDa" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -6721,9 +6719,7 @@
 "aDw" = (
 /obj/structure/barricade/wooden,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -6749,9 +6745,7 @@
 "aDA" = (
 /obj/structure/barricade/wooden,
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 4;
-	health = 25000
+	dir = 4
 	},
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/asphalt/cement,
@@ -13293,7 +13287,7 @@
 /area/desert_dam/building/water_treatment_two/lobby)
 "biX" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Treatment Controlroom"
+	name = "\improper Treatment Control Room"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/control_room)
@@ -40026,7 +40020,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/dorms/hallway_westwing)
 "eaC" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/wood,
 /area/desert_dam/building/dorms/hallway_westwing)
 "eaG" = (
@@ -40616,7 +40610,7 @@
 "edR" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 2;
-	name = "\improper Treatment Controlroom"
+	name = "\improper Treatment Control Room"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -40674,7 +40668,7 @@
 "eer" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 2;
-	name = "\improper Floodgate Controlroom"
+	name = "\improper Floodgate Control Room"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
@@ -41606,8 +41600,8 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_civilian)
 "fsP" = (
-/obj/structure/surface/table/gamblingtable,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/wood,
 /area/desert_dam/building/dorms/hallway_westwing)
 "ftF" = (

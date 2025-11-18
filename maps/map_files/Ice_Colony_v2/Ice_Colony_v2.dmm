@@ -8572,11 +8572,6 @@
 /turf/open/floor/plating,
 /area/ice_colony/surface/command/checkpoint)
 "aEq" = (
-/obj/structure/surface/table{
-	dir = 4;
-	flipped = 1;
-	icon_state = "tableflip0"
-	},
 /turf/open/floor/darkyellow2/southwest,
 /area/ice_colony/surface/garage/repair)
 "aEr" = (
@@ -8698,17 +8693,11 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/surface/table{
-	flipped = 1;
-	icon_state = "tableflip0"
-	},
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/darkblue2/north,
 /area/ice_colony/surface/command/control)
 "aER" = (
-/obj/structure/surface/table{
-	flipped = 1;
-	icon_state = "tableflip0"
-	},
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/darkblue2/north,
 /area/ice_colony/surface/command/control)
 "aES" = (
@@ -10443,11 +10432,11 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aMb" = (
-/obj/structure/surface/table/gamblingtable,
-/obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
@@ -10468,11 +10457,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aMe" = (
-/obj/structure/surface/table/gamblingtable{
-	dir = 4;
-	flipped = 1;
-	icon_state = "gambleflip0"
-	},
+/obj/structure/surface/table/woodentable/gamblingtable/flipped/east,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aMf" = (
@@ -10953,7 +10938,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aOe" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/effect/landmark/good_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
@@ -15017,7 +15002,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Underground Requesitions Freezer"
+	name = "\improper Underground Requisitions Freezer"
 	},
 /turf/open/floor/freezerfloor,
 /area/ice_colony/underground/requesition/storage)
@@ -15339,7 +15324,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	dir = 1;
-	name = "\improper Underground Requesitions Office"
+	name = "\improper Underground Requisitions Office"
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition/lobby)
@@ -15542,7 +15527,7 @@
 "biz" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "req_sec_storage";
-	name = "\improper Requesitions Storage Shutters"
+	name = "\improper Requisitions Storage Shutters"
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition/sec_storage)
@@ -15553,7 +15538,7 @@
 "biC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Requesitions Bay"
+	name = "\improper Underground Requisitions Bay"
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition)
@@ -15571,11 +15556,11 @@
 	dir = 1;
 	icon_state = "leftsecure";
 	id = null;
-	name = "Requesitions Desk"
+	name = "Requisitions Desk"
 	},
 /obj/structure/machinery/door/window/northright{
 	dir = 2;
-	name = "Requesitions Desk"
+	name = "Requisitions Desk"
 	},
 /obj/item/tool/pen/blue{
 	pixel_x = -6
@@ -15946,7 +15931,7 @@
 /area/ice_colony/underground/maintenance/north)
 "bkn" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Underground Requesitions Lobby"
+	name = "\improper Underground Requisitions Lobby"
 	},
 /turf/open/floor/dark2,
 /area/ice_colony/underground/requesition/lobby)
@@ -23780,7 +23765,7 @@
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "bOR" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "bOS" = (
@@ -23860,10 +23845,10 @@
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "bPk" = (
-/obj/structure/surface/table/gamblingtable,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "bPl" = (
@@ -25165,14 +25150,6 @@
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
-"bTH" = (
-/obj/structure/surface/table{
-	dir = 4;
-	flipped = 1;
-	icon_state = "tableflip0"
-	},
-/turf/open/floor/plating,
-/area/ice_colony/underground/maintenance/south)
 "bTI" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
@@ -26549,7 +26526,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
-	name = "Colony Requesitions Storage Pod"
+	name = "Colony Requisitions Storage Pod"
 	},
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
@@ -26872,10 +26849,10 @@
 /turf/open/floor/darkbrown2/southwest,
 /area/ice_colony/surface/hangar/hallway)
 "pjQ" = (
-/obj/structure/surface/table/gamblingtable,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
 "poh" = (
@@ -54507,9 +54484,9 @@ bPg
 bPg
 bPg
 bPg
-bTH
-bTH
-bTH
+bPg
+bPg
+bPg
 bPg
 bPg
 bPg

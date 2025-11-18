@@ -944,7 +944,7 @@
 "xM" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	name = "Maintainance";
+	name = "Maintenance";
 	req_one_access = list()
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{

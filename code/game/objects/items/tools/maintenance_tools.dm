@@ -738,12 +738,12 @@ Welding backpack
 			return
 		else
 			if(T.reagents.total_volume == T.max_fuel)
-				to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
+				to_chat(user, SPAN_NOTICE("\The [src] is already full!"))
 				return
 			if(T.welding)
 				to_chat(user, SPAN_DANGER("That was close!"))
 			src.reagents.trans_to(W, T.max_fuel)
-			to_chat(user, SPAN_NOTICE(" Welder refilled!"))
+			to_chat(user, SPAN_NOTICE("Welder refilled!"))
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 			return
 	if(istype(W, /obj/item/ammo_magazine/flamer_tank))

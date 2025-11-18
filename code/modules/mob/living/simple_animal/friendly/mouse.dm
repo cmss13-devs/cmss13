@@ -97,7 +97,7 @@
 			wander = TRUE
 		else if(!stat && prob(5))
 			var/mob/M = AM
-			to_chat(M, SPAN_NOTICE(" [icon2html(src, M)] Squeek!"))
+			to_chat(M, SPAN_NOTICE("[icon2html(src, M)] Squeek!"))
 			M << 'sound/effects/mousesqueek.ogg'
 	..()
 

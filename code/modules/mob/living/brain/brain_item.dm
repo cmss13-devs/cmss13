@@ -42,7 +42,7 @@
 	if(H.mind)
 		H.mind.transfer_to(brainmob)
 
-	to_chat(brainmob, SPAN_NOTICE(" You feel slightly disoriented. That's normal when you're just a brain."))
+	to_chat(brainmob, SPAN_NOTICE("You feel slightly disoriented. That's normal when you're just a brain."))
 
 /obj/item/organ/brain/get_examine_text(mob/user)
 	. = ..()

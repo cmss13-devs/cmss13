@@ -248,7 +248,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 			eggsleft += rand(1, 4)
 			//world << eggsleft
 		else
-			to_chat(user, SPAN_NOTICE(" [name] doesn't seem hungry!"))
+			to_chat(user, SPAN_NOTICE("[name] doesn't seem hungry!"))
 	else
 		..()
 

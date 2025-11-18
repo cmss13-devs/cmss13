@@ -15,7 +15,7 @@
 
 	health = 800
 
-	interior_map = /datum/map_template/interior/apc
+	interior_map = /datum/map_template/interior/humvee
 
 	passengers_slots = 2 // 5 total. Reserved slots are added to passenger slots.
 	xenos_slots = 4

@@ -5,7 +5,7 @@
 
 	damage_multiplier = 0.15
 
-	icon_state = "tires"
+	icon_state = "humvee_tires"
 	disp_icon = "humvee"
 	disp_icon_state = "humvee_tires"
 

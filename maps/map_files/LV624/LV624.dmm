@@ -5603,6 +5603,10 @@
 "aqL" = (
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv624/ground/jungle/west_central_jungle)
+"aqM" = (
+/obj/structure/reagent_dispensers/tank/water,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv624/lazarus/kitchen)
 "aqN" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass1,
@@ -5624,6 +5628,10 @@
 	},
 /turf/open/floor/red/northeast,
 /area/lv624/lazarus/security)
+"aqQ" = (
+/obj/structure/reagent_dispensers/tank/fuel,
+/turf/open/hybrisa/street/cement1,
+/area/lv624/lazarus/cargo_storage)
 "aqR" = (
 /turf/open/gm/grass/grassmud/corner2/south_east,
 /area/lv624/ground/jungle/west_jungle)
@@ -5659,6 +5667,11 @@
 	},
 /turf/open/floor/carpet10_8/west,
 /area/lv624/lazarus/security)
+"aqV" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/reagent_dispensers/tank/water,
+/turf/open/hybrisa/street/cement1,
+/area/lv624/lazarus/cargo_storage)
 "aqW" = (
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/lv624/lazarus/quartstorage/outdoors)
@@ -5666,6 +5679,11 @@
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
+"aqY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/tank/water,
+/turf/open/floor/hybrisa/tile/darkgrey_bigtile,
+/area/lv624/lazarus/hydroponics)
 "aqZ" = (
 /turf/open/floor/prison/darkred2/north,
 /area/lv624/lazarus/security)
@@ -5717,10 +5735,24 @@
 	},
 /turf/open/floor/kutjevo/tan/grey_edge/east,
 /area/lv624/lazarus/main_hall)
+"arf" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/reagent_dispensers/tank/water,
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/pumping_station)
+"arg" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/reagent_dispensers/tank/water,
+/turf/open/floor/plating,
+/area/lv624/ground/caves/mining)
 "arh" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/diner)
+"ari" = (
+/obj/structure/reagent_dispensers/tank,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
 "arj" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
 	name = "\improper Diner Kitchen"
@@ -7168,6 +7200,7 @@
 	icon_state = "trash_13";
 	pixel_y = 12
 	},
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/kutjevo/grey/plate,
 /area/lv624/lazarus/nexus_radio)
 "axE" = (
@@ -7584,17 +7617,6 @@
 	},
 /turf/open/hybrisa/street/cement1,
 /area/lv624/lazarus/landing_zones/lz2)
-"aAa" = (
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_13";
-	pixel_x = -8;
-	pixel_y = 12
-	},
-/obj/structure/reagent_dispensers/watertank{
-	pixel_y = 7
-	},
-/turf/open/floor/kutjevo/grey/plate,
-/area/lv624/lazarus/nexus_radio)
 "aAb" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_14"
@@ -8572,7 +8594,7 @@
 	name = "floor panel"
 	},
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv624/lazarus/landing_zones/lz1)
 "aEb" = (
@@ -9459,9 +9481,6 @@
 /area/lv624/ground/colony/north_nexus_road)
 "aHa" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank{
-	pixel_x = 3
-	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/nexus_radio)
 "aHb" = (
@@ -18664,7 +18683,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank,
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/pumping_station)
 "boF" = (
@@ -18806,7 +18825,7 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv624/ground/jungle/central_jungle)
 "bpn" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank,
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/pumping_station)
 "bpo" = (
@@ -21347,7 +21366,7 @@
 /area/lv624/ground/colony/phi_lab/cargo)
 "byz" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank,
 /turf/open/hybrisa/street/cement1,
 /area/lv624/ground/colony/phi_lab/cargo)
 "byA" = (
@@ -21515,7 +21534,6 @@
 "bzb" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/vents/pump,
-/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/prison/darkbrown2/southeast,
 /area/lv624/ground/colony/phi_lab/cargo)
 "bzc" = (
@@ -23042,6 +23060,7 @@
 	pixel_y = 24
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/hybrisa/street/cement2,
 /area/lv624/ground/colony/phi_lab/cargo)
 "bDI" = (
@@ -24207,9 +24226,7 @@
 /area/lv624/ground/colony/phi_lab)
 "bHl" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/item/stack/rods{
-	amount = 15
-	},
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/whitegreen/southwest,
 /area/lv624/ground/colony/phi_lab)
 "bHm" = (
@@ -24234,6 +24251,9 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/item/stack/rods{
+	amount = 15
 	},
 /turf/open/floor/whitegreen,
 /area/lv624/ground/colony/phi_lab)
@@ -28221,7 +28241,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/lv624/ground/caves/west_caves)
 "bRw" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRx" = (
@@ -28990,6 +29010,7 @@
 	pixel_y = -26;
 	pixel_x = 14
 	},
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSQ" = (
@@ -35381,7 +35402,6 @@
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/ground/jungle/south_east_jungle)
 "eTZ" = (
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv624/lazarus/landing_zones/lz1)
 "eUG" = (
@@ -37157,7 +37177,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/lv624/ground/caves/south_west_caves)
 "gTj" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating,
 /area/lv624/ground/caves/mining)
 "gTm" = (
@@ -37204,7 +37224,6 @@
 /turf/open/gm/dirt/brown/variant_1,
 /area/lv624/ground/jungle/east_central_jungle)
 "gWf" = (
-/obj/structure/reagent_dispensers/fueltank,
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo"
 	},
@@ -41817,7 +41836,6 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
 "mfs" = (
-/obj/structure/reagent_dispensers/fueltank,
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo"
 	},
@@ -42599,6 +42617,7 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/lv624/lazarus/hydroponics)
 "mVg" = (
@@ -45355,7 +45374,7 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv624/lazarus/landing_zones/lz1)
 "pSt" = (
@@ -51782,11 +51801,6 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
-"xfa" = (
-/obj/structure/reagent_dispensers/watertank,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkbrown3/west,
-/area/lv624/lazarus/comms)
 "xfD" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/fancy/cigar{
@@ -52005,7 +52019,7 @@
 /area/lv624/ground/colony/phi_lab/restroom)
 "xws" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
 "xwt" = (
@@ -61809,7 +61823,7 @@ bnL
 bnL
 fVF
 upK
-byF
+arg
 bnk
 pCJ
 vRc
@@ -68555,7 +68569,7 @@ aac
 abm
 abm
 abk
-avm
+ari
 abU
 avm
 cbH
@@ -69447,7 +69461,7 @@ cQU
 ahA
 ahc
 ahc
-xfa
+ahA
 aPT
 kxI
 lAX
@@ -75762,7 +75776,7 @@ fqi
 bay
 bfx
 bfd
-beC
+aqY
 aoB
 bdT
 aoP
@@ -76255,7 +76269,7 @@ azW
 azP
 azP
 azP
-aAa
+avi
 aEA
 axy
 adc
@@ -77772,7 +77786,7 @@ bBr
 bAy
 bDb
 bzd
-byz
+bzd
 byb
 bwV
 bwV
@@ -79845,7 +79859,7 @@ bZX
 boF
 boF
 aiA
-rKM
+arf
 ajh
 ajs
 sqj
@@ -83063,7 +83077,7 @@ oUy
 oUy
 bah
 pek
-xqV
+aqV
 xqV
 xqV
 xqV
@@ -83794,7 +83808,7 @@ azu
 arm
 apf
 apf
-apf
+aqM
 aSM
 aNk
 aNk
@@ -84889,7 +84903,7 @@ oUy
 bah
 bah
 nqv
-rZL
+aqQ
 djw
 mhW
 hfh

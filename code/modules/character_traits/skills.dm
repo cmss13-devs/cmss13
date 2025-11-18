@@ -43,7 +43,7 @@
 	skill =
 	*/
 
-/datum/character_trait/skills/miniengie/antag
+/datum/character_trait/skills/miniengie/antag // deprecate this eventually
 	trait_name = "Field Technician Training"
 	trait_desc = "Boosts the construction and engineering skills to 2. Crewmember received full training in creating fortifications and maintaining various machinery."
 	skill = SKILL_CONSTRUCTION

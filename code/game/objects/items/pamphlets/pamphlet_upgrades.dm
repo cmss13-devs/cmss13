@@ -31,10 +31,10 @@
 			to_chat(user, SPAN_NOTICE("...You also learn a new skill alongside it!"))
 			user.skills.increment_skill(second_upgrade, skill_increment, skill_cap)
 	else
-		to_chat(user, SPAN_NOTICE("You review \the [name], further reinforcing your knowledge of the skill"))
+		to_chat(user, SPAN_NOTICE("You review \the [name], further reinforcing your knowledge of the skill."))
 		user.skills.increment_skill(skill_upgrade, skill_increment, skill_cap)
 
-	if((second_upgrade) && !user.skills.get_skill_level(second_upgrade) == skill_cap)
+	if((second_upgrade) && user.skills.get_skill_level(second_upgrade) < skill_cap)
 		to_chat(user, SPAN_NOTICE("...You also reinforce your understanding of another skill!"))
 		user.skills.increment_skill(second_upgrade, skill_increment, skill_cap)
 

@@ -1,0 +1,2 @@
+/obj/item/pamphlet/skill/jtac/@SUBTYPES : /obj/item/pamphlet/upgradeable/jtac/@SUBTYPES{@OLD}
+/obj/item/pamphlet/skill/engineer/@SUBTYPES : /obj/item/pamphlet/upgradeable/engineer/@SUBTYPES{@OLD}

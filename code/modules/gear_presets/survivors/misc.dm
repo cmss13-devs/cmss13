@@ -383,7 +383,7 @@ Everything below isn't used or out of place.
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank(new_human.back), WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/pamphlet/skill/engineer(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/pamphlet/upgradeable/engineer(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/weldpack(new_human.back), WEAR_R_HAND)
 		if(16) // Farmer
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm/orange_line(new_human), WEAR_BACK)

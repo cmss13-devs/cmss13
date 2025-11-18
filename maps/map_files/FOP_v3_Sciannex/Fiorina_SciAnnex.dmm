@@ -26758,7 +26758,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/lowsec)
 "uqd" = (
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
@@ -28680,7 +28680,7 @@
 /area/fiorina/station/lowsec/showers_laundry)
 "vRF" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/pamphlet/skill/powerloader,
+/obj/item/pamphlet/upgradeable/powerloader,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "vRH" = (

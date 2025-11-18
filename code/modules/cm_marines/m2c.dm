@@ -366,7 +366,7 @@
 			return
 		if(user.action_busy)
 			return
-		user.visible_message(SPAN_NOTICE("[user] loads [src] with an ammo box! "), SPAN_NOTICE("You load [src] with an ammo box!"))
+		user.visible_message(SPAN_NOTICE("[user] loads [src] with an ammo box!"), SPAN_NOTICE("You load [src] with an ammo box!"))
 		playsound(src.loc, 'sound/items/m56dauto_load.ogg', 75, 1)
 		rounds = min(rounds + magazine.current_rounds, rounds_max)
 		update_icon()

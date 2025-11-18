@@ -940,7 +940,7 @@ Additional game mode variables.
 				to_chat(H, "<h2>You are a survivor!</h2>")
 				to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
 				to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-				to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
+				to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions."))
 		if(spawner.story_text)
 			. = 1
 			spawn(6)

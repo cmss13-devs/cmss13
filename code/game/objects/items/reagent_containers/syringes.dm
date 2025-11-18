@@ -110,7 +110,7 @@
 					var/amount = src.reagents.maximum_volume - src.reagents.total_volume
 					var/mob/living/carbon/T = target
 					if(T.get_blood_id() && reagents.has_reagent(T.get_blood_id()))
-						to_chat(user, SPAN_DANGER("There is already a blood sample in this syringe"))
+						to_chat(user, SPAN_DANGER("There is already a blood sample in this syringe."))
 						return
 
 					if(ishuman(T))

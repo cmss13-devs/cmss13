@@ -670,7 +670,7 @@ CLIENT_VERB(read_key_up, key as text|null)
 /client/proc/check_panel_loaded()
 	if(stat_panel.is_ready())
 		return
-	to_chat(src, SPAN_USERDANGER("Statpanel failed to load, click <a href='byond://?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel "))
+	to_chat(src, SPAN_USERDANGER("Statpanel failed to load, click <a href='byond://?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel."))
 
 /**
  * Handles incoming messages from the stat-panel TGUI.

@@ -185,7 +185,7 @@
 		if ("edit_evidence_notes")
 			var/evidence = locate(params["evidence"])
 
-			var/notes = tgui_input_text(usr, "Describe the relevance of this evidence", "Evidence Report", html_decode(incident.evidence[evidence]), multiline = TRUE)
+			var/notes = tgui_input_text(usr, "Describe the relevance of this evidence.", "Evidence Report", html_decode(incident.evidence[evidence]), multiline = TRUE)
 			if (!isnull(notes) && incident)
 				incident.evidence[evidence] = notes
 

@@ -428,7 +428,7 @@
 
 		var/mob/M = locate(href_list["jobban4"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		if(M != usr) //we can jobban ourselves
@@ -720,7 +720,7 @@
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		var/speech = input("What will [key_name(M)] say?.", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
@@ -838,7 +838,7 @@
 
 		var/mob/M = locate(href_list["forceemote"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 
 		var/speech = input("What will [key_name(M)] emote?.", "Force emote", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech)
@@ -879,7 +879,7 @@
 
 		var/mob/M = locate(href_list["tdome1"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		for(var/obj/item/I in M)
@@ -901,7 +901,7 @@
 
 		var/mob/M = locate(href_list["tdome2"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		for(var/obj/item/I in M)
@@ -923,7 +923,7 @@
 
 		var/mob/M = locate(href_list["tdomeadmin"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		M.apply_effect(5, PARALYZE)
@@ -942,7 +942,7 @@
 
 		var/mob/M = locate(href_list["tdomeobserve"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		for(var/obj/item/I in M)
@@ -2221,7 +2221,7 @@
 				P.stamps += fax_stamp_print
 				if(sending_priority == "Yes")
 					playsound(target_fax.loc, "sound/machines/twobeep.ogg", 45)
-					target_fax.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, target_fax), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
+					target_fax.langchat_speech("beeps with a priority message.", get_mobs_in_view(GLOB.world_view_size, target_fax), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
 					target_fax.visible_message("[SPAN_BOLD(target_fax)] beeps with a priority message.")
 					if(target_fax.radio_alert_tag != null)
 						ai_silent_announcement("COMMUNICATIONS REPORT: Fax Machine [target_fax.machine_id_tag], [target_fax.sub_name ? "[target_fax.sub_name]" : ""], now receiving priority fax.", "[target_fax.radio_alert_tag]")

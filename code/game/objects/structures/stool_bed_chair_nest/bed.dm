@@ -116,7 +116,7 @@
 		return
 	if(ishuman(mob))
 		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (mob.stat == DEAD || mob.health < HEALTH_THRESHOLD_CRIT) && !mob.get_target_lock(user.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
-			to_chat(user, SPAN_WARNING("You can't buckle a crit or dead member of another faction! ."))
+			to_chat(user, SPAN_WARNING("You can't buckle a crit or dead member of another faction!"))
 			return FALSE
 	..()
 	if(mob.loc == src.loc && buckling_sound && mob.buckled)

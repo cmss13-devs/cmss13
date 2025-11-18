@@ -66,7 +66,7 @@
 	if(!stat)
 		stat(null, text("System integrity: [floor((health/maxHealth)*100)]%"))
 	else
-		stat(null, text("Systems nonfunctional"))
+		stat(null, text("Systems nonfunctional."))
 
 // this function displays the station time in the status panel
 /mob/living/silicon/proc/show_station_time()

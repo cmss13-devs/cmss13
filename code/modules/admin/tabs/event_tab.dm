@@ -55,7 +55,7 @@
 		if(test_client.check_whitelist_status(GLOB.bitfields["whitelist_status"][flag]))
 			ckeys += test_client.ckey
 	if(!length(ckeys))
-		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online"))
+		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online."))
 		return
 	to_chat(src, SPAN_NOTICE("Whitelist holders: [ckeys.Join(", ")]."))
 
@@ -490,7 +490,7 @@
 		to_chat(src, SPAN_ALERT("There seem to be no hives at the moment."))
 		return
 	else if(length(hives) > 1) // More than one hive, display an input menu for that
-		var/faction = tgui_input_list(src, "Select which hive to award", "Hive Choice", hives, theme="hive_status")
+		var/faction = tgui_input_list(src, "Select which hive to award.", "Hive Choice", hives, theme="hive_status")
 		if(!faction)
 			to_chat(src, SPAN_ALERT("Hive choice error. Aborting."))
 			return

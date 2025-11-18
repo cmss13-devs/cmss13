@@ -1914,7 +1914,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 				if("switch_prefs") //wart
 					var/list/pref_list = list(text2num(href_list["flag1"]), text2num(href_list["flag2"]), text2num(href_list["flag3"]))
-					var/pref_new = tgui_input_list(user, "Select the preference tier you need", "Select preference tier", pref_list)
+					var/pref_new = tgui_input_list(user, "Select the preference tier you need.", "Select preference tier", pref_list)
 					for(var/flag in pref_list)
 						//remove all flags in list
 						if(CHECK_BITFIELD(toggle_prefs, flag))

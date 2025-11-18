@@ -22,7 +22,7 @@
 				user.drop_held_item(W)
 				W.forceMove(src)
 				state = ASSEMBLY_UNLOCKED
-				to_chat(user, SPAN_NOTICE("You add the vial to the matrix, and the testing indicator lights up with green"))
+				to_chat(user, SPAN_NOTICE("You add the vial to the matrix, and the testing indicator lights up with green."))
 				desc = initial(desc) + "\nThe vial is installed but is not screwed."
 				var/datum/reagent/S = W.reagents.reagent_list[1]
 				if(S.get_property(PROPERTY_PHOTOSENSITIVE) && !S.get_property(PROPERTY_CRYSTALLIZATION))

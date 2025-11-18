@@ -470,7 +470,7 @@
 				var/obj/limb/affecting = H.get_limb(rand_zone(pick(parrot_dam_zone)))
 
 				H.apply_damage(damage, BRUTE, affecting, sharp=TRUE, enviro=TRUE)
-				INVOKE_ASYNC(src, PROC_REF(emote), pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons"))
+				INVOKE_ASYNC(src, PROC_REF(emote), pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons."))
 
 			else
 				L.apply_damage(damage, BRUTE, enviro=TRUE)

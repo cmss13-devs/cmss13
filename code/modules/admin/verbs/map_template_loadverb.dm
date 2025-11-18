@@ -4,7 +4,7 @@
 
 	var/datum/map_template/template
 
-	var/map = tgui_input_list(src, "Choose a Map Template to place at your CURRENT LOCATION","Place Map Template", sortList(SSmapping.map_templates))
+	var/map = tgui_input_list(src, "Choose a Map Template to place at your CURRENT LOCATION.","Place Map Template", sortList(SSmapping.map_templates))
 	if(!map)
 		return
 	template = SSmapping.map_templates[map]
@@ -39,7 +39,7 @@
 	set category = "Admin.Events"
 	set name = "Map Template - Upload"
 
-	var/map = input(src, "Choose a Map Template to upload to template storage","Upload Map Template") as null|file
+	var/map = input(src, "Choose a Map Template to upload to template storage.","Upload Map Template") as null|file
 	if(!map)
 		return
 	if(copytext("[map]", -4) != ".dmm")//4 == length(".dmm")

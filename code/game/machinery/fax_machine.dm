@@ -441,7 +441,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			if(target_department in FAX_HIGHCOM_DEPARTMENTS)
 				single_sending = FALSE
 			if(target_department == FAX_DEPARTMENT_SPECIFIC_CODE)
-				var/new_target_machine_id = tgui_input_list(user, "Which machine?", "Choose a machine code", GLOB.fax_network.all_faxcodes)
+				var/new_target_machine_id = tgui_input_list(user, "Which machine?", "Choose a machine code.", GLOB.fax_network.all_faxcodes)
 				if(!new_target_machine_id)
 					target_department = last_target_department
 				else if(new_target_machine_id == machine_id_tag)
@@ -454,7 +454,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 		if("select_machine")
 			var/last_target_machine = target_machine
-			target_machine = tgui_input_list(user, "Which machine?", "Choose a machine", GLOB.fax_network.all_departments[target_department])
+			target_machine = tgui_input_list(user, "Which machine?", "Choose a machine.", GLOB.fax_network.all_departments[target_department])
 			if(!target_machine)
 				target_machine = last_target_machine
 

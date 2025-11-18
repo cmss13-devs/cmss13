@@ -234,7 +234,7 @@
 				M.emote("nibbles away at [src]")
 			bitecount++
 			if(bitecount >= 5)
-				var/sattisfaction_text = pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where [src] was")
+				var/sattisfaction_text = pick("burps from enjoyment.", "yaps for more.", "woofs twice.", "looks at the area. where [src] was.")
 				if(sattisfaction_text)
 					M.emote("[sattisfaction_text]")
 				qdel(src)

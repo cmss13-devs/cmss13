@@ -78,7 +78,7 @@
 		/*to_chat(user, SPAN_WARNING("Weapons modification access denied, attempting to launch simulation."))
 
 		if(!selected_firemission)
-			to_chat(user, SPAN_WARNING("Firemission must be selected before attempting to run the simulation"))
+			to_chat(user, SPAN_WARNING("Firemission must be selected before attempting to run the simulation."))
 			return TRUE
 
 		tgui_interact(user)
@@ -93,7 +93,7 @@
 		if(matrix.state == ASSEMBLY_LOCKED)
 			user.drop_held_item(W, src)
 			W.forceMove(src)
-			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process"))
+			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process."))
 			upgraded = matrix.upgrade
 			power = matrix.power
 
@@ -284,7 +284,7 @@
 			. = TRUE
 
 		if("switch_firemission")
-			configuration = tgui_input_list(user, "Select firemission to simulate", "Select firemission", firemission_envelope.missions, 30 SECONDS)
+			configuration = tgui_input_list(user, "Select firemission to simulate.", "Select firemission", firemission_envelope.missions, 30 SECONDS)
 			if(!selected_firemission)
 				to_chat(user, SPAN_WARNING("No configured firemission."))
 				return
@@ -293,7 +293,7 @@
 			. = TRUE
 
 		if("switchmode")
-			simulation.dummy_mode = tgui_input_list(user, "Select target type to simulate", "Target type", simulation.target_types, 30 SECONDS)
+			simulation.dummy_mode = tgui_input_list(user, "Select target type to simulate", "Target type.", simulation.target_types, 30 SECONDS)
 			if(!simulation.dummy_mode)
 				simulation.dummy_mode = CLF_MODE
 			. = TRUE

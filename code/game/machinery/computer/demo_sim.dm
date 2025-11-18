@@ -95,7 +95,7 @@
 			. = TRUE
 
 		if("switchmode")
-			simulation.dummy_mode = tgui_input_list(user, "Select target type to simulate", "Target type", simulation.target_types, 30 SECONDS)
+			simulation.dummy_mode = tgui_input_list(user, "Select target type to simulate.", "Target type", simulation.target_types, 30 SECONDS)
 			if(!simulation.dummy_mode)
 				simulation.dummy_mode = /mob/living/carbon/human
 			. = TRUE

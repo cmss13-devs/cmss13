@@ -90,8 +90,8 @@
 	if(loc && (istype(loc, /obj/structure/machinery/medical_pod/autodoc)))
 		var/obj/structure/machinery/medical_pod/autodoc/BB = loc
 		if (alert(usr, "Would you like to emergency eject out of [BB]? A surgery may be in progress.", "Confirm", "Yes", "No") == "Yes")
-			visible_message(SPAN_WARNING ("[BB]'s emergency lights blare as the casket starts moving!"))
-			to_chat(usr, SPAN_NOTICE ("You are now leaving [BB]"))
+			visible_message(SPAN_WARNING("[BB]'s emergency lights blare as the casket starts moving!"))
+			to_chat(usr, SPAN_NOTICE("You are now leaving [BB]"))
 			playsound(src, 'sound/machines/beepalert.ogg', 30)
 			if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, BB))//5 sec delay
 				BB.go_out() //Eject doesnt work you have to force it

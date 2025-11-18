@@ -644,7 +644,7 @@
 	var/mob/living/befriended_mob
 	switch(tgui_input_list(user, "Select by:", "Imaginary Friend", list("Key", "Mob")))
 		if("Key")
-			var/client/selected_client = tgui_input_list(user, "Select a key", "Imaginary Friend", GLOB.clients)
+			var/client/selected_client = tgui_input_list(user, "Select a key.", "Imaginary Friend", GLOB.clients)
 			if(!selected_client)
 				return
 			befriended_mob = selected_client.mob
@@ -654,7 +654,7 @@
 				if(checking_mob.client)
 					continue
 				cliented_mobs -= checking_mob
-			var/mob/selected_mob = tgui_input_list(user, "Select a mob", "Imaginary Friend", cliented_mobs)
+			var/mob/selected_mob = tgui_input_list(user, "Select a mob.", "Imaginary Friend", cliented_mobs)
 			if(!selected_mob)
 				return
 			befriended_mob = selected_mob

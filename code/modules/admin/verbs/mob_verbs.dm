@@ -69,7 +69,7 @@
 		return
 
 	var/list/listed_huds = list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD")
-	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD", listed_huds)
+	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle.", "Toggle HUD", listed_huds)
 	var/datum/mob_hud/H
 	switch(hud_choice)
 		if("Medical HUD")

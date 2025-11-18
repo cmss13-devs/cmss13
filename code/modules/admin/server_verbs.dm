@@ -61,7 +61,7 @@
 	if(map_type == "Cancel")
 		return
 
-	var/map = input(usr, "Choose a custom map to run for next round","Upload Map") as null|file
+	var/map = input(usr, "Choose a custom map to run for next round.","Upload Map") as null|file
 	if(!map)
 		return
 	if(copytext("[map]", -4) != ".dmm")//4 == length(".dmm")
@@ -72,7 +72,7 @@
 	fcopy(map, "data/[OVERRIDE_MAPS_TO_FILENAME[map_type]]")
 	if(tgui_alert(usr, "Do you want to upload a custom map config or use defaults? Config controls things like survivors and monkey types, camouflages, lore messages, map items, nightmare, special environmental features...", "Map Config Flavor", list("Default", "Override")) == "Override")
 		tgui_alert(usr, "Choose the custom map configuration for next round. Make sure it's VALID. It MUST have \"override_map\":true !", "Warning", list("OK!"))
-		var/map_config = input(usr, "Choose custom map configuration to upload", "Upload Map Config") as null|file
+		var/map_config = input(usr, "Choose custom map configuration to upload.", "Upload Map Config") as null|file
 		if(map_config)
 			var/parse_check = json_decode(file2text(map_config))
 			if(parse_check && parse_check["override_map"])

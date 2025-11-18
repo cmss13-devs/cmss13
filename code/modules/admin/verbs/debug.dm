@@ -159,7 +159,7 @@
 
 	// to prevent REALLY stupid deletions
 	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/structure/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/ai)
-	var/chosen_deletion = input(usr, "Type the path of the object you want to delete", "Delete:") as null|text
+	var/chosen_deletion = input(usr, "Type the path of the object you want to delete.", "Delete:") as null|text
 	if(chosen_deletion)
 		chosen_deletion = text2path(chosen_deletion)
 		if(ispath(chosen_deletion))
@@ -246,7 +246,7 @@
 	set name = "Create Bank Account"
 
 	if(!ishuman(target))
-		to_chat(src, SPAN_WARNING("This only works on humans"))
+		to_chat(src, SPAN_WARNING("This only works on humans."))
 		return
 
 	var/mob/living/carbon/human/account_user = target
@@ -264,7 +264,7 @@
 	if(!starting_amount)
 		starting_amount = 0
 
-	var/custom_paygrade = tgui_input_list(src, "Select paygrade of account", "Account paygrade", GLOB.paygrades)
+	var/custom_paygrade = tgui_input_list(src, "Select paygrade of account.", "Account paygrade", GLOB.paygrades)
 	if(!custom_paygrade)
 		to_chat(src, SPAN_WARNING("They must have a paygrade!"))
 		return

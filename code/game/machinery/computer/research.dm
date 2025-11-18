@@ -225,7 +225,7 @@
 				playsound(loc, 'sound/machines/twobeep.ogg', 5, 1)
 			else
 				playsound(loc, 'sound/machines/buzz-two.ogg', 5, 1)
-				langchat_speech("There are no contracts to reprint available", get_mobs_in_view(7, src), GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
-				visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: There are no contracts to reprint available")
+				langchat_speech("There are no contracts available to reprint.", get_mobs_in_view(7, src), GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+				visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: There are no contracts available to reprint.")
 
 	playsound(loc, pick('sound/machines/computer_typing1.ogg','sound/machines/computer_typing2.ogg','sound/machines/computer_typing3.ogg'), 5, 1)

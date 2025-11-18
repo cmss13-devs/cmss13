@@ -7,7 +7,7 @@
 		return
 	prefs.toggles_chat ^= CHAT_RADIO
 	prefs.save_preferences()
-	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from radios or speakers"))
+	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from radios or speakers."))
 
 /client/proc/toggleadminhelpsound()
 	set name = "Hear/Silence Adminhelps"

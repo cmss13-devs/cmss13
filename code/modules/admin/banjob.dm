@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(jobban_keylist)
 
 /datum/admins/proc/job_ban(mob/M)
 	if(!ismob(M))
-		to_chat(usr, "This can only be used on instances of type /mob")
+		to_chat(usr, "This can only be used on instances of type /mob.")
 		return
 
 	if(!M.ckey) //sanity

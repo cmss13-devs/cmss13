@@ -117,7 +117,7 @@ SUBSYSTEM_DEF(shuttle)
 			return shuttle
 	if(!warn)
 		return null
-	WARNING("couldn't find shuttle with id: [id]")
+	WARNING("couldn't find shuttle with id: [id].")
 
 /// Tries to get a shuttle based on its original template id (rather than one that may have an additional identifier)
 /datum/controller/subsystem/shuttle/proc/get_template_shuttle(id, warn = TRUE)
@@ -126,13 +126,13 @@ SUBSYSTEM_DEF(shuttle)
 			return shuttle
 	if(!warn)
 		return null
-	WARNING("couldn't find template shuttle with id: [id]")
+	WARNING("couldn't find template shuttle with id: [id].")
 
 /datum/controller/subsystem/shuttle/proc/getDock(id)
 	for(var/obj/docking_port/stationary/S in stationary)
 		if(S.id == id)
 			return S
-	WARNING("couldn't find dock with id: [id]")
+	WARNING("couldn't find dock with id: [id].")
 
 //try to move/request to dock_home if possible, otherwise dock_away. Mainly used for admin buttons
 /datum/controller/subsystem/shuttle/proc/toggleShuttle(id, dock_home, dock_away, timed)

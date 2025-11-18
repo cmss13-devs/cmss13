@@ -639,7 +639,7 @@
 						blockcount++
 						mode = 4
 						if(blockcount == 3)
-							src.visible_message("[src] makes an annoyed buzzing sound", "You hear an electronic buzzing sound.")
+							src.visible_message("[src] makes an annoyed buzzing sound.", "You hear an electronic buzzing sound.")
 							playsound(src.loc, 'sound/machines/buzz-two.ogg', 25, 0)
 
 						if(blockcount > 5) // attempt 5 times before recomputing

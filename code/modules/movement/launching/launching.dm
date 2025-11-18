@@ -69,7 +69,7 @@
 //called when src is thrown into hit_atom
 /atom/movable/proc/launch_impact(atom/hit_atom)
 	if (isnull(launch_metadata))
-		CRASH("launch_impact called without any stored metadata")
+		CRASH("Launch_impact called without any stored metadata.")
 
 	var/list/collision_callbacks = launch_metadata?.get_collision_callbacks(hit_atom)
 	if (islist(collision_callbacks))

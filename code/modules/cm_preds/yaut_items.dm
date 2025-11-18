@@ -608,7 +608,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 	to_chat(user, SPAN_NOTICE("You choose [choice] as your prey."))
 	message_all_yautja("[user.real_name] has chosen [choice] as their prey.")
-	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) triggered [choice] inside the hunting grounds"))
+	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) triggered [choice] inside the hunting grounds."))
 	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
 	COOLDOWN_START(GLOB, hunt_timer_yautja, 20 MINUTES)
 

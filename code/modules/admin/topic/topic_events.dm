@@ -324,7 +324,7 @@
 
 		if (offer_as_ert)
 			var/datum/emergency_call/custom/em_call = new()
-			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned humans")
+			var/name = input(usr, "Please name your ERT.", "ERT Name", "Admin spawned humans")
 			em_call.name = name
 			em_call.mob_max = length(humans)
 			em_call.players_to_offer = humans
@@ -420,7 +420,7 @@
 
 		if(offer_as_ert)
 			var/datum/emergency_call/custom/em_call = new()
-			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned xenos")
+			var/name = input(usr, "Please name your ERT.", "ERT Name", "Admin spawned xenos")
 			em_call.name = name
 			em_call.mob_max = length(xenos)
 			em_call.players_to_offer = xenos

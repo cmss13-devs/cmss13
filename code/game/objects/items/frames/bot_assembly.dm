@@ -27,7 +27,7 @@
 		qdel(src)
 
 	else if (HAS_TRAIT(W, TRAIT_TOOL_PEN))
-		var/t = copytext(stripped_input(user, "Enter new robot name", src.name, src.created_name),1,MAX_NAME_LEN)
+		var/t = copytext(stripped_input(user, "Enter new robot name.", src.name, src.created_name),1,MAX_NAME_LEN)
 		if (!t)
 			return
 		if (!in_range(src, usr) && src.loc != usr)
@@ -62,7 +62,7 @@
 		qdel(src)
 
 	else if (HAS_TRAIT(W, TRAIT_TOOL_PEN))
-		var/t = copytext(stripped_input(user, "Enter new robot name", src.name, src.created_name),1,MAX_NAME_LEN)
+		var/t = copytext(stripped_input(user, "Enter new robot name.", src.name, src.created_name),1,MAX_NAME_LEN)
 		if (!t)
 			return
 		if (!in_range(src, usr) && src.loc != usr)
@@ -95,7 +95,7 @@
 		user.temp_drop_inv_item(src)
 		qdel(src)
 	else if (HAS_TRAIT(W, TRAIT_TOOL_PEN))
-		var/t = stripped_input(user, "Enter new robot name", src.name, src.created_name)
+		var/t = stripped_input(user, "Enter new robot name.", src.name, src.created_name)
 
 		if (!t)
 			return
@@ -130,7 +130,7 @@
 /obj/item/frame/firstaid_arm_assembly/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
-		var/t = copytext(stripped_input(user, "Enter new robot name", src.name, src.created_name),1,MAX_NAME_LEN)
+		var/t = copytext(stripped_input(user, "Enter new robot name.", src.name, src.created_name),1,MAX_NAME_LEN)
 		if (!t)
 			return
 		if (!in_range(src, usr) && src.loc != usr)

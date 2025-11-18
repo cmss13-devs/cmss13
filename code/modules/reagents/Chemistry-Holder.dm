@@ -401,7 +401,7 @@
 			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] Lid on [my_atom] prevents fumes from spreading around itself."))
 		return
 	for(var/mob/seen_mob in seen)
-		to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] "))
+		to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)]."))
 		playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
 	var/location = get_turf(my_atom)
 	var/datum/effect_system/smoke_spread/chem/smoke_reaction = new /datum/effect_system/smoke_spread/chem

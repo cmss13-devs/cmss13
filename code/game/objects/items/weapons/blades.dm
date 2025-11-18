@@ -354,8 +354,8 @@
 	var/new_beard_style
 	var/new_hair_style
 	if(human_user.gender == MALE)
-		new_beard_style = tgui_input_list(human_user, "Select a facial hair style", "Grooming", species_facial_hair)
-	new_hair_style = tgui_input_list(human_user, "Select a hair style", "Grooming", species_hair)
+		new_beard_style = tgui_input_list(human_user, "Select a facial hair style.", "Grooming", species_facial_hair)
+	new_hair_style = tgui_input_list(human_user, "Select a hair style.", "Grooming", species_hair)
 
 	if(loc != human_user)
 		to_chat(human_user, SPAN_NOTICE("You are too far from [src] to change your hair styles."))

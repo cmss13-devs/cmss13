@@ -355,7 +355,7 @@
 		return // Nani?
 
 	if(success && prob(80))
-		var/speech = pick("Thanks!", "Thanks", "Thanks bro", "Thank you.", "Bye", "Nice.")
+		var/speech = pick("Thanks!", "Thanks.", "Thanks bro.", "Thank you.", "Bye.", "Nice.")
 		active_agent.say(speech)
 
 	// Immediately step the agent through the turnstile and towards exit

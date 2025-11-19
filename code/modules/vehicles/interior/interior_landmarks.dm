@@ -305,6 +305,11 @@
 
 	qdel(src)
 
+/obj/effect/landmark/interior/spawn/weapons_loader/humvee
+	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
+	icon_state = "weapons_loader"
+	color = "#00920c"
+
 /obj/effect/landmark/interior/spawn/weapons_loader/humvee/on_load(datum/interior/I)
 	var/obj/structure/weapons_loader/humvee/R = new(loc)
 	R.layer = layer

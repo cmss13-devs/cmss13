@@ -127,7 +127,7 @@
 	pixel_y = 32;
 	tag = "left"
 	},
-/obj/structure/bed/chair/comfy/vehicle/driver/humvee{
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/humvee{
 	dir = 4;
 	pixel_x = -3;
 	pixel_y = 1;

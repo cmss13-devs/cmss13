@@ -262,7 +262,7 @@ Additional game mode variables.
 	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
 	if(new_predator.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER) && (tgui_alert(new_predator, "Do you wish to announce your presence?", "Announce Arrival", list("Yes","No"), 10 SECONDS) != "No"))
-		elder_overseer_message("[new_predator.real_name] has joined the hunting party.")
+		elder_overseer_message("[new_predator.real_name] has joined the hunting party.", is_badblood = ANNOUNCE_YAUTJA_GOOD)
 
 	return new_predator
 

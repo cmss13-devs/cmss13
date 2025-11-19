@@ -1,17 +1,23 @@
 // Notify all preds with the bracer icon
-/proc/message_all_yautja(msg, soundeffect = TRUE)
+/proc/message_all_yautja(msg, soundeffect = TRUE, subfaction = ANNOUNCE_YAUTJA_GOOD)
 	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		// Send message to the bracer; appear multiple times if we have more bracers
-		for(var/obj/item/clothing/gloves/yautja/hunter/G in Y.contents)
-			to_chat(Y, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beeps: [msg]"))
-			if(G.notification_sound)
+		for(var/obj/item/clothing/gloves/yautja/hunter/bracer in Y.contents)
+			if(!bracer.can_get_message(subfaction))
+				continue
+			to_chat(Y, SPAN_YAUTJABOLD("[icon2html(bracer)] \The <b>[bracer]</b> beeps: [msg]"))
+			if(bracer.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
-/proc/elder_overseer_message(text = "", title_text = "Elder Overseer", elder_user = "AutomatedMessage") // you can override the title_text if you want.
+/proc/elder_overseer_message(text = "", title_text = "Elder Overseer", elder_user = "AutomatedMessage", is_badblood = ANNOUNCE_YAUTJA_ALL) // you can override the title_text if you want.
 	for(var/mob/living/carbon/human/hunter as anything in GLOB.yautja_mob_list)
 		if(!hunter.client)
 			continue
 		if(hunter.stat == DEAD)
+			continue
+		if((hunter.faction == FACTION_YAUTJA_BADBLOOD) && (is_badblood == ANNOUNCE_YAUTJA_GOOD))
+			continue
+		if(!(hunter.faction == FACTION_YAUTJA_BADBLOOD) && (is_badblood == ANNOUNCE_YAUTJA_BAD))
 			continue
 		text = "[SPAN_YAUTJABOLDBIG("<b>[text]<b>")]"
 		hunter.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order/yautja, override_color = "#af0614")
@@ -47,9 +53,20 @@
 	if(!input)
 		return FALSE
 	if(is_living_yautja)
-		elder_overseer_message(input, mob.real_name, "[key_name(src)]")
+		var/badblood_announce = ANNOUNCE_YAUTJA_GOOD
+		if(mob.faction == FACTION_YAUTJA_BADBLOOD)
+			badblood_announce = ANNOUNCE_YAUTJA_BAD
+		elder_overseer_message(input, mob.real_name, "[key_name(src)]", badblood_announce)
 		return TRUE
-	elder_overseer_message(input, elder_user = "[key_name(src)]")
+
+	var/for_badbloods = ANNOUNCE_YAUTJA_GOOD
+	var/choice = tgui_alert(usr, "Is this announcement for Bad Bloods?", "For Badbloods?", list("Yes", "No", "Both"))
+	switch(choice)
+		if("Yes")
+			for_badbloods = ANNOUNCE_YAUTJA_BAD
+		if("Both")
+			for_badbloods = ANNOUNCE_YAUTJA_ALL
+	elder_overseer_message(input, elder_user = "[key_name(src)]", is_badblood = for_badbloods)
 	return TRUE
 
 /mob/living/carbon/human/proc/message_thrall(msg)
@@ -234,7 +251,10 @@
 				if(hunter_data.prey == T)
 					to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
 					emote("roar2")
-					message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
+					var/set_subfaction = ANNOUNCE_YAUTJA_GOOD
+					if(faction == FACTION_YAUTJA_BADBLOOD)
+						set_subfaction = ANNOUNCE_YAUTJA_BAD
+					message_all_yautja("[src.real_name] has claimed [T] as their trophy.", subfaction = set_subfaction)
 					hunter_data.prey = null
 				else
 					to_chat(src, SPAN_NOTICE("You finish butchering!"))
@@ -260,7 +280,10 @@
 			if(hunter_data.prey == T)
 				to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
 				emote("roar2")
-				message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
+				var/set_subfaction = ANNOUNCE_YAUTJA_GOOD
+				if(faction == FACTION_YAUTJA_BADBLOOD)
+					set_subfaction = ANNOUNCE_YAUTJA_BAD
+				message_all_yautja("[src.real_name] has claimed [T] as their trophy.", subfaction = set_subfaction)
 				hunter_data.prey = null
 			else
 				to_chat(src, SPAN_NOTICE("You finish butchering!"))

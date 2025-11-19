@@ -113,3 +113,7 @@
 #define YOUNGBLOOD_ERT_MEMBER "Yautja Youngblood (non-WL)"
 
 #define YAUTJA_BADBLOOD "Yautja Bad Blood"
+
+#define ANNOUNCE_YAUTJA_GOOD 1
+#define ANNOUNCE_YAUTJA_BAD 2
+#define ANNOUNCE_YAUTJA_ALL 3

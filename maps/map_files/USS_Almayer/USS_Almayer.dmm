@@ -428,6 +428,17 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
+"abb" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/surgical/emergency{
+	pixel_x = -29;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/sterile_green_side/west,
+/area/almayer/medical/lower_medical_medbay)
 "abc" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
@@ -65771,17 +65782,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/lower/cryo_cells)
-"ndo" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/closet/secure_closet/surgical/emergency{
-	pixel_x = -29;
-	pixel_y = 0
-	},
-/turf/open/floor/almayer/sterile_green_side/west,
-/area/almayer/medical/lower_medical_medbay)
 "ndZ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/flashlight/lamp,
@@ -140769,7 +140769,7 @@ adw
 rZB
 adS
 wxc
-ndo
+abb
 adm
 acD
 acD

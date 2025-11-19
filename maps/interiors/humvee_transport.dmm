@@ -1,128 +1,113 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/obj/structure/interior_viewport/humvee{
-	pixel_x = -3;
-	pixel_y = -7
-	},
-/turf/open/void/vehicle,
-/area/space)
 "h" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
-	exit_type = /obj/structure/interior_exit/vehicle/van/backright;
+	exit_type = /obj/structure/interior_exit/vehicle/humvee/back/right;
 	name = "back right entrance marker";
 	pixel_x = -32;
 	tag = "back_right"
 	},
 /obj/structure/prop/vehicle/humvee/transport{
 	pixel_x = -8;
-	pixel_y = -3
+	pixel_y = -12
 	},
 /obj/structure/interior_exit/vehicle/humvee/back/right{
-	pixel_x = -32;
-	pixel_y = 9
+	pixel_x = -31
+	},
+/obj/structure/bed/chair/comfy/vehicle/passager{
+	dir = 1
 	},
 /obj/structure/bed/chair/comfy/vehicle/passager{
 	dir = 1;
-	pixel_x = -1;
-	pixel_y = 8;
-	buckling_x = -1;
-	buckling_y = 8
-	},
-/obj/structure/bed/chair/comfy/vehicle/passager{
-	dir = 1;
-	pixel_x = 15;
-	pixel_y = 8;
-	buckling_x = 15;
-	buckling_y = 8
+	pixel_x = 16;
+	buckling_x = 16
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee/transport)
 "o" = (
 /obj/structure/bed/chair/comfy/vehicle/passager{
-	pixel_y = 10;
-	buckling_y = 10
+	pixel_y = 1;
+	buckling_y = 1
 	},
 /obj/structure/interior_viewport/humvee/small{
-	pixel_y = 26;
-	layer = 3.74
+	pixel_y = 17;
+	layer = 3.74;
+	pixel_x = -1
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee/transport)
 "t" = (
 /obj/structure/interior_viewport/humvee/windshield/north{
 	pixel_x = -10;
-	pixel_y = 14
+	pixel_y = 5
 	},
 /turf/open/void/vehicle,
 /area/space)
 "v" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
-	exit_type = /obj/structure/interior_exit/vehicle/van/right;
+	exit_type = /obj/structure/interior_exit/vehicle/humvee/right;
 	name = "right entrance marker";
-	tag = "right"
+	tag = "right";
+	pixel_y = -30
 	},
 /obj/structure/interior_exit/vehicle/humvee/right{
 	pixel_x = -3;
-	pixel_y = -1;
+	pixel_y = -10;
 	alpha = 50
 	},
 /obj/structure/interior_viewport/humvee{
 	pixel_x = -3;
-	pixel_y = 1;
+	pixel_y = -8;
 	alpha = 50
 	},
 /obj/structure/bed/chair/comfy/vehicle/passager{
 	dir = 4;
-	pixel_y = 14;
+	pixel_y = 5;
+	buckling_y = 5;
 	pixel_x = -3;
-	buckling_x = -3;
-	buckling_y = 14
+	buckling_x = -3
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee/transport)
 "y" = (
 /obj/structure/interior_viewport/humvee/windshield/south{
 	pixel_x = -10;
-	pixel_y = 16
+	pixel_y = 7
 	},
 /turf/open/void/vehicle,
 /area/space)
 "G" = (
 /obj/structure/bed/chair/comfy/vehicle/passager{
-	dir = 1;
-	pixel_y = 8;
-	buckling_y = 8
+	dir = 1
 	},
 /obj/structure/interior_viewport/humvee/small{
-	pixel_x = 1;
-	pixel_y = 1;
-	alpha = 50
+	pixel_y = -7;
+	alpha = 50;
+	pixel_x = -1
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee/transport)
 "M" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
-	exit_type = /obj/structure/interior_exit/vehicle/van/backleft;
+	exit_type = /obj/structure/interior_exit/vehicle/humvee/back/left;
 	name = "back left entrance marker";
 	pixel_x = -32;
 	tag = "back_left"
 	},
 /obj/structure/interior_exit/vehicle/humvee/back/left{
-	pixel_x = -32;
-	pixel_y = 9
+	pixel_x = -31
 	},
 /obj/structure/bed/chair/comfy/vehicle/passager{
 	pixel_x = 16;
-	pixel_y = 10;
+	pixel_y = 1;
 	buckling_x = 16;
-	buckling_y = 10
+	buckling_y = 1
 	},
 /obj/structure/bed/chair/comfy/vehicle/passager{
-	pixel_y = 10;
-	buckling_y = 10
+	pixel_y = 1;
+	buckling_y = 1
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee/transport)
@@ -130,29 +115,35 @@
 /turf/open/void/vehicle,
 /area/space)
 "V" = (
+/obj/structure/extinguisher_cabinet/lifeboat{
+	icon = 'icons/obj/vehicles/interiors/general.dmi';
+	pixel_x = -19;
+	pixel_y = 14
+	},
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;
-	exit_type = /obj/structure/interior_exit/vehicle/van/left;
+	exit_type = /obj/structure/interior_exit/vehicle/humvee/left;
 	name = "left entrance marker";
 	pixel_y = 32;
 	tag = "left"
 	},
-/obj/structure/interior_exit/vehicle/humvee/left{
-	pixel_x = -3;
-	pixel_y = 23;
-	layer = 2.9
-	},
-/obj/structure/extinguisher_cabinet/lifeboat{
-	icon = 'icons/obj/vehicles/interiors/general.dmi';
-	pixel_x = -17;
-	pixel_y = 22
-	},
 /obj/structure/bed/chair/comfy/vehicle/driver/humvee{
 	dir = 4;
 	pixel_x = -3;
-	pixel_y = 10;
+	pixel_y = 1;
 	buckling_x = -3;
-	buckling_y = 10
+	buckling_y = 1;
+	layer = 3.74
+	},
+/obj/structure/interior_exit/vehicle/humvee/left{
+	pixel_x = -3;
+	pixel_y = 14;
+	layer = 2.9;
+	dir = 4
+	},
+/obj/structure/interior_viewport/humvee{
+	pixel_x = -3;
+	pixel_y = 16
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee/transport)
@@ -180,7 +171,7 @@ O
 "}
 (4,1,1) = {"
 O
-a
+O
 V
 v
 O

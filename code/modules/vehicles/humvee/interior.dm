@@ -50,6 +50,8 @@
 	icon_state = "humvee_chassis"
 	layer = ABOVE_TURF_LAYER
 	mouse_opacity = FALSE
+	density = FALSE
+	opacity = TRUE
 
 /obj/structure/prop/vehicle/humvee/medical
 	icon_state = "humvee_chassis_medical"

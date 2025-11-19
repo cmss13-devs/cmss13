@@ -548,7 +548,8 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	name = "Remote dropship navigation computer";
 	req_one_access = null;
-	faction = "UPP"
+	faction = "UPP";
+	dir = 1
 	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata/blue3/north,
@@ -1608,9 +1609,6 @@
 /turf/open/floor/strata/floor2,
 /area/event/metal/dynamic/lit)
 "Ah" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/strata/blue3/north,
 /area/event/metal/dynamic/lit)
@@ -2985,6 +2983,9 @@
 /turf/open/asphalt/tile,
 /area/event/dynamic/lit)
 "Ye" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
 /turf/open/floor/strata/blue3/north,
 /area/event/metal/dynamic/lit)
 "Yi" = (

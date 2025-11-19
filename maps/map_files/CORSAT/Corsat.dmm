@@ -1470,6 +1470,14 @@
 "afN" = (
 /turf/open/floor/plating/warnplate/southwest,
 /area/corsat/sigma/hangar)
+"afO" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/med_data/laptop{
+	pixel_y = 3;
+	dir = 4
+	},
+/turf/open/floor/corsat/purplewhite/north,
+/area/corsat/omega/complex)
 "afP" = (
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/sigma/hangar)
@@ -8218,8 +8226,10 @@
 /area/corsat/theta/airlock/east)
 "aFT" = (
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "Waste Tank Control"
+	name = "Waste Tank Control";
+	dir = 4
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/yellow/northwest,
 /area/corsat/sigma/airlock/control)
 "aFU" = (
@@ -13279,6 +13289,7 @@
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
 	name = "Waste Tank Control"
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/yellow/northeast,
 /area/corsat/gamma/engineering/atmos)
 "aYr" = (
@@ -15909,8 +15920,10 @@
 	dir = 8
 	},
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "Mixed Air Control"
+	name = "Mixed Air Control";
+	dir = 4
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/gamma/engineering/atmos)
 "bhM" = (
@@ -16057,8 +16070,10 @@
 	dir = 8
 	},
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "Nitrogen Control Console"
+	name = "Nitrogen Control Console";
+	dir = 4
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/gamma/engineering/atmos)
 "bio" = (
@@ -17412,8 +17427,10 @@
 	},
 /obj/structure/pipes/standard/simple/visible,
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "Oxygen Supply Console"
+	name = "Oxygen Supply Console";
+	dir = 4
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/gamma/engineering/atmos)
 "bnF" = (
@@ -23692,10 +23709,6 @@
 /obj/item/device/lightreplacer,
 /turf/open/floor/corsat/yellow/north,
 /area/corsat/sigma/north)
-"bPQ" = (
-/obj/structure/machinery/computer/general_air_control,
-/turf/open/floor/corsat/yellow/west,
-/area/corsat/gamma/engineering/atmos)
 "bPR" = (
 /obj/structure/machinery/power/apc/upgraded/no_power/north,
 /turf/open/floor/corsat/yellowcorner/east,
@@ -23705,6 +23718,9 @@
 	dir = 1
 	},
 /obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/area_atmos/area{
+	dir = 8
+	},
 /turf/open/floor/corsat/yellow/northeast,
 /area/corsat/gamma/engineering/atmos)
 "bPV" = (
@@ -24751,6 +24767,7 @@
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
 	name = "CO2 Control"
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/yellow/northwest,
 /area/corsat/theta/airlock/control)
 "bUV" = (
@@ -24793,8 +24810,10 @@
 /area/corsat/sigma/airlock/control)
 "bVg" = (
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "Mixed Air Control"
+	name = "Mixed Air Control";
+	dir = 4
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/sigma/airlock/control)
 "bVh" = (
@@ -24825,7 +24844,9 @@
 /area/corsat/gamma/airlock/control)
 "bVv" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/atmos_alert,
+/obj/structure/machinery/computer/atmos_alert{
+	dir = 4
+	},
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/sigma/airlock/control)
 "bVw" = (
@@ -24918,6 +24939,7 @@
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
 	name = "Mixed Air Control"
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/yellow/north,
 /area/corsat/theta/airlock/control)
 "bVT" = (
@@ -25078,7 +25100,9 @@
 /area/corsat/theta/airlock/control)
 "bWy" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/station_alert,
+/obj/structure/machinery/computer/station_alert{
+	dir = 4
+	},
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/sigma/airlock/control)
 "bWz" = (
@@ -25179,8 +25203,10 @@
 /area/corsat/gamma/airlock/control)
 "bWQ" = (
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "CO2 Control"
+	name = "CO2 Control";
+	dir = 4
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/yellow/southwest,
 /area/corsat/sigma/airlock/control)
 "bWR" = (
@@ -25200,6 +25226,7 @@
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
 	name = "Waste Tank Control"
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/yellow/northeast,
 /area/corsat/theta/airlock/control)
 "bWV" = (
@@ -25435,8 +25462,10 @@
 /area/corsat/inaccessible)
 "bYf" = (
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "Mixed Air Control"
+	name = "Mixed Air Control";
+	dir = 8
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/yellow/east,
 /area/corsat/gamma/airlock/control)
 "bYh" = (
@@ -25445,8 +25474,10 @@
 /area/corsat/gamma/airlock/control)
 "bYl" = (
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "Nitrogen Control Console"
+	name = "Nitrogen Control Console";
+	dir = 8
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/yellow/east,
 /area/corsat/gamma/airlock/control)
 "bYm" = (
@@ -25608,8 +25639,10 @@
 /area/corsat/gamma/airlock/control)
 "bYM" = (
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
-	name = "Waste Tank Control"
+	name = "Waste Tank Control";
+	dir = 8
 	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/yellow/southeast,
 /area/corsat/gamma/airlock/control)
 "bYN" = (
@@ -38204,7 +38237,10 @@
 /turf/open/floor/corsat/darkgreen/north,
 /area/corsat/gamma/rnr)
 "oVj" = (
-/obj/structure/machinery/computer/general_air_control/large_tank_control,
+/obj/structure/machinery/computer/general_air_control/large_tank_control{
+	dir = 1
+	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/corsat/purplewhite,
 /area/corsat/gamma/biodome/toxins)
 "oVr" = (
@@ -45287,7 +45323,6 @@
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "wwi" = (
-/obj/structure/machinery/computer/area_atmos/area,
 /turf/open/floor/corsat/yellowcorner/west,
 /area/corsat/gamma/engineering/atmos)
 "wwB" = (
@@ -56393,7 +56428,7 @@ auG
 bzu
 auG
 auG
-bAK
+afO
 bBw
 xvG
 nUa
@@ -79065,7 +79100,7 @@ tZD
 eon
 bPW
 wwi
-bPQ
+pwu
 pwu
 bhL
 bil

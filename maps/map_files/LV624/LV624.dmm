@@ -455,10 +455,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
-"acb" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating/platebotc,
-/area/lv624/lazarus/quartstorage)
 "acc" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/warning/west,
@@ -1366,11 +1362,6 @@
 /obj/structure/fence/overgrown,
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/colony/west_tcomms_road)
-"afr" = (
-/obj/structure/ore_box,
-/obj/structure/fence,
-/turf/open/floor/warning/east,
-/area/lv624/ground/barrens/containers)
 "afs" = (
 /obj/structure/fence/overgrown,
 /turf/open/gm/dirtgrassborder/south,
@@ -2316,10 +2307,6 @@
 	},
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/ground/river/east_river)
-"akd" = (
-/obj/effect/landmark/hunter_primary,
-/turf/open/gm/river,
-/area/lv624/ground/river/east_river)
 "akh" = (
 /obj/item/trash/candy,
 /obj/structure/machinery/door_control{
@@ -2838,7 +2825,7 @@
 /area/lv624/lazarus/medbay)
 "anT" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/green/northwest,
+/turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "anW" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
@@ -3412,10 +3399,6 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "asN" = (
 /turf/closed/wall,
-/area/lv624/lazarus/quartstorage)
-"asO" = (
-/obj/structure/window_frame/colony,
-/turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage)
 "asP" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
@@ -4810,10 +4793,6 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv624/lazarus/sleep_female)
-"azy" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/platebotc,
-/area/lv624/lazarus/sleep_female)
 "azB" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/dirt,
@@ -6066,7 +6045,7 @@
 /area/lv624/lazarus/chapel)
 "aFq" = (
 /obj/structure/window_frame/colony,
-/turf/open/floor/plating/platebotc,
+/turf/open/floor/plating,
 /area/lv624/lazarus/chapel)
 "aFr" = (
 /obj/structure/bed/chair/wheelchair,
@@ -7749,10 +7728,6 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/bar,
 /area/lv624/lazarus/canteen)
-"aOe" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/platebotc,
-/area/lv624/lazarus/canteen)
 "aOo" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/sunglasses/big,
@@ -9396,9 +9371,6 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
-"aWv" = (
-/turf/open/floor/plating/platebotc,
-/area/lv624/lazarus/secure_storage)
 "aWw" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/gm/dirt,
@@ -10837,7 +10809,7 @@
 "cdj" = (
 /obj/structure/window_frame/colony,
 /obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/white,
+/turf/open/floor/plating,
 /area/lv624/lazarus/medbay)
 "cdw" = (
 /obj/effect/landmark/objective_landmark/science,
@@ -12623,7 +12595,7 @@
 /area/lv624/ground/caves/south_east_caves)
 "fIy" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor,
+/turf/open/floor/plating,
 /area/lv624/lazarus/medbay)
 "fIW" = (
 /obj/effect/decal/grass_overlay/grass1,
@@ -14252,9 +14224,6 @@
 "jik" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/east_jungle)
-"jiR" = (
-/turf/open/floor/vault2/west,
-/area/lv624/lazarus/quartstorage)
 "jlh" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirt,
@@ -16479,7 +16448,7 @@
 /area/lv624/ground/caves/west_caves)
 "nSg" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/white,
+/turf/open/floor/plating,
 /area/lv624/lazarus/medbay)
 "nSR" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -17624,7 +17593,6 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "qaE" = (
-/obj/effect/landmark/hunter_primary,
 /obj/effect/landmark/queen_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
@@ -18978,10 +18946,6 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
-"sVh" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor,
-/area/lv624/lazarus/hydroponics)
 "sVx" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
@@ -26858,7 +26822,7 @@ dmT
 dmT
 owZ
 wHh
-gwP
+acS
 gwP
 gwP
 gwP
@@ -31341,7 +31305,7 @@ efp
 aTf
 chy
 rDK
-aWv
+plC
 kVS
 xLT
 sCx
@@ -41994,10 +41958,10 @@ tyG
 tyG
 dvf
 tyG
-sVh
+anT
 fdl
 fdl
-sVh
+anT
 jHN
 jHN
 jHN
@@ -49476,7 +49440,7 @@ qjf
 qjf
 qjf
 xNK
-qjf
+afR
 qjf
 qjf
 qjf
@@ -49704,7 +49668,7 @@ afd
 afd
 afd
 afd
-afr
+afd
 afd
 afd
 agc
@@ -49998,7 +49962,7 @@ cOs
 cOs
 fjM
 ayS
-azy
+azx
 azT
 aAB
 aBb
@@ -50912,7 +50876,7 @@ fjM
 fjM
 fjM
 azU
-azy
+azx
 aBe
 aBC
 aBC
@@ -51140,7 +51104,7 @@ fjM
 pJN
 cOs
 azU
-azy
+azx
 aBf
 aBF
 aBC
@@ -52987,7 +52951,7 @@ aAY
 aJQ
 ayP
 aNo
-aOe
+aTe
 aNo
 aGz
 aGz
@@ -53143,9 +53107,9 @@ oGr
 ukE
 oGr
 jic
-xch
+rcR
 ajw
-akd
+ajI
 ajI
 ajI
 ajI
@@ -54789,9 +54753,9 @@ apu
 apu
 apu
 asN
-acb
+abY
 avS
-acb
+abY
 asN
 uVx
 aDG
@@ -55909,7 +55873,7 @@ jik
 fED
 jik
 dLY
-asO
+atI
 axa
 axa
 ati
@@ -56149,7 +56113,7 @@ ati
 awZ
 atE
 axa
-jiR
+axa
 dVQ
 lyS
 apu
@@ -56365,7 +56329,7 @@ dLY
 dLY
 dLY
 dLY
-asO
+atI
 axa
 axa
 ati

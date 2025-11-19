@@ -1027,6 +1027,15 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/nw_rockies)
+"adD" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/machinery/faxmachine,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/blue_plate/north,
+/area/lv522/indoors/c_block/mining)
 "adG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -7071,15 +7080,6 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
-"dDp" = (
-/obj/structure/surface/table/almayer,
-/obj/item/paper_bin{
-	pixel_x = -4;
-	pixel_y = 7
-	},
-/obj/item/tool/pen/red/clicky,
-/turf/open/floor/prison/blue_plate/north,
-/area/lv522/indoors/c_block/mining)
 "dDq" = (
 /turf/closed/wall/shiva/prefabricated,
 /area/lv522/landing_zone_2/ceiling)
@@ -21723,8 +21723,12 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/machinery/faxmachine,
 /obj/effect/decal/cleanable/cobweb,
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/item/tool/pen/red/clicky,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/c_block/mining)
 "lAj" = (
@@ -67031,7 +67035,7 @@ hzc
 tuK
 ezu
 lzP
-dDp
+rej
 rej
 jas
 ezu
@@ -67442,7 +67446,7 @@ eso
 vWI
 hzc
 aZU
-ykn
+adD
 vpe
 uEE
 eBu

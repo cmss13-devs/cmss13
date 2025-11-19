@@ -169,7 +169,7 @@
 /area/lv624/lazarus/medbay)
 "bo" = (
 /obj/structure/window_frame/colony,
-/turf/open/floor/white,
+/turf/open/floor/plating,
 /area/lv624/lazarus/medbay)
 "bp" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
@@ -243,7 +243,7 @@
 /area/lv624/lazarus/medbay)
 "mA" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/white,
+/turf/open/floor/plating,
 /area/lv624/lazarus/medbay)
 "pc" = (
 /obj/structure/bed/chair/office/dark{

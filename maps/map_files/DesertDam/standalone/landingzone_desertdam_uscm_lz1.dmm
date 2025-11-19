@@ -1602,7 +1602,9 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/obj/structure/machinery/computer/communications,
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
 /obj/structure/surface/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean2,
@@ -2132,7 +2134,9 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/obj/structure/machinery/computer/communications,
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/control_room)
@@ -2623,7 +2627,9 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
-/obj/structure/machinery/computer/atmos_alert,
+/obj/structure/machinery/computer/atmos_alert{
+	dir = 8
+	},
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/control_room)

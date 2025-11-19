@@ -1189,7 +1189,8 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Research";
-	network = list("chigusa_3")
+	network = list("chigusa_3");
+	dir = 4
 	},
 /turf/open/floor/prison/red/west,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
@@ -1208,7 +1209,9 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/obj/structure/machinery/computer/communications,
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
 /obj/structure/surface/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean2,
@@ -4206,7 +4209,9 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "asm" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/communications,
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "asn" = (
@@ -4353,7 +4358,10 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "asQ" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/emails,
+/obj/structure/machinery/computer/emails{
+	pixel_y = 4;
+	pixel_x = 2
+	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
 "asR" = (
@@ -4906,7 +4914,8 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Research";
-	network = list("chigusa_3")
+	network = list("chigusa_3");
+	dir = 8
 	},
 /turf/open/floor/prison/red/northeast,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
@@ -10495,6 +10504,7 @@
 /area/desert_dam/building/security/lobby)
 "aVr" = (
 /obj/structure/machinery/computer/area_atmos,
+/obj/structure/surface/table,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/control_room)
 "aVs" = (
@@ -10621,7 +10631,10 @@
 /area/desert_dam/building/water_treatment_two/control_room)
 "aVW" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/emails,
+/obj/structure/machinery/computer/emails{
+	pixel_y = 4;
+	pixel_x = 2
+	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/control_room)
 "aVY" = (
@@ -11220,7 +11233,9 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
-/obj/structure/machinery/computer/atmos_alert,
+/obj/structure/machinery/computer/atmos_alert{
+	dir = 8
+	},
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/control_room)
@@ -11228,7 +11243,9 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/obj/structure/machinery/computer/communications,
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/control_room)
@@ -27739,7 +27756,9 @@
 /area/desert_dam/interior/dam_interior/CE_office)
 "cCQ" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/emails,
+/obj/structure/machinery/computer/emails{
+	dir = 8
+	},
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/CE_office)
 "cCR" = (
@@ -29964,6 +29983,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/surface/table,
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_isolation)
 "cMW" = (
@@ -35075,7 +35095,10 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "dvt" = (
-/obj/structure/machinery/computer/area_atmos,
+/obj/structure/machinery/computer/area_atmos{
+	dir = 8
+	},
+/obj/structure/surface/table,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/control_room)
 "dvz" = (
@@ -39398,7 +39421,8 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Operations";
-	network = list("chigusa_1")
+	network = list("chigusa_1");
+	dir = 8
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
@@ -39430,7 +39454,9 @@
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "dWG" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/emails,
+/obj/structure/machinery/computer/emails{
+	dir = 8
+	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "dWH" = (
@@ -39449,7 +39475,9 @@
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "dWL" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/atmos_alert,
+/obj/structure/machinery/computer/atmos_alert{
+	dir = 8
+	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
 "dWM" = (
@@ -40027,7 +40055,9 @@
 /area/desert_dam/building/dorms/hallway_westwing)
 "eaH" = (
 /obj/structure/surface/table/woodentable,
-/obj/structure/machinery/computer/emails,
+/obj/structure/machinery/computer/emails{
+	dir = 1
+	},
 /turf/open/floor/wood,
 /area/desert_dam/building/dorms/hallway_westwing)
 "eaK" = (

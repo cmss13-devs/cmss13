@@ -2512,7 +2512,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "akq" = (
-/obj/structure/machinery/computer/secure_data,
+/obj/structure/machinery/computer/secure_data{
+	dir = 1
+	},
 /obj/structure/surface/table,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
@@ -8592,6 +8594,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
+/obj/structure/machinery/computer/cameras,
 /turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "aNy" = (
@@ -10288,6 +10291,7 @@
 /area/bigredv2/caves/lambda/virology)
 "aUM" = (
 /obj/structure/machinery/computer/operating,
+/obj/structure/surface/table,
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "aUO" = (
@@ -13950,7 +13954,9 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "bnp" = (
-/obj/structure/machinery/computer/area_atmos/area,
+/obj/structure/machinery/computer/area_atmos/area{
+	dir = 8
+	},
 /obj/structure/surface/table,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
@@ -14048,7 +14054,10 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "bnH" = (
-/obj/structure/machinery/computer/general_air_control,
+/obj/structure/machinery/computer/general_air_control{
+	dir = 8
+	},
+/obj/structure/surface/table,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
 "bnI" = (
@@ -16078,6 +16087,9 @@
 /area/bigredv2/caves/eta/research)
 "bzt" = (
 /obj/structure/surface/table,
+/obj/structure/machinery/computer/cameras{
+	dir = 4
+	},
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/caves/eta/research)
 "bzu" = (
@@ -16189,10 +16201,6 @@
 /obj/structure/closet/secure_closet,
 /turf/open/floor/redfull/northwest,
 /area/bigredv2/caves/eta/research)
-"bzN" = (
-/obj/structure/machinery/computer/cameras,
-/turf/open/floor/darkyellow2/west,
-/area/bigredv2/caves/eta/research)
 "bzO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars_cave/mars_cave_6,
@@ -16283,10 +16291,6 @@
 /area/bigredv2/caves/eta/storage)
 "bAh" = (
 /turf/open/floor/darkish,
-/area/bigredv2/caves/eta/storage)
-"bAi" = (
-/obj/structure/machinery/computer/cameras,
-/turf/open/floor/dark,
 /area/bigredv2/caves/eta/storage)
 "bAj" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -16700,6 +16704,7 @@
 /area/bigredv2/caves/eta/xenobiology)
 "bCc" = (
 /obj/structure/machinery/computer/cameras,
+/obj/structure/surface/table,
 /turf/open/floor/darkredcorners2/east,
 /area/bigredv2/caves/eta/xenobiology)
 "bCd" = (
@@ -60825,7 +60830,7 @@ aAp
 bzp
 bzw
 aBE
-bAi
+bDi
 bAz
 bAQ
 aCe
@@ -65814,7 +65819,7 @@ aBv
 byW
 bzj
 bzt
-bzN
+bxy
 bzZ
 bAs
 bAJ

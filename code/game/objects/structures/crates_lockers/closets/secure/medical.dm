@@ -184,12 +184,12 @@
 
 /obj/structure/closet/secure_closet/surgical/emergency/togglelock(mob/living/user)
 	if(hijack == FALSE)
-		if(user.job == JOB_DOCTOR_ROLES_LIST) //I lied. Nobody can open this if hijack == FALSE.
+		if(user.job in JOB_DOCTOR_ROLES_LIST) //I lied. Nobody can open this if hijack == FALSE.
 			to_chat(user, SPAN_WARNING("As medical staff, you may only toggle this lock when shipside doctors must operate on the ship and outside the medical bay."))
 		else
 			to_chat(user, SPAN_WARNING("You do not have access."))
 	else
-		if(user.job == JOB_DOCTOR_ROLES_LIST)
+		if(user.job in JOB_DOCTOR_ROLES_LIST)
 			return ..()
 		to_chat(user, SPAN_WARNING("You do not have access."))
 

@@ -95,8 +95,6 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN|ROLE_ADMIN_NOTIFY
 	flags_whitelist = WHITELIST_YAUTJA_LEADER
 	gear_preset = /datum/equipment_preset/yautja/bad_blood
-	total_positions = 1
-	spawn_positions = 1
 	handle_spawn_and_equip = TRUE
 
 /datum/job/antag/bad_blood/generate_entry_conditions(mob/living/hunter)
@@ -110,6 +108,10 @@
 	player.close_spawn_windows()
 
 	SSticker.mode.attempt_to_join_as_badblood(player)
+
+/datum/job/antag/bad_blood/set_spawn_positions(count)
+	spawn_positions = 1
+	total_positions = 1
 
 /datum/timelock/bad_blood
 	name = "Bad Blood Roles"

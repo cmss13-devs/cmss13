@@ -329,18 +329,14 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "aF" = (
-/obj/structure/closet/yautja/big{
-	pixel_x = 1;
-	pixel_y = 24;
-	wall_mounted = 1
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
 	},
-/obj/item/stack/yautja_rope,
-/obj/item/stack/yautja_rope,
-/obj/item/device/flashlight/lantern/yautja,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
-/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/obj/item/tool/kitchen/utensil/spoon,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja/badblood)
 "aG" = (
@@ -356,10 +352,18 @@
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja/lower_deck)
 "aH" = (
-/obj/structure/machinery/door/airlock/yautja{
-	name = "\improper Teleporter";
-	dir = 1
+/obj/structure/closet/yautja/big{
+	pixel_x = 1;
+	pixel_y = 24;
+	wall_mounted = 1
 	},
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/item/device/flashlight/lantern/yautja,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja/badblood)
 "aI" = (
@@ -393,11 +397,18 @@
 /turf/open/floor/corsat/squares,
 /area/yautja)
 "aJ" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/hunter/badblood,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/stew,
+/obj/item/reagent_container/food/snacks/stew,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja/badblood)
 "aK" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/hunter/badblood/right,
+/obj/structure/machinery/door/airlock/yautja{
+	name = "\improper Teleporter";
+	dir = 1
+	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja/badblood)
 "aL" = (
@@ -420,21 +431,8 @@
 /turf/open/shuttle/bright_red/glow,
 /area/yautja/hangar)
 "aN" = (
-/obj/effect/hunter/bridge_border/corner,
-/obj/effect/hunter/bridge_border/corner{
-	dir = 4
-	},
-/obj/effect/step_trigger/teleporter/yautja_ship,
-/obj/effect/hunter/catwalk/new_alpha,
-/obj/structure/showcase{
-	desc = "A console used for Yautja teleportation.";
-	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
-	icon_state = "terminal";
-	name = "Teleporter Control Console";
-	pixel_y = 24;
-	density = 0
-	},
-/turf/open/floor/light/red/darker,
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/badblood,
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja/badblood)
 "aO" = (
 /obj/structure/prop/brazier/frame/full/torch{
@@ -445,14 +443,7 @@
 /turf/open/floor/predship/hull/non_weedable_hull/southeast,
 /area/yautja)
 "aP" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/tool/kitchen/utensil/fork{
-	pixel_x = 10;
-	pixel_y = 3
-	},
-/obj/item/tool/kitchen/utensil/spoon,
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/badblood/right,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja/badblood)
 "aQ" = (
@@ -509,12 +500,21 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "aY" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
+/obj/effect/hunter/bridge_border/corner,
+/obj/effect/hunter/bridge_border/corner{
+	dir = 4
 	},
-/obj/item/reagent_container/food/snacks/stew,
-/obj/item/reagent_container/food/snacks/stew,
-/turf/open/shuttle/dropship/predship/hunter_grille,
+/obj/effect/step_trigger/teleporter/yautja_ship,
+/obj/effect/hunter/catwalk/new_alpha,
+/obj/structure/showcase{
+	desc = "A console used for Yautja teleportation.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Teleporter Control Console";
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/light/red/darker,
 /area/yautja/badblood)
 "aZ" = (
 /obj/structure/bed/chair/hunter{
@@ -15631,7 +15631,7 @@ dI
 dI
 dI
 ai
-aJ
+aN
 aD
 aD
 az
@@ -15733,7 +15733,7 @@ dI
 dI
 dI
 ai
-aK
+aP
 aD
 aD
 aA
@@ -15837,7 +15837,7 @@ dI
 ai
 ai
 ai
-aF
+aH
 aD
 ai
 dI
@@ -15937,8 +15937,8 @@ dI
 dI
 dI
 ai
-aN
-aH
+aY
+aK
 aD
 aD
 ai
@@ -16041,8 +16041,8 @@ dI
 ai
 ai
 ai
-aY
-aP
+aJ
+aF
 ai
 dI
 "}

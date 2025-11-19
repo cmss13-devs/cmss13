@@ -23117,7 +23117,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "mqi" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/reinforced/prison/flipped/east,
+/obj/structure/surface/table/almayer/flipped/east,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/admin)
 "mqk" = (
@@ -26666,7 +26666,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/surface/table/reinforced/prison/flipped/east,
+/obj/structure/surface/table/almayer/flipped/east,
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "oeL" = (
@@ -29419,7 +29419,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/surface/table/reinforced/prison/flipped/east,
+/obj/structure/surface/table/almayer/flipped/east,
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "pJj" = (
@@ -37430,7 +37430,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "tAh" = (
-/obj/structure/surface/table/reinforced/prison/flipped/east,
+/obj/structure/surface/table/almayer/flipped/east,
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "tAn" = (

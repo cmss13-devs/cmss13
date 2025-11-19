@@ -10457,7 +10457,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aMe" = (
-/obj/structure/surface/table/woodentable/gamblingtable/flipped/east,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aMf" = (

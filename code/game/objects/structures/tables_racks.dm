@@ -683,44 +683,10 @@
 
 	. = ..()
 
-/obj/structure/surface/table/reinforced/flipped
-	icon_state = "reinfflip0"
-	dir = SOUTH
-	flipped_direction = SOUTH
-
-/obj/structure/surface/table/reinforced/flipped/north
-	dir = NORTH
-	flipped_direction = NORTH
-
-/obj/structure/surface/table/reinforced/flipped/east
-	dir = EAST
-	flipped_direction = EAST
-
-/obj/structure/surface/table/reinforced/flipped/west
-	dir = WEST
-	flipped_direction = WEST
-
 /obj/structure/surface/table/reinforced/prison
 	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
 	icon_state = "prisontable"
 	table_prefix = "prison"
-
-/obj/structure/surface/table/reinforced/prison/flipped
-	icon_state = "prisonflip0"
-	dir = SOUTH
-	flipped_direction = SOUTH
-
-/obj/structure/surface/table/reinforced/prison/flipped/north
-	dir = NORTH
-	flipped_direction = NORTH
-
-/obj/structure/surface/table/reinforced/prison/flipped/east
-	dir = EAST
-	flipped_direction = EAST
-
-/obj/structure/surface/table/reinforced/prison/flipped/west
-	dir = WEST
-	flipped_direction = WEST
 
 /obj/structure/surface/table/reinforced/rostock_blend
 	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."

@@ -1400,12 +1400,12 @@
 /turf/open/floor/plating/warnplate/northwest,
 /area/lv624/ground/barrens/central_barrens)
 "afv" = (
-/obj/structure/surface/table/reinforced/flipped/north,
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/plating/warnplate/north,
 /area/lv624/ground/barrens/central_barrens)
 "afw" = (
 /obj/item/ammo_casing,
-/obj/structure/surface/table/reinforced/flipped/north,
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/plating/warnplate/north,
 /area/lv624/ground/barrens/central_barrens)
 "afx" = (
@@ -1449,7 +1449,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
 "afG" = (
-/obj/structure/surface/table/reinforced/flipped/west,
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/ground/barrens/central_barrens)
 "afH" = (
@@ -1484,7 +1484,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "afO" = (
-/obj/structure/surface/table/reinforced/flipped/east,
+/obj/structure/surface/table/flipped/east,
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/ground/barrens/central_barrens)
 "afP" = (
@@ -1515,7 +1515,7 @@
 /area/lv624/ground/caves/south_west_caves)
 "afW" = (
 /obj/effect/decal/remains/human,
-/obj/structure/surface/table/reinforced/flipped/west,
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/ground/barrens/central_barrens)
 "afX" = (
@@ -1564,19 +1564,19 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agh" = (
-/obj/structure/surface/table/reinforced/flipped/north,
 /obj/item/device/healthanalyzer,
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agi" = (
-/obj/structure/surface/table/reinforced/flipped/north,
 /obj/item/ammo_magazine/rifle,
 /obj/effect/landmark/good_item,
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agj" = (
 /obj/effect/decal/remains/human,
-/obj/structure/surface/table/reinforced/flipped/north,
+/obj/structure/surface/table/flipped/north,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agk" = (
@@ -1605,7 +1605,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agq" = (
-/obj/structure/surface/table/reinforced/flipped/east,
+/obj/structure/surface/table/flipped/east,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agr" = (
@@ -1616,8 +1616,8 @@
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/ground/barrens/central_barrens)
 "agt" = (
-/obj/structure/surface/table/reinforced/flipped/west,
 /obj/item/explosive/grenade/high_explosive,
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agu" = (
@@ -1663,8 +1663,8 @@
 /turf/open/gm/dirtgrassborder/east,
 /area/lv624/lazarus/landing_zones/lz2)
 "agD" = (
-/obj/structure/surface/table/reinforced/flipped/west,
 /obj/effect/landmark/good_item,
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agE" = (
@@ -1684,8 +1684,8 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agH" = (
-/obj/structure/surface/table/reinforced/flipped/east,
 /obj/item/explosive/grenade/incendiary,
+/obj/structure/surface/table/flipped/east,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agI" = (
@@ -1725,9 +1725,9 @@
 /turf/open/floor/plating/warnplate/west,
 /area/lv624/ground/barrens/central_barrens)
 "agR" = (
-/obj/structure/surface/table/reinforced/flipped/west,
 /obj/item/ammo_magazine/pistol,
 /obj/item/ammo_casing,
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agS" = (
@@ -1756,8 +1756,8 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agV" = (
-/obj/structure/surface/table/reinforced/flipped/east,
 /obj/effect/landmark/good_item,
+/obj/structure/surface/table/flipped/east,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agW" = (
@@ -1797,24 +1797,24 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "ahi" = (
-/obj/structure/surface/table/reinforced/flipped/east,
 /obj/item/attachable/suppressor,
+/obj/structure/surface/table/flipped/east,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "ahk" = (
-/obj/structure/surface/table/reinforced/flipped,
 /obj/item/ammo_casing,
 /obj/effect/landmark/good_item,
+/obj/structure/surface/table/flipped,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "ahl" = (
 /obj/effect/decal/remains/human,
-/obj/structure/surface/table/reinforced/flipped,
 /obj/item/ammo_casing,
+/obj/structure/surface/table/flipped,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "ahm" = (
-/obj/structure/surface/table/reinforced/flipped,
+/obj/structure/surface/table/flipped,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "ahr" = (
@@ -1871,7 +1871,7 @@
 "ahN" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/surface/table/reinforced/flipped,
+/obj/structure/surface/table/flipped,
 /turf/open/floor/plating/warnplate,
 /area/lv624/ground/barrens/central_barrens)
 "ahO" = (
@@ -1879,7 +1879,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
 "ahQ" = (
-/obj/structure/surface/table/reinforced/flipped,
+/obj/structure/surface/table/flipped,
 /turf/open/floor/plating/warnplate,
 /area/lv624/ground/barrens/central_barrens)
 "ahR" = (
@@ -9089,7 +9089,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/colony/north_nexus_road)
 "aVn" = (
-/obj/structure/surface/table/reinforced/flipped/west,
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "aVo" = (
@@ -12806,8 +12806,8 @@
 /turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz2)
 "gfc" = (
-/obj/structure/surface/table/reinforced/flipped/west,
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/surface/table/flipped/west,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "ggl" = (

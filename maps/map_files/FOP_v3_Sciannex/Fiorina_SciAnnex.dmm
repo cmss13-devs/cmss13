@@ -296,6 +296,11 @@
 /obj/item/weapon/shield/riot,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
+"abc" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/eat_bar,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/station/medbay)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -5131,10 +5136,6 @@
 "dOk" = (
 /turf/open/floor/prison/panelscorched,
 /area/fiorina/tumor/civres)
-"dOt" = (
-/obj/structure/surface/table/reinforced/prison/flipped,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/station/medbay)
 "dOE" = (
 /obj/item/storage/bible/hefa,
 /turf/open/floor/wood,
@@ -6112,10 +6113,6 @@
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
-"ezU" = (
-/obj/structure/surface/table/reinforced/prison/flipped/east,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/station/medbay)
 "ezV" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating/prison,
@@ -13415,7 +13412,7 @@
 /obj/item/ammo_casing{
 	icon_state = "casing_8"
 	},
-/obj/structure/surface/table/reinforced/prison/flipped/east,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/station/medbay)
 "kii" = (
@@ -13594,10 +13591,10 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "koH" = (
-/obj/structure/surface/table/almayer,
 /obj/item/clipboard,
 /obj/item/paper,
 /obj/item/tool/pen,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "koK" = (
@@ -19516,11 +19513,6 @@
 	},
 /turf/open/floor/almayer,
 /area/fiorina/tumor/ship)
-"oJN" = (
-/obj/item/reagent_container/food/snacks/eat_bar,
-/obj/structure/surface/table/reinforced/prison/flipped,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/station/medbay)
 "oJY" = (
 /obj/item/stack/sandbags/large_stack,
 /turf/open/floor/prison/green/southeast,
@@ -25740,6 +25732,7 @@
 	dir = 1;
 	pixel_y = 21
 	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/station/medbay)
 "tAE" = (
@@ -57510,8 +57503,8 @@ hVI
 hVI
 mEO
 hVI
-qrn
-oJN
+abc
+bLM
 tja
 bLM
 qrn
@@ -57723,7 +57716,7 @@ hVI
 mEO
 hVI
 tAj
-dOt
+bLM
 tja
 bLM
 ckt
@@ -59635,7 +59628,7 @@ bLM
 wbr
 bLM
 kid
-ezU
+slh
 eLw
 tja
 bLM

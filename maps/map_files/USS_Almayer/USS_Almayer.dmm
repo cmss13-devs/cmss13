@@ -3704,7 +3704,7 @@
 	pixel_x = -3;
 	pixel_y = 11
 	},
-/obj/item/clothing/accessory/storage/surg_vest/black,
+/obj/item/clothing/accessory/storage/surg_vest/black/equipped,
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped,
 /obj/item/clothing/accessory/storage/surg_vest/equipped,
 /obj/item/prop{

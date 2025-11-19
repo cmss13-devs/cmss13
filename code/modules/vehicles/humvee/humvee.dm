@@ -21,10 +21,10 @@
 	xenos_slots = 4
 
 	entrances = list(
-		"right" = list(-2, 0),
-		"left" = list(1, 0),
-		"rear left" = list(1, 1),
-		"rear right" = list(-1, 1)
+		"right" = list(-2, -1),
+		"left" = list(1, -1),
+		"back left" = list(1, 0),
+		"back right" = list(-2, 0)
 	)
 
 	entrance_speed = 0.5 SECONDS

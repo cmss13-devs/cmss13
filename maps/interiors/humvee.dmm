@@ -1,10 +1,5 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "h" = (
-/obj/structure/interior_exit/vehicle/humvee/right{
-	pixel_x = 1;
-	pixel_y = -10;
-	alpha = 50
-	},
 /obj/structure/bed/chair/comfy/vehicle/passager{
 	dir = 4;
 	pixel_y = 5;
@@ -19,18 +14,13 @@
 	alpha = 50;
 	exit_type = /obj/structure/interior_exit/vehicle/humvee/right;
 	name = "back right entrance marker";
-	tag = "back_right";
-	pixel_y = -30
+	tag = "back right";
+	pixel_x = 1;
+	pixel_y = -10
 	},
-/turf/open/void/vehicle,
+/turf/open/shuttle/vehicle/floor_3_13,
 /area/interior/vehicle/humvee)
 "o" = (
-/obj/structure/interior_exit/vehicle/humvee/left{
-	pixel_x = -3;
-	pixel_y = 14;
-	layer = 2.9;
-	dir = 8
-	},
 /obj/structure/interior_viewport/humvee{
 	pixel_x = -3;
 	pixel_y = 16
@@ -42,7 +32,15 @@
 	pixel_x = -20;
 	pixel_y = -13
 	},
-/turf/open/void/vehicle,
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/vehicle/humvee/left;
+	name = "back left entrance marker";
+	tag = "left";
+	pixel_x = -3;
+	pixel_y = 12
+	},
+/turf/open/shuttle/vehicle/floor_3_13,
 /area/interior/vehicle/humvee)
 "t" = (
 /obj/structure/interior_viewport/humvee/windshield/north{
@@ -71,12 +69,8 @@
 	exit_type = /obj/structure/interior_exit/vehicle/humvee/right;
 	name = "right entrance marker";
 	tag = "right";
-	pixel_y = -30
-	},
-/obj/structure/interior_exit/vehicle/humvee/right{
 	pixel_x = -3;
-	pixel_y = -10;
-	alpha = 50
+	pixel_y = -10
 	},
 /obj/structure/interior_viewport/humvee{
 	pixel_x = -3;
@@ -86,14 +80,9 @@
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat/humvee{
 	dir = 4
 	},
-/turf/open/void/vehicle,
+/turf/open/shuttle/vehicle/floor_3_13,
 /area/interior/vehicle/humvee)
 "M" = (
-/obj/structure/interior_exit/vehicle/humvee/left{
-	pixel_x = 1;
-	pixel_y = 14;
-	layer = 2.9
-	},
 /obj/structure/bed/chair/comfy/vehicle/passager{
 	dir = 4;
 	pixel_y = 1;
@@ -101,16 +90,17 @@
 	},
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;
-	exit_type = /obj/structure/interior_exit/vehicle/humvee/left;
+	exit_type = /obj/structure/interior_exit/vehicle/humvee/left2;
 	name = "back left entrance marker";
-	pixel_y = 32;
-	tag = "back_left"
+	tag = "back left";
+	pixel_x = 1;
+	pixel_y = 12
 	},
 /obj/structure/interior_viewport/humvee{
 	pixel_x = 1;
 	pixel_y = 16
 	},
-/turf/open/void/vehicle,
+/turf/open/shuttle/vehicle/floor_3_13,
 /area/interior/vehicle/humvee)
 "O" = (
 /turf/open/void/vehicle,

@@ -11,6 +11,17 @@
 /obj/structure/interior_exit/vehicle/humvee/right
 	entrance_id = "right"
 
+/obj/structure/interior_exit/vehicle/humvee/left2
+	entrance_id = "rear left"
+	icon_state = "exit_door1"
+
+/obj/structure/interior_exit/vehicle/humvee/right2
+	entrance_id = "rear right"
+
+
+
+
+
 /obj/structure/interior_exit/vehicle/humvee/back/left
 	entrance_id = "rear left"
 	icon_state = "carrier_backdoor1"

@@ -104,7 +104,7 @@
 	qdel(src)
 
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat/humvee
-	icon = 'icons/obj/vehicles/interiors/humvee.dmi'
+	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
 	icon_state = "car_seat"
 	color = "blue"
 
@@ -144,7 +144,7 @@
 	qdel(src)
 
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/humvee
-	icon = 'icons/obj/vehicles/interiors/humvee.dmi'
+	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
 	icon_state = "car_seat"
 	color = "blue"
 

@@ -167,9 +167,9 @@
 /datum/surgery_step/clamp_bleeders_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type in ligation_tools)
 		user.affected_message(target,
-			SPAN_NOTICE("You ligate bleeders in [target]'s [surgery.affected_limb.display_name], stopping the external bleeding."),
-			SPAN_NOTICE("[user] finishes tying off bleeders in your [parse_zone(target_zone)], stopping the external bleeding."),
-			SPAN_NOTICE("[user] finishes tying off bleeders in [target]'s [parse_zone(target_zone)], stopping the external bleeding."))
+			SPAN_NOTICE("You ligate bleeders in [target]'s [surgery.affected_limb.display_name], stopping the incision's bleeding."),
+			SPAN_NOTICE("[user] finishes tying off bleeders in your [parse_zone(target_zone)], stopping the incision's bleeding."),
+			SPAN_NOTICE("[user] finishes tying off bleeders in [target]'s [parse_zone(target_zone)], stopping the incision's bleeding."))
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You clamp bleeders in [target]'s [surgery.affected_limb.display_name]."),
@@ -197,12 +197,15 @@
 
 /datum/surgery_step/clamp_bleeders_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing massive bleeding!"),
-		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in your [surgery.affected_limb.display_name] and causing massive bleeding!"),
-		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing massive bleeding!"))
+		SPAN_WARNING("Your hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing internal bleeding!"),
+		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in your [surgery.affected_limb.display_name] and causing internal bleeding!"),
+		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing internal bleeding!"))
 
+	var/datum/wound/internal_bleeding/I = new (0)
+	surgery.affected_limb.add_bleeding(I, TRUE)
+	surgery.affected_limb.wounds += I
 	target.apply_damage(4, BRUTE, target_zone)
-	surgery.affected_limb.add_bleeding(null, FALSE, 15)
+	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] failed to clamp bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
 	return FALSE
 
@@ -566,7 +569,7 @@
 		SPAN_NOTICE("[user] starts bending your [surgery.affected_limb.encased] back into place with \the [tool]."),
 		SPAN_NOTICE("[user] starts bending [target]'s [surgery.affected_limb.encased] back into place with \the [tool]."))
 
-	target.custom_pain("You feel so much pressure in your [surgery.affected_limb.display_name]!", 1)
+	target.custom_pain("You feel a crushing pressure in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] began closing [key_name(target)]'s [surgery.affected_limb.encased], attempting to begin [surgery].")
 
 /datum/surgery_step/close_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

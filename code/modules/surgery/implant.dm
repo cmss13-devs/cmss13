@@ -139,12 +139,12 @@
 
 	if(tool.w_class >= SIZE_SMALL)
 		to_chat(user, SPAN_WARNING("You tear some blood vessels trying to fit such a bulky object in the cavity."))
-		log_interact(user, target, "[key_name(user)] damages some blood vessels while putting \the [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity] and they start bleeding.")
+		log_interact(user, target, "[key_name(user)] damages some blood vessels while putting \the [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity], causing internal bleeding!")
 
 		var/datum/wound/internal_bleeding/I = new (0)
 		surgery.affected_limb.add_bleeding(I, TRUE)
 		surgery.affected_limb.wounds += I
-		surgery.affected_limb.owner.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
+		target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
 
 	user.drop_inv_item_to_loc(tool, target)
 	surgery.affected_limb.hidden = tool

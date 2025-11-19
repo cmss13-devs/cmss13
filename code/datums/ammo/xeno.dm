@@ -29,7 +29,7 @@
 	spit_cost = 25
 	var/effect_power = XENO_NEURO_TIER_4
 	var/drain_power = 2
-	var/increment_amount = 3
+	var/increment_amount = 5
 	var/datum/callback/neuro_callback
 
 	shell_speed = AMMO_SPEED_TIER_3

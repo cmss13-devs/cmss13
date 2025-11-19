@@ -36,24 +36,16 @@
 	pixel_y = -13;
 	layer = 3.75
 	},
-/obj/structure/bed/chair/comfy/vehicle/driver/humvee{
-	dir = 4;
-	pixel_x = -3;
-	pixel_y = 1;
-	buckling_x = -3;
-	buckling_y = 1;
-	layer = 3.74
-	},
-/obj/effect/landmark/interior/spawn/entrance{
-	dir = 1;
-	exit_type = /obj/structure/interior_exit/vehicle/humvee/left;
-	name = "left entrance marker";
-	pixel_y = 32;
-	tag = "left"
-	},
 /obj/structure/interior_viewport/humvee{
 	pixel_x = -3;
 	pixel_y = 16
+	},
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/humvee{
+	dir = 4
+	},
+/obj/effect/landmark/interior/spawn/weapons_loader/humvee{
+	pixel_x = -20;
+	pixel_y = -13
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee)
@@ -96,13 +88,8 @@
 	pixel_y = -8;
 	alpha = 50
 	},
-/obj/structure/bed/chair/comfy/vehicle/gunner/humvee{
-	dir = 4;
-	pixel_x = -3;
-	pixel_y = 5;
-	layer = 3.76;
-	buckling_x = -3;
-	buckling_y = 5
+/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/humvee{
+	dir = 4
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee)

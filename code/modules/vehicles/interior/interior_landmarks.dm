@@ -146,7 +146,7 @@
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/humvee
 	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
 	icon_state = "car_seat"
-	color = "blue"
+	color = "red"
 
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/humvee/on_load(datum/interior/I)
 	var/obj/structure/bed/chair/comfy/vehicle/driver/humvee/S = new(loc)
@@ -287,7 +287,7 @@
 // Landmark for spawning the reloader
 /obj/effect/landmark/interior/spawn/weapons_loader
 	name = "vehicle weapons reloader spawner"
-	icon = 'icons/obj/vehicles/interiors/general.dmi'
+	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
 	icon_state = "weapons_loader"
 	color = "#00920c"
 

@@ -2,6 +2,7 @@
 	name = "Humvee side door"
 	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
 	icon_state = "exit_door"
+	density = FALSE
 
 /obj/structure/interior_exit/vehicle/humvee/left
 	entrance_id = "left"

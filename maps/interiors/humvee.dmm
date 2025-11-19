@@ -31,11 +31,6 @@
 	layer = 2.9;
 	dir = 8
 	},
-/obj/structure/weapons_loader/humvee{
-	pixel_x = -20;
-	pixel_y = -13;
-	layer = 3.75
-	},
 /obj/structure/interior_viewport/humvee{
 	pixel_x = -3;
 	pixel_y = 16

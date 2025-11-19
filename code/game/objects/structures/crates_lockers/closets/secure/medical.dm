@@ -196,7 +196,6 @@
 	locked = FALSE
 	hijack = TRUE
 	req_access = list(ACCESS_MARINE_MEDBAY)
-	open(src) //free webbing and beds for everyone!
 
 /obj/structure/closet/secure_closet/professor_dummy
 	name = "professor dummy cabinet"

@@ -231,3 +231,27 @@
 2025-11-18:
   Detective-Google:
   - bugfix: IASF survs no longer have almayer command radio.
+2025-11-19:
+  Nihisohel:
+  - qol: Squad prep vendors can now vend to hand again, following preferences, while
+      also allowing equipment to be auto equipped, if possible.
+  - qol: Surplus clothing vendors now have the auto-equip flag
+  Nihisohel, Mistchristmas for TGUI:
+  - rscadd: FTLs are automatically assigned to their own fireteams, and can now assign
+      their own members
+  - qol: Being assigned to a fireteam will now automatically change your headset tracking
+      to the FTL
+  - qol: The SL and aSL headsets now default to the LZ, instead of themselves. QOL,
+      I guess.
+  - bugfix: Adds Intel SL tracker to Foxtrot Leads headset
+  - balance: SLs now get Leadership 2, FTLs get Leadership 1, and aSLs no longer get
+      leadership training on promotion.
+  - balance: Some marine roles have had their leadership nerfed or stripped away from
+      them.
+  - balance: Additionally, some other character skill presets have had their leadership
+      skills rebalanced
+  - balance: Adds a fourth leadership level, and rebalances a couple of the buffs
+      to compensate, among other niche changes
+  - spellcheck: Removes the indents on periods from the voice cycling text
+  - code_imp: Removes the redundant access check on headsets, doesn't actually do
+      anything currently besides be a pain in the ass

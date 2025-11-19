@@ -733,7 +733,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		var/datum/entity/clan/player_clan = GET_CLAN(client.clan_info.clan_id)
 		player_clan.sync()
 
-		holder.color = player_clan.color
+		if(!(faction == FACTION_YAUTJA_BADBLOOD))
+			holder.color = player_clan.color
 
 	hud_list[HUNTER_CLAN] = holder
 

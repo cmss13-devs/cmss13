@@ -769,6 +769,7 @@
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "crew"
 	faction = FACTION_YAUTJA
+	extra_factions = list(FACTION_YAUTJA_YOUNG)
 	crew_monitor_type = /datum/crewmonitor/yautja
 
 /obj/structure/machinery/computer/crew/upp
@@ -789,6 +790,7 @@
 
 /obj/structure/machinery/computer/crew/yautja
 	faction = FACTION_YAUTJA
+	extra_factions = list(FACTION_YAUTJA_YOUNG)
 
 GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 
@@ -1249,7 +1251,6 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 
 /datum/crewmonitor/yautja
 	faction = FACTION_YAUTJA
-	extra_factions = list(FACTION_YAUTJA_YOUNG)
 
 /datum/crewmonitor/yautja/update_data()
 	var/list/results = list()

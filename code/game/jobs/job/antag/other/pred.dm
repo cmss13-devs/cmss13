@@ -93,7 +93,7 @@
 	selection_class = "job_predator"
 	supervisors = "Ancients"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN|ROLE_ADMIN_NOTIFY
-	flags_whitelist = WHITELIST_YAUTJA_LEADER
+	flags_whitelist = WHITELIST_YAUTJA_COUNCIL
 	gear_preset = /datum/equipment_preset/yautja/bad_blood
 	handle_spawn_and_equip = TRUE
 

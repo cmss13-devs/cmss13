@@ -24,7 +24,9 @@
 		"right" = list(-2, -1),
 		"left" = list(1, -1),
 		"back left" = list(1, 0),
-		"back right" = list(-2, 0)
+		"back right" = list(-2, 0),
+		"rear left" = list(0, 0),
+		"rear right" = list(1, 0),
 	)
 
 	entrance_speed = 0.5 SECONDS

@@ -43,17 +43,3 @@
 	desc = "Nothing beats the good old sheet of glass."
 	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
 	icon_state = "viewport_door"
-
-/obj/structure/interior_viewport/humvee/windshield/north
-	name = "humvee windshield"
-	icon_state = "viewport_frontwindow_north"
-
-/obj/structure/interior_viewport/humvee/windshield/south
-	name = "humvee windshield"
-	icon_state = "viewport_frontwindow_south"
-
-/obj/structure/interior_viewport/humvee/small
-	icon_state = "small_viewport"
-
-/obj/structure/interior_viewport/humvee/small/window
-	icon_state = "small_viewport_window"

@@ -103,6 +103,24 @@
 
 	qdel(src)
 
+/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/humvee
+	icon = 'icons/obj/vehicles/interiors/humvee.dmi'
+	icon_state = "car_seat"
+	color = "blue"
+
+/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/humvee/on_load(datum/interior/I)
+	var/obj/structure/bed/chair/comfy/vehicle/gunner/humvee/S = new(loc)
+	S.layer = layer
+	S.vehicle = I.exterior
+	S.setDir(dir)
+	S.alpha = alpha
+	S.update_icon()
+	S.handle_rotation()
+	S.pixel_x = pixel_x
+	S.pixel_y = pixel_y
+
+	qdel(src)
+
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor
 	name = "armor driver's seat spawner"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
@@ -124,6 +142,25 @@
 	S.pixel_y = pixel_y
 
 	qdel(src)
+
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/humvee
+	icon = 'icons/obj/vehicles/interiors/humvee.dmi'
+	icon_state = "car_seat"
+	color = "blue"
+
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/humvee/on_load(datum/interior/I)
+	var/obj/structure/bed/chair/comfy/vehicle/driver/humvee/S = new(loc)
+	S.vehicle = I.exterior
+	S.required_skill = S.vehicle.required_skill
+	S.setDir(dir)
+	S.update_icon()
+	S.alpha = alpha
+	S.handle_rotation()
+	S.pixel_x = pixel_x
+	S.pixel_y = pixel_y
+
+	qdel(src)
+
 
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/wy
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
@@ -259,6 +296,17 @@
 
 	R.icon = icon
 	R.icon_state = icon_state
+	R.layer = layer
+	R.pixel_x = pixel_x
+	R.pixel_y = pixel_y
+	R.vehicle = I.exterior
+	R.setDir(dir)
+	R.update_icon()
+
+	qdel(src)
+
+/obj/effect/landmark/interior/spawn/weapons_loader/humvee/on_load(datum/interior/I)
+	var/obj/structure/weapons_loader/humvee/R = new(loc)
 	R.layer = layer
 	R.pixel_x = pixel_x
 	R.pixel_y = pixel_y

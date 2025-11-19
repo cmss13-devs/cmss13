@@ -9,7 +9,8 @@
 	dir = 4;
 	pixel_y = 5;
 	buckling_y = 5;
-	pixel_x = -1
+	pixel_x = 1;
+	buckling_x = 1
 	},
 /obj/structure/interior_viewport/humvee{
 	pixel_x = 1;
@@ -113,8 +114,9 @@
 	dir = 4;
 	pixel_y = 1;
 	buckling_y = 1;
-	pixel_x = -1;
-	layer = 2.9
+	pixel_x = 1;
+	layer = 2.9;
+	buckling_x = 1
 	},
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;

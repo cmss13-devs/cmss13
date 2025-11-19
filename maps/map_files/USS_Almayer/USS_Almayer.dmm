@@ -3154,11 +3154,11 @@
 	pixel_x = 10;
 	pixel_y = 3
 	},
+/obj/item/book/manual/chemistry,
 /obj/item/book/manual/medical_diagnostics_manual{
 	pixel_x = -4;
 	pixel_y = 6
 	},
-/obj/item/book/manual/chemistry,
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
 "ahh" = (
@@ -3704,8 +3704,8 @@
 	pixel_x = -3;
 	pixel_y = 11
 	},
+/obj/item/clothing/accessory/storage/surg_vest/black,
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped,
-/obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/surg_vest/equipped,
 /obj/item/prop{
 	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
@@ -4612,6 +4612,9 @@
 /obj/item/storage/box/mre,
 /obj/item/device/radio/marine,
 /obj/item/clothing/accessory/patch/medic_patch,
+/obj/item/book/manual/surgery,
+/obj/item/book/manual/chemistry,
+/obj/item/book/manual/medical_diagnostics_manual,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
 "akF" = (
@@ -21489,6 +21492,7 @@
 /obj/item/device/mass_spectrometer,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker,
 /obj/item/reagent_container/glass/beaker,
 /obj/item/reagent_container/glass/beaker,
@@ -21667,18 +21671,6 @@
 /obj/item/folded_tent/med{
 	pixel_x = -3;
 	pixel_y = 10
-	},
-/obj/item/book/manual/surgery{
-	pixel_x = 9;
-	pixel_y = -4
-	},
-/obj/item/book/manual/chemistry{
-	pixel_x = 0;
-	pixel_y = -4
-	},
-/obj/item/book/manual/medical_diagnostics_manual{
-	pixel_x = -9;
-	pixel_y = -4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)

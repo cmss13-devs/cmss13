@@ -106,7 +106,7 @@
 
 //Humvee version
 /obj/structure/machinery/cm_vending/sorted/medical/blood/vehicle/humvee
-	icon = 'icons/obj/vehicles/interiors/humvee.dmi'
+	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
 
 //----------------------SUPPLY VENDORS--------------------
 

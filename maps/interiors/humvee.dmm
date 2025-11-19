@@ -1,0 +1,160 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"h" = (
+/obj/structure/interior_exit/vehicle/humvee/right{
+	pixel_x = 1;
+	pixel_y = -10;
+	alpha = 50
+	},
+/obj/structure/bed/chair/comfy/vehicle/passager{
+	dir = 4;
+	pixel_y = 5;
+	buckling_y = 5
+	},
+/obj/structure/interior_viewport/humvee{
+	pixel_x = 1;
+	pixel_y = -8;
+	alpha = 50
+	},
+/obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
+	exit_type = /obj/structure/interior_exit/vehicle/humvee/right;
+	name = "back right entrance marker";
+	tag = "back_right";
+	pixel_y = -30
+	},
+/turf/open/void/vehicle,
+/area/interior/vehicle/humvee)
+"o" = (
+/obj/structure/interior_exit/vehicle/humvee/left{
+	pixel_x = -3;
+	pixel_y = 14;
+	layer = 2.9;
+	dir = 8
+	},
+/obj/structure/weapons_loader/humvee{
+	pixel_x = -20;
+	pixel_y = -13;
+	layer = 3.75
+	},
+/obj/structure/bed/chair/comfy/vehicle/driver/humvee{
+	dir = 4;
+	pixel_x = -3;
+	pixel_y = 1;
+	buckling_x = -3;
+	buckling_y = 1;
+	layer = 3.74
+	},
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/vehicle/humvee/left;
+	name = "left entrance marker";
+	pixel_y = 32;
+	tag = "left"
+	},
+/obj/structure/interior_viewport/humvee{
+	pixel_x = -3;
+	pixel_y = 16
+	},
+/turf/open/void/vehicle,
+/area/interior/vehicle/humvee)
+"t" = (
+/obj/structure/interior_viewport/humvee/windshield/north{
+	pixel_x = -10;
+	pixel_y = 5
+	},
+/turf/open/void/vehicle,
+/area/space)
+"v" = (
+/obj/structure/prop/vehicle/humvee{
+	pixel_x = 16;
+	pixel_y = -12
+	},
+/turf/open/void/vehicle,
+/area/space)
+"y" = (
+/obj/structure/interior_viewport/humvee/windshield/south{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/turf/open/void/vehicle,
+/area/space)
+"G" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
+	exit_type = /obj/structure/interior_exit/vehicle/humvee/right;
+	name = "right entrance marker";
+	tag = "right";
+	pixel_y = -30
+	},
+/obj/structure/interior_exit/vehicle/humvee/right{
+	pixel_x = -3;
+	pixel_y = -10;
+	alpha = 50
+	},
+/obj/structure/interior_viewport/humvee{
+	pixel_x = -3;
+	pixel_y = -8;
+	alpha = 50
+	},
+/obj/structure/bed/chair/comfy/vehicle/gunner/humvee{
+	dir = 4;
+	pixel_x = -3;
+	pixel_y = 5;
+	layer = 3.76;
+	buckling_x = -3;
+	buckling_y = 5
+	},
+/turf/open/void/vehicle,
+/area/interior/vehicle/humvee)
+"M" = (
+/obj/structure/interior_exit/vehicle/humvee/left{
+	pixel_x = 1;
+	pixel_y = 14;
+	layer = 2.9
+	},
+/obj/structure/bed/chair/comfy/vehicle/passager{
+	dir = 4;
+	pixel_y = 1;
+	buckling_y = 1
+	},
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/vehicle/humvee/left;
+	name = "back left entrance marker";
+	pixel_y = 32;
+	tag = "back_left"
+	},
+/obj/structure/interior_viewport/humvee{
+	pixel_x = 1;
+	pixel_y = 16
+	},
+/turf/open/void/vehicle,
+/area/interior/vehicle/humvee)
+"O" = (
+/turf/open/void/vehicle,
+/area/space)
+
+(1,1,1) = {"
+O
+O
+v
+O
+"}
+(2,1,1) = {"
+O
+M
+h
+O
+"}
+(3,1,1) = {"
+O
+o
+G
+O
+"}
+(4,1,1) = {"
+O
+t
+y
+O
+"}

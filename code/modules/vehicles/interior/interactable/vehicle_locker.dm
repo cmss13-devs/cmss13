@@ -187,7 +187,7 @@
 	new /obj/item/stack/nanopaste(container)
 
 /obj/structure/vehicle_locker/med/humvee
-	icon = 'icons/obj/vehicles/interiors/humvee.dmi'
+	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
 
 /obj/structure/vehicle_locker/med/get_examine_text(mob/user)
 	. = ..()

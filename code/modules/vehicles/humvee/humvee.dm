@@ -2,7 +2,7 @@
 	name = "\improper M540-B Armored Recon Carrier"
 	desc = "An M540-B Armored Recon Carrier. A lightly armored reconnaissance and intelligence vehicle. Entrances on the sides."
 
-	icon = 'icons/obj/vehicles/humvee.dmi'
+	icon = 'icons/obj/vehicles/general_humvee.dmi'
 	icon_state = "humvee_base"
 	pixel_x = -48
 	pixel_y = -48

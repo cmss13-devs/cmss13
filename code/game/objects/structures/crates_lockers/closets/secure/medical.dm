@@ -162,6 +162,7 @@
 	store_mobs = FALSE
 	wall_mounted = TRUE
 	var/hijack = FALSE
+
 /obj/structure/closet/secure_closet/surgical/Initialize()
 	. = ..()
 	new /obj/item/storage/surgical_tray(src)

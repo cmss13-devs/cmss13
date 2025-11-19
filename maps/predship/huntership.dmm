@@ -336,7 +336,14 @@
 	pixel_x = 10;
 	pixel_y = 3
 	},
-/obj/item/tool/kitchen/utensil/spoon,
+/obj/item/tool/kitchen/utensil/spoon{
+	pixel_y = 3;
+	pixel_x = 3
+	},
+/obj/item/device/flashlight/lantern/yautja{
+	pixel_x = -7;
+	pixel_y = 2
+	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja/badblood)
 "aG" = (
@@ -359,7 +366,6 @@
 	},
 /obj/item/stack/yautja_rope,
 /obj/item/stack/yautja_rope,
-/obj/item/device/flashlight/lantern/yautja,
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /obj/item/stack/sheet/mineral/sandstone/large_stack,

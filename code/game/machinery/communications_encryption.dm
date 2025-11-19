@@ -83,8 +83,13 @@
 /obj/structure/machinery/computer/almayer_encryption/ui_static_data(mob/user)
 	. = list()
 
-	.["length"] = cipher_length
+	.["cipher_length"] = cipher_length
 	.["mode"] = tgui_mode
+
+/obj/structure/machinery/computer/almayer_encryption/ui_data(mob/user)
+	. = list()
+
+	.["cards"] = length(contents)
 
 /obj/structure/machinery/computer/almayer_encryption/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -209,6 +214,7 @@
 /obj/structure/machinery/computer/almayer_encryption/encoder/ui_data(mob/user)
 	. = list()
 
+	.["cards"] = 0
 	.["clarity"] = SSradio.faction_coms_clarity[faction]
 
 /obj/structure/machinery/computer/almayer_encryption/encoder/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -272,6 +278,7 @@
 /obj/structure/machinery/computer/almayer_encryption/decoder/ui_data(mob/user)
 	. = list()
 
+	.["cards"] = length(contents)
 	var/challenge_count = length(SSradio.faction_coms_codes[faction])
 	if(!challenge_count)
 		// No challenges, just plug in zeros

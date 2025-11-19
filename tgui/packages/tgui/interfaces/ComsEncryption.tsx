@@ -14,8 +14,9 @@ import {
 import { Window } from 'tgui/layouts';
 
 type Data = {
-  length: number;
+  cipher_length: number;
   mode: string;
+  cards: number;
   punch_card?: number[];
 };
 
@@ -74,7 +75,12 @@ const DecoderPanel = (props) => {
               title="Decoder"
               minHeight={6.5}
               buttons={
-                <Button fluid icon="print" disabled>
+                <Button
+                  fluid
+                  icon="print"
+                  tooltip={data.cards + ' punch cards available'}
+                  disabled
+                >
                   Print
                 </Button>
               }
@@ -103,6 +109,7 @@ const DecoderPanel = (props) => {
                 <Button
                   fluid
                   icon="print"
+                  tooltip={data.cards + ' punch cards available'}
                   onClick={() => act('print', { data: data.challenge })}
                 >
                   Print
@@ -115,7 +122,7 @@ const DecoderPanel = (props) => {
                 wrap="wrap"
                 justify="space-between"
               >
-                {[...Array(data.length)].map((_, index) => (
+                {[...Array(data.cipher_length)].map((_, index) => (
                   <Flex.Item key={index} fontSize="15px">
                     <NumberInput
                       disabled
@@ -163,11 +170,11 @@ const CipherPanel = (props) => {
   const [offset, setOffset] = useSharedState('offset', maxOffset);
   const [input, setInput] = useSharedState<number[]>(
     'input',
-    Array(data.length).fill(0),
+    Array(data.cipher_length).fill(0),
   );
 
   useEffect(() => {
-    if (data.punch_card && data.punch_card.length === data.length) {
+    if (data.punch_card && data.punch_card.length === data.cipher_length) {
       setInput(data.punch_card);
     }
   }, [data.punch_card]);
@@ -206,7 +213,7 @@ const CipherPanel = (props) => {
   }
 
   function getOutput() {
-    let output = Array(data.length);
+    let output = Array(data.cipher_length);
     for (let i = 0; i < output.length; i++) {
       output[i] = getOutputValue(i);
     }
@@ -222,6 +229,7 @@ const CipherPanel = (props) => {
             <Button
               fluid
               icon="print"
+              tooltip={data.cards + ' punch cards available'}
               onClick={() => act('print', { data: getOutput() })}
             >
               Print
@@ -234,7 +242,7 @@ const CipherPanel = (props) => {
             wrap="wrap"
             justify="space-between"
           >
-            {[...Array(data.length)].map((_, index) => (
+            {[...Array(data.cipher_length)].map((_, index) => (
               <Flex.Item key={index} fontSize="15px">
                 <NumberInput
                   value={input[index]}
@@ -289,7 +297,7 @@ const CipherPanel = (props) => {
             <Flex.Item>
               <Section>
                 <Flex direction="row" wrap="wrap">
-                  {[...Array(data.length)].map((_, index) => (
+                  {[...Array(data.cipher_length)].map((_, index) => (
                     <Flex.Item key={index} fontSize="30px">
                       <Box width={3} bold>
                         {getOutputASCII(index)}
@@ -308,7 +316,7 @@ const CipherPanel = (props) => {
             wrap="wrap"
             justify="space-between"
           >
-            {[...Array(data.length)].map((_, index) => (
+            {[...Array(data.cipher_length)].map((_, index) => (
               <Flex.Item key={index} fontSize="15px">
                 <NumberInput
                   disabled
@@ -334,7 +342,10 @@ const CipherPanel = (props) => {
 const EncoderPanel = (props) => {
   const { act, data } = useBackend<EncoderData>();
   const [offset, setOffset] = useSharedState('offset', 0);
-  const [input, setInput] = useSharedState('input', Array(data.length).fill(0));
+  const [input, setInput] = useSharedState(
+    'input',
+    Array(data.cipher_length).fill(0),
+  );
   const [pingResult, setPingResult] = useSharedState(
     'pingResult',
     new Array('P', 'O', 'N', 'G'),
@@ -342,7 +353,7 @@ const EncoderPanel = (props) => {
   const [loadingState, setLoadingState] = useState(-1);
 
   useEffect(() => {
-    if (data.punch_card && data.punch_card.length === data.length) {
+    if (data.punch_card && data.punch_card.length === data.cipher_length) {
       setInput(data.punch_card);
     }
   }, [data.punch_card]);
@@ -487,7 +498,7 @@ const EncoderPanel = (props) => {
                     wrap="wrap"
                     justify="space-between"
                   >
-                    {[...Array(data.length)].map((_, index) => (
+                    {[...Array(data.cipher_length)].map((_, index) => (
                       <Flex.Item key={index} fontSize="15px">
                         <NumberInput
                           value={input[index]}

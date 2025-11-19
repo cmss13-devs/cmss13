@@ -161,7 +161,7 @@
 	density = FALSE
 	store_mobs = FALSE
 	wall_mounted = TRUE
-
+	var/hijack = FALSE
 /obj/structure/closet/secure_closet/surgical/Initialize()
 	. = ..()
 	new /obj/item/storage/surgical_tray(src)
@@ -169,8 +169,8 @@
 
 /obj/structure/closet/secure_closet/surgical/emergency
 	name = "emergency surgical equipment cabinet"
-	desc = "A self-sterilizing, wall-mounted cabinet containing extra surgical beds and empty surgical webbing vests for doctors who suddenly need to operate outside of medbay. Only Chief, XO, and Captain can open this, but in dire emergencies, it unlocks for the entire medbay."
-	req_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_COMMAND)
+	desc = "A self-sterilizing, wall-mounted cabinet containing extra surgical beds and empty surgical webbing vests for doctors who suddenly need to operate outside of medbay. Only the CMO can unlock this, but in dire emergencies, it unlocks for the entire medbay."
+	req_access = list(ACCESS_MARINE_CMO)
 
 /obj/structure/closet/secure_closet/surgical/emergency/Initialize()
 	. = ..()
@@ -178,12 +178,25 @@
 	new /obj/item/storage/internal/accessory/surg_vest(src)
 	new /obj/item/roller/surgical(src)
 	new /obj/item/roller/surgical(src)
-	RegisterSignal(SSdcs, COMSIG_GLOB_UNSCHEDULED_DROPSHIP_DEPARTURE_DETECTED, PROC_REF(all_docs_are_field_docs)) // Has a dropship been hijacked? No. How about now? No. Now? No...
+	RegisterSignal(SSdcs, COMSIG_GLOB_UNSCHEDULED_DROPSHIP_DEPARTURE_DETECTED, PROC_REF(all_docs_are_field_docs))
 	return
+
+/obj/structure/closet/secure_closet/surgical/emergency/togglelock(mob/living/user)
+	if(hijack == FALSE)
+		if(user.job == JOB_DOCTOR_ROLES_LIST) //I lied. Nobody can open this if hijack == FALSE.
+			to_chat(user, SPAN_WARNING("As medical staff, you may only toggle this lock when shipside doctors must operate on the ship and outside the medical bay."))
+		else
+			to_chat(user, SPAN_WARNING("You do not have access."))
+	else
+		if(user.job == JOB_DOCTOR_ROLES_LIST)
+			return ..()
+		to_chat(user, SPAN_WARNING("You do not have access."))
 
 /obj/structure/closet/secure_closet/surgical/emergency/proc/all_docs_are_field_docs() //A DROPSHIP HAS BEEN HIJACKED! OPEN DIS BITCH UP!
 	locked = FALSE
-	req_access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_COMMAND)
+	hijack = TRUE
+	req_access = list(ACCESS_MARINE_MEDBAY)
+	open(src) //free webbing and beds for everyone!
 
 /obj/structure/closet/secure_closet/professor_dummy
 	name = "professor dummy cabinet"

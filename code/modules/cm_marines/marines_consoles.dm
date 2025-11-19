@@ -1259,7 +1259,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 		if(!isyautja(human_mob))
 			continue
 
-		if(faction != human_mob.faction)
+		if((faction != human_mob.faction) || !(human_mob.faction in extra_factions))
 			continue
 
 		var/assignment_title = get_assignment_title(human_mob)

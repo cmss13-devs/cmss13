@@ -47,6 +47,13 @@
 	pixel_y = -13;
 	layer = 2.8
 	},
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/vehicle/humvee/left;
+	name = "left entrance marker";
+	pixel_y = 32;
+	tag = "left"
+	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee)
 "t" = (

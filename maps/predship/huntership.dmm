@@ -444,6 +444,17 @@
 	},
 /turf/open/floor/predship/hull/non_weedable_hull/southeast,
 /area/yautja)
+"aP" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/obj/item/tool/kitchen/utensil/spoon,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
 "aQ" = (
 /obj/structure/prop/hunter/misc/prop_armor/elder_alt{
 	pixel_y = 31
@@ -496,6 +507,21 @@
 	dir = 4
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/area/yautja)
+"aY" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/stew,
+/obj/item/reagent_container/food/snacks/stew,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
+"aZ" = (
+/obj/structure/bed/chair/hunter{
+	pixel_x = 16;
+	buckling_x = -15
+	},
+/turf/open/floor/corsat/squares,
 /area/yautja)
 "ba" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/elder,
@@ -4509,13 +4535,6 @@
 	pixel_y = 19
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
-/area/yautja)
-"oN" = (
-/obj/structure/bed/chair/hunter{
-	pixel_x = -15;
-	buckling_x = -15
-	},
-/turf/open/floor/corsat/squares,
 /area/yautja)
 "oP" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -16022,8 +16041,8 @@ dI
 ai
 ai
 ai
-ai
-ai
+aY
+aP
 ai
 dI
 "}
@@ -16123,10 +16142,10 @@ dI
 dI
 dI
 dI
-dI
-aa
-dI
-dI
+ai
+ai
+ai
+ai
 dI
 "}
 (9,1,1) = {"
@@ -19465,7 +19484,7 @@ Si
 Si
 hm
 Qo
-Qo
+aZ
 FM
 sy
 Tk
@@ -19567,7 +19586,7 @@ Si
 Si
 cP
 Qo
-oN
+Qo
 Ae
 sy
 Tk

@@ -450,7 +450,7 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 	desc = "A gear rack for hunting."
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_elder_left"//placeholder
-	req_one_access = list(ACCESS_YAUTJA_BADBLOOD)
+	req_access = list(ACCESS_YAUTJA_BADBLOOD)
 	vendor_role = list(JOB_BADBLOOD)
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA

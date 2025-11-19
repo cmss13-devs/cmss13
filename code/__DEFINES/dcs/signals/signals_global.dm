@@ -87,6 +87,9 @@
 /// From /obj/structure/machinery/power/power_generator/reactor/proc/set_overloading() : (set_overloading)
 #define COMSIG_GLOB_GENERATOR_SET_OVERLOADING "!generator_set_overloading"
 
+//If stuff wants to happen the moment of and during hijack, this is what it's for.
+#define COMSIG_GLOB_UNSCHEDULED_DROPSHIP_DEPARTURE_DETECTED "!hijack_begun"
+
 #define COMSIG_GLOB_HIJACK_IMPACTED "!hijack_impacted"
 #define COMSIG_GLOB_HIJACK_LANDED "!hijack_landed"
 

@@ -1918,19 +1918,12 @@
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/hallway/central/north)
-"afY" = (
+"afZ" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/machinery/computer/secure_data,
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/intake)
-"afZ" = (
-/obj/structure/machinery/computer/secure_data{
-	dir = 4
-	},
-/obj/structure/surface/table/reinforced,
-/turf/open/floor/prison/darkredfull2/southwest,
-/area/prison/security/checkpoint/medsec)
 "aga" = (
 /obj/structure/machinery/smartfridge/secure/virology,
 /turf/open/floor/prison/whitepurple/southwest,
@@ -2081,8 +2074,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/north)
 "agA" = (
-/obj/structure/machinery/computer/cameras{
-	network = list("PRISON");
+/obj/structure/machinery/computer/secure_data{
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced,
@@ -2178,11 +2170,11 @@
 "agO" = (
 /obj/structure/machinery/computer/cameras{
 	network = list("PRISON");
-	dir = 8
+	dir = 4
 	},
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/darkredfull2/southwest,
-/area/prison/security/checkpoint/hangar)
+/area/prison/security/checkpoint/medsec)
 "agP" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
@@ -2368,19 +2360,20 @@
 /turf/open/floor/prison,
 /area/prison/cellblock/maxsec/north)
 "ahx" = (
-/obj/structure/machinery/computer/secure_data{
+/obj/structure/machinery/computer/cameras{
+	network = list("PRISON");
 	dir = 8
 	},
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/checkpoint/hangar)
 "ahy" = (
-/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/secure_data{
-	dir = 4
+	dir = 8
 	},
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/darkredfull2/southwest,
-/area/prison/visitation)
+/area/prison/security/checkpoint/hangar)
 "ahz" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -2473,27 +2466,26 @@
 /area/prison/residential/south)
 "ahR" = (
 /obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/secure_data{
+	dir = 4
+	},
+/turf/open/floor/prison/darkredfull2/southwest,
+/area/prison/visitation)
+"ahS" = (
+/obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/cameras{
 	network = list("PRISON");
 	dir = 8
 	},
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/visitation)
-"ahS" = (
-/obj/structure/machinery/computer/secure_data{
-	dir = 1
-	},
-/obj/structure/surface/table/reinforced,
-/turf/open/floor/prison/darkredfull2/southwest,
-/area/prison/security/monitoring/highsec)
 "ahT" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/landmark/good_item,
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/north)
 "ahU" = (
-/obj/structure/machinery/computer/cameras{
-	network = list("PRISON");
+/obj/structure/machinery/computer/secure_data{
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced,
@@ -2512,6 +2504,14 @@
 /turf/open/floor/prison,
 /area/prison/research/secret/containment)
 "ahX" = (
+/obj/structure/machinery/computer/cameras{
+	network = list("PRISON");
+	dir = 1
+	},
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison/darkredfull2/southwest,
+/area/prison/security/monitoring/highsec)
+"ahY" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/cameras{
 	network = list("PRISON");
@@ -2519,16 +2519,8 @@
 	},
 /turf/open/floor/prison/bluefull,
 /area/prison/residential/central)
-"ahY" = (
-/obj/structure/machinery/computer/secure_data{
-	dir = 1
-	},
-/obj/structure/surface/table/reinforced,
-/turf/open/floor/prison/darkredfull2/southwest,
-/area/prison/security/checkpoint/vip)
 "ahZ" = (
-/obj/structure/machinery/computer/cameras{
-	network = list("PRISON");
+/obj/structure/machinery/computer/secure_data{
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced,
@@ -2551,12 +2543,13 @@
 /turf/open/floor/prison/whitepurplefull,
 /area/prison/research/secret/containment)
 "aic" = (
-/obj/structure/machinery/computer/secure_data{
+/obj/structure/machinery/computer/cameras{
+	network = list("PRISON");
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/darkredfull2/southwest,
-/area/prison/security/checkpoint/highsec/n)
+/area/prison/security/checkpoint/vip)
 "aid" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /turf/open/floor/prison/darkpurple2/north,
@@ -2581,8 +2574,7 @@
 /turf/open/floor/prison/darkpurple2/northwest,
 /area/prison/research/secret)
 "aig" = (
-/obj/structure/machinery/computer/cameras{
-	network = list("PRISON");
+/obj/structure/machinery/computer/secure_data{
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced,
@@ -2616,11 +2608,11 @@
 "aim" = (
 /obj/structure/machinery/computer/cameras{
 	network = list("PRISON");
-	dir = 4
+	dir = 1
 	},
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/darkredfull2/southwest,
-/area/prison/security/checkpoint/maxsec)
+/area/prison/security/checkpoint/highsec/n)
 "ain" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -2716,7 +2708,7 @@
 "aiA" = (
 /obj/structure/machinery/computer/cameras{
 	network = list("PRISON");
-	dir = 1
+	dir = 4
 	},
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/darkredfull2/southwest,
@@ -2766,8 +2758,9 @@
 /turf/open/floor/plating,
 /area/prison/research/secret/containment)
 "aiK" = (
-/obj/structure/machinery/computer/secure_data{
-	dir = 8
+/obj/structure/machinery/computer/cameras{
+	network = list("PRISON");
+	dir = 1
 	},
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/darkredfull2/southwest,
@@ -2819,7 +2812,7 @@
 /area/prison/research/secret)
 "aiU" = (
 /obj/structure/machinery/computer/secure_data{
-	dir = 4
+	dir = 8
 	},
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/darkredfull2/southwest,
@@ -2893,6 +2886,13 @@
 	},
 /turf/open/floor/prison,
 /area/prison/research/secret/containment)
+"ajg" = (
+/obj/structure/machinery/computer/secure_data{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison/darkredfull2/southwest,
+/area/prison/security/checkpoint/maxsec)
 "ajh" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
 	name = "Dissection"
@@ -49520,7 +49520,7 @@ bcQ
 bcR
 aZF
 bgm
-ahX
+ahY
 bga
 bjb
 bkD
@@ -54831,7 +54831,7 @@ boM
 bpr
 bpU
 bbV
-ahS
+ahU
 bdI
 bvB
 bwD
@@ -55043,7 +55043,7 @@ boN
 bab
 bpV
 bqw
-ahU
+ahX
 bdI
 bvC
 bwA
@@ -60968,7 +60968,7 @@ bbP
 bdJ
 bfn
 bgC
-ahY
+ahZ
 bfk
 bjQ
 ble
@@ -61180,7 +61180,7 @@ bbQ
 bdK
 bfo
 bgD
-ahZ
+aic
 bfk
 bjS
 blg
@@ -62430,7 +62430,7 @@ axg
 aBD
 aKK
 aIW
-aic
+aig
 aKH
 iND
 aLM
@@ -62642,7 +62642,7 @@ ayY
 aBD
 aKL
 aIX
-aig
+aim
 aKy
 aLo
 aLP
@@ -65181,7 +65181,7 @@ aAp
 aBL
 qdT
 aDX
-aiK
+aiU
 aEh
 aBL
 rxa
@@ -66665,8 +66665,8 @@ aAw
 aBL
 aCP
 aEa
-aiU
-aim
+ajg
+aiA
 aBL
 rxa
 aLs
@@ -66725,8 +66725,8 @@ hWd
 lWT
 jWj
 bUa
+agO
 agA
-afZ
 bQY
 bSD
 bUa
@@ -67938,7 +67938,7 @@ auZ
 auZ
 auZ
 aFJ
-aiA
+aiK
 aCT
 aKN
 aLs
@@ -68359,7 +68359,7 @@ aAO
 azd
 apK
 apK
-aiK
+aiU
 aEh
 auB
 aGU
@@ -80932,7 +80932,7 @@ bLG
 bLG
 bQe
 bRH
-afY
+afZ
 bUG
 bWj
 bZp
@@ -81335,7 +81335,7 @@ brA
 bvd
 btb
 btt
-ahy
+ahR
 buD
 bwy
 byf
@@ -82183,7 +82183,7 @@ brE
 bul
 btg
 btt
-ahR
+ahS
 bux
 bwK
 byj
@@ -87486,8 +87486,8 @@ blH
 bkt
 blH
 bwQ
+ahy
 ahx
-agO
 bBc
 bCV
 byL

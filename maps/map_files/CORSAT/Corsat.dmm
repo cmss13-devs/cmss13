@@ -1086,11 +1086,13 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "aej" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/med_data/laptop{
+	pixel_y = 3;
+	dir = 4
 	},
-/turf/open/gm/dirt,
-/area/corsat/theta/biodome)
+/turf/open/floor/corsat/purplewhite/north,
+/area/corsat/omega/complex)
 "aek" = (
 /obj/structure/window/framed/corsat/hull,
 /turf/open/floor/plating,
@@ -1207,9 +1209,11 @@
 /turf/open/floor/plating/warnplate/west,
 /area/corsat/sigma/hangar)
 "aeK" = (
-/obj/structure/window/framed/corsat/hull,
-/turf/open/floor/plating,
-/area/corsat/inaccessible)
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/corsat/theta/biodome)
 "aeL" = (
 /turf/open/floor/plating/warnplate/east,
 /area/corsat/sigma/hangar)
@@ -1374,9 +1378,6 @@
 /turf/open/floor/plating,
 /area/corsat/sigma/hangar)
 "afw" = (
-/obj/structure/pipes/standard/simple/visible{
-	dir = 4
-	},
 /obj/structure/window/framed/corsat/hull,
 /turf/open/floor/plating,
 /area/corsat/inaccessible)
@@ -1471,13 +1472,12 @@
 /turf/open/floor/plating/warnplate/southwest,
 /area/corsat/sigma/hangar)
 "afO" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/med_data/laptop{
-	pixel_y = 3;
+/obj/structure/pipes/standard/simple/visible{
 	dir = 4
 	},
-/turf/open/floor/corsat/purplewhite/north,
-/area/corsat/omega/complex)
+/obj/structure/window/framed/corsat/hull,
+/turf/open/floor/plating,
+/area/corsat/inaccessible)
 "afP" = (
 /turf/open/floor/plating/icefloor/warnplate,
 /area/corsat/sigma/hangar)
@@ -56428,7 +56428,7 @@ auG
 bzu
 auG
 auG
-afO
+aej
 bBw
 xvG
 nUa
@@ -78858,14 +78858,14 @@ aqt
 aqt
 aqt
 qIU
-afw
+afO
+afO
+qIU
+afO
 afw
 qIU
+afO
 afw
-aeK
-qIU
-afw
-aeK
 qIU
 aPC
 cjs
@@ -79827,9 +79827,9 @@ ylo
 ylo
 ylo
 qIU
-aeK
 afw
-aeK
+afO
+afw
 qIU
 aht
 aht
@@ -84586,7 +84586,7 @@ bdU
 wpV
 bcI
 aKi
-aej
+aeK
 bdU
 bcE
 bdP

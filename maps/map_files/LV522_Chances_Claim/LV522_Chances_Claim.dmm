@@ -834,9 +834,14 @@
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/cargo_intake)
 "adj" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/south_street)
+/obj/structure/surface/table/almayer,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/machinery/faxmachine,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/blue_plate/north,
+/area/lv522/indoors/c_block/mining)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -865,10 +870,14 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/containers)
 "adn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/south_street)
+"ado" = (
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/outdoors/colony_streets/south_west_street)
-"ado" = (
+"adp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -879,18 +888,18 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/strata/floor3/east,
 /area/lv522/outdoors/colony_streets/south_street)
-"adp" = (
+"adq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper C-Block - Casino Airlock";
 	welded = 1
 	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/bridge)
-"adq" = (
+"adr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/bridge)
-"adr" = (
+"ads" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -901,7 +910,7 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/central_streets)
-"ads" = (
+"adt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/stool{
 	buckling_y = 14;
@@ -909,7 +918,7 @@
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
-"adt" = (
+"adu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -920,7 +929,7 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/strata/floor3/east,
 /area/lv522/outdoors/colony_streets/east_central_street)
-"adu" = (
+"adv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -933,7 +942,7 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"adv" = (
+"adw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -946,7 +955,7 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"adw" = (
+"adx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
@@ -957,7 +966,7 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"adx" = (
+"ady" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -970,29 +979,29 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_west_street)
-"ady" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/structure/fence/slim/dark/door,
-/turf/open/floor/prison/floor_plate,
-/area/lv522/outdoors/colony_streets/north_east_street)
 "adz" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
 	},
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "adA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/fence/slim/dark/door,
+/turf/open/floor/prison/floor_plate,
+/area/lv522/outdoors/colony_streets/north_east_street)
+"adB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -1003,7 +1012,7 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/strata/floor3,
 /area/lv522/outdoors/colony_streets/containers)
-"adB" = (
+"adC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
@@ -1016,7 +1025,7 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/nw_rockies)
-"adC" = (
+"adD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -1027,15 +1036,6 @@
 /obj/structure/fence/slim/dark/door,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/nw_rockies)
-"adD" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/machinery/faxmachine,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison/blue_plate/north,
-/area/lv522/indoors/c_block/mining)
 "adG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -51479,7 +51479,7 @@ jrQ
 rvI
 clY
 sjY
-adv
+adw
 mZs
 mOO
 iuv
@@ -51685,7 +51685,7 @@ jrQ
 rvI
 clY
 clY
-adv
+adw
 slD
 xPx
 kCF
@@ -51891,7 +51891,7 @@ jrQ
 rvI
 clY
 clY
-adv
+adw
 vmQ
 swt
 dpk
@@ -52097,7 +52097,7 @@ kSS
 gGP
 sjY
 clY
-adv
+adw
 vzy
 hwF
 ePp
@@ -52499,11 +52499,11 @@ ien
 ien
 ien
 oqQ
-adx
+ady
 oqQ
 oqQ
 yeM
-adx
+ady
 oqQ
 oqQ
 oqQ
@@ -52733,7 +52733,7 @@ sDf
 sLZ
 acB
 acB
-adu
+adv
 sIS
 ien
 ien
@@ -53555,7 +53555,7 @@ ydA
 wMe
 ydA
 ydA
-adv
+adw
 uIr
 jPv
 hJZ
@@ -53951,7 +53951,7 @@ hJZ
 wKj
 eUt
 sjY
-adw
+adx
 clY
 clY
 clY
@@ -54003,7 +54003,7 @@ wYa
 vXc
 vXc
 vXc
-adr
+ads
 max
 max
 max
@@ -54538,7 +54538,7 @@ ien
 ien
 hUY
 hUY
-adB
+adC
 hUY
 tUa
 ien
@@ -57830,7 +57830,7 @@ gsZ
 uWO
 uWO
 uWO
-adC
+adD
 wbt
 rWS
 hip
@@ -58961,13 +58961,13 @@ uOd
 cxv
 max
 max
-adn
+ado
 axw
 gYO
 gYO
 tvk
 nye
-adn
+ado
 max
 ofi
 max
@@ -59785,13 +59785,13 @@ uWT
 rLg
 hpq
 max
-adn
+ado
 axw
 gYO
 gYO
 tvk
 nye
-adn
+ado
 max
 ofi
 ofi
@@ -63490,7 +63490,7 @@ umf
 umf
 vXc
 vXc
-ado
+adp
 nax
 nax
 nax
@@ -64314,7 +64314,7 @@ umf
 vXc
 vXc
 yiM
-ado
+adp
 nax
 nax
 mPr
@@ -65166,7 +65166,7 @@ yfu
 wHj
 ylo
 hdG
-adj
+adn
 qjM
 jas
 col
@@ -67446,7 +67446,7 @@ eso
 vWI
 hzc
 aZU
-adD
+adj
 vpe
 uEE
 eBu
@@ -69791,7 +69791,7 @@ xZE
 xZE
 jGa
 qSH
-adz
+adA
 qSH
 uFf
 wKg
@@ -72544,7 +72544,7 @@ cXf
 qDw
 ngx
 wNp
-adp
+adq
 xgA
 bsG
 vOT
@@ -72750,7 +72750,7 @@ hFG
 hIx
 nNM
 osV
-adq
+adr
 aSZ
 acE
 vOT
@@ -73918,7 +73918,7 @@ qSH
 qSH
 vGp
 vGp
-ady
+adz
 qSH
 umR
 qSH
@@ -73978,7 +73978,7 @@ uOj
 vfj
 vNk
 bXO
-ads
+adt
 ozn
 oNM
 vNk
@@ -74184,7 +74184,7 @@ uOD
 tGo
 vNk
 bXO
-ads
+adt
 ozn
 wNp
 vNk
@@ -74390,7 +74390,7 @@ uNp
 tGh
 vNk
 fko
-ads
+adt
 xMO
 wNp
 urv
@@ -75413,7 +75413,7 @@ tTD
 rnB
 igT
 xXg
-adt
+adu
 xXg
 xXg
 xXg
@@ -77802,7 +77802,7 @@ ien
 ien
 lBM
 lBM
-adA
+adB
 pvZ
 pvZ
 pvZ
@@ -83384,7 +83384,7 @@ pvZ
 pvZ
 pvZ
 pvZ
-adA
+adB
 qSH
 qSH
 pFH

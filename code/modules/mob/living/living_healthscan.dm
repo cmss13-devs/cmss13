@@ -192,7 +192,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				eschar = "Eschar"
 			var/third_degree_burns = null
 			if(limb.status & LIMB_THIRD_DEGREE_BURNS)
-				third_degree_burns = "3deg burns"
+				third_degree_burns = "Severe burns"
 			var/list/current_list = list(
 				"name" = limb.display_name,
 				"brute" = floor(limb.brute_dam),

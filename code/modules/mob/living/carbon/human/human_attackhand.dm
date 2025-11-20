@@ -311,7 +311,7 @@
 		else if(org.status & LIMB_SPLINTED)
 			postscript += " <b>(SPLINTED)</b>"
 		if(org.status & LIMB_THIRD_DEGREE_BURNS)
-			postscript += "<b>(3DEG BURN)</b>"
+			postscript += "<b>(SEVERE BURN)</b>"
 		if(org.status & LIMB_ESCHAR)
 			postscript += " <b>(ESCHAR)</b>"
 

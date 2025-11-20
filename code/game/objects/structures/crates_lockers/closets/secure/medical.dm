@@ -152,7 +152,7 @@
 /obj/structure/closet/secure_closet/surgical
 	name = "surgical equipment cabinet"
 	desc = "A self-sterilizing, wall-mounted cabinet containing all the surgical tools you need."
-	req_access = list(ACCESS_MARINE_MEDBAY)
+	req_access = null
 	icon_state = "surgical_wall_locked"
 	icon_closed = "surgical_wall_unlocked"
 	icon_locked = "surgical_wall_locked"

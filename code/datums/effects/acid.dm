@@ -138,7 +138,7 @@
 		damage_per_process_human -= (damage_per_process_human * (SSweather.weather_event_instance.fire_smothering_strength * 0.1))
 		damage_per_process_object -= (damage_per_process_object * (SSweather.weather_event_instance.fire_smothering_strength * 0.1))
 		//ideally this would look like the rain dilutting the acid
-		//but since we dont want to check every process if we're in weather etc...
+		//but since we don't want to check every process if we're in weather etc...
 		//its just a one permenant time stat change
 
 /datum/effects/acid/proc/adjust_armor(armor, armor_type)

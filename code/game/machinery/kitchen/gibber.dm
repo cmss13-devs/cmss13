@@ -131,7 +131,7 @@
 	for(var/obj/O in src)
 		O.forceMove(loc)
 	if (occupant.client)
-		occupant.client.eye = occupant.client.mob
+		occupant.client.set_eye(occupant.client.mob)
 		occupant.client.perspective = MOB_PERSPECTIVE
 	occupant.forceMove(loc)
 	if(launch)
@@ -216,7 +216,7 @@
 		newmeat.name = newmeat.made_from_player + newmeat.name
 		allmeat[i] = newmeat
 
-		// Synths wont die to this (on it's own at least), dont log as a gib
+		// Synths won't die to this (on it's own at least), don't log as a gib
 		if(synthetic)
 			if(occupant.client) // Log still
 				occupant.attack_log += "\[[time_stamp()]\] Was delimbed by <b>[key_name(user)]</b>"

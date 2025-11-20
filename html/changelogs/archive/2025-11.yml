@@ -1,0 +1,264 @@
+2025-11-01:
+  FebrezeNinja:
+  - bugfix: Fixes an instance of medical item duping
+  Puckaboo2:
+  - bugfix: Removed an autoinjector fill overlay on Thwei.
+  realforest2001:
+  - rscadd: Moved the preference for using playtime perks to settings tab instead
+      of xenos tab.
+  - code_imp: Added backend functionality for SDTimeAward community award to function
+      without being in the staff list.
+  - admin: Added a preference for staff to decide if they use their own playtime for
+      ranks or not.
+  - bugfix: Fixes an inverted check on who can hear ship announcements such as hijack.
+2025-11-02:
+  Blundir:
+  - imageadd: voice level action buttons sprites improved a bit
+  Drathek:
+  - bugfix: Fixed bracing for impact preventing hijack
+  - bugfix: Fixed mobs only on the same Z as the crashing shuttle being affected by
+      the crash
+  Labeo0:
+  - qol: auto-toggle "Aimed Shot"/"Spot Target" with sniper rifle/spotter designator
+      in hands
+  Nihisohel:
+  - qol: Abovehead emotes can now appear for deaf people.
+  Puckaboo2:
+  - bugfix: Oxycodone pills are now 10u instead of 15u
+  - bugfix: Oxycodone pill bottles now have a lock on them.
+  - bugfix: Oxycodone pill bottles can be found in pill bottle loot spawners.
+  - bugfix: Dexalin Plus's chemical color has been updated to CM-SS13 standards.
+  - bugfix: Ultrazine autoinjectors have fill indicators.
+  - bugfix: Stim chemical colors have been updated to CM-SS13 standards.
+  - bugfix: Field Doctors and Nurses can now view and print medical records
+  - imageadd: added fill indicators for stimpack-type autoinjectors for future reference.
+  byondsucks:
+  - bugfix: The solaris PMC CO surv now has his proper skills.
+  halander1:
+  - qol: Players now have the option to take pills directly from bottles for certain
+      pouches.
+  jupyterkat:
+  - rscadd: humans now block emissives
+  - bugfix: fixed emissives
+  - refactor: made some emissives code faster
+  matttheficus:
+  - balance: you can no longer get IB or Organ Damage while on the Hunting Preserve
+      as a FACTION_LIST_HUNTED
+  realforest2001:
+  - bugfix: Fixed missing rank for Generalised synth.
+  - rscadd: Added MP Synth option, again.
+  zzzmike:
+  - spellcheck: fixed a spelling mistake
+2025-11-03:
+  Nihisohel:
+  - bugfix: Flamer tanks can refill from other flamer tanks again
+  Nomoresolvalou, Crowford:
+  - ui: bracer style selector added to yautja preferences
+  - bugfix: retro caster can now be selected in yautja preferences
+  - bugfix: bracer lock/unlock verb now correctly displays a to_chat, and plays a
+      sound
+  - imageadd: added new bracer sprites
+  - imageadd: replaced old bracer sprite with new retro sprite.
+2025-11-04:
+  Zenith:
+  - bugfix: fixed the clf kutjevo insert by reverting it back to the correct version.
+2025-11-05:
+  Blundir:
+  - rscadd: 'contraband weapons box in hangar now has: R4T rifle, db shotgun, L54
+      pistol , NP92 pistol'
+  - rscdel: L42A been removed from pool due to huge surplus of it in maints
+  PhantornRU:
+  - balance: 'Hivelord Whisperer build cooldown: 2.5 => 1.5'
+  - balance: 'Hivelord Whisperer building penalty has been reduced: 8 => 2'
+2025-11-06:
+  Blundir:
+  - rscadd: 'Spearhead 2006M new CO gun, can perform revolver tricks and has a unique
+      sound set, comes in normal variant and three council variants: gold, gold with
+      black handle, silver'
+  - rscadd: golden Unica, golden Deagle returned as an option for CO council sidearm
+      selection
+  - rscadd: standard non camo comforting Unica been added to normal CO sidearm selection
+  - imageadd: slightly changed palette of a golden Deagle and sligtly improved inhands
+      and inbelt sprites of it
+  - code_imp: moves revolver tricks to a core revolver code, revolver tricks are now
+      given by a simple var
+  - code_imp: fixed some oddities in CO sidearm code for WO and FORECON
+  Drathek:
+  - spellcheck: Most TGUI interfaces will not have a uncapitalized name in the title
+      now
+  Puckaboo2:
+  - bugfix: Filled Thewi is shiny, again.
+  - code_imp: Forces Thwei to use a different overlay system than regular autoinjectors.
+  - bugfix: Iron is no longer pink.
+  jupyterkat:
+  - bugfix: emissions are bright again
+2025-11-08:
+  Comka:
+  - ui: "Added `flexWrap: \u2018wrap\u2019` for tabs in the phone interface. Now they\
+      \ should fit in the window"
+  Drathek:
+  - balance: Xeno tailstab can be used cross-z if it is an adjacent z at the cost
+      of 1 distance (effectively means you need to be visually adjacent to something
+      cross z assuming the tailstab distance is 2)
+  - balance: Most obj/structures have similar behavior if attacked with a tailstab
+      like attacking with claws
+  Killfish:
+  - rscadd: Adds Tool Drop Pouch, the cooler engineering-themed sibling of Tool Webbing,
+      and makes it an option at vendors that provide the Tool Webbing.
+  - imageadd: Adds sprites for aforementioned Tool Drop Pouch.
+  Puckaboo2:
+  - spellcheck: Adds apostrophes to contractions where there are none.
+  Red-byte3D:
+  - bugfix: Healing / Plasma recovery nodes now properly add overlays to the effected
+      xenomorphs
+  Steelpoint:
+  - maptweak: The windows overlooking the emergency response team landing docks on
+      the USS Almayer are now hull windows. This will protect the shuttle and its
+      occupants from being fired on through the roof of the shuttle.
+  carlarctg:
+  - spellcheck: fix a typo in warrior slash healing
+  jupyterkat:
+  - bugfix: fixed character setup preview being black
+  rattybag:
+  - ui: Added quick mode to dropship weapons console
+  realforest2001:
+  - rscadd: Added event mob spawn landmarks, and a ghost verb to spawn as them.
+  - rscadd: You can only spawn as an event mob once per round, unless an admin overrides
+      this.
+  - admin: Admins have freedom to setup these landmarks either in a map insert or
+      on-the-fly depending on which type is used. They're fairly customisable and
+      will allow for overrides of a few features on the preset such as title and paygrade.
+  - rscadd: Added categories to Select Equipment.
+  - code_imp: Cleaned up backend duplication.
+  - bugfix: Fixes spec token boxes not working
+2025-11-09:
+  Detective-Google:
+  - code_imp: tweaks a comment to be documented better.
+2025-11-10:
+  Ediblebomb:
+  - spellcheck: Removes a mention of most penal battalions supposedly coming from
+      New Argentina from a prop sign, also fixes a misspelling of populations on said
+      sign.
+  jupyterkat:
+  - bugfix: fixed character preview hairs always being black
+2025-11-12:
+  Puckaboo2:
+  - spellcheck: Renames some chemical properties to sound more scientifi. Balding,
+      Fluffing, Paining, Relaxing, and Sedating have been changed to Atrichogenic,
+      Trichogenic, Neuropathic, Antispasmodic, and Hypnotic,  with their codes being
+      ATR. TRI, NPT, ASP. And HYP.
+2025-11-13:
+  Drathek:
+  - bugfix: Fixed various material exploits when deconstructing walls, reinforced
+      floors, computer frames, airlocks, tcoms, closets, fences, tables, windoors,
+      window frames, desk bell, apcs, power monitors, and SMES
+  - code_imp: Cleaned up and reworked some logic in various attackby procs that handle
+      deconstruction
+  - rscadd: APC breakers can now stop idle power draw
+  - bugfix: Fixed hopefully all cases where areas would demand negative amounts of
+      power
+  - bugfix: Fixed a possibility of power generators adding double power to the grid
+  - bugfix: Fixed disabling charging not offering power put aside for charging back
+      to the grid
+  - bugfix: APCs no longer display charging when main breaker is off
+  - bugfix: Predator ship is now its own powenet
+  - bugfix: Power monitor computer now will connect to powernet on construction
+  - bugfix: Nightmare inserts that change area now perform Exited and Entered for
+      the area
+  - ui: Added power generation information and whether the APC is shorted to APC panel
+  - ui: Polished the legacy power monitor interface (ought to be TGUIfied before long)
+  - soundadd: Repairing generators now make soundeffects at the start of the do_after
+      too
+  - code_imp: Added additional unit testing for areas and APCs with negative power
+  - code_imp: Cleaned up defines in APC file
+2025-11-14:
+  MistChristmas:
+  - bugfix: Rangefinder non-TGUI mode includes Z level info
+  Nihisohel:
+  - rscadd: You can now tactically reload with shotguns and revolvers, looping until
+      the magazine is filled or interrupted.
+  - qol: You can close a revolvers cylinder with the unique action. Provided it is
+      open.
+  - qol: You can now insert bullet handfuls back into the chamber, provided it is
+      empty.
+  - qol: Cocking the bullet now tries to put it to your hand, if empty.
+  Zenith:
+  - bugfix: fixed vehicle back door sprites & CLF van door pathing. Now you can click
+      the full tile.
+2025-11-16:
+  Drathek:
+  - balance: Command announcements and overwatch are now garbled if coms are down
+      (applies to ghosts too based on their position). The garble strength depends
+      on message length (<= 20 good, 120+ bad) without signature and in the case of
+      announcements the duration between them (30s bad <-> 3min+ good). Whichever
+      variable is better wins.
+  - bugfix: Fixed some logic for marine announcements not handling people in cryopods
+  - bugfix: Fixed some logic for stars_decode_html (xeno paper viewing)
+  - bugfix: Fixed remind objectives in overwatch not working
+  - rscadd: Ghosts now have a preference to force full clarity for announcements
+  - config: Added config for garbling settings (see game_options.txt example) and
+      log_garble flag
+  Nihisohel:
+  - balance: Focus mode now buffs both camera recoil and scatter alongside the accuracy
+      of a firearm.
+  hry-gh:
+  - server: added the ability to configure a ckey that will be automatically moved
+      to observe the most interesting players
+  - server: added additional world/Topic endpoints to interface with CMTV
+  - server: added the ability to link your Twitch account to the game
+2025-11-17:
+  Blundir:
+  - bugfix: fixed Unica 2006 and Unica 6 classic having normal ammo in them instead
+      of impact like other CO guns
+  - imageadd: changes snow camo spec head rag sprite to be like other camo ones
+  Nihisohel:
+  - bugfix: Properly adds the smaller mop bucket to the autholathe
+  - balance: Janitorial buckets are now considered large items, volume reduced from
+      500u to 300u
+  - balance: High-cap beaker medilathe costs are increased from 10000 to 30000, volume
+      increased from 300u to 500u
+  - balance: OT has had their buckets replaced with high-cap beakers and OT and research
+      gets one extra high-cap beakers within their respective offices
+  Steelpoint:
+  - maptweak: The ERT docking ports on the USS Almayer have been remapped to appear
+      more thematic.
+  - maptweak: The windows overlooking the emergency response team landing docks on
+      the USS Almayer are now hull windows. This will protect the shuttle and its
+      occupants from being fired on through the roof of the shuttle
+  armsdealer9876:
+  - spellcheck: Set pose now says They are instead of They is
+  - code_imp: Added 2 new var's for human/examin.dm
+2025-11-18:
+  Detective-Google:
+  - bugfix: IASF survs no longer have almayer command radio.
+2025-11-19:
+  Nihisohel:
+  - qol: Squad prep vendors can now vend to hand again, following preferences, while
+      also allowing equipment to be auto equipped, if possible.
+  - qol: Surplus clothing vendors now have the auto-equip flag
+  Nihisohel, Mistchristmas for TGUI:
+  - rscadd: FTLs are automatically assigned to their own fireteams, and can now assign
+      their own members
+  - qol: Being assigned to a fireteam will now automatically change your headset tracking
+      to the FTL
+  - qol: The SL and aSL headsets now default to the LZ, instead of themselves. QOL,
+      I guess.
+  - bugfix: Adds Intel SL tracker to Foxtrot Leads headset
+  - balance: SLs now get Leadership 2, FTLs get Leadership 1, and aSLs no longer get
+      leadership training on promotion.
+  - balance: Some marine roles have had their leadership nerfed or stripped away from
+      them.
+  - balance: Additionally, some other character skill presets have had their leadership
+      skills rebalanced
+  - balance: Adds a fourth leadership level, and rebalances a couple of the buffs
+      to compensate, among other niche changes
+  - spellcheck: Removes the indents on periods from the voice cycling text
+  - code_imp: Removes the redundant access check on headsets, doesn't actually do
+      anything currently besides be a pain in the ass
+2025-11-20:
+  Labeo0:
+  - code_imp: Can now reload UBF with welding fuel from m240 tank
+  Nihisohel:
+  - bugfix: The .38 revolver can now tactically reload properly.
+  realforest2001:
+  - rscadd: Added more helmet and backpack options to Synthetic loadout.

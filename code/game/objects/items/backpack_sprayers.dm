@@ -18,6 +18,9 @@
 
 	var/obj/item/noz
 
+/obj/item/reagent_container/glass/watertank/fuel
+	fill_reagent = "fuel"
+
 /obj/item/reagent_container/glass/watertank/Initialize()
 	. = ..()
 	if(!spawn_empty)

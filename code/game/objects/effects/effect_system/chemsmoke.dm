@@ -64,7 +64,7 @@
 	FOR_DVIEW_END
 
 	//make secondary list for reagents that affect walls
-	if(chemholder.reagents.has_reagent("thermite") || chemholder.reagents.has_reagent("plantbgone"))
+	if(chemholder.reagents.has_reagent("thermite"))
 		wallList = new()
 
 	//pathing check
@@ -121,7 +121,7 @@
 			chemholder.reagents.update_total()
 
 			//apply wall affecting reagents to walls
-			if(R.id in list("thermite", "plantbgone"))
+			if(R.id in list("thermite"))
 				for(var/turf/T in wallList)
 					R.reaction_turf(T, R.volume)
 

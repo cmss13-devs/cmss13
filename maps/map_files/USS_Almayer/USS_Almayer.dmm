@@ -41018,7 +41018,7 @@
 	pixel_x = -25;
 	pixel_y = 10
 	},
-/obj/item/trash/burrito,
+/obj/item/trash/buritto,
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
 	pixel_y = 16
@@ -55859,7 +55859,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/chunk,
 /obj/item/trash/burger,
-/obj/item/trash/burrito,
+/obj/item/trash/buritto,
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "iXV" = (

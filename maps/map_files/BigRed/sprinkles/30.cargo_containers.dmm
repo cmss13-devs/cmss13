@@ -1,7 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/structure/barricade/wooden{
-	dir = 8
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
@@ -44,7 +46,9 @@
 /area/bigredv2/outside/cargo)
 "al" = (
 /obj/structure/barricade/wooden{
-	dir = 8
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/cargo)
@@ -533,12 +537,18 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cl" = (
-/obj/structure/barricade/wooden,
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	health = 25000
+	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/barricade/wooden,
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	health = 25000
+	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cn" = (

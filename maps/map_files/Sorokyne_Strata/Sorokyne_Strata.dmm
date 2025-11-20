@@ -36898,7 +36898,9 @@
 /area/strata/interior/mining_outpost)
 "cbk" = (
 /obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	dir = 1;
+	health = 25000;
 	pixel_y = 17
 	},
 /obj/structure/barricade/wooden{

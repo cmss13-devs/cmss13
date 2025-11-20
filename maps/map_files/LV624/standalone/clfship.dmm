@@ -161,7 +161,7 @@
 "aC" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbilical Airlock"
+	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor/damaged3/west,
 /area/lv624/lazarus/crashed_ship)
@@ -218,7 +218,7 @@
 /area/lv624/ground/caves/south_west_caves)
 "aL" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "folding_plasteel_2";
+	icon_state = "plasteel_2";
 	density = 1;
 	closed = 0;
 	dir = 4
@@ -277,7 +277,7 @@
 /area/lv624/ground/caves/south_west_caves)
 "aU" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "folding_plasteel_2";
+	icon_state = "plasteel_2";
 	density = 1;
 	closed = 0
 	},
@@ -339,6 +339,14 @@
 "bc" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer/green/north,
+/area/lv624/lazarus/crashed_ship)
+"bd" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	density = 1;
+	closed = 0
+	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "bf" = (
 /obj/structure/surface/rack,
@@ -895,7 +903,7 @@
 "vf" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbilical Airlock"
+	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
@@ -998,7 +1006,7 @@
 "xG" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbilical Airlock"
+	name = "\improper Umbillical Airlock"
 	},
 /turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
@@ -1152,7 +1160,7 @@
 "CO" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "clf_umbilical_1";
-	name = "\improper Umbilical Airlock"
+	name = "\improper Umbillical Airlock"
 	},
 /turf/open/gm/dirt,
 /area/lv624/lazarus/crashed_ship)
@@ -1692,7 +1700,7 @@
 "TA" = (
 /obj/structure/barricade/plasteel/wired{
 	dir = 8;
-	icon_state = "folding_plasteel_closed_1"
+	icon_state = "plasteel_closed_1"
 	},
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship)
@@ -1741,7 +1749,7 @@
 /area/lv624/ground/caves/south_west_caves)
 "UD" = (
 /obj/structure/barricade/plasteel/wired{
-	icon_state = "folding_plasteel_2";
+	icon_state = "plasteel_2";
 	density = 1;
 	closed = 0
 	},
@@ -2763,7 +2771,7 @@ dN
 oI
 rX
 aG
-UD
+bd
 ro
 ax
 lD

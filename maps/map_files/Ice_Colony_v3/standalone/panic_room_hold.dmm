@@ -256,8 +256,11 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "kP" = (
+/obj/structure/surface/table/woodentable{
+	dir = 1;
+	flipped = 1
+	},
 /obj/structure/machinery/computer/objective,
-/obj/structure/surface/table/woodentable/flipped/north,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "kT" = (
@@ -348,7 +351,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "ov" = (
-/obj/item/trash/burrito,
+/obj/item/trash/buritto,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "oH" = (

@@ -318,7 +318,7 @@
 "bi" = (
 /obj/item/paper/crumpled/bloody,
 /obj/effect/decal/cleanable/blood{
-	icon_state = "u_psychopath_l"
+	icon_state = "u_psycopath_l"
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)

@@ -368,7 +368,7 @@
 /area/template_noop)
 "GR" = (
 /turf/closed/wall/r_wall/prison_unmeltable{
-	desc = "A huge chunk of metal used to separate rooms.";
+	desc = "A huge chunk of metal used to seperate rooms.";
 	name = "metal wall"
 	},
 /area/template_noop)

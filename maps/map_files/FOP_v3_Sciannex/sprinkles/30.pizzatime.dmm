@@ -280,7 +280,7 @@
 /area/template_noop)
 "S" = (
 /obj/effect/decal/cleanable/blood/writing{
-	icon_state = "u_psychopath_l";
+	icon_state = "u_psycopath_l";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/blood/writing{

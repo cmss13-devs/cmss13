@@ -47,7 +47,9 @@
 /area/bigredv2/outside/lz1_north_cas)
 "k" = (
 /obj/structure/barricade/wooden{
-	dir = 4
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_north_cas)

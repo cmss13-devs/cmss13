@@ -3820,10 +3820,10 @@
 /area/desert_dam/building/security/lobby)
 "aqB" = (
 /turf/open/desert/rock/deep/transition/north,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "aqC" = (
 /turf/open/floor/plating,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "aqD" = (
 /obj/structure/closet/secure_closet/security,
 /turf/open/floor/prison/darkred2/northeast,
@@ -3850,7 +3850,7 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aqJ" = (
 /turf/closed/wall/r_wall/chigusa,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "aqK" = (
 /turf/open/floor/warning/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
@@ -4183,7 +4183,7 @@
 /area/desert_dam/exterior/valley/valley_northwest)
 "asb" = (
 /turf/open/desert/rock,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "asc" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal6"
@@ -4298,7 +4298,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "asG" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1
@@ -4442,7 +4442,7 @@
 "atn" = (
 /obj/structure/window/framed/chigusa,
 /turf/open/floor/plating,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "ato" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -4613,7 +4613,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "atT" = (
 /turf/open/floor/prison/red/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_entrance)
@@ -4622,7 +4622,7 @@
 	dir = 9
 	},
 /turf/open/floor/plating,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "atV" = (
 /turf/open/floor/vault2/northeast,
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
@@ -4733,7 +4733,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "auy" = (
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
@@ -5105,7 +5105,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "awh" = (
 /turf/open/desert/rock/deep/transition/southwest,
 /area/desert_dam/interior/dam_interior/western_dam_cave)
@@ -5140,7 +5140,7 @@
 "aws" = (
 /obj/effect/decal/sand_overlay/sand2/corner2,
 /turf/open/floor/plating,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "awt" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -5227,7 +5227,7 @@
 "awL" = (
 /obj/effect/decal/sand_overlay/sand2,
 /turf/open/floor/plating,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "awM" = (
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/detective)
@@ -5347,7 +5347,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "axr" = (
 /turf/open/floor/prison/whitepurplecorner/west,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
@@ -5356,7 +5356,7 @@
 	dir = 6
 	},
 /turf/open/floor/plating,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "axt" = (
 /turf/open/floor/prison/whitepurple/southwest,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
@@ -5478,7 +5478,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "axT" = (
 /turf/open/desert/rock/deep/transition,
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance)
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "axU" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 4
@@ -6608,7 +6608,9 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDa" = (
 /obj/structure/barricade/wooden{
-	dir = 4
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
 	},
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -6719,7 +6721,9 @@
 "aDw" = (
 /obj/structure/barricade/wooden,
 /obj/structure/barricade/wooden{
-	dir = 8
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -6745,7 +6749,9 @@
 "aDA" = (
 /obj/structure/barricade/wooden,
 /obj/structure/barricade/wooden{
-	dir = 4
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
 	},
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/asphalt/cement,
@@ -13287,7 +13293,7 @@
 /area/desert_dam/building/water_treatment_two/lobby)
 "biX" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Treatment Control Room"
+	name = "\improper Treatment Controlroom"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/control_room)
@@ -14186,7 +14192,7 @@
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
 	},
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bnj" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/prison/blue/northwest,
@@ -14297,20 +14303,20 @@
 /obj/item/tool/lighter/zippo,
 /obj/item/tool/lighter/zippo,
 /turf/open/floor/prison/darkbrown2/northwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bnM" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison/darkbrown2/north,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bnN" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison/darkbrown2/north,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bnO" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison/darkbrown2/northeast,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bnP" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/prison/blue/west,
@@ -14468,13 +14474,13 @@
 /obj/item/cell/high/empty,
 /obj/structure/machinery/cell_charger,
 /turf/open/floor/prison/darkbrown2/west,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "boA" = (
 /turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "boB" = (
 /turf/open/floor/prison/darkbrown2/east,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "boC" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/storage/box/trackimp,
@@ -14652,7 +14658,7 @@
 /obj/item/trash/kepler,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown2/west,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bpw" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -14670,7 +14676,7 @@
 	},
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/prison/darkbrown2/east,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bpy" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
@@ -14904,13 +14910,13 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison/darkbrown2/west,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bqI" = (
 /obj/structure/surface/rack,
 /obj/item/cell/high/empty,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/darkbrown2/east,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bqJ" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/storage/box/lights/mixed,
@@ -15065,19 +15071,19 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "brG" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison/darkbrown2/west,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "brH" = (
 /obj/structure/surface/rack,
 /obj/item/cell/high/empty,
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/darkbrown2/east,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "brI" = (
 /turf/open/floor/prison/darkredcorners2/east,
 /area/desert_dam/building/security/holding)
@@ -15252,12 +15258,12 @@
 	},
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison/darkbrown2/west,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bsz" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/darkbrown2/east,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bsA" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 2;
@@ -15379,34 +15385,34 @@
 /area/desert_dam/interior/dam_interior/hanger)
 "btp" = (
 /turf/open/floor/prison/darkbrowncorners2/east,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "btq" = (
 /turf/open/floor/prison/darkbrowncorners2/north,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "btr" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/darkbrown2/north,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bts" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/prison/darkbrown2/north,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "btt" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/prison/darkbrown2/north,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "btu" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "btv" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /turf/open/floor/prison/darkbrown2/north,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "btw" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/prison/darkbrown2/north,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "btx" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
 /obj/structure/machinery/light{
@@ -15414,10 +15420,10 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/darkbrown2/northeast,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bty" = (
 /turf/closed/wall/r_wall,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "btz" = (
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
@@ -15652,7 +15658,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "buM" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue/west,
@@ -15671,13 +15677,13 @@
 	dir = 4
 	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "buQ" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "buR" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal5"
@@ -15926,7 +15932,7 @@
 /area/desert_dam/building/administration/hallway)
 "bvY" = (
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bwa" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4
@@ -16155,20 +16161,20 @@
 /area/desert_dam/building/administration/hallway)
 "bxf" = (
 /turf/open/floor/prison/darkbrowncorners2/west,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bxg" = (
 /turf/open/floor/prison/darkbrowncorners2/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bxh" = (
 /obj/structure/machinery/light,
 /turf/open/floor/prison/darkbrown2,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bxi" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tool,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison/darkbrown2,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bxj" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8
@@ -16185,13 +16191,13 @@
 /obj/effect/spawner/random/technology_scanner,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison/darkbrown2,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bxl" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/prison/darkbrown2,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bxm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -16204,7 +16210,7 @@
 "bxn" = (
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrown2/east,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bxo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -16338,15 +16344,15 @@
 	dir = 8
 	},
 /turf/open/floor/prison/darkbrown2/west,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "byt" = (
 /turf/open/floor/prison/darkbrown2/west,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "byu" = (
 /obj/structure/surface/table,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison/darkbrown2/east,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "byv" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -16585,7 +16591,7 @@
 	name = "\improper Tool Storage"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bzE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement4,
@@ -17206,7 +17212,7 @@
 "bDi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bDj" = (
 /obj/structure/surface/rack,
 /obj/effect/decal/cleanable/dirt,
@@ -17410,7 +17416,7 @@
 /obj/effect/landmark/survivor_spawner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bEw" = (
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northeastern_tunnel)
@@ -18532,7 +18538,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bJz" = (
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
@@ -18723,7 +18729,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bKy" = (
 /obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkyellow2/east,
@@ -18867,7 +18873,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bLh" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal8"
@@ -18886,7 +18892,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bLl" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -18958,7 +18964,7 @@
 "bLz" = (
 /obj/structure/window/framed/hangar/reinforced,
 /turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bLB" = (
 /obj/structure/machinery/power/smes/buildable{
 	capacity = 1e+006;
@@ -18973,7 +18979,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bLD" = (
 /turf/open/floor/prison/darkyellowcorners2,
 /area/desert_dam/interior/dam_interior/smes_backup)
@@ -19073,7 +19079,7 @@
 "bMc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bMd" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -19118,7 +19124,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bMl" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/north,
@@ -19646,11 +19652,11 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown2,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bPf" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrowncorners2/west,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bPg" = (
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/darkyellow2/east,
@@ -20797,7 +20803,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bUt" = (
 /obj/structure/flora/grass/desert/heavygrass_4,
 /turf/open/desert/dirt,
@@ -25810,16 +25816,16 @@
 /area/desert_dam/building/medical/primary_storage)
 "ctY" = (
 /turf/closed/wall,
-/area/desert_dam/building/medical/surgery_observation)
+/area/desert_dam/building/medical/surgury_observation)
 "ctZ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	name = "\improper Observation"
 	},
 /turf/open/floor/prison/sterile_white/west,
-/area/desert_dam/building/medical/surgery_observation)
+/area/desert_dam/building/medical/surgury_observation)
 "cua" = (
 /turf/open/floor/prison/sterile_white/west,
-/area/desert_dam/building/medical/surgery_observation)
+/area/desert_dam/building/medical/surgury_observation)
 "cub" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -26048,17 +26054,17 @@
 /area/desert_dam/building/medical/primary_storage)
 "cvb" = (
 /turf/open/floor/prison/bright_clean2/southwest,
-/area/desert_dam/building/medical/surgery_observation)
+/area/desert_dam/building/medical/surgury_observation)
 "cvc" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
-/area/desert_dam/building/medical/surgery_observation)
+/area/desert_dam/building/medical/surgury_observation)
 "cvd" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/bright_clean2/southwest,
-/area/desert_dam/building/medical/surgery_observation)
+/area/desert_dam/building/medical/surgury_observation)
 "cve" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -26260,13 +26266,13 @@
 "cvW" = (
 /obj/structure/bed/chair,
 /turf/open/floor/prison/bright_clean2/southwest,
-/area/desert_dam/building/medical/surgery_observation)
+/area/desert_dam/building/medical/surgury_observation)
 "cvZ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Observation"
 	},
 /turf/open/floor/prison/sterile_white/west,
-/area/desert_dam/building/medical/surgery_observation)
+/area/desert_dam/building/medical/surgury_observation)
 "cwb" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -26459,14 +26465,14 @@
 	icon_state = "S"
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
-/area/desert_dam/building/medical/surgery_observation)
+/area/desert_dam/building/medical/surgury_observation)
 "cwR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
 /obj/structure/machinery/light,
 /turf/open/floor/prison/bright_clean2/southwest,
-/area/desert_dam/building/medical/surgery_observation)
+/area/desert_dam/building/medical/surgury_observation)
 "cwS" = (
 /turf/open/floor/prison/whitegreen/west,
 /area/desert_dam/building/medical/east_wing_hallway)
@@ -26644,7 +26650,7 @@
 "cxE" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
-/area/desert_dam/building/medical/surgery_observation)
+/area/desert_dam/building/medical/surgury_observation)
 "cxG" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -36082,7 +36088,7 @@
 /obj/structure/surface/table,
 /obj/item/clothing/head/welding,
 /turf/open/floor/prison/darkbrown2,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "dDx" = (
 /obj/item/clothing/head/welding,
 /obj/structure/surface/rack,
@@ -40020,7 +40026,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/dorms/hallway_westwing)
 "eaC" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /turf/open/floor/wood,
 /area/desert_dam/building/dorms/hallway_westwing)
 "eaG" = (
@@ -41600,8 +41606,8 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_civilian)
 "fsP" = (
+/obj/structure/surface/table/gamblingtable,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/wood,
 /area/desert_dam/building/dorms/hallway_westwing)
 "ftF" = (
@@ -44904,7 +44910,7 @@
 "mEC" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage)
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "mEV" = (
 /obj/structure/machinery/light,
 /turf/open/desert/rock/deep/transition/southwest,
@@ -46765,7 +46771,7 @@
 /obj/structure/bed/chair,
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison/bright_clean2/southwest,
-/area/desert_dam/building/medical/surgery_observation)
+/area/desert_dam/building/medical/surgury_observation)
 "qxv" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/desert/dirt,

@@ -1170,7 +1170,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthetic potted plant";
+	name = "synthethic potted plant";
 	pixel_x = -7;
 	pixel_y = 9
 	},
@@ -1675,7 +1675,7 @@
 /area/lv522/indoors/c_block/mining)
 "aGE" = (
 /obj/structure/closet/crate/trashcart,
-/obj/item/trash/burrito,
+/obj/item/trash/buritto,
 /obj/item/trash/wy_chips_pepper,
 /obj/item/trash/syndi_cakes,
 /obj/item/trash/kepler/flamehot,
@@ -2714,7 +2714,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthetic potted plant";
+	name = "synthethic potted plant";
 	pixel_y = 14
 	},
 /obj/effect/decal/cleanable/cobweb2,
@@ -2843,7 +2843,10 @@
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "buI" = (
-/obj/structure/surface/table/almayer/flipped/north,
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/bridges/garden_bridge)
 "bvI" = (
@@ -3672,7 +3675,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "bTA" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/item/reagent_container/food/drinks/bottle/sake{
 	pixel_x = 3;
 	pixel_y = 13
@@ -4052,7 +4055,7 @@
 "ceG" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash/chips,
-/obj/item/trash/burrito,
+/obj/item/trash/buritto,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "cfd" = (
@@ -5793,7 +5796,10 @@
 /area/lv522/atmos/command_centre)
 "dbF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/surface/table/almayer/flipped/north,
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/garden_bridge)
 "dbG" = (
@@ -5978,8 +5984,11 @@
 /turf/open/floor/corsat/brown,
 /area/lv522/atmos/command_centre)
 "ddP" = (
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
+	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer/flipped/west,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/admin)
 "ddS" = (
@@ -7808,7 +7817,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthetic potted plant";
+	name = "synthethic potted plant";
 	pixel_y = 14
 	},
 /obj/item/prop/alien/hugger,
@@ -8873,8 +8882,10 @@
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/cargo_intake)
 "eDz" = (
+/obj/structure/surface/table/almayer{
+	flipped = 1
+	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/surface/table/almayer/flipped,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/cargo)
 "eDI" = (
@@ -9229,11 +9240,14 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "ePc" = (
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
+	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer/flipped/west,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/admin)
 "ePl" = (
@@ -9406,7 +9420,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthetic potted plant";
+	name = "synthethic potted plant";
 	pixel_y = 28
 	},
 /turf/open/floor/plating/platebot,
@@ -11252,7 +11266,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "gbm" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/item/toy/deck{
 	pixel_x = 4;
 	pixel_y = 5
@@ -12949,8 +12963,10 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/south_west_street)
 "gYX" = (
+/obj/structure/surface/table/almayer{
+	flipped = 1
+	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer/flipped,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/kitchen/glass)
 "gZg" = (
@@ -14257,7 +14273,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthetic potted plant";
+	name = "synthethic potted plant";
 	pixel_x = -2;
 	pixel_y = 10
 	},
@@ -14356,10 +14372,10 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/lv522/indoors/a_block/medical/glass)
 "hMT" = (
+/obj/structure/surface/table/gamblingtable,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
 "hMY" = (
@@ -16076,7 +16092,10 @@
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/cargo_intake)
 "iLq" = (
-/obj/structure/surface/table/almayer/flipped/north,
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/bridges/garden_bridge)
 "iLC" = (
@@ -18105,7 +18124,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthetic potted plant";
+	name = "synthethic potted plant";
 	pixel_x = -2;
 	pixel_y = 16
 	},
@@ -18908,7 +18927,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthetic potted plant";
+	name = "synthethic potted plant";
 	pixel_y = 12
 	},
 /turf/open/floor/corsat/plate,
@@ -19075,7 +19094,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthetic potted plant";
+	name = "synthethic potted plant";
 	pixel_y = 14
 	},
 /obj/structure/machinery/light,
@@ -19350,7 +19369,9 @@
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/command_centre)
 "krm" = (
-/obj/structure/surface/table/almayer/flipped,
+/obj/structure/surface/table/almayer{
+	flipped = 1
+	},
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/cargo)
 "krw" = (
@@ -20628,7 +20649,10 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "kYu" = (
-/obj/structure/surface/table/almayer/flipped/west,
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
+	},
 /turf/open/floor/prison/blue,
 /area/lv522/indoors/a_block/admin)
 "kYw" = (
@@ -20727,11 +20751,14 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "lbg" = (
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/obj/structure/surface/table/almayer/flipped/north,
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "lbo" = (
@@ -23118,8 +23145,11 @@
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "mqi" = (
+/obj/structure/surface/table/almayer{
+	dir = 4;
+	flipped = 1
+	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/reinforced/prison/flipped/east,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/admin)
 "mqk" = (
@@ -24603,7 +24633,10 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/b_block/bar)
 "ncv" = (
-/obj/structure/surface/table/almayer/flipped/west,
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
+	},
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "ncJ" = (
@@ -24999,7 +25032,10 @@
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
 "nmB" = (
-/obj/structure/surface/table/almayer/flipped/west,
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
+	},
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/admin)
 "nnj" = (
@@ -25167,7 +25203,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/garage)
 "nqj" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
@@ -25242,10 +25278,13 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/lv522/indoors/a_block/medical/glass)
 "nrL" = (
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
+	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/surface/table/almayer/flipped/west,
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "nrP" = (
@@ -25348,9 +25387,12 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/corpo/glass)
 "nuQ" = (
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer/flipped/north,
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "nuU" = (
@@ -25676,8 +25718,11 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/south_west_street)
 "nGC" = (
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
+	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer/flipped/west,
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "nGJ" = (
@@ -26040,7 +26085,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthetic potted plant";
+	name = "synthethic potted plant";
 	pixel_y = 14
 	},
 /turf/open/floor/prison/darkredfull2,
@@ -26662,13 +26707,16 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/cargo)
 "oew" = (
+/obj/structure/surface/table/almayer{
+	dir = 4;
+	flipped = 1
+	},
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/surface/table/reinforced/prison/flipped/east,
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "oeL" = (
@@ -27151,7 +27199,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthetic potted plant";
+	name = "synthethic potted plant";
 	pixel_x = -17;
 	pixel_y = 9
 	},
@@ -27575,12 +27623,12 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/lv522/indoors/a_block/dorms)
 "oFG" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/reagent_container/food/drinks/drinkingglass{
 	icon_state = "shotglass";
 	pixel_x = 12;
 	pixel_y = 16
 	},
+/obj/structure/surface/table/gamblingtable,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/carpet,
 /area/lv522/indoors/c_block/casino)
@@ -28464,8 +28512,11 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/landing_zone_1)
 "peS" = (
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer/flipped/north,
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "pfe" = (
@@ -28530,8 +28581,11 @@
 /area/lv522/indoors/b_block/bridge)
 "pfE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer/flipped/north,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/bridges/garden_bridge)
 "pfJ" = (
@@ -28774,7 +28828,10 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "ppy" = (
-/obj/structure/surface/table/almayer/flipped/north,
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "ppD" = (
@@ -28892,7 +28949,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "prX" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/item/reagent_container/food/drinks/drinkingglass{
 	icon_state = "shotglass";
 	pixel_x = 6;
@@ -29125,8 +29182,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "pBK" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/item/toy/deck{
 	pixel_x = 4;
 	pixel_y = 12
@@ -29135,6 +29191,7 @@
 	pixel_x = 2;
 	pixel_y = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
 /area/lv522/indoors/c_block/casino)
 "pBQ" = (
@@ -29418,10 +29475,13 @@
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/indoors/b_block/hydro)
 "pJh" = (
+/obj/structure/surface/table/almayer{
+	dir = 4;
+	flipped = 1
+	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/surface/table/reinforced/prison/flipped/east,
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "pJj" = (
@@ -29527,7 +29587,7 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/lv522/atmos/way_in_command_centre)
 "pMs" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/item/card/id/visa{
 	desc = "A United Americas entry visa. A rare commodity out here on the rim.";
 	pixel_x = 9;
@@ -33634,10 +33694,13 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
 "rEc" = (
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/obj/structure/surface/table/almayer/flipped/north,
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "rEj" = (
@@ -35450,7 +35513,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthetic potted plant";
+	name = "synthethic potted plant";
 	pixel_y = 14
 	},
 /turf/open/floor/prison/darkpurplefull2,
@@ -37108,8 +37171,11 @@
 /turf/open/asphalt/cement/cement1,
 /area/lv522/indoors/lone_buildings/engineering)
 "tsv" = (
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer/flipped/north,
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "tsx" = (
@@ -37432,7 +37498,10 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "tAh" = (
-/obj/structure/surface/table/reinforced/prison/flipped/east,
+/obj/structure/surface/table/almayer{
+	dir = 4;
+	flipped = 1
+	},
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "tAn" = (
@@ -38416,8 +38485,10 @@
 /turf/open/auto_turf/shale/layer2,
 /area/lv522/outdoors/colony_streets/south_west_street)
 "tZi" = (
+/obj/structure/surface/table/almayer{
+	flipped = 1
+	},
 /obj/structure/machinery/light,
-/obj/structure/surface/table/almayer/flipped,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/kitchen/glass)
 "tZF" = (
@@ -38470,7 +38541,9 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/dorms)
 "uaH" = (
-/obj/structure/surface/table/almayer/flipped,
+/obj/structure/surface/table/almayer{
+	flipped = 1
+	},
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/kitchen/glass)
 "uaI" = (
@@ -39328,7 +39401,7 @@
 /area/lv522/oob/w_y_vault)
 "uvC" = (
 /obj/structure/closet/crate/trashcart,
-/obj/item/trash/burrito,
+/obj/item/trash/buritto,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "uvF" = (
@@ -41090,7 +41163,7 @@
 /turf/open/floor/prison/greenfull,
 /area/lv522/indoors/a_block/fitness)
 "vmG" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/item/reagent_container/food/drinks/drinkingglass{
 	icon_state = "shotglass";
 	pixel_x = 14;
@@ -41654,8 +41727,8 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "vBB" = (
+/obj/structure/surface/table/gamblingtable,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
 "vBI" = (
@@ -42192,7 +42265,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/central_streets)
 "vMJ" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/item/toy/deck{
 	pixel_x = 4;
 	pixel_y = 12
@@ -43331,8 +43404,8 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "wpd" = (
+/obj/structure/surface/table/gamblingtable,
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
@@ -43833,7 +43906,7 @@
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
 	icon_state = "pottedplant_21";
 	layer = 3.1;
-	name = "synthetic potted plant";
+	name = "synthethic potted plant";
 	pixel_y = 14
 	},
 /turf/open/floor/prison/darkpurplefull2,
@@ -43978,8 +44051,11 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
 "wGG" = (
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
+	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/almayer/flipped/west,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/kitchen/glass)
 "wGJ" = (
@@ -45690,7 +45766,10 @@
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "xDM" = (
-/obj/structure/surface/table/almayer/flipped/west,
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
+	},
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "xDP" = (
@@ -46761,7 +46840,10 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/b_block/bar)
 "ydV" = (
-/obj/structure/surface/table/almayer/flipped/north,
+/obj/structure/surface/table/almayer{
+	dir = 1;
+	flipped = 1
+	},
 /turf/open/floor/prison/blue_plate,
 /area/lv522/indoors/a_block/admin)
 "yeD" = (

@@ -1577,7 +1577,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_pad)
 "TT" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/item/toy/handcard/aceofspades,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_pad)

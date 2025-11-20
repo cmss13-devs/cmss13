@@ -94,7 +94,7 @@
 "aJ" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
-	name = "\improper Umbilical Airlock";
+	name = "\improper Umbillical Airlock";
 	unacidable = 1;
 	dir = 4
 	},
@@ -1125,7 +1125,7 @@
 "mR" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
-	name = "\improper Umbilical Airlock";
+	name = "\improper Umbillical Airlock";
 	unacidable = 1
 	},
 /turf/open/floor/plating,

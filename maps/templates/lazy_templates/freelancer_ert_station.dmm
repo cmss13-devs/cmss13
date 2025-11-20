@@ -546,7 +546,7 @@
 	pixel_y = 28
 	},
 /obj/structure/bed/sofa/south/grey/right,
-/obj/item/trash/burrito,
+/obj/item/trash/buritto,
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station)
 "CJ" = (
@@ -714,7 +714,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
 "JD" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/item/device/flashlight/lamp/green{
 	pixel_y = 10
 	},

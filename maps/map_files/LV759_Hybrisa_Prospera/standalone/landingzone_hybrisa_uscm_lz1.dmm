@@ -72,7 +72,7 @@
 /obj/structure/window/framed/hybrisa/colony/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters,
 /turf/open/floor/plating,
-/area/lv759/indoors/electrical_systems/substation2)
+/area/lv759/indoors/electical_systems/substation2)
 "am" = (
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -1139,7 +1139,7 @@
 /area/lv759/outdoors/landing_zone_2)
 "de" = (
 /turf/closed/wall/hybrisa/colony,
-/area/lv759/indoors/electrical_systems/substation2)
+/area/lv759/indoors/electical_systems/substation2)
 "df" = (
 /obj/structure/machinery/camera/autoname/lz_camera,
 /turf/open/floor/plating,

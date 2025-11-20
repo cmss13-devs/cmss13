@@ -233,7 +233,6 @@
 	accurate_range = 32
 	max_range = 4
 	damage = 35
-	shell_speed = AMMO_SPEED_TIER_1
 	scatter = SCATTER_AMOUNT_TIER_6
 
 /datum/ammo/xeno/acid/despoiler/on_hit_mob(mob/mob, obj/projectile/projectile)

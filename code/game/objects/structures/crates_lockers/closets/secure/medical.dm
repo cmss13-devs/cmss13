@@ -170,7 +170,7 @@
 
 /obj/structure/closet/secure_closet/surgical/emergency
 	name = "emergency surgical equipment cabinet"
-	desc = "A self-sterilizing, wall-mounted cabinet containing extra surgical beds and empty surgical webbing vests for doctors who suddenly need to operate outside of medbay. Only the CMO can unlock this, but in dire emergencies, it unlocks for the entire medbay."
+	desc = "A self-sterilizing, wall-mounted cabinet containing extra surgical beds and empty surgical webbing vests for doctors who suddenly need to operate outside of medbay. It only unlocks itself for doctors during dire emergencies."
 	req_access = list(ACCESS_MARINE_CMO)
 
 /obj/structure/closet/secure_closet/surgical/emergency/Initialize()

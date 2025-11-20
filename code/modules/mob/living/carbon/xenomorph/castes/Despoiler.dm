@@ -14,6 +14,7 @@
 	speed = XENO_SPEED_TIER_6
 
 	deevolves_to = list(XENO_CASTE_SPITTER)
+	acid_level = 2
 
 
 	tackle_min = 4

@@ -2501,14 +2501,6 @@
 "ajh" = (
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northeast)
-"aji" = (
-/obj/structure/surface/table{
-	dir = 4;
-	flipped = 1;
-	icon_state = "tableflip0"
-	},
-/turf/open/floor/plating,
-/area/ice_colony/underground/maintenance/south)
 "ajj" = (
 /obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer3,
@@ -25173,6 +25165,14 @@
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
+"bTH" = (
+/obj/structure/surface/table{
+	dir = 4;
+	flipped = 1;
+	icon_state = "tableflip0"
+	},
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/south)
 "bTI" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4;
@@ -54507,9 +54507,9 @@ bPg
 bPg
 bPg
 bPg
-aji
-aji
-aji
+bTH
+bTH
+bTH
 bPg
 bPg
 bPg

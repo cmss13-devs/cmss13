@@ -340,14 +340,6 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer/green/north,
 /area/lv624/lazarus/crashed_ship)
-"bd" = (
-/obj/structure/barricade/plasteel/wired{
-	icon_state = "plasteel_3";
-	density = 1;
-	closed = 0
-	},
-/turf/open/floor/plating/platingdmg3,
-/area/lv624/lazarus/crashed_ship)
 "bf" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/buckshot,
@@ -777,6 +769,14 @@
 /obj/item/stack/rods,
 /obj/effect/landmark/corpsespawner/clf,
 /turf/open/floor/damaged3/west,
+/area/lv624/lazarus/crashed_ship)
+"oO" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_3";
+	density = 1;
+	closed = 0
+	},
+/turf/open/floor/plating/platingdmg3,
 /area/lv624/lazarus/crashed_ship)
 "oW" = (
 /obj/structure/barricade/metal/wired{
@@ -2771,7 +2771,7 @@ dN
 oI
 rX
 aG
-bd
+oO
 ro
 ax
 lD

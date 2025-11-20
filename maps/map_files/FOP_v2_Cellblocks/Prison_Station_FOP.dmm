@@ -1918,13 +1918,6 @@
 "afY" = (
 /turf/open/floor/plating,
 /area/prison/research/secret/containment)
-"afZ" = (
-/obj/structure/surface/table/reinforced{
-	dir = 8;
-	flipped = 1
-	},
-/turf/open/floor/prison/floor_plate,
-/area/prison/cellblock/mediumsec/south)
 "aga" = (
 /obj/structure/machinery/smartfridge/secure/virology,
 /turf/open/floor/prison/whitepurple/southwest,
@@ -2074,10 +2067,6 @@
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/north)
-"agA" = (
-/obj/structure/surface/table/gamblingtable,
-/turf/open/floor/prison,
-/area/prison/recreation/medsec)
 "agB" = (
 /obj/structure/pipes/vents/scrubber,
 /obj/structure/disposalpipe/segment{
@@ -27373,6 +27362,10 @@
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
+"cds" = (
+/obj/structure/surface/table/gamblingtable,
+/turf/open/floor/prison,
+/area/prison/recreation/medsec)
 "cdt" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -34059,6 +34052,13 @@
 /obj/structure/mineral_door/resin,
 /turf/open/floor/prison/southwest,
 /area/prison/cellblock/highsec/south/north)
+"hOy" = (
+/obj/structure/surface/table/reinforced{
+	dir = 8;
+	flipped = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/prison/cellblock/mediumsec/south)
 "hQm" = (
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/hallway/central/east)
@@ -61085,7 +61085,7 @@ cuV
 cun
 cxF
 mCC
-afZ
+hOy
 mCC
 cyp
 cun
@@ -62143,10 +62143,10 @@ cun
 cyO
 cun
 cyc
-afZ
-afZ
+hOy
+hOy
 mCC
-afZ
+hOy
 cyp
 cAc
 cyV
@@ -62355,10 +62355,10 @@ cun
 cyO
 cun
 cxT
-afZ
+hOy
 mCC
-afZ
-afZ
+hOy
+hOy
 cyp
 cAc
 cyW
@@ -62741,7 +62741,7 @@ caG
 bYT
 caE
 cbS
-agA
+cds
 bYT
 bYT
 cgk
@@ -63416,9 +63416,9 @@ cvd
 cuS
 cun
 cxF
-afZ
+hOy
 mCC
-afZ
+hOy
 cyp
 cun
 cyP

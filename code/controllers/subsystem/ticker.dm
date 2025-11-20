@@ -72,6 +72,11 @@ SUBSYSTEM_DEF(ticker)
 			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, margin_top = 0, html = SPAN_ROUNDBODY("Please, setup your character and select ready. Game will start in [floor(time_left / 10) || CONFIG_GET(number/lobby_countdown)] seconds."))
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PREGAME_LOBBY)
 			current_state = GAME_STATE_PREGAME
+
+			#ifdef QUICK_START
+			request_start()
+			#endif
+
 			fire()
 
 		if(GAME_STATE_PREGAME)
@@ -108,7 +113,7 @@ SUBSYSTEM_DEF(ticker)
 				current_state = GAME_STATE_FINISHED
 				GLOB.ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
-				REDIS_PUBLISH("byond.round", "type" = "round-complete", "round_name" = GLOB.round_statistics.round_name)
+				REDIS_PUBLISH("byond.round", "type" = "round-complete", "round_name" = GLOB.round_statistics.round_name, "round_finished" = mode.round_finished)
 				flash_clients()
 				addtimer(CALLBACK(
 					SSvote,

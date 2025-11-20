@@ -1,28 +1,11 @@
-// Hybrisa Electrical Stuff
+/// A variant of a colony_floodlight_switch that instead uses GLOB.all_electric_fences
 /obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch
 	name = "colony electrified fence switch"
 	icon_state = "panelbnopower"
 	desc = "This switch controls the electrified fences. It only functions when there is power."
-	machinery_type_whitelist = null
+	machinery_type_whitelist = list()
 	/// The power each fence takes up per process
 	var/power_usage_per_fence = 5
-
-/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/LateInitialize()
-	. = ..()
-	for(var/obj/structure/fence/electrified/fence as anything in GLOB.all_electric_fences)
-		fence.breaker_switch = src
-
-/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/Destroy()
-	for(var/obj/structure/fence/electrified/fence as anything in GLOB.all_electric_fences)
-		if(fence.breaker_switch == src)
-			fence.breaker_switch = null
-	return ..()
-
-/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/process()
-	var/machinepower = calculate_current_power_usage()
-	if(is_on)
-		machinepower += length(GLOB.all_electric_fences)
-	use_power(machinepower)
 
 /obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/update_icon()
 	if(!ispowered)
@@ -32,15 +15,67 @@
 	else
 		icon_state = "panelboff"
 
-/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/proc/toggle_fences()
-	for(var/obj/structure/fence/electrified/fence as anything in GLOB.all_electric_fences)
-		fence.toggle_power()
+/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/Initialize(mapload, ...)
+	for(var/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/other_switch in GLOB.all_breaker_switches)
+		linked_switches |= other_switch
+		other_switch.linked_switches |= src
 
-/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/attack_hand(mob/user as mob)
-	if(..())
-		toggle_fences()
-		return TRUE
-	return FALSE
+	return ..()
+
+/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/LateInitialize()
+	. = ..()
+	for(var/obj/structure/fence/electrified/fence as anything in GLOB.all_electric_fences)
+		fence.breaker_switch = src // Will get overridden by whoever ends up turning on first
+
+/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/Destroy()
+	// Find a new master
+	var/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/new_master_switch = null
+	if(length(linked_switches))
+		new_master_switch = linked_switches[1]
+
+	// Assign new master
+	for(var/obj/structure/fence/electrified/fence as anything in GLOB.all_electric_fences)
+		fence.breaker_switch = new_master_switch
+
+	// Update machines
+	if(length(GLOB.all_electric_fences))
+		if(new_master_switch)
+			new_master_switch.update_machines()
+		else
+			is_on = FALSE
+			update_machines()
+
+	return ..()
+
+/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/process()
+	var/machinepower = calculate_current_power_usage()
+
+	var/count_fences = length(GLOB.all_electric_fences)
+	if(is_on && count_fences)
+		// Check we are the master switch right now
+		var/obj/structure/fence/electrified/first_fence = GLOB.all_electric_fences[1]
+		if(first_fence.breaker_switch == src) // Assumption that all will be the same
+			machinepower += count_fences * power_usage_per_fence
+
+	use_power(machinepower)
+
+/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/update_machines()
+	// Make sure any linked switch isn't on simultaniously with us
+	if(is_on)
+		for(var/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/linked_switch as anything in linked_switches)
+			if(linked_switch.is_on)
+				linked_switch.set_is_on(FALSE)
+
+	// Check we are the master switch right now
+	var/obj/structure/fence/electrified/first_fence
+	if(length(GLOB.all_electric_fences))
+		first_fence = GLOB.all_electric_fences[1]
+		if(first_fence.breaker_switch != src && first_fence.breaker_switch?.is_on)
+			return // Not the master
+
+	for(var/obj/structure/fence/electrified/fence as anything in GLOB.all_electric_fences)
+		fence.breaker_switch = src
+		fence.set_is_on(is_on)
 
 // Hybrisa Streetlights
 
@@ -56,6 +91,10 @@
 /obj/structure/machinery/colony_floodlight/street/Initialize(mapload, ...)
 	. = ..()
 	AddComponent(/datum/component/shimmy_around, east_offset = -15, west_offset = -15)
+
+/obj/structure/machinery/colony_floodlight/street/initialize_pass_flags(datum/pass_flags_container/PF)
+	if(PF)
+		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM|PASS_OVER_ACID_SPRAY
 
 /obj/structure/machinery/colony_floodlight/street/update_icon()
 	if(damaged)

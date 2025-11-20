@@ -28,6 +28,15 @@
 		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 
+/obj/structure/showcase/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	deconstruct(FALSE)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/showcase/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -78,7 +87,7 @@
 
 /obj/structure/target
 	name = "shooting target"
-	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, its not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo wont have any effect."
+	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, its not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo won't have any effect."
 	icon = 'icons/obj/structures/props/target_dummies.dmi'
 	icon_state = "target_a"
 	density = FALSE
@@ -224,6 +233,18 @@
 	take_damage(25)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/xenoautopsy/tank/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/Glasshit.ogg', 25, 1)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+		SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	take_damage(xeno.melee_damage_upper)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/xenoautopsy/tank/ex_act(severity)
 	switch(severity)
@@ -363,6 +384,9 @@
 	for(var/turf/blocked_turf in range(1, src))
 		blockers += new /obj/effect/build_blocker(blocked_turf, src)
 		new /obj/structure/blocker/anti_cade(blocked_turf)
+	return INITIALIZE_HINT_LATELOAD
+
+
 
 /obj/structure/stairs/multiz/Destroy()
 	QDEL_LIST(blockers)
@@ -394,6 +418,8 @@
 		actual_turf = SSmapping.get_turf_above(target_turf)
 	else
 		actual_turf = SSmapping.get_turf_below(target_turf)
+		mover.plane = ABOVE_BLACKNESS_PLANE
+		addtimer(VARSET_CALLBACK(mover, plane, GAME_PLANE), 0.5 SECONDS)
 
 	if(actual_turf)
 		if(istype(mover, /mob))
@@ -409,8 +435,183 @@
 /obj/structure/stairs/multiz/up
 	direction = UP
 
+	var/datum/staircase/staircase
+
+/obj/structure/stairs/multiz/up/LateInitialize()
+	. = ..()
+
+	if(staircase)
+		return
+
+	var/stairs = list(src)
+
+	for(var/direction in list(turn(dir, 90), turn(dir, -90)))
+		var/adjacent_turf = get_step(src, direction)
+		while(adjacent_turf)
+			var/obj/structure/stairs/multiz/up/up_ladder = locate() in adjacent_turf
+			if(!up_ladder || up_ladder.staircase || up_ladder.dir != dir)
+				break
+
+			stairs += up_ladder
+			adjacent_turf = get_step(adjacent_turf, direction)
+
+	staircase = new(stairs, dir)
+
+/datum/staircase
+
+	/// The direction that this staircase is going in
+	var/dir
+
+	/// The turf -> client images shown when stepped on
+	var/from_turf_to_images = list()
+
+	/// All the turfs that we are monitoring for changes
+	var/from_turfs = list()
+
+	/// Mobs that we are currently displaying images to
+	var/in_range_mob = list()
+
+/datum/staircase/New(list/obj/structure/stairs/multiz/up/stairs, dir)
+	src.dir = dir
+
+	var/to_turfs = list()
+
+	for(var/obj/structure/stairs/multiz/up/stair as anything in stairs)
+		stair.staircase = src
+
+		var/turf/under_the_stairs = get_step(stair, stair.dir)
+
+		for(var/turf/turf in view(under_the_stairs))
+			if(turf in from_turfs)
+				continue
+
+			if((dir == NORTH && turf.y > stair.y) \
+			|| (dir == EAST && turf.x > stair.x) \
+			|| (dir == SOUTH && turf.y < stair.y) \
+			|| (dir == WEST && turf.x < stair.x))
+				continue
+
+			from_turfs += turf
+
+		for(var/turf/turf in view(SSmapping.get_turf_above(under_the_stairs)))
+			if(turf in to_turfs)
+				continue
+			to_turfs += turf
+
+	var/destination_turf_images = list()
+	var/filtered_to_turfs = list()
+
+	for(var/obj/structure/stairs/multiz/up/stair as anything in stairs)
+		for(var/turf/turf as anything in to_turfs)
+			if((dir == NORTH && turf.y <= stair.y) \
+			|| (dir == EAST && turf.x <= stair.x) \
+			|| (dir == SOUTH && turf.y >= stair.y) \
+			|| (dir == WEST && turf.x >= stair.x))
+				continue
+
+			if(istransparentturf(turf))
+				continue
+
+			destination_turf_images["\ref[turf]"] = create_vis_contents_screen(SSmapping.get_turf_below(turf), turf)
+			filtered_to_turfs |= turf
+
+	for(var/turf/turf as anything in from_turfs)
+		for(var/obj/structure/stairs/multiz/up/stair as anything in stairs)
+
+			var/vector/turf_to_stair = vector(stair.x - turf.x, stair.y - turf.y)
+			var/distance_to_stair = sqrt(turf_to_stair.x * turf_to_stair.x + turf_to_stair.y * turf_to_stair.y)
+
+			for(var/turf/to_turf as anything in filtered_to_turfs)
+				var/vector/turf_to_target = vector(to_turf.x - turf.x, to_turf.y - turf.y)
+				var/cross_product = turf_to_stair.x * turf_to_target.y - turf_to_stair.y * turf_to_target.x
+
+				var/distance_to_target = sqrt(turf_to_target.x * turf_to_target.x + turf_to_target.y * turf_to_target.y)
+				if(!distance_to_target || (distance_to_stair && distance_to_target < distance_to_stair))
+					continue
+
+				if(cross_product && abs(cross_product) / (distance_to_stair * distance_to_target) > 0.40)
+					continue
+
+				LAZYADD(from_turf_to_images["\ref[turf]"], destination_turf_images["\ref[to_turf]"])
+				RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered), TRUE)
+
+
+/datum/staircase/proc/handle_entered(turf/originator, atom/what_did_it)
+	SIGNAL_HANDLER
+
+	var/mob/mover = what_did_it
+	if(!istype(mover))
+		return
+
+	if(mover in in_range_mob)
+		return
+
+	RegisterSignal(mover, COMSIG_MOVABLE_MOVED, PROC_REF(handle_movement))
+	RegisterSignal(mover, COMSIG_PARENT_QDELETING, PROC_REF(handle_deleted))
+	handle_movement(mover, originator)
+
+	in_range_mob += mover
+
+
+/datum/staircase/proc/handle_movement(mob/mover, old_loc, direction)
+	SIGNAL_HANDLER
+
+	var/turf/where_from = get_turf(old_loc)
+	if(where_from in from_turfs)
+		for(var/image in from_turf_to_images["\ref[where_from]"])
+			mover.client?.images -= image
+
+	var/turf/where_to = get_turf(mover)
+	if(where_to in from_turfs)
+		for(var/image in from_turf_to_images["\ref[where_to]"])
+			mover.client?.images += image
+
+		return
+
+	in_range_mob -= mover
+	UnregisterSignal(mover, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING))
+
+/datum/staircase/proc/handle_deleted(atom/updater)
+	SIGNAL_HANDLER
+
+	in_range_mob -= updater
+
+
+/proc/create_vis_contents_screen(turf/appear_where, turf/clone_what)
+	var/image/clone = image('icons/turf/floors/floors.dmi', appear_where, "transparent")
+	clone.vis_contents += clone_what
+	clone.vis_contents += GLOB.above_blackness_backdrop
+	clone.override = TRUE
+
+	clone.plane = ABOVE_BLACKNESS_PLANE
+
+	return clone
+
+GLOBAL_DATUM_INIT(above_blackness_backdrop, /atom/movable/above_blackness_backdrop, new)
+
+/atom/movable/above_blackness_backdrop
+	name = "above_blackness_backdrop"
+	anchored = TRUE
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "grey"
+	plane = ABOVE_BLACKNESS_BACKDROP_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
 /obj/structure/stairs/multiz/down
 	direction = DOWN
+
+/obj/effect/stairs
+	var/direction
+
+/obj/effect/stairs/Initialize(mapload, ...)
+	. = ..()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "stairs_[direction]")
+
+/obj/effect/stairs/up
+	direction = "up"
+
+/obj/effect/stairs/down
+	direction = "down"
 
 /obj/structure/stairs/perspective //instance these for the required icons
 	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi'
@@ -452,6 +653,14 @@
 		attack_hand(xeno)
 		return XENO_NONCOMBAT_ACTION
 
+/obj/structure/ore_box/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
+	deconstruct(FALSE)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/computer3frame
 	density = TRUE

@@ -92,7 +92,7 @@
 	var/flashlight_cooldown = 0 //Cooldown for toggling the light
 	var/locate_cooldown = 0 //Cooldown for SL locator
 	var/armor_overlays[]
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/lamp)
 	var/flags_marine_armor = ARMOR_SQUAD_OVERLAY|ARMOR_LAMP_OVERLAY
 	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors. speciality does NOTHING if you have NO_NAME_OVERRIDE
 	w_class = SIZE_HUGE
@@ -137,6 +137,7 @@
 	pockets.max_storage_space = 8
 
 	light_holder = new(src)
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/clothing/suit/storage/marine/Destroy()
 	QDEL_NULL(light_holder)
@@ -366,7 +367,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/rank/chief_medical_officer, /obj/item/clothing/under/marine/dress)
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/qm_suit, /obj/item/clothing/under/rank/cmo, /obj/item/clothing/under/marine/dress)
 	specialty = "M3 pattern officer"
 	item_state_slots = list(WEAR_JACKET = "officer")
 	black_market_value = 20

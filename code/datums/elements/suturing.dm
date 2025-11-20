@@ -124,6 +124,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 			user.visible_message(SPAN_NOTICE("[user] begins to [skill_msg] [description_verb] the [description_wounds] on \his [target_limb.display_name]."),
 				SPAN_HELPFUL("You <b>begin to [skill_msg] [description_verb]</b> the [description_wounds] on your <b>[target_limb.display_name]</b>."))
 			target.custom_pain("It feels like your [target_limb.display_name] is [description_pain]!")
+
 	else
 		possessive = "\the [target]'s"
 		possessive_their = "\the [target]'s"
@@ -276,6 +277,7 @@ maximum_heal = total amount of each damage type that can be healed - IE TRUE/TRU
 					W.salved |= WOUND_SUTURED
 
 	target_limb.heal_damage(brute_to_heal, burn_to_heal)
+	target_limb &= ~LIMB_THIRD_DEGREE_BURNS
 
 	if(!suture_brute && !suture_burn)
 		return SUTURED_FULLY

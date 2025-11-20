@@ -1,13 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "h" = (
-/obj/structure/interior_exit/vehicle/humvee/right2{
-	pixel_x = 1;
-	pixel_y = -10
-	},
 /obj/effect/landmark/interior/spawn/interior_viewport/humvee{
 	pixel_x = 1;
 	pixel_y = -8;
-	alpha = 50
+	layer = 5.23;
+	alpha = 75
 	},
 /obj/structure/bed/chair/comfy/vehicle/passager{
 	dir = 4;
@@ -17,12 +14,15 @@
 	buckling_x = 1
 	},
 /obj/effect/landmark/interior/spawn/entrance{
-	alpha = 50;
+	alpha = 75;
 	exit_type = /obj/structure/interior_exit/vehicle/humvee/right2;
 	name = "back right entrance marker";
 	tag = "back right";
 	pixel_x = 1;
-	pixel_y = -33
+	pixel_y = -10;
+	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi';
+	icon_state = "exit_door";
+	layer = 5.22
 	},
 /turf/open/shuttle/vehicle/floor_3_13,
 /area/interior/vehicle/humvee)
@@ -53,18 +53,16 @@
 	buckling_x = -3;
 	buckling_y = 1
 	},
-/obj/structure/interior_exit/vehicle/humvee/left{
-	pixel_x = -2;
-	pixel_y = 14;
-	layer = 2.8
-	},
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/humvee/left;
 	name = "back left entrance marker";
 	tag = "left";
 	pixel_x = -3;
-	pixel_y = 33
+	pixel_y = 14;
+	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi';
+	icon_state = "exit_door1";
+	layer = 2.8
 	},
 /turf/open/shuttle/vehicle/floor_3_13,
 /area/interior/vehicle/humvee)
@@ -97,22 +95,22 @@
 	pixel_y = 5;
 	layer = 3.12
 	},
-/obj/structure/interior_exit/vehicle/humvee/right{
-	pixel_x = -3;
-	pixel_y = -10
-	},
 /obj/effect/landmark/interior/spawn/interior_viewport/humvee{
-	alpha = 50;
 	pixel_x = -3;
-	pixel_y = -8
+	pixel_y = -8;
+	layer = 5.23;
+	alpha = 75
 	},
 /obj/effect/landmark/interior/spawn/entrance{
-	alpha = 50;
+	alpha = 75;
 	exit_type = /obj/structure/interior_exit/vehicle/humvee/right;
 	name = "right entrance marker";
 	tag = "right";
 	pixel_x = -3;
-	pixel_y = -33
+	pixel_y = -10;
+	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi';
+	icon_state = "exit_door";
+	layer = 5.22
 	},
 /turf/open/shuttle/vehicle/floor_3_13,
 /area/interior/vehicle/humvee)
@@ -128,17 +126,14 @@
 	pixel_x = 1;
 	buckling_x = 1
 	},
-/obj/structure/interior_exit/vehicle/humvee/left2{
-	pixel_x = 1;
-	pixel_y = 14;
-	layer = 2.8
-	},
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/humvee/left2;
 	name = "back left entrance marker";
 	tag = "back left";
-	pixel_y = 33
+	pixel_y = 14;
+	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi';
+	icon_state = "exit_door1"
 	},
 /turf/open/shuttle/vehicle/floor_3_13,
 /area/interior/vehicle/humvee)

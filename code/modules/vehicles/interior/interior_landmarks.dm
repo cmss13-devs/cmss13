@@ -384,15 +384,11 @@
 	viewport.pixel_y = pixel_y
 	viewport.alpha = alpha
 	viewport.icon = icon
-
 	qdel(src)
 
 /obj/effect/landmark/interior/spawn/interior_viewport/humvee
 	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
 	icon_state = "viewport_door"
-
-/obj/effect/landmark/interior/spawn/interior_viewport/humvee/small
-	icon_state = "small_viewport"
 
 /obj/effect/landmark/interior/spawn/interior_viewport/humvee/on_load(datum/interior/interior)
 	var/obj/structure/interior_viewport/humvee/viewport = new(loc)
@@ -401,5 +397,5 @@
 	viewport.pixel_y = pixel_y
 	viewport.alpha = alpha
 	viewport.icon = icon
-
+	viewport.icon_state = icon_state
 	qdel(src)

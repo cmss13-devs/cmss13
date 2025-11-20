@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	if(!ui)
 		ui = new(user, src, "HealthScan", "Health Scan")
 		ui.open()
-		ui.set_autoupdate(FALSE)
+		ui.set_autoupdate(isobserver(user))
 
 /**
  * Returns TRUE if the target is either dead or appears to be dead.

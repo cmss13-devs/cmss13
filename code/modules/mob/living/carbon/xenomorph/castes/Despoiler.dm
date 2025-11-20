@@ -11,7 +11,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_TIER_6
+	speed = XENO_SPEED_HELLHOUND
 
 	deevolves_to = list(XENO_CASTE_SPITTER)
 	acid_level = 2

@@ -226,7 +226,7 @@
 	if(!owner)
 		return
 
-	if(burn_dam > min_eschar_damage * CONFIG_GET(number/organ_health_multiplier))
+	if(burn_dam > min_eschar_damage * CONFIG_GET(number/organ_health_multiplier) && !(status & LIMB_ESCHAR))
 		status |= LIMB_THIRD_DEGREE_BURNS
 
 	if(owner.stat == DEAD) //no eschar on dead
@@ -1238,6 +1238,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		SPAN_HIGHDANGER("Your [display_name] feels burned!"),
 		SPAN_HIGHDANGER("Your stomach turns as the flesh on your [display_name] chars!"))
 	status |= LIMB_ESCHAR
+	status &= ~LIMB_THIRD_DEGREE_BURNS
 	owner.pain.apply_pain(PAIN_ESCHAR)
 	broken_description = pick("eschar")
 	start_processing()

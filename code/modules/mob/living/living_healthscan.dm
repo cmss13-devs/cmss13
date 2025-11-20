@@ -190,6 +190,9 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			var/eschar = null
 			if(limb.status & LIMB_ESCHAR)
 				eschar = "Eschar"
+			var/third_degree_burns = null
+			if(limb.status & LIMB_THIRD_DEGREE_BURNS)
+				third_degree_burns = "3deg burns"
 			var/list/current_list = list(
 				"name" = limb.display_name,
 				"brute" = floor(limb.brute_dam),
@@ -198,6 +201,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				"salved" = limb.is_salved(),
 				"missing" = (limb.status & LIMB_DESTROYED),
 				"limb_status" = null,
+				"limb_third_degree_burns" = third_degree_burns,
 				"limb_eschar" = eschar,
 				"bleeding" = bleeding_check,
 				"implant" = implant,

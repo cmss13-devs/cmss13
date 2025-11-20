@@ -27,6 +27,7 @@ type LimbData = {
   internal_bleeding: BooleanLike;
   limb_status?: string;
   limb_splint?: string;
+  limb_third_degree_burns?: string;
   limb_eschar?: string;
   limb_type?: string;
   open_incision: BooleanLike | string;
@@ -619,6 +620,11 @@ const ScannerLimbs = (props) => {
                   {limb.limb_splint ? (
                     <Box inline color={'lime'} bold>
                       {ui_mode ? '[S]' : `[${limb.limb_splint}]`}
+                    </Box>
+                  ) : null}
+                  {limb.limb_third_degree_burns ? (
+                    <Box inline color={'red'} bold>
+                      {ui_mode ? '[S]' : `[${limb.limb_third_degree_burns}]`}
                     </Box>
                   ) : null}
                   {limb.limb_eschar ? (

@@ -210,7 +210,7 @@
 	var/list/obj/limb/parts = list()
 	for(var/obj/limb/O in limbs)
 		//unsalved burns do not heal by chems below certain threshold
-		if((brute && O.brute_dam) || ((burn && O.burn_dam) && (O.burn_dam > burn_chemical_threshold || O.is_salved() || !chemical)))
+		if((brute && O.brute_dam) || ((burn && O.burn_dam) && (O.burn_dam > burn_chemical_threshold || O.is_salved() || !chemical || !(O.status & LIMB_THIRD_DEGREE_BURNS))))
 			parts += O
 	return parts
 

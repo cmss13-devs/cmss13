@@ -178,7 +178,7 @@
 				for(var/mob/living/carbon/humanus in range(1,loc))
 					humanus.Stun(1)
 					humanus.Superslow(2)
-					to_chat(humanus, SPAN_DANGER("You freeze in confusion as the trap hisses beneath your foot, releasing a cloud of gas."))
+					to_chat(humanus, SPAN_DANGER("You freeze in shock as the trap hisses beneath your foot, releasing a cloud of gas."))
 				trap_type_name = "gas"
 				smoke_system.set_up(smoke_radius, 0, src.loc)
 				smoke_system.start()

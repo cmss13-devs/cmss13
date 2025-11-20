@@ -7308,7 +7308,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
 "arQ" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/item/spacecash/c10,
 /obj/item/spacecash/c10{
 	pixel_y = 3
@@ -7323,7 +7323,7 @@
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/cic)
 "arS" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/item/toy/dice,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices/flight)
@@ -7459,7 +7459,7 @@
 /turf/open/floor/almayer/silver/west,
 /area/almayer/hallways/lower/repair_bay)
 "asj" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/item/toy/deck,
 /obj/item/toy/deck/uno{
 	pixel_x = 13
@@ -7467,7 +7467,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices/flight)
 "ask" = (
-/obj/structure/surface/table/woodentable/gamblingtable,
+/obj/structure/surface/table/gamblingtable,
 /obj/item/reagent_container/food/drinks/cans/beer,
 /obj/item/reagent_container/food/drinks/bottle/sake{
 	pixel_y = 7;
@@ -8496,7 +8496,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
-	name = "\improper Umbilical Airlock";
+	name = "\improper Umbillical Airlock";
 	unacidable = 1;
 	explo_proof = 1;
 	emp_proof = 1
@@ -8888,7 +8888,7 @@
 /area/almayer/command/cichallway)
 "awA" = (
 /obj/structure/prop/almayer/computers/sensor_computer3{
-	name = "weapon targeting computer"
+	name = "weapon targetting computer"
 	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
@@ -12028,7 +12028,7 @@
 	pixel_x = -3
 	},
 /obj/item/dogtag{
-	desc = "A blank marine's information dog tag. The word Ranger and a paw print is scratched into it."
+	desc = "A blank marine's information dog tag. The word Ranger and a pawprint is scratched into it."
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/auxiliary_officer_office)
@@ -44095,7 +44095,7 @@
 "efk" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
-	name = "\improper Umbilical Airlock";
+	name = "\improper Umbillical Airlock";
 	unacidable = 1;
 	explo_proof = 1;
 	emp_proof = 1
@@ -68742,7 +68742,7 @@
 "okd" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "n_umbilical";
-	name = "\improper Umbilical Airlock";
+	name = "\improper Umbillical Airlock";
 	unacidable = 1;
 	explo_proof = 1;
 	emp_proof = 1
@@ -86733,7 +86733,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "\improper Liaison's Bathroom"
+	name = "\improper Liasion's Bathroom"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)

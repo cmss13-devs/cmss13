@@ -26,6 +26,7 @@
 	minimap_icon = "despoiler"
 	spit_types = list(/datum/ammo/xeno/acid/despoiler)
 	minimum_evolve_time = 15 MINUTES
+	evolution_allowed = FALSE
 
 
 /mob/living/carbon/xenomorph/despoiler
@@ -63,6 +64,7 @@
 
 	skull = /obj/item/skull/despoiler
 	pelt = /obj/item/pelt/despoiler
+
 
 
 /datum/action/xeno_action/onclick/corrosive_slash/use_ability(atom/targeted_atom)

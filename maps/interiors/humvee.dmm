@@ -18,7 +18,7 @@
 	},
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 50;
-	exit_type = /obj/structure/interior_exit/vehicle/humvee/right;
+	exit_type = /obj/structure/interior_exit/vehicle/humvee/right2;
 	name = "back right entrance marker";
 	tag = "back right";
 	pixel_x = 1;

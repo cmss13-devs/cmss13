@@ -8,7 +8,7 @@
 	cleanable_type = CLEANABLE_IGNITABLE
 	overlay_on_initialize = FALSE
 	/// The amount required to spread
-	var/min_spread_amount = 7.5
+	var/min_spread_amount = 7.5 // This means 30 can spread once
 	/// The amount to decrease by every process (30s)
 	var/evaporate_amount = 2.5
 	/// The current amount of fuel
@@ -99,11 +99,12 @@
 
 	// -10 to 0 based on ratio between amount and min_spread_amount
 	// An amount >= min_spread_amount results in 0 pressure
-	// An amount near zero results in almost -10 pressure (so near 0 duration for /datum/reagent/napalm/ut assuming its BURN_TIME_TIER_2)
+	// An amount near zero results in almost -10 pressure (so near 0 duration assuming durationmod is 2 for BURN_TIME_TIER_2)
 	var/pressure = clamp((amount / min_spread_amount - 1) * 10, -10, 0)
 
 	if(!locate(/obj/flamer_fire) in my_turf)
-		new /obj/flamer_fire(my_turf, null, null, 0, null, FLAMESHAPE_DEFAULT, null, null, pressure)
+		var/datum/reagent/napalm/weak/reagent = new
+		new /obj/flamer_fire(my_turf, null, reagent, 0, null, FLAMESHAPE_DEFAULT, null, null, pressure)
 
 	for(var/direction in GLOB.cardinals)
 		var/turf/target = get_step(my_turf, direction)
@@ -112,7 +113,8 @@
 			continue
 		if(locate(/obj/flamer_fire) in target)
 			continue
-		new /obj/flamer_fire(target, null, null, 0, null, FLAMESHAPE_DEFAULT, null, null, pressure) // This will invoke an ignite
+		var/datum/reagent/napalm/weak/reagent = new
+		new /obj/flamer_fire(target, null, reagent, 0, null, FLAMESHAPE_DEFAULT, null, null, pressure) // This will invoke an ignite
 
 /obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel
 	icon_state = "mustard"

@@ -20,6 +20,8 @@
 	var/time_to_live = 8
 	var/smokeranking = SMOKE_RANK_HARMLESS //Override priority. A higher ranked smoke cloud will displace lower and equal ones on spreading.
 	var/datum/cause_data/cause_data = null
+	//does it obscure aim
+	var/obscuring = TRUE
 
 	//Remove this bit to use the old smoke
 	icon = 'icons/effects/96x96.dmi'
@@ -855,6 +857,7 @@
 	time_to_live = 6
 	spread_speed = 1
 	alpha = 60
+	obscuring = FALSE
 	var/remove_chem = 3
 
 /obj/effect/particle_effect/smoke/decomposing_enzymes/affect(mob/living/carbon/affected_mob)

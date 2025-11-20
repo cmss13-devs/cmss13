@@ -243,6 +243,8 @@
 				break
 
 		for(var/obj/effect/particle_effect/smoke/S in T)
+			if(!S.obscuring)
+				continue
 			blocked = TRUE
 			break
 

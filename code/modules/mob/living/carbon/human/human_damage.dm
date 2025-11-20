@@ -336,10 +336,15 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	var/list/obj/limb/parts = get_damageable_limbs(limb_damage_chance)
 	var/amount_of_parts = length(parts)
 	var/armor_config = GLOB.marine_ranged
-	if(armor_type == ARMOR_MELEE)
-		armor_config = GLOB.marine_melee
-	if(armor_type == ARMOR_BOMB)
-		armor_config = GLOB.marine_explosive
+	switch(armor_type)
+		if(ARMOR_MELEE)
+			armor_config = GLOB.marine_melee
+		//if(ARMOR_BULLET, ARMOR_LASER, ARMOR_ENERGY, ARMOR_BIO)
+		//	armor_config = GLOB.marine_ranged
+		if(ARMOR_BOMB)
+			armor_config = GLOB.marine_explosive
+		if(ARMOR_RAD, ARMOR_INTERNALDAMAGE)
+			armor_config = GLOB.marine_organ_damage
 	for(var/obj/limb/L as anything in parts)
 		var/armor = getarmor(L, armor_type)
 		var/modified_damage = armor_damage_reduction(armor_config, damage, armor, penetration, 0, 0)
@@ -406,8 +411,8 @@ This function restores all limbs.
 	switch(armor_type)
 		if(ARMOR_MELEE)
 			armor_config = GLOB.marine_melee
-		if(ARMOR_BULLET, ARMOR_LASER, ARMOR_ENERGY, ARMOR_BIO)
-			armor_config = GLOB.marine_ranged
+		//if(ARMOR_BULLET, ARMOR_LASER, ARMOR_ENERGY, ARMOR_BIO)
+		//	armor_config = GLOB.marine_ranged
 		if(ARMOR_BOMB)
 			armor_config = GLOB.marine_explosive
 		if(ARMOR_RAD, ARMOR_INTERNALDAMAGE)

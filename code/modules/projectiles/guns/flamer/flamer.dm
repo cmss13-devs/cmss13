@@ -301,7 +301,7 @@
 		return
 
 	var/source_turf = get_turf(user)
-	var/smoke_range = 5 // the max range the smoke will travel
+	var/smoke_range = 4 // the max range the smoke will travel
 	var/distance = 0 // the distance traveled
 	var/use_multiplier = 3 // if you want to increase the ammount of units drained from the tank
 	var/units_in_smoke = 35 // the smoke overlaps a little so this much is probably already good

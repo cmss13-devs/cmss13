@@ -1,8 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Changed some ERT messages to be more related to what they are."
-  - rscadd: "Added MP Honor Guard HUD and title pamphlet."
-  - rscadd: "Added Visiting Lt Colonel and Colonel presets."
-  - rscdel: "Removed an unused proc."
-  - bugfix: "Fixed an error with ARES WY IFF"

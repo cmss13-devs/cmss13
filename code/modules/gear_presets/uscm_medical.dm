@@ -43,10 +43,9 @@
 	role_comm_title = "CMO"
 	skills = /datum/skills/CMO
 
-	minimap_icon = list("doctor")
+	minimap_icon = "doctor"
 	minimap_background = "background_command"
-
-	utility_under = list(/obj/item/clothing/under/rank/chief_medical_officer)
+	utility_under = list(/obj/item/clothing/under/rank/cmo)
 	utility_hat = list()
 	utility_gloves = list()
 	utility_shoes = list(/obj/item/clothing/shoes/white)
@@ -57,7 +56,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chief_medical_officer(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/cmo(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/unique/tier_two(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
@@ -74,7 +73,7 @@
 	skills = /datum/skills/doctor
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_DATABASE)
 
-	minimap_icon = list("doctor")
+	minimap_icon = "doctor"
 	minimap_background = "background_medical"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/load_gear(mob/living/carbon/human/new_human)
@@ -102,6 +101,21 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/green(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
 
+
+/datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist
+	name = "USCM Pharmaceutical Physician"
+	assignment = JOB_PHARMACIST
+
+/datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/marine/satchel
+	if (new_human.client?.prefs && new_human.client.prefs.backbag == 1)
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/pharmacist(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
+
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_medical/field_doctor
@@ -113,7 +127,7 @@
 	role_comm_title = "Fld Doc"
 	skills = /datum/skills/doctor
 
-	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_FIELD_DOC)
+	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_FIELD_DOC, ACCESS_MARINE_DATABASE)
 
 	minimap_icon = "field_doctor"
 	minimap_background = "background_medical"
@@ -137,10 +151,10 @@
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
+	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_DATABASE)
 
-	minimap_icon = list("nurse")
+	minimap_icon = "nurse"
 	minimap_background = "background_shipside"
-
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
@@ -164,7 +178,7 @@
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_RESEARCHER
 	job_title = JOB_RESEARCHER
-	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0, PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_3)
+	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0, PAY_SHORT_CCMOA = JOB_PLAYTIME_TIER_1, PAY_SHORT_CCMOB = JOB_PLAYTIME_TIER_2, PAY_SHORT_CCMOC = JOB_PLAYTIME_TIER_3, PAY_SHORT_CCMOD = JOB_PLAYTIME_TIER_4)
 	role_comm_title = "Rsr"
 	skills = /datum/skills/researcher
 
@@ -174,7 +188,6 @@
 
 	minimap_icon = "researcher"
 	minimap_background = "background_medical"
-
 	utility_under = list(/obj/item/clothing/under/marine/officer/researcher)
 	utility_hat = list()
 	utility_gloves = list()

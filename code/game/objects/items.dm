@@ -923,8 +923,8 @@
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
 		user.client.change_view(GLOB.world_view_size, src)
-		user.client.pixel_x = 0
-		user.client.pixel_y = 0
+		user.client.set_pixel_x(0)
+		user.client.set_pixel_y(0)
 
 /obj/item/proc/zoom_handle_mob_move_or_look(mob/living/mover, actually_moving, direction, specific_direction)
 	SIGNAL_HANDLER
@@ -961,17 +961,17 @@
 
 		switch(user.dir)
 			if(NORTH)
-				user.client.pixel_x = 0
-				user.client.pixel_y = viewoffset
+				user.client.set_pixel_x(0)
+				user.client.set_pixel_y(viewoffset)
 			if(SOUTH)
-				user.client.pixel_x = 0
-				user.client.pixel_y = -viewoffset
+				user.client.set_pixel_x(0)
+				user.client.set_pixel_y(-viewoffset)
 			if(EAST)
-				user.client.pixel_x = viewoffset
-				user.client.pixel_y = 0
+				user.client.set_pixel_x(viewoffset)
+				user.client.set_pixel_y(0)
 			if(WEST)
-				user.client.pixel_x = -viewoffset
-				user.client.pixel_y = 0
+				user.client.set_pixel_x(-viewoffset)
+				user.client.set_pixel_y(0)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_ZOOM, user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
@@ -1159,3 +1159,33 @@
 ///Called by /mob/living/carbon/swap_hand() when hands are swapped
 /obj/item/proc/hands_swapped(mob/living/carbon/swapper_of_hands)
 	return
+
+// formerly in gun_helpers.dm, moved here for universal usage
+/obj/item/proc/unique_action(mob/user)
+	return
+
+/obj/item/verb/use_unique_action()
+	set category = "Object"
+	set name = "Unique Action"
+	set desc = "Use anything unique your item is capable of."
+	set src = usr.contents
+
+	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
+		return
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		to_chat(usr, SPAN_WARNING("Not right now."))
+		return
+
+	var/obj/item/held_item = usr.get_active_hand()
+	if(!held_item)
+		to_chat(usr, SPAN_WARNING("You need to be holding something to do that!"))
+		return
+
+	src = held_item
+
+	// For guns, check if we should use the active attachable instead
+	var/obj/item/weapon/gun/gun = src
+	if(isgun(gun) && gun.active_attachable)
+		src = gun.active_attachable
+
+	unique_action(usr)

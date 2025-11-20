@@ -42,26 +42,28 @@
 		list("Blood", 5, /obj/item/reagent_container/blood/OMinus, null, VENDOR_ITEM_REGULAR),
 		list("Surgical Bed", 10, /obj/structure/bed/portable_surgery, null, VENDOR_ITEM_REGULAR),
 
-		list("Pillbottle (Bicaridine)", 5, /obj/item/storage/pill_bottle/bicaridine, null, VENDOR_ITEM_RECOMMENDED),
-		list("Pillbottle (Dexalin)", 5, /obj/item/storage/pill_bottle/dexalin, null, VENDOR_ITEM_REGULAR),
-		list("Pillbottle (Dylovene)", 5, /obj/item/storage/pill_bottle/antitox, null, VENDOR_ITEM_REGULAR),
-		list("Pillbottle (Inaprovaline)", 5, /obj/item/storage/pill_bottle/inaprovaline, null, VENDOR_ITEM_REGULAR),
-		list("Pillbottle (Kelotane)", 5, /obj/item/storage/pill_bottle/kelotane, null, VENDOR_ITEM_RECOMMENDED),
-		list("Pillbottle (Peridaxon)", 5, /obj/item/storage/pill_bottle/peridaxon, null, VENDOR_ITEM_REGULAR),
-		list("Pillbottle (Tramadol)", 5, /obj/item/storage/pill_bottle/tramadol, null, VENDOR_ITEM_RECOMMENDED),
+		list("Pill Bottle (Bicaridine)", 5, /obj/item/storage/pill_bottle/bicaridine, null, VENDOR_ITEM_RECOMMENDED),
+		list("Pill Bottle (Dexalin)", 5, /obj/item/storage/pill_bottle/dexalin, null, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Dylovene)", 5, /obj/item/storage/pill_bottle/antitox, null, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Inaprovaline)", 5, /obj/item/storage/pill_bottle/inaprovaline, null, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Kelotane)", 5, /obj/item/storage/pill_bottle/kelotane, null, VENDOR_ITEM_RECOMMENDED),
+		list("Pill Bottle (Peridaxon)", 5, /obj/item/storage/pill_bottle/peridaxon, null, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Tramadol)", 5, /obj/item/storage/pill_bottle/tramadol, null, VENDOR_ITEM_RECOMMENDED),
 
-		list("Injector (Bicaridine)", 1, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Dexalin+)", 1, /obj/item/reagent_container/hypospray/autoinjector/dexalinp, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Epinephrine)", 2, /obj/item/reagent_container/hypospray/autoinjector/adrenaline, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Inaprovaline)", 1, /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Kelotane)", 1, /obj/item/reagent_container/hypospray/autoinjector/kelotane, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Oxycodone)", 2, /obj/item/reagent_container/hypospray/autoinjector/oxycodone, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/tramadol, null, VENDOR_ITEM_REGULAR),
-		list("Injector (Tricord)", 1, /obj/item/reagent_container/hypospray/autoinjector/tricord, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Bicaridine)", 1, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Dexalin+)", 1, /obj/item/reagent_container/hypospray/autoinjector/dexalinp, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Dylovene)", 1, /obj/item/reagent_container/hypospray/autoinjector/antitoxin, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Epinephrine)", 2, /obj/item/reagent_container/hypospray/autoinjector/adrenaline, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Inaprovaline)", 1, /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Kelotane)", 1, /obj/item/reagent_container/hypospray/autoinjector/kelotane, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Oxycodone)", 1, /obj/item/reagent_container/hypospray/autoinjector/oxycodone, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Peridaxon)", 1, /obj/item/reagent_container/hypospray/autoinjector/peridaxon, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tramadol)", 1, /obj/item/reagent_container/hypospray/autoinjector/tramadol, null, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", 1, /obj/item/reagent_container/hypospray/autoinjector/tricord, null, VENDOR_ITEM_REGULAR),
 
-		list("Autoinjector (C-S) (EMPTY)", 1, /obj/item/reagent_container/hypospray/autoinjector/empty/small, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (C-M) (EMPTY)", 2, /obj/item/reagent_container/hypospray/autoinjector/empty/medium, null, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (C-L) (EMPTY)", 4, /obj/item/reagent_container/hypospray/autoinjector/empty/large, null, VENDOR_ITEM_REGULAR),
+		list("15u Custom Autoinjector (EMPTY)", 1, /obj/item/reagent_container/hypospray/autoinjector/empty/small, null, VENDOR_ITEM_REGULAR),
+		list("30u Custom Autoinjector (EMPTY)", 2, /obj/item/reagent_container/hypospray/autoinjector/empty/medium, null, VENDOR_ITEM_REGULAR),
+		list("60u Custom Autoinjector (EMPTY)", 4, /obj/item/reagent_container/hypospray/autoinjector/empty/large, null, VENDOR_ITEM_REGULAR),
 
 		list("Emergency Defibrillator", 4, /obj/item/device/defibrillator, null, VENDOR_ITEM_MANDATORY),
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
@@ -144,7 +146,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Construction Pouch", 0, /obj/item/storage/pouch/construction, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Document Pouch", 0, /obj/item/storage/pouch/document, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Electronics Pouch (Full)", 0, /obj/item/storage/pouch/electronics/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("First-Aid Pouch (Refillable Autoinjectors)", 0, /obj/item/storage/pouch/firstaid/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("First Responder Pouch", 0, /obj/item/storage/pouch/first_responder, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -158,6 +160,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Pressurized Reagent Canister Pouch (Revival Mix - Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Pressurized Reagent Canister Pouch (Revival Mix - Peridaxon)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Pressurized Reagent Canister Pouch (Field Anesthetic)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (EMPTY)", 0, /obj/item/storage/pouch/pressurized_reagent_canister, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Tools Pouch (Full)", 0, /obj/item/storage/pouch/tools/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Machete Pouch (Full)", 0, /obj/item/storage/pouch/machete/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -204,6 +207,15 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/uscm/medical_grey
 	path = /obj/item/clothing/under/rank/medical/grey
+
+/datum/gear/synthetic/uscm/medical_white
+	path = /obj/item/clothing/under/rank/medical/white
+
+/datum/gear/synthetic/uscm/medical_black
+	path = /obj/item/clothing/under/rank/medical/morgue
+
+/datum/gear/synthetic/uscm/medical_pharmacist
+	path = /obj/item/clothing/under/rank/medical/pharmacist
 
 /datum/gear/synthetic/uscm/standard_synth
 	path = /obj/item/clothing/under/rank/synthetic
@@ -432,6 +444,36 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/headwear
 	category = "Headwear"
 
+/datum/gear/synthetic/headwear/surgcap_green
+	path = /obj/item/clothing/head/surgery/green
+
+/datum/gear/synthetic/headwear/surgcap_blue
+	path = /obj/item/clothing/head/surgery/blue
+
+/datum/gear/synthetic/headwear/surgcap_lightblue
+	path = /obj/item/clothing/head/surgery/lightblue
+
+/datum/gear/synthetic/headwear/surgcap_purple
+	path = /obj/item/clothing/head/surgery/purple
+
+/datum/gear/synthetic/headwear/surgcap_olive
+	path = /obj/item/clothing/head/surgery/olive
+
+/datum/gear/synthetic/headwear/surgcap_grey
+	path = /obj/item/clothing/head/surgery/grey
+
+/datum/gear/synthetic/headwear/surgcap_brown
+	path = /obj/item/clothing/head/surgery/brown
+
+/datum/gear/synthetic/headwear/surgcap_white
+	path = /obj/item/clothing/head/surgery/white
+
+/datum/gear/synthetic/headwear/surgcap_black
+	path = /obj/item/clothing/head/surgery/morgue
+
+/datum/gear/synthetic/headwear/surgcap_pharmacist
+	path = /obj/item/clothing/head/surgery/pharmacist
+
 /datum/gear/synthetic/headwear/beanie
 	path = /obj/item/clothing/head/beanie
 
@@ -527,6 +569,63 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/helmet/marine_urban
 	path = /obj/item/clothing/head/helmet/marine/urban
+
+/datum/gear/synthetic/helmet/marine_medic
+	path = /obj/item/clothing/head/helmet/marine/medic
+
+/datum/gear/synthetic/helmet/marine_medic_grey
+	path = /obj/item/clothing/head/helmet/marine/medic/grey
+
+/datum/gear/synthetic/helmet/marine_medic_white
+	path = /obj/item/clothing/head/helmet/marine/medic/white
+
+/datum/gear/synthetic/helmet/marine_medic_jungle
+	path = /obj/item/clothing/head/helmet/marine/medic/jungle
+
+/datum/gear/synthetic/helmet/marine_medic_snow
+	path = /obj/item/clothing/head/helmet/marine/medic/snow
+
+/datum/gear/synthetic/helmet/marine_medic_desert
+	path = /obj/item/clothing/head/helmet/marine/medic/desert
+
+/datum/gear/synthetic/helmet/marine_medic_urban
+	path = /obj/item/clothing/head/helmet/marine/medic/urban
+
+/datum/gear/synthetic/helmet/marine_intel
+	path = /obj/item/clothing/head/helmet/marine/rto/intel
+
+/datum/gear/synthetic/helmet/marine_intel_grey
+	path = /obj/item/clothing/head/helmet/marine/rto/intel/grey
+
+/datum/gear/synthetic/helmet/marine_intel_jungle
+	path = /obj/item/clothing/head/helmet/marine/rto/intel/jungle
+
+/datum/gear/synthetic/helmet/marine_intel_snow
+	path = /obj/item/clothing/head/helmet/marine/rto/intel/snow
+
+/datum/gear/synthetic/helmet/marine_intel_desert
+	path = /obj/item/clothing/head/helmet/marine/rto/intel/desert
+
+/datum/gear/synthetic/helmet/marine_intel_urban
+	path = /obj/item/clothing/head/helmet/marine/rto/intel/urban
+
+/datum/gear/synthetic/helmet/marine_mp
+	path = /obj/item/clothing/head/helmet/marine/MP
+
+/datum/gear/synthetic/helmet/marine_mp_grey
+	path = /obj/item/clothing/head/helmet/marine/MP/grey
+
+/datum/gear/synthetic/helmet/marine_mp_jungle
+	path = /obj/item/clothing/head/helmet/marine/MP/jungle
+
+/datum/gear/synthetic/helmet/marine_mp_snow
+	path = /obj/item/clothing/head/helmet/marine/MP/snow
+
+/datum/gear/synthetic/helmet/marine_mp_desert
+	path = /obj/item/clothing/head/helmet/marine/MP/desert
+
+/datum/gear/synthetic/helmet/marine_mp_urban
+	path = /obj/item/clothing/head/helmet/marine/MP/urban
 
 /datum/gear/synthetic/mask
 	category = "Mask"
@@ -693,17 +792,27 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/backpack/marine_satchel
 	path = /obj/item/storage/backpack/marine/satchel
 
+/datum/gear/synthetic/backpack/marine_satchel_med
+	path = /obj/item/storage/backpack/marine/satchel/medic
+
 /datum/gear/synthetic/backpack/satchel
 	path = /obj/item/storage/backpack/satchel
 
-/datum/gear/synthetic/backpack/satchel_med
-	path = /obj/item/storage/backpack/satchel/med
+/datum/gear/synthetic/backpack/satchel_blue
+	path = /obj/item/storage/backpack/satchel/blue
+
+/datum/gear/synthetic/backpack/satchel_black
+	path = /obj/item/storage/backpack/satchel/black
 
 /datum/gear/synthetic/backpack/marine_engineer_satchel
 	path = /obj/item/storage/backpack/marine/engineerpack/satchel
 
 /datum/gear/synthetic/backpack/marine_engineer_chestrig
 	path = /obj/item/storage/backpack/marine/engineerpack/welder_chestrig
+
+/datum/gear/synthetic/backpack/marine_radio_telephone
+	path = /obj/item/storage/backpack/marine/satchel/rto
+	loadout_cost = 24
 
 /datum/gear/synthetic/armband
 	path = /obj/item/clothing/accessory/armband
@@ -772,6 +881,7 @@ GLOBAL_LIST_INIT(cm_vending_synth_tools, list(
 	list("Surgical Drop Pouch (Blue)", 15, /obj/item/clothing/accessory/storage/surg_vest/drop_blue, null, VENDOR_ITEM_REGULAR),
 	list("Surgical Drop Pouch (Black)", 15, /obj/item/clothing/accessory/storage/surg_vest/drop_black, null, VENDOR_ITEM_REGULAR),
 	list("Tool Webbing", 15, /obj/item/clothing/accessory/storage/tool_webbing/equipped, null, VENDOR_ITEM_REGULAR),
+	list("Tool Drop Pouch", 15, /obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/equipped, null, VENDOR_ITEM_REGULAR),
 	list("Logistics IMP Backpack", 15, /obj/item/storage/backpack/marine/satchel/big, null, VENDOR_ITEM_REGULAR),
 	list("Expedition Chestrig", 15, /obj/item/storage/backpack/marine/satchel/intel/chestrig, null, VENDOR_ITEM_REGULAR),
 ))

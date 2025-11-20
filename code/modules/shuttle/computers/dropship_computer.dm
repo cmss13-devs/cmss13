@@ -104,7 +104,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-		var/name = shuttle?.name
+		var/name = capitalize(shuttle?.name)
 		if(can_change_shuttle)
 			name = "Remote"
 		ui = new(user, src, "DropshipFlightControl", "[name] Flight Computer")
@@ -316,6 +316,7 @@
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
 		message_admins("[key_name(xeno)] has locked the dropship '[dropship]'", xeno.x, xeno.y, xeno.z)
 		notify_ghosts(header = "Dropship Locked", message = "[xeno] has locked [dropship]!", source = xeno, action = NOTIFY_ORBIT)
+		SScmtv.spectate_event("Dropship Locked", src)
 		return
 
 	if(dropship_control_lost)
@@ -334,6 +335,9 @@
 			return
 		hijack(xeno)
 		return
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/update_icon()
 	. = ..()

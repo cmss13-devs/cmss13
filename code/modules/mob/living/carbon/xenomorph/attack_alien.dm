@@ -223,10 +223,11 @@
 
 			var/knocked_down
 			if(attacking_xeno.attempt_tackle(src, tackle_mult, tackle_min_offset, tackle_max_offset))
-				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				var/strength = rand(attacking_xeno.tacklestrength_min, attacking_xeno.tacklestrength_max)
-				Stun(strength)
-				KnockDown(strength) // Purely for knockdown visuals. All the heavy lifting is done by Stun
+				var/datum/status_effect/incapacitating/stun/stun = Stun(strength, resistable=TRUE)
+				var/stun_resisted = strength != stun.last_amount
+				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, stun_resisted ? 1.5 : 0)
+				KnockDown(stun.last_amount) // Purely for knockdown visuals. All the heavy lifting is done by Stun
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] tackles down [src]!"),
 				SPAN_DANGER("We tackle down [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				SEND_SIGNAL(src, COMSIG_MOB_TACKLED_DOWN, attacking_xeno)
@@ -362,6 +363,23 @@
 			SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		return XENO_ATTACK_ACTION
 
+/obj/structure/surface/table/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(!breakable || unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	if(sheet_type == /obj/item/stack/sheet/wood)
+		playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
+	else
+		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	health -= xeno.melee_damage_upper
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		deconstruct(FALSE)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 //Breaking barricades
 /obj/structure/barricade/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
@@ -401,10 +419,19 @@
 	deconstruct(FALSE)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/surface/rack/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	deconstruct(FALSE)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 //Default "structure" proc. This should be overwritten by sub procs.
 //If we sent it to monkey we'd get some weird shit happening.
 /obj/structure/attack_alien(mob/living/carbon/xenomorph/M)
-	// fuck off dont destroy my unslashables
+	// fuck off don't destroy my unslashables
 	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(M, SPAN_WARNING("We stare at \the [src] cluelessly."))
 		return XENO_NO_DELAY_ACTION
@@ -432,16 +459,37 @@
 		attack_hand(M)
 		return XENO_NONCOMBAT_ACTION
 
+/obj/structure/bed/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, hit_bed_sound, 25, 1)
+	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	unbuckle()
+	deconstruct(FALSE)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 //Medevac stretchers. Unbuckle ony
 /obj/structure/bed/medevac_stretcher/attack_alien(mob/living/carbon/xenomorph/M)
 	unbuckle()
 	return XENO_NONCOMBAT_ACTION
 
+/obj/structure/bed/medevac_stretcher/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	unbuckle()
+	xeno.visible_message(SPAN_DANGER("[xeno] smacks [src] with its tail!"),
+	SPAN_DANGER("We smack [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_LOW
+
 //Portable surgical bed. Ditto, though it's meltable.
 /obj/structure/bed/portable_surgery/attack_alien(mob/living/carbon/xenomorph/M)
 	unbuckle()
 	return XENO_NONCOMBAT_ACTION
+
+/obj/structure/bed/portable_surgery/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	unbuckle()
+	xeno.visible_message(SPAN_DANGER("[xeno] smacks [src] with its tail!"),
+	SPAN_DANGER("We smack [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_LOW
 
 //Smashing lights
 /obj/structure/machinery/light/attack_alien(mob/living/carbon/xenomorph/M)
@@ -463,6 +511,15 @@
 	else
 		attack_generic(M, M.melee_damage_lower)
 	return XENO_ATTACK_ACTION
+
+/obj/structure/window/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(not_damageable) //Impossible to destroy
+		return TAILSTAB_COOLDOWN_NONE
+	health -= xeno.melee_damage_upper
+	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+	SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	healthcheck(TRUE, TRUE, TRUE, xeno)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 //Slashing bots
 /obj/structure/machinery/bot/attack_alien(mob/living/carbon/xenomorph/M)
@@ -491,6 +548,15 @@
 		toggle_cam_status(M, TRUE)
 		return XENO_ATTACK_ACTION
 
+/obj/structure/machinery/camera/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	. = TAILSTAB_COOLDOWN_NONE
+	if(status)
+		. = ..()
+		if(. != TAILSTAB_COOLDOWN_NONE)
+			wires = 0 //wires all cut
+			light_disabled = 0
+			toggle_cam_status(xeno, TRUE)
+
 //Slashing windoors
 /obj/structure/machinery/door/window/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
@@ -503,6 +569,19 @@
 	take_damage(damage)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/machinery/door/window/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/Glasshit.ogg', 25, 1)
+	update_health(40)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] shatters [src] with its tail!"),
+		SPAN_DANGER("We shatter [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+		SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 //Slashing grilles
 /obj/structure/grille/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
@@ -510,7 +589,7 @@
 	var/damage_dealt = 5
 	M.visible_message(SPAN_DANGER("[M] mangles [src]!"),
 	SPAN_DANGER("We mangle [src]!"),
-	SPAN_DANGER("We hear twisting metal!"), 5, CHAT_TYPE_XENO_COMBAT)
+	SPAN_DANGER("You hear twisting metal!"), 5, CHAT_TYPE_XENO_COMBAT)
 
 	if(shock(M, 70))
 		M.visible_message(SPAN_DANGER("ZAP! [M] spazzes wildly amongst a smell of burnt ozone."),
@@ -521,6 +600,24 @@
 	health -= damage_dealt
 	healthcheck()
 	return XENO_ATTACK_ACTION
+
+/obj/structure/grille/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/grillehit.ogg', 25, 1)
+
+	xeno.visible_message(SPAN_DANGER("[xeno] mangles [src] with its tail!"),
+	SPAN_DANGER("We mangle [src] with our tail!"),
+	SPAN_DANGER("You hear twisting metal!"), 5, CHAT_TYPE_XENO_COMBAT)
+
+	if(shock(xeno, 70))
+		xeno.visible_message(SPAN_DANGER("ZAP! [xeno] spazzes wildly amongst a smell of burnt ozone."),
+		SPAN_DANGER("ZAP! You twitch and dance like a monkey on hyperzine!"),
+		SPAN_DANGER("You hear a sharp ZAP and a smell of ozone."))
+
+	health -= 5
+	healthcheck()
+	return TAILSTAB_COOLDOWN_NORMAL
 
 //Slashing fences
 /obj/structure/fence/attack_alien(mob/living/carbon/xenomorph/M)
@@ -534,11 +631,24 @@
 	healthcheck()
 	return XENO_ATTACK_ACTION
 
-/obj/structure/fence/electrified/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/fence/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	xeno.visible_message(SPAN_DANGER("[xeno] mangles [src] with its tail!"),
+	SPAN_DANGER("We mangle [src] with our tail!"),
+	SPAN_DANGER("You hear twisting metal!"), 5, CHAT_TYPE_XENO_COMBAT)
+
+	health -= 25
+	healthcheck()
+	return TAILSTAB_COOLDOWN_NORMAL
+
+/obj/structure/fence/electrified/attack_alien(mob/living/carbon/xenomorph/user)
 	if(electrified && !cut)
-		electrocute_mob(M, get_area(breaker_switch), src, 0.75)
+		electrocute_mob(user, get_area(breaker_switch), src, 0.75)
 	return ..()
 
+/obj/structure/fence/electrified/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(electrified && !cut)
+		electrocute_mob(xeno, get_area(breaker_switch), src, 0.25)
+	return ..()
 
 //Slashin mirrors
 /obj/structure/mirror/attack_alien(mob/living/carbon/xenomorph/M)
@@ -557,6 +667,16 @@
 		shatter()
 	return XENO_ATTACK_ACTION
 
+/obj/structure/mirror/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	if(shattered)
+		playsound(loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
+		return TAILSTAB_COOLDOWN_LOW
+	shatter()
+	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+	SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 //airlock assemblies
 /obj/structure/airlock_assembly/attack_alien(mob/living/carbon/xenomorph/xeno)
@@ -575,6 +695,20 @@
 	xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src]!"),
 	SPAN_DANGER("We [xeno.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 
+/obj/structure/airlock_assembly/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(xeno.melee_damage_upper)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		if(!unacidable)
+			qdel(src)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 //Prying open doors
 /obj/structure/machinery/door/airlock/attack_alien(mob/living/carbon/xenomorph/M)
@@ -690,6 +824,9 @@
 				SPAN_DANGER("We pry [src] open."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_NO_DELAY_ACTION
 
+/obj/structure/machinery/door/firedoor/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/mineral_door/resin/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	var/turf/cur_loc = M.loc
 	if(!istype(cur_loc))
@@ -742,6 +879,19 @@
 		SPAN_DANGER("We [M.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/machinery/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(xeno.melee_damage_upper)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 // Destroying reagent dispensers
 /obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/xenomorph/M)
 	if(unslashable || health <= 0 && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
@@ -760,6 +910,21 @@
 		M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] \the [src]!"),
 		SPAN_DANGER("We [M.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
+
+/obj/structure/reagent_dispensers/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(xeno.melee_damage_upper)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		if(!unacidable)
+			qdel(src)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 // Destroying filing cabinets
 /obj/structure/filingcabinet/attack_alien(mob/living/carbon/xenomorph/M)
@@ -780,6 +945,21 @@
 		SPAN_DANGER("We [M.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/filingcabinet/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(xeno.melee_damage_upper)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		if(!unacidable)
+			qdel(src)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 // Destroying morgues & crematoriums
 /obj/structure/morgue/attack_alien(mob/living/carbon/xenomorph/alien)
 	if(unslashable)
@@ -798,6 +978,21 @@
 		alien.visible_message(SPAN_DANGER("[alien] [alien.slashes_verb] \the [src]!"),
 		SPAN_DANGER("We [alien.slash_verb] \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
+
+/obj/structure/morgue/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || health <= 0)
+		return TAILSTAB_COOLDOWN_NONE
+	var destroyloc = loc
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(xeno.melee_damage_upper)
+	if(health <= 0)
+		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		new /obj/item/stack/sheet/metal(destroyloc, 2)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 // Destroying hydroponics trays
 /obj/structure/machinery/portable_atmospherics/hydroponics/attack_alien(mob/living/carbon/xenomorph/alien)
@@ -905,6 +1100,9 @@
 		beenhit++
 	return XENO_ATTACK_ACTION
 
+/obj/structure/machinery/power/apc/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/ladder/attack_alien(mob/living/carbon/xenomorph/M)
 	attack_hand(M)
 	return XENO_NO_DELAY_ACTION
@@ -912,21 +1110,34 @@
 /obj/structure/ladder/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	return attack_hand(M)
 
-/obj/structure/machinery/colony_floodlight/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/colony_floodlight/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(!is_on)
-		to_chat(M, SPAN_WARNING("Why bother? It's just some weird metal thing."))
+		to_chat(xeno, SPAN_WARNING("Why bother? It's just some weird metal thing."))
 		return XENO_NO_DELAY_ACTION
 	if(damaged)
-		to_chat(M, SPAN_WARNING("It's already damaged."))
+		to_chat(xeno, SPAN_WARNING("It's already damaged."))
 		return XENO_NO_DELAY_ACTION
-	M.animation_attack_on(src)
-	M.visible_message("[M] slashes away at [src]!","We slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
-	health  = max(health - rand(M.melee_damage_lower, M.melee_damage_upper), 0)
+	xeno.animation_attack_on(src)
+	xeno.visible_message(SPAN_DANGER("[xeno] slashes away at [src]!"),
+	SPAN_DANGER("We slash and claw at the bright light!"), max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
+	health = max(health - rand(xeno.melee_damage_lower, xeno.melee_damage_upper), 0)
 	if(!health)
 		set_damaged()
 	else
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	return XENO_ATTACK_ACTION
+
+/obj/structure/machinery/colony_floodlight/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(!is_on || damaged)
+		return TAILSTAB_COOLDOWN_NONE
+	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+	SPAN_DANGER("We smash at the bright light with our tail!"), max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
+	health = max(health - xeno.melee_damage_upper, 0)
+	if(!health)
+		set_damaged()
+	else
+		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/machinery/colony_floodlight/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	M.visible_message("[M] starts biting [src]!","In a rage, we start biting [src], but with no effect!", null, 5, CHAT_TYPE_XENO_COMBAT)
@@ -977,6 +1188,23 @@
 			SPAN_DANGER("We smash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		return XENO_ATTACK_ACTION
 
+/obj/structure/closet/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || unacidable)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	if(!opened)
+		var/difficulty = 70 //if its just closed we can smash open quite easily
+		if(welded)
+			difficulty = 30 // if its welded shut it should be harder to smash open
+		if(prob(difficulty))
+			break_open(xeno)
+			xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] open with its tail!"),
+			SPAN_DANGER("We smash [src] open with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+		SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return TAILSTAB_COOLDOWN_NORMAL
+
 /obj/structure/machinery/vending/attack_alien(mob/living/carbon/xenomorph/M)
 	if(is_tipped_over)
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
@@ -1015,11 +1243,33 @@
 		tip_over()
 	return XENO_NO_DELAY_ACTION
 
+/obj/structure/machinery/vending/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(is_tipped_over || unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	if(prob(xeno.melee_damage_upper))
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail beyond recognition!"),
+		SPAN_DANGER("You enter a frenzy and smash [src] with your tail apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		malfunction()
+		tip_over()
+	else
+		xeno.visible_message(SPAN_DANGER("[xeno] slashes [src] with its tail!"),
+		SPAN_DANGER("You slash [src] with your tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/inflatable/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	deflate(1)
 	return XENO_ATTACK_ACTION
+
+/obj/structure/inflatable/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable)
+		return TAILSTAB_COOLDOWN_NONE
+	xeno.visible_message(SPAN_DANGER("[xeno] punctures [src] with its tail!"),
+	SPAN_DANGER("We puncture [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	deflate(TRUE)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/machinery/vending/proc/tip_over()
 	var/matrix/A = matrix()

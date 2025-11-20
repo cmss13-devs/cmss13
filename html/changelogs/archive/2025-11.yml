@@ -255,3 +255,10 @@
   - spellcheck: Removes the indents on periods from the voice cycling text
   - code_imp: Removes the redundant access check on headsets, doesn't actually do
       anything currently besides be a pain in the ass
+2025-11-20:
+  Labeo0:
+  - code_imp: Can now reload UBF with welding fuel from m240 tank
+  Nihisohel:
+  - bugfix: The .38 revolver can now tactically reload properly.
+  realforest2001:
+  - rscadd: Added more helmet and backpack options to Synthetic loadout.

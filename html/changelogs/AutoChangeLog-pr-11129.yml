@@ -1,4 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - bugfix: "The .38 revolver can now tactically reload properly."

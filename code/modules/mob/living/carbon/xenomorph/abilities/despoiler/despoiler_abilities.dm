@@ -16,7 +16,7 @@
 
 /datum/action/xeno_action/activable/tail_stab/despoiler
 	name = "Finishing Acid Stab"
-	charge_time = 3 SECONDS
+	charge_time = 2 SECONDS
 
 
 /datum/action/xeno_action/onclick/decomposing_enzymes

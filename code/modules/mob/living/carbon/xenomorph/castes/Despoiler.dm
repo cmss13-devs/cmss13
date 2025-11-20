@@ -14,7 +14,7 @@
 	speed = XENO_SPEED_HELLHOUND
 
 	deevolves_to = list(XENO_CASTE_SPITTER)
-	acid_level = 2
+	acid_level = 3
 
 
 	tackle_min = 4

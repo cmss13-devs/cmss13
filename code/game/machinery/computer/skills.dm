@@ -69,10 +69,9 @@
 </tr>"}
 					if(!isnull(GLOB.data_core.general))
 						for(var/datum/data/record/R in sortRecord(GLOB.data_core.general, sortBy, order))
-							for(var/datum/data/record/E in GLOB.data_core.security)
-								dat += "<tr><td><A href='byond://?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
-								dat += "<td>[R.fields["id"]]</td>"
-								dat += "<td>[R.fields["rank"]]</td>"
+							dat += "<tr><td><A href='byond://?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
+							dat += "<td>[R.fields["id"]]</td>"
+							dat += "<td>[R.fields["rank"]]</td>"
 						dat += "</table><hr width='75%' />"
 					dat += "<A href='byond://?src=\ref[src];choice=Record Maintenance'>Record Maintenance</A><br><br>"
 					dat += "<A href='byond://?src=\ref[src];choice=Log Out'>{Log Out}</A>"

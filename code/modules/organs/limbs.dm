@@ -238,7 +238,7 @@
 
 	var/damage = armor_damage_reduction(GLOB.marine_eschar, burn*3, armor, 0, 0, 0, max_damage ? (100*(max_damage-burn_dam) / max_damage) : 100)
 
-	if(burn_dam > min_eschar_damage * CONFIG_GET(number/organ_health_multiplier) && prob(damage*0.7))
+	if(burn_dam > min_eschar_damage * CONFIG_GET(number/organ_health_multiplier) && prob(damage))
 		eschar()
 
 /**

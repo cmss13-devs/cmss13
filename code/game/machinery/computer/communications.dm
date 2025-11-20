@@ -324,16 +324,7 @@
 			state = STATE_ALERT_LEVEL
 
 		if("selectlz")
-			if(!SSticker.mode.active_lz)
-				var/lz_choices = list("lz1", "lz2")
-				var/new_lz = tgui_input_list(usr, "Select primary LZ", "LZ Select", lz_choices)
-				if(!new_lz)
-					return
-				if(new_lz == "lz1")
-					SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
-				else
-					SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
-
+			SSticker.mode.pick_a_lz(usr)
 
 		else
 			return FALSE

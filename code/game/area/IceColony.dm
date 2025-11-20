@@ -414,7 +414,7 @@
  * Surface - Requisitions
  */
 
-/area/ice_colony/surface/requisitions
+/area/ice_colony/surface/requesitions
 	name = "\improper Surface Requesition Warehouse"
 	icon_state = "quartstorage"
 

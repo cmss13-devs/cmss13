@@ -1,7 +1,7 @@
 /obj/structure/barricade/plasteel
 	name = "folding plasteel barricade"
 	desc = "A very sturdy barricade made out of plasteel panels, the pinnacle of strongpoints. Use a blowtorch to repair. Can be flipped down to create a path."
-	icon_state = "folding_plasteel_closed_0"
+	icon_state = "plasteel_closed_0"
 	health = 800
 	maxhealth = 800
 	burn_multiplier = 1.15
@@ -13,7 +13,7 @@
 	stack_amount = 8
 	destroyed_stack_amount = 4
 	barricade_hitsound = 'sound/effects/metalhit.ogg'
-	barricade_type = "folding_plasteel"
+	barricade_type = "plasteel"
 	density = FALSE
 	closed = TRUE
 	can_wire = TRUE
@@ -164,7 +164,7 @@
 				update_icon() //unanchored changes layer
 				return
 
-		if(BARRICADE_BSTATE_MOVABLE) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to re-secure anchor bolts
+		if(BARRICADE_BSTATE_MOVABLE) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to rescure anchor bolts
 			if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
 				if(busy || tool_cooldown > world.time)
 					return

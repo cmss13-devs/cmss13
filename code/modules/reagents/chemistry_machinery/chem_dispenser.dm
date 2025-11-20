@@ -302,7 +302,7 @@
 
 	var/base_state = "mixer"
 
-/obj/structure/machinery/chem_dispenser/yautja
+/obj/structure/machinery/chem_dispenser/yauja
 
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	breakable = FALSE

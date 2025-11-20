@@ -2,7 +2,7 @@
 // Fore = East  | Aft = West //
 // Port = North | Starboard = South //
 // Bow = Eastern |Stern = Western //(those are the front and back small sections)
-// Naming convention is to start by port or starboard then put either (bow,fore,midship,aft,stern)
+// Naming convention is to start by port or starboard then put eitheir (bow,fore,midship,aft,stern)
 
 /area/rostock
 	name = "SSV Rostock"
@@ -87,7 +87,7 @@
 	soundscape_interval = 120
 
 /area/rostock/medical/prep
-	name = "SSV Rostock - Medical Preparation Room"
+	name = "SSV Rostock - Medical Preperation Room"
 	icon_state = "medical"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
@@ -331,7 +331,7 @@
 	icon_state = "cryo"
 
 /area/rostock/lower_deck/prep
-	name = "SSV Rostock - Troop Preparation"
+	name = "SSV Rostock - Troop Preperation"
 	icon_state = "gruntrnr"
 
 /area/rostock/lower_deck/bunk

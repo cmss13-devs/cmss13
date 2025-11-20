@@ -510,7 +510,7 @@
 	items = list(
 		/obj/item/reagent_container/food/snacks/spaghetti,
 	)
-	result = /obj/item/reagent_container/food/snacks/boiledspaghetti
+	result = /obj/item/reagent_container/food/snacks/boiledspagetti
 
 /datum/recipe/spaghetti/pastatomato
 	items = list(
@@ -524,7 +524,7 @@
 		/obj/item/reagent_container/food/snacks/spaghetti,
 		/obj/item/reagent_container/food/snacks/meatball,
 	)
-	result = /obj/item/reagent_container/food/snacks/meatballspaghetti
+	result = /obj/item/reagent_container/food/snacks/meatballspagetti
 
 /datum/recipe/spaghetti/spesslaw
 	items = list(

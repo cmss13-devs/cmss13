@@ -160,16 +160,16 @@
 	icon_state = "restrooms"
 
 /area/prison/toilet/canteen
-	name = "\improper Canteen Restrooms"
+	name = "\improper Canteen Restooms"
 
 /area/prison/toilet/security
-	name = "\improper Security Restrooms"
+	name = "\improper Security Restooms"
 
 /area/prison/toilet/research
-	name = "\improper Research Restrooms"
+	name = "\improper Research Restooms"
 
 /area/prison/toilet/staff
-	name = "\improper Staff Restrooms"
+	name = "\improper Staff Restooms"
 
 /area/prison/maintenance
 	icon_state = "asmaint"

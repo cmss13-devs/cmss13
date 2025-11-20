@@ -193,7 +193,7 @@
 	icon_state = "hall1"
 
 /area/varadero/interior/chapel
-	name = "New Varadero - Chapel"
+	name = "New Vardero - Chapel"
 	icon_state = "offices1"
 	linked_lz = DROPSHIP_LZ1
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE

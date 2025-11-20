@@ -30,12 +30,12 @@
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
 
-/obj/item/trash/burrito
+/obj/item/trash/buritto
 	name = "Burrito wrapper"
 	icon_state = "burrito"
 	desc = "A foul-smelling plastic film that once held a microwave burrito. Packaged by the Weyland-Yutani Corporation."
 
-/obj/item/trash/burrito/Initialize()
+/obj/item/trash/buritto/Initialize()
 	. = ..()
 	AddElement(/datum/element/corp_label/wy)
 

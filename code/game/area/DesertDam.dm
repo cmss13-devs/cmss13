@@ -39,7 +39,7 @@
 	name = "East Lab Workshop"
 	icon_state = "ass_line"
 
-/area/desert_dam/interior/lab_northeast/east_lab_maintenance
+/area/desert_dam/interior/lab_northeast/east_lab_maintenence
 	name = "East Lab Maintenance"
 	icon_state = "maintcentral"
 
@@ -148,7 +148,7 @@
 	name = "Engineering Hangar Storage"
 	icon_state = "storage"
 
-/area/desert_dam/interior/dam_interior/auxiliary_tool_storage
+/area/desert_dam/interior/dam_interior/auxilary_tool_storage
 	name = "Engineering Auxiliary Tool Storage"
 	icon_state = "red"
 
@@ -407,7 +407,7 @@
 	name = "Medical Surgery Room Two"
 	icon_state = "purple"
 
-/area/desert_dam/building/medical/surgery_observation
+/area/desert_dam/building/medical/surgury_observation
 	name = "Medical Surgery Observation"
 	icon_state = "medbay2"
 

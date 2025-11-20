@@ -1891,7 +1891,7 @@
 	reagents.add_reagent("nutriment", 8)
 	bitesize = 2
 
-/obj/item/reagent_container/food/snacks/boiledspaghetti
+/obj/item/reagent_container/food/snacks/boiledspagetti
 	name = "Boiled Spaghetti"
 	desc = "A plain dish of noodles, this sucks."
 	icon_state = "spagettiboiled"
@@ -1899,7 +1899,7 @@
 	trash = /obj/item/trash/plate
 	filling_color = "#FCEE81"
 
-/obj/item/reagent_container/food/snacks/boiledspaghetti/Initialize()
+/obj/item/reagent_container/food/snacks/boiledspagetti/Initialize()
 	. = ..()
 	reagents.add_reagent("noodles", 2)
 	bitesize = 2
@@ -1945,7 +1945,7 @@
 	reagents.add_reagent("tomatojuice", 10)
 	bitesize = 4
 
-/obj/item/reagent_container/food/snacks/meatballspaghetti
+/obj/item/reagent_container/food/snacks/meatballspagetti
 	name = "Spaghetti & Meatballs"
 	desc = "Now thats a nic'e meatball!"
 	icon_state = "meatballspagetti"
@@ -1953,7 +1953,7 @@
 	trash = /obj/item/trash/plate
 	filling_color = "#DE4545"
 
-/obj/item/reagent_container/food/snacks/meatballspaghetti/Initialize()
+/obj/item/reagent_container/food/snacks/meatballspagetti/Initialize()
 	. = ..()
 	reagents.add_reagent("noodles", 4)
 	reagents.add_reagent("meatprotein", 4)
@@ -3340,7 +3340,7 @@
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
 		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
-		new /obj/item/trash/burrito (user.loc)
+		new /obj/item/trash/buritto (user.loc)
 		icon_state = "open-burrito"
 		item_state = "burrito"
 

@@ -221,7 +221,7 @@
 	name = "\improper Chemistry Lab"
 	icon_state = "chem"
 
-/area/bigred/uground/dissection
+/area/bigred/uground/disection
 	name = "\improper Dissection Lab"
 	icon_state = "observatory"
 

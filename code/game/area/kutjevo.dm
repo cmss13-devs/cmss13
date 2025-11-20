@@ -50,7 +50,7 @@
 //exterior map areas
 
 /area/kutjevo/exterior/lz_pad
-	name = "Kutjevo Auxiliary Landing Zone"
+	name = "Kutjevo Auxilliary Landing Zone"
 	icon_state = "lz_pad"
 	weather_enabled = FALSE
 	unlimited_power = 1 //ds computer

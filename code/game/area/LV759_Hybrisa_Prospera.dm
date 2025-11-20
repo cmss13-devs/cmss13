@@ -940,19 +940,19 @@
 
 // Electrical Substations
 
-/area/lv759/indoors/electrical_systems
+/area/lv759/indoors/electical_systems
 	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
 
-/area/lv759/indoors/electrical_systems/substation1
+/area/lv759/indoors/electical_systems/substation1
 	name = "Electrical Systems - Substation One - Control Room"
 	icon_state = "power0"
 
-/area/lv759/indoors/electrical_systems/substation2
+/area/lv759/indoors/electical_systems/substation2
 	name = "Electrical Systems - Substation Two"
 	icon_state = "power0"
 	linked_lz = DROPSHIP_LZ2
 
-/area/lv759/indoors/electrical_systems/substation3
+/area/lv759/indoors/electical_systems/substation3
 	name = "Electrical Systems - Substation Three"
 	icon_state = "power0"
 	linked_lz = DROPSHIP_LZ1

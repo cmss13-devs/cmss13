@@ -113,7 +113,7 @@
 	name = "Chance's Claim - UD6 Tornado"
 
 //Outdoors areas
-/area/lv522/outdoors/colony_streets //WHY IS THIS A SUBTYPE OF BUILDINGS AAAARGGHGHHHH YOU DIDN'T EVEN USE OBJECT INHERITANCE FOR THE CEILINGS I HATE YOU BOBBY
+/area/lv522/outdoors/colony_streets //WHY IS THIS A SUBTYPE OF BUILDINGS AAAARGGHGHHHH YOU DIDN'T EVEN USE OBJECT INHERITANCE FOR THE CIELINGS I HATE YOU BOBBY
 	name = "Colony Streets"
 	icon_state = "green"
 	ceiling = CEILING_NONE

@@ -4,6 +4,7 @@
 /*
  * Table Parts
  */
+
 /obj/item/frame/table
 	name = "tan table parts"
 	desc = "A kit for a table, including a large, flat metal surface and four legs. Some assembly required."
@@ -80,8 +81,32 @@
 	qdel(src)
 
 /*
+ * Reinforced Table Parts
+ */
+
+/obj/item/frame/table/reinforced
+	name = "reinforced table parts"
+	desc = "A kit for a table, including a large, flat metal surface and four legs. This kit has side panels. Some assembly required."
+	icon = 'icons/obj/items/table_parts.dmi'
+	icon_state = "reinf_tableparts"
+	item_state = "reinf_tableparts"
+	matter = list("metal" = 15000) //A reinforced table. Two sheets of metal and four rods
+	table_type = /obj/structure/surface/table/reinforced
+
+/obj/item/frame/table/reinforced/attackby(obj/item/W, mob/user)
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+		deconstruct()
+
+/obj/item/frame/table/reinforced/deconstruct(disassembled = TRUE)
+	if(disassembled)
+		new /obj/item/stack/sheet/metal(get_turf(src))
+		new /obj/item/stack/rods(get_turf(src))
+	return ..()
+
+/*
  * Wooden Table Parts
  */
+
 /obj/item/frame/table/wood
 	name = "wooden table parts"
 	desc = "A kit for a table, including a large, flat wooden surface and four legs. Some assembly required."
@@ -100,7 +125,7 @@
 		var/obj/item/stack/tile/carpet/C = W
 		if(C.use(1))
 			to_chat(user, SPAN_NOTICE("You put a layer of carpet on [src]."))
-			new /obj/item/frame/table/wood/gambling(get_turf(src))
+			new /obj/item/frame/table/gambling(get_turf(src))
 			qdel(src)
 
 /obj/item/frame/table/wood/deconstruct(disassembled = TRUE)
@@ -122,16 +147,20 @@
 	item_state = "fwood_tableparts"
 	table_type = /obj/structure/surface/table/woodentable/fancy
 
-/obj/item/frame/table/wood/gambling
+/*
+ * Gambling Table Parts
+ */
+
+/obj/item/frame/table/gambling
 	name = "gamble table parts"
 	desc = "A kit for a table, including a large, flat wooden and carpet surface and four legs. Some assembly required."
 	icon_state = "gamble_tableparts"
 	item_state = "gamble_tableparts"
 	flags_atom = null
 	matter = null
-	table_type = /obj/structure/surface/table/woodentable/gamblingtable
+	table_type = /obj/structure/surface/table/gamblingtable
 
-/obj/item/frame/table/wood/gambling/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/frame/table/gambling/attackby(obj/item/W as obj, mob/user as mob)
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		deconstruct()
@@ -141,14 +170,14 @@
 		new /obj/item/frame/table/wood(get_turf(src))
 		qdel(src)
 
-/obj/item/frame/table/wood/gambling/deconstruct(disassembled = TRUE)
+/obj/item/frame/table/gambling/deconstruct(disassembled = TRUE)
 	if(disassembled)
 		new /obj/item/stack/sheet/wood(get_turf(src))
 		new /obj/item/stack/tile/carpet(get_turf(src))
 	return ..()
 
 /*
- * Metal Table Parts
+ * Almayer Tables
  */
 /obj/item/frame/table/almayer
 	name = "gray table parts"
@@ -157,30 +186,9 @@
 	table_type = /obj/structure/surface/table/almayer
 
 /*
- * Reinforced Table Parts
- */
-/obj/item/frame/table/reinforced
-	name = "reinforced table parts"
-	desc = "A kit for a table, including a large, flat metal surface and four legs. This kit has side panels. Some assembly required."
-	icon = 'icons/obj/items/table_parts.dmi'
-	icon_state = "reinf_tableparts"
-	item_state = "reinf_tableparts"
-	matter = list("metal" = 15000) //A reinforced table. Two sheets of metal and four rods
-	table_type = /obj/structure/surface/table/reinforced
-
-/obj/item/frame/table/reinforced/attackby(obj/item/W, mob/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		deconstruct()
-
-/obj/item/frame/table/reinforced/deconstruct(disassembled = TRUE)
-	if(disassembled)
-		new /obj/item/stack/sheet/metal(get_turf(src))
-		new /obj/item/stack/rods(get_turf(src))
-	return ..()
-
-/*
  * Rack Parts
  */
+
 /obj/item/frame/rack
 	name = "rack parts"
 	gender = PLURAL

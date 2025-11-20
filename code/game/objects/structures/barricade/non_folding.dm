@@ -291,7 +291,7 @@
 /obj/structure/barricade/metal/plasteel
 	name = "plasteel barricade"
 	desc = "A sturdy and easily assembled barricade made of reinforced plasteel plates, the pinnacle of strongpoints. Use a blowtorch to repair."
-	icon_state = "plasteel_0"
+	icon_state = "new_plasteel_0"
 	health = 900
 	maxhealth = 900
 	crusher_resistant = TRUE
@@ -300,6 +300,6 @@
 	debris = list(/obj/item/stack/sheet/plasteel)
 	stack_amount = 6
 	destroyed_stack_amount = 3
-	barricade_type = "plasteel"
+	barricade_type = "new_plasteel"
 	repair_materials = list("plasteel" = 0.45)
 

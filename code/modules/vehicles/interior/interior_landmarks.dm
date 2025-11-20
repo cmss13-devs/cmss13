@@ -2,7 +2,7 @@
 	name = "interior marker"
 	var/datum/interior/parent
 
-/obj/effect/landmark/interior/proc/on_load(datum/interior/I)
+/obj/effect/landmark/interior/proc/on_load(datum/interior/interior)
 	return
 
 /*
@@ -13,7 +13,7 @@
 	name = "interior interactable spawner"
 
 // Interiors will call this when they're created
-/obj/effect/landmark/interior/spawn/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/on_load(datum/interior/interior)
 	qdel(src)
 
 // Entrance & exit spawner
@@ -23,7 +23,7 @@
 
 	var/exit_type = /obj/structure/interior_exit
 
-/obj/effect/landmark/interior/spawn/entrance/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/entrance/on_load(datum/interior/interior)
 	var/exit_path = exit_type
 	if(!exit_path)
 		return
@@ -33,7 +33,7 @@
 		E.name = name
 	if(desc != initial(desc))
 		E.desc = desc
-	E.interior = I
+	E.interior = interior
 	E.entrance_id = tag
 	E.setDir(dir)
 	E.alpha = alpha
@@ -42,13 +42,13 @@
 	E.pixel_y = pixel_y
 	// Don't qdel this because it's used for entering as well
 
-/obj/effect/landmark/interior/spawn/entrance/step_toward/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/entrance/step_toward/on_load(datum/interior/interior)
 	var/exit_path = exit_type
 	if(!exit_path)
 		return
 	var/obj/structure/interior_exit/E = new exit_path(get_step(src, dir))
 
-	E.interior = I
+	E.interior = interior
 	E.entrance_id = tag
 	E.setDir(dir)
 	E.alpha = alpha
@@ -63,13 +63,13 @@
 	icon_state = "comfychair"
 	color = "red"
 
-/obj/effect/landmark/interior/spawn/vehicle_driver_seat/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/on_load(datum/interior/interior)
 	var/obj/structure/bed/chair/comfy/vehicle/driver/S = new(loc)
 
 	S.icon = icon
 	S.icon_state = icon_state
 	S.layer = layer
-	S.vehicle = I.exterior
+	S.vehicle = interior.exterior
 	S.required_skill = S.vehicle.required_skill
 	S.setDir(dir)
 	S.alpha = alpha
@@ -87,13 +87,13 @@
 	icon_state = "comfychair"
 	color = "blue"
 
-/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/on_load(datum/interior/interior)
 	var/obj/structure/bed/chair/comfy/vehicle/gunner/S = new(loc)
 
 	S.icon = icon
 	S.icon_state = icon_state
 	S.layer = layer
-	S.vehicle = I.exterior
+	S.vehicle = interior.exterior
 	S.setDir(dir)
 	S.alpha = alpha
 	S.update_icon()
@@ -108,10 +108,10 @@
 	icon_state = "car_seat"
 	color = "blue"
 
-/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/humvee/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/humvee/on_load(datum/interior/interior)
 	var/obj/structure/bed/chair/comfy/vehicle/gunner/humvee/S = new(loc)
 	S.layer = layer
-	S.vehicle = I.exterior
+	S.vehicle = interior.exterior
 	S.setDir(dir)
 	S.alpha = alpha
 	S.update_icon()
@@ -127,12 +127,12 @@
 	icon_state = "armor_chair"
 	color = "red"
 
-/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/on_load(datum/interior/interior)
 	var/obj/structure/bed/chair/comfy/vehicle/driver/armor/S = new(loc)
 
 	S.icon = icon
 	S.icon_state = icon_state
-	S.vehicle = I.exterior
+	S.vehicle = interior.exterior
 	S.required_skill = S.vehicle.required_skill
 	S.setDir(dir)
 	S.update_icon()
@@ -146,11 +146,11 @@
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/humvee
 	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
 	icon_state = "car_seat"
-	color = "blue"
+	color = "red"
 
-/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/humvee/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/humvee/on_load(datum/interior/interior)
 	var/obj/structure/bed/chair/comfy/vehicle/driver/humvee/S = new(loc)
-	S.vehicle = I.exterior
+	S.vehicle = interior.exterior
 	S.required_skill = S.vehicle.required_skill
 	S.setDir(dir)
 	S.update_icon()
@@ -172,12 +172,12 @@
 	icon_state = "armor_chair"
 	color = "blue"
 
-/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor/on_load(datum/interior/interior)
 	var/obj/structure/bed/chair/comfy/vehicle/gunner/armor/S = new(loc)
 
 	S.icon = icon
 	S.icon_state = icon_state
-	S.vehicle = I.exterior
+	S.vehicle = interior.exterior
 	S.setDir(dir)
 	S.alpha = alpha
 	S.update_icon()
@@ -196,12 +196,12 @@
 	icon_state = "armor_chair"
 	color = "#00ad00"
 
-/obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat/on_load(datum/interior/interior)
 	var/obj/structure/bed/chair/comfy/vehicle/support_gunner/S = new(loc)
 
 	S.icon = icon
 	S.icon_state = icon_state
-	S.vehicle = I.exterior
+	S.vehicle = interior.exterior
 	S.setDir(dir)
 	S.alpha = alpha
 	S.update_icon()
@@ -218,12 +218,12 @@
 	name = "2nd support gunner's seat spawner"
 	color = "#b1b100"
 
-/obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat/second/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat/second/on_load(datum/interior/interior)
 	var/obj/structure/bed/chair/comfy/vehicle/support_gunner/second/S = new(loc)
 
 	S.icon = icon
 	S.icon_state = icon_state
-	S.vehicle = I.exterior
+	S.vehicle = interior.exterior
 	S.setDir(dir)
 	S.alpha = alpha
 	S.update_icon()
@@ -242,11 +242,11 @@
 	icon_state = "vehicle_camera"
 	color = "#00c5cc"
 
-/obj/effect/landmark/interior/spawn/interior_camera/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/interior_camera/on_load(datum/interior/interior)
 
 	var/obj/structure/machinery/camera/vehicle/CAM = new(loc)
 
-	var/obj/vehicle/multitile/vehicle = I.exterior
+	var/obj/vehicle/multitile/vehicle = interior.exterior
 	if(!istype(vehicle))
 		return
 
@@ -265,7 +265,7 @@
 	icon_state = "wall_phone"
 	color = "yellow"
 
-/obj/effect/landmark/interior/spawn/telephone/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/telephone/on_load(datum/interior/interior)
 	var/obj/structure/transmitter/Phone = new(loc)
 
 	Phone.icon = icon
@@ -277,7 +277,7 @@
 	Phone.pixel_x = pixel_x
 	Phone.pixel_y = pixel_y
 	Phone.phone_category = "Vehicles"
-	Phone.phone_id = I.map_template.name
+	Phone.phone_id = interior.map_template.name
 
 	qdel(src)
 
@@ -287,11 +287,11 @@
 // Landmark for spawning the reloader
 /obj/effect/landmark/interior/spawn/weapons_loader
 	name = "vehicle weapons reloader spawner"
-	icon = 'icons/obj/vehicles/interiors/general.dmi'
+	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
 	icon_state = "weapons_loader"
 	color = "#00920c"
 
-/obj/effect/landmark/interior/spawn/weapons_loader/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/weapons_loader/on_load(datum/interior/interior)
 	var/obj/structure/weapons_loader/R = new(loc)
 
 	R.icon = icon
@@ -299,7 +299,7 @@
 	R.layer = layer
 	R.pixel_x = pixel_x
 	R.pixel_y = pixel_y
-	R.vehicle = I.exterior
+	R.vehicle = interior.exterior
 	R.setDir(dir)
 	R.update_icon()
 
@@ -310,12 +310,12 @@
 	icon_state = "weapons_loader"
 	color = "#00920c"
 
-/obj/effect/landmark/interior/spawn/weapons_loader/humvee/on_load(datum/interior/I)
+/obj/effect/landmark/interior/spawn/weapons_loader/humvee/on_load(datum/interior/interior)
 	var/obj/structure/weapons_loader/humvee/R = new(loc)
 	R.layer = layer
 	R.pixel_x = pixel_x
 	R.pixel_y = pixel_y
-	R.vehicle = I.exterior
+	R.vehicle = interior.exterior
 	R.setDir(dir)
 	R.update_icon()
 
@@ -332,16 +332,16 @@
 	layer = INTERIOR_DOOR_LAYER
 	color = "#009cb8"
 
-/obj/effect/landmark/interior/spawn/interior_viewport/on_load(datum/interior/I)
-	var/obj/structure/interior_viewport/V = new(loc)
+/obj/effect/landmark/interior/spawn/interior_viewport/on_load(datum/interior/interior)
+	var/obj/structure/interior_viewport/viewport = new(loc)
 
-	V.dir = dir
-	V.vehicle = I.exterior
-	V.pixel_x = pixel_x
-	V.pixel_y = pixel_y
-	V.layer = layer
-	V.alpha = alpha
-	V.update_icon()
+	viewport.dir = dir
+	viewport.vehicle = interior.exterior
+	viewport.pixel_x = pixel_x
+	viewport.pixel_y = pixel_y
+	viewport.layer = layer
+	viewport.alpha = alpha
+	viewport.update_icon()
 
 	qdel(src)
 
@@ -356,14 +356,14 @@
 	layer = INTERIOR_DOOR_LAYER
 	color = "#009cb8"
 
-/obj/effect/landmark/interior/spawn/interior_viewport/simple/on_load(datum/interior/I)
-	var/obj/structure/interior_viewport/simple/V = new(loc)
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/on_load(datum/interior/interior)
+	var/obj/structure/interior_viewport/simple/viewport = new(loc)
 
-	V.vehicle = I.exterior
-	V.pixel_x = pixel_x
-	V.pixel_y = pixel_y
-	V.layer = layer
-	V.alpha = alpha
+	viewport.vehicle = interior.exterior
+	viewport.pixel_x = pixel_x
+	viewport.pixel_y = pixel_y
+	viewport.layer = layer
+	viewport.alpha = alpha
 
 	qdel(src)
 
@@ -376,14 +376,30 @@
 	color = "#009cb8"
 	alpha = 80
 
-/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield/on_load(datum/interior/I)
-	var/obj/structure/interior_viewport/simple/windshield/V = new(loc)
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield/on_load(datum/interior/interior)
+	var/obj/structure/interior_viewport/simple/windshield/viewport = new(loc)
 
-	V.vehicle = I.exterior
-	V.pixel_x = pixel_x
-	V.pixel_y = pixel_y
-	V.alpha = alpha
-	V.icon = icon
+	viewport.vehicle = interior.exterior
+	viewport.pixel_x = pixel_x
+	viewport.pixel_y = pixel_y
+	viewport.alpha = alpha
+	viewport.icon = icon
 
 	qdel(src)
 
+/obj/effect/landmark/interior/spawn/interior_viewport/humvee
+	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
+	icon_state = "viewport_door"
+
+/obj/effect/landmark/interior/spawn/interior_viewport/humvee/small
+	icon_state = "small_viewport"
+
+/obj/effect/landmark/interior/spawn/interior_viewport/humvee/on_load(datum/interior/interior)
+	var/obj/structure/interior_viewport/humvee/viewport = new(loc)
+	viewport.vehicle = interior.exterior
+	viewport.pixel_x = pixel_x
+	viewport.pixel_y = pixel_y
+	viewport.alpha = alpha
+	viewport.icon = icon
+
+	qdel(src)

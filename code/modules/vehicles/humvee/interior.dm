@@ -2,13 +2,25 @@
 	name = "Humvee side door"
 	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi'
 	icon_state = "exit_door"
+	density = FALSE
 
 /obj/structure/interior_exit/vehicle/humvee/left
 	entrance_id = "left"
 	icon_state = "exit_door1"
+	layer = DOOR_OPEN_LAYER
 
 /obj/structure/interior_exit/vehicle/humvee/right
 	entrance_id = "right"
+	alpha = 50
+
+/obj/structure/interior_exit/vehicle/humvee/left2
+	entrance_id = "rear left"
+	icon_state = "exit_door1"
+	layer = DOOR_OPEN_LAYER
+
+/obj/structure/interior_exit/vehicle/humvee/right2
+	entrance_id = "rear right"
+	alpha = 50
 
 /obj/structure/interior_exit/vehicle/humvee/back/left
 	entrance_id = "rear left"

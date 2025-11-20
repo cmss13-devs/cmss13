@@ -36,6 +36,10 @@
 	pixel_x = -3;
 	pixel_y = 16
 	},
+/obj/effect/landmark/interior/spawn/interior_viewport/humvee{
+	pixel_x = -3;
+	pixel_y = 16
+	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee/medical)
 "s" = (
@@ -46,7 +50,8 @@
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee/medical)
 "t" = (
-/obj/structure/interior_viewport/humvee/windshield/north{
+/obj/effect/landmark/interior/spawn/interior_viewport/humvee{
+	icon_state = "viewport_frontwindow_north";
 	pixel_x = -10;
 	pixel_y = 5
 	},
@@ -60,7 +65,8 @@
 /turf/open/void/vehicle,
 /area/space)
 "y" = (
-/obj/structure/interior_viewport/humvee/windshield/south{
+/obj/effect/landmark/interior/spawn/interior_viewport/humvee{
+	icon_state = "viewport_frontwindow_south";
 	pixel_x = -10;
 	pixel_y = 7
 	},
@@ -76,8 +82,7 @@
 	},
 /obj/structure/interior_exit/vehicle/humvee/right{
 	pixel_x = -3;
-	pixel_y = -10;
-	alpha = 50
+	pixel_y = -10
 	},
 /obj/structure/bed/chair/comfy/vehicle/passager{
 	dir = 4;
@@ -91,6 +96,10 @@
 	pixel_y = -8;
 	alpha = 50
 	},
+/obj/effect/landmark/interior/spawn/interior_viewport/humvee{
+	pixel_x = -3;
+	pixel_y = -8
+	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee/medical)
 "G" = (
@@ -99,7 +108,7 @@
 	exit_type = /obj/structure/interior_exit/vehicle/humvee/back/medical/right;
 	name = "back right entrance marker";
 	pixel_x = -32;
-	tag = "back_right"
+	tag = "back right"
 	},
 /obj/structure/interior_exit/vehicle/humvee/back/medical/right{
 	pixel_x = -31
@@ -120,7 +129,7 @@
 	exit_type = /obj/structure/interior_exit/vehicle/humvee/back/medical/left;
 	name = "back left entrance marker";
 	pixel_x = -32;
-	tag = "back_left"
+	tag = "back left"
 	},
 /obj/structure/machinery/cm_vending/sorted/medical/blood/vehicle/humvee{
 	pixel_x = -7;

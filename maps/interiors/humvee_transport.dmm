@@ -5,7 +5,7 @@
 	exit_type = /obj/structure/interior_exit/vehicle/humvee/back/right;
 	name = "back right entrance marker";
 	pixel_x = -32;
-	tag = "back_right"
+	tag = "back right"
 	},
 /obj/structure/prop/vehicle/humvee/transport{
 	pixel_x = -8;
@@ -29,15 +29,16 @@
 	pixel_y = 1;
 	buckling_y = 1
 	},
-/obj/structure/interior_viewport/humvee/small{
-	pixel_y = 17;
-	layer = 3.74;
-	pixel_x = -1
+/obj/effect/landmark/interior/spawn/interior_viewport/humvee/small{
+	pixel_x = -1;
+	pixel_y = 18;
+	layer = 3
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee/transport)
 "t" = (
-/obj/structure/interior_viewport/humvee/windshield/north{
+/obj/effect/landmark/interior/spawn/interior_viewport/humvee{
+	icon_state = "viewport_frontwindow_north";
 	pixel_x = -10;
 	pixel_y = 5
 	},
@@ -53,13 +54,7 @@
 	},
 /obj/structure/interior_exit/vehicle/humvee/right{
 	pixel_x = -3;
-	pixel_y = -10;
-	alpha = 50
-	},
-/obj/structure/interior_viewport/humvee{
-	pixel_x = -3;
-	pixel_y = -8;
-	alpha = 50
+	pixel_y = -10
 	},
 /obj/structure/bed/chair/comfy/vehicle/passager{
 	dir = 4;
@@ -68,10 +63,15 @@
 	pixel_x = -3;
 	buckling_x = -3
 	},
+/obj/effect/landmark/interior/spawn/interior_viewport/humvee{
+	pixel_x = -3;
+	pixel_y = -8
+	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee/transport)
 "y" = (
-/obj/structure/interior_viewport/humvee/windshield/south{
+/obj/effect/landmark/interior/spawn/interior_viewport/humvee{
+	icon_state = "viewport_frontwindow_south";
 	pixel_x = -10;
 	pixel_y = 7
 	},
@@ -81,10 +81,9 @@
 /obj/structure/bed/chair/comfy/vehicle/passager{
 	dir = 1
 	},
-/obj/structure/interior_viewport/humvee/small{
-	pixel_y = -7;
-	alpha = 50;
-	pixel_x = -1
+/obj/effect/landmark/interior/spawn/interior_viewport/humvee/small{
+	pixel_x = -1;
+	pixel_y = -7
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/humvee/transport)
@@ -94,7 +93,7 @@
 	exit_type = /obj/structure/interior_exit/vehicle/humvee/back/left;
 	name = "back left entrance marker";
 	pixel_x = -32;
-	tag = "back_left"
+	tag = "back left"
 	},
 /obj/structure/interior_exit/vehicle/humvee/back/left{
 	pixel_x = -31
@@ -141,7 +140,7 @@
 	layer = 2.9;
 	dir = 4
 	},
-/obj/structure/interior_viewport/humvee{
+/obj/effect/landmark/interior/spawn/interior_viewport/humvee{
 	pixel_x = -3;
 	pixel_y = 16
 	},

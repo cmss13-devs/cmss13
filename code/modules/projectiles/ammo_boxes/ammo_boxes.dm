@@ -140,10 +140,15 @@
 
 /obj/item/ammo_box/magazine/proc/ammo_weight_delay(mob/user, list/movedata)
 	SIGNAL_HANDLER
-	for(var/obj/item/ammo_box/rounds/inv in user.contents)
-		if(inv.weighted_ammo)
-			movedata["move_delay"] += num_of_magazines * weight_multiplier
+	for(var/obj/item/ammo_box/magazine/inv in user.contents)
+		if(inv.weighted_ammo && !handfuls)
+			movedata["move_delay"] += inv.contents.len * inv.weight_multiplier
 			break // only really need to call this once
+		else if(inv.weighted_ammo && handfuls)
+			var/obj/item/ammo_magazine/capacity = locate() in inv.contents
+			if(capacity)
+				movedata["move_delay"] += capacity.current_rounds * inv.weight_multiplier
+			break
 
 //---------------------INTERACTION PROCS
 

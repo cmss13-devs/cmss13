@@ -444,7 +444,8 @@
 	desc = "A box full of handcuffs."
 	icon_state = "handcuff"
 	item_state = "handcuff"
-	w_class = SIZE_LARGE
+	w_class = SIZE_MEDIUM
+	storage_slots = 8
 
 /obj/item/storage/box/handcuffs/fill_preset_inventory()
 	new /obj/item/restraint/handcuffs(src)
@@ -454,19 +455,17 @@
 	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/restraint/handcuffs(src)
-
+	new /obj/item/restraint/handcuffs(src)
 
 /obj/item/storage/box/legcuffs
 	name = "box of legcuffs"
 	desc = "A box full of legcuffs."
 	icon_state = "handcuff"
 	item_state = "handcuff"
-	w_class = SIZE_LARGE
+	w_class = SIZE_MEDIUM
+	storage_slots = 4
 
 /obj/item/storage/box/legcuffs/fill_preset_inventory()
-	new /obj/item/restraint/legcuffs(src)
-	new /obj/item/restraint/legcuffs(src)
-	new /obj/item/restraint/legcuffs(src)
 	new /obj/item/restraint/legcuffs(src)
 	new /obj/item/restraint/legcuffs(src)
 	new /obj/item/restraint/legcuffs(src)

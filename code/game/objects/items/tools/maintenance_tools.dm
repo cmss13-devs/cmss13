@@ -285,7 +285,7 @@
 /obj/item/tool/weldingtool/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
 		return
-	if (istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,target) <= 1)
+	if (istype(target, /obj/structure/reagent_dispensers/tank/fuel) && get_dist(src,target) <= 1)
 		if(!welding)
 			target.reagents.trans_to(src, max_fuel)
 			weld_tick = 0
@@ -296,7 +296,7 @@
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a blowtorch.")
 			to_chat(user, SPAN_DANGER("You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done."))
-			var/obj/structure/reagent_dispensers/fueltank/tank = target
+			var/obj/structure/reagent_dispensers/tank/fuel/tank = target
 			tank.explode()
 		return
 	if (welding)
@@ -417,7 +417,7 @@
 			if(EYE_PROTECTION_FLAVOR)
 				to_chat(user, SPAN_DANGER("Your eyes sting a little."))
 				E.take_damage(rand(1, 2), TRUE)
-				if(E.damage > 8) // dont abuse your funny flavor glasses
+				if(E.damage > 8) // don't abuse your funny flavor glasses
 					E.take_damage(2, TRUE)
 			if(EYE_PROTECTION_NONE)
 				to_chat(user, SPAN_WARNING("Your eyes burn."))
@@ -759,7 +759,7 @@ Welding backpack
 	if(!proximity) // this replaces and improves the get_dist(src,target) <= 1 checks used previously
 		return
 	if(istype(target, /obj/structure/reagent_dispensers))
-		if(!(istypestrict(target, /obj/structure/reagent_dispensers/fueltank)))
+		if(!(istypestrict(target, /obj/structure/reagent_dispensers/tank/fuel)))
 			to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
 			return
 		if(reagents.total_volume < max_fuel)

@@ -2919,7 +2919,7 @@
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
 "aoz" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/green/northwest,
 /area/lv624/lazarus/hydroponics)
 "aoA" = (
@@ -4478,7 +4478,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	pixel_x = 29
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "axW" = (
@@ -5838,11 +5838,11 @@
 /turf/open/floor/bot/north,
 /area/lv624/lazarus/quartstorage)
 "aEh" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "aEi" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "aEj" = (
@@ -7433,7 +7433,7 @@
 /turf/open/floor/whitegreen,
 /area/lv624/lazarus/main_hall)
 "aMi" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/main_hall)
 "aMj" = (
@@ -9177,7 +9177,7 @@
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aVs" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/kitchen)
 "aVt" = (
@@ -9651,7 +9651,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
@@ -10657,7 +10657,7 @@
 /turf/open/floor/whiteblue/southeast,
 /area/lv624/lazarus/medbay)
 "bJe" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
 "bJz" = (
@@ -16018,7 +16018,7 @@
 /turf/open/floor/warning/north,
 /area/lv624/lazarus/landing_zones/lz2)
 "mRm" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
 "mSo" = (
@@ -17933,7 +17933,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "qNl" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)
 "qNz" = (
@@ -19673,7 +19673,7 @@
 /turf/open/gm/dirt/desert1,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "ukS" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/item/device/flashlight{
 	pixel_y = 5
 	},
@@ -21098,7 +21098,7 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
 "xfa" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/brown/northwest,
 /area/lv624/lazarus/comms)

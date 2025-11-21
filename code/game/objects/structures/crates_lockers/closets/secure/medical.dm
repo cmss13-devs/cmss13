@@ -170,8 +170,8 @@
 
 /obj/structure/closet/secure_closet/surgical/emergency
 	name = "emergency surgical equipment cabinet"
-	desc = "A self-sterilizing, wall-mounted cabinet containing extra surgical beds and empty surgical webbing vests for doctors who suddenly need to operate outside of medbay. It only unlocks itself for doctors during dire emergencies."
-	req_access = list(ACCESS_MARINE_CMO)
+	desc = "A self-sterilizing, wall-mounted cabinet containing extra surgical beds, empty surgical webbing vests, and portable dialysis machines for doctors who suddenly need to operate outside of medbay. It only unlocks itself for doctors during dire emergencies."
+	req_access = null
 
 /obj/structure/closet/secure_closet/surgical/emergency/Initialize()
 	. = ..()
@@ -187,7 +187,7 @@
 
 /obj/structure/closet/secure_closet/surgical/emergency/togglelock(mob/living/user)
 	if(hijack == FALSE)
-		if(user.job in JOB_DOCTOR_ROLES_LIST) //I lied. Nobody can open this if hijack == FALSE.
+		if(user.job in JOB_DOCTOR_ROLES_LIST) //Nobody can open this if hijack == FALSE.
 			to_chat(user, SPAN_WARNING("As medical staff, you may only toggle this lock when shipside doctors must operate on the ship and outside the medical bay."))
 		else
 			to_chat(user, SPAN_WARNING("You do not have access."))
@@ -197,9 +197,9 @@
 		to_chat(user, SPAN_WARNING("You do not have access."))
 
 /obj/structure/closet/secure_closet/surgical/emergency/proc/all_docs_are_field_docs() //A DROPSHIP HAS BEEN HIJACKED! OPEN DIS BITCH UP!
-	locked = FALSE
+	locked = FALSE //OPEN THE LOCKERRRR
 	hijack = TRUE
-	req_access = list(ACCESS_MARINE_MEDBAY)
+	req_access = list(ACCESS_MARINE_MEDBAY) //ALL Y'ALL FOB MEDICS NOW!
 
 /obj/structure/closet/secure_closet/professor_dummy
 	name = "professor dummy cabinet"

@@ -1,6 +1,6 @@
 /obj/item/hardpoint/locomotion/humvee_wheels
-	name = "\improper Humvee Wheels"
-	desc = "Integral to the movement of the humvee."
+	name = "\improper JTMV Wheels"
+	desc = "Integral to the movement of the JTMV."
 	icon = 'icons/obj/vehicles/hardpoints/humvee_hardpoints.dmi'
 
 	damage_multiplier = 0.15

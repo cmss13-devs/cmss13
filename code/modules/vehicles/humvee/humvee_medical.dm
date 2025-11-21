@@ -1,8 +1,8 @@
-/obj/vehicle/multitile/humvee
-	name = "\improper M2420 JTMV-HWC Heavy Weapon Carrier"
-	desc = "An M2420 JTMV-HWC Heavy Weapon Carrier. A lightly armored vehicle. Entrances on the sides."
+/obj/vehicle/multitile/humvee/medical
+	name = "\improper M2421 JTMV-Ambulance"
+	desc = "An M2421 JTMV-Ambulance. A lightly armored vehicle. Entrances on the back and sides."
 
-	icon = 'icons/obj/vehicles/humvee.dmi'
+	icon = 'icons/obj/vehicles/humvee_medical.dmi'
 	icon_state = "humvee_base"
 	pixel_x = -48
 	pixel_y = -48
@@ -15,10 +15,10 @@
 
 	health = 800
 
-	interior_map = /datum/map_template/interior/humvee
+	interior_map = /datum/map_template/interior/humvee/humvee_medical
 
-	passengers_slots = 1 // 5 total. Reserved slots are added to passenger slots.
-	xenos_slots = 2
+	passengers_slots = 3 // 5 total. Reserved slots are added to passenger slots.
+	xenos_slots = 3
 
 	entrances = list(
 		"right" = list(-2, -1),
@@ -72,19 +72,19 @@
 	vehicle_ram_multiplier = VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION
 	minimap_icon_state = "arc"
 
-/obj/effect/vehicle_spawner/humvee/Initialize()
+/obj/effect/vehicle_spawner/humvee/medical/Initialize()
 	. = ..()
 	spawn_vehicle()
 	qdel(src)
 
-/obj/effect/vehicle_spawner/humvee/spawn_vehicle()
-	var/obj/vehicle/multitile/humvee/humvee = new (loc)
+/obj/effect/vehicle_spawner/humvee/medical/spawn_vehicle()
+	var/obj/vehicle/multitile/humvee/medical/humvee = new (loc)
 
 	load_misc(humvee)
 	load_hardpoints(humvee)
 	handle_direction(humvee)
 	humvee.update_icon()
 
-/obj/effect/vehicle_spawner/humvee/load_hardpoints(obj/vehicle/multitile/V)
+/obj/effect/vehicle_spawner/humvee/medical/load_hardpoints(obj/vehicle/multitile/V)
 	. = ..()
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/humvee_wheels)

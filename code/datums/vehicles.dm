@@ -55,5 +55,13 @@
 	interior_id = "arc"
 
 /datum/map_template/interior/humvee
-	name = "Humvee"
+	name = "JTMV-HWC"
 	interior_id = "humvee"
+
+/datum/map_template/interior/humvee/humvee_medical
+	name = "JTMV-Ambulance"
+	interior_id = "humvee_medical"
+
+/datum/map_template/interior/humvee/humvee_transport
+	name = "JTMV-Utility"
+	interior_id = "humvee_transport"

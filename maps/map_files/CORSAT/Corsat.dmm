@@ -7680,7 +7680,7 @@
 /area/corsat/gamma/kitchen)
 "aDU" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "Maintainence";
+	name = "Maintenance";
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -10036,7 +10036,7 @@
 "aMM" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	name = "Data Maintainence";
+	name = "Data Maintenance";
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -10687,7 +10687,7 @@
 /area/corsat/sigma/airlock/south)
 "aPt" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "Maintainence";
+	name = "Maintenance";
 	req_one_access = null
 	},
 /turf/open/floor/corsat/plate,
@@ -14130,7 +14130,7 @@
 "bbe" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2;
-	name = "Hall Maintainence";
+	name = "Hall Maintenance";
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -14304,7 +14304,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "Maintainence";
+	name = "Maintenance";
 	req_one_access = null
 	},
 /turf/open/floor/corsat/plate,
@@ -14464,7 +14464,7 @@
 /area/corsat/theta/biodome/hydrowest)
 "bcb" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "Maintainence";
+	name = "Maintenance";
 	req_one_access = null
 	},
 /turf/open/floor/corsat/plate,
@@ -14483,7 +14483,7 @@
 /area/corsat/gamma/biodome/toxins)
 "bcd" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
-	name = "Maintainence";
+	name = "Maintenance";
 	req_one_access = null
 	},
 /turf/open/floor/corsat/plate,

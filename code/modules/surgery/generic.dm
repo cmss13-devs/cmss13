@@ -366,7 +366,7 @@
 /datum/surgery_step/cauterize/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You cauterize the incision on [target]'s [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] cauterizes the incision on your [surgery.affected_limb.display_name]. You feel better."),
+		SPAN_NOTICE("[user] cauterizes the incision on your [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] cauterizes the incision on [target]'s [surgery.affected_limb.display_name]."))
 	switch(target_zone)
 		if("head")
@@ -376,6 +376,7 @@
 			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
+	to_chat(target, SPAN_NOTICE("You feel better."))
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
 	target.pain.recalculate_pain()
@@ -462,7 +463,7 @@
 
 	else
 		user.affected_message(target,
-			SPAN_WARNING("You shatter [target]'s [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("You shatter [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
 			SPAN_WARNING("[user] shatters your [surgery.affected_limb.encased]! It's broken, now!"),
 			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
 
@@ -533,7 +534,7 @@
 			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
 			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
 			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
 
@@ -600,7 +601,7 @@
 			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
 			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
 			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
 
@@ -682,7 +683,7 @@
 			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
 			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
 			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
 

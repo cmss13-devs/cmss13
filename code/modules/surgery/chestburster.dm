@@ -101,6 +101,7 @@
 		SPAN_WARNING("Your hand slips and a jet of acid spurts as you slice the larva with \the [tool]!"))
 
 	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_HIGHDANGER("Your organs are melting!"))
 		target.emote("scream")
 
 	larva_blood_spray(user, target)
@@ -147,13 +148,15 @@
 		if(tool)
 			user.affected_message(target,
 				SPAN_WARNING("You pull a wriggling parasite out of [target]'s ribcage! It's a girl!"),
-				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage! It's a girl! The heaviness in your chest is gone. You feel monumentally better."),
+				SPAN_WARNING("[user] pulls a wriggling parasite out of your ribcage! It's a girl!"),
 				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage! It's a girl!"))
 		else
 			user.affected_message(target,
 				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage! It's a girl!"),
-				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage! It's a girl! The heaviness in your chest is gone, but your organs burn like hell!"),
+				SPAN_WARNING("Your insides and [user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage! It's a girl!"),
 				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage! It's a girl!"))
+
+			to_chat(target, SPAN_WARNING("Your organs in your chest burn like hell!"))
 			var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
 			impacted_organ.take_damage(5, FALSE)
 			if(target.stat == CONSCIOUS)
@@ -168,12 +171,16 @@
 			else
 				user.apply_damage(15, BURN, "r_hand")
 
+		to_chat(target, SPAN_NOTICE("The heaviness in your chest is gone. You feel monumentally better."))
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
 		var/mob/living/carbon/xenomorph/larva/L = locate() in target //the larva was fully grown, ready to burst.
 		if(L)
 			L.forceMove(target.loc)
 			qdel(A)
-			user.visible_message(SPAN_HIGHDANGER("The larva was removed just in time, but is fully grown and alive!"))
+			user.affected_message(target,
+				SPAN_HIGHDANGER("You removed the larva just in time, but it is fully grown and alive!"),
+				SPAN_HIGHDANGER("[user] removed the larva just in time, but it is fully grown and alive!"),
+				SPAN_HIGHDANGER("[user] removed the larva just in time, but it is fully grown and alive!"))
 		else
 			A.forceMove(target.loc)
 			target.status_flags &= ~XENO_HOST
@@ -190,6 +197,7 @@
 	I.take_damage(5,0)
 	if(target.stat == CONSCIOUS)
 		target.emote("scream")
+	to_chat(target, SPAN_WARNING("Your organs in your chest feel like they're in living hell!"))
 	target.apply_damage(15, BURN, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to remove an embryo from [key_name(target)]'s ribcage with [tool ? "\the [tool]" : "their hands"].")
 	return FALSE

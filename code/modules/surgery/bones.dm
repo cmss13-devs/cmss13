@@ -66,7 +66,7 @@
 				SPAN_NOTICE("[user] starts to apply \the [tool] to your broken [surgery.affected_bone]."),
 				SPAN_NOTICE("[user] starts to apply \the [tool] to [target]'s broken [surgery.affected_bone]."))
 
-			target.custom_pain("Something stings, and feels cold and gooey inside your [surgery.affected_limb.display_name]!", 1)
+			target.custom_pain("Something stings and feels cold and gooey inside your [surgery.affected_limb.display_name]!", 1)
 		else
 			user.affected_message(target,
 				SPAN_NOTICE("You begin driving reinforcing pins into [target]'s [surgery.affected_bone] with \the [tool]."),
@@ -82,7 +82,7 @@
 				SPAN_NOTICE("[user] starts to apply \the [tool] to the broken bones in your [surgery.affected_limb.display_name]."),
 				SPAN_NOTICE("[user] starts to apply \the [tool] to the broken bones in [target]'s [surgery.affected_limb.display_name]."))
 
-			target.custom_pain("Something stings, and feels cold and gooey inside your [surgery.affected_limb.display_name]!", 1)
+			target.custom_pain("Something stings and feels cold and gooey inside your [surgery.affected_limb.display_name]!", 1)
 		else
 			user.affected_message(target,
 				SPAN_NOTICE("You begin driving reinforcing pins into the broken bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
@@ -111,7 +111,7 @@
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,
 				SPAN_NOTICE("You slather \the [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in your [surgery.affected_limb.display_name]."),
+				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in your [surgery.affected_limb.display_name]. The gel feels cold and gooey."),
 				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."))
 			user.update_inv_l_hand()
 			user.update_inv_r_hand()
@@ -202,6 +202,8 @@
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BONES)
 	if(surgery.affected_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
 		new /obj/item/stack/medical/splint/nano(get_turf(target), 1)
+
+	to_chat(target, SPAN_NOTICE("It no longer hurts to move your [surgery.affected_limb.display_name], now. You feel much better."))
 	surgery.affected_limb.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
 	surgery.affected_limb.perma_injury = 0
 	target.pain.recalculate_pain()

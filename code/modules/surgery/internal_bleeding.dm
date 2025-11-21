@@ -44,7 +44,7 @@ w//////////////////////////////////////////////////////////////////
 
 	user.affected_message(target,
 		SPAN_NOTICE("You finish repairing [target]'s damaged vein."),
-		SPAN_NOTICE("[user] finishes repairing your damaged vein. The discomfort in your [surgery.affected_limb.display_name] fades."),
+		SPAN_NOTICE("[user] finishes repairing your damaged vein."),
 		SPAN_NOTICE("[user] finishes repairing [target]'s damaged vein."))
 
 	for(var/datum/wound/W as anything in surgery.affected_limb.wounds)
@@ -55,6 +55,8 @@ w//////////////////////////////////////////////////////////////////
 
 	if(prob(40))
 		user.add_blood(target.get_blood_color(), BLOOD_HANDS)
+
+	to_chat(target, SPAN_NOTICE(" The discomfort in your [surgery.affected_limb.display_name] fades. You feel better."))
 	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] successfully repaired internal bleeding in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 

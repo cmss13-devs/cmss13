@@ -48,6 +48,7 @@
 		SPAN_NOTICE("[user] replaces your severed [parse_zone(target_zone)] with \the [tool]. That feels much better."),
 		SPAN_NOTICE("[user] replaces [target]'s severed [parse_zone(target_zone)] with \the [tool]."))
 
+	to_chat(target, SPAN_NOTICE("You can't move your [parse_zone(target_zone)], but you somehow feel a little better."))
 	surgery.affected_limb.robotize(surgery_in_progress = TRUE, uncalibrated = TRUE, synth_skin = issynth(target))
 	target.update_body()
 	target.pain.recalculate_pain()

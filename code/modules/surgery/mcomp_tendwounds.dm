@@ -188,6 +188,7 @@
 	else
 		target.emote("pain")
 
+	to_chat(target, SPAN_NOTICE("You feel better."))
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] clamped a wound in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")

@@ -21,7 +21,7 @@
 	pixel_x = 16;
 	buckling_x = 16
 	},
-/turf/open/void/vehicle,
+/turf/open/shuttle/vehicle,
 /area/interior/vehicle/humvee/transport)
 "o" = (
 /obj/structure/bed/chair/comfy/vehicle/passager{
@@ -34,7 +34,7 @@
 	pixel_y = 17;
 	layer = 3
 	},
-/turf/open/void/vehicle,
+/turf/open/shuttle/vehicle,
 /area/interior/vehicle/humvee/transport)
 "t" = (
 /obj/effect/landmark/interior/spawn/interior_viewport/humvee{
@@ -67,9 +67,9 @@
 	pixel_x = -3;
 	pixel_y = -8;
 	layer = 5.23;
-	alpha = 75
+	alpha = 150
 	},
-/turf/open/void/vehicle,
+/turf/open/shuttle/vehicle,
 /area/interior/vehicle/humvee/transport)
 "y" = (
 /obj/effect/landmark/interior/spawn/interior_viewport/humvee{
@@ -87,9 +87,9 @@
 	icon_state = "small_viewport";
 	pixel_x = -1;
 	pixel_y = -7;
-	alpha = 75
+	alpha = 150
 	},
-/turf/open/void/vehicle,
+/turf/open/shuttle/vehicle,
 /area/interior/vehicle/humvee/transport)
 "M" = (
 /obj/effect/landmark/interior/spawn/entrance{
@@ -111,7 +111,7 @@
 	pixel_y = 1;
 	buckling_y = 1
 	},
-/turf/open/void/vehicle,
+/turf/open/shuttle/vehicle,
 /area/interior/vehicle/humvee/transport)
 "O" = (
 /turf/open/void/vehicle,
@@ -127,8 +127,7 @@
 	pixel_x = -3;
 	pixel_y = 1;
 	buckling_x = -3;
-	buckling_y = 1;
-	layer = 3.74
+	buckling_y = 1
 	},
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 4;
@@ -145,7 +144,7 @@
 	pixel_x = -3;
 	pixel_y = 16
 	},
-/turf/open/void/vehicle,
+/turf/open/shuttle/vehicle,
 /area/interior/vehicle/humvee/transport)
 
 (1,1,1) = {"

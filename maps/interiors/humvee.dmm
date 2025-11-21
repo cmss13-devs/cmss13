@@ -4,7 +4,7 @@
 	pixel_x = 1;
 	pixel_y = -8;
 	layer = 5.23;
-	alpha = 75
+	alpha = 150
 	},
 /obj/structure/bed/chair/comfy/vehicle/passager{
 	dir = 4;
@@ -24,7 +24,7 @@
 	icon_state = "exit_door";
 	layer = 5.22
 	},
-/turf/open/shuttle/vehicle/floor_3_13,
+/turf/open/shuttle/vehicle,
 /area/interior/vehicle/humvee)
 "o" = (
 /obj/structure/interior_viewport/humvee{
@@ -64,7 +64,7 @@
 	icon_state = "exit_door1";
 	layer = 2.8
 	},
-/turf/open/shuttle/vehicle/floor_3_13,
+/turf/open/shuttle/vehicle,
 /area/interior/vehicle/humvee)
 "t" = (
 /obj/effect/landmark/interior/spawn/interior_viewport/humvee{
@@ -99,7 +99,7 @@
 	pixel_x = -3;
 	pixel_y = -8;
 	layer = 5.23;
-	alpha = 75
+	alpha = 150
 	},
 /obj/effect/landmark/interior/spawn/entrance{
 	alpha = 75;
@@ -112,7 +112,7 @@
 	icon_state = "exit_door";
 	layer = 5.22
 	},
-/turf/open/shuttle/vehicle/floor_3_13,
+/turf/open/shuttle/vehicle,
 /area/interior/vehicle/humvee)
 "M" = (
 /obj/effect/landmark/interior/spawn/interior_viewport/humvee{
@@ -135,7 +135,7 @@
 	icon = 'icons/obj/vehicles/interiors/general_humvee.dmi';
 	icon_state = "exit_door1"
 	},
-/turf/open/shuttle/vehicle/floor_3_13,
+/turf/open/shuttle/vehicle,
 /area/interior/vehicle/humvee)
 "O" = (
 /turf/open/void/vehicle,

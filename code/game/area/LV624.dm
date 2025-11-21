@@ -20,6 +20,7 @@
 	name ="\improper Southeast Jungle"
 	icon_state = "southeast"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/ground/jungle/south_central_jungle
 	name ="\improper Southern Central Jungle"
@@ -30,6 +31,7 @@
 	name ="\improper Southwest Jungle"
 	icon_state = "southwest"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/jungle/south_west_jungle/ceiling
 	ceiling = CEILING_GLASS
@@ -40,13 +42,21 @@
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 	linked_lz = DROPSHIP_LZ2
 
-/area/lv624/ground/jungle/west_jungle/ceiling
-	ceiling = CEILING_GLASS
+/area/lv624/ground/jungle/west_jungle/swamp
+	name ="\improper Western Jungle Swamps"
+	icon_state = "west"
+	//ambience = list('sound/ambience/jungle_amb1.ogg')
+	linked_lz = DROPSHIP_LZ2
+
+/area/lv624/ground/jungle/west_jungle/shacks
+	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/jungle/east_jungle
 	name ="\improper Eastern Jungle"
 	icon_state = "east"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/ground/jungle/north_west_jungle
 	name ="\improper Northwest Jungle"
@@ -168,6 +178,10 @@
 	name = "\improper South Medbay Road"
 	icon_state = "south"
 
+/area/lv624/ground/colony/west_medbay_road
+	name = "\improper West Medbay Road"
+	icon_state = "west"
+
 /area/lv624/ground/colony/south_nexus_road
 	name = "\improper South Nexus Road"
 	icon_state = "south"
@@ -185,6 +199,10 @@
 	name = "\improper West T-Comms Road"
 	icon_state = "west"
 	linked_lz = DROPSHIP_LZ2
+
+/area/lv624/ground/colony/phi_lab_road
+	name = "\improper Phi Lab Road"
+	icon_state = "north"
 
 /area/lv624/ground/colony/telecomm
 	name = "\improper LZ1 Communications Relay"
@@ -234,15 +252,15 @@
 	unoviable_timer = FALSE
 
 /area/lv624/ground/caves/west_caves
-	name ="\improper Western Caves"
+	name ="\improper Western Mining Caves"
 	icon_state = "away1"
 
 /area/lv624/ground/caves/south_west_caves
-	name ="\improper South Western Caves"
+	name ="\improper Southwestern Mining Caves"
 	icon_state = "red"
 
 /area/lv624/ground/caves/east_caves
-	name ="\improper Eastern Caves"
+	name ="\improper East Overgrown Caves"
 	icon_state = "away"
 
 /area/lv624/ground/caves/central_caves
@@ -250,36 +268,33 @@
 	icon_state = "away4" //meh
 
 /area/lv624/ground/caves/north_west_caves
-	name ="\improper North Western Caves"
+	name ="\improper Northwestern Mining Caves"
 	icon_state = "cave"
 
 /area/lv624/ground/caves/north_east_caves
-	name ="\improper North Eastern Caves"
+	name ="\improper Northeastern Overgrown Caves"
 	icon_state = "cave"
 
 /area/lv624/ground/caves/north_central_caves
-	name ="\improper North Central Caves"
+	name ="\improper Lake House"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	icon_state = "away3" //meh
 
 /area/lv624/ground/caves/north_central_caves/lake_house_tower
-	name = "\improper Lake House Communications Relay"
+	name = "\improper Lake House Cavern"
 	ceiling = CEILING_NONE
 	icon_state = "yellow"
 
-/area/lv624/ground/caves/south_central_caves
-	name ="\improper South Central Caves"
-	icon_state = "away2" //meh
-
-/area/lv624/ground/caves/south_east_caves
-	name ="\improper South East Caves"
-	icon_state = "away2" //meh
-
-/area/lv624/ground/caves/sand_temple
-	name = "\improper Sand Temple"
+/area/lv624/ground/caves/ancient_temple
+	name = "\improper Ancient Temple"
 	icon_state = "bluenew"
 
-/area/lv624/ground/caves/sand_temple/powered
-	name = "\improper Sand Temple - Powered"
+/area/lv624/ground/caves/ancient_temple/pyramid
+	name = "\improper Temple Pyramid"
+	icon_state = "bluenew"
+
+/area/lv624/ground/caves/ancient_temple/powered
+	name = "\improper Ancient Temple - Powered"
 	icon_state = "green"
 	requires_power = FALSE
 
@@ -306,8 +321,8 @@
 	icon_state = "green"
 	ceiling = CEILING_METAL
 
-/area/lv624/lazarus/corporate_dome
-	name = "\improper Corporate Dome"
+/area/lv624/lazarus/customs_dome
+	name = "\improper Customs Dome"
 	icon_state = "green"
 	linked_lz = DROPSHIP_LZ2
 
@@ -325,11 +340,13 @@
 	name = "\improper Armory"
 	icon_state = "armory"
 	minimap_color = MINIMAP_AREA_SEC
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/security
 	name = "\improper Security"
 	icon_state = "security"
 	minimap_color = MINIMAP_AREA_SEC
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/captain
 	name = "\improper Commandant's Quarters"
@@ -346,8 +363,8 @@
 	icon_state = "kitchen"
 	linked_lz = DROPSHIP_LZ1
 
-/area/lv624/lazarus/canteen
-	name = "\improper Canteen"
+/area/lv624/lazarus/diner
+	name = "\improper Nexus Diner"
 	icon_state = "cafeteria"
 	linked_lz = DROPSHIP_LZ1
 
@@ -359,23 +376,26 @@
 /area/lv624/lazarus/toilet
 	name = "\improper Dormitory Toilet"
 	icon_state = "toilet"
+	linked_lz = DROPSHIP_LZ1
 
-/area/lv624/lazarus/chapel
-	name = "\improper Chapel"
-	icon_state = "chapel"
-	//ambience = list('sound/ambience/ambicha1.ogg','sound/ambience/ambicha2.ogg','sound/ambience/ambicha3.ogg','sound/ambience/ambicha4.ogg')
+/area/lv624/lazarus/nexus_admin
+	name = "\improper Nexus Administrator's Office"
+	icon_state = "purple"
+	linked_lz = DROPSHIP_LZ1
 
-/area/lv624/lazarus/toilet
-	name = "\improper Dormitory Toilet"
+/area/lv624/lazarus/sushi
+	name = "\improper Nexus Sushi"
 	icon_state = "toilet"
+	linked_lz = DROPSHIP_LZ1
 
-/area/lv624/lazarus/sleep_male
-	name = "\improper Male Dorm"
+/area/lv624/lazarus/nexus_dorms
+	name = "\improper Nexus Dormatories"
 	icon_state = "Sleep"
+	linked_lz = DROPSHIP_LZ1
 
-/area/lv624/lazarus/sleep_female
-	name = "\improper Female Dorm"
-	icon_state = "Sleep"
+/area/lv624/lazarus/nexus_radio
+	name = "\improper Lazarus Radio Station"
+	icon_state = "tcomsateast"
 	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/quart
@@ -404,22 +424,23 @@
 	name = "\improper Communications Relay"
 	icon_state = "tcomsatcham"
 	minimap_color = MINIMAP_AREA_ENGI
-
-/area/lv624/lazarus/secure_storage
-	name = "\improper Secure Storage"
-	icon_state = "storage"
-	flags_area = AREA_NOTUNNEL
 	linked_lz = DROPSHIP_LZ2
 
-/area/lv624/lazarus/robotics
-	name = "\improper Robotics"
+/area/lv624/lazarus/secure_bunker
+	name = "\improper Secure Bunker"
+	icon_state = "storage"
+	linked_lz = DROPSHIP_LZ2
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+/area/lv624/lazarus/corpo_apartments
+	name = "\improper Corporate Apartments"
 	icon_state = "ass_line"
 	linked_lz = DROPSHIP_LZ2
 
-/area/lv624/lazarus/research
-	name = "\improper Research Lab"
+/area/lv624/lazarus/general_dorms
+	name = "\improper General Dormatories"
 	icon_state = "toxlab"
-	minimap_color = MINIMAP_AREA_RESEARCH
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/lv624/lazarus/fitness
 	name = "\improper Fitness Room"
@@ -436,7 +457,7 @@
 	requires_power = FALSE
 
 /area/lv624/landing/console2
-	name = "\improper LZ2 'Robotics'"
+	name = "\improper LZ2 'Customs'"
 	icon_state = "tcomsatcham"
 	requires_power = FALSE
 
@@ -444,6 +465,68 @@
 	name = "\improper Crashed Ship"
 	icon_state = "syndie-ship"
 
-/area/lv624/lazarus/crashed_ship_containers
-	name = "\improper Crashed Ship Containers"
+/area/lv624/lazarus/crash_site
+	name = "\improper Crash Site"
 	icon_state = "syndie-ship"
+
+/area/lv624/lazarus/pumping_station
+	name = "\improper Water Pumping Station"
+	icon_state = "blueold"
+
+/area/lv624/lazarus/kmcc_cargo
+	name = "\improper KMCC Cargo Transit"
+	icon_state = "quartstorage"
+
+/area/lv624/lazarus/cargo_storage
+	name = "\improper Cargo Storage Dome"
+	icon_state = "quartstorage"
+	linked_lz = DROPSHIP_LZ1
+
+/area/lv624/lazarus/disposals
+	name = "\improper Disposals Dome"
+	icon_state = "yellow"
+	linked_lz = DROPSHIP_LZ1
+
+//LV624 REVAMP NEW AREAS
+
+/area/lv624/ground/colony/phi_lab
+	name = "\improper Phi Labs"
+	icon = 'icons/turf/hybrisareas.dmi'
+	icon_state = "wylab"
+	ceiling = CEILING_METAL
+
+/area/lv624/ground/colony/phi_lab/cargo
+	name = "\improper Phi Cargo Port"
+	icon_state = "garage"
+
+/area/lv624/ground/colony/phi_lab/breakroom
+	name = "\improper Phi Break Room"
+	icon_state = "pizza"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+/area/lv624/ground/colony/phi_lab/restroom
+	name = "\improper Phi Washroom"
+	icon_state = "restroom"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+/area/lv624/ground/colony/phi_lab/dome
+	name = "\improper Phi Experiment Dome"
+	icon_state = "wylab"
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+
+//KMCC MINING FACILITY//
+
+/area/lv624/ground/caves/mining
+	name = "\improper KMCC Mining Facility"
+	icon = 'icons/turf/hybrisareas.dmi'
+	icon_state = "mining"
+	always_unpowered = FALSE
+
+/area/lv624/gonzo
+	name = "Gonzo's hide-out"
+	icon_state = "cliff_blocked"
+	ceiling = CEILING_MAX
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+	minimap_color = MINIMAP_AREA_OOB
+	requires_power = FALSE

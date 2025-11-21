@@ -500,6 +500,18 @@
 	return TRUE
 
 //////////////////////////////////////
+// FOB SMOKE
+////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/fog
+	icon = 'icons/obj/structures/props/watercloset.dmi'
+	icon_state = "steam"
+
+/obj/effect/particle_effect/smoke/fog/Initialize(mapload, oldamount, datum/cause_data/new_cause_data)
+	. = ..()
+	animate(src,3 SECONDS, loop = FALSE)
+
+//////////////////////////////////////
 // FLASHBANG SMOKE
 ////////////////////////////////////
 
@@ -828,6 +840,10 @@
 
 /datum/effect_system/smoke_spread/cn20/xeno
 	smoke_type = /obj/effect/particle_effect/smoke/cn20/xeno
+
+/datum/effect_system/smoke_spread/fog
+	smoke_type = /obj/effect/particle_effect/smoke/fog
+
 
 // XENO SMOKES
 

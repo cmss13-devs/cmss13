@@ -4897,3 +4897,6 @@
 
 /turf/open/gm/grass/grass2/pred
 	icon_state = "grass2"
+
+/turf/open/floor/temple
+	icon_state = "templefloor"

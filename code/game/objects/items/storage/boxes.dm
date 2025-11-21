@@ -35,16 +35,16 @@
 	item_state = "box"
 	foldable = TRUE
 	storage_slots = null
-	max_w_class = SIZE_SMALL //Changed because of in-game abuse
-	w_class = SIZE_LARGE //Changed becuase of in-game abuse
+	max_w_class = SIZE_LARGE
+	w_class = SIZE_MEDIUM
 	storage_flags = STORAGE_FLAGS_BOX
+	preset_hold_only = TRUE
 
 /obj/item/storage/box/pride
 	name = "box of prideful crayons"
 	desc = "A box of every flavor of pride."
 	storage_slots = 8
-	w_class = SIZE_SMALL
-	can_hold = list(/obj/item/toy/crayon/pride)
+	w_class = SIZE_TINY // who wouldnt wanna have a box of crayons on their person??
 
 /obj/item/storage/box/pride/fill_preset_inventory()
 	new /obj/item/toy/crayon/pride/gay(src)
@@ -57,7 +57,9 @@
 	new /obj/item/toy/crayon/pride/fluid(src)
 
 /obj/item/storage/box/survival
-	w_class = SIZE_MEDIUM
+	name = "box of survival gear"
+	desc = "An ordinary box, but you feel like you can store stuff in this without too much restrictions."
+	preset_hold_only = FALSE // amuse me with this
 
 /obj/item/storage/box/survival/fill_preset_inventory()
 	new /obj/item/clothing/mask/breath( src )
@@ -75,9 +77,7 @@
 	desc = "Contains white gloves."
 	icon_state = "latex"
 	item_state = "latex"
-	can_hold = list(/obj/item/clothing/gloves/latex)
 	w_class = SIZE_SMALL
-
 
 /obj/item/storage/box/gloves/fill_preset_inventory()
 	new /obj/item/clothing/gloves/latex(src)
@@ -88,21 +88,19 @@
 	new /obj/item/clothing/gloves/latex(src)
 	new /obj/item/clothing/gloves/latex(src)
 
-/obj/item/storage/box/masks
-	name = "box of sterile masks"
-	desc = "This box contains masks of sterility."
-	icon_state = "sterile"
-	item_state = "sterile"
-	can_hold = list(/obj/item/clothing/mask/surgical)
-	w_class = SIZE_SMALL
-
 /obj/item/storage/box/bloodbag
 	name = "empty box of blood bags"
 	desc = "This box can hold all kinds of blood bags."
 	icon_state = "blood"
 	item_state = "blood"
-	can_hold = list(/obj/item/reagent_container/blood/)
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_LARGE
+
+/obj/item/storage/box/masks
+	name = "box of sterile masks"
+	desc = "This box contains masks of sterility."
+	icon_state = "sterile"
+	item_state = "sterile"
+	w_class = SIZE_SMALL
 
 /obj/item/storage/box/masks/fill_preset_inventory()
 	new /obj/item/clothing/mask/surgical(src)
@@ -113,15 +111,13 @@
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
 
-
 /obj/item/storage/box/syringes
 	name = "box of syringes"
 	desc = "A box full of syringes."
 	desc = "A biohazard alert warning is printed on the box"
-	can_hold = list(/obj/item/reagent_container/syringe)
 	icon_state = "syringe"
 	item_state = "syringe"
-	w_class = SIZE_SMALL
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/syringes/fill_preset_inventory()
 	new /obj/item/reagent_container/syringe(src)
@@ -137,8 +133,7 @@
 	name = "box of beakers"
 	icon_state = "beaker"
 	item_state = "beaker"
-	can_hold = list(/obj/item/reagent_container/glass/beaker)
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_LARGE // yeah
 
 /obj/item/storage/box/beakers/fill_preset_inventory()
 	new /obj/item/reagent_container/glass/beaker(src)
@@ -153,7 +148,6 @@
 	name = "box of vials"
 	icon_state = "vial"
 	item_state = "vial"
-	can_hold = list(/obj/item/reagent_container/glass/beaker)
 	w_class = SIZE_SMALL
 
 /obj/item/storage/box/vials/fill_preset_inventory()
@@ -169,8 +163,7 @@
 	name = "box of empty spray bottles"
 	icon_state = "spray"
 	item_state = "spray"
-	can_hold = list(/obj/item/reagent_container/spray)
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_LARGE
 
 /obj/item/storage/box/sprays/fill_preset_inventory()
 	new /obj/item/reagent_container/spray(src)
@@ -187,8 +180,7 @@
 	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "flashbang"
 	item_state = "flashbang"
-	can_hold = list(/obj/item/explosive/grenade/flashbang)
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_LARGE
 
 /obj/item/storage/box/flashbangs/fill_preset_inventory()
 	new /obj/item/explosive/grenade/flashbang(src)
@@ -220,6 +212,7 @@
 	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "emp"
 	item_state = "emp"
+	w_class = SIZE_LARGE
 
 /obj/item/storage/box/emps/fill_preset_inventory()
 	new /obj/item/explosive/grenade/empgrenade(src)
@@ -257,14 +250,10 @@
 	new /obj/item/implanter(src)
 	new /obj/item/implantpad(src)
 
-
-
 /obj/item/storage/box/rxglasses
 	name = "box of prescription glasses"
 	desc = "This box contains nerd glasses."
 	icon_state = "glasses"
-	can_hold = list(/obj/item/clothing/glasses/regular)
-	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/rxglasses/fill_preset_inventory()
 	new /obj/item/clothing/glasses/regular(src)
@@ -292,6 +281,7 @@
 /obj/item/storage/box/drinkingglasses
 	name = "box of drinking glasses"
 	desc = "It has a picture of drinking glasses on it."
+	w_class = SIZE_LARGE
 
 /obj/item/storage/box/drinkingglasses/fill_preset_inventory()
 	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
@@ -319,6 +309,7 @@
 /obj/item/storage/box/condimentbottles
 	name = "box of condiment bottles"
 	desc = "It has a large ketchup smear on it."
+	w_class = SIZE_LARGE
 
 /obj/item/storage/box/condimentbottles/fill_preset_inventory()
 	new /obj/item/reagent_container/food/condiment(src)
@@ -327,8 +318,6 @@
 	new /obj/item/reagent_container/food/condiment(src)
 	new /obj/item/reagent_container/food/condiment(src)
 	new /obj/item/reagent_container/food/condiment(src)
-
-
 
 /obj/item/storage/box/cups
 	name = "box of paper cups"
@@ -348,8 +337,6 @@
 	desc = "<B>Instructions:</B> <I>Heat in microwave. Product will cool if not eaten within seven minutes.</I>"
 	icon_state = "donk_kit"
 	item_state = "donk_kit"
-	can_hold = list(/obj/item/reagent_container/food/snacks)
-	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/donkpockets/fill_preset_inventory()
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
@@ -364,7 +351,6 @@
 	desc = "A box of instant tea bags."
 	icon_state = "teabag_box"
 	item_state = "teabag_box"
-	can_hold = list(/obj/item/reagent_container/pill/teabag)
 	w_class = SIZE_SMALL
 	storage_slots = 8
 
@@ -383,7 +369,6 @@
 	desc = "A box of lemon flavored hard candies."
 	icon_state = "lemon_drop_box"
 	item_state = "lemon_drop_box"
-	can_hold = list(/obj/item/reagent_container/food/snacks/lemondrop)
 	w_class = SIZE_SMALL
 	storage_slots = 8
 
@@ -403,6 +388,7 @@
 	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "monkeycubebox"
 	item_state = "monkeycubebox"
+	w_class = SIZE_LARGE
 
 /obj/item/storage/box/monkeycubes/fill_preset_inventory()
 	for(var/i = 1; i <= 5; i++)
@@ -458,6 +444,7 @@
 	desc = "A box full of handcuffs."
 	icon_state = "handcuff"
 	item_state = "handcuff"
+	w_class = SIZE_LARGE
 
 /obj/item/storage/box/handcuffs/fill_preset_inventory()
 	new /obj/item/restraint/handcuffs(src)
@@ -474,6 +461,7 @@
 	desc = "A box full of legcuffs."
 	icon_state = "handcuff"
 	item_state = "handcuff"
+	w_class = SIZE_LARGE
 
 /obj/item/storage/box/legcuffs/fill_preset_inventory()
 	new /obj/item/restraint/legcuffs(src)
@@ -487,35 +475,12 @@
 /obj/item/storage/box/zipcuffs
 	name = "box of zip cuffs"
 	desc = "A box full of zip cuffs."
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_SMALL
 	icon_state = "handcuff"
 	item_state = "handcuff"
+	storage_slots = 4
 
 /obj/item/storage/box/zipcuffs/fill_preset_inventory()
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-
-/obj/item/storage/box/zipcuffs/small
-	name = "small box of zip cuffs"
-	desc = "A small box full of zip cuffs."
-	w_class = SIZE_MEDIUM
-
-/obj/item/storage/box/zipcuffs/small/fill_preset_inventory()
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
-	new /obj/item/restraint/handcuffs/zip(src)
 	new /obj/item/restraint/handcuffs/zip(src)
 	new /obj/item/restraint/handcuffs/zip(src)
 	new /obj/item/restraint/handcuffs/zip(src)
@@ -524,6 +489,7 @@
 /obj/item/storage/box/tapes
 	name = "box of regulation tapes"
 	desc = "A box full of magnetic tapes for tape recorders. Contains 10 hours and 40 minutes of recording space!"
+	w_class = SIZE_SMALL
 
 /obj/item/storage/box/tapes/fill_preset_inventory()
 	new /obj/item/tape/regulation(src)
@@ -562,9 +528,6 @@
 	item_state = "pillbox"
 
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_GATHER_SIMULTAENOUSLY
-	can_hold = list(
-		/obj/item/storage/pill_bottle,
-	)
 
 	//multiplier to time required to empty the box into chem master
 	var/time_to_empty = 3
@@ -606,7 +569,6 @@
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_WAIST
 	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
-	can_hold = list(/obj/item/tool/match)
 
 /obj/item/storage/box/matches/fill_preset_inventory()
 	for(var/i=1; i <= 14; i++)
@@ -629,6 +591,7 @@
 	)
 	max_storage_space = 42 //holds 21 items of w_class 2
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER
+	preset_hold_only = FALSE
 
 /obj/item/storage/box/lights/bulbs/fill_preset_inventory()
 	for(var/i = 0; i < 21; i++)
@@ -638,7 +601,6 @@
 	name = "box of replacement tubes"
 	icon_state = "lighttube"
 	item_state = "lighttube"
-	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/lights/tubes/fill_preset_inventory()
 	for(var/i = 0; i < 21; i++)
@@ -660,6 +622,7 @@
 	name = "box of autoinjectors"
 	icon_state = "syringe"
 	item_state = "syringe"
+	w_class = SIZE_LARGE
 
 /obj/item/storage/box/autoinjectors/fill_preset_inventory()
 	for(var/i = 0; i < 7; i++)
@@ -672,7 +635,6 @@
 	icon = 'icons/obj/items/storage/kits.dmi'
 	desc = "A box filled with enormous slug shells, for hunting only the most dangerous game. 2 Bore."
 	storage_slots = 5
-	can_hold = list(/obj/item/ammo_magazine/handful/shotgun/twobore)
 
 /obj/item/storage/box/twobore/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
@@ -683,10 +645,8 @@
 	desc = "A fancy shoe box with reflective surface and Weyland-Yutani logo on top, says 'Reebok Stompers' on the back."
 	icon_state = "stomper_box"
 	item_state = "stomper_box"
-	w_class = SIZE_MEDIUM
 	bypass_w_limit = /obj/item/clothing/shoes
 	max_storage_space = 3
-	can_hold = list(/obj/item/clothing/shoes)
 
 /obj/item/storage/box/stompers/fill_preset_inventory()
 	new /obj/item/clothing/shoes/stompers(src)
@@ -706,9 +666,9 @@
 	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "minebox"
 	item_state = "minebox"
-	w_class = SIZE_MEDIUM
 	max_storage_space = 10
 	can_hold = list(/obj/item/explosive/mine)
+	preset_hold_only = FALSE
 
 /obj/item/storage/box/explosive_mines/fill_preset_inventory()
 	for(var/i in 1 to 5)
@@ -726,10 +686,10 @@
 	desc = "A packet of eight M94 Marking Flares. Carried by USCM soldiers to light dark areas that cannot be reached with the usual TNR Shoulder Lamp."
 	icon_state = "m94"
 	icon = 'icons/obj/items/storage/packets.dmi'
-	w_class = SIZE_MEDIUM
 	storage_slots = 8
 	max_storage_space = 8
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
+	preset_hold_only = FALSE
 
 /obj/item/storage/box/m94/fill_preset_inventory()
 	for(var/i = 1 to max_storage_space)
@@ -768,6 +728,7 @@
 	storage_slots = 25
 	max_storage_space = 50
 	can_hold = list(/obj/item/explosive/grenade/high_explosive)
+	preset_hold_only = FALSE
 	var/base_icon
 	var/model_icon = "model_m40"
 	var/type_icon = "hedp"
@@ -777,6 +738,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
+	weighted_storage = TRUE
 
 /obj/item/storage/box/nade_box/Initialize()
 	. = ..()
@@ -873,7 +835,6 @@
 	item_state = "teargas_nade_placeholder"
 	model_icon = "model_m66"
 	type_icon = null
-	can_hold = list(/obj/item/explosive/grenade/custom/teargas)
 	grenade_type = /obj/item/explosive/grenade/custom/teargas
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -901,7 +862,7 @@
 	desc = "Contains blue lightsticks."
 	icon_state = "lightstick"
 	item_state = "lightstick"
-	can_hold = list(/obj/item/lightstick)
+	w_class = SIZE_SMALL
 
 /obj/item/storage/box/lightstick/fill_preset_inventory()
 	new /obj/item/lightstick(src)
@@ -931,6 +892,7 @@
 //meat
 /obj/item/storage/box/meat
 	name = "box of meat"
+	w_class = SIZE_SMALL
 
 /obj/item/storage/box/meat/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -939,6 +901,7 @@
 //fish
 /obj/item/storage/box/fish
 	name = "box of fish"
+	w_class = SIZE_SMALL
 
 /obj/item/storage/box/fish/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -949,6 +912,7 @@
 //milk
 /obj/item/storage/box/milk
 	name = "box of milk"
+	w_class = SIZE_LARGE
 
 /obj/item/storage/box/milk/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -957,6 +921,7 @@
 //soymilk
 /obj/item/storage/box/soymilk
 	name = "box of soymilk"
+	w_class = SIZE_LARGE
 
 /obj/item/storage/box/soymilk/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -965,6 +930,7 @@
 //enzyme
 /obj/item/storage/box/enzyme
 	name = "box of enzyme"
+	w_class = SIZE_LARGE
 
 /obj/item/storage/box/enzyme/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -975,6 +941,7 @@
 //flour
 /obj/item/storage/box/flour
 	name = "box of flour"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/flour/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -983,6 +950,7 @@
 //sugar
 /obj/item/storage/box/sugar
 	name = "box of sugar"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/sugar/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -991,6 +959,7 @@
 //saltshaker
 /obj/item/storage/box/saltshaker
 	name = "box of saltshakers"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/saltshaker/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -999,6 +968,7 @@
 //peppermill
 /obj/item/storage/box/peppermill
 	name = "box of peppermills"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/peppermill/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1007,6 +977,7 @@
 //mint
 /obj/item/storage/box/mint
 	name = "box of mints"
+	w_class = SIZE_SMALL
 
 /obj/item/storage/box/mint/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1017,6 +988,7 @@
 //apple
 /obj/item/storage/box/apple
 	name = "box of apples"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/apple/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1025,6 +997,7 @@
 //banana
 /obj/item/storage/box/banana
 	name = "box of bananas"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/banana/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1033,6 +1006,7 @@
 //chanterelle
 /obj/item/storage/box/chanterelle
 	name = "box of chanterelles"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/chanterelle/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1041,6 +1015,7 @@
 //cherries
 /obj/item/storage/box/cherries
 	name = "box of cherries"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/cherries/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1049,6 +1024,7 @@
 //chili
 /obj/item/storage/box/chili
 	name = "box of chili"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/chili/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1057,6 +1033,7 @@
 //cabbage
 /obj/item/storage/box/cabbage
 	name = "box of cabbages"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/cabbage/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1065,6 +1042,7 @@
 //carrot
 /obj/item/storage/box/carrot
 	name = "box of carrots"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/carrot/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1073,6 +1051,7 @@
 //corn
 /obj/item/storage/box/corn
 	name = "box of corn"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/corn/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1081,6 +1060,7 @@
 //eggplant
 /obj/item/storage/box/eggplant
 	name = "box of eggplants"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/eggplant/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1089,6 +1069,7 @@
 //lemon
 /obj/item/storage/box/lemon
 	name = "box of lemons"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/lemon/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1097,6 +1078,7 @@
 //lime
 /obj/item/storage/box/lime
 	name = "box of limes"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/lime/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1105,6 +1087,7 @@
 //orange
 /obj/item/storage/box/orange
 	name = "box of oranges"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/orange/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1113,6 +1096,7 @@
 //potato
 /obj/item/storage/box/potato
 	name = "box of potatoes"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/potato/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1121,6 +1105,7 @@
 //tomato
 /obj/item/storage/box/tomato
 	name = "box of tomatoes"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/tomato/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1129,6 +1114,7 @@
 //whitebeet
 /obj/item/storage/box/whitebeet
 	name = "box of whitebeet"
+	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/whitebeet/fill_preset_inventory()
 	for(var/i in 1 to 7)

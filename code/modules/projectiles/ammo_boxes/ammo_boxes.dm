@@ -19,7 +19,18 @@
 	var/magazines_icon = 'icons/obj/items/weapons/guns/ammo_boxes/magazines.dmi'
 	var/flames_icon = 'icons/obj/items/weapons/guns/ammo_boxes/misc.dmi'
 
+	// do NOT use weighted_item here, we have a special function for this path category
+	/// if the capacity within the box is weighted for a movement speed malus by the amount of ammo
+	var/weighted_ammo = TRUE
+	/// the weight multiplier for weighted ammo, calculated based on the amount of items in the box and multiplied by this amount
+	var/weight_multiplier = MAG_BOX_WEIGHT_DEFAULT
+
 //---------------------GENERAL PROCS
+
+/obj/item/ammo_box/dropped(mob/user, silent)
+	. = ..()
+	if(weighted_ammo)
+		UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
 
 /obj/item/ammo_box/attack_self(mob/living/user)
 	..()
@@ -90,6 +101,7 @@
 	limit_per_tile = 2
 	ground_offset_x = 5
 	ground_offset_y = 5
+	weight_multiplier = MAG_BOX_WEIGHT_DEFAULT
 
 /obj/item/ammo_box/magazine/empty
 	empty = TRUE
@@ -120,6 +132,18 @@
 		overlays += image(text_markings_icon, icon_state = "base_type[overlay_ammo_type]") //adding base color stripes
 	if(overlay_ammo_type!="_reg" && overlay_ammo_type!="_blank" && (!icon_state_deployed) )
 		overlays += image(text_markings_icon, icon_state = "lid_type[overlay_ammo_type]") //adding base color stripes
+
+/obj/item/ammo_box/magazine/pickup(mob/user, silent)
+	. = ..()
+	if(weighted_ammo)
+		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(ammo_weight_delay))
+
+/obj/item/ammo_box/magazine/proc/ammo_weight_delay(mob/user, list/movedata)
+	SIGNAL_HANDLER
+	for(var/obj/item/ammo_box/rounds/inv in user.contents)
+		if(inv.weighted_ammo)
+			movedata["move_delay"] += num_of_magazines * weight_multiplier
+			break // only really need to call this once
 
 //---------------------INTERACTION PROCS
 
@@ -277,11 +301,24 @@
 	var/max_bullet_amount = 600
 	var/caliber = "10x24mm"
 	can_explode = TRUE
+	weight_multiplier = AMMO_BOX_WEIGHT_DEFAULT // holy fuck, do not set this for anything else
 
 /obj/item/ammo_box/rounds/empty
 	empty = TRUE
 
 //---------------------GENERAL PROCS
+
+/obj/item/ammo_box/rounds/pickup(mob/user, silent)
+	. = ..()
+	if(weighted_ammo)
+		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(ammo_weight_delay))
+
+/obj/item/ammo_box/rounds/proc/ammo_weight_delay(mob/user, list/movedata)
+	SIGNAL_HANDLER
+	for(var/obj/item/ammo_box/rounds/inv in user.contents)
+		if(inv.weighted_ammo)
+			movedata["move_delay"] += bullet_amount * weight_multiplier
+			break // only really need to call this once
 
 /obj/item/ammo_box/rounds/Initialize()
 	. = ..()

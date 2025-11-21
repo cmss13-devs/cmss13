@@ -169,6 +169,9 @@
 	/// Special storages this item prioritizes
 	var/list/preferred_storage
 
+	/// if this item adds a movement speed malus when carried based on its weight class, shouldnt be able to affect your speed if its inserted in a storage item
+	var/weighted_item = FALSE
+
 /obj/item/Initialize(mapload, ...)
 	. = ..()
 
@@ -412,6 +415,9 @@
 		playsound(src, drop_sound, dropvol, drop_vary)
 	src.do_drop_animation(user)
 
+	if(weighted_item)
+		UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
+
 	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
 
 /// Called just as an item is picked up (loc is not yet changed) and will return TRUE if the pickup wasn't canceled.
@@ -427,7 +433,26 @@
 	if(pickup_sound && !silent && src.loc?.z)
 		playsound(src, pickup_sound, pickupvol, pickup_vary)
 	do_pickup_animation(user)
+
+	if(weighted_item)
+		if(w_class >= SIZE_LARGE)
+			if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
+				to_chat(user, SPAN_HIGHDANGER("You grimace as you barely manage to lift \the [src] above your knees."))
+				user.apply_effect(3, EYE_BLUR)
+				RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(weight_class_delay))
+			else
+				return
+		else if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
+			to_chat(user, SPAN_DANGER("You can feel the weight on \the [src], it's going to slow you down unless you put it away."))
+			RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(weight_class_delay))
+		else
+			return
+
 	return TRUE
+
+/obj/item/proc/weight_class_delay(mob/living/M, list/movedata)
+	SIGNAL_HANDLER
+	movedata["move_delay"] += w_class
 
 ///Helper function for updating last_equipped_slot when item is drawn from storage
 /obj/item/proc/set_last_equipped_slot_of_storage(obj/item/storage/storage_item)

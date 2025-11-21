@@ -6,6 +6,7 @@
 
 /datum/surgery/eye_repair
 	name = "Eye Repair Surgery"
+	desc = "Fix the corneas, retinas, and lenses to reverse nearsightedness and blindness."
 	possible_locs = list("eyes")
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -32,7 +33,7 @@
 
 /datum/surgery_step/separate_cornea
 	name = "Separate Corneas"
-	desc = "separate the corneas"
+	desc = "Separate the corneas."
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 
@@ -77,7 +78,7 @@
 
 /datum/surgery_step/lift_eyes
 	name = "Lift Corneas"
-	desc = "lift the corneas"
+	desc = "Lift the corneas."
 	tools = SURGERY_TOOLS_PRY_DELICATE
 	time = 2 SECONDS
 
@@ -118,7 +119,7 @@
 
 /datum/surgery_step/mend_eyes
 	name = "Mend Ocular Nerves"
-	desc = "mend the eyes"
+	desc = "Mend the eyes."
 	tools = SURGERY_TOOLS_PINCH
 	time = 4 SECONDS
 
@@ -159,7 +160,7 @@
 
 /datum/surgery_step/cauterize/eyes
 	name = "Cauterize Eye Incisions"
-	desc = "cauterize the incisions"
+	desc = "Cauterize the incisions."
 	time = 3 SECONDS
 
 /datum/surgery_step/cauterize/eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

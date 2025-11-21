@@ -7,6 +7,7 @@
 //Implant and removal surgeries allow either removing the implant just inserted or replacing a removed one with a new item.
 /datum/surgery/implant
 	name = "Implant Surgery"
+	desc = "Implant an object into the thoracic or cranial cavity."
 	priority = SURGERY_PRIORITY_LOW
 	possible_locs = list("chest", "head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
@@ -19,6 +20,7 @@
 	)
 
 /datum/surgery/implant/groin
+	desc = "Implant an object in the abdominal cavity."
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
@@ -29,6 +31,7 @@
 
 /datum/surgery/implant/removal
 	name = "Implant Removal Surgery"
+	desc = "Remove an implant from the thoracic or cranial cavity."
 	steps = list(
 		/datum/surgery_step/create_cavity,
 		/datum/surgery_step/remove_implant,
@@ -36,6 +39,7 @@
 	)
 
 /datum/surgery/implant/removal/groin
+	desc = "Remove an implant from the abdominal cavity."
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
@@ -46,7 +50,7 @@
 
 /datum/surgery_step/create_cavity
 	name = "Create Implant Cavity"
-	desc = "open an implant cavity"
+	desc = "Open an implant cavity."
 	tools = list(
 		/obj/item/tool/surgery/surgicaldrill = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/pen = SURGERY_TOOL_MULT_SUBSTITUTE,
@@ -89,7 +93,7 @@
 
 /datum/surgery_step/place_item
 	name = "Insert Implant"
-	desc = "implant an object"
+	desc = "Implant an object."
 	accept_any_item = TRUE //Any item except a surgery tool or substitute for such.
 	time = 5 SECONDS
 
@@ -165,7 +169,7 @@
 
 /datum/surgery_step/remove_implant
 	name = "Remove Embedded Implant"
-	desc = "remove an implant"
+	desc = "Remove an implant."
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 
@@ -227,7 +231,7 @@
 
 /datum/surgery_step/cauterize/close_cavity
 	name = "Cauterize Implant Cavity"
-	desc = "seal the implant cavity"
+	desc = "Seal the implant cavity."
 	time = 5 SECONDS
 
 /datum/surgery_step/cauterize/close_cavity/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -265,6 +269,7 @@
 
 /datum/surgery/embedded
 	name = "Embedded Object Removal Surgery"
+	desc = "Remove foreign objects from a patient's body."
 	priority = SURGERY_PRIORITY_LOW
 	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
 	steps = list(/datum/surgery_step/remove_embedded)
@@ -280,7 +285,7 @@
 
 /datum/surgery_step/remove_embedded
 	name = "Remove Foreign Body"
-	desc = "extract a foreign body"
+	desc = "Extract a foreign body."
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 

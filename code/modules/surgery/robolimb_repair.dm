@@ -5,6 +5,7 @@
 
 /datum/surgery/prosthetic_recalibration
 	name = "Recalibrate Prosthetic Limb"
+	name = "Recalibrate the connections and mechanics so the owner may move their prosthesis."
 	steps = list(/datum/surgery_step/recalibrate_prosthesis)
 	possible_locs = EXTREMITY_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
@@ -23,7 +24,7 @@
 
 /datum/surgery_step/recalibrate_prosthesis
 	name = "Recalibrate Prosthesis"
-	desc = "recalibrate the prosthesis"
+	desc = "Recalibrate the prosthesis."
 	accept_hand = TRUE
 	time = 2.5 SECONDS
 	tools = SURGERY_TOOLS_PINCH
@@ -55,9 +56,9 @@
 /datum/surgery_step/recalibrate_prosthesis/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/failure_mode
 	if(target_zone in HANDLING_LIMBS) //Arm/hand
-		failure_mode = pick("flails wildly", "gestures rudely", "attempts to throttle its owner")
+		failure_mode = pick("flails wildly.", "gestures rudely.", "attempts to throttle its owner.")
 	else //Leg/foot
-		failure_mode = pick("kicks wildly", "contorts inhumanly", "almost crushes something with its toes")
+		failure_mode = pick("kicks wildly.", "contorts inhumanly.", "almost kicks [user] with its toes.")
 
 	user.affected_message(target,
 		SPAN_WARNING("You make a mistake recalibrating the prosthetic [parse_zone(target_zone)], and it [failure_mode]!"),

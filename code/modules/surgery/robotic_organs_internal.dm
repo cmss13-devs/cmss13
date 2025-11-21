@@ -6,6 +6,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 /datum/surgery/robotic_organ_repair
 	name = "Robotic Organ Rejuvenation Surgery"
+	name = "Repairing robot organs in the chest."
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = list("chest")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
@@ -19,6 +20,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 	return FALSE
 
 /datum/surgery/robotic_organ_repair/groin
+	name = "Repairing robot organs in the groin."
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
@@ -26,7 +28,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 /datum/surgery_step/repair_robotic_organs
 	name = "Repair Damaged Robotic Organs"
-	desc = "repair the organ damage"
+	desc = "Repair the organ damage."
 	//Tools used to fix damaged organs. Predator herbs may be herbal and organic, but are not as good for surgery.
 	tools = list(
 		/obj/item/stack/nanopaste = SURGERY_TOOL_MULT_IDEAL,

@@ -6,6 +6,7 @@
 
 /datum/surgery/bone_repair
 	name = "Bone Repair Surgery"
+	desc = "Repair broken bones."
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -34,7 +35,7 @@
 
 /datum/surgery_step/mend_bones
 	name = "Mend Broken Bones"
-	desc = "repair the fractured bones"
+	desc = "Repair the fractured bones."
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
@@ -150,7 +151,7 @@
 
 /datum/surgery_step/set_bones
 	name = "Set Bones"
-	desc = "set the bones"
+	desc = "Set the fractured bones back in place."
 	tools = list(
 		/obj/item/tool/surgery/bonesetter = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE,

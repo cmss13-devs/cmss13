@@ -5,6 +5,7 @@
 
 /datum/surgery/head_reattach
 	name = "Synthetic Head Reattachment"
+	desc = "Reattach a poor synth's lost head."
 	priority = SURGERY_PRIORITY_MAXIMUM
 	possible_locs = list("head")
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
@@ -31,7 +32,7 @@
 
 /datum/surgery_step/peel_skin
 	name = "Peel Back Skin"
-	desc = "peel the skin back"
+	desc = "Peel the skin back from the neck."
 	//Tools used to pry things open without orthopedic dramatics.
 	tools = list(
 		/obj/item/tool/surgery/retractor = SURGERY_TOOL_MULT_IDEAL,
@@ -75,7 +76,7 @@
 
 /datum/surgery_step/reattach_head
 	name = "Reattach Synthetic Head"
-	desc = "reattach the head"
+	desc = "Reattach the head onto the neck."
 	tools = list(/obj/item/limb/head/synth = SURGERY_TOOL_MULT_IDEAL)
 	time = 10 SECONDS
 
@@ -117,7 +118,7 @@
 
 /datum/surgery_step/mend_connections
 	name = "Reconstruct Throat"
-	desc = "reconstruct the throat"
+	desc = "Reconstruct the throat so the synth can speak again."
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
 
@@ -148,7 +149,7 @@
 
 /datum/surgery_step/cauterize/reposition_flesh
 	name = "Seal Skin"
-	desc = "seal the skin"
+	desc = "Seal the skin."
 	time = 6 SECONDS
 
 /datum/surgery_step/cauterize/reposition_flesh/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

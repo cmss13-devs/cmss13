@@ -4,6 +4,7 @@ w//////////////////////////////////////////////////////////////////
 
 /datum/surgery/internal_bleeding
 	name = "Internal Bleeding Repair"
+	name = "Repair a ruptured blood vessel."
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
@@ -21,7 +22,7 @@ w//////////////////////////////////////////////////////////////////
 
 /datum/surgery_step/fix_vein
 	name = "Fix Vein"
-	desc = "mend the damaged blood vessel"
+	desc = "Mend the damaged blood vessel."
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'

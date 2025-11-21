@@ -2,6 +2,7 @@
 
 /datum/surgery/xenomorph
 	name = "Experimental Harvesting Surgery"
+	desc = "Harvest organs from an organism."
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	possible_locs = list("head")
@@ -79,8 +80,8 @@
 		target.add_splatter_floor(get_turf(target.loc))
 
 /datum/surgery_step/xenomorph/open_exoskeleton
-	name = "Pry exoskeleton open"
-	desc = "open the exoskeleton in the incision"
+	name = "Pry Exoskeleton Open"
+	desc = "Open the exoskeleton in the incision."
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -125,7 +126,7 @@
 
 /datum/surgery_step/xenomorph/severe_connections
 	name = "Sever Organ Connections"
-	desc = "detach tubes and connections from organ"
+	desc = "Detach tubes and connections from organ."
 	tools = list(
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/surgery/scalpel/pict_system = SURGERY_TOOL_MULT_IDEAL,
@@ -176,7 +177,7 @@
 
 /datum/surgery_step/xenomorph/remove_organ
 	name = "Remove Xenomorph Organ"
-	desc = "grab a hold of it and pull the organ out"
+	desc = "Grab hold of the organ and pull it out."
 	accept_hand = TRUE
 	tools = list(
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,

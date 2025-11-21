@@ -89,6 +89,9 @@
 	/// defines which sprite the limb should use if dimorphic, set in [/obj/limb/proc/update_limb()]
 	var/limb_gender = MALE
 
+	/// at what value should chemical healing stop on untreated severe burns
+	var/burn_healing_threshold = 5
+
 
 
 /obj/limb/Initialize(mapload, obj/limb/P, mob/mob_owner)

@@ -170,7 +170,7 @@
 
 /obj/structure/closet/secure_closet/surgical/emergency
 	name = "emergency surgical equipment cabinet"
-	desc = "A self-sterilizing, wall-mounted cabinet containing extra surgical beds, empty surgical webbing vests, and portable dialysis machines for doctors who suddenly need to operate outside of medbay. It only unlocks itself for doctors during dire emergencies."
+	desc = "A hyper-safe, self-sterilizing, wall-mounted cabinet containing extra surgical beds, empty surgical webbing vests, and portable dialysis machines for doctors who suddenly need to operate outside of medbay. It only unlocks itself for doctors during dire emergencies."
 	req_access = null
 
 /obj/structure/closet/secure_closet/surgical/emergency/Initialize()

@@ -3,8 +3,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /obj/item/reagent_container/glass
-	name = " "
-	desc = " "
+	name = "glass bottle"
+	desc = "A glass bottle."
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
@@ -696,6 +696,7 @@
 	item_state = "janibucket"
 	matter = list("metal" = 8000)
 	volume = 300
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,75,100,120,150,240,300)
 	w_class = SIZE_LARGE
 
 

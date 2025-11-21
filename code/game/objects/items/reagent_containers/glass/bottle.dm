@@ -64,7 +64,7 @@
 
 /obj/item/reagent_container/glass/bottle/inaprovaline
 	name = "\improper Inaprovaline bottle"
-	desc = "A small bottle. Contains inaprovaline - used to stabilize patients."
+	desc = "A small bottle. Contains inaprovaline - used to stabilize critical patients."
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/inaprovaline/Initialize()
@@ -84,6 +84,7 @@
 
 /obj/item/reagent_container/glass/bottle/dexalin
 	name = "\improper Dexalin bottle"
+	desc = "A small bottle. Contains dexalin - used to reoxygenate patients."
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/dexalin/Initialize()
@@ -139,7 +140,7 @@
 
 /obj/item/reagent_container/glass/bottle/antitoxin
 	name = "\improper Dylovene bottle"
-	desc = "A small bottle of dylovene. Counters poisons, and repairs toxin damage. A wonder drug."
+	desc = "A small bottle of dylovene. Counters poisons and repairs toxin damage. A wonder drug."
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/antitoxin/Initialize()
@@ -384,7 +385,7 @@
 
 /obj/item/reagent_container/glass/bottle/oxycodone
 	name = "\improper Oxycodone bottle"
-	desc = "A small bottle. Contains Oxycodone - Used as an Extreme Painkiller.  ILLEGAL TO DISTRIBUTE."
+	desc = "A small bottle. Contains Oxycodone - Used as an Extreme Painkiller. ILLEGAL TO DISTRIBUTE."
 	volume = 60
 	amount_per_transfer_from_this = 60
 

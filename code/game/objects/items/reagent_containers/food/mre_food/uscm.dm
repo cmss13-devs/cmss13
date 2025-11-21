@@ -481,7 +481,7 @@
 	volume = 6
 	var/flavor = "cheese spread"
 	food_interactable = TRUE
-	possible_transfer_amounts = list(1, 2, 3, 5)
+	possible_transfer_amounts = list(1, 2, 3, 4, 5)
 	crushable = FALSE
 	gulp_size = 5
 	object_fluff = "packet"

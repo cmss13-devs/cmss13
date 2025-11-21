@@ -25,6 +25,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 8 SECONDS
+	var/cross_map_heal = FALSE
 
 /datum/action/xeno_action/onclick/screech
 	name = "Screech (250)"

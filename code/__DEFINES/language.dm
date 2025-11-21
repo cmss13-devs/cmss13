@@ -14,6 +14,9 @@
 #define LANGUAGE_XENOMORPH "Xenomorph"
 #define LANGUAGE_HIVEMIND "Hivemind"
 
+#define LANGUAGE_PATHOGEN "Mycelial Rattle"
+#define LANGUAGE_PATHOGEN_MIND "Mycelial Link"
+
 #define LANGUAGE_APOLLO "APOLLO Link"
 
 #define LANGUAGE_TELEPATH "Telepath Implant"

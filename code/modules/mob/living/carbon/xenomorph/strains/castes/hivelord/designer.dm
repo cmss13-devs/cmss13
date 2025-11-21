@@ -134,7 +134,6 @@
 	var/datum/design_mark/mark_meaning = /datum/design_mark/resin_wall
 	var/mob/living/carbon/xenomorph/bound_xeno
 	var/obj/effect/alien/weeds/bound_weed
-	var/hivenumber = XENO_HIVE_NORMAL
 	var/plasma_cost = 0
 
 	var/image/choosenMark

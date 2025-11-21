@@ -244,7 +244,7 @@
 /**
  * Any additional effects to apply to the target
  * is called if and only if we actually hit a human target
- */
+*/
 /datum/action/xeno_action/activable/pounce/proc/additional_effects(mob/living/L)
 	return
 

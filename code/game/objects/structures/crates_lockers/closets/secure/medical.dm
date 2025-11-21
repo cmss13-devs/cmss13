@@ -174,6 +174,7 @@
 	health = null	// Unbreakable. This is guaranteed to give doctors a last chance to do their job during hijack.
 	unacidable = TRUE //fuck you, acid rouny
 	unslashable = TRUE //fuck you, rav
+	var/hijack = FALSE //can't open this when it's not hijack
 
 /obj/structure/closet/secure_closet/surgical/emergency/Initialize()
 	. = ..()

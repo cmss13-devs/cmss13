@@ -66836,6 +66836,10 @@
 	pixel_y = 3;
 	pixel_x = 3
 	},
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/lockerroom)
 "nTs" = (

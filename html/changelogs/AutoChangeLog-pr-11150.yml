@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Tacmap updates are a global cooldown per faction once again"

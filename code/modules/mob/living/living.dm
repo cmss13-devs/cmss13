@@ -23,6 +23,7 @@
 	GLOB.living_mob_list += src
 
 /mob/living/Destroy()
+	GLOB.living_player_list -= src
 	GLOB.living_mob_list -= src
 	cleanup_status_effects()
 	pipes_shown = null
@@ -274,6 +275,10 @@
 				grab_level_delay = 6
 			if(GRAB_CHOKE)
 				grab_level_delay = 9
+		if(ismob(pulling))
+			var/mob/pulled_mob = pulling
+			if(pulled_mob.pulling)
+				grab_level_delay = 9 // its a chain pull...
 
 		. += max(pull_speed + (pull_delay + reagent_move_delay_modifier) + grab_level_delay, 0) //harder grab makes you slower
 	move_delay = .
@@ -371,6 +376,14 @@
 					to_chat(src, SPAN_WARNING("[living_mob] is restraining [pulled_mob], you cannot push past."))
 				now_pushing = FALSE
 				return
+		if(!pulling)
+			// treat it as if we're also pulling just for move delay
+			pulling = living_mob.pulling
+			if(client)
+				client.recalculate_move_delay()
+			else
+				movement_delay()
+			pulling = null
 
 	if(ishuman(living_mob))
 		if(!(living_mob.status_flags & CANPUSH))

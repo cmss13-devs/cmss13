@@ -155,6 +155,17 @@
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
 
+/mob/living/carbon/xenomorph/verb/view_tacmaps()
+	set name = "View Tacmap"
+	set category = "Alien"
+	GLOB.tacmap_viewer.tgui_interact(src)
+
+/mob/living/carbon/xenomorph/look_up()
+	if(is_zoomed)
+		to_chat(src, SPAN_WARNING("You cannot look up while zoomed!"))
+		return
+
+	. = ..()
 // /mob/living/carbon/xenomorph/verb/enter_tree()
 // set name = "Enter Techtree"
 // set desc = "Enter the Xenomorph techtree"

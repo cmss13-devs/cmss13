@@ -52,7 +52,6 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
 		/datum/action/xeno_action/activable/pounce/facehugger,
-		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -175,7 +174,7 @@
 	qdel(src)
 	return did_hug
 
-/mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse, aghosted)
+/mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE, transfer = FALSE)
 	if(!aghosted && !can_reenter_corpse && !QDELETED(src) && stat != DEAD)
 		// Become a npc once again
 		new /obj/item/clothing/mask/facehugger(loc, hivenumber)

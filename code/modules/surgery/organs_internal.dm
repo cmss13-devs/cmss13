@@ -60,7 +60,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 		if(/obj/item/stack/medical/bruise_pack)
 			toolname = "the gauze"
 		if(/obj/item/stack/medical/advanced/bruise_pack)
-			toolname = "regenerative membrane"
+			toolname = "a regenerative membrane"
 		else
 			toolname = "the poultice"
 
@@ -86,14 +86,14 @@ and organ transplant code which may come in handy in future but haven't been edi
 			to_chat(user, SPAN_BOLDWARNING("You don't have enough of \the [packs] to finish repairing organs!"))
 			return FALSE
 		else
-			log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
 			for(var/datum/internal_organ/I as anything in surgery.affected_limb.internal_organs)
 				if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
 					user.affected_message(target,
 						SPAN_NOTICE("You finish treating [target]'s damaged [I.name]."),
-						SPAN_NOTICE("[user] finishes treating your damaged [I.name]. It's never felt better!"),
+						SPAN_NOTICE("[user] finishes treating your damaged [I.name]. It never felt better!"),
 						SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
 
+					log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
 					user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
 					I.rejuvenate()
 					target.pain.recalculate_pain()

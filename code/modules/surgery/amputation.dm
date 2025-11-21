@@ -64,7 +64,7 @@
 	var/muscle_type = target.get_muscle_type() //Uses the proc in surgery_steps.dm to fetch the correct type for the species.
 	user.affected_message(target,
 		SPAN_NOTICE("You begin to sever the [muscle_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_WARNING("[user] begins to sever the [muscle_type] in your [surgery.affected_limb.display_name]! Somebody, help!"),
+		SPAN_WARNING("[user] begins to sever the [muscle_type] in your [surgery.affected_limb.display_name] with \the [tool]! Somebody, help!"),
 		SPAN_NOTICE("[user] begins to sever the [muscle_type] in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
 	target.custom_pain("It feels as if your [surgery.affected_limb.display_name] is being ripped apart!", 1)

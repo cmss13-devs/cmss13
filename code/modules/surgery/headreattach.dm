@@ -121,9 +121,9 @@
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
 
-	preop_sound = 'sound/surgery/hemostat1.ogg'
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
 	success_sound = 'sound/surgery/hemostat1.ogg'
-	failure_sound = 'sound/surgery/organ1.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/mend_connections/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.visible_message(SPAN_NOTICE("[user] begins to shape the synthetic flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."),

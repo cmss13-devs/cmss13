@@ -98,9 +98,9 @@
 	desc = "reconnect the muscles and abort the amputation"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
-	preop_sound = 'sound/surgery/retractor1.ogg'
-	success_sound = 'sound/surgery/retractor2.ogg'
-	failure_sound = 'sound/surgery/hemostat1.ogg'
+	preop_sound = 'sound/surgery/suture1.ogg'
+	success_sound = 'sound/surgery/suture2.ogg'
+	failure_sound = 'sound/surgery/retractor2.ogg'
 
 /datum/surgery_step/abort_amputation/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE //This is an abort pathway to stop people from being locked into a major and irreversible surgery. It is not yet too late for my mercy.
@@ -255,7 +255,7 @@
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/handling/bandage.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/close_ruptured_veins/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -302,8 +302,8 @@
 	desc = "stitch the stump closed"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
-	preop_sound = 'sound/surgery/retractor1.ogg'
-	success_sound = 'sound/surgery/retractor2.ogg'
+	preop_sound = 'sound/surgery/suture1.ogg'
+	success_sound = 'sound/surgery/suture2.ogg'
 	failure_sound = 'sound/surgery/hemostat1.ogg'
 
 /datum/surgery_step/close_amputation/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -397,7 +397,7 @@
 /datum/surgery_step/remove_old_prosthetic/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You have revealed the stump of [target]'s [surgery.affected_limb.display_name]."),
-		SPAN_NOTICE("[user] has revealed the stump of your [surgery.affected_limb.display_name]."),
+		SPAN_NOTICE("[user] has revealed the stump of your [surgery.affected_limb.display_name]. It is cold, but you feel much better."),
 		SPAN_NOTICE("[user] has revealed the stump of [target]'s [surgery.affected_limb.display_name]."))
 
 	surgery.affected_limb.setAmputatedTree()

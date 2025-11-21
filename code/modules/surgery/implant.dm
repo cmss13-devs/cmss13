@@ -93,7 +93,7 @@
 	accept_any_item = TRUE //Any item except a surgery tool or substitute for such.
 	time = 5 SECONDS
 
-	preop_sound = 'sound/surgery/hemostat1.ogg'
+	preop_sound = 'sound/surgery/hemostat2.ogg'
 	success_sound = 'sound/surgery/hemostat1.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 
@@ -167,7 +167,7 @@
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 
-	preop_sound = 'sound/surgery/hemostat1.ogg'
+	preop_sound = 'sound/surgery/hemostat2.ogg'
 	success_sound = 'sound/surgery/hemostat1.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 
@@ -282,7 +282,7 @@
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 
-	preop_sound = 'sound/surgery/hemostat1.ogg'
+	preop_sound = 'sound/surgery/hemostat2.ogg'
 	success_sound = 'sound/surgery/hemostat1.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 

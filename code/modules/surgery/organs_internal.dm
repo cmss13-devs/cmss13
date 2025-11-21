@@ -85,7 +85,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 				SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
 				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
 
-			to_chat(target, SPAN_NOTICE("Every organ in your [surgery.affected_limb.display_name] feels so much better."))
+			to_chat(target, SPAN_NOTICE("Your [surgery.affected_limb.display_name] has never felt better."))
 			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
 			I.rejuvenate()
 			target.pain.recalculate_pain()

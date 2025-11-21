@@ -45,7 +45,7 @@
 /datum/surgery_step/connect_prosthesis/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You replace [target]'s severed [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] replaces your severed [parse_zone(target_zone)] with \the [tool]."),
+		SPAN_NOTICE("[user] replaces your severed [parse_zone(target_zone)] with \the [tool]. That feels much better."),
 		SPAN_NOTICE("[user] replaces [target]'s severed [parse_zone(target_zone)] with \the [tool]."))
 
 	surgery.affected_limb.robotize(surgery_in_progress = TRUE, uncalibrated = TRUE, synth_skin = issynth(target))
@@ -74,8 +74,8 @@
 	accept_hand = TRUE
 	time = 3 SECONDS
 	tools = SURGERY_TOOLS_PINCH
-	preop_sound = 'sound/surgery/hemostat1.ogg'
-	success_sound = 'sound/surgery/retractor1.ogg'
+	preop_sound = 'sound/surgery/hemostat2.ogg'
+	success_sound = 'sound/surgery/retractor2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/strenghten_prosthesis_connection/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

@@ -57,7 +57,6 @@
 		pixel_y = buckling_y["[dir]"]
 		pixel_x = buckling_x["[dir]"]
 		if(dir == SOUTH)
-			buckled_mob.plane = TURF_PLANE
 			buckled_mob.layer = ABOVE_TURF_LAYER
 			if(ishuman(current_mob))
 				var/mob/living/carbon/human/current_human = current_mob

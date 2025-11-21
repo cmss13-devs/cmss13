@@ -89,10 +89,9 @@ and organ transplant code which may come in handy in future but haven't been edi
 				if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
 					user.affected_message(target,
 						SPAN_NOTICE("You finish treating [target]'s damaged [I.name]."),
-						SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
+						SPAN_NOTICE("[user] finishes treating your damaged [I.name]. It's never felt better!"),
 						SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
 
-					to_chat(target, SPAN_NOTICE("Your [surgery.affected_limb.display_name] has never felt better."))
 					user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
 					I.rejuvenate()
 					target.pain.recalculate_pain()

@@ -81,6 +81,8 @@
 	var/datum/wound/internal_bleeding/I = new (0)
 	surgery.affected_limb.add_bleeding(I, TRUE)
 	surgery.affected_limb.wounds += I
+	target.apply_damage(5, BRUTE, target_zone)
+	surgery.affected_limb.add_bleeding(null, FALSE, 15)
 	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
 	return FALSE
 
@@ -108,7 +110,7 @@
 /datum/surgery_step/treat_hematoma/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You finish mending the hematoma in [target]'s brain."),
-		SPAN_NOTICE("[user] finishes mending the hematoma in your brain."), //no more nervous, brain feels better
+		SPAN_NOTICE("[user] finishes mending the hematoma in your brain."),
 		SPAN_NOTICE("[user] finishes mending the hematoma in [target]'s brain."))
 
 	log_interact(user, target, "[key_name(user)] finished mending a hematoma in [key_name(target)]'s brain with \the [tool], beginning [surgery].")

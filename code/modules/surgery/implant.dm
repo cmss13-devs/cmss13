@@ -144,6 +144,8 @@
 		var/datum/wound/internal_bleeding/I = new (0)
 		surgery.affected_limb.add_bleeding(I, TRUE)
 		surgery.affected_limb.wounds += I
+		target.apply_damage(5, BRUTE, target_zone)
+		surgery.affected_limb.add_bleeding(null, FALSE, 15)
 		target.custom_pain("You feel something rip in your [surgery.affected_limb.cavity]!", 1)
 
 	user.drop_inv_item_to_loc(tool, target)

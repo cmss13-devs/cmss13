@@ -214,6 +214,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 /datum/mob_hud/faction/hyperdyne
 	faction_to_check = FACTION_HYPERDYNE
 
+/datum/mob_hud/faction/conam
+	faction_to_check = FACTION_CONAM
+
 /datum/mob_hud/faction/twe
 	faction_to_check = FACTION_TWE
 

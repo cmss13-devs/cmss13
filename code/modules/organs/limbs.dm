@@ -226,6 +226,9 @@
 	if(!owner)
 		return
 
+	if(status & (LIMB_ESCHAR|LIMB_DESTROYED|LIMB_UNCALIBRATED_PROSTHETIC|LIMB_SYNTHSKIN))
+		return
+
 	if(burn_dam > min_eschar_damage * CONFIG_GET(number/organ_health_multiplier) && !(status & LIMB_ESCHAR))
 		status |= LIMB_THIRD_DEGREE_BURNS
 

@@ -155,8 +155,8 @@
 	if(tool_type in ligation_tools)
 		user.affected_message(target,
 			SPAN_NOTICE("You begin ligating bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to tie off bleeders in your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to tie off bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+			SPAN_NOTICE("[user] begins ligating bleeders in your [surgery.affected_limb.display_name] with \the [tool]."),
+			SPAN_NOTICE("[user] begins ligating bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You begin clamping bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
@@ -169,9 +169,9 @@
 /datum/surgery_step/clamp_bleeders_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type in ligation_tools)
 		user.affected_message(target,
-			SPAN_NOTICE("You ligate bleeders in [target]'s [surgery.affected_limb.display_name], stopping the incision's bleeding."),
-			SPAN_NOTICE("[user] finishes tying off bleeders in your [parse_zone(target_zone)], stopping the incision's bleeding."),
-			SPAN_NOTICE("[user] finishes tying off bleeders in [target]'s [parse_zone(target_zone)], stopping the incision's bleeding."))
+			SPAN_NOTICE("You finish ligating bleeders in [target]'s [surgery.affected_limb.display_name], stopping the incision's bleeding."),
+			SPAN_NOTICE("[user] finishes ligating bleeders in your [parse_zone(target_zone)], stopping the incision's bleeding."),
+			SPAN_NOTICE("[user] finishes ligating bleeders in [target]'s [parse_zone(target_zone)], stopping the incision's bleeding."))
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You clamp bleeders in [target]'s [surgery.affected_limb.display_name]."),

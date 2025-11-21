@@ -179,6 +179,9 @@
 	new /obj/item/storage/internal/accessory/surg_vest(src)
 	new /obj/item/roller/surgical(src)
 	new /obj/item/roller/surgical(src)
+	new /obj/item/tool/portadialysis(src)
+	new /obj/item/tool/portadialysis(src)
+
 	RegisterSignal(SSdcs, COMSIG_GLOB_UNSCHEDULED_DROPSHIP_DEPARTURE_DETECTED, PROC_REF(all_docs_are_field_docs))
 	return
 

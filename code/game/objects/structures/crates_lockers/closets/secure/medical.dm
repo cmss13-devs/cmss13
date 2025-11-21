@@ -198,6 +198,7 @@
 
 /obj/structure/closet/secure_closet/surgical/emergency/proc/all_docs_are_field_docs() //A DROPSHIP HAS BEEN HIJACKED! OPEN DIS BITCH UP!
 	locked = FALSE //OPEN THE LOCKERRRR
+	update_icon() // to show the locker is unlocked after it unlocked itself.
 	hijack = TRUE
 	req_access = list(ACCESS_MARINE_MEDBAY) //ALL Y'ALL FOB MEDICS NOW!
 

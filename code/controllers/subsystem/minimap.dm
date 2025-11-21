@@ -1,9 +1,12 @@
+/// range that we can remove labels when we click near them with the removal tool
+#define LABEL_REMOVE_RANGE 20
+/// How often a tacmap can be submitted
 #define CANVAS_COOLDOWN_TIME 3 MINUTES
+/// List of minimap_flag=world.time for a faction wide cooldown on tacmap submissions
+GLOBAL_VAR_INIT(faction_tacmap_cooldown, alist()) // TODO: Change to GLOBAL_ALIST_EMPTY
 ///A player needs to be unbanned from ALL these roles in order to be able to use the minimap drawing tool
 GLOBAL_LIST_INIT(roles_allowed_minimap_draw, list(JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SO, JOB_XO, JOB_CO))
 GLOBAL_PROTECT(roles_allowed_minimap_draw)
-/// range that we can remove labels when we click near them with the removal tool
-#define LABEL_REMOVE_RANGE 20
 
 /**
  *  # Minimaps subsystem
@@ -1346,18 +1349,22 @@ SUBSYSTEM_DEF(minimaps)
 	icon_state = "update"
 	desc = "Send a tacmap update"
 	screen_loc = "15,7"
-	COOLDOWN_DECLARE(update_cooldown)
 
 /atom/movable/screen/minimap_tool/update/proc/cooldown_finished()
 	icon_state = initial(icon_state)
 
 /atom/movable/screen/minimap_tool/update/clicked(location, list/modifiers)
-	if(!COOLDOWN_FINISHED(src, update_cooldown))
-		to_chat(location, SPAN_WARNING("Wait another [COOLDOWN_SECONDSLEFT(src, update_cooldown)] seconds before sending another update."))
+	var/time_left = get_cooldown_for_minimap_flag(minimap_flag) - world.time
+
+	if(time_left > 0)
+		to_chat(location, SPAN_WARNING("Wait another [DisplayTimeText(time_left)] before sending another update."))
+		if(icon_state != "update_cooldown")
+			icon_state = "update_cooldown"
+			addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), time_left, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		return
 
-	COOLDOWN_START(src, update_cooldown, CANVAS_COOLDOWN_TIME)
-	addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), CANVAS_COOLDOWN_TIME)
+	set_cooldown_for_minimap_flag(minimap_flag, CANVAS_COOLDOWN_TIME)
+	addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), CANVAS_COOLDOWN_TIME, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 	icon_state = "update_cooldown"
 
 	var/mob/user = location
@@ -1588,3 +1595,19 @@ SUBSYSTEM_DEF(minimaps)
 		if(XENO_HIVE_RENEGADE)
 			return MINIMAP_FLAG_XENO_RENEGADE
 	return 0
+
+/// Returns the highest world.time for all minimap_flags passed
+/proc/get_cooldown_for_minimap_flag(minimap_flag)
+	var/cooldown = 0
+	for(var/flag in bitfield2list(minimap_flag))
+		cooldown = max(cooldown, GLOB.faction_tacmap_cooldown[flag])
+	return cooldown
+
+/// Sets the cooldown for all minimap_flags passed
+/proc/set_cooldown_for_minimap_flag(minimap_flag, duration)
+	duration += world.time
+	for(var/flag in bitfield2list(minimap_flag))
+		GLOB.faction_tacmap_cooldown[flag] = duration
+
+#undef CANVAS_COOLDOWN_TIME
+#undef LABEL_REMOVE_RANGE

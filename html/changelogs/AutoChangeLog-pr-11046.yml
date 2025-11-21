@@ -1,0 +1,7 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed list compiler errors introduced in 516.1670"
+  - code_imp: "Added glob options for alist"
+  - code_imp: "Improve autodoc research disk logic"
+  - code_imp: "override_precedes_definition is now an error because the proc redefinition would otherwise do nothing"

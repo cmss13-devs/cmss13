@@ -88,7 +88,6 @@
 	var/prev_gender = null // Debug for plural genders
 	var/revive_grace_period = 5 MINUTES //5 minutes
 	var/undefibbable = FALSE //whether the human is dead and past the defibbrillation period.
-	var/burn_chemical_threshold = 5 /// when a limb is not treated with burnkit or ointment chem will not heal it under the value of 5
 
 	var/holo_card_color = "" //which color type of holocard is printed on us
 

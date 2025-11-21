@@ -46,7 +46,7 @@
 
 /obj/item/pamphlet/language/french // for daveyish
 	name = "Records of the Napoleonic 22nd Century"
-	desc = "This document seems to contain a collection of records detailing the life of the latest descendant of the first and only french emperor, Napoléon Bonaparte. A quick skim of the pages seem to detail his descendants life and of his governance of the Neo-Francian Colonies. You can probably learn from his teachings."
+	desc = "This document seems to contain a collection of records detailing the life of the latest descendant of the Bonaparte imperial dynasty, Napoléonise Bonaparte the XIII. A quick skim of the pages seem to detail his descendants life and of his governance of the Neo-Francian Colonies. You can probably learn from his teachings."
 	flavour_text = "you feel revitalized with imperialistic prospects."
 	trait = /datum/character_trait/language/french
 

@@ -45,7 +45,7 @@
 /datum/surgery_step/connect_prosthesis/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You replace [target]'s severed [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] replaces your severed [parse_zone(target_zone)] with \the [tool]. That feels much better."),
+		SPAN_NOTICE("[user] replaces your severed [parse_zone(target_zone)] with \the [tool]."),
 		SPAN_NOTICE("[user] replaces [target]'s severed [parse_zone(target_zone)] with \the [tool]."))
 
 	to_chat(target, SPAN_NOTICE("You can't move your [parse_zone(target_zone)], but you somehow feel a little better."))

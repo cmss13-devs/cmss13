@@ -52,7 +52,7 @@
 /datum/surgery_step/remove_bone_chips/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You finish extracting fragments of bone from [target]'s brain."),
-		SPAN_NOTICE("[user] finishes extracting fragments of bone from your brain."), //no more nervous, can hear and speak better.
+		SPAN_NOTICE("[user] finishes extracting fragments of bone from your brain."),
 		SPAN_NOTICE("[user] finishes extracting fragments of bone from [target]'s brain."))
 
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BRAIN)
@@ -72,7 +72,7 @@
 
 /datum/surgery_step/remove_bone_chips/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with \the [tool] causing internal bleeding!"),
+		SPAN_WARNING("Your hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with \the [tool], causing internal bleeding!"),
 		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in your [surgery.affected_limb.display_name] with \the [tool], causing internal bleeding!"),
 		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with \the [tool], causing internal bleeding!"))
 

@@ -100,7 +100,7 @@
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,
 				SPAN_NOTICE("You slather \the [tool] on [target]'s broken [surgery.affected_bone]."),
-				SPAN_NOTICE("[user] slathers \the [tool] on your broken [surgery.affected_bone]. The gel feels cold and gooey."),
+				SPAN_NOTICE("[user] slathers \the [tool] on your broken [surgery.affected_bone]."),
 				SPAN_NOTICE("[user] slathers \the [tool] on [target]'s broken [surgery.affected_bone]."))
 		else
 			user.affected_message(target,
@@ -111,7 +111,7 @@
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,
 				SPAN_NOTICE("You slather \the [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in your [surgery.affected_limb.display_name]. The gel feels cold and gooey."),
+				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in your [surgery.affected_limb.display_name]."),
 				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."))
 			user.update_inv_l_hand()
 			user.update_inv_r_hand()
@@ -196,7 +196,7 @@
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You set the bones in [target]'s [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] sets the bones in your [surgery.affected_limb.display_name]. You can move it, now. You feel much better."),
+			SPAN_NOTICE("[user] sets the bones in your [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] sets the bones in [target]'s [surgery.affected_limb.display_name]."))
 
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BONES)

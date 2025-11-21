@@ -69,7 +69,7 @@
 		SPAN_NOTICE("[user] starts to carefully cut the tubes connecting the alien larva to your vital organs with \the [tool]."),
 		SPAN_NOTICE("[user] starts to carefully cut the tubes connecting the alien larva to [target]'s vital organs with \the [tool]."))
 
-	target.custom_pain("The larva is flailing and struggling in your [surgery.affected_limb.display_name] It hurts so much!", 1)
+	target.custom_pain("The larva is flailing and struggling in your [surgery.affected_limb.display_name]! It hurts so much!", 1)
 	log_interact(user, target, "[key_name(user)] began cutting the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], attempting to begin [surgery].")
 
 /datum/surgery_step/cut_larval_pseudoroots/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

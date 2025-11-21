@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Ghost ears now can hear whispers (but should ignore radio whispers when using ghost radio)"
+  - bugfix: "Radio transmissions that failed (for a Z with no coms) now are sent to observers with ghost ears"
+  - bugfix: "Messages from clientless mobs are now ignored even when using ghost ears unless its nearby"

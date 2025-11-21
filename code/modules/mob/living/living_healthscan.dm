@@ -401,7 +401,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 						advice += temp_advice
 				if(human_target_mob.getFireLoss(organic_only = TRUE) > 30)
 					temp_advice = list(list(
-						"advice" = "Administer a single dose of kelotane.",
+						"advice" = "Administer a single dose of kelotane and apply kits to areas with severe burns.",
 						"icon" = "syringe",
 						"color" = "yellow"
 						))

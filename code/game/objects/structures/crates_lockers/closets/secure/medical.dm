@@ -152,7 +152,7 @@
 /obj/structure/closet/secure_closet/surgical
 	name = "surgical equipment cabinet"
 	desc = "A self-sterilizing, wall-mounted cabinet containing all the surgical tools you need."
-	req_access = null
+	req_access = list(ACCESS_MARINE_MEDBAY)
 	icon_state = "surgical_wall_locked"
 	icon_closed = "surgical_wall_unlocked"
 	icon_locked = "surgical_wall_locked"
@@ -161,7 +161,6 @@
 	density = FALSE
 	store_mobs = FALSE
 	wall_mounted = TRUE
-	var/hijack = FALSE
 
 /obj/structure/closet/secure_closet/surgical/Initialize()
 	. = ..()
@@ -170,13 +169,16 @@
 
 /obj/structure/closet/secure_closet/surgical/emergency
 	name = "emergency surgical equipment cabinet"
-	desc = "A hyper-safe, self-sterilizing, wall-mounted cabinet containing extra surgical beds, empty surgical webbing vests, and portable dialysis machines for doctors who suddenly need to operate outside of medbay. It only unlocks itself for doctors during dire emergencies."
-	req_access = null
+	desc = "A hyper-safe, self-sterilizing, wall-mounted cabinet containing extra surgical beds, surgical webbing vests, and portable dialysis machines for doctors who suddenly need to operate outside of medbay. It only unlocks itself for doctors during dire emergencies."
+	req_access = null //a proc handles it unlocking itself
+	health = null	// Unbreakable. This is guaranteed to give doctors a last chance to do their job during hijack.
+	unacidable = TRUE //fuck you, acid rouny
+	unslashable = TRUE //fuck you, rav
 
 /obj/structure/closet/secure_closet/surgical/emergency/Initialize()
 	. = ..()
-	new /obj/item/storage/internal/accessory/surg_vest(src)
-	new /obj/item/storage/internal/accessory/surg_vest(src)
+	new /obj/item/storage/internal/accessory/surg_vest/equipped(src)
+	new /obj/item/storage/internal/accessory/surg_vest/equipped(src)
 	new /obj/item/roller/surgical(src)
 	new /obj/item/roller/surgical(src)
 	new /obj/item/tool/portadialysis(src)

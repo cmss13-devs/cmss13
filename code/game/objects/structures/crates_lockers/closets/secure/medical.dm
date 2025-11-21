@@ -169,7 +169,7 @@
 
 /obj/structure/closet/secure_closet/surgical/emergency
 	name = "emergency surgical equipment cabinet"
-	desc = "A hyper-safe, self-sterilizing, wall-mounted cabinet containing extra surgical beds, surgical webbing vests, and portable dialysis machines for doctors who suddenly need to operate outside of medbay. It only unlocks itself for doctors during dire emergencies."
+	desc = "A hyper-safe, self-sterilizing, wall-mounted cabinet containing extra surgical beds, surgical webbing vests, and portable dialysis machines for doctors who suddenly need to evacuate the medical bay but are still in active duty on the ship. It only unlocks itself for doctors during dire emergencies."
 	icon_state = "e-surgical_wall_locked"
 	icon_closed = "e-surgical_wall_unlocked"
 	icon_locked = "e-surgical_wall_locked"
@@ -183,10 +183,16 @@
 
 /obj/structure/closet/secure_closet/surgical/emergency/Initialize()
 	. = ..()
+	new /obj/item/storage/internal/accessory/surg_vest/equipped(src) //one for each doctor slot
+	new /obj/item/storage/internal/accessory/surg_vest/equipped(src)
 	new /obj/item/storage/internal/accessory/surg_vest/equipped(src)
 	new /obj/item/storage/internal/accessory/surg_vest/equipped(src)
 	new /obj/item/roller/surgical(src)
 	new /obj/item/roller/surgical(src)
+	new /obj/item/roller/surgical(src)
+	new /obj/item/roller/surgical(src)
+	new /obj/item/tool/portadialysis(src) //one for each doctor slot
+	new /obj/item/tool/portadialysis(src)
 	new /obj/item/tool/portadialysis(src)
 	new /obj/item/tool/portadialysis(src)
 
@@ -196,7 +202,7 @@
 /obj/structure/closet/secure_closet/surgical/emergency/togglelock(mob/living/user)
 	if(hijack == FALSE)
 		if(user.job in JOB_DOCTOR_ROLES_LIST) //Nobody can open this if hijack == FALSE.
-			to_chat(user, SPAN_WARNING("As medical staff, you may only toggle this lock when shipside doctors must operate on the ship and outside the medical bay."))
+			to_chat(user, SPAN_WARNING("As medical staff, you may only toggle this lock during evacuation."))
 		else
 			to_chat(user, SPAN_WARNING("You do not have access."))
 	else

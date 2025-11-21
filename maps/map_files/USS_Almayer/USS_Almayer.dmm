@@ -428,17 +428,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
-"abb" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/closet/secure_closet/surgical/emergency{
-	pixel_x = -29;
-	pixel_y = 0
-	},
-/turf/open/floor/almayer/sterile_green_side/west,
-/area/almayer/medical/lower_medical_medbay)
 "abc" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
@@ -3103,10 +3092,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/surgical/emergency{
-	pixel_x = -29;
-	pixel_y = 0
-	},
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/lower_medical_medbay)
 "ahc" = (
@@ -3206,6 +3191,10 @@
 /obj/structure/machinery/cm_vending/clothing/medical_crew{
 	pixel_x = 26;
 	density = 0
+	},
+/obj/structure/closet/secure_closet/surgical/emergency{
+	pixel_x = -1;
+	pixel_y = 30
 	},
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/lower_medical_medbay)
@@ -140769,7 +140758,7 @@ adw
 rZB
 adS
 wxc
-abb
+adw
 adm
 acD
 acD

@@ -183,9 +183,9 @@
 
 	if(tool_type in cannot_hack) //Some tools are not cool enough to instantly hack off a limb.
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering it!"),
-			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of your [surgery.affected_limb.display_name], shattering it! Now's your chance to tell the doc to stop!"),
-			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering it!"))
+			SPAN_WARNING("Your hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering it! It's broken, now!"),
+			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of your [surgery.affected_limb.display_name], shattering it! Now's your chance to tell the doc to stop! It's broken, now!"),
+			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name], shattering it! It's broken, now!"))
 
 		surgery.affected_limb.fracture()
 		if(target.stat == CONSCIOUS)
@@ -272,7 +272,7 @@
 	var/vasculature_type = target.get_vasculature_type()
 	user.affected_message(target,
 		SPAN_NOTICE("You finish repairing the [vasculature_type] in [target]'s stump, stopping any bleeding."),
-		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in your stump. You stopped bleeding, if you were bleeding."),
+		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in your stump, stopping any bleeding."),
 		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in [target]'s stump, stopping any bleeding."))
 
 	surgery.affected_limb.remove_all_bleeding()
@@ -304,7 +304,7 @@
 	time = 3 SECONDS
 	preop_sound = 'sound/surgery/suture1.ogg'
 	success_sound = 'sound/surgery/suture2.ogg'
-	failure_sound = 'sound/surgery/hemostat1.ogg'
+	failure_sound = 'sound/surgery/retractor2.ogg'
 
 /datum/surgery_step/close_amputation/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/flesh_type = target.get_flesh_type()

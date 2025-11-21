@@ -462,9 +462,9 @@
 
 	else
 		user.affected_message(target,
-			SPAN_WARNING("You shatter [target]'s [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user] shatters your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("You shatter [target]'s [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("[user] shatters your [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
 
 		surgery.affected_limb.fracture(100)
 
@@ -502,10 +502,17 @@
 
 /datum/surgery_step/open_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/brain = surgery.affected_limb.body_part == BODY_FLAG_HEAD ? TRUE : FALSE
-	user.affected_message(target,
-		SPAN_NOTICE("You use \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
-		SPAN_NOTICE("[user] uses \the [tool] to hold your [surgery.affected_limb.encased] open, exposing your [brain ? "brain" : "vital organs"]."),
-		SPAN_NOTICE("[user] uses \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."))
+	if(prob(10)) //RNG break chance.
+		surgery.affected_limb.fracture(100)
+		user.affected_message(target,
+			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] cracked after you exposed \his [brain ? "brain" : "vital organs"] with \the [tool]! It wasn't anybody's fault. It happens, rarely."),
+			SPAN_NOTICE("Your [surgery.affected_limb.encased] cracked after [user] exposed your [brain ? "brain" : "vital organs"] with \the [tool]! It wasn't anybody's fault. It happens, rarely."),
+			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] cracked after [user]exposed \his [brain ? "brain" : "vital organs"] with \the [tool]! It wasn't anybody's fault. It happens, rarely."))
+	else
+		user.affected_message(target,
+			SPAN_NOTICE("You use \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
+			SPAN_NOTICE("[user] uses \the [tool] to hold your [surgery.affected_limb.encased] open, exposing your [brain ? "brain" : "vital organs"]."),
+			SPAN_NOTICE("[user] uses \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."))
 	switch(target_zone)
 		if("head")
 			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
@@ -516,9 +523,6 @@
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP
 	complete(target, surgery) //This finishes the surgery.
-
-	if(prob(10)) //RNG slip chance.
-		surgery.affected_limb.fracture(100)
 	log_interact(user, target, "[key_name(user)] opened [key_name(target)]'s [surgery.affected_limb.encased], ending [surgery].")
 
 /datum/surgery_step/open_encased_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -529,9 +533,9 @@
 			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
 
 	surgery.affected_limb.fracture(100)
 	target.apply_damage(15, BRUTE, target_zone)
@@ -596,11 +600,12 @@
 			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
 
-	surgery.affected_limb.fracture(100)
+		surgery.affected_limb.fracture(100)
+
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to close [key_name(target)]'s [surgery.affected_limb.encased], aborting [surgery].")
 
@@ -677,9 +682,9 @@
 			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
 
 		surgery.affected_limb.fracture(100)
 

@@ -39,6 +39,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
 	//success handled in repeat code
 	failure_sound = 'sound/surgery/organ2.ogg'
+	var/use_stack = 1
 
 /datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
@@ -77,19 +78,25 @@ and organ transplant code which may come in handy in future but haven't been edi
 	log_interact(user, target, "[key_name(user)] began mending organs in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
 /datum/surgery_step/repair_organs/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
-	for(var/datum/internal_organ/I as anything in surgery.affected_limb.internal_organs)
-		if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
-			user.affected_message(target,
-				SPAN_NOTICE("You finish treating [target]'s damaged [I.name]."),
-				SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
-				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
+	if(istype(tool, /obj/item/stack/medical))
+		var/obj/item/stack/medical/packs = tool
+		if(!packs.use(use_stack))
+			to_chat(user, SPAN_BOLDWARNING("You don't have enough of \the [packs] to finish repairing organs!"))
+			return FALSE
+		else
+			log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
+			for(var/datum/internal_organ/I as anything in surgery.affected_limb.internal_organs)
+				if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
+					user.affected_message(target,
+						SPAN_NOTICE("You finish treating [target]'s damaged [I.name]."),
+						SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
+						SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))
 
-			to_chat(target, SPAN_NOTICE("Your [surgery.affected_limb.display_name] has never felt better."))
-			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
-			I.rejuvenate()
-			target.pain.recalculate_pain()
-			break
+					to_chat(target, SPAN_NOTICE("Your [surgery.affected_limb.display_name] has never felt better."))
+					user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
+					I.rejuvenate()
+					target.pain.recalculate_pain()
+					break
 
 /datum/surgery_step/repair_organs/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

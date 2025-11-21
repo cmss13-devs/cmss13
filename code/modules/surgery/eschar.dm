@@ -78,7 +78,7 @@
 
 
 /datum/surgery_step/fix_eschar/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
-	if(tool_type == /obj/item/tool/surgery/FixOVein)
+	if(tool_type == /obj/item/stack/medical/ointment)
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, smearing [tool] in [target]'s [surgery.affected_limb.display_name]!"),
 			SPAN_WARNING("[user]'s hand slips, smearing [tool] in your [surgery.affected_limb.display_name]!"),

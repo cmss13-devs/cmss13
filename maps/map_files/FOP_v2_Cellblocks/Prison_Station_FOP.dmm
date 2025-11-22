@@ -804,7 +804,7 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/prison/cellblock/maxsec/north)
 "acu" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -1777,7 +1777,7 @@
 /area/prison/research/secret/bioengineering)
 "afw" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison,
 /area/prison/cellblock/highsec/south/north)
 "afx" = (
@@ -6781,7 +6781,7 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/ammo_casing{
 	icon_state = "cartridge_1"
 	},
 /obj/item/weapon/gun/pistol/b92fs,
@@ -15599,7 +15599,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/yard)
 "bgI" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/landmark/crap_item,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/yard)
@@ -15609,7 +15609,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/yard)
 "bgK" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/yard)
@@ -16117,7 +16117,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/yard)
 "biw" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/yard)
 "biy" = (
@@ -16274,7 +16274,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/yard)
 "bjk" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/yard)
@@ -16469,7 +16469,7 @@
 /area/prison/yard)
 "bkc" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/yard)
 "bkd" = (
@@ -16490,7 +16490,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/yard)
 "bkg" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/yard)
@@ -17115,7 +17115,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/item/ammo_magazine/rifle/m16,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/yard)
@@ -17823,7 +17823,7 @@
 /turf/open/floor/prison/green/northwest,
 /area/prison/cellblock/lowsec/sw)
 "bpC" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/yard)
 "bpD" = (
@@ -21685,7 +21685,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/red,
 /area/prison/cellblock/highsec/south/north)
 "bGf" = (
@@ -22012,7 +22012,7 @@
 /area/prison/monorail/east)
 "bHs" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/highsec/south/north)
 "bHt" = (
@@ -24153,7 +24153,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/recreation/highsec/s)
 "bQG" = (
@@ -27565,7 +27565,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/red,
 /area/prison/cellblock/highsec/south/south)
 "cep" = (
@@ -27581,7 +27581,7 @@
 /turf/open/floor/prison/red,
 /area/prison/cellblock/highsec/south/south)
 "cer" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/red,
 /area/prison/cellblock/highsec/south/south)
 "ces" = (
@@ -28616,7 +28616,7 @@
 /turf/open/floor/delivery,
 /area/prison/pirate)
 "ciq" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 2;
@@ -28637,7 +28637,7 @@
 /turf/open/floor/delivery,
 /area/prison/pirate)
 "cis" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 2;
 	id = "pirate_cargo";
@@ -28902,7 +28902,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "cjy" = (
@@ -29063,7 +29063,7 @@
 /turf/open/floor/plating/platebot,
 /area/prison/pirate)
 "ckk" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating,
 /area/prison/pirate)
 "ckl" = (
@@ -29176,7 +29176,7 @@
 /turf/open/floor/prison/darkredfull2/southwest,
 /area/prison/security/checkpoint/highsec_medsec)
 "ckE" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/red/west,
 /area/prison/cellblock/highsec/south/south)
 "ckF" = (
@@ -29718,7 +29718,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/prison/cellblock/protective)
 "cmS" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/platebot,
 /area/prison/pirate)
 "cmT" = (
@@ -34765,7 +34765,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/nw)
 "ksY" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/east)
@@ -36042,7 +36042,7 @@
 	name = "cable piece"
 	},
 /obj/item/stack/rods,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/east)
 "pEk" = (
@@ -37144,7 +37144,7 @@
 /turf/open/floor/prison,
 /area/prison/residential/central)
 "uTL" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/structure/surface/table/reinforced{
 	dir = 1;
 	flipped = 1

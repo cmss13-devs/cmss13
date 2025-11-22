@@ -94,6 +94,9 @@
 	/// Whether or not this ammo ignores mobs that are lying down
 	var/hits_lying_mobs = FALSE
 
+	/// Type of empty shell casing
+	var/shell_casing
+
 /datum/ammo/New()
 	set_bullet_traits()
 

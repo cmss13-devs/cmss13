@@ -225,7 +225,7 @@
 	if(H.ally_of_hivenumber(hivenumber))
 		return
 
-	if(HAS_TRAIT(H, TRAIT_HAULED))
+	if(HAS_TRAIT(H, TRAIT_HAULED) || HAS_TRAIT(H, TRAIT_INSIDE_VEHICLE))
 		return
 
 	H.apply_armoured_damage(damage, penetration = penetration, def_zone = pick(target_limbs))

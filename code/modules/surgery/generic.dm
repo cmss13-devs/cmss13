@@ -6,6 +6,7 @@
 
 /datum/surgery/open_incision
 	name = "Open Incision"
+	desc = "Begin the surgery."
 	priority = SURGERY_PRIORITY_MAXIMUM
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
@@ -23,7 +24,7 @@
 
 /datum/surgery_step/incision
 	name = "Make Incision"
-	desc = "make an incision"
+	desc = "Make an incision to begin the surgery."
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
@@ -37,14 +38,14 @@
 			SPAN_NOTICE("[user] starts to construct a prepared incision in your [surgery.affected_limb.display_name] with \the [tool]."),
 			SPAN_NOTICE("[user] starts to construct a prepared incision in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
-		target.custom_pain("You feel a horrible, searing pain in your [surgery.affected_limb.display_name] as it is pushed apart!", 1)
+		target.custom_pain("You feel a horrible, searing pain in your [surgery.affected_limb.display_name] as the flesh is pushed apart!", 1)
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You start to make an incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
 			SPAN_NOTICE("[user] starts making an incision on your [surgery.affected_limb.display_name] with \the [tool]."),
 			SPAN_NOTICE("[user] starts making an incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
-		target.custom_pain("You feel a horrible sharp pain in your [surgery.affected_limb.display_name]!", 1)
+		target.custom_pain("You feel a horrible, piercing pain in your [surgery.affected_limb.display_name]!", 1)
 
 	log_interact(user, target, "[key_name(user)] began making an incision in [key_name(target)]'s [surgery.affected_limb.display_name].")
 
@@ -53,9 +54,9 @@
 
 	if(tool_type == /obj/item/tool/surgery/scalpel/manager)
 		user.affected_message(target,
-			SPAN_NOTICE("You have constructed a prepared incision in [target]'s [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] has constructed a prepared incision in your [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] has constructed a prepared incision in [target]'s [surgery.affected_limb.display_name]."))
+			SPAN_NOTICE("You have constructed a prepared incision in [target]'s [surgery.affected_limb.display_name] that is now bleeding."),
+			SPAN_NOTICE("[user] has constructed a prepared incision in your [surgery.affected_limb.display_name] that is now bleeding."),
+			SPAN_NOTICE("[user] has constructed a prepared incision in [target]'s [surgery.affected_limb.display_name] that is now bleeding."))
 
 		surgery.status += 2 //IMS completes all steps.
 	else if(tool_type == /obj/item/tool/surgery/scalpel/laser && prob(las_scalpel.bloodlessprob))
@@ -114,6 +115,7 @@
 
 /datum/surgery/clamp_bleeders
 	name = "Clamp Bleeders"
+	desc = "Clamp bleeders over the blood vessels to stop them from bleeding."
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
@@ -132,7 +134,7 @@
 
 /datum/surgery_step/clamp_bleeders_step
 	name = "Clamp Bleeders"
-	desc = "clamp the bleeders"
+	desc = "Clamp the bleeders."
 	//Tools used to clamp bleeders by either clamping them shut or tying them shut. Fixovein is a substitute but also a real surgery tool.
 	tools = list(
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
@@ -142,7 +144,7 @@
 	///Tools used to stem bleeders by specifically tying them up. List used for specific messaging as there's two of these.
 	var/ligation_tools = list(/obj/item/stack/cable_coil)
 	time = 2 SECONDS
-	preop_sound = 'sound/surgery/hemostat1.ogg'
+	preop_sound = 'sound/surgery/hemostat2.ogg'
 	success_sound = 'sound/surgery/hemostat1.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 
@@ -153,8 +155,8 @@
 	if(tool_type in ligation_tools)
 		user.affected_message(target,
 			SPAN_NOTICE("You begin ligating bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to tie off bleeders in your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to tie off bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+			SPAN_NOTICE("[user] begins ligating bleeders in your [surgery.affected_limb.display_name] with \the [tool]."),
+			SPAN_NOTICE("[user] begins ligating bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You begin clamping bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
@@ -167,9 +169,9 @@
 /datum/surgery_step/clamp_bleeders_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type in ligation_tools)
 		user.affected_message(target,
-			SPAN_NOTICE("You ligate bleeders in [target]'s [surgery.affected_limb.display_name]."),
-			SPAN_NOTICE("[user] finishes tying off bleeders in your [parse_zone(target_zone)]."),
-			SPAN_NOTICE("[user] finishes tying off bleeders in [target]'s [parse_zone(target_zone)]."))
+			SPAN_NOTICE("You finish ligating bleeders in [target]'s [surgery.affected_limb.display_name], stopping the incision's bleeding."),
+			SPAN_NOTICE("[user] finishes ligating bleeders in your [parse_zone(target_zone)], stopping the incision's bleeding."),
+			SPAN_NOTICE("[user] finishes ligating bleeders in [target]'s [parse_zone(target_zone)], stopping the incision's bleeding."))
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You clamp bleeders in [target]'s [surgery.affected_limb.display_name]."),
@@ -197,12 +199,15 @@
 
 /datum/surgery_step/clamp_bleeders_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing massive bleeding!"),
-		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in your [surgery.affected_limb.display_name] and causing massive bleeding!"),
-		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing massive bleeding!"))
+		SPAN_WARNING("Your hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing internal bleeding!"),
+		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in your [surgery.affected_limb.display_name] and causing internal bleeding!"),
+		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing internal bleeding!"))
 
+	var/datum/wound/internal_bleeding/I = new (0)
+	surgery.affected_limb.add_bleeding(I, TRUE)
+	surgery.affected_limb.wounds += I
 	target.apply_damage(4, BRUTE, target_zone)
-	surgery.affected_limb.add_bleeding(null, FALSE, 15)
+	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] failed to clamp bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
 	return FALSE
 
@@ -210,7 +215,7 @@
 
 /datum/surgery_step/retract_skin
 	name = "Widen Incision"
-	desc = "widen the incision"
+	desc = "Widen the incision to expose the bone."
 	time = 2 SECONDS
 	//Tools used to pry open specifically incisions. Contains INCISION tools at lengthy delays, mainly so surgeons can dramatically slash open incisions with them.
 	tools = list(\
@@ -242,7 +247,7 @@
 			SPAN_NOTICE("[user] begins drawing back the skin and tissue around the incision on your [surgery.affected_limb.display_name] with \the [tool]."),
 			SPAN_NOTICE("[user] begins drawing back the skin and tissue around the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
-	target.custom_pain("It feels like the skin on your [surgery.affected_limb.display_name] is on fire!", 1)
+	target.custom_pain("It feels like the skin on your [surgery.affected_limb.display_name] is on fire as it is being pulled apart!", 1)
 	log_interact(user, target, "[key_name(user)] began retracting skin in [key_name(target)]'s [surgery.affected_limb.display_name].")
 
 /datum/surgery_step/retract_skin/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -322,6 +327,7 @@
 
 /datum/surgery/close_incision
 	name = "Close Incision"
+	desc = "Close the patient up."
 	priority = SURGERY_PRIORITY_MINIMUM
 	possible_locs = ALL_LIMBS
 	required_surgery_skill = SKILL_SURGERY_NOVICE
@@ -333,8 +339,8 @@
 //------------------------------------
 
 /datum/surgery_step/cauterize
-	name = "Close Incision"
-	desc = "cauterize the incision"
+	name = "Cauterize Incision"
+	desc = "Cauterize the incision shut."
 	tools = SURGERY_TOOLS_CAUTERIZE
 	time = 2.5 SECONDS
 	var/tools_lit = list(
@@ -357,7 +363,7 @@
 		SPAN_NOTICE("[user] starts to cauterize the incision on your [surgery.affected_limb.display_name] with \the [tool]."),
 		SPAN_NOTICE("[user] starts to cauterize the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
-	target.custom_pain("Your [surgery.affected_limb.display_name] is being burned!", 1)
+	target.custom_pain("Your [surgery.affected_limb.display_name] burns!", 1)
 	log_interact(user, target, "[key_name(user)] began cauterizing an incision in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
 /datum/surgery_step/cauterize/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -373,6 +379,7 @@
 			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
+	to_chat(target, SPAN_NOTICE("You feel better."))
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
 	target.pain.recalculate_pain()
@@ -394,6 +401,7 @@
 
 /datum/surgery/open_encased
 	name = "Open Bone"
+	desc = "Saw through and pry the ribcage or skull open to access organs."
 	priority = SURGERY_PRIORITY_LOW
 	possible_locs = list("chest","head")
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -408,7 +416,7 @@
 
 /datum/surgery_step/saw_encased
 	name = "Saw Bone"
-	desc = "cut through the bone"
+	desc = "Cut through the bone."
 	/*Tools used to cut ribs/skull. Same tools as SEVER_BONE, but with sawing tools being better than chopping ones.
 	You're trying to cut through, but keep it and what's behind it intact.*/
 	tools = list(
@@ -435,7 +443,7 @@
 		SPAN_NOTICE("[user] begins to cut through your [surgery.affected_limb.encased] with \the [tool]."),
 		SPAN_NOTICE("[user] begins to cut through [target]'s [surgery.affected_limb.encased] with \the [tool]."))
 
-	target.custom_pain("Your [surgery.affected_limb.display_name] hurts horribly!", 1)
+	target.custom_pain("You can feel every vibration and cut in your [surgery.affected_limb.display_name]! It feels terrible!", 1)
 
 	if(surgery.affected_limb.status & LIMB_BROKEN)
 		to_chat(user, SPAN_NOTICE("It's already broken, though, so you could just pry it open."))
@@ -459,9 +467,9 @@
 
 	else
 		user.affected_message(target,
-			SPAN_WARNING("You shatter [target]'s [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user] shatters your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("You shatter [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
+			SPAN_WARNING("[user] shatters your [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
 
 		surgery.affected_limb.fracture(100)
 
@@ -478,7 +486,7 @@
 //In rib-closing surgery, it can be skipped to finish closing the ribcage, or completed to abort the operation.
 /datum/surgery_step/open_encased_step
 	name = "Open Bone"
-	desc = "prise the bones open"
+	desc = "Prise the ribcage or skull open."
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -494,15 +502,22 @@
 		SPAN_NOTICE("[user] begins to force your [surgery.affected_limb.encased] open with \the [tool]."),
 		SPAN_NOTICE("[user] begins to force [target]'s [surgery.affected_limb.encased] open with \the [tool]."))
 
-	target.custom_pain("Something hurts horribly in your [surgery.affected_limb.display_name]!", 1)
+	target.custom_pain("It feels as if your [surgery.affected_limb.display_name] is being split in two!", 1)
 	log_interact(user, target, "[key_name(user)] began opening [key_name(target)]'s [surgery.affected_limb.encased], possibly beginning [surgery].")
 
 /datum/surgery_step/open_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/brain = surgery.affected_limb.body_part == BODY_FLAG_HEAD ? TRUE : FALSE
-	user.affected_message(target,
-		SPAN_NOTICE("You use \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
-		SPAN_NOTICE("[user] uses \the [tool] to hold your [surgery.affected_limb.encased] open, exposing your [brain ? "brain" : "vital organs"]."),
-		SPAN_NOTICE("[user] uses \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."))
+	if(prob(10)) //RNG break chance.
+		surgery.affected_limb.fracture(100)
+		user.affected_message(target,
+			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] cracked after you exposed \his [brain ? "brain" : "vital organs"] with \the [tool]! It wasn't anybody's fault. It happens, rarely."),
+			SPAN_NOTICE("Your [surgery.affected_limb.encased] cracked after [user] exposed your [brain ? "brain" : "vital organs"] with \the [tool]! It wasn't anybody's fault. It happens, rarely."),
+			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] cracked after [user]exposed \his [brain ? "brain" : "vital organs"] with \the [tool]! It wasn't anybody's fault. It happens, rarely."))
+	else
+		user.affected_message(target,
+			SPAN_NOTICE("You use \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
+			SPAN_NOTICE("[user] uses \the [tool] to hold your [surgery.affected_limb.encased] open, exposing your [brain ? "brain" : "vital organs"]."),
+			SPAN_NOTICE("[user] uses \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."))
 	switch(target_zone)
 		if("head")
 			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
@@ -513,9 +528,6 @@
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP
 	complete(target, surgery) //This finishes the surgery.
-
-	if(prob(10)) //RNG slip chance.
-		surgery.affected_limb.fracture(100)
 	log_interact(user, target, "[key_name(user)] opened [key_name(target)]'s [surgery.affected_limb.encased], ending [surgery].")
 
 /datum/surgery_step/open_encased_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -526,9 +538,9 @@
 			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
+			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
 
 	surgery.affected_limb.fracture(100)
 	target.apply_damage(15, BRUTE, target_zone)
@@ -538,6 +550,7 @@
 
 /datum/surgery/close_encased
 	name = "Close Bone"
+	desc = "Close the ribcage or skull."
 	priority = SURGERY_PRIORITY_MINIMUM
 	possible_locs = list("chest","head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
@@ -553,7 +566,7 @@
 
 /datum/surgery_step/close_encased_step
 	name = "Close Bone"
-	desc = "bend the bones back into place"
+	desc = "Bend the ribcage or skull back into place."
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -566,7 +579,7 @@
 		SPAN_NOTICE("[user] starts bending your [surgery.affected_limb.encased] back into place with \the [tool]."),
 		SPAN_NOTICE("[user] starts bending [target]'s [surgery.affected_limb.encased] back into place with \the [tool]."))
 
-	target.custom_pain("Something hurts horribly in your [surgery.affected_limb.display_name]!", 1)
+	target.custom_pain("You feel a crushing pressure in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] began closing [key_name(target)]'s [surgery.affected_limb.encased], attempting to begin [surgery].")
 
 /datum/surgery_step/close_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -593,11 +606,12 @@
 			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
+			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
 
-	surgery.affected_limb.fracture(100)
+		surgery.affected_limb.fracture(100)
+
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to close [key_name(target)]'s [surgery.affected_limb.encased], aborting [surgery].")
 
@@ -605,11 +619,11 @@
 
 /datum/surgery_step/mend_encased
 	name = "Mend Bone"
-	desc = "repair the damaged bones"
+	desc = "Repair the damaged bones."
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/handling/bandage.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 //Use materials to mend bones, same as /datum/surgery_step/mend_bones
@@ -637,7 +651,7 @@
 			SPAN_NOTICE("[user] starts to apply \the [tool] to your [surgery.affected_limb.encased]."),
 			SPAN_NOTICE("[user] starts to apply \the [tool] to [target]'s [surgery.affected_limb.encased]."))
 
-		target.custom_pain("Something stings inside your [surgery.affected_limb.display_name]!", 1)
+		target.custom_pain("Something stings and feels cold and gooey in your [surgery.affected_limb.display_name]!", 1)
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You begin screwing a reinforcing plate to [target]'s [surgery.affected_limb.encased] with \the [tool]."),
@@ -674,9 +688,9 @@
 			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now! Fix it!"),
+			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]! It's broken, now!"),
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]! It's broken, now!"))
 
 		surgery.affected_limb.fracture(100)
 

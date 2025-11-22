@@ -6,6 +6,7 @@
 
 /datum/surgery/chestburster_removal
 	name = "Experimental Xenomorph Parasite Removal"
+	desc = "Remove an undeveloped xenomorph larva from the patient's chest."
 	priority = SURGERY_PRIORITY_MAXIMUM
 	possible_locs = list("chest")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
@@ -26,7 +27,7 @@
 
 /datum/surgery_step/cut_larval_pseudoroots
 	name = "Cut Larval Pseudoroots"
-	desc = "sever the xenomorph larva's pseudoroots"
+	desc = "Sever the xenomorph larva's pseudoroots connected to the host."
 	//Similar to INCISION, but including the PICT also. Using the PICT prevents acid spray.
 	tools = list(
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_IDEAL,
@@ -69,6 +70,7 @@
 		SPAN_NOTICE("[user] starts to carefully cut the tubes connecting the alien larva to your vital organs with \the [tool]."),
 		SPAN_NOTICE("[user] starts to carefully cut the tubes connecting the alien larva to [target]'s vital organs with \the [tool]."))
 
+	target.custom_pain("The larva is flailing and struggling in your [surgery.affected_limb.display_name]! It hurts so much!", 1)
 	log_interact(user, target, "[key_name(user)] began cutting the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], attempting to begin [surgery].")
 
 /datum/surgery_step/cut_larval_pseudoroots/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -100,6 +102,7 @@
 		SPAN_WARNING("Your hand slips and a jet of acid spurts as you slice the larva with \the [tool]!"))
 
 	if(target.stat == CONSCIOUS)
+		to_chat(target, SPAN_HIGHDANGER("Your organs are melting!"))
 		target.emote("scream")
 
 	larva_blood_spray(user, target)
@@ -111,7 +114,7 @@
 
 /datum/surgery_step/remove_larva
 	name = "Remove Larva"
-	desc = "extract the xenomorph larva"
+	desc = "Extract the xenomorph larva."
 	accept_hand = TRUE
 	/*Using the hands to forcefully rip out the larva will be faster at the cost of damaging both the doctor and the patient, with the addition of organ damage.
 	Unlike before, the hemostat is now the best tool for removing removing the larva, as opposed to wirecutters and the fork.*/
@@ -121,7 +124,7 @@
 		/obj/item/tool/kitchen/utensil/fork = 1.5 * SURGERY_TOOL_MULT_SUBSTITUTE
 		)
 	time = 6 SECONDS
-	preop_sound = 'sound/surgery/hemostat1.ogg'
+	preop_sound = 'sound/surgery/hemostat2.ogg'
 	success_sound = 'sound/surgery/organ2.ogg'
 	failure_sound = 'sound/effects/acid_sizzle2.ogg'
 
@@ -137,7 +140,7 @@
 			SPAN_NOTICE("[user] tries to forcefully rip the larva from your chest."),
 			SPAN_NOTICE("[user] tries to forcefully rip the larva from [target]'s chest."))
 
-	target.custom_pain("Something hurts horribly in your chest!",1)
+	target.custom_pain("IT'S COMING OUT! IT'S COMING OUT! AAAAAAARGH!",1)
 	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage.")
 
 /datum/surgery_step/remove_larva/success(mob/living/carbon/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -145,14 +148,16 @@
 	if(A)
 		if(tool)
 			user.affected_message(target,
-				SPAN_WARNING("You pull a wriggling parasite out of [target]'s ribcage!"),
-				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage!"),
-				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage!"))
+				SPAN_WARNING("You pull a wriggling parasite out of [target]'s ribcage! It's a girl!"),
+				SPAN_WARNING("[user] pulls a wriggling parasite out of your ribcage! It's a girl!"),
+				SPAN_WARNING("[user] pulls a wriggling parasite out of [target]'s ribcage! It's a girl!"))
 		else
 			user.affected_message(target,
-				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage!"),
-				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage!"),
-				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage!"))
+				SPAN_WARNING("Your hands and your patient's insides are burned by acid as you forcefully rip a wriggling parasite out of [target]'s ribcage! It's a girl!"),
+				SPAN_WARNING("Your insides and [user]'s hands are burned by acid as \he rips a wriggling parasite out of your ribcage! It's a girl!"),
+				SPAN_WARNING("[user]'s hands are burned by acid as \he rips a wriggling parasite out of [target]'s ribcage! It's a girl!"))
+
+			to_chat(target, SPAN_WARNING("Your organs in your chest burn like hell!"))
 			var/datum/internal_organ/impacted_organ = pick(surgery.affected_limb.internal_organs)
 			impacted_organ.take_damage(5, FALSE)
 			if(target.stat == CONSCIOUS)
@@ -167,12 +172,16 @@
 			else
 				user.apply_damage(15, BURN, "r_hand")
 
+		to_chat(target, SPAN_NOTICE("The heaviness in your chest is gone. You feel monumentally better."))
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
 		var/mob/living/carbon/xenomorph/larva/L = locate() in target //the larva was fully grown, ready to burst.
 		if(L)
 			L.forceMove(target.loc)
 			qdel(A)
-			user.visible_message(SPAN_HIGHDANGER("The larva was removed just in time, but is fully grown and alive!"))
+			user.affected_message(target,
+				SPAN_HIGHDANGER("You removed the larva just in time, but it is fully grown and alive!"),
+				SPAN_HIGHDANGER("[user] removed the larva just in time, but it is fully grown and alive!"),
+				SPAN_HIGHDANGER("[user] removed the larva just in time, but it is fully grown and alive!"))
 		else
 			A.forceMove(target.loc)
 			target.status_flags &= ~XENO_HOST
@@ -189,6 +198,7 @@
 	I.take_damage(5,0)
 	if(target.stat == CONSCIOUS)
 		target.emote("scream")
+	to_chat(target, SPAN_WARNING("Your organs in your chest feel like they're in living hell!"))
 	target.apply_damage(15, BURN, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to remove an embryo from [key_name(target)]'s ribcage with [tool ? "\the [tool]" : "their hands"].")
 	return FALSE

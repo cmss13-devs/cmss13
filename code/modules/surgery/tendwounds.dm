@@ -1,6 +1,7 @@
 //For closing an open incision first.
 /datum/surgery/suture_incision
 	name = "Suture Incision"
+	desc = "Sew the incision shut."
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 	required_surgery_skill = SKILL_SURGERY_NOVICE
@@ -13,13 +14,13 @@
 
 /datum/surgery_step/suture_incision
 	name = "Suture Incision"
-	desc = "suture the incision"
+	desc = "Suture the incision."
 	tools = SURGERY_TOOLS_SUTURE
 	//Suturing incisions closed is distinctly faster than cauterise-swaphand-suture, but slower than cautery alone, meaning it's only better if wanting to both close and suture the incision.
 	time = 3.5 SECONDS
-	preop_sound = 'sound/surgery/retractor1.ogg'
-	success_sound = 'sound/surgery/retractor2.ogg'
-	failure_sound = 'sound/surgery/hemostat1.ogg'
+	preop_sound = 'sound/surgery/suture1.ogg'
+	success_sound = 'sound/surgery/suture2.ogg'
+	failure_sound = 'sound/surgery/retractor2.ogg'
 
 /datum/surgery_step/suture_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -46,14 +47,14 @@
 	if(added_sutures & SUTURED_FULLY)
 		user.affected_message(target,
 			SPAN_NOTICE("You close the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures."),
-			SPAN_NOTICE("[user] closes the incision on your [surgery.affected_limb.display_name] with a line of neat sutures."),
+			SPAN_NOTICE("[user] closes the incision on your [surgery.affected_limb.display_name] with a line of neat sutures. It stops hurting."),
 			SPAN_NOTICE("[user] closes the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures."))
 
 		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], ending [surgery].")
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You close the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures, but some injuries remain."),
-			SPAN_NOTICE("[user] closes the incision on your [surgery.affected_limb.display_name] with a line of neat sutures, but some injuries remain."),
+			SPAN_NOTICE("[user] closes the incision on your [surgery.affected_limb.display_name] with a line of neat sutures, but you're still hurting!"),
 			SPAN_NOTICE("[user] closes the incision on [target]'s [surgery.affected_limb.display_name] with a line of neat sutures, but some injuries remain."))
 
 		log_interact(user, target, "[key_name(user)] finished suturing an incision in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], ending [surgery].")

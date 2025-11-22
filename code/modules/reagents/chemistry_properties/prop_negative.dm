@@ -271,6 +271,8 @@
 		var/datum/wound/internal_bleeding/I = new (0)
 		L.add_bleeding(I, TRUE)
 		L.wounds += I
+		L.owner.custom_pain("You feel something rip in your [L.display_name]!", 1)
+
 	if(prob(POTENCY_MULTIPLIER_VHIGH * potency))
 		spawn L.owner.emote("me", 1, "coughs up blood!")
 		L.owner.drip(10)
@@ -289,6 +291,7 @@
 		var/mob/living/carbon/human/H = M
 		var/obj/limb/L = pick(H.limbs)
 		var/datum/wound/internal_bleeding/I = new (0)
+		L.owner.custom_pain("You feel something burst in your [L.display_name]!", 1)
 		L.add_bleeding(I, TRUE)
 		L.wounds += I
 

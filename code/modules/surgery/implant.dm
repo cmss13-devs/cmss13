@@ -7,6 +7,7 @@
 //Implant and removal surgeries allow either removing the implant just inserted or replacing a removed one with a new item.
 /datum/surgery/implant
 	name = "Implant Surgery"
+	desc = "Implant an object into the thoracic or cranial cavity."
 	priority = SURGERY_PRIORITY_LOW
 	possible_locs = list("chest", "head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
@@ -19,6 +20,7 @@
 	)
 
 /datum/surgery/implant/groin
+	desc = "Implant an object in the abdominal cavity."
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
@@ -29,6 +31,7 @@
 
 /datum/surgery/implant/removal
 	name = "Implant Removal Surgery"
+	desc = "Remove an implant from the thoracic or cranial cavity."
 	steps = list(
 		/datum/surgery_step/create_cavity,
 		/datum/surgery_step/remove_implant,
@@ -36,6 +39,7 @@
 	)
 
 /datum/surgery/implant/removal/groin
+	desc = "Remove an implant from the abdominal cavity."
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
@@ -46,7 +50,7 @@
 
 /datum/surgery_step/create_cavity
 	name = "Create Implant Cavity"
-	desc = "open an implant cavity"
+	desc = "Open an implant cavity."
 	tools = list(
 		/obj/item/tool/surgery/surgicaldrill = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/pen = SURGERY_TOOL_MULT_SUBSTITUTE,
@@ -54,13 +58,17 @@
 	)
 	time = 6 SECONDS
 
+	preop_sound = 'sound/surgery/saw.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
+	failure_sound = 'sound/effects/bone_break2.ogg'
+
 /datum/surgery_step/create_cavity/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You begin opening a pocket in [target]'s [surgery.affected_limb.cavity] wall with \the [tool]."),
 		SPAN_NOTICE("[user] begins to open a pocket in your [surgery.affected_limb.cavity] wall with \the [tool]."),
 		SPAN_NOTICE("[user] begins to open a pocket in [target]'s [surgery.affected_limb.cavity] wall with \the [tool]."))
 
-	target.custom_pain("[user] is literally drilling a hole in your [surgery.affected_limb.display_name]!", 1)
+	target.custom_pain("AARGH! [user] is literally drilling a hole in your [surgery.affected_limb.display_name]! The vibrations! The pain!", 1)
 	log_interact(user, target, "[key_name(user)] started to make some space in [key_name(target)]'s [surgery.affected_limb.cavity] with \the [tool].")
 
 /datum/surgery_step/create_cavity/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -85,9 +93,13 @@
 
 /datum/surgery_step/place_item
 	name = "Insert Implant"
-	desc = "implant an object"
+	desc = "Implant an object."
 	accept_any_item = TRUE //Any item except a surgery tool or substitute for such.
 	time = 5 SECONDS
+
+	preop_sound = 'sound/surgery/hemostat2.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/place_item/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
@@ -118,7 +130,7 @@
 		SPAN_NOTICE("[user] begins implanting \the [tool] into your [surgery.affected_limb.cavity]."),
 		SPAN_NOTICE("[user] begins implanting \the [tool] into [target]'s [surgery.affected_limb.cavity]."))
 
-	target.custom_pain("The pain in your [surgery.affected_limb.cavity] is living hell!", 1)
+	target.custom_pain("The pain in your [surgery.affected_limb.cavity] is a living hell!", 1)
 	log_interact(user, target, "[key_name(user)] started to put \the [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
 
 /datum/surgery_step/place_item/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -131,12 +143,14 @@
 
 	if(tool.w_class >= SIZE_SMALL)
 		to_chat(user, SPAN_WARNING("You tear some blood vessels trying to fit such a bulky object in the cavity."))
-		log_interact(user, target, "[key_name(user)] damaged some blood vessels while putting \the [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
+		log_interact(user, target, "[key_name(user)] damages some blood vessels while putting \the [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity], causing internal bleeding!")
 
 		var/datum/wound/internal_bleeding/I = new (0)
 		surgery.affected_limb.add_bleeding(I, TRUE)
 		surgery.affected_limb.wounds += I
-		surgery.affected_limb.owner.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
+		target.apply_damage(5, BRUTE, target_zone)
+		surgery.affected_limb.add_bleeding(null, FALSE, 15)
+		target.custom_pain("You feel something rip in your [surgery.affected_limb.cavity]!", 1)
 
 	user.drop_inv_item_to_loc(tool, target)
 	surgery.affected_limb.hidden = tool
@@ -155,9 +169,13 @@
 
 /datum/surgery_step/remove_implant
 	name = "Remove Embedded Implant"
-	desc = "remove an implant"
+	desc = "Remove an implant."
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
+
+	preop_sound = 'sound/surgery/hemostat2.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/remove_implant/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
@@ -213,7 +231,7 @@
 
 /datum/surgery_step/cauterize/close_cavity
 	name = "Cauterize Implant Cavity"
-	desc = "seal the implant cavity"
+	desc = "Seal the implant cavity."
 	time = 5 SECONDS
 
 /datum/surgery_step/cauterize/close_cavity/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -251,6 +269,7 @@
 
 /datum/surgery/embedded
 	name = "Embedded Object Removal Surgery"
+	desc = "Remove foreign objects from a patient's body."
 	priority = SURGERY_PRIORITY_LOW
 	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
 	steps = list(/datum/surgery_step/remove_embedded)
@@ -266,9 +285,13 @@
 
 /datum/surgery_step/remove_embedded
 	name = "Remove Foreign Body"
-	desc = "extract a foreign body"
+	desc = "Extract a foreign body."
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
+
+	preop_sound = 'sound/surgery/hemostat2.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
+	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/remove_embedded/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

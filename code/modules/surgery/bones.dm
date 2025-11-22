@@ -6,6 +6,7 @@
 
 /datum/surgery/bone_repair
 	name = "Bone Repair Surgery"
+	desc = "Repair broken bones."
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -34,11 +35,11 @@
 
 /datum/surgery_step/mend_bones
 	name = "Mend Broken Bones"
-	desc = "repair the fractured bones"
+	desc = "Repair the fractured bones."
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/handling/bandage.ogg'
+	success_sound = 'sound/surgery/hemostat1.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 //Use materials to repair bones, same as /datum/surgery_step/mend_encased
@@ -66,7 +67,7 @@
 				SPAN_NOTICE("[user] starts to apply \the [tool] to your broken [surgery.affected_bone]."),
 				SPAN_NOTICE("[user] starts to apply \the [tool] to [target]'s broken [surgery.affected_bone]."))
 
-			target.custom_pain("Something stings inside your [surgery.affected_limb.display_name]!", 1)
+			target.custom_pain("Something stings and feels cold and gooey inside your [surgery.affected_limb.display_name]!", 1)
 		else
 			user.affected_message(target,
 				SPAN_NOTICE("You begin driving reinforcing pins into [target]'s [surgery.affected_bone] with \the [tool]."),
@@ -82,7 +83,7 @@
 				SPAN_NOTICE("[user] starts to apply \the [tool] to the broken bones in your [surgery.affected_limb.display_name]."),
 				SPAN_NOTICE("[user] starts to apply \the [tool] to the broken bones in [target]'s [surgery.affected_limb.display_name]."))
 
-			target.custom_pain("Something stings inside your [surgery.affected_limb.display_name]!", 1)
+			target.custom_pain("Something stings and feels cold and gooey inside your [surgery.affected_limb.display_name]!", 1)
 		else
 			user.affected_message(target,
 				SPAN_NOTICE("You begin driving reinforcing pins into the broken bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
@@ -150,7 +151,7 @@
 
 /datum/surgery_step/set_bones
 	name = "Set Bones"
-	desc = "set the bones"
+	desc = "Set the fractured bones back in place."
 	tools = list(
 		/obj/item/tool/surgery/bonesetter = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE,
@@ -184,7 +185,7 @@
 				SPAN_NOTICE("[user] begins to set the broken bones in your [surgery.affected_limb.display_name] with \the [tool]."),
 				SPAN_NOTICE("[user] begins to set the broken bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
-	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is going to make you pass out!", 1)
+	target.custom_pain("You feel your bones in your [surgery.affected_limb.display_name] shifting around! It feels horrible!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to begin setting bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
 
 /datum/surgery_step/set_bones/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
@@ -202,6 +203,8 @@
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BONES)
 	if(surgery.affected_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
 		new /obj/item/stack/medical/splint/nano(get_turf(target), 1)
+
+	to_chat(target, SPAN_NOTICE("It no longer hurts to move your [surgery.affected_limb.display_name], now. You feel much better."))
 	surgery.affected_limb.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
 	surgery.affected_limb.perma_injury = 0
 	target.pain.recalculate_pain()

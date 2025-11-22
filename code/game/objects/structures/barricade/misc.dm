@@ -109,3 +109,57 @@
 			take_damage( I.force * I.demolition_mod * 1.5 )
 		if("brute")
 			take_damage( I.force * I.demolition_mod * 0.75 )
+
+/*----------------------*/
+// HESCO
+/*----------------------*/
+
+/obj/structure/barricade/hesco
+	name = "HESCO barricade"
+	desc = "A sandbag wall. Provides better protection than a makeshift sandbag barricade, but requires specialized equipment to setup."
+	icon_state = "sand_wall"
+	health = 500
+	maxhealth = 500
+	layer = OBJ_LAYER
+	stack_type = /obj/item/stack/sandbags
+	debris = list(/obj/item/stack/sandbags)
+	stack_amount = 5
+	color = "#a98c7c"
+	destroyed_stack_amount = 1
+	barricade_hitsound = 'sound/weapons/Genhit.ogg'
+	can_change_dmg_state = 0
+	barricade_type = "sand_wall"
+	can_wire = FALSE
+	repair_materials = list("sandbag" = 1)
+	metallic = FALSE
+
+/obj/structure/barricade/hesco/attackby(obj/item/W as obj, mob/user as mob)
+	for(var/obj/effect/xenomorph/acid/A in src.loc)
+		if(A.acid_t == src)
+			to_chat(user, "You can't get near that, it's melting!")
+			return
+	if(istype(W, /obj/item/stack/sandbags))
+		var/obj/item/stack/sandbags/D = W
+		if(health < maxhealth)
+			if(D.get_amount() < 1)
+				to_chat(user, SPAN_WARNING("You need one sandbag to repair [src]."))
+				return
+			visible_message(SPAN_NOTICE("[user] begins to repair [src]."))
+			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src) && health < maxhealth)
+				if (D.use(1))
+					update_health(-0.5*maxhealth)
+					update_damage_state()
+					visible_message(SPAN_NOTICE("[user] clumsily repairs [src]."))
+		return
+
+	if(try_nailgun_usage(W, user))
+		return
+
+	return ..()
+
+/obj/structure/barricade/hesco/hit_barricade(obj/item/I)
+	switch(I.damtype)
+		if("fire")
+			take_damage( I.force * I.demolition_mod * 1.5 )
+		if("brute")
+			take_damage( I.force * I.demolition_mod * 1.0 )

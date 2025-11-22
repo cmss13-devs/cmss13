@@ -146,6 +146,10 @@
 	icon_state = "beret_black"
 	flags_atom = NO_GAMEMODE_SKIN
 
+/obj/item/clothing/head/beret/cm/black/army
+	name = "US Army beret"
+	desc = "The proud tradition of the US Army 1st Air Cav using black berets for their troopers is maintained since the 20th century."
+
 /obj/item/clothing/head/beret/cm/green
 	icon_state = "beret_green"
 	flags_atom = NO_GAMEMODE_SKIN
@@ -772,6 +776,9 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	)
 	flags_atom = NO_GAMEMODE_SKIN
 
+/obj/item/clothing/head/beret/marine/commander/black/army
+	name = "army major black beret"
+
 /obj/item/clothing/head/beret/marine/commander/council
 	name = "marine colonel beret"
 	desc = "A blue beret with the Lieutenant Colonel's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Colonel."
@@ -1111,6 +1118,15 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	name = "\improper USCM drill hat"
 	desc = "A formal hat worn by drill sergeants. Police that moustache."
 	icon_state = "drillhat"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
+
+/obj/item/clothing/head/cavalry
+	name = "\improper US cavalry hat"
+	desc = "Also known as Cavalry Stetson, this hat is a symbol of tradition and remembrence of heroism that is ongoing from as far as 19th century. Even though cavalry divison had cashed in its horses for choppers, choppers for dropships, and gone tear-assing around space, looking for the shit."
+	icon_state = "cavalry"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'

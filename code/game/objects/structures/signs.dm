@@ -108,6 +108,14 @@
 	. = ..()
 	desc = "1) These premises are under the operation of the United Americas Commission for Quality and Standards.<br>2) Access to these premises are regulated by UACQS personnel, or the regulating authority of the region.<br>[SPAN_RED("3) In accordance with Civil Law, firearms are not permitted in these premises.")]"
 
+/obj/structure/sign/minefield
+	name = "\improper MINEFIELD WARNING"
+	desc = "A warning sign indicating the presence of a minefield!"
+	icon_state = "minefield"
+
+/obj/structure/sign/minefield/alt
+	icon_state = "mines_warning"
+
 //============//
 //  Banners  //
 //==========//

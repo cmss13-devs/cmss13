@@ -17,6 +17,8 @@
 	var/list/clothing_traits // Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
 	var/clothing_traits_active = TRUE //are the clothing traits that are applied to the item active (acting on the mob) or not?
 
+	var/stylish = FALSE // if the clothing is considered for the style system
+
 	// accessory stuff
 	var/list/accessories
 	var/list/valid_accessory_slots = list()
@@ -28,6 +30,50 @@
 	var/accessory_path = /obj/item/clothing/accessory
 	/// default limit for attaching accessories, should only be 1 for most accessories, you don't want multiple storage accessories after all
 	var/worn_accessory_limit = 1
+	/// icons specific to this clothing item as an accessory
+	var/list/accessory_icons = null
+
+/obj/item/clothing/get_examine_text(mob/user)
+	. = ..()
+	for(var/obj/item/clothing/accessory/A in accessories)
+		. += "[icon2html(A, user)] \A [A] is [A.additional_examine_text()]" //The spacing of the examine text proc is deliberate. By default it returns ".".
+	if(stylish)
+		.+= SPAN_GREEN("This object is considered stylish. Press unique-action to change its style!")
+	if(can_become_accessory)
+		.+= SPAN_ORANGE("This object can be converted into an accessory. Use it in-hand to convert it!")
+
+/obj/item/clothing/unique_action(mob/user)
+	if(stylish)
+		change_style(user)
+
+// helmet garbs are technically supported out of the box, but it requires following the naming convention of item_state being "base_style_X", otherwise it may just show empty, but its hardly going to be a problem since you might just be changing the style for the specific look itself anyway - nihi
+/obj/item/clothing/proc/change_style(mob/user)
+	var/base_state = initial(icon_state)
+	var/current_style = 0
+	var/style_prefix = "[base_state]_style_"
+	if(findtext(item_state, style_prefix))
+		current_style = text2num(copytext(item_state, length(style_prefix) + 1))
+
+	var/next_style = current_style + 1
+	var/desired_item_state = "[style_prefix][next_style]"
+
+	// check if the next styles icon_state exists in the DMI file
+	if(desired_item_state in icon_states(accessory_icons ? accessory_icons[WEAR_JACKET] : icon)) // again, not as dynamic as id like, but better than nothing
+		item_state = desired_item_state
+		update_clothing_icon()
+		to_chat(user, SPAN_NOTICE("You change the style of [src] to style [next_style]."))
+		if((flags_obj & OBJ_IS_HELMET_GARB) && item_icons && item_icons[WEAR_AS_GARB])
+			if(desired_item_state in icon_states(item_icons[WEAR_AS_GARB]))
+				LAZYSET(item_state_slots, WEAR_AS_GARB, desired_item_state)
+				to_chat(user, SPAN_NOTICE("... and you also change its helmet garb style!"))
+
+	else
+		// loop back to the first style.
+		item_state = "[style_prefix]1"
+		update_clothing_icon()
+		to_chat(user, SPAN_NOTICE("You change the style of [src] back to default."))
+		if((flags_obj & OBJ_IS_HELMET_GARB) && item_icons && item_icons[WEAR_AS_GARB])
+			LAZYSET(item_state_slots, WEAR_AS_GARB, item_state)
 
 /obj/item/clothing/proc/convert_to_accessory(mob/user)
 	if(!can_become_accessory)

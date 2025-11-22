@@ -972,7 +972,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 /datum/supply_packs/contraband/deep_storage/rosary
 	name = "Rosary"
-	contains = list(/obj/item/prop/helmetgarb/rosary)
+	contains = list(/obj/item/clothing/accessory/rosary)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 

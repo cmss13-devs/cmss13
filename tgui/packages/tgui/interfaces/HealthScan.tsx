@@ -629,7 +629,7 @@ const ScannerLimbs = (props) => {
                   ) : null}
                   {limb.limb_eschar ? (
                     <Box inline color={'red'} bold>
-                      {ui_mode ? '[S]' : `[${limb.limb_eschar}]`}
+                      {ui_mode ? '[E]' : `[${limb.limb_eschar}]`}
                     </Box>
                   ) : null}
                   {limb.limb_type ? (

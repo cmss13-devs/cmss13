@@ -184,7 +184,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				bleeding_check = TRUE
 				break
 
-			if((!limb.brute_dam && !limb.burn_dam) && !(limb.status & LIMB_THIRD_DEGREE_BURNS|LIMB_ESCHAR|LIMB_DESTROYED|LIMB_UNCALIBRATED_PROSTHETIC|LIMB_BROKEN|LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE) && !bleeding_check && !internal_bleeding_check && !(implant && detail_level >= DETAIL_LEVEL_BODYSCAN) && !(limb.get_incision_depth()))
+			if(!limb.brute_dam && !limb.burn_dam && !(limb.status & (LIMB_THIRD_DEGREE_BURNS|LIMB_ESCHAR|LIMB_DESTROYED|LIMB_UNCALIBRATED_PROSTHETIC|LIMB_BROKEN|LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE)) && !bleeding_check && !internal_bleeding_check && !(implant && detail_level >= DETAIL_LEVEL_BODYSCAN) && !(limb.get_incision_depth()))
 				continue
 
 			var/list/core_body_parts = list("head", "chest", "groin")

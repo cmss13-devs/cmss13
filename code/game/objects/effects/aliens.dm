@@ -168,7 +168,7 @@
 		var/obj/vehicle/multitile/V = AM
 		V.handle_acidic_environment(src)
 
-//damages H that comes in contact
+//damages human that comes in contact
 /obj/effect/xenomorph/spray/proc/apply_spray(mob/living/carbon/H, should_stun = TRUE)
 
 	if(H.body_position == STANDING_UP)

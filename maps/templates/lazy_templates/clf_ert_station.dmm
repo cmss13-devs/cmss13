@@ -1816,7 +1816,7 @@
 	pixel_y = 4;
 	pixel_x = 12
 	},
-/obj/item/reagent_container/glass/beaker/silver,
+/obj/item/reagent_container/glass/beaker/catalyst/silver,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "ZI" = (

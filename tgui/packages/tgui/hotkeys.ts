@@ -39,6 +39,7 @@ const keyListeners: ((key: KeyEvent) => void)[] = [];
  * Converts a browser keycode to BYOND keycode.
  */
 const keyCodeToByond = (keyCode: number) => {
+  if (keyCode === 9) return 'Tab';
   if (keyCode === 16) return 'Shift';
   if (keyCode === 17) return 'Ctrl';
   if (keyCode === 18) return 'Alt';

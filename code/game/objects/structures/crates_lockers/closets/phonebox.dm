@@ -111,7 +111,7 @@
 
 /obj/structure/machinery/phonebox/Destroy()
 	if(occupant)
-		to_chat(occupant, SPAN_NOTICE(" <B>[name] colapses around you.</B>"))
+		to_chat(occupant, SPAN_NOTICE("<B>[name] colapses around you.</B>"))
 		go_out()
 	return ..()
 

@@ -149,7 +149,7 @@
 	. += SPAN_NOTICE("It contains:")
 	if(reagents && length(reagents.reagent_list))
 		for(var/datum/reagent/R in reagents.reagent_list)
-			. += SPAN_NOTICE(" [R.volume] units of [R.name].")
+			. += SPAN_NOTICE("[R.volume] units of [R.name].")
 	else
 		. += SPAN_NOTICE("Nothing.")
 

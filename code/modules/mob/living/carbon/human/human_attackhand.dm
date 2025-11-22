@@ -32,7 +32,7 @@
 				return 1
 
 			if(species.flags & IS_SYNTHETIC)
-				to_chat(attacking_mob, SPAN_DANGER("Your hands compress the metal chest uselessly... "))
+				to_chat(attacking_mob, SPAN_DANGER("Your hands compress the metal chest uselessly..."))
 				return 0
 
 			if(cpr_attempt_timer >= world.time)

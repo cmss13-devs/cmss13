@@ -48,7 +48,7 @@
 					src.imp = null
 					update()
 				else
-					to_chat(user, SPAN_NOTICE(" You failed to implant [M]."))
+					to_chat(user, SPAN_NOTICE("You failed to implant [M]."))
 
 	return
 

@@ -316,7 +316,7 @@
 		target.flags_emote &= ~EMOTING_HIGH_FIVE
 		var/extra_quip = ""
 		if(prob(10))
-			extra_quip = pick(" Down low!", " Eiffel Tower!")
+			extra_quip = pick("Down low!", " Eiffel Tower!")
 		H.visible_message(SPAN_NOTICE("[H] gives [target] a high five![extra_quip]"),
 			SPAN_NOTICE("You give [target] a high five![extra_quip]"), null, 4)
 		playsound(target, 'sound/effects/snap.ogg', 25, 1)

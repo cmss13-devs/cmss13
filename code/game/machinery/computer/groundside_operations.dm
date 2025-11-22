@@ -302,7 +302,7 @@
 
 		if("use_cam")
 			if(isRemoteControlling(usr))
-				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead. ")]")
+				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead.")]")
 				return
 
 			if(current_squad || show_command_squad)

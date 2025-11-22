@@ -69,7 +69,7 @@
 			to_chat(user, SPAN_DANGER("You fail to fill [src] with reagents from [target]."))
 			return
 
-		to_chat(user, SPAN_NOTICE(" You fill [src] with [trans] units of the contents of [target]."))
+		to_chat(user, SPAN_NOTICE("You fill [src] with [trans] units of the contents of [target]."))
 
 	//Something like a glass or a food item. Player probably wants to transfer TO it.
 	else if(target.is_open_container() || istype(target, /obj/item/reagent_container/food/snacks))
@@ -80,7 +80,7 @@
 			to_chat(user, SPAN_DANGER("You can't add any more to [target]."))
 			return
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the condiment to [target]."))
+		to_chat(user, SPAN_NOTICE("You transfer [trans] units of the condiment to [target]."))
 
 /obj/item/reagent_container/food/condiment/on_reagent_change()
 	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall" || icon_state == "hotsauce_cholula" || icon_state == "hotsauce_franks" || icon_state == "hotsauce_sriracha" || icon_state == "hotsauce_tabasco" || icon_state == "coldsauce_cole")

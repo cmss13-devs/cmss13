@@ -256,7 +256,7 @@ CLIENT_VERB(drop_item)
 
 	//Check to see if we slipped
 	if(prob(Process_Spaceslipping(5)))
-		to_chat(src, SPAN_NOTICE(" <B>You slipped!</B>"))
+		to_chat(src, SPAN_NOTICE("<B>You slipped!</B>"))
 		src.inertia_dir = src.last_move_dir
 		step(src, src.inertia_dir)
 		return 0

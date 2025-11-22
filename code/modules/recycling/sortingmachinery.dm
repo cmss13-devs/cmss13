@@ -43,7 +43,7 @@
 			if("Title")
 				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
 				if(!str || !length(str))
-					to_chat(usr, SPAN_WARNING(" Invalid text."))
+					to_chat(usr, SPAN_WARNING("Invalid text."))
 					return
 				user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",
 				SPAN_NOTICE("You title \the [src]: \"[str]\""),
@@ -150,7 +150,7 @@
 			if("Title")
 				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
 				if(!str || !length(str))
-					to_chat(usr, SPAN_WARNING(" Invalid text."))
+					to_chat(usr, SPAN_WARNING("Invalid text."))
 					return
 				user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",
 				SPAN_NOTICE("You title \the [src]: \"[str]\""),
@@ -314,7 +314,7 @@
 		else if(amount < 3)
 			to_chat(user, SPAN_WARNING("You need more paper."))
 	else
-		to_chat(user, SPAN_NOTICE(" The object you are trying to wrap is unsuitable for the sorting machinery!"))
+		to_chat(user, SPAN_NOTICE("The object you are trying to wrap is unsuitable for the sorting machinery!"))
 	if (amount <= 0)
 		new /obj/item/trash/c_tube( loc )
 		qdel(src)
@@ -324,7 +324,7 @@
 /obj/item/packageWrap/get_examine_text(mob/user)
 	. = ..()
 	if(get_dist(src, user) < 2)
-		. += SPAN_NOTICE(" There are [amount] units of package wrap left!")
+		. += SPAN_NOTICE("There are [amount] units of package wrap left!")
 
 
 /obj/item/device/destTagger

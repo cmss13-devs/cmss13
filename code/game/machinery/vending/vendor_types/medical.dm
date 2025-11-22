@@ -137,9 +137,9 @@
 		return
 	. += SPAN_NOTICE("It contains:")
 	if(supplies_remaining)
-		. += SPAN_NOTICE(" [supplies_remaining] [supply_descriptor].")
+		. += SPAN_NOTICE("[supplies_remaining] [supply_descriptor].")
 	else
-		. += SPAN_NOTICE(" Nothing.")
+		. += SPAN_NOTICE("Nothing.")
 
 /obj/structure/restock_cart/deconstruct(disassembled)
 	if(!disassembled)

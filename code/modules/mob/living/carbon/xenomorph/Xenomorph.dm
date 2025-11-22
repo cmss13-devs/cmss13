@@ -202,6 +202,8 @@
 	var/plasmapool_modifier = 1
 	var/plasmagain_modifier = 0
 	var/tackle_chance_modifier = 0
+	var/tacklestrength_min_modifier = 0
+	var/tacklestrength_max_modifier = 0
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
@@ -310,11 +312,19 @@
 	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
 
-	// Designer stuff
+	/// the typepath of the designer placeable we wanna put down.
 	var/obj/effect/alien/resin/design/selected_design = null
+	/// List of available design marks for this designer.
 	var/list/available_design = list()
+	/// Stores the current design nodes placed by designer.
 	var/list/current_design = list()
+	// Stores the current acid pillars placed by designer.
+	var/list/current_acid_pillars = list()
+	/// Limit acid pillars designer can place.
+	var/designer_acid_pillar_limit = 0
+	/// Maximum design nodes designer can place.
 	var/max_design_nodes = 0
+	/// Currently selected design mark to place
 	var/selected_design_mark
 
 	var/icon_xeno
@@ -932,8 +942,8 @@
 	tackle_min = caste.tackle_min
 	tackle_max = caste.tackle_max
 	tackle_chance = caste.tackle_chance + tackle_chance_modifier
-	tacklestrength_min = caste.tacklestrength_min
-	tacklestrength_max = caste.tacklestrength_max
+	tacklestrength_min = caste.tacklestrength_min + tacklestrength_min_modifier
+	tacklestrength_max = caste.tacklestrength_max + tacklestrength_max_modifier
 
 /mob/living/carbon/xenomorph/proc/recalculate_health()
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health

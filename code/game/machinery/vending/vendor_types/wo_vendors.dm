@@ -157,6 +157,7 @@
 		list("Rail Flashlight", floor(scale * 25), /obj/item/attachable/flashlight, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Flashlight Grip", floor(scale * 10), /obj/item/attachable/flashlight/grip, VENDOR_ITEM_REGULAR),
 		list("Underslung Grenade Launcher", floor(scale * 25), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR), //They already get these as on-spawns, might as well formalize some spares.
+		list("Underbarrel Flare Launcher", floor(scale * 25), /obj/item/attachable/attached_gun/flare_launcher, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", -1, null, null),
 		list("M5 Bayonet", floor(scale * 25), /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),

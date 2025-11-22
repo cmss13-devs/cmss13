@@ -654,6 +654,10 @@
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/Initialize(mapload)
+	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
+
 /obj/item/clothing/suit/storage/marine/light/vest/fire_light/equipped(mob/user, slot)
 	if(slot == WEAR_JACKET)
 		RegisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
@@ -775,6 +779,7 @@
 
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland/Initialize()
 	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
 	AddElement(/datum/element/corp_label/kelland)
 
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt
@@ -820,6 +825,7 @@
 
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt/Initialize()
 	. = ..()
+	RemoveElement(/datum/element/corp_label/armat)
 	AddElement(/datum/element/corp_label/kelland)
 
 // EMT - Paramedic

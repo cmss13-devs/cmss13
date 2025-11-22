@@ -98,13 +98,14 @@
 				if(weapon.flags_item & CAN_DIG_SHRAPNEL && (locate(/obj/item/shard) in src.embedded_items) && weapon.dig_out_shrapnel_check(src, user))
 					return TRUE
 				var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
+				var/obj/limb/affecting = get_limb(check_zone(user.zone_selected))
 				if(current_surgery)
 					if(current_surgery.attempt_next_step(user, weapon))
 						return TRUE //Cancel attack.
-				else
-					var/obj/limb/affecting = get_limb(check_zone(user.zone_selected))
-					if(initiate_surgery_moment(weapon, src, affecting, user))
-						return TRUE
+					if(SURGERY_TOOLS_CAUTERIZE[weapon?.type] && initiate_surgery_moment(weapon, src, affecting, user))
+						return TRUE // Emergency close incision
+				else if(initiate_surgery_moment(weapon, src, affecting, user))
+					return TRUE
 
 			if(INTENT_DISARM) //Same as help but without the shrapnel dig attempt.
 				var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]

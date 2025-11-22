@@ -2,6 +2,7 @@
 	name = "Weyland-Yutani Public Security (Executive Bodyguard Detail)"
 	mob_max = 1
 	mob_min = 1
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	home_base = /datum/lazy_template/ert/weyland_station
 	ert_message = "A corporate security beacon has been activated!"
 	var/equipment_preset = /datum/equipment_preset/wy/security

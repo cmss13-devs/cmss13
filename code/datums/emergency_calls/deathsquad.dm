@@ -97,9 +97,7 @@
 	mob_min = 5
 	max_smartgunners = 1
 	probability = 0
-	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
-	home_base = /datum/lazy_template/ert/weyland_station
-	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
+	home_base = /datum/lazy_template/ert/uscm_station
 	var/leader_preset = /datum/equipment_preset/uscm/marsoc/sl
 	var/member_preset = /datum/equipment_preset/uscm/marsoc
 	var/sg_preset = /datum/equipment_preset/uscm/marsoc/sg

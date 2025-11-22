@@ -1,5 +1,5 @@
 /datum/equipment_preset/yautja
-	name = "Yautja"
+	name = YAUTJA_UNBLOODED
 	idtype = null //No IDs for Yautja!
 	languages = list(LANGUAGE_YAUTJA)
 	job_title = "Predator"
@@ -75,7 +75,7 @@
 	new_human.change_real_name(new_human, final_name)
 
 /datum/equipment_preset/yautja/youngblood //normal WL youngblood rank
-	name = "Yautja Young"
+	name = YAUTJA_YOUNGBLOOD
 	minimap_icon = "predator_young"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	clan_rank = CLAN_RANK_UNBLOODED_INT
@@ -87,14 +87,14 @@
 
 //BLOODED
 /datum/equipment_preset/yautja/blooded
-	name = "Yautja Blooded"
+	name = YAUTJA_BLOODED
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_QUARTER_CAPE
 	clan_rank = CLAN_RANK_BLOODED_INT
 
 // ELITE
 /datum/equipment_preset/yautja/elite
-	name = "Yautja Elite"
+	name = YAUTJA_ELITE
 	minimap_icon = "predator_elite"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_HALF_CAPE
@@ -107,7 +107,7 @@
 
 // ELDER
 /datum/equipment_preset/yautja/elder
-	name = "Yautja Elder"
+	name = YAUTJA_ELDER
 	minimap_icon = "predator_elder"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_THIRD_CAPE
@@ -120,7 +120,7 @@
 
 // CLAN LEADER
 /datum/equipment_preset/yautja/leader
-	name = "Yautja Leader"
+	name = YAUTJA_LEADER
 	minimap_icon = "predator_leader"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_CAPE
@@ -133,7 +133,7 @@
 
 // ANCIENT
 /datum/equipment_preset/yautja/ancient
-	name = "Yautja Ancient"
+	name = YAUTJA_ANCIENT
 	minimap_icon = "predator_ancient"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_PONCHO
@@ -144,12 +144,15 @@
 	var/new_name = "Ancient [new_human.real_name]"
 	new_human.change_real_name(new_human, new_name)
 
+// YOUNGBLOOD SPAWNS
 /datum/equipment_preset/yautja/non_wl //For hunting grounds ONLY
-	name = "Yautja Young (non-WL)"
+	name = YOUNGBLOOD_ERT_MEMBER
 	minimap_icon = "predator_young"
 	job_title = "Young Blood"
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	no_faction_category = TRUE
+	selection_categories = list(FACTION_YAUTJA)
 
 /datum/equipment_preset/yautja/non_wl/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
@@ -157,13 +160,42 @@
 	new_human.change_real_name(new_human, new_name)
 
 /datum/equipment_preset/yautja/non_wl_leader //The "leader" of the group if a WL player is not on
-	name = "Yautja Youngblood pack leader (non-WL)"
+	name = YOUNGBLOOD_ERT_LEADER
 	minimap_icon = "predator_young"
 	job_title = "Young Blood"
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	no_faction_category = TRUE
+	selection_categories = list(FACTION_YAUTJA)
 
 /datum/equipment_preset/yautja/non_wl_leader/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
 	var/new_name = "Pack Leader [new_human.real_name]" //fluff rank blooded outrank them
 	new_human.change_real_name(new_human, new_name)
+
+// BAD BLOOD
+/datum/equipment_preset/yautja/bad_blood
+	name = YAUTJA_BADBLOOD
+	minimap_icon = "predator_leader"
+	job_title = "Bad Blood"
+	faction = FACTION_YAUTJA_BADBLOOD
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	no_faction_category = TRUE
+	selection_categories = list(FACTION_YAUTJA)
+
+/datum/equipment_preset/yautja/bad_blood/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+	var/caster_material = "ebony"
+	var/bracer_material = "ebony"
+	var/translator_type = PRED_TECH_MODERN
+	var/invisibility_sound = PRED_TECH_MODERN
+
+	if(!mob_client)
+		mob_client = new_human.client
+	if(mob_client?.prefs)
+		caster_material = mob_client.prefs.predator_caster_material
+		bracer_material = mob_client.prefs.predator_bracer_material
+		translator_type = mob_client.prefs.predator_translator_type
+		invisibility_sound = mob_client.prefs.predator_invisibility_sound
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter/badblood(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/badblood(new_human), WEAR_L_EAR)

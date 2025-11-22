@@ -422,6 +422,8 @@ GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 		path_presets_list[preset.type] = preset
 
 		var/list/categories_to_check = list("All", preset.faction)
+		if(preset.no_faction_category)
+			categories_to_check = list("All")
 		categories_to_check += preset.selection_categories
 		for(var/category in categories_to_check)
 			if(!(category in all_categories))

@@ -74,6 +74,13 @@
 	var/mob/hologram/falcon/hologram = new /mob/hologram/falcon(get_turf(user), user, src, bracers)
 	user.drop_inv_item_to_loc(src, hologram)
 
+/obj/item/falcon_drone/badblood
+	icon_state = "falcon_drone_badblood"
+
+/obj/item/falcon_drone/badblood/control_falcon_drone(mob/living/user, obj/item/clothing/gloves/yautja/bracers)
+	var/mob/hologram/falcon/hologram = new /mob/hologram/falcon/badblood(get_turf(user), user, src, bracers)
+	user.drop_inv_item_to_loc(src, hologram)
+
 /mob/hologram/falcon
 	name = "falcon drone"
 	desc = "An agile drone used by Yautja to survey the hunting grounds."
@@ -86,6 +93,17 @@
 
 	var/obj/item/falcon_drone/parent_drone
 	var/obj/item/clothing/gloves/yautja/owned_bracers
+
+/mob/hologram/falcon/badblood
+	action_icon_state = "falcon_drone_badblood"
+	icon_state = "falcon_drone_badblood_active"
+
+/mob/hologram/falcon/badblood/med_hud_set_status()
+	if(!hud_list)
+		return
+
+	var/image/holder = hud_list[HUNTER_HUD]
+	holder?.icon_state = "falcon_drone_badblood_active"
 
 /mob/hologram/falcon/Initialize(mapload, mob/M, obj/item/falcon_drone/drone, obj/item/clothing/gloves/yautja/bracers)
 	. = ..()

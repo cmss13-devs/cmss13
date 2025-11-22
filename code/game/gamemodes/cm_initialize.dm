@@ -47,6 +47,8 @@ Additional game mode variables.
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
 	var/list/dead_queens // A list of messages listing the dead queens
 	var/list/predators	= list()
+	var/list/youngbloods = list()
+	var/list/badbloods = list()
 	var/list/joes		= list()
 	var/list/fax_responders = list()
 
@@ -143,42 +145,14 @@ Additional game mode variables.
 //===================================================\\
 
 /datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, ignore_pred_num = FALSE)
-	predators[new_predator.username()] = list("Name" = new_predator.real_name, "Status" = "Alive")
-	if(!ignore_pred_num)
-		pred_current_num++
-
-/datum/game_mode/proc/get_whitelisted_predators(readied = 1)
-	// Assemble a list of active players who are whitelisted.
-	var/players[] = new
-
-	var/mob/new_player/new_pred
-	for(var/mob/player in GLOB.player_list)
-		if(!player.client)
-			continue //No client. DCed.
-		if(isyautja(player))
-			continue //Already a predator. Might be dead, who knows.
-		if(readied) //Ready check for new players.
-			new_pred = player
-			if(!istype(new_pred))
-				continue //Have to be a new player here.
-			if(!new_pred.ready)
-				continue //Have to be ready.
-		else
-			if(!istype(player,/mob/dead))
-				continue //Otherwise we just want to grab the ghosts.
-
-		if(player?.client.check_whitelist_status(WHITELIST_PREDATOR))  //Are they whitelisted?
-			if(!player.client.prefs)
-				player.client.prefs = new /datum/preferences(player.client) //Somehow they don't have one.
-
-			if(player.client.prefs.get_job_priority(JOB_PREDATOR) > 0) //Are their prefs turned on?
-				if(!player.mind) //They have to have a key if they have a client.
-					player.mind_initialize() //Will work on ghosts too, but won't add them to active minds.
-				player.mind.setup_human_stats()
-				player.faction = FACTION_YAUTJA
-				player.faction_group = FACTION_LIST_YAUTJA
-				players += player.mind
-	return players
+	if(new_predator.faction == FACTION_YAUTJA_YOUNG)
+		youngbloods[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+	else if(new_predator.faction == FACTION_YAUTJA_BADBLOOD)
+		badbloods[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+	else
+		predators[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+		if(!ignore_pred_num)//Only mainstream preds should contribute, exept where told not to.
+			pred_current_num++
 
 /datum/game_mode/proc/attempt_to_join_as_predator(mob/pred_candidate)
 	var/mob/living/carbon/human/new_predator = transform_predator(pred_candidate) //Initialized and ready.
@@ -189,6 +163,16 @@ Additional game mode variables.
 
 	if(pred_candidate)
 		pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+
+/datum/game_mode/proc/attempt_to_join_as_badblood(mob/badblood_candidate)
+	var/mob/living/carbon/human/new_predator = transform_badblood(badblood_candidate) //Initialized and ready.
+	if(!new_predator)
+		return
+
+	msg_admin_niche("([new_predator.key]) joined as Yautja Bad-Blood, [new_predator.real_name].")
+
+	if(badblood_candidate)
+		badblood_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/calculate_pred_max()
 	return floor(length(GLOB.player_list) / pred_per_players) + pred_count_modifier + pred_start_count
@@ -214,7 +198,7 @@ Additional game mode variables.
 			to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
 		return FALSE
 
-	if(pred_candidate.key in predators)
+	if(has_been_predator(pred_candidate.key))
 		if(show_warning)
 			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
 		return FALSE
@@ -231,6 +215,16 @@ Additional game mode variables.
 			return FALSE
 
 	return TRUE
+
+/datum/game_mode/proc/has_been_predator(key)
+	if(key in predators)
+		return TRUE
+	else if(key in youngbloods)
+		return TRUE
+	else if(key in badbloods)
+		return TRUE
+	else
+		return FALSE
 
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
 	set waitfor = FALSE
@@ -268,9 +262,42 @@ Additional game mode variables.
 	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
 	if(new_predator.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER) && (tgui_alert(new_predator, "Do you wish to announce your presence?", "Announce Arrival", list("Yes","No"), 10 SECONDS) != "No"))
-		elder_overseer_message("[new_predator.real_name] has joined the hunting party.")
+		elder_overseer_message("[new_predator.real_name] has joined the hunting party.", is_badblood = ANNOUNCE_YAUTJA_GOOD)
 
 	return new_predator
+
+/datum/game_mode/proc/transform_badblood(mob/badblood_candidate)
+	set waitfor = FALSE
+
+	if(!badblood_candidate.client) // Legacy - probably due to spawn code sync sleeps
+		log_debug("Null client attempted to transform_badblood")
+		return
+
+	badblood_candidate.client.prefs.find_assigned_slot(JOB_BADBLOOD) // Probably does not do anything relevant, predator preferences are not tied to specific slot.
+
+	var/turf/spawn_point = pick(GLOB.badblood_spawns)
+	if(!isturf(spawn_point))
+		log_debug("Failed to find spawn point for pred ship in transform_badblood.")
+		to_chat(badblood_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
+		return
+	if(!badblood_candidate?.mind) // Legacy check
+		log_debug("Tried to spawn invalid pred player in transform_badblood - new_player name=[badblood_candidate]")
+		to_chat(badblood_candidate, SPAN_WARNING("Could not setup character - you might want to tell someone about this."))
+		return
+
+	var/mob/living/carbon/human/yautja/new_badblood = new(spawn_point)
+	badblood_candidate.mind.transfer_to(new_badblood, TRUE)
+	new_badblood.client = badblood_candidate.client
+
+	var/datum/job/badblood_job = GLOB.RoleAuthority.roles_by_name[JOB_BADBLOOD]
+
+	if(!badblood_job)
+		qdel(new_badblood)
+		return
+
+	GLOB.RoleAuthority.equip_role(new_badblood, badblood_job, new_badblood.loc)
+
+	return new_badblood
 
 //===================================================\\
 

@@ -83,6 +83,9 @@
 	},
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja)
+"ai" = (
+/turf/closed/wall/huntership,
+/area/yautja/badblood)
 "aj" = (
 /obj/effect/hunter/bridge_border/brown/edge{
 	dir = 1
@@ -278,6 +281,19 @@
 	},
 /turf/open/shuttle/dropship/predship/red_glow/on,
 /area/yautja)
+"az" = (
+/obj/structure/bed/alien/yautja{
+	pixel_x = 6;
+	pixel_y = 7;
+	buckling_x = 6;
+	buckling_y = 7
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
+"aA" = (
+/obj/effect/landmark/badblood_spawn,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
 "aB" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -302,6 +318,9 @@
 /obj/structure/prop/hunter/fake_platform/hunter,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja)
+"aD" = (
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
 "aE" = (
 /obj/structure/machinery/door/airlock/yautja/secure{
 	dir = 1;
@@ -309,6 +328,24 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
+"aF" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/utensil/fork{
+	pixel_x = 10;
+	pixel_y = 3
+	},
+/obj/item/tool/kitchen/utensil/spoon{
+	pixel_y = 3;
+	pixel_x = 3
+	},
+/obj/item/device/flashlight/lantern/yautja{
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
 "aG" = (
 /obj/structure/platform_decoration/metal/hunter/west{
 	layer = 3.2;
@@ -321,6 +358,20 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja/lower_deck)
+"aH" = (
+/obj/structure/closet/yautja/big{
+	pixel_x = 1;
+	pixel_y = 24;
+	wall_mounted = 1
+	},
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
 "aI" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -351,6 +402,21 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/yautja)
+"aJ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/snacks/stew,
+/obj/item/reagent_container/food/snacks/stew,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
+"aK" = (
+/obj/structure/machinery/door/airlock/yautja{
+	name = "\improper Teleporter";
+	dir = 1
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
 "aL" = (
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
@@ -370,6 +436,10 @@
 /obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/bright_red/glow,
 /area/yautja/hangar)
+"aN" = (
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/badblood,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
 "aO" = (
 /obj/structure/prop/brazier/frame/full/torch{
 	pixel_x = -8;
@@ -378,6 +448,10 @@
 	},
 /turf/open/floor/predship/hull/non_weedable_hull/southeast,
 /area/yautja)
+"aP" = (
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/badblood/right,
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja/badblood)
 "aQ" = (
 /obj/structure/prop/hunter/misc/prop_armor/elder_alt{
 	pixel_y = 31
@@ -430,6 +504,30 @@
 	dir = 4
 	},
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
+/area/yautja)
+"aY" = (
+/obj/effect/hunter/bridge_border/corner,
+/obj/effect/hunter/bridge_border/corner{
+	dir = 4
+	},
+/obj/effect/step_trigger/teleporter/yautja_ship,
+/obj/effect/hunter/catwalk/new_alpha,
+/obj/structure/showcase{
+	desc = "A console used for Yautja teleportation.";
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi';
+	icon_state = "terminal";
+	name = "Teleporter Control Console";
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/light/red/darker,
+/area/yautja/badblood)
+"aZ" = (
+/obj/structure/bed/chair/hunter{
+	pixel_x = 16;
+	buckling_x = -15
+	},
+/turf/open/floor/corsat/squares,
 /area/yautja)
 "ba" = (
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/elder,
@@ -1878,7 +1976,7 @@
 	id = "armory";
 	pixel_y = 23;
 	name = "Armory Lockdown";
-	req_one_access_txt = "391"
+	req_one_access_txt = "392"
 	},
 /obj/effect/hunter/rune{
 	dir = 1
@@ -4443,13 +4541,6 @@
 	pixel_y = 19
 	},
 /turf/open/shuttle/dropship/predship/tile/red2,
-/area/yautja)
-"oN" = (
-/obj/structure/bed/chair/hunter{
-	pixel_x = -15;
-	buckling_x = -15
-	},
-/turf/open/floor/corsat/squares,
 /area/yautja)
 "oP" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -14113,7 +14204,7 @@
 	pixel_y = 23;
 	name = "Secure Armory Lockdown";
 	pixel_x = -9;
-	req_one_access_txt = "391"
+	req_one_access_txt = "393"
 	},
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
@@ -15443,12 +15534,12 @@ dI
 dI
 dI
 dI
-dI
-dI
-dI
-dI
-dI
-dI
+ai
+ai
+ai
+ai
+ai
+ai
 dI
 "}
 (3,1,1) = {"
@@ -15545,12 +15636,12 @@ dI
 dI
 dI
 dI
-dI
-dI
-dI
-dI
-dI
-dI
+ai
+aN
+aD
+aD
+az
+ai
 dI
 "}
 (4,1,1) = {"
@@ -15647,12 +15738,12 @@ dI
 dI
 dI
 dI
-dI
-dI
-dI
-dI
-dI
-dI
+ai
+aP
+aD
+aD
+aA
+ai
 dI
 "}
 (5,1,1) = {"
@@ -15749,12 +15840,12 @@ dI
 dI
 dI
 dI
-dI
-dI
-dI
-dI
-dI
-dI
+ai
+ai
+ai
+aH
+aD
+ai
 dI
 "}
 (6,1,1) = {"
@@ -15851,12 +15942,12 @@ dI
 dI
 dI
 dI
-dI
-dI
-dI
-dI
-dI
-dI
+ai
+aY
+aK
+aD
+aD
+ai
 dI
 "}
 (7,1,1) = {"
@@ -15953,12 +16044,12 @@ dI
 dI
 dI
 dI
-dI
-dI
-dI
-dI
-dI
-dI
+ai
+ai
+ai
+aJ
+aF
+ai
 dI
 "}
 (8,1,1) = {"
@@ -16057,10 +16148,10 @@ dI
 dI
 dI
 dI
-dI
-dI
-dI
-dI
+ai
+ai
+ai
+ai
 dI
 "}
 (9,1,1) = {"
@@ -18619,7 +18710,7 @@ dI
 dI
 dI
 dI
-aa
+dI
 dI
 lv
 hH
@@ -19399,7 +19490,7 @@ Si
 Si
 hm
 Qo
-Qo
+aZ
 FM
 sy
 Tk
@@ -19501,7 +19592,7 @@ Si
 Si
 cP
 Qo
-oN
+Qo
 Ae
 sy
 Tk

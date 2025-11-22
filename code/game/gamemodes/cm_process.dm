@@ -56,11 +56,24 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/declare_completion_announce_predators()
 	set waitfor = 0
 	sleep(2 SECONDS)
+	var/dat = "<br>"
+	var/there_are_preds = FALSE
 	if(length(predators))
-		var/dat = "<br>"
+		there_are_preds = TRUE
 		dat += SPAN_ROUNDBODY("<br>The Predators were:")
 		for(var/entry in predators)
 			dat += "<br>[entry] was [predators[entry]["Name"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
+	if(length(youngbloods))
+		there_are_preds = TRUE
+		dat += SPAN_ROUNDBODY("<br><br>The Young-Bloods were:")
+		for(var/entry in youngbloods)
+			dat += "<br>[entry] was [youngbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([youngbloods[entry]["Status"]])")]"
+	if(length(badbloods))
+		there_are_preds = TRUE
+		dat += SPAN_ROUNDBODY("<br><br>The Bad-Bloods were:")
+		for(var/entry in badbloods)
+			dat += "<br>[entry] was [badbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([badbloods[entry]["Status"]])")]"
+	if(there_are_preds)
 		to_world("[dat]")
 
 

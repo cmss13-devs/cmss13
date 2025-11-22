@@ -84,6 +84,7 @@
 
 #define RADIO_CHANNEL_YAUTJA "Yautja"
 #define RADIO_CHANNEL_YAUTJA_OVERSEER "Overseer"
+#define RADIO_CHANNEL_YAUTJA_BADBLOOD "Bad Blood"
 
 
 // Listening bug broadcast setting. Whether or not it plays only to ghosts with preferences, or doesn't show to ghosts at all.

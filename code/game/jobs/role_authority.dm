@@ -213,12 +213,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	else
 		chance = 20
 
-	if((prob(chance) || SSnightmare.get_scenario_value("predator_round")) && !Check_WO())
+	if((prob(100) || SSnightmare.get_scenario_value("predator_round")) && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
 			PJ.set_spawn_positions(GLOB.players_preassigned)
+		var/datum/job/BB = temp_roles_for_mode[JOB_BADBLOOD]
+		if(istype(BB))
+			BB.set_spawn_positions(1)
 		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
 		chance = 0
 

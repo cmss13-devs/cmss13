@@ -91,21 +91,11 @@
 
 	var/turf/spawn_turf
 	if(ismob(body))
+		ghostize_appearance(body)
 		spawn_turf = get_turf(body) //Where is the body located?
 		attack_log = body.attack_log //preserve our attack logs by copying them to our ghost
 		life_kills_total = body.life_kills_total //kills also copy over
 
-		appearance = body.appearance
-		underlays.Cut()
-		base_transform = matrix(body.base_transform)
-		body.alter_ghost(src)
-		apply_transform(matrix())
-
-		own_orbit_size = body.get_orbit_size()
-
-		desc = initial(desc)
-
-		alpha = 127
 		invisibility = INVISIBILITY_OBSERVER
 		plane = GHOST_PLANE
 		layer = ABOVE_FLY_LAYER
@@ -149,6 +139,17 @@
 
 	verbs -= /mob/verb/pickup_item
 	verbs -= /mob/verb/pull_item
+
+
+/mob/dead/observer/proc/ghostize_appearance(mob/body)
+	appearance = body.appearance
+	underlays.Cut()
+	base_transform = matrix(body.base_transform)
+	body.alter_ghost(src)
+	apply_transform(matrix())
+	own_orbit_size = body.get_orbit_size()
+	desc = initial(desc)
+	alpha = 127
 
 /mob/dead/observer/proc/set_lighting_alpha_from_pref(client/ghost_client)
 	var/vision_level = ghost_client?.prefs?.ghost_vision_pref
@@ -742,6 +743,24 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	else
 		last_health_display.target_mob = target
 	last_health_display.look_at(src, DETAIL_LEVEL_FULL, bypass_checks = TRUE)
+
+/mob/dead/observer/verb/restore_ghost_appearance()
+	set category = "Ghost.Body"
+	set name = "Restore Ghost Character"
+	set desc = "Restore your ghost character's name and appearance from your preferences."
+
+	if(!client?.prefs)
+		to_chat(src, SPAN_NOTICE("Somehow, you have no preferences."))
+		return
+
+	if(!client.prefs.preview_dummy)
+		client.prefs.update_preview_icon()
+	ghostize_appearance(client.prefs.preview_dummy)
+	QDEL_NULL(client.prefs.preview_dummy)
+
+	var/real_name = client.prefs.real_name
+	name = real_name
+	real_name = real_name
 
 /mob/dead/observer/verb/follow_local(mob/target in GLOB.mob_list)
 	set category = "Ghost.Follow"

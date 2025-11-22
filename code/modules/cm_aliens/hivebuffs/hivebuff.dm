@@ -100,7 +100,7 @@
 		return
 
 	if(!_check_num_required_pylons())
-		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]"))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]."))
 		return FALSE
 
 	if(!_check_danger())
@@ -129,7 +129,7 @@
 		for(var/buff in hive.active_hivebuffs)
 			active_buffs += buff + " "
 		active_buffs = trim_right(active_buffs)
-		to_chat(purchasing_mob, SPAN_XENONOTICE("[name] cannot be used with other active buffs! Wait for those to end first. Active buffs: [active_buffs]"))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("[name] cannot be used with other active buffs! Wait for those to end first. Active buffs: [active_buffs]."))
 		return FALSE
 
 	if(!handle_special_checks())

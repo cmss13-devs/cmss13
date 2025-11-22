@@ -331,7 +331,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			return
 		if(user.drop_inv_item_to_loc(item, src))
 			coin = item
-			to_chat(user, SPAN_NOTICE("You insert [item] into [src]"))
+			to_chat(user, SPAN_NOTICE("You insert [item] into [src]."))
 			tgui_interact(user)
 		return
 	else if(istype(item, /obj/item/spacecash))

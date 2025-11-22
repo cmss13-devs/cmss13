@@ -560,13 +560,13 @@
 		if(WT.remove_fuel(0, user))
 			if(status == RTABLE_NORMAL)
 				user.visible_message(SPAN_NOTICE("[user] starts weakening [src]."),
-				SPAN_NOTICE("You start weakening [src]"))
+				SPAN_NOTICE("You start weakening [src]."))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if (do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !WT.isOn())
 						return
 					user.visible_message(SPAN_NOTICE("[user] weakens [src]."),
-					SPAN_NOTICE("You weaken [src]"))
+					SPAN_NOTICE("You weaken [src]."))
 					src.status = RTABLE_WEAKENED
 			else
 				user.visible_message(SPAN_NOTICE("[user] starts welding [src] back together."),

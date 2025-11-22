@@ -147,7 +147,7 @@
 /obj/item/weapon/gun/flare/get_examine_text(mob/user)
 	. = ..()
 	if(last_signal_flare_name)
-		. += SPAN_NOTICE("The last signal flare fired has the designation: [last_signal_flare_name]")
+		. += SPAN_NOTICE("The last signal flare fired has the designation: [last_signal_flare_name].")
 
 /obj/effect/flare_light
 	name = "flare light"

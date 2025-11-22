@@ -123,7 +123,7 @@
 
 	M.revive(FALSE) // Argument means that viruses will be cured (except zombie virus)
 
-	message_admins(WRAP_STAFF_LOG(usr, "ahealed [key_name(M)] in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed [key_name(M)] in [get_area(M)] ([M.x],[M.y],[M.z].)"), M.x, M.y, M.z)
 
 /client/proc/cmd_admin_subtle_message(mob/M as mob in GLOB.mob_list)
 	set name = "Subtle Message"
@@ -163,15 +163,15 @@
 			var/mob/living/carbon/human/H = M
 
 			if(!istype(H))
-				to_chat(usr, "The person you are trying to contact is not human")
+				to_chat(usr, "The person you are trying to contact is not human.")
 				return
 
 			if(!H.get_type_in_ears(/obj/item/device/radio/headset))
-				to_chat(usr, "The person you are trying to contact is not wearing a headset")
+				to_chat(usr, "The person you are trying to contact is not wearing a headset.")
 				return
 			to_chat(H, SPAN_ANNOUNCEMENT_HEADER_BLUE("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
 
-	var/message = WRAP_STAFF_LOG(usr, SPAN_STAFF_IC("subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."))
+	var/message = WRAP_STAFF_LOG(usr, SPAN_STAFF_IC("subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z].)"))
 	message_admins(message, M.x, M.y, M.z)
 	admin_ticket_log(M, message)
 
@@ -353,7 +353,7 @@
 	var/newhive = tgui_input_list(src,"Select a hive.", "Change Hivenumber", hives, theme="hive_status")
 
 	if(!H)
-		to_chat(usr, "This mob no longer exists")
+		to_chat(usr, "This mob no longer exists.")
 		return
 
 	if(isxeno(H))
@@ -387,7 +387,7 @@
 		return
 
 	if(!carbon)
-		to_chat(usr, "This mob no longer exists")
+		to_chat(usr, "This mob no longer exists.")
 		return
 
 	var/old_name = carbon.name

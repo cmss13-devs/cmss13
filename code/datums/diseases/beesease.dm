@@ -14,12 +14,12 @@
 	switch(stage)
 		if(1)
 			if(prob(2))
-				to_chat(affected_mob, SPAN_DANGER("You feel like something is moving inside of you"))
+				to_chat(affected_mob, SPAN_DANGER("You feel like something is moving inside of you."))
 		if(2) //also changes say, see say.dm
 			if(prob(2))
-				to_chat(affected_mob, SPAN_DANGER("You feel like something is moving inside of you"))
+				to_chat(affected_mob, SPAN_DANGER("You feel like something is moving inside of you."))
 			if(prob(2))
-				to_chat(affected_mob, SPAN_DANGER("BZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"))
+				to_chat(affected_mob, SPAN_DANGER("BZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ."))
 		if(3)
 		//Should give the bee spit verb
 		if(4)

@@ -36,7 +36,7 @@
 			msg += "[key_name(C, 1, 1, CLIENT_IS_STAFF(src))]: account is [C.player_age] days old<br>"
 
 	if(missing_ages)
-		to_chat(src, "Some accounts did not have proper ages set in their clients.  This function requires database to be present")
+		to_chat(src, "Some accounts did not have proper ages set in their clients.  This function requires database to be present.")
 
 	if(msg != "")
 		show_browser(src, msg, "Check New Players", "Player_age_check")
@@ -137,7 +137,7 @@
 			message_admins(FONT_SIZE_LARGE("[key_name_admin(usr)] has fully enabled explosive antigrief for all players."))
 			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_ENABLED)
 		if(ANTIGRIEF_OPTION_NEW_PLAYERS)
-			message_admins(FONT_SIZE_LARGE("[key_name_admin(usr)] has enabled explosive antigrief for new players (less than 10 total human hours)."))
+			message_admins(FONT_SIZE_LARGE("[key_name_admin(usr)] has enabled explosive antigrief for new players (less than 10 total human hours.)"))
 			CONFIG_SET(number/explosive_antigrief, ANTIGRIEF_NEW_PLAYERS)
 		else
 			message_admins(FONT_SIZE_LARGE("Error! [key_name_admin(usr)] attempted to toggle explosive antigrief but the selected value was [antigrief_choice]. Setting it to enabled."))

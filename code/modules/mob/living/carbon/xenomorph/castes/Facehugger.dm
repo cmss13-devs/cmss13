@@ -252,7 +252,7 @@
 			return FALSE
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("You cannot emote (muted)."))
+			to_chat(src, SPAN_DANGER("You cannot emote (muted.)"))
 			return FALSE
 		if(!client.attempt_talking())
 			return FALSE

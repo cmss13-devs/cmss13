@@ -1296,14 +1296,14 @@ Defined in conflicts.dm of the #defines folder.
 		zoom_offset = 11
 		zoom_viewsize = 12
 		allows_movement = 0
-		to_chat(usr, SPAN_NOTICE("Zoom level switched to 4x"))
+		to_chat(usr, SPAN_NOTICE("Zoom level switched to 4x."))
 		return
 	else
 		zoom_level = ZOOM_LEVEL_2X
 		zoom_offset = 6
 		zoom_viewsize = 7
 		allows_movement = 1
-		to_chat(usr, SPAN_NOTICE("Zoom level switched to 2x"))
+		to_chat(usr, SPAN_NOTICE("Zoom level switched to 2x."))
 		return
 
 /datum/action/item_action/toggle_zoom_level
@@ -3115,7 +3115,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(!istype(G) && G != null)
 		G = user.get_active_hand()
 	if(!G)
-		to_chat(user, SPAN_WARNING("You need to hold \the [src] to do that"))
+		to_chat(user, SPAN_WARNING("You need to hold \the [src] to do that."))
 		return
 
 	pump(user)
@@ -3148,7 +3148,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/grenade/reload_attachment(obj/item/explosive/grenade/G, mob/user)
 	if(!breech_open)
-		to_chat(user, SPAN_WARNING("\The [src]'s breech must be open to load grenades! (use unique-action)"))
+		to_chat(user, SPAN_WARNING("\The [src]'s breech must be open to load grenades! (Use unique-action.)"))
 		return
 	if(!istype(G) || istype(G, /obj/item/explosive/grenade/spawnergrenade/))
 		to_chat(user, SPAN_WARNING("[src] doesn't accept that type of grenade."))
@@ -3200,7 +3200,7 @@ Defined in conflicts.dm of the #defines folder.
 		return
 	if(!cocked)
 		if(user)
-			to_chat(user, SPAN_WARNING("You must cock \the [src] to fire it! (open and close the breech)"))
+			to_chat(user, SPAN_WARNING("You must cock \the [src] to fire it! (Open and close the breech.)"))
 			playsound(user, 'sound/weapons/gun_empty.ogg', 50, TRUE, 5)
 		return
 	if(get_dist(user,target) > max_range)

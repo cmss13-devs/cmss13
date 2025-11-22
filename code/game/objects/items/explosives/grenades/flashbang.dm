@@ -133,7 +133,7 @@
 		weaken_amount *= 0.85
 		paralyze_amount *= 0.85
 		deafen_amount = 0
-		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
+		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang.'"))
 
 	M.Stun(weaken_amount)
 	M.KnockDown(weaken_amount)
@@ -325,7 +325,7 @@
 		daze_amount *= 0.85
 		paralyze_amount *= 0.85
 		deafen_amount = 0
-		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
+		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang.'"))
 
 	M.apply_effect(daze_amount, DAZE)
 	M.apply_effect(paralyze_amount, PARALYZE)

@@ -381,10 +381,10 @@
 
 	adjust = !adjust
 	if(adjust)
-		to_chat(usr, SPAN_NOTICE("You adjust \the [src]"))
+		to_chat(usr, SPAN_NOTICE("You adjust \the [src]."))
 		icon_state += "_alt"
 	else
-		to_chat(usr, SPAN_NOTICE("You adjust \the [src]"))
+		to_chat(usr, SPAN_NOTICE("You adjust \the [src]."))
 		icon_state = original_state
 
 	update_clothing_icon(src)

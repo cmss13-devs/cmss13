@@ -309,7 +309,7 @@
 
 	if(ismob(attacker))
 		var/mob/M = attacker
-		log_attack("[src] took [damage] [type] damage from [M] ([M.client ? M.client.ckey : "disconnected"]).")
+		log_attack("[src] took [damage] [type] damage from [M] ([M.client ? M.client.ckey : "disconnected"].)")
 	else
 		log_attack("[src] took [damage] [type] damage from [attacker].")
 	update_icon()

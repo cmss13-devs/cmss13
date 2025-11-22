@@ -35,7 +35,7 @@
 			if (!C)
 				return
 			if(!target)
-				to_chat(usr, SPAN_WARNING("The object you tried to expose to [C] no longer exists (nulled or hard-deled)"), confidential = TRUE)
+				to_chat(usr, SPAN_WARNING("The object you tried to expose to [C] no longer exists (nulled or hard-deleted.)"), confidential = TRUE)
 				return
 			message_admins("[key_name_admin(usr)] showed [key_name_admin(C)] a <a href='byond://?_src_=vars;[HrefToken(forceGlobal = TRUE)];Vars=[REF(target)]'>VV window</a>")
 			log_admin("Admin [key_name(usr)] showed [key_name(C)] a VV window of a [target]")

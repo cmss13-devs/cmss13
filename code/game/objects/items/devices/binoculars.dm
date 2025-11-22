@@ -379,7 +379,7 @@
 
 		var/turf/userloc = get_turf(user)
 		msg_admin_niche("Laser target [las_name] has been designated by [key_name(user, 1)] at ([TU.x], [TU.y], [TU.z]). [ADMIN_JMP(userloc)]")
-		log_game("Laser target [las_name] has been designated by [key_name(user, 1)] at ([TU.x], [TU.y], [TU.z]).")
+		log_game("Laser target [las_name] has been designated by [key_name(user, 1)] at ([TU.x], [TU.y], [TU.z].)")
 
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(laser)

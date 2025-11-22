@@ -225,13 +225,13 @@
 
 /obj/item/weapon/gun/smartgun/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	if(!cover_open && has_cover)
-		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't put a new drum in! (alt-click to open it)"))
+		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't put a new drum in! (alt-click to open it.)"))
 		return
 	. = ..()
 
 /obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override, loc_override)
 	if(!cover_open && has_cover)
-		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't take out the drum! (alt-click to open it)"))
+		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't take out the drum! (alt-click to open it.)"))
 		return
 	. = ..()
 
@@ -468,7 +468,7 @@
 				balloon_alert(user, "harness required")
 				return FALSE
 		if(cover_open)
-			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
+			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (Alt-click to close.)"))
 			balloon_alert(user, "cannot fire; feed cover open")
 			return FALSE
 

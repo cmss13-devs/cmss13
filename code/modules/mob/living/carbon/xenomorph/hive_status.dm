@@ -224,7 +224,7 @@
 		castes_available += initial(current_caste.caste_type)
 
 	var/castes = castes_available.Join(", ")
-	xeno_message(SPAN_XENOANNOUNCE("The Hive is now strong enough to support: [castes]"))
+	xeno_message(SPAN_XENOANNOUNCE("The Hive is now strong enough to support: [castes]."))
 	xeno_maptext("The Hive can now support: [castes]", "Hive Strengthening")
 	evo_screech()
 
@@ -967,12 +967,12 @@
 
 		if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
 			var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
-			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
+			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining.)"))
 			return FALSE
 
 		if(world.time - user.timeofdeath < JOIN_AS_FACEHUGGER_DELAY)
 			var/time_left = floor((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
-			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [JOIN_AS_FACEHUGGER_DELAY / 600] minutes have passed ([time_left] seconds remaining)."))
+			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [JOIN_AS_FACEHUGGER_DELAY / 600] minutes have passed ([time_left] seconds remaining.)"))
 			return FALSE
 
 	if(length(totalXenos) <= 0)
@@ -1017,7 +1017,7 @@
 	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	hugger.generate_name()
 	hugger.timeofdeath = user.timeofdeath // Keep old death time
-	msg_admin_niche("[key_name(hugger)] has joined as a facehugger at ([A.x],[A.y],[A.z]).")
+	msg_admin_niche("[key_name(hugger)] has joined as a facehugger at ([A.x],[A.y],[A.z].)")
 
 /datum/hive_status/proc/update_lesser_drone_limit()
 	var/countable_xeno_iterator = 0
@@ -1047,12 +1047,12 @@
 
 	if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
 		var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining.)"))
 		return FALSE
 
 	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
 		var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [JOIN_AS_LESSER_DRONE_DELAY / 10] seconds have passed ([time_left] seconds remaining)."))
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [JOIN_AS_LESSER_DRONE_DELAY / 10] seconds have passed ([time_left] seconds remaining.)"))
 		return FALSE
 
 	if(length(totalXenos) <= 0)

@@ -284,7 +284,7 @@ text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes
 /obj/structure/machinery/bot/cleanbot/proc/clean(obj/effect/decal/cleanable/target)
 	anchored = TRUE
 	icon_state = "cleanbot-c"
-	visible_message(SPAN_DANGER("[src] begins to clean up the [target]"))
+	visible_message(SPAN_DANGER("[src] begins to clean up the [target]."))
 	cleaning = 1
 	var/cleantime = 50
 	if(istype(target,/obj/effect/decal/cleanable/dirt)) // Clean Dirt much faster

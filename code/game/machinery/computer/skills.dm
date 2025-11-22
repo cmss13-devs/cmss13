@@ -342,7 +342,7 @@ What a mess.*/
 								if ((R.fields["name"] == active1.fields["name"] || R.fields["id"] == active1.fields["id"]))
 									GLOB.data_core.medical -= R
 									qdel(R)
-							msg_admin_niche("[key_name_admin(usr)] deleted all employment records for [active1.fields["name"]] ([active1.fields["id"]]).")
+							msg_admin_niche("[key_name_admin(usr)] deleted all employment records for [active1.fields["name"]] ([active1.fields["id"]].)")
 							QDEL_NULL(active1)
 					else
 						temp = "This function does not appear to be working at the moment. Our apologies."

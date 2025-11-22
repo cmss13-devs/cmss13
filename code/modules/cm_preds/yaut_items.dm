@@ -628,7 +628,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/structure/machinery/hunt_ground_escape/attack_hand(mob/user)
 	. = ..()
 	if(!isyautja(user))
-		to_chat(user, SPAN_WARNING("The console blerts out two words you can understand: 'Scan' and 'Mask'."))
+		to_chat(user, SPAN_WARNING("The console blerts out two words you can understand: 'Scan' and 'Mask.'"))
 		return
 
 	var/choice = tgui_alert(user, "Do you wish to close or open the shutter?", "[src]", list("Open", "Close"), 15 SECONDS)
@@ -725,7 +725,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 	to_chat(user, SPAN_NOTICE("You choose to awaken: [choice]."))
 	message_all_yautja("[user.real_name] has chosen to awaken: [choice].")
-	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) has called [choice] (Youngblood ERT)."))
+	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) has called [choice] (Youngblood ERT.)"))
 	SSticker.mode.get_specific_call(un_blooded[choice], TRUE, FALSE)
 	COOLDOWN_START(GLOB, youngblood_timer_yautja, 40 MINUTES)
 

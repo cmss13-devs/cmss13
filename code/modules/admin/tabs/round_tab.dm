@@ -29,7 +29,7 @@
 
 	// If we are reducing the count and that exceeds how much we could reduce it by
 	if(value < possible_min)
-		to_chat(src, SPAN_NOTICE("Aborting. Number cannot result in a max less than current pred count. (current: [cur_count]/[cur_max], current extra: [cur_extra], attempted: [value])"))
+		to_chat(src, SPAN_NOTICE("Aborting. Number cannot result in a max less than current pred count. (current: [cur_count]/[cur_max], current extra: [cur_extra], attempted: [value].)"))
 		return
 
 	SSticker.mode.pred_count_modifier = value

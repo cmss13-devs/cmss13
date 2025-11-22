@@ -7,7 +7,7 @@
 		return
 	prefs.toggles_chat ^= CHAT_RADIO
 	prefs.save_preferences()
-	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from radios or speakers"))
+	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from radios or speakers."))
 
 /client/proc/toggleadminhelpsound()
 	set name = "Hear/Silence Adminhelps"
@@ -215,7 +215,7 @@ CLIENT_VERB(toggle_be_special)
 	var/role_flag = GLOB.be_special_flags[role]
 	prefs.be_special ^= role_flag
 	prefs.save_preferences()
-	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible)."))
+	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible.)"))
 
 CLIENT_VERB(toggle_fullscreen_preference)
 	set name = "Toggle Fullscreen Preference"

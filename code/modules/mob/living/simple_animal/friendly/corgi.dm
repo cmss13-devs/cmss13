@@ -123,7 +123,7 @@
 		if(!stat)
 			for(var/mob/M as anything in viewers(user, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_NOTICE("[user] baps [name] on the nose with the rolled-up [O]"), SHOW_MESSAGE_VISIBLE)
+					M.show_message(SPAN_NOTICE("[user] baps [name] on the nose with the rolled-up [O]."), SHOW_MESSAGE_VISIBLE)
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2))
 					setDir(i)
@@ -166,7 +166,7 @@
 //pupplies cannot wear anything.
 /mob/living/simple_animal/corgi/puppy/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		to_chat(usr, SPAN_DANGER("You can't fit this on [src]"))
+		to_chat(usr, SPAN_DANGER("You can't fit this on [src]."))
 		return
 	..()
 

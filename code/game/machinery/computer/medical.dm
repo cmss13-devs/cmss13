@@ -517,7 +517,7 @@
 				"photo_[photo_profile]" = icon2html(image, user.client, sourceonly = TRUE),
 			))
 
-			to_chat(user, SPAN_NOTICE("You successfully updated record [photo_profile] photo"))
+			to_chat(user, SPAN_NOTICE("You successfully updated record [photo_profile] photo."))
 			msg_admin_niche("[key_name_admin(user)] updated the record photo of [general_record.fields["name"]] at [get_location_in_text(user)] [ADMIN_JMP(loc)]")
 
 			return TRUE

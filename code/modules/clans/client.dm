@@ -13,7 +13,7 @@
 	if(!input)
 		return
 
-	to_chat(src, SPAN_NOTICE("Made a new clan called: [input]"))
+	to_chat(src, SPAN_NOTICE("Made a new clan called: [input]."))
 
 	create_new_clan(input)
 
@@ -420,14 +420,14 @@ CLIENT_VERB(view_clan_info)
 						switch(chosen_rank.limit_type)
 							if(CLAN_LIMIT_NUMBER)
 								if(players_in_rank >= chosen_rank.limit)
-									to_chat(src, SPAN_DANGER("This slot is full! (Maximum of [chosen_rank.limit] slots)"))
+									to_chat(src, SPAN_DANGER("This slot is full! (Maximum of [chosen_rank.limit] slots.)"))
 									return
 							if(CLAN_LIMIT_SIZE)
 								var/list/datum/view_record/clan_playerbase_view/clan_players = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_COMP("clan_id", DB_EQUALS, target.clan_id))
 								var/available_slots = ceil(length(clan_players) / chosen_rank.limit)
 
 								if(players_in_rank >= available_slots)
-									to_chat(src, SPAN_DANGER("This slot is full! (Maximum of [chosen_rank.limit] per player in the clan, currently [available_slots])"))
+									to_chat(src, SPAN_DANGER("This slot is full! (Maximum of [chosen_rank.limit] per player in the clan, currently [available_slots].)"))
 									return
 
 
@@ -440,7 +440,7 @@ CLIENT_VERB(view_clan_info)
 				target.clan_rank = GLOB.clan_ranks_ordered[chosen_rank.name]
 				target.permissions = chosen_rank.permissions
 				message_admins("[key_name_admin(src)] has set the rank of [player_name] to [chosen_rank.name] for their clan.")
-				to_chat(src, SPAN_NOTICE("Set [player_name]'s rank to [chosen_rank.name]"))
+				to_chat(src, SPAN_NOTICE("Set [player_name]'s rank to [chosen_rank.name]."))
 
 		target.save()
 		target.sync()

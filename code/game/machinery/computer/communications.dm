@@ -127,7 +127,7 @@
 					return FALSE
 
 				if(usr.client.prefs.muted & MUTE_IC)
-					to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+					to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted.)"))
 					return
 
 				if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE_LONG)

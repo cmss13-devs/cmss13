@@ -22,7 +22,7 @@
 		return
 
 	if(!linked_teleporter && !attempt_teleporter_link(teleporter_id))
-		to_chat(user, SPAN_WARNING("Something has gone very, very wrong. Tell the devs. Code: TELEPORTER_CONSOLE_4"))
+		to_chat(user, SPAN_WARNING("Something has gone very, very wrong. Tell the devs. Code: TELEPORTER_CONSOLE_4."))
 		log_debug("Couldn't find teleporter matching ID [teleporter_id]. Code: TELEPORTER_CONSOLE_4")
 		log_admin("Couldn't find teleporter matching ID [teleporter_id]. Tell the devs. Code: TELEPORTER_CONSOLE_4")
 		return
@@ -65,9 +65,9 @@
 
 	if(!linked_teleporter)
 		if(!attempt_teleporter_link(teleporter_id))
-			to_chat(user, SPAN_WARNING("Something has gone very, very wrong. Tell the devs. Code: TELEPORTER_CONSOLE_5"))
-			log_debug("Couldn't find teleporter matching ID [teleporter_id]. Code: TELEPORTER_CONSOLE_5")
-			log_admin("Couldn't find teleporter matching ID [teleporter_id]. Tell the devs. Code: TELEPORTER_CONSOLE_5")
+			to_chat(user, SPAN_WARNING("Something has gone very, very wrong. Tell the devs. Code: TELEPORTER_CONSOLE_5."))
+			log_debug("Couldn't find teleporter matching ID [teleporter_id]. Code: TELEPORTER_CONSOLE_5.")
+			log_admin("Couldn't find teleporter matching ID [teleporter_id]. Tell the devs. Code: TELEPORTER_CONSOLE_5.")
 			return
 
 	data["worldtime"] = world.time

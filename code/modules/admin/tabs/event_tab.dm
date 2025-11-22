@@ -55,7 +55,7 @@
 		if(test_client.check_whitelist_status(GLOB.bitfields["whitelist_status"][flag]))
 			ckeys += test_client.ckey
 	if(!length(ckeys))
-		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online"))
+		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online."))
 		return
 	to_chat(src, SPAN_NOTICE("Whitelist holders: [ckeys.Join(", ")]."))
 
@@ -556,7 +556,7 @@
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(tag)
 
 	if(!dropship)
-		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship hijack but the shuttle datum was null. Code: MSD_FSV_DIN"))
+		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship hijack but the shuttle datum was null. Code: MSD_FSV_DIN."))
 		log_admin("Error: Attempted to force a dropship hijack but the shuttle datum was null. Code: MSD_FSV_DIN")
 		return
 
@@ -640,7 +640,7 @@
 	if(hivenumber == "everything")
 		xeno_announcement(input, hivenumber, HIGHER_FORCE_ANNOUNCE)
 	else
-		xeno_announcement(input, hivenumber, SPAN_ANNOUNCEMENT_HEADER_BLUE("[hive_prefix][QUEEN_MOTHER_ANNOUNCE]"))
+		xeno_announcement(input, hivenumber, SPAN_ANNOUNCEMENT_HEADER_BLUE("[hive_prefix][QUEEN_MOTHER_ANNOUNCE]."))
 
 	message_admins("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
 	log_admin("[key_name_admin(src)] Queen Mother ([hive_choice]): [input]")
@@ -1050,7 +1050,7 @@
 			qdel(warhead)
 			return
 
-		message_admins("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z]).")
+		message_admins("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z].)")
 		warhead.warhead_impact(target)
 
 	else

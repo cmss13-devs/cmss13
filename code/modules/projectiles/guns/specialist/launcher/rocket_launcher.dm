@@ -311,7 +311,7 @@
 	M.visible_message(SPAN_NOTICE("[M] begins to fold up \the [src]."), SPAN_NOTICE("You start to fold and collapse closed \the [src]."))
 
 	if(!do_after(M, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(M, SPAN_NOTICE("You stop folding up \the [src]"))
+		to_chat(M, SPAN_NOTICE("You stop folding up \the [src]."))
 		return
 
 	fold(M)
@@ -360,7 +360,7 @@
 	playsound(src, 'sound/items/component_pickup.ogg', 20, TRUE, 5)
 
 	if(!do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(user, SPAN_NOTICE("You stop unfolding \the [src]"))
+		to_chat(user, SPAN_NOTICE("You stop unfolding \the [src]."))
 		return
 
 	unfold(user)

@@ -1113,7 +1113,7 @@
 		if(O.currTag) //Tag set
 			sort_tag = O.currTag
 			playsound(loc, 'sound/machines/twobeep.ogg', 25, 1)
-			to_chat(user, SPAN_NOTICE("Changed tag to '[sort_tag]'."))
+			to_chat(user, SPAN_NOTICE("Changed tag to '[sort_tag].'"))
 			updatename()
 			updatedesc()
 
@@ -1183,7 +1183,7 @@
 		if(O.currTag) //Tag set
 			sortType = O.currTag
 			playsound(loc, 'sound/machines/twobeep.ogg', 25, 1)
-			to_chat(user, SPAN_NOTICE("Changed filter to '[sortType]'."))
+			to_chat(user, SPAN_NOTICE("Changed filter to '[sortType].'"))
 			updatename()
 			updatedesc()
 

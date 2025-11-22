@@ -27,7 +27,7 @@ CLIENT_VERB(ooc, msg as text)
 			to_chat(usr, SPAN_DANGER("OOC for dead mobs has been turned off."))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, SPAN_DANGER("You cannot use OOC (muted)."))
+			to_chat(src, SPAN_DANGER("You cannot use OOC (muted.)"))
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
@@ -133,13 +133,13 @@ CLIENT_VERB(looc, msg as text)
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		if(!GLOB.looc_allowed)
-			to_chat(src, SPAN_DANGER("LOOC is globally muted"))
+			to_chat(src, SPAN_DANGER("LOOC is globally muted."))
 			return
 		if(!GLOB.dlooc_allowed && (mob.stat != CONSCIOUS || isobserver(mob)))
 			to_chat(usr, SPAN_DANGER("Sorry, you cannot utilize LOOC while dead or incapacitated."))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, SPAN_DANGER("You cannot use LOOC (muted)."))
+			to_chat(src, SPAN_DANGER("You cannot use LOOC (muted.)"))
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
@@ -197,7 +197,7 @@ CLIENT_VERB(round_info)
 	set name = "Current Map" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set desc = "Information about the current round"
 	set category = "OOC"
-	to_chat_spaced(usr, html = FONT_SIZE_LARGE(SPAN_NOTICE("The current map is [SSmapping.configs[GROUND_MAP].map_name]")))
+	to_chat_spaced(usr, html = FONT_SIZE_LARGE(SPAN_NOTICE("The current map is [SSmapping.configs[GROUND_MAP].map_name].")))
 
 // Sometimes the game fails to close NanoUIs, seemingly at random. This makes it impossible to open new ones
 // If this happens, let the player manually close them all

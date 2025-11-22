@@ -35,7 +35,7 @@
 		return
 	flashes_stored++
 	if(flashes_stored <= max_flashes_stored)
-		visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] pings as it recharges!"), SPAN_NOTICE("You hear a ping"), 3)
+		visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] pings as it recharges!"), SPAN_NOTICE("You hear a ping."), 3)
 	flashes_stored = min(max_flashes_stored, floor(flashes_stored)) //sanity
 
 /obj/item/device/flash/proc/check_if_can_use_flash(mob/user) //checks for using the flash
@@ -69,7 +69,7 @@
 		addtimer(CALLBACK(src, PROC_REF(add_charge)), recharge_time_per_flash)
 		to_chat(user, SPAN_DANGER("[flashes_stored] / [max_flashes_stored] flashes remaining."))
 	else
-		to_chat(user, SPAN_WARNING("*click* *click*"))
+		to_chat(user, SPAN_WARNING("*click* *click*."))
 		playsound(src.loc, 'sound/weapons/gun_empty.ogg', 25, 1)
 		return
 

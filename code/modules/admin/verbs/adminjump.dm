@@ -27,7 +27,7 @@
 	src.mob.on_mob_jump()
 	src.mob.forceMove(pick(area_turfs))
 
-	message_admins(WRAP_STAFF_LOG(usr, "jumped to area [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
+	message_admins(WRAP_STAFF_LOG(usr, "jumped to area [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z].)"), usr.loc.x, usr.loc.y, usr.loc.z)
 
 /client/proc/jump_to_turf(turf/T in GLOB.turfs)
 	set name = "Jump to Turf"
@@ -43,7 +43,7 @@
 	if(!isobserver(mob))
 		src.admin_ghost()
 
-	message_admins(WRAP_STAFF_LOG(usr, "jumped to a turf in [T.loc] ([T.x],[T.y],[T.z])."), T.x, T.y, T.z)
+	message_admins(WRAP_STAFF_LOG(usr, "jumped to a turf in [T.loc] ([T.x],[T.y],[T.z].)"), T.x, T.y, T.z)
 
 	src.mob.on_mob_jump()
 	src.mob.forceMove(T)
@@ -69,7 +69,7 @@
 		var/mob/A = src.mob
 		A.on_mob_jump()
 		A.forceMove(object_location)
-		message_admins(WRAP_STAFF_LOG(usr, "jumped to [O] in [get_area(O)] ([O.x],[O.y],[O.z])."), O.x, O.y, O.z)
+		message_admins(WRAP_STAFF_LOG(usr, "jumped to [O] in [get_area(O)] ([O.x],[O.y],[O.z].)"), O.x, O.y, O.z)
 
 /client/proc/jumptomob(mob/M in GLOB.mob_list)
 	set name = "Jump to Mob"
@@ -88,7 +88,7 @@
 		if(T && isturf(T))
 			A.on_mob_jump()
 			A.forceMove(T)
-			message_admins(WRAP_STAFF_LOG(usr, "jumped to [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z])."), M.loc.x, M.loc.y, M.loc.z)
+			message_admins(WRAP_STAFF_LOG(usr, "jumped to [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z].)"), M.loc.x, M.loc.y, M.loc.z)
 		else
 			to_chat(A, "This mob is not located in the game world.")
 
@@ -111,7 +111,7 @@
 		var/turf/T = get_turf(A)
 		if(!T)
 			return
-		message_admins(WRAP_STAFF_LOG(usr, "jumped to [get_area(usr)] ([T.x],[T.y],[T.z])."), T.x, T.y, T.z)
+		message_admins(WRAP_STAFF_LOG(usr, "jumped to [get_area(usr)] ([T.x],[T.y],[T.z].)"), T.x, T.y, T.z)
 
 /client/proc/jumptooffsetcoord(tx as num, ty as num)
 	set name = "Jump to Offset Coordinate"
@@ -137,7 +137,7 @@
 			to_chat(src, SPAN_WARNING("That coordinate is invalid!"))
 			return
 		A.forceMove(T)
-		message_admins(WRAP_STAFF_LOG(src, "jumped to [get_area(mob)] (Coords:[tx]|[ty]) ([T.x],[T.y],[T.z])."), T.x, T.y, T.z)
+		message_admins(WRAP_STAFF_LOG(src, "jumped to [get_area(mob)] (Coords:[tx]|[ty]) ([T.x],[T.y],[T.z].)"), T.x, T.y, T.z)
 
 /client/proc/jumptokey()
 	set name = "Jump to Ckey"
@@ -178,7 +178,7 @@
 
 	M.on_mob_jump()
 	M.forceMove(get_turf(usr))
-	message_admins(WRAP_STAFF_LOG(usr, "teleported [key_name(M)] to themselves in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "teleported [key_name(M)] to themselves in [get_area(usr)] ([usr.x],[usr.y],[usr.z].)"), usr.x, usr.y, usr.z)
 
 /client/proc/Getkey()
 	set name = "Get Ckey"
@@ -201,7 +201,7 @@
 
 	M.on_mob_jump()
 	M.forceMove(get_turf(usr))
-	message_admins(WRAP_STAFF_LOG(usr, "teleported [key_name(M)] to themselves in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "teleported [key_name(M)] to themselves in [get_area(usr)] ([usr.x],[usr.y],[usr.z].)"), usr.x, usr.y, usr.z)
 
 /client/proc/sendmob(mob/M in sortmobs())
 	set category = "Admin"
@@ -215,4 +215,4 @@
 	if(A)
 		M.on_mob_jump()
 		M.forceMove(pick(get_area_turfs(A)))
-		message_admins(WRAP_STAFF_LOG(usr, "teleported [key_name(M)] to [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
+		message_admins(WRAP_STAFF_LOG(usr, "teleported [key_name(M)] to [get_area(M)] ([M.x],[M.y],[M.z].)"), M.x, M.y, M.z)

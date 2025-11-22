@@ -3118,7 +3118,7 @@
 			to_chat(usr, SPAN_NOTICE("The egg refuses to take on this color!"))
 			return
 
-		to_chat(usr, SPAN_NOTICE("You color [src] [clr]"))
+		to_chat(usr, SPAN_NOTICE("You color [src] [clr]."))
 		icon_state = "egg-[clr]"
 		egg_color = clr
 		return TRUE

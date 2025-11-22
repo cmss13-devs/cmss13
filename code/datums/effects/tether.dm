@@ -123,7 +123,7 @@
 	INVOKE_ASYNC(src, PROC_REF(resisted))
 
 /datum/effects/tethered/proc/resisted()
-	to_chat(affected_atom, SPAN_DANGER("You attempt to break out of your tether to [tether.affected_atom]. (This will take around [resist_time/10] seconds and you need to stand still)"))
+	to_chat(affected_atom, SPAN_DANGER("You attempt to break out of your tether to [tether.affected_atom]. (This will take around [resist_time/10] seconds and you need to stand still.)"))
 	if(!do_after(affected_atom, resist_time, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 		return
 	to_chat(affected_atom, SPAN_WARNING("You have broken out of your tether to [tether.affected_atom]!"))

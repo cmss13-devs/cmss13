@@ -122,8 +122,8 @@
 
 	admin_holder.invisimined = !admin_holder.invisimined
 
-	to_chat(src, SPAN_NOTICE("You have turned invismin [admin_holder.fakekey ? "ON" : "OFF"]"))
-	log_admin("[key_name_admin(usr)] has turned invismin [admin_holder.fakekey ? "ON" : "OFF"]")
+	to_chat(src, SPAN_NOTICE("You have turned invismin [admin_holder.fakekey ? "ON" : "OFF"]."))
+	log_admin("[key_name_admin(usr)] has turned invismin [admin_holder.fakekey ? "ON" : "OFF"].")
 
 /datum/admins/proc/announce()
 	set name = "Admin Announcement"
@@ -209,12 +209,12 @@
 	if(!target_key)
 		to_chat(user, "Error: No key detected!")
 		return
-	to_chat(user, SPAN_WARNING("Checking Ckey: [target_key]"))
+	to_chat(user, SPAN_WARNING("Checking Ckey: [target_key]."))
 	var/list/keys = analyze_ckey(target_key)
 	if(!keys)
 		to_chat(user, SPAN_WARNING("No results for [target_key]."))
 		return
-	to_chat(user, SPAN_WARNING("Check CKey Results: [keys.Join(", ")]"))
+	to_chat(user, SPAN_WARNING("Check CKey Results: [keys.Join(", ")]."))
 
 	log_admin("[key_name(user)] analyzed ckey '[target_key]'")
 
@@ -460,7 +460,7 @@
 				continue
 			qdel(current_item)
 
-	message_admins(WRAP_STAFF_LOG(usr, "stripped everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "stripped everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z].)"), usr.x, usr.y, usr.z)
 
 /client/proc/rejuvenate_all_in_view()
 	set name = "Rejuvenate All"
@@ -477,7 +477,7 @@
 	for(var/mob/living/M in view(src))
 		M.rejuvenate(FALSE)
 
-	message_admins(WRAP_STAFF_LOG(usr, "ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z].)"), usr.x, usr.y, usr.z)
 
 
 /client/proc/rejuvenate_all_humans_in_view()

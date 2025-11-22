@@ -139,7 +139,7 @@
 		if(!target.reagents.total_volume)
 			to_chat(user, SPAN_DANGER("[target] is empty. Can't dissolve [fluff_text]."))
 			return
-		to_chat(user, SPAN_NOTICE("You dissolve the [fluff_text] in [target]"))
+		to_chat(user, SPAN_NOTICE("You dissolve the [fluff_text] in [target]."))
 
 		var/rgt_list_text = get_reagent_list_text()
 

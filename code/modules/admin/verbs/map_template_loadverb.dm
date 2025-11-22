@@ -30,7 +30,7 @@
 					if(istype(P, /obj/docking_port/mobile))
 						template.post_load(P)
 						break*/
-			message_admins(SPAN_ADMINNOTICE("[key_name_admin(src)] has placed a map template ([template.name]) at [key_name_admin(T)]"))
+			message_admins(SPAN_ADMINNOTICE("[key_name_admin(src)] has placed a map template ([template.name]) at [key_name_admin(T)]."))
 		else
 			to_chat(src, "Failed to place map", confidential = TRUE)
 	images -= preview
@@ -43,7 +43,7 @@
 	if(!map)
 		return
 	if(copytext("[map]", -4) != ".dmm")//4 == length(".dmm")
-		to_chat(src, SPAN_WARNING("Filename must end in '.dmm': [map]"), confidential = TRUE)
+		to_chat(src, SPAN_WARNING("Filename must end in '.dmm': [map]."), confidential = TRUE)
 		return
 	var/datum/map_template/M
 	switch(alert(src, "What kind of map is this?", "Map type", "Normal", "Cancel")) // TODO: shuttle
@@ -73,7 +73,7 @@
 
 	SSmapping.map_templates[M.name] = M
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(src)] has uploaded a map template '[map]' ([M.width]x[M.height])[report_link]."))
-	to_chat(src, SPAN_NOTICE("Map template '[map]' ready to place ([M.width]x[M.height])"), confidential = TRUE)
+	to_chat(src, SPAN_NOTICE("Map template '[map]' ready to place ([M.width]x[M.height].)"), confidential = TRUE)
 
 /client/proc/force_load_lazy_template()
 	set name = "Map Template - Lazy Load/Jump"

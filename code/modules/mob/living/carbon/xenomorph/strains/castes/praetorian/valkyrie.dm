@@ -411,7 +411,7 @@
 	playsound(extinguisher_tail, 'sound/effects/splat.ogg', 40, FALSE)
 	target.ExtinguishMob() // This can both help your allies, or help caps that are on fire.
 	apply_cooldown()
-	extinguisher_tail.visible_message(SPAN_XENODANGER("[extinguisher_tail] pours acid all over [target] using its tail."), SPAN_XENOHIGHDANGER("We use our tail to pour acid over [target]"))
+	extinguisher_tail.visible_message(SPAN_XENODANGER("[extinguisher_tail] pours acid all over [target] using its tail."), SPAN_XENOHIGHDANGER("We use our tail to pour acid over [target]."))
 	xeno_attack_delay(extinguisher_tail)
 	return ..()
 

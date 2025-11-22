@@ -995,7 +995,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 				if("or", "||")
 					result = (result || val)
 				else
-					to_chat(usr, SPAN_DANGER("SDQL2: Unknown op [op]"), confidential = TRUE)
+					to_chat(usr, SPAN_DANGER("SDQL2: Unknown op [op]."), confidential = TRUE)
 					result = null
 		else
 			result = val
@@ -1157,14 +1157,14 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 
 	else if(expression [start] == "{" && long)
 		if(lowertext(copytext(expression[start + 1], 1, 3)) != "0x") //3 == length("0x") + 1
-			to_chat(usr, SPAN_DANGER("Invalid pointer syntax: [expression[start + 1]]"), confidential = TRUE)
+			to_chat(usr, SPAN_DANGER("Invalid pointer syntax: [expression[start + 1]]."), confidential = TRUE)
 			return null
 		var/datum/located = locate("\[[expression[start + 1]]]")
 		if(!istype(located))
-			to_chat(usr, SPAN_DANGER("Invalid pointer: [expression[start + 1]] - null or not datum"), confidential = TRUE)
+			to_chat(usr, SPAN_DANGER("Invalid pointer: [expression[start + 1]] - null or not datum."), confidential = TRUE)
 			return null
 		if(!located.can_vv_mark())
-			to_chat(usr, SPAN_DANGER("Pointer [expression[start+1]] cannot be marked"), confidential = TRUE)
+			to_chat(usr, SPAN_DANGER("Pointer [expression[start+1]] cannot be marked."), confidential = TRUE)
 			return null
 		v = located
 		start++
@@ -1193,7 +1193,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 			var/list/L = v
 			var/index = query.SDQL_expression(source, expression[start + 2])
 			if(isnum(index) && ((floor(index) != index) || length(L) < index))
-				to_chat(usr, SPAN_DANGER("Invalid list index: [index]"), confidential = TRUE)
+				to_chat(usr, SPAN_DANGER("Invalid list index: [index]."), confidential = TRUE)
 				return null
 			return L[index]
 	return v

@@ -119,7 +119,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		return FALSE
 
 	if(ammo <= 0)
-		to_chat(H, SPAN_WARNING("[icon2html(src)] No more shells remaining in the barrel. Please wait for automatic reloading. [SPAN_BOLD("([ammo]/[max_ammo])")]"))
+		to_chat(H, SPAN_WARNING("[icon2html(src)] No more shells remaining in the barrel. Please wait for automatic reloading. [SPAN_BOLD("([ammo]/[max_ammo])")]."))
 		return FALSE
 
 	return TRUE
@@ -131,7 +131,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		addtimer(CALLBACK(src, PROC_REF(recharge_ammo)), ammo_recharge_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 	if(operator)
-		to_chat(operator, SPAN_NOTICE("[icon2html(src)] Loaded in a shell [SPAN_BOLD("([ammo]/[max_ammo] shells left).")]"))
+		to_chat(operator, SPAN_NOTICE("[icon2html(src)] Loaded in a shell [SPAN_BOLD("([ammo]/[max_ammo] shells left.)")]"))
 
 /obj/effect/warning/railgun
 	color = "#0000ff"
@@ -154,7 +154,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	addtimer(CALLBACK(src, PROC_REF(recharge_ammo)), ammo_recharge_time, TIMER_UNIQUE)
 	ammo--
 
-	to_chat(H, SPAN_NOTICE("[icon2html(src)] Firing shell. [SPAN_BOLD("([ammo]/[max_ammo] shells left).")]"))
+	to_chat(H, SPAN_NOTICE("[icon2html(src)] Firing shell. [SPAN_BOLD("([ammo]/[max_ammo] shells left.)")]"))
 
 	var/obj/effect/warning/railgun/warning_zone = new(T)
 

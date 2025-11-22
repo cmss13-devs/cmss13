@@ -608,9 +608,9 @@ Pressure: <span class='dl[pressure_dangerlevel]'>[environment_pressure]</span>kP
 
 	output += "Area Status: "
 	if(alarm_area.atmosalm)
-		output += SPAN_DL1("Atmos alert in area")
+		output += SPAN_DL1("Atmos alert in area.")
 	else if (alarm_area.flags_alarm_state & ALARM_WARNING_FIRE)
-		output += SPAN_DL1("Fire alarm in area")
+		output += SPAN_DL1("Fire alarm in area.")
 	else
 		output += "No alerts"
 
@@ -825,7 +825,7 @@ table tr:first-child th:first-child { border: none;}
 		var/min_temperature = max(selected[2] - T0C, MIN_TEMPERATURE)
 		var/input_temperature = tgui_input_number(usr, "What temperature would you like the system to mantain? (Capped between [min_temperature]C and [max_temperature]C)", "Thermostat Controls", min_temperature, max_temperature, min_temperature)
 		if(!input_temperature || input_temperature > max_temperature || input_temperature < min_temperature)
-			to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C")
+			to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C.")
 		else
 			target_temperature = input_temperature + T0C
 
@@ -935,7 +935,7 @@ table tr:first-child th:first-child { border: none;}
 			else
 				cut(t1)
 				if (AAlarmwires == 0)
-					to_chat(usr, SPAN_NOTICE("You cut last of wires inside [src]"))
+					to_chat(usr, SPAN_NOTICE("You cut last of wires inside [src]."))
 					update_icon()
 					buildstage = 1
 				return
@@ -963,7 +963,7 @@ table tr:first-child th:first-child { border: none;}
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))  // Opening that Air Alarm up.
 				//to_chat(user, "You pop the Air Alarm's maintence panel open.")
 				wiresexposed = !wiresexposed
-				to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"]")
+				to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"].")
 				update_icon()
 				return
 
@@ -972,7 +972,7 @@ table tr:first-child th:first-child { border: none;}
 
 			if(istype(W, /obj/item/card/id))// trying to unlock the interface with an ID card
 				if(inoperable())
-					to_chat(user, "It does nothing")
+					to_chat(user, "It does nothing.")
 					return
 				else
 					if(allowed(usr) && !isWireCut(AALARM_WIRE_IDSCAN))

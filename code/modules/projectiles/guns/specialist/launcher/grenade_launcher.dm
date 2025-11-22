@@ -185,7 +185,7 @@
 	if(internal_slots > 1)
 		to_firer += " [length(cylinder.contents)-1]/[internal_slots] grenades remaining."
 	user.visible_message(SPAN_DANGER("[user] fired a grenade!"),
-	SPAN_WARNING("[to_firer]"), message_flags = CHAT_TYPE_WEAPON_USE)
+	SPAN_WARNING("[to_firer]."), message_flags = CHAT_TYPE_WEAPON_USE)
 	playsound(user.loc, fire_sound, 50, 1)
 
 	var/angle = floor(Get_Angle(user,target))
@@ -205,8 +205,8 @@
 		else
 			pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
 
-	msg_admin_attack("[key_name_admin(user)] fired a grenade ([fired.name]) from \a ([name]).")
-	log_game("[key_name_admin(user)] used a grenade ([name]).")
+	msg_admin_attack("[key_name_admin(user)] fired a grenade ([fired.name]) from \a ([name].)")
+	log_game("[key_name_admin(user)] used a grenade ([name].)")
 
 	fired.throw_range = 20
 	fired.det_time = min(10, fired.det_time)

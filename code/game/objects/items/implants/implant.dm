@@ -175,7 +175,7 @@ Implant Specifics:<BR>"}
 	if(istype(imp_in, /mob/))
 		var/mob/T = imp_in
 		message_admins("Explosive implant triggered in [T] ([T.key]). [ADMIN_JMP(T)] ")
-		log_game("Explosive implant triggered in [T] ([T.key]).")
+		log_game("Explosive implant triggered in [T] ([T.key].)")
 		need_gib = 1
 
 		if(ishuman(imp_in))

@@ -60,7 +60,7 @@
 
 	var/mob/living/carbon/X = tgui_input_list(src,"Select a xeno.", "Change Hivenumber", GLOB.living_xeno_list)
 	if(!istype(X))
-		to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
+		to_chat(usr, "This can only be done to instances of type /mob/living/carbon.")
 		return
 
 	cmd_admin_change_their_hivenumber(X)
@@ -150,7 +150,7 @@
 		mob.hud_used.show_hud(HUD_STYLE_STANDARD)
 	mob.animate_movement = SLIDE_STEPS // Initial is incorrect
 
-	to_chat(usr, "Provide these values when asked for the MapTileImageTool: [width] [height] [half_chunk_size] [world.icon_size]")
+	to_chat(usr, "Provide these values when asked for the MapTileImageTool: [width] [height] [half_chunk_size] [world.icon_size].")
 
 //TODO: merge the vievars version into this or something maybe mayhaps
 /client/proc/cmd_debug_del_all()
@@ -246,7 +246,7 @@
 	set name = "Create Bank Account"
 
 	if(!ishuman(target))
-		to_chat(src, SPAN_WARNING("This only works on humans"))
+		to_chat(src, SPAN_WARNING("This only works on humans."))
 		return
 
 	var/mob/living/carbon/human/account_user = target

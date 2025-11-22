@@ -62,7 +62,7 @@
 				return
 			message_admins("[key_name(usr)] modified [object.name]'s [selected_key] to [selected_value]")
 		else
-			to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
+			to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key].'"))
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(object.vars.Find(selected_key))
 			var/reset_value = initial(object.vars[selected_key])
@@ -71,6 +71,6 @@
 				return
 			message_admins("[key_name(usr)] modified [object.name]'s [selected_key] to [reset_value]")
 		else
-			to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
+			to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key].'"))
 
 

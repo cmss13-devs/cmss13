@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(redis)
 		rustg_redis_subscribe(redis_cb.channel)
 		subbed_channels[redis_cb.channel] = redis_cb
 
-	log_debug("Registered [length(subbed_channels)] callback(s).")
+	log_debug("Registered [length(subbed_channels)] callback(s.)")
 
 	return SS_INIT_SUCCESS
 

@@ -8,7 +8,7 @@
 	if(!src.mob)
 		return
 	if(prefs.muted & MUTE_DEADCHAT)
-		to_chat(src, SPAN_DANGER("You cannot send DSAY messages (muted)."))
+		to_chat(src, SPAN_DANGER("You cannot send DSAY messages (muted.)"))
 		return
 
 	if(!(prefs.toggles_chat & CHAT_DEAD))

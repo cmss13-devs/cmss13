@@ -100,7 +100,7 @@
 	if(!ishuman(user))
 		return
 	if(is_on)
-		. += SPAN_INFO("The power gauge reads: [power_gen_percent]%")
+		. += SPAN_INFO("The power gauge reads: [power_gen_percent]%.")
 
 	switch(buildstate)
 		if(BUILDSTATE_DAMAGE_WELD)

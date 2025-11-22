@@ -730,7 +730,7 @@
 
 /obj/structure/sign/catclock/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("The [src] reads: [worldtime2text()]")
+	. += SPAN_NOTICE("The [src] reads: [worldtime2text()].")
 
 /obj/structure/sign/calendar/get_examine_text(mob/user)
 	. = ..()
@@ -742,8 +742,8 @@
 			if(holiday.holiday_faction)
 				if(holiday.holiday_faction != calendar_faction)
 					continue
-			. += SPAN_INFO("[holiday.name]")
-			. += SPAN_BOLDNOTICE("[holiday.greet_text]")
+			. += SPAN_INFO("[holiday.name].")
+			. += SPAN_BOLDNOTICE("[holiday.greet_text].")
 
 /obj/structure/sign/calendar/upp
 	icon_state = "calendar_upp"

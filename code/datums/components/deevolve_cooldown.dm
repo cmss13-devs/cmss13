@@ -33,6 +33,6 @@
 /datum/component/deevolve_cooldown/proc/on_try_evolve(mob/living/carbon/xenomorph/old_xeno, castepick)
 	var/on_cooldown_timer = deevolves_on_cooldown[castepick]
 	if(on_cooldown_timer)
-		to_chat(old_xeno, SPAN_WARNING("We cannot evolve into this caste again yet! ([DisplayTimeText(timeleft(on_cooldown_timer), 1)] remaining)"))
+		to_chat(old_xeno, SPAN_WARNING("We cannot evolve into this caste again yet! ([DisplayTimeText(timeleft(on_cooldown_timer), 1)] remaining.)"))
 		return COMPONENT_OVERRIDE_EVOLVE
 	return FALSE

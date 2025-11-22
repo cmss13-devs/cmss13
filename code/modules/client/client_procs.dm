@@ -108,7 +108,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			topiclimiter[SECOND_COUNT] = 0
 		topiclimiter[SECOND_COUNT] += 1
 		if (topiclimiter[SECOND_COUNT] > stl)
-			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second"))
+			to_chat(src, SPAN_DANGER("Your previous action was ignored because you've done too many in a second."))
 			return
 
 	// Tgui Topic middleware
@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
-		to_chat(src, SPAN_DANGER("An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)"))
+		to_chat(src, SPAN_DANGER("An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect.)"))
 		src << browse("...", "window=asset_cache_browser")
 		return
 
@@ -322,8 +322,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if (byond_version < breaking_version || (byond_version == breaking_version && byond_build < breaking_build)) //Out of date client.
 		to_chat_immediate(src, SPAN_DANGER("<b>Your version of BYOND is too old:</b>"))
 		to_chat_immediate(src, CONFIG_GET(string/client_error_message))
-		to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
-		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later")
+		to_chat_immediate(src, "Your version: [byond_version].[byond_build].")
+		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later.")
 		to_chat_immediate(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 		return FALSE
 
@@ -338,8 +338,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		else
 			to_chat(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
 			to_chat(src, CONFIG_GET(string/client_warn_message))
-			to_chat(src, "Your version: [byond_version].[byond_build]")
-			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later")
+			to_chat(src, "Your version: [byond_version].[byond_build].")
+			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later.")
 			to_chat(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 
 	if (num2text(byond_build) in GLOB.blacklisted_builds)
@@ -543,8 +543,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='byond://?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as <A href='byond://?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(M)]</A>.")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)].")
 					else
-						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='byond://?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
-						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
+						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='byond://?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in.)")]", 1)
+						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in.)")
 
 
 //checks if a client is afk

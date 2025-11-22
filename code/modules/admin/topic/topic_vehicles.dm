@@ -31,7 +31,7 @@
 
 	Vehicle.detach_clamp()
 
-	message_admins(WRAP_STAFF_LOG(usr, "forcibly removed vehicle clamp from [Vehicle] in [get_area(Vehicle)] ([Vehicle.x],[Vehicle.y],[Vehicle.z])."), Vehicle.x, Vehicle.y, Vehicle.z)
+	message_admins(WRAP_STAFF_LOG(usr, "forcibly removed vehicle clamp from [Vehicle] in [get_area(Vehicle)] ([Vehicle.x],[Vehicle.y],[Vehicle.z].)"), Vehicle.x, Vehicle.y, Vehicle.z)
 
 /client/proc/cmd_admin_repair_multitile()
 	set name = "Repair Vehicle"

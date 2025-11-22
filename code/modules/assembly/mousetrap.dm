@@ -94,7 +94,7 @@
 		if(ishuman(AM))
 			var/mob/living/carbon/H = AM
 			triggered(H)
-			H.visible_message(SPAN_WARNING("[H] accidentally steps on [src]."),SPAN_WARNING("You accidentally step on [src]"))
+			H.visible_message(SPAN_WARNING("[H] accidentally steps on [src]."),SPAN_WARNING("You accidentally step on [src]."))
 		if(ismouse(AM))
 			triggered(AM)
 	..()

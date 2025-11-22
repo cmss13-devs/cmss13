@@ -28,7 +28,7 @@
 			var/datum/tgs_version/old_version = world.TgsVersion()
 			var/datum/tgs_version/new_version = args[2]
 			if(!old_version.Equals(new_version))
-				to_chat(world, SPAN_BOLDANNOUNCE("TGS updated to v[new_version.deprefixed_parameter]"))
+				to_chat(world, SPAN_BOLDANNOUNCE("TGS updated to v[new_version.deprefixed_parameter]."))
 			else
 				message_admins("TGS: Back online")
 			if(reattach_timer)

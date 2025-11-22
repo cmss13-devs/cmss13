@@ -15,7 +15,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 		return
 
 	for(var/mask in GLOB.gene_tag_masks)
-		to_chat(usr, "[mask]: [GLOB.gene_tag_masks[mask]]")
+		to_chat(usr, "[mask]: [GLOB.gene_tag_masks[mask]].")
 
 // Predefined/roundstart varieties use a string key to make it
 // easier to grab the new variety when mutating. Post-roundstart

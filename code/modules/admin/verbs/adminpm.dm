@@ -40,7 +40,7 @@
 	if(prefs.muted & MUTE_ADMINHELP)
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = SPAN_DANGER("Error: Admin-PM: You are unable to use admin PM-s (muted)."),
+			html = SPAN_DANGER("Error: Admin-PM: You are unable to use admin PM-s (muted.)"),
 			confidential = TRUE)
 		return
 	var/client/C
@@ -102,7 +102,7 @@
 	if(prefs.muted & MUTE_ADMINHELP)
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = SPAN_DANGER("Error: Admin-PM: You are unable to use admin PM-s (muted)."),
+			html = SPAN_DANGER("Error: Admin-PM: You are unable to use admin PM-s (muted.)"),
 			confidential = TRUE)
 		return
 
@@ -167,7 +167,7 @@
 	if(prefs.muted & MUTE_ADMINHELP)
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = SPAN_DANGER("Error: Admin-PM: You are unable to use admin PM-s (muted)."),
+			html = SPAN_DANGER("Error: Admin-PM: You are unable to use admin PM-s (muted.)"),
 			confidential = TRUE)
 		return
 

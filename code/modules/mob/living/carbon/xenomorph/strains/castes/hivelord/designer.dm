@@ -369,7 +369,7 @@
 
 	var/total_plasma_cost = get_total_plasma_cost(xeno)
 	if(xeno.plasma_stored < total_plasma_cost)
-		to_chat(xeno, SPAN_WARNING("You lack the plasma to feed this node. [xeno.plasma_stored]/[total_plasma_cost]"))
+		to_chat(xeno, SPAN_WARNING("You lack the plasma to feed this node. [xeno.plasma_stored]/[total_plasma_cost]."))
 		return
 
 	xeno.plasma_stored -= total_plasma_cost

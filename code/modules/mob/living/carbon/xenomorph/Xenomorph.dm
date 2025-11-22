@@ -1082,7 +1082,7 @@
 
 	var/displaytime = max(1, floor(breakouttime / 600)) //Minutes
 	visible_message(SPAN_DANGER("<b>[src] attempts to remove [legcuffed]!</b>"),
-		SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute\s and we must stand still)"))
+		SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute\s and we must stand still.)"))
 	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND ^ INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 		return
 	if(!legcuffed || buckled)

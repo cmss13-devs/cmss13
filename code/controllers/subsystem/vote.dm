@@ -160,7 +160,7 @@ SUBSYSTEM_DEF(vote)
 			if("gamemode")
 				SSticker.save_mode(.)
 				GLOB.master_mode = .
-				to_chat(world, SPAN_BOLDNOTICE("Notice: The Gamemode for next round has been set to [.]"))
+				to_chat(world, SPAN_BOLDNOTICE("Notice: The Gamemode for next round has been set to [.]."))
 			if("restart")
 				if(. == "Restart Round")
 					restart = TRUE

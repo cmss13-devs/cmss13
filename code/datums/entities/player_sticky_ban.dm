@@ -171,7 +171,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	var/alts_existing_primaries = get_player_is_alt(whitelist_to_add)
 	if(alts_existing_primaries)
 		if(player_ckey in alts_existing_primaries)
-			to_chat(src, SPAN_WARNING("The alt '[whitelist_to_add]' is already set as an alt Ckey for '[player_ckey]'."))
+			to_chat(src, SPAN_WARNING("The alt '[whitelist_to_add]' is already set as an alt Ckey for '[player_ckey].'"))
 			return
 
 		var/confirm = tgui_alert(src, "Alt is already an alt for [english_list(alts_existing_primaries)].", "Alt Ckey", list("Confirm", "Cancel"))

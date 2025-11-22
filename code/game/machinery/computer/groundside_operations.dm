@@ -242,7 +242,7 @@
 				return FALSE
 
 			if(usr.client.prefs.muted & MUTE_IC)
-				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted.)"))
 				return
 
 			if(!is_announcement_active)

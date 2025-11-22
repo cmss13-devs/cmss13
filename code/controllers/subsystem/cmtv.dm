@@ -121,7 +121,7 @@ SUBSYSTEM_DEF(cmtv)
 	if(is_active(current_perspective, 20 SECONDS))
 		return
 
-	reset_perspective("Inactive (last 20 seconds), non-combatant (last 40 seconds).")
+	reset_perspective("Inactive (last 20 seconds), non-combatant (last 40 seconds.)")
 
 /datum/controller/subsystem/cmtv/stat_entry(msg)
 	. = ..()

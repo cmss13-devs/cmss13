@@ -260,7 +260,7 @@
 	if(wielded_item && (wielded_item.flags_item & WIELDED)) //this segment checks if the item in your hand is twohanded.
 		var/obj/item/weapon/twohanded/offhand/offhand = get_inactive_hand()
 		if(offhand && (offhand.flags_item & WIELDED))
-			to_chat(src, SPAN_WARNING("Your other hand is too busy holding \the [offhand.name]")) //So it's an offhand.
+			to_chat(src, SPAN_WARNING("Your other hand is too busy holding \the [offhand.name].")) //So it's an offhand.
 			return
 		else
 			wielded_item.unwield(src) //Get rid of it.
@@ -471,7 +471,7 @@
 	set category = "IC"
 
 	if(sleeping)
-		to_chat(usr, SPAN_DANGER("You are already sleeping"))
+		to_chat(usr, SPAN_DANGER("You are already sleeping."))
 		return
 	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
 		sleeping = 20 //Short nap
@@ -572,7 +572,7 @@
 		next_move = world.time + 100
 		last_special = world.time + 100
 		visible_message(SPAN_DANGER("<B>[src] attempts to unbuckle themself!</B>"),
-		SPAN_DANGER("You attempt to unbuckle yourself. (This will take around 2 minutes and you need to stand still)"))
+		SPAN_DANGER("You attempt to unbuckle yourself. (This will take around 2 minutes and you need to stand still.)"))
 		if(do_after(src, 1200, INTERRUPT_NO_FLOORED^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			if(!buckled)
 				return

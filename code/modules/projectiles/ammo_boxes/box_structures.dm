@@ -161,7 +161,7 @@
 			if(length(item_box.contents) < item_box.num_of_magazines)
 				user.drop_inv_item_to_loc(W, src)
 				item_box.contents += W
-				to_chat(user, SPAN_NOTICE("You put \a [W] into [src]"))
+				to_chat(user, SPAN_NOTICE("You put \a [W] into [src]."))
 				update_icon()
 			else
 				to_chat(user, SPAN_WARNING("[src] is full."))
@@ -187,7 +187,7 @@
 					var/S = min(O.current_rounds, AM.max_rounds - AM.current_rounds)
 					AM.current_rounds += S
 					O.current_rounds -= S
-					to_chat(user, SPAN_NOTICE("You transfer shells from [O] into [src]"))
+					to_chat(user, SPAN_NOTICE("You transfer shells from [O] into [src]."))
 					update_icon()
 					O.update_icon()
 			else

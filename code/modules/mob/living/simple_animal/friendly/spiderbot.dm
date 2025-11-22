@@ -231,7 +231,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, SPAN_DANGER("You are already holding \the [held_item]"))
+		to_chat(src, SPAN_DANGER("You are already holding \the [held_item]."))
 		return 1
 
 	var/list/items = list()

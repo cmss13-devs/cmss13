@@ -42,7 +42,7 @@
 	. = ..()
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
 		var/charge = floor((energy / max_energy) * 100)
-		. += SPAN_NOTICE("The charge meter reads [charge]%")
+		. += SPAN_NOTICE("The charge meter reads [charge]%.")
 
 /obj/structure/machinery/chem_storage/process()
 	if(recharge_cooldown <= 0)

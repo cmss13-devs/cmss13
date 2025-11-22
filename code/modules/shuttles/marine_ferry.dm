@@ -363,7 +363,7 @@
 			break
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
-		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
+		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL!"))
 
 	SSoldshuttle.shuttle_controller.locs_crash[target_section] -= T_trg
 
@@ -435,7 +435,7 @@
 	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-		to_chat(observer, SPAN_DEADSAY(FONT_SIZE_LARGE("The dropship is about to impact [get_area_name(T_trg)]" + " [OBSERVER_JMP(observer, T_trg)]")))
+		to_chat(observer, SPAN_DEADSAY(FONT_SIZE_LARGE("The dropship is about to impact [get_area_name(T_trg)]" + " [OBSERVER_JMP(observer, T_trg)].")))
 
 	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
 	playsound_area(get_area(turfs_int[sound_target]), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
@@ -555,7 +555,7 @@
 
 	//Switch the landmarks so we can do this again
 	if(!istype(T_src) || !istype(T_trg))
-		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE"))
+		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE!"))
 		return FALSE
 
 	locs_dock -= T_src

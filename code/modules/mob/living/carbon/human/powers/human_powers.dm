@@ -195,7 +195,7 @@
 			to_chat(target_mob, SPAN_XENOQUEEN("You hear a strange, alien voice in your head... \"[SPAN_PSYTALK(whisper)]\""))
 		else
 			to_chat(target_mob, SPAN_XENOQUEEN("You hear the voice of [src] resonate in your head... \"[SPAN_PSYTALK(whisper)]\""))
-		to_chat(src, SPAN_XENOWARNING("You said: \"[whisper]\" to [target_mob]"))
+		to_chat(src, SPAN_XENOWARNING("You said: \"[whisper]\" to [target_mob]."))
 		FOR_DVIEW(var/mob/dead/observer/ghost, 12, src, SEE_INVISIBLE_OBSERVER)
 			if(!isobserver(ghost) || !ghost.client)
 				continue
@@ -233,7 +233,7 @@
 		to_chat(src, SPAN_XENOWARNING("There is no one around to hear you..."))
 		return FALSE
 	var/targetstring = english_list(target_list)
-	to_chat(src, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]"))
+	to_chat(src, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]."))
 	log_say("PsychicRadiance: [key_name(src)]->[targetstring] : [whisper] (AREA: [get_area_name(src)])")
 	FOR_DVIEW(var/mob/dead/observer/ghost, 12, src, SEE_INVISIBLE_OBSERVER)
 		if(!isobserver(ghost) || !ghost.client)

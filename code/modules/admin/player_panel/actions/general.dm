@@ -155,7 +155,7 @@
 
 /datum/player_action/set_name/act(client/user, mob/target, list/params)
 	if(!params["name"])
-		to_chat(user, "The Name field cannot be empty")
+		to_chat(user, "The Name field cannot be empty.")
 
 		return FALSE
 

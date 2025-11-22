@@ -18,7 +18,7 @@
 	. = ..()
 	if(user.client)
 		if(user.client?.prefs?.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("You cannot speak in IC (muted)."))
+			to_chat(src, SPAN_DANGER("You cannot speak in IC (muted.)"))
 			return
 	if(!ishumansynth_strict(user))
 		to_chat(user, SPAN_DANGER("You don't know how to use this!"))
@@ -27,7 +27,7 @@
 		return
 
 	if(!COOLDOWN_FINISHED(src, spam_cooldown))
-		to_chat(user, SPAN_DANGER("\The [src] needs to recharge! Wait [COOLDOWN_SECONDSLEFT(src, spam_cooldown)] second(s)."))
+		to_chat(user, SPAN_DANGER("\The [src] needs to recharge! Wait [COOLDOWN_SECONDSLEFT(src, spam_cooldown)] second(s.)"))
 		return
 
 	var/message = tgui_input_text(user, "Shout a message?", "Megaphone", multiline = TRUE)

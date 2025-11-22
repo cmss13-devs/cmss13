@@ -50,7 +50,7 @@
 			else
 				descriptive = "furiously hot"
 
-		. += SPAN_NOTICE("\The [icon2html(src, user)][src] feels [descriptive]")
+		. += SPAN_NOTICE("\The [icon2html(src, user)][src] feels [descriptive].")
 
 
 /obj/item/tank/attackby(obj/item/W as obj, mob/user as mob)
@@ -58,15 +58,15 @@
 
 	if((istype(W, /obj/item/device/analyzer)) && get_dist(user, src) <= 1)
 		for(var/mob/O in viewers(user, null))
-			to_chat(O, SPAN_DANGER("[user] has used [W] on [icon2html(src, O)] [src]"))
+			to_chat(O, SPAN_DANGER("[user] has used [W] on [icon2html(src, O)] [src]."))
 
 		manipulated_by = user.real_name //This person is aware of the contents of the tank.
 
-		to_chat(user, SPAN_NOTICE("Results of analysis of [icon2html(src, user)]"))
+		to_chat(user, SPAN_NOTICE("Results of analysis of [icon2html(src, user)]:"))
 		if(pressure>0)
-			to_chat(user, SPAN_NOTICE("Pressure: [round(pressure,0.1)] kPa"))
-			to_chat(user, SPAN_NOTICE("[gas_type]: 100%"))
-			to_chat(user, SPAN_NOTICE("Temperature: [floor(temperature-T0C)]&deg;C"))
+			to_chat(user, SPAN_NOTICE("Pressure: [round(pressure,0.1)] kPa."))
+			to_chat(user, SPAN_NOTICE("[gas_type]: 100%."))
+			to_chat(user, SPAN_NOTICE("Temperature: [floor(temperature-T0C)]&deg;C."))
 		else
 			to_chat(user, SPAN_NOTICE("Tank is empty!"))
 		src.add_fingerprint(user)

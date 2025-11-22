@@ -230,7 +230,7 @@
 
 	var/obj/item/ammo_magazine/sentry_flamer/mag = new ammo_convert(get_turf(user))
 
-	user.visible_message(SPAN_NOTICE("[user] converts the ammo of [target] to [mag]"), SPAN_NOTICE("You convert the ammo of [target] to [mag]"))
+	user.visible_message(SPAN_NOTICE("[user] converts the ammo of [target] to [mag]"), SPAN_NOTICE("You convert the ammo of [target] to [mag]."))
 
 	qdel(target)
 	user.put_in_any_hand_if_possible(mag)

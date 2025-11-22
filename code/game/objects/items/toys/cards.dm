@@ -181,7 +181,7 @@
 	H.update_icon()
 	update_icon()
 
-	to_chat(user, SPAN_NOTICE("You've drawn: [chat_message]"))
+	to_chat(user, SPAN_NOTICE("You've drawn: [chat_message]."))
 
 /obj/item/toy/deck/verb/draw_pile()
 	set name = "Draw Pile (Concealed)"
@@ -475,7 +475,7 @@
 			var/card_names = list()
 			for(var/datum/playing_card/P as anything in cards)
 				card_names += P.name
-			. += SPAN_NOTICE("The cards are: [english_list(card_names)]")
+			. += SPAN_NOTICE("The cards are: [english_list(card_names)].")
 
 
 /obj/item/toy/handcard/update_icon(direction = 0)

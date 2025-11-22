@@ -20,7 +20,7 @@ GLOBAL_LIST_EMPTY(vox_types)
 
 	if(user && length(bad_words))
 		var/missed_words = jointext(bad_words, ", ")
-		to_chat(user, SPAN_WARNING("Couldn't find the sound files for: [missed_words]"))
+		to_chat(user, SPAN_WARNING("Couldn't find the sound files for: [missed_words]."))
 
 	for(var/s in sounds)
 		var/sound/S = sound(s, wait=TRUE, channel=SOUND_CHANNEL_VOX, volume=volume)

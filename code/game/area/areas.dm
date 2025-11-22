@@ -465,7 +465,7 @@
 		z = thing.z
 		break
 	if(!z)
-		WARNING("No z found for [src]")
+		WARNING("No z found for [src].")
 		return
 	if(!areas_in_z["[z]"])
 		areas_in_z["[z]"] = list()

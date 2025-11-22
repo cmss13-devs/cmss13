@@ -73,7 +73,7 @@
 
 /obj/structure/toilet/send_buckling_message(mob/M, mob/user)
 	if (M == user)
-		to_chat(M, SPAN_NOTICE("You seat yourself onto the toilet"))
+		to_chat(M, SPAN_NOTICE("You seat yourself onto the toilet."))
 	else
 		to_chat(user, SPAN_NOTICE("[M] has been seated onto the toilet by [user]."))
 		to_chat(M, SPAN_NOTICE("You have been seated onto the toilet by [user]."))

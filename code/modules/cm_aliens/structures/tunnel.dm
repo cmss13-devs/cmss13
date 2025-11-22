@@ -273,10 +273,10 @@
 
 	if(user.mob_size >= MOB_SIZE_BIG)
 		user.visible_message(SPAN_XENONOTICE("[user] begins heaving their huge bulk down into [src]."),
-			SPAN_XENONOTICE("We begin heaving our monstrous bulk into [src] (<i>[tunnel_desc]</i>)."))
+			SPAN_XENONOTICE("We begin heaving our monstrous bulk into [src] (<i>[tunnel_desc]</i>.)"))
 	else
 		user.visible_message(SPAN_XENONOTICE("[user] begins crawling down into [src]."),
-			SPAN_XENONOTICE("We begin crawling down into [src] (<i>[tunnel_desc]</i>)."))
+			SPAN_XENONOTICE("We begin crawling down into [src] (<i>[tunnel_desc]</i>.)"))
 
 	xeno_attack_delay(user)
 	if(!do_after(user, tunnel_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))

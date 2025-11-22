@@ -466,7 +466,7 @@
 		for(var/i in z_threshold + 1 to z_upper_parsed) //create a new z_level if needed
 			world.incrementMaxZ()
 		if(!no_changeturf)
-			WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/AfterChange is called")
+			WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/AfterChange is called.")
 
 	for(var/datum/grid_set/gset as anything in target_grid_sets)
 		var/true_xcrd = gset.xcrd + x_relative_to_absolute
@@ -582,7 +582,7 @@
 				while (zcrd > world.maxz) //create a new z_level if needed
 					world.incrementMaxZ()
 			if(!no_changeturf)
-				WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/AfterChange is called")
+				WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/AfterChange is called.")
 				no_afterchange = TRUE
 		// Ok so like. something important
 		// We talk in "relative" coords here, so the coordinate system of the map datum

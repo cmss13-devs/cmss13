@@ -128,7 +128,7 @@
 	if(picked_option)
 		practice_mode = sorted_options[picked_option]
 		practice_health = practice_mode[1]
-		user.visible_message(SPAN_NOTICE("[user] adjusted the difficulty of [src]."), SPAN_NOTICE("You adjusted the difficulty of [src] to [lowertext(picked_option)]"))
+		user.visible_message(SPAN_NOTICE("[user] adjusted the difficulty of [src]."), SPAN_NOTICE("You adjusted the difficulty of [src] to [lowertext(picked_option)]."))
 
 /obj/structure/target/proc/start_practice_health_reset()
 	animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_IN)

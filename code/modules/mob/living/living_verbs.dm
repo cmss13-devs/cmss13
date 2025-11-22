@@ -91,7 +91,7 @@
 		var/obj/structure/machinery/medical_pod/autodoc/BB = loc
 		if (alert(usr, "Would you like to emergency eject out of [BB]? A surgery may be in progress.", "Confirm", "Yes", "No") == "Yes")
 			visible_message(SPAN_WARNING ("[BB]'s emergency lights blare as the casket starts moving!"))
-			to_chat(usr, SPAN_NOTICE ("You are now leaving [BB]"))
+			to_chat(usr, SPAN_NOTICE ("You are now leaving [BB]."))
 			playsound(src, 'sound/machines/beepalert.ogg', 30)
 			if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, BB))//5 sec delay
 				BB.go_out() //Eject doesnt work you have to force it
@@ -125,7 +125,7 @@
 		//okay, so the closet is either welded or locked... resist!!!
 		next_move = world.time + 100
 		last_special = world.time + 100
-		to_chat(src, SPAN_DANGER("You lean on the back of [C] and start pushing the door open. (this will take about [breakout_time] minutes)"))
+		to_chat(src, SPAN_DANGER("You lean on the back of [C] and start pushing the door open. (This will take about [breakout_time] minutes.)"))
 		for(var/mob/O in viewers(loc))
 			O.show_message(SPAN_DANGER("<B>[loc] begins to shake violently!</B>"), SHOW_MESSAGE_VISIBLE)
 

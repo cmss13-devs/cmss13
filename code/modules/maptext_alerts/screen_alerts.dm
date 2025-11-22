@@ -162,7 +162,7 @@
 		if(thealert.override_alerts)
 			return FALSE
 		if(new_master && new_master != thealert.master)
-			WARNING("[src] threw alert [category] with new_master [new_master] while already having that alert with master [thealert.master]")
+			WARNING("[src] threw alert [category] with new_master [new_master] while already having that alert with master [thealert.master].")
 
 			clear_alert(category)
 			return .()

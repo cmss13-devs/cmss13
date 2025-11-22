@@ -215,7 +215,7 @@ SUBSYSTEM_DEF(garbage)
 					var/client/admin = c
 					if(!check_rights_for(admin, R_ADMIN))
 						continue
-					to_chat(admin, "## TESTING: GC: -- [ADMIN_VV(D)] | [type] was unable to be GC'd --")
+					to_chat(admin, "## TESTING: GC: -- [ADMIN_VV(D)] | [type] was unable to be GC'd --.")
 				#endif
 				I.failures++
 
@@ -287,7 +287,7 @@ SUBSYSTEM_DEF(garbage)
 	if (threshold && (time > threshold SECONDS))
 		if (!(I.qdel_flags & QDEL_ITEM_ADMINS_WARNED))
 			log_game("Error: [type]([refID]) took longer than [threshold] seconds to delete (took [round(time/10, 0.1)] seconds to delete)")
-			message_admins("Error: [type]([refID]) took longer than [threshold] seconds to delete (took [round(time/10, 0.1)] seconds to delete).")
+			message_admins("Error: [type]([refID]) took longer than [threshold] seconds to delete (took [round(time/10, 0.1)] seconds to delete.)")
 			I.qdel_flags |= QDEL_ITEM_ADMINS_WARNED
 		I.hard_deletes_over_threshold++
 		var/overrun_limit = CONFIG_GET(number/hard_deletes_overrun_limit)

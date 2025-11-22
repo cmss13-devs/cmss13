@@ -89,7 +89,7 @@
 
 	if(istype(O, /obj/item/device/motiondetector))
 		if(!interior)
-			to_chat(user, SPAN_WARNING("It appears that [O] cannot establish borders of space inside \the [src]. (PLEASE, TELL A DEV, SOMETHING BROKE)"))
+			to_chat(user, SPAN_WARNING("It appears that [O] cannot establish borders of space inside \the [src]. (PLEASE, TELL A DEV, SOMETHING BROKE!"))
 			return
 		var/obj/item/device/motiondetector/MD = O
 

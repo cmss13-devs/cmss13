@@ -66,7 +66,7 @@
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
 		armed = !armed
 		icon_state = "beartrap[armed]"
-		to_chat(user, SPAN_NOTICE("[src] is now [armed ? "armed" : "disarmed"]"))
+		to_chat(user, SPAN_NOTICE("[src] is now [armed ? "armed" : "disarmed"]."))
 
 /obj/item/restraint/legcuffs/beartrap/Crossed(atom/movable/AM)
 	if(armed)

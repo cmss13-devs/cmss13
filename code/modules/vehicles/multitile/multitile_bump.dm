@@ -137,7 +137,7 @@
 	reagents.source_mob = V.seats[VEHICLE_DRIVER]
 	if(reagents.handle_volatiles())
 		if(V.seats[VEHICLE_DRIVER])
-			log_game("[key_name(V.seats[VEHICLE_DRIVER])] exploded [name] by ramming it with [V] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).")
+			log_game("[key_name(V.seats[VEHICLE_DRIVER])] exploded [name] by ramming it with [V] in [get_area(src)] ([loc.x],[loc.y],[loc.z].)")
 		visible_message(SPAN_DANGER("\The [V] crushes \the [src], causing explosion!"))
 	else
 		visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
@@ -605,7 +605,7 @@
 		if(get_target_lock(driver.faction))
 			apply_effect(0.5, WEAKEN)
 			apply_damage(5 + rand(0, 5), BRUTE, no_limb_loss = TRUE)
-			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING(SPAN_BOLD("*YOU RAMMED AN ALLY AND HURT THEM!*")))
+			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING(SPAN_BOLD("*YOU RAMMED AN ALLY AND HURT THEM!*.")))
 		else
 			apply_effect(2, WEAKEN)
 			apply_damage(10 + rand(0, 10), BRUTE)

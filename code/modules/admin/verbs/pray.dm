@@ -8,7 +8,7 @@
 
 	if(usr.client)
 		if(usr.client.prefs.muted & MUTE_PRAY)
-			to_chat(usr, SPAN_DANGER("You cannot pray (muted)."))
+			to_chat(usr, SPAN_DANGER("You cannot pray (muted.)"))
 			return
 		if(src.client.handle_spam_prevention(msg,MUTE_PRAY))
 			return

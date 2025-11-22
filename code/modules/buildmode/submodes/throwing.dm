@@ -16,7 +16,7 @@
 		if(isturf(object))
 			return
 		throw_atom = object
-		to_chat(c, "Selected object '[throw_atom]'")
+		to_chat(c, "Selected object '[throw_atom]'.")
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(throw_atom)
 			throw_atom.throw_atom(object, 16, SPEED_VERY_FAST, c.mob, TRUE)

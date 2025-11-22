@@ -84,7 +84,7 @@
 	var/mob/living/carbon/human/human_owner = owner
 
 	if(human_owner.client.prefs.muted & MUTE_IC)
-		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted)."))
+		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted.)"))
 		return FALSE
 
 	if(human_owner.stat == DEAD)
@@ -115,7 +115,7 @@
 	var/mob/living/carbon/human/human_owner = owner
 
 	if(human_owner.client.prefs.muted & MUTE_IC)
-		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted)."))
+		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted.)"))
 		return FALSE
 
 	if(human_owner.stat == DEAD)

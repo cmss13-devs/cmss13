@@ -44,7 +44,7 @@
 ///register to SSshuttles
 /obj/docking_port/proc/register()
 	if(registered)
-		WARNING("docking_port registered multiple times")
+		WARNING("docking_port registered multiple times.")
 		unregister()
 	registered = TRUE
 	return
@@ -52,7 +52,7 @@
 ///unregister from SSshuttles
 /obj/docking_port/proc/unregister()
 	if(!registered)
-		WARNING("docking_port unregistered multiple times")
+		WARNING("docking_port unregistered multiple times.")
 	registered = FALSE
 	return
 
@@ -593,7 +593,7 @@
 //call the shuttle to destination S
 /obj/docking_port/mobile/proc/request(obj/docking_port/stationary/S)
 	if(!check_dock(S))
-		WARNING("check_dock failed on request for [src]")
+		WARNING("check_dock failed on request for [src].")
 		return
 
 	if(mode == SHUTTLE_IGNITING && destination == S)

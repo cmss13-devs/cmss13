@@ -1099,7 +1099,7 @@
 		table_setup = TRUE
 		usr.drop_inv_item_to_loc(src, target.loc)
 	else
-		to_chat(usr, SPAN_WARNING("You fail to setup the [name]"))
+		to_chat(usr, SPAN_WARNING("You fail to setup the [name]."))
 
 /**
  * Called to reset the state of the item to not be settled on the table.

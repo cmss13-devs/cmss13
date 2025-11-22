@@ -130,7 +130,7 @@
 			else
 				X.ammo = GLOB.ammo_list[X.caste.spit_types[i+1]]
 			break
-	to_chat(X, SPAN_NOTICE("We will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
+	to_chat(X, SPAN_NOTICE("We will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma.)"))
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, "shift_spit_[X.ammo.icon_state]")
 	return ..()

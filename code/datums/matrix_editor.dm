@@ -8,7 +8,7 @@
 	set category = "Debug"
 
 	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & (R_DEBUG|R_ADMIN)))
-		to_chat(usr, SPAN_DANGER("develop man only >:("))
+		to_chat(usr, SPAN_DANGER("Develop man only >:("))
 		return
 
 	var/data = "<h2>Stored matrices</h2>"
@@ -50,7 +50,7 @@
 
 /client/proc/matrix_editor_Topic(href, href_list)
 	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & (R_DEBUG|R_ADMIN)))
-		to_chat(usr, SPAN_DANGER("develop man only >:("))
+		to_chat(usr, SPAN_DANGER("Develop man only >:("))
 		return
 
 	if(href_list["select_matrix"])

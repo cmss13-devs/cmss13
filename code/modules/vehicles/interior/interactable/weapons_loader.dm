@@ -63,7 +63,7 @@
 		if(isVehicle(user.interactee))
 			vehicle = user.interactee
 		if(!istype(vehicle))
-			to_chat(user, SPAN_WARNING("Critical Error! Ahelp this! Code: T_VMIS"))
+			to_chat(user, SPAN_WARNING("Critical Error! Ahelp this! Code: T_VMIS."))
 			return
 
 	var/list/hps = vehicle.get_hardpoints_with_ammo()
@@ -93,7 +93,7 @@
 
 	var/obj/item/ammo_magazine/M = LAZYACCESS(HP.backup_clips, 1)
 	if(!M)
-		to_chat(user, SPAN_DANGER("Something went wrong! Ahelp this! Code: T_BMIS"))
+		to_chat(user, SPAN_DANGER("Something went wrong! Ahelp this! Code: T_BMIS."))
 		return
 
 	to_chat(user, SPAN_NOTICE("You begin reloading \the [HP]."))

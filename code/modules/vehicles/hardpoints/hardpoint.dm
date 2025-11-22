@@ -347,7 +347,7 @@
 
 	var/obj/item/ammo_magazine/A = LAZYACCESS(backup_clips, 1)
 	if(!A)
-		to_chat(user, SPAN_DANGER("Something went wrong! Ahelp and ask for a developer! Code: HP_RLDHP"))
+		to_chat(user, SPAN_DANGER("Something went wrong! Ahelp and ask for a developer! Code: HP_RLDHP."))
 		return
 
 	to_chat(user, SPAN_NOTICE("You begin reloading \the [name]."))

@@ -177,7 +177,7 @@
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("You cannot send IC messages (muted)."))
+			to_chat(src, SPAN_DANGER("You cannot send IC messages (muted.)"))
 			return
 
 		if(client.handle_spam_prevention(message, MUTE_IC))
@@ -195,8 +195,8 @@
 	var/rendered = "<span class='game say'><span class='name'>[name]</span> <span class='message'>[say_quote(message)] \"[message]\"</span></span>"
 	var/dead_rendered = "<span class='game say'><span class='name'>[name] (imaginary friend of [owner])</span> <span class='message'>[say_quote(message)] \"[message]\"</span></span>"
 
-	to_chat(owner, "[rendered]")
-	to_chat(src, "[rendered]")
+	to_chat(owner, "[rendered].")
+	to_chat(src, "[rendered].")
 	log_say("Imaginary Friend: [dead_rendered]")
 	if(!hidden)
 		var/list/send_to = list()

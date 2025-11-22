@@ -188,7 +188,7 @@ SUBSYSTEM_DEF(ipcheck)
 		return
 
 	if (!SSipcheck.is_enabled())
-		to_chat(src, "The ipcheck system is not currently enabled but you can still edit the whitelists")
+		to_chat(src, "The ipcheck system is not currently enabled but you can still edit the whitelists.")
 	if(SSipcheck.is_whitelisted(whitelist_ckey))
 		to_chat(src, "Player is already whitelisted.")
 		return
@@ -216,7 +216,7 @@ SUBSYSTEM_DEF(ipcheck)
 
 
 	if (!SSipcheck.is_enabled())
-		to_chat(src, "The ipcheck system is not currently enabled but you can still edit the whitelists")
+		to_chat(src, "The ipcheck system is not currently enabled but you can still edit the whitelists.")
 	if(!SSipcheck.is_whitelisted(dewhitelist_ckey))
 		to_chat(src, "Player is not whitelisted.")
 		return

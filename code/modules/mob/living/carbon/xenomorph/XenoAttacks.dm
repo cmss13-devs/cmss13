@@ -38,7 +38,7 @@
 							M.visible_message(SPAN_WARNING("\The [M] tried to open \the [backpack] on [src] but instead gets a tail swipe to the head!"))
 							return FALSE
 
-					M.visible_message(SPAN_NOTICE("\The [M] starts opening \the [backpack] on [src]"),
+					M.visible_message(SPAN_NOTICE("\The [M] starts opening \the [backpack] on [src]."),
 					SPAN_NOTICE("You begin to open \the [backpack] on [src], so you can check its contents."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 					if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC)) //Timed opening.
 						to_chat(M, SPAN_WARNING("You were interrupted!"))

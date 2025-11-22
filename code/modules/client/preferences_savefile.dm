@@ -973,7 +973,7 @@
 	to_chat(owner, SPAN_ALERTWARNING("<u>Keybinding Conflict</u>"))
 	to_chat(owner, SPAN_ALERTWARNING("There are new <a href='byond://?_src_=prefs;preference=viewmacros'>keybindings</a> that default to keys you've already bound. The new ones will be unbound."))
 	for(var/datum/keybinding/conflicted as anything in notadded)
-		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating"))
+		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating."))
 
 		if(hotkeys)
 			for(var/entry in conflicted.hotkey_keys)

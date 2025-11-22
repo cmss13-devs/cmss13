@@ -234,7 +234,7 @@
 		if(!has_chain)
 			var/obj/item/yautja/chain/chain_to_wrap = chain_wrapper
 			has_chain = TRUE
-			to_chat(user, SPAN_NOTICE("You wrap the [chain_to_wrap] around [src]"))
+			to_chat(user, SPAN_NOTICE("You wrap the [chain_to_wrap] around [src]."))
 			playsound(user, 'sound/weapons/chain_whip.ogg', 50, 1)
 			qdel(chain_to_wrap)
 		else
@@ -1586,7 +1586,7 @@
 	switch(mode)
 		if("stun")
 			mode = "lethal"
-			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
+			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode."))
 			strength = "plasma bolt"
 			charge_cost = 100
 			set_fire_delay(FIRE_DELAY_TIER_6 * 3)
@@ -1596,7 +1596,7 @@
 
 		if("lethal")
 			mode = "stun"
-			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
+			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode."))
 			strength = "stun bolts"
 			charge_cost = 30
 			set_fire_delay(FIRE_DELAY_TIER_6)

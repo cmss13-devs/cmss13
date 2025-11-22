@@ -95,7 +95,7 @@
 	switch(action)
 		if("announce")
 			if(user.client.prefs.muted & MUTE_IC)
-				to_chat(user, SPAN_DANGER("You cannot send Announcements (muted)."))
+				to_chat(user, SPAN_DANGER("You cannot send Announcements (muted.)"))
 				return
 
 			if(!COOLDOWN_FINISHED(src, announcement_cooldown))

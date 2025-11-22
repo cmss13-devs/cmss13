@@ -415,7 +415,7 @@
 		return
 
 	if(usr.client.prefs.muted & MUTE_IC)
-		to_chat(usr, SPAN_DANGER("You cannot write on paper (muted)."))
+		to_chat(usr, SPAN_DANGER("You cannot write on paper (muted.)"))
 		return
 
 	if(href_list["write"])

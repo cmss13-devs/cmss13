@@ -31,13 +31,13 @@ Gunshots/explosions/opening doors/less rare audio (done)
 		switch(halpick)
 			if(0 to 15)
 				//Screwy HUD
-				//to_chat(src, "Screwy HUD")
+				//to_chat(src, "Screwy HUD.")
 				hal_screwyhud = pick(1,2,3,3,4,4)
 				spawn(rand(100,250))
 					hal_screwyhud = 0
 			if(16 to 25)
 				//Strange items
-				//to_chat(src, "Traitor Items")
+				//to_chat(src, "Traitor Items.")
 				if(!halitem)
 					halitem = new
 					var/datum/custom_hud/ui_datum = GLOB.custom_huds_list[client.prefs.UI_style]
@@ -92,7 +92,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 							halitem = null
 			if(26 to 40)
 				//Flashes of danger
-				//to_chat(src, "Danger Flash")
+				//to_chat(src, "Danger Flash.")
 				if(!halimage)
 					var/list/possible_points = list()
 					for(var/turf/open/floor/F in view(src,GLOB.world_view_size))
@@ -102,13 +102,13 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 						switch(rand(1,3))
 							if(1)
-								//to_chat(src, "Space")
+								//to_chat(src, "Space.")
 								halimage = image('icons/turf/floors/space.dmi',target,"[rand(1,25)]",TURF_LAYER)
 							if(2)
-								//to_chat(src, "Fire")
+								//to_chat(src, "Fire.")
 								halimage = image('icons/effects/fire.dmi',target,"1",TURF_LAYER)
 							if(3)
-								//to_chat(src, "C4")
+								//to_chat(src, "C4.")
 								halimage = image('icons/obj/items/assemblies.dmi',target,"plastic-explosive2",OBJ_LAYER+0.01)
 
 
@@ -122,7 +122,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 			if(41 to 65)
 				//Strange audio
-				//to_chat(src, "Strange Audio")
+				//to_chat(src, "Strange Audio.")
 				switch(rand(1,12))
 					if(1)
 						src << 'sound/machines/airlock.ogg'
@@ -165,7 +165,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 						src << pick(creepyasssounds)
 			if(66 to 70)
 				//Flashes of danger
-				//to_chat(src, "Danger Flash")
+				//to_chat(src, "Danger Flash.")
 				if(!halbody)
 					var/list/possible_points = list()
 					for(var/turf/open/floor/F in view(src,GLOB.world_view_size))

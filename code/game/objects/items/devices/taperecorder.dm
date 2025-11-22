@@ -264,7 +264,7 @@
 		var/list/heard = get_mobs_in_view(GLOB.world_view_size, src)
 		langchat_speech(mytape.storedinfo[i], heard, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
 
-		audible_message(SPAN_MAROON("[icon2html(src, usr)] [mytape.storedinfo[i]]"))//We want to display this properly, don't double encode
+		audible_message(SPAN_MAROON("[icon2html(src, usr)] [mytape.storedinfo[i]]."))//We want to display this properly, don't double encode
 		if(length(mytape.storedinfo) < i + 1)
 			playsleepseconds = 1
 			sleep(1 SECONDS)

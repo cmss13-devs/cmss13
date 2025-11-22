@@ -121,12 +121,12 @@
 		if(tgui_alert(user, "Do you wish to change the network?", "Change Network?", list("Yes", "No")) == "Yes")
 			var/list/the_options = list("None")
 			for(var/network in network_to_access)
-				to_chat(user, SPAN_HELPFUL("Checking '[network]'."))
+				to_chat(user, SPAN_HELPFUL("Checking '[network].'"))
 				if(network_to_access[network] in id_card.access)
-					to_chat(user, SPAN_HELPFUL("Adding '[network]'."))
+					to_chat(user, SPAN_HELPFUL("Adding '[network].'"))
 					the_options += network
 				else
-					to_chat(user, SPAN_HELPFUL("Ignoring '[network]'."))
+					to_chat(user, SPAN_HELPFUL("Ignoring '[network].'"))
 			var/new_net = tgui_input_list(user, "Which new network do you want to use?", "New Network", the_options, 20 SECONDS)
 			if(!new_net || new_net == "None")
 				to_chat(user, SPAN_WARNING("No new network selected!"))

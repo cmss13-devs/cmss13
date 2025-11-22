@@ -3,7 +3,7 @@
 	var/message_range = GLOB.world_view_size
 
 	if(client?.prefs?.muted & MUTE_IC)
-		to_chat(src, SPAN_WARNING("You cannot speak in IC (Muted)."))
+		to_chat(src, SPAN_WARNING("You cannot speak in IC (Muted.)"))
 		return
 
 	message = trim(strip_html(message))

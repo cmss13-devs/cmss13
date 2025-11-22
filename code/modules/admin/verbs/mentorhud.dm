@@ -40,7 +40,7 @@
 		return FALSE
 
 	if(!mentor.looc_overhead && !(mentor.inherent_huds_toggled[INHERENT_HUD_NEW_PLAYER]))
-		to_chat(src, SPAN_WARNING("You are not in a mentor role! (Overhead LOOC is disabled!)"))
+		to_chat(src, SPAN_WARNING("You are not in a mentor role! (Overhead LOOC is disabled!"))
 		return FALSE
 
 	var/datum/mob_hud/the_hud

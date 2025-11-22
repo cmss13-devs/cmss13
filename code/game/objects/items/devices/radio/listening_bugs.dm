@@ -127,7 +127,7 @@
 		. = ..()
 		. += SPAN_INFO("[src] is set to frequency [get_bug_letter()].")
 		if(nametag != initial(nametag))
-			. += SPAN_INFO("[src]'s nametag is set to '[nametag]'")
+			. += SPAN_INFO("[src]'s nametag is set to '[nametag]'.")
 
 /obj/item/device/radio/listening_bug/verb/change_disguise()
 	set name = "Change Disguise"

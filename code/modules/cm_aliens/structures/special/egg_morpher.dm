@@ -54,7 +54,7 @@
 /obj/effect/alien/resin/special/eggmorph/get_examine_text(mob/user)
 	. = ..()
 	if(isxeno(user) || isobserver(user))
-		. += SPAN_NOTICE("\nIt has <b>[stored_huggers] facehuggers within</b>, with [max(0, huggers_to_grow_max - stored_huggers)] more to grow and a total capacity of [huggers_max_amount] facehuggers (reserved: [huggers_reserved]).")
+		. += SPAN_NOTICE("\nIt has <b>[stored_huggers] facehuggers within</b>, with [max(0, huggers_to_grow_max - stored_huggers)] more to grow and a total capacity of [huggers_max_amount] facehuggers (reserved: [huggers_reserved].)")
 
 		var/current_hugger_count = linked_hive.get_current_playable_facehugger_count();
 		. += SPAN_NOTICE("There are currently [current_hugger_count] facehuggers in the hive. The hive can support a total of [linked_hive.playable_hugger_limit] facehuggers at present.")

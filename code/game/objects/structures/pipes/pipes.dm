@@ -123,7 +123,7 @@
 			if(W)
 				var/mob/living/carbon/xenomorph/X = user
 				if(!istype(X) || X.hivenumber != W.linked_hive.hivenumber)
-					to_chat(user, SPAN_WARNING("The weeds are blocking the exit of this vent"))
+					to_chat(user, SPAN_WARNING("The weeds are blocking the exit of this vent."))
 					return
 
 		if(ventcrawl_message_busy > world.time)
@@ -133,7 +133,7 @@
 		playsound(src, pick('sound/effects/alien_ventcrawl1.ogg', 'sound/effects/alien_ventcrawl2.ogg'), 25, 1)
 		var/turf/alert_turf = get_turf(src) //Pipe segments aren't guaranteed to be visible
 		alert_turf.visible_message(SPAN_HIGHDANGER("You hear something squeezing through the ducts."))
-		to_chat(user, SPAN_NOTICE("You begin to climb out of [src]"))
+		to_chat(user, SPAN_NOTICE("You begin to climb out of [src]."))
 		animate_ventcrawl()
 		user.remove_specific_pipe_image(src)
 		if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND))

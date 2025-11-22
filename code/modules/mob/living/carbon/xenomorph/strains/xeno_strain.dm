@@ -113,7 +113,7 @@
 		return
 
 	if(!COOLDOWN_FINISHED(src, next_strain_reset))
-		to_chat(src, SPAN_WARNING("We lack the strength to reset our strain. We will be able to reset it in [round((next_strain_reset - world.time) / 600, 1)] minutes"))
+		to_chat(src, SPAN_WARNING("We lack the strength to reset our strain. We will be able to reset it in [round((next_strain_reset - world.time) / 600, 1)] minutes."))
 		return
 
 	// Show the user the strain's description, and double check that they want it.

@@ -142,7 +142,7 @@
 		return
 
 	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] starts to grow an ovipositor."),
-	SPAN_XENOWARNING("You start to grow an ovipositor...(takes 20 seconds, hold still)"))
+	SPAN_XENOWARNING("You start to grow an ovipositor...(takes 20 seconds, hold still.)"))
 	if(!do_after(xeno, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && xeno.check_plasma(plasma_cost))
 		return
 	if(!xeno.check_state())
@@ -762,7 +762,7 @@
 		if(!check_and_use_plasma_owner(node_plant_plasma_cost))
 			return
 
-		to_chat(xeno, SPAN_XENOWARNING("You plant a node at [turf_to_get]"))
+		to_chat(xeno, SPAN_XENOWARNING("You plant a node at [turf_to_get]."))
 		new /obj/effect/alien/weeds/node(turf_to_get, null, owner)
 		playsound(turf_to_get, "alien_resin_build", 35)
 		apply_cooldown_override(node_plant_cooldown)
@@ -791,7 +791,7 @@
 	recently_built_turfs += turf_to_get
 	addtimer(CALLBACK(src, PROC_REF(reset_turf_cooldown), turf_to_get), turf_build_cooldown)
 
-	to_chat(xeno, SPAN_XENOWARNING("You plant weeds at [turf_to_get]"))
+	to_chat(xeno, SPAN_XENOWARNING("You plant weeds at [turf_to_get]."))
 	apply_cooldown()
 	return ..()
 
@@ -864,7 +864,7 @@
 /datum/action/xeno_action/onclick/send_thoughts/proc/psychic_whisper()
 	var/mob/living/carbon/xenomorph/xeno_player = owner
 	if(xeno_player.client.prefs.muted & MUTE_IC)
-		to_chat(xeno_player, SPAN_DANGER("You cannot whisper (muted)."))
+		to_chat(xeno_player, SPAN_DANGER("You cannot whisper (muted.)"))
 		return
 	if(!xeno_player.check_state(TRUE))
 		return
@@ -888,7 +888,7 @@
 			to_chat(target_mob, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[SPAN_PSYTALK(whisper)]\""))
 		else
 			to_chat(target_mob, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[SPAN_PSYTALK(whisper)]\""))
-		to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [target_mob]"))
+		to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [target_mob]."))
 
 		for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
 			if(!ghost.client || isnewplayer(ghost))
@@ -909,7 +909,7 @@
 	if(!xeno_player.check_plasma(radiance_plasma_cost))
 		return
 	if(xeno_player.client.prefs.muted & MUTE_IC)
-		to_chat(xeno_player, SPAN_DANGER("You cannot whisper (muted)."))
+		to_chat(xeno_player, SPAN_DANGER("You cannot whisper (muted.)"))
 		return
 	if(!xeno_player.check_state(TRUE))
 		return
@@ -929,7 +929,7 @@
 	if(!length(target_list))
 		return
 	var/targetstring = english_list(target_list)
-	to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]"))
+	to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]."))
 	xeno_player.use_plasma(radiance_plasma_cost)
 	log_say("PsychicRadiance: [key_name(xeno_player)]->[targetstring] : [whisper] (AREA: [get_area_name(xeno_player)])")
 	for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)

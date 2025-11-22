@@ -146,7 +146,7 @@
 	playsound(new_drone, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	new_drone.generate_name()
 
-	msg_admin_niche("[key_name(new_drone)] has joined as a lesser drone at ([x],[y],[z]).")
+	msg_admin_niche("[key_name(new_drone)] has joined as a lesser drone at ([x],[y],[z].)")
 
 	return TRUE
 
@@ -419,7 +419,7 @@
 		linked_hive.hivecore_cooldown = TRUE
 		INVOKE_ASYNC(src, PROC_REF(cooldownFinish),linked_hive) // start cooldown
 		if(hardcore)
-			xeno_message(SPAN_XENOANNOUNCE("We can no longer gain new sisters or another Queen. Additionally, we are unable to heal if our Queen is dead"), 2, linked_hive.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("We can no longer gain new sisters or another Queen. Additionally, we are unable to heal if our Queen is dead."), 2, linked_hive.hivenumber)
 			linked_hive.hardcore = TRUE
 			linked_hive.allow_queen_evolve = FALSE
 			linked_hive.hive_structures_limit[XENO_STRUCTURE_CORE] = 0

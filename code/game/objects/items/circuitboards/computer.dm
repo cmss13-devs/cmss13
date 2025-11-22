@@ -208,7 +208,7 @@
 
 	else if(HAS_TRAIT(tool, TRAIT_TOOL_TRADEBAND))
 		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
-			to_chat(user, SPAN_NOTICE("You do not know how to use [tool]"))
+			to_chat(user, SPAN_NOTICE("You do not know how to use [tool]."))
 			return
 
 		if(black_market_lock)

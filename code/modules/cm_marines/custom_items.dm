@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions())
 	if(user.ckey in ckeys_redeemed_kits)
 		if(length(ckeys_redeemed_kits[user.ckey]) >= length(possible_kits))
 			// They are a donator but have gotten everything
-			to_chat(user, SPAN_NOTICE("You have already retrieved your kit(s)."))
+			to_chat(user, SPAN_NOTICE("You have already retrieved your kit(s.)"))
 			return TRUE
 
 	if(length(possible_kits) == 0) //if no donor kit they can get something else

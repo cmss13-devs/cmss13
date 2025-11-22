@@ -42,7 +42,7 @@
 	. += SPAN_NOTICE("It contains:")
 	if(reagents && length(reagents.reagent_list))
 		for(var/datum/reagent/R in reagents.reagent_list)
-			. += SPAN_NOTICE(" [R.volume] units of [R.name]")
+			. += SPAN_NOTICE(" [R.volume] units of [R.name].")
 	else
 		. += SPAN_NOTICE(" Nothing.")
 	if(reagents)
@@ -51,7 +51,7 @@
 		. += SPAN_NOTICE("\nTransfer mode: Dispensing")
 	else
 		. += SPAN_NOTICE("\nTransfer mode: Filling")
-	. += SPAN_NOTICE("Transfer rate: [amount_per_transfer_from_this] units")
+	. += SPAN_NOTICE("Transfer rate: [amount_per_transfer_from_this] units.")
 
 /obj/structure/reagent_dispensers/Destroy()
 	playsound(src.loc, 'sound/effects/slosh.ogg', 50, 1, 3)
@@ -81,7 +81,7 @@
 	health -= Proj.damage
 	if(Proj.firer)
 		msg_admin_niche("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) [ADMIN_JMP(loc)].")
-		log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
+		log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z].)")
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	healthcheck()
 	return TRUE
@@ -99,9 +99,9 @@
 
 	dispensing = !dispensing
 	if(dispensing)
-		to_chat(usr, SPAN_NOTICE("[src] is now dispensing"))
+		to_chat(usr, SPAN_NOTICE("[src] is now dispensing."))
 	else
-		to_chat(usr, SPAN_NOTICE("[src] is now filling"))
+		to_chat(usr, SPAN_NOTICE("[src] is now filling."))
 	update_icon()
 
 /obj/structure/reagent_dispensers/ex_act(severity)
@@ -139,9 +139,9 @@
 	if(mods[ALT_CLICK])
 		dispensing = !dispensing
 		if(dispensing)
-			to_chat(user, SPAN_NOTICE("[src] is now dispensing"))
+			to_chat(user, SPAN_NOTICE("[src] is now dispensing."))
 		else
-			to_chat(user, SPAN_NOTICE("[src] is now filling"))
+			to_chat(user, SPAN_NOTICE("[src] is now filling."))
 		update_icon()
 		return TRUE
 	return ..()
@@ -247,7 +247,7 @@
 	if(rig)
 		usr.visible_message("[usr] begins to detach [rig] from \the [src].", "You begin to detach [rig] from \the [src]")
 		if(do_after(usr, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			usr.visible_message(SPAN_NOTICE("[usr] detaches [rig] from \the [src]."), SPAN_NOTICE(" You detach [rig] from \the [src]"))
+			usr.visible_message(SPAN_NOTICE("[usr] detaches [rig] from \the [src]."), SPAN_NOTICE(" You detach [rig] from \the [src]."))
 			rig.forceMove(get_turf(usr))
 			rig = null
 			update_icon()
@@ -275,7 +275,7 @@
 			to_chat(user, SPAN_DANGER("There is another device in the way."))
 			return ..()
 
-		user.visible_message(SPAN_NOTICE("[user] rigs [W] to \the [src]."), SPAN_NOTICE(" You rig [W] to \the [src]"))
+		user.visible_message(SPAN_NOTICE("[user] rigs [W] to \the [src]."), SPAN_NOTICE(" You rig [W] to \the [src]."))
 
 		var/obj/item/device/assembly_holder/H = W
 		if (istype(H.a_left,/obj/item/device/assembly/igniter) || istype(H.a_right,/obj/item/device/assembly/igniter))
@@ -335,7 +335,7 @@
 	if(Proj.damage > 10 && prob(60) && !reinforced)
 		if(Proj.firer)
 			message_admins("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) [ADMIN_JMP(loc)].")
-			log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
+			log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z].)")
 		exploding = TRUE
 		explode()
 

@@ -30,7 +30,7 @@
 /datum/surgery_step/connect_prosthesis/tool_check(mob/user, obj/item/robot_parts/tool, datum/surgery/surgery)
 	. = ..()
 	if(. && (!tool.part || !(user.zone_selected in tool.part)))
-		to_chat(user, SPAN_WARNING("\The [tool] cannot be used to replaced a missing [parse_zone(user.zone_selected)]"))
+		to_chat(user, SPAN_WARNING("\The [tool] cannot be used to replaced a missing [parse_zone(user.zone_selected)]."))
 		return FALSE
 
 /datum/surgery_step/connect_prosthesis/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/robot_parts/tool, tool_type, datum/surgery/surgery)

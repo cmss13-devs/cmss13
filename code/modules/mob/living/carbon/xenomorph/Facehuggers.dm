@@ -128,7 +128,7 @@
 /obj/item/clothing/mask/facehugger/attack_alien(mob/living/carbon/xenomorph/user)
 	if(user.hivenumber != hivenumber)
 		user.animation_attack_on(src)
-		user.visible_message(SPAN_XENOWARNING("[user] crushes \the [src]"), SPAN_XENOWARNING("You crush \the [src]"))
+		user.visible_message(SPAN_XENOWARNING("[user] crushes \the [src]"), SPAN_XENOWARNING("You crush \the [src]."))
 		die()
 		return XENO_ATTACK_ACTION
 

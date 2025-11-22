@@ -45,10 +45,10 @@
 							qdel(obj)
 						CHECK_TICK
 					if(!i)
-						to_chat(usr, "No instances of this type exist")
+						to_chat(usr, "No instances of this type exist.")
 						return
 					log_admin("[key_name(usr)] deleted all instances of type [o_type] ([i] instances deleted) ")
-					message_admins(SPAN_NOTICE("[key_name(usr)] deleted all instances of type [o_type] ([i] instances deleted) "))
+					message_admins(SPAN_NOTICE("[key_name(usr)] deleted all instances of type [o_type] ([i] instances deleted.)"))
 				if(DELETE_TYPE_AND_SUBTYPES)
 					var/i = 0
 					for(var/obj in world)
@@ -57,10 +57,10 @@
 							qdel(obj)
 						CHECK_TICK
 					if(!i)
-						to_chat(usr, "No instances of this type exist")
+						to_chat(usr, "No instances of this type exist.")
 						return
 					log_admin("[key_name(usr)] deleted all instances of type or subtype of [o_type] ([i] instances deleted) ")
-					message_admins(SPAN_NOTICE("[key_name(usr)] deleted all instances of type or subtype of [o_type] ([i] instances deleted) "))
+					message_admins(SPAN_NOTICE("[key_name(usr)] deleted all instances of type or subtype of [o_type] ([i] instances deleted.)"))
 
 #undef DELETE_STRICT
 #undef DELETE_TYPE_AND_SUBTYPES

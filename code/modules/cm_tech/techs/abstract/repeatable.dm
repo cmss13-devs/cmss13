@@ -25,7 +25,7 @@
 		return
 
 	if(next_purchase > world.time)
-		to_chat(M, SPAN_WARNING("You recently purchased this! Wait [DisplayTimeText(next_purchase - world.time, 0.1)]"))
+		to_chat(M, SPAN_WARNING("You recently purchased this! Wait [DisplayTimeText(next_purchase - world.time, 0.1)]."))
 		return FALSE
 
 /datum/tech/repeatable/on_unlock()

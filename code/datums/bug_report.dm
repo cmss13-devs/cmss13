@@ -27,7 +27,7 @@
 	tgui_alert(user, "Unable to create a bug report at this time, please create the issue directly through our GitHub repository instead")
 	var/url = CONFIG_GET(string/githuburl)
 	if(!url)
-		to_chat(user, SPAN_WARNING("The configuration is not properly set, unable to open external link"))
+		to_chat(user, SPAN_WARNING("The configuration is not properly set, unable to open external link."))
 		return
 
 	if(tgui_alert(user, "This will open the GitHub in your browser. Are you sure?", "Confirm", list("Yes", "No")) == "Yes")
@@ -172,7 +172,7 @@
 	switch(action)
 		if("confirm")
 			if(selected_confirm) // prevent someone from spamming the approve button
-				to_chat(user, SPAN_WARNING("you have already confirmed the submission, please wait a moment for the API to process your submission."))
+				to_chat(user, SPAN_WARNING("You have already confirmed the submission, please wait a moment for the API to process your submission."))
 				return
 			bug_report_data = sanitize_payload(params)
 			selected_confirm = TRUE

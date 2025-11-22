@@ -195,12 +195,12 @@ K9 SCANNER
 
 	user.show_message(SPAN_NOTICE("<B>Results:</B>"), 1)
 	if(abs(env_pressure - ONE_ATMOSPHERE) < 10)
-		user.show_message(SPAN_NOTICE("Pressure: [round(env_pressure,0.1)] kPa"), 1)
+		user.show_message(SPAN_NOTICE("Pressure: [round(env_pressure,0.1)] kPa."), 1)
 	else
-		user.show_message(SPAN_DANGER("Pressure: [round(env_pressure,0.1)] kPa"), 1)
+		user.show_message(SPAN_DANGER("Pressure: [round(env_pressure,0.1)] kPa."), 1)
 	if(env_pressure > 0)
-		user.show_message(SPAN_NOTICE("Gas Type: [env_gas]"), 1)
-		user.show_message(SPAN_NOTICE("Temperature: [floor(env_temp-T0C)]&deg;C"), 1)
+		user.show_message(SPAN_NOTICE("Gas Type: [env_gas]."), 1)
+		user.show_message(SPAN_NOTICE("Temperature: [floor(env_temp-T0C)]&deg;C."), 1)
 
 	src.add_fingerprint(user)
 	return
@@ -298,7 +298,7 @@ K9 SCANNER
 				else
 					recent_fail = 1
 		if(dat)
-			to_chat(user, SPAN_NOTICE(" Chemicals found: [dat]"))
+			to_chat(user, SPAN_NOTICE(" Chemicals found: [dat]."))
 		else
 			to_chat(user, SPAN_NOTICE(" No active chemical agents found in [O]."))
 	else
@@ -353,7 +353,7 @@ K9 SCANNER
 	if(istype(O, /obj/item/ammo_magazine/flamer_tank))
 		var/obj/item/ammo_magazine/flamer_tank/tank = O
 		if(!length(tank.reagents.reagent_list))
-			to_chat(user, SPAN_NOTICE("No fuel detected in [O]"))
+			to_chat(user, SPAN_NOTICE("No fuel detected in [O]."))
 			return
 		var/result
 		var/datum/reagent/chem = tank.reagents.reagent_list[1]
@@ -361,7 +361,7 @@ K9 SCANNER
 		result += SPAN_BLUE("<br>Intensity: [min(chem.intensityfire, tank.max_intensity)]")
 		result += SPAN_BLUE("<br>Duration: [min(chem.durationfire, tank.max_duration)]")
 		result += SPAN_BLUE("<br>Range: [min(chem.rangefire, tank.max_range)]")
-		to_chat(user, SPAN_NOTICE("[result]"))
+		to_chat(user, SPAN_NOTICE("[result]."))
 		return
 
 	if(istype(O,/obj/item/explosive))
@@ -397,7 +397,7 @@ K9 SCANNER
 			dat += SPAN_ORANGE("<br>EXPLOSIVE HAZARD: ignition will create explosive detonation.<br>Potential detonation power: [min(ex_potential, holder.max_ex_power)]")
 		if(int_potential)
 			dat += SPAN_RED("<br>FIRE HAZARD: ignition will create chemical fire.<br>Expected fire intensity rating of [min(max(int_potential,holder.min_fire_int),holder.max_fire_int)] in a [min(max(rad_potential,holder.min_fire_rad),holder.max_fire_rad)] meter radius.")
-		to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
+		to_chat(user, SPAN_NOTICE("Chemicals found: [dat]."))
 	else
 		to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
 	return

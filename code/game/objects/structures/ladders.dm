@@ -299,7 +299,7 @@
 
 	if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		user.visible_message(SPAN_WARNING("[user] throws [item] [ladder_dir_name] [src]!"),
-		SPAN_WARNING("You throw [item] [ladder_dir_name] [src]"))
+		SPAN_WARNING("You throw [item] [ladder_dir_name] [src]."))
 		user.drop_held_item()
 		item.forceMove(ladder_dest.loc)
 		item.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))

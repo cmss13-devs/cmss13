@@ -39,7 +39,7 @@
 	else
 		arm_equipment(H, /datum/equipment_preset/uscm_event/provost/enforcer, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an Enforcer of the USCM Provost Office!"))
-		to_chat(H, SPAN_ROLE_BODY("You are being assigned as part escort, part assistant and part law enforcer to the Inspector that is being dispatched to the [MAIN_SHIP_NAME]"))
+		to_chat(H, SPAN_ROLE_BODY("You are being assigned as part escort, part assistant and part law enforcer to the Inspector that is being dispatched to the [MAIN_SHIP_NAME]."))
 		to_chat(H, SPAN_ROLE_BODY("You are not expected to enforce ML on the ship, however the Inspector may ask you to perform MP duties as part of their investigation in which case you are obligated to act like any other MP."))
 		to_chat(H, SPAN_WARNING("This role requires familiarity with Marine Law and Standard Operating Procedure. Ahelp if you have any questions or wish to surrender the character to someone else."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

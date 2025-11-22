@@ -64,7 +64,7 @@
 				M.reagents.add_reagent("nutriment", 1)
 		else
 			for(var/mob/O in viewers(M, null))
-				O.show_message(SPAN_NOTICE("[user] feeds [M] some [loaded] from \the [src]"), SHOW_MESSAGE_VISIBLE)
+				O.show_message(SPAN_NOTICE("[user] feeds [M] some [loaded] from \the [src]."), SHOW_MESSAGE_VISIBLE)
 				M.reagents.add_reagent("nutriment", 1)
 		playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)
 		overlays.Cut()

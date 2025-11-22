@@ -188,7 +188,7 @@
 	set_light(luminosity_strength)
 
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] hums to life and emits several beeps.")]")
-	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] buzzes in a monotone voice: 'Default systems initiated'")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] buzzes in a monotone voice: 'Default systems initiated.'")]")
 	update_minimap_icon()
 	start_processing()
 	set_range()
@@ -864,7 +864,7 @@
 			return
 
 		var/rounds_used = ammo.inherent_reload(user)
-		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage"))
+		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage."))
 		playsound(loc, 'sound/weapons/handling/m40sd_reload.ogg', 25, 1)
 		update_icon()
 		return FALSE

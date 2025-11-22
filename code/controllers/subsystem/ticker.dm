@@ -199,7 +199,7 @@ SUBSYSTEM_DEF(ticker)
 				var/fallback_mode = CONFIG_GET(string/gamemode_default)
 				SSticker.save_mode(fallback_mode)
 				GLOB.master_mode = fallback_mode
-				to_chat(world, SPAN_BOLDNOTICE("Notice: The Gamemode for next round has been set to [fallback_mode]"))
+				to_chat(world, SPAN_BOLDNOTICE("Notice: The Gamemode for next round has been set to [fallback_mode]."))
 				handle_map_reboot()
 		else
 			to_chat(world, "Attempting again...")

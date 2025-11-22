@@ -208,7 +208,7 @@
 			heardword = copytext(heardword,2)
 		if(copytext(heardword,-1) in punctuation)
 			heardword = copytext(heardword,1,length(heardword))
-		heard = SPAN_LOCALSAY("...You hear something about...[heardword]")
+		heard = SPAN_LOCALSAY("...You hear something about...[heardword].")
 
 	else
 		heard = SPAN_LOCALSAY("...<i>You almost hear someone talking</i>...")

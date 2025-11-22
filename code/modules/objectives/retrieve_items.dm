@@ -80,7 +80,7 @@
 	activate()
 
 /datum/cm_objective/retrieve_item/fulton/get_clue()
-	return SPAN_DANGER("Retrieve lost fulton of [target_item] in [initial_area]")
+	return SPAN_DANGER("Retrieve lost fulton of [target_item] in [initial_area].")
 
 /datum/cm_objective/retrieve_item/fulton/get_tgui_data()
 	RegisterSignal(target_item, COMSIG_PARENT_PREQDELETED, PROC_REF(clean_up_fulton), override = TRUE)

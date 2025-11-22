@@ -80,7 +80,7 @@
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(1, user))
 			if(health < maxhealth)
-				user.visible_message(SPAN_NOTICE("[user] starts to repair [src]."),SPAN_NOTICE("You start to repair [src]"))
+				user.visible_message(SPAN_NOTICE("[user] starts to repair [src]."),SPAN_NOTICE("You start to repair [src]."))
 				if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					if(!src || !WT.isOn())
 						return

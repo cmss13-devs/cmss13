@@ -127,8 +127,8 @@
 
 	if(M.hivenumber != hivenumber)
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENOWARNING("[M] crushes \the [src]"),
-			SPAN_XENOWARNING("We crush \the [src]"))
+		M.visible_message(SPAN_XENOWARNING("[M] crushes \the [src]."),
+			SPAN_XENOWARNING("We crush \the [src]."))
 		Burst(TRUE)
 		return XENO_ATTACK_ACTION
 

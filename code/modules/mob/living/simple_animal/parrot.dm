@@ -27,17 +27,17 @@
 
 /mob/living/simple_animal/parrot
 	name = "\improper Parrot"
-	desc = "The parrot squawks, \"It's a Parrot! BAWWK!\""
+	desc = "The parrot squawks, \"I'm a Parrot! RAAAWWK!\""
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "parrot_fly"
 	icon_living = "parrot_fly"
 	icon_dead = "parrot_dead"
 	mob_size = MOB_SIZE_SMALL
 
-	speak = list("Hi","Hello!","Cracker?","BAWWWWK george mellons griffing me")
+	speak = list("Hi","Hello!","Cracker?","BAWWWWK george mellons griffing me!")
 	speak_emote = list("squawks","says","yells")
-	emote_hear = list("squawks","bawks")
-	emote_see = list("flutters its wings")
+	emote_hear = list("squawks","calls loudly", "screeches")
+	emote_see = list("flutters its wings", "bobs its head", "grinds its beak", "pins its eyes")
 
 	speak_chance = 1//1% (1 in 100) chance every tick; So about once per 150 seconds, assuming an average tick is 1.5s
 	turns_per_move = 5
@@ -123,9 +123,9 @@
 				if("ears")
 					if(ears)
 						if(length(available_channels))
-							src.say("[pick(available_channels)] BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
+							src.say("[pick(available_channels)] BAWWWWWK! GIMME MY HEADSET BACK! BAWKKKKK!")
 						else
-							src.say("BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
+							src.say("BAWWWWWK! GIMME MY HEADSET BACK! BAWKKKKK!")
 						ears.forceMove(src.loc)
 						ears = null
 						for(var/possible_phrase in speak)
@@ -562,7 +562,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, SPAN_DANGER("You are already holding [held_item]"))
+		to_chat(src, SPAN_DANGER("You are already holding [held_item]."))
 		return 1
 
 	for(var/obj/item/I in view(1,src))
@@ -590,7 +590,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, SPAN_DANGER("You are already holding [held_item]"))
+		to_chat(src, SPAN_DANGER("You are already holding [held_item]."))
 		return 1
 
 	var/obj/item/stolen_item = null

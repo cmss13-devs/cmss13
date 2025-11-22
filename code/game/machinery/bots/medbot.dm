@@ -188,7 +188,7 @@
 	if (istype(W, /obj/item/card/id))
 		if (src.allowed(user) && !open)
 			src.locked = !src.locked
-			to_chat(user, SPAN_NOTICE("Controls are now [src.locked ? "locked." : "unlocked."]"))
+			to_chat(user, SPAN_NOTICE("Controls are now [src.locked ? "locked" : "unlocked"]."))
 			src.updateUsrDialog()
 		else
 			if(open)

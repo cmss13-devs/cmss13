@@ -427,7 +427,7 @@
 					var/obj/item/card/id/dogtag/DT = wear_id
 					if(!DT.dogtag_taken)
 						if(stat == DEAD)
-							to_chat(usr, SPAN_NOTICE("You take [src]'s information tag, leaving the ID tag"))
+							to_chat(usr, SPAN_NOTICE("You take [src]'s information tag, leaving the ID tag."))
 							DT.dogtag_taken = TRUE
 							DT.icon_state = DT.tags_taken_icon
 							var/obj/item/dogtag/D = new(loc)
@@ -715,7 +715,7 @@
 										to_chat(usr, R.fields["com_[counter]"])
 										counter++
 									if(counter == 1)
-										to_chat(usr, "No comment found")
+										to_chat(usr, "No comment found.")
 									to_chat(usr, "<a href='byond://?src=\ref[src];medrecordadd=1'>\[Add comment\]</a>")
 
 			if(!read)
@@ -1042,7 +1042,7 @@
 	var/msg
 	///Is the target the user or somebody else?
 	var/self = (target == src)
-	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself." : "start analyzing [target.name]."]"))
+	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself." : "start analyzing [target.name]."]."))
 
 	if(self)
 		var/list/broken_limbs = target.get_broken_limbs() - list("chest","head","groin")
@@ -1688,7 +1688,7 @@
 	if(species.can_shred(src))
 		can_break_cuffs = TRUE
 	if(can_break_cuffs) //Don't want to do a lot of logic gating here.
-		to_chat(usr, SPAN_DANGER("You attempt to break [restraint]. (This will take around 5 seconds and you need to stand still)"))
+		to_chat(usr, SPAN_DANGER("You attempt to break [restraint]. (This will take around 5 seconds and you need to stand still.)"))
 		for(var/mob/O in viewers(src))
 			O.show_message(SPAN_DANGER("<B>[src] is trying to break [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
 		if(!do_after(src, 50, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
@@ -1708,7 +1708,7 @@
 			handcuff_update()
 	else
 		var/displaytime = max(1, floor(breakouttime / 600)) //Minutes
-		to_chat(src, SPAN_WARNING("You attempt to remove [restraint]. (This will take around [displaytime] minute(s) and you need to stand still)"))
+		to_chat(src, SPAN_WARNING("You attempt to remove [restraint]. (This will take around [displaytime] minute(s) and you need to stand still.)"))
 		for(var/mob/O in viewers(src))
 			O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [restraint]!</B>"), 1)
 		if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))

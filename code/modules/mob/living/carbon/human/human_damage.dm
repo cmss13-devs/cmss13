@@ -231,14 +231,12 @@
  * It automatically updates damage overlays if necessary.
  * It automatically updates health status.
  */
-/mob/living/carbon/human/heal_limb_damage(brute, burn, robo_repair = FALSE, chemical = FALSE, salve = FALSE)
+/mob/living/carbon/human/heal_limb_damage(brute, burn, robo_repair = FALSE, chemical = FALSE)
 	var/list/obj/limb/parts = get_damaged_limbs(brute,burn,chemical)
 	if(!length(parts))
 		return
 
 	var/obj/limb/picked = pick(parts)
-	if(salve)
-		picked.salve()
 	picked.heal_damage(brute, burn, robo_repair, chemical)
 
 

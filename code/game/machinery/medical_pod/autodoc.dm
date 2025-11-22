@@ -169,7 +169,7 @@
 					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Trauma repair surgery complete.")
 			if(heal_burn)
 				if(occupant.getFireLoss() > 0)
-					occupant.heal_limb_damage(0, 3, robo_repair=TRUE, salve = TRUE)
+					occupant.heal_limb_damage(0, 3, robo_repair=TRUE)
 					if(prob(10))
 						visible_message("\The [src] whirrs and clicks as it grafts synthetic skin.")
 						to_chat(occupant, SPAN_INFO("You feel your burned flesh being sliced away and replaced."))

@@ -123,6 +123,6 @@
 		"landmark": "panic_room",
 		"chance": 1.0,
 		"path": "standalone/clfraid.dmm",
-        "when": { "panic_room": "clfraid" }
+        "when": { "panic_room": "clfraid", "$population" : ["Midpop", "Highpop"] }
 	}
 ]

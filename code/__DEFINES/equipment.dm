@@ -606,6 +606,27 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define PHONE_DND_OFF 0
 #define PHONE_DND_FORBIDDEN -1
 
+
+//=================================================
+// weight multiplier defines
+//=================================================
+
+#define STORAGE_WEIGHT_DEFAULT 0.05
+#define STORAGE_WEIGHT_LIGHT 0.01
+#define STORAGE_WEIGHT_MEDIUM 0.15
+#define STORAGE_WEIGHT_HEAVY 0.25
+
+#define AMMO_BOX_WEIGHT_DEFAULT 0.0015
+#define AMMO_BOX_WEIGHT_MEDIUM 0.002
+#define AMMO_BOX_WEIGHT_HEAVY 0.005
+
+#define MAG_BOX_WEIGHT_DEFAULT 0.05
+#define MAG_BOX_WEIGHT_LIGHT 0.01
+#define MAG_BOX_WEIGHT_MEDIUM 0.10
+#define MAG_BOX_WEIGHT_HEAVY 0.15
+#define MAG_BOX_WEIGHT_CUMBERSOME 0.20
+
+
 ///Get appropriate SLOT_IN_X for given slot
 /proc/slot_to_in_storage_slot(slot)
 	switch(slot)

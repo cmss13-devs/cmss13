@@ -287,7 +287,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/corporate/detainer, WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/wy/pmc_rifle, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/zipcuffs/small, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/zipcuffs, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash, WEAR_IN_BACK)
 
 /datum/equipment_preset/pmc/pmc_detainer/get_antag_clothing_equipment()
@@ -427,7 +427,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/es7/tactical, WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/sec/full, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/zipcuffs/small, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/zipcuffs, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15/rubber, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/sebb, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/flashbangs, WEAR_IN_BACK)

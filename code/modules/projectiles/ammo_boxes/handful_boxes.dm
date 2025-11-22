@@ -11,6 +11,7 @@
 	magazine_type = /obj/item/ammo_magazine/shotgun/slugs
 	num_of_magazines = 100
 	handfuls = TRUE
+	weight_multiplier = MAG_BOX_WEIGHT_LIGHT
 
 /obj/item/ammo_box/magazine/shotgun/update_icon()
 	if(overlays)
@@ -142,6 +143,7 @@
 	num_of_magazines = 300
 	handfuls = TRUE
 	handful = "rounds"
+	weight_multiplier = AMMO_BOX_WEIGHT_HEAVY
 
 /obj/item/ammo_box/magazine/lever_action/empty
 	empty = TRUE

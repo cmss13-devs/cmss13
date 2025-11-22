@@ -310,15 +310,27 @@ export const RADIO_PREFIXES = {
   },
   ':y ': {
     id: 'wy',
-    label: 'W-Y',
+    label: 'W-Y Corp',
   },
   '.y ': {
     id: 'wy',
-    label: 'W-Y',
+    label: 'W-Y Corp',
   },
   '#y ': {
-    id: 'wy',
-    label: 'W-Y',
+    id: 'wysec',
+    label: 'W-Y Sec',
+  },
+  ':1 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
+  },
+  '.1 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
+  },
+  '#1 ': {
+    id: 'wypub',
+    label: 'W-Y Pub',
   },
   ':z ': {
     id: 'highcom',

@@ -1124,29 +1124,56 @@
 /turf/open/floor/almayer/silver
 	icon_state = "silver"
 
+/turf/open/floor/almayer/silver/no_build
+	allow_construction = FALSE
+
 /turf/open/floor/almayer/silver/north
 	dir = NORTH
+
+/turf/open/floor/almayer/silver/north/no_build
+	allow_construction = FALSE
 
 /turf/open/floor/almayer/silver/south
 	dir = SOUTH
 
+/turf/open/floor/almayer/silver/south/no_build
+	allow_construction = FALSE
+
 /turf/open/floor/almayer/silver/east
 	dir = EAST
+
+/turf/open/floor/almayer/silver/east/no_build
+	allow_construction = FALSE
 
 /turf/open/floor/almayer/silver/west
 	dir = WEST
 
+/turf/open/floor/almayer/silver/west/no_build
+	allow_construction = FALSE
+
 /turf/open/floor/almayer/silver/northeast
 	dir = NORTHEAST
+
+/turf/open/floor/almayer/silver/northeast/no_build
+	allow_construction = FALSE
 
 /turf/open/floor/almayer/silver/northwest
 	dir = NORTHWEST
 
+/turf/open/floor/almayer/silver/northwest/no_build
+	allow_construction = FALSE
+
 /turf/open/floor/almayer/silver/southeast
 	dir = SOUTHEAST
 
+/turf/open/floor/almayer/silver/southeast/no_build
+	allow_construction = FALSE
+
 /turf/open/floor/almayer/silver/southwest
 	dir = SOUTHWEST
+
+/turf/open/floor/almayer/silver/southwest/no_build
+	allow_construction = FALSE
 
 /turf/open/floor/almayer/silver2
 	icon_state = "silver2"
@@ -1238,14 +1265,26 @@
 /turf/open/floor/almayer/silvercorner/north
 	dir = NORTH
 
+/turf/open/floor/almayer/silvercorner/north/no_build
+	allow_construction = FALSE
+
 /turf/open/floor/almayer/silvercorner/south
 	dir = SOUTH
+
+/turf/open/floor/almayer/silvercorner/south/no_build
+	allow_construction = FALSE
 
 /turf/open/floor/almayer/silvercorner/east
 	dir = EAST
 
+/turf/open/floor/almayer/silvercorner/east/no_build
+	allow_construction = FALSE
+
 /turf/open/floor/almayer/silvercorner/west
 	dir = WEST
+
+/turf/open/floor/almayer/silvercorner/west/no_build
+	allow_construction = FALSE
 
 /turf/open/floor/almayer/silvercornersmooth
 	icon_state = "silvercorner_smooth"
@@ -1567,6 +1606,9 @@
 /turf/open/floor/almayer/cargo
 	icon_state = "cargo"
 
+/turf/open/floor/almayer/cargo/no_build
+	allow_construction = FALSE
+
 /turf/open/floor/almayer/cargo/southwest
 	dir = SOUTHWEST
 
@@ -1584,6 +1626,9 @@
 
 /turf/open/floor/almayer/plating
 	icon_state = "plating"
+
+/turf/open/floor/almayer/plating/no_build
+	allow_construction = FALSE
 
 /turf/open/floor/almayer/plating/northeast
 	dir = NORTHEAST
@@ -1704,26 +1749,50 @@
 /turf/open/floor/almayer/flooredge/north
 	dir = NORTH
 
+/turf/open/floor/almayer/flooredge/north/no_build
+	allow_construction = FALSE
+
 /turf/open/floor/almayer/flooredge/south
 	dir = SOUTH
+
+/turf/open/floor/almayer/flooredge/south/no_build
+	allow_construction = FALSE
 
 /turf/open/floor/almayer/flooredge/east
 	dir = EAST
 
+/turf/open/floor/almayer/flooredge/east/no_build
+	allow_construction = FALSE
+
 /turf/open/floor/almayer/flooredge/west
 	dir = WEST
+
+/turf/open/floor/almayer/flooredge/west/no_build
+	allow_construction = FALSE
 
 /turf/open/floor/almayer/flooredge/northeast
 	dir = NORTHEAST
 
+/turf/open/floor/almayer/flooredge/northeast/no_build
+	allow_construction = FALSE
+
 /turf/open/floor/almayer/flooredge/northwest
 	dir = NORTHWEST
+
+/turf/open/floor/almayer/flooredge/northwest/no_build
+	allow_construction = FALSE
 
 /turf/open/floor/almayer/flooredge/southwest
 	dir = SOUTHWEST
 
+/turf/open/floor/almayer/flooredge/southwest/no_build
+	allow_construction = FALSE
+
 /turf/open/floor/almayer/flooredge/southeast
 	dir = SOUTHEAST
+
+/turf/open/floor/almayer/flooredge/southeast/no_build
+	allow_construction = FALSE
 
 /turf/open/floor/almayer/flooredgesmooth
 	icon_state = "floor_edge_smooth"
@@ -1786,6 +1855,9 @@
 
 /turf/open/floor/almayer/mono
 	icon_state = "mono"
+
+/turf/open/floor/almayer/mono/no_build
+	allow_construction = FALSE
 
 /turf/open/floor/almayer/plate
 	icon_state = "plate"

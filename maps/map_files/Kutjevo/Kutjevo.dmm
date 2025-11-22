@@ -1503,9 +1503,7 @@
 	dir = 1
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/power)
@@ -2478,7 +2476,7 @@
 /turf/open/gm/river/desert/deep/toxic,
 /area/kutjevo/interior/power)
 "bVI" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/storage/box/stompers,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction/north)
@@ -2856,7 +2854,7 @@
 /area/kutjevo/interior/power)
 "cvF" = (
 /obj/structure/reagent_dispensers/tank/water{
-	desc = "A watertank. The label has been written over with the sequence 2---"
+	desc = "A water tank. The label has been written over with the sequence 2---"
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles/north,
 /area/kutjevo/exterior/Northwest_Colony)
@@ -4082,7 +4080,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/colony_central/mine_elevator)
 "ejT" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/oob/dev_room)
 "ekh" = (
@@ -5119,7 +5117,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_dunes)
 "fSK" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/toy/handcard/aceofspades,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_pad)
@@ -5198,9 +5196,7 @@
 /area/kutjevo/interior/colony_northeast)
 "fYr" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/spring)
@@ -5266,7 +5262,7 @@
 /turf/open/floor/kutjevo/colors/green/tile,
 /area/kutjevo/interior/complex/botany/east)
 "gew" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction/north)
 "geQ" = (
@@ -9235,9 +9231,7 @@
 	pixel_y = 13
 	},
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/spring)
@@ -11266,9 +11260,7 @@
 /area/kutjevo/interior/complex/med/operating)
 "pvL" = (
 /obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 8;
-	health = 25000
+	dir = 8
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/power)
@@ -12018,7 +12010,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "qIi" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction/north)
@@ -14452,7 +14444,7 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
 "uDm" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction/north)
@@ -15728,7 +15720,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
 "wAo" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /obj/item/toy/deck/uno,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction/north)
@@ -16225,7 +16217,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "xra" = (
-/obj/structure/surface/table/gamblingtable,
+/obj/structure/surface/table/woodentable/gamblingtable,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/oob/dev_room)
 "xrb" = (

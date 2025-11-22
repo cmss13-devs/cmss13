@@ -115,6 +115,6 @@ do { \
 	)                        \
 
 #define LIGHTING_NO_UPDATE 0
-#define LIGHTING_VIS_UPDATE 1
-#define LIGHTING_CHECK_UPDATE 2
+#define LIGHTING_CHECK_UPDATE 1
+#define LIGHTING_VIS_UPDATE 2
 #define LIGHTING_FORCE_UPDATE 3

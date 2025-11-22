@@ -67,6 +67,34 @@
 		return
 	return locate(T.x, T.y, T.z + offset)
 
+// Same as get_turf_below, but for multiple turfs from the same z level
+/datum/controller/subsystem/mapping/proc/get_same_z_turfs_below(list/turf/turfs)
+	if (turfs.len < 1)
+		return list()
+	var/turf/first_turf = turfs[1]
+	var/offset = level_trait(first_turf.z, ZTRAIT_DOWN)
+	if(!offset)
+		return list()
+	var/new_z = first_turf.z + offset
+	var/list/turf/new_turfs = list()
+	for(var/turf/T as anything in turfs)
+		new_turfs += locate(T.x, T.y, new_z)
+	return new_turfs
+
+// Same as get_turf_above, but for multiple turfs from the same z level
+/datum/controller/subsystem/mapping/proc/get_same_z_turfs_above(list/turf/turfs)
+	if (turfs.len < 1)
+		return list()
+	var/turf/first_turf = turfs[1]
+	var/offset = level_trait(first_turf.z, ZTRAIT_UP)
+	if(!offset)
+		return list()
+	var/new_z = first_turf.z + offset
+	var/list/turf/new_turfs = list()
+	for(var/turf/T as anything in turfs)
+		new_turfs += locate(T.x, T.y, new_z)
+	return new_turfs
+
 // Prefer not to use this one too often
 /datum/controller/subsystem/mapping/proc/get_station_center()
 	var/station_z = levels_by_trait(ZTRAIT_STATION)[1]

@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed health scans performing new scans just by changing holocard or minimal hud mode"
-  - qol: "Healthscan now autoupdates for ghosts"

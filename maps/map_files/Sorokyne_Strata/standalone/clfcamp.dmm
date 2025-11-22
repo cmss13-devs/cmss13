@@ -29,6 +29,10 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
+"ae" = (
+/obj/effect/landmark/survivor_spawner/clf_synth/soro,
+/turf/open/floor/strata/orange_cover,
+/area/strata/interior/outpost/clf_dorms)
 "af" = (
 /obj/effect/landmark/survivor_spawner/clf/soro,
 /obj/item/ammo_casing,
@@ -1112,6 +1116,10 @@
 	},
 /turf/open/asphalt/cement/cement12,
 /area/strata/interior/outpost/clf_dorms)
+"cZ" = (
+/obj/effect/landmark/survivor_spawner/clf_coordinator/soro,
+/turf/open/floor/wood,
+/area/strata/interior/outpost/clf_office)
 "dk" = (
 /turf/open/floor/wood/wood_broken6,
 /area/strata/interior/outpost/clf_dorms)
@@ -2756,7 +2764,7 @@ Ef
 fR
 xH
 bL
-Sl
+ae
 Sl
 Sl
 xH
@@ -2842,7 +2850,7 @@ cH
 cH
 bA
 cM
-xt
+cZ
 jw
 OF
 ev

@@ -262,3 +262,30 @@
   - bugfix: The .38 revolver can now tactically reload properly.
   realforest2001:
   - rscadd: Added more helmet and backpack options to Synthetic loadout.
+2025-11-22:
+  Drathek:
+  - bugfix: Ghost ears now can hear whispers (but should ignore radio whispers when
+      using ghost radio)
+  - bugfix: Radio transmissions that failed (for a Z with no coms) now are sent to
+      observers with ghost ears
+  - bugfix: Messages from clientless mobs are now ignored even when using ghost ears
+      unless its nearby
+  - balance: Tacmap updates are a global cooldown per faction once again
+  - bugfix: Fixed health scans performing new scans just by changing holocard or minimal
+      hud mode
+  - qol: Healthscan now autoupdates for ghosts
+  - bugfix: Fixed list compiler errors introduced in 516.1670
+  - code_imp: Added glob options for alist
+  - code_imp: Improve autodoc research disk logic
+  - code_imp: override_precedes_definition is now an error because the proc redefinition
+      would otherwise do nothing
+  - rscadd: Join as xeno button can now take over non-ssd afk xenos and now only lists
+      xenos soon to be available in 30s rather than 60s
+  - bugfix: Added a few more checks to join as xeno to ensure neither dead nor deleted
+      xenos are offered
+  - bugfix: The "has ghosted and their body is up for grabs!" event is no longer sent
+      for taking over a xeno (now only when they actually ghost)
+  Git-Nivrak:
+  - bugfix: You can no longer see tiles you shouldn't be able to see while looking
+      up
+  - bugfix: You can no longer look up while zoomed or zoom while looking up

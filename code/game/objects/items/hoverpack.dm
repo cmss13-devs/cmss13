@@ -253,7 +253,7 @@
 
 /obj/item/reagent_container/glass/beaker/reservoir
 	name = "internal propellant tank"
-	desc = "You shouldn't be able to see this"
+	desc = "You shouldn't be able to see this."
 	volume = 90
 	amount_per_transfer_from_this = 10
 

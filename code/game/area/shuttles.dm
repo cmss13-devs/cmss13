@@ -37,7 +37,7 @@
 
 /area/shuttle/transit
 	name = "Hyperspace"
-	desc = "Weeeeee"
+	desc = "Weeeeee."
 	ambience_exterior = 'sound/ambience/shuttle_fly_loop.ogg'
 	base_lighting_alpha = 255
 

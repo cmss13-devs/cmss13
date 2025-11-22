@@ -156,7 +156,7 @@
 
 /datum/admins/proc/toggleaban()
 	set category = "Server"
-	set desc = "Respawn basically"
+	set desc = "Respawn basically."
 	set name = "Toggle Respawn"
 	CONFIG_SET(flag/respawn, !CONFIG_GET(flag/respawn))
 	if (CONFIG_GET(flag/respawn))
@@ -171,7 +171,7 @@
 
 /datum/admins/proc/spawn_atom(object as text)
 	set category = "Debug"
-	set desc = "(atom path) Spawn an atom"
+	set desc = "(atom path) Spawn an atom."
 	set name = "Spawn"
 
 	if(!check_rights(R_SPAWN))
@@ -274,7 +274,7 @@
 		if("Add") //Not doing source choosing here intentionally to make this bit faster to use, you can always vv it.
 			ADD_TRAIT(D,chosen_trait,source)
 		if("Remove")
-			var/specific = input("All or specific source ?", "Trait Remove/Add") as null|anything in list("All","Specific")
+			var/specific = input("All or specific source?", "Trait Remove/Add") as null|anything in list("All","Specific")
 			if(!specific)
 				return
 			switch(specific)

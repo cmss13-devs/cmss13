@@ -2,7 +2,7 @@
 	///unique to every upgrade. not the name of the item. name of the upgrade
 	var/name = "Upgrade."
 	///name of upgrades, not items. Items are at research_upgrades.dm somewhere in item folder.
-	var/desc = "something is broken. yippee!!"
+	var/desc = "Something is broken. yippee!!"
 	///which behavior should this type follow. Should this be completely excluded from the buy menu? should it be one of the dropdown options? or a normal item?
 	var/behavior = RESEARCH_UPGRADE_EXCLUDE_BUY // should this be on the list?
 	/// the price of the upgrade, refer to this: 500 is a runner, 8k is queen. T3 is usually 3k, woyer is 2k.

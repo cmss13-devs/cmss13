@@ -1,6 +1,6 @@
 /obj/structure/bed/sofa
 	name = "Sofa"
-	desc = "Just like Space Ikea would have wanted"
+	desc = "Just like Space Ikea would have wanted."
 	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
 	icon_state = "sofa" //use child icons
 	anchored = TRUE //can't rotate sofas

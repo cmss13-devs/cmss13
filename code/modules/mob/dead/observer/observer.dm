@@ -72,7 +72,7 @@
 
 /mob/dead/observer/verb/toggle_ghostsee()
 	set name = "Toggle Ghost Vision"
-	set desc = "Toggles your ability to see things only ghosts can see, like other ghosts"
+	set desc = "Toggles your ability to see things only ghosts can see, like other ghosts."
 	set category = "Ghost.Settings"
 	ghostvision = !ghostvision
 	if(ghostvision)
@@ -669,7 +669,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/teleport_z_up()
 	set category = "Ghost.Movement"
 	set name = "Move Up"
-	set desc = "Move up a z level"
+	set desc = "Move up a z level."
 
 	var/turf/above = SSmapping.get_turf_above(get_turf(src))
 
@@ -679,7 +679,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/teleport_z_down()
 	set category = "Ghost.Movement"
 	set name = "Move Down"
-	set desc = "Move down a z level"
+	set desc = "Move down a z level."
 
 	var/turf/below = SSmapping.get_turf_below(get_turf(src))
 
@@ -746,7 +746,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/follow_local(mob/target in GLOB.mob_list)
 	set category = "Ghost.Follow"
 	set name = "Follow Local Mob"
-	set desc = "Follow on-screen mob"
+	set desc = "Follow on-screen mob."
 
 	do_observe(target)
 
@@ -804,7 +804,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/verb/dead_teleport_mob() //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"
 	set name = "Teleport to Mob"
-	set desc = "Teleport to a mob"
+	set desc = "Teleport to a mob."
 
 	if(istype(usr, /mob/dead/observer)) //Make sure they're an observer!
 
@@ -952,7 +952,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/verb/view_faxes()
 	set name = "View Sent Faxes"
-	set desc = "View faxes from this round"
+	set desc = "View faxes from this round."
 	set category = "Ghost.View"
 
 	var/list/options = list(

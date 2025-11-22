@@ -1609,7 +1609,7 @@
 /datum/xeno_mark_define
 	var/name = "xeno_declare"
 	var/icon_state = "empty"
-	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother"
+	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother."
 
 /datum/xeno_mark_define/fortify
 	name = "Fortify"

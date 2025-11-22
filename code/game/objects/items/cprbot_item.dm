@@ -1,6 +1,6 @@
 /obj/item/cprbot_item
 	name = "CPRbot"
-	desc = "A compact CPRbot 9000 assembly"
+	desc = "A compact CPRbot 9000 assembly."
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "cprbot"
 	w_class = SIZE_MEDIUM
@@ -37,7 +37,7 @@
 
 /obj/item/cprbot_broken
 	name = "CPRbot"
-	desc = "A compact CPRbot 9000 assembly, it appears to be in bad shape"
+	desc = "A compact CPRbot 9000 assembly, it appears to be in bad shape."
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "cprbot_broken"
 	w_class = SIZE_MEDIUM

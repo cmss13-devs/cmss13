@@ -282,7 +282,7 @@
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka
 	name = "Parent Parka"
-	desc = "A winter coat made to withstand the frigged cold weather of the arctic deserts. W-Y branded Parka"
+	desc = "A winter coat made to withstand the frigged cold weather of the arctic deserts. W-Y branded Parka."
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka/red
 	name = "Security Parka"

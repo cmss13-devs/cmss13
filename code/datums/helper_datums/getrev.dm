@@ -55,7 +55,7 @@ GLOBAL_DATUM_INIT(revdata, /datum/getrev, new)
 CLIENT_VERB(showrevinfo)
 	set category = "OOC"
 	set name = "Show Server Revision"
-	set desc = "Check the current server code revision"
+	set desc = "Check the current server code revision."
 
 	var/list/msg = list("")
 	// Round ID

@@ -1616,7 +1616,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/item/yautja/chain
 	name = "metal chains"
-	desc = "the weld pattern tells you that these chains were made with heavy weights in mind, the sharp edge implies this was also made to pierce."
+	desc = "The weld pattern tells you that these chains were made with heavy weights in mind, the sharp edge implies this was also made to pierce."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "metal_chain"
 	item_state = "metal_chain"

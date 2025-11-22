@@ -582,7 +582,7 @@
 /obj/item/device/binoculars/designator/verb/switch_mode()
 	set category = "Weapons"
 	set name = "Change Laser Setting"
-	set desc = "This will disable the laser, enable the IR laser, or enable the UV laser. IR for airstrikes and UV for Mortars"
+	set desc = "This will disable the laser, enable the IR laser, or enable the UV laser. IR for airstrikes and UV for Mortars."
 	set src in usr
 
 	playsound(src,'sound/machines/click.ogg', 15, 1)

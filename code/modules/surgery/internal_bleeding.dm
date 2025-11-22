@@ -21,7 +21,7 @@
 
 /datum/surgery_step/fix_vein
 	name = "Fix Vein"
-	desc = "mend the damaged blood vessel"
+	desc = "Mend the damaged blood vessel."
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/hemostat1.ogg'

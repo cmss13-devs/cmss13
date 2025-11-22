@@ -254,10 +254,10 @@
 
 /obj/structure/filingcabinet/seeds
 	name = "seeds cabinet"
-	desc = "A large cabinet with drawers. This one is meant for storing seed packets"
+	desc = "A large cabinet with drawers. This one is meant for storing seed packets."
 	allowed_types = list(/obj/item/seeds)
 
 /obj/structure/filingcabinet/disk
 	name = "disk cabinet"
-	desc = "A large cabinet with drawers. This one is meant for storing floral data disks"
+	desc = "A large cabinet with drawers. This one is meant for storing floral data disks."
 	allowed_types = list(/obj/item/disk)

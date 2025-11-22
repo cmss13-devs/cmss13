@@ -124,7 +124,7 @@
 		// total score happens to be the total damage
 		switch(total_score)
 			if(0)
-				damage_desc = "Unknown"
+				damage_desc = "Unknown."
 			if(1 to 5)
 				damage_desc = "<font color='green'>negligible</font>"
 			if(5 to 15)

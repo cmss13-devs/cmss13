@@ -486,7 +486,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "jp" = (
 /obj/structure/desertdam/decals/road_edge,
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 2;
 	id = "dam_checkpoint_west";
 	name = "\improper Checkpoint Lock"
@@ -497,7 +497,7 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 2;
 	id = "dam_checkpoint_west";
 	name = "\improper Checkpoint Lock"
@@ -1885,12 +1885,12 @@
 /turf/open/floor/plating/platingdmg3,
 /area/desert_dam/building/bar/bar)
 "LB" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 2;
 	id = "dam_checkpoint_west";
 	name = "\improper Checkpoint Lock"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "LC" = (
@@ -2156,7 +2156,7 @@
 	},
 /area/desert_dam/building/bar/bar)
 "QN" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
+/obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 2;
 	id = "dam_checkpoint_west";
 	name = "\improper Checkpoint Lock"

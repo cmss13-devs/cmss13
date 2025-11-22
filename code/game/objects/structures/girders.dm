@@ -432,7 +432,7 @@
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/girder/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/girder/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(xeno.caste && xeno.caste.tier < 2 && xeno.claw_type < CLAW_TYPE_VERY_SHARP)
 		return TAILSTAB_COOLDOWN_NONE
 	if(unacidable || unslashable)
@@ -449,6 +449,7 @@
 	else
 		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 #undef STATE_STANDARD

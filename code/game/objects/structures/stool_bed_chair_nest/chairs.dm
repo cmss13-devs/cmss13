@@ -79,7 +79,7 @@
 	if(stacked_size)
 		stack_collapse()
 
-/obj/structure/bed/chair/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+/obj/structure/bed/chair/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	. = ..()
 	if(stacked_size)
 		stack_collapse()

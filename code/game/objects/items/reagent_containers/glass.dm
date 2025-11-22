@@ -3,8 +3,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /obj/item/reagent_container/glass
-	name = " "
-	desc = " "
+	name = "glass bottle"
+	desc = "A glass bottle."
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
@@ -378,7 +378,7 @@
 	matter = list("glass" = 30000)
 	volume = 500
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,300)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,250,300,500)
 
 
 /obj/item/reagent_container/glass/beaker/vial
@@ -616,7 +616,7 @@
 	matter = list("metal" = 2000)
 	w_class = SIZE_MEDIUM
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(10,20,30,60,120)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,100,120)
 	volume = 120
 	flags_atom = FPRINT|OPENCONTAINER
 
@@ -685,7 +685,7 @@
 	matter = list("metal" = 4000)
 	w_class = SIZE_LARGE
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(10,20,30,60,120,240)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,100,120,150,240)
 	volume = 240
 	flags_atom = FPRINT|OPENCONTAINER
 
@@ -696,6 +696,7 @@
 	item_state = "janibucket"
 	matter = list("metal" = 8000)
 	volume = 300
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,75,100,120,150,240,300)
 	w_class = SIZE_LARGE
 
 

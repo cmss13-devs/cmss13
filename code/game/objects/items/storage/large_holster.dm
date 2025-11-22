@@ -42,15 +42,6 @@
 		else if(src == user.s_store)
 			user.update_inv_s_store()
 
-/obj/item/storage/large_holster/equipped(mob/user, slot)
-	if(slot == WEAR_BACK || slot == WEAR_WAIST || slot == WEAR_J_STORE)
-		mouse_opacity = MOUSE_OPACITY_OPAQUE //so it's easier to click when properly equipped.
-	..()
-
-/obj/item/storage/large_holster/dropped(mob/user)
-	mouse_opacity = initial(mouse_opacity)
-	..()
-
 /obj/item/storage/large_holster/_item_insertion(obj/item/W, prevent_warning = 0)
 	..()
 	if(drawSound)

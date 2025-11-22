@@ -506,6 +506,8 @@
 
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 
+	/// Makes items easier to click on when equipped
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
 
 	appearance_flags |= NO_CLIENT_COLOR //So that saturation/desaturation etc. effects don't hit inventory.
 	if(LAZYLEN(uniform_restricted))
@@ -518,6 +520,8 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot)
+
+	mouse_opacity = initial(mouse_opacity)
 
 	// Unregister first so as not to have to handle our own event
 	UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)

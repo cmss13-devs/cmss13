@@ -113,15 +113,15 @@
 /datum/behavior_delegate/despoiler_base/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))
 		return original_damage
-
+	var/datum/effects/acid/acid_effect = locate() in target_carbon.effects_list
 	if (next_slash_buffed)
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, covering [target_carbon] in acid!"))
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a burning pain as [bound_xeno] slashes you, covering you in acid!"))
-		var/datum/effects/acid/acid_effect = locate() in target_carbon.effects_list
+
 		if(acid_effect)
 			acid_effect.enhance_acid(super_acid = TRUE)
 			return original_damage
-
+	if(!acid_effect)
 		new /datum/effects/acid/(target_carbon)
 
 	return original_damage

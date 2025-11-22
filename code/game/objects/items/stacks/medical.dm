@@ -266,8 +266,9 @@
 				//If a suture datum exists, apply half the damage as grafts. This ensures consistency in healing amounts.
 				if(SEND_SIGNAL(affecting, COMSIG_LIMB_ADD_SUTURES, FALSE, TRUE, heal_amt * 0.5))
 					heal_amt *= 0.5
-				affecting.heal_damage(burn = heal_amt)
 				affecting.status &= ~LIMB_THIRD_DEGREE_BURNS
+				affecting.heal_damage(burn = heal_amt)
+
 				use(1)
 			if(WOUNDS_ALREADY_TREATED)
 				to_chat(user, SPAN_WARNING("The burns on [possessive] [affecting.display_name] have already been treated."))

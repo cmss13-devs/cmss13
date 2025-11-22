@@ -217,8 +217,7 @@
 	var/obj/limb/take_blast = pick(limbs)
 	if(take_blast)
 		update |= take_blast.take_damage(b_loss * 0.5, f_loss * 0.5, used_weapon = "Explosive blast", attack_source = attack_source)
-	pain?.apply_pain(b_loss * 0.5, BRUTE)
-	pain?.apply_pain(f_loss * 0.5, BURN)
+	pain?.recalculate_pain()
 
 	//Distribute the remaining half all limbs equally
 	b_loss *= 0.5
@@ -249,8 +248,7 @@
 			if("l_arm")
 				limb_multiplier = 0.05
 		update |= temp.take_damage(b_loss * limb_multiplier, f_loss * limb_multiplier, used_weapon = weapon_message, attack_source = attack_source)
-		pain.apply_pain(b_loss * limb_multiplier, BRUTE)
-		pain.apply_pain(f_loss * limb_multiplier, BURN)
+		pain.recalculate_pain()
 	if(update)
 		UpdateDamageIcon()
 	return TRUE

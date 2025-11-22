@@ -162,11 +162,59 @@
 	store_mobs = FALSE
 	wall_mounted = TRUE
 
-
 /obj/structure/closet/secure_closet/surgical/Initialize()
 	. = ..()
 	new /obj/item/storage/surgical_tray(src)
 	new /obj/item/roller/surgical(src)
+
+/obj/structure/closet/secure_closet/surgical/emergency
+	name = "emergency surgical equipment cabinet"
+	desc = "A hyper-safe, self-sterilizing, wall-mounted cabinet containing extra surgical beds, surgical webbing vests, and portable dialysis machines for doctors who suddenly need to evacuate the medical bay but are still in active duty on the ship. It only unlocks itself for doctors during dire emergencies."
+	icon_state = "e-surgical_wall_locked"
+	icon_closed = "e-surgical_wall_unlocked"
+	icon_locked = "e-surgical_wall_locked"
+	icon_opened = "e-surgical_wall_open"
+	icon_broken = "e-surgical_wall_spark"
+	req_access = null //a proc handles it unlocking itself
+	health = null	// Unbreakable. This is guaranteed to give doctors a last chance to do their job during hijack.
+	unacidable = TRUE //fuck you, acid rouny
+	unslashable = TRUE //fuck you, rav
+	var/hijack = FALSE //can't open this when it's not hijack
+
+/obj/structure/closet/secure_closet/surgical/emergency/Initialize()
+	. = ..()
+	new /obj/item/storage/internal/accessory/surg_vest/equipped(src) //one for each doctor slot
+	new /obj/item/storage/internal/accessory/surg_vest/equipped(src)
+	new /obj/item/storage/internal/accessory/surg_vest/equipped(src)
+	new /obj/item/storage/internal/accessory/surg_vest/equipped(src)
+	new /obj/item/roller/surgical(src)
+	new /obj/item/roller/surgical(src)
+	new /obj/item/roller/surgical(src)
+	new /obj/item/roller/surgical(src)
+	new /obj/item/tool/portadialysis(src) //one for each doctor slot
+	new /obj/item/tool/portadialysis(src)
+	new /obj/item/tool/portadialysis(src)
+	new /obj/item/tool/portadialysis(src)
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_UNSCHEDULED_DROPSHIP_DEPARTURE_DETECTED, PROC_REF(all_docs_are_field_docs))
+	return
+
+/obj/structure/closet/secure_closet/surgical/emergency/togglelock(mob/living/user)
+	if(hijack == FALSE)
+		if(user.job in JOB_DOCTOR_ROLES_LIST) //Nobody can open this if hijack == FALSE.
+			to_chat(user, SPAN_WARNING("As medical staff, you may only toggle this lock during evacuation."))
+		else
+			to_chat(user, SPAN_WARNING("You do not have access."))
+	else
+		if(user.job in JOB_DOCTOR_ROLES_LIST)
+			return ..()
+		to_chat(user, SPAN_WARNING("You do not have access."))
+
+/obj/structure/closet/secure_closet/surgical/emergency/proc/all_docs_are_field_docs() //A DROPSHIP HAS BEEN HIJACKED! OPEN DIS BITCH UP!
+	locked = FALSE //OPEN THE LOCKERRRR
+	update_icon() // to show the locker is unlocked after it unlocked itself.
+	hijack = TRUE
+	req_access = list(ACCESS_MARINE_MEDBAY) //ALL Y'ALL FOB MEDICS NOW!
 
 /obj/structure/closet/secure_closet/professor_dummy
 	name = "professor dummy cabinet"

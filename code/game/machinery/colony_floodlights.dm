@@ -149,6 +149,10 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 			if(machine.is_on != is_on)
 				machine.set_is_on(is_on)
 
+/obj/structure/machinery/colony_floodlight_switch/proc/toggle_machines()
+	for(var/obj/structure/machinery/machine as anything in machinery_list)
+		addtimer(CALLBACK(machine, TYPE_PROC_REF(/obj/structure/machinery, toggle_is_on)), rand(0, 5 SECONDS))
+
 /obj/structure/machinery/colony_floodlight_switch/attack_hand(mob/user as mob)
 	if(!ishuman(user))
 		to_chat(user, "Nice try.")
@@ -390,6 +394,39 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 
 /obj/structure/machinery/colony_floodlight/inoperable(additional_flags)
 	return damaged
+
+/obj/structure/machinery/colony_floodlight_switch/containment
+
+/obj/structure/machinery/colony_floodlight_switch/containment/LateInitialize()
+	. = ..()
+	toggle_is_on()
+	toggle_machines()
+	update_icon()
+
+/obj/structure/machinery/colony_floodlight/venir_wall_light
+	name = "wall mounted containment floodlight"
+	desc = "Powerful wall-mounted lights. Designed to survive xenomorph attacks and acid. Powered externally."
+	icon = 'icons/obj/items/lighting.dmi'
+	icon_state = "slight0"
+	density = FALSE
+	health = 999999
+	light_range = 14
+	lum_value = 14
+	needs_power = TRUE
+	light_color = "#FFEFD2"
+
+/obj/structure/machinery/colony_floodlight/venir_wall_light/LateInitialize()
+	. = ..()
+	toggle_is_on()
+	update_icon()
+
+/obj/structure/machinery/colony_floodlight/venir_wall_light/update_icon()
+	if(damaged)
+		icon_state = "slight-burned"
+	else if(is_on)
+		icon_state = "slight1"
+	else
+		icon_state = "slight0"
 
 #undef FLOODLIGHT_REPAIR_UNSCREW
 #undef FLOODLIGHT_REPAIR_CROWBAR

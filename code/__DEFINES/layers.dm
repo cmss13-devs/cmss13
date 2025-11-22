@@ -138,6 +138,18 @@
 /// For WEATHER
 #define WEATHER_LAYER 4.14
 
+/// For objs atop a tank
+#define TANK_RIDER_OBJ_LAYER 4.505
+/// Mostly for bodybags atop a tank
+/// Not used yet. This is a reminder for me to add a specific tank_layer var to OBJs to keep track of
+///     ...which specific layer they need to go when brought atop.
+#define TANK_RIDER_ABOVE_OBJ_LAYER 4.506
+/// For mobs riding atop a tank
+#define TANK_BELOW_RIDER_LAYER 4.508
+#define TANK_LYING_RIDER_LAYER 4.509
+#define TANK_RIDER_LAYER 4.51
+#define TANK_ABOVE_RIDER_LAYER 4.515
+
 //#define FLY_LAYER 5
 
 #define RIPPLE_LAYER 5.1

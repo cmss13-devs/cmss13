@@ -9,7 +9,7 @@
 	starting_xenomorph_type = /mob/living/carbon/xenomorph/drone
 	required_tutorial = "ss13_intents_1"
 
-// START OF SCRITPING
+// START OF SCRIPTING
 
 /datum/tutorial/xenomorph/basic/start_tutorial(mob/starting_mob)
 	. = ..()

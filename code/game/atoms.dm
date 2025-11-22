@@ -174,7 +174,7 @@ directive is properly returned.
 		return
 	animate(src, transform = complete, time = time, easing = easing, flags = ANIMATION_PARALLEL)
 
-/// Upates the base_transform which will be compounded with other transforms
+/// Updates the base_transform which will be compounded with other transforms
 /atom/proc/update_base_transform(matrix/new_transform, time = 0)
 	base_transform = matrix(new_transform)
 	apply_transform(raw_transform, time)
@@ -196,7 +196,7 @@ directive is properly returned.
 
 /*//Convenience proc to see whether a container can be accessed in a certain way.
 
-	proc/can_subract_container()
+	proc/can_subtract_container()
 		return flags & EXTRACT_CONTAINER
 
 	proc/can_add_container()
@@ -228,7 +228,7 @@ directive is properly returned.
 
 /*
  * atom/proc/search_contents_for(path,list/filter_path=null)
- * Recursevly searches all atom contens (including contents contents and so on).
+ * Recursively searches all atom contents (including contents contents and so on).
  *
  * ARGS: path - search atom contents for atoms of this type
  *    list/filter_path - if set, contents of atoms not of types in this list are excluded from search.
@@ -546,7 +546,7 @@ Parameters are passed from New.
 		filters += filter(arglist(arguments))
 	UNSETEMPTY(filter_data)
 
-/** Update a filter's parameter and animate this change. If the filter doesnt exist we won't do anything.
+/** Update a filter's parameter and animate this change. If the filter doesn't exist we won't do anything.
  * Basically a [datum/proc/modify_filter] call but with animations. Unmodified filter parameters are kept.
  *
  * Arguments:

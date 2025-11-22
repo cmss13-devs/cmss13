@@ -44,7 +44,7 @@
 	//No longer relevant to the game mode, since supply drops are getting changed.
 	var/checkwin_counter = 0
 	var/finished = 0
-	var/has_started_timer = 10 //This is a simple timer so we don't accidently check win conditions right in post-game
+	var/has_started_timer = 10 //This is a simple timer so we don't accidentally check win conditions right in post-game
 	var/randomovertime = 0 //This is a simple timer so we can add some random time to the game mode.
 	var/spawn_next_wave = 12 MINUTES //Spawn first batch at ~12 minutes
 	var/last_wave_time = 0 // Stores the time the last wave (wave 15) started
@@ -500,7 +500,7 @@
 			for(var/path in spawnitems)
 				new path(crate)
 
-//Whiskey Outpost Recycler Machine. Teleports objects to centcomm so it doesnt lag
+//Whiskey Outpost Recycler Machine. Teleports objects to centcomm so it doesn't lag
 /obj/structure/machinery/wo_recycler
 	icon = 'icons/obj/structures/machinery/recycling.dmi'
 	icon_state = "grinder-o0"

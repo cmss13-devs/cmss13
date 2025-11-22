@@ -179,7 +179,7 @@
 			to_chat(usr, SPAN_WARNING("Failed to select a ground map, aborting changes and restart."))
 			return
 
-// All changes should happen here incase of failure
+// All changes should happen here in case of failure
 	//Change gamemode
 	if(modeset != "Cancel" && !!modeset)
 		GLOB.master_mode = modeset

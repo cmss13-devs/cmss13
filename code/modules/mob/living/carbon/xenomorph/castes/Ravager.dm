@@ -143,7 +143,7 @@
 		xeno.visible_message(SPAN_XENODANGER("[xeno] starts empowering!"), SPAN_XENODANGER("We start empowering ourself!"))
 		activated_once = TRUE
 		button.icon_state = "template_active"
-		get_inital_shield()
+		get_initial_shield()
 		addtimer(CALLBACK(src, PROC_REF(timeout)), time_until_timeout)
 		apply_cooldown()
 		return ..()
@@ -217,7 +217,7 @@
 	xeno.visible_message(SPAN_DANGER("[xeno]'s glow slowly dims."), SPAN_XENOHIGHDANGER("Our glow fades away, the power leaving our form!"))
 	xeno.remove_filter("empower_rage")
 
-/datum/action/xeno_action/onclick/empower/proc/get_inital_shield()
+/datum/action/xeno_action/onclick/empower/proc/get_initial_shield()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!activated_once)

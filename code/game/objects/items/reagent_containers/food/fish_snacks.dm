@@ -113,7 +113,7 @@
 
 /obj/item/reagent_container/food/snacks/fishable/squid/sock
 	name = "sock squid"
-	desc = "Small shelled squids are a common occurance on New Varadero. While using the term 'squid' to describe this form of creature would make a biologist fuming mad, the name has stuck given their relative apperance. Sock squids are renowned for their robust taste."
+	desc = "Small shelled squids are a common occurance on New Varadero. While using the term 'squid' to describe this form of creature would make a biologist fuming mad, the name has stuck given their relative appearance. Sock squids are renowned for their robust taste."
 	icon_state = "squid_sock"
 	gut_icon_state = "squid_sock_gutted"
 	guttable = TRUE

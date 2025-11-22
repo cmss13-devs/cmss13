@@ -8,7 +8,7 @@
 	/// client of the bug report author, needed to create the ticket
 	var/client/initial_user = null
 	// ckey of the author
-	var/initial_key = null // just incase they leave after creating the bug report
+	var/initial_key = null // just in case they leave after creating the bug report
 
 	/// client of the admin who is accessing the report, we don't want multiple admins unknowingly making changes at the same time.
 	var/client/admin_user = null

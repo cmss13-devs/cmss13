@@ -87,7 +87,7 @@ COLONIAL MARSHALS
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_MASTER,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 		SKILL_SPEC_WEAPONS = SKILL_SPEC_ALL,
-		SKILL_LEADERSHIP = SKILL_LEAD_EXPERT, // incase the synth needs to use consoles for investigations or tracking
+		SKILL_LEADERSHIP = SKILL_LEAD_EXPERT, // in case the synth needs to use consoles for investigations or tracking
 		SKILL_OVERWATCH = SKILL_OVERWATCH_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED, // Not a medical Synthetic, but operate if absolutely needed.

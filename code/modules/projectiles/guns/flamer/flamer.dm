@@ -938,7 +938,7 @@
 				continue
 		fire_spread_recur(picked_turf, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
 
-// So it doens't do the spinny animation
+// So it doesn't do the spinny animation
 /obj/flamer_fire/onZImpact(turf/impact_turf, height)
 	return
 

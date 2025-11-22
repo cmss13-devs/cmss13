@@ -22,9 +22,9 @@ This subsystems processes enqueued lighting object, corner and source updates, a
 You shouldn't really be touching this as it primarily just stops too many updates from happening at once.
 
 ## The Lighting systems
-As mentioned previously,lighting is split into three seperate systems who's functionality, benefits and downsides will be discussed below
+As mentioned previously,lighting is split into three separate systems who's functionality, benefits and downsides will be discussed below
 
-Seperate from these systems we also have a system to update the base lighting of an area, we do this using "Base lighting"
+separate from these systems we also have a system to update the base lighting of an area, we do this using "Base lighting"
 
 ```dm
 /area/proc/set_base_lighting(new_base_lighting_color = -1, new_alpha = -1)

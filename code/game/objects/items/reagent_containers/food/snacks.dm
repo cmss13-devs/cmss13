@@ -2978,7 +2978,7 @@
 				box.update_icon()
 				update_icon()
 
-				to_chat(user, SPAN_DANGER("You put [box] ontop of [src]!"))
+				to_chat(user, SPAN_DANGER("You put [box] on top of [src]!"))
 			else
 				to_chat(user, SPAN_DANGER("The stack is too high!"))
 		else

@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	var/list/mob/hudmobs = list() //list of all mobs which display this hud
 	var/list/mob/hudusers = list() //list with all mobs who can see the hud
 	var/list/hud_icons = list() //these will be the indices for the atom's hud_list
-								// which is the list of the images maintenenced by this HUD
+								// which is the list of the images maintained by this HUD
 								// Actually managing those images is left up to clients.
 
 /// Stop displaying a HUD to a specific person (e.g. took off medical glasses)
@@ -550,8 +550,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	if(!client)
 		return
 	for(var/obj/effect/alien/resin/design/des in hive.designer_marks)
-		if(des.choosenMark)
-			client.images |= des.choosenMark
+		if(des.chosenMark)
+			client.images |= des.chosenMark
 
 /mob/living/carbon/xenomorph/proc/hud_set_plasma()
 	var/image/holder = hud_list[PLASMA_HUD]

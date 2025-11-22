@@ -253,7 +253,7 @@
 	var/delta_time = world.tick_lag * rand() * 0.4
 	if(process(delta_time))
 		return // Hit something already?!
-	time_carry -= delta_time // Substract headstart from next tick
+	time_carry -= delta_time // Subtract headstart from next tick
 
 	// Finally queue it to Subsystem for further processing
 	SSprojectiles.queue_projectile(src)

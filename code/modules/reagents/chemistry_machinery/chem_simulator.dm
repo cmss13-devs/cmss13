@@ -347,7 +347,7 @@
 /obj/structure/machinery/chem_simulator/proc/calculate_new_od_level()
 	new_od_level = max(target.data.overdose, 1)
 	if(mode == MODE_ADD)
-		return //add mode doesnt harm od level of target
+		return //add mode doesn't harm od level of target
 	if(new_od_level <= 5)
 		new_od_level = max(new_od_level - 1, 1)
 	else
@@ -371,7 +371,7 @@
 			//Make sure we don't have an identical reaction and that the component is identified
 			if(R.check_duplicate() || R.check_reaction_uses_all_default_medical() || new_component.chemclass >= CHEM_CLASS_SPECIAL)
 				R.required_reagents = old_reaction.Copy()
-				if(i >= 8) //doesnt really fix the issue but we went from 5 to 8 attempts to roll.
+				if(i >= 8) //doesn't really fix the issue but we went from 5 to 8 attempts to roll.
 					//Elevate the reaction to a higher order
 					target_elevated["[new_component.id]"] = TRUE
 					break
@@ -616,13 +616,13 @@
 
 /datum/chemical_simulator_modes/supress
 	name = "SUPRESS"
-	desc = "Supress one level in the choosen property. This operation lowers the OD level."
+	desc = "Supress one level in the chosen property. This operation lowers the OD level."
 	mode_id = MODE_SUPPRESS
 	icon_type = "square-minus"
 
 /datum/chemical_simulator_modes/amplify
 	name = "AMPLIFY"
-	desc = "Amplify one level in the choosen property. This operation lowers the OD level."
+	desc = "Amplify one level in the chosen property. This operation lowers the OD level."
 	mode_id = MODE_AMPLIFY
 	icon_type = "square-plus"
 
@@ -634,7 +634,7 @@
 
 /datum/chemical_simulator_modes/relate
 	name = "RELATE"
-	desc = "Use the reference chemical to replace one choosen property in the target chemical. The target and reference target property level must be equal, This operation lowers the OD level."
+	desc = "Use the reference chemical to replace one chosen property in the target chemical. The target and reference target property level must be equal, This operation lowers the OD level."
 	mode_id = MODE_RELATE
 	icon_type = "repeat"
 

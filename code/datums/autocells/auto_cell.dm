@@ -1,5 +1,5 @@
 /*
-	Each datum represents a single cellular automataton
+	Each datum represents a single cellular automaton
 
 	Cell death is just the cell being deleted.
 	So if you want a cell to die, just qdel it.

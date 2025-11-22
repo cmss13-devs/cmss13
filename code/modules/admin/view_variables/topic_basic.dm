@@ -1,4 +1,4 @@
-//Not using datum.vv_do_topic for very basic/low level debug things, incase the datum's vv_do_topic is runtiming/whatnot.
+//Not using datum.vv_do_topic for very basic/low level debug things, in case the datum's vv_do_topic is runtiming/whatnot.
 /client/proc/vv_do_basic(datum/target, href_list)
 	var/target_var = GET_VV_VAR_TARGET
 	if(check_rights(R_VAREDIT))

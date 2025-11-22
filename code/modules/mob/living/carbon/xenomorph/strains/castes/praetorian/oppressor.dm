@@ -25,7 +25,7 @@
 
 /datum/xeno_strain/oppressor/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
 	prae.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	prae.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_SMALL
+	prae.explosivearmor_modifier += XENO_EXPLOSIVEARMOR_MOD_SMALL
 	prae.small_explosives_stun = FALSE
 	prae.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	prae.plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_CHITIN)
@@ -48,7 +48,7 @@
 		playsound(bound_xeno, 'sound/weapons/alien_tail_attack.ogg', 25, TRUE)
 
 
-/datum/action/xeno_action/activable/tail_stab/tail_seize/use_ability(atom/targetted_atom)
+/datum/action/xeno_action/activable/tail_stab/tail_seize/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 
 	if(!action_cooldown_check())
@@ -72,7 +72,7 @@
 	hook_projectile.generate_bullet(ammoDatum, bullet_generator = stabbing_xeno)
 	hook_projectile.bound_beam = hook_projectile.beam(stabbing_xeno, "oppressor_tail", 'icons/effects/beam.dmi', 1 SECONDS, 5)
 
-	hook_projectile.fire_at(targetted_atom, stabbing_xeno, stabbing_xeno, ammoDatum.max_range, ammoDatum.shell_speed)
+	hook_projectile.fire_at(targeted_atom, stabbing_xeno, stabbing_xeno, ammoDatum.max_range, ammoDatum.shell_speed)
 	playsound(stabbing_xeno, 'sound/effects/oppressor_tail.ogg', 40, FALSE)
 
 	apply_cooldown()

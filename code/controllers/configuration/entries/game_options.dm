@@ -99,7 +99,7 @@
 
 /datum/config_entry/flag/aggressive_changelog
 
-/datum/config_entry/flag/continous_rounds
+/datum/config_entry/flag/continuous_rounds
 
 /datum/config_entry/flag/ert_admin_call_only
 

@@ -28,7 +28,7 @@
 	icon_state = "intro_ship"
 
 /atom/movable/screen/inventory
-	var/slot_id //The indentifier for the slot. It has nothing to do with ID cards.
+	var/slot_id //The identifier for the slot. It has nothing to do with ID cards.
 
 /atom/movable/screen/inventory/Initialize(mapload, ...)
 	. = ..()
@@ -140,7 +140,7 @@
 		for(var/obj/item/storage_item in master_storage)
 			total_w += storage_item.w_class
 
-		//Calculate fullness for etiher max storage, or for storage slots if the container has them
+		//Calculate fullness for either max storage, or for storage slots if the container has them
 		var/fullness = 0
 		if (master_storage.storage_slots == null)
 			fullness = floor(10*total_w/master_storage.max_storage_space)

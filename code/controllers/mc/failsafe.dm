@@ -15,7 +15,7 @@ GLOBAL_REAL(Failsafe, /datum/controller/failsafe)
 	// The alert level. For every failed poke, we drop a DEFCON level. Once we hit DEFCON 1, restart the MC.
 	var/defcon = 5
 	//the world.time of the last check, so the mc can restart US if we hang.
-	// (Real friends look out for *eachother*)
+	// (Real friends look out for *each other*)
 	var/lasttick = 0
 
 	// Track the MC iteration to make sure its still on track.
@@ -147,9 +147,9 @@ GLOBAL_REAL(Failsafe, /datum/controller/failsafe)
 ///Recreate all SSs which will still cause data survive due to Recover(), the new Master will then find and take them from global.vars
 /proc/recover_all_SS_and_recreate_master()
 	del(Master)
-	var/list/subsytem_types = subtypesof(/datum/controller/subsystem)
-	sortTim(subsytem_types, GLOBAL_PROC_REF(cmp_subsystem_init))
-	for(var/I in subsytem_types)
+	var/list/subsystem_types = subtypesof(/datum/controller/subsystem)
+	sortTim(subsystem_types, GLOBAL_PROC_REF(cmp_subsystem_init))
+	for(var/I in subsystem_types)
 		new I
 	. = Recreate_MC()
 	if (. == 1) //We were able to create a new master

@@ -978,7 +978,7 @@ DEFINES in setup.dm, referenced here.
 	set desc = "Use the stock attachment that is mounted on your gun."
 	set src = usr.contents
 
-	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr, FALSE) // incase someone
+	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr, FALSE) // in case someone
 	if(!active_firearm)
 		return
 	src = active_firearm

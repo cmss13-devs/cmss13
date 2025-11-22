@@ -3,7 +3,7 @@
 	var/scape_cooldown = INITIAL_SOUNDSCAPE_COOLDOWN //This value is changed when entering an area. Time it takes for a soundscape sound to be triggered
 	var/list/soundscape_playlist = list() //Updated on changing areas
 	var/ambience = null //The file currently being played as ambience
-	var/status_flags = 0 //For things like ear deafness, psychodelic effects, and other things that change how all sounds behave
+	var/status_flags = 0 //For things like ear deafness, psychedelic effects, and other things that change how all sounds behave
 
 	/// Currently applied environmental reverb.
 	VAR_PROTECTED/owner_environment = SOUND_ENVIRONMENT_NONE

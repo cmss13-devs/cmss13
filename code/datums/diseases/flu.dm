@@ -16,12 +16,12 @@
 	switch(stage)
 		if(2)
 /*
-			if(affected_mob.sleeping && prob(20))  //removed until sleeping is fixed --Blaank
+			if(affected_mob.sleeping && prob(20))  //removed until sleeping is fixed --Blank
 				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
 				stage--
 				return
 */
-			if(affected_mob.body_position == LYING_DOWN && prob(20))  //added until sleeping is fixed --Blaank
+			if(affected_mob.body_position == LYING_DOWN && prob(20))  //added until sleeping is fixed --Blank
 				to_chat(affected_mob, SPAN_NOTICE(" You feel better."))
 				stage--
 				return

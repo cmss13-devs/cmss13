@@ -684,8 +684,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	set name = "Switch Gathering Method"
 	set category = "Object"
 	set src in usr
-	storage_flags ^= STORAGE_GATHER_SIMULTAENOUSLY
-	if (storage_flags & STORAGE_GATHER_SIMULTAENOUSLY)
+	storage_flags ^= STORAGE_GATHER_SIMULTANEOUSLY
+	if (storage_flags & STORAGE_GATHER_SIMULTANEOUSLY)
 		to_chat(usr, "[src] now picks up all items in a tile at once.")
 	else
 		to_chat(usr, "[src] now picks up one item at a time.")

@@ -14,7 +14,7 @@
 	var/action_flags = 0 // Check out __game.dm for flags
 	/// Whether the action is hidden from its owner
 	var/hidden = FALSE //Preserve action state while preventing mob from using action
-	///Hide the action from the owner without preventing them from using it (incase of keybind listen_signal)
+	///Hide the action from the owner without preventing them from using it (in case of keybind listen_signal)
 	var/player_hidden = FALSE
 	var/unique = TRUE
 	/// A signal on the mob that will cause the action to activate
@@ -348,7 +348,7 @@
 
 /datum/action/item_action/toggle/m56goggles/update_button_icon()
 	var/obj/item/clothing/glasses/night = holder_item
-	if(!night.deactive_state || night.active)
+	if(!night.inactive_state || night.active)
 		action_icon_state = "sg_nv_off"
 	else
 		action_icon_state = "sg_nv"
@@ -382,7 +382,7 @@
 	else
 		base_icon = "healthhud"
 
-	if(!hud_goggles.deactive_state || hud_goggles.active)
+	if(!hud_goggles.inactive_state || hud_goggles.active)
 		action_icon_state = base_icon
 	else
 		action_icon_state = deactivate_state

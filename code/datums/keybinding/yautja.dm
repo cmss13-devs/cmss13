@@ -196,7 +196,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "injectors"
-	full_name = "Create Stabilising Crystal"
+	full_name = "Create Stabilizing Crystal"
 	keybind_signal = COMSIG_KB_YAUTJA_INJECTORS
 
 /datum/keybinding/yautja/bracer_hunter/healing_capsule

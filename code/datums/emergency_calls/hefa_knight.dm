@@ -1,9 +1,9 @@
 // The Order of HEFA has arrived!
 /datum/emergency_call/hefa_knight
-	name = "HEFA knights"
+	name = "HEFA Knights"
 	mob_max = 15
 	mob_min = 3
-	arrival_message = "'Prepaerth to surrender thine HEFAs unto the order!'"
+	arrival_message = "'Prepareth to surrender thine HEFAs unto The Order of HEFA!'"
 	objectives = "You are a Brother of the Order of HEFA! You and your fellow brothers must retrieve as many HEFAs as possible!"
 	probability = 0
 	hostility = TRUE

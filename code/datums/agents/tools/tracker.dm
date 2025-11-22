@@ -29,9 +29,9 @@
 	active = TRUE
 	update_icon()
 
-	addtimer(CALLBACK(src, PROC_REF(deactive)), ping_duration)
+	addtimer(CALLBACK(src, PROC_REF(inactive)), ping_duration)
 
-/obj/item/device/tracker/proc/deactive()
+/obj/item/device/tracker/proc/inactive()
 	active = FALSE
 	update_icon()
 

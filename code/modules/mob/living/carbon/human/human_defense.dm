@@ -39,7 +39,7 @@ Contains most of the procs that are called when a mob is attacked by something
 			return getarmor_organ(def_zone, type)
 		var/obj/limb/affecting = get_limb(def_zone)
 		return getarmor_organ(affecting, type)
-		//If a specific bodypart is targetted, check how that bodypart is protected and return the value.
+		//If a specific bodypart is targeted, check how that bodypart is protected and return the value.
 
 	//If you don't specify a bodypart, it checks ALL your bodyparts for protection, and averages out the values
 	for(var/X in limbs)

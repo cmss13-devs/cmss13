@@ -351,7 +351,7 @@
 	new /obj/item/tool/screwdriver(src) // Spotter scope needs a screwdriver to disassemble
 
 /obj/item/storage/box/guncase/vulture/holo_target
-	name = "\improper M707 holo-targetting anti-materiel rifle case"
+	name = "\improper M707 holo-targeting anti-materiel rifle case"
 	desc = "A gun case containing the M707 \"Vulture\" anti-materiel rifle and its requisite spotting tools. This variant is pre-loaded with <b>IFF-CAPABLE</b> holo-targeting rounds."
 
 /obj/item/storage/box/guncase/vulture/holo_target/fill_preset_inventory()

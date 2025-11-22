@@ -53,7 +53,7 @@ The API for tutorials is designed to be very simple, so I'll go over all the bas
 -   `init_mob()`
     -   This proc is used to initialize the mob and set them up correctly.
 -   `init_map()`
-    -   This proc does nothing by default, but can be overriden to spawn any atoms necessary for the tutorial from the very start.
+    -   This proc does nothing by default, but can be overridden to spawn any atoms necessary for the tutorial from the very start.
 -   `tutorial_end_in(time = 5 SECONDS, completed = TRUE)`
     -   This proc will end the tutorial in the given time, defaulting to 5 seconds. Once the proc is called, the player will be booted back to the menu screen after the time is up. Will mark the tutorial as completed if `completed` is `TRUE`
 -   `loc_from_corner(offset_x = 0, offset_y = 0)`
@@ -107,6 +107,6 @@ Line-by-line:
 
 -   Generally speaking, you will want to create `/tutorial` subtypes of anything you add in the tutorial, should it need any special functions or similar.
 -   Restrict access from players as much as possible. As seen in the example above, restricting access to vendors and similar machines is recommended to prevent sequence breaking. Additionally, avoid adding anything that detracts from the tutorial itself.
--   Attempt to avoid softlocks when possible. If someone could reasonably do something (e.g. firing every bullet they have at a ranged target and missing, now unable to kill them and progress) that could softlock them, then there should be a fallback of some sort. However, accomodations don't need to be made for people who purposefully cause a softlock; there's a "stop tutorial" button for a reason.
+-   Attempt to avoid softlocks when possible. If someone could reasonably do something (e.g. firing every bullet they have at a ranged target and missing, now unable to kill them and progress) that could softlock them, then there should be a fallback of some sort. However, accommodations don't need to be made for people who purposefully cause a softlock; there's a "stop tutorial" button for a reason.
 -   When calling `message_to_player()` or `update_objective()`, **bold** the names of objects, items, and keybinds.
 -   Attempt to bind as many scripting signals to the `tutorial_mob` as possible. The nature of SS13 means something as sequence-heavy as this will always be fragile, so keeping the fragility we can affect to a minimum is imperative.

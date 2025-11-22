@@ -1,7 +1,7 @@
 // Vanguard shields rapidly decay after the first hit.
 /datum/xeno_shield/vanguard
 	var/hit_yet = FALSE
-	var/explosive_armor_amount = XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
+	var/explosive_armor_amount = XENO_EXPLOSIVEARMOR_MOD_VERY_LARGE
 	var/minimal_damage = 5
 	amount = 800
 

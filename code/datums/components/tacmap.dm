@@ -8,8 +8,8 @@
 	var/list/atom/movable/screen/drawing_tools = list()
 	var/list/atom/movable/screen/minimap_tool/drawing_actions = list()
 	var/minimap_flag = MINIMAP_FLAG_USCM
-	///by default Zlevel 2, groundside is targetted
-	var/targetted_zlevel = 2
+	///by default Zlevel 2, groundside is targeted
+	var/targeted_zlevel = 2
 	///minimap obj ref that we will display to users
 	var/atom/movable/screen/minimap/map
 	///List of currently interacting mobs
@@ -47,7 +47,7 @@
 		drawing_tools += /atom/movable/screen/minimap_tool/update
 
 /datum/component/tacmap/proc/move_tacmap_up()
-	targetted_zlevel++
+	targeted_zlevel++
 	var/list/_interactees = interactees.Copy()
 	for(var/mob/interactee in _interactees)
 		on_unset_interaction(interactee)
@@ -56,7 +56,7 @@
 		show_tacmap(interactee)
 
 /datum/component/tacmap/proc/move_tacmap_down()
-	targetted_zlevel--
+	targeted_zlevel--
 	var/list/_interactees = interactees.Copy()
 	for(var/mob/interactee in _interactees)
 		on_unset_interaction(interactee)
@@ -83,12 +83,12 @@
 
 /datum/component/tacmap/proc/show_tacmap(mob/user)
 	if(!map)
-		map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE, drawing=drawing)
-		map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
+		map = SSminimaps.fetch_minimap_object(targeted_zlevel, minimap_flag, TRUE, drawing=drawing)
+		map_holder = new(null, targeted_zlevel, minimap_flag, drawing=drawing)
 		close_button = new /atom/movable/screen/exit_map(null, src)
 		var/list/atom/movable/screen/actions = list()
 		for(var/path in drawing_tools)
-			actions += new path(null, targetted_zlevel, minimap_flag, map, src)
+			actions += new path(null, targeted_zlevel, minimap_flag, map, src)
 		drawing_actions = actions
 
 

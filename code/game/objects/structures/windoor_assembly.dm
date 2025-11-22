@@ -239,7 +239,7 @@
 					if(QDELETED(src))
 						return
 
-					density = TRUE //Shouldn't matter but just incase
+					density = TRUE //Shouldn't matter but just in case
 					to_chat(user, SPAN_NOTICE("You finish the windoor!"))
 
 					if(secure)

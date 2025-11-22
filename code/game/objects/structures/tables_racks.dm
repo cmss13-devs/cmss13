@@ -674,7 +674,7 @@
  */
 /obj/structure/surface/rack
 	name = "rack"
-	desc = "A bunch of metal shelves stacked on top of eachother. Excellent for storage purposes, less so as cover."
+	desc = "A bunch of metal shelves stacked on top of each other. Excellent for storage purposes, less so as cover."
 	icon = 'icons/obj/structures/tables.dmi'
 	icon_state = "rack"
 	density = TRUE

@@ -137,8 +137,8 @@
 					SPAN_HELPFUL("You <b>salve the burns</b> on [possessive] <b>[affecting.display_name]</b>."),
 					SPAN_HELPFUL("[user] <b>salves the burns</b> on your <b>[affecting.display_name]</b>."),
 					SPAN_NOTICE("[user] salves the burns on [possessive_their] [affecting.display_name]."))
-				affecting.heal_damage(burn = heal_burn)
 				affecting.status &= ~LIMB_THIRD_DEGREE_BURNS
+				affecting.heal_damage(burn = heal_burn)
 
 				use(1)
 				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)

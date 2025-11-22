@@ -10,6 +10,7 @@
 #define PAIN_REDUCTION_MULTIPLIER_SMALL 20
 #define PAIN_REDUCTION_MULTIPLIER 40
 #define PAIN_REDUCTION_AURA 20
+
 // The values below are thresholds used for surgery
 #define PAIN_REDUCTION_LIGHT 20  //inaprovaline
 #define PAIN_REDUCTION_MEDIUM 30

@@ -38,7 +38,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	var/on = TRUE // Is it actually on
 	var/hide = FALSE // Is it a hidden machine?
 
-//Never allow tecommunications machinery being blown up
+//Never allow telecommunications machinery being blown up
 /obj/structure/machinery/telecomms/ex_act(severity)
 	return
 
@@ -239,7 +239,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	var/list/stored_names = list()
 	var/list/TrafficActions = list()
 	var/logs = 0 // number of logs
-	var/totaltraffic = 0 // gigabytes (if > 1024, divide by 1024 -> terrabytes)
+	var/totaltraffic = 0 // gigabytes (if > 1024, divide by 1024 -> terabytes)
 
 	var/list/memory = list() // stored memory
 	var/rawcode = "" // the code to compile (raw text)

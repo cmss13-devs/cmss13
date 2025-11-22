@@ -349,7 +349,7 @@
 
 /obj/item/pamphlet/language/xenomorph
 	name = "Xenobiologist's file"
-	desc = "A xenobiologist's document recording and detailing observations on captive Xenomorph communication via vocalisations and pheromones, as well as notes on attempting to reproduce them by human beings."
+	desc = "A xenobiologist's document recording and detailing observations on captive Xenomorph communication via vocalizations and pheromones, as well as notes on attempting to reproduce them by human beings."
 	trait = /datum/character_trait/language/xenomorph
 
 /obj/item/pamphlet/language/monkey

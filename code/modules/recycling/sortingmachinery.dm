@@ -453,11 +453,11 @@
 		var/obj/item/tool/weldingtool/W = I
 		if(W.remove_fuel(0,user))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			to_chat(user, "You start slicing the floorweld off the delivery chute.")
+			to_chat(user, "You start slicing the floor weld off the delivery chute.")
 			if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(!src || !W.isOn())
 					return
-				to_chat(user, "You sliced the floorweld off the delivery chute.")
+				to_chat(user, "You sliced the floor weld off the delivery chute.")
 				var/obj/structure/disposalconstruct/C = new (src.loc)
 				C.ptype = 8 // 8 =  Delivery chute
 				C.update()

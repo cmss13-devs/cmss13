@@ -1,13 +1,13 @@
 // our atom declaration should not be hardcoded for this SS existence.
 // if this subsystem is deleted, stuff still works
 // That's why we define this here
-/atom/proc/Decorate(deferable = FALSE)
+/atom/proc/Decorate(deferrable = FALSE)
 	// Case 1: Early init - Skip it, we'll decorate everything during our init
 	if(!SSdecorator.decoratable)
 		return
 	if(SSdecorator.registered_decorators[type])
-		// Case 2: Deferable, usually non-init mapload - have SS do it later
-		if(deferable)
+		// Case 2: Deferrable, usually non-init mapload - have SS do it later
+		if(deferrable)
 			SSdecorator.decoratable += WEAKREF(src)
 			return
 		// Case 3: In-round spawning, just do it now
@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(decorator)
 	decoratable = list() // Put any extras here from there on
 	for(var/atom/object in world)
 		if(!(object.flags_atom & ATOM_DECORATED))
-			object.Decorate(deferable = FALSE)
+			object.Decorate(deferrable = FALSE)
 		CHECK_TICK
 	return SS_INIT_SUCCESS
 
@@ -70,7 +70,7 @@ SUBSYSTEM_DEF(decorator)
 		currentrun.len--
 		var/atom/A = ref?.resolve()
 		if(A)
-			A.Decorate(deferable = FALSE)
+			A.Decorate(deferrable = FALSE)
 		if(MC_TICK_CHECK)
 			return
 

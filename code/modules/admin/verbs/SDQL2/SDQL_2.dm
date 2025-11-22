@@ -63,22 +63,22 @@
 
 	"SELECT /mob/living IN (@[/area/almayer/command MAP contents])[1]"
 
-	What if some dumbass admin spawned a bajillion xenoes shipside and you need to kill them all?
-	Oh yeah you'd rather not delete all the xenoes on the ground. Only that one room the xenoes were
+	What if some dumbass admin spawned a bajillion xenos shipside and you need to kill them all?
+	Oh yeah you'd rather not delete all the xenos on the ground. Only that one room the xenos were
 	spawned in.
 
 	"DELETE /mob/living/carbon/xenomorph WHERE loc.loc == marked"
 
 	Here I used VV to mark the area they were in (marked is the first marked datum in your marked datum list),
-	and since loc.loc = area, voila. Only the xenoes in a specific area are gone.
+	and since loc.loc = area, voila. Only the xenos in a specific area are gone.
 
-	Or you know if you want to catch xenoes that crawled into lockers too (how even?)
+	Or you know if you want to catch xenos that crawled into lockers too (how even?)
 
 	"DELETE /mob/living/carbon/xenomorph WHERE global.get_area(src) == marked"
 
 	What else can you do?
 
-	Well suppose you'd rather gib those xenoes instead of simply flat deleting them...
+	Well suppose you'd rather gib those xenos instead of simply flat deleting them...
 
 	"CALL gib() ON /mob/living/carbon/xenomorph WHERE global.get_area(src) == marked"
 
@@ -109,7 +109,7 @@
 	By the way, queries are slow and take a while. Be patient.
 	They don't hang the entire server though.
 
-	With great power comes great responsability.
+	With great power comes great responsibility.
 
 	Here's a slightly more formal quick reference.
 
@@ -444,7 +444,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 	if(!delete_click)
 		delete_click = new(null, "INITIALIZING", src)
 	if(!action_click)
-		action_click = new(null, "INITIALIZNG", src)
+		action_click = new(null, "INITIALIZING", src)
 	var/list/L = list()
 	L[++L.len] = list("[id] ", "[delete_click.update("DELETE QUERY | STATE : [text_state()] | ALL/ELIG/FIN \
 	[islist(obj_count_all)? length(obj_count_all) : (isnull(obj_count_all)? "0" : obj_count_all)]/\

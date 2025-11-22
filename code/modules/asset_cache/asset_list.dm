@@ -285,7 +285,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /// The namespace folder's name will change if any of the assets change. (excluding parent assets)
 /datum/asset/simple/namespaced
 	_abstract = /datum/asset/simple/namespaced
-	/// parents - list of the parent asset or assets (in name = file assoicated format) for this namespace.
+	/// parents - list of the parent asset or assets (in name = file associated format) for this namespace.
 	/// parent assets must be referenced by their generated url, but if an update changes a parent asset, it won't change the namespace's identity.
 	var/list/parents = list()
 

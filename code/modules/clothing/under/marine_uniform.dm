@@ -950,7 +950,7 @@
 
 /obj/item/clothing/under/marine/veteran/marsoc
 	name = "SOF Uniform"
-	desc = "A black uniform for elite Marine personnel. Designed to be comfortable and help blend into dark enviorments."
+	desc = "A black uniform for elite Marine personnel. Designed to be comfortable and help blend into dark environments."
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	item_icons = list(
@@ -965,7 +965,7 @@
 
 /obj/item/clothing/under/marine/veteran/pmc
 	name = "\improper PMC fatigues"
-	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is emblazed on the suit."
+	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is emblazoned on the suit."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
@@ -993,7 +993,7 @@
 
 /obj/item/clothing/under/marine/veteran/pmc/leader
 	name = "\improper PMC command fatigues"
-	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is emblazed on the suit. This particular suit looks like it belongs to a high-ranking officer."
+	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is emblazoned on the suit. This particular suit looks like it belongs to a high-ranking officer."
 	icon_state = "officer_jumpsuit"
 	worn_state = "officer_jumpsuit"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
@@ -1010,14 +1010,14 @@
 
 /obj/item/clothing/under/marine/veteran/pmc/engineer
 	name = "\improper PMC engineer fatigues"
-	desc = "A black and orange set of fatigues, designed for private security technicians. The symbol of the Weyland-Yutani corporation is emblazed on the suit."
+	desc = "A black and orange set of fatigues, designed for private security technicians. The symbol of the Weyland-Yutani corporation is emblazoned on the suit."
 	icon_state = "engineer_jumpsuit"
 	worn_state = "engineer_jumpsuit"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/pmc/guard
 	name = "\improper PMC guard fatigues"
-	desc = "A black and orange set of fatigues, designed for private security enforcer personnel. The symbol of the Weyland-Yutani corporation is emblazed on the suit."
+	desc = "A black and orange set of fatigues, designed for private security enforcer personnel. The symbol of the Weyland-Yutani corporation is emblazoned on the suit."
 	icon_state = "guard_jumpsuit"
 	worn_state = "guard_jumpsuit"
 
@@ -1211,7 +1211,7 @@
 
 /obj/item/clothing/under/marine/veteran/cmb
 	name = "\improper CMB Riot Control uniform"
-	desc = "A dark set of tactical uniform utilized by the Colonial Marshals, designed to be used by units of riot supression on the distant worlds, under colonial jurisdiction."
+	desc = "A dark set of tactical uniform utilized by the Colonial Marshals, designed to be used by units of riot suppression on the distant worlds, under colonial jurisdiction."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CMB.dmi',
@@ -1309,7 +1309,7 @@
 
 /obj/item/clothing/under/marine/veteran/mercenary
 	name = "\improper Mercenary fatigues"
-	desc = "A thick, beige suit with a red armband. There is an unknown symbol is emblazed on the suit."
+	desc = "A thick, beige suit with a red armband. There is an unknown symbol is emblazoned on the suit."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CLF.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CLF.dmi',
@@ -1320,13 +1320,13 @@
 
 /obj/item/clothing/under/marine/veteran/mercenary/miner
 	name = "\improper Mercenary miner fatigues"
-	desc = "A beige suit with a red armband. It looks a little thin, like it wasn't designed for protection. There is an unknown symbol is emblazed on the suit."
+	desc = "A beige suit with a red armband. It looks a little thin, like it wasn't designed for protection. There is an unknown symbol is emblazoned on the suit."
 	icon_state = "mercenary_miner_uniform"
 	worn_state = "mercenary_miner_uniform"
 
 /obj/item/clothing/under/marine/veteran/mercenary/support
 	name = "\improper Mercenary engineer fatigues"
-	desc = "A blue suit with yellow accents, used by engineers. There is an unknown symbol is emblazed on the suit."
+	desc = "A blue suit with yellow accents, used by engineers. There is an unknown symbol is emblazoned on the suit."
 	icon_state = "mercenary_engineer_uniform"
 	worn_state = "mercenary_engineer_uniform"
 
@@ -1541,7 +1541,7 @@
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/under/liaison_suit/charcoal/skirt
-	name = "liaison's charcoal suitskirt"
+	name = "liaison's charcoal suit skirt"
 	desc = "A stiff, stylish charcoal suit commonly worn by businesswomen from the Weyland-Yutani corporation. Expertly crafted to make you look like a prick."
 	icon_state = "liaison_charcoal_skirt"
 	worn_state = "liaison_charcoal_skirt"
@@ -1623,7 +1623,7 @@
 	worn_state = "corporate_black"
 
 /obj/item/clothing/under/liaison_suit/black/skirt
-	name = "black suitskirt"
+	name = "black suit skirt"
 	desc = "A black pencil skirt paired with a white shirt. A common pairing among corporate workers."
 	icon_state = "corporate_black_skirt"
 	worn_state = "corporate_black_skirt"
@@ -1906,7 +1906,7 @@
 
 /obj/item/clothing/under/marine/veteran/royal_marine
 	name = "royal marines commando uniform"
-	desc = "The field uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment"
+	desc = "The field uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. On par with similar USCM equipment"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/TWE.dmi',
@@ -1921,13 +1921,13 @@
 
 /obj/item/clothing/under/marine/veteran/royal_marine/lt
 	name = "royal marines commando officers uniform"
-	desc = "The officers uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment"
+	desc = "The officers uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. On par with similar USCM equipment"
 	icon_state = "rmc_uniform_lt"
 	worn_state = "rmc_uniform_lt"
 
 /obj/item/clothing/under/marine/officer/royal_marine
 	name = "royal marines commando service uniform"
-	desc = "The service uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. Onpar with similar USCM equipment. Wear your uniform with honour, Commando."
+	desc = "The service uniform of the royal marines commando. They have shards of light Kevlar to help protect against stabbing weapons and bullets. On par with similar USCM equipment. Wear your uniform with honour, Commando."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/TWE.dmi',
@@ -1959,7 +1959,7 @@
 /obj/item/clothing/under/marine/cbrn //CBRN MOPP suit
 	name = "\improper M3 MOPP suit"
 	desc = "M3 MOPP suits are specially designed and engineered to protect the wearer from unshielded exposure to any Chemical, Biological, Radiological, or Nuclear (CBRN) threats in the field. The suit has a recommended lifespan of twenty-four hours once contact with a toxic environment is made, but depending on the severity this can be shortened to eight hours or less."
-	desc_lore = "Since the outbreak of the New Earth Plague in 2157 and the subsequent Interstellar Commerce Commission (ICC) sanctioned decontamination of the colony and its 40 million inhabitants, the abandoned colony has been left under a strict quarantine blockade to prevent any potential scavengers from spreading what’s left of the highly-durable airborne flesh-eating bacteria. Following those events, the three major superpowers have been investing heavily in the development and procurement of CBRN equipment, in no small part due to the extensive damage that the plague and other similar bioweapons could do. The \"Marine 70\" upgrade package and the launch of the M3 pattern armor series saw the first M3-M prototypes approved for CBRN usage."
+	desc_lore = "Since the outbreak of the New Earth Plague in 2157 and the subsequent Interstellar Commerce Commission (ICC) sanctioned decontamination of the colony and its 40 million inhabitants, the abandoned colony has been left under a strict quarantine blockade to prevent any potential scavengers from spreading what’s left of the highly-durable airborne flesh-eating bacteria. Following those events, the three major superpowers have been investing heavily in the development and procurement of CBRN equipment, in no small part due to the extensive damage that the plague and other similar bio-weapons could do. The \"Marine 70\" upgrade package and the launch of the M3 pattern armor series saw the first M3-M prototypes approved for CBRN usage."
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	icon_state = "cbrn"
 	worn_state = "cbrn"
@@ -2002,7 +2002,7 @@
 
 /obj/item/clothing/under/marine/cbrn/verb/hood_toggle()
 	set name = "Toggle Hood"
-	set desc = "Pull your hood and gasmask up over your face and head."
+	set desc = "Pull your hood and gas mask up over your face and head."
 	set src in usr
 	if(!usr || usr.is_mob_incapacitated(TRUE))
 		return

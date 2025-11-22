@@ -323,8 +323,8 @@
 		user.visible_message(SPAN_WARNING("The [src] is set to laser targeting mode, switch to coordinate targeting in order to dial coordinates!"))
 		return
 	if(manual)
-		temp_dial_x = tgui_input_number(user, "Set longitude adjustement from -10 to 10.", "Longitude", 0, 10, -10)
-		temp_dial_y = tgui_input_number(user, "Set latitude adjustement from -10 to 10.", "Latitude", 0, 10, -10)
+		temp_dial_x = tgui_input_number(user, "Set longitude adjustment from -10 to 10.", "Longitude", 0, 10, -10)
+		temp_dial_y = tgui_input_number(user, "Set latitude adjustment from -10 to 10.", "Latitude", 0, 10, -10)
 
 	if(!can_fire_at(user, test_dial_x = temp_dial_x, test_dial_y = temp_dial_y))
 		return

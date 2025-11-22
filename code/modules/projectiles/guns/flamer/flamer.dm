@@ -230,7 +230,7 @@
 	chem.durationfire = clamp(chem.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
 
 	// COMMENTING THESE OUT BUT NOT DELETING, THERE IS CURRENTLY NO ITERATION OF FLAMERS THAT NECESSITATES THE CODE BELOW
-		//atleast until circa 2030 CM with scoped flamers
+		//at least until circa 2030 CM with scoped flamers
 	//if (max_range < fuel_pressure) //Used for custom tanks, allows for higher ranges
 	//	max_range = clamp(fuel_pressure, 0, current_mag.reagents.max_fire_rad)
 
@@ -764,7 +764,7 @@
 	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
 	var/burn_damage = floor(burnlevel * 0.5)
 	switch(fire_variant)
-		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, 2x tile damage (Equiavlent to UT)
+		if(FIRE_VARIANT_TYPE_B) //Armor Shredding Greenfire, 2x tile damage (Equivalent to UT)
 			burn_damage = burnlevel
 	var/fire_intensity_resistance = M.check_fire_intensity_resistance()
 
@@ -938,7 +938,7 @@
 				continue
 		fire_spread_recur(picked_turf, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
 
-// So it doens't do the spinny animation
+// So it doesn't do the spinny animation
 /obj/flamer_fire/onZImpact(turf/impact_turf, height)
 	return
 

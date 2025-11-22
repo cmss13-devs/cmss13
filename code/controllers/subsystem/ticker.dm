@@ -194,7 +194,7 @@ SUBSYSTEM_DEF(ticker)
 					break
 			if(active_admins)
 				to_chat(world, SPAN_CENTERBOLD("The game start has been delayed."))
-				message_admins(SPAN_ADMINNOTICE("Alert: Insufficent players ready to start [GLOB.master_mode].\nEither change mode and map or start round and bypass checks."))
+				message_admins(SPAN_ADMINNOTICE("Alert: Insufficient players ready to start [GLOB.master_mode].\nEither change mode and map or start round and bypass checks."))
 			else
 				var/fallback_mode = CONFIG_GET(string/gamemode_default)
 				SSticker.save_mode(fallback_mode)
@@ -515,7 +515,7 @@ SUBSYSTEM_DEF(ticker)
 
 	winset(C, null, "mainwindow.icon=[SSticker.mode.taskbar_icon]")
 
-/datum/controller/subsystem/ticker/proc/hijack_ocurred()
+/datum/controller/subsystem/ticker/proc/hijack_occurred()
 	if(mode)
 		mode.is_in_endgame = TRUE
 		mode.force_end_at = (world.time + 25 MINUTES)

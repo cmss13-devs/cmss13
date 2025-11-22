@@ -18,7 +18,7 @@
 #define IGNORE_RESTRAINTS (1<<0)
 /// If the incapacitated status effect will ignore a mob in stasis (stasis beds)
 #define IGNORE_STASIS (1<<1)
-/// If the incapacitated status effect will ignore a mob being agressively grabbed
+/// If the incapacitated status effect will ignore a mob being aggressively grabbed
 #define IGNORE_GRAB (1<<2)
 
 /// Time threshold after which we launch ending timer - this should be higher than the slowest processing rate

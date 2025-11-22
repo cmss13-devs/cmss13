@@ -67,7 +67,7 @@
   - rscadd: Re-added Sorokyne Strata to rotation. Applied a bunch of much needed fixes
       and also new unique turfs.
   monkeysfist:
-  - imageadd: Tweaked ballcap sprites
+  - imageadd: Tweaked ball cap sprites
 2022-05-05:
   PhantomEpicness:
   - bugfix: Fixed flare gun storage. They should now be able to be put in shoulder
@@ -94,7 +94,7 @@
   Segrain:
   - bugfix: Predators recalling combisticks and smartdiscs no longer get phantom duplicates.
   Spircen:
-  - bugfix: MRE Matchbook and Cigarrete now can be store on helmets
+  - bugfix: MRE Matchbook and Cigarette now can be store on helmets
   - bugfix: MRE Matchbook weight its now tiny
 2022-05-08:
   Geevies:
@@ -236,7 +236,7 @@
   Morrow:
   - rscadd: You can now engrave your zippo lighter with a bayonet.
   TotalEpicness:
-  - bugfix: MS-11 can now be named with the hand labler
+  - bugfix: MS-11 can now be named with the hand labeler
   ghostsheet:
   - bugfix: M240 Flamethrower crate now contains Pyrotechnician G4-1 fueltank instead
       of Broiler-T flexible refueling system.
@@ -312,7 +312,7 @@
   Morrow:
   - bugfix: You will no longer be permanently slow if you field strip a deployed bipod.
   ghostsheet:
-  - bugfix: Canister Pouch's Pressuzied canister can now be filled from bottles again.
+  - bugfix: Canister Pouch's Pressurized canister can now be filled from bottles again.
 2022-05-23:
   Youtubeboy139:
   - imageadd: New Shoulder Holster item sprite

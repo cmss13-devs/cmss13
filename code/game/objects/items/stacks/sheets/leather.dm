@@ -88,7 +88,7 @@
 	icon_state = "sheet-wetleather"
 	sheettype = "leather"
 	stack_id = "wet leather"
-	var/wetness = 30 //Reduced when exposed to high temperautres
+	var/wetness = 30 //Reduced when exposed to high temperatures
 	var/drying_threshold_temperature = 500 //Kelvin to start drying
 
 /obj/item/stack/sheet/leather
@@ -109,7 +109,7 @@
 		user.visible_message(SPAN_NOTICE("\the [usr] starts cutting hair off \the [src]"), SPAN_NOTICE("You start cutting the hair off \the [src]"), "You hear the sound of a knife rubbing against flesh")
 		if(do_after(user,50, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(user, SPAN_NOTICE(" You cut the hair from this [src.singular_name]"))
-			//Try locating an exisitng stack on the tile and add to there if possible
+			//Try locating an existing stack on the tile and add to there if possible
 			for(var/obj/item/stack/sheet/hairlesshide/HS in user.loc)
 				if(HS.amount < 50)
 					HS.amount++
@@ -131,7 +131,7 @@
 	if(exposed_temperature >= drying_threshold_temperature)
 		wetness--
 		if(wetness == 0)
-			//Try locating an exisitng stack on the tile and add to there if possible
+			//Try locating an existing stack on the tile and add to there if possible
 			for(var/obj/item/stack/sheet/leather/HS in src.loc)
 				if(HS.amount < 50)
 					HS.amount++

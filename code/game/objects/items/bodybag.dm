@@ -238,7 +238,7 @@
 	/// the mob in stasis
 	var/mob/living/carbon/human/stasis_mob
 	var/used = 0
-	/// remembers the value of used, to delay crostasis start.
+	/// remembers the value of used, to delay cryostasis start.
 	var/last_use = 0
 	/// 15 mins of usable cryostasis
 	var/max_uses = 1800

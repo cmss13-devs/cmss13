@@ -15,7 +15,7 @@
   BadAtThisGame302:
   - rscadd: Replaced the Political Survivor surv name with State Contractor
   - rscadd: Added a USCMC Recruiter to the Solaris surv pool.
-  - rscadd: Added a USCM Survivor template anycase anyone wants to add USCM Survivors
+  - rscadd: Added a USCM Survivor template in any case anyone wants to add USCM Survivors
       to other maps.
   - bugfix: Every other surv has no 'Ridge' next to Solaris in their assignments,
       only the CL. Fixes this.
@@ -23,9 +23,9 @@
       and more fluff about it's actual role like the wiki states.
   Diegoflores31:
   - rscadd: Disabler bolts now deal a little oxygen damage on each hit.
-  - rscadd: Replaces Skill lock system on stunbatons with a high chance of hiting
+  - rscadd: Replaces Skill lock system on stun batons with a high chance of hitting
       yourself
-  - qol: adds jittery and sway to Stunbaton and Disabler beams
+  - qol: adds jittery and sway to stun baton and Disabler beams
   Drathek:
   - balance: Compared to originally, corpsmen now have access to medbay vendors, and
       chemistry only requires chemistry access.
@@ -53,7 +53,7 @@
   - bugfix: medals should save more reliably
   hislittlecuzingames:
   - balance: Nightmare inserts of crashed ships on Solaris (big red) and Desert dam
-      can do surgury in them INSTANCE EDIT
+      can do surgery in them INSTANCE EDIT
   mullenpaul:
   - refactor: camera consoles now use camera manager component
   private-tristan:
@@ -69,9 +69,9 @@
   - balance: Reduced how many fire stacks a flaregun shot provides
   - balance: Reduced starshell's damage, but fixed the application of the incend bullet
       trait.
-  - balance: Reverted damage changes to tazers and batons.
+  - balance: Reverted damage changes to tasers and batons.
   Huffie56:
-  - bugfix: 'revert PR #5553 as it is causing issues with color on atmo pipe.'
+  - bugfix: 'revert PR #5553 as it is causing issues with color on atmos pipe.'
   LTNTS:
   - imageadd: stamp sprites for TWE, UPP and CLF
   - code_imp: added TWE, UPP and CLF channels
@@ -150,7 +150,7 @@
   Drathek:
   - bugfix: Fix gardener fruit count not always updating
   Vicacrov:
-  - bugfix: Fixed Warden Praetorians being able to move around the ovipositored Queen
+  - bugfix: Fixed Warden Praetorians being able to move around the ovied Queen
       with their Retrieve ability.
 2024-02-12:
   Stakeyng:
@@ -258,7 +258,7 @@
   Stakeyng:
   - rscadd: mou is now compatible with the shotgun scabbard
   VileBeggar:
-  - rscadd: The Vulture can now be loaded with holo-targetting rounds which have severely
+  - rscadd: The Vulture can now be loaded with holo-targeting rounds which have severely
       hampered ballistic performance, but mark any target that is hit, increasing
       their damage taken by 33% for a brief period of time.
   hislittlecuzingames:
@@ -329,7 +329,7 @@
   - balance: Predalien no longer has plasma costs, or plasma.
   - balance: The Plasma Rifle, which is ONLY used to hunt abominations now has a higher
       ROF and has incin bullets.
-  - spellcheck: Re-wrote the predalien text to be more up to date and remove missinformation
+  - spellcheck: Re-wrote the predalien text to be more up to date and remove misinformation
   - qol: Everyone can see how many kills the predalien has by examining it.
   - rscadd: Added  a "Feral Smash" ability that lets you grab somebody and smash them
       to the ground, this scales with kills and is a devastating attack.
@@ -383,15 +383,15 @@
   - qol: Made any observers transfer over when a Xenomorph evolves/de-evolves.
   SpartanBobby:
   - maptweak: Edits to secure storage LV624s detailing
-  - maptweak: Make a few unabreakable walls on kutjevo breakable, touches the east
-      botony caves flanks ands removes some ledges from combat routes
+  - maptweak: Make a few unbreakable walls on kutjevo breakable, touches the east
+      botany caves flanks ands removes some ledges from combat routes
   - maptweak: Edits to southwest dorms LV522
-  - maptweak: Redetails bigred Libary
+  - maptweak: Redetails bigred Library
 2024-02-26:
   Mister-moon1:
   - balance: Reverted flare range buff 7->5 tiles
   SpartanBobby:
-  - maptweak: Edits to southyard sci-annex
+  - maptweak: Edits to south yard sci-annex
   harryob:
   - admin: marking a ticket now actually stops other people from messing with your
       marked ticket
@@ -444,7 +444,7 @@
   SabreML:
   - bugfix: Fixed acid pillars shooting nested marines.
   Segrain:
-  - bugfix: FORECON and RMC now can add their frequences to groundside radiotowers.
+  - bugfix: FORECON and RMC now can add their frequencies to groundside radiotowers.
   - bugfix: Fisticuffs attacks are no longer attributed to wrong mob.
   - admin: TWE mobs are now properly counted on Who screen.
   - spellcheck: Changed names of "resin node" and "resin hole" to "weed node" and
@@ -471,7 +471,7 @@
   Segrain:
   - bugfix: Removed an exploit involving crates.
   cuberound:
-  - balance: omnisentrygun price down to 300, but it goes up 100 points after each
+  - balance: omnisentry price down to 300, but it goes up 100 points after each
       purchase
   mullenpaul:
   - code_imp: removed duplicated signal code from dropship equipment

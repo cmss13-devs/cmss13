@@ -45,7 +45,7 @@
 	if(foamed_metal_type)
 		new foamed_metal_type(src.loc)
 
-	flick("[icon_state]-disolve", src)
+	flick("[icon_state]-dissolve", src)
 	QDEL_IN(src, 5)
 
 // transfer any reagents to the floor
@@ -83,11 +83,11 @@
 				for(var/datum/reagent/R in reagents.reagent_list)
 					F.reagents.add_reagent(R.id, 1, safety = 1) //added safety check since reagents in the foam have already had a chance to react
 
-// foam disolves when heated
+// foam dissolves when heated
 // except metal foams
 /obj/effect/particle_effect/foam/fire_act(exposed_temperature, exposed_volume)
 	if(!metal && prob(max(0, exposed_temperature - 475)))
-		flick("[icon_state]-disolve", src)
+		flick("[icon_state]-dissolve", src)
 
 		QDEL_IN(src, 5)
 
@@ -124,7 +124,7 @@
 
 		// bit of a hack here. Foam carries along any reagent also present in the glass it is mixed
 		// with (defaults to water if none is present). Rather than actually transfer the reagents,
-		// this makes a list of the reagent ids and spawns 1 unit of that reagent when the foam disolves.
+		// this makes a list of the reagent ids and spawns 1 unit of that reagent when the foam dissolves.
 
 
 	if(carry && !metal)

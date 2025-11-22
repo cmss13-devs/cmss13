@@ -4,7 +4,7 @@
 	This component is used to manage labels applied by the hand labeler.
 
 	Atoms can only have one instance of this component, and therefore only one label at a time.
-	This is to avoid having names like "Backpack (label1) (label2) (label3)". This is annoying and abnoxious to read.
+	This is to avoid having names like "Backpack (label1) (label2) (label3)". This is annoying and obnoxious to read.
 
 	When a player clicks the atom with a hand labeler to apply a label, this component gets applied to it.
 	If the labeler is off, the component will be removed from it, and the label will be removed from its name.
@@ -74,7 +74,7 @@
 
 	Arguments:
 	* source: The parent.
-	* user: The mob exmaining the parent.
+	* user: The mob examining the parent.
 	* examine_list: The current list of text getting passed from the parent's normal examine() proc.
 */
 /datum/component/label/proc/Examine(datum/source, mob/user, list/examine_list)

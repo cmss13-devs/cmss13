@@ -153,7 +153,7 @@
 
 	message_admins("[key_name_admin(usr)] changed the equipment of ALL HUMANS to [dresscode].")
 
-//note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
+//note: when adding new dress codes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.
 /proc/arm_equipment(mob/living/carbon/human/M, dresscode, randomise = FALSE, count_participant = FALSE, client/mob_client, show_job_gear = TRUE)
 	if(ispath(dresscode))

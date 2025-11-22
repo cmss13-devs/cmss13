@@ -172,7 +172,7 @@
 						if(ORGAN_BROKEN)
 							sound += "<font color='red'>barely hear any respiration sounds</font> and a lot of difficulty to breath, [being.p_their()] lungs are <font color='red'>heavily failing</font>"
 						else
-							sound += "hear <font color='green'>normal respiration sounds</font> aswell, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
+							sound += "hear <font color='green'>normal respiration sounds</font> as well, that means [being.p_their()] lungs are <font color='green'>healthy</font>, probably"
 				else
 					sound = "can't hear. Really, anything at all, how weird"
 			else
@@ -227,7 +227,7 @@
 		return
 
 	var/obj/item/clothing/U
-	if(H.wear_suit && H.wear_suit.can_attach_accessory(src)) //Prioritises topmost garment, IE service jackets, if possible.
+	if(H.wear_suit && H.wear_suit.can_attach_accessory(src)) //Prioritizes topmost garment, IE service jackets, if possible.
 		U = H.wear_suit
 	else
 		U = H.w_uniform //Will be null if no uniform. That this allows medal ceremonies in which the hero is wearing no pants is correct and just.
@@ -335,7 +335,7 @@
 
 /obj/item/clothing/accessory/medal/silver/security
 	name = "robust security award"
-	desc = "An award for distinguished combat and sacrifice in defence of Wey-Yu's commercial interests. Often awarded to security staff."
+	desc = "An award for distinguished combat and sacrifice in defense of Wey-Yu's commercial interests. Often awarded to security staff."
 
 /obj/item/clothing/accessory/medal/gold
 	name = "gold medal"
@@ -423,7 +423,7 @@
 
 /obj/item/clothing/accessory/armband/squad
 	name = "squad armband"
-	desc = "An armband in squad colors, worn for ease of idenfication."
+	desc = "An armband in squad colors, worn for ease of identification."
 	icon_state = "armband_squad"
 	var/dummy_icon_state = "armband_%SQUAD%"
 	var/static/list/valid_icon_states

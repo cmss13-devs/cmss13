@@ -42,8 +42,8 @@
   - qol: Custom mines tell you what sensitivity it is when examined
   - balance: Claymores can now switch to low sensitive mode / high sensitive mode
       using a wirecutter
-  - balance: 'When on less sensitive mode: Claymores cant be trigger by huggers and
-      Lesser drones'
+  - balance: When on less sensitive mode Claymores can't be trigger by huggers and
+      Lesser drones
   - balance: Claymores can be triggered by two xeno spits, but cannot be slashed by
       Lesser drones
   - balance: Claymores now layer above lying mobs
@@ -60,11 +60,11 @@
   - bugfix: custom skill presets for synthetics not working
   - bugfix: some joe voice lines not working
   - bugfix: custom synthetic skillsets not working because skillsets were getting
-      overriden
+      overridden
   - mapadd: added a lot of equipment to empty storage room in ares area, for joes
       to use
   MistChristmas:
-  - bugfix: Messages ending in '!' and '?' change the verb from 'says' to 'shouts/yells/excalims'
+  - bugfix: Messages ending in '!' and '?' change the verb from 'says' to 'shouts/yells/exclaims'
       or 'asks' again or their language equivalent.
   Nihisohel:
   - rscadd: Scarves and some masks can be used as accessory items! Use them inhand
@@ -126,7 +126,7 @@
   - bugfix: Fixes HighCommand fax machines breaking.
 2025-05-15:
   DangerRevolution:
-  - rscadd: Increased the number of M5 Camera Gears from 3 to 15 in the Requsition
+  - rscadd: Increased the number of M5 Camera Gears from 3 to 15 in the Requisition
       Vendor.
   - bugfix: M5 Camera Gear now properly spawns in the Squad Vendors.
   jupyterkat:
@@ -139,7 +139,7 @@
   - qol: Xenos can now examine an acid runner to see how much acid they have.
 2025-05-17:
   Uristthedorf:
-  - rscadd: Barcidine now has bicaridine.
+  - rscadd: Barcardine now has bicaridine.
 2025-05-18:
   SPACE5891, A rich guy four:
   - bugfix: can put FixOVein in first-aid kit
@@ -154,7 +154,7 @@
   - code_imp: All satchels have received a new mechanic that allows, upon right-click
       interaction, changing on which shoulder the strap will be on in the on_mob (Works
       only with satchels that have straps). Code by Blundir.
-  - imageadd: Backpacks and Belts needed to be updated to accomodate better new in_hands,
+  - imageadd: Backpacks and Belts needed to be updated to accommodate better new in_hands,
       given that they were outdated and persistently overlapping with the character's
       hands (and overlapping with objects being held by those hands, making stuff
       ugly).
@@ -210,7 +210,7 @@
   - rscadd: Dogtags added to crosses will now always display the fallen marine's name
       at end of round memoriam, even if the cross is later destroyed.
   Red-byte3D:
-  - bugfix: Thermap tarps now have stun to match the rest of the tarps
+  - bugfix: Thermal tarps now have stun to match the rest of the tarps
   stalkerino, thwomper, lagomorphica:
   - rscadd: Adds a satchel to Intelligence Officers
 2025-05-28:
@@ -269,5 +269,5 @@
       show properly on the crew monitor.
 2025-05-31:
   Venuska1117:
-  - qol: Allows xenos to drag lying/unconcious queen without getting shoved when pulling
+  - qol: Allows xenos to drag lying/unconscious queen without getting shoved when pulling
       her on same tile as player.

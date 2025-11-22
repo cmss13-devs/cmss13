@@ -8,11 +8,11 @@ agree
 alert
 allow
 amuse
-analyse
+analyze
 announce
 annoy
 answer
-apologise
+apologize
 appear
 applaud
 appreciate
@@ -318,7 +318,7 @@ matter
 measure
 meddle
 melt
-memorise
+memorize
 mend
 messup
 milk
@@ -416,7 +416,7 @@ radiate
 rain
 raise
 reach
-realise
+realize
 receive
 recognise
 record

@@ -1,6 +1,6 @@
 /////////////////////////////////////////////
 //// SMOKE SYSTEMS
-// direct can be optinally added when set_up, to make the smoke always travel in one direction
+// direct can be optionally added when set_up, to make the smoke always travel in one direction
 // in case you wanted a vent to always smoke north for example
 /////////////////////////////////////////////
 

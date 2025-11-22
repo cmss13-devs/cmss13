@@ -10,7 +10,7 @@
 	var/datum/mentorhelp/current_mhelp = null
 
 	var/last_message = "" //Contains the last message sent by this client - used to protect against copy-paste spamming.
-	var/last_message_count = 0 //contins a number of how many times a message identical to last_message was sent.
+	var/last_message_count = 0 //Contains a number of how many times a message identical to last_message was sent.
 	var/talked = 0
 	var/chatWarn = 0
 	/// The last urgent ahelp that this player sent
@@ -72,7 +72,7 @@
 	var/datum/entity/player_entity/player_entity = null
 
 	//Asset cache
-	// List of all asset filenames sent to this client by the asset cache, along with their assoicated md5s
+	// List of all asset filenames sent to this client by the asset cache, along with their associated md5s
 	var/list/sent_assets = list()
 	/// List of all completed blocking send jobs awaiting acknowledgement by send_asset
 	var/list/completed_asset_jobs = list()

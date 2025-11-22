@@ -102,7 +102,7 @@ Also note the use of `. = TRUE` (or `FALSE`), which is used to notify the UI
 that this input has been handled. When `ui_act` eventually returns, a value of
 `TRUE` indicates that the input has been handled and that the UI should update.
 This is important for UIs that do not auto-update, as otherwise the user will
-not be able to see the interface update based on thier actions.
+not be able to see the interface update based on their actions.
 
 ### Frontend
 

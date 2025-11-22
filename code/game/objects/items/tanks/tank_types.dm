@@ -96,7 +96,7 @@
 // Phoron, used for generators.
 /obj/item/tank/phoron
 	name = "phoron tank"
-	desc = "A tank of liquid phoron. WARNING: Phumes are extremely dangerous."
+	desc = "A tank of liquid phoron. WARNING: Fumes are extremely dangerous."
 	icon_state = "phoron"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	gas_type = GAS_TYPE_PHORON

@@ -223,11 +223,11 @@
 		.["engaged"] = length(sentrygun.targets)
 
 /obj/structure/dropship_equipment/sentry_holder/on_launch()
-	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically undeployed
+	if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentries are automatically undeployed
 		undeploy_sentry()
 
 /obj/structure/dropship_equipment/sentry_holder/on_arrival()
-	if(ship_base && auto_deploy && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically deployed
+	if(ship_base && auto_deploy && ship_base.base_category == DROPSHIP_WEAPON) //only external sentries are automatically deployed
 		deploy_sentry()
 
 /obj/structure/dropship_equipment/sentry_holder/equipment_interact(mob/user)
@@ -738,7 +738,7 @@
 		var/total_seconds = max(floor(ammo_travelling_time / 10), 1)
 		for(var/i in 0 to total_seconds)
 			sleep(1 SECONDS)
-			new /obj/effect/overlay/temp/blinking_laser (impact) //no decreased accuracy if laser dissapears, it will land where it is telegraphed to land
+			new /obj/effect/overlay/temp/blinking_laser (impact) //no decreased accuracy if laser disappears, it will land where it is telegraphed to land
 
 	if(ammo_warn_sound)
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)

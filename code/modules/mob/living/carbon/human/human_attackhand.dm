@@ -49,7 +49,7 @@
 			cpr_attempt_timer = world.time + HUMAN_STRIP_DELAY * attacking_mob.get_skill_duration_multiplier(SKILL_MEDICAL)
 			if(do_after(attacking_mob, HUMAN_STRIP_DELAY * attacking_mob.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				if(stat != DEAD)
-					var/suff = min(getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dieing.
+					var/suff = min(getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dying.
 					apply_damage(-suff, OXY)
 					updatehealth()
 					src.affected_message(attacking_mob,

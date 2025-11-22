@@ -64,7 +64,7 @@
 			SPAN_NOTICE("[user] finishes making a bloodless incision on your [surgery.affected_limb.display_name] with \the [tool]."),
 			SPAN_NOTICE("[user] finishes making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
-		surgery.status++ //A laser scalpel may cauterise as it cuts.
+		surgery.status++ //A laser scalpel may cauterize as it cuts.
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You finish the incision on [target]'s [surgery.affected_limb.display_name]."),
@@ -78,7 +78,7 @@
 		else
 			surgery.status++ // synth skin doesn't cause bleeders
 
-	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW //Descriptionwise this is done by the retractor, but putting it here means people can examine to see if an unfinished surgery has been done.
+	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW //Description-wise this is done by the retractor, but putting it here means people can examine to see if an unfinished surgery has been done.
 	user.add_blood(target.get_blood_color(), BLOOD_HANDS)
 	log_interact(user, target, "[key_name(user)] made an incision in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 

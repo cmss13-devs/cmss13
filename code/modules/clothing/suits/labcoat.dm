@@ -305,8 +305,8 @@
 	icon_state = "purplepark"
 
 /obj/item/clothing/suit/storage/snow_suit/soviet
-	name = "soviet snowcoat"
-	desc = "A winter coat made in some desolate snowplanet. This wintercoat was made from the fur of local wildlife which donated their fur for the greater good of UPP!"
+	name = "soviet snow coat"
+	desc = "A winter coat made in some desolate snowplanet. This winter coat was made from the fur of local wildlife which donated their fur for the greater good of UPP!"
 	icon_state = "sovietcoat"
 	item_state = "sovietcoat"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'

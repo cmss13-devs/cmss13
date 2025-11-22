@@ -8,7 +8,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	name = "lever-action rifle"
 	desc = "Welcome to the Wild West!\nThis gun is levered via Unique-Action, but it has a bonus feature: Hitting a target directly will grant you a fire rate and damage buff for your next shot during a short interval. Combo precision hits for massive damage."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/marksman_rifles.dmi'
-	icon_state = "r4t-placeholder" //placeholder for a 'base' leveraction
+	icon_state = "r4t-placeholder" //placeholder for a 'base' lever-action
 	item_state = "r4t-placeholder"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',

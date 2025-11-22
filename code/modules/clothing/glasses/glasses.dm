@@ -567,7 +567,7 @@
 
 /obj/item/clothing/glasses/mgoggles/black/prescription
 	name = "prescription black marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has black tinted lenses. ntop of that, these ones contain prescription lenses."
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has black tinted lenses. Ontop of that, these ones contain prescription lenses."
 	icon_state = "mgogglesblk"
 	active_icon_state = "mgogglesblk_down"
 	inactive_icon_state = "mgogglesblk"
@@ -787,7 +787,7 @@
 	flags_equip_slot = null
 
 /obj/item/clothing/glasses/mgoggles/mp_riot_shield
-	name = "\improper Z9 integrated riotplate"
+	name = "\improper Z9 integrated riot plate"
 	desc = "An improved variant of the M7 integrated faceplate,"
 	desc_lore = "These were originally produced by a group of marines stationed on LV-920, a snow planet. Conditions were terrible, so to raise morale, the marines hatched a prank. They would spray-paint a faceplate black and meticulously repaint the logos and warning text around the inner seams, not that anyone reads those anyway. Any MP brave or foolish enough to don the brand new faceplate would have the entirety of their cheeks and chin painted black because of residual paint, much to the delight of the bored marines. Unfortunately, due to the prank's roaring success and its spread across the Marine Corps, production of genuine models began, diluting the pool of fake plates with real ones. You're pretty sure this is a real one. Pretty sure."
 	icon_state = "mp_shield"

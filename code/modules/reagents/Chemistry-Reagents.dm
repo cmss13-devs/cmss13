@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/custom_metabolism = REAGENTS_METABOLISM
 	var/overdose = 0 //The young brother of overdose. Side effects include
 	var/overdose_critical = 0 //The nastier brother of overdose. Expect to die
-	var/overdose_dam = 1//Handeled by heart damage
+	var/overdose_dam = 1//Handled by heart damage
 	var/spray_warning = FALSE //whether spraying that reagent creates an admin message.
 	//var/list/viruses = list()
 	var/color = COLOR_BLACK //(does not support alpha channels - yet!)
@@ -49,7 +49,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/burn_sprite = "dynamic"
 	var/burncolor = "#f88818"
 	var/burncolormod = 1
-	/// Cant be used in chemical synthesis in ANY way.
+	/// Can't be used in chemical synthesis in ANY way.
 	var/lockdown_chem = FALSE
 	var/fire_type = FIRE_VARIANT_DEFAULT //Unique types of fire not modeled by chemfire (1 = Armor Shredding Greenfire). Effects in flamer.dm
 	// Chem generator and research stuff

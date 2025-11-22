@@ -305,7 +305,7 @@
 
 //ARMORED VEHICLES PASSENGER SEATS
 //Unique feature - you can put two seats on same tile with different pixel_offsets, humans will be buckled with respective offsets
-//and only when both seats taken, seats will be made dense and, therefore, tile will become unpassible
+//and only when both seats taken, seats will be made dense and, therefore, tile will become unpassable
 
 //DOES NOT SUPPORT MORE THAN TWO SEATS ON TILE
 /obj/structure/bed/chair/vehicle

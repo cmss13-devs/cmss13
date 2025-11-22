@@ -102,7 +102,7 @@
 	icon = 'icons/mob/mob_64.dmi'
 
 //Due to being constrained to 64x64, we need to change the icon's offsets manually whenever the mob's dir is changed.
-//apparantly movement sets both olddir and newdir to the same value, in comparison to manually switching facing which returns the right values.
+//apparently movement sets both olddir and newdir to the same value, in comparison to manually switching facing which returns the right values.
 //i don't know if there's any worthwhile performance gain in having a second signal exclusively for movement so we can check if the olddir and newdir are same.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/change_tongue_offset(datum/source, olddir, newdir)
 	SIGNAL_HANDLER
@@ -139,7 +139,7 @@
 		return
 	return ..()
 
-//we also have to check for the keybind apparantly...
+//we also have to check for the keybind apparently...
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/keybind_face_direction(direction)
 	if(resting && (direction == NORTH || direction == SOUTH))
 		return
@@ -361,7 +361,7 @@
 		playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 		KnockDown(0.4)
 
-//apply blood splatter when attacked by a sufficently damaging sharp weapon
+//apply blood splatter when attacked by a sufficiently damaging sharp weapon
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/attackby(obj/item/weapon, mob/living/carbon/human/attacker)
 	if(weapon.force > 10 && weapon.sharp && attacker.a_intent != INTENT_HELP)
 		handle_blood_splatter(get_dir(attacker.loc, loc))
@@ -641,7 +641,7 @@
 			AttackingTarget(obstacle)
 			return
 
-//no longer checks for distance with ListTargets(). thershold for losing targets is increased, due to needing range for skirmishing
+//no longer checks for distance with ListTargets(). threshold for losing targets is increased, due to needing range for skirmishing
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/AttackTarget()
 	stop_automated_movement = TRUE
 	var/mob/living/target_mob = target_mob_ref?.resolve()

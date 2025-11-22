@@ -26,7 +26,7 @@
   - tweak: Renamed the Walkman vendor to the Rec-Vend. It now additionally vends playing
       cards.
   Fourkhan:
-  - bugfix: Oppressor Prae's grenade no longer goes on permenant cooldown if the Prae
+  - bugfix: Oppressor Prae's grenade no longer goes on permanent cooldown if the Prae
       moves during cast.
   - bugfix: Oppressor Prae's grenade no longer goes on cooldown - at all - if it's
       cancelled during cast.
@@ -82,7 +82,7 @@
       cases after two minutes completely heal it.
   - tweak: Autoinjectors have been changed. They now have 3 uses each and will inject
       exactly half the amount of the overdose limit. They have gotten a new sprite
-      to reflect this new mechanic. Injectors that didnt fit into the new system has
+      to reflect this new mechanic. Injectors that didn't fit into the new system has
       been removed.
   - tweak: The skill required to open/use pill bottles have been upped a level. So
       only Squad Medics and up can do it now.
@@ -176,7 +176,7 @@
       the building succeeds.
   - tweak: Smartguns are now unacidable and indestructible
   Cakey:
-  - tweak: The in game year has been tweaked to progess along with real-time. Welcome
+  - tweak: The in game year has been tweaked to progress along with real-time. Welcome
       to 2189, folks.
   Jeser:
   - bugfix: Fixed nuke not being properly deactivated. Now both marines and aliens

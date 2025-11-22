@@ -37,13 +37,13 @@
 
 /datum/law/major_law/listening_bugs
 	name = "Unauthorized use of a Listening Device"
-	desc = "Using a listening device against SOP in a secure area such as the CIC. Use of listening devices tied to foreign governments or terror organisations is also considered subterfuge."
+	desc = "Using a listening device against SOP in a secure area such as the CIC. Use of listening devices tied to foreign governments or terror organizations is also considered subterfuge."
 	special_punishment = "Listening Device Confiscation"
 	brig_time = 15
 
 /datum/law/major_law/subterfuge
 	name = "Subterfuge"
-	desc = "Carrying out objectives or being tied to material that describe planned actions that go against the USCM. Strong proof is required that the individual is working against USCM. Use of listening devices tied to foreign governments or terror organisations in secure areas is also considered subterfuge."
+	desc = "Carrying out objectives or being tied to material that describe planned actions that go against the USCM. Strong proof is required that the individual is working against USCM. Use of listening devices tied to foreign governments or terror organizations in secure areas is also considered subterfuge."
 	special_punishment = "Termination of ID/Discharge to planet"
 	brig_time = 15
 
@@ -68,8 +68,8 @@
 	desc = "To intentionally order the arrest of a person on false charges who is then found to be innocent, or to apply an improper or abusive NJP. This includes intentionally arresting a person on false charges, on one's own initiative without orders."
 	brig_time = 20
 
-/datum/law/major_law/sexual_harrasment
-	name = "Sexual Harrasment"
+/datum/law/major_law/sexual_harassment
+	name = "Sexual Harassment"
 	desc = "Unwelcome sexual advances, verbal or physical conduct of a sexual nature. Creating an intimidating, hostile or offensive work environment as a result of the harassment."
 	brig_time = 30
 

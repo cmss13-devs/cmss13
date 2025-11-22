@@ -107,7 +107,7 @@
 	var/ticket_name
 	/// The content of the ticket, usually an explanation of what it is for.
 	var/ticket_details
-	/// Whether or not the tickey is a priority.
+	/// Whether or not the ticket is a priority.
 	var/ticket_priority = FALSE
 
 /datum/ares_ticket/New(user, name, details, priority)

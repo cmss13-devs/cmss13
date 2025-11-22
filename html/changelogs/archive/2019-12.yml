@@ -55,7 +55,7 @@
 2019-12-12:
   Cakey:
   - tweak: Nightvision goggles now have skill requirements.
-  - rscadd: Added medal tracking to the statistics panel. Any medals you recieve will
+  - rscadd: Added medal tracking to the statistics panel. Any medals you receive will
       now be tracked under the medals tab, under the human tab.
   - rscadd: Added niche statistics for medals given and received.
   - rscadd: Role timelocks are here. Once enabled, new players will be unable to play
@@ -205,7 +205,7 @@
   - tweak: Getting hit by neuro airbust while you're nested now does nothing.
 2019-12-22:
   Cakey:
-  - rscadd: Added gun executions to the game. Players can trigger executions on unconcious
+  - rscadd: Added gun executions to the game. Players can trigger executions on unconscious
       targets while on either disarm or grab intent, initiating a three second wind-up
       before performing a guaranteed kill.
   Foolosopher:
@@ -213,12 +213,12 @@
   Fourkhan and Triiodine:
   - rscadd: Added many more helmet customization options.
   - rscadd: Crayons, Certain Uno(and regular) cards, Walkmans, Walkman tapes, Pizza,
-      sunglasses of all kinds, scapels, the Medbay snacks, candles, the (broken) loadout
+      sunglasses of all kinds, scalpels, the Medbay snacks, candles, the (broken) loadout
       headsets, medical supplies, flares, and more will now appear on your helmet
       when stored in its storage slots.
   - rscadd: Several new options have been added to the loadout selection menu which
       have various cosmetic effects when placed into helmets, such as rosaries, gun
-      oil, various types of spent ammunition, flairs, netting, raincovers, and more.
+      oil, various types of spent ammunition, flairs, netting, rain covers, and more.
   - tweak: The pen and cigarette have been reduced from 2 points to 1 in loadout.
   - bugfix: More than one object can now display on your helmet. Got that one squared
       away.

@@ -328,7 +328,7 @@
 	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourself for a giant leap."))
 	xeno.make_jittery(2 SECONDS)
 	if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		to_chat(xeno, SPAN_XENONOTICE("We relax our muslces and end our leap."))
+		to_chat(xeno, SPAN_XENONOTICE("We relax our muscles and end our leap."))
 		return
 	if(leaping || !target)
 		return

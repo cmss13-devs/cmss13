@@ -18,7 +18,7 @@
 
 /obj/item/reagent_container/food/snacks/csandwich/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/reagent_container/food/snacks/csandwich))
-		//No sandwitch inception, it causes some bugs...
+		//No sandwich inception, it causes some bugs...
 		to_chat(user, SPAN_NOTICE("You can't put \a [W] in [src]."))
 		return
 

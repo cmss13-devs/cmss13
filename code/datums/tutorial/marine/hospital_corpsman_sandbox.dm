@@ -169,8 +169,8 @@
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/end_supply_phase()
 
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prep_door)
-	var/turf/boundry = get_turf(loc_from_corner(4, 1))
-	if(tutorial_mob.x <= boundry.x)
+	var/turf/boundary = get_turf(loc_from_corner(4, 1))
+	if(tutorial_mob.x <= boundary.x)
 		message_to_player("Please exit the preparations room before progressing into the next round!")
 		return
 	prep_door.close(TRUE)
@@ -185,7 +185,7 @@
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prep_door)
 	prep_door.unlock(TRUE)
 	prep_door.open()
-	stage = TUTORIAL_HM_PHASE_MAIN // just in case it wasnt already
+	stage = TUTORIAL_HM_PHASE_MAIN // just in case it wasn't already
 
 	if(last_resupply_round == 1)
 		message_to_player("Phew! We have entered a resupply phase of the tutorial!")
@@ -193,7 +193,7 @@
 		message_to_player("Remember, on the field, immediate resupply will not always be possible! You won't know for certain when your next chance will arrive, so stock up while you can!")
 		message_to_player("When you are ready, leave the supply room, then click the 'Ready Up' action on the top left of your screen to begin your next round.")
 	else
-		message_to_player("Now enterering a resupply phase. Stock up while you can!")
+		message_to_player("Now entering a resupply phase. Stock up while you can!")
 
 	last_resupply_round = survival_wave
 	give_action(tutorial_mob, /datum/action/hm_tutorial/sandbox/ready_up, null, null, src)

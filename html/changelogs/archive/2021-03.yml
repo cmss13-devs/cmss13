@@ -27,7 +27,7 @@
       the verb in their "Objects" tab.
   - rscadd: Each techtree has 3 tiers. Marines get 3 different permanent techs per
       tier and some repeatable techs that can be purchased multiple times (req points/OBs).
-      Xenos get 2 different permanent techs and 2 different powerups each tier. Powerups
+      Xenos get 2 different permanent techs and 2 different power-ups each tier. Power-ups
       can be purchased multiple times to provide different temporary/limited use abilities
       and effects.
   - rscadd: The tech tree controller for the marine side is chosen randomly between
@@ -93,7 +93,7 @@
   - maptweak: Huntership now has shutters and buttons to operate them instead of consoles
       that don't work.
   Carlarc:
-  - rscadd: Survivor snowcoat can hold guns now.
+  - rscadd: Survivor snow coat can hold guns now.
   - bugfix: Fixed acid spits and the like using laser resistance rather than bio resistance
       on armor. (Usually was the same anyways)
   Nivrak:
@@ -116,7 +116,7 @@
       in maintenance agents, MTs, MPs.
   - imageadd: Finally made the subtypes of comfy chairs have different sprites instead
       of color shifts.
-  - imageadd: Added some new Svestapol-styled reinforced tables to the Almayer.
+  - imageadd: Added some new Sevastopol-styled reinforced tables to the Almayer.
   - imagedel: Removed an unsightly pattern from the Almayer's area icons.
   - maptweak: Redecorated large swathes of the Almayer and expanded maintenance on
       the top deck.
@@ -132,7 +132,7 @@
   - rscadd: Replaced all instances of ballistic vests on the Almayer with M3-VL pattern
       ballistic rigs. Same stats, but now with a suit light and magnetic harness compatibility
       (they still suck though).
-  - rscadd: Gave the Ordance Techs more buckets and 4 M3-VL armor sets in an emergency
+  - rscadd: Gave the Ordnance Techs more buckets and 4 M3-VL armor sets in an emergency
       locker in their office. The buckets are on the racks next to the locker.
   - bugfix: Added a missing engine icon state.
   - bugfix: Corner platform sprites will now appear above actual platforms. Mappers
@@ -173,7 +173,7 @@
   SpartanBobby:
   - bugfix: Fixes unintended hugger protection on bear belt bedsheet and ushanka
   - bugfix: removes colony cameras from TV set in R&R and delta bunks
-  - bugfix: fixes missing floortile
+  - bugfix: fixes missing floor tile
   - bugfix: fixes wrong intercom in DS control bubble
   - tweak: moves 30mm ammo crates to be less in the way of bravo briefing
   - tweak: moved hangar briefing a little more south to give POs space to reload
@@ -208,7 +208,7 @@
   Nanu:
   - rscadd: Added another falloff type, Exponential half.
   - tweak: Tweaked the damage and falloff type of the M12 Blast Grenade.
-  - tweak: Changed the PMC Leader to start with thge Mk2 Rifle instead of the FP9000
+  - tweak: Changed the PMC Leader to start with the Mk2 Rifle instead of the FP9000
   - tweak: Gave the PMC Leader an M12 Blast Grenade.
   Segrain:
   - bugfix: RTOs are now properly listed on overwatch's squad monitor.
@@ -271,7 +271,7 @@
   - rscadd: 'new super Soutomobile: factionlocked to Souto Man alone. Indestructible,
       for what is Souto may never die.'
   Waltermeldron:
-  - tweak: Xenomorph powerups of previous tiers are no longer locked after unlocking
+  - tweak: Xenomorph power-ups of previous tiers are no longer locked after unlocking
       the next tier level.
   - tweak: Increased RTO engineering and construction to level 2 again, to be more
       in line with the SL.
@@ -367,7 +367,7 @@
   - tweak: M46C now accepts enhanced ammunition provided by techwebs.
 2021-03-22:
   BIgboyyo:
-  - bugfix: Changed Synthvivor slowdown to be inbetween medium and light armor, as
+  - bugfix: Changed Synthvivor slowdown to be in-between medium and light armor, as
       was intended.
   Firartix:
   - bugfix: Fixed an issue with incremental changelog generation in CI
@@ -436,7 +436,7 @@
       vendor and crates.
   Waltermeldron:
   - rscadd: Added statistics to each tech, allowing you to view their stats/items.
-  - tweak: Switched positionings of the tgui list input confirm/cancel buttons.
+  - tweak: Switched positioning of the tgui list input confirm/cancel buttons.
   - bugfix: Fixed observers being unable to see purchased techs.
   optimisticdude:
   - rscadd: Adds basic code for bolt action rifles, for whatever reason. This is for
@@ -478,7 +478,7 @@
   Firartix:
   - rscadd: Added default classic keybindings based on previous CM13 keybinds
   - tweak: 'Typing indicator was modified to allow for original faster client-side
-      handling - it will now display the typing bubble for 5 seconds regarldess of
+      handling - it will now display the typing bubble for 5 seconds regardless of
       prompt being open. '
   - tweak: Removed skin Hotkey Toggle as it conflicts with new system's Hotkey Mode
   - tweak: Added Quick Equip Keybind, renamed previous ones to Unholster
@@ -549,7 +549,7 @@
   The_Flying_Flail:
   - rscadd: 'Added new survivor types to various maps (details down below). '
   - rscadd: 'Re-introduced old survivor type to CORSAT to accompany changes to CORSAT
-      corporation LIASON.  '
+      corporation LIAISON.  '
   - rscadd: Added new load-outs to survivor types with the cosmetic overhaul
   - tweak: Cosmetic overhaul to pre-existing survivors to suit the theme of map.
   - tweak: Tweaked survivor melee skills to be slightly more proficient in melee combat
@@ -664,7 +664,7 @@
   - imageadd: Added dedicated sprites for the MARSOC rucksack, matte black tools,
       and MARSOC medical and tools pouches.
   - tweak: Removed some buckshot and a phosphor grenade from the MARSOC backpack to
-      accomodate the stimulants, and added an extra C4.
+      accommodate the stimulants, and added an extra C4.
   - tweak: MARSOC now gets their own tactical medical and tools pouches.
   - tweak: Changed (and fixed) descriptions of several MARSOC items.
   - tweak: MARSOC balaclava is now a subitem of the PMC balaclava, and as a result

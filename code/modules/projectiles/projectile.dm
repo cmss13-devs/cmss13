@@ -133,7 +133,7 @@
 
 /obj/projectile/Crossed(atom/movable/AM)
 	/* Fun fact: Crossed is called for any contents involving operations.
-	 * This notably means, inserting a magazing in a gun Crossed() it with the bullets in the gun. */
+	 * This notably means, inserting a magazine in a gun Crossed() it with the bullets in the gun. */
 	if(!loc?.z)
 		return // Not on the map. Don't scan a turf. Don't shoot the poor guy reloading his gun.
 	if(AM && !(AM in permutated))
@@ -253,7 +253,7 @@
 	var/delta_time = world.tick_lag * rand() * 0.4
 	if(process(delta_time))
 		return // Hit something already?!
-	time_carry -= delta_time // Substract headstart from next tick
+	time_carry -= delta_time // Subtract headstart from next tick
 
 	// Finally queue it to Subsystem for further processing
 	SSprojectiles.queue_projectile(src)

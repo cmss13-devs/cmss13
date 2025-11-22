@@ -225,7 +225,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/Initialize()
 	. = ..()
 	flags_atom |= NOREACT // so it doesn't react until you light it
-	create_reagents(chem_volume) // making the cigarrete a chemical holder with a maximum volume of 15
+	create_reagents(chem_volume) // making the cigarette a chemical holder with a maximum volume of 15
 	reagents.add_reagent("nicotine",10)
 	if(w_class == SIZE_TINY)
 		AddElement(/datum/element/mouth_drop_item)
@@ -303,8 +303,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return
 	if(istype(target, /obj/item/reagent_container/glass)) //you can dip cigarettes into beakers
 		var/obj/item/reagent_container/glass/glass = target
-		var/transfered = glass.reagents.trans_to(src, chem_volume)
-		if(transfered) //if reagents were transfered, show the message
+		var/transferred = glass.reagents.trans_to(src, chem_volume)
+		if(transferred) //if reagents were transferred, show the message
 			to_chat(user, SPAN_NOTICE("You dip \the [src] into \the [glass]."))
 		else //if not, either the beaker was empty, or the cigarette was full
 			if(!glass.reagents.total_volume)
@@ -407,7 +407,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		var/obj/item/butt = new type_butt(T)
 		transfer_fingerprints_to(butt)
 		//if(M)
-			//M.temp_drop_inv_item(src) //un-equip it so the overlays can updat
+			//M.temp_drop_inv_item(src) //un-equip it so the overlays can update
 		qdel(src)
 		. = butt
 	else
@@ -598,7 +598,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /////////////////
 /obj/item/clothing/mask/cigarette/pipe
 	name = "smoking pipe"
-	desc = "A pipe, for smoking. Probably made of meershaum or something."
+	desc = "A pipe, for smoking. Probably made of meerschaum or something."
 	icon_state = "pipeoff"
 	item_state = "pipeoff"
 	icon = 'icons/obj/items/smoking/pipes.dmi'

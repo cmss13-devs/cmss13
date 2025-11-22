@@ -407,7 +407,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		GLOB.deevolved_ckeys += new_xeno.ckey
 
 /mob/living/carbon/xenomorph/proc/transmute(newcaste, message="We regress into our previous form.")
-	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initalize()
+	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initialize()
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
 		qdel(organ)

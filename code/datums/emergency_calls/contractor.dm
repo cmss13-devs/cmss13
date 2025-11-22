@@ -12,7 +12,7 @@
 
 /datum/emergency_call/contractors/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Inheritor with Vanguard's Arrow Incorporated, Primary Operations; we are responding to your distress call and boarding in accordance with the Military Aid Act of 2177, authenticication code Lima-18153. "
+	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Inheritor with Vanguard's Arrow Incorporated, Primary Operations; we are responding to your distress call and boarding in accordance with the Military Aid Act of 2177, authentication code Lima-18153. "
 	objectives = "Ensure the survival of the [MAIN_SHIP_NAME], eliminate any hostiles, and assist the crew in any way possible."
 
 
@@ -96,7 +96,7 @@
 
 /datum/emergency_call/contractors/covert/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Samburan, with Vanguard's Arrow Incorporated, Special Operations; we are boarding in accordance with the 2177 Military Aid Act; authorisation code X-Ray 19601."
+	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Samburan, with Vanguard's Arrow Incorporated, Special Operations; we are boarding in accordance with the 2177 Military Aid Act; authorization code X-Ray 19601."
 	objectives = "Assist USCMC forces in whatever way is possible, sabotage Weyland-Yutani efforts."
 
 /datum/emergency_call/contractors/covert/proc/check_objective_info()

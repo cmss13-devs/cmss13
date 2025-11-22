@@ -30,7 +30,7 @@
 
 //Picks from the list, with some safeties, and returns the "default" arg if it fails
 #define DEFAULTPICK(L, default) ((istype(L, /list) && L:len) ? pick(L) : default)
-// Ensures L is initailized after this point
+// Ensures L is initialized after this point
 #define LAZYINITLIST(L) if (!L) L = list()
 // Sets a L back to null iff it is empty
 #define UNSETEMPTY(L) if (L && !length(L)) L = null

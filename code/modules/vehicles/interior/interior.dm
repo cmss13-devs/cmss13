@@ -127,7 +127,7 @@
 					LAZYADD(passengers, M)
 	return passengers
 
-//syncronizes vehicles passenger settings to interior and resets taken slots
+//synchronizes vehicles passenger settings to interior and resets taken slots
 /datum/interior/proc/update_passenger_settings()
 	var/obj/vehicle/multitile/V = exterior
 	passengers_slots = V.passengers_slots
@@ -218,7 +218,7 @@
 		var/mob/living/carbon/human/H = M
 		var/role_slot_taken = FALSE
 		if(H.stat == DEAD && H.is_revivable())
-			//this is here to prevent accummulating people in vehicle by bringing in more and more revivable dead and reviving them inside
+			//this is here to prevent accumulating people in vehicle by bringing in more and more revivable dead and reviving them inside
 			if(revivable_dead_slots && revivable_dead_taken_slots < revivable_dead_slots && passengers_taken_slots < passengers_slots + revivable_dead_slots)
 				revivable_dead_taken_slots++
 				role_slot_taken = TRUE

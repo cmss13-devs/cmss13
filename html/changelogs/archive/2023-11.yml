@@ -88,7 +88,7 @@
   Releasethesea:
   - balance: Makes it so that Pill packets fit in helmets
   SpartanBobby:
-  - maptweak: Alot of changes to big reds admin area, including new windows, prop
+  - maptweak: A lot of changes to big reds admin area, including new windows, prop
       placement, room detailing, new doors
   Steelpoint:
   - rscadd: Corpsman can chose to optionally vend a set of armoured sterile gloves
@@ -101,7 +101,7 @@
   Xander3359:
   - bugfix: Fixes being able to create ghost tanks from a Broiler-T unit.
   blackdragonTOW:
-  - imageadd: Changed nanotrasen cashcard icon to W-Y
+  - imageadd: Changed nanotrasen cash card icon to W-Y
   fira:
   - rscdel: Removed unused magnet and mass driver legacy SS13 machinery.
   - bugfix: Fixed being able to put anything in your boots. You're not wizards!
@@ -192,9 +192,9 @@
   - qol: Changed "Subject is brain-dead." to "Subject has taken extreme amounts of
       brain damage." when scanning somebody with 100 brain damage.
   Releasethesea:
-  - bugfix: Fixxed the improperly area'd hull south of construction site, adds fire
+  - bugfix: Fixed the improperly area'd hull south of construction site, adds fire
       shutters to north fueling pod to make it mirror the south one
-  - rscadd: Adds Colonial Space Grunts to rec vend aswell as several pens and Dice
+  - rscadd: Adds Colonial Space Grunts to rec vend as well as several pens and Dice
       for playing the game.
   - rscadd: Adds functional bedrolls to the game.
   SpartanBobby:
@@ -227,7 +227,7 @@
   Doubleumc:
   - rscadd: vehicles can be followed by ghosts
   SpartanBobby, GDS Pathe:
-  - maptweak: Updates bigred floortiles
+  - maptweak: Updates bigred floor tiles
   - maptweak: Re-adds reactor to bigred
   Steelpoint:
   - maptweak: LV-624's Caves have had an aesthetic change regarding jungle tiles and
@@ -357,7 +357,7 @@
   - rscadd: Telephones now list the last attempted caller, above the DND button.
 2023-11-26:
   Birdtalon:
-  - code_imp: Replaces single letter vars removes redundant abilitiesin warrior code.
+  - code_imp: Replaces single letter vars removes redundant abilities in warrior code.
   - bugfix: Warriors can no longer behead caps if they start limb ripping before embryo
       is inserted.
   - code_imp: Refactors warrior limb proc to the warrior class.
@@ -387,7 +387,7 @@
   - bugfix: The Self Destruct timer in the status panel will now stop once SD has
       gone off.
   hislittlecuzingames:
-  - bugfix: Disables launch announcment alarm if it's sounding when queen hijacks
+  - bugfix: Disables launch announcement alarm if it's sounding when queen hijacks
 2023-11-28:
   Birdtalon:
   - rscadd: Eggsac carrier can now place eggs on normal weeds to a maximum of 4 eggs.
@@ -407,7 +407,7 @@
   - rscdel: Whiskey Outpost no longer rolls pred rounds naturally.
 2023-11-30:
   Birdtalon:
-  - code_imp: Refactiors xenomorph initialize & removes some duplicate proc calls
+  - code_imp: Refactors xenomorph initialize & removes some duplicate proc calls
   HeresKozmos:
   - mapadd: added a new spring area to kutjevo's south caves
   Huffie56:

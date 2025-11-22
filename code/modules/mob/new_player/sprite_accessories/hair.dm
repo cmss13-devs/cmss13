@@ -12,7 +12,7 @@
 	gender = MALE
 
 /datum/sprite_accessory/hair/short
-	name = "Short Hair"   // try to capatilize the names please~
+	name = "Short Hair"   // try to capitalize the names please~
 	icon_state = "hair_shorthair" // you do not need to define _s or _l sub-states, game automatically does this for you
 
 /datum/sprite_accessory/hair/cut
@@ -20,7 +20,7 @@
 	icon_state = "hair_cuthair"
 
 /datum/sprite_accessory/hair/flair
-	name = "Flaired Hair"
+	name = "Flared Hair"
 	icon_state = "hair_flair"
 
 /datum/sprite_accessory/hair/long
@@ -273,7 +273,7 @@
 	gender = FEMALE
 
 /datum/sprite_accessory/hair/braid
-	name = "Floorlength Braid"
+	name = "Floor Length Braid"
 	icon_state = "hair_braid"
 	gender = FEMALE
 	selectable = 0
@@ -668,7 +668,7 @@
 	gender = FEMALE
 
 /datum/sprite_accessory/hair/flair2
-	name = "Flaired Hair 2"
+	name = "Flared Hair 2"
 	icon_state = "hair_flair2"
 	gender = FEMALE
 

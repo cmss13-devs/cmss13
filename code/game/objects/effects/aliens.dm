@@ -215,7 +215,7 @@
 
 		var/buffed_splash = FALSE
 		var/datum/effects/acid/acid_effect = locate() in hooman.effects_list
-		if(acid_effect && acid_effect.acid_enhanced == FALSE) // can't stack the bonus every splash. thatd be nuts!
+		if(acid_effect)
 			buffed_splash = TRUE
 			damage += bonus_damage
 
@@ -623,7 +623,11 @@
 			H.apply_armoured_damage(damage * XVX_ACID_DAMAGEMULT * xeno_empower_modifier, ARMOR_BIO, BURN)
 		else
 			if(empowered)
-				new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_type))
+				var/datum/effects/acid/acid_effect = locate() in H.effects_list
+				if(acid_effect)
+					acid_effect.prolong_duration()
+				else
+					new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_type))
 			var/found = null
 			for (var/datum/effects/boiler_trap/F in H.effects_list)
 				if (F.cause_data && F.cause_data.resolve_mob() == linked_xeno)

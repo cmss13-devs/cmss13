@@ -275,8 +275,7 @@
 		for(var/mob/O in viewers(GLOB.world_view_size, user))
 			O.show_message(text(SPAN_DANGER("<B>[user] stabs [target] in \the [hit_area] with [src.name]!</B>")), SHOW_MESSAGE_VISIBLE)
 
-		if(affecting.take_damage(3))
-			target:UpdateDamageIcon()
+		affecting.take_damage(3)
 
 	else
 		for(var/mob/O in viewers(GLOB.world_view_size, user))

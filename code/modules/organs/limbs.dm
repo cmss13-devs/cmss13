@@ -89,7 +89,8 @@
 	/// defines which sprite the limb should use if dimorphic, set in [/obj/limb/proc/update_limb()]
 	var/limb_gender = MALE
 
-
+	/// at what value should chemical healing stop on untreated severe burns
+	var/burn_healing_threshold = 5
 
 /obj/limb/Initialize(mapload, obj/limb/P, mob/mob_owner)
 	. = ..()
@@ -414,35 +415,39 @@
 	SEND_SIGNAL(src, COMSIG_LIMB_TAKEN_DAMAGE, is_ff, previous_brute, previous_burn)
 	owner.updatehealth()
 	owner.update_damage_overlays()
+	update_icon()
 	start_processing()
 
 ///Special delimbs for different limbs
 /obj/limb/proc/limb_delimb(damage_source)
 	droplimb(0, 0, damage_source)
 
-/obj/limb/proc/heal_damage(brute, burn, robo_repair = FALSE)
+/obj/limb/proc/heal_damage(brute, burn, robo_repair = FALSE, chemical = FALSE)
 	if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN) && !robo_repair)
 		return
 
+	//unsalved burns do not heal by chems below a certain threshold
+	if((chemical || is_salved()) && (status & (LIMB_THIRD_DEGREE_BURNS|LIMB_ESCHAR)))
+		burn = clamp(burn_dam - burn_healing_threshold, 0, burn)
+
 	//Heal damage on the individual wounds
-	for(var/datum/wound/W in wounds)
-		if(brute == 0 && burn == 0)
+	for(var/datum/wound/wound in wounds)
+		if(brute <= 0 && burn <= 0)
 			break
 
 		// heal brute damage
-		if(W.damage_type == CUT || W.damage_type == BRUISE)
+		if(wound.damage_type == CUT || wound.damage_type == BRUISE)
 			var/old_brute = brute
-			brute = W.heal_damage(brute)
+			brute = wound.heal_damage(brute)
 			owner.pain.apply_pain(brute - old_brute, BRUTE)
-		else if(W.damage_type == BURN)
+		else if(wound.damage_type == BURN)
 			var/old_burn = burn
-			burn = W.heal_damage(burn)
+			burn = wound.heal_damage(burn)
 			owner.pain.apply_pain(burn - old_burn, BURN)
 
 	//Sync the organ's damage with its wounds
-	src.update_damages()
+	update_damages()
 	owner.updatehealth()
-
 	update_icon()
 
 /*
@@ -652,28 +657,33 @@ This function completely restores a damaged organ to perfect condition.
 			status &= ~LIMB_BROKEN //Let it be known that this code never unbroke the limb.
 			knitting_time = -1
 
-//Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
+///Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
 /obj/limb/proc/update_wounds()
 	if((status & (LIMB_ROBOT|LIMB_SYNTHSKIN))) //Robotic limbs don't heal or get worse.
 		return
 
 	owner.recalculate_move_delay = TRUE
 
+	//unsalved burns do not heal below a certain threshold
+	var/max_burn_heal = INFINITY
+	if(status & (LIMB_THIRD_DEGREE_BURNS|LIMB_ESCHAR))
+		max_burn_heal = max(burn_dam - burn_healing_threshold, 0)
+
 	var/wound_disappeared = FALSE
-	for(var/datum/wound/W as anything in wounds)
+	for(var/datum/wound/wound as anything in wounds)
 		// we don't care about wounds after we heal them. We are not an antag simulator
-		if(W.damage <= 0 && !W.internal)
-			wounds -= W
+		if(wound.damage <= 0 && !wound.internal)
+			wounds -= wound
 			wound_disappeared = TRUE
 			continue
 			// let the GC handle the deletion of the wound
 
 		// Internal wounds get worse over time. Low temperatures (cryo) stop them.
-		if(W.internal)
+		if(wound.internal)
 			if(owner.bodytemperature < T0C && (owner.reagents.get_reagent_amount("cryoxadone") || owner.reagents.get_reagent_amount("clonexadone"))) // IB is healed in cryotubes
-				if(W.created + 2 MINUTES <= world.time) // sped up healing due to cryo magics
+				if(wound.created + 2 MINUTES <= world.time) // sped up healing due to cryo magics
 					remove_all_bleeding(FALSE, TRUE)
-					wounds -= W
+					wounds -= wound
 					wound_disappeared = TRUE
 					if(istype(owner.loc, /obj/structure/machinery/cryo_cell)) // check in case they cheesed the location
 						var/obj/structure/machinery/cryo_cell/cell = owner.loc
@@ -685,9 +695,9 @@ This function completely restores a damaged organ to perfect condition.
 		var/heal_amt = 0
 
 		// if damage >= 50 AFTER treatment then it's probably too severe to heal within the timeframe of a round.
-		if (W.can_autoheal() && owner.health >= 0 && !W.is_treated() && owner.bodytemperature > owner.species.cold_level_1)
+		if(wound.can_autoheal() && owner.health >= 0 && !wound.is_treated() && owner.bodytemperature > owner.species.cold_level_1)
 			heal_amt += 0.3 * 0.35 //They can't autoheal if in critical
-		else if (W.is_treated())
+		else if(wound.is_treated())
 			heal_amt += 0.5 * 0.75 //Treated wounds heal faster
 
 		if(heal_amt)
@@ -700,14 +710,23 @@ This function completely restores a damaged organ to perfect condition.
 			// making it look prettier on scanners
 			heal_amt = round(heal_amt,0.1)
 
-			if(W.damage_type == BRUISE || W.damage_type == CUT)
+			//unsalved burns do not heal below a certain threshold
+			if(wound.damage_type == BURN && !wound.salved)
+				heal_amt = min(max_burn_heal, heal_amt)
+				if(heal_amt <= 0)
+					continue
+
+			if(wound.damage_type == BRUISE || wound.damage_type == CUT)
 				owner.pain.apply_pain(-heal_amt, BRUTE)
-			else if(W.damage_type == BURN)
+			else if(wound.damage_type == BURN)
 				owner.pain.apply_pain(-heal_amt, BURN)
 			else
 				owner.pain.recalculate_pain()
 
-			W.heal_damage(heal_amt)
+			var/old_damage = wound.damage
+			wound.heal_damage(heal_amt)
+			if(wound.damage_type == BURN)
+				max_burn_heal -= old_damage - wound.damage
 
 	// sync the organ's damage with its wounds
 	update_damages()

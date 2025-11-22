@@ -205,16 +205,16 @@
 
 ////////////////////////////////////////////
 
-//Returns a list of damaged limbs
+///Returns a list of damaged limbs (potentially excluding severe burns if chemical specifies and the limb is already at the healing threshold)
 /mob/living/carbon/human/proc/get_damaged_limbs(brute, burn, chemical = FALSE)
 	var/list/obj/limb/parts = list()
-	for(var/obj/limb/O in limbs)
+	for(var/obj/limb/limb in limbs)
 		//unsalved burns do not heal by chems below certain threshold
-		if((brute && O.brute_dam) || ((burn && O.burn_dam) && (O.burn_dam > burn_healing_threshold || !chemical || !(O.status & (LIMB_THIRD_DEGREE_BURNS|LIMB_ESCHAR)))))
-			parts += O
+		if((brute && limb.brute_dam) || (burn && limb.burn_dam && (!chemical || limb.burn_dam > limb.burn_healing_threshold || !(limb.status & (LIMB_THIRD_DEGREE_BURNS|LIMB_ESCHAR)))))
+			parts += limb
 	return parts
 
-//Returns a list of damageable limbs
+///Returns a list of damageable limbs
 /mob/living/carbon/human/proc/get_damageable_limbs(inclusion_chance)
 	var/list/obj/limb/parts = list()
 	for(var/obj/limb/limb in limbs)
@@ -225,28 +225,27 @@
 		parts += limb
 	return parts
 
-//Heals ONE external organ, organ gets randomly selected from damaged ones.
-//It automatically updates damage overlays if necesary
-//It automatically updates health status
-/mob/living/carbon/human/heal_limb_damage(brute, burn, chemical = FALSE)
+/**
+ * Heals ONE external organ, organ gets randomly selected from damaged ones.
+ *
+ * It automatically updates damage overlays if necessary.
+ * It automatically updates health status.
+ */
+/mob/living/carbon/human/heal_limb_damage(brute, burn, robo_repair = FALSE, chemical = FALSE)
 	var/list/obj/limb/parts = get_damaged_limbs(brute,burn,chemical)
 	if(!length(parts))
 		return
 	var/obj/limb/picked = pick(parts)
-	if(brute != 0)
-		apply_damage(-brute, BRUTE, picked, chemical = chemical)
-	if(burn != 0)
-		apply_damage(-burn, BURN, picked, chemical = chemical)
-	UpdateDamageIcon()
-	updatehealth()
+	picked.heal_damage(brute, burn, robo_repair, chemical)
 
-
-/*
-In most cases it makes more sense to use apply_damage() instead! And make sure to check armour if applicable.
-*/
-//Damages ONE external organ, organ gets randomly selected from damagable ones.
-//It automatically updates damage overlays if necesary
-//It automatically updates health status
+/**
+ * Damages ONE external organ, organ gets randomly selected from damagable ones.
+ *
+ * It automatically updates damage overlays if necessary.
+ * It automatically updates health status.
+ *
+ * In most cases it makes more sense to use apply_damage() instead! And make sure to check armour if applicable.
+ */
 /mob/living/carbon/human/take_limb_damage(brute, burn, sharp = 0, edge = 0)
 	var/list/obj/limb/parts = get_damageable_limbs()
 	if(!length(parts))
@@ -256,31 +255,20 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		apply_damage(brute, BRUTE, picked, sharp, edge)
 	if(burn != 0)
 		apply_damage(burn, BURN, picked, sharp, edge)
-	UpdateDamageIcon()
-	updatehealth()
-
 
 //Heal MANY limbs, in random order
 /mob/living/carbon/human/heal_overall_damage(brute, burn, robo_repair = FALSE, chemical = FALSE)
 	var/list/obj/limb/parts = get_damaged_limbs(brute, burn, chemical)
-
-	var/update = 0
-	while(length(parts) && (brute>0 || burn>0) )
-		var/obj/limb/picked = pick(parts)
+	while(length(parts) && (brute > 0 || burn > 0))
+		var/obj/limb/picked = pick_n_take(parts)
 
 		var/brute_was = picked.brute_dam
 		var/burn_was = picked.burn_dam
 
-		update |= picked.heal_damage(brute, burn, robo_repair)
+		picked.heal_damage(brute, burn, robo_repair, chemical)
 
 		brute -= (brute_was-picked.brute_dam)
 		burn -= (burn_was-picked.burn_dam)
-
-		parts -= picked
-	updatehealth()
-
-	if(update)
-		UpdateDamageIcon()
 
 // damage MANY limbs, in random order
 /mob/living/carbon/human/take_overall_damage(brute, burn, used_weapon = null, limb_damage_chance = 80)
@@ -288,10 +276,8 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		return //godmode
 	var/list/obj/limb/parts = get_damageable_limbs(limb_damage_chance)
 	var/amount_of_parts = length(parts)
-	for(var/obj/limb/L as anything in parts)
-		L.take_damage(brute / amount_of_parts, burn / amount_of_parts, sharp = FALSE, edge = FALSE, used_weapon = used_weapon)
-	updatehealth()
-	UpdateDamageIcon()
+	for(var/obj/limb/limb as anything in parts)
+		limb.take_damage(brute / amount_of_parts, burn / amount_of_parts, sharp=FALSE, edge=FALSE, used_weapon=used_weapon)
 
 // damage MANY LIMBS, in random order, but consider armor
 /mob/living/carbon/human/proc/take_overall_armored_damage(damage, armour_type = ARMOR_MELEE, damage_type = BRUTE, limb_damage_chance = 80, penetration = 0)
@@ -311,10 +297,6 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 			L.take_damage(burn = modified_damage / amount_of_parts)
 		else
 			L.take_damage(modified_damage / amount_of_parts)
-
-	updatehealth()
-	UpdateDamageIcon()
-
 
 
 ////////////////////////////////////////////
@@ -338,10 +320,8 @@ This function restores all limbs.
 
 
 /mob/living/carbon/human/proc/HealDamage(zone, brute, burn)
-	var/obj/limb/E = get_limb(zone)
-	if(E.heal_damage(brute, burn))
-		UpdateDamageIcon()
-
+	var/obj/limb/limb = get_limb(zone)
+	limb.heal_damage(brute, burn)
 
 /mob/living/carbon/proc/get_limb(zone)
 	return
@@ -382,9 +362,7 @@ This function restores all limbs.
 */
 /mob/living/carbon/human/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, \
 	sharp = 0, edge = 0, obj/used_weapon = null, no_limb_loss = FALSE, \
-
-	permanent_kill = FALSE, mob/firer = null, force = FALSE, enviro = FALSE , chemical = FALSE
-
+	permanent_kill = FALSE, mob/firer = null, force = FALSE, enviro = FALSE, chemical = FALSE
 )
 	if(protection_aura && damage > 0)
 		damage = floor(damage * ((ORDER_HOLD_CALC_LEVEL - protection_aura) / ORDER_HOLD_CALC_LEVEL))
@@ -395,7 +373,7 @@ This function restores all limbs.
 			if((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
 				INVOKE_ASYNC(src, PROC_REF(emote), "pain")
 
-		..(damage, damagetype, def_zone, enviro=enviro , chemical = chemical)
+		..(damage, damagetype, def_zone, enviro=enviro, chemical=chemical)
 
 		return TRUE
 
@@ -429,16 +407,14 @@ This function restores all limbs.
 				var/brute_mod = get_brute_mod()
 				if(brute_mod)
 					damage *= brute_mod
-			if(organ.take_damage(damage, 0, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer))
-				UpdateDamageIcon()
+			organ.take_damage(damage, 0, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer)
 		if(BURN)
 			damageoverlaytemp = 20
 			if(!force)
 				var/burn_mod = get_burn_mod()
 				if(burn_mod)
 					damage *= burn_mod
-			if(organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer))
-				UpdateDamageIcon()
+			organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer)
 
 	pain.apply_pain(damage, damagetype)
 

@@ -186,9 +186,6 @@
 	// Haul resist cooldown
 	var/next_haul_resist
 
-	/// at what value should chemical healing stop on untreated severe burns
-	var/burn_healing_threshold = 5
-
 /client/var/cached_human_playtime
 
 /client/proc/get_total_human_playtime(skip_cache = FALSE)

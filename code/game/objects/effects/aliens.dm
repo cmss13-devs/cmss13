@@ -188,8 +188,6 @@
 			H.apply_armoured_damage(damage_amount * 0.4 * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
 
 		H.last_damage_data = cause_data
-		H.UpdateDamageIcon()
-		H.updatehealth()
 	else
 		H.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
 		to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
@@ -238,8 +236,6 @@
 		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_foot", 20)
 		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_leg", 20)
 		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_leg", 20)
-		hooman.UpdateDamageIcon()
-		hooman.updatehealth()
 	else if (isxeno(carbone))
 		..(carbone, FALSE)
 
@@ -283,8 +279,6 @@
 			H.last_damage_data = cause_data
 			H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
 			H.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
-			H.UpdateDamageIcon()
-			H.updatehealth()
 		else
 			H.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
 			to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))

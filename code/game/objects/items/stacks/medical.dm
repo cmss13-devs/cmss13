@@ -54,8 +54,6 @@
 		to_chat(user, SPAN_WARNING("This isn't useful at all on a robotic limb."))
 		return 1
 
-	H.UpdateDamageIcon()
-
 /obj/item/stack/medical/bruise_pack
 	name = "roll of gauze"
 	singular_name = "medical gauze"

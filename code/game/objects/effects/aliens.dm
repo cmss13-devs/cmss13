@@ -604,32 +604,32 @@
 	var/immobilized_multiplier = 1.45
 	if(empowered)
 		xeno_empower_modifier = 1.25
-	for (var/mob/living/carbon/human in loc)
-		if (human.stat == DEAD)
+	for (var/mob/living/carbon/H in loc)
+		if (H.stat == DEAD)
 			continue
 
-		if(human.ally_of_hivenumber(hivenumber))
+		if(H.ally_of_hivenumber(hivenumber))
 			continue
 
-		animation_flash_color(human)
+		animation_flash_color(H)
 
-		if(isxeno(human))
-			human.apply_armoured_damage(damage * XVX_ACID_DAMAGEMULT * xeno_empower_modifier, ARMOR_BIO, BURN)
+		if(isxeno(H))
+			H.apply_armoured_damage(damage * XVX_ACID_DAMAGEMULT * xeno_empower_modifier, ARMOR_BIO, BURN)
 		else
 			if(empowered)
-				new /datum/effects/acid(human, linked_xeno, initial(linked_xeno.caste_type))
+				new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_type))
 			var/found = null
-			for (var/datum/effects/boiler_trap/trap in human.effects_list)
+			for (var/datum/effects/boiler_trap/trap in H.effects_list)
 				if (trap.cause_data && trap.cause_data.resolve_mob() == linked_xeno)
 					found = trap
 					break
 			if(found)
-				human.apply_armoured_damage(damage*immobilized_multiplier, ARMOR_BIO, BURN)
+				H.apply_armoured_damage(damage*immobilized_multiplier, ARMOR_BIO, BURN)
 			else
-				human.apply_armoured_damage(damage, ARMOR_BIO, BURN)
+				H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
 
 		if (message)
-			to_chat(human, SPAN_XENODANGER(message))
+			to_chat(H, SPAN_XENODANGER(message))
 
 		. = TRUE
 

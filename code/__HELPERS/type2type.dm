@@ -82,11 +82,11 @@
 		hex = text("0[]", hex)
 	return hex
 
-//Splits the text of a file at seperator and returns them in a list.
-/proc/file2list(filename, seperator="\n", trim = TRUE)
+//Splits the text of a file at separator and returns them in a list.
+/proc/file2list(filename, separator="\n", trim = TRUE)
 	if (trim)
-		return splittext(trim(file2text(filename)),seperator)
-	return splittext(file2text(filename),seperator)
+		return splittext(trim(file2text(filename)),separator)
+	return splittext(file2text(filename),separator)
 
 
 //Turns a direction into text
@@ -247,37 +247,37 @@
 			return ICON_OVERLAY
 
 //Converts a rights bitfield into a string
-/proc/rights2text(rights,seperator="")
+/proc/rights2text(rights,separator="")
 	if(rights & R_BUILDMODE)
-		. += "[seperator]+BUILDMODE"
+		. += "[separator]+BUILDMODE"
 	if(rights & R_ADMIN)
-		. += "[seperator]+ADMIN"
+		. += "[separator]+ADMIN"
 	if(rights & R_BAN)
-		. += "[seperator]+BAN"
+		. += "[separator]+BAN"
 	if(rights & R_SERVER)
-		. += "[seperator]+SERVER"
+		. += "[separator]+SERVER"
 	if(rights & R_DEBUG)
-		. += "[seperator]+DEBUG"
+		. += "[separator]+DEBUG"
 	if(rights & R_POSSESS)
-		. += "[seperator]+POSSESS"
+		. += "[separator]+POSSESS"
 	if(rights & R_PERMISSIONS)
-		. += "[seperator]+PERMISSIONS"
+		. += "[separator]+PERMISSIONS"
 	if(rights & R_STEALTH)
-		. += "[seperator]+STEALTH"
+		. += "[separator]+STEALTH"
 	if(rights & R_COLOR)
-		. += "[seperator]+COLOR"
+		. += "[separator]+COLOR"
 	if(rights & R_VAREDIT)
-		. += "[seperator]+VAREDIT"
+		. += "[separator]+VAREDIT"
 	if(rights & R_SOUNDS)
-		. += "[seperator]+SOUND"
+		. += "[separator]+SOUND"
 	if(rights & R_SPAWN)
-		. += "[seperator]+SPAWN"
+		. += "[separator]+SPAWN"
 	if(rights & R_MOD)
-		. += "[seperator]+MODERATOR"
+		. += "[separator]+MODERATOR"
 	if(rights & R_MENTOR)
-		. += "[seperator]+MENTOR"
+		. += "[separator]+MENTOR"
 	if(rights & R_NOLOCK)
-		. += "[seperator]+NOLOCK"
+		. += "[separator]+NOLOCK"
 	return .
 
 /// Return html to load a url.
@@ -300,7 +300,7 @@
 				return /datum
 	return text2path(copytext(string_type, 1, last_slash))
 
-//returns a string the last bit of a type, without the preceeding '/'
+//returns a string the last bit of a type, without the preceding '/'
 /proc/type2top(the_type)
 	//handle the builtins manually
 	if(!ispath(the_type))

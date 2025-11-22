@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(lighting)
 /datum/controller/subsystem/lighting/Initialize(timeofday)
 	started = TRUE
 	if(!initialized)
-		//Handle static lightnig
+		//Handle static lighting
 		create_all_lighting_objects()
 	fire(FALSE, TRUE)
 	return SS_INIT_SUCCESS

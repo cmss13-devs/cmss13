@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(xevolution)
 		if(ROUND_TIME < XENO_ROUNDSTART_BOOSTED_EVO_TIME)
 			boost_power_new = XENO_ROUNDSTART_BOOSTED_EVO_AMOUNT
 		else
-			//Add on any bonuses from thie hivecore after applying upgrade progress
+			//Add on any bonuses from the hivecore after applying upgrade progress
 			boost_power_new += (0.5 * HS.has_special_structure(XENO_STRUCTURE_CORE))
 
 		boost_power_new = clamp(boost_power_new, BOOST_POWER_MIN, BOOST_POWER_MAX)

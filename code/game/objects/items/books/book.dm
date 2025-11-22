@@ -12,7 +12,7 @@
 	)
 	throw_speed = SPEED_FAST
 	throw_range = 5
-	/// upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
+	/// upped to three because books are, y'know, pretty big. (and you could hide them inside each other recursively forever)
 	w_class = SIZE_MEDIUM
 	attack_verb = list("bashed", "whacked", "educated")
 	pickup_sound = "sound/handling/book_pickup.ogg"

@@ -24,7 +24,7 @@
 	return ..()
 
 /obj/effect/landmark/survivor_spawner/proc/check_can_spawn(mob/living/carbon/human/survivor)
-	// prevents stacking survivors on top of eachother
+	// prevents stacking survivors on top of each other
 	if(locate(/mob/living/carbon/human) in loc)
 		return FALSE
 	if(!survivor)

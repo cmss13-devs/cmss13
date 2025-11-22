@@ -281,7 +281,7 @@
 	var/createdby = null
 	var/createdTime = null
 
-	//scuffed variables so the overwatch code doesnt have a fit
+	//scuffed variables so the overwatch code doesn't have a fit
 	var/interference = 0
 	var/stat = null
 

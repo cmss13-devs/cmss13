@@ -215,7 +215,7 @@ SUBSYSTEM_DEF(cmtv)
 	camera_operator.nuke_chat()
 	addtimer(CALLBACK(src, PROC_REF(do_init_chat)), 0.5 SECONDS)
 
-/// To ensure the chat is fully initialised after we nuke it, we wait a bit before sending it an action
+/// To ensure the chat is fully initialized after we nuke it, we wait a bit before sending it an action
 /datum/controller/subsystem/cmtv/proc/do_init_chat()
 	camera_operator.tgui_panel.window.send_message("game/tvmode")
 	camera_operator.fit_viewport()

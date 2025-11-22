@@ -1,6 +1,6 @@
 /datum/effects/neurotoxin
 	effect_name = "neurotoxin gas"
-	/// Duration of the effect. Also used for intensity aswell
+	/// Duration of the effect. Also used for intensity as well
 	duration = 0
 	// We don't want to damage people when they die
 	flags = NO_PROCESS_ON_DEATH | DEL_ON_DEATH

@@ -1044,9 +1044,9 @@
 
 		current = get_step_towards(current, target_turf)
 
-/datum/action/xeno_action/activable/tail_stab/use_ability(atom/targetted_atom)
+/datum/action/xeno_action/activable/tail_stab/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
-	if(HAS_TRAIT(targetted_atom, TRAIT_HAULED))
+	if(HAS_TRAIT(targeted_atom, TRAIT_HAULED))
 		return
 
 	if(HAS_TRAIT(stabbing_xeno, TRAIT_ABILITY_BURROWED) || stabbing_xeno.is_ventcrawling)
@@ -1056,7 +1056,7 @@
 	if(!stabbing_xeno.check_state() || stabbing_xeno.cannot_slash)
 		return FALSE
 
-	var/pre_result = pre_ability_act(stabbing_xeno, targetted_atom)
+	var/pre_result = pre_ability_act(stabbing_xeno, targeted_atom)
 
 	if(pre_result)
 		return FALSE
@@ -1067,26 +1067,26 @@
 	if (world.time <= stabbing_xeno.next_move)
 		return FALSE
 
-	if(stabbing_xeno.z != targetted_atom.z)
+	if(stabbing_xeno.z != targeted_atom.z)
 		var/turf/xeno_turf = get_turf(stabbing_xeno)
 		var/turf/xeno_turf_above = SSmapping.get_turf_above(xeno_turf)
 		var/turf/xeno_turf_below = SSmapping.get_turf_below(xeno_turf)
-		if(xeno_turf_above?.z != targetted_atom.z && xeno_turf_below?.z != targetted_atom.z)
+		if(xeno_turf_above?.z != targeted_atom.z && xeno_turf_below?.z != targeted_atom.z)
 			return
 
-	var/distance = get_dist(stabbing_xeno, targetted_atom)
-	if(stabbing_xeno.z != targetted_atom.z)
+	var/distance = get_dist(stabbing_xeno, targeted_atom)
+	if(stabbing_xeno.z != targeted_atom.z)
 		distance++
 	if(distance > stab_range)
 		return FALSE
 
-	var/list/turf/path = get_line(stabbing_xeno, targetted_atom, include_start_atom = FALSE)
+	var/list/turf/path = get_line(stabbing_xeno, targeted_atom, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)
 			to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
 			return FALSE
 		for(var/obj/path_contents in path_turf.contents)
-			if(path_contents != targetted_atom && path_contents.density && !path_contents.throwpass)
+			if(path_contents != targeted_atom && path_contents.density && !path_contents.throwpass)
 				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
 				return FALSE
 
@@ -1100,24 +1100,24 @@
 				xeno_attack_delay(stabbing_xeno)
 			return FALSE
 
-	var/tail_stab_cooldown_multiplier = targetted_atom.handle_tail_stab(stabbing_xeno)
+	var/tail_stab_cooldown_multiplier = targeted_atom.handle_tail_stab(stabbing_xeno)
 	if(tail_stab_cooldown_multiplier)
-		stabbing_xeno.animation_attack_on(targetted_atom)
+		stabbing_xeno.animation_attack_on(targeted_atom)
 		apply_cooldown(cooldown_modifier = tail_stab_cooldown_multiplier)
 		xeno_attack_delay(stabbing_xeno)
 		return ..()
 
-	if(!isxeno_human(targetted_atom))
+	if(!isxeno_human(targeted_atom))
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.1)
 		xeno_attack_delay(stabbing_xeno)
 		playsound(stabbing_xeno, "alien_tail_swipe", 50, TRUE)
 		return FALSE
 
-	if(stabbing_xeno.can_not_harm(targetted_atom))
+	if(stabbing_xeno.can_not_harm(targeted_atom))
 		return FALSE
 
-	var/mob/living/carbon/target = targetted_atom
+	var/mob/living/carbon/target = targeted_atom
 
 	if(target.stat == DEAD || HAS_TRAIT(target, TRAIT_NESTED))
 		return FALSE
@@ -1137,7 +1137,7 @@
 	..()
 	return result
 
-/datum/action/xeno_action/activable/tail_stab/proc/pre_ability_act(mob/living/carbon/xenomorph/stabbing_xeno, atom/targetted_atom)
+/datum/action/xeno_action/activable/tail_stab/proc/pre_ability_act(mob/living/carbon/xenomorph/stabbing_xeno, atom/targeted_atom)
 	return
 
 /datum/action/xeno_action/activable/tail_stab/proc/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)

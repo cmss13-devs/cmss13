@@ -194,7 +194,7 @@ SUBSYSTEM_DEF(ticker)
 					break
 			if(active_admins)
 				to_chat(world, SPAN_CENTERBOLD("The game start has been delayed."))
-				message_admins(SPAN_ADMINNOTICE("Alert: Insufficent players ready to start [GLOB.master_mode].\nEither change mode and map or start round and bypass checks."))
+				message_admins(SPAN_ADMINNOTICE("Alert: Insufficient players ready to start [GLOB.master_mode].\nEither change mode and map or start round and bypass checks."))
 			else
 				var/fallback_mode = CONFIG_GET(string/gamemode_default)
 				SSticker.save_mode(fallback_mode)
@@ -501,7 +501,7 @@ SUBSYSTEM_DEF(ticker)
 	SSquadtree?.wait    = 0.8 SECONDS // From 0.5, relevant based on player movement speed (higher = more error in sound location, motion detector pings, sentries target acquisition)
 	SSlighting?.wait    = 0.6 SECONDS // From 0.4, same but also heavily scales on player/scene density (higher = less frequent lighting updates which is very noticeable as you move)
 	SSstatpanels?.wait  = 1.5 SECONDS // From 0.6, refresh rate mainly matters for ALT+CLICK turf contents (which gens icons, intensive)
-	SSsoundscape?.wait  =   2 SECONDS // From 1, soudscape triggering checks, scales on player count
+	SSsoundscape?.wait  =   2 SECONDS // From 1, soundscape triggering checks, scales on player count
 	SStgui?.wait    = 1.2 SECONDS // From 0.9, UI refresh rate
 
 	log_debug("Switching to lazy Subsystem timings for performance")
@@ -515,7 +515,7 @@ SUBSYSTEM_DEF(ticker)
 
 	winset(C, null, "mainwindow.icon=[SSticker.mode.taskbar_icon]")
 
-/datum/controller/subsystem/ticker/proc/hijack_ocurred()
+/datum/controller/subsystem/ticker/proc/hijack_occurred()
 	if(mode)
 		mode.is_in_endgame = TRUE
 		mode.force_end_at = (world.time + 25 MINUTES)

@@ -107,7 +107,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	QDEL_NULL_LIST(elements)
 	return ..()
 
-//If we swap to vis_contens inventory these will need a redo
+//If we swap to vis_contents inventory these will need a redo
 /datum/radial_menu/proc/check_screen_border(mob/user)
 	var/atom/movable/AM = anchor
 	if(!istype(AM) || !AM.screen_loc)

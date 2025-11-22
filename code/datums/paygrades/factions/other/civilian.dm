@@ -50,19 +50,19 @@
 	pay_multiplier = 4
 	officer_grade = GRADE_OFFICER
 
-/datum/paygrade/civillian/representative
+/datum/paygrade/civilian/representative
 	paygrade = PAY_SHORT_CREP
 	name = "Representative"
 	prefix = "Rep."
 	pay_multiplier = 1
 
-/datum/paygrade/civillian/officer
+/datum/paygrade/civilian/officer
 	paygrade = PAY_SHORT_CPO
 	name = "Officer"
 	prefix = "Off."
 	pay_multiplier = 0.66
 
-/datum/paygrade/civillian/officer/senior
+/datum/paygrade/civilian/officer/senior
 	paygrade = PAY_SHORT_CSPO
 	name = "Senior Officer"
 	prefix = "Sr. Off."

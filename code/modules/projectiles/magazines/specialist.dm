@@ -122,9 +122,9 @@
 	gun_type = /obj/item/weapon/gun/smartgun/l56a2
 	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 
-/obj/item/ammo_magazine/smartgun/holo_targetting
-	name = "holotargetting M56 smartgun drum"
-	desc = "A 10x28mm holotargetting drum magazine for use in the Royal Marines Commando L56A2 Smartgun."
+/obj/item/ammo_magazine/smartgun/holo_targeting
+	name = "holotargeting M56 smartgun drum"
+	desc = "A 10x28mm holotargeting drum magazine for use in the Royal Marines Commando L56A2 Smartgun."
 	ammo_band_icon = "+m56_drum_strip"
 	ammo_band_icon_empty = "+m56_drum_strip_e"
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING

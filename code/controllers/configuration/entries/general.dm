@@ -548,7 +548,7 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /// InfluxDB v2 Host to connect to for sending statistics (over HTTP API)
 /datum/config_entry/string/influxdb_host
-/// InfluxDB v2 Bucket to send staistics to
+/// InfluxDB v2 Bucket to send statistics to
 /datum/config_entry/string/influxdb_bucket
 /// InfluxDB v2 Organization to access buckets of
 /datum/config_entry/string/influxdb_org

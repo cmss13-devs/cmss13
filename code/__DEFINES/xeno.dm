@@ -442,7 +442,7 @@
 // Modifiers
 //
 // These below are used in the Xeno strain system to increase and decrease certain stats by strain
-// USE THESE WITH SIGNS - postive will be ADDED, negative will be SUBTRACTED from the Xeno's
+// USE THESE WITH SIGNS - positive will be ADDED, negative will be SUBTRACTED from the Xeno's
 // previous stat. Bear in mind that the signs mean different things for different values.
 //
 /////////////////////////////////////////////////////////////////////////////////////
@@ -522,7 +522,7 @@
 #define XENO_NEURO_TIER_4   1.75
 #define XENO_NEURO_TIER_5   2
 
-// Pheremone strength modifiers
+// Pheromone strength modifiers
 #define XENO_PHERO_MOD_VERY_SMALL  0.25
 #define XENO_PHERO_MOD_SMALL   0.5
 #define XENO_PHERO_MOD_MED 0.75
@@ -558,7 +558,7 @@
 //
 // Default scaling values
 //
-// In the abscence of a scalar (documented below) these values are what are used
+// In the absence of a scalar (documented below) these values are what are used
 // to scale xeno stats by age.
 //
 /////////////////////////////////////////////////////////////////////////////////////

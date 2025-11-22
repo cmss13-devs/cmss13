@@ -1226,7 +1226,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Tn" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/river,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "Tv" = (

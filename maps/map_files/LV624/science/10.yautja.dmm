@@ -169,7 +169,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/transmitter/colony_net{
 	phone_category = "Lazarus Landing";
 	phone_id = "Research Dome";
@@ -300,7 +300,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/research)
 "aW" = (
@@ -346,14 +346,14 @@
 	icon_state = "sink";
 	pixel_x = 11
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "bf" = (
 /obj/item/storage/box/beakers,
 /obj/structure/surface/table,
 /obj/structure/sign/safety/biohazard,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "bg" = (
@@ -382,17 +382,17 @@
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "ec" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "gd" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/research)
 "gM" = (
 /obj/structure/surface/table,
 /obj/item/paper/research_notes,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "rg" = (
@@ -414,11 +414,11 @@
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "FO" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/freezerfloor,
 /area/lv624/lazarus/research)
 "Hj" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
@@ -429,7 +429,7 @@
 /area/lv624/lazarus/research)
 "LE" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/whitepurple/northeast,
 /area/lv624/lazarus/research)
 "Np" = (

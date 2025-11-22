@@ -128,7 +128,7 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
 "kk" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
@@ -177,7 +177,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/south_medbay_road)
 "ux" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/south_medbay_road)
 "uF" = (
@@ -364,7 +364,7 @@
 /turf/open/floor,
 /area/lv624/lazarus/fitness)
 "Kc" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "LB" = (
@@ -469,7 +469,7 @@
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "Ur" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/lv624/lazarus/fitness)

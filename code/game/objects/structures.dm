@@ -195,9 +195,6 @@
 			else
 				to_chat(H, SPAN_DANGER("You land heavily!"))
 				H.apply_damage(damage, BRUTE)
-
-			H.UpdateDamageIcon()
-			H.updatehealth()
 	return
 
 /obj/structure/proc/can_touch(mob/living/user)

@@ -266,7 +266,6 @@
 
 			limb.heal_damage(15, 0, TRUE)
 			human.pain.recalculate_pain()
-			human.UpdateDamageIcon()
 			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [human]'s [limb.display_name] with \the [src]."),
 								SPAN_WARNING("You patch some dents on \the [human]'s [limb.display_name] with \the [src]."))
 			return

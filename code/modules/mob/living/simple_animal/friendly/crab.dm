@@ -1,5 +1,5 @@
 //Look Sir, free crabs!
-/mob/living/simple_animal/crab
+/mob/living/simple_animal/small/crab
 	name = "crab"
 	desc = "A hard-shelled crustacean. Seems quite content to lounge around all the time."
 	icon_state = "crab"
@@ -22,7 +22,7 @@
 	var/obj/item/inventory_head
 	var/obj/item/inventory_mask
 
-/mob/living/simple_animal/crab/Life(delta_time)
+/mob/living/simple_animal/small/crab/Life(delta_time)
 	..()
 	//CRAB movement
 	if(!ckey && !stat)
@@ -34,7 +34,7 @@
 	regenerate_icons()
 
 //COFFEE! SQUEEEEEEEEE!
-/mob/living/simple_animal/crab/Coffee
+/mob/living/simple_animal/small/crab/Coffee
 	name = "Coffee"
 	real_name = "Coffee"
 	desc = "It's Coffee, the other pet!"

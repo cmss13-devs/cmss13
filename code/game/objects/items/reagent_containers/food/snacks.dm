@@ -90,11 +90,11 @@
 			if (fullness <= NUTRITION_VERYLOW)
 				to_chat(M, SPAN_WARNING("You hungrily chew out a piece of [src] and gobble it!"))
 			if (fullness > NUTRITION_VERYLOW && fullness <= NUTRITION_LOW)
-				to_chat(M, SPAN_NOTICE(" You hungrily begin to eat [src]."))
+				to_chat(M, SPAN_NOTICE("You hungrily begin to eat [src]."))
 			if (fullness > NUTRITION_LOW && fullness <= NUTRITION_NORMAL)
-				to_chat(M, SPAN_NOTICE(" You take a bite of [src]."))
+				to_chat(M, SPAN_NOTICE("You take a bite of [src]."))
 			if (fullness > NUTRITION_NORMAL && fullness <= NUTRITION_HIGH)
-				to_chat(M, SPAN_NOTICE(" You unwillingly chew a bit of [src]."))
+				to_chat(M, SPAN_NOTICE("You unwillingly chew a bit of [src]."))
 			if (fullness > NUTRITION_HIGH)
 				to_chat(M, SPAN_WARNING("You reluctantly force more of [src] to go down your throat."))
 		else
@@ -129,9 +129,9 @@
 					var/temp_bitesize =  max(reagents.total_volume /2, bitesize)
 					reagents.trans_to(M, temp_bitesize)
 					*/
-					reagents.trans_to_ingest(M, bitesize)
+					reagents.trans_to_ingest(M, bitesize, method = INGESTION)
 				else
-					reagents.trans_to_ingest(M, reagents.total_volume)
+					reagents.trans_to_ingest(M, reagents.total_volume, method = INGESTION)
 				bitecount++
 				On_Consume(M)
 			return TRUE
@@ -3526,8 +3526,8 @@
 	. = ..()
 	reagents.add_reagent("nutriment", 4)
 	reagents.add_reagent("coco", 2)
-	reagents.add_reagent("tramadol", 1) //May be powergamed but it's a single unit.
-	reagents.add_reagent("bicaridine", 2) //The namesake of the bar.
+	reagents.add_reagent("faux_tramadol", 1) //May be powergamed but it's a single unit.
+	reagents.add_reagent("faux_bicaridine", 2) //The namesake of the bar.
 
 /obj/item/reagent_container/food/snacks/wrapped/twe_bar
 	name = "ORP oat bisuit"

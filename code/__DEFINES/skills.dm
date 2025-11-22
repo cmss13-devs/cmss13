@@ -79,8 +79,8 @@
 
 //medical skill
 #define SKILL_MEDICAL_DEFAULT 0
-#define SKILL_MEDICAL_TRAINED 1 //recognizing chemicals, using autoinjectors & hyposprays with any chemicals (SL, mini-medics)
-#define SKILL_MEDICAL_MEDIC 2 //syringe use & defib use (Combat Medic, doctors)
+#define SKILL_MEDICAL_TRAINED 1 //recognizing chemicals, faster precision autoinjector use (SL, mini-medics)
+#define SKILL_MEDICAL_MEDIC 2 //hypospray, syringe use & defib use (Combat Medic, doctors)
 #define SKILL_MEDICAL_DOCTOR 3 //Chemmaster use, 25% reduction in medical task (splints, defib, cpr)
 #define SKILL_MEDICAL_MASTER 4
 #define SKILL_MEDICAL_MAX 4

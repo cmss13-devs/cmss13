@@ -2,6 +2,8 @@
 
 /datum/reagent/medical
 	flags = REAGENT_TYPE_MEDICAL | REAGENT_SCANNABLE
+	preferred_delivery = CONTROLLED_INGESTION | INJECTION
+	undesired_delivery = INGESTION // without this, people can still make unga, and we don't want that no more
 
 /datum/reagent/medical/inaprovaline
 	name = "Inaprovaline"
@@ -113,6 +115,8 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_OXYGENATING = 4)
+	preferred_delivery = CONTROLLED_INGESTION | INJECTION | INHALATION | ABSORPTION
+
 
 /datum/reagent/medical/dexalinp
 	name = "Dexalin Plus"
@@ -124,6 +128,7 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_OXYGENATING = 6)
+	preferred_delivery = CONTROLLED_INGESTION | INJECTION | INHALATION | ABSORPTION
 
 /datum/reagent/medical/tricordrazine
 	name = "Tricordrazine"
@@ -135,6 +140,9 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1, PROPERTY_OXYGENATING = 1)
+	preferred_delivery = CONTROLLED_INGESTION | INJECTION | ABSORPTION
+	undesired_delivery = NO_DELIVERY
+
 
 /datum/reagent/medical/anti_toxin
 	name = "Dylovene"
@@ -238,6 +246,8 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_OCULOPEUTIC = 2)
+	preferred_delivery = CONTROLLED_INGESTION | INJECTION | TOUCH // eye drops, assuming people use it for that anyway
+	undesired_delivery = NO_DELIVERY
 
 /datum/reagent/medical/peridaxon
 	name = "Peridaxon"
@@ -320,6 +330,7 @@
 	color = "#4acaca" // rgb: 74, 202, 202
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CRYOMETABOLIZING = 2, PROPERTY_NEOGENETIC = 1, PROPERTY_ANTICORROSIVE = 1, PROPERTY_ANTITOXIC = 1, PROPERTY_ANTICARCINOGENIC = 1)
+	preferred_delivery = ABSORPTION // look, dipping yourself in whats essentially medical liquid nitrogen is more akin to applying lotion
 
 /datum/reagent/medical/cryoxadone/on_mob_life(mob/living/M)
 	. = ..()
@@ -339,6 +350,7 @@
 	color = "#51b4db" // rgb: 81, 180, 219
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_CRYOMETABOLIZING = 6, PROPERTY_NEOGENETIC = 3, PROPERTY_ANTICORROSIVE = 3, PROPERTY_ANTITOXIC = 3, PROPERTY_ANTICARCINOGENIC = 3)
+	preferred_delivery = ABSORPTION
 
 /datum/reagent/medical/rezadone
 	name = "Rezadone"
@@ -360,6 +372,8 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_UNKNOWN = 1)
+	preferred_delivery = ANY_DELIVERY
+	undesired_delivery = NO_DELIVERY
 
 /datum/reagent/medical/ethylredoxrazine // FUCK YOU, ALCOHOL
 	name = "Ethylredoxrazine"
@@ -425,4 +439,6 @@
 	chemclass = CHEM_CLASS_NONE
 	properties = list(PROPERTY_CRITICALSTABILIZE = 1, PROPERTY_CROSSMETABOLIZING = 2)
 	flags = REAGENT_TYPE_MEDICAL | REAGENT_NO_GENERATION
+	preferred_delivery = IMPLANTATION // for all intents and purposes, yeah
+	undesired_delivery = NO_DELIVERY
 

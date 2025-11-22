@@ -4,7 +4,7 @@
 	name = "\improper Yautja Hunting Grounds"
 	icon_state = "green"
 	weather_enabled = FALSE
-	flags_area = AREA_YAUTJA_HANGABLE|AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS|AREA_YAUTJA_HUNTING_GROUNDS
+	flags_area = AREA_YAUTJA_HANGABLE|AREA_NOBURROW|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS|AREA_YAUTJA_HUNTING_GROUNDS
 	resin_construction_allowed = FALSE
 	can_build_special = FALSE
 	is_resin_allowed = TRUE

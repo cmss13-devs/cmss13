@@ -191,6 +191,10 @@
 /datum/ammo/bullet/machinegun/doorgun
 	flags_ammo_behavior = AMMO_BALLISTIC | AMMO_IGNORE_COVER
 
+/datum/ammo/bullet/machinegun/whiskey
+	flags_ammo_behavior = AMMO_BALLISTIC | AMMO_IGNORE_COVER
+	penetration = ARMOR_PENETRATION_TIER_5
+
 /datum/ammo/bullet/machinegun/auto // for M2C, automatic variant for M56D, stats for bullet should always be moderately overtuned to fulfill its ultra-offense + flank-push purpose
 	name = "heavy machinegun bullet"
 

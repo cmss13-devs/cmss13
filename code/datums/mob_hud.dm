@@ -338,8 +338,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, flatten_numeric_alist(alist(
 	else
 		var/amount = health > 0 ? round(health * 100 / maxHealth, 10) : CEILING(health, 10)
 		if(health < 0)
-			var/warding_health = crit_health != 0 ? warding_aura * 20 : 0
-			amount = round((health / (crit_health - warding_health)) * -100, 10)
+			var/warding_health = health_threshold_dead != 0 ? warding_aura * 20 : 0
+			amount = round((health / (health_threshold_dead - warding_health)) * -100, 10)
 		else
 			amount = CEILING((health / maxHealth) * 100, 10)
 		if(!amount)

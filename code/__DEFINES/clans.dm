@@ -42,6 +42,7 @@
 #define CLAN_RANK_ELDER_INT 5
 #define CLAN_RANK_LEADER_INT 6
 #define CLAN_RANK_ADMIN_INT 7
+#define CLAN_RANK_SUPERADMIN_INT 10
 
 /// Hard limit
 #define CLAN_LIMIT_NUMBER 1
@@ -51,37 +52,16 @@
 #define CLAN_HREF "clan_href"
 #define CLAN_TARGET_HREF "clan_target_href"
 
-#define CLAN_ACTION "clan_action"
-
-/// Set name of clan
-#define CLAN_ACTION_CLAN_RENAME "rename"
-/// Set description of clan
-#define CLAN_ACTION_CLAN_SETDESC "setdesc"
-/// Set honor of clan
-#define CLAN_ACTION_CLAN_SETHONOR "sethonor"
-
-#define CLAN_ACTION_CLAN_DELETE "delete"
-#define CLAN_ACTION_CLAN_SETCOLOR "setcolor"
-
-/// Set a player's clan
-#define CLAN_ACTION_PLAYER_MOVECLAN "moveclan"
-/// Set a player's rank. Resets when moved from clan to Young Blood
-#define CLAN_ACTION_PLAYER_MODIFYRANK "modifyrank"
-
-#define CLAN_ACTION_PLAYER_PURGE "purge"
-
 #define GET_CLAN(clan_id) DB_ENTITY(/datum/entity/clan, clan_id)
 #define GET_CLAN_PLAYER(player_id) DB_EKEY(/datum/entity/clan_player, text2num(player_id))
 
 #define NO_CLAN_LIST list(\
 			clan_id = null,\
-			clan_name = "Clanless",\
+			clan_name = CLAN_NAME_CLANLESS,\
 			clan_description = "This is a list of players without a clan",\
-			clan_honor = null,\
 			clan_keys = list(),\
 			\
 			player_delete_clan = FALSE,\
-			player_sethonor_clan = FALSE,\
 			player_rename_clan = FALSE,\
 			player_setdesc_clan = FALSE,\
 			player_modify_ranks = FALSE,\
@@ -94,3 +74,14 @@
 #define ERT_JOB_YOUNGBLOOD "Young Blood"
 #define JOB_YOUNGBLOOD_ROLES /datum/timelock/young_blood
 #define JOB_YOUNGBLOOD_ROLES_LIST list(ERT_JOB_YOUNGBLOOD)
+
+#define CLAN_ANCILLARY_NONE "None"
+#define CLAN_ANCILLARY_ENFORCER "Enforcer"
+#define CLAN_ANCILLARY_HOUND_MASTER "Hound Master"
+#define CLAN_ANCILLARY_TASK_MASTER "Task Master"
+#define CLAN_ANCILLARY_ADJUTANT "Adjutant"
+#define CLAN_ANCILLARY_SHAMAN "Shaman"
+#define CLAN_ANCILLARY_HIGH_ENFORCER "High Enforcer"
+#define CLAN_ANCILLARY_HIGH_SHAMAN "High Shaman"
+
+#define CLAN_NAME_CLANLESS "Clanless"

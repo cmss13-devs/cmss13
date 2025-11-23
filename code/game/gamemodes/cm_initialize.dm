@@ -324,8 +324,9 @@ Additional game mode variables.
 
 	stranded_candidate.client.prefs.find_assigned_slot(JOB_PRED_SURVIVOR) // Probably does not do anything relevant, predator preferences are not tied to specific slot.
 
-	var/obj/effect/landmark/yautja_teleport/position = pick(GLOB.yautja_teleports)
-	var/turf/spawn_point = get_turf(position)
+	//var/obj/effect/landmark/yautja_teleport/position = pick(GLOB.yautja_teleports)
+	//var/turf/spawn_point = get_turf(position)
+	var/turf/spawn_point = pick(GLOB.badblood_spawns)
 	if(!isturf(spawn_point))
 		log_debug("Failed to find spawn point for pred ship in transform_stranded_pred.")
 		to_chat(stranded_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))

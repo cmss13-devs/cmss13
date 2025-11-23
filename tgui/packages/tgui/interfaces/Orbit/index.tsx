@@ -540,7 +540,7 @@ const yautjaSplitter = (members: Array<Observable>) => {
   const preds = [
     buildSquadObservable('Hunters', 'green', other),
     buildSquadObservable('Young Bloods', 'brown', youngblood),
-    buildSquadObservable('Stranded', 'orange', badblood),
+    buildSquadObservable('Stranded', 'orange', stranded),
     buildSquadObservable('Bad Bloods', 'red', badblood),
   ];
   return preds;

@@ -289,3 +289,6 @@
   - bugfix: You can no longer see tiles you shouldn't be able to see while looking
       up
   - bugfix: You can no longer look up while zoomed or zoom while looking up
+2025-11-23:
+  Puckaboo2:
+  - bugfix: Thwei goes back to its normal sprite after use.

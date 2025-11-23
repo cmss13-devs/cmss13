@@ -353,6 +353,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	desc = "A strange Yautja device used for projecting the Yautja's voice to the others in its pack. Similar in function to a standard human radio. This one has been modified in some way."
 	frequency = BADBLOOD_FREQ
 
+/obj/item/device/radio/headset/yautja/stranded
+	name = "\improper Damaged Communicator"
+	desc = "A strange Yautja device used for projecting the Yautja's voice to the others in its pack. Similar in function to a standard human radio. This one seems damaged and is transmitting on a different frequency."
+	frequency = STRANDED_FREQ
+
 /obj/item/device/encryptionkey/yautja
 	name = "\improper Yautja encryption key"
 	desc = "A complicated encryption device."

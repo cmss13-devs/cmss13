@@ -84,6 +84,7 @@
 
 #define RADIO_CHANNEL_YAUTJA "Yautja"
 #define RADIO_CHANNEL_YAUTJA_OVERSEER "Overseer"
+#define RADIO_CHANNEL_YAUTJA_STRANDED "Stranded"
 #define RADIO_CHANNEL_YAUTJA_BADBLOOD "Bad Blood"
 
 

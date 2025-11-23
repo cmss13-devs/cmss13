@@ -248,15 +248,15 @@
  *
  * In most cases it makes more sense to use apply_damage() instead! And make sure to check armour if applicable.
  */
-/mob/living/carbon/human/take_limb_damage(brute, burn, sharp = 0, edge = 0)
+/mob/living/carbon/human/take_limb_damage(brute, burn, sharp = 0, edge = 0, chemical = FALSE)
 	var/list/obj/limb/parts = get_damageable_limbs()
 	if(!length(parts))
 		return
 	var/obj/limb/picked = pick(parts)
 	if(brute != 0)
-		apply_damage(brute, BRUTE, picked, sharp, edge)
+		apply_damage(brute, BRUTE, picked, sharp, edge, chemical=chemical)
 	if(burn != 0)
-		apply_damage(burn, BURN, picked, sharp, edge)
+		apply_damage(burn, BURN, picked, sharp, edge, chemical=chemical)
 
 //Heal MANY limbs, in random order
 /mob/living/carbon/human/heal_overall_damage(brute, burn, robo_repair = FALSE, chemical = FALSE)
@@ -321,9 +321,9 @@ This function restores all limbs.
 
 
 
-/mob/living/carbon/human/proc/HealDamage(zone, brute, burn)
+/mob/living/carbon/human/proc/HealDamage(zone, brute, burn, robo_repair = FALSE, chemical = FALSE)
 	var/obj/limb/limb = get_limb(zone)
-	limb.heal_damage(brute, burn)
+	limb.heal_damage(brute, burn, robo_repair, chemical)
 
 /mob/living/carbon/proc/get_limb(zone)
 	return

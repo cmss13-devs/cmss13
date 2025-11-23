@@ -498,6 +498,8 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 	icon_state = "pred_vendor_elder_right"//placeholder
 
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/survivor/get_listed_products(mob/user)
+	if(!user)
+		return GLOB.cm_vending_equipment_stranded_pred
 	if(user.job == JOB_BADBLOOD)
 		return GLOB.cm_vending_equipment_badblood
 	return GLOB.cm_vending_equipment_stranded_pred

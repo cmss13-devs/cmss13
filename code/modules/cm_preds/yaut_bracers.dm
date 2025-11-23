@@ -1323,7 +1323,7 @@
 	. = translate_internal(usr, FALSE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(mob/living/user, forced = FALSE)
-	if(!user || user.stat)
+	if(!user || user.stat || !user.client)
 		return
 
 	. = check_random_function(user, forced)
@@ -1334,22 +1334,30 @@
 		to_chat(user, SPAN_DANGER("You cannot translate (muted)."))
 		return
 
-	var/list/heard = get_mobs_in_view(7, user)
+	var/mob/source_mob = user.client.get_eye()
+	var/is_local = FALSE
+	if(source_mob == user)
+		is_local = TRUE
+
+	var/list/heard = get_mobs_in_view(7, source_mob)
 	for(var/mob/heard_mob in heard)
 		if(heard_mob.ear_deaf)
 			heard -= heard_mob
 
 	var/image/translator_bubble = image('icons/mob/effects/talk.dmi', src, "pred_translator", TYPING_LAYER)
-	user.show_speech_bubble(heard, looping_bubble = TRUE, animated = FALSE, speech_bubble = translator_bubble)
+	if(is_local)
+		user.show_speech_bubble(heard, looping_bubble = TRUE, animated = FALSE, speech_bubble = translator_bubble)
 	var/message = tgui_input_text(user, "The bracer beeps and is awaiting to translate", "Translator", multiline = TRUE)
-	user.remove_speech_bubble(translator_bubble)
-	if(!message || !user.client)
+	if(is_local)
+		user.remove_speech_bubble(translator_bubble)
+	if(!message)
 		return
 
 	if(!drain_power(user, 50))
 		return
 
-	user.show_speech_bubble(heard, "pred_translator1")
+	if(is_local)
+		user.show_speech_bubble(heard, "pred_translator1")
 
 	log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] \[Yautja Translator\]: [message] (CKEY: [user.key]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
 
@@ -1366,10 +1374,11 @@
 		message = replacetext(message, "s", "5")
 		message = replacetext(message, "l", "1")
 
-	user.langchat_speech(message, heard, GLOB.all_languages, overhead_color, TRUE)
+	if(is_local)
+		user.langchat_speech(message, heard, GLOB.all_languages, overhead_color, TRUE)
 
 	var/voice_name = "A strange voice"
-	if(user.name == user.real_name && user.alpha == initial(user.alpha))
+	if((user.name == user.real_name) && (user.alpha == initial(user.alpha)) && is_local)
 		voice_name = "<b>[user.name]</b>"
 	for(var/mob/heard_human as anything in heard)
 		if(heard_human.stat && !isobserver(heard_human))

@@ -510,7 +510,7 @@
 /obj/effect/hunter/bridge_border/corner{
 	dir = 4
 	},
-/obj/effect/step_trigger/teleporter/yautja_ship,
+/obj/effect/step_trigger/teleporter/yautja_survivor,
 /obj/effect/hunter/catwalk/new_alpha,
 /obj/structure/showcase{
 	desc = "A console used for Yautja teleportation.";

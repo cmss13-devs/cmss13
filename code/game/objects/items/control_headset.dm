@@ -72,13 +72,9 @@
 	if(istype(human) && !human.is_mob_incapacitated())
 		return TRUE
 
-/datum/action/item_action/lose_control/New(Target, obj/item/holder)
-	. = ..()
-	name = name
-	button.name = name
-	button.overlays.Cut()
-	var/image/IMG = image('icons/mob/hud/actions_xeno.dmi', button, "rav_enrage")
-	button.overlays += IMG
+/datum/action/lose_control
+	name = "Disconnect"
+	action_icon_state = "hologram_exit"
 
 /datum/action/lose_control/action_activate()
 	..()

@@ -164,7 +164,8 @@
 	if((E.flags_embryo & FLAG_EMBRYO_PREDATOR) && E.hivenumber == GLOB.hive_datum[level])
 		return
 
-	E.visible_message(SPAN_DANGER("\the [E] rapidly mutates"))
+	E.visible_message(SPAN_DANGER("\the [E] violently mutates!"))
+	E.transform *= 1.5 // big egg for big mutation
 
 	playsound(E, 'sound/effects/attackblob.ogg', 25, TRUE)
 

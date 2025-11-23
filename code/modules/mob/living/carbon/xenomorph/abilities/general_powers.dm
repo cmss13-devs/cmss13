@@ -716,6 +716,10 @@
 	if(!xeno.hive)
 		return FALSE
 
+	if(HAS_TRAIT(target, TRAIT_XENO_BRAINDEAD))
+		to_chat(xeno, "You have no idea how to do that.")
+		return
+
 	//Make sure construction is unrestricted
 	if(IS_NORMAL_XENO(xeno))
 		if(!HAS_FLAG(xeno.hive.hive_flags, XENO_CONSTRUCTION_NORMAL))

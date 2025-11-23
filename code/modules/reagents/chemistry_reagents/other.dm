@@ -1019,6 +1019,28 @@
 	reagent_state = LIQUID
 	color = "#f1e8cf"
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
+	/// If a braindead larva is injected, it will become this caste type (unless it's null)
+	var/evolution_type = XENO_CASTE_LESSER_DRONE
+	// If a braindead xenomorph is injected, it will become one of these strain types, as long as it's the right caste for it
+	var/list/strain_types = list()
+
+/datum/reagent/plasma/reaction_mob(mob/living/carbon/xenomorph/larva/reacted_mob, permeable, volume)
+	if(!HAS_TRAIT(reacted_mob, TRAIT_XENO_BRAINDEAD))
+		return
+
+	if(islarva(reacted_mob) && evolution_type)
+		reacted_mob.visible_message(SPAN_NOTICE("The larva writhes as it absorbs the plasma..."))
+		reacted_mob.perform_evolution(evolution_type)
+		return
+
+	if(!length(strain_types))
+		return
+
+	for(var/strain in strain_types)
+		if((strain in reacted_mob.caste.available_strains))
+			reacted_mob.visible_message(SPAN_NOTICE("The [reacted_mob] quivers as it absorbs the plasma..."))
+			reacted_mob.perform_strain(strain)
+			return
 
 /datum/reagent/plasma/pheromone
 	name = "Pheromone Plasma"
@@ -1030,6 +1052,7 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_HALLUCINOGENIC = 8, PROPERTY_NERVESTIMULATING = 3)
+	strain_types = list(/datum/xeno_strain/healer)
 
 /datum/reagent/plasma/chitin
 	name = "Chitin Plasma"
@@ -1041,6 +1064,8 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_HYPERDENSIFICATING = 1)
+	evolution_type = XENO_CASTE_DEFENDER
+	strain_types = list(/datum/xeno_strain/steel_crest, /datum/xeno_strain/acider)
 
 /datum/reagent/plasma/catecholamine
 	name = "Catecholamine Plasma"
@@ -1052,6 +1077,7 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_NEUROPATHIC = 2, PROPERTY_MUSCLESTIMULATING = 6)
+	evolution_type = XENO_CASTE_RUNNER
 
 /datum/reagent/plasma/egg
 	name = "Egg Plasma"
@@ -1063,6 +1089,9 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_HEMOSITIC = 4)
+	// lmao no are you crazy.
+	evolution_type = null
+	strain_types = list(null)
 
 /datum/reagent/plasma/egg/on_mob_life(mob/living/M)
 	. = ..()
@@ -1094,6 +1123,7 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_EXCRETING = 2, PROPERTY_HALLUCINOGENIC = 6)
+	evolution_type = XENO_CASTE_SENTINEL
 
 /datum/reagent/plasma/antineurotoxin
 	name = "Anti-Neurotoxin"
@@ -1105,6 +1135,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_NEUROSHIELDING = 1)
+	evolution_type = null
 
 /datum/reagent/plasma/nutrient
 	name = "Nutrient Plasma"
@@ -1116,6 +1147,8 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_FUELING = 1, PROPERTY_VISCOUS = 3, PROPERTY_ADDICTIVE = 4, PROPERTY_NUTRITIOUS = 3)
+	evolution_type = XENO_CASTE_BURROWER
+	strain_types = list(/datum/xeno_strain/gardener)
 
 /datum/reagent/plasma/purple
 	name = "Purple Plasma"
@@ -1127,6 +1160,7 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_BIOCIDIC = 2)
+	evolution_type = XENO_CASTE_DRONE
 
 /datum/reagent/plasma/purple/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
 	. = ..()
@@ -1155,6 +1189,7 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_ABSOLUTE_VALUE
 	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_ENCRYPTED = 1)
+	evolution_type = XENO_CASTE_QUEEN
 
 /datum/reagent/fruit_resin
 	name = "Fruit Resin"

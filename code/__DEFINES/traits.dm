@@ -321,10 +321,15 @@
 //This item is being dissolved. Used by yautja_cleaner.
 #define TRAIT_ITEM_DISSOLVING "item_dissolving"
 
+// Xeno dumb as fuuck lmaoo
+#define TRAIT_XENO_BRAINDEAD "t_xeno_braindead"
+// Component-only trait for headset controlled xenos
+#define TRAIT_XENO_CONTROLLED "t_xeno_controlled"
 //-- structure traits --
 // TABLE TRAITS
 /// If the table is being flipped, prevent any changes that will mess with adjacency handling
 #define TRAIT_TABLE_FLIPPING "t_table_flipping"
+
 
 //List of all traits
 GLOBAL_LIST_INIT(mob_traits, list(
@@ -344,6 +349,7 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_IN_TUTORIAL,
 	TRAIT_SPEC_KIT,
 	TRAIT_SPEC_VENDOR,
+	TRAIT_XENO_BRAINDEAD,
 ))
 
 /*
@@ -393,6 +399,8 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_CARDPLAYING_THUMBS" = TRAIT_CARDPLAYING_THUMBS,
 		"TRAIT_INTERFERENCE" = TRAIT_HIVEMIND_INTERFERENCE,
 		"TRAIT_VALKYRIE_ARMOR" = TRAIT_VALKYRIE_ARMORED,
+		"TRAIT_XENO_BRAINDEAD" = TRAIT_XENO_BRAINDEAD,
+		"TRAIT_XENO_CONTROLLED" = TRAIT_XENO_CONTROLLED,
 	),
 	/datum/hive_status = list(
 		"TRAIT_XENONID" = TRAIT_XENONID,

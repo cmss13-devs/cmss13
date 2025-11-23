@@ -107,6 +107,28 @@
 	name = "Items"
 	behavior = RESEARCH_UPGRADE_CATEGORY
 
+/datum/research_upgrades/item/headset_x
+	name = "X993A1-X Control Headset"
+	desc = "This headset is designed to be grafted into a live, braindead XX-121 specimen, allowing personnel to remotely operate its body. Requires a matching -M headset."
+	value_upgrade = 400
+	clearance_req = 2
+	change_purchase = -50
+	minimum_price = 100
+	behavior = RESEARCH_UPGRADE_ITEM
+	upgrade_type = ITEM_ACCESSORY_UPGRADE
+	item_reference = /obj/item/device/control_headset_xeno
+
+/datum/research_upgrades/item/headset_m
+	name = "X993A1-M Control Headset"
+	desc = "The companion piece to the -X version. Required to remotely operate XX-121 grafted with the XX93A1-X."
+	value_upgrade = 400
+	clearance_req = 2
+	change_purchase = -50
+	minimum_price = 100
+	behavior = RESEARCH_UPGRADE_ITEM
+	upgrade_type = ITEM_ACCESSORY_UPGRADE
+	item_reference = /obj/item/clothing/head/control_headset_marine
+
 /datum/research_upgrades/item/research_credits
 	name = "Research Contract Reroll"
 	desc = "Sell the data acquired to the nearest Weyland-Yutani Science division team to request new contract chemicals."

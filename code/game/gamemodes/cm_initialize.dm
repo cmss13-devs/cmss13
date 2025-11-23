@@ -471,6 +471,8 @@ Additional game mode variables.
 		candidate_observer = xeno_candidate
 
 	for(var/mob/living/carbon/xenomorph/cur_xeno as anything in GLOB.living_xeno_list)
+		if(HAS_TRAIT(cur_xeno, TRAIT_XENO_BRAINDEAD))
+			continue // Braindead xenos don't count
 		if(cur_xeno.aghosted)
 			continue //aghosted xenos don't count
 		var/area/area = get_area(cur_xeno)

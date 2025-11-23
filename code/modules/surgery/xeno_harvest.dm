@@ -1,6 +1,6 @@
 //Research stuff to extract stuff from xenomorphs for goodies. In other words, to extract useful material that could be used to upgrade marines etc.
 
-/datum/surgery/xenomorph
+/datum/surgery/xenomorph_harvest
 	name = "Experimental Harvesting Surgery"
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -16,7 +16,7 @@
 	requires_bodypart_type = NONE
 	requires_bodypart = FALSE
 
-/datum/surgery/xenomorph/can_start(mob/user, mob/living/carbon/xenomorph/patient, obj/limb/L, obj/item/tool)
+/datum/surgery/xenomorph_harvest/can_start(mob/user, mob/living/carbon/xenomorph/patient, obj/limb/L, obj/item/tool)
 	if(islarva(patient) || isfacehugger(patient))
 		to_chat(user, SPAN_DANGER("This organism is probably too small to have a mature organ worthy of extraction..."))
 		return FALSE

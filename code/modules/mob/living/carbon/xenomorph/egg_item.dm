@@ -23,7 +23,7 @@
 /obj/item/xeno_egg/Initialize(mapload, hive)
 	pixel_x = rand(-3,3)
 	pixel_y = rand(-3,3)
-	create_reagents(60)
+	create_reagents(100)
 	reagents.add_reagent(PLASMA_EGG, 60, list("hive_number" = hivenumber))
 
 	if (hive)
@@ -163,6 +163,7 @@
 				return
 
 			newegg.flags_embryo = flags_embryo
+			newegg.transform = transform
 
 			newegg.add_hiddenprint(user)
 			playsound(T, 'sound/effects/splat.ogg', 15, 1)

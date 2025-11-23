@@ -99,6 +99,19 @@
 			else
 				to_chat(user, SPAN_WARNING("There are no wounds on [possessive] [affecting.display_name]."))
 				return TRUE
+	if(!isxeno(M))
+		return
+
+	var/mob/living/carbon/xenomorph/healee = M
+	// no skillcheck nobody knows how to treat xenos
+	if(!do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, healee, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+		to_chat(user, SPAN_WARNING("You were interrupted!"))
+		return
+
+	to_chat(M, SPAN_NOTICE("You use a rather large amount of bandages to seal [healee]'s injuries. They seem to be mending on their own..."))
+	new /datum/effects/heal_over_time/bandages(healee, healee.maxHealth, 20 SECONDS, 2)
+	use(healee.tier * 2) // 2 for t1, 6 for t3. breaks on queen. FUCK
+	playsound(user, 'sound/handling/bandage.ogg', 25, 1, 2)
 
 /obj/item/stack/medical/bruise_pack/two
 	amount = 2

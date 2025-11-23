@@ -174,6 +174,10 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	var/advance //Whether to continue to the next step afterwards.
 	var/pain_failure_chance = max(0, (target.pain?.feels_pain ? surgery.pain_reduction_required - target.pain.reduction_pain : 0) * 2 - human_modifiers["pain_reduction"]) //Each extra pain unit increases the chance by 2
 
+	if(HAS_TRAIT(target, TRAIT_XENO_BRAINDEAD))
+		// drur hurrr hurrr durrr
+		pain_failure_chance = 0
+
 	// Skill compensation for difficult conditions/tools
 	if(skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
 		failure_penalties -= 2 // will ultimately be -3

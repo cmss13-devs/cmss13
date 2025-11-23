@@ -129,8 +129,10 @@
 
 
 /datum/job/antag/pred_surv/set_spawn_positions(mode = YAUTJA_SURV_HUNT)
-	spawn_positions = 1
-	total_positions = 1
+	var/slots = CONFIG_GET(number/survivor_pred_slots)
+
+	spawn_positions = slots
+	total_positions = slots
 
 	switch(mode)
 		if(YAUTJA_SURV_HUNT)//Hunt round it's 50/50

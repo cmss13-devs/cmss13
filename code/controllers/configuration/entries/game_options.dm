@@ -187,3 +187,7 @@
 	min_val = 0
 	config_entry_value = 10
 	max_val = 100
+
+/datum/config_entry/number/survivor_pred_slots
+	min_val = 1
+	config_entry_value = 1

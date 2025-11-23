@@ -521,12 +521,15 @@ const tweSplitter = (members: Array<Observable>) => {
 
 const yautjaSplitter = (members: Array<Observable>) => {
   const youngblood: Array<Observable> = [];
+  const stranded: Array<Observable> = [];
   const badblood: Array<Observable> = [];
   const other: Array<Observable> = [];
 
   members.forEach((x) => {
     if (x.job?.includes('Young Blood')) {
       youngblood.push(x);
+    } else if (x.job?.includes('Stranded')) {
+      stranded.push(x);
     } else if (x.job?.includes('Bad Blood')) {
       badblood.push(x);
     } else {
@@ -537,6 +540,7 @@ const yautjaSplitter = (members: Array<Observable>) => {
   const preds = [
     buildSquadObservable('Hunters', 'green', other),
     buildSquadObservable('Young Bloods', 'brown', youngblood),
+    buildSquadObservable('Stranded', 'orange', badblood),
     buildSquadObservable('Bad Bloods', 'red', badblood),
   ];
   return preds;

@@ -92,7 +92,7 @@
 	selection_class = "job_predator"
 	supervisors = "Ancients"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN|ROLE_ADMIN_NOTIFY
-	flags_whitelist = WHITELIST_YAUTJA_LEADER
+	flags_whitelist = WHITELIST_YAUTJA_COUNCIL|WHITELIST_YAUTJA_COUNCIL_LEGACY
 	handle_spawn_and_equip = TRUE
 	gear_preset = /datum/equipment_preset/yautja/stranded
 	var/survivor_job = JOB_STRANDED_PRED
@@ -102,8 +102,6 @@
 	title = JOB_BADBLOOD
 	gear_preset = /datum/equipment_preset/yautja/bad_blood
 	survivor_job = JOB_BADBLOOD
-
-// /datum/job/antag/pred_surv/bad_blood/set_spawn_positions(count)
 	spawn_positions = 1
 	total_positions = 1
 
@@ -111,8 +109,6 @@
 	title = JOB_STRANDED_PRED
 	gear_preset = /datum/equipment_preset/yautja/stranded
 	survivor_job = JOB_STRANDED_PRED
-
-// /datum/job/antag/pred_surv/stranded/set_spawn_positions(count)
 	spawn_positions = 1
 	total_positions = 1
 

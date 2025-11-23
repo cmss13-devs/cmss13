@@ -148,6 +148,45 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		list("Quarter-Cape", 0, /obj/item/clothing/yautja_cape/quarter, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Poncho", 0, /obj/item/clothing/yautja_cape/poncho, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
 			))
+GLOBAL_LIST_INIT(cm_vending_equipment_stranded_pred, list(
+		list("Essential Hunting Supplies", 0, null, null, null),
+		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/hunter, /obj/item/storage/backpack/yautja, /obj/item/storage/medicomp/full, /obj/item/tool/yautja_cleaner), MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Armor", 0, list(/obj/item/clothing/suit/armor/yautja/hunter, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/accessory/mask, /obj/item/clothing/shoes/yautja/hunter/knife), MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
+
+		list("Main Weapons (CHOOSE 1)", 0, null, null, null),
+		list("The Primary Hunting Sword", 0, /obj/item/weapon/yautja/sword, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Rending Hunting Sword", 0, /obj/item/weapon/yautja/sword/alt_1, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Piercing Hunting Sword", 0, /obj/item/weapon/yautja/sword/alt_2, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Severing Hunting Sword", 0, /obj/item/weapon/yautja/sword/alt_3, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Taruulan Staff", 0, /obj/item/weapon/yautja/sword/staff, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Sundering Chain-Whip", 0, /obj/item/weapon/yautja/chain, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Cleaving War-Scythe", 0, /obj/item/weapon/yautja/scythe, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Ripping War-Scythe", 0, /obj/item/weapon/yautja/scythe/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/chained/combistick, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Butchering War Axe", 0, /obj/item/weapon/yautja/chained/war_axe, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Lumbering Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Imposing Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive/alt, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Crushing Longaxe", 0, /obj/item/weapon/twohanded/yautja/glaive/longaxe, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+
+		list("Bracer Attachments", 0, null, null, null),
+		list("Wrist Blades", 0,list(/obj/item/bracer_attachments/wristblades, /obj/item/bracer_attachments/wristblades), MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("The Fearsome Scimitars", 0, list(/obj/item/bracer_attachments/scimitars, /obj/item/bracer_attachments/scimitars), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Skewering Scimitars", 0, list(/obj/item/bracer_attachments/scimitars_alt, /obj/item/bracer_attachments/scimitars_alt), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Chain Gauntlets", 0, list(/obj/item/bracer_attachments/chain_gauntlets, /obj/item/bracer_attachments/chain_gauntlets, /obj/item/yautja/chain), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+
+		list("Secondary Equipment (CHOOSE 2)", 0, null, null, null),
+		list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("The Agile Drone", 0, /obj/item/falcon_drone/badblood, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("The Purifying Smart-Disc", 0, /obj/item/explosive/grenade/spawnergrenade/smartdisc, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("The Steadfast Shield", 0, /obj/item/weapon/shield/riot/yautja, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("The Formidable Plate Armor", 0, /obj/item/clothing/suit/armor/yautja/hunter/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("The Firm Bow", 0, /obj/item/storage/belt/gun/quiver/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+
+		list("Clothing Accessory (CHOOSE 1)", 0, null, null, null),
+		list("Third-Cape", 0, /obj/item/clothing/yautja_cape/third, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Half-Cape", 0, /obj/item/clothing/yautja_cape/half, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Quarter-Cape", 0, /obj/item/clothing/yautja_cape/quarter, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+			))
 
 GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 		list("Essential Hunting Supplies", 0, null, null, null),
@@ -177,7 +216,7 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 
 		list("Secondary Equipment (CHOOSE 2)", 0, null, null, null),
 		list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("The Agile Drone", 0, /obj/item/falcon_drone/badblood, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("The Agile Drone", 0, /obj/item/falcon_drone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("The Purifying Smart-Disc", 0, /obj/item/explosive/grenade/spawnergrenade/smartdisc, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("The Steadfast Shield", 0, /obj/item/weapon/shield/riot/yautja, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("The Formidable Plate Armor", 0, /obj/item/clothing/suit/armor/yautja/hunter/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -445,18 +484,20 @@ GLOBAL_LIST_INIT(cm_vending_equipment_badblood, list(
 
 
 
-/obj/structure/machinery/cm_vending/clothing/yautja/hunter/badblood
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/survivor
 	name = "\improper Yautja Hunting Gear Rack"
 	desc = "A gear rack for hunting."
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_elder_left"//placeholder
-	req_access = list(ACCESS_YAUTJA_BADBLOOD)
-	vendor_role = list(JOB_BADBLOOD)
+	req_access = null
+	vendor_role = list(JOB_BADBLOOD, JOB_STRANDED_PRED, JOB_PRED_SURVIVOR)
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA
 
-/obj/structure/machinery/cm_vending/clothing/yautja/hunter/badblood/right
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/survivor/right
 	icon_state = "pred_vendor_elder_right"//placeholder
 
-/obj/structure/machinery/cm_vending/clothing/yautja/hunter/badblood/get_listed_products(mob/user)
-	return GLOB.cm_vending_equipment_badblood
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/survivor/get_listed_products(mob/user)
+	if(user.job == JOB_BADBLOOD)
+		return GLOB.cm_vending_equipment_badblood
+	return GLOB.cm_vending_equipment_stranded_pred

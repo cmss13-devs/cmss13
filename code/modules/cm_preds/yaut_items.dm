@@ -1100,6 +1100,9 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	blood_type = human_user.blood_type
 
 	var/list/new_access = list(ACCESS_YAUTJA_SECURE)
+	if(human_user.faction == FACTION_YAUTJA_STRANDED)
+		return
+
 	var/obj/item/clothing/gloves/yautja/hunter/bracer = loc
 	if(istype(bracer) && bracer.owner_rank)
 		switch(bracer.owner_rank)

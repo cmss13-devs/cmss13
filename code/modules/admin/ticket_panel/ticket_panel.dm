@@ -441,7 +441,8 @@
 			var/datum/player_action/perm_ban = GLOB.pp_actions["permanent_ban"]
 			if(!perm_ban)
 				return FALSE
-			perm_ban.act(usr.client, banned_mob)
+			if(!perm_ban.act(usr.client, banned_mob))
+				return FALSE
 
 			AH.Resolve(usr.ckey, FALSE)
 			message_admins("[key_name_admin(usr)] banned [key_name_admin(banned_mob)] and closed ticket #[ticket_id]")

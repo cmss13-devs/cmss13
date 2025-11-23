@@ -38,7 +38,7 @@
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
 
-	attack_verb = list("attacked", "pinched")
+	attack_verb = list("attacked", "pinched", "pierced")
 
 /obj/item/tool/surgery/hemostat/predatorhemostat
 	name = "pincher"
@@ -70,7 +70,7 @@
  */
 /obj/item/tool/surgery/surgicaldrill
 	name = "surgical drill"
-	desc = "A surgical tool used to drill through bone to make a cavity for implantation."
+	desc = "A surgical tool used to drill through bone to make a cavity for implantation purposes."
 	icon_state = "drill"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	matter = list("metal" = 15000, "glass" = 10000)
@@ -78,7 +78,7 @@
 	force = 0
 	w_class = SIZE_SMALL
 
-	attack_verb = list("drilled")
+	attack_verb = list("drilled", "bored", "gored")
 
 /obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill
 	name = "bone drill"
@@ -160,7 +160,7 @@
 
 /obj/item/tool/surgery/scalpel/manager
 	name = "incision management system"
-	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
+	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares, seals, and widens an incision all at once, allowing for the immediate commencement of therapeutic steps. It can only be used to begin surgeries."
 	icon_state = "scalpel_manager"
 	force = 7.5
 	flags_item = ANIMATED_SURGICAL_TOOL
@@ -185,7 +185,7 @@
 	matter = list("metal" = 20000,"glass" = 10000)
 	flags_item = ANIMATED_SURGICAL_TOOL
 
-	attack_verb = list("attacked", "slashed", "sawed", "cut")
+	attack_verb = list("attacked", "slashed", "sawed", "cut", "maimed", "gored")
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 
@@ -303,7 +303,7 @@
  */
 
 /obj/item/tool/surgery/FixOVein
-	name = "FixOVein"
+	name = "Fix-O'Vein"
 	icon_state = "fixovein"
 	desc = "A recently-developed surgical tool used to repair broken blood vessels by secreting a membrane of synthetic connective tissue to provide a framework for the blood vessel until it naturally repairs itself. The substance can also be used to reconnect other tissues, in a pinch. Since it operates on a cellular level, it is practically infinite."
 
@@ -342,9 +342,9 @@
  */
 
 /obj/item/tool/surgery/synthgraft
-	name = "Synth-Graft"
-	desc = "An applicator for synthetic skin field grafts. The stuff reeks, itches like the dickens, hurts when applied, and the color is \
-		a perfectly averaged multi-ethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay."
+	name = "synth-graft"
+	desc = "An applicator for synthetic skin field grafts. The stuff reeks like processed space carp skin, itches like the dickens, stings like hell when applied, and the color is \
+		a perfectly averaged multi-ethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay for skin graft surgery."
 	icon_state = "line_burn"
 	item_state = "line_burn"
 	force = 0
@@ -368,7 +368,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
-	attack_verb = list("attacked", "hit", "bludgeoned")
+	attack_verb = list("attacked", "hit", "bludgeoned", "pummeled", "beat")
 	matter = list("plastic" = 7500)
 
 /obj/item/tool/surgery/bonesetter/predatorbonesetter
@@ -389,7 +389,7 @@ t. optimisticdude
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
-	attack_verb = list("attacked", "hit", "bludgeoned")
+	attack_verb = list("attacked", "hit", "bludgeoned", "pummeled", "beat")
 	matter = list("plastic" = 7500)
 */
 

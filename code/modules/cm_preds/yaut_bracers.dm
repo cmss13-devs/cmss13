@@ -1340,6 +1340,8 @@
 		is_local = TRUE
 
 	var/list/heard = get_mobs_in_view(7, source_mob)
+	if(!(user in heard))
+		heard += user
 	for(var/mob/heard_mob in heard)
 		if(heard_mob.ear_deaf)
 			heard -= heard_mob

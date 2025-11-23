@@ -58,21 +58,30 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	sleep(2 SECONDS)
 	var/dat = "<br>"
 	var/there_are_preds = FALSE
-	if(length(predators))
+	if(length(yautja_hunters))
 		there_are_preds = TRUE
-		dat += SPAN_ROUNDBODY("<br>The Predators were:")
-		for(var/entry in predators)
-			dat += "<br>[entry] was [predators[entry]["Name"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
-	if(length(youngbloods))
+		dat += SPAN_ROUNDBODY("<br>The Yautja Hunting Party was:")
+		for(var/entry in yautja_hunters)
+			dat += "<br>[entry] was [yautja_hunters[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_hunters[entry]["Status"]])")]"
+		dat += "<br>"
+	if(length(yautja_youngbloods))
 		there_are_preds = TRUE
-		dat += SPAN_ROUNDBODY("<br><br>The Young-Bloods were:")
-		for(var/entry in youngbloods)
-			dat += "<br>[entry] was [youngbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([youngbloods[entry]["Status"]])")]"
-	if(length(badbloods))
+		dat += SPAN_ROUNDBODY("<br>The Yautja Young-Bloods were:")
+		for(var/entry in yautja_youngbloods)
+			dat += "<br>[entry] was [yautja_youngbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_youngbloods[entry]["Status"]])")]"
+		dat += "<br>"
+	if(length(yautja_stranded))
 		there_are_preds = TRUE
-		dat += SPAN_ROUNDBODY("<br><br>The Bad-Bloods were:")
-		for(var/entry in badbloods)
-			dat += "<br>[entry] was [badbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([badbloods[entry]["Status"]])")]"
+		dat += SPAN_ROUNDBODY("<br>The Stranded Yautja were:")
+		for(var/entry in yautja_stranded)
+			dat += "<br>[entry] was [yautja_stranded[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_stranded[entry]["Status"]])")]"
+		dat += "<br>"
+	if(length(yautja_badbloods))
+		there_are_preds = TRUE
+		dat += SPAN_ROUNDBODY("<br>The Yautja Bad-Bloods were:")
+		for(var/entry in yautja_badbloods)
+			dat += "<br>[entry] was [yautja_badbloods[entry]["Name"]] [SPAN_BOLDNOTICE("([yautja_badbloods[entry]["Status"]])")]"
+		dat += "<br>"
 	if(there_are_preds)
 		to_world("[dat]")
 

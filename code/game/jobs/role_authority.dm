@@ -213,17 +213,25 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	else
 		chance = 20
 
-	if((prob(100) || SSnightmare.get_scenario_value("predator_round")) && !Check_WO())
+	if((prob(chance) || SSnightmare.get_scenario_value("predator_round")) && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
 			PJ.set_spawn_positions(GLOB.players_preassigned)
-		var/datum/job/BB = temp_roles_for_mode[JOB_BADBLOOD]
-		if(istype(BB))
-			BB.set_spawn_positions(1)
+		var/datum/job/pred_surv = temp_roles_for_mode[JOB_PRED_SURVIVOR]
+		if(istype(pred_surv))
+			pred_surv.set_spawn_positions(YAUTJA_SURV_HUNT)
+			log_debug("YAUTJA SURV: Hunt Round.")
 		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
 		chance = 0
+
+	var/huntless_chance = CONFIG_GET(number/huntless_pred_survivor)
+	if(!(SSticker.mode.flags_round_type & MODE_PREDATOR) && prob(100))//Very rare but it could happen on a non-pred round.
+		var/datum/job/pred_surv = temp_roles_for_mode[JOB_PRED_SURVIVOR]
+		if(istype(pred_surv))
+			pred_surv.set_spawn_positions(YAUTJA_SURV_NO_HUNT)
+			log_debug("YAUTJA SURV: No Hunt Round.")
 
 	chance += 20
 	fdel("data/predchance.txt")

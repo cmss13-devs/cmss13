@@ -87,39 +87,72 @@
 	. = ..()
 	src.roles = JOB_YOUNGBLOOD_ROLES_LIST
 
-
-/datum/job/antag/bad_blood
-	title = JOB_BADBLOOD
+/datum/job/antag/pred_surv
+	title = JOB_PRED_SURVIVOR
 	selection_class = "job_predator"
 	supervisors = "Ancients"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN|ROLE_ADMIN_NOTIFY
 	flags_whitelist = WHITELIST_YAUTJA_COUNCIL
-	gear_preset = /datum/equipment_preset/yautja/bad_blood
 	handle_spawn_and_equip = TRUE
+	gear_preset = /datum/equipment_preset/yautja/stranded
+	var/survivor_job = JOB_STRANDED_PRED
 
-/datum/job/antag/bad_blood/generate_entry_conditions(mob/living/hunter)
-	. = ..()
 
-	if(SSticker.mode)
-		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)
+/datum/job/antag/pred_surv/bad_blood
+	title = JOB_BADBLOOD
+	gear_preset = /datum/equipment_preset/yautja/bad_blood
+	survivor_job = JOB_BADBLOOD
 
-/datum/job/antag/bad_blood/spawn_and_equip(mob/new_player/player)
-	player.spawning = TRUE
-	player.close_spawn_windows()
-
-	SSticker.mode.attempt_to_join_as_badblood(player)
-
-/datum/job/antag/bad_blood/set_spawn_positions(count)
+// /datum/job/antag/pred_surv/bad_blood/set_spawn_positions(count)
 	spawn_positions = 1
 	total_positions = 1
 
-/datum/timelock/bad_blood
+/datum/job/antag/pred_surv/stranded
+	title = JOB_STRANDED_PRED
+	gear_preset = /datum/equipment_preset/yautja/stranded
+	survivor_job = JOB_STRANDED_PRED
+
+// /datum/job/antag/pred_surv/stranded/set_spawn_positions(count)
+	spawn_positions = 1
+	total_positions = 1
+
+/datum/job/antag/pred_surv/generate_entry_conditions(mob/living/hunter)
+	. = ..()
+	log_debug("YAUTJA SURV: [title] generate conditions triggered.")
+	if(SSticker.mode)
+		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)
+
+/datum/job/antag/pred_surv/spawn_and_equip(mob/new_player/player)
+	player.spawning = TRUE
+	player.close_spawn_windows()
+
+	if(survivor_job == JOB_BADBLOOD)
+		SSticker.mode.attempt_to_join_as_badblood(player)
+	else
+		SSticker.mode.attempt_to_make_stranded_pred(player)
+
+
+/datum/job/antag/pred_surv/set_spawn_positions(mode = YAUTJA_SURV_HUNT)
+	spawn_positions = 1
+	total_positions = 1
+
+	switch(mode)
+		if(YAUTJA_SURV_HUNT)//Hunt round it's 50/50
+			survivor_job = pick(JOB_STRANDED_PRED, JOB_BADBLOOD)
+		if(YAUTJA_SURV_NO_HUNT)//Non hunt round is less likely to be a stranded hunter.
+			if(prob(75))
+				survivor_job = JOB_BADBLOOD
+			else
+				survivor_job = JOB_STRANDED_PRED
+	log_debug("YAUTJA SURV: Job set to [survivor_job]")
+
+/datum/timelock/pred_surv
 	name = "Bad Blood Roles"
 
-/datum/timelock/bad_blood/New(name, time_required, list/roles)
+/datum/timelock/pred_surv/New(name, time_required, list/roles)
 	. = ..()
-	src.roles = JOB_BADBLOOD_ROLES_LIST
+	src.roles = JOB_PREDSURV_ROLES_LIST
 
-AddTimelock(/datum/job/antag/bad_blood, list(
-	JOB_BADBLOOD_ROLES_LIST = 10 HOURS,
+AddTimelock(/datum/job/antag/pred_surv, list(
+	JOB_PREDSURV_ROLES_LIST = 10 HOURS,
 ))

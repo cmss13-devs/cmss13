@@ -173,12 +173,43 @@
 	var/new_name = "Pack Leader [new_human.real_name]" //fluff rank blooded outrank them
 	new_human.change_real_name(new_human, new_name)
 
+
+
+// Stranded
+/datum/equipment_preset/yautja/stranded
+	name = YAUTJA_STRANDED
+	minimap_icon = "predator"
+	job_title = JOB_STRANDED_PRED
+	faction = FACTION_YAUTJA_STRANDED
+	faction_group = list(FACTION_YAUTJA_STRANDED)
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	no_faction_category = TRUE
+	selection_categories = list(FACTION_YAUTJA)
+
+/datum/equipment_preset/yautja/stranded/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+	var/caster_material = "ebony"
+	var/bracer_material = "ebony"
+	var/translator_type = PRED_TECH_MODERN
+	var/invisibility_sound = PRED_TECH_MODERN
+
+	if(!mob_client)
+		mob_client = new_human.client
+	if(mob_client?.prefs)
+		caster_material = mob_client.prefs.predator_caster_material
+		bracer_material = mob_client.prefs.predator_bracer_material
+		translator_type = mob_client.prefs.predator_translator_type
+		invisibility_sound = mob_client.prefs.predator_invisibility_sound
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
+
 // BAD BLOOD
 /datum/equipment_preset/yautja/bad_blood
 	name = YAUTJA_BADBLOOD
-	minimap_icon = "predator_leader"
-	job_title = "Bad Blood"
+	minimap_icon = "predator"
+	job_title = JOB_BADBLOOD
 	faction = FACTION_YAUTJA_BADBLOOD
+	faction_group = list(FACTION_YAUTJA_BADBLOOD)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	no_faction_category = TRUE
 	selection_categories = list(FACTION_YAUTJA)

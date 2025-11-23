@@ -181,3 +181,9 @@
 	config_entry_value = 95
 	max_val = 100
 	integer = TRUE
+
+/// How likely a Predator Survivor is to spawn without a hunt round.
+/datum/config_entry/number/huntless_pred_survivor
+	min_val = 0
+	config_entry_value = 100
+	max_val = 100

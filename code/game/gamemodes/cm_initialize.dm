@@ -46,9 +46,6 @@ Additional game mode variables.
 	var/datum/mind/CO_survivor = null
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
 	var/list/dead_queens // A list of messages listing the dead queens
-	var/list/predators	= list()
-	var/list/youngbloods = list()
-	var/list/badbloods = list()
 	var/list/joes		= list()
 	var/list/fax_responders = list()
 
@@ -58,6 +55,11 @@ Additional game mode variables.
 	var/surv_starting_num = 0 //To clamp starting survivors.
 	var/merc_starting_num = 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
+
+	var/list/yautja_hunters	= list()
+	var/list/yautja_youngbloods = list()
+	var/list/yautja_stranded = list()
+	var/list/yautja_badbloods = list()
 	/// How many predators utilize slots currently
 	var/pred_current_num = 0
 	/// How many additional preds per client
@@ -146,11 +148,13 @@ Additional game mode variables.
 
 /datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, ignore_pred_num = FALSE)
 	if(new_predator.faction == FACTION_YAUTJA_YOUNG)
-		youngbloods[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+		yautja_youngbloods[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
 	else if(new_predator.faction == FACTION_YAUTJA_BADBLOOD)
-		badbloods[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+		yautja_badbloods[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+	else if(new_predator.faction == FACTION_YAUTJA_STRANDED)
+		yautja_stranded[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
 	else
-		predators[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
+		yautja_hunters[new_predator.persistent_username] = list("Name" = new_predator.real_name, "Status" = "Alive")
 		if(!ignore_pred_num)//Only mainstream preds should contribute, exept where told not to.
 			pred_current_num++
 
@@ -159,7 +163,7 @@ Additional game mode variables.
 	if(!new_predator)
 		return
 
-	msg_admin_niche("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
+	msg_admin_niche("([new_predator.key]) joined as a Yautja, [new_predator.real_name].")
 
 	if(pred_candidate)
 		pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
@@ -169,10 +173,20 @@ Additional game mode variables.
 	if(!new_predator)
 		return
 
-	msg_admin_niche("([new_predator.key]) joined as Yautja Bad-Blood, [new_predator.real_name].")
+	msg_admin_niche("([new_predator.key]) joined as a Yautja Bad-Blood, [new_predator.real_name].")
 
 	if(badblood_candidate)
 		badblood_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+
+/datum/game_mode/proc/attempt_to_make_stranded_pred(mob/stranded_candidate)
+	var/mob/living/carbon/human/new_predator = transform_stranded_pred(stranded_candidate) //Initialized and ready.
+	if(!new_predator)
+		return
+
+	msg_admin_niche("([new_predator.key]) joined as a Stranded Yautja, [new_predator.real_name].")
+
+	if(stranded_candidate)
+		stranded_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/calculate_pred_max()
 	return floor(length(GLOB.player_list) / pred_per_players) + pred_count_modifier + pred_start_count
@@ -217,11 +231,13 @@ Additional game mode variables.
 	return TRUE
 
 /datum/game_mode/proc/has_been_predator(key)
-	if(key in predators)
+	if(key in yautja_hunters)
 		return TRUE
-	else if(key in youngbloods)
+	else if(key in yautja_youngbloods)
 		return TRUE
-	else if(key in badbloods)
+	else if(key in yautja_badbloods)
+		return TRUE
+	else if(key in yautja_stranded)
 		return TRUE
 	else
 		return FALSE
@@ -273,7 +289,7 @@ Additional game mode variables.
 		log_debug("Null client attempted to transform_badblood")
 		return
 
-	badblood_candidate.client.prefs.find_assigned_slot(JOB_BADBLOOD) // Probably does not do anything relevant, predator preferences are not tied to specific slot.
+	badblood_candidate.client.prefs.find_assigned_slot(JOB_PRED_SURVIVOR) // Probably does not do anything relevant, predator preferences are not tied to specific slot.
 
 	var/turf/spawn_point = pick(GLOB.badblood_spawns)
 	if(!isturf(spawn_point))
@@ -298,6 +314,40 @@ Additional game mode variables.
 	GLOB.RoleAuthority.equip_role(new_badblood, badblood_job, new_badblood.loc)
 
 	return new_badblood
+
+/datum/game_mode/proc/transform_stranded_pred(mob/stranded_candidate)
+	set waitfor = FALSE
+
+	if(!stranded_candidate.client) // Legacy - probably due to spawn code sync sleeps
+		log_debug("Null client attempted to transform_stranded_pred")
+		return
+
+	stranded_candidate.client.prefs.find_assigned_slot(JOB_PRED_SURVIVOR) // Probably does not do anything relevant, predator preferences are not tied to specific slot.
+
+	var/obj/effect/landmark/yautja_teleport/position = pick(GLOB.yautja_teleports)
+	var/turf/spawn_point = get_turf(position)
+	if(!isturf(spawn_point))
+		log_debug("Failed to find spawn point for pred ship in transform_stranded_pred.")
+		to_chat(stranded_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
+		return
+	if(!stranded_candidate?.mind) // Legacy check
+		log_debug("Tried to spawn invalid pred player in transform_stranded_pred - new_player name=[stranded_candidate]")
+		to_chat(stranded_candidate, SPAN_WARNING("Could not setup character - you might want to tell someone about this."))
+		return
+
+	var/mob/living/carbon/human/yautja/new_stranded = new(spawn_point)
+	stranded_candidate.mind.transfer_to(new_stranded, TRUE)
+	new_stranded.client = stranded_candidate.client
+
+	var/datum/job/stranded_job = GLOB.RoleAuthority.roles_by_name[JOB_STRANDED_PRED]
+
+	if(!stranded_job)
+		qdel(new_stranded)
+		return
+
+	GLOB.RoleAuthority.equip_role(new_stranded, stranded_job, new_stranded.loc)
+
+	return new_stranded
 
 //===================================================\\
 

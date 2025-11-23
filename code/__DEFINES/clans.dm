@@ -96,9 +96,11 @@
 #define JOB_YOUNGBLOOD_ROLES /datum/timelock/young_blood
 #define JOB_YOUNGBLOOD_ROLES_LIST list(ERT_JOB_YOUNGBLOOD)
 
+#define JOB_PRED_SURVIVOR "Predator Survivor"
+#define JOB_STRANDED_PRED "Stranded Yautja"
 #define JOB_BADBLOOD "Bad Blood"
-#define JOB_BADBLOOD_ROLES /datum/timelock/bad_blood
-#define JOB_BADBLOOD_ROLES_LIST list(JOB_PREDATOR)
+#define JOB_PREDSURV_ROLES /datum/timelock/pred_surv
+#define JOB_PREDSURV_ROLES_LIST list(JOB_PREDATOR)
 
 
 #define YAUTJA_ANCIENT "Yautja Ancient"
@@ -112,8 +114,12 @@
 #define YOUNGBLOOD_ERT_LEADER "Yautja Youngblood Pack Leader (non-WL)"
 #define YOUNGBLOOD_ERT_MEMBER "Yautja Youngblood (non-WL)"
 
+#define YAUTJA_STRANDED "Stranded Yautja"
 #define YAUTJA_BADBLOOD "Yautja Bad Blood"
 
 #define ANNOUNCE_YAUTJA_GOOD 1
 #define ANNOUNCE_YAUTJA_BAD 2
 #define ANNOUNCE_YAUTJA_ALL 3
+
+#define YAUTJA_SURV_HUNT 1
+#define YAUTJA_SURV_NO_HUNT 2

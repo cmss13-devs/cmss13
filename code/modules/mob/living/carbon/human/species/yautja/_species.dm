@@ -159,18 +159,20 @@
 	var/datum/game_mode/GM
 	if(SSticker?.mode)
 		GM = SSticker.mode
-		if(predator.persistent_username in GM.predators)
-			GM.predators[predator.persistent_username]["Status"] = status
-		else if(predator.persistent_username in GM.youngbloods)
-			GM.youngbloods[predator.persistent_username]["Status"] = status
-		else if(predator.persistent_username in GM.badbloods)
-			GM.badbloods[predator.persistent_username]["Status"] = status
+		if(predator.persistent_username in GM.yautja_hunters)
+			GM.yautja_hunters[predator.persistent_username]["Status"] = status
+		else if(predator.persistent_username in GM.yautja_youngbloods)
+			GM.yautja_youngbloods[predator.persistent_username]["Status"] = status
+		else if(predator.persistent_username in GM.yautja_badbloods)
+			GM.yautja_badbloods[predator.persistent_username]["Status"] = status
 		else if(predator.faction == FACTION_YAUTJA_YOUNG)
-			GM.youngbloods[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
+			GM.yautja_youngbloods[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
+		else if(predator.faction == FACTION_YAUTJA_STRANDED)
+			GM.yautja_stranded[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
 		else if(predator.faction == FACTION_YAUTJA_BADBLOOD)
-			GM.badbloods[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
+			GM.yautja_badbloods[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
 		else
-			GM.predators[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
+			GM.yautja_hunters[predator.persistent_username] = list("Name" = predator.real_name, "Status" = status)
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	..()

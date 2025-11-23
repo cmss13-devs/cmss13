@@ -75,7 +75,7 @@ GLOBAL_LIST_EMPTY_TYPED(controlled_xenos, /mob/living/carbon/xenomorph)
 	// what if they gib??
 	var/mob/living/carbon/xenomorph/controlled_xeno = parent
 	controlled_xeno.mind.transfer_to(controlling_human, TRUE)
-	REMOVE_TRAIT(controlled_xeno, TRAIT_XENO_CONTROLLED)
+	REMOVE_TRAIT(controlled_xeno, TRAIT_XENO_CONTROLLED, REF(src))
 	to_chat(controlling_human, SPAN_NOTICE("You have lost control of [controlled_xeno]!"))
 	being_controlled = FALSE
 	controlling_human = null

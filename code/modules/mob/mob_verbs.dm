@@ -254,9 +254,16 @@
 		QDEL_NULL(observed_atom)
 		return
 
-	if(istype(client?.eye, /mob/hologram))
+	if(!client)
+		return
+    
+  if(istype(client?.eye, /mob/hologram))
 		var/mob/hologram/eye = client.eye
 		eye.change_level()
+    return
+
+	if(client.view != world.view)
+		to_chat(src, SPAN_WARNING("You cannot look up while zoomed!"))
 		return
 
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))

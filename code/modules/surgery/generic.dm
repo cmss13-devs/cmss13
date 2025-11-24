@@ -6,7 +6,6 @@
 
 /datum/surgery/open_incision
 	name = "Open Incision"
-	desc = "Begin the surgery."
 	priority = SURGERY_PRIORITY_MAXIMUM
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
@@ -24,7 +23,7 @@
 
 /datum/surgery_step/incision
 	name = "Make Incision"
-	desc = "Make an incision to begin the surgery."
+	desc = "make an incision"
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
@@ -115,7 +114,6 @@
 
 /datum/surgery/clamp_bleeders
 	name = "Clamp Bleeders"
-	desc = "Clamp bleeders over the blood vessels to stop them from bleeding."
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
@@ -134,7 +132,7 @@
 
 /datum/surgery_step/clamp_bleeders_step
 	name = "Clamp Bleeders"
-	desc = "Clamp the bleeders."
+	desc = "clamp bleeders on the bleeding vessels"
 	//Tools used to clamp bleeders by either clamping them shut or tying them shut. Fixovein is a substitute but also a real surgery tool.
 	tools = list(
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
@@ -215,7 +213,7 @@
 
 /datum/surgery_step/retract_skin
 	name = "Widen Incision"
-	desc = "Widen the incision to expose the bone."
+	desc = "widen the incision"
 	time = 2 SECONDS
 	//Tools used to pry open specifically incisions. Contains INCISION tools at lengthy delays, mainly so surgeons can dramatically slash open incisions with them.
 	tools = list(\
@@ -327,7 +325,6 @@
 
 /datum/surgery/close_incision
 	name = "Close Incision"
-	desc = "Close the patient up."
 	priority = SURGERY_PRIORITY_MINIMUM
 	possible_locs = ALL_LIMBS
 	required_surgery_skill = SKILL_SURGERY_NOVICE
@@ -340,7 +337,7 @@
 
 /datum/surgery_step/cauterize
 	name = "Cauterize Incision"
-	desc = "Cauterize the incision shut."
+	desc = "cauterize the incision"
 	tools = SURGERY_TOOLS_CAUTERIZE
 	time = 2.5 SECONDS
 	var/tools_lit = list(
@@ -401,7 +398,6 @@
 
 /datum/surgery/open_encased
 	name = "Open Bone"
-	desc = "Saw through and pry the ribcage or skull open to access organs."
 	priority = SURGERY_PRIORITY_LOW
 	possible_locs = list("chest","head")
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -416,7 +412,7 @@
 
 /datum/surgery_step/saw_encased
 	name = "Saw Bone"
-	desc = "Cut through the bone."
+	desc = "saw through the bone"
 	/*Tools used to cut ribs/skull. Same tools as SEVER_BONE, but with sawing tools being better than chopping ones.
 	You're trying to cut through, but keep it and what's behind it intact.*/
 	tools = list(
@@ -486,7 +482,7 @@
 //In rib-closing surgery, it can be skipped to finish closing the ribcage, or completed to abort the operation.
 /datum/surgery_step/open_encased_step
 	name = "Pry Bone Open"
-	desc = "Prise the ribcage or skull open."
+	desc = "pry a bone open"
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -550,7 +546,6 @@
 
 /datum/surgery/close_encased
 	name = "Close Bone"
-	desc = "Close the ribcage or skull."
 	priority = SURGERY_PRIORITY_MINIMUM
 	possible_locs = list("chest","head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
@@ -566,7 +561,7 @@
 
 /datum/surgery_step/close_encased_step
 	name = "Close Bone"
-	desc = "Bend the ribcage or skull back into place."
+	desc = "bend the bones back into place"
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -619,7 +614,7 @@
 
 /datum/surgery_step/mend_encased
 	name = "Mend Bone"
-	desc = "Repair the damaged bones."
+	desc = "repair the damaged bones"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'

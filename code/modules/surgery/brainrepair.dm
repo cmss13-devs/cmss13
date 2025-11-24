@@ -33,7 +33,7 @@
 
 /datum/surgery_step/remove_bone_chips
 	name = "Remove Embedded Bone Chips"
-	desc = "remove the shards of bone from the brain"
+	desc = "remove shards of bone from the brain"
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/hemostat2.ogg'
@@ -90,7 +90,7 @@
 
 /datum/surgery_step/treat_hematoma
 	name = "Treat Hematoma"
-	desc = "repair the hematoma"
+	desc = "mend the hematoma"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
 

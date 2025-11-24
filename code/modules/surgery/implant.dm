@@ -19,7 +19,6 @@
 	)
 
 /datum/surgery/implant/groin
-	desc = "implant an object in the abdominal cavity"
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
@@ -30,7 +29,6 @@
 
 /datum/surgery/implant/removal
 	name = "Implant Removal Surgery"
-	desc = "remove an implant from the thoracic or cranial cavity"
 	steps = list(
 		/datum/surgery_step/create_cavity,
 		/datum/surgery_step/remove_implant,
@@ -38,7 +36,6 @@
 	)
 
 /datum/surgery/implant/removal/groin
-	desc = "remove an implant from the abdominal cavity"
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
@@ -268,7 +265,6 @@
 
 /datum/surgery/embedded
 	name = "Embedded Object Removal Surgery"
-	desc = "remove any foreign objects"
 	priority = SURGERY_PRIORITY_LOW
 	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
 	steps = list(/datum/surgery_step/remove_embedded)
@@ -284,7 +280,7 @@
 
 /datum/surgery_step/remove_embedded
 	name = "Remove Foreign Body"
-	desc = "extract any foreign bodies"
+	desc = "extract foreign bodies"
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 

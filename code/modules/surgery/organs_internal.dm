@@ -20,7 +20,6 @@ and organ transplant code which may come in handy in future but haven't been edi
 	return FALSE
 
 /datum/surgery/organ_repair/groin
-	desc = "Repairs damaged internal organs in the groin."
 	possible_locs = list("groin")
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
@@ -28,7 +27,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 /datum/surgery_step/repair_organs
 	name = "Repair Damaged Organs"
-	desc = "Repair the organ damage."
+	desc = "repair damaged organs"
 	//Tools used to fix damaged organs. Predator herbs may be herbal and organic, but are not as good for surgery.
 	tools = list(
 		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,

@@ -23287,10 +23287,6 @@
 /obj/structure/flora/grass/desert/heavygrass_3,
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/caperiver/outdoors/con_am_exterior/south)
-"btb" = (
-/obj/structure/window/framed/abyssal/blue/hull,
-/turf/closed/wall/abyssal/blue/unmeltable,
-/area/caperiver/oob)
 "btc" = (
 /obj/structure/flora/grass/desert/lightgrass_4,
 /turf/open/desert/dirt/desert_transition_edge1/east,
@@ -89825,8 +89821,8 @@ vqf
 btH
 cBR
 aHN
-btb
-btb
+hhg
+hhg
 aHN
 bKt
 wUZ

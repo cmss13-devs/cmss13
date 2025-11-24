@@ -108,7 +108,7 @@
 /obj/structure/machinery/centrifuge/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Centrifuge", "[src.name]")
+		ui = new(user, src, "Centrifuge", "[capitalize(name)]")
 		ui.open()
 
 /obj/structure/machinery/centrifuge/ui_state(mob/user)

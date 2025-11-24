@@ -13,7 +13,7 @@
 	icon_state = null
 	item_state = null
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60)
 	volume = 60
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
@@ -347,7 +347,7 @@
 	matter = list("glass" = 5000)
 	volume = 120
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60,120)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120)
 
 /obj/item/reagent_container/glass/beaker/silver
 	name = "large silver beaker"
@@ -357,7 +357,7 @@
 	volume = 240
 	matter = list("silver" = 5000)
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,25,30,60,120,240)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240)
 	pixel_y = 5
 
 /obj/item/reagent_container/glass/beaker/noreact
@@ -367,17 +367,18 @@
 	matter = list("glass" = 500)
 	volume = 60
 	amount_per_transfer_from_this = 10
+
 	flags_atom = FPRINT|OPENCONTAINER|NOREACT
 
 /obj/item/reagent_container/glass/beaker/bluespace
 	name = "high-capacity beaker"
-	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 300 units."
+	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 500 units."
 	icon_state = "beakerbluespace"
 	item_state = "beakerbluespace"
-	matter = list("glass" = 10000)
-	volume = 300
+	matter = list("glass" = 30000)
+	volume = 500
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,60,80,120,300)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,300)
 
 
 /obj/item/reagent_container/glass/beaker/vial
@@ -388,7 +389,7 @@
 	volume = 30
 	amount_per_transfer_from_this = 10
 	matter = list()
-	possible_transfer_amounts = list(5,10,15,25,30)
+	possible_transfer_amounts = list(5,10,15,20,25,30)
 	flags_atom = FPRINT|OPENCONTAINER
 	ground_offset_x = 9
 	ground_offset_y = 8
@@ -570,22 +571,37 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_container/glass/pressurized_canister/attackby(obj/item/I, mob/user)
-	return
+/obj/item/reagent_container/glass/pressurized_canister/on_reagent_change()
+	update_icon()
 
 /obj/item/reagent_container/glass/pressurized_canister/afterattack(obj/target, mob/user, flag)
 	if(!istype(target, /obj/structure/reagent_dispensers))
 		return
 	. = ..()
 
-/obj/item/reagent_container/glass/pressurized_canister/on_reagent_change()
-	update_icon()
+/obj/item/reagent_container/glass/pressurized_canister/update_icon() 	 //Canister now has a clear indicator on what's inside and how much.
+	overlays.Cut()
 
-/obj/item/reagent_container/glass/pressurized_canister/update_icon()
-	color = COLOR_WHITE
-	if(reagents)
-		color = mix_color_from_reagents(reagents.reagent_list)
+	if(reagents && reagents.total_volume)
+		var/image/filling
+		var/percent = floor((reagents.total_volume / volume) * 100)
+		switch(percent)
+			if(1 to 25)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-25")
+			if(26 to 50)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-50")
+			if(51 to 75)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-75")
+			if(76 to INFINITY)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-100")
+			else
+				return ..()
+
+		filling.color = mix_color_from_reagents(reagents.reagent_list)
+		overlays += filling
 	..()
+
+
 
 /obj/item/reagent_container/glass/bucket
 	desc = "It's a bucket. Holds 120 units."
@@ -675,11 +691,12 @@
 
 /obj/item/reagent_container/glass/bucket/janibucket
 	name = "janitorial bucket"
-	desc = "It's a large bucket that fits in a janitorial cart. Holds 500 units."
+	desc = "It's a large bucket that fits in a janitorial cart. Holds 300 units."
 	icon_state = "janibucket"
 	item_state = "janibucket"
 	matter = list("metal" = 8000)
-	volume = 500
+	volume = 300
+	w_class = SIZE_LARGE
 
 
 /obj/item/reagent_container/glass/rag

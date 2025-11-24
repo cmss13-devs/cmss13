@@ -15,7 +15,7 @@
 	var/right_click = LAZYACCESS(modifiers, RIGHT_CLICK)
 	var/alt_click = LAZYACCESS(modifiers, ALT_CLICK)
 	var/ctrl_click = LAZYACCESS(modifiers, CTRL_CLICK)
-	if(istype(clicked_atom, /atom/movable/screen/radial)) //we're actively using radials in basic mode, so dont intercept any clicks that target those.
+	if(istype(clicked_atom, /atom/movable/screen/radial)) //we're actively using radials in basic mode, so don't intercept any clicks that target those.
 		return TRUE
 	if(istype(clicked_atom, /turf))
 		var/turf/clicked_turf = clicked_atom

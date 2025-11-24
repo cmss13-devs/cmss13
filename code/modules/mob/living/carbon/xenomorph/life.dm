@@ -18,7 +18,6 @@
 		zoom_out()
 
 	if(stat != DEAD) //Stop if dead. Performance boost
-
 		update_progression()
 
 		//Status updates, death etc.
@@ -34,6 +33,19 @@
 		handle_environment()
 		if(client)
 			handle_regular_hud_updates()
+			warn_away_timer()
+
+/mob/living/carbon/xenomorph/proc/warn_away_timer()
+	if(aghosted)
+		return
+	if(health <= 0)
+		return
+	var/area/area = get_area(src)
+	if(should_block_game_interaction(src) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
+		return //xenos on admin z level don't count
+
+	if(away_timer == XENO_LEAVE_TIMER - XENO_AVAILABLE_TIMER)
+		to_chat(src, SPAN_ALERTWARNING("You are inactive and will be available to ghosts in [XENO_AVAILABLE_TIMER] second\s!"))
 
 /mob/living/carbon/xenomorph/proc/update_progression()
 	if(isnull(hive))

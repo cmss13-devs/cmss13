@@ -325,7 +325,7 @@
 					continue
 				switch(mode)
 					if(MODE_AMPLIFY)
-						property_costs[P.name] = max(min(P.level - 1, PROPERTY_COST_MAX), 1)
+						property_costs[P.name] = max(min(P.level + P.value - 1, PROPERTY_COST_MAX), 1)
 					if(MODE_SUPPRESS)
 						property_costs[P.name] = 2
 					if(MODE_RELATE)
@@ -335,12 +335,12 @@
 							else if(reference_property.rarity < PROPERTY_RARE)
 								property_costs[P.name] = P.level
 							else
-								property_costs[P.name] = P.level * PROPERTY_MULTIPLIER_RARE
+								property_costs[P.name] = (P.level * PROPERTY_MULTIPLIER_RARE) + P.value
 						else
-							property_costs[P.name] = P.level * 1
-		if(only_positive)
+							property_costs[P.name] = P.level + P.value
+		if(!only_positive)
 			for(var/P in property_costs)
-				property_costs[P] = property_costs[P] + 1
+				property_costs[P] = max(property_costs[P] - 2, 1)
 	GLOB.chemical_data.has_new_properties = FALSE
 
 /obj/structure/machinery/chem_simulator/proc/calculate_new_od_level()

@@ -108,8 +108,8 @@
 		if(acid_level == 3)
 			to_chat(affected_human, SPAN_WARNING("Your armor has been weakened."))
 
-/datum/effects/acid/proc/increment_duration()
-	active_for ++
+/datum/effects/acid/proc/increment_duration(amount = 1)
+	active_for += amount
 	active_for = min(active_for, tier_max_duarions[acid_level])
 	if(active_for in increment_times)
 		hits ++

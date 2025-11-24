@@ -114,15 +114,20 @@
 	if (!isxeno_human(target_carbon))
 		return original_damage
 	var/datum/effects/acid/acid_effect = locate() in target_carbon.effects_list
+	var/speed_up_progress = 10
 	if (next_slash_buffed)
+		speed_up_progress = 20
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, covering [target_carbon] in acid!"))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a burning pain as [bound_xeno] slashes you, covering you in acid!"))
-
 		if(acid_effect)
 			acid_effect.enhance_acid(super_acid = TRUE)
-			return original_damage
+
 	if(!acid_effect)
-		new /datum/effects/acid/(target_carbon)
+		acid_effect = new /datum/effects/acid/(target_carbon)
+
+	acid_effect.increment_duration(speed_up_progress)
+
+
+	to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a burning pain as [bound_xeno] slashes you, covering you in acid!"))
 
 	return original_damage
 

@@ -1,6 +1,5 @@
 /datum/surgery/eschar_mend
 	name = "Eschar Removal Surgery"
-	desc = "Remove the hardened, dead tissue from the body."
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 	required_surgery_skill = SKILL_SURGERY_NOVICE
@@ -15,7 +14,7 @@
 
 /datum/surgery_step/separate_eschar
 	name = "Remove the Eschar"
-	desc = "Extract the eschar from the healthy flesh beneath it."
+	desc = "remove the eschar"
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
@@ -38,7 +37,7 @@
 		SPAN_NOTICE("[user] has removed the eschar from [target]'s [surgery.affected_limb.display_name] and exposed the pink and healthy tissue beneath it."))
 
 	to_chat(target, SPAN_NOTICE("The air feels cold around the exposed skin on your [surgery.affected_limb.display_name]."))
-	log_interact(user, target, "[key_name(user)] has removed the eschar from [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], starting [surgery].")
+	log_interact(user, target, "[key_name(user)] has removed the eschar from [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], starting [surgery].")
 
 /datum/surgery_step/separate_eschar/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
 	user.affected_message(target,
@@ -46,13 +45,13 @@
 		SPAN_WARNING("[user]'s hand slips, slicing you with [tool]!"),
 		SPAN_WARNING("[user]'s hand slips, slicing [target] with [tool]!"))
 
-	log_interact(user, target, "[key_name(user)] failed to remove the eschar from [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], aborting [surgery].")
+	log_interact(user, target, "[key_name(user)] failed to remove the eschar from [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], aborting [surgery].")
 	target.apply_damage(10, BRUTE, target_zone)
 	return FALSE
 
 /datum/surgery_step/graft_exposed_flesh
 	name = "Apply a Graft"
-	desc = "Graft stem cells over the exposed skin and cover them."
+	desc = "graft and seal the exposed flesh"
 	tools = list(
 		/obj/item/stack/medical/advanced/ointment = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/surgery/synthgraft = SURGERY_TOOL_MULT_IDEAL,
@@ -97,7 +96,7 @@
 		SPAN_NOTICE("[user] sealed a skin graft over the exposed skin on [target]'s [surgery.affected_limb.display_name]."))
 
 	to_chat(target, SPAN_NOTICE("Your skin is covered and safe. You feel better."))
-	log_interact(user, target, "[key_name(user)] sealed a skin graft over the exposed skin on [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], ending [surgery].")
+	log_interact(user, target, "[key_name(user)] sealed a skin graft over the exposed skin on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 	surgery.affected_limb.status &= ~(LIMB_ESCHAR)
 	target.pain.recalculate_pain()
 	return
@@ -105,16 +104,16 @@
 /datum/surgery_step/graft_exposed_flesh/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
 	if(tool_type == /obj/item/stack/medical/ointment)
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, smearing \the [tool] over the exposed flesh on [target]'s [surgery.affected_limb.display_name]!"),
-			SPAN_WARNING("[user]'s hand slips, smearing \the [tool] over the exposed flesh on your [surgery.affected_limb.display_name]!"),
-			SPAN_WARNING("[user]'s hand slips, smearing \the [tool] over the exposed flesh on [target]'s [surgery.affected_limb.display_name]!"))
+			SPAN_WARNING("Your hand slips, smearing [tool] over the exposed flesh on [target]'s [surgery.affected_limb.display_name]!"),
+			SPAN_WARNING("[user]'s hand slips, smearing [tool] over the exposed flesh on your [surgery.affected_limb.display_name]!"),
+			SPAN_WARNING("[user]'s hand slips, smearing [tool] over the exposed flesh on [target]'s [surgery.affected_limb.display_name]!"))
 	else
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, bruising the exposed flesh on [target]'s [surgery.affected_limb.display_name] with [tool]!"),
 			SPAN_WARNING("[user]'s hand slips, bruising the exposed flesh on your [surgery.affected_limb.display_name] with [tool]!"),
 			SPAN_WARNING("[user]'s hand slips, bruising the exposed flesh on [target]'s [surgery.affected_limb.display_name] with [tool]!"))
 
-	log_interact(user, target, "[key_name(user)] failed to seal a graph over the exposed flesh on [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
+	log_interact(user, target, "[key_name(user)] failed to seal a graph over the exposed flesh on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 	target.apply_damage(10, BRUTE, target_zone)
 	return FALSE
 

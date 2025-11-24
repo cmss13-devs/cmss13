@@ -221,7 +221,7 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 			event_source.confirmed = 1
 			event_source.event_confirmed_by = usr
 		else
-			visible_message(SPAN_NOTICE("[src] states: ONLY ONE UNIQUE CODE DISK DETECTED"))
+			visible_message(SPAN_NOTICE("[src] states: ONLY ONE UNIQUE CODE DISK DETECTED."))
 
 	else if(screen == 2)
 		event_triggered_by = usr
@@ -277,7 +277,7 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
 		var/datum/game_mode/colonialmarines/gCM = SSticker.mode
 		if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
-			visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED"))
+			visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED."))
 			return
 		gCM.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
 
@@ -307,7 +307,7 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 			if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
 				var/datum/game_mode/colonialmarines/gCM = SSticker.mode
 				if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
-					visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED"))
+					visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED."))
 					return
 				gCM.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
 			timed_countdown(3 MINUTES)

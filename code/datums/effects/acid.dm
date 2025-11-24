@@ -10,7 +10,7 @@
 	/// If it's been enhanced by a spit combo to level 2 or by despoiler up to 3
 	var/acid_level = 1
 	var/damage_areas = list("chest","groin","l_arm","r_arm")
-	var/increment_times =  list(21,30,41,50)
+	var/increment_times =  list(21,30,50)
 	var/active_for = 0
 	var/hits = 1
 	var/tier_max_duarions = list(20, 40, 80)

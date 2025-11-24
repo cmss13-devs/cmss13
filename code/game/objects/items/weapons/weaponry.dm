@@ -83,6 +83,7 @@
 	throwforce = 7
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
 	hitsound = 'sound/weapons/genhit3.ogg'
+	can_shield_bash = TRUE
 
 /obj/item/weapon/baseballbat/metal
 	name = "\improper metal baseball bat"

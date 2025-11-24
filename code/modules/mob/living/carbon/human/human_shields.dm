@@ -1,5 +1,11 @@
-///Attacking direction is determined by get_dir(DEFENDER, ATTACKER)
-/mob/living/carbon/human/proc/check_shields(attack_text = "the attack", attacking_direction, is_projectile = FALSE, custom_response = FALSE)
+/**
+*Attacking direction is determined by get_dir(DEFENDER, ATTACKER)
+*
+*Arguments:
+* * attack_type - Checking if this is a Melee, Projectile or Pounce attack.
+* * custom_response - Used to determine if the items involved are sending their own messages to chat about the interaction or whether this proc needs to generate an interaction message.
+*/
+/mob/living/carbon/human/proc/check_shields(attack_text = "the attack", attacking_direction, attack_type = SHIELD_ATTACK_MELEE, custom_response = FALSE)
 	var/block_effect = /obj/effect/block
 	var/owner_turf = get_turf(src)
 
@@ -12,7 +18,7 @@
 				if(SHIELD_DIRECTIONAL, SHIELD_DIRECTIONAL_TWOHANDS)
 					var/appropriate_dir = FALSE
 					var/facing_dir = dir
-					for(var/catchment_dir in facing_nearby_direction(reverse_direction(facing_dir)))
+					for(var/catchment_dir in get_related_directions(reverse_direction(facing_dir)))
 						if(attacking_direction == catchment_dir)
 							appropriate_dir = TRUE
 							break
@@ -30,7 +36,7 @@
 						playsound(src, back_shield.shield_sound, 70, vary = TRUE)
 						return TRUE
 
-	if(attack_text == "the pounce" && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
+	if((attack_type == SHIELD_ATTACK_POUNCE) && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
 		if(!custom_response)
 			visible_message(SPAN_DANGER("<B>[src] withstands [attack_text] with their [wear_suit.name]!</B>"), max_distance=5)
 		new block_effect(owner_turf)
@@ -117,44 +123,32 @@
 
 	/// Now we work out the real block chance.
 	var/block_chance = checking_base_chance
-	if(is_projectile)
+	if(attack_type == SHIELD_ATTACK_PROJECTILE)
 		block_chance = (block_chance * checking_proj_mult)
 
 	/// If there is no passed attack direction, we can't appropriately check for directional blocks, so we convert to absolute block instead.
+	if(!attacking_direction && checking_type == SHIELD_DIRECTIONAL)
+		checking_type = SHIELD_ABSOLUTE
+
 	if(checking_type == SHIELD_DIRECTIONAL)
-		if(!attacking_direction)
-			checking_type = SHIELD_ABSOLUTE
+		var/appropriate_dir = FALSE
+		for(var/catchment_dir in get_related_directions(dir))
+			if(attacking_direction == catchment_dir)
+				appropriate_dir = TRUE
+				break
+		if(!appropriate_dir)
+			return FALSE
 
-	switch(checking_type)
-		if(SHIELD_ABSOLUTE)
-			if(prob(block_chance))
-				new block_effect(owner_turf)
-				playsound(src, checking_weapon.shield_sound, 70, vary = TRUE)
-				if(!custom_response)
-					visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [checking_weapon.name]!</B>"), null, null, 5)
+	if(prob(block_chance))
+		new block_effect(owner_turf)
+		playsound(src, checking_weapon.shield_sound, 70, vary = TRUE)
+		if(!custom_response)
+			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [checking_weapon.name]!</B>"), null, null, 5)
 
-				if(right_hand_shield && right_hand_shield.shield_readied) // User activated their shield before the attack. Lower if it blocks.
-					right_hand_shield.lower_shield(src)
-				if(left_hand_shield && left_hand_shield.shield_readied)
-					left_hand_shield.lower_shield(src)
-				return TRUE
+		if(right_hand_shield && right_hand_shield.shield_readied) // User activated their shield before the attack. Lower if it blocks.
+			right_hand_shield.lower_shield(src)
+		if(left_hand_shield && left_hand_shield.shield_readied)
+			left_hand_shield.lower_shield(src)
+		return TRUE
 
-		if(SHIELD_DIRECTIONAL)
-			var/appropriate_dir = FALSE
-			var/facing_dir = dir
-			for(var/catchment_dir in facing_nearby_direction(facing_dir))
-				if(attacking_direction == catchment_dir)
-					appropriate_dir = TRUE
-					break
-			if(appropriate_dir && prob(block_chance))
-				new block_effect(owner_turf)
-				playsound(src, checking_weapon.shield_sound, 70, vary = TRUE)
-				if(!custom_response)
-					visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [checking_weapon.name]!</B>"), null, null, 5)
-
-				if(right_hand_shield && right_hand_shield.shield_readied) // User activated their shield before the attack. Lower if it blocks.
-					right_hand_shield.lower_shield(src)
-				if(left_hand_shield && left_hand_shield.shield_readied)
-					left_hand_shield.lower_shield(src)
-				return TRUE
 	return FALSE

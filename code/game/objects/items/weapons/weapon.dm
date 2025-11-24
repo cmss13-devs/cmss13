@@ -12,6 +12,8 @@
 	var/shield_type = SHIELD_NONE
 	/// Sound used when blocking.
 	var/shield_sound = 'sound/items/block_shield.ogg'
+	/// Can bash shields for a sound.
+	var/can_shield_bash = FALSE
 
 /obj/item/weapon/get_examine_text(mob/user)
 	. = ..()

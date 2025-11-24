@@ -1221,26 +1221,6 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		if(NORTHWEST)
 			return list(SOUTHEAST, SOUTH,  EAST)
 
-/proc/facing_nearby_direction(direction)
-	switch(direction)
-		if(SOUTH)
-			return list(SOUTH, SOUTHEAST, SOUTHWEST)
-		if(SOUTHWEST)
-			return list(SOUTHWEST, SOUTH,  WEST)
-		if(WEST)
-			return list(WEST, SOUTHWEST, NORTHWEST)
-		if(NORTHWEST)
-			return list(NORTHWEST, NORTH,  WEST)
-		if(NORTH)
-			return list(NORTH, NORTHEAST, NORTHWEST)
-		if(NORTHEAST)
-			return list(NORTHEAST, NORTH,  EAST)
-		if(EAST)
-			return list(EAST, NORTHEAST, SOUTHEAST)
-		if(SOUTHEAST)
-			return list(SOUTHEAST, SOUTH,  EAST)
-
-
 /*
 Checks if that loc and dir has a item on the wall
 */

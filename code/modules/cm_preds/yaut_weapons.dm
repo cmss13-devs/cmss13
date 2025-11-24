@@ -683,7 +683,7 @@
 		attack_verb = list("thwacked", "smacked")
 		overlays.Cut()
 		on = FALSE
-		shield_chance = 2
+		shield_chance = SHIELD_CHANCE_NONE
 		update_icon()
 
 	if(istype(user,/mob/living/carbon/human))

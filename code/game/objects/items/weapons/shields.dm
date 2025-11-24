@@ -86,7 +86,7 @@
 
 	attack_verb = list("shoved", "bashed")
 	blocks_on_back = TRUE
-	var/bash_cooldown = 0 //shield bash cooldown. based on world.time
+	COOLDOWN_DECLARE(bash_cooldown)
 
 	shield_type = SHIELD_DIRECTIONAL
 	shield_chance = SHIELD_CHANCE_VHIGH
@@ -95,12 +95,13 @@
 	..()
 	toggle_shield(user)
 
-/obj/item/weapon/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
-	if(bash_cooldown < world.time - 2.5 SECONDS)
-		if(istype(W, /obj/item/weapon/baton) || istype(W, /obj/item/weapon/sword) || istype(W, /obj/item/weapon/telebaton) || istype(W, /obj/item/weapon/baseballbat) || istype(W, /obj/item/weapon/classic_baton) || istype(W, /obj/item/weapon/twohanded/fireaxe) || istype(W, /obj/item/weapon/chainofcommand))
-			user.visible_message(SPAN_WARNING("[user] bashes [src] with [W]!"))
+/obj/item/weapon/shield/riot/attackby(obj/item/attacking_item as obj, mob/user as mob)
+	if(isweapon(attacking_item) && COOLDOWN_FINISHED(src, bash_cooldown))
+		var/obj/item/weapon/attacking_weapon = attacking_item
+		if(attacking_weapon.can_shield_bash)
+			user.visible_message(SPAN_WARNING("[user] bashes [src] with [attacking_weapon]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
-			bash_cooldown = world.time
+			COOLDOWN_START(src, bash_cooldown, SHIELD_BASH_COOLDOWN)
 	else
 		..()
 

@@ -632,6 +632,13 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define SHIELD_CHANCE_SUPER 60
 #define SHIELD_CHANCE_GODLY 90
 
+// Types of attack
+#define SHIELD_ATTACK_MELEE 1
+#define SHIELD_ATTACK_PROJECTILE 2
+#define SHIELD_ATTACK_POUNCE 3
+
+#define SHIELD_BASH_COOLDOWN 2.5 SECONDS
+
 // Grades of protection against projectiles, including thrown items.
 
 #define PROJECTILE_BLOCK_PERC_NONE 0

@@ -226,7 +226,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		return
 	O.throwing = FALSE //it hit, so stop moving
 
-	if ((!launch_meta_valid || LM.thrower != src) && check_shields("[O]", get_dir(src, LM.thrower), is_projectile=TRUE))
+	if ((!launch_meta_valid || LM.thrower != src) && check_shields("[O]", get_dir(src, LM.thrower), attack_type = SHIELD_ATTACK_PROJECTILE))
 		return
 
 	var/obj/limb/affecting = get_limb(zone)

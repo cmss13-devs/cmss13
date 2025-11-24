@@ -404,11 +404,11 @@
 
 /obj/item/reagent_container/glass/beaker/bluespace
 	name = "high-capacity beaker"
-	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 300 units."
+	desc = "A beaker with an enlarged holding capacity, made with blue-tinted plexiglass in order to withstand greater pressure. Can hold up to 500 units."
 	icon_state = "beakerbluespace"
 	item_state = "beakerbluespace"
-	matter = list("glass" = 10000)
-	volume = 300
+	matter = list("glass" = 30000)
+	volume = 500
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,300)
 
@@ -723,11 +723,12 @@
 
 /obj/item/reagent_container/glass/bucket/janibucket
 	name = "janitorial bucket"
-	desc = "It's a large bucket that fits in a janitorial cart. Holds 500 units."
+	desc = "It's a large bucket that fits in a janitorial cart. Holds 300 units."
 	icon_state = "janibucket"
 	item_state = "janibucket"
 	matter = list("metal" = 8000)
-	volume = 500
+	volume = 300
+	w_class = SIZE_LARGE
 
 
 /obj/item/reagent_container/glass/rag

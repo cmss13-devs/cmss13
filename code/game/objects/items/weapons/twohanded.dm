@@ -156,7 +156,7 @@
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	flags_item = TWOHANDED
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
-	can_shield_bash = TRUE
+	shield_flags = CAN_SHIELD_BASH
 
 /obj/item/weapon/twohanded/fireaxe/wield(mob/user)
 	. = ..()

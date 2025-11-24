@@ -1,5 +1,6 @@
 /obj/item/weapon/shield
 	name = "shield"
+	shield_flags = CAN_BLOCK_POUNCE
 	var/base_icon_state = "shield"
 	var/passive_block = SHIELD_CHANCE_LOW
 	var/passive_projectile_mult = PROJECTILE_BLOCK_PERC_30
@@ -98,7 +99,7 @@
 /obj/item/weapon/shield/riot/attackby(obj/item/attacking_item as obj, mob/user as mob)
 	if(isweapon(attacking_item) && COOLDOWN_FINISHED(src, bash_cooldown))
 		var/obj/item/weapon/attacking_weapon = attacking_item
-		if(attacking_weapon.can_shield_bash)
+		if(attacking_weapon.shield_flags & CAN_SHIELD_BASH)
 			user.visible_message(SPAN_WARNING("[user] bashes [src] with [attacking_weapon]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			COOLDOWN_START(src, bash_cooldown, SHIELD_BASH_COOLDOWN)

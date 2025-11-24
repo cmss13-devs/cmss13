@@ -634,10 +634,16 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 
 // Types of attack
 #define SHIELD_ATTACK_MELEE 1
-#define SHIELD_ATTACK_PROJECTILE 2
-#define SHIELD_ATTACK_POUNCE 3
+#define SHIELD_ATTACK_HEAVY_MELEE 2
+#define SHIELD_ATTACK_PROJECTILE 3
+#define SHIELD_ATTACK_POUNCE 4
 
 #define SHIELD_BASH_COOLDOWN 2.5 SECONDS
+
+// Special flags
+#define CAN_SHIELD_BASH (1<<0)
+#define CAN_BLOCK_POUNCE (1<<1)
+#define CAN_BLOCK_HEAVY (1<<2)
 
 // Grades of protection against projectiles, including thrown items.
 

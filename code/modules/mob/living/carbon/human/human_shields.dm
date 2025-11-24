@@ -11,9 +11,20 @@
 
 	// First we handle the easy stuff.
 
+	// Check if our armour blocks pounces.
+	if((attack_type == SHIELD_ATTACK_POUNCE) && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
+		if(!custom_response)
+			visible_message(SPAN_DANGER("<B>[src] withstands [attack_text] with their [wear_suit.name]!</B>"), max_distance=5)
+		new block_effect(owner_turf)
+		playsound(src, 'sound/items/block_shield.ogg', 70, vary = TRUE)
+		return TRUE
+
 	if(back && istype(back, /obj/item/weapon/shield))
 		var/obj/item/weapon/shield/back_shield = back
 		if(back_shield.blocks_on_back)
+			// Check if we can block a pounce at all.
+			if(attack_type == SHIELD_ATTACK_POUNCE && !(back_shield.shield_flags & CAN_BLOCK_POUNCE))
+				return FALSE
 			switch(back_shield.shield_type)
 				if(SHIELD_DIRECTIONAL, SHIELD_DIRECTIONAL_TWOHANDS)
 					var/appropriate_dir = FALSE
@@ -36,13 +47,6 @@
 						playsound(src, back_shield.shield_sound, 70, vary = TRUE)
 						return TRUE
 
-	if((attack_type == SHIELD_ATTACK_POUNCE) && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
-		if(!custom_response)
-			visible_message(SPAN_DANGER("<B>[src] withstands [attack_text] with their [wear_suit.name]!</B>"), max_distance=5)
-		new block_effect(owner_turf)
-		playsound(src, 'sound/items/block_shield.ogg', 70, vary = TRUE)
-		return TRUE
-
 	// Now we get all the stats of our possible shields.
 	var/obj/item/weapon/left_hand_weapon
 	var/obj/item/weapon/shield/left_hand_shield
@@ -56,8 +60,12 @@
 	var/right_hand_base_chance = 0
 	var/right_hand_proj_mult = 0
 
+	var/can_block_pounce = FALSE
+
 	if(l_hand && istype(l_hand, /obj/item/weapon))
 		left_hand_weapon = l_hand
+		if(left_hand_weapon.shield_flags & CAN_BLOCK_POUNCE)
+			can_block_pounce = TRUE
 		if(left_hand_weapon.shield_chance && left_hand_weapon.shield_type)
 			left_hand_type = left_hand_weapon.shield_type
 			left_hand_proj_mult = left_hand_weapon.shield_projectile_mult
@@ -74,6 +82,8 @@
 	if(!left_hand_shield) // Don't want to be sharing a dedicated shield and a weapon's block, else numbers could theoretically go over 100
 		if(r_hand && istype(r_hand, /obj/item/weapon))
 			right_hand_weapon = r_hand
+			if(right_hand_weapon.shield_flags & CAN_BLOCK_POUNCE)
+				can_block_pounce = TRUE
 			if(right_hand_weapon.shield_chance && right_hand_weapon.shield_type)
 				right_hand_type = right_hand_weapon.shield_type
 				right_hand_proj_mult = right_hand_weapon.shield_projectile_mult
@@ -91,6 +101,10 @@
 		left_hand_type = SHIELD_NONE
 		left_hand_base_chance = 0
 		left_hand_proj_mult = 0
+
+	// Check if we can block a pounce at all.
+	if((attack_type == SHIELD_ATTACK_POUNCE) && !can_block_pounce)
+		return FALSE
 
 	/// Here we want to check for absolute first, and then directional. If one shield has absolute and the other doesn't, we still treat the total block as absolute.
 	var/checking_type

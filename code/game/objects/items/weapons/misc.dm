@@ -15,7 +15,7 @@
 	w_class = SIZE_MEDIUM
 
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
-	can_shield_bash = TRUE
+	shield_flags = CAN_SHIELD_BASH
 
 /obj/item/weapon/broken_bottle
 	name = "broken bottle"

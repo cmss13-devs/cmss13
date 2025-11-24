@@ -24,7 +24,7 @@
 	shield_projectile_mult = PROJECTILE_BLOCK_PERC_NONE
 	shield_type = SHIELD_DIRECTIONAL
 	shield_sound = 'sound/items/parry.ogg'
-	can_shield_bash = TRUE
+	shield_flags = CAN_SHIELD_BASH
 
 /obj/item/weapon/sword/claymore
 	name = "claymore"

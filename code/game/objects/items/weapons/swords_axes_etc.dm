@@ -29,7 +29,7 @@
 	)
 	flags_equip_slot = SLOT_WAIST
 	force = MELEE_FORCE_NORMAL
-	can_shield_bash = TRUE
+	shield_flags = CAN_SHIELD_BASH
 
 /obj/item/weapon/classic_baton/attack(mob/M as mob, mob/living/user as mob)
 	. = ..()
@@ -55,7 +55,7 @@
 	flags_equip_slot = SLOT_WAIST
 	w_class = SIZE_SMALL
 	force = MELEE_FORCE_WEAK
-	can_shield_bash = TRUE
+	shield_flags = CAN_SHIELD_BASH
 	var/on = 0
 	var/stun_force = 10
 

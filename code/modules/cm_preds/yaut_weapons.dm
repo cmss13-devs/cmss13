@@ -459,6 +459,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	unacidable = TRUE
+	shield_flags = CAN_BLOCK_POUNCE
 
 /obj/item/weapon/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
 	. = ..()
@@ -484,6 +485,7 @@
 	desc = "A wicked and battered staff wrapped in worn crimson rags. A crescent shaped blade adorns the top, while the bottom is rounded and blunt."
 	icon_state = "staff"
 	item_state = "staff"
+	shield_flags = CAN_BLOCK_POUNCE //A little gift for the staff, not that it makes much difference for Yautja themselves.
 
 //Combistick
 /obj/item/weapon/yautja/chained/combistick
@@ -508,6 +510,7 @@
 	shield_type = SHIELD_DIRECTIONAL_TWOHANDS
 	shield_chance = SHIELD_CHANCE_HIGH
 	shield_projectile_mult = PROJECTILE_BLOCK_PERC_40
+	shield_flags = CAN_BLOCK_POUNCE
 	///The stored chance for when unfolded.
 	var/active_shield_chance = SHIELD_CHANCE_HIGH
 
@@ -1057,6 +1060,7 @@
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	attack_speed = 14 //Default is 7.
+	shield_flags = CAN_BLOCK_POUNCE
 	var/skull_attached = FALSE
 
 /obj/item/weapon/twohanded/yautja/glaive/attack(mob/living/target, mob/living/carbon/human/user)

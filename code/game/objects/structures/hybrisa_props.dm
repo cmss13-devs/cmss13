@@ -1591,12 +1591,6 @@
 
 // Misc
 
-/obj/structure/prop/hybrisa/misc/picture_oil
-	name = "framed picture"
-	desc = "A silver framed picture of someone wearing a corporate issue deepsea powered hardsuit, the base of the frame has some words inscribed, 'site director'."
-	icon = 'icons/obj/structures/props/wall_decorations/decals.dmi'
-	icon_state = "pictureframe_oil"
-
 /obj/structure/prop/hybrisa/misc/commandosuitemptyprop
 	name = "Weyland-Yutani 'M5X Apesuit' showcase"
 	desc = "A display model of the Weyland-Yutani 'Apesuit', shame it's only a model..."

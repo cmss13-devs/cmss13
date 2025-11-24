@@ -39638,11 +39638,6 @@
 /area/navalis/indoors/med_sci/upper_level/sci_lab)
 "qaV" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/prop/hybrisa/misc/picture_oil{
-	pixel_x = 8;
-	pixel_y = 29;
-	layer = 3.5
-	},
 /obj/item/paper_bin{
 	pixel_x = 5;
 	pixel_y = 7

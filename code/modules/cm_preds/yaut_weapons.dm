@@ -1663,7 +1663,7 @@
 /obj/item/weapon/gun/bow
 	name = "hunting bow"
 	desc = "An abnormal-sized weapon with an exeptionally tight string. Requires extraordinary strength to draw."
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/bow.dmi'
 	icon_state = "bow"
 	item_state = "bow"
 	item_icons = list(
@@ -1783,7 +1783,7 @@
 /obj/item/arrow
 	name = "inert arrow"
 	w_class = SIZE_SMALL
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/bow.dmi'
 	icon_state = "arrow"
 	item_state = "arrow"
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -1797,18 +1797,23 @@
 	var/datum/ammo/primary_ammo = /datum/ammo/arrow
 	var/primary_icon_state = "arrow"
 	var/datum/ammo/secondary_ammo = /datum/ammo/arrow/expl
-	var/secondary_icon_state = "arrow_expl"
+	var/secondary_icon_state = "arrow_expl_active"
 
-/obj/item/arrow/expl
+/obj/item/arrow/active_expl
 	name = "\improper activated explosive arrow"
 	activated = TRUE
-	icon_state = "arrow_expl"
+	icon_state = "arrow_expl_active"
 	ammo_datum = /datum/ammo/arrow/expl
 
 /obj/item/arrow/emp
+	primary_icon_state = "arrow_emp"
+	secondary_ammo = /datum/ammo/arrow/emp
+	secondary_icon_state = "arrow_emp_active"
+
+/obj/item/arrow/emp/active
 	name = "\improper activated emp arrow"
 	activated = TRUE
-	icon_state = "arrow_emp"
+	icon_state = "arrow_emp_active"
 	ammo_datum = /datum/ammo/arrow/emp
 
 /obj/item/arrow/attack_self(mob/user)
@@ -1838,7 +1843,7 @@
 	item_state = "s_marinebelt"
 	flags_equip_slot = SLOT_WAIST|SLOT_SUIT_STORE|SLOT_BACK // it's a quiver, quivers go on your back
 	max_w_class = SIZE_LARGE
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon = 'icons/obj/items/hunter/bow.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',

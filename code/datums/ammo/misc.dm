@@ -226,7 +226,7 @@
 /datum/ammo/arrow/expl
 	name = "activated explosive arrow"
 	activated = TRUE
-	handful_type = /obj/item/arrow/expl
+	handful_type = /obj/item/arrow/active_expl
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
 	shrapnel_chance = 0
@@ -263,7 +263,7 @@
 /datum/ammo/arrow/emp
 	name = "activated emp arrow"
 	activated = TRUE
-	handful_type = /obj/item/arrow/emp
+	handful_type = /obj/item/arrow/emp/active
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
 	shrapnel_chance = 0

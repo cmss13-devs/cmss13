@@ -859,6 +859,7 @@
 	alpha = 60
 	obscuring = FALSE
 	var/remove_chem = 3
+	var/acid_increment_amount = 10
 
 /obj/effect/particle_effect/smoke/decomposing_enzymes/affect(mob/living/carbon/affected_mob)
 	. = ..()
@@ -867,6 +868,7 @@
 	if(!acid_effect)
 		return
 	acid_effect.enhance_acid(super_acid = FALSE)
+	acid_effect.increment_duration(acid_increment_amount)
 
 
 /datum/effect_system/smoke_spread/decomposing_enzymes

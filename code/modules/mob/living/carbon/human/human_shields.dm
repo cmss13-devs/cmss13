@@ -32,7 +32,7 @@
 
 	if(attack_text == "the pounce" && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
 		if(!custom_response)
-			visible_message(SPAN_DANGER("<B>[src] withstands [attack_text] with their [wear_suit.name]!</B>"), null, null, 5)
+			visible_message(SPAN_DANGER("<B>[src] withstands [attack_text] with their [wear_suit.name]!</B>"), max_distance=5)
 		new block_effect(owner_turf)
 		playsound(src, 'sound/items/block_shield.ogg', 70, vary = TRUE)
 		return TRUE
@@ -40,13 +40,13 @@
 	// Now we get all the stats of our possible shields.
 	var/obj/item/weapon/left_hand_weapon
 	var/obj/item/weapon/shield/left_hand_shield
-	var/left_hand_type = 0
+	var/left_hand_type = SHIELD_NONE
 	var/left_hand_base_chance = 0
 	var/left_hand_proj_mult = 0
 
 	var/obj/item/weapon/right_hand_weapon
 	var/obj/item/weapon/shield/right_hand_shield
-	var/right_hand_type = 0
+	var/right_hand_type = SHIELD_NONE
 	var/right_hand_base_chance = 0
 	var/right_hand_proj_mult = 0
 
@@ -82,7 +82,7 @@
 					right_hand_shield = right_hand_weapon
 	if(right_hand_shield)
 		left_hand_weapon = null
-		left_hand_type = 0
+		left_hand_type = SHIELD_NONE
 		left_hand_base_chance = 0
 		left_hand_proj_mult = 0
 

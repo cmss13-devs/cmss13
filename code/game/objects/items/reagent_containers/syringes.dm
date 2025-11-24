@@ -266,14 +266,14 @@
 			return
 
 		if (human_target != user && human_target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50))
-			for(var/mob/O in viewers(GLOB.world_view_size, user))
-				O.show_message(text(SPAN_DANGER("<B>[user] tries to stab [human_target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B>")), SHOW_MESSAGE_VISIBLE)
+			for(var/mob/cur_mob in viewers(GLOB.world_view_size, user))
+				cur_mob.show_message(text(SPAN_DANGER("<B>[user] tries to stab [human_target] in [hit_area] with [src], but the attack is deflected by armor!</B>")), SHOW_MESSAGE_VISIBLE)
 			user.temp_drop_inv_item(src)
 			qdel(src)
 			return
 
-		for(var/mob/O in viewers(GLOB.world_view_size, user))
-			O.show_message(text(SPAN_DANGER("<B>[user] stabs [human_target] in \the [hit_area] with [src.name]!</B>")), SHOW_MESSAGE_VISIBLE)
+		for(var/mob/cur_mob in viewers(GLOB.world_view_size, user))
+			cur_mob.show_message(text(SPAN_DANGER("<B>[user] stabs [human_target] in \the [hit_area] with [src]!</B>")), SHOW_MESSAGE_VISIBLE)
 
 		if(affecting.take_damage(3))
 			human_target:UpdateDamageIcon()

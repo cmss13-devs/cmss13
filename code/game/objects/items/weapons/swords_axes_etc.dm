@@ -147,7 +147,7 @@
 		w_class = SIZE_LARGE
 		playsound(user, 'sound/weapons/saberon.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE(" [src] is now active."))
-		shield_chance = SHIELD_CHANCE_5050
+		shield_chance = readied_block
 
 	else
 		force = 3

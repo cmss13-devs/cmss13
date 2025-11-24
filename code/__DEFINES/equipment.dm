@@ -66,7 +66,7 @@
 #define NODROP (1<<0)
 /// when an item has this it produces no "X has been hit by Y with Z" message with the default handler
 #define NOBLUDGEON (1<<1)
-/// weapon not affected by shield (does nothing currently)
+/// weapon cannot be blocked by a shield
 #define UNBLOCKABLE (1<<2)
 /// Deletes on drop instead of falling on the floor.
 #define DELONDROP (1<<3)
@@ -612,9 +612,11 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define SHIELD_NONE 0
 /// Blocks attacks with directional scaling.
 #define SHIELD_DIRECTIONAL 1
+/// Blocks attacks with directional scaling (penalized if not wielded with both hands).
 #define SHIELD_DIRECTIONAL_TWOHANDS 2
 /// Blocks attacks from all directions equally.
 #define SHIELD_ABSOLUTE 3
+/// Blocks attacks from all directions equally (penalized if not wielded with both hands).
 #define SHIELD_ABSOLUTE_TWOHANDS 4
 
 // Percentage base chance of blocking

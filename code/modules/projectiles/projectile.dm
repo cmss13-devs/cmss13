@@ -975,7 +975,7 @@
 
 	//Shields
 	if(!(ammo_flags & AMMO_ROCKET)) //No, you can't block rockets.
-		if(check_shields("[P]", get_dir(src, P.firer), TRUE)) // Lower chance to block bullets
+		if(check_shields("[P]", get_dir(src, P.firer), is_projectile=TRUE)) // Lower chance to block bullets
 			P.ammo.on_shield_block(src)
 			bullet_ping(P)
 			return

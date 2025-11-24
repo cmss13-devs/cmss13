@@ -96,7 +96,7 @@
 	toggle_shield(user)
 
 /obj/item/weapon/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
-	if(bash_cooldown < world.time - 25)
+	if(bash_cooldown < world.time - 2.5 SECONDS)
 		if(istype(W, /obj/item/weapon/baton) || istype(W, /obj/item/weapon/sword) || istype(W, /obj/item/weapon/telebaton) || istype(W, /obj/item/weapon/baseballbat) || istype(W, /obj/item/weapon/classic_baton) || istype(W, /obj/item/weapon/twohanded/fireaxe) || istype(W, /obj/item/weapon/chainofcommand))
 			user.visible_message(SPAN_WARNING("[user] bashes [src] with [W]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
@@ -126,7 +126,8 @@
 	attack_verb = list("shoved", "bashed")
 
 	shield_type = SHIELD_DIRECTIONAL
-	var/active = FALSE // Changes the shield chance from 0 to 50
+	/// Whether the shield is active so it can block
+	var/active = FALSE
 
 /obj/item/weapon/shield/riot/metal
 	name = "metal riot shield"

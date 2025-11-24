@@ -113,7 +113,7 @@
 	active_for = min(active_for, tier_max_duarions[acid_level])
 	hits = 1
 	for(var/threshold in increment_times)
-		if(threshold =< active_for)
+		if(threshold <= active_for)
 			hits ++
 
 /datum/effects/acid/proc/cleanse_acid()

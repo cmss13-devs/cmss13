@@ -316,11 +316,9 @@
 	var/obj/effect/alien/resin/design/selected_design = null
 	/// List of available design marks for this designer.
 	var/list/available_design = list()
-	/// Stores the current design nodes placed by designer.
+	/// Stores the current design nodes placed by the designer.
 	var/list/current_design = list()
-	// Stores the current acid pillars placed by designer.
-	var/list/current_acid_pillars = list()
-	/// Maximum design nodes designer can place.
+	/// Maximum design nodes the designer can place.
 	var/max_design_nodes = 0
 	/// Currently selected design mark to place
 	var/selected_design_mark

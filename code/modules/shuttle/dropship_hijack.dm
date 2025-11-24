@@ -190,8 +190,6 @@
 		if("Upper deck Midship")
 			turfs += get_area_turfs(/area/almayer/medical/morgue)
 			turfs += get_area_turfs(/area/almayer/medical/upper_medical)
-			turfs += get_area_turfs(/area/almayer/medical/containment)
-			turfs += get_area_turfs(/area/almayer/medical/containment/cell)
 			turfs += get_area_turfs(/area/almayer/medical/medical_science)
 			turfs += get_area_turfs(/area/almayer/medical/hydroponics)
 		if("Upper deck Aftship")

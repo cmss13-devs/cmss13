@@ -16,14 +16,14 @@
 	var/tier_max_duarions = list(20, 40, 80)
 
 
-/datum/effects/acid/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest")
-	..(A, from, last_dmg_source, zone)
-	if(ishuman(A))
-		var/mob/living/carbon/human/human = A
+/datum/effects/acid/New(atom/atom, mob/from = null, last_dmg_source = null, zone = "chest")
+	..(atom, from, last_dmg_source, zone)
+	if(ishuman(atom))
+		var/mob/living/carbon/human/human = atom
 		human.update_effects()
 
-	if(isobj(A))
-		var/obj/O = A
+	if(isobj(atom))
+		var/obj/O = atom
 		if(istype(O, /obj/structure/barricade))
 			var/obj/structure/barricade/B = O
 			acid_multiplier = B.burn_multiplier
@@ -33,15 +33,15 @@
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
 
-/datum/effects/acid/validate_atom(atom/A)
-	if(istype(A, /obj/structure/barricade))
+/datum/effects/acid/validate_atom(atom/atom)
+	if(istype(atom, /obj/structure/barricade))
 		return TRUE
 
-	if(isobj(A))
+	if(isobj(atom))
 		return FALSE
 
-	if(ishuman(A))
-		var/mob/living/carbon/human/human = A
+	if(ishuman(atom))
+		var/mob/living/carbon/human/human = atom
 		if(human.status_flags & XENO_HOST && HAS_TRAIT(human, TRAIT_NESTED) || human.stat == DEAD || HAS_TRAIT(human, TRAIT_HAULED))
 			return FALSE
 
@@ -111,8 +111,10 @@
 /datum/effects/acid/proc/increment_duration(amount = 1)
 	active_for += amount
 	active_for = min(active_for, tier_max_duarions[acid_level])
-	if(active_for in increment_times)
-		hits ++
+	hits = 1
+	for(var/threshold in increment_times)
+		if(threshold =< active_for)
+			hits ++
 
 /datum/effects/acid/proc/cleanse_acid()
 	duration -= 27

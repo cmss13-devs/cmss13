@@ -297,37 +297,81 @@ DEFINES in setup.dm, referenced here.
 		if(!user.Adjacent(dropping))
 			return
 		var/obj/item/ammo_magazine/magazine = dropping
+		var/obj/item/ammo_magazine/handful/bullet = dropping
 		if(!istype(user) || user.is_mob_incapacitated(TRUE))
 			return
 		if(src != user.r_hand && src != user.l_hand)
 			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
 			return
 		if(magazine.loc != user && !istype(magazine.loc, /obj/item/storage))
-			return
-		if(flags_gun_features & GUN_INTERNAL_MAG)
-			to_chat(user, SPAN_WARNING("Can't do tactical reloads with [src]."))
+			to_chat(user, SPAN_WARNING("[dropping] must be carried to do that."))
 			return
 		//no tactical reload for the untrained.
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0)
 			to_chat(user, SPAN_WARNING("You don't know how to do tactical reloads."))
 			return
-		if(istype(src, magazine.gun_type) || (magazine.type in src.accepted_ammo))
+		// unconventional tac reloads, yes, you can reload with one hand if you know what youre doing irl
+		if(flags_gun_features & GUN_INTERNAL_MAG)
+			unconventional_reload(user, magazine)
+			return
+
+		// actual tactical reloads
+		var/tac_reload_time = 15
+		if(istype(src, magazine.gun_type) || (magazine.type in accepted_ammo))
+
+			if(istype(bullet, /obj/item/ammo_magazine/handful) && in_chamber)
+				to_chat(user, SPAN_WARNING("You can't tactically reload with [bullet] without clearing the [src]'s chamber!"))
+				return
+
 			if(current_mag)
 				unload(user, FALSE, TRUE)
 			to_chat(user, SPAN_NOTICE("You start a tactical reload."))
+
 			var/old_mag_loc = magazine.loc
-			var/tac_reload_time = 15
 			if(user.skills)
 				tac_reload_time = max(15 - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
-			if(do_after(user,tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY) && magazine.loc == old_mag_loc && !current_mag)
-				if(isstorage(magazine.loc))
-					var/obj/item/storage/master_storage = magazine.loc
-					master_storage.remove_from_storage(magazine)
-				reload(user, magazine)
+			if(!do_after(user, tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY))
+				return
+			if(magazine.loc != old_mag_loc || current_mag)
+				return
+
+			if(isstorage(magazine.loc))
+				var/obj/item/storage/master_storage = magazine.loc
+				master_storage.remove_from_storage(magazine)
+			reload(user, magazine)
+		else
+			to_chat(user, SPAN_WARNING("The [magazine] doesn't fit in the [src]!"))
+			return
 	else
 		..()
 
 
+/obj/item/weapon/gun/proc/unconventional_reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(magazine.caliber != caliber)
+		to_chat(user, SPAN_WARNING("This doesn't match the [src]'s caliber!"))
+		return
+	if(current_mag && current_mag.current_rounds >= current_mag.max_rounds)
+		to_chat(user, SPAN_WARNING("[src] is already at its maximum capacity!"))
+		return
+
+	var/tac_reload_time = 2
+
+	to_chat(user, SPAN_NOTICE("You get on one knee and start an unconventional reload."))
+	var/interrupted = FALSE
+	while(current_mag && current_mag.current_rounds < current_mag.max_rounds && magazine && magazine.current_rounds > 0)
+		var/old_ammo_loc = magazine.loc
+		if(!do_after(user, tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			interrupted = TRUE
+			break
+		if(QDELETED(magazine) || magazine.loc != old_ammo_loc || !current_mag || current_mag.current_rounds >= current_mag.max_rounds)
+			interrupted = TRUE
+			break
+		reload(user, magazine)
+
+	if(!interrupted)
+		to_chat(user, SPAN_NOTICE("You finish reloading."))
+	else
+		to_chat(user, SPAN_NOTICE("Your reload was interrupted!"))
 
 //----------------------------------------------------------
 				//  \\
@@ -335,9 +379,6 @@ DEFINES in setup.dm, referenced here.
 				//  \\
 				//  \\
 //----------------------------------------------------------
-
-/obj/item/weapon/proc/unique_action(mob/user) //moved this up a path to make macroing for other weapons easier -spookydonut
-	return
 
 /obj/item/weapon/gun/proc/check_inactive_hand(mob/user)
 	if(user)
@@ -392,7 +433,10 @@ DEFINES in setup.dm, referenced here.
 
 	user.visible_message(SPAN_NOTICE("[user] begins attaching [attachment] to [src]."),
 	SPAN_NOTICE("You begin attaching [attachment] to [src]."), null, 4)
-	if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 2))
+	var/attach_delay = 1.5 SECONDS
+	if(istype(attachment, /obj/item/attachable/bayonet))
+		attach_delay = 0.3 SECONDS
+	if(do_after(user, attach_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 2))
 		if(attachment && attachment.loc)
 			user.visible_message(SPAN_NOTICE("[user] attaches [attachment] to [src]."),
 			SPAN_NOTICE("You attach [attachment] to [src]."), null, 4)
@@ -676,7 +720,10 @@ DEFINES in setup.dm, referenced here.
 	usr.visible_message(SPAN_NOTICE("[usr] begins stripping [attachment] from [src]."),
 	SPAN_NOTICE("You begin stripping [attachment] from [src]."), null, 4)
 
-	if(!do_after(usr, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	var/detach_delay = 1.5 SECONDS
+	if(istype(attachment, /obj/item/attachable/bayonet))
+		detach_delay = 0.3 SECONDS
+	if(!do_after(usr, detach_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 
 	if(!(attachment == attachments[attachment.slot]))
@@ -806,22 +853,6 @@ DEFINES in setup.dm, referenced here.
 			user.swap_hand()
 
 	unload(user, FALSE, drop_to_ground) //We want to drop the mag on the ground.
-
-/obj/item/weapon/gun/verb/use_unique_action()
-	set category = "Weapons"
-	set name = "Unique Action"
-	set desc = "Use anything unique your firearm is capable of. Includes pumping a shotgun or spinning a revolver. If you have an active attachment, this will activate on the attachment instead."
-	set src = usr.contents
-
-	var/obj/item/weapon/gun/active_firearm = get_active_firearm(usr)
-	if(!active_firearm)
-		return
-	if(active_firearm.active_attachable)
-		src = active_firearm.active_attachable
-	else
-		src = active_firearm
-
-	unique_action(usr)
 
 /obj/item/weapon/gun/verb/toggle_gun_safety()
 	set category = "Weapons"

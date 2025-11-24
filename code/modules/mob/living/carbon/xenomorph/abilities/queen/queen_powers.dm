@@ -336,7 +336,7 @@
 	if(thought_sender.client?.prefs.no_radials_preference)
 		choice = tgui_input_list(thought_sender, "Communicate", "Send Thoughts", options, theme="hive_status")
 	else
-		choice = show_radial_menu(thought_sender, thought_sender?.client.eye, options)
+		choice = show_radial_menu(thought_sender, thought_sender?.client.get_eye(), options)
 
 	if(!choice)
 		return
@@ -362,6 +362,9 @@
 			options += "Remove Personal Ally"
 			options += "Clear Personal Allies"
 
+	if(queen_manager.hive.hivenumber == XENO_HIVE_NORMAL)
+		options += "Edit Tacmap"
+
 	var/choice = tgui_input_list(queen_manager, "Manage The Hive", "Hive Management", options, theme="hive_status")
 	switch(choice)
 		if("Banish (500)")
@@ -384,7 +387,18 @@
 			permissions()
 		if("Purchase Buffs")
 			purchase_buffs()
+		if("Edit Tacmap")
+			edit_tacmap()
 	return ..()
+
+/datum/action/xeno_action/onclick/manage_hive/proc/edit_tacmap()
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	var/datum/component/tacmap/tacmap_component = xeno.GetComponent(/datum/component/tacmap)
+
+	if(xeno in tacmap_component.interactees)
+		tacmap_component.on_unset_interaction(xeno)
+	else
+		tacmap_component.show_tacmap(xeno)
 
 /datum/action/xeno_action/onclick/manage_hive/proc/permissions()
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
@@ -426,7 +440,7 @@
 	else
 		var/tier = HIVEBUFF_TIER_MINOR
 		if(major_available)
-			tier = show_radial_menu(xeno, xeno?.client?.eye, radial_images_tiers)
+			tier = show_radial_menu(xeno, xeno?.client?.get_eye(), radial_images_tiers)
 
 		if(tier == HIVEBUFF_TIER_MAJOR)
 			for(var/filtered_buffname as anything in buffs)
@@ -439,7 +453,7 @@
 				if(initial(filtered_buff.tier) == HIVEBUFF_TIER_MINOR)
 					radial_images[initial(filtered_buff.name)] += image(initial(filtered_buff.hivebuff_radial_dmi), initial(filtered_buff.radial_icon))
 
-		selection = show_radial_menu(xeno, xeno?.client?.eye, radial_images, radius = 72, tooltips = TRUE)
+		selection = show_radial_menu(xeno, xeno?.client?.get_eye(), radial_images, radius = 72, tooltips = TRUE)
 
 	if(!selection)
 		return FALSE
@@ -477,7 +491,7 @@
 	var/list/target_list = list()
 	if(!user_xeno.client)
 		return
-	for(var/mob/living/carbon/human/possible_target in range(7, user_xeno.client.eye))
+	for(var/mob/living/carbon/human/possible_target in range(7, user_xeno.client.get_eye()))
 		if(possible_target.stat == DEAD)
 			continue
 		if(possible_target.status_flags & CORRUPTED_ALLY)
@@ -786,13 +800,6 @@
 /datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(turf/T)
 	recently_built_turfs -= T
 
-
-/mob/living/carbon/xenomorph/proc/xeno_tacmap()
-	set name = "View Xeno Tacmap"
-	set desc = "This opens a tactical map, where you can see where every xenomorph is."
-	set category = "Alien"
-	hive.tacmap.tgui_interact(src)
-
 /datum/action/xeno_action/onclick/screech/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
 
@@ -822,6 +829,8 @@
 	playsound(xeno.loc, pick(xeno.screech_sound_effect_list), 75, 0, status = 0)
 	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
 	xeno.create_shriekwave(14) //Adds the visual effect. Wom wom wom, 14 shriekwaves
+
+	SScmtv.spectate_event("Queen Screech", xeno, 10 SECONDS)
 
 	FOR_DVIEW(var/mob/mob, world.view, owner, HIDE_INVISIBLE_OBSERVER)
 		if(mob && mob.client)
@@ -1006,4 +1015,3 @@
 	// We don't test or apply the cooldown here because the proc does it since verbs can activate it too
 	xeno.hive_message()
 	return ..()
-

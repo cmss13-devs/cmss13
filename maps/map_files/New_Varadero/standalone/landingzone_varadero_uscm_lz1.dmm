@@ -1200,8 +1200,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
-	pixel_x = 8;
-	explo_proof = 1
+	pixel_x = 8
 	},
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/unmeltable,
@@ -2798,7 +2797,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "vV" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/north)
 "vW" = (
@@ -3050,8 +3049,7 @@
 /obj/structure/machinery/door_control{
 	id = "undergroundhangarsouth";
 	name = "South Dock Door";
-	pixel_x = -24;
-	explo_proof = 1
+	pixel_x = -24
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/varadero/interior/maintenance/north)
@@ -3186,8 +3184,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
-	pixel_x = 3;
-	explo_proof = 1
+	pixel_x = 3
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/exterior/lz1_near)
@@ -4059,7 +4056,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
 "GA" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "GC" = (
@@ -4514,8 +4511,7 @@
 	id = "undergroundhangarsouth";
 	name = "South Dock Door";
 	pixel_x = -32;
-	pixel_y = -18;
-	explo_proof = 1
+	pixel_y = -18
 	},
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor/plating/icefloor/warnplate/north,
@@ -4877,7 +4873,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "NR" = (
@@ -4986,7 +4982,7 @@
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/varadero/interior/maintenance/north)
 "ON" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/north)
 "OP" = (
@@ -5078,21 +5074,6 @@
 "PQ" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
-"PR" = (
-/obj/structure/barricade/handrail{
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "support struts"
-	},
-/obj/structure/barricade/handrail{
-	desc = "Your platforms look pretty heavy king, let me support them for you.";
-	dir = 1;
-	icon_state = "hr_kutjevo";
-	name = "support struts"
-	},
-/turf/open/gm/river/shallow_ocean_shallow_ocean,
-/area/varadero/exterior/pontoon_beach)
 "Qa" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -10139,7 +10120,7 @@ hw
 Wy
 pg
 Ts
-PR
+Mr
 Wy
 Wy
 Wy
@@ -10149,7 +10130,7 @@ Wy
 Wy
 pg
 Ts
-PR
+Mr
 dC
 dC
 Ze

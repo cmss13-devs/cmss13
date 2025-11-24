@@ -37,6 +37,7 @@
 
 /datum/equipment_preset/yautja/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	var/caster_material = "ebony"
+	var/bracer_material = "ebony"
 	var/translator_type = PRED_TECH_MODERN
 	var/invisibility_sound = PRED_TECH_MODERN
 
@@ -44,10 +45,11 @@
 		mob_client = new_human.client
 	if(mob_client?.prefs)
 		caster_material = mob_client.prefs.predator_caster_material
+		bracer_material = mob_client.prefs.predator_bracer_material
 		translator_type = mob_client.prefs.predator_translator_type
 		invisibility_sound = mob_client.prefs.predator_invisibility_sound
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, invisibility_sound, caster_material, clan_rank), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, invisibility_sound, caster_material, clan_rank, bracer_material), WEAR_HANDS)
 
 	if(new_human.client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
 		new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/overseer(new_human), WEAR_L_EAR)
@@ -69,7 +71,7 @@
 		new_human.flavor_text = new_human.client.prefs.predator_flavor_text
 		new_human.flavor_texts["general"] = new_human.flavor_text
 		if(!final_name || final_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
-			final_name = capitalize(pick(GLOB.pred_names)) + " " + capitalize(pick(GLOB.pred_last_names))
+			final_name = "[capitalize(pick(GLOB.pred_names))] [capitalize(pick(GLOB.pred_last_names))]"
 	new_human.change_real_name(new_human, final_name)
 
 /datum/equipment_preset/yautja/youngblood //normal WL youngblood rank

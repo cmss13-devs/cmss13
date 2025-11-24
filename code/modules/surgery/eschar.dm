@@ -24,9 +24,9 @@
 
 /datum/surgery_step/separate_eschar/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You begin to separate the hardened, crusted flesh from [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_NOTICE("[user] begins to separate the hardened, crusted flesh from your [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_NOTICE("[user] begins to separate the hardened, crusted flesh from [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+		SPAN_NOTICE("You begin to separate the hardened, crusted flesh from [target]'s [surgery.affected_limb.display_name] with [tool]."),
+		SPAN_NOTICE("[user] begins to separate the hardened, crusted flesh from your [surgery.affected_limb.display_name] with [tool]."),
+		SPAN_NOTICE("[user] begins to separate the hardened, crusted flesh from [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 	target.custom_pain("[user] is carving your skin up like you're a crispy roast turkey! It hurts!", 1)
 	log_interact(user, target, "[key_name(user)] begins to separate the hardened, crusted flesh from [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")

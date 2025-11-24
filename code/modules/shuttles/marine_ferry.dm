@@ -363,7 +363,7 @@
 			break
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
-		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
+		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL."))
 
 	SSoldshuttle.shuttle_controller.locs_crash[target_section] -= T_trg
 
@@ -555,7 +555,7 @@
 
 	//Switch the landmarks so we can do this again
 	if(!istype(T_src) || !istype(T_trg))
-		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE"))
+		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE."))
 		return FALSE
 
 	locs_dock -= T_src

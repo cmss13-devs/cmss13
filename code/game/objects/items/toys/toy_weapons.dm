@@ -60,7 +60,7 @@
 	playsound(user, 'sound/weapons/Gunshot.ogg', 15, 1)
 	src.bullets--
 	for(var/mob/O in viewers(user, null))
-		O.show_message(SPAN_DANGER("<B>[user] fires a cap gun at [target]!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear a gunshot"), SHOW_MESSAGE_AUDIBLE)
+		O.show_message(SPAN_DANGER("<B>[user] fires a cap gun at [target]!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear a gunshot."), SHOW_MESSAGE_AUDIBLE)
 
 /obj/item/toy/gun_ammo
 	name = "ammo-caps"
@@ -178,7 +178,7 @@
 	else if (M.body_position == LYING_DOWN && src.bullets == 0)
 		for(var/mob/O in viewers(M, null))
 			if (O.client)
-				O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear someone fall"), SHOW_MESSAGE_AUDIBLE)
+				O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear someone fall."), SHOW_MESSAGE_AUDIBLE)
 		user.apply_effect(5, WEAKEN)
 	return
 

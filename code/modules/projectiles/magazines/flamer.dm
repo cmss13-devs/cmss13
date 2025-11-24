@@ -193,7 +193,7 @@
 
 /obj/item/ammo_magazine/flamer_tank/custom/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t")
+	. += SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t.")
 
 // Pyro regular flamer tank just bigger than the base flamer tank.
 /obj/item/ammo_magazine/flamer_tank/large

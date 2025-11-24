@@ -38,7 +38,7 @@
 	if(M.stuttering < 8)
 		M.stuttering = 8
 
-	user.visible_message(SPAN_DANGER("<B>[M] has been beaten with \the [src] by [user]!</B>"), SPAN_DANGER("You hear someone fall"))
+	user.visible_message(SPAN_DANGER("<B>[M] has been beaten with \the [src] by [user]!</B>"), SPAN_DANGER("You hear someone fall."))
 
 //Telescopic baton
 /obj/item/weapon/telebaton

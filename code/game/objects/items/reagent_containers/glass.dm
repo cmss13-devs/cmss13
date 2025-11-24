@@ -68,10 +68,10 @@
 		return
 	if(splashable)
 		if(is_open_container())
-			to_chat(usr, SPAN_NOTICE("You put the lid on \the [src]."))
+			to_chat(usr, SPAN_NOTICE("You put the lid on [src]."))
 			flags_atom ^= OPENCONTAINER
 		else
-			to_chat(usr, SPAN_NOTICE("You take the lid off \the [src]."))
+			to_chat(usr, SPAN_NOTICE("You take the lid off [src]."))
 			flags_atom |= OPENCONTAINER
 		update_icon()
 
@@ -532,7 +532,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/canister
-	name = "Hydrogen canister"
+	name = "hydrogen canister"
 	desc = "A canister containing pressurized hydrogen. Can be used to refill storage tanks."
 	icon = 'icons/obj/items/tank.dmi'
 	item_icons = list(
@@ -558,35 +558,35 @@
 	. = ..()
 
 /obj/item/reagent_container/glass/canister/ammonia
-	name = "Ammonia canister"
+	name = "ammonia canister"
 	desc = "A canister containing pressurized ammonia. Can be used to refill storage tanks."
 	icon_state = "canister_ammonia"
 	item_state = "canister_ammonia"
 	reagent = "ammonia"
 
 /obj/item/reagent_container/glass/canister/methane
-	name = "Methane canister"
+	name = "methane canister"
 	desc = "A canister containing pressurized methane. Can be used to refill storage tanks."
 	icon_state = "canister_methane"
 	item_state = "canister_methane"
 	reagent = "methane"
 
 /obj/item/reagent_container/glass/canister/pacid
-	name = "Polytrinic acid canister"
+	name = "polytrinic acid canister"
 	desc = "A canister containing pressurized polytrinic acid. Can be used to refill storage tanks."
 	icon_state = "canister_pacid"
 	item_state = "canister_pacid"
 	reagent = "pacid"
 
 /obj/item/reagent_container/glass/canister/oxygen
-	name = "Oxygen canister"
+	name = "oxygen canister"
 	desc = "A canister containing pressurized oxygen. Can be used to refill storage tanks."
 	icon_state = "canister_oxygen"
 	item_state = "canister_oxygen"
 	reagent = "oxygen"
 
 /obj/item/reagent_container/glass/pressurized_canister // See the Pressurized Reagent Canister Pouch
-	name = "Pressurized canister"
+	name = "pressurized canister"
 	desc = "A pressurized container. The inner part of a pressurized reagent canister pouch. Only compatible with its pouch, machinery or a storage tank."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "pressurized_reagent_container"
@@ -636,8 +636,8 @@
 
 
 /obj/item/reagent_container/glass/bucket
-	desc = "It's a bucket. Holds 120 units."
 	name = "bucket"
+	desc = "It's a bucket. Holds 120 units."
 	icon = 'icons/obj/janitor.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
@@ -654,7 +654,7 @@
 
 /obj/item/reagent_container/glass/bucket/attackby(obj/item/I, mob/user)
 	if(isprox(I))
-		to_chat(user, "You add \the [I] to \the [src].")
+		to_chat(user, "You add [I] to [src].")
 		qdel(I)
 		user.put_in_hands(new /obj/item/frame/bucket_sensor)
 		user.drop_inv_item_on_ground(src)
@@ -666,7 +666,7 @@
 		else
 			reagents.trans_to(mop, mop.max_reagent_volume)
 			mop.update_icon()
-			to_chat(user, SPAN_NOTICE("You wet \the [mop] in \the [src]."))
+			to_chat(user, SPAN_NOTICE("You wet [mop] in [src]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		return
 	else
@@ -746,7 +746,7 @@
 
 /obj/item/reagent_container/glass/rag/attack(atom/target, mob/user)
 	if(ismob(target) && target.reagents && reagents.total_volume)
-		user.visible_message(SPAN_DANGER("\The [target] has been smothered with \the [src] by \the [user]!"), SPAN_DANGER("You smother \the [target] with \the [src]!"), "You hear some struggling and muffled cries of surprise")
+		user.visible_message(SPAN_DANGER("\The [target] has been smothered with [src] by [user]!"), SPAN_DANGER("You smother [target] with [src]!"), "You hear some struggling and muffled cries of surprise!")
 		src.reagents.reaction(target, TOUCH)
 		spawn(5) src.reagents.clear_reagents()
 		return

@@ -47,7 +47,7 @@
 	if(inoperable())
 		return
 	if(operating)
-		to_chat(user, SPAN_DANGER("It's locked and running"))
+		to_chat(user, SPAN_DANGER("It's locked and running."))
 		return
 	else
 		startgibbing(user)

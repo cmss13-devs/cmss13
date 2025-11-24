@@ -66,7 +66,7 @@
 
 	var/obj/item/card/id/idcard = human_user.get_idcard()
 	if(!idcard) //not wearing an ID
-		to_chat(human_user, SPAN_WARNING("Access denied. No ID card detected"))
+		to_chat(human_user, SPAN_WARNING("Access denied. No ID card detected."))
 		return
 
 	if(!idcard.check_biometrics(human_user))

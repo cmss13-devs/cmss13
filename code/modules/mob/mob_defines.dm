@@ -334,7 +334,7 @@
 			return
 
 		if(!client || !client.admin_holder || !(client.admin_holder.rights & R_MOD))
-			to_chat(usr, "This can only be used on people with +MOD permissions")
+			to_chat(usr, "This can only be used on people with +MOD permissions.")
 			return
 
 		log_admin("[key_name(usr)] has toggled buildmode on [key_name(src)]")

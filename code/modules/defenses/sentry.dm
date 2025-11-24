@@ -864,7 +864,7 @@
 			return
 
 		var/rounds_used = ammo.inherent_reload(user)
-		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage"))
+		to_chat(user, SPAN_WARNING("[src]'s internal magazine was reloaded with [rounds_used] rounds, [ammo.max_inherent_rounds] rounds left in storage."))
 		playsound(loc, 'sound/weapons/handling/m40sd_reload.ogg', 25, 1)
 		update_icon()
 		return FALSE

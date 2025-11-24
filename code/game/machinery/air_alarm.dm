@@ -825,7 +825,7 @@ table tr:first-child th:first-child { border: none;}
 		var/min_temperature = max(selected[2] - T0C, MIN_TEMPERATURE)
 		var/input_temperature = tgui_input_number(usr, "What temperature would you like the system to mantain? (Capped between [min_temperature]C and [max_temperature]C)", "Thermostat Controls", min_temperature, max_temperature, min_temperature)
 		if(!input_temperature || input_temperature > max_temperature || input_temperature < min_temperature)
-			to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C")
+			to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C.")
 		else
 			target_temperature = input_temperature + T0C
 
@@ -972,7 +972,7 @@ table tr:first-child th:first-child { border: none;}
 
 			if(istype(W, /obj/item/card/id))// trying to unlock the interface with an ID card
 				if(inoperable())
-					to_chat(user, "It does nothing")
+					to_chat(user, "It does nothing.")
 					return
 				else
 					if(allowed(usr) && !isWireCut(AALARM_WIRE_IDSCAN))

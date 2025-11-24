@@ -74,7 +74,7 @@
 	..()
 	if(href_list["cancel"])
 		if(!triggering)
-			to_chat(usr, SPAN_ADMIN("You are too late to cancel that event"))
+			to_chat(usr, SPAN_ADMIN("You are too late to cancel that event."))
 			return
 		triggering = FALSE
 		message_admins("[key_name_admin(usr)] cancelled event [name].")

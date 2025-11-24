@@ -164,7 +164,7 @@
 	if(new_mob.client)
 		new_mob.client.change_view(GLOB.world_view_size)
 	new_mob.a_intent = INTENT_HARM
-	to_chat(new_mob, "You feel more... animalistic")
+	to_chat(new_mob, "You feel more... animalistic.")
 
 	qdel(src)
 

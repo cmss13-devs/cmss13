@@ -1586,7 +1586,7 @@
 	switch(mode)
 		if("stun")
 			mode = "lethal"
-			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
+			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode."))
 			strength = "plasma bolt"
 			charge_cost = 100
 			set_fire_delay(FIRE_DELAY_TIER_6 * 3)
@@ -1596,7 +1596,7 @@
 
 		if("lethal")
 			mode = "stun"
-			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
+			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode."))
 			strength = "stun bolts"
 			charge_cost = 30
 			set_fire_delay(FIRE_DELAY_TIER_6)

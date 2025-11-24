@@ -503,7 +503,7 @@ t. optimisticdude
 			to_chat(usr, "Processing...")
 			spawn(60) // runs a timer before the final check.  timer is longer than autopsy timers.
 				if(!active)
-					to_chat(usr, "System Reset completed")
+					to_chat(usr, "System Reset completed.")
 					resetting = 0
 
 /obj/item/tool/surgery/WYautopsy/attack(mob/living/carbon/xenomorph/T as mob, mob/living/user as mob)
@@ -519,7 +519,7 @@ t. optimisticdude
 		to_chat(usr, "Nope.")
 		return
 	if(active)
-		to_chat(usr, "Your already performing an autopsy")
+		to_chat(usr, "Your already performing an autopsy.")
 		return
 	if(istype(T, /mob/living/carbon/xenomorph/larva))
 		to_chat(usr, "It's too young... (This will be in a future update)")
@@ -542,9 +542,9 @@ t. optimisticdude
 		if(0)
 			spawn(50)
 				if(CHECK != user.loc)
-					to_chat(usr, "This is difficult, you probably shouldn't move")
+					to_chat(usr, "This is difficult, you probably shouldn't move.")
 					return
-				to_chat(usr, "You've cut through the outer layers of Chitin")
+				to_chat(usr, "You've cut through the outer layers of Chitin.")
 				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				T.butchery_progress++

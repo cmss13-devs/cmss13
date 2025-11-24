@@ -1782,7 +1782,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(user.client.prefs.toggle_prefs & TOGGLE_AMMO_DISPLAY_TYPE && gun_firemode == GUN_FIREMODE_SEMIAUTO && current_mag.current_rounds % 5 != 0 && current_mag.current_rounds > 15)
 			return
 		var/chambered = in_chamber ? TRUE : FALSE
-		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
+		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING."))
 
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
 /obj/item/weapon/gun/proc/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, reflex = 0, dual_wield = 0)

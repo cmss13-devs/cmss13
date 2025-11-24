@@ -31,13 +31,13 @@ Gunshots/explosions/opening doors/less rare audio (done)
 		switch(halpick)
 			if(0 to 15)
 				//Screwy HUD
-				//to_chat(src, "Screwy HUD")
+				//to_chat(src, "Screwy HUD.")
 				hal_screwyhud = pick(1,2,3,3,4,4)
 				spawn(rand(100,250))
 					hal_screwyhud = 0
 			if(16 to 25)
 				//Strange items
-				//to_chat(src, "Traitor Items")
+				//to_chat(src, "Traitor Items.")
 				if(!halitem)
 					halitem = new
 					var/datum/custom_hud/ui_datum = GLOB.custom_huds_list[client.prefs.UI_style]
@@ -122,7 +122,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 			if(41 to 65)
 				//Strange audio
-				//to_chat(src, "Strange Audio")
+				//to_chat(src, "Strange Audio.")
 				switch(rand(1,12))
 					if(1)
 						src << 'sound/machines/airlock.ogg'

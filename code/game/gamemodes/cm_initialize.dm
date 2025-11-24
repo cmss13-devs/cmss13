@@ -485,6 +485,8 @@ Additional game mode variables.
 		var/min_time = instant_join ? 0 : XENO_AVAILABLE_TIMER
 		if(required_leave_time - cur_xeno.away_timer > min_time)
 			continue
+		if(isfacehugger(cur_xeno) || islesserdrone(cur_xeno))
+			continue
 		available_xenos += cur_xeno
 
 	if(!instant_join)

@@ -172,14 +172,14 @@
 /datum/surgery_step/mend_eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(target.sdisabilities & DISABILITY_BLIND)
 		user.affected_message(target,
-			SPAN_WARNING("You begin to repair the damaged blood vessels, mend the optic nerves and reattach the retinas in [target]'s eyeballs with \the [tool]."),
-			SPAN_WARNING("[user] begins to repair the damaged blood vessels, mend the optic nerves and reattach the retinas in your eyeballs with \the [tool]."),
-			SPAN_WARNING("[user] begins to repair the damaged blood vessels, mend the optic nerves and reattach the retinas [target]'s eyeballs with \the [tool]."))
+			SPAN_WARNING("You begin to repair the damaged blood vessels, mend the optic nerves, and reattach the retinas in [target]'s eyeballs with \the [tool]."),
+			SPAN_WARNING("[user] begins to repair the damaged blood vessels, mend the optic nerves, and reattach the retinas in your eyeballs with \the [tool]."),
+			SPAN_WARNING("[user] begins to repair the damaged blood vessels, mend the optic nerves, and reattach the retinas in [target]'s eyeballs with \the [tool]."))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("You begin to repair the damaged blood vessels in [target]'s eyeballs with \the [tool]."),
-			SPAN_WARNING("[user] begins to repair the damaged blood vessels in your eyeballs with \the [tool]."),
-			SPAN_WARNING("[user] begins to repair the damaged blood vessels, mend the optic nerves and reattach the retinas [target]'s eyeballs with \the [tool]."))
+			SPAN_WARNING("You begin to repair the damaged blood vessels and nerves in [target]'s eyeballs with \the [tool]."),
+			SPAN_WARNING("[user] begins to repair the damaged blood vessels and nerves in your eyeballs with \the [tool]."),
+			SPAN_WARNING("[user] begins to repair the damaged blood vessels and nerves in [target]'s eyeballs with \the [tool]."))
 
 	target.custom_pain("The [tool] moving around in your eyeballs is painful and feels bizarre!",1)
 	log_interact(user, target, "[key_name(user)] begins to mend the nerves, lenses, and retinas in [key_name(target)]'s eyeballs with \the [tool].")

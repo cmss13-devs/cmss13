@@ -303,10 +303,10 @@
  */
 
 /obj/item/tool/surgery/FixOVein
-	name = "Fix-O'Vein"
+	name = "\improper Fix-O'Vein"
 	icon_state = "fixovein"
-	desc = "A recently-developed surgical tool used to repair broken blood vessels by secreting a membrane of synthetic connective tissue to provide a framework for the blood vessel until it naturally repairs itself. The substance can also be used to reconnect other tissues, in a pinch. Since it operates on a cellular level, it is practically infinite."
-
+	desc = "A surgical tool used to repair broken blood vessels. The tool can also be used to reconnect other ligaments and tissues in a pinch."
+	desc_lore = "A recently-developed surgical tool used to repair broken blood vessels by secreting a membrane of synthetic connective tissue to provide a framework for the blood vessel until it naturally repairs itself. The membrane it secrets can also be used to reconnect other ligaments and tissues. Since it operates on a cellular level, it is practically infinite."
 	force = 0
 	throwforce = 1
 	matter = list("plastic" = 5000)
@@ -324,7 +324,7 @@
  */
 
 /obj/item/tool/surgery/surgical_line
-	name = "\proper surgical line"
+	name = "surgical line"
 	desc = "A roll of military-grade surgical line, able to seamlessly sew up any wound. Also works as a robust fishing line for maritime deployments."
 	icon_state = "line_brute"
 	item_state = "line_brute"

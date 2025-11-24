@@ -427,7 +427,7 @@
 		return
 
 	//unsalved burns do not heal by chems below a certain threshold
-	if((chemical || !is_salved()) && (status & (LIMB_THIRD_DEGREE_BURNS|LIMB_ESCHAR)))
+	if(status & (LIMB_THIRD_DEGREE_BURNS|LIMB_ESCHAR))
 		burn = clamp(burn_dam - burn_healing_threshold, 0, burn)
 
 	//Heal damage on the individual wounds

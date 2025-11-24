@@ -11,7 +11,7 @@
 	var/name = "surgery"
 	///When initiating surgeries, this defines their order when listed in initiation selector or 'you can't use this tool for anything, but could x, y, or z' messages.
 	var/priority = SURGERY_PRIORITY_MODERATE
-	var/desc = "Surgery description."
+	var/desc = "surgery description"
 	///List of steps in the surgery.
 	var/list/steps = list()
 	/**List of possible locations the surgery can be performed on. This is target zones: DEFENSE_ZONES_LIVING lists all options. ALL_LIMBS doesn't include eyes/mouth.

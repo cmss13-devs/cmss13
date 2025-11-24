@@ -33,7 +33,7 @@
 
 /datum/surgery_step/remove_bone_chips
 	name = "Remove Embedded Bone Chips"
-	desc = "Remove the shards of bone."
+	desc = "remove the shards of bone"
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 
@@ -82,7 +82,7 @@
 
 /datum/surgery_step/treat_hematoma
 	name = "Treat Hematoma"
-	desc = "Repair the hematoma."
+	desc = "repair the hematoma"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
 

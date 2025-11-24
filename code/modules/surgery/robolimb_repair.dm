@@ -23,7 +23,7 @@
 
 /datum/surgery_step/recalibrate_prosthesis
 	name = "Recalibrate Prosthesis"
-	desc = "Recalibrate the prosthesis."
+	desc = "recalibrate the prosthesis"
 	accept_hand = TRUE
 	time = 2.5 SECONDS
 	tools = SURGERY_TOOLS_PINCH

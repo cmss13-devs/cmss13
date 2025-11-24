@@ -193,7 +193,7 @@
 		var/gen_value
 		var/properties_buff = rand(3, 4)
 		if(gen_tier == 2)
-			properties_buff = 2
+			properties_buff -= 2
 		///do we have a rare property in a low quality paper. In which case every other property will be negative.
 		var/specific_property = "none"
 		for(var/i in 1 to gen_tier+properties_buff)

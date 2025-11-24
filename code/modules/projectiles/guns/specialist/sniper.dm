@@ -242,8 +242,8 @@
 				blocked = TRUE
 				break
 
-		for(var/obj/effect/particle_effect/smoke/S in T)
-			if(!S.obscuring)
+		for(var/obj/effect/particle_effect/smoke/smoke in T)
+			if(!smoke.obscuring)
 				continue
 			blocked = TRUE
 			break

@@ -72,7 +72,7 @@
 
 /obj/effect/particle_effect/smoke/Crossed(atom/movable/moveable)
 	..()
-	if(istype(moveable, /obj/projectile/beam))
+	if(istype(moveable, /obj/projectile/beam) && obscuring)
 		var/obj/projectile/beam/beam = moveable
 		beam.damage /= 2
 	if(iscarbon(moveable))

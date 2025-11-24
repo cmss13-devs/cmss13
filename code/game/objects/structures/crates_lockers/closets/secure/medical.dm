@@ -169,7 +169,7 @@
 
 /obj/structure/closet/secure_closet/surgical/emergency
 	name = "emergency surgical equipment cabinet"
-	desc = "A hyper-safe, self-sterilizing, wall-mounted cabinet containing extra surgical beds, surgical webbing vests, and portable dialysis machines for doctors who suddenly need to evacuate the medical bay but are still in active duty on the ship. It only unlocks itself for doctors during hijack evacuations or last stands."
+	desc = "A hyper-safe, self-sterilizing, wall-mounted cabinet containing extra surgical beds, surgical webbing vests, and portable dialysis machines for doctors who suddenly need to evacuate the medical bay but are still in active duty on the ship. It only unlocks itself during Code Delta."
 	icon_state = "e-surgical_wall_locked"
 	icon_closed = "e-surgical_wall_unlocked"
 	icon_locked = "e-surgical_wall_locked"
@@ -202,7 +202,7 @@
 /obj/structure/closet/secure_closet/surgical/emergency/togglelock(mob/living/user)
 	if(hijack == FALSE)
 		if(user.job in JOB_DOCTOR_ROLES_LIST) //Nobody can open this if hijack == FALSE.
-			to_chat(user, SPAN_WARNING("As medical staff, you may only toggle this lock during a hijack evacuation or a last stand."))
+			to_chat(user, SPAN_WARNING("As medical staff, you may only toggle this lock during Code Delta."))
 		else
 			to_chat(user, SPAN_WARNING("You do not have access."))
 	else

@@ -1,9 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - rscadd: "Adds dylovene and peridaxon autoinjectors to vends and first aid kits."
-  - qol: "Chemicals, when scanned, now have more detailed descriptions and OD limits."
-  - qol: "Adds some maptext labels, descriptions, and names to some autoinjectors"
-  - bugfix: "fixes autoinjector overlays, fixed the contents of oxygen kits to have pill bottles instead of pills."
-  - code_imp: "Changed the way autoinjectors display their overlays to correctly display their reagents' hex colors."
-  - imageadd: "Adds overlays for autoinjectors."

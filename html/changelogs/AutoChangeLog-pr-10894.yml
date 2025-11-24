@@ -1,0 +1,4 @@
+author: "kalazus"
+delete-after: True
+changes:
+  - bugfix: "Prevents xenos from moving bodies in broken vehicles by dropping them."

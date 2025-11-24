@@ -38,7 +38,7 @@
 
 	var/failed_attempts = 0 //safety for if a recipe can not be found
 	//pick components
-	var/desired_amount_of_chems = rand(3, max(min(gen_tier*2, 5),3))
+	var/desired_amount_of_chems = rand(3, max(min(gen_tier*2, 4),3))
 	var/list/cache_reagents_to_add = required_reagents_to_add
 	for(var/i = 1, i <= desired_amount_of_chems, i++)
 		if(i >= 2) //only the first component should have a modifier higher than 1

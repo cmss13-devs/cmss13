@@ -1,7 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - bugfix: "Properly adds the smaller mop bucket to the autholathe"
-  - balance: "Janitorial buckets are now considered large items, volume reduced from 500u to 300u"
-  - balance: "High-cap beaker medilathe costs are increased from 10000 to 30000, volume increased from 300u to 500u"
-  - balance: "OT has had their buckets replaced with high-cap beakers and OT and research gets one extra high-cap beakers within their respective offices"

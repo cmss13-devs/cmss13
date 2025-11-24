@@ -1,7 +1,6 @@
 //For closing an open incision first.
 /datum/surgery/suture_incision
 	name = "Suture Incision"
-	desc = "Sew the incision shut."
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 	required_surgery_skill = SKILL_SURGERY_NOVICE
@@ -14,7 +13,7 @@
 
 /datum/surgery_step/suture_incision
 	name = "Suture Incision"
-	desc = "Suture the incision."
+	desc = "suture the incision"
 	tools = SURGERY_TOOLS_SUTURE
 	//Suturing incisions closed is distinctly faster than cauterise-swaphand-suture, but slower than cautery alone, meaning it's only better if wanting to both close and suture the incision.
 	time = 3.5 SECONDS

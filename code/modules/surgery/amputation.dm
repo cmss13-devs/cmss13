@@ -6,7 +6,6 @@
 //Sever a limb cleanly.
 /datum/surgery/amputate
 	name = "Amputation"
-	desc = "Sever a limb cleanly."
 	priority = SURGERY_PRIORITY_LOW
 	possible_locs = EXTREMITY_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
@@ -22,7 +21,6 @@
 //Mend the stump left by a traumatic amputation. Can be performed by medics/nurses. Torn-off limbs should bleed heavily.
 /datum/surgery/amputate/repair
 	name = "Repair Traumatic Amputation Stump"
-	desc = "Mend the stump left by a traumatic amputation."
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = EXTREMITY_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
@@ -40,7 +38,6 @@
 //Mend the stump left by a traumatic amputation of a prosthetic. Needs a doctor, prosthetics are hard.
 /datum/surgery/amputate/repair/robot
 	name = "Remove Prosthetic Stump"
-	desc = "Mend the stump left by a traumatic amputation of a prosthetic."
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(
 		/datum/surgery_step/sever_prosthetic_clamps,
@@ -53,7 +50,7 @@
 
 /datum/surgery_step/cut_muscle
 	name = "Cut Muscular Tissue"
-	desc = "Sever the muscular tissue's connections from the bone."
+	desc = "sever the muscular tissue's connections from the bone"
 	tools = SURGERY_TOOLS_INCISION
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
@@ -101,7 +98,7 @@
 
 /datum/surgery_step/abort_amputation
 	name = "Reconnect Muscular Tissue (Surgery Abort)"
-	desc = "Reconnect the muscles and abort the amputation."
+	desc = "reconnect muscles and abort the amputation"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
 	preop_sound = 'sound/surgery/suture1.ogg'
@@ -147,7 +144,7 @@
 
 /datum/surgery_step/saw_off_limb
 	name = "Sever Bone"
-	desc = "Cut off the limb."
+	desc = "cut off a limb"
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 6 SECONDS
 	///Tools which cannot instantly hack off a limb when amputating. Bayonet is for sawing, butcher/hatchet are smaller substitutes for machete/fire axe.
@@ -221,7 +218,7 @@
 
 /datum/surgery_step/carve_amputation
 	name = "Remove Excess Flesh"
-	desc = "Cut excess flesh from the stump."
+	desc = "cut any excess flesh away from the stump"
 	tools = SURGERY_TOOLS_INCISION
 	time = 3 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
@@ -262,7 +259,7 @@
 
 /datum/surgery_step/close_ruptured_veins
 	name = "Close Ruptured Veins"
-	desc = "Mend the torn blood vessels."
+	desc = "mend any torn blood vessels"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
@@ -310,7 +307,7 @@
 
 /datum/surgery_step/close_amputation
 	name = "Seal Stump"
-	desc = "Stitch the stump closed."
+	desc = "stitch a stump closed"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
 	preop_sound = 'sound/surgery/suture1.ogg'
@@ -353,7 +350,7 @@
 
 /datum/surgery_step/sever_prosthetic_clamps
 	name = "Sever Damaged Prosthetic Clamps"
-	desc = "Cut through the jammed clamps holding the prosthesis' stump on."
+	desc = "cut through the jammed clamps holding the prosthesis' stump on"
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/saw.ogg'
@@ -391,7 +388,7 @@
 
 /datum/surgery_step/remove_old_prosthetic
 	name = "Remove Damaged Prosthetic"
-	desc = "Remove the damaged prosthesis."
+	desc = "remove the damaged prosthesis"
 	accept_hand = TRUE
 	time = 3 SECONDS
 	preop_sound = 'sound/handling/armorequip_2.ogg'

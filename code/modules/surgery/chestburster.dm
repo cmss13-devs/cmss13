@@ -6,7 +6,6 @@
 
 /datum/surgery/chestburster_removal
 	name = "Experimental Xenomorph Parasite Removal"
-	desc = "Remove an undeveloped xenomorph larva from the patient's chest."
 	priority = SURGERY_PRIORITY_MAXIMUM
 	possible_locs = list("chest")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
@@ -27,7 +26,7 @@
 
 /datum/surgery_step/cut_larval_pseudoroots
 	name = "Cut Larval Pseudoroots"
-	desc = "Sever the xenomorph larva's pseudoroots connected to the host."
+	desc = "sever the larva's pseudoroots"
 	//Similar to INCISION, but including the PICT also. Using the PICT prevents acid spray.
 	tools = list(
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_IDEAL,
@@ -114,7 +113,7 @@
 
 /datum/surgery_step/remove_larva
 	name = "Remove Larva"
-	desc = "Extract the xenomorph larva."
+	desc = "extract the xenomorph larva"
 	accept_hand = TRUE
 	/*Using the hands to forcefully rip out the larva will be faster at the cost of damaging both the doctor and the patient, with the addition of organ damage.
 	Unlike before, the hemostat is now the best tool for removing removing the larva, as opposed to wirecutters and the fork.*/

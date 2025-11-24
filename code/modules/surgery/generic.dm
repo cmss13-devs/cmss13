@@ -485,7 +485,7 @@
 //This step can be skipped, and ends the surgery when completed. In rib-opening surgery, it can be skipped to abort the operation.
 //In rib-closing surgery, it can be skipped to finish closing the ribcage, or completed to abort the operation.
 /datum/surgery_step/open_encased_step
-	name = "Open Bone"
+	name = "Pry Bone Open"
 	desc = "Prise the ribcage or skull open."
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS

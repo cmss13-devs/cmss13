@@ -2,7 +2,6 @@
 
 /datum/surgery/xenomorph
 	name = "Experimental Harvesting Surgery"
-	desc = "Harvest organs from an organism."
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	possible_locs = list("head")
@@ -81,7 +80,7 @@
 
 /datum/surgery_step/xenomorph/open_exoskeleton
 	name = "Pry Exoskeleton Open"
-	desc = "Open the exoskeleton in the incision."
+	desc = "open the exoskeleton in the incision"
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -126,7 +125,7 @@
 
 /datum/surgery_step/xenomorph/severe_connections
 	name = "Sever Organ Connections"
-	desc = "Detach tubes and connections from organ."
+	desc = "detach tubes and connections from an organ"
 	tools = list(
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/surgery/scalpel/pict_system = SURGERY_TOOL_MULT_IDEAL,
@@ -177,7 +176,7 @@
 
 /datum/surgery_step/xenomorph/remove_organ
 	name = "Remove Xenomorph Organ"
-	desc = "Grab hold of the organ and pull it out."
+	desc = "pull an organ out"
 	accept_hand = TRUE
 	tools = list(
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,

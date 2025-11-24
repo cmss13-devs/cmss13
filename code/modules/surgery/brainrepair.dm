@@ -5,7 +5,6 @@
 
 /datum/surgery/brain_repair
 	name = "Brain Repair Surgery"
-	desc = "Removing hematomas in the brain."
 	possible_locs = list("head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -34,7 +33,7 @@
 
 /datum/surgery_step/remove_bone_chips
 	name = "Remove Embedded Bone Chips"
-	desc = "Remove the shards of bone from the brain."
+	desc = "remove the shards of bone from the brain"
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/hemostat2.ogg'
@@ -91,7 +90,7 @@
 
 /datum/surgery_step/treat_hematoma
 	name = "Treat Hematoma"
-	desc = "Repair the hematoma."
+	desc = "repair the hematoma"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
 

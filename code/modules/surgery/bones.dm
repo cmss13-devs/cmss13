@@ -6,7 +6,6 @@
 
 /datum/surgery/bone_repair
 	name = "Bone Repair Surgery"
-	desc = "Repair broken bones."
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 	required_surgery_skill = SKILL_SURGERY_TRAINED

@@ -5,7 +5,6 @@
 
 /datum/surgery/prosthetical_replacement
 	name = "Attach Prosthetic Limb"
-	desc = "Attach a prosthetic limb to a patient who lost their organic one."
 	steps = list(
 		/datum/surgery_step/connect_prosthesis,
 		/datum/surgery_step/strenghten_prosthesis_connection,
@@ -22,7 +21,7 @@
 
 /datum/surgery_step/connect_prosthesis
 	name = "Connect Prosthesis"
-	desc = "Attach a prosthesis to the stump."
+	desc = "attach a prosthesis to the stump"
 	tools = list(/obj/item/robot_parts = SURGERY_TOOL_MULT_IDEAL)
 	time = 2 SECONDS
 	preop_sound = 'sound/handling/armorequip_1.ogg'
@@ -72,7 +71,7 @@
 
 /datum/surgery_step/strenghten_prosthesis_connection
 	name = "Tighten Prosthesis' Connections"
-	desc = "Tighten the prosthesis' connections to the stump."
+	desc = "tighten the prosthesis' connections to the stump"
 	accept_hand = TRUE
 	time = 3 SECONDS
 	tools = SURGERY_TOOLS_PINCH
@@ -115,7 +114,7 @@
 
 /datum/surgery_step/calibrate_prosthesis
 	name = "Calibrate Prosthesis"
-	desc = "Calibrate the prosthesis."
+	desc = "calibrate the prosthesis"
 	accept_hand = TRUE
 	time = 2.5 SECONDS
 	tools = SURGERY_TOOLS_PINCH

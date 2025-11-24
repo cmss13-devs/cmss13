@@ -6,7 +6,6 @@ and organ transplant code which may come in handy in future but haven't been edi
 
 /datum/surgery/organ_repair
 	name = "Organ Rejuvenation Surgery"
-	desc = "Repairs damaged internal organs in the chest."
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = list("chest")
 	invasiveness = list(SURGERY_DEPTH_DEEP)

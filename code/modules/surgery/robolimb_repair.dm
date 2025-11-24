@@ -5,7 +5,6 @@
 
 /datum/surgery/prosthetic_recalibration
 	name = "Recalibrate Prosthetic Limb"
-	name = "Recalibrate the connections and mechanics so the owner may move their prosthesis."
 	steps = list(/datum/surgery_step/recalibrate_prosthesis)
 	possible_locs = EXTREMITY_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
@@ -24,7 +23,7 @@
 
 /datum/surgery_step/recalibrate_prosthesis
 	name = "Recalibrate Prosthesis"
-	desc = "Recalibrate the prosthesis."
+	desc = "recalibrate the prosthesis"
 	accept_hand = TRUE
 	time = 2.5 SECONDS
 	tools = SURGERY_TOOLS_PINCH

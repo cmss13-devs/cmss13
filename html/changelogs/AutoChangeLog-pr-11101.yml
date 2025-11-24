@@ -1,0 +1,5 @@
+author: "Zenith, dimdimich1996"
+delete-after: True
+changes:
+  - imageadd: "added three new pod door style sprites."
+  - maptweak: "tweaked the various maps with the escape pod doors - added new escape pod doors to them and minor floor tile changes."

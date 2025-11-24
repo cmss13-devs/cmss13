@@ -546,6 +546,6 @@
 	amount_per_transfer_from_this = 10
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large //haven't seen anyone use this yet.
-	name = "reagent canister pouch autoinjector (30u)
+	name = "reagent canister pouch autoinjector (30u)"
 	volume = 180
 	amount_per_transfer_from_this = 30

@@ -413,23 +413,30 @@
 								patient.disabilities |= NEARSIGHTED // code\#define\mobs.dm
 
 							if(eye.eye_surgery_stage == 1)
-								sleep(RETRACTOR_MAX_DURATION)
+								sleep(HEMOSTAT_MAX_DURATION)
 								if(!surgery)
 									break
 								eye.eye_surgery_stage = 2
 
 							if(eye.eye_surgery_stage == 2)
-								sleep(HEMOSTAT_MAX_DURATION)
+								sleep(RETRACTOR_MAX_DURATION)
 								if(!surgery)
 									break
 								eye.eye_surgery_stage = 3
 
 							if(eye.eye_surgery_stage == 3)
+								sleep(FIXVEIN_MAX_DURATION)
+								if(!surgery)
+									break
+								eye.eye_surgery_stage = 3
+
+							if(eye.eye_surgery_stage == 4)
 								sleep(CAUTERY_MAX_DURATION)
 								if(!surgery)
 									break
 								patient.disabilities &= ~NEARSIGHTED
 								patient.sdisabilities &= ~DISABILITY_BLIND
+								patient.pain.recalculate_pain()
 								eye.heal_damage(eye.damage)
 								eye.eye_surgery_stage = 0
 					if("larva")
@@ -540,6 +547,7 @@
 						patient.update_body()
 						patient.updatehealth()
 						patient.UpdateDamageIcon()
+						patient.pain.recalculate_pain()
 
 					if("shrapnel")
 						if(prob(30))
@@ -613,6 +621,7 @@
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
 		if(!surgery)
 			return
+		target.pain.recalculate_pain()
 		limb.reset_limb_surgeries()
 		limb.remove_all_bleeding(TRUE)
 		target.updatehealth()

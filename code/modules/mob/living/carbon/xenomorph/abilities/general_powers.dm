@@ -251,7 +251,14 @@
 	if(!SSmapping.same_z_map(target.z, xeno_owner.z))
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
+
+	var/build_on_design = FALSE
+	var/turf/target_turf = get_turf(target)
+	if(target_turf)
+		for(var/obj/effect/alien/resin/design/target_design in target_turf)
+			build_on_design = TRUE
 	apply_cooldown()
+
 	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
 			if(xeno_cooldown)
@@ -261,6 +268,10 @@
 			if(xeno_cooldown)
 				apply_cooldown_override(xeno_cooldown_fail)
 			return FALSE
+		if(SECRETE_RESIN_SUCCESS)
+			if(build_on_design)
+				apply_cooldown_override()
+			return TRUE
 	return TRUE
 
 // leader Marker

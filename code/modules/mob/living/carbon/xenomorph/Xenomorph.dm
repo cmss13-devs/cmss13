@@ -314,11 +314,13 @@
 
 	/// the typepath of the designer placeable we wanna put down.
 	var/obj/effect/alien/resin/design/selected_design = null
-	/// List of available design marks for this xeno.
+	/// List of available design marks for this designer.
 	var/list/available_design = list()
-	/// Stores the current design nodes placed by the xeno.
+	/// Stores the current design nodes placed by designer.
 	var/list/current_design = list()
-	/// Maximum design nodes the xeno can place.
+	// Stores the current acid pillars placed by designer.
+	var/list/current_acid_pillars = list()
+	/// Maximum design nodes designer can place.
 	var/max_design_nodes = 0
 	/// Currently selected design mark to place
 	var/selected_design_mark
@@ -935,11 +937,11 @@
 	recalculate_tackle()
 
 /mob/living/carbon/xenomorph/proc/recalculate_tackle()
-	tackle_min = caste.tackle_min + tackle_min_modifier
-	tackle_max = caste.tackle_max + tackle_max_modifier
+	tackle_min = caste.tackle_min
+	tackle_max = caste.tackle_max
 	tackle_chance = caste.tackle_chance + tackle_chance_modifier
-	tacklestrength_min = caste.tacklestrength_min
-	tacklestrength_max = caste.tacklestrength_max
+	tacklestrength_min = caste.tacklestrength_min + tacklestrength_min_modifier
+	tacklestrength_max = caste.tacklestrength_max + tacklestrength_max_modifier
 
 /mob/living/carbon/xenomorph/proc/recalculate_health()
 	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health

@@ -84,7 +84,7 @@
 		SPAN_NOTICE("[user] begins to apply and seal a graft over the exposed skin on [target]'s [surgery.affected_limb.display_name] with [toolname]."))
 
 	target.custom_pain("Your exposed skin feels tender as [user] presses on it! Ouch!", 1)
-	log_interact(user, target, "[key_name(user)] begins to apply and seal a graft over the exposed skin on [key_name(target)]'s [surgery.affected_limb.display_name] with [toolname].")
+	log_interact(user, target, "[key_name(user)] begins to apply and seal a graft over the exposed skin on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
 /datum/surgery_step/graft_exposed_flesh/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
 	if(istype(tool, /obj/item/stack/medical)) //uses 1 stack of ointment/burnpack but not synthgraft, very important.

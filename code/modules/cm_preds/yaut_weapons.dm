@@ -1781,7 +1781,7 @@
 	default_ammo = /datum/ammo/arrow
 
 /obj/item/arrow
-	name = "arrow"
+	name = "inert arrow"
 	w_class = SIZE_SMALL
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "arrow"
@@ -1793,28 +1793,40 @@
 	unacidable = TRUE
 
 	var/activated = FALSE
-	var/ammo_datum = /datum/ammo/arrow
+	var/datum/ammo/ammo_datum = /datum/ammo/arrow
+	var/datum/ammo/primary_ammo = /datum/ammo/arrow
+	var/primary_icon_state = "arrow"
+	var/datum/ammo/secondary_ammo = /datum/ammo/arrow/expl
+	var/secondary_icon_state = "arrow_expl"
 
 /obj/item/arrow/expl
-	name = "\improper activated arrow"
+	name = "\improper activated explosive arrow"
 	activated = TRUE
 	icon_state = "arrow_expl"
 	ammo_datum = /datum/ammo/arrow/expl
+
+/obj/item/arrow/emp
+	name = "\improper activated emp arrow"
+	activated = TRUE
+	icon_state = "arrow_emp"
+	ammo_datum = /datum/ammo/arrow/emp
 
 /obj/item/arrow/attack_self(mob/user)
 	. = ..()
-	if (!isyautja(user))
+	if(!isyautja(user))
 		to_chat(user, SPAN_NOTICE("You attempt to [activated ? "deactivate" : "activate"] [src], but nothing happens."))
 		return
-	if (activated)
+	if(activated)
 		activated = FALSE
-		icon_state = "arrow"
-		ammo_datum = /datum/ammo/arrow
+		icon_state = primary_icon_state
+		ammo_datum = primary_ammo
+		name = ammo_datum.name
 		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
 		return
 	activated = TRUE
-	icon_state = "arrow_expl"
-	ammo_datum = /datum/ammo/arrow/expl
+	icon_state = secondary_icon_state
+	ammo_datum = secondary_ammo
+	name = ammo_datum.name
 	to_chat(user, SPAN_NOTICE("You activate [src]."))
 
 /obj/item/storage/belt/gun/quiver

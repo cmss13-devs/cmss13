@@ -176,7 +176,7 @@
 		flare_gun_fired_from.last_signal_flare_name = signal_flare.name
 
 /datum/ammo/arrow
-	name = "arrow"
+	name = "inert arrow"
 	ping = null //no bounce off.
 	damage_type = BRUTE
 	icon_state = "arrow"
@@ -224,6 +224,7 @@
 	drop_arrow(get_turf(projectile), projectile)
 
 /datum/ammo/arrow/expl
+	name = "activated explosive arrow"
 	activated = TRUE
 	handful_type = /obj/item/arrow/expl
 	damage_type = BURN
@@ -258,6 +259,29 @@
 	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, get_turf(projectile))
 	smoke.start()
+
+/datum/ammo/arrow/emp
+	name = "activated emp arrow"
+	activated = TRUE
+	handful_type = /obj/item/arrow/emp
+	damage_type = BURN
+	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
+	shrapnel_chance = 0
+
+/datum/ammo/arrow/emp/on_hit_mob(mob/mob,obj/projectile/projectile)
+	empulse(projectile, 4, 10)
+
+/datum/ammo/arrow/emp/on_hit_obj(obj/object,obj/projectile/projectile)
+	empulse(projectile, 4, 10)
+
+/datum/ammo/arrow/emp/on_hit_turf(turf/turf, obj/projectile/projectile)
+	if(turf.density && isturf(projectile.loc))
+		empulse(projectile.loc, 4, 10)
+	else
+		empulse(projectile, 4, 10)
+
+/datum/ammo/arrow/emp/do_at_max_range(obj/projectile/projectile, mob/firer)
+	empulse(projectile, 4, 10)
 
 /datum/ammo/flare/starshell
 	name = "starshell ash"

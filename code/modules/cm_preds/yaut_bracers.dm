@@ -309,7 +309,7 @@
 		. += SPAN_NOTICE("The left bracer attachment is [left_bracer_attachment.attached_weapon].")
 	if(right_bracer_attachment)
 		. += SPAN_NOTICE("The right bracer attachment is [right_bracer_attachment.attached_weapon].")
-	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH) && badblood)
 		. += SPAN_WARNING("This belongs to a bad-blood!")
 
 /obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_invis_sound, new_caster_material, new_owner_rank, new_bracer_material)

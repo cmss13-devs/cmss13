@@ -711,7 +711,7 @@ This function completely restores a damaged organ to perfect condition.
 			heal_amt = round(heal_amt,0.1)
 
 			//unsalved burns do not heal below a certain threshold
-			if(wound.damage_type == BURN && !wound.salved)
+			if(wound.damage_type == BURN)
 				heal_amt = min(max_burn_heal, heal_amt)
 				if(heal_amt <= 0)
 					continue

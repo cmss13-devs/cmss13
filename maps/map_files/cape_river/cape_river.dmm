@@ -20136,11 +20136,6 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/caperiver/indoors/caves/nw)
 "bjC" = (
-/obj/structure/bed/chair/bolted{
-	pixel_x = -1;
-	pixel_y = 16;
-	l_move_time = s
-	},
 /obj/structure/sign/poster/corporate{
 	layer = 2.1;
 	pixel_y = 35;
@@ -20149,6 +20144,10 @@
 /obj/structure/sign/poster/conam{
 	pixel_y = 31;
 	layer = 2.2
+	},
+/obj/structure/bed/chair/bolted{
+	pixel_x = -4;
+	pixel_y = 16
 	},
 /turf/open/floor/green/north,
 /area/caperiver/indoors/conambase/medical)

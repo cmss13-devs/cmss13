@@ -396,9 +396,9 @@
 /obj/structure/prop/invuln/dense/cliff_wall
 	name = "Cliff Wall"
 	desc = "Massive cliff wall, seems impassable."
-	icon = 'icons/obj/structures/props/huge_canyon.dmi'
+	icon = 'icons/obj/structures/props/natural/huge_canyon.dmi'
 	icon_state = "canyon_wall"
-	layer = BIG_XENO_LAYER
+	layer = OBJ_LAYER
 
 /obj/structure/prop/invuln/dense/cliff_wall/alt
 	icon_state = "canyon_wall_alt"
@@ -420,3 +420,52 @@
 
 /obj/structure/prop/invuln/dense/cliff_wall/right_short
 	icon_state = "canyon_wall_short_right"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable
+	icon = 'icons/obj/structures/props/natural/huge_canyon_colorable.dmi'
+	icon_state = "canyon_wall"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/alt
+	icon_state = "canyon_wall_alt"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/short
+	icon_state = "canyon_wall_short"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/short_alt
+	icon_state = "canyon_wall_short_alt"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/left_long
+	icon_state = "canyon_wall_long_left"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/left_short
+	icon_state = "canyon_wall_short_left"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/right_long
+	icon_state = "canyon_wall_long_right"
+
+/obj/structure/prop/invuln/dense/cliff_wall/colorable/right_short
+	icon_state = "canyon_wall_short_right"
+
+// Fake railings
+
+/obj/structure/prop/fake/railing
+	name = "handrail"
+	desc = "A railing, for your hands. Woooow."
+	icon = 'icons/obj/structures/handrail.dmi'
+	icon_state = "handrail_strata"
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = FALSE
+
+/obj/structure/prop/fake/railing/update_icon()
+	overlays.Cut()
+	switch(dir)
+		if(SOUTH)
+			layer = ABOVE_MOB_LAYER
+		if(NORTH)
+			layer = initial(layer) - 0.01
+		else
+			layer = initial(layer)
+
+/obj/structure/prop/fake/railing/strata
+	icon_state = "handrail_strata"

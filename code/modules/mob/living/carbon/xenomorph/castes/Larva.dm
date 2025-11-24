@@ -78,7 +78,8 @@
 		return //xenos on admin z level don't count
 
 	if(away_timer == XENO_LEAVE_TIMER_LARVA - XENO_AVAILABLE_TIMER)
-		to_chat(src, SPAN_ALERTWARNING("You are inactive and will be available to ghosts in [XENO_AVAILABLE_TIMER] second\s!"))
+		to_chat(client, SPAN_ALERTWARNING("You are inactive and will be available to ghosts in [XENO_AVAILABLE_TIMER] second\s!"))
+		playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 /mob/living/carbon/xenomorph/larva/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()

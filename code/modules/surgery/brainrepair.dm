@@ -42,12 +42,12 @@
 
 /datum/surgery_step/remove_bone_chips/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You begin picking chips of bone out of [target]'s brain with \the [tool]."),
-		SPAN_NOTICE("[user] begins picking chips of bone out of your brain with \the [tool]."),
-		SPAN_NOTICE("[user] begins picking chips of bone out of [target]'s brain with \the [tool]."))
+		SPAN_NOTICE("You begin picking chips of bone out of [target]'s brain with [tool]."),
+		SPAN_NOTICE("[user] begins picking chips of bone out of your brain with [tool]."),
+		SPAN_NOTICE("[user] begins picking chips of bone out of [target]'s brain with [tool]."))
 
 	target.custom_pain("You feel [user] picking around your brain! Ow, ouch, owie!", 1)
-	log_interact(user, target, "[key_name(user)] started taking bone chips out of [key_name(target)]'s brain with \the [tool], possibly beginning [surgery]")
+	log_interact(user, target, "[key_name(user)] started taking bone chips out of [key_name(target)]'s brain with [tool], possibly beginning [surgery]")
 
 /datum/surgery_step/remove_bone_chips/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -68,15 +68,15 @@
 	target.jitteriness = 0
 	target.pain.recalculate_pain()
 
-	log_interact(user, target, "[key_name(user)] finished taking bone chips out of [key_name(target)]'s brain with \the [tool], finishing [surgery].")
+	log_interact(user, target, "[key_name(user)] finished taking bone chips out of [key_name(target)]'s brain with [tool], finishing [surgery].")
 
 /datum/surgery_step/remove_bone_chips/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with \the [tool], causing internal bleeding!"),
-		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in your [surgery.affected_limb.display_name] with \the [tool], causing internal bleeding!"),
-		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with \the [tool], causing internal bleeding!"))
+		SPAN_WARNING("Your hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with [tool], causing internal bleeding!"),
+		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in your [surgery.affected_limb.display_name] with [tool], causing internal bleeding!"),
+		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with [tool], causing internal bleeding!"))
 
-	log_interact(user, target, "[key_name(user)] failed to take the bone chips out of [key_name(target)]'s brain with \the [tool], possibly aborting [surgery].")
+	log_interact(user, target, "[key_name(user)] failed to take the bone chips out of [key_name(target)]'s brain with [tool], possibly aborting [surgery].")
 
 	var/datum/wound/internal_bleeding/I = new (0)
 	surgery.affected_limb.add_bleeding(I, TRUE)
@@ -100,12 +100,12 @@
 
 /datum/surgery_step/treat_hematoma/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You begin mending the hematoma in [target]'s brain with \the [tool]."),
-		SPAN_NOTICE("[user] begins to mend the hematoma in your brain with \the [tool]."),
-		SPAN_NOTICE("[user] begins to mend the hematoma in [target]'s brain with \the [tool]."))
+		SPAN_NOTICE("You begin mending the hematoma in [target]'s brain with [tool]."),
+		SPAN_NOTICE("[user] begins to mend the hematoma in your brain with [tool]."),
+		SPAN_NOTICE("[user] begins to mend the hematoma in [target]'s brain with [tool]."))
 
 	target.custom_pain("You can feel [user] messing around with the swelling in your brain! It hurts so much!", 1)
-	log_interact(user, target, "[key_name(user)] started mending a hematoma in [key_name(target)]'s brain with \the [tool].")
+	log_interact(user, target, "[key_name(user)] started mending a hematoma in [key_name(target)]'s brain with [tool].")
 
 /datum/surgery_step/treat_hematoma/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -113,7 +113,7 @@
 		SPAN_NOTICE("[user] finishes mending the hematoma in your brain."),
 		SPAN_NOTICE("[user] finishes mending the hematoma in [target]'s brain."))
 
-	log_interact(user, target, "[key_name(user)] finished mending a hematoma in [key_name(target)]'s brain with \the [tool], beginning [surgery].")
+	log_interact(user, target, "[key_name(user)] finished mending a hematoma in [key_name(target)]'s brain with [tool], beginning [surgery].")
 
 	var/datum/internal_organ/brain/B = target.internal_organs_by_name["brain"]
 	if(B)
@@ -126,11 +126,11 @@
 
 /datum/surgery_step/treat_hematoma/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, bruising [target]'s brain with \the [tool]!"),
-		SPAN_WARNING("[user]'s hand slips, bruising your brain with \the [tool]!"),
-		SPAN_WARNING("[user]'s hand slips, bruising [target]'s brain with \the [tool]!"))
+		SPAN_WARNING("Your hand slips, bruising [target]'s brain with [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, bruising your brain with [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, bruising [target]'s brain with [tool]!"))
 
-	log_interact(user, target, "[key_name(user)] failed to mend the hematoma in [key_name(target)]'s brain with \the [tool], aborting [surgery].")
+	log_interact(user, target, "[key_name(user)] failed to mend the hematoma in [key_name(target)]'s brain with [tool], aborting [surgery].")
 
 	target.apply_damage(15, BRUTE, target_zone)
 	return FALSE

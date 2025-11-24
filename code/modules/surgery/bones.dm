@@ -62,36 +62,36 @@
 	if(surgery.affected_bone)
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,
-				SPAN_NOTICE("You start applying \the [tool] to [target]'s broken [surgery.affected_bone]."),
-				SPAN_NOTICE("[user] starts to apply \the [tool] to your broken [surgery.affected_bone]."),
-				SPAN_NOTICE("[user] starts to apply \the [tool] to [target]'s broken [surgery.affected_bone]."))
+				SPAN_NOTICE("You start applying [tool] to [target]'s broken [surgery.affected_bone]."),
+				SPAN_NOTICE("[user] starts to apply [tool] to your broken [surgery.affected_bone]."),
+				SPAN_NOTICE("[user] starts to apply [tool] to [target]'s broken [surgery.affected_bone]."))
 
 			target.custom_pain("Something stings and feels cold and gooey inside your [surgery.affected_limb.display_name]!", 1)
 		else
 			user.affected_message(target,
-				SPAN_NOTICE("You begin driving reinforcing pins into [target]'s [surgery.affected_bone] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to drive reinforcing pins into your [surgery.affected_bone] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to drive reinforcing pins into [target]'s [surgery.affected_bone] with \the [tool]."))
+				SPAN_NOTICE("You begin driving reinforcing pins into [target]'s [surgery.affected_bone] with [tool]."),
+				SPAN_NOTICE("[user] begins to drive reinforcing pins into your [surgery.affected_bone] with [tool]."),
+				SPAN_NOTICE("[user] begins to drive reinforcing pins into [target]'s [surgery.affected_bone] with [tool]."))
 
 			target.custom_pain("You can feel something grinding in your [surgery.affected_bone]!", 1)
 			playsound(target.loc, 'sound/items/Screwdriver.ogg', 25, TRUE)
 	else
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,
-				SPAN_NOTICE("You start applying \the [tool] to the broken bones in [target]'s [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] starts to apply \the [tool] to the broken bones in your [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] starts to apply \the [tool] to the broken bones in [target]'s [surgery.affected_limb.display_name]."))
+				SPAN_NOTICE("You start applying [tool] to the broken bones in [target]'s [surgery.affected_limb.display_name]."),
+				SPAN_NOTICE("[user] starts to apply [tool] to the broken bones in your [surgery.affected_limb.display_name]."),
+				SPAN_NOTICE("[user] starts to apply [tool] to the broken bones in [target]'s [surgery.affected_limb.display_name]."))
 
 			target.custom_pain("Something stings and feels cold and gooey inside your [surgery.affected_limb.display_name]!", 1)
 		else
 			user.affected_message(target,
-				SPAN_NOTICE("You begin driving reinforcing pins into the broken bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to drive reinforcing pins into the broken bones in your [surgery.affected_limb.display_name] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to drive reinforcing pins into the broken bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+				SPAN_NOTICE("You begin driving reinforcing pins into the broken bones in [target]'s [surgery.affected_limb.display_name] with [tool]."),
+				SPAN_NOTICE("[user] begins to drive reinforcing pins into the broken bones in your [surgery.affected_limb.display_name] with [tool]."),
+				SPAN_NOTICE("[user] begins to drive reinforcing pins into the broken bones in [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 			target.custom_pain("You can feel something grinding in your [surgery.affected_limb.display_name]'s bones!", 1)
 
-	log_interact(user, target, "[key_name(user)] attempted to begin repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
+	log_interact(user, target, "[key_name(user)] attempted to begin repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
 /datum/surgery_step/mend_bones/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	var/improvised_desc = pick("an organlegger", "a DIY enthusiast", "a cryo-preserved 20th Century witch-doctor", "an escaped chimpanzee")
@@ -99,9 +99,9 @@
 	if(surgery.affected_bone)
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,
-				SPAN_NOTICE("You slather \the [tool] on [target]'s broken [surgery.affected_bone]."),
-				SPAN_NOTICE("[user] slathers \the [tool] on your broken [surgery.affected_bone]."),
-				SPAN_NOTICE("[user] slathers \the [tool] on [target]'s broken [surgery.affected_bone]."))
+				SPAN_NOTICE("You slather [tool] on [target]'s broken [surgery.affected_bone]."),
+				SPAN_NOTICE("[user] slathers [tool] on your broken [surgery.affected_bone]."),
+				SPAN_NOTICE("[user] slathers [tool] on [target]'s broken [surgery.affected_bone]."))
 		else
 			user.affected_message(target,
 				SPAN_NOTICE("You crudely reinforce [target]'s [surgery.affected_bone] like [improvised_desc]."),
@@ -110,9 +110,9 @@
 	else
 		if(tool_type == /obj/item/tool/surgery/bonegel)
 			user.affected_message(target,
-				SPAN_NOTICE("You slather \the [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in your [surgery.affected_limb.display_name]."),
-				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."))
+				SPAN_NOTICE("You slather [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."),
+				SPAN_NOTICE("[user] slathers [tool] on the broken bones in your [surgery.affected_limb.display_name]."),
+				SPAN_NOTICE("[user] slathers [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."))
 			user.update_inv_l_hand()
 			user.update_inv_r_hand()
 		else
@@ -121,7 +121,7 @@
 				SPAN_NOTICE("[user] crudely reinforces the bones in your [surgery.affected_limb.display_name] like [improvised_desc]."),
 				SPAN_NOTICE("[user] crudely reinforces the bones in [target]'s [surgery.affected_limb.display_name] like [improvised_desc]."))
 
-	log_interact(user, target, "[key_name(user)] successfully began repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], starting [surgery].")
+	log_interact(user, target, "[key_name(user)] successfully began repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], starting [surgery].")
 
 /datum/surgery_step/mend_bones/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	if(surgery.affected_bone)
@@ -136,7 +136,7 @@
 			SPAN_WARNING("[user]'s hand slips, damaging the bones in [target]'s [surgery.affected_limb.display_name] even more!"))
 
 	target.apply_damage(10, BRUTE, target_zone)
-	log_interact(user, target, "[key_name(user)] failed to begin repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], aborting [surgery].")
+	log_interact(user, target, "[key_name(user)] failed to begin repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], aborting [surgery].")
 
 	if(tool_type != /obj/item/tool/surgery/bonegel)
 		to_chat(user, SPAN_NOTICE("The metal rods used on [target]'s [surgery.affected_limb.display_name] fall loose from their [surgery.affected_limb]."))
@@ -165,27 +165,27 @@
 	switch(surgery.affected_limb.name) //Yet another set of different messages because I just have to be Like This.
 		if("head")
 			user.affected_message(target,
-				SPAN_NOTICE("You begin to piece [target]'s skull together with \the [tool]."),
-				SPAN_NOTICE("[user] begins to piece your skull together with \the [tool]."),
-				SPAN_NOTICE("[user] begins to piece [target]'s skull together with \the [tool]."))
+				SPAN_NOTICE("You begin to piece [target]'s skull together with [tool]."),
+				SPAN_NOTICE("[user] begins to piece your skull together with [tool]."),
+				SPAN_NOTICE("[user] begins to piece [target]'s skull together with [tool]."))
 		if("chest")
 			user.affected_message(target,
-				SPAN_NOTICE("You begin to set [target]'s broken ribs with \the [tool]."),
-				SPAN_NOTICE("[user] begins to set your broken ribs with \the [tool]."),
-				SPAN_NOTICE("[user] begins to set [target]'s broken ribs with \the [tool]."))
+				SPAN_NOTICE("You begin to set [target]'s broken ribs with [tool]."),
+				SPAN_NOTICE("[user] begins to set your broken ribs with [tool]."),
+				SPAN_NOTICE("[user] begins to set [target]'s broken ribs with [tool]."))
 		if("groin")
 			user.affected_message(target,
-				SPAN_NOTICE("You begin to set [target]'s fractured pelvis with \the [tool]."),
-				SPAN_NOTICE("[user] begins to set your fractured pelvis with \the [tool]."),
-				SPAN_NOTICE("[user] begins to set [target]'s fractured pelvis with \the [tool]."))
+				SPAN_NOTICE("You begin to set [target]'s fractured pelvis with [tool]."),
+				SPAN_NOTICE("[user] begins to set your fractured pelvis with [tool]."),
+				SPAN_NOTICE("[user] begins to set [target]'s fractured pelvis with [tool]."))
 		else
 			user.affected_message(target,
-				SPAN_NOTICE("You begin to set the broken bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to set the broken bones in your [surgery.affected_limb.display_name] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to set the broken bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+				SPAN_NOTICE("You begin to set the broken bones in [target]'s [surgery.affected_limb.display_name] with [tool]."),
+				SPAN_NOTICE("[user] begins to set the broken bones in your [surgery.affected_limb.display_name] with [tool]."),
+				SPAN_NOTICE("[user] begins to set the broken bones in [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 	target.custom_pain("You feel your bones in your [surgery.affected_limb.display_name] shifting around! It feels horrible!", 1)
-	log_interact(user, target, "[key_name(user)] attempted to begin setting bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
+	log_interact(user, target, "[key_name(user)] attempted to begin setting bones in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 
 /datum/surgery_step/set_bones/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	if(surgery.affected_bone)
@@ -207,20 +207,20 @@
 	surgery.affected_limb.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
 	surgery.affected_limb.perma_injury = 0
 	target.pain.recalculate_pain()
-	log_interact(user, target, "[key_name(user)] successfully set bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], ending [surgery].")
+	log_interact(user, target, "[key_name(user)] successfully set bones in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 
 /datum/surgery_step/set_bones/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	if(surgery.affected_bone)
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_bone] with \the [tool]!"),
-			SPAN_WARNING("[user]'s hand slips, damaging your [surgery.affected_bone] with \the [tool]!"),
-			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_bone] with \the [tool]!"))
+			SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_bone] with [tool]!"),
+			SPAN_WARNING("[user]'s hand slips, damaging your [surgery.affected_bone] with [tool]!"),
+			SPAN_WARNING("[user]'s hand slips, damaging [target]'s [surgery.affected_bone] with [tool]!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, damaging the bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"),
-			SPAN_WARNING("[user]'s hand slips, damaging the bones in your [surgery.affected_limb.display_name] with \the [tool]!"),
-			SPAN_WARNING("[user]'s hand slips, damaging the bones in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"))
+			SPAN_WARNING("Your hand slips, damaging the bones in [target]'s [surgery.affected_limb.display_name] with [tool]!"),
+			SPAN_WARNING("[user]'s hand slips, damaging the bones in your [surgery.affected_limb.display_name] with [tool]!"),
+			SPAN_WARNING("[user]'s hand slips, damaging the bones in [target]'s [surgery.affected_limb.display_name] with [tool]!"))
 
 	target.apply_damage(10, BRUTE, target_zone)
-	log_interact(user, target, "[key_name(user)] failed to set bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool].")
+	log_interact(user, target, "[key_name(user)] failed to set bones in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
 	return FALSE

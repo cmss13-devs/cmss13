@@ -81,7 +81,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 	if(istype(tool, /obj/item/stack/medical))
 		var/obj/item/stack/medical/packs = tool
 		if(!packs.use(use_stack))
-			to_chat(user, SPAN_BOLDWARNING("You don't have enough of \the [packs] to finish repairing organs!"))
+			to_chat(user, SPAN_BOLDWARNING("You don't have enough of [packs] to finish repairing organs!"))
 			return FALSE
 		else
 			for(var/datum/internal_organ/I as anything in surgery.affected_limb.internal_organs)

@@ -33,16 +33,16 @@
 /datum/surgery_step/incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/scalpel/manager)
 		user.affected_message(target,
-			SPAN_NOTICE("You start to construct a prepared incision in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] starts to construct a prepared incision in your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] starts to construct a prepared incision in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+			SPAN_NOTICE("You start to construct a prepared incision in [target]'s [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] starts to construct a prepared incision in your [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] starts to construct a prepared incision in [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 		target.custom_pain("You feel a horrible, searing pain in your [surgery.affected_limb.display_name] as the flesh is pushed apart!", 1)
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You start to make an incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] starts making an incision on your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] starts making an incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+			SPAN_NOTICE("You start to make an incision on [target]'s [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] starts making an incision on your [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] starts making an incision on [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 		target.custom_pain("You feel a horrible, piercing pain in your [surgery.affected_limb.display_name]!", 1)
 
@@ -60,9 +60,9 @@
 		surgery.status += 2 //IMS completes all steps.
 	else if(tool_type == /obj/item/tool/surgery/scalpel/laser && prob(las_scalpel.bloodlessprob))
 		user.affected_message(target,
-			SPAN_NOTICE("You finish making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] finishes making a bloodless incision on your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] finishes making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+			SPAN_NOTICE("You finish making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] finishes making a bloodless incision on your [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] finishes making a bloodless incision on [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 		surgery.status++ //A laser scalpel may cauterise as it cuts.
 	else
@@ -86,17 +86,17 @@
 	switch(tool_type)
 		if(/obj/item/tool/surgery/scalpel/manager)
 			user.affected_message(target,
-				SPAN_WARNING("Your hand jolts as the system sparks, ripping a gruesome hole in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"),
-				SPAN_WARNING("[user]'s hand jolts as the system sparks, ripping a gruesome hole in your [surgery.affected_limb.display_name] with \the [tool]!"),
-				SPAN_WARNING("[user]'s hand jolts as the system sparks, ripping a gruesome hole in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"))
+				SPAN_WARNING("Your hand jolts as the system sparks, ripping a gruesome hole in [target]'s [surgery.affected_limb.display_name] with [tool]!"),
+				SPAN_WARNING("[user]'s hand jolts as the system sparks, ripping a gruesome hole in your [surgery.affected_limb.display_name] with [tool]!"),
+				SPAN_WARNING("[user]'s hand jolts as the system sparks, ripping a gruesome hole in [target]'s [surgery.affected_limb.display_name] with [tool]!"))
 
 			target.apply_damage(15, BRUTE, target_zone)
 			target.apply_damage(15, BURN, target_zone)
 		if(/obj/item/tool/surgery/scalpel/laser)
 			user.affected_message(target,
-				SPAN_WARNING("Your hand slips as \the [tool]'s blade sputters, searing a long gash in [target]'s [surgery.affected_limb.display_name]!"),
-				SPAN_WARNING("[user]'s hand slips as \the [tool]'s blade sputters, searing a long gash in your [surgery.affected_limb.display_name]!"),
-				SPAN_WARNING("[user]'s hand slips as \the [tool]'s blade sputters, searing a long gash in [target]'s [surgery.affected_limb.display_name]!"))
+				SPAN_WARNING("Your hand slips as [tool]'s blade sputters, searing a long gash in [target]'s [surgery.affected_limb.display_name]!"),
+				SPAN_WARNING("[user]'s hand slips as [tool]'s blade sputters, searing a long gash in your [surgery.affected_limb.display_name]!"),
+				SPAN_WARNING("[user]'s hand slips as [tool]'s blade sputters, searing a long gash in [target]'s [surgery.affected_limb.display_name]!"))
 
 			target.apply_damage(7.5, BRUTE, target_zone)
 			target.apply_damage(12.5, BURN, target_zone)
@@ -152,14 +152,14 @@
 /datum/surgery_step/clamp_bleeders_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type in ligation_tools)
 		user.affected_message(target,
-			SPAN_NOTICE("You begin ligating bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins ligating bleeders in your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins ligating bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+			SPAN_NOTICE("You begin ligating bleeders in [target]'s [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] begins ligating bleeders in your [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] begins ligating bleeders in [target]'s [surgery.affected_limb.display_name] with [tool]."))
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You begin clamping bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to clamp bleeders in your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to clamp bleeders in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+			SPAN_NOTICE("You begin clamping bleeders in [target]'s [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] begins to clamp bleeders in your [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] begins to clamp bleeders in [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is maddening!", 1)
 	log_interact(user, target, "[key_name(user)] began clamping bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly beginning [surgery].")
@@ -236,14 +236,14 @@
 /datum/surgery_step/retract_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(target_zone == "groin")
 		user.affected_message(target,
-			SPAN_NOTICE("You begin prying open the incision and rearranging the organs in [target]'s lower abdomen with \the [tool]."),
-			SPAN_NOTICE("[user] begins to pry open the incision and rearrange the organs in your lower abdomen with \the [tool]."),
-			SPAN_NOTICE("[user] begins to pry open the incision and rearrange the organs in [target]'s lower abdomen with \the [tool]."))
+			SPAN_NOTICE("You begin prying open the incision and rearranging the organs in [target]'s lower abdomen with [tool]."),
+			SPAN_NOTICE("[user] begins to pry open the incision and rearrange the organs in your lower abdomen with [tool]."),
+			SPAN_NOTICE("[user] begins to pry open the incision and rearrange the organs in [target]'s lower abdomen with [tool]."))
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You begin drawing back the skin and tissue around the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins drawing back the skin and tissue around the incision on your [surgery.affected_limb.display_name] with \the [tool]."),
-			SPAN_NOTICE("[user] begins drawing back the skin and tissue around the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+			SPAN_NOTICE("You begin drawing back the skin and tissue around the incision on [target]'s [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] begins drawing back the skin and tissue around the incision on your [surgery.affected_limb.display_name] with [tool]."),
+			SPAN_NOTICE("[user] begins drawing back the skin and tissue around the incision on [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 	target.custom_pain("It feels like the skin on your [surgery.affected_limb.display_name] is on fire as it is being pulled apart!", 1)
 	log_interact(user, target, "[key_name(user)] began retracting skin in [key_name(target)]'s [surgery.affected_limb.display_name].")
@@ -260,25 +260,25 @@
 		if("chest")
 			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 			user.affected_message(target,
-				SPAN_NOTICE("You hold the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]."),
-				SPAN_NOTICE("[user] holds the incision on your [surgery.affected_limb.display_name] open with \the [tool]."),
-				SPAN_NOTICE("[user] holds the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]."))
+				SPAN_NOTICE("You hold the incision on [target]'s [surgery.affected_limb.display_name] open with [tool]."),
+				SPAN_NOTICE("[user] holds the incision on your [surgery.affected_limb.display_name] open with [tool]."),
+				SPAN_NOTICE("[user] holds the incision on [target]'s [surgery.affected_limb.display_name] open with [tool]."))
 		if("head")
 			user.affected_message(target,
-				SPAN_NOTICE("You hold the incision on [target]'s head open with \the [tool], exposing [h_his] skull."),
-				SPAN_NOTICE("[user] holds the incision on your head open with \the [tool], exposing your skull."),
-				SPAN_NOTICE("[user] holds the incision on [target]'s head open with \the [tool], exposing [h_his] skull."))
+				SPAN_NOTICE("You hold the incision on [target]'s head open with [tool], exposing [h_his] skull."),
+				SPAN_NOTICE("[user] holds the incision on your head open with [tool], exposing your skull."),
+				SPAN_NOTICE("[user] holds the incision on [target]'s head open with [tool], exposing [h_his] skull."))
 			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
 		if("groin")
 			user.affected_message(target,
-				SPAN_NOTICE("You hold the incision on [target]'s lower abdomen open with \the [tool], exposing [h_his] viscera."),
-				SPAN_NOTICE("[user] holds the incision on your lower abdomen open with \the [tool], exposing your viscera."),
-				SPAN_NOTICE("[user] holds the incision on [target]'s lower abdomen open with \the [tool], exposing [h_his] viscera."))
+				SPAN_NOTICE("You hold the incision on [target]'s lower abdomen open with [tool], exposing [h_his] viscera."),
+				SPAN_NOTICE("[user] holds the incision on your lower abdomen open with [tool], exposing your viscera."),
+				SPAN_NOTICE("[user] holds the incision on [target]'s lower abdomen open with [tool], exposing [h_his] viscera."))
 		else
 			user.affected_message(target,
-				SPAN_NOTICE("You hold the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]."),
-				SPAN_NOTICE("[user] holds the incision on your [surgery.affected_limb.display_name] open with \the [tool]."),
-				SPAN_NOTICE("[user] holds the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]."))
+				SPAN_NOTICE("You hold the incision on [target]'s [surgery.affected_limb.display_name] open with [tool]."),
+				SPAN_NOTICE("[user] holds the incision on your [surgery.affected_limb.display_name] open with [tool]."),
+				SPAN_NOTICE("[user] holds the incision on [target]'s [surgery.affected_limb.display_name] open with [tool]."))
 
 	log_interact(user, target, "[key_name(user)] retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 
@@ -294,28 +294,28 @@
 		if("head")
 			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
 			user.affected_message(target,
-				SPAN_WARNING("You tear open the incision on [target]'s head with \the [tool], exposing [h_his] skull!"),
-				SPAN_WARNING("[user] holds the incision on your head open with \the [tool], exposing your skull!"),
-				SPAN_WARNING("[user] holds the incision on [target]'s head open with \the [tool], exposing [h_his] skull!"))
+				SPAN_WARNING("You tear open the incision on [target]'s head with [tool], exposing [h_his] skull!"),
+				SPAN_WARNING("[user] holds the incision on your head open with [tool], exposing your skull!"),
+				SPAN_WARNING("[user] holds the incision on [target]'s head open with [tool], exposing [h_his] skull!"))
 
 		if("groin")
 			user.affected_message(target,
-				SPAN_WARNING("You tear open the incision on [target]'s lower abdomen with \the [tool], exposing [h_his] viscera!"),
-				SPAN_WARNING("[user] tears the incision on your lower abdomen open with \the [tool], exposing your viscera!"),
-				SPAN_WARNING("[user] tears the incision on [target]'s lower abdomen open with \the [tool], exposing [h_his] viscera!"))
+				SPAN_WARNING("You tear open the incision on [target]'s lower abdomen with [tool], exposing [h_his] viscera!"),
+				SPAN_WARNING("[user] tears the incision on your lower abdomen open with [tool], exposing your viscera!"),
+				SPAN_WARNING("[user] tears the incision on [target]'s lower abdomen open with [tool], exposing [h_his] viscera!"))
 
 		if("chest")
 			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 			user.affected_message(target,
-				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]!"),
-				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with \the [tool]!"),
-				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]!"))
+				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with [tool]!"),
+				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with [tool]!"),
+				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with [tool]!"))
 
 		else
 			user.affected_message(target,
-				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]!"),
-				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with \the [tool]!"),
-				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]!"))
+				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with [tool]!"),
+				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with [tool]!"),
+				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with [tool]!"))
 
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] violently retracted skin in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
@@ -356,9 +356,9 @@
 
 /datum/surgery_step/cauterize/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You start cauterizing the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_NOTICE("[user] starts to cauterize the incision on your [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_NOTICE("[user] starts to cauterize the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+		SPAN_NOTICE("You start cauterizing the incision on [target]'s [surgery.affected_limb.display_name] with [tool]."),
+		SPAN_NOTICE("[user] starts to cauterize the incision on your [surgery.affected_limb.display_name] with [tool]."),
+		SPAN_NOTICE("[user] starts to cauterize the incision on [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 	target.custom_pain("Your [surgery.affected_limb.display_name] burns!", 1)
 	log_interact(user, target, "[key_name(user)] began cauterizing an incision in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
@@ -435,9 +435,9 @@
 
 /datum/surgery_step/saw_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You begin to cut through [target]'s [surgery.affected_limb.encased] with \the [tool]."),
-		SPAN_NOTICE("[user] begins to cut through your [surgery.affected_limb.encased] with \the [tool]."),
-		SPAN_NOTICE("[user] begins to cut through [target]'s [surgery.affected_limb.encased] with \the [tool]."))
+		SPAN_NOTICE("You begin to cut through [target]'s [surgery.affected_limb.encased] with [tool]."),
+		SPAN_NOTICE("[user] begins to cut through your [surgery.affected_limb.encased] with [tool]."),
+		SPAN_NOTICE("[user] begins to cut through [target]'s [surgery.affected_limb.encased] with [tool]."))
 
 	target.custom_pain("You can feel every vibration and cut in your [surgery.affected_limb.display_name]! It feels terrible!", 1)
 
@@ -494,9 +494,9 @@
 
 /datum/surgery_step/open_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You start forcing [target]'s [surgery.affected_limb.encased] open with \the [tool]."),
-		SPAN_NOTICE("[user] begins to force your [surgery.affected_limb.encased] open with \the [tool]."),
-		SPAN_NOTICE("[user] begins to force [target]'s [surgery.affected_limb.encased] open with \the [tool]."))
+		SPAN_NOTICE("You start forcing [target]'s [surgery.affected_limb.encased] open with [tool]."),
+		SPAN_NOTICE("[user] begins to force your [surgery.affected_limb.encased] open with [tool]."),
+		SPAN_NOTICE("[user] begins to force [target]'s [surgery.affected_limb.encased] open with [tool]."))
 
 	target.custom_pain("It feels as if your [surgery.affected_limb.display_name] is being split in two!", 1)
 	log_interact(user, target, "[key_name(user)] began opening [key_name(target)]'s [surgery.affected_limb.encased], possibly beginning [surgery].")
@@ -506,14 +506,14 @@
 	if(prob(10)) //RNG break chance.
 		surgery.affected_limb.fracture(100)
 		user.affected_message(target,
-			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] cracked after you exposed \his [brain ? "brain" : "vital organs"] with \the [tool]! It wasn't anybody's fault. It happens, rarely."),
-			SPAN_NOTICE("Your [surgery.affected_limb.encased] cracked after [user] exposed your [brain ? "brain" : "vital organs"] with \the [tool]! It wasn't anybody's fault. It happens, rarely."),
-			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] cracked after [user]exposed \his [brain ? "brain" : "vital organs"] with \the [tool]! It wasn't anybody's fault. It happens, rarely."))
+			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] cracked after you exposed \his [brain ? "brain" : "vital organs"] with [tool]! It wasn't anybody's fault. It happens, rarely."),
+			SPAN_NOTICE("Your [surgery.affected_limb.encased] cracked after [user] exposed your [brain ? "brain" : "vital organs"] with [tool]! It wasn't anybody's fault. It happens, rarely."),
+			SPAN_NOTICE("[target]'s [surgery.affected_limb.encased] cracked after [user]exposed \his [brain ? "brain" : "vital organs"] with [tool]! It wasn't anybody's fault. It happens, rarely."))
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You use \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
-			SPAN_NOTICE("[user] uses \the [tool] to hold your [surgery.affected_limb.encased] open, exposing your [brain ? "brain" : "vital organs"]."),
-			SPAN_NOTICE("[user] uses \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."))
+			SPAN_NOTICE("You use [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
+			SPAN_NOTICE("[user] uses [tool] to hold your [surgery.affected_limb.encased] open, exposing your [brain ? "brain" : "vital organs"]."),
+			SPAN_NOTICE("[user] uses [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."))
 	switch(target_zone)
 		if("head")
 			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
@@ -570,9 +570,9 @@
 
 /datum/surgery_step/close_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You start bending [target]'s [surgery.affected_limb.encased] back into place with \the [tool]."),
-		SPAN_NOTICE("[user] starts bending your [surgery.affected_limb.encased] back into place with \the [tool]."),
-		SPAN_NOTICE("[user] starts bending [target]'s [surgery.affected_limb.encased] back into place with \the [tool]."))
+		SPAN_NOTICE("You start bending [target]'s [surgery.affected_limb.encased] back into place with [tool]."),
+		SPAN_NOTICE("[user] starts bending your [surgery.affected_limb.encased] back into place with [tool]."),
+		SPAN_NOTICE("[user] starts bending [target]'s [surgery.affected_limb.encased] back into place with [tool]."))
 
 	target.custom_pain("You feel a crushing pressure in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] began closing [key_name(target)]'s [surgery.affected_limb.encased], attempting to begin [surgery].")
@@ -642,16 +642,16 @@
 /datum/surgery_step/mend_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/bonegel)
 		user.affected_message(target,
-			SPAN_NOTICE("You start applying \the [tool] to [target]'s [surgery.affected_limb.encased]."),
-			SPAN_NOTICE("[user] starts to apply \the [tool] to your [surgery.affected_limb.encased]."),
-			SPAN_NOTICE("[user] starts to apply \the [tool] to [target]'s [surgery.affected_limb.encased]."))
+			SPAN_NOTICE("You start applying [tool] to [target]'s [surgery.affected_limb.encased]."),
+			SPAN_NOTICE("[user] starts to apply [tool] to your [surgery.affected_limb.encased]."),
+			SPAN_NOTICE("[user] starts to apply [tool] to [target]'s [surgery.affected_limb.encased]."))
 
 		target.custom_pain("Something stings and feels cold and gooey in your [surgery.affected_limb.display_name]!", 1)
 	else
 		user.affected_message(target,
-			SPAN_NOTICE("You begin screwing a reinforcing plate to [target]'s [surgery.affected_limb.encased] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to screw a reinforcing plate to your [surgery.affected_limb.encased] with \the [tool]."),
-			SPAN_NOTICE("[user] begins to screw a reinforcing plate to [target]'s [surgery.affected_limb.encased] with \the [tool]."))
+			SPAN_NOTICE("You begin screwing a reinforcing plate to [target]'s [surgery.affected_limb.encased] with [tool]."),
+			SPAN_NOTICE("[user] begins to screw a reinforcing plate to your [surgery.affected_limb.encased] with [tool]."),
+			SPAN_NOTICE("[user] begins to screw a reinforcing plate to [target]'s [surgery.affected_limb.encased] with [tool]."))
 
 		target.custom_pain("You can feel something grinding in your [surgery.affected_limb.encased]!", 1)
 		playsound(target.loc, 'sound/items/Screwdriver.ogg', 25, TRUE)
@@ -724,9 +724,9 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 
 /datum/surgery_step/test_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You start to make an incision on [target]'s [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] starts making an incision on your [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] starts making an incision on [target]'s [parse_zone(target_zone)] with \the [tool]."))
+		SPAN_NOTICE("You start to make an incision on [target]'s [parse_zone(target_zone)] with [tool]."),
+		SPAN_NOTICE("[user] starts making an incision on your [parse_zone(target_zone)] with [tool]."),
+		SPAN_NOTICE("[user] starts making an incision on [target]'s [parse_zone(target_zone)] with [tool]."))
 
 	log_interact(user, target, "[key_name(user)] began making an incision in [key_name(target)]'s [parse_zone(target_zone)].")
 
@@ -824,9 +824,9 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 
 /datum/surgery_step/cauterize/close_test_incision_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You start cauterizing the incision on [target]'s [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] starts to cauterize the incision on your [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] starts to cauterize the incision on [target]'s [parse_zone(target_zone)] with \the [tool]."))
+		SPAN_NOTICE("You start cauterizing the incision on [target]'s [parse_zone(target_zone)] with [tool]."),
+		SPAN_NOTICE("[user] starts to cauterize the incision on your [parse_zone(target_zone)] with [tool]."),
+		SPAN_NOTICE("[user] starts to cauterize the incision on [target]'s [parse_zone(target_zone)] with [tool]."))
 
 	log_interact(user, target, "[key_name(user)] began cauterizing an incision in [key_name(target)]'s [parse_zone(target_zone)], beginning [surgery].")
 

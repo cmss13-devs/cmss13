@@ -65,17 +65,17 @@
 
 /datum/surgery_step/cut_larval_pseudoroots/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You start carefully cutting the larva's pseudoroots away from [target]'s vital organs with \the [tool]."),
-		SPAN_NOTICE("[user] starts to carefully cut the tubes connecting the alien larva to your vital organs with \the [tool]."),
-		SPAN_NOTICE("[user] starts to carefully cut the tubes connecting the alien larva to [target]'s vital organs with \the [tool]."))
+		SPAN_NOTICE("You start carefully cutting the larva's pseudoroots away from [target]'s vital organs with [tool]."),
+		SPAN_NOTICE("[user] starts to carefully cut the tubes connecting the alien larva to your vital organs with [tool]."),
+		SPAN_NOTICE("[user] starts to carefully cut the tubes connecting the alien larva to [target]'s vital organs with [tool]."))
 
 	target.custom_pain("The larva is flailing and struggling in your [surgery.affected_limb.display_name]! It hurts so much!", 1)
-	log_interact(user, target, "[key_name(user)] began cutting the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], attempting to begin [surgery].")
+	log_interact(user, target, "[key_name(user)] began cutting the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], attempting to begin [surgery].")
 
 /datum/surgery_step/cut_larval_pseudoroots/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/scalpel/pict_system)
-		user.visible_message(SPAN_NOTICE("[user] severs the last of the pseudoroots with \the [tool], without spilling any of the larva's acid blood."),
-			SPAN_NOTICE("You sever the last of the pseudoroots with \the [tool], without spilling any of the larva's acid blood."))
+		user.visible_message(SPAN_NOTICE("[user] severs the last of the pseudoroots with [tool], without spilling any of the larva's acid blood."),
+			SPAN_NOTICE("You sever the last of the pseudoroots with [tool], without spilling any of the larva's acid blood."))
 	else
 		user.visible_message(SPAN_WARNING("Pressurised acid sprays everywhere as [user] severs the larva's tubes!"),
 			SPAN_WARNING("As you sever the larva's pseudoroots, acid sprays through the air, pools in [target]'s [surgery.affected_limb.cavity], and spills sizzling across \his organs!"))
@@ -94,11 +94,11 @@
 			var/datum/internal_organ/O = pick(surgery.affected_limb.internal_organs)
 			O.take_damage(5, I == 1)
 
-	log_interact(user, target, "[key_name(user)] cut the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], starting [surgery].")
+	log_interact(user, target, "[key_name(user)] cut the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], starting [surgery].")
 
 /datum/surgery_step/cut_larval_pseudoroots/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips and a jet of acid spurts as \he slices the larva with \the [tool]!"),
-		SPAN_WARNING("Your hand slips and a jet of acid spurts as you slice the larva with \the [tool]!"))
+	user.visible_message(SPAN_WARNING("[user]'s hand slips and a jet of acid spurts as \he slices the larva with [tool]!"),
+		SPAN_WARNING("Your hand slips and a jet of acid spurts as you slice the larva with [tool]!"))
 
 	if(target.stat == CONSCIOUS)
 		to_chat(target, SPAN_HIGHDANGER("Your organs are melting!"))
@@ -106,7 +106,7 @@
 
 	larva_blood_spray(user, target)
 	target.apply_damage(15, BURN, target_zone)
-	log_interact(user, target, "[key_name(user)] failed to cut the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], aborting [surgery].")
+	log_interact(user, target, "[key_name(user)] failed to cut the roots of a larva in [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], aborting [surgery].")
 	return FALSE
 
 //------------------------------------
@@ -130,9 +130,9 @@
 /datum/surgery_step/remove_larva/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool)
 		user.affected_message(target,
-			SPAN_NOTICE("You try to extract the larva from [target]'s chest with \the [tool]."),
-			SPAN_NOTICE("[user] tries to extract the larva from your chest with \the [tool]."),
-			SPAN_NOTICE("[user] tries to extract the larva from [target]'s chest with \the [tool]."))
+			SPAN_NOTICE("You try to extract the larva from [target]'s chest with [tool]."),
+			SPAN_NOTICE("[user] tries to extract the larva from your chest with [tool]."),
+			SPAN_NOTICE("[user] tries to extract the larva from [target]'s chest with [tool]."))
 	else
 		user.affected_message(target,
 			SPAN_NOTICE("You try to forcefully rip the larva from [target]'s chest with your bare hand."),
@@ -185,7 +185,7 @@
 			A.forceMove(target.loc)
 			target.status_flags &= ~XENO_HOST
 
-		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with [tool ? "\the [tool]" : "their hands"], ending [surgery].")
+		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their hands"], ending [surgery].")
 
 /datum/surgery_step/remove_larva/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -199,5 +199,5 @@
 		target.emote("scream")
 	to_chat(target, SPAN_WARNING("Your organs in your chest feel like they're in living hell!"))
 	target.apply_damage(15, BURN, target_zone)
-	log_interact(user, target, "[key_name(user)] failed to remove an embryo from [key_name(target)]'s ribcage with [tool ? "\the [tool]" : "their hands"].")
+	log_interact(user, target, "[key_name(user)] failed to remove an embryo from [key_name(target)]'s ribcage with [tool ? "[tool]" : "their hands"].")
 	return FALSE

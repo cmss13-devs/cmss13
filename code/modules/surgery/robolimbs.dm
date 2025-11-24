@@ -36,17 +36,17 @@
 
 /datum/surgery_step/connect_prosthesis/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/robot_parts/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You begin connecting \the [tool] to the prepared stump of [target]'s [parse_zone(target_zone)]."),
-		SPAN_NOTICE("[user] begins to connect \the [tool] to the prepared stump of your [parse_zone(target_zone)]."),
-		SPAN_NOTICE("[user] begins to connect \the [tool] to the prepared stump of [target]'s [parse_zone(target_zone)]."))
+		SPAN_NOTICE("You begin connecting [tool] to the prepared stump of [target]'s [parse_zone(target_zone)]."),
+		SPAN_NOTICE("[user] begins to connect [tool] to the prepared stump of your [parse_zone(target_zone)]."),
+		SPAN_NOTICE("[user] begins to connect [tool] to the prepared stump of [target]'s [parse_zone(target_zone)]."))
 
 	log_interact(user, target, "[key_name(user)] attempted to begin attaching a prosthesis to [key_name(target)]'s [surgery.affected_limb.display_name].")
 
 /datum/surgery_step/connect_prosthesis/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You replace [target]'s severed [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] replaces your severed [parse_zone(target_zone)] with \the [tool]."),
-		SPAN_NOTICE("[user] replaces [target]'s severed [parse_zone(target_zone)] with \the [tool]."))
+		SPAN_NOTICE("You replace [target]'s severed [parse_zone(target_zone)] with [tool]."),
+		SPAN_NOTICE("[user] replaces your severed [parse_zone(target_zone)] with [tool]."),
+		SPAN_NOTICE("[user] replaces [target]'s severed [parse_zone(target_zone)] with [tool]."))
 
 	to_chat(target, SPAN_NOTICE("You can't move your [parse_zone(target_zone)], but you somehow feel a little better."))
 	surgery.affected_limb.robotize(surgery_in_progress = TRUE, uncalibrated = TRUE, synth_skin = issynth(target))

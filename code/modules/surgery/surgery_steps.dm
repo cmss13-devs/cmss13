@@ -1,7 +1,7 @@
 /datum/surgery_step
 	var/name
 	/**Description of the surgery used for need-different-tool messages,
-	format: (You could/can't )["sever the bone in the patient's limb"]( with \the [tool], or )[next step desc]. Can't refer to outside vars as step datums are global.**/
+	format: (You could/can't )["sever the bone in the patient's limb"]( with [tool], or )[next step desc]. Can't refer to outside vars as step datums are global.**/
 	var/desc
 
 	/**Associative list, tools and their step time multiplier. tools_typecache is assigned from from first to last, so if you have a

@@ -30,9 +30,9 @@ w//////////////////////////////////////////////////////////////////
 
 /datum/surgery_step/fix_vein/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_NOTICE("You start patching the damaged vein in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_NOTICE("[user] starts to patch the damaged vein in your [surgery.affected_limb.display_name] with \the [tool]."),
-		SPAN_NOTICE("[user] starts to patch the damaged vein in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
+		SPAN_NOTICE("You start patching the damaged vein in [target]'s [surgery.affected_limb.display_name] with [tool]."),
+		SPAN_NOTICE("[user] starts to patch the damaged vein in your [surgery.affected_limb.display_name] with [tool]."),
+		SPAN_NOTICE("[user] starts to patch the damaged vein in [target]'s [surgery.affected_limb.display_name] with [tool]."))
 
 	target.custom_pain("The searing pain in your [surgery.affected_limb.display_name] is unbearable!", 1)
 	log_interact(user, target, "[key_name(user)] began repairing internal bleeding in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
@@ -68,9 +68,9 @@ w//////////////////////////////////////////////////////////////////
 			SPAN_WARNING("[user]'s hand slips, smearing [tool] in [target]'s [surgery.affected_limb.display_name]!"))
 	else
 		user.affected_message(target,
-			SPAN_WARNING("Your hand slips, damaging the incision in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"),
-			SPAN_WARNING("[user]'s hand slips, damaging the incision in your [surgery.affected_limb.display_name] with \the [tool]!"),
-			SPAN_WARNING("[user]'s hand slips, damaging the incision in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"))
+			SPAN_WARNING("Your hand slips, damaging the incision in [target]'s [surgery.affected_limb.display_name] with [tool]!"),
+			SPAN_WARNING("[user]'s hand slips, damaging the incision in your [surgery.affected_limb.display_name] with [tool]!"),
+			SPAN_WARNING("[user]'s hand slips, damaging the incision in [target]'s [surgery.affected_limb.display_name] with [tool]!"))
 
 	user.add_blood(target.get_blood_color(), BLOOD_HANDS)
 	target.apply_damage(10, BRUTE, target_zone)

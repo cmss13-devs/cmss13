@@ -671,7 +671,7 @@
 		if(CEILING_UNDERGROUND_METAL_ALLOW_CAS)
 			return "It is underground. The ceiling above is made of thin metal. It will likely stop medevac pickups but not CAS."
 		if(CEILING_UNDERGROUND_METAL_BLOCK_CAS)
-			return "It is underground. The ceiling above is made of metal.  Can probably stop most ordnance."
+			return "It is underground. The ceiling above is made of metal. Can probably stop most ordnance."
 		if(CEILING_DEEP_UNDERGROUND)
 			return "It is deep underground. The cavern roof lies above. Nothing is getting through that."
 		if(CEILING_DEEP_UNDERGROUND_METAL)

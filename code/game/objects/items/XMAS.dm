@@ -81,7 +81,7 @@
 			qdel(src)
 			return
 	else if (fancy <=5)
-		to_chat(M, SPAN_NOTICE("It's fucking EMPTY.  Man, Fuck CM."))
+		to_chat(M, SPAN_NOTICE("It's fucking EMPTY. Man, Fuck CM."))
 		M.temp_drop_inv_item(src)
 		qdel(src)
 		return

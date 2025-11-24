@@ -195,7 +195,7 @@
 			icon_state = "cell-full"
 
 /obj/item/fuel_cell/get_examine_text(mob/user)
-	.  = ..()
+	. = ..()
 	if(ishuman(user))
 		. += "The fuel indicator reads: [get_fuel_percent()]%"
 

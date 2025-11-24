@@ -192,6 +192,7 @@
 	handful_type = /obj/item/arrow
 	sound_hit = 'sound/weapons/pierce.ogg'
 	var/activated = FALSE
+	var/loaded_icon = "loaded"
 
 /datum/ammo/arrow/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
 	if(!ishumansynth_strict(embedded_mob) || !istype(target_organ))
@@ -230,6 +231,7 @@
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
 	shrapnel_chance = 0
+	loaded_icon = "expl"
 	var/datum/effect_system/smoke_spread/smoke
 
 /datum/ammo/arrow/expl/New()
@@ -267,21 +269,22 @@
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
 	shrapnel_chance = 0
+	loaded_icon = "emp"
 
 /datum/ammo/arrow/emp/on_hit_mob(mob/mob,obj/projectile/projectile)
-	empulse(projectile, 4, 10)
+	empulse(projectile, 1, 4)
 
 /datum/ammo/arrow/emp/on_hit_obj(obj/object,obj/projectile/projectile)
-	empulse(projectile, 4, 10)
+	empulse(projectile, 1, 4)
 
 /datum/ammo/arrow/emp/on_hit_turf(turf/turf, obj/projectile/projectile)
 	if(turf.density && isturf(projectile.loc))
-		empulse(projectile.loc, 4, 10)
+		empulse(projectile.loc, 1, 4)
 	else
-		empulse(projectile, 4, 10)
+		empulse(projectile, 1, 4)
 
 /datum/ammo/arrow/emp/do_at_max_range(obj/projectile/projectile, mob/firer)
-	empulse(projectile, 4, 10)
+	empulse(projectile, 1, 4)
 
 /datum/ammo/flare/starshell
 	name = "starshell ash"

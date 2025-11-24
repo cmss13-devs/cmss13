@@ -1720,9 +1720,9 @@
 			item_state += "_w"
 		return
 	var/datum/ammo/arrow/arrow = ammo
-	if (arrow.activated)
-		icon_state = "bow_expl"
-		item_state = "bow_expl"
+	if(arrow.activated)
+		icon_state = "bow_[arrow.loaded_icon]"
+		item_state = "bow_[arrow.loaded_icon]"
 	else
 		icon_state = "bow_loaded"
 		item_state = "bow_loaded"
@@ -1784,7 +1784,7 @@
 	name = "inert arrow"
 	w_class = SIZE_SMALL
 	icon = 'icons/obj/items/hunter/bow.dmi'
-	icon_state = "arrow"
+	icon_state = "arrow_expl"
 	item_state = "arrow"
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = TRUE
@@ -1795,7 +1795,7 @@
 	var/activated = FALSE
 	var/datum/ammo/ammo_datum = /datum/ammo/arrow
 	var/datum/ammo/primary_ammo = /datum/ammo/arrow
-	var/primary_icon_state = "arrow"
+	var/primary_icon_state = "arrow_expl"
 	var/datum/ammo/secondary_ammo = /datum/ammo/arrow/expl
 	var/secondary_icon_state = "arrow_expl_active"
 
@@ -1806,6 +1806,7 @@
 	ammo_datum = /datum/ammo/arrow/expl
 
 /obj/item/arrow/emp
+	icon_state = "arrow_emp"
 	primary_icon_state = "arrow_emp"
 	secondary_ammo = /datum/ammo/arrow/emp
 	secondary_icon_state = "arrow_emp_active"

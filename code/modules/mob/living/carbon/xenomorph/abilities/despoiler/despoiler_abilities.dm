@@ -23,7 +23,7 @@
 	name = "Decomposing Enzymes"
 	action_icon_state = "decomposing_enzymes"
 	macro_path = /datum/action_xeno_action/verb/decomposing_enzymes
-	xeno_cooldown = 18 SECONDS
+	xeno_cooldown = 24 SECONDS
 	plasma_cost = 50
 	ability_primacy = XENO_PRIMARY_ACTION_3
 

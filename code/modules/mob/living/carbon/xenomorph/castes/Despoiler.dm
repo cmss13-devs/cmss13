@@ -15,6 +15,7 @@
 
 	deevolves_to = list(XENO_CASTE_SPITTER)
 	acid_level = 3
+	attack_delay = -2
 
 
 	tackle_min = 4

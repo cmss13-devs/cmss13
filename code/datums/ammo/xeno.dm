@@ -234,6 +234,7 @@
 	max_range = 4
 	damage = 35
 	scatter = SCATTER_AMOUNT_TIER_6
+	var/acid_progression = 10
 
 /datum/ammo/xeno/acid/despoiler/on_hit_mob(mob/mob, obj/projectile/projectile)
 	. = ..()
@@ -242,9 +243,9 @@
 	var/datum/effects/acid/acid_effect = locate() in mob.effects_list
 	if(acid_effect)
 		acid_effect.enhance_acid(super_acid = FALSE)
-		return
-
-	new /datum/effects/acid/(mob, projectile.firer)
+	else
+		acid_effect = new /datum/effects/acid/(mob, projectile.firer)
+	acid_effect.increment_duration(acid_progression)
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of neuro gas"

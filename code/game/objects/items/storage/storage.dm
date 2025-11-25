@@ -33,6 +33,9 @@
 	///Special can_holds that require a skill to insert, it is an associated list of typepath = list(skilltype, skilllevel)
 	var/list/can_hold_skill = list()
 
+	///if true, then we can only hold items found in fill_preset_inventory, default false as otherwise you wont be able to fit anything in, if at least runtime something
+	var/preset_hold_only = FALSE
+
 	///Dictates whether or not we only check for items in can_hold_skill rather than can_hold or free usage
 	var/can_hold_skill_only = FALSE
 
@@ -47,6 +50,12 @@
 
 	/// What mode is the storage instant grab mode in if you are grabbing pills from it
 	var/instant_pill_grab_mode = 1 //On by default
+
+	/// if true, then the storage of the item applies a movement malus when held by a mob dictated by the len of items in the storage
+	var/weighted_storage = FALSE // dont combine this with weighted items unless you want to be slow as fuck
+	/// the weight multiplier for items in contents
+	var/weight_multiplier = STORAGE_WEIGHT_DEFAULT
+
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src) && !HAS_TRAIT(usr, TRAIT_HAULED))
@@ -71,6 +80,27 @@
 					if(usr.drop_inv_item_on_ground(src))
 						usr.put_in_l_hand(src)
 			add_fingerprint(usr)
+
+// weighted storage based somewhat on ammo rack code
+
+/obj/item/storage/pickup(mob/user, silent)
+	. = ..()
+	if(weighted_storage)
+		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(weight_delay))
+
+/obj/item/storage/proc/weight_delay(mob/user, list/movedata)
+	SIGNAL_HANDLER
+	for(var/obj/item/storage/inv in user.contents)
+		if(inv.weighted_storage)
+			movedata["move_delay"] += inv.contents.len * weight_multiplier
+			break // only really need to call this once
+
+/obj/item/storage/dropped(mob/user, silent)
+	. = ..()
+	if(weighted_storage)
+		UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
+
+// weighted storage end
 
 /obj/item/storage/clicked(mob/user, list/mods)
 	if(!mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
@@ -899,6 +929,11 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		select_gamemode_skin(type)
 	post_skin_selection()
 	fill_preset_inventory()
+	if(preset_hold_only)
+		can_hold = list() // basically populate the can_hold list with the item presets found when initialized, might mean that there will be a bunch of duplicate types but w/e
+		for(var/obj/item/I in contents)
+			if(!is_type_in_list(I.type, can_hold))
+				can_hold += I.type
 	update_icon()
 
 /*

@@ -71,6 +71,8 @@
 	icon_state = "upp_food_crate"
 	magazine_type = /obj/item/storage/box/mre/upp
 	overlay_content = "_upp_mre"
+	weight_multiplier = MAG_BOX_WEIGHT_MEDIUM // when you have a bunch of cans in your pack, then yeah its heavier
+
 
 /obj/item/ammo_box/magazine/misc/mre/upp/empty
 	empty = TRUE
@@ -120,6 +122,7 @@
 	magazine_type = /obj/item/mre_food_packet/wy/cookie_brick
 	num_of_magazines = 20
 	overlay_content = "_colony_mre"
+	weight_multiplier = MAG_BOX_WEIGHT_LIGHT
 
 /obj/item/ammo_box/magazine/misc/mre/emergency/Initialize()
 	. = ..()
@@ -146,6 +149,7 @@
 	num_of_magazines = 10
 	overlay_gun_type = "_m94"
 	overlay_content = "_flares"
+	weight_multiplier = MAG_BOX_WEIGHT_LIGHT // flares are pretty light, actually :)
 
 //------------------------M89 Signal Flare Packs Box--------------------------
 
@@ -231,6 +235,7 @@
 	icon_state = "flashlightbox"
 	icon_state_deployed = "flashlightbox_deployed"
 	overlay_content = "_flashlight"
+	weight_multiplier = MAG_BOX_WEIGHT_LIGHT
 
 /obj/item/ammo_box/magazine/misc/flashlight/empty
 	empty = TRUE

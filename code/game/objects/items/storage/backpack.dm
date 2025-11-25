@@ -526,24 +526,12 @@
 	throw_range = 0
 	xeno_types = null
 	var/base_icon_state = "ammo_pack"
-	var/move_delay_mult = 0.4
+	weighted_storage = TRUE
+	weight_multiplier = STORAGE_WEIGHT_HEAVY
 
 /obj/item/storage/backpack/marine/ammo_rack/update_icon()
 	. = ..()
 	icon_state = "[base_icon_state]_[length(contents)]"
-
-/obj/item/storage/backpack/marine/ammo_rack/pickup(mob/user, silent)
-	. = ..()
-	RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
-
-/obj/item/storage/backpack/marine/ammo_rack/proc/handle_movedelay(mob/user, list/movedata)
-	SIGNAL_HANDLER
-	if(locate(/obj/item/storage/backpack/marine/ammo_rack) in user.contents)
-		movedata["move_delay"] += move_delay_mult
-
-/obj/item/storage/backpack/marine/ammo_rack/dropped(mob/user, silent)
-	. = ..()
-	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
 
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM corpsman backpack"

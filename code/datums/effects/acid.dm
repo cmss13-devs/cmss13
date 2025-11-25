@@ -26,7 +26,6 @@
 			acid_multiplier = target_barricade.burn_multiplier
 		if(istype(target_object, /obj/structure/barricade/handrail))
 			var/obj/structure/barricade/handrail/target_handrail = target_object
-			acid_multiplier = target_handrail.burn_multiplier
 			target_handrail.on_acid = TRUE
 		target_object.update_icon()
 

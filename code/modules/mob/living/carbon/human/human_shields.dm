@@ -7,7 +7,7 @@
 */
 /mob/living/carbon/human/proc/check_shields(attack_text = "the attack", attacking_direction, attack_type = SHIELD_ATTACK_MELEE, custom_response = FALSE)
 	var/block_effect = /obj/effect/block
-	var/owner_turf = get_turf(src)
+	var/turf/owner_turf = get_turf(src)
 
 	// First we handle the easy stuff.
 
@@ -27,12 +27,7 @@
 				return FALSE
 			switch(back_shield.shield_type)
 				if(SHIELD_DIRECTIONAL, SHIELD_DIRECTIONAL_TWOHANDS)
-					var/appropriate_dir = FALSE
-					var/facing_dir = dir
-					for(var/catchment_dir in get_related_directions(reverse_direction(facing_dir)))
-						if(attacking_direction == catchment_dir)
-							appropriate_dir = TRUE
-							break
+					var/appropriate_dir = (attacking_direction in get_related_directions(reverse_direction(dir)))
 					if(appropriate_dir && prob(back_shield.passive_block))
 						if(!custom_response)
 							visible_message(SPAN_DANGER("<B>The [back_shield] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
@@ -145,12 +140,7 @@
 		checking_type = SHIELD_ABSOLUTE
 
 	if(checking_type == SHIELD_DIRECTIONAL)
-		var/appropriate_dir = FALSE
-		for(var/catchment_dir in get_related_directions(dir))
-			if(attacking_direction == catchment_dir)
-				appropriate_dir = TRUE
-				break
-		if(!appropriate_dir)
+		if(!(attacking_direction in get_related_directions(dir)))
 			return FALSE
 
 	if(prob(block_chance))

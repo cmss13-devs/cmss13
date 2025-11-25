@@ -266,8 +266,7 @@
 			return
 
 		if (human_target != user && human_target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50))
-			for(var/mob/cur_mob in viewers(GLOB.world_view_size, user))
-				cur_mob.show_message(text(SPAN_DANGER("<B>[user] tries to stab [human_target] in [hit_area] with [src], but the attack is deflected by armor!</B>")), SHOW_MESSAGE_VISIBLE)
+			user.visible_message(text(SPAN_DANGER("<B>[user] tries to stab [human_target] in [hit_area] with [src], but the attack is deflected by armor!</B>")))
 			user.temp_drop_inv_item(src)
 			qdel(src)
 			return

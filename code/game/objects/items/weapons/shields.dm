@@ -96,7 +96,7 @@
 	..()
 	toggle_shield(user)
 
-/obj/item/weapon/shield/riot/attackby(obj/item/attacking_item as obj, mob/user as mob)
+/obj/item/weapon/shield/riot/attackby(obj/item/attacking_item, mob/user)
 	if(isweapon(attacking_item) && COOLDOWN_FINISHED(src, bash_cooldown))
 		var/obj/item/weapon/attacking_weapon = attacking_item
 		if(attacking_weapon.shield_flags & CAN_SHIELD_BASH)

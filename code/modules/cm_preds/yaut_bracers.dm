@@ -50,12 +50,15 @@
 	var/minimap_icon
 	///sprite style
 	var/material
+	var/badblood = FALSE
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
 	if(slot == WEAR_HANDS)
 		START_PROCESSING(SSobj, src)
 		owner = user
+		if(badblood || (owner.faction == FACTION_YAUTJA_BADBLOOD) || (owner.faction == FACTION_YAUTJA_STRANDED))
+			return
 		if(isyautja(owner))
 			minimap_icon = owner.assigned_equipment_preset?.minimap_icon
 		toggle_lock_internal(user, TRUE)
@@ -286,7 +289,6 @@
 
 	///A list of all intrinsic bracer actions
 	var/list/bracer_actions = list(/datum/action/predator_action/bracer/wristblade, /datum/action/predator_action/bracer/caster, /datum/action/predator_action/bracer/cloak, /datum/action/predator_action/bracer/thwei, /datum/action/predator_action/bracer/capsule, /datum/action/predator_action/bracer/translator, /datum/action/predator_action/bracer/self_destruct, /datum/action/predator_action/bracer/smartdisc)
-	var/badblood = FALSE
 
 /obj/item/clothing/gloves/yautja/hunter/badblood
 	badblood = TRUE

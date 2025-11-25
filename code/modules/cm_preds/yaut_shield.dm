@@ -51,8 +51,6 @@
 			user.visible_message(SPAN_WARNING("[user] bashes [src] with [attacking_item]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			COOLDOWN_START(src, bash_cooldown, SHIELD_BASH_COOLDOWN)
-	else
-		..()
 
 /obj/item/weapon/shield/riot/yautja/ancient
 	name = "ancient shield"

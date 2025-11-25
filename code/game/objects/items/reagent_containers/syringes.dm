@@ -266,19 +266,17 @@
 			return
 
 		if (human_target != user && human_target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50))
-			user.visible_message(text(SPAN_DANGER("<B>[user] tries to stab [human_target] in [hit_area] with [src], but the attack is deflected by armor!</B>")))
+			user.visible_message(SPAN_DANGER("<B>[user] tries to stab [human_target] in [hit_area] with [src], but the attack is deflected by armor!</B>"))
 			user.temp_drop_inv_item(src)
 			qdel(src)
 			return
 
-		for(var/mob/cur_mob in viewers(GLOB.world_view_size, user))
-			cur_mob.show_message(text(SPAN_DANGER("<B>[user] stabs [human_target] in \the [hit_area] with [src]!</B>")), SHOW_MESSAGE_VISIBLE)
+		user.visible_message(SPAN_DANGER("<B>[user] stabs [human_target] in \the [hit_area] with [src]!</B>"))
 
 		affecting.take_damage(3)
 
 	else
-		for(var/mob/O in viewers(GLOB.world_view_size, user))
-			O.show_message(text(SPAN_DANGER("<B>[user] stabs [target] with [src.name]!</B>")), SHOW_MESSAGE_VISIBLE)
+		user.visible_message(SPAN_DANGER("<B>[user] stabs [target] with [src.name]!</B>"))
 		target.take_limb_damage(3)// 7 is the same as crowbar punch
 
 	src.reagents.reaction(target, INGEST)

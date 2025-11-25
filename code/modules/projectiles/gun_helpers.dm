@@ -724,6 +724,9 @@ DEFINES in setup.dm, referenced here.
 
 	if(ishuman(source))
 		to_chat(source, SPAN_NOTICE("[icon2html(src, source)] You switch to <b>[gun_firemode]</b>."))
+		var/mob/living/carbon/user = source
+		var/atom/movable/screen/gun/toggle_firemode/firemode_hud = user?.hud_used.toggle_burst
+		firemode_hud.update_hud(user)
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
 
 /obj/item/weapon/gun/proc/add_firemode(added_firemode, mob/user)

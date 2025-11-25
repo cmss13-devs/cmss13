@@ -250,7 +250,7 @@
 /atom/movable/screen/alert/MouseEntered(location,control,params)
 	. = ..()
 	if(!QDELETED(src))
-		openToolTip(usr, src, params, title = name, content = desc, theme = alerttooltipstyle)
+		openToolTip(usr, src, params, title = name, content = desc, theme = "syndicate")
 
 /atom/movable/screen/alert/MouseExited(location, control, params)
 	. = ..()
@@ -300,6 +300,9 @@
 	icon_state = "uphint1"
 	click_master = FALSE
 
+/atom/movable/screen/alert/multi_z/MouseEntered(location,control,params)
+	if(!QDELETED(src))
+		openToolTip(usr, src, params, title = name, content = desc, theme = "syndicate", special = "offset_right")
 
 /atom/movable/screen/alert/multi_z/clicked()
 	. = ..()

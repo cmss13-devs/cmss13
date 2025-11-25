@@ -546,6 +546,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			force_light(on = FALSE)
 			ADD_TRAIT(src, TRAIT_GUN_LIGHT_FORCE_DEACTIVATED, WEAKREF(user))
 
+	var/atom/movable/screen/gun/attachment/attachment_hud = user?.hud_used.use_attachment
+	attachment_hud.update_hud(user)
 	return ..()
 
 /obj/item/weapon/gun/dropped(mob/user)
@@ -823,6 +825,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(user.client)
 			UnregisterSignal(user.client, COMSIG_CLIENT_RESET_VIEW)
 		slowdown = initial(slowdown)
+	var/atom/movable/screen/gun/toggle_firemode/firemode_hud = user?.hud_used.toggle_burst
+	firemode_hud.update_hud(user)
+	var/atom/movable/screen/gun/attachment/attachment_hud = user?.hud_used.use_attachment
+	attachment_hud.update_hud(user)
 	var/atom/movable/screen/gun_ammo_counter/counter = user.hud_used?.gun_ammo_counter
 	if(counter)
 		counter.remove_hud(user)

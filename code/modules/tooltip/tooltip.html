@@ -16,15 +16,17 @@
 			top: 0;
 			left: 0;
 			max-width: 298px;
-			border: 2px solid #1B2967;
+			border: 2px solid #04102D;
 		}
 
 		.content {
-			font: bold 12px Arial, 'Helvetica Neue', Helvetica, sans-serif;
-			color: #ffffff;
+			font-family: Geneva, Tahoma, sans-serif;;
+			font-size: 12px;
+			color: rgb(108, 199, 218);
+			text-shadow: 0 0 8px rgb(82, 150, 163);
 			padding: 8px;
-			border: 2px solid #0033CC;
-			background: #005CB8;
+			border: 2px solid #071E40;
+			background: #030919;
 		}
 
 		h1 {
@@ -238,6 +240,10 @@
 				//Handle special cases (for fuck sake)
 				if (tooltip.special == 'offset_left') {
 					posX -= 128;
+				}
+
+				if (tooltip.special == 'offset_right') {
+					posX += 508;
 				}
 
 				//Actually size, move and show the tooltip box

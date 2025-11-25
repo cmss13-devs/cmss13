@@ -407,8 +407,29 @@
 
 /atom/movable/screen/gun/attachment
 	name = "Activate weapon attachment"
-	icon_state = "gun_attach"
+	icon_state = "gun_attach0"
 	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, activate_attachment_verb)
+
+/atom/movable/screen/gun/attachment/proc/update_hud(mob/living/user)
+	if(!user?.client?.screen.Find(src))
+		return
+	var/obj/item/weapon/gun/shooting_gun = user.get_held_item()
+
+	if(!istype(shooting_gun))
+		icon_state = "gun_attach0"
+		return
+
+	var/usable_attachments[] = list() //Basic list of attachments to compare later.
+	for(var/slot in shooting_gun.attachments)
+		var/obj/item/attachable/attachment = shooting_gun.attachments[slot]
+		if(attachment && (attachment.flags_attach_features & ATTACH_ACTIVATION) )
+			usable_attachments += attachment
+
+	if(!length(usable_attachments)) //No usable attachments.
+		icon_state = "gun_attach0"
+		return
+
+	icon_state = "gun_attach"
 
 /atom/movable/screen/gun/rail_light
 	name = "Toggle rail flashlight"
@@ -422,8 +443,26 @@
 
 /atom/movable/screen/gun/toggle_firemode
 	name = "Toggle firemode"
-	icon_state = "gun_burst"
+	icon_state = "gun_nomode"
 	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, use_toggle_burst)
+
+/atom/movable/screen/gun/toggle_firemode/proc/update_hud(mob/living/user)
+	if(!user?.client?.screen.Find(src))
+		return
+	var/obj/item/weapon/gun/shooting_gun = user.get_held_item()
+
+	if(!istype(shooting_gun))
+		icon_state = "gun_nomode"
+		return
+
+	if(shooting_gun.gun_firemode == GUN_FIREMODE_SEMIAUTO)
+		icon_state = "gun_semi"
+	else if(shooting_gun.gun_firemode == GUN_FIREMODE_BURSTFIRE)
+		icon_state = "gun_burst"
+	else if(shooting_gun.gun_firemode == GUN_FIREMODE_AUTOMATIC)
+		icon_state = "gun_auto"
+	else
+		icon_state = "gun_nomode"
 
 /atom/movable/screen/gun/unique_action
 	name = "Use unique action"

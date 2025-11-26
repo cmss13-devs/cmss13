@@ -104,15 +104,6 @@
 	display_maptext = TRUE
 	maptext_label = "Ep"
 
-/obj/item/reagent_container/hypospray/autoinjector/dexalin
-	name = "dexalin autoinjector"
-	chemname = "dexalin"
-	desc = "An autoinjector loaded with 3 doses of 15u of Dexalin, designed to assist in reoxygenating the body. You can refill it at Wey-Med vending machines."
-	amount_per_transfer_from_this = 15
-	volume = 45
-	display_maptext = TRUE
-	maptext_label = "Dx"
-
 /obj/item/reagent_container/hypospray/autoinjector/dexalinp
 	name = "dexalin plus autoinjector"
 	chemname = "dexalinp"

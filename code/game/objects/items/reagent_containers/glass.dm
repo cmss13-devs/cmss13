@@ -290,7 +290,6 @@
 	/// A list of item types that allow reagent refilling.
 	var/list/chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
-		/obj/item/reagent_container/hypospray/autoinjector/dexalin,
 		/obj/item/reagent_container/hypospray/autoinjector/dexalinp,
 		/obj/item/reagent_container/hypospray/autoinjector/antitoxin,
 		/obj/item/reagent_container/hypospray/autoinjector/adrenaline,

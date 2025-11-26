@@ -362,6 +362,7 @@
 	var/missing_reagents = container.reagents.maximum_volume - container.reagents.total_volume
 	if(missing_reagents <= 0)
 		return TRUE
+
 	if(!LAZYLEN(chem_refill) || !(container.type in chem_refill))
 		if(istype(container, /obj/item/reagent_container/hypospray/autoinjector))
 			var/obj/item/reagent_container/hypospray/autoinjector/A = container
@@ -372,13 +373,19 @@
 				else //some autoinjectors truly are one-use...
 					to_chat(user, SPAN_WARNING("[A] cannot be refilled by any means. It must be disposed of."))
 					return
+
 		if(istype(container, /obj/item/reagent_container/glass/bottle))
 			to_chat(user, SPAN_WARNING("[src] cannot refill [container] because it was not produced and filled by this vendor."))
 			return FALSE
 
-		if(istype(container, /obj/item/reagent_container/hypospray/emptyvial))
+		if(istype(container, /obj/item/reagent_container/hypospray) && !istype(container, /obj/item/reagent_container/hypospray/autoinjector))
 			to_chat(user, SPAN_WARNING("[src] cannot refill [container]. It came from this vendor, but its vial did not come with any chemicals."))
 			return FALSE
+
+		else
+			to_chat(user, SPAN_WARNING("[src] cannot refill [container]. This vendor does not produce [container] so it cannot refill it."))
+			return FALSE
+
 	if(chem_refill_volume < missing_reagents)
 		var/auto_refill = allow_supply_link_restock && get_supply_link()
 		to_chat(user, SPAN_WARNING("[src] blinks red and makes a buzzing noise as it rejects [container]. Looks like it doesn't have enough reagents [auto_refill ? "yet" : "left"]."))
@@ -439,6 +446,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/I, mob/user)
 	if(stat != WORKING)
+		to_chat(user, SPAN_WARNING("[src] has no power."))
 		return ..()
 
 	if(istype(I, /obj/item/reagent_container))
@@ -454,11 +462,14 @@
 		var/obj/item/reagent_container/container = I
 		if(istype(I, /obj/item/reagent_container/syringe) || istype(I, /obj/item/reagent_container/dropper))
 			if(!stock(container, user))
+				to_chat(user, SPAN_WARNING("[src] does not allow for the restocking of [container] after vending it."))
 				return ..()
 			return
 
 		if(container.reagents.total_volume == container.reagents.maximum_volume)
 			if(!stock(container, user))
+				if(!LAZYLEN(chem_refill) || !(container.type in chem_refill))
+					to_chat(user, SPAN_WARNING("[container] cannot be refilled because it full. It was also not produced and filled by [src], so it will not be stocked."))
 				return ..()
 			return
 

@@ -915,6 +915,39 @@
 /obj/structure/prop/vehicles/tank/miltruck/wheeled/destroyed
 	icon_state = "miltruck_1_destroyed"
 
+// USCM HUMVEE
+
+/obj/structure/prop/vehicles/tank/humvee
+	name = "\improper M540-B Armored Recon Carrier"
+	desc = "An M540-B Armored Recon Carrier. A lightly armored reconnaissance and intelligence vehicle. This vehicle has been immobilised."
+	icon = 'icons/obj/vehicles/humvee_prop.dmi'
+	icon_state = "humvee_base"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/tank/humvee/destroyed
+	icon_state = "humvee_base_wreck"
+
+/obj/structure/prop/vehicles/tank/humvee/transport
+	icon_state = "humvee_carrier"
+
+/obj/structure/prop/vehicles/tank/humvee/transport/destroyed
+	icon_state = "humvee_carrier_wreck"
+
+/obj/structure/prop/vehicles/tank/humvee/medical
+	icon_state = "humvee_med"
+
+/obj/structure/prop/vehicles/tank/humvee/medical/destroyed
+	icon_state = "humvee_med_wreck"
+
+/obj/structure/prop/vehicles/tank/humvee/turret
+	icon_state = "humvee_gun"
+
+/obj/structure/prop/vehicles/tank/humvee/turret/destroyed
+	icon_state = "humvee_gun_wreck"
+
 // USCM Infantry Fighting Vehicle
 
 /obj/structure/prop/vehicles/tank/ifv

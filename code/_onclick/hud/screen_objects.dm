@@ -436,10 +436,21 @@
 	icon_state = "gun_raillight"
 	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, activate_rail_attachment_verb)
 
-// /atom/movable/screen/gun/eject_magazine
-// 	name = "Eject magazine"
-// 	icon_state = "gun_loaded"
-// 	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, empty_mag)
+/atom/movable/screen/gun/eject_magazine
+	name = "Eject magazine"
+	icon_state = "gun_loaded0"
+	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, empty_mag)
+
+/atom/movable/screen/gun/eject_magazine/proc/update_hud(mob/living/user)
+	if(!user?.client?.screen.Find(src))
+		return
+	var/obj/item/weapon/gun/shooting_gun = user.get_held_item()
+
+	if(!istype(shooting_gun) || !shooting_gun.current_mag)
+		icon_state = "gun_loaded0"
+		return
+
+	icon_state = "gun_loaded"
 
 /atom/movable/screen/gun/toggle_firemode
 	name = "Toggle firemode"
@@ -466,9 +477,19 @@
 
 /atom/movable/screen/gun/unique_action
 	name = "Use unique action"
-	icon_state = "gun_unique"
+	icon_state = "gun_unique0"
 	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, use_unique_action)
 
+/atom/movable/screen/gun/unique_action/proc/update_hud(mob/living/user)
+	if(!user?.client?.screen.Find(src))
+		return
+	var/obj/item/weapon/gun/shooting_gun = user.get_held_item()
+
+	if(!istype(shooting_gun))
+		icon_state = "gun_unique0"
+		return
+
+	icon_state = "gun_unique"
 
 /atom/movable/screen/clicked(mob/user, list/mods)
 	if(!user)

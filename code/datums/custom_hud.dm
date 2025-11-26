@@ -35,8 +35,8 @@
 	var/ui_zonesel = "EAST-1:28,1:5"
 
 	var/ui_gun_burst = "hud:5:-4,9:30"
-	var/ui_gun_railtoggle = "hud:4:1,9:30"
-	// var/ui_gun_eject = "EAST-3:-12,1:+5"
+	// var/ui_gun_railtoggle = "hud:4:1,9:30" // Unused
+	var/ui_gun_eject = "hud:4:1,9:30"
 	var/ui_gun_attachment = "hud:5:-18,9:30"
 	var/ui_gun_unique = "hud:5:9,9:30"
 

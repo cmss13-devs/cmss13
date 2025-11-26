@@ -548,6 +548,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	var/atom/movable/screen/gun/attachment/attachment_hud = user?.hud_used.use_attachment
 	attachment_hud.update_hud(user)
+	var/atom/movable/screen/gun/attachment/action_hud = user?.hud_used.unique_action
+	action_hud.update_hud(user)
+	var/atom/movable/screen/gun/attachment/eject_mag_hud = user?.hud_used.eject_mag
+	eject_mag_hud.update_hud(user)
 	return ..()
 
 /obj/item/weapon/gun/dropped(mob/user)
@@ -829,7 +833,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	firemode_hud.update_hud(user)
 	var/atom/movable/screen/gun/attachment/attachment_hud = user?.hud_used.use_attachment
 	attachment_hud.update_hud(user)
-	var/atom/movable/screen/gun_ammo_counter/counter = user.hud_used?.gun_ammo_counter
+	var/atom/movable/screen/gun/attachment/action_hud = user?.hud_used.unique_action
+	action_hud.update_hud(user)
+	var/atom/movable/screen/gun/eject_magazine/eject_mag_hud = user?.hud_used.eject_mag
+	eject_mag_hud.update_hud(user)
+	var/atom/movable/screen/gun_ammo_counter/counter = user?.hud_used?.gun_ammo_counter
 	if(counter)
 		counter.remove_hud(user)
 
@@ -920,6 +928,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		if(!in_chamber)
 			load_into_chamber()
 
+	var/atom/movable/screen/gun/attachment/eject_mag_hud = user?.hud_used.eject_mag
+	eject_mag_hud.update_hud(user)
 	update_icon()
 	return TRUE
 
@@ -934,6 +944,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
+	var/atom/movable/screen/gun/attachment/eject_mag_hud = user?.hud_used.eject_mag
+	eject_mag_hud.update_hud(user)
 
 
 //Drop out the magazine. Keep the ammo type for next time so we don't need to replace it every time.
@@ -958,6 +970,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	playsound(user, unload_sound, 25, 1, 5)
 	current_mag.update_icon()
 	current_mag = null
+	var/atom/movable/screen/gun/attachment/eject_mag_hud = user?.hud_used.eject_mag
+	eject_mag_hud.update_hud(user)
 
 	update_icon()
 	display_ammo(user)

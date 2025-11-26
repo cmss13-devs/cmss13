@@ -104,6 +104,15 @@
 	display_maptext = TRUE
 	maptext_label = "Ep"
 
+/obj/item/reagent_container/hypospray/autoinjector/dexalin
+	name = "dexalin autoinjector"
+	chemname = "dexalin"
+	desc = "An autoinjector loaded with 3 doses of 15u of Dexalin, designed to assist in reoxygenating the body. You can refill it at Wey-Med vending machines."
+	amount_per_transfer_from_this = 15
+	volume = 45
+	display_maptext = TRUE
+	maptext_label = "Dx"
+
 /obj/item/reagent_container/hypospray/autoinjector/dexalinp
 	name = "dexalin plus autoinjector"
 	chemname = "dexalinp"
@@ -544,6 +553,11 @@
 	name = "reagent canister pouch autoinjector (10u)"
 	volume = 60
 	amount_per_transfer_from_this = 10
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium //specifically for reagent canister pouches with four chemicals inside. Unused, but will still throw them in the weymed.
+	name = "reagent canister pouch autoinjector (20u)"
+	volume = 100
+	amount_per_transfer_from_this = 20
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large //haven't seen anyone use this yet.
 	name = "reagent canister pouch autoinjector (30u)"

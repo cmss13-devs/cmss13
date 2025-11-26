@@ -398,19 +398,23 @@
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
 
 /datum/autolathe/recipe/medilathe/autoinjector/s5x6
-	name = "5u reagent pouch autoinjector (5x6)"
+	name = "reagent pouch autoinjector (5x6)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/extrasmall
 
 /datum/autolathe/recipe/medilathe/autoinjector/s10x6
-	name = "10u reagent pouch autoinjector (10x6)"
+	name = "reagent pouch autoinjector (10x6)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/small
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x6
-	name = "15u reagent pouch autoinjector (15x6)"
+	name = "reagent pouch autoinjector (15x6)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic
 
+/datum/autolathe/recipe/medilathe/autoinjector/s20x6
+	name = "reagent pouch autoinjector (20x6)"
+	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/medium
+
 /datum/autolathe/recipe/medilathe/autoinjector/s30x6
-	name = "30u reagent pouch autoinjector (30x6)"
+	name = "reagent pouch autoinjector (30x6)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
 
 /datum/autolathe/recipe/medilathe/hypospray

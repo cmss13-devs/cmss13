@@ -18,7 +18,7 @@
 		return FALSE
 
 /obj/proc/check_yautja_access(mob/living/carbon/human/yautja)
-	if(!istype(yautja))
+	if(!ishuman(yautja) || !HAS_TRAIT(yautja, TRAIT_YAUTJA_TECH))
 		return FALSE
 	var/obj/item/clothing/gloves/yautja/hunter/bracer = yautja.gloves
 	if(!istype(bracer) || !bracer.embedded_id || !check_access(bracer.embedded_id))

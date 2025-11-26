@@ -355,13 +355,18 @@ Contains most of the procs that are called when a mob is attacked by something
 			affecting.embed(I)
 
 /mob/living/carbon/human/proc/get_id_faction_group()
-	var/obj/item/card/id/C = wear_id
-	if(!istype(C))
-		C = get_active_hand()
-	if(!istype(C))
+	var/obj/item/card/id/id_card = wear_id
+	if(!istype(id_card))
+		id_card = get_active_hand()
+	if(HAS_TRAIT(src, TRAIT_YAUTJA_TECH))
+		var/obj/item/clothing/gloves/yautja/hunter/bracer = gloves
+		if(!istype(bracer) || !bracer.embedded_id)
+			return null
+		id_card = bracer.embedded_id
+	if(!istype(id_card))
 		return null
 
-	return C.faction_group
+	return id_card.faction_group
 
 /mob/living/proc/get_target_lock(access_to_check)
 	if(isnull(access_to_check))

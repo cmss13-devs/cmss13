@@ -499,6 +499,19 @@
 		return
 	if(inoperable())
 		return
+	if(ishuman(user) && HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		var/mob/living/carbon/human/human_user = user
+		var/obj/item/clothing/gloves/yautja/hunter/bracer = human_user.gloves
+		var/modified = FALSE
+		if(istype(bracer) && bracer.badblood && bracer.embedded_id)
+			for(var/faction_tag in factions)
+				if(!(faction_tag in bracer.embedded_id.faction_group))
+					bracer.embedded_id.faction_group += faction_tag
+					modified = TRUE
+		if(modified)
+			to_chat(user, SPAN_YAUTJABOLD("Your bracer has begun to mimic the human IFF signatures."))
+			return
+
 	user.set_interaction(src)
 	tgui_interact(user)
 

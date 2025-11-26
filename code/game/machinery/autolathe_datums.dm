@@ -353,48 +353,48 @@
 	path = /obj/item/reagent_container/spray
 
 /datum/autolathe/recipe/medilathe/autoinjector
-	name = "5u custom autoinjector (5x3)"
+	name = "custom autoinjector (5x3)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty
 	category = AUTOLATHE_CATEGORY_INJECTORS
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x3
-	name = "15u custom autoinjector (15x3)"
+	name = "custom autoinjector (15x3)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/small
 
 /datum/autolathe/recipe/medilathe/autoinjector/s30x3
-	name = "30u custom autoinjector (30x3)"
+	name = "custom autoinjector (30x3)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medium
 
 /datum/autolathe/recipe/medilathe/autoinjector/s60x3
-	name = "60u custom autoinjector (60x3)"
+	name = "custom autoinjector (60x3)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/large
 
 /datum/autolathe/recipe/medilathe/autoinjector/s1x1
-	name = "1u custom EZ autoinjector (1x1)"
+	name = "custom EZ autoinjector (1x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/unit
 
 /datum/autolathe/recipe/medilathe/autoinjector/s5x1
-	name = "5u custom EZ autoinjector (5x1)"
+	name = "custom EZ autoinjector (5x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
 
 /datum/autolathe/recipe/medilathe/autoinjector/s10x1
-	name = "10u custom EZ autoinjector (10x1)"
+	name = "custom EZ autoinjector (10x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x1
-	name = "15u custom EZ autoinjector (15x1)"
+	name = "custom EZ autoinjector (15x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless
 
 /datum/autolathe/recipe/medilathe/autoinjector/s30x1
-	name = "30u custom EZ autoinjector (30x1)"
+	name = "custom EZ autoinjector (30x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium
 
 /datum/autolathe/recipe/medilathe/autoinjector/s45x1
-	name = "45u custom EZ autoinjector (45x1)"
+	name = "custom EZ autoinjector (45x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/large
 
 /datum/autolathe/recipe/medilathe/autoinjector/s60x1
-	name = "60u custom EZ autoinjector (60x1)"
+	name = "custom EZ autoinjector (60x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
 
 /datum/autolathe/recipe/medilathe/autoinjector/s5x6

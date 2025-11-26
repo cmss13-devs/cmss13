@@ -1337,7 +1337,7 @@
 /obj/item/storage/pouch/pressurized_reagent_canister/verb/remove_canister()
 	set category = "Weapons"
 	set name = "Remove Canister"
-	set desc = "Removes the Pressurized Canister from the pouch."
+	set desc = "Removes the Pressurized Reagent Canister from the pouch."
 	set src in usr
 	if(!inner)
 		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))

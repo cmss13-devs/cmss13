@@ -595,8 +595,8 @@
 	reagent = "oxygen"
 
 /obj/item/reagent_container/glass/pressurized_canister // See the Pressurized Reagent Canister Pouch
-	name = "pressurized canister"
-	desc = "A pressurized container. The inner part of a pressurized reagent canister pouch. Only compatible with its pouch, machinery or a storage tank."
+	name = "pressurized reagent canister"
+	desc = "A pressurized container to fill with reagents and the inner part of a pressurized reagent canister pouch. Only compatible with its pouch, machinery, or a storage tank."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "pressurized_reagent_container"
 	item_state = "anesthetic"

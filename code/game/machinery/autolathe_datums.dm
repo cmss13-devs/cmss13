@@ -419,7 +419,7 @@
 
 /datum/autolathe/recipe/medilathe/hypospray
 	name = "hypospray"
-	path = /obj/item/reagent_container/hypospray
+	path = /obj/item/reagent_container/hypospray/emptyvial
 
 /datum/autolathe/recipe/medilathe/bloodpack
 	name = "bloodpack"
@@ -506,7 +506,7 @@
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/pressurized_canister
-	name = "Pressurized Canister"
+	name = "Pressurized Reagent Canister"
 	path = /obj/item/reagent_container/glass/pressurized_canister
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 

@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////
+ ////////////////////////////////////////////////////////////////////////////////
 /// (Mixing) Glass
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -324,7 +324,7 @@
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 
 		else if(A.mixed_chem) //Mixed chem autoinjectors like emergency and sleep are too complicated for the tank.
-			if(istype(A, /obj/item/reagent_container/hypospray/autoinjector/empty)) //Autoinjector says, "Where's my pouch?""
+			if(istype(A, /obj/item/reagent_container/hypospray/autoinjector/empty)) //Autoinjector says, "Where's my pouch?"
 				to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [A] can only be refilled with a pressurized reagent canister pouch."))
 				return FALSE
 			else //some autoinjectors truly are one-use...

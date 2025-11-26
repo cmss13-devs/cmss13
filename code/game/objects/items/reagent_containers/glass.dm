@@ -290,6 +290,7 @@
 	/// A list of item types that allow reagent refilling.
 	var/list/chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
+		/obj/item/reagent_container/hypospray/autoinjector/dexalin,
 		/obj/item/reagent_container/hypospray/autoinjector/dexalinp,
 		/obj/item/reagent_container/hypospray/autoinjector/antitoxin,
 		/obj/item/reagent_container/hypospray/autoinjector/adrenaline,
@@ -313,30 +314,33 @@
 /obj/item/reagent_container/glass/minitank/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
 		var/obj/item/reagent_container/hypospray/autoinjector/A = W
-		if(A.mixed_chem) //Mixed chem autoinjectors like emergency and sleep are too complicated for the tank.
-			if(istype(A, /obj/item/reagent_container/hypospray/autoinjector/empty))
-				to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [A] can only be refilled with a pressurized reagent canister pouch."))
-				return
-			else
-				to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [A] cannot be refilled by any means. It must be disposed of."))
-				return
-		if(!(chem_refill) || !(A.type in chem_refill)) //noo, you can't fill this! It's not the right autoinjector!
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [src] cannot refill [A] because its valves are incompatible."))
-			return FALSE
-		if(src.reagents.total_volume <= 0) //The tank is empty!
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [src] is empty! It cannot refill the [A]!"))
-			return FALSE
-		if(reagents.has_reagent(A.chemname, A.volume)) ////The good stuff. Actually handles the filling of chemicals.
-			reagents.trans_id_to(A, A.chemname, A.volume)
+		var/amount = (A.reagents.maximum_volume - A.reagents.total_volume)
+		if(reagents.has_reagent(A.chemname, amount)) ////The good stuff. Actually handles the filling of chemicals.
+			reagents.trans_id_to(A, A.chemname, amount) //fill this bih
 			if(istype(A, /obj/item/reagent_container/hypospray/autoinjector/skillless/one_use) || istype(A, /obj/item/reagent_container/hypospray/autoinjector/skillless/marine)) //Added for differentiation between autoinjectors that have 1 vs 3 uses since it did not have this function before.
-				A.uses_left = 1
+				A.uses_left = 1 //one_use and marine are EZs.
 			else
-				A.uses_left = 3
+				A.uses_left = 3 //other autoinjectors.
 			A.update_icon()
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
+		else if(A.mixed_chem) //Mixed chem autoinjectors like emergency and sleep are too complicated for the tank.
+			if(istype(A, /obj/item/reagent_container/hypospray/autoinjector/empty)) //Autoinjector says, "Where's my pouch?""
+				to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [A] can only be refilled with a pressurized reagent canister pouch."))
+				return
+			else //some autoinjectors truly are one-use...
+				to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [A] cannot be refilled by any means. It must be disposed of."))
+				return
+		else if(!(chem_refill) || !(A.type in chem_refill)) //noo, you can't fill this! It's not the right autoinjector!
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [src] cannot refill [A] because its valves are incompatible with the tank."))
+			return FALSE
+		else if(src.reagents.total_volume <= 0) //The tank is empty!
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [src] is empty! It cannot refill [A]!"))
+			return FALSE
+		else if(A.reagents.total_volume >= A.reagents.maximum_volume)
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. [A] is full! The tank cannot refill it!"))
+			return FALSE
 		else
-			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. The tank can't refill [A]. The chemicals inside the tank are incompatible with the autoinjector, or the tank is empty.")) //Figured out what causes this. Incompatible chemicals, somehow.
-			. = ..()
+			to_chat(user, SPAN_WARNING("A small LED on [src] blinks. The [A] could not find enough [A.chemname] in the tank. Fill the tank with at least [amount]u of [A.chemname] and try again."))
 			return
 		to_chat(user, SPAN_INFO("You successfully refill [A] with [src]!"))
 		return

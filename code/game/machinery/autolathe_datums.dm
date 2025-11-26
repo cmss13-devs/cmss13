@@ -419,7 +419,7 @@
 
 /datum/autolathe/recipe/medilathe/hypospray
 	name = "hypospray"
-	path = /obj/item/reagent_container/hypospray/
+	path = /obj/item/reagent_container/hypospray
 
 /datum/autolathe/recipe/medilathe/bloodpack
 	name = "bloodpack"

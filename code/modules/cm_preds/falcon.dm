@@ -95,7 +95,6 @@
 	var/obj/item/clothing/gloves/yautja/owned_bracers
 
 /mob/hologram/falcon/badblood
-	action_icon_state = "falcon_drone_badblood"
 	icon_state = "falcon_drone_badblood_active"
 
 /mob/hologram/falcon/badblood/med_hud_set_status()

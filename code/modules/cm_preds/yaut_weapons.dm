@@ -1845,8 +1845,8 @@
 		return
 	if(activated)
 		activated = FALSE
-		ammo_datum = primary_ammo
-		icon_state = ammo_datum.arrow_icon
+		ammo_datum = /datum/ammo/arrow
+		icon_state = "arrow"
 		name = "inert dynamic arrow"
 		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
 		return
@@ -1856,8 +1856,6 @@
 	)
 	var/choice = tgui_input_list(user, "Which warhead do you wish to use?", "Pick Warhead", warhead_options)
 	var/datum/ammo/arrow/arrow = warhead_options[choice]
-	if(!istype(arrow))
-		return
 	activated = TRUE
 	ammo_datum = arrow
 	icon_state = arrow.arrow_icon

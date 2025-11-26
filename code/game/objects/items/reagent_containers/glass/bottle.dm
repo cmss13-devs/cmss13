@@ -395,7 +395,7 @@
 
 /obj/item/reagent_container/glass/bottle/tricordrazine
 	name = "\improper Tricordrazine bottle"
-	desc = "A small bottle. Contains Tricordrazine - A weak but catch-all medicine for treating all sorts of damage."
+	desc = "A small bottle. Contains tricordrazine - A weak but catch-all medicine for treating all sorts of damage."
 	volume = 60
 
 /obj/item/reagent_container/glass/bottle/tricordrazine/Initialize()
@@ -405,7 +405,7 @@
 
 /obj/item/reagent_container/glass/bottle/epinephrine
 	name = "\improper Epinephrine bottle"
-	desc = "A small bottle. Contains Epinephrine - Used to increase a patient's arterial blood pressure, amongst other actions, to assist in cardiopulmonary resuscitation." //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies"
+	desc = "A small bottle. Contains epinephrine - Used to increase a patients arterial blood pressure, amongst other actions, to assist in cardiopulmonary resuscitation." //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies"
 	volume = 60
 
 /obj/item/reagent_container/glass/bottle/epinephrine/Initialize()

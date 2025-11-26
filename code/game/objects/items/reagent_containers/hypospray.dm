@@ -246,10 +246,8 @@
 /obj/item/reagent_container/hypospray/tricordrazine
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 
-
 /obj/item/reagent_container/hypospray/epinephrine
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/epinephrine
-
 
 /obj/item/reagent_container/hypospray/sedative
 	name = "Sedative Hypospray"

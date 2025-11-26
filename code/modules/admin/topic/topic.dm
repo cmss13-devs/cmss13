@@ -34,6 +34,12 @@
 			to_chat(usr, "Ticket [ahelp_ref] has been deleted!", confidential = TRUE)
 		return
 
+	if(href_list["ahelp_tickets"])
+		if(!check_rights(R_ADMIN|R_MOD, TRUE))
+			return
+		GLOB.ahelp_tickets.BrowseTickets(text2num(href_list["ahelp_tickets"]))
+		return
+
 	if(href_list["adminplayeropts"])
 		var/mob/M = locate(href_list["adminplayeropts"])
 		show_player_panel(M)

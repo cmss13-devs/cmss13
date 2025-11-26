@@ -103,7 +103,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/datum/admin_help/AH = I
 		if(AH.initiator)
 			var/obj/effect/statclick/updated = AH.statclick.update()
-			L[++L.len] = list("#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(AH))
+			L[++L.len] = list("#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(updated), REF(updated))
 		else
 			++num_disconnected
 	if(num_disconnected)
@@ -153,10 +153,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		log_game("[key_name(usr)] non-holder clicked on a ticket list statclick! ([src])")
 		return
 
-	GLOB.ahelp_tickets.BrowseTickets(current_state)
+	// GLOB.ahelp_tickets.BrowseTickets(current_state)
+	if(usr.client.admin_holder)
+		usr.client.admin_holder.ticket_panel()
+		to_chat(usr, SPAN_NOTICE("Accessing Ticket Panel... (Click <A href='byond://?_src_=admin_holder;[HrefToken()];ahelp_tickets=[current_state]'>here</A> for legacy view)"))
 
 //called by admin topic
-/obj/effect/statclick/ticket_list/proc/Action()
+/obj/effect/statclick/ticket_list/Action()
 	clicked()
 
 #define WEBHOOK_NONE 0
@@ -836,7 +839,17 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		log_game("[key_name(usr)] non-holder clicked on an ahelp statclick! ([src])")
 		return
 
-	ahelp_datum.TicketPanel()
+	// ahelp_datum.TicketPanel()
+	if(usr.client.admin_holder)
+		if(!usr.client.ticket_panel)
+			usr.client.ticket_panel = new /datum/ticket_panel()
+		usr.client.ticket_panel.selected_tab = "admin"
+		usr.client.ticket_panel.selected_ticket = ahelp_datum.id
+		usr.client.admin_holder.ticket_panel()
+		to_chat(usr, SPAN_NOTICE("Accessing Ticket Panel... (Click <A href='byond://?_src_=admin_holder;[HrefToken()];ahelp=[REF(ahelp_datum)];ahelp_action=ticket'>here</A> for legacy view)"))
+
+/obj/effect/statclick/ahelp/Action(action)
+	clicked()
 
 /obj/effect/statclick/ahelp/Destroy()
 	ahelp_datum = null

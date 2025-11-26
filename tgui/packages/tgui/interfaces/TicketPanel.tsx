@@ -417,6 +417,21 @@ export const TicketPanel = (props) => {
                             Ban
                           </Button>
                           <Button
+                            icon="exchange-alt"
+                            tooltip={
+                              data.selected_tab === 'admin'
+                                ? 'Defer to Mentors'
+                                : 'Defer to Admins'
+                            }
+                            onClick={() =>
+                              act('defer_ticket', {
+                                ticket_id: selectedTicketData.id,
+                              })
+                            }
+                          >
+                            Defer
+                          </Button>
+                          <Button
                             icon={
                               selectedTicketData.claimed_by
                                 ? 'user-slash'

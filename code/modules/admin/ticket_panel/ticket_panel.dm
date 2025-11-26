@@ -338,6 +338,19 @@
 
 			return TRUE
 
+		if("defer_ticket")
+			var/ticket_id = text2num(params["ticket_id"])
+			switch(selected_tab)
+				if(ADMIN_TAB)
+					var/datum/admin_help/AH = GLOB.ahelp_tickets.TicketByID(ticket_id)
+					if(AH)
+						AH.defer_to_mentors()
+				if(MENTOR_TAB)
+					var/datum/mentorhelp/MH = mentorhelp_by_id(ticket_id)
+					if(MH)
+						MH.defer_to_admins(usr.client)
+			return TRUE
+
 		if("reply_ticket")
 			var/ticket_id = text2num(params["ticket_id"])
 			if(!ticket_id)

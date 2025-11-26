@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		return null
 	for(var/id in active_tickets)
 		var/datum/mentorhelp/MH = active_tickets[id]
-		if(MH && MH.author_key == ckey)
+		if(MH && ckey(MH.author_key) == ckey)
 			return MH
 	return null
 
@@ -534,3 +534,45 @@ GLOBAL_DATUM_INIT(mentorhelp_manager, /datum/mentorhelp_manager, new)
 		return
 	src.subject = sanitize(subject)
 	return TRUE
+
+/datum/mentorhelp/proc/defer_to_admins(client/deferrer)
+	if(!check_author())
+		return
+
+	if(!check_open(deferrer))
+		return
+
+	if(!CLIENT_IS_MENTOR(deferrer))
+		return
+
+	if(mentor && mentor != deferrer)
+		to_chat(deferrer, SPAN_WARNING("This ticket is currently marked by [mentor.key]. Please override their mark to interact with this ticket!"))
+		return
+
+	if(author.current_ticket)
+		to_chat(deferrer, SPAN_WARNING("This user already has an active adminhelp ticket. Please close it first or use the existing one."))
+		return
+
+	var/options = tgui_alert(deferrer, "Use the first message in this ticket, or a custom option?", "Defer to Admins", list("First Message", "Custom"))
+	if(!options)
+		return
+
+	var/message = ""
+	switch(options)
+		if("First Message")
+			message = initial_message
+		if("Custom")
+			message = tgui_input_text(deferrer, "Text to Send to Admins", "Defer to Admins")
+
+	if(!message)
+		return
+
+	new /datum/admin_help(message, author, FALSE)
+
+	notify("<font style='color:red;'>[deferrer.key]</font> deferred this ticket to admins.",
+		unformatted_text = "[deferrer.key] deferred this ticket to admins.")
+	to_chat(author, SPAN_MENTORHELP("Your ticket has been deferred to Admins."))
+	log_mhelp("[deferrer.key] deferred [author_key]'s mentorhelp to admins.")
+
+	close(deferrer)
+

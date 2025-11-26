@@ -572,21 +572,26 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
 		return
 
-	if(!initiator.current_mhelp)
-		initiator.current_mhelp = new(initiator)
+	if(GLOB.mentorhelp_manager.get_active_ticket_by_ckey(initiator_ckey))
+		to_chat(usr, SPAN_WARNING("This user already has an active mentorhelp ticket. Please close it first or use the existing one."))
+		return
 
 	var/options = tgui_alert(usr, "Use the first message in this ticket, or a custom option?", "Defer to Mentors", list("First Message", "Custom"))
 	if(!options)
 		return
 
+	var/message
 	switch(options)
 		if("First Message")
-			initiator.current_mhelp.broadcast_unhandled(initial_message, initiator)
+			message = initial_message
 		if("Custom")
-			var/message = tgui_input_text(usr, "Text to Send to Mentors", "Defer to Mentors")
-			if(!message)
-				return
-			initiator.current_mhelp.broadcast_unhandled(message, initiator)
+			message = tgui_input_text(usr, "Text to Send to Mentors", "Defer to Mentors")
+
+	if(!message)
+		return
+
+	var/datum/mentorhelp/MH = GLOB.mentorhelp_manager.create_ticket(initiator, message)
+	MH.broadcast_unhandled(message, initiator)
 
 	AddInteraction("Deferred to Mentors by [key_name_admin(usr)].", plain_message = "Deferred to Mentors by [usr.key]", message_type = "system")
 	to_chat(initiator, SPAN_ADMINHELP("Your ticket has been deferred to Mentors."))

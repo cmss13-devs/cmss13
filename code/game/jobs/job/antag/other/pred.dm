@@ -152,5 +152,5 @@
 	src.roles = JOB_PREDSURV_ROLES_LIST
 
 AddTimelock(/datum/job/antag/pred_surv, list(
-	JOB_PREDSURV_ROLES_LIST = 10 HOURS,
+	JOB_PREDSURV_ROLES_LIST = JOB_PLAYTIME_TIER_2,
 ))

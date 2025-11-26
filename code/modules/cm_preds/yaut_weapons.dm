@@ -1782,6 +1782,7 @@
 
 /obj/item/arrow
 	name = "inert arrow"
+	desc = "A heavy arrow made of a strange metal. Used by alien hunters with powerful bows."
 	w_class = SIZE_SMALL
 	icon = 'icons/obj/items/hunter/bow.dmi'
 	icon_state = "arrow_expl"
@@ -1793,13 +1794,11 @@
 	unacidable = TRUE
 
 	var/activated = FALSE
-	var/datum/ammo/ammo_datum = /datum/ammo/arrow
-	var/datum/ammo/primary_ammo = /datum/ammo/arrow
-	var/primary_icon_state = "arrow_expl"
-	var/datum/ammo/secondary_ammo = /datum/ammo/arrow/expl
-	var/secondary_icon_state = "arrow_expl_active"
+	var/datum/ammo/arrow/ammo_datum = /datum/ammo/arrow
+	var/datum/ammo/arrow/primary_ammo = /datum/ammo/arrow
+	var/datum/ammo/arrow/secondary_ammo = /datum/ammo/arrow/expl
 
-/obj/item/arrow/active_expl
+/obj/item/arrow/expl_active
 	name = "\improper activated explosive arrow"
 	activated = TRUE
 	icon_state = "arrow_expl_active"
@@ -1807,9 +1806,7 @@
 
 /obj/item/arrow/emp
 	icon_state = "arrow_emp"
-	primary_icon_state = "arrow_emp"
 	secondary_ammo = /datum/ammo/arrow/emp
-	secondary_icon_state = "arrow_emp_active"
 
 /obj/item/arrow/emp/active
 	name = "\improper activated emp arrow"
@@ -1819,20 +1816,52 @@
 
 /obj/item/arrow/attack_self(mob/user)
 	. = ..()
-	if(!isyautja(user))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_NOTICE("You attempt to [activated ? "deactivate" : "activate"] [src], but nothing happens."))
+		return
+	change_warhead(user)
+
+/obj/item/arrow/proc/change_warhead(mob/user)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		return
 	if(activated)
 		activated = FALSE
-		icon_state = primary_icon_state
 		ammo_datum = primary_ammo
+		icon_state = ammo_datum.arrow_icon
 		name = ammo_datum.name
 		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
 		return
 	activated = TRUE
-	icon_state = secondary_icon_state
 	ammo_datum = secondary_ammo
+	icon_state = ammo_datum.arrow_icon
 	name = ammo_datum.name
+	to_chat(user, SPAN_NOTICE("You activate [src]."))
+
+/obj/item/arrow/dynamic_warhead
+	name = "inert dynamic arrow"
+
+/obj/item/arrow/dynamic_warhead/change_warhead(mob/user)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		return
+	if(activated)
+		activated = FALSE
+		ammo_datum = primary_ammo
+		icon_state = ammo_datum.arrow_icon
+		name = "inert dynamic arrow"
+		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
+		return
+	var/list/warhead_options = list(
+		"Explosive" = /datum/ammo/arrow/expl,
+		"EMP" = /datum/ammo/arrow/emp,
+	)
+	var/choice = tgui_input_list(user, "Which warhead do you wish to use?", "Pick Warhead", warhead_options)
+	var/datum/ammo/arrow/arrow = warhead_options[choice]
+	if(!istype(arrow))
+		return
+	activated = TRUE
+	ammo_datum = arrow
+	icon_state = arrow.arrow_icon
+	name = "[ammo_datum.name] (D)"
 	to_chat(user, SPAN_NOTICE("You activate [src]."))
 
 /obj/item/storage/belt/gun/quiver
@@ -1861,6 +1890,11 @@
 	handle_item_insertion(new /obj/item/weapon/gun/bow())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/arrow(src)
+
+/obj/item/storage/belt/gun/quiver/dynamic/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/bow())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/arrow/dynamic_warhead(src)
 
 #undef FLAY_STAGE_SCALP
 #undef FLAY_STAGE_STRIP

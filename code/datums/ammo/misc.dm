@@ -193,6 +193,7 @@
 	sound_hit = 'sound/weapons/pierce.ogg'
 	var/activated = FALSE
 	var/loaded_icon = "loaded"
+	var/arrow_icon = "arrow_expl"
 
 /datum/ammo/arrow/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
 	if(!ishumansynth_strict(embedded_mob) || !istype(target_organ))
@@ -227,11 +228,12 @@
 /datum/ammo/arrow/expl
 	name = "activated explosive arrow"
 	activated = TRUE
-	handful_type = /obj/item/arrow/active_expl
+	handful_type = /obj/item/arrow/expl_active
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
 	shrapnel_chance = 0
 	loaded_icon = "expl"
+	arrow_icon = "arrow_expl_active"
 	var/datum/effect_system/smoke_spread/smoke
 
 /datum/ammo/arrow/expl/New()
@@ -270,6 +272,7 @@
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
 	shrapnel_chance = 0
 	loaded_icon = "emp"
+	arrow_icon = "arrow_emp_active"
 
 /datum/ammo/arrow/emp/on_hit_mob(mob/mob,obj/projectile/projectile)
 	empulse(projectile, 1, 4)

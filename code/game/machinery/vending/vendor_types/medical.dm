@@ -286,19 +286,17 @@
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tricord,
 
-		/obj/item/reagent_container/hypospray/epinephrine
-		/obj/item/reagent_container/hypospray/tricordrazine
+		/obj/item/reagent_container/hypospray/tricordrazine,
 
 		/obj/item/reagent_container/glass/bottle/bicaridine,
 		/obj/item/reagent_container/glass/bottle/antitoxin,
 		/obj/item/reagent_container/glass/bottle/dexalin,
-		/obj/item/reagent_container/glass/bottle/epinephrine,
 		/obj/item/reagent_container/glass/bottle/inaprovaline,
 		/obj/item/reagent_container/glass/bottle/kelotane,
 		/obj/item/reagent_container/glass/bottle/oxycodone,
 		/obj/item/reagent_container/glass/bottle/peridaxon,
 		/obj/item/reagent_container/glass/bottle/tramadol,
-		/obj/item/reagent_container/glass/bottle/tricordrazine,
+		/obj/item/reagent_container/glass/bottle/tricordrazine, //if we ever add this in.
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/Destroy()
@@ -554,15 +552,13 @@
 
 		list("LIQUID BOTTLES", -1, null, null),
 		list("Bottle (Bicaridine)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),
-		list("Bottle (Dylovene)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
 		list("Bottle (Dexalin)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/dexalin, VENDOR_ITEM_REGULAR),
-		list("Bottle (Epinephrine)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/epinephrine, VENDOR_ITEM_REGULAR),
+		list("Bottle (Dylovene)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
 		list("Bottle (Inaprovaline)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/inaprovaline, VENDOR_ITEM_REGULAR),
 		list("Bottle (Kelotane)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
 		list("Bottle (Oxycodone)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/oxycodone, VENDOR_ITEM_REGULAR),
 		list("Bottle (Peridaxon)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Bottle (Tramadol)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/tramadol, VENDOR_ITEM_REGULAR),
-		list("Bottle (Tricordrazine)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/tricordrazine, VENDOR_ITEM_REGULAR),
 
 		list("PILL BOTTLES", -1, null, null),
 		list("Pill Bottle (Bicaridine)", floor(scale * 4), /obj/item/storage/pill_bottle/bicaridine, VENDOR_ITEM_REGULAR),
@@ -578,7 +574,6 @@
 		list("Emergency Defibrillator", floor(scale * 3), /obj/item/device/defibrillator, VENDOR_ITEM_REGULAR),
 		list("Health Analyzer", floor(scale * 5), /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
 		list("Hypospray (Empty Vial)", floor(scale * 3), /obj/item/reagent_container/hypospray, VENDOR_ITEM_REGULAR),
-		list("Hypospray (Epinephrine)", floor(scale * 3), /obj/item/reagent_container/hypospray/epinephrine, VENDOR_ITEM_REGULAR),
 		list("Hypospray (Tricordrazine)", floor(scale * 3), /obj/item/reagent_container/hypospray/tricordrazine, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Medical Storage Rig", floor(scale * 2), /obj/item/storage/belt/medical, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", floor(scale * 3), /obj/item/clothing/glasses/hud/health, VENDOR_ITEM_REGULAR),

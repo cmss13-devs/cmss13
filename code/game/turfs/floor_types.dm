@@ -2579,6 +2579,9 @@
 /turf/open/floor/prison/trim/red
 	icon_state = "darkred2"
 
+/turf/open/floor/prison/trim/white
+	icon_state = "white2"
+
 /turf/open/floor/prison/chapel_carpet
 	icon = 'icons/turf/floors/carpet_manual.dmi'//I dunno man, CM-ified carpet sprites are placed manually and I can't be bothered to write a new system for 'em.
 	icon_state = "single"
@@ -2675,6 +2678,25 @@
 
 /turf/open/floor/prison/darkyellow2/southwest
 	dir = SOUTHWEST
+
+/turf/open/floor/prison/white2
+	icon_state = "white2"
+
+/turf/open/floor/prison/white2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/whitecorners2
+	icon_state = "whitecorners2"
+
+/turf/open/floor/prison/whitecorners2/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/prison/whitefull2
+	icon_state = "whitefull2"
+
+/turf/open/floor/prison/whitefull2/southwest
+	dir = SOUTHWEST
+
 
 /turf/open/floor/prison/darkyellowcorners2
 	icon_state = "darkyellowcorners2"
@@ -2891,8 +2913,17 @@
 /turf/open/floor/prison/blue/north
 	dir = NORTH
 
-/turf/open/floor/prison/blue_plate
-	icon_state = "blue_plate"
+/turf/open/floor/prison/floor_plate_alt
+	icon_state = "floor_plate_alt"
+
+/turf/open/floor/prison/floor_plate_alt/east
+	dir = EAST
+
+/turf/open/floor/prison/floor_plate_alt/south
+	dir = SOUTH
+
+/turf/open/floor/prison/floor_plate_alt/west
+	dir = WEST
 
 /turf/open/floor/prison/blue_plate/north
 	dir = NORTH
@@ -2907,6 +2938,12 @@
 	icon_state = "cell_stripe"
 
 /turf/open/floor/prison/cell_stripe/north
+	dir = NORTH
+
+/turf/open/floor/prison/cell_stripe_alt
+	icon_state = "cell_stripe_alt"
+
+/turf/open/floor/prison/cell_stripe_alt/north
 	dir = NORTH
 
 /turf/open/floor/prison/darkbrown2/north
@@ -2937,6 +2974,12 @@
 	dir = NORTH
 
 /turf/open/floor/prison/darkredcorners2/north
+	dir = NORTH
+
+/turf/open/floor/prison/white2/north
+	dir = NORTH
+
+/turf/open/floor/prison/whitecorners2/north
 	dir = NORTH
 
 /turf/open/floor/prison/darkyellow2/north
@@ -3023,6 +3066,9 @@
 /turf/open/floor/prison/cell_stripe/east
 	dir = EAST
 
+/turf/open/floor/prison/cell_stripe_alt/east
+	dir = EAST
+
 /turf/open/floor/prison/darkbrown2/east
 	dir = EAST
 
@@ -3045,6 +3091,12 @@
 	dir = EAST
 
 /turf/open/floor/prison/darkredcorners2/east
+	dir = EAST
+
+/turf/open/floor/prison/white2/east
+	dir = EAST
+
+/turf/open/floor/prison/whitecorners2/east
 	dir = EAST
 
 /turf/open/floor/prison/darkyellow2/east
@@ -3125,6 +3177,9 @@
 /turf/open/floor/prison/darkred2/northeast
 	dir = NORTHEAST
 
+/turf/open/floor/prison/white2/northeast
+	dir = NORTHEAST
+
 /turf/open/floor/prison/darkyellow2/northeast
 	dir = NORTHEAST
 
@@ -3159,6 +3214,9 @@
 	dir = SOUTHEAST
 
 /turf/open/floor/prison/darkred2/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/prison/white2/southeast
 	dir = SOUTHEAST
 
 /turf/open/floor/prison/darkyellow2/southeast
@@ -3203,6 +3261,9 @@
 /turf/open/floor/prison/cell_stripe/west
 	dir = WEST
 
+/turf/open/floor/prison/cell_stripe_alt/west
+	dir = WEST
+
 /turf/open/floor/prison/darkbrown2/west
 	dir = WEST
 
@@ -3225,6 +3286,12 @@
 	dir = WEST
 
 /turf/open/floor/prison/darkredcorners2/west
+	dir = WEST
+
+/turf/open/floor/prison/white2/west
+	dir = WEST
+
+/turf/open/floor/prison/whitecorners2/west
 	dir = WEST
 
 /turf/open/floor/prison/darkyellow2/west
@@ -3309,6 +3376,9 @@
 	dir = NORTHWEST
 
 /turf/open/floor/prison/darkred2/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/prison/white2/northwest
 	dir = NORTHWEST
 
 /turf/open/floor/prison/darkyellow2/northwest
@@ -4181,6 +4251,12 @@
 /turf/open/floor/darkred2/southwest
 	dir = SOUTHWEST
 
+/turf/open/floor/white2
+	icon_state = "white2"
+
+/turf/open/floor/white2/southwest
+	dir = SOUTHWEST
+
 /turf/open/floor/darkyellow2
 	icon_state = "darkyellow2"
 
@@ -4305,6 +4381,15 @@
 	icon_state = "darkredcorners2"
 
 /turf/open/floor/darkredcorners2/north
+	dir = NORTH
+
+/turf/open/floor/white2/north
+	dir = NORTH
+
+/turf/open/floor/whitecorners2
+	icon_state = "whitecorners2"
+
+/turf/open/floor/whitecorners2/north
 	dir = NORTH
 
 /turf/open/floor/darkyellow2/north
@@ -4457,6 +4542,12 @@
 /turf/open/floor/darkredcorners2/east
 	dir = EAST
 
+/turf/open/floor/white2/east
+	dir = EAST
+
+/turf/open/floor/whitecorners2/east
+	dir = EAST
+
 /turf/open/floor/darkyellow2/east
 	dir = EAST
 
@@ -4541,6 +4632,9 @@
 /turf/open/floor/darkred2/northeast
 	dir = NORTHEAST
 
+/turf/open/floor/white2/northeast
+	dir = NORTHEAST
+
 /turf/open/floor/darkyellow2/northeast
 	dir = NORTHEAST
 
@@ -4611,6 +4705,9 @@
 	dir = SOUTHEAST
 
 /turf/open/floor/darkred2/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/white2/southeast
 	dir = SOUTHEAST
 
 /turf/open/floor/darkyellow2/southeast
@@ -4823,6 +4920,12 @@
 /turf/open/floor/darkredcorners2/west
 	dir = WEST
 
+/turf/open/floor/white2/west
+	dir = WEST
+
+/turf/open/floor/whitecorners2/west
+	dir = WEST
+
 /turf/open/floor/darkyellow2/west
 	dir = WEST
 
@@ -4911,6 +5014,9 @@
 	dir = NORTHWEST
 
 /turf/open/floor/darkred2/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/white2/northwest
 	dir = NORTHWEST
 
 /turf/open/floor/darkyellow2/northwest

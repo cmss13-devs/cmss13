@@ -34,10 +34,14 @@
 	name = "chest drawer"
 	icon_state = "chestdrawer"
 
+/obj/structure/filingcabinet/chestdrawer/wood
+	icon_state = "chestdrawerwood"
 
 /obj/structure/filingcabinet/filingcabinet //not changing the path to avoid unecessary map issues, but please don't name stuff like this in the future -Pete
 	icon_state = "tallcabinet"
 
+/obj/structure/filingcabinet/filingcabinet/wood
+	icon_state = "tallcabinetwood"
 
 /obj/structure/filingcabinet/Initialize()
 	. = ..()
@@ -261,3 +265,6 @@
 	name = "disk cabinet"
 	desc = "A large cabinet with drawers. This one is meant for storing floral data disks"
 	allowed_types = list(/obj/item/disk)
+
+/obj/structure/filingcabinet/wood
+	icon_state = "filingcabinetwood"

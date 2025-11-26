@@ -1,0 +1,3388 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/structure/window/framed/lv_colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
+	layer = 2.9
+	},
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/secure_storage)
+"al" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/west,
+/area/lv624/lazarus/secure_storage)
+"au" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe_alt,
+/area/lv624/lazarus/secure_storage)
+"av" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"ax" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"aA" = (
+/obj/structure/pipes/vents/scrubber_hybrisa,
+/obj/structure/machinery/light/blue,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"aF" = (
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	layer = 2.01;
+	dir = 1;
+	name = "rubber mat";
+	pixel_y = -38;
+	pixel_x = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"aQ" = (
+/obj/structure/machinery/door/poddoor/almayer/grey/open{
+	name = "Corporate Personnel Dome Lockdown Shutter";
+	id = "corp_person_main";
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/secure_storage)
+"bd" = (
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "Corporate Personnel Dome Armory Lockdown Shutter";
+	id = "corp_person_armory";
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/secure_storage)
+"bu" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/west_central_jungle)
+"bL" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lv624/ground/colony/west_tcomms_road)
+"bR" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"bW" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5;
+	dir = 1
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 6
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/landing_zones/lz2)
+"bY" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/cell_stripe_alt/north,
+/area/lv624/lazarus/secure_storage)
+"ca" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	layer = 2.31
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/almayer/grey/open{
+	name = "Corporate Personnel Dome Lockdown Shutter";
+	id = "corp_person_main";
+	dir = 4
+	},
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/secure_storage)
+"cb" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = -19;
+	pixel_y = 1
+	},
+/obj/effect/decal/strata_decals/grime/grime3,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"ch" = (
+/obj/structure/fence/dark/overgrown,
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"cj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square_red"
+	},
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/structure/machinery/light/red{
+	pixel_x = 16
+	},
+/obj/item/ammo_magazine/flamer_tank/survivor{
+	pixel_x = 6
+	},
+/obj/item/weapon/gun/flamer/survivor,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"ck" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"cr" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	layer = 2.31
+	},
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/structure/machinery/microwave{
+	pixel_y = 11
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"cz" = (
+/obj/structure/platform_decoration/metal/strata/alt{
+	dir = 4
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"cA" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"cF" = (
+/obj/structure/window/framed/lv_colony/reinforced,
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/secure_storage)
+"cJ" = (
+/obj/structure/machinery/door/airlock/light_grey_lv/solid{
+	dir = 1;
+	name = "\improper Central Complex Bathroom"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/almayer/grey/open{
+	name = "Corporate Personnel Dome Lockdown Shutter";
+	id = "corp_person_outer"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"cQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe_alt/north,
+/area/lv624/lazarus/secure_storage)
+"cU" = (
+/obj/structure/pipes/vents/scrubber_hybrisa,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"ds" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"dw" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/colony/west_tcomms_road)
+"dx" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"dD" = (
+/turf/closed/wall/lv_outpost/reinforced,
+/area/lv624/lazarus/secure_storage)
+"dF" = (
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/obj/structure/flora/jungle/planttop1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/colony/west_tcomms_road)
+"dS" = (
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/item/reagent_container/food/drinks/coffeecup,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/north,
+/area/lv624/lazarus/secure_storage)
+"eg" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"ek" = (
+/obj/structure/bed/hybrisa/bunkbed4,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv624/lazarus/secure_storage)
+"ey" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lv624/ground/jungle/west_central_jungle)
+"eJ" = (
+/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/structure/closet/secure_closet/guncabinet/alt/wy/high_access,
+/obj/item/storage/belt/marine/wy,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/turf/open/floor/prison/darkred2/north,
+/area/lv624/lazarus/secure_storage)
+"eR" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -7;
+	pixel_y = 17
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"fa" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"fi" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	layer = 2.31
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"fn" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/gm/dirt/brown/variant_5/west,
+/area/lv624/ground/colony/west_tcomms_road)
+"fG" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	layer = 2.31
+	},
+/turf/open/gm/dirt/brown/variant_5/west,
+/area/lv624/ground/colony/west_tcomms_road)
+"fS" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 16;
+	pixel_y = -24
+	},
+/obj/structure/sign/safety/security{
+	pixel_x = 4;
+	pixel_y = -24
+	},
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lv624/lazarus/landing_zones/lz2)
+"fW" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/closet/secure_closet/marshal/alt/wy_goon{
+	pixel_x = 7
+	},
+/obj/structure/closet/secure_closet/marshal/alt/wy_goon{
+	pixel_x = -7
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"fX" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"gl" = (
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/lv624/ground/colony/west_tcomms_road)
+"gw" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"gy" = (
+/obj/structure/largecrate/random/barrel/black,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkred2/north,
+/area/lv624/lazarus/secure_storage)
+"gE" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lv624/lazarus/landing_zones/lz2)
+"gJ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"gO" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1;
+	pixel_x = -7
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"gY" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"hd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe_alt/north,
+/area/lv624/lazarus/secure_storage)
+"hj" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/structure/reagent_dispensers/tank/fuel,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"hn" = (
+/obj/structure/platform/metal/strata/alt/west,
+/obj/structure/flora/jungle/vines/dead/light_1{
+	pixel_x = -32
+	},
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_central_jungle)
+"hC" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/cell_stripe_alt/north,
+/area/lv624/lazarus/secure_storage)
+"iA" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"iE" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"iI" = (
+/obj/structure/pipes/vents/scrubber_hybrisa,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv624/lazarus/secure_storage)
+"iK" = (
+/obj/structure/flora/jungle/vines/dead/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/colony/west_tcomms_road)
+"jc" = (
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"jx" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
+"jJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/white2,
+/area/lv624/lazarus/secure_storage)
+"jY" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"kj" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"ld" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
+"lg" = (
+/turf/open/gm/dirt/brown/variant_5,
+/area/lv624/lazarus/landing_zones/lz2)
+"ll" = (
+/turf/open/gm/dirt/brown/variant_5,
+/area/lv624/ground/colony/west_tcomms_road)
+"lz" = (
+/obj/structure/machinery/colony_floodlight{
+	light_color = "#dae2ff"
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_central_jungle)
+"lI" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"lK" = (
+/obj/structure/barricade/handrail/wire,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1;
+	dir = 4
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/ground/colony/west_tcomms_road)
+"lO" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/colony/west_tcomms_road)
+"mi" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"mk" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"mK" = (
+/obj/structure/platform/metal/strata/alt/east,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"mR" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_central_jungle)
+"mX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square_red"
+	},
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_y = 6
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_y = -3
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"mZ" = (
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"no" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"nD" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_x = 4;
+	pixel_y = 17
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"nK" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"nP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/almayer/grey/open{
+	name = "Corporate Personnel Dome Lockdown Shutter";
+	id = "corp_person_main";
+	dir = 4
+	},
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/secure_storage)
+"nS" = (
+/obj/structure/machinery/door_control/cl{
+	pixel_x = 25;
+	pixel_y = 2;
+	id = "corp_person_armory";
+	name = "Corporate Personnel Dome Armory Lockdown Shutter"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"nW" = (
+/obj/structure/cargo_container/hybrisa/containersextended/whitewyright,
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lv624/ground/colony/west_tcomms_road)
+"od" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkred2/southeast,
+/area/lv624/lazarus/secure_storage)
+"oq" = (
+/obj/structure/machinery/light/small/blue,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/lazarus/landing_zones/lz2)
+"ot" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"ou" = (
+/obj/structure/machinery/door/airlock/light_grey_lv/glass/autoname{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"oD" = (
+/obj/structure/transmitter/colony_net{
+	phone_category = "Lazarus Landing";
+	phone_color = "red";
+	phone_id = "Corporate Personnel Dome";
+	pixel_y = 30
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 9
+	},
+/turf/open/floor/prison/brown/north,
+/area/lv624/lazarus/secure_storage)
+"oE" = (
+/obj/structure/window/framed/lv_colony/reinforced,
+/obj/structure/machinery/door/poddoor/almayer/grey/open{
+	name = "Corporate Personnel Dome Lockdown Shutter";
+	id = "corp_person_outer";
+	dir = 4
+	},
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/secure_storage)
+"oF" = (
+/obj/structure/window/framed/lv_colony/reinforced,
+/obj/structure/machinery/door/poddoor/almayer/grey/open{
+	name = "Corporate Personnel Dome Lockdown Shutter";
+	id = "corp_person_outer"
+	},
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/secure_storage)
+"oG" = (
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/lv624/ground/colony/west_tcomms_road)
+"oH" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"oI" = (
+/obj/structure/machinery/door/airlock/light_grey_lv/glass/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"oQ" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"oU" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/effect/spawner/random/tool,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"oY" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_central_jungle)
+"pb" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"pg" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/obj/structure/machinery/light/blue{
+	dir = 8;
+	pixel_y = -12
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = 9;
+	pixel_y = 8
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 3;
+	pixel_y = -13
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_y = 30
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"pz" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	pixel_x = 15;
+	pixel_y = 15
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4
+	},
+/turf/open/floor/prison/white2/southwest,
+/area/lv624/lazarus/secure_storage)
+"pD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 29;
+	name = "Corporate Personnel Dome Lockdown Shutter";
+	id = "corp_person_main";
+	needs_power = 0
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/lv624/lazarus/secure_storage)
+"pJ" = (
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"pU" = (
+/obj/structure/bed/sofa/hybrisa/sofa/black{
+	icon_state = "couch_vet1_black";
+	pixel_x = 14;
+	pixel_y = -8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/north,
+/area/lv624/lazarus/secure_storage)
+"qa" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/colony/west_tcomms_road)
+"qn" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv624/lazarus/secure_storage)
+"qp" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"qu" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"qH" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	layer = 2;
+	pixel_y = 6
+	},
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/turf/open/floor/prison/white2/east,
+/area/lv624/lazarus/secure_storage)
+"qN" = (
+/obj/structure/fence/dark,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lv624/ground/colony/west_tcomms_road)
+"qW" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"qX" = (
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_central_jungle)
+"rb" = (
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"rq" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/closed/wall/lv_outpost/reinforced,
+/area/lv624/lazarus/landing_zones/lz2)
+"rv" = (
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/structure/machinery/hybrisa/coffee_machine,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 5;
+	pixel_y = 21
+	},
+/turf/open/floor/prison/white2/west,
+/area/lv624/lazarus/secure_storage)
+"rz" = (
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lv624/ground/jungle/south_central_jungle)
+"rK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	layer = 2.31
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"se" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/airlock/light_grey_lv/glass/autoname{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"sh" = (
+/turf/closed/wall/lv_outpost/reinforced/hull,
+/area/lv624/ground/jungle/south_central_jungle)
+"sk" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_y = -24
+	},
+/obj/structure/sign/safety/security{
+	pixel_x = 11;
+	pixel_y = -24
+	},
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lv624/lazarus/landing_zones/lz2)
+"sr" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/closed/wall/lv_outpost,
+/area/lv624/ground/colony/west_tcomms_road)
+"sB" = (
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lv624/ground/colony/west_tcomms_road)
+"sC" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	layer = 2.31
+	},
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/lv624/ground/colony/west_tcomms_road)
+"sR" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"sV" = (
+/obj/structure/machinery/door/airlock/light_grey_lv/glass/autoname{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"sY" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"sZ" = (
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_y = 30
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/colony/west_tcomms_road)
+"tn" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 29;
+	name = "Corporate Personnel Dome Lockdown Shutter";
+	id = "corp_person_main";
+	needs_power = 0
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/cell_stripe/west,
+/area/lv624/lazarus/secure_storage)
+"tz" = (
+/turf/open/floor/prison/darkred2,
+/area/lv624/lazarus/secure_storage)
+"tG" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkred2/north,
+/area/lv624/lazarus/secure_storage)
+"tR" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe,
+/area/lv624/lazarus/secure_storage)
+"tW" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	layer = 2;
+	pixel_y = 6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/white2/east,
+/area/lv624/lazarus/secure_storage)
+"un" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"ur" = (
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lv624/ground/colony/west_tcomms_road)
+"uu" = (
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/lazarus/landing_zones/lz2)
+"ux" = (
+/obj/structure/platform/metal/strata/alt/north,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
+	pixel_y = 25
+	},
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"uy" = (
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 16;
+	pixel_y = 6
+	},
+/obj/item/map{
+	pixel_y = 3
+	},
+/obj/item/device/radio{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/brown/north,
+/area/lv624/lazarus/secure_storage)
+"uz" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/jungle/south_central_jungle)
+"uL" = (
+/obj/structure/platform_decoration/metal/strata/alt{
+	dir = 8;
+	layer = 2.84
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"uN" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"uS" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"uU" = (
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1;
+	pixel_x = -7
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 1;
+	pixel_x = 1
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"uX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	layer = 2.31
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"uY" = (
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"va" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = 7;
+	pixel_y = 7;
+	buckling_x = 7;
+	buckling_y = 7
+	},
+/obj/structure/machinery/light/blue{
+	dir = 4;
+	pixel_y = -12
+	},
+/obj/structure/sign/poster/ad{
+	pixel_y = 32
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"vo" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 8
+	},
+/turf/open/floor/prison/white2/northeast,
+/area/lv624/lazarus/secure_storage)
+"vC" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1;
+	dir = 4
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5;
+	dir = 1
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/landing_zones/lz2)
+"vX" = (
+/obj/structure/platform_decoration/metal/strata/alt{
+	dir = 4
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"wE" = (
+/obj/structure/machinery/vending/cigarette/wy{
+	pixel_x = -1;
+	pixel_y = 22;
+	density = 0
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_y = -5;
+	pixel_x = -8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/white2/west,
+/area/lv624/lazarus/secure_storage)
+"wG" = (
+/obj/structure/platform/metal/strata/alt/west,
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_central_jungle)
+"wW" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_central_jungle)
+"wX" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"xe" = (
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/colony/west_tcomms_road)
+"xf" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c";
+	level = 2
+	},
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/lv624/ground/colony/west_tcomms_road)
+"xl" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/effect/spawner/random/toolbox{
+	layer = 4;
+	pixel_y = 14
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"xP" = (
+/obj/structure/pipes/standard/manifold/hidden/cyan{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe_alt,
+/area/lv624/lazarus/secure_storage)
+"xQ" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/landing_zones/lz2)
+"xU" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/stripe_red/west,
+/area/lv624/lazarus/secure_storage)
+"ym" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	layer = 2;
+	pixel_y = 6
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/white2/east,
+/area/lv624/lazarus/secure_storage)
+"ys" = (
+/obj/structure/fence/dark/overgrown,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"yx" = (
+/obj/structure/bed/hybrisa/bunkbed4{
+	dir = 8
+	},
+/obj/structure/sign/poster/pinup{
+	pixel_y = 32
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv624/lazarus/secure_storage)
+"yy" = (
+/obj/structure/machinery/meter{
+	pixel_y = 32
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkred2/north,
+/area/lv624/lazarus/secure_storage)
+"yT" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/cell_stripe,
+/area/lv624/lazarus/landing_zones/lz2)
+"zd" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"zh" = (
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/turf/template_noop,
+/area/template_noop)
+"zj" = (
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/jungle/south_central_jungle)
+"zC" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c";
+	level = 2
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"zE" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv624/lazarus/secure_storage)
+"zI" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"Ab" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_central_jungle)
+"AE" = (
+/obj/structure/machinery/light/red{
+	dir = 8;
+	pixel_y = -15
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square_red"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_box/magazine/misc/mre/emergency{
+	pixel_x = -7;
+	pixel_y = 12
+	},
+/obj/item/ammo_box/magazine/misc/mre/emergency{
+	pixel_x = -7;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"AF" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"Bf" = (
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "Corporate Personnel Dome Armory Lockdown Shutter";
+	id = "corp_person_armory";
+	dir = 4
+	},
+/turf/open/floor/plating/prison,
+/area/lv624/lazarus/secure_storage)
+"Bl" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1;
+	pixel_x = -7
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 1
+	},
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 32;
+	layer = 2.9;
+	pixel_x = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"Bx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square_red"
+	},
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/item/weapon/gun/shotgun/pump,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"Ci" = (
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lv624/lazarus/landing_zones/lz2)
+"Cj" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"CB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/lv624/lazarus/secure_storage)
+"CI" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"CN" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/white2/north,
+/area/lv624/lazarus/secure_storage)
+"CV" = (
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"DE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"DG" = (
+/obj/structure/sign/safety/ammunition{
+	pixel_x = -16;
+	pixel_y = 4
+	},
+/obj/structure/sign/safety/storage{
+	pixel_x = -16;
+	pixel_y = -8
+	},
+/turf/open/floor/prison/darkred2/northwest,
+/area/lv624/lazarus/secure_storage)
+"DN" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/obj/structure/machinery/light/small/blue,
+/turf/open/floor/prison/cell_stripe/west,
+/area/lv624/lazarus/secure_storage)
+"El" = (
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1;
+	pixel_x = -7
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 1
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"Et" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5;
+	dir = 1
+	},
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/landing_zones/lz2)
+"EH" = (
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/drinks/coffeecup,
+/turf/open/floor/prison/white2/west,
+/area/lv624/lazarus/secure_storage)
+"EO" = (
+/obj/structure/platform/metal/strata/alt/north,
+/obj/structure/platform/metal/strata/alt/west,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
+	pixel_x = 19;
+	pixel_y = 25
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"ES" = (
+/obj/structure/machinery/door/airlock/light_grey_lv/glass/autoname{
+	dir = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/grey/open{
+	name = "Corporate Personnel Dome Lockdown Shutter";
+	id = "corp_person_outer"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"Fg" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"Fr" = (
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	name = "rubber mat";
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/brown/north,
+/area/lv624/lazarus/secure_storage)
+"Fy" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = 7;
+	pixel_y = 7;
+	buckling_x = 7;
+	buckling_y = 7
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"FD" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/cell_stripe,
+/area/lv624/lazarus/landing_zones/lz2)
+"FX" = (
+/obj/structure/platform/metal/strata/alt/north,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"GK" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"GT" = (
+/obj/structure/machinery/door/airlock/light_grey_lv/solid/autoname,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"GV" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"GY" = (
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/west_central_jungle)
+"Hc" = (
+/obj/item/trash/cigbutt,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"He" = (
+/obj/structure/bed/hybrisa/bunkbed4{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv624/lazarus/secure_storage)
+"Hg" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/cell_stripe,
+/area/lv624/lazarus/landing_zones/lz2)
+"Hu" = (
+/obj/structure/machinery/light/small/blue{
+	light_color = "#dae2ff";
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/strata_decals/grime/grime1{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"Hv" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"HO" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/structure/sign/safety/one{
+	pixel_x = -21;
+	pixel_y = 32;
+	layer = 3
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"Ii" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"Im" = (
+/obj/structure/window/framed/lv_colony/reinforced,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"In" = (
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/ammo_box/magazine/misc/mre/emergency{
+	pixel_x = -7;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"Io" = (
+/obj/structure/machinery/light/small/blue,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkred2,
+/area/lv624/lazarus/secure_storage)
+"Iz" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	layer = 2.31
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 1
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1;
+	pixel_x = -7
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"IF" = (
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/lv624/lazarus/landing_zones/lz2)
+"II" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"IJ" = (
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/structure/largecrate/lisa{
+	pixel_y = 8
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"IX" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/obj/structure/sign/safety/storage{
+	pixel_x = 23;
+	pixel_y = 32;
+	layer = 3
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_x = -2;
+	pixel_y = 18;
+	layer = 3.1
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"Jr" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	layer = 2.31
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkred2/east,
+/area/lv624/lazarus/secure_storage)
+"Jw" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"JJ" = (
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1;
+	pixel_x = -7
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 1;
+	pixel_x = 1
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"JT" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"Kd" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/colony/west_tcomms_road)
+"Kg" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/colony/west_tcomms_road)
+"Kq" = (
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
+/obj/structure/barricade/metal{
+	layer = 3;
+	dir = 4
+	},
+/obj/structure/barricade/metal{
+	layer = 3;
+	dir = 8
+	},
+/obj/structure/curtain/open/colorable_transparent{
+	color = "#687d89";
+	alpha = 220
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/strata_decals/grime/grime2,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"Ky" = (
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
+"KF" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	layer = 2.31
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/west,
+/area/lv624/lazarus/secure_storage)
+"KK" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_y = 6;
+	layer = 3.1
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 9
+	},
+/turf/open/floor/prison/brown/north,
+/area/lv624/lazarus/secure_storage)
+"KR" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_central_jungle)
+"KV" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"KX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square_red"
+	},
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/item/ammo_magazine/rifle/extended,
+/obj/item/ammo_magazine/rifle/extended,
+/obj/item/ammo_magazine/rifle/extended,
+/obj/item/ammo_magazine/rifle/extended,
+/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"Ld" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"Lh" = (
+/obj/structure/machinery/light/small/blue,
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/prop{
+	desc = "An issue of The Pioneer's Standard, the newspaper circulating in UA-controlled space.";
+	icon = 'icons/obj/items/paper.dmi';
+	icon_state = "newspaper";
+	name = "The Pioneer's Standard";
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/item/tool/pen{
+	pixel_y = 10
+	},
+/turf/open/floor/prison/brown/north,
+/area/lv624/lazarus/secure_storage)
+"LI" = (
+/obj/structure/cargo_container/hybrisa/containersextended/whitewyleft,
+/turf/open/floor/brown_dirt/random_rocks,
+/area/lv624/ground/colony/west_tcomms_road)
+"LR" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"LZ" = (
+/obj/structure/platform/metal/strata/alt/north,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"Mi" = (
+/obj/structure/fence/dark,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"Mm" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/closed/wall/lv_outpost/reinforced/hull,
+/area/lv624/ground/jungle/south_central_jungle)
+"Ms" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe_alt/north,
+/area/lv624/ground/colony/west_tcomms_road)
+"Mv" = (
+/turf/closed/wall/lv_outpost/reinforced,
+/area/lv624/lazarus/corporate_dome)
+"Mw" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/white2/southeast,
+/area/lv624/lazarus/secure_storage)
+"MC" = (
+/turf/open/gm/dirt/brown/variant_5/west,
+/area/lv624/ground/colony/west_tcomms_road)
+"MP" = (
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32;
+	layer = 2.8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkred2/north,
+/area/lv624/lazarus/secure_storage)
+"MS" = (
+/obj/structure/platform/metal/strata/alt/north,
+/obj/structure/platform/metal/strata/alt/east,
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"Ne" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_x = 14;
+	pixel_y = 15
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"Nk" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"Nt" = (
+/obj/structure/flora/jungle/vines/blue/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"Nv" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"Ny" = (
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/cell_stripe_alt/north,
+/area/lv624/ground/colony/west_tcomms_road)
+"Nz" = (
+/obj/structure/bed/sofa/hybrisa/sofa/black{
+	icon_state = "couch_hori3_black";
+	pixel_x = -2;
+	pixel_y = 14
+	},
+/obj/structure/bed/sofa/hybrisa/sofa/black{
+	icon_state = "couch_vet3_black";
+	pixel_x = 14;
+	pixel_y = -8
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -18;
+	pixel_y = -16
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/storage/belt/gun/m4a3/wy/mod88_near_empty{
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/brown/north,
+/area/lv624/lazarus/secure_storage)
+"ND" = (
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"NN" = (
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"NO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c";
+	level = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"NR" = (
+/turf/open/floor/hybrisa/metal/stripe_red/west,
+/area/lv624/lazarus/secure_storage)
+"Ob" = (
+/obj/structure/platform/metal/strata/alt/north,
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"Or" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1;
+	dir = 4
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5;
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/landing_zones/lz2)
+"OA" = (
+/obj/structure/machinery/door/airlock/light_grey_lv/glass/autoname{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/almayer/grey/open{
+	name = "Corporate Personnel Dome Lockdown Shutter";
+	id = "corp_person_outer"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"OC" = (
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/lazarus/landing_zones/lz2)
+"OF" = (
+/obj/structure/flora/jungle/planttop1,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"OR" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"Po" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/closed/wall/lv_outpost,
+/area/lv624/ground/jungle/south_central_jungle)
+"Pt" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1;
+	pixel_x = -7
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 1
+	},
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"Pz" = (
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
+"PD" = (
+/turf/open/floor/prison/darkred2/southwest,
+/area/lv624/lazarus/secure_storage)
+"PP" = (
+/obj/structure/bed/sofa/hybrisa/sofa/black{
+	icon_state = "couch_hori1_black";
+	pixel_y = 14
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/brown/north,
+/area/lv624/lazarus/secure_storage)
+"PW" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"Qa" = (
+/obj/structure/flora/jungle/vines/blue/light_1,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"Qe" = (
+/obj/structure/closet/crate/trashcart/alt,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"Qi" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/turf/open/floor/prison/cell_stripe_alt,
+/area/lv624/ground/jungle/south_central_jungle)
+"QE" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/white2/northwest,
+/area/lv624/lazarus/secure_storage)
+"QT" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"QV" = (
+/obj/structure/platform/metal/strata/alt/north,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 8
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = -4
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"Rg" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"Ri" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/lv624/ground/colony/west_tcomms_road)
+"Rk" = (
+/obj/structure/flora/jungle/vines/dead/light_1,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"Rw" = (
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_White{
+	dir = 8;
+	pixel_y = 16;
+	pixel_x = 3
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 1
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1;
+	pixel_x = -7
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"RA" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe,
+/area/lv624/lazarus/secure_storage)
+"RZ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/darkred2/east,
+/area/lv624/lazarus/secure_storage)
+"Sf" = (
+/obj/structure/machinery/light/small/blue,
+/turf/open/floor/prison/darkred2,
+/area/lv624/lazarus/secure_storage)
+"Sj" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"Sp" = (
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv624/lazarus/secure_storage)
+"St" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 3
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"Sv" = (
+/obj/structure/machinery/door/airlock/multi_tile/lv_double{
+	name = "\improper Colonial Administration Building"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"Sx" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 5
+	},
+/obj/structure/machinery/light/blue,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"SB" = (
+/obj/structure/platform/metal/strata/alt/east,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"SC" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"SE" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"SU" = (
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
+/obj/structure/barricade/metal{
+	layer = 3;
+	dir = 8
+	},
+/obj/structure/barricade/metal{
+	layer = 3;
+	dir = 4
+	},
+/obj/structure/curtain/open/colorable_transparent{
+	color = "#687d89";
+	alpha = 220
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/strata_decals/grime/grime2,
+/obj/item/tool/soap/weyland_yutani,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"Td" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"Tg" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"Tj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	layer = 2.31
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/east,
+/area/lv624/lazarus/secure_storage)
+"Tp" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt_2/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_west_jungle)
+"TQ" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/machinery/light/blue,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"UG" = (
+/turf/closed/wall/lv_outpost/reinforced,
+/area/lv624/lazarus/landing_zones/lz2)
+"US" = (
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_y = 30
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"UY" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/darkred2,
+/area/lv624/lazarus/secure_storage)
+"Vp" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"Vx" = (
+/obj/structure/machinery/colony_floodlight{
+	light_color = "#dae2ff"
+	},
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"VH" = (
+/obj/structure/barricade/handrail/wire,
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 4
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 1
+	},
+/obj/effect/decal/lv_decals/red_mud_corner{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/ground/colony/west_tcomms_road)
+"VK" = (
+/obj/structure/bed/hybrisa/bunkbed4{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetblack,
+/area/lv624/lazarus/secure_storage)
+"VP" = (
+/obj/structure/platform/metal/strata/alt/west,
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_central_jungle)
+"Wr" = (
+/obj/structure/closet/secure_closet/marshal/alt/wy_goon{
+	pixel_x = 7
+	},
+/obj/structure/closet/secure_closet/marshal/alt/wy_goon{
+	pixel_x = -7
+	},
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"WI" = (
+/obj/structure/fence/dark/overgrown,
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"WT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/lv624/lazarus/secure_storage)
+"WU" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lv624/ground/colony/west_tcomms_road)
+"WW" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/auto_turf/lv_sand/layer0,
+/area/lv624/ground/colony/west_tcomms_road)
+"Xb" = (
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/lv624/ground/colony/west_tcomms_road)
+"Xc" = (
+/turf/template_noop,
+/area/template_noop)
+"Xe" = (
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lv624/ground/jungle/south_central_jungle)
+"Xi" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	layer = 2.31
+	},
+/obj/structure/surface/table{
+	color = "#8B7B5B"
+	},
+/obj/item/reagent_container/food/drinks/coffeecup,
+/obj/structure/machinery/camera/autoname{
+	dir = 1
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = -7;
+	pixel_y = 10
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"Xj" = (
+/obj/structure/flora/jungle/vines/blue/light_2,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
+"Xx" = (
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 1;
+	pixel_x = -7
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/lazarus/secure_storage)
+"Xz" = (
+/obj/structure/platform/metal/strata/alt/west,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_central_jungle)
+"XF" = (
+/obj/structure/flora/jungle/vines/dead/light_3,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
+"XG" = (
+/turf/open/gm/dirt/brown/variant_5,
+/area/lv624/ground/jungle/south_central_jungle)
+"XK" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 4
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5;
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/landing_zones/lz2)
+"XT" = (
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
+	},
+/obj/structure/surface/rack{
+	color = "#aaaab5"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square_red"
+	},
+/obj/item/storage/belt/gun/m39/corporate,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"Ym" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"Yn" = (
+/obj/structure/sign/safety/debark_lounge{
+	pixel_x = 16;
+	pixel_y = -24
+	},
+/obj/structure/machinery/light/small/blue,
+/obj/item/trash/cigbutt,
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lv624/lazarus/landing_zones/lz2)
+"Yp" = (
+/obj/structure/platform/metal/strata/alt/north,
+/obj/structure/flora/jungle/vines/dead/heavy{
+	pixel_y = 30
+	},
+/obj/structure/flora/jungle/vines/dead/light_2,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_west_jungle)
+"Yq" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe,
+/area/lv624/lazarus/landing_zones/lz2)
+"Yr" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/lv_grass/layer0,
+/area/lv624/ground/jungle/south_central_jungle)
+"Yv" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 2;
+	explo_proof = 1;
+	needs_power = 0;
+	emp_proof = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv624/ground/jungle/south_central_jungle)
+"YR" = (
+/turf/open/floor/brown_dirt/random_rocks_alt{
+	dir = 6
+	},
+/area/lv624/lazarus/landing_zones/lz2)
+"Zb" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/auto_turf/lv_grass/layer1,
+/area/lv624/ground/jungle/south_central_jungle)
+"ZD" = (
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkred2/northeast,
+/area/lv624/lazarus/secure_storage)
+"ZN" = (
+/obj/structure/toilet{
+	dir = 4;
+	pixel_y = 3;
+	pixel_x = 1;
+	buckling_x = 1;
+	buckling_y = 3
+	},
+/obj/structure/window/reinforced/tinted/colorable{
+	dir = 1;
+	color = "#8eaeb0";
+	layer = 2;
+	pixel_y = 2
+	},
+/obj/structure/machinery/door/window/colorable{
+	pixel_y = 1;
+	layer = 2.9;
+	color = "#8eaeb0"
+	},
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	layer = 2.01;
+	dir = 1;
+	name = "rubber mat";
+	pixel_y = -2;
+	pixel_x = 7
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/strata_decals/grime/grime1{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/secure_storage)
+"ZW" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate_alt/west,
+/area/lv624/lazarus/secure_storage)
+"ZX" = (
+/obj/effect/decal/lv_decals/red_mud_corner,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.5;
+	dir = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1;
+	dir = 4
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/floor_plate,
+/area/lv624/lazarus/landing_zones/lz2)
+
+(1,1,1) = {"
+jx
+jx
+jx
+jx
+jx
+ld
+Qa
+jc
+JT
+JT
+JT
+Hv
+JT
+pb
+Tg
+mi
+JT
+Fg
+JT
+JT
+jc
+Qa
+ld
+jx
+"}
+(2,1,1) = {"
+UG
+UG
+UG
+jx
+ld
+Qa
+jc
+JT
+JT
+JT
+JT
+JT
+Tp
+ck
+Tg
+Jw
+JT
+JT
+Td
+JT
+jc
+jc
+Qa
+jx
+"}
+(3,1,1) = {"
+OC
+OC
+UG
+ld
+ld
+gw
+pJ
+JT
+jx
+jc
+JT
+pb
+ck
+Tg
+Tg
+iA
+jc
+JT
+JT
+JT
+JT
+jc
+JT
+jx
+"}
+(4,1,1) = {"
+OC
+OC
+UG
+rq
+ld
+gw
+JT
+no
+Rg
+JT
+qu
+St
+Tg
+sY
+iA
+jc
+JT
+jc
+SC
+no
+Nk
+JT
+JT
+jx
+"}
+(5,1,1) = {"
+Ci
+OC
+UG
+Ky
+Xj
+JT
+JT
+JT
+JT
+jc
+JT
+sR
+sY
+jc
+JT
+JT
+JT
+un
+jc
+zI
+JT
+JT
+jx
+jx
+"}
+(6,1,1) = {"
+oq
+dD
+dD
+dD
+dD
+dD
+JT
+JT
+dD
+dD
+dD
+dD
+dD
+dD
+SB
+SB
+mK
+SB
+mK
+uL
+JT
+Pz
+jx
+jx
+"}
+(7,1,1) = {"
+Et
+dD
+yx
+iI
+He
+dD
+oE
+oE
+dD
+XT
+AE
+Bx
+mX
+dD
+dD
+dD
+dD
+dD
+dD
+FX
+OR
+Xj
+ld
+jx
+"}
+(8,1,1) = {"
+Hg
+cJ
+CV
+ot
+av
+oI
+CI
+Qe
+dD
+eJ
+ZW
+CV
+CV
+cj
+dD
+Kq
+Hu
+ZN
+dD
+Yp
+Cj
+Ld
+XF
+jx
+"}
+(9,1,1) = {"
+vC
+dD
+VK
+zE
+ek
+dD
+IX
+Sx
+dD
+eJ
+CV
+CV
+nS
+KX
+dD
+SU
+ND
+kj
+dD
+MS
+uL
+oH
+II
+jx
+"}
+(10,1,1) = {"
+fS
+dD
+dD
+dD
+dD
+dD
+HO
+fX
+dD
+dD
+Bf
+bd
+dD
+dD
+dD
+dD
+GT
+dD
+dD
+dD
+LZ
+JT
+II
+jx
+"}
+(11,1,1) = {"
+uu
+gE
+XK
+dD
+pg
+nD
+eR
+ax
+Im
+DG
+xU
+NR
+PD
+uN
+ab
+cb
+Ne
+Vp
+IJ
+dD
+QV
+JT
+JT
+ld
+"}
+(12,1,1) = {"
+uu
+lg
+yT
+OA
+hC
+QE
+pz
+au
+ou
+Sp
+El
+Xx
+UY
+Pt
+ab
+cr
+JJ
+uU
+In
+dD
+LZ
+jc
+JT
+ld
+"}
+(13,1,1) = {"
+IF
+uu
+xQ
+oF
+CV
+CN
+jJ
+GV
+dD
+MP
+KV
+Ii
+Io
+dD
+dD
+Xi
+cA
+lI
+aA
+dD
+FX
+JT
+jc
+ld
+"}
+(14,1,1) = {"
+IF
+uu
+Yq
+OA
+cQ
+vo
+Mw
+xP
+se
+qn
+oU
+jY
+RA
+Sv
+bY
+uX
+Ym
+aF
+Wr
+dD
+FX
+JT
+jc
+ld
+"}
+(15,1,1) = {"
+uu
+YR
+ZX
+dD
+va
+Fy
+ZW
+ax
+Im
+gy
+qW
+NO
+tR
+gJ
+hd
+PW
+ZW
+CV
+fW
+dD
+FX
+JT
+jc
+jx
+"}
+(16,1,1) = {"
+sk
+dD
+dD
+dD
+dD
+dD
+Bl
+gO
+dD
+yy
+Rw
+Iz
+Sf
+dD
+dD
+oD
+uy
+Lh
+dD
+dD
+FX
+jc
+SC
+jx
+"}
+(17,1,1) = {"
+bW
+dD
+wE
+EH
+rv
+cF
+wX
+TQ
+dD
+tG
+dx
+rK
+tz
+xl
+ab
+PP
+dS
+Fr
+dD
+EO
+vX
+JT
+jx
+jx
+"}
+(18,1,1) = {"
+FD
+ES
+CV
+QT
+CV
+sV
+CV
+cU
+dD
+ZD
+RZ
+Jr
+od
+hj
+ab
+Nz
+pU
+KK
+dD
+ux
+JT
+OR
+jx
+jx
+"}
+(19,1,1) = {"
+Or
+oF
+ym
+qH
+tW
+dD
+oE
+oE
+dD
+pD
+WT
+Tj
+CB
+dD
+dD
+dD
+dD
+dD
+dD
+Ob
+oH
+XF
+jx
+jx
+"}
+(20,1,1) = {"
+Yn
+dD
+dD
+dD
+dD
+dD
+Kd
+Kd
+dD
+aQ
+nP
+ca
+nP
+dD
+Xz
+Xz
+VP
+hn
+wG
+cz
+iE
+oY
+Ab
+Ab
+"}
+(21,1,1) = {"
+OC
+OC
+UG
+dw
+dw
+qa
+qp
+Kd
+dD
+tn
+al
+KF
+DN
+dD
+qX
+LR
+qX
+LR
+oQ
+nK
+KR
+bR
+oY
+Ab
+"}
+(22,1,1) = {"
+Mv
+Mv
+UG
+UG
+iK
+eg
+Vx
+Kd
+Mi
+rb
+rb
+fi
+MC
+Mi
+LR
+qX
+fa
+mR
+LR
+qX
+nK
+bR
+oY
+Ab
+"}
+(23,1,1) = {"
+Xc
+Xc
+dw
+dw
+lO
+Rk
+Kd
+Kd
+Mi
+rb
+rb
+fG
+sB
+ys
+LR
+qX
+qX
+ds
+qX
+LR
+LR
+bR
+Ab
+Ab
+"}
+(24,1,1) = {"
+Xc
+Xc
+dw
+iK
+dw
+dF
+AF
+Kd
+ys
+rb
+MC
+fi
+ur
+ys
+LR
+lz
+LR
+LR
+LR
+Sj
+oY
+bR
+oY
+Ab
+"}
+(25,1,1) = {"
+Xc
+Xc
+Xc
+Xc
+Xc
+sZ
+mZ
+Kd
+ys
+rb
+MC
+fi
+MC
+ys
+LR
+LR
+qX
+SE
+LR
+LR
+oY
+LR
+bR
+Ab
+"}
+(26,1,1) = {"
+Xc
+Xc
+Xc
+Xc
+Xc
+xe
+qa
+Kd
+ys
+rb
+rb
+sC
+rb
+ys
+oQ
+LR
+Yr
+qX
+LR
+oY
+oY
+bR
+oY
+Ab
+"}
+(27,1,1) = {"
+Xc
+Xc
+Xc
+Xc
+Xc
+US
+qp
+qa
+ys
+ur
+rb
+fG
+ur
+WI
+GK
+LR
+LR
+mk
+LR
+LR
+bR
+LR
+oY
+Ab
+"}
+(28,1,1) = {"
+zh
+Xc
+Xc
+Xc
+Xc
+uY
+Kd
+Kd
+Mi
+sB
+rb
+sC
+uS
+Kg
+oY
+wW
+LR
+Zb
+LR
+LR
+Ab
+oY
+Ab
+Ab
+"}
+(29,1,1) = {"
+Xc
+Xc
+Xc
+Xc
+Xc
+Xc
+Mi
+Mi
+qN
+rb
+rb
+fG
+ur
+sr
+oY
+Nt
+LR
+LR
+qX
+LR
+LR
+oY
+Ab
+Ab
+"}
+(30,1,1) = {"
+Xc
+Xc
+Xc
+Xc
+Xc
+Xc
+VH
+WU
+sB
+zC
+Nv
+xf
+ur
+sr
+Po
+oQ
+LR
+Yr
+Ab
+LR
+gY
+oY
+oY
+Ab
+"}
+(31,1,1) = {"
+Xc
+Xc
+Xc
+Xc
+Xc
+Xc
+Ms
+WW
+Ri
+gl
+rb
+MC
+sB
+ch
+oQ
+LR
+LR
+OF
+mR
+LR
+LR
+Nt
+oY
+Ab
+"}
+(32,1,1) = {"
+Xc
+Xc
+Xc
+Xc
+Xc
+Xc
+Ny
+oG
+rb
+DE
+rb
+MC
+rb
+ys
+LR
+LR
+Yr
+qX
+zd
+qX
+LR
+oY
+oY
+Ab
+"}
+(33,1,1) = {"
+Xc
+Xc
+Xc
+Xc
+Xc
+Xc
+lK
+rb
+rb
+DE
+MC
+rb
+rb
+Mi
+LR
+LR
+LR
+mk
+LR
+ds
+LR
+Mm
+sh
+sh
+"}
+(34,1,1) = {"
+Xc
+Xc
+Xc
+Xc
+Xc
+Xc
+ey
+rb
+rb
+fn
+rb
+rb
+rb
+ll
+rz
+XG
+XG
+XG
+uz
+Xe
+zj
+Qi
+Yv
+sh
+"}
+(35,1,1) = {"
+Xc
+Xc
+Xc
+Xc
+Xc
+bu
+bu
+uS
+bL
+fn
+MC
+rb
+rb
+rb
+zj
+zj
+zj
+zj
+zj
+XG
+zj
+Qi
+Yv
+sh
+"}
+(36,1,1) = {"
+Xc
+Xc
+Xc
+Xc
+Xc
+bu
+bu
+LI
+rb
+fn
+rb
+sB
+ll
+rb
+XG
+zj
+zj
+XG
+XG
+zj
+XG
+Qi
+Yv
+sh
+"}
+(37,1,1) = {"
+Xc
+Xc
+Xc
+Xc
+Xc
+GY
+bu
+nW
+Hc
+DE
+rb
+rb
+Hc
+rb
+uz
+rz
+zj
+zj
+zj
+zj
+zj
+Qi
+Yv
+sh
+"}
+(38,1,1) = {"
+Xc
+Xc
+Xc
+Xc
+Xc
+GY
+bu
+NN
+Xb
+DE
+rb
+rb
+uS
+Mi
+LR
+ds
+LR
+LR
+LR
+LR
+LR
+Mm
+sh
+sh
+"}

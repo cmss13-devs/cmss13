@@ -11,7 +11,7 @@
 	wrenchable = TRUE
 	unslashable = FALSE
 	var/amount_per_transfer_from_this = 10
-	var/possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,200,240,300)
+	var/possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,300,400,500)
 	var/chemical = ""
 	var/dispensing = TRUE
 

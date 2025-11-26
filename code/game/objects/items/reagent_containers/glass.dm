@@ -378,7 +378,7 @@
 	matter = list("glass" = 30000)
 	volume = 500
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,250,300,500)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,300,400,500)
 
 
 /obj/item/reagent_container/glass/beaker/vial
@@ -389,7 +389,7 @@
 	volume = 30
 	amount_per_transfer_from_this = 10
 	matter = list()
-	possible_transfer_amounts = list(5,10,15,20,25,30)
+	possible_transfer_amounts = list(1,5,10,15,20,25,30)
 	flags_atom = FPRINT|OPENCONTAINER
 	ground_offset_x = 9
 	ground_offset_y = 8
@@ -526,36 +526,36 @@
 	. = ..()
 
 /obj/item/reagent_container/glass/canister/ammonia
-	name = "Ammonia canister"
+	name = "ammonia canister"
 	desc = "A canister containing pressurized ammonia. Can be used to refill storage tanks."
 	icon_state = "canister_ammonia"
 	item_state = "canister_ammonia"
 	reagent = "ammonia"
 
 /obj/item/reagent_container/glass/canister/methane
-	name = "Methane canister"
+	name = "methane canister"
 	desc = "A canister containing pressurized methane. Can be used to refill storage tanks."
 	icon_state = "canister_methane"
 	item_state = "canister_methane"
 	reagent = "methane"
 
 /obj/item/reagent_container/glass/canister/pacid
-	name = "Polytrinic acid canister"
+	name = "polytrinic acid canister"
 	desc = "A canister containing pressurized polytrinic acid. Can be used to refill storage tanks."
 	icon_state = "canister_pacid"
 	item_state = "canister_pacid"
 	reagent = "pacid"
 
 /obj/item/reagent_container/glass/canister/oxygen
-	name = "Oxygen canister"
+	name = "oxygen canister"
 	desc = "A canister containing pressurized oxygen. Can be used to refill storage tanks."
 	icon_state = "canister_oxygen"
 	item_state = "canister_oxygen"
 	reagent = "oxygen"
 
 /obj/item/reagent_container/glass/pressurized_canister // See the Pressurized Reagent Canister Pouch
-	name = "Pressurized canister"
-	desc = "A pressurized container. The inner part of a pressurized reagent canister pouch. Only compatible with its pouch, machinery or a storage tank."
+	name = "pressurized canister"
+	desc = "A pressurized container. The inner part of a pressurized reagent canister pouch. Only compatible with its pouch, machinery, or a storage tank."
 	icon = 'icons/obj/items/tank.dmi'
 	icon_state = "pressurized_reagent_container"
 	item_state = "anesthetic"
@@ -602,7 +602,6 @@
 	..()
 
 
-
 /obj/item/reagent_container/glass/bucket
 	desc = "It's a bucket. Holds 120 units."
 	name = "bucket"
@@ -616,7 +615,7 @@
 	matter = list("metal" = 2000)
 	w_class = SIZE_MEDIUM
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,100,120)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120)
 	volume = 120
 	flags_atom = FPRINT|OPENCONTAINER
 
@@ -679,13 +678,13 @@
 
 /obj/item/reagent_container/glass/bucket/mopbucket
 	name = "mop bucket"
-	desc = "A larger bucket, typically used with a mop. Holds 240 units"
+	desc = "A larger bucket, typically used with a mop. Holds 240 units."
 	icon_state = "mopbucket"
 	item_state = "mopbucket"
 	matter = list("metal" = 4000)
 	w_class = SIZE_LARGE
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,100,120,150,240)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240)
 	volume = 240
 	flags_atom = FPRINT|OPENCONTAINER
 
@@ -696,7 +695,7 @@
 	item_state = "janibucket"
 	matter = list("metal" = 8000)
 	volume = 300
-	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,75,100,120,150,240,300)
+	possible_transfer_amounts = list(5,10,15,20,25,30,40,50,60,80,100,120,150,240,300)
 	w_class = SIZE_LARGE
 
 
@@ -707,7 +706,7 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "rag"
 	amount_per_transfer_from_this = 5
-	possible_transfer_amounts = list(5)
+	possible_transfer_amounts = list(1,2,3,4,5)
 	volume = 5
 	can_be_placed_into = null
 	flags_atom = FPRINT|OPENCONTAINER

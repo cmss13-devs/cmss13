@@ -5,8 +5,8 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
 	)
-	/// reduced
-	attack_speed = 4
+
+	attack_speed = 11
 
 /*
  * Retractor
@@ -16,9 +16,12 @@
 	name = "retractor"
 	desc = "A tool for surgery used to hold skin, tissues, or organs apart to expose and access the surgical site."
 	icon_state = "retractor"
+	force = 10
+	throwforce = 5
 	matter = list("metal" = 10000, "glass" = 5000)
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
+	attack_verb = list("attacked", "hit", "bludgeoned", "pummeled", "beat")
 
 /obj/item/tool/surgery/retractor/predatorretractor
 	name = "opener"
@@ -33,10 +36,13 @@
 	desc = "A tool for surgery used to control bleeding by pinching blood vessels closed. It can also be used to remove foreign objects and manipulate and lift small organs and tissues."
 	icon_state = "hemostat"
 	matter = list("metal" = 5000, "glass" = 2500)
+	force = 5
+	throwforce = 1
+	sharp = IS_SHARP_ITEM_ACCURATE
 	flags_atom = FPRINT|CONDUCT
+	flags_item = CAN_DIG_SHRAPNEL
 	w_class = SIZE_SMALL
-
-	attack_verb = list("attacked", "pinched", "pierced")
+	attack_verb = list("attacked", "pinched", "pierced", "punctured")
 
 /obj/item/tool/surgery/hemostat/predatorhemostat
 	name = "pincher"
@@ -51,11 +57,13 @@
 	desc = "A tool for surgery that uses extreme heat to stop bleeding, seal blood vessels, and remove unwanted tissue. Closes incisions by burning things, in this case."
 	icon_state = "cautery"
 	matter = list("metal" = 5000, "glass" = 2500)
+	force = 10
+	throwforce = 5
+	damtype = "fire"
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_TINY
 	flags_item = ANIMATED_SURGICAL_TOOL
-
-	attack_verb = list("burnt")
+	attack_verb = list("burned", "seared", "scorched", "singed")
 
 /obj/item/tool/surgery/cautery/predatorcautery
 	name = "cauterizer"
@@ -73,9 +81,10 @@
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	matter = list("metal" = 15000, "glass" = 10000)
 	flags_atom = FPRINT|CONDUCT
-	force = 0
+	force = 20
+	throwforce = 9
+	sharp = IS_SHARP_ITEM_ACCURATE //it makes holes in skin and bone... Yes, sharp.
 	w_class = SIZE_SMALL
-
 	attack_verb = list("drilled", "bored", "gored")
 
 /obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill
@@ -106,7 +115,6 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 10000, "glass" = 5000)
-
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/tool/surgery/scalpel/predatorscalpel
@@ -119,7 +127,7 @@
 /obj/item/tool/surgery/scalpel/laser
 	name = "prototype laser scalpel"
 	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. Sadly, this is only a prototype that looks like a laser slapped on a scalpel, so don't expect any miracles."
-	desc_lore = "The prototype laser scalpel was developed during the mid-1900s, a time where scientists had yet to solve their quandary of developing a laser that could cut through flesh and and burn the blood vessels closed simultaneously; they settled on a compromise: slapping a superheated directed laser beneath the blade of the scalpel and hoping the laser burns the incision the blade makes. While the prototype ironically functioned perfectly as a cautery, it left something to be desired where bloodless were concerned. Somehow, the big heads in research forgot to calibrate the width of the laser to be equivalent to the precise width of the incision made by the blade."
+	desc_lore = "The prototype laser scalpel was developed during the mid-1900s, a time where scientists had yet to solve their quandary of developing a laser that could cut through flesh and and burn the blood vessels closed simultaneously; they settled on a compromise: slapping a superheated directed laser beneath the blade of the scalpel and hoping the laser burns the incision the blade makes. While the prototype ironically functioned perfectly as a cautery, it left something to be desired where bloodless incisions were a concern. Somehow, the big heads in research forgot to calibrate the width of the laser to be equivalent to the precise width of the incision made by the blade, leaving some blood vessels untouched in the process."
 	icon_state = "scalpel_laser"
 	damtype = "fire"
 	flags_item = ANIMATED_SURGICAL_TOOL
@@ -146,6 +154,9 @@
 	force = 15
 	bloodlessprob = 100
 	black_market_value = 35
+
+
+
 
 /*
  * Special Variants
@@ -180,16 +191,15 @@
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	flags_atom = FPRINT|CONDUCT
-	force = 0
+	force = 24 //amputates a marine's arm in 3 hits, if you wanted.
+	sharp = IS_SHARP_ITEM_BIG
 	w_class = SIZE_SMALL
-	throwforce = 9
+	throwforce = 10
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 20000,"glass" = 10000)
 	flags_item = ANIMATED_SURGICAL_TOOL
-
 	attack_verb = list("attacked", "slashed", "sawed", "cut", "maimed", "gored")
-	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 
 /obj/item/tool/surgery/circular_saw/predatorbonesaw
@@ -364,13 +374,14 @@
 
 /obj/item/tool/surgery/bonesetter
 	name = "bone setter"
+	desc = "Known formally as 'bone reduction forceps,' it is a surgical tool used for a procedure called 'fracture reduction', during which it to repositions fractured bones into their proper positions so they may heal properly."
 	icon_state = "bonesetter"
-	force = 0
+	force = 15
 	throwforce = 9
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
-	attack_verb = list("attacked", "hit", "bludgeoned", "pummeled", "beat")
+	attack_verb = list("grasped", "pinched", "pulled", "yanked")
 	matter = list("plastic" = 7500)
 
 /obj/item/tool/surgery/bonesetter/predatorbonesetter

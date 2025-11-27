@@ -1,5 +1,3 @@
-
-
 // Surgery Tools
 /obj/item/tool/surgery
 	icon = 'icons/obj/items/surgery_tools.dmi'
@@ -160,7 +158,7 @@
 
 /obj/item/tool/surgery/scalpel/manager
 	name = "incision management system"
-	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares, seals, and widens an incision all at once, allowing for the immediate commencement of therapeutic steps. It can only be used to begin surgeries."
+	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares, clamps, and widens an incision all at once, allowing for the immediate commencement of therapeutic steps. It can only be used to begin surgeries."
 	icon_state = "scalpel_manager"
 	force = 7.5
 	flags_item = ANIMATED_SURGICAL_TOOL
@@ -303,14 +301,14 @@
  */
 
 /obj/item/tool/surgery/FixOVein
-	name = "\improper Fix-O'Vein"
+	name = "\improper FixOVein"
 	icon_state = "fixovein"
-	desc = "A surgical tool used to repair broken blood vessels. The tool can also be used to reconnect other ligaments and tissues in a pinch."
-	desc_lore = "A recently-developed surgical tool used to repair broken blood vessels by secreting a membrane of synthetic connective tissue to provide a framework for the blood vessel until it naturally repairs itself. The membrane it secrets can also be used to reconnect other ligaments and tissues. Since it operates on a cellular level, it is practically infinite."
+	desc = "A surgical tool used to repair broken blood vessels using a synthetic membrane. The tool can also be used to reconnect other ligaments and tissues in a pinch."
+	desc_lore = "Hemophilics everywhere can thank an anonymous surgeon and their love for white doves for the development of this tool. After one of their feather babies experienced disastrous molts and the subsequent breaking of their blood feathers, the surgeon began to study the development of growing feathers to look for a solution. Inspired by the protective keratin sheath surrounding blood feathers as they grow, they worked with scientists to develop a tool that secretes a membrane of synthetic connective tissue to provide a framework and protective casing for the healing blood vessel until it naturally repairs itself. As the blood vessel heals, the synthetic tissue slowly sloughs off and dissolves, much like how the sheath on a pin feather crumbles when the feather is fully developed. The membrane it secrets can also be used to reconnect other ligaments and tissues. Since it operates on a cellular level, it is practically infinite. Its efficacy has earned it a spot on every surgeon's surgical tray."
 	force = 0
 	throwforce = 1
 	matter = list("plastic" = 5000)
-
+how 
 	w_class = SIZE_SMALL
 	var/usage_amount = 10
 

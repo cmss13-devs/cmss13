@@ -124,7 +124,7 @@
  */
 /obj/item/tool/surgery/scalpel/laser
 	name = "prototype laser scalpel"
-	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. Sadly, this is only a prototype that looks like a laser slapped on a scalpel, so don't expect any miracles."
+	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. Sadly, this is only a prototype that looks like a superheated laser crudely slapped on a modified scalpel, so don't expect any miracles."
 	desc_lore = "The prototype laser scalpel was developed during the mid-1900s, a time where scientists had yet to solve their quandary of developing a laser that could cut through flesh and and burn the blood vessels closed simultaneously; they settled on a compromise: slapping a superheated directed laser beneath the blade of the scalpel and hoping the laser burns the incision the blade makes. While the prototype ironically functioned perfectly as a cautery, it left something to be desired where bloodless incisions were a concern. Somehow, the big heads in research forgot to calibrate the width of the laser to be equivalent to the precise width of the incision made by the blade, leaving some blood vessels untouched in the process."
 	icon_state = "scalpel_laser"
 	damtype = "fire"
@@ -145,16 +145,13 @@
 
 /obj/item/tool/surgery/scalpel/laser/advanced
 	name = "advanced laser scalpel"
-	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. This one looks to be the pinnacle of precision energy cutlery!"
+	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. This one's laser has smart detection technology to target and burn every blood vessel in its vicinity and represents the pinnacle of precision energy cutlery!"
 	desc_lore = "Scientists perfected the standard model by using a much stronger type of laser that creates explosions on the microscopic scale to vaporize any tissue and blood vessels in its way as it makes an incision. With a 100% success rate in creating bloodless incision, these scalpels have no issue taking the place of scalpels and cauteries, despite their exorbitant price tags."
 	icon_state = "scalpel_laser_3"
 	damtype = "fire"
 	force = 15
 	bloodlessprob = 100
 	black_market_value = 25
-
-
-
 
 /*
  * Special Variants

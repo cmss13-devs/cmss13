@@ -1105,7 +1105,13 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	blood_type = human_user.blood_type
 
 	var/list/new_access = list(ACCESS_YAUTJA_SECURE)
-	if(human_user.faction == FACTION_YAUTJA_STRANDED)
+
+	var/the_faction = human_user.faction
+	faction = the_faction
+	if(!(the_faction in faction_group))
+		faction_group = list(the_faction)
+
+	if(the_faction == FACTION_YAUTJA_STRANDED)
 		return
 
 	var/obj/item/clothing/gloves/yautja/hunter/bracer = loc
@@ -1130,6 +1136,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	registered_gid = human_user.gid
 	blood_type = human_user.blood_type
 	access = list(ACCESS_YAUTJA_BADBLOOD)
+
+	var/the_faction = human_user.faction
+	faction = the_faction
+	if(!(the_faction in faction_group))
+		faction_group = list(the_faction)
 
 ///Able to dissolve anything not anchored to the ground or being held, while uncloaked.
 /obj/item/tool/yautja_cleaner

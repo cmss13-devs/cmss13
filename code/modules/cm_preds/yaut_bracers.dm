@@ -303,7 +303,10 @@
 			if(badblood)
 				return TRUE
 			return FALSE
-	return TRUE
+		if(ANNOUNCE_YAUTJA_ALL)
+			return TRUE
+	log_debug("Yautja Debug: Bracer message recevied without faction.")
+	return FALSE
 
 /obj/item/clothing/gloves/yautja/hunter/get_examine_text(mob/user)
 	. = ..()

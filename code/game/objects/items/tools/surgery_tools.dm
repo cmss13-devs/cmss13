@@ -143,7 +143,7 @@
 	damtype = "fire"
 	force = 12
 	bloodlessprob = 80
-	black_market_value = 25
+	black_market_value = 20
 
 /obj/item/tool/surgery/scalpel/laser/advanced
 	name = "advanced laser scalpel"
@@ -153,7 +153,7 @@
 	damtype = "fire"
 	force = 15
 	bloodlessprob = 100
-	black_market_value = 35
+	black_market_value = 25
 
 
 

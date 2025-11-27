@@ -45,13 +45,6 @@
 		M.apply_effect(3, DAZE)
 		M.apply_effect(5, SLOW)
 
-/obj/item/weapon/shield/riot/yautja/attackby(obj/item/attacking_item, mob/user)
-	if(COOLDOWN_FINISHED(src, bash_cooldown))
-		if(isweapon(attacking_item) && (attacking_item.flags_item & ITEM_PREDATOR))
-			user.visible_message(SPAN_WARNING("[user] bashes [src] with [attacking_item]!"))
-			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
-			COOLDOWN_START(src, bash_cooldown, SHIELD_BASH_COOLDOWN)
-
 /obj/item/weapon/shield/riot/yautja/ancient
 	name = "ancient shield"
 	desc = "A large, ancient shield forged from an unknown golden alloy, gleaming with a luminous brilliance. Its worn surface and masterful craftsmanship hint at a forgotten purpose and a history lost to time."

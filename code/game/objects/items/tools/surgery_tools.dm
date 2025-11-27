@@ -38,9 +38,8 @@
 	matter = list("metal" = 5000, "glass" = 2500)
 	force = 5
 	throwforce = 1
-	sharp = IS_SHARP_ITEM_ACCURATE
+	sharp = IS_SHARP_ITEM_SIMPLE
 	flags_atom = FPRINT|CONDUCT
-	flags_item = CAN_DIG_SHRAPNEL
 	w_class = SIZE_SMALL
 	attack_verb = list("attacked", "pinched", "pierced", "punctured")
 

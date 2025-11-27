@@ -17,7 +17,7 @@
 	desc = "A tool for surgery used to hold skin, tissues, or organs apart to expose and access the surgical site."
 	icon_state = "retractor"
 	force = 10
-	throwforce = 5
+	throwforce = 1
 	matter = list("metal" = 10000, "glass" = 5000)
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
@@ -190,10 +190,10 @@
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	flags_atom = FPRINT|CONDUCT
-	force = 24 //amputates a marine's arm in 3 hits, if you wanted.
+	force = 24
 	sharp = IS_SHARP_ITEM_BIG
 	w_class = SIZE_SMALL
-	throwforce = 10
+	throwforce = 9
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 20000,"glass" = 10000)
@@ -376,7 +376,7 @@
 	desc = "Known formally as 'bone reduction forceps,' it is a surgical tool used for a procedure called 'fracture reduction', during which it to repositions fractured bones into their proper positions so they may heal properly."
 	icon_state = "bonesetter"
 	force = 15
-	throwforce = 9
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL

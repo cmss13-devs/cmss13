@@ -369,7 +369,7 @@
 
 /obj/item/tool/surgery/bonesetter
 	name = "bone setter"
-	desc = "Known formally as 'bone reduction forceps,' it is a surgical tool used for a procedure called 'fracture reduction', during which it to repositions fractured bones into their proper positions so they may heal properly."
+	desc = "Known formally as 'bone reduction forceps,' it is a surgical tool used for a procedure called 'fracture reduction,' during which it to repositions fractured bones into their proper positions so they may heal properly."
 	icon_state = "bonesetter"
 	force = 15
 	throwforce = 5

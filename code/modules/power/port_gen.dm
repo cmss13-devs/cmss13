@@ -57,6 +57,15 @@ display floor(lastgen) and phorontank amount
 
 	var/open = 0
 	var/recent_fault = 0
+	var/datum/looping_sound/generator/soundloop
+
+/obj/structure/machinery/power/power_generator/port_gen/Initialize()
+	. = ..()
+	soundloop = new(src)
+
+/obj/structure/machinery/power/power_generator/port_gen/Destroy()
+	QDEL_NULL(soundloop)
+	return ..()
 
 /obj/structure/machinery/power/power_generator/port_gen/process()
 	if(is_on && HasFuel() && !crit_fail && anchored && powernet)
@@ -78,6 +87,17 @@ display floor(lastgen) and phorontank amount
 		return
 	if(!anchored)
 		return
+
+/obj/structure/machinery/power/power_generator/port_gen/proc/TogglePower()
+	if(is_on)
+		is_on = FALSE
+		stop_processing()
+		icon_state = initial(icon_state)
+		soundloop.stop()
+	else if(HasFuel())
+		is_on = TRUE
+		start_processing()
+		soundloop.start()
 
 /obj/structure/machinery/power/power_generator/port_gen/get_examine_text(mob/user)
 	. = ..()
@@ -109,6 +129,9 @@ display floor(lastgen) and phorontank amount
 		anchored = FALSE
 		visible_message(SPAN_NOTICE("[src]'s bolts are dislodged!"))
 		return XENO_NONCOMBAT_ACTION
+
+/obj/structure/machinery/power/power_generator/port_gen/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
 
 //A power generator that runs on solid plasma sheets.
 /obj/structure/machinery/power/power_generator/port_gen/pacman
@@ -276,68 +299,58 @@ display floor(lastgen) and phorontank amount
 	if (!anchored)
 		return
 
-	interact(user)
+	tgui_interact(user)
 
 /obj/structure/machinery/power/power_generator/port_gen/pacman/attack_remote(mob/user as mob)
-	interact(user)
+	tgui_interact(user)
 
-/obj/structure/machinery/power/power_generator/port_gen/pacman/interact(mob/user)
-	if (get_dist(src, user) > 1 )
-		if (!isRemoteControlling(user))
-			user.unset_interaction()
-			close_browser(user, "port_gen")
-			return
+/obj/structure/machinery/power/power_generator/port_gen/pacman/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "port_gen", name)
+		ui.open()
 
-	user.set_interaction(src)
+/obj/structure/machinery/power/power_generator/port_gen/pacman/ui_data()
+	var/data = list(
+		"is_on" = is_on,
+		"sheet_name" = capitalize(sheet_name),
+		"sheets" = sheets,
+		"stack_percent" = round(sheet_left * 100, 0.1),
 
-	var/dat = text("<b>[name]</b><br>")
-	if (is_on)
-		dat += text("Generator: <A href='byond://?src=\ref[src];action=disable'>On</A><br>")
-	else
-		dat += text("Generator: <A href='byond://?src=\ref[src];action=enable'>Off</A><br>")
-	dat += text("[capitalize(sheet_name)]: [sheets] - <A href='byond://?src=\ref[src];action=eject'>Eject</A><br>")
-	var/stack_percent = round(sheet_left * 100, 1)
-	dat += text("Current stack: [stack_percent]% <br>")
-	dat += text("Power output: <A href='byond://?src=\ref[src];action=lower_power'>-</A> [power_gen * (power_gen_percent / 100)] <A href='byond://?src=\ref[src];action=higher_power'>+</A><br>")
-	dat += text("Power current: [(powernet == null ? "Unconnected" : "[avail()]")]<br>")
-	dat += text("Heat: [heat]<br>")
-	dat += "<br><A href='byond://?src=\ref[src];action=close'>Close</A>"
-	user << browse(HTML_SKELETON(dat), "window=port_gen")
-	onclose(user, "port_gen")
+		"anchored" = anchored,
+		"connected" = (powernet == null ? 0 : 1),
+		"ready_to_boot" = anchored && HasFuel(),
+		"power_generated" = display_power(power_gen),
+		"power_output" = display_power(power_gen * (power_gen_percent / 100)),
+		"power_available" = (powernet == null ? 0 : display_power(avail())),
+		"heat" = heat
+	)
+	. = data
 
-/obj/structure/machinery/power/power_generator/port_gen/pacman/Topic(href, href_list)
-	if(..())
+/obj/structure/machinery/power/power_generator/port_gen/pacman/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+
+	if(.)
 		return
+	switch(action)
+		if("toggle_power")
+			TogglePower()
+			. = TRUE
 
-	src.add_fingerprint(usr)
-	if(href_list["action"])
-		if(href_list["action"] == "enable")
-			if(!is_on && HasFuel() && !crit_fail)
-				is_on = 1
-				start_processing()
-				icon_state = "portgen1"
-				src.updateUsrDialog()
-		if(href_list["action"] == "disable")
-			if (is_on)
-				is_on = 0
-				stop_processing()
-				icon_state = "portgen0"
-				src.updateUsrDialog()
-		if(href_list["action"] == "eject")
+		if("eject")
 			if(!is_on)
 				DropFuel()
-				src.updateUsrDialog()
-		if(href_list["action"] == "lower_power")
+				. = TRUE
+
+		if("lower_power")
 			if (power_gen_percent > 100)
 				power_gen_percent -= 100
-				src.updateUsrDialog()
-		if (href_list["action"] == "higher_power")
+				. = TRUE
+
+		if("higher_power")
 			if (power_gen_percent < 400)
 				power_gen_percent += 100
-				src.updateUsrDialog()
-		if (href_list["action"] == "close")
-			close_browser(usr, "port_gen")
-			usr.unset_interaction()
+				. = TRUE
 
 /obj/structure/machinery/power/power_generator/port_gen/pacman/inoperable(additional_flags)
 	return (stat & (BROKEN|additional_flags)) //Removes NOPOWER check since its a goddam generator and doesn't need power

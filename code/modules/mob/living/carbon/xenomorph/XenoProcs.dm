@@ -313,10 +313,10 @@
 		throwing = FALSE
 		return
 
-	if (pounceAction.can_be_shield_blocked)
+	if(pounceAction.can_be_shield_blocked)
 		if(ishuman(M) && (M.dir in reverse_nearby_direction(dir)))
 			var/mob/living/carbon/human/H = M
-			if(H.check_shields(15, "the pounce", dir)) //Human shield block.
+			if(H.check_shields("the pounce", get_dir(H, src), attack_type = SHIELD_ATTACK_POUNCE, custom_response = TRUE)) //Human shield block.
 				visible_message(SPAN_DANGER("[src] slams into [H]!"),
 					SPAN_XENODANGER("We slam into [H]!"), null, 5)
 				KnockDown(1)
@@ -325,20 +325,13 @@
 				playsound(H, "bonk", 75, FALSE) //bonk
 				return
 
-			if(isyautja(H))
-				if(H.check_shields(0, "the pounce", 1))
-					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks our pouncing form with the combistick!"), null, 5)
-					apply_effect(3, WEAKEN)
-					throwing = FALSE
-					playsound(H, "bonk", 75, FALSE)
-					return
-				else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
-					visible_message(SPAN_DANGER("[H] body slams [src]!"),
-						SPAN_XENODANGER("[H] body slams us!"), null, 5)
-					KnockDown(3)
-					Stun(3)
-					throwing = FALSE
-					return
+			if(isyautja(H) && prob(75))//Body slam the fuck out of xenos jumping at your front.
+				visible_message(SPAN_DANGER("[H] body slams [src]!"),
+					SPAN_XENODANGER("[H] body slams us!"), null, 5)
+				KnockDown(3)
+				Stun(3)
+				throwing = FALSE
+				return
 			if(iscolonysynthetic(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[H] throws us down after withstanding the pounce!"), null, 5)
@@ -702,7 +695,7 @@
 	to_chat(src, SPAN_XENONOTICE("We start tracking the [target.mark_meaning.name] resin mark."))
 	to_chat(src, SPAN_INFO("Shift click the compass to watch the mark, alt click to stop tracking"))
 
-/mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldnt be nulled outside this PROC!! >:C
+/mob/living/carbon/xenomorph/proc/stop_tracking_resin_mark(destroyed, silent = FALSE) //tracked_marker shouldn't be nulled outside this PROC!! >:C
 	if(QDELETED(src))
 		return
 

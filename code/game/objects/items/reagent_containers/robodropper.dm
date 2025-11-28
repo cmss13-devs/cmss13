@@ -1,13 +1,37 @@
 
 /obj/item/reagent_container/robodropper
-	name = "Industrial Dropper"
-	desc = "A larger dropper. Transfers 10 units."
+	name = "industrial dropper"
+	desc = "A robust-looking dropper for measuring and transfering small units of liquid. Transfers up to 10 units."
 	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "dropper0"
+	icon_state = "robodropper"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(1,2,3,4,5,6,7,8,9,10)
 	volume = 10
 	var/filled = 0
+
+/obj/item/reagent_container/robodropper/update_icon() //droppers now have fill icon states for each unit inside the dropper
+	overlays.Cut()
+
+	if(reagents?.total_volume)
+		var/image/filling
+		var/percent = floor((reagents.total_volume / volume) * 100)
+		switch(percent)
+			if(1 to 20)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-1")
+			if(21 to 40)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-2")
+			if(41 to 60)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-3")
+			if(61 to 80)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-4")
+			if(81 to INFINITY)
+				filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-5")
+			else
+				return ..()
+
+		filling.color = mix_color_from_reagents(reagents.reagent_list)
+		overlays += filling
+	..()
 
 /obj/item/reagent_container/robodropper/afterattack(obj/target, mob/user , flag)
 	if(!target.reagents)
@@ -19,7 +43,7 @@
 			to_chat(user, SPAN_DANGER("[target] is full."))
 			return
 
-		if(!target.is_open_container() && !ismob(target) && !istype(target,/obj/item/reagent_container/food)) //You can inject humans and food but you cant remove the shit.
+		if(!target.is_open_container() && !ismob(target) && !istype(target,/obj/item/reagent_container/food)) //You can inject humans and food but you can't remove the shit.
 			to_chat(user, SPAN_DANGER("You cannot directly fill this object."))
 			return
 
@@ -55,7 +79,7 @@
 					to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution."))
 					if (src.reagents.total_volume<=0)
 						filled = 0
-						icon_state = "dropper[filled]"
+						update_icon()
 					return
 
 
@@ -77,7 +101,7 @@
 		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution."))
 		if (src.reagents.total_volume<=0)
 			filled = 0
-			icon_state = "dropper[filled]"
+			update_icon()
 
 	else
 
@@ -98,6 +122,6 @@
 		to_chat(user, SPAN_NOTICE(" You fill the dropper with [trans] units of the solution."))
 
 		filled = 1
-		icon_state = "dropper[filled]"
+		update_icon()
 
 	return

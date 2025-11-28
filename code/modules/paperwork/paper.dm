@@ -812,6 +812,7 @@
 					txt += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[chemical_to_generate.description]\n"
 				txt += "<BR>Overdoses at: [chemical_to_generate.overdose] units</font><BR>\n"
+				txt += "<BR>Critically Overdoses at: [chemical_to_generate.overdose_critical] units</font><BR>\n"
 				icon_state = "paper_wy_full_report"
 			else
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
@@ -919,7 +920,7 @@
 	picked_property = pick(PROPERTY_LEGENDARY_LIST)
 	hint = GLOB.combining_properties[picked_property]
 	if(length(hint) < LEGENDARY_COMBINE_PROPERTIES)
-		return INITIALIZE_HINT_QDEL //shouldnt happen, will happen.
+		return INITIALIZE_HINT_QDEL //shouldn't happen, will happen.
 
 
 /obj/item/paper/research_notes/grant
@@ -962,6 +963,7 @@
 				info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 			info += "<font size = \"2.5\">[S.description]\n"
 			info += "<BR>Overdoses at: [S.overdose] units\n"
+			info += "<BR>Critically Overdoses at: [S.overdose_critical] units\n"
 			info += "<BR>Standard duration multiplier of [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 			completed = TRUE
 			icon_state = "paper_wy_full_report"
@@ -989,6 +991,7 @@
 			info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 		info += "<font size = \"2.5\">[S.description]\n"
 		info += "<BR>Overdoses at: [S.overdose] units\n"
+		info += "<BR>Critically Overdoses at: [S.overdose_critical] units\n"
 		info += "<BR>Standard duration multiplier: [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
 		completed = TRUE
 		icon_state = "paper_wy_full_report"

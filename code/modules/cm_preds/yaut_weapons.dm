@@ -60,13 +60,15 @@
 	w_class = SIZE_HUGE
 	edge = TRUE
 	sharp = IS_SHARP_ITEM_ACCURATE
-	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
+	flags_item = NODROP|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	flags_equip_slot = NO_FLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
 	force = MELEE_FORCE_TIER_4
 	pry_capable = IS_PRY_CAPABLE_FORCE
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
+
+	shield_sound = 'sound/items/parry.ogg'
 
 	var/speed_bonus_amount
 
@@ -367,6 +369,11 @@
 	flags_item = ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	var/human_adapted = FALSE
 
+	shield_type = SHIELD_DIRECTIONAL
+	shield_chance = SHIELD_CHANCE_LOW
+	shield_sound = 'sound/items/parry.ogg'
+	shield_flags = CAN_SHIELD_BASH
+
 /obj/item/weapon/yautja/chain
 	name = "chainwhip"
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
@@ -385,6 +392,8 @@
 	attack_speed = 0.8 SECONDS
 	hitsound = 'sound/weapons/chain_whip.ogg'
 
+	shield_type = SHIELD_NONE
+	shield_chance = SHIELD_CHANCE_NONE
 
 /obj/item/weapon/yautja/chain/attack(mob/target, mob/living/user)
 	. = ..()
@@ -408,6 +417,8 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
+
+	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/yautja/sword/alt_1
 	name = "rending sword"
@@ -449,6 +460,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	unacidable = TRUE
+	shield_flags = CAN_BLOCK_POUNCE|CAN_SHIELD_BASH
 
 /obj/item/weapon/yautja/scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
 	. = ..()
@@ -467,11 +479,14 @@
 	icon_state = "predscythe_alt"
 	item_state = "scythe_dual"
 
+	shield_chance = SHIELD_CHANCE_MED
+
 /obj/item/weapon/yautja/sword/staff
 	name = "cruel staff"
 	desc = "A wicked and battered staff wrapped in worn crimson rags. A crescent shaped blade adorns the top, while the bottom is rounded and blunt."
 	icon_state = "staff"
 	item_state = "staff"
+	shield_flags = CAN_BLOCK_POUNCE|CAN_SHIELD_BASH //A little gift for the staff, not that it makes much difference for Yautja themselves.
 
 //Combistick
 /obj/item/weapon/yautja/chained/combistick
@@ -492,6 +507,13 @@
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
+
+	shield_type = SHIELD_DIRECTIONAL_TWOHANDS
+	shield_chance = SHIELD_CHANCE_HIGH
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_40
+	shield_flags = CAN_BLOCK_POUNCE|CAN_SHIELD_BASH
+	///The stored chance for when unfolded.
+	var/active_shield_chance = SHIELD_CHANCE_HIGH
 
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2
@@ -589,9 +611,6 @@
 		user.visible_message(SPAN_WARNING("<b>[user] yanks [src]'s chain back, letting [src] fall at [user.p_their()]!</b>"), SPAN_WARNING("<b>You yank [src]'s chain back, letting it drop at your feet!</b>"))
 		cleanup_chain()
 
-/obj/item/weapon/yautja/chained/combistick/IsShield()
-	return on
-
 /obj/item/weapon/yautja/chained/combistick/verb/fold_combistick()
 	set category = "Weapons"
 	set name = "Collapse Combi-stick"
@@ -653,6 +672,7 @@
 			overlays.Cut()
 			add_blood(blood_color)
 		on = TRUE
+		shield_chance = active_shield_chance
 		update_icon()
 	else
 		unwield(user)
@@ -667,6 +687,7 @@
 		attack_verb = list("thwacked", "smacked")
 		overlays.Cut()
 		on = FALSE
+		shield_chance = SHIELD_CHANCE_NONE
 		update_icon()
 
 	if(istype(user,/mob/living/carbon/human))
@@ -735,6 +756,8 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "chopped", "diced")
 
+	shield_chance = SHIELD_CHANCE_VLOW
+
 /obj/item/weapon/yautja/knife
 	name = "ceremonial dagger"
 	desc = "A viciously sharp dagger inscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
@@ -753,6 +776,9 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	actions_types = list(/datum/action/item_action/toggle/use)
 	unacidable = TRUE
+
+	shield_chance = SHIELD_CHANCE_NONE
+	shield_type = SHIELD_NONE
 
 /obj/item/weapon/yautja/knife/attack(mob/living/target, mob/living/carbon/human/user)
 	if(target.stat != DEAD)
@@ -958,13 +984,14 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
 
-	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
+	flags_item = UNBLOCKABLE|TWOHANDED|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	unacidable = TRUE
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	throw_speed = SPEED_VERY_FAST
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
+	shield_flags = CAN_SHIELD_BASH
 	var/human_adapted = FALSE
 
 /obj/item/weapon/twohanded/yautja/spear
@@ -972,11 +999,12 @@
 	desc = "A spear of exquisite design, used by an ancient civilisation."
 	icon_state = "spearhunter"
 	item_state = "spearhunter"
-	flags_item = NOSHIELD|TWOHANDED|ADJACENT_CLICK_DELAY
+	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_7
 	sharp = IS_SHARP_ITEM_SIMPLE
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
+	shield_sound = 'sound/items/block_shield.ogg'
 
 	var/busy_fishing = FALSE
 	var/common_weight = 60
@@ -1037,8 +1065,8 @@
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
 	attack_speed = 14 //Default is 7.
+	shield_flags = CAN_BLOCK_POUNCE|CAN_SHIELD_BASH
 	var/skull_attached = FALSE
-
 
 /obj/item/weapon/twohanded/yautja/glaive/attack(mob/living/target, mob/living/carbon/human/user)
 	. = ..()
@@ -1092,7 +1120,7 @@
 	throwforce = MELEE_FORCE_WEAK
 	icon_state = "glaive_alt"
 	item_state = "glaive_alt"
-	flags_item = NOSHIELD|TWOHANDED|ADJACENT_CLICK_DELAY
+	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY
 
 /obj/item/weapon/twohanded/yautja/glaive/longaxe
 	name = "longaxe"
@@ -1120,6 +1148,8 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
 
+	shield_chance = SHIELD_CHANCE_VLOW
+
 /obj/item/weapon/yautja/duelclub
 	name = "duelling club"
 	desc = "A crude metal club adorned with a skull. Used as a non-lethal training weapon for young yautja honing their combat skills."
@@ -1135,6 +1165,9 @@
 	throwforce = 7
 	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
 	hitsound = 'sound/weapons/genhit3.ogg'
+
+	shield_chance = SHIELD_CHANCE_VLOW
+	shield_sound = 'sound/items/block_shield.ogg'
 
 /obj/item/weapon/yautja/duelaxe
 	name = "duelling hatchet"
@@ -1153,6 +1186,8 @@
 	attack_verb = list("chopped", "torn", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 
+	shield_chance = SHIELD_CHANCE_VLOW
+
 /obj/item/weapon/yautja/duelknife
 	name = "duelling knife"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
@@ -1166,6 +1201,9 @@
 	throwforce = MELEE_FORCE_STRONG
 	edge = 1
 	attack_speed = 12
+
+	shield_chance = SHIELD_CHANCE_NONE
+	shield_type = SHIELD_NONE
 
 /*#########################################
 ############## Ranged Weapons #############

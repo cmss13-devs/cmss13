@@ -254,7 +254,6 @@
 	if(istype(target_object, /obj/structure/barricade))
 		var/obj/structure/barricade/barricade = target_object
 		barricade.acid_spray_act()
-		continue
 
 /datum/ammo/xeno/acid/despoiler/proc/splatter(mob/mob, range = 1, obj/projectile/projectile)
 	for(var/mob/living/carbon/human/victim in range(range, mob))

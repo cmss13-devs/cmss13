@@ -2,7 +2,7 @@
 
 /area/lv759
 	name = "LV-759 Hybrisa Prospera"
-	icon = 'icons/turf/hybrisareas.dmi'
+	icon = 'icons/turf/area_hybrisa.dmi'
 	icon_state = "hybrisa"
 	can_build_special = TRUE
 	powernet_name = "ground"

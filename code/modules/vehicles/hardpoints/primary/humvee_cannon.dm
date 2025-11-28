@@ -5,7 +5,7 @@
 	icon = 'icons/obj/vehicles/hardpoints/humvee.dmi'
 
 	icon_state = "humveecannon"
-	disp_icon = "humveecannon"
+	disp_icon = "humvee"
 	disp_icon_state = "humveecannon"
 	activation_sounds = list('sound/weapons/vehicles/dual_autocannon_fire.ogg')
 

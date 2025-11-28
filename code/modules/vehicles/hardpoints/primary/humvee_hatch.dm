@@ -1,13 +1,10 @@
-/obj/item/hardpoint/special/humvee_hatch
+/obj/item/hardpoint/primary/humvee_hatch
 	name = "\improper JTMV top-hatch"
 	desc = "A simple hatch for the JTMV. Can be removed to acommodate a variety of attachments."
 	icon = 'icons/obj/vehicles/hardpoints/humvee.dmi'
 
-	icon_state = "humvee_hatch"
-	disp_icon = "tank"
-	disp_icon_state = "humvee_hatch"
+	icon_state = "humveehatch"
+	disp_icon = "humvee"
+	disp_icon_state = "humveehatch"
 
 	health = 500
-
-	slot = HDPT_PRIMARY
-	hdpt_layer = HDPT_LAYER_TURRET

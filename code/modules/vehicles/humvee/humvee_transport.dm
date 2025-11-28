@@ -45,7 +45,7 @@
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/humvee_wheels,
 		/obj/item/hardpoint/armor/humvee_snowplow,
-		/obj/item/hardpoint/special/humvee_overhead_lights
+		/obj/item/hardpoint/support/humvee_overhead_lights
 	)
 
 	seats = list(

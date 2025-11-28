@@ -1,11 +1,11 @@
 /obj/item/hardpoint/support/humvee_flare_launcher
 	name = "\improper M-87F Flare Launcher"
 	desc = "A support module for APCs that shoots flares."
-	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
+	icon = 'icons/obj/vehicles/hardpoints/humvee.dmi'
 
-	icon_state = "flare_launcher"
-	disp_icon = "apc"
-	disp_icon_state = "flare_launcher"
+	icon_state = "launcher"
+	disp_icon = "humvee"
+	disp_icon_state = "launcher"
 	activation_sounds = list('sound/weapons/gun_m92_attachable.ogg')
 
 	damage_multiplier = 0.1

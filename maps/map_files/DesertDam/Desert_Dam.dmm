@@ -18190,7 +18190,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/southwest,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "bfT" = (
 /obj/structure/machinery/power/apc/no_power/east,
 /obj/structure/sink{
@@ -25866,7 +25866,7 @@
 "efE" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/rock,
-/area/desert_dam/interior/caves/central_caves)
+/area/desert_dam/exterior/valley/valley_crashsite)
 "efJ" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 9
@@ -32043,7 +32043,7 @@
 "gyr" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "gys" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -32725,7 +32725,7 @@
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
-/area/desert_dam/interior/caves/central_caves)
+/area/desert_dam/exterior/valley/valley_crashsite)
 "gMw" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -40921,7 +40921,7 @@
 "jSB" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt/desert_transition_corner1/east,
-/area/desert_dam/interior/caves/central_caves)
+/area/desert_dam/exterior/valley/valley_crashsite)
 "jSE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean2,
@@ -43722,7 +43722,7 @@
 /obj/effect/decal/sand_overlay/sand2,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
-/area/desert_dam/interior/caves/central_caves)
+/area/desert_dam/exterior/valley/valley_crashsite)
 "laK" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -55625,7 +55625,7 @@
 "pFm" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "pFs" = (
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/control_room)
@@ -57297,7 +57297,7 @@
 "qlA" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt/desert_transition_edge1/north,
-/area/desert_dam/interior/caves/central_caves)
+/area/desert_dam/exterior/valley/valley_crashsite)
 "qlB" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
@@ -67207,7 +67207,7 @@
 "tYn" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt,
-/area/desert_dam/interior/caves/central_caves)
+/area/desert_dam/exterior/valley/valley_crashsite)
 "tYB" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
 /turf/open/asphalt/tile,
@@ -77505,7 +77505,7 @@
 "ydo" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "ydA" = (
 /obj/structure/bed/stool{
 	pixel_x = 4;

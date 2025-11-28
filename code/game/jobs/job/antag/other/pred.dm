@@ -96,6 +96,7 @@
 	handle_spawn_and_equip = TRUE
 	gear_preset = /datum/equipment_preset/yautja/stranded
 	var/survivor_job = JOB_STRANDED_PRED
+	var/override_job = FALSE
 
 
 /datum/job/antag/pred_surv/bad_blood
@@ -129,16 +130,23 @@
 
 
 /datum/job/antag/pred_surv/set_spawn_positions(mode = YAUTJA_SURV_HUNT)
-	var/slots = CONFIG_GET(number/survivor_pred_slots)
+	var/slots = CONFIG_GET(number/pred_survivor_slots)
 
 	spawn_positions = slots
 	total_positions = slots
 
+	if(override_job)
+		log_debug("YAUTJA SURV: Job set to [survivor_job] (OVERRIDE)")
+		return
+
 	switch(mode)
-		if(YAUTJA_SURV_HUNT)//Hunt round it's 50/50
-			survivor_job = pick(JOB_STRANDED_PRED, JOB_BADBLOOD)
+		if(YAUTJA_SURV_HUNT)//Hunt round it's 50/50 by default
+			if(prob(CONFIG_GET(number/pred_survivor_badblood_weight)))
+				survivor_job = JOB_BADBLOOD
+			else
+				survivor_job = JOB_STRANDED_PRED
 		if(YAUTJA_SURV_NO_HUNT)//Non hunt round is less likely to be a stranded hunter.
-			if(prob(75))
+			if(prob(CONFIG_GET(number/pred_survivor_badblood_weight_huntless)))
 				survivor_job = JOB_BADBLOOD
 			else
 				survivor_job = JOB_STRANDED_PRED

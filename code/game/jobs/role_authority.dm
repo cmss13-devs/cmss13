@@ -226,7 +226,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
 		chance = 0
 
-	var/huntless_chance = CONFIG_GET(number/huntless_pred_survivor)
+	var/huntless_chance = CONFIG_GET(number/pred_survivor_huntless_chance)
 	if(!(SSticker.mode.flags_round_type & MODE_PREDATOR) && prob(huntless_chance))//Very rare but it could happen on a non-pred round.
 		var/datum/job/pred_surv = temp_roles_for_mode[JOB_PRED_SURVIVOR]
 		if(istype(pred_surv))

@@ -183,11 +183,21 @@
 	integer = TRUE
 
 /// How likely a Predator Survivor is to spawn without a hunt round.
-/datum/config_entry/number/huntless_pred_survivor
+/datum/config_entry/number/pred_survivor_huntless_chance
 	min_val = 0
 	config_entry_value = 10
 	max_val = 100
 
-/datum/config_entry/number/survivor_pred_slots
+/datum/config_entry/number/pred_survivor_badblood_weight
+	min_val = 0
+	config_entry_value = 50
+	max_val = 100
+
+/datum/config_entry/number/pred_survivor_badblood_weight_huntless
+	min_val = 0
+	config_entry_value = 75
+	max_val = 100
+
+/datum/config_entry/number/pred_survivor_slots
 	min_val = 1
 	config_entry_value = 1

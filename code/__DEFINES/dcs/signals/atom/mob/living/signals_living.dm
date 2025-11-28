@@ -55,3 +55,6 @@
 
 // From /obj/limb/proc/apply_splints() : (mob/living/user)
 #define COMSIG_LIVING_LIMB_SPLINTED "living_limb_splinted"
+
+// From eschar fixing surgery
+#define COMSIG_LIVING_LIMB_ESCHAR_HEALED "living_limb_eschar_healed"

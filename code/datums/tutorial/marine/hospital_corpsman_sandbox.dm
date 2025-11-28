@@ -25,6 +25,7 @@
 #define INTERNAL_BLEEDING "IB"
 #define SUTURE "suture"
 #define FRACTURE "fracture"
+#define ESCHAR_INJURY "eschar"
 
 /datum/tutorial/marine/hospital_corpsman_sandbox
 	name = "Marine - Hospital Corpsman (Sandbox)"
@@ -269,6 +270,9 @@
 		if((limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED))
 			injury_type |= FRACTURE
 			RegisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED, PROC_REF(health_tasks_handler))
+		if((limb.status & LIMB_ESCHAR))
+			injury_type |= ESCHAR_INJURY
+			RegisterSignal(limb, COMSIG_LIVING_LIMB_ESCHAR_HEALED, PROC_REF(health_tasks_handler))
 		if(limb.can_bleed_internally)
 			for(var/datum/wound/wound as anything in limb.wounds)
 				if(wound.internal)
@@ -291,7 +295,10 @@
 		limb = source
 		var/target_redirect = limb.owner
 		health_tasks_handler(target, target_redirect)
-		UnregisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED)
+		if(limb.status & LIMB_SPLINTED)
+			UnregisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED)
+		if(!(limb.status & LIMB_ESCHAR))
+			UnregisterSignal(limb, COMSIG_LIVING_LIMB_ESCHAR_HEALED)
 		return
 	for(limb in healing_tasks)
 		var/list/injury_type = list()
@@ -306,6 +313,8 @@
 					injury_type -= SUTURE
 		if((FRACTURE in injury_type) && (limb.status & LIMB_BROKEN) && (limb.status & LIMB_SPLINTED))
 			injury_type -= FRACTURE
+		if((ESCHAR_INJURY in injury_type) && !(limb.status & LIMB_ESCHAR))
+			injury_type -= ESCHAR_INJURY
 		if(!length(injury_type) && limb) // makes sure something DID exist on the list
 			healing_tasks -= limb
 		else

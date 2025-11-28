@@ -296,6 +296,82 @@
 /obj/item/weapon/shield/riot,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
+"abc" = (
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/aux_engi)
+"abd" = (
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/space/basic,
+/area/fiorina/oob)
+"abe" = (
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/space/basic,
+/area/fiorina/oob)
+"abf" = (
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/tumor/aux_engi)
+"abg" = (
+/obj/structure/shuttle/part/ert/front_left_stan,
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/space/basic,
+/area/fiorina/oob)
+"abh" = (
+/obj/structure/shuttle/part/ert/front_right_stan,
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/space/basic,
+/area/fiorina/oob)
+"abi" = (
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/oob)
+"abj" = (
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/oob)
+"abk" = (
+/obj/structure/shuttle/part/ert/front_left_stan,
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/oob)
+"abl" = (
+/obj/structure/shuttle/part/ert/front_right_stan,
+/obj/structure/monorail{
+	name = "launch track"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/oob)
+"abm" = (
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzI)
+"abn" = (
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "wy27"
+	},
+/area/fiorina/station/medbay)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -1335,9 +1411,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells/east)
 "aOc" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_3"
 	},
 /area/fiorina/tumor/ship)
 "aOm" = (
@@ -2238,14 +2313,13 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/fiorina/station/civres_blue)
 "byb" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/fiorina/tumor/ship)
 "bym" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "byn" = (
 /obj/structure/stairs/perspective{
@@ -2288,9 +2362,8 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/tumor/ice_lab)
 "bAc" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
 "bAf" = (
 /obj/structure/machinery/light/double/blue,
@@ -2876,10 +2949,8 @@
 /turf/open/floor/prison/whitepurple/east,
 /area/fiorina/station/research_cells/east)
 "bVZ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/space/basic,
 /area/fiorina/tumor/ship)
 "bWg" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -3275,7 +3346,7 @@
 /area/fiorina/station/telecomm/lz1_cargo)
 "cqz" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/fiorina/oob)
 "cqP" = (
@@ -3959,10 +4030,8 @@
 /obj/structure/monorail{
 	name = "launch track"
 	},
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	layer = 3
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/space/basic,
 /area/fiorina/oob)
 "cQB" = (
 /obj/structure/platform_decoration/metal/almayer/north,
@@ -5401,9 +5470,8 @@
 /turf/open/floor/prison/yellow/east,
 /area/fiorina/station/central_ring)
 "dYI" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
 "dYV" = (
 /turf/open/floor/prison/darkbrowncorners2/west,
@@ -6321,9 +6389,15 @@
 /turf/open/floor/prison,
 /area/fiorina/station/central_ring)
 "eHC" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy25"
+/obj/structure/shuttle/part/ert/front_right_wy,
+/obj/structure/monorail{
+	name = "launch track"
 	},
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 4;
+	pixel_x = -7
+	},
+/turf/open/space/basic,
 /area/fiorina/station/medbay)
 "eHD" = (
 /obj/structure/machinery/light/double/blue{
@@ -6447,10 +6521,11 @@
 /turf/open/floor/prison/yellowfull,
 /area/fiorina/station/lowsec/east)
 "eMU" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/obj/structure/monorail{
+	name = "launch track"
 	},
+/turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "eNa" = (
 /turf/open/floor/prison/yellowcorner,
@@ -6612,10 +6687,8 @@
 /turf/open/floor/prison/yellow/northwest,
 /area/fiorina/station/lowsec/east)
 "eTb" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "eTc" = (
 /turf/open/floor/prison/chapel_carpet,
@@ -7592,9 +7665,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "fIW" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "fJj" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -7795,9 +7867,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells/west)
 "fSz" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "fSE" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -8147,9 +8218,8 @@
 /turf/open/floor/wood,
 /area/fiorina/station/park)
 "ggd" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1"
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/space/basic,
 /area/fiorina/oob)
 "ggh" = (
 /obj/effect/landmark/nightmare{
@@ -8901,7 +8971,7 @@
 /area/fiorina/station/disco/east_disco)
 "gLu" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/fiorina/tumor/ship)
 "gLv" = (
@@ -9244,7 +9314,7 @@
 /area/fiorina/station/power_ring)
 "hay" = (
 /turf/closed/shuttle/ert{
-	icon_state = "wy_leftengine"
+	icon_state = "wy_leftengine_clean"
 	},
 /area/fiorina/station/medbay)
 "haJ" = (
@@ -9982,7 +10052,7 @@
 /area/fiorina/oob)
 "hyT" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/fiorina/tumor/aux_engi)
 "hzi" = (
@@ -10011,10 +10081,6 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/telecomm/lz1_cargo)
 "hzG" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 8;
-	pixel_x = 7
-	},
 /turf/closed/shuttle/ert{
 	icon_state = "wy4"
 	},
@@ -10138,9 +10204,11 @@
 /turf/open/floor/prison/sterile_white/southwest,
 /area/fiorina/station/medbay)
 "hEb" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy20"
+/obj/structure/shuttle/part/ert/front_left_wy,
+/obj/structure/monorail{
+	name = "launch track"
 	},
+/turf/open/space/basic,
 /area/fiorina/station/medbay)
 "hEk" = (
 /turf/open/floor/prison/darkyellow2/east,
@@ -11337,9 +11405,8 @@
 /turf/open/floor/prison/greenblue/northeast,
 /area/fiorina/station/botany)
 "iBP" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/space/basic,
 /area/fiorina/oob)
 "iCf" = (
 /obj/structure/closet/wardrobe/orange,
@@ -12124,9 +12191,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/transit_hub)
 "jhG" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/space/basic,
 /area/fiorina/tumor/ship)
 "jhN" = (
 /obj/structure/sink{
@@ -13504,10 +13570,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "klp" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/space/basic,
 /area/fiorina/tumor/ship)
 "klt" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
@@ -14907,7 +14971,7 @@
 /turf/open/floor/prison/blue,
 /area/fiorina/station/chapel)
 "lpl" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/fiorina/lz/near_lzI)
@@ -16561,10 +16625,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "mzT" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/space/basic,
 /area/fiorina/oob)
 "mAs" = (
 /obj/item/broken_device,
@@ -18168,7 +18230,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/station/flight_deck)
 "nLV" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/fiorina/tumor/aux_engi)
@@ -20283,9 +20345,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "pqO" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/space/basic,
 /area/fiorina/tumor/ship)
 "pqY" = (
 /obj/structure/monorail{
@@ -21525,7 +21586,7 @@
 /area/fiorina/station/disco/east_disco)
 "qpM" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/fiorina/station/power_ring)
 "qpN" = (
@@ -24074,10 +24135,11 @@
 /turf/open/floor/prison/greenfull/northwest,
 /area/fiorina/station/botany)
 "sov" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/obj/structure/monorail{
+	name = "launch track"
 	},
+/turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "soN" = (
 /obj/structure/closet/cabinet,
@@ -25921,10 +25983,8 @@
 /area/fiorina/maintenance)
 "tHL" = (
 /obj/structure/blocker/invisible_wall,
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/space/basic,
 /area/fiorina/station/medbay)
 "tIf" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -26383,10 +26443,11 @@
 /turf/open/floor/prison/whitegreen/southwest,
 /area/fiorina/station/medbay)
 "ubN" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/obj/structure/monorail{
+	name = "launch track"
 	},
+/turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "ubP" = (
 /turf/open/floor/prison,
@@ -26412,9 +26473,8 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/fiorina/tumor/aux_engi)
 "ucj" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "ucu" = (
 /obj/structure/bed/chair/comfy{
@@ -27524,10 +27584,6 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/fiorina/station/park)
 "uVX" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 4;
-	pixel_x = -7
-	},
 /turf/closed/shuttle/ert{
 	icon_state = "wy5"
 	},
@@ -27743,19 +27799,18 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
 "vem" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1"
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/obj/structure/monorail{
+	name = "launch track"
 	},
+/turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
 "vev" = (
 /obj/structure/monorail{
 	name = "launch track"
 	},
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	layer = 3;
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/space/basic,
 /area/fiorina/oob)
 "veJ" = (
 /obj/item/clothing/head/helmet/marine/specialist/hefa,
@@ -27788,7 +27843,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "vfM" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/fiorina/station/power_ring)
@@ -27873,9 +27928,11 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "vjq" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1"
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/obj/structure/monorail{
+	name = "launch track"
 	},
+/turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "vjG" = (
 /obj/item/device/flashlight/lamp/tripod,
@@ -27943,9 +28000,8 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "podholder"
 	},
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1"
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/space/basic,
 /area/fiorina/station/medbay)
 "vmt" = (
 /obj/structure/monorail{
@@ -28308,9 +28364,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/civres)
 "vzU" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3_clean"
 	},
 /area/fiorina/tumor/ship)
 "vAU" = (
@@ -30232,7 +30287,7 @@
 /area/fiorina/station/lowsec/east)
 "xew" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/fiorina/lz/near_lzI)
 "xeO" = (
@@ -30389,7 +30444,7 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/civres_blue)
 "xme" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/fiorina/oob)
@@ -30779,9 +30834,8 @@
 /turf/open/floor/prison/blue/southwest,
 /area/fiorina/station/civres_blue)
 "xDq" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/space/basic,
 /area/fiorina/oob)
 "xDw" = (
 /obj/structure/window/framed/prison/reinforced/hull,
@@ -33469,7 +33523,7 @@ aOc
 klp
 bQM
 bQM
-bQM
+cAW
 bQM
 bQM
 bQM
@@ -47031,7 +47085,7 @@ bAc
 hgS
 hgS
 lvy
-eTb
+abc
 sfI
 sfI
 sfI
@@ -47445,9 +47499,9 @@ ufN
 hvL
 jlk
 uNM
-ubN
+abf
 taj
-ubN
+abf
 fpn
 svP
 fpn
@@ -47869,9 +47923,9 @@ sgw
 sgw
 jlk
 uNM
-ubN
+abf
 svP
-ubN
+abf
 kIg
 taj
 taj
@@ -48500,11 +48554,11 @@ iiw
 awL
 awL
 awL
-xDq
+abk
 naf
 naf
 cqz
-ggd
+abi
 tsc
 hQk
 tsc
@@ -48924,11 +48978,11 @@ gcx
 okv
 iiw
 awL
-iBP
+abl
 vcf
 vcf
 lku
-mzT
+abj
 tsc
 wtm
 tsc
@@ -55851,7 +55905,7 @@ esw
 esw
 bTI
 bQM
-bFA
+abn
 anm
 qFi
 hXZ
@@ -81154,11 +81208,11 @@ mvF
 kkU
 kkU
 kkU
-xDq
+abg
 naf
 naf
 cqz
-ggd
+abd
 ogf
 mRM
 bce
@@ -81578,11 +81632,11 @@ mvF
 kkU
 kkU
 kkU
-iBP
+abh
 vcf
 vcf
 lku
-mzT
+abe
 ogf
 fWI
 bce
@@ -81985,7 +82039,7 @@ paI
 tsc
 bEk
 ogf
-xDq
+abk
 naf
 naf
 cqz
@@ -82409,7 +82463,7 @@ paI
 tsc
 bEk
 ogf
-iBP
+abl
 vcf
 vcf
 lku
@@ -84503,7 +84557,7 @@ paI
 paI
 eeH
 dFM
-sov
+abm
 xeO
 xeO
 xeO

@@ -7,8 +7,12 @@
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "b" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy25"
+/obj/structure/shuttle/part/ert/front_right_wy,
+/turf/open/space/basic,
+/area/template_noop)
+"c" = (
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "wy27"
 	},
 /area/template_noop)
 "e" = (
@@ -17,16 +21,13 @@
 	},
 /area/template_noop)
 "g" = (
+/obj/structure/shuttle/part/ert/transparent/right_engine,
 /obj/structure/blocker/invisible_wall,
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1";
-	opacity = 0
-	},
+/turf/open/space/basic,
 /area/template_noop)
 "h" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1"
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/space/basic,
 /area/template_noop)
 "l" = (
 /obj/structure/bed/roller,
@@ -67,10 +68,6 @@
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "o" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 8;
-	pixel_x = 7
-	},
 /turf/closed/shuttle/ert{
 	icon_state = "wy4"
 	},
@@ -91,7 +88,7 @@
 /area/template_noop)
 "F" = (
 /turf/closed/shuttle/ert{
-	icon_state = "wy_leftengine"
+	icon_state = "wy_leftengine_clean"
 	},
 /area/template_noop)
 "H" = (
@@ -109,9 +106,8 @@
 /turf/open/floor/almayer_hull,
 /area/template_noop)
 "P" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy20"
-	},
+/obj/structure/shuttle/part/ert/front_left_wy,
+/turf/open/space/basic,
 /area/template_noop)
 "T" = (
 /obj/structure/platform/metal/kutjevo_smooth/west,
@@ -132,10 +128,6 @@
 /turf/open/floor/plating/prison,
 /area/template_noop)
 "Z" = (
-/obj/structure/machinery/landinglight/ds1/delaythree{
-	dir = 4;
-	pixel_x = -7
-	},
 /turf/closed/shuttle/ert{
 	icon_state = "wy5"
 	},
@@ -149,7 +141,7 @@ F
 h
 "}
 (2,1,1) = {"
-e
+c
 n
 V
 H

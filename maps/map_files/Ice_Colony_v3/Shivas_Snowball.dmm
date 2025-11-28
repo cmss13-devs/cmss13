@@ -4891,9 +4891,8 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "aTh" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
+/obj/structure/shuttle/part/ert/front_left_stan,
+/turf/open/floor/shiva,
 /area/shiva/interior/aerodrome)
 "aTi" = (
 /turf/closed/shuttle/ert{
@@ -4901,9 +4900,8 @@
 	},
 /area/shiva/interior/aerodrome)
 "aTj" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/shiva,
 /area/shiva/interior/aerodrome)
 "aTn" = (
 /obj/effect/spawner/random/tool,
@@ -4969,7 +4967,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
 "aUw" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "stan27"
 	},
 /area/shiva/interior/aerodrome)
@@ -5212,7 +5210,7 @@
 /area/shiva/exterior/cp_lz2)
 "aWI" = (
 /turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
+	icon_state = "stan_leftengine_clean"
 	},
 /area/shiva/interior/aerodrome)
 "aWQ" = (
@@ -5348,13 +5346,12 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/valley_huts/no2)
 "aYd" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_3_clean"
 	},
 /area/shiva/interior/aerodrome)
 "aYx" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_3"
 	},
 /area/shiva/interior/aerodrome)
@@ -5468,9 +5465,8 @@
 /turf/open/floor/prison/kitchen,
 /area/shiva/interior/bar)
 "baX" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2"
 	},
 /area/shiva/interior/aerodrome)
 "baY" = (
@@ -5486,7 +5482,7 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "bbh" = (
-/turf/closed/shuttle/ert{
+/turf/closed/shuttle/ert/transparent{
 	icon_state = "rightengine_2"
 	},
 /area/shiva/interior/aerodrome)
@@ -5540,10 +5536,8 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/bar)
 "bcJ" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
+/obj/structure/shuttle/part/ert/transparent/left_engine,
+/turf/open/floor/shiva,
 /area/shiva/interior/aerodrome)
 "bdt" = (
 /obj/structure/platform/stone/strata/east,
@@ -5564,9 +5558,8 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/colony/n_admin)
 "beK" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1"
-	},
+/obj/structure/shuttle/part/ert/transparent/right_engine,
+/turf/open/floor/shiva,
 /area/shiva/interior/aerodrome)
 "beP" = (
 /obj/item/clothing/under/rank/janitor,
@@ -31238,9 +31231,9 @@ pvv
 aUw
 aVB
 aWQ
-aVN
-aVN
-aVN
+aVx
+aVx
+aVx
 bqN
 aVx
 dbH
@@ -31886,9 +31879,9 @@ fhv
 aUA
 aVB
 aWU
-aVx
-aVx
-aVx
+aVN
+aVN
+aVN
 bqN
 aVN
 deV
@@ -34964,11 +34957,11 @@ pvv
 aUw
 fof
 aWQ
-aVN
-aVN
-aVN
+aVx
+aVx
+aVx
 bqN
-aVN
+aVx
 dbH
 wTz
 pvv
@@ -35612,9 +35605,9 @@ pvv
 aUw
 xyY
 aWU
-aVx
-aVx
-aVx
+aVN
+aVN
+aVN
 bqN
 aUA
 deV

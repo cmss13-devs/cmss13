@@ -12,7 +12,8 @@
 	xeno_cooldown = 12 SECONDS
 	plasma_cost = 100
 
-	var/buff_duration = 50
+	var/buff_duration = 5 SECONDS
+	var/slash_speedup = 2
 
 /datum/action/xeno_action/activable/tail_stab/despoiler
 	name = "Finishing Acid Stab"

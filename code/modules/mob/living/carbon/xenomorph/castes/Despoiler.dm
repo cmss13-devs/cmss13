@@ -83,8 +83,9 @@
 	var/datum/behavior_delegate/despoiler_base/behavior = xeno.behavior_delegate
 	if (istype(behavior))
 		behavior.next_slash_buffed = TRUE
+	xeno.attack_speed_modifier -= slash_speedup
 
-	to_chat(xeno, SPAN_XENOHIGHDANGER("Our slashes will apply acid!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("Our slashes will apply stronger acid!"))
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 
@@ -101,8 +102,8 @@
 		if (!behavior.next_slash_buffed)
 			return
 		behavior.next_slash_buffed = FALSE
-
-	to_chat(xeno, SPAN_XENODANGER("Our power weakens, our slashes will no longer apply acid!"))
+	xeno.attack_speed_modifier += slash_speedup
+	to_chat(xeno, SPAN_XENODANGER("Our power weakens, our slashes will no longer apply stronger acid!"))
 
 
 /datum/behavior_delegate/despoiler_base

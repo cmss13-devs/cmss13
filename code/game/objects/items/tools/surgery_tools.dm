@@ -5,7 +5,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
 	)
-	attack_speed = 11
+	attack_speed = 4
 
 /*
  * Retractor
@@ -15,6 +15,7 @@
 	name = "retractor"
 	desc = "A tool for surgery used to hold skin, tissues, or organs apart to expose and access the surgical site."
 	icon_state = "retractor"
+	hitsound = 'sound/weapons/genhit3.ogg'
 	force = 10
 	throwforce = 1
 	matter = list("metal" = 10000, "glass" = 5000)
@@ -34,9 +35,10 @@
 	name = "hemostat"
 	desc = "A tool for surgery used to control bleeding by pinching blood vessels closed. It can also be used to remove foreign objects and manipulate and lift small organs and tissues."
 	icon_state = "hemostat"
+	hitsound = 'sound/weapons/pierce.ogg'
 	matter = list("metal" = 5000, "glass" = 2500)
 	force = 5
-	throwforce = 1
+	attack_speed = 2
 	sharp = IS_SHARP_ITEM_SIMPLE
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
@@ -58,6 +60,7 @@
 	force = 10
 	throwforce = 1
 	damtype = "fire"
+	hitsound = 'sound/surgery/cautery2.ogg'
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_TINY
 	flags_item = ANIMATED_SURGICAL_TOOL
@@ -79,7 +82,8 @@
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	matter = list("metal" = 15000, "glass" = 10000)
 	flags_atom = FPRINT|CONDUCT
-	force = 15
+	force = 6
+	attack_speed = 2 //clickclickclick to brrrrr
 	throwforce = 9
 	sharp = IS_SHARP_ITEM_ACCURATE //it makes holes in skin and bone... Yes, sharp.
 	w_class = SIZE_SMALL
@@ -128,6 +132,7 @@
 	desc_lore = "The prototype laser scalpel was developed during the mid-1900s, a time where scientists had yet to solve their quandary of developing a laser that could cut through flesh and and burn the blood vessels closed simultaneously; they settled on a compromise: slapping a superheated directed laser beneath the blade of the scalpel and hoping the laser burns the incision the blade makes. While the prototype ironically functioned perfectly as a cautery, it left something to be desired where bloodless incisions were a concern. Somehow, the big heads in research forgot to calibrate the width of the laser to be equivalent to the precise width of the incision made by the blade, leaving some blood vessels untouched in the process."
 	icon_state = "scalpel_laser"
 	damtype = "fire"
+	force = 12
 	flags_item = ANIMATED_SURGICAL_TOOL
 	///The likelihood an incision made with this will be bloodless.
 	var/bloodlessprob = 60
@@ -149,7 +154,7 @@
 	desc_lore = "Scientists perfected the standard model by using a much stronger type of laser that creates explosions on the microscopic scale to vaporize any tissue and blood vessels in its way as it makes an incision. With a 100% success rate in creating bloodless incision, these scalpels have no issue taking the place of scalpels and cauteries, despite their exorbitant price tags."
 	icon_state = "scalpel_laser_3"
 	damtype = "fire"
-	force = 15
+	force = 12
 	bloodlessprob = 100
 	black_market_value = 25
 
@@ -186,7 +191,8 @@
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	flags_atom = FPRINT|CONDUCT
-	force = 20
+	force = 6
+	attack_speed = 2 //clickclickclick to brrrrr
 	sharp = IS_SHARP_ITEM_BIG
 	w_class = SIZE_SMALL
 	throwforce = 9
@@ -371,6 +377,7 @@
 	name = "bone setter"
 	desc = "Known formally as 'bone reduction forceps,' it is a surgical tool used for a procedure called 'fracture reduction,' during which it to repositions fractured bones into their proper positions so they may heal properly."
 	icon_state = "bonesetter"
+	hitsound = 'sound/weapons/genhit3.ogg'
 	force = 15
 	throwforce = 5
 	throw_speed = SPEED_VERY_FAST

@@ -229,7 +229,7 @@
 	name = "corrosive spit"
 	icon_state = "xeno_acid_strong"
 	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
-	accuracy = HIT_ACCURACY_TIER_5
+	accuracy = HIT_ACCURACY_TIER_MAX
 	accurate_range = 32
 	max_range = 4
 	damage = 35

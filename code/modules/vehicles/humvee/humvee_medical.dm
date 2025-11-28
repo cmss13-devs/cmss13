@@ -20,6 +20,12 @@
 	passengers_slots = 3 // 5 total. Reserved slots are added to passenger slots.
 	xenos_slots = 3
 
+	misc_multipliers = list(
+		"move" = 0.5, // fucking annoying how this is the only way to modify speed
+		"accuracy" = 1,
+		"cooldown" = 1
+	)
+
 	entrances = list(
 		"right" = list(-2, -1),
 		"left" = list(1, -1),

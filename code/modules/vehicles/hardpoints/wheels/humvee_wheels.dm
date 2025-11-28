@@ -1,13 +1,13 @@
 /obj/item/hardpoint/locomotion/humvee_wheels
 	name = "\improper JTMV Wheels"
 	desc = "Integral to the movement of the JTMV."
-	icon = 'icons/obj/vehicles/hardpoints/humvee_hardpoints.dmi'
+	icon = 'icons/obj/vehicles/hardpoints/humvee.dmi'
 
 	damage_multiplier = 0.15
 
-	icon_state = "humvee_tires"
+	icon_state = "tires"
 	disp_icon = "humvee"
-	disp_icon_state = "humvee_tires"
+	disp_icon_state = "humvee_wheels"
 
 	health = 500
 

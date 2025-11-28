@@ -350,32 +350,32 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
 "abk" = (
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/space/basic,
+/area/fiorina/tumor/ship)
+"abl" = (
 /obj/structure/shuttle/part/ert/front_left_stan,
 /obj/structure/monorail{
 	name = "launch track"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
-"abl" = (
+"abm" = (
 /obj/structure/shuttle/part/ert/front_right_stan,
 /obj/structure/monorail{
 	name = "launch track"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/oob)
-"abm" = (
+"abn" = (
 /obj/structure/shuttle/part/ert/transparent/left_engine,
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
-"abn" = (
+"abo" = (
 /turf/closed/shuttle/ert/transparent{
 	icon_state = "wy27"
 	},
 /area/fiorina/station/medbay)
-"abo" = (
-/obj/structure/shuttle/part/ert/front_right_stan,
-/turf/open/floor/plating/prison,
-/area/fiorina/tumor/ship)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -12196,7 +12196,7 @@
 /area/fiorina/station/transit_hub)
 "jhG" = (
 /obj/structure/shuttle/part/ert/front_right_stan,
-/turf/open/space/basic,
+/turf/open/floor/plating/prison,
 /area/fiorina/tumor/ship)
 "jhN" = (
 /obj/structure/sink{
@@ -34140,7 +34140,7 @@ kow
 bQM
 bQM
 bQM
-jhG
+abk
 nTq
 lUi
 oOV
@@ -34354,7 +34354,7 @@ xwC
 bQM
 xwC
 xwC
-jhG
+abk
 lUi
 jCt
 fiU
@@ -34567,7 +34567,7 @@ xwC
 xwC
 xwC
 xwC
-jhG
+abk
 lUi
 oFk
 anq
@@ -34780,7 +34780,7 @@ gwH
 xwC
 xwC
 xwC
-abo
+jhG
 nTq
 gUj
 tbd
@@ -34788,7 +34788,7 @@ uXD
 mYG
 uXD
 tbd
-abo
+jhG
 kIo
 msn
 fUd
@@ -48558,7 +48558,7 @@ iiw
 awL
 awL
 awL
-abk
+abl
 naf
 naf
 cqz
@@ -48982,7 +48982,7 @@ gcx
 okv
 iiw
 awL
-abl
+abm
 vcf
 vcf
 lku
@@ -55909,7 +55909,7 @@ esw
 esw
 bTI
 bQM
-abn
+abo
 anm
 qFi
 hXZ
@@ -82043,7 +82043,7 @@ paI
 tsc
 bEk
 ogf
-abk
+abl
 naf
 naf
 cqz
@@ -82467,7 +82467,7 @@ paI
 tsc
 bEk
 ogf
-abl
+abm
 vcf
 vcf
 lku
@@ -84561,7 +84561,7 @@ paI
 paI
 eeH
 dFM
-abm
+abn
 xeO
 xeO
 xeO

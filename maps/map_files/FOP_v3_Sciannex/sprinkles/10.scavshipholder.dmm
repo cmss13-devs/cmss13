@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/structure/shuttle/part/ert/front_right_stan,
-/turf/open/floor/plating/prison,
+/turf/open/space/basic,
 /area/template_noop)
 "aE" = (
 /obj/structure/machinery/light/small{
@@ -623,7 +623,7 @@
 /area/template_noop)
 "WN" = (
 /obj/structure/shuttle/part/ert/front_right_stan,
-/turf/open/space/basic,
+/turf/open/floor/plating/prison,
 /area/template_noop)
 "Xf" = (
 /turf/closed/shuttle/ert{
@@ -834,7 +834,7 @@ NV
 NV
 "}
 (9,1,1) = {"
-WN
+aa
 xR
 Nm
 bw
@@ -859,7 +859,7 @@ NV
 (10,1,1) = {"
 NV
 NV
-WN
+aa
 LG
 kR
 oH
@@ -883,7 +883,7 @@ CM
 NV
 NV
 NV
-WN
+aa
 LG
 vI
 BC
@@ -907,7 +907,7 @@ bh
 NV
 NV
 NV
-aa
+WN
 xR
 Uh
 hP
@@ -915,7 +915,7 @@ iU
 aW
 iU
 hP
-aa
+WN
 xR
 TS
 TS

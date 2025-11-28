@@ -372,6 +372,10 @@
 	icon_state = "wy27"
 	},
 /area/fiorina/station/medbay)
+"abo" = (
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/plating/prison,
+/area/fiorina/tumor/ship)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -34776,7 +34780,7 @@ gwH
 xwC
 xwC
 xwC
-jhG
+abo
 nTq
 gUj
 tbd
@@ -34784,7 +34788,7 @@ uXD
 mYG
 uXD
 tbd
-jhG
+abo
 kIo
 msn
 fUd

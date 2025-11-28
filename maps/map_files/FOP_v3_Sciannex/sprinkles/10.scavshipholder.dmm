@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/shuttle/part/ert/front_right_stan,
+/turf/open/floor/plating/prison,
+/area/template_noop)
 "aE" = (
 /obj/structure/machinery/light/small{
 	dir = 8;
@@ -903,7 +907,7 @@ bh
 NV
 NV
 NV
-WN
+aa
 xR
 Uh
 hP
@@ -911,7 +915,7 @@ iU
 aW
 iU
 hP
-WN
+aa
 xR
 TS
 TS

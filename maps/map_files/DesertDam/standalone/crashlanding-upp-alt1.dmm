@@ -10,6 +10,23 @@
 	},
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/valley_civilian)
+"ac" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "leftengine_2";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
+"ad" = (
+/obj/structure/prop/invuln/fire{
+	pixel_x = -7;
+	pixel_y = 17
+	},
+/turf/closed/shuttle/ert/transparent{
+	icon_state = "rightengine_2";
+	name = "Buran"
+	},
+/area/desert_dam/exterior/valley/valley_civilian)
 "bm" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -560,6 +577,10 @@
 /obj/structure/shuttle/part/ert/transparent/right_engine{
 	name = "Buran"
 	},
+/obj/structure/prop/invuln/fire{
+	pixel_x = -8;
+	pixel_y = 10
+	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "Hu" = (
@@ -848,6 +869,10 @@
 /obj/structure/shuttle/part/ert/transparent/right_engine{
 	name = "Buran"
 	},
+/obj/structure/prop/invuln/fire{
+	pixel_x = -3;
+	pixel_y = 6
+	},
 /turf/open/mars/mars_dirt_5,
 /area/desert_dam/exterior/valley/valley_civilian)
 "UK" = (
@@ -1079,7 +1104,7 @@ la
 la
 bz
 yl
-Jy
+ac
 kd
 FG
 nX
@@ -1430,7 +1455,7 @@ la
 la
 la
 Kr
-NP
+ad
 UB
 Yv
 nd

@@ -1,7 +1,7 @@
 /datum/tech/humvee
 	name = "M24 Series JTMV Vehicle"
 	desc = "Purchase an M24 Series JTMV, a M2420 JTMV-HWC Heavy Weapon Carrier, M2421 JTMV-Ambulance, or M2422 JTMV-Utility variant may be selected."
-	icon_state = "upgrade"
+	icon_state = "humvee"
 
 	required_points = 0
 

@@ -1213,9 +1213,10 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	icon_state = "medicomp"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	use_sound = "toolbox"
-	w_class = SIZE_SMALL
+	w_class = SIZE_MEDIUM
 	storage_flags = STORAGE_FLAGS_DEFAULT
 	flags_item = ITEM_PREDATOR
+	flags_equip_slot = SLOT_STORE
 	storage_slots = 12
 	can_hold = list(
 		/obj/item/tool/surgery/stabilizer_gel,
@@ -1224,6 +1225,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		/obj/item/reagent_container/hypospray/autoinjector/yautja,
 		/obj/item/device/healthanalyzer/alien,
 		/obj/item/tool/surgery/healing_gel,
+		/obj/item/storage/herbal_case,
 	)
 	black_market_value = 10
 
@@ -1238,6 +1240,19 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	new /obj/item/tool/surgery/healing_gel/(src)
 	new /obj/item/tool/surgery/healing_gel/(src)
 	new /obj/item/tool/surgery/healing_gel/(src)
+
+/obj/item/storage/medicomp/survivor/fill_preset_inventory()
+	new /obj/item/tool/surgery/stabilizer_gel(src)
+	new /obj/item/tool/surgery/healing_gun(src)
+	new /obj/item/tool/surgery/wound_clamp(src)
+	new /obj/item/device/healthanalyzer/alien(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/yautja(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/tool/surgery/healing_gel/(src)
+	new /obj/item/storage/herbal_case/full(src)
 
 /obj/item/storage/medicomp/update_icon()
 	if(!length(contents))
@@ -1681,3 +1696,27 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 /obj/item/device/houndcam/attack_hand(mob/user)
 	. = ..()
 	internal_camera.tgui_interact(user)
+
+/obj/item/storage/herbal_case
+	name = "herbs case"
+	icon = 'icons/obj/items/storage/medical.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
+	icon_state = "surgical_case"
+	throw_speed = SPEED_FAST
+	throw_range = 8
+	storage_slots = 4
+	w_class = SIZE_SMALL
+	matter = list("plastic" = 1000)
+	can_hold = list(
+		/obj/item/stack/medical/advanced/ointment/predator,
+		/obj/item/stack/medical/advanced/bruise_pack/predator,
+	)
+
+/obj/item/storage/herbal_case/full/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack/predator(src)
+	new /obj/item/stack/medical/advanced/bruise_pack/predator(src)
+	new /obj/item/stack/medical/advanced/ointment/predator(src)
+	new /obj/item/stack/medical/advanced/ointment/predator(src)

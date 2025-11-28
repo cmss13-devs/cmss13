@@ -319,6 +319,8 @@
 
 	var/icon_xeno
 	var/icon_xenonid
+	var/xenonid_pixel_x
+	var/xenonid_pixel_y
 	/// Stores the overlay icon for spitting/drooling when acid-based abilities are selected
 	var/acid_overlay
 

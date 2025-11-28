@@ -279,6 +279,7 @@
 	wall_smash = 0
 	pixel_x = -29 //new offsets for the much bigger sprite.
 	old_x = -29
+	xenonid_pixel_x = -16
 	mob_size = MOB_SIZE_IMMOBILE
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 0 //Queen doesn't count towards population limit.

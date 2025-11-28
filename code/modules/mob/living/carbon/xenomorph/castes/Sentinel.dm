@@ -38,6 +38,7 @@
 	plasma_types = list(PLASMA_NEUROTOXIN)
 	pixel_x = -12
 	old_x = -12
+	xenonid_pixel_x = -9
 	tier = 1
 	organ_value = 800
 	base_actions = list(

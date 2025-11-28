@@ -29,6 +29,8 @@
 	pixel_y = -6
 	old_x = -8
 	old_y = -6
+	xenonid_pixel_x = -1
+	xenonid_pixel_y = 0
 	layer = MOB_LAYER
 	mob_flags = NOBIOSCAN
 	see_in_dark = 8

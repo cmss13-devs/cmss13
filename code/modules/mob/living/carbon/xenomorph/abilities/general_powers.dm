@@ -31,9 +31,16 @@
 		return
 
 	var/obj/effect/alien/weeds/node/node = locate() in turf
-	if(node && node.weed_strength >= xeno.weed_level)
-		to_chat(xeno, SPAN_WARNING("There's a pod here already!"))
-		return
+	if(node)
+		if(node.weed_strength > xeno.weed_level)
+			to_chat(xeno, SPAN_WARNING("The node here is too strong to uproot."))
+			return
+		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, node, INTERRUPT_ALL))
+			to_chat(xeno, SPAN_WARNING("There's a pod here already! You decide to not replace it."))
+			return
+		to_chat(xeno, SPAN_NOTICE("We uproot and replace the weed node."))
+		playsound(xeno.loc, "alien_resin_break", 25)
+		qdel(node)
 
 	var/obj/effect/alien/resin/trap/resin_trap = locate() in turf
 	if(resin_trap)

@@ -643,3 +643,4 @@
 #undef INTERNAL_BLEEDING
 #undef SUTURE
 #undef FRACTURE
+#undef ESCHAR_INJURY

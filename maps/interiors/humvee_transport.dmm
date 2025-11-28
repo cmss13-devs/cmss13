@@ -132,7 +132,7 @@
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 4;
 	exit_type = /obj/structure/interior_exit/vehicle/humvee/left;
-	name = "back left entrance marker";
+	name = "left entrance marker";
 	tag = "left";
 	pixel_x = -3;
 	pixel_y = 14;

@@ -3,7 +3,7 @@
 	desc = "Purchase an M24 Series JTMV, a M2420 JTMV-HWC Heavy Weapon Carrier, M2421 JTMV-Ambulance, or M2422 JTMV-Utility variant may be selected."
 	icon_state = "upgrade"
 
-	required_points = 5
+	required_points = 0
 
 	tier = /datum/tier/one
 

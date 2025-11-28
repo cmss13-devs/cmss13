@@ -17,11 +17,11 @@
 
 	interior_map = /datum/map_template/interior/humvee/humvee_medical
 
-	passengers_slots = 3 // 5 total. Reserved slots are added to passenger slots.
+	passengers_slots = 3 // slightly more passenger slots to make up for the lack of other options.
 	xenos_slots = 3
 
 	misc_multipliers = list(
-		"move" = 0.5, // fucking annoying how this is the only way to modify speed
+		"move" = 0.4, // slightly more speed to make up for the lack of other options.
 		"accuracy" = 1,
 		"cooldown" = 1
 	)
@@ -29,10 +29,8 @@
 	entrances = list(
 		"right" = list(-2, -1),
 		"left" = list(1, -1),
-		"back left" = list(1, 0),
-		"back right" = list(-2, 0),
-		"rear left" = list(0, 0),
-		"rear right" = list(1, 0),
+		"back left" = list(0, 1),
+		"back right" = list(-1, 1),
 	)
 
 	entrance_speed = 0.5 SECONDS
@@ -46,7 +44,8 @@
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/humvee_wheels,
-		//obj/item/hardpoint/primary/humvee_gun,
+		/obj/item/hardpoint/armor/humvee_snowplow,
+		/obj/item/hardpoint/special/humvee_overhead_lights
 	)
 
 	seats = list(

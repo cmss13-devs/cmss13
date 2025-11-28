@@ -31,8 +31,6 @@
 		"left" = list(1, -1),
 		"back left" = list(1, 0),
 		"back right" = list(-2, 0),
-		"rear left" = list(0, 0),
-		"rear right" = list(1, 0),
 	)
 
 	entrance_speed = 0.5 SECONDS
@@ -46,7 +44,11 @@
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/humvee_wheels,
-		//obj/item/hardpoint/primary/humvee_gun,
+		/obj/item/hardpoint/primary/humvee_cannon,
+		/obj/item/hardpoint/support/humvee_flare_launcher,
+		/obj/item/hardpoint/armor/humvee_snowplow,
+		/obj/item/hardpoint/special/humvee_overhead_lights,
+		/obj/item/hardpoint/special/humvee_hatch
 	)
 
 	seats = list(
@@ -93,3 +95,4 @@
 
 /obj/effect/vehicle_spawner/humvee/load_hardpoints(obj/vehicle/multitile/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/humvee_wheels)
+	V.add_hardpoint(new /obj/item/hardpoint/special/humvee_hatch)

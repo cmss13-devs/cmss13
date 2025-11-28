@@ -13,15 +13,15 @@
 	bound_x = -32
 	bound_y = -32
 
-	health = 800
+	health = 850 // more armor to make up for the lack of other options.
 
 	interior_map = /datum/map_template/interior/humvee/humvee_transport
 
-	passengers_slots = 5 // 5 total. Reserved slots are added to passenger slots.
+	passengers_slots = 5 // more passenger slots to make up for the lack of other options.
 	xenos_slots = 3
 
 	misc_multipliers = list(
-		"move" = 0.8, // fucking annoying how this is the only way to modify speed
+		"move" = 0.3, // more speed to make up for the lack of other options.
 		"accuracy" = 1,
 		"cooldown" = 1
 	)
@@ -29,10 +29,8 @@
 	entrances = list(
 		"right" = list(-2, -1),
 		"left" = list(1, -1),
-		"back left" = list(1, 0),
-		"back right" = list(-2, 0),
-		"rear left" = list(0, 0),
-		"rear right" = list(1, 0),
+		"back left" = list(0, 1),
+		"back right" = list(-1, 1),
 	)
 
 	entrance_speed = 0.5 SECONDS
@@ -46,7 +44,8 @@
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/humvee_wheels,
-		//obj/item/hardpoint/primary/humvee_gun,
+		/obj/item/hardpoint/armor/humvee_snowplow,
+		/obj/item/hardpoint/special/humvee_overhead_lights
 	)
 
 	seats = list(
@@ -92,5 +91,4 @@
 	humvee.update_icon()
 
 /obj/effect/vehicle_spawner/humvee/transport/load_hardpoints(obj/vehicle/multitile/V)
-	. = ..()
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/humvee_wheels)

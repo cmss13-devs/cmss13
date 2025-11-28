@@ -209,7 +209,16 @@
 			xeno.flick_attack_overlay(src, "disarm")
 			var/is_shover_queen = isqueen(xeno)
 			var/can_resist_shove = xeno.hivenumber != src.hivenumber || ((isqueen(src) || IS_XENO_LEADER(src)) && !is_shover_queen)
+
+			if(!can_resist_shove && pulling && ishuman(pulling))
+				var/mob/living/carbon/human/pulled_human = pulling
+				if(!is_shover_queen && pulled_human.stat == ALIVE)
+					can_resist_shove = TRUE
+					to_chat(xeno, SPAN_WARNING("We cannot tackle sisters pulling living hosts!"))
+
 			var/can_mega_shove = is_shover_queen || IS_XENO_LEADER(xeno)
+			
+
 			if(can_mega_shove && !can_resist_shove || (mob_size < MOB_SIZE_XENO_SMALL && xeno.mob_size >= MOB_SIZE_XENO_SMALL))
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 				xeno.visible_message(SPAN_WARNING("\The [xeno] shoves \the [src] out of her way!"),

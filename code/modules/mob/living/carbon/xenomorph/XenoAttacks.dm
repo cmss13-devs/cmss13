@@ -212,7 +212,7 @@
 
 			if(!can_resist_shove && pulling && ishuman(pulling))
 				var/mob/living/carbon/human/pulled_human = pulling
-				if(!is_shover_queen && pulled_human.stat == ALIVE)
+				if(!is_shover_queen && pulled_human.stat != DEAD)
 					can_resist_shove = TRUE
 					to_chat(xeno, SPAN_WARNING("We cannot tackle sisters pulling living hosts!"))
 

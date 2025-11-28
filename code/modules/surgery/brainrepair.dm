@@ -36,8 +36,8 @@
 	desc = "remove shards of bone from the brain"
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
-	preop_sound = 'sound/surgery/hemostat2.ogg'
-	success_sound = 'sound/surgery/hemostat1.ogg'
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/remove_bone_chips/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -95,7 +95,7 @@
 	time = 5 SECONDS
 
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/treat_hematoma/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

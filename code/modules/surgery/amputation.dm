@@ -154,8 +154,8 @@
 		/obj/item/attachable/bayonet
 		)
 	preop_sound = 'sound/surgery/saw.ogg'
-	success_sound = 'sound/surgery/organ1.ogg'
-	failure_sound = 'sound/effects/bone_break6.ogg'
+	success_sound = 'sound/surgery/saw2.ogg'
+	failure_sound = 'sound/effects/circsawfail1.ogg'
 
 /datum/surgery_step/saw_off_limb/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/bone_type = target.get_bone_type()
@@ -263,7 +263,7 @@
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/close_torn_veins/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -355,7 +355,7 @@
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/saw.ogg'
 	success_sound = 'sound/effects/buckle.ogg'
-	failure_sound = 'sound/surgery/organ2.ogg'
+	failure_sound = 'sound/surgery/circsawfail3.ogg'
 
 /datum/surgery_step/sever_prosthetic_clamps/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

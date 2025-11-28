@@ -123,7 +123,7 @@
 		/obj/item/tool/kitchen/utensil/fork = 1.5 * SURGERY_TOOL_MULT_SUBSTITUTE
 		)
 	time = 6 SECONDS
-	preop_sound = 'sound/surgery/hemostat2.ogg'
+	preop_sound = 'sound/surgery/hemostat1.ogg'
 	success_sound = 'sound/surgery/organ2.ogg'
 	failure_sound = 'sound/effects/acid_sizzle2.ogg'
 

@@ -184,8 +184,8 @@
 		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_SUBSTITUTE,
 	)//shamelessly taken from embryo code
 	time = 3 SECONDS
-	preop_sound = 'sound/surgery/hemostat2.ogg'
-	success_sound = 'sound/surgery/hemostat1.ogg'
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/xenomorph/remove_organ/preop(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

@@ -122,7 +122,7 @@
 	time = 4 SECONDS
 
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/mend_connections/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

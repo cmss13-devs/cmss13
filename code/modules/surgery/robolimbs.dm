@@ -75,8 +75,8 @@
 	accept_hand = TRUE
 	time = 3 SECONDS
 	tools = SURGERY_TOOLS_PINCH
-	preop_sound = 'sound/surgery/hemostat2.ogg'
-	success_sound = 'sound/surgery/retractor2.ogg'
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/strenghten_prosthesis_connection/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

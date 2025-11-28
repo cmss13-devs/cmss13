@@ -142,8 +142,8 @@
 	///Tools used to stem bleeders by specifically tying them up. List used for specific messaging as there's two of these.
 	var/ligation_tools = list(/obj/item/stack/cable_coil)
 	time = 2 SECONDS
-	preop_sound = 'sound/surgery/hemostat2.ogg'
-	success_sound = 'sound/surgery/hemostat1.ogg'
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 
 /datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -425,8 +425,9 @@
 	)
 	time = 4 SECONDS
 	preop_sound = 'sound/surgery/saw.ogg'
-	success_sound = 'sound/surgery/hemostat1.ogg'
-	failure_sound = 'sound/effects/bone_break6.ogg'
+	success_sound = 'sound/surgery/saw2.ogg'
+	failure_sound = 'sound/effects/circsawfail1.ogg'
+
 
 /datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/limb/affecting = target.get_limb(check_zone(user.zone_selected))
@@ -618,7 +619,7 @@
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
-	success_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 //Use materials to mend bones, same as /datum/surgery_step/mend_bones

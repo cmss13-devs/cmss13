@@ -206,3 +206,119 @@
       to observe the most interesting players
   - server: added additional world/Topic endpoints to interface with CMTV
   - server: added the ability to link your Twitch account to the game
+2025-11-17:
+  Blundir:
+  - bugfix: fixed Unica 2006 and Unica 6 classic having normal ammo in them instead
+      of impact like other CO guns
+  - imageadd: changes snow camo spec head rag sprite to be like other camo ones
+  Nihisohel:
+  - bugfix: Properly adds the smaller mop bucket to the autholathe
+  - balance: Janitorial buckets are now considered large items, volume reduced from
+      500u to 300u
+  - balance: High-cap beaker medilathe costs are increased from 10000 to 30000, volume
+      increased from 300u to 500u
+  - balance: OT has had their buckets replaced with high-cap beakers and OT and research
+      gets one extra high-cap beakers within their respective offices
+  Steelpoint:
+  - maptweak: The ERT docking ports on the USS Almayer have been remapped to appear
+      more thematic.
+  - maptweak: The windows overlooking the emergency response team landing docks on
+      the USS Almayer are now hull windows. This will protect the shuttle and its
+      occupants from being fired on through the roof of the shuttle
+  armsdealer9876:
+  - spellcheck: Set pose now says They are instead of They is
+  - code_imp: Added 2 new var's for human/examin.dm
+2025-11-18:
+  Detective-Google:
+  - bugfix: IASF survs no longer have almayer command radio.
+2025-11-19:
+  Nihisohel:
+  - qol: Squad prep vendors can now vend to hand again, following preferences, while
+      also allowing equipment to be auto equipped, if possible.
+  - qol: Surplus clothing vendors now have the auto-equip flag
+  Nihisohel, Mistchristmas for TGUI:
+  - rscadd: FTLs are automatically assigned to their own fireteams, and can now assign
+      their own members
+  - qol: Being assigned to a fireteam will now automatically change your headset tracking
+      to the FTL
+  - qol: The SL and aSL headsets now default to the LZ, instead of themselves. QOL,
+      I guess.
+  - bugfix: Adds Intel SL tracker to Foxtrot Leads headset
+  - balance: SLs now get Leadership 2, FTLs get Leadership 1, and aSLs no longer get
+      leadership training on promotion.
+  - balance: Some marine roles have had their leadership nerfed or stripped away from
+      them.
+  - balance: Additionally, some other character skill presets have had their leadership
+      skills rebalanced
+  - balance: Adds a fourth leadership level, and rebalances a couple of the buffs
+      to compensate, among other niche changes
+  - spellcheck: Removes the indents on periods from the voice cycling text
+  - code_imp: Removes the redundant access check on headsets, doesn't actually do
+      anything currently besides be a pain in the ass
+2025-11-20:
+  Labeo0:
+  - code_imp: Can now reload UBF with welding fuel from m240 tank
+  Nihisohel:
+  - bugfix: The .38 revolver can now tactically reload properly.
+  realforest2001:
+  - rscadd: Added more helmet and backpack options to Synthetic loadout.
+2025-11-22:
+  Drathek:
+  - bugfix: Ghost ears now can hear whispers (but should ignore radio whispers when
+      using ghost radio)
+  - bugfix: Radio transmissions that failed (for a Z with no coms) now are sent to
+      observers with ghost ears
+  - bugfix: Messages from clientless mobs are now ignored even when using ghost ears
+      unless its nearby
+  - balance: Tacmap updates are a global cooldown per faction once again
+  - bugfix: Fixed health scans performing new scans just by changing holocard or minimal
+      hud mode
+  - qol: Healthscan now autoupdates for ghosts
+  - bugfix: Fixed list compiler errors introduced in 516.1670
+  - code_imp: Added glob options for alist
+  - code_imp: Improve autodoc research disk logic
+  - code_imp: override_precedes_definition is now an error because the proc redefinition
+      would otherwise do nothing
+  - rscadd: Join as xeno button can now take over non-ssd afk xenos and now only lists
+      xenos soon to be available in 30s rather than 60s
+  - bugfix: Added a few more checks to join as xeno to ensure neither dead nor deleted
+      xenos are offered
+  - bugfix: The "has ghosted and their body is up for grabs!" event is no longer sent
+      for taking over a xeno (now only when they actually ghost)
+  Git-Nivrak:
+  - bugfix: You can no longer see tiles you shouldn't be able to see while looking
+      up
+  - bugfix: You can no longer look up while zoomed or zoom while looking up
+2025-11-23:
+  Puckaboo2:
+  - bugfix: Thwei goes back to its normal sprite after use.
+2025-11-25:
+  BasilHerb:
+  - code_imp: upped the average number of calories burnt
+  - code_imp: upped the minimum hurdle for calories burnt fun fact
+  Detective-Google:
+  - rscdel: removed an aesthetically clashing helmet from the synth loadout screen.
+  Googles-Hands:
+  - maptweak: The Goons, Bodyguards and WY-Inspection now arrive in a company shuttle.
+  - maptweak: The MARSOC base is now USCM instead of WY.
+  Kashargul:
+  - bugfix: init order for chem dispensers, round spawned dispensers now should directly
+      get their storage
+  Unknownity:
+  - rscadd: The observer xeno infection icon now changes colors depending on the hive
+      of the embryo.
+  Zenith, dimdimich1996:
+  - imageadd: added three new pod door style sprites.
+  - maptweak: tweaked the various maps with the escape pod doors - added new escape
+      pod doors to them and minor floor tile changes.
+  byondsucks:
+  - balance: The robust snowsuit now has very light slowdown which also gives resist
+      againts sent neuro
+  carlarctg:
+  - qol: You can now uproot and replant weed nodes after a short delay, by spreading
+      weeds above one.
+  kalazus:
+  - bugfix: Prevents xenos from moving bodies in broken vehicles by dropping them.
+  revelation-8468:
+  - balance: Reduces the loadout cost of fullbody paint to 3, in line with the skull
+      paint.

@@ -421,10 +421,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/p_stern)
 "aba" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock SU-3";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -3136,9 +3135,8 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "ahi" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Evacuation Airlock SU-2";
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock SU-2"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -3199,7 +3197,9 @@
 /obj/structure/machinery/chem_dispenser/medbay{
 	pixel_x = -1
 	},
-/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 20
+	},
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera";
 	dir = 8
@@ -9611,9 +9611,8 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/intel)
 "ayo" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Evacuation Airlock PU-2";
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock PU-2"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -12246,7 +12245,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/lower)
 "aFf" = (
-/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 20
+	},
 /obj/structure/machinery/chem_dispenser/research,
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/medical_science)
@@ -14665,6 +14666,10 @@
 	density = 0;
 	pixel_x = -11;
 	pixel_y = 16
+	},
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 30;
+	pixel_x = -7
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
@@ -23975,7 +23980,9 @@
 /obj/structure/machinery/chem_dispenser/medbay{
 	pixel_x = -1
 	},
-/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 20
+	},
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/chemistry)
 "bir" = (
@@ -39797,11 +39804,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/tankerbunks)
 "bTq" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Evacuation Airlock PL-3";
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock PL-3"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
 "bTx" = (
 /turf/open/floor/almayer/plating_stripedcorner/east,
@@ -40148,10 +40154,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_m_p)
 "bWh" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock SU-4";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -40828,10 +40833,9 @@
 /turf/open/floor/almayer/plating,
 /area/almayer/living/starboard_garden)
 "ceD" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock PU-3";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -41198,10 +41202,9 @@
 /turf/open/floor/almayer/flooredgesmooth2/south,
 /area/almayer/engineering/upper_engineering)
 "cix" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock PU-4";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -41642,10 +41645,9 @@
 /turf/open/floor/almayer/redcorner/north,
 /area/almayer/shipboard/brig/processing)
 "cmC" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock SL-1";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -41685,10 +41687,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_p)
 "cnd" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock PL-1";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -47889,10 +47890,9 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_midship_hallway)
 "eOM" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock PU-6";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -60103,10 +60103,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "jUx" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock SL-2";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -62792,16 +62791,15 @@
 /area/almayer/medical/hydroponics)
 "lab" = (
 /obj/structure/surface/rack,
-/obj/item/reagent_container/glass/bucket/janibucket{
-	pixel_y = 8;
-	layer = 3.04
-	},
-/obj/item/reagent_container/glass/bucket/janibucket{
-	pixel_y = -4
-	},
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
+	},
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 10
+	},
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = -5
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/lower/workshop/hangar)
@@ -69373,9 +69371,8 @@
 /turf/open/floor/almayer/emeraldfull,
 /area/almayer/squads/charlie_delta_shared)
 "nNX" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Evacuation Airlock PU-1";
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock PU-1"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -76233,6 +76230,9 @@
 /area/almayer/medical/lower_medical_lobby)
 "qyK" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 20
+	},
 /turf/open/floor/almayer/orange/southeast,
 /area/almayer/engineering/lower/workshop/hangar)
 "qyP" = (
@@ -76666,10 +76666,9 @@
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/squads/alpha_bravo_shared)
 "qHq" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock SU-6";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -84370,17 +84369,16 @@
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/hydroponics)
 "tOu" = (
-/obj/item/reagent_container/glass/bucket/janibucket{
-	layer = 3.04;
-	pixel_y = 14;
-	pixel_x = 6
-	},
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/door_control{
 	pixel_x = -6;
 	pixel_y = -4;
 	name = "Secure Storage Shutters";
 	id = "OTcenter"
+	},
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 12;
+	pixel_x = 6
 	},
 /turf/open/floor/almayer/orange/east,
 /area/almayer/engineering/lower/workshop/hangar)
@@ -85884,9 +85882,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "uux" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper Evacuation Airlock SU-1";
-	req_access = null
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
+	name = "\improper Evacuation Airlock SU-1"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -87653,10 +87650,9 @@
 /turf/open/floor/almayer/emerald/southeast,
 /area/almayer/squads/charlie)
 "vfo" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	dir = 2;
+/obj/structure/machinery/door/airlock/almayer/secure/pod/reinforced{
 	name = "\improper Evacuation Airlock PL-2";
-	req_access = null
+	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
@@ -90001,7 +89997,8 @@
 	pixel_x = -24
 	},
 /obj/item/reagent_container/glass/beaker/bluespace{
-	pixel_y = 12
+	pixel_y = 12;
+	pixel_x = 6
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
@@ -95353,7 +95350,9 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/engineering/lower/workshop/hangar)
 "xXr" = (
-/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/item/reagent_container/glass/beaker/bluespace{
+	pixel_y = 20
+	},
 /obj/structure/machinery/chem_dispenser/research,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)

@@ -762,6 +762,7 @@
 	name = "marine alpha leader radio headset"
 	desc = "This is used by the marine Alpha squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	locate_setting = TRACKER_LZ
 	volume = RADIO_VOLUME_CRITICAL
 
 	inbuilt_tracking_options = list(
@@ -805,6 +806,7 @@
 	name = "marine bravo leader radio headset"
 	desc = "This is used by the marine Bravo squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	locate_setting = TRACKER_LZ
 	volume = RADIO_VOLUME_CRITICAL
 
 	inbuilt_tracking_options = list(
@@ -848,6 +850,7 @@
 	name = "marine charlie leader radio headset"
 	desc = "This is used by the marine Charlie squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	locate_setting = TRACKER_LZ
 	volume = RADIO_VOLUME_CRITICAL
 
 	inbuilt_tracking_options = list(
@@ -891,6 +894,7 @@
 	name = "marine delta leader radio headset"
 	desc = "This is used by the marine Delta squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	locate_setting = TRACKER_LZ
 	volume = RADIO_VOLUME_CRITICAL
 
 	inbuilt_tracking_options = list(
@@ -934,6 +938,7 @@
 	name = "marine echo leader radio headset"
 	desc = "This is used by the marine Echo squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	locate_setting = TRACKER_LZ
 	volume = RADIO_VOLUME_CRITICAL
 
 	inbuilt_tracking_options = list( //unknown if this, as of Sept 2024, given to echo leads but adding this here just in case
@@ -978,6 +983,7 @@
 	name = "marine foxtrot leader radio headset"
 	desc = "This is used by the marine Foxtrot squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	locate_setting = TRACKER_LZ
 	volume = RADIO_VOLUME_CRITICAL
 
 	inbuilt_tracking_options = list(
@@ -990,7 +996,8 @@
 		"Bravo SL" = TRACKER_BSL,
 		"Charlie SL" = TRACKER_CSL,
 		"Delta SL" = TRACKER_DSL,
-		"Echo SL" = TRACKER_ESL
+		"Echo SL" = TRACKER_ESL,
+		"Intel SL" = TRACKER_ISL
 	)
 
 /obj/item/device/radio/headset/almayer/marine/cryo/tl
@@ -1344,7 +1351,7 @@
 	desc = "A sleek headset used by the IASF. Low profile enough to fit under any headgear."
 	frequency = RMC_FREQ
 	icon_state = "vai_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/royal_marine)
+	initial_keys = list(/obj/item/device/encryptionkey/colony)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_IASF
 	additional_hud_types = list(MOB_HUD_FACTION_TWE, MOB_HUD_FACTION_IASF, MOB_HUD_FACTION_MARINE)

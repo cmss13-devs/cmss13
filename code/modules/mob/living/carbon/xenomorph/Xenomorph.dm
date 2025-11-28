@@ -492,10 +492,6 @@
 		can_heal = FALSE
 	time_of_birth = world.time
 
-	//Minimap
-	if(hivenumber != XENO_HIVE_TUTORIAL)
-		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
-
 	//Sight
 	sight |= (SEE_MOBS|SEE_BLACKNESS|SEE_TURFS)
 	see_invisible = SEE_INVISIBLE_LIVING
@@ -524,10 +520,7 @@
 
 	if(hive.hivenumber != XENO_HIVE_NORMAL)
 		remove_verb(src, /mob/living/carbon/xenomorph/verb/view_tacmaps)
-	minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
-	var/datum/action/minimap/ref = minimap_ref.resolve()
-	ref.give_to(src, ref)
-	RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
+	create_minimap()
 
 	creation_time = world.time
 
@@ -535,6 +528,19 @@
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
+
+/mob/living/carbon/xenomorph/proc/create_minimap()
+	var/datum/action/minimap/ref
+	if(minimap_ref)
+		ref = minimap_ref.resolve()
+		ref.remove_from(src)
+		UnregisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP)
+	minimap_ref = WEAKREF(new minimap_type(hive_number=hive.hivenumber))
+	ref = minimap_ref.resolve()
+	ref.give_to(src, ref)
+	RegisterSignal(hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(update_minimap_see_humans))
+	if(hivenumber != XENO_HIVE_TUTORIAL)
+		update_minimap_icon()
 
 /mob/living/carbon/xenomorph/proc/update_minimap_see_humans()
 	var/datum/action/minimap/ref = minimap_ref.resolve()
@@ -917,6 +923,7 @@
 	update_icon_source()
 	if(hive && hive.living_xeno_queen && hive.living_xeno_queen == src)
 		hive.recalculate_hive() //Recalculating stuff around Queen maturing
+	create_minimap()
 
 
 /mob/living/carbon/xenomorph/proc/recalculate_stats()

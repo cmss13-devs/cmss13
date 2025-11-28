@@ -198,8 +198,6 @@
 	if(refresh_limb_status)
 		for(var/obj/limb/L in preview_dummy.limbs)
 			L.status = LIMB_ORGANIC
-//	for(var/obj/limb/L in preview_dummy.limbs)
-//		L.blocks_emissive = EMISSIVE_BLOCK_NONE
 	preview_dummy.set_species()
 	copy_appearance_to(preview_dummy)
 	preview_dummy.update_body()

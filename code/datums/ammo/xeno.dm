@@ -249,6 +249,13 @@
 	acid_effect.increment_duration(acid_progression)
 	splatter(mob, 1, projectile)
 
+/datum/ammo/xeno/acid/despoiler/on_hit_obj(obj/target_object, obj/projectile/proj_hit)
+	. = ..()
+	if(istype(target_object, /obj/structure/barricade))
+		var/obj/structure/barricade/barricade = target_object
+		barricade.acid_spray_act()
+		continue
+
 /datum/ammo/xeno/acid/despoiler/proc/splatter(mob/mob, range = 1, obj/projectile/projectile)
 	for(var/mob/living/carbon/human/victim in range(range, mob))
 		var/datum/effects/acid/acid_effect = locate() in victim.effects_list

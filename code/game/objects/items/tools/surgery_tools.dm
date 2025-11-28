@@ -37,8 +37,7 @@
 	icon_state = "hemostat"
 	hitsound = 'sound/weapons/pierce.ogg'
 	matter = list("metal" = 5000, "glass" = 2500)
-	force = 5
-	attack_speed = 2
+	force = 10
 	sharp = IS_SHARP_ITEM_SIMPLE
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
@@ -82,8 +81,8 @@
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	matter = list("metal" = 15000, "glass" = 10000)
 	flags_atom = FPRINT|CONDUCT
-	force = 6
-	attack_speed = 2 //clickclickclick to brrrrr
+	force = 25
+	attack_speed = 9
 	throwforce = 9
 	sharp = IS_SHARP_ITEM_ACCURATE //it makes holes in skin and bone... Yes, sharp.
 	w_class = SIZE_SMALL
@@ -132,7 +131,6 @@
 	desc_lore = "The prototype laser scalpel was developed during the mid-1900s, a time where scientists had yet to solve their quandary of developing a laser that could cut through flesh and and burn the blood vessels closed simultaneously; they settled on a compromise: slapping a superheated directed laser beneath the blade of the scalpel and hoping the laser burns the incision the blade makes. While the prototype ironically functioned perfectly as a cautery, it left something to be desired where bloodless incisions were a concern. Somehow, the big heads in research forgot to calibrate the width of the laser to be equivalent to the precise width of the incision made by the blade, leaving some blood vessels untouched in the process."
 	icon_state = "scalpel_laser"
 	damtype = "fire"
-	force = 12
 	flags_item = ANIMATED_SURGICAL_TOOL
 	///The likelihood an incision made with this will be bloodless.
 	var/bloodlessprob = 60
@@ -144,7 +142,6 @@
 	desc_lore = "After figuring out how to make a laser that incises flesh, the prototype and its blade became nothing more than a distant memory and a reminder to not haphazardly slap two independently-functioning tools together and praying to Spess Jesus they will in tandem with one another. This design, hailing from the early 2000s, uses a CO2 laser to create an incision by using an invisible infrared beam that vaporizes tissue while sealing blood vessels. While pinpoint bleeding occurs on occasion, the laser scalpel is a perfect, if not expensive alternative to replacing a standard scalpel and cautery."
 	icon_state = "scalpel_laser_2"
 	damtype = "fire"
-	force = 12
 	bloodlessprob = 80
 	black_market_value = 20
 
@@ -154,7 +151,6 @@
 	desc_lore = "Scientists perfected the standard model by using a much stronger type of laser that creates explosions on the microscopic scale to vaporize any tissue and blood vessels in its way as it makes an incision. With a 100% success rate in creating bloodless incision, these scalpels have no issue taking the place of scalpels and cauteries, despite their exorbitant price tags."
 	icon_state = "scalpel_laser_3"
 	damtype = "fire"
-	force = 12
 	bloodlessprob = 100
 	black_market_value = 25
 
@@ -166,9 +162,10 @@
 	name = "\improper PRISE system"
 	desc = "The Perivascular Incision, Suction, and Evisceration Tool, formerly known as the Precision Incision and Cautery Tool, uses a high-frequency vibrating blade and suction liquid control system to precisely target and destroy the lymphatic and vascular systems feeding tumors while suctioning fluids that may contain traveling cancerous cells."
 	desc_lore = "The PRISE system had humble origins as yet another tool developed for cancer research. Designed to identify, sever and cauterize the lymphatic and vascular systems feeding tumors, the cauterization feature was considered too costly to implement and was abandoned. Nonetheless, it accomplishes its other goals with aplomb and is the standard tool for cutting off nutrient supplies to tumors before extraction. Due to its mechanisms of targeting specific types of cells while incising and suctioning, it struggles to create a full-length incision bloodlessly."
-	icon_state = "pict_system"
+	icon_state = "prise_system"
+	force = 15
+	attack_speed = 6
 	w_class = SIZE_SMALL
-	force = 7.5
 	black_market_value = 25
 
 /obj/item/tool/surgery/scalpel/manager
@@ -176,7 +173,6 @@
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares and widens incisions simultaneously and bloodlessly, allowing for the immediate commencement of therapeutic steps. It can only be used to begin surgeries."
 	desc_lore = "Thousands of surgeons across the galaxy can only dream of holding one of these in their hands. With the technology of an advanced laser scalpel and a mechanical retractor all in one tool, a surgeon can incise, seal blood vessels, and widen incisions all in one step. Sadly, the tool is overhyped, aiding in its unconscionable price tag; it cannot function as a retractor, hemostat, cautery in any circumstances other than making an incision."
 	icon_state = "scalpel_manager"
-	force = 7.5
 	flags_item = ANIMATED_SURGICAL_TOOL
 	black_market_value = 25
 
@@ -191,8 +187,8 @@
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	flags_atom = FPRINT|CONDUCT
-	force = 6
-	attack_speed = 2 //clickclickclick to brrrrr
+	force = 25
+	attack_speed = 9
 	sharp = IS_SHARP_ITEM_BIG
 	w_class = SIZE_SMALL
 	throwforce = 9
@@ -379,6 +375,7 @@
 	icon_state = "bonesetter"
 	hitsound = 'sound/weapons/genhit3.ogg'
 	force = 15
+	attack_speed = 6
 	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5

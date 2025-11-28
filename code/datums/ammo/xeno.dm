@@ -233,7 +233,7 @@
 	accurate_range = 32
 	max_range = 4
 	damage = 35
-	spit_cost = 75
+	spit_cost = 50
 	scatter = SCATTER_AMOUNT_TIER_6
 	var/acid_progression = 10
 

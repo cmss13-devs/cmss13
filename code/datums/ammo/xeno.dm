@@ -247,6 +247,17 @@
 	else
 		acid_effect = new /datum/effects/acid/(mob, projectile.firer)
 	acid_effect.increment_duration(acid_progression)
+	splatter(mob, 1, projectile)
+
+/datum/ammo/xeno/acid/despoiler/proc/splatter(mob/mob, range = 1, obj/projectile/projectile)
+	for(var/mob/living/carbon/human/victim in range(range, mob))
+		var/datum/effects/acid/acid_effect = locate() in victim.effects_list
+		if(acid_effect)
+			continue
+		else
+			new /datum/effects/acid/(victim, projectile.firer)
+
+
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of neuro gas"

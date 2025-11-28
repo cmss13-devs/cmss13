@@ -147,7 +147,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 						xeno.can_heal = FALSE
 				notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [xeno.name].", source = xeno, action = NOTIFY_ORBIT)
 
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, cause, gibbed)
 	SEND_SIGNAL(src, COMSIG_XENO_DEATH, cause, gibbed)
 	give_action(src, /datum/action/ghost/xeno)
 

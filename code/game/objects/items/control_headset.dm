@@ -25,6 +25,13 @@
 	armor_melee = CLOTHING_ARMOR_LOW
 	actions_types = list(/datum/action/item_action/control_xenomorph)
 	vision_impair = VISION_IMPAIR_HIGH
+	// Connected in its own dm
+	var/obj/structure/machinery/relay_tower/connected_tower
+
+/obj/item/clothing/head/control_headset_marine/get_examine_text(mob/user)
+	. = ..()
+	if(connected_tower)
+		. += SPAN_NOTICE("It is currently linked to a relay tower, extending its range and generating combat data.")
 
 /obj/item/clothing/head/control_headset_marine/equipped(mob/user, slot, silent)
 	. = ..()
@@ -65,7 +72,8 @@
 		to_chat(owner, SPAN_WARNING("You were interrupted!"))
 		return
 
-	SEND_SIGNAL(picked_xeno, COMSIG_XENO_CONTROL_HEADSET_CONTROL, owner)
+	var/obj/item/clothing/head/control_headset_marine/headset_holder = holder_item
+	SEND_SIGNAL(picked_xeno, COMSIG_XENO_CONTROL_HEADSET_CONTROL, owner, headset_holder.connected_tower)
 
 /datum/action/item_action/control_xenomorph/can_use_action()
 	var/mob/living/carbon/human/human = owner

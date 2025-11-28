@@ -220,6 +220,7 @@ DEFINE_BITFIELD(whitelist_status, list(
 
 // Objective priorities
 #define OBJECTIVE_NO_VALUE 0
+#define OBJECTIVE_VERY_LOW_VALUE 0.05
 #define OBJECTIVE_LOW_VALUE 0.1
 #define OBJECTIVE_MEDIUM_VALUE 0.2
 #define OBJECTIVE_HIGH_VALUE 0.35

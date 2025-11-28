@@ -1428,6 +1428,7 @@
 #include "code\game\objects\structures\prop_mech.dm"
 #include "code\game\objects\structures\props.dm"
 #include "code\game\objects\structures\reagent_dispensers.dm"
+#include "code\game\objects\structures\relay_tower.dm"
 #include "code\game\objects\structures\roof.dm"
 #include "code\game\objects\structures\safe.dm"
 #include "code\game\objects\structures\shower.dm"

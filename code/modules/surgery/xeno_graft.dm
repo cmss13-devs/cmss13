@@ -101,6 +101,7 @@
 		to_chat(user, SPAN_NOTICE("Nothing seems to happen."))
 		return
 
+	playsound(target, 'sound/machines/screen_output1.ogg', 50)
 	target.visible_message(SPAN_NOTICE("Sensors start to beep and mechanisms whirr as the control headset is grafted onto [target]'s head."))
 	target.AddComponent(/datum/component/xeno_control_headset)
 	target.set_hive_and_update(XENO_HIVE_CONTROLLED)

@@ -120,7 +120,7 @@
 
 /datum/research_upgrades/item/headset_m
 	name = "X993A1-M Control Headset"
-	desc = "The companion piece to the -X version. Required to remotely operate XX-121 grafted with the XX93A1-X."
+	desc = "The companion piece to the -X version. Required to remotely operate XX-121 grafted with the X93A1-X."
 	value_upgrade = 400
 	clearance_req = 2
 	change_purchase = -50

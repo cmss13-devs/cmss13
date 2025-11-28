@@ -157,7 +157,7 @@
 /obj/item/tool/surgery/scalpel/pict_system
 	name = "\improper PICT system"
 	desc = "The Precision Incision and Cauterization Tool uses a high-frequency vibrating blade, laser cautery, and suction liquid control system to precisely sever target tissues while preventing all fluid leakage. Despite its troubled development program and horrifying price tag, outside of complex experimental surgeries it isn't any better than an ordinary twenty-dollar scalpel and can't create a full-length incision bloodlessly."
-	icon_state = "prise_system"
+	icon_state = "pict_system"
 	w_class = SIZE_SMALL
 	force = 7.5
 	black_market_value = 25

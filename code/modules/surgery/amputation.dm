@@ -355,7 +355,7 @@
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/saw.ogg'
 	success_sound = 'sound/effects/buckle.ogg'
-	failure_sound = 'sound/surgery/circsawfail3.ogg'
+	failure_sound = 'sound/effects/circsawfail3.ogg'
 
 /datum/surgery_step/sever_prosthetic_clamps/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

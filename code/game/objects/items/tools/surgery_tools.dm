@@ -56,7 +56,7 @@
 	icon_state = "cautery"
 	matter = list("metal" = 5000, "glass" = 2500)
 	force = 10
-	throwforce = 5
+	throwforce = 1
 	damtype = "fire"
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_TINY
@@ -79,11 +79,11 @@
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	matter = list("metal" = 15000, "glass" = 10000)
 	flags_atom = FPRINT|CONDUCT
-	force = 20
+	force = 15
 	throwforce = 9
 	sharp = IS_SHARP_ITEM_ACCURATE //it makes holes in skin and bone... Yes, sharp.
 	w_class = SIZE_SMALL
-	attack_verb = list("drilled", "bored", "gored")
+	attack_verb = list("drilled", "bored", "gored", "perforated")
 
 /obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill
 	name = "bone drill"
@@ -186,7 +186,7 @@
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	flags_atom = FPRINT|CONDUCT
-	force = 24
+	force = 20
 	sharp = IS_SHARP_ITEM_BIG
 	w_class = SIZE_SMALL
 	throwforce = 9
@@ -470,7 +470,7 @@ t. optimisticdude
 	name = "wound clamp"
 	desc = "Used for clamping wounds after treatment."
 	icon_state = "wound_clamp"
-	force = 0
+	force = 10
 	throwforce = 1
 	w_class = SIZE_SMALL
 	flags_item = ITEM_PREDATOR|ANIMATED_SURGICAL_TOOL
@@ -484,7 +484,8 @@ t. optimisticdude
 	desc = "Putting the FUN back in Autopsy. This little gadget performs an entire autopsy of whatever strange life form you've found in about 30 seconds."
 	icon_state = "scalpel_laser_2"
 	damtype = "fire"
-	force = 0
+	force = 10
+	throwforce = 1
 	flags_item = ANIMATED_SURGICAL_TOOL
 	var/active = 0
 	var/resetting = 0//For the reset, to prevent macro-spam abuse

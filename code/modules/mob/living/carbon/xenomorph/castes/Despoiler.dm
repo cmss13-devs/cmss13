@@ -98,7 +98,6 @@
 		return
 	var/datum/behavior_delegate/despoiler_base/behavior = xeno.behavior_delegate
 	if (istype(behavior))
-		//so we do not reduce slash speed if something has gone wrong
 		if (!behavior.slashes_enhanced)
 			return
 		behavior.slashes_enhanced = FALSE

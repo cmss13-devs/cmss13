@@ -258,9 +258,7 @@
 /datum/ammo/xeno/acid/despoiler/proc/splatter(mob/mob, range = 1, obj/projectile/projectile)
 	for(var/mob/living/carbon/human/victim in range(range, mob))
 		var/datum/effects/acid/acid_effect = locate() in victim.effects_list
-		if(acid_effect)
-			continue
-		else
+		if(!acid_effect)
 			new /datum/effects/acid/(victim, projectile.firer)
 
 

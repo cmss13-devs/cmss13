@@ -61,6 +61,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/toggle_own_ghost_vis,
 	/client/proc/cmd_admin_check_contents,
 	/client/proc/clear_mutineers,
+	/client/proc/set_commander, /*Allows manually chosing an active commander and giving them access to CIC.*/
 	/datum/admins/proc/directnarrateall,
 	/datum/admins/proc/subtlemessageall,
 	/datum/admins/proc/alertall,

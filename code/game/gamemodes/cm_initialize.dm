@@ -110,7 +110,8 @@ Additional game mode variables.
 	var/round_modifiers = list()
 	///List of typepaths of all /datum/gamemode_modifiers that start enabled
 	var/starting_round_modifiers = list()
-
+	/// The current acting commander; set by ares_command_check()
+	var/acting_commander
 
 /datum/game_mode/proc/get_roles_list()
 	return GLOB.ROLES_USCM

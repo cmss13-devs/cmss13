@@ -292,3 +292,45 @@
 2025-11-23:
   Puckaboo2:
   - bugfix: Thwei goes back to its normal sprite after use.
+2025-11-25:
+  BasilHerb:
+  - code_imp: upped the average number of calories burnt
+  - code_imp: upped the minimum hurdle for calories burnt fun fact
+  Detective-Google:
+  - rscdel: removed an aesthetically clashing helmet from the synth loadout screen.
+  Googles-Hands:
+  - maptweak: The Goons, Bodyguards and WY-Inspection now arrive in a company shuttle.
+  - maptweak: The MARSOC base is now USCM instead of WY.
+  Kashargul:
+  - bugfix: init order for chem dispensers, round spawned dispensers now should directly
+      get their storage
+  Unknownity:
+  - rscadd: The observer xeno infection icon now changes colors depending on the hive
+      of the embryo.
+  Zenith, dimdimich1996:
+  - imageadd: added three new pod door style sprites.
+  - maptweak: tweaked the various maps with the escape pod doors - added new escape
+      pod doors to them and minor floor tile changes.
+  byondsucks:
+  - balance: The robust snowsuit now has very light slowdown which also gives resist
+      againts sent neuro
+  carlarctg:
+  - qol: You can now uproot and replant weed nodes after a short delay, by spreading
+      weeds above one.
+  kalazus:
+  - bugfix: Prevents xenos from moving bodies in broken vehicles by dropping them.
+  revelation-8468:
+  - balance: Reduces the loadout cost of fullbody paint to 3, in line with the skull
+      paint.
+2025-11-29:
+  realforest2001:
+  - code_imp: Changed how human hand-held blocking is handled.
+  - code_imp: Items that can be used as shields have a base percentage chance of being
+      used, reduced by factors such as if they need to be wielded (and aren't) or
+      not.
+  - balance: Most entities that act as shields for humans are now directional only,
+      and cannot block things that are not in a roughly 75 degree arc of where the
+      holder is facing. (Facing NORTH blocks from NORTH-WEST, NORTH and NORTH-EAST).
+  - balance: Machetes and other long blades have a 15% base chance of blocking melee
+      attacks, but cannot block ranged attacks.
+  - balance: Xeno pounces can only be blocked by a small number of large weapons.

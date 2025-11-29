@@ -159,10 +159,10 @@
  */
 
 /obj/item/tool/surgery/scalpel/pict_system
-	name = "\improper PRISE system"
-	desc = "The Perivascular Incision, Suction, and Evisceration Tool, formerly known as the Precision Incision and Cautery Tool, uses a high-frequency vibrating blade and suction liquid control system to precisely target and destroy the lymphatic and vascular systems feeding tumors while suctioning fluids that may contain traveling cancerous cells."
-	desc_lore = "The PRISE system had humble origins as yet another tool developed for cancer research. Designed to identify, sever and cauterize the lymphatic and vascular systems feeding tumors, the cauterization feature was considered too costly to implement and was abandoned. Nonetheless, it accomplishes its other goals with aplomb and is the standard tool for cutting off nutrient supplies to tumors before extraction. Due to its mechanisms of targeting specific types of cells while incising and suctioning, it struggles to create a full-length incision bloodlessly."
-	icon_state = "prise_system"
+	name = "\improper PICT system"
+	desc = "The Perivascular Incision and Cauterization Tool uses a high-frequency vibrating blade and suction liquid control system to precisely target and destroy the lymphatic and vascular systems feeding tumors while suctioning fluids that may contain traveling cancerous cells. Due to its specialty in cutting certain tissues, it is much slower than a scalpel in initiating surgeries and it can't create a full-length incision bloodlessly."
+	desc_lore = "The PRISE system had humble origins as yet another tool developed for cancer research. Designed to identify, sever and cauterize the lymphatic and vascular systems feeding tumors, it accomplishes goals with aplomb and is the standard tool for cutting and burning off nutrient supplies to tumors before extraction. Due to its mechanisms of targeting specific types of cells while incising and suctioning, it struggles to create a full-length incision bloodlessly."
+	icon_state = "pict_system"
 	force = 15
 	attack_speed = 6
 	w_class = SIZE_SMALL
@@ -172,6 +172,8 @@
 	name = "incision management system"
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares and widens incisions simultaneously and bloodlessly, allowing for the immediate commencement of therapeutic steps. It can only be used to begin surgeries."
 	desc_lore = "Thousands of surgeons across the galaxy can only dream of holding one of these in their hands. With the technology of an advanced laser scalpel and a mechanical retractor all in one tool, a surgeon can incise, seal blood vessels, and widen incisions all in one step. Sadly, the tool is overhyped, aiding in its unconscionable price tag; it cannot function as a retractor, hemostat, cautery in any circumstances other than making an incision."
+	force = 15
+	attack_speed = 6
 	icon_state = "scalpel_manager"
 	flags_item = ANIMATED_SURGICAL_TOOL
 	black_market_value = 25

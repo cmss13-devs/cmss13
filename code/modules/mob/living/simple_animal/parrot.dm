@@ -34,10 +34,10 @@
 	icon_dead = "parrot_dead"
 	mob_size = MOB_SIZE_SMALL
 
-	speak = list("Hi","Hello!","Cracker?","BAWWWWK george mellons griffing me")
-	speak_emote = list("squawks","says","yells")
-	emote_hear = list("squawks","bawks")
-	emote_see = list("flutters its wings")
+	speak = list("Hi","Hello!","Cracker?","RAWWWWK! GEORGE MELLONS GRIFFING ME!")
+	speak_emote = list("squawks","says","yells", "calls")
+	emote_hear = list("squawks.","bawks.","calls.","screams.")
+	emote_see = list("flutters its wings.", "clacks its beak,", "preens its feathers.", "pins its eyes.")
 
 	speak_chance = 1//1% (1 in 100) chance every tick; So about once per 150 seconds, assuming an average tick is 1.5s
 	turns_per_move = 5
@@ -123,9 +123,9 @@
 				if("ears")
 					if(ears)
 						if(length(available_channels))
-							src.say("[pick(available_channels)] BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
+							src.say("[pick(available_channels)] RAWWWWWK LEAVE THE HEADSET RAWKKKKK!")
 						else
-							src.say("BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
+							src.say("RAWWWWWK LEAVE THE HEADSET RAWKKKKK!")
 						ears.forceMove(src.loc)
 						ears = null
 						for(var/possible_phrase in speak)
@@ -334,7 +334,7 @@
 			//Search for item to steal
 			parrot_interest = search_for_item()
 			if(parrot_interest)
-				INVOKE_ASYNC(src, PROC_REF(emote), "looks in [parrot_interest]'s direction and takes flight")
+				INVOKE_ASYNC(src, PROC_REF(emote), "looks in [parrot_interest]'s direction, pins its eyes, and takes flight.")
 				parrot_state = PARROT_SWOOP|PARROT_STEAL
 				icon_state = "parrot_fly"
 			return
@@ -356,7 +356,7 @@
 			if(AM)
 				if(istype(AM, /obj/item) || isliving(AM)) //If stealable item
 					parrot_interest = AM
-					INVOKE_ASYNC(src, PROC_REF(emote), "turns and flies towards [parrot_interest]")
+					INVOKE_ASYNC(src, PROC_REF(emote), "turns and flies towards [parrot_interest].")
 					parrot_state = PARROT_SWOOP|PARROT_STEAL
 					return
 				else //Else it's a perch
@@ -470,11 +470,11 @@
 				var/obj/limb/affecting = H.get_limb(rand_zone(pick(parrot_dam_zone)))
 
 				H.apply_damage(damage, BRUTE, affecting, sharp=TRUE, enviro=TRUE)
-				INVOKE_ASYNC(src, PROC_REF(emote), pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons"))
+				INVOKE_ASYNC(src, PROC_REF(emote), pick("pecks [H]'s [affecting].", "cuts [H]'s [affecting] with its talons."))
 
 			else
 				L.apply_damage(damage, BRUTE, enviro=TRUE)
-				INVOKE_ASYNC(src, PROC_REF(emote), pick("pecks at [L]", "claws [L]"))
+				INVOKE_ASYNC(src, PROC_REF(emote), pick("pecks at [L].", "claws [L]."))
 			return
 
 		//Otherwise, fly towards the mob!
@@ -590,7 +590,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, SPAN_DANGER("You are already holding [held_item]"))
+		to_chat(src, SPAN_DANGER("You are already holding [held_item]."))
 		return 1
 
 	var/obj/item/stolen_item = null
@@ -674,7 +674,7 @@
 /mob/living/simple_animal/parrot/Poly
 	name = "Poly"
 	desc = "Poly the Parrot. An expert on quantum cracker theory."
-	speak = list("Poly wanna cracker!", ":e Check the singlo, you chucklefucks!",":e Wire the solars, you lazy bums!",":e WHO TOOK THE DAMN HARDSUITS?",":e OH GOD ITS FREE CALL THE SHUTTLE")
+	speak = list("Poly wanna cracker!", ":e Check the wires, you chucklefucks!",":e Build those cades, you lazy bums!",":e WHO TOOK ALL THE DAMN METAL?",":e OH GOD THE ALIENS ARE HERE, CALL THE ALAMO!")
 
 /mob/living/simple_animal/parrot/Poly/Initialize()
 	ears = new /obj/item/device/radio/headset(src)

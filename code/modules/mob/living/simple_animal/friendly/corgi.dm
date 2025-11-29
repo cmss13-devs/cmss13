@@ -6,10 +6,10 @@
 	icon_state = "corgi"
 	icon_living = "corgi"
 	icon_dead = "corgi_dead"
-	speak = list("YAP", "Woof!", "Bark!", "AUUUUUU")
+	speak = list("YAP!", "Ruff!" "Woof!", "Bark!", "Awooo!", "AUUUUU!" "Arf!")
 	speak_emote = list("barks", "woofs")
-	emote_hear = list("barks", "woofs", "yaps","pants")
-	emote_see = list("shakes its head", "shivers")
+	emote_hear = list("barks.", "woofs.", "yaps.", "pants.")
+	emote_see = list("shakes its head.", "shivers.")
 	speak_chance = 1
 	turns_per_move = 10
 	holder_type = /obj/item/holder/corgi
@@ -95,10 +95,10 @@
 						movement_target.attack_animal(src)
 					else if(ishuman(movement_target.loc) )
 						if(prob(20))
-							INVOKE_ASYNC(src, PROC_REF(emote), "stares at [movement_target] that [movement_target.loc] has with a sad puppy-face")
+							INVOKE_ASYNC(src, PROC_REF(emote), "stares at [movement_target] that [movement_target.loc] has with a sad puppy-face.")
 
 		if(prob(1))
-			INVOKE_ASYNC(src, PROC_REF(emote), pick("dances around","chases its tail"))
+			INVOKE_ASYNC(src, PROC_REF(emote), pick("dances around.","chases its tail."))
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
 					setDir(i)
@@ -123,7 +123,7 @@
 		if(!stat)
 			for(var/mob/M as anything in viewers(user, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_NOTICE("[user] baps [name] on the nose with the rolled-up [O]"), SHOW_MESSAGE_VISIBLE)
+					M.show_message(SPAN_NOTICE("[user] baps [name] on the nose with the rolled-up [O]."), SHOW_MESSAGE_VISIBLE)
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2))
 					setDir(i)
@@ -166,7 +166,7 @@
 //pupplies cannot wear anything.
 /mob/living/simple_animal/corgi/puppy/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		to_chat(usr, SPAN_DANGER("You can't fit this on [src]"))
+		to_chat(usr, SPAN_DANGER("You can't fit this on [src]."))
 		return
 	..()
 
@@ -218,7 +218,7 @@
 
 
 		if(prob(1))
-			INVOKE_ASYNC(src, PROC_REF(emote), pick("dances around","chases her tail"))
+			INVOKE_ASYNC(src, PROC_REF(emote), pick("dances around.","chases her tail."))
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
 					setDir(i)

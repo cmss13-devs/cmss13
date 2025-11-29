@@ -5,10 +5,10 @@
 	icon_state = "goat"
 	icon_living = "goat"
 	icon_dead = "goat_dead"
-	speak = list("EHEHEHEHEH","eh?")
-	speak_emote = list("brays")
-	emote_hear = list("brays")
-	emote_see = list("shakes its head", "stamps a foot", "glares around")
+	speak = list("MEHEHEHEHEH!","Mehh?","Maa!","MAAAA!","Mehh!","AAAAAAAAAA!")
+	speak_emote = list("bleats")
+	emote_hear = list("bleats.")
+	emote_see = list("shakes its head.", "stamps a foot.", "glares around.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -75,10 +75,10 @@
 	icon_living = "cow"
 	icon_dead = "cow_dead"
 	icon_gib = "cow_gib"
-	speak = list("moo?","moo","MOOOOOO")
+	speak = list("Moo?","Moo.","MOOOOOO!")
 	speak_emote = list("moos","moos hauntingly")
-	emote_hear = list("brays")
-	emote_see = list("shakes its head")
+	emote_hear = list("moos.")
+	emote_see = list("shakes its head.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -139,7 +139,7 @@
 			if(!stat && M)
 				icon_state = icon_living
 				var/list/responses = list( "[src] looks at you imploringly.",
-											"[src] looks at you pleadingly",
+											"[src] looks at you pleadingly.",
 											"[src] looks at you with a resigned expression.",
 											"[src] seems resigned to its fate.")
 				to_chat(M, pick(responses))
@@ -153,10 +153,10 @@
 	icon_living = "chick"
 	icon_dead = "chick_dead"
 	icon_gib = "chick_gib"
-	speak = list("Cherp.","Cherp?","Chirrup.","Cheep!")
+	speak = list("Chirp.","Chirp?","Chirrup.","Cheep!","Peep!")
 	speak_emote = list("cheeps")
-	emote_hear = list("cheeps")
-	emote_see = list("pecks at the ground","flaps its tiny wings")
+	emote_hear = list("cheeps.")
+	emote_see = list("pecks at the ground.","flaps its tiny wings.")
 	speak_chance = 2
 	turns_per_move = 2
 	meat_type = /obj/item/reagent_container/food/snacks/meat
@@ -200,8 +200,8 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	icon_dead = "chicken_dead"
 	speak = list("Cluck!","BWAAAAARK BWAK BWAK BWAK!","Bwaak bwak.")
 	speak_emote = list("clucks","croons")
-	emote_hear = list("clucks")
-	emote_see = list("pecks at the ground","flaps its wings viciously")
+	emote_hear = list("clucks.")
+	emote_see = list("pecks at the ground.","flaps its wings viciously.")
 	speak_chance = 2
 	turns_per_move = 3
 	meat_type = /obj/item/reagent_container/food/snacks/meat

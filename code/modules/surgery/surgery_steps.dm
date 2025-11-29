@@ -148,24 +148,24 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 
 		switch(tool_modifier) //Implicitly means tool exists as accept_any_item item or accept_hand would = 1x. No message for 1x - that's the default.
 			if(SURGERY_TOOL_MULT_SUBOPTIMAL)
-				message += "this tool [pick("is suitable, but there are better tools for this purpose", "is a bit different than what you're accustomed to using", "is a bit unorthodox for this purpose", "deviates your movements a little bit")]."
+				message += "this tool [pick("is suitable, but there are better tools for this purpose", "is a bit different than what you're accustomed to using", "has a slight chance of failing", "could be worse, but it's better than most other alternatives")]"
 			if(SURGERY_TOOL_MULT_SUBSTITUTE)
-				message += "this tool [pick("will do in a pinch, but you really should find something else", "is better off used elsewhere", "is not very practical for executing this step", "feels difficult to operate with")]."
+				message += "this tool [pick("is an acceptable substitute in a pinch", "may not work for this purpose", "is not very practical for executing this step", "feels odd in your hand, but it works, you guess")]"
 			if(SURGERY_TOOL_MULT_BAD_SUBSTITUTE)
-				message += "this tool [pick("is an unacceptable substitute", "is unsuitable for this method", "feels terrible to use in your hands", "makes you feel bad for using it")]."
+				message += "this tool [pick("is an unacceptable substitute", "is likely to cause a slip-up for this purpose", "is not appropriate for this surgical step", "could not get any worse... Or, maybe it can")]"
 				failure_penalties += 1
 			if(SURGERY_TOOL_MULT_AWFUL)
-				message += "this tool [pick("is the worst thing you could use for this step", "should never be used for this purpose", "makes you wish you were using anything else", "will most likely cause harm for this step. Don't tell the Chief")]!"
+				message += "this tool [pick("is among the worst things you could ever use, here", "should never be used for this purpose", "makes you long for the feel of any other tool", "will almost certainly cause harm. Don't tell the Chief")]"
 				failure_penalties += 2
 
 		switch(surface_modifier)
 			if(SURGERY_SURFACE_MULT_ADEQUATE)
-				message += "[pick("you feel the need to double check your steps while working", "it's tricky to perform complex surgeries", "you would feel more confident of your pacing if you weren't working")] [pick("in the field", "outside of your element", "without a proper surgical theatre")]."
+				message += "[pick("you feel the need to double check your steps while working", "it's tricky to perform complex surgeries", "you would feel more confident of your pacing if you weren't working")] [pick("in the field", "outside of your element", "without a proper surgical theatre")]"
 			if(SURGERY_SURFACE_MULT_UNSUITED)
-				message += "[pick("you feel nervous as you manipulate your tools", "You feel insecure and unsure of yourself", "You feel the need to triple check your steps")] while operating [pick("on non-sterile surfaces", "on a non-surgical bed", "in an unsanitary environment")]."
+				message += "[pick("you feel nervous as you manipulate your tools", "You feel insecure and unsure of yourself", "You feel the need to triple check your steps")] while operating [pick("on non-sterile surfaces", "on a non-surgical bed", "in an unsanitary environment")]"
 				failure_penalties += 1
 			if(SURGERY_SURFACE_MULT_AWFUL)
-				message += "[pick("one wrong move and you could cause serious harm", "you have never felt more aware of your slow, careful, deliberate movements", "you are terrified of these conditions, but you keep an unbreakable focus and the steadiest of hands", "you compulsively quadruple check your body and hand positioning")] while using your tools [pick("on a patient not lying on a bed", "on an unstable surface", "in an unsanitary environment", "in the worst conditions imaginable")]."
+				message += "[pick("one wrong move and you could cause serious harm", "you have never felt more aware of your slow, careful, deliberate movements", "you are terrified of these conditions, but you keep an unbreakable focus and the steadiest of hands", "you compulsively quadruple check your body and hand positioning")] while using your tools [pick("on a patient not lying on a bed", "on an unstable surface", "in an unsanitary environment", "in the worst conditions imaginable")]"
 				failure_penalties += 2
 
 		if(length(message))

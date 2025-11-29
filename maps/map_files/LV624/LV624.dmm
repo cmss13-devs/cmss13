@@ -514,7 +514,7 @@
 /area/lv624/lazarus/chapel)
 "acm" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/bar,
+/turf/open/floor/plating,
 /area/lv624/lazarus/canteen)
 "acn" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -553,7 +553,7 @@
 /area/lv624/lazarus/canteen)
 "act" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/bar,
+/turf/open/floor/plating,
 /area/lv624/lazarus/kitchen)
 "acu" = (
 /turf/open/floor/cult,
@@ -2058,10 +2058,6 @@
 /obj/item/stack/medical/ointment,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/plating/warnplate/east,
-/area/lv624/ground/barrens/east_barrens/ceiling)
-"aiK" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/platebot,
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "aiL" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony{
@@ -10781,7 +10777,7 @@
 /area/lv624/ground/jungle/central_jungle)
 "bZX" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/vault2/west,
+/turf/open/floor/plating,
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "cac" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
@@ -11917,7 +11913,7 @@
 "ejx" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/window/framed/colony,
-/turf/open/floor/plating/warnplate,
+/turf/open/floor/plating,
 /area/lv624/ground/barrens/east_barrens/ceiling)
 "ekB" = (
 /obj/structure/stairs/perspective{
@@ -51280,7 +51276,7 @@ lQC
 lQC
 iXj
 bZX
-aiK
+bZX
 bZX
 iXj
 ajr

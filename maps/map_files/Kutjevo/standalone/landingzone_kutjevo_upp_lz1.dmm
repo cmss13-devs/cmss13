@@ -139,7 +139,7 @@
 /area/event/deep_underground/dynamic)
 "bU" = (
 /obj/structure/window/framed/kutjevo,
-/turf/open/floor/plating,
+/turf/open/floor/plating/kutjevo,
 /area/event/deep_underground/dynamic)
 "ca" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
@@ -369,7 +369,7 @@
 /area/event/deep_underground/dynamic)
 "jQ" = (
 /obj/structure/window/framed/kutjevo/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/kutjevo,
 /area/event/deep_underground/dynamic)
 "jY" = (
 /turf/open/floor/kutjevo/tan/grey_edge/southwest,
@@ -802,7 +802,7 @@
 /area/kutjevo/interior/colony_south)
 "Db" = (
 /obj/structure/surface/table/reinforced/black,
-/turf/open/floor/plating,
+/turf/open/floor/plating/kutjevo,
 /area/event/deep_underground/dynamic)
 "Df" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{

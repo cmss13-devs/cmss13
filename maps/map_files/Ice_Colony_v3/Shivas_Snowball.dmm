@@ -10,6 +10,16 @@
 "aac" = (
 /turf/closed/wall/shiva/prefabricated/pink,
 /area/shiva/interior/lz2_habs)
+"aad" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/shiva/interior/aerodrome)
 "aae" = (
 /obj/structure/girder,
 /turf/open/auto_turf/ice/layer1,
@@ -743,6 +753,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
+"acH" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/shiva/interior/aerodrome)
 "acI" = (
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer3,
@@ -754,23 +773,23 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
 "acK" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "acL" = (
 /turf/closed/shuttle/elevator/arrivals,
 /area/shiva/interior/colony/central)
 "acM" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "acN" = (
@@ -781,10 +800,10 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "acO" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
 "acP" = (
@@ -827,7 +846,7 @@
 /area/shiva/exterior/junkyard/fortbiceps)
 "acX" = (
 /obj/structure/bed/chair/dropship/passenger{
-	dir = 8
+	dir = 4
 	},
 /obj/structure/machinery/light{
 	dir = 8
@@ -868,6 +887,12 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_colony_grounds)
+"adf" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 5
+	},
+/turf/open/floor/shiva/wredfull,
+/area/shiva/interior/colony/medseceng)
 "adg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W-corner"
@@ -885,6 +910,13 @@
 "adi" = (
 /turf/open/floor/shiva/yellowcorners/north,
 /area/shiva/interior/colony/research_hab)
+"adj" = (
+/obj/structure/pipes/unary/freezer{
+	dir = 8;
+	icon_state = "freezer_1"
+	},
+/turf/open/floor/shiva/wred/east,
+/area/shiva/interior/colony/medseceng)
 "adk" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/decal/cleanable/dirt,
@@ -1104,6 +1136,7 @@
 /area/shiva/interior/colony/research_hab)
 "adX" = (
 /obj/structure/machinery/cryo_cell,
+/obj/structure/pipes/standard/cap/hidden,
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/medseceng)
 "adY" = (
@@ -1453,7 +1486,9 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "afi" = (
-/obj/structure/machinery/portable_atmospherics/canister/oxygen,
+/obj/structure/pipes/standard/tank/oxygen{
+	dir = 8
+	},
 /turf/open/floor/shiva/wred/northeast,
 /area/shiva/interior/colony/medseceng)
 "afj" = (
@@ -2232,6 +2267,26 @@
 /obj/structure/curtain,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
+/area/shiva/interior/colony/medseceng)
+"ahG" = (
+/obj/structure/pipes/standard/simple/visible{
+	dir = 5
+	},
+/turf/open/floor/shiva/wred/northwest,
+/area/shiva/interior/colony/medseceng)
+"ahH" = (
+/obj/structure/pipes/standard/manifold/visible,
+/turf/open/floor/shiva/wred/north,
+/area/shiva/interior/colony/medseceng)
+"ahI" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/obj/structure/pipes/standard/manifold/visible{
+	dir = 1
+	},
+/turf/open/floor/shiva/wred/north,
 /area/shiva/interior/colony/medseceng)
 "ahO" = (
 /obj/structure/surface/rack,
@@ -19864,11 +19919,11 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/shiva/interior/colony/research_hab)
 "rNx" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
@@ -19900,11 +19955,11 @@
 /turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/interior/colony/research_hab)
 "rPa" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/aerodrome)
@@ -22956,12 +23011,6 @@
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/interior/caves/cp_camp)
-"vrM" = (
-/obj/effect/decal/warning_stripes{
-	pixel_y = 32
-	},
-/turf/open/floor/shiva/north,
-/area/shiva/interior/colony/medseceng)
 "vrV" = (
 /obj/structure/platform_decoration/stone/strata,
 /turf/open/auto_turf/snow/layer0,
@@ -32160,7 +32209,7 @@ aUx
 aVL
 aWS
 acX
-bbg
+baY
 rNx
 aWS
 bYO
@@ -35885,7 +35934,7 @@ aTh
 aUx
 aVM
 aWS
-acX
+aad
 acO
 rNx
 aWS
@@ -36209,8 +36258,8 @@ aTj
 cov
 eHL
 acF
-rPa
-baY
+acH
+bbg
 rPa
 acF
 fXp
@@ -44088,7 +44137,7 @@ mdx
 mdx
 stN
 tFk
-sjo
+fiK
 fiK
 pWw
 rBH
@@ -52811,7 +52860,7 @@ cLi
 agh
 uXQ
 aek
-vrM
+agh
 agh
 agh
 auB
@@ -55216,7 +55265,7 @@ puZ
 cOA
 acT
 adX
-wWu
+ahG
 afL
 aiO
 apv
@@ -55378,7 +55427,7 @@ puZ
 cOA
 acT
 adX
-bhS
+ahH
 amP
 amP
 aeo
@@ -55540,7 +55589,7 @@ puZ
 cOA
 acT
 adX
-bhS
+ahH
 amP
 amP
 amP
@@ -55702,7 +55751,7 @@ puZ
 cOA
 acT
 adX
-bhS
+ahH
 amP
 amP
 aeo
@@ -55864,8 +55913,8 @@ puZ
 cOA
 acT
 acT
-gWF
-amP
+ahI
+adf
 amP
 alZ
 amP
@@ -56027,7 +56076,7 @@ cOA
 aDn
 acT
 afi
-hms
+adj
 aje
 ama
 anz

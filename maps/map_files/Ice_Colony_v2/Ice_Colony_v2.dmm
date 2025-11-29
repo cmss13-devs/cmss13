@@ -24,6 +24,10 @@
 "aag" = (
 /turf/closed/ice_rock/eastWall,
 /area/ice_colony/exterior/surface/cliff)
+"aah" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/hangar/beta)
 "aak" = (
 /obj/structure/ice/thin/end{
 	dir = 8
@@ -7323,7 +7327,7 @@
 /area/ice_colony/surface/hydroponics/south)
 "aAw" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/dark2,
+/turf/open/floor/plating,
 /area/ice_colony/surface/dorms)
 "aAx" = (
 /turf/open/floor/darkblue2,
@@ -7422,7 +7426,7 @@
 	dir = 4
 	},
 /obj/structure/window/framed/colony,
-/turf/open/floor/dark2,
+/turf/open/floor/plating,
 /area/ice_colony/surface/dorms)
 "aAN" = (
 /obj/effect/landmark/yautja_teleport,
@@ -10930,7 +10934,7 @@
 "aOG" = (
 /obj/item/shard,
 /obj/structure/window_frame/colony/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/hangar/alpha)
 "aOH" = (
 /turf/open/floor/darkbrown2/northwest,
@@ -11249,7 +11253,7 @@
 "aPC" = (
 /obj/item/stack/rods,
 /obj/structure/window_frame/colony/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/hangar/alpha)
 "aPD" = (
 /turf/open/floor/darkbrown2/west,
@@ -11889,7 +11893,7 @@
 /area/ice_colony/surface/hangar/alpha)
 "aSn" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/dark2,
+/turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/hangar/alpha)
 "aSo" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -67834,7 +67838,7 @@ aOf
 aOG
 aPC
 aPC
-aOg
+aSn
 aOf
 aOf
 aOf
@@ -73475,16 +73479,16 @@ aOj
 aOj
 aOj
 aOj
-aSo
-aSo
-aSo
-aSo
+aah
+aah
+aah
+aah
 aOj
 aUI
 aOj
 aSo
-aSo
-aSo
+aah
+aah
 aOj
 aOj
 aOj
@@ -77708,11 +77712,11 @@ aOj
 aOj
 aOj
 aOj
-aSo
-aSo
-aSo
-aSo
-aSo
+aah
+aah
+aah
+aah
+aah
 aOj
 aOj
 aOj

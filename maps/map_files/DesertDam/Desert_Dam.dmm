@@ -1693,7 +1693,7 @@
 /area/desert_dam/exterior/valley/valley_northwest)
 "ahb" = (
 /obj/structure/window/framed/chigusa,
-/turf/open/floor/dark2,
+/turf/open/floor/plating/warnplate/west,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "ahc" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -3840,19 +3840,19 @@
 	dir = 1
 	},
 /turf/open/floor/prison/southwest,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aqG" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aqH" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aqI" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/exterior/valley/valley_wilderness)
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "aqJ" = (
 /turf/closed/wall/r_wall/chigusa,
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence)
@@ -6674,7 +6674,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDm" = (
@@ -10886,7 +10886,7 @@
 /area/desert_dam/building/water_treatment_two/purification)
 "aXk" = (
 /obj/structure/filtration/machine_64x96{
-	icon_state = "sedimentation_1";
+	icon_state = "sedementation_1";
 	pixel_y = -16
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
@@ -37423,7 +37423,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/colony,
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_one/control_room)
 "dOg" = (
@@ -37431,7 +37431,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
 	},
-/obj/structure/window_frame/colony/reinforced,
+/obj/structure/window_frame/colony,
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_one/hallway)
 "dOh" = (
@@ -38876,12 +38876,12 @@
 /area/desert_dam/building/hydroponics/hydroponics_storage)
 "dUt" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/prison/sterile_white,
+/turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/cafeteria)
 "dUu" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/window/framed/colony,
-/turf/open/floor/prison/sterile_white,
+/turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/cafeteria)
 "dUv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -40896,7 +40896,7 @@
 /area/desert_dam/building/water_treatment_one/purification)
 "ehD" = (
 /obj/structure/filtration/machine_64x96{
-	icon_state = "sedimentation_0"
+	icon_state = "sedementation_0"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/water_treatment_one/purification)
@@ -41022,7 +41022,7 @@
 /area/desert_dam/building/water_treatment_one/purification)
 "eid" = (
 /obj/structure/filtration/machine_64x96{
-	icon_state = "sedimentation_1"
+	icon_state = "sedementation_1"
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/water_treatment_one/purification)
@@ -67546,9 +67546,9 @@ cIq
 dfy
 cWk
 cZB
-cWk
-cWk
-cWk
+cZB
+cZB
+cZB
 cZB
 cZB
 dTs

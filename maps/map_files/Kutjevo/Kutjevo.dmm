@@ -3667,10 +3667,6 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/spring)
-"dGx" = (
-/obj/structure/window/framed/kutjevo,
-/turf/open/floor/kutjevo/tan,
-/area/kutjevo/interior/complex/med/operating)
 "dHj" = (
 /obj/structure/machinery/door_control/brbutton/alt{
 	health = null;
@@ -6804,10 +6800,6 @@
 /obj/item/reagent_container/food/drinks/jar,
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
-"iWa" = (
-/obj/structure/window/framed/kutjevo,
-/turf/open/floor/kutjevo/colors/cyan,
-/area/kutjevo/interior/complex/med/operating)
 "iWE" = (
 /obj/structure/prop/dam/gravestone{
 	icon_state = "gravestone3"
@@ -10925,7 +10917,7 @@
 /area/kutjevo/interior/oob)
 "pih" = (
 /obj/structure/window/framed/kutjevo,
-/turf/open/floor/kutjevo/multi_tiles,
+/turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/east)
 "pio" = (
 /turf/open/floor/kutjevo/tan/alt_inner_edge/west,
@@ -12948,7 +12940,7 @@
 /area/kutjevo/interior/construction/east)
 "sBm" = (
 /obj/structure/window/framed/kutjevo,
-/turf/open/floor/kutjevo/multi_tiles,
+/turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/foremans_office)
 "sBH" = (
 /obj/structure/blocker/invisible_wall,
@@ -14502,10 +14494,6 @@
 /obj/item/stack/cable_coil/random,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2)
-"uSG" = (
-/obj/structure/window/framed/kutjevo/reinforced/hull,
-/turf/open/floor/kutjevo/multi_tiles/southeast,
-/area/kutjevo/interior/oob)
 "uTa" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/kutjevo/colors/green/tile,
@@ -27018,11 +27006,11 @@ hiI
 wyq
 wVK
 wVK
-uSG
+kVJ
 oOs
 naK
 oOs
-uSG
+kVJ
 sPb
 ePx
 ePx
@@ -27185,11 +27173,11 @@ wWa
 wyq
 wVK
 tKH
-uSG
+kVJ
 trU
 uRm
 rID
-uSG
+kVJ
 mQt
 ePx
 ePx
@@ -27352,11 +27340,11 @@ wWa
 wyq
 wVK
 fgI
-uSG
+kVJ
 trU
 uRm
 gmS
-uSG
+kVJ
 jWO
 cTz
 ePx
@@ -27519,11 +27507,11 @@ csx
 sZI
 wVK
 tKH
-uSG
+kVJ
 trU
 uRm
 rID
-uSG
+kVJ
 lLq
 ePx
 ePx
@@ -27686,11 +27674,11 @@ wVK
 fgI
 wVK
 wVK
-uSG
+kVJ
 ymc
 uRm
 gmS
-uSG
+kVJ
 mQt
 ePx
 cTz
@@ -27853,11 +27841,11 @@ wVK
 wVK
 wVK
 wVK
-uSG
+kVJ
 trU
 uRm
 rID
-uSG
+kVJ
 lLq
 cTz
 hii
@@ -28020,11 +28008,11 @@ wVK
 wVK
 fgI
 wVK
-uSG
+kVJ
 lrO
 kPw
 lrO
-uSG
+kVJ
 kJK
 ePx
 hii
@@ -32133,9 +32121,9 @@ dxF
 dxF
 kkH
 kkH
-iWa
-dGx
-dGx
+oww
+oww
+oww
 kkH
 nyp
 gRi

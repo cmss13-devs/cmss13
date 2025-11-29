@@ -39161,7 +39161,7 @@
 /area/strata/interior/outpost/med)
 "cyQ" = (
 /obj/structure/window/framed/strata,
-/turf/open/floor/strata,
+/turf/open/floor/plating,
 /area/strata/interior/underground_dorms/admin3)
 "czb" = (
 /obj/structure/machinery/weather_siren{

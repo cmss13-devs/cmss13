@@ -4687,7 +4687,7 @@
 /area/bigredv2/outside/cargo)
 "aul" = (
 /obj/structure/window/framed/solaris,
-/turf/open/floor,
+/turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
 "aum" = (
 /obj/structure/machinery/door/airlock/almayer/research/glass/colony{
@@ -21783,15 +21783,6 @@
 	},
 /turf/open/floor/whitebluefull/northeast,
 /area/bigredv2/outside/general_store)
-"gmm" = (
-/obj/structure/window/framed/solaris,
-/obj/effect/decal/cleanable/molten_item,
-/obj/structure/machinery/door/poddoor/almayer{
-	id = "rad_door";
-	name = "\improper Radiation Shielding"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
 "gmp" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/filtration_plant)
@@ -23894,10 +23885,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/filtration_plant)
-"iCQ" = (
-/obj/structure/window/framed/solaris,
-/turf/open/floor/white,
-/area/bigredv2/outside/medical)
 "iDu" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
 	name = "Emergency NanoMed";
@@ -31343,15 +31330,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
-"quX" = (
-/obj/structure/window/framed/solaris/reinforced,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "Engineering";
-	name = "\improper Engineering Shutters"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/bigredv2/outside/engineering)
 "qvA" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/mars_cave/mars_cave_2,
@@ -48849,8 +48827,8 @@ aEu
 aEu
 aEu
 ayf
-quX
-quX
+azB
+azB
 axX
 tVp
 iAL
@@ -55371,7 +55349,7 @@ slG
 bqN
 btt
 uGs
-gmm
+dhN
 frs
 iNR
 beD
@@ -56827,8 +56805,8 @@ aPn
 kGi
 heR
 imP
-iCQ
-iCQ
+amj
+amj
 alu
 aof
 ydE

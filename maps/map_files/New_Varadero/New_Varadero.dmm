@@ -91,6 +91,10 @@
 /obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/vessel)
+"aar" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/cargo)
 "aas" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
@@ -960,10 +964,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
-"aCz" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/shiva/purplefull/west,
-/area/varadero/interior/research)
 "aCH" = (
 /obj/structure/bed/chair/wheelchair{
 	desc = "Great scott, it can move on its own!";
@@ -3203,10 +3203,6 @@
 /obj/structure/tunnel/maint_tunnel,
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/technical_storage)
-"cog" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/shiva/yellowfull/west,
-/area/varadero/interior/cargo)
 "coz" = (
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall,
@@ -3859,7 +3855,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/shiva/north,
+/turf/open/floor/plating,
 /area/varadero/interior/research)
 "cQm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -3942,10 +3938,6 @@
 	},
 /turf/open/floor/shiva/redfull/west,
 /area/varadero/interior/medical)
-"cTw" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/hall_SE)
 "cTV" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -4153,10 +4145,6 @@
 /obj/item/tool/pen/blue,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/morgue)
-"deg" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor/plating,
-/area/varadero/interior/research)
 "deq" = (
 /obj/structure/prop/invuln/overhead_pipe{
 	dir = 4;
@@ -4357,10 +4345,6 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
-"dkr" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/research)
 "dkS" = (
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
@@ -4491,7 +4475,7 @@
 /obj/item/stack/sheet/wood,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/research)
 "dpz" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -5324,7 +5308,7 @@
 /obj/structure/noticeboard{
 	pixel_y = -32
 	},
-/turf/open/floor/dark2,
+/turf/open/floor/plating,
 /area/varadero/interior/hall_N)
 "egH" = (
 /obj/structure/machinery/light/small{
@@ -6666,9 +6650,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/medical)
-"fiY" = (
-/turf/open/floor/plating,
-/area/varadero/interior/maintenance/security/north)
 "fjg" = (
 /turf/open/gm/grass/grass1/weedable,
 /area/varadero/interior_protected/caves/swcaves)
@@ -11154,10 +11135,6 @@
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
-"iRR" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/shiva/multi_tiles,
-/area/varadero/interior/hall_NW)
 "iRZ" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -12813,7 +12790,7 @@
 /area/varadero/exterior/pontoon_beach)
 "kiE" = (
 /obj/structure/window/framed/colony,
-/turf/open/floor/shiva/floor3,
+/turf/open/floor/plating,
 /area/varadero/interior/maintenance)
 "kiG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -14228,7 +14205,7 @@
 "lxe" = (
 /obj/item/stack/sheet/wood,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/research)
 "lxi" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -14312,10 +14289,6 @@
 "lBn" = (
 /turf/closed/wall,
 /area/varadero/interior/maintenance/security/south)
-"lBw" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/shiva/north,
-/area/varadero/interior/research)
 "lCj" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
@@ -15047,10 +15020,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves)
-"mdN" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior_protected/maintenance/south)
 "mee" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/brigdoor/westleft{
@@ -15308,7 +15277,7 @@
 "mnL" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves/central)
 "mol" = (
 /obj/structure/window/phoronreinforced{
@@ -16883,10 +16852,6 @@
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
-"nNe" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/varadero/interior_protected/caves/central)
 "nNv" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -17109,10 +17074,6 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
-"nUf" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/shiva/multi_tiles/north,
-/area/varadero/interior/electrical)
 "nVk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -17300,10 +17261,6 @@
 	},
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/varadero/exterior/lz1_near)
-"obS" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/shiva/snow_mat,
-/area/varadero/interior/security)
 "ocr" = (
 /obj/structure/bed,
 /obj/item/bedsheet/orange,
@@ -20086,10 +20043,6 @@
 /obj/effect/spawner/random/tool,
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
-"qhZ" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/security)
 "qir" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/floor/shiva/wred/north,
@@ -22107,10 +22060,6 @@
 	},
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/court)
-"rIU" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/chapel)
 "rJp" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/auto_turf/sand_white/layer1,
@@ -22334,10 +22283,6 @@
 /obj/item/tool/wrench,
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
-"rSu" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/shiva/floor3,
-/area/varadero/interior/hall_N)
 "rSx" = (
 /obj/structure/surface/table,
 /obj/structure/largecrate/random/mini/chest{
@@ -22824,10 +22769,6 @@
 	},
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/comms3)
-"sid" = (
-/obj/structure/window/framed/colony,
-/turf/open/floor/asteroidfloor/north,
-/area/varadero/interior/maintenance/north)
 "siw" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
@@ -23917,10 +23858,6 @@
 	},
 /turf/open/floor/shiva/snow_mat/east,
 /area/varadero/interior/security)
-"tdN" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/varadero/interior_protected/maintenance/south)
 "teg" = (
 /obj/structure/girder,
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -24443,10 +24380,6 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/varadero/interior_protected/caves/central)
-"tCA" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/varadero/interior/caves/east)
 "tCG" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -24737,10 +24670,6 @@
 /obj/structure/closet/coffin,
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/morgue)
-"tQy" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/shiva/snow_mat,
-/area/varadero/interior/maintenance)
 "tQz" = (
 /obj/structure/sink{
 	pixel_y = 15
@@ -25746,7 +25675,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/shiva/floor3,
+/turf/open/floor/plating,
 /area/varadero/interior/security)
 "uIR" = (
 /turf/closed/wall,
@@ -26769,10 +26698,6 @@
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
-"vwV" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/varadero/interior/maintenance/security/south)
 "vxi" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/auto_turf/sand_white/layer1,
@@ -28508,10 +28433,6 @@
 	},
 /turf/open/floor/shiva/blue,
 /area/varadero/interior/technical_storage)
-"wMj" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/gm/grass/grass1/weedable,
-/area/varadero/interior/hall_SE)
 "wMw" = (
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
@@ -32633,11 +32554,11 @@ yks
 efw
 qMY
 efw
-dkr
+tqh
 rUw
 hfX
 hFA
-dkr
+tqh
 qMD
 hDA
 iAp
@@ -32996,14 +32917,14 @@ rbU
 yks
 yks
 fdA
-vYp
+aoE
 fay
 fay
 fKz
 fay
 fay
 fay
-lBw
+tqh
 ltW
 tkw
 ftA
@@ -33175,7 +33096,7 @@ ovC
 nOQ
 lIO
 rbU
-aCz
+tqh
 uuN
 nuQ
 rQV
@@ -33357,7 +33278,7 @@ ovC
 ovC
 ovC
 rbU
-aCz
+tqh
 wIr
 qQF
 ltW
@@ -33539,7 +33460,7 @@ rbU
 ovC
 adC
 rbU
-aCz
+tqh
 wIr
 ezI
 biF
@@ -33700,7 +33621,7 @@ yks
 yks
 yks
 yks
-aoE
+vYp
 tMJ
 ncL
 yks
@@ -34283,7 +34204,7 @@ rWJ
 ltW
 sKL
 xbD
-dkr
+tqh
 rpw
 neq
 vYW
@@ -34820,7 +34741,7 @@ bmt
 fay
 xxE
 fay
-dkr
+tqh
 fay
 fay
 fay
@@ -35188,7 +35109,7 @@ ltW
 ltW
 jHI
 fay
-lBw
+tqh
 hDA
 tnN
 cPR
@@ -35677,9 +35598,9 @@ ifB
 huf
 ifB
 ykc
-cog
+uSx
 ykc
-cog
+uSx
 ykc
 ykc
 gkw
@@ -35728,8 +35649,8 @@ fay
 fay
 fay
 fay
-dkr
-dkr
+tqh
+tqh
 fay
 fay
 fay
@@ -35855,7 +35776,7 @@ ykc
 ykc
 ykc
 ykc
-cog
+uSx
 ykc
 uZY
 ykc
@@ -35864,7 +35785,7 @@ lbi
 qNC
 rSx
 ykc
-cog
+uSx
 ykc
 rnP
 ykc
@@ -36058,7 +35979,7 @@ uXZ
 pYt
 vsa
 fcK
-uSx
+aar
 xCn
 xCn
 xCn
@@ -36240,7 +36161,7 @@ ykc
 pkG
 nsn
 ehH
-uSx
+aar
 xCn
 xCn
 xCn
@@ -36279,7 +36200,7 @@ xCn
 xCn
 dcM
 oPQ
-deg
+bCi
 sDM
 iCy
 iCy
@@ -36643,7 +36564,7 @@ xCn
 oPQ
 oPQ
 oPQ
-deg
+bCi
 sDM
 wAx
 iCy
@@ -37511,7 +37432,7 @@ swf
 qiv
 ykc
 xRF
-rSu
+snl
 pGJ
 dRX
 wVI
@@ -37722,9 +37643,9 @@ umO
 sdz
 sdz
 sdz
-iRR
+kGM
 wmL
-iRR
+kGM
 sdz
 sdz
 kGM
@@ -38786,7 +38707,7 @@ uXZ
 ykc
 vYr
 vnm
-rIU
+bLB
 vnm
 brX
 vUT
@@ -41212,9 +41133,9 @@ gvR
 kyG
 ksX
 ksX
-tdN
-tdN
-tdN
+cba
+cba
+cba
 ksX
 pGs
 pGs
@@ -41955,7 +41876,7 @@ swk
 cto
 cto
 etv
-tdN
+cba
 hoC
 aOg
 aOg
@@ -43397,7 +43318,7 @@ nTj
 etv
 cto
 cto
-nNe
+kmI
 dNZ
 eCu
 eov
@@ -43693,7 +43614,7 @@ rSA
 wMw
 rSA
 wMw
-sid
+qzb
 hyr
 hyr
 hyr
@@ -45928,7 +45849,7 @@ ezc
 bak
 uOF
 bak
-tQy
+hoP
 fEm
 vUM
 sJZ
@@ -46292,7 +46213,7 @@ xne
 mtx
 cWs
 xne
-tQy
+hoP
 rMN
 lMD
 oRK
@@ -47586,11 +47507,11 @@ cto
 xxk
 ksX
 ksX
-tdN
+cba
 ksX
 ksX
 ksX
-tdN
+cba
 ksX
 ksX
 eEd
@@ -47942,7 +47863,7 @@ aZv
 vZm
 xGp
 vZs
-cTw
+pKs
 cto
 cto
 mxB
@@ -49350,10 +49271,10 @@ pGs
 pGs
 pGs
 juW
-wUj
+szp
 bLN
 viP
-wUj
+szp
 juW
 nTG
 nTG
@@ -49380,11 +49301,11 @@ qUf
 uIH
 jQg
 wVf
-qhZ
+xvF
 wVf
-qhZ
+xvF
 wVf
-qhZ
+xvF
 wVf
 nCJ
 rNR
@@ -49743,13 +49664,13 @@ sPs
 gwG
 pJn
 krP
-qhZ
+xvF
 gwG
 xOo
 xOo
 xOo
 nHA
-qhZ
+xvF
 bbF
 gUX
 eVy
@@ -50111,7 +50032,7 @@ wVf
 wVf
 xvF
 aiR
-qhZ
+xvF
 wVf
 wVf
 tWZ
@@ -50298,12 +50219,12 @@ eMD
 wVf
 wVf
 wVf
-qhZ
+xvF
 wVf
-qhZ
+xvF
 wVf
 vOr
-qhZ
+xvF
 wVf
 gUX
 eVy
@@ -50471,7 +50392,7 @@ wVf
 hXv
 pJn
 krP
-qhZ
+xvF
 gwG
 xOo
 cvX
@@ -50486,7 +50407,7 @@ liE
 jZw
 xMq
 vnU
-qhZ
+xvF
 gUX
 eVy
 tlc
@@ -50653,7 +50574,7 @@ wVf
 hJl
 pJn
 krP
-qhZ
+xvF
 gwG
 wOS
 wrv
@@ -50668,7 +50589,7 @@ mnc
 mnc
 xMq
 agJ
-qhZ
+xvF
 rDM
 cNK
 cNK
@@ -50835,7 +50756,7 @@ wVf
 jhe
 pJn
 krP
-qhZ
+xvF
 gwG
 xOo
 eqB
@@ -50846,7 +50767,7 @@ eOZ
 hzm
 uiy
 wVf
-qhZ
+xvF
 wVf
 bdJ
 wVf
@@ -50988,10 +50909,10 @@ wOO
 wOO
 wkt
 wOO
-nUf
+oSX
 cbq
 hHE
-nUf
+oSX
 wOO
 wOO
 wOO
@@ -51026,16 +50947,16 @@ vEa
 wVf
 wVf
 wVf
-qhZ
+xvF
 wVf
 ezZ
 lyp
 pJn
 pBb
 wVf
-qhZ
+xvF
 wVf
-qhZ
+xvF
 wVf
 wVf
 wVf
@@ -51058,7 +50979,7 @@ aWP
 rBP
 rBP
 lZb
-wMj
+lNb
 cto
 etv
 vTe
@@ -51201,9 +51122,9 @@ pJn
 krP
 wVf
 wVf
-qhZ
+xvF
 qto
-qhZ
+xvF
 wVf
 wVf
 xdJ
@@ -51423,9 +51344,9 @@ tEJ
 tEJ
 lHH
 bkM
-mdN
+cba
 bnB
-mdN
+cba
 eEd
 ksX
 ksX
@@ -51578,7 +51499,7 @@ vvS
 rKy
 xOo
 hoG
-qhZ
+xvF
 vLU
 eye
 xOo
@@ -51760,7 +51681,7 @@ mLt
 pJn
 xOo
 oCN
-qhZ
+xvF
 vLU
 nmQ
 ghb
@@ -51924,9 +51845,9 @@ hty
 wVf
 wVf
 wVf
-qhZ
+xvF
 jsf
-qhZ
+xvF
 wVf
 pGs
 pGs
@@ -52488,7 +52409,7 @@ umA
 mve
 xOo
 hoG
-qhZ
+xvF
 xOo
 ppw
 xOo
@@ -52678,7 +52599,7 @@ wVf
 pRy
 vpV
 mIG
-obS
+xvF
 eVy
 bLn
 wlW
@@ -52847,20 +52768,20 @@ eVy
 eVy
 eVy
 eVy
-qhZ
+xvF
 rqn
 kGF
 pJn
 tUd
-qhZ
+xvF
 hyp
 iNr
 vZl
-qhZ
+xvF
 tdy
 vpV
 dNY
-obS
+xvF
 wlW
 gUX
 eVy
@@ -53029,7 +52950,7 @@ aRg
 eVy
 eVy
 xpD
-qhZ
+xvF
 beE
 orb
 pJn
@@ -53038,11 +52959,11 @@ dpz
 xOo
 kiG
 lxy
-qhZ
+xvF
 bUg
 vpV
 lNq
-obS
+xvF
 wlW
 cKb
 eVy
@@ -54085,9 +54006,9 @@ qId
 qxa
 wOO
 wOO
-nUf
+oSX
 kIz
-nUf
+oSX
 wOO
 wOO
 wOO
@@ -54101,7 +54022,7 @@ mnC
 mnC
 hPm
 mnC
-tCA
+lFE
 kbQ
 kbQ
 vcR
@@ -54283,7 +54204,7 @@ fsU
 mnC
 hPm
 mnC
-tCA
+lFE
 kbQ
 kbQ
 pGs
@@ -55387,8 +55308,8 @@ gUX
 eVy
 uTv
 uTv
-vwV
-vwV
+fld
+fld
 xRO
 xRO
 uTv
@@ -55399,13 +55320,13 @@ xRO
 xRO
 xRO
 xRO
-vwV
-vwV
+fld
+fld
 eVy
 eVy
 eVy
 xRO
-vwV
+fld
 xRO
 xRO
 xRO
@@ -55558,9 +55479,9 @@ mnC
 hPm
 mnC
 ouy
-tCA
+lFE
 kbQ
-tCA
+lFE
 ouy
 ouy
 eVy
@@ -55922,7 +55843,7 @@ mnC
 mnC
 gWu
 gWu
-fiY
+mnC
 mnC
 mnC
 eer
@@ -56115,14 +56036,14 @@ eVy
 iNA
 xRO
 xRO
-vwV
-vwV
+fld
+fld
 xRO
 xRO
 xRO
 xRO
 fld
-vwV
+fld
 uTv
 jGt
 uTv
@@ -56133,7 +56054,7 @@ xRO
 fld
 xRO
 xRO
-vwV
+fld
 fld
 fld
 xRO
@@ -56288,11 +56209,11 @@ iwT
 iwT
 iwT
 lFE
-tCA
+lFE
 ouy
 ouy
 ouy
-tCA
+lFE
 lFE
 ouy
 ouy

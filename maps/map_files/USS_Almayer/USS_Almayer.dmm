@@ -37280,12 +37280,11 @@
 /turf/open/floor/almayer/silver/north,
 /area/almayer/shipboard/brig/cic_hallway)
 "bNd" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = -25
 	},
-/turf/open/floor/almayer/red/west,
-/area/almayer/command/lifeboat)
+/turf/open/floor/almayer/silver,
+/area/almayer/command/cic)
 "bNe" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -37324,18 +37323,18 @@
 /area/almayer/shipboard/navigation)
 "bNj" = (
 /obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer/red/west,
+/area/almayer/command/lifeboat)
+"bNk" = (
+/obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
 	name = "ship-grade camera"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cic)
-"bNk" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer/silver/west,
-/area/almayer/hallways/upper/midship_hallway)
 "bNl" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -37360,16 +37359,12 @@
 /turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/navigation)
 "bNp" = (
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = 32;
-	pixel_y = 8
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
 	},
-/obj/structure/sign/safety/ladder{
-	pixel_x = 32;
-	pixel_y = -7
-	},
-/turf/open/floor/almayer/silver/east,
-/area/almayer/shipboard/brig/cic_hallway)
+/turf/open/floor/almayer/silver/west,
+/area/almayer/hallways/upper/midship_hallway)
 "bNq" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/wirecutters,
@@ -37402,18 +37397,22 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/navigation)
 "bNu" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 32;
+	pixel_y = 8
+	},
+/obj/structure/sign/safety/ladder{
+	pixel_x = 32;
+	pixel_y = -7
+	},
+/turf/open/floor/almayer/silver/east,
+/area/almayer/shipboard/brig/cic_hallway)
+"bNv" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
-"bNv" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 1;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer/silver,
-/area/almayer/shipboard/brig/cic_hallway)
 "bNw" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -37427,28 +37426,24 @@
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
 "bNx" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 1;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer/silver,
+/area/almayer/shipboard/brig/cic_hallway)
+"bNy" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/almayer/silver/north,
 /area/almayer/shipboard/brig/cic_hallway)
-"bNy" = (
+"bNz" = (
 /obj/structure/sign/safety/life_support{
 	pixel_y = 25
 	},
 /turf/open/floor/almayer/orangecorner/east,
 /area/almayer/hallways/upper/midship_hallway)
-"bNz" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera"
-	},
-/turf/open/floor/almayer/red/east,
-/area/almayer/hallways/upper/starboard)
 "bNA" = (
 /obj/structure/machinery/computer/supply,
 /obj/structure/sign/safety/galley{
@@ -37476,12 +37471,16 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "bND" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera"
 	},
-/turf/open/floor/almayer/red/west,
-/area/almayer/shipboard/starboard_missiles)
+/turf/open/floor/almayer/red/east,
+/area/almayer/hallways/upper/starboard)
 "bNE" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 26
@@ -37499,13 +37498,20 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
 "bNH" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/turf/open/floor/almayer/red/west,
+/area/almayer/shipboard/starboard_missiles)
+"bNI" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = 8;
 	pixel_y = -25
 	},
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north2)
-"bNI" = (
+"bNJ" = (
 /obj/structure/sign/safety/rewire{
 	pixel_y = 25
 	},
@@ -49891,12 +49897,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
-"gvq" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = -25
-	},
-/turf/open/floor/almayer/silver,
-/area/almayer/command/cic)
 "gvu" = (
 /turf/open/floor/almayer/green/north,
 /area/almayer/hallways/upper/fore_hallway)
@@ -60479,6 +60479,11 @@
 /obj/structure/cargo_container/uscm/right,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/underdeck/req)
+"kOf" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/map/galaxy,
+/turf/open/floor/carpet,
+/area/almayer/command/cicconference)
 "kOo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -194051,7 +194056,7 @@ vka
 lnt
 eAF
 uVA
-bNp
+bNu
 gde
 qEl
 uVA
@@ -194752,7 +194757,7 @@ aeE
 afb
 ayq
 cfE
-bND
+bNH
 pvP
 adu
 aHZ
@@ -194765,9 +194770,9 @@ jlE
 cXV
 kqd
 cAR
-bNx
+bNy
 pEB
-bNv
+bNx
 aAs
 irr
 jmY
@@ -195184,7 +195189,7 @@ aAs
 aAs
 aDz
 iwW
-sTm
+kOf
 gwR
 sTm
 tdT
@@ -197145,7 +197150,7 @@ avY
 aAE
 aCq
 aBV
-gvq
+bNd
 wVW
 lrW
 mqh
@@ -197657,7 +197662,7 @@ wVW
 vTu
 aCV
 alX
-bNj
+bNk
 alX
 aBY
 aED
@@ -205466,7 +205471,7 @@ eON
 ilq
 vEV
 sdv
-bNz
+bND
 xMO
 wDg
 xMz
@@ -205588,7 +205593,7 @@ rpV
 cGO
 cGO
 cGO
-bNk
+bNp
 cGO
 kaO
 cGO
@@ -207005,7 +207010,7 @@ aeC
 aeA
 aeA
 axw
-bNH
+bNI
 cGd
 fXO
 fjo
@@ -207741,7 +207746,7 @@ rjX
 aeC
 beN
 mdm
-bNy
+bNz
 qdJ
 vCv
 alL
@@ -208236,7 +208241,7 @@ aaa
 bdH
 abh
 acx
-bNI
+bNJ
 aeA
 aeA
 aeA
@@ -209810,7 +209815,7 @@ aEs
 aEd
 alO
 alO
-bNu
+bNv
 aBm
 alR
 alO
@@ -211871,7 +211876,7 @@ uYg
 uYg
 bXf
 aDO
-bNd
+bNj
 aDO
 gQO
 uYg
@@ -213728,7 +213733,7 @@ eky
 aal
 eky
 dFk
-bNd
+bNj
 nPY
 kRg
 jbq

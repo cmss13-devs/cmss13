@@ -41,9 +41,9 @@
 	)
 
 	time = 4 SECONDS
-	preop_sound = 'sound/surgery/scalpel1.ogg'
-	success_sound = 'sound/surgery/scalpel2.ogg'
-	failure_sound = 'sound/surgery/organ2.ogg'
+	preop_sound = 'sound/effects/Welder2.ogg'
+	success_sound = 'sound/effects/crack1.ogg'
+	failure_sound = 'sound/effects/crackandbleed.ogg'
 
 //No need for to-patient messages on this one, they're heckin' dead
 /datum/surgery_step/xenomorph/cut_exoskeleton/preop(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

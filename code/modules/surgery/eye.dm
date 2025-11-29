@@ -164,7 +164,7 @@
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
 
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	preop_sound = 'sound/surgery/applyobject.ogg'
 	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 

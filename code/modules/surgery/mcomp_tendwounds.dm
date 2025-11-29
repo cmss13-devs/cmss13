@@ -45,7 +45,7 @@
 	desc = "stabilize the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND
 	time = 5 SECONDS
-	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	preop_sound = 'sound/surgery/applyobject.ogg'
 	success_sound = 'sound/surgery/cautery2.ogg'
 	failure_sound = 'sound/surgery/organ1.ogg'
 
@@ -153,6 +153,10 @@
 	desc = "clamp the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND
 	time = 10 SECONDS
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/surgery/hemostat2.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
+
 
 /datum/surgery_step/cauterize/mclamp_wound/tool_check(mob/user, obj/item/tool, datum/surgery/surgery)
 	. = ..()

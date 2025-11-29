@@ -82,7 +82,7 @@
 
 	var/datum/behavior_delegate/despoiler_base/behavior = xeno.behavior_delegate
 	if (istype(behavior))
-		behavior.next_slash_buffed = TRUE
+		behavior.slashes_enhanced = TRUE
 	xeno.attack_speed_modifier -= slash_speedup
 
 	to_chat(xeno, SPAN_XENOHIGHDANGER("Our slashes will apply stronger acid!"))
@@ -98,10 +98,10 @@
 		return
 	var/datum/behavior_delegate/despoiler_base/behavior = xeno.behavior_delegate
 	if (istype(behavior))
-		// In case slash has already landed
-		if (!behavior.next_slash_buffed)
+		//so we do not reduce slash speed if something has gone wrong
+		if (!behavior.slashes_enhanced)
 			return
-		behavior.next_slash_buffed = FALSE
+		behavior.slashes_enhanced = FALSE
 	xeno.attack_speed_modifier += slash_speedup
 	to_chat(xeno, SPAN_XENODANGER("Our power weakens, our slashes will no longer apply stronger acid!"))
 
@@ -109,14 +109,14 @@
 /datum/behavior_delegate/despoiler_base
 	name = "Base Despoiler Behavior Delegate"
 
-	var/next_slash_buffed = FALSE
+	var/slashes_enhanced = FALSE
 
 /datum/behavior_delegate/despoiler_base/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))
 		return original_damage
 	var/datum/effects/acid/acid_effect = locate() in target_carbon.effects_list
 	var/speed_up_progress = 10
-	if (next_slash_buffed)
+	if (slashes_enhanced)
 		speed_up_progress = 20
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, covering [target_carbon] in acid!"))
 		if(acid_effect)

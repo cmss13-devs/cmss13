@@ -59,8 +59,10 @@ CLIENT_VERB(ooc, msg as text)
 			display_colour  = CONFIG_GET(string/ooc_color_maint)
 		if(admin_holder.rights & R_COLOR)
 			display_colour = prefs.ooccolor
-	else if(donator || SScmtv.is_subscriber(src))
+	else if(donator)
 		display_colour = prefs.ooccolor
+	else if(SScmtv.is_subscriber(src))
+		display_colour = "#8956FB"
 	if(!display_colour) // if invalid R_COLOR choice
 		display_colour = CONFIG_GET(string/ooc_color_default)
 

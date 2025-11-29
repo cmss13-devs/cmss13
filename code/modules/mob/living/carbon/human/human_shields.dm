@@ -148,11 +148,6 @@
 		playsound(src, checking_weapon.shield_sound, 70, vary = TRUE)
 		if(!custom_response)
 			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [checking_weapon.name]!</B>"), null, null, 5)
-
-		if(right_hand_shield && right_hand_shield.shield_readied) // User activated their shield before the attack. Lower if it blocks.
-			right_hand_shield.lower_shield(src)
-		if(left_hand_shield && left_hand_shield.shield_readied)
-			left_hand_shield.lower_shield(src)
 		return TRUE
 
 	return FALSE

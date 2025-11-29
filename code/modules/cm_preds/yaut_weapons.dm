@@ -981,11 +981,12 @@
 		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
 	item_state = "shield"
-	flags_item = ITEM_PREDATOR
+	flags_item = NODROP|ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 
-	passive_block = 20
-	readied_block = 40
+	shield_type = SHIELD_DIRECTIONAL
+	readied_block = SHIELD_CHANCE_VHIGH
+	passive_block = SHIELD_CHANCE_MED
 
 	blocks_on_back = FALSE
 
@@ -1016,14 +1017,6 @@
 		M.apply_effect(3, DAZE)
 		M.apply_effect(5, SLOW)
 
-/obj/item/weapon/shield/riot/yautja/attackby(obj/item/attacking_item, mob/user)
-	if(cooldown < world.time - 25)
-		if(istype(attacking_item, /obj/item/weapon) && (attacking_item.flags_item & ITEM_PREDATOR))
-			user.visible_message(SPAN_WARNING("[user] bashes [src] with [attacking_item]!"))
-			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
-			cooldown = world.time
-	else
-		..()
 
 /obj/item/weapon/shield/riot/yautja/ancient
 	name = "ancient shield"

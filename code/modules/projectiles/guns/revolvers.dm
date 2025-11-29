@@ -212,10 +212,21 @@
 		current_mag.current_rounds++
 	return TRUE
 
-// FLUFF
+// FLUFF kinda
+/obj/item/weapon/gun/revolver/proc/close_chamber(mob/user)
+	if(current_mag && !current_mag.chamber_closed)
+		current_mag.chamber_closed = TRUE
+		to_chat(user, SPAN_NOTICE("You close the cylinder of [src]."))
+		playsound(user, chamber_close_sound, 25, 1)
+		update_icon()
+
 /obj/item/weapon/gun/revolver/unique_action(mob/user)
-	if(trickster_gun)
+	if(current_mag && !current_mag.chamber_closed)
+		close_chamber(user)
+		return
+	if(trickster_gun && user.a_intent == INTENT_DISARM)
 		perform_tricks(user)
+		return
 	else
 		spin_cylinder(user)
 
@@ -515,7 +526,7 @@
 	icon_state = "zhnk72"
 	item_state = "zhnk72"
 
-	fire_sound = "gun_pkd" //sounds stolen from bladerunner revolvers bc they arent used and sound awesome
+	fire_sound = "gun_pkd" //sounds stolen from bladerunner revolvers bc they aren't used and sound awesome
 	fire_rattle = 'sound/weapons/gun_pkd_fire01_rattle.ogg'
 	reload_sound = 'sound/weapons/handling/pkd_speed_load.ogg'
 	cocked_sound = 'sound/weapons/handling/pkd_cock.wav'
@@ -576,7 +587,7 @@
 	fire_sound = 'sound/weapons/gun_44mag2.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/small
 	force = 6
-	flags_gun_features = GUN_ANTIQUE|GUN_ONE_HAND_WIELDED|GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_ANTIQUE|GUN_ONE_HAND_WIELDED|GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	trickster_gun = TRUE
 
 /obj/item/weapon/gun/revolver/small/set_gun_attachment_offsets()
@@ -702,6 +713,9 @@
 
 /obj/item/weapon/gun/revolver/mateba/pmc
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/ap
+
+/obj/item/weapon/gun/revolver/mateba/impact
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 
 /obj/item/weapon/gun/revolver/mateba/general
 	name = "\improper golden Spearhead Unica-6 autorevolver custom"
@@ -831,7 +845,7 @@
 	usually comes with authentic wooden grips, engravings, or gold plating finish."
 	icon_state = "mateba_2006m"
 	item_state = "mateba_2006m"
-
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	fire_sound = 'sound/weapons/gun_mateba_2006m.ogg'
 	chamber_close_sound = 'sound/weapons/gun_mateba_2006m_close_chamber.ogg'
 	unload_sound = 'sound/weapons/gun_mateba_2006m_open_chamber.ogg'

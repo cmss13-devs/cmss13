@@ -41,7 +41,7 @@
 	)
 
 	time = 4 SECONDS
-	preop_sound = 'sound/effects/Welder2.ogg'
+	preop_sound = 'sound/items/Welder2.ogg'
 	success_sound = 'sound/effects/crack1.ogg'
 	failure_sound = 'sound/effects/crackandbleed.ogg'
 

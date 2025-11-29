@@ -357,7 +357,7 @@ CULT
 		return
 	var/mob/living/carbon/human/Hu = owner
 
-	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED)))
+	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_SKILLED) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED)))
 		to_chat(Hu, SPAN_WARNING("This mind is too strong to target with your abilities."))
 		return
 
@@ -606,8 +606,8 @@ CULT
 	H.cancel_camera()
 	H.reset_view()
 	H.client.change_view(GLOB.world_view_size, target)
-	H.client.pixel_x = 0
-	H.client.pixel_y = 0
+	H.client.set_pixel_x(0)
+	H.client.set_pixel_y(0)
 
 //Similar to a cancel-camera-view button, but for mobs that were buckled to special vehicle seats.
 //Unbuckles them, which handles the view and offsets resets and other stuff.
@@ -639,8 +639,8 @@ CULT
 
 	H.unset_interaction()
 	H.client.change_view(GLOB.world_view_size, target)
-	H.client.pixel_x = 0
-	H.client.pixel_y = 0
+	H.client.set_pixel_x(0)
+	H.client.set_pixel_y(0)
 	H.reset_view()
 	remove_from(H)
 

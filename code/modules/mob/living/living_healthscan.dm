@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	if(!ui)
 		ui = new(user, src, "HealthScan", "Health Scan")
 		ui.open()
-		ui.set_autoupdate(FALSE)
+		ui.set_autoupdate(isobserver(user))
 
 /**
  * Returns TRUE if the target is either dead or appears to be dead.
@@ -494,14 +494,16 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			if(ishuman(target_mob))
 				var/mob/living/carbon/human/target_human = target_mob
 				target_human.change_holo_card(ui.user)
-				return TRUE
+				ui.send_update(list("holocard" = get_holo_card_color(target_mob)))
+				return FALSE
 		if("change_ui_mode")
 			switch(ui_mode)
 				if(UI_MODE_CLASSIC)
 					ui_mode = UI_MODE_MINIMAL
 				if(UI_MODE_MINIMAL)
 					ui_mode = UI_MODE_CLASSIC
-			return TRUE
+			ui.send_update(list("ui_mode" = ui_mode))
+			return FALSE
 
 /// legacy proc for to_chat messages on health analysers
 /mob/living/proc/health_scan(mob/living/carbon/human/user, ignore_delay = FALSE, show_limb_damage = TRUE, show_browser = TRUE, alien = FALSE, do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.

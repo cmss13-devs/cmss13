@@ -874,12 +874,16 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
 		return
 
-	if(!magazine || !istype(magazine))
-		to_chat(user, SPAN_WARNING("That's not a magazine!"))
+	//code for manually inserting a bullet into a chamber
+	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
+		if(in_chamber)
+			to_chat(user, SPAN_WARNING("[src] needs to be unchambered first."))
+			return
+		insert_bullet(user)
 		return
 
-	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
-		to_chat(user, SPAN_WARNING("[src] needs an actual magazine."))
+	if(!magazine || !istype(magazine))
+		to_chat(user, SPAN_WARNING("That's not a magazine!"))
 		return
 
 	if(magazine.current_rounds <= 0)
@@ -911,6 +915,23 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	update_icon()
 	return TRUE
+
+/obj/item/weapon/gun/proc/insert_bullet(mob/user)
+	if(!current_mag && !in_chamber)
+		var/obj/item/ammo_magazine/handful/bullet = user.get_active_hand()
+		if(istype(bullet) && bullet.caliber == caliber)
+			if(bullet.current_rounds > 0)
+				in_chamber = create_bullet(bullet.ammo_source, initial(name))
+				apply_traits(in_chamber)
+				user.visible_message(SPAN_NOTICE(("[user] loads a [bullet.singular_name] into [src]'s chamber!")),
+					SPAN_NOTICE(("You load a [bullet.singular_name] into [src]'s chamber.")))
+				bullet.current_rounds--
+				bullet.update_icon()
+				if(bullet.current_rounds <= 0)
+					QDEL_NULL(bullet)
+				playsound(src, 'sound/weapons/handling/gun_boltaction_close.ogg', 15)
+		else
+			to_chat(user, SPAN_WARNING("\The [bullet] doesn't match [src]'s caliber!"))
 
 /obj/item/weapon/gun/proc/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	user.drop_inv_item_to_loc(magazine, src) //Click!
@@ -963,7 +984,11 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			H.update_icon()
 			break
 	if(!found_handful)
-		var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
+		var/obj/item/ammo_magazine/handful/new_handful = new()
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_COCKING_TO_HAND)
+			user.put_in_hands(new_handful)
+		else
+			new_handful.forceMove(get_turf(src)) // just drop it
 		new_handful.generate_handful(ammo_type, caliber, 8, 1, type)
 
 	QDEL_NULL(in_chamber)
@@ -983,8 +1008,12 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	cock_cooldown = world.time + cock_delay
 	cock_gun(user)
 	if(in_chamber)
-		user.visible_message(SPAN_NOTICE("[user] cocks [src], clearing a [in_chamber.name] from its chamber."),
-		SPAN_NOTICE("You cock [src], clearing a [in_chamber.name] from its chamber."), null, 4, CHAT_TYPE_COMBAT_ACTION)
+		if(user.client?.prefs?.toggle_prefs & TOGGLE_COCKING_TO_HAND && !user.get_inactive_hand())
+			user.visible_message(SPAN_NOTICE("[user] cocks [src], catching the [in_chamber.name] after it leaves its chamber!"),
+			SPAN_NOTICE("You cock [src], catching the [in_chamber.name] after leaving its chamber!"), null, 4, CHAT_TYPE_COMBAT_ACTION)
+		else
+			user.visible_message(SPAN_NOTICE("[user] cocks [src], clearing a [in_chamber.name] from its chamber."),
+			SPAN_NOTICE("You cock [src], clearing a [in_chamber.name] from its chamber."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 		unload_chamber(user)
 	else
 		user.visible_message(SPAN_NOTICE("[user] cocks [src]."),
@@ -1812,6 +1841,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(skill_accuracy)
 			gun_accuracy_mult += skill_accuracy * HIT_ACCURACY_MULT_TIER_3 // Accuracy mult increase/decrease per level is equal to attaching/removing a red dot sight
 
+		var/mob/living/carbon/human/focused_human = user
+		if(focused_human.marksman_aura >= 1) //adjust scatter based on focus aura
+			var/focus_mult = focused_human.marksman_aura * 1.5 //Flat decrease of 3 % scatter per aura level
+			gun_scatter -= focus_mult
+
 	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * gun_accuracy_mult) // Apply gun accuracy multiplier to projectile accuracy
 	projectile_to_fire.scatter += gun_scatter
 
@@ -1919,6 +1953,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			total_recoil -= 1.5*RECOIL_AMOUNT_TIER_5
 		else // Max level skill of firearms.
 			total_recoil -= 2*RECOIL_AMOUNT_TIER_5
+
+		var/mob/living/carbon/human/focused_human = user
+		if(focused_human.marksman_aura >= 1) //adjust recoil based on focus aura
+			var/focus_mult = focused_human.marksman_aura * 0.5 //set this by a lot and you wont be getting any camera recoil whatsoever, in fact leadership level 4 is pretty cracked as is
+			total_recoil -= focus_mult
 
 	if(total_recoil > 0 && (ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)))
 		if(total_recoil >= 4)

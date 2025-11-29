@@ -266,9 +266,9 @@
 	msg_admin_attack("[key_name(user)] attacked [key_name(target)] with [src.name] (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
+		var/mob/living/carbon/human/human_target = target
 		var/target_zone = rand_zone(check_zone(user.zone_selected, target)) // why
-		var/obj/limb/affecting = H.get_limb(target_zone)
+		var/obj/limb/affecting = human_target.get_limb(target_zone)
 
 		if (!affecting)
 			return
@@ -277,25 +277,21 @@
 			return
 		var/hit_area = affecting.display_name
 
-		if((user != target) && H.check_shields(7, "the [src.name]"))
+		if((user != human_target) && !(flags_item & UNBLOCKABLE) && human_target.check_shields("the [src.name]", get_dir(human_target, user)))
 			return
 
-		if (target != user && target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50)) // it will probably be more intuitive to use get_sharp_obj_blocker here but whatever
-			for(var/mob/O in viewers(GLOB.world_view_size, user))
-				O.show_message(text(SPAN_DANGER("<B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B>")), SHOW_MESSAGE_VISIBLE)
+		if (human_target != user && human_target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50)) // it will probably be more intuitive to use get_sharp_obj_blocker here but whatever
+			user.visible_message(SPAN_DANGER("<B>[user] tries to stab [human_target] in [hit_area] with [src], but the attack is deflected by armor!</B>"))
 			user.temp_drop_inv_item(src)
 			qdel(src)
 			return
 
-		for(var/mob/O in viewers(GLOB.world_view_size, user))
-			O.show_message(text(SPAN_DANGER("<B>[user] stabs [target] in \the [hit_area] with [src.name]!</B>")), SHOW_MESSAGE_VISIBLE)
+		user.visible_message(SPAN_DANGER("<B>[user] stabs [human_target] in \the [hit_area] with [src]!</B>"))
 
-		if(affecting.take_damage(3))
-			target:UpdateDamageIcon()
+		affecting.take_damage(3)
 
 	else
-		for(var/mob/O in viewers(GLOB.world_view_size, user))
-			O.show_message(text(SPAN_DANGER("<B>[user] stabs [target] with [src.name]!</B>")), SHOW_MESSAGE_VISIBLE)
+		user.visible_message(SPAN_DANGER("<B>[user] stabs [target] with [src.name]!</B>"))
 		target.take_limb_damage(3)// 7 is the same as crowbar punch
 
 	src.reagents.reaction(target, ABSORPTION)

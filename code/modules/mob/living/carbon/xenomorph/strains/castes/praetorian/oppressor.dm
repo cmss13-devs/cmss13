@@ -114,6 +114,8 @@
 		var/blocked = FALSE
 		var/allow_one_more_step = FALSE
 		for(var/obj/structure in temp)
+			if(istype(structure, /obj/effect/particle_effect/smoke))
+				continue
 			if(!structure.density && !structure.opacity)
 				continue
 			if(istype(structure, /obj/structure/machinery/portable_atmospherics/hydroponics))
@@ -173,7 +175,7 @@
 
 		turf = temp
 
-		if (turf in turflist)
+		if(turf in turflist)
 			break
 
 		turflist += turf

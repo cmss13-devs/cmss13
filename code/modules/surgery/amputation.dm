@@ -153,7 +153,7 @@
 		/obj/item/tool/hatchet,
 		/obj/item/attachable/bayonet
 		)
-	preop_sound = 'sound/surgery/saw.ogg'
+	preop_sound = 'sound/surgery/saw1.ogg'
 	success_sound = 'sound/surgery/saw2.ogg'
 	failure_sound = 'sound/effects/circsawfail1.ogg'
 
@@ -353,7 +353,7 @@
 	desc = "cut through the jammed clamps on the prosthesis"
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 5 SECONDS
-	preop_sound = 'sound/surgery/saw.ogg'
+	preop_sound = 'sound/surgery/saw1.ogg'
 	success_sound = 'sound/effects/buckle.ogg'
 	failure_sound = 'sound/effects/circsawfail3.ogg'
 

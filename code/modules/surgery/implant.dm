@@ -54,7 +54,7 @@
 	)
 	time = 6 SECONDS
 
-	preop_sound = 'sound/surgery/saw.ogg'
+	preop_sound = 'sound/surgery/saw1.ogg'
 	success_sound = 'sound/surgery/hemostat2.ogg'
 	failure_sound = 'sound/effects/circsawfail2.ogg'
 

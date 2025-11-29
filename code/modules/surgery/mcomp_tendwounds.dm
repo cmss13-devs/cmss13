@@ -41,7 +41,7 @@
 //------------------------------------
 
 /datum/surgery_step/mstabilize_wounds
-	name = "Stabilize wounds."
+	name = "Stabilize Wounds"
 	desc = "stabilize the wounds"
 	tools = SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND
 	time = 5 SECONDS

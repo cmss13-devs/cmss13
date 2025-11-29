@@ -91,10 +91,6 @@
 /obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/corsat/squareswood/north,
 /area/varadero/interior_protected/vessel)
-"aar" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/interior/cargo)
 "aas" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/dirt,
@@ -263,13 +259,8 @@
 /turf/closed/wall/r_wall,
 /area/varadero/interior/security)
 "aaX" = (
-/obj/structure/machinery/door_control/brbutton{
-	id = "undergroundhangarwest";
-	name = "West Dock Door";
-	pixel_x = 6;
-	pixel_y = 32
-	},
-/turf/open/floor/plating/icefloor/warnplate/west,
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "aaY" = (
 /obj/structure/machinery/door_control/brbutton{
@@ -278,16 +269,25 @@
 	pixel_x = 6;
 	pixel_y = 32
 	},
+/turf/open/floor/plating/icefloor/warnplate/west,
+/area/varadero/interior/cargo)
+"aaZ" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "undergroundhangarwest";
+	name = "West Dock Door";
+	pixel_x = 6;
+	pixel_y = 32
+	},
 /turf/open/floor/plating/icefloor/warnplate/east,
 /area/varadero/exterior/lz1_near)
-"aaZ" = (
+"aba" = (
 /obj/structure/machinery/landinglight/ds2/spoke{
 	pixel_x = -1;
 	pixel_y = 54
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"aba" = (
+"abb" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	climb_delay = 1
 	},
@@ -297,7 +297,7 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
-"abb" = (
+"abc" = (
 /obj/item/lightstick/variant/planted,
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/ocean/deep_ocean,
@@ -35979,7 +35979,7 @@ uXZ
 pYt
 vsa
 fcK
-aar
+aaX
 xCn
 xCn
 xCn
@@ -36161,7 +36161,7 @@ ykc
 pkG
 nsn
 ehH
-aar
+aaX
 xCn
 xCn
 xCn
@@ -40125,7 +40125,7 @@ pGs
 huF
 huF
 huF
-aaZ
+aba
 wMw
 aHy
 wMw
@@ -40141,7 +40141,7 @@ huF
 huF
 huF
 wFP
-aaX
+aaY
 lFl
 lFl
 lFl
@@ -40505,7 +40505,7 @@ paq
 gSY
 xBS
 wFP
-aaY
+aaZ
 waP
 waP
 waP
@@ -41381,7 +41381,7 @@ mPk
 mPk
 mPk
 mPk
-abb
+abc
 fjv
 wBp
 cfQ
@@ -41390,7 +41390,7 @@ bGC
 qzq
 ahg
 huF
-aba
+abb
 eRM
 tCG
 aEf

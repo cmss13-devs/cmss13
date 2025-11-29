@@ -24,10 +24,6 @@
 "aag" = (
 /turf/closed/ice_rock/eastWall,
 /area/ice_colony/exterior/surface/cliff)
-"aah" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/hangar/beta)
 "aak" = (
 /obj/structure/ice/thin/end{
 	dir = 8
@@ -2429,6 +2425,10 @@
 /obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer3,
 /area/ice_colony/exterior/surface/valley/northeast)
+"ajk" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/hangar/beta)
 "ajl" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
 	name = "\improper Hydroponics North Wing Dome"
@@ -73479,16 +73479,16 @@ aOj
 aOj
 aOj
 aOj
-aah
-aah
-aah
-aah
+ajk
+ajk
+ajk
+ajk
 aOj
 aUI
 aOj
 aSo
-aah
-aah
+ajk
+ajk
 aOj
 aOj
 aOj
@@ -77712,11 +77712,11 @@ aOj
 aOj
 aOj
 aOj
-aah
-aah
-aah
-aah
-aah
+ajk
+ajk
+ajk
+ajk
+ajk
 aOj
 aOj
 aOj

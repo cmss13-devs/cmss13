@@ -218,6 +218,7 @@
 			if(limb.status & LIMB_ESCHAR)
 				return
 			limb.eschar()
+			limb.take_damage(0, limb.burn_healing_threshold)
 		if ("blood_loss")
 			var/amount = 0
 			amount = tgui_input_real_number(usr, "Amount?")

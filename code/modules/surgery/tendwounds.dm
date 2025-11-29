@@ -19,7 +19,7 @@
 	time = 3.5 SECONDS
 	preop_sound = 'sound/surgery/suture1.ogg'
 	success_sound = 'sound/surgery/suture2.ogg'
-	failure_sound = 'sound/surgery/retractor2.ogg'
+	failure_sound = 'sound/surgery/retractor1.ogg'
 
 /datum/surgery_step/suture_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,

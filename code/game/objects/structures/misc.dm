@@ -533,6 +533,8 @@
 					continue
 
 				LAZYADD(from_turf_to_images["\ref[turf]"], destination_turf_images["\ref[to_turf]"])
+				turf.turf_flags |= TURF_HULL
+				turf.turf_flags &= ~TURF_BREAKABLE
 				RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered), TRUE)
 
 

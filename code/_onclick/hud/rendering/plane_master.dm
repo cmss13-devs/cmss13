@@ -12,7 +12,7 @@
 	var/render_relay_plane = RENDER_PLANE_GAME
 	///bool: Whether this plane should get a render target automatically generated
 	var/generate_render_target = TRUE
-	///integer: blend mode to apply to the render relay in case you dont want to use the plane_masters blend_mode
+	///integer: blend mode to apply to the render relay in case you don't want to use the plane_masters blend_mode
 	var/blend_mode_override
 	///reference: current relay this plane is utilizing to render
 	var/obj/render_plane_relay/relay

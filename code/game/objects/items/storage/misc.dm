@@ -79,6 +79,17 @@
 	new /obj/item/attachable/mateba/long/silver(src)
 	new /obj/item/weapon/mateba_key(src)
 
+/obj/item/storage/mateba_case/captain/council_gold
+	icon_state = "c_matebacase"
+	name = "senior officer's Unica spare barrels case"
+	desc = "A black-ebony case used for storing the tools and parts needed to customize a Unica autorevolver, as well as room for the gun itself. This variant is custom-made for senior officers and comes with golden barrel attachments."
+
+/obj/item/storage/mateba_case/captain/council_gold/fill_preset_inventory()
+	new /obj/item/attachable/mateba/short/gold(src)
+	new /obj/item/attachable/mateba/gold(src)
+	new /obj/item/attachable/mateba/long/gold(src)
+	new /obj/item/weapon/mateba_key(src)
+
 /obj/item/storage/mateba_case/general
 	icon_state = "c_matebacase"
 	name = "luxurious Unica customization kit case"

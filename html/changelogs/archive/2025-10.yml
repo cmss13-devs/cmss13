@@ -308,3 +308,65 @@
       the maintenance deck above it.
   ori-disillusion-mirnov:
   - bugfix: labels appear on injectors when automatically vended into a container
+2025-10-30:
+  Blundir:
+  - imageadd: resprites hugger sprite on human face
+  Drathek:
+  - bugfix: Colony floodlight switches (includes electric fence switches) can now
+      share machines (support for duplicate switches) but toggling one on will untoggle
+      the other(s)
+  - bugfix: Colony floodlight switches now correctly initialize their machines if
+      nightmare inserts changed them
+  - bugfix: Colony floodlights now only draw power if not broken (and on)
+  - bugfix: Colony floodlights now properly handle switch spamming
+  GoodWheatley:
+  - rscadd: The CO uniform vendor now has the officer cap, service jacket, and a few
+      pairs of gloves
+  Puckaboo2:
+  - rscadd: Adds dylovene and peridaxon autoinjectors to vends and first aid kits.
+  - qol: Chemicals, when scanned, now have more detailed descriptions and OD limits.
+  - qol: Adds some maptext labels, descriptions, and names to some autoinjectors
+  - bugfix: fixes autoinjector overlays, fixed the contents of oxygen kits to have
+      pill bottles instead of pills.
+  - code_imp: Changed the way autoinjectors display their overlays to correctly display
+      their reagents' hex colors.
+  - imageadd: Adds overlays for autoinjectors.
+  - rscadd: Adds reagent-colored fill icons for droppers and industrial droppers.
+  - rscadd: Adds oxycodone pill bottles.
+  - rscadd: Adds icon states on pill packets that change depending on how many pills
+      are left.
+  - qol: Adds descriptions to Wey-Med-dispensed pill bottles.
+  - qol: All reagent fill sprites have universal shading.
+  - bugfix: Adds missing fill icon states for silver beakers and cryostasis beakers.
+  - code_imp: Tweaks some names and adds some descriptions to some items.
+  - imageadd: Adds proper fill icon states for droppers, industrial droppers, silver
+      beakers, and cryostasis beakers.
+  - qol: Adds a fill indicator on reagent tanks that fills every 20%.
+  - qol: Added a dispensing and filling indicator to reagent tanks that changes from
+      green to orange.
+  - qol: 'Adds the following transfer amounts to tanks: 15, 25, 80, 120, 150, and
+      240.'
+  - bugfix: Added missing overlays to Yautja tanks.
+  - imageadd: Restock carts now have proper icons with fill overlays that add and
+      remove a little box every 5 units of supplies.
+  - code_imp: Repaths reagent tanks for consistency.
+2025-10-31:
+  Jesters-Ballad:
+  - balance: Dough costs adjusted, burger buns buffed significantly
+  Killfish:
+  - balance: Huggers purge 30u of stims upon hugging someone.
+  - balance: Being nested while infected and below stage 4 purges 2u of stims per
+      tick.
+  Lagomorphica:
+  - bugfix: peridaxon autoinjector no longer overdoses you
+  NHC:
+  - rscadd: replaced the pilot helmet in the PO and DCC vendor with a version that
+      has no pilot visor pre-installed.
+  - rscadd: adds binoculars and some other minor items to the pilot vendors.
+  - rscadd: adds the tactical pilot officer flight suit and its armor as a free option
+      to the PO uniform vendor.
+  - qol: sorts PO and DCC clothing vendor subcategories.
+  forest2001, lagomorphica:
+  - rscadd: Adds Synthetic Specialisation presets.
+  neeshacark:
+  - spellcheck: fixed a typo in vendors for high-cut labcoats

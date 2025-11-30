@@ -464,51 +464,53 @@ Additional game mode variables.
 
 /datum/game_mode/proc/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = FALSE)
 	var/list/available_xenos = list()
-	var/list/available_xenos_non_ssd = list()
 
 	var/mob/dead/observer/candidate_observer = null
 	if(isobserver(xeno_candidate))
 		candidate_observer = xeno_candidate
 
-	for(var/mob/living/carbon/xenomorph/cur_xeno as anything in GLOB.living_xeno_list)
+	for(var/mob/living/carbon/xenomorph/cur_xeno in GLOB.living_xeno_list)
+		if(QDELING(cur_xeno))
+			continue
 		if(cur_xeno.aghosted)
 			continue //aghosted xenos don't count
 		var/area/area = get_area(cur_xeno)
 		if(should_block_game_interaction(cur_xeno) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
 			continue //xenos on admin z level don't count
-		if(!istype(cur_xeno))
+		if(cur_xeno.stat == DEAD)
 			continue
-		var/required_time = islarva(cur_xeno) ? XENO_LEAVE_TIMER_LARVA - cur_xeno.away_timer : XENO_LEAVE_TIMER - cur_xeno.away_timer
-		if(required_time > XENO_AVAILABLE_TIMER)
+		if(cur_xeno.health <= 0)
 			continue
-		if(!cur_xeno.client)
-			available_xenos += cur_xeno
-		else
-			available_xenos_non_ssd += cur_xeno
+		var/required_leave_time = islarva(cur_xeno) ? XENO_LEAVE_TIMER_LARVA : XENO_LEAVE_TIMER
+		var/min_time = instant_join ? 0 : XENO_AVAILABLE_TIMER
+		if(required_leave_time - cur_xeno.away_timer > min_time)
+			continue
+		available_xenos += cur_xeno
 
-	var/datum/hive_status/hive
-	for(var/hivenumber in GLOB.hive_datum)
-		hive = GLOB.hive_datum[hivenumber]
-		if(hive.hardcore)
-			continue
-		if(!hive.stored_larva)
-			continue
-		// Only offer buried larva if there is no queue because we are instead relying on the hive cores/larva pops to handle their larva:
-		// Technically this should be after a get_alien_candidates() call to be accurate, but we are intentionally trying to not call that proc as much as possible
-		if(hive.hive_location && GLOB.larva_pool_candidate_count > 0)
-			continue
-		if(!hive.hive_location && (world.time > XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time))
-			continue
+	if(!instant_join)
+		var/datum/hive_status/hive
+		for(var/hivenumber in GLOB.hive_datum)
+			hive = GLOB.hive_datum[hivenumber]
+			if(hive.hardcore)
+				continue
+			if(!hive.stored_larva)
+				continue
+			// Only offer buried larva if there is no queue because we are instead relying on the hive cores/larva pops to handle their larva:
+			// Technically this should be after a get_alien_candidates() call to be accurate, but we are intentionally trying to not call that proc as much as possible
+			if(hive.hive_location && GLOB.larva_pool_candidate_count > 0)
+				continue
+			if(!hive.hive_location && (world.time > XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time))
+				continue
 
-		if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
-			available_xenos |= "any buried larva"
-			LAZYADD(available_xenos["any buried larva"], hive)
-		else
-			var/larva_option = "buried larva ([hive])"
-			available_xenos += larva_option
-			available_xenos[larva_option] = list(hive)
+			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
+				available_xenos |= "any buried larva"
+				LAZYADD(available_xenos["any buried larva"], hive)
+			else
+				var/larva_option = "buried larva ([hive])"
+				available_xenos += larva_option
+				available_xenos[larva_option] = list(hive)
 
-	if(!length(available_xenos) || (instant_join && !length(available_xenos_non_ssd)))
+	if(!length(available_xenos))
 		var/is_new_player = isnewplayer(xeno_candidate)
 		if(!xeno_candidate.client?.prefs || (!(xeno_candidate.client.prefs.be_special & BE_ALIEN) && !is_new_player))
 			to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae. \
@@ -535,9 +537,9 @@ Additional game mode variables.
 
 	var/mob/living/carbon/xenomorph/new_xeno
 	if(instant_join)
-		new_xeno = pick(available_xenos_non_ssd) //Just picks something at random.
+		new_xeno = pick(available_xenos) //Just picks something at random.
 	else
-		var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
+		var/userInput = tgui_input_list(xeno_candidate, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
 
 		if(available_xenos[userInput]) //Free xeno mobs have no associated value and skip this. "Pooled larva" strings have a list of hives.
 			var/datum/hive_status/picked_hive = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.
@@ -607,7 +609,7 @@ Additional game mode variables.
 		if(tgui_alert(xeno_candidate, "Are you sure you want to transfer yourself into [new_xeno]?", "Confirm Transfer", list("Yes", "No")) != "Yes")
 			return FALSE
 
-		if(new_xeno.away_timer < required_leave_time || new_xeno.stat == DEAD || !(new_xeno in GLOB.living_xeno_list) || !xeno_candidate) // Do it again, just in case
+		if(QDELETED(new_xeno) || new_xeno.away_timer < required_leave_time || new_xeno.stat == DEAD || !(new_xeno in GLOB.living_xeno_list) || !xeno_candidate) // Do it again, just in case
 			to_chat(xeno_candidate, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
 			return FALSE
 
@@ -747,7 +749,7 @@ Additional game mode variables.
 
 	return TRUE
 
-/datum/game_mode/proc/transfer_xeno(xeno_candidate, mob/living/new_xeno)
+/datum/game_mode/proc/transfer_xeno(xeno_candidate, mob/living/carbon/xenomorph/new_xeno)
 	if(!xeno_candidate || !isxeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE
 
@@ -770,7 +772,7 @@ Additional game mode variables.
 	else
 		CRASH("ERROR: transfer_xeno called without mob or mind input: [xeno_candidate]")
 
-	new_xeno.ghostize(FALSE) //Make sure they're not getting a free respawn.
+	new_xeno.ghostize(can_reenter_corpse=FALSE, aghosted=FALSE, transfer=TRUE) //Make sure they're not getting a free respawn.
 	xeno_candidate_mind.transfer_to(new_xeno, TRUE)
 	new_xeno.SetSleeping(0) // ghosting sleeps, but they got a new mind! wake up! (/mob/living/verb/ghost())
 
@@ -786,11 +788,9 @@ Additional game mode variables.
 			send_tacmap_assets_latejoin(new_xeno)
 
 	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
-	if(isxeno(new_xeno)) //Dear lord
-		var/mob/living/carbon/xenomorph/X = new_xeno
-		X.generate_name()
-		if(X.is_ventcrawling)
-			X.update_pipe_icons(X.loc) //If we are in a vent, fetch a fresh vent map
+	new_xeno.generate_name()
+	if(new_xeno.is_ventcrawling)
+		new_xeno.update_pipe_icons(new_xeno.loc) //If we are in a vent, fetch a fresh vent map
 	return TRUE
 
 /// Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup
@@ -1053,6 +1053,12 @@ Additional game mode variables.
 		var/obj/structure/machinery/cm_vending/sorted/CVS = i
 		CVS.populate_product_list_and_boxes(gear_scale)
 
+	for(var/chem_storage_network in GLOB.chemical_data.chemical_networks)
+		var/obj/structure/machinery/chem_storage/chem_storage = GLOB.chemical_data.chemical_networks[chem_storage_network]
+		if(!chem_storage.dynamic_storage)
+			continue
+		chem_storage.calculate_dynamic_storage(gear_scale)
+
 	//Scale the amount of cargo points through a direct multiplier
 	GLOB.supply_controller.points += floor(GLOB.supply_controller.points_scale * gear_scale)
 
@@ -1082,6 +1088,11 @@ Additional game mode variables.
 		gear_scale_max = gear_scale
 		for(var/obj/structure/machinery/cm_vending/sorted/vendor as anything in GLOB.cm_vending_vendors)
 			vendor.update_dynamic_stock(gear_scale_max)
+		for(var/chem_storage_network in GLOB.chemical_data.chemical_networks)
+			var/obj/structure/machinery/chem_storage/chem_storage = GLOB.chemical_data.chemical_networks[chem_storage_network]
+			if(!chem_storage.dynamic_storage)
+				continue
+			chem_storage.calculate_dynamic_storage(gear_scale)
 		GLOB.supply_controller.points += floor(gear_delta * GLOB.supply_controller.points_scale)
 
 /// Updates [var/latejoin_tally] and [var/gear_scale] based on role weights of latejoiners/cryoers. Delta is the amount of role positions added/removed

@@ -142,7 +142,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 20
-	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they don't need to be in the machine list
 	light_system = STATIC_LIGHT
 	light_color = LIGHT_COLOR_TUNGSTEN
 	var/on = 0 // 1 if on, 0 if off
@@ -167,6 +167,9 @@
 
 /obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
+
+/obj/structure/machinery/light/containment/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/light/blue
 	icon_state = "btube1"
@@ -781,7 +784,7 @@
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 20
-	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they don't need to be in the machine list
 	unslashable = TRUE
 	unacidable = TRUE
 	light_color = LIGHT_COLOR_FLARE

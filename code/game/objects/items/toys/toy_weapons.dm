@@ -7,7 +7,7 @@
 
 
 /*
- * Toy gun: Why isnt this an /obj/item/weapon/gun?
+ * Toy gun: Why isn't this an /obj/item/weapon/gun?
  */
 /obj/item/toy/gun
 	name = "cap gun"
@@ -214,7 +214,6 @@
 	var/active = 0
 	var/sword_type = "blue"
 	w_class = SIZE_SMALL
-	flags_item = NOSHIELD
 	attack_verb = list("attacked", "struck", "hit")
 
 /obj/item/toy/sword/red
@@ -259,7 +258,6 @@
 	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	icon_state = "katana"
 	flags_atom = FPRINT|CONDUCT
-	flags_item = NOSHIELD
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	force = 5
 	throwforce = 5

@@ -274,6 +274,7 @@ bullets/shells. ~N
 	flags_atom = FPRINT|CONDUCT
 	flags_magazine = AMMUNITION_HANDFUL
 	attack_speed = 3 // should make reloading less painful
+	var/ammo_source = null // for referencing where the ammo comes from
 	var/singular_name = "generic" // for referencing the singular name of the ammo rather than a handful of something each time
 
 /obj/item/ammo_magazine/handful/Initialize(mapload, spawn_empty)
@@ -322,6 +323,7 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 	current_rounds = new_rounds
 	gun_type = new_gun_type
 	handful_state = bullet.handful_state
+	ammo_source = bullet
 	singular_name = ammo_name
 	if(bullet.handful_color)
 		color = bullet.handful_color

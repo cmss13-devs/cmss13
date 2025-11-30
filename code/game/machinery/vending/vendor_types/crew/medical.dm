@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
 		list("Pharmaceutical Physician's Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/pharmacist, MARINE_CAN_BUY_MRE, VENDOR_ITEM_RECOMMENDED),
-		list("High-Cut High-Cut", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
+		list("High-Cut Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Low-Cut Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Medical's Apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 

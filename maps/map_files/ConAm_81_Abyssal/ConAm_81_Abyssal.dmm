@@ -3241,7 +3241,7 @@
 /turf/open/floor/darkish,
 /area/abyssal/interior/dormitory)
 "ajj" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	dir = 4;
 	pixel_y = 6
@@ -4468,7 +4468,7 @@
 "amI" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/lattice,
-/obj/structure/reagent_dispensers/ethanoltank,
+/obj/structure/reagent_dispensers/tank/ethanol,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "amJ" = (
@@ -5548,7 +5548,7 @@
 /turf/open/floor/station/metal/alt_floor,
 /area/abyssal/interior/arrivals)
 "apr" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
 	},
@@ -5719,7 +5719,7 @@
 "apK" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/lattice,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/south)
 "apL" = (
@@ -6205,7 +6205,7 @@
 "aqM" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/lattice,
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
 "aqN" = (
@@ -6890,7 +6890,7 @@
 /area/abyssal/interior/arrivals)
 "asp" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/reagent_dispensers/watertank{
+/obj/structure/reagent_dispensers/tank/water{
 	layer = 2.6
 	},
 /obj/effect/decal/warning_stripes{
@@ -8184,7 +8184,7 @@
 	light_color = "#BB3F3F";
 	color = "#BB3F3F"
 	},
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/west)
 "avf" = (
@@ -10920,7 +10920,7 @@
 /area/abyssal/interior/engineering)
 "aBr" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/sign/safety/nonpress_0g{
 	pixel_x = 32
 	},
@@ -12760,7 +12760,7 @@
 "aFN" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/lattice,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	dir = 4;
 	pixel_y = 6
@@ -12944,7 +12944,7 @@
 /turf/open/floor/darkish,
 /area/abyssal/interior/corridor_west)
 "aGj" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /turf/open/floor/prison/darkbrowncorners2,
 /area/abyssal/interior/corridor_west)
 "aGk" = (
@@ -13704,7 +13704,7 @@
 /area/abyssal/interior/command)
 "aHT" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
@@ -21736,7 +21736,7 @@
 "bba" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/lattice,
-/obj/structure/reagent_dispensers/fueltank/oxygentank,
+/obj/structure/reagent_dispensers/tank/fuel/oxygentank,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "bbb" = (
@@ -26825,7 +26825,7 @@
 /turf/open/floor/darkgreen2/northwest,
 /area/abyssal/interior/hydro)
 "kdY" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/reagent_dispensers/tank/water,
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/plating/prison,
 /area/abyssal/interior/hydro)
@@ -27535,7 +27535,7 @@
 	name = "floor panel"
 	},
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/structure/reagent_dispensers/tank/fuel/spacecraft,
 /turf/open/floor/shiva/radiator_tile2,
 /area/abyssal/interior/landing_zone)
 "rYy" = (
@@ -27998,7 +27998,6 @@
 	pixel_y = -3
 	},
 /obj/item/reagent_container/glass/bucket,
-/obj/item/reagent_container/glass/watertank,
 /turf/open/floor/darkgreen2,
 /area/abyssal/interior/hydro)
 "wrT" = (
@@ -33952,7 +33951,7 @@ tgy
 pkb
 baa
 eKj
-azw
+tnI
 uSc
 lRc
 gGc

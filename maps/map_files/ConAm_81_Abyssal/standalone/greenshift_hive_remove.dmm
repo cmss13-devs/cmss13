@@ -1152,7 +1152,7 @@
 "mh" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/lattice,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/effect/hybrisa/misc/fake/wire/blue{
 	dir = 4;
 	pixel_y = 6
@@ -1388,7 +1388,7 @@
 /area/abyssal/interior/maintenance/east)
 "os" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/reagent_dispensers/tank/fuel,
 /obj/structure/sign/safety/nonpress_0g{
 	pixel_x = 32
 	},
@@ -1935,7 +1935,7 @@
 "tx" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/lattice,
-/obj/structure/reagent_dispensers/fueltank/oxygentank,
+/obj/structure/reagent_dispensers/tank/fuel/oxygentank,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "ty" = (
@@ -3532,7 +3532,7 @@
 "Hr" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/lattice,
-/obj/structure/reagent_dispensers/ethanoltank,
+/obj/structure/reagent_dispensers/tank/ethanol,
 /turf/open/floor/engine,
 /area/abyssal/interior/maintenance/east)
 "Hs" = (

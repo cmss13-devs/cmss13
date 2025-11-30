@@ -177,7 +177,7 @@
 		// Is our observed xeno configured and are we alive?
 		if(observed_xeno && !stat)
 			client.perspective = EYE_PERSPECTIVE
-			client.eye = observed_xeno
+			client.set_eye(observed_xeno)
 
 // Handle HREF clicks through hive status and hivemind
 /mob/living/carbon/xenomorph/Topic(href, href_list)

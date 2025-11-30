@@ -996,6 +996,10 @@
 "tG" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 12;
+	pixel_y = 32
+	},
 /turf/open/floor/prison/darkred2/north,
 /area/lv624/lazarus/secure_storage)
 "tR" = (
@@ -2729,7 +2733,7 @@ JT
 qu
 St
 Tg
-sY
+Tg
 iA
 jc
 JT
@@ -2755,7 +2759,7 @@ jc
 JT
 sR
 sY
-jc
+iA
 JT
 JT
 JT

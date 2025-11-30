@@ -831,7 +831,6 @@
 /obj/item/storage/pill_bottle/proc/choose_color(mob/user)
 	if(!user)
 		user = usr
-
 	var/selected_color = tgui_input_list(user, "Select a color.", "Color choice", possible_colors)
 	if(!selected_color)
 		return
@@ -1115,7 +1114,8 @@
 	max_storage_space = 4
 	skilllock = SKILL_MEDICAL_DEFAULT
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_DISABLE_USE_EMPTY
-	display_maptext = FALSE
+	base_icon = "pill_packet"
+	use_sound = 'sound/effects/pillpacket.ogg'
 
 /obj/item/storage/pill_bottle/packet/Initialize()
 	. = ..()

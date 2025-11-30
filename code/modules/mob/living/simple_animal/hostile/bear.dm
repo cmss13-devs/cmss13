@@ -8,7 +8,7 @@
 	icon_gib = "bear_gib"
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")
 	speak_emote = list("growls", "roars")
-	emote_hear = list("rawr.s","grumbles.","grawls.")
+	emote_hear = list("rawrs.","roars.","grumbles.","growls.")
 	emote_see = list("stares ferociously.", "stomps.")
 	speak_chance = 1
 	turns_per_move = 5

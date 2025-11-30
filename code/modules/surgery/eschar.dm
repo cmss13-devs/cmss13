@@ -41,9 +41,9 @@
 
 /datum/surgery_step/separate_eschar/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, slicing [target] with [tool]!"),
-		SPAN_WARNING("[user]'s hand slips, slicing you with [tool]!"),
-		SPAN_WARNING("[user]'s hand slips, slicing [target] with [tool]!"))
+		SPAN_WARNING("Your hand slips, slicing [target]'s [surgery.affected_limb.display_name] with [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, slicing your [surgery.affected_limb.display_name] with [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, slicing [target]'s [surgery.affected_limb.display_name] with [tool]!"))
 
 	log_interact(user, target, "[key_name(user)] failed to remove the eschar from [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], aborting [surgery].")
 	target.apply_damage(10, BRUTE, target_zone)

@@ -269,15 +269,16 @@
 		var/list/injury_type = list()
 		if((limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED))
 			injury_type |= FRACTURE
-			RegisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED, PROC_REF(health_tasks_handler))
+			RegisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED, PROC_REF(health_tasks_handler_splinted))
 		if((limb.status & LIMB_ESCHAR))
 			injury_type |= ESCHAR_INJURY
-			RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler), TRUE)
+			RegisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler_surgery))
 		if(limb.can_bleed_internally)
 			for(var/datum/wound/wound as anything in limb.wounds)
 				if(wound.internal)
 					injury_type |= INTERNAL_BLEEDING
-					RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler), TRUE) // yeah yeah, give me a break
+					RegisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler_surgery))
+					break
 		if(length(injury_type))
 			healing_tasks[limb] = injury_type
 	if(!length(healing_tasks) || bypass)
@@ -285,41 +286,42 @@
 	else
 		agent_healing_tasks[target] = healing_tasks
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler(datum/source, mob/living/carbon/human/realistic_dummy/target, datum/surgery/surgery)
+/// Signal handler for COMSIG_LIVING_LIMB_SPLINTED
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler_splinted(obj/limb/limb, mob/living/user)
 	SIGNAL_HANDLER
+	health_tasks_handler(limb)
 
+/// Signal handler for COMSIG_LIMB_SURGERY_STEP_SUCCESS
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler_surgery(obj/limb/limb, mob/living/user, datum/surgery/surgery, obj/item/tool)
+	SIGNAL_HANDLER
+	health_tasks_handler(limb, surgery)
+
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/health_tasks_handler(obj/limb/limb, datum/surgery/surgery)
+	var/mob/living/carbon/human/realistic_dummy/target = limb.owner
 	var/list/healing_tasks = agent_healing_tasks[target]
+	var/list/injury_type = healing_tasks[limb]
 
-	var/obj/limb/limb
-	if(istype(source, /obj/limb)) // swaps around the variables from COMSIG_LIVING_LIMB_SPLINTED to make them consistent
-		limb = source
-		var/target_redirect = limb.owner
-		health_tasks_handler(target, target_redirect)
-		if(limb.status & LIMB_SPLINTED)
-			UnregisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED)
-		return
-	for(limb in healing_tasks)
-		var/list/injury_type = list()
-		injury_type |= healing_tasks[limb]
-		if(surgery && limb == surgery.affected_limb)
+	if(surgery?.affected_limb == limb)
+		if(surgery.status == length(surgery.steps))
 			if(istype(surgery, /datum/surgery/internal_bleeding))
 				injury_type -= INTERNAL_BLEEDING
 				injury_type |= SUTURE
-			if(istype(surgery, /datum/surgery_step/graft_exposed_flesh))
+			else if(istype(surgery, /datum/surgery/eschar_mend) && !(limb.status & LIMB_ESCHAR))
 				injury_type -= ESCHAR_INJURY
 				injury_type |= SUTURE
-			if(istype(surgery, /datum/surgery/suture_incision))
-				injury_type = healing_tasks[surgery.affected_limb]
-				if(SUTURE in injury_type)
-					injury_type -= SUTURE
-		if((FRACTURE in injury_type) && (limb.status & LIMB_BROKEN) && (limb.status & LIMB_SPLINTED))
-			injury_type -= FRACTURE
-		if(!length(injury_type) && limb) // makes sure something DID exist on the list
-			healing_tasks -= limb
-		else
-			healing_tasks[limb] = injury_type
+			else if(istype(surgery, /datum/surgery/suture_incision))
+				injury_type -= SUTURE
+				UnregisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS)
+	if((FRACTURE in injury_type) && (CHECK_MULTIPLE_BITFIELDS(limb.status, LIMB_BROKEN|LIMB_SPLINTED) || !(limb.status & LIMB_BROKEN)))
+		injury_type -= FRACTURE
+		UnregisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED)
+
+	if(!length(injury_type)) // makes sure something DID exist on the list
+		healing_tasks -= limb
+	else
+		healing_tasks[limb] = injury_type
+
 	if(!length(healing_tasks))
-		UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS)
 		make_agent_leave(target)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/eval_agent_status()

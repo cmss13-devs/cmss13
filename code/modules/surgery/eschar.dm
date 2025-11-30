@@ -98,7 +98,7 @@
 	to_chat(target, SPAN_NOTICE("Your skin is covered and safe. You feel better."))
 	log_interact(user, target, "[key_name(user)] sealed a skin graft over the exposed skin on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 	surgery.affected_limb.status &= ~LIMB_ESCHAR
-	surgery.affected_limb.heal_damage( 0, surgery.affected_limb.burn_healing_threshold)
+	surgery.affected_limb.heal_damage(0, surgery.affected_limb.burn_healing_threshold)
 	target.pain.recalculate_pain()
 	return
 

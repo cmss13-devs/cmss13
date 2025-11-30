@@ -859,7 +859,7 @@
 /obj/item/clothing/accessory/storage/black_vest/attackby(obj/item/W, mob/living/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		var/components = 0
-		var/obj/item/reagent_container/glass/beaker/vial
+		var/obj/item/reagent_container/glass/beaker/beaker
 		var/obj/item/cell/battery
 		for(var/obj/item in hold.contents)
 			if(istype(item, /obj/item/device/radio) || istype(item, /obj/item/stack/cable_coil) || istype(item, /obj/item/device/healthanalyzer))
@@ -867,7 +867,7 @@
 			else if(istype(item, /obj/item/reagent_container/hypospray) && !istype(item, /obj/item/reagent_container/hypospray/autoinjector))
 				var/obj/item/reagent_container/hypospray/H = item
 				if(H.mag)
-					vial = H.mag
+					beaker = H.mag
 				components++
 			else if(istype(item, /obj/item/cell))
 				battery = item
@@ -880,9 +880,9 @@
 				AH = new /obj/item/clothing/accessory/storage/black_vest/acid_harness/brown(get_turf(loc))
 			else
 				AH = new /obj/item/clothing/accessory/storage/black_vest/acid_harness(get_turf(loc))
-			if(vial)
-				AH.vial = vial
-				AH.hold.handle_item_insertion(vial)
+			if(beaker)
+				AH.beaker = beaker
+				AH.hold.handle_item_insertion(beaker)
 			AH.battery = battery
 			AH.hold.handle_item_insertion(battery)
 			qdel(src)
@@ -995,6 +995,22 @@
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/device/multitool(src)
+
+/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop
+	name = "Tool Drop Pouch"
+	desc = "A durable pair of drop pouches purpose-made for carrying tools."
+	icon_state = "drop_pouch_engineering"
+
+/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/small
+	name = "Small Tool Drop Pouch"
+	desc = "A durable pair of drop pouches purpose-made for carrying tools. These are the slightly smaller budget-version."
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small
+
+/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/equipped
+
+/obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/small/equipped
+	hold = /obj/item/storage/internal/accessory/tool_webbing/small/equipped
 
 /obj/item/storage/internal/accessory/surg_vest
 	storage_slots = 14

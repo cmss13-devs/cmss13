@@ -1151,7 +1151,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/misc/facepaint_body
 	display_name = "Fullbody paint"
 	path = /obj/item/facepaint/sniper
-	fluff_cost = 4 //To match with the skull paint amount of point, gave this amount of point for the same reason of the skull facepaint (too cool for everyone to be able to constantly use)
+	fluff_cost = 3
 
 /datum/gear/misc/jungle_boots
 	display_name = "Jungle pattern combat boots"

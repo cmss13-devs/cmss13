@@ -755,6 +755,10 @@
 	desc = "Classic office decoration and a place to stare at maniacally, produced by Weyland-Yutani."
 	calendar_faction = FACTION_WY
 
+/obj/structure/sign/calendar/wy/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
+
 /obj/structure/sign/calendar/twe
 	icon_state = "calendar_twe"
 	desc = "Classic office decoration and a place to stare at maniacally, has a pattern resembling a Union Jack on it."

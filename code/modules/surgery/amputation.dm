@@ -242,13 +242,13 @@
 		SPAN_NOTICE("[user] cuts away uneven [flesh_type] where your [surgery.affected_limb.display_name] used to be."),
 		SPAN_NOTICE("[user] cuts away uneven [flesh_type] where [target]'s [surgery.affected_limb.display_name] used to be."))
 
-	to_chat(target, SPAN_WARNING("The air around the exposed flesh on your stump feels cold."))
+	to_chat(target, SPAN_WARNING("The air around the exposed flesh on your [surgery.affected_limb.parent.display_name]'s stump feels cold."))
 	log_interact(user, target, "[key_name(user)] successfully began cleaning the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], possibly starting [surgery].")
 
 /datum/surgery_step/carve_amputation/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, cutting [target]'s [surgery.affected_limb.parent.display_name] open!"),
-		SPAN_WARNING("[user]'s hand slips, cutting your [surgery.affected_limb.parent.display_name] open!"),
+		SPAN_WARNING("Your hand slips, cutting the wrong part of [target]'s [surgery.affected_limb.parent.display_name]'s stump open!"),
+		SPAN_WARNING("[user]'s hand slips, cutting the wrong part of your [surgery.affected_limb.parent.display_name]'s stump open!"),
 		SPAN_WARNING("[user]'s hand slips, cutting [target]'s [surgery.affected_limb.parent.display_name] open!"))
 
 	target.apply_damage(10, BRUTE, surgery.affected_limb.parent)
@@ -269,9 +269,9 @@
 /datum/surgery_step/close_torn_veins/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/vasculature_type = target.get_vasculature_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You begin to mend torn [vasculature_type] in [target]'s stump with [tool]."),
-		SPAN_NOTICE("[user] begins to mend torn [vasculature_type] in your stump with [tool]."),
-		SPAN_NOTICE("[user] begins to mend torn [vasculature_type] in [target]'s stump with [tool]."))
+		SPAN_NOTICE("You begin to mend torn [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump with [tool]."),
+		SPAN_NOTICE("[user] begins to mend torn [vasculature_type] in your [surgery.affected_limb.parent.display_name]'s stump with [tool]."),
+		SPAN_NOTICE("[user] begins to mend torn [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump with [tool]."))
 
 	target.custom_pain("The stinging and tingling sensation in your [surgery.affected_limb.display_name] is bizarre and horrifying!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to mend torn [vasculature_type] in the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
@@ -279,9 +279,9 @@
 /datum/surgery_step/close_torn_veins/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/vasculature_type = target.get_vasculature_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You finish repairing the [vasculature_type] in [target]'s stump, stopping any bleeding."),
-		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in your stump, stopping any bleeding."),
-		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in [target]'s stump, stopping any bleeding."))
+		SPAN_NOTICE("You finish repairing the [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump, stopping any bleeding."),
+		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in your [surgery.affected_limb.parent.display_name]'s stump, stopping any bleeding."),
+		SPAN_NOTICE("[user] finishes repairing the [vasculature_type] in [target]'s [surgery.affected_limb.parent.display_name]'s stump, stopping any bleeding."))
 
 	surgery.affected_limb.remove_all_bleeding()
 	log_interact(user, target, "[key_name(user)] mended torn [vasculature_type] in the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")
@@ -318,9 +318,9 @@
 	var/flesh_type = target.get_flesh_type()
 	var/bone_type = target.get_bone_type()
 	user.affected_message(target,
-		SPAN_NOTICE("You begin folding the [flesh_type] of [target]'s stump over the [bone_type] and stitching it together with [tool]."),
-		SPAN_NOTICE("[user] begins folding the [flesh_type] of your stump over the [bone_type] and stitching it together with [tool]."),
-		SPAN_NOTICE("[user] begins folding the [flesh_type] of [target]'s stump over the [bone_type] and stitching it together with [tool]."))
+		SPAN_NOTICE("You begin folding the [flesh_type] of [target]'s [surgery.affected_limb.display_name]'s stump over the [bone_type] and stitching it together with [tool]."),
+		SPAN_NOTICE("[user] begins folding the [flesh_type] of your [surgery.affected_limb.display_name]'s stump over the [bone_type] and stitching it together with [tool]."),
+		SPAN_NOTICE("[user] begins folding the [flesh_type] of [target]'s [surgery.affected_limb.display_name]'s stump over the [bone_type] and stitching it together with [tool]."))
 
 	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is unbearable!", 1)
 	log_interact(user, target, "[key_name(user)] attempted to close the stump of [key_name(target)]'s [surgery.affected_limb.display_name] with [tool].")

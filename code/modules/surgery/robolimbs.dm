@@ -59,9 +59,9 @@
 
 /datum/surgery_step/connect_prosthesis/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("Your hand slips, damaging [target]'s stump!"),
+		SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_limb.display_name]'s stump!"),
 		SPAN_WARNING("[user] slips, damaging your stump!"),
-		SPAN_WARNING("[user] slips, damaging [target]'s stump!"))
+		SPAN_WARNING("[user] slips, damaging [target]'s [surgery.affected_limb.display_name]'s stump!"))
 
 	target.apply_damage(10, BRUTE, surgery.affected_limb.parent)
 	log_interact(user, target, "[key_name(user)] failed to begin attaching a prosthesis to [key_name(target)]'s [surgery.affected_limb.display_name], aborting [surgery].")

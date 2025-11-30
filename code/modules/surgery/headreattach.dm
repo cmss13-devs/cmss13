@@ -65,8 +65,8 @@
 	log_interact(user, target, "[key_name(user)] peeled back synthetic flesh where [key_name(target)]'s head used to be with [tool], beginning [surgery]")
 
 /datum/surgery_step/peel_skin/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, somehow damaging the synthetic flesh of [target]'s stump even worse!"),
-	SPAN_WARNING("Your hand slips, somehow damaging the synthetic flesh of [target]'s stump even worse!"))
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, somehow damaging the synthetic flesh of [target]'s [surgery.affected_limb.display_name]'s stump even worse!"),
+	SPAN_WARNING("Your hand slips, somehow damaging the synthetic flesh of [target]'s [surgery.affected_limb.display_name]'s stump even worse!"))
 
 	log_interact(user, target, "[key_name(user)] failed to finish peeling back synthetic flesh where [key_name(target)]'s head used to be with [tool], aborting [surgery].")
 	return FALSE

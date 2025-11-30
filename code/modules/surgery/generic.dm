@@ -424,8 +424,8 @@
 		/obj/item/tool/kitchen/knife/butcher = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
 	)
 	time = 4 SECONDS
-	preop_sound = 'sound/surgery/saw1.ogg'
-	success_sound = 'sound/surgery/saw2.ogg'
+	preop_sound = 'sound/surgery/saw.ogg'
+	success_sound = 'sound/effects/bone_break4.ogg'
 	failure_sound = 'sound/effects/circsawfail1.ogg'
 
 

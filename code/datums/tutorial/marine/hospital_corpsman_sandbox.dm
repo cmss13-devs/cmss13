@@ -311,7 +311,8 @@
 				injury_type |= SUTURE
 			else if(istype(surgery, /datum/surgery/suture_incision))
 				injury_type -= SUTURE
-				UnregisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS)
+				if(!(INTERNAL_BLEEDING in injury_type) && !(ESCHAR_INJURY in injury_type))
+					UnregisterSignal(limb, COMSIG_LIMB_SURGERY_STEP_SUCCESS)
 	if((FRACTURE in injury_type) && (CHECK_MULTIPLE_BITFIELDS(limb.status, LIMB_BROKEN|LIMB_SPLINTED) || !(limb.status & LIMB_BROKEN)))
 		injury_type -= FRACTURE
 		UnregisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED)

@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed an edgecase where quadtree results would fail because a qdeleted mob was in the tree"

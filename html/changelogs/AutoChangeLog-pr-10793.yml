@@ -1,6 +1,0 @@
-author: "liltiptop"
-delete-after: True
-changes:
-  - balance: "A.C.I.D. harnesses now use small glass beakers (60u) instead of Vials (30u)"
-  - spellcheck: "Fixed a small typo, went through the whole A.C.I.D. startup to make sure it sounded like the H.E.V. suit"
-  - code_imp: "Changed A.C.I.D. harnesses to detect glass beakers instead of vials - the code was very much just a swap from vials to beakers"

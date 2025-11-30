@@ -3,9 +3,9 @@
 	desc = "A support module for APCs that shoots flares."
 	icon = 'icons/obj/vehicles/hardpoints/humvee.dmi'
 
-	icon_state = "launcher"
+	icon_state = "humveelauncher"
 	disp_icon = "humvee"
-	disp_icon_state = "launcher"
+	disp_icon_state = "humveelauncher"
 	activation_sounds = list('sound/weapons/gun_m92_attachable.ogg')
 
 	damage_multiplier = 0.1

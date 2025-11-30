@@ -44,8 +44,7 @@
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/humvee_wheels,
-		/obj/item/hardpoint/primary/humvee_cannon,
-		/obj/item/hardpoint/support/humvee_flare_launcher,
+		/obj/item/hardpoint/holder/humvee_turret,
 		/obj/item/hardpoint/armor/humvee_snowplow,
 		/obj/item/hardpoint/support/humvee_overhead_lights,
 		/obj/item/hardpoint/primary/humvee_hatch
@@ -80,6 +79,74 @@
 	vehicle_ram_multiplier = VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION
 	minimap_icon_state = "arc"
 
+/obj/vehicle/multitile/humvee/add_seated_verbs(mob/living/M, seat)
+	if(!M.client)
+		return
+	add_verb(M.client, list(
+		/obj/vehicle/multitile/proc/switch_hardpoint,
+		/obj/vehicle/multitile/proc/get_status_info,
+		/obj/vehicle/multitile/proc/open_controls_guide,
+		/obj/vehicle/multitile/proc/name_vehicle,
+	))
+	if(seat == VEHICLE_DRIVER)
+		add_verb(M.client, list(
+			/obj/vehicle/multitile/proc/toggle_door_lock,
+			/obj/vehicle/multitile/proc/activate_horn,
+		))
+	else if(seat == VEHICLE_GUNNER)
+		add_verb(M.client, list(
+			/obj/vehicle/multitile/proc/cycle_hardpoint,
+			/obj/vehicle/multitile/proc/toggle_gyrostabilizer,
+		))
+
+
+/obj/vehicle/multitile/humvee/remove_seated_verbs(mob/living/M, seat)
+	if(!M.client)
+		return
+	remove_verb(M.client, list(
+		/obj/vehicle/multitile/proc/get_status_info,
+		/obj/vehicle/multitile/proc/open_controls_guide,
+		/obj/vehicle/multitile/proc/name_vehicle,
+		/obj/vehicle/multitile/proc/switch_hardpoint,
+	))
+	SStgui.close_user_uis(M, src)
+	if(seat == VEHICLE_DRIVER)
+		remove_verb(M.client, list(
+			/obj/vehicle/multitile/proc/toggle_door_lock,
+			/obj/vehicle/multitile/proc/activate_horn,
+		))
+	else if(seat == VEHICLE_GUNNER)
+		remove_verb(M.client, list(
+			/obj/vehicle/multitile/proc/cycle_hardpoint,
+			/obj/vehicle/multitile/proc/toggle_gyrostabilizer,
+		))
+
+/obj/vehicle/multitile/humvee/relaymove(mob/user, direction)
+	if(user == seats[VEHICLE_DRIVER])
+		// Check if wheels are installed
+		if(!(locate(/obj/item/hardpoint/locomotion/humvee_wheels) in hardpoints))
+			return FALSE
+
+		return ..()
+
+	if(user != seats[VEHICLE_GUNNER])
+		return FALSE
+
+	var/obj/item/hardpoint/holder/humvee_turret/T = null
+	for(var/obj/item/hardpoint/holder/humvee_turret/TT in hardpoints)
+		T = TT
+		break
+	if(!T)
+		return FALSE
+
+	if(direction == GLOB.reverse_dir[T.dir] || direction == T.dir)
+		return FALSE
+
+	T.user_rotation(user, turning_angle(T.dir, direction))
+	update_icon()
+
+	return TRUE
+
 /obj/effect/vehicle_spawner/humvee/Initialize()
 	. = ..()
 	spawn_vehicle()
@@ -95,4 +162,4 @@
 
 /obj/effect/vehicle_spawner/humvee/load_hardpoints(obj/vehicle/multitile/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/humvee_wheels)
-	V.add_hardpoint(new /obj/item/hardpoint/primary/humvee_hatch)
+	V.add_hardpoint(new /obj/item/hardpoint/holder/humvee_turret)

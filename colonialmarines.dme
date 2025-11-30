@@ -2617,6 +2617,7 @@
 #include "code\modules\vehicles\hardpoints\hardpoint_ammo\smoke_ammo.dm"
 #include "code\modules\vehicles\hardpoints\hardpoint_ammo\tow_ammo.dm"
 #include "code\modules\vehicles\hardpoints\holder\holder.dm"
+#include "code\modules\vehicles\hardpoints\holder\humvee_turret.dm"
 #include "code\modules\vehicles\hardpoints\holder\tank_turret.dm"
 #include "code\modules\vehicles\hardpoints\primary\arc_sentry.dm"
 #include "code\modules\vehicles\hardpoints\primary\autocannon.dm"

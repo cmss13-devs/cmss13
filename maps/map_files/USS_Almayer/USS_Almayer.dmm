@@ -427,13 +427,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/powered)
-"abb" = (
-/obj/item/trash/hotdog{
-	pixel_y = -21;
-	pixel_x = -6
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
 "abc" = (
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
@@ -133809,7 +133802,7 @@ bcc
 aYt
 bfK
 aYt
-abb
+aYt
 aYt
 aYt
 aYt

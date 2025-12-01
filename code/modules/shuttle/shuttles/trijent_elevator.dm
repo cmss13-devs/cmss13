@@ -111,3 +111,10 @@
 	id=STAT_TRIJENT_OMEGA
 	airlock_area=/area/shuttle/trijent_shuttle/omega
 	airlock_exit="east"
+
+
+/obj/docking_port/mobile/trijent_elevator/ice_classic
+	name = "Classic Ice Elevator"
+	id = "ice_classic_shuttle"
+	width = 8
+	height = 5

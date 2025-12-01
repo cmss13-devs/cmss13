@@ -114,7 +114,7 @@
 
 
 /obj/docking_port/mobile/trijent_elevator/ice_classic
-	name = "Classic Ice Elevator"
+	name = "Classic Ice Elevator" // ice is nice but this elevator is not.
 	id = "ice_classic_shuttle"
 	width = 8
 	height = 5

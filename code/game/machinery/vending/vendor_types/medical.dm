@@ -377,7 +377,7 @@
 			to_chat(user, SPAN_WARNING("[src] cannot refill [container] because it was not produced and filled by this vendor."))
 			return FALSE
 
-		if(istype(container, /obj/item/reagent_container/hypospray) && !istype(container, /obj/item/reagent_container/hypospray/autoinjector))
+		if(istype(container, /obj/item/reagent_container/hypospray) && (istype(container, /obj/item/reagent_container/hypospray/tricordrazine) || !istype(container, /obj/item/reagent_container/hypospray/autoinjector)))
 			to_chat(user, SPAN_WARNING("[src] cannot refill [container]. It came from this vendor, but its vial did not come with any chemicals."))
 			return FALSE
 

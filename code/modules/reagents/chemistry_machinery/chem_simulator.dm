@@ -366,7 +366,7 @@
 		for(var/i = 0 to 5) //5 attempts at modifying the recipe before elevating recipe length
 			if(LAZYLEN(R.required_reagents) > 2)
 				LAZYREMOVE(R.required_reagents, pick(R.required_reagents))
-			var/new_component_id = R.add_component(tier = max(min(target.data.chemclass, CHEM_CLASS_COMMON), target.data.gen_tier, 1))
+			var/new_component_id = R.add_component(tier = max(target.data.gen_tier-1, 1))
 			var/datum/reagent/new_component = GLOB.chemical_reagents_list[new_component_id]
 			//Make sure we don't have an identical reaction and that the component is identified
 			if(R.check_duplicate() || R.check_reaction_uses_all_default_medical() || new_component.chemclass >= CHEM_CLASS_SPECIAL)

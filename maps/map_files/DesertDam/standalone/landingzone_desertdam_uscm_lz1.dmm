@@ -292,15 +292,6 @@
 "eB" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/landing_pad_one)
-"eL" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/administration/hallway)
 "eN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/plasteel/wired{
@@ -723,8 +714,11 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_northwest)
 "lV" = (
-/obj/structure/disposalpipe/junction,
 /obj/structure/pipes/standard/manifold/hidden/green,
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
 "lY" = (
@@ -2005,11 +1999,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_northwest)
 "HK" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/prison/bright_clean2,
@@ -2606,15 +2599,6 @@
 "Rv" = (
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
 /area/lv522/landing_zone_forecon/UD6_Tornado)
-"Rz" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/administration/hallway)
 "RC" = (
 /obj/structure/surface/table,
 /turf/open/floor/prison/blue/east,
@@ -5722,7 +5706,7 @@ qm
 qC
 Mj
 lV
-Rz
+cL
 LJ
 Bq
 QV
@@ -5777,7 +5761,7 @@ sg
 Bo
 pL
 HK
-eL
+cL
 LJ
 GD
 qg

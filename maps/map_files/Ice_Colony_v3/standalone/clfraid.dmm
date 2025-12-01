@@ -26,6 +26,12 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "af" = (
@@ -36,10 +42,16 @@
 /obj/structure/sign/banners/clf_flag{
 	pixel_y = 32
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "ah" = (
 /obj/item/map/ice_colony_map_v3,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "ai" = (
@@ -72,6 +84,13 @@
 "am" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-y"
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "an" = (
@@ -84,6 +103,12 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "ap" = (
@@ -117,14 +142,89 @@
 /obj/item/flag/plantable/clf,
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
+"av" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/bar)
+"aw" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/junkyard/cp_bar)
+"ax" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/shiva/interior/bar)
+"ay" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Panic Room Shutters"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/s_admin)
+"az" = (
+/obj/item/ammo_casing/bullet,
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
+"aA" = (
+/obj/structure/barricade/sandbags/wired,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"aB" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
 "aC" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
+"aD" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"aE" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
 "aF" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan_leftengine"
 	},
 /area/shiva/interior/colony/clf_shuttle)
+"aG" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"aH" = (
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/junkyard/cp_bar)
+"aI" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
 "aJ" = (
 /obj/item/stack/sheet/metal,
 /obj/structure/barricade/metal/wired{
@@ -133,15 +233,63 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/clf_shuttle)
+"aK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/s_admin)
 "aL" = (
 /obj/structure/flora/tree/dead/tree_1,
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard)
+"aM" = (
+/obj/item/stack/rods,
+/obj/structure/machinery/disposal/broken,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/open/floor/plating/platingdmg1,
+/area/shiva/interior/colony/s_admin)
+"aN" = (
+/obj/item/stack/rods,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
 "aO" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 1
 	},
 /turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"aP" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/junkyard/cp_bar)
+"aQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/junkyard/cp_bar)
+"aR" = (
+/obj/structure/machinery/light/double,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "aS" = (
 /obj/item/shard{
@@ -149,9 +297,106 @@
 	},
 /turf/open/floor/platingdmg3,
 /area/shiva/interior/colony/s_admin)
+"aT" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"aU" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"aV" = (
+/obj/structure/flora/pottedplant,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
 "aW" = (
 /obj/effect/landmark/survivor_spawner/clf_lead/shivas,
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"aX" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"aY" = (
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"aZ" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"ba" = (
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-y"
+	},
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"bb" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"bc" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/s_admin)
+"bd" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"be" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"bf" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/s_admin)
 "bg" = (
 /turf/open/auto_turf/snow/layer4,
@@ -163,8 +408,99 @@
 	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/bar)
+"bi" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"bj" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/pipe{
+	color = "green";
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/colony/s_admin)
+"bk" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"bl" = (
+/obj/item/shard{
+	icon_state = "large"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"bm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"bn" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clipboard,
+/obj/item/tool/stamp,
+/obj/effect/landmark/crap_item,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
 "bo" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/garage)
+"bp" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"bq" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/machinery/disposal,
+/turf/open/floor/shiva/bluefull,
+/area/shiva/interior/colony/s_admin)
+"br" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"bs" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"bt" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/shiva/interior/colony/s_admin)
+"bu" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/s_admin)
+"bv" = (
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "bw" = (
@@ -172,12 +508,210 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
+"bx" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/garage)
+"by" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/garage)
+"bz" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/s_admin)
+"bA" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/garage)
+"bB" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/snow_mat/east,
+/area/shiva/interior/colony/botany)
+"bC" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/cp_colony_grounds)
+"bD" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/botany)
+"bE" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/botany)
+"bF" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/shiva/interior/colony/botany)
+"bG" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/snow_mat,
+/area/shiva/interior/colony/botany)
+"bH" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/green/northwest,
+/area/shiva/interior/colony/botany)
+"bI" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/botany)
+"bJ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/fourway/hidden/green,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/botany)
+"bK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/green/northeast,
+/area/shiva/interior/colony/botany)
 "bL" = (
 /obj/structure/machinery/light/double{
 	dir = 1;
 	pixel_y = 9
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/botany)
+"bM" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/botany)
+"bN" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/shiva/interior/colony/botany)
+"bO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/snow_mat/east,
+/area/shiva/interior/colony/botany)
+"bP" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/snow_mat,
+/area/shiva/interior/colony/botany)
+"bQ" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/shiva/interior/colony/botany)
+"bR" = (
+/obj/structure/machinery/door/airlock/almayer/medical/colony{
+	name = "\improper Colony Dormitories"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/botany)
+"bS" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/cp_colony_grounds)
+"bT" = (
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/exterior/cp_colony_grounds)
+"bU" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/colony/botany)
+"bV" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva/north,
 /area/shiva/interior/colony/botany)
 "cj" = (
 /obj/effect/landmark/survivor_spawner/clf/shivas,
@@ -245,6 +779,8 @@
 /area/shiva/interior/colony/clf_shuttle)
 "dX" = (
 /obj/effect/landmark/survivor_spawner,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/botany)
 "ef" = (
@@ -320,6 +856,7 @@
 /area/shiva/interior/colony/s_admin)
 "gU" = (
 /obj/item/ammo_magazine/smg/fp9000,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "hf" = (
@@ -376,6 +913,10 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/platingdmg3,
 /area/shiva/interior/colony/s_admin)
 "im" = (
@@ -542,6 +1083,9 @@
 /area/shiva/interior/colony/s_admin)
 "oi" = (
 /obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "oP" = (
@@ -629,6 +1173,9 @@
 	icon_state = "medium"
 	},
 /obj/item/stack/rods,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "qV" = (
@@ -710,6 +1257,10 @@
 /area/shiva/interior/garage)
 "sv" = (
 /obj/item/ammo_magazine/smg/fp9000,
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-y"
+	},
 /turf/open/floor/plating/platingdmg1,
 /area/shiva/interior/colony/s_admin)
 "sA" = (
@@ -743,6 +1294,7 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "sZ" = (
@@ -821,10 +1373,19 @@
 /area/shiva/exterior/cp_colony_grounds)
 "uA" = (
 /obj/item/stack/sheet/metal,
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
+/obj/structure/disposalpipe/broken,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "uP" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "vh" = (
@@ -863,6 +1424,8 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
 	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
 "xa" = (
@@ -899,6 +1462,10 @@
 "xC" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
 	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/s_admin)
@@ -981,6 +1548,9 @@
 /area/shiva/interior/garage)
 "Ay" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Az" = (
@@ -1014,7 +1584,10 @@
 /obj/structure/prop/ice_colony/tiger_rug{
 	icon_state = "White"
 	},
-/turf/open/floor/shiva/bluefull,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "AZ" = (
 /turf/closed/shuttle/ert{
@@ -1048,6 +1621,7 @@
 /obj/item/tool/pen/blue{
 	pixel_x = 5
 	},
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/wood,
 /area/shiva/interior/colony/s_admin)
 "BK" = (
@@ -1103,6 +1677,9 @@
 /area/shiva/interior/colony/botany)
 "CE" = (
 /obj/effect/landmark/survivor_spawner/clf/shivas,
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/shiva/interior/colony/s_admin)
 "CI" = (
@@ -1160,6 +1737,9 @@
 /area/shiva/interior/colony/s_admin)
 "DP" = (
 /obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "DU" = (
@@ -1219,6 +1799,7 @@
 	layer = 3
 	},
 /obj/structure/bed/chair,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "FY" = (
@@ -1284,6 +1865,9 @@
 /area/shiva/exterior/cp_colony_grounds)
 "Hi" = (
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Hm" = (
@@ -1295,9 +1879,16 @@
 /obj/item/ammo_box/magazine/misc/mre/emergency{
 	pixel_y = 10
 	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Hy" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/shiva/snow_mat/west,
 /area/shiva/interior/colony/botany)
 "Hz" = (
@@ -1348,6 +1939,12 @@
 	},
 /area/shiva/interior/colony/clf_shuttle)
 "Iv" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/shiva/green/north,
 /area/shiva/interior/colony/botany)
 "IP" = (
@@ -1375,6 +1972,9 @@
 "Jc" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Colony Security Checkpoint"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
@@ -1454,10 +2054,21 @@
 /turf/open/floor/platingdmg3,
 /area/shiva/interior/colony/clf_shuttle)
 "Kb" = (
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
+/obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/shiva/snow_mat/north,
 /area/shiva/interior/colony/botany)
 "Ke" = (
 /obj/structure/flora/pottedplant,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Kf" = (
@@ -1565,6 +2176,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Colony Administration"
 	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "NC" = (
@@ -1636,6 +2249,10 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "Qe" = (
+/obj/structure/disposalpipe/broken{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/platingdmg3,
 /area/shiva/interior/colony/s_admin)
 "Qz" = (
@@ -1682,6 +2299,12 @@
 	dir = 1;
 	pixel_y = 9
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/shiva/green/northeast,
 /area/shiva/interior/colony/botany)
 "Rv" = (
@@ -1716,6 +2339,9 @@
 /area/shiva/interior/colony/s_admin)
 "Sb" = (
 /obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 2
+	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "Sr" = (
@@ -1834,6 +2460,8 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/s_admin)
 "Wf" = (
@@ -1900,6 +2528,7 @@
 /obj/item/device/radio,
 /obj/item/device/radio,
 /obj/item/device/radio,
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Yd" = (
@@ -1918,6 +2547,9 @@
 "Yn" = (
 /obj/structure/bed/chair{
 	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
 	},
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
@@ -2064,7 +2696,7 @@
 
 (1,1,1) = {"
 dX
-NC
+bF
 ZQ
 NC
 Gz
@@ -2092,7 +2724,7 @@ zG
 "}
 (2,1,1) = {"
 Yw
-CA
+bG
 NC
 NC
 Gz
@@ -2148,7 +2780,7 @@ kQ
 "}
 (4,1,1) = {"
 SD
-gl
+bH
 nm
 xw
 Gz
@@ -2176,7 +2808,7 @@ zG
 "}
 (5,1,1) = {"
 SD
-gl
+bH
 nm
 xw
 DU
@@ -2204,7 +2836,7 @@ kQ
 "}
 (6,1,1) = {"
 pE
-gl
+bH
 nm
 xw
 DU
@@ -2260,7 +2892,7 @@ kQ
 "}
 (8,1,1) = {"
 pE
-gl
+bH
 nm
 xw
 da
@@ -2280,7 +2912,7 @@ CI
 GW
 Rv
 Yn
-aa
+az
 Gz
 PA
 hq
@@ -2288,7 +2920,7 @@ rg
 "}
 (9,1,1) = {"
 pE
-gl
+bH
 nm
 jn
 DU
@@ -2297,7 +2929,7 @@ pM
 Co
 Kf
 ar
-ar
+bj
 Kf
 Co
 pM
@@ -2307,7 +2939,7 @@ af
 Bi
 pX
 Yf
-Yn
+aB
 Jv
 Gz
 PA
@@ -2316,7 +2948,7 @@ CW
 "}
 (10,1,1) = {"
 nH
-gl
+bH
 nm
 xw
 da
@@ -2335,7 +2967,7 @@ JM
 DH
 DH
 Ms
-DH
+aD
 Zw
 Gz
 PA
@@ -2344,7 +2976,7 @@ CW
 "}
 (11,1,1) = {"
 gl
-pE
+bI
 pE
 de
 da
@@ -2353,7 +2985,7 @@ aO
 TW
 Ib
 DH
-DH
+aD
 pM
 pM
 pM
@@ -2363,7 +2995,7 @@ JE
 Kf
 DH
 DH
-Qz
+aE
 DF
 Gz
 PA
@@ -2372,26 +3004,26 @@ rg
 "}
 (12,1,1) = {"
 pE
-pE
+bI
 pE
 MG
 DU
 DW
 pM
 GG
-pM
+bi
 sV
-DH
+bk
 aW
-GG
-pM
+bd
+bb
 am
 uA
 uP
 FN
 XP
 Ht
-DH
+aG
 Gz
 Gz
 Vc
@@ -2399,21 +3031,21 @@ Jx
 pt
 "}
 (13,1,1) = {"
-pE
-pE
-pE
+bU
+bJ
+bD
 de
 da
 Lr
 YT
 Ba
-Mv
+bm
 DH
 DH
 YT
 Ba
 Mv
-GT
+aR
 Gz
 qK
 ZC
@@ -2428,20 +3060,20 @@ OP
 "}
 (14,1,1) = {"
 KN
-pE
+bI
 pE
 de
 da
 Lr
 Mv
 yb
-qY
+bn
 DH
 HB
 Mv
 yb
 qY
-DH
+aT
 Gz
 ag
 DH
@@ -2456,42 +3088,42 @@ OP
 "}
 (15,1,1) = {"
 nH
-KN
+bK
 Mc
 KK
 DU
 DH
 pM
 Co
-pM
+bp
 iG
 jw
 HE
 Co
 pM
-DH
+aT
 Gz
-EM
+aK
 DH
 DH
 DH
 Ay
-Mq
-oc
-Az
-OP
-OP
+aA
+ay
+ax
+av
+av
 "}
 (16,1,1) = {"
 pE
-KN
+bK
 Mc
 KK
 DU
 cx
 ni
 GO
-DH
+bq
 Af
 iG
 ne
@@ -2499,7 +3131,7 @@ DH
 ad
 Ke
 Gz
-EM
+aK
 yT
 nq
 DH
@@ -2512,7 +3144,7 @@ OP
 "}
 (17,1,1) = {"
 pE
-KN
+bK
 Mc
 KK
 Gz
@@ -2525,7 +3157,7 @@ Gz
 FY
 aq
 ap
-pM
+aU
 Gz
 oi
 tW
@@ -2553,7 +3185,7 @@ DU
 dB
 sL
 sL
-dB
+aV
 Gz
 DU
 DU
@@ -2568,20 +3200,20 @@ pt
 "}
 (19,1,1) = {"
 pE
-KN
+bK
 Mc
 KK
 DU
 fG
-HO
-HO
+bs
+br
 HO
 fL
 DU
 YM
 xa
 lq
-nc
+aX
 DU
 Id
 yj
@@ -2596,12 +3228,12 @@ wr
 "}
 (20,1,1) = {"
 SD
-KN
+bK
 Mc
 KK
 DU
 Pz
-HO
+bt
 QH
 it
 BF
@@ -2609,7 +3241,7 @@ DU
 fY
 tH
 tH
-pM
+aY
 ie
 Qe
 BG
@@ -2637,9 +3269,9 @@ Gz
 Oz
 rr
 ap
-an
+aZ
 Eg
-JM
+aM
 EM
 aa
 ak
@@ -2652,12 +3284,12 @@ wr
 "}
 (22,1,1) = {"
 tY
-Me
+bM
 Me
 Me
 Ri
 Hz
-pM
+bu
 JH
 tx
 pM
@@ -2680,20 +3312,20 @@ wr
 "}
 (23,1,1) = {"
 tY
-NC
-ZQ
-NC
+bN
+bE
+bB
 Ns
-vt
+bz
 xC
-Rz
+bf
 VZ
-Rz
-FY
-Rz
-sL
-sL
-pM
+bf
+bl
+bf
+bc
+bc
+ba
 DU
 ER
 Cd
@@ -2735,7 +3367,7 @@ sZ
 wr
 "}
 (25,1,1) = {"
-pE
+bV
 Kb
 CA
 NC
@@ -2746,13 +3378,13 @@ pM
 pM
 xS
 da
-pM
-pM
+bi
+be
 gU
 sv
 CE
-JU
-Kf
+aN
+aI
 HO
 DB
 DU
@@ -2764,7 +3396,7 @@ wr
 "}
 (26,1,1) = {"
 tY
-NC
+bO
 ZQ
 NC
 DU
@@ -2792,7 +3424,7 @@ wr
 "}
 (27,1,1) = {"
 tY
-CA
+bP
 NC
 NC
 DU
@@ -2820,7 +3452,7 @@ wr
 "}
 (28,1,1) = {"
 SD
-bL
+bQ
 Me
 Cb
 DU
@@ -2848,7 +3480,7 @@ wr
 "}
 (29,1,1) = {"
 SD
-oP
+bR
 Ff
 oP
 DU
@@ -2876,7 +3508,7 @@ wr
 "}
 (30,1,1) = {"
 SD
-WD
+bS
 WD
 WD
 DU
@@ -2904,7 +3536,7 @@ sZ
 "}
 (31,1,1) = {"
 WD
-WD
+bS
 WD
 WD
 sZ
@@ -2919,20 +3551,20 @@ ZL
 aC
 aC
 sZ
-wr
-wr
-wr
-hx
-wr
-wr
-wr
-wr
+aP
+aw
+aw
+aH
+aw
+aw
+aw
+aw
 wL
-wr
+aw
 "}
 (32,1,1) = {"
 WD
-WD
+bS
 WD
 WD
 sZ
@@ -2947,7 +3579,7 @@ pH
 sZ
 sZ
 wr
-wr
+aQ
 wr
 wr
 hx
@@ -2960,7 +3592,7 @@ wr
 "}
 (33,1,1) = {"
 WD
-WD
+bS
 WD
 Vf
 aC
@@ -2988,7 +3620,7 @@ wr
 "}
 (34,1,1) = {"
 WD
-WD
+bS
 WD
 WD
 wr
@@ -3015,17 +3647,17 @@ sZ
 wr
 "}
 (35,1,1) = {"
-WD
-WD
-WD
-WD
-wr
-wr
-wr
-wr
-wr
-wr
-wr
+bC
+bT
+bC
+bC
+aw
+aw
+aw
+aw
+aw
+aw
+aw
 Dt
 vh
 Kx
@@ -3133,7 +3765,7 @@ Cj
 Cj
 KS
 vJ
-vJ
+bv
 jF
 vJ
 HC
@@ -3159,9 +3791,9 @@ Hg
 zz
 Cj
 Sb
-vJ
-vJ
-vJ
+bA
+bA
+bx
 Al
 vJ
 ZI
@@ -3189,7 +3821,7 @@ Cj
 hV
 vJ
 vJ
-vJ
+by
 vJ
 vJ
 vJ
@@ -3217,7 +3849,7 @@ Cj
 AP
 vJ
 vJ
-vJ
+by
 vJ
 vJ
 UJ

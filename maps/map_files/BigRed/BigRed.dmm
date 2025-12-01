@@ -1406,6 +1406,13 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
+"afq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/freezerfloor,
+/area/bigredv2/outside/hydroponics)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1510,6 +1517,14 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
+"afK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor,
+/area/bigredv2/outside/hydroponics)
 "afL" = (
 /obj/structure/showcase{
 	icon_state = "broadcaster_send";
@@ -1520,6 +1535,14 @@
 "afM" = (
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/space_port)
+"afN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor,
+/area/bigredv2/outside/hydroponics)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/delivery,
@@ -6426,9 +6449,7 @@
 /area/bigredv2/outside/ne)
 "aCY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
-	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aCZ" = (
@@ -6735,9 +6756,7 @@
 "aET" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/shovel/spade,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
+/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aEU" = (
@@ -6750,9 +6769,6 @@
 "aEW" = (
 /obj/item/tool/hatchet,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "aEX" = (
@@ -6762,14 +6778,6 @@
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/asteroidwarning/northeast,
 /area/bigred/ground/garage_workshop)
-"aEZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/trash/cheesie,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 10
-	},
-/turf/open/floor,
-/area/bigredv2/outside/hydroponics)
 "aFa" = (
 /obj/structure/machinery/botany/extractor,
 /obj/effect/decal/cleanable/dirt,
@@ -6972,12 +6980,15 @@
 	dir = 1;
 	name = "\improper Greenhouse Storage"
 	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/hydroponics)
 "aGb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
@@ -7604,6 +7615,9 @@
 /area/bigredv2/outside/bar)
 "aJs" = (
 /obj/effect/decal/cleanable/flour,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/hydroponics)
 "aJt" = (
@@ -7904,21 +7918,11 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/hydroponics)
-"aKD" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/freezerfloor,
-/area/bigredv2/outside/hydroponics)
 "aKE" = (
 /obj/structure/machinery/door_control{
 	id = "Kitchen Greenhouse";
 	name = "Storm Shutters";
 	pixel_x = 32
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 9
 	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/hydroponics)
@@ -24255,13 +24259,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor,
 /area/bigredv2/outside/filtration_cave_cas)
-"jay" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 5
-	},
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor/whitegreenfull,
-/area/bigredv2/outside/hydroponics)
 "jbd" = (
 /obj/structure/barricade/wooden{
 	pixel_y = 2
@@ -28927,13 +28924,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/s)
-"nWG" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 6
-	},
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor/whitegreenfull,
-/area/bigredv2/outside/hydroponics)
 "nXh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/remains/human,
@@ -34434,11 +34424,6 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
-"tpU" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/portable_atmospherics/hydroponics,
-/turf/open/floor/whitegreenfull,
-/area/bigredv2/outside/hydroponics)
 "tpY" = (
 /obj/structure/lz_sign/solaris_sign,
 /turf/open/mars,
@@ -67773,9 +67758,9 @@ ako
 pwX
 apo
 anU
-nWG
-tpU
-jay
+aCf
+aCf
+aCf
 aCf
 ilH
 anT
@@ -67991,13 +67976,13 @@ aAL
 mnY
 fDf
 aCY
-aCZ
+aEd
 aET
-aMQ
+afK
 aCZ
 anT
 aIw
-aID
+aJt
 aKC
 aLx
 aIE
@@ -68209,13 +68194,13 @@ gbA
 tKR
 aCo
 aCZ
-aEU
-aMQ
+aCo
+afN
 gAE
 anT
 aIw
 aJs
-aJv
+aID
 aLy
 aCZ
 aIE
@@ -68426,13 +68411,13 @@ nNS
 anU
 aCZ
 aCZ
-aQa
 aCZ
+aQa
 aCZ
 anT
 aIx
-aID
 aJv
+aID
 aLx
 aIE
 aCZ
@@ -68643,13 +68628,13 @@ gbA
 anU
 fXR
 aCo
-aEU
-aCZ
+aCo
+aQa
 aCf
 anT
 aIy
+afq
 aIC
-aKD
 aLz
 aCZ
 aIE
@@ -68861,12 +68846,12 @@ anU
 fXR
 aCo
 aEW
-aCZ
+aQa
 aCf
 anT
 aIz
+afq
 aIC
-aKD
 aLA
 aIE
 aML
@@ -69077,13 +69062,13 @@ apo
 anU
 fXR
 rNd
-aEU
-aCZ
+aCo
+aQa
 aCf
 anT
 bix
+afq
 aIC
-aKD
 aLB
 aCZ
 aMM
@@ -69294,13 +69279,13 @@ mEE
 anU
 aCf
 aCZ
-aQa
 aCZ
+aQa
 ilH
 anT
 aIz
+afq
 aIC
-aKD
 aLC
 aIE
 aCo
@@ -69511,12 +69496,12 @@ anT
 anT
 anY
 anY
-cYI
+tKR
 aGa
 anY
 anT
 aIz
-aJt
+aJv
 aKE
 aLD
 aCZ
@@ -69728,8 +69713,8 @@ anU
 aCi
 aCZ
 aCZ
-aQa
-aCo
+aCZ
+aEU
 aGL
 anT
 anT
@@ -69945,8 +69930,8 @@ anU
 aCj
 aCo
 aCo
-aEU
-aCZ
+aCo
+aQa
 aCZ
 anT
 aIA
@@ -70162,7 +70147,7 @@ anU
 aOc
 aCo
 aCo
-aEZ
+aMp
 aGb
 aEd
 aHL

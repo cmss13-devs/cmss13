@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/junction{
+	dir = 2;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/cargo)
 "ab" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 1
@@ -1626,9 +1634,8 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz1_near)
 "nJ" = (
-/obj/structure/disposalpipe/junction{
-	dir = 8;
-	icon_state = "pipe-j2"
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/cargo)
@@ -4340,9 +4347,6 @@
 /obj/item/packageWrap,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
-"JH" = (
-/turf/open/floor/dark2,
-/area/varadero/interior/morgue)
 "JI" = (
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
@@ -5075,12 +5079,11 @@
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/interior/oob)
 "Qa" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /turf/open/floor/shiva/yellow,
 /area/varadero/interior/cargo)
@@ -7439,7 +7442,7 @@ DQ
 vg
 eu
 zI
-pL
+aa
 pL
 oK
 Fy
@@ -8266,7 +8269,7 @@ HI
 HI
 HI
 HI
-JH
+cs
 Zd
 HI
 HI

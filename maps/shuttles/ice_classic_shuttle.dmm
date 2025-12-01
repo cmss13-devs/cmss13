@@ -6,6 +6,10 @@
 	},
 /turf/open/shuttle/elevator/grating,
 /area/shuttle/trijent_shuttle/elevator)
+"b" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/shuttle/elevator/grating,
+/area/shuttle/trijent_shuttle/elevator)
 "f" = (
 /turf/closed/shuttle/elevator{
 	dir = 5
@@ -71,7 +75,7 @@ j
 (2,1,1) = {"
 S
 E
-L
+b
 E
 u
 "}

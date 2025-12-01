@@ -129,8 +129,7 @@
 	intact_tile = FALSE
 	turf_flags &= ~TURF_BURNT
 	turf_flags &= ~TURF_BROKEN
-	if(!comp_lookup)
-		ChangeTurf(plating_type)
+	ChangeTurf(plating_type)
 
 /turf/open/floor/attackby(obj/item/hitting_item, mob/user)
 	if(turf_flags & TURF_HULL) //no interaction for hulls

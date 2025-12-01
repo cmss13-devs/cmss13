@@ -70,6 +70,11 @@
 		if(types_and_overlays[overlayed_item.type])
 			overlays += types_and_overlays[overlayed_item.type]
 
+// Clean up the blood of anything inside as well
+/obj/item/storage/surgical_tray/clean_blood()
+	. = ..()
+	for(var/obj/item/thing in contents)
+		thing.clean_blood()
 
 /obj/item/storage/surgical_tray/fill_preset_inventory()
 	new /obj/item/tool/surgery/scalpel/pict_system(src)

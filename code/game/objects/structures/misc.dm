@@ -394,6 +394,7 @@
 /obj/structure/stairs/multiz/proc/on_turf_changed()
 	SIGNAL_HANDLER
 	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(on_turf_changed))
 
 /obj/structure/stairs/multiz/proc/on_turf_entered(turf/source, atom/movable/enterer)
 	SIGNAL_HANDLER
@@ -536,7 +537,13 @@
 					continue
 
 				LAZYADD(from_turf_to_images["\ref[turf]"], destination_turf_images["\ref[to_turf]"])
+				RegisterSignal(turf, COMSIG_ATOM_TURF_CHANGE, PROC_REF(on_turf_changed), TRUE)
 				RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered), TRUE)
+
+/datum/staircase/proc/on_turf_changed(turf/originator)
+	SIGNAL_HANDLER
+	RegisterSignal(originator, COMSIG_TURF_ENTERED, PROC_REF(handle_entered), TRUE)
+	RegisterSignal(originator, COMSIG_ATOM_TURF_CHANGE, PROC_REF(on_turf_changed), TRUE)
 
 
 /datum/staircase/proc/handle_entered(turf/originator, atom/what_did_it)

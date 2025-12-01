@@ -394,7 +394,6 @@
 /obj/structure/stairs/multiz/proc/on_turf_changed()
 	SIGNAL_HANDLER
 	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
-	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(on_turf_changed))
 
 /obj/structure/stairs/multiz/proc/on_turf_entered(turf/source, atom/movable/enterer)
 	SIGNAL_HANDLER
@@ -537,14 +536,24 @@
 					continue
 
 				LAZYADD(from_turf_to_images["\ref[turf]"], destination_turf_images["\ref[to_turf]"])
-				RegisterSignal(turf, COMSIG_ATOM_TURF_CHANGE, PROC_REF(on_turf_changed), TRUE)
 				RegisterSignal(turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered), TRUE)
+				RegisterSignal(turf, COMSIG_PARENT_QDELETING, PROC_REF(on_turf_changing), TRUE)
 
-/datum/staircase/proc/on_turf_changed(turf/originator)
+/datum/staircase/proc/on_turf_changing(turf/source)
 	SIGNAL_HANDLER
-	RegisterSignal(originator, COMSIG_TURF_ENTERED, PROC_REF(handle_entered), TRUE)
-	RegisterSignal(originator, COMSIG_ATOM_TURF_CHANGE, PROC_REF(on_turf_changed), TRUE)
+	from_turfs -= source
+	INVOKE_NEXT_TICK(src, PROC_REF(finish_on_turf_changed), source.x, source.y, source.z, "\ref[source]")
 
+/datum/staircase/proc/finish_on_turf_changed(x, y, z, old_ref)
+	var/turf/new_turf = locate(x, y, z)
+	if(!new_turf) // This should never happen but maybe if there's map shrinking??
+		from_turf_to_images -= old_ref
+		return
+	from_turfs += new_turf
+	RegisterSignal(new_turf, COMSIG_TURF_ENTERED, PROC_REF(handle_entered))
+	RegisterSignal(new_turf, COMSIG_PARENT_QDELETING, PROC_REF(on_turf_changing))
+	// Technically from_turf_to_images should change too but the ref should always be reused how we want
+	ASSERT(locate(old_ref) == new_turf, "Ref needs updating for /datum/staircase/proc/finish_on_turf_changed!")
 
 /datum/staircase/proc/handle_entered(turf/originator, atom/what_did_it)
 	SIGNAL_HANDLER

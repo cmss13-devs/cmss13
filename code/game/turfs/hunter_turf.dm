@@ -700,10 +700,12 @@
 /turf/open/floor/ancient_temple/damaged/damage_7
 	icon_state = "damage_7"
 
-//
+// Misc
 
 /turf/open/floor/ancient_temple/fake_wall_dark
 	icon_state = "fake_wall_dark"
+
+// Waterfall
 
 /turf/open/floor/waterfall
 	icon = 'icons/turf/waterfall_test.dmi'

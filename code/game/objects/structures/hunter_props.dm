@@ -115,6 +115,7 @@
 
 /obj/effect/hunter/ancient_temple/deco_border
 	icon_state = "deco_border1"
+	layer = TURF_LAYER
 
 /obj/effect/hunter/ancient_temple/deco_border/deco_border2
 	icon_state = "deco_border2"
@@ -200,6 +201,7 @@
 
 /obj/effect/hunter/ancient_temple/tile_edge_corner
 	icon_state = "floor_corner_1"
+	layer = TURF_LAYER
 
 /obj/effect/hunter/ancient_temple/tile_edge_corner/tile_edge_corner_2
 	icon_state = "floor_corner_2"

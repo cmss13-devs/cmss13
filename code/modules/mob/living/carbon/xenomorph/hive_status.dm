@@ -137,7 +137,6 @@
 	/// This number divides the total xenos counted for slots to give the max number of lesser drones
 	var/playable_lesser_drones_max_divisor = 3
 
-	var/datum/tacmap/drawing/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
 
 	/// Can this hive see humans on the tacmap
@@ -177,7 +176,6 @@
 	mark_ui = new(src)
 	faction_ui = new(src)
 	minimap_type = get_minimap_flag_for_faction(hivenumber)
-	tacmap = new(src, minimap_type)
 	if(!internal_faction)
 		internal_faction = name
 	for(var/number in 1 to 999)
@@ -1406,18 +1404,20 @@
 /datum/hive_status/corrupted/renegade/faction_is_ally(faction, ignore_queen_check = TRUE)
 	return ..()
 
-/datum/hive_status/proc/on_queen_death() //break alliances on queen's death
-	if(allow_no_queen_actions || living_xeno_queen)
-		return
+/datum/hive_status/proc/break_all_alliances()
 	var/broken_alliances = FALSE
 	for(var/faction in allies)
 		if(!allies[faction])
 			continue
 		change_stance(faction, FALSE)
 		broken_alliances = TRUE
+	return broken_alliances
 
+/datum/hive_status/proc/on_queen_death() //on queen's death
+	if(allow_no_queen_actions || living_xeno_queen)
+		return
 
-	if(broken_alliances)
+	if(break_all_alliances())
 		xeno_message(SPAN_XENOANNOUNCE("With the death of the Queen, all alliances have been broken."), 3, hivenumber)
 
 /datum/hive_status/proc/change_stance(faction, should_ally)

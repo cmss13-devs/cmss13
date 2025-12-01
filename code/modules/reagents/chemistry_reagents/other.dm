@@ -207,7 +207,7 @@
 /datum/reagent/sleen
 	name = "Sleen"
 	id = "sleen"
-	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for it's distinct red hue. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
+	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for its distinct red hue. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
 	reagent_state = LIQUID
 	color = "#C21D24" // rgb: 194, 29, 36
 	overdose = MED_REAGENTS_OVERDOSE
@@ -228,7 +228,7 @@
 /datum/reagent/oxygen
 	name = "Oxygen"
 	id = "oxygen"
-	description = "Chemical element of atomic number 8. It is an oxidizing agent that forms oxides with most elements and many other compounds. Dioxygen is used in cellular respiration and is nessesary to sustain organic life."
+	description = "Chemical element of atomic number 8. It is an oxidizing agent that forms oxides with most elements and many other compounds. Dioxygen is used in cellular respiration and is necessary to sustain organic life."
 	reagent_state = GAS
 	color = COLOR_GRAY
 	chemfiresupp = TRUE
@@ -243,7 +243,7 @@
 /datum/reagent/copper
 	name = "Copper"
 	id = "copper"
-	description = "Chemical element of atomic number 29. A solfe malleable red metal with high thermal and electrical conductivity."
+	description = "Chemical element of atomic number 29. A soft, red malleable metal with high thermal and electrical conductivity."
 	color = "#6E3B08" // rgb: 110, 59, 8
 	chemfiresupp = TRUE
 	burncolor = "#78be5a"
@@ -370,7 +370,7 @@
 /datum/reagent/phosphorus
 	name = "Phosphorus"
 	id = "phosphorus"
-	description = "Chemical element of atomic number 15. A highly reactive element, that is essential for life as a component of DNA, RNA and ATP. White phospherous is used in many types of tracer and incendiary munitions due to its smoke production and high flammability."
+	description = "Chemical element of atomic number 15. A highly reactive element, that is essential for life as a component of DNA, RNA and ATP. White phosphorus is used in many types of tracer and incendiary munitions due to its smoke production and high flammability."
 	reagent_state = SOLID
 	color = "#832828" // rgb: 131, 40, 40
 	chemfiresupp = TRUE
@@ -463,7 +463,7 @@
 	id = "iron"
 	description = "Chemical element of atomic number 26. Has a broad range of uses in multiple industries particularly in engineering and construction. Iron is an important component of hemoglobin, the substance in red blood cells that carries oxygen. Overdosing on iron is extremely toxic."
 	reagent_state = SOLID
-	color = "#C8A5DC" // rgb: 200, 165, 220
+	color = "#a19d94" // rgb: 161, 157, 148
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
@@ -610,7 +610,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_NEUROTOXIC = 2, PROPERTY_RELAXING = 1)
+	properties = list(PROPERTY_NEUROTOXIC = 2, PROPERTY_ANTISPASMODIC = 1)
 
 //*****************************************************************************************************/
 
@@ -653,7 +653,7 @@
 /datum/reagent/foaming_agent// Metal foaming agent. This is lithium hydride. Add other recipes (e.g. LiH + H2O -> LiOH + H2) eventually.
 	name = "Foaming agent"
 	id = "foaming_agent"
-	description = "An agent that yields metallic foam when mixed with light metal and a strong acid."
+	description = "An agent that yeilds metallic foam when mixed with light metal and a strong acid."
 	reagent_state = SOLID
 	color = "#664B63" // rgb: 102, 75, 99
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -844,6 +844,7 @@
 	color = "#00b8ff"
 	burncolor = "#00b8ff"
 	burn_sprite = "blue"
+	flags = REAGENT_TYPE_SPECIALIST
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_7,
 		PROPERTY_DURATION = BURN_TIME_TIER_4,
@@ -859,6 +860,7 @@
 	color = COLOR_GREEN
 	burncolor = COLOR_GREEN
 	burn_sprite = "green"
+	flags = REAGENT_TYPE_SPECIALIST
 	properties = list(
 		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION = BURN_TIME_TIER_5,
@@ -1049,7 +1051,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_PAINING = 2, PROPERTY_MUSCLESTIMULATING = 6)
+	properties = list(PROPERTY_NEUROPATHIC = 2, PROPERTY_MUSCLESTIMULATING = 6)
 
 /datum/reagent/plasma/egg
 	name = "Egg Plasma"

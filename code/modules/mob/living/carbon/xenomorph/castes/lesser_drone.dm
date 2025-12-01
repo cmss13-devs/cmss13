@@ -67,7 +67,6 @@
 		/datum/action/xeno_action/onclick/plant_weeds/lesser, //first macro
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
-		/datum/action/xeno_action/onclick/tacmap,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -112,7 +111,7 @@
 		PF.flags_pass = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO
 		PF.flags_can_pass_all = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO
 
-/mob/living/carbon/xenomorph/lesser_drone/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE)
+/mob/living/carbon/xenomorph/lesser_drone/ghostize(can_reenter_corpse = FALSE, aghosted = FALSE, transfer = FALSE)
 	. = ..()
 	if(. && !aghosted && !QDELETED(src))
 		gib()

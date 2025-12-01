@@ -205,7 +205,7 @@
 		return
 
 	activated_once = FALSE
-	button.icon_state = dash_user.selected_ability == src ? "template_on" : "template"
+	button.icon_state = dash_user.selected_ability == src ? "template_on" : "template_xeno"
 
 	var/list/target_mobs = list()
 	var/list/list_of_targets = orange(1, dash_user)

@@ -1,0 +1,4 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscdel: "factional patches are commented out in char prefs, CLF patch is removed (none of this affects marines)"

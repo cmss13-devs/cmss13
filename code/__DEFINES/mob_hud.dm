@@ -80,6 +80,10 @@
 #define TRACKER_HIVE "Hive Core"
 #define TRACKER_LEADER "Leader"
 #define TRACKER_TUNNEL "Tunnel"
+#define TRACKER_MORPHER "Morpher"
+#define TRACKER_CLUSTER "Cluster"
+#define TRACKER_RECOVERY_PYLON "Recovery Pylon"
+#define TRACKER_PLASMA_PYLON "Plasma Pylon"
 
 //These are used to manage the same HUD having multiple sources
 #define HUD_SOURCE_ADMIN "admin"

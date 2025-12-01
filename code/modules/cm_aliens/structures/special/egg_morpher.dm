@@ -25,9 +25,20 @@
 	var/spawn_cooldown_length_ovi = 60 SECONDS
 	COOLDOWN_DECLARE(spawn_cooldown)
 
+	///Contains description for area name and coords.
+	var/morpher_desc = ""
+	var/datum/hive_status/hive
 
 /obj/effect/alien/resin/special/eggmorph/Initialize(mapload, hive_ref)
 	. = ..()
+
+	var/turf/find = get_turf(src)
+	morpher_desc = find.loc.name + " ([loc.x], [loc.y]) [pick(GLOB.greek_letters)]"
+
+	if(!hive)
+		hive = GLOB.hive_datum[linked_hive.hivenumber]
+		hive.hive_morphers += src
+
 	COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 	range_bounds = SQUARE(x, y, EGGMORPG_RANGE)
 	update_minimap_icon()
@@ -37,15 +48,17 @@
 	SSminimaps.add_marker(src, get_minimap_flag_for_faction(linked_hive?.hivenumber), image('icons/UI_icons/map_blips.dmi', null, "morpher"))
 
 /obj/effect/alien/resin/special/eggmorph/Destroy()
+	if(hive)
+		hive.hive_morphers -= src
 	if(stored_huggers && linked_hive)
 		//Hugger explosion, like a carrier
-		var/obj/item/clothing/mask/facehugger/F
+		var/obj/item/clothing/mask/facehugger/face_hugger
 		var/chance = 60
 		visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
 		for(var/i in 1 to stored_huggers)
 			if(prob(chance))
-				F = new(loc, linked_hive.hivenumber)
-				step_away(F,src,1)
+				face_hugger = new(loc, linked_hive.hivenumber)
+				step_away(face_hugger,src,1)
 
 	range_bounds = null
 	SSminimaps.remove_marker(src)

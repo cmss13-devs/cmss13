@@ -13,6 +13,10 @@
 	health = 1200
 	block_range = 0
 
+	///Contains description for area name and coords.
+	var/cluster_desc = ""
+	var/datum/hive_status/hive
+
 	var/node_type = /obj/effect/alien/weeds/node/pylon/cluster
 	var/obj/effect/alien/weeds/node/node
 
@@ -26,13 +30,23 @@
 	node = place_node()
 	update_minimap_icon()
 
+	var/turf/find = get_turf(src)
+	cluster_desc = find.loc.name + " ([loc.x], [loc.y]) [pick(GLOB.greek_letters)]"
+
+	if(!hive)
+		hive = GLOB.hive_datum[linked_hive.hivenumber]
+		hive.hive_clusters += src
+
 	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(start_boost))
 	RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(stop_boost))
+
 /obj/effect/alien/resin/special/cluster/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
 	SSminimaps.add_marker(src, MINIMAP_FLAG_XENO, image('icons/ui_icons/map_blips.dmi', null, "cluster"))
 
 /obj/effect/alien/resin/special/cluster/Destroy()
+	if(hive)
+		hive.hive_clusters -= src
 	QDEL_NULL(node)
 	SSminimaps.remove_marker(src)
 	return ..()

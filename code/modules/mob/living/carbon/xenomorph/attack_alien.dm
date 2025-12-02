@@ -1287,6 +1287,7 @@
 		return TAILSTAB_COOLDOWN_NONE
 	xeno.visible_message(SPAN_DANGER("[xeno] punctures [src] with its tail!"),
 	SPAN_DANGER("We puncture [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	deflate(TRUE)
 	return TAILSTAB_COOLDOWN_NORMAL
 

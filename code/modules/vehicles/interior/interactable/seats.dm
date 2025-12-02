@@ -138,6 +138,7 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	xeno.visible_message(SPAN_DANGER("[xeno] smacks [src] with its tail!"),
 	SPAN_DANGER("We smack [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_LOW
 
 //custom vehicle seats for armored vehicles

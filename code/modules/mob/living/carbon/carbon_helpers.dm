@@ -27,6 +27,9 @@
 /mob/living/carbon/proc/handle_queen_screech(mob/living/carbon/xenomorph/queen/queen, list/mobs_in_view)
 	if(!(src in mobs_in_view))
 		return
+	if(HAS_TRAIT(src, TRAIT_INSIDE_VEHICLE))
+		to_chat(src, SPAN_DANGER("Your vehicle shields you from an ear-splitting sound!"))
+		return
 	var/dist = get_dist(queen, src)
 	if(dist <= 4)
 		to_chat(src, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))

@@ -912,7 +912,12 @@
 	)
 
 /obj/structure/machinery/autodoc_console/upgraded
-	upgrades = list(1=1, 2=2, 3=3, 4=4)
+	upgrades = list(
+		RESEARCH_UPGRADE_TIER_1,
+		RESEARCH_UPGRADE_TIER_2,
+		RESEARCH_UPGRADE_TIER_3,
+		RESEARCH_UPGRADE_TIER_4,
+	)
 
 /obj/structure/machinery/medical_pod/autodoc/unskilled
 	name = "advanced autodoc emergency medical system"

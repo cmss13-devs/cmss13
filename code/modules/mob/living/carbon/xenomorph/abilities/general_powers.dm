@@ -1156,10 +1156,10 @@
 
 	if(last_dir != stab_direction)
 		setDir(stab_direction)
-		addtimer(CALLBACK(src, PROC_REF(reset_direction), src, last_dir, dir), 0.5 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(reset_direction), last_dir, dir), 0.5 SECONDS)
 
-// Reset the xenomorph's direction after the tail stab 'animation', unless they've moved since then
-/mob/living/carbon/xenomorph/proc/reset_direction(mob/living/carbon/xenomorph/stabbing_xeno, last_dir, new_dir)
+/// Reset the xenomorph's direction after the tail stab 'animation', unless they've moved since then
+/mob/living/carbon/xenomorph/proc/reset_direction(last_dir, new_dir)
 	if(new_dir == dir)
 		setDir(last_dir)
 

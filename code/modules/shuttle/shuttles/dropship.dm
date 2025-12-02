@@ -315,14 +315,14 @@
 
 /obj/docking_port/stationary/marine_dropship/upp/hangar_1
 	name = "Rostock Hangar bay 1"
-	id = dropship_upp_LZ1
+	id = UPP_DROPSHIP_LZ1
 	faction = "UPP"
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/morana
 
 /obj/docking_port/stationary/marine_dropship/upp/hangar_2
 	name = "Rostock Hangar bay 2"
-	id = dropship_upp_LZ2
+	id = UPP_DROPSHIP_LZ2
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/devana
 

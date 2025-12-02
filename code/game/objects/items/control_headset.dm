@@ -77,8 +77,15 @@
 
 /datum/action/item_action/control_xenomorph/can_use_action()
 	var/mob/living/carbon/human/human = owner
-	if(istype(human) && !human.is_mob_incapacitated())
-		return TRUE
+
+	if(!istype(human) || human.is_mob_incapacitated())
+		return FALSE
+
+	if(human.head != holder_item)
+		to_chat(owner, SPAN_WARNING("You should probably wear the headest first."))
+		return FALSE
+
+	return TRUE
 
 /datum/action/lose_control
 	name = "Disconnect"

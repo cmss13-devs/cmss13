@@ -389,7 +389,7 @@
 			turf_blocked = TRUE
 		else
 			for(var/atom/movable/AM in T.contents)
-				if(AM.density)
+				if(AM != src && AM.density)
 					turf_blocked = TRUE
 					break
 	return turf_blocked

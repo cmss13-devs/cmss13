@@ -5,6 +5,9 @@
 	icon_state = "comm_tower"
 	unacidable = FALSE
 	unslashable = FALSE
+	density = TRUE
+	layer = ABOVE_FLY_LAYER
+	bound_height = 96
 	/// How much to multiply headset range by
 	var/range_boost = 2
 
@@ -16,7 +19,7 @@
 	. = ..()
 	. += SPAN_NOTICE("To re-package, use at least five wooden planks on it while holding a screwdriver in the other hand.")
 
-/obj/structure/machinery/relay_tower/proc/handle_point_gain(point_multiplier)
+/obj/structure/machinery/relay_tower/proc/handle_point_gain(component, point_multiplier)
 	var/intel_point_gain = OBJECTIVE_LOW_VALUE * point_multiplier
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 	tree.add_points(intel_point_gain)
@@ -24,7 +27,7 @@
 	var/biomass_points_gain = 200 * point_multiplier
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_BIOMASS_GAIN, biomass_points_gain)
 
-	playsound(src, 'sound/machines/techpod/techpod_rto_notif.ogg', 50)
+	playsound(src, 'sound/machines/techpod/techpod_rto_notif.ogg', 100)
 	// it speaks!
 	for(var/mob/mob in hearers(src, null))
 		mob.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"Combat data recieved. [intel_point_gain] intel points have been gained. [biomass_points_gain] biomass points gained.\"</span>", SHOW_MESSAGE_AUDIBLE)
@@ -65,6 +68,7 @@
 /obj/structure/largecrate/machine/relay_tower
 	name = "relay tower crate"
 	desc = "A crate containing a relay tower."
+	icon_state = "densecrate"
 	dir_needed = 0
 
 /obj/structure/largecrate/machine/relay_tower/unpack()

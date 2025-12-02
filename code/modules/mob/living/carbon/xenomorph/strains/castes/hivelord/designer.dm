@@ -35,9 +35,8 @@
 	hivelord.plasma_types = list(PLASMA_NUTRIENT, PLASMA_PHEROMONE)
 	hivelord.max_design_nodes = 36
 	hivelord.viewsize = WHISPERER_VIEWRANGE
-	hivelord.armor_modifier += XENO_ARMOR_MOD_SMALL
+	hivelord.health_modifier -= XENO_HEALTH_MOD_LARGE
 	hivelord.phero_modifier += XENO_PHERO_MOD_LARGE
-	hivelord.speed_modifier += XENO_SPEED_DESIGNER //Lost 30% plasma in sac, you lost some weight
 	hivelord.plasmapool_modifier = 0.7 //-30% plasma pool
 	hivelord.tacklestrength_min_modifier += 1
 	hivelord.tacklestrength_max_modifier += 1

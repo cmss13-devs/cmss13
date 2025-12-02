@@ -1,4 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - bugfix: "Fixes a path in one of the previous PR's update scripts."

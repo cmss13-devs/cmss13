@@ -23,6 +23,7 @@
 	GLOB.living_mob_list += src
 
 /mob/living/Destroy()
+	GLOB.living_player_list -= src
 	GLOB.living_mob_list -= src
 	cleanup_status_effects()
 	pipes_shown = null
@@ -72,8 +73,7 @@
 		for(var/obj/limb/affecting in H.limbs)
 			if(!affecting)
 				continue
-			if(affecting.take_damage(0, divided_damage+extradam)) //TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
-				H.UpdateDamageIcon()
+			affecting.take_damage(0, divided_damage+extradam) //TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
 		H.updatehealth()
 		return 1
 

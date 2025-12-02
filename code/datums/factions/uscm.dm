@@ -62,10 +62,6 @@
 				if("Team")
 					marine_rk = "soctl_a"
 
-			current_human.langchat_styles = "langchat_bolded" // bold text for bold leaders
-		else
-			current_human.langchat_styles = initial(current_human.langchat_styles)
-
 		current_human.langchat_color = current_human.assigned_squad.chat_color
 
 		var/icon/file_to_use = override_icon_file ? override_icon_file : base_icon_file
@@ -176,6 +172,9 @@
 				border_rk = "command"
 			if(JOB_SYNTH)
 				marine_rk = "syn"
+				var/datum/equipment_preset/synth/preset = current_human.assigned_equipment_preset
+				if(preset?.subtype)
+					marine_rk = "syn_[preset.subtype]"
 			if(JOB_SYNTH_K9)
 				marine_rk = "syn_k9"
 			if(JOB_MESS_SERGEANT)

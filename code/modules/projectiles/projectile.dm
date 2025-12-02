@@ -16,6 +16,7 @@
 	alpha = 0 // We want this thing to be transparent when it drops on a turf because it will be on the user's turf. We then want to make it opaque as it travels.
 	layer = FLY_LAYER
 	animate_movement = NO_STEPS //disables gliding because it fights against what animate() is doing
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 	var/datum/ammo/ammo //The ammo data which holds most of the actual info.
 
@@ -981,8 +982,8 @@
 		apply_stamina_damage(bullet.ammo.stamina_damage, bullet.def_zone, ARMOR_ENERGY) // Stamina damage is energy
 
 	//Shields
-	if( !(ammo_flags & AMMO_ROCKET) ) //No, you can't block rockets.
-		if(prob(75) && check_shields(damage * 0.65, "[bullet]") ) // Lower chance to block bullets
+	if(!(ammo_flags & AMMO_ROCKET)) //No, you can't block rockets.
+		if(check_shields("[bullet]", get_dir(src, bullet.firer), attack_type = SHIELD_ATTACK_PROJECTILE)) // Lower chance to block bullets
 			bullet.ammo.on_shield_block(src)
 			bullet_ping(bullet)
 			return

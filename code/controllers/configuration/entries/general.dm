@@ -115,6 +115,8 @@ Administrative related.
 
 /datum/config_entry/flag/log_overwatch
 
+/datum/config_entry/flag/log_garble
+
 /datum/config_entry/flag/log_interact
 
 /datum/config_entry/flag/log_idmod
@@ -683,6 +685,40 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/repo_name
 
 /datum/config_entry/string/org
+
+/datum/config_entry/string/ipcheck_base
+	config_entry_value = "api.ipapi.is"
+
+/datum/config_entry/string/ipcheck_apikey
+
+/datum/config_entry/number/ipcheck_rating_bad
+	config_entry_value = 1
+	min_val = 0
+	max_val = 1
+
+/datum/config_entry/flag/ipcheck_reject_bad
+	config_entry_value = FALSE
+
+/datum/config_entry/flag/ipcheck_reject_rate_limited
+	config_entry_value = FALSE
+
+/datum/config_entry/flag/ipcheck_reject_unknown
+	config_entry_value = FALSE
+
+/datum/config_entry/number/ipcheck_rate_day
+	config_entry_value = 1000
+	min_val = 0
+
+/datum/config_entry/number/ipcheck_cache_length
+	config_entry_value = 7
+	min_val = 0
+
+/datum/config_entry/number/ipcheck_exempt_playtime_living
+	config_entry_value = 5
+	min_val = 0
+
+/datum/config_entry/string/ipcheck_fail_message
+	config_entry_value = "Please contact an Admin to whitelist you."
 
 /datum/config_entry/keyed_list/auth_urls
 	splitter = "|"

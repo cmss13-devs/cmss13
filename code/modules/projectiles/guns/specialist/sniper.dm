@@ -247,7 +247,13 @@
 			break
 
 	return blocked
-
+/obj/item/weapon/gun/rifle/sniper/equipped(mob/living/user, slot)
+	. = ..()
+	//Toggle Aimed Shot on equip in hands. Skips back and armour slot equips
+	if(slot == WEAR_R_HAND || slot == WEAR_L_HAND)
+		var /datum/action/toggling_action = locate(/datum/action/item_action/specialist/aimed_shot) in user.actions
+		if(toggling_action)
+			toggling_action.action_activate()
 // Snipers may enable or disable their laser tracker at will.
 /datum/action/item_action/specialist/toggle_laser
 
@@ -330,10 +336,35 @@
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	map_specific_decoration = TRUE
+	inhand_x_dimension = 64
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 	pixel_x = -6
 	hud_offset = -6
+
+/obj/item/weapon/gun/rifle/sniper/M42A/Initialize(mapload, spawn_empty)
+	. = ..()
+	select_gamemode_skin()
+	AddElement(/datum/element/corp_label/armat)
+
+/obj/item/weapon/gun/rifle/sniper/M42A/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/jungle/guns_lefthand_x64.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/jungle/guns_righthand_x64.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_lefthand_x64.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_righthand_x64.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/desert/guns_lefthand_x64.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/desert/guns_righthand_x64.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_lefthand_x64.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_righthand_x64.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_lefthand_x64.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_righthand_x64.dmi'
 
 /obj/item/weapon/gun/rifle/sniper/M42A/verb/toggle_scope_zoom_level()
 	set name = "Toggle Scope Zoom Level"
@@ -393,6 +424,10 @@
 	sniper_lockon_icon = "sniper_lockon"
 	pixel_x = -4
 	hud_offset = -4
+
+/obj/item/weapon/gun/rifle/sniper/XM43E1/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/armat)
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/handle_starting_attachment()
 	..()
@@ -457,6 +492,10 @@
 	sniper_beam_type = /obj/effect/ebeam/laser/intense
 	sniper_beam_icon = "laser_beam_intense"
 	sniper_lockon_icon = "sniper_lockon_intense"
+
+/obj/item/weapon/gun/rifle/sniper/elite/Initialize()
+	. = ..()
+	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/weapon/gun/rifle/sniper/elite/handle_starting_attachment()
 	..()

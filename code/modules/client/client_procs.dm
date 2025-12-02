@@ -58,6 +58,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/set_crit_type,
 	/client/proc/set_flashing_lights_pref,
 	/client/proc/toggle_leadership_spoken_orders,
+	/client/proc/toggle_cocking_to_hand,
 ))
 
 /client/proc/reduce_minute_count()
@@ -171,14 +172,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	else if(href_list["medals_panel"])
 		GLOB.medals_panel.tgui_interact(mob)
-
 	else if(href_list["tacmaps_panel"])
 		GLOB.tacmap_admin_panel.tgui_interact(mob)
-
-	else if(href_list["MapView"])
-		if(isxeno(mob))
-			return
-		GLOB.uscm_tacmap_status.tgui_interact(mob)
 
 	//NOTES OVERHAUL
 	if(href_list["add_merit_info"])
@@ -401,6 +396,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /client/proc/PostLogin()
 	add_verb(src, collect_client_verbs())
 
+	check_ip_vpn()
+
 	acquire_dpi()
 
 	// Initialize tgui panel
@@ -471,6 +468,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(CONFIG_GET(flag/ooc_country_flags))
 		spawn if(src)
 			ip2country(address, src)
+
+	spawn(-1)
+		if(SScmtv.is_subscriber(src))
+			add_verb(src, /client/proc/set_ooc_color_self)
 
 	//////////////
 	//DISCONNECT//
@@ -969,6 +970,39 @@ CLIENT_VERB(action_hide_menu)
 		winset(src, "mapwindow.map", "right-click=false")
 		winset(src, "default.Shift", "is-disabled=true")
 		winset(src, "default.ShiftUp", "is-disabled=true")
+
+#ifdef SPACEMAN_DMM
+/client/VAR_PRIVATE/eye
+/client/VAR_PRIVATE/pixel_x
+/client/VAR_PRIVATE/pixel_y
+#endif
+
+/client/proc/set_eye(new_eye)
+	SEND_SIGNAL(src, COMSIG_CLIENT_EYE_CHANGED, new_eye)
+
+	eye = new_eye
+
+/client/proc/get_eye() as /atom
+	RETURN_TYPE(/atom)
+
+	return eye
+
+/client/proc/set_pixel_x(new_pixel_x)
+	SEND_SIGNAL(src, COMSIG_CLIENT_PIXEL_X_CHANGED, new_pixel_x)
+
+	pixel_x = new_pixel_x
+
+/client/proc/get_pixel_x() as num
+	return pixel_x
+
+/client/proc/set_pixel_y(new_pixel_y)
+	SEND_SIGNAL(src, COMSIG_CLIENT_PIXEL_Y_CHANGED, new_pixel_y)
+
+	pixel_y = new_pixel_y
+
+/client/proc/get_pixel_y() as num
+	return pixel_y
+
 
 GLOBAL_VAR(ooc_rank_dmi)
 GLOBAL_LIST_INIT(ooc_rank_iconstates, setup_ooc_rank_icons())

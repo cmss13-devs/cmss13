@@ -643,7 +643,7 @@
 	healthcheck()
 	return TAILSTAB_COOLDOWN_NORMAL
 
-/obj/structure/fence/electrified/attack_alien(mob/living/carbon/xenomorph/user)
+/obj/structure/fence/electrified/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(electrified && !cut)
 		electrocute_mob(xeno, get_area(breaker_switch), src, 0.75)
 	return ..()
@@ -1207,7 +1207,7 @@
 		SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return TAILSTAB_COOLDOWN_NORMAL
 
-/obj/structure/machinery/vending/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/structure/machinery/vending/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(is_tipped_over)
 		to_chat(xeno, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
 		return XENO_NO_DELAY_ACTION

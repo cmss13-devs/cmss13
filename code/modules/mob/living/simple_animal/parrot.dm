@@ -37,7 +37,7 @@
 	speak = list("Hi","Hello!","Cracker?","RAWWWWK! GEORGE MELLONS GRIFFING ME!")
 	speak_emote = list("squawks","says","yells", "calls")
 	emote_hear = list("squawks.","bawks.","calls.","screams.")
-	emote_see = list("flutters its wings.", "clacks its beak,", "preens its feathers.", "pins its eyes.")
+	emote_see = list("flutters its wings.", "clacks its beak.", "preens its feathers.", "pins its eyes.")
 
 	speak_chance = 1//1% (1 in 100) chance every tick; So about once per 150 seconds, assuming an average tick is 1.5s
 	turns_per_move = 5

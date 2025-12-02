@@ -75,10 +75,10 @@
 	icon_living = "cow"
 	icon_dead = "cow_dead"
 	icon_gib = "cow_gib"
-	speak = list("Moo?","Moo.","MOOOOOO!")
+	speak = list("Moo?","Moo.", "Mooooo!","Mmmmmm.","MrrrrrOOOOOO!","MOOOOOO!")
 	speak_emote = list("moos","moos hauntingly")
 	emote_hear = list("moos.")
-	emote_see = list("shakes its head.")
+	emote_see = list("shakes its head.", "flicks its ear", "swishes its tail.", "licks at its side.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -156,7 +156,7 @@
 	speak = list("Chirp.","Chirp?","Chirrup.","Cheep!","Peep!")
 	speak_emote = list("cheeps")
 	emote_hear = list("cheeps.")
-	emote_see = list("pecks at the ground.","flaps its tiny wings.")
+	emote_see = list("pecks at the ground.","flaps its tiny wings.", "scratches around with its foot, looking for scraps.")
 	speak_chance = 2
 	turns_per_move = 2
 	meat_type = /obj/item/reagent_container/food/snacks/meat
@@ -198,10 +198,10 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	icon_state = "chicken"
 	icon_living = "chicken"
 	icon_dead = "chicken_dead"
-	speak = list("Cluck!","BWAAAAARK BWAK BWAK BWAK!","Bwaak bwak.")
+	speak = list("Cluck!", "Bawk bwak.", "Bwarrrrk...", "Bawk!", "Bawk bawk bwak.", "BWAAAAARK BWAK BWAK BWAK!","Bwaak bwak.")
 	speak_emote = list("clucks","croons")
 	emote_hear = list("clucks.")
-	emote_see = list("pecks at the ground.","flaps its wings viciously.")
+	emote_see = list("pecks at the ground.","flaps its wings viciously.", "scratches around with its foot, looking for scraps.")
 	speak_chance = 2
 	turns_per_move = 3
 	meat_type = /obj/item/reagent_container/food/snacks/meat

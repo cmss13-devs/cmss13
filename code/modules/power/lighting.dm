@@ -646,9 +646,9 @@
 
 /obj/structure/machinery/light/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(is_broken())
-		to_chat(xeno, SPAN_WARNING("\The [src] is already broken!"))
+		to_chat(xeno, SPAN_WARNING("[src] is already broken!"))
 		return
-	xeno.visible_message(SPAN_DANGER("\The [xeno] smashes \the [src] with its tail!"), SPAN_DANGER("You smash \the [src] with your tail!"), null, 5)
+	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"), SPAN_DANGER("We smash [src] with our tail!"), null, 5)
 	xeno.tail_stab_animation(src, blunt_stab)
 	broken() //Smashola!
 	return TAILSTAB_COOLDOWN_VERY_LOW

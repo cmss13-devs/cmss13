@@ -1140,7 +1140,7 @@
 /datum/action/xeno_action/activable/tail_stab/proc/pre_ability_act(mob/living/carbon/xenomorph/stabbing_xeno, atom/targetted_atom)
 	return
 
-// This proc plays a tail stab 'animation' by changing the xenomorph's direction, and resets the xenomorph's direction after a short delay.
+/// This proc plays a tail stab 'animation' by changing the xenomorph's direction, and resets the xenomorph's direction after a short delay.
 /mob/living/carbon/xenomorph/proc/tail_stab_animation(target, blunt = FALSE)
 	// This is the direction the xenomorph is reset to afterwards.
 	var/last_dir = dir

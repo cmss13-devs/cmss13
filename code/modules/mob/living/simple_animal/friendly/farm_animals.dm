@@ -8,7 +8,7 @@
 	speak = list("MEHEHEHEHEH!","Mehh?","Maa!","MAAAA!","Mehh!","AAAAAAAAAA!")
 	speak_emote = list("bleats")
 	emote_hear = list("bleats.")
-	emote_see = list("shakes its head.", "stamps a foot.", "glares around.")
+	emote_see = list("shakes its head.", "wiggles its tail", "stamps a foot.", "glares around.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6

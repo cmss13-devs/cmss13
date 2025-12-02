@@ -1156,7 +1156,6 @@
 
 	if(last_dir != stab_direction)
 		setDir(stab_direction)
-		emote("tail")
 		addtimer(CALLBACK(src, PROC_REF(reset_direction), src, last_dir, dir), 0.5 SECONDS)
 
 // Reset the xenomorph's direction after the tail stab 'animation', unless they've moved since then
